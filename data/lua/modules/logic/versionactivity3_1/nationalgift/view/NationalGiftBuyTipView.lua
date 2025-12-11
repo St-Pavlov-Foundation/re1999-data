@@ -98,7 +98,7 @@ function NationalGiftBuyTipView:_onCloseViewCall(viewName)
 end
 
 function NationalGiftBuyTipView:_onYesCallback()
-	local jumpParam = string.format("%s#%s", JumpEnum.JumpView.ActivityView, VersionActivity3_1Enum.ActivityId.NationalGift)
+	local jumpParam = string.format("%s#%s", JumpEnum.JumpView.ActivityView, NationalGiftModel.instance:getCurVersionActId())
 
 	JumpController.instance:jumpByParam(jumpParam)
 	self:closeThis()
@@ -128,7 +128,7 @@ function NationalGiftBuyTipView:_checkAutoGetReward()
 		return
 	end
 
-	Activity212Rpc.instance:sendAct212ReceiveBonusRequest(VersionActivity3_1Enum.ActivityId.NationalGift, 1)
+	Activity212Rpc.instance:sendAct212ReceiveBonusRequest(NationalGiftModel.instance:getCurVersionActId(), 1)
 end
 
 function NationalGiftBuyTipView:_refreshUI()

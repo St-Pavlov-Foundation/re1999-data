@@ -78,5 +78,13 @@
     "ruleIcon": "shen_guize_18",
     "ruleFront": "1#106320121",
     "ruleRear": "1#106320122"
+  },
+  {
+    "timeId": 11,
+    "issueId": 11,
+    "optionalSkills": "2035#2002#2036#2037#2015#2006",
+    "ruleIcon": "shen_guize_18",
+    "ruleFront": "1#117333505",
+    "ruleRear": "1#117333506"
   }
 ]

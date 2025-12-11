@@ -2448,6 +2448,60 @@ local module_cmd = {
 		"Antique",
 		"AntiqueUpdatePush"
 	},
+	[30677] = {
+		"ArcadeInSide",
+		"ArcadeGetInSideInfoRequest",
+		"ArcadeGetInSideInfoReply"
+	},
+	[-7818] = {
+		"ArcadeInSide",
+		"ArcadeSaveGameRequest",
+		"ArcadeSaveGameReply"
+	},
+	[10456] = {
+		"ArcadeInSide",
+		"ArcadeSettleGameRequest",
+		"ArcadeSettleGameReply"
+	},
+	[29943] = {
+		"ArcadeOutSide",
+		"ArcadeGetOutSideInfoRequest",
+		"ArcadeGetOutSideInfoReply"
+	},
+	[-12046] = {
+		"ArcadeOutSide",
+		"ArcadePlayerMoveRequest",
+		"ArcadePlayerMoveReply"
+	},
+	[-15315] = {
+		"ArcadeOutSide",
+		"ArcadeSwitchCharacterRequest",
+		"ArcadeSwitchCharacterReply"
+	},
+	[9854] = {
+		"ArcadeOutSide",
+		"ArcadeTalentUpgradeRequest",
+		"ArcadeTalentUpgradeReply"
+	},
+	[28626] = {
+		"ArcadeOutSide",
+		"ArcadeGainRewardRequest",
+		"ArcadeGainRewardReply"
+	},
+	[-6994] = {
+		"ArcadeOutSide",
+		"ArcadeInteractionRequest",
+		"ArcadeInteractionReply"
+	},
+	[20714] = {
+		"ArcadeOutSide",
+		"ArcadeClearNewBookRequest",
+		"ArcadeClearNewBookReply"
+	},
+	[4399] = {
+		"ArcadeOutSide",
+		"ArcadeAttrChangePush"
+	},
 	[-415] = {
 		"AssassinOutSide",
 		"GetAssassinOutSideInfoRequest",
@@ -2866,6 +2920,11 @@ local module_cmd = {
 		"CommandPost",
 		"CommandPostEventReadRequest",
 		"CommandPostEventReadReply"
+	},
+	[-24924] = {
+		"CommandPost",
+		"CommandPostCharacterReadRequest",
+		"CommandPostCharacterReadReply"
 	},
 	[24032] = {
 		"Common",
@@ -3454,6 +3513,11 @@ local module_cmd = {
 		"Fight",
 		"GetFightCardDeckDetailInfoRequest",
 		"GetFightCardDeckDetailInfoReply"
+	},
+	[15330] = {
+		"Fight",
+		"GetGMFightTeamDetailInfosRequest",
+		"GetGMFightTeamDetailInfosReply"
 	},
 	[-11219] = {
 		"Fishing",
@@ -6099,6 +6163,28 @@ local module_cmd = {
 		"Task",
 		"FinishReadTaskRequest",
 		"FinishReadTaskReply"
+	},
+	[13540] = {
+		"TowerCompose",
+		"TowerComposeGetInfoRequest",
+		"TowerComposeGetInfoReply"
+	},
+	[17271] = {
+		"TowerCompose",
+		"TowerComposeSetModsRequest",
+		"TowerComposeSetModsReply"
+	},
+	[22941] = {
+		"TowerCompose",
+		"TowerComposeResearchProgressUpdatePush"
+	},
+	[-28713] = {
+		"TowerCompose",
+		"TowerComposeUnlockModsPush"
+	},
+	[-8101] = {
+		"TowerCompose",
+		"TowerComposeFightSettlePush"
 	},
 	[-2260] = {
 		"TowerDeep",

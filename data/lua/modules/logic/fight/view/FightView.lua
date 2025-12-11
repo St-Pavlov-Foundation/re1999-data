@@ -117,6 +117,7 @@ function FightView:onOpen()
 	end
 
 	self:_updateSpeed()
+	FightController.instance:dispatchEvent(FightEvent.OnUpdateSpeed)
 	gohelper.setActive(self._btnSpeed.gameObject, hasOpenSpeed)
 	gohelper.setActive(self._btnCareerRestrain.gameObject, false)
 	gohelper.setActive(self._btnBack.gameObject, isBackShow)
@@ -435,6 +436,16 @@ function FightView:_onClickSpeed()
 	PlayerPrefsHelper.setNumber(self:_getPlayerPrefKeySpeed(), newSpeed)
 	FightController.instance:dispatchEvent(FightEvent.OnUpdateSpeed)
 	self:_updateSpeed()
+end
+
+function FightView:onOpenSpecialTip()
+	if ViewMgr.instance:isOpen(ViewName.FightSpecialTipView) then
+		ViewMgr.instance:closeView(ViewName.FightSpecialTipView)
+
+		return
+	end
+
+	self:_onClickBtnSpecialTip()
 end
 
 function FightView:_onClickBtnSpecialTip()

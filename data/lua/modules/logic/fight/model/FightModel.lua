@@ -71,6 +71,10 @@ function FightModel:onRestart()
 	self:clear()
 end
 
+function FightModel:onSwitchPlane()
+	self:clear()
+end
+
 function FightModel:setFightParam(fightParam)
 	self._historyRoundMOList = nil
 	self._fightParam = fightParam
@@ -89,7 +93,7 @@ function FightModel:updateMySide(fightGroup)
 	local fightParam = self:getFightParam()
 
 	if fightParam then
-		fightParam:setMySide(fightGroup.clothId, fightGroup.heroList, fightGroup.subHeroList, fightGroup.equips, fightGroup.activity104Equips, fightGroup.trialHeroList, fightGroup.extraList, fightGroup.assistBossId)
+		fightParam:setMySide(fightGroup.clothId, fightGroup.heroList, fightGroup.subHeroList, fightGroup.equips, fightGroup.activity104Equips, fightGroup.trialHeroList, fightGroup.extraList, fightGroup.assistBossId, fightGroup.params)
 	end
 end
 

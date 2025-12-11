@@ -2,141 +2,313 @@
   {
     "chaId": 1,
     "chaPicture": "300101",
-    "chaName": "维尔汀"
+    "chaName": "维尔汀",
+    "chaCamp": 1
   },
   {
     "chaId": 2,
     "chaPicture": "312601",
-    "chaName": "玛丽安娜"
+    "chaName": "玛丽安娜",
+    "chaCamp": 0
   },
   {
     "chaId": 3,
     "chaPicture": "527902",
-    "chaName": "卡戎"
+    "chaName": "卡戎",
+    "chaCamp": 5
   },
   {
     "chaId": 4,
     "chaPicture": "527902",
-    "chaName": "保罗"
+    "chaName": "保罗",
+    "chaCamp": 0
   },
   {
     "chaId": 5,
     "chaPicture": "525901",
-    "chaName": "布劳恩少校"
+    "chaName": "布劳恩少校",
+    "chaCamp": 0
   },
   {
     "chaId": 6,
     "chaPicture": "526501",
-    "chaName": "玛尔纱"
+    "chaName": "玛尔纱",
+    "chaCamp": 1
   },
   {
     "chaId": 7,
     "chaPicture": "523701",
-    "chaName": "刻雷乌斯"
+    "chaName": "刻雷乌斯",
+    "chaCamp": 1
   },
   {
     "chaId": 8,
     "chaPicture": "529401",
-    "chaName": "“Ⅻ”小队"
+    "chaName": "“Ⅻ”小队",
+    "chaCamp": 1
   },
   {
     "chaId": 9,
     "chaPicture": "524101",
-    "chaName": "梅蕾尔"
+    "chaName": "梅蕾尔",
+    "chaCamp": 5
   },
   {
     "chaId": 10,
     "chaPicture": "300401",
-    "chaName": "红弩箭"
+    "chaName": "红弩箭",
+    "chaCamp": 1
   },
   {
     "chaId": 11,
     "chaPicture": "529501",
-    "chaName": "圣洛夫基金会"
+    "chaName": "圣洛夫基金会",
+    "chaCamp": 1
   },
   {
     "chaId": 12,
     "chaPicture": "527101",
-    "chaName": "重塑之手军队"
+    "chaName": "重塑之手军队",
+    "chaCamp": 0
   },
   {
     "chaId": 13,
     "chaPicture": "527001",
-    "chaName": "人类一方军队"
+    "chaName": "人类一方军队",
+    "chaCamp": 0
   },
   {
     "chaId": 14,
     "chaPicture": "",
-    "chaName": "罗里："
+    "chaName": "罗里：",
+    "chaCamp": 0
   },
   {
     "chaId": 15,
     "chaPicture": "",
-    "chaName": "法比安："
+    "chaName": "法比安：",
+    "chaCamp": 0
   },
   {
     "chaId": 16,
     "chaPicture": "",
-    "chaName": "基金会职员A："
+    "chaName": "基金会职员A：",
+    "chaCamp": 0
   },
   {
     "chaId": 17,
     "chaPicture": "",
-    "chaName": "基金会职员B："
+    "chaName": "基金会职员B：",
+    "chaCamp": 0
   },
   {
     "chaId": 18,
     "chaPicture": "",
-    "chaName": "托马："
+    "chaName": "托马：",
+    "chaCamp": 0
   },
   {
     "chaId": 19,
     "chaPicture": "",
-    "chaName": "纳埃尔："
+    "chaName": "纳埃尔：",
+    "chaCamp": 0
   },
   {
     "chaId": 20,
     "chaPicture": "",
-    "chaName": "儿子："
+    "chaName": "儿子：",
+    "chaCamp": 0
   },
   {
     "chaId": 21,
     "chaPicture": "",
-    "chaName": "母亲："
+    "chaName": "母亲：",
+    "chaCamp": 0
   },
   {
     "chaId": 22,
     "chaPicture": "",
-    "chaName": "年轻男性："
+    "chaName": "年轻男性：",
+    "chaCamp": 0
   },
   {
     "chaId": 23,
     "chaPicture": "",
-    "chaName": "老妇人："
+    "chaName": "老妇人：",
+    "chaCamp": 0
   },
   {
     "chaId": 24,
     "chaPicture": "",
-    "chaName": "中年女性："
+    "chaName": "中年女性：",
+    "chaCamp": 0
   },
   {
     "chaId": 25,
     "chaPicture": "",
-    "chaName": "邋遢的男性："
+    "chaName": "邋遢的男性：",
+    "chaCamp": 0
   },
   {
     "chaId": 26,
     "chaPicture": "",
-    "chaName": "无精打采的男性："
+    "chaName": "无精打采的男性：",
+    "chaCamp": 0
   },
   {
     "chaId": 27,
     "chaPicture": "",
-    "chaName": "基金会调查员："
+    "chaName": "基金会调查员：",
+    "chaCamp": 0
   },
   {
     "chaId": 28,
     "chaPicture": "",
-    "chaName": "老妇人："
+    "chaName": "老妇人：",
+    "chaCamp": 0
+  },
+  {
+    "chaId": 29,
+    "chaPicture": "302301",
+    "chaName": "十四行诗",
+    "chaCamp": 1
+  },
+  {
+    "chaId": 30,
+    "chaPicture": "309201",
+    "chaName": "伊戈尔",
+    "chaCamp": 2
+  },
+  {
+    "chaId": 31,
+    "chaPicture": "529601",
+    "chaName": "伊万",
+    "chaCamp": 4
+  },
+  {
+    "chaId": 32,
+    "chaPicture": "529801",
+    "chaName": "斯捷尔诺娃",
+    "chaCamp": 4
+  },
+  {
+    "chaId": 33,
+    "chaPicture": "529901",
+    "chaName": "谢尔盖",
+    "chaCamp": 4
+  },
+  {
+    "chaId": 34,
+    "chaPicture": "312101",
+    "chaName": "莫莉德尔",
+    "chaCamp": 2
+  },
+  {
+    "chaId": 35,
+    "chaPicture": "518001",
+    "chaName": "托勒密",
+    "chaCamp": 2
+  },
+  {
+    "chaId": 36,
+    "chaPicture": "530101",
+    "chaName": "仪式术士",
+    "chaCamp": 3
+  },
+  {
+    "chaId": 37,
+    "chaPicture": "527401",
+    "chaName": "伊里内伊",
+    "chaCamp": 1
+  },
+  {
+    "chaId": 38,
+    "chaPicture": "312701",
+    "chaName": "玛尔纱",
+    "chaCamp": 1
+  },
+  {
+    "chaId": 39,
+    "chaPicture": "501201",
+    "chaName": "Z",
+    "chaCamp": 1
+  },
+  {
+    "chaId": 40,
+    "chaPicture": "529701",
+    "chaName": "格鲁托夫",
+    "chaCamp": 3
+  },
+  {
+    "chaId": 41,
+    "chaPicture": "531701",
+    "chaName": "梅蕾尔",
+    "chaCamp": 5
+  },
+  {
+    "chaId": 42,
+    "chaPicture": "530201",
+    "chaName": "红弩箭",
+    "chaCamp": 1
+  },
+  {
+    "chaId": 43,
+    "chaPicture": "527902",
+    "chaName": "卡戎",
+    "chaCamp": 5
+  },
+  {
+    "chaId": 44,
+    "chaPicture": "527101",
+    "chaName": "格鲁托夫军",
+    "chaCamp": 0
+  },
+  {
+    "chaId": 45,
+    "chaPicture": "530620",
+    "chaName": "芝诺骑兵军",
+    "chaCamp": 0
+  },
+  {
+    "chaId": 46,
+    "chaPicture": "531420",
+    "chaName": "狮鹫军",
+    "chaCamp": 0
+  },
+  {
+    "chaId": 47,
+    "chaPicture": "",
+    "chaName": "村民A：",
+    "chaCamp": 0
+  },
+  {
+    "chaId": 48,
+    "chaPicture": "",
+    "chaName": "村民B:",
+    "chaCamp": 0
+  },
+  {
+    "chaId": 49,
+    "chaPicture": "",
+    "chaName": "马克：",
+    "chaCamp": 0
+  },
+  {
+    "chaId": 50,
+    "chaPicture": "",
+    "chaName": "叶戈尔：",
+    "chaCamp": 0
+  },
+  {
+    "chaId": 51,
+    "chaPicture": "",
+    "chaName": "无线电小姐：",
+    "chaCamp": 0
+  },
+  {
+    "chaId": 52,
+    "chaPicture": "",
+    "chaName": "冷周六：",
+    "chaCamp": 0
   }
 ]

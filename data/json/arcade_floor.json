@@ -1,0 +1,32 @@
+[
+  {
+    "id": 101,
+    "name": "熔岩带",
+    "desc": "周期性喷吐火焰的陷阱格子。\n当格子处于燃烧状态时，在其上行动的我方单位将受到伤害。",
+    "skill": 3309102,
+    "resPath": "v3a3_m_s12_dl1x1_001",
+    "category": "floor",
+    "icon": "v3a3_m_s12_dl1x1_001a",
+    "limitRound": 8
+  },
+  {
+    "id": 102,
+    "name": "冰域",
+    "desc": "被冰块覆盖的区域。\n进入该区域后无法转向，会沿直线滑行至尽头。\n随着关卡难度提升，冻结范围将逐步扩大。",
+    "skill": 3309101,
+    "resPath": "v3a3_m_s12_dl1x1_002",
+    "category": "floor",
+    "icon": "v3a3_m_s12_dl1x1_002",
+    "limitRound": -1
+  },
+  {
+    "id": 103,
+    "name": "毒沼",
+    "desc": "被毒雾污染的地块。\n在该地块上行动时，我方单位将受到伤害。",
+    "skill": 3309103,
+    "resPath": "v3a3_m_s12_dl1x1_003",
+    "category": "floor",
+    "icon": "v3a3_m_s12_dl1x1_003a",
+    "limitRound": 3
+  }
+]

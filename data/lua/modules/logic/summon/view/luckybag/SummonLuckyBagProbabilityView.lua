@@ -112,7 +112,7 @@ function SummonLuckyBagProbabilityView:_refreshSummonDesc(itemObj, desc)
 			replace = replace + rate
 		end
 
-		local show = string.format("%s%%%%", replace * 100 - replace * 100 % 0.1)
+		local show = string.format("%s%%%%", replace * 100 - replace * 100 % 0.01)
 
 		matchResult = string.format("%s%s%s", "%[rate=", param, "%]")
 		desc = string.gsub(desc, matchResult, show)

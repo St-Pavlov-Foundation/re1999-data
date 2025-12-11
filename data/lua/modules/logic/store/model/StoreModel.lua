@@ -1004,6 +1004,16 @@ function StoreModel:IsMonthCardDaysEnough()
 	return result
 end
 
+function StoreModel:isSkinDiscountNotSoldOut()
+	local storeGoodsMo = StoreModel.instance:getGoodsMO(StoreEnum.V3a3_SkinDiscountItemId)
+
+	if storeGoodsMo and storeGoodsMo:isSoldOut() then
+		return false
+	end
+
+	return true
+end
+
 function StoreModel:getCostStr(num)
 	return "¥", num
 end

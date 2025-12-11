@@ -1,0 +1,674 @@
+[
+  {
+    "id": 320000201,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "回复生命",
+    "condition": "",
+    "param": "320000201",
+    "descChange": ""
+  },
+  {
+    "id": 320700001,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "获得100像素金币",
+    "condition": "",
+    "param": "320700001",
+    "descChange": ""
+  },
+  {
+    "id": 320700002,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "获得“上天的恩赐”",
+    "condition": "",
+    "param": "320700002",
+    "descChange": ""
+  },
+  {
+    "id": 320700101,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "获得2个噪点炸弹",
+    "condition": "",
+    "param": "320700101",
+    "descChange": ""
+  },
+  {
+    "id": 320700102,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "获得5个噪点炸弹",
+    "condition": "checkAttrValue#201#500",
+    "param": "320700102",
+    "descChange": ""
+  },
+  {
+    "id": 320700201,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "复活次数-1",
+    "condition": "",
+    "param": "320700201",
+    "descChange": "“谢谢你……”"
+  },
+  {
+    "id": 320700301,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "获得“惊喜胶囊γ”",
+    "condition": "",
+    "param": "320700301",
+    "descChange": ""
+  },
+  {
+    "id": 320700302,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "获得“惊喜胶囊β”",
+    "condition": "",
+    "param": "320700302",
+    "descChange": ""
+  },
+  {
+    "id": 320700303,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "获得“惊喜胶囊α”",
+    "condition": "",
+    "param": "320700303",
+    "descChange": ""
+  },
+  {
+    "id": 320700401,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "换取金币",
+    "condition": "checkAttrValue#103#2",
+    "param": "320700401",
+    "descChange": ""
+  },
+  {
+    "id": 320700501,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "花费金币",
+    "condition": "checkAttrValue#201#1000",
+    "param": "320700501",
+    "descChange": ""
+  },
+  {
+    "id": 320700601,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "花费金币",
+    "condition": "checkAttrValue#201#1000",
+    "param": "320700601",
+    "descChange": ""
+  },
+  {
+    "id": 320700701,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "打开",
+    "condition": "checkHaveCollection#11002",
+    "param": "320700701",
+    "descChange": "这个宝箱已经被你掏空啦！"
+  },
+  {
+    "id": 320700702,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "派出被单幽灵打开",
+    "condition": "checkHaveCollection#15007",
+    "param": "320700702",
+    "descChange": "这个宝箱已经被你掏空啦！"
+  },
+  {
+    "id": 320700801,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "打开",
+    "condition": "",
+    "param": "320700801",
+    "descChange": "这个宝箱已经被你掏空啦！"
+  },
+  {
+    "id": 320700901,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "寻找秘宝",
+    "condition": "",
+    "param": "320700901",
+    "descChange": "你寻找到了一件不错的缪斯秘宝！"
+  },
+  {
+    "id": 320701001,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "寻找秘宝",
+    "condition": "",
+    "param": "320701001",
+    "descChange": "你寻找到了一件缪斯秘宝。"
+  },
+  {
+    "id": 320701101,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "寻找秘宝",
+    "condition": "",
+    "param": "320701101",
+    "descChange": "唔，什么也没找到……"
+  },
+  {
+    "id": 320701201,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "寻找秘宝",
+    "condition": "",
+    "param": "320701201",
+    "descChange": "你寻找到了非常多像素金币！"
+  },
+  {
+    "id": 320701301,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "寻找秘宝",
+    "condition": "",
+    "param": "320701301",
+    "descChange": "你寻找到了一些像素金币。"
+  },
+  {
+    "id": 320701401,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "寻找秘宝",
+    "condition": "",
+    "param": "320701401",
+    "descChange": "唔，你寻找到了一些像素金币……"
+  },
+  {
+    "id": 320702001,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "换取秘宝",
+    "condition": "checkAttrValue#104#6",
+    "param": "320702001",
+    "descChange": ""
+  },
+  {
+    "id": 320702102,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "换取秘宝",
+    "condition": "checkAttrValue#104#6",
+    "param": "320702102",
+    "descChange": ""
+  },
+  {
+    "id": 101,
+    "type": "transmitRoom",
+    "optionDesc": "",
+    "condition": "",
+    "param": "1",
+    "descChange": ""
+  },
+  {
+    "id": 102,
+    "type": "enterNextArea",
+    "optionDesc": "",
+    "condition": "",
+    "param": "",
+    "descChange": ""
+  },
+  {
+    "id": 103,
+    "type": "buy",
+    "optionDesc": "",
+    "condition": "",
+    "param": "201#100|202#1",
+    "descChange": "购买成功"
+  },
+  {
+    "id": 32004001,
+    "type": "enterNextArea",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "",
+    "descChange": ""
+  },
+  {
+    "id": 32111002,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32111002",
+    "descChange": ""
+  },
+  {
+    "id": 32112002,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32112002",
+    "descChange": ""
+  },
+  {
+    "id": 32114001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32114001",
+    "descChange": ""
+  },
+  {
+    "id": 32115001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32115001",
+    "descChange": ""
+  },
+  {
+    "id": 32006001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32006001",
+    "descChange": ""
+  },
+  {
+    "id": 32111001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32111001",
+    "descChange": ""
+  },
+  {
+    "id": 32112001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32112001",
+    "descChange": ""
+  },
+  {
+    "id": 32113001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32113001",
+    "descChange": ""
+  },
+  {
+    "id": 32121001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32121001",
+    "descChange": ""
+  },
+  {
+    "id": 32122001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32122001",
+    "descChange": ""
+  },
+  {
+    "id": 32123001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32123001",
+    "descChange": ""
+  },
+  {
+    "id": 32211001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32211001",
+    "descChange": ""
+  },
+  {
+    "id": 32212001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32212001",
+    "descChange": ""
+  },
+  {
+    "id": 32213001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32213001",
+    "descChange": ""
+  },
+  {
+    "id": 32221001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32221001",
+    "descChange": ""
+  },
+  {
+    "id": 32222001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32222001",
+    "descChange": ""
+  },
+  {
+    "id": 32223001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32223001",
+    "descChange": ""
+  },
+  {
+    "id": 32231001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32231001",
+    "descChange": ""
+  },
+  {
+    "id": 32232001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32232001",
+    "descChange": ""
+  },
+  {
+    "id": 32233001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32233001",
+    "descChange": ""
+  },
+  {
+    "id": 32311001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32311001",
+    "descChange": ""
+  },
+  {
+    "id": 32312001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32312001",
+    "descChange": ""
+  },
+  {
+    "id": 32313001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32313001",
+    "descChange": ""
+  },
+  {
+    "id": 32321001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32321001",
+    "descChange": ""
+  },
+  {
+    "id": 32322001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32322001",
+    "descChange": ""
+  },
+  {
+    "id": 32323001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32323001",
+    "descChange": ""
+  },
+  {
+    "id": 32331001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32331001",
+    "descChange": ""
+  },
+  {
+    "id": 32332001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32332001",
+    "descChange": ""
+  },
+  {
+    "id": 32333001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32333001",
+    "descChange": ""
+  },
+  {
+    "id": 32341001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32341001",
+    "descChange": ""
+  },
+  {
+    "id": 32342001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32342001",
+    "descChange": ""
+  },
+  {
+    "id": 32343001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32343001",
+    "descChange": ""
+  },
+  {
+    "id": 320701,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "320701",
+    "descChange": ""
+  },
+  {
+    "id": 320702,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "320702",
+    "descChange": ""
+  },
+  {
+    "id": 320703,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "320703",
+    "descChange": ""
+  },
+  {
+    "id": 320704,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "320704",
+    "descChange": ""
+  },
+  {
+    "id": 320705,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "320705",
+    "descChange": ""
+  },
+  {
+    "id": 320706,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "320706",
+    "descChange": ""
+  },
+  {
+    "id": 320707,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "320707",
+    "descChange": ""
+  },
+  {
+    "id": 320708,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "320708",
+    "descChange": ""
+  },
+  {
+    "id": 320709,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "320709",
+    "descChange": ""
+  },
+  {
+    "id": 320710,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "320710",
+    "descChange": ""
+  },
+  {
+    "id": 320711,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "320711",
+    "descChange": ""
+  },
+  {
+    "id": 320712,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "320712",
+    "descChange": ""
+  },
+  {
+    "id": 320713,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "320713",
+    "descChange": ""
+  },
+  {
+    "id": 320714,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "320714",
+    "descChange": ""
+  },
+  {
+    "id": 320715,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "320715",
+    "descChange": ""
+  },
+  {
+    "id": 320716,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "320716",
+    "descChange": ""
+  },
+  {
+    "id": 200002,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "200002",
+    "descChange": ""
+  },
+  {
+    "id": 200003,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "200003",
+    "descChange": ""
+  },
+  {
+    "id": 200004,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "200004",
+    "descChange": ""
+  },
+  {
+    "id": 200005,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "200005",
+    "descChange": ""
+  },
+  {
+    "id": 200006,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "200006",
+    "descChange": ""
+  },
+  {
+    "id": 32007001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32007001",
+    "descChange": ""
+  },
+  {
+    "id": 1001,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "回血",
+    "condition": "",
+    "param": "",
+    "descChange": "回血对应的描述，回血好啊"
+  },
+  {
+    "id": 1002,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "获得奖励",
+    "condition": "",
+    "param": "",
+    "descChange": "获得奖励对应的描述，还是奖励好啊"
+  },
+  {
+    "id": 2001,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "",
+    "condition": "",
+    "param": "",
+    "descChange": ""
+  }
+]

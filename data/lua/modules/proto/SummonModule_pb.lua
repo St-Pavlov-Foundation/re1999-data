@@ -8,6 +8,9 @@ module("modules.proto.SummonModule_pb", package.seeall)
 local SummonModule_pb = {}
 
 SummonModule_pb.MATERIALMODULE_PB = require("modules.proto.MaterialModule_pb")
+SummonModule_pb.SINGLEBAGINFO_MSG = protobuf.Descriptor()
+SummonModule_pb.SINGLEBAGINFOBAGIDFIELD = protobuf.FieldDescriptor()
+SummonModule_pb.SINGLEBAGINFOISOPENFIELD = protobuf.FieldDescriptor()
 SummonModule_pb.GETSUMMONPROGRESSREWARDSREPLY_MSG = protobuf.Descriptor()
 SummonModule_pb.GETSUMMONPROGRESSREWARDSREPLYPOOLIDFIELD = protobuf.FieldDescriptor()
 SummonModule_pb.GETSUMMONPROGRESSREWARDSREPLYHASGETREWARDPROGRESSESFIELD = protobuf.FieldDescriptor()
@@ -26,8 +29,8 @@ SummonModule_pb.OPENLUCKYBAGREPLY_MSG = protobuf.Descriptor()
 SummonModule_pb.OPENLUCKYBAGREPLYLUCKYBAGRESULTSFIELD = protobuf.FieldDescriptor()
 SummonModule_pb.LUCKYBAGINFO_MSG = protobuf.Descriptor()
 SummonModule_pb.LUCKYBAGINFOCOUNTFIELD = protobuf.FieldDescriptor()
-SummonModule_pb.LUCKYBAGINFOLUCKYBAGIDFIELD = protobuf.FieldDescriptor()
-SummonModule_pb.LUCKYBAGINFOOPENLBTIMESFIELD = protobuf.FieldDescriptor()
+SummonModule_pb.LUCKYBAGINFOSINGLEBAGINFOSFIELD = protobuf.FieldDescriptor()
+SummonModule_pb.LUCKYBAGINFONOTSSRCOUNTFIELD = protobuf.FieldDescriptor()
 SummonModule_pb.GETSUMMONINFOREPLY_MSG = protobuf.Descriptor()
 SummonModule_pb.GETSUMMONINFOREPLYFREEEQUIPSUMMONFIELD = protobuf.FieldDescriptor()
 SummonModule_pb.GETSUMMONINFOREPLYISSHOWNEWSUMMONFIELD = protobuf.FieldDescriptor()
@@ -45,6 +48,9 @@ SummonModule_pb.SUMMONPOOLINFODISCOUNTTIMEFIELD = protobuf.FieldDescriptor()
 SummonModule_pb.SUMMONPOOLINFOCANGETGUARANTEESRCOUNTFIELD = protobuf.FieldDescriptor()
 SummonModule_pb.SUMMONPOOLINFOGUARANTEESRCOUNTDOWNFIELD = protobuf.FieldDescriptor()
 SummonModule_pb.SUMMONPOOLINFOSUMMONCOUNTFIELD = protobuf.FieldDescriptor()
+SummonModule_pb.SUMMONPOOLINFOHAVEFREE10COUNTFIELD = protobuf.FieldDescriptor()
+SummonModule_pb.SUMMONPOOLINFONOTSSRCOUNTFIELD = protobuf.FieldDescriptor()
+SummonModule_pb.SUMMONPOOLINFOTOTALFREE10USECOUNTFIELD = protobuf.FieldDescriptor()
 SummonModule_pb.SUMMONRESULT_MSG = protobuf.Descriptor()
 SummonModule_pb.SUMMONRESULTHEROIDFIELD = protobuf.FieldDescriptor()
 SummonModule_pb.SUMMONRESULTISNEWFIELD = protobuf.FieldDescriptor()
@@ -83,6 +89,34 @@ SummonModule_pb.SUMMONREPLYSUMMONRESULTFIELD = protobuf.FieldDescriptor()
 SummonModule_pb.OPENLUCKYBAGREQUEST_MSG = protobuf.Descriptor()
 SummonModule_pb.OPENLUCKYBAGREQUESTLUCKYBAGIDFIELD = protobuf.FieldDescriptor()
 SummonModule_pb.OPENLUCKYBAGREQUESTHEROIDFIELD = protobuf.FieldDescriptor()
+SummonModule_pb.SINGLEBAGINFOBAGIDFIELD.name = "bagId"
+SummonModule_pb.SINGLEBAGINFOBAGIDFIELD.full_name = ".SingleBagInfo.bagId"
+SummonModule_pb.SINGLEBAGINFOBAGIDFIELD.number = 1
+SummonModule_pb.SINGLEBAGINFOBAGIDFIELD.index = 0
+SummonModule_pb.SINGLEBAGINFOBAGIDFIELD.label = 1
+SummonModule_pb.SINGLEBAGINFOBAGIDFIELD.has_default_value = false
+SummonModule_pb.SINGLEBAGINFOBAGIDFIELD.default_value = 0
+SummonModule_pb.SINGLEBAGINFOBAGIDFIELD.type = 5
+SummonModule_pb.SINGLEBAGINFOBAGIDFIELD.cpp_type = 1
+SummonModule_pb.SINGLEBAGINFOISOPENFIELD.name = "isOpen"
+SummonModule_pb.SINGLEBAGINFOISOPENFIELD.full_name = ".SingleBagInfo.isOpen"
+SummonModule_pb.SINGLEBAGINFOISOPENFIELD.number = 2
+SummonModule_pb.SINGLEBAGINFOISOPENFIELD.index = 1
+SummonModule_pb.SINGLEBAGINFOISOPENFIELD.label = 1
+SummonModule_pb.SINGLEBAGINFOISOPENFIELD.has_default_value = false
+SummonModule_pb.SINGLEBAGINFOISOPENFIELD.default_value = false
+SummonModule_pb.SINGLEBAGINFOISOPENFIELD.type = 8
+SummonModule_pb.SINGLEBAGINFOISOPENFIELD.cpp_type = 7
+SummonModule_pb.SINGLEBAGINFO_MSG.name = "SingleBagInfo"
+SummonModule_pb.SINGLEBAGINFO_MSG.full_name = ".SingleBagInfo"
+SummonModule_pb.SINGLEBAGINFO_MSG.nested_types = {}
+SummonModule_pb.SINGLEBAGINFO_MSG.enum_types = {}
+SummonModule_pb.SINGLEBAGINFO_MSG.fields = {
+	SummonModule_pb.SINGLEBAGINFOBAGIDFIELD,
+	SummonModule_pb.SINGLEBAGINFOISOPENFIELD
+}
+SummonModule_pb.SINGLEBAGINFO_MSG.is_extendable = false
+SummonModule_pb.SINGLEBAGINFO_MSG.extensions = {}
 SummonModule_pb.GETSUMMONPROGRESSREWARDSREPLYPOOLIDFIELD.name = "poolId"
 SummonModule_pb.GETSUMMONPROGRESSREWARDSREPLYPOOLIDFIELD.full_name = ".GetSummonProgressRewardsReply.poolId"
 SummonModule_pb.GETSUMMONPROGRESSREWARDSREPLYPOOLIDFIELD.number = 1
@@ -240,32 +274,33 @@ SummonModule_pb.LUCKYBAGINFOCOUNTFIELD.has_default_value = false
 SummonModule_pb.LUCKYBAGINFOCOUNTFIELD.default_value = 0
 SummonModule_pb.LUCKYBAGINFOCOUNTFIELD.type = 5
 SummonModule_pb.LUCKYBAGINFOCOUNTFIELD.cpp_type = 1
-SummonModule_pb.LUCKYBAGINFOLUCKYBAGIDFIELD.name = "luckyBagId"
-SummonModule_pb.LUCKYBAGINFOLUCKYBAGIDFIELD.full_name = ".LuckyBagInfo.luckyBagId"
-SummonModule_pb.LUCKYBAGINFOLUCKYBAGIDFIELD.number = 2
-SummonModule_pb.LUCKYBAGINFOLUCKYBAGIDFIELD.index = 1
-SummonModule_pb.LUCKYBAGINFOLUCKYBAGIDFIELD.label = 1
-SummonModule_pb.LUCKYBAGINFOLUCKYBAGIDFIELD.has_default_value = false
-SummonModule_pb.LUCKYBAGINFOLUCKYBAGIDFIELD.default_value = 0
-SummonModule_pb.LUCKYBAGINFOLUCKYBAGIDFIELD.type = 5
-SummonModule_pb.LUCKYBAGINFOLUCKYBAGIDFIELD.cpp_type = 1
-SummonModule_pb.LUCKYBAGINFOOPENLBTIMESFIELD.name = "openLBTimes"
-SummonModule_pb.LUCKYBAGINFOOPENLBTIMESFIELD.full_name = ".LuckyBagInfo.openLBTimes"
-SummonModule_pb.LUCKYBAGINFOOPENLBTIMESFIELD.number = 3
-SummonModule_pb.LUCKYBAGINFOOPENLBTIMESFIELD.index = 2
-SummonModule_pb.LUCKYBAGINFOOPENLBTIMESFIELD.label = 1
-SummonModule_pb.LUCKYBAGINFOOPENLBTIMESFIELD.has_default_value = false
-SummonModule_pb.LUCKYBAGINFOOPENLBTIMESFIELD.default_value = 0
-SummonModule_pb.LUCKYBAGINFOOPENLBTIMESFIELD.type = 5
-SummonModule_pb.LUCKYBAGINFOOPENLBTIMESFIELD.cpp_type = 1
+SummonModule_pb.LUCKYBAGINFOSINGLEBAGINFOSFIELD.name = "singleBagInfos"
+SummonModule_pb.LUCKYBAGINFOSINGLEBAGINFOSFIELD.full_name = ".LuckyBagInfo.singleBagInfos"
+SummonModule_pb.LUCKYBAGINFOSINGLEBAGINFOSFIELD.number = 2
+SummonModule_pb.LUCKYBAGINFOSINGLEBAGINFOSFIELD.index = 1
+SummonModule_pb.LUCKYBAGINFOSINGLEBAGINFOSFIELD.label = 3
+SummonModule_pb.LUCKYBAGINFOSINGLEBAGINFOSFIELD.has_default_value = false
+SummonModule_pb.LUCKYBAGINFOSINGLEBAGINFOSFIELD.default_value = {}
+SummonModule_pb.LUCKYBAGINFOSINGLEBAGINFOSFIELD.message_type = SummonModule_pb.SINGLEBAGINFO_MSG
+SummonModule_pb.LUCKYBAGINFOSINGLEBAGINFOSFIELD.type = 11
+SummonModule_pb.LUCKYBAGINFOSINGLEBAGINFOSFIELD.cpp_type = 10
+SummonModule_pb.LUCKYBAGINFONOTSSRCOUNTFIELD.name = "notSSRCount"
+SummonModule_pb.LUCKYBAGINFONOTSSRCOUNTFIELD.full_name = ".LuckyBagInfo.notSSRCount"
+SummonModule_pb.LUCKYBAGINFONOTSSRCOUNTFIELD.number = 3
+SummonModule_pb.LUCKYBAGINFONOTSSRCOUNTFIELD.index = 2
+SummonModule_pb.LUCKYBAGINFONOTSSRCOUNTFIELD.label = 1
+SummonModule_pb.LUCKYBAGINFONOTSSRCOUNTFIELD.has_default_value = false
+SummonModule_pb.LUCKYBAGINFONOTSSRCOUNTFIELD.default_value = 0
+SummonModule_pb.LUCKYBAGINFONOTSSRCOUNTFIELD.type = 5
+SummonModule_pb.LUCKYBAGINFONOTSSRCOUNTFIELD.cpp_type = 1
 SummonModule_pb.LUCKYBAGINFO_MSG.name = "LuckyBagInfo"
 SummonModule_pb.LUCKYBAGINFO_MSG.full_name = ".LuckyBagInfo"
 SummonModule_pb.LUCKYBAGINFO_MSG.nested_types = {}
 SummonModule_pb.LUCKYBAGINFO_MSG.enum_types = {}
 SummonModule_pb.LUCKYBAGINFO_MSG.fields = {
 	SummonModule_pb.LUCKYBAGINFOCOUNTFIELD,
-	SummonModule_pb.LUCKYBAGINFOLUCKYBAGIDFIELD,
-	SummonModule_pb.LUCKYBAGINFOOPENLBTIMESFIELD
+	SummonModule_pb.LUCKYBAGINFOSINGLEBAGINFOSFIELD,
+	SummonModule_pb.LUCKYBAGINFONOTSSRCOUNTFIELD
 }
 SummonModule_pb.LUCKYBAGINFO_MSG.is_extendable = false
 SummonModule_pb.LUCKYBAGINFO_MSG.extensions = {}
@@ -419,6 +454,33 @@ SummonModule_pb.SUMMONPOOLINFOSUMMONCOUNTFIELD.has_default_value = false
 SummonModule_pb.SUMMONPOOLINFOSUMMONCOUNTFIELD.default_value = 0
 SummonModule_pb.SUMMONPOOLINFOSUMMONCOUNTFIELD.type = 5
 SummonModule_pb.SUMMONPOOLINFOSUMMONCOUNTFIELD.cpp_type = 1
+SummonModule_pb.SUMMONPOOLINFOHAVEFREE10COUNTFIELD.name = "haveFree10Count"
+SummonModule_pb.SUMMONPOOLINFOHAVEFREE10COUNTFIELD.full_name = ".SummonPoolInfo.haveFree10Count"
+SummonModule_pb.SUMMONPOOLINFOHAVEFREE10COUNTFIELD.number = 12
+SummonModule_pb.SUMMONPOOLINFOHAVEFREE10COUNTFIELD.index = 11
+SummonModule_pb.SUMMONPOOLINFOHAVEFREE10COUNTFIELD.label = 1
+SummonModule_pb.SUMMONPOOLINFOHAVEFREE10COUNTFIELD.has_default_value = false
+SummonModule_pb.SUMMONPOOLINFOHAVEFREE10COUNTFIELD.default_value = 0
+SummonModule_pb.SUMMONPOOLINFOHAVEFREE10COUNTFIELD.type = 5
+SummonModule_pb.SUMMONPOOLINFOHAVEFREE10COUNTFIELD.cpp_type = 1
+SummonModule_pb.SUMMONPOOLINFONOTSSRCOUNTFIELD.name = "notSSRCount"
+SummonModule_pb.SUMMONPOOLINFONOTSSRCOUNTFIELD.full_name = ".SummonPoolInfo.notSSRCount"
+SummonModule_pb.SUMMONPOOLINFONOTSSRCOUNTFIELD.number = 13
+SummonModule_pb.SUMMONPOOLINFONOTSSRCOUNTFIELD.index = 12
+SummonModule_pb.SUMMONPOOLINFONOTSSRCOUNTFIELD.label = 1
+SummonModule_pb.SUMMONPOOLINFONOTSSRCOUNTFIELD.has_default_value = false
+SummonModule_pb.SUMMONPOOLINFONOTSSRCOUNTFIELD.default_value = 0
+SummonModule_pb.SUMMONPOOLINFONOTSSRCOUNTFIELD.type = 5
+SummonModule_pb.SUMMONPOOLINFONOTSSRCOUNTFIELD.cpp_type = 1
+SummonModule_pb.SUMMONPOOLINFOTOTALFREE10USECOUNTFIELD.name = "totalFree10UseCount"
+SummonModule_pb.SUMMONPOOLINFOTOTALFREE10USECOUNTFIELD.full_name = ".SummonPoolInfo.totalFree10UseCount"
+SummonModule_pb.SUMMONPOOLINFOTOTALFREE10USECOUNTFIELD.number = 14
+SummonModule_pb.SUMMONPOOLINFOTOTALFREE10USECOUNTFIELD.index = 13
+SummonModule_pb.SUMMONPOOLINFOTOTALFREE10USECOUNTFIELD.label = 1
+SummonModule_pb.SUMMONPOOLINFOTOTALFREE10USECOUNTFIELD.has_default_value = false
+SummonModule_pb.SUMMONPOOLINFOTOTALFREE10USECOUNTFIELD.default_value = 0
+SummonModule_pb.SUMMONPOOLINFOTOTALFREE10USECOUNTFIELD.type = 5
+SummonModule_pb.SUMMONPOOLINFOTOTALFREE10USECOUNTFIELD.cpp_type = 1
 SummonModule_pb.SUMMONPOOLINFO_MSG.name = "SummonPoolInfo"
 SummonModule_pb.SUMMONPOOLINFO_MSG.full_name = ".SummonPoolInfo"
 SummonModule_pb.SUMMONPOOLINFO_MSG.nested_types = {}
@@ -434,7 +496,10 @@ SummonModule_pb.SUMMONPOOLINFO_MSG.fields = {
 	SummonModule_pb.SUMMONPOOLINFODISCOUNTTIMEFIELD,
 	SummonModule_pb.SUMMONPOOLINFOCANGETGUARANTEESRCOUNTFIELD,
 	SummonModule_pb.SUMMONPOOLINFOGUARANTEESRCOUNTDOWNFIELD,
-	SummonModule_pb.SUMMONPOOLINFOSUMMONCOUNTFIELD
+	SummonModule_pb.SUMMONPOOLINFOSUMMONCOUNTFIELD,
+	SummonModule_pb.SUMMONPOOLINFOHAVEFREE10COUNTFIELD,
+	SummonModule_pb.SUMMONPOOLINFONOTSSRCOUNTFIELD,
+	SummonModule_pb.SUMMONPOOLINFOTOTALFREE10USECOUNTFIELD
 }
 SummonModule_pb.SUMMONPOOLINFO_MSG.is_extendable = false
 SummonModule_pb.SUMMONPOOLINFO_MSG.extensions = {}
@@ -812,6 +877,7 @@ SummonModule_pb.LuckyBagInfo = protobuf.Message(SummonModule_pb.LUCKYBAGINFO_MSG
 SummonModule_pb.LuckyBagResult = protobuf.Message(SummonModule_pb.LUCKYBAGRESULT_MSG)
 SummonModule_pb.OpenLuckyBagReply = protobuf.Message(SummonModule_pb.OPENLUCKYBAGREPLY_MSG)
 SummonModule_pb.OpenLuckyBagRequest = protobuf.Message(SummonModule_pb.OPENLUCKYBAGREQUEST_MSG)
+SummonModule_pb.SingleBagInfo = protobuf.Message(SummonModule_pb.SINGLEBAGINFO_MSG)
 SummonModule_pb.SpPoolInfo = protobuf.Message(SummonModule_pb.SPPOOLINFO_MSG)
 SummonModule_pb.SummonPoolInfo = protobuf.Message(SummonModule_pb.SUMMONPOOLINFO_MSG)
 SummonModule_pb.SummonQueryTokenReply = protobuf.Message(SummonModule_pb.SUMMONQUERYTOKENREPLY_MSG)

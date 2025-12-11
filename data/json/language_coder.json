@@ -7846,5 +7846,133 @@
   {
     "id": "rouge2_attributeupview_maxpassiveskill",
     "lang": "已获得所有关键属性升级"
+  },
+  {
+    "id": "towercomposetheme_progress",
+    "lang": "哲思启发：▩1%s/▩2%s"
+  },
+  {
+    "id": "v3a3_marsha_gameview_remaintime",
+    "lang": "剩余时间▩1%s秒"
+  },
+  {
+    "id": "arcade_hankbook_detail_character",
+    "lang": "投币手详情"
+  },
+  {
+    "id": "arcade_hankbook_detail_monster",
+    "lang": "像素生物详情"
+  },
+  {
+    "id": "arcade_hankbook_detail_item",
+    "lang": "缪斯秘宝详情"
+  },
+  {
+    "id": "arcade_hankbook_detail_floor",
+    "lang": "色块详情"
+  },
+  {
+    "id": "towercompose_pointlevel",
+    "lang": "挑战投射值：▩1%s~▩2%s"
+  },
+  {
+    "id": "dungeonreward_limittime_drop",
+    "lang": "限时掉落（剩余▩1%s)"
+  },
+  {
+    "id": "summonluckybag_remain_count",
+    "lang": "距离抽出下个金纺团：<color=#FF8D30>▩1%s</color>抽"
+  },
+  {
+    "id": "towercompose_notHave",
+    "lang": "▩1%s（未拥有）"
+  },
+  {
+    "id": "v3a3_skindiscount_buy_tip",
+    "lang": "已购买"
+  },
+  {
+    "id": "v3a3_skindiscount_price",
+    "lang": "<size=40>￥</size>▩1%s"
+  },
+  {
+    "id": "v3a3_skindiscount_compensate",
+    "lang": "可在以下衣着中选择一个领取，领取重复衣着可转化为<sprite=0>▩1%s"
+  },
+  {
+    "id": "tower_fight_switch_tow_plane",
+    "lang": "进入里象挑战"
+  },
+  {
+    "id": "towercompose_inTeams",
+    "lang": "▩1%s（已上阵）"
+  },
+  {
+    "id": "towercompose_activeEffect",
+    "lang": "主动技能：<#f67f46>▩1%s</color>点能量时可使用"
+  },
+  {
+    "id": "towercompose_passiveEffect",
+    "lang": "被动效果"
+  },
+  {
+    "id": "havefree10Count",
+    "lang": "送十连"
+  },
+  {
+    "id": "fight_dream_title_3_3",
+    "lang": "臆想织接"
+  },
+  {
+    "id": "fight_dream_desc_3_3",
+    "lang": "点数积累满后，根据显梦和隐梦点数的多少产生对应的梦境\n显梦：己方行动点+1，但角色主动使用1次咒语后将会获得6层【脱力】，持续3回合(不可驱散），脱力积累到一定层数后，会进入【访梦】状态\n隐梦：己方行动点-1"
+  },
+  {
+    "id": "commandstation_moredetail",
+    "lang": "<i>线索待记录</i>"
+  },
+  {
+    "id": "towercompose_episode_unlock",
+    "lang": "最高投射值达到▩1%s解锁"
+  },
+  {
+    "id": "marshagameview_cd",
+    "lang": "冷却时间：▩1%ss"
+  },
+  {
+    "id": "towercompose_plane1",
+    "lang": "表象"
+  },
+  {
+    "id": "towercompose_plane2",
+    "lang": "里象"
+  },
+  {
+    "id": "towercompose_heroTag1",
+    "lang": "[输出]"
+  },
+  {
+    "id": "towercompose_heroTag2",
+    "lang": "[辅助]"
+  },
+  {
+    "id": "towercompose_heroTag3",
+    "lang": "[控制]"
+  },
+  {
+    "id": "towercompose_activeEffectDesc",
+    "lang": "▩1%s▩2%s"
+  },
+  {
+    "id": "towercompose_inSupport",
+    "lang": "支援中"
+  },
+  {
+    "id": "handbookskin_festival_unknow",
+    "lang": "尚未揭晓"
+  },
+  {
+    "id": "handbookskin_festival_Christmas",
+    "lang": "圣诞节"
   }
 ]

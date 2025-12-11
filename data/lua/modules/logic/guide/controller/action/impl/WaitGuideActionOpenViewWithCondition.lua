@@ -257,7 +257,7 @@ function WaitGuideActionOpenViewWithCondition.checkInEliminateEpisode(id)
 end
 
 function WaitGuideActionOpenViewWithCondition.checkInWindows(id)
-	return BootNativeUtil.isWindows()
+	return BootNativeUtil.isWindows() or BootNativeUtil.isMuMu()
 end
 
 function WaitGuideActionOpenViewWithCondition.enterWuErLiXiMap(id)

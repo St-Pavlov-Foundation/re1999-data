@@ -23,7 +23,15 @@ end
 function GMController:onInitFinish()
 	if isDebugBuild then
 		TaskDispatcher.runDelay(self._delayInit, self, 2)
+
+		if SLFramework.FileHelper.IsFileExists(SLFramework.FrameworkSettings.PersistentResRootDir .. "/ResourceCollector.txt") then
+			TaskDispatcher.runRepeat(self.exportCollectInfo, self, 10)
+		end
 	end
+end
+
+function GMController:exportCollectInfo()
+	SLFramework.ResourceCollector.ExportCollectInfo("")
 end
 
 function GMController:_delayInit()
@@ -335,9 +343,9 @@ function GMController:playFightSceneSpineAnimation(animationName)
 	local attacker
 
 	if SkillEditorMgr.instance.cur_select_entity_id then
-		attacker = fightScene.entityMgr:getEntity(SkillEditorMgr.instance.cur_select_entity_id)
+		attacker = FightGameMgr.entityMgr:getEntity(SkillEditorMgr.instance.cur_select_entity_id)
 	else
-		attacker = fightScene.entityMgr:getEntityByPosId(SceneTag.UnitPlayer, SkillEditorView.selectPosId[FightEnum.EntitySide.MySide])
+		attacker = FightGameMgr.entityMgr:getEntityByPosId(SceneTag.UnitPlayer, SkillEditorView.selectPosId[FightEnum.EntitySide.MySide])
 	end
 
 	if not attacker then
@@ -745,11 +753,7 @@ function GMController:createASFDEmitter(side)
 	local list = FightDataHelper.entityMgr:getOriginASFDEmitterList(entityMo.side)
 
 	table.insert(list, entityMo)
-
-	local curScene = GameSceneMgr.instance:getCurScene()
-	local sceneMgr = curScene and curScene.entityMgr
-
-	sceneMgr:addASFDUnit()
+	FightGameMgr.entityMgr:addASFDUnit()
 
 	return entityMo
 end

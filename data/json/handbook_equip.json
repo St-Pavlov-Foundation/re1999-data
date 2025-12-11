@@ -742,5 +742,17 @@
     "order": 0,
     "equipId": 1444,
     "desc": "玛蒂尔达"
+  },
+  {
+    "id": 5063,
+    "order": 0,
+    "equipId": 1561,
+    "desc": "玛尔纱"
+  },
+  {
+    "id": 4045,
+    "order": 0,
+    "equipId": 1445,
+    "desc": "莫莉德尔"
   }
 ]

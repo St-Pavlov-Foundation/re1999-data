@@ -156,6 +156,20 @@ function SummonMainModel.validContinueTenPool(poolId)
 
 				if SummonMainModel.getADPageTabIndex(co) == SummonEnum.TabContentIndex.CharNewbie and not SummonMainModel.instance:getNewbiePoolExist() then
 					isValid = false
+
+					break
+				end
+
+				if SummonConfig.poolIsLuckyBag(poolId) then
+					local summonServerMO = SummonMainModel.instance:getPoolServerMO(poolId)
+
+					if summonServerMO and summonServerMO.luckyBagMO then
+						local gachaMaxTimes = SummonLuckyBagModel.instance:getGachaRemainTimes(poolId)
+
+						if not gachaMaxTimes or gachaMaxTimes < 10 then
+							isValid = false
+						end
+					end
 				end
 			end
 
@@ -529,6 +543,20 @@ function SummonMainModel:entryHasFree()
 	return false
 end
 
+function SummonMainModel:entryHasFree10Count()
+	local result = SummonMainModel.getValidPools()
+
+	for i, co in ipairs(result) do
+		local summonMO = self:getPoolServerMO(co.id)
+
+		if summonMO and summonMO.havefree10Count > 0 then
+			return true
+		end
+	end
+
+	return false
+end
+
 function SummonMainModel:getCustomPickProbability(poolId)
 	local co = SummonConfig.instance:getSummonPool(poolId)
 
@@ -618,6 +646,37 @@ function SummonMainModel:getDiscountCost10(poolId, index)
 	end
 
 	return -1
+end
+
+function SummonMainModel:checkHaveFree10Count(poolId)
+	local serverPool = self:getPoolServerMO(poolId)
+
+	if serverPool then
+		return serverPool.havefree10Count > 0
+	end
+
+	return false
+end
+
+function SummonMainModel:getNotSSRCount(poolId)
+	local serverPool = self:getPoolServerMO(poolId)
+
+	if serverPool then
+		return serverPool.notSSRcount
+	end
+
+	return 0
+end
+
+function SummonMainModel:checkFree10CountOver(poolId)
+	local serverPool = self:getPoolServerMO(poolId)
+	local co = SummonConfig.instance:getSummonPool(poolId)
+
+	if serverPool then
+		return serverPool.totalFree10UseCount >= co.free10MaxUseCount
+	end
+
+	return false
 end
 
 function SummonMainModel.getCostByConfig(costs, isGetFirstCost)

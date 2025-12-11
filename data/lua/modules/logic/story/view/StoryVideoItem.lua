@@ -8,7 +8,6 @@ function StoryVideoItem:init(go, name, co, startCallBack, startCallBackObj, play
 	self.viewGO = go
 	self._videoName = name
 	self._videoCo = co
-	self._videoGo = nil
 	self._loop = co.loop
 	self._startCallBack = startCallBack
 	self._startCallBackObj = startCallBackObj
@@ -100,7 +99,6 @@ function StoryVideoItem:onDestroy()
 	TaskDispatcher.cancelTask(self._playVideo, self)
 	StoryModel.instance:setSpecialVideoEnd(self._videoName)
 	self._playList:stop(self._videoName)
-	gohelper.destroy(self._videoGo)
 end
 
 return StoryVideoItem

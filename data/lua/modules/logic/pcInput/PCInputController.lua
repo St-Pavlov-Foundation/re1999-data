@@ -22,8 +22,18 @@ function PCInputController:onInit()
 	logNormal("PCInputController:onInit()" .. tostring(self.init))
 end
 
+function PCInputController:PauseListen()
+	self._pauseListen = true
+end
+
+function PCInputController:resumeListen()
+	self._pauseListen = false
+end
+
 function PCInputController:getIsUse()
-	if ZProj.PCInputManager and ZProj.PCInputManager.Instance:isWindows() then
+	local ismumu = BootNativeUtil.isMuMu and BootNativeUtil.isMuMu()
+
+	if ZProj.PCInputManager and (BootNativeUtil.isWindows() or ismumu) then
 		if UnityEngine.Application.isEditor then
 			return UnityEngine.PlayerPrefs.GetInt("PCInputSwitch", 0) == 1
 		else
@@ -31,6 +41,12 @@ function PCInputController:getIsUse()
 		end
 	end
 
+	return false
+end
+
+BootNativeUtil.getAppVersion()
+
+function BootNativeUtil.isMuMu()
 	return false
 end
 
@@ -81,7 +97,7 @@ function PCInputController:onOpenViewCallBack(viewName)
 			if self.Adapters[PCInputModel.Activity.storyDialog] == nil then
 				self.Adapters[PCInputModel.Activity.storyDialog] = StoryDialogAdapter.New()
 			end
-		elseif (viewName == ViewName.MessageBoxView or viewName == ViewName.TopMessageBoxView or viewName == ViewName.SDKExitGameView or viewName == ViewName.FightQuitTipView) and self.Adapters[PCInputModel.Activity.CommonDialog] == nil then
+		elseif (viewName == ViewName.MessageBoxView or viewName == ViewName.TopMessageBoxView or viewName == ViewName.SDKExitGameView or viewName == ViewName.FightQuitTipView or viewName == ViewName.FixResTipView) and self.Adapters[PCInputModel.Activity.CommonDialog] == nil then
 			self.Adapters[PCInputModel.Activity.CommonDialog] = CommonActivityAdapter.New()
 		end
 	end, self, 0.01)
@@ -159,7 +175,7 @@ function PCInputController:unregisterKeys(keys, keyEvent)
 end
 
 function PCInputController:getKeyPress(key)
-	if self.init and self.inputInst and not ViewMgr.instance:isOpen(ViewName.GuideView) then
+	if self.init and self.inputInst and not GuideController.instance:isAnyGuideRunning() then
 		return self.inputInst:getKeyPress(key)
 	end
 
@@ -183,37 +199,55 @@ function PCInputController:getActivityFunPress(activityid, funid)
 end
 
 function PCInputController:OnKeyDown(key)
-	if not self.init or not self.inputInst then
+	if not self.init or not self.inputInst or self._pauseListen then
 		return
 	end
 
-	if ViewMgr.instance:isOpen(ViewName.GuideView) or ViewMgr.instance:isOpen(ViewName.SettingsView) then
+	if GuideController.instance:isAnyGuideRunning() then
 		return
 	end
 
 	local keyName = self.inputInst:keyCodeToKey(key)
+	local adaptersList = {}
 
 	for _, v in pairs(self.Adapters) do
-		if v then
-			v:OnkeyDown(keyName)
+		table.insert(adaptersList, v)
+	end
+
+	table.sort(adaptersList, function(a, b)
+		return a:getPriorty() > b:getPriorty()
+	end)
+
+	for _, v in ipairs(adaptersList) do
+		if v and v:OnkeyDown(keyName) then
+			return
 		end
 	end
 end
 
 function PCInputController:OnKeyUp(key)
-	if not self.init or not self.inputInst then
+	if not self.init or not self.inputInst or self._pauseListen then
 		return
 	end
 
-	if ViewMgr.instance:isOpen(ViewName.GuideView) then
+	if GuideController.instance:isAnyGuideRunning() then
 		return
 	end
 
 	local keyName = self.inputInst:keyCodeToKey(key)
+	local adaptersList = {}
 
 	for _, v in pairs(self.Adapters) do
-		if v then
-			v:OnkeyUp(keyName)
+		table.insert(adaptersList, v)
+	end
+
+	table.sort(adaptersList, function(a, b)
+		return a:getPriorty() > b:getPriorty()
+	end)
+
+	for _, v in ipairs(adaptersList) do
+		if v and v:OnkeyDown(keyName) then
+			return
 		end
 	end
 end
@@ -254,6 +288,31 @@ end
 
 function PCInputController:KeyNameToDescName(keyname)
 	return PCInputModel.instance:ReplaceKeyName(keyname)
+end
+
+function PCInputController:isPopUpViewOpen(exludeViewList)
+	local viewList = ViewMgr.instance:getOpenViewNameList()
+
+	for i = #viewList, 1, -1 do
+		local viewName = viewList[i]
+		local setting = ViewMgr.instance:getSetting(viewName)
+
+		if (setting.layer == UILayerName.PopUpTop or setting.layer == UILayerName.PopUp or setting.layer == UILayerName.Guide) and not self:viewInList(viewName, exludeViewList) then
+			return true
+		end
+	end
+
+	return false
+end
+
+function PCInputController:viewInList(viewName, viewList)
+	for _, v in pairs(viewList) do
+		if v == viewName then
+			return true
+		end
+	end
+
+	return false
 end
 
 PCInputController.instance = PCInputController.New()

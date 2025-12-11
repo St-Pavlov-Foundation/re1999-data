@@ -80,7 +80,9 @@ function ExploreBackpackView:onDestroyView()
 end
 
 function ExploreBackpackView:OnItemKeyDown(index)
-	if ViewMgr.instance:IsPopUpViewOpen() then
+	if PCInputController.instance:isPopUpViewOpen({
+		ViewName.ExploreBackpackView
+	}) then
 		return
 	end
 

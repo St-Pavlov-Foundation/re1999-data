@@ -26,17 +26,9 @@ end
 function keyTipsView:_onCallback()
 	self._instGO = self._loader:getInstGO()
 
-	local keyTips = PlayerPrefsHelper.getNumber("keyTips", 0)
+	local keyTips = GameUtil.playerPrefsGetNumberByUserId("keyTips", 0)
 
-	if keyTips == 0 then
-		self._instGO:SetActive(false)
-
-		return
-	else
-		self._instGO:SetActive(true)
-	end
-
-	gohelper.setActive(self._instGO, not ViewMgr.instance:isOpen(ViewName.GuideView))
+	gohelper.setActive(self._instGO, not GuideController.instance:isAnyGuideRunning() and keyTips == 1)
 
 	self._text1 = gohelper.findChildText(self._instGO, "btn_1/#txt_btn")
 	self._text2 = gohelper.findChildText(self._instGO, "btn_2/#txt_btn")
@@ -45,22 +37,28 @@ function keyTipsView:_onCallback()
 
 	local key = self._keyName or PCInputModel.instance:getKey(self._activityid, self._keyid)
 
+	key = PCInputController.instance:KeyNameToDescName(key)
+
 	if self:selectType(key) == 1 then
 		self._btn1:SetActive(true)
 		self._btn2:SetActive(false)
 
-		self._text1.text = PCInputController.instance:KeyNameToDescName(key)
+		self._text1.text = key
 	else
 		self._btn1:SetActive(false)
 		self._btn2:SetActive(true)
 
-		self._text2.text = PCInputController.instance:KeyNameToDescName(key)
+		self._text2.text = key
 	end
 end
 
 function keyTipsView:Show(bshow)
 	if self._instGO then
-		self._instGO:SetActive(bshow and not ViewMgr.instance:isOpen(ViewName.GuideView) and PlayerPrefsHelper.getNumber("keyTips", 0) == 1)
+		self._instGO:SetActive(bshow and not GuideController.instance:isAnyGuideRunning() and GameUtil.playerPrefsGetStringByUserId("keyTips", "0") == 1)
+	end
+
+	if self._go then
+		gohelper.setActive(self._go, bshow)
 	end
 end
 
@@ -106,13 +104,13 @@ end
 
 function keyTipsView:onOpenViewCallBack(viewName)
 	if viewName == ViewName.GuideView then
-		self._instGO:SetActive(false)
+		self:Show(false)
 	end
 end
 
 function keyTipsView:onCloseViewCallBack(viewName)
 	if viewName == ViewName.GuideView then
-		self._instGO:SetActive(true)
+		self:Show(true)
 	end
 end
 

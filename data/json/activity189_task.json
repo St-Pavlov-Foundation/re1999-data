@@ -198,5 +198,25 @@
     "maxProgress": 3,
     "jumpId": 3801,
     "bonus": "24#489095#1"
+  },
+  {
+    "id": 530010,
+    "activityId": 13319,
+    "isOnline": 1,
+    "loopType": 3,
+    "minType": "3.3爬塔运营活动",
+    "name": "活动任务",
+    "desc": "前往全新“臆想潮”查看",
+    "bonusMail": 0,
+    "openLimit": "",
+    "listenerType": "ReadTask",
+    "listenerParam": "530010",
+    "clientlistenerParam": "",
+    "tag": "jump",
+    "openLimitActId": 13319,
+    "sorting": 1,
+    "maxProgress": 1,
+    "jumpId": 42351000,
+    "bonus": "1#620103#3|1#491010#1|2#3#10000|2#5#10000"
   }
 ]

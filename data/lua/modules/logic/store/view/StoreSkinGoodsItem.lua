@@ -93,6 +93,14 @@ function StoreSkinGoodsItem:_onSkinPreviewChanged()
 end
 
 function StoreSkinGoodsItem:updateNew()
+	local alreadyHas = self._mo:alreadyHas() and not StoreModel.instance:isSkinGoodsCanRepeatBuy(self._mo)
+
+	if alreadyHas then
+		gohelper.setActive(self._gonewtag, false)
+
+		return
+	end
+
 	local needNew = self._mo:checkShowNewRedDot()
 
 	gohelper.setActive(self._gonewtag, needNew)

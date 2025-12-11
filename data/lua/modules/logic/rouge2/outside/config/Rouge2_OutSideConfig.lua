@@ -65,7 +65,7 @@ function Rouge2_OutSideConfig:initItemConfig()
 		if not self._itemIdDic[itemConfig.itemId] then
 			self._itemIdDic[itemConfig.itemId] = itemConfig.id
 		else
-			logError("造物图鉴表 道具id 重复 id: " .. id .. "itemId: " .. itemConfig.itemId)
+			logError("造物图鉴表 道具id 重复 id: " .. itemConfig.id .. "itemId: " .. itemConfig.itemId)
 		end
 	end
 end

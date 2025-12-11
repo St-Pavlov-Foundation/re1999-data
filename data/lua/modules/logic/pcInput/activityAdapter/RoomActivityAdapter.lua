@@ -120,6 +120,18 @@ function RoomActivityAdapter:ctor()
 end
 
 function RoomActivityAdapter:OnkeyUp(keyName)
+	if GuideModel.instance:isDoingClickGuide() or not GuideModel.instance:isGuideFinish(406) then
+		return
+	end
+
+	BaseActivityAdapter.OnkeyUp(self, keyName)
+end
+
+function RoomActivityAdapter:OnkeyDown(keyName)
+	if GuideModel.instance:isDoingClickGuide() or not GuideModel.instance:isGuideFinish(406) then
+		return
+	end
+
 	BaseActivityAdapter.OnkeyUp(self, keyName)
 end
 

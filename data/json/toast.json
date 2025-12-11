@@ -5033,7 +5033,7 @@
   },
   {
     "id": 51004,
-    "tips": "需前往“湖的邀约”征集界面开启金纺结",
+    "tips": "需前往“湖的许诺”征集界面开启金纺团",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,
@@ -10490,6 +10490,150 @@
   {
     "id": 321019,
     "tips": "成长节拍不足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 331001,
+    "tips": "旅券集装配成功",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 331002,
+    "tips": "▩1%s未解锁，继续挑战关卡以解锁插件",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 331003,
+    "tips": "关卡未开启",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 331004,
+    "tips": "当前插件已配备满",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 331005,
+    "tips": "角色未拥有",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 331006,
+    "tips": "效果未拥有，哲思启发中完成任务可进行解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 331007,
+    "tips": "▩1%s·▩2%s试用角色已达上限",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 331008,
+    "tips": "▩1%s·▩2%s上阵角色为空，不可挑战",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 331009,
+    "tips": "角色已上阵",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 331010,
+    "tips": "军资恢复速度已提升",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 331011,
+    "tips": "通关单向投币Ⅰ后解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 331012,
+    "tips": "通关单向投币Ⅱ后解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 310113,
+    "tips": "噪点炸弹数量不足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 310114,
+    "tips": "色块必杀能量不足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 331015,
+    "tips": "像素宝石数量不足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 331016,
+    "tips": "最高投射值达到▩1%s解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 331017,
+    "tips": "翻覆之舟已结束",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 331018,
+    "tips": "咒语释放能量不足",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,

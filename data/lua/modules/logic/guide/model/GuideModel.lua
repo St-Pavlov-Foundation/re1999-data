@@ -264,6 +264,20 @@ function GuideModel:isDoingClickGuide()
 	return false
 end
 
+function GuideModel:isAnyGuideRunning()
+	local guideMOList = self:getList()
+
+	for i = 1, #guideMOList do
+		local guideMO = guideMOList[i]
+
+		if not guideMO.isFinish or guideMO.currStepId > 0 then
+			return true
+		end
+	end
+
+	return false
+end
+
 function GuideModel:isGuideRunning(guideId)
 	local guideMO = self:getById(guideId)
 

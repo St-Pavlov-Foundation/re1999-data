@@ -1,12 +1,36 @@
 ﻿-- chunkname: @modules/setting/module_mvc.lua
 
 local module_mvc = {
-	BeiLiEr = {
+	Marsha = {
 		model = {
-			"BeiLiErModel"
+			"MarshaModel"
 		},
 		config = {
-			"BeiLiErConfig"
+			"MarshaConfig"
+		},
+		controller = {
+			"MarshaController"
+		}
+	},
+	Arcade = {
+		model = {
+			"ArcadeModel",
+			"ArcadeGameModel",
+			"ArcadeHallModel",
+			"ArcadeHandBookModel",
+			"ArcadeHeroModel",
+			"ArcadeOutSizeModel"
+		},
+		controller = {
+			"ArcadeController",
+			"ArcadeGameController"
+		},
+		rpc = {
+			"ArcadeInSideRpc",
+			"ArcadeOutSideRpc"
+		},
+		config = {
+			"ArcadeConfig"
 		}
 	},
 	ClickUI = {
@@ -3307,6 +3331,33 @@ local module_mvc = {
 	GameCenter = {
 		controller = {
 			"GameCenterController"
+		}
+	},
+	TowerCompose = {
+		model = {
+			"TowerComposeModel",
+			"TowerComposeTaskModel",
+			"TowerComposeHeroGroupModel"
+		},
+		config = {
+			"TowerComposeConfig"
+		},
+		rpc = {
+			"TowerComposeRpc"
+		},
+		controller = {
+			"TowerComposeController"
+		}
+	},
+	Igor = {
+		model = {
+			"IgorModel"
+		},
+		config = {
+			"IgorConfig"
+		},
+		controller = {
+			"IgorController"
 		}
 	}
 }

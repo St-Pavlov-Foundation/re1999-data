@@ -14,7 +14,8 @@ function ActivityType101Config:reqConfigNames()
 		"activity101_springsign",
 		"activity101_sp_bonus",
 		"v2a1_activity101_moonfestivalsign",
-		"linkage_activity"
+		"linkage_activity",
+		"activity101_festival_const"
 	}
 end
 
@@ -36,6 +37,14 @@ function ActivityType101Config:onConfigLoaded(configName, configTable)
 
 		self:__linkageActivity()
 	end
+end
+
+local function _constCO(id)
+	if not _G.lua_activity101_festival_const then
+		return
+	end
+
+	return lua_activity101_festival_const.configDict[id]
 end
 
 function ActivityType101Config:__initDoubleFestival()
@@ -210,6 +219,66 @@ end
 
 function ActivityType101Config:getVersionSummonActIdList()
 	return ActivityConfig.instance:getConstAsNumList(6, "#", {})
+end
+
+function ActivityType101Config:getConstAsNum(id, fallback)
+	local CO = _constCO(id)
+
+	if not CO then
+		return fallback
+	end
+
+	return tonumber(CO.strValue) or fallback
+end
+
+function ActivityType101Config:getDayCOs(actId)
+	return lua_activity101.configDict[actId]
+end
+
+function ActivityType101Config:getDayCO(actId, id)
+	local act101COs = self:getDayCOs(actId)
+
+	if not act101COs then
+		return
+	end
+
+	return act101COs[id]
+end
+
+function ActivityType101Config:getSignMaxDay(actId)
+	local act101COs = self:getDayCOs(actId)
+
+	if not act101COs then
+		return 0
+	end
+
+	return #act101COs
+end
+
+function ActivityType101Config:getDayBonusList(actId, id)
+	local dayCO = self:getDayCO(actId, id)
+
+	if not dayCO then
+		return {}
+	end
+
+	if string.nilorempty(dayCO.bonus) then
+		return {}
+	end
+
+	return GameUtil.splitString2(dayCO.bonus, true)
+end
+
+function ActivityType101Config:getDoubleDanJumpId()
+	return self:getConstAsNum(1, 0)
+end
+
+function ActivityType101Config:getDoubleDanSkinId()
+	return self:getConstAsNum(2, 309502)
+end
+
+function ActivityType101Config:getDoubleDanActId()
+	return ActivityConfig.instance:getConstAsNum(8, 13311)
 end
 
 ActivityType101Config.instance = ActivityType101Config.New()

@@ -25,5 +25,14 @@
     "desc": "是否立刻使用道具【▩1%s】进行奖励补领",
     "descParam": "1",
     "checkParam": "1"
+  },
+  {
+    "id": 713301,
+    "priority": 1,
+    "type": 1,
+    "jumpId": 54,
+    "desc": "是否立刻使用道具【▩1%s】",
+    "descParam": "1",
+    "checkParam": ""
   }
 ]

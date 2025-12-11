@@ -6,6 +6,7 @@ local ResSplitModel = class("ResSplitModel", BaseModel)
 
 function ResSplitModel:init(characterIdDic, chapterIdDic, audioDic, storyIdDic, guideIdDic, videoDic, pathDic, seasonDic)
 	self._excludeDic = {}
+	self._includeDic = {}
 	self._excludeStoryIdsDic = {}
 	self.audioDic = audioDic
 	self._includeCharacterIdDic = characterIdDic
@@ -97,8 +98,22 @@ function ResSplitModel:setExclude(type, path, isExclude)
 	end
 end
 
+function ResSplitModel:setInclude(type, path)
+	if self._includeDic[type] == nil then
+		self._includeDic[type] = {}
+	end
+
+	local dic = self._includeDic[type]
+
+	dic[path] = true
+end
+
 function ResSplitModel:getExcludeDic(type)
 	return self._excludeDic[type]
+end
+
+function ResSplitModel:getIncludeDic(type)
+	return self._includeDic[type]
 end
 
 ResSplitModel.instance = ResSplitModel.New()

@@ -22,6 +22,7 @@ function FightConfig:reqConfigNames()
 	local list = {
 		"card_description",
 		"stance",
+		"stance_pata_switch_scene",
 		"character",
 		"monster",
 		"monster_group",
@@ -136,7 +137,10 @@ function FightConfig:reqConfigNames()
 		"fight_rouge2_check_relic",
 		"fight_rouge2_level",
 		"fight_rouge2_relic_type",
-		"zongmao_boss_stage_buffid_effect"
+		"zongmao_boss_stage_buffid_effect",
+		"battle_selection",
+		"fight_skill_force_use",
+		"fight_change_buff_effect_by_skin"
 	}
 
 	if SLFramework.FrameworkSettings.IsEditor then

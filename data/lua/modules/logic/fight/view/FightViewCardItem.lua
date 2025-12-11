@@ -20,6 +20,7 @@ function FightViewCardItem:init(go)
 	self._starItemCanvas = self:getUserDataTb_()
 	self.skillIconBg = self:getUserDataTb_()
 	self.attributeBg = self:getUserDataTb_()
+	self.highlightEffect = self:getUserDataTb_()
 
 	for i = 0, 4 do
 		local lvGO = gohelper.findChild(go, "lv" .. i)
@@ -37,6 +38,7 @@ function FightViewCardItem:init(go)
 		self.attributeBg[i] = obj
 		obj = gohelper.findChild(lvGO, "bg")
 		self.skillIconBg[i] = obj
+		self.highlightEffect[i] = gohelper.findChild(lvGO, "#pc_highlighted")
 	end
 
 	if not FightViewCardItem.TagPosForLvs then
@@ -162,6 +164,9 @@ function FightViewCardItem:init(go)
 
 	self._heatRoot = gohelper.findChild(go, "#go_heat")
 	self.goBloodPool = gohelper.findChild(go, "blood_pool")
+	self.goTowerAssistRole = gohelper.findChild(go, "#go_towerAssist")
+	self.goTowerAssistSmallSkillIcon = gohelper.findChild(self.goTowerAssistRole, "eff")
+	self.goTowerAssistBigSkillIcon = gohelper.findChild(self.goTowerAssistRole, "eff2")
 	self.xingtiTxt = gohelper.findChildText(go, "txt_xingti")
 	self.xingtiGo = self.xingtiTxt.gameObject
 	self.alfLoadStatus = FightViewCardItem.AlfLoadStatus.None
@@ -232,13 +237,15 @@ function FightViewCardItem:init(go)
 		end
 	end
 
-	if PCInputController.instance:getIsUse() then
-		local x, y = recthelper.getAnchor(self.goTopLayout.transform)
-
-		recthelper.setAnchor(self.goTopLayout.transform, x, y + 50)
-	end
-
 	self.playedHideCardOpenAnim = false
+end
+
+function FightViewCardItem:changeTopLayoutAnchorYOffset(offset)
+	local curAnchorX, curAnchorY = recthelper.getAnchor(self.goTopLayout.transform)
+
+	self.srcAnchorY = self.srcAnchorY or curAnchorY
+
+	recthelper.setAnchor(self.goTopLayout.transform, curAnchorX, self.srcAnchorY + offset)
 end
 
 function FightViewCardItem:initSuperimposeNode()
@@ -470,6 +477,26 @@ function FightViewCardItem:updateItem(entityId, skillId, cardInfoMO)
 	self:showCardHeat()
 	self:refreshXiTiSpecialSkill(entityId, skillId, cardInfoMO)
 	self:refreshSuperimposeIcon()
+	self:refreshAssistRoleIcon()
+end
+
+function FightViewCardItem:refreshAssistRoleIcon()
+	local show = false
+
+	if self.handCardType == FightEnum.CardShowType.Operation or self.handCardType == FightEnum.CardShowType.PlayCard then
+		local entityMo = FightDataHelper.entityMgr:getById(self.entityId)
+
+		if entityMo:isAssistBoss() and FightDataHelper.paTaMgr:checkIsAssistRole() then
+			show = true
+		end
+	end
+
+	gohelper.setActive(self.goTowerAssistRole, show)
+
+	local isBigSkill = FightCardDataHelper.isBigSkill(self.skillId)
+
+	gohelper.setActive(self.goTowerAssistSmallSkillIcon, not isBigSkill)
+	gohelper.setActive(self.goTowerAssistBigSkillIcon, isBigSkill)
 end
 
 function FightViewCardItem:refreshSuperimposeIcon()
@@ -1546,6 +1573,14 @@ function FightViewCardItem:playAlfCloseAnimDone()
 	self.showAlfEffectIng = false
 
 	FightController.instance:dispatchEvent(FightEvent.ALF_AddCardEffectEnd, self)
+end
+
+function FightViewCardItem:showHightLightEffect(bShow)
+	if self.highlightEffect then
+		for i, v in ipairs(self.highlightEffect) do
+			gohelper.setActive(v, bShow)
+		end
+	end
 end
 
 function FightViewCardItem:clearAlfEffect()

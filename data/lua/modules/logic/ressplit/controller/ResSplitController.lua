@@ -8,6 +8,7 @@ function ResSplitController:onInit()
 	self._versionResSplitHandler = VersionResSplitHandler.New()
 
 	ResSplitHelper.init()
+	ResSplitSaveHelper.init()
 end
 
 function ResSplitController:onInitFinish()

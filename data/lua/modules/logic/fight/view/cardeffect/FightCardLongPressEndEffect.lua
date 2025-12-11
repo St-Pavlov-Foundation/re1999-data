@@ -55,6 +55,10 @@ function FightCardLongPressEndEffect:_updateDragHandCards()
 	recthelper.setAnchorY(dragItem.tr, targetPosY)
 	transformhelper.setLocalScale(dragItem.tr, dragScale, dragScale, 1)
 
+	if cardCount == nil then
+		return
+	end
+
 	for i = 1, cardCount do
 		local item = handCardItemList[i]
 		local curPosX = recthelper.getAnchorX(item.tr)

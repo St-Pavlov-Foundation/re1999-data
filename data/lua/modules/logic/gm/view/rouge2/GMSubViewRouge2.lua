@@ -149,12 +149,6 @@ function GMSubViewRouge2:checkAllEventExistInSubEvent()
 			if not subEventCo then
 				logError("肉鸽选项事件表不存在id : " .. tostring(eventId))
 			end
-		elseif Rouge2_MapHelper.isStoreEvent(eventType) then
-			subEventCo = lua_rouge2_shop_event.configDict[eventId]
-
-			if not subEventCo then
-				logError("肉鸽商店事件表不存在id : " .. tostring(eventId))
-			end
 		else
 			logError(string.format("事件表id : %s, 配置了未知事件类型 : %s", eventId, eventType))
 		end

@@ -18,7 +18,7 @@ function SettingsKeyMapView:onInitView()
 	self._tipsBtn = gohelper.findChildButtonWithAudio(self.viewGO, "pcScroll/Viewport/Content/shortcutstips/switch/btn")
 	self._tipsOn = gohelper.findChild(self.viewGO, "pcScroll/Viewport/Content/shortcutstips/switch/btn/on")
 	self._tipsoff = gohelper.findChild(self.viewGO, "pcScroll/Viewport/Content/shortcutstips/switch/btn/off")
-	self._tipsStatue = PlayerPrefsHelper.getNumber("keyTips", 0)
+	self._tipsStatue = GameUtil.playerPrefsGetNumberByUserId("keyTips", 0)
 	self._exitgame = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_exit")
 
 	self:refreshTips()
@@ -56,7 +56,7 @@ function SettingsKeyMapView:_tipsSwtich()
 	end
 
 	self:refreshTips()
-	PlayerPrefsHelper.setNumber("keyTips", self._tipsStatue)
+	GameUtil.playerPrefsSetNumberByUserId("keyTips", self._tipsStatue)
 	SettingsController.instance:dispatchEvent(SettingsEvent.OnKeyTipsChange)
 end
 

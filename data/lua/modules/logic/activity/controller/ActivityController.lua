@@ -168,7 +168,8 @@ function ActivityController:checkGetActivityInfo()
 
 	if OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.Tower) then
 		TaskRpc.instance:sendGetTaskInfoRequest({
-			TaskEnum.TaskType.Tower
+			TaskEnum.TaskType.Tower,
+			TaskEnum.TaskType.TowerCompose
 		})
 	end
 
@@ -202,6 +203,7 @@ function ActivityController:updateAct101Infos(targetActId)
 	self:_initSpecialSign_kAct101RedList()
 	self:_initLinkageActivity_kAct101RedList()
 	self:_initVersionSummon_kAct101RedList()
+	self:_initDoubleDan_kAct101RedList()
 
 	if not targetActId then
 		for _, actId in ipairs(kAct101RedList) do
@@ -290,6 +292,22 @@ function ActivityController:_initVersionSummon_kAct101RedList()
 	local actIdList = ActivityType101Config.instance:getVersionSummonActIdList()
 
 	for _, actId in ipairs(actIdList) do
+		table.insert(kAct101RedList, actId)
+	end
+end
+
+local s_DoubleDan = false
+
+function ActivityController:_initDoubleDan_kAct101RedList()
+	if s_DoubleDan then
+		return
+	end
+
+	s_DoubleDan = true
+
+	local actId = GameBranchMgr.instance:Vxax_ActId("DoubleDan", ActivityType101Config.instance:getDoubleDanActId())
+
+	if actId then
 		table.insert(kAct101RedList, actId)
 	end
 end

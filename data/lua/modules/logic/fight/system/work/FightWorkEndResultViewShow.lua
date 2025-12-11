@@ -207,6 +207,16 @@ function FightWorkEndResultViewShow:_showSuccView()
 			end
 
 			return
+		elseif episode_config.type == DungeonEnum.EpisodeType.TowerCompose then
+			local needShowTowerCompose = TowerComposeModel.instance:checkCanShowResultView()
+
+			if needShowTowerCompose then
+				TowerComposeController.instance:openTowerComposeResultView()
+			else
+				TowerComposeController.instance:openTowerComposeNormalResultView()
+			end
+
+			return
 		end
 	end
 
@@ -261,6 +271,14 @@ function FightWorkEndResultViewShow:showFailView()
 
 			if curEvent and curEvent.type == Rouge2_MapEnum.EventType.NormalFight then
 				ViewMgr.instance:openView(ViewName.Rouge2_FightSuccessView)
+
+				return
+			end
+		elseif episode_config.type == DungeonEnum.EpisodeType.TowerCompose then
+			local needShowTowerCompose = TowerComposeModel.instance:checkCanShowResultView()
+
+			if needShowTowerCompose then
+				TowerComposeController.instance:openTowerComposeResultView()
 
 				return
 			end

@@ -535,6 +535,10 @@ function GuideController:_continueCallback()
 	end
 end
 
+function GuideController:isAnyGuideRunning()
+	return ViewMgr.instance:isOpen(ViewName.GuideView) or ViewMgr.instance:isOpen(ViewName.GuideView2)
+end
+
 GuideController.instance = GuideController.New()
 
 return GuideController

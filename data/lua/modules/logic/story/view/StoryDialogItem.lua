@@ -143,6 +143,15 @@ function StoryDialogItem:hideDialog()
 
 	self._conMat:DisableKeyword("_GRADUAL_ON")
 	self._markTopMat:DisableKeyword("_GRADUAL_ON")
+
+	if self._subMeshs then
+		for _, v in pairs(self._subMeshs) do
+			if v.materialForRendering then
+				v.materialForRendering:DisableKeyword("_GRADUAL_ON")
+			end
+		end
+	end
+
 	TaskDispatcher.cancelTask(self._delayShow, self)
 	self:_showMagicItem(false)
 
@@ -570,15 +579,14 @@ function StoryDialogItem:_playHardIn()
 end
 
 function StoryDialogItem:_playGradualIn()
-	self._conMat:EnableKeyword("_GRADUAL_ON")
-	self._conMat:DisableKeyword("_DISSOLVE_ON")
-	self._markTopMat:EnableKeyword("_GRADUAL_ON")
-	self._markTopMat:DisableKeyword("_DISSOLVE_ON")
-
 	local height = UnityEngine.Screen.height
 
+	self._conMat:EnableKeyword("_GRADUAL_ON")
+	self._conMat:DisableKeyword("_DISSOLVE_ON")
 	self._conMat:SetFloat(self._LineMinYId, height)
 	self._conMat:SetFloat(self._LineMaxYId, height)
+	self._markTopMat:EnableKeyword("_GRADUAL_ON")
+	self._markTopMat:DisableKeyword("_DISSOLVE_ON")
 	self._markTopMat:SetFloat(self._LineMinYId, height)
 	self._markTopMat:SetFloat(self._LineMaxYId, height)
 
@@ -598,9 +606,10 @@ function StoryDialogItem:_playGradualIn()
 
 	for _, v in pairs(self._subMeshs) do
 		if v.materialForRendering then
+			v.materialForRendering:EnableKeyword("_GRADUAL_ON")
+			v.materialForRendering:DisableKeyword("_DISSOLVE_ON")
 			v.materialForRendering:SetFloat(self._LineMinYId, height)
 			v.materialForRendering:SetFloat(self._LineMaxYId, height)
-			v.materialForRendering:EnableKeyword("_GRADUAL_ON")
 		end
 	end
 
@@ -612,6 +621,13 @@ function StoryDialogItem:_playGradualIn()
 	local x, y, z = transformhelper.getLocalPos(self._txtcontentcn.transform)
 
 	transformhelper.setLocalPos(self._txtcontentcn.transform, x, y, 1)
+
+	if self._conTweenId then
+		ZProj.TweenHelper.KillById(self._conTweenId)
+
+		self._conTweenId = nil
+	end
+
 	TaskDispatcher.cancelTask(self._delayShow, self)
 	TaskDispatcher.runDelay(self._delayShow, self, 0.05)
 end
@@ -933,7 +949,6 @@ function StoryDialogItem:_conUpdate(value)
 					if mesh.materialForRendering then
 						mesh.materialForRendering:SetFloat(self._LineMinYId, maxBL.y)
 						mesh.materialForRendering:SetFloat(self._LineMaxYId, maxTL.y + 10)
-						mesh.materialForRendering:EnableKeyword("_GRADUAL_ON")
 					end
 				end
 
@@ -949,7 +964,6 @@ function StoryDialogItem:_conUpdate(value)
 					if mesh.materialForRendering then
 						mesh.materialForRendering:SetFloat(self._LineMinYId, maxBL.y)
 						mesh.materialForRendering:SetFloat(self._LineMaxYId, maxTL.y)
-						mesh.materialForRendering:EnableKeyword("_GRADUAL_ON")
 					end
 				end
 
@@ -971,6 +985,13 @@ function StoryDialogItem:_conUpdate(value)
 			if self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.SoftLight then
 				self._conMat:SetFloat(self._LineMinYId, 0)
 				self._conMat:SetFloat(self._LineMaxYId, 0)
+
+				for _, mesh in pairs(self._subMeshs) do
+					if mesh.materialForRendering then
+						mesh.materialForRendering:SetFloat(self._LineMinYId, 0)
+						mesh.materialForRendering:SetFloat(self._LineMaxYId, 0)
+					end
+				end
 
 				if #self._lineInfoList > 1 then
 					transformhelper.setLocalPosXY(self._norDiaGO.transform, 475, 50 * (#self._lineInfoList - 2))
@@ -1005,8 +1026,10 @@ function StoryDialogItem:conFinished()
 
 	self._conMat:SetFloat(self._LineMinYId, 0)
 	self._conMat:SetFloat(self._LineMaxYId, 0)
+	self._conMat:DisableKeyword("_GRADUAL_ON")
 	self._markTopMat:SetFloat(self._LineMinYId, 0)
 	self._markTopMat:SetFloat(self._LineMaxYId, 0)
+	self._markTopMat:DisableKeyword("_GRADUAL_ON")
 
 	self._subMeshs = {}
 
@@ -1026,6 +1049,7 @@ function StoryDialogItem:conFinished()
 		if v.materialForRendering then
 			v.materialForRendering:SetFloat(self._LineMinYId, 0)
 			v.materialForRendering:SetFloat(self._LineMaxYId, 0)
+			v.materialForRendering:DisableKeyword("_GRADUAL_ON")
 		end
 	end
 
@@ -1037,8 +1061,6 @@ function StoryDialogItem:conFinished()
 
 	transformhelper.setLocalPos(self._txtcontentmagic.transform, x, y, 0)
 	transformhelper.setLocalPos(self._txtcontentreshapemagic.transform, x, y, 0)
-	self._conMat:DisableKeyword("_GRADUAL_ON")
-	self._markTopMat:DisableKeyword("_GRADUAL_ON")
 
 	if self._finishCallback then
 		self._finishCallback(self._finishCallbackObj)
@@ -1145,6 +1167,15 @@ function StoryDialogItem:destroy()
 
 	self._conMat:DisableKeyword("_GRADUAL_ON")
 	self._markTopMat:DisableKeyword("_GRADUAL_ON")
+
+	if self._subMeshs then
+		for _, v in pairs(self._subMeshs) do
+			if v.materialForRendering then
+				v.materialForRendering:DisableKeyword("_GRADUAL_ON")
+			end
+		end
+	end
+
 	self:_removeEvent()
 
 	if self._matLoader then

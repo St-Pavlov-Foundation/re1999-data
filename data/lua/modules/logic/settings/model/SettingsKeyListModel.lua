@@ -38,6 +38,7 @@ function SettingsKeyListModel:Reset(index)
 	self._keyMaps = PCInputController.instance:getKeyMap()
 
 	self:SetActivity(index)
+	SettingsController.instance:dispatchEvent(SettingsEvent.OnKeyTipsChange)
 end
 
 function SettingsKeyListModel:modifyKey(activityId, keyId, key)
@@ -49,7 +50,7 @@ function SettingsKeyListModel:modifyKey(activityId, keyId, key)
 		return
 	end
 
-	keys[keyId].key = key
+	keys[keyId][4] = key
 
 	self:SetActivity(activityId)
 	self:saveKeyMap()

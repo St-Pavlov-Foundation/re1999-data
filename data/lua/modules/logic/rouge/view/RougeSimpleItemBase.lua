@@ -116,6 +116,14 @@ function RougeSimpleItemBase:transform()
 	return self._trans
 end
 
+function RougeSimpleItemBase:pivot()
+	return self._trans.pivot
+end
+
+function RougeSimpleItemBase:rect()
+	return self._trans.rect
+end
+
 function RougeSimpleItemBase:setAsLastSibling()
 	self._trans:SetAsLastSibling()
 end
@@ -126,6 +134,14 @@ end
 
 function RougeSimpleItemBase:setSiblingIndex(index)
 	self._trans:SetSiblingIndex(index)
+end
+
+function RougeSimpleItemBase:setParent(newParentTrans, worldPositionStays)
+	self._trans:SetParent(newParentTrans, worldPositionStays and true or false)
+end
+
+function RougeSimpleItemBase:setParentAndResetPosZero(newParentTrans)
+	self:setParent(newParentTrans, false)
 end
 
 function RougeSimpleItemBase:localRotateZ(zDegree, targetTransform)

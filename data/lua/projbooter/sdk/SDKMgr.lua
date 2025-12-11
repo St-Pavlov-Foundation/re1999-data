@@ -412,7 +412,7 @@ function SDKMgr:isEarphoneContact()
 end
 
 function SDKMgr:isEmulator()
-	return BootNativeUtil.isAndroid() and self.csharpInst:IsEmulator()
+	return (BootNativeUtil.isAndroid() or BootNativeUtil.isMuMu()) and self.csharpInst:IsEmulator()
 end
 
 function SDKMgr:showAgreement()

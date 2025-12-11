@@ -523,6 +523,7 @@ end
 function SummonCharView:initSummonResult()
 	self._waitEffectList = {}
 	self._waitNormalEffectList = {}
+	self._luckyBagIdList = {}
 
 	local uiNodes = {}
 
@@ -599,16 +600,19 @@ function SummonCharView:openSummonResult(index, openall)
 		end
 
 		if not isSummonTen or not openall or duplicateCount <= 0 or heroConfig and heroConfig.rare >= 5 then
-			table.insert(self._waitEffectList, {
-				index = index,
-				heroId = heroId,
-				luckyBagId = summonResultMO.luckyBagId
-			})
-
 			if not summonResultMO:isLuckyBag() then
+				table.insert(self._waitEffectList, {
+					index = index,
+					heroId = heroId,
+					luckyBagId = summonResultMO.luckyBagId
+				})
 				self:insertSingleCharPopup(heroId, duplicateCount, isSummonTen)
 			else
-				self:insertLuckyBagPopup(summonResultMO.luckyBagId)
+				local allLuckyBagIdList = {
+					summonResultMO.luckyBagId
+				}
+
+				self:insertLuckyBagPopup(allLuckyBagIdList)
 			end
 		elseif not openall then
 			local uiEffect = self._summonUIEffects[index]
@@ -687,7 +691,7 @@ function SummonCharView:insertSingleCharPopup(heroId, duplicateCount, isSummonTe
 	SummonController.instance:insertSummonPopupList(PopupEnum.PriorityType.GainCharacterView, ViewName.CharacterGetView, popupParam)
 end
 
-function SummonCharView:insertLuckyBagPopup(luckyBagId)
+function SummonCharView:insertLuckyBagPopup(luckyBagIdList)
 	local poolId = SummonController.instance:getLastPoolId()
 
 	if not poolId then
@@ -695,7 +699,7 @@ function SummonCharView:insertLuckyBagPopup(luckyBagId)
 	end
 
 	local popupParam = {
-		luckyBagId = luckyBagId,
+		luckyBagIdList = luckyBagIdList,
 		poolId = poolId
 	}
 

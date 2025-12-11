@@ -8,14 +8,13 @@ local enableLog = false
 function SkillEditorStepBuilder.buildFightStepDataList(skillId, attackerId, targetId)
 	local side = FightHelper.getEntity(attackerId):getSide()
 	local oppositeSide = side == FightEnum.EntitySide.MySide and FightEnum.EntitySide.EnemySide or FightEnum.EntitySide.MySide
-	local fightStepData = FightStepData.New()
+	local fightStepData = FightStepData.New(FightDef_pb.FightStep())
 
 	fightStepData.editorPlaySkill = true
 	fightStepData.actType = 1
 	fightStepData.fromId = attackerId
 	fightStepData.toId = targetId
 	fightStepData.actId = skillId
-	fightStepData.actEffect = {}
 
 	local skillCO = lua_skill.configDict[skillId]
 

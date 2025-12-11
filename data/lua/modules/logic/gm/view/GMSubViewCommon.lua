@@ -24,6 +24,7 @@ function GMSubViewCommon:initViewContent()
 	self:addTitleSplitLine("日志上传")
 	self:addButton("L-1", "上传此次运行日志文件", self._onClickUploadCurLog, self)
 	self:addButton("L-1", "上传上次运行日志文件", self._onClickUploadLastLog, self)
+	self:addButton("L-1", "输出加载资源", self._onClickResourceCollector, self)
 	self:addTitleSplitLine("服务端GM多行输入")
 
 	self._gmInput = self:addInputText("L0", "", "GM ...", nil, nil, {
@@ -408,6 +409,10 @@ function GMSubViewCommon:_switchKeyInput(parem, isOn)
 	UnityEngine.PlayerPrefs.SetInt("PCInputSwitch", isOn and 1 or 0)
 	UnityEngine.PlayerPrefs.Save()
 	PCInputController.instance:Switch()
+end
+
+function GMSubViewCommon:_onClickResourceCollector()
+	SLFramework.ResourceCollector.ExportCollectInfo("")
 end
 
 return GMSubViewCommon

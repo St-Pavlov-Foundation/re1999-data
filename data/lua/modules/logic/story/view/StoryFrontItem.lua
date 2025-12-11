@@ -530,13 +530,17 @@ end
 function StoryFrontItem:_lineWordShowFinished()
 	self._txtscreentext.text = "\n" .. self._diatxt
 
-	gohelper.setActive(self._copyText.gameObject, false)
-
 	if self._finishCallback then
 		self._finishCallback(self._finishCallbackObj)
 
 		self._finishCallback = nil
 		self._finishCallback = nil
+	end
+
+	if self._copyText then
+		gohelper.setActive(self._copyText.gameObject, false)
+
+		self._copyText.text = ""
 	end
 end
 

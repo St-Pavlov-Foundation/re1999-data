@@ -1,0 +1,135 @@
+[
+  {
+    "id": 103,
+    "groupId": 1,
+    "condition": "1",
+    "param": "",
+    "weight": 100
+  },
+  {
+    "id": 103,
+    "groupId": 2,
+    "condition": "2",
+    "param": "",
+    "weight": 100
+  },
+  {
+    "id": 103,
+    "groupId": 3,
+    "condition": "2",
+    "param": "",
+    "weight": 100
+  },
+  {
+    "id": 103,
+    "groupId": 4,
+    "condition": "2",
+    "param": "",
+    "weight": 100
+  },
+  {
+    "id": 103,
+    "groupId": 5,
+    "condition": "2",
+    "param": "",
+    "weight": 100
+  },
+  {
+    "id": 103,
+    "groupId": 6,
+    "condition": "2",
+    "param": "",
+    "weight": 100
+  },
+  {
+    "id": 103,
+    "groupId": 7,
+    "condition": "2",
+    "param": "",
+    "weight": 100
+  },
+  {
+    "id": 103,
+    "groupId": 8,
+    "condition": "2",
+    "param": "",
+    "weight": 100
+  },
+  {
+    "id": 103,
+    "groupId": 9,
+    "condition": "2",
+    "param": "",
+    "weight": 100
+  },
+  {
+    "id": 3200001,
+    "groupId": 10,
+    "condition": "2",
+    "param": "",
+    "weight": 100
+  },
+  {
+    "id": 3200001,
+    "groupId": 11,
+    "condition": "3",
+    "param": "",
+    "weight": 100
+  },
+  {
+    "id": 3200001,
+    "groupId": 12,
+    "condition": "4",
+    "param": "103",
+    "weight": 100
+  },
+  {
+    "id": 3200001,
+    "groupId": 13,
+    "condition": "5",
+    "param": "",
+    "weight": 100
+  },
+  {
+    "id": 3200001,
+    "groupId": 14,
+    "condition": "5",
+    "param": "",
+    "weight": 100
+  },
+  {
+    "id": 3200002,
+    "groupId": 15,
+    "condition": "2",
+    "param": "",
+    "weight": 100
+  },
+  {
+    "id": 3200002,
+    "groupId": 16,
+    "condition": "3",
+    "param": "",
+    "weight": 100
+  },
+  {
+    "id": 3200002,
+    "groupId": 17,
+    "condition": "4",
+    "param": "",
+    "weight": 100
+  },
+  {
+    "id": 3200002,
+    "groupId": 18,
+    "condition": "4",
+    "param": "",
+    "weight": 100
+  },
+  {
+    "id": 3200002,
+    "groupId": 19,
+    "condition": "5",
+    "param": "",
+    "weight": 100
+  }
+]

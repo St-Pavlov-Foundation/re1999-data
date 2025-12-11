@@ -319,24 +319,25 @@ function FightWorkEffectDeadNew:_doneAndRemoveEntity()
 
 	self._afterDeadFlow = FlowSequence.New()
 
-	local entityMgr = GameSceneMgr.instance:getCurScene().entityMgr
+	local entityMgr = FightGameMgr.entityMgr
 	local isMySide = self._deadEntity:isMySide()
 	local entityMO = self._deadEntity:getMO()
 	local deadMgrConfig = lua_fight_dead_entity_mgr.configDict[entityMO.skin]
 	local deadPerformanceConfig = lua_fight_skin_dead_performance.configDict[entityMO.skin]
 
 	if deadMgrConfig then
-		entityMgr:removeUnitData(self._deadEntity:getTag(), self._deadEntity.id)
+		entityMgr.entityDic[self._deadEntity.id] = nil
+
 		FightController.instance:dispatchEvent(FightEvent.EntrustEntity, self._deadEntity)
 		self._afterDeadFlow:addWork(WorkWaitSeconds.New(deadMgrConfig.playTime / 1000))
 	elseif deadPerformanceConfig then
 		self:com_cancelTimer(self.delayDoneTimer)
 		self._afterDeadFlow:addWork(FightHelper.buildDeadPerformanceWork(deadPerformanceConfig, self._deadEntity))
 		self._afterDeadFlow:addWork(FunctionWork.New(function()
-			entityMgr:removeUnit(self._deadEntity:getTag(), self._deadEntity.id)
+			entityMgr:delEntity(self._deadEntity.id)
 		end))
 	else
-		entityMgr:removeUnit(self._deadEntity:getTag(), self._deadEntity.id)
+		entityMgr:delEntity(self._deadEntity.id)
 	end
 
 	self._afterDeadFlow:addWork(FunctionWork.New(self._dispatchDead, self))

@@ -1986,7 +1986,7 @@
     "requirement": "",
     "desc": "▩3%s造成的现实创伤提升至450%",
     "skillGroup1": "",
-    "skillGroup2": "",
+    "skillGroup2": "30390164|30390165|30390166",
     "skillEx": 30390132,
     "passiveSkill": "",
     "consume2": ""
@@ -1999,7 +1999,7 @@
     "desc": "▩1%s在咒语1/2/3阶时，造成的现实创伤提升至220/330/400%",
     "skillGroup1": "30390114|30390115|30390116",
     "skillGroup2": "",
-    "skillEx": 0,
+    "skillEx": 30390135,
     "passiveSkill": "",
     "consume2": ""
   },
@@ -2010,7 +2010,7 @@
     "requirement": "",
     "desc": "▩3%s造成的现实创伤提升至500%",
     "skillGroup1": "",
-    "skillGroup2": "",
+    "skillGroup2": "30390127|30390128|30390129",
     "skillEx": 30390133,
     "passiveSkill": "",
     "consume2": ""
@@ -2023,7 +2023,7 @@
     "desc": "▩1%s在咒语1/2/3阶时，造成的现实创伤提升至240/360/450%",
     "skillGroup1": "30390117|30390118|30390119",
     "skillGroup2": "",
-    "skillEx": 0,
+    "skillEx": 30390136,
     "passiveSkill": "",
     "consume2": ""
   },
@@ -2034,7 +2034,7 @@
     "requirement": "",
     "desc": "▩3%s造成的现实创伤提升至550%",
     "skillGroup1": "",
-    "skillGroup2": "",
+    "skillGroup2": "30390161|30390162|30390163",
     "skillEx": 30390134,
     "passiveSkill": "",
     "consume2": ""
@@ -4939,7 +4939,7 @@
     "desc": "▩0%s获得暴击创伤、术法威力增益的效果对应提升至50%、30%",
     "skillGroup1": "",
     "skillGroup2": "",
-    "skillEx": 0,
+    "skillEx": 30950133,
     "passiveSkill": "30950161#30950163",
     "consume2": ""
   },
@@ -4951,7 +4951,7 @@
     "desc": "▩0%s【宇宙能量<id:1>】层数上限提升至30层，伤害提升效果每层提升至2.5%",
     "skillGroup1": "",
     "skillGroup2": "30950124|30950125|30950126",
-    "skillEx": 0,
+    "skillEx": 30950134,
     "passiveSkill": "30950141#30950142|30950161#30950164",
     "consume2": ""
   },
@@ -4975,7 +4975,7 @@
     "desc": "▩0%s【宇宙能量<id:2>】持续回合+1，伤害提升效果每层提升至3%",
     "skillGroup1": "",
     "skillGroup2": "30950127|30950128|30950129",
-    "skillEx": 0,
+    "skillEx": 30950135,
     "passiveSkill": "30950141#30950143|30950161#30950165",
     "consume2": ""
   },
@@ -7017,6 +7017,126 @@
     "skillGroup2": "31350127|31350128|31350129",
     "skillEx": 31350135,
     "passiveSkill": "",
+    "consume2": ""
+  },
+  {
+    "heroId": 3127,
+    "skillLevel": 1,
+    "consume": "1#133127#1",
+    "requirement": "",
+    "desc": "▩0%s进入战斗时，使自身获得激情提升至3，【白昼祷词<id:3127>】使敌方全体的【燃烧】最大叠加层数额外提升至10层；\n▩3%s【修行<id:1>】暴击率提升至30%，溢出暴击率转为暴击创伤的比例提升至75%",
+    "skillGroup1": "",
+    "skillGroup2": "",
+    "skillEx": 31270132,
+    "passiveSkill": "31270144#31270145|31270142#31270147",
+    "consume2": ""
+  },
+  {
+    "heroId": 3127,
+    "skillLevel": 2,
+    "consume": "1#133127#1",
+    "requirement": "",
+    "desc": "▩3%s至多消耗【苦痛代偿】的层数提升至7，【修行<id:2>】持续回合数提升至4",
+    "skillGroup1": "",
+    "skillGroup2": "",
+    "skillEx": 31270133,
+    "passiveSkill": "",
+    "consume2": ""
+  },
+  {
+    "heroId": 3127,
+    "skillLevel": 3,
+    "consume": "1#133127#1",
+    "requirement": "",
+    "desc": "▩3%s造成的现实创伤提升至1000%，赋予自身的【苦痛代偿】层数提升至2，每层【修行<id:2>】术法威力提升至2%",
+    "skillGroup1": "",
+    "skillGroup2": "",
+    "skillEx": 31270134,
+    "passiveSkill": "",
+    "consume2": ""
+  },
+  {
+    "heroId": 3127,
+    "skillLevel": 4,
+    "consume": "1#133127#1",
+    "requirement": "",
+    "desc": "▩2%s在咒语1/2/3阶时，为己方提供的【护盾】效果提升至玛尔纱攻击*180%/270%/450%，主动释放时，额外提升的系数提升至玛尔纱暴击率*90%/130%/220%；\n▩0%s进入战斗时，使己方全体获得的【护盾】效果提升至玛尔纱攻击*180%",
+    "skillGroup1": "",
+    "skillGroup2": "31270124|31270125|31270126",
+    "skillEx": 0,
+    "passiveSkill": "31270142#31270146",
+    "consume2": ""
+  },
+  {
+    "heroId": 3127,
+    "skillLevel": 5,
+    "consume": "1#133127#1",
+    "requirement": "",
+    "desc": "▩0%s【白昼祷词<id:312702>】拥有【余辉】的己方数量在3名及以上时，使【余辉】增加时额外增加量提升至14%\n▩3%s【修行<id:3>】暴击率提升至40%，溢出暴击率转为暴击创伤的比例提升至100%",
+    "skillGroup1": "",
+    "skillGroup2": "",
+    "skillEx": 31270135,
+    "passiveSkill": "31270142#31270148",
+    "consume2": ""
+  },
+  {
+    "heroId": 3092,
+    "skillLevel": 1,
+    "consume": "1#133092#1",
+    "requirement": "",
+    "desc": "▩3%s？？？",
+    "skillGroup1": "30920134|30920135|30920136",
+    "skillGroup2": "",
+    "skillEx": 30920152,
+    "passiveSkill": "30920001#30920002|30920101#30920102",
+    "consume2": ""
+  },
+  {
+    "heroId": 3092,
+    "skillLevel": 2,
+    "consume": "1#133092#1",
+    "requirement": "",
+    "desc": "▩3%s？？？",
+    "skillGroup1": "30920137|30920138|30920139",
+    "skillGroup2": "30920144|30920145|30920146",
+    "skillEx": 30920153,
+    "passiveSkill": "30920001#30920003|30920101#30920103",
+    "consume2": ""
+  },
+  {
+    "heroId": 3092,
+    "skillLevel": 3,
+    "consume": "1#133092#1",
+    "requirement": "",
+    "desc": "▩3%s？？？",
+    "skillGroup1": "",
+    "skillGroup2": "30920147|30920148|30920149",
+    "skillEx": 30920154,
+    "passiveSkill": "30920001#30920004",
+    "consume2": ""
+  },
+  {
+    "heroId": 3092,
+    "skillLevel": 4,
+    "consume": "1#133092#1",
+    "requirement": "",
+    "desc": "▩3%s？？？",
+    "skillGroup1": "30920161|30920162|30920163",
+    "skillGroup2": "",
+    "skillEx": 30920155,
+    "passiveSkill": "30920001#30920005|30920101#30920104",
+    "consume2": ""
+  },
+  {
+    "heroId": 3092,
+    "skillLevel": 5,
+    "consume": "1#133092#1",
+    "requirement": "",
+    "desc": "▩3%s？？？",
+    "skillGroup1": "",
+    "skillGroup2": "",
+    "skillEx": 30920156,
+    "passiveSkill": "30920001#30920006",
     "consume2": ""
   }
 ]

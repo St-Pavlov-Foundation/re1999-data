@@ -5,7 +5,7 @@ module("modules.logic.pcInput.activityAdapter.CommonActivityAdapter", package.se
 local CommonActivityAdapter = class("CommonActivityAdapter", BaseActivityAdapter)
 
 CommonActivityAdapter.keytoFunction = {
-	Esc = function()
+	Escape = function()
 		PCInputController.instance:dispatchEvent(PCInputEvent.NotifyCommonCancel)
 	end,
 	Return = function()
@@ -15,6 +15,7 @@ CommonActivityAdapter.keytoFunction = {
 
 function CommonActivityAdapter:ctor()
 	self.keytoFunction = CommonActivityAdapter.keytoFunction
+	self._priorty = 1
 
 	self:registerFunction()
 end
@@ -34,7 +35,11 @@ function CommonActivityAdapter:OnkeyUp(keyName)
 
 	if func then
 		func()
+
+		return true
 	end
+
+	return false
 end
 
 function CommonActivityAdapter:OnkeyDown(keyName)
@@ -42,7 +47,11 @@ function CommonActivityAdapter:OnkeyDown(keyName)
 
 	if func then
 		func()
+
+		return true
 	end
+
+	return false
 end
 
 function CommonActivityAdapter:destroy()

@@ -1563,5 +1563,34 @@
       0,
       0
     ]
+  },
+  {
+    "id": 20028,
+    "name": "血食瘟疫",
+    "desc": "回合开始时，急性猩红症获得现实防御+30%，持续1回合；回合结束时，对敌方全体造成其最大生命*30%的本源创伤",
+    "uiType": 0,
+    "round": 2,
+    "consumeType": -1,
+    "consumeNum": "",
+    "selfAttrs": "",
+    "enemyAttrs": "",
+    "selfSkills": "116330010",
+    "enemySkills": "",
+    "selfBuff": "",
+    "enemyBuff": "",
+    "endSkills": "",
+    "enterEffect": "",
+    "enterTime": 0,
+    "enterAudio": 461041251,
+    "loopEffect": "buff/v3a1_bls_innate1_01",
+    "closeEffect": "buff/v3a1_bls_innate1_02",
+    "closeTime": 0,
+    "closeAniName": "",
+    "closeAudio": 0,
+    "posArr": [
+      0,
+      0,
+      1.11
+    ]
   }
 ]

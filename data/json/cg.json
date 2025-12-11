@@ -3222,7 +3222,7 @@
     "name": "是，长官",
     "nameEn": "Yes, Sir",
     "desc": "在这儿，一切看似与战争无关，一切却又与战争有关。",
-    "episodeId": 11101,
+    "episodeId": 1102,
     "image": "story_atcg/3_0/3_0_at_liaotian.jpg",
     "preCgId": 0,
     "herostoryId": 0
@@ -3234,7 +3234,7 @@
     "name": "蓄意暴露",
     "nameEn": "Eyes Up",
     "desc": "从观察者变为被观察者。",
-    "episodeId": 1102,
+    "episodeId": 1104,
     "image": "story_atcg/3_0/3_0_at_aiguozhe.jpg",
     "preCgId": 0,
     "herostoryId": 0
@@ -3246,7 +3246,7 @@
     "name": "“公平”对谈·一",
     "nameEn": "A \"Fair\" Encounter I",
     "desc": "唯有朝向彼此的枪口能使我们公平地对谈。",
-    "episodeId": 11103,
+    "episodeId": 11110,
     "image": "story_atcg/3_0/3_0_at_zhuisha1.jpg",
     "preCgId": 0,
     "herostoryId": 0
@@ -3258,7 +3258,7 @@
     "name": "“公平”对谈·二",
     "nameEn": "A \"Fair\" Encounter II",
     "desc": "不分伯仲的恶孽。",
-    "episodeId": 1104,
+    "episodeId": 11110,
     "image": "story_atcg/3_0/3_0_at_zhuisha2.jpg",
     "preCgId": 2001303,
     "herostoryId": 0
@@ -3270,7 +3270,7 @@
     "name": "“公平”对谈·三",
     "nameEn": "A \"Fair\" Encounter III",
     "desc": "忏悔，坦白，即便无人聆听。",
-    "episodeId": 1105,
+    "episodeId": 11110,
     "image": "story_atcg/3_0/3_0_at_zhuisha3.jpg",
     "preCgId": 2001304,
     "herostoryId": 0
@@ -3282,7 +3282,7 @@
     "name": "“公平”对谈·四",
     "nameEn": "A \"Fair\" Encounter IV",
     "desc": "期以永恒的祷告，久候不至的救赎。",
-    "episodeId": 11106,
+    "episodeId": 11110,
     "image": "story_atcg/3_0/3_0_at_zhuisha4.jpg",
     "preCgId": 2001305,
     "herostoryId": 0
@@ -3294,7 +3294,7 @@
     "name": "“公平”对谈·五",
     "nameEn": "A \"Fair\" Encounter V",
     "desc": "不会悔过、不再惊惶，已然无可救药的结局。",
-    "episodeId": 11107,
+    "episodeId": 11110,
     "image": "story_atcg/3_0/3_0_at_zhuisha5.jpg",
     "preCgId": 2001306,
     "herostoryId": 0
@@ -3306,7 +3306,7 @@
     "name": "杀死野果·一",
     "nameEn": "Painted Red I",
     "desc": "你我相互争斗，好似童年嬉戏时。",
-    "episodeId": 11108,
+    "episodeId": 1111,
     "image": "story_atcg/3_0/3_0_at_bodou1.jpg",
     "preCgId": 0,
     "herostoryId": 0
@@ -3318,7 +3318,7 @@
     "name": "杀死野果·二",
     "nameEn": "Painted Red II",
     "desc": "最后，我们以痛苦与血泪沐浴。",
-    "episodeId": 1109,
+    "episodeId": 1111,
     "image": "story_atcg/3_0/3_0_at_bodou2_zone.png",
     "preCgId": 2001308,
     "herostoryId": 0
@@ -3330,7 +3330,7 @@
     "name": "不归乡·一",
     "nameEn": "No Longer That Boy I",
     "desc": "天气晴朗，我们登上山坡，向远乡眺望。",
-    "episodeId": 11110,
+    "episodeId": 11115,
     "image": "story_atcg/3_0/3_0_at_gaobie.jpg",
     "preCgId": 0,
     "herostoryId": 0
@@ -3342,7 +3342,7 @@
     "name": "不归乡·二",
     "nameEn": "No Longer That Boy II",
     "desc": "那个再不复返的好地方。",
-    "episodeId": 1111,
+    "episodeId": 11115,
     "image": "story_atcg/3_0/3_0_at_gaobie3_zone.jpg",
     "preCgId": 2001310,
     "herostoryId": 0
@@ -3354,7 +3354,7 @@
     "name": "片刻梦游",
     "nameEn": "A Fleeting Moment of Serenity",
     "desc": "尽管驰骋，尽管畅想，尽管将未知诉诸未来。",
-    "episodeId": 11112,
+    "episodeId": 11117,
     "image": "story_atcg/3_0/3_0_at_qixing.jpg",
     "preCgId": 0,
     "herostoryId": 0
@@ -3366,7 +3366,7 @@
     "name": "于门前",
     "nameEn": "At the Gates of Hell",
     "desc": "“你们来到这里，放弃一切希望。”",
-    "episodeId": 11113,
+    "episodeId": 1120,
     "image": "story_atcg/3_0/3_0_at_diyuzhimen.jpg",
     "preCgId": 0,
     "herostoryId": 0
@@ -3406,5 +3406,125 @@
     "image": "story_atcg/3_2/3_2_at_ys_madierda.jpg",
     "preCgId": 0,
     "herostoryId": 27
+  },
+  {
+    "id": 2001401,
+    "order": 0,
+    "storyChapterId": 14,
+    "name": "盘旋之隼",
+    "nameEn": "The Circling Falcon",
+    "desc": "即使在枪口前，隼的狩猎也从不扑空。",
+    "episodeId": 1201,
+    "image": "story_atcg/3_3/3_3_at_01.jpg",
+    "preCgId": 0,
+    "herostoryId": 0
+  },
+  {
+    "id": 2001402,
+    "order": 0,
+    "storyChapterId": 14,
+    "name": "进化的尝试",
+    "nameEn": "Evolutions in Disguise",
+    "desc": "一只尝试在草原上生活的招潮蟹，也许是物种进化的新可能。",
+    "episodeId": 1205,
+    "image": "story_atcg/3_3/3_3_at_05.jpg",
+    "preCgId": 0,
+    "herostoryId": 0
+  },
+  {
+    "id": 2001403,
+    "order": 0,
+    "storyChapterId": 14,
+    "name": "捕蟹法",
+    "nameEn": "Catch of the Day",
+    "desc": "相当“大”的收获。",
+    "episodeId": 1205,
+    "image": "story_atcg/3_3/3_3_at_06.jpg",
+    "preCgId": 2001402,
+    "herostoryId": 0
+  },
+  {
+    "id": 2001404,
+    "order": 0,
+    "storyChapterId": 14,
+    "name": "仇恨",
+    "nameEn": "Hatred",
+    "desc": "一种病症，潜伏在痛苦之中，引发愤怒与死亡，并以射出的子弹作为传播途径。",
+    "episodeId": 11209,
+    "image": "story_atcg/3_3/3_3_at_12.jpg",
+    "preCgId": 0,
+    "herostoryId": 0
+  },
+  {
+    "id": 2001405,
+    "order": 0,
+    "storyChapterId": 14,
+    "name": "叫醒方式",
+    "nameEn": "The Call to Arms",
+    "desc": "谢天谢地，你在下一轮立体环绕式“闹铃”炸响之前醒过来了。",
+    "episodeId": 1211,
+    "image": "story_atcg/3_3/3_3_at_11.jpg",
+    "preCgId": 0,
+    "herostoryId": 0
+  },
+  {
+    "id": 2001406,
+    "order": 0,
+    "storyChapterId": 14,
+    "name": "目送",
+    "nameEn": "Witnesses",
+    "desc": "我们在此见证，燎原之火如何燃起。",
+    "episodeId": 11214,
+    "image": "story_atcg/3_3/3_3_at_10.jpg",
+    "preCgId": 0,
+    "herostoryId": 0
+  },
+  {
+    "id": 2001407,
+    "order": 0,
+    "storyChapterId": 14,
+    "name": "在骑士背后",
+    "nameEn": "Knightly Vows",
+    "desc": "\n她用脊背隔开了黑暗与光明。",
+    "episodeId": 1216,
+    "image": "story_atcg/3_3/3_3_at_08.jpg",
+    "preCgId": 0,
+    "herostoryId": 0
+  },
+  {
+    "id": 2001408,
+    "order": 0,
+    "storyChapterId": 14,
+    "name": "天职",
+    "nameEn": "Her Duty",
+    "desc": "关于拯救的故事，在雪地中，或是白蜡木板后。\n这些故事中的怜悯别无二致。",
+    "episodeId": 1216,
+    "image": "story_atcg/3_3/3_3_at_09.jpg",
+    "preCgId": 2001407,
+    "herostoryId": 0
+  },
+  {
+    "id": 2001409,
+    "order": 0,
+    "storyChapterId": 14,
+    "name": "诘问",
+    "nameEn": "Through Gritted Teeth",
+    "desc": "往日罪孽时时抵住他的后脑，施以诘问，远不止今日。",
+    "episodeId": 11225,
+    "image": "story_atcg/3_3/3_3_at_23.jpg",
+    "preCgId": 0,
+    "herostoryId": 0
+  },
+  {
+    "id": 102801,
+    "order": 0,
+    "storyChapterId": 1028,
+    "name": "只有琴声知晓",
+    "nameEn": "Only the Dombra Knows",
+    "desc": "那些未说出口的告别，就请琴声替我送达远方。",
+    "episodeId": 0,
+    "image": "story_atcg/3_3/3_3_at_ys_molideer.jpg",
+    "preCgId": 0,
+    "herostoryId": 28
   }
 ]

@@ -1,0 +1,98 @@
+[
+  {
+    "skillID": 20001,
+    "skillType": 2,
+    "condition": "1",
+    "skilldesc": "对比目标小球质量，大的吃掉小的",
+    "effects": "CompareWeight#1",
+    "cd": 0
+  },
+  {
+    "skillID": 20002,
+    "skillType": 2,
+    "condition": "1",
+    "skilldesc": "减少目标小球速度50点，持续5秒",
+    "effects": "AddSpeed#-50#5000",
+    "cd": 0
+  },
+  {
+    "skillID": 30001,
+    "skillType": 2,
+    "condition": "2#5",
+    "skilldesc": "吃掉目标，同时增加20点质量",
+    "effects": "Weightadd#20",
+    "cd": 0
+  },
+  {
+    "skillID": 30002,
+    "skillType": 2,
+    "condition": "7",
+    "skilldesc": "吃掉目标，同时增加1点质量",
+    "effects": "Weightadd#1",
+    "cd": 0
+  },
+  {
+    "skillID": 30003,
+    "skillType": 2,
+    "condition": "1",
+    "skilldesc": "对比目标小球质量，大的减去小的",
+    "effects": "CompareWeight#2",
+    "cd": 0
+  },
+  {
+    "skillID": 30004,
+    "skillType": 2,
+    "condition": "1",
+    "skilldesc": "增加1点绝望点数，持续5秒",
+    "effects": "AddBuff#1#5000",
+    "cd": 0
+  },
+  {
+    "skillID": 40001,
+    "skillType": 2,
+    "condition": "1",
+    "skilldesc": "反弹小球，强制赋予1000速度，同时失控1.5秒",
+    "effects": "UnControl#1500#500",
+    "cd": 0
+  },
+  {
+    "skillID": 50001,
+    "skillType": 2,
+    "condition": "1",
+    "skilldesc": "对比目标小球质量，大的减去小的",
+    "effects": "CompareWeight#2",
+    "cd": 0
+  },
+  {
+    "skillID": 60001,
+    "skillType": 2,
+    "condition": "1",
+    "skilldesc": "死亡",
+    "effects": "Kill",
+    "cd": 0
+  },
+  {
+    "skillID": 70001,
+    "skillType": 2,
+    "condition": "1",
+    "skilldesc": "自己的质量赋予对方",
+    "effects": "AddWeight",
+    "cd": 0
+  },
+  {
+    "skillID": 10002,
+    "skillType": 1,
+    "condition": "1",
+    "skilldesc": "2秒内提升内核的移动速度",
+    "effects": "AddSpeed#100#3000",
+    "cd": 10
+  },
+  {
+    "skillID": 10001,
+    "skillType": 1,
+    "condition": "2#7",
+    "skilldesc": "吸附一定范围内情绪碎片与空虚情绪",
+    "effects": "Adsorb#200#1000",
+    "cd": 10
+  }
+]

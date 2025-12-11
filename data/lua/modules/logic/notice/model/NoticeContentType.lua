@@ -4,6 +4,7 @@ module("modules.logic.notice.model.NoticeContentType", package.seeall)
 
 local NoticeContentType = _M
 
+NoticeContentType.LangType = 0
 NoticeContentType.TxtTopTitle = 1
 NoticeContentType.TxtContent = 3
 NoticeContentType.ImgInner = 4

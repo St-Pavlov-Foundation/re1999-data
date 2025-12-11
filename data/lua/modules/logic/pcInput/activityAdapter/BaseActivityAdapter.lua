@@ -8,6 +8,11 @@ function BaseActivityAdapter:ctor()
 	self.keytoFunction = {}
 	self.activitid = nil
 	self._registeredKey = {}
+	self._priorty = 0
+end
+
+function BaseActivityAdapter:getPriorty()
+	return self._priorty or 0
 end
 
 function BaseActivityAdapter:registerFunction()
@@ -50,8 +55,6 @@ function BaseActivityAdapter:OnkeyDown(keyName)
 	local keyid = PCInputModel.instance:getkeyidBykeyName(self.activitid, keyName)
 
 	if not keyid then
-		logError("keyName not exist in keyBinding")
-
 		return
 	end
 

@@ -9465,7 +9465,7 @@
   },
   {
     "id": "p_versionsummonfudaihalfview_txt_2",
-    "lang": "角色已邀请"
+    "lang": "已获取所有金纺团"
   },
   {
     "id": "p_versionsummonfudaihalfview_txt_tips",
@@ -9485,7 +9485,7 @@
   },
   {
     "id": "p_versionsummonfudaigetview_txt_get",
-    "lang": "获得金纺结"
+    "lang": "获得金纺团"
   },
   {
     "id": "p_versionsummonfudaigetview_txt_name",
@@ -9501,7 +9501,7 @@
   },
   {
     "id": "p_summonluckybagdetaildescview_tips",
-    "lang": "金纺结I、金纺结II 各占金纺结出率的50%"
+    "lang": "金纺团I、金纺团II，各占金纺团出率的50%"
   },
   {
     "id": "p_character_detect",
@@ -15621,7 +15621,7 @@
   },
   {
     "id": "p_towermainview_txt_reward",
-    "lang": "悬想偶得"
+    "lang": "启蒙观测站"
   },
   {
     "id": "p_towermainview_txt_bossEpisode",
@@ -16753,7 +16753,7 @@
   },
   {
     "id": "p_v2a4_giftrecommendview3_txt_shopnamecn1",
-    "lang": "白雪的向往"
+    "lang": "星铃回旋曲"
   },
   {
     "id": "p_v2a4_giftrecommendview3_txt_shopnamecn2",
@@ -18369,7 +18369,7 @@
   },
   {
     "id": "p_towerstoreview_txt_task",
-    "lang": "悬想偶得"
+    "lang": "启蒙观测站"
   },
   {
     "id": "p_towermainview_txt_store",
@@ -22729,7 +22729,7 @@
   },
   {
     "id": "p_releasegiftview_txt_title",
-    "lang": "蜜酒始酿之宴"
+    "lang": "众生欢歌之宴"
   },
   {
     "id": "p_releasegiftview_txt_tips_1",
@@ -24517,11 +24517,11 @@
   },
   {
     "id": "p_v3a2_warmup_txt_WrongChannel",
-    "lang": "深入骑兵的营帐，探寻他们人生的一隅。"
+    "lang": "查看UTTU东方游记特辑"
   },
   {
     "id": "p_v3a2_warmup_txt_tips",
-    "lang": "向下滑动打开营帐中的柜子"
+    "lang": "左划打开杂志浏览旅游板块"
   },
   {
     "id": "p_v3a2_bossrush_leveldetail_txt_bouns",
@@ -24878,5 +24878,673 @@
   {
     "id": "p_rouge2_comma",
     "lang": "，"
+  },
+  {
+    "id": "p_a12_reappear_mainactivity_enterview_txt_EntranceRole1",
+    "lang": "十月无晴天"
+  },
+  {
+    "id": "p_a12_reappear_mainactivity_enterview_txt_EntranceRole2",
+    "lang": "向雨林深处"
+  },
+  {
+    "id": "p_v3a3_doubledanactivity_fullview_txt_Title",
+    "lang": "今日奖励"
+  },
+  {
+    "id": "p_v3a3_doubledanactivity_fullview_txt_Unopen",
+    "lang": "未开放"
+  },
+  {
+    "id": "p_v3a3_summongetluckybag_txt_Title",
+    "lang": "最高返"
+  },
+  {
+    "id": "p_v3a3_summongetluckybagselectview_txt_Title",
+    "lang": "临时礼包名字"
+  },
+  {
+    "id": "p_v3a3_summongetluckybagselectview_txt_Descr",
+    "lang": "可在以下衣着中选择一个领取，领取重复衣着可转化为<sprite=0>1960"
+  },
+  {
+    "id": "p_tower_new_herogroup_buffview_txt_Schedule",
+    "lang": "研究进度："
+  },
+  {
+    "id": "p_turnback3_bpview_txt_rewardtips",
+    "lang": "赠纯雨滴×300"
+  },
+  {
+    "id": "p_turnback3_bpview_txt_hasbuy",
+    "lang": "已解锁再会特辑"
+  },
+  {
+    "id": "p_storyfrontview_strategy",
+    "lang": "战略图"
+  },
+  {
+    "id": "p_v3a3_igor_gameview_txt_skill1",
+    "lang": "<color=#F09087>策略</color>"
+  },
+  {
+    "id": "p_v3a3_igor_gameview_txt_skill2",
+    "lang": "<color=#C7E6CC>固防</color>"
+  },
+  {
+    "id": "p_v3a3_igor_enterview_txt_Enter",
+    "lang": "<size=58>步</size>入剧情"
+  },
+  {
+    "id": "p_v3a3_igor_gameview_txt_Destroy",
+    "lang": "摧毁敌方指挥部"
+  },
+  {
+    "id": "p_v3a3_eliminate_resultview_txt_room",
+    "lang": "通关数量"
+  },
+  {
+    "id": "p_v3a3_eliminate_resultview_txt_kill",
+    "lang": "击杀怪物数量"
+  },
+  {
+    "id": "p_v3a3_eliminate_resultview_txt_coins",
+    "lang": "累计获得像素金币数量"
+  },
+  {
+    "id": "p_v3a3_eliminate_resultview_txt_lv",
+    "lang": "最高评价"
+  },
+  {
+    "id": "p_v3a3_eliminate_handbook_lock",
+    "lang": "关卡遭遇后解锁"
+  },
+  {
+    "id": "p_v3a3_eliminate_handbook_lock2",
+    "lang": "终极对战中，战胜对应投币手解锁"
+  },
+  {
+    "id": "p_v3a3_eliminate_handbook_lock3",
+    "lang": "奇遇中，战胜对应投币手解锁"
+  },
+  {
+    "id": "p_v3a3_towerdeep_fullview_txt_title",
+    "lang": "新增个性化战斗模式"
+  },
+  {
+    "id": "p_v3a3_towerdeep_fullview_txt_task",
+    "lang": "可动态装载首领插件\n构建战斗优势"
+  },
+  {
+    "id": "p_v3a3_towerdeep_fullview_txt_title2",
+    "lang": "新增角色支援机制"
+  },
+  {
+    "id": "p_v3a3_towerdeep_fullview_txt_task2",
+    "lang": "可选支援协战角色"
+  },
+  {
+    "id": "p_v3a3_towerdeep_fullview_txt_title3",
+    "lang": "全新奖励已追加"
+  },
+  {
+    "id": "p_v3a3_towerdeep_fullview_txt_task3",
+    "lang": "新增：纯雨滴"
+  },
+  {
+    "id": "p_v3a3_towerdeep_fullview_text_msg",
+    "lang": "前往查看可领取奖励\n思潮之钥*3，特阶秘物*1等"
+  },
+  {
+    "id": "p_commandstation_relationshipboard_txt_Mark1",
+    "lang": "友好"
+  },
+  {
+    "id": "p_commandstation_relationshipboard_txt_Mark2",
+    "lang": "中立"
+  },
+  {
+    "id": "p_commandstation_relationshipboard_txt_Mark3",
+    "lang": "敌对"
+  },
+  {
+    "id": "p_commandstation_relationshipboard_txt_Team1",
+    "lang": "基金会"
+  },
+  {
+    "id": "p_commandstation_relationshipboard_txt_Team2",
+    "lang": "芝诺骑兵军"
+  },
+  {
+    "id": "p_commandstation_relationshipboard_txt_Team3",
+    "lang": "狮鹫军"
+  },
+  {
+    "id": "p_commandstation_relationshipboard_txt_Team4",
+    "lang": "重塑之手"
+  },
+  {
+    "id": "p_commandstation_relationshipboard_txt_Team5",
+    "lang": "？？？"
+  },
+  {
+    "id": "p_v3a3_marsha_gameview_txt_Pause",
+    "lang": "准备整理情绪"
+  },
+  {
+    "id": "p_v3a3_marsha_gameview_txt_Target",
+    "lang": "任务目标"
+  },
+  {
+    "id": "p_v3a3_molideer_letterview_txt_click",
+    "lang": "点击打开信封"
+  },
+  {
+    "id": "p_v3a3_molideer_gameview_txt_title",
+    "lang": "点击物件洞见自己的内心"
+  },
+  {
+    "id": "p_v3a3_molideer_gameview_txt_1",
+    "lang": "狗牌"
+  },
+  {
+    "id": "p_v3a3_molideer_gameview_txt_2",
+    "lang": "勋章"
+  },
+  {
+    "id": "p_v3a3_molideer_gameview_txt_3",
+    "lang": "平衡伞"
+  },
+  {
+    "id": "p_v3a3_molideer_gameview_txt_4",
+    "lang": "冬不拉"
+  },
+  {
+    "id": "p_v3a3_marsha_gamepauseview_txt_Pause",
+    "lang": "暂停中，点击空白继续"
+  },
+  {
+    "id": "p_fightsupportevent_ttx_Title",
+    "lang": "紧急支援"
+  },
+  {
+    "id": "p_fightsupportevent_txt_Fight",
+    "lang": "出击"
+  },
+  {
+    "id": "p_v3a3_eliminate_handbookview_txt_title",
+    "lang": "投币手详情"
+  },
+  {
+    "id": "p_v3a3_eliminate_rewardview_txt_dec",
+    "lang": "在“单向投币”中收集卡带，换取芭妮芭妮主题衣着-「侍者的一天」、「方块狂潮」主题头像、共鸣晶匣及养成材料等奖励。"
+  },
+  {
+    "id": "p_v3a3_versionsummonfudaihalfview_txt_tips",
+    "lang": "<#E88132>金纺团Ⅰ、Ⅱ</color>各可获取1次，获取后可自选其中角色<#E88132>*1！</color>"
+  },
+  {
+    "id": "p_v3a3_giftrecommendview_txt_shopnamecn1",
+    "lang": "骑兵的赠礼"
+  },
+  {
+    "id": "p_v3a3_giftrecommendview_txt_shopnamecn2",
+    "lang": "顿河的收获"
+  },
+  {
+    "id": "p_v3a3_giftrecommendview_txt_shopnamecn3",
+    "lang": "神秘学潮汐"
+  },
+  {
+    "id": "p_v3a3_giftrecommendview_txt_shopnamecn4",
+    "lang": "农人的赠礼"
+  },
+  {
+    "id": "p_v3a3_giftrecommendview_txt_shopnamecn5",
+    "lang": "灯芯屋馈赠"
+  },
+  {
+    "id": "p_v3a3_giftrecommendview_txt_shopnamecn6",
+    "lang": "骑兵的赠礼"
+  },
+  {
+    "id": "p_skindiscountcompensateactivityview_txt_Reward1",
+    "lang": "六星自选皮肤礼盒"
+  },
+  {
+    "id": "p_skindiscountcompensateactivityview_txt_Reward2",
+    "lang": "五星自选皮肤礼盒"
+  },
+  {
+    "id": "p_commandstation_enterview_txt_relationshipboard",
+    "lang": "群像分析"
+  },
+  {
+    "id": "p_tower_new_enter_txt1",
+    "lang": "挑战首领更新"
+  },
+  {
+    "id": "p_tower_new_enter_txt2",
+    "lang": "臆想潮"
+  },
+  {
+    "id": "p_tower_new_theme_txt1",
+    "lang": "最高投射值"
+  },
+  {
+    "id": "p_tower_new_theme_txt2",
+    "lang": "支援角色"
+  },
+  {
+    "id": "p_tower_new_theme_txt3",
+    "lang": "加成角色：编队中使用下列角色，可提高挑战投射值"
+  },
+  {
+    "id": "p_tower_new_theme_txt4",
+    "lang": "支援角色：可邀请下列角色支援协战，提供增益效果"
+  },
+  {
+    "id": "p_tower_new_theme_txt5",
+    "lang": "通关解锁"
+  },
+  {
+    "id": "p_tower_new_theme_txt6",
+    "lang": "暂未挑战"
+  },
+  {
+    "id": "p_tower_new_theme_txt7",
+    "lang": "常驻奖励"
+  },
+  {
+    "id": "p_tower_new_theme_txt8",
+    "lang": "限时奖励"
+  },
+  {
+    "id": "p_tower_new_theme_txt9",
+    "lang": "完成任务获得哲思启发"
+  },
+  {
+    "id": "p_tower_new_theme_txt10",
+    "lang": "收起关卡"
+  },
+  {
+    "id": "p_tower_new_theme_txt11",
+    "lang": "展开关卡"
+  },
+  {
+    "id": "p_playercardgetview_txt_title",
+    "lang": "旅券集"
+  },
+  {
+    "id": "p_bpface_skinfestivalview_txt_tips",
+    "lang": "点击翻动日历"
+  },
+  {
+    "id": "p_bpface_skinfestivalview_txt_title1",
+    "lang": "《岁月的书签》新的一页"
+  },
+  {
+    "id": "p_bpface_skinfestivalview_txt_title2",
+    "lang": "《惊魂夜颂歌》为那不被祝福，不被关照，不被重视的，献上小小的礼物。"
+  },
+  {
+    "id": "p_bpface_skinfestivalview_txt_title3",
+    "lang": "前往衣着风尚"
+  },
+  {
+    "id": "p_v3a3_molideer_gameview_txt_fire",
+    "lang": "请连续点击篝火生火"
+  },
+  {
+    "id": "p_versionsummonfudaihalfview_txt_3",
+    "lang": "点击金纺团进行邀请"
+  },
+  {
+    "id": "p_v3a3_towerdeep_panelview_txt_new",
+    "lang": "全新雨中悬想玩法"
+  },
+  {
+    "id": "p_fightquittipview_txt_rougeTarget",
+    "lang": "攻击首领获得<#D9A06F>谐波"
+  },
+  {
+    "id": "p_fighttowercomposeplane_txt_dec",
+    "lang": "当前位面"
+  },
+  {
+    "id": "p_v3a3_versionsummon100summonview_txt_tips1",
+    "lang": "自选角色出现概率UP！！"
+  },
+  {
+    "id": "p_v3a3_versionsummon100summonview_txt_tips2",
+    "lang": "每日赠送十连，共赠送<#fff4ad><size=99>100</size>次</color>抽取!!"
+  },
+  {
+    "id": "p_v3a3_versionsummon100summonview_txt_tips4",
+    "lang": "今日首次免费"
+  },
+  {
+    "id": "p_toweradvancedsecondplanestart_txt_dec",
+    "lang": "进入里象挑战"
+  },
+  {
+    "id": "p_towercomposeherogroupbuffview_txt_title",
+    "lang": "可邀请下列角色支援协战，提供增益效果\n主动技能每回合回复1点能量，被动效果达成条件时触发"
+  },
+  {
+    "id": "p_towercomposeherogroupbuffview_txt_name",
+    "lang": "名字"
+  },
+  {
+    "id": "p_towercomposeherogroupview_txt_dec1",
+    "lang": "表象挑战"
+  },
+  {
+    "id": "p_towercomposeherogroupview_txt_dec2",
+    "lang": "里象挑战"
+  },
+  {
+    "id": "p_towercomposemodequipview_txt_name1",
+    "lang": "首领部位"
+  },
+  {
+    "id": "p_towercomposemodequipview_txt_name2",
+    "lang": "附加条件"
+  },
+  {
+    "id": "p_towercomposemodequipview_txt_name3",
+    "lang": "战场环境"
+  },
+  {
+    "id": "p_towercomposemodequipview_txt_empty",
+    "lang": "未装配战场环境"
+  },
+  {
+    "id": "p_towercomposemodequipview_txt_tips",
+    "lang": "调整战斗环境并击败首领，以获得更高投射值"
+  },
+  {
+    "id": "p_towercomposeroleview_txt_dec1",
+    "lang": "支援角色：可邀请下列角色支援协战，提供增益效果"
+  },
+  {
+    "id": "p_towercomposeroleview_txt_dec2",
+    "lang": "加成角色：编队中使用下列角色，可提高挑战投射值"
+  },
+  {
+    "id": "p_towercomposethemeview_txt_score",
+    "lang": "基础投射值"
+  },
+  {
+    "id": "p_v2a2_lopera_levelview_txt_lianjin",
+    "lang": "炼金"
+  },
+  {
+    "id": "p_v2a2_lopera_levelview_txt_dec1",
+    "lang": "该选择前进的方向了"
+  },
+  {
+    "id": "p_v2a2_lopera_levelview_txt_dec2",
+    "lang": "该如何抉择？"
+  },
+  {
+    "id": "p_v3a3_eliminate_herotipsview_txt_chat",
+    "lang": "闲聊"
+  },
+  {
+    "id": "p_v3a3_igor_gameview_txt_tips",
+    "lang": "选择下方兵种，拖动松开后放置在任意位置"
+  },
+  {
+    "id": "p_hundredsummoncustomview_progress",
+    "lang": "<#f67f46>▩1%s</color>次征集后必出<#f67f46>6</color>星"
+  },
+  {
+    "id": "p_v3a3_eliminate_talentview_light",
+    "lang": "点亮"
+  },
+  {
+    "id": "p_mainviem_image_free2",
+    "lang": "送十连"
+  },
+  {
+    "id": "p_v3a3_storeroleskinview2_roletxt1",
+    "lang": "惊魂夜颂歌"
+  },
+  {
+    "id": "p_v3a3_storeroleskinview2_rolename1",
+    "lang": "环状水星"
+  },
+  {
+    "id": "p_v3a3_maersha_help_1_txt_1",
+    "lang": "<#e4a271><size=30>内核</size></color><br>玩家控制的情绪类型，需要按照关卡目标同化情绪比重低于自身的负面情绪。"
+  },
+  {
+    "id": "p_v3a3_maersha_help_1_txt_2",
+    "lang": "<#e4a271><size=30>空虚</size></color><br>可被同化，同化后会增加相同数量的情绪比重，同时在一定时间内降低速度。"
+  },
+  {
+    "id": "p_v3a3_maersha_help_1_txt_3",
+    "lang": "<#e4a271><size=30>愧疚</size></color><br>可被同化，同化后会消耗相同数量的情绪比重"
+  },
+  {
+    "id": "p_v3a3_maersha_help_1_txt_4",
+    "lang": "<#e4a271><size=30>情绪碎片</size></color><br>可被同化，同化后将会增加少量的情绪比重。"
+  },
+  {
+    "id": "p_v3a3_maersha_help_1_txt_5",
+    "lang": "<#e4a271><size=30>敌意</size></color><br>无法被同化，碰撞后会击退内核，导致其在一段时间内失去控制。"
+  },
+  {
+    "id": "p_v3a3_maersha_help_1_txt_6",
+    "lang": "<#e4a271><size=30>崩溃</size></color><br>无法被同化，碰撞后会令内核产生崩溃，导致立即失败。"
+  },
+  {
+    "id": "p_v3a3_maersha_help_1_txt_7",
+    "lang": "<#e4a271><size=30>焦虑</size></color><br>可被同化，同化后会消耗相同数量的情绪比重并且累计1层压力阈值，当压力阈值到达5时会导致失败，压力阈值会在一定的时间后消失；自身会同化空虚、愧疚和情绪碎片从而增加情绪比重。"
+  },
+  {
+    "id": "p_v3a3_maersha_help_2_txt_1",
+    "lang": "需要在<#ff906a>特定时间</color>内达成目标"
+  },
+  {
+    "id": "p_v3a3_maersha_help_2_txt_2",
+    "lang": "显示关卡的通关目标"
+  },
+  {
+    "id": "p_v3a3_maersha_help_2_txt_3",
+    "lang": "显示不同情绪的<#ff906a>情绪比重</color>，低比重会被高比重同化。"
+  },
+  {
+    "id": "p_v3a3_maersha_help_2_txt_4",
+    "lang": "通过摇杆控制内核吸收不同类型的<#ff906a>负面情绪</color>"
+  },
+  {
+    "id": "p_v3a3_maersha_help_2_txt_5",
+    "lang": "可以使用的能力，需要<#ff906a>间隔特定的时间</color>"
+  },
+  {
+    "id": "p_v3a3_marsha_gameview_Skill1_Name",
+    "lang": "强制同化"
+  },
+  {
+    "id": "p_v3a3_marsha_gameview_Skill1_Descr",
+    "lang": "可以同化内核周围的情绪碎片和空虚情绪，冷却时间10秒。"
+  },
+  {
+    "id": "p_v3a3_marsha_gameview_Skill2_Name",
+    "lang": "提速"
+  },
+  {
+    "id": "p_v3a3_marsha_gameview_Skill2_Descr",
+    "lang": "短时间内增加内核的移动速度，冷却时间10秒。"
+  },
+  {
+    "id": "p_commandstation_dungeonmapenteritem_txt_relationship",
+    "lang": "群像分析"
+  },
+  {
+    "id": "p_commandstation_dungeonmapenteritem_txt_update",
+    "lang": "线索更新"
+  },
+  {
+    "id": "p_v3a3_commandstation_help_1_title",
+    "lang": "《远征记》棋子说明"
+  },
+  {
+    "id": "p_v3a3_commandstation_help_1_txt_1",
+    "lang": "骑兵军主力"
+  },
+  {
+    "id": "p_v3a3_commandstation_help_1_txt_2",
+    "lang": "敌军主力"
+  },
+  {
+    "id": "p_v3a3_commandstation_help_1_txt_3",
+    "lang": "狮鹫军主力"
+  },
+  {
+    "id": "p_v3a3_commandstation_help_1_txt_4",
+    "lang": "行进路线"
+  },
+  {
+    "id": "p_v3a3_commandstation_help_1_txt_5",
+    "lang": "骑兵军小队"
+  },
+  {
+    "id": "p_v3a3_commandstation_help_1_txt_6",
+    "lang": "敌军小队"
+  },
+  {
+    "id": "p_v3a3_commandstation_help_1_txt_7",
+    "lang": "狮鹫军小队"
+  },
+  {
+    "id": "p_v3a3_commandstation_help_2_title",
+    "lang": "沙盘事件类型"
+  },
+  {
+    "id": "p_v3a3_commandstation_help_2_txt_1",
+    "lang": "节点：记录了时间点上发生重要事件。"
+  },
+  {
+    "id": "p_v3a3_commandstation_help_2_txt_2",
+    "lang": "见闻：以对话的形式去记录一下发生在时间点上事件。"
+  },
+  {
+    "id": "p_v3a3_commandstation_help_2_txt_3",
+    "lang": "遭遇：记录了事件点上发生的一些外围事件。"
+  },
+  {
+    "id": "p_v3a3_commandstation_help_2_txt_4",
+    "lang": "派遣：需要经过派遣角色来获得信息的事件。"
+  },
+  {
+    "id": "p_v3a3_commandstation_help_2_txt_5",
+    "lang": "人物：以特定人物为视角核心的事件类型，会存在独立的人物动线。"
+  },
+  {
+    "id": "p_v3a3_commandstation_help_3_txt_1",
+    "lang": "沙盘解构：通关《故事的根须》系列中主线章节后，章节中故事发生的时间点将会被记录至沙盘中。通过沙盘可以查看已记录的时间与地点中所发生过的事件，也能了解对应人物在事件中的行动轨迹。"
+  },
+  {
+    "id": "p_v3a3_commandstation_help_3_txt_2",
+    "lang": "函电汇报：到《故事的根须》系列故事结束为止，每个版本都将在这里更新「解构进程」任务，完成任务可获得“密函卷轴”。随着收集的卷轴数量增加，可以获得更多奖励。"
+  },
+  {
+    "id": "p_v3a3_commandstation_help_3_txt_3",
+    "lang": "群像分析：从《远征记》开始，这里会记录《故事的根须》系列故事中的对应人物关系和情报线索。随着剧情推进，记录的信息也会持续解锁更新。"
+  },
+  {
+    "id": "p_v3a3_tower_help_title",
+    "lang": "臆想潮玩法说明"
+  },
+  {
+    "id": "p_v3a3_tower_help1_txt1",
+    "lang": "1.不断通关常规关卡，解锁首领挑战与更多关卡"
+  },
+  {
+    "id": "p_v3a3_tower_help1_txt2",
+    "lang": "2.臆想潮的所有关卡，会带有始终生效的全局效果"
+  },
+  {
+    "id": "p_v3a3_tower_help1_txt3",
+    "lang": "3.部分常规关卡成功通关时，可解锁各种首领插件"
+  },
+  {
+    "id": "p_v3a3_tower_help2_txt1",
+    "lang": "1.通关一定数量的常规关卡后，将会解锁首领挑战"
+  },
+  {
+    "id": "p_v3a3_tower_help2_txt2",
+    "lang": "2.首领挑战时，可选择支援角色协助战斗"
+  },
+  {
+    "id": "p_v3a3_tower_help3_txt1",
+    "lang": "在特定条件下挑战首领胜利，可获得哲思启发，进而解锁多种增益效果"
+  },
+  {
+    "id": "p_v3a3_tower_help4_txt1",
+    "lang": "1.装载不同的插件，提高挑战首领胜利时，可获得的投射值"
+  },
+  {
+    "id": "p_v3a3_tower_help4_txt2",
+    "lang": "2.不断挑战首领，并满足多种任务要求，获得奖励"
+  },
+  {
+    "id": "p_v3a3_tower_help5_txt1",
+    "lang": "1.尝试装载不同的插件，并完成更高难度的挑战"
+  },
+  {
+    "id": "p_v3a3_tower_help5_txt2",
+    "lang": "2.查看规则说明，了解插件对首领强度的关卡收益影响"
+  },
+  {
+    "id": "p_v3a3_tower_help6_txt1",
+    "lang": "1.装载不同插件，首领外形、强度、技能、环境等均会随之改变"
+  },
+  {
+    "id": "p_v3a3_tower_help6_txt2",
+    "lang": "2.挑战更强大的首领可获得更多投射值"
+  },
+  {
+    "id": "p_v3a3_tower2_fight_help_1_title",
+    "lang": "显梦/隐梦玩法说明"
+  },
+  {
+    "id": "p_v3a3_tower2_fight_help_1_txt1",
+    "lang": "显梦点数可通过特殊规则获取"
+  },
+  {
+    "id": "p_v3a3_tower2_fight_help_1_txt2",
+    "lang": "隐梦点数可通过特殊规则获取"
+  },
+  {
+    "id": "p_v3a3_tower2_fight_help_1_txt3",
+    "lang": "当点数达到上限时，若显梦点数＞隐梦点数，则开启显梦"
+  },
+  {
+    "id": "p_v3a3_tower2_fight_help_1_txt4",
+    "lang": "当点数达到上限时，若隐梦点数＞显梦点数，则开启隐梦"
+  },
+  {
+    "id": "p_v3a3_eliminate_resultview_txt_tape",
+    "lang": "图鉴解锁获得卡带数量"
+  },
+  {
+    "id": "p_v3a3_eliminate_resultview_txt_tips",
+    "lang": "已解锁新投币手"
+  },
+  {
+    "id": "p_packagestore_txt_skindiscount",
+    "lang": "最高返<sprite=0>1960"
+  },
+  {
+    "id": "p_v3a3_storeblockpackageview_desc",
+    "lang": "*集齐当期<#c7a64e>活动兑换</color>及<#c7a64e>荒原构\n 想商店</color>的主题套装后可获取"
+  },
+  {
+    "id": "p_v3a3_storeblockpackageview_name",
+    "lang": "旅途的终点"
   }
 ]

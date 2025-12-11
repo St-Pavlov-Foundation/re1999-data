@@ -97,7 +97,29 @@ function BattleActivityAdapter:OnkeyUp(keyName)
 		return
 	end
 
+	if GuideModel.instance:isDoingClickGuide() or not GuideModel.instance:isGuideFinish(102) then
+		return
+	end
+
 	BaseActivityAdapter.OnkeyUp(self, keyName)
+end
+
+function BattleActivityAdapter:OnkeyDown(keyName)
+	local config = PCInputModel.instance:getkeyconfigBykeyName(PCInputModel.Activity.battle, keyName)
+
+	if not config then
+		return
+	end
+
+	if ViewMgr.instance:IsPopUpViewOpen() then
+		return
+	end
+
+	if GuideModel.instance:isDoingClickGuide() or not GuideModel.instance:isGuideFinish(102) then
+		return
+	end
+
+	BaseActivityAdapter.OnkeyDown(self, keyName)
 end
 
 return BattleActivityAdapter

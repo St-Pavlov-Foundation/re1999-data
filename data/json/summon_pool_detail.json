@@ -48,7 +48,7 @@
     "id": 6,
     "desc": "",
     "info": "809",
-    "name": "湖的邀约",
+    "name": "湖的许诺",
     "historyShowType": 0,
     "order": 40,
     "openId": 11
@@ -222,6 +222,15 @@
     "name": "金纺轮",
     "historyShowType": 0,
     "order": 40,
+    "openId": 11
+  },
+  {
+    "id": 24,
+    "desc": "",
+    "info": "83302",
+    "name": "度朔飞琼",
+    "historyShowType": 0,
+    "order": 2,
     "openId": 11
   }
 ]

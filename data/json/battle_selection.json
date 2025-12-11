@@ -1,0 +1,52 @@
+[
+  {
+    "id": 3303011,
+    "title": "迂回作战",
+    "desc": "绕过冲锋部队，看看情况",
+    "icon": 300101,
+    "confirm": "开始作战",
+    "nextSelect": "3303012",
+    "autoUse1": 10,
+    "autoUse2": 10
+  },
+  {
+    "id": 3303012,
+    "title": "正面突破",
+    "desc": "正面突破敌人的阵列",
+    "icon": 560101,
+    "confirm": "开始作战",
+    "nextSelect": "",
+    "autoUse1": 10,
+    "autoUse2": 10
+  },
+  {
+    "id": 3303013,
+    "title": "伺机而动",
+    "desc": "暂不进攻，先观察下情况",
+    "icon": 300101,
+    "confirm": "开始作战",
+    "nextSelect": "",
+    "autoUse1": 10,
+    "autoUse2": 10
+  },
+  {
+    "id": 3303014,
+    "title": "最后的术式",
+    "desc": "在当前地区进行【空中增援】攻击格鲁托夫，对敌方全体造成最大生命*20%的本源创伤，驱散其所有【吟诵】状态",
+    "icon": 516401,
+    "confirm": "开始作战",
+    "nextSelect": "",
+    "autoUse1": 10,
+    "autoUse2": 10
+  },
+  {
+    "id": 3303015,
+    "title": "支援全局",
+    "desc": "在其他地区进行【空中增援】，使战线进度降低30%",
+    "icon": 529613,
+    "confirm": "开始作战",
+    "nextSelect": "",
+    "autoUse1": 10,
+    "autoUse2": 10
+  }
+]

@@ -51,6 +51,7 @@ function FightSkillSelectView:addEvents()
 	self:addEventCb(FightController.instance, FightEvent.StartReplay, self._removeAllEvent, self)
 	self:addEventCb(FightController.instance, FightEvent.SetIsShowUI, self._setIsShowUI, self)
 	self:addEventCb(FightController.instance, FightEvent.OnRestartStageBefore, self._onRestartStage, self)
+	self:addEventCb(FightController.instance, FightEvent.OnSwitchPlaneClearAsset, self._onSwitchPlaneClearAsset, self)
 	self:addEventCb(FightController.instance, FightEvent.OnSkillPlayStart, self._onSkillPlayStart, self)
 	self:addEventCb(FightController.instance, FightEvent.OnSkillTimeLineDone, self._onSkillTimeLineDone, self)
 	self:addEventCb(FightController.instance, FightEvent.SetEntityVisibleByTimeline, self._setEntityVisibleByTimeline, self)
@@ -70,6 +71,7 @@ function FightSkillSelectView:removeEvents()
 	self:removeEventCb(FightController.instance, FightEvent.StartReplay, self._removeAllEvent, self)
 	self:removeEventCb(FightController.instance, FightEvent.SetIsShowUI, self._setIsShowUI, self)
 	self:removeEventCb(FightController.instance, FightEvent.OnRestartStageBefore, self._onRestartStage, self)
+	self:removeEventCb(FightController.instance, FightEvent.OnSwitchPlaneClearAsset, self._onSwitchPlaneClearAsset, self)
 	self:removeEventCb(FightController.instance, FightEvent.OnSkillPlayStart, self._onSkillPlayStart, self)
 	self:removeEventCb(FightController.instance, FightEvent.OnSkillTimeLineDone, self._onSkillTimeLineDone, self)
 	self:removeEventCb(FightController.instance, FightEvent.SetEntityVisibleByTimeline, self._setEntityVisibleByTimeline, self)
@@ -301,6 +303,10 @@ function FightSkillSelectView:_onClickDown(param, screenPosition)
 end
 
 function FightSkillSelectView:checkCanSelect(entityId)
+	if FightDataHelper.tempMgr.canNotSelectEntityIdDic[entityId] then
+		return false
+	end
+
 	local entityData = FightDataHelper.entityMgr:getById(entityId)
 
 	if entityData:isAct191Boss() then
@@ -640,6 +646,13 @@ function FightSkillSelectView:_playSelectAnim()
 end
 
 function FightSkillSelectView:_onRestartStage()
+	gohelper.setActive(self._containerGO, false)
+	self:removeLateUpdate()
+
+	self.started = nil
+end
+
+function FightSkillSelectView:_onSwitchPlaneClearAsset()
 	gohelper.setActive(self._containerGO, false)
 	self:removeLateUpdate()
 

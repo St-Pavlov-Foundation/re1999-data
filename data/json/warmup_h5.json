@@ -1,10 +1,22 @@
 [
   {
     "activityId": 13119,
-    "link": "https://re.bluepoch.com/event/aflowingfeast/"
+    "link": "https://re.bluepoch.com/event/aflowingfeast/",
+    "bgResUrl": ""
   },
   {
     "activityId": 13237,
-    "link": "https://re.bluepoch.com/event/riversidescouting/"
+    "link": "https://re.bluepoch.com/event/riversidescouting/",
+    "bgResUrl": ""
+  },
+  {
+    "activityId": 13303,
+    "link": "https://re.bluepoch.com/event/aflowingfeast/",
+    "bgResUrl": "singlebg_lang/txt_activity/activity_h5_banner.png"
+  },
+  {
+    "activityId": 13323,
+    "link": "https://re.bluepoch.com/event/uttu/",
+    "bgResUrl": "singlebg_lang/txt_activity/activity_h5_banner_zhoubian.png"
   }
 ]

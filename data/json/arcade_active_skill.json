@@ -1,0 +1,178 @@
+[
+  {
+    "id": 101,
+    "skillName": "“波茨炮”",
+    "skillDesc": "对像面朝的方向发动“波茨炮”，对该方向所有敌方单位造成2点必杀伤害",
+    "damage": 2,
+    "target": 204,
+    "icon": "v3a3_eliminate_skillicon_3_1",
+    "spellEffect": 689010022,
+    "bulletEffect": 689010025,
+    "hitEffect": 689010026
+  },
+  {
+    "id": 102,
+    "skillName": "哔哔配合混打",
+    "skillDesc": "召唤波拉比发动冲撞，对自身周围3行的所有敌方单位造成5点必杀伤害",
+    "damage": 5,
+    "target": 303,
+    "icon": "v3a3_eliminate_skillicon_4_1",
+    "spellEffect": 689010023,
+    "bulletEffect": 689010027,
+    "hitEffect": 0
+  },
+  {
+    "id": 103,
+    "skillName": "桑巴三重奏",
+    "skillDesc": "对随机4个敌方单位造成3点必杀伤害",
+    "damage": 3,
+    "target": 305,
+    "icon": "v3a3_eliminate_skillicon_5_1",
+    "spellEffect": 689010023,
+    "bulletEffect": 0,
+    "hitEffect": 689010019
+  },
+  {
+    "id": 104,
+    "skillName": "街头侦察（假）",
+    "skillDesc": "随机装备1件方块武装",
+    "damage": 0,
+    "target": 101,
+    "icon": "v3a3_eliminate_skillicon_2_1",
+    "spellEffect": 689010023,
+    "bulletEffect": 0,
+    "hitEffect": 0
+  },
+  {
+    "id": 105,
+    "skillName": "午夜魅影",
+    "skillDesc": "进入魅影状态，攻击时不会受到来自敌方单位的伤害，且额外攻击目标及其周围敌方单位，持续6次行动",
+    "damage": 0,
+    "target": 101,
+    "icon": "v3a3_eliminate_skillicon_1_1",
+    "spellEffect": 0,
+    "bulletEffect": 0,
+    "hitEffect": 0
+  },
+  {
+    "id": 106,
+    "skillName": "§自惩手镯",
+    "skillDesc": "",
+    "damage": 3,
+    "target": 307,
+    "icon": "",
+    "spellEffect": 0,
+    "bulletEffect": 0,
+    "hitEffect": 689010017
+  },
+  {
+    "id": 107,
+    "skillName": "§扎人的毛线帽",
+    "skillDesc": "",
+    "damage": 2,
+    "target": 308,
+    "icon": "",
+    "spellEffect": 0,
+    "bulletEffect": 0,
+    "hitEffect": 0
+  },
+  {
+    "id": 100015,
+    "skillName": "",
+    "skillDesc": "",
+    "damage": 3,
+    "target": 308,
+    "icon": "",
+    "spellEffect": 0,
+    "bulletEffect": 0,
+    "hitEffect": 0
+  },
+  {
+    "id": 100016,
+    "skillName": "",
+    "skillDesc": "",
+    "damage": 2,
+    "target": 705,
+    "icon": "",
+    "spellEffect": 0,
+    "bulletEffect": 0,
+    "hitEffect": 689010018
+  },
+  {
+    "id": 100017,
+    "skillName": "",
+    "skillDesc": "",
+    "damage": 9999,
+    "target": 307,
+    "icon": "",
+    "spellEffect": 0,
+    "bulletEffect": 0,
+    "hitEffect": 0
+  },
+  {
+    "id": 100018,
+    "skillName": "",
+    "skillDesc": "",
+    "damage": 3,
+    "target": 705,
+    "icon": "",
+    "spellEffect": 0,
+    "bulletEffect": 0,
+    "hitEffect": 689010018
+  },
+  {
+    "id": 100019,
+    "skillName": "",
+    "skillDesc": "",
+    "damage": 3,
+    "target": 708,
+    "icon": "",
+    "spellEffect": 0,
+    "bulletEffect": 0,
+    "hitEffect": 689010018
+  },
+  {
+    "id": 100020,
+    "skillName": "",
+    "skillDesc": "",
+    "damage": 3,
+    "target": 14,
+    "icon": "",
+    "spellEffect": 0,
+    "bulletEffect": 0,
+    "hitEffect": 0
+  },
+  {
+    "id": 100021,
+    "skillName": "",
+    "skillDesc": "",
+    "damage": 3,
+    "target": 15,
+    "icon": "",
+    "spellEffect": 0,
+    "bulletEffect": 0,
+    "hitEffect": 0
+  },
+  {
+    "id": 3309102,
+    "skillName": "熔岩带",
+    "skillDesc": "",
+    "damage": 2,
+    "target": 312,
+    "icon": "",
+    "spellEffect": 0,
+    "bulletEffect": 0,
+    "hitEffect": 689010039
+  },
+  {
+    "id": 3309103,
+    "skillName": "毒沼",
+    "skillDesc": "",
+    "damage": 1,
+    "target": 312,
+    "icon": "",
+    "spellEffect": 0,
+    "bulletEffect": 0,
+    "hitEffect": 689010040
+  }
+]

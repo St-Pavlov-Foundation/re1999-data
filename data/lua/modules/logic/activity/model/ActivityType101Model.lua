@@ -19,6 +19,14 @@ function ActivityType101Model:reInit()
 	self:setCurIndex(nil)
 end
 
+function ActivityType101Model:getCurIndex()
+	return self._curIndex
+end
+
+function ActivityType101Model:setCurIndex(index)
+	self._curIndex = index
+end
+
 function ActivityType101Model:setType101Info(info)
 	local data = {}
 	local infos = {}
@@ -81,14 +89,6 @@ function ActivityType101Model:getType101Info(actId)
 	return self._type101Info[actId].infos
 end
 
-function ActivityType101Model:getCurIndex()
-	return self._curIndex
-end
-
-function ActivityType101Model:setCurIndex(index)
-	self._curIndex = index
-end
-
 function ActivityType101Model:isType101RewardCouldGetAnyOne(actId)
 	local infos = self:getType101Info(actId)
 
@@ -130,7 +130,7 @@ function ActivityType101Model:isOpen(actId)
 end
 
 function ActivityType101Model:getLastGetIndex(actId)
-	local n = ActivityType101Model.instance:getType101LoginCount(actId)
+	local n = self:getType101LoginCount(actId)
 
 	if n == 0 then
 		return 0
@@ -264,7 +264,7 @@ function ActivityType101Model:isType101SpRewardCouldGetAnyOne(actId)
 end
 
 function ActivityType101Model:claimAll(actId, cb, cbObj)
-	local n = ActivityType101Model.instance:getType101LoginCount(actId)
+	local n = self:getType101LoginCount(actId)
 
 	if n == 0 then
 		if cb then
@@ -318,6 +318,16 @@ function ActivityType101Model:getFirstAvailableIndex(actId)
 	end
 
 	return 0
+end
+
+function ActivityType101Model:isDayOpen(actId, id)
+	if not id or not self:isInit(actId) then
+		return false
+	end
+
+	local n = self:getType101LoginCount(actId)
+
+	return id <= n
 end
 
 local k_Container = "_Container"

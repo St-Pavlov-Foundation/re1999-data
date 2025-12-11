@@ -18,6 +18,9 @@ function StoryFrontView:onInitView()
 	self._objskip = self._btnskip.gameObject
 	self._txtskip = gohelper.findChildTextMesh(self._gobtnright, "#btn_skip/txt_skip")
 	self._imageskip = gohelper.findChildImage(self._gobtnright, "#btn_skip/#image_skip")
+	self._gostrategy = gohelper.findChild(self._gobtnright, "#btn_strategy")
+	self._txtstrategy = gohelper.findChildTextMesh(self._gobtnright, "#btn_strategy/txt_strategy")
+	self._imagestrategy = gohelper.findChildImage(self._gobtnright, "#btn_strategy/#image_strategy")
 	self._gopvpause = gohelper.findChild(self.viewGO, "#go_pvpause")
 	self._pvpauseAnim = self._gopvpause:GetComponent(gohelper.Type_Animator)
 	self._btnpause = gohelper.findChildButtonWithAudio(self.viewGO, "#go_pvpause/#btn_Pause")
@@ -109,8 +112,12 @@ function StoryFrontView:_checkPvPlayRestart()
 	end
 end
 
+function StoryFrontView:_openOtherView()
+	return ViewMgr.instance:isOpen(ViewName.MessageBoxView) or ViewMgr.instance:isOpen(ViewName.CommandStationMapDisplayView)
+end
+
 function StoryFrontView:_btnlogOnClick()
-	if ViewMgr.instance:isOpen(ViewName.MessageBoxView) then
+	if self:_openOtherView() then
 		return
 	end
 
@@ -120,7 +127,7 @@ function StoryFrontView:_btnlogOnClick()
 end
 
 function StoryFrontView:_onKeyExit()
-	if ViewMgr.instance:isOpen(ViewName.MessageBoxView) then
+	if self:_openOtherView() then
 		return
 	end
 
@@ -131,7 +138,7 @@ function StoryFrontView:_onKeyExit()
 end
 
 function StoryFrontView:_btnhideOnClick()
-	if ViewMgr.instance:isOpen(ViewName.MessageBoxView) then
+	if self:_openOtherView() then
 		return
 	end
 
@@ -151,7 +158,7 @@ function StoryFrontView:_btnhideOnClick()
 end
 
 function StoryFrontView:_btnautoOnClick()
-	if ViewMgr.instance:isOpen(ViewName.MessageBoxView) then
+	if self:_openOtherView() then
 		return
 	end
 
@@ -188,7 +195,7 @@ end
 function StoryFrontView:_btnskipOnClick()
 	self:_checkPvPlayRestart()
 
-	if ViewMgr.instance:isOpen(ViewName.MessageBoxView) then
+	if self:_openOtherView() then
 		return
 	end
 
@@ -319,10 +326,6 @@ function StoryFrontView:_editableInitView()
 
 		self._frontItem:init(self._gofront)
 	end
-
-	if not self._exitBtn then
-		self._exitBtn = StoryExitBtn.New(self._goexit, self.resetRightBtnPos, self)
-	end
 end
 
 function StoryFrontView:onUpdateParam()
@@ -373,7 +376,7 @@ function StoryFrontView:onOpen()
 		gohelper.setActive(self._objskip, skipShow)
 	end
 
-	self:refreshExitBtn()
+	self:_refreshBtns()
 	NavigateMgr.instance:addSpace(ViewName.StoryFrontView, self._btnnextOnClick, self)
 	NavigateMgr.instance:addEscape(ViewName.StoryFrontView, self._onEscapeBtnClick, self)
 end
@@ -539,6 +542,8 @@ function StoryFrontView:_onUpdateUI(param)
 	SLFramework.UGUI.GuiHelper.SetColor(self._txtauto, color1)
 	SLFramework.UGUI.GuiHelper.SetColor(self._imageautooff, color2)
 	SLFramework.UGUI.GuiHelper.SetColor(self._imageautoon, color2)
+	SLFramework.UGUI.GuiHelper.SetColor(self._txtstrategy, color1)
+	SLFramework.UGUI.GuiHelper.SetColor(self._imagestrategy, color2)
 	SLFramework.UGUI.GuiHelper.SetColor(self._txtexit, color1)
 	SLFramework.UGUI.GuiHelper.SetColor(self._imageexit, color2)
 
@@ -556,7 +561,7 @@ function StoryFrontView:_onUpdateUI(param)
 		self._frontItem:showFullScreenText(false, "")
 	end
 
-	self:refreshExitBtn()
+	self:_refreshBtns()
 end
 
 function StoryFrontView:_isCgStep()
@@ -695,7 +700,7 @@ function StoryFrontView:_refreshNavigate(navs)
 	end
 
 	self:setBtnVisible(not hideBtns)
-	self:refreshExitBtn()
+	self:_refreshBtns()
 	StoryModel.instance:setHideBtns(hideBtns)
 
 	if #navCos > 0 then
@@ -768,10 +773,57 @@ function StoryFrontView:closeHideSkipTask()
 	TaskDispatcher.cancelTask(self._hideSkipBtn, self)
 end
 
-function StoryFrontView:refreshExitBtn()
-	if self._exitBtn then
-		self._exitBtn:refresh(self.btnVisible)
+function StoryFrontView:_refreshBtns()
+	self:_refreshExitBtn()
+	self:_refreshStrategyBtn()
+end
+
+function StoryFrontView:_refreshExitBtn()
+	if not self._exitBtn then
+		self._exitBtn = StoryExitBtn.New(self._goexit, self.resetRightBtnPos, self)
 	end
+
+	self._exitBtn:refresh(self.btnVisible)
+end
+
+function StoryFrontView:_refreshStrategyBtn()
+	local stepId = StoryModel.instance:getCurStepId()
+
+	if not stepId or stepId == 0 then
+		return
+	end
+
+	local stepCo = StoryStepModel.instance:getStepListById(stepId)
+
+	if not stepCo or #stepCo.navigateList == 0 then
+		return
+	end
+
+	for _, v in pairs(stepCo.navigateList) do
+		if v.navigateType == StoryEnum.NavigateType.StrategyStart then
+			self:_showStrategyBtn(v)
+		elseif v.navigateType == StoryEnum.NavigateType.StrategyEnd then
+			self:_hideStrategeBtn()
+		end
+	end
+end
+
+function StoryFrontView:_showStrategyBtn(navCo)
+	if not self._strategyBtn then
+		self._strategyBtn = StoryStrategyBtn.New(self._gostrategy)
+	end
+
+	self._strategyBtn:setBtnType(StoryEnum.StrategyBtnType.CmdPost)
+	self._strategyBtn:setParam(navCo.navigateChapterEn)
+	self._strategyBtn:showBtn()
+end
+
+function StoryFrontView:_hideStrategeBtn()
+	if not self._strategyBtn then
+		return
+	end
+
+	self._strategyBtn:hideBtn()
 end
 
 function StoryFrontView:resetRightBtnPos()
@@ -824,6 +876,12 @@ function StoryFrontView:onDestroyView()
 		self._exitBtn:destroy()
 
 		self._exitBtn = nil
+	end
+
+	if self._strategyBtn then
+		self._strategyBtn:destroy()
+
+		self._strategyBtn = nil
 	end
 end
 

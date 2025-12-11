@@ -5,9 +5,9 @@
     "listenerParam": "1,7",
     "typeId": 1,
     "gapHours": 1008,
-    "className": 3,
+    "className": 1,
     "desc": "快活的咆哮即将与你暂别。我们真诚邀请你再次前往银行，延续月历的奖赏与约定！",
-    "containedgoodsId": "610001#832006",
+    "containedgoodsId": "610001",
     "levelLimits": ""
   },
   {
@@ -16,9 +16,9 @@
     "listenerParam": "0,7",
     "typeId": 1,
     "gapHours": 1008,
-    "className": 3,
+    "className": 1,
     "desc": "你已与快活的咆哮告别数日。我们真诚邀请你再次前往银行，延续月历的奖赏与约定！",
-    "containedgoodsId": "610001#832006",
+    "containedgoodsId": "610001",
     "levelLimits": ""
   },
   {
@@ -27,9 +27,9 @@
     "listenerParam": "8,42",
     "typeId": 1,
     "gapHours": 1008,
-    "className": 3,
+    "className": 1,
     "desc": "你已与快活的咆哮告别数日。我们真诚邀请你再次前往银行，延续月历的奖赏与约定！",
-    "containedgoodsId": "610001#832006",
+    "containedgoodsId": "610001",
     "levelLimits": ""
   },
   {

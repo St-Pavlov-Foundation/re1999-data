@@ -35,8 +35,11 @@ function SummonLuckyBagController:skipOpenGetLuckyBag(luckyBagId, poolId)
 		return
 	end
 
+	local luckyBagList = {
+		luckyBagId
+	}
 	local param = {
-		luckyBagId = luckyBagId,
+		luckyBagIdList = luckyBagList,
 		poolId = poolId
 	}
 	local poolCo = SummonConfig.instance:getSummonPool(poolId)

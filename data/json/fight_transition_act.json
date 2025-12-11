@@ -1192,5 +1192,11 @@
     "fromAct": "posture",
     "endAct": "idle",
     "transitionAct": "0"
+  },
+  {
+    "id": 309504,
+    "fromAct": "posture",
+    "endAct": "idle",
+    "transitionAct": "0"
   }
 ]

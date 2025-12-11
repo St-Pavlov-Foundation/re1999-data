@@ -593,5 +593,19 @@
     "patFaceViewName": "SummonNewCustomPickFullView",
     "patFaceStoryId": 0,
     "patFaceOrder": 20000
+  },
+  {
+    "id": 30300,
+    "patFaceActivityId": 0,
+    "patFaceViewName": "",
+    "patFaceStoryId": 0,
+    "patFaceOrder": 30300
+  },
+  {
+    "id": 30301,
+    "patFaceActivityId": 13319,
+    "patFaceViewName": "V3a3TowerGiftPanelView",
+    "patFaceStoryId": 0,
+    "patFaceOrder": 30300
   }
 ]

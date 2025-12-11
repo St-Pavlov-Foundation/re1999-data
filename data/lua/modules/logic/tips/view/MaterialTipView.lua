@@ -354,15 +354,23 @@ function MaterialTipView:_cloneJumpItem()
 					local itemTempTab = self:getUserDataTb_()
 
 					itemTempTab.go = itemGo
-					itemTempTab.originText = gohelper.findChildText(itemGo, "layout/originText")
+					itemTempTab.layout = gohelper.findChild(itemGo, "layout"):GetComponent(typeof(ZProj.LimitedScrollRect))
+					itemTempTab.originText = gohelper.findChildText(itemGo, "layout/Viewport/Content/originText")
 					itemTempTab.indexText = gohelper.findChildText(itemGo, "indexText")
 					itemTempTab.jumpBtn = gohelper.findChildButtonWithAudio(itemGo, "jump/jumpBtn")
 					itemTempTab.hasjump = gohelper.findChild(itemGo, "jump")
 					itemTempTab.jumpText = gohelper.findChildText(itemGo, "jump/jumpBtn/jumpText")
-					itemTempTab.jumpHardTagGO = gohelper.findChild(itemGo, "layout/hardtag")
+					itemTempTab.jumpHardTagGO = gohelper.findChild(itemGo, "layout/Viewport/Content/hardtag")
 					itemTempTab.jumpBgGO = gohelper.findChild(itemGo, "jump/bg")
-					itemTempTab.probalityBg = gohelper.findChild(itemGo, "layout/bg")
-					itemTempTab.txtProbality = gohelper.findChildText(itemGo, "layout/bg/probality")
+					itemTempTab.probalityBg = gohelper.findChild(itemGo, "layout/Viewport/Content/bg")
+					itemTempTab.txtProbality = gohelper.findChildText(itemGo, "layout/Viewport/Content/bg/probality")
+
+					local showProbality = boxTables.episodeId and boxTables.probability and MaterialEnum.JumpProbabilityDisplay[boxTables.probability]
+
+					itemTempTab.txtProbality.text = showProbality and string.format("%s", luaLang(MaterialEnum.JumpProbabilityDisplay[boxTables.probability])) or ""
+
+					gohelper.setActive(itemTempTab.probalityBg, showProbality and true or false)
+					gohelper.setActive(itemTempTab.jumpHardTagGO, false)
 
 					local itemName = ItemConfig.instance:getItemCo(tonumber(boxTable.sourceParam)).name
 
@@ -460,17 +468,21 @@ function MaterialTipView:_cloneJumpItem()
 
 			jumpItemTempTab = self:getUserDataTb_()
 			jumpItemTempTab.go = jumpItemGo
-			jumpItemTempTab.originText = gohelper.findChildText(jumpItemGo, "layout/originText")
+			jumpItemTempTab.layout = gohelper.findChild(jumpItemGo, "layout"):GetComponent(typeof(ZProj.LimitedScrollRect))
+			jumpItemTempTab.originText = gohelper.findChildText(jumpItemGo, "layout/Viewport/Content/originText")
 			jumpItemTempTab.indexText = gohelper.findChildText(jumpItemGo, "indexText")
 			jumpItemTempTab.jumpBtn = gohelper.findChildButtonWithAudio(jumpItemGo, "jump/jumpBtn")
 			jumpItemTempTab.hasjump = gohelper.findChild(jumpItemGo, "jump")
 			jumpItemTempTab.jumpText = gohelper.findChildText(jumpItemGo, "jump/jumpBtn/jumpText")
-			jumpItemTempTab.jumpHardTagGO = gohelper.findChild(jumpItemGo, "layout/hardtag")
+			jumpItemTempTab.jumpHardTagGO = gohelper.findChild(jumpItemGo, "layout/Viewport/Content/hardtag")
 			jumpItemTempTab.jumpBgGO = gohelper.findChild(jumpItemGo, "jump/bg")
-			jumpItemTempTab.probalityBg = gohelper.findChild(jumpItemGo, "layout/bg")
-			jumpItemTempTab.txtProbality = gohelper.findChildText(jumpItemGo, "layout/bg/probality")
+			jumpItemTempTab.probalityBg = gohelper.findChild(jumpItemGo, "layout/Viewport/Content/bg")
+			jumpItemTempTab.txtProbality = gohelper.findChildText(jumpItemGo, "layout/Viewport/Content/bg/probality")
 
 			table.insert(self.jumpItemGos, jumpItemTempTab)
+
+			jumpItemTempTab.layout.parentGameObject = self._scrolldesc.gameObject
+
 			jumpItemTempTab.jumpBtn:AddClickListener(function(jumpItemTempTab)
 				if jumpItemTempTab.cantJumpTips then
 					GameFacade.showToastWithTableParam(jumpItemTempTab.cantJumpTips, jumpItemTempTab.cantJumpParam)

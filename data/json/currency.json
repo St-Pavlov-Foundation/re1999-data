@@ -2176,5 +2176,23 @@
     "maxLimit": 0,
     "sources": "",
     "headIconSign": ""
+  },
+  {
+    "id": 3301,
+    "name": "第二货币",
+    "subType": 0,
+    "rare": 3,
+    "highQuality": 0,
+    "icon": "3301",
+    "smallIcon": "",
+    "useDesc": "战时的“流通货币”，也许是你身上唯一靠得住的好伙计。可用于特别柜台兑换。",
+    "desc": "它们是行囊中最为贵重的物品，是饼干、起司和牛肉罐头。在野草丛、弹坑和泥泞地里，还有在与跟你一样倒霉的家伙打交道时，你会知晓它们的价值。记住，揣进兜里，捂紧一点。",
+    "recoverTime": 0,
+    "recoverNum": 0,
+    "recoverLimit": 0,
+    "dayRecoverNum": 0,
+    "maxLimit": 999999999,
+    "sources": "",
+    "headIconSign": ""
   }
 ]

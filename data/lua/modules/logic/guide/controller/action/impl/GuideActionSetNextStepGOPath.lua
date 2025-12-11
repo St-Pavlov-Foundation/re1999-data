@@ -401,4 +401,26 @@ function GuideActionSetNextStepGOPath:getNecrologistStoryLastMagicPath()
 	return SLFramework.GameObjectHelper.GetPath(go)
 end
 
+function GuideActionSetNextStepGOPath:getNecrologistStoryBranchPath()
+	local viewContainer = ViewMgr.instance:getContainer(ViewName.NecrologistStoryReviewView)
+
+	if not viewContainer then
+		return
+	end
+
+	local item = viewContainer:getBranchItem()
+
+	if not item then
+		return
+	end
+
+	local go = item.goBranch
+
+	if not go then
+		return
+	end
+
+	return SLFramework.GameObjectHelper.GetPath(go)
+end
+
 return GuideActionSetNextStepGOPath

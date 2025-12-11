@@ -108,9 +108,9 @@ function Turnback3PanelView:_refreshTop()
 		elseif config.effect and not string.nilorempty(config.effect) then
 			local coList = GameUtil.splitString2(config.effect)
 
-			for i = 2, 4 do
-				local effectCo = coList[i]
-				local img = gohelper.findChildSingleImage(rewardItem.go, "#simage_defaulticon" .. i - 1)
+			for j = 2, 4 do
+				local effectCo = coList[j]
+				local img = gohelper.findChildSingleImage(rewardItem.go, "#simage_defaulticon" .. j - 1)
 
 				img:LoadImage(ResUrl.getHeroDefaultEquipIcon(effectCo[2]))
 			end

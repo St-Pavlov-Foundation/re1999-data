@@ -22,13 +22,11 @@ function SummonMainLuckyBagView:onInitView()
 	self._gorighttop = gohelper.findChild(self.viewGO, "#go_ui/#go_righttop")
 	self._gosummonbtns = gohelper.findChild(self.viewGO, "#go_ui/summonbtns")
 	self._goluckybagbtns = gohelper.findChild(self.viewGO, "#go_ui/#go_luckybagopen")
-	self._goluckbagbtn = gohelper.findChild(self.viewGO, "#go_ui/#go_luckybagopen/btnopenluckbag")
-	self._btnluckybagbtn = gohelper.findChildButtonWithAudio(self.viewGO, "#go_ui/#go_luckybagopen/btnopenluckbag/#btn_openluckbag")
 	self._goalreadyinvited = gohelper.findChild(self.viewGO, "#go_ui/#go_luckybagopen/#go_alreadyinvited")
+	self._goinvite = gohelper.findChild(self.viewGO, "#go_ui/#go_luckybagopen/#go_invite")
 	self._txtdeadline = gohelper.findChildText(self.viewGO, "#go_ui/current/#txt_deadline")
 	self._simageline = gohelper.findChildSingleImage(self.viewGO, "#go_ui/current/#txt_deadline/#simage_line")
 	self._txttimes = gohelper.findChildText(self.viewGO, "#go_ui/#go_remaintimes/bg/#txt_times")
-	self._simageluckybag = gohelper.findChildSingleImage(self.viewGO, "#go_ui/#go_luckybagopen/btnopenluckbag/#simage_jinfangjie")
 	self._goremaintimes = gohelper.findChild(self.viewGO, "#go_ui/#go_remaintimes")
 
 	if self._editableInitView then
@@ -37,13 +35,11 @@ function SummonMainLuckyBagView:onInitView()
 end
 
 function SummonMainLuckyBagView:addEvents()
-	self._btnluckybagbtn:AddClickListener(self._btnopenluckbagOnClick, self)
 	self._btnsummon1:AddClickListener(self._btnsummon1OnClick, self)
 	self._btnsummon10:AddClickListener(self._btnsummon10OnClick, self)
 end
 
 function SummonMainLuckyBagView:removeEvents()
-	self._btnluckybagbtn:RemoveClickListener()
 	self._btnsummon1:RemoveClickListener()
 	self._btnsummon10:RemoveClickListener()
 end
@@ -55,7 +51,6 @@ SummonMainLuckyBagView.preloadList = {
 }
 
 function SummonMainLuckyBagView:_editableInitView()
-	self._luckyBagCount = 2
 	self._pageitems = {}
 	self._animRoot = self.viewGO:GetComponent(typeof(UnityEngine.Animator))
 
@@ -63,6 +58,7 @@ function SummonMainLuckyBagView:_editableInitView()
 
 	self._rectremaintimes = self._goremaintimes.transform
 
+	self:initData()
 	self:initSingleBg()
 	self:initLuckyBagComp()
 end
@@ -73,6 +69,12 @@ function SummonMainLuckyBagView:onDestroyView()
 
 		if btn then
 			btn:RemoveClickListener()
+		end
+
+		local useBtn = self:getLuckyBagUseBtn(i)
+
+		if useBtn then
+			useBtn:RemoveClickListener()
 		end
 
 		self["_simagerole" .. tostring(i)]:UnLoadImage()
@@ -130,19 +132,28 @@ function SummonMainLuckyBagView:checkAutoOpenLuckyBag()
 	end
 
 	local poolId = curPool.id
-	local isGot, luckyBagId = SummonLuckyBagModel.instance:isLuckyBagGot(poolId)
+	local luckyBagIdList = SummonConfig.instance:getSummonLuckyBag(poolId)
 
-	if isGot and not SummonLuckyBagModel.instance:isLuckyBagOpened(poolId, luckyBagId) and SummonLuckyBagModel.instance:needAutoPopup(poolId) then
-		ViewMgr.instance:openView(ViewName.SummonLuckyBagChoice, {
-			poolId = poolId,
-			luckyBagId = luckyBagId
-		})
-		SummonLuckyBagModel.instance:recordAutoPopup(poolId)
+	if luckyBagIdList and next(luckyBagIdList) then
+		for _, luckyBagId in ipairs(luckyBagIdList) do
+			local isGot = SummonLuckyBagModel.instance:isLuckyBagGot(poolId, luckyBagId)
+
+			if isGot and not SummonLuckyBagModel.instance:isLuckyBagOpened(poolId, luckyBagId) and SummonLuckyBagModel.instance:needAutoPopup(poolId, luckyBagId) then
+				ViewMgr.instance:openView(ViewName.SummonLuckyBagChoice, {
+					poolId = poolId,
+					luckyBagId = luckyBagId
+				})
+				SummonLuckyBagModel.instance:recordAutoPopup(poolId, luckyBagId)
+
+				break
+			end
+		end
 	end
 end
 
 function SummonMainLuckyBagView:onClose()
 	logNormal("SummonMainLuckyBagView:onClose()")
+	self:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self.onViewCloseFinish, self)
 	self:removeEventCb(SummonController.instance, SummonEvent.onSummonFailed, self.onSummonFailed, self)
 	self:removeEventCb(SummonController.instance, SummonEvent.onSummonReply, self.onSummonReply, self)
 	self:removeEventCb(SummonController.instance, SummonEvent.onViewCanPlayEnterAnim, self.playerEnterAnimFromScene, self)
@@ -150,6 +161,16 @@ function SummonMainLuckyBagView:onClose()
 	self:removeEventCb(CurrencyController.instance, CurrencyEvent.CurrencyChange, self.onItemChanged, self)
 	self:removeEventCb(SummonController.instance, SummonEvent.onSummonInfoGot, self.refreshView, self)
 	self:removeEventCb(SummonController.instance, SummonEvent.onRemainTimeCountdown, self._refreshOpenTime, self)
+end
+
+function SummonMainLuckyBagView:initData()
+	local curPool = SummonMainModel.instance:getCurPool()
+	local poolId = curPool.id
+	local luckyBagList = SummonConfig.instance:getSummonLuckyBag(poolId)
+
+	self._luckyBagList = luckyBagList
+	self._luckyBagCount = 2
+	self._luckyBagUseDic = {}
 end
 
 function SummonMainLuckyBagView:initSingleBg()
@@ -173,25 +194,82 @@ function SummonMainLuckyBagView:initLuckyBagComp()
 		local txtName = "_txtName" .. tostring(i)
 		local goGotVfxName = "_gogotvfx" .. tostring(i)
 		local goGotImageName = "_gogotimage" .. tostring(i)
+		local goUseAnimName = "_animatorGet" .. tostring(i)
+		local reddotName = "_reddot" .. tostring(i)
 
 		self[txtName] = gohelper.findChildText(self.viewGO, string.format("#go_ui/current/right/#go_characteritem%s/bg/txt1", i))
-		self[goGotVfxName] = gohelper.findChild(self.viewGO, string.format("#go_ui/current/right/#go_characteritem%s/bg/dec1_glow", i))
+		self[goGotVfxName] = gohelper.findChild(self.viewGO, string.format("#go_ui/current/right/#go_characteritem%s/bg/vx_light", i))
 		self[goGotImageName] = gohelper.findChild(self.viewGO, string.format("#go_ui/current/right/#go_characteritem%s/bg/#simage_alreadyget", i))
+		self[goUseAnimName] = gohelper.findChildComponent(self.viewGO, string.format("#go_ui/current/right/#go_characteritem%s/bg/#simage_alreadyget/go_hasget", i), gohelper.Type_Animator)
+
+		local redDotParent = gohelper.findChild(self.viewGO, string.format("#go_ui/current/right/#go_characteritem%s/bg/#go_reddot", i))
+		local uid = self._luckyBagList[i]
+
+		self[reddotName] = RedDotController.instance:addRedDot(redDotParent, RedDotEnum.DotNode.V3a3SkinDiscountCompensate, uid)
+
+		local btnUse = gohelper.findChildButton(self.viewGO, string.format("#go_ui/current/right/#go_characteritem%s/#btn_use", i))
+
+		if btnUse then
+			local btnUseName = "#btn_use" .. tostring(i)
+
+			self[btnUseName] = btnUse
+
+			btnUse:AddClickListener(SummonMainLuckyBagView._btnopenluckbagOnClick, self, i)
+		end
+
+		local goHasGet = gohelper.findChild(self.viewGO, string.format("#go_ui/current/right/#go_characteritem%s/bg/#simage_alreadyget/go_hasget", i))
+
+		if goHasGet then
+			local goHasOpenName = "_gohasget" .. tostring(i)
+
+			self[goHasOpenName] = goHasGet
+		end
+
+		local goOpenBg = gohelper.findChild(self.viewGO, string.format("#go_ui/current/right/#go_characteritem%s/bg/bg_opened", i))
+
+		if goOpenBg then
+			local goOpenBgName = "_goopenbg" .. tostring(i)
+
+			self[goOpenBgName] = goOpenBg
+		end
+
+		local goNoOpenBg = gohelper.findChild(self.viewGO, string.format("#go_ui/current/right/#go_characteritem%s/bg/bg_unopen", i))
+
+		if goNoOpenBg then
+			local goNoOpenBgName = "_gonoopenbg" .. tostring(i)
+
+			self[goNoOpenBgName] = goNoOpenBg
+		end
+
+		local iconStar = gohelper.findChildImage(self.viewGO, string.format("#go_ui/current/right/#go_characteritem%s/bg/icon_star", i))
+
+		if iconStar then
+			local iconStarName = "_iconstar" .. tostring(i)
+
+			self[iconStarName] = iconStar
+		end
 	end
 end
 
-function SummonMainLuckyBagView:_btnopenluckbagOnClick()
-	local poolCo = SummonMainModel.instance:getCurPool()
+function SummonMainLuckyBagView:_btnopenluckbagOnClick(index)
+	local curPool = SummonMainModel.instance:getCurPool()
 
-	if not poolCo then
+	if not curPool or not self._luckyBagList then
 		return
 	end
 
-	local isGot, luckyBagId = SummonLuckyBagModel.instance:isLuckyBagGot(poolCo.id)
+	local luckyBagId = self._luckyBagList[index]
 
-	if isGot and not SummonLuckyBagModel.instance:isLuckyBagOpened(poolCo.id, luckyBagId) then
+	if luckyBagId == nil then
+		return
+	end
+
+	local poolId = curPool.id
+	local isGot = SummonLuckyBagModel.instance:isLuckyBagGot(poolId, luckyBagId)
+
+	if isGot and not SummonLuckyBagModel.instance:isLuckyBagOpened(poolId, luckyBagId) then
 		ViewMgr.instance:openView(ViewName.SummonLuckyBagChoice, {
-			poolId = poolCo.id,
+			poolId = poolId,
 			luckyBagId = luckyBagId
 		})
 	end
@@ -336,13 +414,11 @@ function SummonMainLuckyBagView:onClickLuckyBagDetail(index)
 		return
 	end
 
-	local luckyBagList = SummonConfig.instance:getSummonLuckyBag(pool.id)
-
-	if not luckyBagList then
+	if not self._luckyBagList then
 		return
 	end
 
-	local luckyBagId = luckyBagList[index]
+	local luckyBagId = self._luckyBagList[index]
 
 	if luckyBagId then
 		SummonMainController.instance:openSummonDetail(pool, luckyBagId)
@@ -376,7 +452,7 @@ function SummonMainLuckyBagView:refreshPoolUI()
 end
 
 function SummonMainLuckyBagView:refreshLuckyBagDetails(poolCo)
-	local luckyBagList = SummonConfig.instance:getSummonLuckyBag(poolCo.id)
+	local luckyBagList = self._luckyBagList
 
 	if luckyBagList and next(luckyBagList) then
 		local len = #luckyBagList
@@ -417,52 +493,56 @@ SummonMainLuckyBagView.RemainTimesPosition = {
 }
 
 function SummonMainLuckyBagView:refreshLuckyBagStatus(poolCo)
-	local isGot, luckyBagId = SummonLuckyBagModel.instance:isLuckyBagGot(poolCo.id)
+	local isGot = true
+
+	for _, luckyBagId in ipairs(self._luckyBagList) do
+		if not SummonLuckyBagModel.instance:isLuckyBagGot(poolCo.id, luckyBagId) then
+			isGot = false
+
+			break
+		end
+	end
 
 	gohelper.setActive(self._goluckybagbtns, isGot)
 	gohelper.setActive(self._gosummonbtns, not isGot)
+	self:setLuckyBagIconVfx()
 
 	if isGot then
-		self:refreshGotStatus(poolCo, luckyBagId)
+		self:refreshGotStatus(poolCo)
 	else
 		self:refreshGachaStatus(poolCo)
 	end
 end
 
-function SummonMainLuckyBagView:refreshGotStatus(poolCo, luckyBagId)
-	local isOpen = SummonLuckyBagModel.instance:isLuckyBagOpened(poolCo.id, luckyBagId)
+function SummonMainLuckyBagView:refreshGotStatus(poolCo)
+	local isOpenCount = 0
 
-	gohelper.setActive(self._goalreadyinvited, isOpen)
-	gohelper.setActive(self._goluckbagbtn, not isOpen)
-
-	local luckyBagCo = SummonConfig.instance:getLuckyBag(poolCo.id, luckyBagId)
-
-	if luckyBagCo then
-		self._simageluckybag:LoadImage(ResUrl.getSummonCoverBg(luckyBagCo.icon))
+	for _, luckyBagId in ipairs(self._luckyBagList) do
+		if SummonLuckyBagModel.instance:isLuckyBagOpened(poolCo.id, luckyBagId) then
+			isOpenCount = isOpenCount + 1
+		end
 	end
 
-	gohelper.setActive(self._goremaintimes, not isOpen)
+	local getCount = SummonLuckyBagModel.instance:getLuckyGodCount(poolCo.id)
+	local bagCount = #self._luckyBagList
+	local isAllGet = bagCount <= getCount
+	local isAllOpen = bagCount <= isOpenCount
 
-	if not isOpen then
+	gohelper.setActive(self._goalreadyinvited, isAllOpen)
+	gohelper.setActive(self._goinvite, not isAllOpen)
+	gohelper.setActive(self._goremaintimes, not isAllGet)
+
+	if not isAllGet then
 		local anchorPos = SummonMainLuckyBagView.RemainTimesPosition.ExistLuckyBag
 
 		recthelper.setAnchor(self._rectremaintimes, anchorPos.x, anchorPos.y)
 		self:refreshRemainTimes(poolCo)
-	end
-
-	local idList = SummonConfig.instance:getSummonLuckyBag(poolCo.id)
-
-	if idList then
-		self:setLuckyBagIconVfx(tabletool.indexOf(idList, luckyBagId))
-	else
-		self:setLuckyBagIconVfx(-1)
 	end
 end
 
 function SummonMainLuckyBagView:refreshGachaStatus(poolCo)
 	self:refreshCost()
 	self:refreshFreeSummonButton(poolCo)
-	self:setLuckyBagIconVfx(-1)
 
 	local anchorPos = SummonMainLuckyBagView.RemainTimesPosition.NoLuckyBag
 
@@ -470,13 +550,117 @@ function SummonMainLuckyBagView:refreshGachaStatus(poolCo)
 	self:refreshRemainTimes(poolCo)
 end
 
-function SummonMainLuckyBagView:setLuckyBagIconVfx(luckyBagIndex)
-	for i = 1, self._luckyBagCount do
+function SummonMainLuckyBagView:setLuckyBagIconVfx()
+	local curPool = SummonMainModel.instance:getCurPool()
+	local poolId = curPool.id
+	local redDotList = {}
+
+	for i, luckyBagId in ipairs(self._luckyBagList) do
 		local goGotVfxName = "_gogotvfx" .. tostring(i)
 		local goGotImageName = "_gogotimage" .. tostring(i)
+		local isOpen = SummonLuckyBagModel.instance:isLuckyBagOpened(poolId, luckyBagId)
+		local isGet = SummonLuckyBagModel.instance:isLuckyBagGot(poolId, luckyBagId)
+		local goVfx = self[goGotVfxName]
 
-		gohelper.setActive(self[goGotVfxName], luckyBagIndex == i)
-		gohelper.setActive(self[goGotImageName], luckyBagIndex == i)
+		gohelper.setActive(goVfx, isGet and not isOpen)
+		gohelper.setActive(self[goGotImageName], true)
+
+		local goHasGet = self:getLuckyBagHaveGetGo(i)
+		local btnUse = self:getLuckyBagUseBtn(i)
+
+		gohelper.setActive(goHasGet, isGet and isOpen)
+		gohelper.setActive(btnUse, isGet and not isOpen)
+
+		local goOpenBgName = "_goopenbg" .. tostring(i)
+		local goOpenBg = self[goOpenBgName]
+		local goNoOpenBgName = "_gonoopenbg" .. tostring(i)
+		local goNoOpenBg = self[goNoOpenBgName]
+		local iconStarName = "_iconstar" .. tostring(i)
+		local iconStar = self[iconStarName]
+
+		gohelper.setActive(goOpenBg, isOpen)
+		gohelper.setActive(goNoOpenBg, not isOpen)
+
+		local alpha = not isOpen and 1 or 0.5
+		local color = iconStar.color
+
+		color.a = alpha
+		iconStar.color = color
+
+		local singleInfo = {
+			time = 0,
+			id = luckyBagId,
+			value = isGet and not isOpen and 1 or 0
+		}
+
+		table.insert(redDotList, singleInfo)
+
+		if not isOpen or not isGet then
+			self._luckyBagUseDic[i] = 0
+		end
+
+		if isOpen and isGet then
+			local goUseAnimName = "_animatorGet" .. tostring(i)
+			local animator = self[goUseAnimName]
+
+			if animator then
+				if self._luckyBagUseDic[i] ~= nil and self._luckyBagUseDic[i] == 0 then
+					self:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self.onViewCloseFinish, self)
+					self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self.onViewCloseFinish, self)
+				else
+					animator:Play("go_hasget_idle", 0, 0)
+				end
+			end
+		end
+	end
+
+	local reddotItemInfo = {
+		replaceAll = true,
+		defineId = RedDotEnum.DotNode.V3a3SkinDiscountCompensate,
+		infos = redDotList
+	}
+	local redDotInfos = {
+		reddotItemInfo
+	}
+
+	RedDotModel.instance:setRedDotInfo(redDotInfos)
+
+	local refreshlist = {}
+	local ids = RedDotModel.instance:_getAssociateRedDots(RedDotEnum.DotNode.V3a3SkinDiscountCompensate)
+
+	for _, id in pairs(ids) do
+		refreshlist[id] = true
+	end
+
+	RedDotController.instance:dispatchEvent(RedDotEvent.UpdateRelateDotInfo, refreshlist)
+end
+
+function SummonMainLuckyBagView:onViewCloseFinish(viewName)
+	if viewName == ViewName.CharacterGetView then
+		local curPool = SummonMainModel.instance:getCurPool()
+		local poolId = curPool.id
+
+		self:removeEventCb(ViewMgr.instance, ViewEvent.OnOpenViewFinish, self.onViewCloseFinish, self)
+
+		for i, luckyBagId in ipairs(self._luckyBagList) do
+			local isOpen = SummonLuckyBagModel.instance:isLuckyBagOpened(poolId, luckyBagId)
+			local isGet = SummonLuckyBagModel.instance:isLuckyBagGot(poolId, luckyBagId)
+
+			if isOpen and isGet then
+				local goUseAnimName = "_animatorGet" .. tostring(i)
+				local animator = self[goUseAnimName]
+
+				if animator then
+					if self._luckyBagUseDic[i] ~= nil and self._luckyBagUseDic[i] == 0 then
+						self._luckyBagUseDic[i] = 1
+
+						animator:Play("go_hasget_in", 0, 0)
+					else
+						animator:Play("go_hasget_idle", 0, 0)
+					end
+				end
+			end
+		end
 	end
 end
 
@@ -491,7 +675,10 @@ function SummonMainLuckyBagView:refreshRemainTimes(poolCo)
 	local summonServerMO = SummonMainModel.instance:getPoolServerMO(poolCo.id)
 
 	if summonServerMO and summonServerMO.luckyBagMO then
-		self._txttimes.text = string.format("%s/%s", summonServerMO.luckyBagMO.summonTimes, times)
+		local title = luaLang("summonluckybag_remain_count")
+		local remainCount = math.max(0, times - summonServerMO.luckyBagMO.notSSRCount)
+
+		self._txttimes.text = GameUtil.getSubPlaceholderLuaLangOneParam(title, remainCount)
 	else
 		self._txttimes.text = "-"
 	end
@@ -550,6 +737,14 @@ end
 
 function SummonMainLuckyBagView:getLuckyBagDetailBtn(i)
 	return self["_btnluckybag" .. tostring(i)]
+end
+
+function SummonMainLuckyBagView:getLuckyBagUseBtn(i)
+	return self["#btn_use" .. tostring(i)]
+end
+
+function SummonMainLuckyBagView:getLuckyBagHaveGetGo(i)
+	return self["_gohasget" .. tostring(i)]
 end
 
 function SummonMainLuckyBagView:onSummonFailed()

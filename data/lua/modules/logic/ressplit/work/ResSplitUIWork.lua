@@ -146,7 +146,7 @@ function ResSplitUIWork:onStart(context)
 					local needSave = false
 
 					for _, n in pairs(saveTypes) do
-						if string.find(path, n) then
+						if string.find(path, n) or string.find(path, "txt_" .. n) then
 							needSave = true
 
 							break

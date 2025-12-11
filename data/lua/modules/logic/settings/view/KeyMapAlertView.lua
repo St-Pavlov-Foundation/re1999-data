@@ -61,6 +61,7 @@ end
 
 function KeyMapAlertView:listenInputKey()
 	TaskDispatcher.runRepeat(self.getKey, self, 0)
+	PCInputController.instance:PauseListen()
 end
 
 function KeyMapAlertView:getKey()
@@ -68,6 +69,7 @@ function KeyMapAlertView:getKey()
 
 	if UnityEngine.Input.anyKeyDown and not UnityEngine.Input.GetMouseButton(0) then
 		TaskDispatcher.cancelTask(self.getKey, self)
+		TaskDispatcher.runDelay(PCInputController.resumeListen, PCInputController.instance, 0.5)
 
 		local key = PCInputController.instance:getCurrentPresskey()
 
@@ -109,7 +111,7 @@ function KeyMapAlertView:setCantModify(key)
 		return
 	end
 
-	ToastController.instance:showToast(ToastEnum.PCKeyCantModify, key)
+	ToastController.instance:showToast(ToastEnum.PCKeyCantModify, PCInputController.instance:KeyNameToDescName(key))
 end
 
 function KeyMapAlertView:setKeyOccupied(repeatKey, key)

@@ -8,6 +8,12 @@ local removeEffectContainerName = "removeEffectContainer"
 function FightMyActPointBreakEffect:onStart(context)
 	FightMyActPointBreakEffect.super.onStart(self, context)
 
+	if FightModel.instance:isFinish() then
+		self:onDone(true)
+
+		return
+	end
+
 	if context.myBreakActPoint == 0 then
 		self:onDone(true)
 

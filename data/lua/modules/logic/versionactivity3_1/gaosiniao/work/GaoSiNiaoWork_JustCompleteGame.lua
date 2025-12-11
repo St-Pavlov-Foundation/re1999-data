@@ -28,7 +28,7 @@ function GaoSiNiaoWork_JustCompleteGame:_onTimeout()
 end
 
 function GaoSiNiaoWork_JustCompleteGame:clearWork()
-	TaskDispatcher.cancelTask(self.onDone, self)
+	TaskDispatcher.cancelTask(self._onTimeout, self)
 	GaoSiNiaoWork_JustCompleteGame.super.clearWork(self)
 end
 

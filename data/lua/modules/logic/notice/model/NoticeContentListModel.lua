@@ -137,6 +137,8 @@ function NoticeContentListModel:getInfoList(scrollGO)
 			local mixCellInfo = SLFramework.UGUI.MixCellInfo.New(mo.type, (mo.height or 100) + NoticeContentListModel.ImgTitleSpaceVertical, nil)
 
 			table.insert(mixCellInfos, mixCellInfo)
+		elseif mo.type == NoticeContentType.LangType then
+			logNormal("lang type : " .. tostring(mo.curLang))
 		else
 			logError("notice content type not implement: " .. mo.type)
 		end

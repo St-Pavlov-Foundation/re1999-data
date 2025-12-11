@@ -43,5 +43,23 @@
     "nameEn": "Golden Thread II",
     "icon": "heroversion_2_4/v2a4_fudai/v2a4_fudai_summon_icon_jinfangjie2",
     "sceneIcon": "m_s06_ui_jfj_02"
+  },
+  {
+    "poolId": 33141,
+    "bagId": 90006,
+    "heroChoices": "3113#3109#3104#3098#3080#3077#3111#3039#3048",
+    "name": "金纺团I",
+    "nameEn": "The Golden Skein I",
+    "icon": "heroversion_3_3/v3a3_luckybag/v3a3_luckybag_icon",
+    "sceneIcon": "v3a3_m_s06_ui_jft_01"
+  },
+  {
+    "poolId": 33141,
+    "bagId": 90007,
+    "heroChoices": "3114#3105#3088#3063#3097#3094#3084#3087#3065",
+    "name": "金纺团II",
+    "nameEn": "The Golden Skein II",
+    "icon": "heroversion_3_3/v3a3_luckybag/v3a3_luckybag_icon",
+    "sceneIcon": "v3a3_m_s06_ui_jft_01"
   }
 ]

@@ -21298,5 +21298,685 @@
     "speaker": "？？？",
     "content": "从一无所知开始认清自我和世界，最后意识到自己仍然一无所知……是如此充满乐趣。",
     "res": ""
+  },
+  {
+    "id": 57,
+    "stepId": 1,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300000,
+    "speaker": "？？？",
+    "content": "我毫不意外，我们又见面了。",
+    "res": ""
+  },
+  {
+    "id": 57,
+    "stepId": 2,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300001,
+    "speaker": "？？？",
+    "content": "你从西线来到东线的理由真是没有惊喜可言。",
+    "res": ""
+  },
+  {
+    "id": 57,
+    "stepId": 3,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300002,
+    "speaker": "？？？",
+    "content": "就像是只刚破壳的雏鸟，只会追着成鸟的影子，或者其他会动的大东西跑。",
+    "res": ""
+  },
+  {
+    "id": 57,
+    "stepId": 4,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300003,
+    "speaker": "？？？",
+    "content": "究竟什么时候你才能独立？十八岁生日之后吗？",
+    "res": ""
+  },
+  {
+    "id": 57,
+    "stepId": 5,
+    "type": "options",
+    "param": "1#2",
+    "audio": 0,
+    "speaker": "",
+    "content": "直到找到她为止#她不只是一位母亲",
+    "res": ""
+  },
+  {
+    "id": 57,
+    "stepId": 6,
+    "type": "selector",
+    "param": "1",
+    "audio": 0,
+    "speaker": "",
+    "content": "",
+    "res": ""
+  },
+  {
+    "id": 57,
+    "stepId": 7,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300004,
+    "speaker": "？？？",
+    "content": "然后她又会在你眼前消失。",
+    "res": ""
+  },
+  {
+    "id": 57,
+    "stepId": 8,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300005,
+    "speaker": "？？？",
+    "content": "我不认为你是不懂得思考的蠢人，为什么你要不断重复同样的失败？",
+    "res": ""
+  },
+  {
+    "id": 57,
+    "stepId": 9,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300006,
+    "speaker": "？？？",
+    "content": "或者你是那种必须重复无意义的工作才能感到幸福的人？",
+    "res": ""
+  },
+  {
+    "id": 57,
+    "stepId": 10,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300007,
+    "speaker": "？？？",
+    "content": "你戴着顶大礼帽，确实像是那种人。",
+    "res": ""
+  },
+  {
+    "id": 57,
+    "stepId": 11,
+    "type": "options",
+    "param": "3",
+    "audio": 0,
+    "speaker": "",
+    "content": "你似乎不理解亲情？",
+    "res": ""
+  },
+  {
+    "id": 57,
+    "stepId": 12,
+    "type": "selector",
+    "param": "3",
+    "audio": 0,
+    "speaker": "",
+    "content": "",
+    "res": ""
+  },
+  {
+    "id": 57,
+    "stepId": 13,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300008,
+    "speaker": "？？？",
+    "content": "你在胡说什么？我当然也知道亲情，知道爱。",
+    "res": ""
+  },
+  {
+    "id": 57,
+    "stepId": 14,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300009,
+    "speaker": "？？？",
+    "content": "不过是曾有什么东西给过你温暖，尤其是在你还无法自立的时候，你为了活下去而理所当然地依赖她，讨好她。",
+    "res": ""
+  },
+  {
+    "id": 57,
+    "stepId": 15,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300010,
+    "speaker": "？？？",
+    "content": "然后有一天你失去了她，必须自己活下去，接着你开始怀念那段养尊处优的日子，每到做家务时就开始流泪。",
+    "res": ""
+  },
+  {
+    "id": 57,
+    "stepId": 16,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300011,
+    "speaker": "？？？",
+    "content": "而她也不过是沉迷于掌握你生命的全能感中，就是如此肤浅的东西。",
+    "res": ""
+  },
+  {
+    "id": 57,
+    "stepId": 17,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300012,
+    "speaker": "？？？",
+    "content": "我也曾拥有过这些，也给过其他人这些，我怎么可能不理解？！",
+    "res": ""
+  },
+  {
+    "id": 57,
+    "stepId": 18,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300013,
+    "speaker": "？？？",
+    "content": "啊……",
+    "res": ""
+  },
+  {
+    "id": 57,
+    "stepId": 19,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": "",
+    "res": ""
+  },
+  {
+    "id": 57,
+    "stepId": 20,
+    "type": "selector",
+    "param": "2",
+    "audio": 0,
+    "speaker": "",
+    "content": "",
+    "res": ""
+  },
+  {
+    "id": 57,
+    "stepId": 21,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300014,
+    "speaker": "？？？",
+    "content": "我对拯救世界的大话没兴趣。",
+    "res": ""
+  },
+  {
+    "id": 57,
+    "stepId": 22,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300015,
+    "speaker": "？？？",
+    "content": "大人物嘴里总是咀嚼着和平与未来，但结果都会变成笑话。",
+    "res": ""
+  },
+  {
+    "id": 57,
+    "stepId": 23,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300016,
+    "speaker": "？？？",
+    "content": "而且没有人会笑，因为耳朵好使的人都已经为他们而死了。",
+    "res": ""
+  },
+  {
+    "id": 57,
+    "stepId": 24,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300017,
+    "speaker": "？？？",
+    "content": "我们就该吊死其中几个蠢猪。和平不会因此降临，但活着的人至少能有些宽慰……",
+    "res": ""
+  },
+  {
+    "id": 57,
+    "stepId": 25,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": "",
+    "res": ""
+  },
+  {
+    "id": 57,
+    "stepId": 26,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300018,
+    "speaker": "？？？",
+    "content": "请坐吧，我把你喜欢的那把椅子放在了朝东的位置。",
+    "res": ""
+  },
+  {
+    "id": 57,
+    "stepId": 27,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300019,
+    "speaker": "？？？",
+    "content": "东面的风景稍微比西面好些，而且流动的河水会冲散尸臭味。",
+    "res": ""
+  },
+  {
+    "id": 58,
+    "stepId": 1,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300020,
+    "speaker": "？？？",
+    "content": "你一定是个有强大心灵的人。",
+    "res": ""
+  },
+  {
+    "id": 58,
+    "stepId": 2,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300021,
+    "speaker": "？？？",
+    "content": "一般人无法像你这样在外人的家里睡上一整天。",
+    "res": ""
+  },
+  {
+    "id": 58,
+    "stepId": 3,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300022,
+    "speaker": "？？？",
+    "content": "稍后我会把你和饭后垃圾一起扔出去，为什么不再睡一会儿呢？",
+    "res": ""
+  },
+  {
+    "id": 58,
+    "stepId": 4,
+    "type": "options",
+    "param": "1#2",
+    "audio": 0,
+    "speaker": "",
+    "content": "我做了个梦#我错过了晚餐？",
+    "res": ""
+  },
+  {
+    "id": 58,
+    "stepId": 5,
+    "type": "selector",
+    "param": "1",
+    "audio": 0,
+    "speaker": "",
+    "content": "",
+    "res": ""
+  },
+  {
+    "id": 58,
+    "stepId": 6,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300023,
+    "speaker": "？？？",
+    "content": "我请求你，不要讲述你的美梦。",
+    "res": ""
+  },
+  {
+    "id": 58,
+    "stepId": 7,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300024,
+    "speaker": "？？？",
+    "content": "那太过耀眼和温暖，可能会灼伤我冰冷的心。",
+    "res": ""
+  },
+  {
+    "id": 58,
+    "stepId": 8,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300025,
+    "speaker": "？？？",
+    "content": "不管你在梦里经历了什么做了什么，都请让它过去吧。",
+    "res": ""
+  },
+  {
+    "id": 58,
+    "stepId": 9,
+    "type": "selector",
+    "param": "2",
+    "audio": 0,
+    "speaker": "",
+    "content": "",
+    "res": ""
+  },
+  {
+    "id": 58,
+    "stepId": 10,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300026,
+    "speaker": "？？？",
+    "content": "是的，感谢你的恩典。",
+    "res": ""
+  },
+  {
+    "id": 58,
+    "stepId": 11,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300027,
+    "speaker": "？？？",
+    "content": "今天寡淡的晚餐全靠你梦中的呢喃来增添风味。",
+    "res": ""
+  },
+  {
+    "id": 58,
+    "stepId": 12,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300028,
+    "speaker": "？？？",
+    "content": "我很久没喝过那么有滋味的汤了。",
+    "res": ""
+  },
+  {
+    "id": 58,
+    "stepId": 13,
+    "type": "options",
+    "param": "3",
+    "audio": 0,
+    "speaker": "",
+    "content": "我的那份呢？",
+    "res": ""
+  },
+  {
+    "id": 58,
+    "stepId": 14,
+    "type": "selector",
+    "param": "3",
+    "audio": 0,
+    "speaker": "",
+    "content": "",
+    "res": ""
+  },
+  {
+    "id": 58,
+    "stepId": 15,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300029,
+    "speaker": "？？？",
+    "content": "过去的晚餐已经过去了，你没法再让它回来。",
+    "res": ""
+  },
+  {
+    "id": 58,
+    "stepId": 16,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": "",
+    "res": ""
+  },
+  {
+    "id": 58,
+    "stepId": 17,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": "",
+    "res": ""
+  },
+  {
+    "id": 58,
+    "stepId": 18,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300030,
+    "speaker": "？？？",
+    "content": "过去的事只能留在回忆里，眼下乱套的样子恐怕谁都不想要。",
+    "res": ""
+  },
+  {
+    "id": 58,
+    "stepId": 19,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300031,
+    "speaker": "？？？",
+    "content": "而这都拜那些放不下过去的黑袍子所赐。当下的生活不如意就让懦夫们陷入了无止境的怀旧当中。",
+    "res": ""
+  },
+  {
+    "id": 58,
+    "stepId": 20,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300032,
+    "speaker": "？？？",
+    "content": "眼里只有未来的白袍子们也都是废物，恐怕是头抬得太高了，才一个劲儿地摔跟头。",
+    "res": ""
+  },
+  {
+    "id": 58,
+    "stepId": 21,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300033,
+    "speaker": "？？？",
+    "content": "这样的两伙人居然能扭打在一起，在世纪末把全宇宙搅得天翻地覆。",
+    "res": ""
+  },
+  {
+    "id": 58,
+    "stepId": 22,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300034,
+    "speaker": "？？？",
+    "content": "那个盲眼女人当时真不如放着世界毁灭，起码不会比这乱成一团的时间更糟，谁求她自我牺牲了吗？",
+    "res": ""
+  },
+  {
+    "id": 58,
+    "stepId": 23,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300035,
+    "speaker": "？？？",
+    "content": "如果你真的有机会抓住她，请记得带她回家，让她安度晚年吧，这样对大家都好。",
+    "res": ""
+  },
+  {
+    "id": 59,
+    "stepId": 1,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300036,
+    "speaker": "？？？",
+    "content": "请稍等一下，我这就去处理闯进来的混蛋。",
+    "res": ""
+  },
+  {
+    "id": 59,
+    "stepId": 2,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300037,
+    "speaker": "？？？",
+    "content": "他居然穿着沾血的鞋子走进我的家！难道指挥别人送死的人还有什么特权么？",
+    "res": ""
+  },
+  {
+    "id": 59,
+    "stepId": 3,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300038,
+    "speaker": "？？？",
+    "content": "必须要让他付出血的代价。",
+    "res": ""
+  },
+  {
+    "id": 59,
+    "stepId": 4,
+    "type": "options",
+    "param": "1#2",
+    "audio": 0,
+    "speaker": "",
+    "content": "让他换双鞋吧#冷静一些！",
+    "res": ""
+  },
+  {
+    "id": 59,
+    "stepId": 5,
+    "type": "selector",
+    "param": "1",
+    "audio": 0,
+    "speaker": "",
+    "content": "",
+    "res": ""
+  },
+  {
+    "id": 59,
+    "stepId": 6,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300039,
+    "speaker": "？？？",
+    "content": "还不够，他必须把地板上的血渍全部擦干净。",
+    "res": ""
+  },
+  {
+    "id": 59,
+    "stepId": 7,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300040,
+    "speaker": "？？？",
+    "content": "没有理由，没有狡辩，这一地狼藉都是他的错。",
+    "res": ""
+  },
+  {
+    "id": 59,
+    "stepId": 8,
+    "type": "selector",
+    "param": "2",
+    "audio": 0,
+    "speaker": "",
+    "content": "",
+    "res": ""
+  },
+  {
+    "id": 59,
+    "stepId": 9,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300041,
+    "speaker": "？？？",
+    "content": "我很冷静，他必须亲自把血迹都打扫干净。",
+    "res": ""
+  },
+  {
+    "id": 59,
+    "stepId": 10,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300042,
+    "speaker": "？？？",
+    "content": "我不会把抹布借给他，他必须用自己的大衣。",
+    "res": ""
+  },
+  {
+    "id": 59,
+    "stepId": 11,
+    "type": "selectorend",
+    "param": "",
+    "audio": 0,
+    "speaker": "",
+    "content": "",
+    "res": ""
+  },
+  {
+    "id": 59,
+    "stepId": 12,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300043,
+    "speaker": "？？？",
+    "content": "不管所谓的上层人物如何逼他脚踏血池，给他带来了多少痛苦。",
+    "res": ""
+  },
+  {
+    "id": 59,
+    "stepId": 13,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300044,
+    "speaker": "？？？",
+    "content": "大人物们希望一切终能回归原位，而这正说明了他们愚蠢。",
+    "res": ""
+  },
+  {
+    "id": 59,
+    "stepId": 14,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300045,
+    "speaker": "？？？",
+    "content": "如果他蠢到会听从那种天方夜谭的计划，那他就和制定计划的蠢货没什么两样了。",
+    "res": ""
+  },
+  {
+    "id": 59,
+    "stepId": 15,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300046,
+    "speaker": "？？？",
+    "content": "现实主义者总是这样实现梦想——为了创造奇迹，他们在天平的另一端不断追加砝码，没有目标，只是一味付出。",
+    "res": ""
+  },
+  {
+    "id": 59,
+    "stepId": 16,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300047,
+    "speaker": "？？？",
+    "content": "无数人为了回忆起一个不属于自己的姓名而失去了性命，这是我听说过最荒谬的事。",
+    "res": ""
+  },
+  {
+    "id": 59,
+    "stepId": 17,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300048,
+    "speaker": "？？？",
+    "content": "我对那群自以为是神的自大狂只有一句话要说——忘记姓名的人等于是死了，更换姓名也是。",
+    "res": ""
+  },
+  {
+    "id": 59,
+    "stepId": 18,
+    "type": "dialog",
+    "param": "",
+    "audio": 923300049,
+    "speaker": "？？？",
+    "content": "就算最后你回到了原位，血脚印也早已留下了。",
+    "res": ""
   }
 ]

@@ -1,0 +1,104 @@
+[
+  {
+    "id": 101,
+    "name": "电光拳",
+    "skillDesc": "倒计时2次行动后：对周围十字3格范围内的单位造成3点伤害",
+    "shape": "1#1",
+    "resPath": "v3a3_m_s12_jn1x1_002",
+    "scale": [
+      1,
+      1
+    ],
+    "damage": 3,
+    "countdown": 3,
+    "target": 703,
+    "addFloor": 101,
+    "skill": 0,
+    "icon": "v3a3_eliminate_skillicon_3_2"
+  },
+  {
+    "id": 102,
+    "name": "方块劲舞",
+    "skillDesc": "倒计时2次行动后：对周围方形3格范围内的单位造成3点伤害",
+    "shape": "1#1",
+    "resPath": "v3a3_m_s12_jn1x1_003",
+    "scale": [
+      1,
+      1
+    ],
+    "damage": 3,
+    "countdown": 3,
+    "target": 10,
+    "addFloor": 101,
+    "skill": 0,
+    "icon": "v3a3_eliminate_skillicon_4_2"
+  },
+  {
+    "id": 103,
+    "name": "节拍陷阱",
+    "skillDesc": "倒计时3次行动后：对周围方形5格范围内的单位造成3点伤害",
+    "shape": "1#1",
+    "resPath": "v3a3_m_s12_jn1x1_004",
+    "scale": [
+      1,
+      1
+    ],
+    "damage": 3,
+    "countdown": 4,
+    "target": 11,
+    "addFloor": 101,
+    "skill": 0,
+    "icon": "v3a3_eliminate_skillicon_5_2"
+  },
+  {
+    "id": 104,
+    "name": "静默爆破（假）",
+    "skillDesc": "使用后，刷新色块上的所有造物",
+    "shape": "",
+    "resPath": "v3a3_m_s12_jn1x1_001",
+    "scale": [
+      1,
+      1
+    ],
+    "damage": 0,
+    "countdown": 0,
+    "target": 101,
+    "addFloor": 0,
+    "skill": 100004,
+    "icon": "v3a3_eliminate_skillicon_1_2"
+  },
+  {
+    "id": 105,
+    "name": "命运重置",
+    "skillDesc": "倒计时2次行动后：对周围十字3格范围内的单位造成5点伤害",
+    "shape": "1#1",
+    "resPath": "v3a3_m_s12_jn1x1_001",
+    "scale": [
+      1,
+      1
+    ],
+    "damage": 5,
+    "countdown": 3,
+    "target": 12,
+    "addFloor": 101,
+    "skill": 0,
+    "icon": "v3a3_eliminate_skillicon_2_2"
+  },
+  {
+    "id": 106,
+    "name": "怪物炸弹",
+    "skillDesc": "倒计时2次行动后：对周围方形3格范围内的单位造成3点伤害",
+    "shape": "1#1",
+    "resPath": "v3a3_m_s12_jz1x1_001",
+    "scale": [
+      1,
+      1
+    ],
+    "damage": 3,
+    "countdown": 3,
+    "target": 13,
+    "addFloor": 0,
+    "skill": 0,
+    "icon": "v3a3_eliminate_skillicon_2_2"
+  }
+]

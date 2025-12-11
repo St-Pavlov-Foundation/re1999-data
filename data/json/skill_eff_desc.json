@@ -21334,5 +21334,549 @@
     "notAddLink": 0,
     "isSpecialCharacter": 0,
     "desc": "现实防御提升1%(效果可叠加，无法驱散)"
+  },
+  {
+    "id": 309501111,
+    "name": "术法威力提升",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 309501112,
+    "name": "暴击创伤提升",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 309501113,
+    "name": "筹备·环状水星",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "下回合开始时，生成1张2阶预备咒语-他者的喧嚷"
+  },
+  {
+    "id": 309500021,
+    "name": "调阶<id:1>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "若咒语适用阶次，在计算其阶次时，阶次额外+1（不影响咒语自身效果）\n攻击时若为3阶咒语：\n造成伤害提升，相当于当前持有的环状水星【宇宙能量】创伤加成的40%\n若处于【术法威力提升】，额外提升相当于环状水星【术法威力提升】40%的术法威力\n若处于【暴击创伤提升】，额外提升相当于环状水星【暴击创伤提升】40%的暴击创伤"
+  },
+  {
+    "id": 31270011,
+    "name": "苦痛代偿",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "暴击率提升2.5%，暴击创伤提升2.5%（效果可叠加，上限20层，不可驱散）"
+  },
+  {
+    "id": 31270021,
+    "name": "战地急救",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "任意己方受到攻击后，玛尔纱消耗1层【战地急救】释放1次1阶【缄默的负重】（上限2层）"
+  },
+  {
+    "id": 31270031,
+    "name": "修行<id:1>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "暴击率提升20%，造成伤害时溢出暴击率的50%转化为暴击创伤；每层术法威力提升1%，暴击创伤提升2.5%（每层独立计算持续时间，不可驱散）"
+  },
+  {
+    "id": 31270032,
+    "name": "修行<id:2>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "暴击率提升30%，造成伤害时溢出暴击率的75%转化为暴击创伤；每层术法威力提升1%，暴击创伤提升2.5%（每层独立计算持续时间，不可驱散）"
+  },
+  {
+    "id": 31270033,
+    "name": "修行<id:3>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "暴击率提升30%，造成伤害时溢出暴击率的75%转化为暴击创伤；每层术法威力提升2%，暴击创伤提升2.5%（每层独立计算持续时间，不可驱散）"
+  },
+  {
+    "id": 31270034,
+    "name": "修行<id:4>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "暴击率提升40%，造成伤害时溢出暴击率的100%转化为暴击创伤；每层术法威力提升2%，暴击创伤提升2.5%（每层独立计算持续时间，不可驱散）"
+  },
+  {
+    "id": 31270041,
+    "name": "白昼祷词<id:3127>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "己方【余辉】角色数量在1/2/3名及以上时，使【余辉】增加时额外增加3/5/8%；\n3名时额外获得效果：使敌方全体的【燃烧】最大叠加层数额外提升5层；回合开始时，每10点【余辉】使己方全体本回合暴击创伤提升1%，至多计入100点"
+  },
+  {
+    "id": 31270042,
+    "name": "白昼祷词<id:312702>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "己方【余辉】角色数量在1/2/3名及以上时，使【余辉】增加时额外增加3/5/8%；\n3名时额外获得效果：使敌方全体的【燃烧】最大叠加层数额外提升10层；回合开始时，每10点【余辉】使己方全体本回合暴击创伤提升1%，至多计入100点"
+  },
+  {
+    "id": 31270043,
+    "name": "白昼祷词<id:312703>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "己方【余辉】角色数量在1/2/3名及以上时，使【余辉】增加时额外增加3/5/14%；\n3名时额外获得效果：使敌方全体的【燃烧】最大叠加层数额外提升10层；回合开始时，每10点【余辉】使己方全体本回合暴击创伤提升1%，至多计入100点"
+  },
+  {
+    "id": 31270051,
+    "name": "赦免",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "持续时间内令持有者免疫受到的第一次【控制】（成功免疫后消失，不可叠加）"
+  },
+  {
+    "id": 31270061,
+    "name": "缄默的负重",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 116331191,
+    "name": "激情提升<id:116331191>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合结束时，自身激情+1"
+  },
+  {
+    "id": 116330100,
+    "name": "增益集合<id:116330100>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "共有10种效果：穿透率+20%，术法威力+15%，现实防御+15%，精神防御+15%，攻击+10%，创伤加成+15%，暴击率+20%，受创减免+15%，暴击防御+20%，仪式威力+15%（优先赋予未拥有的效果，每种效果各持续2回合）"
+  },
+  {
+    "id": 116331170,
+    "name": "祷言<id:1>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受到致命攻击时不会退场，并回复使用者生命（生效后消失，不可叠加）"
+  },
+  {
+    "id": 116331200,
+    "name": "启迪灵光",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "行动点+1，可与其他增加行动点的效果叠加"
+  },
+  {
+    "id": 116330001,
+    "name": "血侵",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受到的治疗效果-30%（效果不叠加）；单回合内我方累计打出3张及以上的增益类、反制类咒语或至终的仪式后，减少10层（最多叠加20层，不可驱散）"
+  },
+  {
+    "id": 116330002,
+    "name": "渴血",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "若回合开始时达到6层，则展开术阵【血食瘟疫<id:116330010>】（最多叠加6层）"
+  },
+  {
+    "id": 116330010,
+    "name": "血食瘟疫<id:116330010>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "【术阵】效果：回合开始时，急性猩红症获得现实防御+30%，持续1回合；回合结束时，对敌方全体造成其最大生命*30%的本源创伤"
+  },
+  {
+    "id": 116330032,
+    "name": "吟诵干扰",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "叠加至3层时变为【眩晕】，持续2回合"
+  },
+  {
+    "id": 116330040,
+    "name": "血裔溃亡",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "叠加至4层时变为【血裔反噬】，持续2回合"
+  },
+  {
+    "id": 116330041,
+    "name": "血裔反噬",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合开始时，若敌方兽灵感角色数量大于等于2，自身灵感不变，若敌方兽灵感角色数量小于2，自身变为灵灵感。自身为木灵感时：现实防御降低30%；自身为灵灵感时：精神防御降低30%"
+  },
+  {
+    "id": 109330103,
+    "name": "血食瘟疫<id:109330103>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "【术阵】效果：敌方回合开始时，赋予敌方全体2层【血侵】；己方回合开始时，赋予渴血患者2层【血侵】"
+  },
+  {
+    "id": 109330261,
+    "name": "偿罪<id:109330261>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "单体攻击，造成现实创伤"
+  },
+  {
+    "id": 109330263,
+    "name": "你当忏悔<id:109330263>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合开始时获得2层【监视】，敌方行动后会消耗1层【监视】，对目标释放一次1阶【偿罪<id:109330261>】；\n敌方回合结束时，消耗所有【监视】，每消耗一层【监视】，对随机目标释放一次1阶【偿罪<id:109330261>】；\n攻击后若自身【惊惧子弹<id:109330264>】耗尽，则中断吟诵"
+  },
+  {
+    "id": 109330264,
+    "name": "惊惧子弹<id:109330264>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "攻击后移除1层"
+  },
+  {
+    "id": 109330203,
+    "name": "焦点主演",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合开始时释放至终的仪式，攻击后赋予目标1层【灼烧】，持续3回合"
+  },
+  {
+    "id": 109330213,
+    "name": "连续行动Ⅱ",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "行动点+2（无法驱散）"
+  },
+  {
+    "id": 109330222,
+    "name": "队中磐石",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "现实防御+40%，精神防御+40%（可叠加）"
+  },
+  {
+    "id": 109330223,
+    "name": "石化保护",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "无法行动，不受任何伤害，不再获得【磐岩·护盾】"
+  },
+  {
+    "id": 109330252,
+    "name": "孤独感",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "攻击时，创伤加成-100%（生效后减少1层）"
+  },
+  {
+    "id": 2330000,
+    "name": "孤魂野鬼",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "泥鯭的士已捕捉的孤魂野鬼（最多收集12个）"
+  },
+  {
+    "id": 2330001,
+    "name": "恶感<id:233001>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "累计5层后，释放至终的仪式1(可叠加，不可驱散）"
+  },
+  {
+    "id": 2330002,
+    "name": "残念<id:233001>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "累计5层后，释放至终的仪式2(可叠加，不可驱散）"
+  },
+  {
+    "id": 2330003,
+    "name": "壁垒",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受创减免+15%(可叠加，不可驱散）"
+  },
+  {
+    "id": 2330004,
+    "name": "荆棘·护盾",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "抵挡伤害的护盾，反弹对方自身攻击*30%的本源创伤"
+  },
+  {
+    "id": 2330005,
+    "name": "磐岩·护盾",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "抵挡伤害的护盾，受创减免+100%，受到攻击后该回合-10%（降低效果最多叠加10层）"
+  },
+  {
+    "id": 2330006,
+    "name": "免疫·护盾",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "抵挡伤害的护盾，并免疫所有负面状态"
+  },
+  {
+    "id": 2330007,
+    "name": "灼烧",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受到的治疗效果-20%，回合结束时受到基于携带者攻击*10%的本源创伤，成为治疗/增益/反制咒语的目标时驱散1层此状态（效果可叠加，最多叠加10层）"
+  },
+  {
+    "id": 2330008,
+    "name": "显梦",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "己方行动点+1，但角色主动使用1次咒语后将会获得6层【脱力】，持续3回合(不可驱散），脱力积累到一定层数后，会进入【访梦】状态"
+  },
+  {
+    "id": 2330009,
+    "name": "隐梦",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "己方行动点-1"
+  },
+  {
+    "id": 2330010,
+    "name": "思维崩塌",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "创伤加成-40%，但主动使用攻击、吟诵类普通咒语后将会获得1层【倾力】"
+  },
+  {
+    "id": 2330011,
+    "name": "脱力",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "创伤加成-3%，叠加到12层时变为【访梦】状态2回合（效果可叠加，不可驱散）"
+  },
+  {
+    "id": 2330012,
+    "name": "美梦诅咒",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "己方行动点+1，但角色主动使用1次咒语后将会陷入眩晕1回合(不可驱散）"
+  },
+  {
+    "id": 2330013,
+    "name": "噩梦诅咒",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "己方行动点-1(不可驱散）"
+  },
+  {
+    "id": 2330014,
+    "name": "镣铐的新生<id:233001>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "无法行动，无法受到伤害"
+  },
+  {
+    "id": 104331111,
+    "name": "侦察游击",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受击后，反击释放【一去不返】"
+  },
+  {
+    "id": 104331112,
+    "name": "装弹",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合开始时激情+2"
+  },
+  {
+    "id": 104331113,
+    "name": "轰鸣无间",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，对敌方全体造成200%现实创伤，每次释放的威力递增，第三次释放时额外赋予【眩晕】，持续1回合"
+  },
+  {
+    "id": 104331114,
+    "name": "轰鸣无间",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，对敌方全体造成200%现实创伤，每次释放的威力递增，第三次释放时额外赋予【眩晕】，持续1回合"
+  },
+  {
+    "id": 104331115,
+    "name": "轰鸣无间",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，对敌方全体造成200%现实创伤，每次释放的威力递增，第三次释放时额外赋予【眩晕】，持续1回合"
+  },
+  {
+    "id": 104331116,
+    "name": "防空弹幕",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "处于此吟诵状态时，飞行中队无法发动【空中增援】"
+  },
+  {
+    "id": 104331117,
+    "name": "火力压制",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "敌方行动后，对其反击"
+  },
+  {
+    "id": 104331118,
+    "name": "空袭制导",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "下回合开始时，引导飞行中队进行【空中增援】"
+  },
+  {
+    "id": 104331119,
+    "name": "红弩箭中队攻击标记",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "用来处理被击中后的各种特殊效果"
+  },
+  {
+    "id": 104331120,
+    "name": "3.3boss拉起选项标记",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 104331121,
+    "name": "泥土护盾",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "现实防御+50%，受到【空中增援】攻击后移除"
+  },
+  {
+    "id": 104331122,
+    "name": "训练靶标",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "不会被治疗，受到所有伤害固定为1，受到【空中增援】攻击后移除"
+  },
+  {
+    "id": 104331123,
+    "name": "空袭制导",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "下回合开始时，引导飞行中队进行【空中增援】"
+  },
+  {
+    "id": 104331124,
+    "name": "空中增援",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "对敌方全体造成其最大生命一定比例的本源创伤，驱散其所有【吟诵】状态"
+  },
+  {
+    "id": 104331125,
+    "name": "一去不返",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "单体攻击，造成200%现实创伤，赋予目标【裂伤Ⅰ】，持续2回合"
+  },
+  {
+    "id": 104331126,
+    "name": "训练标靶",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "不会被治疗，受到所有伤害固定为1，受到【空中增援】攻击后移除"
+  },
+  {
+    "id": 104331127,
+    "name": "轰鸣无间",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，对敌方全体造成200%现实创伤，每次释放的威力递增，第三次释放时额外赋予【眩晕】，持续1回合"
+  },
+  {
+    "id": 104331128,
+    "name": "战线",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "格鲁托夫的部队推进战线的进度，当进度条满时，战斗失败"
+  },
+  {
+    "id": 104331129,
+    "name": "飞行女巫的抉择",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "为飞行中队选择支援目标，回合结束时会自动释放对应的神秘术"
   }
 ]

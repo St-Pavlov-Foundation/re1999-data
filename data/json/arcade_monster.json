@@ -1,0 +1,3609 @@
+[
+  {
+    "id": 331001,
+    "name": "兴奋的街机爱好者",
+    "desc": "色相：<color=#F96C6C>红</color>\n无特殊技能",
+    "shape": "1#1",
+    "race": "red",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "32000001",
+    "resPath": "v3a3_m_s12_gw1x1_012",
+    "scale": [
+      0.9,
+      1.8
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_gw1x1_012",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 331002,
+    "name": "兴奋的街机同盟",
+    "desc": "色相：<color=#F96C6C>红</color>\n无特殊技能",
+    "shape": "2#2",
+    "race": "red",
+    "attack": 1,
+    "hpCap": 4,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "32000001",
+    "resPath": "v3a3_m_s12_gw2x2_012",
+    "scale": [
+      2,
+      2
+    ],
+    "posOffset": [
+      0.37,
+      0.45
+    ],
+    "hpPos": [
+      0.52,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_gw2x2_012",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      -13,
+      -32
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 331003,
+    "name": "煤烟卡邦克鲁",
+    "desc": "色相：<color=#F96C6C>红</color>\n离场时原地生成熔岩带，效果持续2次行动\n\n<size=85%><i>堵塞烟囱、弄熄壁炉、绊倒灯倌，它闯下的祸数不胜数。</i>",
+    "shape": "1#1",
+    "race": "red",
+    "attack": 1,
+    "hpCap": 3,
+    "defense": 0,
+    "skillIds": "33100301",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "32000001",
+    "resPath": "v3a3_m_s12_gw1x1_005",
+    "scale": [
+      0.81,
+      1.62
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_gw1x1_005",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 331004,
+    "name": "煤烟卡邦克鲁群",
+    "desc": "色相：<color=#F96C6C>红</color>\n离场时原地生成熔岩带，效果持续2次行动\n\n<size=85%><i>这些小家伙们在垃圾场里拼拼凑凑，又将自己烧红的身体作为动力源。现在，它们所向披靡。</i>\n",
+    "shape": "2#2",
+    "race": "red",
+    "attack": 1,
+    "hpCap": 7,
+    "defense": 1,
+    "skillIds": "33100401",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "32000001",
+    "resPath": "v3a3_m_s12_gw2x2_004",
+    "scale": [
+      2,
+      2
+    ],
+    "posOffset": [
+      0.65,
+      0.45
+    ],
+    "hpPos": [
+      0.52,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_gw2x2_004",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      10,
+      -34
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 331005,
+    "name": "煤烟卡邦克鲁之主",
+    "desc": "色相：<color=#F96C6C>红</color>\n离场时原地留下熔岩带，持续2次行动\n\n<size=85%><i>身为魔精之主，最重要的日程就是挑选最合心意的高烟囱。近几年笔直的高烟囱越发密集，连带它也日益繁忙。</i>",
+    "shape": "2#3",
+    "race": "red",
+    "attack": 1,
+    "hpCap": 7,
+    "defense": 1,
+    "skillIds": "33100501#33100502",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "32000001",
+    "resPath": "v3a3_m_s12_gw2x3_002",
+    "scale": [
+      2,
+      4
+    ],
+    "posOffset": [
+      0.4,
+      0.97
+    ],
+    "hpPos": [
+      0.52,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_gw2x3_002",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      -37,
+      -61
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 331006,
+    "name": "乌卢鲁红土守卫",
+    "desc": "色相：<color=#F96C6C>红</color>\n定期对周围区域发起攻击\n\n<size=85%><i>红色的大地饲养了魁梧的血肉，骨制的长柄孕育了神圣的职责。</i>",
+    "shape": "3#3",
+    "race": "red",
+    "attack": 1,
+    "hpCap": 7,
+    "defense": 1,
+    "skillIds": "33100601",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "32000001",
+    "resPath": "v3a3_m_s12_gw3x3_001",
+    "scale": [
+      3.6,
+      3.6
+    ],
+    "posOffset": [
+      1.08,
+      0.97
+    ],
+    "hpPos": [
+      1.02,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_gw3x3_001",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      85,
+      -80
+    ],
+    "iconScale2": [
+      0.95,
+      0.95
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 331007,
+    "name": "白公鸡卫士",
+    "desc": "色相：<color=#F96C6C>红</color>\n受到直接攻击时，会迅速朝来袭方向举盾防御，在接下来的5次行动内完全免疫来自该方向的伤害\n\n<size=85%><i>它是陌生而沉默的，也是执拗的、难以通融的。你仅有一个方法通过它。</i>",
+    "shape": "2#3",
+    "race": "red",
+    "attack": 1,
+    "hpCap": 7,
+    "defense": 1,
+    "skillIds": "33100701#33100702#33100703#33100704",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "32000001",
+    "resPath": "v3a3_m_s12_gw2x3_003",
+    "scale": [
+      2.26,
+      4.52
+    ],
+    "posOffset": [
+      0.72,
+      0.97
+    ],
+    "hpPos": [
+      0.52,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_gw2x3_003",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      14,
+      -60
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 331008,
+    "name": "红岩傀儡",
+    "desc": "色相：<color=#F96C6C>红</color>\n受到直接攻击后，攻击力+2\n\n<size=85%><i>极低的维护成本很快成了它们在就业方面的优势。</i>",
+    "shape": "1#1",
+    "race": "red",
+    "attack": 1,
+    "hpCap": 7,
+    "defense": 1,
+    "skillIds": "33100801",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "32000001",
+    "resPath": "v3a3_m_s12_gw1x1_009",
+    "scale": [
+      0.87,
+      0.87
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_gw1x1_009",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 331009,
+    "name": "微弱的小火苗",
+    "desc": "色相：<color=#F96C6C>红</color>\n定期对周围区域发起攻击\n\n<size=85%><i>它的重要程度不亚于求生者凿得的第一颗火星。某种意义上它们都象征着希望。</i>",
+    "shape": "1#1",
+    "race": "red",
+    "attack": 1,
+    "hpCap": 7,
+    "defense": 1,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "32000001",
+    "resPath": "v3a3_m_s12_gw1x1_003",
+    "scale": [
+      1.16,
+      1.16
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_gw1x1_003",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 332001,
+    "name": "连败勇士",
+    "desc": "色相：<color=#8DCF84>绿</color>\n无特殊技能",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "32000001",
+    "resPath": "v3a3_m_s12_gw1x1_013",
+    "scale": [
+      0.9,
+      1.8
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_gw1x1_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 332002,
+    "name": "继续者联盟",
+    "desc": "色相：<color=#8DCF84>绿</color>\n无特殊技能",
+    "shape": "2#2",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 4,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "32000001",
+    "resPath": "v3a3_m_s12_gw2x2_013",
+    "scale": [
+      2,
+      2
+    ],
+    "posOffset": [
+      0.37,
+      0.45
+    ],
+    "hpPos": [
+      0.52,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_gw2x2_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      -13,
+      -32
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 332003,
+    "name": "仙人掌魔精",
+    "desc": "色相：<color=#8DCF84>绿</color>\n无特殊技能\n\n<size=85%><i> 它们贪得无厌，痛饮仙人掌汁直至酩酊大醉。</i>",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 2,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "32000001",
+    "resPath": "v3a3_m_s12_gw1x1_001",
+    "scale": [
+      0.89,
+      1.78
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_gw1x1_001",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 332004,
+    "name": "仙人掌魔精群",
+    "desc": "色相：<color=#8DCF84>绿</color>\n无特殊技能\n\n<size=85%><i> 它们贪得无厌，痛饮仙人掌汁直至酩酊大醉。</i>",
+    "shape": "2#2",
+    "race": "green",
+    "attack": 2,
+    "hpCap": 4,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "32000001",
+    "resPath": "v3a3_m_s12_gw2x2_002",
+    "scale": [
+      2,
+      2
+    ],
+    "posOffset": [
+      0.37,
+      0.45
+    ],
+    "hpPos": [
+      0.52,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_gw2x2_002",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      -13.9,
+      -20.2
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 332005,
+    "name": "奇罗谷怪蜥",
+    "desc": "色相：<color=#8DCF84>绿</color>\n无特殊技能\n\n<size=85%><i>身体细长，带艳冠，多在昼间活动。建议饲养前进行3-5次的全身体检。</i>",
+    "shape": "3#2",
+    "race": "green",
+    "attack": 3,
+    "hpCap": 8,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "32000001",
+    "resPath": "v3a3_m_s12_gw3x2_002",
+    "scale": [
+      3.2,
+      1.6
+    ],
+    "posOffset": [
+      1.07,
+      0.45
+    ],
+    "hpPos": [
+      1.02,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_gw3x2_002",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      112,
+      43
+    ],
+    "iconScale2": [
+      0.85,
+      0.85
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 332006,
+    "name": "丛栖魔鬼蜥蜴",
+    "desc": "色相：<color=#8DCF84>绿</color>\n无特殊技能\n\n<size=85%><i>古代运动员为它定制了特别的神秘学鞍具，得以在长途跋涉中不至于晕头转向，或是被背部凶器所伤。</i>",
+    "shape": "2#2",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 5,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "32000001",
+    "resPath": "v3a3_m_s12_gw2x2_001",
+    "scale": [
+      1.74,
+      1.74
+    ],
+    "posOffset": [
+      0.53,
+      0.53
+    ],
+    "hpPos": [
+      0.52,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_gw2x2_001",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      44,
+      21.7
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 332007,
+    "name": "脱壳粘垢",
+    "desc": "色相：<color=#8DCF84>绿</color>\n无特殊技能\n\n<size=85%><i>它认为脱离坩埚未尝不是一种选择。当然，它卷走了它所有的家当，连一点药物残渣都没留下。</i>",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 4,
+    "defense": 999,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "32000001",
+    "resPath": "v3a3_m_s12_gw1x1_006",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_gw1x1_006",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 332008,
+    "name": "错误粘垢",
+    "desc": "色相：<color=#8DCF84>绿</color>\n仅会被来自左侧的直接攻击命中；一旦受到伤害，即转化为脱壳粘垢\n\n<size=85%><i>这口坩埚中熬制出了一种坚韧的品质：无论遭受多少厌弃，这块胶质也绝不松开它手中的锅沿。</i>",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 5,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "32000001",
+    "resPath": "v3a3_m_s12_gw1x1_008",
+    "scale": [
+      1.09,
+      1.09
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_gw1x1_008",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 333001,
+    "name": "沉稳的街机爱好者",
+    "desc": "色相：<color=#92A8EF>蓝</color>\n无特殊技能",
+    "shape": "1#1",
+    "race": "blue",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "32000001",
+    "resPath": "v3a3_m_s12_gw1x1_014",
+    "scale": [
+      0.9,
+      1.8
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_gw1x1_014",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 333002,
+    "name": "绒帽卡邦克鲁",
+    "desc": "色相：<color=#92A8EF>蓝</color>\n无特殊技能\n\n<size=85%><i>路边，等，帽子！路边，追，帽子！抓帽子！新帽子！都去！都去！</i>",
+    "shape": "1#1",
+    "race": "blue",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "32000001",
+    "resPath": "v3a3_m_s12_gw1x1_011",
+    "scale": [
+      1.23,
+      1.23
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_gw1x1_011",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 333003,
+    "name": "雪山卡邦克鲁群",
+    "desc": "色相：<color=#92A8EF>蓝</color>\n无特殊技能\n\n<size=85%><i>为避免夏季换毛，它们常常向更高海拔的山地迁徙。</i>",
+    "shape": "2#2",
+    "race": "blue",
+    "attack": 1,
+    "hpCap": 5,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "32000001",
+    "resPath": "v3a3_m_s12_gw2x2_007",
+    "scale": [
+      2,
+      2
+    ],
+    "posOffset": [
+      0.37,
+      0.45
+    ],
+    "hpPos": [
+      0.52,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_gw2x2_007",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      -13,
+      -32
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 333004,
+    "name": "雪山卡邦克鲁之主",
+    "desc": "色相：<color=#92A8EF>蓝</color>\n无特殊技能\n\n<size=85%><i>它热衷于用车轮在草甸与雪原上压出图案，为此，它收集了十几种型号的“画笔”。</i>",
+    "shape": "2#3",
+    "race": "blue",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "32000001",
+    "resPath": "v3a3_m_s12_gw2x3_005",
+    "scale": [
+      2,
+      4
+    ],
+    "posOffset": [
+      0.4,
+      0.97
+    ],
+    "hpPos": [
+      0.52,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_gw2x3_005",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      -32.3,
+      -69.7
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 333005,
+    "name": "塔泽尔亚龙",
+    "desc": "色相：<color=#92A8EF>蓝</color>\n无特殊技能\n\n<size=85%><i>排在“不想遇到魔精榜”第32名，被评价为“防不胜防，即使逃脱或打赢也很难洗掉衣物上残留的气味”。</i>",
+    "shape": "3#2",
+    "race": "blue",
+    "attack": 1,
+    "hpCap": 5,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "32000001",
+    "resPath": "v3a3_m_s12_gw3x2_001",
+    "scale": [
+      3.2,
+      1.6
+    ],
+    "posOffset": [
+      1.07,
+      0.45
+    ],
+    "hpPos": [
+      1.02,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_gw3x2_001",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      112,
+      43
+    ],
+    "iconScale2": [
+      0.85,
+      0.85
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 333006,
+    "name": "北地气浮鳐",
+    "desc": "色相：<color=#92A8EF>蓝</color>\n定期从原位消失，随机瞬移至任意位置；若受到攻击，则立刻瞬移至他处\n\n<size=85%><i>追逐船只，只是这个庞大族群征服海洋的过程中，一个小小的插曲。</i>",
+    "shape": "3#3",
+    "race": "blue",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "33300601#33300604",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "32000001",
+    "resPath": "v3a3_m_s12_gw3x3_002",
+    "scale": [
+      3.25,
+      3.25
+    ],
+    "posOffset": [
+      1.08,
+      1.21
+    ],
+    "hpPos": [
+      1.02,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_gw3x3_002",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      7.9,
+      0
+    ],
+    "iconScale2": [
+      0.95,
+      0.95
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 333007,
+    "name": "穆姆",
+    "desc": "色相：<color=#92A8EF>蓝</color>\n移动后，将所停留的地块转化为冰域\n\n<size=85%><i>相较于避人耳目的尼斯湖远亲，它更钟情于与人类玩一场限制级的“雾中捉迷藏”。</i>",
+    "shape": "1#1",
+    "race": "blue",
+    "attack": 1,
+    "hpCap": 5,
+    "defense": 0,
+    "skillIds": "33300701",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "32000001",
+    "resPath": "v3a3_m_s12_gw1x1_007",
+    "scale": [
+      0.94,
+      0.94
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_gw1x1_007",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 334001,
+    "name": "闪闪卡邦克鲁",
+    "desc": "色相：<color=#D079E2>紫</color>\n死亡时，将所停留的地块转化为毒沼\n\n<size=85%><i>它的臭气熏天，而脾气却更甚。</i>",
+    "shape": "1#1",
+    "race": "purple",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "33400101",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "32000001",
+    "resPath": "v3a3_m_s12_gw1x1_010",
+    "scale": [
+      0.9,
+      0.9
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_gw1x1_010",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 334002,
+    "name": "闪闪卡邦克鲁群",
+    "desc": "色相：<color=#D079E2>紫</color>\n死亡时，将所停留的地块转化为毒沼\n\n<size=85%><i>收集癖，树枝与破铜烂铁。</i>",
+    "shape": "2#2",
+    "race": "purple",
+    "attack": 1,
+    "hpCap": 5,
+    "defense": 0,
+    "skillIds": "33400201",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "32000001",
+    "resPath": "v3a3_m_s12_gw2x2_006",
+    "scale": [
+      2,
+      2
+    ],
+    "posOffset": [
+      0.48,
+      0.45
+    ],
+    "hpPos": [
+      0.52,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_gw2x2_006",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      1.3,
+      -38.5
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 334003,
+    "name": "闪闪卡邦克鲁之主",
+    "desc": "色相：<color=#D079E2>紫</color>\n死亡时，将所停留的地块转化为毒沼\n\n<size=85%><i>蛀牙，蛀牙，蛀牙。请相信，它正在试图减少食糖。</i>",
+    "shape": "2#3",
+    "race": "purple",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "33400301",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "32000001",
+    "resPath": "v3a3_m_s12_gw2x3_004",
+    "scale": [
+      2,
+      4
+    ],
+    "posOffset": [
+      0.4,
+      0.97
+    ],
+    "hpPos": [
+      0.52,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_gw2x3_004",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      -36.3,
+      -74.7
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 334004,
+    "name": "“连击王”幽灵树精",
+    "desc": "色相：<color=#D079E2>紫</color>\n死亡时，将所停留的地块转化为毒沼；若受到攻击，则立刻瞬移至他处\n\n<size=85%><i>它们生来便与树木相连，并与树木一起死去。</i>",
+    "shape": "1#1",
+    "race": "purple",
+    "attack": 1,
+    "hpCap": 5,
+    "defense": 0,
+    "skillIds": "33400401",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "32000001",
+    "resPath": "v3a3_m_s12_gw1x1_002",
+    "scale": [
+      0.68,
+      0.68
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_gw1x1_002",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      2.2,
+      -16.1
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 335001,
+    "name": "热情的沙锤爱好者",
+    "desc": "定期召唤律动大师，生命值越低，召唤出的数量越多",
+    "shape": "1#1",
+    "race": "boss",
+    "attack": 1,
+    "hpCap": 12,
+    "defense": 0,
+    "skillIds": "33500102#33500101#33500108",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_role1x1_005",
+    "scale": [
+      1.5,
+      1.5
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_role1x1_005",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      -9.3,
+      -11.8
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 3350011,
+    "name": "律动大师",
+    "desc": "定期抛掷炸弹",
+    "shape": "1#1",
+    "race": "houzi",
+    "attack": 0,
+    "hpCap": 4,
+    "defense": 0,
+    "skillIds": "33500112",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_npc1x1_001",
+    "scale": [
+      1.5,
+      1.5
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_npc1x1_001",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 335002,
+    "name": "电子宠物收藏家",
+    "desc": "",
+    "shape": "1#1",
+    "race": "boss",
+    "attack": 1,
+    "hpCap": 12,
+    "defense": 0,
+    "skillIds": "33500202",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_role1x1_001",
+    "scale": [
+      1.5,
+      1.5
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_role1x1_001",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -11.8
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 3350021,
+    "name": "电子鸸鹋",
+    "desc": "",
+    "shape": "1#1",
+    "race": "boss",
+    "attack": 1,
+    "hpCap": 5,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_npc1x1_002",
+    "scale": [
+      1.5,
+      1.5
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_npc1x1_002",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 335003,
+    "name": "和谐而稳定的“位元”",
+    "desc": "防御极高，并会定期召唤“幸运位元”",
+    "shape": "1#1",
+    "race": "boss",
+    "attack": 1,
+    "hpCap": 8,
+    "defense": 3,
+    "skillIds": "33500302#33500305#33500303",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_role1x1_004",
+    "scale": [
+      1.5,
+      1.5
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_role1x1_004",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -11.8
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 3350031,
+    "name": "“幸运位元”",
+    "desc": "",
+    "shape": "1#1",
+    "race": "baoxiang1",
+    "attack": 1,
+    "hpCap": 5,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_jh1x1_010",
+    "scale": [
+      0.9,
+      0.9
+    ],
+    "posOffset": [
+      0,
+      -0.07
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_jh1x1_010",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 335004,
+    "name": "“超级猫女”",
+    "desc": "异常多动！\n受到攻击后，会进入\"逃逸\"状态并位移，同时召唤1个“超级猫女（伪）”（该单位会进行十字攻击）",
+    "shape": "1#1",
+    "race": "boss",
+    "attack": 1,
+    "hpCap": 12,
+    "defense": 0,
+    "skillIds": "33500402#33500401#33500403#33000002",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_role1x1_003",
+    "scale": [
+      1.5,
+      1.5
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_role1x1_003",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -11.8
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 3350041,
+    "name": "喷吉的祝福",
+    "desc": "",
+    "shape": "1#1",
+    "race": "jinbi1",
+    "attack": 0,
+    "hpCap": 5,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_jh1x1_008",
+    "scale": [
+      0.9,
+      0.9
+    ],
+    "posOffset": [
+      0,
+      -0.07
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_jh1x1_008",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 3350042,
+    "name": "“超级猫女（伪）”",
+    "desc": "",
+    "shape": "1#1",
+    "race": "maonv",
+    "attack": 1,
+    "hpCap": 4,
+    "defense": 0,
+    "skillIds": "33500421#33500423",
+    "moveType": "noDrop",
+    "illustrationShow": 0,
+    "drop": "",
+    "resPath": "v3a3_m_s12_role1x1_003",
+    "scale": [
+      1.5,
+      1.5
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_role1x1_003",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -11.8
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 335005,
+    "name": "卡邦克鲁之王",
+    "desc": "会四处冲撞，造成大量伤害，当前生命低于11时，冲撞的频率会变高和冲撞的速度变快！",
+    "shape": "4#6",
+    "race": "boss",
+    "attack": 1,
+    "hpCap": 20,
+    "defense": 0,
+    "skillIds": "33500501",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw4x6_001",
+    "scale": [
+      3.68,
+      7.36
+    ],
+    "posOffset": [
+      1.42,
+      2.53
+    ],
+    "hpPos": [
+      1.54,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_gw4x6_001",
+    "iconScale": [
+      0.375,
+      0.375
+    ],
+    "iconOffset": [
+      -29.2,
+      -65.6
+    ],
+    "iconScale2": [
+      0.6,
+      0.6
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 335006,
+    "name": "可燃点",
+    "desc": "定期跳跃并对周围区域发起攻击，攻击后该周围区域会变成熔岩带，生命低于一定阈值时，攻击的范围区域变大",
+    "shape": "1#1",
+    "race": "boss",
+    "attack": 1,
+    "hpCap": 8,
+    "defense": 0,
+    "skillIds": "33500601#33500602#33000002",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_role1x1_002",
+    "scale": [
+      1.5,
+      1.5
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_role1x1_002",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -11.8
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 336001,
+    "name": "路障碎石",
+    "desc": "无特殊技能",
+    "shape": "1#1",
+    "race": "shizuan",
+    "attack": 1,
+    "hpCap": 1,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_jh1x1_005",
+    "scale": [
+      0.9,
+      0.9
+    ],
+    "posOffset": [
+      0,
+      -0.07
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_jh1x1_005",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 336002,
+    "name": "不动岩",
+    "desc": "无特殊技能",
+    "shape": "1#1",
+    "race": "shizuan",
+    "attack": 1,
+    "hpCap": 3,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_jh1x1_007",
+    "scale": [
+      0.9,
+      0.9
+    ],
+    "posOffset": [
+      0,
+      -0.07
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_jh1x1_007",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 337001,
+    "name": "医疗箱",
+    "desc": "死亡时使投币手恢复2点生命",
+    "shape": "1#1",
+    "race": "yiliaoxiang",
+    "attack": 0,
+    "hpCap": 1,
+    "defense": 0,
+    "skillIds": "337001",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_jh1x1_001",
+    "scale": [
+      0.9,
+      0.9
+    ],
+    "posOffset": [
+      0,
+      -0.07
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_jh1x1_001",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 337002,
+    "name": "医疗箱",
+    "desc": "死亡时使投币手恢复2点生命",
+    "shape": "1#1",
+    "race": "yiliaoxiang",
+    "attack": 0,
+    "hpCap": 1,
+    "defense": 0,
+    "skillIds": "337001",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_jh1x1_001",
+    "scale": [
+      0.9,
+      0.9
+    ],
+    "posOffset": [
+      0,
+      -0.07
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_jh1x1_001",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 338001,
+    "name": "幸运宝箱",
+    "desc": "死亡时，随机掉落一把武器",
+    "shape": "1#1",
+    "race": "wuqixiang",
+    "attack": 0,
+    "hpCap": 4,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "100011",
+    "resPath": "v3a3_m_s12_jh1x1_010",
+    "scale": [
+      0.9,
+      0.9
+    ],
+    "posOffset": [
+      -0.027,
+      -0.034
+    ],
+    "hpPos": [],
+    "category": "",
+    "icon": "",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 338002,
+    "name": "幸运宝箱",
+    "desc": "死亡时，随机掉落一把武器",
+    "shape": "1#1",
+    "race": "wuqixiang",
+    "attack": 0,
+    "hpCap": 4,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "100011",
+    "resPath": "v3a3_m_s12_jh1x1_010",
+    "scale": [
+      0.9,
+      0.9
+    ],
+    "posOffset": [
+      -0.027,
+      -0.034
+    ],
+    "hpPos": [],
+    "category": "",
+    "icon": "",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 100001,
+    "name": "测试怪",
+    "desc": "死亡时，随机掉落一把武器",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "100001",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_013",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 100002,
+    "name": "测试怪",
+    "desc": "死亡时，使攻击来源回复1点当前生命",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "100002",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_013",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 100003,
+    "name": "测试怪",
+    "desc": "死亡时，使攻击来源获得100%能量",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "100003",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_013",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 100004,
+    "name": "测试怪",
+    "desc": "",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "100004",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_013",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 100005,
+    "name": "测试怪",
+    "desc": "生命小于等于2时，攻击力+2",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "100005",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_013",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 100006,
+    "name": "测试怪",
+    "desc": "死亡时，使攻击来源获得100%能量",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "100006",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_013",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 100007,
+    "name": "测试怪",
+    "desc": "",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "100007",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_013",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 100008,
+    "name": "测试怪",
+    "desc": "",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "100008",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_013",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      0.75,
+      0.75
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 100009,
+    "name": "测试怪",
+    "desc": "死亡时，使自身处于的地块变成毒地板",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "100009",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_013",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      0.75,
+      0.75
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 100010,
+    "name": "测试怪",
+    "desc": "死亡时，召唤5个兴奋的街机爱好者",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "100010",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_013",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      0.75,
+      0.75
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 100011,
+    "name": "测试怪",
+    "desc": "交互选项后，失去当前的武器",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "100011",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_013",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      0.75,
+      0.75
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 100012,
+    "name": "测试怪",
+    "desc": "受到攻击后，自身死亡并在原地召唤1个兴奋的街机爱好者",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "100012",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_013",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      0.75,
+      0.75
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 100013,
+    "name": "测试怪",
+    "desc": "跳跃",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "100013",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_013",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      0.75,
+      0.75
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 100014,
+    "name": "测试怪",
+    "desc": "常规移动（会被阻挡），向左移动1格",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "100014",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_013",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      0.75,
+      0.75
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 100015,
+    "name": "测试怪",
+    "desc": "发起预警攻击，3回合后对3*3范围内的所有单位造成3点伤害",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "100015",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_013",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      0.75,
+      0.75
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 100016,
+    "name": "测试怪",
+    "desc": "对左侧发起冲撞，造成2点伤害",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "100016",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_013",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      0.75,
+      0.75
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 100017,
+    "name": "测试怪",
+    "desc": "回合开始时，随机释放技能：50%释放100013，50%释放100016",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "100017",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_013",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      0.75,
+      0.75
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 100018,
+    "name": "测试怪",
+    "desc": "死亡时，给玩家施加103隐身buff",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "100018",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_013",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      0.75,
+      0.75
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 100019,
+    "name": "测试怪",
+    "desc": "死亡时，移除玩家的103隐身buff",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "100019",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_013",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      0.75,
+      0.75
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 100020,
+    "name": "测试怪",
+    "desc": "怪物回合开始时，怪物自杀",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "100020",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_013",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      0.75,
+      0.75
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 100021,
+    "name": "测试怪",
+    "desc": "自身3*3范围内有玩家的话，怪物自杀",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "100021",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_013",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      0.75,
+      0.75
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 100022,
+    "name": "测试怪",
+    "desc": "受到左侧的攻击时，获得“向左举盾”buff",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "100022",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_013",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      0.75,
+      0.75
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 100023,
+    "name": "测试怪",
+    "desc": "受到攻击后，使相邻的怪物回1点血",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "100023",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_013",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      0.75,
+      0.75
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 100024,
+    "name": "测试怪",
+    "desc": "追寻着微尘的小魔精\n它的臭气熏天，而脾气却更甚。",
+    "shape": "1#1",
+    "race": "purple",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "334002",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_010",
+    "scale": [
+      0.9,
+      0.9
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_010",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      0.75,
+      0.75
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 100025,
+    "name": "测试怪",
+    "desc": "追寻着微尘的小魔精\n它的臭气熏天，而脾气却更甚。",
+    "shape": "1#1",
+    "race": "purple",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "100025",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_010",
+    "scale": [
+      0.9,
+      0.9
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_010",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      0.75,
+      0.75
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 100026,
+    "name": "测试怪",
+    "desc": "小血包描述",
+    "shape": "1#1",
+    "race": "NoneY",
+    "attack": 0,
+    "hpCap": 1,
+    "defense": 0,
+    "skillIds": "100027#100028",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_jh1x1_001",
+    "scale": [
+      0.9,
+      0.9
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_jh1x1_001",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      0.75,
+      0.75
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 100030,
+    "name": "测试怪",
+    "desc": "投掷炸弹",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "100030",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_013",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      0.75,
+      0.75
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 100031,
+    "name": "测试怪",
+    "desc": "不受火地板的影响",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "100031",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_013",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      0.75,
+      0.75
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 100032,
+    "name": "测试怪",
+    "desc": "死亡时，生成商店传送门",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "100032",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_013",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      0.75,
+      0.75
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 200001,
+    "name": "连败勇士",
+    "desc": "色相：<color=#8DCF84>绿</color>\n无特殊技能",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "20000101",
+    "moveType": "noDrop",
+    "illustrationShow": 0,
+    "drop": "200002",
+    "resPath": "v3a3_m_s12_gw1x1_013",
+    "scale": [
+      0.9,
+      1.8
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
+    "id": 200002,
+    "name": "连败勇士",
+    "desc": "色相：<color=#8DCF84>绿</color>\n无特殊技能",
+    "shape": "1#1",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "noDrop",
+    "illustrationShow": 0,
+    "drop": "200002",
+    "resPath": "v3a3_m_s12_gw1x1_013",
+    "scale": [
+      0.9,
+      1.8
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 200003,
+    "name": "沉稳的街机爱好者",
+    "desc": "色相：<color=#92A8EF>蓝</color>\n无特殊技能\n",
+    "shape": "1#1",
+    "race": "blue",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "noDrop",
+    "illustrationShow": 0,
+    "drop": "200004",
+    "resPath": "v3a3_m_s12_gw1x1_014",
+    "scale": [
+      0.9,
+      1.8
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_014",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 200004,
+    "name": "继续者联盟",
+    "desc": "色相：<color=#8DCF84>绿</color>\n无特殊技能",
+    "shape": "2#2",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 4,
+    "defense": 0,
+    "skillIds": "20000401",
+    "moveType": "noDrop",
+    "illustrationShow": 0,
+    "drop": "200002",
+    "resPath": "v3a3_m_s12_gw2x2_013",
+    "scale": [
+      2,
+      2
+    ],
+    "posOffset": [
+      0.37,
+      0.45
+    ],
+    "hpPos": [
+      0.52,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw2x2_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      -13,
+      -32
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 200005,
+    "name": "不动岩",
+    "desc": "无特殊技能",
+    "shape": "1#1",
+    "race": "None",
+    "attack": 0,
+    "hpCap": 3,
+    "defense": 99,
+    "skillIds": "",
+    "moveType": "noDrop",
+    "illustrationShow": 0,
+    "drop": "",
+    "resPath": "v3a3_m_s12_jh1x1_007",
+    "scale": [
+      0.9,
+      0.9
+    ],
+    "posOffset": [
+      0,
+      -0.07
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_jh1x1_007",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 200006,
+    "name": "继续者联盟",
+    "desc": "色相：<color=#8DCF84>绿</color>\n无特殊技能",
+    "shape": "2#2",
+    "race": "green",
+    "attack": 1,
+    "hpCap": 1,
+    "defense": 0,
+    "skillIds": "20000601",
+    "moveType": "noDrop",
+    "illustrationShow": 0,
+    "drop": "200002",
+    "resPath": "v3a3_m_s12_gw2x2_013",
+    "scale": [
+      2,
+      2
+    ],
+    "posOffset": [
+      0.37,
+      0.45
+    ],
+    "hpPos": [
+      0.52,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw2x2_013",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      -13,
+      -32
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 200007,
+    "name": "乌卢鲁红土守卫",
+    "desc": "色相：<color=#F96C6C>红</color>\n定期对周围区域发起攻击\n\n<size=85%><i>红色的大地饲养了魁梧的血肉，骨制的长柄孕育了神圣的职责。</i>",
+    "shape": "3#3",
+    "race": "boss",
+    "attack": 1,
+    "hpCap": 6,
+    "defense": 0,
+    "skillIds": "33100601",
+    "moveType": "noDrop",
+    "illustrationShow": 0,
+    "drop": "200002",
+    "resPath": "v3a3_m_s12_gw3x3_001",
+    "scale": [
+      3.6,
+      3.6
+    ],
+    "posOffset": [
+      1.08,
+      0.97
+    ],
+    "hpPos": [
+      1.02,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw3x3_001",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      85,
+      -80
+    ],
+    "iconScale2": [
+      0.95,
+      0.95
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 200008,
+    "name": "物资补给箱",
+    "desc": "死亡时使玩家恢复2点生命，并回复所有能量",
+    "shape": "1#1",
+    "race": "NoneY",
+    "attack": 0,
+    "hpCap": 1,
+    "defense": 0,
+    "skillIds": "337001#20000801",
+    "moveType": "noDrop",
+    "illustrationShow": 0,
+    "drop": "",
+    "resPath": "v3a3_m_s12_jh1x1_001",
+    "scale": [
+      0.9,
+      0.9
+    ],
+    "posOffset": [
+      0,
+      -0.07
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_jh1x1_001",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  }
+]

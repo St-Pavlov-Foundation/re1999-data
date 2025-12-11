@@ -9,7 +9,8 @@
     "weather": 1,
     "roleName": "讣告人",
     "storyPic": "rolestory_pic_01",
-    "preId": 0
+    "preId": 0,
+    "branch": 0
   },
   {
     "id": 303702,
@@ -21,7 +22,8 @@
     "weather": 1,
     "roleName": "讣告人",
     "storyPic": "rolestory_pic_01",
-    "preId": 303701
+    "preId": 303701,
+    "branch": 0
   },
   {
     "id": 303703,
@@ -33,7 +35,8 @@
     "weather": 6,
     "roleName": "讣告人",
     "storyPic": "rolestory_pic_01",
-    "preId": 303702
+    "preId": 303702,
+    "branch": 0
   },
   {
     "id": 303704,
@@ -45,7 +48,8 @@
     "weather": 7,
     "roleName": "讣告人",
     "storyPic": "rolestory_pic_01",
-    "preId": 303703
+    "preId": 303703,
+    "branch": 0
   },
   {
     "id": 303705,
@@ -57,7 +61,8 @@
     "weather": 6,
     "roleName": "讣告人",
     "storyPic": "rolestory_pic_01",
-    "preId": 303704
+    "preId": 303704,
+    "branch": 0
   },
   {
     "id": 303706,
@@ -69,7 +74,8 @@
     "weather": 2,
     "roleName": "讣告人",
     "storyPic": "rolestory_pic_01",
-    "preId": 303705
+    "preId": 303705,
+    "branch": 0
   },
   {
     "id": 303707,
@@ -81,7 +87,8 @@
     "weather": 1,
     "roleName": "讣告人",
     "storyPic": "rolestory_pic_01",
-    "preId": 303706
+    "preId": 303706,
+    "branch": 0
   },
   {
     "id": 304101,
@@ -93,7 +100,8 @@
     "weather": 1,
     "roleName": "玛蒂尔达",
     "storyPic": "rolestory_pic_01",
-    "preId": 0
+    "preId": 0,
+    "branch": 0
   },
   {
     "id": 304102,
@@ -105,7 +113,8 @@
     "weather": 1,
     "roleName": "玛蒂尔达",
     "storyPic": "rolestory_pic_01",
-    "preId": 304101
+    "preId": 304101,
+    "branch": 0
   },
   {
     "id": 304103,
@@ -117,7 +126,8 @@
     "weather": 1,
     "roleName": "玛蒂尔达",
     "storyPic": "rolestory_pic_01",
-    "preId": 304102
+    "preId": 304102,
+    "branch": 0
   },
   {
     "id": 304104,
@@ -129,7 +139,8 @@
     "weather": 1,
     "roleName": "玛蒂尔达",
     "storyPic": "rolestory_pic_01",
-    "preId": 304103
+    "preId": 304103,
+    "branch": 0
   },
   {
     "id": 304105,
@@ -141,7 +152,8 @@
     "weather": 1,
     "roleName": "玛蒂尔达",
     "storyPic": "rolestory_pic_01",
-    "preId": 304104
+    "preId": 304104,
+    "branch": 0
   },
   {
     "id": 304106,
@@ -153,7 +165,8 @@
     "weather": 1,
     "roleName": "玛蒂尔达",
     "storyPic": "rolestory_pic_01",
-    "preId": 304105
+    "preId": 304105,
+    "branch": 0
   },
   {
     "id": 304107,
@@ -165,7 +178,8 @@
     "weather": 1,
     "roleName": "玛蒂尔达",
     "storyPic": "rolestory_pic_01",
-    "preId": 304106
+    "preId": 304106,
+    "branch": 0
   },
   {
     "id": 304108,
@@ -177,6 +191,98 @@
     "weather": 1,
     "roleName": "玛蒂尔达",
     "storyPic": "rolestory_pic_01",
-    "preId": 304107
+    "preId": 304107,
+    "branch": 0
+  },
+  {
+    "id": 305101,
+    "storyId": 28,
+    "storyName": "牧群",
+    "storyNameEn": "Horseback Riding",
+    "time": 17.0,
+    "place": "河谷",
+    "weather": 1,
+    "roleName": "莫莉德尔",
+    "storyPic": "rolestory_pic_01",
+    "preId": 0,
+    "branch": 0
+  },
+  {
+    "id": 305102,
+    "storyId": 28,
+    "storyName": "夜莺",
+    "storyNameEn": "Night in the East",
+    "time": 17.34,
+    "place": "驻军营地",
+    "weather": 1,
+    "roleName": "莫莉德尔",
+    "storyPic": "rolestory_pic_01",
+    "preId": 305101,
+    "branch": 1
+  },
+  {
+    "id": 305103,
+    "storyId": 28,
+    "storyName": "枪声",
+    "storyNameEn": "The Bullet and the Farewell",
+    "time": 19.5,
+    "place": "驻军营地",
+    "weather": 1,
+    "roleName": "莫莉德尔",
+    "storyPic": "rolestory_pic_01",
+    "preId": 305102,
+    "branch": 0
+  },
+  {
+    "id": 305104,
+    "storyId": 28,
+    "storyName": "金桃",
+    "storyNameEn": "Golden Peaches",
+    "time": 19.5,
+    "place": "驻军营地",
+    "weather": 1,
+    "roleName": "莫莉德尔",
+    "storyPic": "rolestory_pic_01",
+    "preId": 305103,
+    "branch": 0
+  },
+  {
+    "id": 305105,
+    "storyId": 28,
+    "storyName": "雨水",
+    "storyNameEn": "The Rain",
+    "time": 19.84,
+    "place": "驻军营地",
+    "weather": 1,
+    "roleName": "莫莉德尔",
+    "storyPic": "rolestory_pic_01",
+    "preId": 305104,
+    "branch": 1
+  },
+  {
+    "id": 305106,
+    "storyId": 28,
+    "storyName": "琴歌",
+    "storyNameEn": "The Song",
+    "time": 20.34,
+    "place": "驻军营地",
+    "weather": 1,
+    "roleName": "莫莉德尔",
+    "storyPic": "rolestory_pic_01",
+    "preId": 305105,
+    "branch": 1
+  },
+  {
+    "id": 305107,
+    "storyId": 28,
+    "storyName": "秋日",
+    "storyNameEn": "Autumn",
+    "time": 8.0,
+    "place": "驻军营地办公室",
+    "weather": 1,
+    "roleName": "莫莉德尔",
+    "storyPic": "rolestory_pic_01",
+    "preId": 305106,
+    "branch": 1
   }
 ]

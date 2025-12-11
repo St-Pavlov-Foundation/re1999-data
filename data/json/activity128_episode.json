@@ -1774,5 +1774,41 @@
     "recommendLevelDesc": "",
     "openDay": 15,
     "evaluate": "10102#10201#10301#10401"
+  },
+  {
+    "activityId": 13315,
+    "stage": 1,
+    "layer": 1,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500401,
+    "desc": "“我也想有一个如假包换的血食怪叔叔。报社的邮件催促不动那些拖欠稿件的家伙，但血翼和獠牙或许可以。”\n<i>是否只要足够渴求，就可以看见理想实现的那一天。</i>",
+    "recommendLevelDesc": "",
+    "openDay": 1,
+    "evaluate": "10102#10201#10301#10401"
+  },
+  {
+    "activityId": 13315,
+    "stage": 2,
+    "layer": 1,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500402,
+    "desc": "“它的确存在，我不骗你！瞧，它在这儿，在我的躯干与内脏深处。”\n献祭者高举血肉模糊的双手，仍在微笑，是的，哪怕眼球已不复存在，他仍在微笑。\n<i>因为他愿将自身，化作它的一部分。</i>",
+    "recommendLevelDesc": "",
+    "openDay": 8,
+    "evaluate": "10102#10201#10301#10401"
+  },
+  {
+    "activityId": 13315,
+    "stage": 3,
+    "layer": 1,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500403,
+    "desc": "“真理，我看到了真理，它多么纯净，多么美好，瞧呀，瞧呀，我所探求的一切都有了答案！”\n<i>最后，这儿，那儿，他们终于摆脱了“无序”，成为“秩序”的一部分。</i>",
+    "recommendLevelDesc": "",
+    "openDay": 15,
+    "evaluate": "10102#10201#10301#10401"
   }
 ]
