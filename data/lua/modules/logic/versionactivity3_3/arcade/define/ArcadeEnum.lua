@@ -33,7 +33,9 @@ ArcadeEnum.ConstId = {
 	GameGridStartPos = 26,
 	DefaultEquipedHero = 1,
 	TargetAddScore = 9,
+	FlyingEffectOffectY = 43,
 	CorpseKeepTime = 6,
+	FlyingEffectTime = 42,
 	DefaultHallHeroPos = 3
 }
 ArcadeEnum.AttributeConst = {

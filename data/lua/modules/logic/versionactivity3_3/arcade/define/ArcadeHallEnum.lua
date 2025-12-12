@@ -51,6 +51,7 @@ ArcadeHallEnum.HallInteractiveParams = {
 	},
 	[ArcadeHallEnum.HallInteractiveId.Task] = {
 		isOpenTip = true,
+		Reddot = 3306,
 		OpenFunc = ArcadeController.instance.openTaskView,
 		ViewName = ViewName.ArcadeRewardView,
 		ShowInfoUI = {

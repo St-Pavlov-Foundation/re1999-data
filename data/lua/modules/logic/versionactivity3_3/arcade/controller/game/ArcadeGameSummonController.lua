@@ -44,7 +44,7 @@ function ArcadeGameSummonController:summonInteractiveList(interactiveIdList, isN
 end
 
 function ArcadeGameSummonController:_summonEntityByIdList(idList, entityType)
-	local unitMOList = self:_getRoomUnitMOList()
+	local unitMOList = self:getRoomUnitMOList()
 	local useGridIdMap = {}
 	local entityDataList = {}
 
@@ -70,6 +70,8 @@ function ArcadeGameSummonController:_summonEntityByIdList(idList, entityType)
 	end
 
 	ArcadeGameController.instance:tryAddEntityList(entityDataList, true)
+
+	return entityDataList
 end
 
 function ArcadeGameSummonController:_getOtherEntityTypeList()
@@ -86,7 +88,7 @@ function ArcadeGameSummonController:_getOtherEntityTypeList()
 	return self._otherEntityTypeList
 end
 
-function ArcadeGameSummonController:_getRoomUnitMOList()
+function ArcadeGameSummonController:getRoomUnitMOList()
 	local unitMOList = {}
 	local tArcadeGameModel = ArcadeGameModel.instance
 
@@ -160,7 +162,7 @@ function ArcadeGameSummonController:summonMonster(monsterId)
 	RoomHelper.randomArray(self:getGridList())
 
 	local sizeX, sizeY = ArcadeConfig.instance:getMonsterSize(monsterId)
-	local unitMOList = self:_getRoomUnitMOList()
+	local unitMOList = self:getRoomUnitMOList()
 	local gridX, gridY = self:_tryfindSizeGridXY(sizeX, sizeY, unitMOList)
 
 	if gridX and gridY then
@@ -194,7 +196,7 @@ function ArcadeGameSummonController:summonMonsterByXY(monsterId, gridX, gridY)
 	end
 
 	local sizeX, sizeY = ArcadeConfig.instance:getMonsterSize(monsterId)
-	local unitMOList = self:_getRoomUnitMOList()
+	local unitMOList = self:getRoomUnitMOList()
 
 	if self:checkSizeGridXY(gridX, gridY, sizeX, sizeY, unitMOList) then
 		local entityData = {

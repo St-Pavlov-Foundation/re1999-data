@@ -12,6 +12,7 @@ ArcadeGameEnum.Const = {
 	RoomSize = 8,
 	DualWieldingCarryWeapon = 2,
 	AreaNodePortalName = "nodePortal",
+	FightFloatWaitTime = 0.1,
 	GuideDifficulty = 0,
 	HpZLevel = -0.1,
 	HpItemResName = "v3a3_m_s12_dj_a01",
@@ -46,10 +47,11 @@ ArcadeGameEnum.GameSwitch = {
 	CanResetStore = 402
 }
 ArcadeGameEnum.PlayerActType = {
-	UseBomb = 4,
+	Move = 1,
 	Attack = 2,
+	UseBomb = 4,
 	UseSkill = 3,
-	Move = 1
+	None = 0
 }
 ArcadeGameEnum.DropItemType = {
 	Collection = 2,

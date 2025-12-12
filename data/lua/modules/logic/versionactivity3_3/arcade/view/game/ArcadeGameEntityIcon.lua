@@ -131,15 +131,21 @@ function ArcadeGameEntityIcon:checkTalk(triggerType, param)
 	end
 
 	local randomIndex = ArcadeGameHelper.getRandomIndex(weightList, totalWeight)
+	local newTalkGroup = groupList[randomIndex]
+	local isPlay = false
 
-	self._curTalkingGroup = groupList[randomIndex]
+	if not self._curTalkingGroup and newTalkGroup or self._curTalkingGroup and not newTalkGroup then
+		isPlay = true
+	end
+
+	self._curTalkingGroup = newTalkGroup
 	self._curTalkingStep = 0
 	self._contentIndex = 0
 	self._contentList = nil
 	self._lastShowContentTime = nil
 
 	self:_talking()
-	self:refreshChatContentShow(true)
+	self:refreshChatContentShow(isPlay)
 	AudioMgr.instance:trigger(AudioEnum3_3.Arcade.play_ui_yuanzheng_bubble_popup)
 end
 
@@ -246,11 +252,11 @@ function ArcadeGameEntityIcon:_finishTalk()
 end
 
 function ArcadeGameEntityIcon:refresh()
+	self:refreshPos()
 	self:refreshGoods(true)
 	self:refreshPortal()
 	self:refreshTalk()
 	self:refreshFrame()
-	self:refreshPos()
 end
 
 function ArcadeGameEntityIcon:refreshGoods(isPlay)

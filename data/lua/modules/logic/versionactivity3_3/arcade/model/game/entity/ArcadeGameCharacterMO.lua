@@ -90,6 +90,37 @@ function ArcadeGameCharacterMO:_generateUid()
 	return self._genUid
 end
 
+function ArcadeGameCharacterMO:removeSkillById(skillId)
+	if self._collectionType2UidDict then
+		for type, uidList in pairs(self._collectionType2UidDict) do
+			if type == ArcadeGameEnum.CollectionType.Weapon then
+				local uid = uidList[1]
+				local collectionMO = self:getCollectionMO(uid)
+
+				if collectionMO then
+					local skillSetMO = collectionMO:getSkillSetMO()
+
+					skillSetMO:removeSkillById(skillId)
+				end
+			else
+				for _, uid in ipairs(uidList) do
+					local collectionMO = self:getCollectionMO(uid)
+
+					if collectionMO then
+						local skillSetMO = collectionMO:getSkillSetMO()
+
+						skillSetMO:removeSkillById(skillId)
+					end
+				end
+			end
+		end
+	end
+
+	self._skillSetMO:removeSkillById(skillId)
+
+	self._allSkillList = nil
+end
+
 function ArcadeGameCharacterMO:getSkillList()
 	if not self._allSkillList or self._skillSetOpIdx ~= self._skillSetMO:getOpIdx() then
 		local list = {}
@@ -360,6 +391,14 @@ function ArcadeGameCharacterMO:getImgScaleArr()
 	local scaleArr = ArcadeConfig.instance:getCharacterIcon2Scale(self.id)
 
 	return scaleArr
+end
+
+function ArcadeGameCharacterMO:getPlayerActType()
+	return self._playerActType
+end
+
+function ArcadeGameCharacterMO:setPlayerActType(actType)
+	self._playerActType = actType
 end
 
 return ArcadeGameCharacterMO

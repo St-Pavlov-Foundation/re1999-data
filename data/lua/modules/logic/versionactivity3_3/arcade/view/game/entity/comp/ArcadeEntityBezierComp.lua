@@ -13,6 +13,8 @@ end
 function ArcadeEntityBezierComp:init(go)
 	self.go = go
 	self.trans = go.transform
+	self._bezierY = ArcadeConfig.instance:getArcadeConst(ArcadeEnum.ConstId.FlyingEffectOffectY, true) or 2
+	self._bezierTime = ArcadeConfig.instance:getArcadeConst(ArcadeEnum.ConstId.FlyingEffectTime, true) or 0.3
 end
 
 function ArcadeEntityBezierComp:beginGridXY(gridX, gridY)
@@ -24,10 +26,9 @@ function ArcadeEntityBezierComp:beginGridXY(gridX, gridY)
 	self._fUnitMO = self._entity:getMO()
 
 	self:_killTween()
+	transformhelper.setLocalPos(self.trans, self._beginX, self._beginY, 0)
 
-	local durtion = 0.2
-
-	self._bezierTweenId = ZProj.TweenHelper.DOTweenFloat(0, 1, durtion, self._frameBeginCallback, nil, self)
+	self._bezierTweenId = ZProj.TweenHelper.DOTweenFloat(0, 1, self._bezierTime, self._frameBeginCallback, nil, self)
 end
 
 function ArcadeEntityBezierComp:endGridXY(gridX, gridY)
@@ -56,12 +57,11 @@ end
 function ArcadeEntityBezierComp:_frameBeginCallback(t)
 	local gridX, gridY = self._fUnitMO:getGridPos()
 	local endX, endY = ArcadeGameHelper.getGridPos(gridX, gridY)
-	local bezier = 1
-	local x = self:getBezierValue(t, self._beginX, endX, bezier)
-	local y = self:getBezierValue(t, self._beginY, endY, bezier)
-	local z = self:getBezierValue(t, 0, 0, -1)
+	local x = self:getBezierValue(t, self._beginX, endX, 0)
+	local y = self:getBezierValue(t, self._beginY, endY, self._bezierY)
 
-	transformhelper.setLocalPos(self.trans, x, y, z)
+	transformhelper.setLocalPos(self.trans, x, y, 0)
+	ArcadeGameController.instance:dispatchEvent(ArcadeEvent.OnEntityMove, self._fUnitMO)
 end
 
 function ArcadeEntityBezierComp:getBezierValue(t, beginValue, endValue, bezier)

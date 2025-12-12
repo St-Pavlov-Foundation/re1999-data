@@ -84,6 +84,24 @@
     "characterunlock": 0
   },
   {
+    "id": 100004,
+    "resourcedrop": "",
+    "collectiondrop": "random:jewelry#2",
+    "characterunlock": 0
+  },
+  {
+    "id": 100005,
+    "resourcedrop": "",
+    "collectiondrop": "random:jewelry#3",
+    "characterunlock": 0
+  },
+  {
+    "id": 100006,
+    "resourcedrop": "",
+    "collectiondrop": "random:jewelry#2,3",
+    "characterunlock": 0
+  },
+  {
     "id": 100010,
     "resourcedrop": "",
     "collectiondrop": "random:weapon#1,2,3",

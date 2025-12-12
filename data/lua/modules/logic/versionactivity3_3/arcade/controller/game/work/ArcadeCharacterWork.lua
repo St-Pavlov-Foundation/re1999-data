@@ -32,6 +32,7 @@ function ArcadeCharacterWork:onStart(room)
 	self._turnTime = ArcadeConfig.instance:getCharacterTurnTime(difficulty)
 
 	ArcadeGameController.instance:registerCallback(ArcadeEvent.PlayerTryDoAction, self._onPlayerTryDoAction, self)
+	self:setPlayerActType(ArcadeGameEnum.PlayerActType.None)
 end
 
 function ArcadeCharacterWork:onUpdate()
@@ -55,8 +56,17 @@ function ArcadeCharacterWork:_onPlayerTryDoAction(actType, actParam)
 		return
 	end
 
+	self:setPlayerActType(actType)
 	ArcadeGameController.instance:unregisterCallback(ArcadeEvent.PlayerTryDoAction, self._onPlayerTryDoAction, self)
 	handleFunc(self, actParam)
+end
+
+function ArcadeCharacterWork:setPlayerActType(actType)
+	local characterMO = ArcadeGameModel.instance:getCharacterMO()
+
+	if characterMO then
+		characterMO:setPlayerActType(actType)
+	end
 end
 
 function ArcadeCharacterWork:_onMove(actParam)

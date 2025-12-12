@@ -93,11 +93,9 @@ function ArcadeOutSizeModel:getScore()
 end
 
 function ArcadeOutSizeModel:hasRewardReddot()
-	for _, mo in pairs(self:getRewardList()) do
-		if mo:getRewardState() == ArcadeEnum.RewardItemStatus.CanGet then
-			return true
-		end
-	end
+	local param = ArcadeHallEnum.HallInteractiveParams[ArcadeHallEnum.HallInteractiveId.Task]
+
+	return RedDotModel.instance:isDotShow(param.Reddot, 0)
 end
 
 function ArcadeOutSizeModel:_refreshHeroInfo(unlockRoleIds)

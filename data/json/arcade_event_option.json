@@ -29,7 +29,7 @@
     "optionDesc": "获得2个噪点炸弹",
     "condition": "",
     "param": "320700101",
-    "descChange": ""
+    "descChange": "你已做出了选择！"
   },
   {
     "id": 320700102,
@@ -37,7 +37,7 @@
     "optionDesc": "获得5个噪点炸弹",
     "condition": "checkAttrValue#201#500",
     "param": "320700102",
-    "descChange": ""
+    "descChange": "你已做出了选择！"
   },
   {
     "id": 320700201,
@@ -648,6 +648,22 @@
     "descChange": ""
   },
   {
+    "id": 32007002,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32007002",
+    "descChange": ""
+  },
+  {
+    "id": 32007003,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32007003",
+    "descChange": ""
+  },
+  {
     "id": 1001,
     "type": "triggerPassiveSkill",
     "optionDesc": "回血",
@@ -669,6 +685,14 @@
     "optionDesc": "",
     "condition": "",
     "param": "",
+    "descChange": ""
+  },
+  {
+    "id": 320060031,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "获得1个噪点炸弹",
+    "condition": "checkAttrValue#201#500",
+    "param": "320060031",
     "descChange": ""
   }
 ]

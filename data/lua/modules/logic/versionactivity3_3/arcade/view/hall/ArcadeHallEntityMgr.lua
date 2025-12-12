@@ -238,9 +238,7 @@ end
 
 function ArcadeHallEntityMgr:_checkInteractiveEvent(interactiveId, nearInteractiveId)
 	if interactiveId then
-		ArcadeController.instance:enterInteractive(interactiveId)
-
-		local param = ArcadeHallEnum.HallInteractiveParams[interactiveId]
+		self._scene:openBuildingTipView(nearInteractiveId)
 	elseif nearInteractiveId then
 		local param = ArcadeHallEnum.HallInteractiveParams[nearInteractiveId]
 

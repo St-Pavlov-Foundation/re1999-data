@@ -13,6 +13,21 @@ function ArcadeGameSkillSetMO:ctor(id, unitMO)
 end
 
 function ArcadeGameSkillSetMO:getSkillList()
+	if self._isRemoveOp then
+		self._isRemoveOp = false
+
+		local skillList = self._skillList
+		local skill
+
+		for i = #skillList, 1, -1 do
+			skill = skillList[i]
+
+			if skill and skill.isActive == false then
+				table.remove(skillList, i)
+			end
+		end
+	end
+
 	return self._skillList
 end
 
@@ -48,10 +63,12 @@ function ArcadeGameSkillSetMO:removeSkillById(skillId)
 	if self._skillDict[skillId] then
 		local skill = self._skillDict[skillId]
 
+		skill.isActive = false
 		self._skillDict[skillId] = nil
 
 		tabletool.removeValue(self._skillList, skill)
 
+		self._isRemoveOp = true
 		self._opIndex = self._opIndex + 1
 	end
 end

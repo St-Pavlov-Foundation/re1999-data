@@ -10,6 +10,7 @@ function ArcadeSkillBase:ctor(skillId)
 	self.skillId = skillId
 	self._triggerBaseList = {}
 	self._skillBase = self
+	self.isActive = true
 
 	self:tryCallFunc(self.onCtor)
 end

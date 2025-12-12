@@ -17,7 +17,8 @@ function FightWorkEffectDeadNew:onConstructor(fightStepData, fightActEffectData,
 end
 
 function FightWorkEffectDeadNew:onStart()
-	self.delayDoneTimer = self:com_registTimer(self._delayDone, 20)
+	self:cancelFightWorkSafeTimer()
+
 	self._deadEntity = FightHelper.getEntity(self.actEffectData.targetId)
 
 	if self._deadEntity and not self._deadEntity.isDead then
@@ -115,10 +116,6 @@ function FightWorkEffectDeadNew:_onSkillPlayFinish(entity, skillId, fightStepDat
 end
 
 function FightWorkEffectDeadNew:_playDeadWork()
-	self:com_cancelTimer(self.delayDoneTimer)
-
-	self.delayDoneTimer = self:com_registTimer(self._delayDone, 20)
-
 	local entityMO = self._deadEntity:getMO()
 	local aniName = self:_getDieActName(entityMO)
 
@@ -156,7 +153,7 @@ function FightWorkEffectDeadNew:_playDeadWork()
 	local result = FightController.instance:GuideFlowPauseAndContinue(v1, v2, v3, v4, v5, v6)
 
 	if result then
-		self:com_cancelTimer(self.delayDoneTimer)
+		-- block empty
 	end
 
 	if self._deadEntity.nameUI then
@@ -303,17 +300,6 @@ function FightWorkEffectDeadNew:_delayNoDeadEffectDone()
 	self:_doneAndRemoveEntity()
 end
 
-function FightWorkEffectDeadNew:_delayDone()
-	if FightTLEventPlayEffectByOperation.playing then
-		self.delayDoneTimer = self:com_registTimer(self._delayDone, 20)
-
-		return
-	end
-
-	logError("dead step play timeout, targetId = " .. self.actEffectData.targetId)
-	self:_doneAndRemoveEntity()
-end
-
 function FightWorkEffectDeadNew:_doneAndRemoveEntity()
 	TaskDispatcher.cancelTask(self._deadPlayEffect, self)
 
@@ -331,7 +317,6 @@ function FightWorkEffectDeadNew:_doneAndRemoveEntity()
 		FightController.instance:dispatchEvent(FightEvent.EntrustEntity, self._deadEntity)
 		self._afterDeadFlow:addWork(WorkWaitSeconds.New(deadMgrConfig.playTime / 1000))
 	elseif deadPerformanceConfig then
-		self:com_cancelTimer(self.delayDoneTimer)
 		self._afterDeadFlow:addWork(FightHelper.buildDeadPerformanceWork(deadPerformanceConfig, self._deadEntity))
 		self._afterDeadFlow:addWork(FunctionWork.New(function()
 			entityMgr:delEntity(self._deadEntity.id)
@@ -343,7 +328,6 @@ function FightWorkEffectDeadNew:_doneAndRemoveEntity()
 	self._afterDeadFlow:addWork(FunctionWork.New(self._dispatchDead, self))
 
 	if isMySide then
-		self:com_cancelTimer(self.delayDoneTimer)
 		self._afterDeadFlow:addWork(FightWorkNormalDialog.New(FightViewDialog.Type.CheckDeadEntityCount))
 	end
 
@@ -362,7 +346,6 @@ function FightWorkEffectDeadNew:_checkDieDialogAfter()
 		FightController.instance:dispatchEvent(FightEvent.FightDialog, FightViewDialog.Type.MonsterDieP, self._deadEntityModelId)
 
 		if FightWorkEffectDeadNew.needStopDeadWork then
-			self:com_cancelTimer(self.delayDoneTimer)
 			FightController.instance:registerCallback(FightEvent.FightDialogEnd, self._onFightDialogEnd, self)
 		else
 			self:_onFinish()

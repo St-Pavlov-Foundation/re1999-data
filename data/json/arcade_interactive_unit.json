@@ -46,7 +46,7 @@
     "id": 3207001,
     "name": "噪点炸弹",
     "type": "normal",
-    "desc": "获得噪点炸弹，或花费500像素金币购买更多噪点炸弹。",
+    "desc": "获得2个噪点炸弹，或花费500像素金币购买5个噪点炸弹（只能选择1次）。",
     "limit": 1,
     "optionID": "320700101#320700102",
     "spbehaviorID": "320700001",
@@ -338,7 +338,7 @@
     "id": 3207020,
     "name": "非传统号角",
     "type": "normal",
-    "desc": "消耗5点生命上限，获得“非传统号角”。",
+    "desc": "消耗5点生命上限，获得“非传统号角”（攻击力+1）。",
     "limit": 1,
     "optionID": "320702001",
     "spbehaviorID": "320700002",
@@ -1130,6 +1130,46 @@
     "sceneIcon": "v3a3_eliminate_event_1"
   },
   {
+    "id": 32007002,
+    "name": "藏宝处",
+    "type": "portal",
+    "desc": "搜寻未知的缪斯秘宝。",
+    "limit": 0,
+    "optionID": "32007002",
+    "spbehaviorID": "",
+    "grid": "1#1",
+    "pos": "",
+    "resPath": "v3a3_m_s12_jz1x1_002",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "category": "",
+    "icon": "",
+    "sceneIcon": "v3a3_eliminate_event_1"
+  },
+  {
+    "id": 32007003,
+    "name": "藏宝处",
+    "type": "portal",
+    "desc": "搜寻未知的缪斯秘宝。",
+    "limit": 0,
+    "optionID": "32007003",
+    "spbehaviorID": "",
+    "grid": "1#1",
+    "pos": "",
+    "resPath": "v3a3_m_s12_jz1x1_002",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "category": "",
+    "icon": "",
+    "sceneIcon": "v3a3_eliminate_event_1"
+  },
+  {
     "id": 320701,
     "name": "奇遇",
     "type": "portal",
@@ -1581,6 +1621,26 @@
     "pos": "",
     "resPath": "v3a3_m_s12_jh1x1_002",
     "scale": [],
+    "posOffset": [],
+    "category": "",
+    "icon": "",
+    "sceneIcon": ""
+  },
+  {
+    "id": 32006003,
+    "name": "噪点炸弹",
+    "type": "normal",
+    "desc": "花费500像素金币购买噪点炸弹。(可购买5次）",
+    "limit": 5,
+    "optionID": "320060031",
+    "spbehaviorID": "",
+    "grid": "1#1",
+    "pos": "",
+    "resPath": "v3a3_m_s12_jz1x1_001",
+    "scale": [
+      1,
+      1
+    ],
     "posOffset": [],
     "category": "",
     "icon": "",

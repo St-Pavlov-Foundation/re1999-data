@@ -44,7 +44,7 @@ end
 function FightEntityMgr:delEntity(entityId)
 	if self.entityDic[entityId] then
 		if FightSkillMgr.instance:isEntityPlayingTimeline(entityId) then
-			FightSkillMgr.instance:afterTimeline(entityId)
+			FightSkillMgr.instance:afterTimeline(self.entityDic[entityId])
 		end
 
 		FightController.instance:dispatchEvent(FightEvent.BeforeDestroyEntity, entityId)

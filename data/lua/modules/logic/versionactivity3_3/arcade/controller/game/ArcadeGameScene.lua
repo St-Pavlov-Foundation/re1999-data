@@ -51,6 +51,7 @@ function ArcadeGameScene:_initScene()
 	self:_addComp("roomMgr", ArcadeRoomMgr)
 	self:_addComp("entityMgr", ArcadeEntityMgr, true)
 	self:_addComp("effectMgr", ArcadeEffectMgr, true)
+	self:_addComp("flyingEffectMgr", ArcadeFlyingEffectMgr, true)
 	self:_disposePreGameStartFlow()
 
 	self._preGameStartFlow = FlowSequence.New()

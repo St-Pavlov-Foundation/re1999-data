@@ -118,11 +118,10 @@ function ArcadeBaseRoom:clear()
 	self._scene = nil
 end
 
-function ArcadeBaseRoom:tryAddEntityOccupyGrids(entity, canOverY)
+function ArcadeBaseRoom:tryAddEntityOccupyGrids(mo, canOverY)
 	local result = false
 
-	if entity then
-		local mo = entity:getMO()
+	if mo then
 		local gridX, gridY = mo:getGridPos()
 		local sizeX, sizeY = mo:getSize()
 		local entityType = mo:getEntityType()
@@ -131,7 +130,6 @@ function ArcadeBaseRoom:tryAddEntityOccupyGrids(entity, canOverY)
 
 		if isCanPlace then
 			self:_setOccupyGrids(entityType, uid, gridX, gridY, sizeX, sizeY)
-			entity:refreshPosition()
 		else
 			logError(string.format("ArcadeBaseRoom:tryAddEntityOccupyGrids error, entity overlapping,roomId:%s entityId:%s x:%s y:%s sizeX:%s sizeY:%s", self.id, mo:getId(), gridX, gridY, sizeX, sizeY))
 		end
@@ -288,14 +286,13 @@ function ArcadeBaseRoom:_isCanPlaceEntity(entityType, entityUid, x, y, sizeX, si
 			local occupyEntityData = self:getEntityDataInTargetGrid(i, j)
 			local occupyEntityType = occupyEntityData and occupyEntityData.entityType
 			local occupyEntityUid = occupyEntityData and occupyEntityData.uid
-			local occupyEntity = self._scene.entityMgr:getEntityWithType(occupyEntityType, occupyEntityUid)
 
-			if occupyEntity then
+			if occupyEntityType and occupyEntityUid then
 				local isCharacterPlaceBomb = isBomb and occupyEntityType == ArcadeGameEnum.EntityType.Character
 				local isSelf = entityType == occupyEntityType and entityUid == occupyEntityData.uid
 
 				if not isCharacterPlaceBomb and not isSelf then
-					local occupyMO = occupyEntity:getMO()
+					local occupyMO = ArcadeGameModel.instance:getMOWithType(occupyEntityType, occupyEntityUid)
 					local occupyId = occupyMO and occupyMO:getId()
 
 					if isLog then

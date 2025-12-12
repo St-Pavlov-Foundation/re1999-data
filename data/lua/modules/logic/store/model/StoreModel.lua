@@ -512,6 +512,10 @@ function StoreModel:isTabFirstRedDotShow(tabid)
 				if isRecommandPackTab and self:isGoodInRecommendList(goodId) and not isPerWeekLimit and not isPerMonthLimit then
 					return true
 				else
+					if tabid == StoreEnum.StoreId.HighSummon and goodsMo.belongStoreId == tabid and v.value > 0 then
+						return true
+					end
+
 					local secondtab = StoreConfig.instance:getTabConfig(goodsMo.belongStoreId).belongSecondTab
 
 					if v.value > 0 and tabid == secondtab then

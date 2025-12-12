@@ -24,15 +24,10 @@ function ArcadeBuildingUIItem:removeEvents()
 end
 
 function ArcadeBuildingUIItem:_editableInitView()
-	self._reddotItems = self:getUserDataTb_()
+	self._goreddotitem = gohelper.findChild(self._goreddot, "type1")
 
-	for _, type in pairs(ArcadeEnum.ReddotType) do
-		local go = gohelper.findChild(self._goreddot, "type" .. type)
-
-		if go then
-			self._reddotItems[type] = go
-		end
-	end
+	gohelper.setActive(self._goreddot, true)
+	gohelper.setActive(self._goreddotitem, false)
 end
 
 function ArcadeBuildingUIItem:_editableAddEvents()
@@ -64,13 +59,7 @@ function ArcadeBuildingUIItem:refreshReddot(interactiveId)
 
 	local type = self.buildingMo:getReddotType()
 
-	gohelper.setActive(self._goreddot, type ~= nil)
-
-	if type then
-		for _type, go in pairs(self._reddotItems) do
-			gohelper.setActive(go, type == _type)
-		end
-	end
+	gohelper.setActive(self._goreddotitem, type ~= nil and type ~= ArcadeEnum.ReddotType.None)
 end
 
 function ArcadeBuildingUIItem:onSelect(isSelect)

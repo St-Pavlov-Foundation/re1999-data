@@ -15609,6 +15609,7 @@ setNeedLoadModule("modules.logic.versionactivity3_3.arcade.controller.game.Arcad
 setNeedLoadModule("modules.logic.versionactivity3_3.arcade.controller.game.comp.ArcadeBaseSceneComp", "ArcadeBaseSceneComp")
 setNeedLoadModule("modules.logic.versionactivity3_3.arcade.controller.game.comp.ArcadeEffectMgr", "ArcadeEffectMgr")
 setNeedLoadModule("modules.logic.versionactivity3_3.arcade.controller.game.comp.ArcadeEntityMgr", "ArcadeEntityMgr")
+setNeedLoadModule("modules.logic.versionactivity3_3.arcade.controller.game.comp.ArcadeFlyingEffectMgr", "ArcadeFlyingEffectMgr")
 setNeedLoadModule("modules.logic.versionactivity3_3.arcade.controller.game.comp.ArcadeLoader", "ArcadeLoader")
 setNeedLoadModule("modules.logic.versionactivity3_3.arcade.controller.game.comp.ArcadeRoomMgr", "ArcadeRoomMgr")
 setNeedLoadModule("modules.logic.versionactivity3_3.arcade.controller.game.room.ArcadeBaseRoom", "ArcadeBaseRoom")

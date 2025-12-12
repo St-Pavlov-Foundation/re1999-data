@@ -21,8 +21,26 @@ end
 
 function ArcadeSkillHitThrowingBomb:onHit()
 	if self._context and self._context.target then
-		ArcadeGameSummonController.instance:summonBombList(self._bombIdList)
+		local dataList = ArcadeGameSummonController.instance:summonBombList(self._bombIdList)
+		local gameScent = ArcadeGameController.instance:getGameScene()
+
+		if dataList and #dataList > 0 and self.atkEffectId and gameScent then
+			local gx, gy = self._context.target:getGridPos()
+			local beginX, beginY = ArcadeGameHelper.getGridPos(gx, gy)
+
+			for _, data in ipairs(dataList) do
+				local endX, endY = ArcadeGameHelper.getGridPos(data.x, data.y)
+
+				gameScent.flyingEffectMgr:begin2EndGridXY(self.atkEffectId, beginX, beginY, endX, endY)
+			end
+
+			logNormal(string.format("%s ==> 投掷炸弹位置随机 ====> %s ", self:getLogPrefixStr(), #dataList))
+		end
 	end
+end
+
+function ArcadeSkillHitBase:onPlayEffect()
+	return
 end
 
 function ArcadeSkillHitThrowingBomb:onHitPrintLog()

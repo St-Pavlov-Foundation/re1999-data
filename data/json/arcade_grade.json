@@ -5,17 +5,17 @@
     "gainRateAdd": 0
   },
   {
-    "needScore": 10,
+    "needScore": 20,
     "icon": "v3a3_eliminate_level_b",
     "gainRateAdd": 200
   },
   {
-    "needScore": 30,
+    "needScore": 60,
     "icon": "v3a3_eliminate_level_a",
     "gainRateAdd": 500
   },
   {
-    "needScore": 60,
+    "needScore": 120,
     "icon": "v3a3_eliminate_level_s",
     "gainRateAdd": 1000
   }

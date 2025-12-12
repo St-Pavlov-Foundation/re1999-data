@@ -115,6 +115,31 @@ function ArcadeGameController:_enterGameAfterGetOutsideInfo(cmd, resultCode, msg
 end
 
 function ArcadeGameController:resetGame()
+	ArcadeOutSideRpc.instance:sendArcadeGetOutSideInfoRequest(self._resetGameAfterGetOutsideInfo, self)
+end
+
+function ArcadeGameController:_resetGameAfterGetOutsideInfo(cmd, resultCode, msg)
+	if resultCode ~= 0 then
+		return
+	end
+
+	local removeBuffIdList = {}
+	local characterMO = ArcadeGameModel.instance:getCharacterMO()
+
+	if characterMO then
+		local buffSetMO = characterMO:getBuffSetMO()
+		local buffList = buffSetMO and buffSetMO:getBuffList()
+
+		if buffList then
+			for i, buffMO in ipairs(buffList) do
+				local buffId = buffMO:getId()
+
+				removeBuffIdList[i] = buffId
+			end
+		end
+	end
+
+	self:removeEntityBuffs(removeBuffIdList, ArcadeGameEnum.EntityType.Character)
 	ArcadeGameModel.instance:onResetArcadeGame()
 	self:startGame()
 	self:dispatchEvent(ArcadeEvent.OnResetArcadeGame)

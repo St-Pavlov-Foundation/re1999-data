@@ -7,7 +7,7 @@
     "resPath": "v3a3_m_s12_dl1x1_001",
     "category": "floor",
     "icon": "v3a3_m_s12_dl1x1_001a",
-    "limitRound": 8
+    "limitRound": 6
   },
   {
     "id": 102,
@@ -27,6 +27,6 @@
     "resPath": "v3a3_m_s12_dl1x1_003",
     "category": "floor",
     "icon": "v3a3_m_s12_dl1x1_003a",
-    "limitRound": 3
+    "limitRound": 12
   }
 ]

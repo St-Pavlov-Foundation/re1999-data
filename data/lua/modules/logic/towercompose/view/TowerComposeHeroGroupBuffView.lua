@@ -159,7 +159,7 @@ function TowerComposeHeroGroupBuffView:refreshResearchView()
 
 		researchItem.inPlaneId = TowerComposeHeroGroupModel.instance:checkBuffInPlane(self.themeId, TowerComposeEnum.TeamBuffType.Research, researchCo.id, self.isNormalEpisode)
 
-		gohelper.setActive(researchItem.goSelect1, (researchItem.inPlaneId == 1 or self.isNormalEpisode and researchItem.inPlaneId == 0) and self.curPlaneId == 1)
+		gohelper.setActive(researchItem.goSelect1, researchItem.inPlaneId == 1 and self.curPlaneId == 1 or self.isNormalEpisode and researchItem.inPlaneId == 0)
 		gohelper.setActive(researchItem.goSelect2, researchItem.inPlaneId == 2 and self.curPlaneId == 2)
 		gohelper.setActive(researchItem.goIsIn1, researchItem.inPlaneId == 1 or self.isNormalEpisode and researchItem.inPlaneId == 0)
 		gohelper.setActive(researchItem.goIsIn2, researchItem.inPlaneId == 2)

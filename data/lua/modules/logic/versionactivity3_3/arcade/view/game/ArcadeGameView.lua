@@ -417,7 +417,7 @@ function ArcadeGameView:_onHpChange(mo, changeVal)
 
 	local gridX, gridY = mo:getGridPos()
 
-	self:showFightFloat(gridX, gridY, changeVal)
+	self:addFightFloatData(gridX, gridY, changeVal)
 
 	local entityType = mo:getEntityType()
 
@@ -508,6 +508,8 @@ function ArcadeGameView:_onRefreshGameEventTip()
 end
 
 function ArcadeGameView:_onRoomExit()
+	self._fightFloatDataDict = nil
+
 	self:recycleAllIcon()
 
 	local isPlay = false
@@ -793,6 +795,8 @@ function ArcadeGameView:_onLateUpdate()
 		self:refreshSelectedFrame()
 	end
 
+	self:checkDelayShowFightFloat()
+
 	local inGuiding = ArcadeGameHelper.checkInGuiding()
 
 	if inGuiding then
@@ -860,6 +864,7 @@ function ArcadeGameView:onOpen()
 	self:setWeapons()
 	self:refresh()
 	self:checkEntityIcon()
+	self:checkEntityTalk(ArcadeGameEnum.TalkTriggerType.EnterRoom)
 end
 
 function ArcadeGameView:_setFlayItemEndPos()
@@ -890,6 +895,11 @@ function ArcadeGameView:_setCamera()
 	local scale = GameUtil.getAdapterScale()
 
 	camera.orthographicSize = ArcadeEnum.MapCameraSize * scale
+
+	local cameraTrs = CameraMgr.instance:getMainCameraTrs()
+
+	transformhelper.setLocalPos(cameraTrs, 0, 0, 0)
+	transformhelper.setLocalRotation(cameraTrs, 0, 0, 0)
 end
 
 function ArcadeGameView:onLoadCharacterIconFinished()
@@ -960,6 +970,52 @@ function ArcadeGameView:_onCreateWeaponItem(obj, index)
 	self._weaponItemList[index] = weaponItem
 end
 
+function ArcadeGameView:addFightFloatData(gridX, gridY, value)
+	if not gridX or not gridY or not value then
+		return
+	end
+
+	if not self._fightFloatDataDict then
+		self._fightFloatDataDict = {}
+	end
+
+	local gridId = ArcadeGameHelper.getGridId(gridX, gridY)
+	local data = self._fightFloatDataDict[gridId]
+
+	if data then
+		data.val = data.val + value
+	else
+		self._fightFloatDataDict[gridId] = {
+			beginTime = Time.time,
+			gridX = gridX,
+			gridY = gridY,
+			val = value
+		}
+	end
+end
+
+function ArcadeGameView:checkDelayShowFightFloat()
+	if not self._fightFloatDataDict then
+		return
+	end
+
+	local curTime = Time.time
+	local delayTime = ArcadeGameEnum.Const.FightFloatWaitTime
+	local showGirdIdList = {}
+
+	for gridId, fightFloatData in pairs(self._fightFloatDataDict) do
+		if delayTime <= curTime - fightFloatData.beginTime then
+			self:showFightFloat(fightFloatData.gridX, fightFloatData.gridY, fightFloatData.val)
+
+			showGirdIdList[#showGirdIdList + 1] = gridId
+		end
+	end
+
+	for _, gridId in ipairs(showGirdIdList) do
+		self._fightFloatDataDict[gridId] = nil
+	end
+end
+
 function ArcadeGameView:showFightFloat(gridX, gridY, value)
 	if not gridX or not gridY or not value or value == 0 then
 		return
@@ -967,7 +1023,7 @@ function ArcadeGameView:showFightFloat(gridX, gridY, value)
 
 	local floatItem = self:getFightFloatItem(gridX, gridY)
 
-	SLFramework.UGUI.GuiHelper.SetColor(floatItem.txtval, value > 0 and "#00FF68" or "#FF1300")
+	SLFramework.UGUI.GuiHelper.SetColor(floatItem.txtval, value >= 0 and "#00FF68" or "#FF1300")
 
 	floatItem.txtval.text = math.abs(value)
 
@@ -1805,6 +1861,7 @@ end
 
 function ArcadeGameView:onClose()
 	self._newCollectionList = nil
+	self._fightFloatDataDict = nil
 
 	self:killScoreProgressTween()
 	self:killSkillEnergyTween()

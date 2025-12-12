@@ -29,7 +29,15 @@ function ArcadeSkillHitFlashMove:onHit()
 		if x and y then
 			local entity = scene.entityMgr:getEntityWithType(target:getEntityType(), target:getUid())
 
-			curRoom:tryMoveEntity(entity, x, y)
+			if entity.bezierComp then
+				curRoom:tryMoveEntity(entity, x, y)
+
+				local bex, bey = target:getGridPos()
+
+				entity.bezierComp:beginGridXY(bex, bey)
+			else
+				curRoom:tryMoveEntity(entity, x, y)
+			end
 		end
 	end
 end

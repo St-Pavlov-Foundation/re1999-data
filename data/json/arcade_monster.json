@@ -806,7 +806,7 @@
     "desc": "色相：<color=#92A8EF>蓝</color>\n无特殊技能\n\n<size=85%><i>路边，等，帽子！路边，追，帽子！抓帽子！新帽子！都去！都去！</i>",
     "shape": "1#1",
     "race": "blue",
-    "attack": 1,
+    "attack": 2,
     "hpCap": 2,
     "defense": 0,
     "skillIds": "",
@@ -849,7 +849,7 @@
     "desc": "色相：<color=#92A8EF>蓝</color>\n无特殊技能\n\n<size=85%><i>为避免夏季换毛，它们常常向更高海拔的山地迁徙。</i>",
     "shape": "2#2",
     "race": "blue",
-    "attack": 1,
+    "attack": 2,
     "hpCap": 5,
     "defense": 0,
     "skillIds": "",
@@ -895,8 +895,8 @@
     "desc": "色相：<color=#92A8EF>蓝</color>\n无特殊技能\n\n<size=85%><i>它热衷于用车轮在草甸与雪原上压出图案，为此，它收集了十几种型号的“画笔”。</i>",
     "shape": "2#3",
     "race": "blue",
-    "attack": 1,
-    "hpCap": 2,
+    "attack": 2,
+    "hpCap": 8,
     "defense": 0,
     "skillIds": "",
     "moveType": "normalDrop",
@@ -941,8 +941,8 @@
     "desc": "色相：<color=#92A8EF>蓝</color>\n无特殊技能\n\n<size=85%><i>排在“不想遇到魔精榜”第32名，被评价为“防不胜防，即使逃脱或打赢也很难洗掉衣物上残留的气味”。</i>",
     "shape": "3#2",
     "race": "blue",
-    "attack": 1,
-    "hpCap": 5,
+    "attack": 2,
+    "hpCap": 12,
     "defense": 0,
     "skillIds": "",
     "moveType": "normalDrop",
@@ -987,8 +987,8 @@
     "desc": "色相：<color=#92A8EF>蓝</color>\n定期从原位消失，随机瞬移至任意位置；若受到攻击，则立刻瞬移至他处\n\n<size=85%><i>追逐船只，只是这个庞大族群征服海洋的过程中，一个小小的插曲。</i>",
     "shape": "3#3",
     "race": "blue",
-    "attack": 1,
-    "hpCap": 2,
+    "attack": 5,
+    "hpCap": 18,
     "defense": 0,
     "skillIds": "33300601#33300604",
     "moveType": "normalDrop",
@@ -1034,7 +1034,7 @@
     "shape": "1#1",
     "race": "blue",
     "attack": 1,
-    "hpCap": 5,
+    "hpCap": 4,
     "defense": 0,
     "skillIds": "33300701",
     "moveType": "normalDrop",
@@ -1073,13 +1073,13 @@
   {
     "id": 334001,
     "name": "闪闪卡邦克鲁",
-    "desc": "色相：<color=#D079E2>紫</color>\n死亡时，将所停留的地块转化为毒沼\n\n<size=85%><i>它的臭气熏天，而脾气却更甚。</i>",
+    "desc": "色相：<color=#D079E2>紫</color>\n不会受毒沼的影响；死亡时，将所停留的地块转化为毒沼\n\n<size=85%><i>它的臭气熏天，而脾气却更甚。</i>",
     "shape": "1#1",
     "race": "purple",
     "attack": 1,
     "hpCap": 2,
     "defense": 0,
-    "skillIds": "33400101",
+    "skillIds": "33400101#15002",
     "moveType": "normalDrop",
     "illustrationShow": 1,
     "drop": "32000001",
@@ -1116,13 +1116,13 @@
   {
     "id": 334002,
     "name": "闪闪卡邦克鲁群",
-    "desc": "色相：<color=#D079E2>紫</color>\n死亡时，将所停留的地块转化为毒沼\n\n<size=85%><i>收集癖，树枝与破铜烂铁。</i>",
+    "desc": "色相：<color=#D079E2>紫</color>\n不会受毒沼的影响；死亡时，将所停留的地块转化为毒沼\n\n<size=85%><i>收集癖，树枝与破铜烂铁。</i>",
     "shape": "2#2",
     "race": "purple",
     "attack": 1,
     "hpCap": 5,
     "defense": 0,
-    "skillIds": "33400201",
+    "skillIds": "33400201#15002",
     "moveType": "normalDrop",
     "illustrationShow": 1,
     "drop": "32000001",
@@ -1162,13 +1162,13 @@
   {
     "id": 334003,
     "name": "闪闪卡邦克鲁之主",
-    "desc": "色相：<color=#D079E2>紫</color>\n死亡时，将所停留的地块转化为毒沼\n\n<size=85%><i>蛀牙，蛀牙，蛀牙。请相信，它正在试图减少食糖。</i>",
+    "desc": "色相：<color=#D079E2>紫</color>\n不会受毒沼的影响；死亡时，将所停留的地块转化为毒沼\n\n<size=85%><i>蛀牙，蛀牙，蛀牙。请相信，它正在试图减少食糖。</i>",
     "shape": "2#3",
     "race": "purple",
     "attack": 1,
     "hpCap": 2,
     "defense": 0,
-    "skillIds": "33400301",
+    "skillIds": "33400301#15002",
     "moveType": "normalDrop",
     "illustrationShow": 1,
     "drop": "32000001",
@@ -1208,13 +1208,13 @@
   {
     "id": 334004,
     "name": "“连击王”幽灵树精",
-    "desc": "色相：<color=#D079E2>紫</color>\n死亡时，将所停留的地块转化为毒沼；若受到攻击，则立刻瞬移至他处\n\n<size=85%><i>它们生来便与树木相连，并与树木一起死去。</i>",
+    "desc": "色相：<color=#D079E2>紫</color>\n不会受毒沼的影响；死亡时，将所停留的地块转化为毒沼；若受到攻击，则立刻瞬移至他处\n\n<size=85%><i>它们生来便与树木相连，并与树木一起死去。</i>",
     "shape": "1#1",
     "race": "purple",
     "attack": 1,
     "hpCap": 5,
     "defense": 0,
-    "skillIds": "33400401",
+    "skillIds": "33400401#15002",
     "moveType": "normalDrop",
     "illustrationShow": 1,
     "drop": "32000001",
@@ -1429,7 +1429,7 @@
     "attack": 1,
     "hpCap": 8,
     "defense": 3,
-    "skillIds": "33500302#33500305#33500303",
+    "skillIds": "33500302#33500301",
     "moveType": "noDrop",
     "illustrationShow": 1,
     "drop": "",
@@ -1466,16 +1466,16 @@
   {
     "id": 3350031,
     "name": "“幸运位元”",
-    "desc": "",
+    "desc": "死亡时，随机掉落一把方块武装",
     "shape": "1#1",
     "race": "baoxiang1",
-    "attack": 1,
+    "attack": 0,
     "hpCap": 5,
     "defense": 0,
     "skillIds": "",
     "moveType": "noDrop",
     "illustrationShow": 1,
-    "drop": "",
+    "drop": "100015",
     "resPath": "v3a3_m_s12_jh1x1_010",
     "scale": [
       0.9,
@@ -1564,7 +1564,7 @@
     "skillIds": "",
     "moveType": "noDrop",
     "illustrationShow": 1,
-    "drop": "",
+    "drop": "32000001",
     "resPath": "v3a3_m_s12_jh1x1_008",
     "scale": [
       0.9,
@@ -1916,8 +1916,8 @@
   },
   {
     "id": 338001,
-    "name": "幸运宝箱",
-    "desc": "死亡时，随机掉落一把武器",
+    "name": "方块武装宝箱",
+    "desc": "死亡时，使投币手随机获得1个方块武装",
     "shape": "1#1",
     "race": "wuqixiang",
     "attack": 0,
@@ -1926,7 +1926,7 @@
     "skillIds": "",
     "moveType": "normalDrop",
     "illustrationShow": 1,
-    "drop": "100011",
+    "drop": "100010",
     "resPath": "v3a3_m_s12_jh1x1_010",
     "scale": [
       0.9,
@@ -1936,7 +1936,10 @@
       -0.027,
       -0.034
     ],
-    "hpPos": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
     "category": "",
     "icon": "",
     "iconScale": [
@@ -1959,15 +1962,15 @@
   },
   {
     "id": 338002,
-    "name": "幸运宝箱",
-    "desc": "死亡时，随机掉落一把武器",
+    "name": "方块武装宝箱",
+    "desc": "死亡时，使投币手随机获得1个方块武装",
     "shape": "1#1",
     "race": "wuqixiang",
     "attack": 0,
     "hpCap": 4,
     "defense": 0,
     "skillIds": "",
-    "moveType": "noDrop",
+    "moveType": "normalDrop",
     "illustrationShow": 1,
     "drop": "100011",
     "resPath": "v3a3_m_s12_jh1x1_010",
@@ -1979,7 +1982,470 @@
       -0.027,
       -0.034
     ],
-    "hpPos": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 338003,
+    "name": "方块武装宝箱",
+    "desc": "死亡时，使投币手随机获得1个方块武装",
+    "shape": "1#1",
+    "race": "wuqixiang",
+    "attack": 0,
+    "hpCap": 4,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "100012",
+    "resPath": "v3a3_m_s12_jh1x1_010",
+    "scale": [
+      0.9,
+      0.9
+    ],
+    "posOffset": [
+      -0.027,
+      -0.034
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 338004,
+    "name": "方块武装宝箱",
+    "desc": "死亡时，使投币手随机获得1个方块武装",
+    "shape": "1#1",
+    "race": "wuqixiang",
+    "attack": 0,
+    "hpCap": 4,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "100013",
+    "resPath": "v3a3_m_s12_jh1x1_010",
+    "scale": [
+      0.9,
+      0.9
+    ],
+    "posOffset": [
+      -0.027,
+      -0.034
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 338005,
+    "name": "方块武装宝箱",
+    "desc": "死亡时，使投币手随机获得1个方块武装",
+    "shape": "1#1",
+    "race": "wuqixiang",
+    "attack": 0,
+    "hpCap": 4,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "100014",
+    "resPath": "v3a3_m_s12_jh1x1_010",
+    "scale": [
+      0.9,
+      0.9
+    ],
+    "posOffset": [
+      -0.027,
+      -0.034
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 338006,
+    "name": "方块武装宝箱",
+    "desc": "死亡时，使投币手随机获得1个方块武装",
+    "shape": "1#1",
+    "race": "wuqixiang",
+    "attack": 0,
+    "hpCap": 4,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "100015",
+    "resPath": "v3a3_m_s12_jh1x1_010",
+    "scale": [
+      0.9,
+      0.9
+    ],
+    "posOffset": [
+      -0.027,
+      -0.034
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 339001,
+    "name": "缪斯秘宝宝箱",
+    "desc": "死亡时，使投币手随机获得1个缪斯秘宝",
+    "shape": "1#1",
+    "race": "wuqixiang",
+    "attack": 0,
+    "hpCap": 4,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "100001",
+    "resPath": "v3a3_m_s12_jh1x1_009",
+    "scale": [
+      0.9,
+      0.9
+    ],
+    "posOffset": [
+      -0.027,
+      -0.034
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 339002,
+    "name": "缪斯秘宝宝箱",
+    "desc": "死亡时，使投币手随机获得1个缪斯秘宝",
+    "shape": "1#1",
+    "race": "wuqixiang",
+    "attack": 0,
+    "hpCap": 4,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "100002",
+    "resPath": "v3a3_m_s12_jh1x1_009",
+    "scale": [
+      0.9,
+      0.9
+    ],
+    "posOffset": [
+      -0.027,
+      -0.034
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 339003,
+    "name": "缪斯秘宝宝箱",
+    "desc": "死亡时，使投币手随机获得1个缪斯秘宝",
+    "shape": "1#1",
+    "race": "wuqixiang",
+    "attack": 0,
+    "hpCap": 4,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "100003",
+    "resPath": "v3a3_m_s12_jh1x1_009",
+    "scale": [
+      0.9,
+      0.9
+    ],
+    "posOffset": [
+      -0.027,
+      -0.034
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 339004,
+    "name": "缪斯秘宝宝箱",
+    "desc": "死亡时，使投币手随机获得1个缪斯秘宝",
+    "shape": "1#1",
+    "race": "wuqixiang",
+    "attack": 0,
+    "hpCap": 4,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "100004",
+    "resPath": "v3a3_m_s12_jh1x1_009",
+    "scale": [
+      0.9,
+      0.9
+    ],
+    "posOffset": [
+      -0.027,
+      -0.034
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 339005,
+    "name": "缪斯秘宝宝箱",
+    "desc": "死亡时，使投币手随机获得1个缪斯秘宝",
+    "shape": "1#1",
+    "race": "wuqixiang",
+    "attack": 0,
+    "hpCap": 4,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "100005",
+    "resPath": "v3a3_m_s12_jh1x1_009",
+    "scale": [
+      0.9,
+      0.9
+    ],
+    "posOffset": [
+      -0.027,
+      -0.034
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 339006,
+    "name": "缪斯秘宝宝箱",
+    "desc": "死亡时，使投币手随机获得1个缪斯秘宝",
+    "shape": "1#1",
+    "race": "wuqixiang",
+    "attack": 0,
+    "hpCap": 4,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "100006",
+    "resPath": "v3a3_m_s12_jh1x1_009",
+    "scale": [
+      0.9,
+      0.9
+    ],
+    "posOffset": [
+      -0.027,
+      -0.034
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ],
     "category": "",
     "icon": "",
     "iconScale": [

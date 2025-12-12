@@ -14,13 +14,9 @@ end
 function ArcadeSkillHitPassiveSkillRemove:onHit()
 	if self._context and self._context.target then
 		local target = self._context.target
-		local skillSetMO = target:getSkillSetMO()
 
 		self:addHiter(target)
-
-		if skillSetMO then
-			skillSetMO:removeSkillById(self._removeSkillId)
-		end
+		target:removeSkillById(self._removeSkillId)
 	end
 end
 

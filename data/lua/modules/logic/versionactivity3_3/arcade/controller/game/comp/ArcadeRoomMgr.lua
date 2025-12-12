@@ -49,10 +49,11 @@ function ArcadeRoomMgr:switchRoom()
 
 		room:enter()
 		ArcadeGameTriggerController.instance:triggerTarget(ArcadeGameEnum.TriggerPoint.EnterRoom, characterMO)
+		room:tryAddEntityOccupyGrids(characterMO)
 
 		local characterEntity = self._scene.entityMgr:getCharacterEntity()
 
-		room:tryAddEntityOccupyGrids(characterEntity)
+		characterEntity:refreshPosition()
 		room:initEntities()
 		characterEntity:playActionShow(ArcadeGameEnum.ActionShowId.Born)
 	end
@@ -63,14 +64,27 @@ function ArcadeRoomMgr:_exitRoom()
 		self._curRoom:exit()
 	end
 
+	local removeBuffIdList = {}
 	local characterMO = ArcadeGameModel.instance:getCharacterMO()
 
 	if characterMO then
 		local curScore = characterMO:getResourceCount(ArcadeGameEnum.CharacterResource.Score) or 0
 
 		ArcadeGameController.instance:changeResCount(ArcadeGameEnum.CharacterResource.Score, -curScore)
+
+		local buffSetMO = characterMO:getBuffSetMO()
+		local buffList = buffSetMO and buffSetMO:getBuffList()
+
+		if buffList then
+			for i, buffMO in ipairs(buffList) do
+				local buffId = buffMO:getId()
+
+				removeBuffIdList[i] = buffId
+			end
+		end
 	end
 
+	ArcadeGameController.instance:removeEntityBuffs(removeBuffIdList, ArcadeGameEnum.EntityType.Character)
 	self._scene.entityMgr:clearAllEntity()
 	self._scene.effectMgr:removeAllEffect()
 	ArcadeGameModel.instance:clearAllEntityMO()

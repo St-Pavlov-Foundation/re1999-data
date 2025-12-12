@@ -101,7 +101,7 @@ function TowerComposeHeroGroupSupportItem:refreshUI()
 	self.inPlaneId = TowerComposeHeroGroupModel.instance:checkBuffInPlane(self.themeId, TowerComposeEnum.TeamBuffType.Support, self.supportConfig.id, self.isNormalEpisode)
 	self.curPlaneId, self.curBuffType = TowerComposeHeroGroupModel.instance:getCurSelectPlaneIdAndType()
 
-	gohelper.setActive(self.goSelect1, (self.inPlaneId == 1 or self.isNormalEpisode and self.inPlaneId == 0) and self.curPlaneId == 1)
+	gohelper.setActive(self.goSelect1, self.inPlaneId == 1 and self.curPlaneId == 1 or self.isNormalEpisode and self.inPlaneId == 0)
 	gohelper.setActive(self.goSelect2, self.inPlaneId == 2 and self.curPlaneId == 2)
 	gohelper.setActive(self.goIsIn1, self.inPlaneId == 1 or self.isNormalEpisode and self.inPlaneId == 0)
 	gohelper.setActive(self.goIsIn2, self.inPlaneId == 2)

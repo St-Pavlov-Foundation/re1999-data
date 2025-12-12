@@ -116,7 +116,11 @@ function NormalStoreGoodsItem:_onClick()
 		self:_onNormalGoodsClick()
 	end
 
-	StoreController.instance:forceReadTab(self._mo.belongStoreId)
+	if self._mo:needShowRead() then
+		StoreRpc.instance:sendReadStoreNewRequest({
+			self._mo.goodsId
+		}, self._onRefreshNew, self)
+	end
 end
 
 function NormalStoreGoodsItem:_onJumpGoodsClick()
@@ -746,6 +750,14 @@ function NormalStoreGoodsItem:checkShowTicket()
 	end
 
 	return false
+end
+
+function NormalStoreGoodsItem:_onRefreshNew(cmd, resultCode, msg)
+	if resultCode ~= 0 then
+		return
+	end
+
+	gohelper.setActive(self._gonewtag, false)
 end
 
 function NormalStoreGoodsItem:onDestroy()

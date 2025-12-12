@@ -384,7 +384,8 @@ end
 function GMSubViewArcade:_onClickCurRoom()
 	local roomId = ArcadeGameModel.instance:getCurRoomId()
 
-	GameFacade.showToastString(roomId)
+	ZProj.UGUIHelper.CopyText(tostring(roomId))
+	GameFacade.showToastString(string.format("已复制当前房间：%s", roomId))
 end
 
 function GMSubViewArcade:_initL6()

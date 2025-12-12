@@ -16,7 +16,7 @@ function ArcadeSkillHitFlop:onHit()
 
 	local characterMO = ArcadeGameModel.instance:getCharacterMO()
 
-	if self._context and self._context.target and characterMO then
+	if self._context and self._context.target and characterMO and characterMO:getPlayerActType() == ArcadeGameEnum.PlayerActType.Move then
 		local target = self._context.target
 		local gridX, gridY = characterMO:getGridPos()
 		local fx, fy = target:getGridPos()
@@ -52,7 +52,7 @@ function ArcadeSkillHitFlop:onHit()
 		local curRoom = ArcadeGameController.instance:getCurRoom()
 
 		if dis and dis > 0 and scene and curRoom then
-			local tx, ty = self:tryMoveGridXY(target, dir, dis)
+			local tx, ty = ArcadeSkillHitNormalMove.tryMoveGridXY(characterMO, dir, dis)
 
 			if tx and ty then
 				self:addHiter(characterMO)

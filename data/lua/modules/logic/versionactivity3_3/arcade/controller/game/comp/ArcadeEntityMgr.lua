@@ -104,11 +104,12 @@ function ArcadeEntityMgr:addEntityByList(moList, canOverY, cb, cbObj)
 			entityType = mo:getEntityType(),
 			uid = mo:getUid()
 		}
+
+		curRoom:tryAddEntityOccupyGrids(mo, canOverY)
 	end
 
 	self._scene.loader:loadResList(resList, self._onLoadEntityListRes, self, {
 		loadDataList = loadDataList,
-		canOverY = canOverY,
 		cb = cb,
 		cbObj = cbObj
 	})
@@ -121,7 +122,6 @@ function ArcadeEntityMgr:_onLoadEntityListRes(param)
 		return
 	end
 
-	local canOverY = param.canOverY
 	local loadDataList = param.loadDataList
 
 	for _, loadData in ipairs(loadDataList) do
@@ -151,11 +151,15 @@ function ArcadeEntityMgr:_onLoadEntityListRes(param)
 						uid = uid
 					})
 
-					curRoom:tryAddEntityOccupyGrids(entity, canOverY)
+					entity:refreshPosition()
 
 					typeDict[uid] = entity
+				else
+					curRoom:removeEntityOccupyGrids(mo)
+					logError(string.format("ArcadeEntityMgr:_onLoadEntityListRes error, resPath:%s no asset", resPath))
 				end
 			else
+				curRoom:removeEntityOccupyGrids(mo)
 				logError(string.format("ArcadeEntityMgr:_onLoadEntityListRes error, entityType:%s no cls define", entityType))
 			end
 		end

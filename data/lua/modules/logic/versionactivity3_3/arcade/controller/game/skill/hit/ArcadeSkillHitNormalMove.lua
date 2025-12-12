@@ -44,14 +44,23 @@ function ArcadeSkillHitNormalMove.tryMoveGridXY(target, dir, dis)
 	if target and dis and dis > 0 then
 		local gridX, gridY = target:getGridPos()
 		local sizeX, sizeY = target:getSize()
-		local tArcadeGameModel = ArcadeGameModel.instance
-		local unitMOList = {}
+		local tArcadeGameSummonController = ArcadeGameSummonController.instance
+		local unitMOList = tArcadeGameSummonController:getRoomUnitMOList()
 
-		table.insert(unitMOList, tArcadeGameModel:getCharacterMO())
-		tabletool.addValues(unitMOList, tArcadeGameModel:getEntityMOList(ArcadeGameEnum.EntityType.Monster))
 		tabletool.removeValue(unitMOList, target)
 
-		local tArcadeGameSummonController = ArcadeGameSummonController.instance
+		if target == ArcadeGameModel.instance:getCharacterMO() then
+			local unitMO
+
+			for i = #unitMOList, 1, -1 do
+				unitMO = unitMOList[i]
+
+				if unitMO:getIsDead() and unitMO:getEntityType() == ArcadeGameEnum.EntityType.Monster then
+					table.remove(unitMOList, i)
+				end
+			end
+		end
+
 		local isMove
 
 		for i = 1, dis do
