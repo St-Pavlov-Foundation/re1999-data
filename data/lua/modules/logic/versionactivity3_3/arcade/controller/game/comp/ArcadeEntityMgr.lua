@@ -82,7 +82,7 @@ end
 function ArcadeEntityMgr:addEntityByList(moList, canOverY, cb, cbObj)
 	local curRoom = self._scene and self._scene.roomMgr:getCurRoom()
 
-	if not moList or not curRoom then
+	if not moList or #moList <= 0 or not curRoom then
 		ArcadeGameHelper.callCallbackFunc(cb, cbObj)
 
 		return

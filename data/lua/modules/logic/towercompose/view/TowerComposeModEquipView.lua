@@ -556,7 +556,7 @@ function TowerComposeModEquipView:refreshPlaneInfo()
 	local maxRoundPointAdd = pointRoundCoList[#pointRoundCoList].bossPointAdd
 	local totalPointBase = TowerComposeModel.instance:calModPointBaseScore(self.curThemeId, planeId)
 
-	self._txtbossPointBase.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("towercompose_pointlevel"), totalPointBase, totalPointBase * (1 + maxRoundPointAdd / 1000))
+	self._txtbossPointBase.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("towercompose_pointlevel"), totalPointBase, Mathf.Floor(totalPointBase * (1 + maxRoundPointAdd / 1000)))
 
 	for _, gradeLevelGO in ipairs(self.gradeLevelGOList) do
 		gohelper.setActive(gradeLevelGO, gradeLevelGO.name == "#" .. string.lower(bossLvCo.levelReq))

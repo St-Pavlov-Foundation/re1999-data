@@ -143,6 +143,15 @@ function ArcadeSkillHitAttrChange:_onResourceAttrRate(unitMO)
 
 	if resMO then
 		local max = resMO:getMax()
+
+		if ArcadeGameEnum.CharacterResource.SkillEnergy == self._attrId then
+			local characterMO = ArcadeGameModel.instance:getCharacterMO()
+
+			if characterMO then
+				max = ArcadeConfig.instance:getCharacterSkillCost(characterMO:getId())
+			end
+		end
+
 		local val = math.floor(self._attrVal * max / 1000)
 		local count = resMO:getCount()
 

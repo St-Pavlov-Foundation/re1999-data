@@ -730,6 +730,26 @@
     "sceneIcon": "v3a3_eliminate_event_6"
   },
   {
+    "id": 32212002,
+    "name": "激斗",
+    "type": "portal",
+    "desc": "与精英像素生物激斗，夺取金币和缪斯秘宝。",
+    "limit": 0,
+    "optionID": "32212002",
+    "spbehaviorID": "",
+    "grid": "1#1",
+    "pos": "",
+    "resPath": "v3a3_m_s12_jz1x1_002",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "category": "",
+    "icon": "",
+    "sceneIcon": "v3a3_eliminate_event_6"
+  },
+  {
     "id": 32213001,
     "name": "终极对战",
     "type": "portal",
@@ -776,6 +796,46 @@
     "desc": "与精英像素生物激斗，夺取金币和缪斯秘宝。",
     "limit": 0,
     "optionID": "32222001",
+    "spbehaviorID": "",
+    "grid": "1#1",
+    "pos": "",
+    "resPath": "v3a3_m_s12_jz1x1_002",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "category": "",
+    "icon": "",
+    "sceneIcon": "v3a3_eliminate_event_6"
+  },
+  {
+    "id": 32222002,
+    "name": "激斗",
+    "type": "portal",
+    "desc": "与精英像素生物激斗，夺取金币和缪斯秘宝。",
+    "limit": 0,
+    "optionID": "32222002",
+    "spbehaviorID": "",
+    "grid": "1#1",
+    "pos": "",
+    "resPath": "v3a3_m_s12_jz1x1_002",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "category": "",
+    "icon": "",
+    "sceneIcon": "v3a3_eliminate_event_6"
+  },
+  {
+    "id": 32222003,
+    "name": "激斗",
+    "type": "portal",
+    "desc": "与精英像素生物激斗，夺取金币和缪斯秘宝。",
+    "limit": 0,
+    "optionID": "32222003",
     "spbehaviorID": "",
     "grid": "1#1",
     "pos": "",
@@ -850,6 +910,66 @@
     "sceneIcon": "v3a3_eliminate_event_6"
   },
   {
+    "id": 32232002,
+    "name": "激斗",
+    "type": "portal",
+    "desc": "与精英像素生物激斗，夺取金币和缪斯秘宝。",
+    "limit": 0,
+    "optionID": "32232002",
+    "spbehaviorID": "",
+    "grid": "1#1",
+    "pos": "",
+    "resPath": "v3a3_m_s12_jz1x1_002",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "category": "",
+    "icon": "",
+    "sceneIcon": "v3a3_eliminate_event_6"
+  },
+  {
+    "id": 32232003,
+    "name": "激斗",
+    "type": "portal",
+    "desc": "与精英像素生物激斗，夺取金币和缪斯秘宝。",
+    "limit": 0,
+    "optionID": "32232003",
+    "spbehaviorID": "",
+    "grid": "1#1",
+    "pos": "",
+    "resPath": "v3a3_m_s12_jz1x1_002",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "category": "",
+    "icon": "",
+    "sceneIcon": "v3a3_eliminate_event_6"
+  },
+  {
+    "id": 32232004,
+    "name": "激斗",
+    "type": "portal",
+    "desc": "与精英像素生物激斗，夺取金币和缪斯秘宝。",
+    "limit": 0,
+    "optionID": "32232004",
+    "spbehaviorID": "",
+    "grid": "1#1",
+    "pos": "",
+    "resPath": "v3a3_m_s12_jz1x1_002",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "category": "",
+    "icon": "",
+    "sceneIcon": "v3a3_eliminate_event_6"
+  },
+  {
     "id": 32233001,
     "name": "终极对战",
     "type": "portal",
@@ -896,6 +1016,26 @@
     "desc": "与精英像素生物激斗，夺取金币和缪斯秘宝。",
     "limit": 0,
     "optionID": "32312001",
+    "spbehaviorID": "",
+    "grid": "1#1",
+    "pos": "",
+    "resPath": "v3a3_m_s12_jz1x1_002",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "category": "",
+    "icon": "",
+    "sceneIcon": "v3a3_eliminate_event_6"
+  },
+  {
+    "id": 32312002,
+    "name": "激斗",
+    "type": "portal",
+    "desc": "与精英像素生物激斗，夺取金币和缪斯秘宝。",
+    "limit": 0,
+    "optionID": "32312002",
     "spbehaviorID": "",
     "grid": "1#1",
     "pos": "",
@@ -970,6 +1110,46 @@
     "sceneIcon": "v3a3_eliminate_event_6"
   },
   {
+    "id": 32322002,
+    "name": "激斗",
+    "type": "portal",
+    "desc": "与精英像素生物激斗，夺取金币和缪斯秘宝。",
+    "limit": 0,
+    "optionID": "32322002",
+    "spbehaviorID": "",
+    "grid": "1#1",
+    "pos": "",
+    "resPath": "v3a3_m_s12_jz1x1_002",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "category": "",
+    "icon": "",
+    "sceneIcon": "v3a3_eliminate_event_6"
+  },
+  {
+    "id": 32322003,
+    "name": "激斗",
+    "type": "portal",
+    "desc": "与精英像素生物激斗，夺取金币和缪斯秘宝。",
+    "limit": 0,
+    "optionID": "32322003",
+    "spbehaviorID": "",
+    "grid": "1#1",
+    "pos": "",
+    "resPath": "v3a3_m_s12_jz1x1_002",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "category": "",
+    "icon": "",
+    "sceneIcon": "v3a3_eliminate_event_6"
+  },
+  {
     "id": 32323001,
     "name": "终极对战",
     "type": "portal",
@@ -1016,6 +1196,66 @@
     "desc": "与精英像素生物激斗，夺取金币和缪斯秘宝。",
     "limit": 0,
     "optionID": "32332001",
+    "spbehaviorID": "",
+    "grid": "1#1",
+    "pos": "",
+    "resPath": "v3a3_m_s12_jz1x1_002",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "category": "",
+    "icon": "",
+    "sceneIcon": "v3a3_eliminate_event_6"
+  },
+  {
+    "id": 32332002,
+    "name": "激斗",
+    "type": "portal",
+    "desc": "与精英像素生物激斗，夺取金币和缪斯秘宝。",
+    "limit": 0,
+    "optionID": "32332002",
+    "spbehaviorID": "",
+    "grid": "1#1",
+    "pos": "",
+    "resPath": "v3a3_m_s12_jz1x1_002",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "category": "",
+    "icon": "",
+    "sceneIcon": "v3a3_eliminate_event_6"
+  },
+  {
+    "id": 32332003,
+    "name": "激斗",
+    "type": "portal",
+    "desc": "与精英像素生物激斗，夺取金币和缪斯秘宝。",
+    "limit": 0,
+    "optionID": "32332003",
+    "spbehaviorID": "",
+    "grid": "1#1",
+    "pos": "",
+    "resPath": "v3a3_m_s12_jz1x1_002",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "category": "",
+    "icon": "",
+    "sceneIcon": "v3a3_eliminate_event_6"
+  },
+  {
+    "id": 32332004,
+    "name": "激斗",
+    "type": "portal",
+    "desc": "与精英像素生物激斗，夺取金币和缪斯秘宝。",
+    "limit": 0,
+    "optionID": "32332004",
     "spbehaviorID": "",
     "grid": "1#1",
     "pos": "",

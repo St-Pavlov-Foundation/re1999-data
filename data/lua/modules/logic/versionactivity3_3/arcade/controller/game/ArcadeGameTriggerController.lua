@@ -99,8 +99,13 @@ function ArcadeGameTriggerController:_onTriggerTarget(triggerPoint, target, cont
 end
 
 function ArcadeGameTriggerController:triggerTarget(triggerPoint, target, context)
-	logNormal(string.format("ArcadeGameTriggerController:triggerTarget triggerPoint:%s", triggerPoint))
-	self:_onTriggerTarget(triggerPoint, target, context)
+	if self:isOpenLog() then
+		logNormal(string.format("ArcadeGameTriggerController:triggerTarget triggerPoint:%s", triggerPoint))
+	end
+
+	if target and not target:getIsDead() then
+		self:_onTriggerTarget(triggerPoint, target, context)
+	end
 end
 
 function ArcadeGameTriggerController:triggerTargetList(triggerPoint, targetList, context)
@@ -118,15 +123,21 @@ function ArcadeGameTriggerController:triggerTargetList(triggerPoint, targetList,
 		table.sort(tempList, sortFunc)
 	end
 
-	logNormal(string.format("ArcadeGameTriggerController:triggerTargetList triggerPoint:%s count:%s", triggerPoint, #targetList))
+	if self:isOpenLog() then
+		logNormal(string.format("ArcadeGameTriggerController:triggerTargetList triggerPoint:%s count:%s", triggerPoint, #targetList))
+	end
 
 	for _, target in ipairs(tempList) do
-		self:_onTriggerTarget(triggerPoint, target, context)
+		if target and not target:getIsDead() then
+			self:_onTriggerTarget(triggerPoint, target, context)
+		end
 	end
 end
 
 function ArcadeGameTriggerController:atkTriggerTarget(triggerPoint, attackType, atker, hiterList)
-	logNormal(string.format("ArcadeGameTriggerController:atkTriggerTarget triggerPoint:%s attackType:%s", triggerPoint, attackType))
+	if self:isOpenLog() then
+		logNormal(string.format("ArcadeGameTriggerController:atkTriggerTarget triggerPoint:%s attackType:%s", triggerPoint, attackType))
+	end
 
 	local context = {
 		attackType = attackType,
@@ -142,7 +153,9 @@ function ArcadeGameTriggerController:hitTriggerTargetList(triggerPoint, attackTy
 		return
 	end
 
-	logNormal(string.format("ArcadeGameTriggerController:hitTriggerTargetList triggerPoint:%s attackType:%s", triggerPoint, attackType))
+	if self:isOpenLog() then
+		logNormal(string.format("ArcadeGameTriggerController:hitTriggerTargetList triggerPoint:%s attackType:%s", triggerPoint, attackType))
+	end
 
 	local context = {
 		attackType = attackType,
@@ -156,7 +169,9 @@ function ArcadeGameTriggerController:hitTriggerTargetList(triggerPoint, attackTy
 end
 
 function ArcadeGameTriggerController:deathTriggerTarget(triggerPoint, target, atker)
-	logNormal(string.format("ArcadeGameTriggerController:deathTriggerTarget triggerPoint:%s", triggerPoint))
+	if self:isOpenLog() then
+		logNormal(string.format("ArcadeGameTriggerController:deathTriggerTarget triggerPoint:%s", triggerPoint))
+	end
 
 	local context = {}
 
@@ -190,6 +205,14 @@ function ArcadeGameTriggerController:_getUnitSortFuncByPoint(triggerPoint)
 	end
 
 	return self._sortFuncMap[sortType]
+end
+
+function ArcadeGameTriggerController:isOpenLog()
+	if ArcadeGameEnum.PrintLog or GameResMgr.IsFromEditorDir then
+		return true
+	end
+
+	return false
 end
 
 ArcadeGameTriggerController.instance = ArcadeGameTriggerController.New()

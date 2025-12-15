@@ -193,7 +193,7 @@ function TowerComposeHeroGroupPlaneRuleView:refreshPlaneInfoUI(planeMo)
 		addExtraPointBase = addExtraPointBase + extraCo.bossPointBase
 	end
 
-	self["_txtplaneScore" .. planeId].text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("towercompose_pointlevel"), totalPointBase + addExtraPointBase, (totalPointBase + addExtraPointBase) * (1 + maxRoundPointAdd / 1000))
+	self["_txtplaneScore" .. planeId].text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("towercompose_pointlevel"), totalPointBase + addExtraPointBase, Mathf.Floor((totalPointBase + addExtraPointBase) * (1 + maxRoundPointAdd / 1000)))
 end
 
 function TowerComposeHeroGroupPlaneRuleView:onBodyModItemShow(obj, data, index)

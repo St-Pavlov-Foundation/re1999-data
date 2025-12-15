@@ -70,7 +70,10 @@ function ArcadeSkillTipsView:refreshView()
 
 		if type == ArcadeEnum.EffectType.Bomb then
 			name = ArcadeConfig.instance:getBombName(id)
-			desc = ArcadeConfig.instance:getBombDesc(id)
+
+			local cfgDesc = ArcadeConfig.instance:getBombDesc(id)
+
+			desc = ArcadeGameHelper.phraseDesc(cfgDesc, true)
 			icon = ArcadeConfig.instance:getBombIcon(id)
 
 			local characterMO = ArcadeGameModel.instance:getCharacterMO()
@@ -79,7 +82,10 @@ function ArcadeSkillTipsView:refreshView()
 			bombCount = boomResMO and boomResMO:getCount() or 0
 		elseif type == ArcadeEnum.EffectType.Skill then
 			name = ArcadeConfig.instance:getActiveSkillName(id)
-			desc = ArcadeConfig.instance:getActiveSkillDesc(id)
+
+			local cfgDesc = ArcadeConfig.instance:getActiveSkillDesc(id)
+
+			desc = ArcadeGameHelper.phraseDesc(cfgDesc, true)
 			icon = ArcadeConfig.instance:getActiveSkillIcon(id)
 		elseif type == ArcadeEnum.EffectType.Weapon then
 			name = ArcadeConfig.instance:getCollectionName(id)

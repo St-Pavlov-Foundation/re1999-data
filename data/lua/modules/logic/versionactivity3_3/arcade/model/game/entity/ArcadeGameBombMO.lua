@@ -37,7 +37,9 @@ function ArcadeGameBombMO:getRes()
 end
 
 function ArcadeGameBombMO:getDesc()
-	return ArcadeConfig.instance:getBombDesc(self.id)
+	local cfgDesc = ArcadeConfig.instance:getBombDesc(id)
+
+	return ArcadeGameHelper.phraseDesc(cfgDesc, true)
 end
 
 return ArcadeGameBombMO

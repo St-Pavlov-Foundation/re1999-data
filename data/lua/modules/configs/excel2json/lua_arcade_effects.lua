@@ -10,6 +10,7 @@ local fields = {
 	isFromBorder = 8,
 	effectsScale = 11,
 	effectsRotationType = 9,
+	needShake = 12,
 	triggerAnimation = 2,
 	speed = 6,
 	direction = 7,

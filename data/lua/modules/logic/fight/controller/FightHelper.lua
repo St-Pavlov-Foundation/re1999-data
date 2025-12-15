@@ -3021,6 +3021,10 @@ function FightHelper.calcRect(entity, transform)
 		return 10000, 10000, 10000, 10000
 	end
 
+	if gohelper.isNil(bodyStaticGO) then
+		return 10000, 10000, 10000, 10000
+	end
+
 	local bodyPosX, bodyPosY, bodyPosZ = transformhelper.getPos(bodyStaticGO.transform)
 	local entityMo = entity:getMO()
 	local skin = entityMo and entityMo.skin
@@ -3141,12 +3145,13 @@ function FightHelper.getNextRoundGetCardList()
 		local skillIds = string.splitToNumber(v.skillId, "#")
 
 		for index, id in ipairs(skillIds) do
-			local tab = {
-				uid = v.entityId,
-				skillId = id,
-				tempCard = v.tempCard
-			}
-			local cardInfoMO = FightCardInfoData.New(tab)
+			local cardProto = FightDef_pb.CardInfo()
+
+			cardProto.uid = v.entityId
+			cardProto.skillId = id
+			cardProto.tempCard = v.tempCard
+
+			local cardInfoMO = FightCardInfoData.New(cardProto)
 
 			table.insert(cardList, cardInfoMO)
 		end

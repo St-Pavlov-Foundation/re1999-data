@@ -2,7 +2,7 @@
   {
     "id": 101,
     "skillName": "“波茨炮”",
-    "skillDesc": "对像面朝的方向发动“波茨炮”，对该方向所有敌方单位造成2点必杀伤害",
+    "skillDesc": "对像面朝的方向发动“波茨炮”，对该方向所有敌方单位造成{3+attr_301}点必杀伤害",
     "damage": 2,
     "target": 204,
     "icon": "v3a3_eliminate_skillicon_3_1",
@@ -13,7 +13,7 @@
   {
     "id": 102,
     "skillName": "哔哔配合混打",
-    "skillDesc": "召唤波拉比发动冲撞，对自身周围3行的所有敌方单位造成5点必杀伤害",
+    "skillDesc": "召唤波拉比发动冲撞，对自身周围3行的所有敌方单位造成{3+attr_301}点必杀伤害",
     "damage": 5,
     "target": 303,
     "icon": "v3a3_eliminate_skillicon_4_1",
@@ -24,7 +24,7 @@
   {
     "id": 103,
     "skillName": "桑巴三重奏",
-    "skillDesc": "对随机4个敌方单位造成3点必杀伤害",
+    "skillDesc": "对随机4个敌方单位造成{3+attr_301}点必杀伤害",
     "damage": 3,
     "target": 305,
     "icon": "v3a3_eliminate_skillicon_5_1",

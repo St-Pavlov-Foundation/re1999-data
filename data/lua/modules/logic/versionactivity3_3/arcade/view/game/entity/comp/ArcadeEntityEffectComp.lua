@@ -41,6 +41,7 @@ function ArcadeEntityEffectComp:playBulletEffect(effectId)
 
 		if not gohelper.isNil(effectGO) then
 			self:_beginTweenBullet(effectId, effectGO)
+			scene:checkNeedShake(effectId)
 		else
 			local resAbPath
 			local resPath = ResUrl.getArcadeGameEffect(resName)
@@ -153,6 +154,12 @@ function ArcadeEntityEffectComp:_beginTweenBullet(effectId, effectGO)
 
 	self:_playEffectAudioId(effectId)
 
+	local scene = ArcadeGameController.instance:getGameScene()
+
+	if scene then
+		scene:checkNeedShake(effectId)
+	end
+
 	self._bulletTweenId = ZProj.TweenHelper.DOLocalMove(effectTrans, targetPosX, targetPosY, self._posZ, distance / speed, self._onBulletTweenEnd, self, nil, EaseType.Linear)
 end
 
@@ -201,6 +208,7 @@ function ArcadeEntityEffectComp:playEffect(effectId)
 
 			self:_setGoRotationByType(effectGO, rotationType)
 			self:_playEffectAudioId(effectId)
+			scene:checkNeedShake(effectId)
 		else
 			local resAbPath
 			local resPath = ResUrl.getArcadeGameEffect(resName)
@@ -244,6 +252,7 @@ function ArcadeEntityEffectComp:onLoadEffectFinished(param)
 		self:_beginTweenBullet(effectId, effGO)
 	else
 		self:_playEffectAudioId(effectId)
+		scene:checkNeedShake(effectId)
 	end
 end
 

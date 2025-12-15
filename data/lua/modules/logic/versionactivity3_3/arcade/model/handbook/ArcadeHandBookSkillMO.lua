@@ -15,7 +15,7 @@ function ArcadeHandBookSkillMO:getName()
 end
 
 function ArcadeHandBookSkillMO:getDesc()
-	return self.co.skillDesc or ""
+	return ArcadeGameHelper.phraseDesc(self.co.skillDesc or "")
 end
 
 function ArcadeHandBookSkillMO:getIcon()

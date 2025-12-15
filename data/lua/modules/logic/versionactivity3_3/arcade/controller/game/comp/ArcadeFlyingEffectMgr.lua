@@ -58,7 +58,6 @@ function ArcadeFlyingEffectMgr:begin2EndGridXY(effectId, beginX, beginY, endX, e
 			effectId = effectId,
 			beginX = beginX,
 			beginY = beginY,
-			gridY = gridY,
 			endX = endX,
 			endY = endY
 		})
@@ -150,7 +149,7 @@ function ArcadeFlyingEffectMgr._finishCallback(effect)
 end
 
 function ArcadeFlyingEffectMgr._frameBeginCallback(effect, t)
-	local x = ArcadeFlyingEffectMgr.getBezierValue(t, effect.beginX, effect.endX, 0)
+	local x = ArcadeFlyingEffectMgr.getBezierValue(t, effect.beginX, effect.endX, (effect.beginX + effect.endX) * 0.5)
 	local y = ArcadeFlyingEffectMgr.getBezierValue(t, effect.beginY, effect.endY, effect.bezierY)
 
 	transformhelper.setLocalPos(effect.transform, x, y, 0)

@@ -82,8 +82,9 @@ function TowerComposeResearchView:refreshProgressInfo()
 	self.curThemeMo = TowerComposeModel.instance:getThemeMo(self.curThemeId)
 
 	local allResearchNum = TowerComposeConfig.instance:getMaxResearchNum(self.curThemeId)
+	local curProgress = Mathf.Min(self.curThemeMo.researchProgress, allResearchNum)
 
-	self._txtcurProgress.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("towercomposetheme_progress"), self.curThemeMo.researchProgress, allResearchNum)
+	self._txtcurProgress.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("towercomposetheme_progress"), curProgress, allResearchNum)
 
 	self:createAndRefreshProgressItem()
 	self:refreshProgressBar()
@@ -230,9 +231,11 @@ function TowerComposeResearchView:getTargetProgressBarH()
 	local nextIndexValue = 0
 	local offsetValue = 0
 	local processH = 0
+	local allResearchNum = TowerComposeConfig.instance:getMaxResearchNum(self.curThemeId)
+	local curProgress = Mathf.Min(self.curThemeMo.researchProgress, allResearchNum)
 
 	for index, progressItem in ipairs(self.progressItemMap) do
-		if self.curThemeMo.researchProgress >= progressItem.config.req then
+		if curProgress >= progressItem.config.req then
 			nowIndex = index
 			nowIndexValue = progressItem.config.req
 			nextIndexValue = progressItem.config.req
@@ -244,7 +247,7 @@ function TowerComposeResearchView:getTargetProgressBarH()
 	end
 
 	if nextIndexValue ~= nowIndexValue then
-		offsetValue = (self.curThemeMo.researchProgress - nowIndexValue) / (nextIndexValue - nowIndexValue)
+		offsetValue = (curProgress - nowIndexValue) / (nextIndexValue - nowIndexValue)
 	end
 
 	if nowIndex == 0 then

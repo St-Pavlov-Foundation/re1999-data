@@ -273,10 +273,12 @@ function FightSceneLevelComp:_frameCallback(value)
 	end
 
 	for _, renderer in ipairs(self._frontRendererList) do
-		local mat = renderer.material
+		if renderer then
+			local mat = renderer.material
 
-		if not gohelper.isNil(mat) then
-			mat:SetFloat(ShaderPropertyId.FrontSceneAlpha, value)
+			if not gohelper.isNil(mat) then
+				mat:SetFloat(ShaderPropertyId.FrontSceneAlpha, value)
+			end
 		end
 	end
 end

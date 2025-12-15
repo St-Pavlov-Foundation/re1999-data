@@ -402,6 +402,67 @@ function ArcadeGameHelper.entityIsAdjacent(mo1, mo2)
 	return false
 end
 
+local formulaFuncEnvTb = {
+	isInSide = false,
+	min = math.min,
+	max = math.max,
+	floor = math.floor,
+	ceil = math.ceil,
+	abs = math.abs
+}
+
+setmetatable(formulaFuncEnvTb, {
+	__index = function(t, k)
+		local attrVal = 0
+
+		if t.isInSide then
+			local attrId = string.gsub(k, "attr_", "")
+
+			attrVal = ArcadeGameModel.instance:getGameAttribute(tonumber(attrId))
+		end
+
+		return attrVal
+	end
+})
+
+function ArcadeGameHelper.phraseDesc(desc, isInSide)
+	if string.nilorempty(desc) then
+		return desc
+	end
+
+	formulaFuncEnvTb.isInSide = isInSide and true or false
+
+	local result = string.gsub(desc, "%b{}", ArcadeGameHelper._replFunc)
+
+	formulaFuncEnvTb.isInSide = false
+
+	return result
+end
+
+function ArcadeGameHelper._replFunc(formulaStr)
+	formulaStr = string.sub(formulaStr, 2, #formulaStr - 1)
+
+	local formulaFunc = loadstring(string.format("return %s", string.lower(formulaStr)))
+
+	if not formulaFunc then
+		logError("ArcadeGameHelper._replDescFunc 解析表达式失败：" .. formulaStr)
+
+		return formulaStr
+	end
+
+	setfenv(formulaFunc, formulaFuncEnvTb)
+
+	local result, resultString = pcall(formulaFunc)
+
+	if result then
+		return resultString
+	else
+		logError("ArcadeGameHelper._replDescFunc 执行表达式错误：" .. formulaStr)
+
+		return formulaStr
+	end
+end
+
 function ArcadeGameHelper.getResultViewInfo(isWin, isRestart, serverInfo)
 	local characterId
 	local passLevelCount = 0

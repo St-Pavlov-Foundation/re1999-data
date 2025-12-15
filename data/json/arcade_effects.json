@@ -10,7 +10,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 0
+    "effectsScale": 0,
+    "needShake": false
   },
   {
     "id": 689010002,
@@ -23,7 +24,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 0
+    "effectsScale": 0,
+    "needShake": false
   },
   {
     "id": 689010003,
@@ -36,7 +38,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 0
+    "effectsScale": 0,
+    "needShake": false
   },
   {
     "id": 689010004,
@@ -49,7 +52,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 0
+    "effectsScale": 0,
+    "needShake": false
   },
   {
     "id": 689010005,
@@ -62,7 +66,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 0
+    "effectsScale": 0,
+    "needShake": false
   },
   {
     "id": 689010006,
@@ -75,7 +80,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 0
+    "effectsScale": 0,
+    "needShake": false
   },
   {
     "id": 689010007,
@@ -88,7 +94,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 0
+    "effectsScale": 0,
+    "needShake": false
   },
   {
     "id": 689010008,
@@ -101,7 +108,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 0
+    "effectsScale": 0,
+    "needShake": false
   },
   {
     "id": 689010009,
@@ -114,7 +122,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 0
+    "effectsScale": 0,
+    "needShake": false
   },
   {
     "id": 689010010,
@@ -127,7 +136,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 0
+    "effectsScale": 0,
+    "needShake": false
   },
   {
     "id": 689010011,
@@ -140,7 +150,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 0
+    "effectsScale": 0,
+    "needShake": false
   },
   {
     "id": 689010012,
@@ -153,7 +164,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 0
+    "effectsScale": 0,
+    "needShake": false
   },
   {
     "id": 689010013,
@@ -166,7 +178,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 0
+    "effectsScale": 0,
+    "needShake": false
   },
   {
     "id": 689010014,
@@ -179,7 +192,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 1
+    "effectsScale": 1,
+    "needShake": false
   },
   {
     "id": 689010015,
@@ -192,7 +206,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 1
+    "effectsScale": 1,
+    "needShake": false
   },
   {
     "id": 689010016,
@@ -205,7 +220,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 1
+    "effectsScale": 1,
+    "needShake": false
   },
   {
     "id": 689010017,
@@ -218,7 +234,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 1
+    "effectsScale": 1,
+    "needShake": false
   },
   {
     "id": 689010018,
@@ -231,7 +248,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 1
+    "effectsScale": 1,
+    "needShake": false
   },
   {
     "id": 689010019,
@@ -244,7 +262,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 1
+    "effectsScale": 1,
+    "needShake": false
   },
   {
     "id": 689010020,
@@ -257,7 +276,8 @@
     "isFromBorder": false,
     "effectsRotationType": 1,
     "effectsOffset": "",
-    "effectsScale": 1
+    "effectsScale": 1,
+    "needShake": false
   },
   {
     "id": 689010021,
@@ -270,7 +290,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 1
+    "effectsScale": 1,
+    "needShake": false
   },
   {
     "id": 689010022,
@@ -283,7 +304,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 0
+    "effectsScale": 0,
+    "needShake": false
   },
   {
     "id": 689010023,
@@ -296,7 +318,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 0
+    "effectsScale": 0,
+    "needShake": false
   },
   {
     "id": 689010024,
@@ -309,7 +332,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 0
+    "effectsScale": 0,
+    "needShake": false
   },
   {
     "id": 689010025,
@@ -322,7 +346,8 @@
     "isFromBorder": false,
     "effectsRotationType": 1,
     "effectsOffset": "",
-    "effectsScale": 1
+    "effectsScale": 1,
+    "needShake": false
   },
   {
     "id": 689010026,
@@ -335,7 +360,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 1
+    "effectsScale": 1,
+    "needShake": false
   },
   {
     "id": 689010027,
@@ -348,7 +374,8 @@
     "isFromBorder": true,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 1
+    "effectsScale": 1,
+    "needShake": false
   },
   {
     "id": 689010028,
@@ -361,7 +388,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 0
+    "effectsScale": 0,
+    "needShake": false
   },
   {
     "id": 689010029,
@@ -374,7 +402,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 0
+    "effectsScale": 0,
+    "needShake": false
   },
   {
     "id": 689010030,
@@ -387,7 +416,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 0
+    "effectsScale": 0,
+    "needShake": false
   },
   {
     "id": 689010031,
@@ -400,7 +430,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 0
+    "effectsScale": 0,
+    "needShake": false
   },
   {
     "id": 689010032,
@@ -413,7 +444,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 0
+    "effectsScale": 0,
+    "needShake": false
   },
   {
     "id": 689010033,
@@ -426,7 +458,8 @@
     "isFromBorder": false,
     "effectsRotationType": 2,
     "effectsOffset": "",
-    "effectsScale": 1
+    "effectsScale": 1,
+    "needShake": false
   },
   {
     "id": 689010034,
@@ -439,7 +472,8 @@
     "isFromBorder": false,
     "effectsRotationType": 2,
     "effectsOffset": "0.0#0.0",
-    "effectsScale": 1
+    "effectsScale": 1,
+    "needShake": false
   },
   {
     "id": 689010035,
@@ -452,7 +486,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "0.0#0.0",
-    "effectsScale": 1
+    "effectsScale": 1,
+    "needShake": false
   },
   {
     "id": 689010036,
@@ -465,7 +500,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "0.0#0.0",
-    "effectsScale": 1
+    "effectsScale": 1,
+    "needShake": false
   },
   {
     "id": 689010037,
@@ -478,7 +514,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 0
+    "effectsScale": 0,
+    "needShake": false
   },
   {
     "id": 689010038,
@@ -491,7 +528,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 0
+    "effectsScale": 0,
+    "needShake": false
   },
   {
     "id": 689010039,
@@ -504,7 +542,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 0
+    "effectsScale": 0,
+    "needShake": false
   },
   {
     "id": 689010040,
@@ -517,7 +556,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 0
+    "effectsScale": 0,
+    "needShake": false
   },
   {
     "id": 689010041,
@@ -530,7 +570,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 0
+    "effectsScale": 0,
+    "needShake": false
   },
   {
     "id": 689010042,
@@ -543,7 +584,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 0
+    "effectsScale": 0,
+    "needShake": false
   },
   {
     "id": 689010043,
@@ -556,7 +598,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 0
+    "effectsScale": 0,
+    "needShake": false
   },
   {
     "id": 689010044,
@@ -569,7 +612,8 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 1
+    "effectsScale": 1,
+    "needShake": false
   },
   {
     "id": 689010045,
@@ -582,6 +626,35 @@
     "isFromBorder": false,
     "effectsRotationType": 0,
     "effectsOffset": "",
-    "effectsScale": 0
+    "effectsScale": 0,
+    "needShake": false
+  },
+  {
+    "id": 689010046,
+    "triggerAnimation": "",
+    "triggerAudio": 0,
+    "triggerEffects": "",
+    "isPlayOnGrid": false,
+    "speed": 0,
+    "direction": 0,
+    "isFromBorder": false,
+    "effectsRotationType": 0,
+    "effectsOffset": "",
+    "effectsScale": 0,
+    "needShake": false
+  },
+  {
+    "id": 689010047,
+    "triggerAnimation": "",
+    "triggerAudio": 0,
+    "triggerEffects": "",
+    "isPlayOnGrid": false,
+    "speed": 0,
+    "direction": 0,
+    "isFromBorder": false,
+    "effectsRotationType": 0,
+    "effectsOffset": "",
+    "effectsScale": 0,
+    "needShake": false
   }
 ]

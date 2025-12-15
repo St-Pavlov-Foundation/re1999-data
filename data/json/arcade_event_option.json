@@ -320,6 +320,14 @@
     "descChange": ""
   },
   {
+    "id": 32212002,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32212002",
+    "descChange": ""
+  },
+  {
     "id": 32213001,
     "type": "transmitRoom",
     "optionDesc": "传送",
@@ -341,6 +349,22 @@
     "optionDesc": "传送",
     "condition": "",
     "param": "32222001",
+    "descChange": ""
+  },
+  {
+    "id": 32222002,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32222002",
+    "descChange": ""
+  },
+  {
+    "id": 32222003,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32222003",
     "descChange": ""
   },
   {
@@ -368,6 +392,30 @@
     "descChange": ""
   },
   {
+    "id": 32232002,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32232002",
+    "descChange": ""
+  },
+  {
+    "id": 32232003,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32232003",
+    "descChange": ""
+  },
+  {
+    "id": 32232004,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32232004",
+    "descChange": ""
+  },
+  {
     "id": 32233001,
     "type": "transmitRoom",
     "optionDesc": "传送",
@@ -389,6 +437,14 @@
     "optionDesc": "传送",
     "condition": "",
     "param": "32312001",
+    "descChange": ""
+  },
+  {
+    "id": 32312002,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32312002",
     "descChange": ""
   },
   {
@@ -416,6 +472,22 @@
     "descChange": ""
   },
   {
+    "id": 32322002,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32322002",
+    "descChange": ""
+  },
+  {
+    "id": 32322003,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32322003",
+    "descChange": ""
+  },
+  {
     "id": 32323001,
     "type": "transmitRoom",
     "optionDesc": "传送",
@@ -437,6 +509,30 @@
     "optionDesc": "传送",
     "condition": "",
     "param": "32332001",
+    "descChange": ""
+  },
+  {
+    "id": 32332002,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32332002",
+    "descChange": ""
+  },
+  {
+    "id": 32332003,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32332003",
+    "descChange": ""
+  },
+  {
+    "id": 32332004,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32332004",
     "descChange": ""
   },
   {

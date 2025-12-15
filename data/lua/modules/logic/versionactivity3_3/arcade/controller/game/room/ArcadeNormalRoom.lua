@@ -64,7 +64,7 @@ end
 function ArcadeNormalRoom:loadNextWaveMonster()
 	local groupCount = self._monsterGroupList and #self._monsterGroupList or 0
 
-	if self._curWaveIndex and groupCount <= self._curWaveIndex then
+	if not self._curWaveIndex or groupCount <= self._curWaveIndex then
 		return
 	end
 

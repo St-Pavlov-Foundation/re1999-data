@@ -2,7 +2,7 @@
   {
     "id": 101,
     "name": "电光拳",
-    "skillDesc": "倒计时2次行动后：对周围十字3格范围内的单位造成3点伤害",
+    "skillDesc": "倒计时4次行动后：对周围十字{3+2*attr_303}格范围内的单位造成{3+attr_302}点伤害",
     "shape": "1#1",
     "resPath": "v3a3_m_s12_jn1x1_002",
     "scale": [
@@ -10,7 +10,7 @@
       1
     ],
     "damage": 3,
-    "countdown": 3,
+    "countdown": 5,
     "target": 703,
     "addFloor": 101,
     "skill": 0,
@@ -19,7 +19,7 @@
   {
     "id": 102,
     "name": "方块劲舞",
-    "skillDesc": "倒计时2次行动后：对周围方形3格范围内的单位造成3点伤害",
+    "skillDesc": "倒计时4次行动后：对周围方形{3+2*attr_303}格范围内的单位造成{3+attr_302}点伤害",
     "shape": "1#1",
     "resPath": "v3a3_m_s12_jn1x1_003",
     "scale": [
@@ -27,7 +27,7 @@
       1
     ],
     "damage": 3,
-    "countdown": 3,
+    "countdown": 5,
     "target": 10,
     "addFloor": 101,
     "skill": 0,
@@ -36,7 +36,7 @@
   {
     "id": 103,
     "name": "节拍陷阱",
-    "skillDesc": "倒计时3次行动后：对周围方形5格范围内的单位造成3点伤害",
+    "skillDesc": "倒计时6次行动后：对周围方形{5+2*attr_303}格范围内的单位造成{3+attr_302}点伤害",
     "shape": "1#1",
     "resPath": "v3a3_m_s12_jn1x1_004",
     "scale": [
@@ -44,7 +44,7 @@
       1
     ],
     "damage": 3,
-    "countdown": 4,
+    "countdown": 7,
     "target": 11,
     "addFloor": 101,
     "skill": 0,
@@ -70,7 +70,7 @@
   {
     "id": 105,
     "name": "命运重置",
-    "skillDesc": "倒计时2次行动后：对周围十字3格范围内的单位造成5点伤害",
+    "skillDesc": "倒计时4次行动后：对周围十字{3+2*attr_303}格范围内的单位造成{5+attr_302}点伤害",
     "shape": "1#1",
     "resPath": "v3a3_m_s12_jn1x1_001",
     "scale": [
@@ -78,7 +78,7 @@
       1
     ],
     "damage": 5,
-    "countdown": 3,
+    "countdown": 5,
     "target": 12,
     "addFloor": 101,
     "skill": 0,

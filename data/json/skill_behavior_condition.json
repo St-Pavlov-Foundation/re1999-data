@@ -25976,6 +25976,10 @@
     "type": "BattleTagNum"
   },
   {
+    "id": 762021,
+    "type": "BattleTagNum"
+  },
+  {
     "id": 762100,
     "type": "BattleTagNum"
   },
@@ -26470,5 +26474,9 @@
   {
     "id": 11402,
     "type": "SingleKillNum"
+  },
+  {
+    "id": 2011,
+    "type": "None"
   }
 ]

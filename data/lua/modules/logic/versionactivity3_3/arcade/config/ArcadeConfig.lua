@@ -1222,6 +1222,12 @@ function ArcadeConfig:getEffectRotationType(effectId)
 	return cfg and cfg.effectsRotationType
 end
 
+function ArcadeConfig:getIsNeedShake(effectId)
+	local cfg = self:getArcadeEffectCfg(effectId, true)
+
+	return cfg and cfg.needShake
+end
+
 function ArcadeConfig:getActionShowCfg(showId, nilError)
 	local cfg = lua_arcade_action_show.configDict[showId]
 

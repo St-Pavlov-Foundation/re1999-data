@@ -30,10 +30,9 @@ function ArcadeSkillHitFlashMove:onHit()
 			local entity = scene.entityMgr:getEntityWithType(target:getEntityType(), target:getUid())
 
 			if entity.bezierComp then
-				curRoom:tryMoveEntity(entity, x, y)
-
 				local bex, bey = target:getGridPos()
 
+				curRoom:tryMoveEntity(entity, x, y)
 				entity.bezierComp:beginGridXY(bex, bey)
 			else
 				curRoom:tryMoveEntity(entity, x, y)
@@ -46,14 +45,11 @@ function ArcadeSkillHitFlashMove:_tryGetGridXY(target, radius)
 	if target and radius and radius > 0 then
 		local gridX, gridY = target:getGridPos()
 		local sizeX, sizeY = target:getSize()
-		local tArcadeGameModel = ArcadeGameModel.instance
-		local unitMOList = {}
+		local tArcadeGameSummonController = ArcadeGameSummonController.instance
+		local unitMOList = tArcadeGameSummonController:getRoomUnitMOList()
 
-		tabletool.addValues(unitMOList, tArcadeGameModel:getEntityMOList(ArcadeGameEnum.EntityType.Character))
-		tabletool.addValues(unitMOList, tArcadeGameModel:getEntityMOList(ArcadeGameEnum.EntityType.Monster))
 		tabletool.removeValue(unitMOList, target)
 
-		local tArcadeGameSummonController = ArcadeGameSummonController.instance
 		local gridList = tArcadeGameSummonController:getGridList()
 
 		RoomHelper.randomArray(gridList)
@@ -62,7 +58,7 @@ function ArcadeSkillHitFlashMove:_tryGetGridXY(target, radius)
 			local x = grid.x
 			local y = grid.y
 
-			if grid.x ~= gridX and grid.y ~= gridY and radius >= math.abs(x - gridX) and radius >= math.abs(y - gridY) and tArcadeGameSummonController:checkSizeGridXY(x, y, sizeX, sizeY, unitMOList) then
+			if (grid.x ~= gridX or grid.y ~= gridY) and radius >= math.abs(x - gridX) and radius >= math.abs(y - gridY) and tArcadeGameSummonController:checkSizeGridXY(x, y, sizeX, sizeY, unitMOList) then
 				return x, y
 			end
 		end

@@ -38,6 +38,15 @@ function TowerComposeModel:onReceiveTowerComposeGetInfoReply(info)
 		self.curLayerId = 1
 	end
 
+	if passLayer > 0 then
+		local curUnlockPlaneLayerId, planeLayerIdList = self:getCurUnlockPlaneLayerId(self.curThemeId, passLayer)
+		local isSelectFirstPlane = self.curLayerId == planeLayerIdList[1]
+
+		if curUnlockPlaneLayerId > 0 and curUnlockPlaneLayerId ~= planeLayerIdList[1] and isSelectFirstPlane then
+			self.curLayerId = curUnlockPlaneLayerId
+		end
+	end
+
 	self.curUnfoldThemeId = self.curThemeId
 end
 
@@ -764,26 +773,42 @@ function TowerComposeModel:calModPointBaseScore(themeId, planeId)
 
 	for index, modInfo in ipairs(bodyModInfoList) do
 		local modConfig = TowerComposeConfig.instance:getComposeModConfig(modInfo.modId)
-		local pointLevelCo = TowerComposeConfig.instance:getPointLevelConfig(modConfig.level)
 
-		totalPointBase = totalPointBase + pointLevelCo.bossPointBase
+		if not self:isIgnoreCalModPointBase(modConfig.id) then
+			local pointLevelCo = TowerComposeConfig.instance:getPointLevelConfig(modConfig.level)
+
+			totalPointBase = totalPointBase + pointLevelCo.bossPointBase
+		end
 	end
 
 	for index, modInfo in ipairs(wordModInfoList) do
 		local modConfig = TowerComposeConfig.instance:getComposeModConfig(modInfo.modId)
-		local pointLevelCo = TowerComposeConfig.instance:getPointLevelConfig(modConfig.level)
 
-		totalPointBase = totalPointBase + pointLevelCo.bossPointBase
+		if not self:isIgnoreCalModPointBase(modConfig.id) then
+			local pointLevelCo = TowerComposeConfig.instance:getPointLevelConfig(modConfig.level)
+
+			totalPointBase = totalPointBase + pointLevelCo.bossPointBase
+		end
 	end
 
 	for index, modInfo in ipairs(envModInfoList) do
 		local modConfig = TowerComposeConfig.instance:getComposeModConfig(modInfo.modId)
-		local pointLevelCo = TowerComposeConfig.instance:getPointLevelConfig(modConfig.level)
 
-		totalPointBase = totalPointBase + pointLevelCo.bossPointBase
+		if not self:isIgnoreCalModPointBase(modConfig.id) then
+			local pointLevelCo = TowerComposeConfig.instance:getPointLevelConfig(modConfig.level)
+
+			totalPointBase = totalPointBase + pointLevelCo.bossPointBase
+		end
 	end
 
 	return totalPointBase
+end
+
+function TowerComposeModel:isIgnoreCalModPointBase(modId)
+	local modIdListStr = TowerComposeConfig.instance:getConstValue(TowerComposeEnum.ConstId.IgnoreCalPointBaseModList)
+	local modIdList = string.splitToNumber(modIdListStr, "#")
+
+	return tabletool.indexOf(modIdList, modId)
 end
 
 TowerComposeModel.instance = TowerComposeModel.New()

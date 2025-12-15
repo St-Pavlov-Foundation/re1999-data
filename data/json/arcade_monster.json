@@ -679,7 +679,7 @@
     "race": "green",
     "attack": 1,
     "hpCap": 4,
-    "defense": 999,
+    "defense": 0,
     "skillIds": "",
     "moveType": "normalDrop",
     "illustrationShow": 1,
@@ -722,8 +722,8 @@
     "race": "green",
     "attack": 1,
     "hpCap": 5,
-    "defense": 0,
-    "skillIds": "",
+    "defense": 999,
+    "skillIds": "33200801",
     "moveType": "normalDrop",
     "illustrationShow": 1,
     "drop": "32000001",
@@ -755,7 +755,7 @@
       0,
       0
     ],
-    "hasCorpse": true
+    "hasCorpse": false
   },
   {
     "id": 333001,

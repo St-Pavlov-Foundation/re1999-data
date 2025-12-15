@@ -51,6 +51,7 @@ TowerComposeEnum.ConstId = {
 	ResearchExLevel2 = 4,
 	SupportRoleDesc = 3,
 	ExtraRoleDesc = 2,
+	IgnoreCalPointBaseModList = 12,
 	MaxResearchProgress = 1,
 	ResearchExLevel1 = 5
 }

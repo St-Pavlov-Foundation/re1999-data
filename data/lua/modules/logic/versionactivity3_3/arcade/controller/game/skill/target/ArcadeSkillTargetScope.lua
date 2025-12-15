@@ -17,13 +17,13 @@ function ArcadeSkillTargetScope:_getLineXY(gridX, gridY, len, dir)
 	local off1, off2 = ArcadeGameHelper.getRectOffsetVal(len - 1)
 
 	if dir == ArcadeEnum.Direction.Up then
-		return gridX - off1, gridX + off2, gridY + 1, gridY + 1
+		return gridX - off1, gridX + off2, gridY, gridY
 	elseif dir == ArcadeEnum.Direction.Down then
-		return gridX - off1, gridX + off2, gridY - 1, gridY - 1
+		return gridX - off1, gridX + off2, gridY, gridY
 	elseif dir == ArcadeEnum.Direction.Left then
-		return gridX - 1, gridX - 1, gridY - off1, gridY + off2
+		return gridX - 1, gridX, gridY - off1, gridY + off2
 	elseif dir == ArcadeEnum.Direction.Right then
-		return gridX + 1, gridX + 1, gridY - off1, gridY + off2
+		return gridX, gridX, gridY - off1, gridY + off2
 	end
 
 	return gridX, gridX, gridY, gridY

@@ -784,8 +784,10 @@ function FightViewPlayCard:refreshAllItemPosIfEmptyCreate()
 	for i = showPlayItemCount + 1, #self._playCardItemList do
 		local playCardItem = self._playCardItemList[i]
 
-		playCardItem:updateItem(nil)
-		gohelper.setActive(playCardItem.go, false)
+		if playCardItem then
+			playCardItem:updateItem(nil)
+			gohelper.setActive(playCardItem.go, false)
+		end
 	end
 
 	self:refreshPlayCardTrPosAndWidth(totalCount)

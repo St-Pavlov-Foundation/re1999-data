@@ -88,6 +88,19 @@ function ArcadeGameBuffSetMO:getBuffById(buffId)
 	return self._buffDict[buffId]
 end
 
+local function _sortBuffList(aBuff, bBuff)
+	local aBuffId = aBuff:getId()
+	local bBuffId = bBuff:getId()
+	local aShowPriority = ArcadeConfig.instance:getArcadeBuffShowPriority(aBuffId)
+	local bShowPriority = ArcadeConfig.instance:getArcadeBuffShowPriority(bBuffId)
+
+	if aShowPriority ~= bShowPriority then
+		return aShowPriority < bShowPriority
+	end
+
+	return aBuffId < bBuffId
+end
+
 function ArcadeGameBuffSetMO:addBuffById(buffId)
 	if self._buffDict[buffId] then
 		self._buffDict[buffId]:resetLiveRound()
@@ -107,7 +120,7 @@ function ArcadeGameBuffSetMO:addBuffById(buffId)
 		end
 
 		table.insert(self._buffList, buff)
-		table.sort(self._buffList, self._sortBuffList, self)
+		table.sort(self._buffList, _sortBuffList)
 
 		local skillList = ArcadeConfig.instance:getArcadeBuffPassiveSkillList(buffId)
 		local skillSetMO = self.unitMO:getSkillSetMO()
@@ -118,19 +131,6 @@ function ArcadeGameBuffSetMO:addBuffById(buffId)
 			end
 		end
 	end
-end
-
-function ArcadeGameBuffSetMO:_sortBuffList(aBuff, bBuff)
-	local aBuffId = aBuff:getId()
-	local bBuffId = bBuff:getId()
-	local aShowPriority = ArcadeConfig.instance:getArcadeBuffShowPriority(aBuffId)
-	local bShowPriority = ArcadeConfig.instance:getArcadeBuffShowPriority(bBuffId)
-
-	if aShowPriority ~= bShowPriority then
-		return aShowPriority < bShowPriority
-	end
-
-	return aBuffId < bBuffId
 end
 
 function ArcadeGameBuffSetMO:removeBuffById(buffId)

@@ -28,9 +28,15 @@ function ArcadeGameScene:onEnterArcadeGame(isRestartGame)
 	if not string.nilorempty(sceneUrl) then
 		UIBlockMgr.instance:startBlock(ArcadeEnum.BlockKey.LoadGameScene)
 
-		self._sceneLoader = PrefabInstantiate.Create(self._sceneRoot)
+		local _resList = {
+			sceneUrl,
+			ArcadeGameEnum.Const.GameSceneAnim
+		}
 
-		self._sceneLoader:startLoad(sceneUrl, self._onLoadSceneFinish, self)
+		self._sceneLoader = MultiAbLoader.New()
+
+		self._sceneLoader:setPathList(_resList)
+		self._sceneLoader:startLoad(self._onLoadSceneFinish, self)
 	end
 end
 
@@ -41,7 +47,23 @@ function ArcadeGameScene:_onLoadSceneFinish()
 		return
 	end
 
-	self._goScene = self._sceneLoader:getInstGO()
+	local sceneUrl = ResUrl.getArcadeSceneRes(ArcadeGameEnum.Const.GameSceneResName)
+	local sceneAsset = self._sceneLoader:getAssetItem(sceneUrl)
+	local sceneRes = sceneAsset and sceneAsset:GetResource(sceneUrl)
+
+	if sceneRes then
+		self._goScene = gohelper.clone(sceneRes, self._sceneRoot)
+	end
+
+	local animUrl = ArcadeGameEnum.Const.GameSceneAnim
+	local animAsset = self._sceneLoader:getAssetItem(animUrl)
+	local animRes = animAsset and animAsset:GetResource(animUrl)
+
+	if animRes then
+		self._sceneAnimator = gohelper.onceAddComponent(self._sceneRoot, typeof(UnityEngine.Animator))
+		self._sceneAnimator.runtimeAnimatorController = animRes
+		self._sceneAnimator.enabled = true
+	end
 
 	self:_initScene()
 end
@@ -83,6 +105,22 @@ function ArcadeGameScene:_initSceneFinish()
 	ArcadeGameController.instance:startGame(self._isRestartGame)
 
 	self._isRestartGame = nil
+end
+
+function ArcadeGameScene:checkNeedShake(effectId)
+	local isNeedShake = ArcadeConfig.instance:getIsNeedShake(effectId)
+
+	if isNeedShake then
+		self:playShakeEff()
+	end
+end
+
+function ArcadeGameScene:playShakeEff()
+	if not self._sceneAnimator then
+		return
+	end
+
+	self._sceneAnimator:Play("shake", 0, 0)
 end
 
 function ArcadeGameScene:onExitArcadeGame()

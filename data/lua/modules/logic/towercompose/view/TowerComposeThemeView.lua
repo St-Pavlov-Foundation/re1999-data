@@ -399,9 +399,10 @@ end
 function TowerComposeThemeView:refreshResearchProgress()
 	local allResearchNum = TowerComposeConfig.instance:getMaxResearchNum(self.curThemeId)
 	local themeMo = TowerComposeModel.instance:getThemeMo(self.curThemeId)
+	local curProgress = Mathf.Min(themeMo.researchProgress, allResearchNum)
 
-	self._txtprogresstxt.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("towercomposetheme_progress"), themeMo.researchProgress, allResearchNum)
-	self._imageprogress.fillAmount = themeMo.researchProgress / allResearchNum
+	self._txtprogresstxt.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("towercomposetheme_progress"), curProgress, allResearchNum)
+	self._imageprogress.fillAmount = curProgress / allResearchNum
 end
 
 function TowerComposeThemeView:refreshReddot()

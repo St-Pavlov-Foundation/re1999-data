@@ -384,11 +384,17 @@ function ArcadeGameController:change2Room(roomId, playExcessive)
 	logNormal(string.format("ArcadeGame change to room :%s", roomId))
 	ArcadeGameModel.instance:setChangingRoom(true)
 	ArcadeGameModel.instance:setCurRoomId(roomId)
-	UIBlockMgr.instance:startBlock(ArcadeEnum.BlockKey.ChangingRoom)
 
 	if playExcessive then
+		local isOpenGameView = ViewMgr.instance:isOpen(ViewName.ArcadeGameView)
+
+		if isOpenGameView then
+			UIBlockMgr.instance:startBlock(ArcadeEnum.BlockKey.ChangingRoom)
+		end
+
 		self:dispatchEvent(ArcadeEvent.PlayChangeRoomExcessive)
 	elseif self._gameScene then
+		UIBlockMgr.instance:startBlock(ArcadeEnum.BlockKey.ChangingRoom)
 		self._gameScene.roomMgr:switchRoom()
 	end
 end
@@ -737,6 +743,7 @@ function ArcadeGameController:enterAttackFlow(attackType, attackerMO, targetMOLi
 	end
 
 	self:_calAttackDamage(attackerMO, attackType, targetMOList, hitActionShowId, actionShowParam, skillId)
+	self:_updateScoreAndSkillEnergy(attackerMO, attackType, targetMOList, skillId)
 
 	if notTriggerAtkPoint ~= true then
 		ArcadeGameTriggerController.instance:atkTriggerTarget(ArcadeGameEnum.TriggerPoint.Atk203, attackType, attackerMO, targetMOList)
@@ -746,7 +753,6 @@ function ArcadeGameController:enterAttackFlow(attackType, attackerMO, targetMOLi
 		ArcadeGameModel.instance:clearGameTempAttribute()
 	end
 
-	self:_updateScoreAndSkillEnergy(attackerMO, attackType, targetMOList, skillId)
 	self:_enterDeathSettleFlow(attackerMO)
 
 	if targetMOList then
@@ -787,20 +793,35 @@ function ArcadeGameController:_calAttackDamage(attackerMO, attackType, targetMOL
 	end
 
 	local attackDamage = 0
+	local attackerId = attackerMO:getId()
+	local attackerEntityType = attackerMO:getEntityType()
+	local isCharacterAttack = attackerEntityType == ArcadeGameEnum.EntityType.Character
+	local characterMO = ArcadeGameModel.instance:getCharacterMO()
+	local characterId = characterMO and characterMO:getId()
+	local isCharacterBomb = false
 
 	if attackType == ArcadeGameEnum.AttackType.Bomb then
-		local bombId = attackerMO:getId()
-		local addBombDamage = ArcadeGameModel.instance:getGameAttribute(ArcadeGameEnum.GameAttribute.AddBombDamage)
+		local addBombDamage = 0
+		local characterBombId = ArcadeConfig.instance:getCharacterBomb(characterId)
 
-		attackDamage = ArcadeConfig.instance:getBombDamage(bombId) + addBombDamage
-	elseif attackType == ArcadeGameEnum.AttackType.Skill then
-		if not skillId then
-			local characterId = attackerMO:getId()
-
-			skillId = ArcadeConfig.instance:getCharacterSkill(characterId)
+		if attackerId == characterBombId then
+			isCharacterBomb = true
+			addBombDamage = ArcadeGameModel.instance:getGameAttribute(ArcadeGameEnum.GameAttribute.AddBombDamage)
 		end
 
-		local addSkillDamage = ArcadeGameModel.instance:getGameAttribute(ArcadeGameEnum.GameAttribute.AddSkillDamage)
+		attackDamage = ArcadeConfig.instance:getBombDamage(attackerId) + addBombDamage
+	elseif attackType == ArcadeGameEnum.AttackType.Skill then
+		local addSkillDamage = 0
+
+		if isCharacterAttack then
+			local characterSkillId = ArcadeConfig.instance:getCharacterSkill(characterId)
+
+			skillId = skillId or characterSkillId
+
+			if skillId == characterSkillId then
+				addSkillDamage = ArcadeGameModel.instance:getGameAttribute(ArcadeGameEnum.GameAttribute.AddSkillDamage)
+			end
+		end
 
 		attackDamage = ArcadeConfig.instance:getActiveSkillDamage(skillId) + addSkillDamage
 	end
@@ -837,7 +858,7 @@ function ArcadeGameController:_calAttackDamage(attackerMO, attackType, targetMOL
 		elseif attackType == ArcadeGameEnum.AttackType.Bomb then
 			local isBombNotAttackSelf = ArcadeGameModel.instance:getGameSwitchIsOn(ArcadeGameEnum.GameSwitch.BombNotAttackSelf)
 
-			if targetEntityType == ArcadeGameEnum.EntityType.Character and isBombNotAttackSelf then
+			if isCharacterBomb and targetEntityType == ArcadeGameEnum.EntityType.Character and isBombNotAttackSelf then
 				canBeAttacked = false
 				needPlayActionShow = false
 			elseif targetEntityType == ArcadeGameEnum.EntityType.BaseInteractive then
@@ -861,10 +882,9 @@ function ArcadeGameController:_calAttackDamage(attackerMO, attackType, targetMOL
 		end
 	end
 
-	local attackerEntityType = attackerMO:getEntityType()
 	local firstTargetMO = targetMOList[1]
 
-	if attackerEntityType == ArcadeGameEnum.EntityType.Character then
+	if isCharacterAttack then
 		local buffSetMO = attackerMO:getBuffSetMO()
 		local haveNotBeCounteredBuff = buffSetMO:hasEffectParamBuff(ArcadeGameEnum.BuffEffectParam.NotBeCountered)
 

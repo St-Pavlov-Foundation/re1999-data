@@ -57,7 +57,7 @@ end
 function ArcadeEntityBezierComp:_frameBeginCallback(t)
 	local gridX, gridY = self._fUnitMO:getGridPos()
 	local endX, endY = ArcadeGameHelper.getGridPos(gridX, gridY)
-	local x = self:getBezierValue(t, self._beginX, endX, 0)
+	local x = self:getBezierValue(t, self._beginX, endX, (self._beginX + endX) * 0.5)
 	local y = self:getBezierValue(t, self._beginY, endY, self._bezierY)
 
 	transformhelper.setLocalPos(self.trans, x, y, 0)

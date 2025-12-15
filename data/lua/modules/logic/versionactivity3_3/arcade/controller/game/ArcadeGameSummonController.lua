@@ -94,13 +94,14 @@ function ArcadeGameSummonController:getRoomUnitMOList()
 
 	self:_addUnitMOList(unitMOList, tArcadeGameModel:getEntityMOList(ArcadeGameEnum.EntityType.Monster))
 
-	local unitMO
-	local corpseKeepTime = ArcadeConfig.instance:getArcadeConst(ArcadeEnum.ConstId.CorpseKeepTime, true)
+	local curRoom = ArcadeGameController.instance:getCurRoom()
 
 	for i = #unitMOList, 1, -1 do
-		unitMO = unitMOList[i]
+		local unitMO = unitMOList[i]
+		local gridX, gridY = unitMO:getGridPos()
+		local occupyEntityData = curRoom:getEntityDataInTargetGrid(gridX, gridY)
 
-		if unitMO:getIsDead() and (not unitMO:getHasCorpse() or corpseKeepTime <= unitMO:getCorpseTime()) then
+		if not occupyEntityData then
 			table.remove(unitMOList, i)
 		end
 	end

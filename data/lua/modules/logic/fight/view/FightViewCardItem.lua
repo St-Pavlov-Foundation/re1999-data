@@ -486,7 +486,7 @@ function FightViewCardItem:refreshAssistRoleIcon()
 	if self.handCardType == FightEnum.CardShowType.Operation or self.handCardType == FightEnum.CardShowType.PlayCard then
 		local entityMo = FightDataHelper.entityMgr:getById(self.entityId)
 
-		if entityMo:isAssistBoss() and FightDataHelper.paTaMgr:checkIsAssistRole() then
+		if entityMo and entityMo:isAssistBoss() and FightDataHelper.paTaMgr:checkIsAssistRole() then
 			show = true
 		end
 	end

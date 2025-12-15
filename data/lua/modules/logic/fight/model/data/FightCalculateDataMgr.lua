@@ -378,10 +378,12 @@ function FightCalculateDataMgr:playEffect58(actEffectData)
 		return
 	end
 
-	local cardData = FightCardInfoData.New({
-		uid = "0",
-		skillId = actEffectData.effectNum
-	})
+	local cardProto = FightDef_pb.CardInfo()
+
+	cardProto.uid = "0"
+	cardProto.skillId = actEffectData.effectNum
+
+	local cardData = FightCardInfoData.New(cardProto)
 	local handCard = self:getHandCard()
 
 	table.insert(handCard, cardData)
@@ -517,10 +519,12 @@ function FightCalculateDataMgr:playEffect78(actEffectData)
 		return
 	end
 
-	local cardData = FightCardInfoData.New({
-		uid = "0",
-		skillId = actEffectData.effectNum
-	})
+	local cardProto = FightDef_pb.CardInfo()
+
+	cardProto.uid = "0"
+	cardProto.skillId = actEffectData.effectNum
+
+	local cardData = FightCardInfoData.New(cardProto)
 	local handCard = self:getHandCard()
 
 	table.insert(handCard, cardData)
@@ -1397,10 +1401,12 @@ function FightCalculateDataMgr:playEffect191(actEffectData)
 		return
 	end
 
-	local cardData = FightCardInfoData.New({
-		uid = "0",
-		skillId = actEffectData.effectNum
-	})
+	local cardProto = FightDef_pb.CardInfo()
+
+	cardProto.uid = "0"
+	cardProto.skillId = actEffectData.effectNum
+
+	local cardData = FightCardInfoData.New(cardProto)
 	local handCard = self:getHandCard()
 
 	table.insert(handCard, cardData)

@@ -241,6 +241,12 @@ function ArcadeEffectMgr:_beginTweenBullet(effectId, effectGO, direction, startG
 	gohelper.setActive(effectGO, true)
 	self:_playEffectAudioId(effectId)
 
+	local scene = ArcadeGameController.instance:getGameScene()
+
+	if scene then
+		scene:checkNeedShake(effectId)
+	end
+
 	local bulletTweenId = ZProj.TweenHelper.DOLocalMove(effectTrans, targetPosX, targetPosY, ArcadeGameEnum.Const.EffectZLevel, distance / speed, self._onBulletTweenEnd, self, resName, EaseType.Linear)
 
 	self._bulletTweenDict[resName] = bulletTweenId
@@ -290,6 +296,7 @@ function ArcadeEffectMgr:_playEffect(effectId, gridX, gridY, direction, round)
 		self:_updateEffectRound(effect, round)
 		self:_setGoRotationByType(effect, rotationType)
 		self:_playEffectAudioId(effectId)
+		scene:checkNeedShake(effectId)
 	else
 		local resAbPath
 		local resPath = ResUrl.getArcadeGameEffect(resName)
@@ -356,6 +363,7 @@ function ArcadeEffectMgr:_onLoadEffectFinished(param)
 		table.insert(self._effectList, effect)
 		self:_setGoRotationByType(effect, param.rotationType, param.direction)
 		self:_playEffectAudioId(effectId)
+		scene:checkNeedShake(effectId)
 	end
 end
 
