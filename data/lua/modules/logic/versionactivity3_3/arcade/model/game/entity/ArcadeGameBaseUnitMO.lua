@@ -99,14 +99,19 @@ function ArcadeGameBaseUnitMO:addHp(value)
 	local realChangeVal = 0
 	local phVal = tonumber(value)
 
-	if phVal == 0 then
+	if not phVal or phVal == 0 then
 		return realChangeVal
 	end
 
 	local hpCap = self:getAttributeValue(ArcadeGameEnum.BaseAttr.hpCap)
 	local newHp = Mathf.Clamp(phVal + self._curHp, 0, hpCap)
 
-	realChangeVal = newHp - self._curHp
+	if phVal < 0 then
+		realChangeVal = phVal
+	else
+		realChangeVal = newHp - self._curHp
+	end
+
 	self._curHp = newHp
 
 	self:setAttributeBaseValue(ArcadeGameEnum.BaseAttr.hp, self._curHp)
@@ -217,9 +222,14 @@ end
 
 function ArcadeGameBaseUnitMO:getStateEffectIdList()
 	local result = {}
+	local stateShowEffectId
 	local isDead = self:getIsDead()
-	local stateShowId = isDead and ArcadeGameEnum.StateShowId.Dead or ArcadeGameEnum.StateShowId.Idle
-	local stateShowEffectId = ArcadeConfig.instance:getStateShowEffectId(stateShowId)
+
+	if isDead then
+		stateShowEffectId = ArcadeConfig.instance:getStateShowEffectId(ArcadeGameEnum.StateShowId.Dead)
+	else
+		stateShowEffectId = self:getIdleShowEffectId()
+	end
 
 	result[#result + 1] = stateShowEffectId
 
@@ -390,6 +400,12 @@ end
 
 function ArcadeGameBaseUnitMO:getLockRound()
 	return 0
+end
+
+function ArcadeGameBaseUnitMO:getIdleShowEffectId()
+	local stateShowEffectId = ArcadeConfig.instance:getStateShowEffectId(ArcadeGameEnum.StateShowId.Idle)
+
+	return stateShowEffectId
 end
 
 return ArcadeGameBaseUnitMO

@@ -84,4 +84,21 @@ function ArcadeGameBaseInteractiveMO:getLastSelectedEventOptionId()
 	return self._selectedEventOptionList and self._selectedEventOptionList[#self._selectedEventOptionList]
 end
 
+function ArcadeGameBaseInteractiveMO:getIdleShowEffectId()
+	local stateShowEffectId
+	local triggerCount = self._selectedEventOptionList and #self._selectedEventOptionList or 0
+
+	if triggerCount > 0 then
+		stateShowEffectId = ArcadeConfig.instance:getInteractiveAfterIdleShowEffId(self.id)
+	else
+		stateShowEffectId = ArcadeConfig.instance:getInteractiveBeforeIdleShowEffId(self.id)
+	end
+
+	if not stateShowEffectId or stateShowEffectId == 0 then
+		stateShowEffectId = ArcadeConfig.instance:getStateShowEffectId(ArcadeGameEnum.StateShowId.Idle)
+	end
+
+	return stateShowEffectId
+end
+
 return ArcadeGameBaseInteractiveMO

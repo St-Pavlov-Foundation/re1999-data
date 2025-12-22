@@ -98,6 +98,8 @@ function NationalGiftBuyTipView:_onCloseViewCall(viewName)
 end
 
 function NationalGiftBuyTipView:_onYesCallback()
+	ViewMgr.instance:closeView(ViewName.StoreView)
+
 	local jumpParam = string.format("%s#%s", JumpEnum.JumpView.ActivityView, NationalGiftModel.instance:getCurVersionActId())
 
 	JumpController.instance:jumpByParam(jumpParam)

@@ -27,9 +27,12 @@ function ArcadeBossRoom:removeEntityOccupyGrids(entityMO)
 
 	if entityType == ArcadeGameEnum.EntityType.Monster then
 		local monsterId = entityMO:getId()
+		local curHP = entityMO:getHp()
+		local isDead = curHP <= 0
+		local alreadyDead = entityMO:getIsDead()
 		local race = ArcadeConfig.instance:getMonsterRace(monsterId)
 
-		if race == ArcadeGameEnum.MonsterRace.Boss then
+		if race == ArcadeGameEnum.MonsterRace.Boss and (isDead or alreadyDead) then
 			local gridX, gridY = entityMO:getGridPos()
 
 			self:_onDefeatBoss(gridX, gridY)

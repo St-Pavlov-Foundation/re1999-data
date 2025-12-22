@@ -36,6 +36,7 @@ function ArcadeGameModel:clearAllData()
 	self._unlockCharacterDict = {}
 	self._unlockHandBookDict = {}
 	self._gameTempAttrDict = {}
+	self._portalExtractDict = {}
 
 	self:clearAllEntityMO(true)
 	self._gridModel:clear()
@@ -138,6 +139,19 @@ end
 
 function ArcadeGameModel:_setGameData(serverInfo, serverAttrDict)
 	local prop = serverInfo.prop
+	local jsonPortalExtract = prop.hotfix[1]
+
+	if not string.nilorempty(jsonPortalExtract) then
+		local portalExtractDict = cjson.decode(jsonPortalExtract)
+
+		if portalExtractDict then
+			for portalIdStr, count in pairs(portalExtractDict) do
+				local portalId = tonumber(portalIdStr)
+
+				self._portalExtractDict[portalId] = count
+			end
+		end
+	end
 
 	self:setDifficulty(prop.difficulty)
 	self:setCurAreaIndex(prop.areaId)
@@ -220,6 +234,10 @@ function ArcadeGameModel:addEntityMOByList(moDataList, needGenUid)
 
 	for _, moData in ipairs(moDataList) do
 		local mo = self:addEntityMO(moData, needGenUid)
+
+		if moData.delayTimeShow then
+			mo.delayTimeShow = tonumber(moData.delayTimeShow)
+		end
 
 		resultList[#resultList + 1] = mo
 	end
@@ -412,6 +430,10 @@ function ArcadeGameModel:setGameTempAttribute(attrId, value)
 	end
 end
 
+function ArcadeGameModel:getGameTempAttribute(attrId)
+	return self._gameTempAttrDict[attrId] or 0
+end
+
 function ArcadeGameModel:clearGameTempAttribute()
 	for _, attrId in pairs(ArcadeGameEnum.GameAttribute) do
 		self._gameTempAttrDict[attrId] = 0
@@ -459,6 +481,10 @@ end
 function ArcadeGameModel:setNearEventEntity(entityType, uid)
 	self._eventEntityType = entityType
 	self._eventEntityUid = uid
+end
+
+function ArcadeGameModel:addPortalExtractionCount(portalId)
+	self._portalExtractDict[portalId] = (self._portalExtractDict[portalId] or 0) + 1
 end
 
 function ArcadeGameModel:isFinishGameGuide()
@@ -599,6 +625,21 @@ function ArcadeGameModel:getEntityMOList(entityType)
 	return list
 end
 
+function ArcadeGameModel:getEntityUidList(entityType)
+	local result = {}
+	local list = self._moList[entityType]
+
+	if list then
+		for i, mo in ipairs(list) do
+			local uid = mo:getUid()
+
+			result[i] = uid
+		end
+	end
+
+	return result
+end
+
 function ArcadeGameModel:getMonsterList()
 	return self:getEntityMOList(ArcadeGameEnum.EntityType.Monster)
 end
@@ -641,6 +682,10 @@ function ArcadeGameModel:getGameAttribute(attrId)
 	local temp = self._gameTempAttrDict[attrId] or 0
 
 	return val + temp
+end
+
+function ArcadeGameModel:getGameAttrNoTemp(attrId)
+	return self._gameAttributeDict[attrId] or 0
 end
 
 function ArcadeGameModel:getExtraMonsterCount()
@@ -701,6 +746,22 @@ end
 
 function ArcadeGameModel:getNearEventEntity()
 	return self._eventEntityType, self._eventEntityUid
+end
+
+function ArcadeGameModel:getPortalExtractionCount(portalId)
+	return self._portalExtractDict[portalId] or 0
+end
+
+function ArcadeGameModel:getPortalExtractDict()
+	local result = {}
+
+	if self._portalExtractDict then
+		for portalId, count in pairs(self._portalExtractDict) do
+			result[tostring(portalId)] = count
+		end
+	end
+
+	return result
 end
 
 function ArcadeGameModel:onExitArcadeGame()

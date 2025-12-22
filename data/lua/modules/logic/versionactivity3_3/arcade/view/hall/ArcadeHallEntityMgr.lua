@@ -63,6 +63,8 @@ function ArcadeHallEntityMgr:onOpen()
 end
 
 function ArcadeHallEntityMgr:_onInitEntity()
+	self:_refreshEntitySibling()
+
 	if self._characterMO then
 		self._characterMO:initGrid()
 	end
@@ -137,6 +139,7 @@ function ArcadeHallEntityMgr:_onAutoMove()
 			return
 		end
 
+		self:_refreshEntitySibling()
 		self._characterMO:setGridPos(grid.x, grid.y)
 		ArcadeHeroModel.instance:setCharacterPos(grid.x, grid.y)
 		table.remove(self._autoGridList, #self._autoGridList)
@@ -238,7 +241,13 @@ end
 
 function ArcadeHallEntityMgr:_checkInteractiveEvent(interactiveId, nearInteractiveId)
 	if interactiveId then
-		self._scene:openBuildingTipView(nearInteractiveId)
+		local param = ArcadeHallEnum.HallInteractiveParams[interactiveId]
+
+		if param and param.isOpenTip then
+			self._scene:openBuildingTipView(interactiveId)
+		else
+			ArcadeController.instance:enterInteractive(interactiveId)
+		end
 	elseif nearInteractiveId then
 		local param = ArcadeHallEnum.HallInteractiveParams[nearInteractiveId]
 
@@ -279,6 +288,7 @@ function ArcadeHallEntityMgr:_onHeroMove(targetGridX, targetGridY)
 		ArcadeHeroModel.instance:setCharacterPos(targetGridX, targetGridY)
 	end
 
+	self:_refreshEntitySibling()
 	entity:doMove(callback, self)
 	self:_setAutoMoveToInteractiveId()
 end
@@ -353,6 +363,18 @@ function ArcadeHallEntityMgr:isNearInteractive(curGridX, curGridY)
 	end
 
 	return interactiveId
+end
+
+function ArcadeHallEntityMgr:_refreshEntitySibling()
+	local _, gridY = self._characterMO:getGridPos()
+	local npcMo = self._interactiveMos[ArcadeHallEnum.HallInteractiveId.NPC]
+	local _, npcGridY = npcMo:getGridPos()
+
+	if npcGridY < gridY then
+		self._characterMO:setPosZ(0.001)
+	else
+		self._characterMO:setPosZ(0)
+	end
 end
 
 function ArcadeHallEntityMgr:onClear()

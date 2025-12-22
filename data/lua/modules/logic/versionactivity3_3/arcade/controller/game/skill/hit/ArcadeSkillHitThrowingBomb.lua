@@ -17,13 +17,15 @@ function ArcadeSkillHitThrowingBomb:onCtor()
 			table.insert(self._bombIdList, bombId)
 		end
 	end
+
+	self._flyingTime = ArcadeConfig.instance:getArcadeConst(ArcadeEnum.ConstId.FlyingEffectTime, true) or 0.3
 end
 
 function ArcadeSkillHitThrowingBomb:onHit()
 	self._atkCount = 0
 
 	if self._context and self._context.target then
-		local dataList = ArcadeGameSummonController.instance:summonBombList(self._bombIdList)
+		local dataList = ArcadeGameSummonController.instance:summonBombList(self._bombIdList, self._flyingTime)
 		local gameScent = ArcadeGameController.instance:getGameScene()
 
 		self._atkCount = dataList and #dataList or 0
@@ -35,7 +37,7 @@ function ArcadeSkillHitThrowingBomb:onHit()
 			for _, data in ipairs(dataList) do
 				local endX, endY = ArcadeGameHelper.getGridPos(data.x, data.y)
 
-				gameScent.flyingEffectMgr:begin2EndGridXY(self.atkEffectId, beginX, beginY, endX, endY)
+				gameScent.flyingEffectMgr:begin2EndXY(self.atkEffectId, beginX, beginY, endX, endY)
 			end
 		end
 	end

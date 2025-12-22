@@ -43161,6 +43161,12 @@
   "singlebg/summon/heroversion_3_3/v3a3_maersha/v3a3_maersha_role3.png.dat": [
     "Assets/ZResourcesLib/singlebg/summon/heroversion_3_3/v3a3_maersha/v3a3_maersha_role3.png"
   ],
+  "singlebg/summon/heroversion_3_3/v3a3_molideer/v3a3_summon_molideer_role1.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_3_3/v3a3_molideer/v3a3_summon_molideer_role1.png"
+  ],
+  "singlebg/summon/heroversion_3_3/v3a3_molideer/v3a3_summon_molideer_role2.png.dat": [
+    "Assets/ZResourcesLib/singlebg/summon/heroversion_3_3/v3a3_molideer/v3a3_summon_molideer_role2.png"
+  ],
   "singlebg/summon/heroversion_3_3/v3a3_yigeer/v3a3_yigerer_chanccbg.png.dat": [
     "Assets/ZResourcesLib/singlebg/summon/heroversion_3_3/v3a3_yigeer/v3a3_yigerer_chanccbg.png"
   ],
@@ -47682,6 +47688,9 @@
   "singlebg/v3a3_eliminate_singlebg/v3a3_m_s12_jh1x1_010.png.dat": [
     "Assets/ZResourcesLib/singlebg/v3a3_eliminate_singlebg/v3a3_m_s12_jh1x1_010.png"
   ],
+  "singlebg/v3a3_eliminate_singlebg/v3a3_m_s12_jz1x1_001.png.dat": [
+    "Assets/ZResourcesLib/singlebg/v3a3_eliminate_singlebg/v3a3_m_s12_jz1x1_001.png"
+  ],
   "singlebg/v3a3_eliminate_singlebg/v3a3_m_s12_npc1x1_001.png.dat": [
     "Assets/ZResourcesLib/singlebg/v3a3_eliminate_singlebg/v3a3_m_s12_npc1x1_001.png"
   ],
@@ -48446,6 +48455,9 @@
   ],
   "singlebg_lang/txt_adventuretask/v3a2_summon_wuerlixi.png.dat": [
     "Assets/ZResourcesLib/singlebg_lang/txt_adventuretask/v3a2_summon_wuerlixi.png"
+  ],
+  "singlebg_lang/txt_adventuretask/v3a3_act_eliminate.png.dat": [
+    "Assets/ZResourcesLib/singlebg_lang/txt_adventuretask/v3a3_act_eliminate.png"
   ],
   "singlebg_lang/txt_adventuretask/v3a3_luckybag.png.dat": [
     "Assets/ZResourcesLib/singlebg_lang/txt_adventuretask/v3a3_luckybag.png"

@@ -13,6 +13,10 @@ function ArcadeHallModel:reInit()
 end
 
 function ArcadeHallModel:onOpenHallView()
+	if not self._interactiveMos then
+		self:initInteractiveMOs()
+	end
+
 	self:refreshInteractiveReddot()
 end
 
@@ -33,23 +37,41 @@ function ArcadeHallModel:refreshInteractiveReddot()
 end
 
 function ArcadeHallModel:refreshHandBookReddot()
+	local mo = self._interactiveMos[ArcadeHallEnum.HallInteractiveId.HandBook]
+
+	if not mo then
+		return
+	end
+
 	local hasReddot = ArcadeHandBookModel.instance:hasReddot()
 	local type = hasReddot and ArcadeEnum.ReddotType.New or ArcadeEnum.ReddotType.None
 
-	self._interactiveMos[ArcadeHallEnum.HallInteractiveId.HandBook]:setReddotType(type)
+	mo:setReddotType(type)
 end
 
 function ArcadeHallModel:refreshDevelopReddot()
+	local mo = self._interactiveMos[ArcadeHallEnum.HallInteractiveId.Develop]
+
+	if not mo then
+		return
+	end
+
 	local type = ArcadeHeroModel.instance:getReddotType()
 
-	self._interactiveMos[ArcadeHallEnum.HallInteractiveId.Develop]:setReddotType(type)
+	mo:setReddotType(type)
 end
 
 function ArcadeHallModel:refreshTaskReddot()
+	local mo = self._interactiveMos[ArcadeHallEnum.HallInteractiveId.Task]
+
+	if not mo then
+		return
+	end
+
 	local hasReddot = ArcadeOutSizeModel.instance:hasRewardReddot()
 	local type = hasReddot and ArcadeEnum.ReddotType.Normal or ArcadeEnum.ReddotType.None
 
-	self._interactiveMos[ArcadeHallEnum.HallInteractiveId.Task]:setReddotType(type)
+	mo:setReddotType(type)
 end
 
 function ArcadeHallModel:getInteractiveMOs()

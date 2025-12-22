@@ -56,6 +56,7 @@ function ArcadeRoomMgr:switchRoom()
 		characterEntity:refreshPosition()
 		room:initEntities()
 		characterEntity:playActionShow(ArcadeGameEnum.ActionShowId.Born)
+		ArcadeStatHelper.instance:onEnterRoom()
 	end
 end
 

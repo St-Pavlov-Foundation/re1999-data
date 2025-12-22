@@ -5,15 +5,16 @@ module("modules.configs.excel2json.lua_arcade_effects", package.seeall)
 local lua_arcade_effects = {}
 local fields = {
 	triggerAudio = 3,
+	isNearestGrid = 6,
 	triggerEffects = 4,
-	effectsOffset = 10,
-	isFromBorder = 8,
-	effectsScale = 11,
-	effectsRotationType = 9,
-	needShake = 12,
+	isFromBorder = 9,
+	effectsOffset = 11,
+	effectsRotationType = 10,
+	effectsScale = 12,
 	triggerAnimation = 2,
-	speed = 6,
-	direction = 7,
+	speed = 7,
+	needShake = 13,
+	direction = 8,
 	id = 1,
 	isPlayOnGrid = 5
 }

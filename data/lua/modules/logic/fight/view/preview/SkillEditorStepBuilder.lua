@@ -1281,6 +1281,21 @@ function SkillEditorStepBuilder._getBehaviorTargetIds(actEffect, skillCO, behavi
 		for _, entityMO in ipairs(atkMOList) do
 			insertTarget(targetIds, entityMO.id)
 		end
+	elseif targetType == "109" then
+		local atkMOList = FightDataHelper.entityMgr:getNormalList(side)
+		local rate = 100
+		local entityId = "0"
+
+		for _, entityMO in ipairs(atkMOList) do
+			local hpRate = entityMO.currentHp / entityMO.attrMO.hp
+
+			if hpRate <= rate then
+				rate = hpRate
+				entityId = entityMO.id
+			end
+		end
+
+		insertTarget(targetIds, entityId)
 	elseif FightEnum.LogicTargetClassify.Me[targetType] then
 		insertTarget(targetIds, attackerId)
 	elseif FightEnum.LogicTargetClassify.SecondaryTarget[targetType] then

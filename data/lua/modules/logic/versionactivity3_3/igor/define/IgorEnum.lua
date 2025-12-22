@@ -57,5 +57,11 @@ IgorEnum.EntityAnimName = {
 	Die = "die",
 	Move = "move"
 }
+IgorEnum.StatOperationType = {
+	Finish = "finish",
+	Reset = "reset",
+	Fail = "fail",
+	Exit = "exit"
+}
 
 return IgorEnum

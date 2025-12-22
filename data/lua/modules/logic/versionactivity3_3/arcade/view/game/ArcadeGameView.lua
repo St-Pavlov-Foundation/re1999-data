@@ -231,9 +231,39 @@ function ArcadeGameView:_btnoptionOnClick(index)
 	local eventEntityMO = ArcadeGameModel.instance:getMOWithType(eventEntityType, eventEntityUid)
 
 	if eventEntityMO then
+		local entityId = eventEntityMO:getId()
 		local eventOptionId = eventEntityMO:getEventOptionId(index)
+		local eventOptionType = ArcadeConfig.instance:getEventOptionType(eventOptionId)
 		local eventOptionParam = eventEntityMO:getEventOptionParam(index)
-		local result = ArcadeGameController.instance:triggerEventOption(eventEntityType, eventEntityUid, eventOptionId, eventOptionParam)
+		local extraParam
+
+		if eventOptionType == ArcadeGameEnum.EventOptionType.Buy then
+			local goodsMOList = ArcadeGameModel.instance:getEntityMOList(ArcadeGameEnum.EntityType.Goods)
+
+			if goodsMOList then
+				extraParam = {}
+
+				for i, goodsMO in ipairs(goodsMOList) do
+					local collectionId = goodsMO:getEventOptionParam()
+
+					extraParam[i] = collectionId
+				end
+			end
+		elseif eventOptionType == ArcadeGameEnum.EventOptionType.ChangeRoom then
+			local portalMOList = ArcadeGameModel.instance:getEntityMOList(ArcadeGameEnum.EntityType.Portal)
+
+			if portalMOList then
+				extraParam = {}
+
+				for i, portalMO in ipairs(portalMOList) do
+					local portalId = portalMO:getId()
+
+					extraParam[i] = portalId
+				end
+			end
+		end
+
+		local result = ArcadeGameController.instance:triggerEventOption(eventEntityType, entityId, eventEntityUid, eventOptionId, eventOptionParam, nil, nil, extraParam)
 
 		if result then
 			changeDesc = ArcadeConfig.instance:getEventOptionTriggerDesc(eventOptionId)
@@ -242,7 +272,13 @@ function ArcadeGameView:_btnoptionOnClick(index)
 		end
 	end
 
-	if not string.nilorempty(changeDesc) then
+	local isShowChangeDesc = true
+
+	if self._showingEventEntityType and eventEntityType ~= self._showingEventEntityType or self._showingEventEntityUid and eventEntityUid ~= self._showingEventEntityUid then
+		isShowChangeDesc = false
+	end
+
+	if not string.nilorempty(changeDesc) and isShowChangeDesc then
 		self._txteventdesc.text = changeDesc
 	end
 
@@ -339,6 +375,13 @@ function ArcadeGameView:_btnClickOnClick()
 
 	local entityType = occupyEntityData.entityType
 	local uid = occupyEntityData.uid
+
+	if isDebugBuild then
+		local clickUnitMO = ArcadeGameModel.instance:getMOWithType(entityType, uid)
+		local id = clickUnitMO and clickUnitMO:getId()
+
+		logNormal(string.format("Arcade click entity, Type:%s Id:%s Uid:%s GridX:%s GridY:%s", tostring(entityType), tostring(id), tostring(uid), tostring(gridX), tostring(gridY)))
+	end
 
 	if entityType == ArcadeGameEnum.EntityType.Character or entityType == ArcadeGameEnum.EntityType.Monster then
 		if self._showingEventEntityType and self._showingEventEntityUid then

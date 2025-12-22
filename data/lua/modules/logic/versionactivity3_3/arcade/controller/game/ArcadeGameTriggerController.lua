@@ -103,7 +103,7 @@ function ArcadeGameTriggerController:triggerTarget(triggerPoint, target, context
 		logNormal(string.format("ArcadeGameTriggerController:triggerTarget triggerPoint:%s", triggerPoint))
 	end
 
-	if target and not target:getIsDead() then
+	if self:_isLiveByUnitMO(target) then
 		self:_onTriggerTarget(triggerPoint, target, context)
 	end
 end
@@ -113,13 +113,13 @@ function ArcadeGameTriggerController:triggerTargetList(triggerPoint, targetList,
 		return
 	end
 
-	local tempList = targetList
+	local tempList = {}
+
+	tabletool.addValues(tempList, targetList)
+
 	local sortFunc = self:_getUnitSortFuncByPoint(triggerPoint)
 
 	if sortFunc and #targetList > 1 then
-		tempList = {}
-
-		tabletool.addValues(tempList, targetList)
 		table.sort(tempList, sortFunc)
 	end
 
@@ -128,7 +128,7 @@ function ArcadeGameTriggerController:triggerTargetList(triggerPoint, targetList,
 	end
 
 	for _, target in ipairs(tempList) do
-		if target and not target:getIsDead() then
+		if self:_isLiveByUnitMO(target) then
 			self:_onTriggerTarget(triggerPoint, target, context)
 		end
 	end
@@ -145,7 +145,9 @@ function ArcadeGameTriggerController:atkTriggerTarget(triggerPoint, attackType, 
 		hiterList = hiterList
 	}
 
-	self:_onTriggerTarget(triggerPoint, atker, context)
+	if self:_isLiveByUnitMO(atker) then
+		self:_onTriggerTarget(triggerPoint, atker, context)
+	end
 end
 
 function ArcadeGameTriggerController:hitTriggerTargetList(triggerPoint, attackType, atker, hiterList)
@@ -164,7 +166,9 @@ function ArcadeGameTriggerController:hitTriggerTargetList(triggerPoint, attackTy
 	}
 
 	for _, target in ipairs(hiterList) do
-		self:_onTriggerTarget(triggerPoint, target, context)
+		if self:_isLiveByUnitMO(target) then
+			self:_onTriggerTarget(triggerPoint, target, context)
+		end
 	end
 end
 
@@ -180,6 +184,18 @@ function ArcadeGameTriggerController:deathTriggerTarget(triggerPoint, target, at
 	end
 
 	self:_onTriggerTarget(triggerPoint, target, context)
+end
+
+function ArcadeGameTriggerController:_isLiveByUnitMO(unitMO)
+	if unitMO then
+		if unitMO:getIsCanDead() and unitMO:getHp() <= 0 then
+			return false
+		end
+
+		return true
+	end
+
+	return false
 end
 
 function ArcadeGameTriggerController:_getUnitSortFuncByPoint(triggerPoint)

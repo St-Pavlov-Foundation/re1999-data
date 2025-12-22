@@ -38,25 +38,19 @@ end
 
 function Turnback3PanelView:_btnclosefullAreaOnClick()
 	self:closeThis()
-
-	if not self.hasGet then
-		TurnbackRpc.instance:sendTurnbackOnceBonusRequest(self._turnbackId)
-	end
 end
 
 function Turnback3PanelView:_btnclosebtnOnClick()
 	self:closeThis()
-
-	if not self.hasGet then
-		TurnbackRpc.instance:sendTurnbackOnceBonusRequest(self._turnbackId)
-	end
 end
 
 function Turnback3PanelView:_btngobtnOnClick()
 	self:closeThis()
 
 	if not self.hasGet then
-		TurnbackRpc.instance:sendTurnbackOnceBonusRequest(self._turnbackId)
+		TurnbackRpc.instance:sendTurnbackOnceBonusRequest(self._turnbackId, self._receiveCallBack, self)
+	else
+		self:_receiveCallBack()
 	end
 end
 
@@ -167,7 +161,9 @@ function Turnback3PanelView:_refreshOnceBonusGetState()
 		gohelper.setActive(rewardItem.goCanGet, not self.hasGet)
 		gohelper.setActive(rewardItem.goHasGet, self.hasGet)
 	end
+end
 
+function Turnback3PanelView:_receiveCallBack()
 	local turnbackId = TurnbackModel.instance:getCurTurnbackId()
 	local param = {
 		turnbackId = turnbackId

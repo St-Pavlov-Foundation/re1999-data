@@ -56,9 +56,11 @@ function ArcadeBuildingTipsView:refreshView()
 	end
 
 	local mo = ArcadeHallModel.instance:getInteractiveMO(self._buildingId)
+	local param = ArcadeHallEnum.LevelScene[self._buildingId]
+	local finishLevelCount = ArcadeOutSizeModel.instance:getFinishLevelCount(param and param.Level)
 
 	self._txtname.text = mo.co.name or ""
-	self._txtdec.text = mo.co.desc or ""
+	self._txtdec.text = GameUtil.getSubPlaceholderLuaLangOneParam(mo.co.desc, finishLevelCount) or ""
 end
 
 function ArcadeBuildingTipsView:onDestroy()

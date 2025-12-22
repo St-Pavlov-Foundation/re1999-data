@@ -16,6 +16,7 @@ function ArcadeOutSizeModel:reInit()
 	end
 
 	self._attrValues = {}
+	self._finishLevelCount = {}
 end
 
 function ArcadeOutSizeModel:refreshInfo(info)
@@ -27,6 +28,19 @@ function ArcadeOutSizeModel:refreshInfo(info)
 	ArcadeHeroModel.instance:refreshInfo(info.player, info.talentInfo)
 	ArcadeHandBookModel.instance:refreshInfo(info.bookInfo)
 	self:refreshAttribute(info.attrContainer.attrValues)
+	self:refreshHotfixInfo(info.prop.hotfix)
+end
+
+function ArcadeOutSizeModel:refreshHotfixInfo(hotfix)
+	self._finishLevelCount = {}
+
+	if hotfix and not string.nilorempty(hotfix[1]) then
+		local split = GameUtil.splitString2(hotfix[1], true, "|", "#")
+
+		for _, v in ipairs(split) do
+			self._finishLevelCount[v[1]] = v[2]
+		end
+	end
 end
 
 function ArcadeOutSizeModel:refreshAttribute(attrValues)
@@ -189,6 +203,10 @@ function ArcadeOutSizeModel:clearAllPrefs()
 		self:setPlayerPrefsValue(prefsKey1, key1, 0, true)
 		self:setPlayerPrefsValue(prefsKey2, key2, 0, true)
 	end
+end
+
+function ArcadeOutSizeModel:getFinishLevelCount(level)
+	return self._finishLevelCount and self._finishLevelCount[level] or 0
 end
 
 ArcadeOutSizeModel.instance = ArcadeOutSizeModel.New()

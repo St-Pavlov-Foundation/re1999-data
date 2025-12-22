@@ -87,7 +87,6 @@ function GMSubViewActivity:initViewContent()
 	self:addButton("L8", "直接进入弹珠游戏", self._enterAct178Game, self)
 	self:addLabel("L9", "2.6 活动")
 	self:addButton("L9", "虚构集卡牌ID开关", self._setXugoujiDebugMode, self)
-	self:addButton("L10", "3.3街机", self._openGMArcadeView, self)
 	self:initActivityDrop()
 
 	self._inited = true
@@ -313,12 +312,6 @@ function GMSubViewActivity:_setXugoujiDebugMode()
 	XugoujiController.instance:setDebugMode(not isDebugMode)
 	PlayerPrefsHelper.setNumber("XugoujiDebugMode", isDebugMode and 0 or 1)
 	XugoujiController.instance:dispatchEvent(XugoujiEvent.TurnChanged)
-end
-
-function GMSubViewActivity:_openGMArcadeView()
-	ArcadeOutSideRpc.instance:sendArcadeGetOutSideInfoRequest(function()
-		ViewMgr.instance:openView(ViewName.GM_ArcadeView)
-	end)
 end
 
 function GMSubViewActivity.copyConfig(co)

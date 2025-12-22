@@ -93,9 +93,9 @@ function ArcadeRoundBeginWork:updateCorpseCountdown()
 end
 
 function ArcadeRoundBeginWork:updateBombCountdown()
-	local bombMOList = ArcadeGameModel.instance:getEntityMOList(ArcadeGameEnum.EntityType.Bomb)
+	local bombUidList = ArcadeGameModel.instance:getEntityUidList(ArcadeGameEnum.EntityType.Bomb)
 
-	if not bombMOList or #bombMOList <= 0 then
+	if not bombUidList or #bombUidList <= 0 then
 		return
 	end
 
@@ -105,94 +105,122 @@ function ArcadeRoundBeginWork:updateBombCountdown()
 	local bombEffId = bombEffectIdList and bombEffectIdList[1]
 	local warnEffectIdList = ArcadeConfig.instance:getActionShowEffectIdList(ArcadeGameEnum.ActionShowId.BombWarn)
 	local warnEffId = warnEffectIdList and warnEffectIdList[1]
+	local playWarnEffGridDict = {}
+	local removeWarnEffGridDict = {}
 
-	for _, bombMO in ipairs(bombMOList) do
-		bombMO:addLiveRound()
+	for _, bombUid in ipairs(bombUidList) do
+		local bombMO = ArcadeGameModel.instance:getMOWithType(ArcadeGameEnum.EntityType.Bomb, bombUid)
 
-		local bombId = bombMO:getId()
-		local gridX, gridY = bombMO:getGridPos()
-		local targetId = ArcadeConfig.instance:getBombTarget(bombId)
-		local targetSelector = ArcadeSkillFactory.instance:createSkillTargetById(targetId)
+		self:_updateBomb(scene, bombMO, isBombAddFloor, bombEffId, warnEffId, playWarnEffGridDict, removeWarnEffGridDict)
+	end
+
+	for gridId, gridPos in pairs(removeWarnEffGridDict) do
+		if not playWarnEffGridDict[gridId] then
+			scene.effectMgr:removeEffect(warnEffId, gridPos.x, gridPos.y, true)
+		end
+	end
+end
+
+function ArcadeRoundBeginWork:_updateBomb(scene, bombMO, isBombAddFloor, bombEffId, warnEffId, refPlayWarnEffDict, refRemoveWarnEffDict)
+	if not bombMO then
+		return
+	end
+
+	bombMO:addLiveRound()
+
+	local bombId = bombMO:getId()
+	local gridX, gridY = bombMO:getGridPos()
+	local isCharacterBomb = bombMO:isCharacterBomb()
+	local targetId = ArcadeConfig.instance:getBombTarget(bombId)
+	local targetSelector = ArcadeSkillFactory.instance:createSkillTargetById(targetId)
+
+	if isCharacterBomb and targetSelector then
+		local addBombRange = ArcadeGameModel.instance:getGameAttribute(ArcadeGameEnum.GameAttribute.AddBombRange)
+
+		targetSelector:setRadius(addBombRange)
+	end
+
+	local isExplode = bombMO:getIsExplode()
+
+	if isExplode then
+		local targetMOList, gridMOList
 
 		if targetSelector then
-			local addBombRange = ArcadeGameModel.instance:getGameAttribute(ArcadeGameEnum.GameAttribute.AddBombRange)
+			targetSelector:findTarget(gridX, gridY)
 
-			targetSelector:setRadius(addBombRange)
+			local targetList = targetSelector:getTargetList()
+
+			if targetList then
+				targetMOList = tabletool.copy(targetList)
+			end
+
+			targetSelector:setTargetTypeList({
+				ArcadeGameEnum.EntityType.Grid
+			})
+			targetSelector:findTarget(gridX, gridY)
+
+			targetList = targetSelector:getTargetList()
+
+			if targetList then
+				gridMOList = tabletool.copy(targetList)
+			end
 		end
 
-		local isExplode = bombMO:getIsExplode()
+		ArcadeGameController.instance:enterAttackFlow(ArcadeGameEnum.AttackType.Bomb, bombMO, targetMOList)
 
-		if isExplode then
-			local targetMOList, gridMOList
+		if scene and gridMOList then
+			local floorDataList = {}
+			local addFloorId = ArcadeConfig.instance:getBombAddFloor(bombId)
 
-			if targetSelector then
-				targetSelector:findTarget(gridX, gridY)
+			for i, gridMO in ipairs(gridMOList) do
+				local floorX, floorY = gridMO:getGridPos()
 
-				local targetList = targetSelector:getTargetList()
+				scene.effectMgr:playEffect2Grid(bombEffId, floorX, floorY)
 
-				if targetList then
-					targetMOList = tabletool.copy(targetList)
-				end
+				local gridId = ArcadeGameHelper.getGridId(floorX, floorY)
 
-				targetSelector:setTargetTypeList({
-					ArcadeGameEnum.EntityType.Grid
-				})
-				targetSelector:findTarget(gridX, gridY)
-
-				targetList = targetSelector:getTargetList()
-
-				if targetList then
-					gridMOList = tabletool.copy(targetList)
-				end
+				refRemoveWarnEffDict[gridId] = {
+					x = floorX,
+					y = floorY
+				}
+				floorDataList[i] = {
+					id = addFloorId,
+					x = floorX,
+					y = floorY
+				}
 			end
 
-			ArcadeGameController.instance:enterAttackFlow(ArcadeGameEnum.AttackType.Bomb, bombMO, targetMOList)
-
-			if scene and gridMOList then
-				local floorDataList = {}
-				local addFloorId = ArcadeConfig.instance:getBombAddFloor(bombId)
-
-				for i, gridMO in ipairs(gridMOList) do
-					local floorX, floorY = gridMO:getGridPos()
-
-					scene.effectMgr:playEffect2Grid(bombEffId, floorX, floorY)
-					scene.effectMgr:removeEffect(warnEffId, floorX, floorY, true)
-
-					floorDataList[i] = {
-						id = addFloorId,
-						x = floorX,
-						y = floorY
-					}
-				end
-
-				if isBombAddFloor and addFloorId and addFloorId ~= 0 then
-					ArcadeGameFloorController.instance:tryAddFloorByList(floorDataList)
-				end
+			if isBombAddFloor and addFloorId and addFloorId ~= 0 then
+				ArcadeGameFloorController.instance:tryAddFloorByList(floorDataList)
 			end
+		end
 
-			local uid = bombMO:getUid()
+		local uid = bombMO:getUid()
 
-			ArcadeGameController.instance:removeEntity(ArcadeGameEnum.EntityType.Bomb, uid)
+		ArcadeGameController.instance:removeEntity(ArcadeGameEnum.EntityType.Bomb, uid)
 
-			self._isNeedWait = true
-		else
-			local gridMOList
+		self._isNeedWait = true
+	else
+		local gridMOList
 
-			if targetSelector then
-				targetSelector:setTargetTypeList({
-					ArcadeGameEnum.EntityType.Grid
-				})
-				targetSelector:findTarget(gridX, gridY)
+		if targetSelector then
+			targetSelector:setTargetTypeList({
+				ArcadeGameEnum.EntityType.Grid
+			})
+			targetSelector:findTarget(gridX, gridY)
 
-				gridMOList = targetSelector:getTargetList()
-			end
+			gridMOList = targetSelector:getTargetList()
+		end
 
-			if gridMOList then
-				for _, gridMO in ipairs(gridMOList) do
-					local x, y = gridMO:getGridPos()
+		if scene and gridMOList then
+			for _, gridMO in ipairs(gridMOList) do
+				local x, y = gridMO:getGridPos()
 
-					scene.effectMgr:playEffect2Grid(warnEffId, x, y)
-				end
+				scene.effectMgr:playEffect2Grid(warnEffId, x, y)
+
+				local gridId = ArcadeGameHelper.getGridId(x, y)
+
+				refPlayWarnEffDict[gridId] = true
 			end
 		end
 	end

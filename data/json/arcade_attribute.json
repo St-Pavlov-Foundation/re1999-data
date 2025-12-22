@@ -93,7 +93,7 @@
     "id": 206,
     "min": 0,
     "max": 10,
-    "initVal": 3,
+    "initVal": 0,
     "extend": 0,
     "icon": "v3a3_eliminate_baseicon_1",
     "currencyIcon": "",

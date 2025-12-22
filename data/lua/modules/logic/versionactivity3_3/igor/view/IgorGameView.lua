@@ -83,6 +83,7 @@ function IgorGameView:onClickReset()
 end
 
 function IgorGameView:resetGame()
+	IgorController.instance:statOperation(IgorEnum.StatOperationType.Reset)
 	IgorController.instance:resetGame()
 end
 

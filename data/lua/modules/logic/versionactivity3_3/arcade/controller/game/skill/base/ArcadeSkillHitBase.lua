@@ -73,7 +73,7 @@ function ArcadeSkillHitBase:onCtor()
 end
 
 function ArcadeSkillHitBase:onPlayEffect()
-	if self.atkEffectId and self.atkEffectId ~= 0 and self._context and self._context.target then
+	if self.atkEffectId and self.atkEffectId ~= 0 and self.isNotPlayAtkEffct ~= true and self._context and self._context.target then
 		ArcadeGameSkillController.instance:playEffectByTarget(self._context.target, self.atkEffectId)
 	end
 

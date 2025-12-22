@@ -27,10 +27,11 @@ function GMSubViewArcade:initViewContent()
 	self:_initL2()
 	self:_initL3()
 	self:_initL4()
-	self:_initL5()
-	self:_initL6()
-	self:_initL7()
 	self:_initL8()
+	self:_initL9()
+	self:_initL7()
+	self:_initL6()
+	self:_initL5()
 end
 
 function GMSubViewArcade:_initL1()
@@ -156,6 +157,7 @@ function GMSubViewArcade:_initL3()
 
 	self:addButton(LStr, "确定效果", self._onClickSkillHitOk, self)
 	self:addButton(LStr, "检查技能配置", self._onClickCheckSkillOk, self)
+	self:addButton(LStr, "局外GM", self._openGMArcadeView, self)
 end
 
 function GMSubViewArcade:_onClickSkillHitOk()
@@ -201,6 +203,12 @@ function GMSubViewArcade:_onClickCheckSkillOk()
 	end
 
 	GameFacade.showToast(94, "请查看Log输出")
+end
+
+function GMSubViewArcade:_openGMArcadeView()
+	ArcadeOutSideRpc.instance:sendArcadeGetOutSideInfoRequest(function()
+		ViewMgr.instance:openView(ViewName.GM_ArcadeView)
+	end)
 end
 
 function GMSubViewArcade:_onInitL3Text()
@@ -317,7 +325,8 @@ function GMSubViewArcade:_initL5()
 
 	self:addButton(LStr, "生成", self._onClickCreateFloorOk, self)
 	self:addButton(LStr, "清除", self._onClickClearFloorOk, self)
-	self:addButton(LStr, "获取当前房间ID", self._onClickCurRoom, self)
+	self:addButton(LStr, "检查初始交互物配置", self._checkInitInteractiveCfg, self)
+	self:addButton(LStr, "检查怪物组配置", self._checkMonsterGroupCfg, self)
 end
 
 function GMSubViewArcade:_getInputFloorId()
@@ -536,40 +545,378 @@ function GMSubViewArcade:_onClickPortalOk()
 
 	local optionId = optionList[1]
 	local optionParam = ArcadeConfig.instance:getEventOptionParam(optionId)
-	local result = ArcadeGameController.instance:triggerEventOption(nil, nil, optionId, optionParam, true, true)
 
-	if result then
-		GameFacade.showToast(94, string.format("触发传送门：%s", self._selectedPortalId))
-	end
+	ArcadeGameController.instance:triggerEventOption(nil, self._selectedPortalId, nil, optionId, optionParam, true, true)
+	GameFacade.showToast(94, string.format("触发传送门：%s", self._selectedPortalId))
 end
 
 function GMSubViewArcade:_initL8()
 	local LStr = "L8"
+	local strList = {
+		"单位类型"
+	}
+	local typeEnum = ArcadeGameEnum.EntityType
+	local typeDataList = {
+		{
+			name = "角色",
+			entityType = typeEnum.Character
+		},
+		{
+			name = "怪物",
+			entityType = typeEnum.Monster
+		},
+		{
+			name = "炸弹",
+			entityType = typeEnum.Bomb
+		},
+		{
+			name = "交互物",
+			entityType = typeEnum.BaseInteractive
+		},
+		{
+			name = "传送门",
+			entityType = typeEnum.Portal
+		},
+		{
+			name = "商品",
+			entityType = typeEnum.Goods
+		},
+		{
+			name = "地板",
+			entityType = typeEnum.Floor
+		},
+		{
+			name = "格子",
+			entityType = typeEnum.Grid
+		}
+	}
 
-	self:addButton(LStr, "打印属性", self._onClickLogAttr, self)
-end
+	self._entityTypeList = {}
 
-function GMSubViewArcade:_onClickLogAttr()
-	local log = ""
-	local gameAttrDict = ArcadeGameModel.instance._gameAttributeDict
-
-	if gameAttrDict then
-		for attrId, val in pairs(gameAttrDict) do
-			log = log .. string.format("\n%s:%s", attrId, val)
-		end
+	for _, typeData in ipairs(typeDataList) do
+		self._entityTypeList[#self._entityTypeList + 1] = typeData.entityType
+		strList[#strList + 1] = typeData.name
 	end
 
-	log = log .. "\n"
+	local dropDown = self:addDropDown(LStr, "选择单位", strList, self._onSelectedEntityTypeChange, self, {
+		tempH = 450,
+		total_w = 550,
+		drop_w = 380
+	})
+	local index = PlayerPrefsHelper.getNumber(PlayerPrefsKey.GMArcadeSelectedEntityTypeIndex, 0)
 
-	local gameSwitchDict = ArcadeGameModel.instance._gameSwitchDict
+	if index > #typeDataList then
+		index = 0
+	end
 
-	if gameSwitchDict then
-		for attrId, val in pairs(gameSwitchDict) do
-			log = log .. string.format("\n%s:%s", attrId, val)
+	dropDown:SetValue(index or 0)
+
+	self._logEntityUidText = self:addInputText(LStr, nil, "uid")
+	self._addBuffIdText = self:addInputText(LStr, nil, "buffId", nil, nil, {
+		w = 250
+	})
+
+	self:addButton(LStr, "添加Buff", self._onClickAddBuff, self)
+end
+
+function GMSubViewArcade:_onSelectedEntityTypeChange(index)
+	PlayerPrefsHelper.setNumber(PlayerPrefsKey.GMArcadeSelectedEntityTypeIndex, index)
+
+	self._selectedEntityType = self._entityTypeList[index]
+end
+
+function GMSubViewArcade:getLogEntityMO()
+	local mo
+	local uid = tonumber(self._logEntityUidText:GetText())
+
+	if self._selectedEntityType == ArcadeGameEnum.EntityType.Grid then
+		mo = ArcadeGameModel.instance._gridModel:getById(uid)
+	else
+		mo = ArcadeGameModel.instance:getMOWithType(self._selectedEntityType, uid)
+	end
+
+	if not mo then
+		GameFacade.showToastString(string.format("单位不存在\n类型：%s\n uid：%s", self._selectedEntityType, uid))
+	end
+
+	return mo
+end
+
+function GMSubViewArcade:_onClickAddBuff()
+	local mo = self:getLogEntityMO()
+
+	if not mo then
+		return
+	end
+
+	local uid = tonumber(self._logEntityUidText:GetText())
+	local buffId = tonumber(self._addBuffIdText:GetText())
+	local result = ArcadeGameController.instance:addBuff2Entity(buffId, self._selectedEntityType, uid)
+
+	if result then
+		GameFacade.showToastString(string.format("添加Buff:%s", buffId))
+	else
+		GameFacade.showToastString(string.format("Buff:%s添加失败", buffId))
+	end
+end
+
+function GMSubViewArcade:_initL9()
+	local LStr = "L9"
+
+	self:addButton(LStr, "输出Buff", self._onClickLogBuff, self)
+	self:addButton(LStr, "输出被动技能", self._onClickLogPassiveSkill, self)
+	self:addButton(LStr, "输出玩家属性", self._onClickLogAttr, self)
+	self:addButton(LStr, "获取当前房间ID", self._onClickCurRoom, self)
+end
+
+function GMSubViewArcade:_onClickLogBuff()
+	local mo = self:getLogEntityMO()
+
+	if not mo then
+		return
+	end
+
+	local log = string.format("============================%s-%s-BUFF============================", self._selectedEntityType, self._logEntityUidText:GetText())
+	local buffSetMO = mo:getBuffSetMO()
+	local buffList = buffSetMO and buffSetMO:getBuffList()
+
+	if buffList then
+		for _, buffMO in ipairs(buffList) do
+			local buffId = buffMO:getId()
+			local remainRound = buffMO:getRemainLiveRound()
+
+			log = log .. string.format("\nId:<color=green>%s</color>    剩余回合:<color=green>%s</color>", buffId, remainRound)
 		end
 	end
 
 	logError(log)
+end
+
+function GMSubViewArcade:_onClickLogPassiveSkill()
+	local mo = self:getLogEntityMO()
+
+	if not mo then
+		return
+	end
+
+	local log = string.format("============================%s-%s-被动技能============================", self._selectedEntityType, self._logEntityUidText:GetText())
+	local skillList = mo:getSkillList()
+
+	if skillList then
+		local idList = {}
+
+		for _, skillMO in ipairs(skillList) do
+			local skillId = skillMO:getSkillId()
+
+			idList[#idList + 1] = skillId
+		end
+
+		table.sort(idList, function(a, b)
+			return a < b
+		end)
+
+		for _, skillId in ipairs(idList) do
+			log = log .. string.format("\nId:<color=green>%s</color>", skillId)
+		end
+	end
+
+	logError(log)
+end
+
+function GMSubViewArcade:_onClickLogAttr()
+	local log = "============================玩家属性============================"
+	local characterMO = ArcadeGameModel.instance:getCharacterMO()
+
+	if characterMO then
+		local attrList = {}
+		local maxAttrPrefixLen = self:_getAttrList(ArcadeGameEnum.BaseAttr, attrList)
+
+		log = log .. self:_getAttrLog(attrList, maxAttrPrefixLen, characterMO.getAttributeValue, characterMO) .. "\n"
+
+		local resList = {}
+		local maxResPrefixLen = self:_getAttrList(ArcadeGameEnum.CharacterResource, resList)
+
+		log = log .. self:_getAttrLog(resList, maxResPrefixLen, characterMO.getResourceCount, characterMO) .. "\n"
+	end
+
+	local gameAttrList = {}
+	local maxGameAttrPrefixLen = self:_getAttrList(ArcadeGameEnum.GameAttribute, gameAttrList)
+
+	log = log .. self:_getAttrLog(gameAttrList, maxGameAttrPrefixLen, ArcadeGameModel.getGameAttribute, ArcadeGameModel.instance) .. "\n"
+
+	local gameSwitchList = {}
+	local maxGameSwitchPrefixLen = self:_getAttrList(ArcadeGameEnum.GameSwitch, gameSwitchList)
+
+	log = log .. self:_getAttrLog(gameSwitchList, maxGameSwitchPrefixLen, ArcadeGameModel.getGameSwitchIsOn, ArcadeGameModel.instance) .. "\n"
+
+	logError(log)
+end
+
+function GMSubViewArcade:_getAttrList(attrDict, refAttrList)
+	local maxAttrPrefixLen = 0
+
+	for _, attrId in pairs(attrDict) do
+		local name = ArcadeConfig.instance:getAttributeName(attrId)
+		local strPrefix = string.format("\n%s-%s", attrId, name)
+		local prefixLen = LuaUtil.getStrLen(strPrefix)
+
+		refAttrList[#refAttrList + 1] = {
+			id = attrId,
+			prefix = strPrefix,
+			prefixLen = prefixLen
+		}
+
+		if maxAttrPrefixLen < prefixLen then
+			maxAttrPrefixLen = prefixLen
+		end
+	end
+
+	table.sort(refAttrList, function(a, b)
+		return a.id < b.id
+	end)
+
+	return maxAttrPrefixLen
+end
+
+function GMSubViewArcade:_getAttrLog(attrList, maxPrefixLen, getValFunc, getValFuncObj)
+	local log = ""
+
+	for _, attr in ipairs(attrList) do
+		local val = getValFunc(getValFuncObj, attr.id)
+		local color = "green"
+
+		if not val then
+			color = "red"
+		end
+
+		local strVal = string.format(" <color=%s>%s</color>", color, tostring(val))
+
+		log = log .. attr.prefix .. string.rep(" ", (maxPrefixLen - attr.prefixLen) * 2) .. strVal
+	end
+
+	return log
+end
+
+function GMSubViewArcade:_checkInitInteractiveCfg()
+	for _, cfg in ipairs(lua_arcade_room.configList) do
+		local roomId = cfg.id
+		local errorList = {}
+		local occupyGridDict = {}
+		local interactiveList = ArcadeConfig.instance:getRoomInitInteractiveList(roomId)
+
+		for _, interactive in ipairs(interactiveList) do
+			local interactiveId = interactive.id
+			local x = interactive.x
+			local y = interactive.y
+			local interactCfg = ArcadeConfig.instance:getInteractiveCfg(interactiveId)
+
+			if not interactCfg then
+				errorList[#errorList + 1] = string.format("无交互物:%s配置", interactiveId)
+			end
+
+			local sizeX, sizeY = ArcadeConfig.instance:getInteractiveGrid(interactiveId)
+
+			if x < ArcadeGameEnum.Const.RoomMinCoordinateValue or x + sizeX - 1 > ArcadeGameEnum.Const.RoomSize or y < ArcadeGameEnum.Const.RoomMinCoordinateValue then
+				errorList[#errorList + 1] = string.format("交互物:%s坐标错误, x:%s y:%s sizeX:%s sizeY:%s", interactiveId, x, y, sizeX, sizeY)
+			end
+
+			local occupyGridList = {}
+
+			for i = x, x + sizeX - 1 do
+				for j = y, y + sizeY - 1 do
+					local gridId = ArcadeGameHelper.getGridId(i, j)
+					local occupyId = occupyGridDict[gridId]
+
+					if occupyId then
+						errorList[#errorList + 1] = string.format("交互物:%s %s重叠, x:%s y:%s", interactiveId, occupyId, x, y)
+					end
+
+					occupyGridList[#occupyGridList + 1] = gridId
+				end
+			end
+
+			for _, gridId in ipairs(occupyGridList) do
+				occupyGridDict[gridId] = interactiveId
+			end
+		end
+
+		if #errorList > 0 then
+			logError(string.format("============================房间:%s============================", roomId))
+
+			for _, strError in ipairs(errorList) do
+				logError(strError)
+			end
+		end
+	end
+
+	GameFacade.showToastString("检查完毕")
+end
+
+function GMSubViewArcade:_checkMonsterGroupCfg()
+	for _, cfg in ipairs(lua_arcade_monster_group.configList) do
+		local groupId = cfg.id
+		local errorList = {}
+		local occupyGridDict = {}
+
+		for row = 1, ArcadeGameEnum.Const.RoomSize do
+			local rowCfg = ArcadeConfig.instance:getMonsterGroupRowCfg(groupId, row)
+
+			if rowCfg then
+				for col = 1, ArcadeGameEnum.Const.RoomSize do
+					local monsterId = rowCfg[string.format("%s%s", ArcadeGameEnum.Const.MonsterGroupColName, col)]
+
+					if monsterId and monsterId ~= 0 then
+						local monsterCfg = ArcadeConfig.instance:getMonsterCfg(monsterId)
+
+						if not monsterCfg then
+							errorList[#errorList + 1] = string.format("%s行%s列怪物:%s无配置", row, col, monsterId)
+						end
+
+						local strSize = monsterCfg and monsterCfg.shape or ""
+						local sizeX, sizeY = ArcadeConfig.instance:getMonsterSize(monsterId)
+
+						if col < ArcadeGameEnum.Const.RoomMinCoordinateValue or col + sizeX - 1 > ArcadeGameEnum.Const.RoomSize or row < ArcadeGameEnum.Const.RoomMinCoordinateValue then
+							errorList[#errorList + 1] = string.format("%s行 %s列怪物:%s越界，体型:%s", row, col, monsterId, strSize)
+						end
+
+						local occupyGridList = {}
+
+						for x = col, col + sizeX - 1 do
+							for y = row, row + sizeY - 1 do
+								local gridId = ArcadeGameHelper.getGridId(x, y)
+								local occupyData = occupyGridDict[gridId]
+
+								if occupyData then
+									errorList[#errorList + 1] = string.format("%s行%s列怪物:%s，体型体型:%s   %s行%s列怪物:%s，体型:%s 在%s行%s列重叠", row, col, monsterId, strSize, occupyData.row, occupyData.col, occupyData.id, occupyData.size, y, x)
+								end
+
+								occupyGridList[#occupyGridList + 1] = gridId
+							end
+						end
+
+						for _, gridId in ipairs(occupyGridList) do
+							occupyGridDict[gridId] = {
+								id = monsterId,
+								row = row,
+								col = col,
+								size = strSize
+							}
+						end
+					end
+				end
+			end
+		end
+
+		if #errorList > 0 then
+			logError(string.format("============================怪物组:%s============================", groupId))
+
+			for _, strError in ipairs(errorList) do
+				logError(strError)
+			end
+		end
+	end
+
+	GameFacade.showToastString("检查完毕")
 end
 
 return GMSubViewArcade

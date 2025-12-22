@@ -161,11 +161,13 @@ function ArcadeSkillHitAttrChange:_onResourceAttrRate(unitMO)
 end
 
 function ArcadeSkillHitAttrChange:_onGameAttrBase(unitMO)
-	local val = ArcadeGameModel.instance:getGameAttribute(self._attrId)
-
 	if self._isTempAttr then
+		local val = ArcadeGameModel.instance:getGameTempAttribute(self._attrId)
+
 		ArcadeGameModel.instance:setGameTempAttribute(self._attrId, self._attrVal + val)
 	else
+		local val = ArcadeGameModel.instance:getGameAttrNoTemp(self._attrId)
+
 		ArcadeGameModel.instance:setGameAttribute(self._attrId, self._attrVal + val)
 	end
 
@@ -173,7 +175,7 @@ function ArcadeSkillHitAttrChange:_onGameAttrBase(unitMO)
 end
 
 function ArcadeSkillHitAttrChange:_onGameAttrRate(unitMO)
-	local val = ArcadeGameModel.instance:getGameAttribute(self._attrId)
+	local val = ArcadeGameModel.instance:getGameAttrNoTemp(self._attrId)
 	local max = ArcadeConfig.instance:getAttributeMax(self._attrId, true)
 	local changeVal = math.floor(self._attrVal * max / 1000)
 

@@ -159,7 +159,7 @@ function ArcadeGameController:saveGame()
 	ArcadeInSideRpc.instance:sendArcadeSaveGameRequest(info)
 end
 
-function ArcadeGameController:endGame(settleType, isWin, isRestart, serverInfo)
+function ArcadeGameController:endGame(settleType, isWin, isReset, serverInfo)
 	local isEnd = ArcadeGameModel.instance:getIsEndGame()
 
 	if isEnd then
@@ -169,7 +169,8 @@ function ArcadeGameController:endGame(settleType, isWin, isRestart, serverInfo)
 	UIBlockMgr.instance:endBlock(ArcadeEnum.BlockKey.ChangingRoom)
 	ArcadeGameModel.instance:setGameIsEnd(true)
 
-	self._resultViewInfo = ArcadeGameHelper.getResultViewInfo(isWin, isRestart, serverInfo)
+	self._resultViewInfo = ArcadeGameHelper.getResultViewInfo(isWin, isReset, serverInfo)
+	self._resultViewInfo.settleType = settleType
 
 	local settleInfo
 
@@ -211,6 +212,11 @@ function ArcadeGameController:_openResultViewAfterSettle(cmd, resultCode, msg)
 	end
 
 	ViewMgr.instance:openView(ViewName.ArcadeGameResultView, self._resultViewInfo)
+
+	local gameCassetteCount = self._resultViewInfo.attrDict[ArcadeGameEnum.CharacterResource.Cassette] or 0
+	local totalCassetteCount = gameCassetteCount + self._resultViewInfo.bookAddScore
+
+	ArcadeStatHelper.instance:sendEndGame(self._resultViewInfo.settleType, totalCassetteCount)
 end
 
 function ArcadeGameController:closeGameView()
@@ -230,6 +236,8 @@ function ArcadeGameController:exitGame()
 end
 
 function ArcadeGameController:startGame(isRestart)
+	ArcadeStatHelper.instance:sendStartGame()
+
 	if isRestart then
 		local curRoomId = ArcadeGameModel.instance:getCurRoomId()
 
@@ -300,7 +308,7 @@ function ArcadeGameController:changeNearEventEntity(eventEntityType, eventEntity
 	self:dispatchEvent(ArcadeEvent.RefreshGameEventTip, eventEntityType, eventEntityUid, isCharacterMove)
 end
 
-function ArcadeGameController:triggerEventOption(entityType, uid, eventOptionId, eventOptionParam, noCanInteractCheck, noConditionCheck)
+function ArcadeGameController:triggerEventOption(entityType, entityId, uid, eventOptionId, eventOptionParam, noCanInteractCheck, noConditionCheck, extraParam)
 	local isChangingRoom = ArcadeGameModel.instance:getIsChangingRoom()
 	local isGamePause = ArcadeGameModel.instance:getIsPauseGame()
 	local isGameEnd = ArcadeGameModel.instance:getIsEndGame()
@@ -346,10 +354,17 @@ function ArcadeGameController:triggerEventOption(entityType, uid, eventOptionId,
 	local handler = ArcadeGameHelper.getEventOptionHandleFunc(eventOptionType)
 
 	if handler then
-		local result = handler(entityType, uid, eventOptionParam)
+		local result = handler(entityType, entityId, uid, eventOptionParam, extraParam)
 
 		if result and eventEntityMO then
 			eventEntityMO:addTriggerEventOptionId(eventOptionId)
+
+			local scene = self:getGameScene()
+			local entity = scene and scene.entityMgr:getEntityWithType(entityType, uid)
+
+			if entity then
+				entity:playActionShow(ArcadeGameEnum.ActionShowId.Interactive)
+			end
 		end
 
 		return result
@@ -453,9 +468,9 @@ function ArcadeGameController:removeEntityListByType(entityType)
 	self:dispatchEvent(ArcadeEvent.OnRemoveEntity, entityType, uidList)
 end
 
-function ArcadeGameController:removeEntity(entityType, uid)
+function ArcadeGameController:removeEntity(entityType, uid, needWaitRemoveAnim)
 	if self._gameScene then
-		self._gameScene.entityMgr:removeEntityWithType(entityType, uid)
+		self._gameScene.entityMgr:removeEntityWithType(entityType, uid, needWaitRemoveAnim)
 	end
 
 	ArcadeGameModel.instance:removeEntityMO(entityType, uid)
@@ -477,7 +492,10 @@ function ArcadeGameController:removeDeadEntityAndDrop(mo, isPlay)
 	local isRemoving = mo:getIsRemoving()
 
 	if isRemoving then
-		self:removeEntity(entityType, uid)
+		self:_afterPlayRemove({
+			entityType = entityType,
+			uid = uid
+		})
 
 		return
 	end
@@ -496,21 +514,19 @@ function ArcadeGameController:removeDeadEntityAndDrop(mo, isPlay)
 
 	if isPlay and entity then
 		entity:playActionShow(ArcadeGameEnum.ActionShowId.Remove, nil, nil, self._afterPlayRemove, self, {
-			entityType = entityType,
-			uid = uid
+			entity = entity
 		})
 		mo:setIsRemoving(true)
+		self:removeEntity(entityType, uid, true)
 	else
 		self:removeEntity(entityType, uid)
 	end
 end
 
 function ArcadeGameController:_afterPlayRemove(param)
-	if not param then
-		return
+	if param and param.entity then
+		param.entity:destroy()
 	end
-
-	self:removeEntity(param.entityType, param.uid)
 end
 
 function ArcadeGameController:gainDropItemById(dropId, gridX, gridY)
@@ -615,10 +631,11 @@ function ArcadeGameController:lossCollection(uid)
 end
 
 function ArcadeGameController:addBuff2Entity(buffId, entityType, uid)
+	local result = false
 	local buffEntityTypeDict = ArcadeConfig.instance:getArcadeBuffEntityTypeDict(buffId)
 
 	if not entityType or not buffEntityTypeDict[entityType] then
-		return
+		return result
 	end
 
 	local entityMO = ArcadeGameModel.instance:getMOWithType(entityType, uid)
@@ -626,6 +643,8 @@ function ArcadeGameController:addBuff2Entity(buffId, entityType, uid)
 
 	if buffSetMO then
 		buffSetMO:addBuffById(buffId)
+
+		result = true
 	end
 
 	local scene = self:getGameScene()
@@ -636,6 +655,8 @@ function ArcadeGameController:addBuff2Entity(buffId, entityType, uid)
 	end
 
 	self:dispatchEvent(ArcadeEvent.OnBuffChange, entityType, uid)
+
+	return result
 end
 
 function ArcadeGameController:removeEntityBuffs(buffIdList, entityType, uid)
@@ -675,7 +696,8 @@ function ArcadeGameController:changeEntityHp(entityMO, changValue)
 
 	if changValue > 0 then
 		local scene = self:getGameScene()
-		local entity = scene and scene.entityMgr:getEntityWithType(entityMO:getEntityType(), entityMO:getUid())
+		local uid = entityMO:getUid()
+		local entity = scene and scene.entityMgr:getEntityWithType(entityType, uid)
 
 		if entity then
 			entity:playActionShow(ArcadeGameEnum.ActionShowId.AddHp)
@@ -742,7 +764,7 @@ function ArcadeGameController:enterAttackFlow(attackType, attackerMO, targetMOLi
 		attackerEntity:playActionShow(attackActionShowId, attackDirection, actionShowParam)
 	end
 
-	self:_calAttackDamage(attackerMO, attackType, targetMOList, hitActionShowId, actionShowParam, skillId)
+	self:_calAttackDamage(attackerMO, attackType, targetMOList, attackDirection, hitActionShowId, actionShowParam, skillId)
 	self:_updateScoreAndSkillEnergy(attackerMO, attackType, targetMOList, skillId)
 
 	if notTriggerAtkPoint ~= true then
@@ -787,7 +809,7 @@ function ArcadeGameController:_getAttackAndHitShow(attackerMO, attackType, skill
 	return attackActionShowId, hitActionShowId, actionShowParam
 end
 
-function ArcadeGameController:_calAttackDamage(attackerMO, attackType, targetMOList, hitActionShowId, actionShowParam, skillId)
+function ArcadeGameController:_calAttackDamage(attackerMO, attackType, targetMOList, attackDirection, hitActionShowId, actionShowParam, skillId)
 	if not targetMOList or #targetMOList <= 0 then
 		return
 	end
@@ -802,10 +824,10 @@ function ArcadeGameController:_calAttackDamage(attackerMO, attackType, targetMOL
 
 	if attackType == ArcadeGameEnum.AttackType.Bomb then
 		local addBombDamage = 0
-		local characterBombId = ArcadeConfig.instance:getCharacterBomb(characterId)
 
-		if attackerId == characterBombId then
-			isCharacterBomb = true
+		isCharacterBomb = attackerMO:isCharacterBomb()
+
+		if isCharacterBomb then
 			addBombDamage = ArcadeGameModel.instance:getGameAttribute(ArcadeGameEnum.GameAttribute.AddBombDamage)
 		end
 
@@ -828,12 +850,19 @@ function ArcadeGameController:_calAttackDamage(attackerMO, attackType, targetMOL
 
 	local isBasicAttack = attackType == ArcadeGameEnum.AttackType.Normal or attackType == ArcadeGameEnum.AttackType.Link
 	local attackerX, attackerY = attackerMO:getGridPos()
+	local defenseGridX, defenseGridY, defenseTargetMO
+
+	if attackDirection then
+		defenseGridX = attackerX + (ArcadeEnum.DirChangeGridX[attackDirection] or 0)
+		defenseGridY = attackerY + (ArcadeEnum.DirChangeGridY[attackDirection] or 0)
+	end
 
 	for _, targetMO in ipairs(targetMOList) do
 		local targetEntityType = targetMO:getEntityType()
 		local targetUid = targetMO:getUid()
 		local targetX, targetY = targetMO:getGridPos()
-		local hitDirection = ArcadeGameHelper.getDirection(targetX, targetY, attackerX, attackerY)
+		local targetSizeX, targetSizeY = targetMO:getSize()
+		local hitDirection = ArcadeGameHelper.getDirection(targetX, targetY, targetSizeX, targetSizeY, attackerX, attackerY)
 		local canBeAttacked = true
 		local needPlayActionShow = true
 
@@ -854,6 +883,10 @@ function ArcadeGameController:_calAttackDamage(attackerMO, attackType, targetMOL
 				local defenseValue = targetMO:getAttributeValue(ArcadeGameEnum.BaseAttr.defense)
 
 				attackDamage = math.max(0, attackValue - defenseValue)
+			end
+
+			if isCharacterAttack and targetX <= defenseGridX and defenseGridX <= targetX + targetSizeX - 1 and targetY <= defenseGridY and defenseGridY <= targetY + targetSizeY - 1 then
+				defenseTargetMO = targetMO
 			end
 		elseif attackType == ArcadeGameEnum.AttackType.Bomb then
 			local isBombNotAttackSelf = ArcadeGameModel.instance:getGameSwitchIsOn(ArcadeGameEnum.GameSwitch.BombNotAttackSelf)
@@ -882,17 +915,15 @@ function ArcadeGameController:_calAttackDamage(attackerMO, attackType, targetMOL
 		end
 	end
 
-	local firstTargetMO = targetMOList[1]
-
-	if isCharacterAttack then
+	if isCharacterAttack and defenseTargetMO then
 		local buffSetMO = attackerMO:getBuffSetMO()
 		local haveNotBeCounteredBuff = buffSetMO:hasEffectParamBuff(ArcadeGameEnum.BuffEffectParam.NotBeCountered)
 
 		if not haveNotBeCounteredBuff then
-			local curHP = firstTargetMO:getHp()
+			local curHP = defenseTargetMO:getHp()
 
 			if isBasicAttack and curHP > 0 then
-				local targetAttackValue = firstTargetMO:getAttributeValue(ArcadeGameEnum.BaseAttr.attack)
+				local targetAttackValue = defenseTargetMO:getAttributeValue(ArcadeGameEnum.BaseAttr.attack)
 				local attackerDefenseValue = attackerMO:getAttributeValue(ArcadeGameEnum.BaseAttr.defense)
 				local counterDamage = math.max(0, targetAttackValue - attackerDefenseValue)
 
@@ -915,7 +946,7 @@ function ArcadeGameController:_onBombAttackInteractive(mo)
 	if bombAttackEventList and #bombAttackEventList > 0 then
 		for _, eventOptionId in ipairs(bombAttackEventList) do
 			local eventOptionParam = ArcadeConfig.instance:getEventOptionParam(eventOptionId)
-			local result = self:triggerEventOption(entityType, uid, eventOptionId, eventOptionParam, true, true)
+			local result = self:triggerEventOption(entityType, id, uid, eventOptionId, eventOptionParam, true, true)
 
 			if result then
 				mo:setIsDead(true)
@@ -1050,6 +1081,7 @@ function ArcadeGameController:_enterRespawnFlow(entityMO, attackerMO)
 	self:changeResCount(ArcadeGameEnum.CharacterResource.RespawnTimes, -RESPAWN_COST)
 	ArcadeGameTriggerController.instance:deathTriggerTarget(ArcadeGameEnum.TriggerPoint.DeathAtfer720, entityMO, attackerMO)
 	self:dispatchEvent(ArcadeEvent.OnChangeEntityHp, entityMO, hpCap)
+	ArcadeStatHelper.instance:AddUseRebornTimes()
 end
 
 function ArcadeGameController:resetGoods()

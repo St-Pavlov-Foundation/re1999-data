@@ -293,7 +293,27 @@ function ArcadeConfig:getPortalList(areaId, nodeIndex)
 			local portalGroupArr = string.split(nodePortal, "|")
 
 			for _, strPortalGroup in ipairs(portalGroupArr) do
-				local portalList = GameUtil.splitString2(strPortalGroup, true, ",", "#")
+				local cfgPortalList = GameUtil.splitString2(strPortalGroup, true, ",", "#")
+				local portalList = {}
+
+				for _, data in ipairs(cfgPortalList) do
+					local portalId = data[2]
+					local isCanExtract = true
+					local limit = self:getPortalLimit(portalId)
+
+					if limit and limit > 0 then
+						local extractionCount = ArcadeGameModel.instance:getPortalExtractionCount(portalId)
+
+						if extractionCount and limit <= extractionCount then
+							isCanExtract = false
+						end
+					end
+
+					if isCanExtract then
+						portalList[#portalList + 1] = data
+					end
+				end
+
 				local totalWeight = 0
 				local weightList = {}
 
@@ -307,8 +327,16 @@ function ArcadeConfig:getPortalList(areaId, nodeIndex)
 				local index = ArcadeGameHelper.getRandomIndex(weightList, totalWeight)
 
 				if index and portalList[index] then
-					result[#result + 1] = portalList[index][2]
+					local portalId = portalList[index][2]
+
+					result[#result + 1] = portalId
 				end
+			end
+
+			if #result <= 0 then
+				local guaranteePortalId = self:getArcadeConst(ArcadeEnum.ConstId.GuaranteePortal, true)
+
+				result[#result + 1] = guaranteePortalId
 			end
 		end
 	end
@@ -665,6 +693,24 @@ function ArcadeConfig:getInteractiveSceneIcon(id)
 	return cfg and cfg.sceneIcon
 end
 
+function ArcadeConfig:getInteractiveBeforeIdleShowEffId(id)
+	local cfg = self:getInteractiveCfg(id, true)
+
+	return cfg and cfg.effectBefore
+end
+
+function ArcadeConfig:getInteractiveActingEffId(id)
+	local cfg = self:getInteractiveCfg(id, true)
+
+	return cfg and cfg.effectActing
+end
+
+function ArcadeConfig:getInteractiveAfterIdleShowEffId(id)
+	local cfg = self:getInteractiveCfg(id, true)
+
+	return cfg and cfg.effectAfter
+end
+
 function ArcadeConfig:getIsGoodsInteractive(id)
 	local optionIdList = self:getInteractiveOptionList(id)
 
@@ -715,6 +761,12 @@ function ArcadeConfig:getEventOptionTriggerDesc(id)
 	local cfg = self:getEventOptionCfg(id, true)
 
 	return cfg and cfg.descChange
+end
+
+function ArcadeConfig:getPortalLimit(id)
+	local cfg = self:getInteractiveCfg(id, true)
+
+	return cfg and cfg.nodePortalLimit
 end
 
 function ArcadeConfig:getBombCfg(id, nilError)
@@ -789,6 +841,12 @@ function ArcadeConfig:getBombAddFloor(id)
 	local cfg = self:getBombCfg(id, true)
 
 	return cfg and cfg.addFloor
+end
+
+function ArcadeConfig:getBombIdleShowEffectId(id)
+	local cfg = self:getBombCfg(id, true)
+
+	return cfg and cfg.effectDefault
 end
 
 function ArcadeConfig:getActiveSkillCfg(skillId, nilError)
@@ -1170,11 +1228,7 @@ function ArcadeConfig:getEffectAnim(effectId, direction)
 	local animName = cfg and cfg.triggerAnimation
 
 	if not string.nilorempty(animName) and string.find(animName, "▩1%%s") then
-		if direction then
-			animName = string.gsub(animName, "▩1%%s", direction)
-		else
-			logError(string.format("ArcadeConfig:getEffectAnim error, effectId:%s no direction", effectId))
-		end
+		animName = string.gsub(animName, "▩1%%s", direction or ArcadeEnum.Direction.Up)
 	end
 
 	return animName
@@ -1226,6 +1280,12 @@ function ArcadeConfig:getIsNeedShake(effectId)
 	local cfg = self:getArcadeEffectCfg(effectId, true)
 
 	return cfg and cfg.needShake
+end
+
+function ArcadeConfig:getIsNearestGrid(effectId)
+	local cfg = self:getArcadeEffectCfg(effectId, true)
+
+	return cfg and cfg.isNearestGrid
 end
 
 function ArcadeConfig:getActionShowCfg(showId, nilError)

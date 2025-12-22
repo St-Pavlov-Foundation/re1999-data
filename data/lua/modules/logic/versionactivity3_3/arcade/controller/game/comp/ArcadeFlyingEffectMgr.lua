@@ -23,7 +23,7 @@ function ArcadeFlyingEffectMgr:removeEventListeners()
 	return
 end
 
-function ArcadeFlyingEffectMgr:begin2EndGridXY(effectId, beginX, beginY, endX, endY)
+function ArcadeFlyingEffectMgr:begin2EndXY(effectId, beginX, beginY, endX, endY)
 	local scene = ArcadeGameController.instance:getGameScene()
 	local effCfg = ArcadeConfig.instance:getArcadeEffectCfg(effectId, true)
 

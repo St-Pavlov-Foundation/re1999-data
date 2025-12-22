@@ -19,6 +19,7 @@ function IgorGameMO:setEpisodeCo(episodeCo)
 end
 
 function IgorGameMO:initGame()
+	self.startTime = Time.realtimeSinceStartup
 	self.entityDict = {}
 	self.entityList = {}
 	self.entityCountList = {}
@@ -36,6 +37,15 @@ function IgorGameMO:initGame()
 	end
 
 	self:setPutTempPos()
+end
+
+function IgorGameMO:getStartTime()
+	return self.startTime
+end
+
+function IgorGameMO:resetGame()
+	self:initGame()
+	IgorController.instance:dispatchEvent(IgorEvent.OnGameReset)
 end
 
 function IgorGameMO:resetGame()

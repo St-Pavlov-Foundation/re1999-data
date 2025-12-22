@@ -24,6 +24,10 @@ function ArcadeHallEntityMO:setGridPos(x, y)
 	self._posX, self._posY = x, y
 end
 
+function ArcadeHallEntityMO:setPosZ(z)
+	self._posZ = z
+end
+
 function ArcadeHallEntityMO:getId()
 	return self.id
 end
@@ -64,6 +68,10 @@ function ArcadeHallEntityMO:getCenterPos()
 	local x2, y2 = self:_getPos(self._posX + self._gridX - 1, self._posY + self._gridY - 1)
 
 	return (x1 + x2) * 0.5, y1
+end
+
+function ArcadeHallEntityMO:getPosZ()
+	return self._posZ or 0
 end
 
 return ArcadeHallEntityMO

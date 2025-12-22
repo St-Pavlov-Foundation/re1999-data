@@ -75,7 +75,7 @@ function ArcadeHallEntity:_refreshTrans()
 	local y = co.posOffset and tonumber(co.posOffset[2])
 
 	if x and y then
-		transformhelper.setLocalPos(self.root.transform, x, y, 0)
+		transformhelper.setLocalPos(self.root.transform, x, y, mo:getPosZ())
 	end
 
 	local scaleX = 1.5
@@ -114,7 +114,7 @@ function ArcadeHallEntity:refreshPosition()
 
 	local posX, posY = mo:getEntityPos()
 
-	transformhelper.setLocalPos(self.trans, posX, posY, 0)
+	transformhelper.setLocalPos(self.trans, posX, posY, mo:getPosZ())
 
 	self._gridX, self._gridY = mo:getGridPos()
 end
@@ -159,7 +159,7 @@ end
 function ArcadeHallEntity:_onMoveCB(pos)
 	local posX, posY = pos.x, pos.y
 
-	self._tweenIdMove = ZProj.TweenHelper.DOLocalMove(self.trans, posX, posY, 0, ArcadeHallEnum.HeroMoveSpeed, self._onFinishMoveCB, self, nil, EaseType.OutExpo)
+	self._tweenIdMove = ZProj.TweenHelper.DOLocalMove(self.trans, posX, posY, self.mo:getPosZ(), ArcadeHallEnum.HeroMoveSpeed, self._onFinishMoveCB, self, nil, EaseType.OutExpo)
 
 	self:playMoveAni()
 	self:_setRotation()

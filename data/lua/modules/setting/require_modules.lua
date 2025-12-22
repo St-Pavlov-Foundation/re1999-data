@@ -15597,6 +15597,7 @@ setNeedLoadModule("modules.logic.versionactivity3_2.warmup.view.V3a2_WarmUp_rewa
 setNeedLoadModule("modules.logic.versionactivity3_3.arcade.config.ArcadeConfig", "ArcadeConfig")
 setNeedLoadModule("modules.logic.versionactivity3_3.arcade.controller.ArcadeController", "ArcadeController")
 setNeedLoadModule("modules.logic.versionactivity3_3.arcade.controller.ArcadeEvent", "ArcadeEvent")
+setNeedLoadModule("modules.logic.versionactivity3_3.arcade.controller.ArcadeStatHelper", "ArcadeStatHelper")
 setNeedLoadModule("modules.logic.versionactivity3_3.arcade.controller.game.ArcadeAssetItem", "ArcadeAssetItem")
 setNeedLoadModule("modules.logic.versionactivity3_3.arcade.controller.game.ArcadeGameController", "ArcadeGameController")
 setNeedLoadModule("modules.logic.versionactivity3_3.arcade.controller.game.ArcadeGameFloorController", "ArcadeGameFloorController")

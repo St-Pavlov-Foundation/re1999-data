@@ -57,6 +57,12 @@ function ArcadeSkillHitAlertAttack:_playGridEffect(effectId, isAlert)
 			if isAlert then
 				gameScent.effectMgr:playAlertEffect(effectId, gridX, gridY, direction)
 			else
+				local playInNearestGrid = ArcadeConfig.instance:getIsNearestGrid(effectId)
+
+				if playInNearestGrid then
+					gridX, gridY = ArcadeGameHelper.getEntityNearCharacterGrid(unitMO)
+				end
+
 				gameScent.effectMgr:playEffect2Grid(effectId, gridX, gridY, direction)
 			end
 		end

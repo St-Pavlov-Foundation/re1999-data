@@ -174,6 +174,7 @@ function ArcadeCharacterWork:_onUseSkill(actParam)
 	self._isNeedWait = true
 
 	ArcadeGameController.instance:enterAttackFlow(ArcadeGameEnum.AttackType.Skill, characterMO, targetMOList, direction, skillId)
+	ArcadeStatHelper.instance:AddUseUltimateTimes()
 	self:_actionFinish()
 end
 
@@ -188,6 +189,7 @@ function ArcadeCharacterWork:_onUseBomb(actParam)
 	local bombId = ArcadeConfig.instance:getCharacterBomb(characterId)
 
 	ArcadeGameController.instance:placeBomb(bombId, actParam.targetGridX, actParam.targetGridY)
+	ArcadeStatHelper.instance:AddUseBoomTimes()
 	self:_actionFinish()
 end
 

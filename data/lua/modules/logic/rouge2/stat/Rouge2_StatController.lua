@@ -153,7 +153,8 @@ function Rouge2_StatController:statExitLayer()
 		[StatEnum.EventProperties.DungeonGold] = self:getCoin(),
 		[StatEnum.EventProperties.ReviveNum] = self:getRevivalCoin(),
 		[StatEnum.EventProperties.OutsideTalentInfomation] = self:getOutsideTalentInfo(),
-		[StatEnum.EventProperties.Formula] = self:getFormulaName()
+		[StatEnum.EventProperties.Formula] = self:getFormulaName(),
+		[StatEnum.EventProperties.UseTime] = self:getNormalLayerUseTime()
 	})
 end
 
@@ -404,6 +405,12 @@ function Rouge2_StatController:getUseTime()
 	return time
 end
 
+function Rouge2_StatController:getNormalLayerUseTime()
+	local time = self._enterLayerMapTime and ServerTime.now() - self._enterLayerMapTime or 0
+
+	return time or 0
+end
+
 function Rouge2_StatController:_onPushEndFight()
 	local fightRecordMO = FightModel.instance:getRecordMO()
 	local result = fightRecordMO and fightRecordMO.fightResult
@@ -635,8 +642,13 @@ function Rouge2_StatController:statStart()
 	self._failResult = nil
 end
 
+function Rouge2_StatController:statEnterLayerMap()
+	self._enterLayerMapTime = ServerTime.now()
+end
+
 function Rouge2_StatController:quitMap()
 	self._isStart = false
+	self._enterLayerMapTime = nil
 end
 
 function Rouge2_StatController:checkIsReset()

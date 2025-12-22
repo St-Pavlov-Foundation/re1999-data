@@ -242,6 +242,11 @@ function CharacterRecommedView:onClose()
 	self._tabItems = nil
 
 	TaskDispatcher.cancelTask(self._cuthHeroCb, nil)
+
+	if ViewMgr.instance:isOpen(ViewName.SummonADView) then
+		ViewMgr.instance:closeView(ViewName.SummonADView)
+		VirtualSummonScene.instance:close(true)
+	end
 end
 
 function CharacterRecommedView:onDestroyView()

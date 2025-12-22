@@ -48,7 +48,7 @@
     "desc": "色相：<color=#F96C6C>红</color>\n无特殊技能",
     "shape": "2#2",
     "race": "red",
-    "attack": 1,
+    "attack": 2,
     "hpCap": 4,
     "defense": 0,
     "skillIds": "",
@@ -91,13 +91,13 @@
   {
     "id": 331003,
     "name": "煤烟卡邦克鲁",
-    "desc": "色相：<color=#F96C6C>红</color>\n离场时原地生成熔岩带，效果持续2次行动\n\n<size=85%><i>堵塞烟囱、弄熄壁炉、绊倒灯倌，它闯下的祸数不胜数。</i>",
+    "desc": "色相：<color=#F96C6C>红</color>\n不会受到熔岩带的伤害\n死亡时，将所停留的地块转化为熔岩带\n\n<size=85%><i>堵塞烟囱、弄熄壁炉、绊倒灯倌，它闯下的祸数不胜数。</i>",
     "shape": "1#1",
     "race": "red",
     "attack": 1,
     "hpCap": 3,
     "defense": 0,
-    "skillIds": "33100301",
+    "skillIds": "33100301#15003",
     "moveType": "normalDrop",
     "illustrationShow": 1,
     "drop": "32000001",
@@ -134,13 +134,13 @@
   {
     "id": 331004,
     "name": "煤烟卡邦克鲁群",
-    "desc": "色相：<color=#F96C6C>红</color>\n离场时原地生成熔岩带，效果持续2次行动\n\n<size=85%><i>这些小家伙们在垃圾场里拼拼凑凑，又将自己烧红的身体作为动力源。现在，它们所向披靡。</i>\n",
+    "desc": "色相：<color=#F96C6C>红</color>\n不会受到熔岩带的伤害\n死亡时，将所停留的地块转化为熔岩带\n\n<size=85%><i>这些小家伙们在垃圾场里拼拼凑凑，又将自己烧红的身体作为动力源。现在，它们所向披靡。</i>\n",
     "shape": "2#2",
     "race": "red",
-    "attack": 1,
-    "hpCap": 7,
-    "defense": 1,
-    "skillIds": "33100401",
+    "attack": 2,
+    "hpCap": 4,
+    "defense": 0,
+    "skillIds": "33100401#15003",
     "moveType": "normalDrop",
     "illustrationShow": 1,
     "drop": "32000001",
@@ -180,13 +180,13 @@
   {
     "id": 331005,
     "name": "煤烟卡邦克鲁之主",
-    "desc": "色相：<color=#F96C6C>红</color>\n离场时原地留下熔岩带，持续2次行动\n\n<size=85%><i>身为魔精之主，最重要的日程就是挑选最合心意的高烟囱。近几年笔直的高烟囱越发密集，连带它也日益繁忙。</i>",
+    "desc": "色相：<color=#F96C6C>红</color>\n不会受到熔岩带的伤害\n死亡时，将所停留及周围的地块转化为熔岩带\n\n<size=85%><i>身为魔精之主，最重要的日程就是挑选最合心意的高烟囱。近几年笔直的高烟囱越发密集，连带它也日益繁忙。</i>",
     "shape": "2#3",
     "race": "red",
-    "attack": 1,
-    "hpCap": 7,
-    "defense": 1,
-    "skillIds": "33100501#33100502",
+    "attack": 3,
+    "hpCap": 8,
+    "defense": 0,
+    "skillIds": "33100501#15003",
     "moveType": "normalDrop",
     "illustrationShow": 1,
     "drop": "32000001",
@@ -226,12 +226,12 @@
   {
     "id": 331006,
     "name": "乌卢鲁红土守卫",
-    "desc": "色相：<color=#F96C6C>红</color>\n定期对周围区域发起攻击\n\n<size=85%><i>红色的大地饲养了魁梧的血肉，骨制的长柄孕育了神圣的职责。</i>",
+    "desc": "色相：<color=#F96C6C>红</color>\n定期对周围区域发起攻击，对该范围的所有单位造成伤害\n\n<size=85%><i>红色的大地饲养了魁梧的血肉，骨制的长柄孕育了神圣的职责。</i>",
     "shape": "3#3",
     "race": "red",
-    "attack": 1,
-    "hpCap": 7,
-    "defense": 1,
+    "attack": 3,
+    "hpCap": 8,
+    "defense": 0,
     "skillIds": "33100601",
     "moveType": "normalDrop",
     "illustrationShow": 1,
@@ -272,12 +272,12 @@
   {
     "id": 331007,
     "name": "白公鸡卫士",
-    "desc": "色相：<color=#F96C6C>红</color>\n受到直接攻击时，会迅速朝来袭方向举盾防御，在接下来的5次行动内完全免疫来自该方向的伤害\n\n<size=85%><i>它是陌生而沉默的，也是执拗的、难以通融的。你仅有一个方法通过它。</i>",
+    "desc": "色相：<color=#F96C6C>红</color>\n受到直接攻击后，会迅速朝来袭方向举盾防御，在接下来战斗内完全免疫来自该方向的伤害\n\n<size=85%><i>它是陌生而沉默的，也是执拗的、难以通融的。你仅有一个方法通过它。</i>",
     "shape": "2#3",
     "race": "red",
-    "attack": 1,
-    "hpCap": 7,
-    "defense": 1,
+    "attack": 3,
+    "hpCap": 8,
+    "defense": 0,
     "skillIds": "33100701#33100702#33100703#33100704",
     "moveType": "normalDrop",
     "illustrationShow": 1,
@@ -318,12 +318,12 @@
   {
     "id": 331008,
     "name": "红岩傀儡",
-    "desc": "色相：<color=#F96C6C>红</color>\n受到直接攻击后，攻击力+2\n\n<size=85%><i>极低的维护成本很快成了它们在就业方面的优势。</i>",
+    "desc": "色相：<color=#F96C6C>红</color>\n受到攻击后，对周围区域发起攻击\n\n<size=85%><i>极低的维护成本很快成了它们在就业方面的优势。</i>",
     "shape": "1#1",
     "race": "red",
     "attack": 1,
-    "hpCap": 7,
-    "defense": 1,
+    "hpCap": 4,
+    "defense": 0,
     "skillIds": "33100801",
     "moveType": "normalDrop",
     "illustrationShow": 1,
@@ -365,11 +365,11 @@
     "shape": "1#1",
     "race": "red",
     "attack": 1,
-    "hpCap": 7,
-    "defense": 1,
+    "hpCap": 2,
+    "defense": 0,
     "skillIds": "",
     "moveType": "normalDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "32000001",
     "resPath": "v3a3_m_s12_gw1x1_003",
     "scale": [
@@ -381,7 +381,7 @@
       0,
       -0.4
     ],
-    "category": "monster",
+    "category": "",
     "icon": "v3a3_m_s12_gw1x1_003",
     "iconScale": [
       0.75,
@@ -450,7 +450,7 @@
     "desc": "色相：<color=#8DCF84>绿</color>\n无特殊技能",
     "shape": "2#2",
     "race": "green",
-    "attack": 1,
+    "attack": 2,
     "hpCap": 4,
     "defense": 0,
     "skillIds": "",
@@ -496,8 +496,8 @@
     "desc": "色相：<color=#8DCF84>绿</color>\n无特殊技能\n\n<size=85%><i> 它们贪得无厌，痛饮仙人掌汁直至酩酊大醉。</i>",
     "shape": "1#1",
     "race": "green",
-    "attack": 2,
-    "hpCap": 2,
+    "attack": 1,
+    "hpCap": 3,
     "defense": 0,
     "skillIds": "",
     "moveType": "normalDrop",
@@ -540,7 +540,7 @@
     "shape": "2#2",
     "race": "green",
     "attack": 2,
-    "hpCap": 4,
+    "hpCap": 6,
     "defense": 0,
     "skillIds": "",
     "moveType": "normalDrop",
@@ -631,8 +631,8 @@
     "desc": "色相：<color=#8DCF84>绿</color>\n无特殊技能\n\n<size=85%><i>古代运动员为它定制了特别的神秘学鞍具，得以在长途跋涉中不至于晕头转向，或是被背部凶器所伤。</i>",
     "shape": "2#2",
     "race": "green",
-    "attack": 1,
-    "hpCap": 5,
+    "attack": 2,
+    "hpCap": 6,
     "defense": 0,
     "skillIds": "",
     "moveType": "normalDrop",
@@ -678,7 +678,7 @@
     "shape": "1#1",
     "race": "green",
     "attack": 1,
-    "hpCap": 4,
+    "hpCap": 2,
     "defense": 0,
     "skillIds": "",
     "moveType": "normalDrop",
@@ -717,12 +717,12 @@
   {
     "id": 332008,
     "name": "错误粘垢",
-    "desc": "色相：<color=#8DCF84>绿</color>\n仅会被来自左侧的直接攻击命中；一旦受到伤害，即转化为脱壳粘垢\n\n<size=85%><i>这口坩埚中熬制出了一种坚韧的品质：无论遭受多少厌弃，这块胶质也绝不松开它手中的锅沿。</i>",
+    "desc": "色相：<color=#8DCF84>绿</color>\n受到直接攻击时，只能从左侧对其造成伤害；受到来自左侧的直接攻击伤害后，将转化为脱壳粘垢\n\n<size=85%><i>这口坩埚中熬制出了一种坚韧的品质：无论遭受多少厌弃，这块胶质也绝不松开它手中的锅沿。</i>",
     "shape": "1#1",
     "race": "green",
     "attack": 1,
-    "hpCap": 5,
-    "defense": 999,
+    "hpCap": 3,
+    "defense": 99,
     "skillIds": "33200801",
     "moveType": "normalDrop",
     "illustrationShow": 1,
@@ -806,8 +806,8 @@
     "desc": "色相：<color=#92A8EF>蓝</color>\n无特殊技能\n\n<size=85%><i>路边，等，帽子！路边，追，帽子！抓帽子！新帽子！都去！都去！</i>",
     "shape": "1#1",
     "race": "blue",
-    "attack": 2,
-    "hpCap": 2,
+    "attack": 1,
+    "hpCap": 3,
     "defense": 0,
     "skillIds": "",
     "moveType": "normalDrop",
@@ -850,7 +850,7 @@
     "shape": "2#2",
     "race": "blue",
     "attack": 2,
-    "hpCap": 5,
+    "hpCap": 6,
     "defense": 0,
     "skillIds": "",
     "moveType": "normalDrop",
@@ -895,7 +895,7 @@
     "desc": "色相：<color=#92A8EF>蓝</color>\n无特殊技能\n\n<size=85%><i>它热衷于用车轮在草甸与雪原上压出图案，为此，它收集了十几种型号的“画笔”。</i>",
     "shape": "2#3",
     "race": "blue",
-    "attack": 2,
+    "attack": 3,
     "hpCap": 8,
     "defense": 0,
     "skillIds": "",
@@ -941,7 +941,7 @@
     "desc": "色相：<color=#92A8EF>蓝</color>\n无特殊技能\n\n<size=85%><i>排在“不想遇到魔精榜”第32名，被评价为“防不胜防，即使逃脱或打赢也很难洗掉衣物上残留的气味”。</i>",
     "shape": "3#2",
     "race": "blue",
-    "attack": 2,
+    "attack": 3,
     "hpCap": 12,
     "defense": 0,
     "skillIds": "",
@@ -987,7 +987,7 @@
     "desc": "色相：<color=#92A8EF>蓝</color>\n定期从原位消失，随机瞬移至任意位置；若受到攻击，则立刻瞬移至他处\n\n<size=85%><i>追逐船只，只是这个庞大族群征服海洋的过程中，一个小小的插曲。</i>",
     "shape": "3#3",
     "race": "blue",
-    "attack": 5,
+    "attack": 3,
     "hpCap": 18,
     "defense": 0,
     "skillIds": "33300601#33300604",
@@ -1119,7 +1119,7 @@
     "desc": "色相：<color=#D079E2>紫</color>\n不会受毒沼的影响；死亡时，将所停留的地块转化为毒沼\n\n<size=85%><i>收集癖，树枝与破铜烂铁。</i>",
     "shape": "2#2",
     "race": "purple",
-    "attack": 1,
+    "attack": 2,
     "hpCap": 5,
     "defense": 0,
     "skillIds": "33400201#15002",
@@ -1165,8 +1165,8 @@
     "desc": "色相：<color=#D079E2>紫</color>\n不会受毒沼的影响；死亡时，将所停留的地块转化为毒沼\n\n<size=85%><i>蛀牙，蛀牙，蛀牙。请相信，它正在试图减少食糖。</i>",
     "shape": "2#3",
     "race": "purple",
-    "attack": 1,
-    "hpCap": 2,
+    "attack": 3,
+    "hpCap": 12,
     "defense": 0,
     "skillIds": "33400301#15002",
     "moveType": "normalDrop",
@@ -1212,7 +1212,7 @@
     "shape": "1#1",
     "race": "purple",
     "attack": 1,
-    "hpCap": 5,
+    "hpCap": 4,
     "defense": 0,
     "skillIds": "33400401#15002",
     "moveType": "normalDrop",
@@ -1251,15 +1251,15 @@
   {
     "id": 335001,
     "name": "热情的沙锤爱好者",
-    "desc": "定期召唤律动大师，生命值越低，召唤出的数量越多",
+    "desc": "受到攻击后，立刻跳跃至他处；定期召唤律动大师（该生物会定期抛掷定时炸弹），生命值越低，召唤出的数量越多",
     "shape": "1#1",
     "race": "boss",
     "attack": 1,
-    "hpCap": 12,
+    "hpCap": 50,
     "defense": 0,
-    "skillIds": "33500102#33500101#33500108",
+    "skillIds": "33500102#33500101#33500108#33000002#33500113",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_role1x1_005",
     "scale": [
@@ -1271,7 +1271,7 @@
       0,
       -0.4
     ],
-    "category": "monster",
+    "category": "",
     "icon": "v3a3_m_s12_role1x1_005",
     "iconScale": [
       0.75,
@@ -1294,11 +1294,11 @@
   {
     "id": 3350011,
     "name": "律动大师",
-    "desc": "定期抛掷炸弹",
+    "desc": "定期消耗自身1点生命并抛掷1颗定时炸弹。炸弹倒计时6次行动，对周围方形3格范围内的投币手造成3点伤害",
     "shape": "1#1",
     "race": "houzi",
     "attack": 0,
-    "hpCap": 4,
+    "hpCap": 3,
     "defense": 0,
     "skillIds": "33500112",
     "moveType": "noDrop",
@@ -1423,24 +1423,27 @@
   {
     "id": 335003,
     "name": "和谐而稳定的“位元”",
-    "desc": "防御极高，并会定期召唤“幸运位元”",
-    "shape": "1#1",
+    "desc": "定期对周围区域发起攻击，生命值越低，攻击的区域越大大，处于低生命值时，攻击后会跳跃至他处",
+    "shape": "2#2",
     "race": "boss",
-    "attack": 1,
-    "hpCap": 8,
+    "attack": 2,
+    "hpCap": 45,
     "defense": 3,
-    "skillIds": "33500302#33500301",
+    "skillIds": "33500301#33500302#33500312#33500314",
     "moveType": "noDrop",
     "illustrationShow": 1,
     "drop": "",
     "resPath": "v3a3_m_s12_role1x1_004",
     "scale": [
-      1.5,
-      1.5
+      2.65,
+      2.65
     ],
-    "posOffset": [],
+    "posOffset": [
+      0.5,
+      0.5
+    ],
     "hpPos": [
-      0,
+      0.52,
       -0.4
     ],
     "category": "monster",
@@ -1510,12 +1513,58 @@
     "hasCorpse": false
   },
   {
+    "id": 3350032,
+    "name": "“幸运位元”",
+    "desc": "倒计时8次行动或受到攻击后，触发自爆，自爆将对十字范围内的单位造成3点伤害。\n非自爆导致的死亡将使投币手获得1个噪点炸弹",
+    "shape": "1#1",
+    "race": "zhadan1",
+    "attack": 0,
+    "hpCap": 3,
+    "defense": 0,
+    "skillIds": "33500321#33500323#33500325",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_jz1x1_001",
+    "scale": [
+      0.9,
+      0.9
+    ],
+    "posOffset": [
+      0,
+      -0.07
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_jz1x1_001",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
     "id": 335004,
     "name": "“超级猫女”",
-    "desc": "异常多动！\n受到攻击后，会进入\"逃逸\"状态并位移，同时召唤1个“超级猫女（伪）”（该单位会进行十字攻击）",
+    "desc": "会四处走动\n受到攻击后，会进入\"逃逸\"状态并跳跃至他处，同时召唤1个“超级猫女（伪）”（该单位会进行大范围的十字攻击）\n处于“逃逸”时，无法受到伤害。",
     "shape": "1#1",
     "race": "boss",
-    "attack": 1,
+    "attack": 2,
     "hpCap": 12,
     "defense": 0,
     "skillIds": "33500402#33500401#33500403#33000002",
@@ -1601,7 +1650,7 @@
   {
     "id": 3350042,
     "name": "“超级猫女（伪）”",
-    "desc": "",
+    "desc": "会四处走动，定期对十字范围内的投币手造成伤害",
     "shape": "1#1",
     "race": "maonv",
     "attack": 1,
@@ -1644,10 +1693,10 @@
   {
     "id": 335005,
     "name": "卡邦克鲁之王",
-    "desc": "会四处冲撞，造成大量伤害，当前生命低于11时，冲撞的频率会变高和冲撞的速度变快！",
+    "desc": "会四处冲撞，造成大量伤害，处于低生命值时，冲撞的频率会变高和冲撞的速度变快！",
     "shape": "4#6",
     "race": "boss",
-    "attack": 1,
+    "attack": 2,
     "hpCap": 20,
     "defense": 0,
     "skillIds": "33500501",
@@ -1690,11 +1739,11 @@
   {
     "id": 335006,
     "name": "可燃点",
-    "desc": "定期跳跃并对周围区域发起攻击，攻击后该周围区域会变成熔岩带，生命低于一定阈值时，攻击的范围区域变大",
+    "desc": "定期跳跃至他处并对他处周围区域发起攻击，攻击后该周围区域会变成熔岩带，生命低于一定阈值时，攻击的范围区域变大",
     "shape": "1#1",
     "race": "boss",
     "attack": 1,
-    "hpCap": 8,
+    "hpCap": 30,
     "defense": 0,
     "skillIds": "33500601#33500602#33000002",
     "moveType": "noDrop",
@@ -1831,7 +1880,7 @@
     "attack": 0,
     "hpCap": 1,
     "defense": 0,
-    "skillIds": "337001",
+    "skillIds": "33700101",
     "moveType": "normalDrop",
     "illustrationShow": 1,
     "drop": "",
@@ -1877,9 +1926,9 @@
     "attack": 0,
     "hpCap": 1,
     "defense": 0,
-    "skillIds": "337001",
+    "skillIds": "33700101",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_jh1x1_001",
     "scale": [
@@ -1894,8 +1943,100 @@
       0,
       -0.4
     ],
-    "category": "monster",
+    "category": "",
     "icon": "v3a3_m_s12_jh1x1_001",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 337003,
+    "name": "物资箱",
+    "desc": "死亡时使投币手恢复50%能量",
+    "shape": "1#1",
+    "race": "wuzixiang",
+    "attack": 0,
+    "hpCap": 1,
+    "defense": 0,
+    "skillIds": "33700201",
+    "moveType": "normalDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_jh1x1_004",
+    "scale": [
+      0.9,
+      0.9
+    ],
+    "posOffset": [
+      0,
+      -0.07
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_jh1x1_004",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 337004,
+    "name": "物资箱",
+    "desc": "死亡时使投币手恢复50%能量",
+    "shape": "1#1",
+    "race": "wuzixiang",
+    "attack": 0,
+    "hpCap": 1,
+    "defense": 0,
+    "skillIds": "33700201",
+    "moveType": "noDrop",
+    "illustrationShow": 0,
+    "drop": "",
+    "resPath": "v3a3_m_s12_jh1x1_004",
+    "scale": [
+      0.9,
+      0.9
+    ],
+    "posOffset": [
+      0,
+      -0.07
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_jh1x1_004",
     "iconScale": [
       0.75,
       0.75
@@ -1940,8 +2081,8 @@
       0,
       -0.4
     ],
-    "category": "",
-    "icon": "",
+    "category": "monster",
+    "icon": "v3a3_m_s12_jh1x1_010",
     "iconScale": [
       0.75,
       0.75
@@ -1971,7 +2112,7 @@
     "defense": 0,
     "skillIds": "",
     "moveType": "normalDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "100011",
     "resPath": "v3a3_m_s12_jh1x1_010",
     "scale": [
@@ -1987,7 +2128,7 @@
       -0.4
     ],
     "category": "",
-    "icon": "",
+    "icon": "v3a3_m_s12_jh1x1_010",
     "iconScale": [
       0.75,
       0.75
@@ -2017,7 +2158,7 @@
     "defense": 0,
     "skillIds": "",
     "moveType": "normalDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "100012",
     "resPath": "v3a3_m_s12_jh1x1_010",
     "scale": [
@@ -2033,7 +2174,7 @@
       -0.4
     ],
     "category": "",
-    "icon": "",
+    "icon": "v3a3_m_s12_jh1x1_010",
     "iconScale": [
       0.75,
       0.75
@@ -2063,7 +2204,7 @@
     "defense": 0,
     "skillIds": "",
     "moveType": "normalDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "100013",
     "resPath": "v3a3_m_s12_jh1x1_010",
     "scale": [
@@ -2079,7 +2220,7 @@
       -0.4
     ],
     "category": "",
-    "icon": "",
+    "icon": "v3a3_m_s12_jh1x1_010",
     "iconScale": [
       0.75,
       0.75
@@ -2109,7 +2250,7 @@
     "defense": 0,
     "skillIds": "",
     "moveType": "normalDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "100014",
     "resPath": "v3a3_m_s12_jh1x1_010",
     "scale": [
@@ -2125,7 +2266,7 @@
       -0.4
     ],
     "category": "",
-    "icon": "",
+    "icon": "v3a3_m_s12_jh1x1_010",
     "iconScale": [
       0.75,
       0.75
@@ -2155,7 +2296,7 @@
     "defense": 0,
     "skillIds": "",
     "moveType": "normalDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "100015",
     "resPath": "v3a3_m_s12_jh1x1_010",
     "scale": [
@@ -2171,7 +2312,7 @@
       -0.4
     ],
     "category": "",
-    "icon": "",
+    "icon": "v3a3_m_s12_jh1x1_010",
     "iconScale": [
       0.75,
       0.75
@@ -2216,8 +2357,8 @@
       0,
       -0.4
     ],
-    "category": "",
-    "icon": "",
+    "category": "monster",
+    "icon": "v3a3_m_s12_jh1x1_009",
     "iconScale": [
       0.75,
       0.75
@@ -2247,7 +2388,7 @@
     "defense": 0,
     "skillIds": "",
     "moveType": "normalDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "100002",
     "resPath": "v3a3_m_s12_jh1x1_009",
     "scale": [
@@ -2263,7 +2404,7 @@
       -0.4
     ],
     "category": "",
-    "icon": "",
+    "icon": "v3a3_m_s12_jh1x1_009",
     "iconScale": [
       0.75,
       0.75
@@ -2293,7 +2434,7 @@
     "defense": 0,
     "skillIds": "",
     "moveType": "normalDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "100003",
     "resPath": "v3a3_m_s12_jh1x1_009",
     "scale": [
@@ -2309,7 +2450,7 @@
       -0.4
     ],
     "category": "",
-    "icon": "",
+    "icon": "v3a3_m_s12_jh1x1_009",
     "iconScale": [
       0.75,
       0.75
@@ -2339,7 +2480,7 @@
     "defense": 0,
     "skillIds": "",
     "moveType": "normalDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "100004",
     "resPath": "v3a3_m_s12_jh1x1_009",
     "scale": [
@@ -2355,7 +2496,7 @@
       -0.4
     ],
     "category": "",
-    "icon": "",
+    "icon": "v3a3_m_s12_jh1x1_009",
     "iconScale": [
       0.75,
       0.75
@@ -2385,7 +2526,7 @@
     "defense": 0,
     "skillIds": "",
     "moveType": "normalDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "100005",
     "resPath": "v3a3_m_s12_jh1x1_009",
     "scale": [
@@ -2401,7 +2542,7 @@
       -0.4
     ],
     "category": "",
-    "icon": "",
+    "icon": "v3a3_m_s12_jh1x1_009",
     "iconScale": [
       0.75,
       0.75
@@ -2431,7 +2572,7 @@
     "defense": 0,
     "skillIds": "",
     "moveType": "normalDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "100006",
     "resPath": "v3a3_m_s12_jh1x1_009",
     "scale": [
@@ -2447,7 +2588,7 @@
       -0.4
     ],
     "category": "",
-    "icon": "",
+    "icon": "v3a3_m_s12_jh1x1_009",
     "iconScale": [
       0.75,
       0.75
@@ -2468,8 +2609,8 @@
   },
   {
     "id": 100001,
-    "name": "测试怪",
-    "desc": "死亡时，随机掉落一把武器",
+    "name": "",
+    "desc": "",
     "shape": "1#1",
     "race": "green",
     "attack": 1,
@@ -2511,8 +2652,8 @@
   },
   {
     "id": 100002,
-    "name": "测试怪",
-    "desc": "死亡时，使攻击来源回复1点当前生命",
+    "name": "",
+    "desc": "",
     "shape": "1#1",
     "race": "green",
     "attack": 1,
@@ -2554,8 +2695,8 @@
   },
   {
     "id": 100003,
-    "name": "测试怪",
-    "desc": "死亡时，使攻击来源获得100%能量",
+    "name": "",
+    "desc": "",
     "shape": "1#1",
     "race": "green",
     "attack": 1,
@@ -2597,7 +2738,7 @@
   },
   {
     "id": 100004,
-    "name": "测试怪",
+    "name": "",
     "desc": "",
     "shape": "1#1",
     "race": "green",
@@ -2640,8 +2781,8 @@
   },
   {
     "id": 100005,
-    "name": "测试怪",
-    "desc": "生命小于等于2时，攻击力+2",
+    "name": "",
+    "desc": "",
     "shape": "1#1",
     "race": "green",
     "attack": 1,
@@ -2683,8 +2824,8 @@
   },
   {
     "id": 100006,
-    "name": "测试怪",
-    "desc": "死亡时，使攻击来源获得100%能量",
+    "name": "",
+    "desc": "",
     "shape": "1#1",
     "race": "green",
     "attack": 1,
@@ -2726,7 +2867,7 @@
   },
   {
     "id": 100007,
-    "name": "测试怪",
+    "name": "",
     "desc": "",
     "shape": "1#1",
     "race": "green",
@@ -2769,7 +2910,7 @@
   },
   {
     "id": 100008,
-    "name": "测试怪",
+    "name": "",
     "desc": "",
     "shape": "1#1",
     "race": "green",
@@ -2812,8 +2953,8 @@
   },
   {
     "id": 100009,
-    "name": "测试怪",
-    "desc": "死亡时，使自身处于的地块变成毒地板",
+    "name": "",
+    "desc": "",
     "shape": "1#1",
     "race": "green",
     "attack": 1,
@@ -2855,8 +2996,8 @@
   },
   {
     "id": 100010,
-    "name": "测试怪",
-    "desc": "死亡时，召唤5个兴奋的街机爱好者",
+    "name": "",
+    "desc": "",
     "shape": "1#1",
     "race": "green",
     "attack": 1,
@@ -2898,8 +3039,8 @@
   },
   {
     "id": 100011,
-    "name": "测试怪",
-    "desc": "交互选项后，失去当前的武器",
+    "name": "",
+    "desc": "",
     "shape": "1#1",
     "race": "green",
     "attack": 1,
@@ -2941,8 +3082,8 @@
   },
   {
     "id": 100012,
-    "name": "测试怪",
-    "desc": "受到攻击后，自身死亡并在原地召唤1个兴奋的街机爱好者",
+    "name": "",
+    "desc": "",
     "shape": "1#1",
     "race": "green",
     "attack": 1,
@@ -2984,8 +3125,8 @@
   },
   {
     "id": 100013,
-    "name": "测试怪",
-    "desc": "跳跃",
+    "name": "",
+    "desc": "",
     "shape": "1#1",
     "race": "green",
     "attack": 1,
@@ -3027,8 +3168,8 @@
   },
   {
     "id": 100014,
-    "name": "测试怪",
-    "desc": "常规移动（会被阻挡），向左移动1格",
+    "name": "",
+    "desc": "",
     "shape": "1#1",
     "race": "green",
     "attack": 1,
@@ -3070,8 +3211,8 @@
   },
   {
     "id": 100015,
-    "name": "测试怪",
-    "desc": "发起预警攻击，3回合后对3*3范围内的所有单位造成3点伤害",
+    "name": "",
+    "desc": "",
     "shape": "1#1",
     "race": "green",
     "attack": 1,
@@ -3113,8 +3254,8 @@
   },
   {
     "id": 100016,
-    "name": "测试怪",
-    "desc": "对左侧发起冲撞，造成2点伤害",
+    "name": "",
+    "desc": "",
     "shape": "1#1",
     "race": "green",
     "attack": 1,
@@ -3156,8 +3297,8 @@
   },
   {
     "id": 100017,
-    "name": "测试怪",
-    "desc": "回合开始时，随机释放技能：50%释放100013，50%释放100016",
+    "name": "",
+    "desc": "",
     "shape": "1#1",
     "race": "green",
     "attack": 1,
@@ -3199,8 +3340,8 @@
   },
   {
     "id": 100018,
-    "name": "测试怪",
-    "desc": "死亡时，给玩家施加103隐身buff",
+    "name": "",
+    "desc": "",
     "shape": "1#1",
     "race": "green",
     "attack": 1,
@@ -3242,8 +3383,8 @@
   },
   {
     "id": 100019,
-    "name": "测试怪",
-    "desc": "死亡时，移除玩家的103隐身buff",
+    "name": "",
+    "desc": "",
     "shape": "1#1",
     "race": "green",
     "attack": 1,
@@ -3285,8 +3426,8 @@
   },
   {
     "id": 100020,
-    "name": "测试怪",
-    "desc": "怪物回合开始时，怪物自杀",
+    "name": "",
+    "desc": "",
     "shape": "1#1",
     "race": "green",
     "attack": 1,
@@ -3328,8 +3469,8 @@
   },
   {
     "id": 100021,
-    "name": "测试怪",
-    "desc": "自身3*3范围内有玩家的话，怪物自杀",
+    "name": "",
+    "desc": "",
     "shape": "1#1",
     "race": "green",
     "attack": 1,
@@ -3371,8 +3512,8 @@
   },
   {
     "id": 100022,
-    "name": "测试怪",
-    "desc": "受到左侧的攻击时，获得“向左举盾”buff",
+    "name": "",
+    "desc": "",
     "shape": "1#1",
     "race": "green",
     "attack": 1,
@@ -3414,8 +3555,8 @@
   },
   {
     "id": 100023,
-    "name": "测试怪",
-    "desc": "受到攻击后，使相邻的怪物回1点血",
+    "name": "",
+    "desc": "",
     "shape": "1#1",
     "race": "green",
     "attack": 1,
@@ -3457,8 +3598,8 @@
   },
   {
     "id": 100024,
-    "name": "测试怪",
-    "desc": "追寻着微尘的小魔精\n它的臭气熏天，而脾气却更甚。",
+    "name": "",
+    "desc": "",
     "shape": "1#1",
     "race": "purple",
     "attack": 1,
@@ -3500,8 +3641,8 @@
   },
   {
     "id": 100025,
-    "name": "测试怪",
-    "desc": "追寻着微尘的小魔精\n它的臭气熏天，而脾气却更甚。",
+    "name": "",
+    "desc": "",
     "shape": "1#1",
     "race": "purple",
     "attack": 1,
@@ -3543,8 +3684,8 @@
   },
   {
     "id": 100026,
-    "name": "测试怪",
-    "desc": "小血包描述",
+    "name": "",
+    "desc": "",
     "shape": "1#1",
     "race": "NoneY",
     "attack": 0,
@@ -3586,8 +3727,8 @@
   },
   {
     "id": 100030,
-    "name": "测试怪",
-    "desc": "投掷炸弹",
+    "name": "",
+    "desc": "",
     "shape": "1#1",
     "race": "green",
     "attack": 1,
@@ -3629,8 +3770,8 @@
   },
   {
     "id": 100031,
-    "name": "测试怪",
-    "desc": "不受火地板的影响",
+    "name": "",
+    "desc": "",
     "shape": "1#1",
     "race": "green",
     "attack": 1,
@@ -3672,8 +3813,8 @@
   },
   {
     "id": 100032,
-    "name": "测试怪",
-    "desc": "死亡时，生成商店传送门",
+    "name": "",
+    "desc": "",
     "shape": "1#1",
     "race": "green",
     "attack": 1,
@@ -4061,6 +4202,491 @@
     "iconOffset": [
       0,
       -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 200009,
+    "name": "特殊的闪闪卡邦克鲁",
+    "desc": "色相：<color=#D079E2>紫</color>\n一回合后自动死亡，死亡时，将所停留的地块转化为毒沼，毒沼将持续永久\n\n<size=85%><i>它的臭气熏天，而脾气却更甚。</i>",
+    "shape": "1#1",
+    "race": "purple",
+    "attack": 1,
+    "hpCap": 1,
+    "defense": 0,
+    "skillIds": "20000901#100020",
+    "moveType": "noDrop",
+    "illustrationShow": 0,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_010",
+    "scale": [
+      0.9,
+      0.9
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_010",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 200010,
+    "name": "特殊的缪斯秘宝宝箱",
+    "desc": "死亡时，使投币手获得1个“不会受到毒沼的伤害”的缪斯秘宝",
+    "shape": "2#2",
+    "race": "wuqixiang",
+    "attack": 0,
+    "hpCap": 1,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "noDrop",
+    "illustrationShow": 0,
+    "drop": "15002",
+    "resPath": "v3a3_m_s12_jh1x1_009",
+    "scale": [
+      1.5,
+      1.5
+    ],
+    "posOffset": [
+      0.46,
+      0.46
+    ],
+    "hpPos": [
+      0.53,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_jh1x1_009",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 200011,
+    "name": "特殊的闪闪卡邦克鲁",
+    "desc": "色相：<color=#D079E2>紫</color>\n一回合后自动死亡，死亡时会掉落通往下一关的传送门\n\n<size=85%><i>它的臭气熏天，而脾气却更甚。</i>",
+    "shape": "1#1",
+    "race": "boss",
+    "attack": 1,
+    "hpCap": 1,
+    "defense": 0,
+    "skillIds": "100020",
+    "moveType": "noDrop",
+    "illustrationShow": 0,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_010",
+    "scale": [
+      0.9,
+      0.9
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_010",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 200012,
+    "name": "特殊的煤烟卡邦克鲁",
+    "desc": "色相：<color=#F96C6C>红</color>\n一回合后自动死亡，死亡时，将所停留的地块转化为熔岩带，熔岩带将持续永久\n\n<size=85%><i>堵塞烟囱、弄熄壁炉、绊倒灯倌，它闯下的祸数不胜数。</i>",
+    "shape": "1#1",
+    "race": "red",
+    "attack": 1,
+    "hpCap": 3,
+    "defense": 0,
+    "skillIds": "20001201#100020",
+    "moveType": "noDrop",
+    "illustrationShow": 0,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_005",
+    "scale": [
+      0.81,
+      1.62
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_005",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 200013,
+    "name": "特殊的缪斯秘宝宝箱",
+    "desc": "死亡时，使投币手获得1个“不会受到熔岩带的伤害”的缪斯秘宝",
+    "shape": "2#2",
+    "race": "wuqixiang",
+    "attack": 0,
+    "hpCap": 1,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "noDrop",
+    "illustrationShow": 0,
+    "drop": "15003",
+    "resPath": "v3a3_m_s12_jh1x1_009",
+    "scale": [
+      1.5,
+      1.5
+    ],
+    "posOffset": [
+      0.39,
+      0.38
+    ],
+    "hpPos": [
+      0.53,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_jh1x1_009",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 200014,
+    "name": "特殊的煤烟卡邦克鲁",
+    "desc": "色相：<color=#F96C6C>红</color>\n一回合后自动死亡，死亡时会掉落通往下一关的传送门\n\n<size=85%><i>堵塞烟囱、弄熄壁炉、绊倒灯倌，它闯下的祸数不胜数。</i>",
+    "shape": "1#1",
+    "race": "boss",
+    "attack": 1,
+    "hpCap": 1,
+    "defense": 0,
+    "skillIds": "100020",
+    "moveType": "noDrop",
+    "illustrationShow": 0,
+    "drop": "",
+    "resPath": "v3a3_m_s12_gw1x1_005",
+    "scale": [
+      0.81,
+      1.62
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_005",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 335101,
+    "name": "热情的沙锤爱好者",
+    "desc": "定期召唤律动大师，生命值越低，召唤出的数量越多\n受到攻击后，跳跃至他处",
+    "shape": "1#1",
+    "race": "boss",
+    "attack": 1,
+    "hpCap": 30,
+    "defense": 0,
+    "skillIds": "33500102#33510101#33500108#33000002#33500113",
+    "moveType": "noDrop",
+    "illustrationShow": 0,
+    "drop": "",
+    "resPath": "v3a3_m_s12_role1x1_005",
+    "scale": [
+      1.5,
+      1.5
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_role1x1_005",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      -9.3,
+      -11.8
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 335103,
+    "name": "和谐而稳定的“位元”",
+    "desc": "定期对周围区域发起攻击，生命值越低，攻击的区域越大大，处于低生命值时，攻击后会跳跃至他处",
+    "shape": "2#2",
+    "race": "boss",
+    "attack": 2,
+    "hpCap": 30,
+    "defense": 0,
+    "skillIds": "33500301#33500302#33510301#33500314#33500113",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_role1x1_004",
+    "scale": [
+      2.65,
+      2.65
+    ],
+    "posOffset": [
+      0.5,
+      0.5
+    ],
+    "hpPos": [
+      0.52,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_role1x1_004",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -11.8
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 335106,
+    "name": "可燃点",
+    "desc": "定期跳跃并对周围区域发起攻击，攻击后该周围区域会变成熔岩带，生命低于一定阈值时，攻击的范围区域变大",
+    "shape": "1#1",
+    "race": "boss",
+    "attack": 1,
+    "hpCap": 24,
+    "defense": 0,
+    "skillIds": "33510601#33500602#33000002",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_role1x1_002",
+    "scale": [
+      1.5,
+      1.5
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_role1x1_002",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -11.8
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 335203,
+    "name": "和谐而稳定的“位元”",
+    "desc": "定期对周围区域发起攻击，生命值越低，攻击的区域越大大，处于低生命值时，攻击后会跳跃至他处",
+    "shape": "2#2",
+    "race": "boss",
+    "attack": 1,
+    "hpCap": 24,
+    "defense": 0,
+    "skillIds": "33500301#33500302#33520301#33500314#33500113",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_role1x1_004",
+    "scale": [
+      2.65,
+      2.65
+    ],
+    "posOffset": [
+      0.5,
+      0.5
+    ],
+    "hpPos": [
+      0.52,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_role1x1_004",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -11.8
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": false
+  },
+  {
+    "id": 335206,
+    "name": "可燃点",
+    "desc": "定期跳跃并对周围区域发起攻击，攻击后该周围区域会变成熔岩带，生命低于一定阈值时，攻击的范围区域变大",
+    "shape": "1#1",
+    "race": "boss",
+    "attack": 1,
+    "hpCap": 18,
+    "defense": 0,
+    "skillIds": "33520601#33500602#33000002",
+    "moveType": "noDrop",
+    "illustrationShow": 1,
+    "drop": "",
+    "resPath": "v3a3_m_s12_role1x1_002",
+    "scale": [
+      1.5,
+      1.5
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "monster",
+    "icon": "v3a3_m_s12_role1x1_002",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -11.8
     ],
     "iconScale2": [
       1,

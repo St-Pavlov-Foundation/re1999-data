@@ -8,7 +8,7 @@
     "notSubInRoundBegin": false,
     "showPriority": 2,
     "gainEffect": 0,
-    "loopEffect": 0
+    "loopEffect": 689010055
   },
   {
     "id": 102,
@@ -19,7 +19,7 @@
     "notSubInRoundBegin": false,
     "showPriority": 2,
     "gainEffect": 0,
-    "loopEffect": 0
+    "loopEffect": 689010056
   },
   {
     "id": 103,
@@ -37,7 +37,7 @@
     "effectParam": "NotBeCountered",
     "addPassiveSkillId": 40001,
     "entityType": "character",
-    "round": 7,
+    "round": 10,
     "notSubInRoundBegin": false,
     "showPriority": 1,
     "gainEffect": 689010002,
@@ -85,7 +85,7 @@
     "notSubInRoundBegin": true,
     "showPriority": 0,
     "gainEffect": 689010033,
-    "loopEffect": 689010034
+    "loopEffect": 689010059
   },
   {
     "id": 302,
@@ -96,7 +96,7 @@
     "notSubInRoundBegin": true,
     "showPriority": 0,
     "gainEffect": 689010033,
-    "loopEffect": 689010034
+    "loopEffect": 689010060
   },
   {
     "id": 303,
@@ -107,7 +107,7 @@
     "notSubInRoundBegin": true,
     "showPriority": 0,
     "gainEffect": 689010033,
-    "loopEffect": 689010034
+    "loopEffect": 689010061
   },
   {
     "id": 304,
@@ -118,6 +118,6 @@
     "notSubInRoundBegin": true,
     "showPriority": 0,
     "gainEffect": 689010033,
-    "loopEffect": 689010034
+    "loopEffect": 689010062
   }
 ]

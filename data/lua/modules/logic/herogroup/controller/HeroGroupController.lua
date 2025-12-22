@@ -215,7 +215,7 @@ function HeroGroupController:changeToDefaultEquip()
 		heroMo = HeroModel.instance:getById(heroUid)
 		equipIndex = index - 1
 
-		if heroMo and heroMo:hasDefaultEquip() and heroMo.defaultEquipUid ~= equipMoList[equipIndex].equipUid[1] then
+		if heroMo and heroMo:hasDefaultEquip() and equipMoList[equipIndex] and heroMo.defaultEquipUid ~= equipMoList[equipIndex].equipUid[1] then
 			local preFindIndex = self:_checkEquipInPreviousEquip(equipIndex - 1, heroMo.defaultEquipUid, equipMoList)
 
 			if equipIndex <= preFindIndex then

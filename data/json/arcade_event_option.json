@@ -2,9 +2,25 @@
   {
     "id": 320000201,
     "type": "triggerPassiveSkill",
-    "optionDesc": "回复生命",
+    "optionDesc": "获得祝福",
     "condition": "",
     "param": "320000201",
+    "descChange": ""
+  },
+  {
+    "id": 320000202,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "获得祝福",
+    "condition": "",
+    "param": "320000202",
+    "descChange": ""
+  },
+  {
+    "id": 320000203,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "获得100像素金币",
+    "condition": "",
+    "param": "320000203",
     "descChange": ""
   },
   {
@@ -34,7 +50,7 @@
   {
     "id": 320700102,
     "type": "triggerPassiveSkill",
-    "optionDesc": "获得5个噪点炸弹",
+    "optionDesc": "购买5个噪点炸弹",
     "condition": "checkAttrValue#201#500",
     "param": "320700102",
     "descChange": "你已做出了选择！"
@@ -43,7 +59,7 @@
     "id": 320700201,
     "type": "triggerPassiveSkill",
     "optionDesc": "复活次数-1",
-    "condition": "",
+    "condition": "checkAttrValue#206#1",
     "param": "320700201",
     "descChange": "“谢谢你……”"
   },
@@ -53,7 +69,7 @@
     "optionDesc": "获得“惊喜胶囊γ”",
     "condition": "",
     "param": "320700301",
-    "descChange": ""
+    "descChange": "<sprite=0>"
   },
   {
     "id": 320700302,
@@ -61,7 +77,7 @@
     "optionDesc": "获得“惊喜胶囊β”",
     "condition": "",
     "param": "320700302",
-    "descChange": ""
+    "descChange": "<sprite=1>"
   },
   {
     "id": 320700303,
@@ -69,7 +85,7 @@
     "optionDesc": "获得“惊喜胶囊α”",
     "condition": "",
     "param": "320700303",
-    "descChange": ""
+    "descChange": "<sprite=2>"
   },
   {
     "id": 320700401,
@@ -85,7 +101,15 @@
     "optionDesc": "花费金币",
     "condition": "checkAttrValue#201#1000",
     "param": "320700501",
-    "descChange": ""
+    "descChange": "你已做出了选择！"
+  },
+  {
+    "id": 320700502,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "“斯普特尼克”可选",
+    "condition": "checkHaveCollection#16002",
+    "param": "320700502",
+    "descChange": "吱吱！吱——吱吱咿！啪唦啪唦！"
   },
   {
     "id": 320700601,
@@ -93,12 +117,20 @@
     "optionDesc": "花费金币",
     "condition": "checkAttrValue#201#1000",
     "param": "320700601",
-    "descChange": ""
+    "descChange": "你已做出了选择！"
+  },
+  {
+    "id": 320700602,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "投币手“6”可选",
+    "condition": "checkHaveCollection#16003",
+    "param": "320700602",
+    "descChange": "它能令您更接近完满。"
   },
   {
     "id": 320700701,
     "type": "triggerPassiveSkill",
-    "optionDesc": "打开",
+    "optionDesc": "用钥匙打开",
     "condition": "checkHaveCollection#11002",
     "param": "320700701",
     "descChange": "这个宝箱已经被你掏空啦！"
@@ -140,8 +172,8 @@
     "type": "triggerPassiveSkill",
     "optionDesc": "寻找秘宝",
     "condition": "",
-    "param": "320701101",
-    "descChange": "唔，什么也没找到……"
+    "param": "320701301",
+    "descChange": "你寻找到了一些像素金币。"
   },
   {
     "id": 320701201,
@@ -173,7 +205,7 @@
     "optionDesc": "换取秘宝",
     "condition": "checkAttrValue#104#6",
     "param": "320702001",
-    "descChange": ""
+    "descChange": "它会给你无尽的力量……"
   },
   {
     "id": 320702102,
@@ -181,7 +213,63 @@
     "optionDesc": "换取秘宝",
     "condition": "checkAttrValue#104#6",
     "param": "320702102",
+    "descChange": "它能让你的十分坚固……"
+  },
+  {
+    "id": 320702401,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "复活次数+1",
+    "condition": "checkAttrValue#103#6",
+    "param": "320702401",
+    "descChange": "你已做出了选择！"
+  },
+  {
+    "id": 320702501,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "随机获得1个缪斯秘宝",
+    "condition": "checkAttrValue#201#1500",
+    "param": "320702501",
     "descChange": ""
+  },
+  {
+    "id": 320702601,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "随机获得1个缪斯秘宝",
+    "condition": "",
+    "param": "320702601",
+    "descChange": "你已做出了选择！"
+  },
+  {
+    "id": 320702602,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "投币手“沙丝绒”可选",
+    "condition": "checkHaveCollection#16005",
+    "param": "320702602",
+    "descChange": "获得缪斯秘宝“波拉比”"
+  },
+  {
+    "id": 320702701,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "随机获得1个缪斯秘宝",
+    "condition": "",
+    "param": "320702701",
+    "descChange": "你已做出了选择！"
+  },
+  {
+    "id": 320702702,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "投币手“可燃点”可选",
+    "condition": "checkHaveCollection#16004",
+    "param": "320702702",
+    "descChange": "获得缪斯秘宝“微弱的小火苗”"
+  },
+  {
+    "id": 320702801,
+    "type": "triggerPassiveSkill",
+    "optionDesc": "换取秘宝",
+    "condition": "",
+    "param": "320702801",
+    "descChange": "它会给你无尽的能量……"
   },
   {
     "id": 101,
@@ -245,14 +333,6 @@
     "optionDesc": "传送",
     "condition": "",
     "param": "32115001",
-    "descChange": ""
-  },
-  {
-    "id": 32006001,
-    "type": "transmitRoom",
-    "optionDesc": "传送",
-    "condition": "",
-    "param": "32006001",
     "descChange": ""
   },
   {
@@ -365,6 +445,22 @@
     "optionDesc": "传送",
     "condition": "",
     "param": "32222003",
+    "descChange": ""
+  },
+  {
+    "id": 32222004,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32222004",
+    "descChange": ""
+  },
+  {
+    "id": 32222005,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32222005",
     "descChange": ""
   },
   {
@@ -488,6 +584,22 @@
     "descChange": ""
   },
   {
+    "id": 32322004,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32322004",
+    "descChange": ""
+  },
+  {
+    "id": 32322005,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32322005",
+    "descChange": ""
+  },
+  {
     "id": 32323001,
     "type": "transmitRoom",
     "optionDesc": "传送",
@@ -557,6 +669,22 @@
     "optionDesc": "传送",
     "condition": "",
     "param": "32342001",
+    "descChange": ""
+  },
+  {
+    "id": 32342002,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32342002",
+    "descChange": ""
+  },
+  {
+    "id": 32342003,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32342003",
     "descChange": ""
   },
   {
@@ -656,22 +784,6 @@
     "descChange": ""
   },
   {
-    "id": 320712,
-    "type": "transmitRoom",
-    "optionDesc": "传送",
-    "condition": "",
-    "param": "320712",
-    "descChange": ""
-  },
-  {
-    "id": 320713,
-    "type": "transmitRoom",
-    "optionDesc": "传送",
-    "condition": "",
-    "param": "320713",
-    "descChange": ""
-  },
-  {
     "id": 320714,
     "type": "transmitRoom",
     "optionDesc": "传送",
@@ -693,6 +805,86 @@
     "optionDesc": "传送",
     "condition": "",
     "param": "320716",
+    "descChange": ""
+  },
+  {
+    "id": 320717,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "320717",
+    "descChange": ""
+  },
+  {
+    "id": 320718,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "320718",
+    "descChange": ""
+  },
+  {
+    "id": 320719,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "320719",
+    "descChange": ""
+  },
+  {
+    "id": 320720,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "320720",
+    "descChange": ""
+  },
+  {
+    "id": 320721,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "320721",
+    "descChange": ""
+  },
+  {
+    "id": 320722,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "320722",
+    "descChange": ""
+  },
+  {
+    "id": 320723,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "320723",
+    "descChange": ""
+  },
+  {
+    "id": 320724,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "320724",
+    "descChange": ""
+  },
+  {
+    "id": 320725,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "320725",
+    "descChange": ""
+  },
+  {
+    "id": 320726,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "320726",
     "descChange": ""
   },
   {
@@ -789,6 +981,46 @@
     "optionDesc": "获得1个噪点炸弹",
     "condition": "checkAttrValue#201#500",
     "param": "320060031",
+    "descChange": ""
+  },
+  {
+    "id": 32006001,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32006001",
+    "descChange": ""
+  },
+  {
+    "id": 32006011,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32006002",
+    "descChange": ""
+  },
+  {
+    "id": 32006021,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32006003",
+    "descChange": ""
+  },
+  {
+    "id": 32006031,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32006004",
+    "descChange": ""
+  },
+  {
+    "id": 32006041,
+    "type": "transmitRoom",
+    "optionDesc": "传送",
+    "condition": "",
+    "param": "32006005",
     "descChange": ""
   }
 ]

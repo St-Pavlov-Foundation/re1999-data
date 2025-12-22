@@ -4,18 +4,19 @@ module("modules.configs.excel2json.lua_arcade_bomb", package.seeall)
 
 local lua_arcade_bomb = {}
 local fields = {
-	scale = 6,
+	skillDesc = 3,
 	name = 2,
-	damage = 7,
+	damage = 8,
 	resPath = 5,
-	icon = 12,
-	target = 9,
-	countdown = 8,
-	addFloor = 10,
-	skill = 11,
+	icon = 13,
+	target = 10,
+	countdown = 9,
+	addFloor = 11,
+	skill = 12,
+	effectDefault = 6,
 	id = 1,
 	shape = 4,
-	skillDesc = 3
+	scale = 7
 }
 local primaryKey = {
 	"id"

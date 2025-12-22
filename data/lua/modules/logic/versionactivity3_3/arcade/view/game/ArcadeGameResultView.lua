@@ -43,7 +43,7 @@ function ArcadeGameResultView:removeEvents()
 end
 
 function ArcadeGameResultView:_btncloseOnClick()
-	if self._isRestart then
+	if self._isReset then
 		ArcadeGameController.instance:resetGame()
 	else
 		ArcadeController.instance:openHallView()
@@ -69,7 +69,7 @@ function ArcadeGameResultView:onUpdateParam()
 
 	if self.viewParam then
 		self._isWin = self.viewParam.isWin
-		self._isRestart = self.viewParam.isRestart
+		self._isReset = self.viewParam.isReset
 		self._characterId = self.viewParam.characterId
 		self._passLevelCount = self.viewParam.passLevelCount
 		self._killMonsterNum = self.viewParam.killMonsterNum
@@ -117,6 +117,13 @@ function ArcadeGameResultView:onOpen()
 	end
 
 	self._animator:Play(self._isWin and "open" or "open1")
+	UIBlockMgr.instance:startBlock(ArcadeEnum.BlockKey.ResultView)
+	TaskDispatcher.cancelTask(self._onBlockTimeEnd, self)
+	TaskDispatcher.runDelay(self._onBlockTimeEnd, self, TimeUtil.OneSecond)
+end
+
+function ArcadeGameResultView:_onBlockTimeEnd()
+	UIBlockMgr.instance:endBlock(ArcadeEnum.BlockKey.ResultView)
 end
 
 function ArcadeGameResultView:onLoadCharacterIconFinished()
@@ -293,7 +300,8 @@ function ArcadeGameResultView:setCharacterInfo()
 end
 
 function ArcadeGameResultView:onClose()
-	return
+	TaskDispatcher.cancelTask(self._onBlockTimeEnd, self)
+	UIBlockMgr.instance:endBlock(ArcadeEnum.BlockKey.ResultView)
 end
 
 function ArcadeGameResultView:_clearCollectionItems()

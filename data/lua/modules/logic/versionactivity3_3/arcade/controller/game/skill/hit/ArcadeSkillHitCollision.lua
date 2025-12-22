@@ -44,8 +44,8 @@ function ArcadeSkillHitCollision:onHitAction()
 
 	local unitMOList = self._skillTarget:getTargetList()
 
-	self:addHiterList(unitMOList)
 	tabletool.removeValue(unitMOList, target)
+	self:addHiterList(unitMOList)
 
 	local hitHpVal = -self._hp
 

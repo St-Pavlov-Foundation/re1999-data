@@ -37,7 +37,7 @@ function ArcadeEntityEffectComp:playBulletEffect(effectId)
 			scene.effectMgr:playBulletEffect(effectId, entityType, uid)
 		end
 	else
-		local effectGO = self._effectGODict[resName]
+		local effectGO = self._effectGODict[effectId]
 
 		if not gohelper.isNil(effectGO) then
 			self:_beginTweenBullet(effectId, effectGO)
@@ -195,10 +195,15 @@ function ArcadeEntityEffectComp:playEffect(effectId)
 		local mo = self._entity:getMO()
 		local gridX, gridY = mo:getGridPos()
 		local direction = self:_getEntityDir()
+		local playInNearestGrid = ArcadeConfig.instance:getIsNearestGrid(effectId)
+
+		if playInNearestGrid then
+			gridX, gridY = ArcadeGameHelper.getEntityNearCharacterGrid(mo)
+		end
 
 		scene.effectMgr:playEffect2Grid(effectId, gridX, gridY, direction)
 	else
-		local effectGO = self._effectGODict[resName]
+		local effectGO = self._effectGODict[effectId]
 
 		if not gohelper.isNil(effectGO) then
 			gohelper.setActive(effectGO, false)
@@ -246,7 +251,12 @@ function ArcadeEntityEffectComp:onLoadEffectFinished(param)
 
 	self:_setGoRotationByType(effGO, rotationType)
 
-	self._effectGODict[param.resName] = effGO
+	self._effectGODict[effectId] = effGO
+
+	local dir = ArcadeConfig.instance:getEffectDirection(effectId)
+	local x, y = self:_getLocalPosByDir(dir)
+
+	transformhelper.setLocalPos(effGO.transform, x, y, 0)
 
 	if param.isBullet then
 		self:_beginTweenBullet(effectId, effGO)
@@ -271,7 +281,7 @@ function ArcadeEntityEffectComp:removeEffect(effectId)
 		return
 	end
 
-	local effectGO = self._effectGODict[resName]
+	local effectGO = self._effectGODict[effectId]
 
 	if not gohelper.isNil(effectGO) then
 		gohelper.setActive(effectGO, false)
@@ -301,6 +311,17 @@ function ArcadeEntityEffectComp:_getEntityDir()
 	end
 
 	return ArcadeEnum.Direction.Right
+end
+
+function ArcadeEntityEffectComp:_getLocalPosByDir(dir)
+	local sizeX, sizeY = 1, 1
+	local mo = self._entity:getMO()
+
+	if mo then
+		sizeX, sizeY = mo:getSize()
+	end
+
+	return ArcadeGameHelper.getEffectOffSetPos(dir, sizeX, sizeY)
 end
 
 function ArcadeEntityEffectComp:getCompName()

@@ -42,4 +42,22 @@ function ArcadeGameBombMO:getDesc()
 	return ArcadeGameHelper.phraseDesc(cfgDesc, true)
 end
 
+function ArcadeGameBombMO:getIdleShowEffectId()
+	local stateShowEffectId = ArcadeConfig.instance:getBombIdleShowEffectId(self.id)
+
+	if not stateShowEffectId or stateShowEffectId == 0 then
+		stateShowEffectId = ArcadeConfig.instance:getStateShowEffectId(ArcadeGameEnum.StateShowId.Idle)
+	end
+
+	return stateShowEffectId
+end
+
+function ArcadeGameBombMO:isCharacterBomb()
+	local characterMO = ArcadeGameModel.instance:getCharacterMO()
+	local characterId = characterMO and characterMO:getId()
+	local characterBombId = ArcadeConfig.instance:getCharacterBomb(characterId)
+
+	return self.id == characterBombId
+end
+
 return ArcadeGameBombMO

@@ -26,20 +26,26 @@
   {
     "id": 13,
     "clztype": "rect",
-    "targets": "character#monster#",
+    "targets": "character",
     "effect": "3#3"
   },
   {
     "id": 14,
-    "clztype": "rect",
-    "targets": "character",
-    "effect": "3#3"
+    "clztype": "outline",
+    "targets": "character#grid",
+    "effect": "1"
   },
   {
     "id": 15,
-    "clztype": "rect",
-    "targets": "character",
-    "effect": "4#4"
+    "clztype": "outline",
+    "targets": "character#grid",
+    "effect": "2"
+  },
+  {
+    "id": 16,
+    "clztype": "outline",
+    "targets": "character#grid",
+    "effect": "3"
   },
   {
     "id": 101,
@@ -99,7 +105,7 @@
     "id": 305,
     "clztype": "random",
     "targets": "monster",
-    "effect": "4"
+    "effect": "3"
   },
   {
     "id": 306,
@@ -220,6 +226,36 @@
     "clztype": "rect",
     "targets": "grid",
     "effect": "6#6"
+  },
+  {
+    "id": 712,
+    "clztype": "cross",
+    "targets": "character#monster",
+    "effect": "100#100"
+  },
+  {
+    "id": 713,
+    "clztype": "cross",
+    "targets": "grid",
+    "effect": "100#100"
+  },
+  {
+    "id": 714,
+    "clztype": "outline",
+    "targets": "grid",
+    "effect": "1"
+  },
+  {
+    "id": 715,
+    "clztype": "outline",
+    "targets": "grid",
+    "effect": "2"
+  },
+  {
+    "id": 716,
+    "clztype": "cross",
+    "targets": "character",
+    "effect": "100#100"
   },
   {
     "id": 999,

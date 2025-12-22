@@ -17,6 +17,7 @@ function ArcadeGameEntityIcon:init(go)
 	self._godiscount = gohelper.findChild(self.go, "#go_goods/#txt_discount")
 	self._txtdiscount = gohelper.findChildText(self.go, "#go_goods/#txt_discount")
 	self._gochat = gohelper.findChild(self.go, "#go_chat")
+	self._transchat = self._gochat.transform
 	self._gochartcontent = gohelper.findChild(self.go, "#go_chat/#go_content")
 	self._txtchartdesc = gohelper.findChildText(self.go, "#go_chat/#go_content/layout/#txt_desc")
 	self._gochatbubble = gohelper.findChild(self.go, "#go_chat/#go_bubble")
@@ -316,6 +317,13 @@ function ArcadeGameEntityIcon:refreshTalk()
 
 	if self._entityType == ArcadeGameEnum.EntityType.BaseInteractive then
 		hasTalk = ArcadeConfig.instance:isEntityHasTalk(self._id)
+
+		if hasTalk then
+			local sizeX, sizeY = ArcadeConfig.instance:getInteractiveGrid(self._id)
+			local uiGridSize = ArcadeConfig.instance:getArcadeGameUIGridSize()
+
+			transformhelper.setLocalPosXY(self._transchat, (sizeX - 1) / 2 * uiGridSize, (sizeY - 1) * uiGridSize)
+		end
 	end
 
 	gohelper.setActive(self._gochartcontent, true)
@@ -413,7 +421,7 @@ function ArcadeGameEntityIcon:checkShow()
 	local gridX, gridY
 
 	if self._entityType and self._uid then
-		mo = ArcadeGameModel.instance:getMOWithType(self._entityType, self._uid)
+		local mo = ArcadeGameModel.instance:getMOWithType(self._entityType, self._uid)
 
 		if mo then
 			gridX, gridY = mo:getGridPos()

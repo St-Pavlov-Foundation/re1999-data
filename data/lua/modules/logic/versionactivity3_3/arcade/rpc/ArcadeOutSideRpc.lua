@@ -81,6 +81,7 @@ function ArcadeOutSideRpc:onReceiveArcadeTalentUpgradeReply(resultCode, msg)
 
 	ArcadeHeroModel.instance:setTalentLevel(talentId, level)
 	ArcadeController.instance:dispatchEvent(ArcadeEvent.UpLevelTalent, talentId, level)
+	ArcadeStatHelper.instance:sendTalentUpgrade(talentId, level)
 end
 
 function ArcadeOutSideRpc:sendArcadeGainRewardRequest(rewardId, callback, callbackObj)

@@ -294,7 +294,7 @@ function ArcadeNormalRoom:_addExtraMonsterData(refDataList, groupId, occupyGridD
 
 		for row = beginRow + 1, maxOccupyRow do
 			for col = 1, roomSize do
-				local gridId = ArcadeGameHelper.getGridId(row, col)
+				local gridId = ArcadeGameHelper.getGridId(col, row)
 				local isOccupied = occupyGridDict[gridId]
 
 				if not isOccupied then
@@ -325,7 +325,7 @@ function ArcadeNormalRoom:_addExtraMonsterData(refDataList, groupId, occupyGridD
 			newMonsterDataList[#newMonsterDataList + 1] = monsterData
 		end
 
-		remainCount = math.min(0, count - #randomGridList)
+		remainCount = math.max(0, count - #randomGridList)
 	end
 
 	local remainCol = 1
@@ -384,7 +384,7 @@ function ArcadeNormalRoom:_addSpMonsterData(refDataList, spMonsterData, beginRow
 			local sizeX, sizeY = ArcadeConfig.instance:getMonsterSize(spMonsterId)
 
 			if roomSize < count * sizeX then
-				logWarn(string.format("ArcadeNormalRoom:_addSpMonsterData warn, spMonster count:%s sizeX:%s over room x size", count, sizeX))
+				logError(string.format("ArcadeNormalRoom:_addSpMonsterData warn, spMonster count:%s sizeX:%s over room x size", count, sizeX))
 
 				count = math.floor(roomSize / count)
 			end

@@ -22,9 +22,16 @@ function ArcadeGameBaseEntity:init(go)
 	self._playingStateEffectDict = {}
 
 	self:initComponents()
-	self:playStateShow()
 
 	local mo = self:getMO()
+	local delayTime = mo and mo.delayTimeShow
+
+	if delayTime and delayTime > 0 then
+		gohelper.setActive(go, false)
+		TaskDispatcher.runDelay(self._onDelayShow, self, delayTime)
+	else
+		self:playStateShow()
+	end
 
 	if mo then
 		local scaleX, scaleY = mo:getScale()
@@ -83,6 +90,11 @@ function ArcadeGameBaseEntity:_addComp(compName, compClass, useNewGO)
 	self[compName] = compInst
 
 	table.insert(self._compList, compInst)
+end
+
+function ArcadeGameBaseEntity:_onDelayShow()
+	gohelper.setActive(self.go, true)
+	self:playStateShow()
 end
 
 local DEFAULT_IDLE_ANIMA_NAME = "idle_loop"
@@ -180,6 +192,14 @@ function ArcadeGameBaseEntity:playActionShow(showId, direction, showParam, cb, c
 		if gainBuffEffect and gainBuffEffect ~= 0 then
 			self._actionEffectIdList = {
 				gainBuffEffect
+			}
+		end
+	elseif showId == ArcadeGameEnum.ActionShowId.Interactive then
+		local interactEffectId = ArcadeConfig.instance:getInteractiveActingEffId(self.id)
+
+		if interactEffectId and interactEffectId ~= 0 then
+			self._actionEffectIdList = {
+				interactEffectId
 			}
 		end
 	else
@@ -347,6 +367,7 @@ function ArcadeGameBaseEntity:onDestroy()
 	self:_clearActionEffList()
 	self:_clearComps()
 	self:_killMoveTween()
+	TaskDispatcher.cancelTask(self._onDelayShow, self)
 
 	self._finishMoveCb = nil
 	self._finishMoveCbObj = nil

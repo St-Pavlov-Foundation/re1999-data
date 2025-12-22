@@ -3,13 +3,13 @@
     "id": 101,
     "resourcedrop": "",
     "collectiondrop": "",
-    "characterunlock": 101
+    "characterunlock": 102
   },
   {
     "id": 102,
     "resourcedrop": "",
     "collectiondrop": "",
-    "characterunlock": 102
+    "characterunlock": 101
   },
   {
     "id": 103,
@@ -423,6 +423,24 @@
     "id": 14004,
     "resourcedrop": "",
     "collectiondrop": "1000:14004",
+    "characterunlock": 0
+  },
+  {
+    "id": 16007,
+    "resourcedrop": "",
+    "collectiondrop": "1000:16007",
+    "characterunlock": 0
+  },
+  {
+    "id": 16008,
+    "resourcedrop": "",
+    "collectiondrop": "1000:16008",
+    "characterunlock": 0
+  },
+  {
+    "id": 13005,
+    "resourcedrop": "",
+    "collectiondrop": "1000:16005",
     "characterunlock": 0
   }
 ]

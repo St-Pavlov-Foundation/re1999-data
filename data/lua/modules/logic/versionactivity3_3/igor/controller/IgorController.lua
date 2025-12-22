@@ -26,8 +26,10 @@ function IgorController:openGameResultView(isWin, episodeCo)
 	param.episodeCo = episodeCo
 
 	if isWin then
+		IgorController.instance:statOperation(IgorEnum.StatOperationType.Finish)
 		ViewMgr.instance:openView(ViewName.IgorGameSuccessView, param)
 	else
+		IgorController.instance:statOperation(IgorEnum.StatOperationType.Fail)
 		ViewMgr.instance:openView(ViewName.IgorGameFailView, param)
 	end
 end
@@ -114,6 +116,29 @@ function IgorController:_onUpdate()
 
 	gameMO:update(deltaTime)
 	IgorController.instance:dispatchEvent(IgorEvent.OnGameFrameUpdate, deltaTime)
+end
+
+function IgorController:statOperation(operationType)
+	local gameMO = IgorModel.instance:getCurGameMo()
+
+	if not gameMO then
+		return
+	end
+
+	local startTime = gameMO:getStartTime()
+
+	if not startTime then
+		return
+	end
+
+	local gameId = gameMO.id
+	local useTime = Time.realtimeSinceStartup - startTime
+
+	StatController.instance:track(StatEnum.EventName.IgorOperation, {
+		[StatEnum.EventProperties.MapId] = tostring(gameId),
+		[StatEnum.EventProperties.OperationType] = operationType,
+		[StatEnum.EventProperties.UseTime] = useTime
+	})
 end
 
 IgorController.instance = IgorController.New()

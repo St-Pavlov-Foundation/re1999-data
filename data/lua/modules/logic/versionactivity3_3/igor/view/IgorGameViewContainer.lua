@@ -36,6 +36,7 @@ function IgorGameViewContainer:_overrideCloseFunc()
 end
 
 function IgorGameViewContainer:exitGame()
+	IgorController.instance:statOperation(IgorEnum.StatOperationType.Exit)
 	self:closeThis()
 end
 

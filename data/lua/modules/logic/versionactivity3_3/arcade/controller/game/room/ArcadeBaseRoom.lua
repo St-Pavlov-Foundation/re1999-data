@@ -5,9 +5,9 @@ module("modules.logic.versionactivity3_3.arcade.controller.game.room.ArcadeBaseR
 local ArcadeBaseRoom = class("ArcadeBaseRoom")
 
 function ArcadeBaseRoom:ctor(roomType, scene)
+	self._entityOccupyGridDict = nil
 	self._gridDict = nil
 	self._bombGridDict = nil
-	self._entityOccupyGridDict = nil
 	self._roomType = roomType
 	self._scene = scene
 
@@ -15,9 +15,9 @@ function ArcadeBaseRoom:ctor(roomType, scene)
 end
 
 function ArcadeBaseRoom:enter()
+	self._entityOccupyGridDict = {}
 	self._gridDict = {}
 	self._bombGridDict = {}
-	self._entityOccupyGridDict = {}
 	self.id = ArcadeGameModel.instance:getCurRoomId()
 
 	self:_initRoundFlow()
@@ -94,9 +94,9 @@ function ArcadeBaseRoom:exit()
 	self:onExit()
 
 	self.id = nil
+	self._entityOccupyGridDict = {}
 	self._gridDict = {}
 	self._bombGridDict = {}
-	self._entityOccupyGridDict = {}
 	self._beginNewRound = nil
 
 	self:_disposeRoundFlow()
@@ -107,9 +107,9 @@ function ArcadeBaseRoom:clear()
 	self:onClear()
 
 	self.id = nil
+	self._entityOccupyGridDict = nil
 	self._gridDict = nil
 	self._bombGridDict = nil
-	self._entityOccupyGridDict = nil
 	self._beginNewRound = nil
 
 	self:_disposeRoundFlow()
@@ -119,23 +119,28 @@ function ArcadeBaseRoom:clear()
 end
 
 function ArcadeBaseRoom:tryAddEntityOccupyGrids(mo, canOverY)
-	local result = false
-
-	if mo then
-		local gridX, gridY = mo:getGridPos()
-		local sizeX, sizeY = mo:getSize()
-		local entityType = mo:getEntityType()
-		local uid = mo:getUid()
-		local isCanPlace = self:_isCanPlaceEntity(entityType, uid, gridX, gridY, sizeX, sizeY, canOverY)
-
-		if isCanPlace then
-			self:_setOccupyGrids(entityType, uid, gridX, gridY, sizeX, sizeY)
-		else
-			logError(string.format("ArcadeBaseRoom:tryAddEntityOccupyGrids error, entity overlapping,roomId:%s entityId:%s x:%s y:%s sizeX:%s sizeY:%s", self.id, mo:getId(), gridX, gridY, sizeX, sizeY))
-		end
+	if not mo then
+		return false
 	end
 
-	return result
+	local entityType = mo:getEntityType()
+
+	if ArcadeGameEnum.EntityTypeNotOccupyDict[entityType] then
+		return true
+	end
+
+	local gridX, gridY = mo:getGridPos()
+	local sizeX, sizeY = mo:getSize()
+	local uid = mo:getUid()
+	local isCanPlace = self:_isCanPlaceEntity(entityType, uid, gridX, gridY, sizeX, sizeY, canOverY)
+
+	if isCanPlace then
+		self:_setOccupyGrids(entityType, uid, gridX, gridY, sizeX, sizeY)
+	else
+		logError(string.format("ArcadeBaseRoom:tryAddEntityOccupyGrids error, entity overlapping,roomId:%s entityId:%s x:%s y:%s sizeX:%s sizeY:%s", self.id, mo:getId(), gridX, gridY, sizeX, sizeY))
+	end
+
+	return isCanPlace
 end
 
 function ArcadeBaseRoom:tryMoveEntity(entity, targetGridX, targetGridY, canOverY)
@@ -162,18 +167,7 @@ function ArcadeBaseRoom:tryMoveEntity(entity, targetGridX, targetGridY, canOverY
 	local isCanPlace, occupyEntityType, occupyEntityUid = self:_isCanPlaceEntity(entityType, uid, targetGridX, targetGridY, sizeX, sizeY, canOverY)
 
 	if isCanPlace then
-		local occupyGridList = self:getEntityOccupyGridList(entityType, uid)
-
-		if entityType == ArcadeGameEnum.EntityType.Bomb then
-			for _, gridId in pairs(occupyGridList) do
-				self._bombGridDict[gridId] = nil
-			end
-		else
-			for _, gridId in pairs(occupyGridList) do
-				self._gridDict[gridId] = nil
-			end
-		end
-
+		self:removeEntityOccupyGrids(mo)
 		self:_setOccupyGrids(entityType, uid, targetGridX, targetGridY, sizeX, sizeY)
 		mo:setGridPos(targetGridX, targetGridY)
 		entity:refreshPosition(true)
@@ -192,6 +186,11 @@ function ArcadeBaseRoom:removeEntityOccupyGrids(entityMO)
 
 	local uid = entityMO:getUid()
 	local entityType = entityMO:getEntityType()
+
+	if ArcadeGameEnum.EntityTypeNotOccupyDict[entityType] then
+		return
+	end
+
 	local occupyGridList = self:getEntityOccupyGridList(entityType, uid)
 
 	if entityType == ArcadeGameEnum.EntityType.Bomb then
@@ -323,6 +322,10 @@ function ArcadeBaseRoom:_isCanPlaceEntity(entityType, entityUid, x, y, sizeX, si
 end
 
 function ArcadeBaseRoom:_setOccupyGrids(entityType, uid, gridX, gridY, sizeX, sizeY)
+	if ArcadeGameEnum.EntityTypeNotOccupyDict[entityType] then
+		return
+	end
+
 	local occupyGridDict = {}
 	local occupyData = {
 		entityType = entityType,
@@ -335,12 +338,10 @@ function ArcadeBaseRoom:_setOccupyGrids(entityType, uid, gridX, gridY, sizeX, si
 
 			occupyGridDict[occupyGridId] = true
 
-			if not ArcadeGameEnum.EntityTypeNotOccupyDict[entityType] then
-				if entityType == ArcadeGameEnum.EntityType.Bomb then
-					self._bombGridDict[occupyGridId] = occupyData
-				else
-					self._gridDict[occupyGridId] = occupyData
-				end
+			if entityType == ArcadeGameEnum.EntityType.Bomb then
+				self._bombGridDict[occupyGridId] = occupyData
+			else
+				self._gridDict[occupyGridId] = occupyData
 			end
 		end
 	end

@@ -22,6 +22,24 @@ function ArcadeGameHelper.getGridPos(gridX, gridY)
 	return x, y
 end
 
+function ArcadeGameHelper.getEffectOffSetPos(dir, sizeX, sizeY)
+	local gridSize = ArcadeConfig.instance:getArcadeGameGridSize()
+	local offGX = math.max(0, sizeX - 1)
+	local offGY = math.max(0, sizeY - 1)
+
+	if dir == ArcadeEnum.Direction.Up then
+		return gridSize * offGX * 0.5, gridSize * offGY
+	elseif dir == ArcadeEnum.Direction.Down then
+		return gridSize * offGX * 0.5, 0
+	elseif dir == ArcadeEnum.Direction.Left then
+		return 0, gridSize * offGY * 0.5
+	elseif dir == ArcadeEnum.Direction.Right then
+		return gridSize * offGX, gridSize * offGY * 0.5
+	end
+
+	return 0, 0
+end
+
 function ArcadeGameHelper.getGridWorldPos(gridX, gridY)
 	local x, y, z = 0, 0, ArcadeGameEnum.Const.EntityZLevel
 
@@ -227,13 +245,25 @@ function ArcadeGameHelper.getUniqueRandomNumbers(min, max, count)
 	return result
 end
 
-function ArcadeGameHelper.getDirection(gridX1, gridY1, gridX2, gridY2)
-	local dx = gridX2 - gridX1
-	local dy = gridY2 - gridY1
-	local absDx = math.abs(dx)
-	local absDy = math.abs(dy)
+function ArcadeGameHelper.getDirection(gridX1, gridY1, grid1SizeX, grid1SizeY, gridX2, gridY2)
+	grid1SizeX = grid1SizeX or 1
+	grid1SizeY = grid1SizeY or 1
 
-	if absDy < absDx then
+	local left = gridX1
+	local right = gridX1 + grid1SizeX - 1
+	local bottom = gridY1
+	local top = gridY1 + grid1SizeY - 1
+
+	if left <= gridX2 and gridX2 <= right and bottom <= gridY2 and gridY2 <= top then
+		return
+	end
+
+	local nx = math.max(left, math.min(gridX2, right))
+	local ny = math.max(bottom, math.min(gridY2, top))
+	local dx = gridX2 - nx
+	local dy = gridY2 - ny
+
+	if math.abs(dx) > math.abs(dy) then
 		if dx > 0 then
 			return ArcadeEnum.Direction.Right
 		else
@@ -402,6 +432,30 @@ function ArcadeGameHelper.entityIsAdjacent(mo1, mo2)
 	return false
 end
 
+function ArcadeGameHelper.getEntityNearCharacterGrid(entityMO)
+	if not entityMO then
+		return
+	end
+
+	local gridX, gridY = entityMO:getGridPos()
+	local sizeX, sizeY = entityMO:getSize()
+	local characterMO = ArcadeGameModel.instance:getCharacterMO()
+
+	if not characterMO or sizeX <= 1 and sizeY <= 1 then
+		return gridX, gridY
+	end
+
+	local left = gridX
+	local right = gridX + sizeX - 1
+	local bottom = gridY
+	local top = gridY + sizeY - 1
+	local charGridX, charGridY = characterMO:getGridPos()
+	local nearX = Mathf.Clamp(charGridX, left, right)
+	local nearY = Mathf.Clamp(charGridY, bottom, top)
+
+	return nearX, nearY
+end
+
 local formulaFuncEnvTb = {
 	isInSide = false,
 	min = math.min,
@@ -463,14 +517,14 @@ function ArcadeGameHelper._replFunc(formulaStr)
 	end
 end
 
-function ArcadeGameHelper.getResultViewInfo(isWin, isRestart, serverInfo)
+function ArcadeGameHelper.getResultViewInfo(isWin, isReset, serverInfo)
 	local characterId
 	local passLevelCount = 0
 	local killMonsterNum = 0
 	local allCoinNum = 0
 	local maxScore = 0
 	local attrDict = {}
-	local collectionDataDict = {}
+	local collectionDataList = {}
 	local curWeaponIndex = 1
 	local weaponDataList = {}
 
@@ -507,20 +561,51 @@ function ArcadeGameHelper.getResultViewInfo(isWin, isRestart, serverInfo)
 		local collectionInfos = serverInfo.collectibleSlots
 
 		if collectionInfos then
+			local weaponList = {}
+			local collectionList = {}
+			local collectionIndexDict = {}
+
 			for _, collection in ipairs(collectionInfos) do
 				local type = collection.type
 				local info = collection.collectible
 
-				if type and info then
+				if type == ArcadeGameEnum.CollectionType.Weapon then
+					weaponList[#weaponList + 1] = info
+				elseif type == ArcadeGameEnum.CollectionType.Jewelry then
 					local id = info.id
-					local durability = info.durability
-					local useTimes = info.useTimes
-					local newWeaponIndex = ArcadeGameHelper._fillCollection(type, id, durability, useTimes, collectionDataDict, weaponDataList, curWeaponIndex)
 
-					if newWeaponIndex then
-						curWeaponIndex = newWeaponIndex
+					if collectionIndexDict[id] then
+						local index = collectionIndexDict[id]
+
+						collectionList[index].durability = collectionList[index].durability + 1
+					else
+						local index = #collectionList + 1
+
+						collectionIndexDict[id] = index
+						collectionList[index] = {
+							durability = 1,
+							id = id
+						}
 					end
 				end
+			end
+
+			for _, weaponInfo in ipairs(weaponList) do
+				local id = weaponInfo.id
+				local durability = weaponInfo.durability
+				local useTimes = weaponInfo.useTimes
+				local newWeaponIndex = ArcadeGameHelper._fillCollection(ArcadeGameEnum.CollectionType.Weapon, id, durability, useTimes, collectionDataList, weaponDataList, curWeaponIndex)
+
+				if newWeaponIndex then
+					curWeaponIndex = newWeaponIndex
+				end
+			end
+
+			for _, collection in ipairs(collectionList) do
+				local id = collection.id
+				local durability = collection.durability
+
+				ArcadeGameHelper._fillCollection(ArcadeGameEnum.CollectionType.Jewelry, id, durability, nil, collectionDataList)
 			end
 		end
 	else
@@ -569,33 +654,33 @@ function ArcadeGameHelper.getResultViewInfo(isWin, isRestart, serverInfo)
 				attrDict[resId] = count
 			end
 
-			local collectionDict = characterMO:getCollectionDict()
+			local collectionIdList = characterMO:getCollectionIdList(ArcadeGameEnum.CollectionType.Jewelry)
 
-			if collectionDict then
-				for _, collectionMO in pairs(collectionDict) do
-					local type = collectionMO:getType()
-					local id = collectionMO:getId()
-					local durability = collectionMO:getDurability()
-					local useTimes = collectionMO:getUsedTimes()
-					local newWeaponIndex = ArcadeGameHelper._fillCollection(type, id, durability, useTimes, collectionDataDict, weaponDataList, curWeaponIndex)
+			for _, collectionId in ipairs(collectionIdList) do
+				local uidList = characterMO:getCollectionUidList(collectionId)
 
-					if newWeaponIndex then
-						curWeaponIndex = newWeaponIndex
-					end
+				ArcadeGameHelper._fillCollection(ArcadeGameEnum.CollectionType.Jewelry, collectionId, #uidList, nil, collectionDataList)
+			end
+
+			local weaponUidList = characterMO:getCollectionUidListWithType(ArcadeGameEnum.CollectionType.Weapon)
+
+			for _, weaponUid in ipairs(weaponUidList) do
+				local weaponMO = characterMO:getCollectionMO(weaponUid)
+				local id = weaponMO:getId()
+				local durability = weaponMO:getDurability()
+				local useTimes = weaponMO:getUsedTimes()
+				local newWeaponIndex = ArcadeGameHelper._fillCollection(ArcadeGameEnum.CollectionType.Weapon, id, durability, useTimes, nil, weaponDataList, curWeaponIndex)
+
+				if newWeaponIndex then
+					curWeaponIndex = newWeaponIndex
 				end
 			end
 		end
 	end
 
-	local collectionDataList = {}
-
-	for _, data in pairs(collectionDataDict) do
-		collectionDataList[#collectionDataList + 1] = data
-	end
-
 	local result = {
 		isWin = isWin,
-		isRestart = isRestart,
+		isReset = isReset,
 		characterId = characterId,
 		passLevelCount = passLevelCount or 0,
 		killMonsterNum = killMonsterNum or 0,
@@ -609,19 +694,14 @@ function ArcadeGameHelper.getResultViewInfo(isWin, isRestart, serverInfo)
 	return result
 end
 
-function ArcadeGameHelper._fillCollection(type, id, durability, useTimes, refCollectionDict, refWeaponDataList, curWeaponIndex)
+function ArcadeGameHelper._fillCollection(type, id, durability, useTimes, refCollectionList, refWeaponDataList, curWeaponIndex)
 	if type == ArcadeGameEnum.CollectionType.Jewelry then
-		local collectionData = refCollectionDict[id]
+		local collectionData = {
+			id = id,
+			durability = durability
+		}
 
-		if collectionData then
-			collectionData.durability = collectionData.durability + 1
-		else
-			collectionData = {
-				durability = 1,
-				id = id
-			}
-			refCollectionDict[id] = collectionData
-		end
+		table.insert(refCollectionList, collectionData)
 	elseif type == ArcadeGameEnum.CollectionType.Weapon then
 		local weaponData = refWeaponDataList[curWeaponIndex]
 
@@ -774,6 +854,18 @@ end
 
 function ArcadeGameHelper.getPropInfo()
 	local result = {}
+
+	result.hotfix = {}
+
+	local portalExtractDict = ArcadeGameModel.instance:getPortalExtractDict()
+
+	if portalExtractDict and next(portalExtractDict) then
+		local jsonPortalExtract = cjson.encode(portalExtractDict)
+
+		if not string.nilorempty(jsonPortalExtract) then
+			result.hotfix[1] = jsonPortalExtract
+		end
+	end
 
 	result.areaId = ArcadeGameModel.instance:getCurAreaIndex()
 	result.roomId = ArcadeGameModel.instance:getCurRoomId()
@@ -985,28 +1077,34 @@ function ArcadeGameHelper.getEventOptionHandleFunc(eventOptionType)
 	return handler
 end
 
-function ArcadeGameHelper._eventChangeRoom(entityType, uid, param)
+function ArcadeGameHelper._eventChangeRoom(entityType, entityId, uid, eventOptionParam, extraParam)
 	local curNodeIndex = ArcadeGameModel.instance:getTransferNodeIndex()
 	local nextNodeIndex = curNodeIndex + 1
 
 	ArcadeGameModel.instance:setTransferNodeIndex(nextNodeIndex)
 	ArcadeGameModel.instance:addPassLevelCount()
 	ArcadeGameHelper.addSettleRewardCount()
-	ArcadeGameController.instance:change2Room(tonumber(param), true)
+	ArcadeGameController.instance:change2Room(tonumber(eventOptionParam), true)
+	ArcadeGameModel.instance:addPortalExtractionCount(entityId)
+
+	if extraParam then
+		ArcadeStatHelper.instance:sendExitRoom(extraParam, entityId)
+	end
 end
 
-function ArcadeGameHelper._eventNextArea(entityType, uid, param)
+function ArcadeGameHelper._eventNextArea(entityType, entityId, uid, eventOptionParam)
 	ArcadeGameModel.instance:addPassLevelCount()
 	ArcadeGameHelper.addSettleRewardCount(true)
 	ArcadeGameController.instance:enterNextArea(true)
+	ArcadeStatHelper.instance:sendNextArea()
 end
 
-function ArcadeGameHelper._eventBuy(entityType, uid, param)
-	if entityType ~= ArcadeGameEnum.EntityType.Goods or not param then
+function ArcadeGameHelper._eventBuy(entityType, entityId, uid, eventOptionParam, extraParam)
+	if entityType ~= ArcadeGameEnum.EntityType.Goods or not eventOptionParam then
 		return
 	end
 
-	local collectionId = tonumber(param)
+	local collectionId = tonumber(eventOptionParam)
 	local characterMO = ArcadeGameModel.instance:getCharacterMO()
 	local costId = ArcadeGameEnum.CharacterResource.GameCoin
 	local goodsMO = ArcadeGameModel.instance:getMOWithType(entityType, uid)
@@ -1035,11 +1133,15 @@ function ArcadeGameHelper._eventBuy(entityType, uid, param)
 	ArcadeGameController.instance:changeResCount(costId, -costNum)
 	ArcadeGameController.instance:gainCollection(collectionId, gainPos)
 
+	if extraParam then
+		ArcadeStatHelper.instance:sendBuyGoods(extraParam, collectionId)
+	end
+
 	return true
 end
 
-function ArcadeGameHelper._eventTriggerPassiveSkill(entityType, uid, param)
-	if not param then
+function ArcadeGameHelper._eventTriggerPassiveSkill(entityType, entityId, uid, eventOptionParam)
+	if not eventOptionParam then
 		return
 	end
 
@@ -1049,7 +1151,7 @@ function ArcadeGameHelper._eventTriggerPassiveSkill(entityType, uid, param)
 		return
 	end
 
-	local skillList = string.splitToNumber(param, "#")
+	local skillList = string.splitToNumber(eventOptionParam, "#")
 
 	for _, skillId in ipairs(skillList) do
 		ArcadeGameSkillController.instance:useSkill(interactUnitMO, skillId)

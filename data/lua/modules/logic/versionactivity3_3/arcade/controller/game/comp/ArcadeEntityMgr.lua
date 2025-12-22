@@ -169,7 +169,7 @@ function ArcadeEntityMgr:_onLoadEntityListRes(param)
 	ArcadeGameController.instance:dispatchEvent(ArcadeEvent.OnLoadEntityFinished, loadDataList)
 end
 
-function ArcadeEntityMgr:removeEntityWithType(entityType, uid)
+function ArcadeEntityMgr:removeEntityWithType(entityType, uid, needWaitRemoveAnim)
 	local curRoom = self._scene and self._scene.roomMgr:getCurRoom()
 
 	if entityType == ArcadeGameEnum.EntityType.Character then
@@ -194,7 +194,9 @@ function ArcadeEntityMgr:removeEntityWithType(entityType, uid)
 				curRoom:removeEntityOccupyGrids(mo)
 			end
 
-			entity:destroy()
+			if not needWaitRemoveAnim then
+				entity:destroy()
+			end
 
 			self._entityDict[entityType][uid] = nil
 		end

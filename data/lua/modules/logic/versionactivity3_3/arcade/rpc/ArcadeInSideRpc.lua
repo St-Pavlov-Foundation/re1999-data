@@ -61,6 +61,12 @@ function ArcadeInSideRpc:_fillPropData(prop, info)
 		return
 	end
 
+	if info.hotfix and next(info.hotfix) then
+		for _, strHotfix in ipairs(info.hotfix) do
+			table.insert(prop.hotfix, strHotfix)
+		end
+	end
+
 	prop.areaId = info.areaId or 0
 	prop.roomId = info.roomId or 0
 	prop.progress = info.progress or 0

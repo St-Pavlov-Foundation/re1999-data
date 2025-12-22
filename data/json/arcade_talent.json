@@ -1,5 +1,13 @@
 [
   {
+    "id": 100,
+    "level": 1,
+    "cost": 50,
+    "name": "噪点炸弹强化",
+    "displayType": "complicated",
+    "skill": "7001"
+  },
+  {
     "id": 101,
     "level": 1,
     "cost": 50,

@@ -23,27 +23,27 @@ function ArcadeGameSummonController:reInit()
 	return
 end
 
-function ArcadeGameSummonController:summonMonsterList(monsterIdList)
+function ArcadeGameSummonController:summonMonsterList(monsterIdList, delayTimeShow)
 	RoomHelper.randomArray(self:getGridList())
 
-	return self:_summonEntityByIdList(monsterIdList, ArcadeGameEnum.EntityType.Monster)
+	return self:_summonEntityByIdList(monsterIdList, ArcadeGameEnum.EntityType.Monster, delayTimeShow)
 end
 
-function ArcadeGameSummonController:summonBombList(bombIdList)
+function ArcadeGameSummonController:summonBombList(bombIdList, delayTimeShow)
 	RoomHelper.randomArray(self:getGridList())
 
-	return self:_summonEntityByIdList(bombIdList, ArcadeGameEnum.EntityType.Bomb)
+	return self:_summonEntityByIdList(bombIdList, ArcadeGameEnum.EntityType.Bomb, delayTimeShow)
 end
 
-function ArcadeGameSummonController:summonInteractiveList(interactiveIdList, isNotRandom)
+function ArcadeGameSummonController:summonInteractiveList(interactiveIdList, isNotRandom, delayTimeShow)
 	if isNotRandom ~= true then
 		RoomHelper.randomArray(self:getGridList())
 	end
 
-	return self:_summonEntityByIdList(interactiveIdList, ArcadeGameEnum.EntityType.BaseInteractive)
+	return self:_summonEntityByIdList(interactiveIdList, ArcadeGameEnum.EntityType.BaseInteractive, delayTimeShow)
 end
 
-function ArcadeGameSummonController:_summonEntityByIdList(idList, entityType)
+function ArcadeGameSummonController:_summonEntityByIdList(idList, entityType, delayTimeShow)
 	local unitMOList = self:getRoomUnitMOList()
 	local useGridIdMap = {}
 	local entityDataList = {}
@@ -62,7 +62,8 @@ function ArcadeGameSummonController:_summonEntityByIdList(idList, entityType)
 				entityType = entityType,
 				extraParam = {
 					groupId = 0
-				}
+				},
+				delayTimeShow = delayTimeShow
 			}
 
 			self:_addUseGrid(gridX, gridY, sizeX, sizeY, useGridIdMap)

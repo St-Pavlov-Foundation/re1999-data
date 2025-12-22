@@ -2,9 +2,10 @@
   {
     "id": 101,
     "name": "电光拳",
-    "skillDesc": "倒计时4次行动后：对周围十字{3+2*attr_303}格范围内的单位造成{3+attr_302}点伤害",
+    "skillDesc": "类型：噪点炸弹\n倒计时：4次行动后\n效果：对周围十字{3+2*attr_303}格范围内的单位造成{3+attr_302}点伤害",
     "shape": "1#1",
     "resPath": "v3a3_m_s12_jn1x1_002",
+    "effectDefault": 689010051,
     "scale": [
       1,
       1
@@ -19,9 +20,10 @@
   {
     "id": 102,
     "name": "方块劲舞",
-    "skillDesc": "倒计时4次行动后：对周围方形{3+2*attr_303}格范围内的单位造成{3+attr_302}点伤害",
+    "skillDesc": "类型：噪点炸弹\n倒计时：4次行动后\n效果：对周围方形{3+2*attr_303}格范围内的单位造成{3+attr_302}点伤害",
     "shape": "1#1",
     "resPath": "v3a3_m_s12_jn1x1_003",
+    "effectDefault": 689010051,
     "scale": [
       1,
       1
@@ -36,9 +38,10 @@
   {
     "id": 103,
     "name": "节拍陷阱",
-    "skillDesc": "倒计时6次行动后：对周围方形{5+2*attr_303}格范围内的单位造成{3+attr_302}点伤害",
+    "skillDesc": "类型：噪点炸弹\n倒计时：6次行动后\n效果：对周围方形{5+2*attr_303}格范围内的单位造成{3+attr_302}点伤害",
     "shape": "1#1",
     "resPath": "v3a3_m_s12_jn1x1_004",
+    "effectDefault": 689010051,
     "scale": [
       1,
       1
@@ -53,9 +56,10 @@
   {
     "id": 104,
     "name": "静默爆破（假）",
-    "skillDesc": "使用后，刷新色块上的所有造物",
+    "skillDesc": "效果：使用后随机装备1件方块武装（使用该技能不会放置噪点炸弹，补充噪点炸弹次数时会补充该技能的使用次数）",
     "shape": "",
     "resPath": "v3a3_m_s12_jn1x1_001",
+    "effectDefault": 689010051,
     "scale": [
       1,
       1
@@ -64,15 +68,16 @@
     "countdown": 0,
     "target": 101,
     "addFloor": 0,
-    "skill": 100004,
+    "skill": 0,
     "icon": "v3a3_eliminate_skillicon_1_2"
   },
   {
     "id": 105,
     "name": "命运重置",
-    "skillDesc": "倒计时4次行动后：对周围十字{3+2*attr_303}格范围内的单位造成{5+attr_302}点伤害",
+    "skillDesc": "类型：噪点炸弹\n倒计时：4次行动后\n效果：对周围十字{3+2*attr_303}格范围内的单位造成{5+attr_302}点伤害",
     "shape": "1#1",
     "resPath": "v3a3_m_s12_jn1x1_001",
+    "effectDefault": 689010051,
     "scale": [
       1,
       1
@@ -87,15 +92,16 @@
   {
     "id": 106,
     "name": "怪物炸弹",
-    "skillDesc": "倒计时2次行动后：对周围方形3格范围内的单位造成3点伤害",
+    "skillDesc": "倒计时5次行动后：对周围方形3格范围内的单位造成3点伤害",
     "shape": "1#1",
     "resPath": "v3a3_m_s12_jz1x1_001",
+    "effectDefault": 689010051,
     "scale": [
       1,
       1
     ],
     "damage": 3,
-    "countdown": 3,
+    "countdown": 6,
     "target": 13,
     "addFloor": 0,
     "skill": 0,
