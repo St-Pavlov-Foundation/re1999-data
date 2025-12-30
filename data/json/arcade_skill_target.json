@@ -258,6 +258,18 @@
     "effect": "100#100"
   },
   {
+    "id": 717,
+    "clztype": "cross",
+    "targets": "",
+    "effect": "0#100"
+  },
+  {
+    "id": 718,
+    "clztype": "cross",
+    "targets": "",
+    "effect": "0#100"
+  },
+  {
     "id": 999,
     "clztype": "line",
     "targets": "monster",

@@ -849,6 +849,12 @@ function ArcadeConfig:getBombIdleShowEffectId(id)
 	return cfg and cfg.effectDefault
 end
 
+function ArcadeConfig:getBombAlertEffectId(id)
+	local cfg = self:getBombCfg(id, true)
+
+	return cfg and cfg.alertEffectId
+end
+
 function ArcadeConfig:getActiveSkillCfg(skillId, nilError)
 	local cfg = lua_arcade_active_skill.configDict[skillId]
 

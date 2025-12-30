@@ -6251,6 +6251,13 @@
     "animName": "idle_birthday_loop"
   },
   {
+    "skinId": 312603,
+    "id": 133312604,
+    "point": "special4",
+    "effectRes": "v3a0_mlan/v3a0_mlan_interact4",
+    "animName": "interact"
+  },
+  {
     "skinId": 304704,
     "id": 133304701,
     "point": "special6",

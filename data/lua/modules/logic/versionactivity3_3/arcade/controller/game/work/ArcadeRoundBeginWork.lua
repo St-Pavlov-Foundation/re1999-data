@@ -101,27 +101,28 @@ function ArcadeRoundBeginWork:updateBombCountdown()
 
 	local scene = ArcadeGameController.instance:getGameScene()
 	local isBombAddFloor = ArcadeGameModel.instance:getGameSwitchIsOn(ArcadeGameEnum.GameSwitch.BombAddBurning)
-	local bombEffectIdList = ArcadeConfig.instance:getActionShowEffectIdList(ArcadeGameEnum.ActionShowId.BombRange)
+	local bombEffectIdList = ArcadeGameHelper.getActionShowEffect(ArcadeGameEnum.ActionShowId.BombExposeRange)
 	local bombEffId = bombEffectIdList and bombEffectIdList[1]
-	local warnEffectIdList = ArcadeConfig.instance:getActionShowEffectIdList(ArcadeGameEnum.ActionShowId.BombWarn)
-	local warnEffId = warnEffectIdList and warnEffectIdList[1]
 	local playWarnEffGridDict = {}
-	local removeWarnEffGridDict = {}
+	local removeWarnEffList = {}
 
 	for _, bombUid in ipairs(bombUidList) do
 		local bombMO = ArcadeGameModel.instance:getMOWithType(ArcadeGameEnum.EntityType.Bomb, bombUid)
 
-		self:_updateBomb(scene, bombMO, isBombAddFloor, bombEffId, warnEffId, playWarnEffGridDict, removeWarnEffGridDict)
+		self:_updateBomb(scene, bombMO, isBombAddFloor, bombEffId, playWarnEffGridDict, removeWarnEffList)
 	end
 
-	for gridId, gridPos in pairs(removeWarnEffGridDict) do
-		if not playWarnEffGridDict[gridId] then
-			scene.effectMgr:removeEffect(warnEffId, gridPos.x, gridPos.y, true)
+	for _, removeWarnEffData in ipairs(removeWarnEffList) do
+		local gridId = removeWarnEffData.gridId
+		local warnEffId = removeWarnEffData.warnEffId
+
+		if not playWarnEffGridDict[gridId] or not playWarnEffGridDict[gridId][warnEffId] then
+			scene.effectMgr:removeEffect(warnEffId, removeWarnEffData.x, removeWarnEffData.y, true)
 		end
 	end
 end
 
-function ArcadeRoundBeginWork:_updateBomb(scene, bombMO, isBombAddFloor, bombEffId, warnEffId, refPlayWarnEffDict, refRemoveWarnEffDict)
+function ArcadeRoundBeginWork:_updateBomb(scene, bombMO, isBombAddFloor, bombEffId, refPlayWarnEffDict, refRemoveWarnEffList)
 	if not bombMO then
 		return
 	end
@@ -140,6 +141,8 @@ function ArcadeRoundBeginWork:_updateBomb(scene, bombMO, isBombAddFloor, bombEff
 		targetSelector:setRadius(addBombRange)
 	end
 
+	local warnEffectIdList = ArcadeGameHelper.getActionShowEffect(ArcadeGameEnum.ActionShowId.BombWarn, bombId)
+	local warnEffId = warnEffectIdList and warnEffectIdList[1]
 	local isExplode = bombMO:getIsExplode()
 
 	if isExplode then
@@ -179,7 +182,9 @@ function ArcadeRoundBeginWork:_updateBomb(scene, bombMO, isBombAddFloor, bombEff
 
 				local gridId = ArcadeGameHelper.getGridId(floorX, floorY)
 
-				refRemoveWarnEffDict[gridId] = {
+				refRemoveWarnEffList[#refRemoveWarnEffList + 1] = {
+					gridId = gridId,
+					warnEffId = warnEffId,
 					x = floorX,
 					y = floorY
 				}
@@ -219,8 +224,14 @@ function ArcadeRoundBeginWork:_updateBomb(scene, bombMO, isBombAddFloor, bombEff
 				scene.effectMgr:playEffect2Grid(warnEffId, x, y)
 
 				local gridId = ArcadeGameHelper.getGridId(x, y)
+				local gridWarnEffDict = refPlayWarnEffDict[gridId]
 
-				refPlayWarnEffDict[gridId] = true
+				if not gridWarnEffDict then
+					gridWarnEffDict = {}
+					refPlayWarnEffDict[gridId] = gridWarnEffDict
+				end
+
+				gridWarnEffDict[warnEffId] = true
 			end
 		end
 	end

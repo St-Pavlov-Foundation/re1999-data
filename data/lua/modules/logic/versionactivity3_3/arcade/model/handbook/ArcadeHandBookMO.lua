@@ -12,7 +12,10 @@ function ArcadeHandBookMO:ctor(id, type, co)
 
 	self:initAttribute()
 	self:initEffect()
+	self:_setSize()
+end
 
+function ArcadeHandBookMO:_setSize()
 	local minSize = ArcadeEnum.HandBookItemParams.MinSize
 
 	self._sizeX, self._sizeY = string.match(self:getIcon(), "(%d+)x(%d+)")
@@ -126,6 +129,10 @@ end
 
 function ArcadeHandBookMO:getIconSize()
 	return self._sizeX or 1, self._sizeY or 1
+end
+
+function ArcadeHandBookMO:isSpecialIconSize()
+	return false
 end
 
 function ArcadeHandBookMO:setRowInfo(count, index)

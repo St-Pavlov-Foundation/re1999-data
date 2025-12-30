@@ -8,6 +8,7 @@ function ArcadeCollectionTipsView:init(go)
 	self.viewGO = go
 	self._gocontent = gohelper.findChild(self.viewGO, "collection/#scroll_collection/viewport/content")
 	self._gocollectionitem = gohelper.findChild(self.viewGO, "collection/#scroll_collection/viewport/content/#go_collectionitem")
+	self._txtdec = gohelper.findChildText(self._gocollectionitem, "txt_desc")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -131,6 +132,20 @@ function ArcadeCollectionTipsView:getCollectionItem(index)
 	end
 
 	return item
+end
+
+function ArcadeCollectionTipsView:setAnchor(mo, x, y)
+	if not mo.isInSide then
+		self._collectionMo = mo.CollectionMo
+
+		local height = GameUtil.getPreferredHeight(self._txtdec, self._collectionMo:getDesc())
+
+		if height > 130 then
+			y = y + height - 130
+		end
+	end
+
+	recthelper.setAnchor(self.viewGO.transform, x, y)
 end
 
 function ArcadeCollectionTipsView:onDestroy()

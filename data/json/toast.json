@@ -10638,5 +10638,13 @@
     "audioId": 1,
     "notMerge": 0,
     "notShow": 0
+  },
+  {
+    "id": 331019,
+    "tips": "获得▩1%s",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 1,
+    "notShow": 0
   }
 ]

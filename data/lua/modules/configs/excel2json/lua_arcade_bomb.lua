@@ -6,17 +6,18 @@ local lua_arcade_bomb = {}
 local fields = {
 	skillDesc = 3,
 	name = 2,
-	damage = 8,
+	damage = 9,
 	resPath = 5,
-	icon = 13,
-	target = 10,
-	countdown = 9,
-	addFloor = 11,
-	skill = 12,
-	effectDefault = 6,
+	skill = 13,
+	icon = 14,
+	target = 11,
+	countdown = 10,
+	addFloor = 12,
+	alertEffectId = 6,
+	effectDefault = 7,
 	id = 1,
 	shape = 4,
-	scale = 7
+	scale = 8
 }
 local primaryKey = {
 	"id"

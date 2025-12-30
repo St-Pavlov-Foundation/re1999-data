@@ -44,19 +44,53 @@ function ArcadeStatHelper:AddUseUltimateTimes()
 	self.roomUseUltimateTimes = self.roomUseUltimateTimes + 1
 end
 
-function ArcadeStatHelper:buildArcadeGameBaseObj(cassetteCount)
-	local difficulty = ArcadeGameModel.instance:getDifficulty()
-	local characterMO = ArcadeGameModel.instance:getCharacterMO()
+function ArcadeStatHelper:buildArcadeGameBaseObj(cassetteCount, isWin, argsRoomId, serverInfo)
+	local difficulty, characterId
+	local areaIndex = 0
+	local roomId
+	local allPassRoomCount = 0
+	local areaPassRoomCount = 0
+	local killMonsterNum = 0
+	local gainAllCoinNum = 0
+	local propInfo = serverInfo and serverInfo.prop
+
+	if propInfo then
+		difficulty = propInfo.difficulty
+		characterId = serverInfo.player and serverInfo.player.id
+		areaIndex = propInfo.areaId
+		roomId = propInfo.roomId
+		allPassRoomCount = propInfo.clearedRoomNum
+		areaPassRoomCount = propInfo.progress
+		killMonsterNum = propInfo.maxKillMonsterNum
+		gainAllCoinNum = propInfo.totalGainGoldNum
+	else
+		difficulty = ArcadeGameModel.instance:getDifficulty()
+
+		local characterMO = ArcadeGameModel.instance:getCharacterMO()
+
+		characterId = characterMO and characterMO:getId() or 0
+		areaIndex = ArcadeGameModel.instance:getCurAreaIndex()
+		roomId = argsRoomId or ArcadeGameModel.instance:getCurRoomId()
+		allPassRoomCount = ArcadeGameModel.instance:getPassLevelCount()
+		areaPassRoomCount = ArcadeGameModel.instance:getTransferNodeIndex()
+		killMonsterNum = ArcadeGameModel.instance:getKillMonsterNum()
+		gainAllCoinNum = ArcadeGameModel.instance:getAllCoinNum()
+	end
+
+	if isWin then
+		areaPassRoomCount = areaPassRoomCount + 1
+	end
+
 	local gameBaseObj = {
 		difficulty = difficulty,
-		character = characterMO and characterMO:getId() or 0,
-		area = ArcadeGameModel.instance:getCurAreaIndex(),
-		room = ArcadeGameModel.instance:getCurRoomId(),
-		all_rooms = ArcadeGameModel.instance:getPassLevelCount(),
-		area_rooms = ArcadeGameModel.instance:getTransferNodeIndex(),
+		character = characterId,
+		area = areaIndex,
+		room = roomId,
+		all_rooms = allPassRoomCount,
+		area_rooms = areaPassRoomCount,
 		finish_count = ArcadeOutSizeModel.instance:getFinishLevelCount(difficulty),
-		max_kill = ArcadeGameModel.instance:getKillMonsterNum(),
-		all_coin = ArcadeGameModel.instance:getAllCoinNum(),
+		max_kill = killMonsterNum,
+		all_coin = gainAllCoinNum,
 		max_score = cassetteCount or 0,
 		total_score = ArcadeOutSizeModel.instance:getScore()
 	}
@@ -114,12 +148,14 @@ local SettleTypeName = {
 	[ArcadeGameEnum.SettleType.Fail] = "fail"
 }
 
-function ArcadeStatHelper:sendEndGame(settleType, cassetteCount)
+function ArcadeStatHelper:sendEndGame(settleType, cassetteCount, serverInfo)
+	local isWin = settleType == ArcadeGameEnum.SettleType.Win
+
 	StatController.instance:track(StatEnum.EventName.ArcadeOperation, {
 		[StatEnum.EventProperties.OperationType] = "arcade_end",
 		[StatEnum.EventProperties.Result] = SettleTypeName[settleType],
 		[StatEnum.EventProperties.ArcadeTalentInfo] = self:buildArcadeTalentInfo(),
-		[StatEnum.EventProperties.ArcadeGameBaseObj] = self:buildArcadeGameBaseObj(cassetteCount)
+		[StatEnum.EventProperties.ArcadeGameBaseObj] = self:buildArcadeGameBaseObj(cassetteCount, isWin, nil, serverInfo)
 	})
 end
 
@@ -131,7 +167,7 @@ function ArcadeStatHelper:sendNextArea()
 	})
 end
 
-function ArcadeStatHelper:sendExitRoom(portalIdList, selectedPortalId)
+function ArcadeStatHelper:sendExitRoom(exitRoomId, portalIdList, selectedPortalId)
 	if not portalIdList or not selectedPortalId then
 		return
 	end
@@ -141,7 +177,7 @@ function ArcadeStatHelper:sendExitRoom(portalIdList, selectedPortalId)
 		[StatEnum.EventProperties.ArcadeRoomEndObj] = self:buildRoomEndObj(selectedPortalId),
 		[StatEnum.EventProperties.ArcadeRoomTransList] = portalIdList,
 		[StatEnum.EventProperties.ArcadeTalentInfo] = self:buildArcadeTalentInfo(),
-		[StatEnum.EventProperties.ArcadeGameBaseObj] = self:buildArcadeGameBaseObj()
+		[StatEnum.EventProperties.ArcadeGameBaseObj] = self:buildArcadeGameBaseObj(nil, nil, exitRoomId)
 	})
 end
 

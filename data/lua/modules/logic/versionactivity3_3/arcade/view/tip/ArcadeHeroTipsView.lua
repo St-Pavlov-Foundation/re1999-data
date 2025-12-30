@@ -293,7 +293,7 @@ function ArcadeHeroTipsView:_onCreateAttrItem(obj, data, index)
 			if self._entityType == ArcadeGameEnum.EntityType.Character then
 				value = self._entityMO:getResourceCount(id)
 			end
-		elseif attrId == ArcadeGameEnum.BaseAttr.hp then
+		elseif id == ArcadeGameEnum.BaseAttr.hp then
 			value = self._entityMO:getHp()
 		else
 			value = self._entityMO:getAttributeValue(id)

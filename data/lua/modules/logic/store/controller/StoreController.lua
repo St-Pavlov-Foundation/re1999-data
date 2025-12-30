@@ -81,6 +81,7 @@ end
 
 function StoreController:openPackageStoreGoodsView(packageGoodsMO)
 	local goodsType = packageGoodsMO.config.type
+	local belongStoreId = packageGoodsMO.belongStoreId
 
 	if goodsType == StoreEnum.StoreChargeType.Optional then
 		local optionalTypeView = {
@@ -105,6 +106,11 @@ function StoreController:openPackageStoreGoodsView(packageGoodsMO)
 		param.goodMo = packageGoodsMO
 
 		NationalGiftController.instance:openNationalGiftBuyTipView(param)
+	elseif belongStoreId == StoreEnum.StoreId.Skin then
+		ViewMgr.instance:openView(ViewName.StoreSkinGoodsView2, {
+			index = 1,
+			goodsMO = packageGoodsMO
+		})
 	else
 		ViewMgr.instance:openView(ViewName.PackageStoreGoodsView, packageGoodsMO)
 	end

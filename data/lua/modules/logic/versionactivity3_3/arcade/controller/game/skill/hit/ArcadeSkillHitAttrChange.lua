@@ -128,6 +128,11 @@ function ArcadeSkillHitAttrChange:_onResourceAttrBase(unitMO)
 		local count = resMO:getCount()
 
 		resMO:setCount(self._attrVal + count)
+
+		if self._attrId == ArcadeGameEnum.CharacterResource.GameCoin and self._attrVal > 0 then
+			ArcadeGameModel.instance:addGainCoinNum(self._attrVal)
+		end
+
 		self:_dispatchEvent(ArcadeEvent.OnSkillResourceChange, unitMO)
 	end
 end
@@ -156,6 +161,11 @@ function ArcadeSkillHitAttrChange:_onResourceAttrRate(unitMO)
 		local count = resMO:getCount()
 
 		resMO:setCount(val + count)
+
+		if self._attrId == ArcadeGameEnum.CharacterResource.GameCoin and val > 0 then
+			ArcadeGameModel.instance:addGainCoinNum(val)
+		end
+
 		self:_dispatchEvent(ArcadeEvent.OnSkillResourceChange, unitMO, val)
 	end
 end

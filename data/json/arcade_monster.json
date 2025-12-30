@@ -10,7 +10,7 @@
     "defense": 0,
     "skillIds": "",
     "moveType": "normalDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "32000001",
     "resPath": "v3a3_m_s12_gw1x1_012",
     "scale": [
@@ -22,7 +22,7 @@
       0,
       -0.4
     ],
-    "category": "monster",
+    "category": "",
     "icon": "v3a3_m_s12_gw1x1_012",
     "iconScale": [
       0.75,
@@ -53,7 +53,7 @@
     "defense": 0,
     "skillIds": "",
     "moveType": "normalDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "32000001",
     "resPath": "v3a3_m_s12_gw2x2_012",
     "scale": [
@@ -68,7 +68,7 @@
       0.52,
       -0.4
     ],
-    "category": "monster",
+    "category": "",
     "icon": "v3a3_m_s12_gw2x2_012",
     "iconScale": [
       0.75,
@@ -232,7 +232,7 @@
     "attack": 3,
     "hpCap": 8,
     "defense": 0,
-    "skillIds": "33100601",
+    "skillIds": "33100602",
     "moveType": "normalDrop",
     "illustrationShow": 1,
     "drop": "32000001",
@@ -272,7 +272,7 @@
   {
     "id": 331007,
     "name": "白公鸡卫士",
-    "desc": "色相：<color=#F96C6C>红</color>\n受到直接攻击后，会迅速朝来袭方向举盾防御，在接下来战斗内完全免疫来自该方向的伤害\n\n<size=85%><i>它是陌生而沉默的，也是执拗的、难以通融的。你仅有一个方法通过它。</i>",
+    "desc": "色相：<color=#F96C6C>红</color>\n受到直接攻击后，会迅速朝来袭方向举盾防御，在接下来战斗内完全免疫来自该方向的直接攻击伤害\n\n<size=85%><i>它是陌生而沉默的，也是执拗的、难以通融的。你仅有一个方法通过它。</i>",
     "shape": "2#3",
     "race": "red",
     "attack": 3,
@@ -318,11 +318,11 @@
   {
     "id": 331008,
     "name": "红岩傀儡",
-    "desc": "色相：<color=#F96C6C>红</color>\n受到攻击后，对周围区域发起攻击\n\n<size=85%><i>极低的维护成本很快成了它们在就业方面的优势。</i>",
+    "desc": "色相：<color=#F96C6C>红</color>\n受到攻击后，将会永久提升自身攻击力\n\n<size=85%><i>极低的维护成本很快成了它们在就业方面的优势。</i>",
     "shape": "1#1",
     "race": "red",
     "attack": 1,
-    "hpCap": 4,
+    "hpCap": 3,
     "defense": 0,
     "skillIds": "33100801",
     "moveType": "normalDrop",
@@ -1314,7 +1314,7 @@
       0,
       -0.4
     ],
-    "category": "",
+    "category": "monster",
     "icon": "v3a3_m_s12_npc1x1_001",
     "iconScale": [
       0.75,
@@ -1345,7 +1345,7 @@
     "defense": 0,
     "skillIds": "33500202",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_role1x1_001",
     "scale": [
@@ -1357,7 +1357,7 @@
       0,
       -0.4
     ],
-    "category": "monster",
+    "category": "",
     "icon": "v3a3_m_s12_role1x1_001",
     "iconScale": [
       0.75,
@@ -1388,7 +1388,7 @@
     "defense": 0,
     "skillIds": "",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_npc1x1_002",
     "scale": [
@@ -1428,7 +1428,7 @@
     "race": "boss",
     "attack": 2,
     "hpCap": 45,
-    "defense": 3,
+    "defense": 1,
     "skillIds": "33500301#33500302#33500312#33500314",
     "moveType": "noDrop",
     "illustrationShow": 1,
@@ -1446,7 +1446,7 @@
       0.52,
       -0.4
     ],
-    "category": "monster",
+    "category": "",
     "icon": "v3a3_m_s12_role1x1_004",
     "iconScale": [
       0.75,
@@ -1561,7 +1561,7 @@
   {
     "id": 335004,
     "name": "“超级猫女”",
-    "desc": "会四处走动\n受到攻击后，会进入\"逃逸\"状态并跳跃至他处，同时召唤1个“超级猫女（伪）”（该单位会进行大范围的十字攻击）\n处于“逃逸”时，无法受到伤害。",
+    "desc": "会四处走动\n受到攻击后，会进入\"逃逸\"状态并跳跃至他处，同时召唤1个“超级猫女（伪）”（该单位会进行大范围的十字攻击）\n处于“逃逸”时，无法受到直接攻击的伤害。",
     "shape": "1#1",
     "race": "boss",
     "attack": 2,
@@ -1608,7 +1608,7 @@
     "shape": "1#1",
     "race": "jinbi1",
     "attack": 0,
-    "hpCap": 5,
+    "hpCap": 4,
     "defense": 0,
     "skillIds": "",
     "moveType": "noDrop",
@@ -1693,11 +1693,11 @@
   {
     "id": 335005,
     "name": "卡邦克鲁之王",
-    "desc": "会四处冲撞，造成大量伤害，处于低生命值时，冲撞的频率会变高和冲撞的速度变快！",
-    "shape": "4#6",
+    "desc": "定期召唤怪物，血量越低，召唤的怪物越强\n定期向下冲撞，造成大量伤害",
+    "shape": "3#5",
     "race": "boss",
-    "attack": 2,
-    "hpCap": 20,
+    "attack": 1,
+    "hpCap": 60,
     "defense": 0,
     "skillIds": "33500501",
     "moveType": "noDrop",
@@ -1705,12 +1705,12 @@
     "drop": "",
     "resPath": "v3a3_m_s12_gw4x6_001",
     "scale": [
-      3.68,
-      7.36
+      2.76,
+      5.52
     ],
     "posOffset": [
-      1.42,
-      2.53
+      1.06,
+      1.9
     ],
     "hpPos": [
       1.54,
@@ -1759,7 +1759,7 @@
       0,
       -0.4
     ],
-    "category": "monster",
+    "category": "",
     "icon": "v3a3_m_s12_role1x1_002",
     "iconScale": [
       0.75,
@@ -1836,7 +1836,7 @@
     "defense": 0,
     "skillIds": "",
     "moveType": "normalDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_jh1x1_007",
     "scale": [
@@ -1851,7 +1851,7 @@
       0,
       -0.4
     ],
-    "category": "monster",
+    "category": "",
     "icon": "v3a3_m_s12_jh1x1_007",
     "iconScale": [
       0.75,
@@ -2066,7 +2066,7 @@
     "defense": 0,
     "skillIds": "",
     "moveType": "normalDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "100010",
     "resPath": "v3a3_m_s12_jh1x1_010",
     "scale": [
@@ -2081,7 +2081,7 @@
       0,
       -0.4
     ],
-    "category": "monster",
+    "category": "",
     "icon": "v3a3_m_s12_jh1x1_010",
     "iconScale": [
       0.75,
@@ -2112,7 +2112,7 @@
     "defense": 0,
     "skillIds": "",
     "moveType": "normalDrop",
-    "illustrationShow": 0,
+    "illustrationShow": 1,
     "drop": "100011",
     "resPath": "v3a3_m_s12_jh1x1_010",
     "scale": [
@@ -2127,7 +2127,7 @@
       0,
       -0.4
     ],
-    "category": "",
+    "category": "monster",
     "icon": "v3a3_m_s12_jh1x1_010",
     "iconScale": [
       0.75,
@@ -2618,7 +2618,7 @@
     "defense": 0,
     "skillIds": "100001",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_gw1x1_013",
     "scale": [
@@ -2661,7 +2661,7 @@
     "defense": 0,
     "skillIds": "100002",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_gw1x1_013",
     "scale": [
@@ -2704,7 +2704,7 @@
     "defense": 0,
     "skillIds": "100003",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_gw1x1_013",
     "scale": [
@@ -2747,7 +2747,7 @@
     "defense": 0,
     "skillIds": "100004",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_gw1x1_013",
     "scale": [
@@ -2790,7 +2790,7 @@
     "defense": 0,
     "skillIds": "100005",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_gw1x1_013",
     "scale": [
@@ -2833,7 +2833,7 @@
     "defense": 0,
     "skillIds": "100006",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_gw1x1_013",
     "scale": [
@@ -2876,7 +2876,7 @@
     "defense": 0,
     "skillIds": "100007",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_gw1x1_013",
     "scale": [
@@ -2919,7 +2919,7 @@
     "defense": 0,
     "skillIds": "100008",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_gw1x1_013",
     "scale": [
@@ -2962,7 +2962,7 @@
     "defense": 0,
     "skillIds": "100009",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_gw1x1_013",
     "scale": [
@@ -3005,7 +3005,7 @@
     "defense": 0,
     "skillIds": "100010",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_gw1x1_013",
     "scale": [
@@ -3048,7 +3048,7 @@
     "defense": 0,
     "skillIds": "100011",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_gw1x1_013",
     "scale": [
@@ -3091,7 +3091,7 @@
     "defense": 0,
     "skillIds": "100012",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_gw1x1_013",
     "scale": [
@@ -3134,7 +3134,7 @@
     "defense": 0,
     "skillIds": "100013",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_gw1x1_013",
     "scale": [
@@ -3177,7 +3177,7 @@
     "defense": 0,
     "skillIds": "100014",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_gw1x1_013",
     "scale": [
@@ -3220,7 +3220,7 @@
     "defense": 0,
     "skillIds": "100015",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_gw1x1_013",
     "scale": [
@@ -3263,7 +3263,7 @@
     "defense": 0,
     "skillIds": "100016",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_gw1x1_013",
     "scale": [
@@ -3306,7 +3306,7 @@
     "defense": 0,
     "skillIds": "100017",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_gw1x1_013",
     "scale": [
@@ -3349,7 +3349,7 @@
     "defense": 0,
     "skillIds": "100018",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_gw1x1_013",
     "scale": [
@@ -3392,7 +3392,7 @@
     "defense": 0,
     "skillIds": "100019",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_gw1x1_013",
     "scale": [
@@ -3435,7 +3435,7 @@
     "defense": 0,
     "skillIds": "100020",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_gw1x1_013",
     "scale": [
@@ -3478,7 +3478,7 @@
     "defense": 0,
     "skillIds": "100021",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_gw1x1_013",
     "scale": [
@@ -3521,7 +3521,7 @@
     "defense": 0,
     "skillIds": "100022",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_gw1x1_013",
     "scale": [
@@ -3564,7 +3564,7 @@
     "defense": 0,
     "skillIds": "100023",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_gw1x1_013",
     "scale": [
@@ -3607,7 +3607,7 @@
     "defense": 0,
     "skillIds": "334002",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_gw1x1_010",
     "scale": [
@@ -3650,7 +3650,7 @@
     "defense": 0,
     "skillIds": "100025",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_gw1x1_010",
     "scale": [
@@ -3693,7 +3693,7 @@
     "defense": 0,
     "skillIds": "100027#100028",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_jh1x1_001",
     "scale": [
@@ -3736,7 +3736,7 @@
     "defense": 0,
     "skillIds": "100030",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_gw1x1_013",
     "scale": [
@@ -3779,7 +3779,7 @@
     "defense": 0,
     "skillIds": "100031",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_gw1x1_013",
     "scale": [
@@ -3822,7 +3822,7 @@
     "defense": 0,
     "skillIds": "100032",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_gw1x1_013",
     "scale": [
@@ -4036,7 +4036,7 @@
     "shape": "1#1",
     "race": "None",
     "attack": 0,
-    "hpCap": 3,
+    "hpCap": 99,
     "defense": 99,
     "skillIds": "",
     "moveType": "noDrop",
@@ -4478,6 +4478,49 @@
     "hasCorpse": false
   },
   {
+    "id": 200015,
+    "name": "沉稳的街机爱好者",
+    "desc": "色相：<color=#92A8EF>蓝</color>\n无特殊技能",
+    "shape": "1#1",
+    "race": "blue",
+    "attack": 1,
+    "hpCap": 2,
+    "defense": 0,
+    "skillIds": "",
+    "moveType": "normalDrop",
+    "illustrationShow": 0,
+    "drop": "32000001",
+    "resPath": "v3a3_m_s12_gw1x1_014",
+    "scale": [
+      0.9,
+      1.8
+    ],
+    "posOffset": [],
+    "hpPos": [
+      0,
+      -0.4
+    ],
+    "category": "",
+    "icon": "v3a3_m_s12_gw1x1_014",
+    "iconScale": [
+      0.75,
+      0.75
+    ],
+    "iconOffset": [
+      0,
+      -0.33
+    ],
+    "iconScale2": [
+      1,
+      1
+    ],
+    "iconOffset2": [
+      0,
+      0
+    ],
+    "hasCorpse": true
+  },
+  {
     "id": 335101,
     "name": "热情的沙锤爱好者",
     "desc": "定期召唤律动大师，生命值越低，召唤出的数量越多\n受到攻击后，跳跃至他处",
@@ -4488,7 +4531,7 @@
     "defense": 0,
     "skillIds": "33500102#33510101#33500108#33000002#33500113",
     "moveType": "noDrop",
-    "illustrationShow": 0,
+    "illustrationShow": 1,
     "drop": "",
     "resPath": "v3a3_m_s12_role1x1_005",
     "scale": [
@@ -4500,7 +4543,7 @@
       0,
       -0.4
     ],
-    "category": "",
+    "category": "monster",
     "icon": "v3a3_m_s12_role1x1_005",
     "iconScale": [
       0.75,
@@ -4531,7 +4574,7 @@
     "defense": 0,
     "skillIds": "33500301#33500302#33510301#33500314#33500113",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_role1x1_004",
     "scale": [
@@ -4546,7 +4589,7 @@
       0.52,
       -0.4
     ],
-    "category": "monster",
+    "category": "",
     "icon": "v3a3_m_s12_role1x1_004",
     "iconScale": [
       0.75,
@@ -4577,7 +4620,7 @@
     "defense": 0,
     "skillIds": "33510601#33500602#33000002",
     "moveType": "noDrop",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "drop": "",
     "resPath": "v3a3_m_s12_role1x1_002",
     "scale": [
@@ -4589,7 +4632,7 @@
       0,
       -0.4
     ],
-    "category": "monster",
+    "category": "",
     "icon": "v3a3_m_s12_role1x1_002",
     "iconScale": [
       0.75,

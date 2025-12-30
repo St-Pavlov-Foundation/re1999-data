@@ -51,6 +51,10 @@ function ArcadeTipsChildViewBase:refreshView()
 	return
 end
 
+function ArcadeTipsChildViewBase:setAnchor(mo, x, y)
+	recthelper.setAnchor(self.viewGO.transform, x, y)
+end
+
 function ArcadeTipsChildViewBase:onDestroy()
 	return
 end

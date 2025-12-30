@@ -517,6 +517,58 @@ function ArcadeGameHelper._replFunc(formulaStr)
 	end
 end
 
+function ArcadeGameHelper.getActionShowEffect(showId, showParam)
+	local actionEffectIdList, bulletEffect
+
+	if showId == ArcadeGameEnum.ActionShowId.ActiveSkill then
+		local spellEffect = ArcadeConfig.instance:getActiveSkillSpellEffect(showParam)
+
+		if spellEffect and spellEffect ~= 0 then
+			actionEffectIdList = {
+				spellEffect
+			}
+		end
+
+		bulletEffect = ArcadeConfig.instance:getActiveSkillBulletEffect(showParam)
+	elseif showId == ArcadeGameEnum.ActionShowId.ActiveSkillHit then
+		local hitEffect = ArcadeConfig.instance:getActiveSkillHitEffect(showParam)
+
+		if hitEffect and hitEffect ~= 0 then
+			actionEffectIdList = {
+				hitEffect
+			}
+		end
+	elseif showId == ArcadeGameEnum.ActionShowId.GainBuff then
+		local gainBuffEffect = ArcadeConfig.instance:getArcadeBuffGainEffect(showParam)
+
+		if gainBuffEffect and gainBuffEffect ~= 0 then
+			actionEffectIdList = {
+				gainBuffEffect
+			}
+		end
+	elseif showId == ArcadeGameEnum.ActionShowId.Interactive then
+		local interactEffectId = ArcadeConfig.instance:getInteractiveActingEffId(showParam)
+
+		if interactEffectId and interactEffectId ~= 0 then
+			actionEffectIdList = {
+				interactEffectId
+			}
+		end
+	elseif showId == ArcadeGameEnum.ActionShowId.BombWarn then
+		local bombAlertEffectId = ArcadeConfig.instance:getBombAlertEffectId(showParam)
+
+		if bombAlertEffectId and bombAlertEffectId ~= 0 then
+			actionEffectIdList = {
+				bombAlertEffectId
+			}
+		end
+	else
+		actionEffectIdList = ArcadeConfig.instance:getActionShowEffectIdList(showId)
+	end
+
+	return actionEffectIdList, bulletEffect
+end
+
 function ArcadeGameHelper.getResultViewInfo(isWin, isReset, serverInfo)
 	local characterId
 	local passLevelCount = 0
@@ -1088,7 +1140,7 @@ function ArcadeGameHelper._eventChangeRoom(entityType, entityId, uid, eventOptio
 	ArcadeGameModel.instance:addPortalExtractionCount(entityId)
 
 	if extraParam then
-		ArcadeStatHelper.instance:sendExitRoom(extraParam, entityId)
+		ArcadeStatHelper.instance:sendExitRoom(extraParam.exitRoomId, extraParam.portalIdList, entityId)
 	end
 end
 
@@ -1209,9 +1261,13 @@ function ArcadeGameHelper._checkCollection(param)
 		return
 	end
 
-	local collectionId = tonumber(param[2])
+	local collectionList = string.splitToNumber(param[2], ",")
 
-	return characterMO:getHasCollection(collectionId)
+	for _, collectionId in ipairs(collectionList) do
+		if characterMO:getHasCollection(collectionId) then
+			return true
+		end
+	end
 end
 
 return ArcadeGameHelper

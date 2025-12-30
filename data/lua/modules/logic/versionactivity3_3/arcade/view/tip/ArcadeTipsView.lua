@@ -95,15 +95,14 @@ function ArcadeTipsView:refreshChildView()
 	end
 
 	if self._tipChildView then
-		self._tipChildView:onUpdateMO(self.viewParam, self)
-
 		local anchorX, anchorY = 0, 0
 
 		if self.viewParam.AnchorPos then
 			anchorX, anchorY = self.viewParam.AnchorPos.x, self.viewParam.AnchorPos.y
 		end
 
-		recthelper.setAnchor(self._tipChildView.viewGO.transform, anchorX, anchorY)
+		self._tipChildView:setAnchor(self.viewParam, anchorX, anchorY)
+		self._tipChildView:onUpdateMO(self.viewParam, self)
 	end
 end
 

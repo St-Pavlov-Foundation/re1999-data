@@ -163,6 +163,11 @@ end
 function ArcadeGameResultView:_onCreateRewardItem(obj, data, index)
 	local id = data
 	local count = self._attrDict and self._attrDict[id] or 0
+
+	if id == ArcadeGameEnum.CharacterResource.Cassette then
+		count = count + self._bookAddScore
+	end
+
 	local imageicon = gohelper.findChildImage(obj, "icon")
 	local txtnum = gohelper.findChildText(obj, "#txt_num")
 	local icon = ArcadeConfig.instance:getAttributeIcon(id)

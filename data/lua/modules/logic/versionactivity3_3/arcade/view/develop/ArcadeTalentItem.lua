@@ -18,10 +18,12 @@ function ArcadeTalentItem:onInitView()
 	self._golvitem = gohelper.findChild(self.viewGO, "middle/lv/lvGroup/go_lvitem")
 	self._btnlight = gohelper.findChildButtonWithAudio(self.viewGO, "bottom/#btn_light", AudioEnum3_3.Arcade.play_ui_yuanzheng_click)
 	self._txtlightnum = gohelper.findChildText(self.viewGO, "bottom/#btn_light/#txt_num")
+	self._txtbtnlight = gohelper.findChildText(self.viewGO, "bottom/#btn_light/txt_light")
 	self._golightreddot = gohelper.findChild(self.viewGO, "bottom/#btn_light/#go_reddot")
 	self._imagelighticon = gohelper.findChildImage(self.viewGO, "bottom/#btn_light/#image_icon")
 	self._btnupgrade = gohelper.findChildButtonWithAudio(self.viewGO, "bottom/#btn_upgrade", AudioEnum3_3.Arcade.play_ui_yuanzheng_click)
 	self._txtupgradenum = gohelper.findChildText(self.viewGO, "bottom/#btn_upgrade/#txt_num")
+	self._txtbtnupgrade = gohelper.findChildText(self.viewGO, "bottom/#btn_upgrade/txt_light")
 	self._goupgradereddot = gohelper.findChild(self.viewGO, "bottom/#btn_upgrade/#go_reddot")
 	self._imageupgradeicon = gohelper.findChildImage(self.viewGO, "bottom/#btn_upgrade/#image_icon")
 	self._golighted = gohelper.findChild(self.viewGO, "bottom/#go_lighted")
@@ -296,6 +298,14 @@ function ArcadeTalentItem:_refreshBtn()
 
 	gohelper.setActive(self._gomax.gameObject, not isLock and isMaxLevel and isSimple)
 	gohelper.setActive(self._golighted.gameObject, not isLock and isMaxLevel and not isSimple)
+
+	local txtStr = isLock and "p_v3a3_eliminate_talentview_light" or "p_versionactivity_1_2_dungeonmaplevelupitem_lvup"
+
+	if self._isEnough then
+		self._txtbtnupgrade.text = luaLang(txtStr)
+	else
+		self._txtbtnlight.text = luaLang(txtStr)
+	end
 
 	local cost = self.mo:getCost()
 

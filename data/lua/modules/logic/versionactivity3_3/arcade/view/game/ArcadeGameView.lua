@@ -193,6 +193,7 @@ function ArcadeGameView:_btnweaponOnClick(index)
 		}
 
 		ArcadeController.instance:openTipView(ArcadeEnum.TipType.Skill, param)
+		self:closeEventTip()
 		self:changeSelectedFrame()
 	end
 end
@@ -222,6 +223,7 @@ function ArcadeGameView:_btncollectionOnClick()
 	}
 
 	ArcadeController.instance:openTipView(ArcadeEnum.TipType.Collection, param)
+	self:closeEventTip()
 	self:changeSelectedFrame()
 end
 
@@ -253,12 +255,15 @@ function ArcadeGameView:_btnoptionOnClick(index)
 			local portalMOList = ArcadeGameModel.instance:getEntityMOList(ArcadeGameEnum.EntityType.Portal)
 
 			if portalMOList then
-				extraParam = {}
+				extraParam = {
+					exitRoomId = ArcadeGameModel.instance:getCurRoomId(),
+					portalIdList = {}
+				}
 
 				for i, portalMO in ipairs(portalMOList) do
 					local portalId = portalMO:getId()
 
-					extraParam[i] = portalId
+					extraParam.portalIdList[i] = portalId
 				end
 			end
 		end
@@ -384,12 +389,7 @@ function ArcadeGameView:_btnClickOnClick()
 	end
 
 	if entityType == ArcadeGameEnum.EntityType.Character or entityType == ArcadeGameEnum.EntityType.Monster then
-		if self._showingEventEntityType and self._showingEventEntityUid then
-			self._showingEventEntityType = nil
-			self._showingEventEntityUid = nil
-
-			self._eventTipAnimator:Play("close", 0, 1)
-		end
+		self:closeEventTip()
 
 		local anchor = {
 			x = 705,
@@ -617,7 +617,7 @@ function ArcadeGameView:_checkWeaponList()
 
 	if lossWeapon then
 		TaskDispatcher.cancelTask(self.refreshWeapon, self)
-		TaskDispatcher.runDelay(self.refreshWeapon, self, 1.3)
+		TaskDispatcher.runDelay(self.refreshWeapon, self, 0.5)
 	else
 		self:refreshWeapon()
 	end
@@ -727,6 +727,7 @@ function ArcadeGameView:_onSkillLongPress()
 	}
 
 	ArcadeController.instance:openTipView(ArcadeEnum.TipType.Skill, param)
+	self:closeEventTip()
 	self:changeSelectedFrame()
 end
 
@@ -748,6 +749,7 @@ function ArcadeGameView:_onBombLongPress()
 	}
 
 	ArcadeController.instance:openTipView(ArcadeEnum.TipType.Skill, param)
+	self:closeEventTip()
 	self:changeSelectedFrame()
 end
 
@@ -1315,7 +1317,9 @@ function ArcadeGameView:killScoreProgressTween()
 end
 
 function ArcadeGameView:_onTweenScoreProgress(value)
-	self._imagelv.fillAmount = value
+	if self._imagelv then
+		self._imagelv.fillAmount = value
+	end
 end
 
 function ArcadeGameView:refreshBoom()
@@ -1429,6 +1433,15 @@ function ArcadeGameView:refreshEventTip(isPlay)
 
 		self._eventTipAnimator:Play("close", 0, isPlay and 0 or 1)
 		self:changeSelectedFrame()
+	end
+end
+
+function ArcadeGameView:closeEventTip()
+	if self._showingEventEntityType and self._showingEventEntityUid then
+		self._showingEventEntityType = nil
+		self._showingEventEntityUid = nil
+
+		self._eventTipAnimator:Play("close", 0, 1)
 	end
 end
 

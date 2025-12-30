@@ -119,7 +119,13 @@ function ArcadeHandBookItem:_setNativeSize(image)
 		return
 	end
 
-	image:SetNativeSize()
+	if self._mo:isSpecialIconSize() then
+		local sizeX, sizeY = self._mo:getIconRectSize()
+
+		recthelper.setSize(image.transform, sizeX, sizeY)
+	else
+		image:SetNativeSize()
+	end
 end
 
 function ArcadeHandBookItem:_refreshStatus()

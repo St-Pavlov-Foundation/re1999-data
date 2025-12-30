@@ -86,7 +86,7 @@
   },
   {
     "id": 18,
-    "value": "1#1.15#1.5",
+    "value": "1#1.3#1.5",
     "mlvalue": ""
   },
   {
@@ -101,22 +101,22 @@
   },
   {
     "id": 21,
-    "value": "10",
+    "value": "500",
     "mlvalue": ""
   },
   {
     "id": 22,
-    "value": "20",
+    "value": "50",
     "mlvalue": ""
   },
   {
     "id": 23,
-    "value": "30",
+    "value": "50",
     "mlvalue": ""
   },
   {
     "id": 24,
-    "value": "40",
+    "value": "300",
     "mlvalue": ""
   },
   {

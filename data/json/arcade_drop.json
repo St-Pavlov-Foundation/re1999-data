@@ -324,6 +324,24 @@
     "characterunlock": 0
   },
   {
+    "id": 160041,
+    "resourcedrop": "",
+    "collectiondrop": "1000:160041",
+    "characterunlock": 0
+  },
+  {
+    "id": 160042,
+    "resourcedrop": "",
+    "collectiondrop": "1000:160042",
+    "characterunlock": 0
+  },
+  {
+    "id": 160043,
+    "resourcedrop": "",
+    "collectiondrop": "1000:160043",
+    "characterunlock": 0
+  },
+  {
     "id": 16005,
     "resourcedrop": "",
     "collectiondrop": "1000:16005",

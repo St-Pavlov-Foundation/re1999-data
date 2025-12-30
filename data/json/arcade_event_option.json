@@ -259,9 +259,9 @@
     "id": 320702702,
     "type": "triggerPassiveSkill",
     "optionDesc": "投币手“可燃点”可选",
-    "condition": "checkHaveCollection#16004",
+    "condition": "checkHaveCollection#16004,160041,160042,160043",
     "param": "320702702",
-    "descChange": "获得缪斯秘宝“微弱的小火苗”"
+    "descChange": "获得缪斯秘宝“数码蓄能枪β型”"
   },
   {
     "id": 320702801,

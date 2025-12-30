@@ -315,7 +315,7 @@ function ArcadeGameCharacterMO:getCollectionIdList(collectionType)
 			local posB = posDict[b]
 
 			if posA and posB then
-				return posA < posB
+				return posB < posA
 			end
 
 			return a < b

@@ -186,6 +186,7 @@ function ArcadeEffectMgr:playBulletEffect(effectId, entityType, entityUid)
 			resAbPath = FightHelper.getEffectAbPath(resPath)
 		end
 
+		local rotationType = ArcadeConfig.instance:getEffectRotationType(effectId)
 		local param = {
 			isBullet = true,
 			resName = resName,

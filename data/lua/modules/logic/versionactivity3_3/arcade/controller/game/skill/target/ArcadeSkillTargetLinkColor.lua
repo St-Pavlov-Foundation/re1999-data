@@ -26,6 +26,14 @@ function ArcadeSkillTargetLinkColor:onFindTarget()
 		return
 	end
 
+	local isDead = mo:getIsDead()
+	local isRemoving = mo:getIsRemoving()
+	local hp = mo:getHp()
+
+	if isDead or isRemoving or hp <= 0 then
+		return
+	end
+
 	self:addTarget(mo)
 
 	local hasCheckGridDict = {}
@@ -67,8 +75,11 @@ function ArcadeSkillTargetLinkColor:onFindTarget()
 				if adjMO and not self._targetIdDict[adjUid] then
 					local adjId = adjMO:getId()
 					local race = ArcadeConfig.instance:getMonsterRace(adjId)
+					local adjIsDead = adjMO:getIsDead()
+					local adjIsRemoving = adjMO:getIsRemoving()
+					local adjHp = adjMO:getHp()
 
-					if race == targetRace then
+					if not adjIsDead and not adjIsRemoving and adjHp > 0 and race == targetRace then
 						self:addTarget(adjMO)
 
 						local adjOccupyGridList = curRoom:getEntityOccupyGridList(adjEntityType, adjUid)

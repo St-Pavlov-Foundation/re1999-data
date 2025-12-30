@@ -176,6 +176,7 @@ function ArcadeGameController:endGame(settleType, isWin, isReset, serverInfo)
 
 	if serverInfo then
 		settleInfo = serverInfo
+		self._resultViewInfo.serverInfo = serverInfo
 	else
 		settleInfo = ArcadeGameHelper.getServerArcadeInsideInfo(isWin, true)
 
@@ -216,7 +217,9 @@ function ArcadeGameController:_openResultViewAfterSettle(cmd, resultCode, msg)
 	local gameCassetteCount = self._resultViewInfo.attrDict[ArcadeGameEnum.CharacterResource.Cassette] or 0
 	local totalCassetteCount = gameCassetteCount + self._resultViewInfo.bookAddScore
 
-	ArcadeStatHelper.instance:sendEndGame(self._resultViewInfo.settleType, totalCassetteCount)
+	ArcadeStatHelper.instance:sendEndGame(self._resultViewInfo.settleType, totalCassetteCount, self._resultViewInfo.serverInfo)
+
+	self._resultViewInfo = nil
 end
 
 function ArcadeGameController:closeGameView()
@@ -363,7 +366,7 @@ function ArcadeGameController:triggerEventOption(entityType, entityId, uid, even
 			local entity = scene and scene.entityMgr:getEntityWithType(entityType, uid)
 
 			if entity then
-				entity:playActionShow(ArcadeGameEnum.ActionShowId.Interactive)
+				entity:playActionShow(ArcadeGameEnum.ActionShowId.Interactive, nil, entityId)
 			end
 		end
 
@@ -547,7 +550,7 @@ function ArcadeGameController:gainDropItemById(dropId, gridX, gridY)
 			local scene = self:getGameScene()
 
 			if id == ArcadeGameEnum.CharacterResource.GameCoin and scene then
-				local dropCoinEffectIdList = ArcadeConfig.instance:getActionShowEffectIdList(ArcadeGameEnum.ActionShowId.DropCoin)
+				local dropCoinEffectIdList = ArcadeGameHelper.getActionShowEffect(ArcadeGameEnum.ActionShowId.DropCoin)
 				local dropCoinEffId = dropCoinEffectIdList and dropCoinEffectIdList[1]
 
 				scene.effectMgr:playEffect2Grid(dropCoinEffId, gridX, gridY)
@@ -579,6 +582,9 @@ function ArcadeGameController:gainCollection(collectionId, gainPos)
 		collectionMO = characterMO:addCollection(collectionId)
 
 		if collectionMO then
+			local name = ArcadeConfig.instance:getCollectionName(collectionId)
+
+			GameFacade.showToast(ToastEnum.V3a3ArcadeGainCollection, name)
 			ArcadeGameTriggerController.instance:triggerTarget(ArcadeGameEnum.TriggerPoint.Collection501, characterMO, {
 				collectionMO = collectionMO
 			})
@@ -697,6 +703,7 @@ function ArcadeGameController:changeEntityHp(entityMO, changValue)
 	if changValue > 0 then
 		local scene = self:getGameScene()
 		local uid = entityMO:getUid()
+		local entityType = entityMO:getEntityType()
 		local entity = scene and scene.entityMgr:getEntityWithType(entityType, uid)
 
 		if entity then

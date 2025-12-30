@@ -259,9 +259,8 @@ ArcadeGameEnum.TriggerCfgKeys = {
 	}
 }
 ArcadeGameEnum.ActionShowId = {
-	ActiveSkill = 11,
 	Remove = 6,
-	Interactive = 17,
+	BaseAttack = 3,
 	AddHp = 8,
 	BombWarn = 15,
 	GainBuff = 13,
@@ -269,9 +268,10 @@ ArcadeGameEnum.ActionShowId = {
 	BombAttack = 9,
 	EnterDead = 5,
 	ActiveSkillHit = 12,
-	BaseAttack = 3,
+	ActiveSkill = 11,
 	DropCoin = 16,
-	BombRange = 14,
+	Interactive = 17,
+	BombExposeRange = 14,
 	BombHit = 7,
 	Respawn = 10,
 	BaseHit = 4,

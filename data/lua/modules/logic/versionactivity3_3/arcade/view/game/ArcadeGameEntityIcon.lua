@@ -148,6 +148,7 @@ function ArcadeGameEntityIcon:checkTalk(triggerType, param)
 	self:_talking()
 	self:refreshChatContentShow(isPlay)
 	AudioMgr.instance:trigger(AudioEnum3_3.Arcade.play_ui_yuanzheng_bubble_popup)
+	gohelper.setAsLastSibling(self.go)
 end
 
 function ArcadeGameEntityIcon:_onEntityTweenMove(entityType, uid, isTween)

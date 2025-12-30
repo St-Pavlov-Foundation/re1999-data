@@ -164,46 +164,12 @@ function ArcadeGameBaseEntity:playActionShow(showId, direction, showParam, cb, c
 		return
 	end
 
-	if showId == ArcadeGameEnum.ActionShowId.ActiveSkill then
-		local spellEffect = ArcadeConfig.instance:getActiveSkillSpellEffect(showParam)
+	local effectIdList, bulletEffect = ArcadeGameHelper.getActionShowEffect(showId, showParam)
 
-		if spellEffect and spellEffect ~= 0 then
-			self._actionEffectIdList = {
-				spellEffect
-			}
-		end
+	self._actionEffectIdList = effectIdList
 
-		local bulletEffect = ArcadeConfig.instance:getActiveSkillBulletEffect(showParam)
-
-		if bulletEffect and bulletEffect ~= 0 and self.effectComp then
-			self.effectComp:playBulletEffect(bulletEffect)
-		end
-	elseif showId == ArcadeGameEnum.ActionShowId.ActiveSkillHit then
-		local hitEffect = ArcadeConfig.instance:getActiveSkillHitEffect(showParam)
-
-		if hitEffect and hitEffect ~= 0 then
-			self._actionEffectIdList = {
-				hitEffect
-			}
-		end
-	elseif showId == ArcadeGameEnum.ActionShowId.GainBuff then
-		local gainBuffEffect = ArcadeConfig.instance:getArcadeBuffGainEffect(showParam)
-
-		if gainBuffEffect and gainBuffEffect ~= 0 then
-			self._actionEffectIdList = {
-				gainBuffEffect
-			}
-		end
-	elseif showId == ArcadeGameEnum.ActionShowId.Interactive then
-		local interactEffectId = ArcadeConfig.instance:getInteractiveActingEffId(self.id)
-
-		if interactEffectId and interactEffectId ~= 0 then
-			self._actionEffectIdList = {
-				interactEffectId
-			}
-		end
-	else
-		self._actionEffectIdList = ArcadeConfig.instance:getActionShowEffectIdList(showId)
+	if bulletEffect and bulletEffect ~= 0 and self.effectComp then
+		self.effectComp:playBulletEffect(bulletEffect)
 	end
 
 	self._actionDirection = direction

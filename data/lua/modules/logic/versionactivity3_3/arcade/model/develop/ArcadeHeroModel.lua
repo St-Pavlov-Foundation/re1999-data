@@ -145,7 +145,7 @@ end
 
 function ArcadeHeroModel:getReddotType()
 	if self:hasReddotCharacter() then
-		return ArcadeEnum.ReddotType.New
+		return ArcadeEnum.ReddotType.Normal
 	end
 
 	if self:hasReddotTalent() then

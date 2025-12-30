@@ -133,7 +133,7 @@ end
 function ArcadeGameSummonController:_getEntitySize(id, entityType)
 	if not self._entitySizeFuncDict then
 		self._entitySizeFuncDict = {
-			[ArcadeGameEnum.EntityType.Character] = function(monsterId)
+			[ArcadeGameEnum.EntityType.Monster] = function(monsterId)
 				return ArcadeConfig.instance:getMonsterSize(monsterId)
 			end,
 			[ArcadeGameEnum.EntityType.Bomb] = function(bombId)

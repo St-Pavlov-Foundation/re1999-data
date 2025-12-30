@@ -958,5 +958,20 @@
     "effectsOffset": "",
     "effectsScale": 0,
     "needShake": false
+  },
+  {
+    "id": 689010065,
+    "triggerAnimation": "",
+    "triggerAudio": 0,
+    "triggerEffects": "v3a3_bfjwl_26_ex9",
+    "isPlayOnGrid": false,
+    "isNearestGrid": false,
+    "speed": 0,
+    "direction": 0,
+    "isFromBorder": false,
+    "effectsRotationType": 2,
+    "effectsOffset": "",
+    "effectsScale": 1,
+    "needShake": false
   }
 ]

@@ -410,7 +410,7 @@ function ArcadeGameModel:addKillMonsterNum(count)
 end
 
 function ArcadeGameModel:addGainCoinNum(count)
-	self._allCoinNum = (self._allCoinNum or 0) + count
+	self._allCoinNum = (self._allCoinNum or 0) + (count or 0)
 end
 
 function ArcadeGameModel:setGameAttribute(attrId, value)
