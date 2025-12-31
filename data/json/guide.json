@@ -8121,7 +8121,7 @@
     "id": 33002,
     "desc": "8bit街机秀基础攻击指引",
     "isOnline": 1,
-    "trigger": "OpenView#ArcadeGameView",
+    "trigger": "OpenView#ArcadeHallView",
     "invalid": "",
     "interruptFinish": 1,
     "priority": 0,
