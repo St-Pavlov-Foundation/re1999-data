@@ -103,6 +103,7 @@ function UISpriteSetMgr:ctor()
 	self._rouge5 = self:newSpriteSetUnit("ui/spriteassets/rouge5.asset")
 	self._rouge6 = self:newSpriteSetUnit("ui/spriteassets/rouge6.asset")
 	self._rouge7 = self:newSpriteSetUnit("ui/spriteassets/rouge7.asset")
+	self._rouge8 = self:newSpriteSetUnit("ui/spriteassets/rouge8.asset")
 	self._fairyland = self:newSpriteSetUnit("ui/spriteassets/fairyland_spriteset.asset")
 	self._bgmswitch = self:newSpriteSetUnit("ui/spriteassets/bgmtoggle.asset")
 	self._commandstation = self:newSpriteSetUnit("ui/spriteassets/sp_commandstation.asset")
@@ -588,6 +589,10 @@ end
 
 function UISpriteSetMgr:setRouge7Sprite(image, name, setNativeSize)
 	self._rouge7:setSprite(image, name, setNativeSize)
+end
+
+function UISpriteSetMgr:setRouge8Sprite(image, name, setNativeSize)
+	self._rouge8:setSprite(image, name, setNativeSize)
 end
 
 function UISpriteSetMgr:setFairyLandSprite(image, name, setNativeSize)

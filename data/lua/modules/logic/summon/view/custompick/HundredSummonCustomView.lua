@@ -51,6 +51,7 @@ function HundredSummonCustomView:onInitView()
 	self._golefttop = gohelper.findChild(self.viewGO, "#go_ui/#go_lefttop")
 	self._gorighttop = gohelper.findChild(self.viewGO, "#go_ui/#go_righttop")
 	self._govxtxtlight = gohelper.findChild(self.viewGO, "#go_ui/current/tip3/txt_bg/txt_bg_light")
+	self._animRoot = self.viewGO:GetComponent(typeof(UnityEngine.Animator))
 
 	if self._editableInitView then
 		self:_editableInitView()

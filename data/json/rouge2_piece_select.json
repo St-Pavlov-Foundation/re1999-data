@@ -247,12 +247,12 @@
     "afterSelect": "",
     "checkId": 0,
     "title": "敲动音叉",
-    "content": "获得1点自选属性",
+    "content": "选择以继续剧情",
     "descSuccess": "6#100105011|6#100105012|100105013",
     "descLose": "",
     "descBigSuccess": "",
     "triggerType": 1,
-    "triggerParam": "null-2#0:1|1#9321001",
+    "triggerParam": "null-1#9321001",
     "display": 0
   },
   {
@@ -263,12 +263,12 @@
     "afterSelect": "",
     "checkId": 0,
     "title": "看向同胞",
-    "content": "获得1点自选属性",
+    "content": "选择以继续剧情",
     "descSuccess": "7#100105014|7#100105015|100105016",
     "descLose": "",
     "descBigSuccess": "",
     "triggerType": 1,
-    "triggerParam": "null-2#0:1|1#9321001",
+    "triggerParam": "null-1#9321001",
     "display": 0
   },
   {
@@ -279,12 +279,12 @@
     "afterSelect": "",
     "checkId": 0,
     "title": "歪过头去：“ㄣˊ？”",
-    "content": "获得1点自选属性",
+    "content": "选择以继续剧情",
     "descSuccess": "5#100105017|100105018",
     "descLose": "",
     "descBigSuccess": "",
     "triggerType": 1,
-    "triggerParam": "null-2#0:1|1#9321001",
+    "triggerParam": "null-1#9321001",
     "display": 0
   },
   {
@@ -295,12 +295,12 @@
     "afterSelect": "",
     "checkId": 0,
     "title": "与野兽玩耍",
-    "content": "获得1点自选属性",
+    "content": "选择以继续剧情",
     "descSuccess": "1001071",
     "descLose": "",
     "descBigSuccess": "",
     "triggerType": 1,
-    "triggerParam": "null-2#0:1|1#9321002",
+    "triggerParam": "null-1#9321002",
     "display": 0
   },
   {
@@ -311,12 +311,12 @@
     "afterSelect": "",
     "checkId": 501,
     "title": "安抚混乱的人群",
-    "content": "获得1点自选属性。【激情检定】以推进剧情",
+    "content": "【激情检定】以推进剧情",
     "descSuccess": "10|1001072|1001074",
     "descLose": "10|1001073|1001074",
     "descBigSuccess": "10|1001072|1001074",
     "triggerType": 1,
-    "triggerParam": "null-2#106:1|2#0:1|1#9321002",
+    "triggerParam": "null-2#106:1|1#9321002",
     "display": 0
   },
   {
@@ -359,12 +359,12 @@
     "afterSelect": "",
     "checkId": 0,
     "title": "ㄕˋ，是的",
-    "content": "获得1点激情",
+    "content": "获得1点自选属性",
     "descSuccess": "9#1001093",
     "descLose": "",
     "descBigSuccess": "",
     "triggerType": 1,
-    "triggerParam": "null-2#105:1|1#9321003",
+    "triggerParam": "null-2#0:1|1#9321003",
     "display": 0
   },
   {
@@ -375,12 +375,12 @@
     "afterSelect": "",
     "checkId": 0,
     "title": "ㄅㄨˋ，不能跟陌生人说重塑之手……",
-    "content": "获得1点感知",
+    "content": "获得200金雀子儿",
     "descSuccess": "9#1001093",
     "descLose": "",
     "descBigSuccess": "",
     "triggerType": 1,
-    "triggerParam": "null-2#104:1|1#9321003",
+    "triggerParam": "null-1#200|1#9321003",
     "display": 0
   }
 ]

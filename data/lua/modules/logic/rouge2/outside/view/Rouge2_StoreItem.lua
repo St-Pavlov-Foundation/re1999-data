@@ -56,7 +56,7 @@ function Rouge2_StoreItem:refreshTag()
 	local constConfig = Rouge2_OutSideConfig.instance:getConstConfigById(constId)
 
 	if constConfig then
-		self.txtTagName.text = constConfig.value
+		self.txtTagName.text = constConfig.desc
 	else
 		logError("不存在的商店标题 groupId: " .. self.groupId .. "constId: " .. tostring(constId))
 	end

@@ -62,7 +62,7 @@
   {
     "id": 7,
     "mainTitleId": 3,
-    "subTitleId": 3,
+    "subTitleId": 4,
     "mainTitle": "途中探索",
     "subTitle": "检定",
     "picture": "rouge2_help_12",
@@ -72,7 +72,7 @@
   {
     "id": 8,
     "mainTitleId": 3,
-    "subTitleId": 4,
+    "subTitleId": 5,
     "mainTitle": "途中探索",
     "subTitle": "属性提升",
     "picture": "rouge2_help_13",
@@ -82,7 +82,7 @@
   {
     "id": 9,
     "mainTitleId": 3,
-    "subTitleId": 5,
+    "subTitleId": 6,
     "mainTitle": "途中探索",
     "subTitle": "休整地域",
     "picture": "rouge2_help_14",
@@ -92,7 +92,7 @@
   {
     "id": 10,
     "mainTitleId": 3,
-    "subTitleId": 6,
+    "subTitleId": 7,
     "mainTitle": "途中探索",
     "subTitle": "出发时间",
     "picture": "rouge2_help_5",
@@ -102,7 +102,7 @@
   {
     "id": 11,
     "mainTitleId": 4,
-    "subTitleId": 1,
+    "subTitleId": 2,
     "mainTitle": "收集品",
     "subTitle": "谐波",
     "picture": "rouge2_help_6",
@@ -112,7 +112,7 @@
   {
     "id": 12,
     "mainTitleId": 4,
-    "subTitleId": 2,
+    "subTitleId": 3,
     "mainTitle": "收集品",
     "subTitle": "造物",
     "picture": "rouge2_help_19",
@@ -122,7 +122,7 @@
   {
     "id": 13,
     "mainTitleId": 4,
-    "subTitleId": 3,
+    "subTitleId": 4,
     "mainTitle": "收集品",
     "subTitle": "共鸣器",
     "picture": "rouge2_help_15",
@@ -188,5 +188,55 @@
     "picture": "rouge2_help_2",
     "content": "当乐谱中的音符达到上限时写入新的音符，\n会使<#FF906A>最左侧</color>音符消失并转化为对应咒语|音符转化的<#FF906A>咒语</color>不占用行动点数",
     "pos": "332#-106|959#-106"
+  },
+  {
+    "id": 21,
+    "mainTitleId": 8,
+    "subTitleId": 1,
+    "mainTitle": "乐鞭手",
+    "subTitle": "乐鞭手战斗 ",
+    "picture": "rouge2_help_20",
+    "content": "乐鞭手可在<#FF906A>共鸣器</color>处培养意志体花蕾\n意志体花蕾能在战场上提供帮助|\n<#FF906A>回合开始时</color>，意志体花蕾的计数将会增加，\n当计数累计至最大值时，点击意志体花蕾\n即可<#FF906A>释放其主动技能</color>",
+    "pos": "498#160|397#58"
+  },
+  {
+    "id": 25,
+    "mainTitleId": 8,
+    "subTitleId": 2,
+    "mainTitle": "乐鞭手",
+    "subTitle": "乐鞭手天赋树",
+    "picture": "rouge2_help_21",
+    "content": "<#FF906A>属性突破</color>后将获得天赋点|\n消耗天赋点激活节点，获得效果。\n需激活前置节点才可解锁后置节点",
+    "pos": "419#170|406#58"
+  },
+  {
+    "id": 22,
+    "mainTitleId": 9,
+    "subTitleId": 1,
+    "mainTitle": "通用战斗",
+    "subTitle": "三档战斗速度",
+    "picture": "v3a3_rouge2_help_1",
+    "content": "玩法内可以激活<#FF906A>第三档战斗速度</color>\n战斗动画的播放速度将进一步加快",
+    "pos": "703#237"
+  },
+  {
+    "id": 23,
+    "mainTitleId": 3,
+    "subTitleId": 3,
+    "mainTitle": "途中探索",
+    "subTitle": "队伍追踪 ",
+    "picture": "rouge2_help_23",
+    "content": "此处可以查看对应队伍的角色列表|\n<#FF906A>追踪队伍后</color>，能够增强队伍的物品\n以及队伍中的角色将会显示<#FF906A>罗盘样式</color>的追踪标记",
+    "pos": "527#176|768#0"
+  },
+  {
+    "id": 24,
+    "mainTitleId": 4,
+    "subTitleId": 1,
+    "mainTitle": "收集品",
+    "subTitle": "属性突破",
+    "picture": "rouge2_help_22",
+    "content": "属性值达到突破门槛\n即可进行<#FF906A>属性突破</color>|\n突破效果仅针对部分\n<#FF906A>角色标签</color>的角色生效，\n\n点击此处可以查看\n适用角色范围",
+    "pos": "378#-204|1050#-126"
   }
 ]

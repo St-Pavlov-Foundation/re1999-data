@@ -8,7 +8,7 @@
     "fightTaskDesc": "无尽恶潮",
     "fightTaskinfo": "(本场战斗失败无惩罚)\n敌人无限刷新，每击败1名敌人获得100分",
     "fightTaskDetail": "(本场战斗失败无惩罚)\n敌人无限刷新，每击败1名敌人获得100分，当前得分：▩1%s",
-    "stage1Interactive": "1#50"
+    "stage1Interactive": "1#100"
   },
   {
     "id": 321902,
@@ -52,7 +52,7 @@
     "fightTaskDesc": "驱散恶童",
     "fightTaskinfo": "(本场战斗失败无惩罚)\n击败启明会成员后，所有恶童被驱散；\n驱散恶童得1000分，击败得500分",
     "fightTaskDetail": "(本场战斗失败无惩罚)\n击败启明会成员后，所有恶童被驱散；\n将恶童驱散得1000分，击败得500分\n当前得分：▩1%s",
-    "stage1Interactive": "1#50"
+    "stage1Interactive": "1#100"
   },
   {
     "id": 322002,
@@ -96,7 +96,7 @@
     "fightTaskDesc": "夺取星星",
     "fightTaskinfo": "(本场战斗失败无惩罚)\n击败敌人时，敌人每有1颗星星得1000分；同时击败多个星星敌人，可得更高分数",
     "fightTaskDetail": "(本场战斗失败无惩罚)\n击败敌人时，敌人每有1颗星星得1000分；同时击败多个星星敌人，可得更高分数，当前得分：▩1%s",
-    "stage1Interactive": "1#50"
+    "stage1Interactive": "1#100"
   },
   {
     "id": 322102,
@@ -140,7 +140,7 @@
     "fightTaskDesc": "找真身",
     "fightTaskinfo": "(本场战斗失败无惩罚)\n击败真身后，击败得分效率会大大提高",
     "fightTaskDetail": "(本场战斗失败无惩罚)\n击败真身后，击败剩余敌人的得分提高，当前得分：▩1%s",
-    "stage1Interactive": "1#50"
+    "stage1Interactive": "1#100"
   },
   {
     "id": 322202,
@@ -184,7 +184,7 @@
     "fightTaskDesc": "拳力计",
     "fightTaskinfo": "(本场战斗失败无惩罚)\n单次攻击造成的伤害越高，得分越高",
     "fightTaskDetail": "(本场战斗失败无惩罚)\n单次攻击造成的伤害越高，得分越高，当前得分：▩1%s",
-    "stage1Interactive": "1#50"
+    "stage1Interactive": "1#100"
   },
   {
     "id": 322302,
@@ -228,7 +228,7 @@
     "fightTaskDesc": "速战速决",
     "fightTaskinfo": "(本场战斗失败无惩罚)\n每击败1名敌人得100分，战斗限3回合",
     "fightTaskDetail": "(本场战斗失败无惩罚)\n每击败1名敌人得100分，战斗限3回合\n当前得分：▩1%s",
-    "stage1Interactive": "1#50"
+    "stage1Interactive": "1#100"
   },
   {
     "id": 322402,
@@ -272,7 +272,7 @@
     "fightTaskDesc": "闪击否决",
     "fightTaskinfo": "(本场战斗失败无惩罚)\n在敌人逃跑前将其击败，每名敌人1000分",
     "fightTaskDetail": "(本场战斗失败无惩罚)\n在敌人逃跑前将其击败，每名敌人1000分，当前得分：▩1%s",
-    "stage1Interactive": "1#50"
+    "stage1Interactive": "1#100"
   },
   {
     "id": 322502,

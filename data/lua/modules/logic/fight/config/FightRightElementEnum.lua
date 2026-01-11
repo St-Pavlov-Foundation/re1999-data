@@ -34,7 +34,8 @@ FightRightElementEnum.Elements = {
 	Rouge2Treasure = GetEnum(),
 	Rouge2Task = GetEnum(),
 	AssistRole = GetEnum(),
-	PaTaComposeScore = GetEnum()
+	PaTaComposeScore = GetEnum(),
+	Rouge2Slapstick = GetEnum()
 }
 FightRightElementEnum.Priority = {
 	FightRightElementEnum.Elements.DouQuQuDice,
@@ -57,6 +58,7 @@ FightRightElementEnum.Priority = {
 	FightRightElementEnum.Elements.SurvivalTalent2,
 	FightRightElementEnum.Elements.Rouge2RevivalCoin,
 	FightRightElementEnum.Elements.Rouge2Treasure,
+	FightRightElementEnum.Elements.Rouge2Slapstick,
 	FightRightElementEnum.Elements.Rouge2Task,
 	FightRightElementEnum.Elements.PaTaComposeScore,
 	FightRightElementEnum.Elements.AssistRole
@@ -84,7 +86,8 @@ FightRightElementEnum.ElementsSizeDict = {
 	[FightRightElementEnum.Elements.Rouge2Treasure] = Vector2(120, 290),
 	[FightRightElementEnum.Elements.Rouge2Task] = Vector2(120, 120),
 	[FightRightElementEnum.Elements.AssistRole] = Vector2(150, 150),
-	[FightRightElementEnum.Elements.PaTaComposeScore] = Vector2(496, 104)
+	[FightRightElementEnum.Elements.PaTaComposeScore] = Vector2(496, 104),
+	[FightRightElementEnum.Elements.Rouge2Slapstick] = Vector2(200, 200)
 }
 FightRightElementEnum.ElementsNodeName = {
 	[FightRightElementEnum.Elements.BossRush] = "bossrush_score",
@@ -109,7 +112,8 @@ FightRightElementEnum.ElementsNodeName = {
 	[FightRightElementEnum.Elements.Rouge2Treasure] = "rouge2_treasure",
 	[FightRightElementEnum.Elements.Rouge2Task] = "rouge2_task",
 	[FightRightElementEnum.Elements.AssistRole] = "assist_role",
-	[FightRightElementEnum.Elements.PaTaComposeScore] = "tower_compose_score"
+	[FightRightElementEnum.Elements.PaTaComposeScore] = "tower_compose_score",
+	[FightRightElementEnum.Elements.Rouge2Slapstick] = "rouge2_slapstick"
 }
 FightRightElementEnum.AnchorTweenDuration = 0.2
 

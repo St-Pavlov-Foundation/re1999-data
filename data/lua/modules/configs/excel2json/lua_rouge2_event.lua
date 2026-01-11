@@ -4,6 +4,7 @@ module("modules.configs.excel2json.lua_rouge2_event", package.seeall)
 
 local lua_rouge2_event = {}
 local fields = {
+	isHighQuality = 10,
 	name = 4,
 	type = 2,
 	image = 3,
@@ -18,8 +19,9 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {
-	desc = 2,
-	name = 1
+	desc = 3,
+	name = 1,
+	nameEn = 2
 }
 
 function lua_rouge2_event.onLoad(json)

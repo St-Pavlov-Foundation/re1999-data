@@ -48,7 +48,7 @@
     "scoreReward": 160,
     "startView": "",
     "initCollections": "100022#100023#100024",
-    "desc": "每次进入地区时重振-3\n所有敌人最终免伤+40%，最终增伤+40%",
+    "desc": "所有敌人最终免伤+40%",
     "balanceLevel": "121#10#60"
   },
   {
@@ -60,8 +60,8 @@
     "monsterDesc": "5",
     "scoreReward": 180,
     "startView": "",
-    "initCollections": "",
-    "desc": "",
+    "initCollections": "100022#100023#100024#151001",
+    "desc": "幕后的敌人会在第4回合开始，每2回合释放强力攻击",
     "balanceLevel": "121#10#60"
   },
   {
@@ -73,8 +73,8 @@
     "monsterDesc": "5",
     "scoreReward": 200,
     "startView": "",
-    "initCollections": "",
-    "desc": "",
+    "initCollections": "100022#100023#100024#151001",
+    "desc": "敌人的生命获得大幅强化",
     "balanceLevel": "121#10#60"
   }
 ]

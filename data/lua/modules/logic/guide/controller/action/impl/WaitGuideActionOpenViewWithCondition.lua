@@ -446,4 +446,29 @@ function WaitGuideActionOpenViewWithCondition.enterBeiLiErEpisodeId(id)
 	return curEpisodeId == tonumber(id)
 end
 
+function WaitGuideActionOpenViewWithCondition:checkAttrDropHasEffectHero()
+	return Rouge2_AttrDropController.instance:checkAttrDropHasEffectHero()
+end
+
+function WaitGuideActionOpenViewWithCondition.checkFinishRouge(param)
+	if param == nil then
+		return false
+	end
+
+	local lastTime = TimeUtil.stringToTimestamp(param) * TimeUtil.OneSecondMilliSecond
+	local reviewInfo = Rouge2_OutsideModel.instance:getReviewInfoList()
+
+	if not reviewInfo or next(reviewInfo) == nil then
+		return false
+	end
+
+	for _, info in ipairs(reviewInfo) do
+		if lastTime <= tonumber(info.finishTime) then
+			return not Rouge2_Model.instance:inRouge()
+		end
+	end
+
+	return false
+end
+
 return WaitGuideActionOpenViewWithCondition

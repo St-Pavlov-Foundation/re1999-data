@@ -14941,7 +14941,7 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "使用普通咒语时，不消耗行动力"
+    "desc": "使用普通咒语时，不消耗行动点"
   },
   {
     "id": 32813001,
@@ -20301,7 +20301,7 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "回合开始时，乐谱上每有1个，释放一次【电能变奏曲】；演奏时，将1张【电能变奏曲】置入行动区"
+    "desc": "被动：回合开始时，释放单体攻击【电能变奏曲】\n主动：音符离开乐谱时，释放单体攻击【电能变奏曲】"
   },
   {
     "id": 110320002,
@@ -20309,7 +20309,7 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "回合开始时，乐谱上每有1个，己方行动点+1，咒语上限+1；演奏时，将1张【升阶变奏曲】置入行动区"
+    "desc": "被动：回合开始时，行动点+1，咒语上限+1\n主动：音符离开乐谱时，释放【升阶变奏曲】升阶全体角色1张随机咒语"
   },
   {
     "id": 110320003,
@@ -20317,7 +20317,7 @@
     "color": 1,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "回合开始时，乐谱上每有1个，【音强】+1，己方全体激情+1；演奏时，将1张【仪式变奏曲】置入行动区"
+    "desc": "被动：回合开始时，全体角色激情+1,【仪式变奏曲】伤害提升\n主动：音符离开乐谱时，释放群体攻击【仪式变奏曲】"
   },
   {
     "id": 110320004,
@@ -20557,7 +20557,7 @@
     "color": 0,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "它们无法对你构成威胁，而乏味的旅途正需要这些兴之所至的调剂品。"
+    "desc": "特殊规则的战斗关卡。根据关卡规则获得评分、晋升奖励评级并据此结算奖励"
   },
   {
     "id": 108270013,
@@ -20565,7 +20565,7 @@
     "color": 0,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "伪装、引诱、蓄谋已久。如果你毫无准备——现在还来得及考虑后果。"
+    "desc": "较为困难的精英战斗关卡。可能获得更高品质的谐波或造物，获得更多金雀子儿"
   },
   {
     "id": 108270014,
@@ -20573,7 +20573,7 @@
     "color": 0,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "视线被利齿汇集，去路被锋刃阻挡。你必须战胜它，战胜未明的歧路……战胜你自己。"
+    "desc": "极其困难的首领挑战关卡。极可能获得最高品质的谐波或造物"
   },
   {
     "id": 108270015,
@@ -20581,7 +20581,7 @@
     "color": 0,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "于你而言，闭塞的地形绝非命运的馈赠——但对于潜藏其中的敌人而言，则恰好相反。"
+    "desc": "至多四层难度递增的挑战关卡，获得愈发丰富的战利品奖励"
   },
   {
     "id": 108270016,
@@ -20589,7 +20589,7 @@
     "color": 0,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "珍宝并非藏在床下、藏在地头，而是藏在循循善诱的风里，映入明察秋毫的眼中。"
+    "desc": "贮藏宝藏的路点。可以选择获得金雀子儿、提升反应或感知属性、或使用【万能钥匙】开启战利品宝藏"
   },
   {
     "id": 108270017,
@@ -20597,7 +20597,7 @@
     "color": 0,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "它邀你停留片刻，整理脚步和心绪——愿行色匆匆之间，总有一隅让你得以停下步伐、停下喘息。"
+    "desc": "暂时休息的路点。可以选择回复重振、获得随机属性、取得【万能钥匙】或使用【万能钥匙】取得自选属性"
   },
   {
     "id": 108270018,
@@ -20605,7 +20605,7 @@
     "color": 0,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "精美的收藏可让顺利的坦途平添几分畅快，而灵验的护符则为崎岖的道路化解忧愁。"
+    "desc": "购买战利品的路点。能够花费金币购买战利品，或是利用【反应】顺带拿走一些物品"
   },
   {
     "id": 108270019,
@@ -20613,7 +20613,7 @@
     "color": 0,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "它掌握着使腐朽化为神奇的技艺，又知晓使好的东西更好的诀窍。"
+    "desc": "战斗强化点。可以选择置换造物/谐波、强化造物或者获取属性值。"
   },
   {
     "id": 108270020,
@@ -20621,7 +20621,7 @@
     "color": 0,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "你踏上预期之外的道路，旅途最迷人之处恰恰在此。带领你来这里的或许是命运吧——也可能是迷路。"
+    "desc": "预期之外的道路。能够通过选择或属性检定获得不同的战利品"
   },
   {
     "id": 108270021,
@@ -20629,7 +20629,7 @@
     "color": 0,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "你总有一个要去的地方，一件要办的事情。而这里便是你为此不得不途经之地，我们称之为故事的一节。"
+    "desc": "故事中的一部分。能够通过选择或属性检定获得不同的战利品"
   },
   {
     "id": 108270022,
@@ -20637,7 +20637,7 @@
     "color": 0,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "它们无法对你构成威胁，却仍不屈不挠地尝试——踩痛一枚脚趾也算成功。"
+    "desc": "寻常而简单的战斗关卡。战斗胜利可能获得谐波和少量金雀子儿"
   },
   {
     "id": 108270023,
@@ -20645,7 +20645,7 @@
     "color": 0,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "复鸣的音叉，回环的和声，我们的心震颤不息。可使即将倒下的我方角色回复所有状态。"
+    "desc": "可使即将倒下的我方角色回复所有状态。"
   },
   {
     "id": 108270024,
@@ -21336,6 +21336,118 @@
     "desc": "现实防御提升1%(效果可叠加，无法驱散)"
   },
   {
+    "id": 103336081,
+    "name": "迸裂",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "现实、精神防御-2%，持续2回合（可叠加，最多叠加50层）"
+  },
+  {
+    "id": 103336090,
+    "name": "电击<id:103336090>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "对敌方全体造成400%创伤，自身获得2层【电能】"
+  },
+  {
+    "id": 103337070,
+    "name": "癫狂攻势<id:103337070>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "攻击力/最终增伤+10%,现实/精神防御/最终免伤-10%"
+  },
+  {
+    "id": 103337071,
+    "name": "输出",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "角色标签带有[输出]的角色"
+  },
+  {
+    "id": 103337072,
+    "name": "通用",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "任意标签的角色"
+  },
+  {
+    "id": 103337073,
+    "name": "任意",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "任意标签的角色"
+  },
+  {
+    "id": 103337074,
+    "name": "辅助",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "角色标签带有[辅助]的角色"
+  },
+  {
+    "id": 103337075,
+    "name": "额外行动",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "角色标签带有[额外行动]的角色"
+  },
+  {
+    "id": 103337076,
+    "name": "启示",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "角色标签带有[启示]的角色"
+  },
+  {
+    "id": 103337077,
+    "name": "电能",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "角色标签带有[电能]的角色"
+  },
+  {
+    "id": 103337078,
+    "name": "薪血",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "角色标签带有[薪血]的角色"
+  },
+  {
+    "id": 103337079,
+    "name": "余辉",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "角色标签带有[余辉]的角色"
+  },
+  {
+    "id": 103337080,
+    "name": "属性强化",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "推荐属性达到突破数值时，可以选择一项特殊强化"
+  },
+  {
+    "id": 103337081,
+    "name": "己方",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "玩家角色所在的一方"
+  },
+  {
     "id": 309501111,
     "name": "术法威力提升",
     "color": 1,
@@ -21886,6 +21998,62 @@
     "notAddLink": 0,
     "isSpecialCharacter": 0,
     "desc": "为飞行中队选择支援目标，回合结束时会自动释放对应的神秘术"
+  },
+  {
+    "id": 104335011,
+    "name": "肆意鼓吹",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "单体攻击，造成500%精神创伤"
+  },
+  {
+    "id": 104335012,
+    "name": "凝滞寂静",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，对敌方全体造成500%精神创伤"
+  },
+  {
+    "id": 104335013,
+    "name": "直至构成枯萎",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，对敌方全体造成550%精神创伤"
+  },
+  {
+    "id": 104335014,
+    "name": "属性突破",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "属性每到达4/8/12/16时，会获得阶段性强化"
+  },
+  {
+    "id": 104335015,
+    "name": "凝滞哀号Ⅰ",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受创减免大幅度降低"
+  },
+  {
+    "id": 104335016,
+    "name": "3级电场",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 104335017,
+    "name": "凝滞哀号Ⅱ",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受创减免降低，持续1回合，最多可叠加20层"
   },
   {
     "id": 30920101,

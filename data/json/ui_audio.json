@@ -13763,5 +13763,10 @@
     "id": 330089,
     "eventName": "play_ui_fight_talent_light",
     "bankName": "fight_ui_sfx2_3"
+  },
+  {
+    "id": 335070,
+    "eventName": "play_ui_dungeon3_3_fightcast",
+    "bankName": "ui_dungeon3_3_fightux"
   }
 ]

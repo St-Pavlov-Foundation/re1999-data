@@ -167,6 +167,7 @@ function CharacterRecommedController:onJumpReturnRecommedView()
 			local tabId = CharacterRecommedEnum.TabSubType.DevelopGoals
 
 			openedViewTable.viewParam.defaultTabId = tabId
+			openedViewTable.viewParam.defaultTabIds = {}
 			openedViewTable.viewParam.defaultTabIds[2] = tabId
 
 			CharacterRecommedHeroListModel.instance:setMoList(heroId)

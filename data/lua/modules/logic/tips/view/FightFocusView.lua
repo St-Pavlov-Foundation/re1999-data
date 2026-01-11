@@ -359,7 +359,7 @@ function FightFocusView:_getEntityList()
 
 	local assistBoss = FightDataHelper.entityMgr:getAssistBoss()
 
-	if assistBoss and not FightDataHelper.paTaMgr:checkIsAssistRole() and self._curSelectSide == FightEnum.EntitySide.MySide then
+	if assistBoss and self._curSelectSide == FightEnum.EntitySide.MySide and FightDataHelper.paTaMgr:checkIsNormal() then
 		table.insert(entityList, assistBoss)
 	end
 
@@ -449,6 +449,20 @@ function FightFocusView:onOpen()
 	end
 
 	self._curSelectId = tarEntity and tarEntity.id or self._entityList[1].id
+
+	local find = false
+
+	for _, entity in ipairs(self._entityList) do
+		if self._curSelectId == entity.id then
+			find = true
+
+			break
+		end
+	end
+
+	if not find then
+		self._curSelectId = self._entityList[1].id
+	end
 
 	TaskDispatcher.runDelay(self._refreshUI, self, 0.3)
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_fight_roledetails)

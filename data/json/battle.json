@@ -165610,7 +165610,7 @@
     "playerMax": 4,
     "monsterMax": 3,
     "maxRound": 5,
-    "winCondition": "8#3201#4000",
+    "winCondition": "8#3201#4000|6#5",
     "advancedCondition": "",
     "hiddenRule": "",
     "additionRule": "2#4190016",
@@ -165636,7 +165636,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -165651,7 +165651,7 @@
     "playerMax": 4,
     "monsterMax": 3,
     "maxRound": 5,
-    "winCondition": "8#3201#4000",
+    "winCondition": "8#3201#4000|6#5",
     "advancedCondition": "",
     "hiddenRule": "",
     "additionRule": "2#4190016",
@@ -165677,7 +165677,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -165692,7 +165692,7 @@
     "playerMax": 4,
     "monsterMax": 3,
     "maxRound": 5,
-    "winCondition": "8#3201#4000",
+    "winCondition": "8#3201#4000|6#5",
     "advancedCondition": "",
     "hiddenRule": "",
     "additionRule": "2#4190016",
@@ -165718,7 +165718,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -165759,7 +165759,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -165800,7 +165800,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -165841,7 +165841,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -165882,7 +165882,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -165923,7 +165923,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -165964,7 +165964,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -166005,7 +166005,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -166046,7 +166046,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -166087,7 +166087,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -166128,7 +166128,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -166169,7 +166169,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -166210,7 +166210,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -166251,7 +166251,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -166292,7 +166292,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -166333,7 +166333,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -168137,7 +168137,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -168178,7 +168178,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -168219,7 +168219,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -168260,7 +168260,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -168278,7 +168278,7 @@
     "winCondition": "3#1083030055",
     "advancedCondition": "",
     "hiddenRule": "",
-    "additionRule": "2#1053200001|2#22300272|2#5230012|2#22300273",
+    "additionRule": "2#1053200001|2#22300272|2#5230012",
     "myStance": "101",
     "clothSkill": "",
     "useTemp": 0,
@@ -168301,7 +168301,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -168319,7 +168319,7 @@
     "winCondition": "3#900030201",
     "advancedCondition": "",
     "hiddenRule": "",
-    "additionRule": "2#1053200001|1#22301561|2#22301562|2#22301563",
+    "additionRule": "2#1053200001|2#22301563",
     "myStance": "101",
     "clothSkill": "",
     "useTemp": 0,
@@ -168342,7 +168342,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -168383,7 +168383,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -168424,7 +168424,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -168465,7 +168465,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -168506,7 +168506,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -168547,7 +168547,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -168565,7 +168565,7 @@
     "winCondition": "3#1083020041|3#1083020043",
     "advancedCondition": "",
     "hiddenRule": "",
-    "additionRule": "2#1053200001|1#22300461|2#5230183|1#22300271",
+    "additionRule": "2#1053200001|1#22300461|2#5230183",
     "myStance": "101",
     "clothSkill": "",
     "useTemp": 0,
@@ -168588,7 +168588,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -168629,7 +168629,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -168670,7 +168670,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -168711,7 +168711,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -168752,7 +168752,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -168793,7 +168793,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -168834,7 +168834,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -168875,7 +168875,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -168916,7 +168916,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -168957,7 +168957,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -168998,7 +168998,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -169039,7 +169039,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -169080,7 +169080,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -169121,7 +169121,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -169162,7 +169162,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -169203,7 +169203,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -169244,7 +169244,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -169285,7 +169285,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -169326,7 +169326,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -169367,7 +169367,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -169408,7 +169408,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -169449,7 +169449,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -169490,7 +169490,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -169531,7 +169531,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -169572,7 +169572,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -169613,7 +169613,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -169654,7 +169654,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -169695,7 +169695,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -169736,7 +169736,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -169777,7 +169777,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -169818,7 +169818,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -169859,7 +169859,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -169900,7 +169900,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -169941,7 +169941,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -169982,7 +169982,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -170023,7 +170023,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -170064,7 +170064,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -170105,7 +170105,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -170146,7 +170146,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -170187,7 +170187,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -170228,7 +170228,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -170269,7 +170269,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -170310,7 +170310,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -170351,7 +170351,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -170392,7 +170392,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -170433,7 +170433,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -170474,7 +170474,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -170515,7 +170515,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -170556,7 +170556,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -170597,7 +170597,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -170638,7 +170638,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -170679,7 +170679,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -170720,7 +170720,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -170761,7 +170761,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -170802,7 +170802,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -170843,7 +170843,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -170884,7 +170884,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -170925,7 +170925,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -170966,7 +170966,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -171007,7 +171007,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -171048,7 +171048,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -171089,7 +171089,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -171130,7 +171130,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -171171,7 +171171,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -171212,7 +171212,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -171253,7 +171253,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -171294,7 +171294,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -171335,7 +171335,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -171376,7 +171376,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -171417,7 +171417,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -171458,7 +171458,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -171499,7 +171499,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -171540,7 +171540,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -171581,7 +171581,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -171622,7 +171622,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -171663,7 +171663,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -171704,7 +171704,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -171745,7 +171745,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -171786,7 +171786,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -171827,7 +171827,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -171868,7 +171868,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -171909,7 +171909,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -171950,7 +171950,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -171991,7 +171991,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -172032,7 +172032,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -172073,7 +172073,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -172114,7 +172114,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -172155,7 +172155,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -172196,7 +172196,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -172237,7 +172237,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -172278,7 +172278,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -172319,7 +172319,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -172360,7 +172360,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -172401,7 +172401,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -172483,7 +172483,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -172524,7 +172524,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -172565,7 +172565,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -172606,7 +172606,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -172647,7 +172647,7 @@
     "noAutoFight": 0,
     "onlyTrial": 0,
     "aiLink": 0,
-    "bossHpType": "",
+    "bossHpType": "1#10000",
     "actShow": 1
   },
   {
@@ -173974,7 +173974,7 @@
     "playerMax": 4,
     "monsterMax": 4,
     "maxRound": 15,
-    "winCondition": "3#117333521",
+    "winCondition": "3#117333531",
     "advancedCondition": "",
     "hiddenRule": "2#9260008|1#9260005|1#117333501|1#117333502",
     "additionRule": "",
@@ -174015,7 +174015,7 @@
     "playerMax": 4,
     "monsterMax": 4,
     "maxRound": 15,
-    "winCondition": "3#117333621",
+    "winCondition": "3#117333631",
     "advancedCondition": "",
     "hiddenRule": "2#9260008|1#9260005|1#117333503|1#117333504",
     "additionRule": "",
@@ -174056,7 +174056,7 @@
     "playerMax": 4,
     "monsterMax": 4,
     "maxRound": 15,
-    "winCondition": "3#117333721",
+    "winCondition": "3#117333731",
     "advancedCondition": "",
     "hiddenRule": "2#9260008|1#9260005|1#117333501|1#117333502",
     "additionRule": "",
@@ -174097,7 +174097,7 @@
     "playerMax": 4,
     "monsterMax": 4,
     "maxRound": 15,
-    "winCondition": "3#117333821",
+    "winCondition": "3#117333831",
     "advancedCondition": "",
     "hiddenRule": "2#9260008|1#9260005|1#117333503|1#117333504",
     "additionRule": "",

@@ -72,7 +72,7 @@
     "name": "“漫长”",
     "icon": "rouge2_alchemy_1_8",
     "details": "本次旅途中，生成更多的【途中偶遇】路点",
-    "formula": "106",
+    "formula": "108",
     "effects": "",
     "numMax": 5
   },
@@ -83,7 +83,7 @@
     "name": "“轻盈”",
     "icon": "rouge2_alchemy_1_9",
     "details": "每次进入的路点与上一个路点不同时，金雀子儿+20",
-    "formula": "108",
+    "formula": "101",
     "effects": "",
     "numMax": 5
   },

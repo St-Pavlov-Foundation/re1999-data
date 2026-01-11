@@ -18,14 +18,6 @@ function ActivityLiveMgr3_3:getActId2ViewList()
 		},
 		[VersionActivity3_3Enum.ActivityId.Dungeon] = {
 			ViewName.VersionActivity2_8TaskView
-		},
-		[VersionActivity3_3Enum.ActivityId.Season] = {
-			ViewName.Season166MainView,
-			ViewName.Season166TeachView,
-			ViewName.Season166HeroGroupFightView
-		},
-		[VersionActivity3_3Enum.ActivityId.ReactivityStore] = {
-			ViewName.ReactivityStoreView
 		}
 	}
 end

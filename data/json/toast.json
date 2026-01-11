@@ -10646,5 +10646,85 @@
     "audioId": 1,
     "notMerge": 1,
     "notShow": 0
+  },
+  {
+    "id": 335001,
+    "tips": "该阶段未解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 335002,
+    "tips": "需选中任意坑位",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 335003,
+    "tips": "当前阶段已无天赋点可重置",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 335004,
+    "tips": "当前界面无可重置的天赋点",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 335005,
+    "tips": "天赋点不足，无法激活",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 335006,
+    "tips": "前置天赋点未激活",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 335007,
+    "tips": "解锁条件未满足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 335008,
+    "tips": "当前天赋点已激活",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 335009,
+    "tips": "重振不足，无法重投",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 335010,
+    "tips": "未解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
   }
 ]

@@ -179,8 +179,16 @@ function FightPaTaDataMgr:getBossSkillInfoList()
 	return self.bossInfoList
 end
 
+function FightPaTaDataMgr:checkIsNormal()
+	return self.type == FightEnum.AssistBossType.Normal
+end
+
 function FightPaTaDataMgr:checkIsAssistRole()
 	return self.type == FightEnum.AssistBossType.CombineBoss3_3
+end
+
+function FightPaTaDataMgr:checkIsRouge3_3()
+	return self.type == FightEnum.AssistBossType.Rouge3_3
 end
 
 return FightPaTaDataMgr

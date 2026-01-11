@@ -14,7 +14,8 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {
-	desc = 1
+	desc = 2,
+	name = 1
 }
 
 function lua_rouge2_band.onLoad(json)

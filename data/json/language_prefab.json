@@ -24880,6 +24880,86 @@
     "lang": "，"
   },
   {
+    "id": "p_rouge2_backpackpetstageresultview_txt_title",
+    "lang": "可用天赋点"
+  },
+  {
+    "id": "p_rouge2_backpackpetstageresultview_txt_titleEn",
+    "lang": "TALENT TREE"
+  },
+  {
+    "id": "p_rouge2_backpackpetstageresultview_txt_active",
+    "lang": "已激活"
+  },
+  {
+    "id": "p_rouge2_backpacktalentresetview_txt_title",
+    "lang": "请选择重置阶段"
+  },
+  {
+    "id": "p_rouge2_backpacktalentresetview_txt_titledec",
+    "lang": "重置后该阶段所有节点取消点亮"
+  },
+  {
+    "id": "p_rouge2_backpacktalentdetailview_txt_pretips",
+    "lang": "前置天赋点未解锁"
+  },
+  {
+    "id": "p_rouge2_choiceview_txt_skip",
+    "lang": "跳过"
+  },
+  {
+    "id": "p_rouge2_choiceview_txt_skip2",
+    "lang": "事件已阅读"
+  },
+  {
+    "id": "p_rouge2_attributeupview_txt_new_title1",
+    "lang": "提升属性数值，强化配器"
+  },
+  {
+    "id": "p_rouge2_teamrecommendtips_txt_title",
+    "lang": "推荐队伍："
+  },
+  {
+    "id": "p_rouge2_backpackboxtipsview_txt_progresstitle",
+    "lang": "打磨进度"
+  },
+  {
+    "id": "p_rouge2_mapattributeupview_empty",
+    "lang": "非推荐属性无法解锁强化"
+  },
+  {
+    "id": "p_rouge2_careerattributetipsview_tagtitle",
+    "lang": "属性突破"
+  },
+  {
+    "id": "p_rouge2_attrbuffdropview_txt_title",
+    "lang": "属性突破选择"
+  },
+  {
+    "id": "p_rouge2_attrbuffdropview_txt_titleEn",
+    "lang": "STAT BREAKTHROUGH"
+  },
+  {
+    "id": "p_rouge2_attributetoolbar_txt_newtips2",
+    "lang": "有天赋点待使用"
+  },
+  {
+    "id": "p_rouge2_systemselectview_txt_btn1",
+    "lang": "追踪"
+  },
+  {
+    "id": "p_rouge2_systemselectview_txt_btn2",
+    "lang": "追踪中"
+  },
+  {
+    "id": "p_rouge2_systemselectview_txt_ExitStore",
+    "lang": "退出商店"
+  },
+  {
+    "id": "p_rouge2_teamrecommendtips_txt_title2",
+    "lang": "推荐队伍"
+  },
+  {
     "id": "p_a12_reappear_mainactivity_enterview_txt_EntranceRole1",
     "lang": "十月无晴天"
   },

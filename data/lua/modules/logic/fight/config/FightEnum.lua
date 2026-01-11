@@ -766,6 +766,9 @@ FightEnum.BuffFloatEffectType = {
 	Heal = 3,
 	Debuffs = 2
 }
+FightEnum.SkillBehaviourId = {
+	UseCardCopy = 100024
+}
 FightEnum.Behavior_AddExPoint = "AddExPoint"
 FightEnum.Behavior_DelExPoint = "DelExPoint"
 FightEnum.Behavior_LostLife = "LostLife"
@@ -1362,6 +1365,7 @@ FightEnum.Rouge2FunnyTaskLevelName2Level = {
 }
 FightEnum.AssistBossType = {
 	CombineBoss3_3 = 1,
+	Rouge3_3 = 2,
 	Normal = 0
 }
 

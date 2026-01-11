@@ -2,8 +2,15 @@
   {
     "id": 1,
     "startTime": "2025-10-27 05:00:00",
-    "endTime": "2026-01-22 05:00:00",
+    "endTime": "2026-03-05 05:00:00",
     "shopTitle": "第I期",
-    "currencyMax": 79200
+    "currencyMax": 158400
+  },
+  {
+    "id": 2,
+    "startTime": "2025-12-08 05:00:00",
+    "endTime": "2026-03-05 05:00:00",
+    "shopTitle": "第II期",
+    "currencyMax": 158400
   }
 ]

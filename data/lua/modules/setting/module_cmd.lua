@@ -5165,6 +5165,26 @@ local module_cmd = {
 		"Rouge2MonsterFixAttrRequest",
 		"Rouge2MonsterFixAttrReply"
 	},
+	[-25421] = {
+		"Rouge2",
+		"Rouge2SummonerActiveTalentRequest",
+		"Rouge2SummonerActiveTalentReply"
+	},
+	[-2726] = {
+		"Rouge2",
+		"Rouge2SummonerResetTalentRequest",
+		"Rouge2SummonerResetTalentReply"
+	},
+	[983] = {
+		"Rouge2",
+		"Rouge2SetSystemIdRequest",
+		"Rouge2SetSystemIdReply"
+	},
+	[15354] = {
+		"Rouge2",
+		"Rouge2GainCareerAttrDropRequest",
+		"Rouge2GainCareerAttrDropReply"
+	},
 	[22080] = {
 		"Rouge2",
 		"Rouge2LayerMapInfoPush"

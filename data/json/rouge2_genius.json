@@ -172,72 +172,72 @@
     "name": "契玛王国·I",
     "effects": "191015",
     "replaceId": "",
-    "desc": "解锁金点子【旋转彩虹】",
+    "desc": "解锁金点子-旋转彩虹",
     "icon": "rouge2_alltalent_5",
     "talentType": 5,
     "talentOrder": 1,
     "typeName": "契玛王国",
-    "overviewText": "解锁金点子【旋转彩虹】"
+    "overviewText": "解锁金点子-旋转彩虹"
   },
   {
     "id": 10016,
     "name": "契玛王国·II",
     "effects": "191016",
     "replaceId": "",
-    "desc": "解锁金点子【飞刀】",
+    "desc": "解锁金点子-飞刀",
     "icon": "rouge2_alltalent_5",
     "talentType": 5,
     "talentOrder": 2,
     "typeName": "契玛王国",
-    "overviewText": "解锁金点子【旋转彩虹】|解锁金点子【飞刀】"
+    "overviewText": "解锁金点子-旋转彩虹|解锁金点子-飞刀"
   },
   {
     "id": 10017,
     "name": "契玛王国·III",
     "effects": "191017",
     "replaceId": "",
-    "desc": "解锁金点子【骨钉】",
+    "desc": "解锁金点子-骨钉",
     "icon": "rouge2_alltalent_5",
     "talentType": 5,
     "talentOrder": 3,
     "typeName": "契玛王国",
-    "overviewText": "解锁金点子【旋转彩虹】|解锁金点子【飞刀】|解锁金点子【骨钉】"
+    "overviewText": "解锁金点子-旋转彩虹|解锁金点子-飞刀|解锁金点子-骨钉"
   },
   {
     "id": 10018,
     "name": "契玛王国·IV",
     "effects": "191018",
     "replaceId": "",
-    "desc": "解锁金点子【铁伞盖】",
+    "desc": "解锁金点子-铁伞盖",
     "icon": "rouge2_alltalent_5",
     "talentType": 5,
     "talentOrder": 4,
     "typeName": "契玛王国",
-    "overviewText": "解锁金点子【旋转彩虹】|解锁金点子【飞刀】|解锁金点子【骨钉】|解锁金点子【铁伞盖】"
+    "overviewText": "解锁金点子-旋转彩虹|解锁金点子-飞刀|解锁金点子-骨钉|解锁金点子-铁伞盖"
   },
   {
     "id": 10019,
     "name": "契玛王国·V",
     "effects": "191019",
     "replaceId": "",
-    "desc": "解锁金点子【十点半】",
+    "desc": "解锁金点子-十点半",
     "icon": "rouge2_alltalent_5",
     "talentType": 5,
     "talentOrder": 5,
     "typeName": "契玛王国",
-    "overviewText": "解锁金点子【旋转彩虹】|解锁金点子【飞刀】|解锁金点子【骨钉】|解锁金点子【铁伞盖】|解锁金点子【十点半】"
+    "overviewText": "解锁金点子-旋转彩虹|解锁金点子-飞刀|解锁金点子-骨钉|解锁金点子-铁伞盖|解锁金点子-十点半"
   },
   {
     "id": 10020,
     "name": "契玛王国·VI",
     "effects": "191020",
     "replaceId": "",
-    "desc": "解锁金点子【好梦】",
+    "desc": "解锁金点子-好梦",
     "icon": "rouge2_alltalent_5",
     "talentType": 5,
     "talentOrder": 6,
     "typeName": "契玛王国",
-    "overviewText": "解锁金点子【旋转彩虹】|解锁金点子【飞刀】|解锁金点子【骨钉】|解锁金点子【铁伞盖】|解锁金点子【十点半】|解锁金点子【好梦】"
+    "overviewText": "解锁金点子-旋转彩虹|解锁金点子-飞刀|解锁金点子-骨钉|解锁金点子-铁伞盖|解锁金点子-十点半|解锁金点子-好梦"
   },
   {
     "id": 10021,

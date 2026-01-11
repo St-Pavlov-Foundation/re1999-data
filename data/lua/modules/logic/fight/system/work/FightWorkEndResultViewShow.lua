@@ -286,7 +286,11 @@ function FightWorkEndResultViewShow:showFailView()
 	end
 
 	if BossRushController.instance:isInBossRushDungeon() then
-		BossRushController.instance:openResultPanel()
+		if ActivityHelper.isOpen(BossRushConfig.instance:getActivityId()) then
+			BossRushController.instance:openResultPanel()
+		else
+			FightController.onResultViewClose()
+		end
 
 		return
 	end

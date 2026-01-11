@@ -24408,7 +24408,8 @@ module_views.Rouge2_CareerSelectView = {
 		}
 	},
 	otherRes = {
-		Rouge2_Enum.ResPath.AttributeMap
+		Rouge2_Enum.ResPath.AttributeMap,
+		Rouge2_Enum.ResPath.RecommendTeamTips
 	}
 }
 module_views.Rouge2_CareerSkillTipsView = {
@@ -24425,7 +24426,26 @@ module_views.Rouge2_CareerAttributeTipsView = {
 	mainRes = "ui/viewres/rouge2/rouge2_careerattributetipsview.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Normal,
-	anim = ViewAnim.Default
+	anim = ViewAnim.Default,
+	otherRes = {
+		Rouge2_Enum.ResPath.CareerAttrActiveItem
+	}
+}
+module_views.Rouge2_SystemSelectView = {
+	destroy = 0,
+	container = "Rouge2_SystemSelectViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/rouge2/system/rouge2_systemselectview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	}
 }
 module_views.Rouge2_MapLoadingView = {
 	destroy = 0,
@@ -24451,7 +24471,8 @@ module_views.Rouge2_MapView = {
 		}
 	},
 	otherRes = {
-		Rouge2_Enum.ResPath.CoinView
+		Rouge2_Enum.ResPath.CoinView,
+		Rouge2_Enum.ResPath.AttrToolBar
 	}
 }
 module_views.Rouge2_MapEntrustDetailView = {
@@ -24491,7 +24512,8 @@ module_views.Rouge2_MapChoiceView = {
 	otherRes = {
 		Rouge2_Enum.ResPath.CoinView,
 		Rouge2_Enum.ResPath.MapChoiceItem,
-		Rouge2_Enum.ResPath.ChoiceCheckItem
+		Rouge2_Enum.ResPath.ChoiceCheckItem,
+		Rouge2_Enum.ResPath.AttrToolBar
 	}
 }
 module_views.Rouge2_MapExploreChoiceView = {
@@ -24545,7 +24567,8 @@ module_views.Rouge2_MapDiceView = {
 	viewType = ViewType.Normal,
 	anim = ViewAnim.Internal,
 	otherRes = {
-		"scenes/v3a2_ui_touzi/prefabs/v3a2_ui_touzi_1.prefab"
+		"scenes/v3a2_ui_touzi/prefabs/v3a2_ui_touzi_1.prefab",
+		Rouge2_Enum.ResPath.MapChoiceItem
 	},
 	tabRes = {
 		{
@@ -24627,7 +24650,7 @@ module_views.Rouge2_FinishView = {
 	bgBlur = 0,
 	mainRes = "ui/viewres/rouge2/result/rouge2_finishview.prefab",
 	layer = "POPUP_TOP",
-	viewType = ViewType.Normal,
+	viewType = ViewType.Full,
 	anim = ViewAnim.Default
 }
 module_views.Rouge2_NextLayerView = {
@@ -24699,7 +24722,10 @@ module_views.Rouge2_AttributeDetailView = {
 	bgBlur = 1,
 	mainRes = "ui/viewres/rouge2/rouge2_attributedetailview.prefab",
 	layer = "POPUP_TOP",
-	viewType = ViewType.Normal
+	viewType = ViewType.Normal,
+	otherRes = {
+		Rouge2_Enum.ResPath.CareerAttrActiveItem
+	}
 }
 module_views.Rouge2_BuffDropView = {
 	bgBlur = 1,
@@ -24712,6 +24738,22 @@ module_views.Rouge2_BuffDropView = {
 	otherRes = {
 		Rouge2_Enum.ResPath.BuffDropItem
 	},
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	}
+}
+module_views.Rouge2_AttrBuffDropView = {
+	destroy = 0,
+	container = "Rouge2_AttrBuffDropViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/rouge2/map/rouge2_attrbuffdropview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Internal,
 	tabRes = {
 		{
 			{
@@ -24771,7 +24813,7 @@ module_views.Rouge2_HeroGroupFightView = {
 module_views.Rouge2_HeroGroupEditView = {
 	container = "Rouge2_HeroGroupEditViewContainer",
 	destroy = 0,
-	mainRes = "ui/viewres/herogroup/herogroupeditview.prefab",
+	mainRes = "ui/viewres/rouge2/herogroup/rouge2_herogroupeditview.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Normal,
 	anim = ViewAnim.Default,
@@ -24783,8 +24825,8 @@ module_views.Rouge2_HeroGroupEditView = {
 		}
 	},
 	otherRes = {
-		[1] = "ui/viewres/herogroup/herogroupedititem.prefab",
-		[2] = "ui/viewres/herogroup/herogroupquickedititem.prefab"
+		[1] = "ui/viewres/rouge2/herogroup/rouge2_herogroupedititem.prefab",
+		[2] = "ui/viewres/rouge2/herogroup/rouge2_herogroupquickedititem.prefab"
 	},
 	customAnimBg = {
 		"bg"
@@ -24808,13 +24850,13 @@ module_views.Rouge2_BackpackTabView = {
 				"ui/viewres/rouge2/backpack/rouge2_backpackcareerview.prefab"
 			},
 			{
-				"ui/viewres/rouge2/backpack/rouge2_backpackskillview.prefab"
+				"ui/viewres/rouge2/backpack/rouge2_backpackbuffview.prefab"
 			},
 			{
 				"ui/viewres/rouge2/backpack/rouge2_backpackrelicsview.prefab"
 			},
 			{
-				"ui/viewres/rouge2/backpack/rouge2_backpackbuffview.prefab"
+				"ui/viewres/rouge2/backpack/rouge2_backpackskillview.prefab"
 			}
 		},
 		[4] = {
@@ -24829,7 +24871,10 @@ module_views.Rouge2_BackpackTabView = {
 		Rouge2_Enum.ResPath.ComBuffItem,
 		Rouge2_Enum.ResPath.AttrSplitToolbar,
 		Rouge2_Enum.ResPath.CoinView,
-		Rouge2_Enum.ResPath.BackpackFormulaItem
+		Rouge2_Enum.ResPath.BackpackFormulaItem,
+		Rouge2_Enum.ResPath.BackpackSkillShowItem,
+		Rouge2_Enum.ResPath.BackpackTalentView,
+		Rouge2_Enum.ResPath.BackpackSkillPanelView
 	}
 }
 module_views.Rouge2_BackpackBoxTipsView = {
@@ -24837,6 +24882,53 @@ module_views.Rouge2_BackpackBoxTipsView = {
 	container = "Rouge2_BackpackBoxTipsViewContainer",
 	bgBlur = 1,
 	mainRes = "ui/viewres/rouge2/backpack/rouge2_backpackboxtipsview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Internal,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	}
+}
+module_views.Rouge2_BackpackTalentResetView = {
+	destroy = 0,
+	container = "Rouge2_BackpackTalentResetViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/rouge2/backpack/rouge2_backpacktalentresetview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	}
+}
+module_views.Rouge2_BackpackTalentDetailView = {
+	destroy = 0,
+	container = "Rouge2_BackpackTalentDetailViewContainer",
+	bgBlur = 0,
+	mainRes = "ui/viewres/rouge2/backpack/rouge2_backpacktalentdetailview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Internal,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	}
+}
+module_views.Rouge2_BackpackPetStageResultView = {
+	destroy = 0,
+	container = "Rouge2_BackpackPetStageResultViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/rouge2/backpack/rouge2_backpackpetstageresultview.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Normal,
 	anim = ViewAnim.Internal,
@@ -25168,7 +25260,7 @@ module_views.Rouge2_ResultFinalView = {
 	container = "Rouge2_ResultFinalViewContainer",
 	mainRes = "ui/viewres/rouge2/result/rouge2_resultreview.prefab",
 	layer = "POPUP_TOP",
-	viewType = ViewType.Modal,
+	viewType = ViewType.Full,
 	anim = ViewAnim.Internal,
 	otherRes = {
 		[1] = "ui/viewres/rouge2/result/rouge2_resultheroitem.prefab"

@@ -6,45 +6,19 @@ local GMLangController = class("GMLangController", BaseController)
 
 GameUtil.getEventId()
 
-local function ensure_percent_end(str)
-	local last_char = string.sub(str, -1, -1)
-
-	if last_char ~= "%" then
-		return str
-	else
-		return str .. "%"
-	end
-end
+local _getSubPlaceholderLuaLang = GameUtil.getSubPlaceholderLuaLang
 
 function GMLangController.getSubPlaceholderLuaLang(text, fillParams)
 	local langDic = GMLangController.instance:cur2AllLang(text)
 
 	if fillParams and #fillParams > 0 then
-		for k, v in pairs(fillParams) do
-			if type(v) == "number" then
-				text = string.gsub(text, "▩" .. k .. "%%d", string.format("%d", v))
-			else
-				v = ensure_percent_end(v)
-			end
+		text = _getSubPlaceholderLuaLang(text, fillParams)
 
-			text = string.gsub(text, "▩" .. k .. "%%s", v)
-		end
-
-		if GMLangController.instance:checkHasCache(text) == false then
+		if not GMLangController.instance:checkHasCache(text) then
 			GMLangController.instance._inUseDic[text] = {}
 
-			for shortcut, str in pairs(langDic) do
-				for k, v in pairs(fillParams) do
-					if type(v) == "number" then
-						str = string.gsub(str, "▩" .. k .. "%%d", string.format("%d", v))
-					else
-						v = ensure_percent_end(v)
-					end
-
-					str = string.gsub(text, "▩" .. k .. "%%s", v)
-				end
-
-				GMLangController.instance._inUseDic[text][shortcut] = str
+			for shortcut, str in pairs(langDic or {}) do
+				GMLangController.instance._inUseDic[text][shortcut] = _getSubPlaceholderLuaLang(str, fillParams)
 			end
 
 			GMLangController.instance:dispatchInUseUpdate(text)

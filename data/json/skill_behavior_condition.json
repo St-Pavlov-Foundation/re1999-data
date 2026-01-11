@@ -26478,5 +26478,425 @@
   {
     "id": 2011,
     "type": "None"
+  },
+  {
+    "id": 1020002,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020004,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020005,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020100,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020101,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020102,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020103,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020104,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020105,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020106,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 10201061,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 10201062,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020201,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020202,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020203,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020204,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020205,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020206,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020207,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020208,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020209,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020210,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020211,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020212,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020213,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020301,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020302,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020303,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020304,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020305,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020306,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020307,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020401,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1020402,
+    "type": "Rouge2AttrRand"
+  },
+  {
+    "id": 1021002,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021004,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021005,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021100,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021101,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021102,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021103,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021104,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021105,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021106,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 10211061,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 10211062,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021201,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021202,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021203,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021204,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021205,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021206,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021207,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021208,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021209,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021210,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021211,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021212,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021213,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021301,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021302,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021303,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021304,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021305,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021306,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021307,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021401,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 1021402,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 191061,
+    "type": "HasBuffId"
+  },
+  {
+    "id": 191062,
+    "type": "HasBuffId"
+  },
+  {
+    "id": 1022002,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022004,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022005,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022100,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022101,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022102,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022103,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022104,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022105,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022106,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 10221061,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 10221062,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022201,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022202,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022203,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022204,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022205,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022206,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022207,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022208,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022209,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022210,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022211,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022212,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022213,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022301,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022302,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022303,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022304,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022305,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022306,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022307,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022401,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 1022402,
+    "type": "Rouge2AttrExRand"
+  },
+  {
+    "id": 514201,
+    "type": "SelfTeamHasBuffTypeLayerLessThan"
   }
 ]

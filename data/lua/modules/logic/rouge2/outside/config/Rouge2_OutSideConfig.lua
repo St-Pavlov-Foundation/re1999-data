@@ -379,7 +379,7 @@ function Rouge2_OutSideConfig.getItemConfig(itemId)
 	if bagType == Rouge2_OutsideEnum.CollectionListType.AutoBuff then
 		return Rouge2_CollectionConfig.instance:getActiveSkillConfig(itemId)
 	elseif bagType == Rouge2_OutsideEnum.CollectionListType.Buff then
-		return Rouge2_CollectionConfig.instance:getBuffCofing(itemId)
+		return Rouge2_CollectionConfig.instance:getBuffConfig(itemId)
 	elseif bagType == Rouge2_OutsideEnum.CollectionListType.Collection then
 		return Rouge2_CollectionConfig.instance:getRelicsConfig(itemId)
 	else

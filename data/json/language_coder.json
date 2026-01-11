@@ -7848,6 +7848,102 @@
     "lang": "已获得所有关键属性升级"
   },
   {
+    "id": "rouge2_backpacktalentresetview_recycle",
+    "lang": "重置后回收▩1%s<sprite=0>"
+  },
+  {
+    "id": "rouge2_getcointips",
+    "lang": "获得了▩1%s金雀子儿"
+  },
+  {
+    "id": "rouge2_getrevivalcointips",
+    "lang": "获得了▩1%s重振"
+  },
+  {
+    "id": "rouge2_attributedetailview_skilldesctype_career",
+    "lang": "▩1%s专属效果"
+  },
+  {
+    "id": "rouge2_attributedetailview_skilldesctype_fight",
+    "lang": "战斗效果"
+  },
+  {
+    "id": "rouge2_attributedetailview_skilldesctype_explore",
+    "lang": "探索效果"
+  },
+  {
+    "id": "rouge2_attrbuffdropview_tips",
+    "lang": "查看▩1%s角色"
+  },
+  {
+    "id": "rouge2_herogroupeditview_attrbuff",
+    "lang": "已筛选显示▩1%s角色"
+  },
+  {
+    "id": "rouge2_effecttips3",
+    "lang": "「▩1%s▩2%s」解锁:\n▩3%s"
+  },
+  {
+    "id": "rouge2_herogroupeditview_recommend",
+    "lang": "推荐-▩1%s"
+  },
+  {
+    "id": "rouge2_attributetoolbar_system",
+    "lang": "追踪：▩1%s"
+  },
+  {
+    "id": "rouge2_careerattributetipsview_lockdesc",
+    "lang": "选择一个【属性强化】效果"
+  },
+  {
+    "id": "rouge2_careerattributetipsview_title",
+    "lang": "突破▩1%s"
+  },
+  {
+    "id": "rouge2_attrbuffdropview_tips2",
+    "lang": "▩1%s突破▩2%s"
+  },
+  {
+    "id": "rouge2_attrbuffdropview_tips3",
+    "lang": "▩1%s属性突破"
+  },
+  {
+    "id": "rouge2_careerattributetipsview_attrbuff",
+    "lang": "▩1%s:▩2%s"
+  },
+  {
+    "id": "rouge2_attributedetailview_dropoverview",
+    "lang": "突破总览"
+  },
+  {
+    "id": "rouge2_attributedetailview_attroverview",
+    "lang": "属性总览"
+  },
+  {
+    "id": "rouge2_attributedetailview_attrtabitem",
+    "lang": "▩1%s▩2%s"
+  },
+  {
+    "id": "rouge2_attrbuffdropview_nonehero",
+    "lang": "暂无▩1%s角色"
+  },
+  {
+    "id": "rouge2_teamrecommendtips_recommendteam",
+    "lang": "推荐角色：<#EC9C57>▩1%s</color>"
+  },
+  {
+    "id": "rouge2_careerattributetipsview_title2",
+    "lang": "即将突破▩1%s"
+  },
+  {
+    "id": "rouge2_attrbuffdropview_nextreward",
+    "lang": "<#E1904F>▩1%s</color>次突破后，获得<#E1904F>妙想</color>品质突破"
+  },
+  {
+    "id": "rouge2_attrbuffdropview_nextreward2",
+    "lang": "下<#E1904F>一</color>次突破后，获得<#E1904F>妙想</color>品质突破"
+  },
+  {
     "id": "towercomposetheme_progress",
     "lang": "哲思启发：▩1%s/▩2%s"
   },

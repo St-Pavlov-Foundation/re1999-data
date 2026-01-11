@@ -7,7 +7,7 @@ local Rouge2_MapRelicsLossItem = class("Rouge2_MapRelicsLossItem", ListScrollCel
 function Rouge2_MapRelicsLossItem:init(go)
 	self.go = go
 	self._goSelect = gohelper.findChild(self.go, "go_Select")
-	self._btnClick = gohelper.findChildButtonWithAudio(self.go, "btn_Click")
+	self._btnClick = gohelper.getClickWithDefaultAudio(self.go)
 end
 
 function Rouge2_MapRelicsLossItem:initInternal(go, view)
@@ -15,9 +15,14 @@ function Rouge2_MapRelicsLossItem:initInternal(go, view)
 
 	self._goRoot = gohelper.findChild(go, "go_Root")
 
+	local goScroll = gohelper.findChild(view.viewGO, view._param.scrollGOPath)
 	local goRelics = view:getResInst(Rouge2_Enum.ResPath.ComRelicsItem, self._goRoot)
 
 	self._relicsItem = Rouge2_CommonCollectionItem.Get(goRelics)
+
+	self._relicsItem:initDescModeFlag(Rouge2_Enum.ItemDescModeDataKey.RelicsAbandon)
+	self._relicsItem:setParentScroll(goScroll)
+	self._relicsItem:initClickCallback(self._btnClickOnClick, self)
 end
 
 function Rouge2_MapRelicsLossItem:addEventListeners()

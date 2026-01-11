@@ -571,6 +571,8 @@ local module_mvc = {
 		},
 		controller = {
 			"Rouge2_Controller",
+			"Rouge2_MapChoiceController",
+			"Rouge2_MapAttrUpdateController",
 			"Rouge2_OutsideController",
 			"Rouge2_StatController"
 		}

@@ -110,6 +110,17 @@ function FightView:onOpen()
 		else
 			local speed = PlayerPrefsHelper.getNumber(self:_getPlayerPrefKeySpeed(), 1)
 
+			if FightDataHelper.fieldMgr:isRouge2() then
+				local key = PlayerModel.instance:getPlayerPrefsKey(PlayerPrefsKey.Rouge2EnterBattled)
+				local value = PlayerPrefsHelper.getNumber(key, 0)
+
+				if value ~= 1 then
+					speed = FightModel.instance:getMaxSpeed()
+
+					PlayerPrefsHelper.setNumber(key, 1)
+				end
+			end
+
 			FightModel.instance:setUserSpeed(speed)
 		end
 	else
@@ -212,7 +223,7 @@ end
 
 function FightView:_updateSpeed()
 	local speed = FightModel.instance:getUserSpeed()
-	local speedShow = speed == 1 and 1 or 2
+	local speedShow = Mathf.Clamp(speed, 1, FightModel.instance:getMaxSpeed())
 
 	UISpriteSetMgr.instance:setFightSprite(self._imageSpeed, "btn_x" .. speedShow, true)
 
@@ -429,10 +440,8 @@ function FightView:_onClickSpeed()
 		return
 	end
 
-	local curSpeed = FightModel.instance:getUserSpeed()
-	local newSpeed = curSpeed == 1 and 2 or 1
+	local newSpeed = FightModel.instance:addSpeed()
 
-	FightModel.instance:setUserSpeed(newSpeed)
 	PlayerPrefsHelper.setNumber(self:_getPlayerPrefKeySpeed(), newSpeed)
 	FightController.instance:dispatchEvent(FightEvent.OnUpdateSpeed)
 	self:_updateSpeed()
