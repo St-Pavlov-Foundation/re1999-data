@@ -700,5 +700,18 @@
     "showcolor": 0,
     "icon": "",
     "sortId": 0
+  },
+  {
+    "id": 224,
+    "attrType": "normalDmg",
+    "type": 3,
+    "name": "术法威力系数",
+    "desc": "提升术法造成的伤害",
+    "isShowTips": 0,
+    "isShow": 0,
+    "showType": 1,
+    "showcolor": 0,
+    "icon": "",
+    "sortId": 0
   }
 ]

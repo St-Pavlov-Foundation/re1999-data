@@ -27,7 +27,7 @@ function BaseSpine:init(gameObj)
 	self._videoList = {}
 end
 
-function BaseSpine:setResPath(resPath, loadedCb, loadedCbObj, isSplit)
+function BaseSpine:setResPath(resPath, loadedCb, loadedCbObj)
 	if not resPath then
 		return
 	end
@@ -46,13 +46,7 @@ function BaseSpine:setResPath(resPath, loadedCb, loadedCbObj, isSplit)
 	self._resLoadedCb = loadedCb
 	self._resLoadedCbObj = loadedCbObj
 
-	if GameResMgr.IsFromEditorDir or isSplit then
-		self._resLoader:startLoad(self._resPath, self._resPath, self._onResLoaded, self)
-	else
-		local bundlePath = SLFramework.FileHelper.GetUnityPath(System.IO.Path.GetDirectoryName(self._resPath))
-
-		self._resLoader:startLoad(bundlePath, self._resPath, self._onResLoaded, self)
-	end
+	self._resLoader:startLoad(self._resPath, self._resPath, self._onResLoaded, self)
 end
 
 function BaseSpine:setHeroId(id)

@@ -18,7 +18,7 @@ function ResUrl.getExploreSceneLevelUrl(levelId)
 	local levelCO = lua_scene_level.configDict[levelId]
 
 	if levelCO then
-		return string.format("explore/scene/prefab/%s_p.prefab", levelCO.resName)
+		return string.format("modules/explore/scene/prefab/%s_p.prefab", levelCO.resName)
 	else
 		logError("scene level config not exist, levelId = " .. levelId)
 	end
@@ -143,6 +143,14 @@ end
 
 function ResUrl.getRolesTimeline()
 	return "rolestimeline"
+end
+
+function ResUrl.getPartyGameTimelineUrl(timelineName)
+	return string.format("modules/party_game/game100/timelines/%s.playable", timelineName)
+end
+
+function ResUrl.getPartyGameTimelineAbName(timelineName)
+	return ResUrl.getPartyGameTimelineUrl(timelineName)
 end
 
 function ResUrl.getLoginBg(bgNameWithExt)
@@ -554,7 +562,7 @@ function ResUrl.getAdventureBg(resName)
 end
 
 function ResUrl.getExploreBg(resName)
-	return string.format("singlebg/explore/%s.png", resName)
+	return string.format("modules/explore/singlebg/%s.png", resName)
 end
 
 function ResUrl.getAdventureIcon(resName)
@@ -1039,7 +1047,7 @@ function ResUrl.getWeekWalkIconLangPath(resName)
 end
 
 function ResUrl.getExploreEffectPath(resName)
-	return string.format("effects/scenes/mishi_prefabs/%s.prefab", resName)
+	return string.format("modules/explore/effects/scenes/mishi_prefabs/%s.prefab", resName)
 end
 
 function ResUrl.getSeasonCelebrityCard(resName)
@@ -1635,6 +1643,10 @@ function ResUrl.getSurvivalItemIcon(resName)
 	return string.format("singlebg/survival_singlebg/collection/%s.png", resName)
 end
 
+function ResUrl.getSurvivalTeamIcon(resName)
+	return string.format("singlebg/survival_singlebg/team/%s.png", resName)
+end
+
 function ResUrl.getSurvivalTalentIcon(resName)
 	return string.format("singlebg/survival_singlebg/talent/%s.png", resName)
 end
@@ -1733,6 +1745,43 @@ end
 
 function ResUrl.getEliminateIcon(resName)
 	return string.format("singlebg/v3a3_eliminate_singlebg/%s.png", resName)
+end
+
+function ResUrl.getV3a4SingleBg(resName)
+	return string.format("singlebg/v3a4_dungeon_singlebg/%s.png", resName)
+end
+
+function ResUrl.getTowerComposeModIcon(resName)
+	return string.format("singlebg/tower2_singlebg/mod/%s.png", resName)
+end
+
+function ResUrl.getV3a4PartySingleBg(resName, path)
+	if path then
+		return string.format("singlebg/v3a4_party_singlebg/%s/%s.png", path, resName)
+	else
+		return string.format("singlebg/v3a4_party_singlebg/%s.png", resName)
+	end
+end
+
+function ResUrl.getUISpinePrefabBySkin(skinCO)
+	if not skinCO then
+		return ""
+	end
+
+	local spinePath
+	local isPath = string.find(skinCO.spine, "/")
+
+	if isPath then
+		spinePath = skinCO.spine
+	else
+		spinePath = string.format("%s/%s", skinCO.spine, skinCO.spine)
+	end
+
+	return string.format("roles/%s_ui.prefab", spinePath)
+end
+
+function ResUrl.getSummonPoolPackageItemPath(type)
+	return string.format("ui/viewres/summon/summonpoolpackage/summonpoolpackageitem_%s.prefab", type)
 end
 
 return ResUrl

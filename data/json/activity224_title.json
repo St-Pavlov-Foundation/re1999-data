@@ -1,0 +1,98 @@
+[
+  {
+    "titleId": 1,
+    "titleType": 1,
+    "titleName": "语素实习生",
+    "titleBackground": "popularity_titlebg1"
+  },
+  {
+    "titleId": 2,
+    "titleType": 1,
+    "titleName": "语词文员",
+    "titleBackground": "popularity_titlebg2"
+  },
+  {
+    "titleId": 3,
+    "titleType": 1,
+    "titleName": "词组助理",
+    "titleBackground": "popularity_titlebg3"
+  },
+  {
+    "titleId": 4,
+    "titleType": 1,
+    "titleName": "分句专员",
+    "titleBackground": "popularity_titlebg4"
+  },
+  {
+    "titleId": 5,
+    "titleType": 1,
+    "titleName": "语句顾问",
+    "titleBackground": "popularity_titlebg5"
+  },
+  {
+    "titleId": 6,
+    "titleType": 2,
+    "titleName": "所知唯无知小组",
+    "titleBackground": "popularity_titlebg5"
+  },
+  {
+    "titleId": 7,
+    "titleType": 2,
+    "titleName": "博弈论友好协会",
+    "titleBackground": "popularity_titlebg5"
+  },
+  {
+    "titleId": 8,
+    "titleType": 2,
+    "titleName": "金属色的领航星",
+    "titleBackground": "popularity_titlebg5"
+  },
+  {
+    "titleId": 9,
+    "titleType": 2,
+    "titleName": "有用发明大师",
+    "titleBackground": "popularity_titlebg5"
+  },
+  {
+    "titleId": 10,
+    "titleType": 2,
+    "titleName": "疑难杂症专治",
+    "titleBackground": "popularity_titlebg5"
+  },
+  {
+    "titleId": 11,
+    "titleType": 2,
+    "titleName": "拉普拉斯传奇破坏王",
+    "titleBackground": "popularity_titlebg5"
+  },
+  {
+    "titleId": 12,
+    "titleType": 2,
+    "titleName": "导师(经费申请中)",
+    "titleBackground": "popularity_titlebg5"
+  },
+  {
+    "titleId": 13,
+    "titleType": 2,
+    "titleName": "学生(刻苦努力中)",
+    "titleBackground": "popularity_titlebg5"
+  },
+  {
+    "titleId": 14,
+    "titleType": 2,
+    "titleName": "船长(目前没有船)",
+    "titleBackground": "popularity_titlebg5"
+  },
+  {
+    "titleId": 15,
+    "titleType": 2,
+    "titleName": "已连续工作72小时",
+    "titleBackground": "popularity_titlebg5"
+  },
+  {
+    "titleId": 16,
+    "titleType": 2,
+    "titleName": "相亲相爱一家蛇",
+    "titleBackground": "popularity_titlebg5"
+  }
+]

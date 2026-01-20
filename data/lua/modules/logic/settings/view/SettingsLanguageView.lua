@@ -93,6 +93,10 @@ function SettingsLanguageView:_editableInitView()
 	PlayerPrefsHelper.setNumber("StoryTxtLanType", lanIndex - 1)
 end
 
+function SettingsLanguageView:_onChangeLangTxt()
+	self:_refreshVoiceDropDownStr()
+end
+
 function SettingsLanguageView:_refreshVoiceDropDown()
 	self._allVoiceTypes = {}
 	self._allStoryVoiceTypes = {}
@@ -377,10 +381,12 @@ function SettingsLanguageView:onUpdateParam()
 end
 
 function SettingsLanguageView:onOpen()
+	self:addEventCb(OptionPackageController.instance, OptionPackageEvent.DownloadFinish, self._refreshVoiceDropDown, self)
 	self:addEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnPackItemStateChange, self._refreshVoiceDropDown, self)
 	self:addEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnDownloadPackSuccess, self._refreshVoiceDropDown, self)
 	self:addEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnDownloadPackFail, self._onPackItemStateChange, self)
 	self:addEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnChangeVoiceType, self._refreshVoiceDropDownStr, self)
+	self:addEventCb(SettingsController.instance, SettingsEvent.OnChangeLangTxt, self._onChangeLangTxt, self)
 	gohelper.setActive(self._btndownload.gameObject, OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.AudioDownload))
 	gohelper.setActive(self._govoicelang, OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.SettingsVoiceLang))
 	gohelper.setActive(self._gotxtlang, OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.SettingsTxtLang))
@@ -437,10 +443,12 @@ function SettingsLanguageView:_cleanXian(dropdown)
 end
 
 function SettingsLanguageView:onClose()
+	self:removeEventCb(OptionPackageController.instance, OptionPackageEvent.DownloadFinish, self._refreshVoiceDropDown, self)
 	self:removeEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnPackItemStateChange, self._refreshVoiceDropDown, self)
 	self:removeEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnDownloadPackSuccess, self._refreshVoiceDropDown, self)
 	self:removeEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnDownloadPackFail, self._refreshVoiceDropDownStr, self)
 	self:removeEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnChangeVoiceType, self._refreshVoiceDropDownStr, self)
+	self:removeEventCb(SettingsController.instance, SettingsEvent.OnChangeLangTxt, self._onChangeLangTxt, self)
 end
 
 function SettingsLanguageView:onDestroyView()

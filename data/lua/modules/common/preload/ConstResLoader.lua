@@ -10,6 +10,7 @@ function ConstResLoader:ctor()
 		self._loadConstAb,
 		self._loadIconPrefab,
 		self._loadAvProPrefab,
+		self._loadVideoPlayerPrefab,
 		self._loadUIBlockAnim,
 		self._loadLoadingUIBg
 	}
@@ -74,6 +75,10 @@ end
 
 function ConstResLoader:_loadAvProPrefab()
 	AvProMgr.instance:preload(self._onLoadFinish, self)
+end
+
+function ConstResLoader:_loadVideoPlayerPrefab()
+	VideoPlayerMgr.instance:preload(self._onLoadFinish, self)
 end
 
 function ConstResLoader:_loadUIBlockAnim()

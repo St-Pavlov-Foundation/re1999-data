@@ -67,6 +67,12 @@
   },
   {
     "stageid": 12,
+    "logindaysid": 999,
+    "stagetitle": "千日的尽头",
+    "bonus": "1#800002#1|1#530001#8"
+  },
+  {
+    "stageid": 13,
     "logindaysid": 5000,
     "stagetitle": "",
     "bonus": ""

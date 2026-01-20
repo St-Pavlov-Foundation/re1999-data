@@ -26,11 +26,12 @@ end
 function VersionActivity1_3AstrologyPropView:_editableInitView()
 	self._contentGrid = self._gocontent:GetComponent(typeof(UnityEngine.UI.GridLayoutGroup))
 	self._titleAni = self.viewGO:GetComponent(typeof(UnityEngine.Animation))
-	self._videoPlayer = gohelper.findChildComponent(self.viewGO, "#go_video", typeof(ZProj.AvProUGUIPlayer))
-	self._displauUGUI = gohelper.findChildComponent(self.viewGO, "#go_video", typeof(RenderHeads.Media.AVProVideo.DisplayUGUI))
-	self._displauUGUI.ScaleMode = UnityEngine.ScaleMode.ScaleAndCrop
 
-	self._videoPlayer:Play(self._displauUGUI, langVideoUrl("commonprop"), true, nil, nil)
+	local videoGo = gohelper.findChild(self.viewGO, "#go_video")
+
+	self._videoPlayer = VideoPlayerMgr.instance:createVideoPlayer(videoGo)
+
+	self._videoPlayer:play("commonprop", true, nil, nil)
 end
 
 function VersionActivity1_3AstrologyPropView:_onClickBG()
@@ -96,10 +97,8 @@ end
 function VersionActivity1_3AstrologyPropView:onDestroyView()
 	if self._videoPlayer then
 		if not BootNativeUtil.isIOS() then
-			self._videoPlayer:Stop()
+			self._videoPlayer:stop()
 		end
-
-		self._videoPlayer:Clear()
 
 		self._videoPlayer = nil
 	end

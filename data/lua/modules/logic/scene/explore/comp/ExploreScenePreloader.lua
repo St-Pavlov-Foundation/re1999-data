@@ -5,9 +5,9 @@ module("modules.logic.scene.explore.comp.ExploreScenePreloader", package.seeall)
 local ExploreScenePreloader = class("ExploreScenePreloader", BaseSceneComp)
 local Type_Shader_Variant = typeof(UnityEngine.ShaderVariantCollection)
 local ShaderPaths = {
-	[ModuleEnum.Performance.High] = "explore/shaders/svc_high.shadervariants",
-	[ModuleEnum.Performance.Middle] = "explore/shaders/svc_medium.shadervariants",
-	[ModuleEnum.Performance.Low] = "explore/shaders/svc_low.shadervariants"
+	[ModuleEnum.Performance.High] = "modules/explore/shaders/svc_high.shadervariants",
+	[ModuleEnum.Performance.Middle] = "modules/explore/shaders/svc_medium.shadervariants",
+	[ModuleEnum.Performance.Low] = "modules/explore/shaders/svc_low.shadervariants"
 }
 
 function ExploreScenePreloader:init(sceneId, levelId)
@@ -18,7 +18,7 @@ function ExploreScenePreloader:init(sceneId, levelId)
 	self._loader:addPath(ResUrl.getExploreEffectPath(ExploreConstValue.MapLightEffect))
 
 	if not GameResMgr.IsFromEditorDir then
-		self._loader:addPath("explore/shaders")
+		self._loader:addPath(ShaderPaths[ModuleEnum.Performance.High])
 	end
 
 	self._loader:setConcurrentCount(10)
@@ -46,9 +46,8 @@ function ExploreScenePreloader:_onPreloadFinish()
 end
 
 function ExploreScenePreloader:warmupShader()
-	local assetItem = self._loader:getAssetItem("explore/shaders")
-
 	if not GameResMgr.IsFromEditorDir then
+		local assetItem = self._loader:getAssetItem(ShaderPaths[ModuleEnum.Performance.High])
 		local quality = GameGlobalMgr.instance:getScreenState():getLocalQuality()
 		local resVersion = SLFramework.GameUpdate.HotUpdateInfoMgr.LocalResVersionStr
 		local str = PlayerPrefsHelper.getString(PlayerPrefsKey.ExploreShaderWarmupVersion, "")

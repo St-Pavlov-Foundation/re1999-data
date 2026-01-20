@@ -74,4 +74,8 @@ function VersionActivityFixedStoreViewContainer:playCloseTransition()
 	TaskDispatcher.runDelay(self.onPlayCloseTransitionFinish, self, 0.167)
 end
 
+function VersionActivityFixedStoreViewContainer:onContainerClose()
+	VersionActivityFixedHelper.setCustomDungeonStore()
+end
+
 return VersionActivityFixedStoreViewContainer

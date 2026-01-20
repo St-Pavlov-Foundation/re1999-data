@@ -23,7 +23,9 @@ end
 function VersionActivityVideoComp:_initVideo()
 	if not self._initFinish then
 		self._initFinish = true
-		self._videoPlayer, self._displayUGUI, self._videoGo = AvProMgr.instance:getVideoPlayer(self.videoRootGO, "videoplayer")
+		self._videoPlayer, self._videoGo = VideoPlayerMgr.instance:createGoAndVideoPlayer(self.videoRootGO, "videoplayer")
+
+		self._videoPlayer:setSkipOnDrop(true)
 
 		local uIBgSelfAdapter = self._videoGo:GetComponent(typeof(ZProj.UIBgSelfAdapter))
 
@@ -35,8 +37,8 @@ end
 
 function VersionActivityVideoComp:_destroyVideo()
 	if self._videoPlayer then
-		self._videoPlayer:Stop()
-		self._videoPlayer:Clear()
+		self._videoPlayer:stop()
+		self._videoPlayer:clear()
 
 		self._videoPlayer = nil
 		self._displayUGUI = nil
@@ -52,7 +54,7 @@ function VersionActivityVideoComp:loadMedia(videoPath)
 	self:_initVideo()
 
 	if self._videoPlayer then
-		self._videoPlayer:LoadMedia(videoPath)
+		self._videoPlayer:loadMedia(videoPath)
 	end
 end
 
@@ -76,14 +78,14 @@ function VersionActivityVideoComp:_playByPath(videoPath, isLoop, reset)
 		self._curPlayVideoPath = videoPath
 		self._curLoop = tempLoop
 
-		self._videoPlayer:Play(self._displayUGUI, videoPath, self._curLoop, self._videoStatusUpdate, self)
+		self._videoPlayer:play(videoPath, self._curLoop, self._videoStatusUpdate, self)
 	end
 end
 
 function VersionActivityVideoComp:_videoStatusUpdate(path, status, errorCode)
 	logNormal(string.format("VersionActivityVideoComp:_videoStatusUpdate status:%s name:%s ", status, AvProEnum.getPlayerStatusEnumName(status)))
 
-	if status == AvProEnum.PlayerStatus.Started and self._startCallback then
+	if status == VideoEnum.PlayerStatus.Started and self._startCallback then
 		self._startCallback(self._startCallbackTarget)
 	end
 end

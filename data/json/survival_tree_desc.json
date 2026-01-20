@@ -112,6 +112,22 @@
     "result": "DeductHealth|20"
   },
   {
+    "id": 1040147,
+    "nodeId": 20,
+    "desc": "战斗",
+    "icon": 7,
+    "condition": "",
+    "result": "NotifyEnterBattle|"
+  },
+  {
+    "id": 1040147,
+    "nodeId": 21,
+    "desc": "撤退",
+    "icon": 15,
+    "condition": "",
+    "result": "DeductHealth|20"
+  },
+  {
     "id": 1050101,
     "nodeId": 6,
     "desc": "招募",
@@ -494,6 +510,38 @@
     "icon": 15,
     "condition": "",
     "result": "JumpToNode|4"
+  },
+  {
+    "id": 1070101,
+    "nodeId": 4,
+    "desc": "投币",
+    "icon": 15,
+    "condition": "",
+    "result": "CostItem|1:168"
+  },
+  {
+    "id": 1070101,
+    "nodeId": 5,
+    "desc": "不玩",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 1070101,
+    "nodeId": 23,
+    "desc": "遗憾离开",
+    "icon": 15,
+    "condition": "",
+    "result": "DeleteEvent|7#0"
+  },
+  {
+    "id": 1070101,
+    "nodeId": 11,
+    "desc": "去看看",
+    "icon": 15,
+    "condition": "",
+    "result": "CreateEvent|7#107010101#1#1#false"
   },
   {
     "id": 1070458,
@@ -653,7 +701,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3801"
+    "result": "Drop|3343041"
   },
   {
     "id": 102010102,
@@ -661,7 +709,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3802"
+    "result": "Drop|3343041"
   },
   {
     "id": 102010103,
@@ -669,7 +717,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3803"
+    "result": "Drop|3343042"
   },
   {
     "id": 102010104,
@@ -677,7 +725,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3804"
+    "result": "Drop|3343042"
   },
   {
     "id": 102010105,
@@ -685,7 +733,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3805"
+    "result": "Drop|3343043"
   },
   {
     "id": 102010106,
@@ -693,7 +741,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3806"
+    "result": "Drop|3343043"
   },
   {
     "id": 102010107,
@@ -701,7 +749,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3811"
+    "result": "Drop|3343041"
   },
   {
     "id": 102010108,
@@ -709,7 +757,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3812"
+    "result": "Drop|3343041"
   },
   {
     "id": 102010109,
@@ -717,7 +765,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3813"
+    "result": "Drop|3343042"
   },
   {
     "id": 102010110,
@@ -725,7 +773,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3814"
+    "result": "Drop|3343042"
   },
   {
     "id": 102010111,
@@ -733,7 +781,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3815"
+    "result": "Drop|3343043"
   },
   {
     "id": 102010112,
@@ -741,7 +789,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3816"
+    "result": "Drop|3343043"
   },
   {
     "id": 102010113,
@@ -749,7 +797,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3821"
+    "result": "Drop|3343041"
   },
   {
     "id": 102010114,
@@ -757,7 +805,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3822"
+    "result": "Drop|3343041"
   },
   {
     "id": 102010115,
@@ -765,7 +813,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3823"
+    "result": "Drop|3343042"
   },
   {
     "id": 102010116,
@@ -773,7 +821,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3824"
+    "result": "Drop|3343042"
   },
   {
     "id": 102010117,
@@ -781,7 +829,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3825"
+    "result": "Drop|3343043"
   },
   {
     "id": 102010118,
@@ -789,7 +837,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3826"
+    "result": "Drop|3343043"
   },
   {
     "id": 102010119,
@@ -797,7 +845,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3831"
+    "result": "Drop|3343041"
   },
   {
     "id": 102010120,
@@ -805,7 +853,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3832"
+    "result": "Drop|3343041"
   },
   {
     "id": 102010121,
@@ -813,7 +861,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3833"
+    "result": "Drop|3343042"
   },
   {
     "id": 102010122,
@@ -821,7 +869,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3834"
+    "result": "Drop|3343042"
   },
   {
     "id": 102010123,
@@ -829,7 +877,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3835"
+    "result": "Drop|3343043"
   },
   {
     "id": 102010124,
@@ -837,7 +885,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3836"
+    "result": "Drop|3343043"
   },
   {
     "id": 102010125,
@@ -845,7 +893,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3841"
+    "result": "Drop|3343041"
   },
   {
     "id": 102010126,
@@ -853,7 +901,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3842"
+    "result": "Drop|3343041"
   },
   {
     "id": 102010127,
@@ -861,7 +909,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3843"
+    "result": "Drop|3343042"
   },
   {
     "id": 102010128,
@@ -869,7 +917,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3844"
+    "result": "Drop|3343042"
   },
   {
     "id": 102010129,
@@ -877,7 +925,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3845"
+    "result": "Drop|3343043"
   },
   {
     "id": 102010130,
@@ -885,7 +933,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3846"
+    "result": "Drop|3343043"
   },
   {
     "id": 102010131,
@@ -893,7 +941,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3851"
+    "result": "Drop|3343041"
   },
   {
     "id": 102010132,
@@ -901,7 +949,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3852"
+    "result": "Drop|3343041"
   },
   {
     "id": 102010133,
@@ -909,7 +957,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3853"
+    "result": "Drop|3343042"
   },
   {
     "id": 102010134,
@@ -917,7 +965,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3854"
+    "result": "Drop|3343042"
   },
   {
     "id": 102010135,
@@ -925,7 +973,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3855"
+    "result": "Drop|3343043"
   },
   {
     "id": 102010136,
@@ -933,7 +981,7 @@
     "desc": "拾取",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3856"
+    "result": "Drop|3343043"
   },
   {
     "id": 105010101,
@@ -1190,6 +1238,166 @@
     "icon": 15,
     "condition": "",
     "result": "JumpToNode|4"
+  },
+  {
+    "id": 107046501,
+    "nodeId": 4,
+    "desc": "同意",
+    "icon": 0,
+    "condition": "",
+    "result": "CommitItems|500"
+  },
+  {
+    "id": 107046501,
+    "nodeId": 42,
+    "desc": "拒绝",
+    "icon": 0,
+    "condition": "",
+    "result": "ChoiceList|107046503"
+  },
+  {
+    "id": 107046501,
+    "nodeId": 58,
+    "desc": "确定",
+    "icon": 0,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 107046501,
+    "nodeId": 57,
+    "desc": "确定",
+    "icon": 0,
+    "condition": "",
+    "result": "AddTalent|2010221"
+  },
+  {
+    "id": 107046502,
+    "nodeId": 4,
+    "desc": "同意",
+    "icon": 0,
+    "condition": "",
+    "result": "CommitItems|500"
+  },
+  {
+    "id": 107046502,
+    "nodeId": 42,
+    "desc": "拒绝",
+    "icon": 0,
+    "condition": "",
+    "result": "ChoiceList|107046503"
+  },
+  {
+    "id": 107046502,
+    "nodeId": 58,
+    "desc": "确定",
+    "icon": 0,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 107046502,
+    "nodeId": 57,
+    "desc": "确定",
+    "icon": 0,
+    "condition": "",
+    "result": "AddTalent|2010222"
+  },
+  {
+    "id": 107046503,
+    "nodeId": 4,
+    "desc": "同意",
+    "icon": 0,
+    "condition": "",
+    "result": "CommitItems|500"
+  },
+  {
+    "id": 107046503,
+    "nodeId": 42,
+    "desc": "拒绝",
+    "icon": 0,
+    "condition": "",
+    "result": "ChoiceList|107046503"
+  },
+  {
+    "id": 107046503,
+    "nodeId": 58,
+    "desc": "确定",
+    "icon": 0,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 107046503,
+    "nodeId": 57,
+    "desc": "确定",
+    "icon": 0,
+    "condition": "",
+    "result": "AddTalent|2010223"
+  },
+  {
+    "id": 107046504,
+    "nodeId": 4,
+    "desc": "同意",
+    "icon": 0,
+    "condition": "",
+    "result": "CommitItems|500"
+  },
+  {
+    "id": 107046504,
+    "nodeId": 42,
+    "desc": "拒绝",
+    "icon": 0,
+    "condition": "",
+    "result": "ChoiceList|107046503"
+  },
+  {
+    "id": 107046504,
+    "nodeId": 58,
+    "desc": "确定",
+    "icon": 0,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 107046504,
+    "nodeId": 57,
+    "desc": "确定",
+    "icon": 0,
+    "condition": "",
+    "result": "AddTalent|2010224"
+  },
+  {
+    "id": 107046505,
+    "nodeId": 4,
+    "desc": "同意",
+    "icon": 0,
+    "condition": "",
+    "result": "CommitItems|500"
+  },
+  {
+    "id": 107046505,
+    "nodeId": 42,
+    "desc": "拒绝",
+    "icon": 0,
+    "condition": "",
+    "result": "ChoiceList|107046503"
+  },
+  {
+    "id": 107046505,
+    "nodeId": 58,
+    "desc": "确定",
+    "icon": 0,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 107046505,
+    "nodeId": 57,
+    "desc": "确定",
+    "icon": 0,
+    "condition": "",
+    "result": "AddTalent|2010225"
   },
   {
     "id": 205010101,
@@ -1664,214 +1872,6 @@
     "result": "Drop|320701011"
   },
   {
-    "id": 207010200,
-    "nodeId": 50,
-    "desc": "滋滋滋",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207010201"
-  },
-  {
-    "id": 207010200,
-    "nodeId": 51,
-    "desc": "诡异，不宜久留",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207010200,
-    "nodeId": 28,
-    "desc": "放在拉普拉斯的设备里倒是不奇怪",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207010202"
-  },
-  {
-    "id": 207010200,
-    "nodeId": 30,
-    "desc": "也许乌尔里希说的对",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207010203"
-  },
-  {
-    "id": 207010200,
-    "nodeId": 54,
-    "desc": "就算是虚拟的勇者也应该获得尊重",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320701021"
-  },
-  {
-    "id": 207010300,
-    "nodeId": 50,
-    "desc": "深度，精神深度能具象化吗？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207010301"
-  },
-  {
-    "id": 207010300,
-    "nodeId": 51,
-    "desc": "这是什么密码吗？",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207010300,
-    "nodeId": 28,
-    "desc": "这本身就很深了",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207010302"
-  },
-  {
-    "id": 207010300,
-    "nodeId": 30,
-    "desc": "但愿不要",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320701031"
-  },
-  {
-    "id": 207010400,
-    "nodeId": 50,
-    "desc": "聪慧的魔精",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207010401"
-  },
-  {
-    "id": 207010400,
-    "nodeId": 51,
-    "desc": "善于思辨的基金会",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207010402"
-  },
-  {
-    "id": 207010400,
-    "nodeId": 63,
-    "desc": "……的拉普拉斯",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207010403"
-  },
-  {
-    "id": 207010400,
-    "nodeId": 30,
-    "desc": "他看起来很疑惑",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31003"
-  },
-  {
-    "id": 207010400,
-    "nodeId": 58,
-    "desc": "他看起来很迷茫",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31004"
-  },
-  {
-    "id": 207010400,
-    "nodeId": 65,
-    "desc": "他看起来很…开心",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31005"
-  },
-  {
-    "id": 207010500,
-    "nodeId": 50,
-    "desc": "上前查看",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207010501"
-  },
-  {
-    "id": 207010500,
-    "nodeId": 58,
-    "desc": "搜到有用的就离开吧",
-    "icon": 15,
-    "condition": "",
-    "result": "CostGameTime|30"
-  },
-  {
-    "id": 207010500,
-    "nodeId": 28,
-    "desc": "查看",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207010502"
-  },
-  {
-    "id": 207010500,
-    "nodeId": 64,
-    "desc": "刻意的温情？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207010503"
-  },
-  {
-    "id": 207010500,
-    "nodeId": 66,
-    "desc": "陪它一起等等看",
-    "icon": 15,
-    "condition": "",
-    "result": "CostGameTime|30"
-  },
-  {
-    "id": 207010500,
-    "nodeId": 69,
-    "desc": "忠犬，并非是贬义词。",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320701051"
-  },
-  {
-    "id": 207010600,
-    "nodeId": 50,
-    "desc": "如同骑士间的对决",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207010601"
-  },
-  {
-    "id": 207010600,
-    "nodeId": 28,
-    "desc": "这就像我们争取来的预算",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207010602"
-  },
-  {
-    "id": 207010600,
-    "nodeId": 64,
-    "desc": "没人可以",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207010603"
-  },
-  {
-    "id": 207010600,
-    "nodeId": 66,
-    "desc": "安静的思考",
-    "icon": 15,
-    "condition": "",
-    "result": "CostGameTime|30"
-  },
-  {
-    "id": 207010600,
-    "nodeId": 77,
-    "desc": "毫无意义的行为",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
     "id": 207010700,
     "nodeId": 50,
     "desc": "这是沙漏",
@@ -1984,238 +1984,6 @@
     "result": "Drop|320701071"
   },
   {
-    "id": 207010800,
-    "nodeId": 50,
-    "desc": "你说的对",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207010801"
-  },
-  {
-    "id": 207010800,
-    "nodeId": 58,
-    "desc": "无稽之谈",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207010802"
-  },
-  {
-    "id": 207010800,
-    "nodeId": 28,
-    "desc": "收下",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320701081"
-  },
-  {
-    "id": 207010800,
-    "nodeId": 82,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31014"
-  },
-  {
-    "id": 207010900,
-    "nodeId": 50,
-    "desc": "加入甜菜根",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207010901"
-  },
-  {
-    "id": 207010900,
-    "nodeId": 95,
-    "desc": "加入番茄",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207010902"
-  },
-  {
-    "id": 207010900,
-    "nodeId": 58,
-    "desc": "加入迷障泡泡球",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207010903"
-  },
-  {
-    "id": 207010900,
-    "nodeId": 110,
-    "desc": "捡起",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320701092"
-  },
-  {
-    "id": 207010900,
-    "nodeId": 28,
-    "desc": "收下",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320701091"
-  },
-  {
-    "id": 207010900,
-    "nodeId": 97,
-    "desc": "收下",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31015"
-  },
-  {
-    "id": 207010900,
-    "nodeId": 82,
-    "desc": "战斗",
-    "icon": 6,
-    "condition": "",
-    "result": "TriggerDialog|31016"
-  },
-  {
-    "id": 207010901,
-    "nodeId": 20,
-    "desc": "战斗",
-    "icon": 6,
-    "condition": "",
-    "result": "NotifyEnterBattle|"
-  },
-  {
-    "id": 207010901,
-    "nodeId": 21,
-    "desc": "撤退",
-    "icon": 15,
-    "condition": "",
-    "result": "DeductHealth|20"
-  },
-  {
-    "id": 207011000,
-    "nodeId": 50,
-    "desc": "引用板块运动学说反驳他",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011001"
-  },
-  {
-    "id": 207011000,
-    "nodeId": 95,
-    "desc": "赞同他的观点",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011002"
-  },
-  {
-    "id": 207011000,
-    "nodeId": 58,
-    "desc": "你平时都在研究些什么？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011003"
-  },
-  {
-    "id": 207011000,
-    "nodeId": 28,
-    "desc": "好吧",
-    "icon": 15,
-    "condition": "",
-    "result": "FinishMyself|false"
-  },
-  {
-    "id": 207011000,
-    "nodeId": 97,
-    "desc": "收下",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31017"
-  },
-  {
-    "id": 207011000,
-    "nodeId": 82,
-    "desc": "没收",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320701101"
-  },
-  {
-    "id": 207011100,
-    "nodeId": 50,
-    "desc": "将药剂瓶丢向它",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011101"
-  },
-  {
-    "id": 207011100,
-    "nodeId": 95,
-    "desc": "用苹果砸它",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011102"
-  },
-  {
-    "id": 207011100,
-    "nodeId": 58,
-    "desc": "默默离开",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011103"
-  },
-  {
-    "id": 207011100,
-    "nodeId": 28,
-    "desc": "这……",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31018"
-  },
-  {
-    "id": 207011100,
-    "nodeId": 97,
-    "desc": "收下",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31019"
-  },
-  {
-    "id": 207011100,
-    "nodeId": 82,
-    "desc": "拿上吧",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320701111"
-  },
-  {
-    "id": 207011200,
-    "nodeId": 50,
-    "desc": "芝诺在拉普拉斯有分部？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011201"
-  },
-  {
-    "id": 207011200,
-    "nodeId": 28,
-    "desc": "准备离开",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011202"
-  },
-  {
-    "id": 207011200,
-    "nodeId": 92,
-    "desc": "准备离开",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011203"
-  },
-  {
-    "id": 207011200,
-    "nodeId": 91,
-    "desc": "我难以想象这样的我",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31020"
-  },
-  {
     "id": 207011300,
     "nodeId": 50,
     "desc": "红的！",
@@ -2286,406 +2054,6 @@
     "icon": 15,
     "condition": "",
     "result": "Drop|320701132"
-  },
-  {
-    "id": 207011400,
-    "nodeId": 50,
-    "desc": "穿过那道“墙”",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011401"
-  },
-  {
-    "id": 207011400,
-    "nodeId": 58,
-    "desc": "绕道而行",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011405"
-  },
-  {
-    "id": 207011400,
-    "nodeId": 99,
-    "desc": "唉……",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320701141"
-  },
-  {
-    "id": 207011400,
-    "nodeId": 28,
-    "desc": "战斗",
-    "icon": 6,
-    "condition": "",
-    "result": "TriggerDialog|31022"
-  },
-  {
-    "id": 207011400,
-    "nodeId": 82,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "FinishMyself|false"
-  },
-  {
-    "id": 207011401,
-    "nodeId": 20,
-    "desc": "战斗",
-    "icon": 6,
-    "condition": "",
-    "result": "NotifyEnterBattle|"
-  },
-  {
-    "id": 207011401,
-    "nodeId": 21,
-    "desc": "撤退",
-    "icon": 15,
-    "condition": "",
-    "result": "DeductHealth|20"
-  },
-  {
-    "id": 207011500,
-    "nodeId": 58,
-    "desc": "原来是死神的“空合同”",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011501"
-  },
-  {
-    "id": 207011500,
-    "nodeId": 102,
-    "desc": "没有不署名的战役",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011502"
-  },
-  {
-    "id": 207011500,
-    "nodeId": 112,
-    "desc": "希望这些“狗牌”永远剩余",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011503"
-  },
-  {
-    "id": 207011500,
-    "nodeId": 106,
-    "desc": "希望他们只在这里闪烁",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320701151"
-  },
-  {
-    "id": 207011500,
-    "nodeId": 116,
-    "desc": "希望他们只在这里闪烁",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320701151"
-  },
-  {
-    "id": 207011600,
-    "nodeId": 58,
-    "desc": "现在认错太晚了",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011601"
-  },
-  {
-    "id": 207011600,
-    "nodeId": 126,
-    "desc": "必须惩罚他们",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011604"
-  },
-  {
-    "id": 207011600,
-    "nodeId": 102,
-    "desc": "前去关闭电视机",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011602"
-  },
-  {
-    "id": 207011600,
-    "nodeId": 112,
-    "desc": "算了，离开吧",
-    "icon": 15,
-    "condition": "",
-    "result": "DeleteEvent|7#0"
-  },
-  {
-    "id": 207011600,
-    "nodeId": 128,
-    "desc": "这就是他们应得的反高潮结局",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320701161"
-  },
-  {
-    "id": 207011600,
-    "nodeId": 106,
-    "desc": "战斗",
-    "icon": 6,
-    "condition": "",
-    "result": "JumpEvent|4#207011601"
-  },
-  {
-    "id": 207011700,
-    "nodeId": 50,
-    "desc": "他从没获得过荣誉",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011701"
-  },
-  {
-    "id": 207011700,
-    "nodeId": 28,
-    "desc": "我愿意坐下来",
-    "icon": 15,
-    "condition": "",
-    "result": "CostGameTime|20"
-  },
-  {
-    "id": 207011700,
-    "nodeId": 58,
-    "desc": "我没有兴趣",
-    "icon": 15,
-    "condition": "",
-    "result": "DeleteEvent|7#0"
-  },
-  {
-    "id": 207011700,
-    "nodeId": 103,
-    "desc": "拍拍他的肩膀，以示尊敬",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011703"
-  },
-  {
-    "id": 207011700,
-    "nodeId": 105,
-    "desc": "对此我表示遗憾",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011704"
-  },
-  {
-    "id": 207011700,
-    "nodeId": 107,
-    "desc": "继续听着",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011705"
-  },
-  {
-    "id": 207011700,
-    "nodeId": 109,
-    "desc": "你有比天赋更重要的东西",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011706"
-  },
-  {
-    "id": 207011700,
-    "nodeId": 110,
-    "desc": "你缺乏的不只是天赋",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011707"
-  },
-  {
-    "id": 207011700,
-    "nodeId": 112,
-    "desc": "看来安慰对他来说并无意义",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011708"
-  },
-  {
-    "id": 207011700,
-    "nodeId": 115,
-    "desc": "点点头，与他碰拳",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011708"
-  },
-  {
-    "id": 207011700,
-    "nodeId": 117,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320701171"
-  },
-  {
-    "id": 207011700,
-    "nodeId": 123,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320701171"
-  },
-  {
-    "id": 207011800,
-    "nodeId": 58,
-    "desc": "他们的统治根基无比牢固",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011801"
-  },
-  {
-    "id": 207011800,
-    "nodeId": 112,
-    "desc": "这些纸可以换些苦目糖",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011802"
-  },
-  {
-    "id": 207011800,
-    "nodeId": 116,
-    "desc": "还得从长计议",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31023"
-  },
-  {
-    "id": 207011900,
-    "nodeId": 58,
-    "desc": "直接阅读内容",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011901"
-  },
-  {
-    "id": 207011900,
-    "nodeId": 112,
-    "desc": "这太荒诞了",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011902"
-  },
-  {
-    "id": 207011900,
-    "nodeId": 116,
-    "desc": "这太不真实了",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207011903"
-  },
-  {
-    "id": 207011900,
-    "nodeId": 124,
-    "desc": "手握权力的人不会有歉意",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31024"
-  },
-  {
-    "id": 207012000,
-    "nodeId": 58,
-    "desc": "没加入基金会也逃不过这一套？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012001"
-  },
-  {
-    "id": 207012000,
-    "nodeId": 134,
-    "desc": "我宁可去翻垃圾桶。",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207012000,
-    "nodeId": 128,
-    "desc": "不用谢。",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320701201"
-  },
-  {
-    "id": 207012000,
-    "nodeId": 102,
-    "desc": "还行，我办过更繁琐的手续。",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012002"
-  },
-  {
-    "id": 207012000,
-    "nodeId": 112,
-    "desc": "我宁可去听魔精讲话。",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207012000,
-    "nodeId": 137,
-    "desc": "也就是说……",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012003"
-  },
-  {
-    "id": 207012000,
-    "nodeId": 106,
-    "desc": "我忽然想起来我有工作证。",
-    "icon": 6,
-    "condition": "",
-    "result": "TriggerDialog|31025"
-  },
-  {
-    "id": 207012100,
-    "nodeId": 58,
-    "desc": "吃",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012101"
-  },
-  {
-    "id": 207012100,
-    "nodeId": 123,
-    "desc": "不吃",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012104"
-  },
-  {
-    "id": 207012100,
-    "nodeId": 112,
-    "desc": "收下报酬",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012102"
-  },
-  {
-    "id": 207012100,
-    "nodeId": 127,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207012100,
-    "nodeId": 129,
-    "desc": "这安全吗",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012103"
-  },
-  {
-    "id": 207012100,
-    "nodeId": 116,
-    "desc": "真是离谱",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31026"
   },
   {
     "id": 207012200,
@@ -2776,350 +2144,6 @@
     "result": "Drop|320701222"
   },
   {
-    "id": 207012300,
-    "nodeId": 58,
-    "desc": "那个理论早就过时了",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012301"
-  },
-  {
-    "id": 207012300,
-    "nodeId": 123,
-    "desc": "我赞成",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012303"
-  },
-  {
-    "id": 207012300,
-    "nodeId": 112,
-    "desc": "你在暗示谁？",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31027"
-  },
-  {
-    "id": 207012300,
-    "nodeId": 127,
-    "desc": "收下",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31028"
-  },
-  {
-    "id": 207012300,
-    "nodeId": 116,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "FinishMyself|false"
-  },
-  {
-    "id": 207012400,
-    "nodeId": 50,
-    "desc": "这是一位“占有主义者”",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012401"
-  },
-  {
-    "id": 207012400,
-    "nodeId": 106,
-    "desc": "这是一位“雕刻家”",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012402"
-  },
-  {
-    "id": 207012400,
-    "nodeId": 75,
-    "desc": "抱歉，那您是？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012403"
-  },
-  {
-    "id": 207012400,
-    "nodeId": 125,
-    "desc": "抱歉，那您是？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012403"
-  },
-  {
-    "id": 207012400,
-    "nodeId": 99,
-    "desc": "……那您的当下呢？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012404"
-  },
-  {
-    "id": 207012400,
-    "nodeId": 127,
-    "desc": "……那您的当下呢？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012404"
-  },
-  {
-    "id": 207012400,
-    "nodeId": 101,
-    "desc": "你也是史官？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012405"
-  },
-  {
-    "id": 207012400,
-    "nodeId": 129,
-    "desc": "你也是史官？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012405"
-  },
-  {
-    "id": 207012400,
-    "nodeId": 118,
-    "desc": "然后……",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012406"
-  },
-  {
-    "id": 207012400,
-    "nodeId": 131,
-    "desc": "然后……",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012406"
-  },
-  {
-    "id": 207012400,
-    "nodeId": 120,
-    "desc": "你的存在很有趣",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012407"
-  },
-  {
-    "id": 207012400,
-    "nodeId": 133,
-    "desc": "你的存在很有趣",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012407"
-  },
-  {
-    "id": 207012400,
-    "nodeId": 122,
-    "desc": "让路",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320701241"
-  },
-  {
-    "id": 207012400,
-    "nodeId": 135,
-    "desc": "让路",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320701241"
-  },
-  {
-    "id": 207012500,
-    "nodeId": 50,
-    "desc": "你得口腔溃疡了吗？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012501"
-  },
-  {
-    "id": 207012500,
-    "nodeId": 106,
-    "desc": "你的语言余额终于用完了吗？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012502"
-  },
-  {
-    "id": 207012500,
-    "nodeId": 75,
-    "desc": "怪家伙",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012503"
-  },
-  {
-    "id": 207012500,
-    "nodeId": 125,
-    "desc": "他看上去有81个人格",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012503"
-  },
-  {
-    "id": 207012500,
-    "nodeId": 99,
-    "desc": "他们像是素材复用的双胞胎",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012504"
-  },
-  {
-    "id": 207012500,
-    "nodeId": 127,
-    "desc": "他们像是素材复用的双胞胎",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012504"
-  },
-  {
-    "id": 207012500,
-    "nodeId": 101,
-    "desc": "……你有一个兄弟对吗？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012505"
-  },
-  {
-    "id": 207012500,
-    "nodeId": 129,
-    "desc": "……你有一个兄弟对吗？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012505"
-  },
-  {
-    "id": 207012500,
-    "nodeId": 118,
-    "desc": "好吧",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320701251"
-  },
-  {
-    "id": 207012500,
-    "nodeId": 131,
-    "desc": "好吧",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320701251"
-  },
-  {
-    "id": 207012600,
-    "nodeId": 50,
-    "desc": "有些奇怪",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012601"
-  },
-  {
-    "id": 207012600,
-    "nodeId": 145,
-    "desc": "制作翻译器",
-    "icon": 15,
-    "condition": "",
-    "result": "CostItem|207012601:1"
-  },
-  {
-    "id": 207012600,
-    "nodeId": 146,
-    "desc": "再等等",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207012600,
-    "nodeId": 75,
-    "desc": "保持戒备",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012602"
-  },
-  {
-    "id": 207012600,
-    "nodeId": 150,
-    "desc": "这样就好",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320701261"
-  },
-  {
-    "id": 207012600,
-    "nodeId": 99,
-    "desc": "这装备，是芝诺的人？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012603"
-  },
-  {
-    "id": 207012600,
-    "nodeId": 101,
-    "desc": "（我对这些士兵其实没什么好印象）",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012604"
-  },
-  {
-    "id": 207012600,
-    "nodeId": 118,
-    "desc": "但是他们确实值得尊重",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012605"
-  },
-  {
-    "id": 207012600,
-    "nodeId": 139,
-    "desc": "我先离开一下",
-    "icon": 15,
-    "condition": "",
-    "result": "CreateEvent|3#207012601#3#6#false"
-  },
-  {
-    "id": 207012700,
-    "nodeId": 50,
-    "desc": "静观其变",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012701"
-  },
-  {
-    "id": 207012700,
-    "nodeId": 150,
-    "desc": "收下",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320701271"
-  },
-  {
-    "id": 207012700,
-    "nodeId": 75,
-    "desc": "她应该是有的，档案上写着呢",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012702"
-  },
-  {
-    "id": 207012700,
-    "nodeId": 99,
-    "desc": "享受服务就得给钱，海盗也是",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207012703"
-  },
-  {
-    "id": 207012700,
-    "nodeId": 101,
-    "desc": "略施惩戒",
-    "icon": 15,
-    "condition": "",
-    "result": "JumpEvent|4#207012701"
-  },
-  {
     "id": 207012801,
     "nodeId": 4,
     "desc": "看看它要去哪",
@@ -3206,542 +2230,6 @@
     "icon": 15,
     "condition": "",
     "result": "DeductHealth|20"
-  },
-  {
-    "id": 207020100,
-    "nodeId": 50,
-    "desc": "出示门票",
-    "icon": 15,
-    "condition": "",
-    "result": "CostItem|207020101:1"
-  },
-  {
-    "id": 207020100,
-    "nodeId": 71,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207020100,
-    "nodeId": 106,
-    "desc": "别再丢了！",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31007"
-  },
-  {
-    "id": 207020100,
-    "nodeId": 78,
-    "desc": "询问",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020102"
-  },
-  {
-    "id": 207020100,
-    "nodeId": 75,
-    "desc": "那等着吧",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020105"
-  },
-  {
-    "id": 207020100,
-    "nodeId": 81,
-    "desc": "我要干什么？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020103"
-  },
-  {
-    "id": 207020100,
-    "nodeId": 99,
-    "desc": "我身后好像有人",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020106"
-  },
-  {
-    "id": 207020100,
-    "nodeId": 83,
-    "desc": "我可不干",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020114"
-  },
-  {
-    "id": 207020100,
-    "nodeId": 84,
-    "desc": "评估风险",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020104"
-  },
-  {
-    "id": 207020100,
-    "nodeId": 101,
-    "desc": "自卫！",
-    "icon": 6,
-    "condition": "",
-    "result": "JumpEvent|4#207020102"
-  },
-  {
-    "id": 207020100,
-    "nodeId": 115,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "FinishMyself|false"
-  },
-  {
-    "id": 207020100,
-    "nodeId": 87,
-    "desc": "收下奖品",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31006"
-  },
-  {
-    "id": 207020101,
-    "nodeId": 50,
-    "desc": "说来听听",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020109"
-  },
-  {
-    "id": 207020101,
-    "nodeId": 71,
-    "desc": "暂时没空",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207020101,
-    "nodeId": 168,
-    "desc": "我买了",
-    "icon": 15,
-    "condition": "",
-    "result": "CostItem|1:100"
-  },
-  {
-    "id": 207020101,
-    "nodeId": 174,
-    "desc": "不用了",
-    "icon": 15,
-    "condition": "",
-    "result": "SettleState|5"
-  },
-  {
-    "id": 207020101,
-    "nodeId": 75,
-    "desc": "3号",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020111"
-  },
-  {
-    "id": 207020101,
-    "nodeId": 104,
-    "desc": "5号",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020110"
-  },
-  {
-    "id": 207020101,
-    "nodeId": 107,
-    "desc": "6号",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020111"
-  },
-  {
-    "id": 207020101,
-    "nodeId": 109,
-    "desc": "你坐在哪",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020112"
-  },
-  {
-    "id": 207020101,
-    "nodeId": 121,
-    "desc": "我买了",
-    "icon": 15,
-    "condition": "",
-    "result": "CostItem|1:100"
-  },
-  {
-    "id": 207020101,
-    "nodeId": 122,
-    "desc": "不用了",
-    "icon": 15,
-    "condition": "",
-    "result": "SettleState|5"
-  },
-  {
-    "id": 207020101,
-    "nodeId": 106,
-    "desc": "收下报酬",
-    "icon": 15,
-    "condition": "",
-    "result": "AddItem|207020101:1"
-  },
-  {
-    "id": 207020101,
-    "nodeId": 135,
-    "desc": "我买了",
-    "icon": 15,
-    "condition": "",
-    "result": "CostItem|1:100"
-  },
-  {
-    "id": 207020101,
-    "nodeId": 141,
-    "desc": "不用了",
-    "icon": 15,
-    "condition": "",
-    "result": "SettleState|5"
-  },
-  {
-    "id": 207020101,
-    "nodeId": 112,
-    "desc": "3号",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020111"
-  },
-  {
-    "id": 207020101,
-    "nodeId": 114,
-    "desc": "5号",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020110"
-  },
-  {
-    "id": 207020101,
-    "nodeId": 117,
-    "desc": "6号",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020111"
-  },
-  {
-    "id": 207020101,
-    "nodeId": 119,
-    "desc": "再说一次？",
-    "icon": 15,
-    "condition": "",
-    "result": "JumpToNode|74"
-  },
-  {
-    "id": 207020101,
-    "nodeId": 144,
-    "desc": "我买了",
-    "icon": 15,
-    "condition": "",
-    "result": "CostItem|1:100"
-  },
-  {
-    "id": 207020101,
-    "nodeId": 150,
-    "desc": "不用了",
-    "icon": 15,
-    "condition": "",
-    "result": "SettleState|5"
-  },
-  {
-    "id": 207020101,
-    "nodeId": 161,
-    "desc": "收下报酬",
-    "icon": 15,
-    "condition": "",
-    "result": "AddItem|207020101:1"
-  },
-  {
-    "id": 207020101,
-    "nodeId": 153,
-    "desc": "我买了",
-    "icon": 15,
-    "condition": "",
-    "result": "CostItem|1:100"
-  },
-  {
-    "id": 207020101,
-    "nodeId": 159,
-    "desc": "不用了",
-    "icon": 15,
-    "condition": "",
-    "result": "SettleState|5"
-  },
-  {
-    "id": 207020200,
-    "nodeId": 50,
-    "desc": "你需要去康复中心寻求帮助",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020201"
-  },
-  {
-    "id": 207020200,
-    "nodeId": 75,
-    "desc": "即便不能好好睡觉？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020202"
-  },
-  {
-    "id": 207020200,
-    "nodeId": 99,
-    "desc": "我只能祝福你",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020203"
-  },
-  {
-    "id": 207020200,
-    "nodeId": 101,
-    "desc": "收下",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320702021"
-  },
-  {
-    "id": 207020201,
-    "nodeId": 50,
-    "desc": "人和非人都能体验吗？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020205"
-  },
-  {
-    "id": 207020201,
-    "nodeId": 106,
-    "desc": "我的人生已经很不一样了",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020205"
-  },
-  {
-    "id": 207020201,
-    "nodeId": 188,
-    "desc": "获得物资",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320702022"
-  },
-  {
-    "id": 207020201,
-    "nodeId": 75,
-    "desc": "你在违规使用？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020206"
-  },
-  {
-    "id": 207020201,
-    "nodeId": 144,
-    "desc": "你在违规使用？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020206"
-  },
-  {
-    "id": 207020201,
-    "nodeId": 99,
-    "desc": "听着不太对，但是就这样吧",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020209"
-  },
-  {
-    "id": 207020201,
-    "nodeId": 107,
-    "desc": "出示一下，拉普拉斯的事故已经够多了",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020207"
-  },
-  {
-    "id": 207020201,
-    "nodeId": 146,
-    "desc": "听着不太对，但是就这样吧",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020209"
-  },
-  {
-    "id": 207020201,
-    "nodeId": 181,
-    "desc": "出示一下，拉普拉斯的事故已经够多了",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020207"
-  },
-  {
-    "id": 207020201,
-    "nodeId": 101,
-    "desc": "翻过去！保护沙滩！",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020210"
-  },
-  {
-    "id": 207020201,
-    "nodeId": 111,
-    "desc": "打开大门，我们冲锋！",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020211"
-  },
-  {
-    "id": 207020201,
-    "nodeId": 112,
-    "desc": "上等的计谋是语言战术！",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020212"
-  },
-  {
-    "id": 207020201,
-    "nodeId": 109,
-    "desc": "给他点物理教育",
-    "icon": 6,
-    "condition": "",
-    "result": "JumpEvent|4#207020202"
-  },
-  {
-    "id": 207020201,
-    "nodeId": 148,
-    "desc": "翻过去！保护沙滩！",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020210"
-  },
-  {
-    "id": 207020201,
-    "nodeId": 159,
-    "desc": "打开大门，我们冲锋！",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020211"
-  },
-  {
-    "id": 207020201,
-    "nodeId": 170,
-    "desc": "上等的计谋是语言战术！",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020212"
-  },
-  {
-    "id": 207020201,
-    "nodeId": 183,
-    "desc": "给他点物理教育",
-    "icon": 6,
-    "condition": "",
-    "result": "JumpEvent|4#207020202"
-  },
-  {
-    "id": 207020201,
-    "nodeId": 116,
-    "desc": "这是什么神秘术吗？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020213"
-  },
-  {
-    "id": 207020201,
-    "nodeId": 117,
-    "desc": "该死",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020213"
-  },
-  {
-    "id": 207020201,
-    "nodeId": 118,
-    "desc": "他们过来了！嗯？为什么拿着武器？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020213"
-  },
-  {
-    "id": 207020201,
-    "nodeId": 150,
-    "desc": "这是什么神秘术吗？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020213"
-  },
-  {
-    "id": 207020201,
-    "nodeId": 161,
-    "desc": "该死",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020213"
-  },
-  {
-    "id": 207020201,
-    "nodeId": 172,
-    "desc": "他们过来了！嗯？为什么拿着武器？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020213"
-  },
-  {
-    "id": 207020201,
-    "nodeId": 120,
-    "desc": "我要找个地方稍微吐一会",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31008"
-  },
-  {
-    "id": 207020201,
-    "nodeId": 122,
-    "desc": "我要找个地方稍微吐一会",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31008"
-  },
-  {
-    "id": 207020201,
-    "nodeId": 124,
-    "desc": "我要找个地方稍微吐一会",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31008"
-  },
-  {
-    "id": 207020201,
-    "nodeId": 152,
-    "desc": "我要找个地方稍微吐一会",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31008"
-  },
-  {
-    "id": 207020201,
-    "nodeId": 163,
-    "desc": "我要找个地方稍微吐一会",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31008"
-  },
-  {
-    "id": 207020201,
-    "nodeId": 174,
-    "desc": "我要找个地方稍微吐一会",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31008"
   },
   {
     "id": 207020300,
@@ -3968,286 +2456,6 @@
     "result": "AddItem|207020202:1"
   },
   {
-    "id": 207020400,
-    "nodeId": 50,
-    "desc": "巫师？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020401"
-  },
-  {
-    "id": 207020400,
-    "nodeId": 58,
-    "desc": "你叫我？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020401"
-  },
-  {
-    "id": 207020400,
-    "nodeId": 95,
-    "desc": "去找石中剑吧",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020402"
-  },
-  {
-    "id": 207020400,
-    "nodeId": 100,
-    "desc": "关我什么事",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020403"
-  },
-  {
-    "id": 207020400,
-    "nodeId": 109,
-    "desc": "去找石中剑吧",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020402"
-  },
-  {
-    "id": 207020400,
-    "nodeId": 116,
-    "desc": "关我什么事",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020403"
-  },
-  {
-    "id": 207020400,
-    "nodeId": 106,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31021"
-  },
-  {
-    "id": 207020400,
-    "nodeId": 123,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "FinishMyself|false"
-  },
-  {
-    "id": 207020400,
-    "nodeId": 111,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31021"
-  },
-  {
-    "id": 207020400,
-    "nodeId": 124,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "FinishMyself|false"
-  },
-  {
-    "id": 207020401,
-    "nodeId": 50,
-    "desc": "让他把佩剑扔下去",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020405"
-  },
-  {
-    "id": 207020401,
-    "nodeId": 58,
-    "desc": "把他踢下去",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020406"
-  },
-  {
-    "id": 207020401,
-    "nodeId": 129,
-    "desc": "收拾战场",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320702043"
-  },
-  {
-    "id": 207020401,
-    "nodeId": 95,
-    "desc": "至少捡到了不少硬币",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320702041"
-  },
-  {
-    "id": 207020401,
-    "nodeId": 124,
-    "desc": "战斗",
-    "icon": 6,
-    "condition": "",
-    "result": "JumpEvent|4#207020402"
-  },
-  {
-    "id": 207020500,
-    "nodeId": 50,
-    "desc": "让我们看看",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020501"
-  },
-  {
-    "id": 207020500,
-    "nodeId": 99,
-    "desc": "收拾残局",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320702042"
-  },
-  {
-    "id": 207020500,
-    "nodeId": 102,
-    "desc": "来吧，一决胜负",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020502"
-  },
-  {
-    "id": 207020500,
-    "nodeId": 28,
-    "desc": "又在出千",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020503"
-  },
-  {
-    "id": 207020500,
-    "nodeId": 105,
-    "desc": "彰显武力！",
-    "icon": 6,
-    "condition": "",
-    "result": "TriggerDialog|31051"
-  },
-  {
-    "id": 207020501,
-    "nodeId": 50,
-    "desc": "嘿，小不点",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020506"
-  },
-  {
-    "id": 207020501,
-    "nodeId": 58,
-    "desc": "私人恩怨不应该我们参与",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020509"
-  },
-  {
-    "id": 207020501,
-    "nodeId": 28,
-    "desc": "该轮到我了",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020507"
-  },
-  {
-    "id": 207020501,
-    "nodeId": 105,
-    "desc": "可以了，消消气。",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020508"
-  },
-  {
-    "id": 207020501,
-    "nodeId": 103,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "DeleteTalent|301031#1"
-  },
-  {
-    "id": 207020501,
-    "nodeId": 108,
-    "desc": "乌尔里希，你的法子是对的",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31052"
-  },
-  {
-    "id": 207020501,
-    "nodeId": 113,
-    "desc": "马库斯，这种情况该怎么办",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31053"
-  },
-  {
-    "id": 207020600,
-    "nodeId": 50,
-    "desc": "极寒地区长得出玉米？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020601"
-  },
-  {
-    "id": 207020600,
-    "nodeId": 102,
-    "desc": "感谢你",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020602"
-  },
-  {
-    "id": 207020600,
-    "nodeId": 28,
-    "desc": "无聊的官僚体系",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020603"
-  },
-  {
-    "id": 207020600,
-    "nodeId": 105,
-    "desc": "收下",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320702061"
-  },
-  {
-    "id": 207020601,
-    "nodeId": 50,
-    "desc": "玉米呢？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020605"
-  },
-  {
-    "id": 207020601,
-    "nodeId": 102,
-    "desc": "总算还有点务实的人",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020606"
-  },
-  {
-    "id": 207020601,
-    "nodeId": 28,
-    "desc": "甘蔗？这冰天雪地里？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020607"
-  },
-  {
-    "id": 207020601,
-    "nodeId": 105,
-    "desc": "……",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320702062"
-  },
-  {
     "id": 207020700,
     "nodeId": 50,
     "desc": "还有比这更糟的？",
@@ -4352,118 +2560,6 @@
     "result": "JumpEvent|4#207020702"
   },
   {
-    "id": 207020800,
-    "nodeId": 50,
-    "desc": "该死，我就知道没好事",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020801"
-  },
-  {
-    "id": 207020800,
-    "nodeId": 123,
-    "desc": "带来了",
-    "icon": 15,
-    "condition": "",
-    "result": "CostItem|207020801:1"
-  },
-  {
-    "id": 207020800,
-    "nodeId": 127,
-    "desc": "还没有",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207020800,
-    "nodeId": 102,
-    "desc": "东方的“拉普拉斯人”，哈",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020802"
-  },
-  {
-    "id": 207020800,
-    "nodeId": 131,
-    "desc": "好的",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320702081"
-  },
-  {
-    "id": 207020800,
-    "nodeId": 105,
-    "desc": "时空错位了？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020803"
-  },
-  {
-    "id": 207020800,
-    "nodeId": 111,
-    "desc": "司空见惯的布局",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020804"
-  },
-  {
-    "id": 207020800,
-    "nodeId": 113,
-    "desc": "你确定你要坐在这上？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020805"
-  },
-  {
-    "id": 207020800,
-    "nodeId": 115,
-    "desc": "未来会有更加安全的办法……",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020806"
-  },
-  {
-    "id": 207020800,
-    "nodeId": 117,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "CreateEvent|3#207020802#3#6#false"
-  },
-  {
-    "id": 207020801,
-    "nodeId": 122,
-    "desc": "你真是疯了",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020810"
-  },
-  {
-    "id": 207020801,
-    "nodeId": 124,
-    "desc": "要不算了吧",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020811"
-  },
-  {
-    "id": 207020801,
-    "nodeId": 126,
-    "desc": "棋子们都这样吗？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207020812"
-  },
-  {
-    "id": 207020801,
-    "nodeId": 128,
-    "desc": "走吧",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320702082"
-  },
-  {
     "id": 207020900,
     "nodeId": 50,
     "desc": "心动！",
@@ -4525,7 +2621,7 @@
     "desc": "可恶",
     "icon": 15,
     "condition": "",
-    "result": "TriggerDialog|31029"
+    "result": "Drop|320702091"
   },
   {
     "id": 207020900,
@@ -4688,1614 +2784,6 @@
     "result": "JumpEvent|4#207020902"
   },
   {
-    "id": 207030100,
-    "nodeId": 50,
-    "desc": "检查背包",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030121"
-  },
-  {
-    "id": 207030100,
-    "nodeId": 112,
-    "desc": "回去找他算账",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31009"
-  },
-  {
-    "id": 207030100,
-    "nodeId": 30,
-    "desc": "提供上班的机会也算道歉？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030102"
-  },
-  {
-    "id": 207030100,
-    "nodeId": 72,
-    "desc": "有一次就有第二次，算了",
-    "icon": 15,
-    "condition": "",
-    "result": "FinishMyself|false"
-  },
-  {
-    "id": 207030100,
-    "nodeId": 78,
-    "desc": "出发吧",
-    "icon": 15,
-    "condition": "",
-    "result": "CreateEvent|7#207030101#4#6#false"
-  },
-  {
-    "id": 207030101,
-    "nodeId": 100,
-    "desc": "有点诡异，先离开吧",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207030101,
-    "nodeId": 109,
-    "desc": "进入城堡",
-    "icon": 15,
-    "condition": "",
-    "result": "CostGameTime|30"
-  },
-  {
-    "id": 207030101,
-    "nodeId": 123,
-    "desc": "有点诡异，先离开吧",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207030101,
-    "nodeId": 50,
-    "desc": "收下报酬",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320703011"
-  },
-  {
-    "id": 207030102,
-    "nodeId": 50,
-    "desc": "接受邀请",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030107"
-  },
-  {
-    "id": 207030102,
-    "nodeId": 51,
-    "desc": "时不我待，没时间浪费了",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207030102,
-    "nodeId": 72,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "FinishMyself|false"
-  },
-  {
-    "id": 207030103,
-    "nodeId": 50,
-    "desc": "战斗！",
-    "icon": 6,
-    "condition": "",
-    "result": "NotifyEnterBattle|"
-  },
-  {
-    "id": 207030104,
-    "nodeId": 100,
-    "desc": "绝不妥协！",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030111"
-  },
-  {
-    "id": 207030104,
-    "nodeId": 101,
-    "desc": "我得离开这",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030112"
-  },
-  {
-    "id": 207030104,
-    "nodeId": 103,
-    "desc": "这就是我们一直坚持的！",
-    "icon": 15,
-    "condition": "",
-    "result": "AddTalent|301028"
-  },
-  {
-    "id": 207030104,
-    "nodeId": 109,
-    "desc": "走开！该死的！没人能拦住我！",
-    "icon": 15,
-    "condition": "",
-    "result": "AddTalent|301029"
-  },
-  {
-    "id": 207030104,
-    "nodeId": 107,
-    "desc": "一次充满意义的行程",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320703012"
-  },
-  {
-    "id": 207030104,
-    "nodeId": 113,
-    "desc": "搞什么鬼",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320703012"
-  },
-  {
-    "id": 207030105,
-    "nodeId": 50,
-    "desc": "你们怎么了",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030116"
-  },
-  {
-    "id": 207030105,
-    "nodeId": 77,
-    "desc": "找找线索",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030117"
-  },
-  {
-    "id": 207030105,
-    "nodeId": 82,
-    "desc": "回去看看",
-    "icon": 15,
-    "condition": "",
-    "result": "CreateEvent|7#207030107#3#6#false"
-  },
-  {
-    "id": 207030106,
-    "nodeId": 50,
-    "desc": "你们怎么了",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030116"
-  },
-  {
-    "id": 207030106,
-    "nodeId": 77,
-    "desc": "找找线索",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030117"
-  },
-  {
-    "id": 207030106,
-    "nodeId": 82,
-    "desc": "回去看看",
-    "icon": 15,
-    "condition": "",
-    "result": "CreateEvent|7#207030108#3#6#false"
-  },
-  {
-    "id": 207030107,
-    "nodeId": 82,
-    "desc": "我？谁？",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320703013"
-  },
-  {
-    "id": 207030108,
-    "nodeId": 82,
-    "desc": "走，走！走！！",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320703014"
-  },
-  {
-    "id": 207030109,
-    "nodeId": 88,
-    "desc": "继续走吧",
-    "icon": 15,
-    "condition": "",
-    "result": "MoveToEvent|7#207030101"
-  },
-  {
-    "id": 207030200,
-    "nodeId": 50,
-    "desc": "我应该帮不上忙",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030201"
-  },
-  {
-    "id": 207030200,
-    "nodeId": 58,
-    "desc": "我不懂艺术",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207030200,
-    "nodeId": 104,
-    "desc": "好极了",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320703022"
-  },
-  {
-    "id": 207030200,
-    "nodeId": 123,
-    "desc": "这是你的模特吗？",
-    "icon": 15,
-    "condition": "",
-    "result": "CostItem|207030201:1"
-  },
-  {
-    "id": 207030200,
-    "nodeId": 129,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207030200,
-    "nodeId": 137,
-    "desc": "这是你的模特吗？",
-    "icon": 15,
-    "condition": "",
-    "result": "CostItem|207030202:1"
-  },
-  {
-    "id": 207030200,
-    "nodeId": 147,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207030200,
-    "nodeId": 111,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207030200,
-    "nodeId": 77,
-    "desc": "告诉他为什么你不适合做模特",
-    "icon": 6,
-    "condition": "",
-    "result": "JumpEvent|4#207030205"
-  },
-  {
-    "id": 207030200,
-    "nodeId": 28,
-    "desc": "原来的模特呢？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030203"
-  },
-  {
-    "id": 207030200,
-    "nodeId": 79,
-    "desc": "绝无可能",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207030200,
-    "nodeId": 132,
-    "desc": "这可能就是艺术吧",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320703021"
-  },
-  {
-    "id": 207030200,
-    "nodeId": 141,
-    "desc": "这是？",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31013"
-  },
-  {
-    "id": 207030200,
-    "nodeId": 64,
-    "desc": "不如找回那位",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030204"
-  },
-  {
-    "id": 207030200,
-    "nodeId": 95,
-    "desc": "我也该离他而去了",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207030200,
-    "nodeId": 66,
-    "desc": "马？",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31011"
-  },
-  {
-    "id": 207030201,
-    "nodeId": 50,
-    "desc": "你也是司辰？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030206"
-  },
-  {
-    "id": 207030201,
-    "nodeId": 51,
-    "desc": "太怪了，比拉普拉斯还怪",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207030201,
-    "nodeId": 96,
-    "desc": "就要试试",
-    "icon": 15,
-    "condition": "",
-    "result": "CreateEvent|7#207030202#3#6#false"
-  },
-  {
-    "id": 207030201,
-    "nodeId": 100,
-    "desc": "别勉强那匹马了",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207030201,
-    "nodeId": 30,
-    "desc": "解释画家的委托",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030207"
-  },
-  {
-    "id": 207030201,
-    "nodeId": 78,
-    "desc": "就要试试",
-    "icon": 15,
-    "condition": "",
-    "result": "CreateEvent|7#207030202#3#6#false"
-  },
-  {
-    "id": 207030201,
-    "nodeId": 89,
-    "desc": "别勉强那匹马了",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31012"
-  },
-  {
-    "id": 207030202,
-    "nodeId": 57,
-    "desc": "战斗",
-    "icon": 15,
-    "condition": "",
-    "result": "JumpEvent|4#207030206"
-  },
-  {
-    "id": 207030202,
-    "nodeId": 59,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207030202,
-    "nodeId": 50,
-    "desc": "它对这一切感到无能为力",
-    "icon": 15,
-    "condition": "",
-    "result": "JumpEvent|7#207030203"
-  },
-  {
-    "id": 207030202,
-    "nodeId": 51,
-    "desc": "不愿离开，还是不愿面对？",
-    "icon": 15,
-    "condition": "",
-    "result": "JumpEvent|7#207030204"
-  },
-  {
-    "id": 207030203,
-    "nodeId": 50,
-    "desc": "走吧",
-    "icon": 15,
-    "condition": "",
-    "result": "AddItem|207030201:1"
-  },
-  {
-    "id": 207030204,
-    "nodeId": 50,
-    "desc": "走吧",
-    "icon": 15,
-    "condition": "",
-    "result": "AddItem|207030202:1"
-  },
-  {
-    "id": 207030300,
-    "nodeId": 50,
-    "desc": "查阅资料",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030301"
-  },
-  {
-    "id": 207030300,
-    "nodeId": 102,
-    "desc": "再仔细看看",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030302"
-  },
-  {
-    "id": 207030300,
-    "nodeId": 106,
-    "desc": "我放弃",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207030300,
-    "nodeId": 109,
-    "desc": "4827",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030303"
-  },
-  {
-    "id": 207030300,
-    "nodeId": 111,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "AddTalent|301036,301044"
-  },
-  {
-    "id": 207030301,
-    "nodeId": 50,
-    "desc": "检查页脚",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030305"
-  },
-  {
-    "id": 207030301,
-    "nodeId": 109,
-    "desc": "1539",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030306"
-  },
-  {
-    "id": 207030301,
-    "nodeId": 111,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "DeleteTalent|301036#1"
-  },
-  {
-    "id": 207030302,
-    "nodeId": 50,
-    "desc": "检查页脚",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030308"
-  },
-  {
-    "id": 207030302,
-    "nodeId": 109,
-    "desc": "8964",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030309"
-  },
-  {
-    "id": 207030302,
-    "nodeId": 111,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "DeleteTalent|301037#1"
-  },
-  {
-    "id": 207030303,
-    "nodeId": 50,
-    "desc": "检查页脚",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030311"
-  },
-  {
-    "id": 207030303,
-    "nodeId": 109,
-    "desc": "4827",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030312"
-  },
-  {
-    "id": 207030303,
-    "nodeId": 119,
-    "desc": "8964",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030315"
-  },
-  {
-    "id": 207030303,
-    "nodeId": 111,
-    "desc": "8964",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030315"
-  },
-  {
-    "id": 207030303,
-    "nodeId": 122,
-    "desc": "1539",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030313"
-  },
-  {
-    "id": 207030303,
-    "nodeId": 121,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "DeleteEvent|7#0"
-  },
-  {
-    "id": 207030303,
-    "nodeId": 132,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "DeleteEvent|7#0"
-  },
-  {
-    "id": 207030303,
-    "nodeId": 124,
-    "desc": "8964",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030314"
-  },
-  {
-    "id": 207030303,
-    "nodeId": 125,
-    "desc": "4827",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030315"
-  },
-  {
-    "id": 207030303,
-    "nodeId": 145,
-    "desc": "仔细体会",
-    "icon": 15,
-    "condition": "",
-    "result": "DeleteTalent|301038#1"
-  },
-  {
-    "id": 207030303,
-    "nodeId": 138,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "DeleteEvent|7#0"
-  },
-  {
-    "id": 207030400,
-    "nodeId": 50,
-    "desc": "要不先看看情况",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030401"
-  },
-  {
-    "id": 207030400,
-    "nodeId": 117,
-    "desc": "太诡异了，走吧",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207030400,
-    "nodeId": 127,
-    "desc": "带回了",
-    "icon": 15,
-    "condition": "",
-    "result": "CostItem|207030401:1"
-  },
-  {
-    "id": 207030400,
-    "nodeId": 129,
-    "desc": "还没有",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207030400,
-    "nodeId": 102,
-    "desc": "这么完美的社会？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030402"
-  },
-  {
-    "id": 207030400,
-    "nodeId": 106,
-    "desc": "这绝不正常",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030403"
-  },
-  {
-    "id": 207030400,
-    "nodeId": 133,
-    "desc": "收下奖励",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320703042"
-  },
-  {
-    "id": 207030400,
-    "nodeId": 109,
-    "desc": "接受委托",
-    "icon": 15,
-    "condition": "",
-    "result": "CreateEvent|7#207030401#3#7#false"
-  },
-  {
-    "id": 207030400,
-    "nodeId": 120,
-    "desc": "它就像是烂泥墙上粉刷了油彩",
-    "icon": 15,
-    "condition": "",
-    "result": "DeleteEvent|7#0"
-  },
-  {
-    "id": 207030401,
-    "nodeId": 50,
-    "desc": "为什么总是魔精？",
-    "icon": 6,
-    "condition": "",
-    "result": "JumpEvent|4#207030404"
-  },
-  {
-    "id": 207030401,
-    "nodeId": 127,
-    "desc": "为什么总是魔精！！",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030406"
-  },
-  {
-    "id": 207030401,
-    "nodeId": 129,
-    "desc": "马库斯，帮帮我！",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030407"
-  },
-  {
-    "id": 207030401,
-    "nodeId": 134,
-    "desc": "魔精的胡搅蛮缠就像同事一样折磨",
-    "icon": 15,
-    "condition": "",
-    "result": "FinishMyself|false"
-  },
-  {
-    "id": 207030401,
-    "nodeId": 140,
-    "desc": "你想说什么？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030409"
-  },
-  {
-    "id": 207030401,
-    "nodeId": 142,
-    "desc": "有意思，魔精的东西给人用",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030410"
-  },
-  {
-    "id": 207030401,
-    "nodeId": 144,
-    "desc": "令人作呕的混账",
-    "icon": 15,
-    "condition": "",
-    "result": "CostItem|207030401:1"
-  },
-  {
-    "id": 207030401,
-    "nodeId": 146,
-    "desc": "无关种族，至少对错分得清",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31030"
-  },
-  {
-    "id": 207030401,
-    "nodeId": 148,
-    "desc": "谢谢……",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320703041"
-  },
-  {
-    "id": 207030402,
-    "nodeId": 117,
-    "desc": "这社区简直就是道德错误的范本",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030414"
-  },
-  {
-    "id": 207030402,
-    "nodeId": 140,
-    "desc": "马库斯，看看我们还有什么",
-    "icon": 15,
-    "condition": "",
-    "result": "CommitItems|1000"
-  },
-  {
-    "id": 207030402,
-    "nodeId": 141,
-    "desc": "我们没有富余的资源",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030416"
-  },
-  {
-    "id": 207030402,
-    "nodeId": 144,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207030402,
-    "nodeId": 149,
-    "desc": "走吧让我们看看",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030417"
-  },
-  {
-    "id": 207030402,
-    "nodeId": 151,
-    "desc": "上前询问",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030418"
-  },
-  {
-    "id": 207030402,
-    "nodeId": 106,
-    "desc": "哈哈",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030419"
-  },
-  {
-    "id": 207030402,
-    "nodeId": 153,
-    "desc": "希望他们能帮到外面的人们",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030420"
-  },
-  {
-    "id": 207030402,
-    "nodeId": 157,
-    "desc": "走吧，没意义",
-    "icon": 15,
-    "condition": "",
-    "result": "DeleteTalent|301039#1"
-  },
-  {
-    "id": 207030403,
-    "nodeId": 117,
-    "desc": "魔精反抗，人民冲击，内部矛盾……",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030423"
-  },
-  {
-    "id": 207030403,
-    "nodeId": 141,
-    "desc": "只有残垣断壁",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31032"
-  },
-  {
-    "id": 207030500,
-    "nodeId": 50,
-    "desc": "嗯？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030501"
-  },
-  {
-    "id": 207030500,
-    "nodeId": 164,
-    "desc": "敬礼",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030530"
-  },
-  {
-    "id": 207030500,
-    "nodeId": 146,
-    "desc": "我来了",
-    "icon": 15,
-    "condition": "",
-    "result": "CostItem|207030501:1"
-  },
-  {
-    "id": 207030500,
-    "nodeId": 150,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207030500,
-    "nodeId": 102,
-    "desc": "“我知道，但是，怎么了？”",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030502"
-  },
-  {
-    "id": 207030500,
-    "nodeId": 106,
-    "desc": "神秘学动物，没什么大不了的",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207030500,
-    "nodeId": 166,
-    "desc": "我都在干些什么？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030531"
-  },
-  {
-    "id": 207030500,
-    "nodeId": 154,
-    "desc": "品类还挺全",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030527"
-  },
-  {
-    "id": 207030500,
-    "nodeId": 109,
-    "desc": "看看我们能做些什么",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030503"
-  },
-  {
-    "id": 207030500,
-    "nodeId": 168,
-    "desc": "将军还是免了",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31036"
-  },
-  {
-    "id": 207030500,
-    "nodeId": 169,
-    "desc": "被你称将军实在有些失败",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31036"
-  },
-  {
-    "id": 207030500,
-    "nodeId": 156,
-    "desc": "我不确定我是否有这种天赋",
-    "icon": 15,
-    "condition": "",
-    "result": "CostGameTime|30"
-  },
-  {
-    "id": 207030500,
-    "nodeId": 126,
-    "desc": "我记得……",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030504"
-  },
-  {
-    "id": 207030500,
-    "nodeId": 171,
-    "desc": "别再被抓了",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320703053"
-  },
-  {
-    "id": 207030500,
-    "nodeId": 178,
-    "desc": "别再被抓了",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320703053"
-  },
-  {
-    "id": 207030500,
-    "nodeId": 128,
-    "desc": "让松鼠等待救援",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030505"
-  },
-  {
-    "id": 207030500,
-    "nodeId": 129,
-    "desc": "想想别的办法",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030506"
-  },
-  {
-    "id": 207030500,
-    "nodeId": 160,
-    "desc": "来吧，动物们！",
-    "icon": 6,
-    "condition": "",
-    "result": "JumpEvent|4#207030503"
-  },
-  {
-    "id": 207030500,
-    "nodeId": 139,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "AddTalent|301041"
-  },
-  {
-    "id": 207030500,
-    "nodeId": 140,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "CreateEvent|7#207030501#3#6#false"
-  },
-  {
-    "id": 207030501,
-    "nodeId": 50,
-    "desc": "想救动物要趁早",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030522"
-  },
-  {
-    "id": 207030501,
-    "nodeId": 127,
-    "desc": "抱歉了",
-    "icon": 15,
-    "condition": "",
-    "result": "AddItem|207030501:1"
-  },
-  {
-    "id": 207030501,
-    "nodeId": 158,
-    "desc": "伺机“借”走他的钥匙",
-    "icon": 15,
-    "condition": "",
-    "result": "CostGameTime|60"
-  },
-  {
-    "id": 207030501,
-    "nodeId": 159,
-    "desc": "不必那么麻烦",
-    "icon": 6,
-    "condition": "",
-    "result": "JumpEvent|4#207030502"
-  },
-  {
-    "id": 207030501,
-    "nodeId": 163,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "AddItem|207030501:1"
-  },
-  {
-    "id": 207030504,
-    "nodeId": 50,
-    "desc": "倒霉蛋",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030509"
-  },
-  {
-    "id": 207030504,
-    "nodeId": 158,
-    "desc": "我居然会相信这玩意",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030510"
-  },
-  {
-    "id": 207030504,
-    "nodeId": 163,
-    "desc": "就剩这个了",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31033"
-  },
-  {
-    "id": 207030504,
-    "nodeId": 165,
-    "desc": "外面见，伙计",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31034"
-  },
-  {
-    "id": 207030505,
-    "nodeId": 50,
-    "desc": "恭喜它",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030514"
-  },
-  {
-    "id": 207030505,
-    "nodeId": 187,
-    "desc": "走吧",
-    "icon": 15,
-    "condition": "",
-    "result": "MoveToEvent|7#207030506"
-  },
-  {
-    "id": 207030505,
-    "nodeId": 158,
-    "desc": "我就知道",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030515"
-  },
-  {
-    "id": 207030505,
-    "nodeId": 172,
-    "desc": "我没时间",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207030505,
-    "nodeId": 163,
-    "desc": "走吧",
-    "icon": 15,
-    "condition": "",
-    "result": "CreateEvent|7#207030506#3#6#false"
-  },
-  {
-    "id": 207030506,
-    "nodeId": 23,
-    "desc": "真没法想象这是我干的事",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030519"
-  },
-  {
-    "id": 207030506,
-    "nodeId": 9,
-    "desc": "让我想起拉普拉斯之前的宣传片了",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207030517"
-  },
-  {
-    "id": 207030506,
-    "nodeId": 25,
-    "desc": "把河马展厅的水抽干",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31035"
-  },
-  {
-    "id": 207030506,
-    "nodeId": 26,
-    "desc": "把北极熊展厅的冷气关了",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31035"
-  },
-  {
-    "id": 207030506,
-    "nodeId": 18,
-    "desc": "该死",
-    "icon": 15,
-    "condition": "",
-    "result": "JumpEvent|4#207030507"
-  },
-  {
-    "id": 207030506,
-    "nodeId": 30,
-    "desc": "快走吧",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320703051"
-  },
-  {
-    "id": 207030506,
-    "nodeId": 40,
-    "desc": "快走吧",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|320703052"
-  },
-  {
-    "id": 207040200,
-    "nodeId": 50,
-    "desc": "为什么我要跟他们打交道",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207040201"
-  },
-  {
-    "id": 207040200,
-    "nodeId": 102,
-    "desc": "糟糕的总是魔精",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207040202"
-  },
-  {
-    "id": 207040200,
-    "nodeId": 109,
-    "desc": "我来想办法",
-    "icon": 15,
-    "condition": "",
-    "result": "FinishMyself|false"
-  },
-  {
-    "id": 207040201,
-    "nodeId": 157,
-    "desc": "交付研究资料",
-    "icon": 15,
-    "condition": "",
-    "result": "CostItem|1:500"
-  },
-  {
-    "id": 207040201,
-    "nodeId": 126,
-    "desc": "交付物资",
-    "icon": 15,
-    "condition": "",
-    "result": "CommitItems|500"
-  },
-  {
-    "id": 207040201,
-    "nodeId": 130,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207040201,
-    "nodeId": 161,
-    "desc": "谢谢",
-    "icon": 15,
-    "condition": "",
-    "result": "FinishMyself|false"
-  },
-  {
-    "id": 207040201,
-    "nodeId": 135,
-    "desc": "谢谢",
-    "icon": 15,
-    "condition": "",
-    "result": "FinishMyself|false"
-  },
-  {
-    "id": 207040300,
-    "nodeId": 50,
-    "desc": "！！！",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31039"
-  },
-  {
-    "id": 207040300,
-    "nodeId": 152,
-    "desc": "还没有",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207040300,
-    "nodeId": 163,
-    "desc": "同意了",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207040309"
-  },
-  {
-    "id": 207040300,
-    "nodeId": 102,
-    "desc": "……谢谢",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207040302"
-  },
-  {
-    "id": 207040300,
-    "nodeId": 165,
-    "desc": "谢谢",
-    "icon": 15,
-    "condition": "",
-    "result": "FinishMyself|false"
-  },
-  {
-    "id": 207040300,
-    "nodeId": 109,
-    "desc": "死到临头了还在争",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207040303"
-  },
-  {
-    "id": 207040300,
-    "nodeId": 130,
-    "desc": "我会试试",
-    "icon": 15,
-    "condition": "",
-    "result": "CreateEvent|7#207040301#1#1#false"
-  },
-  {
-    "id": 207040301,
-    "nodeId": 50,
-    "desc": "我们会帮忙",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207040305"
-  },
-  {
-    "id": 207040301,
-    "nodeId": 58,
-    "desc": "妥协真是一种好方法",
-    "icon": 15,
-    "condition": "",
-    "result": "FinishMyself|false"
-  },
-  {
-    "id": 207040302,
-    "nodeId": 50,
-    "desc": "你说了算",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207040307"
-  },
-  {
-    "id": 207040302,
-    "nodeId": 58,
-    "desc": "政治猎犬，闻着味就能找来",
-    "icon": 15,
-    "condition": "",
-    "result": "FinishMyself|false"
-  },
-  {
-    "id": 207040400,
-    "nodeId": 161,
-    "desc": "什么？",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31040"
-  },
-  {
-    "id": 207040400,
-    "nodeId": 172,
-    "desc": "该让她给芝诺道歉才对",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31043"
-  },
-  {
-    "id": 207040400,
-    "nodeId": 152,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "None|"
-  },
-  {
-    "id": 207040400,
-    "nodeId": 50,
-    "desc": "我们会协助你",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207040402"
-  },
-  {
-    "id": 207040400,
-    "nodeId": 174,
-    "desc": "谢谢",
-    "icon": 15,
-    "condition": "",
-    "result": "FinishMyself|false"
-  },
-  {
-    "id": 207040400,
-    "nodeId": 102,
-    "desc": "或许得问问“首相”的人脉",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31041"
-  },
-  {
-    "id": 207040400,
-    "nodeId": 109,
-    "desc": "揭开",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207040404"
-  },
-  {
-    "id": 207040400,
-    "nodeId": 126,
-    "desc": "摇滚海盗坐牢是有什么真理性吗？",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31042"
-  },
-  {
-    "id": 207040400,
-    "nodeId": 168,
-    "desc": "询问",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207040406"
-  },
-  {
-    "id": 207040400,
-    "nodeId": 135,
-    "desc": "总算有眉目了",
-    "icon": 15,
-    "condition": "",
-    "result": "CreateEvent|7#207040401#3#5#false"
-  },
-  {
-    "id": 207040401,
-    "nodeId": 174,
-    "desc": "蹑手蹑脚",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31044"
-  },
-  {
-    "id": 207040401,
-    "nodeId": 193,
-    "desc": "这音响就不能关掉吗？",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207040413"
-  },
-  {
-    "id": 207040401,
-    "nodeId": 197,
-    "desc": "效果拔群",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|3201"
-  },
-  {
-    "id": 207040401,
-    "nodeId": 177,
-    "desc": "只能战斗了",
-    "icon": 15,
-    "condition": "",
-    "result": "JumpEvent|4#207040402"
-  },
-  {
-    "id": 207040401,
-    "nodeId": 180,
-    "desc": "这音响就不能关掉吗？",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31045"
-  },
-  {
-    "id": 207040401,
-    "nodeId": 188,
-    "desc": "效果拔群",
-    "icon": 15,
-    "condition": "",
-    "result": "Drop|3201"
-  },
-  {
-    "id": 207040500,
-    "nodeId": 50,
-    "desc": "不该贸然进入",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207040501"
-  },
-  {
-    "id": 207040500,
-    "nodeId": 28,
-    "desc": "聊聊",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31046"
-  },
-  {
-    "id": 207040500,
-    "nodeId": 30,
-    "desc": "回去准备一下吧",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31047"
-  },
-  {
-    "id": 207040700,
-    "nodeId": 50,
-    "desc": "继续前行",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207040701"
-  },
-  {
-    "id": 207040700,
-    "nodeId": 28,
-    "desc": "唯有沉默",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207040702"
-  },
-  {
-    "id": 207040700,
-    "nodeId": 30,
-    "desc": "这是……",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31048"
-  },
-  {
-    "id": 207040700,
-    "nodeId": 63,
-    "desc": "谢谢你们",
-    "icon": 15,
-    "condition": "",
-    "result": "CreateEvent|7#207040701#3#6#false"
-  },
-  {
-    "id": 207040701,
-    "nodeId": 50,
-    "desc": "继续前行",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207040705"
-  },
-  {
-    "id": 207040701,
-    "nodeId": 63,
-    "desc": "谢谢你们",
-    "icon": 15,
-    "condition": "",
-    "result": "CreateEvent|7#207040702#3#6#false"
-  },
-  {
-    "id": 207040702,
-    "nodeId": 50,
-    "desc": "继续前行",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207040707"
-  },
-  {
-    "id": 207040702,
-    "nodeId": 63,
-    "desc": "你们怎么来了",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207040708"
-  },
-  {
-    "id": 207040702,
-    "nodeId": 66,
-    "desc": "可惜只是脱口而出“该死的”",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207040713"
-  },
-  {
-    "id": 207040702,
-    "nodeId": 68,
-    "desc": "走吧",
-    "icon": 15,
-    "condition": "",
-    "result": "CreateEvent|7#207040703#3#6#false"
-  },
-  {
-    "id": 207040703,
-    "nodeId": 50,
-    "desc": "难得的等待时间",
-    "icon": 15,
-    "condition": "",
-    "result": "CostGameTime|30"
-  },
-  {
-    "id": 207040703,
-    "nodeId": 63,
-    "desc": "这是用了什么加速道具吗",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207040711"
-  },
-  {
-    "id": 207040703,
-    "nodeId": 66,
-    "desc": "一切都结束了",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207040712"
-  },
-  {
-    "id": 207040703,
-    "nodeId": 70,
-    "desc": "……",
-    "icon": 15,
-    "condition": "",
-    "result": "FinishMyself|false"
-  },
-  {
     "id": 207091100,
     "nodeId": 21,
     "desc": "起身",
@@ -6318,70 +2806,6 @@
     "icon": 15,
     "condition": "",
     "result": "None|"
-  },
-  {
-    "id": 207091701,
-    "nodeId": 11,
-    "desc": "战斗",
-    "icon": 6,
-    "condition": "",
-    "result": "TriggerDialog|31054"
-  },
-  {
-    "id": 207091701,
-    "nodeId": 16,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "JumpEvent|7#207091702"
-  },
-  {
-    "id": 207091702,
-    "nodeId": 11,
-    "desc": "我为什么能听懂你说的话",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207091701"
-  },
-  {
-    "id": 207091702,
-    "nodeId": 4,
-    "desc": "乌尔里希首相，看来你的议会分崩离析了",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207091702"
-  },
-  {
-    "id": 207091702,
-    "nodeId": 6,
-    "desc": "走吧",
-    "icon": 15,
-    "condition": "",
-    "result": "FinishMyself|false"
-  },
-  {
-    "id": 207091801,
-    "nodeId": 4,
-    "desc": "……",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31049"
-  },
-  {
-    "id": 207091801,
-    "nodeId": 6,
-    "desc": "普罗透斯！",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|207091803"
-  },
-  {
-    "id": 207091801,
-    "nodeId": 11,
-    "desc": "该死的，继续前进吧。",
-    "icon": 15,
-    "condition": "",
-    "result": "TriggerDialog|31050"
   },
   {
     "id": 207091901,
@@ -6422,5 +2846,3517 @@
     "icon": 0,
     "condition": "",
     "result": "Drop|3511041"
+  },
+  {
+    "id": 307010101,
+    "nodeId": 50,
+    "desc": "这是沙尘暴？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010102"
+  },
+  {
+    "id": 307010101,
+    "nodeId": 21,
+    "desc": "可是这看起来并不好卖。",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010103"
+  },
+  {
+    "id": 307010101,
+    "nodeId": 35,
+    "desc": "这只是我的个人审美，也许你是对的",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010104"
+  },
+  {
+    "id": 307010101,
+    "nodeId": 37,
+    "desc": "这当然是艺术，因为我真的看不懂",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307010201,
+    "nodeId": 50,
+    "desc": "难道黄昏本就该灰蒙蒙？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010202"
+  },
+  {
+    "id": 307010201,
+    "nodeId": 21,
+    "desc": "你的黄昏跟之前画的不太一样",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010203"
+  },
+  {
+    "id": 307010201,
+    "nodeId": 35,
+    "desc": "那你现在这是。",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010204"
+  },
+  {
+    "id": 307010201,
+    "nodeId": 37,
+    "desc": "……",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307010301,
+    "nodeId": 50,
+    "desc": "随手翻开一份文件",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010302"
+  },
+  {
+    "id": 307010301,
+    "nodeId": 51,
+    "desc": "怀疑被耍，生气离开",
+    "icon": 15,
+    "condition": "",
+    "result": "JumpEvent|4#307010302"
+  },
+  {
+    "id": 307010301,
+    "nodeId": 28,
+    "desc": "你决定翻开下一页",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010303"
+  },
+  {
+    "id": 307010301,
+    "nodeId": 21,
+    "desc": "这些东西到底有什么关联？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010304"
+  },
+  {
+    "id": 307010301,
+    "nodeId": 30,
+    "desc": "你照做了",
+    "icon": 6,
+    "condition": "",
+    "result": "ChoiceList|307010305"
+  },
+  {
+    "id": 307010301,
+    "nodeId": 31,
+    "desc": "这是什么意思？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010306"
+  },
+  {
+    "id": 307010301,
+    "nodeId": 35,
+    "desc": "“别看了，反正下一版还要再改的。”",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307010301,
+    "nodeId": 66,
+    "desc": "你发现自己似乎真的被耍了",
+    "icon": 6,
+    "condition": "",
+    "result": "ChoiceList|307010306"
+  },
+  {
+    "id": 307010301,
+    "nodeId": 68,
+    "desc": "这儿果然没有两本相同的书",
+    "icon": 6,
+    "condition": "",
+    "result": "ChoiceList|307010307"
+  },
+  {
+    "id": 307010301,
+    "nodeId": 72,
+    "desc": "图书馆里的魔精竟然都有礼帽。",
+    "icon": 6,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307010301,
+    "nodeId": 70,
+    "desc": "图书馆里的魔精竟然都有礼帽。",
+    "icon": 6,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307010301,
+    "nodeId": 73,
+    "desc": "嚯，原来这才是语言的意义！",
+    "icon": 6,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307010401,
+    "nodeId": 50,
+    "desc": "什么是“反向阅读”？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010402"
+  },
+  {
+    "id": 307010401,
+    "nodeId": 54,
+    "desc": "你承认自己对文学一无所知",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010403"
+  },
+  {
+    "id": 307010401,
+    "nodeId": 61,
+    "desc": "你发现里边的每个词都是颠倒的。",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010404"
+  },
+  {
+    "id": 307010401,
+    "nodeId": 63,
+    "desc": "你清了清嗓子，决定发表演说。",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010405"
+  },
+  {
+    "id": 307010401,
+    "nodeId": 56,
+    "desc": "“无知的厚度”",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307010401,
+    "nodeId": 65,
+    "desc": "“为文字赋予不存在的意义”",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307010401,
+    "nodeId": 66,
+    "desc": "你感到害怕，并试图逃离此处",
+    "icon": 15,
+    "condition": "",
+    "result": "JumpEvent|4#307010402"
+  },
+  {
+    "id": 307010501,
+    "nodeId": 50,
+    "desc": "这句话让你感到安心",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010502"
+  },
+  {
+    "id": 307010501,
+    "nodeId": 54,
+    "desc": "环顾四周，确认有无异常",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010503"
+  },
+  {
+    "id": 307010501,
+    "nodeId": 21,
+    "desc": "继续向前",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010504"
+  },
+  {
+    "id": 307010501,
+    "nodeId": 66,
+    "desc": "总感觉有哪里不对",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010505"
+  },
+  {
+    "id": 307010501,
+    "nodeId": 84,
+    "desc": "原路返回",
+    "icon": 15,
+    "condition": "",
+    "result": "JumpToNode|19"
+  },
+  {
+    "id": 307010501,
+    "nodeId": 56,
+    "desc": "继续向前",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010506"
+  },
+  {
+    "id": 307010501,
+    "nodeId": 35,
+    "desc": "继续向前",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010507"
+  },
+  {
+    "id": 307010501,
+    "nodeId": 76,
+    "desc": "撕掉那张告示",
+    "icon": 15,
+    "condition": "",
+    "result": "JumpToNode|19"
+  },
+  {
+    "id": 307010501,
+    "nodeId": 68,
+    "desc": "与她们对视",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010506"
+  },
+  {
+    "id": 307010501,
+    "nodeId": 124,
+    "desc": "进入走廊",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010507"
+  },
+  {
+    "id": 307010501,
+    "nodeId": 37,
+    "desc": "“你的感觉并不可信。”",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307010501,
+    "nodeId": 70,
+    "desc": "进入走廊",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010507"
+  },
+  {
+    "id": 307010501,
+    "nodeId": 126,
+    "desc": "“你的感觉并不可信。”",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307010501,
+    "nodeId": 115,
+    "desc": "“你的感觉并不可信。”",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307010601,
+    "nodeId": 50,
+    "desc": "打开电视",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010602"
+  },
+  {
+    "id": 307010601,
+    "nodeId": 54,
+    "desc": "观察房间里的其他物件",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010603"
+  },
+  {
+    "id": 307010601,
+    "nodeId": 21,
+    "desc": "这只沙漏怎么了？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010604"
+  },
+  {
+    "id": 307010601,
+    "nodeId": 96,
+    "desc": "关掉电视",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010605"
+  },
+  {
+    "id": 307010601,
+    "nodeId": 109,
+    "desc": "拿起电视遥控器",
+    "icon": 15,
+    "condition": "",
+    "result": "JumpToNode|19"
+  },
+  {
+    "id": 307010601,
+    "nodeId": 110,
+    "desc": "翻阅论文",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010609"
+  },
+  {
+    "id": 307010601,
+    "nodeId": 35,
+    "desc": "不然呢？难道是个克莱因瓶？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010608"
+  },
+  {
+    "id": 307010601,
+    "nodeId": 76,
+    "desc": "这就是沙漏",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010606"
+  },
+  {
+    "id": 307010601,
+    "nodeId": 107,
+    "desc": "拔掉电视插头",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010607"
+  },
+  {
+    "id": 307010601,
+    "nodeId": 112,
+    "desc": "你看不懂，那一定就是艺术了。",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307010601,
+    "nodeId": 37,
+    "desc": "“我懂了，这就是克莱因瓶。”",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307010601,
+    "nodeId": 78,
+    "desc": "试着解释",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010607"
+  },
+  {
+    "id": 307010601,
+    "nodeId": 79,
+    "desc": "好好好好，克莱因瓶",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010608"
+  },
+  {
+    "id": 307010601,
+    "nodeId": 98,
+    "desc": "等待画面恢复",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010608"
+  },
+  {
+    "id": 307010601,
+    "nodeId": 81,
+    "desc": "等待画面恢复",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010608"
+  },
+  {
+    "id": 307010601,
+    "nodeId": 90,
+    "desc": "“我懂了，这就是克莱因瓶。”",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307010601,
+    "nodeId": 100,
+    "desc": "“我懂了，这就是克莱因瓶。”",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307010601,
+    "nodeId": 83,
+    "desc": "“我懂了，这就是克莱因瓶。”",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307010701,
+    "nodeId": 50,
+    "desc": "这算什么实验？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010702"
+  },
+  {
+    "id": 307010701,
+    "nodeId": 21,
+    "desc": "那你到底想证明什么？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010703"
+  },
+  {
+    "id": 307010701,
+    "nodeId": 54,
+    "desc": "但听起来真的很无聊",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010704"
+  },
+  {
+    "id": 307010701,
+    "nodeId": 35,
+    "desc": "或许他只是害怕结束",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307010701,
+    "nodeId": 56,
+    "desc": "他没有去看",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010705"
+  },
+  {
+    "id": 307010701,
+    "nodeId": 58,
+    "desc": "看样子，掷出奇数才代表它醒着",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307010801,
+    "nodeId": 50,
+    "desc": "进去看看",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010802"
+  },
+  {
+    "id": 307010801,
+    "nodeId": 64,
+    "desc": "在门口观察一下",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010803"
+  },
+  {
+    "id": 307010801,
+    "nodeId": 21,
+    "desc": "打开笔记本",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010804"
+  },
+  {
+    "id": 307010801,
+    "nodeId": 54,
+    "desc": "观察镜子",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010806"
+  },
+  {
+    "id": 307010801,
+    "nodeId": 113,
+    "desc": "推开门，进去看看",
+    "icon": 15,
+    "condition": "",
+    "result": "JumpToNode|19"
+  },
+  {
+    "id": 307010801,
+    "nodeId": 115,
+    "desc": "不想在意这些繁文缛节",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307010801,
+    "nodeId": 84,
+    "desc": "什么鬼地方",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307010801,
+    "nodeId": 35,
+    "desc": "试图在笔记本上写字",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010805"
+  },
+  {
+    "id": 307010801,
+    "nodeId": 110,
+    "desc": "回到桌前",
+    "icon": 15,
+    "condition": "",
+    "result": "JumpToNode|34"
+  },
+  {
+    "id": 307010801,
+    "nodeId": 97,
+    "desc": "问问他对“思想深度”的理解",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010807"
+  },
+  {
+    "id": 307010801,
+    "nodeId": 99,
+    "desc": "附和他",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010808"
+  },
+  {
+    "id": 307010801,
+    "nodeId": 101,
+    "desc": "你快听不下去了",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010809"
+  },
+  {
+    "id": 307010801,
+    "nodeId": 103,
+    "desc": "这不会是人工梦游的最新版本吧",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307010901,
+    "nodeId": 50,
+    "desc": "继续听它说",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010902"
+  },
+  {
+    "id": 307010901,
+    "nodeId": 64,
+    "desc": "那又怎样？",
+    "icon": 15,
+    "condition": "",
+    "result": "JumpToNode|34"
+  },
+  {
+    "id": 307010901,
+    "nodeId": 21,
+    "desc": "这儿喜欢虚无主义的人已经太多了",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010903"
+  },
+  {
+    "id": 307010901,
+    "nodeId": 54,
+    "desc": "继续听它说",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010904"
+  },
+  {
+    "id": 307010901,
+    "nodeId": 84,
+    "desc": "离开这块“哲学水晶”",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307010901,
+    "nodeId": 35,
+    "desc": "继续听它说",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010904"
+  },
+  {
+    "id": 307010901,
+    "nodeId": 123,
+    "desc": "水晶化成一缕光消失在你眼前",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307010901,
+    "nodeId": 103,
+    "desc": "水晶化成一缕光消失在你眼前",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307011001,
+    "nodeId": 50,
+    "desc": "走到海边瞧瞧",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011002"
+  },
+  {
+    "id": 307011001,
+    "nodeId": 64,
+    "desc": "这又是哪个同事的实验？",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 307011001,
+    "nodeId": 21,
+    "desc": "你们想表达什么",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011003"
+  },
+  {
+    "id": 307011001,
+    "nodeId": 54,
+    "desc": "我其实不懂什么叫“潜意识之海”",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011004"
+  },
+  {
+    "id": 307011001,
+    "nodeId": 35,
+    "desc": "那我该如何理解你们？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011005"
+  },
+  {
+    "id": 307011001,
+    "nodeId": 123,
+    "desc": "它们倒是坦诚得很",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307011001,
+    "nodeId": 103,
+    "desc": "没人觉得随意开采海底很不环保吗？",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307011101,
+    "nodeId": 50,
+    "desc": "进去看看，我是说来都来了",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011102"
+  },
+  {
+    "id": 307011101,
+    "nodeId": 64,
+    "desc": "走吧，太危险了",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 307011101,
+    "nodeId": 21,
+    "desc": "远离它",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 307011101,
+    "nodeId": 54,
+    "desc": "靠近它",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011103"
+  },
+  {
+    "id": 307011101,
+    "nodeId": 123,
+    "desc": "靠近一下",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011104"
+  },
+  {
+    "id": 307011101,
+    "nodeId": 139,
+    "desc": "跟随它",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011105"
+  },
+  {
+    "id": 307011101,
+    "nodeId": 141,
+    "desc": "这种诡异却又透露出一丝哲学的bug",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011106"
+  },
+  {
+    "id": 307011101,
+    "nodeId": 132,
+    "desc": "别想太多，只是bug",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307011201,
+    "nodeId": 50,
+    "desc": "我随身只有这一件",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011202"
+  },
+  {
+    "id": 307011201,
+    "nodeId": 21,
+    "desc": "一件一辈子都攒不到的衬衫？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011203"
+  },
+  {
+    "id": 307011201,
+    "nodeId": 35,
+    "desc": "没错，我也是",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011204"
+  },
+  {
+    "id": 307011201,
+    "nodeId": 37,
+    "desc": "巧了，我也这么觉得",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011205"
+  },
+  {
+    "id": 307011201,
+    "nodeId": 62,
+    "desc": "可悲",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307010204"
+  },
+  {
+    "id": 307011201,
+    "nodeId": 55,
+    "desc": "……",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307011301,
+    "nodeId": 50,
+    "desc": "你在种什么？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011302"
+  },
+  {
+    "id": 307011301,
+    "nodeId": 63,
+    "desc": "不打扰了",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 307011301,
+    "nodeId": 21,
+    "desc": "试吃",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011303"
+  },
+  {
+    "id": 307011301,
+    "nodeId": 65,
+    "desc": "不打扰了",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 307011301,
+    "nodeId": 35,
+    "desc": "这就是羊肉吧？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011304"
+  },
+  {
+    "id": 307011301,
+    "nodeId": 67,
+    "desc": "这真的是植物吗？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011305"
+  },
+  {
+    "id": 307011301,
+    "nodeId": 37,
+    "desc": "这很伦理",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307011301,
+    "nodeId": 69,
+    "desc": "这很哲学",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307011401,
+    "nodeId": 50,
+    "desc": "请继续",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011402"
+  },
+  {
+    "id": 307011401,
+    "nodeId": 21,
+    "desc": "出什么事了？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011403"
+  },
+  {
+    "id": 307011401,
+    "nodeId": 35,
+    "desc": "我多久没叫过其他人的名字了？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011404"
+  },
+  {
+    "id": 307011401,
+    "nodeId": 37,
+    "desc": "走吧",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307011501,
+    "nodeId": 37,
+    "desc": "走吧",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307011501,
+    "nodeId": 50,
+    "desc": "是我疯了，还是你疯了？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011502"
+  },
+  {
+    "id": 307011501,
+    "nodeId": 21,
+    "desc": "搞什么？",
+    "icon": 6,
+    "condition": "",
+    "result": "JumpEvent|4#307011502"
+  },
+  {
+    "id": 307011601,
+    "nodeId": 50,
+    "desc": "劝告他",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011602"
+  },
+  {
+    "id": 307011601,
+    "nodeId": 21,
+    "desc": "丢块石头给他看",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011603"
+  },
+  {
+    "id": 307011601,
+    "nodeId": 35,
+    "desc": "我们也离开吧",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011604"
+  },
+  {
+    "id": 307011601,
+    "nodeId": 37,
+    "desc": "黄金在愚弄人",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307011701,
+    "nodeId": 50,
+    "desc": "那头猪怎么了？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011702"
+  },
+  {
+    "id": 307011701,
+    "nodeId": 54,
+    "desc": "她骂我？",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 307011701,
+    "nodeId": 21,
+    "desc": "她想吃培根？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011703"
+  },
+  {
+    "id": 307011701,
+    "nodeId": 55,
+    "desc": "她请我吃培根？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011704"
+  },
+  {
+    "id": 307011701,
+    "nodeId": 35,
+    "desc": "马上烹饪",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011705"
+  },
+  {
+    "id": 307011701,
+    "nodeId": 57,
+    "desc": "感谢招待",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011706"
+  },
+  {
+    "id": 307011701,
+    "nodeId": 37,
+    "desc": "对不起，误会了",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307011701,
+    "nodeId": 59,
+    "desc": "对不起，误会了",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307011801,
+    "nodeId": 50,
+    "desc": "走进去看看",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011802"
+  },
+  {
+    "id": 307011801,
+    "nodeId": 54,
+    "desc": "甩手卖掉",
+    "icon": 15,
+    "condition": "",
+    "result": "AddItem|1:300"
+  },
+  {
+    "id": 307011801,
+    "nodeId": 21,
+    "desc": "怎么帮你？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011803"
+  },
+  {
+    "id": 307011801,
+    "nodeId": 55,
+    "desc": "委婉拒绝",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 307011801,
+    "nodeId": 35,
+    "desc": "教训魔王",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011804"
+  },
+  {
+    "id": 307011801,
+    "nodeId": 78,
+    "desc": "传授科技",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011805"
+  },
+  {
+    "id": 307011801,
+    "nodeId": 37,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "DeductHealth|10"
+  },
+  {
+    "id": 307011801,
+    "nodeId": 80,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307011901,
+    "nodeId": 50,
+    "desc": "继续观察",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011902"
+  },
+  {
+    "id": 307011901,
+    "nodeId": 63,
+    "desc": "真该睡觉了",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 307011901,
+    "nodeId": 21,
+    "desc": "登顶的终极目的是？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011903"
+  },
+  {
+    "id": 307011901,
+    "nodeId": 65,
+    "desc": "好残忍",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 307011901,
+    "nodeId": 35,
+    "desc": "他带回了什么？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011904"
+  },
+  {
+    "id": 307011901,
+    "nodeId": 67,
+    "desc": "他很受追捧？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011905"
+  },
+  {
+    "id": 307011901,
+    "nodeId": 37,
+    "desc": "这很荒谬",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011906"
+  },
+  {
+    "id": 307011901,
+    "nodeId": 69,
+    "desc": "这很荒谬",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307011906"
+  },
+  {
+    "id": 307011901,
+    "nodeId": 81,
+    "desc": "房子里的小人也说谎了吗？",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307011901,
+    "nodeId": 83,
+    "desc": "房子里的小人也说谎了吗？",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307012001,
+    "nodeId": 50,
+    "desc": "你是？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307012002"
+  },
+  {
+    "id": 307012001,
+    "nodeId": 21,
+    "desc": "也许是体型？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307012003"
+  },
+  {
+    "id": 307012001,
+    "nodeId": 89,
+    "desc": "也许是配色？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307012004"
+  },
+  {
+    "id": 307012001,
+    "nodeId": 91,
+    "desc": "也许是战斗能力？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307012005"
+  },
+  {
+    "id": 307012001,
+    "nodeId": 103,
+    "desc": "来点实际的，大臣就免了",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307012001,
+    "nodeId": 104,
+    "desc": "来点实际的，大臣就免了",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307012001,
+    "nodeId": 110,
+    "desc": "来点实际的，大臣就免了",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307012002,
+    "nodeId": 103,
+    "desc": "卡邦克鲁的王国真是动荡",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307012002,
+    "nodeId": 104,
+    "desc": "祝它好运",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307012003,
+    "nodeId": 103,
+    "desc": "卡邦克鲁的王国真是动荡",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307012003,
+    "nodeId": 104,
+    "desc": "祝它好运",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307012004,
+    "nodeId": 103,
+    "desc": "卡邦克鲁的王国真是动荡",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307012004,
+    "nodeId": 104,
+    "desc": "祝它好运",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307012004,
+    "nodeId": 109,
+    "desc": "好吧",
+    "icon": 6,
+    "condition": "",
+    "result": "JumpEvent|4#307012005"
+  },
+  {
+    "id": 307012101,
+    "nodeId": 50,
+    "desc": "新年快乐",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307012102"
+  },
+  {
+    "id": 307012101,
+    "nodeId": 119,
+    "desc": "红包？那是什么",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307012103"
+  },
+  {
+    "id": 307012101,
+    "nodeId": 110,
+    "desc": "红包？那是什么",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307012103"
+  },
+  {
+    "id": 307012101,
+    "nodeId": 121,
+    "desc": "懂了，给你",
+    "icon": 15,
+    "condition": "",
+    "result": "CostItem|1:200"
+  },
+  {
+    "id": 307012101,
+    "nodeId": 122,
+    "desc": "懂了，恭喜发财",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307012107"
+  },
+  {
+    "id": 307012101,
+    "nodeId": 154,
+    "desc": "懂了，给你",
+    "icon": 15,
+    "condition": "",
+    "result": "CostItem|1:200"
+  },
+  {
+    "id": 307012101,
+    "nodeId": 175,
+    "desc": "懂了，恭喜发财",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307012107"
+  },
+  {
+    "id": 307012101,
+    "nodeId": 146,
+    "desc": "真是有意思的习俗",
+    "icon": 15,
+    "condition": "",
+    "result": "AddItem|1:200"
+  },
+  {
+    "id": 307012101,
+    "nodeId": 126,
+    "desc": "不要算了",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307012105"
+  },
+  {
+    "id": 307012101,
+    "nodeId": 127,
+    "desc": "收下吧",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307012106"
+  },
+  {
+    "id": 307012101,
+    "nodeId": 177,
+    "desc": "真是有意思的习俗",
+    "icon": 15,
+    "condition": "",
+    "result": "AddItem|1:200"
+  },
+  {
+    "id": 307012101,
+    "nodeId": 158,
+    "desc": "不要算了",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307012105"
+  },
+  {
+    "id": 307012101,
+    "nodeId": 167,
+    "desc": "收下吧",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307012106"
+  },
+  {
+    "id": 307012101,
+    "nodeId": 129,
+    "desc": "真是有意思的习俗",
+    "icon": 15,
+    "condition": "",
+    "result": "AddItem|1:200"
+  },
+  {
+    "id": 307012101,
+    "nodeId": 138,
+    "desc": "收到祝福倒也不错",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307012101,
+    "nodeId": 160,
+    "desc": "真是有意思的习俗",
+    "icon": 15,
+    "condition": "",
+    "result": "AddItem|1:200"
+  },
+  {
+    "id": 307012101,
+    "nodeId": 169,
+    "desc": "收到祝福倒也不错",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307012201,
+    "nodeId": 125,
+    "desc": "下次别这样了",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307012201,
+    "nodeId": 50,
+    "desc": "谁在这儿？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307012202"
+  },
+  {
+    "id": 307012201,
+    "nodeId": 63,
+    "desc": "无视，继续进入",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307012207"
+  },
+  {
+    "id": 307012201,
+    "nodeId": 21,
+    "desc": "这楼不对劲，摧毁它",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307012203"
+  },
+  {
+    "id": 307012201,
+    "nodeId": 65,
+    "desc": "继续进入",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307012207"
+  },
+  {
+    "id": 307012201,
+    "nodeId": 117,
+    "desc": "迎战",
+    "icon": 6,
+    "condition": "",
+    "result": "JumpEvent|4#307012202"
+  },
+  {
+    "id": 307012201,
+    "nodeId": 35,
+    "desc": "你在这鬼鬼祟祟的做什么呢",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307012204"
+  },
+  {
+    "id": 307012201,
+    "nodeId": 120,
+    "desc": "迎战",
+    "icon": 6,
+    "condition": "",
+    "result": "JumpEvent|4#307012202"
+  },
+  {
+    "id": 307012201,
+    "nodeId": 37,
+    "desc": "你这也太显眼了，真能蹲到人吗",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307012205"
+  },
+  {
+    "id": 307012201,
+    "nodeId": 80,
+    "desc": "既然被发现了，就给我点补偿吧",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307012206"
+  },
+  {
+    "id": 307012201,
+    "nodeId": 82,
+    "desc": "接受他的提议",
+    "icon": 15,
+    "condition": "",
+    "result": "CostGameTime|30"
+  },
+  {
+    "id": 307012201,
+    "nodeId": 83,
+    "desc": "算了，不如从你这拿点补偿",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307012206"
+  },
+  {
+    "id": 307012201,
+    "nodeId": 85,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307012201,
+    "nodeId": 87,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307012201,
+    "nodeId": 97,
+    "desc": "不等了，从你这拿点补偿吧",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307012206"
+  },
+  {
+    "id": 307012201,
+    "nodeId": 106,
+    "desc": "偷袭",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307012211"
+  },
+  {
+    "id": 307012201,
+    "nodeId": 99,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307012201,
+    "nodeId": 115,
+    "desc": "有点意思",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020101,
+    "nodeId": 109,
+    "desc": "如何使用？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020102"
+  },
+  {
+    "id": 307020101,
+    "nodeId": 111,
+    "desc": "大众智慧有时候并不可靠",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 307020101,
+    "nodeId": 114,
+    "desc": "我要去藏宝地",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020103"
+  },
+  {
+    "id": 307020101,
+    "nodeId": 115,
+    "desc": "我要去庇护地",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020103"
+  },
+  {
+    "id": 307020101,
+    "nodeId": 117,
+    "desc": "选最近的路",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020104"
+  },
+  {
+    "id": 307020101,
+    "nodeId": 118,
+    "desc": "另辟蹊径",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020105"
+  },
+  {
+    "id": 307020101,
+    "nodeId": 154,
+    "desc": "选最近的路",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020104"
+  },
+  {
+    "id": 307020101,
+    "nodeId": 174,
+    "desc": "另辟蹊径",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020105"
+  },
+  {
+    "id": 307020101,
+    "nodeId": 120,
+    "desc": "继续沿路前行",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020106"
+  },
+  {
+    "id": 307020101,
+    "nodeId": 121,
+    "desc": "主动放弃",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 307020101,
+    "nodeId": 124,
+    "desc": "所有人都能丝滑复刻之路",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020101,
+    "nodeId": 126,
+    "desc": "成功需要一些好运气",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020101,
+    "nodeId": 156,
+    "desc": "继续沿路前行",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020106"
+  },
+  {
+    "id": 307020101,
+    "nodeId": 172,
+    "desc": "主动放弃",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 307020101,
+    "nodeId": 176,
+    "desc": "所有人都能丝滑复刻之路",
+    "icon": 15,
+    "condition": "",
+    "result": "TransferUnitTypes|2"
+  },
+  {
+    "id": 307020101,
+    "nodeId": 182,
+    "desc": "成功需要一些好运气",
+    "icon": 15,
+    "condition": "",
+    "result": "TransferUnitTypes|2"
+  },
+  {
+    "id": 307020101,
+    "nodeId": 128,
+    "desc": "确实很顺畅，但磁流体也摇匀了",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020101,
+    "nodeId": 129,
+    "desc": "这就是走捷径的代价吗？",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020101,
+    "nodeId": 158,
+    "desc": "确实很顺畅，但磁流体也摇匀了",
+    "icon": 15,
+    "condition": "",
+    "result": "TransferUnitTypes|2"
+  },
+  {
+    "id": 307020101,
+    "nodeId": 165,
+    "desc": "这就是走捷径的代价吗？",
+    "icon": 15,
+    "condition": "",
+    "result": "TransferUnitTypes|2"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 50,
+    "desc": "你是在看我吗？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020202"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 113,
+    "desc": "你有什么事情吗？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020202"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 89,
+    "desc": "我长得很奇怪吗？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020203"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 114,
+    "desc": "我衣着很奇怪吗？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020203"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 183,
+    "desc": "我长得很奇怪吗？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020203"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 221,
+    "desc": "我衣着很奇怪吗？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020203"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 116,
+    "desc": "抱歉，我可能让你不舒服了",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020204"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 117,
+    "desc": "抱歉，有哪里不对吗？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020204"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 146,
+    "desc": "抱歉，我可能让你不舒服了",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020204"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 164,
+    "desc": "抱歉，有哪里不对吗？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020204"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 185,
+    "desc": "抱歉，我可能让你不舒服了",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020204"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 203,
+    "desc": "抱歉，有哪里不对吗？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020204"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 223,
+    "desc": "抱歉，我可能让你不舒服了",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020204"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 241,
+    "desc": "抱歉，有哪里不对吗？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020204"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 119,
+    "desc": "你太不可理喻了！",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020205"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 120,
+    "desc": "你真是粗鲁至极！",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020205"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 129,
+    "desc": "你太不可理喻了！",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020205"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 137,
+    "desc": "你真是粗鲁至极！",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020205"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 148,
+    "desc": "你太不可理喻了！",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020205"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 156,
+    "desc": "你真是粗鲁至极！",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020205"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 166,
+    "desc": "你太不可理喻了！",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020205"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 174,
+    "desc": "你真是粗鲁至极！",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020205"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 187,
+    "desc": "你太不可理喻了！",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020205"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 195,
+    "desc": "你真是粗鲁至极！",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020205"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 205,
+    "desc": "你太不可理喻了！",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020205"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 213,
+    "desc": "你真是粗鲁至极！",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020205"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 225,
+    "desc": "你太不可理喻了！",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020205"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 233,
+    "desc": "你真是粗鲁至极！",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020205"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 243,
+    "desc": "你太不可理喻了！",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020205"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 251,
+    "desc": "你真是粗鲁至极！",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020205"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 111,
+    "desc": "一幅画都可以凝视我？！",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 122,
+    "desc": "一幅画都可以凝视我？！",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 131,
+    "desc": "一幅画都可以凝视我？！",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 139,
+    "desc": "一幅画都可以凝视我？！",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 150,
+    "desc": "一幅画都可以凝视我？！",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 158,
+    "desc": "一幅画都可以凝视我？！",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 168,
+    "desc": "一幅画都可以凝视我？！",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 176,
+    "desc": "一幅画都可以凝视我？！",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 189,
+    "desc": "一幅画都可以凝视我？！",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 197,
+    "desc": "一幅画都可以凝视我？！",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 207,
+    "desc": "一幅画都可以凝视我？！",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 215,
+    "desc": "一幅画都可以凝视我？！",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 227,
+    "desc": "一幅画都可以凝视我？！",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 235,
+    "desc": "一幅画都可以凝视我？！",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 245,
+    "desc": "一幅画都可以凝视我？！",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020201,
+    "nodeId": 253,
+    "desc": "一幅画都可以凝视我？！",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020301,
+    "nodeId": 109,
+    "desc": "询问为什么涨价",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020302"
+  },
+  {
+    "id": 307020301,
+    "nodeId": 111,
+    "desc": "拒绝购买",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020303"
+  },
+  {
+    "id": 307020301,
+    "nodeId": 114,
+    "desc": "他说得似乎挺对的",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020304"
+  },
+  {
+    "id": 307020301,
+    "nodeId": 136,
+    "desc": "以最后的优惠价格买下柠檬水",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020305"
+  },
+  {
+    "id": 307020301,
+    "nodeId": 156,
+    "desc": "世界不会因柠檬水而发生任何改变",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 307020301,
+    "nodeId": 117,
+    "desc": "感到些许讽刺",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020306"
+  },
+  {
+    "id": 307020301,
+    "nodeId": 147,
+    "desc": "带回柠檬水",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020305"
+  },
+  {
+    "id": 307020301,
+    "nodeId": 140,
+    "desc": "笑声当然也是统一的一部分",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020301,
+    "nodeId": 120,
+    "desc": "一杯柠檬水的确能改变世界",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020301,
+    "nodeId": 149,
+    "desc": "笑声当然也是统一的一部分",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020401,
+    "nodeId": 109,
+    "desc": "继续观察",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020402"
+  },
+  {
+    "id": 307020401,
+    "nodeId": 114,
+    "desc": "继续观察",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020403"
+  },
+  {
+    "id": 307020401,
+    "nodeId": 117,
+    "desc": "警告它们",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020404"
+  },
+  {
+    "id": 307020401,
+    "nodeId": 147,
+    "desc": "放任它们",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020405"
+  },
+  {
+    "id": 307020401,
+    "nodeId": 120,
+    "desc": "祝它们在梦里能捞到月亮",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020401,
+    "nodeId": 149,
+    "desc": "以及一个根本不存在的希望",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020501,
+    "nodeId": 117,
+    "desc": "你好上士，我有急要，是机密",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020502"
+  },
+  {
+    "id": 307020501,
+    "nodeId": 147,
+    "desc": "我现在要出兵讨伐魔精，谁来？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020503"
+  },
+  {
+    "id": 307020501,
+    "nodeId": 120,
+    "desc": "谢谢你们，士兵",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020501,
+    "nodeId": 156,
+    "desc": "他们是不是说了一些很可怕的话？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020504"
+  },
+  {
+    "id": 307020501,
+    "nodeId": 149,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020601,
+    "nodeId": 147,
+    "desc": "等待",
+    "icon": 15,
+    "condition": "",
+    "result": "CostGameTime|10"
+  },
+  {
+    "id": 307020601,
+    "nodeId": 156,
+    "desc": "继续等待",
+    "icon": 15,
+    "condition": "",
+    "result": "CostGameTime|10"
+  },
+  {
+    "id": 307020601,
+    "nodeId": 149,
+    "desc": "抱歉先生，我似乎又打扰了你",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020604"
+  },
+  {
+    "id": 307020601,
+    "nodeId": 162,
+    "desc": "我们必须关心到每一位同事",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020701,
+    "nodeId": 109,
+    "desc": "继承了有什么用？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020702"
+  },
+  {
+    "id": 307020701,
+    "nodeId": 114,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020801,
+    "nodeId": 109,
+    "desc": "各有所长吶",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020802"
+  },
+  {
+    "id": 307020801,
+    "nodeId": 114,
+    "desc": "这是盔甲，也是囚牢",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020901,
+    "nodeId": 109,
+    "desc": "前往办公室",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020902"
+  },
+  {
+    "id": 307020901,
+    "nodeId": 114,
+    "desc": "继续前往办公室",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020903"
+  },
+  {
+    "id": 307020901,
+    "nodeId": 115,
+    "desc": "盯着画像发十分钟呆",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020907"
+  },
+  {
+    "id": 307020901,
+    "nodeId": 117,
+    "desc": "离开办公室",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020904"
+  },
+  {
+    "id": 307020901,
+    "nodeId": 130,
+    "desc": "这算是你今日最真诚的交流",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020901,
+    "nodeId": 120,
+    "desc": "不再管这个杯子",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020905"
+  },
+  {
+    "id": 307020901,
+    "nodeId": 119,
+    "desc": "把杯子放入橱柜",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020906"
+  },
+  {
+    "id": 307020901,
+    "nodeId": 123,
+    "desc": "写一句反讽的话",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020907"
+  },
+  {
+    "id": 307020901,
+    "nodeId": 126,
+    "desc": "拒绝“被解构”",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307020907"
+  },
+  {
+    "id": 307020901,
+    "nodeId": 125,
+    "desc": "这算是你今日最真诚的交流",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307020901,
+    "nodeId": 128,
+    "desc": "这算是你今日最真诚的交流",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021001,
+    "nodeId": 109,
+    "desc": "前进",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021002"
+  },
+  {
+    "id": 307021001,
+    "nodeId": 114,
+    "desc": "停下来观察",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021003"
+  },
+  {
+    "id": 307021001,
+    "nodeId": 115,
+    "desc": "走上前去",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021004"
+  },
+  {
+    "id": 307021001,
+    "nodeId": 117,
+    "desc": "继续观察",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021005"
+  },
+  {
+    "id": 307021001,
+    "nodeId": 130,
+    "desc": "看看你的同事准备做什么",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021006"
+  },
+  {
+    "id": 307021001,
+    "nodeId": 120,
+    "desc": "把舞台交还给魔精",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021001,
+    "nodeId": 137,
+    "desc": "“这当然是为了魔精的安全”",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021007"
+  },
+  {
+    "id": 307021001,
+    "nodeId": 139,
+    "desc": "“这该死的电！”",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021101,
+    "nodeId": 109,
+    "desc": "什么问题？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021102"
+  },
+  {
+    "id": 307021101,
+    "nodeId": 114,
+    "desc": "填“是”",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021103"
+  },
+  {
+    "id": 307021101,
+    "nodeId": 135,
+    "desc": "填“否”",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021104"
+  },
+  {
+    "id": 307021101,
+    "nodeId": 136,
+    "desc": "不填",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021105"
+  },
+  {
+    "id": 307021101,
+    "nodeId": 138,
+    "desc": "接过回执",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021106"
+  },
+  {
+    "id": 307021101,
+    "nodeId": 142,
+    "desc": "改填“是”",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021103"
+  },
+  {
+    "id": 307021101,
+    "nodeId": 143,
+    "desc": "还填“否”",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021107"
+  },
+  {
+    "id": 307021101,
+    "nodeId": 162,
+    "desc": "转身离开",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021108"
+  },
+  {
+    "id": 307021101,
+    "nodeId": 161,
+    "desc": "顺势点头",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021103"
+  },
+  {
+    "id": 307021101,
+    "nodeId": 140,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021101,
+    "nodeId": 147,
+    "desc": "接过回执",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021106"
+  },
+  {
+    "id": 307021101,
+    "nodeId": 145,
+    "desc": "真是烦死了",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021101,
+    "nodeId": 164,
+    "desc": "真是烦死了",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021101,
+    "nodeId": 171,
+    "desc": "接过回执",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021106"
+  },
+  {
+    "id": 307021101,
+    "nodeId": 149,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021101,
+    "nodeId": 173,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021201,
+    "nodeId": 109,
+    "desc": "抓起丢掉",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021202"
+  },
+  {
+    "id": 307021201,
+    "nodeId": 114,
+    "desc": "一只大胖苹果",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021203"
+  },
+  {
+    "id": 307021201,
+    "nodeId": 137,
+    "desc": "一副面具",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021204"
+  },
+  {
+    "id": 307021201,
+    "nodeId": 136,
+    "desc": "……这么看来你还挺瘦的",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021201,
+    "nodeId": 139,
+    "desc": "……这其实是我的行为艺术",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021301,
+    "nodeId": 109,
+    "desc": "真有这么神奇？嚼嚼",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021302"
+  },
+  {
+    "id": 307021301,
+    "nodeId": 135,
+    "desc": "出来骗也是要学习一些基础药理的！",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 307021301,
+    "nodeId": 114,
+    "desc": "死骗子！",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 307021301,
+    "nodeId": 137,
+    "desc": "扎针抵抗",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 307021301,
+    "nodeId": 139,
+    "desc": "进行研究",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021305"
+  },
+  {
+    "id": 307021301,
+    "nodeId": 140,
+    "desc": "销毁",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021306"
+  },
+  {
+    "id": 307021301,
+    "nodeId": 142,
+    "desc": "我居然被下药了",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021306"
+  },
+  {
+    "id": 307021301,
+    "nodeId": 143,
+    "desc": "能药倒我，也算有趣",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021306"
+  },
+  {
+    "id": 307021301,
+    "nodeId": 145,
+    "desc": "该死的**！",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021301,
+    "nodeId": 149,
+    "desc": "带回去放到苦目风味制糖机里",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021301,
+    "nodeId": 166,
+    "desc": "带回去放到苦目风味制糖机里",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021301,
+    "nodeId": 173,
+    "desc": "带回去放到苦目风味制糖机里",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021401,
+    "nodeId": 109,
+    "desc": "我非拆不可",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021402"
+  },
+  {
+    "id": 307021401,
+    "nodeId": 135,
+    "desc": "那我先走了",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 307021401,
+    "nodeId": 114,
+    "desc": "暴力拆开",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021403"
+  },
+  {
+    "id": 307021401,
+    "nodeId": 137,
+    "desc": "这很无聊",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 307021401,
+    "nodeId": 145,
+    "desc": "很烦，撕烂左边的盒子",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021404"
+  },
+  {
+    "id": 307021401,
+    "nodeId": 156,
+    "desc": "很烦，撕烂右边的盒子",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021404"
+  },
+  {
+    "id": 307021401,
+    "nodeId": 157,
+    "desc": "很烦，走了",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 307021401,
+    "nodeId": 162,
+    "desc": "这是什么无聊的笑话？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021405"
+  },
+  {
+    "id": 307021401,
+    "nodeId": 163,
+    "desc": "这是什么无聊的笑话？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021405"
+  },
+  {
+    "id": 307021401,
+    "nodeId": 170,
+    "desc": "这是什么无聊的笑话？",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021401,
+    "nodeId": 172,
+    "desc": "这是什么无聊的笑话？",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021501,
+    "nodeId": 109,
+    "desc": "究竟发生了什么？",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021502"
+  },
+  {
+    "id": 307021501,
+    "nodeId": 135,
+    "desc": "大喊",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021503"
+  },
+  {
+    "id": 307021501,
+    "nodeId": 114,
+    "desc": "与它进行交流",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021505"
+  },
+  {
+    "id": 307021501,
+    "nodeId": 137,
+    "desc": "假装没听见",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021504"
+  },
+  {
+    "id": 307021501,
+    "nodeId": 207,
+    "desc": "你拒绝了邀约",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021501,
+    "nodeId": 198,
+    "desc": "继续交流",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021507"
+  },
+  {
+    "id": 307021501,
+    "nodeId": 179,
+    "desc": "听听它还会说什么",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021505"
+  },
+  {
+    "id": 307021501,
+    "nodeId": 182,
+    "desc": "率先开口",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021506"
+  },
+  {
+    "id": 307021501,
+    "nodeId": 200,
+    "desc": "天哪，这是哪个蠢蛋干的！",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021501,
+    "nodeId": 181,
+    "desc": "继续交流",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021507"
+  },
+  {
+    "id": 307021501,
+    "nodeId": 191,
+    "desc": "假装享受这场哲学交流",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021501,
+    "nodeId": 184,
+    "desc": "天哪，这是哪个蠢蛋干的！",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021601,
+    "nodeId": 109,
+    "desc": "问它们是谁",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021602"
+  },
+  {
+    "id": 307021601,
+    "nodeId": 135,
+    "desc": "检查那台留声机",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021603"
+  },
+  {
+    "id": 307021601,
+    "nodeId": 114,
+    "desc": "听听它们的“研究成果”",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021604"
+  },
+  {
+    "id": 307021601,
+    "nodeId": 137,
+    "desc": "打断它们，直接看机器",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021603"
+  },
+  {
+    "id": 307021601,
+    "nodeId": 246,
+    "desc": "继续听它们解释",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021604"
+  },
+  {
+    "id": 307021601,
+    "nodeId": 264,
+    "desc": "直接发表评价",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021605"
+  },
+  {
+    "id": 307021601,
+    "nodeId": 229,
+    "desc": "彻底否定它们",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021605"
+  },
+  {
+    "id": 307021601,
+    "nodeId": 237,
+    "desc": "提议更合理的经费使用方式",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021606"
+  },
+  {
+    "id": 307021601,
+    "nodeId": 179,
+    "desc": "继续听它们解释",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021604"
+  },
+  {
+    "id": 307021601,
+    "nodeId": 182,
+    "desc": "直接发表评价",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021605"
+  },
+  {
+    "id": 307021601,
+    "nodeId": 248,
+    "desc": "彻底否定它们",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021605"
+  },
+  {
+    "id": 307021601,
+    "nodeId": 256,
+    "desc": "提议更合理的经费使用方式",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021606"
+  },
+  {
+    "id": 307021601,
+    "nodeId": 266,
+    "desc": "瞧，这才是混沌",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021601,
+    "nodeId": 231,
+    "desc": "瞧，这才是混沌",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021601,
+    "nodeId": 239,
+    "desc": "“经济基础决定上层建筑”",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021601,
+    "nodeId": 213,
+    "desc": "彻底否定它们",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021605"
+  },
+  {
+    "id": 307021601,
+    "nodeId": 181,
+    "desc": "提议更合理的经费使用方式",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021606"
+  },
+  {
+    "id": 307021601,
+    "nodeId": 222,
+    "desc": "瞧，这才是混沌",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021601,
+    "nodeId": 250,
+    "desc": "瞧，这才是混沌",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021601,
+    "nodeId": 258,
+    "desc": "“经济基础决定上层建筑”",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021601,
+    "nodeId": 215,
+    "desc": "瞧，这才是混沌",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021601,
+    "nodeId": 184,
+    "desc": "“经济基础决定上层建筑”",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021701,
+    "nodeId": 109,
+    "desc": "同意",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021703"
+  },
+  {
+    "id": 307021701,
+    "nodeId": 138,
+    "desc": "拒绝",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021702"
+  },
+  {
+    "id": 307021701,
+    "nodeId": 114,
+    "desc": "拿起球",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021705"
+  },
+  {
+    "id": 307021701,
+    "nodeId": 115,
+    "desc": "放下球",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021704"
+  },
+  {
+    "id": 307021701,
+    "nodeId": 140,
+    "desc": "不管他们",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
+    "id": 307021701,
+    "nodeId": 143,
+    "desc": "没有你，他们连废品都做不出来",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021701,
+    "nodeId": 130,
+    "desc": "捡起球",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021705"
+  },
+  {
+    "id": 307021701,
+    "nodeId": 137,
+    "desc": "没有你，他们连废品都做不出来",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021801,
+    "nodeId": 109,
+    "desc": "我不想听",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021802"
+  },
+  {
+    "id": 307021801,
+    "nodeId": 135,
+    "desc": "你别浪费我的生命，算我求你",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021802"
+  },
+  {
+    "id": 307021801,
+    "nodeId": 114,
+    "desc": "半小时，都够哑谜他在冰上滑一跤了",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021801,
+    "nodeId": 137,
+    "desc": "半小时，都够哑谜他在冰上滑一跤了",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307040201,
+    "nodeId": 4,
+    "desc": "今非昔比呀，路德维希。",
+    "icon": 15,
+    "condition": "",
+    "result": "FinishMyself|false"
+  },
+  {
+    "id": 307040301,
+    "nodeId": 39,
+    "desc": "一片荒芜",
+    "icon": 15,
+    "condition": "",
+    "result": "TriggerDialog|34001"
+  },
+  {
+    "id": 307040301,
+    "nodeId": 4,
+    "desc": "疏散人群",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307040303"
+  },
+  {
+    "id": 307040301,
+    "nodeId": 34,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "FinishMyself|false"
+  },
+  {
+    "id": 307040401,
+    "nodeId": 45,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "FinishMyself|false"
+  },
+  {
+    "id": 307040401,
+    "nodeId": 4,
+    "desc": "打招呼",
+    "icon": 15,
+    "condition": "",
+    "result": "TriggerDialog|34002"
+  },
+  {
+    "id": 307040401,
+    "nodeId": 46,
+    "desc": "……",
+    "icon": 15,
+    "condition": "",
+    "result": "TriggerDialog|34003"
+  },
+  {
+    "id": 307040401,
+    "nodeId": 34,
+    "desc": "准备战斗",
+    "icon": 6,
+    "condition": "",
+    "result": "JumpEvent|4#307040402"
+  },
+  {
+    "id": 307040501,
+    "nodeId": 4,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "FinishMyself|false"
+  },
+  {
+    "id": 307040601,
+    "nodeId": 4,
+    "desc": "我会付报酬的",
+    "icon": 15,
+    "condition": "",
+    "result": "CostItem|1:100"
+  },
+  {
+    "id": 307040602,
+    "nodeId": 4,
+    "desc": "感谢",
+    "icon": 15,
+    "condition": "",
+    "result": "DeleteTalent|504006#1"
+  },
+  {
+    "id": 307040603,
+    "nodeId": 4,
+    "desc": "好吧",
+    "icon": 15,
+    "condition": "",
+    "result": "DeleteTalent|504007#1"
+  },
+  {
+    "id": 307040604,
+    "nodeId": 4,
+    "desc": "……",
+    "icon": 15,
+    "condition": "",
+    "result": "TriggerDialog|34004"
+  },
+  {
+    "id": 307040605,
+    "nodeId": 4,
+    "desc": "没想到有一天会和魔精合作",
+    "icon": 15,
+    "condition": "",
+    "result": "DeleteTalent|504009#1"
+  },
+  {
+    "id": 307040701,
+    "nodeId": 4,
+    "desc": "未来掌握在我们自己手中",
+    "icon": 15,
+    "condition": "",
+    "result": "FinishMyself|false"
+  },
+  {
+    "id": 307040801,
+    "nodeId": 4,
+    "desc": "让这件事赶紧收尾吧。",
+    "icon": 15,
+    "condition": "",
+    "result": "TriggerDialog|34006"
+  },
+  {
+    "id": 307040801,
+    "nodeId": 39,
+    "desc": "走吧",
+    "icon": 15,
+    "condition": "",
+    "result": "FinishMyself|false"
+  },
+  {
+    "id": 307040901,
+    "nodeId": 54,
+    "desc": "先回去吧。",
+    "icon": 15,
+    "condition": "",
+    "result": "TriggerDialog|34007"
+  },
+  {
+    "id": 307040901,
+    "nodeId": 4,
+    "desc": "她们可真是乐观。",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307040902"
+  },
+  {
+    "id": 307040901,
+    "nodeId": 39,
+    "desc": "昨日不再。",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307040903"
+  },
+  {
+    "id": 307040901,
+    "nodeId": 41,
+    "desc": "谈判失败了。",
+    "icon": 6,
+    "condition": "",
+    "result": "JumpEvent|4#307040902"
+  },
+  {
+    "id": 307041001,
+    "nodeId": 39,
+    "desc": "首相先生？",
+    "icon": 15,
+    "condition": "",
+    "result": "TriggerDialog|34002"
+  },
+  {
+    "id": 307041001,
+    "nodeId": 43,
+    "desc": "……",
+    "icon": 15,
+    "condition": "",
+    "result": "TriggerDialog|34008"
+  },
+  {
+    "id": 307041001,
+    "nodeId": 4,
+    "desc": "乌尔里希，这里。",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307041004"
+  },
+  {
+    "id": 307041001,
+    "nodeId": 34,
+    "desc": "游行就这样解散了。",
+    "icon": 15,
+    "condition": "",
+    "result": "TriggerDialog|34009"
+  },
+  {
+    "id": 307041101,
+    "nodeId": 4,
+    "desc": "傻子却握住了真理。",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307041102"
+  },
+  {
+    "id": 307041101,
+    "nodeId": 41,
+    "desc": "而我不是傻子。",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307041103"
+  },
+  {
+    "id": 307041101,
+    "nodeId": 43,
+    "desc": "去看看",
+    "icon": 15,
+    "condition": "",
+    "result": "FinishMyself|false"
+  },
+  {
+    "id": 307041201,
+    "nodeId": 4,
+    "desc": "戒酒的时候也是这个德行。",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307041202"
+  },
+  {
+    "id": 307041201,
+    "nodeId": 41,
+    "desc": "现在该去兑现一下空头支票了。",
+    "icon": 15,
+    "condition": "",
+    "result": "TriggerDialog|34010"
+  },
+  {
+    "id": 307041301,
+    "nodeId": 4,
+    "desc": "同志们。",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307041302"
+  },
+  {
+    "id": 307041301,
+    "nodeId": 39,
+    "desc": "推翻高塔吧，以后的路我们自己走。",
+    "icon": 15,
+    "condition": "",
+    "result": "FinishMyself|false"
+  },
+  {
+    "id": 307091101,
+    "nodeId": 5,
+    "desc": "打开留言板",
+    "icon": 15,
+    "condition": "",
+    "result": "OpenMessagePanel|"
+  },
+  {
+    "id": 307091101,
+    "nodeId": 9,
+    "desc": "有故障？那还是走吧",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
   }
 ]

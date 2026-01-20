@@ -39,7 +39,7 @@ function MainLimitedRoleEffect:_doneCallback()
 end
 
 function MainLimitedRoleEffect:_onVideoState(state)
-	if state == AvProEnum.PlayerStatus.Started then
+	if state == VideoEnum.PlayerStatus.Started then
 		LimitedRoleController.instance:unregisterCallback(LimitedRoleController.VideoState, self._onVideoState, self)
 		GameSceneMgr.instance:dispatchEvent(SceneEventName.ManualClose)
 	end

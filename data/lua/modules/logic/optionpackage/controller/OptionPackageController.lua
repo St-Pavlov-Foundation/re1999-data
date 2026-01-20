@@ -17,6 +17,8 @@ function OptionPackageController:onInit()
 	self._downloader = OptionPackageDownloader.New()
 	self._httpWorker = OptionPackageHttpWorker.New()
 	self._adapter = DownloadOptPackAdapter.New()
+
+	OptionPackageDownloadMgr.instance:initResInfo()
 end
 
 function OptionPackageController:onInitFinish()
@@ -147,38 +149,61 @@ function OptionPackageController:_endHttpBlock()
 end
 
 function OptionPackageController:checkNeedDownload(packName)
-	if not self._initialized or not OptionPackageEnum.HasPackageNameDict[packName] then
-		return false
-	end
+	if ProjBooter.instance:isUseBigZip() then
+		if not self._initialized or not OptionPackageEnum.HasPackageNameDict[packName] then
+			return false
+		end
 
+		if GameResMgr.IsFromEditorDir and not HotUpdateOptionPackageMgr.EnableEditorDebug then
+			return false
+		end
+
+		local isDone, isAllSuccess = self._httpWorker:checkWorkDone()
+
+		if not isDone then
+			self:_startHttpBlock()
+
+			return true
+		end
+
+		if isDone and not isAllSuccess then
+			self._httpWorker:againGetHttp(self._onHttpWorkerDone, self)
+			self:_startHttpBlock()
+
+			return true
+		end
+
+		local packageSetMO = OptionPackageModel.instance:getPackageSetMO(packName)
+		local curVoiceLangs = OptionPackageModel.instance:getNeedVoiceLangList()
+
+		if packageSetMO:isNeedDownload(curVoiceLangs) then
+			local allSize, localSize = packageSetMO:getDownloadSize(curVoiceLangs)
+			local needDownloadSize, size, units = OptionPackageHelper.getLeftSizeMBorGB(allSize, localSize)
+			local tipsStr = string.format("是否下载常驻活动资源？\n资源大小:%.2f%s", needDownloadSize, units)
+
+			self:_showDownloadMsgBox(packName, tipsStr)
+
+			return true
+		end
+
+		return false
+	else
+		return self:_checkNeedDownloadNew(packName)
+	end
+end
+
+function OptionPackageController:_checkNeedDownloadNew(packName)
 	if GameResMgr.IsFromEditorDir and not HotUpdateOptionPackageMgr.EnableEditorDebug then
 		return false
 	end
 
-	local isDone, isAllSuccess = self._httpWorker:checkWorkDone()
+	local diffList, allSize, dlcTypeList = OptionPackageDownloadMgr.instance:getDLCDiff(packName)
 
-	if not isDone then
-		self:_startHttpBlock()
+	if allSize > 0 then
+		local needDownloadSize, size, units = OptionPackageHelper.getLeftSizeMBorGB(allSize)
+		local tipsStr = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("c_optionpackage_downloadsize_txt_" .. packName), string.format("%.2f%s", needDownloadSize, units))
 
-		return true
-	end
-
-	if isDone and not isAllSuccess then
-		self._httpWorker:againGetHttp(self._onHttpWorkerDone, self)
-		self:_startHttpBlock()
-
-		return true
-	end
-
-	local packageSetMO = OptionPackageModel.instance:getPackageSetMO(packName)
-	local curVoiceLangs = OptionPackageModel.instance:getNeedVoiceLangList()
-
-	if packageSetMO:isNeedDownload(curVoiceLangs) then
-		local allSize, localSize = packageSetMO:getDownloadSize(curVoiceLangs)
-		local needDownloadSize, size, units = OptionPackageHelper.getLeftSizeMBorGB(allSize, localSize)
-		local tipsStr = string.format("是否下载常驻活动资源？\n资源大小:%.2f%s", needDownloadSize, units)
-
-		self:_showDownloadMsgBox(packName, tipsStr)
+		self:_showDownloadMsgBox(packName, tipsStr, diffList, dlcTypeList)
 
 		return true
 	end
@@ -186,14 +211,16 @@ function OptionPackageController:checkNeedDownload(packName)
 	return false
 end
 
-function OptionPackageController:_showDownloadMsgBox(packName, tipsStr)
+function OptionPackageController:_showDownloadMsgBox(packName, tipsStr, diffList, dlcTypeList)
+	self._downloadList = diffList
+	self._downloadDLCTypeList = dlcTypeList
 	self._downloadPackName = packName
 
 	local messageBoxId = MessageBoxIdDefine.ForbidLogin
 	local msgBoxType = MsgBoxEnum.BoxType.Yes_No
-	local yesStr = "确定下载"
+	local yesStr = luaLang("c_optionpackage_download_btn_yes")
 	local yesStrEn = "YES DOWNLOAD"
-	local noStr = "取消下载"
+	local noStr = luaLang("c_optionpackage_download_btn_no")
 	local noStrEn = "CANCEL DOWNLOAD"
 	local yesCallback = OptionPackageController._downloaderYes
 	local noCallback = OptionPackageController._downloaderNo
@@ -229,9 +256,15 @@ function OptionPackageController:_onStartDownload()
 	local curVoiceLangs = OptionPackageModel.instance:getNeedVoiceLangList()
 	local downloadListTb = packageSetMO:getDownloadInfoListTb(curVoiceLangs)
 
-	self._adapter:setDownloder(self._downloader, self._httpWorker)
-	ViewMgr.instance:openView(ViewName.OptionPackageDownloadView)
-	self._downloader:start(downloadListTb, self._onDownloadFinish, self, self._adapter)
+	if ProjBooter.instance:isUseBigZip() then
+		self._adapter:setDownloder(self._downloader, self._httpWorker)
+		ViewMgr.instance:openView(ViewName.OptionPackageDownloadView)
+		self._downloader:start(downloadListTb, self._onDownloadFinish, self, self._adapter)
+	else
+		ViewMgr.instance:openView(ViewName.OptionPackageDownloadView)
+		OptionPackageDownloadMgr.instance:startDownload(packSetName, self._downloadList, self._downloadDLCTypeList, self._onDownloadFinish, self)
+	end
+
 	OptionPackageModel.instance:addLocalPackSetName(packSetName)
 
 	local download_pack_list = {}

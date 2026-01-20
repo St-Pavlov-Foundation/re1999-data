@@ -94,23 +94,17 @@ function StoryNavigateItem:showEpisode(episodeCo)
 	end
 
 	if self._episodeVideoPlayer then
-		self._episodeVideoPlayer:Stop()
-		self._episodeVideoPlayer:Clear()
+		self._episodeVideoPlayer:stop()
+		self._episodeVideoPlayer:clear()
 
 		self._episodeVideoPlayer = nil
 	end
 
 	if gohelper.isNil(self._episodeVideoGO) then
-		local _, _, videoGO = AvProMgr.instance:getVideoPlayer(self._goepisodevideo)
-
-		self._episodeVideoGO = videoGO
+		self._episodeVideoPlayer, self._episodeVideoGO = VideoPlayerMgr.instance:createGoAndVideoPlayer(self._goepisodevideo)
 	end
 
-	self._episodeDisplayUGUI = gohelper.onceAddComponent(self._episodeVideoGO, AvProMgr.Type_DisplayUGUI)
-	self._episodeDisplayUGUI.ScaleMode = UnityEngine.ScaleMode.ScaleAndCrop
-	self._episodeVideoPlayer = gohelper.onceAddComponent(self._episodeVideoGO, AvProMgr.Type_AvProUGUIPlayer)
-
-	self._episodeVideoPlayer:Play(self._episodeDisplayUGUI, langVideoUrl("story_rian_bg"), true, nil, nil)
+	self._episodeVideoPlayer:play("story_rian_bg", true, nil, nil)
 
 	self._episodeIconLoader = PrefabInstantiate.Create(self._goepisodeicon)
 
@@ -128,8 +122,8 @@ end
 
 function StoryNavigateItem:_episodeOut()
 	if self._episodeVideoPlayer then
-		self._episodeVideoPlayer:Stop()
-		self._episodeVideoPlayer:Clear()
+		self._episodeVideoPlayer:stop()
+		self._episodeVideoPlayer:clear()
 
 		self._episodeVideoPlayer = nil
 	end
@@ -148,23 +142,17 @@ function StoryNavigateItem:showChapterStart(chapterCo)
 	self._txtchapterNum.text = chapterCo.navigateChapterEn
 
 	if self._chapterOpenVideoPlayer then
-		self._chapterOpenVideoPlayer:Stop()
-		self._chapterOpenVideoPlayer:Clear()
+		self._chapterOpenVideoPlayer:stop()
+		self._chapterOpenVideoPlayer:clear()
 
 		self._chapterOpenVideoPlayer = nil
 	end
 
 	if gohelper.isNil(self._chapterOpenVideoGO) then
-		local _, _, videoGO = AvProMgr.instance:getVideoPlayer(self._gochapteropenvideo)
-
-		self._chapterOpenVideoGO = videoGO
+		self._chapterOpenVideoPlayer, self._chapterOpenVideoGO = VideoPlayerMgr.instance:createGoAndVideoPlayer(self._gochapteropenvideo)
 	end
 
-	self._chapterOpenDisplayUGUI = gohelper.onceAddComponent(self._chapterOpenVideoGO, AvProMgr.Type_DisplayUGUI)
-	self._chapterOpenDisplayUGUI.ScaleMode = UnityEngine.ScaleMode.ScaleAndCrop
-	self._chapterOpenVideoPlayer = gohelper.onceAddComponent(self._chapterOpenVideoGO, AvProMgr.Type_AvProUGUIPlayer)
-
-	self._chapterOpenVideoPlayer:Play(self._chapterOpenDisplayUGUI, langVideoUrl("story_rian_bg"), true, nil, nil)
+	self._chapterOpenVideoPlayer:play("story_rian_bg", true, nil, nil)
 	AudioEffectMgr.instance:playAudio(AudioEnum.Story.Play_Chapter_Start)
 	TaskDispatcher.cancelTask(self._chapterStartOut, self)
 	TaskDispatcher.runDelay(self._chapterStartOut, self, 5.333)
@@ -172,8 +160,8 @@ end
 
 function StoryNavigateItem:_chapterStartOut()
 	if self._chapterOpenVideoPlayer then
-		self._chapterOpenVideoPlayer:Stop()
-		self._chapterOpenVideoPlayer:Clear()
+		self._chapterOpenVideoPlayer:stop()
+		self._chapterOpenVideoPlayer:clear()
 
 		self._chapterOpenVideoPlayer = nil
 	end
@@ -199,23 +187,17 @@ function StoryNavigateItem:showChapterEnd(chapterCo)
 	self._txtchaptercloseNum.text = chapterEndTxt
 
 	if self._chapterCloseVideoPlayer then
-		self._chapterCloseVideoPlayer:Stop()
-		self._chapterCloseVideoPlayer:Clear()
+		self._chapterCloseVideoPlayer:stop()
+		self._chapterCloseVideoPlayer:clear()
 
 		self._chapterCloseVideoPlayer = nil
 	end
 
 	if gohelper.isNil(self._chapterCloseVideoGO) then
-		local _, _, videoGO = AvProMgr.instance:getVideoPlayer(self._gochapterclosevideo)
-
-		self._chapterCloseVideoGO = videoGO
+		self._chapterCloseVideoPlayer, self._chapterCloseVideoGO = VideoPlayerMgr.instance:createGoAndVideoPlayer(self._gochapterclosevideo)
 	end
 
-	self._chapterCloseDisplayUGUI = gohelper.onceAddComponent(self._chapterCloseVideoGO, AvProMgr.Type_DisplayUGUI)
-	self._chapterCloseDisplayUGUI.ScaleMode = UnityEngine.ScaleMode.ScaleAndCrop
-	self._chapterCloseVideoPlayer = gohelper.onceAddComponent(self._chapterCloseVideoGO, AvProMgr.Type_AvProUGUIPlayer)
-
-	self._chapterCloseVideoPlayer:Play(self._chapterCloseDisplayUGUI, langVideoUrl("story_rian_bg"), true, nil, nil)
+	self._chapterCloseVideoPlayer:play("story_rian_bg", true, nil, nil)
 	AudioEffectMgr.instance:playAudio(AudioEnum.Story.Play_Chapter_End)
 	TaskDispatcher.cancelTask(self._chapterEndOut, self)
 	TaskDispatcher.runDelay(self._chapterEndOut, self, 3.2)
@@ -223,8 +205,8 @@ end
 
 function StoryNavigateItem:_chapterEndOut()
 	if self._chapterCloseVideoPlayer then
-		self._chapterCloseVideoPlayer:Stop()
-		self._chapterCloseVideoPlayer:Clear()
+		self._chapterCloseVideoPlayer:stop()
+		self._chapterCloseVideoPlayer:clear()
 
 		self._chapterCloseVideoPlayer = nil
 	end
@@ -303,14 +285,8 @@ function StoryNavigateItem:destroy()
 		SLFramework.GameObjectHelper.DestroyAllChildren(self._iconGo)
 	end
 
-	if self._episodeVideoPlayer then
-		if not BootNativeUtil.isIOS() then
-			self._episodeVideoPlayer:Stop()
-		end
-
-		self._episodeVideoPlayer:Clear()
-
-		self._episodeVideoPlayer = nil
+	if self._episodeVideoPlayer and not BootNativeUtil.isIOS() then
+		self._episodeVideoPlayer:stop()
 	end
 
 	if self._episodeVideoGO then
@@ -319,14 +295,8 @@ function StoryNavigateItem:destroy()
 		self._episodeVideoGO = nil
 	end
 
-	if self._chapterOpenVideoPlayer then
-		if not BootNativeUtil.isIOS() then
-			self._chapterOpenVideoPlayer:Stop()
-		end
-
-		self._chapterOpenVideoPlayer:Clear()
-
-		self._chapterOpenVideoPlayer = nil
+	if self._chapterOpenVideoPlayer and not BootNativeUtil.isIOS() then
+		self._chapterOpenVideoPlayer:stop()
 	end
 
 	if self._chapterOpenVideoGO then
@@ -337,10 +307,10 @@ function StoryNavigateItem:destroy()
 
 	if self._chapterCloseVideoPlayer then
 		if not BootNativeUtil.isIOS() then
-			self._chapterCloseVideoPlayer:Stop()
+			self._chapterCloseVideoPlayer:stop()
 		end
 
-		self._chapterCloseVideoPlayer:Clear()
+		self._chapterCloseVideoPlayer:clear()
 
 		self._chapterCloseVideoPlayer = nil
 	end

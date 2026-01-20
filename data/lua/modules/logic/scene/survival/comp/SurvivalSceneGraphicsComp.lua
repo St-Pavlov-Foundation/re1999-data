@@ -49,7 +49,7 @@ function SurvivalSceneGraphicsComp:onSceneClose()
 
 	GameGlobalMgr.instance:unregisterCallback(GameStateEvent.OnQualityChange, self._refreshGraphics, self)
 
-	UnityEngine.QualitySettings.masterTextureLimit = 0
+	UnityEngine.QualitySettings.globalTextureMipmapLimit = 0
 	self._unitPPVolume = nil
 
 	local camera = CameraMgr.instance:getMainCamera()
@@ -78,7 +78,7 @@ function SurvivalSceneGraphicsComp:_refreshGraphics()
 
 		UnityEngine.Shader.SetGlobalFloat("_GlobalMipBias", -0.5)
 
-		UnityEngine.QualitySettings.masterTextureLimit = 0
+		UnityEngine.QualitySettings.globalTextureMipmapLimit = 0
 	elseif quality == ModuleEnum.Performance.Middle then
 		self:setPPValue("ssaoEnable", false)
 		PostProcessingMgr.instance:setRenderShadow(true)
@@ -87,7 +87,7 @@ function SurvivalSceneGraphicsComp:_refreshGraphics()
 
 		UnityEngine.Shader.SetGlobalFloat("_GlobalMipBias", 0)
 
-		UnityEngine.QualitySettings.masterTextureLimit = 0
+		UnityEngine.QualitySettings.globalTextureMipmapLimit = 0
 	elseif quality == ModuleEnum.Performance.Low then
 		self:setPPValue("ssaoEnable", false)
 		PostProcessingMgr.instance:setRenderShadow(true)
@@ -96,7 +96,7 @@ function SurvivalSceneGraphicsComp:_refreshGraphics()
 
 		UnityEngine.Shader.SetGlobalFloat("_GlobalMipBias", 0.5)
 
-		UnityEngine.QualitySettings.masterTextureLimit = 1
+		UnityEngine.QualitySettings.globalTextureMipmapLimit = 1
 	end
 end
 

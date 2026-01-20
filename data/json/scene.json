@@ -4073,7 +4073,7 @@
   {
     "id": 17604,
     "name": "科算中心",
-    "nameen": "",
+    "nameen": "Pre-Storm Protocol",
     "levels": [
       17604
     ]
@@ -4081,7 +4081,7 @@
   {
     "id": 16903,
     "name": "世界尽头",
-    "nameen": "",
+    "nameen": "Pre-Storm Protocol",
     "levels": [
       16903
     ]
@@ -4097,7 +4097,7 @@
   {
     "id": 12402,
     "name": "幻想坟场",
-    "nameen": "",
+    "nameen": "Pre-Storm Protocol",
     "levels": [
       12402
     ]
@@ -4308,6 +4308,86 @@
     "nameen": "MengJing",
     "levels": [
       34201
+    ]
+  },
+  {
+    "id": 34301,
+    "name": "古祝县·城门",
+    "nameen": "City Gate, Ancient Zhu County",
+    "levels": [
+      34301
+    ]
+  },
+  {
+    "id": 34401,
+    "name": "古祝县·街道",
+    "nameen": "Street, Ancient Zhu County",
+    "levels": [
+      34401
+    ]
+  },
+  {
+    "id": 34501,
+    "name": "古祝县·豪门宅邸",
+    "nameen": "Mansion, Ancient Zhu County",
+    "levels": [
+      34501
+    ]
+  },
+  {
+    "id": 34502,
+    "name": "古祝县·梅花教庭院",
+    "nameen": "Yard, School of Mei",
+    "levels": [
+      34501
+    ]
+  },
+  {
+    "id": 34601,
+    "name": "古祝县·梅花教庭院",
+    "nameen": "Yard, School of Mei",
+    "levels": [
+      34601
+    ]
+  },
+  {
+    "id": 34701,
+    "name": "祝县·旧城门",
+    "nameen": "Old City Gate, Zhu County",
+    "levels": [
+      34701
+    ]
+  },
+  {
+    "id": 34801,
+    "name": "古祝县·戏台",
+    "nameen": "Stage, Ancient Zhu County",
+    "levels": [
+      34801
+    ]
+  },
+  {
+    "id": 34901,
+    "name": "古祝县·县衙",
+    "nameen": "Yamen, Ancient Zhu County",
+    "levels": [
+      34901
+    ]
+  },
+  {
+    "id": 35001,
+    "name": "古祝县·梅花树下",
+    "nameen": "Mei Tree, Ancient Zhu County",
+    "levels": [
+      35001
+    ]
+  },
+  {
+    "id": 159011,
+    "name": "摄政街",
+    "nameen": "SheZheng",
+    "levels": [
+      159011
     ]
   }
 ]

@@ -44,8 +44,8 @@ function SurvivalShrinkView:onOpen()
 	self._icon1Width = recthelper.getWidth(self._goicon1.transform)
 	self._icon2Width = recthelper.getWidth(self._goicon2.transform)
 	self._isShowTips = true
-	self._goshrinkTips.keepAnimatorControllerStateOnDisable = true
-	self._gorestTips.keepAnimatorControllerStateOnDisable = true
+	self._goshrinkTips.keepAnimatorStateOnDisable = true
+	self._gorestTips.keepAnimatorStateOnDisable = true
 
 	gohelper.setActive(self._gotips, true)
 	gohelper.setActive(self._goicon1, false)

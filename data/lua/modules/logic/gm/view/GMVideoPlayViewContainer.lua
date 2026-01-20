@@ -28,14 +28,14 @@ function GMVideoPlayViewContainer:onContainerOpen()
 	local videoName = self.viewParam
 
 	if not self._videoPlayer then
-		self._videoPlayer, self._displauUGUI, self._videoPlayerGO = AvProMgr.instance:getVideoPlayer(self._videoGO)
+		self._videoPlayer, self._videoPlayerGO = VideoPlayerMgr.instance:createGoAndVideoPlayer(self._videoGO)
 
 		local uiVideoAdapter = MonoHelper.addNoUpdateLuaComOnceToGo(self._videoPlayerGO, FullScreenVideoAdapter)
 
 		self._videoPlayerGO = nil
 	end
 
-	self._videoPlayer:Play(self._displauUGUI, langVideoUrl(videoName), false, self._videoStatusUpdate, self)
+	self._videoPlayer:play(videoName, false, self._videoStatusUpdate, self)
 end
 
 function GMVideoPlayViewContainer:_onClickMask()
@@ -43,15 +43,15 @@ function GMVideoPlayViewContainer:_onClickMask()
 end
 
 function GMVideoPlayViewContainer:_videoStatusUpdate(path, status, errorCode)
-	if status == AvProEnum.PlayerStatus.FinishedPlaying then
+	if status == VideoEnum.PlayerStatus.FinishedPlaying then
 		self:closeThis()
 	end
 end
 
 function GMVideoPlayViewContainer:_stopMovie()
 	if self._videoPlayer then
-		self._videoPlayer:Stop()
-		self._videoPlayer:Clear()
+		self._videoPlayer:stop()
+		self._videoPlayer:clear()
 
 		self._videoPlayer = nil
 	end

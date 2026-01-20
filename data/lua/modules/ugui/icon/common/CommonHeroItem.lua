@@ -175,7 +175,7 @@ function CommonHeroItem:_onItemClickUp()
 end
 
 function CommonHeroItem:setKeepAnim()
-	self.rootAnim.keepAnimatorControllerStateOnDisable = true
+	self.rootAnim.keepAnimatorStateOnDisable = true
 end
 
 function CommonHeroItem:setLevel(level, heroId)

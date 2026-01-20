@@ -27,6 +27,12 @@ function SurvivalHandbookModel:onInit()
 		table.insert(self.npcTypes, v)
 	end
 
+	self.roleStoryTypes = {}
+
+	for i, v in pairs(SurvivalEnum.HandBookRoleSubType) do
+		table.insert(self.roleStoryTypes, v)
+	end
+
 	local HandBookAmplifierSubType = SurvivalEnum.HandBookAmplifierSubType
 	local HandBookNpcSubType = SurvivalEnum.HandBookNpcSubType
 
@@ -86,6 +92,12 @@ function SurvivalHandbookModel:onInit()
 		},
 		[SurvivalEnum.HandBookType.Result] = {
 			RedDot = RedDotEnum.DotNode.SurvivalHandbookResult
+		},
+		[SurvivalEnum.HandBookType.Story] = {
+			RedDot = RedDotEnum.DotNode.SurvivalHandbookStory
+		},
+		[SurvivalEnum.HandBookType.Collection] = {
+			RedDot = RedDotEnum.DotNode.SurvivalHandbookCollect
 		}
 	}
 end
@@ -125,6 +137,7 @@ function SurvivalHandbookModel:setSurvivalHandbookBox(survivalHandbookBox)
 				if isValid then
 					mo:setCellCfgId(handbook.param)
 					mo:setIsNew(isNew)
+					mo:setStoryStatus(handbook.status)
 
 					unlock[id] = true
 
@@ -362,6 +375,37 @@ function SurvivalHandbookModel:refreshRedDot()
 		id = RedDotEnum.DotNode.SurvivalHandbookResult,
 		value = redDot
 	})
+
+	self.roleStoryRedDots = {}
+	total = 0
+
+	for i, subType in ipairs(self.roleStoryTypes) do
+		local redDot = self:getRedDot(SurvivalEnum.HandBookType.Story, subType)
+
+		self.roleStoryRedDots[subType] = redDot
+
+		table.insert(redDotInfoList, {
+			id = RedDotEnum.DotNode.SurvivalHandbookStory,
+			uid = subType,
+			value = redDot
+		})
+
+		total = total + redDot
+	end
+
+	table.insert(redDotInfoList, {
+		uid = -1,
+		id = RedDotEnum.DotNode.SurvivalHandbookStory,
+		value = total
+	})
+
+	total = self:getRedDot(SurvivalEnum.HandBookType.Collection, 0)
+
+	table.insert(redDotInfoList, {
+		uid = -1,
+		id = RedDotEnum.DotNode.SurvivalHandbookCollect,
+		value = total
+	})
 	RedDotRpc.instance:clientAddRedDotGroupList(redDotInfoList, true)
 end
 
@@ -481,6 +525,17 @@ function SurvivalHandbookModel.handBookSortFunc(a, b)
 
 	if rareA ~= 0 and rareB ~= 0 and rareA ~= rareB then
 		return rareB < rareA
+	end
+
+	return a.id < b.id
+end
+
+function SurvivalHandbookModel.handBookStorySortFunc(a, b)
+	local isStoryNotFinishA = not a:isStoryFinish()
+	local isStoryNotFinishB = not b:isStoryFinish()
+
+	if isStoryNotFinishA ~= isStoryNotFinishB then
+		return isStoryNotFinishA
 	end
 
 	return a.id < b.id

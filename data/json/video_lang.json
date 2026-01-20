@@ -291,5 +291,12 @@
       "en",
       "zh"
     ]
+  },
+  {
+    "name": "3_4_pv",
+    "supportLang": [
+      "en",
+      "zh"
+    ]
   }
 ]

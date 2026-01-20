@@ -76,7 +76,7 @@ function RoomViewConfirm:_handleMouseInput()
 		self:_btncancelOnClick()
 	end
 
-	if UnityEngine.Input.GetKey("space") then
+	if UnityEngine.Input.GetKeyUp("space") then
 		self:_btnconfirmOnClick()
 	end
 end

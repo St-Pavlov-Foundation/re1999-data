@@ -73,14 +73,24 @@ function SummonResultView:_editableInitView()
 	self._cantClose = true
 	self._tweenId = ZProj.TweenHelper.DOTweenFloat(0, 1, 1.9, nil, self._tweenFinish, self, nil, EaseType.Linear)
 	self._goBtn = gohelper.findChild(self.viewGO, "summonbtns")
-	self._goSummon1 = gohelper.findChild(self.viewGO, "summonbtns/summon1")
-	self._goSummon10 = gohelper.findChild(self.viewGO, "summonbtns/summon10")
-	self._btnSummon10 = gohelper.findChildButtonWithAudio(self.viewGO, "summonbtns/summon10/#btn_summon10")
-	self._simagecurrency10 = gohelper.findChildSingleImage(self.viewGO, "summonbtns/summon10/currency/#simage_currency10")
-	self._txtcurrency101 = gohelper.findChildText(self.viewGO, "summonbtns/summon10/currency/#txt_currency10_1")
-	self._txtcurrency102 = gohelper.findChildText(self.viewGO, "summonbtns/summon10/currency/#txt_currency10_2")
+	self._gosummon10 = gohelper.findChild(self.viewGO, "summonbtns/#go_summon10")
+	self._btnsummon10 = gohelper.findChildButtonWithAudio(self.viewGO, "summonbtns/#go_summon10/#btn_summon10")
+	self._simagecurrency10 = gohelper.findChildSingleImage(self.viewGO, "summonbtns/#go_summon10/currency/#simage_currency10")
+	self._txtcurrency101 = gohelper.findChildText(self.viewGO, "summonbtns/#go_summon10/currency/#txt_currency10_1")
+	self._txtcurrency102 = gohelper.findChildText(self.viewGO, "summonbtns/#go_summon10/currency/#txt_currency10_2")
+	self._gocount = gohelper.findChild(self.viewGO, "summonbtns/#go_summon10/#go_count")
+	self._txtcount = gohelper.findChildText(self.viewGO, "summonbtns/#go_summon10/#go_count/#txt_count")
+	self._gosummon10normal = gohelper.findChild(self.viewGO, "summonbtns/#go_summon10_normal")
+	self._btnsummon10normal = gohelper.findChildButtonWithAudio(self.viewGO, "summonbtns/#go_summon10_normal/#btn_summon10_normal")
+	self._simagecurrency10normal = gohelper.findChildSingleImage(self.viewGO, "summonbtns/#go_summon10_normal/currency/#simage_currency10_normal")
+	self._txtcurrency101normal = gohelper.findChildText(self.viewGO, "summonbtns/#go_summon10_normal/currency/#txt_currency10_1_normal")
+	self._txtcurrency102normal = gohelper.findChildText(self.viewGO, "summonbtns/#go_summon10_normal/currency/#txt_currency10_2_normal")
+	self._gosummonInfallible = gohelper.findChild(self.viewGO, "summonbtns/#go_summonInfallible")
+	self._btnsummonInfallible = gohelper.findChildButtonWithAudio(self.viewGO, "summonbtns/#go_summonInfallible/#btn_summonInfallibale")
 
-	self._btnSummon10:AddClickListener(self._btnsummon10OnClick, self)
+	self._btnsummon10:AddClickListener(self._btnsummon10OnClick, self)
+	self._btnsummon10normal:AddClickListener(self._btnsummon10OnClick, self)
+	self._btnsummonInfallible:AddClickListener(self._btnsummonInfallibleOnClick, self)
 
 	self._isReSummon = false
 	self._canSummon = true
@@ -113,13 +123,14 @@ function SummonResultView:onDestroyView()
 		ZProj.TweenHelper.KillById(self._tweenId)
 	end
 
-	self._btnSummon10:RemoveClickListener()
+	self._btnsummon10:RemoveClickListener()
+	self._btnsummon10normal:RemoveClickListener()
+	self._btnsummonInfallible:RemoveClickListener()
 end
 
 function SummonResultView:onOpen()
 	self:addEventCb(SummonController.instance, SummonEvent.onSummonReply, self.onSummonReply, self)
 	self:addEventCb(SummonController.instance, SummonEvent.onSummonFailed, self.onSummonFailed, self)
-	self:addEventCb(StoreController.instance, StoreEvent.GoodsModelChanged, self._refreshCost, self)
 	AudioMgr.instance:trigger(AudioEnum.UI.Play_UI_LuckDraw_TenHero_OpenAll)
 
 	local summonResultList = self.viewParam.summonResultList
@@ -127,7 +138,7 @@ function SummonResultView:onOpen()
 	self._curPool = self:getCurPool()
 	self._summonResultList = {}
 
-	for i, v in ipairs(summonResultList) do
+	for i, v in pairs(summonResultList) do
 		table.insert(self._summonResultList, v)
 	end
 
@@ -145,7 +156,6 @@ end
 function SummonResultView:onClose()
 	self:removeEventCb(SummonController.instance, SummonEvent.onSummonReply, self.onSummonReply, self)
 	self:removeEventCb(SummonController.instance, SummonEvent.onSummonFailed, self.onSummonFailed, self)
-	self:removeEventCb(StoreController.instance, StoreEvent.GoodsModelChanged, self._refreshCost, self)
 
 	if not self._isReSummon and not self:_showCommonPropView() then
 		SummonController.instance:dispatchEvent(SummonEvent.onSummonResultClose)
@@ -356,17 +366,83 @@ end
 
 function SummonResultView:_setSummonBtnActive(active)
 	gohelper.setActive(self._goBtn, active)
-	gohelper.setActive(self._goSummon1, false)
 
 	local curPool = self:getCurPool()
 	local mo = SummonMainModel.instance:getPoolServerMO(curPool.id)
 
 	if SummonMainModel.validContinueTenPool(curPool.id) then
-		gohelper.setActive(self._goSummon10, true)
+		gohelper.setActive(self._goBtn, true)
 		self:_summonTrack("summon10_auto_show")
+		self:_setInfallibleSummon(true)
 	else
-		gohelper.setActive(self._goSummon10, false)
+		gohelper.setActive(self._goBtn, false)
 	end
+end
+
+function SummonResultView:_setInfallibleSummon(active)
+	gohelper.setActive(self._goBtn, active)
+
+	local curPool = self:getCurPool()
+	local curPoolMo = SummonMainModel.instance:getPoolServerMO(curPool.id)
+	local summonConfig = SummonConfig.instance:getSummonPool(curPool.id)
+
+	if summonConfig.infallibleItemId == nil or summonConfig.infallibleItemId == 0 or summonConfig.infallibleItemMaxUseCount <= 0 then
+		return
+	end
+
+	local isTrigger = SummonMainModel.instance:getInfallibleItemUsedTrigger(summonConfig.infallibleItemId)
+	local status = curPoolMo.infallibleItemStatus or SummonEnum.InfallibleItemState.Unused
+
+	if status == SummonEnum.InfallibleItemState.Unused then
+		return
+	end
+
+	local isUsed = status == SummonEnum.InfallibleItemState.Used
+
+	if isUsed and not isTrigger then
+		return
+	end
+
+	gohelper.setActive(self._gosummon10normal, false)
+	gohelper.setActive(self._gosummon10, false)
+
+	if status == SummonEnum.InfallibleItemState.Using then
+		gohelper.setActive(self._gosummonInfallible, true)
+	else
+		if isUsed and isTrigger then
+			local itemCo = ItemConfig.instance:getItemCo(summonConfig.infallibleItemId)
+
+			GameFacade.showToast(ToastEnum.InfallibleItemUsedTip, itemCo.name)
+			SummonMainModel.instance:setInfallibleItemUsedTrigger(summonConfig.infallibleItemId, false)
+		end
+
+		gohelper.setActive(self._gosummonInfallible, false)
+	end
+end
+
+function SummonResultView:_btnsummonInfallibleOnClick()
+	if not self._canSummon then
+		return
+	end
+
+	local curPool = self:getCurPool()
+
+	if not curPool then
+		return
+	end
+
+	local curPoolInfo = SummonMainModel.instance:getPoolServerMO(curPool.id)
+	local summonConfig = SummonConfig.instance:getSummonPool(curPool.id)
+
+	if summonConfig == nil or summonConfig.infallibleItemId == nil or summonConfig.infallibleItemId == 0 or summonConfig.infallibleItemMaxUseCount <= 0 then
+		return false
+	end
+
+	if curPoolInfo.infallibleItemStatus ~= SummonEnum.InfallibleItemState.Using then
+		return
+	end
+
+	SummonMainController.instance:startInfallibleSummon(curPool.id)
 end
 
 function SummonResultView:_btnsummon10OnClick()
@@ -402,6 +478,13 @@ function SummonResultView:_btnsummon10OnClick_2()
 	end
 
 	local cost_type, cost_id, cost_num = SummonMainModel.getCostByConfig(curPool.cost10)
+	local discountCost = SummonMainModel.instance:getDiscountCost10(curPool.id)
+	local discountCostId = SummonMainModel.instance:getDiscountCostId(curPool.id)
+
+	if discountCostId == cost_id then
+		cost_num = discountCost < 0 and cost_num or discountCost
+	end
+
 	local param = {}
 
 	param.type = cost_type
@@ -417,7 +500,7 @@ function SummonResultView:_btnsummon10OnClick_2()
 	local itemEnough = cost_num <= ownNum
 	local everyCostCount = SummonMainModel.instance.everyCostCount
 	local currencyNum = SummonMainModel.instance:getOwnCostCurrencyNum()
-	local remainCount = 10 - ownNum
+	local remainCount = cost_num - ownNum
 	local costRemain = everyCostCount * remainCount
 
 	if not itemEnough and currencyNum < costRemain then
@@ -458,21 +541,54 @@ function SummonResultView:_refreshCost()
 	local curPool = self:getCurPool()
 
 	if curPool then
-		self:_refreshSingleCost(curPool.cost10, self._simagecurrency10, "_txtcurrency10")
+		self:refreshCost10(curPool.cost10)
 	end
 end
 
-function SummonResultView:_refreshSingleCost(costs, icon, numTxt)
-	local cost_type, cost_id, cost_num = SummonMainModel.getCostByConfig(costs)
-	local cost_icon = SummonMainModel.getSummonItemIcon(cost_type, cost_id)
+function SummonResultView:refreshCost10(costs)
+	local cost_type, cost_id, cost_num = SummonMainModel.instance.getCostByConfig(costs)
+	local cost_icon = SummonMainModel.instance.getSummonItemIcon(cost_type, cost_id)
 
-	icon:LoadImage(cost_icon)
+	self._simagecurrency10:LoadImage(cost_icon)
+	self._simagecurrency10normal:LoadImage(cost_icon)
 
-	local num = ItemModel.instance:getItemQuantity(cost_type, cost_id)
-	local enough = cost_num <= num
+	local curPoolId = SummonMainModel.instance:getCurId()
+	local discountCostId = SummonMainModel.instance:getDiscountCostId(curPoolId)
+	local discountTime10Server = SummonMainModel.instance:getDiscountTime10Server(curPoolId)
+	local showDisCount = discountTime10Server > 0
 
-	self[numTxt .. "1"].text = luaLang("multiple") .. cost_num
-	self[numTxt .. "2"].text = ""
+	gohelper.setActive(self._gotip2bg, showDisCount)
+	gohelper.setActive(self._gosummon10, showDisCount)
+	gohelper.setActive(self._gosummon10normal, not showDisCount)
+
+	local currency101Str = ""
+	local currency102Str = ""
+
+	if cost_id == discountCostId then
+		gohelper.setActive(self._gocount, discountTime10Server > 0)
+
+		if discountTime10Server > 0 then
+			local realyCountTime10 = SummonMainModel.instance:getDiscountCost10(curPoolId)
+
+			currency101Str = string.format("<color=%s>%s</color>", "#FFE095", luaLang("multiple") .. realyCountTime10)
+			currency102Str = cost_num
+
+			local preferential = (cost_num - realyCountTime10) / cost_num * 100
+
+			self._txtcount.text = string.format(luaLang("summonpickchoice_discount"), preferential)
+		else
+			currency101Str = string.format("<color=%s>%s</color>", "#000000", luaLang("multiple") .. cost_num)
+		end
+	else
+		currency101Str = string.format("<color=%s>%s</color>", "#000000", luaLang("multiple") .. cost_num)
+
+		gohelper.setActive(self._gocount, false)
+	end
+
+	self._txtcurrency101.text = currency101Str
+	self._txtcurrency101normal.text = currency101Str
+	self._txtcurrency102.text = currency102Str
+	self._txtcurrency102normal.text = currency102Str
 end
 
 function SummonResultView:onSummonReply()

@@ -199,8 +199,8 @@
     "name": "非理性迷宫",
     "nameEn": "LABYRINTH OF MADNESS",
     "highId": 10004,
-    "show": 0,
-    "des": "小套组描述AAA",
+    "show": 1,
+    "des": "命运翻滚着，停留在了刻度为“20”的位面上。",
     "skinContain": "310203|310403|305803",
     "backImg": "",
     "spineParams": "",
@@ -212,9 +212,9 @@
     "name": "1987宇宙漫步",
     "nameEn": "1987 COSMIC CIRCUS",
     "highId": 10004,
-    "show": 0,
-    "des": "小套组描述AAA",
-    "skinContain": "310803|309703|304203",
+    "show": 1,
+    "des": "秋千荡过银河，马戏团的声光逃过黑洞的桎梏，自宇宙彼端的笑声，已与光一同前来。",
+    "skinContain": "304203|310803|309703",
     "backImg": "",
     "spineParams": "",
     "tarotCardPath": "",
@@ -229,7 +229,7 @@
     "des": "棋局之上，唯信念不倒；时代之下，已遍地残垣。",
     "skinContain": "311703|308603|311403|304002",
     "backImg": "",
-    "spineParams": "308603|roles_bust/v3a1_308603_lx_skinsuit/308603_lx_skinsuit.prefab|30,20|1",
+    "spineParams": "308603|roles_bust/v3a1_308603_lx_skinsuit/308603_lx_skinsuit.prefab|30,-160|1",
     "tarotCardPath": "",
     "festivalParams": ""
   },
@@ -240,10 +240,10 @@
     "highId": 11001,
     "show": 1,
     "des": "§无小套组描述",
-    "skinContain": "305104|305604|304704|310003|308004|304804|308804|300731|310703|306204|300306",
+    "skinContain": "305104|305604|307905|304704|310003|308004|304804|308804|300731|310703|306204|300306",
     "backImg": "",
     "spineParams": "",
-    "tarotCardPath": "card03|card06|card12|card15|card16|card17|card18|card20|card21|card01|card02",
+    "tarotCardPath": "card03|card06|card09|card12|card15|card16|card17|card18|card20|card21|card01|card02",
     "festivalParams": ""
   },
   {
@@ -331,11 +331,11 @@
     "highId": 13001,
     "show": 1,
     "des": "",
-    "skinContain": "0|0|309504|0|0",
+    "skinContain": "0|309504|310404|0|0",
     "backImg": "",
     "spineParams": "",
     "tarotCardPath": "",
-    "festivalParams": "handbookskin_festival_unknow,???|handbookskin_festival_unknow,???|handbookskin_festival_Christmas,12.25|handbookskin_festival_unknow,???|handbookskin_festival_unknow,???"
+    "festivalParams": "handbookskin_festival_unknow,???|handbookskin_festival_Christmas,12.25|handbookskin_festival_yushui,2.18|handbookskin_festival_unknow,???|handbookskin_festival_unknow,???"
   },
   {
     "id": 20022,
@@ -347,6 +347,19 @@
     "skinContain": "301403|312603|312103",
     "backImg": "",
     "spineParams": "",
+    "tarotCardPath": "",
+    "festivalParams": ""
+  },
+  {
+    "id": 20023,
+    "name": "红尘我为客",
+    "nameEn": "Tales of the Underworld",
+    "highId": 10008,
+    "show": 1,
+    "des": "此别故人久，江湖入梦多。不敢问飘蓬，从此各西东。",
+    "skinContain": "306103|312503|311003|305305|311103",
+    "backImg": "",
+    "spineParams": "311003|roles_bust/v3a4_311003_ly_skinsuit/311003_ly_skinsuit.prefab|-30,110|0.3#305305|roles_bust/v3a4_305305_yx_skinsuit/305305_yx_skinsuit.prefab|-110,-25|0.36",
     "tarotCardPath": "",
     "festivalParams": ""
   }

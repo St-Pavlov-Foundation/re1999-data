@@ -33,9 +33,9 @@ function RoomSceneGraphicsComp:init(sceneId, levelId)
 	self:_refreshGraphics()
 	GameGlobalMgr.instance:registerCallback(GameStateEvent.OnQualityChange, self._refreshGraphics, self)
 
-	self.projPhysics = UnityEngine.Physics.autoSimulation
+	self.projPhysics = UnityEngine.Physics.simulationMode
 	self.projTransforms = UnityEngine.Physics.autoSyncTransforms
-	UnityEngine.Physics.autoSimulation = false
+	UnityEngine.Physics.simulationMode = UnityEngine.SimulationMode.Script
 	UnityEngine.Physics.autoSyncTransforms = true
 
 	local camera = CameraMgr.instance:getMainCamera()
@@ -115,7 +115,7 @@ function RoomSceneGraphicsComp:onSceneClose()
 	mainCustomCameraData.useLightmap = self.useLightmap
 	mainCustomCameraData.useLightData = self.useLightData
 	mainCustomCameraData.disableTransparentBackToFrontSort = false
-	UnityEngine.Physics.autoSimulation = self.projPhysics
+	UnityEngine.Physics.simulationMode = self.projPhysics
 	UnityEngine.Physics.autoSyncTransforms = self.projTransforms
 	self.projPhysics = nil
 	self.projTransforms = nil
@@ -130,7 +130,7 @@ function RoomSceneGraphicsComp:onSceneClose()
 
 	self._unitPPVolume = nil
 	RenderPipelineSetting.useRenderOpaqueWithSceneColorPass = false
-	UnityEngine.QualitySettings.masterTextureLimit = 0
+	UnityEngine.QualitySettings.globalTextureMipmapLimit = 0
 
 	if BootNativeUtil.isWindows() then
 		RenderPipelineSetting.ForwardPlusToggle = false
@@ -164,7 +164,7 @@ function RoomSceneGraphicsComp:_refreshGraphics()
 		PostProcessingMgr.instance:setLayerCullDistance(self.LAYER_INDEX_CullByDistance, self.highQualityCullingDistance)
 		PostProcessingMgr.instance:setLayerCullDistance(self.LAYER_INDEX_CullOnLowQuality, self.highQualityCullingDistance)
 
-		UnityEngine.QualitySettings.masterTextureLimit = 0
+		UnityEngine.QualitySettings.globalTextureMipmapLimit = 0
 	elseif quality == ModuleEnum.Performance.Middle then
 		mainCustomCameraData.renderScale = 0.8
 		UnityEngine.QualitySettings.lodBias = 0.9
@@ -180,7 +180,7 @@ function RoomSceneGraphicsComp:_refreshGraphics()
 
 		sceneCulling.smallRate = 0.02
 		sceneCulling.proxyRate = 0.03
-		UnityEngine.QualitySettings.masterTextureLimit = 0
+		UnityEngine.QualitySettings.globalTextureMipmapLimit = 0
 	elseif quality == ModuleEnum.Performance.Low then
 		mainCustomCameraData.renderScale = 0.7
 		UnityEngine.QualitySettings.lodBias = 0.7
@@ -196,7 +196,7 @@ function RoomSceneGraphicsComp:_refreshGraphics()
 
 		sceneCulling.smallRate = 0.03
 		sceneCulling.proxyRate = 0.075
-		UnityEngine.QualitySettings.masterTextureLimit = 1
+		UnityEngine.QualitySettings.globalTextureMipmapLimit = 1
 	end
 end
 

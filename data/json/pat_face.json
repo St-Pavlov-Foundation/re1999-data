@@ -607,5 +607,19 @@
     "patFaceViewName": "V3a3TowerGiftPanelView",
     "patFaceStoryId": 0,
     "patFaceOrder": 70000
+  },
+  {
+    "id": 30401,
+    "patFaceActivityId": 13421,
+    "patFaceViewName": "V3a4GiftRecommendPanelview",
+    "patFaceStoryId": 0,
+    "patFaceOrder": 1000
+  },
+  {
+    "id": 30402,
+    "patFaceActivityId": 13441,
+    "patFaceViewName": "V3a4_GoldenMilletPresentView",
+    "patFaceStoryId": 0,
+    "patFaceOrder": 1500
   }
 ]

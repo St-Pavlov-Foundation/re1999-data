@@ -22,7 +22,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 100002,
@@ -47,7 +49,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 100003,
@@ -72,7 +76,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 100011,
@@ -97,7 +103,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 100012,
@@ -122,7 +130,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 100013,
@@ -147,7 +157,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 100015,
@@ -172,7 +184,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 100101,
@@ -197,7 +211,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 1001011,
@@ -222,7 +238,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": ""
   },
   {
     "id": 100201,
@@ -247,7 +265,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 100202,
@@ -272,7 +292,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 100203,
@@ -297,7 +319,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 100204,
@@ -322,7 +346,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 100205,
@@ -347,7 +373,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 100206,
@@ -372,7 +400,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 100207,
@@ -397,7 +427,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 100208,
@@ -422,7 +454,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 100211,
@@ -447,7 +481,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 100212,
@@ -472,7 +508,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": ""
   },
   {
     "id": 100213,
@@ -497,7 +535,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 100214,
@@ -522,7 +562,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 100215,
@@ -547,7 +589,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 107100901,
@@ -572,7 +616,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 107100902,
@@ -597,7 +643,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 107100903,
@@ -622,7 +670,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 107100904,
@@ -647,7 +697,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 107100905,
@@ -672,7 +724,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 1,
@@ -697,7 +751,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 999999999,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 2,
@@ -722,7 +778,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 999999999,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 3,
@@ -747,7 +805,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 999999999,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 4,
@@ -772,7 +832,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 100,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 5,
@@ -797,7 +859,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 999999999,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 551001,
@@ -822,7 +886,9 @@
     "effect": "3",
     "enhanceCond": "1101#5510012",
     "maxLimit": 99,
-    "copyItem": 5510011
+    "copyItem": 5510011,
+    "exp": 15,
+    "sublimateDrop": ""
   },
   {
     "id": 552001,
@@ -847,7 +913,9 @@
     "effect": "0",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": ""
   },
   {
     "id": 553001,
@@ -863,7 +931,7 @@
     "subType": 53,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:100",
     "worth": 20,
     "overlayLimit": 99,
@@ -872,7 +940,9 @@
     "effect": "553001",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 553002,
@@ -888,7 +958,7 @@
     "subType": 53,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:200",
     "worth": 40,
     "overlayLimit": 99,
@@ -897,7 +967,9 @@
     "effect": "553002",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 553003,
@@ -913,7 +985,7 @@
     "subType": 53,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:100",
     "worth": 20,
     "overlayLimit": 99,
@@ -922,7 +994,9 @@
     "effect": "553003",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 553004,
@@ -938,7 +1012,7 @@
     "subType": 53,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:100",
     "worth": 20,
     "overlayLimit": 99,
@@ -947,7 +1021,9 @@
     "effect": "553004",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 553005,
@@ -972,7 +1048,9 @@
     "effect": "553005",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": ""
   },
   {
     "id": 553006,
@@ -988,7 +1066,7 @@
     "subType": 53,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:200",
     "worth": 40,
     "overlayLimit": 99,
@@ -997,7 +1075,9 @@
     "effect": "553006",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 5530061
+    "copyItem": 5530061,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 553007,
@@ -1013,7 +1093,7 @@
     "subType": 53,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:400",
     "worth": 80,
     "overlayLimit": 99,
@@ -1022,7 +1102,9 @@
     "effect": "553007",
     "enhanceCond": "1102#5530072",
     "maxLimit": 99,
-    "copyItem": 5530071
+    "copyItem": 5530071,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 553008,
@@ -1038,7 +1120,7 @@
     "subType": 53,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:200",
     "worth": 40,
     "overlayLimit": 99,
@@ -1047,7 +1129,9 @@
     "effect": "553008",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 553009,
@@ -1063,7 +1147,7 @@
     "subType": 53,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:200",
     "worth": 40,
     "overlayLimit": 99,
@@ -1072,7 +1156,9 @@
     "effect": "553009",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 553010,
@@ -1088,7 +1174,7 @@
     "subType": 53,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:200",
     "worth": 40,
     "overlayLimit": 99,
@@ -1097,7 +1183,9 @@
     "effect": "553010",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 553011,
@@ -1122,7 +1210,9 @@
     "effect": "553011",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": ""
   },
   {
     "id": 553012,
@@ -1138,7 +1228,7 @@
     "subType": 53,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 99,
@@ -1147,7 +1237,9 @@
     "effect": "553012",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 553013,
@@ -1163,7 +1255,7 @@
     "subType": 53,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:200",
     "worth": 40,
     "overlayLimit": 99,
@@ -1172,7 +1264,9 @@
     "effect": "553013",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 5530131
+    "copyItem": 5530131,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 560001,
@@ -1188,7 +1282,7 @@
     "subType": 60,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:200",
     "worth": 40,
     "overlayLimit": 99,
@@ -1197,7 +1291,9 @@
     "effect": "4#3",
     "enhanceCond": "1104#5600012",
     "maxLimit": 99,
-    "copyItem": 5600011
+    "copyItem": 5600011,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 553101,
@@ -1222,7 +1318,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 553102,
@@ -1247,7 +1345,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 553103,
@@ -1272,7 +1372,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 553104,
@@ -1297,7 +1399,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 553105,
@@ -1322,7 +1426,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 600001,
@@ -1347,7 +1453,9 @@
     "effect": "50",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": ""
   },
   {
     "id": 600002,
@@ -1372,7 +1480,9 @@
     "effect": "100",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 700001,
@@ -1397,7 +1507,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 700002,
@@ -1413,7 +1525,7 @@
     "subType": 61,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:400",
     "worth": 80,
     "overlayLimit": 99,
@@ -1422,7 +1534,9 @@
     "effect": "41,42,43,44,45,46,47,48#4",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 7000021
+    "copyItem": 7000021,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 700003,
@@ -1438,7 +1552,7 @@
     "subType": 62,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:400",
     "worth": 80,
     "overlayLimit": 99,
@@ -1447,7 +1561,9 @@
     "effect": "1",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 7000031
+    "copyItem": 7000031,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 700004,
@@ -1463,7 +1579,7 @@
     "subType": 63,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:200",
     "worth": 40,
     "overlayLimit": 99,
@@ -1472,7 +1588,9 @@
     "effect": "31,32,33,34,35,36,37,38,39,391,392,41,42,43,44,45,46,47,51,52,53,54,55,56,57,58#10",
     "enhanceCond": "1103#7000042",
     "maxLimit": 99,
-    "copyItem": 7000041
+    "copyItem": 7000041,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 700005,
@@ -1488,7 +1606,7 @@
     "subType": 64,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:200",
     "worth": 40,
     "overlayLimit": 99,
@@ -1497,7 +1615,9 @@
     "effect": "1#40",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 7000051
+    "copyItem": 7000051,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 700006,
@@ -1513,7 +1633,7 @@
     "subType": 65,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:400",
     "worth": 80,
     "overlayLimit": 99,
@@ -1522,32 +1642,36 @@
     "effect": "77,58#6",
     "enhanceCond": "1105#7000062",
     "maxLimit": 99,
-    "copyItem": 7000061
+    "copyItem": 7000061,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 700007,
     "name": "引诱剂",
     "versions": "",
     "seasons": "",
-    "desc1": "使用后，选择自身4格范围内一名漫游助理或怪物，使其传送到自身4格范围外的随机位置（返回银色庇护所时转换为研究资料）",
+    "desc1": "使用后，使2格范围内的敌人被吸引至该位置（返回银色庇护所时转换为研究资料）",
     "desc2": "我们的麻烦已经够多了，这有什么用？",
     "disposable": 0,
     "sellPrice": "item#1:40",
     "icon": "8350060",
     "type": 5,
-    "subType": 67,
+    "subType": 69,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:200",
     "worth": 40,
     "overlayLimit": 99,
     "isDestroy": 0,
     "exchange": "item#1:40",
-    "effect": "4#41,42,43,44,45,46,47,48,51,52,53,54,55,56,57#5",
+    "effect": "41,42,43,44,45,46#2",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 7000071
+    "copyItem": 7000071,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 700008,
@@ -1563,7 +1687,7 @@
     "subType": 65,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:400",
     "worth": 80,
     "overlayLimit": 99,
@@ -1572,7 +1696,9 @@
     "effect": "41,42,43,44,45,46,47,48#10",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 710001,
@@ -1588,7 +1714,7 @@
     "subType": 68,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:200",
     "worth": 40,
     "overlayLimit": 99,
@@ -1597,7 +1723,9 @@
     "effect": "2110301",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 710002,
@@ -1613,7 +1741,7 @@
     "subType": 68,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:200",
     "worth": 40,
     "overlayLimit": 99,
@@ -1622,7 +1750,9 @@
     "effect": "2120221",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 710003,
@@ -1638,7 +1768,7 @@
     "subType": 66,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:400",
     "worth": 80,
     "overlayLimit": 99,
@@ -1647,7 +1777,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 5510011,
@@ -1672,7 +1804,9 @@
     "effect": "3",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": ""
   },
   {
     "id": 5530061,
@@ -1688,7 +1822,7 @@
     "subType": 53,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:100",
     "worth": 20,
     "overlayLimit": 99,
@@ -1697,7 +1831,9 @@
     "effect": "553006",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 5530071,
@@ -1713,7 +1849,7 @@
     "subType": 53,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:100",
     "worth": 20,
     "overlayLimit": 99,
@@ -1722,7 +1858,9 @@
     "effect": "553007",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 5530131,
@@ -1738,7 +1876,7 @@
     "subType": 53,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:100",
     "worth": 20,
     "overlayLimit": 99,
@@ -1747,7 +1885,9 @@
     "effect": "553013",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 5600011,
@@ -1763,7 +1903,7 @@
     "subType": 60,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:100",
     "worth": 20,
     "overlayLimit": 99,
@@ -1772,7 +1912,9 @@
     "effect": "4#3",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 7000021,
@@ -1788,7 +1930,7 @@
     "subType": 61,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:100",
     "worth": 20,
     "overlayLimit": 99,
@@ -1797,7 +1939,9 @@
     "effect": "41,42,43,44,45,46,47,48#4",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 7000031,
@@ -1813,7 +1957,7 @@
     "subType": 62,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:100",
     "worth": 20,
     "overlayLimit": 99,
@@ -1822,7 +1966,9 @@
     "effect": "1",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 7000041,
@@ -1838,7 +1984,7 @@
     "subType": 63,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:100",
     "worth": 20,
     "overlayLimit": 99,
@@ -1847,7 +1993,9 @@
     "effect": "31,32,33,34,35,36,37,38,39,391,392,41,42,43,44,45,46,47,51,52,53,54,55,56,57,58#10",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 7000051,
@@ -1863,7 +2011,7 @@
     "subType": 64,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:100",
     "worth": 20,
     "overlayLimit": 99,
@@ -1872,7 +2020,9 @@
     "effect": "1#40",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 7000061,
@@ -1888,7 +2038,7 @@
     "subType": 65,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:100",
     "worth": 20,
     "overlayLimit": 99,
@@ -1897,32 +2047,36 @@
     "effect": "77,58#6",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 7000071,
     "name": "复制的引诱剂",
     "versions": "",
     "seasons": "",
-    "desc1": "使用后，选择自身4格范围内一名漫游助理或怪物，使其传送到自身4格范围外的随机位置（返回银色庇护所时转换为研究资料）",
+    "desc1": "使用后，使2格范围内的敌人被吸引至该位置（返回银色庇护所时转换为研究资料）",
     "desc2": "我们的麻烦已经够多了，这有什么用？",
     "disposable": 0,
     "sellPrice": "item#1:20",
     "icon": "8350060",
     "type": 5,
-    "subType": 67,
+    "subType": 69,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:100",
     "worth": 20,
     "overlayLimit": 99,
     "isDestroy": 1,
     "exchange": "",
-    "effect": "4#41,42,43,44,45,46,47,48,51,52,53,54,55,56,57#5",
+    "effect": "41,42,43,44,45,46#2",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 5510012,
@@ -1947,7 +2101,9 @@
     "effect": "5",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 5510013
+    "copyItem": 5510013,
+    "exp": 15,
+    "sublimateDrop": ""
   },
   {
     "id": 5530072,
@@ -1963,7 +2119,7 @@
     "subType": 53,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:400",
     "worth": 80,
     "overlayLimit": 99,
@@ -1972,7 +2128,9 @@
     "effect": "212039",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 5530073
+    "copyItem": 5530073,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 5600012,
@@ -1988,7 +2146,7 @@
     "subType": 60,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:200",
     "worth": 40,
     "overlayLimit": 99,
@@ -1997,7 +2155,9 @@
     "effect": "5#4",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 5600013
+    "copyItem": 5600013,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 7000042,
@@ -2013,7 +2173,7 @@
     "subType": 63,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:200",
     "worth": 40,
     "overlayLimit": 99,
@@ -2022,7 +2182,9 @@
     "effect": "31,32,33,34,35,36,37,38,39,391,392,41,42,43,44,45,46,47,51,52,53,54,55,56,57,58#15",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 7000043
+    "copyItem": 7000043,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 7000062,
@@ -2038,7 +2200,7 @@
     "subType": 65,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:400",
     "worth": 80,
     "overlayLimit": 99,
@@ -2047,7 +2209,9 @@
     "effect": "77,58#10",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 7000063
+    "copyItem": 7000063,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 5510013,
@@ -2072,7 +2236,9 @@
     "effect": "5",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": ""
   },
   {
     "id": 5530073,
@@ -2088,7 +2254,7 @@
     "subType": 53,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:100",
     "worth": 20,
     "overlayLimit": 99,
@@ -2097,7 +2263,9 @@
     "effect": "212039",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 5600013,
@@ -2113,7 +2281,7 @@
     "subType": 60,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:100",
     "worth": 20,
     "overlayLimit": 99,
@@ -2122,7 +2290,9 @@
     "effect": "5#4",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 7000043,
@@ -2138,7 +2308,7 @@
     "subType": 63,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:100",
     "worth": 20,
     "overlayLimit": 99,
@@ -2147,7 +2317,9 @@
     "effect": "31,32,33,34,35,36,37,38,39,391,392,41,42,43,44,45,46,47,51,52,53,54,55,56,57,58#15",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 7000063,
@@ -2163,7 +2335,7 @@
     "subType": 65,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:100",
     "worth": 20,
     "overlayLimit": 99,
@@ -2172,7 +2344,9 @@
     "effect": "77,58#10",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 7000101,
@@ -2197,7 +2371,9 @@
     "effect": "211048",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 7000102,
@@ -2222,7 +2398,9 @@
     "effect": "211049",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 7000103,
@@ -2247,7 +2425,9 @@
     "effect": "211050",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 7000104,
@@ -2272,7 +2452,9 @@
     "effect": "211070",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 7000105,
@@ -2297,14 +2479,16 @@
     "effect": "211071",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800101,
     "name": "军用刺刀",
     "versions": "",
     "seasons": "",
-    "desc1": "受人青睐的高价值物品，商人愿意高价收购（返回银色庇护所时转换为研究资料）",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
     "desc2": "没有一个士兵会丢下他的刺刀。如果你找到了，那就带他回家。",
     "disposable": 0,
     "sellPrice": "item#1:84",
@@ -2312,24 +2496,26 @@
     "type": 1,
     "subType": 101,
     "deposit": 0,
-    "rare": 2,
-    "mass": 50,
+    "rare": 3,
+    "mass": 30,
     "cost": "item#1:70",
     "worth": 70,
     "overlayLimit": 99,
     "isDestroy": 0,
-    "exchange": "item#1:70",
+    "exchange": "",
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime5"
   },
   {
     "id": 800102,
     "name": "迷因造物",
     "versions": "",
     "seasons": "",
-    "desc1": "受人青睐的高价值物品，商人愿意高价收购（返回银色庇护所时转换为研究资料）",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
     "desc2": "他们不管什么时候都没忘了收集奇怪物品的爱好。",
     "disposable": 0,
     "sellPrice": "item#1:96",
@@ -2337,24 +2523,26 @@
     "type": 1,
     "subType": 101,
     "deposit": 0,
-    "rare": 2,
-    "mass": 50,
+    "rare": 3,
+    "mass": 30,
     "cost": "item#1:80",
     "worth": 80,
     "overlayLimit": 99,
     "isDestroy": 0,
-    "exchange": "item#1:80",
+    "exchange": "",
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime5"
   },
   {
     "id": 800103,
     "name": "蒸馏管",
     "versions": "",
     "seasons": "",
-    "desc1": "受人青睐的高价值物品，商人愿意高价收购（返回银色庇护所时转换为研究资料）",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
     "desc2": "缪斯三世把我们想得太过古老了，这东西应该是第一次工业革命时期的奇思妙想。",
     "disposable": 0,
     "sellPrice": "item#1:108",
@@ -2362,24 +2550,26 @@
     "type": 1,
     "subType": 101,
     "deposit": 0,
-    "rare": 2,
-    "mass": 50,
+    "rare": 3,
+    "mass": 30,
     "cost": "item#1:90",
     "worth": 90,
     "overlayLimit": 99,
     "isDestroy": 0,
-    "exchange": "item#1:90",
+    "exchange": "",
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime5"
   },
   {
     "id": 800104,
     "name": "向日葵种子",
     "versions": "",
     "seasons": "",
-    "desc1": "受人青睐的高价值物品，商人愿意高价收购（返回银色庇护所时转换为研究资料）",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
     "desc2": "维拉将它们赠与了拉普拉斯，然后泥鯭的士说可以将它们丢入锅里翻炒翻炒。",
     "disposable": 0,
     "sellPrice": "item#1:120",
@@ -2387,124 +2577,26 @@
     "type": 1,
     "subType": 101,
     "deposit": 0,
-    "rare": 2,
-    "mass": 50,
+    "rare": 3,
+    "mass": 30,
     "cost": "item#1:100",
     "worth": 100,
     "overlayLimit": 99,
     "isDestroy": 0,
-    "exchange": "item#1:100",
+    "exchange": "",
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
-  },
-  {
-    "id": 800201,
-    "name": "军用刺刀",
-    "versions": "",
-    "seasons": "",
-    "desc1": "受人青睐的高价值物品，商人愿意高价收购（返回银色庇护所时转换为研究资料）",
-    "desc2": "没有一个士兵会丢下他的刺刀。如果你找到了，那就带他回家。",
-    "disposable": 0,
-    "sellPrice": "item#1:288",
-    "icon": "8310608",
-    "type": 1,
-    "subType": 101,
-    "deposit": 0,
-    "rare": 4,
-    "mass": 50,
-    "cost": "item#1:240",
-    "worth": 240,
-    "overlayLimit": 99,
-    "isDestroy": 0,
-    "exchange": "item#1:240",
-    "effect": "",
-    "enhanceCond": "",
-    "maxLimit": 99,
-    "copyItem": 0
-  },
-  {
-    "id": 800202,
-    "name": "迷因造物",
-    "versions": "",
-    "seasons": "",
-    "desc1": "受人青睐的高价值物品，商人愿意高价收购（返回银色庇护所时转换为研究资料）",
-    "desc2": "他们不管什么时候都没忘了收集奇怪物品的爱好。",
-    "disposable": 0,
-    "sellPrice": "item#1:312",
-    "icon": "8120110",
-    "type": 1,
-    "subType": 101,
-    "deposit": 0,
-    "rare": 4,
-    "mass": 50,
-    "cost": "item#1:260",
-    "worth": 260,
-    "overlayLimit": 99,
-    "isDestroy": 0,
-    "exchange": "item#1:260",
-    "effect": "",
-    "enhanceCond": "",
-    "maxLimit": 99,
-    "copyItem": 0
-  },
-  {
-    "id": 800203,
-    "name": "蒸馏管",
-    "versions": "",
-    "seasons": "",
-    "desc1": "受人青睐的高价值物品，商人愿意高价收购（返回银色庇护所时转换为研究资料）",
-    "desc2": "缪斯三世把我们想得太过古老了，这东西应该是第一次工业革命时期的奇思妙想。",
-    "disposable": 0,
-    "sellPrice": "item#1:336",
-    "icon": "8360054",
-    "type": 1,
-    "subType": 101,
-    "deposit": 0,
-    "rare": 4,
-    "mass": 50,
-    "cost": "item#1:280",
-    "worth": 280,
-    "overlayLimit": 99,
-    "isDestroy": 0,
-    "exchange": "item#1:280",
-    "effect": "",
-    "enhanceCond": "",
-    "maxLimit": 99,
-    "copyItem": 0
-  },
-  {
-    "id": 800204,
-    "name": "向日葵种子",
-    "versions": "",
-    "seasons": "",
-    "desc1": "受人青睐的高价值物品，商人愿意高价收购（返回银色庇护所时转换为研究资料）",
-    "desc2": "维拉将它们赠与了拉普拉斯，然后泥鯭的士说可以将它们丢入锅里翻炒翻炒。",
-    "disposable": 0,
-    "sellPrice": "item#1:360",
-    "icon": "20317",
-    "type": 1,
-    "subType": 101,
-    "deposit": 0,
-    "rare": 4,
-    "mass": 50,
-    "cost": "item#1:300",
-    "worth": 300,
-    "overlayLimit": 99,
-    "isDestroy": 0,
-    "exchange": "item#1:300",
-    "effect": "",
-    "enhanceCond": "",
-    "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime5"
   },
   {
     "id": 800205,
     "name": "普通海螺",
     "versions": "",
     "seasons": "",
-    "desc1": "受人青睐的高价值物品，商人愿意高价收购（返回银色庇护所时转换为研究资料）",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
     "desc2": "有一群来自“普通海螺俱乐部”的人愿意出重金收购它。",
     "disposable": 0,
     "sellPrice": "item#1:240",
@@ -2512,24 +2604,26 @@
     "type": 1,
     "subType": 101,
     "deposit": 0,
-    "rare": 4,
-    "mass": 50,
+    "rare": 3,
+    "mass": 30,
     "cost": "item#1:200",
     "worth": 200,
     "overlayLimit": 99,
     "isDestroy": 0,
-    "exchange": "item#1:200",
+    "exchange": "",
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime5"
   },
   {
     "id": 800206,
     "name": "愚人黄金",
     "versions": "",
     "seasons": "",
-    "desc1": "受人青睐的高价值物品，商人愿意高价收购（返回银色庇护所时转换为研究资料）",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
     "desc2": "无需过多介绍——黄金。也许应该形容为朴实无华，但是它骗过了所有的眼睛。",
     "disposable": 0,
     "sellPrice": "item#1:264",
@@ -2537,274 +2631,944 @@
     "type": 1,
     "subType": 101,
     "deposit": 0,
-    "rare": 4,
-    "mass": 50,
+    "rare": 5,
+    "mass": 100,
     "cost": "item#1:220",
     "worth": 220,
     "overlayLimit": 99,
     "isDestroy": 0,
-    "exchange": "item#1:220",
+    "exchange": "",
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime6"
   },
   {
     "id": 800207,
     "name": "黑碑",
     "versions": "",
     "seasons": "",
-    "desc1": "受人青睐的高价值物品，商人愿意高价收购（返回银色庇护所时转换为研究资料）",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
     "desc2": "——复杂的铭文越来越不可名状。\n——对，我每次看我们的规章文件都是这个感觉。",
     "disposable": 0,
-    "sellPrice": "item#1:384",
+    "sellPrice": "item#1:600",
     "icon": "8330708",
     "type": 1,
     "subType": 101,
     "deposit": 0,
-    "rare": 4,
-    "mass": 50,
-    "cost": "item#1:320",
+    "rare": 6,
+    "mass": 200,
+    "cost": "item#1:2000",
     "worth": 320,
     "overlayLimit": 99,
     "isDestroy": 0,
-    "exchange": "item#1:320",
+    "exchange": "",
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
-  },
-  {
-    "id": 800208,
-    "name": "天然琥珀",
-    "versions": "",
-    "seasons": "",
-    "desc1": "受人青睐的高价值物品，商人愿意高价收购（返回银色庇护所时转换为研究资料）",
-    "desc2": "累吗？下次别往背包里装石头了。",
-    "disposable": 0,
-    "sellPrice": "item#1:408",
-    "icon": "8330211",
-    "type": 1,
-    "subType": 101,
-    "deposit": 0,
-    "rare": 4,
-    "mass": 50,
-    "cost": "item#1:340",
-    "worth": 340,
-    "overlayLimit": 99,
-    "isDestroy": 0,
-    "exchange": "item#1:340",
-    "effect": "",
-    "enhanceCond": "",
-    "maxLimit": 99,
-    "copyItem": 0
-  },
-  {
-    "id": 800209,
-    "name": "“上天的恩赐”",
-    "versions": "",
-    "seasons": "",
-    "desc1": "受人青睐的高价值物品，商人愿意高价收购（返回银色庇护所时转换为研究资料）",
-    "desc2": "有点眼熟，可能是缪斯三世布置圣诞树时掉进盒子的礼物。",
-    "disposable": 0,
-    "sellPrice": "item#1:432",
-    "icon": "8330063",
-    "type": 1,
-    "subType": 101,
-    "deposit": 0,
-    "rare": 4,
-    "mass": 50,
-    "cost": "item#1:360",
-    "worth": 360,
-    "overlayLimit": 99,
-    "isDestroy": 0,
-    "exchange": "item#1:360",
-    "effect": "",
-    "enhanceCond": "",
-    "maxLimit": 99,
-    "copyItem": 0
-  },
-  {
-    "id": 800210,
-    "name": "绿戒",
-    "versions": "",
-    "seasons": "",
-    "desc1": "受人青睐的高价值物品，商人愿意高价收购（返回银色庇护所时转换为研究资料）",
-    "desc2": "冷周六坚称这是她兄弟遗失的项链，虽然我们很难定义蛇的脖子在哪……",
-    "disposable": 0,
-    "sellPrice": "item#1:456",
-    "icon": "8330413",
-    "type": 1,
-    "subType": 101,
-    "deposit": 0,
-    "rare": 4,
-    "mass": 50,
-    "cost": "item#1:380",
-    "worth": 380,
-    "overlayLimit": 99,
-    "isDestroy": 0,
-    "exchange": "item#1:380",
-    "effect": "",
-    "enhanceCond": "",
-    "maxLimit": 99,
-    "copyItem": 0
-  },
-  {
-    "id": 800305,
-    "name": "普通海螺",
-    "versions": "",
-    "seasons": "",
-    "desc1": "受人青睐的高价值物品，商人愿意高价收购（返回银色庇护所时转换为研究资料）",
-    "desc2": "有一群来自“普通海螺俱乐部”的人愿意出重金收购它。",
-    "disposable": 0,
-    "sellPrice": "item#1:600",
-    "icon": "8330607",
-    "type": 1,
-    "subType": 101,
-    "deposit": 0,
-    "rare": 6,
-    "mass": 50,
-    "cost": "item#1:500",
-    "worth": 500,
-    "overlayLimit": 99,
-    "isDestroy": 0,
-    "exchange": "item#1:500",
-    "effect": "",
-    "enhanceCond": "",
-    "maxLimit": 99,
-    "copyItem": 0
-  },
-  {
-    "id": 800306,
-    "name": "愚人黄金",
-    "versions": "",
-    "seasons": "",
-    "desc1": "受人青睐的高价值物品，商人愿意高价收购（返回银色庇护所时转换为研究资料）",
-    "desc2": "无需过多介绍——黄金。也许应该形容为朴实无华，但是它骗过了所有的眼睛。",
-    "disposable": 0,
-    "sellPrice": "item#1:720",
-    "icon": "8170027",
-    "type": 1,
-    "subType": 101,
-    "deposit": 0,
-    "rare": 6,
-    "mass": 50,
-    "cost": "item#1:600",
-    "worth": 600,
-    "overlayLimit": 99,
-    "isDestroy": 0,
-    "exchange": "item#1:600",
-    "effect": "",
-    "enhanceCond": "",
-    "maxLimit": 99,
-    "copyItem": 0
-  },
-  {
-    "id": 800307,
-    "name": "黑碑",
-    "versions": "",
-    "seasons": "",
-    "desc1": "受人青睐的高价值物品，商人愿意高价收购（返回银色庇护所时转换为研究资料）",
-    "desc2": "——复杂的铭文越来越不可名状。\n——对，我每次看我们的规章文件都是这个感觉。",
-    "disposable": 0,
-    "sellPrice": "item#1:840",
-    "icon": "8330708",
-    "type": 1,
-    "subType": 101,
-    "deposit": 0,
-    "rare": 6,
-    "mass": 50,
-    "cost": "item#1:700",
-    "worth": 700,
-    "overlayLimit": 99,
-    "isDestroy": 0,
-    "exchange": "item#1:700",
-    "effect": "",
-    "enhanceCond": "",
-    "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 800308,
     "name": "天然琥珀",
     "versions": "",
     "seasons": "",
-    "desc1": "受人青睐的高价值物品，商人愿意高价收购（返回银色庇护所时转换为研究资料）",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
     "desc2": "累吗？下次别往背包里装石头了。",
     "disposable": 0,
-    "sellPrice": "item#1:960",
+    "sellPrice": "item#1:600",
     "icon": "8330211",
     "type": 1,
     "subType": 101,
     "deposit": 0,
     "rare": 6,
-    "mass": 50,
-    "cost": "item#1:800",
+    "mass": 250,
+    "cost": "item#1:2000",
     "worth": 800,
     "overlayLimit": 99,
     "isDestroy": 0,
-    "exchange": "item#1:800",
+    "exchange": "",
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 800309,
     "name": "“上天的恩赐”",
     "versions": "",
     "seasons": "",
-    "desc1": "受人青睐的高价值物品，商人愿意高价收购（返回银色庇护所时转换为研究资料）",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
     "desc2": "有点眼熟，可能是缪斯三世布置圣诞树时掉进盒子的礼物。",
     "disposable": 0,
-    "sellPrice": "item#1:1080",
+    "sellPrice": "item#1:600",
     "icon": "8330063",
     "type": 1,
     "subType": 101,
     "deposit": 0,
     "rare": 6,
-    "mass": 50,
-    "cost": "item#1:900",
+    "mass": 200,
+    "cost": "item#1:2000",
     "worth": 900,
     "overlayLimit": 99,
     "isDestroy": 0,
-    "exchange": "item#1:900",
+    "exchange": "",
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 800310,
     "name": "绿戒",
     "versions": "",
     "seasons": "",
-    "desc1": "受人青睐的高价值物品，商人愿意高价收购（返回银色庇护所时转换为研究资料）",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
     "desc2": "冷周六坚称这是她兄弟遗失的项链，虽然我们很难定义蛇的脖子在哪……",
     "disposable": 0,
-    "sellPrice": "item#1:2499",
+    "sellPrice": "item#1:800",
     "icon": "8330413",
     "type": 1,
     "subType": 101,
     "deposit": 0,
     "rare": 6,
-    "mass": 50,
+    "mass": 200,
+    "cost": "item#1:2000",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
+  },
+  {
+    "id": 800311,
+    "name": "将军雕像",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "“仅以此纪念伟大的战友、同志、动物园囚牢的解放者、芝诺未来的将军……头衔太多，就写到这。”",
+    "disposable": 0,
+    "sellPrice": "item#1:600",
+    "icon": "800001",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 6,
+    "mass": 200,
+    "cost": "item#1:2000",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
+  },
+  {
+    "id": 800312,
+    "name": "防盗钱夹",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "昂贵的钱夹，它本身比里面的钱要值钱。",
+    "disposable": 0,
+    "sellPrice": "item#1:2499",
+    "icon": "800002",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 5,
+    "mass": 100,
     "cost": "item#1:1999",
     "worth": 1999,
     "overlayLimit": 99,
     "isDestroy": 0,
-    "exchange": "item#1:1999",
+    "exchange": "",
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime6"
+  },
+  {
+    "id": 800313,
+    "name": "盘蛇礼杯",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "倒入冰酒会导致黄金蛇冬眠。",
+    "disposable": 0,
+    "sellPrice": "item#1:600",
+    "icon": "800003",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 6,
+    "mass": 200,
+    "cost": "item#1:2000",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
+  },
+  {
+    "id": 800314,
+    "name": "玩具棋子方阵",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "玩具盒中棋子收集的盒中棋子。",
+    "disposable": 0,
+    "sellPrice": "item#1:2499",
+    "icon": "800004",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 5,
+    "mass": 100,
+    "cost": "item#1:1999",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime6"
+  },
+  {
+    "id": 800315,
+    "name": "金甲虫",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "它匍匐于鲜红的跳动上，说“心脏不得作伪”。",
+    "disposable": 0,
+    "sellPrice": "item#1:600",
+    "icon": "800005",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 6,
+    "mass": 100,
+    "cost": "item#1:2000",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
+  },
+  {
+    "id": 800316,
+    "name": "天象仪",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "视野以它为中介然后为整个宇宙定价。",
+    "disposable": 0,
+    "sellPrice": "item#1:600",
+    "icon": "800006",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 6,
+    "mass": 200,
+    "cost": "item#1:2000",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
+  },
+  {
+    "id": 800317,
+    "name": "四目显微镜",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "宇宙以它为中介然后为我们定价。",
+    "disposable": 0,
+    "sellPrice": "item#1:600",
+    "icon": "800007",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 6,
+    "mass": 200,
+    "cost": "item#1:2000",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
+  },
+  {
+    "id": 800318,
+    "name": "返魂壶",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "加热灵魂，在顶部冷凝，落回壶中。",
+    "disposable": 0,
+    "sellPrice": "item#1:600",
+    "icon": "800008",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 6,
+    "mass": 200,
+    "cost": "item#1:2000",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
+  },
+  {
+    "id": 800319,
+    "name": "化石标本",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "这里面有蚊子吗？可以提取它的DNA吗？",
+    "disposable": 0,
+    "sellPrice": "item#1:600",
+    "icon": "800009",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 6,
+    "mass": 200,
+    "cost": "item#1:2000",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
+  },
+  {
+    "id": 800320,
+    "name": "传说中的海螺",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "盛满了大海的传说、趣闻以及小道消息。",
+    "disposable": 0,
+    "sellPrice": "item#1:600",
+    "icon": "800010",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 6,
+    "mass": 200,
+    "cost": "item#1:2000",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
+  },
+  {
+    "id": 800321,
+    "name": "黄金鸟窝",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "三布谷鸟归巢。",
+    "disposable": 0,
+    "sellPrice": "item#1:600",
+    "icon": "800011",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 6,
+    "mass": 150,
+    "cost": "item#1:2000",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
+  },
+  {
+    "id": 800322,
+    "name": "金骰子",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "骰子与豌豆一样能让你触摸到巨人的财宝。",
+    "disposable": 0,
+    "sellPrice": "item#1:600",
+    "icon": "800012",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 6,
+    "mass": 150,
+    "cost": "item#1:2000",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
+  },
+  {
+    "id": 800323,
+    "name": "残破的玻璃",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "石像鬼离开后不到一年，这花窗就破碎了。",
+    "disposable": 0,
+    "sellPrice": "item#1:2499",
+    "icon": "800013",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 5,
+    "mass": 100,
+    "cost": "item#1:1999",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime6"
+  },
+  {
+    "id": 800324,
+    "name": "奇怪的机械鸟",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "一到整点就会叫。",
+    "disposable": 0,
+    "sellPrice": "item#1:600",
+    "icon": "800014",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 6,
+    "mass": 200,
+    "cost": "item#1:2000",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
+  },
+  {
+    "id": 800325,
+    "name": "时之沙",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "它流了五秒钟的沙子——你看，你又失去了五秒钟。",
+    "disposable": 0,
+    "sellPrice": "item#1:600",
+    "icon": "800015",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 6,
+    "mass": 150,
+    "cost": "item#1:2000",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
+  },
+  {
+    "id": 800326,
+    "name": "粹雨滴标本",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "一滴雨里装着过去，现在和未来。",
+    "disposable": 0,
+    "sellPrice": "item#1:1999",
+    "icon": "800017",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 6,
+    "mass": 50,
+    "cost": "item#1:2000",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
+  },
+  {
+    "id": 800327,
+    "name": "自酿",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "由意识唤醒者配合酿造的佳酿 。",
+    "disposable": 0,
+    "sellPrice": "item#1:2499",
+    "icon": "800029",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 5,
+    "mass": 100,
+    "cost": "item#1:1999",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime6"
+  },
+  {
+    "id": 800328,
+    "name": "精致的羊毛毯",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "正好可以裹住一位女王。",
+    "disposable": 0,
+    "sellPrice": "item#1:2499",
+    "icon": "800022",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 5,
+    "mass": 100,
+    "cost": "item#1:1999",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime6"
+  },
+  {
+    "id": 800329,
+    "name": "“正义”",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "“正义”的1/7比例仿制模型，一定会来，但是不一定会迟到。",
+    "disposable": 0,
+    "sellPrice": "item#1:2499",
+    "icon": "800016",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 5,
+    "mass": 100,
+    "cost": "item#1:1999",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime6"
+  },
+  {
+    "id": 800330,
+    "name": "狮身计数猫",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "每当你认真工作一秒，它就用它的前爪拍击一次地面。",
+    "disposable": 0,
+    "sellPrice": "item#1:600",
+    "icon": "800026",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 6,
+    "mass": 200,
+    "cost": "item#1:2000",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
+  },
+  {
+    "id": 800331,
+    "name": "欢迎门把手",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "拉普拉斯人文精神的典范。",
+    "disposable": 0,
+    "sellPrice": "item#1:2499",
+    "icon": "800020",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 5,
+    "mass": 100,
+    "cost": "item#1:1999",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime6"
+  },
+  {
+    "id": 800332,
+    "name": "活性细胞",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "到底得食用多少苦目糖才能做到满眼都是这个?",
+    "disposable": 0,
+    "sellPrice": "item#1:1999",
+    "icon": "800021",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 6,
+    "mass": 100,
+    "cost": "item#1:2000",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
+  },
+  {
+    "id": 800333,
+    "name": "垃圾桶",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "它该被用来装垃圾，还是放在收藏室里高高供起？",
+    "disposable": 0,
+    "sellPrice": "item#1:2499",
+    "icon": "800023",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 5,
+    "mass": 100,
+    "cost": "item#1:1999",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime6"
+  },
+  {
+    "id": 800334,
+    "name": "实用型打字机",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "从A到Z顺着排布的按键让它着实难以上手，一点都不实用。",
+    "disposable": 0,
+    "sellPrice": "item#1:600",
+    "icon": "800027",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 6,
+    "mass": 200,
+    "cost": "item#1:2000",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
+  },
+  {
+    "id": 800335,
+    "name": "半人马血液",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "不要将它涂抹在衣服上。",
+    "disposable": 0,
+    "sellPrice": "item#1:600",
+    "icon": "800018",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 6,
+    "mass": 200,
+    "cost": "item#1:2000",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
+  },
+  {
+    "id": 800336,
+    "name": "铜唱片",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "这不是金唱片，它是铜制的。",
+    "disposable": 0,
+    "sellPrice": "item#1:600",
+    "icon": "800028",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 6,
+    "mass": 200,
+    "cost": "item#1:2000",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
+  },
+  {
+    "id": 800337,
+    "name": "拉普拉斯科算中心模型",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "为什么会有人想要这个？这是你每天受苦的地方，你还要把它做成模型放在家里？",
+    "disposable": 0,
+    "sellPrice": "item#1:600",
+    "icon": "800024",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 6,
+    "mass": 200,
+    "cost": "item#1:2000",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
+  },
+  {
+    "id": 800338,
+    "name": "钻石矿镐",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "天哪，用钻石去挖煤，太有思考了。",
+    "disposable": 0,
+    "sellPrice": "item#1:600",
+    "icon": "800030",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 6,
+    "mass": 200,
+    "cost": "item#1:2000",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
+  },
+  {
+    "id": 800339,
+    "name": "多面骰",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "它被发现的时候，依旧没被投到想要的点数。",
+    "disposable": 0,
+    "sellPrice": "item#1:800",
+    "icon": "800019",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 6,
+    "mass": 150,
+    "cost": "item#1:2000",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
+  },
+  {
+    "id": 800340,
+    "name": "奇怪的蘑菇",
+    "versions": "",
+    "seasons": "",
+    "desc1": "受人青睐的高价值物品，商人愿意高价收购",
+    "desc2": "再吃一个就可以施展火球术了！",
+    "disposable": 0,
+    "sellPrice": "item#1:2499",
+    "icon": "800025",
+    "type": 1,
+    "subType": 101,
+    "deposit": 0,
+    "rare": 5,
+    "mass": 100,
+    "cost": "item#1:1999",
+    "worth": 1999,
+    "overlayLimit": 99,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "",
+    "enhanceCond": "",
+    "maxLimit": 99,
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime6"
   },
   {
     "id": 800010,
     "name": "引诱剂 蓝图",
     "versions": "",
     "seasons": "",
-    "desc1": "在临行商店解锁商品【引诱剂】：使用后，选择自身4格范围内一名漫游助理或怪物，使其传送到自身4格范围外的随机位置",
+    "desc1": "在临行商店解锁商品【引诱剂】：使用后，使2格范围内的敌人被吸引至该位置",
     "desc2": "科学蓝图，多么方便！",
     "disposable": 1,
     "sellPrice": "",
@@ -2822,7 +3586,9 @@
     "effect": "3#60001#7000006#-521",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800011,
@@ -2847,7 +3613,9 @@
     "effect": "3#60001#7000007#-522",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800012,
@@ -2872,7 +3640,9 @@
     "effect": "3#60001#7000008#-523",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800013,
@@ -2897,7 +3667,9 @@
     "effect": "3#60001#7000009#-524",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800014,
@@ -2922,7 +3694,9 @@
     "effect": "3#60001#7000010#-525",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800015,
@@ -2947,7 +3721,9 @@
     "effect": "3#60001#7000011#-526",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800016,
@@ -2972,7 +3748,9 @@
     "effect": "3#60001#7000012#-527",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800017,
@@ -2997,7 +3775,9 @@
     "effect": "3#60001#7000013#-528",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800018,
@@ -3022,7 +3802,9 @@
     "effect": "3#60001#7000014#-529",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800019,
@@ -3047,7 +3829,9 @@
     "effect": "3#60001#7000015#-530",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800020,
@@ -3072,7 +3856,9 @@
     "effect": "3#60001#7000016#-531",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800021,
@@ -3097,7 +3883,9 @@
     "effect": "3#60001#7000017#-532",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 8000221,
@@ -3122,7 +3910,9 @@
     "effect": "101#3#1",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 8000222,
@@ -3147,7 +3937,9 @@
     "effect": "102#3#1",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 8000223,
@@ -3172,7 +3964,9 @@
     "effect": "103#3#1",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 8000224,
@@ -3197,7 +3991,9 @@
     "effect": "104#1#1",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 8000231,
@@ -3222,7 +4018,9 @@
     "effect": "201#3#1",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 8000232,
@@ -3247,7 +4045,9 @@
     "effect": "202#3#1",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 8000233,
@@ -3272,7 +4072,9 @@
     "effect": "203#3#1",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 8000234,
@@ -3297,7 +4099,9 @@
     "effect": "204#1#1",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 8000241,
@@ -3322,7 +4126,9 @@
     "effect": "301#3#1",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 8000242,
@@ -3347,7 +4153,9 @@
     "effect": "302#3#1",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 8000243,
@@ -3372,7 +4180,9 @@
     "effect": "303#3#1",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 8000244,
@@ -3397,7 +4207,9 @@
     "effect": "304#1#1",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 8000251,
@@ -3422,7 +4234,9 @@
     "effect": "401#3#1",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 8000252,
@@ -3447,7 +4261,9 @@
     "effect": "402#3#1",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 8000253,
@@ -3472,7 +4288,9 @@
     "effect": "403#3#1",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 8000254,
@@ -3497,7 +4315,9 @@
     "effect": "404#1#1",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800022,
@@ -3522,7 +4342,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800023,
@@ -3547,7 +4369,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800024,
@@ -3572,7 +4396,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800025,
@@ -3597,7 +4423,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800026,
@@ -3622,7 +4450,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800027,
@@ -3647,7 +4477,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800028,
@@ -3672,7 +4504,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800029,
@@ -3697,7 +4531,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800030,
@@ -3722,7 +4558,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800031,
@@ -3735,7 +4573,7 @@
     "sellPrice": "",
     "icon": "20330",
     "type": 1,
-    "subType": 102,
+    "subType": 0,
     "deposit": 0,
     "rare": 5,
     "mass": 0,
@@ -3747,7 +4585,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800032,
@@ -3760,7 +4600,7 @@
     "sellPrice": "",
     "icon": "20329",
     "type": 1,
-    "subType": 102,
+    "subType": 0,
     "deposit": 0,
     "rare": 5,
     "mass": 0,
@@ -3772,7 +4612,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800033,
@@ -3797,132 +4639,144 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800034,
     "name": "乌尔里希首相号",
     "versions": "",
     "seasons": "",
-    "desc1": "本次演习中，免疫【迷障泡泡】地形的负面效果：不再迷失方向",
+    "desc1": "使用后，免疫【迷障泡泡】地形的负面效果（不再迷失方向），持续2小时",
     "desc2": "阿德勒研究员，希望你理解并非所有的玻璃都可以作为隔绝有害气体的材料。嘿！阿德勒，嘿！！别摘！",
     "disposable": 1,
     "sellPrice": "",
     "icon": "20326",
-    "type": 1,
+    "type": 5,
     "subType": 102,
     "deposit": 0,
     "rare": 5,
     "mass": 0,
-    "cost": "item#1:600",
+    "cost": "item#1:200",
     "worth": 0,
     "overlayLimit": 10,
     "isDestroy": 0,
     "exchange": "",
-    "effect": "",
+    "effect": "503301",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800035,
     "name": "清洁工号",
     "versions": "",
     "seasons": "",
-    "desc1": "本次演习中，免疫【多彩油砂】的负面效果：不再减速，也不会获得【无用垃圾】",
+    "desc1": "使用后，免疫【多彩油砂】的负面效果（不再减速，不会获得【无用垃圾】），持续2小时",
     "desc2": "它一直在清洁自己。顺便一提它名字难得正经是因为被禁止用同事命名",
     "disposable": 1,
     "sellPrice": "",
     "icon": "20325",
-    "type": 1,
+    "type": 5,
     "subType": 102,
     "deposit": 0,
     "rare": 5,
     "mass": 0,
-    "cost": "item#1:600",
+    "cost": "item#1:200",
     "worth": 0,
     "overlayLimit": 10,
     "isDestroy": 0,
     "exchange": "",
-    "effect": "",
+    "effect": "503302",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800036,
     "name": "不可燃点",
     "versions": "",
     "seasons": "",
-    "desc1": "本次演习中，免疫【拟态圣火】的负面效果：不会受到火焰的影响",
+    "desc1": "使用后，免疫【拟态圣火】的负面效果（不会受到火焰的影响），持续2小时",
     "desc2": "理论上可承受2800华氏度的高温，但是座舱内却并未配备对应的散热装置，对，风扇都没有。",
     "disposable": 1,
     "sellPrice": "",
     "icon": "20323",
-    "type": 1,
+    "type": 5,
     "subType": 102,
     "deposit": 0,
     "rare": 5,
     "mass": 0,
-    "cost": "item#1:600",
+    "cost": "item#1:200",
     "worth": 0,
     "overlayLimit": 10,
     "isDestroy": 0,
     "exchange": "",
-    "effect": "",
+    "effect": "503303",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800037,
     "name": "北方小调",
     "versions": "",
     "seasons": "",
-    "desc1": "本次演习中，免疫【滑冰场远亲】的负面效果：不会摔倒",
+    "desc1": "使用后，免疫【滑冰场远亲】的负面效果（不会摔倒），持续2小时",
     "desc2": "宽阔的履带接触面让我们学会了与冰面并存，我们是要在上滑行，而并非切开。",
     "disposable": 1,
     "sellPrice": "",
     "icon": "20322",
-    "type": 1,
+    "type": 5,
     "subType": 102,
     "deposit": 0,
     "rare": 5,
     "mass": 0,
-    "cost": "item#1:600",
+    "cost": "item#1:200",
     "worth": 0,
     "overlayLimit": 10,
     "isDestroy": 0,
     "exchange": "",
-    "effect": "",
+    "effect": "503304",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800038,
     "name": "迷你摇滚海盗",
     "versions": "",
     "seasons": "",
-    "desc1": "本次演习中，免疫【水域】的负面效果：不再减速，也不会受到水龙卷的影响",
+    "desc1": "使用后，免疫【水域】的负面效果（不再减速，不会受到水龙卷的影响），持续2小时",
     "desc2": "“露西号补给船马上会到来，给我们带来糖，茶和胡椒博士”",
     "disposable": 1,
     "sellPrice": "",
     "icon": "20324",
-    "type": 1,
+    "type": 5,
     "subType": 102,
     "deposit": 0,
     "rare": 5,
     "mass": 0,
-    "cost": "item#1:600",
+    "cost": "item#1:200",
     "worth": 0,
     "overlayLimit": 10,
     "isDestroy": 0,
     "exchange": "",
-    "effect": "",
+    "effect": "503305",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 800039,
@@ -3938,7 +4792,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:100",
     "worth": 0,
     "overlayLimit": 99,
@@ -3947,7 +4801,9 @@
     "effect": "800039",
     "enhanceCond": "",
     "maxLimit": 99,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 7100101,
@@ -3963,7 +4819,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -3972,7 +4828,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7200101"
   },
   {
     "id": 7200101,
@@ -3997,7 +4855,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7300101"
   },
   {
     "id": 7300101,
@@ -4013,7 +4873,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -4022,7 +4882,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7100102,
@@ -4038,7 +4900,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -4047,7 +4909,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7200102"
   },
   {
     "id": 7200102,
@@ -4072,7 +4936,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7300102"
   },
   {
     "id": 7300102,
@@ -4088,7 +4954,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -4097,7 +4963,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7100103,
@@ -4113,7 +4981,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -4122,7 +4990,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7200103"
   },
   {
     "id": 7200103,
@@ -4147,7 +5017,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7300103"
   },
   {
     "id": 7300103,
@@ -4163,7 +5035,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -4172,7 +5044,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7100104,
@@ -4188,7 +5062,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -4197,7 +5071,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7200104"
   },
   {
     "id": 7200104,
@@ -4222,7 +5098,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7300104"
   },
   {
     "id": 7300104,
@@ -4238,7 +5116,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -4247,7 +5125,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7100105,
@@ -4263,7 +5143,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -4272,7 +5152,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7200105"
   },
   {
     "id": 7200105,
@@ -4297,7 +5179,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7300105"
   },
   {
     "id": 7300105,
@@ -4313,7 +5197,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -4322,7 +5206,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7100201,
@@ -4338,7 +5224,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -4347,7 +5233,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7200201"
   },
   {
     "id": 7200201,
@@ -4372,7 +5260,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7300201"
   },
   {
     "id": 7300201,
@@ -4388,7 +5278,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -4397,7 +5287,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7100202,
@@ -4413,7 +5305,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -4422,7 +5314,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7200202"
   },
   {
     "id": 7200202,
@@ -4447,7 +5341,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7300202"
   },
   {
     "id": 7300202,
@@ -4463,7 +5359,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -4472,7 +5368,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7100203,
@@ -4488,7 +5386,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -4497,7 +5395,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7200203"
   },
   {
     "id": 7200203,
@@ -4522,7 +5422,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7300203"
   },
   {
     "id": 7300203,
@@ -4538,7 +5440,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -4547,7 +5449,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7101101,
@@ -4563,7 +5467,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -4572,7 +5476,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7201101"
   },
   {
     "id": 7201101,
@@ -4597,7 +5503,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7301101"
   },
   {
     "id": 7301101,
@@ -4613,7 +5521,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -4622,7 +5530,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7101102,
@@ -4638,7 +5548,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -4647,7 +5557,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7201102"
   },
   {
     "id": 7201102,
@@ -4672,7 +5584,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7301102"
   },
   {
     "id": 7301102,
@@ -4688,7 +5602,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -4697,7 +5611,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7101201,
@@ -4713,7 +5629,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -4722,7 +5638,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7201201"
   },
   {
     "id": 7201201,
@@ -4747,7 +5665,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7301201"
   },
   {
     "id": 7301201,
@@ -4763,7 +5683,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -4772,7 +5692,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7101202,
@@ -4788,7 +5710,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -4797,7 +5719,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7201202"
   },
   {
     "id": 7201202,
@@ -4822,7 +5746,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7301202"
   },
   {
     "id": 7301202,
@@ -4838,7 +5764,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -4847,7 +5773,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7101203,
@@ -4863,7 +5791,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -4872,7 +5800,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7201203"
   },
   {
     "id": 7201203,
@@ -4897,7 +5827,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7301203"
   },
   {
     "id": 7301203,
@@ -4913,7 +5845,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -4922,7 +5854,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7101204,
@@ -4938,7 +5872,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -4947,7 +5881,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7201204"
   },
   {
     "id": 7201204,
@@ -4972,7 +5908,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7301204"
   },
   {
     "id": 7301204,
@@ -4988,7 +5926,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -4997,7 +5935,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7101205,
@@ -5013,7 +5953,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -5022,7 +5962,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7201205"
   },
   {
     "id": 7201205,
@@ -5047,7 +5989,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7301205"
   },
   {
     "id": 7301205,
@@ -5063,7 +6007,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -5072,7 +6016,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7101206,
@@ -5088,7 +6034,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -5097,7 +6043,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7201206"
   },
   {
     "id": 7201206,
@@ -5122,7 +6070,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7301206"
   },
   {
     "id": 7301206,
@@ -5138,7 +6088,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -5147,7 +6097,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7102101,
@@ -5163,7 +6115,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -5172,7 +6124,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7202101"
   },
   {
     "id": 7202101,
@@ -5197,7 +6151,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7302101"
   },
   {
     "id": 7302101,
@@ -5213,7 +6169,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -5222,7 +6178,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7102102,
@@ -5238,7 +6196,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -5247,7 +6205,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7202102"
   },
   {
     "id": 7202102,
@@ -5272,7 +6232,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7302102"
   },
   {
     "id": 7302102,
@@ -5288,7 +6250,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -5297,7 +6259,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7102201,
@@ -5313,7 +6277,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -5322,7 +6286,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7202201"
   },
   {
     "id": 7202201,
@@ -5347,7 +6313,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7302201"
   },
   {
     "id": 7302201,
@@ -5363,7 +6331,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -5372,7 +6340,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7102202,
@@ -5388,7 +6358,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -5397,7 +6367,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7202202"
   },
   {
     "id": 7202202,
@@ -5422,7 +6394,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7302202"
   },
   {
     "id": 7302202,
@@ -5438,7 +6412,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -5447,7 +6421,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7102203,
@@ -5463,7 +6439,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -5472,7 +6448,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7202203"
   },
   {
     "id": 7202203,
@@ -5497,7 +6475,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7302203"
   },
   {
     "id": 7302203,
@@ -5513,7 +6493,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -5522,7 +6502,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7102204,
@@ -5538,7 +6520,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -5547,7 +6529,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7202204"
   },
   {
     "id": 7202204,
@@ -5572,7 +6556,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7302204"
   },
   {
     "id": 7302204,
@@ -5588,7 +6574,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -5597,7 +6583,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7102205,
@@ -5613,7 +6601,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -5622,7 +6610,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7202205"
   },
   {
     "id": 7202205,
@@ -5647,7 +6637,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7302205"
   },
   {
     "id": 7302205,
@@ -5663,7 +6655,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -5672,7 +6664,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7102206,
@@ -5688,7 +6682,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -5697,7 +6691,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7202206"
   },
   {
     "id": 7202206,
@@ -5722,7 +6718,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7302206"
   },
   {
     "id": 7302206,
@@ -5738,7 +6736,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -5747,7 +6745,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7103101,
@@ -5763,7 +6763,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -5772,7 +6772,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7203101"
   },
   {
     "id": 7203101,
@@ -5797,7 +6799,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7303101"
   },
   {
     "id": 7303101,
@@ -5813,7 +6817,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -5822,7 +6826,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7103102,
@@ -5838,7 +6844,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -5847,7 +6853,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7203102"
   },
   {
     "id": 7203102,
@@ -5872,7 +6880,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7303102"
   },
   {
     "id": 7303102,
@@ -5888,7 +6898,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -5897,7 +6907,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7103201,
@@ -5913,7 +6925,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -5922,7 +6934,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7203201"
   },
   {
     "id": 7203201,
@@ -5947,7 +6961,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7303201"
   },
   {
     "id": 7303201,
@@ -5963,7 +6979,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -5972,7 +6988,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7103202,
@@ -5988,7 +7006,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -5997,7 +7015,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7203202"
   },
   {
     "id": 7203202,
@@ -6022,7 +7042,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7303202"
   },
   {
     "id": 7303202,
@@ -6038,7 +7060,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -6047,7 +7069,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7103203,
@@ -6063,7 +7087,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -6072,7 +7096,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7203203"
   },
   {
     "id": 7203203,
@@ -6097,7 +7123,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7303203"
   },
   {
     "id": 7303203,
@@ -6113,7 +7141,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -6122,7 +7150,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7103204,
@@ -6138,7 +7168,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -6147,7 +7177,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7203204"
   },
   {
     "id": 7203204,
@@ -6172,7 +7204,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7303204"
   },
   {
     "id": 7303204,
@@ -6188,7 +7222,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -6197,7 +7231,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7103205,
@@ -6213,7 +7249,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -6222,7 +7258,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7203205"
   },
   {
     "id": 7203205,
@@ -6247,7 +7285,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7303205"
   },
   {
     "id": 7303205,
@@ -6263,7 +7303,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -6272,7 +7312,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7103206,
@@ -6288,7 +7330,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -6297,7 +7339,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7203206"
   },
   {
     "id": 7203206,
@@ -6322,7 +7366,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7303206"
   },
   {
     "id": 7303206,
@@ -6338,7 +7384,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -6347,7 +7393,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7104101,
@@ -6363,7 +7411,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -6372,7 +7420,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7204101"
   },
   {
     "id": 7204101,
@@ -6397,7 +7447,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7304101"
   },
   {
     "id": 7304101,
@@ -6413,7 +7465,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -6422,7 +7474,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7104102,
@@ -6438,7 +7492,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -6447,7 +7501,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7204102"
   },
   {
     "id": 7204102,
@@ -6472,7 +7528,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7304102"
   },
   {
     "id": 7304102,
@@ -6488,7 +7546,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -6497,7 +7555,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7104201,
@@ -6513,7 +7573,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -6522,7 +7582,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7204201"
   },
   {
     "id": 7204201,
@@ -6547,7 +7609,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7304201"
   },
   {
     "id": 7304201,
@@ -6563,7 +7627,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -6572,7 +7636,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7104202,
@@ -6588,7 +7654,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -6597,7 +7663,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7204202"
   },
   {
     "id": 7204202,
@@ -6622,7 +7690,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7304202"
   },
   {
     "id": 7304202,
@@ -6638,7 +7708,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -6647,7 +7717,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7104203,
@@ -6663,7 +7735,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -6672,7 +7744,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7204203"
   },
   {
     "id": 7204203,
@@ -6697,7 +7771,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7304203"
   },
   {
     "id": 7304203,
@@ -6713,7 +7789,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -6722,7 +7798,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7104204,
@@ -6738,7 +7816,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -6747,7 +7825,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7204204"
   },
   {
     "id": 7204204,
@@ -6772,7 +7852,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7304204"
   },
   {
     "id": 7304204,
@@ -6788,7 +7870,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -6797,7 +7879,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7104205,
@@ -6813,7 +7897,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -6822,7 +7906,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7204205"
   },
   {
     "id": 7204205,
@@ -6847,7 +7933,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7304205"
   },
   {
     "id": 7304205,
@@ -6863,7 +7951,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -6872,7 +7960,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7104206,
@@ -6888,7 +7978,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -6897,7 +7987,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7204206"
   },
   {
     "id": 7204206,
@@ -6922,7 +8014,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7304206"
   },
   {
     "id": 7304206,
@@ -6938,7 +8032,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -6947,7 +8041,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7105101,
@@ -6963,7 +8059,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -6972,7 +8068,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7205101"
   },
   {
     "id": 7205101,
@@ -6997,7 +8095,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7305101"
   },
   {
     "id": 7305101,
@@ -7013,7 +8113,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -7022,7 +8122,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7105102,
@@ -7038,7 +8140,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -7047,7 +8149,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7205102"
   },
   {
     "id": 7205102,
@@ -7072,7 +8176,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7305102"
   },
   {
     "id": 7305102,
@@ -7088,7 +8194,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -7097,7 +8203,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7105201,
@@ -7113,7 +8221,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -7122,7 +8230,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7205201"
   },
   {
     "id": 7205201,
@@ -7147,7 +8257,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7305201"
   },
   {
     "id": 7305201,
@@ -7163,7 +8275,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -7172,7 +8284,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7105202,
@@ -7188,7 +8302,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -7197,7 +8311,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7205202"
   },
   {
     "id": 7205202,
@@ -7222,7 +8338,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7305202"
   },
   {
     "id": 7305202,
@@ -7238,7 +8356,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -7247,7 +8365,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7105203,
@@ -7263,7 +8383,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -7272,7 +8392,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7205203"
   },
   {
     "id": 7205203,
@@ -7297,7 +8419,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7305203"
   },
   {
     "id": 7305203,
@@ -7313,7 +8437,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -7322,7 +8446,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7105204,
@@ -7338,7 +8464,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -7347,7 +8473,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7205204"
   },
   {
     "id": 7205204,
@@ -7372,7 +8500,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7305204"
   },
   {
     "id": 7305204,
@@ -7388,7 +8518,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -7397,7 +8527,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7105205,
@@ -7413,7 +8545,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -7422,7 +8554,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7205205"
   },
   {
     "id": 7205205,
@@ -7447,7 +8581,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7305205"
   },
   {
     "id": 7305205,
@@ -7463,7 +8599,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -7472,7 +8608,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7105206,
@@ -7488,7 +8626,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -7497,7 +8635,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7205206"
   },
   {
     "id": 7205206,
@@ -7522,7 +8662,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7305206"
   },
   {
     "id": 7305206,
@@ -7538,7 +8680,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -7547,7 +8689,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7106101,
@@ -7563,7 +8707,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -7572,7 +8716,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7206101"
   },
   {
     "id": 7206101,
@@ -7597,7 +8743,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7306101"
   },
   {
     "id": 7306101,
@@ -7613,7 +8761,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -7622,7 +8770,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7106102,
@@ -7638,7 +8788,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -7647,7 +8797,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7206102"
   },
   {
     "id": 7206102,
@@ -7672,7 +8824,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7306102"
   },
   {
     "id": 7306102,
@@ -7688,7 +8842,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -7697,7 +8851,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7106201,
@@ -7713,7 +8869,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -7722,7 +8878,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7206201"
   },
   {
     "id": 7206201,
@@ -7747,7 +8905,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7306201"
   },
   {
     "id": 7306201,
@@ -7763,7 +8923,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -7772,7 +8932,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7106202,
@@ -7788,7 +8950,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -7797,7 +8959,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7206202"
   },
   {
     "id": 7206202,
@@ -7822,7 +8986,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7306202"
   },
   {
     "id": 7306202,
@@ -7838,7 +9004,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -7847,7 +9013,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7106203,
@@ -7863,7 +9031,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -7872,7 +9040,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7206203"
   },
   {
     "id": 7206203,
@@ -7897,7 +9067,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7306203"
   },
   {
     "id": 7306203,
@@ -7913,7 +9085,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -7922,7 +9094,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7106204,
@@ -7938,7 +9112,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -7947,7 +9121,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7206204"
   },
   {
     "id": 7206204,
@@ -7972,7 +9148,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7306204"
   },
   {
     "id": 7306204,
@@ -7988,7 +9166,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -7997,7 +9175,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7106205,
@@ -8013,7 +9193,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -8022,7 +9202,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7206205"
   },
   {
     "id": 7206205,
@@ -8047,7 +9229,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7306205"
   },
   {
     "id": 7306205,
@@ -8063,7 +9247,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -8072,7 +9256,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7106206,
@@ -8088,7 +9274,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 2,
-    "mass": 50,
+    "mass": 30,
     "cost": "item#1:250",
     "worth": 50,
     "overlayLimit": 1,
@@ -8097,7 +9283,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 10,
+    "sublimateDrop": "sublime7206206"
   },
   {
     "id": 7206206,
@@ -8122,7 +9310,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 15,
+    "sublimateDrop": "sublime7306206"
   },
   {
     "id": 7306206,
@@ -8138,7 +9328,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1000",
     "worth": 200,
     "overlayLimit": 1,
@@ -8147,7 +9337,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7000301,
@@ -8157,13 +9349,13 @@
     "desc1": "",
     "desc2": "",
     "disposable": 0,
-    "sellPrice": "item#1:400",
+    "sellPrice": "item#1:500",
     "icon": "19001",
     "type": 7,
     "subType": 0,
     "deposit": 0,
     "rare": 6,
-    "mass": 50,
+    "mass": 200,
     "cost": "item#1:2000",
     "worth": 400,
     "overlayLimit": 1,
@@ -8172,7 +9364,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7000302,
@@ -8182,13 +9376,13 @@
     "desc1": "",
     "desc2": "",
     "disposable": 0,
-    "sellPrice": "item#1:400",
+    "sellPrice": "item#1:500",
     "icon": "19002",
     "type": 7,
     "subType": 0,
     "deposit": 0,
     "rare": 6,
-    "mass": 50,
+    "mass": 200,
     "cost": "item#1:2000",
     "worth": 400,
     "overlayLimit": 1,
@@ -8197,7 +9391,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7000303,
@@ -8207,13 +9403,13 @@
     "desc1": "",
     "desc2": "",
     "disposable": 0,
-    "sellPrice": "item#1:400",
+    "sellPrice": "item#1:500",
     "icon": "19003",
     "type": 7,
     "subType": 0,
     "deposit": 0,
     "rare": 6,
-    "mass": 50,
+    "mass": 200,
     "cost": "item#1:2000",
     "worth": 400,
     "overlayLimit": 1,
@@ -8222,7 +9418,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7000304,
@@ -8232,13 +9430,13 @@
     "desc1": "",
     "desc2": "",
     "disposable": 0,
-    "sellPrice": "item#1:400",
+    "sellPrice": "item#1:500",
     "icon": "19004",
     "type": 7,
     "subType": 0,
     "deposit": 0,
     "rare": 6,
-    "mass": 50,
+    "mass": 200,
     "cost": "item#1:2000",
     "worth": 400,
     "overlayLimit": 1,
@@ -8247,7 +9445,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7000305,
@@ -8257,13 +9457,13 @@
     "desc1": "",
     "desc2": "",
     "disposable": 0,
-    "sellPrice": "item#1:400",
+    "sellPrice": "item#1:500",
     "icon": "19005",
     "type": 7,
     "subType": 0,
     "deposit": 0,
     "rare": 6,
-    "mass": 50,
+    "mass": 200,
     "cost": "item#1:2000",
     "worth": 400,
     "overlayLimit": 1,
@@ -8272,7 +9472,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7000306,
@@ -8282,13 +9484,13 @@
     "desc1": "",
     "desc2": "",
     "disposable": 0,
-    "sellPrice": "item#1:400",
+    "sellPrice": "item#1:500",
     "icon": "19006",
     "type": 7,
     "subType": 0,
     "deposit": 0,
     "rare": 6,
-    "mass": 50,
+    "mass": 200,
     "cost": "item#1:2000",
     "worth": 400,
     "overlayLimit": 1,
@@ -8297,7 +9499,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7000307,
@@ -8307,13 +9511,13 @@
     "desc1": "",
     "desc2": "",
     "disposable": 0,
-    "sellPrice": "item#1:400",
+    "sellPrice": "item#1:500",
     "icon": "19007",
     "type": 7,
     "subType": 0,
     "deposit": 0,
     "rare": 6,
-    "mass": 50,
+    "mass": 200,
     "cost": "item#1:2000",
     "worth": 400,
     "overlayLimit": 1,
@@ -8322,7 +9526,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7000308,
@@ -8332,13 +9538,13 @@
     "desc1": "",
     "desc2": "",
     "disposable": 0,
-    "sellPrice": "item#1:400",
+    "sellPrice": "item#1:500",
     "icon": "19008",
     "type": 7,
     "subType": 0,
     "deposit": 0,
     "rare": 6,
-    "mass": 50,
+    "mass": 200,
     "cost": "item#1:2000",
     "worth": 400,
     "overlayLimit": 1,
@@ -8347,7 +9553,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7000309,
@@ -8357,13 +9565,13 @@
     "desc1": "",
     "desc2": "",
     "disposable": 0,
-    "sellPrice": "item#1:400",
+    "sellPrice": "item#1:500",
     "icon": "19009",
     "type": 7,
     "subType": 0,
     "deposit": 0,
     "rare": 6,
-    "mass": 50,
+    "mass": 200,
     "cost": "item#1:2000",
     "worth": 400,
     "overlayLimit": 1,
@@ -8372,7 +9580,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7000310,
@@ -8382,13 +9592,13 @@
     "desc1": "",
     "desc2": "",
     "disposable": 0,
-    "sellPrice": "item#1:400",
+    "sellPrice": "item#1:500",
     "icon": "19010",
     "type": 7,
     "subType": 0,
     "deposit": 0,
     "rare": 6,
-    "mass": 50,
+    "mass": 200,
     "cost": "item#1:2000",
     "worth": 400,
     "overlayLimit": 1,
@@ -8397,7 +9607,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7000311,
@@ -8407,13 +9619,13 @@
     "desc1": "",
     "desc2": "",
     "disposable": 0,
-    "sellPrice": "item#1:400",
+    "sellPrice": "item#1:500",
     "icon": "19011",
     "type": 7,
     "subType": 0,
     "deposit": 0,
     "rare": 6,
-    "mass": 50,
+    "mass": 200,
     "cost": "item#1:2000",
     "worth": 400,
     "overlayLimit": 1,
@@ -8422,7 +9634,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7000312,
@@ -8432,13 +9646,13 @@
     "desc1": "",
     "desc2": "",
     "disposable": 0,
-    "sellPrice": "item#1:400",
+    "sellPrice": "item#1:500",
     "icon": "19012",
     "type": 7,
     "subType": 0,
     "deposit": 0,
     "rare": 6,
-    "mass": 50,
+    "mass": 200,
     "cost": "item#1:2000",
     "worth": 400,
     "overlayLimit": 1,
@@ -8447,7 +9661,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7000313,
@@ -8457,13 +9673,13 @@
     "desc1": "",
     "desc2": "",
     "disposable": 0,
-    "sellPrice": "item#1:400",
+    "sellPrice": "item#1:500",
     "icon": "19013",
     "type": 7,
     "subType": 0,
     "deposit": 0,
     "rare": 6,
-    "mass": 50,
+    "mass": 200,
     "cost": "item#1:2000",
     "worth": 400,
     "overlayLimit": 1,
@@ -8472,7 +9688,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7000314,
@@ -8482,13 +9700,13 @@
     "desc1": "",
     "desc2": "",
     "disposable": 0,
-    "sellPrice": "item#1:400",
+    "sellPrice": "item#1:500",
     "icon": "19014",
     "type": 7,
     "subType": 0,
     "deposit": 0,
     "rare": 6,
-    "mass": 50,
+    "mass": 200,
     "cost": "item#1:2000",
     "worth": 400,
     "overlayLimit": 1,
@@ -8497,7 +9715,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7000315,
@@ -8507,13 +9727,13 @@
     "desc1": "",
     "desc2": "",
     "disposable": 0,
-    "sellPrice": "item#1:400",
+    "sellPrice": "item#1:500",
     "icon": "19015",
     "type": 7,
     "subType": 0,
     "deposit": 0,
     "rare": 6,
-    "mass": 50,
+    "mass": 200,
     "cost": "item#1:2000",
     "worth": 400,
     "overlayLimit": 1,
@@ -8522,7 +9742,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7000316,
@@ -8538,7 +9760,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1500",
     "worth": 300,
     "overlayLimit": 1,
@@ -8547,7 +9769,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7000317,
@@ -8563,7 +9787,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1500",
     "worth": 300,
     "overlayLimit": 1,
@@ -8572,7 +9796,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7000318,
@@ -8588,7 +9814,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1500",
     "worth": 300,
     "overlayLimit": 1,
@@ -8597,7 +9823,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7000319,
@@ -8613,7 +9841,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1500",
     "worth": 300,
     "overlayLimit": 1,
@@ -8622,7 +9850,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 7000320,
@@ -8638,7 +9868,7 @@
     "subType": 0,
     "deposit": 0,
     "rare": 5,
-    "mass": 50,
+    "mass": 100,
     "cost": "item#1:1500",
     "worth": 300,
     "overlayLimit": 1,
@@ -8647,7 +9877,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 25,
+    "sublimateDrop": ""
   },
   {
     "id": 311001,
@@ -8672,7 +9904,9 @@
     "effect": "311001",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 311002,
@@ -8697,7 +9931,9 @@
     "effect": "311002",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 311003,
@@ -8722,7 +9958,9 @@
     "effect": "311003",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 311004,
@@ -8747,7 +9985,9 @@
     "effect": "311004",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 311005,
@@ -8772,7 +10012,9 @@
     "effect": "311005",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 311006,
@@ -8797,7 +10039,9 @@
     "effect": "311006",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 311007,
@@ -8822,7 +10066,9 @@
     "effect": "311007",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 311008,
@@ -8847,7 +10093,9 @@
     "effect": "311008",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 311009,
@@ -8872,7 +10120,9 @@
     "effect": "311009",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 311010,
@@ -8897,7 +10147,9 @@
     "effect": "311010",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 311011,
@@ -8922,7 +10174,9 @@
     "effect": "311011",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 311012,
@@ -8947,7 +10201,9 @@
     "effect": "311012",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 311013,
@@ -8972,7 +10228,9 @@
     "effect": "311013",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 311014,
@@ -8997,7 +10255,9 @@
     "effect": "311014",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 311015,
@@ -9022,7 +10282,9 @@
     "effect": "311015",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 311016,
@@ -9047,7 +10309,9 @@
     "effect": "311016",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 311017,
@@ -9072,7 +10336,9 @@
     "effect": "311017",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 311018,
@@ -9097,7 +10363,9 @@
     "effect": "311018",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 311019,
@@ -9122,7 +10390,9 @@
     "effect": "311019",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 311020,
@@ -9147,7 +10417,9 @@
     "effect": "311020",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312001,
@@ -9172,7 +10444,9 @@
     "effect": "312001",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312002,
@@ -9197,7 +10471,9 @@
     "effect": "312002",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312003,
@@ -9222,7 +10498,9 @@
     "effect": "312003",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312004,
@@ -9247,7 +10525,9 @@
     "effect": "312004",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312005,
@@ -9272,7 +10552,9 @@
     "effect": "312005",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312006,
@@ -9297,7 +10579,9 @@
     "effect": "312006",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312007,
@@ -9322,7 +10606,9 @@
     "effect": "312007",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312008,
@@ -9347,7 +10633,9 @@
     "effect": "312008",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312009,
@@ -9372,7 +10660,9 @@
     "effect": "312009",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312010,
@@ -9397,7 +10687,9 @@
     "effect": "312010",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312011,
@@ -9422,7 +10714,9 @@
     "effect": "312011",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312012,
@@ -9447,7 +10741,9 @@
     "effect": "312012",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312013,
@@ -9472,7 +10768,9 @@
     "effect": "312013",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312014,
@@ -9497,7 +10795,9 @@
     "effect": "312014",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312015,
@@ -9522,7 +10822,9 @@
     "effect": "312015",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312016,
@@ -9547,7 +10849,9 @@
     "effect": "312016",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312017,
@@ -9572,7 +10876,9 @@
     "effect": "312017",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312018,
@@ -9597,7 +10903,9 @@
     "effect": "312018",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312019,
@@ -9622,7 +10930,9 @@
     "effect": "312019",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312020,
@@ -9647,7 +10957,9 @@
     "effect": "312020",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312021,
@@ -9672,7 +10984,9 @@
     "effect": "312021",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312022,
@@ -9697,7 +11011,9 @@
     "effect": "312022",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312023,
@@ -9722,7 +11038,9 @@
     "effect": "312023",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312024,
@@ -9747,7 +11065,9 @@
     "effect": "312024",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312025,
@@ -9772,7 +11092,9 @@
     "effect": "312025",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312026,
@@ -9797,7 +11119,9 @@
     "effect": "312026",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312027,
@@ -9822,7 +11146,9 @@
     "effect": "312027",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312028,
@@ -9847,7 +11173,9 @@
     "effect": "312028",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312029,
@@ -9872,7 +11200,9 @@
     "effect": "312029",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312030,
@@ -9897,7 +11227,9 @@
     "effect": "312030",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312031,
@@ -9922,7 +11254,9 @@
     "effect": "312031",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312032,
@@ -9947,7 +11281,9 @@
     "effect": "312032",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312033,
@@ -9972,7 +11308,9 @@
     "effect": "312033",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312034,
@@ -9997,7 +11335,9 @@
     "effect": "312034",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312035,
@@ -10022,7 +11362,9 @@
     "effect": "312035",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312036,
@@ -10047,7 +11389,9 @@
     "effect": "312036",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312037,
@@ -10072,7 +11416,9 @@
     "effect": "312037",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312038,
@@ -10097,7 +11443,9 @@
     "effect": "312038",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312039,
@@ -10122,7 +11470,9 @@
     "effect": "312039",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 312040,
@@ -10147,7 +11497,9 @@
     "effect": "312040",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313001,
@@ -10172,7 +11524,9 @@
     "effect": "313001",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313002,
@@ -10197,7 +11551,9 @@
     "effect": "313002",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313003,
@@ -10222,7 +11578,9 @@
     "effect": "313003",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313004,
@@ -10247,7 +11605,9 @@
     "effect": "313004",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313005,
@@ -10272,7 +11632,9 @@
     "effect": "313005",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313006,
@@ -10297,7 +11659,9 @@
     "effect": "313006",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313007,
@@ -10322,7 +11686,9 @@
     "effect": "313007",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313008,
@@ -10347,7 +11713,9 @@
     "effect": "313008",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313009,
@@ -10372,7 +11740,9 @@
     "effect": "313009",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313010,
@@ -10397,7 +11767,9 @@
     "effect": "313010",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313011,
@@ -10422,7 +11794,9 @@
     "effect": "313011",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313012,
@@ -10447,7 +11821,9 @@
     "effect": "313012",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313013,
@@ -10472,7 +11848,9 @@
     "effect": "313013",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313014,
@@ -10497,7 +11875,9 @@
     "effect": "313014",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313015,
@@ -10522,7 +11902,9 @@
     "effect": "313015",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313016,
@@ -10547,7 +11929,9 @@
     "effect": "313016",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313017,
@@ -10572,7 +11956,9 @@
     "effect": "313017",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313018,
@@ -10597,7 +11983,9 @@
     "effect": "313018",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313019,
@@ -10622,7 +12010,9 @@
     "effect": "313019",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313020,
@@ -10647,7 +12037,9 @@
     "effect": "313020",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313021,
@@ -10672,7 +12064,9 @@
     "effect": "313021",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313022,
@@ -10697,7 +12091,9 @@
     "effect": "313022",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313023,
@@ -10722,7 +12118,9 @@
     "effect": "313023",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313024,
@@ -10747,7 +12145,9 @@
     "effect": "313024",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313025,
@@ -10772,7 +12172,9 @@
     "effect": "313025",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313026,
@@ -10797,7 +12199,9 @@
     "effect": "313026",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313027,
@@ -10822,7 +12226,9 @@
     "effect": "313027",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313028,
@@ -10847,7 +12253,9 @@
     "effect": "313028",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313029,
@@ -10872,7 +12280,9 @@
     "effect": "313029",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313030,
@@ -10897,7 +12307,9 @@
     "effect": "313030",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313031,
@@ -10922,7 +12334,9 @@
     "effect": "313031",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313032,
@@ -10947,7 +12361,9 @@
     "effect": "313032",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313033,
@@ -10972,7 +12388,9 @@
     "effect": "313033",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313034,
@@ -10997,7 +12415,9 @@
     "effect": "313034",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313035,
@@ -11022,7 +12442,9 @@
     "effect": "313035",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313036,
@@ -11047,7 +12469,9 @@
     "effect": "313036",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313037,
@@ -11072,7 +12496,9 @@
     "effect": "313037",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313038,
@@ -11097,7 +12523,9 @@
     "effect": "313038",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313039,
@@ -11122,7 +12550,9 @@
     "effect": "313039",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313040,
@@ -11147,7 +12577,9 @@
     "effect": "313040",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313041,
@@ -11172,7 +12604,9 @@
     "effect": "313041",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313042,
@@ -11197,7 +12631,9 @@
     "effect": "313042",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313043,
@@ -11222,7 +12658,9 @@
     "effect": "313043",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313044,
@@ -11247,7 +12685,9 @@
     "effect": "313044",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313045,
@@ -11272,7 +12712,9 @@
     "effect": "313045",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313046,
@@ -11297,7 +12739,9 @@
     "effect": "313046",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313047,
@@ -11322,7 +12766,9 @@
     "effect": "313047",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313048,
@@ -11347,7 +12793,9 @@
     "effect": "313048",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313049,
@@ -11372,7 +12820,9 @@
     "effect": "313049",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313050,
@@ -11397,7 +12847,9 @@
     "effect": "313050",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313051,
@@ -11422,7 +12874,9 @@
     "effect": "313051",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313052,
@@ -11447,7 +12901,9 @@
     "effect": "313052",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313053,
@@ -11472,7 +12928,9 @@
     "effect": "313053",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313054,
@@ -11497,7 +12955,9 @@
     "effect": "313054",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313055,
@@ -11522,7 +12982,9 @@
     "effect": "313055",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313056,
@@ -11547,7 +13009,9 @@
     "effect": "313056",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313057,
@@ -11572,7 +13036,9 @@
     "effect": "313057",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313058,
@@ -11597,7 +13063,9 @@
     "effect": "313058",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313059,
@@ -11622,7 +13090,9 @@
     "effect": "313059",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313060,
@@ -11647,7 +13117,9 @@
     "effect": "313060",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313061,
@@ -11672,7 +13144,9 @@
     "effect": "313061",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313062,
@@ -11697,7 +13171,9 @@
     "effect": "313062",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313063,
@@ -11722,7 +13198,9 @@
     "effect": "313063",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313064,
@@ -11747,7 +13225,9 @@
     "effect": "313064",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313065,
@@ -11772,7 +13252,9 @@
     "effect": "313065",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313066,
@@ -11797,7 +13279,9 @@
     "effect": "313066",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313067,
@@ -11822,7 +13306,9 @@
     "effect": "313067",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313068,
@@ -11847,7 +13333,9 @@
     "effect": "313068",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313069,
@@ -11872,7 +13360,9 @@
     "effect": "313069",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313070,
@@ -11897,7 +13387,9 @@
     "effect": "313070",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313071,
@@ -11922,7 +13414,9 @@
     "effect": "313071",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313072,
@@ -11947,7 +13441,9 @@
     "effect": "313072",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313073,
@@ -11972,7 +13468,9 @@
     "effect": "313073",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313074,
@@ -11997,7 +13495,9 @@
     "effect": "313074",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313075,
@@ -12022,7 +13522,9 @@
     "effect": "313075",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313076,
@@ -12047,7 +13549,9 @@
     "effect": "313076",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313077,
@@ -12072,7 +13576,9 @@
     "effect": "313077",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313078,
@@ -12097,7 +13603,9 @@
     "effect": "313078",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313079,
@@ -12122,7 +13630,9 @@
     "effect": "313079",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313080,
@@ -12147,7 +13657,9 @@
     "effect": "313080",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313081,
@@ -12172,7 +13684,9 @@
     "effect": "313081",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313082,
@@ -12197,7 +13711,9 @@
     "effect": "313082",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313083,
@@ -12222,7 +13738,9 @@
     "effect": "313083",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313084,
@@ -12247,7 +13765,9 @@
     "effect": "313084",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313085,
@@ -12272,7 +13792,9 @@
     "effect": "313085",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313086,
@@ -12297,7 +13819,9 @@
     "effect": "313086",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313087,
@@ -12322,7 +13846,9 @@
     "effect": "313087",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313088,
@@ -12347,7 +13873,9 @@
     "effect": "313088",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313089,
@@ -12372,7 +13900,9 @@
     "effect": "313089",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313090,
@@ -12397,7 +13927,9 @@
     "effect": "313090",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313091,
@@ -12422,7 +13954,9 @@
     "effect": "313091",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313092,
@@ -12447,7 +13981,9 @@
     "effect": "313092",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313093,
@@ -12472,7 +14008,9 @@
     "effect": "313093",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313094,
@@ -12497,7 +14035,9 @@
     "effect": "313094",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313095,
@@ -12522,7 +14062,9 @@
     "effect": "313095",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313096,
@@ -12547,7 +14089,9 @@
     "effect": "313096",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313097,
@@ -12572,7 +14116,9 @@
     "effect": "313097",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313098,
@@ -12597,7 +14143,9 @@
     "effect": "313098",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313099,
@@ -12622,7 +14170,9 @@
     "effect": "313099",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313100,
@@ -12647,7 +14197,9 @@
     "effect": "313100",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313101,
@@ -12672,7 +14224,9 @@
     "effect": "313101",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313102,
@@ -12697,7 +14251,9 @@
     "effect": "313102",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313103,
@@ -12722,7 +14278,9 @@
     "effect": "313103",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313104,
@@ -12747,7 +14305,9 @@
     "effect": "313104",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313105,
@@ -12772,7 +14332,9 @@
     "effect": "313105",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313106,
@@ -12797,7 +14359,9 @@
     "effect": "313106",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313107,
@@ -12822,7 +14386,9 @@
     "effect": "313107",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313108,
@@ -12847,7 +14413,9 @@
     "effect": "313108",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313109,
@@ -12872,7 +14440,9 @@
     "effect": "313109",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313110,
@@ -12897,7 +14467,9 @@
     "effect": "313110",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313111,
@@ -12922,7 +14494,9 @@
     "effect": "313111",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313112,
@@ -12947,7 +14521,9 @@
     "effect": "313112",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313113,
@@ -12972,7 +14548,9 @@
     "effect": "313113",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313114,
@@ -12997,7 +14575,9 @@
     "effect": "313114",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313115,
@@ -13022,7 +14602,9 @@
     "effect": "313115",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313116,
@@ -13047,7 +14629,9 @@
     "effect": "313116",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313117,
@@ -13072,7 +14656,9 @@
     "effect": "313117",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313118,
@@ -13097,7 +14683,9 @@
     "effect": "313118",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313119,
@@ -13122,7 +14710,9 @@
     "effect": "313119",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 313120,
@@ -13147,7 +14737,9 @@
     "effect": "313120",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 207020201,
@@ -13172,7 +14764,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 207020202,
@@ -13197,7 +14791,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 207020101,
@@ -13222,7 +14818,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 207030201,
@@ -13247,7 +14845,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 207030202,
@@ -13272,7 +14872,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 207012601,
@@ -13297,7 +14899,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 207020801,
@@ -13322,7 +14926,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 207012201,
@@ -13347,7 +14953,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 207030401,
@@ -13372,7 +14980,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 207030501,
@@ -13397,7 +15007,9 @@
     "effect": "",
     "enhanceCond": "",
     "maxLimit": 0,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
     "id": 207020703,
@@ -13422,11 +15034,13 @@
     "effect": "207020703",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
-    "id": 207040100,
-    "name": "焦急的员工",
+    "id": 307040100,
+    "name": "哑谜",
     "versions": "",
     "seasons": "",
     "desc1": "",
@@ -13444,13 +15058,15 @@
     "overlayLimit": 0,
     "isDestroy": 0,
     "exchange": "",
-    "effect": "207040100",
+    "effect": "307040100",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   },
   {
-    "id": 207040600,
+    "id": 307040800,
     "name": "乌尔里希",
     "versions": "",
     "seasons": "",
@@ -13469,9 +15085,38 @@
     "overlayLimit": 0,
     "isDestroy": 0,
     "exchange": "",
-    "effect": "207040600",
+    "effect": "307040800",
     "enhanceCond": "",
     "maxLimit": 1,
-    "copyItem": 0
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
+  },
+  {
+    "id": 307041000,
+    "name": "马库斯",
+    "versions": "",
+    "seasons": "",
+    "desc1": "",
+    "desc2": "",
+    "disposable": 0,
+    "sellPrice": "",
+    "icon": "1021",
+    "type": 6,
+    "subType": 0,
+    "deposit": 0,
+    "rare": 0,
+    "mass": 30,
+    "cost": "",
+    "worth": 0,
+    "overlayLimit": 0,
+    "isDestroy": 0,
+    "exchange": "",
+    "effect": "307041000",
+    "enhanceCond": "",
+    "maxLimit": 1,
+    "copyItem": 0,
+    "exp": 0,
+    "sublimateDrop": ""
   }
 ]

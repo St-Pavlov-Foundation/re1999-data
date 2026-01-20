@@ -54,20 +54,14 @@ function ExploreMapScenePreloadComp:init(go)
 		self._lights = sceneGo:GetComponentsInChildren(typeof(UnityEngine.Light))
 	end
 
-	self._lightmapABPath = "explore/scene/" .. levelCO.resName
+	self._lightmapABPath = "modules/explore/scene/" .. levelCO.resName
 	self._lightMapLoader = MultiAbLoader.New()
 
 	for i, v in ipairs(self._config.lightmapList) do
 		self._lightmapUseByDic[i] = {}
 
-		if GameResMgr.IsFromEditorDir then
-			self._lightMapLoader:addPath(v[1])
-			self._lightMapLoader:addPath(v[2])
-		end
-	end
-
-	if not GameResMgr.IsFromEditorDir and #self._config.lightmapList > 0 then
-		self._lightMapLoader:addPath(self._lightmapABPath)
+		self._lightMapLoader:addPath(string.gsub(v[1], "lightmap", "Lightmap"))
+		self._lightMapLoader:addPath(string.gsub(v[2], "lightmap", "Lightmap"))
 	end
 
 	self._lightMapLoader:addPath(emptLightmapColorPath)
@@ -309,8 +303,8 @@ function ExploreMapScenePreloadComp:_initLightMap()
 	end
 
 	local assetItem = self._lightMapLoader:getAssetItem(emptLightmapColorPath)
-	local lightmapColorAssetItem = self._lightMapLoader:getAssetItem(self._lightmapABPath)
-	local lightmapDirAssetItem = self._lightMapLoader:getAssetItem(self._lightmapABPath)
+	local lightmapColorAssetItem = self._lightMapLoader:getFirstAssetItem()
+	local lightmapDirAssetItem = self._lightMapLoader:getFirstAssetItem()
 	local emptRes = assetItem:GetResource(emptLightmapColorPath)
 	local lightmaps = {}
 

@@ -1936,7 +1936,7 @@ function FightFocusView:_setEntityPosAndActive(entityMO)
 
 	local fightScene = GameSceneMgr.instance:getScene(SceneType.Fight)
 
-	fightScene.level:setFrontVisible(false)
+	FightGameMgr.sceneLevelMgr:setFrontVisible(false)
 
 	local tempPos
 

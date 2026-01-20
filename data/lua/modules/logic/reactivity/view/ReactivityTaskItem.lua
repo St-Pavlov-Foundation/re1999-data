@@ -154,7 +154,6 @@ function ReactivityTaskItem:refreshRewardItems()
 		if not rewardItem then
 			rewardItem = IconMgr.instance:getCommonPropItemIcon(self.goRewardContent)
 
-			transformhelper.setLocalScale(rewardItem.go.transform, 0.6, 0.6, 1)
 			rewardItem:setMOValue(type, id, quantity, nil, true)
 			rewardItem:setCountFontSize(40)
 			rewardItem:showStackableNum2()

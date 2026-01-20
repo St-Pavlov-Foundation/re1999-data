@@ -11,47 +11,34 @@ end
 function SurvivalEndPart:init(go)
 	self.go = go
 	self.goDefaultBg = gohelper.findChild(go, "#simage_FullBG")
-	self.txtDefaultTime = gohelper.findChildTextMesh(self.goDefaultBg, "image_LimitTimeBG/#txt_LimitTime")
 	self.goEndBg = gohelper.findChild(go, "#simage_FullBG2")
+	self.simage_Character1 = gohelper.findChild(go, "#simage_Character1")
+	self.simage_Character2 = gohelper.findChild(go, "#simage_Character2")
+	self.simage_Character1_1 = gohelper.findChild(go, "#simage_Character1_1")
+	self.simage_Character2_1 = gohelper.findChild(go, "##simage_Character2_1")
+	self.txtDefaultTime = gohelper.findChildTextMesh(self.goDefaultBg, "image_LimitTimeBG/#txt_LimitTime")
 	self.txtEndTime = gohelper.findChildTextMesh(self.goEndBg, "image_LimitTimeBG/#txt_LimitTime")
-	self.goSpecialBg = gohelper.findChild(self.goEndBg, "#go_babieta")
 end
 
 function SurvivalEndPart:refreshView()
-	local isFail = self:isFailEnd()
-
-	gohelper.setActive(self.goDefaultBg, isFail)
-	gohelper.setActive(self.goEndBg, not isFail)
-
-	if not isFail then
-		self.view._txtLimitTime = self.txtEndTime
-
-		local isSpecial = self:isSpecialEnd()
-
-		gohelper.setActive(self.goSpecialBg, isSpecial)
-	else
-		self.view._txtLimitTime = self.txtDefaultTime
-	end
-end
-
-function SurvivalEndPart:isFailEnd()
-	local endConfig = self:getEndConfig()
-
-	return not endConfig or endConfig.type == 1
-end
-
-function SurvivalEndPart:isSpecialEnd()
-	local endConfig = self:getEndConfig()
-
-	return endConfig and endConfig.type == 3
-end
-
-function SurvivalEndPart:getEndConfig()
 	local outSideInfo = SurvivalModel.instance:getOutSideInfo()
-	local endId = outSideInfo and outSideInfo:getEndId() or 0
-	local endConfig = lua_survival_end.configDict[endId]
+	local haveRole1 = outSideInfo:haveEnd(3001)
+	local haveRole2 = outSideInfo:haveEnd(3002)
+	local isDefaultBg = not haveRole1 and not haveRole2
+	local isEndBg = haveRole1 or haveRole2
 
-	return endConfig
+	gohelper.setActive(self.goDefaultBg, isDefaultBg)
+	gohelper.setActive(self.goEndBg, isEndBg)
+	gohelper.setActive(self.simage_Character1, haveRole1)
+	gohelper.setActive(self.simage_Character1_1, haveRole1)
+	gohelper.setActive(self.simage_Character2, haveRole2)
+	gohelper.setActive(self.simage_Character2_1, haveRole2)
+
+	if isDefaultBg then
+		self.view._txtLimitTime = self.txtDefaultTime
+	elseif isEndBg then
+		self.view._txtLimitTime = self.txtEndTime
+	end
 end
 
 function SurvivalEndPart:onDestroy()

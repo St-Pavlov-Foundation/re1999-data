@@ -306,7 +306,10 @@ end
 
 function JumpController:jumpToBackpackView(jumpParam)
 	table.insert(self.waitOpenViewNames, ViewName.BackpackView)
-	BackpackController.instance:enterItemBackpack()
+
+	local jumpArray = string.splitToNumber(jumpParam, "#")
+
+	BackpackController.instance:enterItemBackpack(jumpArray[2])
 	table.insert(self.remainViewNames, ViewName.BackpackView)
 
 	return JumpEnum.JumpResult.Success
@@ -672,6 +675,8 @@ function JumpController:jumpToActivityView(jumpParam)
 		table.insert(self.waitOpenViewNames, ViewName.ActivityBeginnerView)
 		ActivityModel.instance:setTargetActivityCategoryId(actId)
 		ActivityController.instance:openActivityBeginnerView()
+	elseif actId == ActivityEnum.Activity.V3a4_HeroExpBox then
+		ViewMgr.instance:openView(ViewName.HeroExpBoxPanelView)
 	elseif typeId == ActivityEnum.ActivityTypeID.Act125 then
 		if ActivityHelper.getActivityStatus(actId, true) ~= ActivityEnum.ActivityStatus.Normal then
 			return JumpEnum.JumpResult.Fail
@@ -679,6 +684,14 @@ function JumpController:jumpToActivityView(jumpParam)
 
 		table.insert(self.waitOpenViewNames, ViewName.ActivityBeginnerView)
 		Activity125Model.instance:setSelectEpisodeId(actId, 1)
+		ActivityModel.instance:setTargetActivityCategoryId(actId)
+		ActivityController.instance:openActivityBeginnerView()
+	elseif typeId == ActivityEnum.ActivityTypeID.Act101 then
+		if ActivityHelper.getActivityStatus(actId, true) ~= ActivityEnum.ActivityStatus.Normal then
+			return JumpEnum.JumpResult.Fail
+		end
+
+		table.insert(self.waitOpenViewNames, ViewName.ActivityBeginnerView)
 		ActivityModel.instance:setTargetActivityCategoryId(actId)
 		ActivityController.instance:openActivityBeginnerView()
 	elseif typeId == ActivityEnum.ActivityTypeID.NecrologistStory then
@@ -1766,6 +1779,10 @@ function JumpController:jumpToStoreSupplementMonthCardUseView(jumpParam)
 	SignInController.instance:showPatchpropUseView(MessageBoxIdDefine.SupplementMonthCardUseTip, MsgBoxEnum.BoxType.Yes_No, currencyParam, self._useSupplementMonthCard, nil, nil, self, nil, nil, SignInModel.instance:getCanSupplementMonthCardDays())
 end
 
+function JumpController:jumpToLaplaceChatRoomView()
+	LaplaceForumController.instance:openLaplaceChatRoomView()
+end
+
 function JumpController:_useSupplementMonthCard()
 	SignInRpc.instance:sendSupplementMonthCardRequest()
 end
@@ -1828,7 +1845,8 @@ JumpController.JumpViewToHandleFunc = {
 	[JumpEnum.JumpView.CommandStationTask] = JumpController.jumpToCommandStationTask,
 	[JumpEnum.JumpView.BackpackUseType] = JumpController.jumpToBackpackUseTypeView,
 	[JumpEnum.JumpView.SkinGiftUseType] = JumpController.jumpToSkinGiftUseTypeView,
-	[JumpEnum.JumpView.StoreSupplementMonthCardUseView] = JumpController.jumpToStoreSupplementMonthCardUseView
+	[JumpEnum.JumpView.StoreSupplementMonthCardUseView] = JumpController.jumpToStoreSupplementMonthCardUseView,
+	[JumpEnum.JumpView.LaplaceChatRoom] = JumpController.jumpToLaplaceChatRoomView
 }
 JumpController.JumpActViewToHandleFunc = {
 	[JumpEnum.ActIdEnum.Act117] = JumpController.jumpToAct117,

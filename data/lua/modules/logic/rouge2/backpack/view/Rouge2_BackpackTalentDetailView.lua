@@ -102,6 +102,10 @@ end
 
 function Rouge2_BackpackTalentDetailView:_editableInitView()
 	SkillHelper.addHyperLinkClick(self._txtTalentDesc)
+
+	self._listener = Rouge2_CommonItemDescModeListener.Get(self._goDetail, Rouge2_Enum.ItemDescModeDataKey.BackpackSkill)
+
+	self._listener:initCallback(self.refreshItemDesc, self)
 end
 
 function Rouge2_BackpackTalentDetailView:onOpen()
@@ -118,13 +122,22 @@ function Rouge2_BackpackTalentDetailView:refreshDetail()
 	self._unlockCondition = self._talentCo and self._talentCo.unlock
 	self._txtTalentName.text = self._talentCo and self._talentCo.name
 
-	local descStr = self._talentCo and self._talentCo.desc or ""
+	self._listener:startListen()
+	self:refreshStatus()
+end
+
+function Rouge2_BackpackTalentDetailView:refreshItemDesc(descMode)
+	if not self._talentCo then
+		self._txtTalentDesc.text = ""
+
+		return
+	end
+
+	local descStr = descMode == Rouge2_Enum.ItemDescMode.Simply and self._talentCo.descSimply or self._talentCo.desc
 	local descList = string.split(descStr, "|") or {}
 	local fullDescStr = table.concat(descList, "\n")
 
 	self._txtTalentDesc.text = SkillHelper.buildDesc(fullDescStr, PercentColor, BracketColor)
-
-	self:refreshStatus()
 end
 
 function Rouge2_BackpackTalentDetailView:refreshStatus()

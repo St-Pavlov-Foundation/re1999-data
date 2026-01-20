@@ -31,5 +31,6 @@ UIBlockKey.WaitItemAnimeDone = "WaitItemAnimeDone"
 UIBlockKey.SurvivalReputationSelectView = "SurvivalReputationSelectView"
 UIBlockKey.SurvivalBagInfoPart = "SurvivalBagInfoPart"
 UIBlockKey.SurvivalCommon = "SurvivalCommon"
+UIBlockKey.SimpleListComp = "SimpleListComp"
 
 return UIBlockKey

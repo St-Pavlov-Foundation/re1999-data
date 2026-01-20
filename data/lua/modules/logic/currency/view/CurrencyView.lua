@@ -383,7 +383,9 @@ function CurrencyView:isNeedShieldAddBtn()
 			[ViewName.VersionActivity1_6NormalStoreGoodsView] = 1,
 			[ViewName.RoomFormulaMsgBoxView] = 1,
 			[ViewName.SummonResultView] = 1,
-			[ViewName.VersionActivity1_5NormalStoreGoodsView] = 1
+			[ViewName.VersionActivity1_5NormalStoreGoodsView] = 1,
+			[ViewName.PartyClothLotteryView] = 1,
+			[ViewName.PartyClothRewardView] = 1
 		}
 	end
 

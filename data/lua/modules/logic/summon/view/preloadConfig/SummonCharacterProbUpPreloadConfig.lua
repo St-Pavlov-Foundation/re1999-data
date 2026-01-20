@@ -15,6 +15,32 @@ function SummonCharacterProbUpPreloadConfig.getCharacterItemCountByName(name)
 	return SummonCharacterProbUpPreloadConfig.characterItemCounts[name] or 1
 end
 
+SummonCharacterProbUpPreloadConfig.preloadLists.SummonCharacterProbUpVer339 = {
+	"singlebg/summon/heroversion_3_4/v3a4_cengheguang/v3a4_cengheguang_dec02.png",
+	"singlebg/summon/heroversion_3_4/v3a4_cengheguang/v3a4_cengheguang_role1.png",
+	"singlebg/summon/heroversion_3_4/v3a4_cengheguang/v3a4_cengheguang_fullbg.png"
+}
+SummonCharacterProbUpPreloadConfig.preloadLists.SummonCharacterProbUpVer338 = {
+	"singlebg/summon/heroversion_2_7/v2a7_coopergarland/v2a7_summon_coopergarland_fullbg.png"
+}
+SummonCharacterProbUpPreloadConfig.preloadLists.SummonCharacterProbUpVer337 = {
+	"singlebg/summon/heroversion_2_3/zhixinquaner/v2a3_summon_zhixinquaner_dec4.png",
+	"singlebg/summon/heroversion_2_3/zhixinquaner/v2a3_summon_zhixinquaner_role1.png",
+	"singlebg/summon/heroversion_2_3/zhixinquaner/v2a3_summon_zhixinquaner_fullbg.png"
+}
+SummonCharacterProbUpPreloadConfig.preloadLists.SummonCharacterProbUpVer336 = {
+	"singlebg/summon/heroversion_3_1/v3a1_gaosiniao/v3a1_gaosiniao_light.png",
+	"singlebg/summon/heroversion_3_1/v3a1_yeshumei/v3a1_yeshumei_fullbg.png"
+}
+SummonCharacterProbUpPreloadConfig.preloadLists.SummonCharacterProbUpVer335 = {
+	"singlebg/summon/heroversion_3_4/v3a4_lusijian/v3a4_lusijian_dec02.png",
+	"singlebg/summon/heroversion_3_4/v3a4_lusijian/v3a4_lusijian_dec01.png",
+	"singlebg/summon/heroversion_3_4/v3a4_lusijian/v3a4_lusijian_dec04.png",
+	"singlebg/summon/heroversion_3_4/v3a4_lusijian/v3a4_lusijian_role.png",
+	"singlebg/summon/heroversion_3_4/v3a4_lusijian/v3a4_lusijian_role_outline.png",
+	"singlebg/summon/heroversion_3_4/v3a4_lusijian/v3a4_lusijian_rolefront_bg.png",
+	"singlebg/summon/heroversion_3_4/v3a4_lusijian/v3a4_lusijian_fullbg.png"
+}
 SummonCharacterProbUpPreloadConfig.preloadLists[" SummonCharacterProbUpVer334"] = {
 	"singlebg/summon/heroversion_2_8/v2a8_molideer/v2a8_summon_molideer_fontbg.png",
 	"singlebg/summon/heroversion_3_3/v3a3_yigeer/v3a3_yigerer_role1.png",

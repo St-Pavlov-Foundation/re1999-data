@@ -5,26 +5,16 @@ module("modules.logic.voice.VoiceChooseModel", package.seeall)
 local VoiceChooseModel = class("VoiceChooseModel", ListScrollModel)
 
 function VoiceChooseModel:initModel(chooseLang)
-	local supportLangList = HotUpdateVoiceMgr.instance:getSupportVoiceLangs()
 	local list = {}
-	local optionalUpdateInst = SLFramework.GameUpdate.OptionalUpdate.Instance
+	local allLocalLang = ResCheckMgr.instance:getAllLocalLang()
 
-	for i = 1, #supportLangList do
-		local lang = supportLangList[i]
-		local defaultLang = GameConfig:GetDefaultVoiceShortcut()
-		local localVersion = optionalUpdateInst:GetLocalVersion(lang)
+	for i = 1, #allLocalLang do
+		local lang = allLocalLang[i]
 
-		if lang == defaultLang then
-			table.insert(list, 1, {
-				lang = lang,
-				choose = lang == chooseLang
-			})
-		elseif not string.nilorempty(localVersion) then
-			table.insert(list, {
-				lang = lang,
-				choose = lang == chooseLang
-			})
-		end
+		table.insert(list, {
+			lang = lang,
+			choose = lang == chooseLang
+		})
 	end
 
 	self:setList(list)

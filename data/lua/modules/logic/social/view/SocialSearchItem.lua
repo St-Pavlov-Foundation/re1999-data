@@ -16,7 +16,7 @@ function SocialSearchItem:onInitView()
 	self._btnadd = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_add")
 	self._gosent = gohelper.findChild(self.viewGO, "#go_sent")
 	self._anim = self.viewGO:GetComponent(typeof(UnityEngine.Animator))
-	self._anim.keepAnimatorControllerStateOnDisable = true
+	self._anim.keepAnimatorStateOnDisable = true
 
 	if self._editableInitView then
 		self:_editableInitView()

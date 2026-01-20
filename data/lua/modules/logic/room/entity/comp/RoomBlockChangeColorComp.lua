@@ -39,7 +39,7 @@ function RoomBlockChangeColorComp:refreshLand()
 	if not self._isHasRefreshLandTask then
 		self._isHasRefreshLandTask = true
 
-		TaskDispatcher.runDelay(self._onRunRefreshLandTask, self, 0.05)
+		TaskDispatcher.runDelay(self._onRunRefreshLandTask, self, 0.01)
 	end
 end
 
@@ -119,6 +119,10 @@ function RoomBlockChangeColorComp:_setMeshReaderColor(meshRendererList, mpb)
 	if meshRendererList then
 		for _, meshRenderer in ipairs(meshRendererList) do
 			meshRenderer:SetPropertyBlock(mpb)
+		end
+
+		if self.entity:getTag() == SceneTag.RoomInventoryBlock then
+			self.entity._scene.inventorymgr:refreshInventoryBlock()
 		end
 	end
 end

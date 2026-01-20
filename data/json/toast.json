@@ -9161,7 +9161,7 @@
   },
   {
     "id": 283004,
-    "tips": "于科算大楼解锁漫游行装栏位",
+    "tips": "于指标中心解锁漫游行装栏位",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,
@@ -10724,6 +10724,462 @@
     "tips": "未解锁",
     "icon": 11,
     "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341001,
+    "tips": "进入了房间",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341002,
+    "tips": "邀请你加入派对",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 250701,
+    "tips": "【▩1%s】塑造已满\n▩2%s ×▩3%s",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 1,
+    "notShow": 0
+  },
+  {
+    "id": 341003,
+    "tips": "背包内有未使用的造像",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341004,
+    "tips": "塑造已满",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341005,
+    "tips": "角色未拥有",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341006,
+    "tips": "冷却中",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341007,
+    "tips": "当前剩余开启次数不足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341008,
+    "tips": "▩1%s数量不足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341009,
+    "tips": "请选择角色",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341011,
+    "tips": "奖池中剩余奖品数量不足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341012,
+    "tips": "抽奖道具不足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341013,
+    "tips": "施术失败，再尝试一下吧",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -570,
+    "tips": "你的派对版本号过低, 需重重新登录",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -571,
+    "tips": "对方派对版本号过低, 无法加入",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -572,
+    "tips": "房间内玩家版本号不一致, 无法匹配",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 1
+  },
+  {
+    "id": -573,
+    "tips": "房间号不存在",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -574,
+    "tips": "房间人数已满",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -575,
+    "tips": "当前活动参与人数过多，请稍后再试",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -576,
+    "tips": "已在派对房间中",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341014,
+    "tips": "▩1%s剩余次数：<color=#c66030>▩2%s/▩3%s</color>",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341015,
+    "tips": "▩1%s今日剩余次数：<color=#c66030>▩2%s/▩3%s</color>",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341020,
+    "tips": "本次记录已保存",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341021,
+    "tips": "尚未开启",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341022,
+    "tips": "活动尚未开启，请于10:00-14:00，18:00-24:00期间进行游戏",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341023,
+    "tips": "挑战已被锁定，无法进行调整",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341024,
+    "tips": "存在过期狂想或心相，无法继续使用过期记录",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341025,
+    "tips": "已达到锁定难度等级，无法继续装载",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341026,
+    "tips": "存在已锁定的插件，无法快速装载",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341027,
+    "tips": "该插件已被锁定，无法进行调整",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341028,
+    "tips": "该角色已被锁定，无法进行调整",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341029,
+    "tips": "该增幅效果已被锁定，无法进行调整",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341030,
+    "tips": "已退出存档",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341101,
+    "tips": "请输入邀请码",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341102,
+    "tips": "已发送邀请",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341103,
+    "tips": "邀请码复制成功",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -581,
+    "tips": "未找到此邀请码",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -582,
+    "tips": "目标已组队，无法发送邀请",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -583,
+    "tips": "已向目标发送过邀请，请等待片刻后重试",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -584,
+    "tips": "您已组队，无法发送邀请",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -585,
+    "tips": "对方已组队，此邀请已失效",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -586,
+    "tips": "您已组队，此邀请已失效",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341104,
+    "tips": "部分玩家尚未准备",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341105,
+    "tips": "请先取消准备",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341106,
+    "tips": "请输入其他玩家的邀请码",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341107,
+    "tips": "等候超时，你已离开派对",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341108,
+    "tips": "你已成为当前派对房主",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341109,
+    "tips": "当前活动参与人数过多，请稍后再试",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341110,
+    "tips": "你已被房主请离",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341200,
+    "tips": "该区域已被占领",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341301,
+    "tips": "下一场好运字福将于▩1%s后开启",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341302,
+    "tips": "已参与本轮好运字福",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341401,
+    "tips": "▩1%s 已失效",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341501,
+    "tips": "剩余气不足，无法继续连接",
+    "icon": 11,
+    "audioId": 340234,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341502,
+    "tips": "未成功击败所有敌人",
+    "icon": 11,
+    "audioId": 340234,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341503,
+    "tips": "能力已无使用次数",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 341504,
+    "tips": "气已被阻挡，无法继续连接",
+    "icon": 11,
+    "audioId": 340234,
     "notMerge": 0,
     "notShow": 0
   }

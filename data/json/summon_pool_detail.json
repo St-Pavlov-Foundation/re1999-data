@@ -232,5 +232,23 @@
     "historyShowType": 0,
     "order": 2,
     "openId": 11
+  },
+  {
+    "id": 25,
+    "desc": "",
+    "info": "83402",
+    "name": "新春限定征集\n【剪春注我】",
+    "historyShowType": 0,
+    "order": 1,
+    "openId": 11
+  },
+  {
+    "id": 26,
+    "desc": "",
+    "info": "83401",
+    "name": "限定征集\n【湖心追述】",
+    "historyShowType": 0,
+    "order": 4,
+    "openId": 11
   }
 ]

@@ -1,0 +1,51 @@
+[
+  {
+    "activityId": 13410,
+    "id": 1,
+    "npcId": 2,
+    "question": "如果窝现在说的这句话是假的，那么窝的这句话：",
+    "answerIds": "3|1|2"
+  },
+  {
+    "activityId": 13410,
+    "id": 2,
+    "npcId": 2,
+    "question": "如果一个种族识别不了红色，那么他们该如何描述红色？",
+    "answerIds": "5|6|4"
+  },
+  {
+    "activityId": 13410,
+    "id": 3,
+    "npcId": 2,
+    "question": "有没有可能统一全世界魔精的语言？",
+    "answerIds": "7|9|8"
+  },
+  {
+    "activityId": 13410,
+    "id": 4,
+    "npcId": 2,
+    "question": "Aliikusersuillammassuaanerartassagaluarpaalli？",
+    "answerIds": "12|11|10"
+  },
+  {
+    "activityId": 13410,
+    "id": 5,
+    "npcId": 2,
+    "question": "“拉普拉斯”的反义词是什么？",
+    "answerIds": "14|13|15"
+  },
+  {
+    "activityId": 13410,
+    "id": 6,
+    "npcId": 2,
+    "question": "人们说，光阴似箭……",
+    "answerIds": "18|16|17"
+  },
+  {
+    "activityId": 13410,
+    "id": 7,
+    "npcId": 2,
+    "question": "文明和语言会一直存在吗？",
+    "answerIds": "20|19|21"
+  }
+]

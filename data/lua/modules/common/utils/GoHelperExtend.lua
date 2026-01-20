@@ -23,6 +23,8 @@ gohelper.Type_Render = typeof(UnityEngine.Renderer)
 gohelper.Type_Spine_SkeletonAnimation = typeof(Spine.Unity.SkeletonAnimation)
 gohelper.Type_Spine_SkeletonGraphic = typeof(Spine.Unity.SkeletonGraphic)
 gohelper.Type_UIFollower = typeof(ZProj.UIFollower)
+gohelper.Type_ListScrollView = typeof(SLFramework.UGUI.ListScrollView)
+gohelper.Type_MixScrollView = typeof(SLFramework.UGUI.MixScrollView)
 
 local ButtonWrap = SLFramework.UGUI.ButtonWrap
 local UIClickListener = SLFramework.UGUI.UIClickListener
@@ -531,6 +533,10 @@ function gohelper.getUIScreenWidth()
 	local screenWidth = math.floor(UnityEngine.Screen.width * scale + 0.5)
 
 	return screenWidth
+end
+
+function gohelper.setParent(go, parent, worldPositionStays)
+	go.transform:SetParent(parent.transform, worldPositionStays)
 end
 
 return gohelper

@@ -70,6 +70,11 @@ function SettingsModel:onInit()
 	end
 
 	self.limitedRoleMO = SettingsLimitedRoleMO.New()
+	self._primaryCpuAbi = SLFramework.NativeUtil.GetAndroidtPrimaryCpuAbi()
+
+	if SDKMgr.instance:isEmulator() and (self._primaryCpuAbi == "armeabi-v7a" or self._primaryCpuAbi == "arm64-v8a") then
+		self._isUseUnityVideo = 1
+	end
 end
 
 function SettingsModel:reInit()
@@ -464,6 +469,28 @@ function SettingsModel:setVideoCompatible(isOn)
 	PlayerPrefsHelper.setNumber(PlayerPrefsKey.SettingsVideoCompatible, self._isVideoCompatible)
 end
 
+function SettingsModel:setUseUnityVideo(v)
+	self._isUseUnityVideo = v and 1 or 0
+
+	if SDKMgr.instance:isEmulator() and (self._primaryCpuAbi == "armeabi-v7a" or self._primaryCpuAbi == "arm64-v8a") then
+		self._isUseUnityVideo = 1
+	end
+
+	PlayerPrefsHelper.setNumber(PlayerPrefsKey.SettingsUnityVideo, self._isUseUnityVideo)
+end
+
+function SettingsModel:getUseUnityVideo()
+	if SDKMgr.instance:isEmulator() and (self._primaryCpuAbi == "armeabi-v7a" or self._primaryCpuAbi == "arm64-v8a") then
+		self._isUseUnityVideo = 1
+	end
+
+	if self._isUseUnityVideo == nil then
+		self._isUseUnityVideo = PlayerPrefsHelper.getNumber(PlayerPrefsKey.SettingsUnityVideo, 0)
+	end
+
+	return self._isUseUnityVideo == 1
+end
+
 function SettingsModel:getVideoCompatible()
 	if self._isVideoCompatible == nil then
 		self._isVideoCompatible = PlayerPrefsHelper.getNumber(PlayerPrefsKey.SettingsVideoCompatible, 0)
@@ -707,6 +734,14 @@ function SettingsModel:extractByRegion(str)
 	end
 
 	return str
+end
+
+function SettingsModel:isAvproVideo()
+	if SDKMgr.instance:isEmulator() and (self._primaryCpuAbi == "armeabi-v7a" or self._primaryCpuAbi == "arm64-v8a") then
+		return false
+	end
+
+	return SettingsModel.instance:getUseUnityVideo() == false
 end
 
 SettingsModel.instance = SettingsModel.New()

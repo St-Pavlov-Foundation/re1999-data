@@ -9,14 +9,14 @@ function BpVideoView:onInitView()
 end
 
 function BpVideoView:onOpen()
-	self._videoPlayer, self._displauUGUI = AvProMgr.instance:getVideoPlayer(self._videoGo)
+	self._videoPlayer = VideoPlayerMgr.instance:createGoAndVideoPlayer(self._videoGo)
 
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_permit_admission)
-	self._videoPlayer:Play(self._displauUGUI, "videos/bp_open.mp4", false, self._videoStatusUpdate, self)
+	self._videoPlayer:play("bp_open", false, self._videoStatusUpdate, self)
 end
 
 function BpVideoView:_videoStatusUpdate(path, status, errorCode)
-	if status == AvProEnum.PlayerStatus.FinishedPlaying then
+	if status == VideoEnum.PlayerStatus.FinishedPlaying then
 		if not ViewMgr.instance:isOpen(ViewName.BpChargeView) then
 			ViewMgr.instance:registerCallback(ViewEvent.OnOpenView, self.closeThis, self)
 			ViewMgr.instance:openView(ViewName.BpChargeView, {
@@ -32,8 +32,8 @@ function BpVideoView:onDestroyView()
 	ViewMgr.instance:unregisterCallback(ViewEvent.OnOpenView, self.closeThis, self)
 
 	if self._videoPlayer then
-		self._videoPlayer:Stop()
-		self._videoPlayer:Clear()
+		self._videoPlayer:stop()
+		self._videoPlayer:clear()
 
 		self._videoPlayer = nil
 	end

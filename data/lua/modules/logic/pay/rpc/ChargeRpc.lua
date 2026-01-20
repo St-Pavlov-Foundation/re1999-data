@@ -25,30 +25,11 @@ function ChargeRpc:sendNewOrderRequest(id, selectInfos)
 	req.id = id
 
 	if selectInfos then
-		for areaIndex, itemIndex in ipairs(selectInfos) do
+		for areaIndex, itemIndex in pairs(selectInfos) do
 			local info = ChargeModule_pb.SelectionInfo()
 
 			info.regionId = areaIndex
 			info.selectionPos = itemIndex - 1
-
-			table.insert(req.selectionInfos, info)
-		end
-	end
-
-	self:sendMsg(req)
-end
-
-function ChargeRpc:sendDictNewOrderRequest(id, selectInfos)
-	local req = ChargeModule_pb.NewOrderRequest()
-
-	req.id = id
-
-	if selectInfos then
-		for regionId, selectionPos in pairs(selectInfos) do
-			local info = ChargeModule_pb.SelectionInfo()
-
-			info.regionId = regionId
-			info.selectionPos = selectionPos - 1
 
 			table.insert(req.selectionInfos, info)
 		end

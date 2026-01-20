@@ -99,29 +99,30 @@ function DoorRoleEffect:_getLightMat()
 end
 
 function DoorRoleEffect:_playVideo(child, bodyName)
-	local mediaPlayer = child:GetComponent(typeof(RenderHeads.Media.AVProVideo.MediaPlayer))
+	local videoName = ""
 
-	if mediaPlayer then
-		local hasVideoPlayer = child:GetComponent(typeof(ZProj.AvProUGUIPlayer))
-		local avProVideoPlayer = gohelper.onceAddComponent(child.gameObject, typeof(ZProj.AvProUGUIPlayer))
+	if bodyName == "b_idle4" then
+		videoName = "door_idle4"
+	elseif bodyName == "b_idle5" then
+		videoName = "door_idle5"
+	elseif bodyName == "b_biaoyan" then
+		videoName = "door_idle6"
+	elseif bodyName == "b_bowen" then
+		videoName = "door_bowen"
+	end
+
+	if videoName == "" then
+		return
+	end
+
+	local avProVideoPlayer = VideoPlayerMgr.instance:createVideoPlayer(child.gameObject)
+
+	if avProVideoPlayer then
 		local particleSystem = child:GetComponent(typeof(UnityEngine.ParticleSystem))
 
 		particleSystem:Stop()
-
-		local videoName = ""
-
-		if bodyName == "b_idle4" then
-			videoName = "door_idle4"
-		elseif bodyName == "b_idle5" then
-			videoName = "door_idle5"
-		elseif bodyName == "b_biaoyan" then
-			videoName = "door_idle6"
-		elseif bodyName == "b_bowen" then
-			videoName = "door_bowen"
-		end
-
-		avProVideoPlayer:SetEventListener(self._videoStatusUpdate, self)
-		avProVideoPlayer:LoadMedia(langVideoUrl(videoName))
+		avProVideoPlayer:setEventListener(self._videoStatusUpdate, self)
+		avProVideoPlayer:loadMedia(videoName)
 
 		local audioComp = child.gameObject:GetComponent(typeof(UnityEngine.AudioSource))
 
@@ -129,17 +130,17 @@ function DoorRoleEffect:_playVideo(child, bodyName)
 			audioComp.enabled = false
 		end
 
-		self._mediaPlayer = mediaPlayer
 		self._avProVideoPlayer = avProVideoPlayer
 		self._particleSystem = particleSystem
-		self._videoList[avProVideoPlayer] = mediaPlayer
+
+		table.insert(self._videoList, avProVideoPlayer)
 	end
 end
 
 function DoorRoleEffect:_videoStatusUpdate(path, status, errorCode)
-	if status == AvProEnum.PlayerStatus.FirstFrameReady then
-		if self._mediaPlayer then
-			self._mediaPlayer:OpenMedia(true)
+	if status == VideoEnum.PlayerStatus.FirstFrameReady then
+		if self._avProVideoPlayer then
+			self._avProVideoPlayer:playLoadMedia(true)
 		end
 
 		if self._particleSystem then
@@ -149,12 +150,8 @@ function DoorRoleEffect:_videoStatusUpdate(path, status, errorCode)
 end
 
 function DoorRoleEffect:_stopVideo()
-	if self._mediaPlayer then
-		self._mediaPlayer:CloseMedia()
-
-		self._mediaPlayer = nil
-
-		self._avProVideoPlayer:Stop()
+	if self._avProVideoPlayer then
+		self._avProVideoPlayer:stop()
 
 		self._avProVideoPlayer = nil
 		self._particleSystem = nil
@@ -164,18 +161,17 @@ end
 function DoorRoleEffect:_clearVideos()
 	self:_setIdle2CameraEnabled(false)
 
-	for avProVideoPlayer, mediaPlayer in pairs(self._videoList) do
-		if not gohelper.isNil(avProVideoPlayer) then
+	for _, avProVideoPlayer in ipairs(self._videoList) do
+		if avProVideoPlayer ~= nil then
 			if not BootNativeUtil.isIOS() then
-				avProVideoPlayer:Stop()
+				avProVideoPlayer:stop()
 			end
 
-			avProVideoPlayer:Clear()
+			avProVideoPlayer:clear()
 		end
 	end
 
 	self._videoList = {}
-	self._mediaPlayer = nil
 	self._avProVideoPlayer = nil
 	self._particleSystem = nil
 	self._idle2Camera = nil

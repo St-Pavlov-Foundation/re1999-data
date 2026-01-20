@@ -412,5 +412,32 @@
     "chooseDesc": "我自己去",
     "chooseEvent": "acceptTask#3#310006",
     "isMark": 1
+  },
+  {
+    "id": 141000001,
+    "condition": "unAcceptTask#3#320001",
+    "priority": 1,
+    "dialogueId": 307040101,
+    "chooseDesc": "出发",
+    "chooseEvent": "acceptTask#3#320001",
+    "isMark": 1
+  },
+  {
+    "id": 142000001,
+    "condition": "unAcceptTask#3#330001",
+    "priority": 1,
+    "dialogueId": 307040801,
+    "chooseDesc": "走吧，去见一见这玩具盒里的最高权力。",
+    "chooseEvent": "acceptTask#3#330001",
+    "isMark": 1
+  },
+  {
+    "id": 143000001,
+    "condition": "unAcceptTask#3#330003",
+    "priority": 1,
+    "dialogueId": 307041001,
+    "chooseDesc": "先去看看吧",
+    "chooseEvent": "acceptTask#3#330003",
+    "isMark": 1
   }
 ]

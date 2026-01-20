@@ -4,23 +4,23 @@ module("modules.logic.story.view.StoryVideoItem", package.seeall)
 
 local StoryVideoItem = class("StoryVideoItem")
 
-function StoryVideoItem:init(go, name, co, startCallBack, startCallBackObj, playList)
+function StoryVideoItem:init(go, name, co, startCallBack, startCallBackObj)
 	self.viewGO = go
 	self._videoName = name
 	self._videoCo = co
 	self._loop = co.loop
 	self._startCallBack = startCallBack
 	self._startCallBackObj = startCallBackObj
-	self._playList = playList
+	self._videoPlayer, self._videoGo = VideoPlayerMgr.instance:createGoAndVideoPlayer(self.viewGO, "videoTest")
 
 	self:_build()
 end
 
 function StoryVideoItem:pause(pause)
 	if pause then
-		self._playList:setPauseState(self._videoName, false)
+		self._videoPlayer:pause()
 	else
-		self._playList:setPauseState(self._videoName, true)
+		self._videoPlayer:continue()
 	end
 end
 
@@ -69,9 +69,8 @@ end
 function StoryVideoItem:_playVideo()
 	StoryModel.instance:setSpecialVideoPlaying(self._videoName)
 
-	if self._playList then
-		self._playList:buildAndStart(self._videoName, self._loop, self._startCallBack, self._startCallBackObj, self)
-		self._playList:setParent(self.viewGO)
+	if self._videoPlayer then
+		self._videoPlayer:play(self._videoName, false, self._startCallBack, self._startCallBackObj)
 	end
 end
 
@@ -98,7 +97,12 @@ function StoryVideoItem:onDestroy()
 	TaskDispatcher.cancelTask(self._realDestroy, self)
 	TaskDispatcher.cancelTask(self._playVideo, self)
 	StoryModel.instance:setSpecialVideoEnd(self._videoName)
-	self._playList:stop(self._videoName)
+
+	if self._videoName then
+		self._videoPlayer:stop()
+	end
+
+	gohelper.destroy(self._videoGo)
 end
 
 return StoryVideoItem

@@ -190,7 +190,7 @@ function StoryVideoPlayList:setPathAtIndex(videoName, index)
 		self._currentPlayNameMap[index] = StoryVideoPlayList.Empty
 	else
 		self:clearOtherIndex(index)
-		self._uguiPlayList:SetMediaPath(langVideoUrl(videoName), index)
+		self._uguiPlayList:SetMediaPath(videoName, index)
 
 		self._currentPlayNameMap[index] = videoName
 	end
@@ -207,16 +207,16 @@ function StoryVideoPlayList:_onVideoEvent(path, status, errorCode)
 	pathSplits = string.split(videoName, ".")
 	videoName = pathSplits[1] or videoName
 
-	logNormal(string.format("StoryVideoPlayList:_onVideoEvent, path = %s \nstatus = %s errorCode = %s\ntime = %s", tostring(path), tostring(AvProEnum.getPlayerStatusEnumName(status)), AvProEnum.getErrorCodeEnumName(errorCode), tostring(Time.time)))
+	logNormal(string.format("StoryVideoPlayList:_onVideoEvent, path = %s \nstatus = %s errorCode = %s\ntime = %s", tostring(path), tostring(VideoEnum.getPlayerStatusEnumName(status)), VideoEnum.getErrorCodeEnumName(errorCode), tostring(Time.time)))
 
-	if status == AvProEnum.PlayerStatus.FinishedPlaying then
+	if status == VideoEnum.PlayerStatus.FinishedPlaying then
 		self:fixNeedPlayVideo(videoName)
 		self:_stopIOSDetectPause()
-	elseif status == AvProEnum.PlayerStatus.FirstFrameReady and BootNativeUtil.isIOS() and self._path2StartCallback[videoName] then
+	elseif status == VideoEnum.PlayerStatus.FirstFrameReady and BootNativeUtil.isIOS() and self._path2StartCallback[videoName] then
 		self._path2StartCallback[videoName](self._path2StartCallbackObj[videoName], self._path2StartVideoItem[videoName])
 	end
 
-	if errorCode ~= AvProEnum.ErrorCode.None then
+	if errorCode ~= VideoEnum.ErrorCode.None then
 		self:stop(videoName)
 		self:_stopIOSDetectPause()
 	end

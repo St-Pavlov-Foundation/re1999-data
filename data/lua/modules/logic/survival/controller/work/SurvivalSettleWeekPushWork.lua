@@ -117,21 +117,6 @@ function SurvivalSettleWeekPushWork:onPlayerAnimFinish()
 		end
 	end
 
-	if self:isHideEnding() then
-		local storyId = SurvivalConfig.instance:getConstValue(SurvivalEnum.ConstId.StoryHiddenEnding)
-
-		storyId = tonumber(storyId) or 0
-
-		if storyId > 0 and not StoryModel.instance:isStoryFinished(storyId) then
-			GameUtil.setActiveUIBlock("SurvivalSettleWeekPushWork", false, true)
-			StoryController.instance:playStory(storyId, nil, self._onStoryEnd, self)
-		else
-			self:showResultPanel(true)
-		end
-
-		return
-	end
-
 	self:showResultPanel(true)
 end
 

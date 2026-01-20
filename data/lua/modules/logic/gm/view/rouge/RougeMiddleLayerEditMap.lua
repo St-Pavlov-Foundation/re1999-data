@@ -15,7 +15,7 @@ end
 
 function RougeMiddleLayerEditMap:initReflection()
 	require("tolua.reflection")
-	tolua.loadassembly("Assembly-CSharp")
+	tolua.loadassembly("SL_AS")
 
 	local type = tolua.findtype("UnityEngine.LineRenderer")
 	local property = tolua.getproperty(type, "positionCount")

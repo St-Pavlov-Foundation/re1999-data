@@ -245,8 +245,15 @@ function SurvivalBagInfoPart:updateMo(mo, param)
 		AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_qiutu_explore_senior)
 	end
 
+	local isSp1 = self.mo and self.mo.co and self.mo.co.rare == 6 and (SurvivalEnum.ItemSource.Drop == self.mo.source or SurvivalEnum.ItemSource.Search == self.mo.source)
+
+	if isSp1 then
+		self._anim:Play("opensp1", 0, 0)
+		AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_qiutu_explore_senior)
+	end
+
 	gohelper.setActive(self.recommend, self.shopType and self.mo and self:isShelterShop() and self.mo:isDisasterRecommendItem(self.param.mapId))
-	gohelper.setActive(self.itemSubType_npc, self.shopType and self.mo and self:isSurvivalShop() and self.mo:isNPCRecommendItem())
+	gohelper.setActive(self.itemSubType_npc, self.mo and self.mo:isNPCRecommendItem())
 end
 
 function SurvivalBagInfoPart:isShelterShop()

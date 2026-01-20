@@ -5,14 +5,16 @@ module("modules.configs.excel2json.lua_copost_const", package.seeall)
 local lua_copost_const = {}
 local fields = {
 	value = 2,
+	value4 = 5,
+	id = 1,
 	value3 = 4,
-	value2 = 3,
-	id = 1
+	value2 = 3
 }
 local primaryKey = {
 	"id"
 }
 local mlStringKey = {
+	value4 = 2,
 	value3 = 1
 }
 

@@ -19,6 +19,7 @@ function VersionResSplitHandler:generateResSplitCfg()
 	self:_InitGuideCfg()
 	self:_InitStoryCfg()
 	self:_initRunWork()
+	self:_getPartyGameCfg()
 	self:_loadAllStoryCfg(self._generateResSplitCfg, self)
 end
 
@@ -354,6 +355,12 @@ function VersionResSplitHandler:_getResWhiteListDict()
 		end
 	end
 
+	for i = 0, self._partyGameAssets.Length - 1 do
+		local filePath = self._partyGameAssets[i]
+
+		resWhiteDict[filePath] = true
+	end
+
 	return resWhiteDict
 end
 
@@ -459,14 +466,10 @@ function VersionResSplitHandler:_dealSingleSoundBank(soundBank)
 	local bankName = soundBank.ShortName
 	local path = soundBank.Path
 
-	if soundBank._attr.Language == "SFX" and soundBank.IncludedEvents then
-		for i, event in pairs(soundBank.IncludedEvents.Event) do
-			local eventName = event._attr.Name
-
-			if event.ReferencedStreamedFiles then
-				for n, file in pairs(event.ReferencedStreamedFiles.File) do
-					self:_addWenInfo(bankName, eventName, file._attr.Id)
-				end
+	if soundBank._attr.Language == "SFX" and soundBank.Media then
+		for i, mediaFile in pairs(soundBank.Media.File) do
+			if mediaFile.Path then
+				self:_addWenInfo(bankName, "", mediaFile.Path)
 			end
 		end
 	end
@@ -833,6 +836,12 @@ function VersionResSplitHandler._getResFolderFiles(folder, extension)
 	end
 
 	return files
+end
+
+function VersionResSplitHandler:_getPartyGameCfg()
+	local partyGameMgrCs = PartyGame.Runtime.GameLogic.GameMgr
+
+	self._partyGameAssets = partyGameMgrCs.Instance.GetPartyGamePreLoaderAllAssetAllDeps()
 end
 
 return VersionResSplitHandler

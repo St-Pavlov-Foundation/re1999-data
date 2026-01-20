@@ -4,6 +4,10 @@ module("modules.logic.commonprop.view.CommonPropView", package.seeall)
 
 local CommonPropView = class("CommonPropView", BaseView)
 
+if BootNativeUtil.isWindows() then
+	module_views.CommonPropView.destroy = 1
+end
+
 function CommonPropView:onInitView()
 	self._bgClick = gohelper.getClick(self.viewGO)
 	self._scrollitem = gohelper.findChild(self.viewGO, "#scroll_item")
@@ -29,9 +33,7 @@ function CommonPropView:_editableInitView()
 
 	local parentGO = gohelper.findChild(self.viewGO, "#go_video")
 
-	self._videoPlayer, self._displauUGUI = AvProMgr.instance:getVideoPlayer(parentGO)
-
-	self._videoPlayer:Play(self._displauUGUI, langVideoUrl("commonprop"), true, nil, nil)
+	self._videoPlayer = VideoPlayerMgr.instance:createGoAndVideoPlayer(parentGO)
 end
 
 function CommonPropView:_onClickBG()
@@ -61,6 +63,8 @@ function CommonPropView:onOpen()
 	else
 		AudioMgr.instance:trigger(AudioEnum.UI.Play_UI_Rewards)
 	end
+
+	self._videoPlayer:play("commonprop", true, nil, nil)
 end
 
 function CommonPropView:_setCanClose()
@@ -68,13 +72,17 @@ function CommonPropView:_setCanClose()
 end
 
 function CommonPropView:onClose()
+	if BootNativeUtil.isWindows() then
+		self._videoPlayer:stop()
+	end
+
 	CommonPropListModel.instance:clear()
 	AudioMgr.instance:trigger(AudioEnum.UI.Play_UI_General_shutdown)
 
 	CommonPropListItem.hasOpen = false
 
 	if self._videoPlayer and not BootNativeUtil.isIOS() then
-		self._videoPlayer:Stop()
+		self._videoPlayer:stop()
 	end
 end
 
@@ -99,9 +107,12 @@ function CommonPropView:_setPropItems()
 end
 
 function CommonPropView:onDestroyView()
-	if self._videoPlayer then
-		self._videoPlayer:Clear()
+	if BootNativeUtil.isWindows() then
+		self._videoPlayer = nil
+		self._displauUGUI = nil
+	end
 
+	if self._videoPlayer then
 		self._videoPlayer = nil
 	end
 

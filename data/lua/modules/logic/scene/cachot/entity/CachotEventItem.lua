@@ -27,7 +27,7 @@ function CachotEventItem:init(go)
 	self._goFrameElite = gohelper.findChild(go, "event/light/frame_orange")
 	self._goFrameBoss = gohelper.findChild(go, "event/light/frame_red")
 	self._anim = self.go:GetComponent(typeof(UnityEngine.Animator))
-	self._anim.keepAnimatorControllerStateOnDisable = true
+	self._anim.keepAnimatorStateOnDisable = true
 end
 
 function CachotEventItem:addEventListeners()

@@ -217,12 +217,23 @@ local allRolePath = {
 }
 
 function SurvivalUI3DRender:initCamera()
-	local path = SurvivalConfig.instance:getConstValue(SurvivalEnum.ConstId.PlayerRes)
+	local roleRes
+
+	if SurvivalMapHelper.instance:isInSurvivalScene() then
+		local survivalShelterRoleMo = SurvivalShelterModel.instance:getWeekInfo().survivalShelterRoleMo
+
+		roleRes = survivalShelterRoleMo:getRoleModelRes()
+	else
+		local survivalOutSideRoleModel = SurvivalModel.instance:getOutSideInfo().survivalOutSideRoleMo
+		local selectRole = survivalOutSideRoleModel:getSelectRole()
+
+		roleRes = lua_survival_role.configDict[selectRole].resource
+	end
 
 	self._allResGo = self:getUserDataTb_()
 
 	for i, v in ipairs(allRolePath) do
-		self._allResGo[v] = self:addModel(v, path)
+		self._allResGo[v] = self:addModel(v, roleRes)
 	end
 
 	self:hideOtherModel()

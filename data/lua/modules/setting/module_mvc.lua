@@ -1,6 +1,70 @@
 ﻿-- chunkname: @modules/setting/module_mvc.lua
 
 local module_mvc = {
+	SummonUISwitch = {
+		model = {
+			"SummonUISwitchModel"
+		},
+		controller = {
+			"SummonUISwitchController"
+		},
+		rpc = {
+			"SummonUISwitchRpc"
+		},
+		config = {
+			"SummonUISwitchConfig"
+		}
+	},
+	HeroExpBox = {
+		model = {
+			"HeroExpBoxModel"
+		},
+		controller = {
+			"HeroExpBoxController"
+		}
+	},
+	PartyCloth = {
+		model = {
+			"PartyClothModel"
+		},
+		controller = {
+			"PartyClothController"
+		},
+		rpc = {
+			"PartyClothRpc"
+		},
+		config = {
+			"PartyClothConfig"
+		}
+	},
+	PartyGameLobby = {
+		model = {
+			"PartyGameLobbyModel",
+			"PartyGameRoomModel"
+		},
+		controller = {
+			"PartyGameLobbyController"
+		},
+		rpc = {
+			"PartyRoomRpc",
+			"PartyMatchRpc",
+			"PartyOutSideRpc"
+		},
+		config = {
+			"PartyGameLobbyConfig"
+		}
+	},
+	V3a4BBS = {
+		model = {
+			"V3a4BBSModel"
+		},
+		controller = {
+			"V3a4BBSController"
+		},
+		config = {
+			"V3a4BBSConfig"
+		}
+	},
 	Marsha = {
 		model = {
 			"MarshaModel"
@@ -92,6 +156,20 @@ local module_mvc = {
 	CharacterSkillTalent = {
 		config = {
 			"CharacterExtraConfig"
+		}
+	},
+	PartyMatch = {
+		model = {
+			"PartyGameModel"
+		},
+		controller = {
+			"PartyGameController"
+		},
+		rpc = {
+			"PartyGameRpc"
+		},
+		config = {
+			"PartyGameConfig"
 		}
 	},
 	KaRong = {
@@ -1106,7 +1184,8 @@ local module_mvc = {
 			"FightReplayModel"
 		},
 		rpc = {
-			"FightRpc"
+			"FightRpc",
+			"FightToolRpc"
 		},
 		controller = {
 			"FightController",
@@ -2809,7 +2888,9 @@ local module_mvc = {
 		},
 		config = {
 			"SurvivalConfig",
-			"SurvivalHandbookConfig"
+			"SurvivalHandbookConfig",
+			"SurvivalRoleConfig",
+			"SurvivalTechConfig"
 		},
 		controller = {
 			"SurvivalController",
@@ -3360,6 +3441,104 @@ local module_mvc = {
 		},
 		controller = {
 			"IgorController"
+		}
+	},
+	Laplace = {
+		model = {
+			"LaplaceForumModel",
+			"ChatRoomModel"
+		},
+		config = {
+			"Activity225Config"
+		},
+		controller = {
+			"LaplaceForumController",
+			"ChatRoomController"
+		},
+		rpc = {
+			"Activity225Rpc"
+		}
+	},
+	MiniParty = {
+		model = {
+			"MiniPartyModel",
+			"MiniPartyTaskModel"
+		},
+		config = {
+			"MiniPartyConfig"
+		},
+		rpc = {
+			"Activity223Rpc"
+		},
+		controller = {
+			"MiniPartyController"
+		}
+	},
+	ObserverBox = {
+		model = {
+			"ObserverBoxModel"
+		},
+		config = {
+			"ObserverBoxConfig"
+		},
+		rpc = {
+			"Activity226Rpc"
+		},
+		controller = {
+			"ObserverBoxController"
+		}
+	},
+	TitleAppoint = {
+		model = {
+			"TitleAppointmentModel"
+		},
+		config = {
+			"TitleAppointmentConfig"
+		},
+		rpc = {
+			"Activity224Rpc"
+		},
+		controller = {
+			"TitleAppointmentController"
+		}
+	},
+	ChatRoom = {
+		model = {
+			"ChatRoomModel"
+		},
+		config = {
+			"Activity225Config"
+		},
+		rpc = {
+			"Activity225Rpc"
+		},
+		controller = {
+			"ChatRoomController"
+		}
+	},
+	LuSiJian = {
+		model = {
+			"LuSiJianGameModel",
+			"LuSiJianModel"
+		},
+		config = {
+			"LuSiJianConfig"
+		},
+		controller = {
+			"LuSiJianGameController",
+			"LuSiJianController"
+		}
+	},
+	Chg = {
+		model = {
+			"ChgSysModel",
+			"ChgBattleModel"
+		},
+		controller = {
+			"ChgController"
+		},
+		config = {
+			"ChgConfig"
 		}
 	}
 }

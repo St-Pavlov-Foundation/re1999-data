@@ -9965,7 +9965,7 @@
   },
   {
     "id": "p_v1a6_versionsummonselfselectsixhalfview_tips",
-    "lang": "活动期间可选2名6星角色概率UP！\n选定后不能变更"
+    "lang": "活动期间可选2名6星角色概率UP！选定后不能变更"
   },
   {
     "id": "p_selfselectsixchoiceview_txt_title",
@@ -15733,7 +15733,7 @@
   },
   {
     "id": "p_v2a3_versionsummonselfselectsixhalfview_txt_tips",
-    "lang": "本卡池征集次数与保底\n均可继承至后续同名卡池"
+    "lang": "本卡池征集次数与保底均可继承至后续同名卡池"
   },
   {
     "id": "p_packagestoregoodsitem_txt_materialup",
@@ -19805,7 +19805,7 @@
   },
   {
     "id": "p_survivalceremonyopeningview_txt",
-    "lang": "     奇怪的语言异常已在拉普拉斯科算中心蔓延数日，人们开始用各种稀奇古怪的编码讲话。尽管缪斯三世将这一切似乎解释明白了，但是问题还得我们解决。幸运的是基金会也不想看到一个通过手语和结绳计数法来研究项目的拉普拉斯。他们同意让马库斯以临时助手的身份前来，运用她的阅读神秘术为我们提供援助。\n    事态严峻，时不我待，为了避免空耗时间，我决定亲自进入箱中，解决语言异化问题。\n                                              ——《关于拉普拉斯语言异化相关问题的报告》阿德勒·霍夫曼"
+    "lang": "    没人知道为什么玩具盒里会有这么一个“高效”的组织，但是这对拉普拉斯来说，从来都不算一件好事。在这种关系到未来拉普拉斯的发展问题上，哑谜与乌尔里希都保持了一贯的谨慎与有限的克制——哑谜认为这种高效可以帮助拉普拉斯活下来，而乌尔里希则认为这是一种磨灭人性的行为。至于其他的同僚和助手们——中心发工资给他们看戏，还有比这更有趣的生活？\n    不过还好，至少现在两位名义上的上级可以亲身体验一下，然后出具一份体验反馈，最后再提交一份工单。因为这是一个玩具箱，并非脚下的地球。"
   },
   {
     "id": "p_v2a3_destiny_preview_txt_new",
@@ -23033,11 +23033,11 @@
   },
   {
     "id": "p_v3a1_survival_help_1_txt_1",
-    "lang": "Ⅱ类认知污染：\n该类认知污染对<#FF906A>理智影响极大</color>，受到该暴雨侵蚀的盒中居民会失去理智，<#FF906A>持续追踪并攻击敌人</color>。"
+    "lang": "Ⅱ类暴雨：\n该类暴雨对<#FF906A>理智影响极大</color>，受到该暴雨侵蚀的盒中居民会失去理智，<#FF906A>持续追踪并攻击敌人</color>。"
   },
   {
     "id": "p_v3a1_survival_help_2_txt_1",
-    "lang": "Ⅲ类认知污染：\n该类认知污染对<#FF906A>实体影响极大</color>，受到该暴雨侵蚀的物品，在搜刮时会有概率变为<#FF906A>【无用垃圾】</color>。"
+    "lang": "Ⅲ类暴雨：\n该类暴雨对<#FF906A>实体影响极大</color>，受到该暴雨侵蚀的物品，在搜刮时会有概率变为<#FF906A>【无用垃圾】</color>。"
   },
   {
     "id": "p_v3a1_survival_help_3_txt_1",
@@ -23173,7 +23173,7 @@
   },
   {
     "id": "p_survivalshelterrewardview_txt_rewardtips",
-    "lang": "全新叩门余音「拉普拉斯式问候」！"
+    "lang": "【芦草结的造像】可在后续版本获得"
   },
   {
     "id": "p_survivalmapbaginfoview_txt_value",
@@ -23209,7 +23209,7 @@
   },
   {
     "id": "p_mainview_udimo_en",
-    "lang": "printing box"
+    "lang": "Udimorium"
   },
   {
     "id": "p_settingsgameview_txt_udimoenter",
@@ -23725,7 +23725,7 @@
   },
   {
     "id": "p_bpenterview_stamp2txt",
-    "lang": "「巡游特典」"
+    "lang": "「度朔特典」"
   },
   {
     "id": "p_bpreceiverewardview_txt",
@@ -24993,7 +24993,7 @@
   },
   {
     "id": "p_turnback3_bpview_txt_rewardtips",
-    "lang": "赠纯雨滴×300"
+    "lang": "立得纯雨滴*300"
   },
   {
     "id": "p_turnback3_bpview_txt_hasbuy",
@@ -25261,15 +25261,15 @@
   },
   {
     "id": "p_bpface_skinfestivalview_txt_title1",
-    "lang": "《岁月的书签》新的一页"
+    "lang": "吼吼点唱机当期典藏上新！"
   },
   {
     "id": "p_bpface_skinfestivalview_txt_title2",
-    "lang": "《惊魂夜颂歌》为那不被祝福，不被关照，不被重视的，献上小小的礼物。"
+    "lang": "《岁月的书签》新的一页：钗影摇金柳，只待春燕斜。"
   },
   {
     "id": "p_bpface_skinfestivalview_txt_title3",
-    "lang": "前往衣着风尚"
+    "lang": "解锁典藏光碟"
   },
   {
     "id": "p_v3a3_molideer_gameview_txt_fire",
@@ -25626,5 +25626,909 @@
   {
     "id": "p_v3a3_storeblockpackageview_name",
     "lang": "旅途的终点"
+  },
+  {
+    "id": "p_v3a4_versionsummontxt_Tips",
+    "lang": "登录即可领取十全调·【剪春注我】"
+  },
+  {
+    "id": "versionSummonPanel_goto",
+    "lang": "前往征集"
+  },
+  {
+    "id": "p_v3a4_storeroleskinview2_roletxt1",
+    "lang": "照雪明"
+  },
+  {
+    "id": "p_v3a4_storeroleskinview2_rolename1",
+    "lang": "梁月"
+  },
+  {
+    "id": "p_v3a4_storeroleskinview2_roletxt2",
+    "lang": "彩衣曲"
+  },
+  {
+    "id": "p_v3a4_storeroleskinview2_rolename2",
+    "lang": "牙仙"
+  },
+  {
+    "id": "p_v3a4_storeroleskinview2_roletxt3",
+    "lang": "踏影歌"
+  },
+  {
+    "id": "p_v3a4_storeroleskinview2_rolename3",
+    "lang": "野树莓"
+  },
+  {
+    "id": "p_v3a4_lusijian_gameview_txt_Tips",
+    "lang": "连接虚线完成剪纸"
+  },
+  {
+    "id": "p_v3a4_lusijian_gameview_txt_Tips2",
+    "lang": "点击阴影裁剪细节"
+  },
+  {
+    "id": "p_v3a4_lusijian_gameview_txt_Title",
+    "lang": "<size=80><voffset=35><mspace=-5>“</mspace></voffset></size><size=124><mspace=150>大</mspace></size><size=80><voffset=35><mspace=-5>”</mspace></voffset></size>功告成"
+  },
+  {
+    "id": "p_v3a4_lusijian_enterview_txt_Enter",
+    "lang": "<voffset=5><size=100>步</size></voffset>入剧情"
+  },
+  {
+    "id": "p_v3a4_storeblockpackageview_name",
+    "lang": "「虚假的梦」"
+  },
+  {
+    "id": "p_v3a4_storeblockpackageview_desc",
+    "lang": "*集齐当期<#D59584>活动兑换</color>及<#D59584>荒原构想商店</color>的主题套装后可获取"
+  },
+  {
+    "id": "p_v3a4_storeview_txt_title3",
+    "lang": "镇派<size=48>秘藏</size>"
+  },
+  {
+    "id": "p_v3a4_storeview_txt_title2",
+    "lang": "派中<size=48>重宝</size>"
+  },
+  {
+    "id": "p_v3a4_storeview_txt_title1",
+    "lang": "尘封<size=48>旧物</size>"
+  },
+  {
+    "id": "p_v3a4_titleappointmentview_1",
+    "lang": "巴别塔词砖"
+  },
+  {
+    "id": "p_v3a4_titleappointmentview_2",
+    "lang": "参与微型派对和语义萃取研究室可获得更多巴别塔词砖"
+  },
+  {
+    "id": "p_v3a4_storeroleskinview4_roletxt",
+    "lang": "孤独赞美诗"
+  },
+  {
+    "id": "p_v3a4_storeroleskinview4_rolename",
+    "lang": "6"
+  },
+  {
+    "id": "p_v3a4_chg_enterview_txt_Enter",
+    "lang": "<voffset=5><size=67>步</size></voffset>入剧情"
+  },
+  {
+    "id": "p_activity_giftbuypanelview3_txt_dec",
+    "lang": "它们顺着丝线而来，为了寻求纺线的尽头而落入湖中，溅起新的水花。湖面颤动，波纹扩散，至于它们是否寻到了线的尽头，那就只有命运才知道了。"
+  },
+  {
+    "id": "p_v3a4_destiny_panelsview_txt4",
+    "lang": "送角色造像自选!"
+  },
+  {
+    "id": "p_survivalrolelevelupview_lv",
+    "lang": " lv."
+  },
+  {
+    "id": "p_survivalrolelevelupview_1",
+    "lang": "逻辑"
+  },
+  {
+    "id": "p_survivalrolelevelupview_2",
+    "lang": "创造"
+  },
+  {
+    "id": "p_survivalrolelevelupview_3",
+    "lang": "韧性"
+  },
+  {
+    "id": "p_survivalrolelevelupview_4",
+    "lang": "执行"
+  },
+  {
+    "id": "p_survivalrolelevelupview_5",
+    "lang": "乐观"
+  },
+  {
+    "id": "p_mainsceneswitchview_title_4",
+    "lang": "湖的印象"
+  },
+  {
+    "id": "p_v3a4_chatroommainview_txt_name",
+    "lang": "红包雨"
+  },
+  {
+    "id": "p_v3a4_chatroomnpcqandaview_txt_title",
+    "lang": "乌有之问"
+  },
+  {
+    "id": "p_v3a4_chatroomnpcqandaview_txt_titleEn",
+    "lang": "QUESTION"
+  },
+  {
+    "id": "p_battlegame_mainview_txt_EnemyDeck",
+    "lang": "敌方卡库"
+  },
+  {
+    "id": "p_battlegame_mainview_txt_Confirm",
+    "lang": "确认出牌"
+  },
+  {
+    "id": "p_partyclothview_txt_Lottery",
+    "lang": "前往抽奖"
+  },
+  {
+    "id": "p_partyclothview_txt_HasWear",
+    "lang": "已保存"
+  },
+  {
+    "id": "p_partyclothview_txt_Wear",
+    "lang": "保存搭配"
+  },
+  {
+    "id": "p_partyclothview_txt_Hair",
+    "lang": "头饰"
+  },
+  {
+    "id": "p_partyclothview_txt_Jacket",
+    "lang": "上装"
+  },
+  {
+    "id": "p_partyclothview_txt_Pant",
+    "lang": "下装"
+  },
+  {
+    "id": "p_partyclothview_txt_Shoes",
+    "lang": "鞋子"
+  },
+  {
+    "id": "p_partyclothview_txt_Skin",
+    "lang": "茸毛"
+  },
+  {
+    "id": "p_partyclothview_txt_Suit",
+    "lang": "套装"
+  },
+  {
+    "id": "p_partyclothlotteryview_txt_Title",
+    "lang": "服饰列表"
+  },
+  {
+    "id": "p_v3a4_laplacemainview_txt1",
+    "lang": "缪斯碰碰盒"
+  },
+  {
+    "id": "p_v3a4_laplacemainview_txt2",
+    "lang": "进入研究室"
+  },
+  {
+    "id": "p_v3a4_box_txt3",
+    "lang": "此组已全部观测完成"
+  },
+  {
+    "id": "p_v3a4_box_txt4",
+    "lang": "当前可观测次数："
+  },
+  {
+    "id": "p_v3a4_box_txt5",
+    "lang": "完成以下每日任务可获得观测次数"
+  },
+  {
+    "id": "p_v3a4_box_txt6",
+    "lang": "观测所有盒子后解锁第二组"
+  },
+  {
+    "id": "p_survivaltechshelterview_txt_Title",
+    "lang": "指标中心"
+  },
+  {
+    "id": "p_survivaltechshelterview_txt_Tips",
+    "lang": "已点亮指标将在下一次模拟重置"
+  },
+  {
+    "id": "p_survivaltechview_txt_Title",
+    "lang": "漫游理论"
+  },
+  {
+    "id": "p_v3a4_destinygift_panelview_txt_tips",
+    "lang": "不限次数征集，必得6星！！"
+  },
+  {
+    "id": "p_v3a4_destinygift_panelview_txt_tips2",
+    "lang": "礼包包含"
+  },
+  {
+    "id": "p_v3a4_destinygift_panelview_txt_name",
+    "lang": "兔之环·湖的涟漪"
+  },
+  {
+    "id": "p_towercompose_modUnlockTip",
+    "lang": "继续挑战以解锁挑战插件"
+  },
+  {
+    "id": "p_v3a4_mainview_house",
+    "lang": "<size=50>不</size>休荒原"
+  },
+  {
+    "id": "p_v3a4_mainview_actor",
+    "lang": "<size=50>角</size>色"
+  },
+  {
+    "id": "p_v3a4_mainview_summon",
+    "lang": "<size=50>征</size>集"
+  },
+  {
+    "id": "p_v3a4_giftrecommend_panelview_txt_dec",
+    "lang": "箱中布景+框架艺术优惠上新！"
+  },
+  {
+    "id": "p_v3a4_bbsview_tabtitle",
+    "lang": "[公告]"
+  },
+  {
+    "id": "p_v3a4_bbsview_link",
+    "lang": "主页>近期热帖>祝县奇闻轶事"
+  },
+  {
+    "id": "p_v3a4bbsview_post_2_1",
+    "lang": "◆祝县第一届马拉松大赛"
+  },
+  {
+    "id": "p_v3a4bbsview_post_2_2",
+    "lang": "◆梅花的种植与养护"
+  },
+  {
+    "id": "p_v3a4bbsview_post_2_3",
+    "lang": "◆千禧年大灾变"
+  },
+  {
+    "id": "p_v3a4bbsview_post_2_4",
+    "lang": "◆四川惊现外星人"
+  },
+  {
+    "id": "p_v3a4bbsview_post_3_1",
+    "lang": "小说联盟"
+  },
+  {
+    "id": "p_v3a4bbsview_post_3_2",
+    "lang": "科普乐园"
+  },
+  {
+    "id": "p_v3a4bbsview_post_3_3",
+    "lang": "同城互助"
+  },
+  {
+    "id": "p_v3a4bbsview_replying",
+    "lang": "对方回复中…"
+  },
+  {
+    "id": "p_v3a4bbsview_2ndpanel",
+    "lang": "是否确认跳过论坛回复？"
+  },
+  {
+    "id": "p_v3a4_doubleechoes_tips1",
+    "lang": "“双重谐振”活动期间，前往【尘埃运动】关卡，即可享受固定次数的双倍掉落机会，挑战成功即可获得双倍酬劳。"
+  },
+  {
+    "id": "p_v3a4_doubleechoes_tips2",
+    "lang": "每日前4次尘埃运动关卡酬劳+100％"
+  },
+  {
+    "id": "doubleactivity_outtips",
+    "lang": "▩1%s+▩2%s"
+  },
+  {
+    "id": "doubleactivity_intips",
+    "lang": "▩1%s可加成次数:▩2%s/▩3%s"
+  },
+  {
+    "id": "doubleactivity_intips_daily",
+    "lang": "▩1%s今日可加成次数:▩2%s/▩3%s"
+  },
+  {
+    "id": "p_v3a4_giftrecommendview_txt_shopnamecn1",
+    "lang": "苇草的赠礼"
+  },
+  {
+    "id": "p_v3a4_giftrecommendview_txt_shopnamecn2",
+    "lang": "新燕的收获"
+  },
+  {
+    "id": "p_v3a4_giftrecommendview_txt_shopnamecn3",
+    "lang": "神秘学潮汐"
+  },
+  {
+    "id": "p_v3a4_giftrecommendview2_txt_shopnamecn1",
+    "lang": "腊梅的赠礼"
+  },
+  {
+    "id": "p_v3a4_giftrecommendview2_txt_shopnamecn2",
+    "lang": "灯芯屋馈赠"
+  },
+  {
+    "id": "p_v3a4_giftrecommendview2_txt_shopnamecn3",
+    "lang": "瑞雪的赠礼"
+  },
+  {
+    "id": "p_v3a4_giftrecommendview3_txt_shopnamecn1",
+    "lang": "信马游龙"
+  },
+  {
+    "id": "p_v3a4_giftrecommendview3_txt_shopnamecn2",
+    "lang": "度朔特惠"
+  },
+  {
+    "id": "p_v3a4_giftrecommendview3_txt_shopnamecn3",
+    "lang": "度朔酬宾"
+  },
+  {
+    "id": "p_v3a4_goldenmilletpresent_txt_Claim",
+    "lang": "前往衣着风尚"
+  },
+  {
+    "id": "p_v3a4_goldenmilletpresent_txt_Tips",
+    "lang": "抵扣450"
+  },
+  {
+    "id": "p_v3a4_goldenmilletpresent_txt_ReceiveTip",
+    "lang": "活动期间，登录即可免费领取\n菲林士多衣着-算尘寰和成衣订购惠选"
+  },
+  {
+    "id": "p_v3a4_rolestorygameview_txt_finish",
+    "lang": " "
+  },
+  {
+    "id": "p_v3a4_rolestorygameview_txt_play",
+    "lang": "播放完整旋律"
+  },
+  {
+    "id": "p_v3a4_rolestorygameview_txt_finish2",
+    "lang": "完成旋律"
+  },
+  {
+    "id": "p_v3a4_rolestorygameview_txt_title",
+    "lang": "点击音调进行填充"
+  },
+  {
+    "id": "p_v3a4_warmup_txt_tips",
+    "lang": "划动拂走墙壁上的尘埃"
+  },
+  {
+    "id": "p_v3a4_warmup_txt_WrongChannel",
+    "lang": "拂走尘土间的碎语，祂们会来迎接你。"
+  },
+  {
+    "id": "p_activitycollect_fullview_txt2_title",
+    "lang": "吼吼点唱机·度朔特辑"
+  },
+  {
+    "id": "p_activitycollect_fullview_txt2_desc",
+    "lang": "购买吼吼典藏光碟、典藏光碟组各立即获得<#9C5613>【灵魂压缩电池】×1</color>"
+  },
+  {
+    "id": "p_packagestoregoodsitem_txt_destinygift",
+    "lang": "必得六星"
+  },
+  {
+    "id": "p_polilog_ripplesonthewater_page_txt",
+    "lang": "通过兔之环·【湖的涟漪】获取的角色均会被邀请至箱中，获得的重复角色会转换为迷途之声和大容量迷途之声。"
+  },
+  {
+    "id": "p_v3a4_destiny_pickchoiceview_txt_tile",
+    "lang": "可获取以下任意一名角色的造像"
+  },
+  {
+    "id": "p_v3a4_destiny_pickchoiceview_txt_title1",
+    "lang": "当前名录内所有角色塑造已满"
+  },
+  {
+    "id": "p_v3a4_destinygift_pickchoiceitem_txt_hasget",
+    "lang": "已拥有"
+  },
+  {
+    "id": "p_v3a4_destinygift_pickchoiceitem_txt_locked",
+    "lang": "未拥有"
+  },
+  {
+    "id": "p_v3a4_rolestoryaudioview_txt_title",
+    "lang": "完成旋律"
+  },
+  {
+    "id": "p_partygamewaitbar_txt_wait",
+    "lang": "等待其他玩家"
+  },
+  {
+    "id": "p_common_gamepanel_txt_finish",
+    "lang": "已完成，观战中…"
+  },
+  {
+    "id": "p_mainsceneskinmaterialtipview2_txt_tab1",
+    "lang": "景观艺术"
+  },
+  {
+    "id": "p_mainsceneskinmaterialtipview2_txt_tab2",
+    "lang": "箱中布景"
+  },
+  {
+    "id": "p_mainsceneskinmaterialtipview2_txt_name",
+    "lang": "【惊奇选购单】"
+  },
+  {
+    "id": "p_partyclothlotterysuititem_txt_locked",
+    "lang": "未上架"
+  },
+  {
+    "id": "p_common_gamereward_txt_title",
+    "lang": "请选择奖励"
+  },
+  {
+    "id": "p_common_gamereward_txt_tips",
+    "lang": "快选吧，牌越多越好！"
+  },
+  {
+    "id": "p_common_gamereward_txt_card",
+    "lang": "我的牌库："
+  },
+  {
+    "id": "p_common_gameteamresult_txt_success",
+    "lang": "小队胜利"
+  },
+  {
+    "id": "p_common_gameteamresult_txt_fail",
+    "lang": "小队失败"
+  },
+  {
+    "id": "p_knockout_loading_txt_title",
+    "lang": "恭喜晋级"
+  },
+  {
+    "id": "p_partygame_addroomview_txt_desc1",
+    "lang": "派对邀请函"
+  },
+  {
+    "id": "p_partygame_addroomview_txt_desc2",
+    "lang": "输入邀请码"
+  },
+  {
+    "id": "p_partygame_addroomview_txt_desc3",
+    "lang": "参加派对"
+  },
+  {
+    "id": "p_partygame_friendlistview_txt_list",
+    "lang": "好友列表"
+  },
+  {
+    "id": "p_partygame_inroomview_txt_desc1",
+    "lang": "派对邀请码:"
+  },
+  {
+    "id": "p_partygame_inroomview_txt_cancel",
+    "lang": "取消准备"
+  },
+  {
+    "id": "p_partygame_invitetipsitem_txt_refuse",
+    "lang": "拒绝"
+  },
+  {
+    "id": "p_partygame_invitetipsitem_txt_agree",
+    "lang": "接受"
+  },
+  {
+    "id": "p_partygame_mainview_txt_desc1",
+    "lang": "创办派对"
+  },
+  {
+    "id": "p_partygame_mainview_txt_desc2",
+    "lang": "派对启程"
+  },
+  {
+    "id": "p_partygame_mainview_txt_desc3",
+    "lang": "换装(临时入口)"
+  },
+  {
+    "id": "p_partygame_roommatchview_txt_desc1",
+    "lang": "匹配中…"
+  },
+  {
+    "id": "p_partygame_roommatchview_txt_desc2",
+    "lang": "匹配成功"
+  },
+  {
+    "id": "p_partygame_roommatchview_txt_desc3",
+    "lang": "取消匹配"
+  },
+  {
+    "id": "p_puzzlegameview_txt_desc1",
+    "lang": "查看原图"
+  },
+  {
+    "id": "p_puzzlegameview_txt_desc2",
+    "lang": "记住拼图的图案！"
+  },
+  {
+    "id": "p_survivalhandbookview_txt_new_desc1",
+    "lang": "事件"
+  },
+  {
+    "id": "p_survivalhandbookview_txt_new_desc2",
+    "lang": "收藏品"
+  },
+  {
+    "id": "p_survivalgivebackview_txt_desc1",
+    "lang": "失误"
+  },
+  {
+    "id": "p_survivalgivebackview_txt_desc2",
+    "lang": "感谢并收下"
+  },
+  {
+    "id": "p_survivalleavemsgview_txt_desc1",
+    "lang": "我发布的留言"
+  },
+  {
+    "id": "p_survivalleavemsgview_txt_desc2",
+    "lang": "留言"
+  },
+  {
+    "id": "p_survivalleavemsgview_txt_desc3",
+    "lang": "留言预览"
+  },
+  {
+    "id": "p_survivalleavemsgview_txt_desc4",
+    "lang": "完成并发布"
+  },
+  {
+    "id": "p_survivalleavemsgview_txt_desc5",
+    "lang": "留言方式"
+  },
+  {
+    "id": "p_survivalinitteamview_txt_desc1",
+    "lang": "白天"
+  },
+  {
+    "id": "p_survivalinitteamview_txt_desc2",
+    "lang": "黑夜"
+  },
+  {
+    "id": "p_survivalinitteamview_txt_desc3",
+    "lang": "战斗等级"
+  },
+  {
+    "id": "p_survivalmapresultview_txt_total",
+    "lang": "收益合计"
+  },
+  {
+    "id": "p_survivalroleselectview_txt_title",
+    "lang": "主角选择"
+  },
+  {
+    "id": "p_survivalroleselectview_txt_loss",
+    "lang": "失物"
+  },
+  {
+    "id": "p_v3a4_bbsview_txt_desc1",
+    "lang": "近期热帖>"
+  },
+  {
+    "id": "p_v3a4_bbsview_txt_desc3",
+    "lang": "本期热帖>"
+  },
+  {
+    "id": "p_v3a4_bbsview_txt_desc4",
+    "lang": "版面推荐>"
+  },
+  {
+    "id": "p_v3a4_bbsview_txt_desc5",
+    "lang": "刷新[F5]"
+  },
+  {
+    "id": "p_v3a4_bbsview_txt_desc6",
+    "lang": "快速回复："
+  },
+  {
+    "id": "p_v3a4_bbsview_txt_desc7",
+    "lang": "发布留言"
+  },
+  {
+    "id": "p_towercomposesaveview_txt_desc1",
+    "lang": "投射值"
+  },
+  {
+    "id": "p_v3a4_miniparty_inviteview_txt_desc1",
+    "lang": "邀请码组队"
+  },
+  {
+    "id": "p_v3a4_miniparty_inviteview_txt_desc2",
+    "lang": "好友组队"
+  },
+  {
+    "id": "p_v3a4_miniparty_inviteview_txt_desc3",
+    "lang": "查看邀请"
+  },
+  {
+    "id": "p_v3a4_miniparty_inviteview_txt_desc4",
+    "lang": "组队成功后无法解除"
+  },
+  {
+    "id": "p_v3a4_miniparty_inviteview_txt_desc5",
+    "lang": "发送组队邀请"
+  },
+  {
+    "id": "p_v3a4_miniparty_inviteview_txt_desc6",
+    "lang": "粘贴他人邀请码到输入框发送申请​"
+  },
+  {
+    "id": "p_v3a4_miniparty_inviteview_txt_desc7",
+    "lang": "未组队"
+  },
+  {
+    "id": "p_v3a4_miniparty_inviteview_txt_desc8",
+    "lang": "同意"
+  },
+  {
+    "id": "p_v3a4_miniparty_inviteview_txt_desc9",
+    "lang": "拒绝"
+  },
+  {
+    "id": "p_v3a4_miniparty_inviteview_txt_desc10",
+    "lang": "邀请入队"
+  },
+  {
+    "id": "p_v3a4_miniparty_inviteview_txt_desc11",
+    "lang": "队伍已满"
+  },
+  {
+    "id": "p_v3a4_miniparty_inviteview_txt_desc12",
+    "lang": "已失效"
+  },
+  {
+    "id": "p_v3a4_miniparty_view_txt_desc1",
+    "lang": "微型派对"
+  },
+  {
+    "id": "p_v3a4_miniparty_view_txt_desc2",
+    "lang": "结交伙伴激活派对加成"
+  },
+  {
+    "id": "p_v3a4_miniparty_view_txt_desc3",
+    "lang": "已结交伙伴"
+  },
+  {
+    "id": "p_v3a4_miniparty_view_txt_desc4",
+    "lang": "寻找伙伴"
+  },
+  {
+    "id": "p_v3a4_miniparty_view_txt_desc5",
+    "lang": "巴别塔词砖"
+  },
+  {
+    "id": "p_v3a4_miniparty_view_txt_desc6",
+    "lang": "派对目标"
+  },
+  {
+    "id": "p_v3a4_miniparty_view_txt_desc7",
+    "lang": "个人目标"
+  },
+  {
+    "id": "p_v3a4_miniparty_view_txt_desc8",
+    "lang": "未找到伙伴，派对加成未激活~"
+  },
+  {
+    "id": "p_v3a4_miniparty_view_txt_desc9",
+    "lang": "已结交伙伴，派对加成激活中！"
+  },
+  {
+    "id": "p_v3a4_miniparty_view_txt_desc10",
+    "lang": "缪斯三世正在苦思冥想更多目标，敬请期待。"
+  },
+  {
+    "id": "p_v3a4_miniparty_view_txt_desc12",
+    "lang": "部分任务额外奖励需要激活派对加成获得，点击完成后无法继续获得"
+  },
+  {
+    "id": "p_v3a4_chatroommainview_txt_desc1",
+    "lang": "表意符号"
+  },
+  {
+    "id": "p_towercomposemodequipview_txt_load",
+    "lang": "加载存档"
+  },
+  {
+    "id": "p_towercomposemodequipview_txt_exit",
+    "lang": "退出存档"
+  },
+  {
+    "id": "p_towercomposemodequipview_txt_lock",
+    "lang": "锁定"
+  },
+  {
+    "id": "p_towercompose_resultview_txt_saved",
+    "lang": "存档已保存"
+  },
+  {
+    "id": "p_v3a4_destinygift_fullview_txt_goto",
+    "lang": "前往湖的涟漪"
+  },
+  {
+    "id": "p_towercomposesaveview_txt_currecord",
+    "lang": "本次记录"
+  },
+  {
+    "id": "p_towercomposesaveview_txt_cover",
+    "lang": "覆盖此记录"
+  },
+  {
+    "id": "p_towercomposesaveview_txt_tips",
+    "lang": "<#AE7D67>重复挑战</color>时会加载所有队伍信息，仅可调整<#AE7D67>重复挑战的首领插件与队伍</color>并进入挑战，且另一挑战会快速胜利。"
+  },
+  {
+    "id": "p_towercomposesaveview_txt_again",
+    "lang": "重复挑战"
+  },
+  {
+    "id": "p_partygame_inroomview_txt_roomname",
+    "lang": "派对空间"
+  },
+  {
+    "id": "p_survivalleavemsgview_txt_title",
+    "lang": "留言板"
+  },
+  {
+    "id": "p_splicingroad_gameview_txt_desc",
+    "lang": "等待其他玩家选择"
+  },
+  {
+    "id": "p_survivalrolelevelupview_txt_techUnlock",
+    "lang": "指标中心有新的成果可点亮"
+  },
+  {
+    "id": "p_SurvivalRoleLevelUpView_txt_bossInvade",
+    "lang": "入侵怪物特殊词条已失效"
+  },
+  {
+    "id": "p_knockout_loading_1",
+    "lang": "房间加载中，请稍后...."
+  },
+  {
+    "id": "p_knockout_result_1",
+    "lang": "完成游戏"
+  },
+  {
+    "id": "p_knockout_result_2",
+    "lang": "夺得冠军"
+  },
+  {
+    "id": "p_knockout_result_3",
+    "lang": "稍有遗憾，再接再厉"
+  },
+  {
+    "id": "p_knockout_result_4",
+    "lang": "实力强劲，恭喜恭喜!"
+  },
+  {
+    "id": "p_knockout_promotion_title",
+    "lang": "恭喜晋级"
+  },
+  {
+    "id": "p_commandstation_taskitem_txt_spring",
+    "lang": "新春限定"
+  },
+  {
+    "id": "p_v3a4_miniparty_inviteview_txt_checkempty",
+    "lang": "暂无邀请"
+  },
+  {
+    "id": "p_cruisegameplayview_txt_name2",
+    "lang": "逢糯伊曼"
+  },
+  {
+    "id": "p_battlegame_mainview_txt_waiting",
+    "lang": "等待对方出牌"
+  },
+  {
+    "id": "p_knockout_result_txt_extra",
+    "lang": "额外"
+  },
+  {
+    "id": "p_v3a4_survival_help_1_txt_1",
+    "lang": "放弃演习会<#ff906a>损失大部分收获</color>，请三思而后行"
+  },
+  {
+    "id": "p_v3a4_survival_help_1_txt_2",
+    "lang": "任务列表会记录当前<#ff906a>需要优先完成的事项</color>"
+  },
+  {
+    "id": "p_v3a4_survival_help_1_txt_3",
+    "lang": "参与演习的<#ff906a>成员状态</color>可于此处查看对于地图中比研究小组等级低的敌人，可以<#ff906a>直接击败</color>"
+  },
+  {
+    "id": "p_v3a4_survival_help_1_txt_4",
+    "lang": "收集到的<#ff906a>盒中之物</color>可以装配到漫游行装中，并通过<#ff906a>链式反应</color>获得增益"
+  },
+  {
+    "id": "p_v3a4_survival_help_1_txt_5",
+    "lang": "此处可打开地图总览"
+  },
+  {
+    "id": "p_v3a4_survival_help_1_txt_6",
+    "lang": "演习过程中发生的任何事情都将记录在日志中"
+  },
+  {
+    "id": "p_v3a4_survival_help_1_txt_7",
+    "lang": "每名演习主角都有属于自己的<#ff906a>独特能力</color>，善用能力可使探索事倍功半"
+  },
+  {
+    "id": "p_v3a4_survival_help_1_txt_8",
+    "lang": "演习中收集到的道具会<#ff906a>存放到拖车处</color>。使用道具可以触发对应的效果"
+  },
+  {
+    "id": "p_v3a4_survival_help_2_txt_1",
+    "lang": "地图中有<#ff906a>各式各样的事件</color>等待被发现和处理。完成后可获得<#ff906a>丰厚的奖励</color>，也会有不同的<#ff906a>漫游助理</color>加入"
+  },
+  {
+    "id": "p_v3a4_survival_help_2_txt_2",
+    "lang": "抵达<#ff906a>撤离点</color>时，可以<#ff906a>结束演习</color>并携带所有收集到的物资，回到<#ff906a>庇护所</color>"
+  },
+  {
+    "id": "p_v3a4_survival_help_3_txt_1",
+    "lang": "收集到的<#ff906a>盒中之物</color>可以装配到<#ff906a>漫游行装</color>中，通过<#ff906a>链式反应</color>会依次<#ff906a>增强后续的增益</color>。仔细研究可以获得更强的增益加成"
+  },
+  {
+    "id": "p_survivalview_txt_btn_txt_1",
+    "lang": "图鉴"
+  },
+  {
+    "id": "p_survivalview_txt_btn_txt_2",
+    "lang": "漫游理论"
+  },
+  {
+    "id": "p_survivalrolelevelupview_txt_tips",
+    "lang": "指标中心有新的成果可点亮"
+  },
+  {
+    "id": "p_survivalmapview_txt_canceltips",
+    "lang": "点击空白区域取消使用"
+  },
+  {
+    "id": "p_unique",
+    "lang": "唯一"
+  },
+  {
+    "id": "p_v3a4_destinygift_fullview_txt_newtips",
+    "lang": "使用兔之环·【湖的涟漪】可以在“湖的涟漪”卡池中<#C66030>不限次数征集</color>!"
+  },
+  {
+    "id": "p_v3a4_partygame_help_1_title",
+    "lang": "抢钱小游戏"
+  },
+  {
+    "id": "p_v3a4_partygame_help_1_txt_1",
+    "lang": "TIPS1:\\n每次搬运最多3个，搬运越多，移动越慢"
+  },
+  {
+    "id": "p_v3a4_partygame_help_1_txt_2",
+    "lang": "TIPS2:\\n注意躲避招潮蟹"
+  },
+  {
+    "id": "p_v3a4_partygame_help_1_txt_3",
+    "lang": "搬运浆果到仓库位置进行提交"
   }
 ]

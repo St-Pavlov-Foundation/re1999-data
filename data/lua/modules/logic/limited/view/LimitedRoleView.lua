@@ -54,14 +54,14 @@ function LimitedRoleView:onOpen()
 
 	if self._limitCO then
 		if not self._videoPlayer then
-			self._videoPlayer, self._displauUGUI, self._videoPlayerGO = AvProMgr.instance:getVideoPlayer(self._videoGO)
+			self._videoPlayer, self._videoPlayerGO = VideoPlayerMgr.instance:createGoAndVideoPlayer(self._videoGO)
 
 			local uiVideoAdapter = MonoHelper.addNoUpdateLuaComOnceToGo(self._videoPlayerGO, FullScreenVideoAdapter)
 
 			self._videoPlayerGO = nil
 		end
 
-		self._videoPlayer:Play(self._displauUGUI, langVideoUrl(self._limitCO.entranceMv), false, self._videoStatusUpdate, self)
+		self._videoPlayer:play(self._limitCO.entranceMv, false, self._videoStatusUpdate, self)
 
 		if self._limitCO.mvtime and self._limitCO.mvtime > 0 then
 			TaskDispatcher.runDelay(self._timeout, self, self._limitCO.mvtime)
@@ -100,20 +100,20 @@ end
 function LimitedRoleView:_videoStatusUpdate(path, status, errorCode)
 	LimitedRoleController.instance:dispatchEvent(LimitedRoleController.VideoState, status)
 
-	if status == AvProEnum.PlayerStatus.FinishedPlaying then
+	if status == VideoEnum.PlayerStatus.FinishedPlaying then
 		TaskDispatcher.cancelTask(self._timeout, self)
 		self:_onPlayMovieFinish()
 	end
 
-	if (status == AvProEnum.PlayerStatus.Started or status == AvProEnum.PlayerStatus.StartedSeeking) and self._limitCO and self._limitCO.audio > 0 then
+	if (status == VideoEnum.PlayerStatus.Started or status == VideoEnum.PlayerStatus.StartedSeeking) and self._limitCO and self._limitCO.audio > 0 then
 		AudioMgr.instance:trigger(self._limitCO.audio)
 	end
 end
 
 function LimitedRoleView:_stopMovie()
 	if self._videoPlayer then
-		self._videoPlayer:Stop()
-		self._videoPlayer:Clear()
+		self._videoPlayer:stop()
+		self._videoPlayer:clear()
 
 		self._videoPlayer = nil
 	end
@@ -135,7 +135,7 @@ function LimitedRoleView:_delayCloseThis()
 	TaskDispatcher.cancelTask(self._delayCloseThis, self)
 
 	if self._videoPlayer then
-		self._videoPlayer:Stop()
+		self._videoPlayer:stop()
 	end
 
 	self:closeThis()

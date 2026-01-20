@@ -52,8 +52,8 @@ function HelpContentVideoItem:_btnfullScreenOnClick()
 end
 
 function HelpContentVideoItem:_btnpausedOnClick()
-	if self._videoPlayer and self._videoPlayer:IsPlaying() then
-		self._videoPlayer:Pause()
+	if self._videoPlayer and self._videoPlayer:isPlaying() then
+		self._videoPlayer:pause()
 		self:_stopSlideTimeTween()
 		self:_showPlayIcon(true)
 	end
@@ -68,8 +68,8 @@ function HelpContentVideoItem:_slidertimeOnValueChange(value)
 		return
 	end
 
-	if self._videoPlayer:IsPlaying() then
-		self._videoPlayer:Pause()
+	if self._videoPlayer:isPlaying() then
+		self._videoPlayer:pause()
 		self:_showPlayIcon(true)
 	end
 
@@ -79,7 +79,7 @@ function HelpContentVideoItem:_slidertimeOnValueChange(value)
 
 	self._curTime = self._startTime + self._duration * value
 
-	self._videoPlayer:Seek(self._curTime)
+	self._videoPlayer:seek(self._curTime)
 	self:_setVoideTime(self._curTime, self._duration)
 end
 
@@ -88,17 +88,17 @@ function HelpContentVideoItem:_btnstartOnClick()
 		if self._lastVideoId == nil then
 			logNormal(":_btnstartOnClick() isnew")
 			self:play()
-		elseif self._videoPlayer:IsPaused() then
+		elseif self._videoPlayer:isPaused() then
 			logNormal(":_btnstartOnClick() isPaused")
-			self._videoPlayer:Play()
-		elseif self._videoPlayer:IsPlaying() then
+			self._videoPlayer:play()
+		elseif self._videoPlayer:isPlaying() then
 			logNormal(":_btnstartOnClick() IsPlaying")
-			self._videoPlayer:Pause()
+			self._videoPlayer:pause()
 			self:_stopSlideTimeTween()
 			self:_showPlayIcon(true)
-		elseif self._videoPlayer:IsFinished() then
+		elseif self._videoPlayer:isFinished() then
 			logNormal(":_btnstartOnClick() IsFinished")
-			self._videoPlayer:Play()
+			self._videoPlayer:play()
 		end
 	else
 		self:play()
@@ -149,7 +149,7 @@ function HelpContentVideoItem:onUpdateMO(mo)
 	if self._videoPlayer then
 		self._lastVideoId = nil
 
-		self._videoPlayer:Stop()
+		self._videoPlayer:stop()
 		self:_stopSlideTimeTween()
 		gohelper.setActive(self._gocontentvideo, false)
 	end
@@ -161,8 +161,8 @@ end
 
 function HelpContentVideoItem:onDestroyView()
 	if self._videoPlayer then
-		self._videoPlayer:Stop()
-		self._videoPlayer:Clear()
+		self._videoPlayer:stop()
+		self._videoPlayer:clear()
 
 		self._videoPlayer = nil
 	end
@@ -225,8 +225,10 @@ end
 function HelpContentVideoItem:_initVideoPlayer()
 	if not self._isInitVideoPlayer then
 		self._isInitVideoPlayer = true
-		self._videoPlayer, self._displauUGUI, self._videoPlayerGO = AvProMgr.instance:getVideoPlayer(self._govideo)
-		self._displauUGUI.ScaleMode = UnityEngine.ScaleMode.ScaleToFit
+		self._videoPlayer, self._videoPlayerGO = VideoPlayerMgr.instance:createGoAndVideoPlayer(self._govideo)
+
+		self._videoPlayer:setScaleMode(UnityEngine.ScaleMode.ScaleToFit)
+
 		self._videoPlayerGOTrs = self._videoPlayerGO.transform
 
 		self:_updateVideoSize()
@@ -247,36 +249,36 @@ function HelpContentVideoItem:play()
 
 	self._lastVideoId = self._helpVideoCfg.id
 
-	self._videoPlayer:Play(self._displauUGUI, self._helpVideoCfg.videopath, false, self._videoStatusUpdate, self)
+	self._videoPlayer:play(self._helpVideoCfg.videopath, false, self._videoStatusUpdate, self)
 	gohelper.setActive(self._gocontentvideo, true)
 end
 
 function HelpContentVideoItem:stop()
 	if self._videoPlayer then
-		self._videoPlayer:Stop()
+		self._videoPlayer:stop()
 	end
 end
 
 function HelpContentVideoItem:_videoStatusUpdate(path, status, errorCode)
-	if status == AvProEnum.PlayerStatus.FinishedPlaying then
+	if status == VideoEnum.PlayerStatus.FinishedPlaying then
 		self:_showPlayIcon(true)
-	elseif status == AvProEnum.PlayerStatus.FirstFrameReady then
+	elseif status == VideoEnum.PlayerStatus.FirstFrameReady then
 		-- block empty
-	elseif status == AvProEnum.PlayerStatus.Started then
+	elseif status == VideoEnum.PlayerStatus.Started then
 		self:_showPlayIcon(false)
-	elseif status == AvProEnum.PlayerStatus.StartedSeeking then
+	elseif status == VideoEnum.PlayerStatus.StartedSeeking then
 		-- block empty
 	end
 
-	self._startTime, self._duration, self._curTime = self._videoPlayer:GetTimeRange(0, 0, 0)
+	self._startTime, self._duration, self._curTime = self._videoPlayer:getTimeRange(0, 0, 0)
 
-	if self._videoPlayer:IsPlaying() then
+	if self._videoPlayer:isPlaying() then
 		self:_startSlideTimeTween()
 	else
 		self:_stopSlideTimeTween()
 	end
 
-	logNormal(string.format("status:%s name:%s timeRange(%s,%s,%s) ", status, AvProEnum.getPlayerStatusEnumName(status), self._startTime, self._duration, self._curTime))
+	logNormal(string.format("status:%s name:%s timeRange(%s,%s,%s) ", status, VideoEnum.getPlayerStatusEnumName(status), self._startTime, self._duration, self._curTime))
 end
 
 function HelpContentVideoItem:_stopSlideTimeTween()

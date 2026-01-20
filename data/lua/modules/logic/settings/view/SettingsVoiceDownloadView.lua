@@ -41,7 +41,10 @@ function SettingsVoiceDownloadView:_btncloseOnClick()
 end
 
 function SettingsVoiceDownloadView:_btncanceldownloadOnClick()
-	SettingsVoicePackageController.instance:stopDownload(self._mo)
+	if not self._succ then
+		SettingsVoicePackageController.instance:stopDownload(self._mo)
+	end
+
 	self:closeThis()
 end
 
@@ -55,6 +58,18 @@ function SettingsVoiceDownloadView:_btnswitchOnClick()
 	end
 
 	SettingsVoicePackageController.instance:switchVoiceType(self._mo.lang, "in_voiceview")
+
+	local allCharMos = HeroModel.instance:getAllHero()
+
+	for _, charMo in pairs(allCharMos) do
+		local heroId = charMo.heroId
+		local langId, langStr, usingDefaultLang = SettingsRoleVoiceModel.instance:getCharVoiceLangPrefValue(heroId)
+
+		if not usingDefaultLang then
+			SettingsRoleVoiceModel.instance:setCharVoiceLangPrefValue(self._mo.lang, charMo.heroId)
+		end
+	end
+
 	ToastController.instance:showToast(182)
 	self:closeThis()
 end
@@ -79,6 +94,9 @@ function SettingsVoiceDownloadView:onOpen()
 	self:addEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnDownloadProgressRefresh, self._refreshDownloadProgress, self)
 	self:addEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnUnzipProgressRefresh, self._refreshUnzipProgress, self)
 	self:addEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnDownloadPackSuccess, self._onDownloadPackSuccess, self)
+	self:addEventCb(OptionPackageController.instance, OptionPackageEvent.DownloadProgressRefresh, self._refreshDownloadProgress, self)
+	self:addEventCb(OptionPackageController.instance, OptionPackageEvent.DownloadFinish, self._onDownloadPackSuccess, self)
+	self:addEventCb(OptionPackageController.instance, OptionPackageEvent.DownladErrorMsg, self._onDownladErrorMsg, self)
 
 	self._eventMgr = SLFramework.GameUpdate.HotUpdateEvent
 	self._eventMgrInst = SLFramework.GameUpdate.HotUpdateEvent.Instance
@@ -92,6 +110,7 @@ function SettingsVoiceDownloadView:onOpen()
 
 	gohelper.setActive(self._txtdesc.gameObject, false)
 	gohelper.setActive(self._btnswitch.gameObject, false)
+	ConnectAliveMgr.instance:registerCallback(ConnectEvent.OnReconnectSucc, self._onReconnectSucc, self)
 end
 
 function SettingsVoiceDownloadView:onClose()
@@ -99,6 +118,10 @@ function SettingsVoiceDownloadView:onClose()
 	self:removeEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnDownloadProgressRefresh, self._refreshDownloadProgress, self)
 	self:removeEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnUnzipProgressRefresh, self._refreshUnzipProgress, self)
 	self:removeEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnDownloadPackSuccess, self._onDownloadPackSuccess, self)
+	self:removeEventCb(OptionPackageController.instance, OptionPackageEvent.DownloadProgressRefresh, self._refreshDownloadProgress, self)
+	self:removeEventCb(OptionPackageController.instance, OptionPackageEvent.DownloadFinish, self._onDownloadPackSuccess, self)
+	self:removeEventCb(OptionPackageController.instance, OptionPackageEvent.DownladErrorMsg, self._onDownladErrorMsg, self)
+	ConnectAliveMgr.instance:unregisterCallback(ConnectEvent.OnReconnectSucc, self._onReconnectSucc, self)
 end
 
 function SettingsVoiceDownloadView:_refreshDownloadProgress(packName, curSize, allSize)
@@ -122,6 +145,7 @@ function SettingsVoiceDownloadView:_refreshUnzipProgress(progress)
 end
 
 function SettingsVoiceDownloadView:_onDownloadPackSuccess()
+	self._succ = true
 	self._txtcancel.text = luaLang("cancel")
 	self._txtcancelEn.text = "CANCEL"
 	self._txtconfirm.text = luaLang("confirm")
@@ -138,6 +162,34 @@ function SettingsVoiceDownloadView:_onDownloadPackSuccess()
 	end
 
 	gohelper.setActive(self._btnswitch.gameObject, true)
+end
+
+function SettingsVoiceDownloadView:_onReconnectSucc()
+	if self._errorMsgInfo then
+		if self._errorMsgInfo.yesCallback then
+			self._errorMsgInfo.yesCallback(self._errorMsgInfo.yesCallbackObj)
+		end
+
+		self._errorMsgInfo = nil
+	end
+end
+
+function SettingsVoiceDownloadView:_onDownladErrorMsg(msgInfo)
+	self._errorMsgInfo = msgInfo
+
+	MessageBoxController.instance:showMsgBoxAndSetBtn(MessageBoxIdDefine.VoiceDownloadCurFailed_1, MsgBoxEnum.BoxType.Yes_No, luaLang("retry"), "RETRY", luaLang("cancel"), "CANCEL", function()
+		self._errorMsgInfo = nil
+
+		if msgInfo.yesCallback then
+			msgInfo.yesCallback(msgInfo.yesCallbackObj)
+		end
+	end, function()
+		if msgInfo.noCallback then
+			msgInfo.noCallback(msgInfo.noCallbackObj)
+		end
+
+		self:closeThis()
+	end, nil, nil, nil, nil, luaLang(self._mo.nameLangId), msgInfo.extra)
 end
 
 function SettingsVoiceDownloadView:onDestroyView()

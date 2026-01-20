@@ -110,8 +110,7 @@ end
 
 if GameResMgr.IsFromEditorDir then
 	require("tolua.reflection")
-	tolua.loadassembly("Assembly-CSharp")
-	tolua.loadassembly("Assembly-CSharp-Editor")
+	tolua.loadassembly("ZProj.Editor")
 	tolua.loadassembly("System.Core")
 
 	local Type_String = tolua.findtype("System.String")

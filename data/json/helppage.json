@@ -5208,5 +5208,75 @@
     "iconText": "v3a3_commandstation_help_1",
     "unlockGuideId": 33041,
     "isCn": 0
+  },
+  {
+    "id": 3401001,
+    "title": "",
+    "type": 1,
+    "text": "探索地图指引图1",
+    "icon": "v3a4_survival_help_1",
+    "iconText": "v3a4_survival_help_1",
+    "unlockGuideId": 34603,
+    "isCn": 0
+  },
+  {
+    "id": 3401002,
+    "title": "",
+    "type": 1,
+    "text": "探索地图指引图2",
+    "icon": "v3a4_survival_help_2",
+    "iconText": "v3a4_survival_help_2",
+    "unlockGuideId": 34603,
+    "isCn": 0
+  },
+  {
+    "id": 3401003,
+    "title": "",
+    "type": 1,
+    "text": "放大器指引图",
+    "icon": "v3a4_survival_help_3",
+    "iconText": "v3a4_survival_help_3",
+    "unlockGuideId": 34604,
+    "isCn": 0
+  },
+  {
+    "id": 3401004,
+    "title": "",
+    "type": 1,
+    "text": "油画暴雨指引图",
+    "icon": "v3a1_survival_help_1",
+    "iconText": "v3a1_survival_help_1",
+    "unlockGuideId": 34612,
+    "isCn": 0
+  },
+  {
+    "id": 3401005,
+    "title": "",
+    "type": 1,
+    "text": "地形圣火指引图",
+    "icon": "v3a1_survival_help_5",
+    "iconText": "v3a1_survival_help_5",
+    "unlockGuideId": 34609,
+    "isCn": 0
+  },
+  {
+    "id": 3401006,
+    "title": "",
+    "type": 1,
+    "text": "地形冰场指引图",
+    "icon": "v3a1_survival_help_6",
+    "iconText": "v3a1_survival_help_6",
+    "unlockGuideId": 34610,
+    "isCn": 0
+  },
+  {
+    "id": 3401007,
+    "title": "",
+    "type": 1,
+    "text": "地形水域指引图",
+    "icon": "v3a1_survival_help_7",
+    "iconText": "v3a1_survival_help_7",
+    "unlockGuideId": 34611,
+    "isCn": 0
   }
 ]

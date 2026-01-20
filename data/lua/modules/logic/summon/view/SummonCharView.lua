@@ -134,6 +134,7 @@ function SummonCharView:_editableInitView()
 
 	self._resultitems = {}
 	self._summonUIEffects = self:getUserDataTb_()
+	self.summonPackagePoolHeroDic = {}
 end
 
 function SummonCharView:_initSummonView()
@@ -305,6 +306,14 @@ function SummonCharView:startDraw()
 	self.resultViewIsClose = false
 	self.summonResult = SummonModel.instance:getSummonResult(true)
 	self.summonResultCount = tabletool.len(self.summonResult)
+
+	for i = 1, self.summonResultCount do
+		local resultMo = self.summonResult[i]
+
+		if resultMo and not self.summonPackagePoolHeroDic[resultMo.heroId] then
+			self.summonPackagePoolHeroDic[resultMo.heroId] = true
+		end
+	end
 
 	if self.summonResultCount then
 		AudioMgr.instance:trigger(AudioEnum.UI.play_ui_callfor_ten)
@@ -772,6 +781,14 @@ function SummonCharView:_summonEnd()
 
 	param.jumpPoolId = SummonController.instance:getLastPoolId()
 
+	local heroDic = {}
+
+	for heroId, _ in pairs(self.summonPackagePoolHeroDic) do
+		heroDic[heroId] = true
+	end
+
+	param.getHeroDic = heroDic
+
 	local summonEndCallback = SummonController.instance:getSummonEndOpenCallBack()
 
 	if summonEndCallback then
@@ -785,6 +802,7 @@ function SummonCharView:_summonEnd()
 
 	self.summonResult = {}
 	self.summonResultCount = 0
+	self.summonPackagePoolHeroDic = {}
 end
 
 function SummonCharView:_onCloseView(viewName)

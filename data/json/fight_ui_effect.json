@@ -78,5 +78,35 @@
     "id": 20202,
     "name": "出牌",
     "res": "root/#chupai"
+  },
+  {
+    "id": 10301,
+    "name": "一般伤害",
+    "res": "root/fightfloat/crit_damage"
+  },
+  {
+    "id": 10302,
+    "name": "克制伤害",
+    "res": "root/fightfloat/crit_restrain"
+  },
+  {
+    "id": 10303,
+    "name": "治疗",
+    "res": "root/fightfloat/crit_heal"
+  },
+  {
+    "id": 10304,
+    "name": "本源伤害",
+    "res": "root/fightfloat/crit_damage_origin"
+  },
+  {
+    "id": 10305,
+    "name": "附加伤害",
+    "res": "root/fightfloat/crit_additional_damage"
+  },
+  {
+    "id": 10306,
+    "name": "总伤害",
+    "res": "root/fightfloat/total_damage"
   }
 ]

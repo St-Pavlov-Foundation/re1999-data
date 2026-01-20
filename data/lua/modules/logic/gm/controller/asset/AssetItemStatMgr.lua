@@ -15,7 +15,7 @@ function AssetItemStatMgr.initReflection()
 	end
 
 	require("tolua.reflection")
-	tolua.loadassembly("Assembly-CSharp")
+	tolua.loadassembly("SL_AS")
 
 	local type = tolua.findtype("SLFramework.ResMgr")
 	local BindingFlags = System.Reflection.BindingFlags

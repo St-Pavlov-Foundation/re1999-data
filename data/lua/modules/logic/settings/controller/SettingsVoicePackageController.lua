@@ -144,17 +144,23 @@ function SettingsVoicePackageController:openVoicePackageView()
 end
 
 function SettingsVoicePackageController:RequsetVoiceInfo(callback, callbackObj)
-	if not self._httpGetter then
-		self._httpGetter = SettingVoiceHttpGetter.New()
-	end
-
-	self._httpGetter:start(function()
-		self:_onGetVoiceInfo()
-
+	if not ProjBooter.instance:isUseBigZip() then
 		if callback then
 			callback(callbackObj)
 		end
-	end, self)
+	else
+		if not self._httpGetter then
+			self._httpGetter = SettingVoiceHttpGetter.New()
+		end
+
+		self._httpGetter:start(function()
+			self:_onGetVoiceInfo()
+
+			if callback then
+				callback(callbackObj)
+			end
+		end, self)
+	end
 end
 
 function SettingsVoicePackageController:onSettingVoiceDropDown()
@@ -216,7 +222,7 @@ function SettingsVoicePackageController:tryDownload(packInfo, needTip)
 		return
 	end
 
-	if #packInfo.downloadResList.names == 0 then
+	if #packInfo.downloadResList.names == 0 and ProjBooter.instance:isUseBigZip() then
 		if self._httpGetter then
 			self._httpGetter:stop()
 
@@ -266,18 +272,30 @@ end
 function SettingsVoicePackageController:startDownload(mo)
 	logNormal("startDownload lang = " .. mo.lang .. " version = " .. mo.latestVersion)
 
-	local res = mo.downloadResList
-	local downloadUrl, downloadUrlBak = mo.download_url, mo.download_url_bak
+	if not ProjBooter.instance:isUseBigZip() then
+		OptionPackageDownloadMgr.instance:startDownload(mo.lang, {}, {
+			mo.lang
+		})
+	else
+		local res = mo.downloadResList
+		local downloadUrl, downloadUrlBak = mo.download_url, mo.download_url_bak
 
-	self._optionalUpdateInst:SetRemoteAssetUrl(downloadUrl, downloadUrlBak)
-	self:_setUseReserveUrl()
-	self._optionalUpdateInst:StartDownload(mo.lang, res.names, res.hashs, res.orders, res.lengths, mo.latestVersion)
+		self._optionalUpdateInst:SetRemoteAssetUrl(downloadUrl, downloadUrlBak)
+		self:_setUseReserveUrl()
+		self._optionalUpdateInst:StartDownload(mo.lang, res.names, res.hashs, res.orders, res.lengths, mo.latestVersion)
+	end
+
 	self:_onDownloadPrepareStart(mo.lang)
 end
 
 function SettingsVoicePackageController:stopDownload(resItem)
-	self._optionalUpdateInst:StopDownload()
-	self._optionalUpdateInst:ClearThread()
+	if not ProjBooter.instance:isUseBigZip() then
+		OptionPackageDownloadMgr.instance:StopDownload()
+	else
+		self._optionalUpdateInst:StopDownload()
+		self._optionalUpdateInst:ClearThread()
+	end
+
 	self:dispatchEvent(SettingsEvent.OnDownloadPackFail, resItem.lang)
 end
 
@@ -331,6 +349,7 @@ function SettingsVoicePackageController:deleteVoicePack(packname)
 
 	ToastController.instance:showToast(183, luaLang(resItem.nameLangId))
 	SettingsVoicePackageModel.instance:onDeleteVoicePack(packname)
+	OptionPackageDownloadMgr.instance:deletePack(packname)
 	self:dispatchEvent(SettingsEvent.OnPackItemStateChange, packname)
 
 	if self._httpGetter then
@@ -458,7 +477,7 @@ end
 
 function SettingsVoicePackageController:_setUseReserveUrl()
 	require("tolua.reflection")
-	tolua.loadassembly("Assembly-CSharp")
+	tolua.loadassembly("SL_AS")
 
 	local type_OptionalUpdate = typeof(SLFramework.GameUpdate.OptionalUpdate)
 	local field_useReserveUrl = tolua.getfield(type_OptionalUpdate, "_useReserveUrl", 36)

@@ -208,7 +208,7 @@ function GMController:_onFrame()
 		end
 
 		require("tolua.reflection")
-		tolua.loadassembly("Assembly-CSharp")
+		tolua.loadassembly("SL_AS")
 
 		local socket = SLFramework.SocketMgr.Instance:GetSocketClient(0)
 		local type_client = tolua.findtype("SLFramework.TcpSocketClient")
@@ -526,7 +526,7 @@ function GMController.invokeCSharpInstanceMethod(typeFullName, methodName)
 	end
 
 	require("tolua.reflection")
-	tolua.loadassembly("Assembly-CSharp")
+	tolua.loadassembly("SL_AS")
 
 	local type = tolua.findtype(typeFullName)
 	local baseType = type.BaseType

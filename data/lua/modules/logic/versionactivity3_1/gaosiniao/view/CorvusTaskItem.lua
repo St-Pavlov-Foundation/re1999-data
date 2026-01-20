@@ -148,7 +148,7 @@ function CorvusTaskItem:_refreshNormalUI()
 	end
 
 	self._txtnum.text = math.min(progress, maxProgress)
-	self._txttaskdes.text = CO.desc
+	self._txttaskdes.text = CO.desc or CO.taskDesc
 	self._txttotal.text = maxProgress
 
 	gohelper.setActive(self._btnnotfinishbgGo, mo:isUnfinished())

@@ -30,7 +30,7 @@ function LinkageActivity_Page2VideoBase:onDestroyView()
 	FrameTimerController.onDestroyViewMember(self, "_playFrameTimer")
 
 	if self._videoPlayer then
-		self._videoPlayer:Clear()
+		self._videoPlayer:clear()
 	end
 
 	LinkageActivity_Page2VideoBase.super.onDestroyView(self)
@@ -56,7 +56,7 @@ function LinkageActivity_Page2VideoBase:createVideoPlayer(go)
 	local maskW = recthelper.getWidth(targetTrans)
 	local maskH = recthelper.getHeight(targetTrans)
 
-	self._videoPlayer, self._displayUGUI, self._videoGo = AvProMgr.instance:getVideoPlayer(go)
+	self._videoPlayer, self._videoGo = VideoPlayerMgr.instance:createGoAndVideoPlayer(go)
 
 	local uIBgSelfAdapter = self._videoGo:GetComponent(typeof(ZProj.UIBgSelfAdapter))
 
@@ -88,19 +88,22 @@ function LinkageActivity_Page2VideoBase:setDisplayUGUITextureRect(x, y, w, h)
 		h = h or 1
 	}
 
-	if self._displayUGUI then
+	if self._videoPlayer then
 		self:_refreshDisplayUGUITextureRect()
 	end
 end
 
 function LinkageActivity_Page2VideoBase:_refreshDisplayUGUITextureRect(isReset)
+	local rect
+
 	if isReset then
-		self._displayUGUI.uvRect = csRect.New(0, 0, 1, 1)
+		rect = csRect.New(0, 0, 1, 1)
 	else
-		self._displayUGUI.uvRect = csRect.New(self._uvRect.x, self._uvRect.y, self._uvRect.w, self._uvRect.h)
+		rect = csRect.New(self._uvRect.x, self._uvRect.y, self._uvRect.w, self._uvRect.h)
 	end
 
-	self._displayUGUI:SetVerticesDirty()
+	self._videoPlayer:setUVRect(rect)
+	self._videoPlayer:setVerticesDirty()
 end
 
 function LinkageActivity_Page2VideoBase:loadVideo(videoPath, isRewindPause)
@@ -113,7 +116,7 @@ function LinkageActivity_Page2VideoBase:loadVideo(videoPath, isRewindPause)
 	FrameTimerController.onDestroyViewMember(self, "_rewindFrameTimer")
 
 	if isRewindPause then
-		self._videoPlayer:Play(self._displayUGUI, videoPath, false)
+		self._videoPlayer:play(videoPath, false)
 
 		self._rewindFrameTimer = FrameTimerController.instance:register(function()
 			if not self:_canPlay() then
@@ -137,7 +140,7 @@ function LinkageActivity_Page2VideoBase:_loadVideo(videoPath)
 
 	self.__videoPath = videoPath
 
-	self._videoPlayer:LoadMedia(videoPath)
+	self._videoPlayer:loadMedia(videoPath)
 end
 
 function LinkageActivity_Page2VideoBase:play(audioId, isLooping)
@@ -186,7 +189,7 @@ function LinkageActivity_Page2VideoBase:_onPlay(audioId, isLooping)
 		self:_setActive_LoadingCover(false)
 	end
 
-	self._videoPlayer:Play(self._displayUGUI, isLooping)
+	self._videoPlayer:playLoadMedia(isLooping)
 
 	if audioId then
 		AudioMgr.instance:trigger(audioId)
@@ -194,34 +197,33 @@ function LinkageActivity_Page2VideoBase:_onPlay(audioId, isLooping)
 end
 
 function LinkageActivity_Page2VideoBase:_rewind(isPause)
-	self._videoPlayer:Rewind(isPause)
+	self._videoPlayer:rewind(isPause)
 end
 
 function LinkageActivity_Page2VideoBase:_canPlay()
-	return self._videoPlayer:CanPlay()
+	return self._videoPlayer:canPlay()
 end
 
 function LinkageActivity_Page2VideoBase:_isPlaying()
-	return self._videoPlayer:IsPlaying()
+	return self._videoPlayer:isPlaying()
 end
 
 function LinkageActivity_Page2VideoBase:_setActive_LoadingCover(isActive)
-	self._displayUGUI.enabled = isActive
-
+	self._videoPlayer:setUGUIState(isActive)
 	self:_refreshDisplayUGUITextureRect(not isActive)
 end
 
 function LinkageActivity_Page2VideoBase:setIsNeedLoadingCover(isNeed)
 	self._isNeedLoadingCover = isNeed
 
-	if isNeed and self._displayUGUI then
+	if isNeed and self._videoPlayer then
 		self:_refreshLoadingCover()
 	end
 end
 
 function LinkageActivity_Page2VideoBase:_refreshLoadingCover()
-	self._displayUGUI.NoDefaultDisplay = false
-	self._displayUGUI.DefaultTexture = self:getAssetItem_VideoLoadingPng()
+	self._videoPlayer:setNoDefaultDisplayState(false)
+	self._videoPlayer:setDisplayUGUITexture(self:getAssetItem_VideoLoadingPng())
 end
 
 return LinkageActivity_Page2VideoBase

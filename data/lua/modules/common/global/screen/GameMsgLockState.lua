@@ -28,7 +28,13 @@ GameMsgLockState.IgnoreExceptionStatus = {
 	-314,
 	-321,
 	-402,
-	-403
+	-403,
+	-581,
+	-582,
+	-583,
+	-584,
+	-585,
+	-586
 }
 
 function GameMsgLockState:ctor()

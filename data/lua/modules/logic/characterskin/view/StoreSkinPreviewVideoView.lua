@@ -62,7 +62,7 @@ function StoreSkinPreviewVideoView:onOpen()
 		self._videoAudioId = skinViewCfg.audio
 		self._stopAudioId = skinViewCfg.stopAudio
 		self._stopBgm = self._videoAudioId > 0
-		self._videoPath = string.nilorempty(skinViewCfg.entranceMv) and "" or langVideoUrl(skinViewCfg.entranceMv)
+		self._videoPath = string.nilorempty(skinViewCfg.entranceMv) and "" or skinViewCfg.entranceMv
 		self._mvTime = skinViewCfg.mvtime
 	end
 
@@ -75,14 +75,14 @@ function StoreSkinPreviewVideoView:onOpen()
 
 	if not string.nilorempty(self._videoPath) then
 		if not self._videoPlayer then
-			self._videoPlayer, self._displauUGUI, self._videoPlayerGO = AvProMgr.instance:getVideoPlayer(self._videoGO)
+			self._videoPlayer, self._videoPlayerGO = VideoPlayerMgr.instance:createGoAndVideoPlayer(self._videoGO)
 
 			local uiVideoAdapter = MonoHelper.addNoUpdateLuaComOnceToGo(self._videoPlayerGO, FullScreenVideoAdapter)
 
 			self._videoPlayerGO = nil
 		end
 
-		self._videoPlayer:Play(self._displauUGUI, self._videoPath, false, self._videoStatusUpdate, self)
+		self._videoPlayer:play(self._videoPath, false, self._videoStatusUpdate, self)
 
 		if self._mvTime and self._mvTime > 0 then
 			TaskDispatcher.runDelay(self._timeout, self, self._mvTime)
@@ -104,8 +104,8 @@ function StoreSkinPreviewVideoView:onClose()
 	TaskDispatcher.cancelTask(self._stopMainBgm, self)
 
 	if self._videoPlayer then
-		self._videoPlayer:Stop()
-		self._videoPlayer:Clear()
+		self._videoPlayer:stop()
+		self._videoPlayer:clear()
 
 		self._videoPlayer = nil
 	end
@@ -120,12 +120,12 @@ function StoreSkinPreviewVideoView:_onEscBtnClick()
 end
 
 function StoreSkinPreviewVideoView:_videoStatusUpdate(path, status, errorCode)
-	if status == AvProEnum.PlayerStatus.FinishedPlaying then
+	if status == VideoEnum.PlayerStatus.FinishedPlaying then
 		TaskDispatcher.cancelTask(self._timeout, self)
 		self:_playMovieFinish()
 	end
 
-	if (status == AvProEnum.PlayerStatus.Started or status == AvProEnum.PlayerStatus.StartedSeeking) and self._videoAudioId > 0 then
+	if (status == VideoEnum.PlayerStatus.Started or status == VideoEnum.PlayerStatus.StartedSeeking) and self._videoAudioId > 0 then
 		AudioMgr.instance:trigger(self._videoAudioId)
 	end
 end
@@ -143,8 +143,8 @@ function StoreSkinPreviewVideoView:_stopMovie()
 	self:_hideVideoGo()
 
 	if self._videoPlayer then
-		self._videoPlayer:Stop()
-		self._videoPlayer:Clear()
+		self._videoPlayer:stop()
+		self._videoPlayer:clear()
 
 		self._videoPlayer = nil
 	end

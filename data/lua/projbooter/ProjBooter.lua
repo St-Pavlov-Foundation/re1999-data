@@ -17,6 +17,7 @@ addGlobalModule("projbooter.ui.BootMsgBox", "BootMsgBox")
 addGlobalModule("projbooter.ui.BootLoadingView", "BootLoadingView")
 addGlobalModule("projbooter.ui.BootNoticeView", "BootNoticeView")
 addGlobalModule("projbooter.ui.BootVoiceView", "BootVoiceView")
+addGlobalModule("projbooter.ui.BootVoiceNewView", "BootVoiceNewView")
 addGlobalModule("projbooter.ui.BootVersionView", "BootVersionView")
 addGlobalModule("projbooter.hotupdate.HotUpdateProgress", "HotUpdateProgress")
 addGlobalModule("projbooter.hotupdate.HotUpdateMgr", "HotUpdateMgr")
@@ -30,6 +31,8 @@ addGlobalModule("projbooter.hotupdate.optionpackage.OptionPackageHttpWorker", "O
 addGlobalModule("projbooter.hotupdate.optionpackage.HotUpateOptionPackageAdapter", "HotUpateOptionPackageAdapter")
 addGlobalModule("projbooter.hotupdate.HotUpdateOptionPackageMgr", "HotUpdateOptionPackageMgr")
 addGlobalModule("projbooter.hotupdate.HotUpdateTipsHttpGetter", "HotUpdateTipsHttpGetter")
+addGlobalModule("projbooter.reschecker.MassHotUpdateMgr", "MassHotUpdateMgr")
+addGlobalModule("projbooter.reschecker.ResCheckMgr", "ResCheckMgr")
 addGlobalModule("projbooter.audio.BootAudioMgr", "BootAudioMgr")
 addGlobalModule("projbooter.sdk.SDKNativeUtil", "SDKNativeUtil")
 addGlobalModule("projbooter.sdk.SDKMgr", "SDKMgr")
@@ -41,6 +44,8 @@ function ProjBooter:start()
 	self:intGamepad()
 	self:setSkipHotUpdate()
 
+	SLFramework.GameUpdate.UpdateListInfo.UseBigZip = self:_checkUseBigZip()
+
 	if isDebugBuild then
 		local logRepoertUrl = GameUrlConfig.getLogReportUrl()
 
@@ -49,6 +54,10 @@ function ProjBooter:start()
 
 	self:checkWidowsBackGroundSound()
 	GameResMgr:InitAbDependencies(self.onAbDependenciesInited, self)
+end
+
+function ProjBooter:isUseBigZip()
+	return SLFramework.GameUpdate.UpdateListInfo.UseBigZip
 end
 
 function ProjBooter:checkWidowsBackGroundSound()
@@ -61,6 +70,18 @@ function ProjBooter:checkWidowsBackGroundSound()
 
 		UnityEngine.PlayerPrefs.SetFloat(key, 1)
 	end
+end
+
+function ProjBooter:_checkUseBigZip()
+	local key = "UpdateListInfo_UseBigZip"
+
+	return UnityEngine.PlayerPrefs.GetFloat(key, 0) == 1
+end
+
+function ProjBooter:UseBigZipDownload()
+	local key = "UpdateListInfo_UseBigZip"
+
+	UnityEngine.PlayerPrefs.SetFloat(key, 1)
 end
 
 function ProjBooter:onAbDependenciesInited()
@@ -145,7 +166,7 @@ function ProjBooter:onCheckVersion(latestVersion, inReviewing, loginServerUrl, e
 	local localVersionSp = string.split(localVersionStr, ".")
 	local latestVersionSp = string.split(latestVersion, ".")
 
-	if HotUpdateVoiceMgr.EnableEditorDebug or localVersionSp[1] == latestVersionSp[1] then
+	if (HotUpdateVoiceMgr.EnableEditorDebug or localVersionSp[1] == latestVersionSp[1]) and self:isUseBigZip() then
 		HotUpdateVoiceMgr.instance:showDownload(self.getOptionalPackageInfo, self)
 	else
 		self:startUpdate()
@@ -198,7 +219,7 @@ function ProjBooter:onCopyAbRes(progress)
 
 			local showProgress = (progress - self._copyProgress) / (1 - self._copyProgress)
 
-			BootLoadingView.instance:show(showProgress, booterLang("unpacking"))
+			BootLoadingView.instance:showMsg(booterLang("unpacking"))
 		else
 			self._copyProgress = progress
 		end
@@ -228,7 +249,11 @@ function ProjBooter:onUpdateFinish()
 		return
 	end
 
-	self:hotUpdateVoice()
+	if self:isUseBigZip() then
+		self:hotUpdateVoice()
+	else
+		self:loadLogicLua()
+	end
 end
 
 function ProjBooter:hotUpdateVoice()
@@ -254,11 +279,53 @@ function ProjBooter:startUpdateOptionalPackage()
 end
 
 function ProjBooter:loadLogicLua()
-	SLFramework.FileHelper.ClearDir(SLFramework.FrameworkSettings.PersistentResTmepDir2)
-	logNormal("ProjBooter:loadLogicLua")
 	BootLoadingView.instance:showFixBtn()
+	SLFramework.FileHelper.ClearDir(SLFramework.FrameworkSettings.PersistentResTempDir2)
+	logNormal("ProjBooter:loadLogicLua")
+	BootLoadingView.instance:show(0.1, booterLang("loading_res"))
 
+	if GameResMgr.IsFromEditorDir or VersionValidator.instance:isInReviewing() and BootNativeUtil.isIOS() then
+		self:loadHotupdateAssembly()
+	else
+		self:resCheck()
+	end
+end
+
+function ProjBooter:resCheck()
+	ResCheckMgr.instance:startCheck(self.onResCheckFinish, self)
+end
+
+function ProjBooter:onResCheckFinish(allPass, diffList)
+	logNormal("ProjBooter:onResCheckFinish")
+
+	self._resCheckdiffList = diffList
+
+	if allPass then
+		self:loadHotupdateAssembly()
+	elseif BootVoiceNewView.instance:isNeverOpen() then
+		BootVoiceNewView.instance:show(self.loadUnmatchRes, self)
+	else
+		self:loadUnmatchRes(true)
+	end
+end
+
+function ProjBooter:loadUnmatchRes(checkNet)
+	MassHotUpdateMgr.instance:loadUnmatchRes(self.loadUnmatchResFinish, self, self._resCheckdiffList, checkNet)
+end
+
+function ProjBooter:loadUnmatchResFinish()
+	logNormal("ProjBooter:loadUnmatchResFinish")
+	self:loadHotupdateAssembly()
+end
+
+function ProjBooter:loadHotupdateAssembly()
+	logNormal("ProjBooter:loadHotupdateAssembly")
+	SLFramework.AssemblyMgr.Instance:LoadAssemblyLua(self.loadLogicLuaTrue, self)
+end
+
+function ProjBooter:loadLogicLuaTrue()
 	if not GameResMgr.NeedLoadLuaBytes then
+		LuaInterface.LuaFileUtils.Instance:BindHotupdateCode()
 		self:OnLogicLuaLoaded()
 		logNormal("ProjBooter:loadLogicLua, src mode, skip loading!")
 	else
@@ -275,6 +342,8 @@ end
 
 function ProjBooter:quitGame()
 	if BootNativeUtil.isAndroid() then
+		SDKMgr.instance:destroyGame()
+	elseif BootNativeUtil.isIOS() then
 		SDKMgr.instance:destroyGame()
 	else
 		ZProj.AudioManager.Instance:BootDispose()

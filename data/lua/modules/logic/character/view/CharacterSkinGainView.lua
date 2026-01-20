@@ -58,6 +58,10 @@ end
 function CharacterSkinGainView:_editableInitView()
 	UnityEngine.Shader.DisableKeyword("_CLIPALPHA_ON")
 
+	self._uiSpine = GuiModelAgent.Create(self._golive2dcontainer, true)
+
+	self._uiSpine:setShareRT(CharacterVoiceEnum.RTShareType.Normal, self.viewName)
+
 	self._bgClick = gohelper.getClickWithAudio(self.viewGO)
 
 	self._bgClick:AddClickListener(self._onBgClick, self)
@@ -72,11 +76,10 @@ function CharacterSkinGainView:_editableInitView()
 
 	local parentGO = gohelper.findChild(self.viewGO, "root/bgroot/videoplayer")
 
-	self._videoPlayer, self._displauUGUI = AvProMgr.instance:getVideoPlayer(parentGO)
+	self._videoPlayer, _ = VideoPlayerMgr.instance:createGoAndVideoPlayer(parentGO)
 
-	self._videoPlayer:AddDisplayUGUI(self._displauUGUI)
-	self._videoPlayer:SetEventListener(self._videoStatusUpdate, self)
-	self._videoPlayer:LoadMedia(langVideoUrl("character_get_start"))
+	self._videoPlayer:setEventListener(self._videoStatusUpdate, self)
+	self._videoPlayer:loadMedia("character_get_start")
 
 	self._gostarList = gohelper.findChild(self.viewGO, "root/effect/xingxing")
 	self._starList = self:getUserDataTb_()
@@ -96,18 +99,18 @@ function CharacterSkinGainView:_editableInitView()
 end
 
 function CharacterSkinGainView:_videoStatusUpdate(path, status, errorCode)
-	if status == AvProEnum.PlayerStatus.Started then
+	if status == VideoEnum.PlayerStatus.Started then
 		AudioMgr.instance:trigger(AudioEnum.Summon.play_ui_skin_get)
-	elseif status == AvProEnum.PlayerStatus.FinishedPlaying then
+	elseif status == VideoEnum.PlayerStatus.FinishedPlaying then
 		self:_resetVideo()
 	end
 end
 
 function CharacterSkinGainView:_resetVideo()
 	if BootNativeUtil.isAndroid() or BootNativeUtil.isWindows() then
-		self._videoPlayer:Stop()
+		self._videoPlayer:stop()
 	else
-		self._videoPlayer:Stop()
+		self._videoPlayer:stop()
 	end
 end
 
@@ -151,7 +154,6 @@ function CharacterSkinGainView:_refreshView()
 	end
 
 	self._txtnameen.text = heroConfig.nameEng
-	self._uiSpine = GuiModelAgent.Create(self._golive2dcontainer, true)
 
 	self._uiSpine:setResPath(self._skinCo, self._onUISpineLoaded, self)
 	self._simageicon:LoadImage(ResUrl.getHeadIconImg(self._skinCo.id), self._loadedImage, self)
@@ -210,7 +212,7 @@ function CharacterSkinGainView:_playOpenAnimation()
 	self._animFinish = false
 
 	self._animatorPlayer:Play(UIAnimationName.Open, self._openAnimFinish, self)
-	self._videoPlayer:Play(self._displauUGUI, false)
+	self._videoPlayer:playLoadMedia(false)
 end
 
 function CharacterSkinGainView:_playSwitchAnimation()
@@ -324,10 +326,10 @@ end
 function CharacterSkinGainView:onDestroyView()
 	if self._videoPlayer then
 		if not BootNativeUtil.isIOS() then
-			self._videoPlayer:Stop()
+			self._videoPlayer:stop()
 		end
 
-		self._videoPlayer:Clear()
+		self._videoPlayer:clear()
 
 		self._videoPlayer = nil
 	end

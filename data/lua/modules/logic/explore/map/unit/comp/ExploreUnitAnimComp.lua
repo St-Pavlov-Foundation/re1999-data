@@ -18,7 +18,7 @@ function ExploreUnitAnimComp:setup(go)
 
 	if self.animator then
 		self._goName = self.animator.runtimeAnimatorController.name
-		self.animator.keepAnimatorControllerStateOnDisable = true
+		self.animator.keepAnimatorStateOnDisable = true
 	else
 		self._goName = nil
 	end

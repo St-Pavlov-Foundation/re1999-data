@@ -35,7 +35,7 @@ function VersionActivityVideoView:_btnskipOnClick()
 	GameFacade.showMessageBox(MessageBoxIdDefine.StorySkipConfirm, MsgBoxEnum.BoxType.Yes_No, function()
 		self:closeThis()
 	end, function()
-		self._videoPlayer:Play()
+		self._videoPlayer:playLoadMedia()
 	end)
 end
 
@@ -43,17 +43,15 @@ function VersionActivityVideoView:_editableInitView()
 	self:hideRightBtn()
 
 	self._goVideoPlayer = gohelper.findChild(self.viewGO, "VideoPlayer")
-	self._videoPlayer = self._goVideoPlayer:GetComponent(typeof(ZProj.AvProUGUIPlayer))
-	self._displauUGUI = self._goVideoPlayer:GetComponent(typeof(RenderHeads.Media.AVProVideo.DisplayUGUI))
-	self._displauUGUI.ScaleMode = UnityEngine.ScaleMode.ScaleAndCrop
+	self._videoPlayer = VideoPlayerMgr.instance:createVideoPlayer(self._goVideoPlayer)
 
-	self._videoPlayer:AddDisplayUGUI(self._displauUGUI)
-	self._videoPlayer:SetEventListener(self._videoStatusUpdate, self)
+	self._videoPlayer:setScaleMode(UnityEngine.ScaleMode.ScaleAndCrop)
+	self._videoPlayer:setEventListener(self._videoStatusUpdate, self)
 	NavigateMgr.instance:addEscape(ViewName.VersionActivityVideoView, self._btnskipOnClick, self)
 end
 
 function VersionActivityVideoView:_videoStatusUpdate(path, status, errorCode)
-	if status == AvProEnum.PlayerStatus.FinishedPlaying then
+	if status == VideoEnum.PlayerStatus.FinishedPlaying then
 		self:closeThis()
 	end
 end
@@ -81,8 +79,8 @@ function VersionActivityVideoView:onOpen()
 		self:closeThis()
 	end
 
-	self._videoPlayer:LoadMedia(langVideoUrl(actCo.pv))
-	self._videoPlayer:Play()
+	self._videoPlayer:loadMedia(actCo.pv)
+	self._videoPlayer:playLoadMedia()
 end
 
 function VersionActivityVideoView:hideRightBtn()
@@ -145,10 +143,10 @@ end
 function VersionActivityVideoView:onDestroyView()
 	if self._videoPlayer then
 		if not BootNativeUtil.isIOS() then
-			self._videoPlayer:Stop()
+			self._videoPlayer:stop()
 		end
 
-		self._videoPlayer:Clear()
+		self._videoPlayer:clear()
 
 		self._videoPlayer = nil
 	end

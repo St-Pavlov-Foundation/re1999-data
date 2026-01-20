@@ -760,5 +760,17 @@
     "order": 0,
     "equipId": 1445,
     "desc": "莫莉德尔"
+  },
+  {
+    "id": 5065,
+    "order": 0,
+    "equipId": 1563,
+    "desc": "鹭鸶剪"
+  },
+  {
+    "id": 4046,
+    "order": 0,
+    "equipId": 1446,
+    "desc": "葛天"
   }
 ]

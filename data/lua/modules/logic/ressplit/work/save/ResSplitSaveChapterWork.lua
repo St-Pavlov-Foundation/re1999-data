@@ -120,16 +120,6 @@ function ResSplitSaveChapterWork:_buildMapData()
 			self._mapElementFragmentDic[config.mapId][config.fragment] = true
 		end
 	end
-
-	local allFragment = lua_chapter_map_fragment.configDict
-
-	for id, config in pairs(allFragment) do
-		if not string.nilorempty(config.res) then
-			local fragmentPath = ResUrl.getDungeonFragmentIcon(config.res)
-
-			ResSplitModel.instance:setInclude(ResSplitEnum.Path, fragmentPath, true)
-		end
-	end
 end
 
 return ResSplitSaveChapterWork

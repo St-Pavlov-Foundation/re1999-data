@@ -80,11 +80,11 @@ function VersionActivity2_5DungeonMapView:_btncloseviewOnClick()
 end
 
 function VersionActivity2_5DungeonMapView:_btnactivitystoreOnClick()
-	VersionActivity2_5DungeonController.instance:openStoreView()
+	ReactivityController.instance:openReactivityStoreView(VersionActivity3_4Enum.ActivityId.Reactivity)
 end
 
 function VersionActivity2_5DungeonMapView:_btnactivitytaskOnClick()
-	VersionActivity2_5DungeonController.instance:openTaskView()
+	ReactivityController.instance:openReactivityTaskView(VersionActivity3_4Enum.ActivityId.Reactivity)
 end
 
 function VersionActivity2_5DungeonMapView:_btnrestaurantOnClick()

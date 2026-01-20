@@ -39,21 +39,15 @@ end
 
 function StoryActivityVideoItem:_build()
 	self._videoGo = gohelper.create2d(self.viewGO, self._videoName)
-	self._avProVideoPlayer = gohelper.onceAddComponent(self._videoGo, typeof(ZProj.AvProUGUIPlayer))
-	self._displauUGUI = gohelper.onceAddComponent(self._videoGo, typeof(RenderHeads.Media.AVProVideo.DisplayUGUI))
-	self._displauUGUI.ScaleMode = UnityEngine.ScaleMode.ScaleAndCrop
+	self._videoPlayer, self.videoGo = VideoPlayerMgr.instance:createGoAndVideoPlayer(self._videoGo)
 
-	self._avProVideoPlayer:AddDisplayUGUI(self._displauUGUI)
-	self._avProVideoPlayer:SetEventListener(self._onVideoEvent, self)
+	self._videoPlayer:setEventListener(self._onVideoEvent, self)
 	recthelper.setSize(self._videoGo.transform, 2592, 1080)
 end
 
 function StoryActivityVideoItem:_playVideo()
 	gohelper.setActive(self._videoGo, true)
-
-	local videoPath = langVideoUrl(self._videoName)
-
-	self._avProVideoPlayer:LoadMedia(videoPath)
+	self._videoPlayer:loadMedia(self._videoName)
 	StoryModel.instance:setSpecialVideoPlaying(self._videoName)
 	TaskDispatcher.runDelay(self._startVideo, self, 0.1)
 
@@ -63,7 +57,7 @@ function StoryActivityVideoItem:_playVideo()
 end
 
 function StoryActivityVideoItem:_startVideo()
-	self._avProVideoPlayer:Play(self._displauUGUI, self._loop)
+	self._videoPlayer:playLoadMedia(self._loop)
 end
 
 function StoryActivityVideoItem:onVideoStart()
@@ -89,7 +83,7 @@ function StoryActivityVideoItem:_onVideoEvent(path, status, errorCode)
 		self:hide(true)
 	end
 
-	if status == AvProEnum.PlayerStatus.FirstFrameReady then
+	if status == VideoEnum.PlayerStatus.Started or status == VideoEnum.PlayerStatus.FinishedSeeking then
 		self:onVideoStart()
 	end
 
@@ -99,8 +93,8 @@ function StoryActivityVideoItem:_onVideoEvent(path, status, errorCode)
 end
 
 function StoryActivityVideoItem:hide(isFinishPlay)
-	if self._avProVideoPlayer then
-		self._avProVideoPlayer:Stop()
+	if self._videoPlayer then
+		self._videoPlayer:stop()
 	end
 
 	if BootNativeUtil.isIOS() then
@@ -119,8 +113,8 @@ function StoryActivityVideoItem:hide(isFinishPlay)
 end
 
 function StoryActivityVideoItem:_detectPause()
-	if self._avProVideoPlayer:IsPaused() then
-		self._avProVideoPlayer:Play()
+	if self._videoPlayer:isPaused() then
+		self:_startVideo()
 	end
 end
 
@@ -137,10 +131,10 @@ function StoryActivityVideoItem:onDestroy()
 		StoryModel.instance:setSpecialVideoEnd(self._videoName)
 	end
 
-	if self._avProVideoPlayer ~= nil then
-		self._avProVideoPlayer:Clear()
+	if self._videoPlayer ~= nil then
+		self._videoPlayer:clear()
 
-		self._avProVideoPlayer = nil
+		self._videoPlayer = nil
 	end
 
 	if BootNativeUtil.isIOS() then

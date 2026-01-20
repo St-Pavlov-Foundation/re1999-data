@@ -72,16 +72,17 @@ function SurvivalBagItemMo:getSellPrice(shopId)
 		end
 	end
 
-	local rate1 = weekMo:getAttrRaw(SurvivalEnum.AttrType.SellPriceFix)
-	local rate2 = 0
+	local attr
 
 	if shopType == SurvivalEnum.ShopType.Normal then
-		rate2 = weekMo:getAttrRaw(SurvivalEnum.AttrType.MapSellPriceFix)
-	else
-		rate2 = weekMo:getAttr(SurvivalEnum.AttrType.BuildSellPriceFix)
+		attr = weekMo:getDerivedAttrFinalValue(SurvivalEnum.DerivedAttr.Sell_Map)
+	elseif shopType == SurvivalEnum.ShopType.PreExplore then
+		attr = weekMo:getDerivedAttrFinalValue(SurvivalEnum.DerivedAttr.Sell_PreExplore)
+	elseif shopType == SurvivalEnum.ShopType.GeneralShop then
+		attr = weekMo:getDerivedAttrFinalValue(SurvivalEnum.DerivedAttr.Sell_ComputingCenter)
 	end
 
-	return math.floor(sellPrice * (1 + (rate1 + rate2) / 1000))
+	return math.floor(sellPrice * attr)
 end
 
 function SurvivalBagItemMo:isCurrency()
@@ -217,12 +218,19 @@ function SurvivalBagItemMo:isDisasterRecommendItem(mapId)
 		local groupCo = lua_survival_map_group.configDict[groupId]
 		local initDisaster = groupCo.initDisaster
 		local disasterCo = lua_survival_disaster.configDict[initDisaster]
+
+		if disasterCo and disasterCo.recommend == self.co.id then
+			return true
+		end
+
 		local weekMo = SurvivalShelterModel.instance:getWeekInfo()
 		local mapInfoMo = weekMo:getSurvivalMapInfoMo(mapId)
-		local serverDisasterCo = mapInfoMo.disasterCo
+		local disasterCos = mapInfoMo.disasterCos
 
-		if disasterCo and disasterCo.recommend == self.co.id or serverDisasterCo and serverDisasterCo.recommend == self.co.id then
-			return true
+		for i, serverDisasterCo in ipairs(disasterCos) do
+			if serverDisasterCo.recommend == self.co.id then
+				return true
+			end
 		end
 	else
 		local sceneMo = SurvivalMapModel.instance:getSceneMo()
@@ -231,15 +239,23 @@ function SurvivalBagItemMo:isDisasterRecommendItem(mapId)
 			return false
 		end
 
-		if not sceneMo._mapInfo.groupCo or not sceneMo._mapInfo.disasterCo then
+		if not sceneMo._mapInfo.groupCo then
 			return false
 		end
 
 		local initDisaster = sceneMo._mapInfo.groupCo.initDisaster
 		local disasterCo = lua_survival_disaster.configDict[initDisaster]
 
-		if disasterCo and disasterCo.recommend == self.co.id or sceneMo._mapInfo.disasterCo.recommend == self.co.id then
+		if disasterCo and disasterCo.recommend == self.co.id then
 			return true
+		end
+
+		local disasterCos = sceneMo._mapInfo.disasterCos
+
+		for i, serverDisasterCo in ipairs(disasterCos) do
+			if serverDisasterCo.recommend == self.co.id then
+				return true
+			end
 		end
 	end
 

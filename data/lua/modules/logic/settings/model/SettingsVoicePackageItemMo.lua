@@ -74,6 +74,12 @@ function SettingsVoicePackageItemMo:getStatus()
 		return SettingsVoicePackageController.AlreadyLatest
 	end
 
+	if not ProjBooter.instance:isUseBigZip() then
+		local size = OptionPackageDownloadMgr.instance:GetUnmatchResSize(self.lang)
+
+		return size > 0
+	end
+
 	if self.localVersion and self.localVersion > 0 then
 		return SettingsVoicePackageController.AlreadyLatest
 	end
@@ -82,6 +88,10 @@ function SettingsVoicePackageItemMo:getStatus()
 end
 
 function SettingsVoicePackageItemMo:hasLocalFile()
+	if not ProjBooter.instance:isUseBigZip() then
+		return HotUpdateOptionPackageMgr.instance:checkHasPackage(self.lang)
+	end
+
 	if self.lang == GameConfig:GetDefaultVoiceShortcut() then
 		return SettingsVoicePackageController.AlreadyLatest
 	end
@@ -102,6 +112,12 @@ function SettingsVoicePackageItemMo:needDownload()
 		return false
 	end
 
+	if not ProjBooter.instance:isUseBigZip() then
+		local size = OptionPackageDownloadMgr.instance:GetUnmatchResSize(self.lang)
+
+		return size > 0
+	end
+
 	if self.localVersion and self.localVersion > 0 then
 		return false
 	end
@@ -112,7 +128,14 @@ function SettingsVoicePackageItemMo:needDownload()
 end
 
 function SettingsVoicePackageItemMo:getLeftSizeMBorGB()
-	local leftSize = math.max(0, self.size - self.localSize)
+	local leftSize
+
+	if not ProjBooter.instance:isUseBigZip() then
+		leftSize = OptionPackageDownloadMgr.instance:GetUnmatchResSize(self.lang)
+	else
+		leftSize = math.max(0, self.size - self.localSize)
+	end
+
 	local denominator = 1073741824
 	local ret = leftSize / denominator
 	local units = "GB"
@@ -131,7 +154,14 @@ function SettingsVoicePackageItemMo:getLeftSizeMBorGB()
 end
 
 function SettingsVoicePackageItemMo:getLeftSizeMBNum()
-	local leftSize = math.max(0, self.size - self.localSize)
+	local leftSize
+
+	if not ProjBooter.instance:isUseBigZip() then
+		leftSize = OptionPackageDownloadMgr.instance:GetUnmatchResSize(self.lang)
+	else
+		leftSize = math.max(0, self.size - self.localSize)
+	end
+
 	local denominator = 1048576
 	local ret = leftSize / denominator
 

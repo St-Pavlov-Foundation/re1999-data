@@ -562,7 +562,7 @@ function FightView:_resetCamera()
 
 	local fightScene = GameSceneMgr.instance:getScene(SceneType.Fight)
 
-	fightScene.level:setFrontVisible(true)
+	FightGameMgr.sceneLevelMgr:setFrontVisible(true)
 	fightScene.camera:setSceneCameraOffset()
 end
 

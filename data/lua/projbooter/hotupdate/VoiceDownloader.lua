@@ -238,7 +238,7 @@ function VoiceDownloader:_onDownloadPackFail(packName, resUrl, failError, errorM
 	else
 		HotUpdateMgr.instance:inverseUseBackup()
 		require("tolua.reflection")
-		tolua.loadassembly("Assembly-CSharp")
+		tolua.loadassembly("SL_AS")
 
 		local type_OptionalUpdate = typeof(SLFramework.GameUpdate.OptionalUpdate)
 		local field_useReserveUrl = tolua.getfield(type_OptionalUpdate, "_useReserveUrl", 36)

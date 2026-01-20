@@ -45,6 +45,7 @@ function FixResTipView:_btnfixOnClick()
 	if self._toggletip.isOn then
 		PlayerPrefsHelper.setNumber(PlayerPrefsKey.Manual_FixRes, 1)
 		SLFramework.FileHelper.DeleteFile(SLFramework.ResChecker.OutVersionPath)
+		ResCheckMgr.instance:DeleteOutVersion()
 		GameFacade.showMessageBox(MessageBoxIdDefine.FixFinished, MsgBoxEnum.BoxType.Yes, function()
 			PlayerPrefsHelper.save()
 

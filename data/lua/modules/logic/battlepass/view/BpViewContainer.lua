@@ -85,6 +85,7 @@ function BpViewContainer:playOpenAnim1()
 	local sec = 3
 
 	TimeUtil.setWeekFirstLoginRed("BpViewOpenAnim")
+	AudioMgr.instance:trigger(AudioEnum3_4.BP.FaceView_play_ui_bulaochun_yunying_bp)
 	BpViewContainer.super.playOpenTransition(self, {
 		anim = anim,
 		duration = sec

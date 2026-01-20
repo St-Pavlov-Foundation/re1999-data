@@ -163,16 +163,11 @@ function CommandStationEnterView:_openMap()
 end
 
 function CommandStationEnterView:_getVideoPlayer()
-	return self._mapVideoPlayer, self._mapDisplayUGUI, self._mapVideoGo
+	return self._mapVideoPlayer, self._mapVideoGo
 end
 
-function CommandStationEnterView:_setVideoPlayer(videoPlayer, displayUGUI, videoGo)
+function CommandStationEnterView:_setVideoPlayer(videoPlayer, videoGo)
 	gohelper.addChild(self._mapVideoNode, videoGo)
-
-	displayUGUI.enabled = false
-
-	videoPlayer:Pause()
-	videoPlayer:Seek(0)
 end
 
 function CommandStationEnterView:_delayOpenMapView()
@@ -203,26 +198,18 @@ function CommandStationEnterView:_delayPlayVideo()
 		self._changeVideoViewLayer = true
 
 		AudioMgr.instance:trigger(AudioEnum3_0.CommandStationPaper.play_ui_lushang_zhihuibu_handian)
-		VideoController.instance:openFullScreenVideoView(self._toPaperVedioPath, nil, 3, self._realOpenPaperView, self, {
-			noShowBlackBg = true,
-			setVideoPlayer = self._setVideoPlayer2,
-			getVideoPlayer = self._getVideoPlayer2,
-			waitViewOpen = ViewName.CommandStationPaperView
-		})
+		VideoController.instance:openFullScreenVideoView(self._toPaperVedioPath, nil, 5, self._realOpenPaperView, self, ViewName.CommandStationPaperView, true)
 	end)
 end
 
 function CommandStationEnterView:_getVideoPlayer2()
-	return self._paperVideoPlayer, self._paperDisplayUGUI, self._paperVideoGo
+	return self._paperVideoPlayer, self._paperVideoGo
 end
 
-function CommandStationEnterView:_setVideoPlayer2(videoPlayer, displayUGUI, videoGo)
+function CommandStationEnterView:_setVideoPlayer2(videoPlayer, videoGo)
 	gohelper.addChild(self._paperVideoNode, videoGo)
-
-	displayUGUI.enabled = false
-
-	videoPlayer:Pause()
-	videoPlayer:Seek(0)
+	videoPlayer:pause()
+	videoPlayer:seek(0)
 end
 
 function CommandStationEnterView:_realOpenPaperView()
@@ -334,11 +321,11 @@ function CommandStationEnterView:_addCacheVideo(name, path)
 	gohelper.addChild(self.viewGO, go)
 	transformhelper.setLocalPosXY(go.transform, 10000, 0)
 
-	local videoPlayer, displayUGUI, videoGo = AvProMgr.instance:getVideoPlayer(go)
+	local videoPlayer, videoGo = VideoPlayerMgr.instance:createGoAndVideoPlayer(go)
 
-	videoPlayer:LoadMedia(path)
+	videoPlayer:loadMedia(path)
 
-	return go, videoPlayer, displayUGUI, videoGo
+	return go, videoPlayer, videoGo
 end
 
 function CommandStationEnterView:_updateBoxAnim()
@@ -514,7 +501,6 @@ function CommandStationEnterView:_onVideoStarted(videoPath)
 
 	if videoPath == self._toPaperVedioPath then
 		CommandStationController.instance:openCommandStationPaperView()
-		VideoController.instance:openFullScreenVideoView(self._toPaperVedioPath, nil, 5, self._realOpenPaperView, self, ViewName.CommandStationPaperView, true)
 	end
 end
 
@@ -660,10 +646,10 @@ function CommandStationEnterView:onOpenFinish()
 end
 
 function CommandStationEnterView:_preloadVideos()
-	self._toMapVedioPath = "videos/commandstation_tomap.mp4"
-	self._toPaperVedioPath = "videos/commandstation_tocode.mp4"
-	self._paperVideoNode, self._paperVideoPlayer, self._paperDisplayUGUI, self._paperVideoGo = self:_addCacheVideo("paperVideo", self._toPaperVedioPath)
-	self._mapVideoNode, self._mapVideoPlayer, self._mapDisplayUGUI, self._mapVideoGo = self:_addCacheVideo("mapVideo", self._toMapVedioPath)
+	self._toMapVedioPath = "commandstation_tomap"
+	self._toPaperVedioPath = "commandstation_tocode"
+	self._paperVideoNode, self._paperVideoPlayer, self._paperVideoGo = self:_addCacheVideo("paperVideo", self._toPaperVedioPath)
+	self._mapVideoNode, self._mapVideoPlayer, self._mapVideoGo = self:_addCacheVideo("mapVideo", self._toMapVedioPath)
 end
 
 function CommandStationEnterView:_showEpisodeInfo()
@@ -755,7 +741,7 @@ function CommandStationEnterView:_showMap()
 	local constConfig = CommandStationConfig.instance:getConstConfig(CommandStationEnum.ConstId.VersionName)
 
 	if constConfig then
-		self._txtmapname.text = constConfig.value3
+		self._txtmapname.text = constConfig.value4
 	end
 
 	gohelper.setActive(self._gomap, true)

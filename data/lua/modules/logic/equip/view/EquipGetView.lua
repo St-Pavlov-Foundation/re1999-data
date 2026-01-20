@@ -85,10 +85,9 @@ function EquipGetView:_initVideoPlayer()
 
 	local parentGO = gohelper.findChild(self.viewGO, "#go_bg/videoplayer")
 
-	self._videoPlayer, self._displauUGUI = AvProMgr.instance:getVideoPlayer(parentGO)
+	self._videoPlayer = VideoPlayerMgr.instance:createGoAndVideoPlayer(parentGO)
 
-	self._videoPlayer:AddDisplayUGUI(self._displauUGUI)
-	self._videoPlayer:SetEventListener(self._videoStatusUpdate, self)
+	self._videoPlayer:setEventListener(self._videoStatusUpdate, self)
 end
 
 function EquipGetView:onDestroyView()
@@ -107,10 +106,10 @@ function EquipGetView:onDestroyView()
 
 	if self._videoPlayer then
 		if not BootNativeUtil.isIOS() then
-			self._videoPlayer:Stop()
+			self._videoPlayer:stop()
 		end
 
-		self._videoPlayer:Clear()
+		self._videoPlayer:clear()
 
 		self._videoPlayer = nil
 	end
@@ -209,7 +208,7 @@ function EquipGetView:_skipAnim()
 end
 
 function EquipGetView:_videoStatusUpdate(path, status, errorCode)
-	if status == AvProEnum.PlayerStatus.Started then
+	if status == VideoEnum.PlayerStatus.Started then
 		self._animSkip = false
 
 		self._animatorPlayer:Play(UIAnimationName.Open, self._openAnimFinish, self)
@@ -227,7 +226,7 @@ function EquipGetView:_videoStatusUpdate(path, status, errorCode)
 		end
 
 		self:setEquipShowVisible(true)
-	elseif status == AvProEnum.PlayerStatus.FinishedPlaying then
+	elseif status == VideoEnum.PlayerStatus.FinishedPlaying then
 		if not self._isSummonTen then
 			gohelper.setActive(self._btnskip.gameObject, false)
 		end
@@ -245,9 +244,9 @@ function EquipGetView:_resetVideo()
 	end
 
 	if BootNativeUtil.isAndroid() or BootNativeUtil.isWindows() then
-		self._videoPlayer:Stop()
+		self._videoPlayer:stop()
 	else
-		self._videoPlayer:Stop()
+		self._videoPlayer:stop()
 	end
 end
 
@@ -269,8 +268,8 @@ function EquipGetView:_playOpenAnimation()
 	self._animatorPlayer:Play(UIAnimationName.Open, self._openAnimFinish, self)
 	gohelper.setActive(self._videoGo, true)
 	self:_initVideoPlayer()
-	self._videoPlayer:LoadMedia(langVideoUrl("character_get_start"))
-	self._videoPlayer:Play(self._displauUGUI, false)
+	self._videoPlayer:loadMedia("character_get_start")
+	self._videoPlayer.play(self._videoPlayer._url, false, self._videoStatusUpdate, self)
 	TaskDispatcher.runDelay(self._openAnimFinish, self, 10)
 end
 

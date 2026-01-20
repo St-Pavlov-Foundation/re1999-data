@@ -90,7 +90,7 @@ function SurvivalStatHelper:getMapData()
 		countdown = countdown,
 		alive_events = eventList,
 		rain_id = sceneMo._mapInfo.rainId,
-		disaster_id = sceneMo._mapInfo.disasterId
+		disaster_ids = sceneMo._mapInfo.disasterIds
 	}
 end
 

@@ -15,15 +15,51 @@ function SurvivalDifficultyModel:refreshDifficulty()
 	self.difficultyList = self:getDifficultyList()
 	self.customDifficultyList = self:getCustomDifficultyList()
 	self.customSelectIndex = 1
+	self.customSelectIndex2 = 1
 
 	local difficultyIndex = GameUtil.playerPrefsGetNumberByUserId(PlayerPrefsKey.SurvivalHardSelect, 1)
 
 	difficultyIndex = math.min(#self.difficultyList, difficultyIndex)
 	self.difficultyIndex = difficultyIndex
+
+	self:refreshTempDiffSelectIds()
+end
+
+function SurvivalDifficultyModel:switchToCustomTempDiff()
+	local diffId = self:getDifficultyId()
+	local hardList = {}
+	local diffConfig = lua_survival_hardness_mod.configDict[diffId]
+
+	if not string.nilorempty(diffConfig.hardness) then
+		local info = SurvivalModel.instance:getOutSideInfo()
+		local hardness = string.splitToNumber(diffConfig.hardness, "#")
+
+		for _, hardId in pairs(hardness) do
+			local config = lua_survival_hardness.configDict[hardId]
+
+			if config and config.optional == 1 and info:isUnlockDifficultyMod(hardId) then
+				table.insert(hardList, hardId)
+			end
+		end
+	end
+
+	tabletool.clear(self._customDifficultyDict)
+
+	for i, v in ipairs(hardList) do
+		self._customDifficultyDict[v] = true
+	end
+
+	self.customDifficulty = hardList
 end
 
 function SurvivalDifficultyModel:getDifficultyId()
 	local diff = self.difficultyList[self.difficultyIndex]
+
+	if diff and diff.id == SurvivalConst.CustomDifficulty then
+		local list = self:getCustomTempDiffIds()
+
+		return list[self.customSelectIndex2]
+	end
 
 	return diff and diff.id or 0
 end
@@ -32,10 +68,8 @@ function SurvivalDifficultyModel:getCustomDifficulty()
 	return self.customDifficulty
 end
 
-function SurvivalDifficultyModel:hasSelectCustomDifficulty()
-	local list = self:getCustomDifficulty()
-
-	return next(list) ~= nil
+function SurvivalDifficultyModel:isCustomFragment()
+	return self:isCustomDifficulty() or self:isCustomTempDiff()
 end
 
 function SurvivalDifficultyModel:isCustomDifficulty()
@@ -44,9 +78,26 @@ function SurvivalDifficultyModel:isCustomDifficulty()
 	return difficultyId == SurvivalConst.CustomDifficulty
 end
 
+function SurvivalDifficultyModel:isCustomTempDiff()
+	local difficultyId = self:getDifficultyId()
+	local list = self:getCustomTempDiffIds()
+
+	for i, id in ipairs(list) do
+		if difficultyId == id then
+			local cfg = lua_survival_hardness_mod.configDict[id]
+
+			if cfg.subTab > 1 then
+				return true
+			end
+		end
+	end
+
+	return false
+end
+
 function SurvivalDifficultyModel:changeDifficultyIndex(value)
 	local animName
-	local lastIsCustom = self:isCustomDifficulty()
+	local lastIsCustom = self:isCustomFragment()
 
 	self.difficultyIndex = self.difficultyIndex + value
 
@@ -60,7 +111,7 @@ function SurvivalDifficultyModel:changeDifficultyIndex(value)
 
 	GameUtil.playerPrefsSetNumberByUserId(PlayerPrefsKey.SurvivalHardSelect, self.difficultyIndex)
 
-	local curIsCustom = self:isCustomDifficulty()
+	local curIsCustom = self:isCustomFragment()
 
 	if lastIsCustom and not curIsCustom then
 		animName = "panel_out"
@@ -85,7 +136,9 @@ function SurvivalDifficultyModel:getDifficultyList()
 	local list = {}
 
 	for i, v in ipairs(lua_survival_hardness_mod.configList) do
-		if v.optional == 1 and info:isUnlockDifficultyMod(v.id) then
+		if v.id == SurvivalConst.CustomDifficulty and v.optional == 1 then
+			table.insert(list, v)
+		elseif v.optional == 1 and info:isUnlockDifficultyMod(v.id) then
 			table.insert(list, v)
 		end
 	end
@@ -156,7 +209,35 @@ function SurvivalDifficultyModel:getDifficultyAssess()
 	return ret
 end
 
+function SurvivalDifficultyModel:getDifficultyAssessByCustomTempDiff(tabIndex)
+	local cfg = SurvivalConfig.instance:getCustomDiffBySubTab(tabIndex)
+	local assess = 0
+	local hardness = string.splitToNumber(cfg.hardness, "#")
+
+	for _, hardId in ipairs(hardness) do
+		local hardConfig = lua_survival_hardness.configDict[hardId]
+
+		assess = assess + hardConfig.scoreRate
+	end
+
+	local ret = 1 + assess * 0.001
+
+	return ret
+end
+
 function SurvivalDifficultyModel:getDifficultyShowList()
+	if self:isCustomTempDiff() then
+		local list = {}
+
+		for i, v in ipairs(self.tempDiffSelectIds) do
+			table.insert(list, {
+				hardId = v
+			})
+		end
+
+		return list
+	end
+
 	local list = {}
 	local diffConfig = lua_survival_hardness_mod.configDict[self:getDifficultyId()]
 	local hardness = string.splitToNumber(diffConfig.hardness, "#")
@@ -253,10 +334,12 @@ function SurvivalDifficultyModel:filterSameTypeHard(list)
 	return dataList
 end
 
-function SurvivalDifficultyModel:sendDifficultyChoose(callback, callbackobj)
+function SurvivalDifficultyModel:sendDifficultyChoose(roleId, callback, callbackobj)
 	local difficultyId = self:getDifficultyId()
 
-	if self:isCustomDifficulty() then
+	if self:isCustomTempDiff() then
+		SurvivalWeekRpc.instance:sendSurvivalStartWeekChooseDiff(difficultyId, {}, roleId, callback, callbackobj)
+	elseif self:isCustomDifficulty() then
 		local list = self:getDifficultyShowList()
 		local dataList = self:filterSameTypeHard(list)
 		local hardness = {}
@@ -278,9 +361,9 @@ function SurvivalDifficultyModel:sendDifficultyChoose(callback, callbackobj)
 			end
 		end
 
-		SurvivalWeekRpc.instance:sendSurvivalStartWeekChooseDiff(difficultyId, hardness, callback, callbackobj)
+		SurvivalWeekRpc.instance:sendSurvivalStartWeekChooseDiff(difficultyId, hardness, roleId, callback, callbackobj)
 	else
-		SurvivalWeekRpc.instance:sendSurvivalStartWeekChooseDiff(difficultyId, nil, callback, callbackobj)
+		SurvivalWeekRpc.instance:sendSurvivalStartWeekChooseDiff(difficultyId, nil, roleId, callback, callbackobj)
 	end
 end
 
@@ -298,9 +381,54 @@ function SurvivalDifficultyModel:getCustomSelectIndex()
 	return self.customSelectIndex
 end
 
-function SurvivalDifficultyModel:getCustomDifficultyAssess(index)
+function SurvivalDifficultyModel:setCustomSelectIndex2(index)
+	if self.customSelectIndex2 == index then
+		return
+	end
+
+	self.customSelectIndex2 = index
+
+	self:refreshTempDiffSelectIds()
+
+	return true
+end
+
+function SurvivalDifficultyModel:refreshTempDiffSelectIds()
+	self.tempDiffSelectIds = {}
+
+	local diffConfig = lua_survival_hardness_mod.configDict[self:getDifficultyId()]
+
+	if not string.nilorempty(diffConfig.hardness) then
+		local hardness = string.splitToNumber(diffConfig.hardness, "#")
+
+		for _, hardId in pairs(hardness) do
+			table.insert(self.tempDiffSelectIds, hardId)
+		end
+	end
+end
+
+function SurvivalDifficultyModel:getCustomSelectIndex2()
+	return self.customSelectIndex2
+end
+
+function SurvivalDifficultyModel:getCustomDifficultyAssess(index, fragmentIndex)
+	local hardness
+
+	if self:isCustomTempDiff() then
+		hardness = {}
+
+		for i, id in ipairs(self.tempDiffSelectIds) do
+			local cfg = lua_survival_hardness.configDict[id]
+
+			if cfg.optional == 1 then
+				table.insert(hardness, id)
+			end
+		end
+	else
+		hardness = self:getCustomDifficulty()
+	end
+
 	local assess = 0
-	local hardness = self:getCustomDifficulty()
 
 	if hardness then
 		for _, hardId in pairs(hardness) do
@@ -316,10 +444,18 @@ function SurvivalDifficultyModel:getCustomDifficultyAssess(index)
 end
 
 function SurvivalDifficultyModel:isSelectCustomDifficulty(hardId)
+	if self:isCustomTempDiff() then
+		return tabletool.indexOf(self.tempDiffSelectIds, hardId)
+	end
+
 	return self._customDifficultyDict[hardId] ~= nil
 end
 
 function SurvivalDifficultyModel:selectCustomDifficulty(hardId)
+	if self:isCustomTempDiff() then
+		return
+	end
+
 	local curConfig = lua_survival_hardness.configDict[hardId]
 	local removeIndex, removeHard
 
@@ -383,6 +519,116 @@ function SurvivalDifficultyModel:loadCustomHard()
 	end
 
 	return hardList
+end
+
+function SurvivalDifficultyModel:getCustomTempDiffIds()
+	if self.templaterIds == nil then
+		self.templaterIds = SurvivalConfig.instance:getCustomDiffIds()
+	end
+
+	return self.templaterIds
+end
+
+function SurvivalDifficultyModel:markBtnDiff()
+	local marks = GameUtil.playerPrefsGetStringByUserId(PlayerPrefsKey.SurvivalDiffNewButtonMark, "")
+	local list
+
+	if not string.nilorempty(marks) then
+		list = string.splitToNumber(marks, "#")
+	else
+		list = {}
+	end
+
+	local info = SurvivalModel.instance:getOutSideInfo()
+	local ids = self:getCustomTempDiffIds()
+
+	for i, id in ipairs(ids) do
+		if info:isUnlockDifficultyMod(id) and not tabletool.indexOf(list, id) then
+			table.insert(list, id)
+		end
+	end
+
+	local str = ""
+
+	for i, v in ipairs(list) do
+		if i == 1 then
+			str = v
+		else
+			str = str .. "#" .. v
+		end
+	end
+
+	GameUtil.playerPrefsSetStringByUserId(PlayerPrefsKey.SurvivalDiffNewButtonMark, str)
+end
+
+function SurvivalDifficultyModel:haveBtnNewDiff()
+	local marks = GameUtil.playerPrefsGetStringByUserId(PlayerPrefsKey.SurvivalDiffNewButtonMark, "")
+	local list
+
+	if not string.nilorempty(marks) then
+		list = string.splitToNumber(marks, "#")
+	end
+
+	local ids = self:getCustomTempDiffIds()
+
+	for i, id in ipairs(ids) do
+		local info = SurvivalModel.instance:getOutSideInfo()
+
+		if info:isUnlockDifficultyMod(id) then
+			local have = false
+
+			if list then
+				for _, v in ipairs(list) do
+					if v == id then
+						have = true
+
+						break
+					end
+				end
+			end
+
+			if not have then
+				return true
+			end
+		end
+	end
+end
+
+function SurvivalDifficultyModel:isUnLockDiff(id)
+	return SurvivalModel.instance:getOutSideInfo():isUnlockDifficultyMod(id)
+end
+
+function SurvivalDifficultyModel:isNewDiff(id)
+	local newDiffIds = SurvivalModel.instance:getOutSideInfo().newDiffIds
+
+	return LuaUtil.tableContains(newDiffIds, id)
+end
+
+function SurvivalDifficultyModel:markNewCustomDiff()
+	SurvivalOutSideRpc.instance:sendSurvivalMarkModNotNewRequest({
+		SurvivalConst.CustomDifficulty
+	}, function()
+		local newDiffIds = SurvivalModel.instance:getOutSideInfo().newDiffIds
+
+		tabletool.removeValue(newDiffIds, SurvivalConst.CustomDifficulty)
+	end)
+end
+
+function SurvivalDifficultyModel:markNewDiffs()
+	local newDiffIds = SurvivalModel.instance:getOutSideInfo().newDiffIds
+	local t = {}
+
+	for i, v in ipairs(newDiffIds) do
+		if v ~= SurvivalConst.CustomDifficulty then
+			table.insert(t, v)
+		end
+	end
+
+	if #t > 0 then
+		SurvivalOutSideRpc.instance:sendSurvivalMarkModNotNewRequest(t, function()
+			SurvivalModel.instance:getOutSideInfo().newDiffIds = {}
+		end)
+	end
 end
 
 SurvivalDifficultyModel.instance = SurvivalDifficultyModel.New()

@@ -12,9 +12,9 @@ function ExploreSceneGraphicsComp:onSceneStart(sceneId, levelId)
 	self:_refreshGraphics()
 	GameGlobalMgr.instance:registerCallback(GameStateEvent.OnQualityChange, self._refreshGraphics, self)
 
-	self.projPhysics = UnityEngine.Physics.autoSimulation
+	self.projPhysics = UnityEngine.Physics.simulationMode
 	self.projTransforms = UnityEngine.Physics.autoSyncTransforms
-	UnityEngine.Physics.autoSimulation = false
+	UnityEngine.Physics.simulationMode = UnityEngine.SimulationMode.Script
 	UnityEngine.Physics.autoSyncTransforms = true
 	RenderPipelineSetting.selectedOutlineToggle = false
 	RenderPipelineSetting.ForwardPlusToggle = true
@@ -49,8 +49,8 @@ function ExploreSceneGraphicsComp:onSceneClose()
 	UnityEngine.Shader.DisableKeyword("_QUALITY_LOW")
 	UnityEngine.Shader.DisableKeyword("_QUALITY_MEDIUM")
 
-	UnityEngine.QualitySettings.masterTextureLimit = 0
-	UnityEngine.Physics.autoSimulation = self.projPhysics
+	UnityEngine.QualitySettings.globalTextureMipmapLimit = 0
+	UnityEngine.Physics.simulationMode = self.projPhysics
 	UnityEngine.Physics.autoSyncTransforms = self.projTransforms
 	self.projPhysics = nil
 	self.uiCameraData = nil
@@ -85,7 +85,7 @@ function ExploreSceneGraphicsComp:_refreshGraphics()
 		UnityEngine.Shader.DisableKeyword("_QUALITY_LOW")
 		UnityEngine.Shader.DisableKeyword("_QUALITY_MEDIUM")
 
-		UnityEngine.QualitySettings.masterTextureLimit = 0
+		UnityEngine.QualitySettings.globalTextureMipmapLimit = 0
 
 		PostProcessingMgr.setCameraLayer(camera, "CullOnLowQuality", true)
 	elseif quality == ModuleEnum.Performance.Middle then
@@ -96,7 +96,7 @@ function ExploreSceneGraphicsComp:_refreshGraphics()
 		UnityEngine.Shader.EnableKeyword("_QUALITY_MEDIUM")
 		UnityEngine.Shader.DisableKeyword("_QUALITY_LOW")
 
-		UnityEngine.QualitySettings.masterTextureLimit = 0
+		UnityEngine.QualitySettings.globalTextureMipmapLimit = 0
 
 		PostProcessingMgr.setCameraLayer(camera, "CullOnLowQuality", true)
 	elseif quality == ModuleEnum.Performance.Low then
@@ -107,7 +107,7 @@ function ExploreSceneGraphicsComp:_refreshGraphics()
 		UnityEngine.Shader.DisableKeyword("_QUALITY_MEDIUM")
 		UnityEngine.Shader.EnableKeyword("_QUALITY_LOW")
 
-		UnityEngine.QualitySettings.masterTextureLimit = 1
+		UnityEngine.QualitySettings.globalTextureMipmapLimit = 1
 
 		PostProcessingMgr.setCameraLayer(camera, "CullOnLowQuality", false)
 	end

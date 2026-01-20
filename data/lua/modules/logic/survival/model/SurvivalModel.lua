@@ -18,6 +18,10 @@ function SurvivalModel:reInit()
 	SurvivalMapHelper.instance:clear()
 end
 
+function SurvivalModel:getCurVersionActivityId()
+	return VersionActivity3_4Enum.ActivityId.Survival
+end
+
 function SurvivalModel:onGetInfo(info)
 	self._outsideInfo:init(info)
 	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnOutInfoChange)
@@ -64,6 +68,14 @@ function SurvivalModel:getBossFightLastIndex()
 	self._lastIndex = nil
 
 	return index
+end
+
+function SurvivalModel:getSummaryActMapId()
+	return 3102
+end
+
+function SurvivalModel:getDefaultRoleId()
+	return tonumber(lua_survival_hardness_mod.configDict[SurvivalEnum.SimpleHardnessId].initRole)
 end
 
 SurvivalModel.instance = SurvivalModel.New()

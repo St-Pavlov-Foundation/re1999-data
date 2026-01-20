@@ -342,5 +342,13 @@
     "name": "在高山下",
     "nameEn": "In the Shadow of the Mountains",
     "year": ""
+  },
+  {
+    "id": 1029,
+    "type": 2,
+    "order": 0,
+    "name": "有琴歌",
+    "nameEn": "A Song Once Heard",
+    "year": ""
   }
 ]

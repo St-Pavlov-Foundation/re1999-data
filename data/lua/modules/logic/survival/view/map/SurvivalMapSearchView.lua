@@ -85,8 +85,15 @@ function SurvivalMapSearchView:onOpen()
 
 	gohelper.setActive(self._item, false)
 
-	self._allItemMos = self.viewParam.preItems or self.viewParam.itemMos
+	self.convertIndex = 0
+	self.itemConvertInfosList = self.viewParam.itemConvertInfosList
+	self.convertAccount = #self.itemConvertInfosList
+
+	self:parseConvertItemMos()
+
+	self._allItemMos = self.convertItemMosList[1].items
 	self.isShowLoading = self.viewParam.isFirst
+	self.isShowLoading = true
 
 	self:_onSortChange(self._curSort, self._isDec, self._filterList)
 	self:_refreshBagFull()
@@ -118,24 +125,122 @@ function SurvivalMapSearchView:_delayHideLoading()
 
 	self.isShowLoading = false
 
-	if self.viewParam.preItems then
-		UIBlockHelper.instance:startBlock("SurvivalMapSearchView_changeItems", 1)
-
-		local itemMos = self.viewParam.itemMos
-
-		for _, itemMo in pairs(self._showList) do
-			if not itemMo:isEmpty() and itemMos[itemMo.uid] and itemMo.id ~= itemMos[itemMo.uid].id then
-				self._items[itemMo.uid]:playComposeAnim()
-			end
-		end
-
-		TaskDispatcher.runDelay(self._delayShowItemMos, self, 1)
+	if self.convertAccount > 0 then
+		UIBlockHelper.instance:startBlock("SurvivalMapSearchView_changeItems", 100)
+		self:playConvertItemAnim()
 	else
 		self:_refreshLeftPart()
 	end
 end
 
+function SurvivalMapSearchView:playConvertItemAnim()
+	if self.convertIndex < self.convertAccount then
+		self:convertOnceItem()
+	else
+		self:_delayShowItemMos()
+
+		return
+	end
+
+	local itemMos = self.viewParam.itemMos
+	local covertItems = self.convertItemMosList[self.convertIndex].items
+	local reason = self.convertItemMosList[self.convertIndex].reason
+	local maxTime = 1
+
+	for _, itemMo in pairs(covertItems) do
+		if not itemMo:isEmpty() and itemMos[itemMo.uid] and itemMo.id ~= itemMos[itemMo.uid].id then
+			if reason == SurvivalEnum.StepType.SearchPanelChange then
+				self._items[itemMo.uid]:playComposeAnim()
+			elseif reason == SurvivalEnum.StepType.SearchItemSublimation then
+				local nextMo = self:getNextItemMoByUid(itemMo.uid)
+
+				self._items[itemMo.uid]:playSublimationAnim2(nextMo)
+
+				maxTime = 1.5
+			end
+		end
+	end
+
+	TaskDispatcher.runDelay(self.playConvertItemAnim, self, maxTime)
+end
+
+function SurvivalMapSearchView:parseConvertItemMos()
+	self.convertItemMosList = {}
+	self.convertItemMosList[self.convertAccount + 1] = {
+		items = self.viewParam.itemMos,
+		itemInfoDic = {}
+	}
+
+	for i = self.convertAccount, 1, -1 do
+		local nextItems = self.convertItemMosList[i + 1].items
+		local curConvertItems = self.itemConvertInfosList[i].items
+		local curItems = tabletool.copy(nextItems)
+		local reason = self.itemConvertInfosList[i].reason
+		local sublimationInfo = {}
+
+		for j, v in ipairs(curConvertItems) do
+			if curItems[v.uid] then
+				curItems[v.uid] = v
+
+				local nextItemMo
+
+				for i, mo in pairs(nextItems) do
+					if v.uid == mo.uid then
+						nextItemMo = mo
+
+						break
+					end
+				end
+
+				if nextItemMo and v.id ~= nextItemMo.id and reason == SurvivalEnum.StepType.SearchItemSublimation then
+					local rare = v:getRare()
+
+					if rare == 5 then
+						sublimationInfo[v.uid] = 2
+					else
+						sublimationInfo[v.uid] = 1
+					end
+				end
+			end
+		end
+
+		self.convertItemMosList[i] = {
+			items = curItems,
+			reason = reason,
+			sublimationInfo = sublimationInfo
+		}
+	end
+end
+
+function SurvivalMapSearchView:convertOnceItem()
+	self.convertIndex = self.convertIndex + 1
+	self._allItemMos = self.convertItemMosList[self.convertIndex].items
+end
+
+function SurvivalMapSearchView:getNextItemMoByUid(uid)
+	local itemMos = self.convertItemMosList[self.convertIndex + 1].items
+
+	for i, itemMo in pairs(itemMos) do
+		if itemMo.uid == uid then
+			return itemMo
+		end
+	end
+end
+
+function SurvivalMapSearchView:refreshConvertItem()
+	local itemMos = self.convertItemMosList[self.convertIndex + 1].items
+
+	for i, itemMo in pairs(itemMos) do
+		local item = self._items[itemMo.uid]
+
+		if item then
+			item:updateMo(itemMo)
+		end
+	end
+end
+
 function SurvivalMapSearchView:_delayShowItemMos()
+	UIBlockHelper.instance:endBlock("SurvivalMapSearchView_changeItems")
 	self:_onUpdateMos(self.viewParam.itemMos, true)
 	self:_refreshLeftPart()
 end
@@ -321,7 +426,7 @@ end
 
 function SurvivalMapSearchView:_refreshBagFull()
 	local bagMo = SurvivalMapHelper.instance:getBagMo()
-	local isFull = bagMo.totalMass > bagMo.maxWeightLimit + SurvivalShelterModel.instance:getWeekInfo():getAttr(SurvivalEnum.AttrType.AttrWeight)
+	local isFull = bagMo.totalMass > bagMo:getMaxWeightLimit()
 
 	gohelper.setActive(self._gobagfull, isFull)
 end

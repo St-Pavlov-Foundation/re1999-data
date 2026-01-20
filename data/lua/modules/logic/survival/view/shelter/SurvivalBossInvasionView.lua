@@ -26,12 +26,15 @@ function SurvivalBossInvasionView:init(viewGO)
 	self.layoutContent = self.go_Content:GetComponent(gohelper.Type_VerticalLayoutGroup)
 	self.scrollBar = gohelper.findChildScrollbar(self.go_boss, "Content/Scrollbar")
 	self.image_progress = gohelper.findChildImage(self.go_boss, "Content/#image_progress")
+	self.survivalrolelevelcomp = gohelper.findChild(self.go_boss, "Content/#go_level/survivalrolelevelcomp")
 	self.go_tips = gohelper.findChild(self.viewGO, "#go_tips")
 	self.go_tips_layout = gohelper.findChild(self.go_tips, "layout")
-	self.btn_close_tips = gohelper.findChildButton(self.go_tips, "#btn_close")
 	self.txt_desc = gohelper.findChildTextMesh(self.go_tips, "layout/#txt_desc")
 	self.txt_condition_tips = gohelper.findChildTextMesh(self.go_tips, "layout/#txt_condition")
+	self.survivalroleleveltipcomp = gohelper.findChild(self.go_boss, "Content/#go_level/survivalroleleveltipcomp")
+	self.btn_close_tips = gohelper.findChildButton(self.viewGO, "#btn_close")
 
+	gohelper.setActive(self.btn_close_tips.gameObject, false)
 	gohelper.setActive(self.go_buff, false)
 
 	self.customItems = {}
@@ -42,6 +45,10 @@ function SurvivalBossInvasionView:init(viewGO)
 	else
 		self.go_boss.transform:SetParent(self.pos_mainview.transform, false)
 	end
+
+	self.survivalRoleLevelComp = GameFacade.createLuaCompByGo(self.survivalrolelevelcomp, SurvivalRoleLevelComp)
+
+	self.survivalRoleLevelComp:setOnClickFunc(self.onClickBtnLevel, self)
 end
 
 function SurvivalBossInvasionView:addEventListeners()
@@ -59,6 +66,7 @@ function SurvivalBossInvasionView:onStart()
 	self:refresh()
 	self:refreshDecoding(false)
 	self:refreshList(false)
+	self.survivalRoleLevelComp:setData()
 end
 
 function SurvivalBossInvasionView:onDestroy()
@@ -73,6 +81,10 @@ function SurvivalBossInvasionView:onDestroy()
 
 		self.progressTweenId = nil
 	end
+end
+
+function SurvivalBossInvasionView:onClickBtnLevel()
+	GameFacade.openTipPopView(ViewName.SurvivalRoleLevelTipPopView, self.survivalroleleveltipcomp)
 end
 
 function SurvivalBossInvasionView:onShelterBagUpdate()
@@ -92,6 +104,7 @@ function SurvivalBossInvasionView:onDelayPopupFinishEvent()
 end
 
 function SurvivalBossInvasionView:onCloseTip()
+	gohelper.setActive(self.btn_close_tips, false)
 	gohelper.setActive(self.go_tips, false)
 end
 
@@ -99,15 +112,13 @@ function SurvivalBossInvasionView:refresh()
 	self.intrudeBox = self.weekInfo.intrudeBox
 	self.fight = self.weekInfo:getMonsterFight()
 
-	if self.fight.fightId <= 0 then
+	if not self.fight:canShowBossUI() then
 		gohelper.setActive(self.go_boss, false)
 
 		return
 	end
 
 	gohelper.setActive(self.go_boss, true)
-
-	self.cleanPoints = self.fight.cleanPoints
 
 	local smallIcon = self.fight.fightCo.smallheadicon
 
@@ -135,45 +146,11 @@ function SurvivalBossInvasionView:refresh()
 end
 
 function SurvivalBossInvasionView:refreshDecoding(isCheckChange)
-	if self.fight.fightId <= 0 then
-		return
-	end
-
-	local clientData = self.clientMo.data
-
-	self.decodingCurNum = self.weekInfo:getBag(SurvivalEnum.ItemSource.Shelter):getItemCountPlus(SurvivalEnum.CurrencyType.Decoding)
-
-	local decodingItemNum = clientData.decodingItemNum
-
-	self.txt_score.text = string.format("<#FF8640>%s</color>/%s", decodingItemNum, self.fight:getMaxCleanPoint())
-
-	if isCheckChange then
-		if decodingItemNum < self.decodingCurNum then
-			self.textTweenId = ZProj.TweenHelper.DOTweenFloat(decodingItemNum, self.decodingCurNum, 1.5, self.onTween, self.onTweenFinish, self, nil, EaseType.OutQuart)
-
-			self.clientMo:setDecodingItemNum(self.decodingCurNum)
-		elseif decodingItemNum > self.decodingCurNum then
-			self.txt_score.text = string.format("<#FF8640>%s</color>/%s", self.decodingCurNum, self.fight:getMaxCleanPoint())
-
-			self.clientMo:setDecodingItemNum(self.decodingCurNum)
-		end
-	elseif not isCheckChange and decodingItemNum > self.decodingCurNum then
-		self.txt_score.text = string.format("<#FF8640>%s</color>/%s", self.decodingCurNum, self.fight:getMaxCleanPoint())
-
-		self.clientMo:setDecodingItemNum(self.decodingCurNum)
-	end
-end
-
-function SurvivalBossInvasionView:onTween(value)
-	self.txt_score.text = string.format("<#FF8640>%s</color>/%s", math.floor(value), self.fight:getMaxCleanPoint())
-end
-
-function SurvivalBossInvasionView:onTweenFinish()
-	self:onTween(self.decodingCurNum)
+	return
 end
 
 function SurvivalBossInvasionView:refreshList(isCheckChange)
-	if self.fight.fightId <= 0 then
+	if not self.fight:canShowBossUI() then
 		return
 	end
 
@@ -310,6 +287,7 @@ function SurvivalBossInvasionView:onClickCustomItem(param)
 
 	recthelper.setAnchor(self.go_tips_layout.transform, x, anchorPos.y)
 	gohelper.setActive(self.go_tips, true)
+	gohelper.setActive(self.btn_close_tips, true)
 
 	self.txt_desc.text = mo.intrudeSchemeCfg.desc
 

@@ -63,8 +63,8 @@ function FightRestartMgr:fastRestart()
 
 	local flow = self:com_registFlowSequence()
 
-	flow:registWork(FightRestartSequence)
-	flow:registFinishCallback(self.onRestartFinish)
+	flow:registWork(FightFastRestartSequence)
+	flow:registFinishCallback(self.onRestartFinish, self)
 	flow:start()
 end
 

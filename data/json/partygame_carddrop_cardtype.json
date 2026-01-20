@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "咻咻反击咒",
+    "icon": "battlegame_card_04",
+    "selectedMask": "battlegame_cardselected_02",
+    "loseIcon": "battlegame_card_lose_04"
+  },
+  {
+    "id": 2,
+    "name": "噼啪突刺咒",
+    "icon": "battlegame_card_05",
+    "selectedMask": "battlegame_cardselected_02",
+    "loseIcon": "battlegame_card_lose_05"
+  },
+  {
+    "id": 3,
+    "name": "吱呀束缚咒",
+    "icon": "battlegame_card_03",
+    "selectedMask": "battlegame_cardselected_02",
+    "loseIcon": "battlegame_card_lose_03"
+  },
+  {
+    "id": 4,
+    "name": "尖耳朵精准咒",
+    "icon": "battlegame_card_01",
+    "selectedMask": "battlegame_cardselected_01",
+    "loseIcon": "battlegame_card_lose_01"
+  },
+  {
+    "id": 5,
+    "name": "铁脑袋守护咒",
+    "icon": "battlegame_card_02",
+    "selectedMask": "battlegame_cardselected_01",
+    "loseIcon": "battlegame_card_lose_02"
+  }
+]

@@ -53,6 +53,8 @@ function StoryBgEffsDiamondLight:onLoadFinished()
 
 	self._rgbBlurGo = gohelper.clone(blurPrefAssetItem:GetResource(), frontGo)
 
+	gohelper.setAsFirstSibling(self._rgbBlurGo)
+
 	local img = self._rgbBlurGo:GetComponent(typeof(UnityEngine.UI.Image))
 	local blitEff = StoryViewMgr.instance:getStoryBlitEffSecond()
 

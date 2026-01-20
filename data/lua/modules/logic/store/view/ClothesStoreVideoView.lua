@@ -12,14 +12,22 @@ end
 
 function ClothesStoreVideoView:addEvents()
 	self:addEventCb(StoreController.instance, StoreEvent.OnPlaySkinVideo, self._onPlaySkinVideo, self)
+	self:addEventCb(StoreController.instance, StoreEvent.OnCheckHideSkinVideo, self._onCheckHideSkillVideo, self)
 end
 
 function ClothesStoreVideoView:removeEvents()
 	self:removeEventCb(StoreController.instance, StoreEvent.OnPlaySkinVideo, self._onPlaySkinVideo, self)
+	self:removeEventCb(StoreController.instance, StoreEvent.OnCheckHideSkinVideo, self._onCheckHideSkillVideo, self)
 end
 
 function ClothesStoreVideoView:_onPlaySkinVideo(goodsMo)
 	self:playSkinVideo(goodsMo)
+end
+
+function ClothesStoreVideoView:_onCheckHideSkillVideo(goodsId)
+	if goodsId ~= self._curPlayGoodsId and self._curPlayGoodsId ~= nil then
+		self:_playMovieFinish()
+	end
 end
 
 function ClothesStoreVideoView:onOpen()
@@ -27,6 +35,8 @@ function ClothesStoreVideoView:onOpen()
 end
 
 function ClothesStoreVideoView:playSkinVideo(goodsMo)
+	self._curPlayGoodsId = nil
+
 	if not goodsMo then
 		self:_stopMovie()
 
@@ -53,7 +63,7 @@ function ClothesStoreVideoView:playSkinVideo(goodsMo)
 	self._videoAudioId = skinViewCfg.audio
 	self._stopAudioId = skinViewCfg.stopAudio
 	self._stopBgm = self._videoAudioId > 0
-	self._videoPath = string.nilorempty(skinViewCfg.entranceMv) and "" or langVideoUrl(skinViewCfg.entranceMv)
+	self._videoPath = string.nilorempty(skinViewCfg.entranceMv) and "" or skinViewCfg.entranceMv
 	self._mvTime = skinViewCfg.mvtime
 
 	if self._stopBgm then
@@ -65,14 +75,16 @@ function ClothesStoreVideoView:playSkinVideo(goodsMo)
 
 	if not string.nilorempty(self._videoPath) then
 		if not self._videoPlayer then
-			self._videoPlayer, self._displauUGUI, self._videoPlayerGO = AvProMgr.instance:getVideoPlayer(self._videoGO)
+			self._videoPlayer, self._videoPlayerGO = VideoPlayerMgr.instance:createGoAndVideoPlayer(self._videoGO)
 
 			local uiVideoAdapter = MonoHelper.addNoUpdateLuaComOnceToGo(self._videoPlayerGO, FullScreenVideoAdapter)
 
 			self._videoPlayerGO = nil
 		end
 
-		self._videoPlayer:Play(self._displauUGUI, self._videoPath, false, self._videoStatusUpdate, self)
+		self._curPlayGoodsId = goodsMo.goodsId
+
+		self._videoPlayer:play(self._videoPath, false, self._videoStatusUpdate, self)
 
 		if self._mvTime and self._mvTime > 0 then
 			TaskDispatcher.runDelay(self._timeout, self, self._mvTime)
@@ -91,12 +103,12 @@ function ClothesStoreVideoView:_onEscBtnClick()
 end
 
 function ClothesStoreVideoView:_videoStatusUpdate(path, status, errorCode)
-	if status == AvProEnum.PlayerStatus.FinishedPlaying then
+	if status == VideoEnum.PlayerStatus.FinishedPlaying then
 		TaskDispatcher.cancelTask(self._timeout, self)
 		self:_playMovieFinish()
 	end
 
-	if status == AvProEnum.PlayerStatus.Started or status == AvProEnum.PlayerStatus.StartedSeeking then
+	if status == VideoEnum.PlayerStatus.Started or status == VideoEnum.PlayerStatus.StartedSeeking then
 		if self._videoAudioId > 0 then
 			AudioMgr.instance:trigger(self._videoAudioId)
 		end
@@ -114,8 +126,7 @@ function ClothesStoreVideoView:_stopMovie()
 	self:_hideVideoGo()
 
 	if self._videoPlayer then
-		self._videoPlayer:Stop()
-		self._videoPlayer:Clear()
+		self._videoPlayer:stop()
 
 		self._videoPlayer = nil
 	end
@@ -131,6 +142,7 @@ end
 
 function ClothesStoreVideoView:_playMovieFinish()
 	self._hasPlayFinish = true
+	self._curPlayGoodsId = nil
 
 	self:_hideVideoGo()
 	NavigateMgr.instance:removeEscape(self.viewName)

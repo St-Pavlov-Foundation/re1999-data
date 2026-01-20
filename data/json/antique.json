@@ -193,5 +193,20 @@
     "storyId": 800005,
     "iconArea": 0,
     "effect": "v1a9_caidai"
+  },
+  {
+    "id": 341001,
+    "name": "云纹五柱铜器",
+    "nameen": "Five-Pillared Bronze Vessel with Cloud Patterns",
+    "icon": "v3a4_antique_icon_1",
+    "gifticon": "v3a4_antique_icon_1",
+    "sign": "501209",
+    "title": "云纹五柱铜器",
+    "titleen": "Five-Pillared Bronze Vessel with Cloud Patterns",
+    "desc": "一份神秘的除夕礼物。长生者曾用它联系一位渴望长生之人，并在此时将它转赠给你。\n梅树下挖出的古老器皿，至今无人能完全理解其用途。使用东方神秘术激发后，它似乎可与特定的频率共振，传递来自远方的讯息。",
+    "sources": "",
+    "storyId": 0,
+    "iconArea": 0,
+    "effect": "v1a9_caidai"
   }
 ]

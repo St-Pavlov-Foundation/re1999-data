@@ -10,6 +10,10 @@ function SurvivalShelterWeekMo:init(data, extendScore)
 	self.extendScore = extendScore
 	self.difficulty = data.difficulty
 	self.inSurvival = data.inSurvival
+	self.survivalShelterRoleMo = self.survivalShelterRoleMo or SurvivalShelterRoleMo.New()
+
+	self.survivalShelterRoleMo:setRoleData(data.roleId, data.roleExp)
+
 	self.bags = self.bags or {}
 
 	for i, v in ipairs(data.bag) do
@@ -76,6 +80,15 @@ function SurvivalShelterWeekMo:init(data, extendScore)
 
 	self.rainType = data.rainType
 	self.talents = data.talentBox.talentIds
+	self.lossReturnItems = data.lossReturnItems
+	self.derivedAttrs = {}
+
+	local list = data.derivedContainer.values
+
+	for i, v in ipairs(list) do
+		v.finalVal = math.floor(v.finalVal)
+		self.derivedAttrs[v.derivedId] = v
+	end
 end
 
 function SurvivalShelterWeekMo:getBag(bagType)
@@ -123,9 +136,47 @@ function SurvivalShelterWeekMo:getAttr(attrType, curNum, exAttrPer)
 end
 
 function SurvivalShelterWeekMo:getAttrRaw(attrType)
+	if attrType == SurvivalEnum.AttrType.HeroHealthMax then
+		return self:getDerivedAttrFinalValue(SurvivalEnum.DerivedAttr.Health)
+	end
+
 	local attrVal = self.attrs[attrType] or 0
 
 	return attrVal
+end
+
+function SurvivalShelterWeekMo:getDerivedAttrFinalValue(type)
+	return self.derivedAttrs[type].finalVal
+end
+
+function SurvivalShelterWeekMo:getDerivedAttrCorrectionVal(type, index)
+	local data = self.derivedAttrs[type]
+	local val = data.correctionVal[index] or 0
+
+	return val
+end
+
+function SurvivalShelterWeekMo:getDerivedAttrFormatParams(type, index)
+	local val = self:getDerivedAttrCorrectionVal(type, index)
+	local params = {}
+
+	if type == SurvivalEnum.DerivedAttr.Sell_ComputingCenter or type == SurvivalEnum.DerivedAttr.Sell_Map or type == SurvivalEnum.DerivedAttr.Sell_PreExplore then
+		table.insert(params, string.format("%s%%", math.floor(val * 100)))
+	elseif type == SurvivalEnum.DerivedAttr.Buy_ComputingCenter or type == SurvivalEnum.DerivedAttr.Buy_Map or type == SurvivalEnum.DerivedAttr.Buy_PreExplore then
+		table.insert(params, string.format("%s%%", math.floor(val * 100)))
+	elseif type == SurvivalEnum.DerivedAttr.TotalTime then
+		local h = math.floor(val / 60)
+		local m = math.floor(val % 60)
+
+		table.insert(params, h)
+		table.insert(params, m)
+	elseif type == SurvivalEnum.DerivedAttr.DropUpRate then
+		table.insert(params, string.format("%s%%", math.floor(val * 100)))
+	else
+		table.insert(params, string.format("%.1f", val))
+	end
+
+	return params
 end
 
 function SurvivalShelterWeekMo:getHeroMo(heroId)
@@ -610,6 +661,42 @@ function SurvivalShelterWeekMo:getSurvivalMapInfoMo(mapId)
 	for i, v in ipairs(self.mapInfos) do
 		if mapId == v.mapId then
 			return v
+		end
+	end
+end
+
+function SurvivalShelterWeekMo:getRoleInfo()
+	return self.survivalShelterRoleMo
+end
+
+function SurvivalShelterWeekMo:getRoleAttrTips(attrId)
+	local constId = SurvivalEnum.ConstId[string.format("RoleAttrTips%s", attrId)]
+	local _, tipsVal = SurvivalConfig.instance:getConstValue(constId)
+	local param = {}
+
+	if attrId == 1 then
+		tabletool.addValues(param, self:getDerivedAttrFormatParams(SurvivalEnum.DerivedAttr.Sell_ComputingCenter, attrId))
+	elseif attrId == 2 then
+		tabletool.addValues(param, self:getDerivedAttrFormatParams(SurvivalEnum.DerivedAttr.Health, attrId))
+		tabletool.addValues(param, self:getDerivedAttrFormatParams(SurvivalEnum.DerivedAttr.Buy_ComputingCenter, attrId))
+	elseif attrId == 3 then
+		tabletool.addValues(param, self:getDerivedAttrFormatParams(SurvivalEnum.DerivedAttr.TotalTime, attrId))
+		tabletool.addValues(param, self:getDerivedAttrFormatParams(SurvivalEnum.DerivedAttr.Sell_ComputingCenter, attrId))
+	elseif attrId == 4 then
+		tabletool.addValues(param, self:getDerivedAttrFormatParams(SurvivalEnum.DerivedAttr.Weight, attrId))
+		tabletool.addValues(param, self:getDerivedAttrFormatParams(SurvivalEnum.DerivedAttr.Buy_ComputingCenter, attrId))
+	elseif attrId == 5 then
+		tabletool.addValues(param, self:getDerivedAttrFormatParams(SurvivalEnum.DerivedAttr.DropUpRate, attrId))
+		tabletool.addValues(param, self:getDerivedAttrFormatParams(SurvivalEnum.DerivedAttr.Buy_ComputingCenter, attrId))
+	end
+
+	return GameUtil.getSubPlaceholderLuaLang(tipsVal, param)
+end
+
+function SurvivalShelterWeekMo:getTechBuild()
+	for k, mo in pairs(self.buildingDict) do
+		if mo:getBuildingType() == SurvivalEnum.BuildingType.Tech then
+			return mo
 		end
 	end
 end

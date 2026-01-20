@@ -375,7 +375,7 @@ end
 
 function CommandStationPaperView:_delayShowVideo()
 	AudioMgr.instance:trigger(AudioEnum3_0.CommandStationPaper.play_ui_lushang_zhihuibu_poyi)
-	VideoController.instance:openFullScreenVideoView("videos/commandstation_decode.mp4", nil, 10, self._onVideoEnd, self)
+	VideoController.instance:openFullScreenVideoView("commandstation_decode", nil, 10, self._onVideoEnd, self)
 end
 
 function CommandStationPaperView:_onVideoEnd()

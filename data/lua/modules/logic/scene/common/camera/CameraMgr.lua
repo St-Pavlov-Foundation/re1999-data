@@ -57,7 +57,7 @@ function CameraMgr:_onLoadedCamera(assetItem)
 	else
 		assetItem:Retain()
 
-		self._cameraRootGO = gohelper.clone(assetItem.EngineAsset, nil, CameraRootName)
+		self._cameraRootGO = gohelper.clone(assetItem:GetResource(), nil, CameraRootName)
 
 		self:_initCameraRootGO()
 	end
@@ -139,7 +139,7 @@ function CameraMgr:_onLoadedUrpProfile(assetItem)
 	else
 		assetItem:Retain()
 
-		self._urpProfileAsset = assetItem.EngineAsset
+		self._urpProfileAsset = assetItem:GetResource()
 		UnityEngine.Rendering.GraphicsSettings.renderPipelineAsset = self._urpProfileAsset
 	end
 
@@ -160,7 +160,7 @@ function CameraMgr:_onLoadedUrpProfileWithCameraRoot(assetItem)
 	else
 		assetItem:Retain()
 
-		self._urpProfileAsset = assetItem.EngineAsset
+		self._urpProfileAsset = assetItem:GetResource()
 		UnityEngine.Rendering.GraphicsSettings.renderPipelineAsset = self._urpProfileAsset
 	end
 

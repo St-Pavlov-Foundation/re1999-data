@@ -178,7 +178,11 @@ function PlayerViewAchievement:_refreshNamePlate(showTaskList)
 		num = taskCO and taskCO.maxProgress
 	end
 
-	item.txtlevel.text = num < maxProgress and maxProgress or num
+	if not self._playerSelf then
+		item.txtlevel.text = self._info.towerLayerMetre
+	else
+		item.txtlevel.text = num < maxProgress and maxProgress or num
+	end
 
 	gohelper.setActive(item.go, true)
 end

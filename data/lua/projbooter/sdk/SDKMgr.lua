@@ -655,6 +655,12 @@ function SDKMgr:showAchievementPage()
 	return ZProj.SDKMgr.Instance:ShowAchievementPage()
 end
 
+function SDKMgr:stopAllDownload()
+	print("stopAllDownload")
+
+	return self.csharpInst:StopAllDownload()
+end
+
 SDKMgr.instance = SDKMgr.New()
 
 return SDKMgr

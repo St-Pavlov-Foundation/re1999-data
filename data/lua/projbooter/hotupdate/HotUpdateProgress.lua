@@ -4,19 +4,20 @@ module("projbooter.hotupdate.HotUpdateProgress", package.seeall)
 
 local HotUpdateProgress = class("HotUpdateMgr")
 
-HotUpdateProgress.NotFixProgress = 0.75
+HotUpdateProgress.NotFixProgress = 0.01
+HotUpdateProgress.FixProgress = 1 - HotUpdateProgress.NotFixProgress
 HotUpdateProgress.UnzipPer = 0.1
 HotUpdateProgress.DownloadPer = 1 - HotUpdateProgress.UnzipPer
-HotUpdateProgress.CheckResPer = 0.5
+HotUpdateProgress.CheckResPer = 0.2
 HotUpdateProgress.DownloadResPer = 1 - HotUpdateProgress.CheckResPer
 HotUpdateProgress.ShowDetailMsg = true
 
 function HotUpdateProgress:initDownloadSize(hotupdateAllSize, hotupdateCurSize)
 	if GameResMgr.IsFromEditorDir or VersionValidator.instance:isInReviewing() and BootNativeUtil.isIOS() then
 		HotUpdateProgress.NotFixProgress = 1
-	else
+	elseif ProjBooter.instance:isUseBigZip() then
 		local appVersion = tonumber(BootNativeUtil.getAppVersion())
-		local markVersion = SLFramework.FileHelper.ReadText(SLFramework.ResChecker.OutVersionPath)
+		local markVersion = ResCheckMgr.instance:GetOutVersion()
 
 		if tostring(appVersion) == markVersion then
 			HotUpdateProgress.NotFixProgress = 1
@@ -54,10 +55,6 @@ function HotUpdateProgress:initDownloadSize(hotupdateAllSize, hotupdateCurSize)
 	self._totalNeedDownloadSize = self._voiceNeedDownloadSize + self._hotupdateNeedDownloadSize + self._optionPackageNeedDownloadSize
 
 	local downloadCount = 0
-
-	if self._totalNeedDownloadSize <= 0 then
-		HotUpdateProgress.NotFixProgress = 0
-	end
 
 	HotUpdateProgress.FixProgress = 1 - HotUpdateProgress.NotFixProgress
 	self._totalNeedDownloadSizeStr = HotUpdateMgr.fixSizeStr(self._totalNeedDownloadSize)
@@ -201,7 +198,7 @@ function HotUpdateProgress:setProgressFix(percent, detailMsg)
 		progressMsg = booterLang("downloading_and_unzip")
 	end
 
-	progressMsg = percent > 0.5 and booterLang("res_fixing") or booterLang("res_checking")
+	progressMsg = percent > HotUpdateProgress.CheckResPer and booterLang("res_fixing") or booterLang("res_checking")
 
 	if HotUpdateProgress.ShowDetailMsg then
 		progressMsg = progressMsg .. "\n" .. detailMsg

@@ -22,15 +22,13 @@ function FullScreenVideoView:onOpen()
 	self._setVideoPlayer = self.viewParam.setVideoPlayer
 
 	if getVideoPlayer then
-		self._videoPlayer, self.displayUGUI, self.videoGo = getVideoPlayer(self.doneCbObj)
+		self._videoPlayer, self.videoGo = getVideoPlayer(self.doneCbObj)
 
 		gohelper.addChild(self._govideo, self.videoGo)
 		transformhelper.setLocalScale(self.videoGo.transform, 1, 1, 1)
 		gohelper.setActive(self.videoGo, true)
-
-		self.displayUGUI.enabled = false
 	else
-		self._videoPlayer, self.displayUGUI, self.videoGo = AvProMgr.instance:getVideoPlayer(self._govideo)
+		self._videoPlayer, self.videoGo = VideoPlayerMgr.instance:createGoAndVideoPlayer(self._govideo)
 	end
 
 	if self.viewParam.videoAudio then
@@ -39,27 +37,30 @@ function FullScreenVideoView:onOpen()
 
 	self._videoPath = self.viewParam.videoPath
 
-	self._videoPlayer:Play(self.displayUGUI, self.viewParam.videoPath, false, self.videoStatusUpdate, self)
+	self._videoPlayer:play(self.viewParam.videoPath, false, self.videoStatusUpdate, self)
 	gohelper.setActive(self._goblackbg, not self.viewParam.noShowBlackBg)
 
 	local bgAdapter = self.videoGo:GetComponent(typeof(ZProj.UIBgSelfAdapter))
 
-	bgAdapter.enabled = false
+	if bgAdapter then
+		bgAdapter.enabled = false
+	end
+
 	self._time = self.viewParam.videoDuration or FullScreenVideoView.DefaultMaxDuration
 
 	TaskDispatcher.runDelay(self.onVideoOverTime, self, self._time)
 end
 
 function FullScreenVideoView:videoStatusUpdate(path, status, errorCode)
-	if status == AvProEnum.PlayerStatus.FinishedPlaying then
+	if status == VideoEnum.PlayerStatus.FinishedPlaying then
 		self:onPlayVideoDone()
-	elseif status == AvProEnum.PlayerStatus.Closing then
+	elseif status == VideoEnum.PlayerStatus.Closing then
 		self:onPlayVideoDone()
-	elseif status == AvProEnum.PlayerStatus.Started then
+	elseif status == VideoEnum.PlayerStatus.Started or status == VideoEnum.PlayerStatus.FinishedSeeking then
 		TaskDispatcher.cancelTask(self.onVideoOverTime, self)
 		TaskDispatcher.runDelay(self.onVideoOverTime, self, self._time)
 		VideoController.instance:dispatchEvent(VideoEvent.OnVideoStarted, self._videoPath)
-	elseif status == AvProEnum.PlayerStatus.FirstFrameReady then
+	elseif status == VideoEnum.PlayerStatus.FirstFrameReady then
 		TaskDispatcher.cancelTask(self.onVideoOverTime, self)
 		TaskDispatcher.runDelay(self.onVideoOverTime, self, self._time)
 		VideoController.instance:dispatchEvent(VideoEvent.OnVideoFirstFrameReady, self._videoPath)
@@ -104,15 +105,15 @@ function FullScreenVideoView:onDestroyView()
 	TaskDispatcher.cancelTask(self.onVideoOverTime, self)
 
 	if self._setVideoPlayer then
-		self._setVideoPlayer(self.doneCbObj, self._videoPlayer, self.displayUGUI, self.videoGo)
+		self._setVideoPlayer(self.doneCbObj, self._videoPlayer, self.videoGo)
 
 		self._setVideoPlayer = nil
 		self._videoPlayer = nil
 	end
 
 	if self._videoPlayer then
-		self._videoPlayer:Stop()
-		self._videoPlayer:Clear()
+		self._videoPlayer:stop()
+		self._videoPlayer:clear()
 
 		self._videoPlayer = nil
 	end

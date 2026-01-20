@@ -147,19 +147,21 @@ end
 function GMSubViewCommon:_onClickCheckMD5()
 	MessageBoxController.instance:showMsgBoxByStr("正在验证资源完整性", MsgBoxEnum.BoxType.Yes)
 
-	local allLocalLang = ResCheckMgr.instance:_getAllLocalLang()
-	local useDLC, allDLCLocalLang = ResCheckMgr.instance:_getDLCInfo(allLocalLang)
-
 	self.eventDispatcher = SLFramework.GameLuaEventDispatcher.Instance
 
 	self.eventDispatcher:AddListener(self.eventDispatcher.ResChecker_Finish, self._onResCheckFinish, self)
-	SLFramework.ResChecker.Instance:CheckAllRes(allLocalLang, useDLC, allDLCLocalLang)
+	SLFramework.ResChecker.Instance:CheckAllRes()
 end
 
 function GMSubViewCommon:_onResCheckFinish(pass)
+	local dlcTypeList = ResCheckMgr.instance:getAllLocalResBigType()
+	local allSize = SLFramework.ResChecker.Instance:GetUnmatchResSize(dlcTypeList)
+
+	allSize = tonumber(tostring(allSize))
+
 	local msg
 
-	msg = pass and "验证通过" or "资源完整性验证失败！！请查看日志"
+	msg = allSize == 0 and "验证通过" or "资源完整性验证失败！！请查看日志"
 
 	self.eventDispatcher:RemoveListener(self.eventDispatcher.ResChecker_Finish)
 

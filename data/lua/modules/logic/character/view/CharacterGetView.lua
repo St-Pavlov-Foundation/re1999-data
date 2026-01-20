@@ -156,10 +156,7 @@ end
 
 function CharacterGetView:_initVideoPlayer()
 	if not self._videoPlayer then
-		self._videoPlayer, self._displauUGUI, self._videoPlayerGO = AvProMgr.instance:getVideoPlayer(self._videoGo)
-
-		local uiVideoAdapter = MonoHelper.addNoUpdateLuaComOnceToGo(self._videoPlayerGO, FullScreenVideoAdapter)
-
+		self._videoPlayer, self._videoPlayerGO = VideoPlayerMgr.instance:createGoAndVideoPlayer(self._videoGo)
 		self._videoPlayerGO = nil
 	end
 end
@@ -169,7 +166,7 @@ function CharacterGetView:setFullScreenMaskVisible(visible)
 end
 
 function CharacterGetView:_videoStatusUpdate(path, status, errorCode)
-	if status == AvProEnum.PlayerStatus.Started then
+	if status == VideoEnum.PlayerStatus.Started or status == VideoEnum.PlayerStatus.FinishedSeeking or status == VideoEnum.PlayerStatus.Unpaused then
 		self._animSkip = false
 
 		self:setFullScreenMaskVisible(false)
@@ -186,7 +183,7 @@ function CharacterGetView:_videoStatusUpdate(path, status, errorCode)
 		else
 			AudioMgr.instance:trigger(AudioEnum.UI.Play_UI_Get_High_Hero)
 		end
-	elseif status == AvProEnum.PlayerStatus.FinishedPlaying then
+	elseif status == VideoEnum.PlayerStatus.FinishedPlaying then
 		if self._isSummon and not self._isSummonTen then
 			gohelper.setActive(self._btnskip.gameObject, false)
 		end
@@ -205,9 +202,9 @@ function CharacterGetView:_resetVideo()
 	end
 
 	if BootNativeUtil.isAndroid() or BootNativeUtil.isWindows() then
-		self._videoPlayer:Stop()
+		self._videoPlayer:rewind(true)
 	else
-		self._videoPlayer:Stop()
+		self._videoPlayer:loadMedia("character_get_start")
 	end
 end
 
@@ -249,7 +246,8 @@ function CharacterGetView:_playOpenAnimation()
 	self._animatorPlayer:Play(UIAnimationName.Open, self._openAnimFinish, self)
 	gohelper.setActive(self._videoGo, true)
 	self:_initVideoPlayer()
-	self._videoPlayer:Play(self._displauUGUI, langVideoUrl("character_get_start"), false, self._videoStatusUpdate, self)
+	self._videoPlayer:play("character_get_start", false, self._videoStatusUpdate, self)
+	self._videoPlayer:rewind(false)
 	TaskDispatcher.runDelay(self.handleVideoOverTime, self, 10)
 end
 
@@ -286,8 +284,14 @@ function CharacterGetView:_openAnimFinish()
 	if self._isRank then
 		GameFacade.showToast(ToastEnum.CharacterGet, config.name)
 	else
-		CharacterController.instance:showCharacterGetToast(self._heroId, self._duplicateCount)
-		CharacterController.instance:showCharacterGetTicket(self._heroId, self._summonTicketId)
+		local items = self.viewParam and self.viewParam.items
+
+		if items and #items > 0 then
+			CharacterController.instance:showCharacterGetItemToast(items, self._heroId, self._duplicateCount)
+		else
+			CharacterController.instance:showCharacterGetToast(self._heroId, self._duplicateCount)
+			CharacterController.instance:showCharacterGetTicket(self._heroId, self._summonTicketId)
+		end
 	end
 end
 
@@ -423,6 +427,7 @@ function CharacterGetView:onOpen()
 	self._duplicateCount = self.viewParam.duplicateCount or 0
 	self._callback = self.viewParam.callback
 	self._callbackObj = self.viewParam.callbackObj
+	self._callbackParam = self.viewParam.callbackParam
 	self._isRank = self.viewParam.isRank
 	self._newRank = self.viewParam.newRank
 	self._startRank = self.viewParam.startRank
@@ -464,6 +469,7 @@ function CharacterGetView:onUpdateParam()
 	self._duplicateCount = self.viewParam.duplicateCount or 0
 	self._callback = self.viewParam.callback
 	self._callbackObj = self.viewParam.callbackObj
+	self._callbackParam = self.viewParam.callbackParam
 	self._isRank = self.viewParam.isRank
 	self._newRank = self.viewParam.newRank
 	self._isReplay = self.viewParam.isReplay
@@ -513,7 +519,11 @@ function CharacterGetView:onClose()
 	gohelper.setActive(self._gocontainer, false)
 
 	if self._callback then
-		self._callback(self._callbackObj)
+		if self._callbackParam then
+			self._callback(self._callbackObj, self._callbackParam)
+		else
+			self._callback(self._callbackObj)
+		end
 	end
 
 	self:stopDelayVideoOverTime()
@@ -532,7 +542,7 @@ function CharacterGetView:_playLimitedVideo(mvSkinId)
 
 	self._limitedCO = lua_character_limited.configDict[mvSkinId]
 
-	self._videoPlayer:Play(self._displauUGUI, langVideoUrl(self._limitedCO.entranceMv), false, self._limitedVideoStatusUpdate, self)
+	self._videoPlayer:play(self._limitedCO.entranceMv, false, self._limitedVideoStatusUpdate, self)
 
 	self.isPlayLimitedVideo = true
 
@@ -546,11 +556,11 @@ function CharacterGetView:_stopMainBgm()
 end
 
 function CharacterGetView:_limitedVideoStatusUpdate(path, status, errorCode)
-	if status == AvProEnum.PlayerStatus.Started and self._limitedCO and self._limitedCO.audio > 0 then
+	if status == VideoEnum.PlayerStatus.Started and self._limitedCO and self._limitedCO.audio > 0 then
 		AudioMgr.instance:trigger(self._limitedCO.audio)
 	end
 
-	if status == AvProEnum.PlayerStatus.FinishedPlaying then
+	if status == VideoEnum.PlayerStatus.FinishedPlaying then
 		self:_limitedVideoFinished()
 	end
 end
@@ -600,10 +610,8 @@ function CharacterGetView:onDestroyView()
 
 	if self._videoPlayer then
 		if not BootNativeUtil.isIOS() then
-			self._videoPlayer:Stop()
+			self._videoPlayer:stop()
 		end
-
-		self._videoPlayer:Clear()
 
 		self._videoPlayer = nil
 	end

@@ -5,42 +5,43 @@ module("projbooter.sdk.SDKDataTrackMgr", package.seeall)
 local SDKDataTrackMgr = class("SDKDataTrackMgr")
 
 SDKDataTrackMgr.EventName = {
-	unzip_finish_fail = "unzip_finish_fail",
-	hotupdate_81_100 = "hotupdate_81_100",
-	unzip_finish = "unzip_finish",
-	hotupdate_download = "hotupdate_download",
-	voice_pack_UI_manager = "voice_pack_UI_manager",
-	hotupdate_0_20 = "hotupdate_0_20",
-	hotupdate_files_check_fail = "hotupdate_files_check_fail",
-	socket_connect = "socket_connect",
-	ChooseRole = "choose_role",
-	hotupdate_request = "hotupdate_request",
-	hotupdate_request_resource = "hotupdate_request_resource",
-	hotupdate_61_80 = "hotupdate_61_80",
+	voice_pack_switch = "voice_pack_switch",
 	hotupdate_41_60 = "hotupdate_41_60",
-	hotupdate_files_check = "hotupdate_files_check",
+	resource_load = "resource_load",
+	ChooseRole = "choose_role",
+	ChooseServer = "choose_server",
+	hotupdate_0_20 = "hotupdate_0_20",
 	hotupdate_21_40 = "hotupdate_21_40",
+	socket_connect = "socket_connect",
+	hotupdate_files_check_fail = "hotupdate_files_check_fail",
+	hotupdate_request = "hotupdate_request",
+	voice_pack_UI_manager = "voice_pack_UI_manager",
+	hotupdate_61_80 = "hotupdate_61_80",
+	hotupdate_download = "hotupdate_download",
+	hotupdate_files_check = "hotupdate_files_check",
+	hotupdate_81_100 = "hotupdate_81_100",
+	resource_fixup = "resource_fixup",
+	event_hostswitch = "event_hostswitch",
+	voice_pack_delete = "voice_pack_delete",
+	unzip_finish = "unzip_finish",
+	unzip_start = "unzip_start",
+	main_hero_interaction = "main_hero_interaction",
+	resource_load_finish = "resource_load_finish",
+	start_game = "start_game",
+	HotUpdate = "hot_update",
+	voice_pack_downloading = "voice_pack_downloading",
+	resources_downloading = "resources_downloading",
+	hotupdate_request_resource = "hotupdate_request_resource",
 	confirm_download_resources = "confirm_download_resources",
 	first_socket_connect = "first_socket_connect",
 	hotupdate_check = "hotupdate_check",
-	resource_load = "resource_load",
-	voice_pack_downloading = "voice_pack_downloading",
-	ChooseServer = "choose_server",
-	voice_pack_switch = "voice_pack_switch",
-	resource_load_fail = "resource_load_fail",
-	voice_pack_delete = "voice_pack_delete",
-	unzip_start = "unzip_start",
-	resources_downloading = "resources_downloading",
-	main_hero_interaction = "main_hero_interaction",
-	resource_load_finish = "resource_load_finish",
-	event_hostswitch = "event_hostswitch",
 	voice_pack_download_confirm = "voice_pack_download_confirm",
-	start_game = "start_game",
-	HotUpdate = "hot_update"
+	resource_load_fail = "resource_load_fail",
+	unzip_finish_fail = "unzip_finish_fail"
 }
 SDKDataTrackMgr.EventProperties = {
 	data_length = "data_length",
-	result_code = "result_code",
+	resource_fixup_count = "resource_count",
 	UpdateAmount = "update_amount",
 	current_language = "current_language",
 	main_hero_interaction_voice_id = "voiceid",
@@ -54,7 +55,7 @@ SDKDataTrackMgr.EventProperties = {
 	download_voice_pack_list = "download_voice_pack_list",
 	host_ip = "host_ip",
 	main_hero_interaction_area_id = "area_id",
-	currenthost = "currenthost",
+	fail_count = "fail_count",
 	main_hero_interaction_skin_id = "skinid",
 	UpdatePercentage = "update_percentage",
 	request_result = "request_result",
@@ -65,7 +66,10 @@ SDKDataTrackMgr.EventProperties = {
 	entrance = "entrance",
 	switchcount = "switchcount",
 	current_voice_pack_list = "current_voice_pack_list",
+	resource_fixup_status = "status",
 	request_url = "request_url",
+	result_code = "result_code",
+	currenthost = "currenthost",
 	step = "step"
 }
 SDKDataTrackMgr.RequestResult = {
@@ -114,7 +118,9 @@ SDKDataTrackMgr.PropertyTypes = {
 	[SDKDataTrackMgr.EventProperties.resource_type] = "list",
 	[SDKDataTrackMgr.EventProperties.main_hero_interaction_skin_id] = "number",
 	[SDKDataTrackMgr.EventProperties.main_hero_interaction_area_id] = "number",
-	[SDKDataTrackMgr.EventProperties.main_hero_interaction_voice_id] = "string"
+	[SDKDataTrackMgr.EventProperties.main_hero_interaction_voice_id] = "string",
+	[SDKDataTrackMgr.EventProperties.resource_fixup_status] = "string",
+	[SDKDataTrackMgr.EventProperties.resource_fixup_count] = "number"
 }
 SDKDataTrackMgr.DefinedTypeToLuaType = {
 	string = "string",
@@ -379,6 +385,15 @@ function SDKDataTrackMgr:_tableToDictionary(luaTable)
 	end
 
 	return self.csharpInst:ConvertDictionary(jsonStr)
+end
+
+function SDKDataTrackMgr:trackResourceFixup(data)
+	SDKDataTrackMgr.instance:track(SDKDataTrackMgr.EventName.resource_fixup, {
+		[SDKDataTrackMgr.EventProperties.resource_fixup_status] = data.status or "",
+		[SDKDataTrackMgr.EventProperties.resource_fixup_count] = data.count or 0,
+		[SDKDataTrackMgr.EventProperties.entrance] = data.entrance or "",
+		[SDKDataTrackMgr.EventProperties.fail_count] = data.fail_count or 0
+	})
 end
 
 SDKDataTrackMgr.instance = SDKDataTrackMgr.New()

@@ -6,7 +6,7 @@ local V1a6_CachotRoomView = class("V1a6_CachotRoomView", BaseView)
 
 function V1a6_CachotRoomView:onInitView()
 	self._viewAnim = gohelper.findChild(self.viewGO, "#go_excessive"):GetComponent(typeof(UnityEngine.Animator))
-	self._viewAnim.keepAnimatorControllerStateOnDisable = true
+	self._viewAnim.keepAnimatorStateOnDisable = true
 	self._txttest = gohelper.findChildTextMesh(self.viewGO, "#txt_test")
 
 	if self._editableInitView then

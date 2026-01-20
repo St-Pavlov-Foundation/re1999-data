@@ -11,10 +11,10 @@ function VersionActivity1_6EnterVideoView:onInitView()
 end
 
 function VersionActivity1_6EnterVideoView:onOpen()
-	self._videoPlayer, self._displauUGUI, self._videoGo = AvProMgr.instance:getVideoPlayer(self._videoRoot)
+	self._videoPlayer, self._videoGo = VideoPlayerMgr.instance:createGoAndVideoPlayer(self._videoRoot)
 
 	AudioMgr.instance:trigger(AudioEnum.UI.Act1_6EnterViewVideo)
-	self._videoPlayer:Play(self._displauUGUI, videoPath, false, self._videoStatusUpdate, self)
+	self._videoPlayer:play(videoPath, false, self._videoStatusUpdate, self)
 
 	local bgAdapter = self._videoGo:GetComponent(typeof(ZProj.UIBgSelfAdapter))
 
@@ -24,7 +24,7 @@ function VersionActivity1_6EnterVideoView:onOpen()
 end
 
 function VersionActivity1_6EnterVideoView:_videoStatusUpdate(path, status, errorCode)
-	if status == AvProEnum.PlayerStatus.FinishedPlaying or status == AvProEnum.PlayerStatus.Error then
+	if status == VideoEnum.PlayerStatus.FinishedPlaying or status == VideoEnum.PlayerStatus.Error then
 		self:_stopVideoOverTimeAction()
 		self:closeThis()
 		VersionActivity1_6EnterController.instance:dispatchEvent(VersionActivity1_6EnterEvent.OnEnterVideoFinished)
@@ -45,8 +45,8 @@ function VersionActivity1_6EnterVideoView:onDestroyView()
 	self:_stopVideoOverTimeAction()
 
 	if self._videoPlayer then
-		self._videoPlayer:Stop()
-		self._videoPlayer:Clear()
+		self._videoPlayer:stop()
+		self._videoPlayer:clear()
 
 		self._videoPlayer = nil
 	end

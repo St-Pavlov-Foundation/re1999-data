@@ -155,6 +155,8 @@ function StoryView:addEvent()
 	self:addEventCb(StoryController.instance, StoryEvent.HideDialog, self._hideDialog, self)
 	self:addEventCb(StoryController.instance, StoryEvent.DialogConFinished, self._dialogConFinished, self)
 	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self._onCloseViewFinish, self)
+	self:addEventCb(ViewMgr.instance, ViewEvent.OnOpenView, self._onOpenView, self)
+	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, self._onCloseView, self)
 end
 
 function StoryView:removeEvent()
@@ -174,6 +176,8 @@ function StoryView:removeEvent()
 	self:removeEventCb(StoryController.instance, StoryEvent.HideDialog, self._hideDialog, self)
 	self:removeEventCb(StoryController.instance, StoryEvent.DialogConFinished, self._dialogConFinished, self)
 	self:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self._onCloseViewFinish, self)
+	self:removeEventCb(ViewMgr.instance, ViewEvent.OnOpenView, self._onOpenView, self)
+	self:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseView, self._onCloseView, self)
 end
 
 function StoryView:_onCloseViewFinish(viewName)
@@ -182,6 +186,37 @@ function StoryView:_onCloseViewFinish(viewName)
 			StoryTool.enablePostProcess(true)
 
 			return
+		end
+	end
+end
+
+function StoryView:_onOpenView(viewName)
+	if viewName == ViewName.V3a4BBSView then
+		TaskDispatcher.cancelTask(self._enterNextStep, self)
+
+		self._orignEff4 = self._goeff4 and self._goeff4.activeInHierarchy
+
+		gohelper.setActive(self._goeff4, false)
+	end
+end
+
+function StoryView:_onCloseView(viewName)
+	if viewName == ViewName.V3a4BBSView then
+		self:_enterNextStep()
+		gohelper.setActive(self._goeff4, self._orignEff4)
+	end
+end
+
+function StoryView:_isOpenOtherView()
+	if not self._openOtherView then
+		self._openOtherView = {
+			ViewName.V3a4BBSView
+		}
+	end
+
+	for _, viewName in ipairs(self._openOtherView) do
+		if ViewMgr.instance:isOpen(viewName) then
+			return true
 		end
 	end
 end
@@ -272,6 +307,7 @@ function StoryView:_storyFinished(isSkip)
 	self._stepCo = nil
 
 	TaskDispatcher.cancelTask(self._onCheckNext, self)
+	TaskDispatcher.cancelTask(self._startShake, self)
 	self._dialogItem:storyFinished()
 	StoryModel.instance:enableClick(false)
 
@@ -321,6 +357,10 @@ function StoryView:onUpdateParam()
 end
 
 function StoryView:_enterNextStep()
+	if self:_isOpenOtherView() then
+		return
+	end
+
 	StoryController.instance:dispatchEvent(StoryEvent.PlayFullTextOut)
 
 	if self._diaLineTxt and self._diaLineTxt[2] then
@@ -1319,8 +1359,6 @@ function StoryView:_updateVideoList(param)
 
 	local hasVideo = false
 
-	self:_checkCreatePlayList()
-
 	for _, v in pairs(self._videoCo) do
 		if v.orderType == StoryEnum.VideoOrderType.Produce or v.orderType == StoryEnum.VideoOrderType.ProduceSkip then
 			self:_buildVideo(v.video, v)
@@ -1345,16 +1383,10 @@ function StoryView:_updateVideoList(param)
 end
 
 function StoryView:_videoStarted(storyVideoItem)
-	for name, item in pairs(self._videos) do
-		if item ~= storyVideoItem then
-			item:pause(true)
-		end
-	end
+	return
 end
 
 function StoryView:_buildVideo(name, co)
-	self:_checkCreatePlayList()
-
 	local videoGo
 
 	if co.layer < 4 then
@@ -1368,7 +1400,7 @@ function StoryView:_buildVideo(name, co)
 	if not self._videos[name] then
 		self._videos[name] = StoryVideoItem.New()
 
-		self._videos[name]:init(videoGo, name, co, self._videoStarted, self, self._videoPlayList)
+		self._videos[name]:init(videoGo, name, co, self._videoStarted, self)
 	else
 		self._videos[name]:reset(videoGo, co)
 	end
@@ -1382,25 +1414,6 @@ function StoryView:_destroyVideo(name, co)
 	self._videos[name]:destroyVideo(co)
 
 	self._videos[name] = nil
-end
-
-function StoryView:_checkCreatePlayList()
-	if not self._videoPlayList then
-		local path = AvProMgr.instance:getStoryUrl()
-		local child = self:getResInst(path, self.viewGO, "play_list")
-
-		self._videoPlayList = StoryVideoPlayList.New()
-
-		self._videoPlayList:init(child, self.viewGO)
-	end
-end
-
-function StoryView:_checkDisposePlayList()
-	if self._videoPlayList then
-		self._videoPlayList:dispose()
-
-		self._videoPlayList = nil
-	end
 end
 
 function StoryView:_updateOptionList(param)
@@ -1431,8 +1444,6 @@ function StoryView:_clearItems()
 	end
 
 	self._videos = {}
-
-	self:_checkDisposePlayList()
 end
 
 function StoryView:onDestroyView()
@@ -1447,7 +1458,6 @@ function StoryView:onDestroyView()
 	end
 
 	ZProj.TweenHelper.KillByObj(self._imagefullbottom)
-	self:_checkDisposePlayList()
 	TaskDispatcher.cancelTask(self._conShowIn, self)
 	TaskDispatcher.cancelTask(self._startShowText, self)
 	TaskDispatcher.cancelTask(self._enterNextStep, self)

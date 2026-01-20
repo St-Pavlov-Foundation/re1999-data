@@ -60,15 +60,13 @@ end
 function NicknameView:_editableInitView()
 	local parentGO = gohelper.findChild(self.viewGO, "#videobg")
 	local tempGO = self:getResInst(AvProMgr.instance:getNicknameUrl(), parentGO)
+	local videoList = {
+		"make_name_start",
+		"make_name_loop"
+	}
 
-	self._videoBg = gohelper.findChildComponent(tempGO, "#videobg", typeof(RenderHeads.Media.AVProVideo.DisplayUGUI))
-	self._videoBg.ScaleMode = UnityEngine.ScaleMode.ScaleAndCrop
-	self._listPlayer = gohelper.findChildComponent(tempGO, "#list_player", typeof(RenderHeads.Media.AVProVideo.PlaylistMediaPlayer))
-	self._uguiListPlayer = gohelper.findChildComponent(tempGO, "#list_player", typeof(ZProj.AvProUGUIListPlayer))
+	self._uguiListPlayer = VideoPlayerMgr.instance:createPlayerListMedia(tempGO, videoList)
 
-	self._uguiListPlayer:SetEventListener(self._onVideoPlayEvent, self)
-	self._uguiListPlayer:SetMediaPath(langVideoUrl("make_name_start"), 0)
-	self._uguiListPlayer:SetMediaPath(langVideoUrl("make_name_loop"), 1)
 	gohelper.setActive(self._goname, false)
 	gohelper.setActive(self._gonormal, false)
 
@@ -104,23 +102,28 @@ function NicknameView:_onInputNameEndEdit()
 end
 
 function NicknameView:_playStartVideo()
-	self._listPlayer:Play()
+	if self._uguiListPlayer and self._uguiListPlayer.play then
+		self._uguiListPlayer:play(1, false, self._onVideoPlayEvent, self)
+	end
+
 	TaskDispatcher.runDelay(self._showInputUI, self, 2.1)
 	AudioMgr.instance:trigger(AudioEnum.CriWare.Play_Name_Start)
 	TaskDispatcher.runDelay(self._delayShowNameUI, self, 5)
-
-	if SettingsModel.instance:getVideoCompatible() and BootNativeUtil.isWindows() then
-		TaskDispatcher.runDelay(self._onJumpNext, self, 2.4)
-	end
+	TaskDispatcher.runDelay(self._onJumpNext, self, 2.4)
 end
 
 function NicknameView:_onJumpNext()
-	self._listPlayer:JumpToItem(1)
+	if self._uguiListPlayer and self._uguiListPlayer.play then
+		self._uguiListPlayer:play(2, true, self._onVideoPlayEvent, self)
+	end
 end
 
 function NicknameView:_showInputUI()
 	gohelper.setActive(self._goname, true)
-	self._uguiListPlayer:SetMediaPath(langVideoUrl("make_name_end"), 0)
+
+	if self._uguiListPlayer and self._uguiListPlayer.SetMediaPath then
+		self._uguiListPlayer:SetMediaPath("make_name_end", 1)
+	end
 end
 
 function NicknameView:_delayShowNameUI()
@@ -130,7 +133,11 @@ end
 
 function NicknameView:_playEndVideo()
 	logNormal("NicknameView:_playEndVideo() ---------------------1")
-	self._listPlayer:JumpToItem(0)
+
+	if self._uguiListPlayer and self._uguiListPlayer.play then
+		self._uguiListPlayer:play(1, false, self._onVideoPlayEvent, self)
+	end
+
 	AudioMgr.instance:trigger(AudioEnum.CriWare.Play_Name_Complete)
 	TaskDispatcher.runDelay(self._delayCloseView, self, 8)
 end
@@ -139,21 +146,24 @@ function NicknameView:_onVideoPlayEvent(path, status, errorCode)
 	local pathSplits = string.split(path, "/")
 	local videoName = pathSplits[#pathSplits]
 
-	logNormal("NicknameView:_onVideoPlayEvent, videoName = " .. videoName .. " status = " .. AvProEnum.getPlayerStatusEnumName(status) .. " errorCode = " .. AvProEnum.getErrorCodeEnumName(errorCode))
+	logNormal("NicknameView:_onVideoPlayEvent, videoName = " .. videoName .. " status = " .. VideoEnum.getPlayerStatusEnumName(status) .. " errorCode = " .. VideoEnum.getErrorCodeEnumName(errorCode))
 
-	if videoName == "make_name_start.mp4" and status == AvProEnum.PlayerStatus.Started then
+	if videoName == "make_name_start.mp4" and status == VideoEnum.PlayerStatus.FirstFrameReady then
 		TaskDispatcher.cancelTask(self._delayShowNameUI, self)
 	end
 
 	if videoName == "make_name_end.mp4" then
-		if errorCode ~= AvProEnum.ErrorCode.None then
-			self._listPlayer:Stop()
+		if errorCode ~= VideoEnum.ErrorCode.None and errorCode ~= nil then
+			if self._uguiListPlayer and self._uguiListPlayer.stop then
+				self._uguiListPlayer:stop()
+			end
+
 			TaskDispatcher.cancelTask(self._delayCloseView, self)
 			gohelper.setActive(self._goname, false)
 			self:closeThis()
 		end
 
-		if status == AvProEnum.PlayerStatus.FinishedPlaying then
+		if status == VideoEnum.PlayerStatus.FinishedPlaying then
 			TaskDispatcher.cancelTask(self._delayCloseView, self)
 			gohelper.setActive(self._goname, false)
 			self:closeThis()
@@ -163,7 +173,11 @@ end
 
 function NicknameView:_delayCloseView()
 	logError("播放起名字end视频超时了")
-	self._listPlayer:Stop()
+
+	if self._uguiListPlayer and self._uguiListPlayer.stop then
+		self._uguiListPlayer:stop()
+	end
+
 	gohelper.setActive(self._goname, false)
 	self:closeThis()
 end
@@ -279,9 +293,17 @@ end
 
 function NicknameView:onDestroyView()
 	self._simageinputnamebg:UnLoadImage()
-	self._uguiListPlayer:Clear()
 
-	self._uguiListPlayer = nil
+	if self._uguiListPlayer then
+		if self._uguiListPlayer.ondestroy then
+			self._uguiListPlayer:ondestroy()
+		elseif self._uguiListPlayer.Clear then
+			self._uguiListPlayer:Clear()
+		end
+
+		self._uguiListPlayer = nil
+	end
+
 	self._listPlayer = nil
 end
 

@@ -49,7 +49,7 @@ function SDKNativeUtil.updateGame(appUrl)
 end
 
 function SDKNativeUtil.openCostumerService()
-	if BootNativeUtil.isAndroid() then
+	if BootNativeUtil.isAndroid() or BootNativeUtil.isMuMu() then
 		SLFramework.NativeUtil.VoidCallNative(SDKNativeUtil.nativeClsName, "openCostumerService", "深蓝互动")
 
 		return true

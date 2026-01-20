@@ -50,7 +50,7 @@ function BootResMgr:ctor()
 		},
 		[BootResMgr.VoiceViewPath] = {
 			path = BootResMgr.VoiceViewPath,
-			layer = self._popupTopRoot
+			layer = self._topRoot
 		},
 		[BootResMgr.VersionViewPath] = {
 			path = BootResMgr.VersionViewPath,

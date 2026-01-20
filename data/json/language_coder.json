@@ -5605,7 +5605,7 @@
   },
   {
     "id": "decoratestore_discount_limittime",
-    "lang": "抵扣券剩余<color=#f8a13b>▩1%s</color>逾期"
+    "lang": "惊奇选购单剩余<color=#f8a13b>▩1%s</color>逾期"
   },
   {
     "id": "act186_signview_task_txt",
@@ -6273,19 +6273,19 @@
   },
   {
     "id": "survival_mainview_beginshrink",
-    "lang": "认知污染将于▩1%s开始"
+    "lang": "暴雨将于▩1%s开始"
   },
   {
     "id": "survival_mainview_endshrink",
-    "lang": "认知污染将于▩1%s停止"
+    "lang": "暴雨将于▩1%s停止"
   },
   {
     "id": "survival_mainview_lastshrink",
-    "lang": "认知污染已经无法停止"
+    "lang": "暴雨已经无法停止"
   },
   {
     "id": "survival_mainview_useitem_tips",
-    "lang": "点击空白区域取消使用道具"
+    "lang": "点击空白区域取消使用"
   },
   {
     "id": "survival_talentview_lock",
@@ -7185,7 +7185,7 @@
   },
   {
     "id": "SurvivalBossInvasionView_2",
-    "lang": "转译进度▩1%s令此效果失效"
+    "lang": "等级达到▩1%s令此效果失效"
   },
   {
     "id": "PowerMakerPatFaceView_desc_1",
@@ -7665,7 +7665,7 @@
   },
   {
     "id": "versionsummon_txt_tips1",
-    "lang": "活动期间，可获得十全调·【命运亦需捧场】"
+    "lang": "活动期间，登录即可领取十全调·【剪春注我】*1"
   },
   {
     "id": "versionsummon_txt_tips2",
@@ -8070,5 +8070,629 @@
   {
     "id": "handbookskin_festival_Christmas",
     "lang": "圣诞节"
+  },
+  {
+    "id": "SurvivalRoleSelectView_1",
+    "lang": "角色特性"
+  },
+  {
+    "id": "SurvivalRoleSelectView_2",
+    "lang": "敬请期待"
+  },
+  {
+    "id": "SurvivalRoleAttrName_1",
+    "lang": "创造"
+  },
+  {
+    "id": "SurvivalRoleAttrName_2",
+    "lang": "韧性"
+  },
+  {
+    "id": "SurvivalRoleAttrName_3",
+    "lang": "逻辑"
+  },
+  {
+    "id": "SurvivalRoleAttrName_4",
+    "lang": "执行"
+  },
+  {
+    "id": "SurvivalRoleAttrName_5",
+    "lang": "乐观"
+  },
+  {
+    "id": "SurvivalHardView_3",
+    "lang": "难度未解锁"
+  },
+  {
+    "id": "SurvivalHardView_4",
+    "lang": "完成结局<color=#F3F0EB>思想真正的主人</color>和<color=#F3F0EB>在崩溃的规则下</color>解锁自定义难度"
+  },
+  {
+    "id": "SurvivalHandbookView_Story_1",
+    "lang": "过往"
+  },
+  {
+    "id": "SurvivalHandbookView_Story_2",
+    "lang": "当下"
+  },
+  {
+    "id": "SurvivalLeaveMsgType_1",
+    "lang": "句式"
+  },
+  {
+    "id": "SurvivalLeaveMsgType_2",
+    "lang": "内容"
+  },
+  {
+    "id": "SurvivalLeaveMsgType_3",
+    "lang": "连接词"
+  },
+  {
+    "id": "SurvivalTechView_2",
+    "lang": "§没有点亮天赋"
+  },
+  {
+    "id": "SurvivalTechView_3",
+    "lang": "实践成果"
+  },
+  {
+    "id": "SurvivalTechView_4",
+    "lang": "实践成果不足"
+  },
+  {
+    "id": "SurvivalTechView_5",
+    "lang": "前置节点未解锁"
+  },
+  {
+    "id": "SurvivalRoleAttrComp_1",
+    "lang": "属性描述"
+  },
+  {
+    "id": "SurvivalPreviewTeamView_1",
+    "lang": "完成事件，收集物资，击败敌人等行为可获得经验，提升等级"
+  },
+  {
+    "id": "SurvivalLeaveMsgItem_1",
+    "lang": "我发布的留言"
+  },
+  {
+    "id": "SurvivalLeaveMsgItem_2",
+    "lang": "他人发布的留言"
+  },
+  {
+    "id": "SurvivalLeaveMsgView_1",
+    "lang": "留言发布完成"
+  },
+  {
+    "id": "SurvivalLeaveMsgView_2",
+    "lang": "留言"
+  },
+  {
+    "id": "SurvivalLeaveMsgView_3",
+    "lang": "编辑留言"
+  },
+  {
+    "id": "SurvivalLeaveMsgView_4",
+    "lang": "请选择留言内容再发布"
+  },
+  {
+    "id": "SurvivalLeaveMsgView_5",
+    "lang": "句式需要搭配内容才能发布"
+  },
+  {
+    "id": "SurvivalTechRoleFragment_1",
+    "lang": "▩1%s"
+  },
+  {
+    "id": "SurvivalTechRoleDescItem_1",
+    "lang": "§【▩1%s】\n▩2%s"
+  },
+  {
+    "id": "SurvivalTechLockArea_1",
+    "lang": "<color=#e99b56>Lv.▩1%s</color>解锁"
+  },
+  {
+    "id": "SurvivalTechShelterView_1",
+    "lang": "等级达到Lv.▩1%s解锁"
+  },
+  {
+    "id": "SurvivalCeremonyClosingView_1",
+    "lang": "▩1%s完成了本次模拟，根据模拟结果，共获得▩2%s     ▩3%s"
+  },
+  {
+    "id": "SurvivalRoleInitAttrTip_1",
+    "lang": "创造：提升该属性可以强化漫游行装中对应痕契的效果；也可提升出售物品的价格"
+  },
+  {
+    "id": "SurvivalRoleInitAttrTip_2",
+    "lang": "韧性：提升该属性可以提升演习主角的抵抗力；也可降低购买物品的价格"
+  },
+  {
+    "id": "SurvivalRoleInitAttrTip_3",
+    "lang": "逻辑：提升该属性可以增加演习的时长；也可提升出售物品的价格"
+  },
+  {
+    "id": "SurvivalRoleInitAttrTip_4",
+    "lang": "执行：提升该属性可以提升“露西号”拖车的负重；也可降低购买物品的价格"
+  },
+  {
+    "id": "SurvivalRoleInitAttrTip_5",
+    "lang": "乐观：提升该属性可以提升在搜刮事件中物资升华的几率；也可降低购买物品的价格"
+  },
+  {
+    "id": "SurvivalGiveBackView_1",
+    "lang": "X："
+  },
+  {
+    "id": "SurvivalGiveBackView_2",
+    "lang": "看起来，丢东西在你们眼里并不是一种浪费，你们甚至都不心疼一下？我帮你们找回来了，看看是不是都在这？"
+  },
+  {
+    "id": "survival_log_rolelevelup",
+    "lang": "获得经验▩1%s"
+  },
+  {
+    "id": "SurvivalRoleLevelUpView_1",
+    "lang": "指标中心解锁新能力"
+  },
+  {
+    "id": "SurvivalRoleLevelUpView_2",
+    "lang": "入侵强敌词条已失效"
+  },
+  {
+    "id": "laplace_chatroom_luckyrain_title",
+    "lang": "好运字福(▩1%s/▩2%s)"
+  },
+  {
+    "id": "laplace_chatroom_luckyrain_unlock",
+    "lang": "开启中！点击参与"
+  },
+  {
+    "id": "laplace_chatroom_luckyrain_finish",
+    "lang": "已参与本轮好运字福"
+  },
+  {
+    "id": "laplace_chatroom_roomNum",
+    "lang": "房间人数(▩1%s/▩2%s)"
+  },
+  {
+    "id": "v3a4bbs_quoteuser",
+    "lang": "在【▩1%s】的大作中提到："
+  },
+  {
+    "id": "v3a4bbs_sender_ip",
+    "lang": "来源：▩1%s"
+  },
+  {
+    "id": "v3a4bbs_default_reply",
+    "lang": "请输入留言......"
+  },
+  {
+    "id": "v3a4bbs_wait_other_reply",
+    "lang": "等待对方回复"
+  },
+  {
+    "id": "v3a4bbs_other_replying",
+    "lang": "对方回复中"
+  },
+  {
+    "id": "partygame_game2_unfinish",
+    "lang": "未完成"
+  },
+  {
+    "id": "partygame_game2_finishtime",
+    "lang": "▩1%s秒"
+  },
+  {
+    "id": "partygame_game3_hitcount",
+    "lang": "▩1%s次"
+  },
+  {
+    "id": "partygame_game4_dis",
+    "lang": "剩余▩1%s米"
+  },
+  {
+    "id": "partygame_game13_finishTime",
+    "lang": "▩1%s秒"
+  },
+  {
+    "id": "partygame_game13_layer",
+    "lang": "▩1%s层"
+  },
+  {
+    "id": "partygame_game19_finish",
+    "lang": "已完成"
+  },
+  {
+    "id": "partygame_game19_dis",
+    "lang": "距离▩1%s格"
+  },
+  {
+    "id": "partygame_roundcount",
+    "lang": "当前轮数▩1%s/▩2%s"
+  },
+  {
+    "id": "partygame_gameroundtime",
+    "lang": "本轮时间：▩1%s"
+  },
+  {
+    "id": "partygame_gamecountdown",
+    "lang": "剩余时间：▩1%s"
+  },
+  {
+    "id": "partygame_gamerank",
+    "lang": "第▩1%s名"
+  },
+  {
+    "id": "partygame_gamerank2",
+    "lang": "太棒了，第▩1%s名"
+  },
+  {
+    "id": "partygame_resultViewCount",
+    "lang": "点击空白退出 倒计时: ▩1%s s"
+  },
+  {
+    "id": "partygame_blueWin",
+    "lang": "蓝方胜利"
+  },
+  {
+    "id": "partygame_redWin",
+    "lang": "红方胜利"
+  },
+  {
+    "id": "PartyGameRoundTip_1",
+    "lang": "第▩1%s/▩2%s回合"
+  },
+  {
+    "id": "PartyGameRoundTip_2",
+    "lang": "当前回合：▩1%s/▩2%s"
+  },
+  {
+    "id": "partygame_carddrop_all_title",
+    "lang": "第▩1%s轮"
+  },
+  {
+    "id": "partygame_ready",
+    "lang": "已准备"
+  },
+  {
+    "id": "partygame_notready",
+    "lang": "未准备"
+  },
+  {
+    "id": "partygame_invited",
+    "lang": "可邀请"
+  },
+  {
+    "id": "partygame_refuse",
+    "lang": "已拒绝"
+  },
+  {
+    "id": "partygame_owner",
+    "lang": "房主"
+  },
+  {
+    "id": "partygame_inroom",
+    "lang": "在房间"
+  },
+  {
+    "id": "partygame_ingame",
+    "lang": "游戏中"
+  },
+  {
+    "id": "handbookskin_festival_yushui",
+    "lang": "雨水"
+  },
+  {
+    "id": "v3a4_giftrecommend_tip",
+    "lang": "仅购买▩1%s"
+  },
+  {
+    "id": "main_switch_classify_title_4",
+    "lang": "湖的印象"
+  },
+  {
+    "id": "mainsceneuipackage_8013401",
+    "lang": "一院东风絮似盐，梅梁双到语迟迟。"
+  },
+  {
+    "id": "partycloth_summon",
+    "lang": "兑换▩1%s次"
+  },
+  {
+    "id": "SettingsGraphicsView_videoMode0",
+    "lang": "默认"
+  },
+  {
+    "id": "SettingsGraphicsView_videoMode1",
+    "lang": "兼容模式1"
+  },
+  {
+    "id": "SettingsGraphicsView_videoMode2",
+    "lang": "兼容模式2"
+  },
+  {
+    "id": "summon_limitreprint_banner_flag",
+    "lang": "复刻自选"
+  },
+  {
+    "id": "laplace_observerbox_unlocktimes",
+    "lang": "剩余待观测盒子数：▩1%s"
+  },
+  {
+    "id": "laplace_observerbox_pagetip",
+    "lang": "观测组(▩1%s/▩2%s)"
+  },
+  {
+    "id": "towercompose_modLevel",
+    "lang": "LV.▩1%s"
+  },
+  {
+    "id": "towercompose_fightPlane1",
+    "lang": "继续挑战以解锁<sprite=0>表象挑战"
+  },
+  {
+    "id": "towercompose_fightPlane2",
+    "lang": "继续挑战以解锁<sprite=1>里象挑战"
+  },
+  {
+    "id": "v3a4_destiny_panelsview_item",
+    "lang": "▩1%s*▩2%s"
+  },
+  {
+    "id": "v3a4_destiny_panelsview_rewarddesc1",
+    "lang": "活动期间,可免费领取<#f9a958>【▩1%s】</color>*▩2%s 和<#f9a958>【▩3%s】</color>*▩4%s"
+  },
+  {
+    "id": "v3a4_destiny_panelsview_rewarddesc2",
+    "lang": "消耗<#f9a958>【灵魂压缩电池】</color>*3即可使用<#f9a958>【非具象留影仪】</color>，获取指定范围内自选角色造像*1!"
+  },
+  {
+    "id": "HeroExpBoxItem_MaxLv1",
+    "lang": "塑造已满"
+  },
+  {
+    "id": "HeroExpBoxItem_MaxLv2",
+    "lang": "塑造等级可提升至满级"
+  },
+  {
+    "id": "HeroExpBoxView_ConfirmBtn1",
+    "lang": "确认转化"
+  },
+  {
+    "id": "HeroExpBoxItem_Tip1",
+    "lang": "可将本次自选转化成"
+  },
+  {
+    "id": "HeroExpBoxItem_Tip2",
+    "lang": "▩1%s*▩2%s"
+  },
+  {
+    "id": "polilog_ripplesonthewater_tips_txt1",
+    "lang": "兔之环·【湖的涟漪】将沿用卡池保底规则，当前已累计保底次数<#cc5c29>▩1%s/70</color>。使用兔之环·【湖的涟漪】不消耗首次十连折扣。期间于“湖的涟漪”仅能使用兔之环·【湖的涟漪】进行征集，是否确定开始使用？"
+  },
+  {
+    "id": "polilog_ripplesonthewater_tips_txt2",
+    "lang": "您已拥有兔之环·【湖的涟漪】，可不限次数征集直至获取第一个6星角色。是否确认使用十全调·【湖的涟漪】或独一律进行征集？"
+  },
+  {
+    "id": "knockout_result_rank_1",
+    "lang": "<size=180>▩1%s</size>st"
+  },
+  {
+    "id": "knockout_result_rank_2",
+    "lang": "<size=180>▩1%s</size>nd"
+  },
+  {
+    "id": "knockout_result_rank_3",
+    "lang": "<size=180>▩1%s</size>rd"
+  },
+  {
+    "id": "knockout_result_rank_other",
+    "lang": "<size=180>▩1%s</size>th"
+  },
+  {
+    "id": "towercompose_loadRecord",
+    "lang": "加载存档"
+  },
+  {
+    "id": "towercompose_saveRecord",
+    "lang": "保存存档"
+  },
+  {
+    "id": "towercompose_load_repeatFightTip",
+    "lang": "<#AE7D67>重复挑战</color>时会加载所有队伍信息，仅可调整<#AE7D67>重复挑战的首领插件与队伍</color>并进入挑战，且另一挑战会快速胜利。"
+  },
+  {
+    "id": "towercompose_load_continueFightTip",
+    "lang": "<#AE7D67>继续挑战</color>时会加载所有队伍信息，仅可调整<#AE7D67>未胜利挑战的队伍</color>并进入挑战，且另一挑战会快速胜利。"
+  },
+  {
+    "id": "towercompose_save_tip",
+    "lang": "若保存的存档记录中<#AE7D67>存在过期角色，心相时</color>，存档记录将会失效。"
+  },
+  {
+    "id": "towercompose_recordScore",
+    "lang": "投射值：▩1%s"
+  },
+  {
+    "id": "V3a4_Chg_GameView_txtNum",
+    "lang": "<size=70>%s</size>/%s"
+  },
+  {
+    "id": "V3a4_Chg_GameView_txtCount",
+    "lang": "剩余数：%s"
+  },
+  {
+    "id": "partygame_rewardCountDown",
+    "lang": "(▩1%s s)"
+  },
+  {
+    "id": "partygame_result_hp",
+    "lang": "你是第▩1%s名,淘汰赛血量<#f9a958>+▩2%s</color>"
+  },
+  {
+    "id": "partygame_result_hp_1",
+    "lang": "▩1%s<#f9a958>(+▩2%s )</color>"
+  },
+  {
+    "id": "partygame_reward_select",
+    "lang": "已选择<#f9a958>▩1%s/▩2%s</color>"
+  },
+  {
+    "id": "partygame_act_reward_tip",
+    "lang": "前<#72C789>▩1%s/▩2%s</color>局额外获得奇彩弹子"
+  },
+  {
+    "id": "partygame_invite_desc",
+    "lang": "▩1%s邀请你加入派对"
+  },
+  {
+    "id": "v3a4_laplacemainview_txt_observerboxtag1",
+    "lang": "可继续观测"
+  },
+  {
+    "id": "v3a4_laplacemainview_txt_observerboxtag2",
+    "lang": "已观测完成"
+  },
+  {
+    "id": "v3a4_laplacemainview_txt_minipartytag1",
+    "lang": "任务待完成"
+  },
+  {
+    "id": "v3a4_laplacemainview_txt_minipartytag2",
+    "lang": "奖励待领取"
+  },
+  {
+    "id": "v3a4_laplacemainview_txt_minipartytag3",
+    "lang": "完成领纯雨滴！"
+  },
+  {
+    "id": "v3a4_laplacemainview_txt_chatroomtag1",
+    "lang": "好运字福进行中！"
+  },
+  {
+    "id": "v3a4_laplacemainview_txt_chatroomtag2",
+    "lang": "研究室开放中！"
+  },
+  {
+    "id": "v3a4_laplacemainview_txt_chatroomtag3",
+    "lang": "乌有之问待参与"
+  },
+  {
+    "id": "v3a4_laplacemainview_txt_chatroomtag4",
+    "lang": "物的基本法待参与"
+  },
+  {
+    "id": "v3a4_laplacemainview_txt_num",
+    "lang": "<color=#e8864e>▩1%s</color> / ▩2%s可领取"
+  },
+  {
+    "id": "v3a4_chatroomnpcqandaview_txt_title",
+    "lang": "乌有之问(▩1%s / ▩2%s)"
+  },
+  {
+    "id": "p_v3a4_laplacemainview_txt3",
+    "lang": "缪斯碰碰盒筹备中，敬请期待！"
+  },
+  {
+    "id": "p_v3a4_laplacemainview_txt4",
+    "lang": "缪斯碰碰盒每天10点-14点，18点-24点开启。"
+  },
+  {
+    "id": "p_v3a4_laplacemainview_txt5",
+    "lang": "缪斯碰碰盒限时开放中！"
+  },
+  {
+    "id": "knockout_result_solo_1",
+    "lang": "恭喜你，获得第一名"
+  },
+  {
+    "id": "knockout_result_solo_2",
+    "lang": "恭喜你，获得第二名"
+  },
+  {
+    "id": "knockout_result_solo_3",
+    "lang": "你获得第三名，请再接再厉"
+  },
+  {
+    "id": "knockout_result_solo_4",
+    "lang": "你获得第四名，请再接再厉"
+  },
+  {
+    "id": "knockout_result_solo_5",
+    "lang": "你获得第五名，稍有遗憾，再来一局"
+  },
+  {
+    "id": "knockout_result_solo_6",
+    "lang": "你获得第六名，稍有遗憾，再来一局"
+  },
+  {
+    "id": "knockout_result_solo_7",
+    "lang": "你获得第七名，稍有遗憾，再来一局"
+  },
+  {
+    "id": "knockout_result_solo_8",
+    "lang": "你获得第八名，稍有遗憾，再来一局"
+  },
+  {
+    "id": "PartyGameReward_tip_1",
+    "lang": "剪刀石头布，相互克制，紫色必杀牌，克制剪刀石头布"
+  },
+  {
+    "id": "PartyGameReward_tip_2",
+    "lang": "相同牌型，点数大者获胜"
+  },
+  {
+    "id": "PartyGameReward_tip_3",
+    "lang": "带有暴击标识的牌，胜利时造成双倍伤害"
+  },
+  {
+    "id": "PartyGameReward_tip_4",
+    "lang": "淘汰赛剩余血量多的一方获胜"
+  },
+  {
+    "id": "PartyGameReward_tip_5",
+    "lang": "淘汰赛双方剩余血量相同时，投掷硬币决定胜者"
+  },
+  {
+    "id": "v3a4_chg_gameview_round1",
+    "lang": "第一回合"
+  },
+  {
+    "id": "v3a4_chg_gameview_round2",
+    "lang": "第二回合"
+  },
+  {
+    "id": "v3a4_chg_gameview_round3",
+    "lang": "第三回合"
+  },
+  {
+    "id": "v3a4_chg_gameview_round4",
+    "lang": "第四回合"
+  },
+  {
+    "id": "v3a4_chg_gameview_round5",
+    "lang": "第五回合"
+  },
+  {
+    "id": "v3a4_chg_gameview_34701011",
+    "lang": "拖拽并延伸气，连接飞羽<sprite=7>与目标<sprite=3> "
+  },
+  {
+    "id": "v3a4_chg_gameview_34701012",
+    "lang": "拖拽并延伸气，连接飞羽<sprite=4>与目标<sprite=5> "
+  },
+  {
+    "id": "v3a4_chg_gameview_34701013",
+    "lang": "拖拽并延伸气，连接飞羽<sprite=7>与目标<sprite=3> "
+  },
+  {
+    "id": "v3a4_chg_gameview_34701014",
+    "lang": "拖拽并延伸气，连接飞羽<sprite=2>与目标<sprite=1> "
+  },
+  {
+    "id": "v3a4_chg_gameview_34701015",
+    "lang": "拖拽并延伸气，连接飞羽<sprite=2>与目标<sprite=1> "
   }
 ]

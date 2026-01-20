@@ -43,13 +43,17 @@ function SurvivalHandbookViewTab:setData(parma)
 
 	local redDot = SurvivalHandbookModel.instance.handbookTypeCfg[self.type].RedDot
 
-	RedDotController.instance:addRedDot(self.unselect_go_redDot, redDot, -1)
-	RedDotController.instance:addRedDot(self.select_go_redDot, redDot, -1)
+	if redDot then
+		RedDotController.instance:addRedDot(self.unselect_go_redDot, redDot, -1)
+		RedDotController.instance:addRedDot(self.select_go_redDot, redDot, -1)
+	end
 
 	local info = SurvivalHandbookModel.instance:getProgress(self.type)
 
-	self.unselect_txt_num.text = string.format("<#FFFFFF><size=50>%s</size></color>/%s", info.progress, info.amount)
-	self.select_txt_num.text = string.format("<size=50>%s</size>/%s", info.progress, info.amount)
+	if info then
+		self.unselect_txt_num.text = string.format("<#FFFFFF><size=50>%s</size></color>/%s", info.progress, info.amount)
+		self.select_txt_num.text = string.format("<size=50>%s</size>/%s", info.progress, info.amount)
+	end
 end
 
 function SurvivalHandbookViewTab:setSelect(value)

@@ -51,6 +51,7 @@ GuideModel.GuideFlag = {
 	SeasonUTTU = 27,
 	SkipClickElement = 13,
 	RoomForbidBtn = 16,
+	PartyGameLocalGame1 = 60,
 	FightSetSpecificCardIndex = 30,
 	FightLeadRoleSkillGuide = 11,
 	HuiDiaoLanCombineLock = 49

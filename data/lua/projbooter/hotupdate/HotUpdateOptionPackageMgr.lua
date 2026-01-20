@@ -7,6 +7,14 @@ local HotUpdateOptionPackageMgr = class("HotUpdateOptionPackageMgr")
 HotUpdateOptionPackageMgr.EnableEditorDebug = false
 
 local OptionPackageNamesKey = "HotUpdateOptionPackageMgr_OptionPackageNamesKey"
+local LangPackageNamesKey = "HotUpdateOptionPackageMgr_LangPackageNamesKey"
+
+HotUpdateOptionPackageMgr.BigType = {
+	HD = "HD"
+}
+HotUpdateOptionPackageMgr.SaveTypeReplaceDic = {
+	["res-HD"] = HotUpdateOptionPackageMgr.BigType.HD
+}
 
 function HotUpdateOptionPackageMgr:init()
 	self._optionalUpdateInst = SLFramework.GameUpdate.OptionalUpdate.Instance
@@ -80,7 +88,79 @@ function HotUpdateOptionPackageMgr:isNeedDownloadVoiceLang(lang)
 		return true
 	end
 
+	if not ProjBooter.instance:isUseBigZip() then
+		local langPackageNameList = self:getLangPackageNameList()
+
+		if tabletool.indexOf(langPackageNameList, lang) then
+			return true
+		end
+	end
+
 	return false
+end
+
+function HotUpdateOptionPackageMgr:checkHasPackage(packSetName)
+	packSetName = HotUpdateOptionPackageMgr.SaveTypeReplaceDic[packSetName] or packSetName
+
+	local langList = self:getLangPackageNameList()
+
+	if tabletool.indexOf(langList, packSetName) then
+		return true
+	end
+
+	local otherList = self:getPackageNameList()
+
+	if tabletool.indexOf(otherList, packSetName) then
+		return true
+	end
+
+	return false
+end
+
+function HotUpdateOptionPackageMgr:getLangPackageNameList()
+	local str = UnityEngine.PlayerPrefs.GetString(LangPackageNamesKey, "")
+
+	if not string.nilorempty(str) then
+		return string.split(str, "#")
+	end
+
+	return {}
+end
+
+function HotUpdateOptionPackageMgr:saveLangPackageNameList(packageNameList)
+	local str = ""
+
+	if packageNameList and #packageNameList > 0 then
+		str = table.concat(packageNameList, "#")
+	end
+
+	UnityEngine.PlayerPrefs.SetString(LangPackageNamesKey, str)
+	UnityEngine.PlayerPrefs.Save()
+end
+
+function HotUpdateOptionPackageMgr:addLocalLangPackSetName(packSetName)
+	local packSetNameList = self:getLangPackageNameList()
+
+	if not tabletool.indexOf(packSetNameList, packSetName) then
+		packSetName = HotUpdateOptionPackageMgr.SaveTypeReplaceDic[packSetName] or packSetName
+
+		table.insert(packSetNameList, packSetName)
+		self:saveLangPackageNameList(packSetNameList)
+	end
+end
+
+function HotUpdateOptionPackageMgr:addLocalLangPackSetNames(packageNameList)
+	local packSetNameList = self:getLangPackageNameList()
+
+	for _, packSetName in ipairs(packageNameList) do
+		if not tabletool.indexOf(packSetNameList, packSetName) then
+			packSetName = HotUpdateOptionPackageMgr.SaveTypeReplaceDic[packSetName] or packSetName
+
+			table.insert(packSetNameList, packSetName)
+		end
+	end
+
+	self:saveLangPackageNameList(packSetNameList)
 end
 
 function HotUpdateOptionPackageMgr:getPackageNameList()
@@ -102,6 +182,55 @@ function HotUpdateOptionPackageMgr:savePackageNameList(packageNameList)
 
 	UnityEngine.PlayerPrefs.SetString(OptionPackageNamesKey, str)
 	UnityEngine.PlayerPrefs.Save()
+end
+
+function HotUpdateOptionPackageMgr:addLocalPackSetName(packSetName)
+	packSetName = HotUpdateOptionPackageMgr.SaveTypeReplaceDic[packSetName] or packSetName
+
+	local supportLangList = HotUpdateVoiceMgr.instance:getSupportVoiceLangs()
+
+	if tabletool.indexOf(supportLangList, packSetName) then
+		self:addLocalLangPackSetName(packSetName)
+	else
+		local packSetNameList = self:getPackageNameList()
+
+		if not tabletool.indexOf(packSetNameList, packSetName) then
+			table.insert(packSetNameList, packSetName)
+			self:savePackageNameList(packSetNameList)
+		end
+	end
+end
+
+function HotUpdateOptionPackageMgr:delLocalPackSetName(packSetName)
+	packSetName = HotUpdateOptionPackageMgr.SaveTypeReplaceDic[packSetName] or packSetName
+
+	local supportLangList = HotUpdateVoiceMgr.instance:getSupportVoiceLangs()
+
+	if tabletool.indexOf(supportLangList, packSetName) then
+		local packSetNameList = self:getLangPackageNameList()
+
+		tabletool.removeValue(packSetNameList, packSetName)
+		self:saveLangPackageNameList(packSetNameList)
+	else
+		local packSetNameList = self:getPackageNameList()
+
+		tabletool.removeValue(packSetNameList, packSetName)
+		self:savePackageNameList(packSetNameList)
+	end
+end
+
+function HotUpdateOptionPackageMgr:addLocalPackSetNames(packageNameList)
+	local packSetNameList = self:getPackageNameList()
+
+	for _, packSetName in ipairs(packageNameList) do
+		if not tabletool.indexOf(packSetNameList, packSetName) then
+			packSetName = HotUpdateOptionPackageMgr.SaveTypeReplaceDic[packSetName] or packSetName
+
+			table.insert(packSetNameList, packSetName)
+		end
+	end
+
+	self:savePackageNameList(packSetNameList)
 end
 
 function HotUpdateOptionPackageMgr:showDownload(onFinish, finishObj, adppter)

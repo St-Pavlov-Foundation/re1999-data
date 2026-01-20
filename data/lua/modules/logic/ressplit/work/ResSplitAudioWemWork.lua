@@ -72,10 +72,10 @@ function ResSplitAudioWemWork:onStart(context)
 	for _, itemList in pairs(innerBGM) do
 		for _, item in pairs(itemList) do
 			if item then
-				local eventKey = item.bankName .. "#" .. item.eventName
+				local bankKey = item.bankName .. "#" .. item.eventName
 
-				if self.bankEvent2wenDic[eventKey] then
-					for n, fileId in pairs(self.bankEvent2wenDic[eventKey]) do
+				if self.bank2wenDic[item.bankName] then
+					for n, fileId in pairs(self.bank2wenDic[item.bankName]) do
 						if excludeWenDic[fileId] == nil then
 							ResSplitModel.instance:setExclude(ResSplitEnum.InnerAudioWem, fileId, defaultBGMDic[item.id] ~= true)
 						end
@@ -120,14 +120,10 @@ function ResSplitAudioWemWork:_dealSingleSoundBank(soundBank)
 	local bankName = soundBank.ShortName
 	local path = soundBank.Path
 
-	if soundBank._attr.Language == "SFX" and soundBank.IncludedEvents then
-		for i, event in pairs(soundBank.IncludedEvents.Event) do
-			local eventName = event._attr.Name
-
-			if event.ReferencedStreamedFiles then
-				for n, file in pairs(event.ReferencedStreamedFiles.File) do
-					self:_addWenInfo(bankName, eventName, file._attr.Id)
-				end
+	if soundBank._attr.Language == "SFX" and soundBank.Media then
+		for i, mediaFile in pairs(soundBank.Media.File) do
+			if mediaFile.Path then
+				self:_addWenInfo(bankName, "", mediaFile.Path)
 			end
 		end
 	end

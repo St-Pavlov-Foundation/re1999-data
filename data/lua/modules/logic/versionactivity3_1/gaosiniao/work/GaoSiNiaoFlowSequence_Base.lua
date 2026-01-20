@@ -14,7 +14,7 @@ function GaoSiNiaoFlowSequence_Base:onDestroyView()
 end
 
 function GaoSiNiaoFlowSequence_Base:addWork(work)
-	if not work then
+	if not work or not self._workList then
 		return nil
 	end
 
@@ -22,6 +22,13 @@ function GaoSiNiaoFlowSequence_Base:addWork(work)
 	work:setRootInternal(self)
 
 	return work
+end
+
+function GaoSiNiaoFlowSequence_Base:onDestroyInternal(...)
+	GaoSiNiaoFlowSequence_Base.super.onDestroyInternal(self, ...)
+
+	self._workList = {}
+	self._curIndex = 0
 end
 
 function GaoSiNiaoFlowSequence_Base:insertWork(work)
@@ -59,6 +66,29 @@ end
 
 function GaoSiNiaoFlowSequence_Base:onStart()
 	return
+end
+
+function GaoSiNiaoFlowSequence_Base:beforeClearWork()
+	self._workList = {}
+	self._curIndex = 0
+end
+
+function GaoSiNiaoFlowSequence_Base:isDoneOrIdle()
+	if not self._workList then
+		return true
+	end
+
+	if #self._workList == 0 then
+		return true
+	end
+
+	local work = self:curWork()
+
+	if not work then
+		return true
+	end
+
+	return work.status == WorkStatus.Done
 end
 
 return GaoSiNiaoFlowSequence_Base

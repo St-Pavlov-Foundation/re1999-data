@@ -488,7 +488,7 @@ function HotUpdateMgr:_onHotUpdateDownloadFail(errorCode, errorMsg)
 
 	self:inverseUseBackup()
 	require("tolua.reflection")
-	tolua.loadassembly("Assembly-CSharp")
+	tolua.loadassembly("SL_AS")
 
 	local type_HotUpdate = typeof(SLFramework.GameUpdate.HotUpdate)
 	local field_useReserveDomain = tolua.getfield(type_HotUpdate, "_useReserveDomain", 36)
@@ -669,7 +669,7 @@ function HotUpdateMgr:_showConfirmUpdateSize(hotupdateAllSize, hotupdateCurSize,
 	local hotupdateNeedDownloadSize = hotupdateAllSize - hotupdateCurSize
 	local totalNeedDownloadSize = voiceNeedDownloadSize + hotupdateNeedDownloadSize + optionPackageNeedDownloadSize
 
-	if not BootVoiceView.instance:isFirstDownloadDone() and not VersionValidator.instance:isInReviewing() then
+	if not BootVoiceView.instance:isFirstDownloadDone() and not VersionValidator.instance:isInReviewing() and ProjBooter.instance:isUseBigZip() then
 		local choices = BootVoiceView.instance:getDownloadChoices()
 
 		if totalNeedDownloadSize > 0 or #choices > 0 and voiceTotalSize == 0 then

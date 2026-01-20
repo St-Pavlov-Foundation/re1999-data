@@ -28,11 +28,15 @@ function Rouge2_BackpackHelper.itemId2BagType(itemId)
 	if itemId >= 100000 and itemId <= 199999 then
 		return Rouge2_Enum.BagType.Relics
 	elseif itemId >= 200000 and itemId <= 299999 then
-		if itemId <= 249999 then
-			return Rouge2_Enum.BagType.Buff
-		end
+		local buffCo = Rouge2_CollectionConfig.instance:getBuffConfig(itemId)
 
-		return Rouge2_Enum.BagType.AttrBuff
+		if buffCo then
+			if buffCo.isAttrBuff == 1 then
+				return Rouge2_Enum.BagType.AttrBuff
+			else
+				return Rouge2_Enum.BagType.Buff
+			end
+		end
 	elseif itemId >= 300000 and itemId <= 399999 then
 		return Rouge2_Enum.BagType.ActiveSkill
 	else
@@ -96,7 +100,7 @@ function Rouge2_BackpackHelper.itemType2ShowViewName(itemType)
 		return ViewName.Rouge2_RelicsDropView
 	elseif itemType == Rouge2_Enum.BagType.ActiveSkill then
 		return ViewName.Rouge2_ActiveSkillDropView
-	elseif itemType == Rouge2_MapEnum.DropType.AttrBuff then
+	elseif itemType == Rouge2_MapEnum.BagType.AttrBuff then
 		return ViewName.Rouge2_AttrBuffDropView
 	else
 		logError(string.format("肉鸽未定义构筑物显示类型 itemType = " .. itemType))

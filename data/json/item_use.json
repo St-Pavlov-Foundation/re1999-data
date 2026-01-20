@@ -148,5 +148,29 @@
     "name": "5星6星限定心相自选",
     "useType": 2,
     "use_max": 1
+  },
+  {
+    "id": 79,
+    "name": "狂想塑造自选箱",
+    "useType": 2,
+    "use_max": 1
+  },
+  {
+    "id": 77,
+    "name": "狂想塑造自选箱钥匙",
+    "useType": 1,
+    "use_max": 0
+  },
+  {
+    "id": 78,
+    "name": "塑造溢出特殊代币",
+    "useType": 1,
+    "use_max": 0
+  },
+  {
+    "id": 81,
+    "name": "狂想必中道具(兔之环)",
+    "useType": 2,
+    "use_max": 1
   }
 ]

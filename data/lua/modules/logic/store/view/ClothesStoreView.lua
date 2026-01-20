@@ -231,6 +231,12 @@ function ClothesStoreView:_onClickBtnBuy()
 end
 
 function ClothesStoreView:_startDefaultShowView()
+	if ViewMgr.instance:isOpen(ViewName.CharacterSkinGainView) then
+		self:_showHideCallback()
+
+		return
+	end
+
 	local data = {}
 
 	data.contentBg = self._goBgRoot
@@ -350,6 +356,9 @@ function ClothesStoreView:_onRefreshRedDot()
 end
 
 function ClothesStoreView:onOpen()
+	PostProcessingMgr.instance:setCustomOpenBloom(true)
+	PostProcessingMgr.instance:forceRefreshCloseBlur()
+
 	self.isFirstOpen = true
 
 	self._viewAnim:Play("open", 0, 0)
@@ -456,6 +465,8 @@ function ClothesStoreView:_updateInfo()
 end
 
 function ClothesStoreView:onClose()
+	PostProcessingMgr.instance:setCustomOpenBloom(false)
+	PostProcessingMgr.instance:forceRefreshCloseBlur()
 	self:removeEventCb(StoreController.instance, StoreEvent.GoodsModelChanged, self._updateInfo, self)
 	self:removeEventCb(StoreController.instance, StoreEvent.StoreInfoChanged, self._onStoreInfoChanged, self)
 	self:removeEventCb(RedDotController.instance, RedDotEvent.RefreshClientCharacterDot, self._onRefreshRedDot, self)
@@ -517,6 +528,7 @@ function ClothesStoreView:_onRefreshSkinPreview()
 		self.previewComp = MonoHelper.addNoUpdateLuaComOnceToGo(self._goCharacter, ClothesStorePreviewSkinComp)
 
 		self.previewComp:setSmallSpineGO(self._gosmallspine)
+		self.previewComp:setBloomView(self.viewName)
 	end
 
 	self.previewComp:setGoods(self._goodsMo)
@@ -586,6 +598,8 @@ function ClothesStoreView:refreshSkinInfo()
 	gohelper.setActive(self.btnPlay, isShowVideoBtn)
 
 	if self._adjust or not self:_isCheckCanPlayVideo() then
+		StoreController.instance:dispatchEvent(StoreEvent.OnCheckHideSkinVideo, goodsMo.goodsId)
+
 		return
 	end
 

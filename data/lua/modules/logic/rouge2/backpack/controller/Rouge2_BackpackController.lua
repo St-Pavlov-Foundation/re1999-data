@@ -166,10 +166,12 @@ end
 function Rouge2_BackpackController:buildItemReddot()
 	local redDotInfo = {}
 	local hasNewItem = false
+	local isAnyHoleUnlock = self:isAnyActiveSkillHoleUnlock()
 
 	for _, bagType in pairs(Rouge2_Enum.BagType) do
 		local itemList = Rouge2_BackpackModel.instance:getItemList(bagType)
 		local reddotId = Rouge2_Enum.ItemType2Reddot[bagType]
+		local isActiveSkill = bagType == Rouge2_Enum.BagType.ActiveSkill
 		local isBagHasNew = false
 
 		if reddotId then
@@ -186,8 +188,15 @@ function Rouge2_BackpackController:buildItemReddot()
 					table.insert(redDotInfo, info)
 
 					if value == Rouge2_Enum.ItemStatus.New then
-						hasNewItem = true
-						isBagHasNew = true
+						if isActiveSkill then
+							if isAnyHoleUnlock then
+								hasNewItem = true
+								isBagHasNew = true
+							end
+						else
+							hasNewItem = true
+							isBagHasNew = true
+						end
 					end
 				end
 			end
@@ -480,6 +489,18 @@ function Rouge2_BackpackController:getNewUnlockTalentId()
 			end
 		end
 	end
+end
+
+function Rouge2_BackpackController:isAnyActiveSkillHoleUnlock()
+	for i = 1, Rouge2_Enum.MaxActiveSkillNum do
+		local isUnlock = Rouge2_BackpackModel.instance:isActiveSkillHoleUnlock(i)
+
+		if isUnlock then
+			return true
+		end
+	end
+
+	return false
 end
 
 function Rouge2_BackpackController:checkCurTeamSystemId()

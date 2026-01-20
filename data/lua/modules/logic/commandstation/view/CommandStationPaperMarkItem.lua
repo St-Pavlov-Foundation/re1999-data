@@ -29,7 +29,7 @@ function CommandStationPaperMarkItem:_onLoadedFinish()
 	local go = self._loader:getInstGO()
 
 	self._anim = gohelper.findChildAnim(go, "")
-	self._anim.keepAnimatorControllerStateOnDisable = true
+	self._anim.keepAnimatorStateOnDisable = true
 
 	self:playAnim(self._animType)
 end

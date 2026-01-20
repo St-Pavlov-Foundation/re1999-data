@@ -21,7 +21,7 @@ end
 function Season166HeroGroupEditItem:_initObj(go)
 	self._animator = self._heroItem.go:GetComponent(typeof(UnityEngine.Animator))
 	self._itemAnim = go:GetComponent(typeof(UnityEngine.Animator))
-	self._itemAnim.keepAnimatorControllerStateOnDisable = true
+	self._itemAnim.keepAnimatorStateOnDisable = true
 	self._itemAnim.speed = 0
 	self._isFirstEnter = true
 	self._isSelect = false

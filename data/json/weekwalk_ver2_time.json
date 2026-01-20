@@ -86,5 +86,21 @@
     "ruleIcon": "shen_guize_18",
     "ruleFront": "1#117333505",
     "ruleRear": "1#117333506"
+  },
+  {
+    "timeId": 12,
+    "issueId": 12,
+    "optionalSkills": "2038#2001#2016#2014#2033#2003",
+    "ruleIcon": "shen_guize_18",
+    "ruleFront": "1#117341005",
+    "ruleRear": "1#117341006"
+  },
+  {
+    "timeId": 13,
+    "issueId": 13,
+    "optionalSkills": "2039#2032#2010#2033#2015#2026",
+    "ruleIcon": "shen_guize_18",
+    "ruleFront": "1#117342005",
+    "ruleRear": "1#117342006"
   }
 ]

@@ -14,12 +14,12 @@ function RoomSceneDirector:onSceneStart(sceneId, levelId)
 	local quality = GameGlobalMgr.instance:getScreenState():getLocalQuality()
 
 	if quality == ModuleEnum.Performance.Low then
-		UnityEngine.QualitySettings.masterTextureLimit = 1
+		UnityEngine.QualitySettings.globalTextureMipmapLimit = 1
 	else
-		UnityEngine.QualitySettings.masterTextureLimit = 0
+		UnityEngine.QualitySettings.globalTextureMipmapLimit = 0
 	end
 
-	RoomHelper.logElapse("RoomSceneDirector:set masterTextureLimit")
+	RoomHelper.logElapse("RoomSceneDirector:set globalTextureMipmapLimit")
 	RoomPreloadMgr.instance:dispose()
 
 	self._scene = self:getCurScene()

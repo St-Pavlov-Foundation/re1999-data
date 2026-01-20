@@ -106,6 +106,10 @@ function SettingsVoicePackageListItem:onUpdateMO(mo)
 end
 
 function SettingsVoicePackageListItem:_getLangCurVersion(langShortcut, defaultShortcut)
+	if not ProjBooter.instance:isUseBigZip() then
+		return ""
+	end
+
 	if HotUpdateVoiceMgr.IsGuoFu and langShortcut == defaultShortcut then
 		langShortcut = HotUpdateVoiceMgr.LangZh
 	end
@@ -124,7 +128,7 @@ end
 function SettingsVoicePackageListItem:_updateStatus(curSize, allSize)
 	local status = self._mo:getStatus()
 
-	if status == SettingsVoicePackageController.NotDownload or status == SettingsVoicePackageController.NeedUpdate then
+	if self._mo:needDownload() then
 		local foramtStr = status == SettingsVoicePackageController.NeedUpdate and luaLang("voice_package_update_5") or "(%s)"
 		local leftSize, size, units = self._mo:getLeftSizeMBorGB()
 		local sizeStr = string.format("%.2f%s", leftSize, units)

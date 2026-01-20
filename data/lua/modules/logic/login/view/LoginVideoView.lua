@@ -30,7 +30,7 @@ function LoginVideoView:onOpenFinish()
 	end
 
 	if self._isShowVideo and not self._videoPlayer then
-		self._videoPlayer, self._displayUGUI, self._videoGo = AvProMgr.instance:getVideoPlayer(self.viewGO, "voideplayer")
+		self._videoPlayer, self._videoGo = VideoPlayerMgr.instance:createGoAndVideoPlayer(self.viewGO, "LoginVideoPlayer")
 
 		gohelper.setSiblingAfter(self._videoGo, self._goBgRoot)
 		self:play()
@@ -46,8 +46,7 @@ end
 
 function LoginVideoView:onDestroyView()
 	if self._videoPlayer then
-		self._videoPlayer:Stop()
-		self._videoPlayer:Clear()
+		self._videoPlayer:stop()
 
 		self._videoPlayer = nil
 		self._videoGo = nil
@@ -57,7 +56,7 @@ end
 function LoginVideoView:play()
 	local videlPath = CommonConfig.instance:getConstStr(ConstEnum.LoginViewVideoPathId)
 
-	self:_playByPath(langVideoUrl(videlPath))
+	self:_playByPath(videlPath)
 end
 
 function LoginVideoView:_playByPath(videoPath)
@@ -68,12 +67,12 @@ function LoginVideoView:_playByPath(videoPath)
 	if self._videoPlayer then
 		self._curPlayVideoPath = videoPath
 
-		self._videoPlayer:Play(self._displayUGUI, videoPath, true, self._videoStatusUpdate, self)
+		self._videoPlayer:play(videoPath, true, self._videoStatusUpdate, self)
 	end
 end
 
 function LoginVideoView:_videoStatusUpdate(path, status, errorCode)
-	if (status == AvProEnum.PlayerStatus.Error or errorCode ~= AvProEnum.ErrorCode.None) and not gohelper.isNil(self._videoGo) then
+	if status == VideoEnum.PlayerStatus.Error and not gohelper.isNil(self._videoGo) then
 		gohelper.setActive(self._videoGo, false)
 	end
 end

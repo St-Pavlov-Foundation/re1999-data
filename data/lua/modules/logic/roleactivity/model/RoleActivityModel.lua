@@ -126,6 +126,22 @@ function RoleActivityModel:getEnterFightIndex()
 	return fightIndex
 end
 
+function RoleActivityModel:currentEpisodeIdToPlay(actId)
+	local episodeDic = self.lvlDataDic[actId]
+
+	if not episodeDic then
+		return 0
+	end
+
+	for _, roleActivityLevelMo in pairs(episodeDic) do
+		if roleActivityLevelMo.isUnlock and not roleActivityLevelMo:hasPassLevelAndStory() then
+			return roleActivityLevelMo:episodeId()
+		end
+	end
+
+	return 0
+end
+
 RoleActivityModel.instance = RoleActivityModel.New()
 
 return RoleActivityModel

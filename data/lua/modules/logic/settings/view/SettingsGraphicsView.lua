@@ -26,6 +26,9 @@ function SettingsGraphicsView:onInitView()
 	self._btnvideo = gohelper.findChildButtonWithAudio(self.viewGO, "graphicsScroll/Viewport/Content/videomode/switch/btn")
 	self._govideoon = gohelper.findChild(self.viewGO, "graphicsScroll/Viewport/Content/videomode/switch/btn/on")
 	self._govideooff = gohelper.findChild(self.viewGO, "graphicsScroll/Viewport/Content/videomode/switch/btn/off")
+	self._videoModeDrop = gohelper.findChildDropdown(self.viewGO, "graphicsScroll/Viewport/Content/videomode/dropvideoswitch")
+	self._videoModeDropClick = gohelper.getClick(self._videoModeDrop.gameObject)
+	self._videoModeTemplate = gohelper.findChild(self.viewGO, "graphicsScroll/Viewport/Content/videomode/dropvideoswitch/Template")
 	self._videoHD = gohelper.findChild(self.viewGO, "graphicsScroll/Viewport/Content/strength")
 	self._btnHdMode = gohelper.findChildButtonWithAudio(self.viewGO, "graphicsScroll/Viewport/Content/strength/switch/btn")
 	self._goHdModeOn = gohelper.findChild(self.viewGO, "graphicsScroll/Viewport/Content/strength/switch/btn/on")
@@ -83,13 +86,32 @@ function SettingsGraphicsView:addEvents()
 		self:_refreshTargetFrameRateUI()
 		AudioMgr.instance:trigger(AudioEnum.UI.play_ui_set_click)
 	end, self)
+	self._videoModeDrop:AddOnValueChanged(self._onVideoModeValueChanged, self)
+	self._videoModeDropClick:AddClickListener(function()
+		self:_refreshVideoUI()
+		AudioMgr.instance:trigger(AudioEnum.UI.play_ui_set_click)
+	end, self)
 
-	if GameChannelConfig.isXfsdk() and SDKNativeUtil.isShowShareButton() then
+	if not GameChannelConfig.isSlsdk() and SDKNativeUtil.isShowShareButton() then
 		self._btnshot:AddClickListener(self._btnShotOnClick, self)
 	end
 
 	SettingsController.instance:registerCallback(SettingsEvent.OnChangeLangTxt, self._onChangeLangTxt, self)
 	SettingsController.instance:registerCallback(SettingsEvent.OnChangeHDType, self._refreshVideoUI, self)
+end
+
+function SettingsGraphicsView:_onVideoModeValueChanged(index)
+	if index == 0 then
+		SettingsModel.instance:setVideoCompatible(false)
+		SettingsModel.instance:setUseUnityVideo(false)
+	elseif index == 1 then
+		SettingsModel.instance:setVideoCompatible(true)
+		SettingsModel.instance:setUseUnityVideo(false)
+	elseif index == 2 then
+		SettingsModel.instance:setUseUnityVideo(true)
+	end
+
+	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_set_select)
 end
 
 function SettingsGraphicsView:removeEvents()
@@ -109,8 +131,10 @@ function SettingsGraphicsView:removeEvents()
 
 	self._framerateDrop:RemoveOnValueChanged()
 	self._framerateDropClick:RemoveClickListener()
+	self._videoModeDrop:RemoveOnValueChanged()
+	self._videoModeDropClick:RemoveClickListener()
 
-	if GameChannelConfig.isXfsdk() and SDKNativeUtil.isShowShareButton() then
+	if not GameChannelConfig.isSlsdk() and SDKNativeUtil.isShowShareButton() then
 		self._btnshot:RemoveClickListener()
 	end
 
@@ -350,6 +374,51 @@ function SettingsGraphicsView:_refreshVideoUI()
 	gohelper.setActive(self._govideooff, not compatible)
 	gohelper.setActive(self._goHdModeOn, hdMode)
 	gohelper.setActive(self._goHdModeOff, not hdMode)
+
+	local list = {
+		luaLang("SettingsGraphicsView_videoMode0"),
+		luaLang("SettingsGraphicsView_videoMode1"),
+		luaLang("SettingsGraphicsView_videoMode2")
+	}
+	local index = 0
+
+	if SettingsModel.instance:getUseUnityVideo() then
+		index = 2
+	elseif SettingsModel.instance:getVideoCompatible() then
+		index = 1
+	end
+
+	self._videoModeDrop:ClearOptions()
+	self._videoModeDrop:AddOptions(list)
+
+	local contentHeight = #list * 73
+
+	recthelper.setHeight(self._videoModeTemplate.transform, contentHeight)
+	self._videoModeDrop:SetValue(index)
+
+	self._videoModeDropIndex = self._videoModeDrop:GetValue()
+
+	if self._videoModeDropIndex == 0 then
+		SettingsModel.instance:setModelTargetFrameRate(0)
+	end
+
+	local list = gohelper.findChild(self._videoModeDrop.gameObject, "Dropdown List")
+
+	if list then
+		local content = gohelper.findChild(list, "Viewport/Content")
+
+		if content then
+			local item = content.transform:GetChild(self._videoModeDropIndex + 1)
+
+			if item then
+				local bg = gohelper.findChild(item.gameObject, "BG")
+
+				if bg then
+					gohelper.setActive(bg, true)
+				end
+			end
+		end
+	end
 end
 
 function SettingsGraphicsView:_refreshVerticalUI()

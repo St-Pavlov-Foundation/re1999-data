@@ -44,12 +44,6 @@ function PCInputController:getIsUse()
 	return false
 end
 
-BootNativeUtil.getAppVersion()
-
-function BootNativeUtil.isMuMu()
-	return false
-end
-
 function PCInputController:Switch()
 	self.init = self:getIsUse()
 end

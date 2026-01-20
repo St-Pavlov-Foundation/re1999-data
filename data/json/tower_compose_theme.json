@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "modNum": "1#3|2#5|3#1",
+    "modNum": "1#4|2#5|3#1",
     "monsterGroupId": 9001002,
     "spineOffset": "0#-250#1",
     "modOffset": " 0#0#1|-200#0#1|200#0#1|0#300#1",
@@ -12,7 +12,8 @@
     "themeIcon": "singlebg/tower2_singlebg/difficulty/tower_environment_pic1.png",
     "themeDesc": "<color=#d05b4c>[敌方]</color>回合结束时，固定获得显梦点数，显梦点数达到<color=#C66030>3</color>则开启显梦\n显梦下：角色的行动点<color=#C66030>+1</color>，但角色主动使用<color=#C66030>1</color>次咒语后将会获得<color=#C66030>6</color>层【脱力】，持续<color=#C66030>3</color>回合（不可驱散）\n脱力积累到一定层数后，会进入【访梦】状态",
     "pointIcon": "hj_1_1",
-    "isOnline": 1
+    "isOnline": 1,
+    "career": "1#1"
   },
   {
     "id": 2,
@@ -22,11 +23,12 @@
     "modOffset": " 0#0#1|-200#0#1|200#0#1|0#300#1",
     "orderLayer": "2|3|4|1",
     "initEnv": 11601,
-    "name": "臆想旋涡2",
+    "name": "§臆想旋涡2",
     "nameEn": "Tides of Thought",
     "themeIcon": "singlebg/tower2_singlebg/difficulty/tower_environment_pic1.png",
     "themeDesc": "<color=#d05b4c>[敌方]</color>回合结束时，固定获得显梦点数，显梦点数达到<color=#C66030>3</color>则开启显梦\n显梦下：角色的行动点<color=#C66030>+1</color>，但角色主动使用<color=#C66030>1</color>次咒语后将会获得<color=#C66030>6</color>层【脱力】，持续<color=#C66030>3</color>回合（不可驱散）\n脱力积累到一定层数后，会进入【访梦】状态",
     "pointIcon": "hj_1_1",
-    "isOnline": 0
+    "isOnline": 0,
+    "career": "1#1"
   }
 ]

@@ -289,6 +289,8 @@ function FightModel:addSpeed()
 		self._userSpeed = self._userSpeed + 1
 	end
 
+	self:updateRTPCSpeed()
+
 	return self._userSpeed
 end
 

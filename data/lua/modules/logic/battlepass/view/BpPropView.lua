@@ -27,9 +27,9 @@ end
 function BpPropView:_editableInitView()
 	self._contentGrid = self._gocontent:GetComponent(typeof(UnityEngine.UI.GridLayoutGroup))
 	self._titleAni = self.viewGO:GetComponent(typeof(UnityEngine.Animation))
-	self._videoPlayer, self._displauUGUI = AvProMgr.instance:getVideoPlayer(self._govideo)
+	self._videoPlayer = VideoPlayerMgr.instance:createGoAndVideoPlayer(self._govideo)
 
-	self._videoPlayer:Play(self._displauUGUI, "videos/commonprop.mp4", true, nil, nil)
+	self._videoPlayer:play("commonprop", true, nil, nil)
 end
 
 function BpPropView:_onClickBG()
@@ -92,8 +92,8 @@ end
 
 function BpPropView:onDestroyView()
 	if self._videoPlayer then
-		self._videoPlayer:Stop()
-		self._videoPlayer:Clear()
+		self._videoPlayer:stop()
+		self._videoPlayer:clear()
 
 		self._videoPlayer = nil
 	end

@@ -7,8 +7,6 @@ local VideoPrefabPath = "ui/viewres/fight/fightvideo.prefab"
 
 function FightVideoMgr:ctor()
 	self._avProVideoPlayer = nil
-	self._displauUGUI = nil
-	self._mediaPlayer = nil
 	self._videoName = nil
 	self._isPlaying = false
 	self._callback = nil
@@ -25,15 +23,11 @@ function FightVideoMgr:dispose()
 end
 
 function FightVideoMgr:_checkVideCopatible()
-	if self._videoCopatible ~= SettingsModel.instance:getVideoCompatible() then
+	if self._videoCopatible ~= SettingsModel.instance:getVideoCompatible() or self._unityplayer ~= SettingsModel.instance:getUseUnityVideo() then
 		self:stop()
 
-		if self._avProVideoPlayer then
-			self._avProVideoPlayer:Clear()
-
-			self._avProVideoPlayer = nil
-			self._mediaPlayer = nil
-			self._displauUGUI = nil
+		if self._VideoPlayer then
+			self._VideoPlayer = nil
 		end
 
 		if self._prefabLoader then
@@ -70,6 +64,14 @@ function FightVideoMgr:play(videoPath, callback, callbackObj)
 		self:_playVideo()
 	else
 		self._videoCopatible = SettingsModel.instance:getVideoCompatible()
+		self._unityplayer = SettingsModel.instance:getUseUnityVideo()
+
+		if self._unityplayer or not self._videoCopatible then
+			self:createVideoPlayer()
+
+			return
+		end
+
 		self._prefabLoader = MultiAbLoader.New()
 
 		self._prefabLoader:addPath(AvProMgr.instance:getFightUrl())
@@ -86,14 +88,19 @@ function FightVideoMgr:_onVideoPrefabLoaded(loader)
 
 	local videoGO = gohelper.findChild(self._videoRootGO, "FightVideo")
 
-	self._displauUGUI = gohelper.onceAddComponent(videoGO, typeof(RenderHeads.Media.AVProVideo.DisplayUGUI))
-	self._displauUGUI.ScaleMode = UnityEngine.ScaleMode.ScaleAndCrop
-	self._avProVideoPlayer = gohelper.onceAddComponent(videoGO, typeof(ZProj.AvProUGUIPlayer))
+	self._VideoPlayer = VideoPlayerMgr.instance:createVideoPlayer(videoGO)
 
-	self._avProVideoPlayer:AddDisplayUGUI(self._displauUGUI)
+	self._VideoPlayer:setScaleMode(UnityEngine.ScaleMode.ScaleAndCrop)
+	self:_playVideo()
+end
 
-	self._mediaPlayer = gohelper.onceAddComponent(videoGO, typeof(RenderHeads.Media.AVProVideo.MediaPlayer))
+function FightVideoMgr:createVideoPlayer()
+	local uiLayer = ViewMgr.instance:getUILayer(UILayerName.PopUp)
 
+	self._videoRootGO = gohelper.create2d(uiLayer, "FightVideo")
+	self._VideoPlayer = VideoPlayerMgr.instance:createVideoPlayer(self._videoRootGO)
+
+	self._VideoPlayer:setScaleMode(UnityEngine.ScaleMode.ScaleAndCrop)
 	self:_playVideo()
 end
 
@@ -102,15 +109,11 @@ function FightVideoMgr:_playVideo()
 
 	self._isPlaying = true
 
-	if self._avProVideoPlayer then
+	if self._VideoPlayer then
 		gohelper.setActive(self._videoRootGO, true)
-
-		local videoPath = langVideoUrl(self._videoName)
-
-		self._avProVideoPlayer:LoadMedia(videoPath)
-		self._avProVideoPlayer:Play(self._displauUGUI, false)
-
-		self._mediaPlayer.PlaybackRate = FightModel.instance:getSpeed() * Time.timeScale
+		self._VideoPlayer:loadMedia(self._videoName)
+		self._VideoPlayer:play(self._videoName, false)
+		self._VideoPlayer:setPlaybackSpeed(FightModel.instance:getSpeed() * Time.timeScale)
 
 		if self._pause then
 			self:pause()
@@ -128,7 +131,7 @@ function FightVideoMgr:stop()
 end
 
 function FightVideoMgr:pause()
-	if self._avProVideoPlayer then
+	if self._VideoPlayer then
 		gohelper.setActive(self._videoRootGO, false)
 	else
 		self._pause = true
@@ -143,16 +146,15 @@ function FightVideoMgr:continue(resName)
 	if self._videoName == resName and self._isPlaying then
 		self._pause = false
 
-		if self._avProVideoPlayer then
+		if self._VideoPlayer then
 			gohelper.setActive(self._videoRootGO, true)
 		end
 	end
 end
 
 function FightVideoMgr:_stopVideo()
-	if self._avProVideoPlayer then
-		self._avProVideoPlayer:Stop()
-		self._mediaPlayer:CloseMedia()
+	if self._VideoPlayer then
+		self._VideoPlayer:stop()
 		gohelper.setActive(self._videoRootGO, false)
 	end
 end

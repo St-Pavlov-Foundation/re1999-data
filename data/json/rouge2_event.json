@@ -891,13 +891,13 @@
     "id": 9040001,
     "type": 4,
     "image": "rouge_function_2",
-    "name": "慌不择路",
+    "name": "险象环生",
     "nameEn": "Treasure Hunt",
     "desc": "于你而言，闭塞的地形绝非命运的馈赠——但对于潜藏其中的敌人而言，则恰好相反。",
     "mainDesc": "",
-    "eventParam": "5",
+    "eventParam": "3",
     "advantageAttribute": "",
-    "isHighQuality": 0
+    "isHighQuality": 1
   },
   {
     "id": 9050001,

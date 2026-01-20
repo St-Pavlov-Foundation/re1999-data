@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "desc": "使用能力后，可直接招募视野范围内漫游助理，并吸引敌人向自身移动，持续1小时。",
+    "resource": "survival_map_skillicon_1",
+    "times": 5,
+    "addTalentIds": "",
+    "effect1": "noiseAttract#0#2#6",
+    "effect2": "",
+    "effect3": ""
+  },
+  {
+    "id": 2,
+    "desc": "使用能力后，在自身▩1%s格范围内可无视等级差距，直接消灭▩2%s格范围内的所有敌人。",
+    "resource": "survival_map_skillicon_2",
+    "times": 3,
+    "addTalentIds": "",
+    "effect1": "killMonster#3#1",
+    "effect2": "",
+    "effect3": ""
+  },
+  {
+    "id": 3,
+    "desc": "使用能力后，可乘坐破坏导弹，向▩1%s范围内指定位置发射，摧毁沿途所有障碍。",
+    "resource": "survival_map_skillicon_3",
+    "times": 3,
+    "addTalentIds": "",
+    "effect1": "destroyBlock#3",
+    "effect2": "",
+    "effect3": ""
+  },
+  {
+    "id": 4,
+    "desc": "直接击杀▩1%s格范围内的指定怪物",
+    "resource": "survival_map_skillicon_5",
+    "times": 3,
+    "addTalentIds": "",
+    "effect1": "killMonster#3#1",
+    "effect2": "",
+    "effect3": ""
+  },
+  {
+    "id": 5,
+    "desc": "直接击杀▩1%s格范围内的指定怪物",
+    "resource": "survival_map_skillicon_6",
+    "times": 3,
+    "addTalentIds": "",
+    "effect1": "killMonster#3#1",
+    "effect2": "",
+    "effect3": ""
+  },
+  {
+    "id": 6,
+    "desc": "使用能力后，根据自身▩1%s范围内搜刮事件数量，发现1个独特的搜刮事件（品质受范围内搜刮事件数量影响）",
+    "resource": "survival_map_skillicon_4",
+    "times": 3,
+    "addTalentIds": "",
+    "effect1": "findDrop#0#3#30339200",
+    "effect2": "",
+    "effect3": ""
+  }
+]

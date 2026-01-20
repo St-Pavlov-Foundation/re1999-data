@@ -1,0 +1,32 @@
+[
+  {
+    "itemId": 1001,
+    "point": 1,
+    "name": "音调·宫",
+    "resource": "singlebg_lang/txt_dungeon/getian/rolestory_getian_melody_1.png"
+  },
+  {
+    "itemId": 1002,
+    "point": 2,
+    "name": "音调·商",
+    "resource": "singlebg_lang/txt_dungeon/getian/rolestory_getian_melody_2.png"
+  },
+  {
+    "itemId": 1003,
+    "point": 3,
+    "name": "音调·角",
+    "resource": "singlebg_lang/txt_dungeon/getian/rolestory_getian_melody_3.png"
+  },
+  {
+    "itemId": 1004,
+    "point": 5,
+    "name": "音调·徵",
+    "resource": "singlebg_lang/txt_dungeon/getian/rolestory_getian_melody_4.png"
+  },
+  {
+    "itemId": 1005,
+    "point": 6,
+    "name": "音调·羽",
+    "resource": "singlebg_lang/txt_dungeon/getian/rolestory_getian_melody_5.png"
+  }
+]

@@ -84,7 +84,9 @@ function SurvivalShopView:onOpen()
 	end
 
 	self.mapId = self.viewParam.mapId
+	self.shopType = self._shopMo.shopType
 
+	SurvivalController.instance:dispatchEvent(SurvivalEvent.GuideShopOpen, self.shopType)
 	self:refreshTitle()
 	gohelper.setActive(self._btnenter, self._shopMo:isPreExploreShop())
 
@@ -292,6 +294,19 @@ function SurvivalShopView:_refreshBagByServer(msg)
 		UIBlockHelper.instance:startBlock("SurvivalShopView._refreshBag", 0.2)
 		TaskDispatcher.runDelay(self._refreshBag, self, 0.2)
 	end
+
+	if self.itemsData then
+		for go in pairs(self._simpleRightList:getAllGos()) do
+			local instGo = gohelper.findChild(go, "inst")
+			local item = MonoHelper.getLuaComFromGo(instGo, SurvivalBagItem)
+			local currencyNum = self._bagMo:getCurrencyNum(1)
+			local shopStyleParam = item.shopStyleParam
+
+			shopStyleParam.currencyNum = currencyNum
+
+			item:setShopStyle(shopStyleParam)
+		end
+	end
 end
 
 function SurvivalShopView:refreshTitle()
@@ -383,11 +398,11 @@ function SurvivalShopView:getShopItems()
 end
 
 function SurvivalShopView:_refreshShopItems()
-	local items = self:getShopItems()
+	self.itemsData = self:getShopItems()
 
-	self._simpleRightList:setList(items)
-	gohelper.setActive(self._gorightscroll, #items > 0)
-	gohelper.setActive(self._gorightempty, #items == 0)
+	self._simpleRightList:setList(self.itemsData)
+	gohelper.setActive(self._gorightscroll, #self.itemsData > 0)
+	gohelper.setActive(self._gorightempty, #self.itemsData == 0)
 end
 
 function SurvivalShopView:_onShopItemUpdate(index, itemMo, uid)
@@ -431,10 +446,6 @@ function SurvivalShopView:_createLeftItem(obj, data, index)
 	item:setClickCallback(self._onLeftItemClick, self)
 	item:setIsSelect(self._curSelectUid and data.uid == self._curSelectUid and self._isSelectLeft)
 
-	local isSetNpcItem = self:isSurvivalShop() and data:isNPCRecommendItem()
-
-	item:setItemSubType_npc(isSetNpcItem)
-
 	local isSetRecommend = self:isShelterShop() and data:isDisasterRecommendItem(self.mapId)
 
 	item:setRecommend(isSetRecommend)
@@ -453,9 +464,12 @@ function SurvivalShopView:_createRightItem(obj, data, index)
 	item:setIsSelect(self._curSelectUid and data.uid == self._curSelectUid and not self._isSelectLeft)
 
 	if self:isShowPrice() then
+		local currencyNum = self._bagMo:getCurrencyNum(1)
+
 		item:setShopStyle({
 			isShow = not data:isEmpty(),
-			price = data:getBuyPrice()
+			price = data:getBuyPrice(),
+			currencyNum = currencyNum
 		})
 	end
 
@@ -528,17 +542,15 @@ function SurvivalShopView:_openCurrencyTips(param)
 end
 
 function SurvivalShopView:createTabListComp()
-	local scrollParam = SurvivalSimpleListParam.New()
+	local scrollParam = SimpleListParam.New()
 
 	scrollParam.cellClass = SurvivalShopTab
 	scrollParam.lineCount = 1
-	scrollParam.cellWidth = 104
-	scrollParam.cellHeight = 84
-	scrollParam.cellSpaceH = 0
 	scrollParam.cellSpaceV = 10
-	self.tabListComp = SurvivalHelper.instance:createLuaSimpleListComp(self.ShopTabScroll, scrollParam, self.ShopTab, self.viewContainer)
+	self.tabListComp = GameFacade.createSimpleListComp(self.ShopTabScroll, scrollParam, self.ShopTab, self.viewContainer)
 
-	self.tabListComp:setSelectCallBack(self.onSelectCallBack, self)
+	self.tabListComp:setOnClickItem(self.onClickTab, self)
+	self.tabListComp:setOnSelectChange(self.onSelectCallBack, self)
 end
 
 function SurvivalShopView:refreshTabListComp()
@@ -556,7 +568,6 @@ function SurvivalShopView:refreshTabListComp()
 			if #items > 0 then
 				local data = {
 					cfg = cfgs[i],
-					onClickFunc = self.onClickTab,
 					context = self
 				}
 
@@ -565,14 +576,14 @@ function SurvivalShopView:refreshTabListComp()
 		end
 	end
 
-	self.tabListComp:setList(self.datas)
+	self.tabListComp:setData(self.datas)
 end
 
 function SurvivalShopView:onClickTab(survivalShopTab)
-	self.tabListComp:setSelect(survivalShopTab.index)
+	self.tabListComp:setSelect(survivalShopTab.itemIndex)
 end
 
-function SurvivalShopView:onSelectCallBack(select)
+function SurvivalShopView:onSelectCallBack(item, selectIndex)
 	if not self._isSelectLeft then
 		self:cancelSelect()
 	end

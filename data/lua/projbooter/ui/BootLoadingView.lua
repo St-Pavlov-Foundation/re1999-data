@@ -113,6 +113,20 @@ function BootLoadingView:reallyFix()
 	HotUpdateMgr.instance:stop()
 	HotUpdateVoiceMgr.instance:stop()
 	SLFramework.GameLuaEventDispatcher.Instance:ClearAllEvent()
+	require("tolua.reflection")
+	tolua.loadassembly("SL_AS")
+
+	local type = tolua.findtype("SLFramework.GameUpdate.MassHotUpdate")
+	local baseType = type.BaseType
+	local instance = tolua.getproperty(baseType, "Instance")
+	local method = tolua.gettypemethod(type, "_Stop", 36)
+
+	method:Call(instance:Get(nil, nil))
+
+	if BootNativeUtil.isIOS() then
+		SDKMgr.instance:stopAllDownload()
+	end
+
 	UnityEngine.PlayerPrefs.DeleteAll()
 	SLFramework.GameUpdate.HotUpdateInfoMgr.RemoveLocalVersionFile()
 	SLFramework.GameUpdate.OptionalUpdate.Instance:RemoveLocalVersionFile()
@@ -257,8 +271,8 @@ end
 function BootLoadingView:_deleteAllCache()
 	SLFramework.GameUpdate.HotUpdateInfoMgr.RemoveLocalVersionFile()
 	SLFramework.GameUpdate.OptionalUpdate.Instance:RemoveLocalVersionFile()
-	SLFramework.FileHelper.ClearDir(SLFramework.FrameworkSettings.PersistentResTmepDir1)
-	SLFramework.FileHelper.ClearDir(SLFramework.FrameworkSettings.PersistentResTmepDir2)
+	SLFramework.FileHelper.ClearDir(SLFramework.FrameworkSettings.PersistentResTempDir1)
+	SLFramework.FileHelper.ClearDir(SLFramework.FrameworkSettings.PersistentResTempDir2)
 	ZProj.GameHelper.DeleteAllCache()
 end
 

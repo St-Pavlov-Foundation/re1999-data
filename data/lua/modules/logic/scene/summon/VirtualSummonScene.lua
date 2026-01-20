@@ -18,8 +18,8 @@ function VirtualSummonScene:ctor()
 
 	self._isOpenImmediately = false
 	self._isOpen = false
-	self.charGoPath = SummonController.getCharScenePrefabPath()
 
+	self:checkSummonSkin()
 	self:checkInitLoader()
 
 	self._sceneObj = SummonSceneShell.New()
@@ -41,6 +41,16 @@ function VirtualSummonScene:createLoader(resMap, extendPath)
 	loader:setLoadFinishCallback(self.onLoadAllCompleted, self)
 
 	return loader
+end
+
+function VirtualSummonScene:checkSummonSkin()
+	local curScenePath = SummonController.getCharScenePrefabPath()
+
+	if self.charGoPath == nil or self.charGoPath ~= curScenePath then
+		self.charGoPath = curScenePath
+
+		logNormal("切换抽卡皮肤路径")
+	end
 end
 
 function VirtualSummonScene:checkInitLoader()
@@ -121,6 +131,7 @@ function VirtualSummonScene:openSummonScene(immediately)
 	self._isOpenImmediately = immediately
 
 	self:checkInitRootGO()
+	self:checkSummonSkin()
 	self:checkInitLoader()
 	gohelper.setActive(self:getRootGO(), true)
 

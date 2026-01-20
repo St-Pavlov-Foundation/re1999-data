@@ -7,45 +7,6 @@ local ProjModuleStart = class("ProjModuleStart")
 function ProjModuleStart:start()
 	logNormal("ProjModuleStart:start()!!!")
 	self:addCrashsightSceneData()
-
-	if GameResMgr.IsFromEditorDir or VersionValidator.instance:isInReviewing() and BootNativeUtil.isIOS() then
-		if VersionValidator.instance:isInReviewing() and BootNativeUtil.isIOS() then
-			SLFramework.FileHelper.ClearDir(SLFramework.FrameworkSettings.PersistentResRootDir .. "/bundles")
-			SLFramework.FileHelper.ClearDir(SLFramework.FrameworkSettings.PersistentResRootDir .. "/videos")
-			SLFramework.FileHelper.ClearDir(SLFramework.FrameworkSettings.PersistentResRootDir .. "/audios")
-		end
-
-		self:init()
-	else
-		self:resCheck()
-	end
-end
-
-function ProjModuleStart:resCheck()
-	setNeedLoadModule("modules.reschecker.MassHotUpdateMgr", "MassHotUpdateMgr")
-	setNeedLoadModule("modules.reschecker.ResCheckMgr", "ResCheckMgr")
-	setNeedLoadModule("modules.common.others.SDKDataTrackExt", "SDKDataTrackExt")
-	setNeedLoadModule("modules.logic.defines.PlayerPrefsKey", "PlayerPrefsKey")
-	SDKDataTrackExt.activateExtend()
-	ResCheckMgr.instance:startCheck(self.onResCheckFinish, self)
-end
-
-function ProjModuleStart:onResCheckFinish(allPass)
-	logNormal("ProjModuleStart:onResCheckFinish")
-
-	if allPass then
-		self:init()
-	else
-		self:loadUnmatchRes()
-	end
-end
-
-function ProjModuleStart:loadUnmatchRes()
-	MassHotUpdateMgr.instance:loadUnmatchRes(self.loadUnmatchResFinish, self)
-end
-
-function ProjModuleStart:loadUnmatchResFinish()
-	logNormal("ProjModuleStart:loadUnmatchResFinish")
 	self:init()
 end
 
@@ -64,7 +25,7 @@ function ProjModuleStart:addCrashsightSceneData()
 end
 
 function ProjModuleStart:addCrashsightResCheckerV()
-	local markVersion = SLFramework.FileHelper.ReadText(SLFramework.ResChecker.OutVersionPath)
+	local markVersion = ResCheckMgr.instance:GetOutVersion()
 
 	if string.nilorempty(markVersion) then
 		markVersion = "0"

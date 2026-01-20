@@ -15,11 +15,7 @@ function RoomResHelper.getMapBlockResPath(resourceId, resourceType, defineWaterT
 		defineWaterType = defineWaterType or 0
 
 		local resPath = ResUrl.getRoomRes(string.format("%s/%s/%s", resourceName, defineWaterType + 1, resourceType))
-		local resAb = ResUrl.getRoomResAB(string.format("%s/%s", resourceName, defineWaterType + 1))
-
-		if GameResMgr.IsFromEditorDir then
-			resAb = ResUrl.getRoomRes(string.format("%s/%s/%s", resourceName, defineWaterType + 1, resourceType))
-		end
+		local resAb = resPath
 
 		return resPath, resAb
 	end
@@ -32,11 +28,7 @@ function RoomResHelper.getMapRiverFloorResPath(riverBlockType, defineBlockType)
 
 	local tBlockType = RoomResHelper._getBlockType(defineBlockType)
 	local resPath = ResUrl.getRoomRes(string.format("heliu_floor/%s/%s", tBlockType + 1, riverBlockType))
-	local resAb = ResUrl.getRoomResAB(string.format("heliu_floor/%s", tBlockType + 1))
-
-	if GameResMgr.IsFromEditorDir then
-		resAb = resPath
-	end
+	local resAb = resPath
 
 	return resPath, resAb
 end
@@ -49,15 +41,7 @@ function RoomResHelper.getBlockPath(defineId)
 end
 
 function RoomResHelper.getBlockABPath(defineId)
-	if GameResMgr.IsFromEditorDir then
-		return RoomResHelper.getBlockPath(defineId)
-	else
-		local defineConfig = RoomConfig.instance:getBlockDefineConfig(defineId)
-		local prefabPath = defineConfig and defineConfig.prefabPath or RoomResourceEnum.EmptyPrefabPath
-		local ab = string.split(prefabPath, "/")[1]
-
-		return string.format("room/block/%s", ab)
-	end
+	return RoomResHelper.getBlockPath(defineId)
 end
 
 function RoomResHelper.getBlockLandPath(defineBlockType, isReplace)
@@ -132,11 +116,7 @@ function RoomResHelper.getCharacterCameraAnimABPath(cameraAnimPath)
 		return nil
 	end
 
-	if GameResMgr.IsFromEditorDir then
-		return RoomResHelper.getCharacterCameraAnimPath(cameraAnimPath)
-	else
-		return "effects/animation/room"
-	end
+	return RoomResHelper.getCharacterCameraAnimPath(cameraAnimPath)
 end
 
 function RoomResHelper.getCharacterEffectPath(effectPath)
