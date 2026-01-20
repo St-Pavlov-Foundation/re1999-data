@@ -187,8 +187,15 @@ function StoryBgEffsCustomBlur:destroy()
 		gohelper.removeComponent(self._captureGo, typeof(UnityEngine.Animator))
 	end
 
-	if self._capture and self._blurTypeCo.isRadial then
+	if self._capture then
 		self._capture.blurAngle = 0
+		self._capture.blurIndex = 0
+		self._capture.isUpDownSample = true
+		self._capture.reduteRate = 4
+		self._capture.desamplingRate = 8
+		self._capture.blurFactor = 0
+		self._capture.blurWeight = 0
+		self._capture.blurIterations = 3
 	end
 
 	self:_setViewTop(false)

@@ -112,9 +112,6 @@ function FullScreenVideoView:onDestroyView()
 	end
 
 	if self._videoPlayer then
-		self._videoPlayer:stop()
-		self._videoPlayer:clear()
-
 		self._videoPlayer = nil
 	end
 

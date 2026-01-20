@@ -28,6 +28,8 @@ function TowerComposeModIconComp:refreshMod(modId, imageModIcon, imageModColorIc
 
 	self.materialModIcon = materialModIcon
 	self.materialModLvIcon = materialModLvIcon
+	self.simageModColorIcon = gohelper.findChildSingleImage(imageModColorIcon.gameObject, "")
+	self.simageModLvColorIcon = gohelper.findChildSingleImage(imageModLvColorIcon.gameObject, "")
 
 	if modId > 0 then
 		local modconfig = TowerComposeConfig.instance:getComposeModConfig(modId)
@@ -47,8 +49,8 @@ function TowerComposeModIconComp:refreshMod(modId, imageModIcon, imageModColorIc
 			self.modLoader:addPath(self.modLevelUrl)
 		end
 
-		UISpriteSetMgr.instance:setTower2Sprite(imageModColorIcon, "caizhi" .. modconfig.level)
-		UISpriteSetMgr.instance:setTower2Sprite(imageModLvColorIcon, "caizhi" .. modconfig.level)
+		self.simageModColorIcon:LoadImage(ResUrl.getTowerComposeModIcon("caizhi" .. modconfig.level))
+		self.simageModLvColorIcon:LoadImage(ResUrl.getTowerComposeModIcon("caizhi" .. modconfig.level))
 		self.modLoader:startLoad(self.loadModIconFinish, self)
 	end
 end
@@ -59,6 +61,7 @@ function TowerComposeModIconComp:loadModIconFinish()
 		local materialModIconTexture = assetItem:GetResource(self.modIconUrl)
 
 		self.materialModIcon:SetTexture("_MaskTex", materialModIconTexture)
+		self.materialModIcon:SetTexture("_MainTex", materialModIconTexture)
 	end
 
 	if not string.nilorempty(self.modLevelUrl) then
@@ -66,6 +69,7 @@ function TowerComposeModIconComp:loadModIconFinish()
 		local materialModLevelTexture = assetItem:GetResource(self.modLevelUrl)
 
 		self.materialModLvIcon:SetTexture("_MaskTex", materialModLevelTexture)
+		self.materialModLvIcon:SetTexture("_MainTex", materialModLevelTexture)
 	end
 end
 
@@ -81,7 +85,15 @@ function TowerComposeModIconComp:cleanLoader()
 end
 
 function TowerComposeModIconComp:onDestroy()
-	return
+	self:cleanLoader()
+
+	if self.simageModColorIcon then
+		self.simageModColorIcon:UnLoadImage()
+	end
+
+	if self.simageModLvColorIcon then
+		self.simageModLvColorIcon:UnLoadImage()
+	end
 end
 
 return TowerComposeModIconComp

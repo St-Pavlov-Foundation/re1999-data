@@ -177,10 +177,6 @@ function BpView:onOpen()
 	end
 
 	self:_toSwitchTab(2, tabIndex)
-
-	self.haveSpecialBonus = BpModel.instance:haveSpecialBonus()
-
-	gohelper.setActive(self._rewardContainer, self.haveSpecialBonus)
 	self:refreshBtnReward()
 end
 
@@ -193,7 +189,13 @@ function BpView:closeAnimEnd()
 end
 
 function BpView:refreshBtnReward()
-	if self.haveSpecialBonus then
+	self.haveSpecialBonus = BpModel.instance:haveSpecialBonus()
+
+	local isShow = self.haveSpecialBonus and BpModel.instance.payStatus ~= BpEnum.PayStatus.Pay2
+
+	gohelper.setActive(self._rewardContainer, isShow)
+
+	if isShow then
 		if not self.specialItem then
 			self.specialItem = IconMgr.instance:getCommonPropItemIcon(self._goreward)
 		end

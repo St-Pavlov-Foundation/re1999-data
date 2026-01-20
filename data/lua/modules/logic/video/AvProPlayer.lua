@@ -234,7 +234,6 @@ function AvProPlayer:loadMedia(url)
 end
 
 function AvProPlayer:ondestroy()
-	self._videoPlayer:Stop()
 	self._videoPlayer:Clear()
 
 	self._callback = nil

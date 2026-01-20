@@ -11064,6 +11064,14 @@
     "notShow": 0
   },
   {
+    "id": -587,
+    "tips": "无法邀请非同服玩家",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
     "id": 341104,
     "tips": "部分玩家尚未准备",
     "icon": 11,

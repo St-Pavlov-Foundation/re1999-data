@@ -547,10 +547,14 @@ function ActivityBeginnerView:_isCanOpenV3a4GiftRecommendAct(actId)
 		return false
 	end
 
-	local isCanSign = ActivityType101Model.instance:isType101RewardCouldGetAnyOne(actId)
+	local signInfo = ActivityType101Model.instance:getType101Info(actId)
 
-	if isCanSign then
-		return true
+	if signInfo then
+		for _, info in ipairs(signInfo) do
+			if info.state < 2 then
+				return true
+			end
+		end
 	end
 
 	local goodsIds = DecorateStoreModel.instance:getV3a4PackageStoreGoodsIds()

@@ -104,7 +104,7 @@ function VersionActivityFixedStoreItem:refreshGoods()
 
 	for index, goodsCo in ipairs(self.groupGoodsCoList) do
 		if goodsCo.specProduct ~= 1 then
-			goodsItem = self.goodsItemList[index]
+			goodsItem = self.goodsItemList[goodsCo.id]
 
 			if not goodsItem then
 				local goodsItemGO = gohelper.cloneInPlace(self.goStoreGoodsItem)
@@ -113,17 +113,16 @@ function VersionActivityFixedStoreItem:refreshGoods()
 
 				goodsItem:setActId(self.actId)
 				goodsItem:onInitView(goodsItemGO)
-				table.insert(self.goodsItemList, goodsItem)
+
+				self.goodsItemList[goodsCo.id] = goodsItem
 			end
 
 			goodsItem:updateInfo(goodsCo)
 
 			count = count + 1
-		end
-	end
 
-	for i = count + 1, #self.goodsItemList do
-		self.goodsItemList[i]:hide()
+			gohelper.setSibling(goodsItem.go, index)
+		end
 	end
 end
 
@@ -132,7 +131,7 @@ function VersionActivityFixedStoreItem:getHeight()
 end
 
 function VersionActivityFixedStoreItem:onDestroy()
-	for _, goodsItem in ipairs(self.goodsItemList) do
+	for _, goodsItem in pairs(self.goodsItemList) do
 		goodsItem:onDestroy()
 	end
 

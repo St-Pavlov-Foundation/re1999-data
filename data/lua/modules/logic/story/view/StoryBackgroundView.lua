@@ -2232,6 +2232,7 @@ function StoryBackgroundView:_clearBg()
 	self:_resetBgEffSetLayer(true)
 	self:_resetBgEffBgShake()
 	self:_resetBgEffHandCameraShake()
+	self:_resetBgEffCustomBlur()
 
 	if self._blurId then
 		ZProj.TweenHelper.KillById(self._blurId)
