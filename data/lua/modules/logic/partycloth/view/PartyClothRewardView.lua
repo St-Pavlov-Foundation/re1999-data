@@ -12,20 +12,10 @@ function PartyClothRewardView:onInitView()
 	end
 end
 
-function PartyClothRewardView:addEvents()
-	return
-end
-
-function PartyClothRewardView:removeEvents()
-	return
-end
-
 function PartyClothRewardView:onClickModalMask()
-	self:closeThis()
-end
-
-function PartyClothRewardView:_editableInitView()
-	return
+	if self.canClose then
+		self:closeThis()
+	end
 end
 
 function PartyClothRewardView:onOpen()
@@ -40,6 +30,12 @@ function PartyClothRewardView:onOpen()
 			config = cfg
 		})
 	end
+
+	TaskDispatcher.runDelay(self.delaySet, self, 0.7)
+end
+
+function PartyClothRewardView:delaySet()
+	self.canClose = true
 end
 
 return PartyClothRewardView

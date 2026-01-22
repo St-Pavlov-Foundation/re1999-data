@@ -12,6 +12,7 @@ function SurvivalLeaveMsgView:onInitView()
 	self.SurvivalLeaveMsgItem = gohelper.findChild(self.go_msgScroll, "Viewport/Content/SurvivalLeaveMsgItem")
 	self.btnLeaveMsg = gohelper.findChildButtonWithAudio(self.LeaveMsg, "#btn_LeaveMsg")
 	self.textLeaveMsg = gohelper.findChildTextMesh(self.btnLeaveMsg.gameObject, "textLeaveMsg")
+	self.goEmpty = gohelper.findChild(self.LeaveMsg, "goEmpty")
 	self.WriteMsg = gohelper.findChild(self.root, "WriteMsg")
 	self.selectNode = gohelper.findChild(self.WriteMsg, "selectNode")
 	self.SurvivalLeaveSelectItem = gohelper.findChild(self.selectNode, "Viewport/Content/SurvivalLeaveSelectItem")
@@ -239,6 +240,8 @@ function SurvivalLeaveMsgView:refreshLeaveMsg(isAnim)
 		else
 			self.textLeaveMsg.text = luaLang("SurvivalLeaveMsgView_2")
 		end
+
+		gohelper.setActive(self.goEmpty, #self.leaveMsgData <= 0)
 	end
 end
 

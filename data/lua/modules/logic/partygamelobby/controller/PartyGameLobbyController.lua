@@ -34,6 +34,7 @@ function PartyGameLobbyController:addConstEvents()
 	GameSceneMgr.instance:registerCallback(SceneEventName.EnterSceneFinish, self._onEnterSceneFinish, self)
 	PartyClothController.instance:registerCallback(PartyClothEvent.WearClothUpdate, self._onWearClothUpdate, self)
 	SocialController.instance:registerCallback(SocialEvent.FriendsInfoChangedSpecial, self._onFriendsInfoChanged, self)
+	PartyGameController.instance:registerCallback(PartyGameEvent.GuideNewGame, self._onGuideNewGame, self)
 end
 
 function PartyGameLobbyController:_onFriendsInfoChanged(noPlayer)
@@ -343,6 +344,90 @@ end
 
 function PartyGameLobbyController:clearSuccessMatchInfo()
 	return
+end
+
+function PartyGameLobbyController:enterGameLobbyGuide()
+	if GuideController.instance:isForbidGuides() then
+		return
+	end
+
+	if not self._guideList then
+		self._guideList = {
+			[34012] = self.guideEnterGame1,
+			[34013] = self.guideEnterGameRewardGuideView1,
+			[34014] = self.guideEnterCardDropGame1,
+			[34015] = self.guideEnterGame2,
+			[34016] = self.guideEnterGameRewardGuideView2,
+			[34017] = self.guideEnterCardDropGame2
+		}
+	end
+
+	if self._guideList then
+		for i = 34012, 34017 do
+			if GuideModel.instance:isGuideRunning(i) then
+				local func = self._guideList[i]
+
+				if func then
+					logNormal("enterGameLobbyGuide run guide:", tostring(i))
+					func(self)
+				end
+
+				return true
+			end
+		end
+	end
+end
+
+function PartyGameLobbyController:_onGuideNewGame(param)
+	local gameId = tonumber(param)
+
+	if gameId == PartyGameLobbyEnum.GuideParam.Game2 then
+		self:guideEnterGame2()
+
+		return
+	elseif gameId == PartyGameLobbyEnum.GuideParam.Game1 then
+		self:guideEnterGame1()
+	end
+
+	logError("PartyGameLobbyController:_onGuideNewGame not found game:", tostring(gameId))
+end
+
+function PartyGameLobbyController:guideEnterGame1()
+	logNormal("PartyGameLobbyController:guideEnterGame1")
+	PartyGameController.instance:initFakePlayerData(4)
+	PartyGameController.instance:enterGame(PartyGameLobbyEnum.GuideParam.Game1, true)
+end
+
+function PartyGameLobbyController:guideEnterGame2()
+	logNormal("PartyGameLobbyController:guideEnterGame2")
+	PartyGameController.instance:initFakePlayerData(2)
+	PartyGameController.instance:enterGame(PartyGameLobbyEnum.GuideParam.Game2, true)
+end
+
+function PartyGameLobbyController:guideEnterCardDropGame1()
+	logNormal("PartyGameLobbyController:guideEnterCardDropGame1")
+	PartyGameController.instance:initFakePlayerData(4, 24, 26)
+	PartyGameController.instance:enterGame(PartyGameLobbyEnum.GuideParam.CardDropGame, true)
+end
+
+function PartyGameLobbyController:guideEnterCardDropGame2()
+	logNormal("PartyGameLobbyController:guideEnterCardDropGame2")
+	PartyGameController.instance:initFakePlayerData(2, 25, 27)
+	PartyGameController.instance:enterGame(PartyGameLobbyEnum.GuideParam.CardDropGame, true)
+end
+
+function PartyGameLobbyController:guideEnterGameRewardGuideView1()
+	logNormal("PartyGameLobbyController:guideEnterGameRewardGuideView1")
+	ViewMgr.instance:openView(ViewName.PartyGameRewardGuideView, {
+		selectCard = PartyGameLobbyEnum.GuideParam.Result1SelectCard
+	})
+end
+
+function PartyGameLobbyController:guideEnterGameRewardGuideView2()
+	logNormal("PartyGameLobbyController:guideEnterGameRewardGuideView2")
+	ViewMgr.instance:openView(ViewName.PartyGameRewardGuideView, {
+		selectCard = PartyGameLobbyEnum.GuideParam.Result2SelectCard
+	})
 end
 
 function PartyGameLobbyController:enterStore()

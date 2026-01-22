@@ -52,7 +52,7 @@ function SurvivalBagItem:init(go)
 	self.go_shop_price = gohelper.findChild(self.goRoot, "#go_shop_price")
 	self.txt_price_shop = gohelper.findChildTextMesh(self.go_shop_price, "#txt_price")
 	self.imagePrice = gohelper.findChildImage(self.go_shop_price, "#txt_price/#imagePrice")
-	self.itemSubType_npc = gohelper.findChild(self._gonormal, "itemSubType_npc")
+	self.itemSubType_npc = gohelper.findChild(self._gonormal, "collection/itemSubType_npc")
 	self.recommend = gohelper.findChild(self._gonormal, "recommend")
 	self.go_score = gohelper.findChild(self.goRoot, "#go_score")
 	self.txt_score = gohelper.findChildTextMesh(self.go_score, "#txt_score")
@@ -250,18 +250,11 @@ function SurvivalBagItem:playPut()
 	gohelper.setActive(self._goput, true)
 end
 
-function SurvivalBagItem:playSublimationAnim(nextMo)
+function SurvivalBagItem:playSublimationAnim2(t, nextMo)
 	self.sublimationAnimnNextMo = nextMo
 
-	self._animHas:Play("opensp1", 0, 0)
-	TaskDispatcher.runDelay(self._onSublimationAnimEnd, self, 1)
-end
-
-function SurvivalBagItem:playSublimationAnim2(nextMo)
-	self.sublimationAnimnNextMo = nextMo
-
-	self._animHas:Play("switch_tosp1", 0, 0)
-	TaskDispatcher.runDelay(self._onSublimationAnimEnd, self, 0.5)
+	self._animHas:Play("up" .. t, 0, 0)
+	TaskDispatcher.runDelay(self._onSublimationAnimEnd, self, 0.8)
 end
 
 function SurvivalBagItem:_onSublimationAnimEnd()

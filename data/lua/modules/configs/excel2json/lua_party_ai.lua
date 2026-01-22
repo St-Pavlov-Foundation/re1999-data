@@ -10,9 +10,7 @@ local fields = {
 local primaryKey = {
 	"id"
 }
-local mlStringKey = {
-	name = 1
-}
+local mlStringKey = {}
 
 function lua_party_ai.onLoad(json)
 	lua_party_ai.configList, lua_party_ai.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)

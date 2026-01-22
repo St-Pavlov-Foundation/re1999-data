@@ -169,6 +169,35 @@ function PartyGameBase:onScenePrepared()
 	if not string.nilorempty(viewName) then
 		ViewMgr.instance:openView(viewName)
 	end
+
+	HelpController.instance:registerCallback(HelpEvent.OnClickHelpViewMask, self.closeHelpView, self)
+	self:setHelpViewBlur(nil)
+
+	local isShow = TimeUtil.getDayFirstLoginRed("PartyGame_HelpView")
+
+	if isShow then
+		local co = self:getGameConfig()
+		local helpId = co and co.helpId
+
+		if helpId and helpId > 0 then
+			HelpController.instance:showHelp(helpId)
+			ViewMgr.instance:openView(ViewName.PartyGameHelpView)
+		end
+	end
+end
+
+function PartyGameBase:setHelpViewBlur(bgBlur)
+	local setting = ViewMgr.instance:getSetting(ViewName.HelpView)
+
+	if not setting then
+		return
+	end
+
+	setting.bgBlur = bgBlur
+end
+
+function PartyGameBase:closeHelpView()
+	ViewMgr.instance:closeView(ViewName.HelpView)
 end
 
 function PartyGameBase:onSceneClose()
@@ -184,6 +213,10 @@ function PartyGameBase:getGameViewName()
 end
 
 function PartyGameBase:onSceneCloseView()
+	HelpController.instance:unregisterCallback(HelpEvent.OnClickHelpViewMask, self.closeHelpView, self)
+	self:setHelpViewBlur(1)
+	ViewMgr.instance:closeView(ViewName.HelpView)
+	ViewMgr.instance:closeView(ViewName.PartyGameHelpView)
 	self:onSceneClose()
 	ViewMgr.instance:closeView(ViewName.PartyGameResultView)
 	ViewMgr.instance:closeView(ViewName.PartyGameRewardView)
@@ -264,6 +297,12 @@ function PartyGameBase:getConnectNet()
 	end
 
 	return self._csGameBase.connectNet
+end
+
+function PartyGameBase:isGuiding()
+	local result = PartyGameCSDefine.CardDropInterfaceCs.HotFix_Temp("curGameIsGuiding", nil, nil)
+
+	return result == "1"
 end
 
 function PartyGameBase:getGameFov()

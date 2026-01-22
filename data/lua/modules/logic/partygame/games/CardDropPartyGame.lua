@@ -32,6 +32,13 @@ end
 
 function CardDropPartyGame:onSceneClose()
 	CardDropPartyGame.super.onSceneClose(self)
+
+	if self:isGuiding() then
+		ViewMgr.instance:closeView(ViewName.CardDropVSView)
+		ViewMgr.instance:closeView(ViewName.CardDropPromotionView)
+		ViewMgr.instance:closeView(ViewName.PartyGameResultView)
+	end
+
 	ViewMgr.instance:closeView(ViewName.CardDropCardTipView)
 	ViewMgr.instance:closeView(ViewName.CardDropEditGameView)
 	CardDropTimelineController.instance:onGameEnd()

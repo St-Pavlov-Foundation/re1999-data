@@ -51,6 +51,20 @@ function PartyGameController:enterParty()
 	self._isFirstLogin = true
 end
 
+function PartyGameController:initFakePlayerData(playerNum, selfCardIds, otherCardIds)
+	local playerInfoStr = self:_getFakePlayerData(playerNum or 8)
+	local str = string.format("initFakePlayerData|%s|%s|%s", playerInfoStr, selfCardIds or 0, otherCardIds or 0)
+
+	PartyGameCSDefine.SnatchAreaInterfaceCs.HotFix_Temp(str, nil, nil)
+end
+
+function PartyGameController:_getFakePlayerData(playerNum)
+	local mainPlayerName = PlayerModel.instance:getPlayerName() or "mainPlayer"
+	local names = PartyGameConfig.instance:getRobotName(playerNum)
+
+	return string.format("%s#%s", mainPlayerName, names)
+end
+
 function PartyGameController:enterGame(gameId, islocal)
 	if self._curPartyGame ~= nil then
 		self:clearGame()

@@ -11,5 +11,6 @@ PartyClothEvent.SummonReply = _get()
 PartyClothEvent.ClickClothPartItem = _get()
 PartyClothEvent.ClickClothSuitItem = _get()
 PartyClothEvent.GetWearInfoReply = _get()
+PartyClothEvent.NewTagChange = _get()
 
 return PartyClothEvent

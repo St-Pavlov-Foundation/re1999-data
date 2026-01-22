@@ -1647,6 +1647,10 @@ function ResUrl.getSurvivalTeamIcon(resName)
 	return string.format("singlebg/survival_singlebg/team/%s.png", resName)
 end
 
+function ResUrl.getSurvivalTechIcon(resName)
+	return string.format("singlebg/survival_singlebg/tech/%s.png", resName)
+end
+
 function ResUrl.getSurvivalTalentIcon(resName)
 	return string.format("singlebg/survival_singlebg/talent/%s.png", resName)
 end

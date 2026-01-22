@@ -114,6 +114,7 @@ function GMSubViewPartyGame:initViewContent()
 	self.debugToggle6.isOn = PartyGameEnum.PartyGameConfigData.MainPlayerIsRobot
 	self.debugToggle7 = self:addToggle(self:getLineGroup(), "所有调试", self.onDebugStateChange7, self)
 	self.debugToggle7.isOn = PartyGameEnum.PartyGameConfigData.DebugLockStep and PartyGameEnum.PartyGameConfigData.DebugLockStepWorldRecord and PartyGameEnum.PartyGameConfigData.MainPlayerIsRobot
+	self.debugTogglestall = self:addToggle(self:getLineGroup(), "卡顿调试", self.onDebugStateChangeStall, self)
 
 	self:addLineIndex()
 
@@ -438,5 +439,13 @@ function GMSubViewPartyGame:onDebugStateChange7()
 	self.debugToggle5.isOn = self.debugToggle7.isOn
 	self.debugToggle.isOn = self.debugToggle7.isOn
 end
+
+function GMSubViewPartyGame:onDebugStateChangeStall()
+	local stallDebug = self.debugTogglestall.isOn and 1 or 0
+
+	UnityEngine.PlayerPrefs.SetInt("stallDebug", stallDebug)
+end
+
+UnityEngine.PlayerPrefs.SetInt("stallDebug", 0)
 
 return GMSubViewPartyGame

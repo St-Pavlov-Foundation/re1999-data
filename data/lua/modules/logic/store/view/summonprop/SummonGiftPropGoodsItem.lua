@@ -50,6 +50,12 @@ function SummonGiftPropGoodsItem:onUpdateMO(mo)
 	end
 
 	self.goodsItem:onUpdateMO(mo.goodsMo)
+
+	local animator = self.goodsItem:getAnimator()
+
+	if animator then
+		animator:Play("idel", 0, 0)
+	end
 end
 
 function SummonGiftPropGoodsItem:setView(view)

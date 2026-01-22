@@ -11,7 +11,11 @@ PartyGameLobbyEnum.InitPos = Vector3(-30.92, 1.67, 6.73)
 PartyGameLobbyEnum.MovePosScale = 100
 PartyGameLobbyEnum.DailyOpenId = 340002
 PartyGameLobbyEnum.RoomOpenId = 340003
-PartyGameLobbyEnum.GuideGameId = {
+PartyGameLobbyEnum.GuideParam = {
+	CardDropGame = 100,
+	Result2SelectCard = 22,
+	Result1SelectCard = 21,
+	Game2 = 12,
 	Game1 = 8
 }
 PartyGameLobbyEnum.RefuseType = {

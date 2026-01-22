@@ -32,7 +32,7 @@ function MiniPartyTaskModel:isTaskUnlock(taskId, actId)
 
 	if taskMo.config.showDay >= 0 then
 		local actStartTime = ActivityModel.instance:getActStartTime(VersionActivity3_4Enum.ActivityId.LaplaceMiniParty) / 1000
-		local diffDay = TimeUtil.getDiffDay(actStartTime, ServerTime.now())
+		local diffDay = math.floor((ServerTime.now() - actStartTime) / TimeUtil.OneDaySecond)
 
 		if diffDay >= taskMo.config.showDay - 1 then
 			couldUnlock = true

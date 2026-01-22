@@ -77,6 +77,12 @@ function SurvivalRoleSelectView:onOpen()
 	end
 
 	self.roleList:setSelect(select)
+
+	local outSideInfo = SurvivalModel.instance:getOutSideInfo()
+	local haveRole1 = outSideInfo:isEndUnLock(3001)
+	local haveRole2 = outSideInfo:isEndUnLock(3002)
+	local isShowTip = not haveRole1 or not haveRole2
+
 	self.survivalOutSideRoleModel:markNew()
 end
 

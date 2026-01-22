@@ -21,7 +21,8 @@ function PartyGameConfig:reqConfigNames()
 		"partygame_guesswho",
 		"partygame_guesswho_pictures",
 		"partygame_puzzle_pictures",
-		"partygame_decision"
+		"partygame_decision",
+		"party_ai"
 	}
 end
 
@@ -31,6 +32,20 @@ end
 
 function PartyGameConfig:onConfigLoaded(configName, configTable)
 	return
+end
+
+function PartyGameConfig:getRobotName(num)
+	local str
+
+	for i = 1, num - 1 do
+		local config = lua_party_ai.configDict[i]
+
+		if config then
+			str = i == 1 and config.name or str .. "#" .. config.name
+		end
+	end
+
+	return str or ""
 end
 
 function PartyGameConfig:getConstValue(id)

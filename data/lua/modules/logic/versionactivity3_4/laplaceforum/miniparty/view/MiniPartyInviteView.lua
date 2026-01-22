@@ -120,8 +120,21 @@ function MiniPartyInviteView:_onTargetUserGrouped(userId, isAgree)
 		return
 	end
 
-	Activity223Rpc.instance:sendGetAct223InfoRequest(self._actId, self._onGetInfoFinished, self)
-	self:closeThis()
+	Activity223Rpc.instance:sendGetAct223InfoRequest(self._actId, self._onInviteAgree, self)
+end
+
+function MiniPartyInviteView:_onInviteAgree(cmd, resultCode, msg)
+	if resultCode ~= 0 then
+		return
+	end
+
+	MiniPartyModel.instance:setAct223Info(msg)
+
+	local hasGrouped = MiniPartyModel.instance:hasGrouped()
+
+	if hasGrouped then
+		self:closeThis()
+	end
 end
 
 function MiniPartyInviteView:onOpen()

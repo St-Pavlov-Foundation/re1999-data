@@ -14,6 +14,8 @@ function SurvivalTechRoleFragment:init(viewGO)
 	self.viewGO = viewGO
 	self.txt_role = gohelper.findChildTextMesh(self.viewGO, "#txt_role")
 	self.scroll_tech = gohelper.findChild(self.viewGO, "#scroll_tech")
+	self.simage_bg = gohelper.findChildSingleImage(self.viewGO, "simage_bg")
+	self.imgBg = self.simage_bg:GetComponent(gohelper.Type_Image)
 
 	local param = SimpleListParam.New()
 
@@ -24,6 +26,10 @@ end
 function SurvivalTechRoleFragment:addEventListeners()
 	self:addEventCb(SurvivalController.instance, SurvivalEvent.OnTechChange, self.onTechChange, self)
 	self:addEventCb(SurvivalController.instance, SurvivalEvent.OnReceiveSurvivalOutSideTechUnlockReply, self.onReceiveSurvivalOutSideTechUnlockReply, self)
+end
+
+function SurvivalTechRoleFragment:onDestroy()
+	self.simage_bg:UnLoadImage()
 end
 
 function SurvivalTechRoleFragment:onClickSlotItem(survivalTechRoleSlotItem)
@@ -173,6 +179,16 @@ function SurvivalTechRoleFragment:setData(techId)
 
 	slotList:setSelect(nil)
 	self:refreshTech()
+
+	local path = "survivaltech_tech_role" .. self.roleCfg.id
+
+	self.simage_bg:LoadImage(ResUrl.getSurvivalTechIcon(path), function()
+		self:onLoadedImage()
+	end)
+end
+
+function SurvivalTechRoleFragment:onLoadedImage()
+	self.imgBg:SetNativeSize()
 end
 
 function SurvivalTechRoleFragment:refreshTech()

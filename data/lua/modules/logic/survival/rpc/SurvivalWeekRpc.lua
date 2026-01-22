@@ -1044,7 +1044,9 @@ end
 
 function SurvivalWeekRpc:onReceiveSurvivalDerivedContainerUpdatePush(resultCode, msg)
 	if resultCode == 0 then
-		-- block empty
+		local weekInfo = SurvivalShelterModel.instance:getWeekInfo()
+
+		weekInfo:onReceiveSurvivalDerivedContainerUpdatePush(msg)
 	end
 end
 

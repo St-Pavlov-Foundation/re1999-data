@@ -163,7 +163,7 @@ function MiniPartyTaskView:_refreshGroupTasks()
 
 			self._groupTasks[taskId] = MiniPartyTaskItem.New()
 
-			self._groupTasks[taskId]:init(go)
+			self._groupTasks[taskId]:init(go, false, self._taskType)
 			self._groupTasks[taskId]:setScrollParentGo(self._gogrouptasks)
 		end
 
@@ -203,7 +203,7 @@ function MiniPartyTaskView:_refreshSelfTasks()
 
 			self._selfTasks[taskId] = MiniPartyTaskItem.New()
 
-			self._selfTasks[taskId]:init(go)
+			self._selfTasks[taskId]:init(go, false, self._taskType)
 			self._selfTasks[taskId]:setScrollParentGo(self._goselftasks)
 		end
 

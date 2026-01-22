@@ -7,6 +7,7 @@ local MiniPartyTaskItem = class("MiniPartyTaskItem", LuaCompBase)
 function MiniPartyTaskItem:init(go, isGetAll, taskType)
 	self.go = go
 	self._isGetAll = isGetAll
+	self._taskType = taskType
 	self._gonormal = gohelper.findChild(self.go, "#go_normal")
 	self._simagenormalbg = gohelper.findChildSingleImage(self.go, "#go_normal/simage_normalbg")
 	self._gohas = gohelper.findChild(self.go, "#go_normal/has")
@@ -34,7 +35,9 @@ function MiniPartyTaskItem:init(go, isGetAll, taskType)
 	gohelper.setActive(self._gogetall, self._isGetAll)
 
 	if self._isGetAll then
-		gohelper.setActive(self._gotips2, taskType and taskType == MiniPartyEnum.TaskType.GroupTask)
+		local hasGrouped = MiniPartyModel.instance:hasGrouped()
+
+		gohelper.setActive(self._gotips2, taskType and taskType == MiniPartyEnum.TaskType.GroupTask and not hasGrouped)
 	end
 
 	self._rewardItems = {}
@@ -56,6 +59,12 @@ function MiniPartyTaskItem:showItem(show)
 
 	if show then
 		gohelper.setAsFirstSibling(self.go)
+
+		if self._isGetAll then
+			local hasGrouped = MiniPartyModel.instance:hasGrouped()
+
+			gohelper.setActive(self._gotips2, self._taskType and self._taskType == MiniPartyEnum.TaskType.GroupTask and not hasGrouped)
+		end
 	else
 		gohelper.setAsLastSibling(self.go)
 	end
@@ -82,7 +91,7 @@ function MiniPartyTaskItem:_btngetallOnClick()
 end
 
 function MiniPartyTaskItem:_realSendFinishAll()
-	TaskRpc.instance:sendFinishAllTaskRequest(TaskEnum.TaskType.MiniParty)
+	TaskRpc.instance:sendFinishAllTaskRequest(TaskEnum.TaskType.MiniParty, self._taskType)
 end
 
 function MiniPartyTaskItem:_btnnotfinishbgOnClick()

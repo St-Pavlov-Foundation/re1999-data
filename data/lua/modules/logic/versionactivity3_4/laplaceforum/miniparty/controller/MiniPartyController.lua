@@ -38,12 +38,19 @@ function MiniPartyController:_refreshActInfo()
 		})
 
 		if OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.Friend) then
-			FriendRpc.instance:sendGetFriendInfoListRequest()
-			Activity223Rpc.instance:sendGetAct223InfoRequest(VersionActivity3_4Enum.ActivityId.LaplaceMiniParty)
+			FriendRpc.instance:sendGetFriendInfoListRequest(self._onGetFriendInfoSuccess, self)
 		end
 	end
 
 	self._hasGet = couldGet
+end
+
+function MiniPartyController:_onGetFriendInfoSuccess(cmd, resultCode, msg)
+	if resultCode ~= 0 then
+		return
+	end
+
+	Activity223Rpc.instance:sendGetAct223InfoRequest(VersionActivity3_4Enum.ActivityId.LaplaceMiniParty)
 end
 
 MiniPartyController.instance = MiniPartyController.New()

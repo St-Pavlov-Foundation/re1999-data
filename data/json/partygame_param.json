@@ -18,7 +18,7 @@
     "bgmId": 3340004,
     "envMusic": 3340025,
     "envMusicStop": 2000007,
-    "helpId": 0,
+    "helpId": 3401201,
     "limitTime": 8,
     "roleCol": "0.65#0.65#0.65",
     "openLog": 1
@@ -42,7 +42,7 @@
     "bgmId": 3340005,
     "envMusic": 3340024,
     "envMusicStop": 2000007,
-    "helpId": 0,
+    "helpId": 3401202,
     "limitTime": 8,
     "roleCol": "0.65#0.65#0.65",
     "openLog": 1
@@ -66,7 +66,7 @@
     "bgmId": 3340006,
     "envMusic": 3340023,
     "envMusicStop": 2000007,
-    "helpId": 0,
+    "helpId": 3401203,
     "limitTime": 8,
     "roleCol": "0.3#0.3#0.3",
     "openLog": 1
@@ -90,7 +90,7 @@
     "bgmId": 3340007,
     "envMusic": 3340025,
     "envMusicStop": 2000007,
-    "helpId": 0,
+    "helpId": 3401204,
     "limitTime": 8,
     "roleCol": "0.65#0.65#0.65",
     "openLog": 1
@@ -114,7 +114,7 @@
     "bgmId": 3340008,
     "envMusic": 3340026,
     "envMusicStop": 2000007,
-    "helpId": 0,
+    "helpId": 3401205,
     "limitTime": 8,
     "roleCol": "0.65#0.65#0.65",
     "openLog": 1
@@ -138,7 +138,7 @@
     "bgmId": 3340009,
     "envMusic": 3340027,
     "envMusicStop": 2000007,
-    "helpId": 0,
+    "helpId": 3401206,
     "limitTime": 8,
     "roleCol": "0.65#0.65#0.65",
     "openLog": 1
@@ -162,7 +162,7 @@
     "bgmId": 3340010,
     "envMusic": 3340029,
     "envMusicStop": 3340030,
-    "helpId": 0,
+    "helpId": 3401207,
     "limitTime": 8,
     "roleCol": "0.65#0.65#0.65",
     "openLog": 1
@@ -186,7 +186,7 @@
     "bgmId": 3340011,
     "envMusic": 3340025,
     "envMusicStop": 2000007,
-    "helpId": 0,
+    "helpId": 3401208,
     "limitTime": 8,
     "roleCol": "1#1#1",
     "openLog": 1
@@ -210,7 +210,7 @@
     "bgmId": 3340012,
     "envMusic": 3340031,
     "envMusicStop": 3340032,
-    "helpId": 0,
+    "helpId": 3401209,
     "limitTime": 8,
     "roleCol": "0.65#0.65#0.65",
     "openLog": 1
@@ -234,7 +234,7 @@
     "bgmId": 3340013,
     "envMusic": 3340025,
     "envMusicStop": 2000007,
-    "helpId": 0,
+    "helpId": 3401210,
     "limitTime": 8,
     "roleCol": "0.65#0.65#0.65",
     "openLog": 1
@@ -258,7 +258,7 @@
     "bgmId": 3340014,
     "envMusic": 3340025,
     "envMusicStop": 2000007,
-    "helpId": 0,
+    "helpId": 3401211,
     "limitTime": 8,
     "roleCol": "0.65#0.65#0.65",
     "openLog": 1
@@ -282,7 +282,7 @@
     "bgmId": 3340015,
     "envMusic": 0,
     "envMusicStop": 0,
-    "helpId": 0,
+    "helpId": 3401212,
     "limitTime": 8,
     "roleCol": "0.65#0.65#0.65",
     "openLog": 1
@@ -306,7 +306,7 @@
     "bgmId": 3340016,
     "envMusic": 3340025,
     "envMusicStop": 2000007,
-    "helpId": 0,
+    "helpId": 3401213,
     "limitTime": 8,
     "roleCol": "0.65#0.65#0.65",
     "openLog": 1
@@ -330,7 +330,7 @@
     "bgmId": 3340017,
     "envMusic": 0,
     "envMusicStop": 0,
-    "helpId": 0,
+    "helpId": 3401214,
     "limitTime": 0,
     "roleCol": "0.65#0.65#0.65",
     "openLog": 1
@@ -354,7 +354,7 @@
     "bgmId": 3340018,
     "envMusic": 0,
     "envMusicStop": 0,
-    "helpId": 0,
+    "helpId": 3401215,
     "limitTime": 5,
     "roleCol": "0.65#0.65#0.65",
     "openLog": 1
@@ -378,7 +378,7 @@
     "bgmId": 3340019,
     "envMusic": 0,
     "envMusicStop": 0,
-    "helpId": 0,
+    "helpId": 3401216,
     "limitTime": 5,
     "roleCol": "0.65#0.65#0.65",
     "openLog": 1
@@ -402,7 +402,7 @@
     "bgmId": 3340020,
     "envMusic": 0,
     "envMusicStop": 0,
-    "helpId": 0,
+    "helpId": 3401217,
     "limitTime": 5,
     "roleCol": "0.65#0.65#0.65",
     "openLog": 1
@@ -426,7 +426,7 @@
     "bgmId": 3340021,
     "envMusic": 0,
     "envMusicStop": 0,
-    "helpId": 0,
+    "helpId": 3401218,
     "limitTime": 5,
     "roleCol": "0.65#0.65#0.65",
     "openLog": 1
@@ -450,7 +450,7 @@
     "bgmId": 3340022,
     "envMusic": 3340028,
     "envMusicStop": 2000007,
-    "helpId": 0,
+    "helpId": 3401219,
     "limitTime": 5,
     "roleCol": "0.65#0.65#0.65",
     "openLog": 1

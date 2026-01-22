@@ -4,6 +4,9 @@ module("modules.logic.character.defines.CharacterVoiceEnum", package.seeall)
 
 local CharacterVoiceEnum = _M
 
+CharacterVoiceEnum.ChangeRTSize = true
+CharacterVoiceEnum.RTCameraSize = 12
+CharacterVoiceEnum.RTWidth = 3000
 CharacterVoiceEnum.Hero = {
 	Luxi = 3086
 }

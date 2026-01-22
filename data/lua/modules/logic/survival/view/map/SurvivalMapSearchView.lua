@@ -93,7 +93,6 @@ function SurvivalMapSearchView:onOpen()
 
 	self._allItemMos = self.convertItemMosList[1].items
 	self.isShowLoading = self.viewParam.isFirst
-	self.isShowLoading = true
 
 	self:_onSortChange(self._curSort, self._isDec, self._filterList)
 	self:_refreshBagFull()
@@ -145,6 +144,7 @@ function SurvivalMapSearchView:playConvertItemAnim()
 	local itemMos = self.viewParam.itemMos
 	local covertItems = self.convertItemMosList[self.convertIndex].items
 	local reason = self.convertItemMosList[self.convertIndex].reason
+	local sublimationInfo = self.convertItemMosList[self.convertIndex].sublimationInfo
 	local maxTime = 1
 
 	for _, itemMo in pairs(covertItems) do
@@ -152,11 +152,12 @@ function SurvivalMapSearchView:playConvertItemAnim()
 			if reason == SurvivalEnum.StepType.SearchPanelChange then
 				self._items[itemMo.uid]:playComposeAnim()
 			elseif reason == SurvivalEnum.StepType.SearchItemSublimation then
+				local t = sublimationInfo[itemMo.uid]
 				local nextMo = self:getNextItemMoByUid(itemMo.uid)
 
-				self._items[itemMo.uid]:playSublimationAnim2(nextMo)
+				self._items[itemMo.uid]:playSublimationAnim2(t, nextMo)
 
-				maxTime = 1.5
+				maxTime = 1.8
 			end
 		end
 	end
@@ -193,9 +194,11 @@ function SurvivalMapSearchView:parseConvertItemMos()
 				end
 
 				if nextItemMo and v.id ~= nextItemMo.id and reason == SurvivalEnum.StepType.SearchItemSublimation then
-					local rare = v:getRare()
+					local nextRare = nextItemMo:getRare()
 
-					if rare == 5 then
+					if nextRare == 6 then
+						sublimationInfo[v.uid] = 3
+					elseif nextRare == 5 then
 						sublimationInfo[v.uid] = 2
 					else
 						sublimationInfo[v.uid] = 1

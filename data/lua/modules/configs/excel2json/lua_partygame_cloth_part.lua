@@ -16,9 +16,7 @@ local fields = {
 local primaryKey = {
 	"clothId"
 }
-local mlStringKey = {
-	name = 1
-}
+local mlStringKey = {}
 
 function lua_partygame_cloth_part.onLoad(json)
 	lua_partygame_cloth_part.configList, lua_partygame_cloth_part.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)

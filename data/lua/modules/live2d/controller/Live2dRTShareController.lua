@@ -101,7 +101,7 @@ function Live2dRTShareController:_getTextureSizeByCameraSize(orthographicSize)
 	local textureSizeByCamera = GuiLive2d.getTextureSizeByCameraSize(orthographicSize)
 	local textureSize = textureSizeByCamera * _adapterScaleOnCreate * _qualityScale
 
-	return math.floor(textureSize)
+	return CharacterVoiceEnum.ChangeRTSize and CharacterVoiceEnum.RTWidth or math.floor(textureSize)
 end
 
 function Live2dRTShareController:_getTextureSize(orthographicSize, shareType, heroId, skinId)

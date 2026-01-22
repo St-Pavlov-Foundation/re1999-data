@@ -741,7 +741,7 @@ function SettingsModel:isAvproVideo()
 		return false
 	end
 
-	return SettingsModel.instance:getUseUnityVideo() == false
+	return self:getVideoCompatible() == false and self:getUseUnityVideo() == false
 end
 
 SettingsModel.instance = SettingsModel.New()

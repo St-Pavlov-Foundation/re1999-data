@@ -22,8 +22,8 @@ end
 
 function SurvivalEndPart:refreshView()
 	local outSideInfo = SurvivalModel.instance:getOutSideInfo()
-	local haveRole1 = outSideInfo:haveEnd(3001)
-	local haveRole2 = outSideInfo:haveEnd(3002)
+	local haveRole1 = outSideInfo:isEndUnLock(3001)
+	local haveRole2 = outSideInfo:isEndUnLock(3002)
 	local isDefaultBg = not haveRole1 and not haveRole2
 	local isEndBg = haveRole1 or haveRole2
 

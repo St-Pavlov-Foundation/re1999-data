@@ -63,4 +63,9 @@ function ActivityVersionSummonPatWork:_finishOpenAnimCallBack(viewName)
 	end
 end
 
+function ActivityVersionSummonPatWork:clearWork()
+	ViewMgr.instance:unregisterCallback(ViewEvent.OnCloseView, self._finishOpenAnimCallBack, self)
+	ActivityVersionSummonPatWork.super.clearWork(self)
+end
+
 return ActivityVersionSummonPatWork

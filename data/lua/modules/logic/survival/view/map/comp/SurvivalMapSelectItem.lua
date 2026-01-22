@@ -10,6 +10,7 @@ function SurvivalMapSelectItem:ctor(params)
 	self._mapInfo = params.mapInfo
 	self._index = params.index
 	self.maxRichness = params.maxRichness
+	self.name = params.name
 end
 
 function SurvivalMapSelectItem:init(go)
@@ -44,6 +45,8 @@ function SurvivalMapSelectItem:_refreshView()
 
 		self._txtnamelock.text = GameUtil.setFirstStrSize(name, 56)
 		self._txtnameunlock.text = GameUtil.setFirstStrSize(name, 56)
+	else
+		self._txtnamelock.text = GameUtil.setFirstStrSize(self.name, 56)
 	end
 
 	gohelper.setActive(self._gorecommend, not self._isLock and self._mapInfo.groupCo.mapRichness >= self.maxRichness)

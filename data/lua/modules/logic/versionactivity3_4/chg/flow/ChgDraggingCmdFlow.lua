@@ -28,7 +28,7 @@ function ChgDraggingCmdFlow:ctor(...)
 				if detectFinalEndItem:isLine() then
 					local ptItem = detectFinalEndItem:getNeighborItemByDir(self._displayFrame.lineItem:getDir())
 
-					if not ptItem:isEnd() then
+					if ptItem and not ptItem:isEnd() then
 						local w2 = flow:addWork(FunctionWork.New(GameFacade.showToast, ToastEnum.ChgOnNoEnergy))
 
 						w2:setRootInternal(self)
@@ -61,6 +61,13 @@ function ChgDraggingCmdFlow:_onDrawFrame()
 
 	if self._displayFrame.snapLineItem then
 		self._displayFrame.snapLineItem:bindEnd(self._displayFrame.snapLineEndItem)
+	end
+
+	if self._displayFrame.detectObstacleItem and self._displayFrame.lineItem:hoverItem() == self._displayFrame.detectObstacleItem then
+		GameFacade.showToast(ToastEnum.ChgOnBlock)
+		self._displayFrame:dumpLog()
+
+		self._myData.editWaitDragEnd = true
 	end
 end
 

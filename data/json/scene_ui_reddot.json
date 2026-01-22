@@ -51,6 +51,11 @@
   },
   {
     "id": 4,
+    "reddotId": 16,
+    "style": 13
+  },
+  {
+    "id": 4,
     "reddotId": 3010,
     "style": 13
   },
@@ -92,6 +97,11 @@
   {
     "id": 2,
     "reddotId": 15,
+    "style": 10
+  },
+  {
+    "id": 2,
+    "reddotId": 16,
     "style": 10
   },
   {

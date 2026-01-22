@@ -5,6 +5,7 @@ module("modules.logic.partygame.view.common.JoystickComp", package.seeall)
 local JoystickComp = class("JoystickComp", LuaCompBase)
 
 function JoystickComp:init(go)
+	self.go = go
 	self._joystickWrapCs = go:GetComponent(typeof(ZProj.JoystickWrap))
 	self._joystickGo = gohelper.findChild(go, "#go_joystick")
 	self._goeffectdir = gohelper.findChild(go, "vx_control")
@@ -22,6 +23,7 @@ end
 
 function JoystickComp:onInitView()
 	self._joystickWrapCs:SetInputType(1)
+	recthelper.setSize(self.go.transform, 800, 900)
 end
 
 function JoystickComp:addEventListeners()

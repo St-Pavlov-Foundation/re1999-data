@@ -91,6 +91,15 @@ function SurvivalShelterWeekMo:init(data, extendScore)
 	end
 end
 
+function SurvivalShelterWeekMo:onReceiveSurvivalDerivedContainerUpdatePush(msg)
+	for i, v in ipairs(msg.updates) do
+		v.finalVal = math.floor(v.finalVal)
+		self.derivedAttrs[v.derivedId] = v
+	end
+
+	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnDerivedUpdate)
+end
+
 function SurvivalShelterWeekMo:getBag(bagType)
 	return self.bags[bagType]
 end

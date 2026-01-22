@@ -11,6 +11,7 @@ function SurvivalRoleSelectItem:onInit()
 	self.lock = gohelper.findChild(self.viewGO, "#go_lock")
 	self.animLock = self.lock:GetComponent(gohelper.Type_Animator)
 	self.selectNode = gohelper.findChild(self.viewGO, "#Image_select")
+	self.go_finish = gohelper.findChild(self.viewGO, "#go_finish")
 	self.survivalOutSideRoleModel = SurvivalModel.instance:getOutSideInfo().survivalOutSideRoleMo
 
 	gohelper.setActive(self.selectNode, false)
@@ -77,6 +78,17 @@ function SurvivalRoleSelectItem:onItemShow(data)
 			SurvivalUnitIconHelper.instance:setNpcIcon(self.imgPicture, cardPath)
 		end
 	end
+
+	local outSideInfo = SurvivalModel.instance:getOutSideInfo()
+	local isShowFinish = false
+
+	if self.cfg.id == 1 then
+		isShowFinish = outSideInfo:isEndUnLock(3001)
+	elseif self.cfg.id == 2 then
+		isShowFinish = outSideInfo:isEndUnLock(3002)
+	end
+
+	gohelper.setActive(self.go_finish, isShowFinish)
 end
 
 function SurvivalRoleSelectItem:onSelectChange(isSelect)

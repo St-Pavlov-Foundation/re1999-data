@@ -16,14 +16,28 @@ function PartyClothModel:reInit()
 	self.previewClothIdMap = {}
 	self._getWearCloth = false
 	self.summonPoolMos = {}
+end
 
-	local strCacheData = GameUtil.playerPrefsGetStringByUserId(PlayerPrefsKey.PartyClothNewTag, "")
+function PartyClothModel:getNewTagCache()
+	if not self.clothNewTagCache then
+		local strCacheData = GameUtil.playerPrefsGetStringByUserId(PlayerPrefsKey.PartyClothNewTag, "")
 
-	if string.nilorempty(strCacheData) then
-		self.clothNewTagCache = {}
-	else
-		self.clothNewTagCache = cjson.decode(strCacheData)
+		if string.nilorempty(strCacheData) then
+			self.clothNewTagCache = {}
+
+			local idMap = PartyClothConfig.instance:getInitClothIdMap()
+
+			for _, id in pairs(idMap) do
+				self.clothNewTagCache[tostring(id)] = true
+			end
+
+			GameUtil.playerPrefsSetStringByUserId(PlayerPrefsKey.PartyClothNewTag, cjson.encode(self.clothNewTagCache))
+		else
+			self.clothNewTagCache = cjson.decode(strCacheData)
+		end
 	end
+
+	return self.clothNewTagCache
 end
 
 function PartyClothModel:setSummonPoolInfo(infos)
@@ -193,19 +207,22 @@ function PartyClothModel:setSortRule()
 end
 
 function PartyClothModel:hasNewTag(clothId)
+	local cache = self:getNewTagCache()
+
 	clothId = tostring(clothId)
 
-	return not self.clothNewTagCache[clothId]
+	return not cache[clothId]
 end
 
 function PartyClothModel:setNewTagInvalid(clothIdList)
 	local isChange
+	local cache = self:getNewTagCache()
 
 	for _, clothId in ipairs(clothIdList) do
 		clothId = tostring(clothId)
 
-		if not self.clothNewTagCache[clothId] then
-			self.clothNewTagCache[clothId] = true
+		if not cache[clothId] then
+			cache[clothId] = true
 			isChange = true
 		end
 	end

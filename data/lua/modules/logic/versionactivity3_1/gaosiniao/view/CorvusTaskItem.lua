@@ -54,7 +54,7 @@ end
 function CorvusTaskItem:_btnnotfinishbgOnClick()
 	local mo = self._mo
 	local config = mo.config
-	local jumpId = config.jumpId
+	local jumpId = config.jumpId or config.jumpid
 
 	if jumpId ~= 0 then
 		AudioMgr.instance:trigger(AudioEnum.UI.UI_checkpoint_resources_open)

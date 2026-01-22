@@ -172,9 +172,41 @@ function CardDropGameCardView:onLogicStateStart(curState)
 		self:onCoinStateStart(curState)
 	elseif curState == CardDropEnum.GameState.GameResult then
 		self:onGameResultStateStart(curState)
+	elseif curState == CardDropEnum.GameState.GuideVsView then
+		self:onGuideVsViewStateStart(curState)
+	elseif curState == CardDropEnum.GameState.GuidePromotion then
+		self:onGuidePromotionStateStart(curState)
+	elseif curState == CardDropEnum.GameState.GuidePartyResult then
+		self:onGuidePartyResultStateStart(curState)
 	elseif curState == CardDropEnum.GameState.WaitDone then
 		self:onWaitDoneStateStart(curState)
 	end
+end
+
+function CardDropGameCardView:onGuidePartyResultStateStart(curState)
+	PartyGameRpc.instance:PartyEndPush(1, 1000)
+end
+
+function CardDropGameCardView:onGuideVsViewStateStart(curState)
+	self.interface.HotFix_Temp("openCardDropVsView", self._openCardDropVsView, self)
+end
+
+function CardDropGameCardView:_openCardDropVsView(data)
+	ViewMgr.instance:openView(ViewName.CardDropVSView, {
+		openType = CardDropVSView.OpenType.ShowAllResult,
+		data = data
+	})
+end
+
+function CardDropGameCardView:onGuidePromotionStateStart(curState)
+	ViewMgr.instance:closeView(ViewName.CardDropVSView)
+	self.interface.HotFix_Temp("openCardDropVsView", self._openCardDropPromotionView, self)
+end
+
+function CardDropGameCardView:_openCardDropPromotionView(data)
+	ViewMgr.instance:openView(ViewName.CardDropPromotionView, {
+		data = data
+	})
 end
 
 function CardDropGameCardView:onCoinStateStart(curState)

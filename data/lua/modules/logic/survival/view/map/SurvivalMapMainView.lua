@@ -9,6 +9,7 @@ function SurvivalMapMainView:onInitView()
 
 	self._btnbag = gohelper.findChildButtonWithAudio(self.viewGO, "BottomRight/#btn_bag")
 	self._gobagfull = gohelper.findChild(self.viewGO, "BottomRight/#btn_bag/#go_overweight")
+	self._gowarning = gohelper.findChild(self.viewGO, "BottomRight/#btn_bag/#go_warning")
 	self._btnmap = gohelper.findChildButtonWithAudio(self.viewGO, "BottomRight/#btn_map")
 	self._btnlog = gohelper.findChildButtonWithAudio(self.viewGO, "BottomRight/#btn_log")
 	self._btnabort = gohelper.findChildButtonWithAudio(self.viewGO, "Left/#btn_abort")
@@ -70,6 +71,7 @@ function SurvivalMapMainView:removeEvents()
 	self._btnmap:RemoveClickListener()
 	self._btnlog:RemoveClickListener()
 	SurvivalController.instance:unregisterCallback(SurvivalEvent.OnMapBagUpdate, self._refreshBagFull, self)
+	SurvivalController.instance:unregisterCallback(SurvivalEvent.OnDerivedUpdate, self._refreshBagFull, self)
 	SurvivalController.instance:unregisterCallback(SurvivalEvent.OnRoleDateChange, self._refreshTeamLv, self)
 	SurvivalController.instance:unregisterCallback(SurvivalEvent.OnFollowTaskUpdate, self._refreshCurTask, self)
 	SurvivalController.instance:unregisterCallback(SurvivalEvent.OnEquipRedUpdate, self.updateEquipRed, self)
@@ -183,9 +185,14 @@ end
 
 function SurvivalMapMainView:_refreshBagFull()
 	local bagMo = SurvivalMapHelper.instance:getBagMo()
-	local isFull = bagMo.totalMass > bagMo:getMaxWeightLimit()
+	local max = bagMo:getMaxWeightLimit()
+	local isFull = max < bagMo.totalMass
 
 	gohelper.setActive(self._gobagfull, isFull)
+
+	local per = bagMo.totalMass / max
+
+	gohelper.setActive(self._gowarning, per >= 0.75 and per < 1)
 end
 
 function SurvivalMapMainView:_refreshCurTask()

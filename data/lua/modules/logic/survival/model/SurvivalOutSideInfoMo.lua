@@ -156,14 +156,6 @@ function SurvivalOutSideInfoMo:getEndId()
 	return endIds[1] and endIds[1].id or 0
 end
 
-function SurvivalOutSideInfoMo:haveEnd(id)
-	for i, v in pairs(self.endIdDict) do
-		if v == id then
-			return true
-		end
-	end
-end
-
 function SurvivalOutSideInfoMo:isEndUnLock(id)
 	for k, _ in pairs(self.endIdDict) do
 		if k == id then

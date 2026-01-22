@@ -125,7 +125,6 @@ function SurvivalRoleLevelUpView:onOpen()
 		self.flow:addWork(flowParallel)
 	end
 
-	self.flow:addWork(TimerWork.New(0.9))
 	self.flow:addWork(FunctionWork.New(function()
 		gohelper.setActive(self.txt_close.gameObject, true)
 		gohelper.setActive(self.btnClose.gameObject, true)

@@ -354,6 +354,8 @@ function FightModel:getUserSpeed()
 end
 
 function FightModel:setUserSpeed(speed)
+	speed = speed or 1
+	speed = Mathf.Clamp(speed, 1, self:getMaxSpeed())
 	self._userSpeed = speed or 1
 
 	self:updateRTPCSpeed()

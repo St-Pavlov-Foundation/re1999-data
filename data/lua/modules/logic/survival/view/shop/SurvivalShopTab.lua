@@ -4,8 +4,8 @@ module("modules.logic.survival.view.shop.SurvivalShopTab", package.seeall)
 
 local SurvivalShopTab = class("SurvivalShopTab", SimpleListItem)
 
-function SurvivalShopTab:onInit(viewGO)
-	self.image_icon = gohelper.findChildImage(viewGO, "#image_icon")
+function SurvivalShopTab:onInit()
+	self.image_icon = gohelper.findChildImage(self.viewGO, "#image_icon")
 end
 
 function SurvivalShopTab:onItemShow(data)

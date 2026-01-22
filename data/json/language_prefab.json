@@ -24517,11 +24517,11 @@
   },
   {
     "id": "p_v3a2_warmup_txt_WrongChannel",
-    "lang": "查看UTTU东方游记特辑"
+    "lang": "拂走尘土间的碎语，\n祂们会来迎接你。"
   },
   {
     "id": "p_v3a2_warmup_txt_tips",
-    "lang": "左划打开杂志浏览旅游板块"
+    "lang": "划动拂走墙壁上的尘埃"
   },
   {
     "id": "p_v3a2_bossrush_leveldetail_txt_bouns",
@@ -26173,7 +26173,7 @@
   },
   {
     "id": "p_survivalgivebackview_txt_desc1",
-    "lang": "失误"
+    "lang": "失物返还"
   },
   {
     "id": "p_survivalgivebackview_txt_desc2",
@@ -26516,19 +26516,271 @@
     "lang": "使用兔之环·【湖的涟漪】可以在“湖的涟漪”卡池中<#C66030>不限次数征集</color>!"
   },
   {
-    "id": "p_v3a4_partygame_help_1_title",
-    "lang": "抢钱小游戏"
-  },
-  {
     "id": "p_v3a4_partygame_help_1_txt_1",
-    "lang": "TIPS1:\\n每次搬运最多3个，搬运越多，移动越慢"
+    "lang": "TIPS1:\n每次搬运最多3个，搬运越多，移动越慢"
   },
   {
     "id": "p_v3a4_partygame_help_1_txt_2",
-    "lang": "TIPS2:\\n注意躲避招潮蟹"
+    "lang": "TIPS2:\n注意躲避招潮蟹"
   },
   {
     "id": "p_v3a4_partygame_help_1_txt_3",
     "lang": "搬运浆果到仓库位置进行提交"
+  },
+  {
+    "id": "p_v3a4_partygame_help_2_txt_1",
+    "lang": "圣火燃烧时，会显现出正确的道路"
+  },
+  {
+    "id": "p_v3a4_partygame_help_2_txt_2",
+    "lang": "TIPS:\n注意抵达终点的人会回头干扰你的试炼"
+  },
+  {
+    "id": "p_v3a4_partygame_help_2_txt_3",
+    "lang": "选择正确的石板前进，抵达试炼的终点"
+  },
+  {
+    "id": "p_v3a4_partygame_help_3_txt_1",
+    "lang": "在演练的平台中间，躲避四处袭来的攻击\n尽量减少被击中的次数"
+  },
+  {
+    "id": "p_v3a4_partygame_help_4_txt_1",
+    "lang": "在绿色和黄色指示灯期问，尽快前进抵达终点"
+  },
+  {
+    "id": "p_v3a4_partygame_help_4_txt_2",
+    "lang": "在红色指示灯亮起时停止移动，否则会受到指挥塔的攻击"
+  },
+  {
+    "id": "p_v3a4_partygame_help_5_txt_1",
+    "lang": "货船在经过检查站时，会显示携带的货物"
+  },
+  {
+    "id": "p_v3a4_partygame_help_5_txt_2",
+    "lang": "吊起装载污染物的货船，+1分"
+  },
+  {
+    "id": "p_v3a4_partygame_help_5_txt_3",
+    "lang": "吊起走私魔精的货船，+3分"
+  },
+  {
+    "id": "p_v3a4_partygame_help_5_txt_4",
+    "lang": "吊起装载普通货物的货船将受到惩罚，短时间无法操作"
+  },
+  {
+    "id": "p_v3a4_partygame_help_5_txt_5",
+    "lang": "请在码头处吊起装载污染物的货船"
+  },
+  {
+    "id": "p_v3a4_partygame_help_6_txt_1",
+    "lang": "请在揭示图案期间，找到本轮出现正确图案的地板，并站上去"
+  },
+  {
+    "id": "p_v3a4_partygame_help_6_txt_2",
+    "lang": "地板上会出现不同的尤提姆，请记住他们的位置"
+  },
+  {
+    "id": "p_v3a4_partygame_help_7_txt_1",
+    "lang": "选择自己想要捕获的魔精"
+  },
+  {
+    "id": "p_v3a4_partygame_help_7_txt_2",
+    "lang": "和对手选到同一组魔精时，都无法捕获成功"
+  },
+  {
+    "id": "p_v3a4_partygame_help_8_txt_1",
+    "lang": "在冰原上填上自己的色彩"
+  },
+  {
+    "id": "p_v3a4_partygame_help_8_txt_2",
+    "lang": "触碰彩色泡泡，会使周围一圈雪地变成自己的色彩"
+  },
+  {
+    "id": "p_v3a4_partygame_help_9_txt_1",
+    "lang": "在浮冰上避开陷阱，找到神秘的图腾获取奖励"
+  },
+  {
+    "id": "p_v3a4_partygame_help_9_txt_2",
+    "lang": "每秒+3分"
+  },
+  {
+    "id": "p_v3a4_partygame_help_9_txt_3",
+    "lang": "每秒+1分"
+  },
+  {
+    "id": "p_v3a4_partygame_help_9_txt_4",
+    "lang": "每秒-1分"
+  },
+  {
+    "id": "p_v3a4_partygame_help_9_txt_5",
+    "lang": "裂缝：眩晕2秒"
+  },
+  {
+    "id": "p_v3a4_partygame_help_9_txt_6",
+    "lang": "罐头：增加移动速度"
+  },
+  {
+    "id": "p_v3a4_partygame_help_10_txt_1",
+    "lang": "在古老的石窟里收集烛火"
+  },
+  {
+    "id": "p_v3a4_partygame_help_10_txt_2",
+    "lang": "要小心石窟守卫魔像的袭击"
+  },
+  {
+    "id": "p_v3a4_partygame_help_10_txt_3",
+    "lang": "紫色烛火+10分"
+  },
+  {
+    "id": "p_v3a4_partygame_help_10_txt_4",
+    "lang": "蓝色烛火+5分"
+  },
+  {
+    "id": "p_v3a4_partygame_help_10_txt_5",
+    "lang": "橙色烛火+1分"
+  },
+  {
+    "id": "p_v3a4_partygame_help_10_txt_6",
+    "lang": "拾取绿宝石，获得短暂加速"
+  },
+  {
+    "id": "p_v3a4_partygame_help_11_txt_1",
+    "lang": "卡邦克鲁塔高度超过彩带时，获得胜利"
+  },
+  {
+    "id": "p_v3a4_partygame_help_11_txt_2",
+    "lang": "小心招潮蟹，它会让你的卡邦克鲁塔瞬间崩塌"
+  },
+  {
+    "id": "p_v3a4_partygame_help_11_txt_3",
+    "lang": "接住跳下的卡邦克鲁，越多越好"
+  },
+  {
+    "id": "p_v3a4_partygame_help_12_txt_1",
+    "lang": "操作X的鲁布·戈德堡机械发明，将不同魔精扭蛋落入对应的筐里"
+  },
+  {
+    "id": "p_v3a4_partygame_help_12_txt_2",
+    "lang": "小球落入正确的桶中+1分，否则-1分"
+  },
+  {
+    "id": "p_v3a4_partygame_help_13_txt_1",
+    "lang": "找到正确的门，以最快的速度向房顶撤离"
+  },
+  {
+    "id": "p_v3a4_partygame_help_14_txt_1",
+    "lang": "答对速度越快，获得分数越高"
+  },
+  {
+    "id": "p_v3a4_partygame_help_14_txt_2",
+    "lang": "进入游戏时，会出现一道题目，寻找不同的图案"
+  },
+  {
+    "id": "p_v3a4_partygame_help_14_txt_3",
+    "lang": "请快速选择出现的答案组中，正确的答案"
+  },
+  {
+    "id": "p_v3a4_partygame_help_15_txt_1",
+    "lang": "从不断翻转的照片中，找到出现次数最多的尤提姆照片"
+  },
+  {
+    "id": "p_v3a4_partygame_help_16_txt_1",
+    "lang": "快速找出面积最大的区域\n所选区域面积越大，获得分数越高"
+  },
+  {
+    "id": "p_v3a4_partygame_help_17_txt_1",
+    "lang": "快速找出躲在窗帘后的尤提姆越快找出，获得分数越高"
+  },
+  {
+    "id": "p_v3a4_partygame_help_18_txt_1",
+    "lang": "通过旋转和交换图片位置，以最快的速度完成拼图"
+  },
+  {
+    "id": "p_v3a4_partygame_help_19_txt_1",
+    "lang": "选择地形，搭建起抵达对岸的道路避免与他人选择同一块地形"
+  },
+  {
+    "id": "p_v3a4_partygame_help_1_txt_title",
+    "lang": "露兜树的回忆"
+  },
+  {
+    "id": "p_v3a4_partygame_help_2_txt_title",
+    "lang": "以圣火照亮"
+  },
+  {
+    "id": "p_v3a4_partygame_help_3_txt_title",
+    "lang": "训练日"
+  },
+  {
+    "id": "p_v3a4_partygame_help_4_txt_title",
+    "lang": "失控视线"
+  },
+  {
+    "id": "p_v3a4_partygame_help_5_txt_title",
+    "lang": "雾都大搜查"
+  },
+  {
+    "id": "p_v3a4_partygame_help_6_txt_title",
+    "lang": "像素扭扭节"
+  },
+  {
+    "id": "p_v3a4_partygame_help_7_txt_title",
+    "lang": "魔精牛仔"
+  },
+  {
+    "id": "p_v3a4_partygame_help_8_txt_title",
+    "lang": "雪中填色本"
+  },
+  {
+    "id": "p_v3a4_partygame_help_9_txt_title",
+    "lang": "地母遗踪"
+  },
+  {
+    "id": "p_v3a4_partygame_help_10_txt_title",
+    "lang": "石窟燃烛记"
+  },
+  {
+    "id": "p_v3a4_partygame_help_11_txt_title",
+    "lang": "新毛茸塔"
+  },
+  {
+    "id": "p_v3a4_partygame_help_12_txt_title",
+    "lang": "智能妙妙分类机"
+  },
+  {
+    "id": "p_v3a4_partygame_help_13_txt_title",
+    "lang": "科马拉出逃记"
+  },
+  {
+    "id": "p_v3a4_partygame_help_14_txt_title",
+    "lang": "看爱心，波拉比！"
+  },
+  {
+    "id": "p_v3a4_partygame_help_15_txt_title",
+    "lang": "冲印箱大清点"
+  },
+  {
+    "id": "p_v3a4_partygame_help_16_txt_title",
+    "lang": "理线学第一课"
+  },
+  {
+    "id": "p_v3a4_partygame_help_17_txt_title",
+    "lang": "谁在窗帘后？"
+  },
+  {
+    "id": "p_v3a4_partygame_help_18_txt_title",
+    "lang": "华城争春"
+  },
+  {
+    "id": "p_v3a4_partygame_help_19_txt_title",
+    "lang": "于意象之海"
+  },
+  {
+    "id": "p_partygame_invitetipsitem_txt_title",
+    "lang": "派对邀请"
+  },
+  {
+    "id": "p_partygame_result_txt_newtips",
+    "lang": "等待其他组战斗结束"
   }
 ]

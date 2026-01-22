@@ -106,5 +106,32 @@
     "duration": 0.0,
     "effectHangPoint": "mountroot",
     "audio": 430530541
+  },
+  {
+    "effectPath": "pre_yaxian_innate_5_03",
+    "target": 2,
+    "skinId": 305303,
+    "changedPath": "v1a5_yaxian/pre_v1a5_yaxian_innate_5_03",
+    "duration": 0.0,
+    "effectHangPoint": "mountbottom",
+    "audio": 0
+  },
+  {
+    "effectPath": "pre_yaxian_innate_5_03",
+    "target": 2,
+    "skinId": 305304,
+    "changedPath": "v2a3_yaxian_yjdzyc/yaxian_yjtzyc_innate_03",
+    "duration": 0.0,
+    "effectHangPoint": "mountbottom",
+    "audio": 0
+  },
+  {
+    "effectPath": "pre_yaxian_innate_5_03",
+    "target": 2,
+    "skinId": 305305,
+    "changedPath": "buff/pre_v3a4_yx_innate_01_3",
+    "duration": 0.0,
+    "effectHangPoint": "mountbottom",
+    "audio": 0
   }
 ]

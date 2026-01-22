@@ -110,6 +110,10 @@ function SummonGiftPropBaseView:refreshGift()
 		count = count + 1
 
 		table.insert(moList, mo)
+
+		if count >= StoreEnum.SummonPoolPackageMinCount then
+			break
+		end
 	end
 
 	if count < StoreEnum.SummonPoolPackageMinCount then

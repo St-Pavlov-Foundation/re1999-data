@@ -44,6 +44,12 @@ function PartyGameLobbyMainView:_btnmutiPlayerOnClick()
 end
 
 function PartyGameLobbyMainView:_btnsinglePlayerOnClick()
+	if GuideModel.instance:isFlagEnable(GuideModel.GuideFlag.PartyGameLocalGame1) then
+		GuideModel.instance:clearFlagValue(GuideModel.GuideFlag.PartyGameLocalGame1)
+
+		return
+	end
+
 	PartyMatchRpc.instance:sendSingleStartPartyMatchRequest(PartyGameRoomModel.getResVersion())
 end
 

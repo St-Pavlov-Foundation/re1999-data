@@ -172,6 +172,23 @@ function PartyGameViewDefine.init(module_views)
 			cardItem = "ui/viewres/partygame/common/common_carditem.prefab"
 		}
 	}
+	module_views.PartyGameRewardGuideView = {
+		destroy = 0,
+		container = "PartyGameRewardGuideViewContainer",
+		mainRes = "ui/viewres/partygame/common/common_gamereward.prefab",
+		layer = "POPUP_TOP",
+		viewType = ViewType.Modal,
+		otherRes = {
+			cardItem = "ui/viewres/partygame/common/common_carditem.prefab"
+		}
+	}
+	module_views.PartyGameHelpView = {
+		destroy = 0,
+		container = "PartyGameHelpViewContainer",
+		mainRes = "ui/viewres/partygame/common/common_helpview_ex.prefab",
+		layer = "POPUP_TOP",
+		viewType = ViewType.Normal
+	}
 end
 
 function PartyGameViewDefine.GetGameViewParam(containerName, mainResName)

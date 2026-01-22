@@ -49,6 +49,9 @@ CardDropEnum.GameState = {
 	CalculateRank = GetStateId(),
 	Coin = GetStateId(),
 	GameResult = GetStateId(),
+	GuideVsView = GetStateId(),
+	GuidePromotion = GetStateId(),
+	GuidePartyResult = GetStateId(),
 	WaitDone = GetStateId()
 }
 CardDropEnum.AnimNameEnum = {

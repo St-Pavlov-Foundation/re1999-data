@@ -41,6 +41,7 @@ function PartyClothPartItem:onSelect(isSelect)
 		PartyClothModel.instance:setNewTagInvalid({
 			self.config.clothId
 		})
+		PartyClothController.instance:dispatchEvent(PartyClothEvent.NewTagChange, self.config.partId)
 		self:refreshNewTag()
 	end
 

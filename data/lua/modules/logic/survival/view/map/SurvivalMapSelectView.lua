@@ -17,6 +17,17 @@ function SurvivalMapSelectView:onInitView()
 	self._gohard = gohelper.findChild(self._root, "Right/#go_difficulty/hard")
 	self._gohardEffect = gohelper.findChild(self.viewGO, "#simage_bghard")
 	self._go_recommend = gohelper.findChild(self._root, "Right/#go_recommend")
+
+	local cfgDic = lua_survival_map_group.configDict
+
+	self.mapName = {
+		cfgDic[10000].name,
+		cfgDic[20000].name,
+		cfgDic[30000].name,
+		cfgDic[40000].name,
+		cfgDic[50000].name,
+		cfgDic[60000].name
+	}
 end
 
 function SurvivalMapSelectView:addEvents()
@@ -56,7 +67,8 @@ function SurvivalMapSelectView:onOpen()
 			callobj = self,
 			mapInfo = mapInfo,
 			index = index,
-			maxRichness = self.maxRichness
+			maxRichness = self.maxRichness,
+			name = self.mapName[index]
 		})
 	end
 

@@ -14,7 +14,6 @@ function SurvivalGiveBackView:onInitView()
 	local param = SimpleListParam.New()
 
 	param.cellClass = SurvivalGiveBackItem
-	param.lineCount = 6
 	self.itemScroll = GameFacade.createSimpleListComp(self.items, param, self.SurvivalGiveBackItem, self.viewContainer)
 
 	self.itemScroll:setOnClickItem(self.onClickItem, self)

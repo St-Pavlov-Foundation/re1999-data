@@ -45,12 +45,16 @@ function MiniPartyView:_btnjumpOnClick()
 		return
 	end
 
+	self._popularCount = TitleAppointmentModel.instance:getPopularValueCount()
+
+	gohelper.setActive(self._gojumpreddot, false)
 	LaplaceForumController.instance:openLaplaceTitleAppointmentView()
 end
 
 function MiniPartyView:_editableInitView()
 	self._actId = VersionActivity3_4Enum.ActivityId.LaplaceMiniParty
 
+	gohelper.setActive(self._gojumpreddot, false)
 	self:_addSelfEvents()
 end
 
@@ -68,6 +72,9 @@ end
 
 function MiniPartyView:onOpen()
 	TaskDispatcher.runRepeat(self._refreshTime, self, 1)
+
+	self._popularCount = TitleAppointmentModel.instance:getPopularValueCount()
+
 	self:_refreshTime()
 	self:_refreshUI()
 end
@@ -78,6 +85,13 @@ end
 
 function MiniPartyView:_refreshUI()
 	local popularCount = TitleAppointmentModel.instance:getPopularValueCount()
+
+	if self._popularCount ~= popularCount then
+		local lastStage = TitleAppointmentModel:getTitleStageByPopularCount(self._popularCount)
+		local curStage = TitleAppointmentModel:getTitleStageByPopularCount(popularCount)
+
+		gohelper.setActive(self._gojumpreddot, lastStage < curStage)
+	end
 
 	self._txtjumpnum.text = GameUtil.numberDisplay(popularCount)
 end

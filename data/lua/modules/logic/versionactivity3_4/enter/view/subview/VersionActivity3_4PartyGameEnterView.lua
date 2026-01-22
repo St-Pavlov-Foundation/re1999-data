@@ -14,7 +14,7 @@ function VersionActivity3_4PartyGameEnterView:onInitView()
 	self._btnstore = gohelper.findChildButtonWithAudio(self.viewGO, "entrance/#btn_store")
 	self._txtshop = gohelper.findChildText(self.viewGO, "entrance/#btn_store/normal/#txt_shop")
 	self._txtnum = gohelper.findChildText(self.viewGO, "entrance/#btn_store/normal/#txt_num")
-	self._gotips = gohelper.findChildText(self.viewGO, "entrance/#btn_store/tips")
+	self._gotips = gohelper.findChild(self.viewGO, "entrance/#btn_store/tips")
 	self._txttips = gohelper.findChildText(self.viewGO, "entrance/#btn_store/tips/#txt_tips")
 	self._btnenter = gohelper.findChildButtonWithAudio(self.viewGO, "entrance/#btn_enter")
 	self._goopen = gohelper.findChild(self.viewGO, "entrance/#btn_enter/go_open")
@@ -63,6 +63,10 @@ end
 
 function VersionActivity3_4PartyGameEnterView:_btnenterOnClick()
 	if self:_checkOpen() then
+		if PartyGameLobbyController:enterGameLobbyGuide() then
+			return
+		end
+
 		PartyGameLobbyController.instance:enterGameLobby()
 	else
 		GameFacade.showToast(ToastEnum.PartyGameNotOpen)

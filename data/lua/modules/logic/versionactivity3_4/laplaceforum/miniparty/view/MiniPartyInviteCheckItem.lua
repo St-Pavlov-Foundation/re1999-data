@@ -184,6 +184,7 @@ function MiniPartyInviteCheckItem:_onLoadFinish()
 end
 
 function MiniPartyInviteCheckItem:destroy()
+	TaskDispatcher.cancelTask(self._startShowSwitch, self)
 	self:_disposeBg()
 	self:_removeEvents()
 end

@@ -29,6 +29,11 @@ end
 
 function LaplaceForumController:onRefreshActivity()
 	local actInfoMo = ActivityModel.instance:getActivityInfo()[VersionActivity3_4Enum.ActivityId.LaplaceTowerAlbum]
+
+	if not actInfoMo then
+		return
+	end
+
 	local isExpired = actInfoMo:getRealEndTimeStamp() - ServerTime.now() < 1
 	local couldGet = actInfoMo and actInfoMo:isOnline() and actInfoMo:isOpen() and not isExpired
 

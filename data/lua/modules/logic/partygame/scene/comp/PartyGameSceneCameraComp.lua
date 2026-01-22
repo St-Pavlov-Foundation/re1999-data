@@ -37,6 +37,7 @@ function PartyGameSceneCameraComp:_onScreenResize()
 	local fov = cameraConfig.fov * fovRatio
 	local minFov, maxFov = self:_getMinMaxFov()
 
+	minFov = minFov < self._cameraCO.fov and self._cameraCO.fov or minFov
 	fov = Mathf.Clamp(fov, minFov, maxFov)
 
 	local mainCamera = CameraMgr.instance:getMainCamera()
@@ -102,7 +103,7 @@ function PartyGameSceneCameraComp:_calcFovInternal(cameraConfig)
 end
 
 function PartyGameSceneCameraComp:_getMinMaxFov()
-	return 38, 120
+	return 20, 120
 end
 
 function PartyGameSceneCameraComp:onSceneStart(sceneId, levelId)

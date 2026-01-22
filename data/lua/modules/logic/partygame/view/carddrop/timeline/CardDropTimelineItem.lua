@@ -164,11 +164,15 @@ function CardDropTimelineItem:onLoadTimelineDone()
 end
 
 function CardDropTimelineItem:addUpdateHandle()
-	UpdateBeat:AddListener(self.updateHandle)
+	if self.updateHandle then
+		UpdateBeat:AddListener(self.updateHandle)
+	end
 end
 
 function CardDropTimelineItem:removeUpdateHandle()
-	UpdateBeat:RemoveListener(self.updateHandle)
+	if self.updateHandle then
+		UpdateBeat:RemoveListener(self.updateHandle)
+	end
 end
 
 function CardDropTimelineItem:frameUpdate()
@@ -188,20 +192,25 @@ function CardDropTimelineItem:clearLoader()
 end
 
 function CardDropTimelineItem:destroy()
-	self.binder:RemoveFrameEventCallback()
-	self.binder:RemoveEndCallback()
-	self.binder:Stop(true)
-	gohelper.destroy(self.go)
-
-	for _, behaviour in pairs(self.playingBehaviourDict) do
-		behaviour:onBehaviourEnd()
-		behaviour:onTimelineEnd()
-		behaviour:destroy()
+	if self.binder then
+		self.binder:RemoveFrameEventCallback()
+		self.binder:RemoveEndCallback()
+		self.binder:Stop(true)
 	end
 
-	tabletool.clear(self.playingBehaviourDict)
+	gohelper.destroy(self.go)
 
-	self.playingBehaviourDict = nil
+	if self.playingBehaviourDict then
+		for _, behaviour in pairs(self.playingBehaviourDict) do
+			behaviour:onBehaviourEnd()
+			behaviour:onTimelineEnd()
+			behaviour:destroy()
+		end
+
+		tabletool.clear(self.playingBehaviourDict)
+
+		self.playingBehaviourDict = nil
+	end
 
 	self:clearLoader()
 	self:removeUpdateHandle()

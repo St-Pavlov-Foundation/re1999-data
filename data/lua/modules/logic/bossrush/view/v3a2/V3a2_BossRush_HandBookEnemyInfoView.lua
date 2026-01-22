@@ -82,6 +82,13 @@ function V3a2_BossRush_HandBookEnemyInfoView:_editableInitView()
 	self._simggoalbouns = gohelper.findChildSingleImage(self._gogoalbouns, "icon")
 
 	self:addEventCb(BossRushController.instance, BossRushEvent.V3a2_BossRush_HandBook_SelectMonsterCB, self.onSelectMonsterChange, self)
+	self:addEventCb(ViewMgr.instance, ViewEvent.OnOpenView, self._onOpenView, self)
+end
+
+function V3a2_BossRush_HandBookEnemyInfoView:_onOpenView(viewName)
+	if viewName == ViewName.V3a2_BossRush_RankView then
+		self:_onfinishExpLoopAudio()
+	end
 end
 
 function V3a2_BossRush_HandBookEnemyInfoView:onOpen()
@@ -330,7 +337,9 @@ function V3a2_BossRush_HandBookEnemyInfoView:_doTweenExp(orgin, target)
 	ZProj.TweenHelper.KillByObj(self._imageslider)
 	self:_showExpSlider()
 
-	if orgin == target then
+	if math.ceil(orgin) == math.ceil(target) then
+		self:_onfinishExpLoopAudio()
+
 		return
 	end
 
@@ -340,9 +349,23 @@ function V3a2_BossRush_HandBookEnemyInfoView:_doTweenExp(orgin, target)
 
 	local fillAmount = self._needExp == 0 and 0 or target / self._needExp * self._sliderScale
 
-	self:_onPlayExpLoopAudio()
-	TaskDispatcher.cancelTask(self._onfinishExpLoopAudio, self)
-	TaskDispatcher.runDelay(self._onfinishExpLoopAudio, self, time)
+	if fillAmount - self._imageslider.fillAmount < 0.01 then
+		self._imageslider.fillAmount = fillAmount
+		self._saveExp = self._heightScore
+
+		self:_setProgressTxt()
+		self:_onfinishExpLoopAudio()
+
+		if self.tweenId then
+			ZProj.TweenHelper.KillById(self.tweenId)
+
+			self.tweenId = nil
+		end
+
+		return
+	end
+
+	self:_onPlayExpLoopAudio(time)
 	ZProj.TweenHelper.DOFillAmount(self._imageslider, fillAmount, time, self._onfinishExpLoopAudio, self, nil, EaseType.Linear)
 end
 
@@ -358,7 +381,7 @@ function V3a2_BossRush_HandBookEnemyInfoView:finishCallback()
 	self:_refreshExpBonus()
 	self._handBookMo:setSaveExp(self._saveExp)
 
-	if math.ceil(self._saveExp) < self._heightScore then
+	if math.ceil(self._saveExp) < math.ceil(self._heightScore) then
 		local nextPointBonus = self._handBookMo:getNextPointBonus()
 
 		if nextPointBonus then
@@ -374,6 +397,9 @@ function V3a2_BossRush_HandBookEnemyInfoView:finishCallback()
 		end
 	end
 
+	self._saveExp = self._heightScore
+
+	self:_setProgressTxt()
 	self:_onfinishExpLoopAudio()
 end
 
@@ -430,12 +456,19 @@ function V3a2_BossRush_HandBookEnemyInfoView:refreshExp()
 	end
 end
 
-function V3a2_BossRush_HandBookEnemyInfoView:_onPlayExpLoopAudio()
-	AudioMgr.instance:trigger(AudioEnum3_2.BossRush.play_ui_zongmao_jiafen_loop)
+function V3a2_BossRush_HandBookEnemyInfoView:_onPlayExpLoopAudio(time)
+	self._loopAudioId = AudioMgr.instance:trigger(AudioEnum3_2.BossRush.play_ui_zongmao_jiafen_loop)
+
+	TaskDispatcher.cancelTask(self._onfinishExpLoopAudio, self)
+	TaskDispatcher.runDelay(self._onfinishExpLoopAudio, self, time or 1)
 end
 
 function V3a2_BossRush_HandBookEnemyInfoView:_onfinishExpLoopAudio()
 	AudioMgr.instance:trigger(AudioEnum3_2.BossRush.stop_ui_zongmao_jiafen_loop)
+
+	if self._loopAudioId then
+		AudioMgr.instance:stopPlayingID(self._loopAudioId)
+	end
 end
 
 function V3a2_BossRush_HandBookEnemyInfoView:_refreshExpBonus()

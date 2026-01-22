@@ -137,6 +137,22 @@ function TitleAppointmentModel:isLoopBonus(index)
 	return bonusCo and bonusCo.isLoopBonus
 end
 
+function TitleAppointmentModel:getTitleStageByPopularCount(count)
+	local bonusCos = TitleAppointmentConfig.instance:getMilestoneBonusCos()
+
+	if count >= bonusCos[#bonusCos].coinNum then
+		local interver = math.floor((count - bonusCos[#bonusCos].coinNum) / bonusCos[#bonusCos].loopBonusIntervalNum)
+
+		return #bonusCos + interver
+	end
+
+	for i = 1, #bonusCos - 1 do
+		if count >= bonusCos[i].coinNum and count < bonusCos[i + 1].coinNum then
+			return i
+		end
+	end
+end
+
 TitleAppointmentModel.instance = TitleAppointmentModel.New()
 
 return TitleAppointmentModel

@@ -78,6 +78,14 @@ function MiniPartyModel:getInviteCode()
 end
 
 function MiniPartyModel:getFriendTeams()
+	for i = #self._friendTeams, 1, -1 do
+		local friendMo = SocialModel.instance:getPlayerMO(self._friendTeams[i].friendUid)
+
+		if not friendMo then
+			table.remove(self._friendTeams, i)
+		end
+	end
+
 	table.sort(self._friendTeams, function(a, b)
 		local aSort = a.isTeam and 0 or 1
 		local bSort = b.isTeam and 0 or 1

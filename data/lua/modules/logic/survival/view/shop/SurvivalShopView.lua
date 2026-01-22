@@ -37,6 +37,18 @@ function SurvivalShopView:onInitView()
 	self.ShopTab = gohelper.findChild(self.viewGO, "Right/tab/Viewport/Content/ShopTab")
 
 	self:createTabListComp()
+
+	self._golefttab = gohelper.findChild(self.viewGO, "Left/tab/Viewport/Content")
+
+	local scrollParam = SimpleListParam.New()
+
+	scrollParam.cellClass = SurvivalShopLeftTab
+	self.leftTabListComp = GameFacade.createSimpleListComp(self._golefttab, scrollParam, nil, self.viewContainer)
+
+	self.leftTabListComp:addCustomItem(gohelper.findChild(self._golefttab, "SurvivalShopLeftTab1"))
+	self.leftTabListComp:addCustomItem(gohelper.findChild(self._golefttab, "SurvivalShopLeftTab2"))
+	self.leftTabListComp:setOnClickItem(self.onClickLeftTab, self)
+	self.leftTabListComp:setOnSelectChange(self.onSelectLeftTabCallBack, self)
 end
 
 function SurvivalShopView:addEvents()
@@ -87,6 +99,10 @@ function SurvivalShopView:onOpen()
 	self.shopType = self._shopMo.shopType
 
 	SurvivalController.instance:dispatchEvent(SurvivalEvent.GuideShopOpen, self.shopType)
+
+	self.isShowLeftTab = self._shopMo:isPreExploreShop()
+
+	gohelper.setActive(self._golefttab, self.isShowLeftTab)
 	self:refreshTitle()
 	gohelper.setActive(self._btnenter, self._shopMo:isPreExploreShop())
 
@@ -111,14 +127,6 @@ function SurvivalShopView:onOpen()
 	self._infoPanel:setChangeSource(t)
 	gohelper.setActive(self._goempty, true)
 
-	if self._shopMo:isPreExploreShop() then
-		local weekInfo = SurvivalShelterModel.instance:getWeekInfo()
-
-		self._bagMo = weekInfo:getBag(SurvivalEnum.ItemSource.Map)
-	else
-		self._bagMo = SurvivalMapHelper.instance:getBagMo()
-	end
-
 	self._curSelectUid = nil
 	self._isSelectLeft = false
 
@@ -136,9 +144,28 @@ function SurvivalShopView:onOpen()
 
 	self._simpleRightList:setCellUpdateCallBack(self._createRightItem, self, nil, self._gorightitem)
 	self:initWeightAndSort()
-	self:_refreshBag()
 	self:refreshTabListComp()
 	self.tabListComp:setSelect(1)
+
+	if self.isShowLeftTab then
+		self.leftTabListComp:setData({
+			SurvivalEnum.ItemSource.Map,
+			SurvivalEnum.ItemSource.Shelter
+		})
+		self.leftTabListComp:setSelect(1)
+	else
+		self:_refreshBag()
+	end
+end
+
+function SurvivalShopView:getBagMo()
+	if self._shopMo:isPreExploreShop() then
+		local item = self.leftTabListComp:getCurSelectItem()
+
+		return item.bag
+	else
+		return SurvivalMapHelper.instance:getBagMo()
+	end
 end
 
 function SurvivalShopView:isShowPrice()
@@ -257,7 +284,7 @@ function SurvivalShopView:_refreshBagByServer(msg)
 	for i = 1, #self.currencyShow do
 		if tabletool.indexOf(self.currencyShow, i) then
 			local preVal = tonumber(self["_txttag" .. i].text) or 0
-			local nowVal = self._bagMo:getCurrencyNum(i)
+			local nowVal = self:getBagMo():getCurrencyNum(i)
 
 			if preVal < nowVal then
 				self._golefttaganim:Play()
@@ -299,7 +326,7 @@ function SurvivalShopView:_refreshBagByServer(msg)
 		for go in pairs(self._simpleRightList:getAllGos()) do
 			local instGo = gohelper.findChild(go, "inst")
 			local item = MonoHelper.getLuaComFromGo(instGo, SurvivalBagItem)
-			local currencyNum = self._bagMo:getCurrencyNum(1)
+			local currencyNum = self:getBagMo():getCurrencyNum(1)
 			local shopStyleParam = item.shopStyleParam
 
 			shopStyleParam.currencyNum = currencyNum
@@ -338,7 +365,7 @@ function SurvivalShopView:_refreshBag()
 		if tabletool.indexOf(self.currencyShow, i) then
 			gohelper.setActive(self["_gotag" .. i], true)
 
-			self["_txttag" .. i].text = self._bagMo:getCurrencyNum(i)
+			self["_txttag" .. i].text = self:getBagMo():getCurrencyNum(i)
 		else
 			gohelper.setActive(self["_gotag" .. i], false)
 		end
@@ -346,7 +373,7 @@ function SurvivalShopView:_refreshBag()
 
 	local showItems = {}
 
-	for _, itemMo in ipairs(self._bagMo.items) do
+	for _, itemMo in ipairs(self:getBagMo().items) do
 		if self:isShowItem(itemMo) and SurvivalBagSortHelper.filterItemMo(self._filterList, itemMo) then
 			table.insert(showItems, itemMo)
 		end
@@ -464,7 +491,7 @@ function SurvivalShopView:_createRightItem(obj, data, index)
 	item:setIsSelect(self._curSelectUid and data.uid == self._curSelectUid and not self._isSelectLeft)
 
 	if self:isShowPrice() then
-		local currencyNum = self._bagMo:getCurrencyNum(1)
+		local currencyNum = self:getBagMo():getCurrencyNum(1)
 
 		item:setShopStyle({
 			isShow = not data:isEmpty(),
@@ -545,7 +572,6 @@ function SurvivalShopView:createTabListComp()
 	local scrollParam = SimpleListParam.New()
 
 	scrollParam.cellClass = SurvivalShopTab
-	scrollParam.lineCount = 1
 	scrollParam.cellSpaceV = 10
 	self.tabListComp = GameFacade.createSimpleListComp(self.ShopTabScroll, scrollParam, self.ShopTab, self.viewContainer)
 
@@ -579,8 +605,8 @@ function SurvivalShopView:refreshTabListComp()
 	self.tabListComp:setData(self.datas)
 end
 
-function SurvivalShopView:onClickTab(survivalShopTab)
-	self.tabListComp:setSelect(survivalShopTab.itemIndex)
+function SurvivalShopView:onClickTab(item)
+	self.tabListComp:setSelect(item.itemIndex)
 end
 
 function SurvivalShopView:onSelectCallBack(item, selectIndex)
@@ -590,6 +616,14 @@ function SurvivalShopView:onSelectCallBack(item, selectIndex)
 
 	self:_refreshShopItems()
 	self:refreshRightTitle()
+end
+
+function SurvivalShopView:onClickLeftTab(item)
+	self.leftTabListComp:setSelect(item.itemIndex)
+end
+
+function SurvivalShopView:onSelectLeftTabCallBack(item)
+	self:_refreshBag()
 end
 
 function SurvivalShopView:onClose()

@@ -156,6 +156,7 @@ function PostProcessingMgr:_onOpenFinishView(viewName)
 	if viewName == "LoginView" or viewName == "SimulateLoginView" then
 		self:setUnitActive(false)
 	else
+		self:_refreshFourthLayer(false)
 		self:_refreshViewBlur(ViewEvent.OnOpenViewFinish)
 	end
 end
@@ -238,6 +239,10 @@ function PostProcessingMgr:_judgeBlur()
 end
 
 function PostProcessingMgr:_refreshPopUpBlur(viewName, isOpen, isReOpen, viewEvent)
+	if viewEvent == ViewEvent.OnCloseView then
+		self:_resetCloseView(viewName)
+	end
+
 	self:_refreshFourthLayer(true)
 
 	local viewNameList = ViewMgr.instance:getOpenViewNameList()
@@ -249,7 +254,23 @@ function PostProcessingMgr:_refreshPopUpBlur(viewName, isOpen, isReOpen, viewEve
 		self:_refreshPopUpBlurNotBlur(viewName, isOpen)
 	end
 
-	self:_refreshFourthLayer(false)
+	if viewEvent == ViewEvent.OnCloseViewFinish then
+		self:_refreshFourthLayer(false)
+	end
+end
+
+function PostProcessingMgr:_resetCloseView(closeViewName)
+	local popUpFourGO = gohelper.findChild(ViewMgr.instance:getUIRoot(), "POPUPFour")
+	local fourTransform = popUpFourGO.transform
+	local popUpTopGO = gohelper.findChild(ViewMgr.instance:getTopUIRoot(), "POPUP_TOP")
+	local oneViewContainer = ViewMgr.instance:getContainer(closeViewName)
+	local oneViewGO = oneViewContainer and oneViewContainer.viewGO
+	local oneViewParentTr = oneViewGO and oneViewGO.transform.parent or nil
+
+	if oneViewParentTr == fourTransform then
+		gohelper.addChild(popUpTopGO, oneViewGO)
+		self:_setChildCanvasLayer(oneViewGO, UnityLayer.UITop, false)
+	end
 end
 
 function PostProcessingMgr:_refreshFourthLayer(reset)
@@ -260,18 +281,18 @@ function PostProcessingMgr:_refreshFourthLayer(reset)
 	if reset then
 		TaskDispatcher.cancelTask(self._changeTopCaptureView, self)
 
-		local captureView = gohelper.findChild(popUpFourGO, "CaptureView")
-
-		if captureView then
-			gohelper.addChild(popUpTopGO, captureView)
-			gohelper.setAsFirstSibling(captureView)
-		end
-
 		local viewMask = gohelper.findChild(popUpFourGO, "ViewMask")
 
 		if viewMask then
 			gohelper.addChild(popUpTopGO, viewMask)
 			gohelper.setAsFirstSibling(viewMask)
+		end
+
+		local captureView = gohelper.findChild(popUpFourGO, "CaptureView")
+
+		if captureView then
+			gohelper.addChild(popUpTopGO, captureView)
+			gohelper.setAsFirstSibling(captureView)
 		end
 	end
 
@@ -281,7 +302,7 @@ function PostProcessingMgr:_refreshFourthLayer(reset)
 	for i = 1, len do
 		local one = viewNameList[i]
 		local oneViewContainer = ViewMgr.instance:getContainer(one)
-		local oneViewGO = oneViewContainer.viewGO
+		local oneViewGO = oneViewContainer and oneViewContainer.viewGO
 		local oneViewParentTr = oneViewGO and oneViewGO.transform.parent or nil
 
 		if reset then

@@ -94,7 +94,7 @@ end
 function GamePartyPlayerMo:isMainPlayer()
 	local curGame = PartyGameController.instance:getCurPartyGame()
 
-	if curGame:getIsLocal() then
+	if not curGame or curGame:getIsLocal() then
 		return self.isRobot == 0
 	end
 

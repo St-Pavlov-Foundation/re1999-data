@@ -8,8 +8,8 @@
     "preNodes": "",
     "needLv": 1,
     "addTalentIds": "503010",
-    "cost": "item#1:100",
-    "sign": 0
+    "cost": "item#1:200",
+    "sign": 1
   },
   {
     "id": 10002,
@@ -20,7 +20,7 @@
     "preNodes": "10001",
     "needLv": 1,
     "addTalentIds": "503020",
-    "cost": "item#1:250",
+    "cost": "item#1:500",
     "sign": 0
   },
   {
@@ -32,7 +32,7 @@
     "preNodes": "10001",
     "needLv": 1,
     "addTalentIds": "503030",
-    "cost": "item#1:150",
+    "cost": "item#1:200",
     "sign": 0
   },
   {
@@ -44,7 +44,7 @@
     "preNodes": "10002",
     "needLv": 3,
     "addTalentIds": "503040",
-    "cost": "item#1:500",
+    "cost": "item#1:1000",
     "sign": 1
   },
   {
@@ -68,7 +68,7 @@
     "preNodes": "10004",
     "needLv": 3,
     "addTalentIds": "503060",
-    "cost": "item#1:300",
+    "cost": "item#1:500",
     "sign": 0
   },
   {
@@ -80,7 +80,7 @@
     "preNodes": "10005",
     "needLv": 5,
     "addTalentIds": "503070",
-    "cost": "item#1:500",
+    "cost": "item#1:1000",
     "sign": 1
   },
   {
@@ -92,7 +92,7 @@
     "preNodes": "10007",
     "needLv": 5,
     "addTalentIds": "503080",
-    "cost": "item#1:300",
+    "cost": "item#1:500",
     "sign": 0
   },
   {
@@ -104,7 +104,7 @@
     "preNodes": "10007",
     "needLv": 5,
     "addTalentIds": "503090",
-    "cost": "item#1:300",
+    "cost": "item#1:200",
     "sign": 0
   },
   {
@@ -124,12 +124,12 @@
     "name": "负载模组",
     "point": "7#2",
     "icon": "survival_talentskill_2",
-    "desc": "额外负重增加100",
+    "desc": "额外负重增加200",
     "preNodes": "10008",
     "needLv": 8,
     "addTalentIds": "503110",
-    "cost": "item#1:500",
-    "sign": 0
+    "cost": "item#1:1000",
+    "sign": 1
   },
   {
     "id": 10012,
@@ -140,7 +140,7 @@
     "preNodes": "10011",
     "needLv": 8,
     "addTalentIds": "503120",
-    "cost": "item#1:300",
+    "cost": "item#1:500",
     "sign": 0
   },
   {
@@ -152,7 +152,7 @@
     "preNodes": "10011",
     "needLv": 8,
     "addTalentIds": "503130",
-    "cost": "item#1:200",
+    "cost": "item#1:250",
     "sign": 0
   },
   {
@@ -164,7 +164,7 @@
     "preNodes": "10011",
     "needLv": 8,
     "addTalentIds": "503140",
-    "cost": "item#1:200",
+    "cost": "item#1:250",
     "sign": 0
   },
   {
@@ -176,7 +176,7 @@
     "preNodes": "10012",
     "needLv": 12,
     "addTalentIds": "503150",
-    "cost": "item#1:1000",
+    "cost": "item#1:2000",
     "sign": 1
   },
   {
@@ -200,7 +200,7 @@
     "preNodes": "10015",
     "needLv": 12,
     "addTalentIds": "503170",
-    "cost": "item#1:200",
+    "cost": "item#1:500",
     "sign": 0
   },
   {
@@ -212,7 +212,7 @@
     "preNodes": "10016",
     "needLv": 15,
     "addTalentIds": "503180",
-    "cost": "item#1:1000",
+    "cost": "item#1:2000",
     "sign": 1
   },
   {
@@ -224,7 +224,7 @@
     "preNodes": "10018",
     "needLv": 15,
     "addTalentIds": "503190",
-    "cost": "item#1:200",
+    "cost": "item#1:500",
     "sign": 0
   },
   {
@@ -248,8 +248,8 @@
     "preNodes": "10019#10020",
     "needLv": 18,
     "addTalentIds": "201111",
-    "cost": "item#1:1000",
-    "sign": 0
+    "cost": "item#1:2000",
+    "sign": 1
   },
   {
     "id": 10022,
@@ -260,7 +260,7 @@
     "preNodes": "10021",
     "needLv": 18,
     "addTalentIds": "201132",
-    "cost": "item#1:500",
+    "cost": "item#1:1000",
     "sign": 0
   },
   {
@@ -272,7 +272,7 @@
     "preNodes": "10021",
     "needLv": 18,
     "addTalentIds": "201133",
-    "cost": "item#1:500",
+    "cost": "item#1:1000",
     "sign": 0
   },
   {
@@ -284,7 +284,7 @@
     "preNodes": "10022",
     "needLv": 18,
     "addTalentIds": "201134",
-    "cost": "item#1:500",
+    "cost": "item#1:1000",
     "sign": 0
   },
   {
@@ -296,7 +296,7 @@
     "preNodes": "10023",
     "needLv": 18,
     "addTalentIds": "201135",
-    "cost": "item#1:500",
+    "cost": "item#1:1000",
     "sign": 0
   }
 ]

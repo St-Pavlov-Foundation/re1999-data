@@ -103,7 +103,7 @@ end
 
 function PartyClothView:_editableInitView()
 	self.goSelectList = {}
-	self.reddotCompList = {}
+	self.goReddotList = {}
 
 	for i = 1, 5 do
 		local go = gohelper.findChild(self._goSwitchBtns, "btn" .. i)
@@ -112,10 +112,9 @@ function PartyClothView:_editableInitView()
 		self:addClickCb(btn, self._btnClothOnClick, self, i)
 
 		self.goSelectList[i] = gohelper.findChild(go, "select")
+		self.goReddotList[i] = gohelper.findChild(go, "reddot")
 
-		local goReddot = gohelper.findChild(go, "reddot")
-
-		self.reddotCompList[i] = RedDotController.instance:addNotEventRedDot(goReddot, self["checkReddot" .. tostring(i)], self)
+		self:refreshReddot(i)
 	end
 
 	self.goTitleEns = {}
@@ -141,6 +140,7 @@ function PartyClothView:onOpen()
 	self:addEventCb(PartyClothController.instance, PartyClothEvent.WearClothUpdate, self.onWearUpdate, self)
 	self:addEventCb(PartyClothController.instance, PartyClothEvent.ClickClothPartItem, self.onClickPartItem, self)
 	self:addEventCb(PartyClothController.instance, PartyClothEvent.ClickClothSuitItem, self.onClickSuitItem, self)
+	self:addEventCb(PartyClothController.instance, PartyClothEvent.NewTagChange, self.refreshReddot, self)
 	self:switchClothType(PartyClothEnum.ClothType.Hat)
 	self:refreshSortArrow()
 
@@ -178,7 +178,7 @@ function PartyClothView:switchClothType(clothType)
 		end
 
 		PartyClothModel.instance:setNewTagInvalid(list)
-		self.reddotCompList[self.clothType]:refreshRedDot()
+		self:refreshReddot(self.clothType, true)
 	end
 
 	local txt
@@ -301,46 +301,22 @@ function PartyClothView:refreshSortArrow()
 	gohelper.setActive(self._goArrowDown, isReverse)
 end
 
-function PartyClothView:checkReddot1()
-	local moList = PartyClothModel.instance:getClothMoList(PartyClothEnum.ClothType.Hat)
+function PartyClothView:refreshReddot(clothType, direct)
+	local isNew
 
-	return self:checkReddot(moList)
-end
+	if not direct then
+		local moList = PartyClothModel.instance:getClothMoList(clothType)
 
-function PartyClothView:checkReddot2()
-	local moList = PartyClothModel.instance:getClothMoList(PartyClothEnum.ClothType.Jacket)
+		for _, mo in ipairs(moList) do
+			if PartyClothModel.instance:hasNewTag(mo.clothId) then
+				isNew = true
 
-	return self:checkReddot(moList)
-end
-
-function PartyClothView:checkReddot3()
-	local moList = PartyClothModel.instance:getClothMoList(PartyClothEnum.ClothType.Pant)
-
-	return self:checkReddot(moList)
-end
-
-function PartyClothView:checkReddot4()
-	local moList = PartyClothModel.instance:getClothMoList(PartyClothEnum.ClothType.Shoes)
-
-	return self:checkReddot(moList)
-end
-
-function PartyClothView:checkReddot5()
-	local moList = PartyClothModel.instance:getClothMoList(PartyClothEnum.ClothType.Head)
-
-	return self:checkReddot(moList)
-end
-
-function PartyClothView:checkReddot(list)
-	for _, mo in ipairs(list) do
-		local isNew = PartyClothModel.instance:hasNewTag(mo.clothId)
-
-		if isNew then
-			return true
+				break
+			end
 		end
 	end
 
-	return false
+	gohelper.setActive(self.goReddotList[clothType], isNew)
 end
 
 return PartyClothView

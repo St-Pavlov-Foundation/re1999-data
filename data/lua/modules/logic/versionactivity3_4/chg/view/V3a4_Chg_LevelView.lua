@@ -107,38 +107,22 @@ function V3a4_Chg_LevelView:playAnim_PathUnlock(itemIndex)
 	self._lineAnimCmp:Play(animName, 0, 0)
 end
 
+local function _findLineChildsImpl(refList, tr)
+	local childCount = tr.childCount
+
+	for i = 0, childCount - 1 do
+		local childTr = tr:GetChild(i)
+
+		ti(refList, childTr.gameObject)
+	end
+end
+
 function V3a4_Chg_LevelView:_editableInitView()
 	self._lineAnimCmp = gohelper.findChild(self._goMove, "path"):GetComponent(gohelper.Type_Animator)
 	self._goMoveTrans = self._goMove.transform
 	self._goLevelItemContainerList = self:getUserDataTb_()
 
-	if false then
-		local goPathFmt = "stage%s"
-		local i = 0
-
-		repeat
-			i = i + 1
-
-			local goStageContainer = gohelper.findChild(self._goStoryStages, string.format(goPathFmt, i))
-			local isNil = gohelper.isNil(goStageContainer)
-
-			if not isNil then
-				ti(self._goLevelItemContainerList, goStageContainer)
-			end
-		until isNil
-	else
-		local function _findLineChildsImpl(refList, tr)
-			local childCount = tr.childCount
-
-			for i = 0, childCount - 1 do
-				local childTr = tr:GetChild(i)
-
-				ti(refList, childTr.gameObject)
-			end
-		end
-
-		_findLineChildsImpl(self._goLevelItemContainerList, self._goStoryStages.transform)
-	end
+	_findLineChildsImpl(self._goLevelItemContainerList, self._goStoryStages.transform)
 
 	local goTaskAnim = gohelper.findChild(self.viewGO, "#btn_Task/ani")
 
@@ -211,6 +195,7 @@ function V3a4_Chg_LevelView:_checkFirstEnter()
 end
 
 function V3a4_Chg_LevelView:onClose()
+	GameUtil.onDestroyViewMember_TweenId(self, "_moveTweenId")
 	GameUtil.onDestroyViewMemberList(self, "_storyItemList")
 	TaskDispatcher.cancelTask(self._showLeftTime, self)
 	TaskDispatcher.cancelTask(self._playFirstUnlock, self)
@@ -226,6 +211,7 @@ end
 function V3a4_Chg_LevelView:onDestroyView()
 	TaskDispatcher.cancelTask(self._showLeftTime, self)
 	GameUtil.onDestroyViewMemberList(self, "_storyItemList")
+	GameUtil.onDestroyViewMember_TweenId(self, "_moveTweenId")
 
 	if self._drag then
 		self._drag:RemoveDragBeginListener()
@@ -502,8 +488,10 @@ function V3a4_Chg_LevelView:_focusStoryItem(index, needPlay)
 		offsetX = self._minContentAnchorX
 	end
 
+	GameUtil.onDestroyViewMember_TweenId(self, "_moveTweenId")
+
 	if needPlay then
-		ZProj.TweenHelper.DOAnchorPosX(self._goMoveTrans, offsetX, FocusDuration, self._onFocusEnd, self, index)
+		self._moveTweenId = ZProj.TweenHelper.DOAnchorPosX(self._goMoveTrans, offsetX, FocusDuration, self._onFocusEnd, self, index)
 	else
 		recthelper.setAnchorX(self._goMoveTrans, offsetX)
 	end

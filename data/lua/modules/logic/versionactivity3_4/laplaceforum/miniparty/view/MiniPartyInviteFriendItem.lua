@@ -183,6 +183,7 @@ function MiniPartyInviteFriendItem:_onLoadFinish()
 end
 
 function MiniPartyInviteFriendItem:destroy()
+	TaskDispatcher.cancelTask(self._startShowSwitch, self)
 	self:_disposeBg()
 	self:_removeEvents()
 end
