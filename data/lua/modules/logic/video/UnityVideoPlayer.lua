@@ -339,4 +339,10 @@ function UnityVideoPlayer:setVerticesDirty()
 	end
 end
 
+function UnityVideoPlayer:SetRaycast(v)
+	if self._rawImage then
+		self._rawImage.raycastTarget = v
+	end
+end
+
 return UnityVideoPlayer

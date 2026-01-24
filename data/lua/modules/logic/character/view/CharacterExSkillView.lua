@@ -237,7 +237,12 @@ function CharacterExSkillView:refreshCircleAnimation()
 end
 
 function CharacterExSkillView:refreshSkillCardInfo()
-	local skillIdDict = SkillConfig.instance:getHeroBaseSkillIdDictByExSkillLevel(self._config.id, true)
+	local skillIdDict = SkillConfig.instance:getHeroBaseSkillIdDict(self._config.id, true)
+
+	if HeroModel.instance:getByHeroId(self._config.id) then
+		skillIdDict = SkillConfig.instance:getHeroBaseSkillIdDictByExSkillLevel(self._config.id, true)
+	end
+
 	local skillCo, skillId
 
 	for i = 1, 3 do
