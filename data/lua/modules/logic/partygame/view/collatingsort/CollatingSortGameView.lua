@@ -69,12 +69,12 @@ function CollatingSortGameView:_frameHandler()
 	end
 end
 
-function CollatingSortGameView:onNewBall(levelIndex, index, go, dropType)
+function CollatingSortGameView:onNewBall(levelIndex, index, go, dropType, initPosX, initPosY)
 	local uid = self._uidList[levelIndex + 1]
 	local item = self._uidToItem[uid]
 
 	if item then
-		item:onNewBall(index, go, dropType)
+		item:onNewBall(index, go, dropType, initPosX, initPosY)
 	end
 end
 

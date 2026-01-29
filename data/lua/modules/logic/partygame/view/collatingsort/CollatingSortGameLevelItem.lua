@@ -129,7 +129,7 @@ function CollatingSortGameLevelItem:setOffsetPos(x, y, z)
 	self._offsetPosZ = z
 end
 
-function CollatingSortGameLevelItem:onNewBall(index, go, dropType)
+function CollatingSortGameLevelItem:onNewBall(index, go, dropType, initPosX, initPosY)
 	if self._cacheBall[index] then
 		return
 	end
@@ -147,14 +147,28 @@ function CollatingSortGameLevelItem:onNewBall(index, go, dropType)
 	}
 
 	ballItem:onUpdateMO(dropType, self._dropType1, self._dropType2)
-	ballItem:setEcsGo(go)
-	ballItem.followComp:SetTarget(go)
+	ballItem:setInitPos(initPosX, initPosY)
+	ballItem:setMoveScale(self:_getMoveScale())
 
 	if self._offsetPosX then
-		ballItem.followComp:SetOffset(self._offsetPosX, self._offsetPosY, self._offsetPosZ)
+		ballItem:setOffset(self._offsetPosX, self._offsetPosY, self._offsetPosZ)
 	end
 
-	ballItem.followComp.enabled = true
+	ballItem:setEcsGo(go)
+end
+
+function CollatingSortGameLevelItem:_getMoveScale()
+	local width = UnityEngine.Screen.width
+	local height = UnityEngine.Screen.height
+
+	if BootNativeUtil.isWindows() and not SLFramework.FrameworkSettings.IsEditor then
+		width, height = SettingsModel.instance:getCurrentScreenSize()
+	end
+
+	local screenRatio = width / height
+	local targetRatio = 1.7777777777777777
+
+	return math.min(screenRatio / targetRatio, 1)
 end
 
 function CollatingSortGameLevelItem:onCollectBall(index, posIndex, score)

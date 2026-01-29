@@ -5081,5 +5081,22 @@
     "jump": "",
     "image": "",
     "senderType": 2
+  },
+  {
+    "id": 3416,
+    "type": 1,
+    "sender": "系统的回响",
+    "title": "茸毛脑袋百货闭店通知",
+    "content": "亲爱的司辰：\n茸毛脑袋百货即将关闭。请司辰及时兑换，以避免过期给您带来影响。\n【奇彩弹子】逾期后将无法使用，为保证司辰作为“缪斯碰碰盒”主要参与者的权益，请您在收到邮件后及时查看相关信息，兑换奖励。",
+    "attachment": "2#3#1000",
+    "needShowToast": 1,
+    "addressee": "",
+    "copy": "",
+    "icon": "",
+    "specialTag": 0,
+    "jumpTitle": "",
+    "jump": "",
+    "image": "",
+    "senderType": 0
   }
 ]

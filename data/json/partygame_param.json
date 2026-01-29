@@ -265,7 +265,7 @@
   },
   {
     "id": 12,
-    "online": false,
+    "online": true,
     "name": "智能妙妙分类机",
     "desc": "让扭蛋进入正确的筐中",
     "sceneAssetId": 120001,

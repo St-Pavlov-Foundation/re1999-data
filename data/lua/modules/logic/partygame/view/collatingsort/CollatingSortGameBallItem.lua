@@ -75,6 +75,21 @@ function CollatingSortGameBallItem:onUpdateMO(dropType, dropType1, dropType2)
 	gohelper.setActive(self._gorate, dropType >= dropTypeEnum.Double1)
 end
 
+function CollatingSortGameBallItem:setInitPos(initPosX, initPosY)
+	self._initPosX = initPosX
+	self._initPosY = initPosY
+end
+
+function CollatingSortGameBallItem:setMoveScale(scale)
+	self._moveScale = scale
+end
+
+function CollatingSortGameBallItem:setOffset(offsetX, offsetY, offsetZ)
+	self._offsetX = offsetX
+	self._offsetY = offsetY
+	self._offsetZ = offsetZ
+end
+
 function CollatingSortGameBallItem:setEcsGo(go)
 	self._ecsGoTrans = go.transform
 	self._ecsGoPosX, self._ecsGoPosY = transformhelper.getLocalPos(self._ecsGoTrans)
@@ -93,10 +108,28 @@ function CollatingSortGameBallItem:cancelUpdateRotation()
 	TaskDispatcher.cancelTask(self._updateRotation, self)
 end
 
+function CollatingSortGameBallItem:_updateEcsGoPos()
+	local posX, posY, posZ = transformhelper.getPos(self._ecsGoTrans)
+	local deltaX = posX - self._initPosX
+	local deltaY = posY - self._initPosY
+
+	deltaX = deltaX * self._moveScale
+	deltaY = deltaY * self._moveScale
+
+	local scalePosX = self._initPosX + deltaX
+	local scalePosY = self._initPosY + deltaY
+	local newPosX = scalePosX + (self._offsetX or 0)
+	local newPosY = scalePosY + (self._offsetY or 0)
+
+	transformhelper.setPos(self.viewGO.transform, newPosX, newPosY, posZ)
+end
+
 function CollatingSortGameBallItem:_updateRotation()
 	if gohelper.isNil(self._ecsGoTrans) then
 		return
 	end
+
+	self:_updateEcsGoPos()
 
 	local posX, posY = transformhelper.getLocalPos(self._ecsGoTrans)
 	local deltaX = posX - self._ecsGoPosX

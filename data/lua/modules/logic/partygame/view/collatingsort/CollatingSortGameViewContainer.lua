@@ -20,18 +20,14 @@ function CollatingSortGameViewContainer:getBallPool()
 			local itemRes = self:getSetting().otherRes.collatingsort_gameball
 			local itemGo = self:getResInst(itemRes)
 			local ballItem = MonoHelper.addNoUpdateLuaComOnceToGo(itemGo, CollatingSortGameBallItem)
-			local followComp = gohelper.onceAddComponent(itemGo, typeof(ZProj.UIFollowPosition))
 
-			ballItem.followComp = followComp
+			recthelper.setAnchorX(ballItem.viewGO.transform, 10000)
 
 			return ballItem
 		end, function(ballItem)
 			gohelper.destroy(ballItem.viewGO)
 		end, function(ballItem)
 			ballItem:cancelUpdateRotation()
-
-			ballItem.followComp.enabled = false
-
 			recthelper.setAnchorX(ballItem.viewGO.transform, 10000)
 		end)
 	end
