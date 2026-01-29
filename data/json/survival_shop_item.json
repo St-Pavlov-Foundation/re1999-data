@@ -4144,18 +4144,18 @@
     "groupId": 6000013,
     "type": 2,
     "unlock": "",
-    "worthFix": 0,
+    "worthFix": -200,
     "item": 800030,
-    "maxNum": 2
+    "maxNum": 5
   },
   {
     "id": 542,
     "groupId": 6000014,
     "type": 2,
     "unlock": "",
-    "worthFix": 0,
+    "worthFix": -200,
     "item": 800033,
-    "maxNum": 2
+    "maxNum": 5
   },
   {
     "id": 543,
@@ -4227,7 +4227,7 @@
     "unlock": "",
     "worthFix": -500,
     "item": 800036,
-    "maxNum": 1
+    "maxNum": 3
   },
   {
     "id": 551,
@@ -4236,7 +4236,7 @@
     "unlock": "",
     "worthFix": -500,
     "item": 800037,
-    "maxNum": 1
+    "maxNum": 3
   },
   {
     "id": 552,
@@ -4245,7 +4245,7 @@
     "unlock": "",
     "worthFix": -500,
     "item": 800038,
-    "maxNum": 1
+    "maxNum": 3
   },
   {
     "id": 553,
@@ -6811,5 +6811,194 @@
     "worthFix": 0,
     "item": 7000320,
     "maxNum": 1
+  },
+  {
+    "id": 838,
+    "groupId": 7000101,
+    "type": 4,
+    "unlock": "",
+    "worthFix": -500,
+    "item": 800036,
+    "maxNum": 3
+  },
+  {
+    "id": 839,
+    "groupId": 7000102,
+    "type": 4,
+    "unlock": "",
+    "worthFix": -500,
+    "item": 800037,
+    "maxNum": 3
+  },
+  {
+    "id": 840,
+    "groupId": 7000103,
+    "type": 4,
+    "unlock": "",
+    "worthFix": -500,
+    "item": 800038,
+    "maxNum": 3
+  },
+  {
+    "id": 841,
+    "groupId": 7000111,
+    "type": 4,
+    "unlock": "",
+    "worthFix": -250,
+    "item": 800036,
+    "maxNum": 4
+  },
+  {
+    "id": 842,
+    "groupId": 7000112,
+    "type": 4,
+    "unlock": "",
+    "worthFix": -250,
+    "item": 800037,
+    "maxNum": 4
+  },
+  {
+    "id": 843,
+    "groupId": 7000113,
+    "type": 4,
+    "unlock": "",
+    "worthFix": -250,
+    "item": 800038,
+    "maxNum": 4
+  },
+  {
+    "id": 844,
+    "groupId": 7000121,
+    "type": 4,
+    "unlock": "",
+    "worthFix": 0,
+    "item": 800036,
+    "maxNum": 4
+  },
+  {
+    "id": 845,
+    "groupId": 7000122,
+    "type": 4,
+    "unlock": "",
+    "worthFix": 0,
+    "item": 800037,
+    "maxNum": 4
+  },
+  {
+    "id": 846,
+    "groupId": 7000123,
+    "type": 4,
+    "unlock": "",
+    "worthFix": 0,
+    "item": 800038,
+    "maxNum": 4
+  },
+  {
+    "id": 847,
+    "groupId": 7000201,
+    "type": 4,
+    "unlock": "",
+    "worthFix": 0,
+    "item": 551001,
+    "maxNum": 3
+  },
+  {
+    "id": 848,
+    "groupId": 7000202,
+    "type": 4,
+    "unlock": "",
+    "worthFix": 0,
+    "item": 553007,
+    "maxNum": 3
+  },
+  {
+    "id": 849,
+    "groupId": 7000203,
+    "type": 4,
+    "unlock": "",
+    "worthFix": 0,
+    "item": 553013,
+    "maxNum": 3
+  },
+  {
+    "id": 850,
+    "groupId": 7000204,
+    "type": 4,
+    "unlock": "",
+    "worthFix": 0,
+    "item": 700004,
+    "maxNum": 3
+  },
+  {
+    "id": 851,
+    "groupId": 7000211,
+    "type": 4,
+    "unlock": "",
+    "worthFix": 0,
+    "item": 551001,
+    "maxNum": 4
+  },
+  {
+    "id": 852,
+    "groupId": 7000212,
+    "type": 4,
+    "unlock": "",
+    "worthFix": 0,
+    "item": 553007,
+    "maxNum": 4
+  },
+  {
+    "id": 853,
+    "groupId": 7000213,
+    "type": 4,
+    "unlock": "",
+    "worthFix": 0,
+    "item": 553013,
+    "maxNum": 4
+  },
+  {
+    "id": 854,
+    "groupId": 7000214,
+    "type": 4,
+    "unlock": "",
+    "worthFix": 0,
+    "item": 700004,
+    "maxNum": 4
+  },
+  {
+    "id": 855,
+    "groupId": 7000221,
+    "type": 4,
+    "unlock": "",
+    "worthFix": 0,
+    "item": 551001,
+    "maxNum": 5
+  },
+  {
+    "id": 856,
+    "groupId": 7000222,
+    "type": 4,
+    "unlock": "",
+    "worthFix": 0,
+    "item": 553007,
+    "maxNum": 5
+  },
+  {
+    "id": 857,
+    "groupId": 7000223,
+    "type": 4,
+    "unlock": "",
+    "worthFix": 0,
+    "item": 553013,
+    "maxNum": 5
+  },
+  {
+    "id": 858,
+    "groupId": 7000224,
+    "type": 4,
+    "unlock": "",
+    "worthFix": 0,
+    "item": 700004,
+    "maxNum": 5
   }
 ]

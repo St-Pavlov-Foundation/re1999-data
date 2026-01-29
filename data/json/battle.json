@@ -177498,7 +177498,7 @@
     "aid": "",
     "noClothSkill": 0,
     "playerMax": 5,
-    "monsterMax": 4,
+    "monsterMax": 3,
     "maxRound": 10,
     "winCondition": "3#106340111",
     "advancedCondition": "",

@@ -79,13 +79,14 @@ function SurvivalRoleSelectItem:onItemShow(data)
 		end
 	end
 
+	local isStory = SurvivalDifficultyModel.instance:isStoryDifficulty()
 	local outSideInfo = SurvivalModel.instance:getOutSideInfo()
 	local isShowFinish = false
 
 	if self.cfg.id == 1 then
-		isShowFinish = outSideInfo:isEndUnLock(3001)
+		isShowFinish = isStory and outSideInfo:isEndUnLock(3001)
 	elseif self.cfg.id == 2 then
-		isShowFinish = outSideInfo:isEndUnLock(3002)
+		isShowFinish = isStory and outSideInfo:isEndUnLock(3002)
 	end
 
 	gohelper.setActive(self.go_finish, isShowFinish)

@@ -154,6 +154,10 @@ function SurvivalHandbookModel:setSurvivalHandbookBox(survivalHandbookBox)
 	for i, v in pairs(self.handbookMoDic) do
 		local have = unlock[v.id]
 
+		if v:getType() == SurvivalEnum.HandBookType.Story and not v:isCanFinishStory() then
+			have = true
+		end
+
 		v:setIsUnlock(have)
 	end
 

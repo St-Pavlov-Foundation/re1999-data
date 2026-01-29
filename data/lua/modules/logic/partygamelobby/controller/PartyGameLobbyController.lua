@@ -29,12 +29,26 @@ function PartyGameLobbyController:addConstEvents()
 	ViewMgr.instance:registerCallback(ViewEvent.OnOpenView, self._onOpenView, self)
 	ViewMgr.instance:registerCallback(ViewEvent.OnCloseViewFinish, self._onCloseViewFinish, self)
 	ActivityController.instance:registerCallback(ActivityEvent.RefreshActivityState, self._checkActivity, self)
-	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDay, self._onDayRefresh, self)
+	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnHour, self._onDayRefresh, self)
 	GameSceneMgr.instance:registerCallback(SceneEventName.ExitScene, self._onExistScene, self)
 	GameSceneMgr.instance:registerCallback(SceneEventName.EnterSceneFinish, self._onEnterSceneFinish, self)
 	PartyClothController.instance:registerCallback(PartyClothEvent.WearClothUpdate, self._onWearClothUpdate, self)
 	SocialController.instance:registerCallback(SocialEvent.FriendsInfoChangedSpecial, self._onFriendsInfoChanged, self)
 	PartyGameController.instance:registerCallback(PartyGameEvent.GuideNewGame, self._onGuideNewGame, self)
+	GuideController.instance:registerCallback(GuideEvent.InterruptGuide, self._onInterruptGuide, self)
+end
+
+function PartyGameLobbyController:_onInterruptGuide(guideId)
+	guideId = tonumber(guideId)
+
+	if guideId and guideId >= PartyGameLobbyEnum.GuideIds.GuideId1 and guideId <= PartyGameLobbyEnum.GuideIds.GuideId6 then
+		PartyGameController.instance:dispatchEvent(PartyGameEvent.GuideResultPause, 0)
+		PartyGameController.instance:gamePause(false)
+
+		if guideId <= PartyGameLobbyEnum.GuideIds.GuideId6 then
+			GuideController.instance:toStartGudie(guideId + 1)
+		end
+	end
 end
 
 function PartyGameLobbyController:_onFriendsInfoChanged(noPlayer)
@@ -89,7 +103,7 @@ function PartyGameLobbyController:_checkRoomOwnerReady()
 end
 
 function PartyGameLobbyController:_onDayRefresh()
-	self:_checkActivity()
+	self:_delayUpdateOpenInfo()
 end
 
 function PartyGameLobbyController:_checkActivity(actId)
@@ -102,12 +116,6 @@ function PartyGameLobbyController:_checkActivity(actId)
 	actId = VersionActivity3_4Enum.ActivityId.PartyGame
 
 	if not ActivityModel.instance:isActOnLine(actId) then
-		return
-	end
-
-	local actInfo = ActivityModel.instance:getActMO(actId)
-
-	if not actInfo then
 		return
 	end
 
@@ -141,9 +149,10 @@ function PartyGameLobbyController:_checkActivity(actId)
 	end
 
 	if deltaTime > 0 then
-		TaskDispatcher.runDelay(self._delayUpdateOpenInfo, self, deltaTime)
+		TaskDispatcher.runDelay(self._delayUpdateOpenInfo, self, deltaTime + 0.5)
 	else
 		logError("PartyGameLobbyController:_checkActivity no refreshTime openId = ", tostring(openId), " dailyOpenTime = ", tostring(dailyOpenTime))
+		TaskDispatcher.runDelay(self._delayUpdateOpenInfo, 1)
 	end
 end
 
@@ -179,7 +188,9 @@ function PartyGameLobbyController:_getRefreshTime(timeParams, dailyOpenTime)
 end
 
 function PartyGameLobbyController:_delayUpdateOpenInfo()
-	self:_checkActivity()
+	if not ActivityModel.instance:isActOnLine(VersionActivity3_4Enum.ActivityId.PartyGame) then
+		return
+	end
 
 	local oldOpenTimeStatus = self:inOpenTime()
 
@@ -188,11 +199,48 @@ function PartyGameLobbyController:_delayUpdateOpenInfo()
 
 		if oldOpenTimeStatus ~= newOpenTimeStatus then
 			PartyGameLobbyController.instance:dispatchEvent(PartyGameLobbyEvent.OpenTimeStatusChange, newOpenTimeStatus)
+			self:checkActivityDailyOpen(newOpenTimeStatus)
 		end
+
+		self:_checkActivity()
 	end)
 end
 
+function PartyGameLobbyController:forceUpdateOpenInfo()
+	self:_delayUpdateOpenInfo()
+end
+
+function PartyGameLobbyController:checkActivityDailyOpen(isOpen)
+	local curSceneType = GameSceneMgr.instance:getCurSceneType()
+
+	if curSceneType ~= SceneType.PartyGameLobby then
+		return
+	end
+
+	if not isOpen then
+		if PartyGameRoomModel.instance:isRoomOwner() and PartyGameRoomModel.instance:inGameMatch() then
+			PartyMatchRpc.instance:sendCancelPartyMatchRequest(PlayerModel.instance:getMyUserId(), PartyGameRoomModel.instance:getRoomId())
+		end
+
+		if PartyGameRoomModel.instance:inGameRoom() and not PartyGameRoomModel.instance:inGameMatch() then
+			PartyRoomRpc.instance:sendExitPartyRoomRequest(PlayerModel.instance:getMyUserId(), PartyGameRoomModel.instance:getRoomId())
+		end
+
+		local function yesFunc()
+			self:openActivityEnterView()
+		end
+
+		GameFacade.showMessageBox(MessageBoxIdDefine.PartyGameTimeoutTip, MsgBoxEnum.BoxType.Yes, yesFunc)
+	end
+end
+
 function PartyGameLobbyController:inOpenTime()
+	if PartyGameLobbyEnum.FakeInCloseTime then
+		logError("PartyGameLobbyEnum.FakeInCloseTime")
+
+		return false
+	end
+
 	return ActivityModel.instance:isActOnLine(VersionActivity3_4Enum.ActivityId.PartyGame) and OpenModel.instance:isFunctionUnlock(PartyGameLobbyEnum.DailyOpenId)
 end
 
@@ -262,6 +310,12 @@ function PartyGameLobbyController:_canShowInviteTip()
 	end
 
 	if ViewMgr.instance:isOpen(ViewName.PartyGameLobbyStoreView) then
+		return false
+	end
+
+	if not GuideController.instance:isForbidGuides() and GuideModel.instance:isDoingClickGuide() then
+		logNormal("PartyGameLobbyController _canShowInviteTip 有引导，不显示邀请提示")
+
 		return false
 	end
 
@@ -346,6 +400,12 @@ function PartyGameLobbyController:clearSuccessMatchInfo()
 	return
 end
 
+function PartyGameLobbyController:setAllGuidesFinish()
+	for guideId = PartyGameLobbyEnum.GuideIds.FirstGuideId, PartyGameLobbyEnum.GuideIds.LastGuideId do
+		GuideInvalidController.instance:setGuideInvalid(guideId, true)
+	end
+end
+
 function PartyGameLobbyController:enterGameLobbyGuide()
 	if GuideController.instance:isForbidGuides() then
 		return
@@ -387,6 +447,8 @@ function PartyGameLobbyController:_onGuideNewGame(param)
 		return
 	elseif gameId == PartyGameLobbyEnum.GuideParam.Game1 then
 		self:guideEnterGame1()
+
+		return
 	end
 
 	logError("PartyGameLobbyController:_onGuideNewGame not found game:", tostring(gameId))
@@ -394,7 +456,7 @@ end
 
 function PartyGameLobbyController:guideEnterGame1()
 	logNormal("PartyGameLobbyController:guideEnterGame1")
-	PartyGameController.instance:initFakePlayerData(4)
+	PartyGameController.instance:initFakePlayerData(4, nil, nil, 1)
 	PartyGameController.instance:enterGame(PartyGameLobbyEnum.GuideParam.Game1, true)
 end
 
@@ -406,13 +468,15 @@ end
 
 function PartyGameLobbyController:guideEnterCardDropGame1()
 	logNormal("PartyGameLobbyController:guideEnterCardDropGame1")
-	PartyGameController.instance:initFakePlayerData(4, 24, 26)
+	CardDropGameController.instance:setGuideTime(1)
+	PartyGameController.instance:initFakePlayerData(4, 24, 26, 101)
 	PartyGameController.instance:enterGame(PartyGameLobbyEnum.GuideParam.CardDropGame, true)
 end
 
 function PartyGameLobbyController:guideEnterCardDropGame2()
 	logNormal("PartyGameLobbyController:guideEnterCardDropGame2")
-	PartyGameController.instance:initFakePlayerData(2, 25, 27)
+	CardDropGameController.instance:setGuideTime(2)
+	PartyGameController.instance:initFakePlayerData(2, 25, 27, 101)
 	PartyGameController.instance:enterGame(PartyGameLobbyEnum.GuideParam.CardDropGame, true)
 end
 
@@ -440,18 +504,22 @@ function PartyGameLobbyController:_onEnterMainSceneDone()
 	VersionActivity3_4EnterController.instance:directOpenVersionActivityEnterView(VersionActivity3_4Enum.ActivityId.PartyGame)
 end
 
+function PartyGameLobbyController:openActivityEnterView()
+	GameSceneMgr.instance:dispatchEvent(SceneEventName.SetLoadingTypeOnce, GameLoadingState.PartyGameLobbyLoadingView)
+
+	if ActivityModel.instance:isActOnLine(VersionActivity3_4Enum.ActivityId.PartyGame) then
+		SceneHelper.instance:waitSceneDone(SceneType.Main, self._onEnterMainSceneDone, self)
+	end
+
+	MainController.instance:enterMainScene()
+end
+
 function PartyGameLobbyController:enterGameLobby()
 	if not self:inOpenTime() then
 		local curSceneType = GameSceneMgr.instance:getCurSceneType()
 
 		if curSceneType ~= SceneType.Main then
-			GameSceneMgr.instance:dispatchEvent(SceneEventName.SetLoadingTypeOnce, GameLoadingState.PartyGameLobbyLoadingView)
-
-			if ActivityModel.instance:isActOnLine(VersionActivity3_4Enum.ActivityId.PartyGame) then
-				SceneHelper.instance:waitSceneDone(SceneType.Main, self._onEnterMainSceneDone, self)
-			end
-
-			MainController.instance:enterMainScene()
+			self:openActivityEnterView()
 		end
 
 		logError("PartyGameLobbyController:enterGameLobby not in open time")

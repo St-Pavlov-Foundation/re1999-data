@@ -49,7 +49,7 @@ end
 function PartyClothView:_btnWearOnClick()
 	local clothIds = {}
 
-	for _, id in pairs(self.previewIdMap) do
+	for _, id in pairs(self.preClothIdMap) do
 		clothIds[#clothIds + 1] = id
 	end
 
@@ -125,7 +125,7 @@ function PartyClothView:_editableInitView()
 
 	self.animLeft = gohelper.findChildAnim(self.viewGO, "#go_UI/Left")
 	self.wearClothIdMap = PartyClothModel.instance:getWearClothIdMap()
-	self.previewIdMap = PartyClothModel.instance:getPreviewClothIdMap()
+	self.preClothIdMap = tabletool.copy(self.wearClothIdMap)
 
 	local param = ScrollAudioParam.New()
 
@@ -158,13 +158,17 @@ function PartyClothView:onClothInfoUpdate()
 end
 
 function PartyClothView:onWearUpdate()
+	self.preClothIdMap = tabletool.copy(self.wearClothIdMap)
+
 	self:refreshSpine()
 	self.animLeft:Play("save")
 
 	if self.clothType then
-		PartyClothPartListModel.instance:initData(self.clothType, self.previewIdMap[self.clothType])
+		PartyClothPartListModel.instance:initData(self.clothType, self.preClothIdMap[self.clothType])
 	else
-		PartyClothSuitListModel.instance:initData()
+		local curSuitId = PartyClothHelper.GetWearSuitId(self.preClothIdMap)
+
+		PartyClothSuitListModel.instance:initData(false, curSuitId)
 	end
 end
 
@@ -184,11 +188,13 @@ function PartyClothView:switchClothType(clothType)
 	local txt
 
 	if clothType then
-		PartyClothPartListModel.instance:initData(clothType, self.previewIdMap[clothType])
+		PartyClothPartListModel.instance:initData(clothType, self.preClothIdMap[clothType])
 
 		txt = luaLang(PartyClothEnum.ClothLangTxt[clothType])
 	else
-		PartyClothSuitListModel.instance:initData()
+		local curSuitId = PartyClothHelper.GetWearSuitId(self.preClothIdMap)
+
+		PartyClothSuitListModel.instance:initData(false, curSuitId)
 
 		txt = luaLang("p_partyclothview_txt_Suit")
 	end
@@ -215,7 +221,7 @@ end
 function PartyClothView:onClickPartItem(clothId)
 	AudioMgr.instance:trigger(AudioEnum3_4.PartyCloth.preview)
 
-	self.previewIdMap[self.clothType] = clothId
+	self.preClothIdMap[self.clothType] = clothId
 
 	self:refreshWearBtn()
 	self:refreshSpine()
@@ -225,32 +231,26 @@ end
 function PartyClothView:onClickSuitItem(suitId)
 	AudioMgr.instance:trigger(AudioEnum3_4.PartyCloth.preview)
 
-	local curSuitId = PartyClothHelper.GetWearSuitId()
-	local clothCfgs = PartyClothConfig.instance:getClothCfgsBySuit(suitId)
+	local curSuitId = PartyClothHelper.GetWearSuitId(self.preClothIdMap)
 
-	if curSuitId ~= suitId then
-		tabletool.clear(self.previewIdMap)
-
-		for i = 1, #clothCfgs do
-			local config = clothCfgs[i]
-			local mo = PartyClothModel.instance:getClothMo(config.clothId, true)
-
-			if mo then
-				self.previewIdMap[config.partId] = config.clothId
-			end
-		end
-
-		local initClothIdMap = PartyClothConfig.instance:getInitClothIdMap()
-
-		for i = 1, 5 do
-			if not self.previewIdMap[i] and initClothIdMap[i] then
-				self.previewIdMap[i] = initClothIdMap[i]
-			end
-		end
-
-		PartyClothSuitListModel.instance:selectSuitItem(suitId, true)
+	if curSuitId == suitId then
+		return
 	end
 
+	self.preClothIdMap = PartyClothConfig.instance:getInitClothIdMap()
+
+	local clothCfgs = PartyClothConfig.instance:getClothCfgsBySuit(suitId)
+
+	for i = 1, #clothCfgs do
+		local config = clothCfgs[i]
+		local mo = PartyClothModel.instance:getClothMo(config.clothId, true)
+
+		if mo then
+			self.preClothIdMap[config.partId] = config.clothId
+		end
+	end
+
+	PartyClothSuitListModel.instance:selectSuitItem(suitId, true)
 	self:refreshWearBtn()
 	self:refreshSpine()
 end
@@ -260,7 +260,7 @@ function PartyClothView:refreshWearBtn()
 
 	for i = 1, 5 do
 		local id = self.wearClothIdMap[i]
-		local previewId = self.previewIdMap[i]
+		local previewId = self.preClothIdMap[i]
 
 		if id ~= previewId then
 			isChange = true
@@ -281,7 +281,7 @@ function PartyClothView:refreshWearBtn()
 end
 
 function PartyClothView:refreshSpine()
-	local skinResMap = PartyClothConfig.instance:getSkinRes(self.previewIdMap)
+	local skinResMap = PartyClothConfig.instance:getSkinRes(self.preClothIdMap)
 
 	self.clothAvatar:refreshSkin(skinResMap)
 end

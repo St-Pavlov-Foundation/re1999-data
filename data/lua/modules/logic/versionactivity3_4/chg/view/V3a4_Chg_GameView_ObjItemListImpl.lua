@@ -164,6 +164,7 @@ function V3a4_Chg_GameView_ObjItemListImpl:_refresh()
 
 		item:onUpdateMO(mapObj)
 		item:setActive(true)
+		item:playIdleAnim()
 	end
 
 	for i = count + 1, #self._objItemList do

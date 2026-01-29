@@ -168,6 +168,12 @@ function SurvivalRoleSkillMo:confirmUseSkill(point)
 	else
 		SurvivalInteriorRpc.instance:sendSurvivalUseRoleSkillRequest("")
 	end
+
+	if effectType == SurvivalEnum.RoleSkillEffect.NoiseAttract then
+		AudioMgr.instance:trigger(AudioEnum3_4.Survival.play_ui_bulaochun_tansuo_wuerlixi)
+	elseif effectType == SurvivalEnum.RoleSkillEffect.FindDrop then
+		AudioMgr.instance:trigger(AudioEnum3_4.Survival.play_ui_bulaochun_tansuo_marcus)
+	end
 end
 
 return SurvivalRoleSkillMo

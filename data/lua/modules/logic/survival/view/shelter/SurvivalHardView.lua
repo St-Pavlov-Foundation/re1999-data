@@ -283,6 +283,7 @@ function SurvivalHardView:refreshCustomView()
 		self.animCustomMask:Play("unlock", 0, 0)
 		SurvivalDifficultyModel.instance:markNewCustomDiff()
 		SurvivalController.instance:dispatchEvent(SurvivalEvent.GuideCustomDiffOpen)
+		AudioMgr.instance:trigger(AudioEnum2_7.CooperGarland.play_ui_yuzhou_trap_dispel)
 	else
 		gohelper.setActive(self.customMask, false)
 		SurvivalController.instance:dispatchEvent(SurvivalEvent.GuideCustomDiffOpen)

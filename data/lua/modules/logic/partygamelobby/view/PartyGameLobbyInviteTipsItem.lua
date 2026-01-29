@@ -110,6 +110,7 @@ function PartyGameLobbyInviteTipsItem:onDestroyView()
 	if self._isAgree then
 		PartyRoomRpc.instance:sendClearSuccessMatchInfoRequest()
 		PartyRoomRpc.instance:sendJoinPartyRoomRequest(PartyGameRoomModel.getResVersion(), self._extraParams.roomId)
+		PartyGameStatHelper.instance:partyGameInvite(StatEnum.PartyGameEnum.AcceptInvite, 0, self._extraParams.roomId)
 	else
 		PartyRoomRpc.instance:sendRefuseInviteRequest(PlayerModel.instance:getMyUserId(), self._extraParams.roomId, self._extraParams.fromUserId, self._isRefuse and PartyGameLobbyEnum.RefuseType.Active)
 	end

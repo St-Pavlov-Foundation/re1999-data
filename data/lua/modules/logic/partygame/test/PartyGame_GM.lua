@@ -14,6 +14,8 @@ local method3 = tolua.getmethod(type_hotfix, "GetIsUseAI")
 local method4 = tolua.getmethod(type_hotfix, "SetIsUseAI", typeof("System.Boolean"))
 local method5 = tolua.getmethod(type_hotfix, "CardDropWin")
 local method6 = tolua.getmethod(type_hotfix, "SetPlayerNum", typeof("System.Int32"))
+local method7 = tolua.getmethod(type_hotfix, "ClearGameIds")
+local method8 = tolua.getmethod(type_hotfix, "AddGameId", typeof("System.Int32"))
 
 function PartyGame_GM.GameOver()
 	return method1:Call()
@@ -37,6 +39,14 @@ end
 
 function PartyGame_GM.SetPlayerNum(num)
 	return method6:Call(num)
+end
+
+function PartyGame_GM.ClearGameIds()
+	return method7:Call()
+end
+
+function PartyGame_GM.AddGameId(gameId)
+	return method8:Call(gameId)
 end
 
 return PartyGame_GM

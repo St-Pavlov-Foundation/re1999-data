@@ -240,7 +240,7 @@ function PCInputController:OnKeyUp(key)
 	end)
 
 	for _, v in ipairs(adaptersList) do
-		if v and v:OnkeyDown(keyName) then
+		if v and v:OnkeyUp(keyName) then
 			return
 		end
 	end

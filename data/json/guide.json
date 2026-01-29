@@ -8607,9 +8607,9 @@
     "isOnline": 1,
     "trigger": "OpenView#V3a4_Chg_GameView",
     "invalid": "ActivityEnd#13439",
-    "interruptFinish": 0,
+    "interruptFinish": 1,
     "priority": 0,
-    "parallel": 0,
+    "parallel": 1,
     "restart": 0
   },
   {
@@ -8618,9 +8618,9 @@
     "isOnline": 1,
     "trigger": "OpenView#V3a4_Chg_GameView",
     "invalid": "ActivityEnd#13439",
-    "interruptFinish": 0,
+    "interruptFinish": 1,
     "priority": 0,
-    "parallel": 0,
+    "parallel": 1,
     "restart": 0
   },
   {

@@ -36,6 +36,7 @@ end
 
 function SurvivalTechLockArea:playUnLockAnim()
 	self.anim:Play("unlock")
+	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_leimi_level_difficulty)
 end
 
 return SurvivalTechLockArea

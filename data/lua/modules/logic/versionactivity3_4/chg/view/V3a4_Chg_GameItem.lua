@@ -159,7 +159,6 @@ function V3a4_Chg_GameItem:setData(mo)
 	self:_refreshNum()
 	self:_refreshIcon()
 	self:_refreshGroup()
-	self:_playIdleAnim()
 	self:setInvoked(false)
 end
 
@@ -205,7 +204,7 @@ end
 
 function V3a4_Chg_GameItem:playDeltaNumAnim(...)
 	if self._impl then
-		self._impl:playDeltaNumAnim(...)
+		return self._impl:playDeltaNumAnim(...)
 	end
 end
 
@@ -239,7 +238,7 @@ function V3a4_Chg_GameItem:_refreshGroup()
 	end
 end
 
-function V3a4_Chg_GameItem:_playIdleAnim()
+function V3a4_Chg_GameItem:playIdleAnim()
 	if self._impl then
 		self._impl:playIdleAnim()
 	end

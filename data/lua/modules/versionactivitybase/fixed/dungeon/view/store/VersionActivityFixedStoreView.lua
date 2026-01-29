@@ -63,17 +63,23 @@ function VersionActivityFixedStoreView:onOpen()
 	self:_onScrollValueChanged()
 	self:scrollToFirstNoSellOutStore()
 
-	local spGoodsList = VersionActivityFixedStoreListModel.instance:getSpecialGoodsList()
+	local isShowSpecial = self.viewContainer.isShowSpecialItem and self.viewContainer:isShowSpecialItem()
 
-	if #spGoodsList > 0 then
-		if not self._spGoodsItem then
-			self._spGoodsItem = MonoHelper.addNoUpdateLuaComOnceToGo(self._gospitem, VersionActivitySpecialStoreGoodsItem)
+	if isShowSpecial then
+		local spGoodsList = VersionActivityFixedStoreListModel.instance:getSpecialGoodsList()
+
+		if #spGoodsList > 0 then
+			if not self._spGoodsItem then
+				self._spGoodsItem = MonoHelper.addNoUpdateLuaComOnceToGo(self._gospitem, VersionActivitySpecialStoreGoodsItem)
+			end
+
+			self._spGoodsItem:onUpdateMO(self.actId)
 		end
 
-		self._spGoodsItem:onUpdateMO(self.actId)
+		gohelper.setActive(self._gospitem, #spGoodsList > 0)
+	else
+		gohelper.setActive(self._gospitem, false)
 	end
-
-	gohelper.setActive(self._gospitem, #spGoodsList > 0)
 end
 
 function VersionActivityFixedStoreView:refreshTime()

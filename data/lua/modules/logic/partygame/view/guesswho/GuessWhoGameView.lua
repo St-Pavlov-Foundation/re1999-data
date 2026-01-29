@@ -25,7 +25,8 @@ function GuessWhoGameView:onInitView()
 end
 
 function GuessWhoGameView:onDestroy()
-	TaskDispatcher.cancelTask(self.hideTip, self)
+	TaskDispatcher.cancelTask(self.hideStartTip, self)
+	TaskDispatcher.cancelTask(self.hideResultTip, self)
 end
 
 function GuessWhoGameView:onCreateCompData()
@@ -130,23 +131,15 @@ function GuessWhoGameView:onStateChange(step)
 			local config = lua_partygame_guesswho_pictures.configDict[optionId]
 
 			if config then
-				local anchorX = math.random(-240, -60)
-				local anchorY = math.random(-28, -130)
+				local anchorX = PartyGameHelper.instance:getSingleComponentData("PartyGame.Runtime.Games.GuessWho.Component.GuessWhoDataComponent", "posX")
+				local anchorY = PartyGameHelper.instance:getSingleComponentData("PartyGame.Runtime.Games.GuessWho.Component.GuessWhoDataComponent", "posY")
 
 				recthelper.setAnchor(self.imageTrs, anchorX, anchorY)
 
-				local flip
+				local flip = PartyGameHelper.instance:getSingleComponentData("PartyGame.Runtime.Games.GuessWho.Component.GuessWhoDataComponent", "flip")
+				local rotationY = flip and 180 or 0
 
-				flip = anchorX <= -190 and true or (not (anchorX >= -90) or not (anchorX <= -60) or false) and math.random(2) == 2
-
-				local x, y, z = transformhelper.getLocalScale(self.imageTrs)
-
-				if flip then
-					transformhelper.setLocalScale(self.imageTrs, math.abs(x) * -1, y, z)
-				else
-					transformhelper.setLocalScale(self.imageTrs, math.abs(x), y, z)
-				end
-
+				transformhelper.setEulerAngles(self.imageTrs, 0, rotationY, 0)
 				self._simageQuestion:LoadImage(ResUrl.getPropItemIcon(config.resource))
 				gohelper.setActive(self._simageQuestion, true)
 			end
@@ -161,6 +154,7 @@ function GuessWhoGameView:onStateChange(step)
 		AudioMgr.instance:trigger(AudioEnum3_4.PartyGame17.play_ui_bulaochun_curtain_pull)
 		self.animStart:Play("in", 0, 0)
 		AudioMgr.instance:trigger(AudioEnum3_4.PartyGame17.play_ui_activity_dog_page)
+		TaskDispatcher.runDelay(self.hideStartTip, self, 2)
 	elseif step == GuessWhoEnum.GameState.Settle then
 		self:onSettleEnter()
 	end
@@ -206,14 +200,6 @@ function GuessWhoGameView:getCountDownFunc()
 	end
 end
 
-function GuessWhoGameView:hideTip()
-	if self.selectIndex == self.correctIndex then
-		self.animSuccess:Play("out", 0, 0)
-	else
-		self.animFail:Play("out", 0, 0)
-	end
-end
-
 function GuessWhoGameView:onSettleEnter()
 	for _, item in pairs(self.headItemMap) do
 		gohelper.setActive(item.viewGO, false)
@@ -226,8 +212,6 @@ function GuessWhoGameView:onSettleEnter()
 
 		v:playScoreAdd(value)
 	end
-
-	self.animStart:Play("out", 0, 0)
 
 	local answerCorrect = self.selectIndex == self.correctIndex
 	local answerItem = self.answerItems[self.selectIndex]
@@ -250,8 +234,20 @@ function GuessWhoGameView:onSettleEnter()
 		AudioMgr.instance:trigger(AudioEnum3_4.PartyGame17.play_ui_fuleyuan_tiaoyitiao_fail)
 	end
 
-	TaskDispatcher.runDelay(self.hideTip, self, 2)
+	TaskDispatcher.runDelay(self.hideResultTip, self, 2)
 	self.animCurtain:Play("close", 0, 0)
+end
+
+function GuessWhoGameView:hideStartTip()
+	self.animStart:Play("out", 0, 0)
+end
+
+function GuessWhoGameView:hideResultTip()
+	if self.selectIndex == self.correctIndex then
+		self.animSuccess:Play("out", 0, 0)
+	else
+		self.animFail:Play("out", 0, 0)
+	end
 end
 
 function GuessWhoGameView:onSettleExit()

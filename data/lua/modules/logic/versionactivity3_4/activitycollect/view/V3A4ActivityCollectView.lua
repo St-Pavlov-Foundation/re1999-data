@@ -59,6 +59,16 @@ function V3A4ActivityCollectView:onRefreshNorSignActivity()
 end
 
 function V3A4ActivityCollectView:onClickActivity1()
+	if not ActivityModel.instance:isActOnLine(VersionActivity3_4Enum.ActivityId.PartyGame) then
+		return
+	end
+
+	if not OpenModel.instance:isFunctionUnlock(PartyGameLobbyEnum.DailyOpenId) then
+		VersionActivity3_4EnterController.instance:directOpenVersionActivityEnterView(VersionActivity3_4Enum.ActivityId.PartyGame)
+
+		return
+	end
+
 	PartyGameLobbyController.instance:enterGameLobby()
 end
 

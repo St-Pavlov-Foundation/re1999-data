@@ -26165,7 +26165,7 @@
   },
   {
     "id": "p_survivalhandbookview_txt_new_desc1",
-    "lang": "事件"
+    "lang": "故事"
   },
   {
     "id": "p_survivalhandbookview_txt_new_desc2",
@@ -26782,5 +26782,13 @@
   {
     "id": "p_partygame_result_txt_newtips",
     "lang": "等待其他组战斗结束"
+  },
+  {
+    "id": "p_v3a4_partygameenterview_txt_opentime",
+    "lang": "每日10:00-14:00,18:00-24:00开启"
+  },
+  {
+    "id": "p_survivalroleselectview_txt_unlocktips",
+    "lang": "完成故事模式可解锁更多演习主角"
   }
 ]

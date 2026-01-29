@@ -127,10 +127,20 @@ function ChgMapDragContext_MyData:_onDrag_CacheFrame(dragObj)
 		return
 	end
 
-	local curDir = self._ctx:currentDir()
+	local curLineItem = self._ctx:recentValidLineItem()
 
-	if ChgEnum.isFlipDir(curDir, dragInfo.dirHorV) then
-		return
+	if curLineItem then
+		local curDir = curLineItem:getDir()
+		local curEndItem = curLineItem:endItem()
+		local isBlock = ChgEnum.isFlipDir(curDir, dragInfo.dirHorV)
+
+		if isBlock and curEndItem then
+			isBlock = not curEndItem:isEnd()
+		end
+
+		if isBlock then
+			return
+		end
 	end
 
 	self:_onNewFrame()

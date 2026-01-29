@@ -42,7 +42,7 @@ function PartyClothLotteryView:_btnSummon1OnClick()
 		GameFacade.showToast(ToastEnum.PartyClothPrizeNotEnough)
 
 		return
-	elseif self.coinCnt < 1 then
+	elseif self.coinCnt < self.summon1Cost then
 		GameFacade.showToast(ToastEnum.PartyClothCoinNotEnough)
 
 		return
@@ -52,7 +52,7 @@ function PartyClothLotteryView:_btnSummon1OnClick()
 end
 
 function PartyClothLotteryView:_btnSummon10OnClick()
-	if self.leftPrize < 2 then
+	if self.leftPrize < self.Summon10Cnt then
 		GameFacade.showToast(ToastEnum.PartyClothPrizeNotEnough)
 
 		return

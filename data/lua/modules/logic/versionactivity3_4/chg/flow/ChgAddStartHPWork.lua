@@ -12,12 +12,10 @@ function ChgAddStartHPWork.s_create(targetItem, fromHP, toHP, durationSec)
 	work._toHP = toHP
 	work._durationSec = durationSec or 0.2
 
-	if targetItem then
-		targetItem:stopDeltaNumAnim()
-	end
-
 	return work
 end
+
+local kNumAnimDurationSec = 1
 
 function ChgAddStartHPWork:onStart()
 	self:clearWork()
@@ -30,9 +28,10 @@ function ChgAddStartHPWork:onStart()
 
 	local deltaHP = self._toHP - self._fromHP
 
-	self._tweenId = ZProj.TweenHelper.DOTweenFloat(self._fromHP, self._toHP, self._durationSec, self._onFrameCallback, self._onFinishCallback, self)
+	self._tweenId = ZProj.TweenHelper.DOTweenFloat(self._fromHP, self._toHP, self._durationSec, self._onFrameCallback, nil, self)
+	self._tmpNumItem = self._targetItem:playDeltaNumAnim(deltaHP)
 
-	self._targetItem:playDeltaNumAnim(deltaHP)
+	TaskDispatcher.runDelay(self._onNumAnimDone, self, kNumAnimDurationSec)
 end
 
 function ChgAddStartHPWork:_onFrameCallback(value)
@@ -41,13 +40,28 @@ function ChgAddStartHPWork:_onFrameCallback(value)
 	self._targetItem:_refreshNum(num)
 end
 
-function ChgAddStartHPWork:_onFinishCallback()
+function ChgAddStartHPWork:_onNumAnimDone()
+	self:_recycleNum()
 	self:onSucc()
 end
 
 function ChgAddStartHPWork:clearWork()
+	self:_recycleNum()
 	GameUtil.onDestroyViewMember_TweenId(self, "_tweenId")
+	TaskDispatcher.cancelTask(self._onNumAnimDone, self)
 	ChgAddStartHPWork.super.clearWork(self)
+end
+
+function ChgAddStartHPWork:_recycleNum()
+	if not self._tmpNumItem then
+		return
+	end
+
+	if self._targetItem then
+		self._targetItem:stopDeltaNumAnim(self._tmpNumItem)
+
+		self._tmpNumItem = nil
+	end
 end
 
 return ChgAddStartHPWork

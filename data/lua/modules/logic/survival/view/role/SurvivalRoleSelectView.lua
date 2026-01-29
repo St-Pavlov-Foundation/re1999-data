@@ -18,6 +18,7 @@ function SurvivalRoleSelectView:onInitView()
 	self.btnConfirm = gohelper.findChildButtonWithAudio(self.select, "#btn_Confirm")
 	self.img_picture = gohelper.findChildSingleImage(self.select, "#img_picture")
 	self.skillContent = gohelper.findChild(self.select, "#scroll_info/Viewport/Content")
+	self.bottomTip = gohelper.findChild(self.viewGO, "root/BG/Left/txt_tips")
 	self.SurvivalRoleSelectSkillItem = gohelper.findChild(self.skillContent, "#go_skill")
 	self.selectAnimator = self.select:GetComponent(typeof(UnityEngine.Animator))
 
@@ -78,11 +79,9 @@ function SurvivalRoleSelectView:onOpen()
 
 	self.roleList:setSelect(select)
 
-	local outSideInfo = SurvivalModel.instance:getOutSideInfo()
-	local haveRole1 = outSideInfo:isEndUnLock(3001)
-	local haveRole2 = outSideInfo:isEndUnLock(3002)
-	local isShowTip = not haveRole1 or not haveRole2
+	local isStory = SurvivalDifficultyModel.instance:isStoryDifficulty()
 
+	gohelper.setActive(self.bottomTip, isStory)
 	self.survivalOutSideRoleModel:markNew()
 end
 

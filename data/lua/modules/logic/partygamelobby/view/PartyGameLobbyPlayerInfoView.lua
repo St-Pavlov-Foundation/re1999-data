@@ -147,7 +147,7 @@ function PartyGameLobbyPlayerInfoView:_refreshUI()
 		self._hasSkin = false
 	else
 		self._hasSkin = true
-		self._skinPath = string.format("ui/viewres/social/PartyGameLobbyPlayerInfoView_bg_%s.prefab", self._mo.bg)
+		self._skinPath = string.format("ui/viewres/social/playerinfoview_bg_%s.prefab", self._mo.bg)
 		self._loader = MultiAbLoader.New()
 
 		self._loader:addPath(self._skinPath)

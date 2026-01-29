@@ -228,7 +228,7 @@ function SurvivalBagItem:showLoading(isShow)
 			AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_binansuo_sougua_4)
 		elseif self._mo and self._mo.co and self._mo.co.rare == 6 then
 			self._animHas:Play("opensp1", 0, 0)
-			AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_binansuo_sougua_4)
+			AudioMgr.instance:trigger(AudioEnum3_4.Survival.play_ui_bulaochun_tansuo_senior)
 		else
 			self._animHas:Play("open", 0, 0)
 		end
@@ -251,6 +251,8 @@ function SurvivalBagItem:playPut()
 end
 
 function SurvivalBagItem:playSublimationAnim2(t, nextMo)
+	AudioMgr.instance:trigger(AudioEnum3_4.Survival.play_ui_bulaochun_tansuo_up)
+
 	self.sublimationAnimnNextMo = nextMo
 
 	self._animHas:Play("up" .. t, 0, 0)
@@ -258,6 +260,7 @@ function SurvivalBagItem:playSublimationAnim2(t, nextMo)
 end
 
 function SurvivalBagItem:_onSublimationAnimEnd()
+	AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_binansuo_sougua_4)
 	self:updateMo(self.sublimationAnimnNextMo, {
 		jumpAnimHas = true,
 		jumpOpenAnim = true

@@ -34,6 +34,18 @@ function MiniPartyConfig:getTaskCo(taskId)
 	return self._taskConfig.configDict[taskId]
 end
 
+function MiniPartyConfig:getTaskCosByTaskType(typeId)
+	local taskCos = {}
+
+	for _, taskCo in pairs(self._taskConfig.configDict) do
+		if taskCo.teamType == typeId then
+			table.insert(taskCos, taskCo)
+		end
+	end
+
+	return taskCos
+end
+
 MiniPartyConfig.instance = MiniPartyConfig.New()
 
 return MiniPartyConfig

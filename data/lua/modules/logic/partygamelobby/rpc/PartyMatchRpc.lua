@@ -64,6 +64,7 @@ function PartyMatchRpc:onReceiveMatchInfoPush(resultCode, msg)
 	end
 
 	PartyGameLobbyController.instance:dispatchEvent(PartyGameLobbyEvent.MatchInfoPush)
+	PartyGameStatHelper.instance:partyMatch(StatEnum.PartyGameEnum.MatchSuccess)
 end
 
 function PartyMatchRpc:onReceiveMatchFailPush(resultCode, msg)
@@ -126,6 +127,7 @@ function PartyMatchRpc:onReceiveStartPartyMatchReply(resultCode, msg)
 	end
 
 	PartyGameLobbyController.instance:dispatchEvent(PartyGameLobbyEvent.StartPartyMatchReply)
+	PartyGameStatHelper.instance:partyMatch(StatEnum.PartyGameEnum.StartMatch)
 end
 
 function PartyMatchRpc:sendCancelPartyMatchRequest(userId, roomId)
@@ -144,6 +146,7 @@ function PartyMatchRpc:onReceiveCancelPartyMatchReply(resultCode, msg)
 	local roomId = msg.roomId
 
 	PartyGameRoomModel.instance:setMatchStatus(PartyGameLobbyEnum.MatchStatus.NoMatch)
+	PartyGameStatHelper.instance:partyMatch(StatEnum.PartyGameEnum.CancelMatch)
 end
 
 function PartyMatchRpc:onReceivePartyNeedLogoutPush(resultCode, msg)

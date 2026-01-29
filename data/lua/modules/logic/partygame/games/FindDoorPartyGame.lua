@@ -13,13 +13,15 @@ function FindDoorPartyGame:getPlayerScore(uid)
 		return 0
 	end
 
-	local finishTime, layer = PartyGameCSDefine.FindDoorGameInterfaceCs.GetPlayerData(uid, 0, 0)
+	local finishTime = PartyGameCSDefine.FindDoorGameInterfaceCs.GetPlayerData(uid, 0, 0)
 
 	if finishTime > 0 then
 		return GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("partygame_game13_finishTime"), self._gameTime - math.ceil(finishTime)), true
 	end
 
-	return GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("partygame_game13_layer"), math.ceil(layer))
+	local showLayer = PartyGameHelper.instance:getComponentData(uid, "PartyGame.Runtime.Games.FindDoor.Component.FindDoorPlayerDataComponent", "showLayer")
+
+	return GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("partygame_game13_layer"), showLayer)
 end
 
 return FindDoorPartyGame

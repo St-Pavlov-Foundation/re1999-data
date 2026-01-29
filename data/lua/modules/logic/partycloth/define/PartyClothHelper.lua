@@ -4,36 +4,42 @@ module("modules.logic.partycloth.define.PartyClothHelper", package.seeall)
 
 local PartyClothHelper = class("PartyClothHelper")
 
-function PartyClothHelper.GetWearSuitId()
-	local previewClothIdMap = PartyClothModel.instance:getPreviewClothIdMap()
-	local clothId = previewClothIdMap[PartyClothEnum.ClothType.Jacket]
+function PartyClothHelper.GetWearSuitId(clothIdMap)
+	local initSuitId = tonumber(lua_party_const.configDict[1].value)
+	local suitIdList = {}
 
-	if not clothId then
+	for _, clothId in pairs(clothIdMap) do
+		local suitId = PartyClothConfig.instance:getClothConfig(clothId).suitId
+
+		if not tabletool.indexOf(suitIdList, suitId) then
+			table.insert(suitIdList, suitId)
+		end
+	end
+
+	table.sort(suitIdList, function(a, b)
+		return a < b
+	end)
+
+	if #suitIdList == 1 then
+		return suitIdList[1]
+	elseif #suitIdList == 2 and suitIdList[1] == initSuitId then
+		local suitId = suitIdList[2]
+		local clothCfgs = PartyClothConfig.instance:getClothCfgsBySuit(suitId)
+
+		for _, config in ipairs(clothCfgs) do
+			if clothIdMap[config.partId] ~= config.clothId then
+				local clothMo = PartyClothModel.instance:getClothMo(config.clothId, true)
+
+				if clothMo then
+					return
+				end
+			end
+		end
+
+		return suitId
+	else
 		return
 	end
-
-	local suitId = PartyClothConfig.instance:getClothConfig(clothId).suitId
-	local initSuitId = tonumber(lua_party_const.configDict[1].value)
-
-	if suitId == initSuitId then
-		for _, id in pairs(previewClothIdMap) do
-			local config = PartyClothConfig.instance:getClothConfig(id)
-
-			if config.suitId ~= suitId then
-				return
-			end
-		end
-	else
-		for _, id in pairs(previewClothIdMap) do
-			local config = PartyClothConfig.instance:getClothConfig(id)
-
-			if config.suitId ~= suitId and config.suitId ~= initSuitId then
-				return
-			end
-		end
-	end
-
-	return suitId
 end
 
 function PartyClothHelper.GetSuitClothIdMap(suitId)

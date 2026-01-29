@@ -163,7 +163,7 @@ function MiniPartyTaskView:_refreshGroupTasks()
 
 			self._groupTasks[taskId] = MiniPartyTaskItem.New()
 
-			self._groupTasks[taskId]:init(go, false, self._taskType)
+			self._groupTasks[taskId]:init(go, self._taskType)
 			self._groupTasks[taskId]:setScrollParentGo(self._gogrouptasks)
 		end
 
@@ -174,17 +174,21 @@ function MiniPartyTaskView:_refreshGroupTasks()
 	end
 
 	local taskCount = MiniPartyTaskModel.instance:getCanGetTaskCount(self._taskType)
+	local needShowWating = MiniPartyTaskModel.instance:needWaitingTaskItem(self._taskType)
+
+	if not self._groupTasks[0] then
+		local go = gohelper.clone(self._gotaskitem, self._gogrouptaskcontentroot)
+
+		self._groupTasks[0] = MiniPartyTaskItem.New()
+
+		self._groupTasks[0]:init(go, self._taskType)
+	end
 
 	if taskCount > 1 then
-		if not self._groupTasks[0] then
-			local go = gohelper.clone(self._gotaskitem, self._gogrouptaskcontentroot)
-
-			self._groupTasks[0] = MiniPartyTaskItem.New()
-
-			self._groupTasks[0]:init(go, true, self._taskType)
-		end
-
-		self._groupTasks[0]:showItem(true)
+		self._groupTasks[0]:showItem(true, MiniPartyEnum.TaskItemType.GetAll)
+		gohelper.setAsFirstSibling(self._groupTasks[0].go)
+	elseif needShowWating then
+		self._groupTasks[0]:showItem(true, MiniPartyEnum.TaskItemType.Waiting)
 		gohelper.setAsFirstSibling(self._groupTasks[0].go)
 	elseif self._groupTasks[0] then
 		self._groupTasks[0]:showItem(false)
@@ -203,7 +207,7 @@ function MiniPartyTaskView:_refreshSelfTasks()
 
 			self._selfTasks[taskId] = MiniPartyTaskItem.New()
 
-			self._selfTasks[taskId]:init(go, false, self._taskType)
+			self._selfTasks[taskId]:init(go, self._taskType)
 			self._selfTasks[taskId]:setScrollParentGo(self._goselftasks)
 		end
 
@@ -217,17 +221,21 @@ function MiniPartyTaskView:_refreshSelfTasks()
 	end
 
 	local taskCount = MiniPartyTaskModel.instance:getCanGetTaskCount(self._taskType)
+	local needShowWating = MiniPartyTaskModel.instance:needWaitingTaskItem(self._taskType)
+
+	if not self._selfTasks[0] then
+		local go = gohelper.clone(self._gotaskitem, self._goselftaskcontentroot)
+
+		self._selfTasks[0] = MiniPartyTaskItem.New()
+
+		self._selfTasks[0]:init(go, self._taskType)
+	end
 
 	if taskCount > 1 then
-		if not self._selfTasks[0] then
-			local go = gohelper.clone(self._gotaskitem, self._goselftaskcontentroot)
-
-			self._selfTasks[0] = MiniPartyTaskItem.New()
-
-			self._selfTasks[0]:init(go, true, self._taskType)
-		end
-
-		self._selfTasks[0]:showItem(true)
+		self._selfTasks[0]:showItem(true, MiniPartyEnum.TaskItemType.GetAll)
+		gohelper.setAsFirstSibling(self._selfTasks[0].go)
+	elseif needShowWating then
+		self._selfTasks[0]:showItem(true, MiniPartyEnum.TaskItemType.Waiting)
 		gohelper.setAsFirstSibling(self._selfTasks[0].go)
 	elseif self._selfTasks[0] then
 		self._selfTasks[0]:showItem(false)

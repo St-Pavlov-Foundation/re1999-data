@@ -25,6 +25,9 @@ end
 
 function SecurityGameView:onOpen()
 	SecurityGameView.super.onOpen(self)
+
+	self._progress.fillAmount = 0
+
 	gohelper.setActive(self._goJoystick, false)
 
 	self._sadTimeTotal = tonumber(PartyGameConfig.instance:getConstValue(50001)) or 2
@@ -50,7 +53,8 @@ function SecurityGameView:viewUpdate()
 	local sadTime = PartyGameCSDefine.SecurityGameInterfaceCs.GetSadTime()
 
 	sadTime = math.max(sadTime, 0)
-	self._progress.fillAmount = sadTime / self._sadTimeTotal
+
+	ZProj.TweenHelper.DOFillAmount(self._progress, sadTime / self._sadTimeTotal, 0.5)
 end
 
 return SecurityGameView

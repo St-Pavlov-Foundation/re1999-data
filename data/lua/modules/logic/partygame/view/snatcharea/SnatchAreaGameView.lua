@@ -10,6 +10,7 @@ function SnatchAreaGameView:onInitView()
 	self.partygamestartui = gohelper.findChild(self.viewGO, "root/partygamestartui")
 	self.partygamebattlebar = gohelper.findChild(self.viewGO, "root/partygamebattlebar_ver")
 	self.partygameteambar = gohelper.findChild(self.partygamebattlebar, "root/partygameteambar")
+	self.partygamewaitbar = gohelper.findChild(self.viewGO, "root/partygamewaitbar")
 
 	gohelper.setActive(self.partygameteambar, false)
 
@@ -49,6 +50,8 @@ function SnatchAreaGameView:onOpen()
 		getCountDownFunc = self.getCountDownFunc,
 		context = self
 	})
+
+	self.partyGameWaitBar = GameFacade.createLuaCompByGo(self.partygamewaitbar, PartyGameWaitBar, nil, self.viewContainer)
 end
 
 function SnatchAreaGameView:getCountDownFunc()

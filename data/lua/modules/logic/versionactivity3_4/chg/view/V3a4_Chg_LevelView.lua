@@ -162,14 +162,6 @@ function V3a4_Chg_LevelView:onOpen()
 	self:_showLeftTime()
 	TaskDispatcher.cancelTask(self._showLeftTime, self)
 	TaskDispatcher.runRepeat(self._showLeftTime, self, 1)
-
-	if self:_checkFirstEnter() then
-		self.viewContainer:simpleLockScreen(true)
-		self._storyItemList[1]:_setActive_goLocked(true)
-		TaskDispatcher.cancelTask(self._playFirstUnlock, self)
-		TaskDispatcher.runDelay(self._playFirstUnlock, self, 0.8)
-	end
-
 	self:_initPathStatus()
 	self:addEventCb(RoleActivityController.instance, RoleActivityEvent.StoryItemClick, self._onStoryItemClick, self)
 	self:addEventCb(StoryController.instance, StoryEvent.Finish, self._onStoryFinish, self)
@@ -178,16 +170,36 @@ function V3a4_Chg_LevelView:onOpen()
 	self:addEventCb(RedDotController.instance, RedDotEvent.RefreshClientCharacterDot, self._onRefreshClientCharacterDot, self)
 end
 
-function V3a4_Chg_LevelView:_checkFirstEnter()
-	local stage2 = self._storyItemList[2]
+function V3a4_Chg_LevelView:onOpenFinish()
+	if not self._storyItemList[1] then
+		return
+	end
 
-	if not stage2 then
+	if self:_checkFirstEnter() then
+		self.viewContainer:simpleLockScreen(true)
+		self._storyItemList[1]:_setActive_goLocked(true)
+		TaskDispatcher.cancelTask(self._playFirstUnlock, self)
+		TaskDispatcher.runDelay(self._playFirstUnlock, self, 0.8)
+	end
+end
+
+function V3a4_Chg_LevelView:_checkFirstEnter()
+	local list = self:_getDataList()
+
+	if not list or #list == 0 then
 		return false
 	end
 
-	if not stage2:isLevelUnlock() and not self.viewContainer:getIsActChgFirstEnter() then
-		self.viewContainer:setIsActChgFirstEnter(true)
+	local episodeCO = list[2]
 
+	if not episodeCO then
+		return false
+	end
+
+	local episodeId = episodeCO.id
+	local isLevelUnlock = self.viewContainer:isLevelUnlock(episodeId)
+
+	if not isLevelUnlock and not self.viewContainer:getIsActChgFirstEnter() then
 		return true
 	end
 
@@ -232,7 +244,7 @@ function V3a4_Chg_LevelView:onDestroyView()
 end
 
 function V3a4_Chg_LevelView:_onStoryItemClick(index)
-	self:_focusStoryItem(index, true)
+	self:_focusStoryItem(index, true, true)
 end
 
 function V3a4_Chg_LevelView:_onStoryStart(storyId)
@@ -316,6 +328,7 @@ function V3a4_Chg_LevelView:_onClickDown()
 end
 
 function V3a4_Chg_LevelView:_refreshItemList()
+	local bShowFirstLock = self:_checkFirstEnter()
 	local list = self:_getDataList()
 	local maxN = #self._goLevelItemContainerList
 	local currentEpisodeIdToPlay = self.viewContainer:currentEpisodeIdToPlay()
@@ -342,6 +355,11 @@ function V3a4_Chg_LevelView:_refreshItemList()
 		if currentEpisodeIdToPlay == episodeId then
 			self._latestStoryItem = i
 		end
+
+		if i == 1 and bShowFirstLock then
+			item:_setActive_goLocked(true)
+			item:playIdle(false)
+		end
 	end
 
 	local n = math.min(maxN, #self._storyItemList)
@@ -356,6 +374,8 @@ function V3a4_Chg_LevelView:_refreshItemList()
 end
 
 function V3a4_Chg_LevelView:_playFirstUnlock()
+	self.viewContainer:setIsActChgFirstEnter(true)
+
 	self._finishStoryIndex = 0
 
 	self._storyItemList[1]:playUnlock()
@@ -392,6 +412,12 @@ function V3a4_Chg_LevelView:_finishStoryEnd()
 		return
 	end
 
+	local storyItem = self._storyItemList[self._finishStoryIndex]
+
+	if storyItem then
+		storyItem:playStarAnim()
+	end
+
 	if self._finishStoryIndex == #self._storyItemList then
 		self._latestStoryItem = self._finishStoryIndex
 		self._finishStoryIndex = nil
@@ -410,13 +436,6 @@ function V3a4_Chg_LevelView:_playPathAnim()
 	end
 
 	self:playAnim_PathUnlock(self._finishStoryIndex)
-
-	local storyItem = self._storyItemList[self._finishStoryIndex]
-
-	if storyItem then
-		storyItem:playStarAnim()
-	end
-
 	TaskDispatcher.cancelTask(self._unlockStory, self)
 	TaskDispatcher.runDelay(self._unlockStory, self, 0.33)
 end
@@ -451,7 +470,7 @@ function V3a4_Chg_LevelView:_unlockStoryEnd()
 
 		if storyItem then
 			storyItem:refresh()
-			self:_focusStoryItem(index)
+			self:_focusStoryItem(index, true)
 		end
 	end
 
@@ -476,9 +495,9 @@ function V3a4_Chg_LevelView:_initPathStatus()
 	end
 end
 
-local FocusDuration = 0.5
+local kFocusDuration = 0.5
 
-function V3a4_Chg_LevelView:_focusStoryItem(index, needPlay)
+function V3a4_Chg_LevelView:_focusStoryItem(index, isTween, needPlayStory)
 	local contentAnchorX = recthelper.getAnchorX(self._storyItemList[index]:transform().parent)
 	local offsetX = self._offsetX - contentAnchorX
 
@@ -490,8 +509,8 @@ function V3a4_Chg_LevelView:_focusStoryItem(index, needPlay)
 
 	GameUtil.onDestroyViewMember_TweenId(self, "_moveTweenId")
 
-	if needPlay then
-		self._moveTweenId = ZProj.TweenHelper.DOAnchorPosX(self._goMoveTrans, offsetX, FocusDuration, self._onFocusEnd, self, index)
+	if isTween then
+		self._moveTweenId = ZProj.TweenHelper.DOAnchorPosX(self._goMoveTrans, offsetX, kFocusDuration, self._onFocusEnd, self, needPlayStory and index or nil)
 	else
 		recthelper.setAnchorX(self._goMoveTrans, offsetX)
 	end
@@ -500,7 +519,17 @@ function V3a4_Chg_LevelView:_focusStoryItem(index, needPlay)
 end
 
 function V3a4_Chg_LevelView:_onFocusEnd(index)
-	self._storyItemList[index]:playStory()
+	if not index then
+		return
+	end
+
+	local item = self._storyItemList[index]
+
+	if not item then
+		return
+	end
+
+	item:playStory()
 end
 
 function V3a4_Chg_LevelView:_setFocusFlag(index)

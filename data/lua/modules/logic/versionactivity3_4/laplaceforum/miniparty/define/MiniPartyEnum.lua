@@ -9,6 +9,11 @@ MiniPartyEnum.InviteType = {
 	Code = 1,
 	Check = 3
 }
+MiniPartyEnum.TaskItemType = {
+	GetAll = 1,
+	Waiting = 2,
+	Normal = 0
+}
 MiniPartyEnum.TaskType = {
 	SelfTask = 0,
 	GroupTask = 1

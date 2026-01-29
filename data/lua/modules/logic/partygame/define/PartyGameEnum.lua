@@ -60,5 +60,6 @@ PartyGameEnum.PromotionViewWaitDuration = 5
 PartyGameEnum.SelectCardRewardWaitTime = 10
 PartyGameEnum.SelectCardRewardWaitTime2 = 2
 PartyGameEnum.PopStopKey = "PartyGameEnum_PartyGameResultViewKey"
+PartyGameEnum.LoadingTime = 1
 
 return PartyGameEnum

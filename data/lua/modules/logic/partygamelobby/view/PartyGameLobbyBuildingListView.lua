@@ -11,6 +11,7 @@ function PartyGameLobbyBuildingListView:onInitView()
 	self._imageicon1 = gohelper.findChildImage(self.viewGO, "root/#go_qte/#btn_qte1/#image_icon1")
 	self._btnqte2 = gohelper.findChildButtonWithAudio(self.viewGO, "root/#go_qte/#btn_qte2")
 	self._imageicon2 = gohelper.findChildImage(self.viewGO, "root/#go_qte/#btn_qte2/#image_icon2")
+	self._btnclickbuilding = gohelper.findChildButtonWithAudio(self.viewGO, "root/#btn_clickbuilding")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -20,11 +21,32 @@ end
 function PartyGameLobbyBuildingListView:addEvents()
 	self._btnqte1:AddClickListener(self._btnqte1OnClick, self)
 	self._btnqte2:AddClickListener(self._btnqte2OnClick, self)
+	self._btnclickbuilding:AddClickListener(self._btnclickbuildingOnClick, self)
 end
 
 function PartyGameLobbyBuildingListView:removeEvents()
 	self._btnqte1:RemoveClickListener()
 	self._btnqte2:RemoveClickListener()
+	self._btnclickbuilding:RemoveClickListener()
+end
+
+function PartyGameLobbyBuildingListView:_btnclickbuildingOnClick()
+	local pos = GamepadController.instance:getMousePosition()
+	local camera = CameraMgr.instance:getMainCamera()
+	local ray = camera:ScreenPointToRay(pos)
+	local result, hitInfo = UnityEngine.Physics.Raycast(ray.origin, ray.direction, nil, 100, LayerMask.GetMask("SceneOpaque"))
+
+	if result and hitInfo then
+		local name = hitInfo.transform.name
+
+		if string.find(name, "shangdian") then
+			PartyGameLobbyController.instance:dispatchEvent(PartyGameLobbyEvent.ClickBuilding, PartyGameLobbyEnum.BuildingType.Shop)
+		elseif string.find(name, "fuzhuangchouqu") then
+			PartyGameLobbyController.instance:dispatchEvent(PartyGameLobbyEvent.ClickBuilding, PartyGameLobbyEnum.BuildingType.Lottery)
+		elseif string.find(name, "huanzhuangdidian") then
+			PartyGameLobbyController.instance:dispatchEvent(PartyGameLobbyEvent.ClickBuilding, PartyGameLobbyEnum.BuildingType.DressUp)
+		end
+	end
 end
 
 function PartyGameLobbyBuildingListView:_btnqte1OnClick()

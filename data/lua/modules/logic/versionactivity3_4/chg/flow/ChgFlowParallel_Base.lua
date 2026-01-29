@@ -28,4 +28,12 @@ function ChgFlowParallel_Base:onStart()
 	return
 end
 
+function ChgFlowParallel_Base:clearWork()
+	for _, work in ipairs(self._workList or {}) do
+		work:clearWork()
+	end
+
+	Base.clearWork(self)
+end
+
 return ChgFlowParallel_Base

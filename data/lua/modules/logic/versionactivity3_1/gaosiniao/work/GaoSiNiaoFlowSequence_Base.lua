@@ -32,7 +32,7 @@ function GaoSiNiaoFlowSequence_Base:onDestroyInternal(...)
 end
 
 function GaoSiNiaoFlowSequence_Base:insertWork(work)
-	if not work then
+	if not work or not self._workList then
 		return nil
 	end
 
@@ -46,7 +46,7 @@ end
 function GaoSiNiaoFlowSequence_Base:appendFlow(movableFlow)
 	local workList = movableFlow:getWorkList()
 
-	for _, work in ipairs(workList) do
+	for _, work in ipairs(workList or {}) do
 		self:addWork(work)
 	end
 
@@ -68,11 +68,6 @@ function GaoSiNiaoFlowSequence_Base:onStart()
 	return
 end
 
-function GaoSiNiaoFlowSequence_Base:beforeClearWork()
-	self._workList = {}
-	self._curIndex = 0
-end
-
 function GaoSiNiaoFlowSequence_Base:isDoneOrIdle()
 	if not self._workList then
 		return true
@@ -89,6 +84,17 @@ function GaoSiNiaoFlowSequence_Base:isDoneOrIdle()
 	end
 
 	return work.status == WorkStatus.Done
+end
+
+function GaoSiNiaoFlowSequence_Base:clearWork()
+	for _, work in ipairs(self._workList or {}) do
+		work:clearWork()
+	end
+
+	Base.clearWork(self)
+
+	self._workList = {}
+	self._curIndex = 0
 end
 
 return GaoSiNiaoFlowSequence_Base

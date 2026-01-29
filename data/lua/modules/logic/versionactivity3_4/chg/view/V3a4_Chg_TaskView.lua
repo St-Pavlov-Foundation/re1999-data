@@ -63,17 +63,4 @@ function V3a4_Chg_TaskView:_onSuccessGetBonus()
 	c:scrollModel():refreshData()
 end
 
-function V3a4_Chg_TaskView:_onFinishTask(taskId)
-	local c = self.viewContainer
-	local scrollModel = c:scrollModel()
-
-	if scrollModel:getById(taskId) then
-		scrollModel:refreshData()
-	end
-end
-
-function V3a4_Chg_TaskView:_refresh()
-	self:_setTaskList()
-end
-
 return V3a4_Chg_TaskView

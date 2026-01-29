@@ -360,10 +360,10 @@ end
 function SimpleListComp:onListScrollViewUpdateCell(cellGO, index)
 	index = index + 1
 
-	local go = gohelper.findChild(cellGO, self.className)
-	local item
+	local childCount = cellGO.transform.childCount
+	local go, item
 
-	if not go then
+	if childCount <= 0 then
 		local name = self.className .. index
 
 		if self.isResString then
@@ -376,6 +376,7 @@ function SimpleListComp:onListScrollViewUpdateCell(cellGO, index)
 
 		item = MonoHelper.addNoUpdateLuaComOnceToGo(go, self.param.cellClass, self.cellCtorParam)
 	else
+		go = cellGO.transform:GetChild(0).gameObject
 		item = MonoHelper.getLuaComFromGo(go, self.param.cellClass, self.cellCtorParam)
 	end
 

@@ -4,7 +4,7 @@ module("modules.logic.partygamelobby.define.PartyGameLobbyEnum", package.seeall)
 
 local PartyGameLobbyEnum = _M
 
-PartyGameLobbyEnum.PlayerMoveSpeed = 6
+PartyGameLobbyEnum.PlayerMoveSpeed = 7.5
 PartyGameLobbyEnum.JoystickPerRadians = math.rad(45)
 PartyGameLobbyEnum.MaxPlayerCount = 8
 PartyGameLobbyEnum.InitPos = Vector3(-30.92, 1.67, 6.73)
@@ -15,8 +15,18 @@ PartyGameLobbyEnum.GuideParam = {
 	CardDropGame = 100,
 	Result2SelectCard = 22,
 	Result1SelectCard = 21,
-	Game2 = 12,
+	Game2 = 11,
 	Game1 = 8
+}
+PartyGameLobbyEnum.GuideIds = {
+	GuideId2 = 34013,
+	GuideId5 = 34016,
+	GuideId3 = 34014,
+	LastGuideId = 34018,
+	GuideId4 = 34015,
+	FirstGuideId = 34011,
+	GuideId1 = 34012,
+	GuideId6 = 34017
 }
 PartyGameLobbyEnum.RefuseType = {
 	Passive = 1,

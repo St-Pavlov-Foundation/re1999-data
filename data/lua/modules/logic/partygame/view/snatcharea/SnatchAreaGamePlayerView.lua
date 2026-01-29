@@ -246,7 +246,10 @@ function SnatchAreaGamePlayerView:createPlayerItem()
 	playerItem.rectTr = playerItem.go:GetComponent(gohelper.Type_RectTransform)
 	playerItem.txtUid = gohelper.findChildText(playerItem.go, "uid")
 	playerItem.playedAddScoreAnim = false
-	playerItem.headItem = GameFacade.createLuaComp("partygameplayerhead", playerItem.go, PartyGamePlayerHead, nil, self.viewContainer)
+
+	local headRoot = gohelper.findChild(playerItem.go, "head_root")
+
+	playerItem.headItem = GameFacade.createLuaComp("partygameplayerhead", headRoot, PartyGamePlayerHead, nil, self.viewContainer)
 
 	playerItem.headItem:setAddScoreScale(2)
 

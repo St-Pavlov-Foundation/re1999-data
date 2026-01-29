@@ -5,7 +5,7 @@
     "belongRole": 0,
     "point": "1#2",
     "icon": "survival_talentskill_1",
-    "desc": "所有演习主角的初始【创造】属性+2",
+    "desc": "所有演习主角的初始【创造】属性+5",
     "preNodes": "",
     "addTalentIds": "501011",
     "extendScoreFix": 0,
@@ -14,167 +14,167 @@
   },
   {
     "id": 20002,
-    "name": "参数调校·韧性",
+    "name": "有备而来",
     "belongRole": 0,
     "point": "2#2",
-    "icon": "survival_talentskill_1",
-    "desc": "所有演习主角的初始【韧性】属性+2",
+    "icon": "survival_talentskill_5",
+    "desc": "进入地图时，获得1个快捷道具[倒置沙漏]",
     "preNodes": "20001",
     "addTalentIds": "501012",
+    "extendScoreFix": 0,
+    "cost": 1,
+    "sign": 1
+  },
+  {
+    "id": 20003,
+    "name": "参数调校·逻辑",
+    "belongRole": 0,
+    "point": "2#1",
+    "icon": "survival_talentskill_1",
+    "desc": "所有演习主角的初始【逻辑】属性+5",
+    "preNodes": "20001",
+    "addTalentIds": "501013",
     "extendScoreFix": 0,
     "cost": 1,
     "sign": 0
   },
   {
-    "id": 20003,
-    "name": "有备而来",
+    "id": 20004,
+    "name": "原始资本",
     "belongRole": 0,
-    "point": "2#1",
-    "icon": "survival_talentskill_5",
-    "desc": "进入地图时，随机获得1个快捷道具",
-    "preNodes": "20001",
-    "addTalentIds": "501013",
-    "extendScoreFix": 0,
+    "point": "3#2",
+    "icon": "survival_talentskill_4",
+    "desc": "进入模拟时，可选的战利品点数+100",
+    "preNodes": "20002",
+    "addTalentIds": "",
+    "extendScoreFix": 100,
     "cost": 2,
     "sign": 1
   },
   {
-    "id": 20004,
-    "name": "参数调校·逻辑",
-    "belongRole": 0,
-    "point": "3#2",
-    "icon": "survival_talentskill_1",
-    "desc": "所有演习主角的初始【逻辑】属性+2",
-    "preNodes": "20002",
-    "addTalentIds": "501014",
-    "extendScoreFix": 0,
-    "cost": 2,
-    "sign": 0
-  },
-  {
     "id": 20005,
-    "name": "参数调校·执行",
+    "name": "视域拓展",
     "belongRole": 0,
     "point": "4#2",
-    "icon": "survival_talentskill_1",
-    "desc": "所有演习主角的初始【执行】属性+2",
+    "icon": "survival_talentskill_5",
+    "desc": "视野范围+1",
     "preNodes": "20004",
     "addTalentIds": "501015",
     "extendScoreFix": 0,
-    "cost": 3,
+    "cost": 2,
     "sign": 0
   },
   {
     "id": 20006,
-    "name": "视域拓展",
+    "name": "参数调校·执行",
     "belongRole": 0,
     "point": "4#1",
-    "icon": "survival_talentskill_5",
-    "desc": "视野范围+1",
+    "icon": "survival_talentskill_1",
+    "desc": "所有演习主角的初始【执行】属性+5",
     "preNodes": "20004",
     "addTalentIds": "501016",
-    "extendScoreFix": 0,
-    "cost": 5,
-    "sign": 1
-  },
-  {
-    "id": 20007,
-    "name": "参数调校·创造",
-    "belongRole": 0,
-    "point": "5#2",
-    "icon": "survival_talentskill_1",
-    "desc": "所有演习主角的初始【创造】属性+3",
-    "preNodes": "20005",
-    "addTalentIds": "501017",
     "extendScoreFix": 0,
     "cost": 2,
     "sign": 0
   },
   {
-    "id": 20008,
-    "name": "参数调校·韧性",
-    "belongRole": 0,
-    "point": "6#2",
-    "icon": "survival_talentskill_1",
-    "desc": "所有演习主角的初始【韧性】属性+3",
-    "preNodes": "20007",
-    "addTalentIds": "501018",
-    "extendScoreFix": 0,
-    "cost": 3,
-    "sign": 0
-  },
-  {
-    "id": 20009,
+    "id": 20007,
     "name": "原始资本",
     "belongRole": 0,
-    "point": "6#1",
+    "point": "5#2",
     "icon": "survival_talentskill_4",
     "desc": "进入模拟时，可选的战利品点数+100",
-    "preNodes": "20007",
+    "preNodes": "20005",
     "addTalentIds": "",
     "extendScoreFix": 100,
     "cost": 3,
     "sign": 1
   },
   {
-    "id": 20010,
-    "name": "负载模组",
+    "id": 20008,
+    "name": "意外惊喜",
     "belongRole": 0,
-    "point": "6#3",
-    "icon": "survival_talentskill_2",
-    "desc": "额外负重增加100",
+    "point": "6#2",
+    "icon": "survival_talentskill_5",
+    "desc": "使用快捷道具后，下次搜刮获得的首个物品必定升华（每日仅触发1次）",
     "preNodes": "20007",
-    "addTalentIds": "501020",
-    "extendScoreFix": 0,
-    "cost": 5,
-    "sign": 0
-  },
-  {
-    "id": 20011,
-    "name": "参数调校·逻辑",
-    "belongRole": 0,
-    "point": "7#2",
-    "icon": "survival_talentskill_1",
-    "desc": "所有演习主角的初始【逻辑】属性+3",
-    "preNodes": "20008",
-    "addTalentIds": "501021",
+    "addTalentIds": "501018",
     "extendScoreFix": 0,
     "cost": 2,
     "sign": 0
   },
   {
+    "id": 20009,
+    "name": "富饶起点",
+    "belongRole": 0,
+    "point": "6#1",
+    "icon": "survival_talentskill_5",
+    "desc": "进入地图时，额外发现1个可搜刮的[垃圾箱]",
+    "preNodes": "20007",
+    "addTalentIds": "501019",
+    "extendScoreFix": 0,
+    "cost": 2,
+    "sign": 0
+  },
+  {
+    "id": 20010,
+    "name": "富饶起点",
+    "belongRole": 0,
+    "point": "6#3",
+    "icon": "survival_talentskill_5",
+    "desc": "进入地图时，额外发现1个可搜刮的[行李箱]",
+    "preNodes": "20007",
+    "addTalentIds": "501020",
+    "extendScoreFix": 0,
+    "cost": 3,
+    "sign": 0
+  },
+  {
+    "id": 20011,
+    "name": "原始资本",
+    "belongRole": 0,
+    "point": "7#2",
+    "icon": "survival_talentskill_4",
+    "desc": "进入模拟时，可选的战利品点数+100",
+    "preNodes": "20008",
+    "addTalentIds": "",
+    "extendScoreFix": 100,
+    "cost": 4,
+    "sign": 1
+  },
+  {
     "id": 20012,
-    "name": "参数调校·执行",
+    "name": "负载模组",
     "belongRole": 0,
     "point": "8#2",
-    "icon": "survival_talentskill_1",
-    "desc": "所有演习主角的初始【执行】属性+3",
+    "icon": "survival_talentskill_2",
+    "desc": "额外负重增加100",
     "preNodes": "20011",
     "addTalentIds": "501022",
     "extendScoreFix": 0,
-    "cost": 3,
+    "cost": 2,
     "sign": 0
   },
   {
     "id": 20013,
-    "name": "有备而来",
+    "name": "富饶起点",
     "belongRole": 0,
     "point": "8#1",
     "icon": "survival_talentskill_5",
-    "desc": "进入地图时，随机获得1个快捷道具",
+    "desc": "进入地图时，额外发现1个可搜刮的[板条箱]",
     "preNodes": "20011",
     "addTalentIds": "501023",
     "extendScoreFix": 0,
-    "cost": 3,
+    "cost": 2,
     "sign": 0
   },
   {
     "id": 20014,
-    "name": "幸运干预",
+    "name": "有备而来",
     "belongRole": 0,
     "point": "9#2",
     "icon": "survival_talentskill_5",
-    "desc": "物资升华概率额外提升5%",
+    "desc": "进入地图时，获得1个快捷道具[倒置沙漏]",
     "preNodes": "20012",
     "addTalentIds": "501024",
     "extendScoreFix": 0,
@@ -183,54 +183,54 @@
   },
   {
     "id": 20015,
-    "name": "富饶起点",
+    "name": "参数调校·逻辑",
     "belongRole": 0,
     "point": "9#1",
-    "icon": "survival_talentskill_5",
-    "desc": "地图中额外生成1个搜刮点",
+    "icon": "survival_talentskill_1",
+    "desc": "所有演习主角的初始【逻辑】属性+5",
     "preNodes": "20012",
     "addTalentIds": "501025",
     "extendScoreFix": 0,
-    "cost": 5,
+    "cost": 3,
     "sign": 0
   },
   {
     "id": 20016,
-    "name": "参数调校·创造",
+    "name": "原始资本",
     "belongRole": 0,
     "point": "10#2",
-    "icon": "survival_talentskill_1",
-    "desc": "所有演习主角的初始【创造】属性+5",
+    "icon": "survival_talentskill_4",
+    "desc": "进入模拟时，可选的战利品点数+100",
     "preNodes": "20014",
-    "addTalentIds": "501026",
+    "addTalentIds": "",
+    "extendScoreFix": 100,
+    "cost": 4,
+    "sign": 1
+  },
+  {
+    "id": 20017,
+    "name": "负载模组",
+    "belongRole": 0,
+    "point": "11#2",
+    "icon": "survival_talentskill_2",
+    "desc": "额外负重增加100",
+    "preNodes": "20016",
+    "addTalentIds": "501027",
     "extendScoreFix": 0,
     "cost": 2,
     "sign": 0
   },
   {
-    "id": 20017,
-    "name": "参数调校·乐观",
-    "belongRole": 0,
-    "point": "11#2",
-    "icon": "survival_talentskill_1",
-    "desc": "所有演习主角的初始【乐观】属性+5",
-    "preNodes": "20016",
-    "addTalentIds": "501027",
-    "extendScoreFix": 0,
-    "cost": 3,
-    "sign": 0
-  },
-  {
     "id": 20018,
-    "name": "负载模组",
+    "name": "参数调校·执行",
     "belongRole": 0,
     "point": "11#1",
-    "icon": "survival_talentskill_2",
-    "desc": "额外负重增加50",
+    "icon": "survival_talentskill_1",
+    "desc": "所有演习主角的初始【执行】属性+5",
     "preNodes": "20016",
     "addTalentIds": "501028",
     "extendScoreFix": 0,
-    "cost": 3,
+    "cost": 2,
     "sign": 0
   },
   {
@@ -252,12 +252,12 @@
     "belongRole": 0,
     "point": "12#1",
     "icon": "survival_talentskill_4",
-    "desc": "出售商品价格提升5%",
+    "desc": "出售商品价格提升10%",
     "preNodes": "20017",
     "addTalentIds": "501030",
     "extendScoreFix": 0,
     "cost": 5,
-    "sign": 0
+    "sign": 1
   },
   {
     "id": 21101,
@@ -295,7 +295,7 @@
     "preNodes": "",
     "addTalentIds": "502130",
     "extendScoreFix": 0,
-    "cost": 3,
+    "cost": 2,
     "sign": 0
   },
   {
@@ -308,7 +308,7 @@
     "preNodes": "",
     "addTalentIds": "502140",
     "extendScoreFix": 0,
-    "cost": 3,
+    "cost": 2,
     "sign": 0
   },
   {
@@ -321,7 +321,7 @@
     "preNodes": "",
     "addTalentIds": "502150",
     "extendScoreFix": 0,
-    "cost": 3,
+    "cost": 1,
     "sign": 0
   },
   {
@@ -334,7 +334,7 @@
     "preNodes": "",
     "addTalentIds": "502160",
     "extendScoreFix": 0,
-    "cost": 2,
+    "cost": 1,
     "sign": 0
   },
   {
@@ -347,7 +347,7 @@
     "preNodes": "",
     "addTalentIds": "502170",
     "extendScoreFix": 200,
-    "cost": 2,
+    "cost": 1,
     "sign": 0
   },
   {
@@ -360,7 +360,7 @@
     "preNodes": "",
     "addTalentIds": "502180",
     "extendScoreFix": 0,
-    "cost": 2,
+    "cost": 1,
     "sign": 0
   },
   {
@@ -399,7 +399,7 @@
     "preNodes": "",
     "addTalentIds": "502230",
     "extendScoreFix": 0,
-    "cost": 3,
+    "cost": 2,
     "sign": 0
   },
   {
@@ -412,7 +412,7 @@
     "preNodes": "",
     "addTalentIds": "502240",
     "extendScoreFix": 0,
-    "cost": 3,
+    "cost": 2,
     "sign": 0
   },
   {
@@ -425,7 +425,7 @@
     "preNodes": "",
     "addTalentIds": "502250",
     "extendScoreFix": 0,
-    "cost": 3,
+    "cost": 1,
     "sign": 0
   },
   {
@@ -438,7 +438,7 @@
     "preNodes": "",
     "addTalentIds": "502260",
     "extendScoreFix": 0,
-    "cost": 2,
+    "cost": 1,
     "sign": 0
   },
   {
@@ -451,7 +451,7 @@
     "preNodes": "",
     "addTalentIds": "502270",
     "extendScoreFix": 200,
-    "cost": 2,
+    "cost": 1,
     "sign": 0
   },
   {
@@ -464,7 +464,7 @@
     "preNodes": "",
     "addTalentIds": "502280",
     "extendScoreFix": 0,
-    "cost": 2,
+    "cost": 1,
     "sign": 0
   },
   {
@@ -503,7 +503,7 @@
     "preNodes": "",
     "addTalentIds": "502330",
     "extendScoreFix": 0,
-    "cost": 3,
+    "cost": 2,
     "sign": 0
   },
   {
@@ -516,7 +516,7 @@
     "preNodes": "",
     "addTalentIds": "502340",
     "extendScoreFix": 0,
-    "cost": 3,
+    "cost": 2,
     "sign": 0
   },
   {
@@ -529,7 +529,7 @@
     "preNodes": "",
     "addTalentIds": "502350",
     "extendScoreFix": 0,
-    "cost": 3,
+    "cost": 1,
     "sign": 0
   },
   {
@@ -542,7 +542,7 @@
     "preNodes": "",
     "addTalentIds": "502360",
     "extendScoreFix": 0,
-    "cost": 2,
+    "cost": 1,
     "sign": 0
   },
   {
@@ -555,7 +555,7 @@
     "preNodes": "",
     "addTalentIds": "502370",
     "extendScoreFix": 200,
-    "cost": 2,
+    "cost": 1,
     "sign": 0
   },
   {
@@ -568,7 +568,7 @@
     "preNodes": "",
     "addTalentIds": "502380",
     "extendScoreFix": 0,
-    "cost": 2,
+    "cost": 1,
     "sign": 0
   }
 ]

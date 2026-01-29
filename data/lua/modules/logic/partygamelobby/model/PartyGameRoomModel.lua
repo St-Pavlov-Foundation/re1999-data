@@ -211,6 +211,8 @@ end
 
 function PartyGameRoomModel:setFriendInfos(list)
 	self._friendInfos = GameUtil.rpcInfosToMap(list, FriendInfoMO, "userId")
+
+	PartyGameStatHelper.instance:logPartyFriendsInfo(self._friendInfos)
 end
 
 function PartyGameRoomModel:updateFriendInfo(info)
@@ -348,13 +350,13 @@ function PartyGameRoomModel:setPlayerInfos(infos, markDiff)
 		table.insert(list, mo)
 	end
 
-	if markDiff and not prevOwner and self:isRoomOwner() then
-		GameFacade.showToast(ToastEnum.ParyGameNewOwnerTip)
-	end
-
 	self._playerInfoUpdateTime = Time.time
 
 	self._playerInfos:setList(list)
+
+	if markDiff and not prevOwner and self:isRoomOwner() then
+		GameFacade.showToast(ToastEnum.ParyGameNewOwnerTip)
+	end
 end
 
 function PartyGameRoomModel:getPlayerInfoUpdateTime()

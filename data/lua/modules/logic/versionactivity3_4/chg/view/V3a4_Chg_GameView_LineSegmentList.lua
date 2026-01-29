@@ -504,23 +504,6 @@ function V3a4_Chg_GameView_LineSegmentList:checkIsCompleted()
 		return true
 	end
 
-	local endItem = self:_lastFinalUsedEndItem()
-	local startObj = self:baseViewContainer():startObj()
-
-	if #self._lineGourp >= 1 then
-		local startEndList = self:lineGourpStartEndList()
-		local startEndInfo = startEndList[#startEndList]
-		local endLineItem = startEndInfo.endLineItem
-
-		if endLineItem:endItem() == endItem and endItem:isEnd() then
-			local curEndMapObj = endItem:mapObj()
-
-			if curEndMapObj:curHP() > startObj:curHP() then
-				return true
-			end
-		end
-	end
-
 	return false
 end
 

@@ -14,7 +14,6 @@ function V3a4_Chg_LevelItemStyleImpl:_editableInitView()
 
 	self._txt_StageName = gohelper.findChildText(self.viewGO, "txt_StageName")
 	self._txt_StageNum = gohelper.findChildText(self.viewGO, "txt_StageNum")
-	self._goLocked = gohelper.findChild(self.viewGO, "#go_Locked")
 	self._goStar = gohelper.findChild(self.viewGO, "Star/go_Star")
 	self._anim = self.viewGO:GetComponent(gohelper.Type_Animator)
 	self._startAnim = self._goStar:GetComponent(gohelper.Type_Animation)

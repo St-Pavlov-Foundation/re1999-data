@@ -13,6 +13,22 @@ function PartyGameScene:_createAllComps()
 	self:_addComp("graphics", PartyGameSceneGraphicsComp)
 end
 
+function PartyGameScene:onStart(...)
+	local preSceneType = GameSceneMgr.instance:getPreSceneType()
+
+	if preSceneType ~= SceneType.PartyGame then
+		PartyGame_GM.ClearGameIds()
+	end
+
+	local game = PartyGameController.instance:getCurPartyGame()
+
+	if game then
+		PartyGame_GM.AddGameId(game:getGameId())
+	end
+
+	PartyGameScene.super.onStart(self, ...)
+end
+
 function PartyGameScene:onClose()
 	local nextSceneType = GameSceneMgr.instance:getNextSceneType()
 

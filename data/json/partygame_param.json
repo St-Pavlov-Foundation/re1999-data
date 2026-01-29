@@ -21,7 +21,7 @@
     "helpId": 3401201,
     "limitTime": 8,
     "roleCol": "0.65#0.65#0.65",
-    "openLog": 1
+    "openLog": 0
   },
   {
     "id": 2,
@@ -30,7 +30,7 @@
     "desc": "沿着圣火照亮的道路抵达对岸",
     "sceneAssetId": 20001,
     "canTeam": false,
-    "weight": "4#50",
+    "weight": "4#230",
     "moveSpeed": 5.5,
     "camera": 12,
     "focus": "-13#2.64#-0.63",
@@ -45,7 +45,7 @@
     "helpId": 3401202,
     "limitTime": 8,
     "roleCol": "0.65#0.65#0.65",
-    "openLog": 1
+    "openLog": 0
   },
   {
     "id": 3,
@@ -69,7 +69,7 @@
     "helpId": 3401203,
     "limitTime": 8,
     "roleCol": "0.3#0.3#0.3",
-    "openLog": 1
+    "openLog": 0
   },
   {
     "id": 4,
@@ -93,7 +93,7 @@
     "helpId": 3401204,
     "limitTime": 8,
     "roleCol": "0.65#0.65#0.65",
-    "openLog": 1
+    "openLog": 0
   },
   {
     "id": 5,
@@ -109,7 +109,7 @@
     "isFocusPlayer": false,
     "focusLimit": "",
     "posIndexLock": "4#2",
-    "gameTime": 60,
+    "gameTime": 75,
     "playerPos": "-1.1#2.3#-8|-1.1#2.3#4.5|-1.1#2.3#17.2|-1.1#2.3#30.5",
     "bgmId": 3340008,
     "envMusic": 3340026,
@@ -117,7 +117,7 @@
     "helpId": 3401205,
     "limitTime": 8,
     "roleCol": "0.65#0.65#0.65",
-    "openLog": 1
+    "openLog": 0
   },
   {
     "id": 6,
@@ -125,7 +125,7 @@
     "name": "像素扭扭节",
     "desc": "站在荧幕出现的图案地板上",
     "sceneAssetId": 60001,
-    "canTeam": true,
+    "canTeam": false,
     "weight": "8#50|4#50",
     "moveSpeed": 6.0,
     "camera": 16,
@@ -141,7 +141,7 @@
     "helpId": 3401206,
     "limitTime": 8,
     "roleCol": "0.65#0.65#0.65",
-    "openLog": 1
+    "openLog": 0
   },
   {
     "id": 7,
@@ -150,7 +150,7 @@
     "desc": "捕捉魔精，避免选择同个魔精",
     "sceneAssetId": 70001,
     "canTeam": false,
-    "weight": "4#50",
+    "weight": "4#230",
     "moveSpeed": 7.5,
     "camera": 20,
     "focus": "-13#0#4.02",
@@ -165,7 +165,7 @@
     "helpId": 3401207,
     "limitTime": 8,
     "roleCol": "0.65#0.65#0.65",
-    "openLog": 1
+    "openLog": 0
   },
   {
     "id": 8,
@@ -189,7 +189,7 @@
     "helpId": 3401208,
     "limitTime": 8,
     "roleCol": "1#1#1",
-    "openLog": 1
+    "openLog": 0
   },
   {
     "id": 9,
@@ -213,7 +213,7 @@
     "helpId": 3401209,
     "limitTime": 8,
     "roleCol": "0.65#0.65#0.65",
-    "openLog": 1
+    "openLog": 0
   },
   {
     "id": 10,
@@ -237,7 +237,7 @@
     "helpId": 3401210,
     "limitTime": 8,
     "roleCol": "0.65#0.65#0.65",
-    "openLog": 1
+    "openLog": 0
   },
   {
     "id": 11,
@@ -246,7 +246,7 @@
     "desc": "接住落下的卡邦克鲁，小心躲开招潮蟹",
     "sceneAssetId": 110001,
     "canTeam": false,
-    "weight": "4#50|2#50",
+    "weight": "4#100|2#50",
     "moveSpeed": 2.0,
     "camera": 21,
     "focus": "-13#0#99.42",
@@ -261,16 +261,16 @@
     "helpId": 3401211,
     "limitTime": 8,
     "roleCol": "0.65#0.65#0.65",
-    "openLog": 1
+    "openLog": 0
   },
   {
     "id": 12,
-    "online": true,
+    "online": false,
     "name": "智能妙妙分类机",
     "desc": "让扭蛋进入正确的筐中",
     "sceneAssetId": 120001,
     "canTeam": false,
-    "weight": "4#50|2#50",
+    "weight": "4#100|2#50",
     "moveSpeed": 3.0,
     "camera": 12,
     "focus": "-13.4#0#0",
@@ -285,7 +285,7 @@
     "helpId": 3401212,
     "limitTime": 8,
     "roleCol": "0.65#0.65#0.65",
-    "openLog": 1
+    "openLog": 0
   },
   {
     "id": 13,
@@ -309,7 +309,7 @@
     "helpId": 3401213,
     "limitTime": 8,
     "roleCol": "0.65#0.65#0.65",
-    "openLog": 1
+    "openLog": 0
   },
   {
     "id": 14,
@@ -318,7 +318,7 @@
     "desc": "选择正确的爱心",
     "sceneAssetId": 140001,
     "canTeam": false,
-    "weight": "4#50|2#50",
+    "weight": "4#100|2#50",
     "moveSpeed": 3.0,
     "camera": 12,
     "focus": "-13.4#0#0",
@@ -333,7 +333,7 @@
     "helpId": 3401214,
     "limitTime": 0,
     "roleCol": "0.65#0.65#0.65",
-    "openLog": 1
+    "openLog": 0
   },
   {
     "id": 15,
@@ -357,7 +357,7 @@
     "helpId": 3401215,
     "limitTime": 5,
     "roleCol": "0.65#0.65#0.65",
-    "openLog": 1
+    "openLog": 0
   },
   {
     "id": 16,
@@ -366,7 +366,7 @@
     "desc": "找出面积最大区域",
     "sceneAssetId": 160001,
     "canTeam": false,
-    "weight": "4#50",
+    "weight": "4#230",
     "moveSpeed": 3.0,
     "camera": 12,
     "focus": "-13.4#0#0",
@@ -381,7 +381,7 @@
     "helpId": 3401216,
     "limitTime": 5,
     "roleCol": "0.65#0.65#0.65",
-    "openLog": 1
+    "openLog": 0
   },
   {
     "id": 17,
@@ -405,7 +405,7 @@
     "helpId": 3401217,
     "limitTime": 5,
     "roleCol": "0.65#0.65#0.65",
-    "openLog": 1
+    "openLog": 0
   },
   {
     "id": 18,
@@ -429,7 +429,7 @@
     "helpId": 3401218,
     "limitTime": 5,
     "roleCol": "0.65#0.65#0.65",
-    "openLog": 1
+    "openLog": 0
   },
   {
     "id": 19,
@@ -438,7 +438,7 @@
     "desc": "选择抵达对岸的地形，避免选择同个地形",
     "sceneAssetId": 190001,
     "canTeam": false,
-    "weight": "4#50",
+    "weight": "4#230",
     "moveSpeed": 3.0,
     "camera": 23,
     "focus": "-12#0#7.62",
@@ -453,7 +453,7 @@
     "helpId": 3401219,
     "limitTime": 5,
     "roleCol": "0.65#0.65#0.65",
-    "openLog": 1
+    "openLog": 0
   },
   {
     "id": 100,
@@ -477,7 +477,7 @@
     "helpId": 0,
     "limitTime": 0,
     "roleCol": "0#0#0",
-    "openLog": 1
+    "openLog": 0
   },
   {
     "id": 1003,

@@ -95,23 +95,6 @@ function PartyGameLobbyBuildingInfo:onUpdateMO(id, config)
 
 		return
 	end
-
-	self._clickListener = ZProj.BoxColliderClickListener.Get(buildingGo)
-
-	self._clickListener:AddClickListener(self._onMouseDown, self)
-	self._clickListener:AddMouseUpListener(self._onMouseUp, self)
-end
-
-function PartyGameLobbyBuildingInfo:_onMouseDown()
-	self._clickScreenPos = GamepadController.instance:getMousePosition()
-end
-
-function PartyGameLobbyBuildingInfo:_onMouseUp()
-	if self._clickScreenPos and Vector2.Distance(self._clickScreenPos, GamepadController.instance:getMousePosition()) <= 0 then
-		self:_btnclickOnClick()
-	end
-
-	self._clickScreenPos = nil
 end
 
 function PartyGameLobbyBuildingInfo:bindBuildingGo(entity)

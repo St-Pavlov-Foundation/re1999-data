@@ -41,9 +41,9 @@ function PartyRoomRpc:onReceiveGetPartyRoomInfoReply(resultCode, msg)
 	local matchInfo = msg:HasField("matchInfo") and msg.matchInfo or nil
 	local matchTime = msg.matchTime
 
+	PartyGameRoomModel.instance:setRoomId(roomId)
 	PartyGameRoomModel.instance:setMatchTime(matchTime)
 	PartyMatchRpc.instance:setMatchStatus(matchStatus)
-	PartyGameRoomModel.instance:setRoomId(roomId)
 	PartyGameRoomModel.instance:setPlayerInfos(playerInfos)
 	PartyGameRoomModel.instance:setMatchInfo(matchInfo)
 	PartyGameLobbyController.instance:dispatchEvent(PartyGameLobbyEvent.CustomGetPartyRoomInfo, matchInfo)
@@ -253,6 +253,7 @@ function PartyRoomRpc:sendInviteFriendRequest(userId, roomId, friendUserId)
 	req.friendUserId = friendUserId
 
 	self:sendMsg(req)
+	PartyGameStatHelper.instance:partyGameInvite(StatEnum.PartyGameEnum.SendInvite, friendUserId, roomId)
 end
 
 function PartyRoomRpc:onReceiveInviteFriendReply(resultCode, msg)
@@ -276,6 +277,7 @@ function PartyRoomRpc:sendRefuseInviteRequest(userId, roomId, refuseUserId, refu
 	req.refuseType = refuseType or PartyGameLobbyEnum.RefuseType.Passive
 
 	self:sendMsg(req)
+	PartyGameStatHelper.instance:partyGameInvite(StatEnum.PartyGameEnum.RefuseInvite, refuseUserId, roomId)
 end
 
 function PartyRoomRpc:onReceiveRefuseInviteReply(resultCode, msg)

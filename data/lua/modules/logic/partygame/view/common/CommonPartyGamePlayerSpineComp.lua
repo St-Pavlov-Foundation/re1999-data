@@ -21,7 +21,13 @@ function CommonPartyGamePlayerSpineComp:initSpine(uid)
 	if playerInfo == nil then
 		logError("玩家数据不存在, uid->" .. tostring(uid))
 	else
-		resMap = PartyClothConfig.instance:getSkinRes(playerInfo.skinIds)
+		local skinIds = playerInfo.skinIds
+
+		if not skinIds or #skinIds == 0 then
+			skinIds = PartyClothConfig.instance:getDefaultSuitSkinIds()
+		end
+
+		resMap = PartyClothConfig.instance:getSkinRes(skinIds)
 		self.isMainPlayer = playerInfo:isMainPlayer()
 	end
 

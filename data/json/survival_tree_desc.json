@@ -1893,7 +1893,7 @@
     "desc": "又开始了",
     "icon": 15,
     "condition": "",
-    "result": "Drop|320701071"
+    "result": "Drop|320701011"
   },
   {
     "id": 207010700,
@@ -1917,7 +1917,7 @@
     "desc": "以前都是谁在容忍你？",
     "icon": 15,
     "condition": "",
-    "result": "Drop|320701071"
+    "result": "Drop|320701011"
   },
   {
     "id": 207010700,
@@ -1941,7 +1941,7 @@
     "desc": "以前都是谁在容忍你？",
     "icon": 15,
     "condition": "",
-    "result": "Drop|320701071"
+    "result": "Drop|320701011"
   },
   {
     "id": 207010700,
@@ -1965,7 +1965,7 @@
     "desc": "以前都是谁在容忍你？",
     "icon": 15,
     "condition": "",
-    "result": "Drop|3201"
+    "result": "Drop|320701011"
   },
   {
     "id": 207010700,
@@ -1981,7 +1981,7 @@
     "desc": "以前都是谁在容忍你？",
     "icon": 15,
     "condition": "",
-    "result": "Drop|320701071"
+    "result": "Drop|320701011"
   },
   {
     "id": 207011300,
@@ -2045,7 +2045,7 @@
     "desc": "……",
     "icon": 15,
     "condition": "",
-    "result": "Drop|320701131"
+    "result": "Drop|320701011"
   },
   {
     "id": 207011300,
@@ -2053,7 +2053,7 @@
     "desc": "……",
     "icon": 15,
     "condition": "",
-    "result": "Drop|320701132"
+    "result": "Drop|320701011"
   },
   {
     "id": 207012200,
@@ -2117,7 +2117,7 @@
     "desc": "收下报酬",
     "icon": 15,
     "condition": "",
-    "result": "Drop|320701222"
+    "result": "Drop|320701011"
   },
   {
     "id": 207012202,
@@ -2141,7 +2141,7 @@
     "desc": "拿走",
     "icon": 15,
     "condition": "",
-    "result": "Drop|320701222"
+    "result": "Drop|320701011"
   },
   {
     "id": 207012801,
@@ -2309,7 +2309,7 @@
     "desc": "令人遗憾",
     "icon": 15,
     "condition": "",
-    "result": "Drop|320702032"
+    "result": "Drop|320701011"
   },
   {
     "id": 207020300,
@@ -2317,7 +2317,7 @@
     "desc": "令人遗憾",
     "icon": 15,
     "condition": "",
-    "result": "Drop|320702034"
+    "result": "Drop|320702031"
   },
   {
     "id": 207020300,
@@ -3691,14 +3691,6 @@
     "id": 307011201,
     "nodeId": 62,
     "desc": "可悲",
-    "icon": 15,
-    "condition": "",
-    "result": "ChoiceList|307010204"
-  },
-  {
-    "id": 307011201,
-    "nodeId": 55,
-    "desc": "……",
     "icon": 15,
     "condition": "",
     "result": "Drop|320701011"
@@ -5586,7 +5578,7 @@
   {
     "id": 307021301,
     "nodeId": 142,
-    "desc": "我居然被下药了",
+    "desc": "我居然被抢劫了",
     "icon": 15,
     "condition": "",
     "result": "ChoiceList|307021306"
@@ -5697,7 +5689,31 @@
   },
   {
     "id": 307021401,
-    "nodeId": 163,
+    "nodeId": 178,
+    "desc": "回家吧",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021405"
+  },
+  {
+    "id": 307021401,
+    "nodeId": 186,
+    "desc": "无法容忍",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021405"
+  },
+  {
+    "id": 307021401,
+    "nodeId": 194,
+    "desc": "见鬼的破烂！",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021405"
+  },
+  {
+    "id": 307021401,
+    "nodeId": 203,
     "desc": "这是什么无聊的笑话？",
     "icon": 15,
     "condition": "",
@@ -5705,16 +5721,88 @@
   },
   {
     "id": 307021401,
+    "nodeId": 211,
+    "desc": "回家吧",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021405"
+  },
+  {
+    "id": 307021401,
+    "nodeId": 219,
+    "desc": "无法容忍",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021405"
+  },
+  {
+    "id": 307021401,
+    "nodeId": 227,
+    "desc": "见鬼的破烂！",
+    "icon": 15,
+    "condition": "",
+    "result": "ChoiceList|307021405"
+  },
+  {
+    "id": 307021401,
     "nodeId": 170,
-    "desc": "这是什么无聊的笑话？",
+    "desc": "……",
     "icon": 15,
     "condition": "",
     "result": "Drop|320701011"
   },
   {
     "id": 307021401,
-    "nodeId": 172,
-    "desc": "这是什么无聊的笑话？",
+    "nodeId": 180,
+    "desc": "……",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021401,
+    "nodeId": 188,
+    "desc": "……",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021401,
+    "nodeId": 196,
+    "desc": "……",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021401,
+    "nodeId": 205,
+    "desc": "……",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021401,
+    "nodeId": 213,
+    "desc": "……",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021401,
+    "nodeId": 221,
+    "desc": "……",
+    "icon": 15,
+    "condition": "",
+    "result": "Drop|320701011"
+  },
+  {
+    "id": 307021401,
+    "nodeId": 229,
+    "desc": "……",
     "icon": 15,
     "condition": "",
     "result": "Drop|320701011"
@@ -6109,7 +6197,7 @@
     "desc": "疏散人群",
     "icon": 15,
     "condition": "",
-    "result": "ChoiceList|307040303"
+    "result": "CostGameTime|30"
   },
   {
     "id": 307040301,
@@ -6205,7 +6293,7 @@
     "desc": "未来掌握在我们自己手中",
     "icon": 15,
     "condition": "",
-    "result": "FinishMyself|false"
+    "result": "Drop|320702093"
   },
   {
     "id": 307040801,
@@ -6277,7 +6365,7 @@
     "desc": "乌尔里希，这里。",
     "icon": 15,
     "condition": "",
-    "result": "ChoiceList|307041004"
+    "result": "ChoiceList|307041005"
   },
   {
     "id": 307041001,
@@ -6341,7 +6429,7 @@
     "desc": "推翻高塔吧，以后的路我们自己走。",
     "icon": 15,
     "condition": "",
-    "result": "FinishMyself|false"
+    "result": "Drop|320702093"
   },
   {
     "id": 307091101,

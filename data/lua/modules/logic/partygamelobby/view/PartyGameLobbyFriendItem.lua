@@ -63,7 +63,6 @@ function PartyGameLobbyFriendItem:onUpdateMO(mo)
 
 	self._playericon:onUpdateMO(self._mo)
 	self._playericon:setShowLevel(true)
-	self._playericon:setPlayerIconGray(tonumber(self._mo.time) ~= 0)
 
 	local friendInfo = PartyGameRoomModel.instance:getFriendInfo(self._mo.id)
 

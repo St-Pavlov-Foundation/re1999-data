@@ -151,7 +151,7 @@
     "desc4": "",
     "progressCondition": "eventFinished#73#307041001",
     "maxProgress": 1,
-    "needAccept": 0,
+    "needAccept": 1,
     "prepose": "330002",
     "failCondition": "",
     "uselessCondition": "",

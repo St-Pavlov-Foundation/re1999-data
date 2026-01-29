@@ -83,6 +83,8 @@ function SurvivalTechRoleFragment:onTechChange()
 end
 
 function SurvivalTechRoleFragment:onReceiveSurvivalOutSideTechUnlockReply(param)
+	AudioMgr.instance:trigger(AudioEnum3_4.Survival.play_ui_bulaochun_tansuo_unlock_2)
+
 	local techId = param.techId
 	local teachCellId = param.teachCellId
 

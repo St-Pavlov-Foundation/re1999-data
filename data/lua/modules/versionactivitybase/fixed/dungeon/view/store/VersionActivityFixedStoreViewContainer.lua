@@ -78,4 +78,8 @@ function VersionActivityFixedStoreViewContainer:onContainerClose()
 	VersionActivityFixedHelper.setCustomDungeonStore()
 end
 
+function VersionActivityFixedStoreViewContainer:isShowSpecialItem()
+	return true
+end
+
 return VersionActivityFixedStoreViewContainer

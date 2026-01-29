@@ -30,6 +30,9 @@ function CardDropVSView:onInitView()
 	self.goNormalVs = gohelper.findChild(self.viewGO, "root/#vsLayout/#go_normalvs")
 	self.goEndVs = gohelper.findChild(self.viewGO, "root/#vsLayout/#go_endvs")
 	self.txtTitle = gohelper.findChildText(self.viewGO, "root/titlebg/#txt_title")
+	self.goWaitTip = gohelper.findChild(self.viewGO, "root/txt_tips")
+
+	gohelper.setActive(self.goWaitTip, false)
 
 	local viewSetting = self.viewContainer:getSetting()
 	local res = viewSetting.otherRes.common_playeritem
@@ -90,6 +93,7 @@ function CardDropVSView:refreshShowMyAndEnemyResultInfo()
 	gohelper.setActive(self.goLine2, false)
 	gohelper.setActive(self.goLine4, false)
 	gohelper.setActive(self.goVsLayout, false)
+	gohelper.setActive(self.goWaitTip, true)
 
 	local myUid = self.interface.GetMyPlayerUid()
 	local enemyUid = self.interface.GetEnemyPlayerUid()
@@ -130,6 +134,7 @@ function CardDropVSView:refreshShowAllResultInfo()
 	gohelper.setActive(self.goVsLayout, false)
 	gohelper.setActive(self.goLine2, true)
 	gohelper.setActive(self.goLine4, true)
+	gohelper.setActive(self.goWaitTip, false)
 
 	local playerList = PartyGameModel.instance:getCurGamePlayerList()
 	local teamCount = #playerList / 2
@@ -201,6 +206,7 @@ function CardDropVSView:refreshAllInfo()
 	gohelper.setActive(self.goVsLayout, false)
 	gohelper.setActive(self.goLine2, true)
 	gohelper.setActive(self.goLine4, true)
+	gohelper.setActive(self.goWaitTip, false)
 
 	local playerList = PartyGameModel.instance:getCurGamePlayerList()
 	local teamCount = #playerList / 2
@@ -301,6 +307,7 @@ function CardDropVSView:refreshMyAndEnemyInfo()
 	gohelper.setActive(self.goLayout2, false)
 	gohelper.setActive(self.goLayout4, false)
 	gohelper.setActive(self.goVsLayout, true)
+	gohelper.setActive(self.goWaitTip, false)
 	AudioMgr.instance:trigger(340127)
 
 	local mainPlayerMo = PartyGameModel.instance:getMainPlayerMo()

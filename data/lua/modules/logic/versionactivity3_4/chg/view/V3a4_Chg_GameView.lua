@@ -189,6 +189,7 @@ function V3a4_Chg_GameView:onClose()
 	GameUtil.onDestroyViewMember(self, "_newRoundStartFlow")
 	GameUtil.onDestroyViewMember(self, "_newRoundEndFlow")
 	GameUtil.onDestroyViewMember(self, "_drag")
+	self:_dragContext():_critical_beforeClear()
 end
 
 function V3a4_Chg_GameView:onDestroyView()

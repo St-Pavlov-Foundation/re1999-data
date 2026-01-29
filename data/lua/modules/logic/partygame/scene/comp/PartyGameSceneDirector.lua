@@ -19,7 +19,7 @@ end
 function PartyGameSceneDirector:_check()
 	local curPartyGame = PartyGameController.instance:getCurPartyGame()
 
-	if self._isPreloadedViewRes and curPartyGame:isInitFinish() then
+	if self._isPreloadedViewRes and curPartyGame:isInitFinish() and curPartyGame:canEndLoading() then
 		TaskDispatcher.cancelTask(self._check, self)
 		self._scene:onPrepared()
 		PartyGameController.instance:gameLoadingFinish()

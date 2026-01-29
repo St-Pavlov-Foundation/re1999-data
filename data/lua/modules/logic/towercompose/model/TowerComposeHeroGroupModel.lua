@@ -472,6 +472,26 @@ function TowerComposeHeroGroupModel:checkEquipUidIsInLockPlane(equipUid)
 	return false
 end
 
+function TowerComposeHeroGroupModel:replaceLockPlaneBuffItem()
+	local recordFightParam = TowerComposeModel.instance:getRecordFightParam()
+	local themeId = recordFightParam.themeId
+	local themeMo = TowerComposeModel.instance:getThemeMo(themeId)
+	local curBossMo = themeMo:getCurBossMo()
+
+	if curBossMo and curBossMo.lock then
+		self:initSaveThemePlaneBuffId()
+
+		for planeId = 1, 2 do
+			local planeMo = curBossMo:getPlaneMo(planeId)
+			local teamInfoData = planeMo:getTeamInfoData()
+
+			self:setThemePlaneBuffId(themeId, planeId, TowerComposeEnum.TeamBuffType.Support, teamInfoData.supportId)
+			self:setThemePlaneBuffId(themeId, planeId, TowerComposeEnum.TeamBuffType.Research, teamInfoData.researchId)
+			self:setThemePlaneBuffId(themeId, planeId, TowerComposeEnum.TeamBuffType.Cloth, teamInfoData.clothId)
+		end
+	end
+end
+
 TowerComposeHeroGroupModel.instance = TowerComposeHeroGroupModel.New()
 
 return TowerComposeHeroGroupModel

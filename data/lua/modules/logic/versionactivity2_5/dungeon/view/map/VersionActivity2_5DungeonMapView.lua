@@ -120,7 +120,7 @@ function VersionActivity2_5DungeonMapView:onRemoveElement(elementId)
 end
 
 function VersionActivity2_5DungeonMapView:_editableInitView()
-	local storeActInfoMo = ActivityModel.instance:getActivityInfo()[VersionActivity2_5Enum.ActivityId.DungeonStore]
+	local storeActInfoMo = ActivityModel.instance:getActivityInfo()[VersionActivity3_4Enum.ActivityId.ReactivityStore]
 
 	self._txtstorename.text = storeActInfoMo.config.name
 
@@ -267,7 +267,7 @@ function VersionActivity2_5DungeonMapView:refreshMask()
 end
 
 function VersionActivity2_5DungeonMapView:refreshStoreRemainTime()
-	local storeActId = VersionActivity2_5Enum.ActivityId.DungeonStore
+	local storeActId = VersionActivity3_4Enum.ActivityId.ReactivityStore
 	local actInfoMo = ActivityModel.instance:getActMO(storeActId)
 	local endTime = actInfoMo:getRealEndTimeStamp()
 	local offsetSecond = endTime - ServerTime.now()

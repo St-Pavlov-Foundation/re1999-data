@@ -42,6 +42,7 @@ function SurvivalTechCommonFragment:onTechChange()
 end
 
 function SurvivalTechCommonFragment:onReceiveSurvivalOutSideTechUnlockReply(param)
+	AudioMgr.instance:trigger(AudioEnum3_4.Survival.play_ui_bulaochun_tansuo_unlock_2)
 	self:refreshTech()
 	self:refreshLine()
 

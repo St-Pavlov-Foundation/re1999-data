@@ -7,9 +7,14 @@ local partyGameMgrCs = PartyGame.Runtime.GameLogic.GameMgr
 
 function PartyGameController:onInit()
 	partyGameMgrCs.Instance:SetLuaCallBack(self, self.gameStateChange, self.logicTickFinish, self.gamePlayerPush, self.kcpNetStateChange)
+	self:SetReconnectLuaCallBack()
 
 	self._curPartyGame = nil
 	self._isFirstLogin = true
+end
+
+function PartyGameController:SetReconnectLuaCallBack()
+	PartyGame.Runtime.GameLogic.GameInterfaceBase.HotFix_Temp("SetReconnectStateLuaCallBack", self.kcpReconnectState, self)
 end
 
 function PartyGameController:onInitFinish()
@@ -51,9 +56,9 @@ function PartyGameController:enterParty()
 	self._isFirstLogin = true
 end
 
-function PartyGameController:initFakePlayerData(playerNum, selfCardIds, otherCardIds)
+function PartyGameController:initFakePlayerData(playerNum, selfCardIds, otherCardIds, teamType)
 	local playerInfoStr = self:_getFakePlayerData(playerNum or 8)
-	local str = string.format("initFakePlayerData|%s|%s|%s", playerInfoStr, selfCardIds or 0, otherCardIds or 0)
+	local str = string.format("initFakePlayerData|%s|%s|%s|%s", playerInfoStr, selfCardIds or 0, otherCardIds or 0, teamType or 0)
 
 	PartyGameCSDefine.SnatchAreaInterfaceCs.HotFix_Temp(str, nil, nil)
 end
@@ -154,6 +159,8 @@ function PartyGameController:gameStartPush(data)
 			self:gamePause(false)
 		end
 	end
+
+	PartyGameStatHelper.instance:partyGameStart()
 end
 
 function PartyGameController:transToGamePush(data)
@@ -179,13 +186,28 @@ function PartyGameController:transToGamePush(data)
 end
 
 function PartyGameController:kcpNetStateChange(state)
+	UIBlockMgr.instance:endBlock("kcpReconnect")
+
 	if state then
 		logNormal("PartyGameController-kcpNetStateChange connected then login")
 		self:Login()
 	else
 		MessageBoxController.instance:showMsgBox(MessageBoxIdDefine.KcpLoginLostConnect, MsgBoxEnum.BoxType.Yes, function()
 			self:exitGame()
+			PartyGameController.instance:dispatchEvent(PartyGameEvent.KcpConnectFail)
 		end, nil)
+		PartyGameStatHelper.instance:partyGameReconnect()
+	end
+end
+
+function PartyGameController:kcpReconnectState(state)
+	logNormal("PartyGameController-kcpReconnectState state:" .. tostring(state))
+	UIBlockMgrExtend.setNeedCircleMv(true)
+
+	if state then
+		UIBlockMgr.instance:startBlock("kcpReconnect")
+	else
+		UIBlockMgr.instance:endBlock("kcpReconnect")
 	end
 end
 

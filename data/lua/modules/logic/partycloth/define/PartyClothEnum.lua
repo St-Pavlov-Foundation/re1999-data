@@ -25,5 +25,6 @@ PartyClothEnum.ClothLangTxt = {
 	[PartyClothEnum.ClothType.Head] = "p_partyclothview_txt_Skin"
 }
 PartyClothEnum.DefaultSkinPartId = 3400015
+PartyClothEnum.DefaultSuitId = 340001
 
 return PartyClothEnum

@@ -215,7 +215,7 @@ function PartyGameLobbyPlayerListView:_removePlayer(id)
 end
 
 function PartyGameLobbyPlayerListView:_addPlayer(id, mo, hideBornEffect)
-	if self._playerCompMap[id] then
+	if self._playerCompMap[id] or not self._goPlayerList then
 		return
 	end
 
@@ -255,6 +255,10 @@ function PartyGameLobbyPlayerListView:_addPlayer(id, mo, hideBornEffect)
 end
 
 function PartyGameLobbyPlayerListView:_updatePlayersPos()
+	if not self._goPlayerList then
+		return
+	end
+
 	self:_checkKeyPress()
 	self:_updateMainPlayerPos()
 
@@ -290,6 +294,10 @@ function PartyGameLobbyPlayerListView:_checkKeyPress()
 		value = 0
 	end
 
+	if ViewMgr.instance:isOpen(ViewName.PartyGameLobbyStoreView) then
+		value = -1
+	end
+
 	if value >= 0 then
 		self._keyPressMove = true
 		self._joystickIndex = value
@@ -302,6 +310,14 @@ function PartyGameLobbyPlayerListView:_checkKeyPress()
 end
 
 function PartyGameLobbyPlayerListView:_updateMainPlayerPos()
+	if not self._goPlayerList then
+		return
+	end
+
+	if not GuideController.instance:isForbidGuides() and GuideModel.instance:isDoingClickGuide() then
+		return
+	end
+
 	local spineComp = self._mainPlayer:getSpineComp()
 
 	if not spineComp then
@@ -316,7 +332,7 @@ function PartyGameLobbyPlayerListView:_updateMainPlayerPos()
 			mainPlayerAnimator:SetFloat("speed", 0)
 
 			if self._mainPlayerIsMoving then
-				AudioMgr.instance:trigger(AudioEnum3_4.PartyGameLobby.stop_ui_bulaochuan_run_loop)
+				AudioMgr.instance:trigger(AudioEnum3_4.LaplaceChatRoom.stop_ui_bulaochuan_walk_loop)
 
 				self._mainPlayerIsMoving = false
 			end
@@ -352,7 +368,7 @@ function PartyGameLobbyPlayerListView:_updateMainPlayerPos()
 		if not self._mainPlayerIsMoving then
 			self._mainPlayerIsMoving = true
 
-			AudioMgr.instance:trigger(AudioEnum3_4.PartyGameLobby.play_ui_bulaochuan_run_loop)
+			AudioMgr.instance:trigger(AudioEnum3_4.LaplaceChatRoom.play_ui_bulaochuan_walk_loop)
 		end
 	end
 end
@@ -378,6 +394,10 @@ function PartyGameLobbyPlayerListView:onMoveJoystick(index, lengthIndex)
 end
 
 function PartyGameLobbyPlayerListView:_initMainPlayer()
+	if not self._goPlayerList then
+		return
+	end
+
 	local go = UnityEngine.GameObject.New("mainPlayer")
 
 	gohelper.addChild(self._goPlayerList, go)
@@ -421,11 +441,15 @@ function PartyGameLobbyPlayerListView:_getHeadInfoItem(parentGo)
 end
 
 function PartyGameLobbyPlayerListView:onClose()
+	gohelper.destroyAllChildren(self._goPlayerList)
+
+	self._goPlayerList = nil
+
 	TaskDispatcher.cancelTask(self._updatePlayersPos, self)
 	TaskDispatcher.cancelTask(self._sendMainPlayerPos, self)
 
 	if self._mainPlayerIsMoving then
-		AudioMgr.instance:trigger(AudioEnum3_4.PartyGameLobby.stop_ui_bulaochuan_run_loop)
+		AudioMgr.instance:trigger(AudioEnum3_4.LaplaceChatRoom.stop_ui_bulaochuan_walk_loop)
 
 		self._mainPlayerIsMoving = false
 	end

@@ -59,6 +59,8 @@ function SurvivalTechShelterView:addEvents()
 end
 
 function SurvivalTechShelterView:onOpen()
+	AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_tansuo_general_2)
+
 	self.buildingId = self.viewParam.buildingId
 	self.weekInfo = SurvivalShelterModel.instance:getWeekInfo()
 	self.mo = self.weekInfo:getBuildingInfo(self.buildingId)
@@ -84,6 +86,7 @@ function SurvivalTechShelterView:onShelterBagUpdate()
 end
 
 function SurvivalTechShelterView:onReceiveSurvivalUnlockInsideTechReply(msg)
+	AudioMgr.instance:trigger(AudioEnum3_4.Survival.play_ui_bulaochun_tansuo_unlock)
 	self:refreshDescBtn()
 	self:refreshTech()
 	self:refreshLine()
@@ -379,6 +382,8 @@ end
 
 function SurvivalTechShelterView:setTechInfoNode(isShow, teachCellId)
 	if isShow then
+		AudioMgr.instance:trigger(AudioEnum3_4.Survival.play_ui_bulaochun_tansuo_draw)
+
 		if not self.isShowTechDesc then
 			gohelper.setActive(self.techDesc, true)
 			self.animTechDesc:Play("open", nil, nil)

@@ -99,9 +99,16 @@ function PartyGameRpc:loginKcpResponse(bytes)
 	logNormal("PartyGame msg->用户登录返回：reason:" .. reason .. " , userId: " .. userId)
 
 	if not string.nilorempty(reason) then
-		ToastController.instance:showToastWithString("登录失败:" .. userId .. "reason: " .. reason)
+		if isDebugBuild then
+			ToastController.instance:showToastWithString("登录失败:" .. userId .. "reason: " .. reason)
+		end
+
+		PartyGameController.instance:exitGame()
 	else
-		ToastController.instance:showToastWithString("登录成功:" .. userId)
+		if isDebugBuild then
+			ToastController.instance:showToastWithString("登录成功:" .. userId)
+		end
+
 		PartyGameLobbyController.instance:clearSuccessMatchInfo()
 
 		if not PartyGameController.instance:getFirstLogin() then

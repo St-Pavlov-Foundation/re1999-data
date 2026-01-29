@@ -15476,7 +15476,7 @@
     "effectHangPoint": "",
     "canHide": 0,
     "mainBody": 0,
-    "floatOffset": "",
+    "floatOffset": "0#-300",
     "bossSkillSpeed": 0,
     "outlineWidth": 0.003,
     "clickBoxUnlimit": 1

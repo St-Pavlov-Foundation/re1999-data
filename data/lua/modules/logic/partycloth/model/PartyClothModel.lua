@@ -13,7 +13,6 @@ function PartyClothModel:reInit()
 	self.suitIds = {}
 	self.clothMoList = {}
 	self.wearClothIdMap = {}
-	self.previewClothIdMap = {}
 	self._getWearCloth = false
 	self.summonPoolMos = {}
 end
@@ -114,14 +113,12 @@ function PartyClothModel:updateWearClothIds(wearClothIds)
 	self.wearClothIds = wearClothIds
 
 	tabletool.clear(self.wearClothIdMap)
-	tabletool.clear(self.previewClothIdMap)
 
 	for _, clothId in ipairs(self.wearClothIds) do
 		local config = PartyClothConfig.instance:getClothConfig(clothId)
 
 		if config then
 			self.wearClothIdMap[config.partId] = clothId
-			self.previewClothIdMap[config.partId] = clothId
 		end
 	end
 
@@ -182,20 +179,6 @@ end
 
 function PartyClothModel:getCurWearClothRes()
 	return PartyClothConfig.instance:getSkinRes(self.wearClothIdMap)
-end
-
-function PartyClothModel:getPreviewClothIdMap()
-	return self.previewClothIdMap
-end
-
-function PartyClothModel:getPreviewClothIds()
-	local list = {}
-
-	for _, id in pairs(self.previewClothIdMap) do
-		list[#list + 1] = id
-	end
-
-	return list
 end
 
 function PartyClothModel:getSuitIds()

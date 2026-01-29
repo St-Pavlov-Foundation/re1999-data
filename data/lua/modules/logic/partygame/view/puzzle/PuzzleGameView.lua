@@ -371,25 +371,31 @@ function PuzzleGameView:_endDrag(index)
 
 	ZProj.TweenHelper.KillByObj(pieceItem.transform)
 
-	if self.targetIndex then
-		local targetItem = pieceItems[self.targetIndex]
+	local canExecute = self.GameInterface.HotFix_Temp("CanExecuteCommand", nil, nil)
 
-		PuzzleGameView.setPos(pieceItem.transform, targetItem.initPosX, targetItem.initPosY)
-		PuzzleGameView.setPos(targetItem.transform, pieceItem.initPosX, pieceItem.initPosY)
-		self.GameInterface.DragPuzzle(index, self.targetIndex)
-		gohelper.setActive(targetItem.goSelect, false)
+	if self.targetIndex and canExecute == "True" then
+		if canExecute == "True" then
+			local targetItem = pieceItems[self.targetIndex]
 
-		self.targetIndex = nil
+			PuzzleGameView.tweenPos(pieceItem.transform, targetItem.initPosX, targetItem.initPosY)
+			PuzzleGameView.tweenPos(targetItem.transform, pieceItem.initPosX, pieceItem.initPosY)
+			self.GameInterface.DragPuzzle(index, self.targetIndex)
+			gohelper.setActive(targetItem.goSelect, false)
 
-		AudioMgr.instance:trigger(AudioEnum3_4.PartyGame18.play_ui_activity_mark_finish)
+			self.targetIndex = nil
+
+			AudioMgr.instance:trigger(AudioEnum3_4.PartyGame18.play_ui_activity_mark_finish)
+		else
+			recthelper.setAnchor(pieceItem.transform, pieceItem.initPosX, pieceItem.initPosY)
+		end
 	else
-		PuzzleGameView.setPos(pieceItem.transform, pieceItem.initPosX, pieceItem.initPosY)
+		PuzzleGameView.tweenPos(pieceItem.transform, pieceItem.initPosX, pieceItem.initPosY)
 	end
 
 	self.dragIndex = nil
 end
 
-function PuzzleGameView.setPos(transform, targetX, targetY)
+function PuzzleGameView.tweenPos(transform, targetX, targetY)
 	local x, y = recthelper.getAnchor(transform)
 
 	if math.abs(x - targetX) > 20 or math.abs(y - targetY) > 20 then

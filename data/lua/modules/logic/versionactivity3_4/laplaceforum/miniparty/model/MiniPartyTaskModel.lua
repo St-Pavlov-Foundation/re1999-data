@@ -123,6 +123,40 @@ function MiniPartyTaskModel:getCanGetTaskCount(typeId, actId)
 	return count
 end
 
+function MiniPartyTaskModel:needWaitingTaskItem(typeId, actId)
+	actId = actId or VersionActivity3_4Enum.ActivityId.LaplaceMiniParty
+
+	local isAllFinished = self:isAllTaskFinihshed(typeId)
+
+	if isAllFinished then
+		return false
+	end
+
+	local tasks = self:getAllUnlockTasks(typeId, actId)
+
+	for _, taskId in pairs(tasks) do
+		if not self:isTaskFinished(taskId, actId) then
+			return false
+		end
+	end
+
+	return true
+end
+
+function MiniPartyTaskModel:isAllTaskFinihshed(typeId, actId)
+	actId = actId or VersionActivity3_4Enum.ActivityId.LaplaceMiniParty
+
+	local taskCos = MiniPartyConfig.instance:getTaskCosByTaskType(typeId)
+
+	for _, taskCo in pairs(taskCos) do
+		if not self:isTaskFinished(taskCo.id, actId) then
+			return false
+		end
+	end
+
+	return true
+end
+
 function MiniPartyTaskModel:getAllUnfinishedTasks(typeId, actId)
 	actId = actId or VersionActivity3_4Enum.ActivityId.LaplaceMiniParty
 

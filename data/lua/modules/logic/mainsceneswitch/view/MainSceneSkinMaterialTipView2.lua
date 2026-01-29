@@ -82,13 +82,31 @@ function MainSceneSkinMaterialTipView2:_btninsightOnClick()
 	self._discountItems = items
 
 	local isCanBuySceneUIPackage = DecorateStoreModel.instance:isCanBuySceneUIPackage()
+	local goodsMo = StoreModel.instance:getGoodsMO(self._goodsId)
 
-	if has and items and self._decorateConfig.subType ~= ItemEnum.SubType.SceneUIPackage and isCanBuySceneUIPackage then
-		local co = ItemModel.instance:getItemConfig(items[1], items[2])
+	if goodsMo then
+		if has and items and self._decorateConfig.subType ~= ItemEnum.SubType.SceneUIPackage and isCanBuySceneUIPackage then
+			local co = ItemModel.instance:getItemConfig(items[1], items[2])
 
-		GameFacade.showMessageBox(MessageBoxIdDefine.DecorateDiscountTip2, MsgBoxEnum.BoxType.Yes_No, self._checkDiscounnt, self.closeThis, nil, self, self, nil, co and co.name or "", self._storeCo.name)
+			GameFacade.showMessageBox(MessageBoxIdDefine.DecorateDiscountTip2, MsgBoxEnum.BoxType.Yes_No, self._checkDiscounnt, self.closeThis, nil, self, self, nil, co and co.name or "", self._storeCo.name)
+		else
+			self:_checkDiscounnt()
+		end
 	else
-		self:_checkDiscounnt()
+		local storeId = StoreEnum.StoreId.DecorateStore
+		local isOpenStore = StoreModel.instance:isTabOpen(storeId)
+
+		if not isOpenStore then
+			local storeConfig = StoreConfig.instance:getTabConfig(storeId)
+			local openCo = OpenConfig.instance:getOpenCo(storeConfig.openId)
+			local episodeId = VersionValidator.instance:isInReviewing() and openCo.verifingEpisodeId or openCo.episodeId
+
+			if episodeId and episodeId ~= 0 then
+				local episodeDisplay = DungeonConfig.instance:getEpisodeDisplay(episodeId)
+
+				GameFacade.showToast(ToastEnum.V3a4SceneUIPackageLockTip, episodeDisplay)
+			end
+		end
 	end
 end
 
@@ -377,18 +395,18 @@ function MainSceneSkinMaterialTipView2:_refreshSelectCost()
 	for i, product in ipairs(self._productsList) do
 		local goodsMo = self:_getGoodsMoByItemId(product)
 
+		count = count + 1
+
+		local item = self:_getInfoItem(count)
+		local config = ItemModel.instance:getItemConfig(product[1], product[2])
+
+		item._txtname.text = config.name
+
+		local quantity = ItemModel.instance:getItemQuantity(product[1], product[2])
+
+		item._txtnum.text = string.format("%s/%s", quantity, product[3])
+
 		if goodsMo then
-			count = count + 1
-
-			local item = self:_getInfoItem(count)
-			local config = ItemModel.instance:getItemConfig(product[1], product[2])
-
-			item._txtname.text = config.name
-
-			local quantity = ItemModel.instance:getItemQuantity(product[1], product[2])
-
-			item._txtnum.text = string.format("%s/%s", quantity, product[3])
-
 			local cost1, cost2 = goodsMo:getAllCostInfo()
 			local cost = self._selectCostIndex == 1 and cost1 and cost1[1] or cost2 and cost2[1]
 			local _costNum = cost and cost[3] or 0
@@ -396,11 +414,13 @@ function MainSceneSkinMaterialTipView2:_refreshSelectCost()
 			_costNum = has and discount and _costNum * discount * 0.001 or _costNum
 			item._txtgold.text = isSceneUIPackage and _costNum * (1 - self._decorateConfig.offTag * 0.01) or _costNum
 
-			gohelper.setActive(item._goeprice.gameObject, not isSceneUIPackage)
+			gohelper.setActive(item._goprice.gameObject, not isSceneUIPackage)
 
 			local str = self:_getCostIcon(cost)
 
 			UISpriteSetMgr.instance:setCurrencyItemSprite(item._imagegold, str)
+		else
+			gohelper.setActive(item._goprice.gameObject, false)
 		end
 	end
 
@@ -463,7 +483,7 @@ function MainSceneSkinMaterialTipView2:_getInfoItem(index)
 		item = self:getUserDataTb_()
 		item._go = gohelper.clone(self._goblockInfoItem, self._scrollblockInfo.content.gameObject, index)
 		item._index = index
-		item._goeprice = gohelper.findChild(item._go, "go_price")
+		item._goprice = gohelper.findChild(item._go, "go_price")
 		item._gofinish = gohelper.findChild(item._go, "go_finish")
 		item._txtgold = gohelper.findChildText(item._go, "go_price/txt_gold")
 		item._imagegold = gohelper.findChildImage(item._go, "go_price/image_gold")

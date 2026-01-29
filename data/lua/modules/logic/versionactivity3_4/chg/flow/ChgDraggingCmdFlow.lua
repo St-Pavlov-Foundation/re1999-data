@@ -12,7 +12,16 @@ end
 
 function ChgDraggingCmdFlow:ctor(...)
 	Base.ctor(self, ...)
+end
 
+function ChgDraggingCmdFlow:onStart()
+	self:_debugOnScreen()
+	self:_onDrawFrame()
+	self:_tryPlayLoopSFX()
+	self:_processDetectInfoList()
+end
+
+function ChgDraggingCmdFlow:_onDrawFrame()
 	if math.abs(self._diffInfo.deltaEnergy) > 0 then
 		local fromEnergy = self._lastDisplayFrame.detectFinalEnergy
 		local toEnergy = self._displayFrame.detectFinalEnergy
@@ -47,27 +56,25 @@ function ChgDraggingCmdFlow:ctor(...)
 
 		self:addWork(flow)
 	end
-end
 
-function ChgDraggingCmdFlow:onStart()
-	self:_debugOnScreen()
-	self:_onDrawFrame()
-	self:_tryPlayLoopSFX()
-	self:_processDetectInfoList()
-end
-
-function ChgDraggingCmdFlow:_onDrawFrame()
 	self._displayFrame.lineItem:setWidth(self._displayFrame.detectFinalWidth)
 
 	if self._displayFrame.snapLineItem then
 		self._displayFrame.snapLineItem:bindEnd(self._displayFrame.snapLineEndItem)
 	end
 
-	if self._displayFrame.detectObstacleItem and self._displayFrame.lineItem:hoverItem() == self._displayFrame.detectObstacleItem then
-		GameFacade.showToast(ToastEnum.ChgOnBlock)
-		self._displayFrame:dumpLog()
+	local detectObstacleItem = self._displayFrame.detectObstacleItem
 
-		self._myData.editWaitDragEnd = true
+	if detectObstacleItem and self._displayFrame.lineItem:hoverItem() == detectObstacleItem then
+		GameFacade.showToast(ToastEnum.ChgOnBlock)
+
+		if detectObstacleItem:isObstacle() then
+			self._myData.editWaitDragEnd = true
+		end
+
+		if self._displayFrame.detectFinalEnergy <= 0 then
+			self._myData.editWaitDragEnd = true
+		end
 	end
 end
 
@@ -108,7 +115,6 @@ function ChgDraggingCmdFlow:_processDetectedItem(item)
 		return
 	end
 
-	local addHpFlow = FlowSequence.New()
 	local startItem = self:startItem()
 	local startObj = startItem:mapObj()
 	local newHP = startObj:curHP()
@@ -134,12 +140,8 @@ function ChgDraggingCmdFlow:_processDetectedItem(item)
 
 			if tp == ChgEnum.PuzzleMazeEffectType.V3a4_AddStartHp then
 				local addHP = tonumber(effect.param)
-				local fromHP = newHP
-				local toHP = newHP + addHP
 
-				addHpFlow:addWork(ChgAddStartHPWork.s_create(startItem, fromHP, toHP))
-
-				newHP = toHP
+				newHP = newHP + addHP
 			end
 		end
 	end
@@ -157,18 +159,17 @@ function ChgDraggingCmdFlow:_processDetectedItem(item)
 		end
 	end
 
-	if newHP ~= startObj:curHP() then
+	local curHP = startObj:curHP()
+
+	if newHP ~= curHP then
 		startObj:setHP(newHP)
-		addHpFlow:registerDoneListener(function(_refStartItem)
+
+		local addHpWork = self:addWork(ChgAddStartHPWork.s_create(startItem, curHP, newHP))
+
+		addHpWork:registerDoneListener(function(_refStartItem)
 			_refStartItem:stopDeltaNumAnim()
 			_refStartItem:_refreshNum()
 		end, startItem)
-	end
-
-	local addHpFlowWorkList = addHpFlow:getWorkList() or {}
-
-	if #addHpFlowWorkList > 0 then
-		self:addWork(addHpFlow)
 	end
 end
 

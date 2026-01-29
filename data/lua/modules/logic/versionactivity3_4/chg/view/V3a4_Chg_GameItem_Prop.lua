@@ -27,6 +27,7 @@ end
 function V3a4_Chg_GameItem_Prop:_editableInitView()
 	self._Image_Prop = gohelper.findChildImage(self.viewGO, "Image_Prop")
 	self._Image_PropTrans = self._Image_Prop.transform
+	self._Image_PropGo = self._Image_Prop.gameObject
 	self._Image_Group = gohelper.findChild(self.viewGO, "Image_Group")
 	self._Image_GroupTrans = self._Image_Group.transform
 	self._Image_NumBG = gohelper.findChild(self.viewGO, "Image_NumBG")

@@ -97,7 +97,7 @@ function PartyGameLobbyMainView:_editableInitView()
 
 	self._createAnimator = self._gogameCreate:GetComponent("Animator")
 
-	local roomIsOpen = OpenModel.instance:isFunctionUnlock(PartyGameLobbyEnum.RoomOpenId)
+	local roomIsOpen = tonumber(PartyGameConfig.instance:getConstValue(13)) == 0
 
 	gohelper.setActive(self._btnmutiPlayer, roomIsOpen)
 	gohelper.setActive(self._btninput, roomIsOpen)
@@ -131,12 +131,16 @@ function PartyGameLobbyMainView:onOpen()
 	self:addEventCb(PartyGameLobbyController.instance, PartyGameLobbyEvent.JoinPartyRoom, self._onJoinPartyRoom, self)
 	self:addEventCb(PartyGameLobbyController.instance, PartyGameLobbyEvent.GetInviteList, self._onGetInviteList, self)
 	self:addEventCb(PartyGameLobbyController.instance, PartyGameLobbyEvent.KickedOutPush, self._onKickedOutPush, self)
-	self:addEventCb(PartyGameLobbyController.instance, PartyGameLobbyEvent.OpenTimeStatusChange, self._onOpenTimeStatusChange, self)
 	self:addEventCb(PartyGameLobbyController.instance, PartyGameLobbyEvent.PartyNeedLogoutPush, self._onPartyNeedLogoutPush, self)
+	self:addEventCb(PartyGameController.instance, PartyGameEvent.KcpConnectFail, self._onKcpConnectFail, self)
 
 	if not PartyGameLobbyController.instance:inOpenTime() then
 		self:_onOpenTimeStatusChange(false)
 
+		return
+	end
+
+	if PartyGameLobbyController.instance:enterGameLobbyGuide() then
 		return
 	end
 
@@ -154,6 +158,10 @@ function PartyGameLobbyMainView:onOpen()
 	end
 end
 
+function PartyGameLobbyMainView:_onKcpConnectFail()
+	PartyGameLobbyController.instance:GetPartyRoomInfo()
+end
+
 function PartyGameLobbyMainView:_onPartyNeedLogoutPush(needLogoutUserIds)
 	local myUserId = PlayerModel.instance:getMyUserId()
 
@@ -169,21 +177,7 @@ function PartyGameLobbyMainView:_onPartyNeedLogoutPush(needLogoutUserIds)
 end
 
 function PartyGameLobbyMainView:_onOpenTimeStatusChange(isOpen)
-	if not isOpen then
-		if PartyGameRoomModel.instance:isRoomOwner() and PartyGameRoomModel.instance:inGameMatch() then
-			PartyMatchRpc.instance:sendCancelPartyMatchRequest(PlayerModel.instance:getMyUserId(), PartyGameRoomModel.instance:getRoomId())
-		end
-
-		if PartyGameRoomModel.instance:inGameRoom() and not PartyGameRoomModel.instance:inGameMatch() then
-			PartyRoomRpc.instance:sendExitPartyRoomRequest(PlayerModel.instance:getMyUserId(), PartyGameRoomModel.instance:getRoomId())
-		end
-
-		local function yesFunc()
-			self:_onExitParty()
-		end
-
-		GameFacade.showMessageBox(MessageBoxIdDefine.PartyGameTimeoutTip, MsgBoxEnum.BoxType.Yes, yesFunc)
-	end
+	PartyGameLobbyController.instance:checkActivityDailyOpen(isOpen)
 end
 
 function PartyGameLobbyMainView:_onKickedOutPush()
@@ -259,13 +253,6 @@ function PartyGameLobbyMainView:_onMatchStatusChange(curMatchState, prevMatchSta
 end
 
 function PartyGameLobbyMainView:_onRoomStateChange(curRoomState, prevRoomState)
-	if curRoomState == PartyGameLobbyEnum.RoomState.InRoom and not OpenModel.instance:isFunctionUnlock(PartyGameLobbyEnum.RoomOpenId) and PartyGameRoomModel.instance:inGameRoom() then
-		self:_closeViewByState(prevRoomState)
-		PartyRoomRpc.instance:sendExitPartyRoomRequest(PlayerModel.instance:getMyUserId(), PartyGameRoomModel.instance:getRoomId())
-
-		return
-	end
-
 	local oldShowCreateRoom = self._showCreateRoom
 
 	self._showCreateRoom = curRoomState == PartyGameLobbyEnum.RoomState.None
@@ -275,8 +262,10 @@ function PartyGameLobbyMainView:_onRoomStateChange(curRoomState, prevRoomState)
 	if curRoomState == PartyGameLobbyEnum.RoomState.Create then
 		PartyGameLobbyController.instance:openPartyGameLobbyAddRoomView()
 	elseif curRoomState == PartyGameLobbyEnum.RoomState.InRoom then
+		PartyGameLobbyController.instance:setAllGuidesFinish()
 		PartyGameLobbyController.instance:openPartyGameLobbyInRoomView()
 	elseif curRoomState == PartyGameLobbyEnum.RoomState.InMatch then
+		PartyGameLobbyController.instance:setAllGuidesFinish()
 		PartyGameLobbyController.instance:openPartyGameLobbyMatchView()
 	elseif curRoomState == PartyGameLobbyEnum.RoomState.None then
 		if oldShowCreateRoom ~= self._showCreateRoom then

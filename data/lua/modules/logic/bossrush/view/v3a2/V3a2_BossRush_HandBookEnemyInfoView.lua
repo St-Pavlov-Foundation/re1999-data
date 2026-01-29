@@ -448,8 +448,8 @@ function V3a2_BossRush_HandBookEnemyInfoView:refreshExp()
 	self._heightScore = self._handBookMo.heightScore or 0
 	self._needExp = curPointBonus.exp
 
-	self:_refreshExpBonus()
 	self:_showExpSlider()
+	self:_refreshExpBonus()
 
 	if self._heightScore > self._saveExp then
 		self:_playExpAddAnim()
@@ -473,6 +473,16 @@ end
 
 function V3a2_BossRush_HandBookEnemyInfoView:_refreshExpBonus()
 	local bonus = self._handBookMo:getCanClaimBonus(self._saveExp)
+
+	if bonus == 0 and self._saveExp > self._needExp then
+		self._handBookMo:setSaveExp(self._saveExp)
+
+		local curPointBonus = self:getCurPointBonus()
+
+		self._needExp = curPointBonus.exp
+
+		self:_showExpSlider()
+	end
 
 	gohelper.setActive(self._btnclaim.gameObject, bonus > 0)
 

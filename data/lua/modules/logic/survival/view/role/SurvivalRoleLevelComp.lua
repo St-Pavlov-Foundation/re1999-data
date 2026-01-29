@@ -89,11 +89,11 @@ function SurvivalRoleLevelComp:playProgressAnim()
 	self.progressAnimWork:start()
 end
 
-function SurvivalRoleLevelComp:getLevelUpAnimWork(oldLevel, newLevel, oldExpPercent, newExpPercent)
-	return self:getProgressAnimWork(oldLevel, newLevel, oldExpPercent, newExpPercent)
+function SurvivalRoleLevelComp:getLevelUpAnimWork(oldLevel, newLevel, oldExpPercent, newExpPercent, isAudio)
+	return self:getProgressAnimWork(oldLevel, newLevel, oldExpPercent, newExpPercent, isAudio)
 end
 
-function SurvivalRoleLevelComp:getProgressAnimWork(oldLevel, newLevel, oldExpPercent, newExpPercent)
+function SurvivalRoleLevelComp:getProgressAnimWork(oldLevel, newLevel, oldExpPercent, newExpPercent, isAudio)
 	oldExpPercent = oldExpPercent or 0
 	newExpPercent = newExpPercent or 1
 
@@ -122,7 +122,20 @@ function SurvivalRoleLevelComp:getProgressAnimWork(oldLevel, newLevel, oldExpPer
 		to = newExpPercent,
 		ease = EaseType.OutQuart
 	}))
+
+	if isAudio then
+		flowParallel:addWork(FunctionWork.New(function()
+			AudioMgr.instance:trigger(AudioEnum3_4.Survival.play_ui_bulaochun_tansuo_progress)
+		end))
+	end
+
 	upAnimFlow:addWork(flowParallel)
+
+	if isAudio then
+		upAnimFlow:addWork(FunctionWork.New(function()
+			AudioMgr.instance:trigger(AudioEnum.UI.Play_UI_Upgrade)
+		end))
+	end
 
 	return upAnimFlow
 end
@@ -135,6 +148,8 @@ function SurvivalRoleLevelComp:playExpGainAnim()
 	if self.isPlayExpGainAnim then
 		return
 	end
+
+	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_qiutu_award_all)
 
 	self.isPlayExpGainAnim = true
 

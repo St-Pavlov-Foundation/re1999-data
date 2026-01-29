@@ -78,6 +78,12 @@ function SurvivalDifficultyModel:isCustomDifficulty()
 	return difficultyId == SurvivalConst.CustomDifficulty
 end
 
+function SurvivalDifficultyModel:isStoryDifficulty()
+	local difficultyId = self:getDifficultyId()
+
+	return difficultyId == 1
+end
+
 function SurvivalDifficultyModel:isCustomTempDiff()
 	local difficultyId = self:getDifficultyId()
 	local list = self:getCustomTempDiffIds()

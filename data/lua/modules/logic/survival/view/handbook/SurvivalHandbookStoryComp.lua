@@ -93,7 +93,7 @@ end
 function SurvivalHandbookStoryComp:refreshStoryList()
 	local subItem = self.subTabList:getCurSelectItem()
 	local subType = subItem.subType
-	local survivalHandbookMos = SurvivalHandbookModel.instance:getHandBookDatas(self.handbookType, subType)
+	local survivalHandbookMos = SurvivalHandbookModel.instance:getHandBookUnlockDatas(self.handbookType, subType)
 
 	table.sort(survivalHandbookMos, SurvivalHandbookModel.instance.handBookStorySortFunc)
 

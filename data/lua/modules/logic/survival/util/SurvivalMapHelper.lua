@@ -1036,7 +1036,7 @@ function SurvivalMapHelper:addPointEffect(hexNode, effectName, scale)
 end
 
 function SurvivalMapHelper:checkRoleLevelUpCache(isJumpCheck)
-	if SurvivalMapHelper.instance:isInSurvivalScene() then
+	if SurvivalMapHelper.instance:isInShelterScene() then
 		local isInTopView = ViewHelper.instance:checkViewOnTheTop(ViewName.SurvivalMainView, {
 			ViewName.SurvivalToastView,
 			ViewName.SurvivalCommonTipsView,
@@ -1065,7 +1065,7 @@ function SurvivalMapHelper:checkRoleLevelUpCache(isJumpCheck)
 			ViewName.GuideStepEditor
 		})
 
-		if isJumpCheck(isInTopView and not self:isInFlow()) then
+		if isJumpCheck or isInTopView and not self:isInFlow() then
 			local survivalShelterRoleMo = SurvivalShelterModel.instance:getWeekInfo().survivalShelterRoleMo
 
 			if survivalShelterRoleMo.uiShowLevel then

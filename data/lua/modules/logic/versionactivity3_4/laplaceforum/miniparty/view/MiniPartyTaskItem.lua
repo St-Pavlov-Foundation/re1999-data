@@ -4,9 +4,8 @@ module("modules.logic.versionactivity3_4.laplaceforum.miniparty.view.MiniPartyTa
 
 local MiniPartyTaskItem = class("MiniPartyTaskItem", LuaCompBase)
 
-function MiniPartyTaskItem:init(go, isGetAll, taskType)
+function MiniPartyTaskItem:init(go, taskType)
 	self.go = go
-	self._isGetAll = isGetAll
 	self._taskType = taskType
 	self._gonormal = gohelper.findChild(self.go, "#go_normal")
 	self._simagenormalbg = gohelper.findChildSingleImage(self.go, "#go_normal/simage_normalbg")
@@ -30,16 +29,6 @@ function MiniPartyTaskItem:init(go, isGetAll, taskType)
 	self._simagegetallbg = gohelper.findChildSingleImage(self.go, "go_getall/simage_getallbg")
 	self._gotips2 = gohelper.findChild(self.go, "go_getall/layout/text_Tips2")
 	self._btngetall = gohelper.findChildButtonWithAudio(self.go, "go_getall/btn_getall/btn_getall")
-
-	gohelper.setActive(self._gonormal, not self._isGetAll)
-	gohelper.setActive(self._gogetall, self._isGetAll)
-
-	if self._isGetAll then
-		local hasGrouped = MiniPartyModel.instance:hasGrouped()
-
-		gohelper.setActive(self._gotips2, taskType and taskType == MiniPartyEnum.TaskType.GroupTask and not hasGrouped)
-	end
-
 	self._rewardItems = {}
 
 	gohelper.setActive(self._gorewards, true)
@@ -54,16 +43,31 @@ function MiniPartyTaskItem:setScrollParentGo(go)
 	self._limitScroll.parentGameObject = go
 end
 
-function MiniPartyTaskItem:showItem(show)
+function MiniPartyTaskItem:showItem(show, itemType)
 	gohelper.setActive(self.go, show)
 
 	if show then
 		gohelper.setAsFirstSibling(self.go)
 
-		if self._isGetAll then
+		if itemType == MiniPartyEnum.TaskItemType.GetAll then
+			gohelper.setActive(self._gonormal, false)
+			gohelper.setActive(self._gogetall, true)
+
 			local hasGrouped = MiniPartyModel.instance:hasGrouped()
 
 			gohelper.setActive(self._gotips2, self._taskType and self._taskType == MiniPartyEnum.TaskType.GroupTask and not hasGrouped)
+		elseif itemType == MiniPartyEnum.TaskItemType.Waiting then
+			gohelper.setActive(self._gonormal, true)
+			gohelper.setActive(self._gogetall, false)
+			gohelper.setActive(self._gohas, false)
+			gohelper.setActive(self._goempty, true)
+			gohelper.setActive(self._gonojump, false)
+			gohelper.setActive(self._goallfinish, false)
+			gohelper.setActive(self._btnnotfinishbg.gameObject, false)
+			gohelper.setActive(self._btnfinishbg.gameObject, false)
+			gohelper.setActive(self._godailytag, false)
+			gohelper.setActive(self._goweektag, false)
+			gohelper.setActive(self._gotimelimittag, false)
 		end
 	else
 		gohelper.setAsLastSibling(self.go)

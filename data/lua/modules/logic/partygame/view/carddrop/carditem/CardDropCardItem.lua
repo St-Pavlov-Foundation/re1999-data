@@ -15,13 +15,16 @@ end
 function CardDropCardItem:_editableInitView()
 	CardDropCardItem.super._editableInitView(self)
 
+	self.click = SLFramework.UGUI.UIClickListener.Get(self.viewGO)
+
+	self.click:AddClickListener(self.onClick, self)
+
 	self.longPress = SLFramework.UGUI.UILongPressListener.Get(self.viewGO)
 
 	self.longPress:SetLongPressTime({
 		0.5,
 		99999
 	})
-	self.longPress:AddClickListener(self.onClick, self)
 	self.longPress:AddLongPressListener(self.onLongPress, self)
 
 	local comp = self.viewGO:GetComponent(CardDropEnum.TypeLayout)
@@ -128,10 +131,15 @@ function CardDropCardItem:onDestroy()
 	self:clearFlyTween()
 
 	if self.longPress then
-		self.longPress:RemoveClickListener()
 		self.longPress:RemoveLongPressListener()
 
 		self.longPress = nil
+	end
+
+	if self.click then
+		self.click:RemoveClickListener()
+
+		self.click = nil
 	end
 
 	CardDropCardItem.super.onDestroy(self)

@@ -63,7 +63,7 @@ end
 
 function VersionActivity3_4PartyGameEnterView:_btnenterOnClick()
 	if self:_checkOpen() then
-		if PartyGameLobbyController:enterGameLobbyGuide() then
+		if PartyGameLobbyController.instance:enterGameLobbyGuide() then
 			return
 		end
 
@@ -74,6 +74,12 @@ function VersionActivity3_4PartyGameEnterView:_btnenterOnClick()
 end
 
 function VersionActivity3_4PartyGameEnterView:_checkOpen()
+	if PartyGameLobbyEnum.FakeInCloseTime then
+		logError("PartyGameLobbyEnum.FakeInCloseTime")
+
+		return false
+	end
+
 	return OpenModel.instance:isFunctionUnlock(PartyGameLobbyEnum.DailyOpenId)
 end
 
@@ -161,6 +167,11 @@ function VersionActivity3_4PartyGameEnterView:_refreshTime()
 		gohelper.setActive(self._btnEnter, not isLock)
 		gohelper.setActive(self._btnLocked, isLock)
 	end
+end
+
+function VersionActivity3_4PartyGameEnterView:onOpen()
+	VersionActivity3_4PartyGameEnterView.super.onOpen(self)
+	PartyGameLobbyController.instance:forceUpdateOpenInfo()
 end
 
 return VersionActivity3_4PartyGameEnterView

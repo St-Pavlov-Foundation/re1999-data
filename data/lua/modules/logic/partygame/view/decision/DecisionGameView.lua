@@ -4,6 +4,13 @@ module("modules.logic.partygame.view.decision.DecisionGameView", package.seeall)
 
 local DecisionGameView = class("DecisionGameView", SceneGameCommonView)
 
+function DecisionGameView:onInitView()
+	self._uiRoot = gohelper.findChild(self.viewGO, "sceneuiroot")
+
+	gohelper.setActive(self._uiRoot, false)
+	DecisionGameView.super.onInitView(self)
+end
+
 function DecisionGameView:onCreateCompData()
 	self.partyGameCountDownData = {
 		getCountDownFunc = self.getCountDownFunc,
@@ -18,7 +25,9 @@ end
 
 function DecisionGameView:viewUpdate()
 	if not self._inputComp then
-		self._inputComp = MonoHelper.addNoUpdateLuaComOnceToGo(gohelper.findChild(self.viewGO, "sceneuiroot"), DecisionInputComp)
+		gohelper.setActive(self._uiRoot, true)
+
+		self._inputComp = MonoHelper.addNoUpdateLuaComOnceToGo(self._uiRoot, DecisionInputComp)
 	end
 
 	self._inputComp:viewDataUpdate()

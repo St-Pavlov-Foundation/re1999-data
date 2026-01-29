@@ -155,6 +155,7 @@ function TowerComposeHeroGroupView:onOpen()
 end
 
 function TowerComposeHeroGroupView:refreshUI()
+	TowerComposeHeroGroupModel.instance:replaceLockPlaneBuffItem()
 	self:_setTrialNumTips()
 	self:refreshPlaneLock()
 	self:refreshPlaneBuffSlot()

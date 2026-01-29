@@ -34,6 +34,10 @@ function PartyGameLobbyPlayerComp:_onResLoaded()
 	if self._headSkinName then
 		self:refreshSkin(self._hatSkinName, self._clothesSkinName, self._trousersSkinName, self._shoesSkinName, self._headSkinName, self._bodySkinName)
 	end
+
+	local renderer = self._spineGo:GetComponent(typeof(UnityEngine.MeshRenderer))
+
+	renderer.sortingLayerID = 0
 end
 
 function PartyGameLobbyPlayerComp:onDestroy()

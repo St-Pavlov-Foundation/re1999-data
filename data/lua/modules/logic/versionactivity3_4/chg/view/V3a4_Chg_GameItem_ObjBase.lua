@@ -35,11 +35,11 @@ function V3a4_Chg_GameItem_ObjBase:setIcon(name, setNativeSize)
 		setNativeSize = true
 	end
 
-	if self._Image_Prop then
+	if self._Image_PropGo and self._Image_Prop then
 		if string.nilorempty(name) then
-			GameUtil.setActive01(self._Image_PropTrans, false)
+			gohelper.setActive(self._Image_PropGo, false)
 		else
-			GameUtil.setActive01(self._Image_PropTrans, true)
+			gohelper.setActive(self._Image_PropGo, true)
 			self:baseViewContainer():setSprite(self._Image_Prop, name, setNativeSize)
 		end
 	end

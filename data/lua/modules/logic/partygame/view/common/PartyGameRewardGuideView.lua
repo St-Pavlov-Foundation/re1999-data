@@ -418,14 +418,16 @@ function PartyGameRewardGuideView:_checkExitCurGame()
 	if self._selectFinish and self._canTranToGame and not self._checkFinish then
 		self._checkFinish = true
 
-		PartyGameController.instance:exitGame()
-		self:closeThis()
-
 		if self.viewParam.selectCard == PartyGameLobbyEnum.GuideParam.Result1SelectCard then
 			PartyGameLobbyController.instance:guideEnterCardDropGame1()
-		else
+		elseif self.viewParam.selectCard == PartyGameLobbyEnum.GuideParam.Result2SelectCard then
 			PartyGameLobbyController.instance:guideEnterCardDropGame2()
+		else
+			PartyGameController.instance:exitGame()
+			logError("PartyGameRewardGuideView:_checkExitCurGame no selectCard")
 		end
+
+		self:closeThis()
 	end
 end
 

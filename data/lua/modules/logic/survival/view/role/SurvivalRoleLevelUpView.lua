@@ -49,6 +49,8 @@ function SurvivalRoleLevelUpView:onClickBtnClose()
 end
 
 function SurvivalRoleLevelUpView:onOpen()
+	AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_tansuo_success_1)
+
 	self.oldLevel = self.viewParam and self.viewParam.oldLevel or self.survivalShelterRoleMo.level - 1
 	self.curLevel = self.viewParam and self.viewParam.curLevel or self.survivalShelterRoleMo.level
 
@@ -81,11 +83,13 @@ function SurvivalRoleLevelUpView:onOpen()
 	local fight = weekInfo:getMonsterFight()
 	local intrudeSchemeMos = fight.intrudeSchemeMos
 
-	for i, mo in ipairs(intrudeSchemeMos) do
-		if mo.point > self.oldLevel and mo.point <= self.curLevel then
-			isRepress = true
+	if intrudeSchemeMos then
+		for i, mo in ipairs(intrudeSchemeMos) do
+			if mo.point > self.oldLevel and mo.point <= self.curLevel then
+				isRepress = true
 
-			break
+				break
+			end
 		end
 	end
 
@@ -93,7 +97,7 @@ function SurvivalRoleLevelUpView:onOpen()
 	gohelper.setActive(self.tip1, SurvivalTechConfig.instance:haveUnlockTech(self.oldLevel, self.curLevel))
 	gohelper.setActive(self.tip2, isRepress)
 
-	local work = self.survivalRoleLevelComp:getLevelUpAnimWork(self.oldLevel, self.curLevel)
+	local work = self.survivalRoleLevelComp:getLevelUpAnimWork(self.oldLevel, self.curLevel, nil, nil, true)
 
 	self.flow:addWork(work)
 	self.flow:addWork(TimerWork.New(0.5))
@@ -101,6 +105,7 @@ function SurvivalRoleLevelUpView:onOpen()
 		gohelper.setActive(self.survivalRoleLevelComp.viewGO, false)
 		gohelper.setActive(self.attrNode, true)
 		self.animator:Play("switch")
+		AudioMgr.instance:trigger(AudioEnum3_4.Survival.play_ui_bulaochun_tansuo_success)
 	end))
 	self.flow:addWork(TimerWork.New(0.8))
 

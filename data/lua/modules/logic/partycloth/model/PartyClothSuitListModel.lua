@@ -4,8 +4,7 @@ module("modules.logic.partycloth.model.PartyClothSuitListModel", package.seeall)
 
 local PartyClothSuitListModel = class("PartyClothSuitListModel", ListScrollModel)
 
-function PartyClothSuitListModel:initData(isAll)
-	local wearSuitId = PartyClothHelper.GetWearSuitId()
+function PartyClothSuitListModel:initData(isAll, curSuitId)
 	local list = {}
 
 	if isAll then
@@ -22,7 +21,7 @@ function PartyClothSuitListModel:initData(isAll)
 			local cfg = PartyClothConfig.instance:getSuitConfig(suitId)
 
 			if cfg then
-				local status = suitId == wearSuitId and 1 or 0
+				local status = suitId == curSuitId and 1 or 0
 
 				list[#list + 1] = {
 					config = cfg,
@@ -35,8 +34,8 @@ function PartyClothSuitListModel:initData(isAll)
 	table.sort(list, PartyClothHelper.SortSuitFunc)
 	self:setList(list)
 
-	if not isAll and wearSuitId then
-		self:selectSuitItem(wearSuitId, true)
+	if curSuitId then
+		self:selectSuitItem(curSuitId, true)
 	end
 end
 

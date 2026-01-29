@@ -129,5 +129,16 @@ AudioEnum3_4.Chg = {
 	play_ui_bulaochun_cheng_fail = 340233,
 	play_ui_bulaochun_cheng_connect_end = 340230
 }
+AudioEnum3_4.Survival = {
+	play_ui_bulaochun_tansuo_draw = 340245,
+	play_ui_bulaochun_tansuo_progress = 340237,
+	play_ui_bulaochun_tansuo_unlock_2 = 340250,
+	play_ui_bulaochun_tansuo_unlock = 340246,
+	play_ui_bulaochun_tansuo_success = 340239,
+	play_ui_bulaochun_tansuo_marcus = 340241,
+	play_ui_bulaochun_tansuo_up = 340248,
+	play_ui_bulaochun_tansuo_senior = 340247,
+	play_ui_bulaochun_tansuo_wuerlixi = 340240
+}
 
 return AudioEnum3_4

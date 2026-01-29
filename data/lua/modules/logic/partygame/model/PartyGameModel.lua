@@ -8,6 +8,9 @@ function PartyGameModel:onInit()
 	self._playerList = {}
 	self._curBattleReward = nil
 	self.curLoadedPlayerCount = 1
+	self.robotCount = 0
+	self.humanCount = 0
+	self.playerCount = 0
 end
 
 function PartyGameModel:initOrUpdateGamePlayer(players)
@@ -22,6 +25,9 @@ function PartyGameModel:initOrUpdateGamePlayer(players)
 	end
 
 	self.curLoadedPlayerCount = 1
+	self.playerCount = count
+	self.robotCount = 0
+	self.humanCount = 0
 
 	for i = 1, count do
 		local info = players[i - 1]
@@ -32,8 +38,23 @@ function PartyGameModel:initOrUpdateGamePlayer(players)
 
 		if playerData.isRobot == 1 then
 			self.curLoadedPlayerCount = self.curLoadedPlayerCount + 1
+			self.robotCount = self.robotCount + 1
+		else
+			self.humanCount = self.humanCount + 1
 		end
 	end
+end
+
+function PartyGameModel:getPlayerCount()
+	return self.playerCount
+end
+
+function PartyGameModel:getRobotCount()
+	return self.robotCount
+end
+
+function PartyGameModel:getHumanCount()
+	return self.humanCount
 end
 
 function PartyGameModel:addGamePlayer(player)

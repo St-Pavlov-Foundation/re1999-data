@@ -21,7 +21,7 @@ function PartyGameLobbyFriendListViewContainer:buildViews()
 	scrollParam1.cellWidth = 530
 	scrollParam1.cellHeight = 120
 	scrollParam1.cellSpaceH = 0
-	scrollParam1.cellSpaceV = 10
+	scrollParam1.cellSpaceV = 0
 
 	table.insert(views, LuaListScrollView.New(PartyGameRoomModel.instance:getFriendModel(), scrollParam1))
 

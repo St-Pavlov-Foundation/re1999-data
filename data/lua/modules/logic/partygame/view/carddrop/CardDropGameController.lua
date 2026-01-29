@@ -117,7 +117,17 @@ function CardDropGameController:getTitleText()
 	return GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("partygame_carddrop_all_title"), time)
 end
 
+function CardDropGameController:setGuideTime(guideTime)
+	self.guideTime = guideTime
+end
+
 function CardDropGameController:getCardDropTime()
+	local curGame = PartyGameController.instance:getCurPartyGame()
+
+	if curGame and curGame:getIsLocal() then
+		return self.guideTime or 1
+	end
+
 	local playerList = PartyGameModel.instance:getCurGamePlayerList()
 	local time = 1
 	local len = #playerList

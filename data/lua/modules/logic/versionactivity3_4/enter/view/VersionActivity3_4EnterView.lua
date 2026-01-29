@@ -88,6 +88,25 @@ function VersionActivity3_4EnterView:onOpen()
 	self:refreshUI()
 	self:refreshRedDot()
 	self:refreshBtnVisible(true)
+
+	local actId = self.viewContainer:getFirstOpenActId()
+
+	if actId then
+		self:focusActivityTabItem(actId)
+	end
+end
+
+function VersionActivity3_4EnterView:focusActivityTabItem(actId)
+	local activityItem = self.activityTabItemDict[actId]
+
+	if activityItem then
+		local tabGo = activityItem.go
+		local sibling = gohelper.getSibling(tabGo)
+
+		if sibling > 3 then
+			recthelper.setAnchorY(self.rectTrContent, (sibling - 1) * 160)
+		end
+	end
 end
 
 local VIDEO_DURATION = 9

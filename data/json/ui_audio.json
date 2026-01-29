@@ -14673,5 +14673,80 @@
     "id": 340235,
     "eventName": "play_ui_bulaochun_cheng_death",
     "bankName": "ui_activity_3_4_bulaochun_cheng"
+  },
+  {
+    "id": 340236,
+    "eventName": "play_ui_fuleyuan_tansuo_success_1",
+    "bankName": "ui_activity_2_8_fuleyuan_tansuo"
+  },
+  {
+    "id": 340237,
+    "eventName": "play_ui_bulaochun_tansuo_progress",
+    "bankName": "ui_activity_3_4_bulaochun_tansuo"
+  },
+  {
+    "id": 340238,
+    "eventName": "play_ui_upgrade",
+    "bankName": "main_ui"
+  },
+  {
+    "id": 340239,
+    "eventName": "play_ui_bulaochun_tansuo_success",
+    "bankName": "ui_activity_3_4_bulaochun_tansuo"
+  },
+  {
+    "id": 340240,
+    "eventName": "play_ui_bulaochun_tansuo_wuerlixi",
+    "bankName": "ui_activity_3_4_bulaochun_tansuo"
+  },
+  {
+    "id": 340241,
+    "eventName": "play_ui_bulaochun_tansuo_marcus",
+    "bankName": "ui_activity_3_4_bulaochun_tansuo"
+  },
+  {
+    "id": 340242,
+    "eventName": "play_ui_yuzhou_trap_dispel",
+    "bankName": "ui_activity_2_7_yuzhou_kubohuahuan"
+  },
+  {
+    "id": 340243,
+    "eventName": "play_ui_fuleyuan_tansuo_general_2",
+    "bankName": "ui_activity_2_8_fuleyuan_tansuo"
+  },
+  {
+    "id": 340244,
+    "eventName": "play_ui_leimi_level_difficulty",
+    "bankName": "ui_activity"
+  },
+  {
+    "id": 340245,
+    "eventName": "play_ui_bulaochun_tansuo_draw",
+    "bankName": "ui_activity_3_4_bulaochun_tansuo"
+  },
+  {
+    "id": 340246,
+    "eventName": "play_ui_bulaochun_tansuo_unlock",
+    "bankName": "ui_activity_3_4_bulaochun_tansuo"
+  },
+  {
+    "id": 340247,
+    "eventName": "play_ui_bulaochun_tansuo_senior",
+    "bankName": "ui_activity_3_4_bulaochun_tansuo"
+  },
+  {
+    "id": 340248,
+    "eventName": "play_ui_bulaochun_tansuo_up",
+    "bankName": "ui_activity_3_4_bulaochun_tansuo"
+  },
+  {
+    "id": 340249,
+    "eventName": "play_ui_fuleyuan_tansuo_general_1",
+    "bankName": "ui_activity_2_8_fuleyuan_tansuo"
+  },
+  {
+    "id": 340250,
+    "eventName": "play_ui_bulaochun_tansuo_unlock_2",
+    "bankName": "ui_activity_3_4_bulaochun_tansuo"
   }
 ]

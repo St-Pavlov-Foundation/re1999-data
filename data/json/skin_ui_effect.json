@@ -592,5 +592,14 @@
     "delayVisible": 0,
     "frameVisible": 1,
     "realtime": ""
+  },
+  {
+    "id": 307905,
+    "effect": "Drawables/bone3/effect-Bone/roleeffect_6_idle3",
+    "scale": 1.0,
+    "changeVisible": 0,
+    "delayVisible": 1,
+    "frameVisible": 1,
+    "realtime": "1"
   }
 ]

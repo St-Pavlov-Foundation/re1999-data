@@ -11,14 +11,6 @@ function PartyGameLobbyLoadingView:onInitView()
 end
 
 function PartyGameLobbyLoadingView:_onCanCloseLoading()
-	local curSceneType = GameSceneMgr.instance:getCurSceneType()
-
-	if curSceneType ~= SceneType.Main then
-		self:closeThis()
-
-		return
-	end
-
 	TaskDispatcher.runDelay(self.closeThis, self, 0.5)
 end
 

@@ -114,7 +114,7 @@ function ShelterUnitUIItem:initFollower()
 		local halfScreenWidth = screenRightX / 2
 		local halfScreenHeight = screenTopY / 2
 
-		self._uiFollower:SetRange(-halfScreenWidth, halfScreenWidth, -halfScreenHeight, halfScreenHeight)
+		self._uiFollower:SetRange(-halfScreenWidth + 250, halfScreenWidth - 150, -halfScreenHeight + 110, halfScreenHeight - 110)
 		self._uiFollower:SetArrowCallback(self.onArrowCallback, self)
 	end
 

@@ -142,7 +142,15 @@ function SurvivalMapEventView:refreshView()
 		self:setBtnDatas(datas)
 
 		if self._curMo.unitType == SurvivalEnum.UnitType.Search then
-			AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_tansuo_sougua_1)
+			self._modelComp:playSearchEffect()
+
+			if self.searchAudioId then
+				AudioMgr.instance:stopPlayingID(self.searchAudioId)
+
+				self.searchAudioId = nil
+			end
+
+			self.searchAudioId = AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_tansuo_sougua_1)
 		else
 			AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_tansuo_general_2)
 		end
@@ -431,6 +439,12 @@ end
 function SurvivalMapEventView:onClose()
 	TaskDispatcher.cancelTask(self._autoShowDesc, self)
 	TaskDispatcher.cancelTask(self.refreshView, self)
+
+	if self.searchAudioId then
+		AudioMgr.instance:stopPlayingID(self.searchAudioId)
+
+		self.searchAudioId = nil
+	end
 end
 
 function SurvivalMapEventView:onCloseFinish()

@@ -106,6 +106,7 @@ function PartyGameResultView:onOpen()
 	end
 
 	AudioMgr.instance:trigger(isWin and AudioEnum3_4.PartyGameCommon.play_ui_wulu_aizila_level_enter or AudioEnum3_4.PartyGameCommon.play_ui_lushang_enemy_occupy)
+	PartyGameStatHelper.instance:partySettle(isWin, rank, self.data.PartyId)
 end
 
 function PartyGameResultView:showCloseBtn()

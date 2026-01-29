@@ -22,7 +22,7 @@ function SurvivalUnitHideWork:onStart(context)
 						SurvivalMapHelper.instance:addPointEffect(exPos)
 					end
 				elseif reason == SurvivalEnum.UnitDeadReason.Transfer then
-					SurvivalMapHelper.instance:addPointEffect(unitMo.pos, SurvivalConst.UnitEffectPath.Transfer1)
+					-- block empty
 				end
 			end
 

@@ -1,5 +1,7 @@
 ﻿-- chunkname: @modules/logic/versionactivity3_4/chg/view/V3a4_Chg_GameItem_StartEndImpl.lua
 
+local ti = table.insert
+
 module("modules.logic.versionactivity3_4.chg.view.V3a4_Chg_GameItem_StartEndImpl", package.seeall)
 
 local V3a4_Chg_GameItem_StartEndImpl = class("V3a4_Chg_GameItem_StartEndImpl", V3a4_Chg_GameItem_ObjBase)
@@ -7,21 +9,30 @@ local csAnimatorPlayer = SLFramework.AnimatorPlayer
 
 function V3a4_Chg_GameItem_StartEndImpl:ctor(...)
 	V3a4_Chg_GameItem_StartEndImpl.super.ctor(self, ...)
+
+	self._idleNumList = {}
+	self._usingNumList = {}
+end
+
+function V3a4_Chg_GameItem_StartEndImpl:onDestroyView()
+	GameUtil.onDestroyViewMemberList(self, "_idleNumList")
+	GameUtil.onDestroyViewMemberList(self, "_usingNumList")
+	V3a4_Chg_GameItem_StartEndImpl.super.onDestroyView(self)
 end
 
 function V3a4_Chg_GameItem_StartEndImpl:_editableInitView()
 	self._Image_Group = gohelper.findChild(self.viewGO, "Image_Group")
 	self._Image_GroupTrans = self._Image_Group.transform
-	self._numAnimTxt = gohelper.findChildText(self.viewGO, "Num")
-	self._numAnimTxtGo = self._numAnimTxt.gameObject
+	self._Image_PropGo = self._Image_Prop.gameObject
+	self._numGo = gohelper.findChild(self.viewGO, "Num")
+
+	gohelper.setActive(self._numGo, false)
+
 	self._animatorPlayer = csAnimatorPlayer.Get(self.viewGO)
 	self._animator = self._animatorPlayer.animator
 
 	V3a4_Chg_GameItem_StartEndImpl.super._editableInitView(self)
-
-	self._numAnimTxt.text = ""
-
-	self:stopDeltaNumAnim()
+	ti(self._idleNumList, self:_create_V3a4_Chg_GameItem_DeltaNum())
 end
 
 function V3a4_Chg_GameItem_StartEndImpl:setNum(num)
@@ -29,15 +40,45 @@ function V3a4_Chg_GameItem_StartEndImpl:setNum(num)
 end
 
 function V3a4_Chg_GameItem_StartEndImpl:playDeltaNumAnim(deltaNum)
-	gohelper.setActive(self._numAnimTxtGo, true)
+	local numItem
+
+	if #self._idleNumList > 0 then
+		numItem = table.remove(self._idleNumList)
+	else
+		numItem = self:_create_V3a4_Chg_GameItem_DeltaNum()
+	end
+
+	ti(self._usingNumList, numItem)
 
 	local str = deltaNum > 0 and "+" .. deltaNum or tostring(deltaNum)
 
-	self._numAnimTxt.text = str
+	numItem:play(str)
+
+	return numItem
 end
 
-function V3a4_Chg_GameItem_StartEndImpl:stopDeltaNumAnim()
-	gohelper.setActive(self._numAnimTxtGo, false)
+function V3a4_Chg_GameItem_StartEndImpl:stopDeltaNumAnim(targetNumItem)
+	if not targetNumItem then
+		return
+	end
+
+	targetNumItem:stop()
+
+	local found = false
+
+	for i = #self._usingNumList, 1, -1 do
+		if targetNumItem == self._usingNumList[i] then
+			table.remove(self._usingNumList, i)
+
+			found = true
+
+			break
+		end
+	end
+
+	if found then
+		ti(self._idleNumList, targetNumItem)
+	end
 end
 
 function V3a4_Chg_GameItem_StartEndImpl:playAnim(name, cb, cbObj)
@@ -56,6 +97,15 @@ end
 
 function V3a4_Chg_GameItem_StartEndImpl:animatorPlayer()
 	return self._animatorPlayer
+end
+
+function V3a4_Chg_GameItem_StartEndImpl:_create_V3a4_Chg_GameItem_DeltaNum()
+	local go = gohelper.cloneInPlace(self._numGo, V3a4_Chg_GameItem_DeltaNum.__cname)
+	local item = self:newObject(V3a4_Chg_GameItem_DeltaNum)
+
+	item:init(go)
+
+	return item
 end
 
 return V3a4_Chg_GameItem_StartEndImpl

@@ -8,6 +8,21 @@ AudioMgr.GMOpenLog = nil
 AudioMgr.Evt_ChangeFinish = 1
 AudioMgr.Evt_Trigger = 2
 
+require("tolua.reflection")
+tolua.loadassembly("AK.Wwise.Unity.API")
+
+local type = tolua.findtype("AkSoundEngine")
+local _registerGameObj = tolua.getmethod(type, "RegisterGameObj", typeof("UnityEngine.GameObject"))
+local _unregisterGameObj = tolua.getmethod(type, "UnregisterGameObj", typeof("UnityEngine.GameObject"))
+
+function AudioMgr:RegisterGameObj(go)
+	_registerGameObj:Call(go)
+end
+
+function AudioMgr:UnregisterGameObj(go)
+	_unregisterGameObj:Call(go)
+end
+
 function AudioMgr:ctor()
 	return
 end
@@ -83,8 +98,12 @@ function AudioMgr:changeEarMode()
 	self:setRTPCValue(AudioEnum.EarRTPC, isEarConnect and 0 or 1)
 end
 
-function AudioMgr:trigger(audioId, go)
-	local playingId = self.csharpInst:TriggerAudio(audioId, go)
+function AudioMgr:trigger(audioId, go, needRegister)
+	if needRegister == nil then
+		needRegister = true
+	end
+
+	local playingId = self.csharpInst:TriggerAudio(audioId, go, needRegister)
 
 	self:dispatchEvent(AudioMgr.Evt_Trigger, audioId)
 

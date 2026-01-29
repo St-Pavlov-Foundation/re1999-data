@@ -151,9 +151,33 @@ function PartyGameViewDefine.init(module_views)
 			playerInfo = "ui/viewres/partygame/common/common_playerinfo.prefab"
 		}
 	}
+	module_views.PartyGameSoloResultGuideView = {
+		bgBlur = 1,
+		container = "PartyGameSoloResultGuideViewContainer",
+		maskAlpha = 0,
+		destroy = 0,
+		mainRes = "ui/viewres/partygame/common/common_gamesoloresult.prefab",
+		layer = "POPUP_TOP",
+		viewType = ViewType.Modal,
+		otherRes = {
+			rewardHp = "ui/viewres/partygame/common/common_gameresulthp.prefab",
+			playerInfo = "ui/viewres/partygame/common/common_playerinfo.prefab"
+		}
+	}
 	module_views.PartyGameTeamResultView = {
 		bgBlur = 1,
 		container = "PartyGameTeamResultViewContainer",
+		destroy = 0,
+		mainRes = "ui/viewres/partygame/common/common_gameteamresult.prefab",
+		layer = "POPUP_TOP",
+		viewType = ViewType.Normal,
+		otherRes = {
+			rewardHp = "ui/viewres/partygame/common/common_gameresulthp.prefab"
+		}
+	}
+	module_views.PartyGameTeamResultGuideView = {
+		bgBlur = 1,
+		container = "PartyGameTeamResultGuideViewContainer",
 		destroy = 0,
 		mainRes = "ui/viewres/partygame/common/common_gameteamresult.prefab",
 		layer = "POPUP_TOP",

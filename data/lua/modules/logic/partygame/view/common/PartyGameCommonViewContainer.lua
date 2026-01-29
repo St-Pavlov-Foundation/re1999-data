@@ -25,7 +25,7 @@ function PartyGameCommonViewContainer:buildTabViews(tabContainerId)
 		local helpId = self:getHelpId()
 
 		self.navigateButtonView = NavigateButtonsView.New({
-			true,
+			self:_showBackBtn(),
 			false,
 			helpId > 0
 		}, helpId)
@@ -38,6 +38,16 @@ function PartyGameCommonViewContainer:buildTabViews(tabContainerId)
 	end
 end
 
+function PartyGameCommonViewContainer:_showBackBtn()
+	if GuideController.instance:isForbidGuides() then
+		return true
+	end
+
+	local game = PartyGameController.instance:getCurPartyGame()
+
+	return game and not game:getIsLocal()
+end
+
 function PartyGameCommonViewContainer:getHelpId()
 	local game = PartyGameController.instance:getCurPartyGame()
 	local co = game and game:getGameConfig()
@@ -48,6 +58,7 @@ end
 
 function PartyGameCommonViewContainer:closeCallback()
 	MessageBoxController.instance:showSystemMsgBox(MessageBoxIdDefine.PartyGameExitGame, MsgBoxEnum.BoxType.Yes_No, function()
+		PartyGameStatHelper.instance:partyGameExit()
 		PartyGameController.instance:exitGame()
 	end, nil)
 end

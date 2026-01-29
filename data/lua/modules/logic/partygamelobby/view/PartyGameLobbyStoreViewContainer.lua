@@ -16,10 +16,12 @@ end
 
 function PartyGameLobbyStoreViewContainer:buildTabViews(tabContainerId)
 	if tabContainerId == 1 then
+		local curSceneType = GameSceneMgr.instance:getCurSceneType()
+
 		return {
 			NavigateButtonsView.New({
 				true,
-				true,
+				curSceneType == SceneType.Main,
 				false
 			})
 		}
@@ -76,6 +78,10 @@ end
 
 function PartyGameLobbyStoreViewContainer:onContainerClose()
 	VersionActivityFixedHelper.setCustomDungeonStore()
+end
+
+function PartyGameLobbyStoreViewContainer:isShowSpecialItem()
+	return false
 end
 
 return PartyGameLobbyStoreViewContainer

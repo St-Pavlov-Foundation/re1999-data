@@ -118,6 +118,7 @@ function GuideActionFindGO._exceptionFindLog(guideId, stepId, goPath, prefixStr)
 	local stepCO = GuideConfig.instance:getStepCO(guideId, stepId)
 
 	logNormal(string.format("<color=#FFFF00>%s%s guide_%d_%d, %s-%s %s %s %s %s</color>", prefixStr or "", exceptionDesc, guideId, stepId, guideCO.desc, stepCO.desc, msgCountStr, currScene, openViewsStr, execStepStr))
+	GuideController.instance:dispatchEvent(GuideEvent.InterruptGuide, guideId)
 end
 
 function GuideActionFindGO:_startBlock()

@@ -31,8 +31,8 @@ function CardDropGameCardView:onInitView()
 	self.type2NumTxtDict[CardDropEnum.Type.Bu] = self.enemyCardNum1
 	self.type2NumTxtDict[CardDropEnum.Type.JianDao] = self.enemyCardNum2
 	self.type2NumTxtDict[CardDropEnum.Type.ShiTou] = self.enemyCardNum3
-	self.type2NumTxtDict[CardDropEnum.Type.CertainKill] = self.enemyCardNum4
-	self.type2NumTxtDict[CardDropEnum.Type.Invincible] = self.enemyCardNum5
+	self.type2NumTxtDict[CardDropEnum.Type.Invincible] = self.enemyCardNum4
+	self.type2NumTxtDict[CardDropEnum.Type.CertainKill] = self.enemyCardNum5
 	self.handCardListItem = {}
 	self.myPlayedCardItemList = {}
 	self.enemyPlayedCardItemList = {}

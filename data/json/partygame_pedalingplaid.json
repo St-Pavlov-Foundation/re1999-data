@@ -24,7 +24,7 @@
     "playerNum": 8,
     "type": 1,
     "assetId": 90004,
-    "param": -2.0,
+    "param": -1.0,
     "maxNum": 2,
     "duration": 5.0,
     "interval": "4#6|4#6"
@@ -44,7 +44,7 @@
     "playerNum": 8,
     "type": 3,
     "assetId": 90006,
-    "param": 2.5,
+    "param": 2.0,
     "maxNum": 2,
     "duration": 3.0,
     "interval": "4#7|5#8"
@@ -74,7 +74,7 @@
     "playerNum": 4,
     "type": 1,
     "assetId": 90004,
-    "param": -2.0,
+    "param": -1.0,
     "maxNum": 2,
     "duration": 5.0,
     "interval": "4#6|4#6"
@@ -94,7 +94,7 @@
     "playerNum": 4,
     "type": 3,
     "assetId": 90006,
-    "param": 2.5,
+    "param": 2.0,
     "maxNum": 2,
     "duration": 3.0,
     "interval": "2#4|2#4"
@@ -124,7 +124,7 @@
     "playerNum": 2,
     "type": 1,
     "assetId": 90004,
-    "param": -2.0,
+    "param": -1.0,
     "maxNum": 2,
     "duration": 5.0,
     "interval": "4#6|4#6"
@@ -144,7 +144,7 @@
     "playerNum": 2,
     "type": 3,
     "assetId": 90006,
-    "param": 2.5,
+    "param": 2.0,
     "maxNum": 2,
     "duration": 3.0,
     "interval": "2#4|2#4"

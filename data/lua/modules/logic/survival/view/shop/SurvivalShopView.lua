@@ -340,7 +340,13 @@ function SurvivalShopView:refreshTitle()
 	self._txttitle.text = SurvivalConfig.instance:getShopName(self._shopMo.id)
 
 	if self._shopMo:isPreExploreShop() then
-		self._txtLeftTitle.text = luaLang("SurvivalShopView_1")
+		local select = self.leftTabListComp:getSelect()
+
+		if select == 1 then
+			self._txtLeftTitle.text = luaLang("p_survivalcommititemview_txt_bag")
+		else
+			self._txtLeftTitle.text = luaLang("SurvivalShopView_1")
+		end
 	elseif self._shopMo.shopType == SurvivalEnum.ShopType.GeneralShop then
 		self._txtLeftTitle.text = luaLang("SurvivalShopView_1")
 	else
@@ -624,6 +630,7 @@ end
 
 function SurvivalShopView:onSelectLeftTabCallBack(item)
 	self:_refreshBag()
+	self:refreshTitle()
 end
 
 function SurvivalShopView:onClose()

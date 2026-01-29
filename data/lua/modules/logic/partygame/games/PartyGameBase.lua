@@ -13,6 +13,7 @@ function PartyGameBase:ctor()
 	self._isLocal = false
 	self._isTeamType = false
 	self._mainPlayerUid = -1
+	self.gameStartTime = 0
 end
 
 function PartyGameBase:init(gameId, gameConfigId)
@@ -23,6 +24,14 @@ function PartyGameBase:init(gameId, gameConfigId)
 	if self._gameParamCo then
 		self._gameTime = self._gameParamCo.gameTime
 	end
+
+	self.gameStartTime = Time.realtimeSinceStartup
+end
+
+function PartyGameBase:canEndLoading()
+	local interval = Time.realtimeSinceStartup - self.gameStartTime
+
+	return interval >= PartyGameEnum.LoadingTime
 end
 
 function PartyGameBase:setIsLocal(isLocal)
@@ -161,6 +170,7 @@ function PartyGameBase:gameEndResult(data)
 	end
 
 	PartyGameController.instance:dispatchEvent(PartyGameEvent.OnGameEnd)
+	PartyGameStatHelper.instance:partyGameEnd()
 end
 
 function PartyGameBase:onScenePrepared()
@@ -220,8 +230,11 @@ function PartyGameBase:onSceneCloseView()
 	self:onSceneClose()
 	ViewMgr.instance:closeView(ViewName.PartyGameResultView)
 	ViewMgr.instance:closeView(ViewName.PartyGameRewardView)
+	ViewMgr.instance:closeView(ViewName.PartyGameRewardGuideView)
 	ViewMgr.instance:closeView(ViewName.PartyGameSoloResultView)
+	ViewMgr.instance:closeView(ViewName.PartyGameSoloResultGuideView)
 	ViewMgr.instance:closeView(ViewName.PartyGameTeamResultView)
+	ViewMgr.instance:closeView(ViewName.PartyGameTeamResultGuideView)
 end
 
 function PartyGameBase:getGameConfig()

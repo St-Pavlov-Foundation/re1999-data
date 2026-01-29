@@ -7,6 +7,8 @@ local CardDropGameView = class("CardDropGameView", BaseView)
 function CardDropGameView:onInitView()
 	self.floatRoot = gohelper.findChild(self.viewGO, "floatroot")
 	self.interface = PartyGameCSDefine.CardDropInterfaceCs
+	self._partygamewaitbar = gohelper.findChild(self.viewGO, "root/partygamewaitbar")
+	self.partyGameWaitBar = GameFacade.createLuaCompByGo(self._partygamewaitbar, PartyGameWaitBar, nil, self.viewContainer)
 end
 
 function CardDropGameView:onOpen()

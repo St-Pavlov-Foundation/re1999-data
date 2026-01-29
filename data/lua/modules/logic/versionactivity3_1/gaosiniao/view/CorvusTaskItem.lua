@@ -292,6 +292,12 @@ function CorvusTaskItem:_onOneClickClaimReward(actId)
 		return
 	end
 
+	local mo = self._mo
+
+	if mo:isUnfinished() or mo:isClaimed() then
+		return
+	end
+
 	self.animator.speed = 1
 
 	self.animatorPlayer:Play(UIAnimationName.Finish, self._onOneClickClaimRewardAnimFirstDone, self)

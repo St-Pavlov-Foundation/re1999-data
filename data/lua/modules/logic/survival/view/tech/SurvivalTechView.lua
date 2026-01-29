@@ -55,6 +55,7 @@ function SurvivalTechView:addEvents()
 end
 
 function SurvivalTechView:onOpen()
+	AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_tansuo_general_1)
 	self.survivalTechCommonFragment:setData(0)
 
 	local data = {}
@@ -159,6 +160,8 @@ end
 
 function SurvivalTechView:setTechInfoNode(isShow, teachCellId)
 	if isShow then
+		AudioMgr.instance:trigger(AudioEnum3_4.Survival.play_ui_bulaochun_tansuo_draw)
+
 		if not self.isShowTechDesc then
 			gohelper.setActive(self.techDesc, true)
 			self.animTechDesc:Play("open", nil, nil)

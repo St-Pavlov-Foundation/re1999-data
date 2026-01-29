@@ -20,6 +20,7 @@ end
 
 function CardDropPartyGame:gameEndResult(data)
 	CardDropEndFlowController.instance:startCardDropEndFlow(data)
+	PartyGameStatHelper.instance:partyGameEnd()
 end
 
 function CardDropPartyGame:getGameViewName()

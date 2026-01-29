@@ -188,9 +188,9 @@ function SurvivalUI3DRender:setModelPathActive(hangPath, path, isActive)
 			isActive
 		})
 	else
-		local go2 = gohelper.findChild(resGo, path)
+		self.go2 = gohelper.findChild(resGo, path)
 
-		gohelper.setActive(go2, isActive)
+		gohelper.setActive(self.go2, isActive)
 	end
 end
 
@@ -277,6 +277,11 @@ function SurvivalUI3DRender:playNextAnim(animType)
 			logError("未处理角色动作类型" .. tostring(animType))
 		end
 	end
+end
+
+function SurvivalUI3DRender:playSearchEffect()
+	gohelper.setActive(self.go2, false)
+	gohelper.setActive(self.go2, true)
 end
 
 return SurvivalUI3DRender

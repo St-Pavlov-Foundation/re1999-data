@@ -36,30 +36,6 @@ function PartyGameSoloResultView:_btncloseOnClick()
 		return
 	end
 
-	if self._guidePause then
-		logNormal("PartyGameSoloResultView guide pause")
-
-		return
-	end
-
-	if GuideModel.instance:isFlagEnable(GuideModel.GuideFlag.PartyGameLocalGame1Result) then
-		GuideModel.instance:clearFlagValue(GuideModel.GuideFlag.PartyGameLocalGame1Result)
-		logNormal("PartyGameSoloResultView GuideFlag.PartyGameLocalGame1Result")
-		PartyGameLobbyController.instance:guideEnterGameRewardGuideView1()
-		TaskDispatcher.cancelTask(self._refreshCountDown, self)
-
-		return
-	end
-
-	if GuideModel.instance:isFlagEnable(GuideModel.GuideFlag.PartyGameLocalGame2Result) then
-		GuideModel.instance:clearFlagValue(GuideModel.GuideFlag.PartyGameLocalGame2Result)
-		logNormal("PartyGameSoloResultView GuideFlag.PartyGameLocalGame2Result")
-		PartyGameLobbyController.instance:guideEnterGameRewardGuideView2()
-		TaskDispatcher.cancelTask(self._refreshCountDown, self)
-
-		return
-	end
-
 	local partyGame = PartyGameController.instance:getCurPartyGame()
 
 	if partyGame ~= nil and partyGame:getIsLocal() then
@@ -79,18 +55,6 @@ function PartyGameSoloResultView:_editableInitView()
 
 	self._playerInfoComp = MonoHelper.addNoUpdateLuaComOnceToGo(go, PlayerInfoComp)
 	self._anim = self.viewGO:GetComponent(gohelper.Type_Animator)
-
-	self:addEventCb(PartyGameController.instance, PartyGameEvent.GuideSoloResultPause, self._onGuideSoloResultPause, self)
-end
-
-function PartyGameSoloResultView:_onGuideSoloResultPause(param)
-	self._guidePause = tonumber(param) == 1
-
-	TaskDispatcher.cancelTask(self._refreshCountDown, self)
-
-	if not self._guidePause then
-		TaskDispatcher.runRepeat(self._refreshCountDown, self, 1)
-	end
 end
 
 function PartyGameSoloResultView:onUpdateParam()

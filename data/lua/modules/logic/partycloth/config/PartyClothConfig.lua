@@ -20,7 +20,19 @@ function PartyClothConfig:onInit()
 end
 
 function PartyClothConfig:onConfigLoaded(configName, configTable)
-	return
+	if configName == "partygame_cloth_part" then
+		self._defaultSuitSkinIds = {}
+
+		for i, v in ipairs(lua_partygame_cloth_part.configList) do
+			if v.suitId == PartyClothEnum.DefaultSuitId then
+				table.insert(self._defaultSuitSkinIds, v.clothId)
+			end
+		end
+	end
+end
+
+function PartyClothConfig:getDefaultSuitSkinIds()
+	return self._defaultSuitSkinIds
 end
 
 function PartyClothConfig:getSuitConfig(suitId)
@@ -88,6 +100,11 @@ end
 
 function PartyClothConfig:_setSkinResMap(skinResMap, clothId)
 	local config = self:getClothConfig(clothId)
+
+	if not config then
+		return
+	end
+
 	local clothType = config.partId
 
 	if clothType == PartyClothEnum.ClothType.Head then
