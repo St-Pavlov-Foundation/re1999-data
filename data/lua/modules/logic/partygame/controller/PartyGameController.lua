@@ -117,6 +117,9 @@ function PartyGameController:gameLoadingFinish()
 	end
 
 	self._isClear = false
+
+	ViewMgr.instance:closeView(ViewName.CardDropVSView)
+	ViewMgr.instance:closeView(ViewName.CardDropPromotionView)
 end
 
 local block = "UIBlockMgr.instance.startBlock"
