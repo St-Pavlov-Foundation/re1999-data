@@ -64,7 +64,8 @@ function SurvivalStatHelper:getWeekData()
 	return {
 		world_lv = weekInfo:getAttr(SurvivalEnum.AttrType.WorldLevel),
 		difficulty = weekInfo.difficulty,
-		day = weekInfo.day
+		day = weekInfo.day,
+		role_id = weekInfo:getRoleInfo().roleId
 	}
 end
 
@@ -92,6 +93,40 @@ function SurvivalStatHelper:getMapData()
 		rain_id = sceneMo._mapInfo.rainId,
 		disaster_ids = sceneMo._mapInfo.disasterIds
 	}
+end
+
+function SurvivalStatHelper:statEditMsg(operationEnum, ids)
+	local outSideMo = SurvivalModel.instance:getOutSideInfo()
+
+	StatController.instance:track(StatEnum.EventName.SurvivalMsgOperation, {
+		[StatEnum.EventProperties.Season] = outSideMo.season,
+		[StatEnum.EventProperties.SurvivalBaseObj] = self:getWeekData(),
+		[StatEnum.EventProperties.SurvivalMapBaseObj] = self:getMapData(),
+		[StatEnum.EventProperties.OperationType] = tostring(operationEnum),
+		[StatEnum.EventProperties.SurvivalMsgList] = ids
+	})
+end
+
+function SurvivalStatHelper:statMsgOperation(operationEnum, id)
+	local outSideMo = SurvivalModel.instance:getOutSideInfo()
+
+	StatController.instance:track(StatEnum.EventName.SurvivalMsgOperation, {
+		[StatEnum.EventProperties.Season] = outSideMo.season,
+		[StatEnum.EventProperties.SurvivalBaseObj] = self:getWeekData(),
+		[StatEnum.EventProperties.SurvivalMapBaseObj] = self:getMapData(),
+		[StatEnum.EventProperties.OperationType] = tostring(operationEnum),
+		[StatEnum.EventProperties.SurvivalMsgId] = id
+	})
+end
+
+function SurvivalStatHelper:statUseRoleSkill()
+	local outSideMo = SurvivalModel.instance:getOutSideInfo()
+
+	StatController.instance:track(StatEnum.EventName.SurvivalUseRoleSkill, {
+		[StatEnum.EventProperties.Season] = outSideMo.season,
+		[StatEnum.EventProperties.SurvivalBaseObj] = self:getWeekData(),
+		[StatEnum.EventProperties.SurvivalMapBaseObj] = self:getMapData()
+	})
 end
 
 SurvivalStatHelper.instance = SurvivalStatHelper.New()

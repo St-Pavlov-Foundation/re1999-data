@@ -67,7 +67,6 @@ function SurvivalSmallMapView:onOpen()
 
 	for k, blockCo in pairs(mapCo.allBlocks) do
 		local pos = blockCo.pos
-		local walkable = blockCo.subType ~= SurvivalEnum.UnitSubType.Block
 
 		table.insert(self._allItemDatas, {
 			pos = pos,
@@ -76,8 +75,6 @@ function SurvivalSmallMapView:onOpen()
 		})
 
 		for i, exPos in ipairs(blockCo.exNodes) do
-			local walkable = blockCo.subType ~= SurvivalEnum.UnitSubType.Block
-
 			table.insert(self._allItemDatas, {
 				pos = exPos,
 				blockCo = blockCo,
@@ -265,10 +262,16 @@ function SurvivalSmallMapView:onClickModalMask()
 end
 
 local unitTypeToIconName = {
-	[SurvivalEnum.UnitType.Task] = "survival_smallmap_block_3_1",
 	[SurvivalEnum.UnitType.Treasure] = "survival_smallmap_block_3_5",
 	[SurvivalEnum.UnitType.Exit] = "survival_smallmap_block_3_8",
 	[SurvivalEnum.UnitType.Door] = "survival_smallmap_block_3_9"
+}
+local blockToIconName = {
+	[SurvivalEnum.UnitSubType.Miasma] = "survival_smallmap_block_5_2",
+	[SurvivalEnum.UnitSubType.Morass] = "survival_smallmap_block_5_2",
+	[SurvivalEnum.UnitSubType.Magma] = "survival_smallmap_block_5_2",
+	[SurvivalEnum.UnitSubType.Ice] = "survival_smallmap_block_5_2",
+	[SurvivalEnum.UnitSubType.Water] = "survival_smallmap_block_5_2"
 }
 
 function SurvivalSmallMapView:createItem(data)
@@ -295,6 +298,13 @@ function SurvivalSmallMapView:createItem(data)
 	local multiple = gohelper.findChild(item, "#go_multiple")
 	local sceneMo = SurvivalMapModel.instance:getSceneMo()
 	local co = sceneMo:getBlockCoByPos(pos)
+
+	if co and blockToIconName[co.subType] then
+		UISpriteSetMgr.instance:setSurvivalSprite(block, blockToIconName[co.subType])
+	else
+		UISpriteSetMgr.instance:setSurvivalSprite(block, data.hightValue and "survival_smallmap_block_4" or "survival_smallmap_block_0")
+	end
+
 	local walkable = data.walkable
 
 	if not walkable then
@@ -304,8 +314,6 @@ function SurvivalSmallMapView:createItem(data)
 			walkable = true
 		end
 	end
-
-	UISpriteSetMgr.instance:setSurvivalSprite(block, data.hightValue and "survival_smallmap_block_4" or "survival_smallmap_block_0")
 
 	local isShowHero = data.unitMo and data.unitMo.id == 0
 
@@ -377,6 +385,12 @@ function SurvivalSmallMapView:getIcon(unitMo)
 			return isElite and "survival_smallmap_block_3_12" or "survival_smallmap_block_3_11"
 		else
 			return isElite and "survival_smallmap_block_3_7" or "survival_smallmap_block_3_6"
+		end
+	elseif unitType == SurvivalEnum.UnitType.Task then
+		if subType == 77 then
+			return "survival_smallmap_block_3_17"
+		else
+			return "survival_smallmap_block_3_1"
 		end
 	else
 		return unitTypeToIconName[unitType]

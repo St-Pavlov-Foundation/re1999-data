@@ -197,6 +197,8 @@ function SurvivalInteriorRpc:sendSurvivalMessageOperationRequest(unitId, msgId, 
 	req.msgId = msgId
 	req.operationType = operationType
 
+	SurvivalStatHelper.instance:statMsgOperation(operationType, tonumber(msgId))
+
 	return self:sendMsg(req, callback, callobj)
 end
 
@@ -210,6 +212,7 @@ function SurvivalInteriorRpc:sendSurvivalUseRoleSkillRequest(param, callback, ca
 	local req = SurvivalInteriorModule_pb.SurvivalUseRoleSkillRequest()
 
 	table.insert(req.param, param)
+	SurvivalStatHelper.instance:statUseRoleSkill()
 
 	return self:sendMsg(req, callback, callobj)
 end
@@ -222,13 +225,10 @@ end
 
 function SurvivalInteriorRpc:onReceiveSurvivalMessagePush(resultCode, msg)
 	if resultCode == 0 then
-		local unitId = msg.id
-		local message = msg.message
-
-		PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.SurvivalLeaveMsgView, {
-			message = message,
-			unitId = unitId
-		})
+		SurvivalMapModel.instance.survivalLeaveMsgViewParam = {
+			message = msg.message,
+			unitId = msg.id
+		}
 	end
 end
 

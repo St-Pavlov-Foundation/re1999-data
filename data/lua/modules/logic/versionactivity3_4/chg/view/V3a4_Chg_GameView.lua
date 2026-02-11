@@ -49,6 +49,7 @@ end
 
 function V3a4_Chg_GameView:_restartYesCallback()
 	self:doRestart()
+	self.viewContainer:trackReset()
 end
 
 function V3a4_Chg_GameView:_restartDelayRefresh()
@@ -182,6 +183,7 @@ function V3a4_Chg_GameView:onOpen()
 
 	self:_onNewRound()
 	self:setText_txtTips(self.viewContainer:gameStartDesc())
+	self.viewContainer:trackMO():onGameStart()
 end
 
 function V3a4_Chg_GameView:onClose()
@@ -275,6 +277,7 @@ end
 function V3a4_Chg_GameView:_onNewRound()
 	self:setActive_goVictory(false)
 	self:_dragContext():reset(self)
+	self.viewContainer:trackMO():onRoundStart()
 	GameUtil.onDestroyViewMember(self, "_newRoundStartFlow")
 
 	self._newRoundStartFlow = ChgNewRoundStartFlow.New()

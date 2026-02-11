@@ -18,8 +18,8 @@ function SurvivalRoleLevelTipComp:onStart()
 	self.textLevelTipLv.text = "Lv." .. level
 
 	if not isMaxLevel then
-		local curNeed = SurvivalRoleConfig.instance:getLevelUpNeedExp(level)
-		local nextNeed = SurvivalRoleConfig.instance:getLevelUpNeedExp(level + 1)
+		local curNeed = SurvivalRoleConfig.instance:getLevelNeedExp(level)
+		local nextNeed = SurvivalRoleConfig.instance:getLevelNeedExp(level + 1)
 
 		self.textLevelTipProgress.text = string.format("<color=#BB7E47>%s</color>/%s", self.survivalShelterRoleMo.roleExp - curNeed, nextNeed - curNeed)
 	else

@@ -65,9 +65,7 @@ function SurvivalEnterView:_btnAchievementOnClick()
 end
 
 function SurvivalEnterView:everySecondCall()
-	local curVersionActivityId = SurvivalModel.instance:getCurVersionActivityId()
-
-	self._txtLimitTime.text = ActivityHelper.getActivityRemainTimeStr(curVersionActivityId)
+	return
 end
 
 function SurvivalEnterView:_onRewardClick()

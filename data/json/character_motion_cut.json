@@ -247,8 +247,14 @@
   },
   {
     "heroId": 3137,
-    "skinId": 1,
-    "motion": "baoquan",
+    "skinId": 313701,
+    "motion": "baoquan|cazui",
+    "onlyStopCut": 1
+  },
+  {
+    "heroId": 3137,
+    "skinId": 313702,
+    "motion": "baoquan|cazui|duanye",
     "onlyStopCut": 1
   }
 ]

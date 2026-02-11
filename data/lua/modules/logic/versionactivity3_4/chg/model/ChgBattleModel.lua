@@ -6,10 +6,17 @@ local ChgBattleModel = class("ChgBattleModel", BaseModel)
 
 function ChgBattleModel:onInit()
 	ChgBattleMapMO.default_ctor(self, "_mapMO")
+
+	self._trackMO = ChgBattleTrackMO.New()
+
 	self:reInit()
 end
 
 function ChgBattleModel:reInit()
+	self:clear()
+end
+
+function ChgBattleModel:clear()
 	self._elementId = 0
 	self._isServerCompleted = false
 
@@ -60,6 +67,10 @@ function ChgBattleModel:dragContext()
 	return self._dragContext
 end
 
+function ChgBattleModel:trackMO()
+	return self._trackMO
+end
+
 function ChgBattleModel:onReceiveMapElementReply(elementId)
 	if elementId ~= self._elementId then
 		return
@@ -79,6 +90,10 @@ end
 
 function ChgBattleModel:isServerCompleted()
 	return self._isServerCompleted
+end
+
+function ChgBattleModel:track_act_chengheguang_operation(eOperationType, ...)
+	self._trackMO:track_act_chengheguang_operation(self._elementId, self._mapMO, eOperationType, ...)
 end
 
 ChgBattleModel.instance = ChgBattleModel.New()

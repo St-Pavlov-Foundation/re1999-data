@@ -8,6 +8,15 @@ function PartyGameStatHelper:ctor()
 	return
 end
 
+function PartyGameStatHelper:partyGameMeme(id)
+	StatController.instance:track(StatEnum.EventName.PartyGameMeme, {
+		[StatEnum.EventProperties.PartyRoomId] = tostring(PartyGameRoomModel.instance:getRoomId()),
+		[StatEnum.EventProperties.Members] = PartyGameRoomModel.instance:getPlayerNum(),
+		[StatEnum.EventProperties.isOwner] = PartyGameRoomModel.instance:isRoomOwner(),
+		[StatEnum.EventProperties.Meme] = id
+	})
+end
+
 function PartyGameStatHelper:partyMatch(operation)
 	local useTime = 0
 

@@ -9,7 +9,7 @@ function PartyGameViewDefine.init(module_views)
 		destroy = 0,
 		container = "PartyGameResultViewContainer",
 		mainRes = "ui/viewres/partygame/knockout/knockout_result.prefab",
-		layer = "POPUP_TOP",
+		layer = "TOP",
 		viewType = ViewType.Normal
 	}
 	module_views.PartyGameMatchView = {

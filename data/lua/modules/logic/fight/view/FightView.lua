@@ -121,6 +121,17 @@ function FightView:onOpen()
 				end
 			end
 
+			if FightDataHelper.fieldMgr:isSurvival() or FightDataHelper.fieldMgr:isShelter() then
+				local key = PlayerModel.instance:getPlayerPrefsKey(PlayerPrefsKey.SurvivalEnterBattled)
+				local value = PlayerPrefsHelper.getNumber(key, 0)
+
+				if value ~= 1 then
+					speed = FightModel.instance:getMaxSpeed()
+
+					PlayerPrefsHelper.setNumber(key, 1)
+				end
+			end
+
 			FightModel.instance:setUserSpeed(speed)
 		end
 	else

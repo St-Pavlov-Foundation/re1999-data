@@ -192,14 +192,16 @@ function PartyGameLobbyController:_delayUpdateOpenInfo()
 		return
 	end
 
-	local oldOpenTimeStatus = self:inOpenTime()
+	self._oldOpenTimeStatus = self:inOpenTime()
 
 	OpenRpc.instance:sendGetOpenInfoRequest(self._actOpenId, function()
 		local newOpenTimeStatus = self:inOpenTime()
 
-		if oldOpenTimeStatus ~= newOpenTimeStatus then
+		if self._oldOpenTimeStatus ~= newOpenTimeStatus then
 			PartyGameLobbyController.instance:dispatchEvent(PartyGameLobbyEvent.OpenTimeStatusChange, newOpenTimeStatus)
 			self:checkActivityDailyOpen(newOpenTimeStatus)
+
+			self._oldOpenTimeStatus = newOpenTimeStatus
 		end
 
 		self:_checkActivity()
@@ -522,7 +524,7 @@ function PartyGameLobbyController:enterGameLobby()
 			self:openActivityEnterView()
 		end
 
-		logError("PartyGameLobbyController:enterGameLobby not in open time")
+		logNormal("PartyGameLobbyController:enterGameLobby not in open time")
 
 		return
 	end

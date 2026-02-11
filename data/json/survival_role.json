@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "乌尔里希",
-    "initDisposition": "2#5#2#2#1",
+    "initDisposition": "2#5#2#3#1",
     "dispositionType": 1,
     "talentName": "人文关怀",
     "desc": "乌尔里希期望将人文主义的关怀传递至盒中的每一个角落。当招募漫游助理时，额外获得经验*25。",
@@ -23,7 +23,7 @@
   {
     "id": 2,
     "name": "哑谜",
-    "initDisposition": "5#2#1#2#2",
+    "initDisposition": "5#1#2#3#2",
     "dispositionType": 2,
     "talentName": "“铁血”将军",
     "desc": "哑谜虽然不喜欢使用武力解决问题，但并不代表他不擅于此道。当击败敌人时，额外获得经验*20",
@@ -44,7 +44,7 @@
   {
     "id": 3,
     "name": "兔毛手袋",
-    "initDisposition": "2#2#2#5#2",
+    "initDisposition": "2#1#3#5#2",
     "dispositionType": 3,
     "talentName": "破坏王",
     "desc": "兔毛手袋手痒难耐，渴望破坏。当摧毁障碍物时，额外获得经验*20",
@@ -57,7 +57,7 @@
     "techSpriteId": 3,
     "techIconType": 3,
     "conditions": "stick#3#3",
-    "conditionsDesc": "累计完成▩1%s次演习，且每次演习需要坚守到3天以上（累计完成▩2%s/▩1%s次）",
+    "conditionsDesc": "累计完成▩1%s次演习，且每次演习需要坚守3天及以上（累计完成▩2%s/▩1%s次）",
     "skill": 3,
     "initTalentIds": "502300",
     "isonline": 1
@@ -65,8 +65,8 @@
   {
     "id": 4,
     "name": "马库斯",
-    "initDisposition": "2#2#1#2#5",
-    "dispositionType": 3,
+    "initDisposition": "1#2#3#4#4",
+    "dispositionType": 4,
     "talentName": "书间巡游",
     "desc": "临时描述，马库斯的天赋效果，字数不知道，大概不少字不少字不少字不少字不少字不少字不少字",
     "resource": "survival/roles/prefab/role_protagonist_makusi.prefab",
@@ -86,7 +86,7 @@
   {
     "id": 5,
     "name": "冷周六",
-    "initDisposition": "5#4#3#2#1",
+    "initDisposition": "2#3#5#3#1",
     "dispositionType": 4,
     "talentName": "蛇发女妖",
     "desc": "临时描述，冷周六的天赋效果，字数不知道，大概不少字不少字不少字不少字不少字不少字不少字",
@@ -107,7 +107,7 @@
   {
     "id": 6,
     "name": "星锑",
-    "initDisposition": "1#2#3#4#5",
+    "initDisposition": "2#5#3#1#3",
     "dispositionType": 2,
     "talentName": "摇滚海盗",
     "desc": "临时描述，星锑的天赋效果，字数不知道，大概不少字不少字不少字不少字不少字不少字不少字",
@@ -128,8 +128,8 @@
   {
     "id": 999,
     "name": "马库斯",
-    "initDisposition": "2#2#1#2#5",
-    "dispositionType": 3,
+    "initDisposition": "1#2#3#4#4",
+    "dispositionType": 4,
     "talentName": "书间巡游",
     "desc": "临时描述，马库斯的天赋效果，字数不知道，大概不少字不少字不少字不少字不少字不少字不少字",
     "resource": "survival/roles/prefab/role_protagonist_makusi.prefab",

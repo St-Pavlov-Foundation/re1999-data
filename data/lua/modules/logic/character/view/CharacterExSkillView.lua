@@ -238,9 +238,10 @@ end
 
 function CharacterExSkillView:refreshSkillCardInfo()
 	local skillIdDict = SkillConfig.instance:getHeroBaseSkillIdDict(self._config.id, true)
+	local heroMo = HeroModel.instance:getByHeroId(self._config.id)
 
-	if HeroModel.instance:getByHeroId(self._config.id) then
-		skillIdDict = SkillConfig.instance:getHeroBaseSkillIdDictByExSkillLevel(self._config.id, true)
+	if heroMo then
+		skillIdDict = SkillConfig.instance:getHeroBaseSkillIdDictByExSkillLevel(self._config.id, true, heroMo)
 	end
 
 	local skillCo, skillId

@@ -42,10 +42,15 @@ function SurvivalHandbookViewTab:setData(parma)
 	self.onClickTabContext = parma.onClickTabContext
 
 	local redDot = SurvivalHandbookModel.instance.handbookTypeCfg[self.type].RedDot
+	local uid = -1
+
+	if redDot == RedDotEnum.DotNode.SurvivalHandbookStory then
+		uid = nil
+	end
 
 	if redDot then
-		RedDotController.instance:addRedDot(self.unselect_go_redDot, redDot, -1)
-		RedDotController.instance:addRedDot(self.select_go_redDot, redDot, -1)
+		RedDotController.instance:addRedDot(self.unselect_go_redDot, redDot, uid)
+		RedDotController.instance:addRedDot(self.select_go_redDot, redDot, uid)
 	end
 
 	local info = SurvivalHandbookModel.instance:getProgress(self.type)

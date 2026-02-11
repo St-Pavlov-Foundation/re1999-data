@@ -61,14 +61,16 @@ function SurvivalShopItemMo:getBuyPrice()
 	local attr
 
 	if self.shopType == SurvivalEnum.ShopType.Normal then
-		attr = weekMo:getDerivedAttrFinalValue(SurvivalEnum.DerivedAttr.Sell_Map)
+		attr = weekMo:getDerivedAttrFinalValue(SurvivalEnum.DerivedAttr.Buy_Map)
 	elseif self.shopType == SurvivalEnum.ShopType.PreExplore then
-		attr = weekMo:getDerivedAttrFinalValue(SurvivalEnum.DerivedAttr.Sell_PreExplore)
+		attr = weekMo:getDerivedAttrFinalValue(SurvivalEnum.DerivedAttr.Buy_PreExplore)
 	elseif self.shopType == SurvivalEnum.ShopType.GeneralShop then
-		attr = weekMo:getDerivedAttrFinalValue(SurvivalEnum.DerivedAttr.Sell_ComputingCenter)
+		attr = weekMo:getDerivedAttrFinalValue(SurvivalEnum.DerivedAttr.Buy_ComputingCenter)
 	end
 
 	local price = self.buyPrice * ((1000 + self.shopItemCo.worthFix) / 1000 * attr)
+
+	price = math.floor(price)
 
 	return price
 end

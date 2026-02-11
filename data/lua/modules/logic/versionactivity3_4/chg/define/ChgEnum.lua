@@ -3,7 +3,6 @@
 module("modules.logic.versionactivity3_4.chg.define.ChgEnum", package.seeall)
 
 local ChgEnum = _M
-local _B = Bitwise
 local kResPathRoot = "ui/viewres/versionactivity_3_4/v3a4_chg/"
 
 ChgEnum.ResPath = {
@@ -101,5 +100,14 @@ function ChgEnum.simpleFlipDir(eDir)
 		assert(false, "unexpected eDir=" .. tostring(eDir))
 	end
 end
+
+ChgEnum.OperationType = {
+	FailExit = "失败主动退出",
+	FailReset = "失败主动重置",
+	FinishRound = "完成地图",
+	Exit = "中途主动放弃",
+	Pass = "成功通关",
+	Reset = "中途主动重置"
+}
 
 return ChgEnum

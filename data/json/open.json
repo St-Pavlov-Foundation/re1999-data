@@ -1981,7 +1981,7 @@
     "verifingHide": 0,
     "bindActivityId": 0,
     "roomLevel": 0,
-    "dailyOpenTime": "10#14|18#24"
+    "dailyOpenTime": "0#3|6#24"
   },
   {
     "id": 340003,
@@ -1997,7 +1997,7 @@
     "verifingHide": 0,
     "bindActivityId": 0,
     "roomLevel": 0,
-    "dailyOpenTime": "10#14|18#24"
+    "dailyOpenTime": "0#3|6#24"
   },
   {
     "id": 340004,

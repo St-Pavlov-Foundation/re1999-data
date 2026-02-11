@@ -100,6 +100,8 @@ end
 
 function SurvivalOutSideRpc:onReceiveSurvivalOutSideTechResetReply(resultCode, msg)
 	if resultCode == 0 then
+		GameFacade.showToastString(luaLang("SurvivalTechView_2"))
+
 		local survivalOutSideTechMo = SurvivalModel.instance:getOutSideInfo().survivalOutSideTechMo
 
 		survivalOutSideTechMo:onReceiveSurvivalOutSideTechResetReply(msg)

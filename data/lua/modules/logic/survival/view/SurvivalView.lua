@@ -72,6 +72,7 @@ function SurvivalView:onClickBtnHandbook()
 end
 
 function SurvivalView:onClickBtnTech()
+	SurvivalStatHelper.instance:statBtnClick("onClickBtnTech", "SurvivalView")
 	ViewMgr.instance:openView(ViewName.SurvivalTechView)
 end
 

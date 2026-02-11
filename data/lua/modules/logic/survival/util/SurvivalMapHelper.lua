@@ -205,8 +205,10 @@ function SurvivalMapHelper:tryShowEventView(pos)
 	end
 end
 
-function SurvivalMapHelper:tryShowServerPanel(panel)
-	if not panel or panel.type == SurvivalEnum.PanelType.None then
+function SurvivalMapHelper:tryShowServerPanel(panel, source)
+	local isMessagePanel = source and source == 1999
+
+	if not panel or panel.type == SurvivalEnum.PanelType.None and not isMessagePanel then
 		return
 	end
 
@@ -277,6 +279,14 @@ function SurvivalMapHelper:tryShowServerPanel(panel)
 		ViewMgr.instance:openView(ViewName.SurvivalDecreeSelectView, {
 			panel = panel
 		})
+	elseif type == SurvivalEnum.PanelType.None and isMessagePanel then
+		ViewMgr.instance:closeAllPopupViews({
+			ViewName.SurvivalLeaveMsgView
+		})
+
+		local survivalLeaveMsgViewParam = SurvivalMapModel.instance.survivalLeaveMsgViewParam
+
+		ViewMgr.instance:openView(ViewName.SurvivalLeaveMsgView, survivalLeaveMsgViewParam)
 	end
 end
 
@@ -493,6 +503,12 @@ function SurvivalMapHelper:clear()
 	self._steps = nil
 	self.serverFlow = nil
 	self._allEntity = {}
+
+	local weekInfo = SurvivalShelterModel.instance:getWeekInfo()
+
+	if weekInfo then
+		weekInfo.oldRoleAttrDic = nil
+	end
 end
 
 function SurvivalMapHelper:gotoBuilding(buildingId, hexPoint, followerPlayer)
@@ -1036,6 +1052,8 @@ function SurvivalMapHelper:addPointEffect(hexNode, effectName, scale)
 end
 
 function SurvivalMapHelper:checkRoleLevelUpCache(isJumpCheck)
+	local isOpen
+
 	if SurvivalMapHelper.instance:isInShelterScene() then
 		local isInTopView = ViewHelper.instance:checkViewOnTheTop(ViewName.SurvivalMainView, {
 			ViewName.SurvivalToastView,
@@ -1054,6 +1072,8 @@ function SurvivalMapHelper:checkRoleLevelUpCache(isJumpCheck)
 					curLevel = survivalShelterRoleMo.uiShowLevel
 				})
 				survivalShelterRoleMo:clearLevelUpCache()
+
+				isOpen = true
 			end
 		end
 	elseif SurvivalMapHelper.instance:isInMapScene() then
@@ -1074,6 +1094,8 @@ function SurvivalMapHelper:checkRoleLevelUpCache(isJumpCheck)
 					curLevel = survivalShelterRoleMo.uiShowLevel
 				})
 				survivalShelterRoleMo:clearLevelUpCache()
+
+				isOpen = true
 			end
 
 			if survivalShelterRoleMo.isExpCache then
@@ -1082,6 +1104,8 @@ function SurvivalMapHelper:checkRoleLevelUpCache(isJumpCheck)
 			end
 		end
 	end
+
+	return isOpen
 end
 
 SurvivalMapHelper.instance = SurvivalMapHelper.New()

@@ -5,7 +5,7 @@
     "belongRole": 0,
     "point": "1#2",
     "icon": "survival_talentskill_1",
-    "desc": "所有演习主角的初始【创造】属性+5",
+    "desc": "所有演习主角的初始【韧性】属性+5",
     "preNodes": "",
     "addTalentIds": "501011",
     "extendScoreFix": 0,
@@ -61,7 +61,7 @@
     "preNodes": "20004",
     "addTalentIds": "501015",
     "extendScoreFix": 0,
-    "cost": 2,
+    "cost": 1,
     "sign": 0
   },
   {
@@ -74,7 +74,7 @@
     "preNodes": "20004",
     "addTalentIds": "501016",
     "extendScoreFix": 0,
-    "cost": 2,
+    "cost": 1,
     "sign": 0
   },
   {
@@ -87,7 +87,7 @@
     "preNodes": "20005",
     "addTalentIds": "",
     "extendScoreFix": 100,
-    "cost": 3,
+    "cost": 2,
     "sign": 1
   },
   {
@@ -96,11 +96,11 @@
     "belongRole": 0,
     "point": "6#2",
     "icon": "survival_talentskill_5",
-    "desc": "使用快捷道具后，下次搜刮获得的首个物品必定升华（每日仅触发1次）",
+    "desc": "使用快捷道具后，下次搜刮获得的所有物品必定升华（每日仅触发1次）",
     "preNodes": "20007",
     "addTalentIds": "501018",
     "extendScoreFix": 0,
-    "cost": 2,
+    "cost": 1,
     "sign": 0
   },
   {
@@ -113,7 +113,7 @@
     "preNodes": "20007",
     "addTalentIds": "501019",
     "extendScoreFix": 0,
-    "cost": 2,
+    "cost": 1,
     "sign": 0
   },
   {
@@ -126,7 +126,7 @@
     "preNodes": "20007",
     "addTalentIds": "501020",
     "extendScoreFix": 0,
-    "cost": 3,
+    "cost": 2,
     "sign": 0
   },
   {
@@ -135,11 +135,11 @@
     "belongRole": 0,
     "point": "7#2",
     "icon": "survival_talentskill_4",
-    "desc": "进入模拟时，可选的战利品点数+100",
+    "desc": "进入模拟时，可选的战利品点数+200",
     "preNodes": "20008",
     "addTalentIds": "",
-    "extendScoreFix": 100,
-    "cost": 4,
+    "extendScoreFix": 200,
+    "cost": 2,
     "sign": 1
   },
   {
@@ -152,7 +152,7 @@
     "preNodes": "20011",
     "addTalentIds": "501022",
     "extendScoreFix": 0,
-    "cost": 2,
+    "cost": 1,
     "sign": 0
   },
   {
@@ -178,7 +178,7 @@
     "preNodes": "20012",
     "addTalentIds": "501024",
     "extendScoreFix": 0,
-    "cost": 3,
+    "cost": 1,
     "sign": 0
   },
   {
@@ -191,7 +191,7 @@
     "preNodes": "20012",
     "addTalentIds": "501025",
     "extendScoreFix": 0,
-    "cost": 3,
+    "cost": 2,
     "sign": 0
   },
   {
@@ -204,7 +204,7 @@
     "preNodes": "20014",
     "addTalentIds": "",
     "extendScoreFix": 100,
-    "cost": 4,
+    "cost": 3,
     "sign": 1
   },
   {
@@ -217,7 +217,7 @@
     "preNodes": "20016",
     "addTalentIds": "501027",
     "extendScoreFix": 0,
-    "cost": 2,
+    "cost": 1,
     "sign": 0
   },
   {
@@ -278,11 +278,11 @@
     "belongRole": 1,
     "point": "2",
     "icon": "",
-    "desc": "招募漫游助理时，物品价值提升100%",
+    "desc": "招募漫游助理后，获得研究资料*50",
     "preNodes": "",
     "addTalentIds": "502120",
     "extendScoreFix": 0,
-    "cost": 2,
+    "cost": 1,
     "sign": 0
   },
   {
@@ -291,11 +291,11 @@
     "belongRole": 1,
     "point": "3",
     "icon": "",
-    "desc": "进入模拟时，获得漫游助理【盒子帮抵抗者.DL】",
+    "desc": "进入模拟时，随机获得一名得力的漫游助理",
     "preNodes": "",
     "addTalentIds": "502130",
     "extendScoreFix": 0,
-    "cost": 2,
+    "cost": 1,
     "sign": 0
   },
   {
@@ -304,11 +304,11 @@
     "belongRole": 1,
     "point": "4",
     "icon": "",
-    "desc": "招募漫游助理后，50%概率获得1个【黏土炸药】",
+    "desc": "招募漫游助理后，25%概率获得1个【氮气推进座驾】",
     "preNodes": "",
     "addTalentIds": "502140",
     "extendScoreFix": 0,
-    "cost": 2,
+    "cost": 1,
     "sign": 0
   },
   {
@@ -317,11 +317,11 @@
     "belongRole": 1,
     "point": "5",
     "icon": "",
-    "desc": "每次出行时获得1个【黏土炸药】",
+    "desc": "每次出行时获得1个【氮气推进座驾】",
     "preNodes": "",
     "addTalentIds": "502150",
     "extendScoreFix": 0,
-    "cost": 1,
+    "cost": 2,
     "sign": 0
   },
   {
@@ -382,11 +382,11 @@
     "belongRole": 2,
     "point": "2",
     "icon": "",
-    "desc": "初始战斗等级+2",
+    "desc": "初始等级+2",
     "preNodes": "",
     "addTalentIds": "502220",
     "extendScoreFix": 0,
-    "cost": 2,
+    "cost": 1,
     "sign": 0
   },
   {
@@ -395,11 +395,11 @@
     "belongRole": 2,
     "point": "3",
     "icon": "",
-    "desc": "战斗结束后，使上阵角色回复25%抵抗力（每次探索限2次）",
+    "desc": "处于暴雨中行动时，每步移动使上阵角色抵抗力增加10点（每次探索限5次）",
     "preNodes": "",
     "addTalentIds": "502230",
     "extendScoreFix": 0,
-    "cost": 2,
+    "cost": 1,
     "sign": 0
   },
   {
@@ -408,11 +408,11 @@
     "belongRole": 2,
     "point": "4",
     "icon": "",
-    "desc": "击杀敌人后，50%概率获得1个【引诱剂】",
+    "desc": "击杀敌人后，获得研究资料*30",
     "preNodes": "",
     "addTalentIds": "502240",
     "extendScoreFix": 0,
-    "cost": 2,
+    "cost": 1,
     "sign": 0
   },
   {
@@ -421,11 +421,11 @@
     "belongRole": 2,
     "point": "5",
     "icon": "",
-    "desc": "每次出行时获得1个【引诱剂】",
+    "desc": "每次出行时获得1个【黏土炸药】",
     "preNodes": "",
     "addTalentIds": "502250",
     "extendScoreFix": 0,
-    "cost": 1,
+    "cost": 2,
     "sign": 0
   },
   {
@@ -473,7 +473,7 @@
     "belongRole": 3,
     "point": "1",
     "icon": "",
-    "desc": "破坏障碍物后，获得研究资料*20",
+    "desc": "破坏障碍物后，获得研究资料*30",
     "preNodes": "",
     "addTalentIds": "502310",
     "extendScoreFix": 0,
@@ -486,11 +486,11 @@
     "belongRole": 3,
     "point": "2",
     "icon": "",
-    "desc": "地图探索中移动经过任意敌人，主动能力可使用次数恢复1次（相同敌人不重复触发）",
+    "desc": "在演习中移动经过任意敌人，主动能力可使用次数恢复1次（每次探索限3次）",
     "preNodes": "",
     "addTalentIds": "502320",
     "extendScoreFix": 0,
-    "cost": 2,
+    "cost": 1,
     "sign": 0
   },
   {
@@ -499,11 +499,11 @@
     "belongRole": 3,
     "point": "3",
     "icon": "",
-    "desc": "地图探索中移动经过任意特殊地形，主动能力当日可使用上限+1（相同特殊地形不重复触发）",
+    "desc": "在演习中移动经过任意特殊地形，主动能力可使用次数恢复1次（每次探索限1次）",
     "preNodes": "",
     "addTalentIds": "502330",
     "extendScoreFix": 0,
-    "cost": 2,
+    "cost": 1,
     "sign": 0
   },
   {
@@ -516,7 +516,7 @@
     "preNodes": "",
     "addTalentIds": "502340",
     "extendScoreFix": 0,
-    "cost": 2,
+    "cost": 1,
     "sign": 0
   },
   {
@@ -525,11 +525,11 @@
     "belongRole": 3,
     "point": "5",
     "icon": "",
-    "desc": "每次出行时获得1个[黏土炸药]道具",
+    "desc": "每次出行时获得1个【黏土炸药】",
     "preNodes": "",
     "addTalentIds": "502350",
     "extendScoreFix": 0,
-    "cost": 1,
+    "cost": 2,
     "sign": 0
   },
   {

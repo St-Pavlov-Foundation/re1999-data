@@ -17,6 +17,7 @@ function SurvivalShelterSceneDirector:startEnterProgress()
 	local weekMo = SurvivalShelterModel.instance:getWeekInfo()
 
 	SurvivalMapHelper.instance:tryShowServerPanel(weekMo.panel)
+	SurvivalModel.instance:checkBossFightItem()
 	SurvivalMapHelper.instance:checkRoleLevelUpCache(true)
 
 	if SurvivalShelterModel.instance:getNeedShowBossInvade() then

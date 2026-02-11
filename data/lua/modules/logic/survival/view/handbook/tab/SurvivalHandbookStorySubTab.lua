@@ -20,6 +20,7 @@ end
 function SurvivalHandbookStorySubTab:onItemShow(data)
 	self.subType = data.subType
 	self.type = data.type
+	self.tabIndex = data.tabIndex
 
 	gohelper.setActive(self.go_Selected, false)
 
@@ -29,11 +30,9 @@ function SurvivalHandbookStorySubTab:onItemShow(data)
 	self.txt_Common.text = title
 	self.txt_Common2.text = title
 
-	local redDot = SurvivalHandbookModel.instance.handbookTypeCfg[self.type].RedDot
+	local redDot = SurvivalHandbookModel.instance.StoryFragmentRedDot[self.tabIndex]
 
-	if redDot then
-		RedDotController.instance:addRedDot(self.go_redDot, redDot, self.subType)
-	end
+	RedDotController.instance:addRedDot(self.go_redDot, redDot, self.subType)
 end
 
 function SurvivalHandbookStorySubTab:onSelectChange(isSelect)

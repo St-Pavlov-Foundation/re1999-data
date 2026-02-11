@@ -680,22 +680,6 @@
     "result": "JumpToNode|7"
   },
   {
-    "id": 1080101,
-    "nodeId": 5,
-    "desc": "砍断",
-    "icon": 15,
-    "condition": "",
-    "result": "CostItem|100001:1"
-  },
-  {
-    "id": 1080101,
-    "nodeId": 6,
-    "desc": "离开",
-    "icon": 15,
-    "condition": "",
-    "result": "PlayerMoveBack|"
-  },
-  {
     "id": 102010101,
     "nodeId": 83,
     "desc": "拾取",
@@ -2947,7 +2931,7 @@
     "id": 307010301,
     "nodeId": 30,
     "desc": "你照做了",
-    "icon": 6,
+    "icon": 15,
     "condition": "",
     "result": "ChoiceList|307010305"
   },
@@ -2971,7 +2955,7 @@
     "id": 307010301,
     "nodeId": 66,
     "desc": "你发现自己似乎真的被耍了",
-    "icon": 6,
+    "icon": 15,
     "condition": "",
     "result": "ChoiceList|307010306"
   },
@@ -2979,7 +2963,7 @@
     "id": 307010301,
     "nodeId": 68,
     "desc": "这儿果然没有两本相同的书",
-    "icon": 6,
+    "icon": 15,
     "condition": "",
     "result": "ChoiceList|307010307"
   },
@@ -2987,7 +2971,7 @@
     "id": 307010301,
     "nodeId": 72,
     "desc": "图书馆里的魔精竟然都有礼帽。",
-    "icon": 6,
+    "icon": 15,
     "condition": "",
     "result": "Drop|320701011"
   },
@@ -2995,7 +2979,7 @@
     "id": 307010301,
     "nodeId": 70,
     "desc": "图书馆里的魔精竟然都有礼帽。",
-    "icon": 6,
+    "icon": 15,
     "condition": "",
     "result": "Drop|320701011"
   },
@@ -3003,7 +2987,7 @@
     "id": 307010301,
     "nodeId": 73,
     "desc": "嚯，原来这才是语言的意义！",
-    "icon": 6,
+    "icon": 15,
     "condition": "",
     "result": "Drop|320701011"
   },
@@ -4565,7 +4549,7 @@
     "desc": "所有人都能丝滑复刻之路",
     "icon": 15,
     "condition": "",
-    "result": "TransferUnitTypes|2"
+    "result": "MoveToFree|792"
   },
   {
     "id": 307020101,
@@ -4573,7 +4557,7 @@
     "desc": "成功需要一些好运气",
     "icon": 15,
     "condition": "",
-    "result": "TransferUnitTypes|2"
+    "result": "MoveToFree|792"
   },
   {
     "id": 307020101,
@@ -4597,7 +4581,7 @@
     "desc": "确实很顺畅，但磁流体也摇匀了",
     "icon": 15,
     "condition": "",
-    "result": "TransferUnitTypes|2"
+    "result": "MoveToFree|792"
   },
   {
     "id": 307020101,
@@ -4605,7 +4589,7 @@
     "desc": "这就是走捷径的代价吗？",
     "icon": 15,
     "condition": "",
-    "result": "TransferUnitTypes|2"
+    "result": "MoveToFree|792"
   },
   {
     "id": 307020201,
@@ -6314,7 +6298,7 @@
   {
     "id": 307040901,
     "nodeId": 54,
-    "desc": "先回去吧。",
+    "desc": "先回庇护所吧。",
     "icon": 15,
     "condition": "",
     "result": "TriggerDialog|34007"

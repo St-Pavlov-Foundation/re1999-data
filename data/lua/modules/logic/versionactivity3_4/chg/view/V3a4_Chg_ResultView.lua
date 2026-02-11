@@ -43,6 +43,7 @@ function V3a4_Chg_ResultView:_btnquitgameOnClick()
 	end
 
 	self:closeThis()
+	self.viewContainer:trackFailExit()
 end
 
 function V3a4_Chg_ResultView:_btnrestartOnClick()
@@ -55,6 +56,7 @@ function V3a4_Chg_ResultView:_btnrestartOnClick()
 	end
 
 	self:closeThis()
+	self.viewContainer:trackFailReset()
 end
 
 function V3a4_Chg_ResultView:_editableInitView()

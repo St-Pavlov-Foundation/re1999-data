@@ -15,6 +15,7 @@ function SurvivalHandbookStoryTab:onInit()
 	self.image_role = gohelper.findChildImage(self.viewGO, "Role/#go_unSelect/image_role")
 	self.image_role2 = gohelper.findChildImage(self.viewGO, "Role/#go_Selected/image_role")
 	self.image_role3 = gohelper.findChildImage(self.viewGO, "Role/#go_Lock/image_role")
+	self.go_redDot = gohelper.findChild(self.viewGO, "Role/#go_redDot")
 end
 
 function SurvivalHandbookStoryTab:onAddListeners()
@@ -29,6 +30,10 @@ function SurvivalHandbookStoryTab:onItemShow(data)
 	self.onSubTabSelectChangeContext = data.onSubTabSelectChangeContext
 	self.subTypes = data.subTypes
 	self.roleId = data.roleId
+
+	local redDot = SurvivalHandbookModel.instance.StoryTabRedDot[self.itemIndex]
+
+	RedDotController.instance:addRedDot(self.go_redDot, redDot)
 
 	local cfg = lua_survival_role.configDict[self.roleId]
 	local name = cfg.name

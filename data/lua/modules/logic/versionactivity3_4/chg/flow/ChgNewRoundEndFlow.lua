@@ -61,6 +61,8 @@ function ChgNewRoundEndFlow:onStart()
 
 	local isThisRoundSucc = winCnt >= #endItemList
 
+	self.viewContainer:trackFinishRound(isThisRoundSucc)
+
 	if isThisRoundSucc then
 		self:addWork(FunctionWork.New(self.setActive_goVictory, self, true))
 		self:addWork(DelayWork.New(0.5))

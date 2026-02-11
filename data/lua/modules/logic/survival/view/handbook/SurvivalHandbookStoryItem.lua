@@ -28,15 +28,21 @@ function SurvivalHandbookStoryItem:onItemShow(data)
 	gohelper.setActive(self.unfinish, self.isUnFinish)
 
 	if self.isFinish then
-		self.textFinished.text = self.survivalHandbookMo.cfg.desc
+		if self.survivalHandbookMo:isCanFinishStory() then
+			local cfg = self.survivalHandbookMo:getStoryTaskCfg()
+
+			self.textFinished.text = cfg and cfg.desc2 or ""
+		else
+			self.textFinished.text = self.survivalHandbookMo.cfg.desc
+		end
 	elseif self.isUnderway then
 		local cfg = self.survivalHandbookMo:getStoryTaskCfg()
 
-		self.textUnderway.text = cfg and cfg.desc2 or ""
+		self.textUnderway.text = cfg and cfg.desc or ""
 	elseif self.isUnFinish then
 		local cfg = self.survivalHandbookMo:getStoryTaskCfg()
 
-		self.textUnfinish.text = cfg and cfg.desc2 or ""
+		self.textUnfinish.text = cfg and cfg.desc or ""
 	end
 end
 

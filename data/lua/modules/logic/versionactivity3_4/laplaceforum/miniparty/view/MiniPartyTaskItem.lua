@@ -25,6 +25,7 @@ function MiniPartyTaskItem:init(go, taskType)
 	self._goweektag = gohelper.findChild(self.go, "#go_normal/go_weekTag")
 	self._godailytag = gohelper.findChild(self.go, "#go_normal/go_dailyTag")
 	self._goallfinish = gohelper.findChild(self.go, "#go_normal/go_allfinish")
+	self._gonormalclick = gohelper.findChild(self.go, "#go_normal/click")
 	self._gogetall = gohelper.findChild(self.go, "go_getall")
 	self._simagegetallbg = gohelper.findChildSingleImage(self.go, "go_getall/simage_getallbg")
 	self._gotips2 = gohelper.findChild(self.go, "go_getall/layout/text_Tips2")
@@ -68,6 +69,7 @@ function MiniPartyTaskItem:showItem(show, itemType)
 			gohelper.setActive(self._godailytag, false)
 			gohelper.setActive(self._goweektag, false)
 			gohelper.setActive(self._gotimelimittag, false)
+			gohelper.setActive(self._gonormalclick, false)
 		end
 	else
 		gohelper.setAsLastSibling(self.go)
@@ -95,6 +97,7 @@ function MiniPartyTaskItem:_btngetallOnClick()
 end
 
 function MiniPartyTaskItem:_realSendFinishAll()
+	self._itemAnim:Play("open", 0, 1)
 	TaskRpc.instance:sendFinishAllTaskRequest(TaskEnum.TaskType.MiniParty, self._taskType)
 end
 
@@ -157,25 +160,27 @@ function MiniPartyTaskItem:refresh(mo)
 	gohelper.setActive(self._goweektag, self._mo.config.loopType == TaskEnum.TaskLoopType.Weekly)
 	gohelper.setActive(self._gotimelimittag, false)
 
-	if self._mo.config.loopType == TaskEnum.TaskLoopType.Permanent and not LuaUtil.isEmptyStr(self._mo.config.showOfflineTime) then
-		gohelper.setActive(self._gotimelimittag, false)
+	if self._mo.config.loopType == TaskEnum.TaskLoopType.Permanent and not LuaUtil.isEmptyStr(self._mo.config.showOfflineTime) and self._mo.progress < self._mo.config.maxProgress then
+		gohelper.setActive(self._gotimelimittag, true)
 
-		local endTime = TimeUtil.stringToTimestamp(self._mo.config.showOfflineTime)
-
-		endTime = ServerTime.timeInLocal(endTime)
-
+		local endTime = TimeUtil.stringToTimestamp(self._mo.config.showOfflineTime) - ServerTime.clientToServerOffset()
 		local limitTime = endTime - ServerTime.now()
 		local day = math.floor(limitTime / TimeUtil.OneDaySecond)
 		local hour = math.floor((limitTime - day * TimeUtil.OneDaySecond) / TimeUtil.OneHourSecond)
 		local minute = math.floor((limitTime - day * TimeUtil.OneDaySecond - hour * TimeUtil.OneHourSecond) / TimeUtil.OneMinuteSecond)
-		local second = limitTime % TimeUtil.OneHourSecond
 
-		if day >= 1 then
-			self._txttime.text = string.format("%s%s%s%s", day, luaLang("time_day"), hour, luaLang("time_hour2"))
-		elseif hour >= 1 then
-			self._txttime.text = string.format("%s%s%s%s", hour, luaLang("time_hour2"), minute, luaLang("time_minute2"))
+		if limitTime > 0 then
+			if day >= 1 then
+				self._txttime.text = string.format("%s%s%s%s", day, luaLang("time_day"), hour, luaLang("time_hour2"))
+			elseif day >= 0 then
+				if hour >= 1 then
+					self._txttime.text = string.format("%s%s%s%s", hour, luaLang("time_hour2"), minute, luaLang("time_minute2"))
+				else
+					self._txttime.text = string.format(luaLang("remain"), minute .. luaLang("time_minute2"))
+				end
+			end
 		else
-			self._txttime.text = string.format(luaLang("remain"), minute .. luaLang("time_minute2"))
+			gohelper.setActive(self._gotimelimittag, false)
 		end
 	end
 

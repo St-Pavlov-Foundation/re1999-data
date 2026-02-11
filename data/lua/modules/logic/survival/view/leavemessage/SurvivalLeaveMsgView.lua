@@ -183,8 +183,10 @@ function SurvivalLeaveMsgView:onClickBtnConfirmWrite()
 
 	if self.selfMessage then
 		SurvivalInteriorRpc.instance:sendSurvivalEditMessageRequest(self.unitId, ids)
+		SurvivalStatHelper.instance:statEditMsg("EditMessage", ids)
 	else
 		SurvivalInteriorRpc.instance:sendSurvivalAddMessageRequest(self.unitId, ids)
+		SurvivalStatHelper.instance:statEditMsg("AddMessage", ids)
 	end
 end
 

@@ -697,7 +697,13 @@ end
 
 function SurvivalWeekRpc:onReceiveSurvivalItemTipsPush(resultCode, msg)
 	if resultCode == 0 then
-		SurvivalMapHelper.instance:addPushToFlow("SurvivalItemTipsPush", msg)
+		local curSceneType = GameSceneMgr.instance:getCurSceneType()
+
+		if curSceneType == SceneType.Fight then
+			SurvivalModel.instance:cacheBossFightItem(msg)
+		else
+			SurvivalMapHelper.instance:addPushToFlow("SurvivalItemTipsPush", msg)
+		end
 	end
 end
 
@@ -1046,8 +1052,14 @@ function SurvivalWeekRpc:onReceiveSurvivalDerivedContainerUpdatePush(resultCode,
 	if resultCode == 0 then
 		local weekInfo = SurvivalShelterModel.instance:getWeekInfo()
 
-		weekInfo:onReceiveSurvivalDerivedContainerUpdatePush(msg)
+		if weekInfo then
+			weekInfo:onReceiveSurvivalDerivedContainerUpdatePush(msg)
+		end
 	end
+end
+
+function SurvivalWeekRpc:onReceiveSurvivalNpcBoxPush(resultCode, msg)
+	return
 end
 
 SurvivalWeekRpc.instance = SurvivalWeekRpc.New()

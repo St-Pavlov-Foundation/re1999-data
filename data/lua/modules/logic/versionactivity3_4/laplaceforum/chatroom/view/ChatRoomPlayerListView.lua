@@ -72,6 +72,17 @@ function ChatRoomPlayerListView:onShowChatEmoji(msg)
 	if msg.activityId == self.activityId and msg.uid == curRoomUid and playerItem then
 		playerItem.headInfoItem:showEmoji(msg.emojiId)
 	end
+
+	self:sendEmojiStatInfo(msg.emojiId)
+end
+
+function ChatRoomPlayerListView:sendEmojiStatInfo(emojiId)
+	local curPlayerNum = tabletool.len(self.playerItemMap)
+
+	StatController.instance:track(StatEnum.EventName.PartyGameMeme, {
+		[StatEnum.EventProperties.Members] = curPlayerNum,
+		[StatEnum.EventProperties.Meme] = emojiId
+	})
 end
 
 function ChatRoomPlayerListView:onOpen()
@@ -101,13 +112,25 @@ end
 function ChatRoomPlayerListView:_checkKeyPress()
 	local value = -1
 
-	if UnityEngine.Input.GetKey(UnityEngine.KeyCode.W) or UnityEngine.Input.GetKey(UnityEngine.KeyCode.UpArrow) then
-		value = 2
-	elseif UnityEngine.Input.GetKey(UnityEngine.KeyCode.A) or UnityEngine.Input.GetKey(UnityEngine.KeyCode.LeftArrow) then
+	if UnityEngine.Input.GetKey(UnityEngine.KeyCode.W) then
+		if UnityEngine.Input.GetKey(UnityEngine.KeyCode.D) then
+			value = 1
+		elseif UnityEngine.Input.GetKey(UnityEngine.KeyCode.A) then
+			value = 3
+		else
+			value = 2
+		end
+	elseif UnityEngine.Input.GetKey(UnityEngine.KeyCode.S) then
+		if UnityEngine.Input.GetKey(UnityEngine.KeyCode.D) then
+			value = 7
+		elseif UnityEngine.Input.GetKey(UnityEngine.KeyCode.A) then
+			value = 5
+		else
+			value = 6
+		end
+	elseif UnityEngine.Input.GetKey(UnityEngine.KeyCode.A) then
 		value = 4
-	elseif UnityEngine.Input.GetKey(UnityEngine.KeyCode.S) or UnityEngine.Input.GetKey(UnityEngine.KeyCode.DownArrow) then
-		value = 6
-	elseif UnityEngine.Input.GetKey(UnityEngine.KeyCode.D) or UnityEngine.Input.GetKey(UnityEngine.KeyCode.RightArrow) then
+	elseif UnityEngine.Input.GetKey(UnityEngine.KeyCode.D) then
 		value = 0
 	end
 

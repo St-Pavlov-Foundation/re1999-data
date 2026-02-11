@@ -3853,7 +3853,7 @@
   },
   {
     "id": 1088,
-    "type": "injuryByLayer",
+    "type": "InjuryByLayer",
     "effectTime": 0,
     "effectCondition": 0,
     "effect": "",

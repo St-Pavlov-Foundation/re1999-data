@@ -27286,5 +27286,13 @@
   {
     "id": 61303,
     "type": "PerBuffIdCount"
+  },
+  {
+    "id": 5991061,
+    "type": "TargetPosition"
+  },
+  {
+    "id": 5521061,
+    "type": "Random"
   }
 ]

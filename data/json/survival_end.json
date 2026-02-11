@@ -124,7 +124,7 @@
     "id": 3002,
     "name": "在崩溃的规则下",
     "type": 3,
-    "group": 300,
+    "group": 400,
     "endDesc": "\n    意志合一或许可以解决很多麻烦，但是它还不配扼杀思想的自由。",
     "unlock": "finishTask#3#330006",
     "endImg": "singlebg/survival_singlebg/shelter/survival_close_pic_4.png",

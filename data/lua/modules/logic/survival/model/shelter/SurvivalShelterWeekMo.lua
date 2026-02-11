@@ -81,23 +81,39 @@ function SurvivalShelterWeekMo:init(data, extendScore)
 	self.rainType = data.rainType
 	self.talents = data.talentBox.talentIds
 	self.lossReturnItems = data.lossReturnItems
+
+	local DerivedAttr = SurvivalEnum.DerivedAttr
+
+	self.notTakeRemain = {
+		DerivedAttr.Sell_ComputingCenter,
+		DerivedAttr.Sell_Map,
+		DerivedAttr.Sell_PreExplore,
+		DerivedAttr.Buy_ComputingCenter,
+		DerivedAttr.Buy_Map,
+		DerivedAttr.Buy_PreExplore
+	}
 	self.derivedAttrs = {}
 
 	local list = data.derivedContainer.values
 
-	for i, v in ipairs(list) do
-		v.finalVal = math.floor(v.finalVal)
-		self.derivedAttrs[v.derivedId] = v
-	end
+	self:updateDerivedAttrs(list)
 end
 
 function SurvivalShelterWeekMo:onReceiveSurvivalDerivedContainerUpdatePush(msg)
-	for i, v in ipairs(msg.updates) do
-		v.finalVal = math.floor(v.finalVal)
+	self:updateDerivedAttrs(msg.updates)
+	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnDerivedUpdate)
+end
+
+function SurvivalShelterWeekMo:updateDerivedAttrs(list)
+	for i, v in ipairs(list) do
+		v.finalVal = v.finalVal / 1000
+
+		if not tabletool.indexOf(self.notTakeRemain, v.derivedId) then
+			v.finalVal = math.floor(v.finalVal)
+		end
+
 		self.derivedAttrs[v.derivedId] = v
 	end
-
-	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnDerivedUpdate)
 end
 
 function SurvivalShelterWeekMo:getBag(bagType)
@@ -123,6 +139,8 @@ function SurvivalShelterWeekMo:isInFight()
 end
 
 function SurvivalShelterWeekMo:updateAttrs(values)
+	self.oldRoleAttrDic = self:getRoleAttr()
+
 	for i, v in ipairs(values) do
 		if self.attrs[v.attrId] ~= v.finalVal then
 			self.attrs[v.attrId] = v.finalVal
@@ -130,6 +148,23 @@ function SurvivalShelterWeekMo:updateAttrs(values)
 			SurvivalController.instance:dispatchEvent(SurvivalEvent.OnAttrUpdate, v.attrId)
 		end
 	end
+
+	self.curRoleAttrDic = self:getRoleAttr()
+end
+
+function SurvivalShelterWeekMo:getRoleAttr()
+	local roleId = self.survivalShelterRoleMo.roleId
+	local cfg = lua_survival_role.configDict[roleId]
+	local attrs = string.splitToNumber(cfg.initDisposition, "#")
+	local dic = {}
+
+	for id, _ in ipairs(attrs) do
+		local value = self:getAttr(SurvivalEnum.AttrType["RoleAttr" .. id]) + self:getAttr(SurvivalEnum.AttrType["RoleAttrFix" .. id])
+
+		dic[id] = value
+	end
+
+	return dic
 end
 
 function SurvivalShelterWeekMo:getAttr(attrType, curNum, exAttrPer)

@@ -431,6 +431,11 @@ function SurvivalMapUseItemView:_onUseQuickItem(itemMo)
 		local subTypes = dict[2] or {}
 
 		self:setRangeBySubType(playerPos, range, subTypes)
+	elseif itemMo.co.subType == SurvivalEnum.ItemSubType.Quick_AttractantItem then
+		local dict = GameUtil.splitString2(effectStr, true, "#", ",")
+		local range = dict[2] and dict[2][1] or 0
+
+		self:setRangeByWalkable(playerPos, range, walkable)
 	else
 		SurvivalInteriorRpc.instance:sendSurvivalUseItemRequest(itemMo.uid, "")
 

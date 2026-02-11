@@ -11,6 +11,7 @@ function PartyGameController:onInit()
 
 	self._curPartyGame = nil
 	self._isFirstLogin = true
+	self._partyIsEnd = false
 end
 
 function PartyGameController:SetReconnectLuaCallBack()
@@ -95,6 +96,25 @@ function PartyGameController:exitGame()
 	end
 end
 
+function PartyGameController:exitPartyGame()
+	PartyGameModel.instance:setCacheNeedTranGameMsg(nil)
+	self:partyGameCloseView()
+	PartyGameLobbyController.instance:enterGameLobby()
+end
+
+function PartyGameController:partyGameCloseView()
+	ViewMgr.instance:closeView(ViewName.CardDropVSView)
+	ViewMgr.instance:closeView(ViewName.CardDropPromotionView)
+end
+
+function PartyGameController:setPartyGameIsEnd(isEnd)
+	self._partyIsEnd = isEnd
+end
+
+function PartyGameController:getPartyGameIsEnd()
+	return self._partyIsEnd
+end
+
 function PartyGameController:clearGame()
 	if self._isClear then
 		logNormal("PartyGameController-clearGame")
@@ -118,8 +138,7 @@ function PartyGameController:gameLoadingFinish()
 
 	self._isClear = false
 
-	ViewMgr.instance:closeView(ViewName.CardDropVSView)
-	ViewMgr.instance:closeView(ViewName.CardDropPromotionView)
+	self:partyGameCloseView()
 end
 
 local block = "UIBlockMgr.instance.startBlock"
@@ -173,6 +192,10 @@ function PartyGameController:transToGamePush(data)
 		return
 	end
 
+	if self:getPartyGameIsEnd() then
+		return
+	end
+
 	local gameId = data.GameId
 
 	if isDebugBuild then
@@ -196,7 +219,7 @@ function PartyGameController:kcpNetStateChange(state)
 		self:Login()
 	else
 		MessageBoxController.instance:showMsgBox(MessageBoxIdDefine.KcpLoginLostConnect, MsgBoxEnum.BoxType.Yes, function()
-			self:exitGame()
+			self:exitPartyGame()
 			PartyGameController.instance:dispatchEvent(PartyGameEvent.KcpConnectFail)
 		end, nil)
 		PartyGameStatHelper.instance:partyGameReconnect()

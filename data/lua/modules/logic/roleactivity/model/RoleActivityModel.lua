@@ -133,10 +133,29 @@ function RoleActivityModel:currentEpisodeIdToPlay(actId)
 		return 0
 	end
 
+	local passCnt = 0
+	local totCnt = 0
+
 	for _, roleActivityLevelMo in pairs(episodeDic) do
-		if roleActivityLevelMo.isUnlock and not roleActivityLevelMo:hasPassLevelAndStory() then
-			return roleActivityLevelMo:episodeId()
+		totCnt = totCnt + 1
+
+		if roleActivityLevelMo.isUnlock then
+			passCnt = passCnt + 1
+
+			if not roleActivityLevelMo:hasPassLevelAndStory() then
+				return roleActivityLevelMo:episodeId()
+			end
 		end
+	end
+
+	local isPassAll = totCnt > 0 and totCnt == passCnt
+
+	if isPassAll then
+		local storyConfigList = RoleActivityConfig.instance:getStoryLevelList(actId) or {}
+		local storyConfig = storyConfigList[#storyConfigList]
+		local episodeId = storyConfig and storyConfig.id or 0
+
+		return episodeId
 	end
 
 	return 0

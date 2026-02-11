@@ -52,6 +52,7 @@ end
 function PartyGameLobbyEmojiView:_btnemojiItemOnClick(emojiItem)
 	PartyGameLobbyController.instance:dispatchEvent(PartyGameLobbyEvent.SendEmoji, emojiItem.config.id)
 	self:sendEmojiFinish()
+	PartyGameStatHelper.instance:partyGameMeme(emojiItem.config.id)
 end
 
 function PartyGameLobbyEmojiView:sendEmojiFinish()

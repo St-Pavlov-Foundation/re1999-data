@@ -20,6 +20,7 @@ function SurvivalMapModel:onInit()
 	self.isFightEnter = false
 	self.guideSpBlockPos = nil
 	self._cacheHexPoints = {}
+	self.survivalLeaveMsgViewParam = nil
 end
 
 function SurvivalMapModel:reInit()

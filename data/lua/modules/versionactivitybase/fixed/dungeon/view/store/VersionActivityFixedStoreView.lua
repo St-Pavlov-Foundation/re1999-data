@@ -168,7 +168,10 @@ end
 
 function VersionActivityFixedStoreView:_refreshView()
 	self.viewContainer:refreshCurrencyItem()
-	self._spGoodsItem:onUpdateMO(self.actId)
+
+	if self._spGoodsItem then
+		self._spGoodsItem:onUpdateMO(self.actId)
+	end
 end
 
 function VersionActivityFixedStoreView:onClose()

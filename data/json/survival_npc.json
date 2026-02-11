@@ -2,7 +2,7 @@
   {
     "id": 311001,
     "name": "<color=#c76030>报童</color>",
-    "extendCost": 800,
+    "extendCost": 400,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -35,7 +35,7 @@
   {
     "id": 311002,
     "name": "<color=#c76030>猎人</color>",
-    "extendCost": 800,
+    "extendCost": 400,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -68,7 +68,7 @@
   {
     "id": 311003,
     "name": "<color=#c76030>“光头”探长</color>",
-    "extendCost": 800,
+    "extendCost": 400,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -167,7 +167,7 @@
   {
     "id": 311006,
     "name": "<color=#c76030>工程师努克</color>",
-    "extendCost": 800,
+    "extendCost": 400,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -200,7 +200,7 @@
   {
     "id": 311007,
     "name": "<color=#c76030>飞行教官</color>",
-    "extendCost": 800,
+    "extendCost": 400,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -233,7 +233,7 @@
   {
     "id": 311008,
     "name": "<color=#c76030>宣传部主任</color>",
-    "extendCost": 800,
+    "extendCost": 400,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -332,7 +332,7 @@
   {
     "id": 311011,
     "name": "<color=#c76030>救援小组队长</color>",
-    "extendCost": 800,
+    "extendCost": 400,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -365,7 +365,7 @@
   {
     "id": 311012,
     "name": "<color=#c76030>白石灰特工</color>",
-    "extendCost": 800,
+    "extendCost": 400,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -398,7 +398,7 @@
   {
     "id": 311013,
     "name": "<color=#c76030>委员“灰狐狸”</color>",
-    "extendCost": 800,
+    "extendCost": 400,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -497,7 +497,7 @@
   {
     "id": 311016,
     "name": "<color=#c76030>破译员</color>",
-    "extendCost": 800,
+    "extendCost": 400,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -530,7 +530,7 @@
   {
     "id": 311017,
     "name": "<color=#c76030>研发部HR</color>",
-    "extendCost": 800,
+    "extendCost": 400,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -563,7 +563,7 @@
   {
     "id": 311018,
     "name": "<color=#c76030>“健硕豪猪”</color>",
-    "extendCost": 800,
+    "extendCost": 400,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -728,7 +728,7 @@
   {
     "id": 312003,
     "name": "盒子帮抵抗者.UD",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -761,7 +761,7 @@
   {
     "id": 312004,
     "name": "盒子帮抵抗者.BN",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -794,7 +794,7 @@
   {
     "id": 312005,
     "name": "盒子帮抵抗者.ZW",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -827,7 +827,7 @@
   {
     "id": 312006,
     "name": "盒子帮抵抗者.EY",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -860,7 +860,7 @@
   {
     "id": 312007,
     "name": "盒子帮抵抗者.JZ",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -893,7 +893,7 @@
   {
     "id": 312008,
     "name": "盒子帮抵抗者.XM",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -926,7 +926,7 @@
   {
     "id": 312009,
     "name": "盒子帮抵抗者.TC",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -959,7 +959,7 @@
   {
     "id": 312010,
     "name": "盒子帮抵抗者.SD",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -1025,7 +1025,7 @@
   {
     "id": 312012,
     "name": "芝诺队长.DL",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -1058,7 +1058,7 @@
   {
     "id": 312013,
     "name": "芝诺队长.RD",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -1091,7 +1091,7 @@
   {
     "id": 312014,
     "name": "芝诺队长.UD",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -1124,7 +1124,7 @@
   {
     "id": 312015,
     "name": "芝诺队长.MK",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -1157,7 +1157,7 @@
   {
     "id": 312016,
     "name": "芝诺队长.EY",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -1190,7 +1190,7 @@
   {
     "id": 312017,
     "name": "芝诺队长.JZ",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -1223,7 +1223,7 @@
   {
     "id": 312018,
     "name": "芝诺队长.GK",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -1256,7 +1256,7 @@
   {
     "id": 312019,
     "name": "芝诺队长.XM",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -1289,7 +1289,7 @@
   {
     "id": 312020,
     "name": "芝诺队长.TC",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -1355,7 +1355,7 @@
   {
     "id": 312022,
     "name": "基金会调查员.UD",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -1388,7 +1388,7 @@
   {
     "id": 312023,
     "name": "基金会调查员.SN",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -1421,7 +1421,7 @@
   {
     "id": 312024,
     "name": "基金会调查员.QR",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -1454,7 +1454,7 @@
   {
     "id": 312025,
     "name": "基金会调查员.YG",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -1487,7 +1487,7 @@
   {
     "id": 312026,
     "name": "基金会调查员.XW",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -1520,7 +1520,7 @@
   {
     "id": 312027,
     "name": "基金会调查员.CB",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -1553,7 +1553,7 @@
   {
     "id": 312028,
     "name": "基金会调查员.EY",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -1586,7 +1586,7 @@
   {
     "id": 312029,
     "name": "基金会调查员.GK",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -1619,7 +1619,7 @@
   {
     "id": 312030,
     "name": "基金会调查员.XM",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -1685,7 +1685,7 @@
   {
     "id": 312032,
     "name": "银色技术组员.RD",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -1718,7 +1718,7 @@
   {
     "id": 312033,
     "name": "银色技术组员.BN",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -1751,7 +1751,7 @@
   {
     "id": 312034,
     "name": "银色技术组员.QR",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -1784,7 +1784,7 @@
   {
     "id": 312035,
     "name": "银色技术组员.PD",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -1817,7 +1817,7 @@
   {
     "id": 312036,
     "name": "银色技术组员.YG",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -1850,7 +1850,7 @@
   {
     "id": 312037,
     "name": "银色技术组员.MK",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -1883,7 +1883,7 @@
   {
     "id": 312038,
     "name": "银色技术组员.CB",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -1916,7 +1916,7 @@
   {
     "id": 312039,
     "name": "银色技术组员.EY",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -1949,7 +1949,7 @@
   {
     "id": 312040,
     "name": "银色技术组员.JZ",
-    "extendCost": 500,
+    "extendCost": 200,
     "takeOut": 0,
     "versions": "",
     "seasons": "",
@@ -5983,14 +5983,14 @@
     "resource": "survival/roles/prefab/role_protagonist_yami.prefab",
     "waterResource": "survival/buiding/v3a1_survival_zaiju6_2.prefab",
     "rotate": "1#2",
-    "headIcon": "v2a2_chess_54",
+    "headIcon": "v2a2_chess_70",
     "smallIcon": "1021",
     "choiceText": "上前搭话#离开",
     "npcDesc": "",
     "subType": 52,
     "rare": 4,
     "tag": "311004",
-    "reward": 3341004,
+    "reward": 0,
     "recruitment": 0,
     "cost": "item#3:0",
     "transferId": "3#1033615",
@@ -6016,14 +6016,14 @@
     "resource": "survival/roles/prefab/role_protagonist_wuerlixi.prefab",
     "waterResource": "survival/buiding/v3a1_survival_zaiju6_2.prefab",
     "rotate": "1#2",
-    "headIcon": "v2a2_chess_54",
+    "headIcon": "v2a2_chess_69",
     "smallIcon": "1021",
     "choiceText": "上前搭话#离开",
     "npcDesc": "",
     "subType": 52,
     "rare": 4,
     "tag": "311004",
-    "reward": 3341004,
+    "reward": 0,
     "recruitment": 0,
     "cost": "item#3:0",
     "transferId": "3#1033615",
@@ -6049,14 +6049,14 @@
     "resource": "survival/roles/prefab/role_protagonist_makusi.prefab",
     "waterResource": "survival/buiding/v3a1_survival_zaiju6_2.prefab",
     "rotate": "1#2",
-    "headIcon": "v2a2_chess_54",
+    "headIcon": "v2a2_chess_72",
     "smallIcon": "1021",
     "choiceText": "上前搭话#离开",
     "npcDesc": "",
     "subType": 52,
     "rare": 4,
-    "tag": "311004",
-    "reward": 3341004,
+    "tag": "311003",
+    "reward": 0,
     "recruitment": 0,
     "cost": "item#3:0",
     "transferId": "3#1033615",

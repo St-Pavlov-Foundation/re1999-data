@@ -100,6 +100,24 @@ function SurvivalHandbookModel:onInit()
 			RedDot = RedDotEnum.DotNode.SurvivalHandbookCollect
 		}
 	}
+	self.StoryTabRedDot = {
+		RedDotEnum.DotNode.SurvivalHandbookStory_1,
+		RedDotEnum.DotNode.SurvivalHandbookStory_2
+	}
+	self.StoryFragmentRedDot = {
+		RedDotEnum.DotNode.SurvivalHandbookStory_1_Fragment,
+		RedDotEnum.DotNode.SurvivalHandbookStory_2_Fragment
+	}
+	self.StoryFragmentSubType = {
+		{
+			SurvivalEnum.HandBookRoleSubType.Role_1_1,
+			SurvivalEnum.HandBookRoleSubType.Role_1_2
+		},
+		{
+			SurvivalEnum.HandBookRoleSubType.Role_2_1,
+			SurvivalEnum.HandBookRoleSubType.Role_2_2
+		}
+	}
 end
 
 function SurvivalHandbookModel:reInit()
@@ -380,28 +398,19 @@ function SurvivalHandbookModel:refreshRedDot()
 		value = redDot
 	})
 
-	self.roleStoryRedDots = {}
-	total = 0
+	for i, redDot in ipairs(self.StoryFragmentRedDot) do
+		local subTypes = self.StoryFragmentSubType[i]
 
-	for i, subType in ipairs(self.roleStoryTypes) do
-		local redDot = self:getRedDot(SurvivalEnum.HandBookType.Story, subType)
+		for j, subType in ipairs(subTypes) do
+			local redDotValue = self:getRedDot(SurvivalEnum.HandBookType.Story, subType)
 
-		self.roleStoryRedDots[subType] = redDot
-
-		table.insert(redDotInfoList, {
-			id = RedDotEnum.DotNode.SurvivalHandbookStory,
-			uid = subType,
-			value = redDot
-		})
-
-		total = total + redDot
+			table.insert(redDotInfoList, {
+				id = redDot,
+				uid = subType,
+				value = redDotValue
+			})
+		end
 	end
-
-	table.insert(redDotInfoList, {
-		uid = -1,
-		id = RedDotEnum.DotNode.SurvivalHandbookStory,
-		value = total
-	})
 
 	total = self:getRedDot(SurvivalEnum.HandBookType.Collection, 0)
 

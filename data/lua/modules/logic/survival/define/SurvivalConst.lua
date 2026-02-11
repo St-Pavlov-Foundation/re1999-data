@@ -37,10 +37,12 @@ SurvivalConst.UnitEffectTime = {
 	[SurvivalConst.UnitEffectPath.Transfer1] = 0.8,
 	[SurvivalConst.UnitEffectPath.Transfer2] = 0.8,
 	[SurvivalConst.UnitEffectPath.CreateUnit] = 2,
-	[SurvivalConst.UnitEffectPath.MksEffect] = 2
+	[SurvivalConst.UnitEffectPath.MksEffect] = 2,
+	[SurvivalConst.UnitEffectPath.WelxEffect] = 2
 }
 SurvivalConst.CustomDifficulty = 9999
 SurvivalConst.FirstPlayDifficulty = 999
+SurvivalConst.StoryDifficulty = 2
 SurvivalConst.ItemRareColor = {
 	"#27682e",
 	"#6384E5",
@@ -64,7 +66,7 @@ SurvivalConst.ShelterTagColor = {
 	"#5E6D94"
 }
 SurvivalConst.TurnDirSpeed = 0.15
-SurvivalConst.PlayerMoveSpeed = 0.4
+SurvivalConst.PlayerMoveSpeed = 0.3
 SurvivalConst.TornadoTransferTime = 1
 SurvivalConst.TornadoTransferHeight = 0.8
 SurvivalConst.ModelClipTime = 0.4

@@ -185,7 +185,7 @@ function SurvivalMapSearchView:parseConvertItemMos()
 
 				local nextItemMo
 
-				for i, mo in pairs(nextItems) do
+				for k, mo in pairs(nextItems) do
 					if v.uid == mo.uid then
 						nextItemMo = mo
 

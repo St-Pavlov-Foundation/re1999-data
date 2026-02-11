@@ -32,7 +32,7 @@
     "preNodes": "10001",
     "needLv": 1,
     "addTalentIds": "503030",
-    "cost": "item#1:200",
+    "cost": "item#1:300",
     "sign": 0
   },
   {
@@ -44,7 +44,7 @@
     "preNodes": "10002",
     "needLv": 3,
     "addTalentIds": "503040",
-    "cost": "item#1:1000",
+    "cost": "item#1:1500",
     "sign": 1
   },
   {
@@ -56,7 +56,7 @@
     "preNodes": "10004",
     "needLv": 3,
     "addTalentIds": "503050",
-    "cost": "item#1:200",
+    "cost": "item#1:300",
     "sign": 0
   },
   {
@@ -68,7 +68,7 @@
     "preNodes": "10004",
     "needLv": 3,
     "addTalentIds": "503060",
-    "cost": "item#1:500",
+    "cost": "item#1:600",
     "sign": 0
   },
   {
@@ -80,7 +80,7 @@
     "preNodes": "10005",
     "needLv": 5,
     "addTalentIds": "503070",
-    "cost": "item#1:1000",
+    "cost": "item#1:1500",
     "sign": 1
   },
   {
@@ -88,7 +88,7 @@
     "name": "负载模组",
     "point": "6#2",
     "icon": "survival_talentskill_2",
-    "desc": "额外负重增加200",
+    "desc": "额外负重增加100",
     "preNodes": "10007",
     "needLv": 5,
     "addTalentIds": "503080",
@@ -104,7 +104,7 @@
     "preNodes": "10007",
     "needLv": 5,
     "addTalentIds": "503090",
-    "cost": "item#1:200",
+    "cost": "item#1:500",
     "sign": 0
   },
   {
@@ -116,7 +116,7 @@
     "preNodes": "10007",
     "needLv": 5,
     "addTalentIds": "503100",
-    "cost": "item#1:200",
+    "cost": "item#1:500",
     "sign": 0
   },
   {
@@ -126,9 +126,9 @@
     "icon": "survival_talentskill_2",
     "desc": "额外负重增加200",
     "preNodes": "10008",
-    "needLv": 8,
+    "needLv": 7,
     "addTalentIds": "503110",
-    "cost": "item#1:1000",
+    "cost": "item#1:1500",
     "sign": 1
   },
   {
@@ -138,7 +138,7 @@
     "icon": "survival_talentskill_6",
     "desc": "第1个盒中之物槽位额外+10【怒火】",
     "preNodes": "10011",
-    "needLv": 8,
+    "needLv": 7,
     "addTalentIds": "503120",
     "cost": "item#1:500",
     "sign": 0
@@ -150,9 +150,9 @@
     "icon": "survival_talentskill_5",
     "desc": "每日额外恢复50点抵抗力",
     "preNodes": "10011",
-    "needLv": 8,
+    "needLv": 7,
     "addTalentIds": "503130",
-    "cost": "item#1:250",
+    "cost": "item#1:500",
     "sign": 0
   },
   {
@@ -162,9 +162,9 @@
     "icon": "survival_talentskill_5",
     "desc": "每日首次使用快捷道具时，额外获得1个复制品(复制品无法再复制)",
     "preNodes": "10011",
-    "needLv": 8,
+    "needLv": 7,
     "addTalentIds": "503140",
-    "cost": "item#1:250",
+    "cost": "item#1:500",
     "sign": 0
   },
   {
@@ -176,7 +176,7 @@
     "preNodes": "10012",
     "needLv": 12,
     "addTalentIds": "503150",
-    "cost": "item#1:2000",
+    "cost": "item#1:3000",
     "sign": 1
   },
   {
@@ -193,10 +193,10 @@
   },
   {
     "id": 10017,
-    "name": "参数调校·乐观",
+    "name": "参数调校·创造",
     "point": "10#1",
     "icon": "survival_talentskill_1",
-    "desc": "演习主角的【乐观】属性+10",
+    "desc": "演习主角的【创造】属性+10",
     "preNodes": "10015",
     "needLv": 12,
     "addTalentIds": "503170",
@@ -212,7 +212,7 @@
     "preNodes": "10016",
     "needLv": 15,
     "addTalentIds": "503180",
-    "cost": "item#1:2000",
+    "cost": "item#1:3000",
     "sign": 1
   },
   {
@@ -220,7 +220,7 @@
     "name": "混沌初开",
     "point": "12#1",
     "icon": "survival_talentskill_6",
-    "desc": "第1个盒中之物槽位额外+10【混沌】",
+    "desc": "第3个盒中之物槽位额外+10【混沌】",
     "preNodes": "10018",
     "needLv": 15,
     "addTalentIds": "503190",
@@ -232,7 +232,7 @@
     "name": "超频协议",
     "point": "12#3",
     "icon": "survival_talentskill_5",
-    "desc": "主动技能每日可使用上限+1",
+    "desc": "主动能力每日可使用上限+1",
     "preNodes": "10018",
     "needLv": 15,
     "addTalentIds": "503200",
@@ -244,11 +244,11 @@
     "name": "终极答案",
     "point": "13#2",
     "icon": "survival_talentskill_5",
-    "desc": "激活后演习时可能生成特殊事件【终极答案】,最多5次，每次完成后都可在与入侵怪物战斗时对其造成大量伤害",
+    "desc": "激活后演习时可能生成特殊事件【终极答案】，最多5次，每次完成后都可在与入侵怪物战斗时对其造成大量伤害",
     "preNodes": "10019#10020",
     "needLv": 18,
     "addTalentIds": "201111",
-    "cost": "item#1:2000",
+    "cost": "item#1:3000",
     "sign": 1
   },
   {
@@ -256,7 +256,7 @@
     "name": "双重施法",
     "point": "14#1",
     "icon": "survival_talentskill_6",
-    "desc": "战斗中主动释放普通咒语时,50%额外释放1次",
+    "desc": "战斗中主动释放普通咒语时，50%额外释放1次",
     "preNodes": "10021",
     "needLv": 18,
     "addTalentIds": "201132",
@@ -280,7 +280,7 @@
     "name": "灵光一闪",
     "point": "15#1",
     "icon": "survival_talentskill_6",
-    "desc": "战斗中每次行动后,己方全体获得1层【灵光一闪】,持续1回合(灵光一闪:攻击+3%,暴击率+3%,暴击创伤+3%,创伤加成+3%,穿透率+3%,可以叠加)",
+    "desc": "战斗中每次行动后，己方全体获得1层【灵光一闪】，持续1回合（灵光一闪：攻击+3%，暴击率+3%，暴击创伤+3%，创伤加成+3%，穿透率+3%，可以叠加）",
     "preNodes": "10022",
     "needLv": 18,
     "addTalentIds": "201134",
@@ -292,7 +292,7 @@
     "name": "仪式准备",
     "point": "15#3",
     "icon": "survival_talentskill_6",
-    "desc": "战斗中主动使用普通咒语后,获得1层【仪式准备】(仪式准备:至终的仪式最终伤害+10%,可以叠加,生效后扣除)   ",
+    "desc": "战斗中主动使用普通咒语后，获得1层【仪式准备】（仪式准备：至终的仪式最终伤害+10%，可以叠加，生效后扣除) ",
     "preNodes": "10023",
     "needLv": 18,
     "addTalentIds": "201135",

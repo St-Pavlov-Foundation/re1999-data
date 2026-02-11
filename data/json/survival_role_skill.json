@@ -55,7 +55,7 @@
     "resource": "survival_map_skillicon_4",
     "times": 2,
     "addTalentIds": "",
-    "effect1": "findDrop#0#3#30339200",
+    "effect1": "findDrop#0#2#30339200",
     "effect2": "",
     "effect3": ""
   }

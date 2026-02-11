@@ -123,5 +123,6 @@ SurvivalEvent.OnReceiveSurvivalEditMessageReply = _get()
 SurvivalEvent.OnReceiveSurvivalMessageOperationReply = _get()
 SurvivalEvent.OnPlayGainExpAnim = _get()
 SurvivalEvent.OnDerivedUpdate = _get()
+SurvivalEvent.OnDelayCheckMainViewAnim = _get()
 
 return SurvivalEvent

@@ -78,6 +78,37 @@ function SurvivalModel:getDefaultRoleId()
 	return tonumber(lua_survival_hardness_mod.configDict[SurvivalEnum.SimpleHardnessId].initRole)
 end
 
+function SurvivalModel:cacheBossFightItem(msg)
+	self.cacheBossItemTips = msg.itemTips
+end
+
+function SurvivalModel:checkBossFightItem()
+	if self.cacheBossItemTips then
+		local items = {}
+
+		for _, v in ipairs(self.cacheBossItemTips) do
+			local itemMo = SurvivalBagItemMo.New()
+
+			itemMo:init({
+				id = v.itemId,
+				count = v.count
+			})
+
+			itemMo.source = SurvivalEnum.ItemSource.Drop
+
+			table.insert(items, itemMo)
+		end
+
+		if #items > 0 then
+			PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.SurvivalGetRewardView, {
+				items = items
+			})
+
+			self.cacheBossItemTips = nil
+		end
+	end
+end
+
 SurvivalModel.instance = SurvivalModel.New()
 
 return SurvivalModel

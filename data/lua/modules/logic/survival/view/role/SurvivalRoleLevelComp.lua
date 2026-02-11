@@ -60,8 +60,12 @@ function SurvivalRoleLevelComp:refresh(isPlayAnim)
 			if isPlayAnim then
 				self:playProgressAnim()
 			else
-				local curNeed = SurvivalRoleConfig.instance:getLevelUpNeedExp(level)
-				local nextNeed = SurvivalRoleConfig.instance:getLevelUpNeedExp(level + 1)
+				if self.progressAnimWork then
+					self.progressAnimWork:destroy()
+				end
+
+				local curNeed = SurvivalRoleConfig.instance:getLevelNeedExp(level)
+				local nextNeed = SurvivalRoleConfig.instance:getLevelNeedExp(level + 1)
 				local per = (self.survivalShelterRoleMo.roleExp - curNeed) / (nextNeed - curNeed)
 
 				self.imgLevelProgress.fillAmount = per
@@ -76,8 +80,14 @@ end
 
 function SurvivalRoleLevelComp:playProgressAnim()
 	local level = self.survivalShelterRoleMo.level
-	local curNeed = SurvivalRoleConfig.instance:getLevelUpNeedExp(level)
-	local nextNeed = SurvivalRoleConfig.instance:getLevelUpNeedExp(level + 1)
+	local isMaxLevel = SurvivalRoleConfig.instance:isMaxLevel(level)
+
+	if isMaxLevel then
+		return
+	end
+
+	local curNeed = SurvivalRoleConfig.instance:getLevelNeedExp(level)
+	local nextNeed = SurvivalRoleConfig.instance:getLevelNeedExp(level + 1)
 	local per = (self.survivalShelterRoleMo.roleExp - curNeed) / (nextNeed - curNeed)
 
 	if self.progressAnimWork then

@@ -171,6 +171,15 @@ function SurvivalRoleSkillMo:confirmUseSkill(point)
 
 	if effectType == SurvivalEnum.RoleSkillEffect.NoiseAttract then
 		AudioMgr.instance:trigger(AudioEnum3_4.Survival.play_ui_bulaochun_tansuo_wuerlixi)
+
+		local entity = SurvivalMapHelper.instance:getEntity(0)
+
+		if entity then
+			local effectPath = SurvivalConst.UnitEffectPath.WelxEffect
+			local effectTime = SurvivalConst.UnitEffectTime[effectPath]
+
+			entity:addEffectTiming(effectPath, effectTime)
+		end
 	elseif effectType == SurvivalEnum.RoleSkillEffect.FindDrop then
 		AudioMgr.instance:trigger(AudioEnum3_4.Survival.play_ui_bulaochun_tansuo_marcus)
 	end

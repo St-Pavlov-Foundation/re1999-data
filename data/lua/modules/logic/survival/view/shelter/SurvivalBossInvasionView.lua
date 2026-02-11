@@ -57,6 +57,7 @@ function SurvivalBossInvasionView:addEventListeners()
 	self:addEventCb(SurvivalController.instance, SurvivalEvent.OnShelterBagUpdate, self.onShelterBagUpdate, self)
 	self:addEventCb(SurvivalController.instance, SurvivalEvent.AbandonFight, self.onAbandonFight, self)
 	self:addEventCb(SurvivalController.instance, SurvivalEvent.OnDelayPopupFinishEvent, self.onDelayPopupFinishEvent, self)
+	self:addEventCb(SurvivalController.instance, SurvivalEvent.OnDelayCheckMainViewAnim, self.onDelayCheckMainViewAnim, self)
 end
 
 function SurvivalBossInvasionView:onStart()
@@ -103,6 +104,11 @@ function SurvivalBossInvasionView:onDelayPopupFinishEvent()
 	self:refreshList(true)
 end
 
+function SurvivalBossInvasionView:onDelayCheckMainViewAnim()
+	self:refreshList(true)
+	self.clientMo:saveDataToServer()
+end
+
 function SurvivalBossInvasionView:onCloseTip()
 	gohelper.setActive(self.btn_close_tips, false)
 	gohelper.setActive(self.go_tips, false)
@@ -110,9 +116,10 @@ end
 
 function SurvivalBossInvasionView:refresh()
 	self.intrudeBox = self.weekInfo.intrudeBox
-	self.fight = self.weekInfo:getMonsterFight()
 
-	if not self.fight:canShowBossUI() then
+	local fight = self.weekInfo:getMonsterFight()
+
+	if not fight:canShowBossUI() then
 		gohelper.setActive(self.go_boss, false)
 
 		return
@@ -120,7 +127,7 @@ function SurvivalBossInvasionView:refresh()
 
 	gohelper.setActive(self.go_boss, true)
 
-	local smallIcon = self.fight.fightCo.smallheadicon
+	local smallIcon = fight.fightCo.smallheadicon
 
 	if smallIcon then
 		self.go_monsterHeadIcon:LoadImage(ResUrl.monsterHeadIcon(smallIcon))
@@ -150,12 +157,14 @@ function SurvivalBossInvasionView:refreshDecoding(isCheckChange)
 end
 
 function SurvivalBossInvasionView:refreshList(isCheckChange)
-	if not self.fight:canShowBossUI() then
+	local fight = self.weekInfo:getMonsterFight()
+
+	if not fight:canShowBossUI() then
 		return
 	end
 
 	local clientData = self.clientMo.data
-	local intrudeSchemeMos = self.fight.intrudeSchemeMos
+	local intrudeSchemeMos = fight.intrudeSchemeMos
 
 	self.survivalIntrudeSchemeMo = {}
 
@@ -208,14 +217,14 @@ function SurvivalBossInvasionView:refreshList(isCheckChange)
 		self:refreshCustomItems(self.customItems[i], mo)
 
 		local curIsRepress = mo.survivalIntrudeScheme.repress
-		local isRepress = self.clientMo:getBossRepress(self.fight.fightId, mo.survivalIntrudeScheme.id)
+		local isRepress = self.clientMo:getBossRepress(fight.fightId, mo.survivalIntrudeScheme.id)
 
 		if isCheckChange and curIsRepress ~= isRepress then
 			if curIsRepress then
 				self.customItems[i].anim:Play("open", 0, 0)
 			end
 
-			self.clientMo:setBossRepress(self.fight.fightId, mo.survivalIntrudeScheme.id)
+			self.clientMo:setBossRepress(fight.fightId, mo.survivalIntrudeScheme.id)
 		end
 	end
 
@@ -227,7 +236,7 @@ function SurvivalBossInvasionView:refreshList(isCheckChange)
 	local dur = self.layoutContent.spacing
 	local progressOffsetH = 9
 	local num = #intrudeSchemeMos
-	local progressH = itemH * num + (num - 1) * dur + progressOffsetH
+	local progressH = itemH * num + (num - 1) * dur + progressOffsetH + 81
 	local perClip = progressOffsetH / progressH
 	local index = self.repressNum
 	local h = itemH * index + (index - 1) * dur

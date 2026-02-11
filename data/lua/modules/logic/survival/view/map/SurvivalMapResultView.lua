@@ -288,7 +288,7 @@ function SurvivalMapResultView:setCurrItem(value)
 	local afterVal = self._resultMo.afterCurrencyItems
 
 	for i = 1, #currencys do
-		local preCount = preVal[currencys[i]] or 0
+		local preCount = (preVal[currencys[i]] or 0) + self._resultMo.afterItemWorth
 		local afterCount = (afterVal[currencys[i]] or 0) + self._resultMo.afterItemWorth
 		local count = math.floor(preCount + (afterCount - preCount) * value)
 		local txt = self["_txttag" .. i]

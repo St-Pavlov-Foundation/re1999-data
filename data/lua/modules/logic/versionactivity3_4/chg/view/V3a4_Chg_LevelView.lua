@@ -90,7 +90,7 @@ end
 local kPathAnimPrefix = "stages_path_"
 
 local function _animName_Path(animIndex)
-	animIndex = GameUtil.clamp(animIndex, 0, 7)
+	animIndex = GameUtil.clamp(animIndex, 0, 8)
 
 	return kPathAnimPrefix .. tostring(animIndex)
 end
@@ -128,6 +128,7 @@ function V3a4_Chg_LevelView:_editableInitView()
 
 	self._animTask = goTaskAnim:GetComponent(gohelper.Type_Animator)
 	self._gostoryPath = self._scrollStory.gameObject
+	self._scrollStoryTrans = self._gostoryPath.transform
 
 	local activityCo = self.viewContainer:getActivityCo()
 
@@ -143,14 +144,14 @@ function V3a4_Chg_LevelView:_editableInitView()
 
 	self._touch:AddClickDownListener(self._onClickDown, self)
 
-	local width = recthelper.getWidth(ViewMgr.instance:getUIRoot().transform)
+	local viewportWidth = recthelper.getWidth(self._scrollStoryTrans)
 	local rightOffsetX = -300
 
-	self._offsetX = (width - rightOffsetX) / 2
+	self._offsetX = (viewportWidth - rightOffsetX) / 2
 
 	local maxWidth = recthelper.getWidth(self._goMoveTrans)
 
-	self._minContentAnchorX = -maxWidth + width
+	self._minContentAnchorX = -maxWidth + viewportWidth
 
 	self:_refreshItemList()
 	gohelper.setActive(self._btnPlayBtn, activityCo.storyId > 0)
@@ -501,11 +502,7 @@ function V3a4_Chg_LevelView:_focusStoryItem(index, isTween, needPlayStory)
 	local contentAnchorX = recthelper.getAnchorX(self._storyItemList[index]:transform().parent)
 	local offsetX = self._offsetX - contentAnchorX
 
-	if offsetX > 0 then
-		offsetX = 0
-	elseif offsetX < self._minContentAnchorX then
-		offsetX = self._minContentAnchorX
-	end
+	offsetX = GameUtil.clamp(offsetX, self._minContentAnchorX, 0)
 
 	GameUtil.onDestroyViewMember_TweenId(self, "_moveTweenId")
 

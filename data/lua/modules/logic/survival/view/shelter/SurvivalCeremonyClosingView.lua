@@ -580,6 +580,12 @@ function SurvivalCeremonyClosingView:getContentY()
 		end
 	end
 
+	if self._progress == self._maxStep then
+		local height = recthelper.getHeight(self._contentRect)
+
+		return height - self._scrollHeight
+	end
+
 	local allHeight = 0
 	local count = math.min(self._progress, #self._allContentY)
 

@@ -662,6 +662,67 @@ function SurvivalUnitEntity:removeEffect(effectPath)
 	self._allEffects[effectPath] = nil
 end
 
+function SurvivalUnitEntity:addEffectTiming(effectPath, time)
+	self:addEffect(effectPath)
+
+	if time and time > 0 then
+		if not self._delayEffectDict then
+			self._delayEffectDict = {}
+		end
+
+		self._delayEffectDict[effectPath] = Time.realtimeSinceStartup + time
+
+		self:startCheckDelayEffectTimer()
+	end
+end
+
+function SurvivalUnitEntity:startCheckDelayEffectTimer()
+	if not self._delayEffectTimer then
+		self._delayEffectTimer = true
+
+		TaskDispatcher.runRepeat(self._checkDelayEffect, self, 0.05)
+	end
+end
+
+function SurvivalUnitEntity:_checkDelayEffect()
+	if not self._delayEffectDict then
+		self:destroyCheckDelayEffectTimer()
+
+		return
+	end
+
+	local now = Time.realtimeSinceStartup
+	local waitwaitRemoveListRemove
+
+	for effectPath, time in pairs(self._delayEffectDict) do
+		if time <= now then
+			self:removeEffect(effectPath)
+
+			waitwaitRemoveListRemove = waitwaitRemoveListRemove or {}
+
+			table.insert(waitwaitRemoveListRemove, effectPath)
+		end
+	end
+
+	if waitRemoveList then
+		for i = 1, #waitRemoveList do
+			self._delayEffectDict[waitRemoveList[i]] = nil
+		end
+	end
+
+	if tabletool.len(self._delayEffectDict) == 0 then
+		self:destroyCheckDelayEffectTimer()
+	end
+end
+
+function SurvivalUnitEntity:destroyCheckDelayEffectTimer()
+	if self._delayEffectTimer then
+		self._delayEffectTimer = nil
+
+		TaskDispatcher.cancelTask(self._checkDelayEffect, self)
+	end
+end
+
 function SurvivalUnitEntity:onDestroy()
 	if self._allEffects then
 		for _, loader in pairs(self._allEffects) do
@@ -694,6 +755,8 @@ function SurvivalUnitEntity:onDestroy()
 
 		self._tweenId = nil
 	end
+
+	self:destroyCheckDelayEffectTimer()
 end
 
 return SurvivalUnitEntity

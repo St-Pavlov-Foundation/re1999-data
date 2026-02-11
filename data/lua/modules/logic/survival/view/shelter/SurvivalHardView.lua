@@ -56,6 +56,7 @@ function SurvivalHardView:onInitView()
 	self.lineItems = {}
 	self.goHardItem = gohelper.findChild(self.viewGO, "Panel/Left/#go_ItemPanel/#scroll_List/Viewport/Content/#go_SmallItem")
 	self.goLineItem = gohelper.findChild(self.viewGO, "Panel/Left/#go_ItemPanel/#scroll_List/Viewport/Content/#go_Item")
+	self.scrollContent = gohelper.findChild(self.viewGO, "Panel/Right/#scroll_List/Viewport/Content")
 	self.animator = self.viewGO:GetComponent(gohelper.Type_Animator)
 
 	self:setPanelVisible(false)
@@ -111,7 +112,7 @@ end
 function SurvivalHardView:onClickBtnTemplate()
 	self.isDiffListShow = true
 
-	local selectIndex2 = SurvivalDifficultyModel.instance:getCustomSelectIndex2()
+	local selectIndex2 = SurvivalDifficultyModel.instance:getCustomFragmentSelect()
 
 	self.curDiffListSelect = selectIndex2
 
@@ -192,29 +193,28 @@ function SurvivalHardView:onClickGrid(item)
 		return
 	end
 
-	local selectIndex2 = SurvivalDifficultyModel.instance:getCustomSelectIndex2()
+	local isSelect = self:selectCustomDifficulty(item)
 
-	if selectIndex2 > 1 then
-		SurvivalDifficultyModel.instance:switchToCustomTempDiff()
-		self:closeDiffList()
-		self:changeFragment(1, {
-			callBack = self.selectCustomDifficulty,
-			context = self,
-			param = item
-		})
-	else
-		self:selectCustomDifficulty(item)
+	if not isSelect then
+		local h = recthelper.getHeight(self.scrollContent.transform)
+		local scrollView = self.viewContainer.scrollView
+
+		scrollView._csListScroll.VerticalScrollPixel = h
 	end
 end
 
 function SurvivalHardView:selectCustomDifficulty(item)
-	if SurvivalDifficultyModel.instance:selectCustomDifficulty(item.config.id) then
+	local v, isSelect = SurvivalDifficultyModel.instance:selectCustomDifficulty(item.config.id)
+
+	if v then
 		self:refreshNextBtn()
 		self:refreshTab()
 		self:refreshLine(item.line, item.line.data)
 		self:refreshDifficultyList()
 		self:refreshAssess()
 	end
+
+	return isSelect
 end
 
 function SurvivalHardView:createTab(index)
@@ -302,7 +302,7 @@ function SurvivalHardView:onClickTemplate(survivalDiffTempTab)
 	self.templateList:setSelect(survivalDiffTempTab.itemIndex)
 	self:changeFragment(survivalDiffTempTab.itemIndex, nil, false)
 
-	local selectIndex2 = SurvivalDifficultyModel.instance:getCustomSelectIndex2()
+	local selectIndex2 = SurvivalDifficultyModel.instance:getCustomFragmentSelect()
 
 	self.curDiffListSelect = selectIndex2
 
@@ -318,7 +318,7 @@ function SurvivalHardView:onClickDiffTempBtnConfirm(survivalDiffTempTab)
 end
 
 function SurvivalHardView:changeFragment(index, callBackParam, isAnim)
-	local flag = SurvivalDifficultyModel.instance:setCustomSelectIndex2(index)
+	local flag = SurvivalDifficultyModel.instance:setCustomFragmentSelect(index)
 
 	if not flag then
 		return
@@ -350,8 +350,7 @@ function SurvivalHardView:changeFragmentDelay()
 end
 
 function SurvivalHardView:refreshCustomPanel()
-	local list = SurvivalDifficultyModel.instance:getDifficultyShowList()
-	local isEmpty = next(list) == nil and not self.inSelectCustom
+	local isEmpty = false
 
 	self:setPanelVisible(not isEmpty)
 	gohelper.setActive(self.btnEmpty, isEmpty)
@@ -366,7 +365,7 @@ function SurvivalHardView:refreshCustomPanel()
 end
 
 function SurvivalHardView:refreshBtnTemplate()
-	local selectIndex2 = SurvivalDifficultyModel.instance:getCustomSelectIndex2()
+	local selectIndex2 = SurvivalDifficultyModel.instance:getCustomFragmentSelect()
 	local item = self.templateList:getItemByIndex(selectIndex2)
 
 	self.textTemplateTitle.text = item.title
@@ -389,10 +388,7 @@ function SurvivalHardView:refreshNextBtn()
 		return
 	end
 
-	local list = SurvivalDifficultyModel.instance:getDifficultyShowList()
-	local isEmpty = next(list) == nil
-
-	ZProj.UGUIHelper.SetGrayscale(self.btnnext.gameObject, isEmpty)
+	ZProj.UGUIHelper.SetGrayscale(self.btnnext.gameObject, false)
 end
 
 function SurvivalHardView:refreshNormalView()
@@ -431,9 +427,9 @@ function SurvivalHardView:refreshPanel(difficultyId)
 end
 
 function SurvivalHardView:refreshFrame(difficultyId)
-	gohelper.setActive(self.goFrame1, difficultyId == 2)
-	gohelper.setActive(self.goFrame2, difficultyId == 3)
-	gohelper.setActive(self.goFrame3, difficultyId == 4)
+	gohelper.setActive(self.goFrame1, difficultyId == 9999)
+	gohelper.setActive(self.goFrame2, difficultyId == 3 or difficultyId == 4)
+	gohelper.setActive(self.goFrame3, difficultyId == 5 or difficultyId == 6)
 end
 
 function SurvivalHardView:refreshAssess()
@@ -448,7 +444,7 @@ end
 
 function SurvivalHardView:refreshTab()
 	local selectIndex = SurvivalDifficultyModel.instance:getCustomSelectIndex()
-	local selectIndex2 = SurvivalDifficultyModel.instance:getCustomSelectIndex2()
+	local selectIndex2 = SurvivalDifficultyModel.instance:getCustomFragmentSelect()
 
 	for i, v in ipairs(self.tabItems) do
 		local isSelect = selectIndex == i

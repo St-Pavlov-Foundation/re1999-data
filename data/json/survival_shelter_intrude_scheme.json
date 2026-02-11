@@ -1,5 +1,15 @@
 [
   {
+    "id": 32821021,
+    "desc": "进入战斗时，“纪律委员会”进入【安抚程序预备】",
+    "icon": "survival_new_bossbuff5_1"
+  },
+  {
+    "id": 32821022,
+    "desc": "回合结束时，“纪律委员会”获得10层【电能】",
+    "icon": "survival_new_bossbuff5_1"
+  },
+  {
     "id": 73151001,
     "desc": "入场时，宇航员幽灵获得5层【后备能源】",
     "icon": "survival_new_bossbuff5_1"
@@ -37,6 +47,11 @@
   {
     "id": 73151008,
     "desc": "回合结束时，失语的怪鸟额外赋予我方全体2层【污染】，持续2回合",
+    "icon": "survival_new_bossbuff5_1"
+  },
+  {
+    "id": 73151009,
+    "desc": "入场时，最终解获得10层【连锁】",
     "icon": "survival_new_bossbuff5_1"
   },
   {

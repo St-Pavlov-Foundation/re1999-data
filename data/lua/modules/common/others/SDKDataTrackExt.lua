@@ -15,6 +15,7 @@ function SDKDataTrackMgr.activateExtend()
 	SDKDataTrackMgr.EventName.act210_operation = "act210_operation"
 	SDKDataTrackMgr.EventName.resource_fixup = "resource_fixup"
 	SDKDataTrackMgr.EventName.click_activity_jump_button = "click_activity_jump_button"
+	SDKDataTrackMgr.EventName.act_chengheguang_operation = "act_chengheguang_operation"
 	SDKDataTrackMgr.EventProperties.current_language = "current_language"
 	SDKDataTrackMgr.EventProperties.entrance = "entrance"
 	SDKDataTrackMgr.EventProperties.current_voice_pack_list = "current_voice_pack_list"
@@ -141,6 +142,18 @@ function SDKDataTrackMgr:track_act210_operation(map_id, operation_type, act210_g
 		[SDKDataTrackMgr.EventProperties.act210_grid_info] = act210_grid_info or {},
 		[SDKDataTrackMgr.EventProperties.used_times] = used_times or 0,
 		[StatEnum.EventProperties.UseTime] = usetime or -1
+	})
+end
+
+function SDKDataTrackMgr:track_act_chengheguang_operation(OperationType, EpisodeId, MapId, UseTime, Time, IsWin, IsFirst)
+	StatController.instance:track(SDKDataTrackMgr.EventName.act_chengheguang_operation, {
+		[StatEnum.EventProperties.OperationType] = OperationType or "",
+		[StatEnum.EventProperties.EpisodeId] = tostring(EpisodeId) or "0",
+		[StatEnum.EventProperties.MapId] = tostring(MapId) or "0",
+		[StatEnum.EventProperties.UseTime] = UseTime or -1,
+		[StatEnum.EventProperties.Time] = Time or -1,
+		[StatEnum.EventProperties.IsWin] = IsWin or false,
+		[StatEnum.EventProperties.IsFirst] = IsFirst or false
 	})
 end
 

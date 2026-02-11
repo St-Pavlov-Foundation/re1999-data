@@ -5,51 +5,59 @@ module("modules.logic.survival.model.SurvivalDifficultyModel", package.seeall)
 local SurvivalDifficultyModel = class("SurvivalDifficultyModel", ListScrollModel)
 
 function SurvivalDifficultyModel:refreshDifficulty()
-	self.customDifficulty = self:loadCustomHard()
-	self._customDifficultyDict = {}
-
-	for i, v in ipairs(self.customDifficulty) do
-		self._customDifficultyDict[v] = true
-	end
-
 	self.difficultyList = self:getDifficultyList()
-	self.customDifficultyList = self:getCustomDifficultyList()
-	self.customSelectIndex = 1
-	self.customSelectIndex2 = 1
 
 	local difficultyIndex = GameUtil.playerPrefsGetNumberByUserId(PlayerPrefsKey.SurvivalHardSelect, 1)
 
 	difficultyIndex = math.min(#self.difficultyList, difficultyIndex)
 	self.difficultyIndex = difficultyIndex
+	self.customSelectIndex = 1
+	self.customDifficultyList = self:getCustomDifficultyList()
+	self.customFragmentMoDic = {}
+	self.customFragmentMos = {}
+	self.customFragmentSelect = 1
 
-	self:refreshTempDiffSelectIds()
+	local list = self:getCustomTempDiffIds()
+
+	for i, difficultyId in ipairs(list) do
+		local mo = SurvivalCustomFragmentMo.New()
+
+		mo:setData(difficultyId, i)
+
+		self.customFragmentMos[i] = mo
+	end
 end
 
-function SurvivalDifficultyModel:switchToCustomTempDiff()
-	local diffId = self:getDifficultyId()
-	local hardList = {}
-	local diffConfig = lua_survival_hardness_mod.configDict[diffId]
-
-	if not string.nilorempty(diffConfig.hardness) then
-		local info = SurvivalModel.instance:getOutSideInfo()
-		local hardness = string.splitToNumber(diffConfig.hardness, "#")
-
-		for _, hardId in pairs(hardness) do
-			local config = lua_survival_hardness.configDict[hardId]
-
-			if config and config.optional == 1 and info:isUnlockDifficultyMod(hardId) then
-				table.insert(hardList, hardId)
-			end
-		end
+function SurvivalDifficultyModel:setCustomFragmentSelect(index)
+	if self.customFragmentSelect == index then
+		return
 	end
 
-	tabletool.clear(self._customDifficultyDict)
+	self.customFragmentSelect = index
 
-	for i, v in ipairs(hardList) do
-		self._customDifficultyDict[v] = true
-	end
+	return true
+end
 
-	self.customDifficulty = hardList
+function SurvivalDifficultyModel:getCustomFragmentSelect()
+	return self.customFragmentSelect
+end
+
+function SurvivalDifficultyModel:getCustomDiffSelectIds()
+	local mo = self.customFragmentMos[self.customFragmentSelect]
+
+	return mo.tempDiffSelectIds
+end
+
+function SurvivalDifficultyModel:getCustomDifficulty()
+	local mo = self.customFragmentMos[self.customFragmentSelect]
+
+	return mo.customDifficulty
+end
+
+function SurvivalDifficultyModel:getCustomDifficultyDict()
+	local mo = self.customFragmentMos[self.customFragmentSelect]
+
+	return mo.customDifficultyDict
 end
 
 function SurvivalDifficultyModel:getDifficultyId()
@@ -58,14 +66,10 @@ function SurvivalDifficultyModel:getDifficultyId()
 	if diff and diff.id == SurvivalConst.CustomDifficulty then
 		local list = self:getCustomTempDiffIds()
 
-		return list[self.customSelectIndex2]
+		return list[self.customFragmentSelect]
 	end
 
 	return diff and diff.id or 0
-end
-
-function SurvivalDifficultyModel:getCustomDifficulty()
-	return self.customDifficulty
 end
 
 function SurvivalDifficultyModel:isCustomFragment()
@@ -81,7 +85,7 @@ end
 function SurvivalDifficultyModel:isStoryDifficulty()
 	local difficultyId = self:getDifficultyId()
 
-	return difficultyId == 1
+	return difficultyId == SurvivalConst.StoryDifficulty
 end
 
 function SurvivalDifficultyModel:isCustomTempDiff()
@@ -232,18 +236,6 @@ function SurvivalDifficultyModel:getDifficultyAssessByCustomTempDiff(tabIndex)
 end
 
 function SurvivalDifficultyModel:getDifficultyShowList()
-	if self:isCustomTempDiff() then
-		local list = {}
-
-		for i, v in ipairs(self.tempDiffSelectIds) do
-			table.insert(list, {
-				hardId = v
-			})
-		end
-
-		return list
-	end
-
 	local list = {}
 	local diffConfig = lua_survival_hardness_mod.configDict[self:getDifficultyId()]
 	local hardness = string.splitToNumber(diffConfig.hardness, "#")
@@ -256,7 +248,7 @@ function SurvivalDifficultyModel:getDifficultyShowList()
 		end
 	end
 
-	if self:isCustomDifficulty() then
+	if self:isCustomFragment() then
 		local hardness = self:getCustomDifficulty()
 
 		if hardness then
@@ -343,9 +335,7 @@ end
 function SurvivalDifficultyModel:sendDifficultyChoose(roleId, callback, callbackobj)
 	local difficultyId = self:getDifficultyId()
 
-	if self:isCustomTempDiff() then
-		SurvivalWeekRpc.instance:sendSurvivalStartWeekChooseDiff(difficultyId, {}, roleId, callback, callbackobj)
-	elseif self:isCustomDifficulty() then
+	if self:isCustomFragment() then
 		local list = self:getDifficultyShowList()
 		local dataList = self:filterSameTypeHard(list)
 		local hardness = {}
@@ -387,52 +377,10 @@ function SurvivalDifficultyModel:getCustomSelectIndex()
 	return self.customSelectIndex
 end
 
-function SurvivalDifficultyModel:setCustomSelectIndex2(index)
-	if self.customSelectIndex2 == index then
-		return
-	end
-
-	self.customSelectIndex2 = index
-
-	self:refreshTempDiffSelectIds()
-
-	return true
-end
-
-function SurvivalDifficultyModel:refreshTempDiffSelectIds()
-	self.tempDiffSelectIds = {}
-
-	local diffConfig = lua_survival_hardness_mod.configDict[self:getDifficultyId()]
-
-	if not string.nilorempty(diffConfig.hardness) then
-		local hardness = string.splitToNumber(diffConfig.hardness, "#")
-
-		for _, hardId in pairs(hardness) do
-			table.insert(self.tempDiffSelectIds, hardId)
-		end
-	end
-end
-
-function SurvivalDifficultyModel:getCustomSelectIndex2()
-	return self.customSelectIndex2
-end
-
 function SurvivalDifficultyModel:getCustomDifficultyAssess(index, fragmentIndex)
 	local hardness
 
-	if self:isCustomTempDiff() then
-		hardness = {}
-
-		for i, id in ipairs(self.tempDiffSelectIds) do
-			local cfg = lua_survival_hardness.configDict[id]
-
-			if cfg.optional == 1 then
-				table.insert(hardness, id)
-			end
-		end
-	else
-		hardness = self:getCustomDifficulty()
-	end
+	hardness = self:getCustomDifficulty()
 
 	local assess = 0
 
@@ -450,22 +398,19 @@ function SurvivalDifficultyModel:getCustomDifficultyAssess(index, fragmentIndex)
 end
 
 function SurvivalDifficultyModel:isSelectCustomDifficulty(hardId)
-	if self:isCustomTempDiff() then
-		return tabletool.indexOf(self.tempDiffSelectIds, hardId)
-	end
+	local customDifficultyDict = self:getCustomDifficultyDict()
 
-	return self._customDifficultyDict[hardId] ~= nil
+	return customDifficultyDict[hardId] ~= nil
 end
 
 function SurvivalDifficultyModel:selectCustomDifficulty(hardId)
-	if self:isCustomTempDiff() then
-		return
-	end
-
 	local curConfig = lua_survival_hardness.configDict[hardId]
 	local removeIndex, removeHard
+	local customDifficulty = self:getCustomDifficulty()
+	local customDifficultyDict = self:getCustomDifficultyDict()
+	local isSelect
 
-	for i, v in ipairs(self.customDifficulty) do
+	for i, v in ipairs(customDifficulty) do
 		if v ~= hardId then
 			local config = lua_survival_hardness.configDict[v]
 
@@ -479,52 +424,36 @@ function SurvivalDifficultyModel:selectCustomDifficulty(hardId)
 	end
 
 	if removeIndex then
-		self._customDifficultyDict[removeHard] = nil
+		customDifficultyDict[removeHard] = nil
 
-		table.remove(self.customDifficulty, removeIndex)
+		table.remove(customDifficulty, removeIndex)
 	end
 
 	if self:isSelectCustomDifficulty(hardId) then
-		self._customDifficultyDict[hardId] = nil
+		customDifficultyDict[hardId] = nil
 
-		tabletool.removeValue(self.customDifficulty, hardId)
+		tabletool.removeValue(customDifficulty, hardId)
+
+		isSelect = true
 	else
-		self._customDifficultyDict[hardId] = true
+		customDifficultyDict[hardId] = true
 
-		table.insert(self.customDifficulty, hardId)
+		if not tabletool.indexOf(customDifficulty, hardId) then
+			table.insert(customDifficulty, hardId)
+		end
+
+		isSelect = false
 	end
 
 	self:saveCustomHard()
 
-	return true
+	return true, isSelect
 end
 
 function SurvivalDifficultyModel:saveCustomHard()
-	local list = self:getCustomDifficulty()
-	local key = string.format("%s_SurvivalCustomDifficulty", PlayerModel.instance:getPlayinfo().userId)
+	local mo = self.customFragmentMos[self.customFragmentSelect]
 
-	PlayerPrefsHelper.setString(key, table.concat(list, "#"))
-end
-
-function SurvivalDifficultyModel:loadCustomHard()
-	local key = string.format("%s_SurvivalCustomDifficulty", PlayerModel.instance:getPlayinfo().userId)
-	local localPos = PlayerPrefsHelper.getString(key)
-	local hardList = {}
-
-	if not string.nilorempty(localPos) then
-		local info = SurvivalModel.instance:getOutSideInfo()
-		local list = string.splitToNumber(localPos, "#")
-
-		for _, hardId in ipairs(list) do
-			local config = lua_survival_hardness.configDict[hardId]
-
-			if config and config.optional == 1 and info:isUnlockDifficulty(hardId) then
-				table.insert(hardList, hardId)
-			end
-		end
-	end
-
-	return hardList
+	mo:saveCustomHard()
 end
 
 function SurvivalDifficultyModel:getCustomTempDiffIds()

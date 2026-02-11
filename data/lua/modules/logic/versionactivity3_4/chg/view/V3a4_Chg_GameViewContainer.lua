@@ -36,6 +36,7 @@ end
 
 function V3a4_Chg_GameViewContainer:_endYesCallback()
 	self:closeThis()
+	self:trackExit()
 end
 
 function V3a4_Chg_GameViewContainer:onContainerDestroy()
@@ -50,6 +51,10 @@ end
 
 function V3a4_Chg_GameViewContainer:dragContext()
 	return ChgBattleModel.instance:dragContext()
+end
+
+function V3a4_Chg_GameViewContainer:trackMO()
+	return ChgBattleModel.instance:trackMO()
 end
 
 function V3a4_Chg_GameViewContainer:restart()

@@ -54,12 +54,20 @@ function SurvivalRoleLevelUpView:onOpen()
 	self.oldLevel = self.viewParam and self.viewParam.oldLevel or self.survivalShelterRoleMo.level - 1
 	self.curLevel = self.viewParam and self.viewParam.curLevel or self.survivalShelterRoleMo.level
 
+	gohelper.setActive(self.txt_close.gameObject, true)
+	gohelper.setActive(self.btnClose.gameObject, true)
+
+	local weekInfo = SurvivalShelterModel.instance:getWeekInfo()
 	local data = {}
 	local ids = SurvivalRoleConfig.instance:getRoleAttrIds()
+	local oldRoleAttrDic = weekInfo.oldRoleAttrDic
+	local curRoleAttrDic = weekInfo.curRoleAttrDic
 
 	for i, attrId in ipairs(ids) do
-		local isIncrease, old, new = self.survivalShelterRoleMo:haveAttrIncrease(attrId, self.oldLevel, self.curLevel)
-		local value = self.survivalShelterRoleMo:getRoleAttrValue(attrId)
+		local isIncrease = true
+		local value
+		local old = oldRoleAttrDic[attrId]
+		local new = curRoleAttrDic[attrId]
 
 		if isIncrease then
 			value = old
@@ -78,7 +86,6 @@ function SurvivalRoleLevelUpView:onOpen()
 	self.attrList:setData(data)
 	gohelper.setActive(self.survivalRoleLevelComp.viewGO, true)
 
-	local weekInfo = SurvivalShelterModel.instance:getWeekInfo()
 	local isRepress = false
 	local fight = weekInfo:getMonsterFight()
 	local intrudeSchemeMos = fight.intrudeSchemeMos
@@ -96,6 +103,10 @@ function SurvivalRoleLevelUpView:onOpen()
 	gohelper.setActive(self.attrNode, false)
 	gohelper.setActive(self.tip1, SurvivalTechConfig.instance:haveUnlockTech(self.oldLevel, self.curLevel))
 	gohelper.setActive(self.tip2, isRepress)
+	self.flow:addWork(FunctionWork.New(function()
+		gohelper.setActive(self.txt_close.gameObject, false)
+		gohelper.setActive(self.btnClose.gameObject, false)
+	end))
 
 	local work = self.survivalRoleLevelComp:getLevelUpAnimWork(self.oldLevel, self.curLevel, nil, nil, true)
 

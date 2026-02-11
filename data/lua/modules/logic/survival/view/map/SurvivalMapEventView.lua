@@ -19,13 +19,15 @@ function SurvivalMapEventView:onInitView()
 	self._gopos4 = gohelper.findChild(self.viewGO, "Panel/Btns/#go_pos4")
 	self._imageModel = gohelper.findChild(self.viewGO, "Panel/Left/#image_model")
 	self._goinfo = gohelper.findChild(self.viewGO, "Panel/#go_info")
-	self._click = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_clicknext")
+	self._click = gohelper.findChildButtonWithAudio(self.viewGO, "Panel/#btn_clicknext")
+	self._click2 = gohelper.findChildButtonWithAudio(self.viewGO, "Panel/#scroll/viewport/#btn_clicknext2")
 	self._goitemRoot = gohelper.findChild(self.viewGO, "Panel/#scroll/viewport/content/#scroll_Reward")
 	self._goitem = gohelper.findChild(self.viewGO, "Panel/#scroll/viewport/content/#scroll_Reward/Viewport/Content/#go_rewarditem")
 end
 
 function SurvivalMapEventView:addEvents()
 	self._click:AddClickListener(self.nextStep, self)
+	self._click2:AddClickListener(self.nextStep, self)
 	self._btnNpc:AddClickListener(self.showNpcInfo, self)
 	SurvivalController.instance:registerCallback(SurvivalEvent.OnMapUnitDel, self._onUnitDel, self)
 	SurvivalController.instance:registerCallback(SurvivalEvent.OnEventViewSelectChange, self.onEventSelectChange, self)
@@ -33,6 +35,7 @@ end
 
 function SurvivalMapEventView:removeEvents()
 	self._click:RemoveClickListener()
+	self._click2:RemoveClickListener()
 	self._btnNpc:RemoveClickListener()
 	SurvivalController.instance:unregisterCallback(SurvivalEvent.OnMapUnitDel, self._onUnitDel, self)
 	SurvivalController.instance:unregisterCallback(SurvivalEvent.OnEventViewSelectChange, self.onEventSelectChange, self)
@@ -89,6 +92,7 @@ function SurvivalMapEventView:_refreshView()
 	else
 		gohelper.setActive(self._golist, true)
 		gohelper.setActive(self._click, false)
+		gohelper.setActive(self._click2, false)
 		gohelper.setActive(self._gobtn, true)
 		gohelper.setActive(self._goitemRoot, false)
 		gohelper.CreateObjList(self, self._createEventItem, self.viewParam.allUnitMo, nil, self._eventItem, SurvivalEventViewItem)
@@ -326,6 +330,7 @@ function SurvivalMapEventView:nextStep()
 	end
 
 	gohelper.setActive(self._click, true)
+	gohelper.setActive(self._click2, true)
 
 	self._curStepCo = table.remove(self._stepList, 1)
 
@@ -337,6 +342,7 @@ function SurvivalMapEventView:nextStep()
 		TaskDispatcher.runRepeat(self._autoShowDesc, self, 0.02)
 	else
 		gohelper.setActive(self._click, false)
+		gohelper.setActive(self._click2, false)
 		gohelper.setActive(self._gobtn, true)
 	end
 
@@ -367,6 +373,7 @@ function SurvivalMapEventView:finishStep()
 
 	if not self._stepList[1] then
 		gohelper.setActive(self._click, false)
+		gohelper.setActive(self._click2, false)
 		gohelper.setActive(self._gobtn, true)
 	end
 

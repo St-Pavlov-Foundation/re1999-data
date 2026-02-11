@@ -16,8 +16,6 @@ function SurvivalEndPart:init(go)
 	self.simage_Character2 = gohelper.findChild(go, "#simage_FullBG2/#simage_Character2")
 	self.simage_Character1_1 = gohelper.findChild(go, "#simage_FullBG2/#simage_Character1_1")
 	self.simage_Character2_1 = gohelper.findChild(go, "#simage_FullBG2/#simage_Character2_1")
-	self.txtDefaultTime = gohelper.findChildTextMesh(self.goDefaultBg, "image_LimitTimeBG/#txt_LimitTime")
-	self.txtEndTime = gohelper.findChildTextMesh(self.goEndBg, "image_LimitTimeBG/#txt_LimitTime")
 end
 
 function SurvivalEndPart:refreshView()
@@ -33,12 +31,6 @@ function SurvivalEndPart:refreshView()
 	gohelper.setActive(self.simage_Character1_1, haveRole1)
 	gohelper.setActive(self.simage_Character2, haveRole2)
 	gohelper.setActive(self.simage_Character2_1, haveRole2)
-
-	if isDefaultBg then
-		self.view._txtLimitTime = self.txtDefaultTime
-	elseif isEndBg then
-		self.view._txtLimitTime = self.txtEndTime
-	end
 end
 
 function SurvivalEndPart:onDestroy()

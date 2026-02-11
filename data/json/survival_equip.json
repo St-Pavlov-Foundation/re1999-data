@@ -25,7 +25,7 @@
   },
   {
     "id": 7300101,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10001,
     "score": 300,
     "effectDesc": "己方受创减免+40%；|<sprite=8>【怒火】+4",
@@ -61,7 +61,7 @@
   },
   {
     "id": 7300102,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10002,
     "score": 300,
     "effectDesc": "己方受创减免+40%；|<sprite=7>【连锁】+4",
@@ -97,7 +97,7 @@
   },
   {
     "id": 7300103,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10003,
     "score": 300,
     "effectDesc": "己方受创减免+40%；|<sprite=9>【混沌<id:1>】+4",
@@ -133,7 +133,7 @@
   },
   {
     "id": 7300104,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10004,
     "score": 300,
     "effectDesc": "己方术法威力+70%",
@@ -169,7 +169,7 @@
   },
   {
     "id": 7300105,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10005,
     "score": 300,
     "effectDesc": "己方暴击率+50%",
@@ -205,7 +205,7 @@
   },
   {
     "id": 7300201,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10006,
     "score": 300,
     "effectDesc": "己方创伤加成+40%；|入场及每2回合开始时，行动点临时+1，咒语获取上限临时+1",
@@ -241,7 +241,7 @@
   },
   {
     "id": 7300202,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10007,
     "score": 300,
     "effectDesc": "己方暴击创伤+30%；|【痕契之击<id:0>】将额外攻击2名敌方目标",
@@ -277,7 +277,7 @@
   },
   {
     "id": 7300203,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10008,
     "score": 300,
     "effectDesc": "己方仪式威力+70%",
@@ -313,7 +313,7 @@
   },
   {
     "id": 7301101,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10101,
     "score": 300,
     "effectDesc": "己方受创减免+40%；{check(count9 > 0)}激活<sprite=10>【电能痕契<id:0>】时生效：<sprite=7>【连锁】+5",
@@ -349,7 +349,7 @@
   },
   {
     "id": 7301102,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10102,
     "score": 300,
     "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=10>【电能痕契<id:0>】时生效：<sprite=8>【怒火】+5",
@@ -385,7 +385,7 @@
   },
   {
     "id": 7301201,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10103,
     "score": 300,
     "effectDesc": "己方创伤加成+40%；|<sprite=7>【连锁】+2；|布设【术阵】时，为术阵附加额外效果：使己方创伤加成+30%，术阵结束后或被顶替后移除额外效果",
@@ -421,7 +421,7 @@
   },
   {
     "id": 7301202,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10104,
     "score": 300,
     "effectDesc": "己方暴击率+40%；|布设中每有2件<sprite=0>【电能<id:0>】<sprite=3>【额外行动<id:0>】盒中之物，<sprite=7>【连锁】+1，当前<sprite=7>【连锁】加成{count10}；|{check(count9 > 0)}自身处于首个槽位且激活<sprite=10>【电能痕契<id:0>】时生效：<sprite=7>【连锁】+4",
@@ -457,7 +457,7 @@
   },
   {
     "id": 7301203,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10105,
     "score": 300,
     "effectDesc": "己方创伤加成+40%；|布设中每有2件<sprite=0>【电能<id:0>】<sprite=2>【薪血<id:0>】盒中之物，<sprite=8>【怒火】+1，当前<sprite=8>【怒火】加成{count10}；|{check(count9 > 0)}激活<sprite=10>【电能痕契<id:0>】时生效：<sprite=8>【怒火】+3",
@@ -493,7 +493,7 @@
   },
   {
     "id": 7301204,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10106,
     "score": 300,
     "effectDesc": "己方术法威力+40%；|{check(count9 > 0)}激活<sprite=10>【电能痕契<id:0>】时生效：【痕契之击<id:0>】攻击后使目标陷入【导电】，若暴击，则额外使目标陷入【麻痹】；<sprite=7>【连锁】+2",
@@ -529,7 +529,7 @@
   },
   {
     "id": 7301205,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10107,
     "score": 300,
     "effectDesc": "己方暴击创伤+30%；|{check(count9 > 0)}激活<sprite=10>【电能痕契<id:0>】时生效：进入战斗时，开启【涌动电场lv3】，<sprite=7>【连锁】+2",
@@ -565,7 +565,7 @@
   },
   {
     "id": 7301206,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10108,
     "score": 300,
     "effectDesc": "己方暴击率+30%；|{check(count9 > 0)}激活<sprite=10>【电能痕契<id:0>】生效：回合结束时，给当前【涌动电场】注入30点【电能】，<sprite=7>【连锁】+2",
@@ -601,7 +601,7 @@
   },
   {
     "id": 7302101,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10201,
     "score": 300,
     "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=11>【启示痕契<id:0>】时生效：<sprite=8>【怒火】+5",
@@ -637,7 +637,7 @@
   },
   {
     "id": 7302102,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10202,
     "score": 300,
     "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=11>【启示痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+5",
@@ -673,7 +673,7 @@
   },
   {
     "id": 7302201,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10203,
     "score": 300,
     "effectDesc": "己方创伤加成+40%；|【即兴咒语】的创伤加成+20%；|{check(count9 > 0)}相邻的盒中之物都归属<sprite=1>【启示<id:0>】时生效：己方角色灵光上限+2，<sprite=9>【混沌<id:1>】+1",
@@ -709,7 +709,7 @@
   },
   {
     "id": 7302202,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10204,
     "score": 300,
     "effectDesc": "己方术法威力+40%；|布设中每有2件<sprite=1>【启示<id:0>】<sprite=4>【仪式<id:0>】盒中之物，<sprite=9>【混沌<id:1>】+1，当前<sprite=9>【混沌<id:1>】加成：{count10}；|{check(count9 > 0)}相邻的盒中之物都归属<sprite=1>【启示<id:0>】时生效：回合开始时，己方灵光+2",
@@ -745,7 +745,7 @@
   },
   {
     "id": 7302203,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10205,
     "score": 300,
     "effectDesc": "己方术法威力+40%；|【即兴咒语】的术法威力+20%；|{check(count9 > 0)}激活<sprite=11>【启示痕契<id:0>】时生效：【痕契之击<id:0>】攻击时，目标每损失10%最大生命，则提升对其造成的30%最终伤害",
@@ -781,7 +781,7 @@
   },
   {
     "id": 7302204,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10206,
     "score": 300,
     "effectDesc": "己方穿透率+30%；|【即兴咒语】的穿透率+20%；|{check(count9 > 0)}激活<sprite=11>【启示痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+2",
@@ -817,7 +817,7 @@
   },
   {
     "id": 7302205,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10207,
     "score": 300,
     "effectDesc": "己方暴击率+30%；|{check(count9 > 0)}激活<sprite=11>【启示痕契<id:0>】时生效：布设中每有1点<sprite=9>【混沌<id:1>】，痕契暴击率+5%，当前加成{5*out_count4}%；|{check(count10 > 0)}相邻的盒中之物归属<sprite=1>【启示<id:0>】时生效：【痕契之击<id:0>】溢出的100%暴击转化为暴击创伤",
@@ -853,7 +853,7 @@
   },
   {
     "id": 7302206,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10208,
     "score": 300,
     "effectDesc": "己方暴击创伤+30%；|{check(count9 > 0)}激活<sprite=11>【启示痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+2；|{check(count13 > 0)}相邻的盒中之物都归属<sprite=1>【启示<id:0>】时生效，【痕契之击<id:0>】的发动条件下调成即兴咒语每攻击5次",
@@ -889,7 +889,7 @@
   },
   {
     "id": 7303101,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10301,
     "score": 300,
     "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=12>【薪血痕契<id:0>】时生效：<sprite=8>【怒火】+5",
@@ -925,7 +925,7 @@
   },
   {
     "id": 7303102,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10302,
     "score": 300,
     "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=12>【薪血痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+5",
@@ -961,7 +961,7 @@
   },
   {
     "id": 7303201,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10303,
     "score": 300,
     "effectDesc": "己方治疗率+30%；|{check(count9 > 0)}激活<sprite=12>【薪血痕契<id:0>】时生效：己方治疗率+20%",
@@ -997,7 +997,7 @@
   },
   {
     "id": 7303202,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10304,
     "score": 300,
     "effectDesc": "己方暴击率+30%；|{check(count9 > 0)}处于首位槽位且激活<sprite=12>【薪血痕契<id:0>】时生效：回合开始时，己方全体失去30%当前生命；攻击时，若己方角色当前生命低于40%，攻击临时提高30%；回合结束时，己方全体回复30%最大生命，<sprite=8>【怒火】+3",
@@ -1033,7 +1033,7 @@
   },
   {
     "id": 7303203,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10305,
     "score": 300,
     "effectDesc": "己方暴击创伤+30%；|{check(count9 > 0)}激活<sprite=12>【薪血痕契<id:0>】时生效：己方暴击率+30%，暴击创伤+30%",
@@ -1069,7 +1069,7 @@
   },
   {
     "id": 7303204,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10306,
     "score": 300,
     "effectDesc": "己方术法威力+40%；|布设中每有2件<sprite=2>【薪血<id:0>】<sprite=3>【额外行动<id:0>】盒中之物，<sprite=8>【怒火】+1，当前<sprite=8>【怒火】加成：{count10}；|{check(count9 > 0)}激活<sprite=12>【薪血痕契<id:0>】时生效：<sprite=8>【怒火】+3",
@@ -1105,7 +1105,7 @@
   },
   {
     "id": 7303205,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10307,
     "score": 300,
     "effectDesc": "己方穿透率+40%；|{check(count9 > 0)}激活<sprite=12>【薪血痕契<id:0>】时生效：【痕契之击<id:0>】：额外提升10%*已消耗【薪血】计数值的创伤；<sprite=8>【怒火】+3",
@@ -1141,7 +1141,7 @@
   },
   {
     "id": 7303206,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10308,
     "score": 300,
     "effectDesc": "己方最大生命+20%；|{check(count9 > 0)}激活<sprite=12>【薪血痕契<id:0>】时生效:<sprite=8>【怒火】+2，己方最大生命+20%",
@@ -1177,7 +1177,7 @@
   },
   {
     "id": 7304101,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10401,
     "score": 300,
     "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=13>【额外行动痕契<id:0>】时生效：<sprite=8>【怒火】+5",
@@ -1213,7 +1213,7 @@
   },
   {
     "id": 7304102,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10402,
     "score": 300,
     "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=13>【额外行动痕契<id:0>】时生效：<sprite=7>【连锁】+5",
@@ -1249,7 +1249,7 @@
   },
   {
     "id": 7304201,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10403,
     "score": 300,
     "effectDesc": "己方创伤加成+40%；|己方额外行动时，创伤加成+10%；|布设中每有1点<sprite=7>【连锁】，额外行动时，创伤加成+5%，当前加成：{5*out_count1}%",
@@ -1285,7 +1285,7 @@
   },
   {
     "id": 7304202,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10404,
     "score": 300,
     "effectDesc": "己方创伤加成+40%；|{check(count9 > 0)}激活<sprite=13>【额外行动痕契<id:0>】时生效：<sprite=8>【怒火】+4",
@@ -1321,7 +1321,7 @@
   },
   {
     "id": 7304203,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10405,
     "score": 300,
     "effectDesc": "己方暴击率+30%；|{check(count9 > 0)}激活<sprite=13>【额外行动痕契<id:0>】时生效：<sprite=7>【连锁】+3；【痕契之击lv4】使己方全体提升2%暴击率（最多提升30次）",
@@ -1357,7 +1357,7 @@
   },
   {
     "id": 7304204,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10406,
     "score": 300,
     "effectDesc": "己方穿透率+30%；|{check(count9 > 0)}激活<sprite=13>【额外行动痕契<id:0>】时生效：<sprite=7>【连锁】+4",
@@ -1393,7 +1393,7 @@
   },
   {
     "id": 7304205,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10407,
     "score": 300,
     "effectDesc": "己方术法威力+40%；|{check(count9 > 0)}激活<sprite=13>【额外行动痕契<id:0>】时生效：<sprite=8>【怒火】+2；【痕契之击<id:0>】溢出的暴击率转化为100%等额的暴击创伤",
@@ -1429,7 +1429,7 @@
   },
   {
     "id": 7304206,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10408,
     "score": 300,
     "effectDesc": "己方暴击创伤+30%；|{check(count9 > 0)}激活<sprite=13>【额外行动痕契<id:0>】时生效：<sprite=7>【连锁】+3；【痕契之击lv4】使己方全体提升2%创伤加成（最多提升30次）",
@@ -1465,7 +1465,7 @@
   },
   {
     "id": 7305101,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10501,
     "score": 300,
     "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=14>【仪式痕契<id:0>】时生效：<sprite=8>【怒火】+5",
@@ -1501,7 +1501,7 @@
   },
   {
     "id": 7305102,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10502,
     "score": 300,
     "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=14>【仪式痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+5",
@@ -1537,7 +1537,7 @@
   },
   {
     "id": 7305201,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10503,
     "score": 300,
     "effectDesc": "己方暴击率+30%;|{check(count9 > 0)}激活<sprite=14>【仪式痕契<id:0>】时生效：<sprite=8>【怒火】+4，己方全体暴击率+30%",
@@ -1573,7 +1573,7 @@
   },
   {
     "id": 7305202,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10504,
     "score": 300,
     "effectDesc": "己方暴击创伤+30%；|{check(count9 > 0)}激活<sprite=14>【仪式痕契<id:0>】时生效：<sprite=7>【连锁】+4；己方全体暴击创伤+30%",
@@ -1609,7 +1609,7 @@
   },
   {
     "id": 7305203,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10505,
     "score": 300,
     "effectDesc": "己方穿透率+40%；|{check(count9 > 0)}激活<sprite=14>【仪式痕契<id:0>】时生效：进入战斗时，使己方激情最低的角色激情+5，重复2次",
@@ -1645,7 +1645,7 @@
   },
   {
     "id": 7305204,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10506,
     "score": 300,
     "effectDesc": "己方仪式威力+40%；|{check(count9 > 0)}激活<sprite=14>【仪式痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+4",
@@ -1681,7 +1681,7 @@
   },
   {
     "id": 7305205,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10507,
     "score": 300,
     "effectDesc": "己方攻击+5%；|{check(count9 > 0)}激活<sprite=14>【仪式痕契<id:0>】时生效：己方咒语获取数量上限+2，己方仪式不消耗行动点，<sprite=9>【混沌<id:1>】+1",
@@ -1717,7 +1717,7 @@
   },
   {
     "id": 7305206,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10508,
     "score": 300,
     "effectDesc": "己方创伤加成+40%；|{check(count9 > 0)}激活<sprite=14>【仪式痕契<id:0>】时生效：【痕契之击<id:0>】可使己方全体获得5层【礼仪】，己方免疫【心神不宁】状态，<sprite=9>【混沌<id:1>】+1",
@@ -1753,7 +1753,7 @@
   },
   {
     "id": 7306101,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10601,
     "score": 300,
     "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+5",
@@ -1789,7 +1789,7 @@
   },
   {
     "id": 7306102,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10602,
     "score": 300,
     "effectDesc": "己方受创减免+40%；|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：<sprite=7>【连锁】+5",
@@ -1825,7 +1825,7 @@
   },
   {
     "id": 7306201,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10603,
     "score": 300,
     "effectDesc": "己方攻击+5%；|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+2|{check(count9> 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：触发【痕契之击<id:0>】的能量点数下调至80",
@@ -1861,7 +1861,7 @@
   },
   {
     "id": 7306202,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10604,
     "score": 300,
     "effectDesc": "己方暴击率+30%；|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+2|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：己方角色主动释放咒语时每为敌方目标施加1个【状态异常】后，痕契积攒的能量提升至5",
@@ -1897,7 +1897,7 @@
   },
   {
     "id": 7306203,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10605,
     "score": 300,
     "effectDesc": "己方暴击创伤+30%；|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：<sprite=9>【混沌<id:1>】+2|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：【痕契之击<id:0>】赋予的状态变为【悲鸣终响<id:0>】",
@@ -1933,7 +1933,7 @@
   },
   {
     "id": 7306204,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10606,
     "score": 300,
     "effectDesc": "己方本源创伤+40%；|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：<sprite=7>【连锁】+2|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：状态异常结算的比例提高至120%",
@@ -1969,7 +1969,7 @@
   },
   {
     "id": 7306205,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10607,
     "score": 300,
     "effectDesc": "己方仪式威力+40%；|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：<sprite=7>【连锁】+2|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：回合开始时，己方全体获得本源创伤加成，持续1回合，其效果等同于当前各自的创伤加成*20%+术法威力*20%+仪式威力*20%",
@@ -2005,7 +2005,7 @@
   },
   {
     "id": 7306206,
-    "extendCost": 500,
+    "extendCost": 400,
     "group": 10608,
     "score": 300,
     "effectDesc": "己方创伤加成+40%；|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：<sprite=7>【连锁】+2|{check(count9 > 0)}激活<sprite=15>【状态异常痕契<id:0>】时生效：行动点+1",

@@ -14,8 +14,8 @@ function SurvivalShelterSceneViewComp:_checkLevelUp()
 end
 
 function SurvivalShelterSceneViewComp:onSceneClose(sceneId, levelId)
-	ViewMgr.instance:unregisterCallback(RedDotEvent.OnCloseViewFinish, self._checkLevelUp, self)
-	SurvivalController.instance:unregisterCallback(RedDotEvent.onFlowEnd, self._checkLevelUp, self)
+	ViewMgr.instance:unregisterCallback(ViewEvent.OnCloseViewFinish, self._checkLevelUp, self)
+	SurvivalController.instance:unregisterCallback(SurvivalEvent.onFlowEnd, self._checkLevelUp, self)
 end
 
 return SurvivalShelterSceneViewComp

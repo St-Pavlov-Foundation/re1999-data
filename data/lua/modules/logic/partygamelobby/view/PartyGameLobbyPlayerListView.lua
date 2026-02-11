@@ -309,12 +309,16 @@ function PartyGameLobbyPlayerListView:_checkKeyPress()
 	end
 end
 
+function PartyGameLobbyPlayerListView:_isDoingClickGuide()
+	return not GuideModel.instance:isGuideFinish(PartyGameLobbyEnum.GuideIds.FirstGuideId) or not GuideModel.instance:isGuideFinish(PartyGameLobbyEnum.GuideIds.LastGuideId)
+end
+
 function PartyGameLobbyPlayerListView:_updateMainPlayerPos()
 	if not self._goPlayerList then
 		return
 	end
 
-	if not GuideController.instance:isForbidGuides() and GuideModel.instance:isDoingClickGuide() then
+	if not GuideController.instance:isForbidGuides() and self:_isDoingClickGuide() then
 		return
 	end
 

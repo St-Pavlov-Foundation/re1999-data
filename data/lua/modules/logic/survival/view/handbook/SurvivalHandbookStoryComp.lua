@@ -50,7 +50,8 @@ function SurvivalHandbookStoryComp:onSelectChange(item)
 	for i, v in ipairs(item.subTypes) do
 		table.insert(datas, {
 			subType = v,
-			type = self.handbookType
+			type = self.handbookType,
+			tabIndex = item.itemIndex
 		})
 	end
 

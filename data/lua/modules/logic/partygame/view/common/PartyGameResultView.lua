@@ -114,7 +114,7 @@ function PartyGameResultView:showCloseBtn()
 end
 
 function PartyGameResultView:onClose()
-	PartyGameController.instance:exitGame()
+	PartyGameController.instance:exitPartyGame()
 end
 
 function PartyGameResultView:onDestroyView()

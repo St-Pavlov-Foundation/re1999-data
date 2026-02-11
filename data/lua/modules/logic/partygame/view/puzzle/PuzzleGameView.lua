@@ -67,6 +67,7 @@ function PuzzleGameView:onDestroy()
 	end
 
 	TaskDispatcher.cancelTask(self.delayHide, self)
+	TaskDispatcher.cancelTask(self.delayRecover, self)
 end
 
 function PuzzleGameView:onCreateCompData()
@@ -332,7 +333,7 @@ function PuzzleGameView:onSettleExit()
 end
 
 function PuzzleGameView:_checkDrag()
-	return not self.canOperate
+	return not self.canOperate or self.dragIndex
 end
 
 function PuzzleGameView:_beginDrag(index)
@@ -340,6 +341,10 @@ function PuzzleGameView:_beginDrag(index)
 end
 
 function PuzzleGameView:_onDrag(index, pointerEventData)
+	if not self.dragIndex then
+		return
+	end
+
 	local pieceItems = self.playerPieceItemsMap[self.mainPlayerIndex]
 
 	for k, item in ipairs(pieceItems) do
@@ -366,32 +371,34 @@ function PuzzleGameView:_onDrag(index, pointerEventData)
 end
 
 function PuzzleGameView:_endDrag(index)
+	if not self.dragIndex then
+		return
+	end
+
 	local pieceItems = self.playerPieceItemsMap[self.mainPlayerIndex]
 	local pieceItem = pieceItems[index]
 
 	ZProj.TweenHelper.KillByObj(pieceItem.transform)
 
-	local canExecute = self.GameInterface.HotFix_Temp("CanExecuteCommand", nil, nil)
+	if self.targetIndex then
+		local targetItem = pieceItems[self.targetIndex]
 
-	if self.targetIndex and canExecute == "True" then
-		if canExecute == "True" then
-			local targetItem = pieceItems[self.targetIndex]
+		PuzzleGameView.tweenPos(pieceItem.transform, targetItem.initPosX, targetItem.initPosY)
+		PuzzleGameView.tweenPos(targetItem.transform, pieceItem.initPosX, pieceItem.initPosY)
+		self.GameInterface.DragPuzzle(index, self.targetIndex)
+		gohelper.setActive(targetItem.goSelect, false)
 
-			PuzzleGameView.tweenPos(pieceItem.transform, targetItem.initPosX, targetItem.initPosY)
-			PuzzleGameView.tweenPos(targetItem.transform, pieceItem.initPosX, pieceItem.initPosY)
-			self.GameInterface.DragPuzzle(index, self.targetIndex)
-			gohelper.setActive(targetItem.goSelect, false)
+		self.targetIndex = nil
 
-			self.targetIndex = nil
-
-			AudioMgr.instance:trigger(AudioEnum3_4.PartyGame18.play_ui_activity_mark_finish)
-		else
-			recthelper.setAnchor(pieceItem.transform, pieceItem.initPosX, pieceItem.initPosY)
-		end
+		AudioMgr.instance:trigger(AudioEnum3_4.PartyGame18.play_ui_activity_mark_finish)
 	else
 		PuzzleGameView.tweenPos(pieceItem.transform, pieceItem.initPosX, pieceItem.initPosY)
 	end
 
+	TaskDispatcher.runDelay(self.delayRecover, self, 0.2)
+end
+
+function PuzzleGameView:delayRecover()
 	self.dragIndex = nil
 end
 

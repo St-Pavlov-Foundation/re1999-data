@@ -91,6 +91,7 @@ function SurvivalMainViewButton:removeEvents()
 	self:removeEventCb(SurvivalController.instance, SurvivalEvent.OnBuildingInfoUpdate, self.onBuildingInfoUpdate, self)
 	self:removeEventCb(SurvivalController.instance, SurvivalEvent.OnShelterBagUpdate, self.onShelterBagUpdate, self)
 	SurvivalController.instance:unregisterCallback(SurvivalEvent.OnEquipRedUpdate, self.updateEquipRed, self)
+	TaskDispatcher.cancelTask(self.onDelayCheckMainViewAnim, self)
 end
 
 function SurvivalMainViewButton:refreshHelpBtnPos()
@@ -267,14 +268,21 @@ function SurvivalMainViewButton:setViewUIVisible(isVisible)
 
 	self._isViewUIVisible = isVisible
 
+	TaskDispatcher.cancelTask(self.onDelayCheckMainViewAnim, self)
+
 	if isVisible then
 		self.animator:Play("in", 0, 0)
+		TaskDispatcher.runDelay(self.onDelayCheckMainViewAnim, self, 0.767)
 	else
 		self.animator:Play("out", 0, 0)
 	end
 
 	gohelper.setActive(self.goRaycast, not isVisible)
 	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnMainViewVisible, isVisible)
+end
+
+function SurvivalMainViewButton:onDelayCheckMainViewAnim()
+	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnDelayCheckMainViewAnim)
 end
 
 function SurvivalMainViewButton:refreshInterceptMask()

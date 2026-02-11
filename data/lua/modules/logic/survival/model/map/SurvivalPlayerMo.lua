@@ -31,7 +31,13 @@ function SurvivalPlayerMo:getResPath()
 	local sceneMo = SurvivalMapModel.instance:getSceneMo()
 	local subType = sceneMo:getBlockTypeByPos(self.pos)
 
-	if weekInfo:getAttr(SurvivalEnum.AttrType.Vehicle_Ice) > 0 then
+	if subType == SurvivalEnum.UnitSubType.Water then
+		if weekInfo:getAttr(SurvivalEnum.AttrType.Vehicle_Water) > 0 then
+			constId = SurvivalEnum.ConstId.Vehicle_Water
+		else
+			constId = SurvivalEnum.ConstId.Vehicle_WaterNormal
+		end
+	elseif weekInfo:getAttr(SurvivalEnum.AttrType.Vehicle_Ice) > 0 then
 		constId = SurvivalEnum.ConstId.Vehicle_Ice
 	elseif weekInfo:getAttr(SurvivalEnum.AttrType.Vehicle_Magma) > 0 then
 		constId = SurvivalEnum.ConstId.Vehicle_Magma
@@ -39,12 +45,6 @@ function SurvivalPlayerMo:getResPath()
 		constId = SurvivalEnum.ConstId.Vehicle_Miasma
 	elseif weekInfo:getAttr(SurvivalEnum.AttrType.Vehicle_Morass) > 0 then
 		constId = SurvivalEnum.ConstId.Vehicle_Morass
-	elseif subType == SurvivalEnum.UnitSubType.Water then
-		if weekInfo:getAttr(SurvivalEnum.AttrType.Vehicle_Water) > 0 then
-			constId = SurvivalEnum.ConstId.Vehicle_Water
-		else
-			constId = SurvivalEnum.ConstId.Vehicle_WaterNormal
-		end
 	end
 
 	if constId then

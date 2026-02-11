@@ -111,4 +111,32 @@ function ChgViewBaseContainer:onContainerDestroy()
 	ChgViewBaseContainer.super.onContainerDestroy(self)
 end
 
+function ChgViewBaseContainer:trackReset()
+	ChgBattleModel.instance:track_act_chengheguang_operation(ChgEnum.OperationType.Reset)
+end
+
+function ChgViewBaseContainer:trackFailReset()
+	ChgBattleModel.instance:track_act_chengheguang_operation(ChgEnum.OperationType.FailReset)
+end
+
+function ChgViewBaseContainer:trackExit()
+	ChgBattleModel.instance:track_act_chengheguang_operation(ChgEnum.OperationType.Exit)
+end
+
+function ChgViewBaseContainer:trackFailExit()
+	ChgBattleModel.instance:track_act_chengheguang_operation(ChgEnum.OperationType.FailExit)
+end
+
+function ChgViewBaseContainer:trackFinishRound(IsWin)
+	local IsFirst = false
+
+	ChgBattleModel.instance:track_act_chengheguang_operation(ChgEnum.OperationType.FinishRound, IsFirst, IsWin)
+end
+
+function ChgViewBaseContainer:trackPass(IsFirst)
+	local IsWin = true
+
+	ChgBattleModel.instance:track_act_chengheguang_operation(ChgEnum.OperationType.Pass, IsFirst, IsWin)
+end
+
 return ChgViewBaseContainer

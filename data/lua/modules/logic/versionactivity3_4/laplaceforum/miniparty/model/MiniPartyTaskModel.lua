@@ -33,8 +33,20 @@ function MiniPartyTaskModel:isTaskUnlock(taskId, actId)
 	if taskMo.config.showDay >= 0 then
 		local actStartTime = ActivityModel.instance:getActStartTime(VersionActivity3_4Enum.ActivityId.LaplaceMiniParty) / 1000
 		local diffDay = math.floor((ServerTime.now() - actStartTime) / TimeUtil.OneDaySecond)
+		local hasOffline = false
 
-		if diffDay >= taskMo.config.showDay - 1 then
+		if not LuaUtil.isEmptyStr(taskMo.config.showOfflineTime) then
+			local endTime = TimeUtil.stringToTimestamp(taskMo.config.showOfflineTime) - ServerTime.clientToServerOffset()
+			local limitTime = endTime - ServerTime.now()
+			local canGet = self:isTaskCanGet(taskId, actId)
+			local hasFinished = self:isTaskFinished(taskId, actId)
+
+			if not canGet and not hasFinished then
+				hasOffline = limitTime <= 0
+			end
+		end
+
+		if diffDay >= taskMo.config.showDay - 1 and not hasOffline then
 			couldUnlock = true
 		end
 	end

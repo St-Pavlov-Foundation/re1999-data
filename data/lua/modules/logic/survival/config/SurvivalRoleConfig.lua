@@ -108,10 +108,8 @@ function SurvivalRoleConfig:getRoleMaxLevel()
 	return #lua_survival_level.configList
 end
 
-function SurvivalRoleConfig:getLevelUpNeedExp(level)
-	if not self:isMaxLevel(level) then
-		return lua_survival_level.configDict[level].exp
-	end
+function SurvivalRoleConfig:getLevelNeedExp(level)
+	return lua_survival_level.configDict[level].exp
 end
 
 function SurvivalRoleConfig:getUnlockCondition(roleId)
@@ -170,17 +168,24 @@ function SurvivalRoleConfig:getSkillDesc(roleId)
 	if not string.nilorempty(skillCfg.effect1) then
 		local infos = string.splitToNumber(skillCfg.effect1, "#")
 
-		if skillId == 2 or skillId == 3 or skillId == 4 or skillId == 5 then
-			param = infos[2]
+		if skillId == 2 then
+			param = {
+				infos[2],
+				infos[3]
+			}
+		elseif skillId == 3 or skillId == 4 or skillId == 5 then
+			param = {
+				infos[2]
+			}
 		elseif skillId == 6 then
-			param = infos[3]
+			param = {
+				infos[3]
+			}
 		end
 	end
 
 	if param then
-		return GameUtil.getSubPlaceholderLuaLang(skillCfg.desc, {
-			param
-		})
+		return GameUtil.getSubPlaceholderLuaLang(skillCfg.desc, param)
 	else
 		return skillCfg.desc
 	end

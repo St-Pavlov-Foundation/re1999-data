@@ -84,6 +84,18 @@ function V3a4_Chg_LevelItem:getElementCoByEpisodeId()
 	return c:getElementCoByEpisodeId(self:episodeId())
 end
 
+function V3a4_Chg_LevelItem:trackPass(...)
+	local littleGameCo = self:getElementCoByEpisodeId()
+
+	if not littleGameCo then
+		return
+	end
+
+	local c = self:baseViewContainer()
+
+	return c:trackPass(...)
+end
+
 function V3a4_Chg_LevelItem:setData(mo)
 	V3a4_Chg_LevelItem.super.setData(self, mo)
 
@@ -91,7 +103,7 @@ function V3a4_Chg_LevelItem:setData(mo)
 	local isBattle = self:getElementCoByEpisodeId() and true or false
 	local isPassed = self:isLevelPass()
 	local isUnLocked = self:isLevelUnlock()
-	local numStr = string.format("%02d", self:index())
+	local numStr = self:index() < 9 and string.format("%02d", self:index()) or ""
 
 	self:_setNum(numStr)
 	self:_setName(episodeCO.name)
@@ -154,10 +166,14 @@ function V3a4_Chg_LevelItem:playStory()
 	if littleGameCo then
 		self._flow:addWork(FunctionWork.New(ChgController.enterGame, ChgController.instance, littleGameCo))
 		self._flow:addWork(WaitEventWork.New(WaitEventWorkParam))
+	else
+		ChgBattleModel.instance:clear()
 	end
 
 	if not self:isLevelPass() then
 		self._flow:addWork(FunctionWork.New(self._onFinishedEpisode, self))
+	else
+		self._flow:addWork(FunctionWork.New(self.trackPass, self))
 	end
 
 	if littleGameCo then
@@ -185,6 +201,7 @@ function V3a4_Chg_LevelItem:_onFinishedEpisode()
 
 	DungeonModel.instance:setLastSendEpisodeId(self:episodeId())
 	DungeonRpc.instance:sendEndDungeonRequest(false)
+	self:trackPass(true)
 end
 
 function V3a4_Chg_LevelItem:_destroyWorkFlow()

@@ -889,7 +889,7 @@
     "name": "个人任务",
     "desc": "在单次“好运字福”中抢到15个红包",
     "listenerType": "Act225RedEnvelopeCountPerTimes",
-    "listenerParam": "25",
+    "listenerParam": "15",
     "maxProgress": 1,
     "sortId": 3,
     "prepose": "",

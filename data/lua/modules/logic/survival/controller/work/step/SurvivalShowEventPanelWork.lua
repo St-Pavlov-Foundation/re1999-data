@@ -49,7 +49,7 @@ function SurvivalShowEventPanelWork:onStart(context)
 
 		panel.isFirstSearch = self.isFirst
 
-		SurvivalMapHelper.instance:tryShowServerPanel(panel)
+		SurvivalMapHelper.instance:tryShowServerPanel(panel, source)
 	end
 
 	self:onDone(true)

@@ -25933,7 +25933,7 @@
   },
   {
     "id": "doubleactivity_outtips",
-    "lang": "▩1%s+▩2%s"
+    "lang": "▩1%s+▩2%s%"
   },
   {
     "id": "doubleactivity_intips",
@@ -26785,7 +26785,7 @@
   },
   {
     "id": "p_v3a4_partygameenterview_txt_opentime",
-    "lang": "每日10:00-14:00,18:00-24:00开启"
+    "lang": "每日6点-次日凌晨3点开启"
   },
   {
     "id": "p_survivalroleselectview_txt_unlocktips",

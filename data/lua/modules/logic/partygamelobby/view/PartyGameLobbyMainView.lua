@@ -280,6 +280,16 @@ function PartyGameLobbyMainView:_onRoomStateChange(curRoomState, prevRoomState)
 	end
 
 	gohelper.setActive(self._btnexit, curRoomState ~= PartyGameLobbyEnum.RoomState.InMatch)
+
+	if prevRoomState == PartyGameLobbyEnum.RoomState.InRoom then
+		self:_closeOtherView()
+	end
+end
+
+function PartyGameLobbyMainView:_closeOtherView()
+	ViewMgr.instance:closeView(ViewName.PlayerView)
+	ViewMgr.instance:closeView(ViewName.NewPlayerCardContentView)
+	ViewMgr.instance:closeView(ViewName.PartyGameLobbyPlayerInfoView)
 end
 
 function PartyGameLobbyMainView:_closeViewByState(roomState)

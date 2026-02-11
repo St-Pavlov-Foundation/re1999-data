@@ -64,13 +64,16 @@ function SurvivalDescExpressionHelper:parstDesc(desc, attrMap, attrMapTotal)
 	funcEnvTb.attrMap = attrMap or {}
 	funcEnvTb.attrMapTotal = attrMapTotal or {}
 	funcEnvTb.hasAttrVal = false
+	funcEnvTb.roleattr1 = nil
 
-	local survivalShelterRoleMo = SurvivalShelterModel.instance:getWeekInfo().survivalShelterRoleMo
+	local isInSurvivalScene = SurvivalMapHelper.instance:isInSurvivalScene()
 
-	if survivalShelterRoleMo then
-		funcEnvTb.roleAttr1 = survivalShelterRoleMo:getRoleAttrValue(1)
-	else
-		funcEnvTb.roleAttr1 = nil
+	if isInSurvivalScene then
+		local weekInfo = SurvivalShelterModel.instance:getWeekInfo()
+
+		if weekInfo and weekInfo.survivalShelterRoleMo then
+			funcEnvTb.roleattr1 = weekInfo.survivalShelterRoleMo:getRoleAttrValue(1)
+		end
 	end
 
 	local result = string.gsub(desc, "%b{}", SurvivalDescExpressionHelper._passExpressionStr)

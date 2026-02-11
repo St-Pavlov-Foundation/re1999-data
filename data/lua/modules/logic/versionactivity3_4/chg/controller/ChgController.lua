@@ -68,7 +68,7 @@ function ChgController:completeGame(callback, cbObj)
 end
 
 function ChgController:exitGame()
-	ChgController.instance:dispatchEvent(ChgEvent.OnGameFinished)
+	self:dispatchEvent(ChgEvent.OnGameFinished)
 end
 
 function ChgController:_onRemoveElement(elementId)
@@ -77,7 +77,7 @@ end
 
 function ChgController:startGuide(guideId)
 	assert(guideId)
-	ChgController.instance:dispatchEvent(ChgEvent.GuideStart, tostring(guideId))
+	self:dispatchEvent(ChgEvent.GuideStart, tostring(guideId))
 end
 
 ChgController.instance = ChgController.New()

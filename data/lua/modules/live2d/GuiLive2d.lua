@@ -59,8 +59,8 @@ function GuiLive2d:_onScreenResize()
 
 		self._cameraSize = CharacterVoiceEnum.RTCameraSize / scale
 
-		if self._cameraSize > 0 then
-			camera.orthographicSize = self._cameraSize
+		if self._cameraSize > 0 and self._camera then
+			self._camera.orthographicSize = self._cameraSize
 		end
 	end
 end

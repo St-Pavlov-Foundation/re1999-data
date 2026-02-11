@@ -82,7 +82,9 @@ function SurvivalBagItemMo:getSellPrice(shopId)
 		attr = weekMo:getDerivedAttrFinalValue(SurvivalEnum.DerivedAttr.Sell_ComputingCenter)
 	end
 
-	return math.floor(sellPrice * attr)
+	local num = sellPrice * attr
+
+	return math.floor(num)
 end
 
 function SurvivalBagItemMo:isCurrency()
@@ -213,16 +215,6 @@ function SurvivalBagItemMo:isDisasterRecommendItem(mapId)
 	end
 
 	if mapId then
-		local groupMapperCo = lua_survival_map_group_mapping.configDict[mapId]
-		local groupId = groupMapperCo and groupMapperCo.id or 0
-		local groupCo = lua_survival_map_group.configDict[groupId]
-		local initDisaster = groupCo.initDisaster
-		local disasterCo = lua_survival_disaster.configDict[initDisaster]
-
-		if disasterCo and disasterCo.recommend == self.co.id then
-			return true
-		end
-
 		local weekMo = SurvivalShelterModel.instance:getWeekInfo()
 		local mapInfoMo = weekMo:getSurvivalMapInfoMo(mapId)
 		local disasterCos = mapInfoMo.disasterCos
@@ -237,17 +229,6 @@ function SurvivalBagItemMo:isDisasterRecommendItem(mapId)
 
 		if not sceneMo then
 			return false
-		end
-
-		if not sceneMo._mapInfo.groupCo then
-			return false
-		end
-
-		local initDisaster = sceneMo._mapInfo.groupCo.initDisaster
-		local disasterCo = lua_survival_disaster.configDict[initDisaster]
-
-		if disasterCo and disasterCo.recommend == self.co.id then
-			return true
 		end
 
 		local disasterCos = sceneMo._mapInfo.disasterCos

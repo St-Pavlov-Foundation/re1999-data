@@ -304,7 +304,7 @@ function DungeonResChapterItem:showMultiDropTips()
 	if multiDropShow then
 		local actName = Activity217Model.instance:getActName()
 
-		magnification = magnification and magnification - 1 .. "00%"
+		magnification = magnification and magnification - 1 .. "00"
 
 		local str = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("doubleactivity_outtips"), actName, magnification)
 

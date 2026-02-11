@@ -67,6 +67,7 @@ function PartyGameRpc:onReceiveMatchInfoPush(resultCode, msg)
 	local port = partyServer.outerPort
 
 	PartyGameController.instance:setFirstLogin(true)
+	PartyGameController.instance:setPartyGameIsEnd(false)
 	partyGameMgrCs.Instance:ConnectKcpSocket(ip, port)
 	logNormal("PartyGame msg->PartyGameRpc:onReceiveMatchInfoPush send login req to partyServer, ip:" .. tostring(ip) .. ", port:" .. tostring(port))
 end
@@ -103,7 +104,7 @@ function PartyGameRpc:loginKcpResponse(bytes)
 			ToastController.instance:showToastWithString("登录失败:" .. userId .. "reason: " .. reason)
 		end
 
-		PartyGameController.instance:exitGame()
+		PartyGameController.instance:exitPartyGame()
 	else
 		if isDebugBuild then
 			ToastController.instance:showToastWithString("登录成功:" .. userId)
@@ -160,6 +161,7 @@ function PartyGameRpc:ReadyPlayerNumPush(msg)
 end
 
 function PartyGameRpc:PartyEndPush(rank, reward, exReward)
+	PartyGameController.instance:setPartyGameIsEnd(true)
 	PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.PartyGameResultView, {
 		Rank = rank,
 		Rewards = reward,

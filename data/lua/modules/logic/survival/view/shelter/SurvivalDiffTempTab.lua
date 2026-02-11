@@ -71,7 +71,7 @@ function SurvivalDiffTempTab:onSelectChange(isSelect)
 end
 
 function SurvivalDiffTempTab:refresh()
-	local selectIndex2 = SurvivalDifficultyModel.instance:getCustomSelectIndex2()
+	local selectIndex2 = SurvivalDifficultyModel.instance:getCustomFragmentSelect()
 
 	gohelper.setActive(self.go_use, selectIndex2 == self.itemIndex)
 	gohelper.setActive(self.go_lock, not self.isUnlock)

@@ -18026,7 +18026,12 @@
     "retangleIcon": "670309",
     "matId": 2,
     "weatherParam": 100001,
-    "topuiOffset": [],
+    "topuiOffset": [
+      0,
+      0,
+      -0.5,
+      -7.1
+    ],
     "focusOffset": [],
     "showTemplate": 670309,
     "noDeadEffect": 0,
