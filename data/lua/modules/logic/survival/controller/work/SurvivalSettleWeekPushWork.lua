@@ -49,7 +49,7 @@ function SurvivalSettleWeekPushWork:_onEnterOneSceneFinish(sceneType)
 		return
 	end
 
-	GameUtil.setActiveUIBlock("SurvivalSettleWeekPushWork", true, false)
+	self:setActiveUIBlock("SurvivalSettleWeekPushWork", true, false)
 
 	local needShowDestroy, _ = SurvivalShelterModel.instance:getNeedShowFightSuccess()
 
@@ -57,6 +57,22 @@ function SurvivalSettleWeekPushWork:_onEnterOneSceneFinish(sceneType)
 		SurvivalController.instance:registerCallback(SurvivalEvent.BossPerformFinish, self._bossPerformFinish, self)
 	else
 		self:_bossPerformFinish()
+	end
+end
+
+function SurvivalSettleWeekPushWork:setActiveUIBlock(blockKey, isActiveBlock, isNeedCircleMv)
+	if type(blockKey) ~= "string" then
+		logError("blockKey can't be " .. type(blockKey))
+	end
+
+	isNeedCircleMv = isNeedCircleMv ~= false and true or false
+
+	UIBlockMgrExtend.setNeedCircleMv(isNeedCircleMv)
+
+	if isActiveBlock then
+		UIBlockHelper.instance:startBlock(blockKey, 5)
+	else
+		UIBlockHelper.instance:endBlock(blockKey)
 	end
 end
 
@@ -138,13 +154,13 @@ function SurvivalSettleWeekPushWork:isHideEnding()
 end
 
 function SurvivalSettleWeekPushWork:showSettle(isSuccess)
-	GameUtil.setActiveUIBlock("SurvivalSettleWeekPushWork", false, true)
+	self:setActiveUIBlock("SurvivalSettleWeekPushWork", false, true)
 	SurvivalController.instance:enterSurvivalSettle()
 	self:onDone(isSuccess)
 end
 
 function SurvivalSettleWeekPushWork:showResultPanel(isSuccess)
-	GameUtil.setActiveUIBlock("SurvivalSettleWeekPushWork", false, true)
+	self:setActiveUIBlock("SurvivalSettleWeekPushWork", false, true)
 
 	local info = SurvivalModel.instance:getSurvivalSettleInfo()
 	local isWin = info and info.win

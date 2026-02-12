@@ -55,7 +55,7 @@ function SurvivalSummaryActDirector:_compInitDone()
 
 	self._compInitSequence = nil
 
-	SurvivalController.instance:playSummaryAct()
+	ViewMgr.instance:openView(ViewName.SurvivalSummaryActView)
 end
 
 function SurvivalSummaryActDirector:onSceneClose()

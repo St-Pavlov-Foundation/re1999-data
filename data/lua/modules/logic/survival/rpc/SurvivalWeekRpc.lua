@@ -1019,6 +1019,9 @@ end
 
 function SurvivalWeekRpc:sendSurvivalLossReturnRewardRequest()
 	local req = SurvivalWeekModule_pb.SurvivalLossReturnRewardRequest()
+	local weekInfo = SurvivalShelterModel.instance:getWeekInfo()
+
+	self.lossReturnItems = weekInfo.lossReturnItems
 
 	return self:sendMsg(req)
 end
@@ -1028,14 +1031,18 @@ function SurvivalWeekRpc:onReceiveSurvivalLossReturnRewardReply(resultCode, msg)
 		local weekInfo = SurvivalShelterModel.instance:getWeekInfo()
 		local items = {}
 
-		for i, v in ipairs(weekInfo.lossReturnItems) do
-			local itemMo = SurvivalBagItemMo.New()
+		if self.lossReturnItems then
+			for i, v in ipairs(self.lossReturnItems) do
+				local itemMo = SurvivalBagItemMo.New()
 
-			itemMo:init({
-				id = v.itemId,
-				count = v.count
-			})
-			table.insert(items, itemMo)
+				itemMo:init({
+					id = v.itemId,
+					count = v.count
+				})
+				table.insert(items, itemMo)
+			end
+
+			self.lossReturnItems = nil
 		end
 
 		PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.SurvivalGetRewardView, {

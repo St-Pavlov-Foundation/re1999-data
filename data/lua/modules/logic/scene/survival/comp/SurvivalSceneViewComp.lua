@@ -26,7 +26,7 @@ function SurvivalSceneViewComp:onScenePrepared(sceneId, levelId)
 end
 
 function SurvivalSceneViewComp:onViewCloseWork()
-	if self:_checkLevelUp() then
+	if SurvivalMapModel.instance.result == SurvivalEnum.MapResult.None and self:_checkLevelUp() then
 		return
 	end
 

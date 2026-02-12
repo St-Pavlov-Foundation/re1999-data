@@ -10,6 +10,7 @@ end
 
 function SurvivalLoadingView:onOpen()
 	AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_fuleyuan_tansuo_loading)
+	TaskDispatcher.runDelay(self.checkViewIsOpenFinish, self, 5)
 
 	local random = math.random(1, 3)
 	local path = "survival_stickericon_" .. random
@@ -21,8 +22,14 @@ function SurvivalLoadingView:_onOpenView(viewName)
 	return
 end
 
+function SurvivalLoadingView:checkViewIsOpenFinish()
+	logError("雨前漫游 超时关闭打印")
+	self:closeThis()
+end
+
 function SurvivalLoadingView:onClose()
 	AudioMgr.instance:trigger(AudioEnum2_8.Survival.stop_ui_fuleyuan_tansuo_loading)
+	TaskDispatcher.cancelTask(self.checkViewIsOpenFinish, self)
 end
 
 return SurvivalLoadingView

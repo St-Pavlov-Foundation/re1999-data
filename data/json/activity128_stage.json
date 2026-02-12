@@ -1050,7 +1050,7 @@
     "version": 1,
     "name": "信仰的移位",
     "name_en": "Distortion of Faith",
-    "type": 102,
+    "type": 101,
     "maxPoints": 5000000,
     "layer4MaxPoints": 0,
     "openDay": 15,

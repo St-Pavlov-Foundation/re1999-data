@@ -6234,10 +6234,10 @@
   {
     "id": 307040601,
     "nodeId": 4,
-    "desc": "我会付报酬的",
+    "desc": "我带你离开这",
     "icon": 15,
     "condition": "",
-    "result": "CostItem|1:100"
+    "result": "None|"
   },
   {
     "id": 307040602,
