@@ -230,6 +230,16 @@ function SurvivalMapHelper:tryShowServerPanel(panel, source)
 		})
 		SurvivalMapModel.instance:clearItemConvert()
 	elseif type == SurvivalEnum.PanelType.TreeEvent then
+		local sceneMo = SurvivalMapModel.instance:getSceneMo()
+		local unitMo = sceneMo and sceneMo.unitsById[panel.unitId]
+
+		if not unitMo then
+			SurvivalWeekRpc.instance:sendSurvivalClosePanelRequest(panel.uid)
+			logError(string.format("没有面板对应的事件ID，强制关闭掉,treeId:%s,unitId:%s,dialogueId:%s", panel.treeId, panel.unitId, panel.dialogueId))
+
+			return
+		end
+
 		ViewMgr.instance:closeAllPopupViews({
 			ViewName.SurvivalMapEventView
 		})

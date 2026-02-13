@@ -11,6 +11,16 @@ function SurvivalModel:onInit()
 	self._lastIndex = nil
 	self._isUseSimpleDesc = PlayerPrefsHelper.getNumber(PlayerPrefsKey.SurvivalDescSimply, 1)
 	self.summaryActPosOffset = 0
+
+	self:clearDebugSettleStr()
+end
+
+function SurvivalModel:clearDebugSettleStr()
+	self.debugSettleStr = ""
+end
+
+function SurvivalModel:addDebugSettleStr(str)
+	self.debugSettleStr = string.format("%s\n%s", self.debugSettleStr, str)
 end
 
 function SurvivalModel:reInit()

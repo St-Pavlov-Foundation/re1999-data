@@ -753,6 +753,7 @@ function SurvivalWeekRpc:onReceiveSurvivalIntrudeFightSettlePush(resultCode, msg
 			local fightId = msg.fight.fightId
 
 			if msg.fight.status == SurvivalEnum.ShelterMonsterFightState.Win and fightId ~= nil and fightId ~= 0 then
+				SurvivalModel.instance:addDebugSettleStr("onReceiveSurvivalIntrudeFightSettlePush")
 				SurvivalShelterModel.instance:setNeedShowFightSuccess(true, fightId)
 			end
 		end

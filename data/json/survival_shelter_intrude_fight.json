@@ -810,7 +810,7 @@
     "name": "最终解？",
     "desc": "他已找到最终、最理想、最完满的答案，无论是弧、直角还是圆，都将成为秩序的一环。",
     "toward": "0,0",
-    "saveMonster": "106340111",
+    "saveMonster": "106340121",
     "cleanLevel": "16|18|20",
     "cleanpoint": "",
     "destructionLevel": "1000:500:500&500:200:250",
