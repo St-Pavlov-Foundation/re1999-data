@@ -184,9 +184,9 @@ function VersionActivity2_5DungeonMapView:onRefreshActivityState(updateActId)
 
 	if isOnline then
 		Activity165Model.instance:onInitInfo()
-	else
-		gohelper.setActive(self._btnrestaurant.gameObject, false)
 	end
+
+	gohelper.setActive(self._btnrestaurant.gameObject, false)
 end
 
 function VersionActivity2_5DungeonMapView:_onOpenView(viewName)
@@ -238,7 +238,7 @@ end
 function VersionActivity2_5DungeonMapView:refreshRestaurantBtn()
 	local isUnlockAct165Btn = VersionActivity2_5DungeonModel.instance:isUnlockAct165Btn()
 
-	gohelper.setActive(self._btnrestaurant.gameObject, isUnlockAct165Btn)
+	gohelper.setActive(self._btnrestaurant.gameObject, false)
 end
 
 function VersionActivity2_5DungeonMapView:playOpenAnimaDone()

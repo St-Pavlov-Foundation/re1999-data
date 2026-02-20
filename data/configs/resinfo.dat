@@ -46757,9 +46757,9 @@
         "v": "1bc91ef572ae67def11d7e4b07538ab7"
       },
       "configs/allmanifest.dat": {
-        "md5": "898b95861d86f08115bd3dafe94b3b87",
+        "md5": "519ad23593f461dcd426f73dd3bef963",
         "size": 1014055,
-        "v": "e8b8cb444ad37e71e36685bb16e283e1"
+        "v": "285e8bbf77dfe85a927765c5091fba5a"
       },
       "configs/aotdlls.json": {
         "md5": "47f811dd62e2d11490091f654e5bfc93",
@@ -46847,9 +46847,9 @@
         "v": "1bc91ef572ae67def11d7e4b07538ab7"
       },
       "configs/metainfo.dat": {
-        "md5": "f3d104c89eb329c63b35fb69ac759e69",
+        "md5": "841671bf459423a205442f4144810b95",
         "size": 218417,
-        "v": "e8b8cb444ad37e71e36685bb16e283e1"
+        "v": "285e8bbf77dfe85a927765c5091fba5a"
       },
       "luabytes/0152dd935893d08e38c0685092d77c07.dat": {
         "md5": "9ad898a24341e8d342ff83e9357c65a8",
@@ -46857,9 +46857,9 @@
         "v": "4267952956a9f118b04461b568c8f085"
       },
       "luabytes/1ef779789c622b1c289aa82872b7fe05.dat": {
-        "md5": "186fcb00f7e14465f59891b6aee3f55e",
-        "size": 36292362,
-        "v": "e8b8cb444ad37e71e36685bb16e283e1"
+        "md5": "6363d96465d99d29c329012eb96a7526",
+        "size": 36292368,
+        "v": "285e8bbf77dfe85a927765c5091fba5a"
       },
       "luabytes/24376b19ec1cdb7815e53e2be086b0bb.dat": {
         "md5": "cdc1f92fd03e6e92913714865349903b",
@@ -46912,14 +46912,14 @@
         "v": "1bc91ef572ae67def11d7e4b07538ab7"
       },
       "luabytes/9c2019bedb92e2327bfe12024e2922a4.dat": {
-        "md5": "28174d551efebce2d90f352bd0f101e6",
-        "size": 36349511,
-        "v": "e8b8cb444ad37e71e36685bb16e283e1"
+        "md5": "b0ed2c18c21429d5cb143be071d882ff",
+        "size": 36349519,
+        "v": "285e8bbf77dfe85a927765c5091fba5a"
       },
       "luabytes/a29fb508bb459de53603293f1d8fff8a.dat": {
-        "md5": "c37a84773aef21e1f76a3490679ac341",
+        "md5": "cd18a5300ce48794ee1c742cb3ae18e3",
         "size": 688192,
-        "v": "e8b8cb444ad37e71e36685bb16e283e1"
+        "v": "285e8bbf77dfe85a927765c5091fba5a"
       },
       "luabytes/a54237b415964e63a6ae90b7bb111416.dat": {
         "md5": "14b89ed275500e5d7e61b379b3a97091",
@@ -47106,34 +47106,14 @@
         "size": 6582454,
         "v": "1bc91ef572ae67def11d7e4b07538ab7"
       },
-      "videos/2_5_activity_01.mp4": {
-        "md5": "6b8da887e07b53a716c14d3b5f00c611",
-        "size": 21655045,
-        "v": "1bc91ef572ae67def11d7e4b07538ab7"
-      },
       "videos/2_5_activity_02.mp4": {
         "md5": "562db698dd2d5e9185d7a55c9f726dd6",
         "size": 22063187,
         "v": "1bc91ef572ae67def11d7e4b07538ab7"
       },
-      "videos/2_5_activity_03.mp4": {
-        "md5": "629871da3e2ee4d5937b50acb7f0a68b",
-        "size": 38343905,
-        "v": "1bc91ef572ae67def11d7e4b07538ab7"
-      },
-      "videos/2_5_activity_04.mp4": {
-        "md5": "223256ab82d4473d2296615f4871b44b",
-        "size": 41294328,
-        "v": "1bc91ef572ae67def11d7e4b07538ab7"
-      },
       "videos/2_5_opening_1.mp4": {
         "md5": "f1b8369a5a3c2353293b581e2dd9f4a9",
         "size": 1890452,
-        "v": "1bc91ef572ae67def11d7e4b07538ab7"
-      },
-      "videos/2_5_pv.mp4": {
-        "md5": "4e7fd426d9de4488f8bfa4a9bba3fac3",
-        "size": 46668206,
         "v": "1bc91ef572ae67def11d7e4b07538ab7"
       },
       "videos/2_5quniang.mp4": {
@@ -66018,6 +65998,26 @@
         "md5": "932c03aea40cf6baf4cfa8b4a6abc8c4",
         "size": 38064085,
         "v": "1bc91ef572ae67def11d7e4b07538ab7"
+      },
+      "videos/zh/2_5_activity_01.mp4": {
+        "md5": "6b8da887e07b53a716c14d3b5f00c611",
+        "size": 21655045,
+        "v": "285e8bbf77dfe85a927765c5091fba5a"
+      },
+      "videos/zh/2_5_activity_03.mp4": {
+        "md5": "629871da3e2ee4d5937b50acb7f0a68b",
+        "size": 38343905,
+        "v": "285e8bbf77dfe85a927765c5091fba5a"
+      },
+      "videos/zh/2_5_activity_04.mp4": {
+        "md5": "223256ab82d4473d2296615f4871b44b",
+        "size": 41294328,
+        "v": "285e8bbf77dfe85a927765c5091fba5a"
+      },
+      "videos/zh/2_5_pv.mp4": {
+        "md5": "4e7fd426d9de4488f8bfa4a9bba3fac3",
+        "size": 46668206,
+        "v": "285e8bbf77dfe85a927765c5091fba5a"
       },
       "videos/zh/3_4_pv.mp4": {
         "md5": "83e297fddd954311c9db139d15b08822",
