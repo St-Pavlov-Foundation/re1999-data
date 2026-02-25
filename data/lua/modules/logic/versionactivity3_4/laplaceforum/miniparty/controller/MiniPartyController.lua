@@ -29,8 +29,13 @@ end
 
 function MiniPartyController:_refreshActInfo()
 	local actInfoMo = ActivityModel.instance:getActivityInfo()[VersionActivity3_4Enum.ActivityId.LaplaceMiniParty]
+
+	if not actInfoMo then
+		return
+	end
+
 	local isExpired = actInfoMo:getRealEndTimeStamp() - ServerTime.now() < 1
-	local couldGet = actInfoMo and actInfoMo:isOnline() and actInfoMo:isOpen() and not isExpired
+	local couldGet = actInfoMo:isOnline() and actInfoMo:isOpen() and not isExpired
 
 	if couldGet and self._hasGet ~= couldGet then
 		TaskRpc.instance:sendGetTaskInfoRequest({

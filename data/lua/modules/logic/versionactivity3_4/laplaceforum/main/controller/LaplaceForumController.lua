@@ -35,7 +35,7 @@ function LaplaceForumController:onRefreshActivity()
 	end
 
 	local isExpired = actInfoMo:getRealEndTimeStamp() - ServerTime.now() < 1
-	local couldGet = actInfoMo and actInfoMo:isOnline() and actInfoMo:isOpen() and not isExpired
+	local couldGet = actInfoMo:isOnline() and actInfoMo:isOpen() and not isExpired
 
 	if couldGet and self._hasGet ~= couldGet then
 		Activity101Rpc.instance:sendGet101InfosRequest(VersionActivity3_4Enum.ActivityId.LaplaceTowerAlbum)

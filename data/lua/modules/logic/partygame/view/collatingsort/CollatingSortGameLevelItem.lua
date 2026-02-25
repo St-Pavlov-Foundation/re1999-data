@@ -198,7 +198,7 @@ function CollatingSortGameLevelItem:_destoryBall(index)
 	if ballInfo then
 		ballPool:putObject(ballInfo.ballItem)
 	else
-		logError("CollatingSortGameLevelItem onCollectBall no ballInfo index:", tostring(index))
+		logWarn("CollatingSortGameLevelItem onCollectBall no ballInfo index:", tostring(index))
 	end
 end
 

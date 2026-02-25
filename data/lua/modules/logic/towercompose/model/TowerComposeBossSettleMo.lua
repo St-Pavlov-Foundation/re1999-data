@@ -58,7 +58,7 @@ end
 function TowerComposeBossSettleMo:setAtkStat(endFightPushInfo)
 	local customData = FightDataHelper.getCustomData(FightCustomData.CustomDataType.TowerCompose)
 
-	if self.themeId == customData.themeId then
+	if customData and self.themeId == customData.themeId then
 		local recordData = endFightPushInfo.record
 
 		self.planeAtkStatsMap[customData.planeId] = recordData and recordData.attackStatistics

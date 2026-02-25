@@ -33,7 +33,7 @@ function ChatRoomController:sendGetAct225InfoRequest(isDaily)
 	end
 
 	local isExpired = actInfoMo:getRealEndTimeStamp() - ServerTime.now() < 1
-	local couldGet = actInfoMo and actInfoMo:isOnline() and actInfoMo:isOpen() and not isExpired
+	local couldGet = actInfoMo:isOnline() and actInfoMo:isOpen() and not isExpired
 
 	if couldGet and isDaily and self._hasGet ~= couldGet then
 		Activity225Rpc.instance:sendGetAct225InfoRequest(VersionActivity3_4Enum.ActivityId.LaplaceChatRoom, self.doDailyRefresh, self)

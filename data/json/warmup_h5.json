@@ -18,5 +18,10 @@
     "activityId": 13323,
     "link": "https://re.bluepoch.com/event/uttu/",
     "bgResUrl": "singlebg_lang/txt_activity/activity_h5_banner_zhoubian.png"
+  },
+  {
+    "activityId": 13446,
+    "link": "https://re.bluepoch.com/event/gallery/",
+    "bgResUrl": "singlebg_lang/txt_activity/activity_h5_banner.png"
   }
 ]

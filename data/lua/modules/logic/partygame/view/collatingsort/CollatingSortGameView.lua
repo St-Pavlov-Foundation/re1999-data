@@ -164,8 +164,6 @@ end
 function CollatingSortGameView:_initLevelList()
 	local dropType1, dropType2 = CollatingSortGameInterface.GetDropTypes(nil, nil)
 
-	CollatingSortGameInterface.InitEntryList(self._playerNum)
-
 	self._levelList = self:getUserDataTb_()
 	self._uidToItem = self:getUserDataTb_()
 
@@ -202,21 +200,19 @@ function CollatingSortGameView:_initLevelList()
 	local list = PartyGameModel.instance:getCurGamePlayerList()
 
 	for i, v in ipairs(list) do
-		CollatingSortGameInterface.SetUid(i - 1, v.uid)
-
 		self._uidList[i] = v.uid
-	end
-
-	for i, item in ipairs(self._levelList) do
-		CollatingSortGameInterface.SetEntryGO(item:getEntryGo(), item:getUid())
-		CollatingSortGameInterface.SetBoard(item:getBoardGo(), item:getUid())
-		CollatingSortGameInterface.SetBox(item:getBoxGo(), item:getUid())
 	end
 
 	TaskDispatcher.runDelay(self._initOffsetPos, self, 1.3)
 end
 
 function CollatingSortGameView:_initOffsetPos()
+	for i, item in ipairs(self._levelList) do
+		CollatingSortGameInterface.SetEntryGO(item:getEntryGo(), item:getUid())
+		CollatingSortGameInterface.SetBoard(item:getBoardGo(), item:getUid())
+		CollatingSortGameInterface.SetBox(item:getBoxGo(), item:getUid())
+	end
+
 	local entryPosX, entryPosY, entryPosZ = CollatingSortGameInterface.GetFirstEntryPos(nil, nil, nil)
 
 	for i, item in ipairs(self._levelList) do
@@ -228,6 +224,10 @@ function CollatingSortGameView:_initOffsetPos()
 end
 
 function CollatingSortGameView:onViewUpdate()
+	if not self._levelList then
+		return
+	end
+
 	for i, item in ipairs(self._levelList) do
 		item:viewDataUpdate()
 	end
