@@ -570,7 +570,7 @@ end
 function JumpController:canJumpToSurvivalView()
 	local isCanJump = true
 	local toastId, toastParamList
-	local isShow = OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.Survival)
+	local isShow = SurvivalController.instance:isOpenSurvival()
 
 	if not isShow then
 		isCanJump = false

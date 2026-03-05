@@ -49031,9 +49031,9 @@
         "v": "86503174f36511f6a2acceeed864bbfc"
       },
       "configs/allmanifest.dat": {
-        "md5": "4c670d9d8d3f7f64353e1355ae6ca3f1",
+        "md5": "2542573e33861bbe87729900d6c665f9",
         "size": 1059941,
-        "v": "8b57406669b6fcc5cb5e17cfca7d8954"
+        "v": "88fabdc2a7ccae8fa97e2e01ea2c30bd"
       },
       "configs/aotdlls.json": {
         "md5": "47f811dd62e2d11490091f654e5bfc93",
@@ -49041,29 +49041,29 @@
         "v": "86503174f36511f6a2acceeed864bbfc"
       },
       "configs/datacfg_1.dat": {
-        "md5": "5577954b18d7ce14cd567786f24870c8",
-        "size": 13895184,
-        "v": "86503174f36511f6a2acceeed864bbfc"
+        "md5": "9ee098f79f2549f8a1dec9daac641db6",
+        "size": 13895168,
+        "v": "88fabdc2a7ccae8fa97e2e01ea2c30bd"
       },
       "configs/datacfg_2.dat": {
-        "md5": "2d5072b8ee723adaa1869fb7f386deb9",
-        "size": 15519328,
-        "v": "86503174f36511f6a2acceeed864bbfc"
+        "md5": "145aea27787e28b782ad75691dc3c9a8",
+        "size": 15519312,
+        "v": "88fabdc2a7ccae8fa97e2e01ea2c30bd"
       },
       "configs/datacfg_3.dat": {
-        "md5": "27090b65300372e2f3dab7496ff8c543",
+        "md5": "efc6f0655cb9a229525031817036699e",
         "size": 16301616,
-        "v": "86503174f36511f6a2acceeed864bbfc"
+        "v": "88fabdc2a7ccae8fa97e2e01ea2c30bd"
       },
       "configs/datacfg_4.dat": {
-        "md5": "7d424416c02f8b0abcd7ffed274f4e11",
-        "size": 15975216,
-        "v": "86503174f36511f6a2acceeed864bbfc"
+        "md5": "58403b9fa7a1a5ef8f66cf2819065eb0",
+        "size": 15975184,
+        "v": "88fabdc2a7ccae8fa97e2e01ea2c30bd"
       },
       "configs/datacfg_5.dat": {
-        "md5": "9f46953e54cdb872c499a2fb89c79577",
+        "md5": "869ce8ee2653c1344508a1ff8ecab269",
         "size": 17164400,
-        "v": "86503174f36511f6a2acceeed864bbfc"
+        "v": "88fabdc2a7ccae8fa97e2e01ea2c30bd"
       },
       "configs/langcfg.dat": {
         "md5": "e5a904a9d3ca30475f58814f75b4d9bf",
@@ -49121,9 +49121,9 @@
         "v": "86503174f36511f6a2acceeed864bbfc"
       },
       "configs/metainfo.dat": {
-        "md5": "60ca359dc4ae925dd1a974937d24d13d",
+        "md5": "00618d2c75fbcd47bf99761c72bbf2bd",
         "size": 226053,
-        "v": "8b57406669b6fcc5cb5e17cfca7d8954"
+        "v": "88fabdc2a7ccae8fa97e2e01ea2c30bd"
       },
       "luabytes/0152dd935893d08e38c0685092d77c07.dat": {
         "md5": "9ad898a24341e8d342ff83e9357c65a8",
@@ -49131,9 +49131,9 @@
         "v": "86503174f36511f6a2acceeed864bbfc"
       },
       "luabytes/1ef779789c622b1c289aa82872b7fe05.dat": {
-        "md5": "dff170e0f9e7f654d7967e6394ac611a",
-        "size": 36985751,
-        "v": "8b57406669b6fcc5cb5e17cfca7d8954"
+        "md5": "44c97e2f539bbb43978566b32cdd597f",
+        "size": 36985623,
+        "v": "88fabdc2a7ccae8fa97e2e01ea2c30bd"
       },
       "luabytes/24376b19ec1cdb7815e53e2be086b0bb.dat": {
         "md5": "cdc1f92fd03e6e92913714865349903b",
@@ -49186,14 +49186,14 @@
         "v": "86503174f36511f6a2acceeed864bbfc"
       },
       "luabytes/9c2019bedb92e2327bfe12024e2922a4.dat": {
-        "md5": "3e8252a85a9bd4f0ee6f427be4c8000d",
-        "size": 37044405,
-        "v": "8b57406669b6fcc5cb5e17cfca7d8954"
+        "md5": "c149497647eec52fc6a6fab1606434ec",
+        "size": 37044271,
+        "v": "88fabdc2a7ccae8fa97e2e01ea2c30bd"
       },
       "luabytes/a29fb508bb459de53603293f1d8fff8a.dat": {
-        "md5": "ff10e8280cf1adc58ef248ae88b73ec1",
+        "md5": "8a70a5f450fff866ef331e0d43e04fcf",
         "size": 688192,
-        "v": "8b57406669b6fcc5cb5e17cfca7d8954"
+        "v": "88fabdc2a7ccae8fa97e2e01ea2c30bd"
       },
       "luabytes/a54237b415964e63a6ae90b7bb111416.dat": {
         "md5": "14b89ed275500e5d7e61b379b3a97091",
@@ -64134,9 +64134,9 @@
         "v": "86503174f36511f6a2acceeed864bbfc"
       },
       "audios/Android/zh/hero3141_mainvoc.bnk": {
-        "md5": "be5c323cc82c7bc029b5be6b0650269f",
-        "size": 1005127,
-        "v": "86503174f36511f6a2acceeed864bbfc"
+        "md5": "9ecbe4f1bd507fb77e3b72e76356712b",
+        "size": 1005687,
+        "v": "88fabdc2a7ccae8fa97e2e01ea2c30bd"
       },
       "audios/Android/zh/hero3141_vo.bnk": {
         "md5": "e551b54c6e471f9af689ca746325e569",
