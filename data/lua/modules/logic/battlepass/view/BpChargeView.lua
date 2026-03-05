@@ -74,6 +74,14 @@ function BpChargeView:_editableInitView()
 	self:createItems(self._gorightitemup, upLvCo, nil, noShowNum)
 end
 
+function BpChargeView:onOpenFinish()
+	local cfg = BpModel.instance:checkOpenBpUpdatePopup()
+
+	if cfg then
+		ViewMgr.instance:openView(ViewName.BpReceiveRewardView, cfg)
+	end
+end
+
 function BpChargeView:_btndetailOnClick()
 	MaterialTipController.instance:showMaterialInfo(MaterialEnum.MaterialType.HeroSkin, BpConfig.instance:getCurSkinId(BpModel.instance.id), false, nil, false)
 end

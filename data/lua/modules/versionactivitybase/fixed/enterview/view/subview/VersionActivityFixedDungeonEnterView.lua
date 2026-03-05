@@ -51,11 +51,11 @@ function VersionActivityFixedDungeonEnterView:onRefreshActivity(actId)
 end
 
 function VersionActivityFixedDungeonEnterView:_btnstoreOnClick()
-	VersionActivityFixedHelper.getVersionActivityDungeonController(self._bigVersion, self._smallVersion).instance:openStoreView()
+	VersionActivityFixedDungeonController.instance:openStoreView()
 end
 
 function VersionActivityFixedDungeonEnterView:_btnenterOnClick()
-	VersionActivityFixedHelper.getVersionActivityDungeonController(self._bigVersion, self._smallVersion).instance:openVersionActivityDungeonMapView()
+	VersionActivityFixedDungeonController.instance:openVersionActivityDungeonMapView()
 end
 
 function VersionActivityFixedDungeonEnterView:_btnFinishedOnClick()

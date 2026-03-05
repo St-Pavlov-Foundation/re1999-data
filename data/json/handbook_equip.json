@@ -778,5 +778,23 @@
     "order": 0,
     "equipId": 1446,
     "desc": "葛天"
+  },
+  {
+    "id": 5067,
+    "order": 0,
+    "equipId": 1565,
+    "desc": "洛伦兹蝴蝶"
+  },
+  {
+    "id": 5068,
+    "order": 0,
+    "equipId": 1566,
+    "desc": "清洁工"
+  },
+  {
+    "id": 4047,
+    "order": 0,
+    "equipId": 1447,
+    "desc": "百夫长"
   }
 ]

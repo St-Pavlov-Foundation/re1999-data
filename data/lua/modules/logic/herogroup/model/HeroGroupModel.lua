@@ -211,7 +211,13 @@ function HeroGroupModel:setParam(battleId, episodeId, adventure, isReConnect, ep
 
 	local isTowerEpisode = HeroGroupHandler.checkIsTowerEpisodeByEpisodeId(self.episodeId) or HeroGroupHandler.checkIsTowerComposeEpisodeByEpisodeId(self.episodeId)
 
-	if battleCO and (battleCO.trialLimit > 0 or not string.nilorempty(battleCO.trialEquips)) or ToughBattleModel.instance:getAddTrialHeros() or isTowerEpisode then
+	if SeasonHeroGroupHandler.checkIsSeasonEpisodeType(self._episodeType) then
+		local func = SeasonHeroGroupHandler.buildSeasonHandleFunc[self._episodeType]
+
+		if func then
+			self.heroGroupType = func(paramTab)
+		end
+	elseif battleCO and (battleCO.trialLimit > 0 or not string.nilorempty(battleCO.trialEquips)) or ToughBattleModel.instance:getAddTrialHeros() or isTowerEpisode then
 		local isSeasonChapter = Activity104Model.instance:isSeasonChapter()
 		local str
 
@@ -255,12 +261,6 @@ function HeroGroupModel:setParam(battleId, episodeId, adventure, isReConnect, ep
 			self.heroGroupType = ModuleEnum.HeroGroupType.General
 
 			HeroGroupSnapshotModel.instance:setParam(self.episodeId)
-		end
-	elseif chapterCO and SeasonHeroGroupHandler.checkIsSeasonEpisodeType(self._episodeType) then
-		local func = SeasonHeroGroupHandler.buildSeasonHandleFunc[self._episodeType]
-
-		if func then
-			self.heroGroupType = func(paramTab)
 		end
 	elseif self._episodeType == DungeonEnum.EpisodeType.Odyssey then
 		self.heroGroupType = ModuleEnum.HeroGroupType.Odyssey
@@ -1075,13 +1075,15 @@ end
 HeroGroupModel.RestrictType = {
 	Rare = 3,
 	HeroId = 1,
-	Career = 2
+	Career = 2,
+	CanHeroId = 4
 }
 
 function HeroGroupModel:initRestrictHeroData(battleConfig)
 	self.restrictHeroIdList = nil
 	self.restrictCareerList = nil
 	self.restrictRareList = nil
+	self.restrictCanHeroIdList = nil
 
 	local restrictRoles = battleConfig and battleConfig.restrictRoles
 
@@ -1102,6 +1104,8 @@ function HeroGroupModel:initRestrictHeroData(battleConfig)
 			self.restrictCareerList = restrictList
 		elseif type == HeroGroupModel.RestrictType.Rare then
 			self.restrictRareList = restrictList
+		elseif type == HeroGroupModel.RestrictType.CanHeroId then
+			self.restrictCanHeroIdList = restrictList
 		else
 			logError("un support restrict type : " .. tostring(type))
 		end
@@ -1113,6 +1117,10 @@ function HeroGroupModel:isRestrict(heroUid)
 
 	if not heroMo then
 		return false
+	end
+
+	if self.restrictCanHeroIdList and not tabletool.indexOf(self.restrictCanHeroIdList, heroMo.heroId) then
+		return true
 	end
 
 	return self.restrictHeroIdList and tabletool.indexOf(self.restrictHeroIdList, heroMo.heroId) or self.restrictCareerList and tabletool.indexOf(self.restrictCareerList, heroMo.config.career) or self.restrictRareList and tabletool.indexOf(self.restrictRareList, heroMo.config.rare)

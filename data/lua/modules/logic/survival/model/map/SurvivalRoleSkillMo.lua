@@ -33,7 +33,12 @@ function SurvivalRoleSkillMo:onUseRoleSkill(info)
 		self.maxUseCount = info.maxUseCount
 	end
 
+	self:handleSkillFinish()
 	SurvivalController.instance:dispatchEvent(SurvivalEvent.OnRoleSkillUpdate)
+end
+
+function SurvivalRoleSkillMo:handleSkillFinish()
+	return
 end
 
 function SurvivalRoleSkillMo:getSkillRemainTimes()
@@ -82,7 +87,7 @@ function SurvivalRoleSkillMo:getSkillUseRange()
 		end
 
 		useRange = range + skillRangeAttr
-	elseif effectType == SurvivalEnum.RoleSkillEffect.NoiseAttract or effectType == SurvivalEnum.RoleSkillEffect.DestroyBlock or effectType == SurvivalEnum.RoleSkillEffect.KillMonster then
+	elseif effectType == SurvivalEnum.RoleSkillEffect.NoiseAttract or effectType == SurvivalEnum.RoleSkillEffect.DestroyBlock or effectType == SurvivalEnum.RoleSkillEffect.KillMonster or effectType == SurvivalEnum.RoleSkillEffect.SnatchItem or effectType == SurvivalEnum.RoleSkillEffect.ReplaceBlockUnit then
 		local range = tonumber(arr[2]) or 0
 
 		if range == 0 then
@@ -101,10 +106,48 @@ function SurvivalRoleSkillMo:getSkillUseRangePoints(point, range, walkables)
 	for i = #list, 1, -1 do
 		if not SurvivalHelper.instance:getValueFromDict(walkables, list[i]) then
 			table.remove(list, i)
+		elseif not self:isTarget_Skill_ReplaceBlockUnit(list[i]) then
+			table.remove(list, i)
 		end
 	end
 
 	return list
+end
+
+function SurvivalRoleSkillMo:isTarget_Skill_ReplaceBlockUnit(pos)
+	if self.skillEffectType == SurvivalEnum.RoleSkillEffect.ReplaceBlockUnit then
+		local sceneMo = SurvivalMapModel.instance:getSceneMo()
+
+		if self.skillEffectParam[5] == "0" then
+			return true
+		else
+			local typesStr = self.skillEffectParam[5]
+
+			if not self.tarTypes then
+				self.tarTypes = string.splitToNumber(typesStr, ",")
+			end
+
+			local blockType = sceneMo:getBlockTypeByPos(pos)
+
+			if tabletool.indexOf(self.tarTypes, blockType) then
+				return false
+			else
+				local units = sceneMo:getUnitByPos(pos, true, true)
+
+				for _, unitMo in ipairs(units) do
+					local subType = unitMo:getSubType()
+
+					if tabletool.indexOf(self.tarTypes, subType) then
+						return false
+					end
+				end
+			end
+
+			return true
+		end
+	end
+
+	return true
 end
 
 function SurvivalRoleSkillMo:getSkillEffectRange()
@@ -120,7 +163,7 @@ function SurvivalRoleSkillMo:getSkillEffectRange()
 	local effectRange = 0
 	local range = tonumber(arr[2]) or 0
 
-	if effectType == SurvivalEnum.RoleSkillEffect.KillMonster then
+	if effectType == SurvivalEnum.RoleSkillEffect.KillMonster or effectType == SurvivalEnum.RoleSkillEffect.ReplaceBlockUnit then
 		range = tonumber(arr[3]) or 0
 	end
 
@@ -147,6 +190,8 @@ function SurvivalRoleSkillMo:getSkillEffectRangePoints(point, range, walkables)
 
 	for i = #list, 1, -1 do
 		if not SurvivalHelper.instance:getValueFromDict(walkables, list[i]) then
+			table.remove(list, i)
+		elseif not self:isTarget_Skill_ReplaceBlockUnit(list[i]) then
 			table.remove(list, i)
 		end
 	end
@@ -182,6 +227,8 @@ function SurvivalRoleSkillMo:confirmUseSkill(point)
 		end
 	elseif effectType == SurvivalEnum.RoleSkillEffect.FindDrop then
 		AudioMgr.instance:trigger(AudioEnum3_4.Survival.play_ui_bulaochun_tansuo_marcus)
+	elseif effectType == SurvivalEnum.RoleSkillEffect.SnatchItem then
+		AudioMgr.instance:trigger(AudioEnum3_5.Survival.play_ui_lusongshi_tansuo_xingti)
 	end
 end
 

@@ -131,6 +131,10 @@ function NecrologistStoryView:onAutoChange()
 end
 
 function NecrologistStoryView:onClickSkip()
+	if self._tweenBottomId then
+		return
+	end
+
 	if not self._storyGroupMo then
 		return
 	end
@@ -272,7 +276,7 @@ end
 
 function NecrologistStoryView:playWeather()
 	if not self.goWeather then
-		local resPath = self.viewContainer:getSetting().otherRes.weatherRes
+		local resPath = self.viewContainer:getSetting().otherRes[1]
 
 		self.goWeather = self.viewContainer:getResInst(resPath, self.goWeatherRoot, "weather")
 		self.weatherList = {}
@@ -487,6 +491,8 @@ end
 
 function NecrologistStoryView:_onTweenBottomFinish()
 	self.scrollRect.verticalNormalizedPosition = 0
+
+	self:clearTweenBottom()
 end
 
 function NecrologistStoryView:clearTweenBottom()
@@ -592,6 +598,8 @@ function NecrologistStoryView:clearAll()
 end
 
 function NecrologistStoryView:playStory_location(storyConfig, isSkip)
+	self.txtPlace.text = NecrologistStoryHelper.getDescByConfig(storyConfig)
+
 	self:createStoryItem(NecrologistStoryLocationItem, storyConfig, isSkip)
 end
 
@@ -648,6 +656,10 @@ function NecrologistStoryView:playStory_v3a4AudioControl(storyConfig, isSkip)
 	self:createStoryItem(NecrologistStoryClickAudioItem, storyConfig, isSkip)
 end
 
+function NecrologistStoryView:playStory_v3a5Item(storyConfig, isSkip)
+	self:createStoryItem(V3A5NecrologistStoryLongPressItem, storyConfig, isSkip)
+end
+
 function NecrologistStoryView:playStory_commontask(storyConfig, isSkip)
 	local arr = GameUtil.splitString2(storyConfig.param, true, "|", "#")
 
@@ -656,6 +668,12 @@ function NecrologistStoryView:playStory_commontask(storyConfig, isSkip)
 			self._storyGroupMo:addTaskValue(v[1], v[2])
 		end
 	end
+
+	self:runNextStep(isSkip)
+end
+
+function NecrologistStoryView:playStory_time(storyConfig, isSkip)
+	self.txtTime.text = storyConfig.param
 
 	self:runNextStep(isSkip)
 end

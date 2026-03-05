@@ -48,6 +48,7 @@ function FightBuffComp:onConstructor(entity)
 
 	self:registSkinBuffEffect()
 	self:com_registFightEvent(FightEvent.CoverPerformanceEntityData, self._onCoverPerformanceEntityData)
+	self:registClasses()
 end
 
 function FightBuffComp:dealStartBuff()
@@ -782,6 +783,18 @@ function FightBuffComp:registSkinBuffEffect()
 
 	if zongMaoBossStageBuffIdEffectConfig then
 		self.buffMgr:newClass(FightZongMaoBossStageBuffIdEffect, self._entity, entityData, zongMaoBossStageBuffIdEffectConfig)
+	end
+end
+
+function FightBuffComp:registClasses()
+	local entityData = FightDataHelper.entityMgr:getById(self._entity.id)
+
+	if not entityData then
+		return
+	end
+
+	if entityData.modelId == 3023 then
+		self:newClass(FightBuffShiXiHangShiPenEffect, self._entity)
 	end
 end
 

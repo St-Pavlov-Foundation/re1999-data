@@ -51,17 +51,6 @@ function BpViewContainer:playOpenTransition()
 		if isPlayDayFirstAnim then
 			self.firstAnimFlow = FlowSequence.New()
 
-			local cfg = BpModel.instance:checkOpenBpUpdatePopup()
-
-			if cfg then
-				local animatorPlayer = self:__getAnimatorPlayer()
-				local animator = animatorPlayer.animator
-
-				animator.enabled = false
-
-				self.firstAnimFlow:addWork(BpOpenAndWaitOnCloseEventWork.New(ViewName.BpReceiveRewardView, cfg))
-			end
-
 			self.firstAnimFlow:addWork(FunctionWork.New(self.playOpenAnim1, self))
 			self.firstAnimFlow:start()
 

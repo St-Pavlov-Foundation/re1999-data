@@ -1,6 +1,41 @@
 ﻿-- chunkname: @modules/setting/module_mvc.lua
 
 local module_mvc = {
+	V3a5Puzzle = {
+		controller = {
+			"V3a5PuzzleController"
+		},
+		config = {
+			"V3a5PuzzleConfig"
+		}
+	},
+	Activity228 = {
+		model = {
+			"V3a5_SchoolStartModel"
+		},
+		controller = {
+			"V3a5_SchoolStartController"
+		},
+		rpc = {
+			"V3a5_SchoolStartRpc"
+		},
+		config = {
+			"V3a5_SchoolStartConfig"
+		}
+	},
+	Lamona = {
+		model = {
+			"LamonaModel",
+			"LamonaGameModel"
+		},
+		controller = {
+			"LamonaController",
+			"LamonaGameController"
+		},
+		config = {
+			"LamonaConfig"
+		}
+	},
 	SummonUISwitch = {
 		model = {
 			"SummonUISwitchModel"
@@ -1276,7 +1311,8 @@ local module_mvc = {
 			"CharacterSwitchListModel",
 			"CharacterEquipSettingListModel",
 			"CharacterDestinyModel",
-			"HeroResonaceModel"
+			"HeroResonaceModel",
+			"CharacterSearchFilterModel"
 		},
 		controller = {
 			"CharacterController",
@@ -2879,7 +2915,8 @@ local module_mvc = {
 			"SurvivalShelterModel",
 			"SurvivalHandbookModel",
 			"SurvivalRewardInheritModel",
-			"SurvivalReputationModel"
+			"SurvivalReputationModel",
+			"SurvivalStoreModel"
 		},
 		rpc = {
 			"SurvivalInteriorRpc",
@@ -2894,7 +2931,8 @@ local module_mvc = {
 		},
 		controller = {
 			"SurvivalController",
-			"SurvivalHandbookController"
+			"SurvivalHandbookController",
+			"SurvivalStoreController"
 		}
 	},
 	LifeCircle = {
@@ -3539,6 +3577,19 @@ local module_mvc = {
 		},
 		config = {
 			"ChgConfig"
+		}
+	},
+	Lorentz = {
+		model = {
+			"LorentzGameModel",
+			"LorentzModel"
+		},
+		config = {
+			"LorentzConfig"
+		},
+		controller = {
+			"LorentzGameController",
+			"LorentzController"
 		}
 	}
 }

@@ -690,7 +690,15 @@ function MaterialTipView:_btnuseOnClick()
 		CharacterModel.instance:setGainHeroViewShowState(false)
 		CharacterModel.instance:setGainHeroViewNewShowState(false)
 		ItemRpc.instance:simpleSendUseItemRequest(materialId, quantity)
-	elseif self._config.subType == ItemEnum.SubType.SpecifiedGift then
+	elseif MaterialTipController.instance:isSpecifiedGift(self._config) then
+		local o = {}
+
+		o.param = self.viewParam
+		o.quantity = quantity
+		o.subType = self._config.subType
+
+		GiftController.instance:openGiftMultipleChoiceView(o)
+	elseif MaterialTipController.instance:isBpCustomSelect(self._config) then
 		local o = {}
 
 		o.param = self.viewParam
@@ -1072,6 +1080,10 @@ function MaterialTipView:_refreshUI()
 			showDetail = false
 		elseif self._config.subType == ItemEnum.SubType.DestinySummonPackage then
 			showDetail = false
+		elseif MaterialTipController.instance:isBpCustomSelect(self._config) then
+			showDetail = false
+
+			recthelper.setAnchorY(self._btnuse.transform, -190)
 		end
 
 		gohelper.setActive(self._gouseDetail, showDetail)
@@ -1251,7 +1263,7 @@ function MaterialTipView:_refreshUI()
 			{
 				isCurrencySprite = true,
 				type = MaterialEnum.MaterialType.Item,
-				id = HeroExpBoxEnum.KeyIds[1]
+				id = HeroExpBoxModel.instance:getKeyId()
 			}
 		}
 	else
@@ -1435,12 +1447,12 @@ end
 function MaterialTipView:_refreshInclude()
 	MaterialTipListModel.instance:clear()
 
-	local showInclude = MaterialEnum.SubTypePackages[self._config.subType] == true
+	local showInclude = MaterialEnum.SubTypePackages[self._config.subType] == true or MaterialTipController.instance:isSpecifiedGift(self._config)
 
 	showInclude = showInclude or self:_isPackageSkin()
 	showInclude = showInclude and self.viewParam.inpack ~= true
 
-	if MaterialEnum.SubTypeInPack[self._config.subType] then
+	if MaterialEnum.SubTypeInPack[self._config.subType] or MaterialTipController.instance:isBpCustomSelect(self._config) then
 		showInclude = true
 	end
 

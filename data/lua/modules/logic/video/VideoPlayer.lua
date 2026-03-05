@@ -77,7 +77,7 @@ function VideoPlayer:setPlaybackSpeed(speed)
 	return
 end
 
-function setSkipOnDrop(skipOnDrop)
+function VideoPlayer:setSkipOnDrop(skipOnDrop)
 	return
 end
 

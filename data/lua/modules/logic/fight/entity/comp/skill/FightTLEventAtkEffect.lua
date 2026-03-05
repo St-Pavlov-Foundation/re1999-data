@@ -105,6 +105,12 @@ function FightTLEventAtkEffect:_bootLogic(fightStepData, duration, paramsArr)
 				self._attacker.effect:addTokenRelease(self.paramsArr[14], self._effectWrap)
 			end
 
+			self._roundRelease = not string.nilorempty(paramsArr[15])
+
+			if self._roundRelease then
+				self._attacker.effect:addRoundRelease(tonumber(paramsArr[15]), self._effectWrap)
+			end
+
 			self:_setRenderOrder(self._effectWrap, renderOrder)
 
 			if string.nilorempty(self._hangPoint) and followEntityMove then
@@ -271,6 +277,10 @@ function FightTLEventAtkEffect:_removeEffect()
 		end
 
 		if self._tokenRelease then
+			canRelease = false
+		end
+
+		if self._roundRelease then
 			canRelease = false
 		end
 

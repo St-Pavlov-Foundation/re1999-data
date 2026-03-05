@@ -112,6 +112,7 @@ HelpEnum.HelpId = {
 	EquipInfo = 142,
 	RougeInitTeamViewHelp = 19705,
 	RougeLevelUpViewHelp = 19708,
+	Lorentz = 3510001,
 	RougeDifficultyViewHelp = 19703,
 	RoomBlockReform = 3100304,
 	PushBox = 139,

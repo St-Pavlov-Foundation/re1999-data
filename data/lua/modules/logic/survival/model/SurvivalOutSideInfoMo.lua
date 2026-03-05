@@ -60,6 +60,8 @@ function SurvivalOutSideInfoMo:init(data)
 
 	self.unlockDiffIds = modBox.unlockId
 	self.newDiffIds = modBox.newIds
+
+	SurvivalStoreModel.instance:setData(data.mall)
 end
 
 function SurvivalOutSideInfoMo:refreshDifficulty(difficulty)

@@ -1,0 +1,128 @@
+[
+  {
+    "id": 1,
+    "characterId": 2,
+    "text": "看来您还记得邀请函上的内容。",
+    "groupId": 1,
+    "voiceId": 613501016
+  },
+  {
+    "id": 2,
+    "characterId": 1,
+    "text": "当然。",
+    "groupId": 1,
+    "voiceId": 613501718
+  },
+  {
+    "id": 3,
+    "characterId": 2,
+    "text": "您还记得邀请函上的诗句吗？",
+    "groupId": 2,
+    "voiceId": 613501017
+  },
+  {
+    "id": 4,
+    "characterId": 1,
+    "text": "“神圣历与太阳历重新对齐，我们得以庆祝末日的推迟。”",
+    "groupId": 2,
+    "voiceId": 613501720
+  },
+  {
+    "id": 5,
+    "characterId": 1,
+    "text": "“我们在星山上眺望，星座攀上天顶。”",
+    "groupId": 2,
+    "voiceId": 613501721
+  },
+  {
+    "id": 6,
+    "characterId": 1,
+    "text": "关键是上面代表着新火仪式的“燧石刀”型符号。",
+    "groupId": 2,
+    "voiceId": 613501722
+  },
+  {
+    "id": 7,
+    "characterId": 1,
+    "text": "噢，看来这个图案并不是“燧石刀”。",
+    "groupId": 3,
+    "voiceId": 613501723
+  },
+  {
+    "id": 8,
+    "characterId": 1,
+    "text": "很有意思的小游戏。",
+    "groupId": 4,
+    "voiceId": 613501724
+  },
+  {
+    "id": 9,
+    "characterId": 1,
+    "text": "但在观察神秘术辉光的流向上，洛伦兹研究所有自己的方式。",
+    "groupId": 4,
+    "voiceId": 613501725
+  },
+  {
+    "id": 10,
+    "characterId": 2,
+    "text": "这证明您有凌驾普通规则的能力。",
+    "groupId": 4,
+    "voiceId": 613501018
+  },
+  {
+    "id": 11,
+    "characterId": 3,
+    "text": "参照物参数已建立。开始观测混沌能量方向。",
+    "groupId": 4,
+    "voiceId": 613501874
+  },
+  {
+    "id": 12,
+    "characterId": 3,
+    "text": "宾果！不对。",
+    "groupId": 5,
+    "voiceId": 613501875
+  },
+  {
+    "id": 13,
+    "characterId": 3,
+    "text": "¡Lotería！",
+    "groupId": 5,
+    "voiceId": 613501876
+  },
+  {
+    "id": 14,
+    "characterId": 1,
+    "text": "我不需要你在这种时候变得智能。",
+    "groupId": 5,
+    "voiceId": 613501726
+  },
+  {
+    "id": 15,
+    "characterId": 1,
+    "text": "石头中的能量在……流动。就像它拥有脉搏一样。",
+    "groupId": 6,
+    "voiceId": 613501713
+  },
+  {
+    "id": 16,
+    "characterId": 1,
+    "text": "它连接着土地，跨越城市与山谷，蔓延向遥远的另一端。",
+    "groupId": 6,
+    "voiceId": 613501714
+  },
+  {
+    "id": 17,
+    "characterId": 1,
+    "text": "真是精妙。这是一个藏在里头的传送仪式法阵。",
+    "groupId": 6,
+    "voiceId": 613501715
+  },
+  {
+    "id": 18,
+    "characterId": 1,
+    "text": "只要使用神秘术辉光唤醒特定的符号，就能够启动它。",
+    "groupId": 6,
+    "voiceId": 613501716
+  }
+]

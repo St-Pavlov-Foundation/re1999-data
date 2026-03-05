@@ -70,7 +70,7 @@ function StoryVideoItem:_playVideo()
 	StoryModel.instance:setSpecialVideoPlaying(self._videoName)
 
 	if self._videoPlayer then
-		self._videoPlayer:play(self._videoName, false, self._startCallBack, self._startCallBackObj)
+		self._videoPlayer:play(self._videoName, self._loop, self._startCallBack, self._startCallBackObj)
 	end
 end
 

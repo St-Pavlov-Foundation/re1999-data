@@ -323,7 +323,7 @@ end
 function SurvivalMapHelper:getScene()
 	local curScene = GameSceneMgr.instance:getCurScene()
 
-	if not curScene or curScene.__cname ~= "SurvivalScene" and curScene.__cname ~= "SurvivalShelterScene" and curScene.__cname ~= "SurvivalSummaryAct" then
+	if not curScene or curScene.__cname ~= "SurvivalScene" and curScene.__cname ~= "SurvivalShelterScene" and curScene.__cname ~= "SurvivalSummaryAct" and curScene.__cname ~= "SurvivalCollectionRoomScene" then
 		return
 	end
 
@@ -482,7 +482,11 @@ end
 function SurvivalMapHelper:isInSurvivalScene()
 	local curSceneType = GameSceneMgr.instance:getCurSceneType()
 
-	return curSceneType == SceneType.Survival or curSceneType == SceneType.SurvivalShelter or curSceneType == SceneType.SurvivalSummaryAct
+	return self:isSurvivalScene(curSceneType)
+end
+
+function SurvivalMapHelper:isSurvivalScene(scene)
+	return scene == SceneType.Survival or scene == SceneType.SurvivalShelter or scene == SceneType.SurvivalSummaryAct or scene == SceneType.SurvivalCollectionRoom
 end
 
 function SurvivalMapHelper:isInMapScene()
@@ -495,6 +499,18 @@ function SurvivalMapHelper:isInShelterScene()
 	local curSceneType = GameSceneMgr.instance:getCurSceneType()
 
 	return curSceneType == SceneType.SurvivalShelter
+end
+
+function SurvivalMapHelper:isInCollectionRoom()
+	local curSceneType = GameSceneMgr.instance:getCurSceneType()
+
+	return curSceneType == SceneType.SurvivalCollectionRoom
+end
+
+function SurvivalMapHelper:isUseShelterAmbient()
+	local curSceneType = GameSceneMgr.instance:getCurSceneType()
+
+	return curSceneType == SceneType.SurvivalShelter or curSceneType == SceneType.SurvivalSummaryAct or curSceneType == SceneType.SurvivalCollectionRoom
 end
 
 function SurvivalMapHelper:clearSteps()
@@ -547,7 +563,14 @@ function SurvivalMapHelper:interactiveBuilding(buildingId)
 	local buildingInfo = weekInfo:getBuildingInfo(buildingId)
 
 	if not buildingInfo then
-		logError(string.format("建筑数据不存在，buildingId:%s not found", buildingId))
+		local mapCo = SurvivalConfig.instance:getShelterMapCo()
+		local buildingCo = mapCo:getBuildingById(buildingId)
+
+		if buildingCo:isCollection() then
+			ViewMgr.instance:openView(ViewName.SurvivalInfoView, {
+				cfg = buildingCo.cfg
+			})
+		end
 
 		return
 	end
@@ -658,6 +681,17 @@ function SurvivalMapHelper:interactiveBuilding(buildingId)
 		ViewMgr.instance:openView(ViewName.SurvivalTechShelterView, {
 			buildingId = buildingId
 		})
+
+		return
+	end
+
+	if buildingInfo:isEqualType(SurvivalEnum.BuildingType.CollectionRoom) then
+		if SurvivalMapHelper.instance:isInCollectionRoom() then
+			return
+		end
+
+		GameSceneMgr.instance:dispatchEvent(SceneEventName.SetLoadingTypeOnce, GameLoadingState.SurvivalLoadingView)
+		GameSceneMgr.instance:startScene(SceneType.SurvivalCollectionRoom, 280001, 280001, true, true)
 
 		return
 	end

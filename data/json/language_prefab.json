@@ -23725,7 +23725,7 @@
   },
   {
     "id": "p_bpenterview_stamp2txt",
-    "lang": "「度朔特典」"
+    "lang": "解锁立得\n              <size=24><#742e00>「十连/电池2选1」</color></size>"
   },
   {
     "id": "p_bpreceiverewardview_txt",
@@ -23733,7 +23733,7 @@
   },
   {
     "id": "p_bpview_unlockreward",
-    "lang": "解锁即送"
+    "lang": "解锁立得\n<#D5B275>十连/电池2选1</color>"
   },
   {
     "id": "p_bpchargeview_cruise",
@@ -24521,7 +24521,7 @@
   },
   {
     "id": "p_v3a2_warmup_txt_tips",
-    "lang": "划动拂走墙壁上的尘埃"
+    "lang": "划动翻阅UTTU专栏"
   },
   {
     "id": "p_v3a2_bossrush_leveldetail_txt_bouns",
@@ -25265,7 +25265,7 @@
   },
   {
     "id": "p_bpface_skinfestivalview_txt_title2",
-    "lang": "《岁月的书签》新的一页：钗影摇金柳，只待春燕斜。"
+    "lang": "《岁月的书签》新的一页：在隐秘处，母亲哼着歌谣，抚平一颗心脏被穿透后的恓惶。"
   },
   {
     "id": "p_bpface_skinfestivalview_txt_title3",
@@ -26017,11 +26017,11 @@
   },
   {
     "id": "p_activitycollect_fullview_txt2_title",
-    "lang": "吼吼点唱机·度朔特辑"
+    "lang": "吼吼点唱机·福利升级"
   },
   {
     "id": "p_activitycollect_fullview_txt2_desc",
-    "lang": "购买吼吼典藏光碟、典藏光碟组各立即获得<#9C5613>【灵魂压缩电池】×1</color>"
+    "lang": "购买典藏光碟即可自选\n<#9C5613>十全调·【湖的涟漪】</color>\n或<#9C5613>灵魂压缩电池</color>"
   },
   {
     "id": "p_packagestoregoodsitem_txt_destinygift",
@@ -26473,7 +26473,7 @@
   },
   {
     "id": "p_v3a4_survival_help_1_txt_7",
-    "lang": "每名演习主角都有属于自己的<#ff906a>独特能力</color>，善用能力可使探索事倍功半"
+    "lang": "每名演习主角都有属于自己的<#ff906a>独特能力</color>，善用能力可使探索事半功倍"
   },
   {
     "id": "p_v3a4_survival_help_1_txt_8",
@@ -26790,5 +26790,425 @@
   {
     "id": "p_survivalroleselectview_txt_unlocktips",
     "lang": "完成故事模式可解锁更多演习主角"
+  },
+  {
+    "id": "p_characterbackpacksearchfilterview_Tag1",
+    "lang": "定位标签"
+  },
+  {
+    "id": "p_characterbackpacksearchfilterview_Tag2",
+    "lang": "角色特色"
+  },
+  {
+    "id": "p_characterbackpacksearchfilterview_Tag3",
+    "lang": "体系配队"
+  },
+  {
+    "id": "p_characterbackpacksearchfilterview_EditTips",
+    "lang": "点击添加至列表"
+  },
+  {
+    "id": "p_characterbackpacksearchfilterview_Edit",
+    "lang": "编辑"
+  },
+  {
+    "id": "p_v3a5_schoolstartview_Descr",
+    "lang": "获取并播种<color=#e9863e>新麦粒儿</color>即可收获来自不休荒原的馈赠，完成所有播种可领取荒原建筑<color=#e9863e>火灯游</color>。"
+  },
+  {
+    "id": "p_v3a5_schoolstartview_Reward",
+    "lang": "赠礼预览"
+  },
+  {
+    "id": "p_v3a5_schoolstartview_Tips",
+    "lang": "点击任意土地进行播种"
+  },
+  {
+    "id": "p_fightview_lorentz_smallcard_tips",
+    "lang": "请选择咒语准备打印"
+  },
+  {
+    "id": "p_v3a5_lorentz_enterview_txt_Enter",
+    "lang": "<size=80>步</size>入剧情"
+  },
+  {
+    "id": "p_v3a5_storeview_txt_title1",
+    "lang": "<size=48>题材</size>底色"
+  },
+  {
+    "id": "p_v3a5_storeview_txt_title2",
+    "lang": "<size=48>线索</size>呼应"
+  },
+  {
+    "id": "p_v3a5_storeview_txt_title3",
+    "lang": "<size=48>情节</size>误导"
+  },
+  {
+    "id": "p_v3a5_rolestorylevelview_txt_tips1",
+    "lang": "·点击开始抛投"
+  },
+  {
+    "id": "p_v3a5_rolestorylevelview_txt_tips2",
+    "lang": "长按屏幕蓄力，蓄力越久，抛得越高\n松手即开始抛硬币"
+  },
+  {
+    "id": "p_v3a5_rolestorylevelview_txt_tips3",
+    "lang": "抛投硬币为正面时将拆卸一颗子弹，反面时填上一颗子弹"
+  },
+  {
+    "id": "p_v3a5_rolestorylevelview_txt_tips4",
+    "lang": "正面，幸运女神眷顾你"
+  },
+  {
+    "id": "p_v3a5_rolestorylevelview_txt_tips5",
+    "lang": "是反面，好运似乎在远离？"
+  },
+  {
+    "id": "p_v3a5_rolestorylevelview_txt_tips6",
+    "lang": "·点击观看故事"
+  },
+  {
+    "id": "p_survival_collectionview_txt_dec1",
+    "lang": "触碰收藏品可查看详情"
+  },
+  {
+    "id": "p_survival_collectionview_txt_dec2",
+    "lang": "返回庇护所"
+  },
+  {
+    "id": "p_survival_closingview_txt_newdec1",
+    "lang": "转换代币"
+  },
+  {
+    "id": "p_survival_closingview_txt_newdec2",
+    "lang": "转换代币已达上限"
+  },
+  {
+    "id": "p_survival_storeview_txt_title",
+    "lang": "<voffset=50px><size=107>象牙塔</voffset></size>深处"
+  },
+  {
+    "id": "handbookskin_festival_Easter",
+    "lang": "复活节"
+  },
+  {
+    "id": "p_udimo_mainview_txt_weather",
+    "lang": "箱中天气："
+  },
+  {
+    "id": "p_v3a5_plot_puzzle_view_Tips",
+    "lang": "点击特定符号启动太阳石"
+  },
+  {
+    "id": "p_dungeonview_txt_explore",
+    "lang": "探奇"
+  },
+  {
+    "id": "p_dungeonexploreenterview_txt_title",
+    "lang": "第<size=80>三扇</size>门"
+  },
+  {
+    "id": "p_dungeonexploreenterview_txt_dec",
+    "lang": "临时文本：p_dungeonexploreenterview_txt_dec"
+  },
+  {
+    "id": "p_dungeonexploreenterview_txt_tips",
+    "lang": "大型地图探索玩法"
+  },
+  {
+    "id": "p_dungeonsurvivalenterview_txt_dec",
+    "lang": "临时文本：p_dungeonsurvivalenterview_txt_dec"
+  },
+  {
+    "id": "p_dungeonsurvivalenterview_txt_enter",
+    "lang": "进入模拟"
+  },
+  {
+    "id": "p_v3a5_storeroleskinview_roletxt1",
+    "lang": "将哀啼也燃尽"
+  },
+  {
+    "id": "p_v3a5_storeroleskinview_rolename1",
+    "lang": "告死鸟"
+  },
+  {
+    "id": "p_v3a5_storeroleskinview_roletxt2",
+    "lang": "玻璃乌托邦"
+  },
+  {
+    "id": "p_v3a5_storeroleskinview_rolename2",
+    "lang": "库珀花环"
+  },
+  {
+    "id": "p_v3a5_lorentz_gameview_txt_RightTopTips",
+    "lang": "设计回溯"
+  },
+  {
+    "id": "p_dungeonadvplayview_txt_DungeonAdvPlayTabItem_1",
+    "lang": "雨前漫游指南"
+  },
+  {
+    "id": "p_dungeonadvplayview_txt_DungeonAdvPlayTabItem_2",
+    "lang": "第三扇门"
+  },
+  {
+    "id": "p_v3a5_season_enterview_txt_Title",
+    "lang": "亡灵欢歌"
+  },
+  {
+    "id": "p_v3a5_season_detailview_txt_Title",
+    "lang": "快速通关关卡，获取通关星级"
+  },
+  {
+    "id": "p_v3a5_schoolstartview_Tips2",
+    "lang": "已全部播种"
+  },
+  {
+    "id": "p_v3a5_schoolstartrewardview_Descr",
+    "lang": "获得所有奖励后，可获取荒原建筑<color=#e99b56>火灯游</color>"
+  },
+  {
+    "id": "p_v3a5_giftrecommendview_txt_shopnamecn1",
+    "lang": "彩烛的赠礼"
+  },
+  {
+    "id": "p_v3a5_giftrecommendview_txt_shopnamecn2",
+    "lang": "追忆的纪念"
+  },
+  {
+    "id": "p_v3a5_giftrecommendview_txt_shopnamecn3",
+    "lang": "神秘学潮汐"
+  },
+  {
+    "id": "p_v3a5_giftrecommendview2_txt_shopnamecn1",
+    "lang": "剪纸的赠礼"
+  },
+  {
+    "id": "p_v3a5_giftrecommendview2_txt_shopnamecn2",
+    "lang": "灯芯屋馈赠"
+  },
+  {
+    "id": "p_v3a5_giftrecommendview2_txt_shopnamecn3",
+    "lang": "彩烛的赠礼"
+  },
+  {
+    "id": "p_v3a5_giftrecommendview3_txt_shopnamecn1",
+    "lang": "十全调·渡影归真"
+  },
+  {
+    "id": "p_v3a5_giftrecommendview3_txt_shopnamecn2",
+    "lang": "欢愚特惠"
+  },
+  {
+    "id": "p_v3a5_giftrecommendview3_txt_shopnamecn3",
+    "lang": "欢愚酬宾"
+  },
+  {
+    "id": "p_v3a5_storeblockpackageview_name",
+    "lang": "「独立天使」"
+  },
+  {
+    "id": "p_v3a5_storeblockpackageview_desc",
+    "lang": "集齐当期<#c6be86>活动兑换</color>及<#c6be86>荒原构想商店</color>的主题套装后可获取"
+  },
+  {
+    "id": "p_season123equipbookview_txt_tips",
+    "lang": "获得的名人卡仅在本组关卡内可用"
+  },
+  {
+    "id": "p_a15_reappear_mainactivity_enterview_txt_EntranceRole1",
+    "lang": "种瓜得瓜"
+  },
+  {
+    "id": "p_a15_reappear_mainactivity_enterview_txt_EntranceRole2",
+    "lang": "洛基"
+  },
+  {
+    "id": "p_a16_reappear_mainactivity_enterview_txt_EntranceRole1",
+    "lang": "荣耀废墟与隐喻指南"
+  },
+  {
+    "id": "p_a16_reappear_mainactivity_enterview_txt_EntranceRole2",
+    "lang": "答录机 蝴蝶 文学评论家"
+  },
+  {
+    "id": "p_season123carddetailview_txt_title",
+    "lang": "名人卡机制"
+  },
+  {
+    "id": "p_season123herogroupview_txt_recommonTeam",
+    "lang": "推荐体系:"
+  },
+  {
+    "id": "p_season123herogroupview_txt_strategy",
+    "lang": "策略"
+  },
+  {
+    "id": "p_season123herogroupview_txt_strategyEn",
+    "lang": "TEMPTEMPTEMPTEMPTEMPTEMP"
+  },
+  {
+    "id": "p_season123progressview_txt_curStars",
+    "lang": "当前星星:"
+  },
+  {
+    "id": "p_season123progressview_txt_detail",
+    "lang": "完成关卡获得星星，领取丰厚奖励"
+  },
+  {
+    "id": "p_season123settlementview_txt_round",
+    "lang": "通关回合数"
+  },
+  {
+    "id": "p_survivalview_txt_new_shop",
+    "lang": "象牙塔深处"
+  },
+  {
+    "id": "p_v3a2_bossrush_leveldetail_txt_reward",
+    "lang": "灵魂压缩电池"
+  },
+  {
+    "id": "p_v3a2_bossrush_leveldetail_txt_desc",
+    "lang": "薄弱点:"
+  },
+  {
+    "id": "p_fight_baifuzhang_cardview_txt_tips",
+    "lang": "选择生效对象"
+  },
+  {
+    "id": "p_fight_baifuzhang_cardview_txt_enemy",
+    "lang": "对敌方使用"
+  },
+  {
+    "id": "p_fight_baifuzhang_cardview_txt_ours",
+    "lang": "对我方使用"
+  },
+  {
+    "id": "p_fight_baifuzhang_wheelview_txt_title",
+    "lang": "选择一个效果："
+  },
+  {
+    "id": "p_fight_baifuzhang_wheelview_txt_notuse",
+    "lang": "不使用"
+  },
+  {
+    "id": "p_warmup_txt_desc",
+    "lang": "无目的地巡游，有目的地探闻,你想听一段什么样的旅程？"
+  },
+  {
+    "id": "p_warmup_txt_title",
+    "lang": "银色高塔仍熠熠"
+  },
+  {
+    "id": "p_warmup_txt_reward",
+    "lang": "阅读后可领"
+  },
+  {
+    "id": "p_bpreceiverewardview_txt_name",
+    "lang": "湖岸轻波"
+  },
+  {
+    "id": "p_bpreceiverewardview_txt_desc1",
+    "lang": "解锁典藏光碟立得湖岸轻波(限时)*1，可用于自选\n<#FF943D>十全调·【湖的涟漪】</color>(限时)*1或<#FF943D>灵魂压缩电池</color>*1"
+  },
+  {
+    "id": "p_bpreceiverewardview_txt_desc2",
+    "lang": "消耗3枚[灵魂压缩电池]即可开启[非具象留影仪]从指定\n范围中选择获取1个已拥有<#FF943D>6星角色的造像</color>。"
+  },
+  {
+    "id": "p_v3a5_luolunzhi_help_1_txt_1",
+    "lang": "点击<#ba8458>设计回溯</color>\n可以将随机一个碎片\n装配至<#ba8458>正确位置</color>"
+  },
+  {
+    "id": "p_v3a5_luolunzhi_help_1_txt_2",
+    "lang": "拖拽碎片至装置轮廓的<#ba8458>正确位置</color>完成装配"
+  },
+  {
+    "id": "p_v3a5_luolunzhi_help_1_txt_3",
+    "lang": "<#ba8458>所有碎片</color>装配完成后，设备即<#ba8458>装配成功</color>"
+  },
+  {
+    "id": "p_v3a5_zhangdou_help_1_txt_1",
+    "lang": "每回合开始会打开<#ff906a>转盘</color>，<#ff906a>在首次开启时</color>会展示全部卡面，随后翻至卡背转动转盘"
+  },
+  {
+    "id": "p_v3a5_zhangdou_help_1_txt_2",
+    "lang": "转盘<#ff906a>停止转动</color>后，需对<#ff906a>指针所指的卡牌</color>选择一个效果"
+  },
+  {
+    "id": "p_v3a5_zhangdou_help_2_txt_1",
+    "lang": "随后<#ff906a>根据选项发放卡牌</color>到手牌上，该卡<#ff906a>不占用行动点</color>，且在<#ff906a>当前回合</color>会<#ff906a>自动打出</color>"
+  },
+  {
+    "id": "p_v3a5_zhangdou_help_2_txt_2",
+    "lang": "选择效果后决定<#ff906a>卡牌生效对象</color>为<#ff906a>敌方</color>或<#ff906a>我方</color>"
+  },
+  {
+    "id": "p_v3a5_zhangdou_help_3_txt_1",
+    "lang": "后续打开转盘会展示<#ff906a>已经使用过的卡牌</color>，并<#ff906a>使抬针顺时针转动一格</color>，待所有卡牌都使用过后则<#ff906a>不会再打开转盘</color>"
+  },
+  {
+    "id": "v3a5_shaijiwanfa_help_1_txt_1",
+    "lang": "团队名人卡战斗引导图"
+  },
+  {
+    "id": "v3a5_shaijiwanfa_help_1_txt_2",
+    "lang": "<#ff906a>团队名人卡</color>是本次UTTU亡灵欢歌的<#ff906a>核心战斗机制</color>角色做出符合团队名人卡需求的战斗行为会<#ff906a>提升评分</color>"
+  },
+  {
+    "id": "v3a5_shaijiwanfa_help_1_txt_3",
+    "lang": "评分提升后，团队名人卡评级将会<#ff906a>不断进化</color>提供逐渐增强的战斗能力"
+  },
+  {
+    "id": "v3a5_shaijiwanfa_help_2_txt_1",
+    "lang": "团队名人卡"
+  },
+  {
+    "id": "v3a5_shaijiwanfa_help_2_txt_2",
+    "lang": "<#ff906a>团队名人卡</color>存在特殊战斗机制可以点击进行查看"
+  },
+  {
+    "id": "v3a5_shaijiwanfa_help_2_txt_3",
+    "lang": "每组关卡拥有一个<#ff906a>特殊的团队名人卡机制</color>最后一组关卡可以<#ff906a>启用</color>的自选团队名人卡"
+  },
+  {
+    "id": "v3a5_shaijiwanfa_help_3_txt_1",
+    "lang": "关卡星级引导图"
+  },
+  {
+    "id": "v3a5_shaijiwanfa_help_3_txt_2",
+    "lang": "每个关卡都拥有<#ff906a>三个星级条件</color>\n满足星级条件的情况下通关可以获得对应的星级\n星级能够<#ff906a>兑换星级进度奖励</color>"
+  },
+  {
+    "id": "v3a5_shaijiwanfa_help_4_txt_1",
+    "lang": "星级奖励引导图"
+  },
+  {
+    "id": "v3a5_shaijiwanfa_help_4_txt_2",
+    "lang": "可以根据每组关卡的<#ff906a>4</color>个关卡的<#ff906a>星级总数领取</color>星级进度奖励"
+  },
+  {
+    "id": "v3a5_shaijiwanfa_help_4_txt_3",
+    "lang": "点击此处查看或<#ff906a>领取星级奖励</color>"
+  },
+  {
+    "id": "p_season123marketview_txt_tips",
+    "lang": "本场战斗能够登场的角色受到限制"
+  },
+  {
+    "id": "p_fight_baifuzhang_tipsview_txt_title",
+    "lang": "好运傍身"
+  },
+  {
+    "id": "p_fight_baifuzhang_tipsview_txt_tips",
+    "lang": "使所有卡牌变为【金色运势】，并固定对|我方|使用"
+  },
+  {
+    "id": "p_v3a5_bossrush_help_1_txt_1",
+    "lang": "1.部分敌人为<#ff906a>灵感薄弱型</color>敌人，拥有若干个<#ff906a>灵感薄弱点</color>，受到相应灵感的攻击会被克制；此类敌人攻击均不为<#ff906a>克制攻击</color>"
+  },
+  {
+    "id": "p_v3a5_bossrush_help_1_txt_2",
+    "lang": "2.灵感薄弱型敌人可能会有<#ff906a>灵感耐受度</color>，受到攻击后会降低耐受度，受到克制攻击会降低更多；耐受度被清空后，会触发相应效果，并根据敌人能力<#ff906a>回复耐受度</color>"
   }
 ]

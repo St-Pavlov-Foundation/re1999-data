@@ -34,6 +34,7 @@ function CommandStationRelationShipDetail:_editableInitView()
 	self._rootAnimator = self.viewGO:GetComponent("Animator")
 	self._panelAnimator = self._goteamstorypanel:GetComponent("Animator")
 	self._txtGoList = self:getUserDataTb_()
+	self._scroll = gohelper.findChildScrollRect(self.viewGO, "#go_teamstorypanel/Scroll View")
 end
 
 function CommandStationRelationShipDetail:_initGos()
@@ -334,6 +335,8 @@ function CommandStationRelationShipDetail:_showMainCharacter()
 	self._txtteamname.text = campConfig and campConfig.camp
 
 	self:_initDesc(self._descList)
+
+	self._scroll.verticalNormalizedPosition = 1
 end
 
 function CommandStationRelationShipDetail:_initDesc(list)

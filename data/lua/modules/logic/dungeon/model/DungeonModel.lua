@@ -36,6 +36,7 @@ function DungeonModel:reInit()
 	self.dungeonInfoCacheList = {}
 	self.canGetDramaReward = false
 	self.initAllDungeonInfo = false
+	self.advPlayJumpType = nil
 end
 
 function DungeonModel:setLastSendEpisodeId(id)
@@ -949,6 +950,12 @@ function DungeonModel:chapterListIsPermanent(type)
 	return isPermanent
 end
 
+function DungeonModel:chapterListIsAdvPlay(type)
+	local curChapterType = type or self.curChapterType
+
+	return curChapterType == DungeonEnum.ChapterType.AdvPlay
+end
+
 function DungeonModel:chapterListIsTower(type)
 	local curChapterType = type or self.curChapterType
 	local result = curChapterType == DungeonEnum.ChapterType.TowerPermanent
@@ -1272,6 +1279,10 @@ function DungeonModel:getLastFightEpisodePassMode(episodeConfig)
 	end
 
 	return DungeonEnum.ChapterType.Normal
+end
+
+function DungeonModel:setAdvPlayJumpType(type)
+	self.advPlayJumpType = type
 end
 
 DungeonModel.instance = DungeonModel.New()

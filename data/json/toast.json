@@ -11222,5 +11222,93 @@
     "audioId": 0,
     "notMerge": 0,
     "notShow": 0
+  },
+  {
+    "id": 351001,
+    "tips": "未找到符合条件的助战玩家，请稍后重试",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 351002,
+    "tips": "该角色已上阵",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 351003,
+    "tips": "没有需要取出的子弹",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 351004,
+    "tips": "拥有新麦粒儿方可进行播种",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 351005,
+    "tips": "已选择▩1%s的协助角色",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 351006,
+    "tips": "已取消选择中的协助角色",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 351007,
+    "tips": "未选择好友协助角色",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 351008,
+    "tips": "已切换至▩1%s挑战",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 351009,
+    "tips": "请加大力量抛出金币",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 351101,
+    "tips": "已放置道具",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 351102,
+    "tips": "剩余道具不足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
   }
 ]

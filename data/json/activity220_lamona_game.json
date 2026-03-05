@@ -1,0 +1,44 @@
+[
+  {
+    "gameId": 1001,
+    "mapId": 1001,
+    "targetDesc": "将鬼魂驱赶至角落，并净化所有鬼魂（▩1%s/▩2%s）",
+    "propId": 401,
+    "propCount": 1
+  },
+  {
+    "gameId": 1002,
+    "mapId": 1002,
+    "targetDesc": "将鬼魂驱赶至角落，并净化所有鬼魂（▩1%s/▩2%s）",
+    "propId": 402,
+    "propCount": 1
+  },
+  {
+    "gameId": 1003,
+    "mapId": 1003,
+    "targetDesc": "将鬼魂驱赶至角落，并净化所有鬼魂（▩1%s/▩2%s）",
+    "propId": 401,
+    "propCount": 1
+  },
+  {
+    "gameId": 1004,
+    "mapId": 1004,
+    "targetDesc": "将鬼魂驱赶至角落，并净化所有鬼魂（▩1%s/▩2%s）",
+    "propId": 402,
+    "propCount": 2
+  },
+  {
+    "gameId": 1005,
+    "mapId": 1005,
+    "targetDesc": "将鬼魂驱赶至角落，并净化所有鬼魂（▩1%s/▩2%s）",
+    "propId": 401,
+    "propCount": 1
+  },
+  {
+    "gameId": 1006,
+    "mapId": 1006,
+    "targetDesc": "将鬼魂驱赶至角落，并净化所有鬼魂（▩1%s/▩2%s）",
+    "propId": 402,
+    "propCount": 1
+  }
+]

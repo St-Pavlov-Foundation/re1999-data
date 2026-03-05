@@ -78,6 +78,10 @@ end
 function MainThumbnailRecommendView:statRecommendPage(type, dragType)
 	local pageCo = self._pagesCo[self:getTargetPageIndex()]
 
+	if not pageCo then
+		return
+	end
+
 	StatController.instance:track(StatEnum.EventName.ShowRecommendPage, {
 		[StatEnum.EventProperties.RecommendPageType] = type,
 		[StatEnum.EventProperties.ShowType] = dragType,
@@ -91,7 +95,7 @@ function MainThumbnailRecommendView:_startAutoSwitch()
 end
 
 function MainThumbnailRecommendView:_onSwitch()
-	if #self._pagesCo == 1 then
+	if #self._pagesCo <= 1 then
 		TaskDispatcher.cancelTask(self._onSwitch, self)
 
 		return
@@ -439,6 +443,10 @@ end
 
 function MainThumbnailRecommendView:_updateContentPos(contentItemIndex, posIndex, focusContent)
 	local content = self._helpItems[contentItemIndex]
+
+	if not content then
+		return
+	end
 
 	recthelper.setAnchorX(content._go.transform, self:_getContentPos(posIndex))
 

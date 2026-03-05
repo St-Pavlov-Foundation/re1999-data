@@ -1078,5 +1078,41 @@
     "audioLength": 116.0,
     "audioEvaluates": "葛天#羽音沉静淡荡，有慨然侠风；角音悠扬清和，可喻万物生发之春。",
     "isNonLoop": 0
+  },
+  {
+    "id": 1013501,
+    "audio": 350020,
+    "isReport": 0,
+    "unlockCondition": "",
+    "itemId": 221251,
+    "defaultUnlock": 0,
+    "audioName": "绿松石蛇俱乐部",
+    "audioNameEn": "The Turquoise Serpent Club",
+    "audioIntroduce": "完美的、残缺的，或被称作永恒的梦与未竟之愿，皆归于此。",
+    "audioBg": "102531_1",
+    "audioicon": "102531_2",
+    "sort": 0,
+    "audioType": 25,
+    "audioLength": 123.0,
+    "audioEvaluates": "虚构集#旋律和谐，衔接自然，简直无可挑剔！象征、隐喻，一样不少——感谢这首歌，替我的故事补齐了始终缺失的那一环。让我想想，那部分通常被称作什么？噢，对了，商业化！",
+    "isNonLoop": 0
+  },
+  {
+    "id": 1013502,
+    "audio": 350021,
+    "isReport": 0,
+    "unlockCondition": "",
+    "itemId": 221252,
+    "defaultUnlock": 0,
+    "audioName": "苦涩龙舌兰",
+    "audioNameEn": "Bitter Tequila",
+    "audioIntroduce": "透过我们的眼睛，亡者重新看见色彩。",
+    "audioBg": "102532_1",
+    "audioicon": "102532_2",
+    "sort": 0,
+    "audioType": 25,
+    "audioLength": 91.5,
+    "audioEvaluates": "讣告人#尘埃离开墓碑，被风托向高处，在空中回旋、飞舞，那一瞬，死亡的重量，都似乎短暂地变轻了。",
+    "isNonLoop": 0
   }
 ]

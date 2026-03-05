@@ -125,7 +125,7 @@ function SurvivalMapSearchView:_delayHideLoading()
 	self.isShowLoading = false
 
 	if self.convertAccount > 0 then
-		UIBlockHelper.instance:startBlock("SurvivalMapSearchView_changeItems", 100)
+		UIBlockHelper.instance:startBlock("SurvivalMapSearchView_changeItems", 10)
 		self:playConvertItemAnim()
 	else
 		self:_refreshLeftPart()
@@ -146,6 +146,7 @@ function SurvivalMapSearchView:playConvertItemAnim()
 	local reason = self.convertItemMosList[self.convertIndex].reason
 	local sublimationInfo = self.convertItemMosList[self.convertIndex].sublimationInfo
 	local maxTime = 1
+	local isDebug = false
 
 	for _, itemMo in pairs(covertItems) do
 		if not itemMo:isEmpty() and itemMos[itemMo.uid] and itemMo.id ~= itemMos[itemMo.uid].id then
@@ -153,16 +154,62 @@ function SurvivalMapSearchView:playConvertItemAnim()
 				self._items[itemMo.uid]:playComposeAnim()
 			elseif reason == SurvivalEnum.StepType.SearchItemSublimation then
 				local t = sublimationInfo[itemMo.uid]
-				local nextMo = self:getNextItemMoByUid(itemMo.uid)
 
-				self._items[itemMo.uid]:playSublimationAnim2(t, nextMo)
+				if t then
+					local nextMo = self:getNextItemMoByUid(itemMo.uid)
 
-				maxTime = 1.8
+					self._items[itemMo.uid]:playSublimationAnim2(t, nextMo)
+
+					maxTime = 1.8
+				else
+					isDebug = true
+
+					logError(string.format("升华打印 没有sublimationInfo uid:%s", itemMo.uid))
+				end
 			end
 		end
 	end
 
 	TaskDispatcher.runDelay(self.playConvertItemAnim, self, maxTime)
+
+	if isDebug then
+		local str1 = string.format("convertIndex: %s", self.convertIndex)
+		local str2 = "itemMos: "
+
+		for id, itemMo in pairs(itemMos) do
+			str2 = str2 .. string.format("%s(uid:%s) ", itemMo.id, itemMo.uid)
+		end
+
+		local str3 = "convertItemMosList: "
+
+		for i, v in ipairs(self.convertItemMosList) do
+			str3 = str3 .. "\n  "
+
+			for id, itemMo2 in pairs(v.items) do
+				str3 = str3 .. string.format("%s(uid:%s) ", itemMo2.id, itemMo2.uid)
+			end
+
+			str3 = str3 .. "  |  sublimationInfo:  "
+
+			if v.sublimationInfo then
+				for uid, _ in pairs(v.sublimationInfo) do
+					str3 = str3 .. string.format("uid:%s ", uid)
+				end
+			end
+		end
+
+		local str4 = "itemConvertInfosList: "
+
+		for i, itemConvertInfos in ipairs(self.itemConvertInfosList) do
+			local items = itemConvertInfos.items
+
+			for j, itemMo3 in pairs(items) do
+				str4 = str4 .. string.format("%s(uid:%s) ", itemMo3.id, itemMo3.uid)
+			end
+		end
+
+		logError(string.format("升华打印: \n%s\n%s\n\n%s\n\n%s\n", str1, str2, str3, str4))
+	end
 end
 
 function SurvivalMapSearchView:parseConvertItemMos()
@@ -185,7 +232,7 @@ function SurvivalMapSearchView:parseConvertItemMos()
 
 				local nextItemMo
 
-				for k, mo in pairs(nextItems) do
+				for _i, mo in pairs(nextItems) do
 					if v.uid == mo.uid then
 						nextItemMo = mo
 
@@ -439,6 +486,7 @@ function SurvivalMapSearchView:onClose()
 	TaskDispatcher.cancelTask(self._onSearchAnim, self)
 	TaskDispatcher.cancelTask(self._delayRefreshBag, self)
 	TaskDispatcher.cancelTask(self._delayShowItemMos, self)
+	TaskDispatcher.cancelTask(self.playConvertItemAnim, self)
 end
 
 return SurvivalMapSearchView

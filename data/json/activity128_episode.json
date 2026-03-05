@@ -1846,5 +1846,41 @@
     "recommendLevelDesc": "",
     "openDay": 15,
     "evaluate": "10102#10201#10301#10401"
+  },
+  {
+    "activityId": 13519,
+    "stage": 1,
+    "layer": 1,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500407,
+    "desc": "非现实属类，更加轻柔，更加粘稠，就像你梦中最渴求的归宿。是啊，你发出过拒绝，但你感受到手指探入你的眼窝、脑髓与骨节，似曾相识，而又崭新。\n<i>嘘，蓝色，新的蓝色，一个蓝色的梦。</i>",
+    "recommendLevelDesc": "",
+    "openDay": 1,
+    "evaluate": "10102#10201#10301#10401"
+  },
+  {
+    "activityId": 13519,
+    "stage": 2,
+    "layer": 1,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500408,
+    "desc": "“我也想有一个如假包换的血食怪叔叔。报社的邮件催促不动那些拖欠稿件的家伙，但血翼和獠牙或许可以。”\n<i>是否只要足够渴求，就可以看见理想实现的那一天。</i>",
+    "recommendLevelDesc": "",
+    "openDay": 8,
+    "evaluate": "10102#10201#10301#10401"
+  },
+  {
+    "activityId": 13519,
+    "stage": 3,
+    "layer": 1,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500409,
+    "desc": "“无数的蛾，无名的蛾，它们让黑暗遮挡了日月，它们让黑暗吞没了自身。”\n<i>在茧完全成形之前，千万不要对里头的东西抱有任何期待。</i>",
+    "recommendLevelDesc": "",
+    "openDay": 15,
+    "evaluate": "10102#10201#10301#10401"
   }
 ]

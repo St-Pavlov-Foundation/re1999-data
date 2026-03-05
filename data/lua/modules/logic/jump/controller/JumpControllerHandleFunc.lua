@@ -1783,6 +1783,10 @@ function JumpController:jumpToLaplaceChatRoomView()
 	LaplaceForumController.instance:openLaplaceChatRoomView()
 end
 
+function JumpController:jumpToSurvivalView()
+	SurvivalController.instance:openSurvivalView()
+end
+
 function JumpController:_useSupplementMonthCard()
 	SignInRpc.instance:sendSupplementMonthCardRequest()
 end
@@ -1846,7 +1850,8 @@ JumpController.JumpViewToHandleFunc = {
 	[JumpEnum.JumpView.BackpackUseType] = JumpController.jumpToBackpackUseTypeView,
 	[JumpEnum.JumpView.SkinGiftUseType] = JumpController.jumpToSkinGiftUseTypeView,
 	[JumpEnum.JumpView.StoreSupplementMonthCardUseView] = JumpController.jumpToStoreSupplementMonthCardUseView,
-	[JumpEnum.JumpView.LaplaceChatRoom] = JumpController.jumpToLaplaceChatRoomView
+	[JumpEnum.JumpView.LaplaceChatRoom] = JumpController.jumpToLaplaceChatRoomView,
+	[JumpEnum.JumpView.SurvivalView] = JumpController.jumpToSurvivalView
 }
 JumpController.JumpActViewToHandleFunc = {
 	[JumpEnum.ActIdEnum.Act117] = JumpController.jumpToAct117,

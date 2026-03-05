@@ -31,21 +31,21 @@
   },
   {
     "id": 4,
-    "desc": "直接击杀▩1%s格范围内的指定怪物",
-    "resource": "survival_map_skillicon_5",
+    "desc": "使用能力后，可抢夺▩1%s范围内的魔精携带物品。（失主会持续追缉，直到夺回物品）",
+    "resource": "survival_map_skillicon_6",
     "times": 3,
     "addTalentIds": "",
-    "effect1": "killMonster#3#1",
+    "effect1": "snatchItem#1#0#41,42,43,44,45,46,47,49:307091201&77:307091202",
     "effect2": "",
     "effect3": ""
   },
   {
     "id": 5,
-    "desc": "直接击杀▩1%s格范围内的指定怪物",
-    "resource": "survival_map_skillicon_6",
-    "times": 3,
+    "desc": "使用能力后，可替换▩1%s范围内的地形为石化领域。（石化领域：无地形效果，处在区域内的敌人无法移动）",
+    "resource": "survival_map_skillicon_5",
+    "times": 2,
     "addTalentIds": "",
-    "effect1": "killMonster#3#1",
+    "effect1": "replaceBlockUnit#3#2#70099#792",
     "effect2": "",
     "effect3": ""
   },
@@ -55,7 +55,7 @@
     "resource": "survival_map_skillicon_4",
     "times": 2,
     "addTalentIds": "",
-    "effect1": "findDrop#0#2#30339200",
+    "effect1": "findDrop#0#3#30339200",
     "effect2": "",
     "effect3": ""
   }

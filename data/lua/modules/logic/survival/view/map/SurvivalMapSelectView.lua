@@ -17,6 +17,16 @@ function SurvivalMapSelectView:onInitView()
 	self._gohard = gohelper.findChild(self._root, "Right/#go_difficulty/hard")
 	self._gohardEffect = gohelper.findChild(self.viewGO, "#simage_bghard")
 	self._go_recommend = gohelper.findChild(self._root, "Right/#go_recommend")
+	self.weather = gohelper.findChild(self._root, "Right/scroll_desc/Viewport/#go_descContent/weather")
+	self.go_daytime = gohelper.findChild(self.weather, "#go_daytime")
+	self.go_night = gohelper.findChild(self.weather, "#go_night")
+
+	local scrollParam = GameFacade.createSimpleListParam(SurvivalMapSelectDayItem, true)
+
+	self.daySelectList = GameFacade.createSimpleListComp(self.weather, scrollParam, nil, self.viewContainer)
+
+	self.daySelectList:addCustomItem(self.go_daytime)
+	self.daySelectList:addCustomItem(self.go_night)
 
 	local cfgDic = lua_survival_map_group.configDict
 
@@ -28,6 +38,7 @@ function SurvivalMapSelectView:onInitView()
 		cfgDic[50000].name,
 		cfgDic[60000].name
 	}
+	SurvivalMapModel.instance.dayMode = nil
 end
 
 function SurvivalMapSelectView:addEvents()
@@ -73,6 +84,11 @@ function SurvivalMapSelectView:onOpen()
 	end
 
 	self:onClickMap(self._groupMo.selectMapIndex + 1, true)
+	self.daySelectList:setData({
+		{},
+		{}
+	})
+	self.daySelectList:setSelect(1)
 end
 
 function SurvivalMapSelectView:onClickMap(index, isFirst)
@@ -153,6 +169,13 @@ end
 function SurvivalMapSelectView:onClickNext()
 	TaskDispatcher.cancelTask(self._delayPlayIn, self)
 	self.viewContainer:playAnim("go_selectmember")
+
+	local dayMode
+	local daySelect = self.daySelectList:getSelect()
+
+	dayMode = daySelect == 1 and 0 or 1
+	SurvivalMapModel.instance.dayMode = dayMode
+
 	self.viewContainer:nextStep()
 end
 

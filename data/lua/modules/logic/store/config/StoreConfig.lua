@@ -426,8 +426,9 @@ function StoreConfig:getRemain(goodsConfig, remain, offlineTime)
 	end
 
 	local maxBuyCount = goodsConfig.maxBuyCount
+	local refreshTime = StoreHelper.getShowRefreshTimeByGoodsCfg(goodsConfig)
 
-	if goodsConfig.refreshTime == StoreEnum.RefreshTime.Forever then
+	if refreshTime == StoreEnum.RefreshTime.Forever then
 		if maxBuyCount > 0 then
 			if goodsConfig.jumpId ~= 0 then
 				return formatLuaLang("store_limitget", remain)
@@ -439,12 +440,14 @@ function StoreConfig:getRemain(goodsConfig, remain, offlineTime)
 		else
 			return nil
 		end
-	elseif goodsConfig.refreshTime == StoreEnum.RefreshTime.Day then
+	elseif refreshTime == StoreEnum.RefreshTime.Day then
 		return string.format("%s:%d", luaLang("store_buylimit_day"), remain)
-	elseif goodsConfig.refreshTime == StoreEnum.RefreshTime.Week then
+	elseif refreshTime == StoreEnum.RefreshTime.Week then
 		return string.format("%s:%d", luaLang("store_buylimit_week"), remain)
-	elseif goodsConfig.refreshTime == StoreEnum.RefreshTime.Month then
+	elseif refreshTime == StoreEnum.RefreshTime.Month then
 		return string.format("%s:%d", luaLang("store_buylimit_month"), remain)
+	elseif refreshTime == StoreEnum.RefreshTime.Version then
+		return string.format("%s:%d", luaLang("store_buylimit_version"), remain)
 	else
 		return string.format("%s:%d", luaLang("store_buylimit"), remain)
 	end
@@ -467,6 +470,8 @@ function StoreConfig:getRemainText(maxBuyCount, refreshTime, remain, offlineTime
 		return string.format("%s: %d", luaLang("store_buylimit_week"), remain)
 	elseif refreshTime == StoreEnum.RefreshTime.Month then
 		return string.format("%s: %d", luaLang("store_buylimit_month"), remain)
+	elseif refreshTime == StoreEnum.RefreshTime.Version then
+		return string.format("%s: %d", luaLang("store_buylimit_version"), remain)
 	else
 		return string.format("%s: %d", luaLang("store_buylimit"), remain)
 	end

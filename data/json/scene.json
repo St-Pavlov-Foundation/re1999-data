@@ -4389,5 +4389,165 @@
     "levels": [
       159011
     ]
+  },
+  {
+    "id": 35301,
+    "name": "荒郊墓地",
+    "nameen": "Cemetery",
+    "levels": [
+      35301
+    ]
+  },
+  {
+    "id": 35401,
+    "name": "家族祭坛",
+    "nameen": "Family Ofrenda",
+    "levels": [
+      35401
+    ]
+  },
+  {
+    "id": 35501,
+    "name": "绿松石蛇俱乐部",
+    "nameen": "The Turquoise Serpent Club",
+    "levels": [
+      35501
+    ]
+  },
+  {
+    "id": 35601,
+    "name": "墨西哥城·街道",
+    "nameen": "Street, Mexico City",
+    "levels": [
+      35601
+    ]
+  },
+  {
+    "id": 35701,
+    "name": "艺术品拍卖会",
+    "nameen": "Art Auction",
+    "levels": [
+      35701
+    ]
+  },
+  {
+    "id": 35801,
+    "name": "迷思之海",
+    "nameen": "Depths of Myth",
+    "levels": [
+      35801
+    ]
+  },
+  {
+    "id": 25003,
+    "name": "墨西哥城·郊外",
+    "nameen": "Suburb, Mexico City",
+    "levels": [
+      25001
+    ]
+  },
+  {
+    "id": 23703,
+    "name": "案发现场·Ⅴ",
+    "nameen": "Crime Scene",
+    "levels": [
+      23701
+    ]
+  },
+  {
+    "id": 23903,
+    "name": "后台走廊",
+    "nameen": "Backstage Corridor",
+    "levels": [
+      23901
+    ]
+  },
+  {
+    "id": 14205,
+    "name": "拍卖会后台",
+    "nameen": "Auction Backstage",
+    "levels": [
+      14205
+    ]
+  },
+  {
+    "id": 19602,
+    "name": "废弃房间",
+    "nameen": "Abandoned Room",
+    "levels": [
+      19601
+    ]
+  },
+  {
+    "id": 23003,
+    "name": "科算中心·长廊",
+    "nameen": "Corridor,Laplace",
+    "levels": [
+      23001
+    ]
+  },
+  {
+    "id": 29402,
+    "name": "现实的映射，壁画的罅隙",
+    "nameen": "Between the Mural and Reality",
+    "levels": [
+      29401
+    ]
+  },
+  {
+    "id": 29505,
+    "name": "楚科奇矿区",
+    "nameen": "Mining Area, Chukotka",
+    "levels": [
+      29501
+    ]
+  },
+  {
+    "id": 353,
+    "name": "荒郊墓地",
+    "nameen": "Cemetery",
+    "levels": [
+      35301
+    ]
+  },
+  {
+    "id": 354,
+    "name": "家族祭坛",
+    "nameen": "Family Ofrenda",
+    "levels": [
+      35401
+    ]
+  },
+  {
+    "id": 355,
+    "name": "绿松石蛇俱乐部",
+    "nameen": "The Turquoise Serpent Club",
+    "levels": [
+      35501
+    ]
+  },
+  {
+    "id": 356,
+    "name": "圣恩里克街道",
+    "nameen": "Street, Mexico City",
+    "levels": [
+      35601
+    ]
+  },
+  {
+    "id": 357,
+    "name": "艺术品拍卖会",
+    "nameen": "Art Auction",
+    "levels": [
+      35701
+    ]
+  },
+  {
+    "id": 358,
+    "name": "壁画迷思海（boss战）",
+    "nameen": "Depths of Myth",
+    "levels": [
+      35801
+    ]
   }
 ]

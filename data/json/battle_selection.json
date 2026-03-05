@@ -48,5 +48,85 @@
     "nextSelect": "",
     "autoUse1": 10,
     "autoUse2": 10
+  },
+  {
+    "id": 3303017,
+    "title": "魔精卡",
+    "desc": "对我方使用",
+    "icon": 0,
+    "confirm": "确认使用",
+    "nextSelect": "",
+    "autoUse1": 10,
+    "autoUse2": 10
+  },
+  {
+    "id": 3303018,
+    "title": "魔精卡",
+    "desc": "对敌方使用",
+    "icon": 0,
+    "confirm": "确认使用",
+    "nextSelect": "",
+    "autoUse1": 10,
+    "autoUse2": 10
+  },
+  {
+    "id": 3303019,
+    "title": "金花卡",
+    "desc": "对我方使用",
+    "icon": 0,
+    "confirm": "确认使用",
+    "nextSelect": "",
+    "autoUse1": 10,
+    "autoUse2": 10
+  },
+  {
+    "id": 3303020,
+    "title": "金花卡",
+    "desc": "对敌方使用",
+    "icon": 0,
+    "confirm": "确认使用",
+    "nextSelect": "",
+    "autoUse1": 10,
+    "autoUse2": 10
+  },
+  {
+    "id": 3303021,
+    "title": "魔精卡plus",
+    "desc": "对我方使用",
+    "icon": 0,
+    "confirm": "确认使用",
+    "nextSelect": "",
+    "autoUse1": 10,
+    "autoUse2": 10
+  },
+  {
+    "id": 3303022,
+    "title": "魔精卡plus",
+    "desc": "对敌方使用",
+    "icon": 0,
+    "confirm": "确认使用",
+    "nextSelect": "",
+    "autoUse1": 10,
+    "autoUse2": 10
+  },
+  {
+    "id": 3303023,
+    "title": "金花卡plus",
+    "desc": "对我方使用",
+    "icon": 0,
+    "confirm": "确认使用",
+    "nextSelect": "",
+    "autoUse1": 10,
+    "autoUse2": 10
+  },
+  {
+    "id": 3303024,
+    "title": "金花卡plus",
+    "desc": "对敌方使用",
+    "icon": 0,
+    "confirm": "确认使用",
+    "nextSelect": "",
+    "autoUse1": 10,
+    "autoUse2": 10
   }
 ]

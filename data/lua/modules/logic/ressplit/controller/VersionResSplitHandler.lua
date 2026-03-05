@@ -266,6 +266,12 @@ function VersionResSplitHandler:_mergeSplitResult()
 		end
 	end
 
+	for packName, packageMap in pairs(mergeResult) do
+		for resType, resPathList in pairs(packageMap) do
+			self:_removeSameResPathList(resPathList)
+		end
+	end
+
 	return mergeResult
 end
 
@@ -369,6 +375,23 @@ function VersionResSplitHandler:_checkResWhiteList(pathList, resWhiteDict)
 		for i = #pathList, 1, -1 do
 			if resWhiteDict[pathList[i]] then
 				table.remove(pathList, i)
+			end
+		end
+	end
+end
+
+function VersionResSplitHandler:_removeSameResPathList(resPathList)
+	if resPathList and #resPathList > 0 then
+		local reaPathMap = {}
+		local count = #resPathList
+
+		for i = count, 1, -1 do
+			local resPath = resPathList[i]
+
+			if reaPathMap[resPath] then
+				table.remove(resPathList, i)
+			else
+				reaPathMap[resPath] = true
 			end
 		end
 	end

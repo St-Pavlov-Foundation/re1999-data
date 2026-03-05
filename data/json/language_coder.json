@@ -8694,5 +8694,49 @@
   {
     "id": "v3a4_chg_gameview_34701015",
     "lang": "拖拽并延伸气，连接飞羽<sprite=2>与目标<sprite=1> "
+  },
+  {
+    "id": "v3a5_lamona_remain_round",
+    "lang": "鬼魂视野：直线3格\n剩余步数：▩1%s"
+  },
+  {
+    "id": "store_buylimit_version",
+    "lang": "版本限购"
+  },
+  {
+    "id": "v3a5_season_detailview_txt_star1",
+    "lang": "§通关关卡"
+  },
+  {
+    "id": "Season123CardDetailView_EmptyDesc",
+    "lang": "§选择你的团队名人卡增益"
+  },
+  {
+    "id": "fight_bai_fu_zhang_wheel_1",
+    "lang": "跳过一格"
+  },
+  {
+    "id": "fight_bai_fu_zhang_wheel_2",
+    "lang": "使指针跳过当前一格，并对我方全体附加【状态异常】作为使用代价"
+  },
+  {
+    "id": "fight_bai_fu_zhang_wheel_3",
+    "lang": "反转"
+  },
+  {
+    "id": "fight_bai_fu_zhang_wheel_4",
+    "lang": "反转当前卡牌结果，如金色运势反转为黑色运势，并对我方全体附加【状态异常】作为使用代价"
+  },
+  {
+    "id": "fight_bai_fu_zhang_wheel_5",
+    "lang": "什么都不做"
+  },
+  {
+    "id": "fight_bai_fu_zhang_wheel_6",
+    "lang": "我方"
+  },
+  {
+    "id": "fight_bai_fu_zhang_wheel_7",
+    "lang": "敌方"
   }
 ]

@@ -298,5 +298,17 @@
     "collectionBonus": "11#13403#1",
     "extraShowBuilding": "",
     "sourcesType": ""
+  },
+  {
+    "id": 3501,
+    "name": "生死狂欢",
+    "nameEn": "A Celebration of Two Worlds",
+    "desc": "特诺奇蒂特兰没有“最后”，骷髅永远为万寿菊俯首。",
+    "rewardIcon": "1702500",
+    "building": "13501|13502|13503",
+    "packages": "3501|3502|3503|3504",
+    "collectionBonus": "11#13503#1",
+    "extraShowBuilding": "",
+    "sourcesType": ""
   }
 ]

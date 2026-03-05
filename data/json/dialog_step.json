@@ -8476,5 +8476,626 @@
     "name": "",
     "avatar": "",
     "chessId": 0
+  },
+  {
+    "groupId": 57,
+    "id": 57001,
+    "type": 1,
+    "content": "吼叫匣升级的最后一项工作：设置一个长达626位的启动密码，并录入开机语音。蝴蝶女士会喜欢这个的。",
+    "name": "X",
+    "avatar": "301001",
+    "chessId": 1
+  },
+  {
+    "groupId": 57,
+    "id": 57002,
+    "type": 2,
+    "content": "X先生，这是老师发明的轰轰吼叫匣吗？",
+    "name": "小春雀儿",
+    "avatar": "300601",
+    "chessId": 2
+  },
+  {
+    "groupId": 57,
+    "id": 57003,
+    "type": 2,
+    "content": "老师曾委托我把它寄给科算中心的乌尔里希组长，在司辰前往“自由海风号”调查之前……",
+    "name": "小春雀儿",
+    "avatar": "300601",
+    "chessId": 2
+  },
+  {
+    "groupId": 57,
+    "id": 57004,
+    "type": 1,
+    "content": "就是这只小匣子。",
+    "name": "X",
+    "avatar": "301001",
+    "chessId": 1
+  },
+  {
+    "groupId": 57,
+    "id": 57005,
+    "type": 1,
+    "content": "现在应该叫轰轰吼叫匣·X了，经过我的升级改造，新的系统在智能方面绝对出色。",
+    "name": "X",
+    "avatar": "301001",
+    "chessId": 1
+  },
+  {
+    "groupId": 57,
+    "id": 57006,
+    "type": 1,
+    "content": "我为它载入了全新的语音系统！有了它，蝴蝶女士出外勤时绝不会无聊。",
+    "name": "X",
+    "avatar": "301001",
+    "chessId": 1
+  },
+  {
+    "groupId": 57,
+    "id": 57007,
+    "type": 2,
+    "content": "老师最近还好吗？",
+    "name": "小春雀儿",
+    "avatar": "300601",
+    "chessId": 2
+  },
+  {
+    "groupId": 57,
+    "id": 57008,
+    "type": 1,
+    "content": "一如既往。也就是说，除了科算中心内部，你可能在世界任何地方遇到她。",
+    "name": "X",
+    "avatar": "301001",
+    "chessId": 1
+  },
+  {
+    "groupId": 57,
+    "id": 57009,
+    "type": 1,
+    "content": "因此，吼叫匣的升级就由我代劳了。",
+    "name": "X",
+    "avatar": "301001",
+    "chessId": 1
+  },
+  {
+    "groupId": 57,
+    "id": 57010,
+    "type": 1,
+    "content": "<i>“若产生任何使用上的问题，请在存活后致电开发者！：）”</i>",
+    "name": "X",
+    "avatar": "301001",
+    "chessId": 1
+  },
+  {
+    "groupId": 57,
+    "id": 57011,
+    "type": 1,
+    "content": "完成，你想留点什么言吗？",
+    "name": "X",
+    "avatar": "301001",
+    "chessId": 1
+  },
+  {
+    "groupId": 57,
+    "id": 57012,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 58,
+    "id": 58001,
+    "type": 1,
+    "content": "在第三次“暴雨”后，神秘学藏品管理部的清洁卷轴已经不再使用了，如今的日常维护主要使用1996年改良的第三版清理咒语……",
+    "name": "空脑袋",
+    "avatar": "311201",
+    "chessId": 1
+  },
+  {
+    "groupId": 58,
+    "id": 58002,
+    "type": 2,
+    "content": "<i>“带有刻痕的石像终将打破一直以来囚禁它的玻璃橱柜，闯入命运为它编写的洪流之中”——</i>",
+    "name": "虚构集",
+    "avatar": "311401",
+    "chessId": 2
+  },
+  {
+    "groupId": 58,
+    "id": 58003,
+    "type": 1,
+    "content": "嘿，虚构集小姐，你有在认真听我说话吗？",
+    "name": "空脑袋",
+    "avatar": "311201",
+    "chessId": 1
+  },
+  {
+    "groupId": 58,
+    "id": 58004,
+    "type": 2,
+    "content": "什么……噢，噢！当然有。放心吧，莱瑟姆小姐，我完全明白！",
+    "name": "虚构集",
+    "avatar": "311401",
+    "chessId": 2
+  },
+  {
+    "groupId": 58,
+    "id": 58005,
+    "type": 1,
+    "content": "以上这些就是神秘学藏品管理部的注意事项了。",
+    "name": "空脑袋",
+    "avatar": "311201",
+    "chessId": 1
+  },
+  {
+    "groupId": 58,
+    "id": 58006,
+    "type": 1,
+    "content": "你来到这儿已经有一两周的时间了！相信在我出外勤的这段时间里，你能够处理好所有的日常工作。毕竟你可是司辰推荐的人！",
+    "name": "空脑袋",
+    "avatar": "311201",
+    "chessId": 1
+  },
+  {
+    "groupId": 58,
+    "id": 58007,
+    "type": 2,
+    "content": "当然，无论当守林员、水手还是纺织工，都比当一个管理员要有难度得多。",
+    "name": "虚构集",
+    "avatar": "311401",
+    "chessId": 2
+  },
+  {
+    "groupId": 58,
+    "id": 58008,
+    "type": 2,
+    "content": "反正我总有一些工作的智慧……尤其是面对基金会这样的——官僚组织。",
+    "name": "虚构集",
+    "avatar": "311401",
+    "chessId": 2
+  },
+  {
+    "groupId": 58,
+    "id": 58009,
+    "type": 1,
+    "content": "“工作的智慧”？",
+    "name": "空脑袋",
+    "avatar": "311201",
+    "chessId": 1
+  },
+  {
+    "groupId": 58,
+    "id": 58010,
+    "type": 2,
+    "content": "嗯，你无需知晓。",
+    "name": "虚构集",
+    "avatar": "311401",
+    "chessId": 2
+  },
+  {
+    "groupId": 58,
+    "id": 58011,
+    "type": 2,
+    "content": "只是，莱瑟姆小姐，我真的不能和你一起去墨西哥出外勤吗？",
+    "name": "虚构集",
+    "avatar": "311401",
+    "chessId": 2
+  },
+  {
+    "groupId": 58,
+    "id": 58012,
+    "type": 2,
+    "content": "我一直很想回到墨西哥城去采风！重新梳理一遍我为那些伟大艺术所构思的故事……",
+    "name": "虚构集",
+    "avatar": "311401",
+    "chessId": 2
+  },
+  {
+    "groupId": 58,
+    "id": 58013,
+    "type": 1,
+    "content": "也许以后有机会吧！但……这次可是司辰亲自鼓励我出外勤的！你也听见了。",
+    "name": "空脑袋",
+    "avatar": "311201",
+    "chessId": 1
+  },
+  {
+    "groupId": 58,
+    "id": 58014,
+    "type": 1,
+    "content": "“谢谢你为我提供了有关贝丽尔女士的线索，莱瑟姆小姐。我已了解你们在洛杉矶发生的一切。”",
+    "name": "空脑袋",
+    "avatar": "311201",
+    "chessId": 1
+  },
+  {
+    "groupId": 58,
+    "id": 58015,
+    "type": 1,
+    "content": "司辰用肯定的眼神看着我，我能够感受到！",
+    "name": "空脑袋",
+    "avatar": "311201",
+    "chessId": 1
+  },
+  {
+    "groupId": 58,
+    "id": 58016,
+    "type": 2,
+    "content": "当时，一个戴着帽子的女孩忙着离去，而另一个摄像头女孩信心坚定，她认为自己……",
+    "name": "虚构集",
+    "avatar": "311401",
+    "chessId": 2
+  },
+  {
+    "groupId": 58,
+    "id": 58017,
+    "type": 1,
+    "content": "——受到了鼓励！",
+    "name": "空脑袋",
+    "avatar": "311201",
+    "chessId": 1
+  },
+  {
+    "groupId": 58,
+    "id": 58018,
+    "type": 1,
+    "content": "你为什么用如此怜爱的眼神看着我？",
+    "name": "空脑袋",
+    "avatar": "311201",
+    "chessId": 1
+  },
+  {
+    "groupId": 58,
+    "id": 58019,
+    "type": 1,
+    "content": "我想这是你表达祝福的方式。我会带着你的祝福去墨西哥的！",
+    "name": "空脑袋",
+    "avatar": "311201",
+    "chessId": 1
+  },
+  {
+    "groupId": 58,
+    "id": 58020,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 59,
+    "id": 59001,
+    "type": 2,
+    "content": "不错的鸡尾酒“配方”。西柚汁、辣酱、白兰地——这根龙虾腿真有意思。",
+    "name": "洛伦兹蝴蝶",
+    "avatar": "313901",
+    "chessId": 2
+  },
+  {
+    "groupId": 59,
+    "id": 59002,
+    "type": 1,
+    "content": "就知道你会喜欢它！来干一杯吧，为卓越品味！",
+    "name": "百夫长",
+    "avatar": "303201",
+    "chessId": 1
+  },
+  {
+    "groupId": 59,
+    "id": 59003,
+    "type": 1,
+    "content": "今天的赌局与冒险真的太棒了！如果有机会的话，真希望将来能和你一起继续旅行，那一定非常有趣。",
+    "name": "百夫长",
+    "avatar": "303201",
+    "chessId": 1
+  },
+  {
+    "groupId": 59,
+    "id": 59004,
+    "type": 1,
+    "content": "不过，你是不是更喜欢独自行动？",
+    "name": "百夫长",
+    "avatar": "303201",
+    "chessId": 1
+  },
+  {
+    "groupId": 59,
+    "id": 59005,
+    "type": 2,
+    "content": "感谢你的理解。我还得继续处理一些——嗯，“私人事务”。",
+    "name": "洛伦兹蝴蝶",
+    "avatar": "313901",
+    "chessId": 2
+  },
+  {
+    "groupId": 59,
+    "id": 59006,
+    "type": 2,
+    "content": "也许有朝一日，我会怀念你的私人配方和酒馆清单，然后隐藏身份，出现在你的身边。",
+    "name": "洛伦兹蝴蝶",
+    "avatar": "313901",
+    "chessId": 2
+  },
+  {
+    "groupId": 59,
+    "id": 59007,
+    "type": 1,
+    "content": "随时欢迎！我永远不会拒绝一场新的挑战。",
+    "name": "百夫长",
+    "avatar": "303201",
+    "chessId": 1
+  },
+  {
+    "groupId": 59,
+    "id": 59008,
+    "type": 2,
+    "content": "那么，你接下来有什么打算？你还在巡演途中，对吗？",
+    "name": "洛伦兹蝴蝶",
+    "avatar": "313901",
+    "chessId": 2
+  },
+  {
+    "groupId": 59,
+    "id": 59009,
+    "type": 1,
+    "content": "没错，穿过墨西哥，我已经期待很久了。制作人也为此筹备了很久——大部分时间里，我们在争论是否需要应急预案。",
+    "name": "百夫长",
+    "avatar": "303201",
+    "chessId": 1
+  },
+  {
+    "groupId": 59,
+    "id": 59010,
+    "type": 2,
+    "content": "这部分听起来可没有和鲨鱼搏斗轻松。",
+    "name": "洛伦兹蝴蝶",
+    "avatar": "313901",
+    "chessId": 2
+  },
+  {
+    "groupId": 59,
+    "id": 59011,
+    "type": 1,
+    "content": "不过，最终的结论是“不用”。毕竟，有些时候我该去哪儿，只有这枚金灿灿的老朋友知道。",
+    "name": "百夫长",
+    "avatar": "303201",
+    "chessId": 1
+  },
+  {
+    "groupId": 59,
+    "id": 59012,
+    "type": 1,
+    "content": "我期待着在演出时看见你。",
+    "name": "百夫长",
+    "avatar": "303201",
+    "chessId": 1
+  },
+  {
+    "groupId": 59,
+    "id": 59013,
+    "type": 2,
+    "content": "也许你从悬崖坠落时，会从铁箱子的缝隙里瞥见我——我比较喜欢这种重逢方式。",
+    "name": "洛伦兹蝴蝶",
+    "avatar": "313901",
+    "chessId": 2
+  },
+  {
+    "groupId": 59,
+    "id": 59014,
+    "type": 1,
+    "content": "哈，我也喜欢。一切交给命运和硬币，对吧？",
+    "name": "百夫长",
+    "avatar": "303201",
+    "chessId": 1
+  },
+  {
+    "groupId": 59,
+    "id": 59015,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 60,
+    "id": 60001,
+    "type": 2,
+    "content": "所以说，今天我们也还在进行“追蝴蝶”作业，研究混沌，穿过混沌……",
+    "name": "星锑",
+    "avatar": "302501",
+    "chessId": 2
+  },
+  {
+    "groupId": 60,
+    "id": 60002,
+    "type": 2,
+    "content": "该死，那只最初的蝴蝶究竟在哪儿？",
+    "name": "星锑",
+    "avatar": "302501",
+    "chessId": 2
+  },
+  {
+    "groupId": 60,
+    "id": 60003,
+    "type": 1,
+    "content": "也许它根本不在这个时代。",
+    "name": "X",
+    "avatar": "301001",
+    "chessId": 1
+  },
+  {
+    "groupId": 60,
+    "id": 60004,
+    "type": 1,
+    "content": "这也是我们需要研究的方向之一。",
+    "name": "X",
+    "avatar": "301001",
+    "chessId": 1
+  },
+  {
+    "groupId": 60,
+    "id": 60005,
+    "type": 2,
+    "content": "那我们又白忙活了。上次在“自由海风号”，我的唱片收藏已经作出了巨大牺牲，不能再这样下去了。",
+    "name": "星锑",
+    "avatar": "302501",
+    "chessId": 2
+  },
+  {
+    "groupId": 60,
+    "id": 60006,
+    "type": 2,
+    "content": "我认为这才是整件事中最混沌的地方。",
+    "name": "星锑",
+    "avatar": "302501",
+    "chessId": 2
+  },
+  {
+    "groupId": 60,
+    "id": 60007,
+    "type": 2,
+    "content": "噢！我悟到了混沌理论的真谛！",
+    "name": "星锑",
+    "avatar": "302501",
+    "chessId": 2
+  },
+  {
+    "groupId": 60,
+    "id": 60008,
+    "type": 1,
+    "content": "这是我今天听到的最佳笑话。",
+    "name": "X",
+    "avatar": "301001",
+    "chessId": 1
+  },
+  {
+    "groupId": 60,
+    "id": 60009,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
+  },
+  {
+    "groupId": 61,
+    "id": 61001,
+    "type": 1,
+    "content": "再见了，拉莫纳小姐。我会永远记得这次的墨西哥之旅的。",
+    "name": "空脑袋",
+    "avatar": "311201",
+    "chessId": 1
+  },
+  {
+    "groupId": 61,
+    "id": 61002,
+    "type": 2,
+    "content": "永远记得？",
+    "name": "拉莫纳",
+    "avatar": "314201",
+    "chessId": 2
+  },
+  {
+    "groupId": 61,
+    "id": 61003,
+    "type": 1,
+    "content": "好吧，我的意思是——永远珍藏这卷刻有墨西哥调查记忆的胶卷！",
+    "name": "空脑袋",
+    "avatar": "311201",
+    "chessId": 1
+  },
+  {
+    "groupId": 61,
+    "id": 61004,
+    "type": 1,
+    "content": "其实我还想在这儿待更久一些，记录更多这个时代的艺术故事，但我得回去更换身体零件了。",
+    "name": "空脑袋",
+    "avatar": "311201",
+    "chessId": 1
+  },
+  {
+    "groupId": 61,
+    "id": 61005,
+    "type": 2,
+    "content": "那这个送你了。我之前说过要送你一个纪念品的。",
+    "name": "拉莫纳",
+    "avatar": "314201",
+    "chessId": 2
+  },
+  {
+    "groupId": 61,
+    "id": 61006,
+    "type": 1,
+    "content": "感谢你！等等……这是蜡烛？",
+    "name": "空脑袋",
+    "avatar": "311201",
+    "chessId": 1
+  },
+  {
+    "groupId": 61,
+    "id": 61007,
+    "type": 1,
+    "content": "……和之前一模一样的蜡烛。",
+    "name": "空脑袋",
+    "avatar": "311201",
+    "chessId": 1
+  },
+  {
+    "groupId": 61,
+    "id": 61008,
+    "type": 2,
+    "content": "你不点燃它试试吗？",
+    "name": "拉莫纳",
+    "avatar": "314201",
+    "chessId": 2
+  },
+  {
+    "groupId": 61,
+    "id": 61009,
+    "type": 1,
+    "content": "我毫不怀疑这是一场冒险的最佳见证，但……",
+    "name": "空脑袋",
+    "avatar": "311201",
+    "chessId": 1
+  },
+  {
+    "groupId": 61,
+    "id": 61010,
+    "type": 1,
+    "content": "如果我点燃它，我会不会在下一秒出现在另一个地方？",
+    "name": "空脑袋",
+    "avatar": "311201",
+    "chessId": 1
+  },
+  {
+    "groupId": 61,
+    "id": 61011,
+    "type": 2,
+    "content": "那得试试才知道了。",
+    "name": "拉莫纳",
+    "avatar": "314201",
+    "chessId": 2
+  },
+  {
+    "groupId": 61,
+    "id": 61012,
+    "type": 1,
+    "content": "我还是先收好它吧……我会好好珍藏这支蜡烛的。",
+    "name": "空脑袋",
+    "avatar": "311201",
+    "chessId": 1
+  },
+  {
+    "groupId": 61,
+    "id": 61013,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
   }
 ]

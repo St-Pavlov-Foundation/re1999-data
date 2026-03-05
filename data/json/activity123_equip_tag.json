@@ -376,5 +376,23 @@
     "id": 25,
     "desc": "支援艺术",
     "order": 17
+  },
+  {
+    "activityId": 13513,
+    "id": 40,
+    "desc": "灵光一闪",
+    "order": 12
+  },
+  {
+    "activityId": 13513,
+    "id": 41,
+    "desc": "辉耀所示",
+    "order": 13
+  },
+  {
+    "activityId": 13513,
+    "id": 42,
+    "desc": "中毒进阶",
+    "order": 14
   }
 ]

@@ -574,5 +574,17 @@
     "weight": 100,
     "preAttr": 0,
     "preAttrDesc": "在地形内会随机生成水龙卷"
+  },
+  {
+    "id": 70099,
+    "name": "石化领域",
+    "copyIds": "",
+    "subType": 97,
+    "resource": "survival_zhangqi",
+    "grid": "",
+    "rotate": "",
+    "weight": 100,
+    "preAttr": 0,
+    "preAttrDesc": "区域内单位无法移动，冷周六不受影响"
   }
 ]

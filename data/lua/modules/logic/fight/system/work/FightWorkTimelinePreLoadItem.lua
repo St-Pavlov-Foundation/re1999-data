@@ -14,7 +14,7 @@ function FightWorkTimelinePreLoadItem:onStart()
 	local path
 
 	path = not GameResMgr.IsFromEditorDir and "rolestimeline" or ResUrl.getSkillTimeline(self.timelineName)
-	self.timelineUrl = path
+	self.timelineUrl = ResUrl.getSkillTimeline(self.timelineName)
 
 	self:com_loadAsset(path, self.onTimelineLoaded)
 end

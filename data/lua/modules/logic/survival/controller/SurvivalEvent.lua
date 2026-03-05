@@ -124,5 +124,7 @@ SurvivalEvent.OnReceiveSurvivalMessageOperationReply = _get()
 SurvivalEvent.OnPlayGainExpAnim = _get()
 SurvivalEvent.OnDerivedUpdate = _get()
 SurvivalEvent.OnDelayCheckMainViewAnim = _get()
+SurvivalEvent.OnHandleInStoreView = _get()
+SurvivalEvent.OnSurvivalOutsideShopBuyReply = _get()
 
 return SurvivalEvent

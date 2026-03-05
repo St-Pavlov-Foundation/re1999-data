@@ -1,0 +1,27 @@
+[
+  {
+    "mintype": 1,
+    "sort": 1,
+    "name": "信仰的移位"
+  },
+  {
+    "mintype": 2,
+    "sort": 2,
+    "name": "蜕化的残响"
+  },
+  {
+    "mintype": 3,
+    "sort": 3,
+    "name": "超限的囚徒"
+  },
+  {
+    "mintype": 4,
+    "sort": 4,
+    "name": "急性猩红症"
+  },
+  {
+    "mintype": 5,
+    "sort": 5,
+    "name": "毁灭的履带"
+  }
+]
