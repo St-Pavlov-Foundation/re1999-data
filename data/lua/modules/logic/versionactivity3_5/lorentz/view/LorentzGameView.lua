@@ -7,7 +7,9 @@ local LorentzGameView = class("LorentzGameView", BaseView)
 function LorentzGameView:onInitView()
 	self._golefttop = gohelper.findChild(self.viewGO, "#go_lefttop")
 	self._simagecrystal = gohelper.findChildSingleImage(self.viewGO, "#simage_puzzle")
+	self._simagecrystallight = gohelper.findChildSingleImage(self.viewGO, "#simage_puzzle/#simage_puzzle_light")
 	self._imagecrystal = gohelper.findChildImage(self.viewGO, "#simage_puzzle")
+	self._imagecrystallight = gohelper.findChildImage(self.viewGO, "#simage_puzzle/#simage_puzzle_light")
 	self._simagecrystalframe = gohelper.findChildSingleImage(self.viewGO, "#simage_crystalframe")
 	self._imagecrystalframe = gohelper.findChildImage(self.viewGO, "#simage_crystalframe")
 	self._godrag = gohelper.findChild(self.viewGO, "#go_drag")
@@ -145,6 +147,7 @@ function LorentzGameView:_loadBg()
 	local levelConfig = self._gameConfig[levelId]
 
 	self._simagecrystal:LoadImage(ResUrl.getLorentzIcon(levelConfig.img), self._finishloadBg, self)
+	self._simagecrystallight:LoadImage(ResUrl.getLorentzIcon(levelConfig.img), self._finishloadLightBg, self)
 	self._simagecrystalframe:LoadImage(ResUrl.getLorentzIcon(levelConfig.bg), self._finishloadBgFrame, self)
 	gohelper.setActive(self._simagecrystal.gameObject, false)
 	gohelper.setActive(self._simagecrystalframe.gameObject, true)
@@ -152,6 +155,10 @@ end
 
 function LorentzGameView:_finishloadBg()
 	self._imagecrystal:SetNativeSize()
+end
+
+function LorentzGameView:_finishloadLightBg()
+	self._imagecrystallight:SetNativeSize()
 end
 
 function LorentzGameView:_finishloadBgFrame()

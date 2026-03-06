@@ -11,6 +11,10 @@ function FightTLEventAtkEffect:onTrackStart(fightStepData, duration, paramsArr)
 
 	self._attacker = FightHelper.getEntity(fightStepData.fromId)
 
+	if not self._attacker then
+		return
+	end
+
 	if self._attacker.skill and self._attacker.skill:atkEffectNeedFilter(paramsArr[1], fightStepData) then
 		return
 	end

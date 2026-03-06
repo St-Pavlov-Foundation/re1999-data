@@ -3,18 +3,18 @@
     "id": 1,
     "profileId": 313901,
     "name": "洛伦兹蝴蝶",
-    "enName": "Lorentz Butterfly"
+    "enName": "<voffset=4>/</voffset>Lorentz Butterfly"
   },
   {
     "id": 2,
     "profileId": 645601,
     "name": "野木蓝",
-    "enName": "Añil"
+    "enName": ""
   },
   {
     "id": 3,
     "profileId": 646701,
     "name": "轰轰吼叫匣·X",
-    "enName": "\"Rumbling Roaring Box\""
+    "enName": "<voffset=4>/</voffset>\"Rumbling Roaring Box\""
   }
 ]

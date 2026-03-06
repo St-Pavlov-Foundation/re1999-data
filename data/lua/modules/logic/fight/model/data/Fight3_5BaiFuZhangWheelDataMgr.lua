@@ -7,7 +7,7 @@ local Fight3_5BaiFuZhangWheelDataMgr = FightDataClass("Fight3_5BaiFuZhangWheelDa
 function Fight3_5BaiFuZhangWheelDataMgr:onConstructor()
 	self.wheelData = nil
 	self.selectedIndex = {}
-	self.index = nil
+	self.index = 1
 end
 
 return Fight3_5BaiFuZhangWheelDataMgr

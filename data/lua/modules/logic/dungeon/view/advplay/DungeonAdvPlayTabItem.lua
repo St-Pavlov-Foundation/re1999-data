@@ -17,6 +17,13 @@ end
 
 function DungeonAdvPlayTabItem:onItemShow(data)
 	self.tabRedDot = data.tabRedDot
+	self.isOpen = data.isOpen
+
+	gohelper.setActive(self.viewGO, self.isOpen)
+
+	if not self.isOpen then
+		return
+	end
 
 	if self.tabRedDot then
 		RedDotController.instance:addRedDot(self.go_red, self.tabRedDot)

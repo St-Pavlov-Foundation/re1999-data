@@ -63,9 +63,10 @@ function Fight3_5BaiFuZhangSpecialWheelView:onOpen()
 
 	self:showWheelList()
 	flow:registWork(FightWorkDelayTimer, 1.2)
-	flow:registWork(FightWorkFunction, AudioMgr.instance.trigger, AudioMgr.instance, 20002201)
 
 	if self.isInit then
+		AudioMgr.instance:trigger(350035)
+
 		self.wheelRotate = 300
 
 		transformhelper.setLocalRotation(self.wheelRoot, 0, 0, self.wheelRotate)
@@ -75,7 +76,6 @@ function Fight3_5BaiFuZhangSpecialWheelView:onOpen()
 		local audioFlow = parallelFlow:registWork(FightWorkFlowSequence)
 
 		audioFlow:registWork(FightWorkDelayTimer, 0.5)
-		audioFlow:registWork(FightWorkFunction, AudioMgr.instance.trigger, AudioMgr.instance, 350042)
 		parallelFlow:registWork(FightWorkDelayTimer, 2)
 
 		local ease = EaseType.OutCubic
@@ -93,6 +93,7 @@ function Fight3_5BaiFuZhangSpecialWheelView:onOpen()
 		flow:registWork(FightWorkDelayTimer, 0.16)
 		transformhelper.setLocalRotation(self.pointer, 0, 0, 0)
 	else
+		AudioMgr.instance:trigger(350034)
 		transformhelper.setLocalRotation(self.pointer, 0, 0, -self.index * 60 + 60)
 
 		self.index = self.index % 6 + 1

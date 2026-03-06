@@ -13,14 +13,14 @@ function DungeonAdvPlayView:onInitView()
 		{
 			tab = self.DungeonAdvPlayTabItem_1,
 			advPlayType = DungeonEnum.AdvPlayType.Survival,
-			isOpen = SurvivalController.instance:isOpenSurvival(),
+			isOpenFunc = SurvivalController.instance.isOpenSurvival,
 			tabRedDot = RedDotEnum.DotNode.AdvPlay_Survival,
 			fragment = DungeonSurvivalComp
 		},
 		{
 			tab = self.DungeonAdvPlayTabItem_2,
 			advPlayType = DungeonEnum.AdvPlayType.Explore,
-			isOpen = ExploreSimpleModel.instance:isShowExplore(),
+			isOpenFunc = ExploreSimpleModel.instance.isShowExplore,
 			tabRedDot = RedDotEnum.DotNode.AdvPlay_Explore,
 			fragment = DungeonExploreComp
 		}
@@ -46,11 +46,8 @@ function DungeonAdvPlayView:onInitView()
 
 		gohelper.setActive(v.tab, v.isOpen)
 		gohelper.setActive(goFragment, v.isOpen)
-
-		if v.isOpen then
-			self.tabList:addCustomItem(v.tab)
-			self.fragmentList:addCustomItem(goFragment, v.fragment)
-		end
+		self.tabList:addCustomItem(v.tab)
+		self.fragmentList:addCustomItem(goFragment, v.fragment)
 	end
 end
 
@@ -64,20 +61,19 @@ function DungeonAdvPlayView:onOpen()
 	end
 
 	local data = {}
-	local select = 1
-	local index = 0
+	local select
 
 	for i, v in ipairs(self.infos) do
-		if v.isOpen then
-			index = index + 1
+		local isOpenFunc = v.isOpenFunc
+		local isOpen = isOpenFunc and isOpenFunc()
 
-			table.insert(data, {
-				tabRedDot = v.tabRedDot
-			})
+		table.insert(data, {
+			tabRedDot = v.tabRedDot,
+			isOpen = isOpen
+		})
 
-			if self.advPlayJumpType and self.advPlayJumpType == v.advPlayType then
-				select = index
-			end
+		if isOpen and (not select or self.advPlayJumpType and self.advPlayJumpType == v.advPlayType) then
+			select = i
 		end
 	end
 

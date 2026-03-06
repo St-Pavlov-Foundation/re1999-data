@@ -1152,6 +1152,12 @@ function SurvivalMapHelper:checkRoleLevelUpCache(isJumpCheck)
 	return isOpen
 end
 
+function SurvivalMapHelper:isPetrifactionTar(survivalUnitMo)
+	if survivalUnitMo.isBattle then
+		return survivalUnitMo:isBattle()
+	end
+end
+
 SurvivalMapHelper.instance = SurvivalMapHelper.New()
 
 return SurvivalMapHelper

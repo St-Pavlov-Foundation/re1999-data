@@ -24894,7 +24894,7 @@
     "loopType": 5,
     "minType": "战令赛季",
     "name": "在“《绿松石蛇俱乐部》”中完成TTSC-20【探索】难度",
-    "desc": "在“《绿松石蛇俱乐部》”中完成TTSC-20【探索】难度",
+    "desc": "在“《绿松石蛇俱乐部》”探索模式中完成TTSC-20【危机】难度",
     "listenerType": "EpisodeFinish",
     "listenerParam": "3520120",
     "maxProgress": 1,

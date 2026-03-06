@@ -26,7 +26,7 @@ function SurvivalStoreItem.sortGoods(mo1, mo2)
 	local goods2SellOut = mo2:isSoldOut()
 
 	if goods1SellOut ~= goods2SellOut then
-		return goods1SellOut
+		return goods2SellOut
 	end
 
 	if cfg1.order ~= cfg2.order then

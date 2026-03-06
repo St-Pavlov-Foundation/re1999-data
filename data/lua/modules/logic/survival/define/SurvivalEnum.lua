@@ -21,13 +21,14 @@ SurvivalEnum.UnitType = {
 	Block = 9
 }
 SurvivalEnum.UnitSubType = {
-	Water = 96,
-	Shop = 77,
 	Ice = 95,
-	Magma = 94,
-	Miasma = 92,
-	Morass = 93,
+	Shop = 77,
 	BlockEvent = 791,
+	Petrifaction = 97,
+	Morass = 93,
+	Water = 96,
+	Miasma = 92,
+	Magma = 94,
 	Block = 91
 }
 SurvivalEnum.Dir = {
