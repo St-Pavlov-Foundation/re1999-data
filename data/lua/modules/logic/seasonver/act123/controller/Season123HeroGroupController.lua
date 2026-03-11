@@ -82,13 +82,7 @@ function Season123HeroGroupController.saveHeroGroup(actId, groupIndex)
 		return
 	end
 
-	local heroGroupMO
-
-	if Season123HeroGroupModel.instance:isEpisodeSeason123() then
-		heroGroupMO = seasonMO.heroGroupSnapshot[groupIndex]
-	elseif Season123HeroGroupModel.instance:isEpisodeSeason123Retail() then
-		heroGroupMO = seasonMO.retailHeroGroups[groupIndex]
-	end
+	local heroGroupMO = HeroGroupModel.instance:getCurGroupMO()
 
 	if not heroGroupMO then
 		return

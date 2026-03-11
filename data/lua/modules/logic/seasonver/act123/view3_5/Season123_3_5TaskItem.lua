@@ -102,8 +102,9 @@ function Season123_3_5TaskItem:checkPlayAnim()
 	TaskDispatcher.cancelTask(self.onDelayPlayOpen, self)
 
 	local delayTime = Season123TaskModel.instance:getDelayPlayTime(self.mo)
+	local isFinish = self.mo and not self.mo.canGetAll and self.mo:isClaimed()
 
-	if delayTime == -1 then
+	if delayTime == -1 or isFinish then
 		self._animator:Play("idle", 0, 0)
 
 		self._animator.speed = 1

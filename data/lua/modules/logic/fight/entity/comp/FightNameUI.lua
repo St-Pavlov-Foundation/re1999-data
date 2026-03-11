@@ -455,9 +455,13 @@ function FightNameUI:onDestructor()
 	TaskDispatcher.cancelTask(self._onDelAniOver, self)
 	FightNameMgr.instance:unregister(self)
 	gohelper.destroy(self._containerGO)
-	self._uiLoader:dispose()
 
-	self._uiLoader = nil
+	if self._uiLoader then
+		self._uiLoader:dispose()
+
+		self._uiLoader = nil
+	end
+
 	self._containerGO = nil
 end
 

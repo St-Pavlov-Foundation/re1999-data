@@ -236,7 +236,7 @@ function Season123_3_5HeroGroupListView:_removeRestrictHero()
 	end
 
 	HeroGroupModel.instance:replaceSingleGroup()
-	Season123HeroGroupController.instance:checkSeason123HeroGroup()
+	Season123HeroGroupController.instance:saveCurrentHeroGroup()
 	HeroGroupController.instance:dispatchEvent(HeroGroupEvent.OnModifyHeroGroup)
 end
 

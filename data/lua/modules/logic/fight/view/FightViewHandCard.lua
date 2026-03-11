@@ -351,6 +351,8 @@ function FightViewHandCard:_onStageChanged(curStage)
 		self:_setBlockOperate(false)
 	end
 
+	self:onRefreshPreLv()
+
 	return self:refreshLYAreaActive()
 end
 

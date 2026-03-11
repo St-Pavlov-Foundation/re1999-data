@@ -2311,15 +2311,15 @@
     "incidentalRange": "",
     "roleId": "",
     "exp": 0,
-    "subItem": "800206:1|800312:1|800309:1"
+    "subItem": "800206:1&553006:1|800312:1&553006:1|800309:1&553006:1"
   },
   {
     "id": 207091501,
-    "name": "魔精商人",
+    "name": "精明的魔精商人",
     "group": 0,
     "versions": "",
     "seasons": "",
-    "desc": "一个大号魔精，看上去在兜售什么东西。",
+    "desc": "一个大号魔精，看起来要比其他的魔精商人更加绅士。",
     "priority": 99,
     "resource": "survival/roles/prefab/role_com_npc_toujishangren.prefab",
     "waterResource": "survival/buiding/v3a1_survival_zaiju6_2.prefab",
@@ -2337,7 +2337,7 @@
     "incidentalRange": "",
     "roleId": "",
     "exp": 0,
-    "subItem": "800206:1|800312:1|800309:1"
+    "subItem": "800206:1&553006:1|800312:1&553006:1|800309:1&553006:1"
   },
   {
     "id": 207091300,

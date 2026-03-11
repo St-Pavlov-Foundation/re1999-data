@@ -64,19 +64,6 @@ function Season123HeroGroupEditModel:copyCharacterCardList(init)
 		end
 	end
 
-	local state = CharacterModel.instance:getRankState()
-	local tag = CharacterModel.instance:getBtnTag(CharacterEnum.FilterType.HeroGroup)
-
-	HeroGroupTrialModel.instance:sortByLevelAndRare(tag == 1, state[tag] == 1)
-
-	local trialList = HeroGroupTrialModel.instance:getFilterList()
-
-	for i, heroMo in ipairs(trialList) do
-		if not repeatHero[heroMo.uid] then
-			table.insert(newMOList, heroMo)
-		end
-	end
-
 	for i, mo in ipairs(newMOList) do
 		if self._moveHeroId and mo.heroId == self._moveHeroId then
 			self._moveHeroId = nil
@@ -100,6 +87,19 @@ function Season123HeroGroupEditModel:copyCharacterCardList(init)
 			else
 				table.insert(newMOList, mo)
 			end
+		end
+	end
+
+	local state = CharacterModel.instance:getRankState()
+	local tag = CharacterModel.instance:getBtnTag(CharacterEnum.FilterType.HeroGroup)
+
+	HeroGroupTrialModel.instance:sortByLevelAndRare(tag == 1, state[tag] == 1)
+
+	local trialList = HeroGroupTrialModel.instance:getFilterList()
+
+	for i, heroMo in ipairs(trialList) do
+		if not repeatHero[heroMo.uid] then
+			table.insert(newMOList, heroMo)
 		end
 	end
 

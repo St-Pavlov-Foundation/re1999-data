@@ -26909,7 +26909,7 @@
   },
   {
     "id": "p_dungeonexploreenterview_txt_dec",
-    "lang": "临时文本：p_dungeonexploreenterview_txt_dec"
+    "lang": ""
   },
   {
     "id": "p_dungeonexploreenterview_txt_tips",
@@ -26917,7 +26917,7 @@
   },
   {
     "id": "p_dungeonsurvivalenterview_txt_dec",
-    "lang": "临时文本：p_dungeonsurvivalenterview_txt_dec"
+    "lang": ""
   },
   {
     "id": "p_dungeonsurvivalenterview_txt_enter",
@@ -27013,7 +27013,7 @@
   },
   {
     "id": "p_season123equipbookview_txt_tips",
-    "lang": "获得的名人卡仅在本组关卡内可用"
+    "lang": "获得的名人卡仅在本组新关卡内可用"
   },
   {
     "id": "p_a15_reappear_mainactivity_enterview_txt_EntranceRole1",
@@ -27045,7 +27045,7 @@
   },
   {
     "id": "p_season123herogroupview_txt_strategyEn",
-    "lang": "TEMPTEMPTEMPTEMPTEMPTEMP"
+    "lang": "STRATEGY"
   },
   {
     "id": "p_season123progressview_txt_curStars",
@@ -27145,7 +27145,7 @@
   },
   {
     "id": "p_v3a5_zhangdou_help_3_txt_1",
-    "lang": "后续打开转盘会展示<#ff906a>已经使用过的卡牌</color>，并<#ff906a>使抬针顺时针转动一格</color>，待所有卡牌都使用过后则<#ff906a>不会再打开转盘</color>"
+    "lang": "后续打开转盘会展示<#ff906a>已经使用过的卡牌</color>，并<#ff906a>使指针顺时针转动一格</color>，待所有卡牌都使用过后则<#ff906a>不会再打开转盘</color>"
   },
   {
     "id": "v3a5_shaijiwanfa_help_1_txt_1",
@@ -27210,5 +27210,9 @@
   {
     "id": "p_v3a5_bossrush_help_1_txt_2",
     "lang": "2.灵感薄弱型敌人可能会有<#ff906a>灵感耐受度</color>，受到攻击后会降低耐受度，受到克制攻击会降低更多；耐受度被清空后，会触发相应效果，并根据敌人能力<#ff906a>回复耐受度</color>"
+  },
+  {
+    "id": "p_survival_closingview_txt_newdec3",
+    "lang": "(单局代币获取达上限)"
   }
 ]

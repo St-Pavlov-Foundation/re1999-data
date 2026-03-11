@@ -71,6 +71,7 @@ function Activity123Rpc:onReceiveAct123ChangeFightGroupReply(resultCode, msg)
 	if mo then
 		mo.heroGroupSnapshotSubId = msg.heroGroupSnapshotSubId
 
+		HeroGroupModel.instance:_setSingleGroup()
 		Season123Controller.instance:dispatchEvent(Season123Event.HeroGroupIndexChanged, {
 			actId = msg.activityId,
 			groupIndex = msg.heroGroupSnapshotSubId

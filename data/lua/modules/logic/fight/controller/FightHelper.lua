@@ -913,6 +913,22 @@ function FightHelper.detectAttributeCounter()
 		end
 	end
 
+	if Season123Controller.isEpisodeFromSeason123(fight_param.episodeId) then
+		for i, v in ipairs(fight_param.monsterGroupIds) do
+			local ids = FightStrUtil.instance:getSplitToNumberCache(lua_monster_group.configDict[v].monster, "#")
+
+			for index, id in ipairs(ids) do
+				local monsterCO = lua_monster.configDict[id]
+
+				if monsterCO and not string.nilorempty(monsterCO.career_weak) then
+					local weakList = string.splitToNumber(monsterCO.career_weak, "#")
+
+					return weakList, {}
+				end
+			end
+		end
+	end
+
 	local recommended, counter = FightHelper.getAttributeCounter(fight_param.monsterGroupIds, GameSceneMgr.instance:isSpScene())
 
 	return recommended, counter

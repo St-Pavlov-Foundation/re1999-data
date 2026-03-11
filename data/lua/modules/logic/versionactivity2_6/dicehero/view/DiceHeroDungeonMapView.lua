@@ -17,6 +17,7 @@ function DiceHeroDungeonMapView:addEvents()
 	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self.onCloseViewFinish, self)
 	self:addEventCb(DiceHeroController.instance, DiceHeroEvent.InfoUpdate, self.onActStateChange, self)
 	self:addEventCb(DungeonController.instance, DungeonEvent.OnSetEpisodeListVisible, self.setEpisodeListVisible, self)
+	self:addEventCb(ActivityController.instance, ActivityEvent.UnlockPermanent, self.onActStateChange, self)
 end
 
 function DiceHeroDungeonMapView:removeEvents()
@@ -25,6 +26,7 @@ function DiceHeroDungeonMapView:removeEvents()
 	self:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self.onCloseViewFinish, self)
 	self:removeEventCb(DiceHeroController.instance, DiceHeroEvent.InfoUpdate, self.onActStateChange, self)
 	self:removeEventCb(DungeonController.instance, DungeonEvent.OnSetEpisodeListVisible, self.setEpisodeListVisible, self)
+	self:addEventCb(ActivityController.instance, ActivityEvent.UnlockPermanent, self.onActStateChange, self)
 end
 
 function DiceHeroDungeonMapView:refreshView()
@@ -70,6 +72,10 @@ end
 
 function DiceHeroDungeonMapView:isShowRoot()
 	if OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.DiceHero) and self.chapterId == DungeonEnum.ChapterId.Main1_9 then
+		if OptionPackageController.instance:checkNeedDownload(OptionPackageEnum.Package.VersionActivity) then
+			return
+		end
+
 		return true
 	end
 end

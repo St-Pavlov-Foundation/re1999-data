@@ -286,7 +286,7 @@ function Season123_3_5HeroGroupHeroItem:_onClickEquip()
 		return
 	end
 
-	if OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.Equip) then
+	if OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.Equip) or self.trialCO or HeroGroupTrialModel.instance:haveTrialEquip() then
 		AudioMgr.instance:trigger(AudioEnum.HeroGroupUI.Play_UI_Inking_Addmood)
 		HeroGroupController.instance:dispatchEvent(HeroGroupEvent.HideAllGroupHeroItemEffect)
 
@@ -315,9 +315,11 @@ function Season123_3_5HeroGroupHeroItem:_updateEquips()
 	self._equipType = -1
 
 	if self.isLock or self.isAid or self.isRoleNumLock or not OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.Equip) and not self.trialCO and not HeroGroupTrialModel.instance:haveTrialEquip() then
+		gohelper.setActive(self._goequip, false)
 		gohelper.setActive(self._gofakeequip, false)
 		gohelper.setActive(self._goemptyequip, false)
 	else
+		gohelper.setActive(self._goequip, true)
 		gohelper.setActive(self._gofakeequip, true)
 		gohelper.setActive(self._goemptyequip, true)
 

@@ -12,8 +12,8 @@ function SurvivalCollectionRoomPreloader:init(sceneId, levelId)
 	if not GameResMgr.IsFromEditorDir then
 		local list = tabletool.copy(mapCo.allBuildingPaths)
 
-		tabletool.addValues(list, self:getMapBlockAbPath())
 		self._loader:setPathList(list)
+		self._loader:addPath(self:getMapBlockAbPath())
 	else
 		local list = tabletool.copy(mapCo.allBuildingPaths)
 

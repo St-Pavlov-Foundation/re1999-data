@@ -672,10 +672,14 @@ function StoryHeroItem:_checkAndPlayHeroEffect()
 			self._heroLoader:dispose()
 		end
 
+		if not effectCos or #effectCos < 1 then
+			return
+		end
+
 		self._heroLoader = MultiAbLoader.New()
 
 		for _, v in ipairs(effectCos) do
-			if string.find(v[2], "roomcritteremoji") then
+			if not v or #v < 2 or string.find(v[2], "roomcritteremoji") then
 				return
 			end
 

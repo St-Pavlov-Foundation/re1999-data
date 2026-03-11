@@ -87,6 +87,7 @@ function Season123_3_5CardDetailView:openEquipView()
 	local actId = Season123Model.instance:getCurSeasonId()
 	local stage = Season123EntryModel.instance:getCurrentStage()
 	local param = {
+		noShowToast = true,
 		actId = actId,
 		stage = stage,
 		slot = self.slot

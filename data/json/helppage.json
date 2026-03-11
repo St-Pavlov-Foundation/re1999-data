@@ -5518,5 +5518,45 @@
     "iconText": "v3a5_zhangdou_help_3",
     "unlockGuideId": 35042,
     "isCn": 0
+  },
+  {
+    "id": 3511001,
+    "title": "",
+    "type": 2,
+    "text": "3.5UTTU团队名人卡指引1",
+    "icon": "v3a5_shaijiwanfa_help_2",
+    "iconText": "v3a5_shaijiwanfa_help_2",
+    "unlockGuideId": 0,
+    "isCn": 0
+  },
+  {
+    "id": 3511002,
+    "title": "",
+    "type": 2,
+    "text": "3.5UTTU团队名人卡指引2",
+    "icon": "v3a5_shaijiwanfa_help_1",
+    "iconText": "v3a5_shaijiwanfa_help_1",
+    "unlockGuideId": 0,
+    "isCn": 0
+  },
+  {
+    "id": 3512001,
+    "title": "",
+    "type": 2,
+    "text": "3.5UTTU积分奖励1",
+    "icon": "v3a5_shaijiwanfa_help_3",
+    "iconText": "v3a5_shaijiwanfa_help_3",
+    "unlockGuideId": 0,
+    "isCn": 0
+  },
+  {
+    "id": 3512002,
+    "title": "",
+    "type": 2,
+    "text": "3.5UTTU积分奖励2",
+    "icon": "v3a5_shaijiwanfa_help_4",
+    "iconText": "v3a5_shaijiwanfa_help_4",
+    "unlockGuideId": 0,
+    "isCn": 0
   }
 ]

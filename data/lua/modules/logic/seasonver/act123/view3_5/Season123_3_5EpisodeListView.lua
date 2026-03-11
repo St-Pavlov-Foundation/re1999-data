@@ -16,6 +16,7 @@ function Season123_3_5EpisodeListView:onInitView()
 	self._viewAnimator = self.viewGO:GetComponent(typeof(UnityEngine.Animator))
 	self._btnmask = gohelper.findChildButtonWithAudio(self.viewGO, "mask")
 	self.btnReward = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_reward")
+	self.animReward = self.btnReward.gameObject:GetComponent(typeof(UnityEngine.Animation))
 	self.goRewardRed = gohelper.findChild(self.viewGO, "#btn_reward/#go_rewardredpoint")
 	self.txtStar = gohelper.findChildTextMesh(self.viewGO, "#btn_reward/#txt_rewardprogress")
 
@@ -102,7 +103,7 @@ function Season123_3_5EpisodeListView:onOpen()
 	local stage = self.viewParam.stage
 
 	Season123EpisodeListController.instance:onOpenView(actId, stage)
-	RedDotController.instance:addRedDot(self.goRewardRed, RedDotEnum.DotNode.Season123StageRewardNew, stage)
+	RedDotController.instance:addRedDot(self.goRewardRed, RedDotEnum.DotNode.Season123StageRewardNew, stage, self.refreshRewardRed, self)
 	self:addEventCb(Season123Controller.instance, Season123Event.GetActInfo, self.refreshUI, self)
 	self:addEventCb(Season123Controller.instance, Season123Event.EpisodeViewRefresh, self.refreshUI, self)
 	self:addEventCb(Season123Controller.instance, Season123Event.StageInfoChanged, self.refreshUI, self)
@@ -134,6 +135,18 @@ end
 
 function Season123_3_5EpisodeListView:onClose()
 	return
+end
+
+function Season123_3_5EpisodeListView:refreshRewardRed(redDot)
+	redDot:defaultRefreshDot()
+
+	local isShow = redDot.show
+
+	if isShow then
+		self.animReward:Play("btn_tipreward_loop")
+	else
+		self.animReward:Play("btn_tipreward")
+	end
 end
 
 function Season123_3_5EpisodeListView:refreshUI()

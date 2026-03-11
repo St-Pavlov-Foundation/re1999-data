@@ -228,7 +228,6 @@ function SurvivalMapHelper:tryShowServerPanel(panel, source)
 			isFirst = panel.isFirstSearch,
 			itemConvertInfosList = itemConvertInfosList
 		})
-		SurvivalMapModel.instance:clearItemConvert()
 	elseif type == SurvivalEnum.PanelType.TreeEvent then
 		local sceneMo = SurvivalMapModel.instance:getSceneMo()
 		local unitMo = sceneMo and sceneMo.unitsById[panel.unitId]

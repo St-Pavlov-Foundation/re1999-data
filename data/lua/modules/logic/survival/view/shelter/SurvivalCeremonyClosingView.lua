@@ -50,6 +50,7 @@ function SurvivalCeremonyClosingView:onInitView()
 	self._txtTotalScore = gohelper.findChildText(self.viewGO, "#scroll_contentlist/viewport/content/#go_TotalScore/#txt_TotalScore")
 	self._txtTotalCoin = gohelper.findChildText(self.viewGO, "#scroll_contentlist/viewport/content/#go_TotalScore/go_currency/#txt_TotalScore")
 	self._gocurrency = gohelper.findChild(self.viewGO, "#scroll_contentlist/viewport/content/#go_TotalScore/go_currency")
+	self._gocurrencyLimit = gohelper.findChild(self.viewGO, "#scroll_contentlist/viewport/content/#go_TotalScore/go_currency/layout/txt_desc")
 	self._gocurrencymax = gohelper.findChild(self.viewGO, "#scroll_contentlist/viewport/content/#go_TotalScore/go_currency_max")
 	self._gorewardTips = gohelper.findChild(self.viewGO, "#scroll_contentlist/viewport/content/#go_rewardTips")
 	self._btnclose = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_close")
@@ -522,6 +523,15 @@ function SurvivalCeremonyClosingView:_initTotalScore()
 
 	gohelper.setActive(self._gocurrency, not isMax)
 	gohelper.setActive(self._gocurrencymax, isMax)
+
+	local isLimit = false
+	local num = tonumber(lua_survival_const.configDict[6003].value)
+
+	if num <= self._coinNum then
+		isLimit = true
+	end
+
+	gohelper.setActive(self._gocurrencyLimit, isLimit)
 	self:addShowStep(self._animationTotalScore, showTime[8], self._canvasGroupTotalScore, {
 		self._animationGoCurrency,
 		self._animationGoCurrencyMax

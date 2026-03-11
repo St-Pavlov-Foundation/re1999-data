@@ -59,16 +59,16 @@ function Season123_3_5SettlementHeroItem:onOpen()
 end
 
 function Season123_3_5SettlementHeroItem:_showNormalData()
+	local equip_data = self._equip and EquipModel.instance:getEquip(self._equip[1])
+	local equip_id = equip_data and equip_data.equipId
+
+	self:_showEquipIcon(equip_id)
+
 	if self._trail then
 		self:_showTrailHeroIcon(self._trail)
 	else
 		self:_showHeroIcon(self._hero)
 	end
-
-	local equip_data = self._equip and EquipModel.instance:getEquip(self._equip[1])
-	local equip_id = equip_data and equip_data.equipId
-
-	self:_showEquipIcon(equip_id)
 
 	if self._equip_123 then
 		local totalEquipCount = #self._equip_123
@@ -110,6 +110,10 @@ function Season123_3_5SettlementHeroItem:_showTrailHeroIcon(trail)
 
 	if skinConfig then
 		self._commonHeroCard:onUpdateMO(skinConfig)
+	end
+
+	if trailCo.equipId > 0 then
+		self:_showEquipIcon(trailCo.equipId)
 	end
 end
 
@@ -174,6 +178,7 @@ function Season123_3_5SettlementHeroItem:_showEquipIcon(equip_id)
 
 		UISpriteSetMgr.instance:setHerogroupEquipIconSprite(self._imageequipicon, equip_config.icon)
 		UISpriteSetMgr.instance:setHeroGroupSprite(self._imageequiprare, "bianduixingxian_" .. equip_config.rare)
+		gohelper.setActive(self._goequip, true)
 	else
 		gohelper.setActive(self._goequip, false)
 

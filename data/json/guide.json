@@ -8930,5 +8930,16 @@
     "priority": 0,
     "parallel": 1,
     "restart": 0
+  },
+  {
+    "id": 35051,
+    "desc": "探奇引导",
+    "isOnline": 1,
+    "trigger": "EpisodeFinish#10115",
+    "invalid": "",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
   }
 ]

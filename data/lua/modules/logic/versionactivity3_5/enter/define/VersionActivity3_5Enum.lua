@@ -22,7 +22,8 @@ VersionActivity3_5Enum.ActivityId = {
 	Reactivity = VersionActivity2_7Enum.ActivityId.Dungeon
 }
 VersionActivity3_5Enum.CharacterActId = {
-	[VersionActivity3_5Enum.ActivityId.Lamona] = true
+	[VersionActivity3_5Enum.ActivityId.Lamona] = true,
+	[VersionActivity3_5Enum.ActivityId.Lorentz] = true
 }
 VersionActivity3_5Enum.EnterViewActSetting = {
 	{

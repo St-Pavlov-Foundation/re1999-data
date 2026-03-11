@@ -163,12 +163,16 @@ function SurvivalRoleSkillMo:getSkillEffectRange()
 	local effectRange = 0
 	local range = tonumber(arr[2]) or 0
 
-	if effectType == SurvivalEnum.RoleSkillEffect.KillMonster or effectType == SurvivalEnum.RoleSkillEffect.ReplaceBlockUnit then
+	if effectType == SurvivalEnum.RoleSkillEffect.SnatchItem then
 		range = tonumber(arr[3]) or 0
-	end
+	else
+		if effectType == SurvivalEnum.RoleSkillEffect.KillMonster or effectType == SurvivalEnum.RoleSkillEffect.ReplaceBlockUnit then
+			range = tonumber(arr[3]) or 0
+		end
 
-	if range == 0 then
-		range = weekInfo:getAttr(SurvivalEnum.AttrType.Vision)
+		if range == 0 then
+			range = weekInfo:getAttr(SurvivalEnum.AttrType.Vision)
+		end
 	end
 
 	effectRange = range + skillRangeAttr
@@ -186,17 +190,25 @@ function SurvivalRoleSkillMo:getSkillEffectRangePoints(point, range, walkables)
 		return points
 	end
 
-	local list = SurvivalHelper.instance:getAllPointsByDis(point, range)
+	if range == 0 then
+		local list = {
+			point
+		}
 
-	for i = #list, 1, -1 do
-		if not SurvivalHelper.instance:getValueFromDict(walkables, list[i]) then
-			table.remove(list, i)
-		elseif not self:isTarget_Skill_ReplaceBlockUnit(list[i]) then
-			table.remove(list, i)
+		return list
+	else
+		local list = SurvivalHelper.instance:getAllPointsByDis(point, range)
+
+		for i = #list, 1, -1 do
+			if not SurvivalHelper.instance:getValueFromDict(walkables, list[i]) then
+				table.remove(list, i)
+			elseif not self:isTarget_Skill_ReplaceBlockUnit(list[i]) then
+				table.remove(list, i)
+			end
 		end
-	end
 
-	return list
+		return list
+	end
 end
 
 function SurvivalRoleSkillMo:confirmUseSkill(point)

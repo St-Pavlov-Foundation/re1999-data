@@ -5,7 +5,7 @@ module("modules.logic.fight.view.cardeffect.FightCardRecordSkillAfterPlay", pack
 local FightCardRecordSkillAfterPlay = class("FightCardRecordSkillAfterPlay", BaseWork)
 
 function FightCardRecordSkillAfterPlay:onStart(context)
-	if FightDataHelper.stateMgr:getIsAuto() then
+	if FightDataHelper.stateMgr:getIsAuto() or FightDataHelper.stageMgr:inFightState(FightStageMgr.FightStateType.AutoCardPlaying) then
 		self:tryRefreshRecordedSkill()
 
 		return self:onDone(true)

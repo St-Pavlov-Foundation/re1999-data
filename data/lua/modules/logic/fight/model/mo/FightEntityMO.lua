@@ -690,6 +690,14 @@ end
 function FightEntityMO:hasBuffId(buffId)
 	for _, buffMo in pairs(self.buffDic) do
 		if buffMo.buffId == buffId then
+			return true
+		end
+	end
+end
+
+function FightEntityMO:getBuffDataByBuffId(buffId)
+	for _, buffMo in pairs(self.buffDic) do
+		if buffMo.buffId == buffId then
 			return buffMo
 		end
 	end

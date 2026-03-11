@@ -12,6 +12,16 @@ function FightViewCardItem:ctor(handCardType)
 end
 
 function FightViewCardItem:init(go)
+	self.useSkin = false
+
+	if self.handCardType == FightEnum.CardShowType.HandCard or self.handCardType == FightEnum.CardShowType.Operation or self.handCardType == FightEnum.CardShowType.PlayCard then
+		local cardSkin = FightCardDataHelper.getCardSkin()
+
+		if cardSkin == 672801 then
+			self.useSkin = true
+		end
+	end
+
 	self.go = go
 	self._canvasGroup = go:GetComponent(gohelper.Type_CanvasGroup)
 	self.tr = go.transform
@@ -85,6 +95,10 @@ function FightViewCardItem:init(go)
 
 			gohelper.setActive(lvGo, false)
 			table.insert(lvGoList, lvGo)
+
+			local image = lvGo:GetComponent(gohelper.Type_Image)
+
+			UISpriteSetMgr.instance:setFightSkillCardSprite(image, "xx1", true)
 		end
 
 		table.insert(self._innerStarPreLvGoDict, lvGoList)
@@ -198,15 +212,6 @@ function FightViewCardItem:init(go)
 	self.xingtiGo = self.xingtiTxt.gameObject
 	self.alfLoadStatus = FightViewCardItem.AlfLoadStatus.None
 	self.useCardCopyLoadStatus = FightViewCardItem.AlfLoadStatus.None
-	self.useSkin = false
-
-	if self.handCardType == FightEnum.CardShowType.HandCard or self.handCardType == FightEnum.CardShowType.Operation or self.handCardType == FightEnum.CardShowType.PlayCard then
-		local cardSkin = FightCardDataHelper.getCardSkin()
-
-		if cardSkin == 672801 then
-			self.useSkin = true
-		end
-	end
 
 	if self.useSkin then
 		local frontBgRoot = gohelper.create2d(go, "skinFrontBg")

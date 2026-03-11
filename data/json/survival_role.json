@@ -89,7 +89,7 @@
     "initDisposition": "5#4#3#2#1",
     "dispositionType": 5,
     "talentName": "蛇发女妖",
-    "desc": "冷周六的新课题，基于神秘术的石灰岩变质机制与人工重演探索。地图中每经过1小时，额外获得经验*10。",
+    "desc": "冷周六的新课题，基于神秘术的石灰岩变质机制与人工重演探索。地图中每经过1小时，额外获得经验*8。",
     "resource": "survival/roles/prefab/role_protagonist_lengzhouliu.prefab",
     "chessPic": "v2a2_chess_73",
     "pic": "survivaloverviewteam_leader5",

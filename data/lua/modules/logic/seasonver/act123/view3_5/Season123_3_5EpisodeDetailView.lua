@@ -250,6 +250,12 @@ function Season123_3_5EpisodeDetailView:_recommendCareer()
 	end
 end
 
+function Season123_3_5EpisodeDetailView:_onRecommendCareerItemShow(obj, data, index)
+	local icon = gohelper.findChildImage(obj, "icon")
+
+	UISpriteSetMgr.instance:setHeroGroupSprite(icon, "career_" .. data)
+end
+
 function Season123_3_5EpisodeDetailView:_btnlastOnClick()
 	if Season123EpisodeDetailController.instance:canSwitchLayer(false) then
 		Season123EpisodeDetailController.instance:switchLayer(false)

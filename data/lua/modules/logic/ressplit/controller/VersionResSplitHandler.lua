@@ -253,8 +253,8 @@ function VersionResSplitHandler:_mergeSplitResult()
 	local wenNameWhiteDic = self._auidoWhiteWork.wenNameWhiteDic
 
 	for packName, packageMap in pairs(mergeResult) do
-		if packageMap.pathList then
-			self:_checkResWhiteList(packageMap.pathList, resWhiteDict)
+		for resType, resPathList in pairs(packageMap) do
+			self:_checkResWhiteList(resPathList, resWhiteDict)
 		end
 
 		if packageMap.audioBank then

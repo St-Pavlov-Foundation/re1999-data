@@ -352,22 +352,30 @@ function FightViewPlayCardItem:_onClickThis()
 		return
 	end
 
-	if FightDataHelper.operationDataMgr:isCardOpEnd() then
-		return
-	end
-
 	local curOperateState = FightDataHelper.stageMgr:getCurOperateState()
 
 	if curOperateState == FightStageMgr.OperateStateType.Discard then
 		FightDataHelper.stageMgr:exitOperateState(FightStageMgr.OperateStateType.Discard)
+
+		return self:_resetRoundOp()
 	elseif curOperateState == FightStageMgr.OperateStateType.RecordSkill then
 		FightDataHelper.stageMgr:exitOperateState(FightStageMgr.OperateStateType.RecordSkill)
+
+		return self:_resetRoundOp()
+	end
+
+	if FightDataHelper.operationDataMgr:isCardOpEnd() then
+		return
 	end
 
 	if not FightDataHelper.stageMgr:isFree(filterOperateState) then
 		return
 	end
 
+	return self:_resetRoundOp()
+end
+
+function FightViewPlayCardItem:_resetRoundOp()
 	FightRpc.instance:sendResetRoundRequest()
 	AudioMgr.instance:trigger(AudioEnum.UI.Play_UI_FightResetCard)
 	FightAudioMgr.instance:stopAllCardAudio()

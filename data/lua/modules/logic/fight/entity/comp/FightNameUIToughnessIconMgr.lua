@@ -98,7 +98,7 @@ function FightNameUIToughnessIconMgr:showIcon()
 		UISpriteSetMgr.instance:setFightSprite(self.icon, self.toughnessConfig.iconNormal, true)
 	else
 		local hasBuff
-		local buffData = self.entityData:hasBuffId(self.buffId)
+		local buffData = self.entityData:getBuffDataByBuffId(self.buffId)
 
 		if buffData and buffData.actInfo then
 			for i, v in ipairs(buffData.actInfo) do

@@ -3048,6 +3048,22 @@
     "result": "None|"
   },
   {
+    "id": 207091501,
+    "nodeId": 4,
+    "desc": "看看",
+    "icon": 15,
+    "condition": "",
+    "result": "OpenStore|70002"
+  },
+  {
+    "id": 207091501,
+    "nodeId": 6,
+    "desc": "离开",
+    "icon": 15,
+    "condition": "",
+    "result": "None|"
+  },
+  {
     "id": 207091901,
     "nodeId": 4,
     "desc": "正好，我这儿有一个垃圾",

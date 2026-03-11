@@ -7,7 +7,7 @@ local FightCardRecordSkillBeforePlay = class("FightCardRecordSkillBeforePlay", B
 function FightCardRecordSkillBeforePlay:onStart(context)
 	self.context.canEnterLorentzRecordSkill = false
 
-	if FightDataHelper.stateMgr:getIsAuto() then
+	if FightDataHelper.stateMgr:getIsAuto() or FightDataHelper.stageMgr:inFightState(FightStageMgr.FightStateType.AutoCardPlaying) then
 		self:handleAuto()
 
 		return self:onDone(true)

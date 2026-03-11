@@ -149,6 +149,10 @@ end
 function FightSkillComp:stopSkill()
 	local workList = self.workComp.workList
 
+	if not workList then
+		return
+	end
+
 	for i, work in ipairs(workList) do
 		work:disposeSelf()
 	end

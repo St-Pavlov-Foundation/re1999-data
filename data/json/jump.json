@@ -9177,24 +9177,24 @@
     "id": 10013535,
     "name": "UTTU阶段1跳转",
     "openId": 0,
-    "param": " 33#1#1"
+    "param": "33#1#1"
   },
   {
     "id": 10013536,
     "name": "UTTU阶段2跳转",
     "openId": 0,
-    "param": " 33#1#2"
+    "param": "33#1#2"
   },
   {
     "id": 10013537,
     "name": "UTTU阶段3跳转",
     "openId": 0,
-    "param": " 33#1#3"
+    "param": "33#1#3"
   },
   {
     "id": 10013538,
     "name": "UTTU阶段4跳转",
     "openId": 0,
-    "param": " 33#1#4"
+    "param": "33#1#4"
   }
 ]

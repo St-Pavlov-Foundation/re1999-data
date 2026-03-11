@@ -70,6 +70,71 @@ function FightLorentzCardCopyView:createCardItem()
 	item.rectTr = go:GetComponent(gohelper.Type_RectTransform)
 	item.animator = gohelper.findChildComponent(go, "ani", gohelper.Type_Animator)
 	item.simage = gohelper.findChildSingleImage(go, "ani/image_card")
+	item.imageList = self:getUserDataTb_()
+	item.goLvList = self:getUserDataTb_()
+	item.starList = self:getUserDataTb_()
+
+	for i = 1, 3 do
+		local image = gohelper.findChildSingleImage(go, string.format("ani/lv%s/imgIcon", i))
+
+		table.insert(item.imageList, image)
+
+		local lvGo = gohelper.findChild(go, "ani/lv" .. i)
+
+		table.insert(item.goLvList, lvGo)
+
+		local starGo = gohelper.findChild(go, "ani/star/star" .. i)
+
+		table.insert(item.starList, starGo)
+	end
+
+	item.tag = gohelper.findChildSingleImage(go, "ani/tag/tag/tagIcon")
+	item.tagTransform = item.tag:GetComponent(gohelper.Type_RectTransform)
+
+	if self.useSkin then
+		local goAnim = gohelper.findChild(go, "ani")
+		local frontBgRoot = gohelper.create2d(goAnim, "skinFrontBg")
+
+		gohelper.setActive(frontBgRoot, true)
+		gohelper.setSibling(frontBgRoot, 3)
+		transformhelper.setLocalScale(frontBgRoot.transform, 1.76, 1.76, 1)
+
+		local frontBgNormal = gohelper.create2d(frontBgRoot, "skinFrontBgNormal")
+		local imgFrontBgNormal = gohelper.onceAddComponent(frontBgNormal, gohelper.Type_Image)
+
+		UISpriteSetMgr.instance:setFightSkillCardSprite(imgFrontBgNormal, "card_dz4", true)
+		recthelper.setAnchorY(frontBgNormal.transform, -7.86)
+
+		local backBgRoot = gohelper.create2d(goAnim, "skinBackBg")
+
+		gohelper.setActive(backBgRoot, true)
+		gohelper.setSibling(backBgRoot, 0)
+		transformhelper.setLocalScale(backBgRoot.transform, 1.76, 1.76, 1)
+
+		local img = gohelper.onceAddComponent(backBgRoot, gohelper.Type_Image)
+
+		UISpriteSetMgr.instance:setFightSkillCardSprite(img, "card_dz3", true)
+
+		for i, starGo in ipairs(item.starList) do
+			local transform = starGo.transform
+
+			for index = 0, transform.childCount - 1 do
+				local child = transform:GetChild(index)
+				local childName = child.name
+				local image = child:GetComponent(gohelper.Type_Image)
+
+				if image then
+					if childName == "light" then
+						UISpriteSetMgr.instance:setFightSkillCardSprite(image, "xx1", true)
+					elseif childName == "lightblue" then
+						UISpriteSetMgr.instance:setFightSkillCardSprite(image, "xx3", true)
+					elseif string.sub(childName, 1, 4) == "dark" then
+						UISpriteSetMgr.instance:setFightSkillCardSprite(image, "xx2", true)
+					end
+				end
+			end
+		end
+	end
 
 	gohelper.setActive(go, false)
 	table.insert(self.cardItemList, item)
@@ -82,6 +147,10 @@ function FightLorentzCardCopyView:onUpdateParam()
 end
 
 function FightLorentzCardCopyView:onOpen()
+	local cardSkin = FightCardDataHelper.getCardSkin()
+
+	self.useSkin = cardSkin == 672801
+
 	self:hideViewAndCopyNode()
 	self:refreshCardItem()
 end
@@ -136,6 +205,27 @@ function FightLorentzCardCopyView:refreshCardItem()
 			local url = ResUrl.getSkillIcon(skillCo.icon)
 
 			cardItem.simage:LoadImage(url)
+
+			for j = 1, 3 do
+				cardItem.imageList[j]:LoadImage(url)
+			end
+
+			local curLv = FightConfig.instance:getSkillLv(skillId)
+
+			for j = 1, 3 do
+				gohelper.setActive(cardItem.starList[j], j == curLv)
+				gohelper.setActive(cardItem.goLvList[j], j == curLv)
+			end
+
+			local pre = self.useSkin and "v2a8_skin/attribute_" or "attribute_"
+			local tagUrl = ResUrl.getAttributeIcon(pre .. skillCo.showTag)
+
+			cardItem.tag:LoadImage(tagUrl)
+
+			local tagWidth = self.useSkin and 180 or 168
+			local tagHeight = self.useSkin and 64 or 56
+
+			recthelper.setSize(cardItem.tagTransform, tagWidth, tagHeight)
 		end
 	end
 
@@ -191,6 +281,10 @@ function FightLorentzCardCopyView:onDestroyView()
 	if self.cardItemList then
 		for _, cardItem in ipairs(self.cardItemList) do
 			cardItem.simage:UnLoadImage()
+
+			for j = 1, 3 do
+				cardItem.imageList[j]:UnLoadImage()
+			end
 		end
 	end
 

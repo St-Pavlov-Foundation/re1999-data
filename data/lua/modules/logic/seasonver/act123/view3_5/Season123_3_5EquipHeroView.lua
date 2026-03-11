@@ -383,7 +383,12 @@ end
 
 function Season123_3_5EquipHeroView:handleSaveSucc()
 	if self._isManualSave then
-		GameFacade.showToast(Season123EquipHeroController.Toast_Save_Succ)
+		local noShowToast = self.viewParam and self.viewParam.noShowToast
+
+		if not noShowToast then
+			GameFacade.showToast(Season123EquipHeroController.Toast_Save_Succ)
+		end
+
 		self:closeThis()
 	end
 end

@@ -89,6 +89,7 @@ function SurvivalMapSearchView:onOpen()
 	self.itemConvertInfosList = self.viewParam.itemConvertInfosList
 	self.convertAccount = #self.itemConvertInfosList
 
+	SurvivalMapModel.instance:clearItemConvert()
 	self:parseConvertItemMos()
 
 	self._allItemMos = self.convertItemMosList[1].items

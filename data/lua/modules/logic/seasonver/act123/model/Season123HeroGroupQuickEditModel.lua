@@ -61,14 +61,6 @@ function Season123HeroGroupQuickEditModel:copyQuickEditCardList()
 		end
 	end
 
-	local trialList = HeroGroupTrialModel.instance:getFilterList()
-
-	for i, heroMo in ipairs(trialList) do
-		if not repeatHero[heroMo.uid] then
-			table.insert(newMOList, heroMo)
-		end
-	end
-
 	local deathList = {}
 
 	for i, mo in ipairs(moList) do
@@ -81,6 +73,14 @@ function Season123HeroGroupQuickEditModel:copyQuickEditCardList()
 
 	if self.adventure then
 		tabletool.addValues(newMOList, deathList)
+	end
+
+	local trialList = HeroGroupTrialModel.instance:getFilterList()
+
+	for i, heroMo in ipairs(trialList) do
+		if not repeatHero[heroMo.uid] then
+			table.insert(newMOList, heroMo)
+		end
 	end
 
 	if Season123HeroGroupModel.instance:isEpisodeSeason123() then
