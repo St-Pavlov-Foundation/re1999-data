@@ -553,9 +553,9 @@ function TowerComposeHeroGroupModel:checkEquipUidIsInLockPlane(equipUid)
 	local themeMo = TowerComposeModel.instance:getThemeMo(themeId)
 	local heroGroupMo = HeroGroupModel.instance:getCurGroupMO()
 
-	for pos, heroGroupEquipMo in ipairs(heroGroupMo.equips) do
-		if equipUid == heroGroupEquipMo.equipUid[1] then
-			local planeId = Mathf.Ceil(pos / 4)
+	for pos = 0, #heroGroupMo.equips - 1 do
+		if equipUid == heroGroupMo.equips[pos].equipUid[1] then
+			local planeId = Mathf.Ceil((pos + 1) / 4)
 			local isPlaneLock = TowerComposeModel.instance:checkPlaneLock(themeId, planeId)
 			local planeMo = themeMo:getPlaneMo(planeId)
 

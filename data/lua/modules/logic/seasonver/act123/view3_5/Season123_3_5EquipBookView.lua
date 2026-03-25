@@ -179,8 +179,9 @@ function Season123_3_5EquipBookView:cardDescItemShow(obj, data, index)
 	local txtDesc = gohelper.findChildText(obj, "txt_desc")
 	local fixTmpBreakLine = MonoHelper.addNoUpdateLuaComOnceToGo(txtDesc.gameObject, FixTmpBreakLine)
 
+	data = SkillHelper.addLink(data)
 	data = HeroSkillModel.instance:skillDesToSpot(data)
-	txtDesc.text = SkillHelper.addLink(data)
+	txtDesc.text = data
 
 	fixTmpBreakLine:refreshTmpContent(txtDesc)
 	SLFramework.UGUI.GuiHelper.SetColor(txtDesc, self.colorStr)

@@ -3280,7 +3280,7 @@
   {
     "id": 17007,
     "desc": "UTTU零售引导",
-    "isOnline": 1,
+    "isOnline": 0,
     "trigger": "EpisodeFinish#1701104",
     "invalid": "ActivityEnd#11700",
     "interruptFinish": 1,
@@ -8932,11 +8932,44 @@
     "restart": 0
   },
   {
+    "id": 35043,
+    "desc": "3.5UTTU韧性条指引图",
+    "isOnline": 1,
+    "trigger": "EnterEpisode#1351301",
+    "invalid": "EpisodeFinish#1351301",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
     "id": 35051,
     "desc": "探奇引导",
     "isOnline": 1,
     "trigger": "EpisodeFinish#10115",
     "invalid": "",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 35061,
+    "desc": "UTTU-入场&团队名人卡指引",
+    "isOnline": 1,
+    "trigger": "OpenView#Season123_3_5EntryView",
+    "invalid": "ActivityEnd#13513",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 35063,
+    "desc": "UTTU-团队名人卡替换",
+    "isOnline": 1,
+    "trigger": "OpenView#Season123_3_5EntryView",
+    "invalid": "ActivityEnd#13513",
     "interruptFinish": 1,
     "priority": 0,
     "parallel": 1,

@@ -816,7 +816,10 @@ function HeroGroupModel:saveCurGroupData(callback, callbackObj, heroGroupMO)
 
 		if self.heroGroupType == ModuleEnum.HeroGroupType.General then
 			snapshotId = HeroGroupSnapshotModel.instance:getCurSnapshotId()
-			snapshotSubId = HeroGroupSnapshotModel.instance:getCurGroupId()
+
+			local isSurvivalDebug = snapshotId == ModuleEnum.HeroGroupSnapshotType.Survival
+
+			snapshotSubId = HeroGroupSnapshotModel.instance:getCurGroupId(nil, isSurvivalDebug)
 		end
 
 		if snapshotId and snapshotSubId then

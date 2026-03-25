@@ -29,7 +29,7 @@ function V3a5_SchoolStartView:addEvents()
 	self._btnAllReward:AddClickListener(self._showAllRewardList, self)
 	TaskController.instance:registerCallback(TaskEvent.SetTaskList, self._refreshTask, self)
 	TaskController.instance:registerCallback(TaskEvent.SuccessGetBonus, self._refreshTask, self)
-	TaskController.instance:registerCallback(TaskEvent.UpdateTaskList, self._refreshTask, self)
+	TaskController.instance:registerCallback(TaskEvent.UpdateTaskList, self._onUpdateTaskList, self)
 	TaskController.instance:registerCallback(TaskEvent.OnFinishTask, self._refreshTask, self)
 	TaskController.instance:registerCallback(TaskEvent.onReceiveFinishReadTaskReply, self._refreshTask, self)
 	V3a5_SchoolStartController.instance:registerCallback(V3a5_SchoolStartEvent.OnFlipGridGridReply, self._onFlipGridGridReply, self)
@@ -42,7 +42,7 @@ function V3a5_SchoolStartView:removeEvents()
 	self._btnAllReward:RemoveClickListener()
 	TaskController.instance:unregisterCallback(TaskEvent.SetTaskList, self._refreshTask, self)
 	TaskController.instance:unregisterCallback(TaskEvent.SuccessGetBonus, self._refreshTask, self)
-	TaskController.instance:unregisterCallback(TaskEvent.UpdateTaskList, self._refreshTask, self)
+	TaskController.instance:unregisterCallback(TaskEvent.UpdateTaskList, self._onUpdateTaskList, self)
 	TaskController.instance:unregisterCallback(TaskEvent.OnFinishTask, self._refreshTask, self)
 	TaskController.instance:unregisterCallback(TaskEvent.onReceiveFinishReadTaskReply, self._refreshTask, self)
 	V3a5_SchoolStartController.instance:unregisterCallback(V3a5_SchoolStartEvent.OnFlipGridGridReply, self._onFlipGridGridReply, self)
@@ -294,6 +294,24 @@ end
 function V3a5_SchoolStartView:_refreshTask()
 	V3a5_SchoolStartTaskListModel.instance:setTaskList()
 	self:_refreshCount()
+end
+
+function V3a5_SchoolStartView:_onUpdateTaskList(msg)
+	if msg and self:_isRefreshTask(msg.taskInfo) then
+		self:_refreshTask()
+	end
+end
+
+function V3a5_SchoolStartView:_isRefreshTask(taskInfo)
+	if not taskInfo then
+		return
+	end
+
+	for i = 1, #taskInfo do
+		if taskInfo[i].type == TaskEnum.TaskType.SchoolStart then
+			return true
+		end
+	end
 end
 
 function V3a5_SchoolStartView:_refreshItemStatus()

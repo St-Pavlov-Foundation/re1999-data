@@ -124,8 +124,6 @@ function FightParam.initFightGroup(fightGroup, clothId, heroList, subHeroList, e
 					trialDict[index] = FightDef_pb.TrialHero()
 					trialDict[index].pos = index
 					trialDict[index].trialId = mo.trialCo.id
-
-					table.insert(fightGroup.heroList, tostring(0))
 				else
 					table.insert(fightGroup.heroList, hero)
 				end
@@ -144,8 +142,6 @@ function FightParam.initFightGroup(fightGroup, clothId, heroList, subHeroList, e
 					trialDict[index + heroListLen] = FightDef_pb.TrialHero()
 					trialDict[index + heroListLen].pos = -index
 					trialDict[index + heroListLen].trialId = mo.trialCo.id
-
-					table.insert(fightGroup.subHeroList, tostring(0))
 				else
 					table.insert(fightGroup.subHeroList, subHero)
 				end

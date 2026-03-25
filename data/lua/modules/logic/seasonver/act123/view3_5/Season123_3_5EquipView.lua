@@ -259,8 +259,9 @@ function Season123_3_5EquipView:refreshSkills(itemCfg, descItem, colorStr)
 
 		gohelper.setActive(item.go, true)
 
+		skillStr = SkillHelper.addLink(skillStr)
 		skillStr = HeroSkillModel.instance:skillDesToSpot(skillStr)
-		item.txtDesc.text = SkillHelper.addLink(skillStr)
+		item.txtDesc.text = skillStr
 		processedSet[item] = true
 
 		SkillHelper.addHyperLinkClick(item.txtDesc, self.setSkillClickCallBack, self)

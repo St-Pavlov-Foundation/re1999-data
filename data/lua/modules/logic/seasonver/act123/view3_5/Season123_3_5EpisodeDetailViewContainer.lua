@@ -18,8 +18,8 @@ function Season123_3_5EpisodeDetailViewContainer:buildTabViews(tabContainerId)
 	self._navigateButtonView = NavigateButtonsView.New({
 		true,
 		true,
-		false
-	}, 100, self._closeCallback, self._homeCallback, nil, self)
+		true
+	}, HelpEnum.HelpId.Season3_5EpisodeViewHelp, self._closeCallback, self._homeCallback, nil, self)
 
 	return {
 		self._navigateButtonView

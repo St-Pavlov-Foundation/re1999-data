@@ -72,10 +72,6 @@ end
 
 function DiceHeroDungeonMapView:isShowRoot()
 	if OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.DiceHero) and self.chapterId == DungeonEnum.ChapterId.Main1_9 then
-		if OptionPackageController.instance:checkNeedDownload(OptionPackageEnum.Package.VersionActivity) then
-			return
-		end
-
 		return true
 	end
 end
@@ -89,6 +85,10 @@ function DiceHeroDungeonMapView:onActStateChange()
 end
 
 function DiceHeroDungeonMapView:onClickEnter()
+	if OptionPackageController.instance:checkNeedDownload(OptionPackageEnum.Package.VersionActivity) then
+		return
+	end
+
 	ViewMgr.instance:openView(ViewName.DiceHeroMainView)
 end
 

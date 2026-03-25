@@ -587,7 +587,7 @@
   {
     "activityId": 13513,
     "stage": 4,
-    "preCondition": "1#3|2#7",
+    "preCondition": "1#3|2#8",
     "name": "往复回环",
     "res": "v3a5_m_s15_section04",
     "initPos": "0.8#0",

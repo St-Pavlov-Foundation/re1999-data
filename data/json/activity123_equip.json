@@ -28437,7 +28437,7 @@
     "composeCost": 400,
     "scoreTitle": "消耗灵光后提升评分",
     "scoreStage": "B#500|A#1000|S#2000",
-    "scoreStageTitle": "回合结束进行攻击|攻击后回复我方灵光|我方角色消耗灵光后获得倾力"
+    "scoreStageTitle": "B:回合结束进行攻击|A:攻击后回复我方灵光|S:我方角色消耗灵光后获得倾力"
   },
   {
     "equipId": 350102,
@@ -28461,7 +28461,7 @@
     "composeCost": 600,
     "scoreTitle": "额外行动后提升评分",
     "scoreStage": "B#500|A#1000|S#2000",
-    "scoreStageTitle": "回合结束进行攻击|攻击后我方获得预燃|我方角色额外行动后获得计划"
+    "scoreStageTitle": "B:回合结束进行攻击|A:攻击后我方获得预燃|S:我方角色额外行动后获得计划"
   },
   {
     "equipId": 350103,
@@ -28475,7 +28475,7 @@
     "signOffset": "12#-175#0.9",
     "attrId": 0,
     "skillId": "6#109350351",
-    "group": 350201,
+    "group": 350103,
     "activityId": 13513,
     "tag": "42",
     "teamLimit": 0,
@@ -28485,7 +28485,7 @@
     "composeCost": 400,
     "scoreTitle": "释放3阶咒语提升评分",
     "scoreStage": "B#500|A#1000|S#2000",
-    "scoreStageTitle": "回合结束进行攻击|攻击结算敌方中毒（不消耗中毒）|我方3阶咒语暴击创伤提升"
+    "scoreStageTitle": "B:回合结束进行攻击|A:攻击结算敌方中毒（不消耗中毒）|S:我方3阶咒语暴击创伤提升"
   },
   {
     "equipId": 350001,
@@ -28518,9 +28518,9 @@
     "isMain": 0,
     "packageId": "1",
     "icon": "504",
-    "signIcon": "3096",
+    "signIcon": "3999",
     "iconOffset": "0#0#1",
-    "signOffset": "0#-172#0.65",
+    "signOffset": "1#-178#0.45",
     "attrId": 0,
     "skillId": "109350202",
     "group": 350002,
@@ -28605,7 +28605,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "任意咒语进入行动区时，额外生成1张"
+    "scoreStageTitle": "普通咒语进入行动区时，额外生成1张"
   },
   {
     "equipId": 350006,
@@ -28773,7 +28773,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "每消耗1点灵光，获得1层【创伤附加】，持续2回合\n【创伤附加】：攻击时，对目标附加自身50%攻击的本源创伤"
+    "scoreStageTitle": "每消耗1点灵光，获得1层【创伤附加】，持续2回合"
   },
   {
     "equipId": 350013,
@@ -28821,7 +28821,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "己方每消耗1点灵光，自身获得1层【仪式辅导】\n【仪式辅导】：仪式威力提升10%（可以叠加，最多叠加50层，不可驱散）"
+    "scoreStageTitle": "己方每消耗1点灵光，自身获得1层【仪式辅导】"
   },
   {
     "equipId": 350015,
@@ -28845,7 +28845,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "攻击时，目标每有1层【燃烧】，术法威力提升5%，之后移除目标5层【燃烧】"
+    "scoreStageTitle": "攻击时，目标每有1层【燃烧】，术法威力提升5%，之后驱散目标【燃烧】（驱散效果每回合最多触发2次）"
   },
   {
     "equipId": 350016,
@@ -28869,7 +28869,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "【余辉】回合开始时会提供等于暴击率数值的暴击创伤"
+    "scoreStageTitle": "回合开始时，每有10点【余辉】，使本方角色本回合暴击率提高1%，最多计入500点【余辉】"
   },
   {
     "equipId": 350017,
@@ -28941,7 +28941,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "释放至终的仪式后，移除敌方全体【燃烧】，再赋予敌方全体20层【燃烧】"
+    "scoreStageTitle": "释放至终的仪式后，驱散敌方全体【燃烧】，再赋予敌方全体20层【燃烧】"
   },
   {
     "equipId": 350020,
@@ -29061,7 +29061,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "回合内，若额外行动次数至少为3次，则使本回合团队名人卡的攻击额外攻击1次"
+    "scoreStageTitle": "回合内，若自身额外行动次数至少为3次，则使本回合团队名人卡的攻击额外攻击1次"
   },
   {
     "equipId": 350025,
@@ -29085,7 +29085,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "使用2/3阶咒语后，自身获得1层【额外行动·术法】，持续2回合：额外行动时术法威力提高10%（可叠加，每层单独计算回合）"
+    "scoreStageTitle": "使用2/3阶咒语后，自身获得1层【额外行动·术法】，持续2回合"
   },
   {
     "equipId": 350026,
@@ -29109,7 +29109,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "额外行动后，自身获得1层【滋养】：治疗率提升10%（可以叠加，最多叠加50层）"
+    "scoreStageTitle": "额外行动后，自身获得1层【滋养<id:109350226>】：治疗率提升10%（可以叠加，最多叠加50层）"
   },
   {
     "equipId": 350027,
@@ -29205,7 +29205,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "回合开始时，若敌方全体共计携带10个以上的【中毒】状态，则结算敌方【中毒】1回合（不消耗【中毒】）"
+    "scoreStageTitle": "回合开始时，若敌方全体共计携带10个以上的【中毒】状态，则结算敌方【中毒】1回合，本次结算不消耗【中毒】且造成伤害提高100%"
   },
   {
     "equipId": 350031,
@@ -29229,7 +29229,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "释放3阶咒语后，己方全体获得1层【洞察】"
+    "scoreStageTitle": "释放3阶咒语后，己方全体获得2层【洞察】"
   },
   {
     "equipId": 350032,
@@ -29253,7 +29253,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "回合内每赋予敌方1个【中毒】状态，则使本回合团队名人卡的攻击术法威力提升10%"
+    "scoreStageTitle": "敌方每有1个【中毒】状态，使团队名人卡的攻击术法威力提升10%"
   },
   {
     "equipId": 350033,
@@ -29277,7 +29277,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "攻击后，目标若累计携带至少20个【中毒】，自身获得2层【滋养】：治疗率提升10%（可以叠加，最多叠加50层）"
+    "scoreStageTitle": "攻击后，目标若累计携带至少10个【中毒】，自身获得2层【滋养<id:109350226>】：治疗率提升10%（可以叠加，最多叠加50层）"
   },
   {
     "equipId": 350034,
@@ -29301,7 +29301,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "敌方目标携带至少10个【中毒】状态，受到本源创伤提升40%"
+    "scoreStageTitle": "回合开始时，若敌方全体共计携带10个以上的【中毒】状态，使敌方全体受到本源创伤提升40%，持续1回合"
   },
   {
     "equipId": 350035,
@@ -29325,7 +29325,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "敌方退场后，身上携带的所有【中毒】状态将转移给其他随机敌方"
+    "scoreStageTitle": "敌方退场后，其他随机敌方获得其身上携带的所有【中毒】状态（至多20个）"
   },
   {
     "equipId": 350036,
@@ -29397,7 +29397,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "3阶咒语攻击时，目标每有1个【中毒】，创伤加成提高30%（至多计入20个）"
+    "scoreStageTitle": "3阶咒语攻击时，目标每有5个【中毒】，创伤加成提高100%（至多计入20个）"
   },
   {
     "equipId": 350039,
@@ -29421,7 +29421,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "释放单体攻击3阶咒语后，获得1层【远处硝烟】：单体至终的仪式攻击时，仪式威力提升25%（可叠加，释放至终的仪式后消失）"
+    "scoreStageTitle": "释放单体攻击3阶咒语后，获得10层【礼仪】"
   },
   {
     "equipId": 350040,
@@ -29493,7 +29493,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "每5回合，进入【访梦】状态，持续2回合；自身处于【访梦】状态时，己方每受到1次攻击，本回合全体获得受创回复+20%"
+    "scoreStageTitle": "每5回合，进入【访梦】状态，持续2回合；受到攻击时，若自身处于【访梦】状态，使己方受创回复提升20%，持续1回合"
   },
   {
     "equipId": 350043,
@@ -29517,6 +29517,6 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "3阶咒语创伤加成提高30%"
+    "scoreStageTitle": "3阶咒语造成伤害提高80%"
   }
 ]

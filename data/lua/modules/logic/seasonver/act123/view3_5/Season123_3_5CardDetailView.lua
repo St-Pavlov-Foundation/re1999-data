@@ -192,6 +192,10 @@ function Season123_3_5CardDetailView:refreshCard(curCardId, selectCardList, only
 	gohelper.setActive(self.btnCheck, onlyCheck)
 	gohelper.setActive(self.btnExchange, canExchange)
 
+	if canExchange then
+		Season123Controller.instance:dispatchEvent(Season123Event.CardDetailSwitch)
+	end
+
 	if not isEmpty then
 		if not self.cardItem then
 			self.cardItem = Season123_3_5CelebrityCardItem.New()

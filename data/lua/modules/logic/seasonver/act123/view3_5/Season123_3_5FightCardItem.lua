@@ -168,7 +168,11 @@ function Season123_3_5FightCardItem:updateDescItem(item, skillStr)
 
 	gohelper.setActive(item.go, true)
 
+	skillStr = SkillHelper.addLink(skillStr)
+	skillStr = HeroSkillModel.instance:skillDesToSpot(skillStr)
 	item.txtDesc.text = skillStr or ""
+
+	SkillHelper.addHyperLinkClick(item.txtDesc)
 end
 
 function Season123_3_5FightCardItem:destroyDescItem(item)

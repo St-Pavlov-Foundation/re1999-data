@@ -22,8 +22,8 @@ function Season123_3_5EpisodeListViewContainer:buildTabViews(tabContainerId)
 		self._navigateButtonView = NavigateButtonsView.New({
 			true,
 			true,
-			false
-		})
+			true
+		}, HelpEnum.HelpId.Season3_5MainViewHelp)
 
 		self._navigateButtonView:setOverrideClose(self._overrideCloseFunc, self)
 

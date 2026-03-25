@@ -205,7 +205,7 @@ function Season123EquipController:checkHeroGroupCardExist(actId)
 	end
 end
 
-function Season123EquipController:checkSingleHeroGroupExist(heroGroupMO, itemMap)
+function Season123EquipController:checkSingleHeroGroupExist(heroGroupMO, itemMap, mainEquipId)
 	if not heroGroupMO then
 		return false
 	end
@@ -213,10 +213,16 @@ function Season123EquipController:checkSingleHeroGroupExist(heroGroupMO, itemMap
 	local isDirty = false
 
 	for pos, equipMO in pairs(heroGroupMO.activity104Equips) do
+		local isMainPos = Season123EquipItemListModel.MainCharPos == pos
+
 		for equipIndex, itemUid in pairs(equipMO.equipUid) do
 			if itemUid ~= Activity123Enum.EmptyUid and itemMap[itemUid] == nil then
 				equipMO.equipUid[equipIndex] = Activity123Enum.EmptyUid
 				isDirty = true
+			end
+
+			if isMainPos and equipMO.equipUid[equipIndex] == Activity123Enum.EmptyUid then
+				equipMO.equipUid[equipIndex] = mainEquipId or Activity123Enum.EmptyUid
 			end
 		end
 	end
@@ -301,7 +307,8 @@ function Season123EquipController:checkHeroGroupCardExistInEpisode(heroGroupMO, 
 		itemMap[equipId] = true
 	end
 
-	local isModified = self:checkSingleHeroGroupExist(heroGroupMO, itemMap)
+	local mainEquipId = tostring(selectCardList[1])
+	local isModified = self:checkSingleHeroGroupExist(heroGroupMO, itemMap, mainEquipId)
 
 	if isModified then
 		self:syncHeroGroupMO(heroGroupMO)

@@ -37,6 +37,7 @@ function Season123_3_5EntryItem:initComponent()
 	self._btnentrance:AddClickListener(self._btnentranceOnClick, self)
 	self._btnrecords:AddClickListener(self._btnrecordsOnClick, self)
 
+	self._goRed = gohelper.findChild(self.viewGO, "#txt_mapname/#go_stageRedDot")
 	self.animLock = self._golocked:GetComponent(gohelper.Type_Animator)
 
 	TaskDispatcher.runRepeat(self.refreshLockRepeat, self, 3)
@@ -56,6 +57,8 @@ end
 
 function Season123_3_5EntryItem:refreshUI()
 	self._stageId = Season123EntryModel.instance:getCurrentStage()
+
+	RedDotController.instance:addRedDot(self._goRed, RedDotEnum.DotNode.Season123StageRewardNew, self._stageId)
 
 	if not self._stageId then
 		return

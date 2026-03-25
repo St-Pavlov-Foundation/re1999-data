@@ -90,6 +90,10 @@ function Season123EntryController:processJumpParam(viewParam)
 			jumpId = viewParam.jumpId,
 			jumpParam = viewParam.jumpParam
 		})
+
+		if battleContext.stage then
+			self:goToStage(battleContext.stage)
+		end
 	elseif viewParam.jumpId == Activity123Enum.JumpId.Retail then
 		Season123Controller.instance:dispatchEvent(Season123Event.OtherViewAutoOpened)
 		Season123Controller.instance:openSeasonRetail({

@@ -22993,7 +22993,7 @@
   },
   {
     "id": "p_survivalequipoverview_txt_Type1",
-    "lang": "饰品"
+    "lang": "乐观装置"
   },
   {
     "id": "p_survivalequipoverview_txt_Type2",
@@ -23621,7 +23621,7 @@
   },
   {
     "id": "p_turnback3_signinview_txt12",
-    "lang": "登录7天累计获得"
+    "lang": "登录6天累计获得"
   },
   {
     "id": "p_turnback3_signinview_txt13",
@@ -27057,7 +27057,7 @@
   },
   {
     "id": "p_season123settlementview_txt_round",
-    "lang": "通关回合数"
+    "lang": "最佳通关回合数"
   },
   {
     "id": "p_survivalview_txt_new_shop",
@@ -27149,7 +27149,7 @@
   },
   {
     "id": "v3a5_shaijiwanfa_help_1_txt_1",
-    "lang": "团队名人卡战斗引导图"
+    "lang": "团队名人卡战斗"
   },
   {
     "id": "v3a5_shaijiwanfa_help_1_txt_2",
@@ -27161,7 +27161,7 @@
   },
   {
     "id": "v3a5_shaijiwanfa_help_2_txt_1",
-    "lang": "团队名人卡"
+    "lang": "团队名人卡查看"
   },
   {
     "id": "v3a5_shaijiwanfa_help_2_txt_2",
@@ -27169,23 +27169,23 @@
   },
   {
     "id": "v3a5_shaijiwanfa_help_2_txt_3",
-    "lang": "每组关卡拥有一个<#ff906a>特殊的团队名人卡机制</color>最后一组关卡可以<#ff906a>启用</color>的自选团队名人卡"
+    "lang": "每组关卡拥有一个<#ff906a>特殊的团队名人卡机制</color>最后一组关卡可以<#ff906a>自选</color>团队名人卡"
   },
   {
     "id": "v3a5_shaijiwanfa_help_3_txt_1",
-    "lang": "关卡星级引导图"
+    "lang": "关卡通关奖励"
   },
   {
     "id": "v3a5_shaijiwanfa_help_3_txt_2",
-    "lang": "每个关卡都拥有<#ff906a>三个星级条件</color>\n满足星级条件的情况下通关可以获得对应的星级\n星级能够<#ff906a>兑换星级进度奖励</color>"
+    "lang": "每个关卡都拥有<#ff906a>三个星级条件</color>\n满足星级条件的情况下通关可以获得对应的星级\n星级可以<#ff906a>兑换星级进度奖励</color>"
   },
   {
     "id": "v3a5_shaijiwanfa_help_4_txt_1",
-    "lang": "星级奖励引导图"
+    "lang": "通关星级奖励"
   },
   {
     "id": "v3a5_shaijiwanfa_help_4_txt_2",
-    "lang": "可以根据每组关卡的<#ff906a>4</color>个关卡的<#ff906a>星级总数领取</color>星级进度奖励"
+    "lang": "累计<#ff906a>星级总数</color>领取对应进度奖励"
   },
   {
     "id": "v3a5_shaijiwanfa_help_4_txt_3",

@@ -438,7 +438,7 @@ function Season123HeroGroupUtils.fiterFightCardData(index, list, equips, trialDi
 
 	for slot = 1, maxSlot do
 		local equipUid = equips and equips[index] and equips[index].equipUid and equips[index].equipUid[slot]
-		local equipId
+		local equipId = equips and equips[index] and equips[index].equipId and equips[index].equipId[slot]
 
 		if equipUid then
 			equipId = seasonMO:getItemIdByUid(equipUid)

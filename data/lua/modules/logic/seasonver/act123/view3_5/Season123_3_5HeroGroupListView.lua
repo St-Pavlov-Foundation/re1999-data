@@ -575,11 +575,13 @@ function Season123_3_5HeroGroupListView:_updateHeroList()
 end
 
 function Season123_3_5HeroGroupListView:_onSnapshotSaveSucc()
+	self:_checkRestrictSeasonEquip()
 	self:_updateHeroList()
 	gohelper.setActive(self._goheroarea, false)
 	gohelper.setActive(self._goheroarea, true)
 	gohelper.setActive(self._gohero, false)
 	gohelper.setActive(self._gohero, true)
+	self:_checkRestrictHero()
 end
 
 function Season123_3_5HeroGroupListView:_calcIndex(position)

@@ -118,6 +118,7 @@ function Season123_3_5EntryView:onClose()
 	TaskDispatcher.cancelTask(self._enterRetailView, self)
 	TaskDispatcher.cancelTask(self._endBlock, self)
 	TaskDispatcher.cancelTask(self._autoClickNext, self)
+	TaskDispatcher.cancelTask(self.dispatchStageShow, self)
 end
 
 function Season123_3_5EntryView:checkFirstOpenOverview()
@@ -149,6 +150,7 @@ function Season123_3_5EntryView:refreshUI()
 	self:refreshStoreCoin()
 	self:checkHasReadUnlockStory()
 	self:refreshRemainTime()
+	self:_delayDispatchStageShow()
 end
 
 function Season123_3_5EntryView:refreshCenter()
@@ -362,6 +364,8 @@ function Season123_3_5EntryView:onCloseView(viewName)
 	if viewName == ViewName.Season123_3_5RetailView then
 		self._anim:Play(Season123_3_5EntryView.Anim.Switch, 0, 0)
 	end
+
+	self:_delayDispatchStageShow()
 end
 
 function Season123_3_5EntryView:_switchStage()
@@ -406,6 +410,25 @@ function Season123_3_5EntryView:_autoClickNext()
 			self:_btnnextOnClick()
 		end
 	end
+end
+
+function Season123_3_5EntryView:_delayDispatchStageShow()
+	TaskDispatcher.cancelTask(self.dispatchStageShow, self)
+	TaskDispatcher.runDelay(self.dispatchStageShow, self, 0.2)
+end
+
+function Season123_3_5EntryView:dispatchStageShow()
+	local isTop = ViewHelper.instance:checkViewOnTheTop(self.viewName, {
+		ViewName.GuideView
+	})
+
+	if not isTop then
+		return
+	end
+
+	local curStage = Season123EntryModel.instance:getCurrentStage()
+
+	Season123Controller.instance:dispatchEvent(Season123Event.GuideStageShow, curStage)
 end
 
 Season123_3_5EntryView.Anim = {
