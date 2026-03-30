@@ -120,7 +120,7 @@ function FightCelebrityCard3_5View:onOpen()
 
 	self.curScoreText.text = curScore
 
-	local nextData = self.levelList[self.curIndex + 1] or self.levelList[#self.curIndex]
+	local nextData = self.levelList[self.curIndex + 1] or self.levelList[#self.levelList]
 
 	self.maxScoreText.text = nextData.score
 

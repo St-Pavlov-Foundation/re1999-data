@@ -190,9 +190,7 @@ function Season123_3_5CelebrityCardTipView:refreshProps()
 		local item = self:getOrCreatePropText(index)
 
 		gohelper.setActive(item.go, true)
-
-		item.txtDesc.text = propStr
-
+		self:setDescText(item.txtDesc, propStr)
 		SLFramework.UGUI.GuiHelper.SetColor(item.txtDesc, colorStr)
 		SLFramework.UGUI.GuiHelper.SetColor(item.imagePoint, colorStr)
 
@@ -221,9 +219,7 @@ function Season123_3_5CelebrityCardTipView:refreshSkills()
 		local item = self:getOrCreateSkillText(index)
 
 		gohelper.setActive(item.go, true)
-
-		item.txtDesc.text = skillStr
-
+		self:setDescText(item.txtDesc, skillStr)
 		SLFramework.UGUI.GuiHelper.SetColor(item.txtDesc, colorStr)
 		SLFramework.UGUI.GuiHelper.SetColor(item.imagePoint, colorStr)
 
@@ -238,6 +234,14 @@ function Season123_3_5CelebrityCardTipView:refreshSkills()
 	end
 
 	return isDirty
+end
+
+function Season123_3_5CelebrityCardTipView:setDescText(text, desc)
+	desc = SkillHelper.addLink(desc)
+	desc = HeroSkillModel.instance:skillDesToSpot(desc)
+	text.text = desc
+
+	SkillHelper.addHyperLinkClick(text)
 end
 
 function Season123_3_5CelebrityCardTipView:checkCreateIcon()

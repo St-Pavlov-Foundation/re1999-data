@@ -62,6 +62,32 @@ function VersionActivity3_5JumpHandleFunc:jumpTo13511(paramsList)
 	return JumpEnum.JumpResult.Success
 end
 
+function VersionActivity3_5JumpHandleFunc:jumpTo12706(paramsList)
+	local actId = paramsList[2]
+	local episodeId = paramsList[3]
+
+	table.insert(self.waitOpenViewNames, ViewName.VersionActivity3_5EnterView)
+	table.insert(self.closeViewNames, ViewName.VersionActivity2_7DungeonMapLevelView)
+
+	local enterController = VersionActivityFixedHelper.getVersionActivityEnterController(3, 5)
+	local dungeonController = VersionActivityFixedHelper.getVersionActivityDungeonController(2, 7)
+
+	if episodeId then
+		enterController.instance:openVersionActivityEnterViewIfNotOpened(function()
+			dungeonController.instance:openVersionActivityReactivityDungeonMapView(2, 7, nil, episodeId, function()
+				ViewMgr.instance:openView(ViewName.VersionActivity2_7DungeonMapLevelView, {
+					isJump = true,
+					episodeId = episodeId
+				})
+			end)
+		end, nil, actId, true)
+	else
+		enterController.instance:openVersionActivityEnterViewIfNotOpened(dungeonController.openVersionActivityReactivityDungeonMapView, dungeonController.instance, actId, true)
+	end
+
+	return JumpEnum.JumpResult.Success
+end
+
 function VersionActivity3_5JumpHandleFunc:jumpTo13504(paramsList)
 	table.insert(self.waitOpenViewNames, VersionActivityFixedHelper.getVersionActivityEnterViewName())
 	VersionActivityFixedHelper.getVersionActivityEnterController().instance:openVersionActivityEnterViewIfNotOpened(function()
