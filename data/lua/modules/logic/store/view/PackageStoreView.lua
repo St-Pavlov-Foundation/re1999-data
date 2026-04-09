@@ -16,11 +16,17 @@ function PackageStoreView:onInitView()
 end
 
 function PackageStoreView:addEvents()
-	return
+	self._drag:AddDragBeginListener(self._onDragBegin, self)
+	self._drag:AddDragEndListener(self._onDragEnd, self)
+	self._scrollprop:AddOnValueChanged(self._onDragging, self)
+	self:addClickCb(self.btnArrow, self._onClickBtnArrow, self)
 end
 
 function PackageStoreView:removeEvents()
-	return
+	self._drag:RemoveDragBeginListener()
+	self._drag:RemoveDragEndListener()
+	self._scrollprop:RemoveOnValueChanged()
+	self:removeClickCb(self.btnArrow, self._onClickBtnArrow, self)
 end
 
 function PackageStoreView:_editableInitView()
@@ -31,6 +37,32 @@ function PackageStoreView:_editableInitView()
 	self._scrollprop.horizontalNormalizedPosition = 0
 
 	self._simagebg:LoadImage(ResUrl.getStoreBottomBgIcon("bg_shangpindiban"))
+
+	self._drag = SLFramework.UGUI.UIDragListener.Get(self._scrollprop.gameObject)
+	self.goArrow = gohelper.findChild(self.viewGO, "#scroll_prop/arrow")
+	self.btnArrow = gohelper.findChildButtonWithAudio(self.viewGO, "#scroll_prop/arrow/ani/image")
+end
+
+function PackageStoreView:_onClickBtnArrow()
+	StorePackageGoodsItemListModel.instance:moveToNewGoods()
+end
+
+function PackageStoreView:_onDragBegin(param, pointerEventData)
+	self:refreshNewArrow()
+end
+
+function PackageStoreView:_onDragging()
+	self:refreshNewArrow()
+end
+
+function PackageStoreView:_onDragEnd(param, pointerEventData)
+	self:refreshNewArrow()
+end
+
+function PackageStoreView:refreshNewArrow()
+	local newIndex = StorePackageGoodsItemListModel.instance:findNewGoodsIndex()
+
+	gohelper.setActive(self.goArrow, newIndex ~= nil)
 end
 
 function PackageStoreView:_refreshTabs(selectTabId, openUpdate, scrollToRadDot)
@@ -151,16 +183,38 @@ function PackageStoreView:initCategoryItemTable(index)
 	categoryItemTable.btn = gohelper.getClickWithAudio(categoryItemTable.go, AudioEnum.UI.play_ui_bank_open)
 	categoryItemTable.tabId = 0
 
-	categoryItemTable.btn:AddClickListener(function(categoryItemTable)
-		local jumpTab = categoryItemTable.tabId
-
-		self:_refreshTabs(jumpTab)
-		StoreController.instance:statSwitchStore(jumpTab)
-	end, categoryItemTable)
+	categoryItemTable.btn:AddClickListener(self.onClickTab, {
+		target = self,
+		item = categoryItemTable
+	})
 	table.insert(self._categoryItemContainer, categoryItemTable)
 	gohelper.setActive(categoryItemTable.go_childItem, false)
 
 	return categoryItemTable
+end
+
+function PackageStoreView.onClickTab(param)
+	local target = param.target
+	local item = param.item
+
+	target:clickTab(item.tabId)
+end
+
+PackageStoreView.MaxClickLimitTime = 0.2
+
+function PackageStoreView:clickTab(jumpTab)
+	local nowTime = UnityEngine.Time.realtimeSinceStartup
+
+	if self.previousClickTime and nowTime - self.previousClickTime <= PackageStoreView.MaxClickLimitTime then
+		logNormal("拦截频繁点击事件")
+
+		return
+	end
+
+	self.previousClickTime = nowTime
+
+	self:_refreshTabs(jumpTab)
+	StoreController.instance:onSwitchTab(jumpTab)
 end
 
 function PackageStoreView:_refreshThirdTabs(categoryItemTable, index, thirdTabConfig)
@@ -185,7 +239,7 @@ function PackageStoreView:_refreshThirdTabs(categoryItemTable, index, thirdTabCo
 			local jumpTab = childItemTable.tabId
 
 			self:_refreshTabs(jumpTab, nil, true)
-			StoreController.instance:statSwitchStore(jumpTab)
+			StoreController.instance:onSwitchTab(jumpTab)
 		end, childItemTable)
 		table.insert(categoryItemTable.childItemContainer, childItemTable)
 	end
@@ -224,6 +278,7 @@ function PackageStoreView:_refreshGoods(update, scrollToRadDot)
 
 		StorePackageGoodsItemListModel.instance:setMOList(nil, goodMoList)
 		self:updateRecommendPackageList(scrollToRadDot)
+		self.viewContainer:playPackageStoreAnimation()
 	elseif update then
 		StoreModel.instance:setCurPackageStore(self.storeId)
 		StoreModel.instance:setPackageStoreRpcNum(2)
@@ -231,7 +286,7 @@ function PackageStoreView:_refreshGoods(update, scrollToRadDot)
 			self.storeId
 		})
 		ChargeRpc.instance:sendGetChargeInfoRequest()
-		self.viewContainer:playNormalStoreAnimation()
+		self.viewContainer:playPackageStoreAnimation()
 	end
 end
 

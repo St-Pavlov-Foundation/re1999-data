@@ -3742,5 +3742,89 @@
     "startTime": "",
     "endTime": "",
     "rule": 0
+  },
+  {
+    "id": 413101,
+    "category": 4,
+    "groupId": 131,
+    "order": 2,
+    "name": "九十九之必要",
+    "uiPlayerParam": "",
+    "isMask": 0,
+    "startTime": "",
+    "endTime": "",
+    "rule": 0
+  },
+  {
+    "id": 413102,
+    "category": 4,
+    "groupId": 131,
+    "order": 1,
+    "name": "天才的孤岛",
+    "uiPlayerParam": "",
+    "isMask": 0,
+    "startTime": "",
+    "endTime": "",
+    "rule": 0
+  },
+  {
+    "id": 413103,
+    "category": 4,
+    "groupId": 131,
+    "order": 3,
+    "name": "拉普拉斯发明王",
+    "uiPlayerParam": "",
+    "isMask": 0,
+    "startTime": "",
+    "endTime": "",
+    "rule": 0
+  },
+  {
+    "id": 413104,
+    "category": 4,
+    "groupId": 131,
+    "order": 5,
+    "name": "“新世界”",
+    "uiPlayerParam": "",
+    "isMask": 0,
+    "startTime": "",
+    "endTime": "",
+    "rule": 0
+  },
+  {
+    "id": 413105,
+    "category": 4,
+    "groupId": 131,
+    "order": 4,
+    "name": "王者气度",
+    "uiPlayerParam": "",
+    "isMask": 0,
+    "startTime": "",
+    "endTime": "",
+    "rule": 0
+  },
+  {
+    "id": 413106,
+    "category": 4,
+    "groupId": 131,
+    "order": 6,
+    "name": "另一个自我",
+    "uiPlayerParam": "",
+    "isMask": 0,
+    "startTime": "",
+    "endTime": "",
+    "rule": 0
+  },
+  {
+    "id": 413107,
+    "category": 4,
+    "groupId": 131,
+    "order": 7,
+    "name": "“未完成时”",
+    "uiPlayerParam": "",
+    "isMask": 0,
+    "startTime": "",
+    "endTime": "",
+    "rule": 0
   }
 ]

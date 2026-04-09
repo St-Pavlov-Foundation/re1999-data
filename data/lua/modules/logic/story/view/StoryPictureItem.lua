@@ -546,6 +546,10 @@ function StoryPictureItem:_realDestroy()
 	end
 
 	gohelper.destroy(self._picParentGo)
+
+	if self._picCo.picType == StoryEnum.PictureType.HeroFollow then
+		StoryController.instance:dispatchEvent(StoryEvent.OnFollowPictureEnd, self._picGo, tonumber(self._picCo.picture))
+	end
 end
 
 return StoryPictureItem

@@ -90,17 +90,30 @@ function FightFocusView:onInitView()
 
 	gohelper.setAsLastSibling(self.skillTipsRoot)
 
-	self.goSurvivalHealth = gohelper.findChild(self.viewGO, "fightinfocontainer/#go_survivalHealth")
+	self.goSurvivalHealth = gohelper.findChild(self.viewGO, "fightinfocontainer/layout/#go_survivalHealth")
 	self.rectSurvivalHealth = self.goSurvivalHealth:GetComponent(gohelper.Type_RectTransform)
 
 	gohelper.setActive(self.goSurvivalHealth, false)
 
-	self.txtHealth = gohelper.findChildText(self.viewGO, "fightinfocontainer/#go_survivalHealth/#txt_survivalHealth")
-	self.imageHealth = gohelper.findChildImage(self.viewGO, "fightinfocontainer/#go_survivalHealth/#image_icon")
-	self.healthClick = gohelper.findChildClickWithDefaultAudio(self.viewGO, "fightinfocontainer/#go_survivalHealth/#btn_click")
+	self.txtHealth = gohelper.findChildText(self.viewGO, "fightinfocontainer/layout/#go_survivalHealth/#txt_survivalHealth")
+	self.imageHealth = gohelper.findChildImage(self.viewGO, "fightinfocontainer/layout/#go_survivalHealth/#image_icon")
+	self.healthClick = gohelper.findChildClickWithDefaultAudio(self.viewGO, "fightinfocontainer/layout/#go_survivalHealth/#btn_click")
 	self.go_toughness = gohelper.findChild(self.viewGO, "fightinfocontainer/#go_infoView/content/info/hp/layout/go_toughness")
 	self.go_toughnessReward = gohelper.findChild(self.viewGO, "fightinfocontainer/#go_infoView/content/info/toughnessReward")
 	self.go_weakness = gohelper.findChild(self.viewGO, "fightinfocontainer/#go_infoView/content/info/weekness")
+	self.yaMiShieldRoot = gohelper.findChild(self.viewGO, "fightinfocontainer/layout/#go_shield")
+
+	gohelper.setActive(self.yaMiShieldRoot, false)
+
+	self.yaMiShieldText = gohelper.findChildText(self.viewGO, "fightinfocontainer/layout/#go_shield/#txt_shield")
+	self.yaMiShieldClick = gohelper.findChildClickWithDefaultAudio(self.viewGO, "fightinfocontainer/layout/#go_shield/#btn_click")
+	self.yaMiShieldTips = gohelper.findChild(self.viewGO, "fightinfocontainer/layout/#go_shield/#go_detailView")
+
+	gohelper.setActive(self.yaMiShieldTips, false)
+
+	self.closeYaMiShieldTipsClick = gohelper.findChildClickWithDefaultAudio(self.viewGO, "fightinfocontainer/layout/#go_shield/#go_detailView/#btn_detailClose")
+	self.tipsYaMiShieldValueText = gohelper.findChildText(self.viewGO, "fightinfocontainer/layout/#go_shield/#go_detailView/#scroll_content/viewport/content/#go_detailpassiveitem/shieldTitle/txt_title/#txt_curShield")
+	self.yaMiTipsDescText = gohelper.findChildText(self.viewGO, "fightinfocontainer/layout/#go_shield/#go_detailView/#scroll_content/viewport/content/#go_detailpassiveitem/txt_desc")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -118,6 +131,8 @@ function FightFocusView:addEvents()
 	self._btnBuffMore:AddClickListener(self._onBtnBuffMore, self)
 	self.healthClick:AddClickListener(self.onClickHealth, self)
 	self:com_registFightEvent(FightEvent.onReceiveEntityInfoReply, self._onReceiveEntityInfoReply)
+	self:com_registClick(self.yaMiShieldClick, self._onClickYaMiShield)
+	self:com_registClick(self.closeYaMiShieldTipsClick, self._onCloseYaMiShieldTips)
 end
 
 function FightFocusView:removeEvents()
@@ -415,6 +430,8 @@ function FightFocusView:sortFightEntityList(entityList)
 end
 
 function FightFocusView:onOpen()
+	FightMsgMgr.sendMsg(FightMsgId.SetYaMiShieldEffectVisible, false)
+
 	self.subEntityList = {}
 	self._attrEntityDic = {}
 	self._group = self.viewParam and self.viewParam.group or HeroGroupModel.instance:getCurGroupMO()
@@ -1248,6 +1265,7 @@ function FightFocusView:_refreshMO(entityMO)
 
 	self:refreshToughnessReward(entityMO)
 	self:refreshWeakness(entityMO, hasToughness)
+	self:refreshYaMiShield(entityMO)
 end
 
 function FightFocusView:_refreshEnemyPassiveSkill(monsterCO)
@@ -1823,7 +1841,9 @@ function FightFocusView:_onCloseView(viewName)
 end
 
 function FightFocusView:onClose()
+	FightMsgMgr.sendMsg(FightMsgId.SetYaMiShieldEffectVisible, true)
 	gohelper.setActive(self.odysseySuitRoot, false)
+	gohelper.setActive(self.yaMiShieldRoot, false)
 	TaskDispatcher.cancelTask(self._refreshUI, self)
 	self:_releaseTween()
 
@@ -2362,7 +2382,7 @@ function FightFocusView:refreshToughnessReward(entityMO)
 		UISpriteSetMgr.instance:setFightSprite(icon, toughnessConfig.iconNormal, true)
 	else
 		local hasBuff
-		local buffData = entityMO:hasBuffId(buffId)
+		local buffData = entityMO:getBuffDataByBuffId(buffId)
 
 		if buffData and buffData.actInfo then
 			for i, v in ipairs(buffData.actInfo) do
@@ -2426,6 +2446,40 @@ function FightFocusView:onWeaknessItemShow(obj, data, index)
 	local image = gohelper.onceAddComponent(obj, gohelper.Type_Image)
 
 	UISpriteSetMgr.instance:setFightSprite(image, "fight_toughness_fighticon_" .. data)
+end
+
+function FightFocusView:refreshYaMiShield(entityMO)
+	gohelper.setActive(self.yaMiShieldTips, false)
+
+	if not entityMO then
+		gohelper.setActive(self.yaMiShieldRoot, false)
+
+		return
+	end
+
+	local shieldData = FightMsgMgr.sendMsg(FightMsgId.GetYaMiShieldData, entityMO.id)
+
+	if not shieldData then
+		gohelper.setActive(self.yaMiShieldRoot, false)
+
+		return
+	end
+
+	gohelper.setActive(self.yaMiShieldRoot, true)
+
+	local shieldValue = shieldData.actInfo.param[1]
+
+	self.yaMiShieldText.text = shieldValue
+	self.tipsYaMiShieldValueText.text = shieldValue
+	self.yaMiTipsDescText.text = FightBuffGetDescHelper.getBuffDesc(shieldData.buffData)
+end
+
+function FightFocusView:_onClickYaMiShield()
+	gohelper.setActive(self.yaMiShieldTips, true)
+end
+
+function FightFocusView:_onCloseYaMiShieldTips()
+	gohelper.setActive(self.yaMiShieldTips, false)
 end
 
 return FightFocusView

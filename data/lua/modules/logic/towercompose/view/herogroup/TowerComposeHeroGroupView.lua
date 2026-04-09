@@ -498,9 +498,6 @@ end
 
 function TowerComposeHeroGroupView:onEquipChange()
 	local themeMo = TowerComposeModel.instance:getThemeMo(self.themeId)
-
-	logError("aaaa")
-
 	local curBossMo = themeMo:getCurBossMo()
 
 	if curBossMo.lock then

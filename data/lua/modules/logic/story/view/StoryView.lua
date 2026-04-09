@@ -254,6 +254,8 @@ function StoryView:_initView()
 	self._goimg1 = gohelper.findChild(bgGo, "#go_bottomitem/#go_img1")
 	self._govideo1 = gohelper.findChild(bgGo, "#go_bottomitem/#go_video1")
 	self._goeff1 = gohelper.findChild(bgGo, "#go_bottomitem/#go_eff1")
+	self._goBottomBgEffRoot = gohelper.findChild(bgGo, "#go_bottombg")
+	self._goUpBgEffRoot = gohelper.findChild(bgGo, "#go_upbg")
 
 	gohelper.setActive(self._gocontentroot, false)
 	self:_initItems()
@@ -310,6 +312,7 @@ function StoryView:_storyFinished(isSkip)
 	TaskDispatcher.cancelTask(self._startShake, self)
 	self._dialogItem:storyFinished()
 	StoryModel.instance:enableClick(false)
+	StoryModel.instance:setInScreenSplitMode(false)
 
 	if self._dialogItem then
 		self._dialogItem:stopConAudio()
@@ -1152,6 +1155,18 @@ function StoryView:_buildEffect(name, eff)
 	elseif eff.layer < 10 then
 		effGo = self._goeff3
 		order = 2000
+	elseif eff.layer == 11 then
+		effGo = self._goeff1
+		order = 4
+	elseif eff.layer == 12 then
+		effGo = self._goeff1
+		order = 4
+	elseif eff.layer == 13 then
+		effGo = self._goeff2
+		order = 1000
+	elseif eff.layer == 14 then
+		effGo = self._goeff2
+		order = 1000
 	else
 		if not self._goeff4 then
 			local frontGo = ViewMgr.instance:getContainer(ViewName.StoryFrontView).viewGO

@@ -87,7 +87,7 @@ function ActivityCategoryItem:_refreshItem()
 
 		if actId == ActivityEnum.Activity.DreamShow then
 			RedDotController.instance:addRedDot(self._goreddot, redDotId, nil, self.checkActivityShowFirstEnter, self)
-		elseif actId == DoubleDropModel.instance:getActId() then
+		elseif actId == DoubleDropModel.instance:getActId() or typeId == ActivityEnum.ActivityTypeID.Act217 and Activity217Config.instance:getSubTypeCO(actId) then
 			RedDotController.instance:addRedDot(self._goreddot, redDotId, nil, self.checkActivityShowFirstEnter, self)
 
 			if self._selected and redDotId > 0 then

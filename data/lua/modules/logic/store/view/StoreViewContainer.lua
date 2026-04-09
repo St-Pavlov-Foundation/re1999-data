@@ -87,13 +87,13 @@ function StoreViewContainer:buildTabViews(tabContainerId)
 		packageScrollParam.prefabType = ScrollEnum.ScrollPrefabFromRes
 		packageScrollParam.prefabUrl = self._viewSetting.otherRes[4]
 		packageScrollParam.cellClass = PackageStoreGoodsItem
-		packageScrollParam.scrollDir = ScrollEnum.ScrollDirH
-		packageScrollParam.lineCount = 1
-		packageScrollParam.cellWidth = 340
-		packageScrollParam.cellHeight = 770
-		packageScrollParam.cellSpaceH = 29.5
+		packageScrollParam.scrollDir = ScrollEnum.ScrollDirV
+		packageScrollParam.lineCount = 4
+		packageScrollParam.cellWidth = 366
+		packageScrollParam.cellHeight = 396
+		packageScrollParam.cellSpaceH = 0
 		packageScrollParam.cellSpaceV = 0
-		packageScrollParam.startSpace = 8
+		packageScrollParam.startSpace = 10
 
 		local roomScrollParam = TreeScrollParam.New()
 
@@ -127,13 +127,12 @@ function StoreViewContainer:buildTabViews(tabContainerId)
 		end
 
 		local packageAnimationDelayTimes = {}
-		local metaTab = {}
 
-		function metaTab.__index(t, key)
-			return (key - 1) * 0.07
+		for i = 1, 12 do
+			local delayTime = math.floor((i - 1) / 4) * 0.07
+
+			packageAnimationDelayTimes[i] = delayTime
 		end
-
-		setmetatable(packageAnimationDelayTimes, metaTab)
 
 		self._ScrollViewNormalStore = LuaListScrollViewWithAnimator.New(StoreNormalGoodsItemListModel.instance, normalScrollParam, cardAnimationDelayTimes)
 		self._ScrollViewChargeStore = LuaListScrollViewWithAnimator.New(StoreChargeGoodsItemListModel.instance, chargeScrollParam, ChargeAnimationDelayTimes)
@@ -141,6 +140,7 @@ function StoreViewContainer:buildTabViews(tabContainerId)
 		self._ScrollViewSkinStore = LuaListScrollViewWithAnimator.New(StoreClothesGoodsItemListModel.instance, clothesScrollParam)
 		self._ScrollViewRoomStore = LuaTreeScrollView.New(StoreRoomGoodsItemListModel.instance, roomScrollParam)
 		self._RecommendStoreView = RecommendStoreView.New()
+		self._monthAndSeasonCardView = MonthAndSeasonCardView.New()
 
 		return {
 			MultiView.New({
@@ -172,6 +172,10 @@ function StoreViewContainer:buildTabViews(tabContainerId)
 			}),
 			MultiView.New({
 				DecorateStoreView.New()
+			}),
+			MultiView.New({
+				self._monthAndSeasonCardView,
+				TabViewGroup.New(7, "subViewContainer/#go_subViewParent")
 			})
 		}
 	elseif tabContainerId == 4 then
@@ -248,6 +252,11 @@ function StoreViewContainer:buildTabViews(tabContainerId)
 				StoreSummonView.New(),
 				self._ScrollViewSummonStore
 			})
+		}
+	elseif tabContainerId == 7 then
+		return {
+			MonthCardSubView.New(),
+			SeasonCardSubView.New()
 		}
 	end
 end
@@ -327,6 +336,12 @@ function StoreViewContainer:playChargeStoreAnimation()
 	self._ScrollViewChargeStore:playOpenAnimation()
 end
 
+function StoreViewContainer:playPackageStoreAnimation()
+	if self._ScrollViewPackageStore ~= nil then
+		self._ScrollViewPackageStore:playOpenAnimation()
+	end
+end
+
 function StoreViewContainer:playRoomtoreAnimation()
 	self._ScrollViewRoomStore:playOpenAnimation()
 end
@@ -400,6 +415,14 @@ end
 function StoreViewContainer:getRecommendTabIndex(tabId)
 	if self._RecommendStoreView then
 		return self._RecommendStoreView:getIndexByTabId(tabId)
+	end
+
+	return 1
+end
+
+function StoreViewContainer:getMonthAndSeasonTabIndex(tabId)
+	if self._monthAndSeasonCardView then
+		return self._monthAndSeasonCardView:getIndexByTabId(tabId)
 	end
 
 	return 1

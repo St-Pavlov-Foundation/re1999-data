@@ -24440,5 +24440,170 @@
     "selectIds": "",
     "speakerType": 0,
     "nextStepId": "0"
+  },
+  {
+    "dialogId": 1361011,
+    "stepId": 1,
+    "speaker": "",
+    "content": "看来拉普拉斯手提箱分部的设立可以提上日程了。3分钟内，我已经碰见了7位研究员。",
+    "critteremoji": 0,
+    "relateContent": "",
+    "selectIds": "",
+    "speakerType": 0,
+    "nextStepId": ""
+  },
+  {
+    "dialogId": 1361011,
+    "stepId": 2,
+    "speaker": "",
+    "content": "但我并不是来督促他们回实验室的。相反，我想旁观他们的行动，并据此探寻一些管理方面的规律。",
+    "critteremoji": 0,
+    "relateContent": "",
+    "selectIds": "136101101#3|136101111#5",
+    "speakerType": 0,
+    "nextStepId": ""
+  },
+  {
+    "dialogId": 1361011,
+    "stepId": 3,
+    "speaker": "",
+    "content": "多谢，请你着重谈谈处理同事关系的技巧。",
+    "critteremoji": 0,
+    "relateContent": "",
+    "selectIds": "",
+    "speakerType": 0,
+    "nextStepId": ""
+  },
+  {
+    "dialogId": 1361011,
+    "stepId": 4,
+    "speaker": "",
+    "content": "这里出格的人和事不比科算中心要少，但总能保持井然有序。你一定有独特的管理诀窍。",
+    "critteremoji": 0,
+    "relateContent": "",
+    "selectIds": "",
+    "speakerType": 0,
+    "nextStepId": "0"
+  },
+  {
+    "dialogId": 1361011,
+    "stepId": 5,
+    "speaker": "",
+    "content": "我已经造访了她的休憩所。",
+    "critteremoji": 0,
+    "relateContent": "",
+    "selectIds": "",
+    "speakerType": 0,
+    "nextStepId": ""
+  },
+  {
+    "dialogId": 1361011,
+    "stepId": 6,
+    "speaker": "",
+    "content": "露西女士的确向我分享了许多行政工作的处理经验，但有一些对我并不适用。",
+    "critteremoji": 0,
+    "relateContent": "",
+    "selectIds": "",
+    "speakerType": 0,
+    "nextStepId": ""
+  },
+  {
+    "dialogId": 1361011,
+    "stepId": 7,
+    "speaker": "",
+    "content": "例如，110V交流电可以提高批阅申请表的效率，而30W“慢充”有利于撰写一份冷静而克制的工作报告……",
+    "critteremoji": 0,
+    "relateContent": "",
+    "selectIds": "",
+    "speakerType": 0,
+    "nextStepId": "0"
+  },
+  {
+    "dialogId": 1361012,
+    "stepId": 1,
+    "speaker": "",
+    "content": "司辰，请过来看看这个。",
+    "critteremoji": 0,
+    "relateContent": "",
+    "selectIds": "",
+    "speakerType": 0,
+    "nextStepId": ""
+  },
+  {
+    "dialogId": 1361012,
+    "stepId": 2,
+    "speaker": "",
+    "content": "科算中心最近将要销毁一些实验副产物，也许有你会感兴趣的东西。",
+    "critteremoji": 0,
+    "relateContent": "",
+    "selectIds": "136101201#3|136101211#6",
+    "speakerType": 0,
+    "nextStepId": ""
+  },
+  {
+    "dialogId": 1361012,
+    "stepId": 3,
+    "speaker": "",
+    "content": "兔毛手袋尝试为苦目糖添加可乐风味，但这批次搞错了加工温度。",
+    "critteremoji": 0,
+    "relateContent": "",
+    "selectIds": "",
+    "speakerType": 0,
+    "nextStepId": ""
+  },
+  {
+    "dialogId": 1361012,
+    "stepId": 4,
+    "speaker": "",
+    "content": "如果你碰巧喜欢烧烤味的苦目糖，尽管拿去。",
+    "critteremoji": 0,
+    "relateContent": "",
+    "selectIds": "",
+    "speakerType": 0,
+    "nextStepId": ""
+  },
+  {
+    "dialogId": 1361012,
+    "stepId": 5,
+    "speaker": "",
+    "content": "不过，有些人会说苦目糖不能代替必要的休息。希望你也将这一观点纳入考量，司辰。",
+    "critteremoji": 0,
+    "relateContent": "",
+    "selectIds": "",
+    "speakerType": 0,
+    "nextStepId": "0"
+  },
+  {
+    "dialogId": 1361012,
+    "stepId": 6,
+    "speaker": "",
+    "content": "哈，看来雨滴在哪儿都很紧俏，司辰的手头也不例外。",
+    "critteremoji": 0,
+    "relateContent": "",
+    "selectIds": "",
+    "speakerType": 0,
+    "nextStepId": ""
+  },
+  {
+    "dialogId": 1361012,
+    "stepId": 7,
+    "speaker": "",
+    "content": "很可惜，它们现在只是普通的雨水。经过充分的萃取，里面的非对称核素R已经消耗殆尽。",
+    "critteremoji": 0,
+    "relateContent": "",
+    "selectIds": "",
+    "speakerType": 0,
+    "nextStepId": ""
+  },
+  {
+    "dialogId": 1361012,
+    "stepId": 8,
+    "speaker": "",
+    "content": "如果下次还有余量，我会替你留意的。",
+    "critteremoji": 0,
+    "relateContent": "",
+    "selectIds": "",
+    "speakerType": 0,
+    "nextStepId": "0"
   }
 ]

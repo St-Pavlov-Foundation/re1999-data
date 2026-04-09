@@ -108,6 +108,7 @@ ActivityEnum.Activity = {
 	V2a2_SummonCustomPickNew = 12235,
 	GoldenMilletPresent = 11615,
 	RoleSignViewPart1_1_9 = 11913,
+	V3a6_Abyss = 13601,
 	V2a8_WarmUp = 12875,
 	RoleSignViewPart2_1_9 = 11914,
 	DecalogPresent = 11613,
@@ -123,6 +124,7 @@ ActivityEnum.Activity = {
 	Activity1_9WarmUp = 11923,
 	V2a2_Calendar_Decoration = 12221,
 	V3a1_WarmUp = 13124,
+	V3a6_DoubleDrop = 13602,
 	SummerSignPart2_1_2 = 11212,
 	V2a7_TowerGift = 12720,
 	DailyAllowance = 11423,
@@ -252,6 +254,7 @@ ActivityEnum.VersionActivityIdDict = {
 	Activity1_6 = 11601,
 	Activity2_3 = 12301,
 	Activity2_4 = 12401,
+	Activity3_6 = 13603,
 	Activity_Assassin_1 = 130501,
 	Activity1_51 = 11501,
 	Activity1_1 = 11101,
@@ -263,7 +266,7 @@ ActivityEnum.VersionActivityIdDict = {
 ActivityEnum.VersionActivityIdList = {
 	ActivityEnum.VersionActivityIdDict.Activity_Assassin_1,
 	ActivityEnum.VersionActivityIdDict.Activity_Assassin_2,
-	ActivityEnum.VersionActivityIdDict.Activity3_5
+	ActivityEnum.VersionActivityIdDict.Activity3_6
 }
 ActivityEnum.MainIcon = {
 	[ActivityEnum.VersionActivityIdDict.Activity1_1] = "rk1111",
@@ -293,7 +296,8 @@ ActivityEnum.MainIcon = {
 	[ActivityEnum.VersionActivityIdDict.Activity3_2] = "rk_3_2",
 	[ActivityEnum.VersionActivityIdDict.Activity3_3] = "rk_3_3",
 	[ActivityEnum.VersionActivityIdDict.Activity3_4] = "rk_3_4",
-	[ActivityEnum.VersionActivityIdDict.Activity3_5] = "rk_3_5"
+	[ActivityEnum.VersionActivityIdDict.Activity3_5] = "rk_3_5",
+	[ActivityEnum.VersionActivityIdDict.Activity3_6] = "rk_3_6"
 }
 ActivityEnum.ShowVersionActivityEpisode = 10103
 ActivityEnum.MainViewActivityState = {
@@ -323,6 +327,16 @@ ActivityEnum.RetroType = {
 }
 ActivityEnum.ActBtnPrefix = {
 	mainView = "act_"
+}
+ActivityEnum.ConstId = {
+	BpSpActId = 5,
+	BpOperAct = 12,
+	ActivityCollect = 13
+}
+ActivityEnum.Act101RewardState = {
+	Received = 2,
+	Available = 1,
+	None = 0
 }
 
 return ActivityEnum

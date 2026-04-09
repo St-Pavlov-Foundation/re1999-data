@@ -72,7 +72,13 @@ function TowerComposeHeroGroupModel:initSaveThemePlaneBuffId()
 
 	for planeId, assistData in pairs(self.themePlaneAssitDataMap[themeId]) do
 		if assistData and next(assistData) and assistData.heroId > 0 then
-			self:setThemePlaneAssistType(themeId, assistData.heroId, assistData.assistType)
+			if towerEpisodeConfig.plane == 0 and planeId == 0 then
+				self:setThemePlaneAssistType(themeId, assistData.heroId, assistData.assistType)
+
+				break
+			elseif towerEpisodeConfig.plane > 0 and planeId > 0 then
+				self:setThemePlaneAssistType(themeId, assistData.heroId, assistData.assistType)
+			end
 		end
 	end
 end

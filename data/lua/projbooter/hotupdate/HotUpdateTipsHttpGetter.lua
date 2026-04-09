@@ -159,6 +159,10 @@ function HotUpdateTipsHttpGetter:_getUrl()
 		osType = 0
 	end
 
+	if GameConfig.Instance.IsMuMu then
+		osType = 5
+	end
+
 	local defaultLang = GameConfig:GetDefaultLangType()
 	local serverType = GameChannelConfig.getServerType()
 	local versionName = UnityEngine.Application.version

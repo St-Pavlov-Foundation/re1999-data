@@ -1787,6 +1787,22 @@ function ResUrl.getLorentzIcon(resName)
 	return string.format("singlebg/v3a5_lorentz_singlebg/puzzle/%s.png", resName)
 end
 
+function ResUrl.getV3a6YaMiHeroSingleBg(resName)
+	return string.format("singlebg/v3a6_dormitorymode_singlebg/chess/%s.png", resName)
+end
+
+function ResUrl.getV3a6YaMiCollectionSingleBg(resName)
+	return string.format("singlebg/v3a6_dormitorymode_singlebg/collection/%s.png", resName)
+end
+
+function ResUrl.getV3a6YaMiHeroHandbookSingleBg(resName)
+	return string.format("singlebg/chess/%s.png", resName)
+end
+
+function ResUrl.getV3a6YaMiItemSingleBg(resName)
+	return string.format("singlebg/survival_singlebg/collection/%s.png", resName)
+end
+
 function ResUrl.getUISpinePrefabBySkin(skinCO)
 	if not skinCO then
 		return ""

@@ -36,6 +36,7 @@ JumpEnum.JumpView = {
 	MainUISwitchInfoViewGiftSet = 203,
 	StoreView = 1,
 	DoubleDrop = 10013444,
+	Abyss = 229,
 	StoreSupplementMonthCardUseView = 56,
 	StoryHandBook = 173,
 	DungeonViewWithEpisode = 4,

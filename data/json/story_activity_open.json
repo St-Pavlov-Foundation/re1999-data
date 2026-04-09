@@ -4766,5 +4766,117 @@
     "titleEn": "A New Life for Us",
     "labelRes": "8",
     "storyBg": ""
+  },
+  {
+    "chapter": 36,
+    "part": 1,
+    "title": "悚然的绿",
+    "titleEn": "That Uncanny Green",
+    "labelRes": "1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 36,
+    "part": 2,
+    "title": "回旋",
+    "titleEn": "The Spiral",
+    "labelRes": "2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 36,
+    "part": 3,
+    "title": "答案在盒底",
+    "titleEn": "The Answer at the Bottom",
+    "labelRes": "3",
+    "storyBg": ""
+  },
+  {
+    "chapter": 36,
+    "part": 4,
+    "title": "便携式真实",
+    "titleEn": "Portable Reality",
+    "labelRes": "4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 36,
+    "part": 5,
+    "title": "过路人",
+    "titleEn": "Passersby",
+    "labelRes": "5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 36,
+    "part": 6,
+    "title": "万物如谜",
+    "titleEn": "All Is but a Riddle",
+    "labelRes": "6",
+    "storyBg": ""
+  },
+  {
+    "chapter": 36,
+    "part": 7,
+    "title": "记忆流体",
+    "titleEn": "Flowing Memories",
+    "labelRes": "7",
+    "storyBg": ""
+  },
+  {
+    "chapter": 36,
+    "part": 8,
+    "title": "夜间攀登者",
+    "titleEn": "Night Climber",
+    "labelRes": "8",
+    "storyBg": ""
+  },
+  {
+    "chapter": 36,
+    "part": 9,
+    "title": "故事在盘旋",
+    "titleEn": "The Looping Pangram",
+    "labelRes": "9",
+    "storyBg": ""
+  },
+  {
+    "chapter": 36,
+    "part": 10,
+    "title": "苦涩之眼",
+    "titleEn": "That Familiar Bitterness",
+    "labelRes": "10",
+    "storyBg": ""
+  },
+  {
+    "chapter": 36,
+    "part": 11,
+    "title": "芝麻开门",
+    "titleEn": "Open Sesame",
+    "labelRes": "11",
+    "storyBg": ""
+  },
+  {
+    "chapter": 36,
+    "part": 12,
+    "title": "无际的绿",
+    "titleEn": "That Endless Green",
+    "labelRes": "12",
+    "storyBg": ""
+  },
+  {
+    "chapter": 36,
+    "part": 13,
+    "title": "同路人",
+    "titleEn": "Fellow Travelers",
+    "labelRes": "13",
+    "storyBg": ""
+  },
+  {
+    "chapter": 36,
+    "part": 14,
+    "title": "明日再会",
+    "titleEn": "Don't Look Back In Anger",
+    "labelRes": "14",
+    "storyBg": ""
   }
 ]

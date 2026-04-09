@@ -3586,5 +3586,89 @@
     "de": "",
     "fr": "",
     "thai": ""
+  },
+  {
+    "id": 3601,
+    "fontType": 1,
+    "zh": "<size=50><color=#D2D2D2><i>敲开它。</i></color></size>",
+    "tw": "",
+    "en": "<size=50><color=#D2D2D2><i>敲开它。</i></color></size>",
+    "kr": "",
+    "jp": "",
+    "de": "",
+    "fr": "",
+    "thai": ""
+  },
+  {
+    "id": 3602,
+    "fontType": 1,
+    "zh": "<size=50><color=#D2D2D2><i>这是唯一的路。敲开它。</i></color></size>",
+    "tw": "",
+    "en": "<size=50><color=#D2D2D2><i>这是唯一的路。敲开它。</i></color></size>",
+    "kr": "",
+    "jp": "",
+    "de": "",
+    "fr": "",
+    "thai": ""
+  },
+  {
+    "id": 3603,
+    "fontType": 1,
+    "zh": "<size=50><color=#D2D2D2><i>证明你的资格。敲开它。</i></color></size>",
+    "tw": "",
+    "en": "<size=50><color=#D2D2D2><i>证明你的资格。敲开它。</i></color></size>",
+    "kr": "",
+    "jp": "",
+    "de": "",
+    "fr": "",
+    "thai": ""
+  },
+  {
+    "id": 3604,
+    "fontType": 1,
+    "zh": "<size=60><color=#D2D2D2><i>为何要将你的一切\n交由某个存在决定？</i></color></size>",
+    "tw": "",
+    "en": "<size=60><color=#D2D2D2><i>为何要将你的一切\n交由某个存在决定？</i></color></size>",
+    "kr": "",
+    "jp": "",
+    "de": "",
+    "fr": "",
+    "thai": ""
+  },
+  {
+    "id": 3605,
+    "fontType": 1,
+    "zh": "<size=50><color=#BCBCBC><i>研究员对门外的呼喊\n充耳不闻。</i></color></size>",
+    "tw": "",
+    "en": "<size=50><color=#BCBCBC><i>研究员对门外的呼喊\n充耳不闻。</i></color></size>",
+    "kr": "",
+    "jp": "",
+    "de": "",
+    "fr": "",
+    "thai": ""
+  },
+  {
+    "id": 3606,
+    "fontType": 1,
+    "zh": "<size=50><color=#D2D2D2><i>这只是又一群坚信\n能够以科学解读世间一切的人。</i></color></size>",
+    "tw": "",
+    "en": "<size=50><color=#D2D2D2><i>这只是又一群坚信\n能够以科学解读世间一切的人。</i></color></size>",
+    "kr": "",
+    "jp": "",
+    "de": "",
+    "fr": "",
+    "thai": ""
+  },
+  {
+    "id": 3607,
+    "fontType": 1,
+    "zh": "<size=50><color=#D2D2D2><i>一群自认为能够成功的……\n探求者。</i></color></size>",
+    "tw": "",
+    "en": "<size=50><color=#D2D2D2><i>一群自认为能够成功的……\n探求者。</i></color></size>",
+    "kr": "",
+    "jp": "",
+    "de": "",
+    "fr": "",
+    "thai": ""
   }
 ]

@@ -15,6 +15,11 @@ function SummonCharacterProbUpPreloadConfig.getCharacterItemCountByName(name)
 	return SummonCharacterProbUpPreloadConfig.characterItemCounts[name] or 1
 end
 
+SummonCharacterProbUpPreloadConfig.preloadLists.SummonCharacterProbUpVer363 = {
+	"singlebg/summon/heroversion_3_6/v3a6_yami/v3a6_yami_role.png",
+	"singlebg/summon/heroversion_3_6/v3a6_yami/v3a6_yami_mask.png",
+	"singlebg/summon/heroversion_3_6/v3a6_yami/v3a6_yami_fullbg.png"
+}
 SummonCharacterProbUpPreloadConfig.preloadLists.SummonCharacterProbUpVer339 = {
 	"singlebg/summon/heroversion_3_4/v3a4_cengheguang/v3a4_cengheguang_dec02.png",
 	"singlebg/summon/heroversion_3_4/v3a4_cengheguang/v3a4_cengheguang_role1.png",

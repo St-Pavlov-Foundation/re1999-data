@@ -251,10 +251,11 @@ function StoryLogItem:onUpdateMO(mo, mixType)
 		gohelper.setActive(self._gonormal, true)
 		gohelper.setActive(self._gobranch, false)
 
-		local co = StoryStepModel.instance:getStepListById(mo.info).conversation
+		local stepCo = StoryStepModel.instance:getStepListById(mo.info)
+		local co = stepCo.conversation
 		local txt = string.find(co.diaTexts[GameLanguageMgr.instance:getLanguageTypeStoryIndex()], "<voffset") and co.diaTexts[GameLanguageMgr.instance:getLanguageTypeStoryIndex()] or GameUtil.filterRichText(co.diaTexts[GameLanguageMgr.instance:getLanguageTypeStoryIndex()])
 
-		if co.effType == StoryEnum.ConversationEffectType.Magic then
+		if StoryModel.instance:isMagicType(stepCo) then
 			txt = StoryConfig.instance:replaceStoryMagicText(txt)
 		end
 

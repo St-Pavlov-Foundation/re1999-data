@@ -65,7 +65,7 @@ function StoreView:_editableInitView()
 			local jumpTab = tabTable.tabId
 
 			self:_refreshTabs(jumpTab)
-			StoreController.instance:statSwitchStore(jumpTab)
+			StoreController.instance:onSwitchTab(jumpTab)
 		end, tabTable)
 		table.insert(self._tabsContainer, tabTable)
 	end
@@ -89,7 +89,7 @@ function StoreView:_editableInitView()
 		local jumpTab = tabTable.tabId
 
 		self:_refreshTabs(jumpTab)
-		StoreController.instance:statSwitchStore(jumpTab)
+		StoreController.instance:onSwitchTab(jumpTab)
 	end, tabTable)
 
 	self._tabTableSP1 = tabTable
@@ -225,18 +225,12 @@ function StoreView:refreshTimeDeadline(tabConfig, tabItem)
 		end
 	elseif StoreEnum.StoreId.Skin == tabConfig.storeId then
 		local deadlineTimeSec = 0
-		local skinTickets = ItemModel.instance:getItemsBySubType(ItemEnum.SubType.SkinTicket)
 
-		if skinTickets[1] then
-			local itemCo = ItemModel.instance:getItemConfigAndIcon(MaterialEnum.MaterialType.Item, skinTickets[1].id)
+		if not needShowReddot then
+			deadlineTimeSec = StoreHelper.getRemainExpireTimeByStoreId(tabConfig.storeId)
 
-			if itemCo and not string.nilorempty(itemCo.expireTime) then
-				local ts = TimeUtil.stringToTimestamp(itemCo.expireTime)
-				local offsetSecond = math.floor(ts - ServerTime.now())
-
-				if offsetSecond >= 0 and offsetSecond <= 259200 then
-					deadlineTimeSec = offsetSecond
-				end
+			if deadlineTimeSec > TimeUtil.OneWeekSecond then
+				deadlineTimeSec = 0
 			end
 		end
 
@@ -266,10 +260,10 @@ function StoreView:refreshTimeDeadline(tabConfig, tabItem)
 end
 
 function StoreView:onOpen()
-	local jumpTab = self.viewParam and self.viewParam.jumpTab or StoreEnum.DefaultTabId
+	local jumpTab = self.viewParam and self.viewParam.jumpTab or self:_getDefaultTabId()
 
 	if not StoreModel.instance:isTabOpen(jumpTab) then
-		jumpTab = StoreEnum.DefaultTabId
+		jumpTab = self:_getDefaultTabId()
 	end
 
 	self:_refreshTabs(jumpTab, self.viewParam.jumpGoodsId)
@@ -278,9 +272,10 @@ function StoreView:onOpen()
 	self:addEventCb(RedDotController.instance, RedDotEvent.RefreshClientCharacterDot, self._onRefreshRedDot, self)
 	self:addEventCb(StoreController.instance, StoreEvent.StoreInfoChanged, self._onStoreInfoChanged, self)
 	self:addEventCb(StoreController.instance, StoreEvent.UpdatePackageStore, self._onRefreshRedDot, self)
+	self:addEventCb(SignInController.instance, SignInEvent.OnReceiveSupplementMonthCardReply, self.refreshMainTabRedDot, self)
 	self:addEventCb(StoreController.instance, StoreEvent.PlayShowStoreAnim, self._onPlayStoreInAnim, self)
 	self:addEventCb(StoreController.instance, StoreEvent.PlayHideStoreAnim, self._onPlayStoreOutAnim, self)
-	StoreController.instance:statSwitchStore(jumpTab)
+	StoreController.instance:onSwitchTab(jumpTab)
 	self:addEventCb(self.viewContainer, StoreEvent.SkinGoodsItemChanged, self._onSkinGoodsItemSibling, self)
 end
 
@@ -321,7 +316,13 @@ function StoreView:_onRefreshRedDot()
 	end
 
 	self:checkCountdownStatus()
-	gohelper.setActive(self._tabTableSP1.reddot, StoreModel.instance:isTabMainRedDotShow(self._tabTableSP1.tabId))
+	self:refreshMainTabRedDot()
+end
+
+function StoreView:refreshMainTabRedDot()
+	local showRedDot = StoreModel.instance:isTabMainRedDotShow(self._tabTableSP1.tabId) or SignInModel.instance:getCanSupplementMonthCardDays() > 0
+
+	gohelper.setActive(self._tabTableSP1.reddot, showRedDot)
 end
 
 function StoreView:_OnDailyRefresh()
@@ -376,6 +377,7 @@ function StoreView:onClose()
 	self:removeEventCb(RedDotController.instance, RedDotEvent.RefreshClientCharacterDot, self._onRefreshRedDot, self)
 	self:removeEventCb(StoreController.instance, StoreEvent.StoreInfoChanged, self._onStoreInfoChanged, self)
 	self:removeEventCb(StoreController.instance, StoreEvent.UpdatePackageStore, self._onRefreshRedDot, self)
+	self:removeEventCb(SignInController.instance, SignInEvent.OnReceiveSupplementMonthCardReply, self.refreshMainTabRedDot, self)
 	self:removeEventCb(StoreController.instance, StoreEvent.PlayShowStoreAnim, self._onPlayStoreInAnim, self)
 	self:removeEventCb(StoreController.instance, StoreEvent.PlayHideStoreAnim, self._onPlayStoreOutAnim, self)
 	StoreController.instance:statExitStore()
@@ -388,13 +390,22 @@ function StoreView:onClose()
 end
 
 function StoreView:onUpdateParam()
-	local jumpTab = self.viewParam and self.viewParam.jumpTab or StoreEnum.DefaultTabId
+	local jumpTab = self.viewParam and self.viewParam.jumpTab or self:_getDefaultTabId()
 
 	if not StoreModel.instance:isTabOpen(jumpTab) then
-		jumpTab = StoreEnum.DefaultTabId
+		jumpTab = self:_getDefaultTabId()
 	end
 
 	self:_refreshTabs(jumpTab, self.viewParam.jumpGoodsId)
+end
+
+function StoreView:_getDefaultTabId()
+	local tabConfigList = StoreModel.instance:getFirstTabs(true, true)
+	local tabId = StoreHelper.getDefaultSelectFirstStoreTab(tabConfigList)
+
+	logNormal("商店默认页签选择 tabId: " .. tostring(tabId))
+
+	return tabId
 end
 
 function StoreView:onDestroyView()

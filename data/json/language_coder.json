@@ -2549,7 +2549,7 @@
   },
   {
     "id": "storemonthcard_tips",
-    "lang": "*每日可获得90纯雨滴，60活性\n（发放30日）"
+    "lang": "*每日可获得<sprite=3>×90,<sprite=4>×1(发放30日)"
   },
   {
     "id": "activityweekwalkdeepview_empty",
@@ -8738,5 +8738,177 @@
   {
     "id": "fight_bai_fu_zhang_wheel_7",
     "lang": "敌方"
+  },
+  {
+    "id": "v3a6_abyss_stage_round_desc",
+    "lang": "通关：▩1%s回合"
+  },
+  {
+    "id": "v3a6_abyss_result_round_desc",
+    "lang": "▩1%s回合通关"
+  },
+  {
+    "id": "v3a6_abyss_reward_desc",
+    "lang": "可获得▩1%s"
+  },
+  {
+    "id": "rouge2_mapdiceview_redicetips",
+    "lang": "检定失败，是否消耗▩1%s<sprite=0>重新检定?"
+  },
+  {
+    "id": "rouge2_mapdiceview_startredice",
+    "lang": "确认重投"
+  },
+  {
+    "id": "rouge2_mapdiceview_abortredice",
+    "lang": "放弃"
+  },
+  {
+    "id": "rouge2_mapdiceview_startredicetips",
+    "lang": "<sprite=0>持有：▩1%s"
+  },
+  {
+    "id": "rouge2_itemrefreshview_refreshcost",
+    "lang": "刷新消耗：▩1%s"
+  },
+  {
+    "id": "v3a6_abyss_lock_desc_cn",
+    "lang": "脑疲劳"
+  },
+  {
+    "id": "v3a6_doubledrop_txt_title",
+    "lang": "▩1%s关卡酬劳+<color=#fb9133>▩2%s%</color>"
+  },
+  {
+    "id": "rouge2_fightrecord_confirm",
+    "lang": "确认"
+  },
+  {
+    "id": "rouge2_fightrecord_abort",
+    "lang": "放弃"
+  },
+  {
+    "id": "handbookskin_festival_dushu",
+    "lang": "世界读书日"
+  },
+  {
+    "id": "v3a6_yami_selectproduct_tip1",
+    "lang": "最多可选▩1%s款材料"
+  },
+  {
+    "id": "v3a6_yami_selectproduct_tip2",
+    "lang": "预计产物：▩1%s"
+  },
+  {
+    "id": "v3a6_yami_selectproduct_rewardnum",
+    "lang": "▩1%s<color=#fb9133>（-▩2%s）</color>"
+  },
+  {
+    "id": "v3a6_yami_percent",
+    "lang": "▩1%s%"
+  },
+  {
+    "id": "v3a6_yami_add_value",
+    "lang": "+▩1%s"
+  },
+  {
+    "id": "v3a6_yami_recommend_hero_attr",
+    "lang": "本次研究<sprite=▩1%s>较为重要"
+  },
+  {
+    "id": "v3a6_yami_result_rank4",
+    "lang": "下面宣布评定结果，<color=#e99b56>第4名</color>：来自▩1%s的发明，【▩2%s】！"
+  },
+  {
+    "id": "v3a6_yami_result_rank3",
+    "lang": "接下来，<color=#e99b56>第3名</color>：来自▩1%s的发明，【▩2%s】！"
+  },
+  {
+    "id": "v3a6_yami_result_rank2",
+    "lang": "<color=#e99b56>第2名</color>：来自▩1%s的发明，【▩2%s】！"
+  },
+  {
+    "id": "v3a6_yami_result_rank1",
+    "lang": "本次评定的<color=#e99b56>第1名</color>：来自▩1%s的发明，【▩2%s】！"
+  },
+  {
+    "id": "v3a6_yami_result_rank",
+    "lang": "经过多轮评定，本次研究的最终结果为：<color=#e99b56>第▩1%s名</color>，发明物【▩2%s】，请再接再厉！"
+  },
+  {
+    "id": "v3a6_yami_material_unlock",
+    "lang": "评级▩1%s解锁"
+  },
+  {
+    "id": "v3a6_yami_attr1",
+    "lang": "实用性"
+  },
+  {
+    "id": "v3a6_yami_attr2",
+    "lang": "稳定性"
+  },
+  {
+    "id": "v3a6_yami_attr3",
+    "lang": "创新性"
+  },
+  {
+    "id": "v3a6_yami_attr4",
+    "lang": "表现力"
+  },
+  {
+    "id": "v3a6_yami_researcher",
+    "lang": "哑谜的研究所"
+  },
+  {
+    "id": "V3a6_WarmUp_txtnum",
+    "lang": "<size=60>%s</size>/%s"
+  },
+  {
+    "id": "v3a6_warmup_dialogueview_txt_tips1",
+    "lang": "点击查看任务文件"
+  },
+  {
+    "id": "v3a6_warmup_dialogueview_txt_tips2",
+    "lang": "点击品尝肉丸"
+  },
+  {
+    "id": "v3a6_warmup_dialogueview_txt_tips3",
+    "lang": "点击翻看书籍"
+  },
+  {
+    "id": "v3a6_warmup_dialogueview_txt_tips4",
+    "lang": "点击检查气象鸽校验面板"
+  },
+  {
+    "id": "v3a6_warmup_dialogueview_txt_tips5",
+    "lang": "点击检查扬声器"
+  },
+  {
+    "id": "v3a6_warmup_txt_goto1",
+    "lang": "点击响应联络器呼唤"
+  },
+  {
+    "id": "v3a6_warmup_txt_goto2",
+    "lang": "点击地图查看剧情"
+  },
+  {
+    "id": "v3a6_warmup_txt_task1",
+    "lang": "完成任务接收通讯"
+  },
+  {
+    "id": "v3a6_warmup_txt_task2",
+    "lang": "完成任务可查看剧情"
+  },
+  {
+    "id": "v3a6_warmup_txt_task3",
+    "lang": "▩1%s后可查看剧情"
+  },
+  {
+    "id": "v3a6_warmup_txt_finish",
+    "lang": "剧情奖励可领取"
+  },
+  {
+    "id": "Playercard_badge_limittime",
+    "lang": "剩余展示时间：▩1%s"
   }
 ]

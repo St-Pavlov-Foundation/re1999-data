@@ -17321,7 +17321,7 @@
   },
   {
     "id": "p_storeseasoncardview_txt_tips1",
-    "lang": "*每日可获得90纯雨滴，60活性（发放<#FD8A25>90</color>日）"
+    "lang": "*每日可获得<sprite=3>×90,<sprite=4>×1（发放<#FD8A25>90</color>日）"
   },
   {
     "id": "p_storeseasoncardview_txt_tips2",
@@ -18373,7 +18373,7 @@
   },
   {
     "id": "p_towermainview_txt_store",
-    "lang": "回声港湾"
+    "lang": "脑波编录"
   },
   {
     "id": "p_towermainview_txt_task",
@@ -23385,7 +23385,7 @@
   },
   {
     "id": "p_activitycollect_fullview_txt6",
-    "lang": "每日签到·惊喜放送"
+    "lang": "签到奖励："
   },
   {
     "id": "p_activitycollect_fullview_txt7",
@@ -25265,7 +25265,7 @@
   },
   {
     "id": "p_bpface_skinfestivalview_txt_title2",
-    "lang": "《岁月的书签》新的一页：在隐秘处，母亲哼着歌谣，抚平一颗心脏被穿透后的恓惶。"
+    "lang": "《岁月的书签》新的一页：作品并非完成于作者搁笔的一刻，而是完成于翻开书页的瞬间。"
   },
   {
     "id": "p_bpface_skinfestivalview_txt_title3",
@@ -27214,5 +27214,321 @@
   {
     "id": "p_survival_closingview_txt_newdec3",
     "lang": "(单局代币获取达上限)"
+  },
+  {
+    "id": "p_cloudredemption_chapterdetailview_btn",
+    "lang": "开始沉睡"
+  },
+  {
+    "id": "p_cloudredemption_rewardview_title",
+    "lang": "奖励面板"
+  },
+  {
+    "id": "p_cloudredemption_mainview_tip",
+    "lang": "根据总星数可以获取丰厚的酬劳"
+  },
+  {
+    "id": "p_cloudredemption_resultview_wintitle",
+    "lang": "战斗胜利"
+  },
+  {
+    "id": "p_cloudredemption_enterview_txt_desc",
+    "lang": "情绪自深渊中泛滥，\n       预谋劫持一束希望。"
+  },
+  {
+    "id": "p_storemonthcardview_buynums",
+    "lang": "可重复购买"
+  },
+  {
+    "id": "p_cloudredemption_resultview_newtag",
+    "lang": "刷新记录"
+  },
+  {
+    "id": "p_v3a6_storeview_txt_title1",
+    "lang": "唯一解答"
+  },
+  {
+    "id": "p_v3a6_storeview_txt_title2",
+    "lang": "有效推论"
+  },
+  {
+    "id": "p_v3a6_storeview_txt_title3",
+    "lang": "疑问之初"
+  },
+  {
+    "id": "p_fightfocusview_yami_txt_name",
+    "lang": "护盾"
+  },
+  {
+    "id": "p_fightfocusview_yami_txt_desc",
+    "lang": "当前护盾值："
+  },
+  {
+    "id": "p_playercardcritterplaceview_txt_critter",
+    "lang": "魔精"
+  },
+  {
+    "id": "p_playercardcritterplaceview_txt_badge",
+    "lang": "恢奇帜"
+  },
+  {
+    "id": "p_playercardcritterplaceview_txt_option",
+    "lang": "对他人隐藏"
+  },
+  {
+    "id": "p_storemonthcardview_sold_out",
+    "lang": "已购买至最大上限"
+  },
+  {
+    "id": "p_a17_reappear_mainactivity_enterview_txt_EntranceRole1",
+    "lang": "间隔月"
+  },
+  {
+    "id": "p_a17_reappear_mainactivity_enterview_txt_EntranceRole2",
+    "lang": "末日与末日之后"
+  },
+  {
+    "id": "P_v3a2_activitycollect_fullview_node1title",
+    "lang": "<size=58>深</size>眠域"
+  },
+  {
+    "id": "P_v3a2_activitycollect_fullview_node2title",
+    "lang": "<size=58>醒</size>梦域"
+  },
+  {
+    "id": "p_v3a6_dungeonmapview_go_play",
+    "lang": "完全归纳法"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_enterview_txt_enter",
+    "lang": "进入玩法"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_taskview_title",
+    "lang": "研究所评级"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_mainview_btn_encyclope",
+    "lang": "产物图鉴"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_mainview_btn_handbook",
+    "lang": "员工手册"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_evaluationresultview_txt_name",
+    "lang": "评审主持"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_evaluationresultview_txt_funds",
+    "lang": "经费奖励"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_evaluationresultview_txt_funds2",
+    "lang": "研究所经验"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_evaluationresultview_txt_funds3",
+    "lang": "目标完成奖励"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_evaluationresultview_txt_level",
+    "lang": "综合评级"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_performview_txt_title",
+    "lang": "突发事件"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_performview_txt_ok",
+    "lang": "好的"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_performview_txt_recipe",
+    "lang": "配方"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_performview_txt_schedule",
+    "lang": "开发进度"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_performview_txt_skilluse",
+    "lang": "人员手册"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_performview_txt_score",
+    "lang": "历史最高评级"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_mainview_btn_start",
+    "lang": "开始研究"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_mainview_btn_start_en",
+    "lang": "START"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_mainview_btn_continue",
+    "lang": "继续研究"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_mainview_btn_continue_en",
+    "lang": "CONTINUE"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_mainview_goal",
+    "lang": "目标："
+  },
+  {
+    "id": "p_towermainview_txt_storeEn",
+    "lang": "Brainwave Shop"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_skillinfoview_txt_title",
+    "lang": "技能"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_skillinfoview_txt_useskill",
+    "lang": "研究人员"
+  },
+  {
+    "id": "p_dungeonmapview_txt_v3a6_dormitorymode",
+    "lang": "完全归纳法"
+  },
+  {
+    "id": "p_dungeonmapview_txt_v3a6_dormitorymodeEn",
+    "lang": "TEMP"
+  },
+  {
+    "id": "p_rouge2_mapdiceview_txt_confirm",
+    "lang": "确认重投"
+  },
+  {
+    "id": "p_rouge2_mapdiceview_txt_AbortRedice",
+    "lang": "放弃"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_choosematerialsview_txt_name1",
+    "lang": "选择类别"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_choosematerialsview_txt_name2",
+    "lang": "选择材料"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_choosematerialsview_txt_limit",
+    "lang": ""
+  },
+  {
+    "id": "p_v3a6_dormitorymode_choosematerialsview_txt_money",
+    "lang": "经费"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_handbookview2_txt_tips",
+    "lang": ""
+  },
+  {
+    "id": "p_v3a6_dormitorymode_employeedetailpanel_txt_noskill",
+    "lang": "无技能"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_employeedetailpanel_txt_empty",
+    "lang": "请选择员工"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_employeedetailpanel_txt_skill",
+    "lang": "技能"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_employeedetailpanel_txt_hire",
+    "lang": "招聘"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_confirmselectionview_txt_title1",
+    "lang": "研究计划"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_confirmselectionview_txt_title2",
+    "lang": "研究员"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_confirmselectionview_txt_title3",
+    "lang": "团队共计"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_confirmselectionview_txt_tips",
+    "lang": "滑动以开始研究"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_choosepersonview_txt_name",
+    "lang": "选择研究员"
+  },
+  {
+    "id": "p_v3a6_warmup_go_reward",
+    "lang": "完成剧情可领取"
+  },
+  {
+    "id": "p_v3a6_warmup_txt_goto",
+    "lang": "点击地图查看剧情"
+  },
+  {
+    "id": "p_v3a6_warmup_btn_goto",
+    "lang": "前往任务"
+  },
+  {
+    "id": "p_v3a6_warmup_taskview_txt_title",
+    "lang": "探查酬劳"
+  },
+  {
+    "id": "p_v3a6_warmup_taskview_txt_desc",
+    "lang": "完成剧情可获得奖励"
+  },
+  {
+    "id": "p_v3a6_warmup_dialogueview_txt_claimreward",
+    "lang": "前往领奖"
+  },
+  {
+    "id": "p_v3a6_warmup_dialogueview_txt_tips",
+    "lang": "点击查看可交互物件"
+  },
+  {
+    "id": "p_v3a6_warmup_txt_place1",
+    "lang": "基金会办公室"
+  },
+  {
+    "id": "p_v3a6_warmup_txt_place2",
+    "lang": "第一防线\n学校食堂"
+  },
+  {
+    "id": "p_v3a6_warmup_txt_place3",
+    "lang": "校图书馆"
+  },
+  {
+    "id": "p_v3a6_warmup_txt_place4",
+    "lang": "中央瞭望塔"
+  },
+  {
+    "id": "p_v3a6_warmup_txt_place5",
+    "lang": "开学典礼会场"
+  },
+  {
+    "id": "p_v3a6_abyss_teamrecommendtips_txt_title",
+    "lang": "推荐队伍："
+  },
+  {
+    "id": "p_v3a6_abyss_rewarditem_allget",
+    "lang": "全部领取"
+  },
+  {
+    "id": "p_playercard_socialbadgegetview_txt_goto",
+    "lang": "前往旅券集"
+  },
+  {
+    "id": "p_v3a6_dormitorymode_confirmselectionview_txt_preview",
+    "lang": "预计产物："
+  },
+  {
+    "id": "p_avg_spelling_view_txt_tips",
+    "lang": "将正确字符填入核心"
   }
 ]

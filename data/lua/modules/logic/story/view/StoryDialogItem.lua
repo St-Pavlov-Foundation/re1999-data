@@ -5,37 +5,30 @@ module("modules.logic.story.view.StoryDialogItem", package.seeall)
 local StoryDialogItem = class("StoryDialogItem")
 
 function StoryDialogItem:init(go)
-	self._conGo = go
+	self._gocontentroot = go
 	self._gonexticon = gohelper.findChild(go, "nexticon")
 	self._goconversation = gohelper.findChild(go, "#go_conversation")
 	self._goblackbottom = gohelper.findChild(go, "#go_conversation/blackBottom")
-	self._contentGO = gohelper.findChild(go, "#go_conversation/#go_contents")
-	self._goline = gohelper.findChild(self._contentGO, "line")
-	self._norDiaGO = gohelper.findChild(self._contentGO, "go_normalcontent")
-	self._txtcontentcn = gohelper.findChildText(self._norDiaGO, "txt_contentcn")
+	self._gocontent = gohelper.findChild(go, "#go_conversation/#go_contents")
+	self._goline = gohelper.findChild(self._gocontent, "line")
+	self._gonormalcontent = gohelper.findChild(self._gocontent, "go_normalcontent")
+	self._txtcontentcn = gohelper.findChildText(self._gonormalcontent, "txt_contentcn")
 	self._conMat = self._txtcontentcn.fontMaterial
 
 	local _shader = UnityEngine.Shader
 
 	self._LineMinYId = _shader.PropertyToID("_LineMinY")
 	self._LineMaxYId = _shader.PropertyToID("_LineMaxY")
-	self._txtdot = gohelper.findChild(self._norDiaGO, "txt_contentcn/storytxtdot")
-	self._txtmarktop = gohelper.findChildText(self._norDiaGO, "txt_contentcn/storymarktop")
-	self._dotMat = self._txtdot.transform:GetComponent(gohelper.Type_Image).material
+	self._godot = gohelper.findChild(self._gonormalcontent, "txt_contentcn/storytxtdot")
+	self._txtmarktop = gohelper.findChildText(self._gonormalcontent, "txt_contentcn/storymarktop")
+	self._dotMat = self._godot.transform:GetComponent(gohelper.Type_Image).material
 	self._markTopMat = self._txtmarktop.fontMaterial
 	self._conMark = gohelper.onceAddComponent(self._txtcontentcn.gameObject, typeof(ZProj.TMPMark))
 
-	self._conMark:SetMarkGo(self._txtdot)
+	self._conMark:SetMarkGo(self._godot)
 	self._conMark:SetMarkTopGo(self._txtmarktop.gameObject)
 
-	self._magicDiaGO = gohelper.findChild(self._contentGO, "go_magiccontent")
-	self._txtcontentmagic = gohelper.findChildText(self._magicDiaGO, "txt_contentmagic")
-	self._gofirework = gohelper.findChild(self._magicDiaGO, "txt_contentmagic/go_firework")
-	self._txtcontentreshapemagic = gohelper.findChildText(self._magicDiaGO, "txt_contentreshapemagic")
-	self._goreshapefirework = gohelper.findChild(self._magicDiaGO, "txt_contentreshapemagic/go_reshapefirework")
-
-	self:_showMagicItem(false)
-
+	self._gomagiccontent = gohelper.findChild(self._gocontent, "go_magiccontent")
 	self._goslidecontent = gohelper.findChild(go, "#go_slidecontent")
 	self._slideItem = StoryDialogSlideItem.New()
 
@@ -44,10 +37,10 @@ function StoryDialogItem:init(go)
 
 	local storyviewGo = ViewMgr.instance:getContainer(ViewName.StoryView).viewGO
 
-	self._roleAudioGo = gohelper.findChild(storyviewGo, "go_roleaudio")
-	self._roleLeftAudioGo = gohelper.findChild(self._roleAudioGo, "left")
-	self._roleMidAudioGo = gohelper.findChild(self._roleAudioGo, "middle")
-	self._roleRightAudioGo = gohelper.findChild(self._roleAudioGo, "right")
+	self._goroleaudio = gohelper.findChild(storyviewGo, "go_roleaudio")
+	self._goroleaudioleft = gohelper.findChild(self._goroleaudio, "left")
+	self._goroleaudiomid = gohelper.findChild(self._goroleaudio, "middle")
+	self._goroleaudioright = gohelper.findChild(self._goroleaudio, "right")
 	self._fontNormalMat = self._txtcontentcn.fontSharedMaterial
 
 	self:_loadRes()
@@ -55,37 +48,17 @@ function StoryDialogItem:init(go)
 end
 
 function StoryDialogItem:_loadRes()
-	self._magicFirePath = ResUrl.getEffect("story/story_magicfont_particle")
-	self._reshapeMagicFirePath = ResUrl.getEffect("story/story_magicfont_particle_dark")
 	self._glitchPath = ResUrl.getEffect("story/v2a6_fontglitch")
 	self._effLoader = MultiAbLoader.New()
 
-	self._effLoader:addPath(self._magicFirePath)
-	self._effLoader:addPath(self._reshapeMagicFirePath)
 	self._effLoader:addPath(self._glitchPath)
-	self._effLoader:startLoad(self._magicFireEffectLoaded, self)
+	self._effLoader:startLoad(self._resEffLoaded, self)
 end
 
-function StoryDialogItem:_magicFireEffectLoaded(loader)
-	local assetItem = loader:getAssetItem(self._magicFirePath)
-
-	self._magicFireGo = gohelper.clone(assetItem:GetResource(self._magicFirePath), self._gofirework)
-
-	gohelper.setActive(self._magicFireGo, false)
-
-	self._magicFireAnim = self._magicFireGo:GetComponent(typeof(UnityEngine.Animator))
-
-	local reshapeAssetItem = loader:getAssetItem(self._reshapeMagicFirePath)
-
-	self._reshapeMagicFireGo = gohelper.clone(reshapeAssetItem:GetResource(self._reshapeMagicFirePath), self._goreshapefirework)
-
-	gohelper.setActive(self._reshapeMagicFireGo, false)
-
-	self._reshapeMagicFireAnim = self._reshapeMagicFireGo:GetComponent(typeof(UnityEngine.Animator))
-
+function StoryDialogItem:_resEffLoaded(loader)
 	local glitchAssetItem = loader:getAssetItem(self._glitchPath)
 
-	self._glitchGo = gohelper.clone(glitchAssetItem:GetResource(self._glitchPath), self._norDiaGO)
+	self._glitchGo = gohelper.clone(glitchAssetItem:GetResource(self._glitchPath), self._gonormalcontent)
 
 	gohelper.setActive(self._glitchGo, false)
 end
@@ -127,13 +100,7 @@ function StoryDialogItem:hideDialog()
 		self._conTweenId = nil
 	end
 
-	if self._magicConTweenId then
-		ZProj.TweenHelper.KillById(self._magicConTweenId)
-
-		self._magicConTweenId = nil
-	end
-
-	gohelper.setActive(self._norDiaGO, false)
+	gohelper.setActive(self._gonormalcontent, false)
 
 	local x, y, z = transformhelper.getLocalPos(self._txtcontentcn.transform)
 
@@ -157,14 +124,6 @@ function StoryDialogItem:hideDialog()
 
 	self._finishCallback = nil
 	self._finishCallbackObj = nil
-
-	local x2, y2, z2 = transformhelper.getLocalPos(self._txtcontentmagic.transform)
-
-	transformhelper.setLocalPos(self._txtcontentmagic.transform, x2, y2, 1)
-	transformhelper.setLocalPos(self._txtcontentreshapemagic.transform, x2, y2, 1)
-
-	self._txtcontentmagic.text = ""
-	self._txtcontentreshapemagic.text = ""
 end
 
 function StoryDialogItem:playDialog(diaTxt, stepCo, callback, callbackobj)
@@ -187,10 +146,61 @@ function StoryDialogItem:playDialog(diaTxt, stepCo, callback, callbackobj)
 	gohelper.setActive(self._goconversation, true)
 	gohelper.setActive(self._gonexticon, true)
 
-	if self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.Magic or self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.ReshapeMagic then
+	if StoryModel.instance:isMagicType(self._stepCo) then
 		self:playMagicText(diatxt, callback, callbackobj)
+
+		return
+	end
+
+	self:_showMagicItem(false)
+	self:playNormalText(diatxt, callback, callbackobj)
+end
+
+function StoryDialogItem:playMagicText(txt, callback, callbackobj)
+	gohelper.setActive(self._goline, true)
+	self:_showMagicItem(true)
+	TaskDispatcher.cancelTask(self._playConAudio, self)
+	gohelper.setActive(self._gonormalcontent, false)
+
+	self._textShowFinished = false
+	self._playingAudioId = 0
+	self._finishCallback = callback
+	self._finishCallbackObj = callbackobj
+
+	if not self._magicEff then
+		self._magicEff = StoryDialogEffsMagic.New()
+
+		self._magicEff:init(self._gocontent)
+	end
+
+	self._magicEff:start(self._stepCo, txt, callback, callbackobj)
+
+	if self._stepCo.conversation.audioDelayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] < 0.1 then
+		self:_playConAudio()
 	else
-		self:playNormalText(diatxt, callback, callbackobj)
+		TaskDispatcher.runDelay(self._playConAudio, self, self._stepCo.conversation.audioDelayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()])
+	end
+end
+
+function StoryDialogItem:_showMagicItem(show)
+	gohelper.setActive(self._gomagiccontent, show)
+
+	if self._magicEff then
+		self._magicEff:showEff(show)
+	end
+end
+
+function StoryDialogItem:_magicConFinished()
+	self._textShowFinished = true
+
+	local isLimitNoInteractLock = StoryModel.instance:isLimitNoInteractLock(self._stepCo)
+
+	if self._stepCo.conversation.type == StoryEnum.ConversationType.NoInteract or self._stepCo.conversation.type == StoryEnum.ConversationType.None or isLimitNoInteractLock then
+		return
+	end
+
+	if self._finishCallback then
+		self._finishCallback(self._finishCallbackObj)
 	end
 end
 
@@ -221,143 +231,6 @@ function StoryDialogItem:playSlideDialog(txt, callback, callbackobj)
 	self._slideItem:startShowDialog(data, callback, callbackobj)
 end
 
-function StoryDialogItem:playMagicText(txt, callback, callbackobj)
-	gohelper.setActive(self._goline, true)
-	self:_showMagicItem(true)
-	TaskDispatcher.cancelTask(self._playConAudio, self)
-	gohelper.setActive(self._norDiaGO, false)
-
-	self._txt = StoryTool.filterSpTag(txt)
-	self._textShowFinished = false
-	self._playingAudioId = 0
-	self._finishCallback = callback
-	self._finishCallbackObj = callbackobj
-	self._txtcontentmagic.text = self._txt
-	self._txtcontentreshapemagic.text = self._txt
-
-	local x, y, z = transformhelper.getLocalPos(self._txtcontentmagic.transform)
-
-	transformhelper.setLocalPos(self._txtcontentmagic.transform, x, y, 1)
-	transformhelper.setLocalPos(self._txtcontentreshapemagic.transform, x, y, 1)
-
-	local delay = self:_getMagicWordShowTime(txt)
-
-	self._magicConTweenId = ZProj.TweenHelper.DOTweenFloat(0, 1, delay, self._magicConUpdate, self._onMagicTextFinished, self, nil, EaseType.Linear)
-
-	self._magicFireAnim:Play("story_magicfont_particle")
-	self._reshapeMagicFireAnim:Play("story_magicfont_particle")
-	gohelper.setActive(self._magicFireGo, self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.Magic)
-	gohelper.setActive(self._reshapeMagicFireGo, self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.ReshapeMagic)
-	gohelper.setActive(self._txtcontentmagic.gameObject, self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.Magic)
-	gohelper.setActive(self._txtcontentreshapemagic, self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.ReshapeMagic)
-
-	if self._stepCo.conversation.audioDelayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] < 0.1 then
-		self:_playConAudio()
-	else
-		TaskDispatcher.runDelay(self._playConAudio, self, self._stepCo.conversation.audioDelayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()])
-	end
-
-	if delay > 0 then
-		self._magicFireAnim.speed = 1 / delay
-		self._reshapeMagicFireAnim.speed = 1 / delay
-	end
-end
-
-function StoryDialogItem:_getMagicWordShowTime(txt)
-	local result = string.gsub(txt, "%%", "--------")
-
-	result = string.gsub(result, "%&", "--------")
-
-	local wordSize = LuaUtil.getCharNum(result)
-	local speed = 0.1
-
-	if wordSize < 30 then
-		speed = 0.2
-	end
-
-	if wordSize < 15 then
-		speed = 0.5
-	end
-
-	if result and string.find(result, "<speed=%d[%d.]*>") then
-		local speedTxt = string.sub(result, string.find(result, "<speed=%d[%d.]*>"))
-
-		speed = speedTxt and tonumber(string.match(speedTxt, "%d[%d.]*")) or 1
-	end
-
-	return speed * wordSize
-end
-
-function StoryDialogItem:_magicConUpdate(value)
-	local width = self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.Magic and recthelper.getWidth(self._txtcontentmagic.gameObject.transform) or recthelper.getWidth(self._txtcontentreshapemagic.gameObject.transform)
-
-	if value > (width + 100) / 2215 and width > 1 then
-		if self._magicConTweenId then
-			ZProj.TweenHelper.KillById(self._magicConTweenId)
-
-			self._magicConTweenId = nil
-		end
-
-		self:_onMagicTextFinished()
-
-		return
-	end
-
-	local conWidth = 1107.5
-	local x, y, z = transformhelper.getLocalPos(self._txtcontentmagic.transform)
-
-	if self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.ReshapeMagic then
-		x, y, z = transformhelper.getLocalPos(self._txtcontentreshapemagic.transform)
-	end
-
-	local screenWidth, screenheight = UnityEngine.Screen.width, UnityEngine.Screen.height
-	local startPosX = 0
-	local totalWidth = 1920
-	local posX = transformhelper.getLocalPos(self._contentGO.transform)
-
-	totalWidth = 1920 * (1080 * screenWidth / (1920 * screenheight))
-
-	if screenWidth / screenheight >= 1.7777777777777777 then
-		startPosX = 0.5 * (1080 * screenWidth / screenheight - 1920) + (960 + posX)
-	else
-		startPosX = 960 - 0.5 * (1920 - 1080 * screenWidth / screenheight) + posX
-	end
-
-	local rate = (startPosX + value * (conWidth + 10)) / totalWidth
-	local screenposy = self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.Magic and recthelper.uiPosToScreenPos(self._txtcontentmagic.gameObject.transform, ViewMgr.instance:getUICanvas()).y or recthelper.uiPosToScreenPos(self._txtcontentreshapemagic.gameObject.transform, ViewMgr.instance:getUICanvas()).y
-	local psPos = self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.Magic and recthelper.screenPosToAnchorPos(Vector2(rate * screenWidth, screenposy), self._gofirework.transform) or recthelper.screenPosToAnchorPos(Vector2(rate * screenWidth, screenposy), self._goreshapefirework.transform)
-
-	if self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.Magic then
-		transformhelper.setLocalPos(self._txtcontentmagic.transform, x, y, 1 - rate)
-		transformhelper.setLocalPos(self._magicFireGo.transform, psPos.x, psPos.y, 0)
-	else
-		transformhelper.setLocalPos(self._txtcontentreshapemagic.transform, x, y, 1 - rate)
-		transformhelper.setLocalPos(self._reshapeMagicFireGo.transform, psPos.x, psPos.y, 0)
-	end
-end
-
-function StoryDialogItem:_magicConFinished()
-	local x, y, z = transformhelper.getLocalPos(self._txtcontentmagic.transform)
-
-	transformhelper.setLocalPos(self._txtcontentmagic.transform, x, y, 0)
-	transformhelper.setLocalPos(self._txtcontentreshapemagic.transform, x, y, 0)
-	gohelper.setActive(self._magicFireGo, false)
-	gohelper.setActive(self._reshapeMagicFireGo, false)
-
-	self._magicFireAnim.speed = 1
-	self._reshapeMagicFireAnim.speed = 1
-
-	local isLimitNoInteractLock = StoryModel.instance:isLimitNoInteractLock(self._stepCo)
-
-	if self._stepCo.conversation.type == StoryEnum.ConversationType.NoInteract or self._stepCo.conversation.type == StoryEnum.ConversationType.None or isLimitNoInteractLock then
-		return
-	end
-
-	if self._finishCallback then
-		self._finishCallback(self._finishCallbackObj)
-	end
-end
-
 function StoryDialogItem:playNormalText(txt, callback, callbackobj)
 	self._txt = txt
 	self._textShowFinished = false
@@ -373,8 +246,6 @@ function StoryDialogItem:playNormalText(txt, callback, callbackobj)
 	self._markTop, self._markContent = StoryTool.getMarkTopTextList(self._subemtext)
 	self._subemtext = StoryTool.filterMarkTop(self._subemtext)
 	self._txtcontentcn.text = string.gsub(self._subemtext, "(<sprite=%d>)", "")
-	self._txtcontentmagic.text = ""
-	self._txtcontentreshapemagic.text = ""
 
 	if self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.SoftLight then
 		self._txtcontentcn.alignment = TMPro.TextAlignmentOptions.Top
@@ -402,7 +273,7 @@ function StoryDialogItem:playNormalText(txt, callback, callbackobj)
 		gohelper.setActive(self._goline, false)
 		gohelper.setActive(self._goblackbottom, false)
 		gohelper.setActive(self._gonexticon, false)
-		transformhelper.setLocalPosXY(self._norDiaGO.transform, 475, -50)
+		transformhelper.setLocalPosXY(self._gonormalcontent.transform, 475, -50)
 	else
 		self._txtcontentcn.fontSharedMaterial:DisableKeyword("UNDERLAY_ON")
 
@@ -418,7 +289,7 @@ function StoryDialogItem:playNormalText(txt, callback, callbackobj)
 		gohelper.setActive(self._goline, showContent)
 		gohelper.setActive(self._goblackbottom, showContent)
 		gohelper.setActive(self._gonexticon, showContent)
-		transformhelper.setLocalPosXY(self._norDiaGO.transform, 550, 0)
+		transformhelper.setLocalPosXY(self._gonormalcontent.transform, 550, 0)
 	end
 
 	self:_checkPlayGlitch(self._subemtext)
@@ -574,7 +445,7 @@ end
 
 function StoryDialogItem:_playHardIn()
 	self:_showMagicItem(false)
-	gohelper.setActive(self._norDiaGO, true)
+	gohelper.setActive(self._gonormalcontent, true)
 	self:conFinished()
 end
 
@@ -616,7 +487,7 @@ function StoryDialogItem:_playGradualIn()
 	self._dotMat:SetFloat(self._LineMinYId, height)
 	self._dotMat:SetFloat(self._LineMaxYId, height)
 	self:_showMagicItem(false)
-	gohelper.setActive(self._norDiaGO, true)
+	gohelper.setActive(self._gonormalcontent, true)
 
 	local x, y, z = transformhelper.getLocalPos(self._txtcontentcn.transform)
 
@@ -630,26 +501,6 @@ function StoryDialogItem:_playGradualIn()
 
 	TaskDispatcher.cancelTask(self._delayShow, self)
 	TaskDispatcher.runDelay(self._delayShow, self, 0.05)
-end
-
-function StoryDialogItem:_showMagicItem(show)
-	if show then
-		if self._magicFireGo then
-			StoryTool.enablePostProcess(true)
-			gohelper.setActive(self._reshapeMagicFireGo, self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.ReshapeMagic)
-		end
-
-		if self._reshapeMagicFireGo then
-			StoryTool.enablePostProcess(true)
-			gohelper.setActive(self._reshapeMagicFireGo, self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.ReshapeMagic)
-		end
-	else
-		self._txtcontentmagic.text = ""
-		self._txtcontentreshapemagic.text = ""
-
-		gohelper.setActive(self._magicFireGo, false)
-		gohelper.setActive(self._reshapeMagicFireGo, false)
-	end
 end
 
 function StoryDialogItem:_delayShow()
@@ -774,7 +625,7 @@ function StoryDialogItem:_playConAudio()
 end
 
 function StoryDialogItem:_getDialogGo()
-	local audioGo = self._roleMidAudioGo
+	local audioGo = self._goroleaudiomid
 
 	if #self._stepCo.heroList > 0 and self._stepCo.conversation.showList[1] then
 		if not self._stepCo.heroList[self._stepCo.conversation.showList[1] + 1] then
@@ -784,11 +635,11 @@ function StoryDialogItem:_getDialogGo()
 		local pos = self._stepCo.heroList[self._stepCo.conversation.showList[1] + 1].heroDir
 
 		if pos and pos == 0 then
-			audioGo = self._roleLeftAudioGo
+			audioGo = self._goroleaudioleft
 		end
 
 		if pos and pos == 2 then
-			audioGo = self._roleRightAudioGo
+			audioGo = self._goroleaudioright
 		end
 	end
 
@@ -796,15 +647,7 @@ function StoryDialogItem:_getDialogGo()
 end
 
 function StoryDialogItem:_onTextFinished()
-	if self._magicConTweenId then
-		ZProj.TweenHelper.KillById(self._magicConTweenId)
-		gohelper.setActive(self._magicFireGo, false)
-		gohelper.setActive(self._reshapeMagicFireGo, false)
-
-		self._magicFireAnim.speed = 1
-		self._reshapeMagicFireAnim.speed = 1
-		self._magicConTweenId = nil
-	end
+	self:_showMagicItem(false)
 
 	if self._conTweenId then
 		ZProj.TweenHelper.KillById(self._conTweenId)
@@ -815,11 +658,6 @@ function StoryDialogItem:_onTextFinished()
 	local x, y, z = transformhelper.getLocalPos(self._txtcontentcn.transform)
 
 	transformhelper.setLocalPos(self._txtcontentcn.transform, x, y, 0)
-
-	local x, y, z = transformhelper.getLocalPos(self._txtcontentmagic.transform)
-
-	transformhelper.setLocalPos(self._txtcontentmagic.transform, x, y, 0)
-	transformhelper.setLocalPos(self._txtcontentreshapemagic.transform, x, y, 0)
 	self._conMat:DisableKeyword("_GRADUAL_ON")
 	self._markTopMat:DisableKeyword("_GRADUAL_ON")
 
@@ -843,15 +681,9 @@ function StoryDialogItem:_onTextFinished()
 	end
 end
 
-function StoryDialogItem:_onMagicTextFinished()
-	self._textShowFinished = true
-
-	self:_magicConFinished()
-end
-
 function StoryDialogItem:_onConAudioFinished(audioId)
 	if self._textShowFinished then
-		if self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.Magic or self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.ReshapeMagic then
+		if StoryModel.instance:isMagicType(self._stepCo) then
 			self:_magicConFinished()
 		else
 			self:conFinished()
@@ -994,7 +826,7 @@ function StoryDialogItem:_conUpdate(value)
 				end
 
 				if #self._lineInfoList > 1 then
-					transformhelper.setLocalPosXY(self._norDiaGO.transform, 475, 50 * (#self._lineInfoList - 2))
+					transformhelper.setLocalPosXY(self._gonormalcontent.transform, 475, 50 * (#self._lineInfoList - 2))
 				end
 			end
 		end
@@ -1008,15 +840,7 @@ function StoryDialogItem:conFinished()
 		return
 	end
 
-	if self._magicConTweenId then
-		ZProj.TweenHelper.KillById(self._magicConTweenId)
-		gohelper.setActive(self._magicFireGo, false)
-		gohelper.setActive(self._reshapeMagicFireGo, false)
-
-		self._magicFireAnim.speed = 1
-		self._reshapeMagicFireAnim.speed = 1
-		self._magicConTweenId = nil
-	end
+	self:_destoryMagic()
 
 	if self._conTweenId then
 		ZProj.TweenHelper.KillById(self._conTweenId)
@@ -1056,11 +880,7 @@ function StoryDialogItem:conFinished()
 	local x, y, z = transformhelper.getLocalPos(self._txtcontentcn.transform)
 
 	transformhelper.setLocalPos(self._txtcontentcn.transform, x, y, 0)
-
-	local x, y, z = transformhelper.getLocalPos(self._txtcontentmagic.transform)
-
-	transformhelper.setLocalPos(self._txtcontentmagic.transform, x, y, 0)
-	transformhelper.setLocalPos(self._txtcontentreshapemagic.transform, x, y, 0)
+	self:_showMagicItem(false)
 
 	if self._finishCallback then
 		self._finishCallback(self._finishCallbackObj)
@@ -1087,11 +907,13 @@ end
 
 function StoryDialogItem:startAutoEnterNext()
 	if self._playingAudioId == 0 and self._textShowFinished then
-		if self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.Magic or self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.ReshapeMagic then
+		if StoryModel.instance:isMagicType(self._stepCo) then
 			self:_magicConFinished()
-		else
-			self:conFinished()
+
+			return
 		end
+
+		self:conFinished()
 	end
 end
 
@@ -1127,6 +949,14 @@ function StoryDialogItem:storyFinished()
 	self._finishCallbackObj = nil
 end
 
+function StoryDialogItem:_destoryMagic()
+	if self._magicEff then
+		self._magicEff:destroy()
+
+		self._magicEff = nil
+	end
+end
+
 function StoryDialogItem:destroy()
 	self._txtcontentcn.fontSharedMaterial = self._fontNormalMat
 
@@ -1135,6 +965,7 @@ function StoryDialogItem:destroy()
 	TaskDispatcher.cancelTask(self._onSecond, self)
 	TaskDispatcher.cancelTask(self._waitSecondFinished, self)
 	self:stopConAudio()
+	self:_destoryMagic()
 
 	if self._slideItem then
 		self._slideItem:destroy()
@@ -1146,12 +977,6 @@ function StoryDialogItem:destroy()
 		ZProj.TweenHelper.KillById(self._conTweenId)
 
 		self._conTweenId = nil
-	end
-
-	if self._magicConTweenId then
-		ZProj.TweenHelper.KillById(self._magicConTweenId)
-
-		self._magicConTweenId = nil
 	end
 
 	if self._effLoader then

@@ -9,6 +9,7 @@ function FightRoundData:onConstructor(proto)
 		return
 	end
 
+	self.hurtMergeFlag = {}
 	self.fightStep = self:buildFightStep(proto.fightStep)
 
 	if proto:HasField("actPoint") then
@@ -134,6 +135,28 @@ function FightRoundData:detectStepEffect(actEffect)
 		local actEffectData = actEffect[index]
 
 		self:processNuoDiKaUniqueDamage(actEffect, index, actEffectData)
+
+		local hurtInfo = actEffectData.hurtInfo
+
+		if hurtInfo then
+			local flag = hurtInfo.hurtMergeFlag
+
+			if flag ~= 0 then
+				local tab = self.hurtMergeFlag[flag]
+
+				if not tab then
+					tab = {}
+					tab.damage = 0
+					self.hurtMergeFlag[flag] = tab
+				end
+
+				tab.damage = tab.damage + hurtInfo.damage
+
+				if hurtInfo.critical then
+					tab.critical = true
+				end
+			end
+		end
 
 		if actEffectData.effectType == FightEnum.EffectType.SPLITSTART then
 			self.effectSplitIndex = self.effectSplitIndex + 1

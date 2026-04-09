@@ -238,6 +238,7 @@ function JumpController:jumpToDungeonViewWithType(jumpParam)
 		param.chapterType = DungeonEnum.ChapterType.Explore
 	elseif jumpChapterType == JumpEnum.DungeonChapterType.WeekWalk then
 		param.chapterType = DungeonEnum.ChapterType.WeekWalk
+		param.jumpParam = jumpArray[3]
 
 		if ViewMgr.instance:isOpen(ViewName.WeekWalkView) or ViewMgr.instance:isOpen(ViewName.DungeonView) and DungeonModel.instance.curChapterType == DungeonEnum.ChapterType.WeekWalk then
 			ViewMgr.instance:closeView(ViewName.TaskView)
@@ -1355,8 +1356,6 @@ function JumpController:jumpToAct1_5AiZiLa(jumpParam)
 end
 
 function JumpController:jumpToAct1_6EnterView(jumpParam, paramList)
-	table.insert(self.waitOpenViewNames, ViewName.VersionActivity1_6EnterView)
-
 	local subJumpActId
 
 	if #paramList >= 3 then
@@ -1370,7 +1369,6 @@ end
 
 function JumpController:jumpToAct1_6Dungeon(jumpParam, paramList)
 	table.insert(self.closeViewNames, ViewName.VersionActivity1_6DungeonMapLevelView)
-	table.insert(self.waitOpenViewNames, ViewName.VersionActivity1_6EnterView)
 	VersionActivity1_6EnterController.instance:openVersionActivityEnterViewIfNotOpened(function()
 		if #paramList >= 3 then
 			local subJumpId = paramList[3]
@@ -1433,7 +1431,6 @@ function JumpController:jumpToAct1_6DungeonView(jumpParam)
 end
 
 function JumpController:jumpToAct1_6DungeonStore(jumpParam, paramList)
-	table.insert(self.waitOpenViewNames, ViewName.VersionActivity1_6EnterView)
 	VersionActivity1_6EnterController.instance:openVersionActivityEnterViewIfNotOpened(function()
 		table.insert(self.waitOpenViewNames, ViewName.VersionActivity1_6StoreView)
 		VersionActivity1_6EnterController.instance:openStoreView()
@@ -1443,7 +1440,6 @@ function JumpController:jumpToAct1_6DungeonStore(jumpParam, paramList)
 end
 
 function JumpController:jumpToAct1_6DungeonBoss(jumpParam, paramList)
-	table.insert(self.waitOpenViewNames, ViewName.VersionActivity1_6EnterView)
 	VersionActivity1_6EnterController.instance:openVersionActivityEnterViewIfNotOpened(function()
 		VersionActivity1_6DungeonController.instance:openVersionActivityDungeonMapView()
 		VersionActivity1_6DungeonController.instance:openDungeonBossView()
@@ -1453,14 +1449,12 @@ function JumpController:jumpToAct1_6DungeonBoss(jumpParam, paramList)
 end
 
 function JumpController:jumpToAct1_6Rogue(jumpParam, paramList)
-	table.insert(self.waitOpenViewNames, ViewName.VersionActivity1_6EnterView)
 	VersionActivity1_6EnterController.instance:openVersionActivityEnterViewIfNotOpened(nil, nil, jumpParam, false)
 
 	return JumpEnum.JumpResult.Success
 end
 
 function JumpController:jumpToAct1_6QuNiang(jumpParam, paramList)
-	table.insert(self.waitOpenViewNames, ViewName.VersionActivity1_6EnterView)
 	VersionActivity1_6EnterController.instance:openVersionActivityEnterViewIfNotOpened(function()
 		table.insert(self.waitOpenViewNames, ViewName.ActQuNiangLevelView)
 		ActQuNiangController.instance:enterActivity()
@@ -1470,7 +1464,6 @@ function JumpController:jumpToAct1_6QuNiang(jumpParam, paramList)
 end
 
 function JumpController:jumpToAct1_6GeTian(jumpParam, paramList)
-	table.insert(self.waitOpenViewNames, ViewName.VersionActivity1_6EnterView)
 	VersionActivity1_6EnterController.instance:openVersionActivityEnterViewIfNotOpened(function()
 		table.insert(self.waitOpenViewNames, ViewName.ActGeTianLevelView)
 		ActGeTianController.instance:enterActivity()
@@ -1787,6 +1780,39 @@ function JumpController:jumpToSurvivalView()
 	SurvivalController.instance:openSurvivalView()
 end
 
+function JumpController:jumpToAbyss()
+	local constConfig = AbyssConfig.instance:getConstConfig(AbyssEnum.ConstId.ActId)
+
+	if not constConfig or string.nilorempty(constConfig.value) then
+		logError("新深渊 不存在常量活动id配置")
+
+		return JumpEnum.JumpResult.Fail
+	end
+
+	local jumpActId = tonumber(constConfig.value)
+	local status, toastId, toastParam = ActivityHelper.getActivityStatusAndToast(jumpActId)
+	local canJump = status == ActivityEnum.ActivityStatus.Normal
+
+	if not canJump then
+		return JumpEnum.JumpResult.Fail
+	end
+
+	local viewName = VersionActivityFixedHelper.getVersionActivityEnterViewName()
+
+	if not ViewMgr.instance:isOpen(viewName) then
+		self:jumpToMainView()
+	end
+
+	local version = ActivityHelper.getActivityVersion(jumpActId)
+	local jumpFuncs = _G[string.format("VersionActivity%sJumpHandleFunc", version)]
+
+	if jumpFuncs and jumpFuncs["jumpTo" .. jumpActId] then
+		return jumpFuncs["jumpTo" .. jumpActId](self)
+	end
+
+	return JumpEnum.JumpResult.Success
+end
+
 function JumpController:_useSupplementMonthCard()
 	SignInRpc.instance:sendSupplementMonthCardRequest()
 end
@@ -1851,7 +1877,8 @@ JumpController.JumpViewToHandleFunc = {
 	[JumpEnum.JumpView.SkinGiftUseType] = JumpController.jumpToSkinGiftUseTypeView,
 	[JumpEnum.JumpView.StoreSupplementMonthCardUseView] = JumpController.jumpToStoreSupplementMonthCardUseView,
 	[JumpEnum.JumpView.LaplaceChatRoom] = JumpController.jumpToLaplaceChatRoomView,
-	[JumpEnum.JumpView.SurvivalView] = JumpController.jumpToSurvivalView
+	[JumpEnum.JumpView.SurvivalView] = JumpController.jumpToSurvivalView,
+	[JumpEnum.JumpView.Abyss] = JumpController.jumpToAbyss
 }
 JumpController.JumpActViewToHandleFunc = {
 	[JumpEnum.ActIdEnum.Act117] = JumpController.jumpToAct117,

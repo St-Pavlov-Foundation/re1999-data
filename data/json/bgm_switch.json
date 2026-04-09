@@ -1114,5 +1114,41 @@
     "audioLength": 91.5,
     "audioEvaluates": "讣告人#尘埃离开墓碑，被风托向高处，在空中回旋、飞舞，那一瞬，死亡的重量，都似乎短暂地变轻了。",
     "isNonLoop": 0
+  },
+  {
+    "id": 1013601,
+    "audio": 360010,
+    "isReport": 0,
+    "unlockCondition": "",
+    "itemId": 221261,
+    "defaultUnlock": 0,
+    "audioName": "人们向何处去",
+    "audioNameEn": "",
+    "audioIntroduce": "意义与意义之外，答案没有尽头。一个开始，一扇通往明日的门。",
+    "audioBg": "102631_1",
+    "audioicon": "102631_2",
+    "sort": 0,
+    "audioType": 26,
+    "audioLength": 204.0,
+    "audioEvaluates": "马库斯#我曾希望自己可以停在某一页，不再继续。但现在，我已经明白……唯有翻过它，我才能在结局的彼岸，“阅读”新的故事。",
+    "isNonLoop": 0
+  },
+  {
+    "id": 1013602,
+    "audio": 360011,
+    "isReport": 0,
+    "unlockCondition": "",
+    "itemId": 221262,
+    "defaultUnlock": 0,
+    "audioName": "■■■■■■■■",
+    "audioNameEn": "■■■■■■■■",
+    "audioIntroduce": "060E020D0F1B09000404005C5C",
+    "audioBg": "102632_1",
+    "audioicon": "102632_2",
+    "sort": 0,
+    "audioType": 26,
+    "audioLength": 171.0,
+    "audioEvaluates": "■■■#6861766566756E",
+    "isNonLoop": 0
   }
 ]

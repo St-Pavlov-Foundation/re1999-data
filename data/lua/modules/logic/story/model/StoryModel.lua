@@ -35,6 +35,7 @@ function StoryModel:resetStoryState()
 	self._playingVideos = {}
 	self._isPlayFinished = false
 	self._uiActive = false
+	self._inScreenSplit = false
 end
 
 function StoryModel:setPlayFnished()
@@ -736,6 +737,34 @@ function StoryModel:isLimitNoInteractLock(stepCo)
 	end
 
 	return self._isLimitNoInteractLock
+end
+
+function StoryModel:isMagicType(stepCo)
+	if not stepCo then
+		return false
+	end
+
+	if stepCo.conversation.effType == StoryEnum.ConversationEffectType.CommonMagic then
+		return true
+	end
+
+	if stepCo.conversation.effType == StoryEnum.ConversationEffectType.ReshapeMagic then
+		return true
+	end
+
+	if stepCo.conversation.effType == StoryEnum.ConversationEffectType.SilverMagic then
+		return true
+	end
+
+	return false
+end
+
+function StoryModel:setInScreenSplitMode(isScreenSplit)
+	self._inScreenSplit = isScreenSplit
+end
+
+function StoryModel:isInScreenSplitMode()
+	return self._inScreenSplit
 end
 
 StoryModel.instance = StoryModel.New()

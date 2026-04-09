@@ -2358,5 +2358,25 @@
     "canShowHandbook": "",
     "upperLimit": 1,
     "characterId": ""
+  },
+  {
+    "id": 1567,
+    "name": "解答的边界",
+    "name_en": "The Riddle's Limit",
+    "skillName": "",
+    "icon": "1567",
+    "rare": 5,
+    "skillType": 1567,
+    "strengthType": 1567,
+    "tag": "1#5",
+    "isExpEquip": 0,
+    "isSpRefine": 0,
+    "useSpRefine": "",
+    "desc": "算法、序列、字符，\n如此熟稔，一如旧友。\n答案被悬置，而生活真实。\n将疑问掷向雨幕，习惯这空缺，\n越过格线，步入明日的世界。",
+    "useDesc": "",
+    "sources": "",
+    "canShowHandbook": "",
+    "upperLimit": 1,
+    "characterId": ""
   }
 ]

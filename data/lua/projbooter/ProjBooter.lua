@@ -73,9 +73,13 @@ function ProjBooter:checkWidowsBackGroundSound()
 end
 
 function ProjBooter:_checkUseBigZip()
-	local key = "UpdateListInfo_UseBigZip"
+	if VersionUtil.isVersionLess("3.6.0") then
+		local key = "UpdateListInfo_UseBigZip"
 
-	return UnityEngine.PlayerPrefs.GetFloat(key, 0) == 1
+		return UnityEngine.PlayerPrefs.GetFloat(key, 0) == 1
+	else
+		return false
+	end
 end
 
 function ProjBooter:UseBigZipDownload()

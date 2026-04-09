@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "灵魂行者·Ⅰ",
+    "icon": "playercard_socialbadge_1",
+    "group": 1,
+    "level": 1,
+    "taskId": 760003
+  },
+  {
+    "id": 2,
+    "name": "灵魂行者·Ⅱ",
+    "icon": "playercard_socialbadge_2",
+    "group": 1,
+    "level": 2,
+    "taskId": 760002
+  },
+  {
+    "id": 3,
+    "name": "灵魂行者·Ⅲ",
+    "icon": "playercard_socialbadge_3",
+    "group": 1,
+    "level": 3,
+    "taskId": 760001
+  }
+]

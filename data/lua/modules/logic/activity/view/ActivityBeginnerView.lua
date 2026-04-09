@@ -127,16 +127,13 @@ local activitySubViewDict = {
 	[BpModel.instance:getCurVersionOperActId()] = ViewName.V3a1_BpOperActShowView,
 	[ActivityEnum.Activity.V3a1_AutumnSign] = ViewName.V3a1_AutumnSign_FullView,
 	[ActivityEnum.Activity.V3a1_NewCultivationDestiny] = ViewName.VersionActivity2_3NewCultivationGiftView,
-	[VersionActivity3_2Enum.ActivityId.CruiseTripleDrop] = ViewName.CruiseTripleDropFullView,
-	[VersionActivity3_2Enum.ActivityId.ActivityCollect] = ViewName.V3A2ActivityCollectView,
+	[VersionActivity3_2Enum.ActivityId.CruiseTripleDrop] = ViewName.V3a6DoubleDropView,
 	[ActivityEnum.Activity.V3a3_TowerDeep] = ViewName.V3a3TowerGiftFullView,
 	[ActivityEnum.Activity.V3a3_SkinDiscount] = ViewName.SkinDiscountCompensateActivityView,
 	[ActivityEnum.Activity.V3a4_GiftRecommend] = ViewName.V3a4GiftRecommendFullview,
 	[ActivityEnum.Activity.V3a4_DestinyGift] = ViewName.V3a4DestinyGiftFullView,
-	[VersionActivity3_4Enum.ActivityId.ActivityCollect] = ViewName.V3A4ActivityCollectView,
 	[ActivityEnum.Activity.V3a4_GoldenMilletPresent] = ViewName.V3a4_GoldenMilletPresentFullView,
-	[ActivityEnum.Activity.V3a5_SchoolStart] = ViewName.V3a5_SchoolStartView,
-	[VersionActivity3_5Enum.ActivityId.ActivityCollect] = ViewName.V3A5ActivityCollectView
+	[ActivityEnum.Activity.V3a5_SchoolStart] = ViewName.V3a5_SchoolStartView
 }
 local actTypeSubViewDict = {
 	[ActivityEnum.ActivityTypeID.OpenTestWarmUp] = ViewName.ActivityWarmUpView,
@@ -168,6 +165,7 @@ function ActivityBeginnerView:onOpen()
 	self:_initDoubleDan()
 	self:_initNationalGift()
 	self:_initDoubleDrop()
+	self:_initActivityCollect()
 
 	self._needSetSortInfos = true
 
@@ -539,10 +537,20 @@ function ActivityBeginnerView:_initNationalGift()
 end
 
 function ActivityBeginnerView:_initDoubleDrop()
-	local actId = Activity217Model.instance:getLiveActId()
+	local actIdList = Activity217Config.instance:getActIdList()
 
-	if actId ~= -1 then
-		activitySubViewDict[actId] = ViewName.V3a4_DoubleDropView
+	for index, actId in ipairs(actIdList) do
+		if ActivityHelper.isOpen(actId) then
+			activitySubViewDict[actId] = ViewName.V3a6DoubleDropView
+		end
+	end
+end
+
+function ActivityBeginnerView:_initActivityCollect()
+	local actId = ActivityCollectModel.instance:getCurActivityId()
+
+	if actId and not activitySubViewDict[actId] then
+		activitySubViewDict[actId] = ViewName.ActivityCollectView
 	end
 end
 

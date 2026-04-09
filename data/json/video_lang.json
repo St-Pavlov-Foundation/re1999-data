@@ -305,5 +305,12 @@
       "en",
       "zh"
     ]
+  },
+  {
+    "name": "3_6_pv",
+    "supportLang": [
+      "en",
+      "zh"
+    ]
   }
 ]

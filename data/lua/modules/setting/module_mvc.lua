@@ -1,6 +1,31 @@
 ﻿-- chunkname: @modules/setting/module_mvc.lua
 
 local module_mvc = {
+	CurrencyExchange = {
+		model = {
+			"CurrencyExchangeModel"
+		},
+		controller = {
+			"CurrencyExchangeController"
+		},
+		config = {
+			"CurrencyExchangeConfig"
+		}
+	},
+	Activity231 = {
+		model = {
+			"V3a6YaMiModel"
+		},
+		controller = {
+			"V3a6YaMiController"
+		},
+		rpc = {
+			"V3a6YaMiRpc"
+		},
+		config = {
+			"V3a6YaMiConfig"
+		}
+	},
 	V3a5Puzzle = {
 		controller = {
 			"V3a5PuzzleController"
@@ -34,6 +59,20 @@ local module_mvc = {
 		},
 		config = {
 			"LamonaConfig"
+		}
+	},
+	Activity229 = {
+		model = {
+			"AbyssModel"
+		},
+		controller = {
+			"AbyssController"
+		},
+		rpc = {
+			"AbyssRpc"
+		},
+		config = {
+			"AbyssConfig"
 		}
 	},
 	SummonUISwitch = {
@@ -916,7 +955,8 @@ local module_mvc = {
 		},
 		config = {
 			"Activity125Config",
-			"V2a4_WarmUpConfig"
+			"V2a4_WarmUpConfig",
+			"V3a6_WarmUpConfig"
 		},
 		rpc = {
 			"Activity156Rpc",
@@ -1182,6 +1222,9 @@ local module_mvc = {
 		}
 	},
 	Common = {
+		controller = {
+			"FrameTimerController"
+		},
 		rpc = {
 			"CommonRpc"
 		},
@@ -3590,6 +3633,14 @@ local module_mvc = {
 		controller = {
 			"LorentzGameController",
 			"LorentzController"
+		}
+	},
+	ActivityCollect = {
+		model = {
+			"ActivityCollectModel"
+		},
+		config = {
+			"ActivityCollectConfig"
 		}
 	}
 }

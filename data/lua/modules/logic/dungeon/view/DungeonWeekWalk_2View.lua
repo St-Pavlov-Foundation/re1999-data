@@ -558,6 +558,16 @@ end
 function DungeonWeekWalk_2View:onOpen()
 	HelpController.instance:registerCallback(HelpEvent.RefreshHelp, self._refreshHelpFunc, self._refreshTarget)
 	self:onShow()
+
+	if not self.viewParam then
+		return
+	end
+
+	if self.viewParam.jumpParam == 1 then
+		self:_btnstartOnClick()
+	elseif self.viewParam.jumpParam == 2 then
+		self:_btnstart2OnClick()
+	end
 end
 
 function DungeonWeekWalk_2View:onOpenFinish()
