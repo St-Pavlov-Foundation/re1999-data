@@ -87,6 +87,7 @@ function V3a6PuzzleView:_editableInitView()
 	end
 
 	self._inputCharItems = self:getUserDataTb_()
+	self._finishCharItems = self:getUserDataTb_()
 
 	for i = 1, 7 do
 		local item = self:getUserDataTb_()
@@ -97,6 +98,7 @@ function V3a6PuzzleView:_editableInitView()
 		gohelper.setActive(item.go, false)
 
 		self._inputCharItems[i] = item
+		self._finishCharItems[i] = gohelper.findChildImage(self.viewGO, "Input/Chars_finish/Char" .. i)
 	end
 
 	self._isSuccessChar = {}
@@ -213,6 +215,7 @@ function V3a6PuzzleView:_successPutIn(char)
 	local icon = CharSprite[char]
 
 	UISpriteSetMgr.instance:setAVGSpellingSprite(inputItem.icon, icon)
+	UISpriteSetMgr.instance:setAVGSpellingSprite(self._finishCharItems[self._inputIndex], icon)
 
 	local isAll = self._inputIndex >= #self._correctInput
 	local animName = "get"

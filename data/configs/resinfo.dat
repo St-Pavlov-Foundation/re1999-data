@@ -50551,9 +50551,9 @@
         "v": "94f4576a75e78c9fa8acf80692c98d2e"
       },
       "configs/allmanifest.dat": {
-        "md5": "7c482f028e22c7bcc33d5b68a93c3353",
+        "md5": "595f0bff504303fc15ab5a973a6e5052",
         "size": 1069233,
-        "v": "94f4576a75e78c9fa8acf80692c98d2e"
+        "v": "64d6883e4bd2e2271a372f6bd215fc2b"
       },
       "configs/aotdlls.json": {
         "md5": "47f811dd62e2d11490091f654e5bfc93",
@@ -50571,19 +50571,19 @@
         "v": "94f4576a75e78c9fa8acf80692c98d2e"
       },
       "configs/datacfg_3.dat": {
-        "md5": "a83ac897bb2fa9737b4f085bc1dde18b",
-        "size": 16525328,
-        "v": "94f4576a75e78c9fa8acf80692c98d2e"
+        "md5": "bbe3f99d014236eb7893d840a167b94e",
+        "size": 16525344,
+        "v": "64d6883e4bd2e2271a372f6bd215fc2b"
       },
       "configs/datacfg_4.dat": {
-        "md5": "34257bac0ad66247d7a649c893998062",
-        "size": 16119936,
-        "v": "94f4576a75e78c9fa8acf80692c98d2e"
+        "md5": "a66fa028df798b49f5b96d6a376a2694",
+        "size": 16119952,
+        "v": "64d6883e4bd2e2271a372f6bd215fc2b"
       },
       "configs/datacfg_5.dat": {
-        "md5": "af5ea1869e6cc5daed2034178aa6265e",
+        "md5": "d9e1ecadfbfc3b032246120d34c5ff40",
         "size": 17368224,
-        "v": "94f4576a75e78c9fa8acf80692c98d2e"
+        "v": "64d6883e4bd2e2271a372f6bd215fc2b"
       },
       "configs/langcfg.dat": {
         "md5": "e5a904a9d3ca30475f58814f75b4d9bf",
@@ -50641,9 +50641,9 @@
         "v": "94f4576a75e78c9fa8acf80692c98d2e"
       },
       "configs/metainfo.dat": {
-        "md5": "f436964721fc5fc7bad0b787785e10f4",
+        "md5": "b239da9b2f906fafde4ef70057803e19",
         "size": 232041,
-        "v": "94f4576a75e78c9fa8acf80692c98d2e"
+        "v": "64d6883e4bd2e2271a372f6bd215fc2b"
       },
       "luabytes/0152dd935893d08e38c0685092d77c07.dat": {
         "md5": "9ad898a24341e8d342ff83e9357c65a8",
@@ -50651,9 +50651,9 @@
         "v": "94f4576a75e78c9fa8acf80692c98d2e"
       },
       "luabytes/1ef779789c622b1c289aa82872b7fe05.dat": {
-        "md5": "1b35cc5daf149aab24d26a1a2bcbb400",
-        "size": 37429164,
-        "v": "94f4576a75e78c9fa8acf80692c98d2e"
+        "md5": "a6c3fb8546bb350d3ee6aa8973859d1f",
+        "size": 37429222,
+        "v": "64d6883e4bd2e2271a372f6bd215fc2b"
       },
       "luabytes/24376b19ec1cdb7815e53e2be086b0bb.dat": {
         "md5": "cdc1f92fd03e6e92913714865349903b",
@@ -50706,14 +50706,14 @@
         "v": "94f4576a75e78c9fa8acf80692c98d2e"
       },
       "luabytes/9c2019bedb92e2327bfe12024e2922a4.dat": {
-        "md5": "356c02193fedc9f8ee298e5663e32220",
-        "size": 37488780,
-        "v": "94f4576a75e78c9fa8acf80692c98d2e"
+        "md5": "3272de566af021fb53608bc3bd2dbf8f",
+        "size": 37488842,
+        "v": "64d6883e4bd2e2271a372f6bd215fc2b"
       },
       "luabytes/a29fb508bb459de53603293f1d8fff8a.dat": {
-        "md5": "3b244b3d485296a325136454e52de002",
+        "md5": "00c99349bfabbc2a5c73144b0f662713",
         "size": 688192,
-        "v": "94f4576a75e78c9fa8acf80692c98d2e"
+        "v": "64d6883e4bd2e2271a372f6bd215fc2b"
       },
       "luabytes/a54237b415964e63a6ae90b7bb111416.dat": {
         "md5": "14b89ed275500e5d7e61b379b3a97091",
@@ -54438,9 +54438,9 @@
         "v": "94f4576a75e78c9fa8acf80692c98d2e"
       },
       "audios/Android/en/hero3110_vo.bnk": {
-        "md5": "239f3c5a70676e3e3fb2127289555a40",
+        "md5": "8ae4c381fc00275c448c230e59b2fcfa",
         "size": 244081,
-        "v": "94f4576a75e78c9fa8acf80692c98d2e"
+        "v": "64d6883e4bd2e2271a372f6bd215fc2b"
       },
       "audios/Android/en/hero311003_mainvoc.bnk": {
         "md5": "1afa93b1d8077bc03c40bd80f1373372",
