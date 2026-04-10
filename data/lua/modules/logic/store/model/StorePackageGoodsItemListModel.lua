@@ -61,7 +61,6 @@ function StorePackageGoodsItemListModel:setMOList(storeMO, moList, excludeList)
 
 	StoreController.instance:dispatchEvent(StoreEvent.BeforeUpdatePackageStore)
 	self:setList(self._moList)
-	StoreController.instance:dispatchEvent(StoreEvent.AfterUpdatePackageStore)
 
 	if next(self._moList) then
 		local scrollView = self._scrollViews[1]
@@ -72,6 +71,8 @@ function StorePackageGoodsItemListModel:setMOList(storeMO, moList, excludeList)
 
 		scrollView:moveToByIndex(1)
 	end
+
+	StoreController.instance:dispatchEvent(StoreEvent.AfterUpdatePackageStore)
 end
 
 function StorePackageGoodsItemListModel:checkShow(goodsMO, isChargeGoods)

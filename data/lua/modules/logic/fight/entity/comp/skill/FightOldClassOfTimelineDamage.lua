@@ -875,17 +875,24 @@ function FightOldClassOfTimelineDamage:_playAction(entity, action)
 		return
 	end
 
-	if entity.buff:haveBuffId(2112031) then
+	if not entity.buff then
+		return
+	end
+
+	if entity.buff and entity.buff:haveBuffId(2112031) then
 		return
 	end
 
 	action = FightHelper.processEntityActionName(entity, action, self.fightStepData)
 
-	entity.spine:play(action, false, true, true)
-	entity.spine:addAnimEventCallback(self._onAnimEvent, self, {
-		entity,
-		action
-	})
+	if entity.spine then
+		entity.spine:play(action, false, true, true)
+		entity.spine:addAnimEventCallback(self._onAnimEvent, self, {
+			entity,
+			action
+		})
+	end
+
 	table.insert(self._hitActionDefenders, entity)
 
 	local count = HittingEntity2Counter[entity.id] or 0

@@ -19,6 +19,10 @@ function V3a6_WarmUpConfig:reqConfigNames()
 	}
 end
 
+function V3a6_WarmUpConfig:actId()
+	return 13612
+end
+
 function V3a6_WarmUpConfig:onConfigLoaded(configName, configTable)
 	if configName == "v3a6_warmup_story" then
 		self.__v3a6_warmup_dialog = nil

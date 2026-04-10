@@ -278,16 +278,22 @@ function PackageStoreView:_refreshGoods(update, scrollToRadDot)
 
 		StorePackageGoodsItemListModel.instance:setMOList(nil, goodMoList)
 		self:updateRecommendPackageList(scrollToRadDot)
-		self.viewContainer:playPackageStoreAnimation()
+
+		if update then
+			self:playOpenAnim()
+		end
 	elseif update then
 		StoreModel.instance:setCurPackageStore(self.storeId)
 		StoreModel.instance:setPackageStoreRpcNum(2)
 		StoreRpc.instance:sendGetStoreInfosRequest({
 			self.storeId
 		})
-		ChargeRpc.instance:sendGetChargeInfoRequest()
-		self.viewContainer:playPackageStoreAnimation()
+		ChargeRpc.instance:sendGetChargeInfoRequest(self.playOpenAnim, self)
 	end
+end
+
+function PackageStoreView:playOpenAnim()
+	self.viewContainer:playPackageStoreAnimation()
 end
 
 function PackageStoreView:_onRefreshRedDot()

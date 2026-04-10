@@ -385,4 +385,27 @@ function VersionActivity3_6EnterView:_checkVerticalScroll()
 	gohelper.setActive(self.goArrowRedDot, false)
 end
 
+function VersionActivity3_6EnterView:onClickActivity13608(tabItem)
+	local actId = VersionActivity3_6Enum.ActivityId.YaMi
+
+	if self.curActId == actId then
+		return
+	end
+
+	local function cb()
+		tabItem.animator:Play("click", 0, 0)
+		VersionActivityBaseController.instance:dispatchEvent(VersionActivityEnterViewEvent.SelectActId, actId, tabItem)
+	end
+
+	local status, toastId, paramList = ActivityHelper.getActivityStatusAndToast(actId)
+
+	if status == ActivityEnum.ActivityStatus.Normal or status == ActivityEnum.ActivityStatus.NotUnlock then
+		V3a6YaMiRpc.instance:sendGetAct231InfoRequest(cb, self)
+	else
+		cb(self)
+	end
+
+	AudioMgr.instance:trigger(AudioEnum.TeachNote.play_ui_closehouse)
+end
+
 return VersionActivity3_6EnterView

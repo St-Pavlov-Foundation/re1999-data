@@ -125,7 +125,7 @@ function V3a6_WarmUp_TaskItem:onUpdateMO(mo)
 	self:_refreshRewardItems(rewardList)
 end
 
-function V3a6_WarmUp_TaskItem:_create_V3a6_WarmUp_rewarditem()
+function V3a6_WarmUp_TaskItem:_create_V3a6_WarmUp_rewarditem(index)
 	local go = gohelper.cloneInPlace(self._gorewarditem)
 	local item = V3a6_WarmUp_rewarditem.New({
 		parent = self,
@@ -136,6 +136,10 @@ function V3a6_WarmUp_TaskItem:_create_V3a6_WarmUp_rewarditem()
 	item:init(go)
 
 	return item
+end
+
+function V3a6_WarmUp_TaskItem:getAnimator()
+	return self.animator
 end
 
 return V3a6_WarmUp_TaskItem

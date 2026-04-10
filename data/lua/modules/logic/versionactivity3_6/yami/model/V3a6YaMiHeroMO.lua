@@ -39,17 +39,17 @@ end
 
 function V3a6YaMiHeroMO:isCanUnlock()
 	local curCost = V3a6YaMiModel.instance:getCurSelectMaterialCost()
-	local isEnoughCurrency = V3a6YaMiModel.instance:isEnoughCurrency(self.co.cost + curCost)
-
-	if not isEnoughCurrency then
-		return false, V3a6YaMiEnum.ToastId.NoEnoughMoney
-	end
-
 	local unlockLevel = self:getUnlockLevel()
 	local _, level, _ = V3a6YaMiModel.instance:getLevelExp()
 
 	if level < unlockLevel then
 		return false, V3a6YaMiEnum.ToastId.NoEnoughLevel
+	end
+
+	local isEnoughCurrency = V3a6YaMiModel.instance:isEnoughCurrency(self.co.cost + curCost)
+
+	if not isEnoughCurrency then
+		return false, V3a6YaMiEnum.ToastId.NoEnoughMoney
 	end
 
 	return true

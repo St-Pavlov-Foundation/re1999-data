@@ -34,6 +34,10 @@ function V3a6_WarmUpDayItemBase:isEpisodeReallyOpen(episodeId)
 	return self:_assetGetViewContainer():isEpisodeReallyOpen(episodeId or self:episodeId())
 end
 
+function V3a6_WarmUpDayItemBase:getSavedPlayedUnlock(episodeId)
+	return self:_assetGetViewContainer():getSavedPlayedUnlock(episodeId or self:episodeId())
+end
+
 function V3a6_WarmUpDayItemBase:_btnClickOnClick()
 	local p = self:parent()
 

@@ -161,8 +161,9 @@ function V3a6YaMiMainView:_refreshMission()
 	end
 
 	local preMissionId = GameUtil.playerPrefsGetNumberByUserId(V3a6YaMiEnum.PrefsKey.MissionId, 0)
+	local missionMo = V3a6YaMiModel.instance:getCurMissionMo()
 
-	if preMissionId ~= 0 then
+	if preMissionId ~= 0 and (missionMo and missionMo.id) ~= preMissionId then
 		local preMisionMo = V3a6YaMiModel.instance:getMission(preMissionId)
 
 		if preMisionMo then

@@ -13,6 +13,7 @@ function V3a6YaMiHeroDetailView:onInitView()
 	self._golock = gohelper.findChild(self.viewGO, "root/#go_lock")
 	self._btnhirenotenough = gohelper.findChildButtonWithAudio(self.viewGO, "root/#go_lock/#btn_hirenotenough")
 	self._txtfunding1 = gohelper.findChildText(self.viewGO, "root/#go_lock/#btn_hirenotenough/#txt_funding")
+	self._txtlock = gohelper.findChildText(self.viewGO, "root/#go_lock/#btn_hirenotenough/#txt_lock")
 	self._btnhirenormal = gohelper.findChildButtonWithAudio(self.viewGO, "root/#go_lock/#btn_hirenormal")
 	self._txtfunding2 = gohelper.findChildText(self.viewGO, "root/#go_lock/#btn_hirenormal/#txt_funding")
 	self._goempty = gohelper.findChild(self.viewGO, "root/#go_empty")
@@ -110,14 +111,31 @@ function V3a6YaMiHeroDetailView:showUnlockBtn()
 		isForceHideBtn = self.viewContainer:isForceHideUnlockBtn()
 	end
 
+	local cost = self.mo.co.cost or 0
+
 	if not isForceHideBtn then
 		if isCanUnlock then
 			self._txtfunding2.text = self.mo.co.cost
 		else
-			local color = (isCanUnlock or toast ~= V3a6YaMiEnum.ToastId.NoEnoughMoney) and "#C6C5C5" or "#C36363"
+			local curCost = V3a6YaMiModel.instance:getCurSelectMaterialCost()
+			local isEnoughCurrency = V3a6YaMiModel.instance:isEnoughCurrency(cost + curCost)
+			local color = isEnoughCurrency and "#C6C5C5" or "#C36363"
 
 			self._txtfunding1.color = GameUtil.parseColor(color)
-			self._txtfunding1.text = self.mo.co.cost
+			self._txtfunding1.text = cost
+
+			local _, level, _ = V3a6YaMiModel.instance:getLevelExp()
+			local unlockLevel = self.mo:getUnlockLevel()
+			local isShowLockLevel = level < unlockLevel
+
+			if isShowLockLevel then
+				local lang = luaLang("v3a6_yami_material_unlock")
+
+				self._txtlock.text = GameUtil.getSubPlaceholderLuaLangOneParam(lang, unlockLevel)
+			end
+
+			gohelper.setActive(self._txtlock.gameObject, isShowLockLevel)
+			gohelper.setActive(self._txtfunding1.gameObject, not isShowLockLevel and not isEnoughCurrency)
 		end
 	end
 

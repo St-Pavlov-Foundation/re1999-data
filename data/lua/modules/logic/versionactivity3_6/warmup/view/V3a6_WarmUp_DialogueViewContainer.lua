@@ -8,7 +8,14 @@ local ti = table.insert
 local sf = string.format
 
 function V3a6_WarmUp_DialogueViewContainer:actId()
-	return Activity125Config.instance:getWarmUpActId()
+	return V3a6_WarmUpConfig.instance:actId()
+end
+
+function V3a6_WarmUp_DialogueViewContainer:getCutsceneResUrl(bShownCutscene)
+	local episodeId = self._level
+	local resName = bShownCutscene and string.format("v3a6_warmup_day%s_2", episodeId) or string.format("v3a6_warmup_day%s_1", episodeId)
+
+	return ResUrl.getV3a6WarmUpSingleBg(resName)
 end
 
 function V3a6_WarmUp_DialogueViewContainer:buildViews()

@@ -139,6 +139,7 @@ function V3a6_WarmUp:_editableInitView_dayItems()
 	self._daysGo = gohelper.findChild(self.viewGO, "reward_panel/#simage_fullbg2/Days")
 	self._daysAnimatorPlayer = csAnimatorPlayer.Get(self._daysGo)
 	self._daysAnimator = self._daysAnimatorPlayer.animator
+	self._daysAnimEvent = gohelper.onceAddComponent(self._daysGo, gohelper.Type_AnimationEventWrap)
 
 	local dayGo1 = gohelper.findChild(self._daysGo, "day01")
 	local dayItem1 = self:_create_V3a6_WarmUpDayItem(dayGo1, 1)
@@ -156,6 +157,8 @@ function V3a6_WarmUp:_editableInitView_dayItems()
 
 		table.insert(self._dayItemList, item)
 	end
+
+	self._daysAnimEvent:AddEventListener("play_ui_activity_role_move", self._play_ui_activity_role_move, self)
 end
 
 function V3a6_WarmUp:_setActiveTaskGoto(bActiveGoto)
@@ -176,16 +179,16 @@ function V3a6_WarmUp:onUpdateParam()
 	self:_refresh()
 end
 
-function V3a6_WarmUp:onOpen()
-	self.__bOnOpend = false
-
+function V3a6_WarmUp:onOpenFinish()
 	local day1 = self.viewContainer:day1Episode()
 	local bPassedDay1 = self:_getbPassedAndbClaimable(day1)
 
 	if bPassedDay1 then
 		self:_tryOnOpen()
 	end
+end
 
+function V3a6_WarmUp:onOpen()
 	TaskController.instance:registerCallback(TaskEvent.SetTaskList, self._refreshTaskInfo, self)
 	TaskController.instance:registerCallback(TaskEvent.UpdateTaskList, self._refreshTaskInfo, self)
 end
@@ -199,9 +202,12 @@ function V3a6_WarmUp:onClose()
 end
 
 function V3a6_WarmUp:onDestroyView()
+	self.__bOnOpend = false
+
 	TaskDispatcher.cancelTask(self._refreshTaskGoto, self)
 	TaskDispatcher.cancelTask(self._showLeftTime, self)
 	self._animEvent:RemoveAllEventListener()
+	self._daysAnimEvent:RemoveAllEventListener()
 	GameUtil.onDestroyViewMember(self, "_flow")
 	GameUtil.onDestroyViewMemberList(self, "_dayItemList")
 end
@@ -408,11 +414,24 @@ function V3a6_WarmUp:_playDaysIdle(day)
 	end
 end
 
-function V3a6_WarmUp:_playDaysGoAnim(day, cb, cbObj)
+local kBlock_Click = "V3a6_WarmUp:_playDaysGoAnim"
+local kTimeout = 5
+
+function V3a6_WarmUp:_playDaysGoAnim(day, cb_, cbObj_)
+	UIBlockHelper.instance:startBlock(kBlock_Click, kTimeout, self.viewName)
+
+	local function wrapCb(Self)
+		if cb_ then
+			cb_(cbObj_)
+		end
+
+		UIBlockHelper.instance:endBlock(kBlock_Click)
+	end
+
 	local animName = _getDayAnimName(day)
 
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_activity_role_move)
-	self:_playDaysAnim(animName, cb, cbObj)
+	self:_playDaysAnim(animName, wrapCb, self)
 end
 
 function V3a6_WarmUp:_getDayItem(episodeId)
@@ -449,9 +468,13 @@ function V3a6_WarmUp:onClickItem(dayItem)
 		return
 	end
 
-	self._tmpEpisodeId = episodeId
+	if self._tmpEpisodeId == episodeId then
+		self:_onPlayDaysGoAnimDone()
+	else
+		self._tmpEpisodeId = episodeId
 
-	self:_playDaysGoAnim(episodeId, self._onPlayDaysGoAnimDone, self)
+		self:_playDaysGoAnim(episodeId, self._onPlayDaysGoAnimDone, self)
+	end
 end
 
 function V3a6_WarmUp:_onPlayDaysGoAnimDone()
@@ -541,6 +564,10 @@ function V3a6_WarmUp:_refreshTaskGoto()
 	else
 		self._txtgoto.text = luaLang("v3a6_warmup_txt_goto2")
 	end
+end
+
+function V3a6_WarmUp:_play_ui_activity_role_move()
+	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_activity_role_move)
 end
 
 return V3a6_WarmUp

@@ -93,7 +93,7 @@ function ActivityCategoryItem:_refreshItem()
 			if self._selected and redDotId > 0 then
 				RedDotRpc.instance:sendShowRedDotRequest(redDotId, false)
 			end
-		elseif actId == ActivityEnum.Activity.Activity1_7WarmUp then
+		elseif actId == ActivityEnum.Activity.Activity1_7WarmUp or actId == V3a6_WarmUpConfig.instance:actId() then
 			if self._selected then
 				Activity125Controller.instance:saveEnterActDateInfo(actId)
 

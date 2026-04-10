@@ -5,11 +5,11 @@ module("modules.logic.versionactivity3_6.warmup.view.V3a6_WarmUp_TaskView", pack
 local V3a6_WarmUp_TaskView = class("V3a6_WarmUp_TaskView", BaseView)
 
 function V3a6_WarmUp_TaskView:onInitView()
+	self._btncloseEmpty = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_closeEmpty")
 	self._btnclose = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_close")
 	self._simagebg = gohelper.findChildSingleImage(self.viewGO, "#simage_bg")
 	self._scrollreward = gohelper.findChildScrollRect(self.viewGO, "right/#scroll_reward")
 	self._gorewardcontent = gohelper.findChild(self.viewGO, "right/#scroll_reward/viewport/#go_rewardcontent")
-	self._gotopleft = gohelper.findChild(self.viewGO, "#go_topleft")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -17,11 +17,17 @@ function V3a6_WarmUp_TaskView:onInitView()
 end
 
 function V3a6_WarmUp_TaskView:addEvents()
+	self._btncloseEmpty:AddClickListener(self._btncloseEmptyOnClick, self)
 	self._btnclose:AddClickListener(self._btncloseOnClick, self)
 end
 
 function V3a6_WarmUp_TaskView:removeEvents()
+	self._btncloseEmpty:RemoveClickListener()
 	self._btnclose:RemoveClickListener()
+end
+
+function V3a6_WarmUp_TaskView:_btncloseEmptyOnClick()
+	self:closeThis()
 end
 
 function V3a6_WarmUp_TaskView:_btncloseOnClick()

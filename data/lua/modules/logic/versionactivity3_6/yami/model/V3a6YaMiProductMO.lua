@@ -36,7 +36,7 @@ end
 
 function V3a6YaMiProductMO:setMaterials(subType, materials)
 	self.subType = subType
-	self.materials = tabletool.copy(materials)
+	self.materials = materials and tabletool.copy(materials) or {}
 end
 
 function V3a6YaMiProductMO:setLock(isLock)

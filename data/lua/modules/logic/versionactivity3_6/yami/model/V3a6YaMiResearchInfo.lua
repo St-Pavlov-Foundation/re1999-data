@@ -83,7 +83,7 @@ function V3a6YaMiResearchInfo:getSecondStepInfos(second)
 end
 
 function V3a6YaMiResearchInfo:getTotalTime()
-	return self._totalTime or V3a6YaMiConfig.instance:getConstValueByConst(V3a6YaMiEnum.ConstId.PerformTime)
+	return V3a6YaMiConfig.instance:getConstValueByConst(V3a6YaMiEnum.ConstId.PerformTime)
 end
 
 function V3a6YaMiResearchInfo:isFinishResearch()

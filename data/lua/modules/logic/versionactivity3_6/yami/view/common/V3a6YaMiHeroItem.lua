@@ -17,6 +17,7 @@ function V3a6YaMiHeroItem:onInitView()
 	self._btnclick = gohelper.findChildButtonWithAudio(self.viewGO, "root/#btn_click")
 	self._txtchessname2 = gohelper.findChildText(self.viewGO, "root/#go_lock/#txt_chessname")
 	self._gounlock = gohelper.findChild(self.viewGO, "root/#go_lock/#btn_unlock")
+	self._txtunlock = gohelper.findChildText(self.viewGO, "root/#go_lock/#btn_unlock/#txt_unlock")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -85,9 +86,25 @@ function V3a6YaMiHeroItem:onUpdateMO(mo)
 		isForceHideBtn = self.viewContainer:isForceHideUnlockBtn()
 	end
 
-	gohelper.setActive(self._txtfundingnormal.gameObject, mo.isLock and not isForceHideBtn)
 	gohelper.setActive(self._txtchessname2.gameObject, mo.isLock and isForceHideBtn)
 	gohelper.setActive(self._gounlock, mo.isLock and not isForceHideBtn)
+
+	local isShowLockLevel = false
+
+	if mo.isLock and not isForceHideBtn then
+		local _, level, _ = V3a6YaMiModel.instance:getLevelExp()
+		local unlockLevel = mo:getUnlockLevel()
+
+		if level < unlockLevel then
+			local lang = luaLang("v3a6_yami_material_unlock")
+
+			self._txtunlock.text = GameUtil.getSubPlaceholderLuaLangOneParam(lang, unlockLevel)
+			isShowLockLevel = true
+		end
+	end
+
+	gohelper.setActive(self._txtunlock.gameObject, isShowLockLevel)
+	gohelper.setActive(self._txtfundingnormal.gameObject, not isShowLockLevel and mo.isLock and not isForceHideBtn)
 
 	if not self._isPlayingUnlockAnim then
 		gohelper.setActive(self._gonormal, not mo.isLock)

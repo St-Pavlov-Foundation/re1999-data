@@ -30,7 +30,7 @@ function V3a6_WarmUp_TaskListModel:refreshList(optActId)
 	local COs = self:_getAct125COList(optActId)
 	local dataList = {}
 
-	for episodeId, CO in pairs(COs) do
+	for _, CO in pairs(COs) do
 		local rewardBonus
 		local episodeId = CO.id
 		local isRecevied, localIsPlay, _, canGetReward = self:_getRLOC(episodeId, optActId)

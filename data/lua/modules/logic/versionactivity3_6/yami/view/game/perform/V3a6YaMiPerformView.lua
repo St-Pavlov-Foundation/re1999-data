@@ -117,6 +117,10 @@ end
 function V3a6YaMiPerformView:_onNextStep()
 	local stepInfo = self._stepInfos[self._curStepIndex]
 
+	if not stepInfo then
+		return
+	end
+
 	if stepInfo.isFinish then
 		self._researchInfo:onFinishResearch()
 
@@ -129,6 +133,10 @@ function V3a6YaMiPerformView:_onNextStep()
 end
 
 function V3a6YaMiPerformView:_startFSkillStep(stepInfo)
+	if not stepInfo then
+		return
+	end
+
 	self._entityMgr:useSkill(stepInfo.researcherId, stepInfo.skillId, stepInfo.effectId)
 	self:_onNextStep()
 end
@@ -221,7 +229,7 @@ function V3a6YaMiPerformView:_getInitAttr()
 	local stepInfos = self:_getInitStep()
 
 	if stepInfos then
-		for i = #stepInfos, 1 do
+		for i = #stepInfos, 1, -1 do
 			if stepInfos[i].attr then
 				return stepInfos[i].attr
 			end
@@ -256,7 +264,7 @@ function V3a6YaMiPerformView:_onFrame()
 		return
 	end
 
-	if self._researchInfo:isFinishResearch() then
+	if self._researchInfo:isFinishResearch() and self._totalTime - self._performTime < 0 then
 		self:_onFinishResearch()
 
 		return

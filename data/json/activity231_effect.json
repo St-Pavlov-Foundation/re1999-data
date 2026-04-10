@@ -80,11 +80,6 @@
     "effectVx": "fire"
   },
   {
-    "id": 3620034,
-    "desc": "结算频率+1",
-    "effectVx": "fire"
-  },
-  {
     "id": 3620041,
     "desc": "自身全属性+80%",
     "effectVx": "idea"
@@ -111,11 +106,6 @@
   },
   {
     "id": 3620073,
-    "desc": "房间全属性+75%",
-    "effectVx": "fire"
-  },
-  {
-    "id": 3620074,
     "desc": "房间全属性+75%",
     "effectVx": "fire"
   },

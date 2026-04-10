@@ -468,7 +468,7 @@ end
 
 function V3a6_WarmUpDialogueItem.s_state(eState)
 	for k, v in pairs(EState) do
-		if t == v then
+		if k == v then
 			return k
 		end
 	end

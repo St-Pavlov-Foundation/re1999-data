@@ -81,6 +81,8 @@ function V3a6YaMiEnterView:_editableInitView()
 	self._actId = VersionActivity3_6Enum.ActivityId.YaMi
 	self._actCo = ActivityConfig.instance:getActivityCo(self._actId)
 	self._txtDescr.text = self._actCo.actDesc
+
+	RedDotController.instance:addRedDot(self._goreddot, RedDotEnum.DotNode.V3a6YaMi)
 end
 
 function V3a6YaMiEnterView:everySecondCall()

@@ -8910,5 +8910,9 @@
   {
     "id": "Playercard_badge_limittime",
     "lang": "剩余展示时间：▩1%s"
+  },
+  {
+    "id": "collectView_weekwalk_unlock_tip",
+    "lang": "通关浅眠域后解锁"
   }
 ]

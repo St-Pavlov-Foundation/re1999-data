@@ -23,7 +23,7 @@ function V3a6_WarmUp_TaskViewContainer:buildViews()
 	local times = {}
 
 	for i = 1, 5 do
-		times[i] = (i - 1) * 0.06
+		times[i] = (i - 1) * 0.06 + 0.3
 	end
 
 	self.notPlayAnimation = true
@@ -35,22 +35,8 @@ function V3a6_WarmUp_TaskViewContainer:buildViews()
 	}
 end
 
-function V3a6_WarmUp_TaskViewContainer:buildTabViews(tabContainerId)
-	if tabContainerId == kTabContainerId_NavigateButtonsView then
-		self._navigateButtonsView = NavigateButtonsView.New({
-			true,
-			true,
-			false
-		})
-
-		return {
-			self._navigateButtonsView
-		}
-	end
-end
-
 function V3a6_WarmUp_TaskViewContainer:actId()
-	return Activity125Config.instance:getWarmUpActId()
+	return V3a6_WarmUpConfig.instance:actId()
 end
 
 return V3a6_WarmUp_TaskViewContainer

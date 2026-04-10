@@ -38,6 +38,8 @@ function V3a6_WarmUpContainer:onCloseViewFinish(viewName)
 
 	self._warmUp:_refreshTaskInfo()
 	self._warmUp:_refreshTaskReward()
+	self._warmUp:_autoSelectTab()
+	self._warmUp:_tryPlayUnlockAnim()
 end
 
 function V3a6_WarmUpContainer:_onDailyRefresh()

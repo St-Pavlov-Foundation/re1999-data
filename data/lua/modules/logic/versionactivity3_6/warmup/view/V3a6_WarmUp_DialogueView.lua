@@ -7,6 +7,7 @@ local V3a6_WarmUp_DialogueView = class("V3a6_WarmUp_DialogueView", BaseView)
 function V3a6_WarmUp_DialogueView:onInitView()
 	self._simagefullbg = gohelper.findChildSingleImage(self.viewGO, "#simage_fullbg")
 	self._gotalking = gohelper.findChild(self.viewGO, "#simage_fullbg/Left/node_role/#go_talking")
+	self._simagesmalltalk = gohelper.findChildSingleImage(self.viewGO, "#simage_fullbg/Left/node_role/#simage_smalltalk")
 	self._txtrolename = gohelper.findChildText(self.viewGO, "#simage_fullbg/Left/node_role/#txt_rolename")
 	self._btnClickArea = gohelper.findChildButtonWithAudio(self.viewGO, "#simage_fullbg/Right/go_node1/#btn_ClickArea")
 	self._godialoguecontainer = gohelper.findChild(self.viewGO, "#simage_fullbg/Right/go_node2/#go_dialoguecontainer")
@@ -49,6 +50,14 @@ local csAnimatorPlayer = SLFramework.AnimatorPlayer
 local csTweenHelper = ZProj.TweenHelper
 
 function V3a6_WarmUp_DialogueView:_btnClickAreaOnClick()
+	local resUrl = self.viewContainer:getCutsceneResUrl(true)
+
+	GameUtil.loadSImage(self._simagesmalicon, resUrl)
+	TaskDispatcher.cancelTask(self._onClickAreaDone, self)
+	TaskDispatcher.runDelay(self._onClickAreaDone, self, 0.8)
+end
+
+function V3a6_WarmUp_DialogueView:_onClickAreaDone()
 	local item = self:_getLastItem()
 
 	if self:_bFF() then
@@ -87,8 +96,6 @@ function V3a6_WarmUp_DialogueView:fastForwardToEnd()
 		local dialogCO = self.viewContainer:pop()
 		local isNil = dialogCO == nil
 
-		isBreak = isNil
-
 		if not isNil then
 			local item = self:_appendDialogueItem(dialogCO)
 
@@ -107,7 +114,7 @@ end
 
 function V3a6_WarmUp_DialogueView:onChangedAuto(bAuto)
 	if bAuto then
-		local item = optItem or self:_getLastItem()
+		local item = self:_getLastItem()
 
 		if not item or item and item:bCompleted() then
 			self:_moveStep()
@@ -153,6 +160,7 @@ function V3a6_WarmUp_DialogueView:_editableInitView()
 	self._imageautoonGo = self._imageautoon.gameObject
 	self._nodeRoleGo = gohelper.findChild(self.viewGO, "#simage_fullbg/Left/node_role")
 	self._nodeRoleAnimator = self._nodeRoleGo:GetComponent(gohelper.Type_Animator)
+	self._simagesmalicon = gohelper.findChildSingleImage(self._node1Go, "#simage_smalicon")
 
 	gohelper.setActive(self._goleftdialogueitem, false)
 	self:_setActive_GlobalClick(false)
@@ -184,6 +192,7 @@ end
 function V3a6_WarmUp_DialogueView:onClose()
 	self._scrollcontent:RemoveOnValueChanged()
 	TaskDispatcher.cancelTask(self._moveStep, self)
+	TaskDispatcher.cancelTask(self._onClickAreaDone, self)
 	GameUtil.onDestroyViewMember_TweenId(self, "_upTween")
 	GameStateMgr.instance:unregisterCallback(GameStateEvent.OnTouchScreen, self._onTouchScreen, self)
 
@@ -192,6 +201,7 @@ end
 
 function V3a6_WarmUp_DialogueView:onDestroyView()
 	TaskDispatcher.cancelTask(self._moveStep, self)
+	TaskDispatcher.cancelTask(self._onClickAreaDone, self)
 	GameStateMgr.instance:unregisterCallback(GameStateEvent.OnTouchScreen, self._onTouchScreen, self)
 	GameUtil.onDestroyViewMember_TweenId(self, "_upTween")
 	GameUtil.onDestroyViewMemberList(self, "_dialogueItemList")
@@ -231,6 +241,8 @@ function V3a6_WarmUp_DialogueView:_moveStep()
 
 	local dialogCO = self.viewContainer:pop()
 
+	gohelper.setActive(self._goarrow, false)
+
 	if not dialogCO then
 		self:_onCompleted()
 	else
@@ -240,7 +252,10 @@ end
 
 function V3a6_WarmUp_DialogueView:_appendDialogueItem(dialogCO)
 	local item = self:_create_V3a6_WarmUpDialogueItem()
+	local resName = "smalltalk/" .. tostring(dialogCO.bg)
+	local resUrl = ResUrl.getV3a6WarmUpSingleBg(resName)
 
+	GameUtil.loadSImage(self._simagesmalltalk, resUrl)
 	ti(self._dialogueItemList, item)
 	item:setActive(true)
 	item:onUpdateMO(dialogCO)
@@ -326,6 +341,10 @@ function V3a6_WarmUp_DialogueView:_showCutScene(item)
 	self:_setActive_GlobalClick(false)
 	self:_setActive_nodeGo(true)
 	self:_setActive_gobtnright(false)
+
+	local resUrl = self.viewContainer:getCutsceneResUrl(false)
+
+	GameUtil.loadSImage(self._simagesmalicon, resUrl)
 end
 
 function V3a6_WarmUp_DialogueView:onCloseCutScene(item)
@@ -370,6 +389,7 @@ end
 function V3a6_WarmUp_DialogueView:onStepEnd(item)
 	TaskDispatcher.cancelTask(self._moveStep, self)
 	self:_setActive_GlobalClick(true)
+	gohelper.setActive(self._goarrow, true)
 
 	if self.viewContainer:isAuto() then
 		TaskDispatcher.cancelTask(self._moveStep, self)
@@ -391,6 +411,7 @@ end
 function V3a6_WarmUp_DialogueView:_onCompleted()
 	TaskDispatcher.cancelTask(self._moveStep, self)
 	self:_setActive_GlobalClick(false)
+	self:_setActive_gobtnright(false)
 	self:_enabledScroll(true)
 	self:_setActive_goreward(true)
 	self.viewContainer:markDoneSlient()

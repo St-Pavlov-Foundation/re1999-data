@@ -45,13 +45,9 @@ function V3a6_WarmUpDayItem2_5:setData(mo)
 
 	local isRecevied, localIsPlay = self:getRLOC()
 	local bPassed = isRecevied or localIsPlay
-	local bUnlocked = true
+	local bShowUnlocked = self:isEpisodeReallyOpen() and self:getSavedPlayedUnlock()
 
-	if not bPassed then
-		bUnlocked = self:isEpisodeReallyOpen()
-	end
-
-	self:playIdleAnim(bPassed, bUnlocked)
+	self:playIdleAnim(bPassed, bShowUnlocked)
 end
 
 function V3a6_WarmUpDayItem2_5:_playAnim(name, cb, cbObj)

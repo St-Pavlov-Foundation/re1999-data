@@ -1803,6 +1803,10 @@ function ResUrl.getV3a6YaMiItemSingleBg(resName)
 	return string.format("singlebg/survival_singlebg/collection/%s.png", resName)
 end
 
+function ResUrl.getV3a6WarmUpSingleBg(resName)
+	return string.format("singlebg/v3a6_warmup_singlebg/%s.png", resName)
+end
+
 function ResUrl.getUISpinePrefabBySkin(skinCO)
 	if not skinCO then
 		return ""
