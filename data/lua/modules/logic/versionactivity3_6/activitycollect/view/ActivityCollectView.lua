@@ -242,14 +242,9 @@ function ActivityCollectView:_refreshAct5()
 	local openId = OpenEnum.UnlockFunc.WeekWalk
 	local isOpen = self:_isWeekWalkOpen(openId)
 
-	gohelper.setActive(self._goact5icon, isOpen)
+	gohelper.setActive(self._txtact5num.gameObject, isOpen)
 
 	if not isOpen then
-		local episodeId = OpenConfig.instance:getOpenCo(openId).episodeId
-		local episodetxt = DungeonConfig.instance:getEpisodeDisplay(episodeId)
-
-		self._txtact5num.text = string.format(luaLang("dungeon_unlock_episode_mode_sp"), episodetxt)
-
 		return
 	end
 
@@ -269,6 +264,14 @@ function ActivityCollectView:_isWeekWalkOpen(openId)
 		return false
 	end
 
+	local info = WeekWalkModel.instance:getInfo()
+	local mapLayerInfo = info and info:getMapInfoByLayer(WeekWalkEnum.LastShallowLayer)
+	local isShallowLayerFinish = mapLayerInfo and mapLayerInfo.isFinished == 1
+
+	if not isShallowLayerFinish then
+		return false
+	end
+
 	return OpenModel.instance:isFunctionUnlock(openId)
 end
 
@@ -276,14 +279,9 @@ function ActivityCollectView:_refreshAct6()
 	local openId = OpenEnum.UnlockFunc.WeekWalkHeart
 	local isOpen = self:_isWeekWalkOpen(openId)
 
-	gohelper.setActive(self._goact6icon, isOpen)
+	gohelper.setActive(self._txtact6num.gameObject, isOpen)
 
 	if not isOpen then
-		local episodeId = OpenConfig.instance:getOpenCo(openId).episodeId
-		local episodetxt = DungeonConfig.instance:getEpisodeDisplay(episodeId)
-
-		self._txtact6num.text = string.format(luaLang("dungeon_unlock_episode_mode_sp"), episodetxt)
-
 		return
 	end
 
@@ -359,6 +357,7 @@ function ActivityCollectView:_refreshAct1Time()
 
 			self._txtact1opentime.text = formatLuaLang("dungeon_unlock_episode_mode", episodetxt)
 
+			gohelper.setActive(self._btnact1jump.gameObject, false)
 			gohelper.setActive(self._goact1opentime, true)
 			gohelper.setActive(self._goact1limittime, false)
 
@@ -366,25 +365,26 @@ function ActivityCollectView:_refreshAct1Time()
 		end
 	end
 
-	local offsetSecond = actInfoMo:getRealStartTimeStamp() - ServerTime.now()
-	local isNotOpen = offsetSecond > 0
+	local isOpen = actInfoMo and actInfoMo:isOpen()
 
-	if isNotOpen then
+	if not isOpen then
+		local offsetSecond = actInfoMo:getRealStartTimeStamp() - ServerTime.now()
 		local timeStr = TimeUtil.secondToRoughTime3(offsetSecond)
 
 		self._txtact1opentime.text = string.format(luaLang("seasonmainview_timeopencondition"), timeStr)
 	else
-		offsetSecond = actInfoMo:getRealEndTimeStamp() - ServerTime.now()
+		local offsetSecond = actInfoMo:getRealEndTimeStamp() - ServerTime.now()
+
 		self._txtact1limittime.text = TimeUtil.secondToRoughTime3(offsetSecond)
 	end
 
-	gohelper.setActive(self._goact1opentime, isNotOpen)
-	gohelper.setActive(self._goact1limittime, not isNotOpen)
-	gohelper.setActive(self._btnact1jump, not isNotOpen)
+	gohelper.setActive(self._goact1opentime, not isOpen)
+	gohelper.setActive(self._goact1limittime, isOpen)
+	gohelper.setActive(self._btnact1jump.gameObject, isOpen)
 end
 
 function ActivityCollectView:_refreshAct2Time()
-	local co = ActivityCollectConfig.instance:getPublicityCfg(1, self._actId)
+	local co = ActivityCollectConfig.instance:getPublicityCfg(2, self._actId)
 
 	if not co or not co.activityId or co.activityId == 0 then
 		return
@@ -397,7 +397,7 @@ function ActivityCollectView:_refreshAct2Time()
 		return
 	end
 
-	local actCo = ActivityConfig.instance:getActivityCo(self._actId)
+	local actCo = ActivityConfig.instance:getActivityCo(actId)
 	local openId = actCo.openId
 
 	if openId and openId ~= 0 then
@@ -409,6 +409,7 @@ function ActivityCollectView:_refreshAct2Time()
 
 			self._txtact2opentime.text = formatLuaLang("dungeon_unlock_episode_mode", episodetxt)
 
+			gohelper.setActive(self._btnact2jump.gameObject, false)
 			gohelper.setActive(self._goact2opentime, true)
 			gohelper.setActive(self._goact2limittime, false)
 
@@ -416,48 +417,42 @@ function ActivityCollectView:_refreshAct2Time()
 		end
 	end
 
-	local offsetSecond = actInfoMo:getRealStartTimeStamp() - ServerTime.now()
-	local isNotOpen = offsetSecond > 0
+	local isOpen = actInfoMo:isOpen()
 
-	if isNotOpen then
+	if not isOpen then
+		local offsetSecond = actInfoMo:getRealStartTimeStamp() - ServerTime.now()
 		local timeStr = TimeUtil.secondToRoughTime3(offsetSecond)
 
 		self._txtact2opentime.text = string.format(luaLang("seasonmainview_timeopencondition"), timeStr)
 	else
-		offsetSecond = actInfoMo:getRealEndTimeStamp() - ServerTime.now()
+		local offsetSecond = actInfoMo:getRealEndTimeStamp() - ServerTime.now()
+
 		self._txtact2limittime.text = TimeUtil.secondToRoughTime3(offsetSecond)
 	end
 
-	gohelper.setActive(self._goact2opentime, isNotOpen)
-	gohelper.setActive(self._goact2limittime, not isNotOpen)
+	gohelper.setActive(self._btnact2jump.gameObject, isOpen)
+	gohelper.setActive(self._goact2opentime, not isOpen)
+	gohelper.setActive(self._goact2limittime, isOpen)
 end
 
 function ActivityCollectView:_refreshAct5Time()
+	local openId = OpenEnum.UnlockFunc.WeekWalk
+	local isOpen = self:_isWeekWalkOpen(openId)
+
+	if not isOpen then
+		self._txtact5limit.text = luaLang("collectView_weekwalk_unlock_tip")
+
+		return
+	end
+
 	local info = WeekWalkModel.instance:getInfo()
-
-	if not info then
-		return
-	end
-
-	local openId = OpenEnum.UnlockFunc.WeekWalkHeart
-	local isUnlock = OpenModel.instance:isFunctionUnlock(openId)
-
-	if not isUnlock then
-		local episodeId = OpenConfig.instance:getOpenCo(openId).episodeId
-		local episodetxt = DungeonConfig.instance:getEpisodeDisplay(episodeId)
-
-		self._txtact5limit.text = formatLuaLang("dungeon_unlock_episode_mode", episodetxt)
-
-		return
-	end
-
 	local endTime = info.endTime
 
 	if not endTime then
 		return
 	end
 
-	local limitSec = endTime - ServerTime.now()
+	local limitSec = info.endTime - ServerTime.now()
 
 	if limitSec <= 0 then
 		return
@@ -469,24 +464,16 @@ function ActivityCollectView:_refreshAct5Time()
 end
 
 function ActivityCollectView:_refreshAct6Time()
-	local info = WeekWalk_2Model.instance:getInfo()
-
-	if not info then
-		return
-	end
-
 	local openId = OpenEnum.UnlockFunc.WeekWalkHeart
-	local isUnlock = OpenModel.instance:isFunctionUnlock(openId)
+	local isOpen = self:_isWeekWalkOpen(openId)
 
-	if not isUnlock then
-		local episodeId = OpenConfig.instance:getOpenCo(openId).episodeId
-		local episodetxt = DungeonConfig.instance:getEpisodeDisplay(episodeId)
-
-		self._txtact5limit.text = formatLuaLang("dungeon_unlock_episode_mode", episodetxt)
+	if not isOpen then
+		self._txtact6limit.text = luaLang("collectView_weekwalk_unlock_tip")
 
 		return
 	end
 
+	local info = WeekWalk_2Model.instance:getInfo()
 	local endTime = info.endTime
 
 	if not endTime then

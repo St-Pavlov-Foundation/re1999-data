@@ -77,6 +77,7 @@ end
 
 function V3a6_WarmUp:_onDay1Pass()
 	self:_setActive_vxGetGo(true)
+	gohelper.setActive(self._btnClickBigDay1Go, false)
 	self:_playAnim(UIAnimationName.Switch, self._onDay1SwitchAnimDone, self)
 end
 
@@ -106,7 +107,7 @@ function V3a6_WarmUp:_getbPassedAndbClaimable(episodeId)
 	local isRecevied, localIsPlay, isOld, bClaimable = self.viewContainer:getRLOC(episodeId)
 	local bPassed = localIsPlay or isRecevied
 
-	return bPassed, bClaimable
+	return bPassed, bClaimable, isRecevied
 end
 
 function V3a6_WarmUp:_editableInitView()
@@ -117,6 +118,7 @@ function V3a6_WarmUp:_editableInitView()
 	self._txtdesc.text = ""
 	self._txtnum.text = ""
 	self._vxGetGo = gohelper.findChild(self._btnraward.gameObject, "vx_get")
+	self._imghandGo = gohelper.findChild(self.viewGO, "img_hand")
 	self._animatorPlayer = csAnimatorPlayer.Get(self.viewGO)
 	self._animEvent = gohelper.onceAddComponent(self.viewGO, gohelper.Type_AnimationEventWrap)
 
@@ -276,6 +278,12 @@ function V3a6_WarmUp:_tryPlayUnlockAnim()
 		return
 	end
 
+	local bPassed, bClaimable = self:_getbPassedAndbClaimable(playingEpisodeId)
+
+	if bPassed or bClaimable then
+		return
+	end
+
 	dayItem:playUnlockAnim(self._onPlayUnlockAnimDone, self)
 end
 
@@ -319,6 +327,7 @@ function V3a6_WarmUp:_refreshTaskInfo()
 	local taskInfo = self:_getLatestTaskInfo()
 
 	gohelper.setActive(self._goTask, taskInfo and true or false)
+	gohelper.setActive(self._imghandGo, false)
 
 	if not taskInfo then
 		return
@@ -443,7 +452,9 @@ function V3a6_WarmUp:onClickItem(dayItem)
 	local bPassed = self:_getbPassedAndbClaimable(episodeId)
 
 	if bPassed then
-		self:_openGameView(episodeId)
+		self._tmpEpisodeId = episodeId
+
+		self:_onPlayDaysGoAnimDone(episodeId)
 
 		return
 	end
@@ -484,8 +495,13 @@ end
 function V3a6_WarmUp:_onDay25Pass()
 	local episodeId = self._tmpEpisodeId
 	local dayItem = self:_getDayItem(episodeId)
+	local bPassed, bClaimable = self:_getbPassedAndbClaimable(episodeId)
 
-	dayItem:playFinishAnim(self._onPlayFinishAnimDone, self)
+	if bPassed and bPassed ~= self._bPassedLast then
+		dayItem:playFinishAnim(self._onPlayFinishAnimDone, self)
+	elseif bClaimable then
+		self:_onPlayFinishAnimDone()
+	end
 end
 
 function V3a6_WarmUp:_onPlayFinishAnimDone()
@@ -500,6 +516,9 @@ function V3a6_WarmUp:_startFlow(episodeId, onPassSelfCb, onPassSelfCbObj)
 		return
 	end
 
+	local bPassed, bClaimable = self:_getbPassedAndbClaimable(episodeId)
+
+	self._bPassedLast = bPassed
 	self._flow = GaoSiNiaoFlowSequence_Base.New()
 
 	self._flow:addWork(FunctionWork.New(self._openGameView, self, episodeId))
@@ -541,28 +560,41 @@ function V3a6_WarmUp:_refreshTaskGoto()
 	local taskMO = taskInfo.taskMO
 	local isFinished = taskMO:isFinished()
 	local day1 = self.viewContainer:day1Episode()
+	local bPassed, bClaimable = self:_getbPassedAndbClaimable(playingEpisodeId)
 
 	if playingEpisodeId == day1 then
 		if not isFinished then
 			self._txtgoto.text = luaLang("v3a6_warmup_txt_task1")
 		elseif not self.viewContainer:isEpisodeReallyOpen(playingEpisodeId) then
 			self._txtgoto.text = "-"
+		elseif bClaimable then
+			self._txtgoto.text = luaLang("v3a6_warmup_txt_finish")
 		else
 			self._txtgoto.text = luaLang("v3a6_warmup_txt_goto1")
 		end
-	elseif not isFinished then
-		self._txtgoto.text = luaLang("v3a6_warmup_txt_task2")
-	elseif not self.viewContainer:isEpisodeReallyOpen(playingEpisodeId) then
-		local seconds = ServerTime.getToadyEndTimeStamp(true) - ServerTime.nowInLocal()
-		local str = TimeUtil.SecondToActivityTimeFormat(seconds)
 
-		self._txtgoto.text = GameUtil.getSubPlaceholderLuaLang(luaLang("v3a6_warmup_txt_task3"), {
-			str
-		})
+		local bShowHand = not bPassed and not bClaimable
 
-		TaskDispatcher.runDelay(self._refreshTaskGoto, self, 60)
+		gohelper.setActive(self._imghandGo, bShowHand)
 	else
-		self._txtgoto.text = luaLang("v3a6_warmup_txt_goto2")
+		gohelper.setActive(self._imghandGo, false)
+
+		if not isFinished then
+			self._txtgoto.text = luaLang("v3a6_warmup_txt_task2")
+		elseif not self.viewContainer:isEpisodeReallyOpen(playingEpisodeId) then
+			local seconds = ServerTime.getToadyEndTimeStamp(true) - ServerTime.nowInLocal()
+			local str = TimeUtil.SecondToActivityTimeFormat(seconds)
+
+			self._txtgoto.text = GameUtil.getSubPlaceholderLuaLang(luaLang("v3a6_warmup_txt_task3"), {
+				str
+			})
+
+			TaskDispatcher.runDelay(self._refreshTaskGoto, self, 60)
+		elseif bClaimable then
+			self._txtgoto.text = luaLang("v3a6_warmup_txt_finish")
+		else
+			self._txtgoto.text = luaLang("v3a6_warmup_txt_goto2")
+		end
 	end
 end
 

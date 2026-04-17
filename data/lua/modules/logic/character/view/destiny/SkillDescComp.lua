@@ -77,12 +77,21 @@ function SkillDescComp:_replaceSkillTag(desc, pattern)
 
 	skillIndex = tonumber(skillIndex)
 
-	local skillId
+	local skillId, extraSkillIndex
 
 	if skillIndex == 0 then
 		skillId = SkillConfig.instance:getpassiveskillsCO(self._heroId)[1].skillPassive
 	else
-		skillId = SkillConfig.instance:getHeroBaseSkillIdDict(self._heroId, true)[skillIndex]
+		local _, _, _skillIndex = string.find(desc, "<(%d)>")
+		local skillIds = SkillConfig.instance:getHeroAllSkillIdDictByExSkillLevel(self._heroId, nil, self.heroMo, nil, true)
+		local skillChoice = SkillConfig.instance:getFightCardChoice(skillIds[skillIndex])
+
+		if _skillIndex and skillChoice then
+			extraSkillIndex = tonumber(_skillIndex)
+			skillId = skillChoice[extraSkillIndex][skillIndex]
+		else
+			skillId = skillIds[skillIndex][1]
+		end
 	end
 
 	if not skillId then
@@ -92,8 +101,8 @@ function SkillDescComp:_replaceSkillTag(desc, pattern)
 	end
 
 	local skillName = lua_skill.configDict[skillId].name
-	local foramt = "<color=%s><link=\"skillIndex=%s\">【%s】</link></color>"
-	local _skillName = skillName and string.format(foramt, self:getLinkColor(), skillIndex, skillName) or ""
+	local foramt = "<color=%s><link=\"skillIndex=%s|extraSkillIndex=%s\">【%s】</link></color>"
+	local _skillName = skillName and string.format(foramt, self:getLinkColor(), skillIndex, extraSkillIndex or -1, skillName) or ""
 
 	if not self._skillNameList then
 		self._skillNameList = {}
@@ -102,6 +111,10 @@ function SkillDescComp:_replaceSkillTag(desc, pattern)
 	table.insert(self._skillNameList, _skillName)
 
 	desc = string.gsub(desc, pattern, placeholder, 1)
+
+	if extraSkillIndex then
+		desc = string.gsub(desc, "<%d>", "", 1)
+	end
 
 	return self:_replaceSkillTag(desc, pattern)
 end
@@ -270,7 +283,7 @@ end
 function SkillDescComp:_onHyperLinkClick(data, clickPosition)
 	AudioMgr.instance:trigger(AudioEnum.UI.Play_UI_Universal_Click)
 
-	local skillIndex = string.match(data, "skillIndex=(%d)")
+	local skillIndex, extraSkillIndex = string.match(data, "skillIndex=(.-)|extraSkillIndex=(.+)")
 
 	skillIndex = skillIndex and tonumber(skillIndex)
 
@@ -293,10 +306,23 @@ function SkillDescComp:_onHyperLinkClick(data, clickPosition)
 		CharacterController.instance:openCharacterTipView(info)
 	else
 		local info = {}
-		local skillDict = SkillConfig.instance:getHeroAllSkillIdDictByExSkillLevel(self._heroId, nil, nil, nil, true)
+		local skillDict = SkillConfig.instance:getHeroAllSkillIdDictByExSkillLevel(self._heroId, nil, self.heroMo, nil, true)
+		local skillIds = skillDict[skillIndex]
+
+		if extraSkillIndex then
+			extraSkillIndex = tonumber(extraSkillIndex)
+
+			if extraSkillIndex ~= -1 then
+				local skillChoice = SkillConfig.instance:getFightCardChoice(skillDict[skillIndex])
+
+				if skillChoice then
+					skillIds = skillChoice[extraSkillIndex]
+				end
+			end
+		end
 
 		info.super = skillIndex == 3
-		info.skillIdList = skillDict[skillIndex]
+		info.skillIdList = skillIds
 		info.monsterName = HeroConfig.instance:getHeroCO(self._heroId).name
 		info.anchorX = self._skillTipAnchorX
 		info.heroMo = self.heroMo

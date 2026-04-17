@@ -55,6 +55,7 @@ function V3a6_WarmUp_rewarditem:setData(mo)
 
 	self._icon:setMOValue(itemCo[1], itemCo[2], itemCo[3])
 	self._icon:setCountFontSize(42)
+	self._icon:setGetMask(self:_isClaimed())
 end
 
 local kHasGetAnim = "go_hasget_in"
@@ -78,6 +79,12 @@ end
 
 function V3a6_WarmUp_rewarditem:_setActive_hasget(isActive)
 	gohelper.setActive(self._go_hasget, isActive)
+end
+
+function V3a6_WarmUp_rewarditem:_isClaimed()
+	local p = self:parent()
+
+	return p:isClaimed()
 end
 
 return V3a6_WarmUp_rewarditem

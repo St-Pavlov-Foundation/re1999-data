@@ -249,10 +249,12 @@ function FightRoundData:processNuoDiKaUniqueDamage(actEffect, index, actEffectDa
 
 			if tempEffectData.effectType == FightEnum.EffectType.DAMAGE and tempEffectData.configEffect == configEffect then
 				tempEffectData.custom_nuoDiKaDamageSign = true
+				actEffectData.hurtInfo = tempEffectData.hurtInfo
 			end
 
 			if tempEffectData.effectType == FightEnum.EffectType.SHIELD and tempEffectData.configEffect == configEffect then
 				tempEffectData.custom_nuoDiKaDamageSign = true
+				actEffectData.hurtInfo = tempEffectData.hurtInfo
 			end
 		end
 	end

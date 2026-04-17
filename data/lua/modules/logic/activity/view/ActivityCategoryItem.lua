@@ -265,7 +265,9 @@ function ActivityCategoryItem:checkIsAct146NeedReddot(redDotIcon)
 end
 
 function ActivityCategoryItem:checkIsV1A7WarmupRed(redDotIcon)
-	redDotIcon.show = Activity125Controller.instance:checkActRed(ActivityEnum.Activity.Activity1_7WarmUp)
+	local actId = self._mo.id
+
+	redDotIcon.show = Activity125Controller.instance:checkActRed(actId)
 
 	redDotIcon:showRedDot(RedDotEnum.Style.Normal)
 end

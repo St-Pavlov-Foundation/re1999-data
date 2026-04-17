@@ -18,9 +18,17 @@ function AbyssStageHeroItem:_editableInitView()
 end
 
 function AbyssStageHeroItem:setInfo(heroId)
-	local heroConfig = HeroConfig.instance:getHeroCO(heroId)
+	local heroMo = HeroModel.instance:getByHeroId(heroId)
 
-	self._simagehero:LoadImage(ResUrl.getHeadIconSmall(heroConfig.skinId))
+	if heroMo then
+		local skinConfig = SkinConfig.instance:getSkinCo(heroMo.skin)
+
+		self._simagehero:LoadImage(ResUrl.getHeadIconSmall(skinConfig.headIcon))
+	else
+		local heroConfig = HeroConfig.instance:getHeroCO(heroId)
+
+		self._simagehero:LoadImage(ResUrl.getHeadIconSmall(heroConfig.skinId))
+	end
 end
 
 function AbyssStageHeroItem:onDestroy()

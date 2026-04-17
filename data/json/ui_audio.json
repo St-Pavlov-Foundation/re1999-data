@@ -15168,5 +15168,10 @@
     "id": 360025,
     "eventName": "play_ui_renmen_waiwei_shua",
     "bankName": "ui_activity_renmen_waiwei"
+  },
+  {
+    "id": 360026,
+    "eventName": "play_ui_molu_exit_appear",
+    "bankName": "ui_activity_molu"
   }
 ]

@@ -832,6 +832,7 @@ AudioEnum.VersionActivity1_3 = {
 	play_ui_molu_sky_unlock_special = 25002107,
 	play_ui_molu_sky_open = 25002104,
 	play_ui_molu_astrology_success = 25002111,
+	play_ui_ui_molu_exit_appear = 360026,
 	play_ui_molu_sky_unlock_general = 25002106,
 	play_ui_molu_astrology_open = 25002108,
 	play_ui_molu_astrology_move = 25002109,

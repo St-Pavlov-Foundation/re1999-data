@@ -66,6 +66,7 @@ function StoreViewContainer:buildTabViews(tabContainerId)
 		chargeScrollParam.cellSpaceV = 35
 		chargeScrollParam.startSpace = 0
 
+		local clotheDataCount = StoreClothesGoodsItemListModel.instance:getCount()
 		local clothesScrollParam = ListScrollParam.New()
 
 		clothesScrollParam.scrollGOPath = "#go_has/#scroll_skin"
@@ -73,7 +74,7 @@ function StoreViewContainer:buildTabViews(tabContainerId)
 		clothesScrollParam.prefabUrl = self._viewSetting.otherRes[3]
 		clothesScrollParam.cellClass = StoreSkinGoodsItem
 		clothesScrollParam.scrollDir = ScrollEnum.ScrollDirV
-		clothesScrollParam.lineCount = 2
+		clothesScrollParam.lineCount = clotheDataCount == 1 and 1 or 2
 		clothesScrollParam.cellWidth = 260
 		clothesScrollParam.cellHeight = 408
 		clothesScrollParam.cellSpaceH = 0

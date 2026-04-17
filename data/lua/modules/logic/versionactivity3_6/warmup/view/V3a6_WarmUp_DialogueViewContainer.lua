@@ -11,11 +11,14 @@ function V3a6_WarmUp_DialogueViewContainer:actId()
 	return V3a6_WarmUpConfig.instance:actId()
 end
 
-function V3a6_WarmUp_DialogueViewContainer:getCutsceneResUrl(bShownCutscene)
+function V3a6_WarmUp_DialogueViewContainer:getCutsceneResUrlPrePost()
 	local episodeId = self._level
-	local resName = bShownCutscene and string.format("v3a6_warmup_day%s_2", episodeId) or string.format("v3a6_warmup_day%s_1", episodeId)
+	local resNamePre = string.format("v3a6_warmup_day%s_1", episodeId)
+	local resNamePost = string.format("v3a6_warmup_day%s_2", episodeId)
+	local resUrlPre = ResUrl.getV3a6WarmUpSingleBg(resNamePre)
+	local resUrlPost = ResUrl.getV3a6WarmUpSingleBg(resNamePost)
 
-	return ResUrl.getV3a6WarmUpSingleBg(resName)
+	return resUrlPre, resUrlPost
 end
 
 function V3a6_WarmUp_DialogueViewContainer:buildViews()
@@ -40,9 +43,16 @@ function V3a6_WarmUp_DialogueViewContainer:onContainerCloseFinish()
 
 	local episodeId = self._level
 
-	if self._willSetLocalIsPlayed and not self:checkLocalIsPlay(episodeId) then
-		self:setLocalIsPlay(episodeId)
-		Activity125Controller.instance:dispatchEvent(Activity125Event.OnGameFinished, self._level)
+	if self._willSetLocalIsPlayed then
+		if not self:checkLocalIsPlay(episodeId) then
+			self:setLocalIsPlay(episodeId)
+		end
+
+		local bPassed, bClaimable, isRecevied = self:getbPassedAndbClaimable()
+
+		if bClaimable then
+			Activity125Controller.instance:dispatchEvent(Activity125Event.OnGameFinished, self._level)
+		end
 	end
 end
 
@@ -142,7 +152,21 @@ function V3a6_WarmUp_DialogueViewContainer:stopAuto()
 	self._mainView:onChangedAuto(self._bAuto)
 end
 
+function V3a6_WarmUp_DialogueViewContainer:getbPassedAndbClaimable()
+	local episodeId = self._level
+	local isRecevied, localIsPlay, isOld, bClaimable = self:getRLOC(episodeId)
+	local bPassed = localIsPlay or isRecevied
+
+	return bPassed, bClaimable, isRecevied
+end
+
 function V3a6_WarmUp_DialogueViewContainer:markDoneSlient()
+	local bPassed, bClaimable, isRecevied = self:getbPassedAndbClaimable()
+
+	if isRecevied then
+		return
+	end
+
 	self._willSetLocalIsPlayed = true
 end
 
@@ -169,12 +193,37 @@ function V3a6_WarmUp_DialogueViewContainer:_getSavedAuto()
 	return value ~= 0
 end
 
+function V3a6_WarmUp_DialogueViewContainer:getTipsStr()
+	local episodeId = self._level
+
+	return luaLang(string.format("v3a6_warmup_dialogueview_txt_tips%s", episodeId))
+end
+
+function V3a6_WarmUp_DialogueViewContainer:getUserClickAudioId()
+	local episodeId = self._level
+
+	if episodeId == 1 then
+		return AudioEnum.VersionActivity2_1ChessGame.play_ui_molu_monster_awake
+	elseif episodeId == 2 then
+		return AudioEnum.Role2ChessGame1_3.FireHurt
+	elseif episodeId == 3 then
+		return AudioEnum.UI.play_ui_role_pieces_open
+	elseif episodeId == 4 then
+		return AudioEnum.UI.Play_UI_Tipsclose
+	elseif episodeId == 5 then
+		return AudioEnum.UI.play_ui_youyu_yure_horn_20220218
+	else
+		return AudioEnum.UI.UI_Common_Click
+	end
+end
+
 function V3a6_WarmUp_DialogueViewContainer:dump(refStrBuf, depth)
 	depth = depth or 0
 
 	local tab = string.rep("\t", depth)
+	local episodeId = self._level
 
-	ti(refStrBuf, tab .. sf("level = %s", tostring(self._level)))
+	ti(refStrBuf, tab .. sf("episodeId = %s", tostring(episodeId)))
 	ti(refStrBuf, tab .. sf("bAuto? = %s", self._bAuto and "true" or "false"))
 
 	local curDialogCO = self:curDialogCO()

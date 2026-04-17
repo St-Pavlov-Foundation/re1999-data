@@ -217,7 +217,7 @@ function DungeonController:jumpDungeon(param)
 
 	if not chapterConfig then
 		table.insert(remainViewNames, ViewName.DungeonView)
-		self:openDungeonView(param)
+		self:openDungeonView()
 
 		return remainViewNames
 	end

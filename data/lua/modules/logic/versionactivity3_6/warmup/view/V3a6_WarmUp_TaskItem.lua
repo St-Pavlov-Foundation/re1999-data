@@ -142,4 +142,10 @@ function V3a6_WarmUp_TaskItem:getAnimator()
 	return self.animator
 end
 
+function V3a6_WarmUp_TaskItem:isClaimed(mo)
+	local mo = self._mo
+
+	return mo and mo.isClaimed or false
+end
+
 return V3a6_WarmUp_TaskItem

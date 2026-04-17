@@ -6,9 +6,11 @@ local V3a6_WarmUp_DialogueView = class("V3a6_WarmUp_DialogueView", BaseView)
 
 function V3a6_WarmUp_DialogueView:onInitView()
 	self._simagefullbg = gohelper.findChildSingleImage(self.viewGO, "#simage_fullbg")
-	self._gotalking = gohelper.findChild(self.viewGO, "#simage_fullbg/Left/node_role/#go_talking")
 	self._simagesmalltalk = gohelper.findChildSingleImage(self.viewGO, "#simage_fullbg/Left/node_role/#simage_smalltalk")
+	self._gotalking = gohelper.findChild(self.viewGO, "#simage_fullbg/Left/node_role/#go_talking")
 	self._txtrolename = gohelper.findChildText(self.viewGO, "#simage_fullbg/Left/node_role/#txt_rolename")
+	self._simagesmalicon = gohelper.findChildSingleImage(self.viewGO, "#simage_fullbg/Right/go_node1/#simage_smalicon")
+	self._simagesmaliconafter = gohelper.findChildSingleImage(self.viewGO, "#simage_fullbg/Right/go_node1/#simage_smalicon_after")
 	self._btnClickArea = gohelper.findChildButtonWithAudio(self.viewGO, "#simage_fullbg/Right/go_node1/#btn_ClickArea")
 	self._godialoguecontainer = gohelper.findChild(self.viewGO, "#simage_fullbg/Right/go_node2/#go_dialoguecontainer")
 	self._gocontent = gohelper.findChild(self.viewGO, "#simage_fullbg/Right/go_node2/#go_dialoguecontainer/Scroll View/Viewport/#go_content")
@@ -46,18 +48,23 @@ end
 
 local ti = table.insert
 local sf = string.format
-local csAnimatorPlayer = SLFramework.AnimatorPlayer
 local csTweenHelper = ZProj.TweenHelper
+local kBlock_Click = "V3a6_WarmUp_DialogueView:_btnClickAreaOnClick"
+local kTimeout = 3
+local kUserClickDelaySec = 1.33
 
 function V3a6_WarmUp_DialogueView:_btnClickAreaOnClick()
-	local resUrl = self.viewContainer:getCutsceneResUrl(true)
-
-	GameUtil.loadSImage(self._simagesmalicon, resUrl)
+	UIBlockHelper.instance:startBlock(kBlock_Click, kTimeout, self.viewName)
+	self._node1Animator:Play(UIAnimationName.Click, 0, 0)
+	AudioMgr.instance:trigger(self.viewContainer:getUserClickAudioId())
 	TaskDispatcher.cancelTask(self._onClickAreaDone, self)
-	TaskDispatcher.runDelay(self._onClickAreaDone, self, 0.8)
+	TaskDispatcher.runDelay(self._onClickAreaDone, self, kUserClickDelaySec)
 end
 
 function V3a6_WarmUp_DialogueView:_onClickAreaDone()
+	TaskDispatcher.cancelTask(self._onClickAreaDone, self)
+	UIBlockHelper.instance:endBlock(kBlock_Click)
+
 	local item = self:_getLastItem()
 
 	if self:_bFF() then
@@ -160,7 +167,9 @@ function V3a6_WarmUp_DialogueView:_editableInitView()
 	self._imageautoonGo = self._imageautoon.gameObject
 	self._nodeRoleGo = gohelper.findChild(self.viewGO, "#simage_fullbg/Left/node_role")
 	self._nodeRoleAnimator = self._nodeRoleGo:GetComponent(gohelper.Type_Animator)
-	self._simagesmalicon = gohelper.findChildSingleImage(self._node1Go, "#simage_smalicon")
+	self._node1Animator = self._node1Go:GetComponent(gohelper.Type_Animator)
+	self._txttips = gohelper.findChildText(self._node1Go, "Image/txt_tips")
+	self._btnbgGo = self._btnbg.gameObject
 
 	gohelper.setActive(self._goleftdialogueitem, false)
 	self:_setActive_GlobalClick(false)
@@ -172,6 +181,12 @@ end
 function V3a6_WarmUp_DialogueView:onOpen()
 	AudioMgr.instance:trigger(AudioEnum.LiangYueAudio.play_ui_wulu_aizila_forward_paper)
 	self:_setActive_autoIcon(self.viewContainer:isAuto())
+
+	self._txttips.text = self.viewContainer:getTipsStr()
+
+	local bPassed, bClaimable, isRecevied = self.viewContainer:getbPassedAndbClaimable()
+
+	gohelper.setActive(self._btnbgGo, not isRecevied)
 	self._scrollcontent:AddOnValueChanged(self._onScrollValueChanged, self)
 	GameStateMgr.instance:registerCallback(GameStateEvent.OnTouchScreen, self._onTouchScreen, self)
 end
@@ -183,7 +198,7 @@ end
 
 function V3a6_WarmUp_DialogueView:_enabledScroll(bEnabled)
 	if not bEnabled then
-		gohelper.setActive(self._goarrow, false)
+		self:_setActive_goarrow(false)
 	end
 
 	self._scrollcontent.enabled = bEnabled
@@ -241,7 +256,7 @@ function V3a6_WarmUp_DialogueView:_moveStep()
 
 	local dialogCO = self.viewContainer:pop()
 
-	gohelper.setActive(self._goarrow, false)
+	self:_setActive_goarrow(false)
 
 	if not dialogCO then
 		self:_onCompleted()
@@ -334,17 +349,30 @@ function V3a6_WarmUp_DialogueView:onFlush(optItem)
 end
 
 function V3a6_WarmUp_DialogueView:onWaitingCutScene(item)
-	self:_autoResumeOnCutSceneBeginEnd()
+	if self:_bFF() then
+		return
+	end
+
+	self:_setActive_goarrow(true)
+
+	if self.viewContainer:isAuto() then
+		self:_autoResumeOnCutSceneBeginEnd()
+	else
+		self:_setActive_GlobalClick(true)
+	end
 end
 
 function V3a6_WarmUp_DialogueView:_showCutScene(item)
+	self._node1Animator:Play(UIAnimationName.In, 0, 0)
 	self:_setActive_GlobalClick(false)
 	self:_setActive_nodeGo(true)
 	self:_setActive_gobtnright(false)
 
-	local resUrl = self.viewContainer:getCutsceneResUrl(false)
+	local preUrl, postUrl = self.viewContainer:getCutsceneResUrlPrePost(false)
 
-	GameUtil.loadSImage(self._simagesmalicon, resUrl)
+	GameUtil.loadSImage(self._simagesmalicon, preUrl)
+	GameUtil.loadSImage(self._simagesmaliconafter, postUrl)
+	AudioMgr.instance:trigger(AudioEnum.VersionActivity1_3.play_ui_ui_molu_exit_appear)
 end
 
 function V3a6_WarmUp_DialogueView:onCloseCutScene(item)
@@ -389,7 +417,7 @@ end
 function V3a6_WarmUp_DialogueView:onStepEnd(item)
 	TaskDispatcher.cancelTask(self._moveStep, self)
 	self:_setActive_GlobalClick(true)
-	gohelper.setActive(self._goarrow, true)
+	self:_setActive_goarrow(true)
 
 	if self.viewContainer:isAuto() then
 		TaskDispatcher.cancelTask(self._moveStep, self)
@@ -405,13 +433,14 @@ function V3a6_WarmUp_DialogueView:_onScrollValueChanged()
 	local pos01 = self._scrollcontent.verticalNormalizedPosition
 	local isZero = GameUtil.isApproxZero(pos01)
 
-	gohelper.setActive(self._goarrow, not isZero)
+	self:_setActive_goarrow(not isZero)
 end
 
 function V3a6_WarmUp_DialogueView:_onCompleted()
 	TaskDispatcher.cancelTask(self._moveStep, self)
 	self:_setActive_GlobalClick(false)
 	self:_setActive_gobtnright(false)
+	self:_setActive_goarrow(false)
 	self:_enabledScroll(true)
 	self:_setActive_goreward(true)
 	self.viewContainer:markDoneSlient()
@@ -449,6 +478,10 @@ end
 
 function V3a6_WarmUp_DialogueView:_setActive_goreward(isActive)
 	gohelper.setActive(self._goreward, isActive)
+end
+
+function V3a6_WarmUp_DialogueView:_setActive_goarrow(isActive)
+	gohelper.setActive(self._goarrow, isActive)
 end
 
 function V3a6_WarmUp_DialogueView:_log()

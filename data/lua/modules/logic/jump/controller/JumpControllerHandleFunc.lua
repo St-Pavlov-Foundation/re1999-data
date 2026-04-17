@@ -238,7 +238,6 @@ function JumpController:jumpToDungeonViewWithType(jumpParam)
 		param.chapterType = DungeonEnum.ChapterType.Explore
 	elseif jumpChapterType == JumpEnum.DungeonChapterType.WeekWalk then
 		param.chapterType = DungeonEnum.ChapterType.WeekWalk
-		param.jumpParam = jumpArray[3]
 
 		if ViewMgr.instance:isOpen(ViewName.WeekWalkView) or ViewMgr.instance:isOpen(ViewName.DungeonView) and DungeonModel.instance.curChapterType == DungeonEnum.ChapterType.WeekWalk then
 			ViewMgr.instance:closeView(ViewName.TaskView)
@@ -1813,6 +1812,35 @@ function JumpController:jumpToAbyss()
 	return JumpEnum.JumpResult.Success
 end
 
+function JumpController:jumpToWeekWalk(jumpParam)
+	if not OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.WeekWalk) then
+		GameFacade.showToast(ToastEnum.ActivityWeekWalkDeepShowView)
+
+		return JumpEnum.JumpResult.Fail
+	end
+
+	local info = WeekWalkModel.instance:getInfo()
+	local mapLayerInfo = info and info:getMapInfoByLayer(WeekWalkEnum.LastShallowLayer)
+	local isShallowLayerFinish = mapLayerInfo and mapLayerInfo.isFinished == 1
+
+	if not isShallowLayerFinish then
+		GameFacade.showToast(ToastEnum.ActivityWeekWalkDeepShowView)
+
+		return JumpEnum.JumpResult.Fail
+	end
+
+	local jumpArray = string.splitToNumber(jumpParam, "#")
+	local weekWalkType = jumpArray[2]
+
+	if weekWalkType == 1 then
+		WeekWalkController.instance:jumpWeekWalkDeepLayerView()
+	elseif weekWalkType == 2 then
+		WeekWalk_2Controller.instance:jumpWeekWalkHeartLayerView()
+	end
+
+	return JumpEnum.JumpResult.Success
+end
+
 function JumpController:_useSupplementMonthCard()
 	SignInRpc.instance:sendSupplementMonthCardRequest()
 end
@@ -1878,7 +1906,8 @@ JumpController.JumpViewToHandleFunc = {
 	[JumpEnum.JumpView.StoreSupplementMonthCardUseView] = JumpController.jumpToStoreSupplementMonthCardUseView,
 	[JumpEnum.JumpView.LaplaceChatRoom] = JumpController.jumpToLaplaceChatRoomView,
 	[JumpEnum.JumpView.SurvivalView] = JumpController.jumpToSurvivalView,
-	[JumpEnum.JumpView.Abyss] = JumpController.jumpToAbyss
+	[JumpEnum.JumpView.Abyss] = JumpController.jumpToAbyss,
+	[JumpEnum.JumpView.WeekWalk] = JumpController.jumpToWeekWalk
 }
 JumpController.JumpActViewToHandleFunc = {
 	[JumpEnum.ActIdEnum.Act117] = JumpController.jumpToAct117,
