@@ -23,6 +23,7 @@ function FightTempDataMgr:onConstructor()
 	self.isSkipBattle = false
 	self.isNdkQteing = false
 	self.is3_7BossQtePre = false
+	self.delEntityBuffUidDic = {}
 end
 
 function FightTempDataMgr:onCancelOperation()

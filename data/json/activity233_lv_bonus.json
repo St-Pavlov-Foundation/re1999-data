@@ -32,7 +32,7 @@
     "level": 5,
     "freeBonus": "1#111013#1",
     "payBonus": "1#111013#2",
-    "keyBonus": 1
+    "keyBonus": 0
   },
   {
     "bpId": 1,
@@ -172,7 +172,7 @@
     "level": 25,
     "freeBonus": "1#111013#1",
     "payBonus": "1#111013#2",
-    "keyBonus": 1
+    "keyBonus": 0
   },
   {
     "bpId": 1,
@@ -206,7 +206,7 @@
     "bpId": 1,
     "level": 30,
     "freeBonus": "1#120013#1",
-    "payBonus": "1#120013#2",
+    "payBonus": "2#2#980|1#120013#2",
     "keyBonus": 1
   }
 ]

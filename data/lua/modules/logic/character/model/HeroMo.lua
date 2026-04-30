@@ -1010,6 +1010,10 @@ function HeroMo:getHeroType()
 	return self.config.heroType
 end
 
+function HeroMo:getHeroDestinyStoneMo()
+	return self.destinyStoneMo
+end
+
 function HeroMo:getHeroBattleTag()
 	if self.destinyStoneMo then
 		local stoneMo = self.destinyStoneMo:getCurUseStoneMo()

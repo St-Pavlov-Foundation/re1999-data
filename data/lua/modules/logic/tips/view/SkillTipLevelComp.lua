@@ -250,11 +250,12 @@ end
 
 function SkillTipLevelComp:_refreshDevice(skillId)
 	local deviceMo
+	local heroMo = self.viewParam and self.viewParam.heroMo
 
-	if self.entityMo then
-		deviceMo = self.entityMo:getDeviceMo()
+	if heroMo then
+		deviceMo = heroMo:getDeviceMo()
 	elseif self.heroId then
-		local heroMo = HeroModel.instance:getByHeroId(self.heroId)
+		heroMo = HeroModel.instance:getByHeroId(self.heroId)
 
 		if heroMo then
 			deviceMo = heroMo:getDeviceMo()
@@ -267,6 +268,10 @@ function SkillTipLevelComp:_refreshDevice(skillId)
 				deviceMo:refreshDevice(heroCo.deviceId)
 			end
 		end
+	end
+
+	if deviceMo then
+		deviceMo:setHeroMo(heroMo)
 	end
 
 	local isShowEnergyPoint = self.skillIndex ~= nil and deviceMo ~= nil

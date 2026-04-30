@@ -1085,39 +1085,14 @@ function FightEntityMO:checkReplaceSkill(skillIdList)
 	return skillIdList
 end
 
-function FightEntityMO:getHeroExtraMo()
-	if self.trialId and self.trialId > 0 then
-		local trialCo = lua_hero_trial.configDict[self.trialId][0]
-
-		if trialCo then
-			local extraStr = trialCo.extraStr
-
-			if not string.nilorempty(extraStr) then
-				local config = HeroConfig.instance:getHeroCO(self.modelId)
-				local heroMo = HeroMo.New()
-
-				heroMo:init(trialCo, config)
-
-				self.extraMo = self.extraMo or CharacterExtraMO.New(heroMo)
-
-				self.extraMo:refreshMo(extraStr)
-			end
-		end
-	else
-		local heroMo = HeroModel.instance:getByHeroId(self.modelId)
-
-		self.extraMo = heroMo and heroMo.extraMo
-	end
-
-	return self.extraMo
-end
-
 function FightEntityMO:getDeviceMo()
 	if self.trialId and self.trialId > 0 then
-		local trialCo = lua_hero_trial.configDict[self.trialId][0]
+		local deviceId = self:getTrialDeviceId()
 
-		if trialCo then
-			self.deviceMo = SkillConfig.instance:getHeroDeviceMO(self.modelId)
+		if deviceId and deviceId > 0 then
+			self.deviceMo = self.deviceMo or HeroDeviceMO.New(self.modelId)
+
+			self.deviceMo:refreshDevice(deviceId)
 		end
 	else
 		local heroMo = HeroModel.instance:getByHeroId(self.modelId)
@@ -1126,6 +1101,46 @@ function FightEntityMO:getDeviceMo()
 	end
 
 	return self.deviceMo
+end
+
+function FightEntityMO:getTrialDeviceId()
+	if not self.trialId or self.trialId == 0 then
+		return
+	end
+
+	local trialCo = lua_hero_trial.configDict[self.trialId][0]
+	local destinyStoneMo = self:getHeroDestinyStoneMo()
+
+	if destinyStoneMo then
+		local exSkillCo = destinyStoneMo:getExpExchangeSkillCo(trialCo.exSkillLv)
+
+		if exSkillCo and exSkillCo.deviceId > 0 then
+			return exSkillCo.deviceId
+		end
+
+		local stoneCo = destinyStoneMo:getCurUseStoneCo()
+
+		if stoneCo and not string.nilorempty(stoneCo.deviceAdd) then
+			local devices = GameUtil.splitString2(stoneCo.deviceAdd, true)
+
+			for _, v in pairs(devices) do
+				if v[1] == self.exSkillLevel then
+					return
+				end
+			end
+		end
+	end
+
+	local exSkillCos = SkillConfig.instance:getheroexskillco(self.modelId)
+	local exSkillCo = exSkillCos and exSkillCos[self.exSkillLevel]
+
+	if exSkillCo and exSkillCo.deviceId > 0 then
+		return exSkillCo.deviceId
+	end
+
+	local heroCo = HeroConfig.instance:getHeroCO(self.modelId)
+
+	return heroCo and heroCo.deviceId
 end
 
 function FightEntityMO:getEquipMo()

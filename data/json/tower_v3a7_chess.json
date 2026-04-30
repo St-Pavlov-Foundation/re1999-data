@@ -1045,7 +1045,7 @@
     "defaultHealth": 30,
     "health": 30,
     "move": 3,
-    "appear": "2#35",
+    "appear": "2#40",
     "location": 1,
     "dialogue1": "",
     "dialogue2": "",
@@ -1063,7 +1063,7 @@
     "health": 30,
     "move": 3,
     "appear": "2#40",
-    "location": 1,
+    "location": 8,
     "dialogue1": "",
     "dialogue2": "",
     "head": 527201,
@@ -1079,8 +1079,8 @@
     "defaultHealth": 30,
     "health": 30,
     "move": 3,
-    "appear": "2#40",
-    "location": 8,
+    "appear": "2#45",
+    "location": 4,
     "dialogue1": "",
     "dialogue2": "",
     "head": 527201,
@@ -1097,23 +1097,6 @@
     "health": 30,
     "move": 3,
     "appear": "2#45",
-    "location": 4,
-    "dialogue1": "",
-    "dialogue2": "",
-    "head": 527201,
-    "skill2": 0,
-    "map": 1004
-  },
-  {
-    "id": 100425,
-    "name": "重塑之手",
-    "desc1": "无",
-    "skill1": "",
-    "belong": 2,
-    "defaultHealth": 30,
-    "health": 30,
-    "move": 3,
-    "appear": "2#45",
     "location": 1,
     "dialogue1": "",
     "dialogue2": "",
@@ -1122,7 +1105,7 @@
     "map": 1004
   },
   {
-    "id": 100426,
+    "id": 100425,
     "name": "重塑之手",
     "desc1": "无",
     "skill1": "",
@@ -1139,7 +1122,7 @@
     "map": 1004
   },
   {
-    "id": 100427,
+    "id": 100426,
     "name": "重塑之手",
     "desc1": "无",
     "skill1": "",
@@ -1156,7 +1139,7 @@
     "map": 1004
   },
   {
-    "id": 100428,
+    "id": 100427,
     "name": "重塑之手",
     "desc1": "无",
     "skill1": "",
@@ -1173,7 +1156,7 @@
     "map": 1004
   },
   {
-    "id": 100429,
+    "id": 100428,
     "name": "重塑之手",
     "desc1": "无",
     "skill1": "",

@@ -69,7 +69,7 @@ function HeroDeviceMO:getUniqueSkillPoint()
 	local heroMo = self:getHeroMo()
 
 	if heroMo then
-		local destinyStoneMo = heroMo.destinyStoneMo
+		local destinyStoneMo = heroMo:getHeroDestinyStoneMo()
 
 		if destinyStoneMo then
 			local stoenCo = destinyStoneMo:getCurUseStoneCo()

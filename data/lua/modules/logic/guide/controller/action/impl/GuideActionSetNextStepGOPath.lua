@@ -470,7 +470,7 @@ end
 function GuideActionSetNextStepGOPath:getRouge2CanActiveTalent()
 	local viewContainer = ViewMgr.instance:getContainer(ViewName.Rouge2_BackpackTabView)
 	local skillTabView = viewContainer and viewContainer:getTabViewByTabType(Rouge2_Enum.BagTabType.ActiveSkill)
-	local talentView = skillTabView and skillTabView:getView(Rouge2_BackpackSkillView.ViewState.Panel)
+	local talentView = skillTabView and skillTabView:getView(Rouge2_BackpackSkillRootView.ViewType.TalentTree)
 
 	if not talentView then
 		return

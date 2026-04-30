@@ -431,6 +431,12 @@ function ClothesStoreView:onOpen()
 	local jumpGoodsId = self.viewContainer:getJumpGoodsId()
 	local isFocus = self.viewContainer:isJumpFocus()
 
+	if jumpGoodsId then
+		local goodIndex = StoreClothesGoodsItemListModel.instance:getGoodIndex(jumpGoodsId)
+
+		StoreClothesGoodsItemListModel.instance:setSelectIndex(goodIndex)
+	end
+
 	self:_refreshTabs(jumpTabId, true)
 	self:addEventCb(StoreController.instance, StoreEvent.GoodsModelChanged, self._updateInfo, self)
 	self:addEventCb(StoreController.instance, StoreEvent.StoreInfoChanged, self._onStoreInfoChanged, self)
@@ -445,10 +451,6 @@ function ClothesStoreView:onOpen()
 		end
 
 		self:locationGoodsItemByGoodsId(jumpGoodsId)
-
-		local goodIndex = StoreClothesGoodsItemListModel.instance:getGoodIndex(jumpGoodsId)
-
-		StoreClothesGoodsItemListModel.instance:setSelectIndex(goodIndex)
 	end
 end
 

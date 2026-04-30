@@ -148,15 +148,16 @@ function StoryNavigateItem:showChapterStart(chapterCo)
 	if self._chapterOpenVideoPlayer then
 		self._chapterOpenVideoPlayer:stop()
 		self._chapterOpenVideoPlayer:clear()
-
-		self._chapterOpenVideoPlayer = nil
 	end
 
 	if gohelper.isNil(self._chapterOpenVideoGO) then
 		self._chapterOpenVideoPlayer, self._chapterOpenVideoGO = VideoPlayerMgr.instance:createGoAndVideoPlayer(self._gochapteropenvideo)
 	end
 
-	self._chapterOpenVideoPlayer:play("story_rian_bg", true, nil, nil)
+	if self._chapterOpenVideoPlayer then
+		self._chapterOpenVideoPlayer:play("story_rian_bg", true, nil, nil)
+	end
+
 	AudioEffectMgr.instance:playAudio(AudioEnum.Story.Play_Chapter_Start)
 	TaskDispatcher.cancelTask(self._chapterStartOut, self)
 	TaskDispatcher.runDelay(self._chapterStartOut, self, 5.333)

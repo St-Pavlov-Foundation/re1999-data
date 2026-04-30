@@ -34,7 +34,7 @@ function FightTLDeviceCardTriggerPowerEffect:triggerPowerChange(fightStepData)
 
 			FightController.instance:dispatchEvent(FightEvent.OnDevice_PowerChange, actEffect.reserveStr, changeFrom)
 		elseif actEffect.effectType == fightStepType then
-			self:triggerPowerChange(fightStepData)
+			self:triggerPowerChange(actEffect.fightStep)
 		end
 	end
 end

@@ -216,9 +216,6 @@ function FightCardEndEffect:_playCardFlow()
 		end))
 	end
 
-	local calculatePosObj = self.context.goCalculatePosObj
-	local calculatePosTr = calculatePosObj:GetComponent(gohelper.Type_RectTransform)
-	local halfWidth = FightViewWaitingAreaVersion1.CardItemWidth * 0.5
 	local version = FightModel.instance:getVersion()
 
 	for i, itemGO in ipairs(self._playCardItemGOs) do
@@ -226,8 +223,9 @@ function FightCardEndEffect:_playCardFlow()
 		local pos
 
 		if version >= 1 then
-			pos = 1
-
+			local calculatePosObj = self.context.goCalculatePosObj
+			local calculatePosTr = calculatePosObj:GetComponent(gohelper.Type_RectTransform)
+			local halfWidth = FightViewWaitingAreaVersion1.CardItemWidth * 0.5
 			local anchorX = FightViewWaitingAreaVersion1.getCardPosByClientData(i)
 
 			recthelper.setAnchorX(calculatePosTr, anchorX)

@@ -188,9 +188,13 @@ function FightCalculateDataMgr:playEffect6(actEffectData)
 		return
 	end
 
-	self.buffDict[buff.uid] = nil
+	local buffUid = buff.uid
 
-	entityMO:delBuff(buff.uid)
+	self.buffDict[buffUid] = nil
+
+	entityMO:delBuff(buffUid)
+
+	self.dataMgr.tempMgr.delEntityBuffUidDic[buffUid] = true
 end
 
 function FightCalculateDataMgr:playEffect7(actEffectData)
@@ -1434,6 +1438,16 @@ function FightCalculateDataMgr:playEffect171(actEffectData)
 
 	if not actEffectData.entity then
 		return
+	end
+
+	local buffList = actEffectData.entity.buffs
+
+	for i = #buffList, 1, -1 do
+		local buffInfo = buffList[i]
+
+		if self.dataMgr.tempMgr.delEntityBuffUidDic[buffInfo.uid] then
+			table.remove(buffList, i)
+		end
 	end
 
 	local entityData = FightEntityMO.New()

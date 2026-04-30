@@ -97,14 +97,17 @@ function Anniversary3ActBpPropView:_refreshTopItems()
 
 	for i = 1, lv do
 		local bonusCo = Activity233Config.instance:getBonusCo(i, self._bpId)
-		local itemCo = string.splitToNumber(bonusCo.payBonus, "#")
-		local tab = {}
+		local itemCos = GameUtil.splitString2(bonusCo.payBonus, true)
 
-		tab.materilType = itemCo[1]
-		tab.materilId = itemCo[2]
-		tab.quantity = itemCo[3]
+		for j = 1, #itemCos do
+			local tab = {}
 
-		table.insert(rewardTabs, tab)
+			tab.materilType = itemCos[j][1]
+			tab.materilId = itemCos[j][2]
+			tab.quantity = itemCos[j][3]
+
+			table.insert(rewardTabs, tab)
+		end
 	end
 
 	table.sort(rewardTabs, Anniversary3ActBpModel.sortRewardsByRare)
@@ -142,14 +145,17 @@ function Anniversary3ActBpPropView:_refreshBottomItems()
 
 	for i = lv + 1, maxLv do
 		local bonusCo = Activity233Config.instance:getBonusCo(i, self._bpId)
-		local itemCo = string.splitToNumber(bonusCo.payBonus, "#")
-		local tab = {}
+		local itemCos = GameUtil.splitString2(bonusCo.payBonus, true)
 
-		tab.materilType = itemCo[1]
-		tab.materilId = itemCo[2]
-		tab.quantity = itemCo[3]
+		for j = 1, #itemCos do
+			local tab = {}
 
-		table.insert(rewardTabs, tab)
+			tab.materilType = itemCos[j][1]
+			tab.materilId = itemCos[j][2]
+			tab.quantity = itemCos[j][3]
+
+			table.insert(rewardTabs, tab)
+		end
 	end
 
 	table.sort(rewardTabs, Anniversary3ActBpModel.sortRewardsByRare)

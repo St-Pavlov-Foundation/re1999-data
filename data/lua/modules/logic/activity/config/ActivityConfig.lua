@@ -88,7 +88,6 @@ function ActivityConfig:_initMainActExtraDisplay()
 	self._rougeActivityConfig = nil
 	self._displayBindActivityList = {}
 
-	local maxFindNum = 100
 	local num = #lua_activity.configList
 
 	for i = num, 1, -1 do
@@ -96,10 +95,6 @@ function ActivityConfig:_initMainActExtraDisplay()
 
 		if activityConfig.extraDisplayId > 0 and not self._displayBindActivityList[activityConfig.extraDisplayId] then
 			self._displayBindActivityList[activityConfig.extraDisplayId] = activityConfig
-		end
-
-		if maxFindNum < num - i then
-			break
 		end
 	end
 

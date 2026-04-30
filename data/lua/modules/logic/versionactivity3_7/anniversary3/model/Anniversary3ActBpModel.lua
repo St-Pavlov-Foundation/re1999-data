@@ -499,7 +499,11 @@ function Anniversary3ActBpModel.sortRewardsByRare(objA, objB)
 	local aRare = aConfig.rare and aConfig.rare or 5
 	local bRare = bConfig.rare and bConfig.rare or 5
 
-	return bRare < aRare
+	if aRare ~= bRare then
+		return bRare < aRare
+	end
+
+	return objA.materilId < objB.materilId
 end
 
 Anniversary3ActBpModel.instance = Anniversary3ActBpModel.New()

@@ -122,6 +122,12 @@ StoreEnum.V3a3_SkinDiscountItemId = 833005
 StoreEnum.V3a3_SkinDiscountAdvancedItemId = 713301
 StoreEnum.V3a4_DestinySummonPackage = 834005
 StoreEnum.V3a7_MultipleHeroChoiceItemId = 481011
+StoreEnum.AdvancedSkinPackageMap = {
+	[StoreEnum.V3a3_SkinDiscountAdvancedItemId] = true
+}
+StoreEnum.UniqueSkinPackageMap = {
+	[713202] = true
+}
 StoreEnum.NewbiePackId = 811422
 StoreEnum.NormalRoomTicket = 600001
 StoreEnum.TopRoomTicket = 600002

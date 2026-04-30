@@ -124,6 +124,12 @@ function MailView:_btnjumpOnClick()
 	end
 end
 
+require("tolua.reflection")
+tolua.loadassembly("SL_AS")
+
+local MailView_SdkNativeUtil_Type = tolua.findtype("gamesdk.SdkNativeUtil")
+local MailView_BoolReturnMethod = tolua.getmethod(MailView_SdkNativeUtil_Type, "BoolReturnMethod", typeof("System.String"), typeof("System.String"), typeof("System.String"))
+
 function MailView:_analysisJumpUrl(url)
 	local arr = string.split(url, "|")
 
@@ -139,7 +145,7 @@ function MailView:_analysisJumpUrl(url)
 				biz_name = string.urlencode(string.urlencode(biz_name))
 			end
 
-			local hasWX = SLFramework.NativeUtil.BoolCallNative(SDKNativeUtil.nativeClsName, "isPlatformClientValid", "2")
+			local hasWX = MailView_BoolReturnMethod:Call(SDKNativeUtil.nativeClsName, "isPlatformClientValid", "2")
 			local finalUrl = hasWX and WXURL or noWXURL
 
 			if not string.find(finalUrl, "?") then

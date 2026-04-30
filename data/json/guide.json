@@ -8505,7 +8505,7 @@
   {
     "id": 33507,
     "desc": "肉鸽2天赋树引导",
-    "isOnline": 1,
+    "isOnline": 0,
     "trigger": "OpenView#Rouge2_MapView",
     "invalid": "ActivityEnd#13209",
     "interruptFinish": 1,

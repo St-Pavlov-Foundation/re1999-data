@@ -17,6 +17,9 @@ function SkinSelfSelectItem:onInitView()
 	self._goSelected = gohelper.findChild(self.viewGO, "#go_Selected")
 	self._goGarment = gohelper.findChild(self.viewGO, "#go_Garment")
 	self._goAdvance = gohelper.findChild(self.viewGO, "#go_Advance")
+	self._goUnique = gohelper.findChild(self.viewGO, "#go_Unique")
+	self._simageUniqueBg = gohelper.findChildSingleImage(self.viewGO, "#go_Unique/#simage_iconbg")
+	self._simageUniqueIcon = gohelper.findChildSingleImage(self.viewGO, "#go_Unique/#simage_icon_1")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -95,6 +98,7 @@ function SkinSelfSelectItem:onUpdateMO(mo)
 	gohelper.setActive(self._simagesign, isSkin)
 	gohelper.setActive(self._goAdvance, isSkin)
 	gohelper.setActive(self._goGarment, isSkin)
+	gohelper.setActive(self._goUnique, isSkin)
 	gohelper.setActive(self._goGet, isSkin)
 	gohelper.setActive(self._txtskinname, isSkin)
 	gohelper.setActive(self._txtskinname, isSkin)
@@ -121,7 +125,16 @@ function SkinSelfSelectItem:onUpdateMO(mo)
 	local haveSkin = HeroModel.instance:checkHasSkin(skinId)
 
 	gohelper.setActive(self._goGet, haveSkin)
-	self._simageicon:LoadImage(ResUrl.getStoreSkin(skinId))
+
+	local isAdvanced = StoreEnum.AdvancedSkinPackageMap[self.mo.itemId] == true
+	local isUnique = StoreEnum.UniqueSkinPackageMap[self.mo.itemId] == true
+
+	if isUnique then
+		self._simageUniqueIcon:LoadImage(ResUrl.getHeadSkinIconUnique(skinId))
+		self._simageUniqueBg:LoadImage(ResUrl.getCharacterSkinIcon(skinId))
+	else
+		self._simageicon:LoadImage(ResUrl.getStoreSkin(skinId))
+	end
 
 	self.haveSkin = haveSkin
 
@@ -134,11 +147,10 @@ function SkinSelfSelectItem:onUpdateMO(mo)
 	end
 
 	self:refreshGotAnim(haveSkin)
-
-	local isAdvanced = self.mo.itemId == StoreEnum.V3a3_SkinDiscountAdvancedItemId
-
-	gohelper.setActive(self._goGarment, not isAdvanced)
+	gohelper.setActive(self._goGarment, not isAdvanced and not isUnique)
+	gohelper.setActive(self._simageicon, not isUnique)
 	gohelper.setActive(self._goAdvance, isAdvanced)
+	gohelper.setActive(self._goUnique, isUnique)
 end
 
 function SkinSelfSelectItem:getAnimator()

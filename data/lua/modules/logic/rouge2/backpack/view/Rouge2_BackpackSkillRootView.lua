@@ -37,10 +37,10 @@ end
 function Rouge2_BackpackSkillRootView:_initOpenViewFunc()
 	self._openViewFunc = self:getUserDataTb_()
 	self._openViewFunc[Rouge2_BackpackSkillRootView.ViewType.TalentTree] = function()
-		self:openExclusiveView(1, 1, Rouge2_BackpackSkillTalentView, Rouge2_Enum.ResPath.BackpackTalentView, self._goContainer)
+		return self:openExclusiveView(1, 1, Rouge2_BackpackSkillTalentView, Rouge2_Enum.ResPath.BackpackTalentView, self._goContainer)
 	end
 	self._openViewFunc[Rouge2_BackpackSkillRootView.ViewType.List] = function()
-		self:openExclusiveView(1, 2, Rouge2_BackpackSkillView, Rouge2_Enum.ResPath.BackpackSkillView, self._goContainer)
+		return self:openExclusiveView(1, 2, Rouge2_BackpackSkillView, Rouge2_Enum.ResPath.BackpackSkillView, self._goContainer)
 	end
 end
 
@@ -57,8 +57,7 @@ function Rouge2_BackpackSkillRootView:_openViewByType(viewType)
 		return
 	end
 
-	openViewFunc(self)
-
+	self._curShowView = openViewFunc(self)
 	self._viewType = viewType
 end
 
@@ -82,6 +81,14 @@ function Rouge2_BackpackSkillRootView:_onClickEscapeCallback()
 	end
 
 	self:closeThis()
+end
+
+function Rouge2_BackpackSkillRootView:getView(viewType)
+	if self._viewType ~= viewType then
+		return
+	end
+
+	return self._curShowView
 end
 
 return Rouge2_BackpackSkillRootView
