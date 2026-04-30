@@ -14,7 +14,8 @@
     "content1": "此处显示角色当前的{生命值}，生命值归零时角色将迎来{退场}，其咒语亦将消散",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 2,
@@ -31,7 +32,8 @@
     "content1": "此处显示角色的{激情}点数|{使用}咒语，{移动}咒语，{提升}咒语阶次，都将为角色积攒{激情}!|当角色激情满溢，下次生成咒语时可获得{至终的仪式}的咒语",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 3,
@@ -48,7 +50,8 @@
     "content1": "持续回合型状态|状态的{持续回合数}将显示在右上角\n持续回合结束后，状态将会{消失}|层数叠加型状态|状态的{层数}将显示在右下角\n状态的层数变动规则，视具体效果而定",
     "isCn": 1,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 4,
@@ -65,7 +68,8 @@
     "content1": "敌人掌握的咒语将显示于此。等阶各异，各有其效|攻击|对敌人造成{直接创伤}|减益|{削弱敌方}，部分咒语额外造成创伤|增益|使我方获得{属性提升}、{状态增益}|治疗|恢复我方{生命}|反制|{特定条件}可触发强力效果|至终的仪式|具有{强大威力}或者{特殊效果}",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 5,
@@ -82,7 +86,8 @@
     "content1": "咒语介绍：|咒语的阶位|部分咒语触发特殊效果的表现|灵感是否被克制|咒语的类型|目标抵抗咒语附加状态(完全)|目标抵抗咒语附加状态(概率)|本回合我方可释放的咒语将会显示在此处\n点击释放咒语，长按查看咒语的详细效果",
     "isCn": 1,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 6,
@@ -99,7 +104,8 @@
     "content1": "我方行动将显示于此，空位表示本回合的可行动次数\n点击此处可{撤销}所有行动|表明此次行动将{释放}此神秘术|表明此次行动为{移动}咒语",
     "isCn": 1,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 8,
@@ -116,7 +122,8 @@
     "content1": "同阶位的相同咒语{邻接}时，将自动{融合升阶}\n高阶咒语具有更出色的效果",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 9,
@@ -133,7 +140,8 @@
     "content1": "{锁定克制目标}后咒语会附带{【克制】}标识\n对敌方使用{克制}咒语能够事半功倍",
     "isCn": 1,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 11,
@@ -150,7 +158,8 @@
     "content1": "敌人对不同的{创伤类型}具有抗性\n请针对其抗性释放神秘术，有效打击敌人|现实创伤|精神创伤",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 13,
@@ -167,7 +176,8 @@
     "content1": "此处表示{【律的调校】}效果及所需激情|此处显示司辰已蕴蓄的{激情}",
     "isCn": 1,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 14,
@@ -184,7 +194,8 @@
     "content1": "当司辰的激情不足以支持{【律的调校】}时，需要继续蕴蓄{激情}|司辰的激情|使用神秘术|+4|移动神秘术|+3|融合神秘术|+2|回合恢复|+5|初始激情|+15|{维尔汀的初始激情提高，回合开始时获得激情}",
     "isCn": 1,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 16,
@@ -201,7 +212,8 @@
     "content1": "在{反制}状态下，被攻击时会触发特殊的{反制}效果\n注意{反制}效果，谨慎应对！|反弹|剩余2回合|被攻击时，{反弹}自身攻击*100%的本源创伤",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 17,
@@ -218,7 +230,8 @@
     "content1": "受{缴械}影响，下列类型的神秘术将无法释放|攻击|对敌人造成{直接创伤}",
     "isCn": 1,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 18,
@@ -235,7 +248,8 @@
     "content1": "受{缄默}影响，下列类型的神秘术将无法释放|增益|使我方获得{增益}效果|减益|{削弱敌方}，部分咒语额外造成创伤|反制|{特定条件}可触发强力效果|治疗|恢复我方{生命}",
     "isCn": 1,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 19,
@@ -252,7 +266,8 @@
     "content1": "受{封印}影响，下列类型的神秘术将无法释放|至终的仪式|具有{强大威力}或者{特殊效果}",
     "isCn": 1,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 20,
@@ -269,7 +284,8 @@
     "content1": "激情满溢时受{削减激情}影响，{至终的仪式}将被移除",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 21,
@@ -286,7 +302,8 @@
     "content1": "受{石化}影响，角色无法进行任何行动\n但受到以下类型伤害将解除{石化}|现实创伤",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 23,
@@ -303,7 +320,8 @@
     "content1": "受{噩梦}影响，角色无法进行任何行动\n但受到以下类型伤害将解除{噩梦}|现实创伤|精神创伤",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 24,
@@ -320,7 +338,8 @@
     "content1": "推荐利用{斯奈德}与其他{兽}灵感角色进行克制",
     "isCn": 1,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 25,
@@ -337,7 +356,8 @@
     "content1": "控制敌方生命值接近但不低于{50%}，而后利用{爆发伤害击杀}（高阶咒语/至终的仪式）",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 26,
@@ -354,7 +374,8 @@
     "content1": "{清理拥趸者}，可减少勿忘我输出，削减勿忘我激情点",
     "isCn": 1,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 27,
@@ -371,7 +392,8 @@
     "content1": "敌方生命值与爆发伤害较高，推荐携带{治疗角色}续航作战|{融合咒语时激情额外+1}，敌方进入{反制状态}时，请利用该规则，快速积攒激情",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 28,
@@ -388,7 +410,8 @@
     "content1": "敌方{精神防御极高}，现实防御较低，推荐利用{现实创伤}角色进行克制！",
     "isCn": 1,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 29,
@@ -405,7 +428,8 @@
     "content1": "敌方受到的群体伤害降低，推荐使用{单体伤害}角色进行输出|{攻击“凝眸的造物”}，可降低敌方激情点，阻止至终的仪式释放",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 30,
@@ -422,7 +446,8 @@
     "content1": "优先{击败防御装置}，避免红弩箭获得现实/精神免疫护盾",
     "isCn": 1,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 33,
@@ -439,7 +464,8 @@
     "content1": "敌方受到攻击时将触发{反击}，请注意我方角色生命值|敌方在自身{护盾被击碎}时，将陷入削弱状态，请{集中攻击}！",
     "isCn": 1,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 34,
@@ -456,7 +482,8 @@
     "content1": "敌方每回合进行{自我强化}，5回合后将转换形态并释放至终的仪式，需{尽快完成击杀}",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 35,
@@ -473,7 +500,8 @@
     "content1": "受{冰冻}影响，角色无法进行任何行动\n但受到以下类型伤害将解除{冰冻}|精神创伤",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 36,
@@ -490,7 +518,8 @@
     "content1": "受{眩晕}影响，角色无法进行任何行动",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 37,
@@ -507,7 +536,8 @@
     "content1": "{妖精会复活}！请注意查看敌方详情，推荐使用克制攻击限制其复活能力|尽量{同时攻击}敌方，避免它们生命相差过大，从而获得增益",
     "isCn": 1,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 38,
@@ -524,7 +554,8 @@
     "content1": "优先进攻左手、右手，使该部位陷入{休眠}，可减轻生存压力|源流被击败后，将进入{休眠}，此时{击败}左手、右手、源流核心，可使其彻底死亡",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 39,
@@ -541,7 +572,8 @@
     "content1": "同名的状态间存在{覆盖关系}|强度{不同}时，根据{效果强度}进行覆盖|强度{相同}时，根据{持续回合}进行覆盖",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 40,
@@ -558,7 +590,8 @@
     "content1": "受{关卡规则}或{心神不宁}影响，角色将无法获得{激情}|关卡规则|心神不宁",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 41,
@@ -575,7 +608,8 @@
     "content1": "1.带有协同者的行动者在战斗中获得至终的仪式时，会同时获得协同者的至终的仪式|2.当使用协同咒语时，协同咒语的灵感、伤害类型与当前行动者的相同",
     "isCn": 0,
     "displayType": "20",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 42,
@@ -592,7 +626,8 @@
     "content1": "在战斗中，释放协同咒语时，对应的行动者同样会获得激情",
     "isCn": 0,
     "displayType": "20",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 43,
@@ -609,7 +644,8 @@
     "content1": "在黄昏的音序中，律的调校会被替换为触媒咒语\n可以消耗媒介释放触媒咒语，媒介无法通过正常的战斗行为增加\n战斗后剩余的媒介会被保存，继承到下一场战斗中",
     "isCn": 0,
     "displayType": "20",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 44,
@@ -626,7 +662,8 @@
     "content1": "在黄昏的音序中，部分咒语效果（部分角色的效果）与常规战斗有所差异",
     "isCn": 0,
     "displayType": "20",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 45,
@@ -643,7 +680,8 @@
     "content1": "改写:部分战场规则会改写咒语，被改写的咒语，会产生不同的效果|躁动: 回合结束时，使持\n有该效果的咒语的角色失去\n10%当前生命|冻结: 咒语无法被使用和移动|混沌: 回合结束时变为\n随机阶次的随机咒语",
     "isCn": 0,
     "displayType": "20",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 46,
@@ -660,7 +698,8 @@
     "content1": "1.本回合出手相同类型的咒语数量≥3时，触发咒语同频，本回合内提升属性。\n2.相同类型的咒语数量越多，咒语同频等级越高，咒语同频最高为7级。|3.本回合出手不同类型的咒语类型数量≥3时，触发咒语共鸣，本回合内提升属性。\n4.咒语的类型越多，咒语共鸣等级越高，咒语共鸣最高为7级。",
     "isCn": 0,
     "displayType": "20",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 47,
@@ -677,7 +716,8 @@
     "content1": "吞噬：永久性的失去部分被吞噬的造物；每次吞噬可以使吞噬造物效果更强大",
     "isCn": 0,
     "displayType": "20",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 48,
@@ -694,7 +734,8 @@
     "content1": "锻造：使可锻造的造物品质提升，造物效果获得加强\n一般来说，造物只能被锻造1次",
     "isCn": 0,
     "displayType": "20",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 49,
@@ -711,7 +752,8 @@
     "content1": "蓄电：部分造物布设时，可以为周围[蓄电]造物提供能量，当一些[蓄电]造物满足能量，就会被激活，获得强力效果",
     "isCn": 0,
     "displayType": "20",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 50,
@@ -728,7 +770,8 @@
     "content1": "咒语介绍：|咒语的阶位|部分咒语触发特殊效果的表现|灵感是否被克制|咒语的类型|目标抵抗咒语附加状态(完全)|目标抵抗咒语附加状态(概率)|本回合我方可释放的咒语将会显示在此处\n点击释放咒语，长按查看咒语的详细效果",
     "isCn": 1,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 51,
@@ -745,7 +788,8 @@
     "content1": "使用附有{启示}的咒语后，可触发额外的{即兴咒语}攻击\n打出附有启示的咒语越多，即兴咒语也会{随之增强}|在特定角色加成下\n通过任意方式消耗{灵光}能额外为咒语附加等值的{启示}",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 52,
@@ -762,7 +806,8 @@
     "content1": "在特定角色加成下\n通过任意方式消耗{灵光}能额外为咒语附加等值的{启示}",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 53,
@@ -779,7 +824,8 @@
     "content1": "使用附有{启示}的咒语后，可触发额外的{即兴咒语}攻击\n打出附有启示的咒语越多，即兴咒语也会{随之增强}",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 54,
@@ -796,7 +842,8 @@
     "content1": "在特定效果下，战斗中将出现【薪之杯】，记录己方角色累计损失生命转化为【薪血】；每回合开始时，根据己方上阵角色最大生命总和更新【薪血】上限|点击【薪之杯】将主动使用咒语【饮尽生者之色】|【饮尽生者之色】：消耗所有【薪血】，每消耗1点【薪血】，则回复己方全体一定百分比的最大生命",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 55,
@@ -813,7 +860,8 @@
     "content1": "在特定效果下，战斗中将出现【薪之杯】，记录己方角色累计损失生命转化为【薪血】；每回合开始时，根据己方上阵角色最大生命总和更新【薪血】上限|点击【薪之杯】将主动使用咒语【饮尽生者之色】|【饮尽生者之色】：消耗所有【薪血】，每消耗1点【薪血】，则回复己方全体一定百分比的最大生命",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 56,
@@ -830,7 +878,8 @@
     "content1": "极寒环境下，每隔一定回合全场将弥漫寒气，赋予场上所有单位{深寒}|{【深寒】}回合结束时造成本源创伤，使用咒语或至终的仪式后扣除1层",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 57,
@@ -847,7 +896,8 @@
     "content1": "场景布满洪水！{引导之人的复归}释放至终的仪式还会使水位上涨，状况将更危险|{低水位}时，间隔1回合赋予己方{深寒}\n{高水位}时，间隔1回合赋予己方{深寒}和{冰冻}",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 58,
@@ -864,7 +914,8 @@
     "content1": "{抵抗力}降低时，角色在战斗中也会变得{更脆弱}|抵抗力为{80~120}时，角色不受影响|抵抗力为{40~79}时，角色生命只可恢复至上限的80%|抵抗力为{1~39}时，角色生命只可恢复至上限的40%|抵抗力为{0}时，角色会陷入无法战斗状态",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 59,
@@ -881,7 +932,8 @@
     "content1": "{【暴露】}：降低受创减免，失去{【暴露】}时，获得{【掩护】}|{【掩护】}：每层增加受创减免，受击后失去1层，可叠加3层\n失去全部{【掩护】}时，获得{【暴露】}",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 60,
@@ -898,7 +950,8 @@
     "content1": "在特定效果下，战斗中将出现{【聚光盏】}\n任意敌方被赋予{【燃烧】【光晕】}时将积累{【余辉】}\n{【余辉】与【薪血】互斥}|回合开始时将根据{【余辉】}数量提升己方全体的暴击率\n生效后扣除一半当前{【余辉】}|某些角色可以赋予{【聚光盏】}特殊能力",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 61,
@@ -915,7 +968,8 @@
     "content1": "在特定效果下，战斗中将出现{【聚光盏】}\n任意敌方被赋予{【燃烧】【光晕】}时将积累{【余辉】}\n{【余辉】与【薪血】互斥}|回合开始时将根据{【余辉】}数量提升己方全体的暴击率\n生效后扣除一半当前{【余辉】}|某些角色可以赋予{【聚光盏】}特殊能力",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 62,
@@ -932,7 +986,8 @@
     "content1": "在本次玩法中，具有特殊机制<#FF906A>“失谐”</color>，角色回复的生命值将被转化为临时生命值，该临时生命值将在下一回合开始时清空",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
   },
   {
     "id": 63,
@@ -949,6 +1004,187 @@
     "content1": "1.部分敌人为{灵感薄弱型敌人}，拥有{若干个}灵感薄弱点，受到相应灵感的攻击会被{克制}；此类敌人攻击均{不为克制攻击}|2.灵感薄弱型敌人可能会有{灵感耐受度}，受到攻击后会降低耐受度，{受到克制攻击}会降低更多；耐受度被{清空}后，会触发相应效果，并根据敌人能力回复耐受度",
     "isCn": 0,
     "displayType": "",
-    "noDisplayType": ""
+    "noDisplayType": "",
+    "group": 0
+  },
+  {
+    "id": 64,
+    "mainTitleId": 0,
+    "subTitleId": 0,
+    "condition": "10",
+    "mainTitle_cn": "",
+    "mainTitle_en": "",
+    "title_cn": "术具",
+    "title_en": "Conduit",
+    "iconShow": "1",
+    "picture1": "",
+    "picture2": "zhandoutujian_device_1",
+    "content1": "进入战斗时根据{我方术具角色数量}，在{操作区下方}显示{对应的术具}|术具默认以{术具角色站位顺序来排列}，在操作阶段可{手动拖拽术具}来改变其顺序，该操作{不占用行动点}",
+    "isCn": 0,
+    "displayType": "",
+    "noDisplayType": "",
+    "group": 1
+  },
+  {
+    "id": 65,
+    "mainTitleId": 0,
+    "subTitleId": 0,
+    "condition": "10",
+    "mainTitle_cn": "",
+    "mainTitle_en": "",
+    "title_cn": "术具",
+    "title_en": "Conduit",
+    "iconShow": "",
+    "picture1": "",
+    "picture2": "zhandoutujian_device_2",
+    "content1": "术具{唤起一次所需的交感能量}会在每个术具的{左上方显示}|在操作阶段中{打出交感能量卡}时，会在{术具下方显示}预计获得的{交感能量}",
+    "isCn": 0,
+    "displayType": "",
+    "noDisplayType": "",
+    "group": 1
+  },
+  {
+    "id": 66,
+    "mainTitleId": 0,
+    "subTitleId": 0,
+    "condition": "10",
+    "mainTitle_cn": "",
+    "mainTitle_en": "",
+    "title_cn": "术具",
+    "title_en": "Conduit",
+    "iconShow": "",
+    "picture1": "",
+    "picture2": "zhandoutujian_device_3",
+    "content1": "在操作阶段{长按术具}即可{查看当前咒语详情描述}|{单击术具}进入{咒语替换界面}，此时再{单击上方其他咒语}即可完成替换",
+    "isCn": 0,
+    "displayType": "",
+    "noDisplayType": "",
+    "group": 1
+  },
+  {
+    "id": 67,
+    "mainTitleId": 0,
+    "subTitleId": 0,
+    "condition": "10",
+    "mainTitle_cn": "",
+    "mainTitle_en": "",
+    "title_cn": "术具",
+    "title_en": "Conduit",
+    "iconShow": "",
+    "picture1": "",
+    "picture2": "zhandoutujian_device_4",
+    "content1": "{交感能量}主要由交感{能量卡打出}获得|{若当前}所持的{交感能量足够}就会{唤起术具}，{释放对应的咒语}|{若当前}所持的{交感能量不足}就{无法唤起术具}，对应的{咒语则不释放}",
+    "isCn": 0,
+    "displayType": "",
+    "noDisplayType": "",
+    "group": 1
+  },
+  {
+    "id": 68,
+    "mainTitleId": 0,
+    "subTitleId": 0,
+    "condition": "10",
+    "mainTitle_cn": "",
+    "mainTitle_en": "",
+    "title_cn": "术具",
+    "title_en": "Conduit",
+    "iconShow": "",
+    "picture1": "",
+    "picture2": "zhandoutujian_device_5",
+    "content1": "术具需要{积攒同调值}来{释放}至终的仪式|在操作阶段若{同调值已满}，术具则{会自动切换释放}至终的仪式",
+    "isCn": 0,
+    "displayType": "",
+    "noDisplayType": "",
+    "group": 1
+  },
+  {
+    "id": 69,
+    "mainTitleId": 1,
+    "subTitleId": 14,
+    "condition": "10",
+    "mainTitle_cn": "基础信息",
+    "mainTitle_en": "Information",
+    "title_cn": "术具Ⅰ",
+    "title_en": "Conduit",
+    "iconShow": "",
+    "picture1": "zhandoutujian_device_full_1",
+    "picture2": "",
+    "content1": "进入战斗时根据{我方术具角色数量}，在{操作区下方}显示{对应的术具}|术具默认以{术具角色站位顺序来排列}，在操作阶段可{手动拖拽术具}来改变其顺序，该操作{不占用行动点}",
+    "isCn": 0,
+    "displayType": "",
+    "noDisplayType": "",
+    "group": 0
+  },
+  {
+    "id": 70,
+    "mainTitleId": 1,
+    "subTitleId": 15,
+    "condition": "10",
+    "mainTitle_cn": "基础信息",
+    "mainTitle_en": "Information",
+    "title_cn": "术具Ⅱ",
+    "title_en": "Conduit",
+    "iconShow": "",
+    "picture1": "zhandoutujian_device_full_2",
+    "picture2": "",
+    "content1": "术具{唤起一次所需的交感能量}会在每个术具的{左上方显示}|在操作阶段中{打出交感能量卡}时，会在{术具下方显示}预计获得的{交感能量}",
+    "isCn": 0,
+    "displayType": "",
+    "noDisplayType": "",
+    "group": 0
+  },
+  {
+    "id": 71,
+    "mainTitleId": 1,
+    "subTitleId": 16,
+    "condition": "10",
+    "mainTitle_cn": "基础信息",
+    "mainTitle_en": "Information",
+    "title_cn": "术具Ⅲ",
+    "title_en": "Conduit",
+    "iconShow": "",
+    "picture1": "zhandoutujian_device_full_3",
+    "picture2": "",
+    "content1": "在操作阶段{长按术具}即可{查看当前咒语详情描述}|{单击术具}进入{咒语替换界面}，此时再{单击上方其他咒语}即可完成替换",
+    "isCn": 0,
+    "displayType": "",
+    "noDisplayType": "",
+    "group": 0
+  },
+  {
+    "id": 72,
+    "mainTitleId": 1,
+    "subTitleId": 17,
+    "condition": "10",
+    "mainTitle_cn": "基础信息",
+    "mainTitle_en": "Information",
+    "title_cn": "术具Ⅳ",
+    "title_en": "Conduit",
+    "iconShow": "",
+    "picture1": "zhandoutujian_device_full_4",
+    "picture2": "",
+    "content1": "{交感能量}主要由交感{能量卡打出}获得|{若当前}所持的{交感能量足够}就会{唤起术具}，{释放对应的咒语}|{若当前}所持的{交感能量不足}就{无法唤起术具}，对应的{咒语则不释放}",
+    "isCn": 0,
+    "displayType": "",
+    "noDisplayType": "",
+    "group": 0
+  },
+  {
+    "id": 73,
+    "mainTitleId": 1,
+    "subTitleId": 18,
+    "condition": "10",
+    "mainTitle_cn": "基础信息",
+    "mainTitle_en": "Information",
+    "title_cn": "术具Ⅴ",
+    "title_en": "Conduit",
+    "iconShow": "",
+    "picture1": "zhandoutujian_device_full_5",
+    "picture2": "",
+    "content1": "术具需要{积攒同调值}来{释放}至终的仪式|在操作阶段若{同调值已满}，术具则{会自动切换释放}至终的仪式",
+    "isCn": 0,
+    "displayType": "",
+    "noDisplayType": "",
+    "group": 0
   }
 ]

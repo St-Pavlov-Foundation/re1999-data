@@ -1,0 +1,157 @@
+﻿-- chunkname: @modules/logic/sodache/view/outside/SodacheRelicOverView.lua
+
+module("modules.logic.sodache.view.outside.SodacheRelicOverView", package.seeall)
+
+local SodacheRelicOverView = class("SodacheRelicOverView", BaseView)
+
+function SodacheRelicOverView:onInitView()
+	self._scrollDesc = gohelper.findChildScrollRect(self.viewGO, "#scroll_Desc")
+	self._goAttributes1 = gohelper.findChild(self.viewGO, "#scroll_Desc/Viewport/Content/#go_Attributes1")
+	self._goPassiveAttributes = gohelper.findChild(self.viewGO, "#scroll_Desc/Viewport/Content/#go_Attributes1/#go_PassiveAttributes")
+	self._goAttributeItem = gohelper.findChild(self.viewGO, "#scroll_Desc/Viewport/Content/#go_Attributes1/#go_PassiveAttributes/#go_AttributeItem")
+	self._goLine1 = gohelper.findChild(self.viewGO, "#scroll_Desc/Viewport/Content/#go_Line1")
+	self._goDescs1 = gohelper.findChild(self.viewGO, "#scroll_Desc/Viewport/Content/#go_Descs1")
+	self._goDescGroupItem = gohelper.findChild(self.viewGO, "#scroll_Desc/Viewport/Content/#go_Descs1/#go_DescGroupItem")
+	self._goAttributes2 = gohelper.findChild(self.viewGO, "#scroll_Desc/Viewport/Content/#go_Attributes2")
+	self._goActiveAttributes = gohelper.findChild(self.viewGO, "#scroll_Desc/Viewport/Content/#go_Attributes2/#go_ActiveAttributes")
+	self._goLine2 = gohelper.findChild(self.viewGO, "#scroll_Desc/Viewport/Content/#go_Line2")
+	self._goDescs2 = gohelper.findChild(self.viewGO, "#scroll_Desc/Viewport/Content/#go_Descs2")
+	self._goDescItem = gohelper.findChild(self.viewGO, "#scroll_Desc/Viewport/Content/#go_Descs2/#go_DescItem")
+	self._goArrow = gohelper.findChild(self.viewGO, "#go_Arrow")
+	self._gotopleft = gohelper.findChild(self.viewGO, "#go_topleft")
+
+	if self._editableInitView then
+		self:_editableInitView()
+	end
+end
+
+function SodacheRelicOverView:addEvents()
+	return
+end
+
+function SodacheRelicOverView:removeEvents()
+	return
+end
+
+function SodacheRelicOverView:_editableInitView()
+	return
+end
+
+function SodacheRelicOverView:onOpen()
+	self.relicBox = SodacheModel.instance:getOutsideMo().relicBox
+
+	self:refreshPassive()
+	self:refreshActive()
+	gohelper.setActive(self._goAttributeItem, false)
+	gohelper.setActive(self._goDescItem, false)
+end
+
+function SodacheRelicOverView:refreshPassive()
+	self.descGroupItemMap = {}
+
+	local attrMap = {}
+	local passiveDescMap = {}
+	local relicMos = self.relicBox.relics
+
+	for _, mo in ipairs(relicMos) do
+		if mo.level ~= 0 then
+			local attrs = SodacheUtil.getRelicAttrs(mo.id, mo.level)
+
+			for _, attr in ipairs(attrs) do
+				SodacheUtil.getGlobalAttrMap(attr, attrMap)
+			end
+
+			local descType = tonumber(mo.relicCo.type)
+
+			if not passiveDescMap[descType] then
+				passiveDescMap[descType] = {}
+			end
+
+			table.insert(passiveDescMap[descType], mo.relicCo.effectDesc)
+		end
+	end
+
+	for type, descs in ipairs(passiveDescMap) do
+		local item = self:getUserDataTb_()
+		local goGroup = gohelper.cloneInPlace(self._goDescGroupItem)
+		local btnFold = gohelper.findChildButtonWithAudio(goGroup, "title/btn_Fold")
+
+		self:addClickCb(btnFold, self._btnFoldOnClick, self, type)
+
+		item.goOff = gohelper.findChild(goGroup, "title/btn_Fold/off")
+		item.goOn = gohelper.findChild(goGroup, "title/btn_Fold/on")
+		item.isFold = false
+		item.goRoot = gohelper.findChild(goGroup, "DescRoot")
+
+		local txtTitle = gohelper.findChildText(goGroup, "title/txt_Title")
+
+		txtTitle.text = luaLang("sodache_relicoverview_type" .. tostring(type))
+
+		local root = gohelper.findChild(goGroup, "DescRoot")
+
+		for _, desc in ipairs(descs) do
+			local goDesc = gohelper.clone(self._goDescItem, root)
+			local text = gohelper.findChildText(goDesc, "")
+
+			text.text = desc
+		end
+
+		self.descGroupItemMap[type] = item
+	end
+
+	gohelper.setActive(self._goDescGroupItem, false)
+
+	for attrId, value in pairs(attrMap) do
+		local config = lua_sodache_attr.configDict[attrId]
+		local go = gohelper.cloneInPlace(self._goAttributeItem)
+		local name = gohelper.findChildText(go, "name")
+
+		name.text = config.name
+
+		local value1 = gohelper.findChildText(go, "value")
+
+		value1.text = value
+	end
+
+	gohelper.setActive(self._goDescs1, next(passiveDescMap))
+	gohelper.setActive(self._goLine1, next(attrMap))
+end
+
+function SodacheRelicOverView:refreshActive()
+	local isShow = false
+
+	if SodacheUtil.isInside() then
+		local insideMo = SodacheModel.instance:getInsideMo()
+		local relicIds = insideMo.prop.offerRelicIds
+
+		isShow = #relicIds > 0
+
+		if isShow then
+			for _, relicId in ipairs(relicIds) do
+				local mo = self.relicBox:getRelicMo(relicId)
+				local go = gohelper.cloneInPlace(self._goDescItem)
+				local desc = gohelper.findChildText(go, "")
+
+				desc.text = mo.relicCo.effect2Desc
+			end
+		end
+	end
+
+	gohelper.setActive(self._goLine2, false)
+	gohelper.setActive(self._goAttributes2, isShow)
+	gohelper.setActive(self._goDescs2, isShow)
+end
+
+function SodacheRelicOverView:_btnFoldOnClick(type)
+	local item = self.descGroupItemMap[type]
+
+	if item then
+		item.isFold = not item.isFold
+
+		gohelper.setActive(item.goOff, item.isFold)
+		gohelper.setActive(item.goOn, not item.isFold)
+		gohelper.setActive(item.goRoot, not item.isFold)
+	end
+end
+
+return SodacheRelicOverView

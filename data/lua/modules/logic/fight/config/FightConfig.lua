@@ -144,7 +144,13 @@ function FightConfig:reqConfigNames()
 		"fight_change_buff_effect_by_skin",
 		"magic_wqsz",
 		"toughnessskill",
-		"fight_ya_mi_hu_ti_effect"
+		"fight_ya_mi_hu_ti_effect",
+		"fight_monster_3d",
+		"fight_camera_rorate_when_idle",
+		"fight_scene_level_camera_shadow",
+		"fight_spell_show_type",
+		"skill_target_type_define",
+		"fight_direct_switch_battle_when_end"
 	}
 
 	if SLFramework.FrameworkSettings.IsEditor then
@@ -453,8 +459,6 @@ function FightConfig:getSkinSkillTimeline(skinId, skillId)
 	local skillCO = lua_skill.configDict[skillId]
 
 	if not skillCO then
-		logError("skill config not exist: " .. skillId)
-
 		return
 	end
 
@@ -500,6 +504,12 @@ function FightConfig:getSkillLv(skillId)
 	end
 
 	if FightCardDataHelper.isBigSkill(skillId) then
+		local specialCo = lua_fight_spell_show_type.configDict[skillId]
+
+		if specialCo then
+			return 0
+		end
+
 		return FightEnum.UniqueSkillCardLv
 	end
 
@@ -1074,6 +1084,22 @@ function FightConfig:getRouge2MusicCo(musicType)
 	end
 
 	return co
+end
+
+function FightConfig:getCoverType(skillId, entityId)
+	if not skillId then
+		return FightEnum.CoverType.Normal
+	end
+
+	local specialCo = lua_fight_spell_show_type.configDict[skillId]
+
+	if specialCo then
+		return FightEnum.CoverType.Normal
+	end
+
+	local skillCardLv = FightCardDataHelper.getSkillLv(entityId, skillId)
+
+	return skillCardLv == FightEnum.UniqueSkillCardLv and FightEnum.CoverType.Unique or FightEnum.CoverType.Normal
 end
 
 FightConfig.instance = FightConfig.New()

@@ -169,6 +169,10 @@ function FightWorkEndResultViewShow:_showSuccView()
 			ViewMgr.instance:openView(ViewName.Rouge2_FightSuccessView)
 
 			return
+		elseif episode_config.type == DungeonEnum.EpisodeType.Rouge2Boss then
+			ViewMgr.instance:openView(ViewName.Rouge2_BossBattleResultPanel)
+
+			return
 		elseif episode_config.type == DungeonEnum.EpisodeType.Season166Base or episode_config.type == DungeonEnum.EpisodeType.Season166Train then
 			Season166Controller.instance:openResultPanel()
 
@@ -278,6 +282,10 @@ function FightWorkEndResultViewShow:showFailView()
 
 				return
 			end
+		elseif episode_config.type == DungeonEnum.EpisodeType.Rouge2Boss then
+			ViewMgr.instance:openView(ViewName.Rouge2_BossBattleResultPanel)
+
+			return
 		elseif episode_config.type == DungeonEnum.EpisodeType.TowerCompose then
 			local needShowTowerCompose = TowerComposeModel.instance:checkCanShowResultView()
 

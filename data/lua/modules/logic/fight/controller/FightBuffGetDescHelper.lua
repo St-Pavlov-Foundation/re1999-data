@@ -73,7 +73,8 @@ function FightBuffGetDescHelper.getBuffFeatureHandle(feature)
 			[FightEnum.BuffFeature.AttrByHeatScale] = FightBuffGetDescHelper.getAttrByHeatScaleDesc,
 			[FightEnum.BuffFeature.HeatScaleUseSkill] = FightBuffGetDescHelper.formatActInfoOneParam,
 			[FightEnum.BuffFeature.TeamShareShield] = FightBuffGetDescHelper.formatActInfoOneParam,
-			[FightEnum.BuffFeature.TeamExElectricTransConsumeValueAttr] = FightBuffGetDescHelper.getTeamExElectricTransConsumeValueAttrDesc
+			[FightEnum.BuffFeature.TeamExElectricTransConsumeValueAttr] = FightBuffGetDescHelper.getTeamExElectricTransConsumeValueAttrDesc,
+			[FightEnum.BuffFeature.EachChangeAttrOneWay] = FightBuffGetDescHelper.getEachChangeAttrOneWayDesc
 		}
 	end
 
@@ -215,6 +216,29 @@ function FightBuffGetDescHelper.getTeamExElectricTransConsumeValueAttrDesc(buffM
 	local param = buffActInfo.param
 
 	return GameUtil.getSubPlaceholderLuaLangOneParam(buffCo.desc, param[1] / 10)
+end
+
+function FightBuffGetDescHelper.getEachChangeAttrOneWayDesc(buffMo, buffCo, buffActCo, paramArray, buffActInfo)
+	local paramList = {}
+	local actInfoList = buffMo.actInfo
+
+	for i = 1, #actInfoList do
+		local actInfoData = actInfoList[i]
+
+		if actInfoData.actId == buffActInfo.actId then
+			local arr = string.split(actInfoData.strParam, "#")
+			local attrId = tonumber(arr[1])
+			local value = tonumber(arr[2])
+
+			if attrId == 101 or attrId == 102 or attrId == 103 or attrId == 104 or attrId == 105 then
+				table.insert(paramList, value)
+			else
+				table.insert(paramList, value / 10 .. "%")
+			end
+		end
+	end
+
+	return GameUtil.getSubPlaceholderLuaLang(buffCo.desc, paramList)
 end
 
 return FightBuffGetDescHelper

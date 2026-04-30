@@ -10833,7 +10833,7 @@
   },
   {
     "id": -570,
-    "tips": "你的派对版本号过低, 需重重新登录",
+    "tips": "你的派对版本号过低, 需要重新登录",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,
@@ -11386,6 +11386,230 @@
   {
     "id": 366000,
     "tips": "任务未完成",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 371001,
+    "tips": "通关[▩1%s]（第▩2%s难度）及以上获得存档",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 371002,
+    "tips": "[▩1%s]（第▩2%s难度）及以上的通关存档可以保存",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 371003,
+    "tips": "通关[▩1%s]（第▩2%s难度）及以上获得存档后解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 371101,
+    "tips": "迷失感已恢复，你回到了起点",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 371102,
+    "tips": "请先按步骤完成指引",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 372001,
+    "tips": "密码错误",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 373001,
+    "tips": "▩1%s数量不足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 373002,
+    "tips": "请选择勘探时段",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 373003,
+    "tips": "需要优先处理遭遇的事件",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 373004,
+    "tips": "当前没有主动使用的行动牌",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 373005,
+    "tips": "尚未进行造像供奉",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 373006,
+    "tips": "请点击路点选择目的地",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 373007,
+    "tips": "▩1%s可购买数量不足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 373008,
+    "tips": "条件不满足，无法使用▩1%s",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 373009,
+    "tips": "供奉位置未开启",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 373010,
+    "tips": "极限理智不足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 373011,
+    "tips": "可选择数量不足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 373012,
+    "tips": "对策牌数量不足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 373013,
+    "tips": "未满足条件，无法选择",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 373014,
+    "tips": "需放置黄金树叶进行共鸣",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 373015,
+    "tips": "黄金树叶数量不足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 373016,
+    "tips": "没有可供奉的造像",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 373017,
+    "tips": "不可选择超过数量的卡牌",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 374001,
+    "tips": "没有可以选择的能量卡",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 374002,
+    "tips": "同调值不足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 375001,
+    "tips": "探索次数不足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 376001,
+    "tips": "关卡未开放",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 377001,
+    "tips": "陷入战斗狂热，无法指挥",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,

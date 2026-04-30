@@ -82,5 +82,17 @@
     "recommendStrategy": "3#9",
     "lurkNumber": 0,
     "sort": 2
+  },
+  {
+    "type": 108,
+    "id": 103370111,
+    "typeName": "旧日的荣耀",
+    "minType": 6,
+    "galleryBg": "v3a7_bossrush_handbook_boss1",
+    "point": "2500000|5000000|10000000|30000000",
+    "pointExp": "200|200|50|50",
+    "recommendStrategy": "3#9",
+    "lurkNumber": 0,
+    "sort": 1
   }
 ]

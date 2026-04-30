@@ -26,5 +26,19 @@
     "motion": "ruchang",
     "whenStopped": 0,
     "whenNotStopped": 1
+  },
+  {
+    "heroId": 3146,
+    "skinId": 1,
+    "motion": "chizhang|chizhang_start|chizhang_transition|chizhang_loop|chizhang_end|piaofu",
+    "whenStopped": 0,
+    "whenNotStopped": 1
+  },
+  {
+    "heroId": 3154,
+    "skinId": 1,
+    "motion": "sikao",
+    "whenStopped": 0,
+    "whenNotStopped": 1
   }
 ]

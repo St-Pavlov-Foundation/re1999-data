@@ -9,21 +9,24 @@ NecrologistStoryEnum.RoleStoryId = {
 	V3A2 = 27,
 	V3A5 = 30,
 	V3A3 = 28,
-	V3A1 = 26
+	V3A1 = 26,
+	V3A7 = 31
 }
 NecrologistStoryEnum.RoleStoryId2MOCls = {
 	[NecrologistStoryEnum.RoleStoryId.V3A1] = "NecrologistV3A1MO",
 	[NecrologistStoryEnum.RoleStoryId.V3A2] = "NecrologistV3A2MO",
 	[NecrologistStoryEnum.RoleStoryId.V3A3] = "NecrologistV3A3MO",
 	[NecrologistStoryEnum.RoleStoryId.V3A4] = "NecrologistV3A4MO",
-	[NecrologistStoryEnum.RoleStoryId.V3A5] = "NecrologistV3A5MO"
+	[NecrologistStoryEnum.RoleStoryId.V3A5] = "NecrologistV3A5MO",
+	[NecrologistStoryEnum.RoleStoryId.V3A7] = "NecrologistV3A7MO"
 }
 NecrologistStoryEnum.StoryId2GameView = {
 	[NecrologistStoryEnum.RoleStoryId.V3A1] = ViewName.V3A1_RoleStoryGameView,
 	[NecrologistStoryEnum.RoleStoryId.V3A2] = ViewName.V3A2_RoleStoryGameView,
 	[NecrologistStoryEnum.RoleStoryId.V3A3] = ViewName.V3A3_RoleStoryGameView,
 	[NecrologistStoryEnum.RoleStoryId.V3A4] = ViewName.V3A4_RoleStoryLevelView,
-	[NecrologistStoryEnum.RoleStoryId.V3A5] = ViewName.V3A5_RoleStoryGameView
+	[NecrologistStoryEnum.RoleStoryId.V3A5] = ViewName.V3A5_RoleStoryGameView,
+	[NecrologistStoryEnum.RoleStoryId.V3A7] = ViewName.V3A7_RoleStoryGameView
 }
 NecrologistStoryEnum.TaskParam = {
 	V3A3End2 = 2802,
@@ -122,6 +125,10 @@ NecrologistStoryEnum.V3A5NodeStatus = {
 	Front = 1,
 	Back = 2,
 	None = 0
+}
+NecrologistStoryEnum.V3A7SpLevelId = {
+	Sp2 = 6,
+	Sp1 = 3
 }
 
 return NecrologistStoryEnum

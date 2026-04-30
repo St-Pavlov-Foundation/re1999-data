@@ -312,5 +312,17 @@
       "en",
       "zh"
     ]
+  },
+  {
+    "name": "3_7_xran_jh",
+    "supportLang": [
+      "zh"
+    ]
+  },
+  {
+    "name": "3_7_xran_jhB",
+    "supportLang": [
+      "zh"
+    ]
   }
 ]

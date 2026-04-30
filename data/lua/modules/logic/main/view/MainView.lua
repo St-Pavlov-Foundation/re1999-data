@@ -109,6 +109,7 @@ function MainView:addEvents()
 	self:addEventCb(SettingsController.instance, SettingsEvent.OnKeyTipsChange, self.showKeyTips, self)
 	self:addEventCb(SignInController.instance, SignInEvent.GetSignInReply, self._onReceiveSupplementMonthCardReply, self)
 	self:addEventCb(BackpackController.instance, BackpackEvent.UpdateItemList, self._onReceiveSupplementMonthCardReply, self)
+	self:addEventCb(MainController.instance, MainEvent.OnPlayViewAnim, self._onPlayViewAnim, self)
 end
 
 function MainView:removeEvents()
@@ -137,6 +138,7 @@ function MainView:removeEvents()
 	self:removeEventCb(PCInputController.instance, PCInputEvent.NotifyEnterSummon, self.OnNotifyEnterSummon, self)
 	self:removeEventCb(SettingsController.instance, SettingsEvent.OnKeyTipsChange, self.showKeyTips, self)
 	self:removeEventCb(BackpackController.instance, BackpackEvent.UpdateItemList, self._onReceiveSupplementMonthCardReply, self)
+	self:removeEventCb(MainController.instance, MainEvent.OnPlayViewAnim, self._onPlayViewAnim, self)
 end
 
 function MainView:_btnhideOnClick()
@@ -162,6 +164,10 @@ function MainView:showKeyTips()
 	PCInputController.instance:showkeyTips(self._pcBtnRoom, PCInputModel.Activity.MainActivity, PCInputModel.MainActivityFun.Room)
 	PCInputController.instance:showkeyTips(self._pcBtnCharactor, PCInputModel.Activity.MainActivity, PCInputModel.MainActivityFun.Role)
 	PCInputController.instance:showkeyTips(self._pcBtnSummon, PCInputModel.Activity.MainActivity, PCInputModel.MainActivityFun.Summon)
+end
+
+function MainView:_onPlayViewAnim(name)
+	self._animator:Play(name, 0, 0)
 end
 
 function MainView:_btnbgmOnClick()
@@ -407,7 +413,7 @@ function MainView:_OnDailyRefresh()
 
 	StoreRpc.instance:sendGetStoreInfosRequest(storeIds)
 	ChargeRpc.instance:sendGetChargeInfoRequest()
-	ActivityRpc.instance:sendGetActivityInfosRequest()
+	ActivityRpc.instance:sendGetActivityInfosRequest(self._onSendGetActivityInfosRequestCb, self)
 	RedDotRpc.instance:sendGetRedDotInfosRequest({
 		RedDotEnum.DotNode.VersionActivityEnterRedDot
 	})
@@ -439,14 +445,18 @@ function MainView:_editableInitView()
 	self:addEventCb(NoticeController.instance, NoticeEvent.OnRefreshRedDot, self._onRefreshNoticeRedDot, self)
 	self:addEventCb(NoticeController.instance, NoticeEvent.OnGetNoticeInfo, self._onRefreshNoticeRedDot, self)
 	self:addEventCb(PlayerController.instance, PlayerEvent.UpdateAssistRewardCount, self._onUpdateAssistRewardCount, self)
+	self:addEventCb(MainController.instance, MainEvent.OnRefreshSummonTuziRed, self._onRefreshSummonTuziRed, self)
 
 	self._imagesummonnews = self:getUserDataTb_()
+	self._tuziGoList = self:getUserDataTb_()
 
 	for _, skinId in pairs(MainUISwitchEnum.Skin) do
-		local newName = string.format("right/#btn_summon/%s/#image_summonnew", skinId)
+		local newName = string.format("right/#btn_summon/%s/layout/#image_summonnew", skinId)
+		local tuziName = string.format("right/#btn_summon/%s/layout/#image_tuzi", skinId)
 		local new = gohelper.findChild(self.viewGO, newName)
 
 		table.insert(self._imagesummonnews, new)
+		table.insert(self._tuziGoList, gohelper.findChild(self.viewGO, tuziName))
 	end
 
 	self:_refreshRedDot()
@@ -457,6 +467,7 @@ function MainView:_editableInitView()
 	self:_setPlayerInfo(PlayerModel.instance:getPlayinfo())
 	self:_updateMainSceneClothes()
 	self:showKeyTips()
+	self:_refreshSummonTuziRed()
 
 	local audioEnum = AudioEnum.UI
 
@@ -507,6 +518,9 @@ function MainView:_refreshRedDot()
 		},
 		{
 			id = RedDotEnum.DotNode.MainSceneSwitch
+		},
+		{
+			id = RedDotEnum.DotNode.V3a7Teaching
 		}
 	}, self.thumbnailRedDotRefreshFunc, self)
 end
@@ -545,6 +559,7 @@ function MainView:thumbnailRedDotRefreshFunc(redDotIcon)
 		isShow = isShow or HandbookController.instance:hasAnyHandBookSkinGroupRedDot()
 		isShow = isShow or FightUISwitchModel.instance:isNewUnlockStyle()
 		isShow = isShow or ClickUISwitchModel.instance:hasReddot()
+		isShow = isShow or TeachingModel.instance:haveCanReceiveRewardTeaching() or TeachNoteModel.instance:hasRewardCouldGet()
 		redDotIcon.show = isShow
 
 		redDotIcon:showRedDot(RedDotEnum.Style.Normal)
@@ -731,6 +746,10 @@ function MainView:_setPlayerInfo(playerinfo)
 end
 
 function MainView:_onCloseViewFinish(viewName)
+	if viewName == ViewName.SummonView then
+		self:_refreshSummonTuziRed()
+	end
+
 	if viewName == ViewName.MainThumbnailView then
 		self._startCheckTime = Time.realtimeSinceStartup
 
@@ -1077,6 +1096,28 @@ end
 
 function MainView:onDestroyView()
 	return
+end
+
+function MainView:_refreshSummonTuziRed()
+	local bLooked = Act101VersionSummonController.instance:getSavedTakeALookSummon()
+	local bShowRed = not bLooked
+
+	if not bLooked then
+		bShowRed = Act101VersionSummonController.instance:isCliamed()
+	end
+
+	for _, go in ipairs(self._tuziGoList) do
+		gohelper.setActive(go, bShowRed)
+	end
+end
+
+function MainView:_onSendGetActivityInfosRequestCb()
+	self:_onRefreshSummonTuziRed()
+end
+
+function MainView:_onRefreshSummonTuziRed()
+	Act101VersionSummonController.instance:markDirty()
+	self:_refreshSummonTuziRed()
 end
 
 return MainView

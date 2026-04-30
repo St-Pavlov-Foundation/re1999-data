@@ -210,7 +210,12 @@ end
 
 function Rouge2_MapHelper._onEnterMainSceneDone()
 	GameSceneMgr.instance:dispatchEvent(SceneEventName.WaitViewOpenCloseLoading, ViewName.Rouge2_MainView)
-	VersionActivity3_4EnterController.instance:openVersionActivityEnterView(Rouge2_MapHelper.onOpenVersionActivityView, nil, VersionActivity3_4Enum.ActivityId.Rouge2, true)
+
+	local enterCtrl = VersionActivityFixedHelper.getVersionActivityEnterController()
+
+	if enterCtrl then
+		enterCtrl.instance:openVersionActivityEnterView(Rouge2_MapHelper.onOpenVersionActivityView, nil, ActivityEnum.Activity.V3a2_Rouge, true)
+	end
 end
 
 function Rouge2_MapHelper.onOpenVersionActivityView()

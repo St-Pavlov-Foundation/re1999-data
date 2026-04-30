@@ -11,6 +11,9 @@ function RoleStoryFightSuccView:onInitView()
 	self._simagemaskImage = gohelper.findChildSingleImage(self.viewGO, "#simage_maskImage")
 	self._gospine = gohelper.findChild(self.viewGO, "spineContainer/spine")
 	self._uiSpine = GuiModelAgent.Create(self._gospine, true)
+
+	self._uiSpine:setShareRT(CharacterVoiceEnum.RTShareType.Normal, self.viewName)
+
 	self._txtFbNameEn = gohelper.findChildText(self.viewGO, "txtFbNameen")
 
 	self._uiSpine:useRT()
@@ -379,7 +382,7 @@ function RoleStoryFightSuccView:_setSpineVoice()
 		local offsetX = tonumber(offsets[1])
 		local offsetY = tonumber(offsets[2])
 
-		recthelper.setAnchor(self._gospine.transform, offsetX, offsetY)
+		CharacterVoiceEnum.setSpineOffset(self._uiSpine, tonumber(offsets[1]), tonumber(offsets[2]))
 		transformhelper.setLocalScale(self._gospine.transform, scale, scale, scale)
 	else
 		gohelper.setActive(self._gospine, false)

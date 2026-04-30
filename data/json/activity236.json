@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "activityId": 13728,
+    "cost": 0,
+    "reward": "2#2#100",
+    "showReward": "2#2#100",
+    "showWindow": "",
+    "showVideo": ""
+  },
+  {
+    "id": 2,
+    "activityId": 13728,
+    "cost": 300,
+    "reward": "10#21#5",
+    "showReward": "10#21#5",
+    "showWindow": "1#1",
+    "showVideo": ""
+  },
+  {
+    "id": 3,
+    "activityId": 13728,
+    "cost": 680,
+    "reward": "1#753203#1",
+    "showReward": "1#753203#1",
+    "showWindow": "1#2",
+    "showVideo": ""
+  },
+  {
+    "id": 4,
+    "activityId": 13728,
+    "cost": 1280,
+    "reward": "1#140123#1|1#140125#1|1#140127#1|1#140120#1|1#140130#1",
+    "showReward": "1#501019#1",
+    "showWindow": "1#3",
+    "showVideo": ""
+  },
+  {
+    "id": 5,
+    "activityId": 13728,
+    "cost": 2580,
+    "reward": "1#642801#1",
+    "showReward": "1#642801#1",
+    "showWindow": "1#4",
+    "showVideo": ""
+  },
+  {
+    "id": 6,
+    "activityId": 13728,
+    "cost": 4280,
+    "reward": "1#713202#1",
+    "showReward": "1#713202#1",
+    "showWindow": "1#5|1#13|1#14|1#11|1#12",
+    "showVideo": ""
+  },
+  {
+    "id": 7,
+    "activityId": 13728,
+    "cost": 6280,
+    "reward": "1#672802#1|1#682803#1",
+    "showReward": "1#501023#1",
+    "showWindow": "1#6",
+    "showVideo": "2#v3a7_leichong"
+  },
+  {
+    "id": 8,
+    "activityId": 13728,
+    "cost": 8880,
+    "reward": "1#481011#1",
+    "showReward": "1#481011#1",
+    "showWindow": "1#7|1#16|1#15",
+    "showVideo": ""
+  },
+  {
+    "id": 9,
+    "activityId": 13728,
+    "cost": 12880,
+    "reward": "1#210015#1|1#350103#1|1#173806#1",
+    "showReward": "1#210015#1#旅券集|1#350103#1#叩门余音|1#173806#1#头像",
+    "showWindow": "1#8|1#9|1#10",
+    "showVideo": "2#v3a7_leichong2|3#common/click/vertin_click_loop|3#dynamichead/173806_1"
+  }
+]

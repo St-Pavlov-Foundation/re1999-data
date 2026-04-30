@@ -105,6 +105,58 @@ end
 function FightRoundData:processRoundData()
 	self.fightStep = self:processStepList(self.fightStep)
 	self.nextRoundBeginStep = self:processStepList(self.nextRoundBeginStep)
+
+	self:maskDeviceDone()
+	self:calculateTimelineCount()
+end
+
+function FightRoundData:calculateTimelineCount()
+	local count = 0
+
+	for _, stepMo in ipairs(self.fightStep) do
+		if self:checkIsTimeLineStep(stepMo) then
+			count = count + 1
+		end
+	end
+
+	for _, stepMo in ipairs(self.nextRoundBeginStep) do
+		if self:checkIsTimeLineStep(stepMo) then
+			count = count + 1
+		end
+	end
+
+	self.timelineCount = count
+end
+
+function FightRoundData:checkIsTimeLineStep(stepMo)
+	local actType = stepMo.actType
+
+	if actType == FightEnum.ActType.SKILL or actType == FightEnum.ActType.DEVICE then
+		if FightHelper.isASFDSkill(stepMo.actId) then
+			return true
+		else
+			local entityMo = FightDataHelper.entityMgr:getById(stepMo.fromId)
+			local skinId = entityMo and entityMo.skin
+			local timeline = FightConfig.instance:getSkinSkillTimeline(skinId, stepMo.actId)
+
+			return not string.nilorempty(timeline)
+		end
+	end
+end
+
+function FightRoundData:maskDeviceDone()
+	local deviceActType = FightEnum.ActType.DEVICE
+	local count = #self.fightStep
+
+	for i = count, 1, -1 do
+		local fightStep = self.fightStep[i]
+
+		if fightStep.actType == deviceActType then
+			fightStep:setCustomDeviceDone(true)
+
+			return
+		end
+	end
 end
 
 function FightRoundData:processStepList(stepList)

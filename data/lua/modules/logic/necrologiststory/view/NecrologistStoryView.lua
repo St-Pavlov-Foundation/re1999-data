@@ -660,6 +660,10 @@ function NecrologistStoryView:playStory_v3a5Item(storyConfig, isSkip)
 	self:createStoryItem(V3A5NecrologistStoryLongPressItem, storyConfig, isSkip)
 end
 
+function NecrologistStoryView:playStory_v3a7EmailItem(storyConfig, isSkip)
+	self:createStoryItem(V3A7NecrologistStoryEmailItem, storyConfig, isSkip)
+end
+
 function NecrologistStoryView:playStory_commontask(storyConfig, isSkip)
 	local arr = GameUtil.splitString2(storyConfig.param, true, "|", "#")
 

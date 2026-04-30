@@ -12201,7 +12201,7 @@
   },
   {
     "id": "summoncustompickchoice_txt_Title",
-    "lang": "可邀请以下任意一位角色加入到队伍中"
+    "lang": "可自选邀请以下任意一位角色"
   },
   {
     "id": "fairylandview_txt_Confirm",
@@ -19845,7 +19845,7 @@
   },
   {
     "id": "p_v2a8_selfselectcharacterview_txt_dec",
-    "lang": "自选【常驻征集】中已拥有角色的<#EA9B56>六星造像</color>一份！\n若全部【常驻征集】的六星角色塑造已满，则在选择后自动转换为大容量<#EA9B56>迷途之声</color>。"
+    "lang": "可自选获取【常驻征集】中已拥有<#EA9B56>六星角色的造像</color>×1！\n若全部【常驻征集】的六星角色塑造已满，则在选择后自动转换为<#EA9B56>大容量迷途之声</color>×28和<#EA9B56>灵性显影液</color>×10。"
   },
   {
     "id": "p_v2a8_selfselectcharacterview_txt_dec2",
@@ -23253,7 +23253,7 @@
   },
   {
     "id": "p_rouge2_main_txt_RoleHandbook",
-    "lang": "配器总览"
+    "lang": "强敌挑战"
   },
   {
     "id": "p_rouge2_main_txt_Alchemy",
@@ -24509,7 +24509,7 @@
   },
   {
     "id": "p_storemonthcardview_txt_new_tips",
-    "lang": "使用往日咆哮可以补领错失的奖励"
+    "lang": "新增月卡补签道具，可以补领错失的奖励"
   },
   {
     "id": "p_monthcard_reappear_txt_04",
@@ -24657,7 +24657,7 @@
   },
   {
     "id": "p_rouge2_backpackboxtipsview_txt_dec",
-    "lang": "通过获取<#B84E32>【力量】</color>、<#B84E32>【反应】</color>或<#B84E32>【奥秘】</color>属性，累计打磨进度\n打磨进度达到<#B84E32>2</color>时，可以进行一次【弦钉获取】，获得<#B84E32>共鸣器和拨弦手专属的其他强力造物</color>\n弦钉获取需使用【身体素质】进行检定，检定结果关系到获取的专属造物的<#B84E32>品质</color>"
+    "lang": "通过获取<#B84E32>【力量】</color>、<#B84E32>【反应】</color>或<#B84E32>【奥秘】</color>属性，累计打磨进度\n打磨进度达到<#B84E32>2</color>时，可以进行一次【弦钉获取】，获得<#B84E32>拨弦手专属的强化造物</color>\n弦钉获取需使用【身体素质】进行检定，检定结果关系到获取的专属造物的<#B84E32>品质</color>"
   },
   {
     "id": "p_rouge2_backpackboxtipsview_txt_confirm",
@@ -25157,7 +25157,7 @@
   },
   {
     "id": "p_v3a3_eliminate_rewardview_txt_dec",
-    "lang": "在“单向投币”中收集卡带，换取芭妮芭妮主题衣着-「侍者的一天」、「方块狂潮」主题头像、共鸣晶匣及养成材料等奖励。"
+    "lang": "在“单向投币”中收集卡带，换取命名日主题衣着-「永恒的沉默」、「缪斯三世的冒险岛」主题头像、共鸣晶匣及养成材料等奖励。"
   },
   {
     "id": "p_v3a3_versionsummonfudaihalfview_txt_tips",
@@ -25265,7 +25265,7 @@
   },
   {
     "id": "p_bpface_skinfestivalview_txt_title2",
-    "lang": "《岁月的书签》新的一页：作品并非完成于作者搁笔的一刻，而是完成于翻开书页的瞬间。"
+    "lang": "《岁月的书签》新的一页：牛奶在复杂曲面上流动的微分方程，这将是她的下一个课题。"
   },
   {
     "id": "p_bpface_skinfestivalview_txt_title3",
@@ -27097,7 +27097,7 @@
   },
   {
     "id": "p_warmup_txt_title",
-    "lang": "银色高塔仍熠熠"
+    "lang": "砖石何踟蹰"
   },
   {
     "id": "p_warmup_txt_reward",
@@ -27530,5 +27530,1229 @@
   {
     "id": "p_avg_spelling_view_txt_tips",
     "lang": "将正确字符填入核心"
+  },
+  {
+    "id": "p_sodache_mapretreatview_txt_conditiontitle",
+    "lang": "回收条件"
+  },
+  {
+    "id": "p_sodache_mapaltarview_txt_effecttitle",
+    "lang": "揭示效果"
+  },
+  {
+    "id": "p_sodache_mapaltarview_txt_cardtitle",
+    "lang": "添加行动牌"
+  },
+  {
+    "id": "p_sodache_mapaltarview_txt_carddesc",
+    "lang": "添加不同类型的行动牌可以提升增益类型的概率"
+  },
+  {
+    "id": "p_sodache_mapaltarview_txt_reveal",
+    "lang": "祈祷"
+  },
+  {
+    "id": "p_sodache_mapaltarview_txt_revealed",
+    "lang": "信仰效果已揭示"
+  },
+  {
+    "id": "p_sodache_resultview_txt_fail",
+    "lang": "<size=102>失</size>联"
+  },
+  {
+    "id": "p_sodache_resultview_txt_failEn",
+    "lang": ""
+  },
+  {
+    "id": "p_sodache_resultview_txt_success",
+    "lang": "<size=102>回</size>收成功"
+  },
+  {
+    "id": "p_sodache_resultview_txt_successEn",
+    "lang": ""
+  },
+  {
+    "id": "p_sodache_resultview_txt_currency",
+    "lang": "带出货币"
+  },
+  {
+    "id": "p_sodache_resultview_txt_roundEn",
+    "lang": ""
+  },
+  {
+    "id": "p_sodache_resultview_txt_value",
+    "lang": "带出价值"
+  },
+  {
+    "id": "p_sodache_resultview_txt_card",
+    "lang": "带出卡牌"
+  },
+  {
+    "id": "p_sodache_resultview_txt_valueEn",
+    "lang": ""
+  },
+  {
+    "id": "p_sodache_cardview_txt_get",
+    "lang": "获得"
+  },
+  {
+    "id": "p_sodache_cardview_txt_lose",
+    "lang": "失去"
+  },
+  {
+    "id": "p_sodache_evilupview_txt_title",
+    "lang": "信仰提升"
+  },
+  {
+    "id": "p_sodache_evilupview_txt_titleEn",
+    "lang": ""
+  },
+  {
+    "id": "p_sodache_levelupview_txt_title",
+    "lang": "深邃提升"
+  },
+  {
+    "id": "p_sodache_levelview_txt_title",
+    "lang": "<size=80>深</size>邃"
+  },
+  {
+    "id": "p_sodache_levelview_txt_titleEn",
+    "lang": "LEVEL"
+  },
+  {
+    "id": "p_sodache_costview_txt_title",
+    "lang": "理智极限"
+  },
+  {
+    "id": "p_sodache_costview_txt_desc",
+    "lang": "理智极限可使你在行动中回收更多造像和补给"
+  },
+  {
+    "id": "p_sodache_costview_txt_WinCost",
+    "lang": "行动成功-理智极限"
+  },
+  {
+    "id": "p_sodache_costview_txt_FailCost",
+    "lang": "行动失败-理智极限"
+  },
+  {
+    "id": "p_sodache_relicview_txt_ViewAll",
+    "lang": "效果总览"
+  },
+  {
+    "id": "p_sodache_relicview_txt_WareHouse",
+    "lang": "一键收容"
+  },
+  {
+    "id": "p_sodache_relicview_txt_tab1",
+    "lang": "全部"
+  },
+  {
+    "id": "p_sodache_relicview_txt_tab2",
+    "lang": "未知"
+  },
+  {
+    "id": "p_sodache_relicview_txt_tab3",
+    "lang": "传闻"
+  },
+  {
+    "id": "p_sodache_relicview_txt_tab4",
+    "lang": "珍奇"
+  },
+  {
+    "id": "p_sodache_relicview_txt_active",
+    "lang": "可收藏"
+  },
+  {
+    "id": "p_sodache_relicview_txt_lvup",
+    "lang": "可研究"
+  },
+  {
+    "id": "p_sodache_upgraderesultview_txt_title",
+    "lang": "营地升级"
+  },
+  {
+    "id": "p_sodache_mainview_txt_task",
+    "lang": "计划"
+  },
+  {
+    "id": "p_sodache_mainview_txt_handbook",
+    "lang": "图鉴"
+  },
+  {
+    "id": "p_sodache_mainview_txt_warehouse",
+    "lang": "仓库"
+  },
+  {
+    "id": "p_sodache_mainview_txt_store",
+    "lang": "年代摘记"
+  },
+  {
+    "id": "p_sodache_mainview_txt_storeEn",
+    "lang": "Chronicle Excerpts"
+  },
+  {
+    "id": "p_sodache_mainview_txt_level",
+    "lang": "深邃"
+  },
+  {
+    "id": "p_sodache_upgradeview_txt_title",
+    "lang": "建造效果"
+  },
+  {
+    "id": "p_sodache_upgradeview_txt_build",
+    "lang": "建造"
+  },
+  {
+    "id": "p_sodache_upgradeview_txt_buildEn",
+    "lang": ""
+  },
+  {
+    "id": "p_sodache_upgradeview_txt_up",
+    "lang": "升级"
+  },
+  {
+    "id": "p_sodache_upgradeview_txt_upEn",
+    "lang": ""
+  },
+  {
+    "id": "p_sodache_upgradeview_txt_max",
+    "lang": "已满级"
+  },
+  {
+    "id": "p_sodache_handbookview_txt_title",
+    "lang": "<size=94>图</size>鉴"
+  },
+  {
+    "id": "p_sodache_handbookview_txt_card",
+    "lang": "造像"
+  },
+  {
+    "id": "p_sodache_handbookview_txt_monster",
+    "lang": "怪物"
+  },
+  {
+    "id": "p_sodache_cardsubmitview_txt_title",
+    "lang": "<size=80>供</size>奉"
+  },
+  {
+    "id": "p_sodache_cardsubmitview_txt_titleEn",
+    "lang": ""
+  },
+  {
+    "id": "p_sodache_cardsubmitview_txt_tips",
+    "lang": "供奉造像获得增益效果，请选择供奉造像"
+  },
+  {
+    "id": "p_sodache_cardsubmitview_txt_confirm",
+    "lang": "供奉"
+  },
+  {
+    "id": "p_sodache_cardsubmitview_txt_smallTitle",
+    "lang": "供奉效果预览"
+  },
+  {
+    "id": "p_sodache_relicoverview_txt_title",
+    "lang": "<size=80>效</size>果总览"
+  },
+  {
+    "id": "p_sodache_relicoverview_txt_smallTitle1",
+    "lang": "主动总览"
+  },
+  {
+    "id": "p_sodache_relicoverview_txt_smallTitle2",
+    "lang": "被动总览"
+  },
+  {
+    "id": "p_sodache_storeview_txt_tipstitle",
+    "lang": "累计获取上限："
+  },
+  {
+    "id": "p_v3a7_sodacheenterview_txt_shop",
+    "lang": "年代摘记"
+  },
+  {
+    "id": "p_sodache_taskview_reward",
+    "lang": "酬劳"
+  },
+  {
+    "id": "p_sodache_taskview_btn_accept",
+    "lang": "接取任务"
+  },
+  {
+    "id": "p_sodache_taskview_btn_abandon",
+    "lang": "放弃任务"
+  },
+  {
+    "id": "p_sodache_taskview_btn_claim",
+    "lang": "领取奖励"
+  },
+  {
+    "id": "p_sodache_taskview_btn_submit",
+    "lang": "提交道具"
+  },
+  {
+    "id": "p_sodache_taskview_txt_node1",
+    "lang": "成功"
+  },
+  {
+    "id": "p_sodache_taskview_txt_node2",
+    "lang": "大成功"
+  },
+  {
+    "id": "p_sodache_checkresultview_txt_title",
+    "lang": "事件检定"
+  },
+  {
+    "id": "p_sodache_checkresultview_txt1",
+    "lang": "基础骰子"
+  },
+  {
+    "id": "p_sodache_checkresultview_txt2",
+    "lang": "额外骰子"
+  },
+  {
+    "id": "p_sodache_taskview_sidetask",
+    "lang": "支线"
+  },
+  {
+    "id": "p_sodache_taskview_maintask",
+    "lang": "主线"
+  },
+  {
+    "id": "p_v3a3_eliminate_enterview_txt_new",
+    "lang": "新版本!"
+  },
+  {
+    "id": "p_sodache_checkeventview_txt_title",
+    "lang": "检定事件"
+  },
+  {
+    "id": "p_sodache_checkeventview_txt1",
+    "lang": "基础骰子"
+  },
+  {
+    "id": "p_sodache_checkeventview_txt2",
+    "lang": "额外骰子"
+  },
+  {
+    "id": "p_sodache_mapselectview_txt_simple",
+    "lang": "普通"
+  },
+  {
+    "id": "p_sodache_mapselectview_txt_hard",
+    "lang": "困难"
+  },
+  {
+    "id": "p_sodache_mapselectview_txt_tips",
+    "lang": "选择勘探初始资金"
+  },
+  {
+    "id": "p_sodache_takeview_txt_quick",
+    "lang": "快速选择"
+  },
+  {
+    "id": "p_sodache_warehouseview_txt_title",
+    "lang": "造像仓库"
+  },
+  {
+    "id": "p_sodache_takeview_txt_mutiselect",
+    "lang": "批量选择"
+  },
+  {
+    "id": "p_sodache_takeview_txt_cantake",
+    "lang": "可带出卡牌"
+  },
+  {
+    "id": "p_sodache_takeview_txt_cantakeEn",
+    "lang": ""
+  },
+  {
+    "id": "p_sodache_takeview_txt_hastake",
+    "lang": "已选卡牌"
+  },
+  {
+    "id": "p_sodache_takeview_txt_hastakeEn",
+    "lang": ""
+  },
+  {
+    "id": "p_sodache_takeview_txt_cost",
+    "lang": "极限理智："
+  },
+  {
+    "id": "p_sodache_takeview_txt_empty",
+    "lang": "请从左侧选择带出的卡牌"
+  },
+  {
+    "id": "p_sodache_takeview_txt_evil",
+    "lang": "信仰"
+  },
+  {
+    "id": "p_sodache_statusview_txt_action",
+    "lang": "耐心"
+  },
+  {
+    "id": "p_sodache_shopview_txt_market",
+    "lang": "神秘卖家"
+  },
+  {
+    "id": "p_sodache_shopview_txt_market2",
+    "lang": "后勤补给"
+  },
+  {
+    "id": "p_sodache_mapview_txt_card",
+    "lang": "行动牌"
+  },
+  {
+    "id": "p_sodache_mapview_txt_hero",
+    "lang": "信息"
+  },
+  {
+    "id": "p_sodache_mapview_txt_bag",
+    "lang": "保护箱"
+  },
+  {
+    "id": "p_sodache_mapselecttimeview_txt_title",
+    "lang": "<size=80>选</size>择探险时段"
+  },
+  {
+    "id": "p_sodache_mapselecttimeview_txt_titleEn",
+    "lang": ""
+  },
+  {
+    "id": "p_sodache_mapenemypanelview_txt_title",
+    "lang": "敌人灵感薄弱点"
+  },
+  {
+    "id": "p_sodache_mapaltarview_txt_title",
+    "lang": "信仰"
+  },
+  {
+    "id": "p_sodache_mapaltarview_txt_desc",
+    "lang": "信仰等级越高，难度与奖励提升"
+  },
+  {
+    "id": "p_sodache_herogroupview_txt_preview",
+    "lang": "效果预览"
+  },
+  {
+    "id": "p_sodache_eventview_reward",
+    "lang": "回报"
+  },
+  {
+    "id": "p_sodache_bagview_txt_value",
+    "lang": "总价值"
+  },
+  {
+    "id": "p_sodache_bagview_txt_cost",
+    "lang": "极限理智："
+  },
+  {
+    "id": "p_sodache_bagview_txt_tab1",
+    "lang": "价值"
+  },
+  {
+    "id": "p_sodache_bagview_txt_tab2",
+    "lang": "单价"
+  },
+  {
+    "id": "p_sodache_bagview_txt_tab3",
+    "lang": "需求"
+  },
+  {
+    "id": "p_sodache_statusview_txtname",
+    "lang": "多功能观测飞行器"
+  },
+  {
+    "id": "p_sodache_checkeventview_txt_check",
+    "lang": "开始检定"
+  },
+  {
+    "id": "p_sodache_checkeventview_txt_checkEn",
+    "lang": "开始"
+  },
+  {
+    "id": "p_rouge2_saveinfodetailview_assess",
+    "lang": "职业评级"
+  },
+  {
+    "id": "p_rouge2_saveinfodetailview_assesstips",
+    "lang": "存档评分档位规则：\n400点及以下：C\n400-600点：B\n600-800点：A\n800点以上：S\n\n1.寻常、精巧和妙想共鸣器分别获得60/90/120点存档评分\n2.寻常、精巧和妙想属性强化分别获得15/22/30点存档评分\n3.寻常、精巧和妙想谐波分别获得1/2/3点存档评分\n4.每点属性获得1点存档评分"
+  },
+  {
+    "id": "p_v3a7_goldenmilletpresentfull_txt_desc",
+    "lang": "限时赠送<#BD6438>390粹雨滴</color>衣着抵扣券+<#BD6438>卡戎</color>衣着特惠"
+  },
+  {
+    "id": "p_v3a7_cumulativerecharge_maintxt1",
+    "lang": "累计<sprite=10><sprite=3><sprite=0><sprite=0>"
+  },
+  {
+    "id": "p_v3a7_cumulativerecharge_maintxt2",
+    "lang": "累计<sprite=10><sprite=6><sprite=8><sprite=0>"
+  },
+  {
+    "id": "p_v3a7_cumulativerecharge_maintxt3",
+    "lang": "累计<sprite=10><sprite=1><sprite=2><sprite=8><sprite=0>"
+  },
+  {
+    "id": "p_v3a7_cumulativerecharge_maintxt4",
+    "lang": "累计<sprite=10><sprite=2><sprite=5><sprite=8><sprite=0>"
+  },
+  {
+    "id": "p_v3a7_cumulativerecharge_maintxt5",
+    "lang": "累计<sprite=10><sprite=4><sprite=2><sprite=8><sprite=0>"
+  },
+  {
+    "id": "p_v3a7_cumulativerecharge_maintxt6",
+    "lang": "累计<sprite=10><sprite=6><sprite=2><sprite=8><sprite=0>"
+  },
+  {
+    "id": "p_v3a7_cumulativerecharge_maintxt7",
+    "lang": "累计<sprite=10>\n<size=50><sprite=8><sprite=8><sprite=8><sprite=0></size>"
+  },
+  {
+    "id": "p_v3a7_cumulativerecharge_maintxt8",
+    "lang": "累计<sprite=10><sprite=1><sprite=2><sprite=8><sprite=8><sprite=0>"
+  },
+  {
+    "id": "p_v3a7_cumulativerecharge_maintxt9",
+    "lang": "阶段奖励进度："
+  },
+  {
+    "id": "p_rouge2_resultreview_txt_save",
+    "lang": "保存至存档"
+  },
+  {
+    "id": "p_rouge2_resultreview_txt_level",
+    "lang": "职业评级"
+  },
+  {
+    "id": "p_rouge2_resultreview_txt_Relics",
+    "lang": "谐波"
+  },
+  {
+    "id": "p_rouge2_resultreview_txt_AttrBuff",
+    "lang": "属性强化"
+  },
+  {
+    "id": "p_v3a7_activity_3nd_txt1",
+    "lang": "年度报告"
+  },
+  {
+    "id": "p_v3a7_activity_3nd_txt2",
+    "lang": "周年来函"
+  },
+  {
+    "id": "p_v3a7_activity_3nd_txt3",
+    "lang": "生死诘问"
+  },
+  {
+    "id": "p_v3a7_activity_3nd_txt4",
+    "lang": "为自我的歌儿"
+  },
+  {
+    "id": "p_v3a7_activity_3nd_txt5",
+    "lang": "课余之欢"
+  },
+  {
+    "id": "p_v3a7_activity_3nd_txt6",
+    "lang": "特邀嘉宾再访"
+  },
+  {
+    "id": "p_v3a7_activity_3nd_txt7",
+    "lang": "往昔礼赞"
+  },
+  {
+    "id": "p_v3a7_cumulativerecharge_maintxt10",
+    "lang": "精选独一调×5"
+  },
+  {
+    "id": "p_v3a7_cumulativerecharge_maintxt11",
+    "lang": "衣着自选"
+  },
+  {
+    "id": "p_v3a7_cumulativerecharge_maintxt12",
+    "lang": "<line-indent=32>咒语辉光系列</line-indent>\n旅行拾珍"
+  },
+  {
+    "id": "p_v3a7_cumulativerecharge_maintxt13",
+    "lang": "限定角色\n<line-indent=115>自选"
+  },
+  {
+    "id": "p_v3a7_cumulativerecharge_maintxt14",
+    "lang": "维尔汀主题\n旅行拾珍"
+  },
+  {
+    "id": "p_mainview_teachingnote",
+    "lang": "课题"
+  },
+  {
+    "id": "p_teachingtargetview_title",
+    "lang": "教学目标"
+  },
+  {
+    "id": "p_teachingtargetview_target1",
+    "lang": "熟悉装置体系操作策略"
+  },
+  {
+    "id": "p_teachingtargetview_target2",
+    "lang": "装置体系实战"
+  },
+  {
+    "id": "p_teachingenterview_txt1",
+    "lang": "<size=60>基</size>础教学"
+  },
+  {
+    "id": "p_teachingenterview_txt2",
+    "lang": "<size=60>体</size>系研究"
+  },
+  {
+    "id": "p_teachingpopview_new",
+    "lang": "<size=68>全</size>新："
+  },
+  {
+    "id": "p_teachingpopview_system",
+    "lang": "装置体系"
+  },
+  {
+    "id": "p_v3a7_selfselectsix_fullview_txt_desc",
+    "lang": "可在指定范围内<#F6A418>自选</color>邀请一名6星角色"
+  },
+  {
+    "id": "p_v3a7_selfselectsix_fullview_txt_desc2",
+    "lang": "加赠 <size=42>独一律×10</size>!"
+  },
+  {
+    "id": "p_v3a7_selfselectsix_fullview_txt_check",
+    "lang": "查看<#F18D39>自选</color>范围"
+  },
+  {
+    "id": "p_rouge2_bossbattledetailview_txt_fight",
+    "lang": "<size=62>开</size>始<br>战斗"
+  },
+  {
+    "id": "p_v3a7_eliminate_refundtipview_txt_title",
+    "lang": "缪斯三世的“礼帽馈赠”"
+  },
+  {
+    "id": "p_v3a7_eliminate_refundtipview_txt_total",
+    "lang": "恭喜您在上次“8-bit街机秀”里取得了足够漂亮的成绩，昔日的荣光已经记录在案，我亦乐得将它们原样回赠于您。"
+  },
+  {
+    "id": "p_v3a7_eliminate_refundtipview_txt_confirm",
+    "lang": "领取"
+  },
+  {
+    "id": "p_teachingmainview_name3",
+    "lang": "教学目标"
+  },
+  {
+    "id": "p_teachingmainview_name4",
+    "lang": "教学奖励 "
+  },
+  {
+    "id": "p_teachingmainview_Review",
+    "lang": "开始复习"
+  },
+  {
+    "id": "p_bpfaceview_txt_desc",
+    "lang": "《亡者的恩赐》北风拂过幽冥的死地，而他以羽翼为缰绳。"
+  },
+  {
+    "id": "p_bpfaceview_txt_title",
+    "lang": "《21又1》新卡揭秘"
+  },
+  {
+    "id": "p_rouge2_startpanelview_txt_title_1",
+    "lang": "已更新"
+  },
+  {
+    "id": "p_rouge2_startpanelview_txt_title_2",
+    "lang": "无声综合征"
+  },
+  {
+    "id": "p_v3a7_anniversary3_actbppropview_txt_tips",
+    "lang": "仅需<sprite=1>×980"
+  },
+  {
+    "id": "p_v3a7_anniversary3_actbpview_txt_title",
+    "lang": "完成校准委托，获得准确分贝，助力角色快速提升"
+  },
+  {
+    "id": "p_v3a7_anniversary3_actbpview_txt_tab1",
+    "lang": "循声所得"
+  },
+  {
+    "id": "p_v3a7_anniversary3_actbpview_txt_tab2",
+    "lang": "唱片校准"
+  },
+  {
+    "id": "p_v3a7_anniversary3_actbpview_txt_unlock",
+    "lang": "解锁自我之歌"
+  },
+  {
+    "id": "p_rouge2_bossbattleresultpanel_txt_Title",
+    "lang": "当局委托评估"
+  },
+  {
+    "id": "p_rouge2_bossbattleresultpanel_txt_Title2",
+    "lang": "<size=90>新</size>纪录"
+  },
+  {
+    "id": "p_rouge2_activeskilllevelupview_txt_title",
+    "lang": "<size=80>形</size>态突破"
+  },
+  {
+    "id": "P_versionsummonpanel_txt_tips",
+    "lang": "活动期间,登录即可领取六星角色"
+  },
+  {
+    "id": "p_versionsummonpanel2_txt_tips",
+    "lang": "活动期间，可获得十全调·【故事的新啼】"
+  },
+  {
+    "id": "p_v3a7_xiaoruiannong_gameview_txt_BattleEvent",
+    "lang": "迎战强敌"
+  },
+  {
+    "id": "p_v3a7_xiaoruiannong_gameview_txt_Next",
+    "lang": "新的旅途"
+  },
+  {
+    "id": "p_v3a7_xiaoruiannong_gameview_txt_LV",
+    "lang": "LV"
+  },
+  {
+    "id": "p_v3a7_xiaoruiannong_gameview_txt_luckTag1",
+    "lang": "乌云缠绕"
+  },
+  {
+    "id": "p_v3a7_xiaoruiannong_gameview_txt_luckTag2",
+    "lang": "诸事如常"
+  },
+  {
+    "id": "p_v3a7_xiaoruiannong_gameview_txt_luckTag3",
+    "lang": "幸运日"
+  },
+  {
+    "id": "p_v3a7_xiaoruiannong_gameview_txt_Attr1",
+    "lang": "生命值"
+  },
+  {
+    "id": "p_v3a7_xiaoruiannong_gameview_txt_Attr2",
+    "lang": "防御"
+  },
+  {
+    "id": "p_v3a7_xiaoruiannong_gameview_txt_Attr3",
+    "lang": "魔力"
+  },
+  {
+    "id": "p_v3a7_xiaoruiannong_gameview_txt_Skill",
+    "lang": "已选技能"
+  },
+  {
+    "id": "p_saveinfolistitem_txt_HasSave",
+    "lang": "已保存"
+  },
+  {
+    "id": "p_v3a7_cumulativerechargeselectview_txt_title",
+    "lang": "限定角色 1+1 组合自选"
+  },
+  {
+    "id": "p_v3a7_cumulativerechargeselectview_txt_desc",
+    "lang": "可在以下角色中任选一组领取"
+  },
+  {
+    "id": "p_currencyitem_txt",
+    "lang": "累充活动"
+  },
+  {
+    "id": "p_v3a7_anniversary_mainview_txt_report",
+    "lang": "年度报告"
+  },
+  {
+    "id": "p_v3a7_anniversary_mainview_txt_mail",
+    "lang": "周年来函"
+  },
+  {
+    "id": "p_v3a7_anniversary_mainview_txt_skin",
+    "lang": "生死诘问"
+  },
+  {
+    "id": "p_v3a7_anniversary_mainview_txt_open",
+    "lang": "助力角色快速提升"
+  },
+  {
+    "id": "p_v3a7_anniversary_mainview_txt_actbp",
+    "lang": "为自我的歌儿"
+  },
+  {
+    "id": "p_v3a7_anniversary_mainview_txt_sign",
+    "lang": "往昔礼赞"
+  },
+  {
+    "id": "p_v3a7_anniversary_mainview_txt_invite",
+    "lang": "特邀嘉宾再访"
+  },
+  {
+    "id": "p_v3a7_anniversary_mainview_txt_Tips1",
+    "lang": "自选【常驻征集】六星造像"
+  },
+  {
+    "id": "p_v3a7_anniversary_mainview_txt_game",
+    "lang": "课余之欢"
+  },
+  {
+    "id": "p_v3a7_anniversary_mainview_txt_Tips2",
+    "lang": "参与活动获得收藏品"
+  },
+  {
+    "id": "p_v3a7_cumulativerechargemainview_txt1",
+    "lang": "前往获取"
+  },
+  {
+    "id": "p_v3a7_cumulativerechargemainview_txt2",
+    "lang": "阶段奖励进度："
+  },
+  {
+    "id": "p_v3a7_cumulativerechargemainview_txt3",
+    "lang": "赠送"
+  },
+  {
+    "id": "p_v3a7_dungeonexploreview_txt_target",
+    "lang": "迷失感达到100前，走出迷宫"
+  },
+  {
+    "id": "p_v3a7_towerfightreview_txt_refight",
+    "lang": "重温战斗"
+  },
+  {
+    "id": "p_travelgorewarddescitem_txt1",
+    "lang": "阅历+100"
+  },
+  {
+    "id": "p_travelgoview_txt1",
+    "lang": "阅历+100"
+  },
+  {
+    "id": "p_travelgoview_txt_Next1",
+    "lang": "新的旅途"
+  },
+  {
+    "id": "p_travelgoview_txt_Next2",
+    "lang": "迎战强敌"
+  },
+  {
+    "id": "p_travelgoview_txt_Next3",
+    "lang": "已选技能"
+  },
+  {
+    "id": "p_fight3_7qteview_txtTips",
+    "lang": "收下我的礼物吧……"
+  },
+  {
+    "id": "p_fightcarddeckview_txt_cardpre2",
+    "lang": "能量盒"
+  },
+  {
+    "id": "p_fightquittipview_txt",
+    "lang": "回到编队"
+  },
+  {
+    "id": "p_rouge2_attributedetailview_txt_tips1",
+    "lang": "当前<br>等级"
+  },
+  {
+    "id": "p_rouge2_attributedetailview_txt_tips2",
+    "lang": "默认等级"
+  },
+  {
+    "id": "p_rouge2_commonskillitem_txt_tips1",
+    "lang": "获得后解锁角色试用"
+  },
+  {
+    "id": "p_rouge2_bossbattledetailview_txt_title",
+    "lang": "本存档历史最高"
+  },
+  {
+    "id": "p_rouge2_bossbattledetailview_txt_title2",
+    "lang": "最高分数"
+  },
+  {
+    "id": "p_rouge2_bossbattledetailview_Tips",
+    "lang": "领取"
+  },
+  {
+    "id": "p_rouge2_bossbattlelistitem_Tips",
+    "lang": "奖励待领取"
+  },
+  {
+    "id": "p_rouge2_bossbattleview_txt_Title",
+    "lang": "强敌挑战"
+  },
+  {
+    "id": "p_rouge2_bossbattleview_txt_Tips",
+    "lang": "使用存档挑战强敌获得奖励"
+  },
+  {
+    "id": "p_rouge2_bossbattleview_txt_Tips2",
+    "lang": "查看存档"
+  },
+  {
+    "id": "p_rouge2_teamrecommendtips_title",
+    "lang": "推荐配队"
+  },
+  {
+    "id": "p_v3a7_anniversary3_actbpview_txt1",
+    "lang": "精准之歌"
+  },
+  {
+    "id": "p_v3a7_anniversary3_actbpview_txt2",
+    "lang": "自我之歌"
+  },
+  {
+    "id": "p_v3a7_anniversary3_guessgame_mainview_txt_first",
+    "lang": "每日首次游戏可获得<size=46><#B93900>3</size></color>倍诈唬分"
+  },
+  {
+    "id": "p_v3a7_anniversary3_guessgame_mainview_txt_name",
+    "lang": "诈唬分"
+  },
+  {
+    "id": "p_v3a7_anniversary3_guessgame_playguessview_txt_tips2",
+    "lang": "点击空白取消探查"
+  },
+  {
+    "id": "p_v3a7_anniversary3_guessgame_playguessview_cn1",
+    "lang": "信任"
+  },
+  {
+    "id": "p_v3a7_anniversary3_guessgame_playguessview_cn2",
+    "lang": "质疑"
+  },
+  {
+    "id": "p_v3a7_anniversary3_guessgame_playguessview_txt_tipgiftselect",
+    "lang": "请选择想要探查的卡牌"
+  },
+  {
+    "id": "p_v3a7_anniversary3_guessgame_playguessview_txt_tipgiftselect2",
+    "lang": "出牌内容"
+  },
+  {
+    "id": "p_v3a7_anniversary3_guessgame_playguessview_txt_times",
+    "lang": "剩余次数：0"
+  },
+  {
+    "id": "p_v3a7_anniversary3_guessgame_playguessview_txt_title",
+    "lang": "本轮得分"
+  },
+  {
+    "id": "p_v3a7_anniversary3_guessgame_playresultview_txt_title",
+    "lang": "本局诈唬分"
+  },
+  {
+    "id": "p_v3a7_anniversary3_guessgame_playresultview_condition",
+    "lang": "获得诈唬分"
+  },
+  {
+    "id": "p_v3a7_anniversary3_guessgame_playroleitem_txt_tips",
+    "lang": "选择中…"
+  },
+  {
+    "id": "p_v3a7_anniversary3_guessgame_playtasktipview_txt_title",
+    "lang": "诈唬分："
+  },
+  {
+    "id": "p_v3a7_anniversary3_guessgame_playview_cn",
+    "lang": "开始游戏"
+  },
+  {
+    "id": "p_v3a7_anniversary3_guessgame_playview_cn2",
+    "lang": "卡牌分发中…"
+  },
+  {
+    "id": "p_v3a7_anniversary3_guessgame_playview_cn3",
+    "lang": "卡牌分发完成"
+  },
+  {
+    "id": "p_commandstation_relationshipboard2_txt_Team1",
+    "lang": "司辰小队"
+  },
+  {
+    "id": "p_commandstation_relationshipboard2_txt_Team2",
+    "lang": "第一防线学校"
+  },
+  {
+    "id": "p_commandstation_relationshipboard2_txt_Team3",
+    "lang": "拉普拉斯科算中心"
+  },
+  {
+    "id": "p_commandstation_relationshipboard2_txt_Team4",
+    "lang": "重塑之手"
+  },
+  {
+    "id": "p_commandstation_relationshipboard2_txt_Team5",
+    "lang": "基金会"
+  },
+  {
+    "id": "p_commandstation_relationshipboard2_txt_Team6",
+    "lang": "内务部"
+  },
+  {
+    "id": "p_commandstation_relationshipboard2_txt_Team7",
+    "lang": "狮鹫军"
+  },
+  {
+    "id": "p_playercardcritterplaceview_txt_empty",
+    "lang": "没有徽章"
+  },
+  {
+    "id": "p_v3a7_selfselectsix_pickchoiceview_txt_tips",
+    "lang": "长按头像查看详情"
+  },
+  {
+    "id": "p_v3a7_towerfightreview_txt_review",
+    "lang": "重温战斗"
+  },
+  {
+    "id": "p_v3a7_anniversary3_guessgame_playresultview_txt_over",
+    "lang": "游戏结束"
+  },
+  {
+    "id": "p_rouge2_activityview_updatetips",
+    "lang": "版本更新"
+  },
+  {
+    "id": "p_rouge2_commonskillitem_txt_effect",
+    "lang": "触发生效"
+  },
+  {
+    "id": "p_fightcarditem_txt_rouge2",
+    "lang": "简化"
+  },
+  {
+    "id": "p_v3a7_towerfightreview_txt_Review",
+    "lang": "重温战斗"
+  },
+  {
+    "id": "p_v3a7_towermapview_txt_Success",
+    "lang": "<size=156>成</size>功"
+  },
+  {
+    "id": "p_v3a7_rolestorygameview_txt_start",
+    "lang": "开始演绎"
+  },
+  {
+    "id": "p_v3a7_rolestorygameview_txt_restart",
+    "lang": "重新演绎"
+  },
+  {
+    "id": "p_v3a7_rolestorygameview_txt_open",
+    "lang": "打开信封"
+  },
+  {
+    "id": "p_v3a7_rolestorygameview_txt_tips",
+    "lang": "数据窃取中…"
+  },
+  {
+    "id": "p_v3a7_rolestorygameview_txt_tips2",
+    "lang": "数据窃取已完成"
+  },
+  {
+    "id": "p_v3a7_rolestorygameview_txt_dec1",
+    "lang": "临时文本1"
+  },
+  {
+    "id": "p_v3a7_rolestorygameview_txt_dec2",
+    "lang": "临时文本2"
+  },
+  {
+    "id": "p_v3a7_rolestorygameview_txt_dec3",
+    "lang": "临时文本3"
+  },
+  {
+    "id": "p_v3a7_rolestorygameview_txt_dec4",
+    "lang": "临时文本4"
+  },
+  {
+    "id": "p_v3a7_rolestorygameview_txt_dec5",
+    "lang": "临时文本5"
+  },
+  {
+    "id": "p_v3a7_anniversary3_signview_txt1",
+    "lang": "14天内累计登录7天可得"
+  },
+  {
+    "id": "p_v3a7_anniversary3_signview_txt2",
+    "lang": "<#e28f52>十全调·【湖心追述】、奇迹鸽、独一律*5</color>等丰厚奖励"
+  },
+  {
+    "id": "p_v3a7_anniversary3_signview_txt3",
+    "lang": "十全调·【湖心追述】"
+  },
+  {
+    "id": "p_v3a7_anniversary3_signview_txt4",
+    "lang": "奇迹鸽"
+  },
+  {
+    "id": "p_skilltipview_txt_device_1",
+    "lang": "消耗"
+  },
+  {
+    "id": "p_skilltipview_txt_device_2",
+    "lang": "同调"
+  },
+  {
+    "id": "p_v3a7_skingift_fullview_txt_desc",
+    "lang": "精选衣着盲盒\n概率获得Unique衣着"
+  },
+  {
+    "id": "p_v3a7_skingift_checkview_txt_desc",
+    "lang": "在以下范围中随机获得1件衣着，重复获得已拥有衣着将转换为粹雨滴。可点击查看规则&概率详情"
+  },
+  {
+    "id": "p_v3a7_skingift_checkview_txt_nasa",
+    "lang": "70%概率获得【ADAVANCED】品级衣着"
+  },
+  {
+    "id": "p_v3a7_skingift_checkview_txt_rere",
+    "lang": "30%概率获得【UNIQUE】品级衣着"
+  },
+  {
+    "id": "p_v3a7_skingift_checkview_title",
+    "lang": "奢豪荐选衣箱"
+  },
+  {
+    "id": "p_sodache_mapview_txt_cardtips",
+    "lang": "点击查看详情，拖至框外使用"
+  },
+  {
+    "id": "p_v3a7_anniversary3_guessgame_mainview_txt_desc",
+    "lang": "在课余之时，和伙伴进行一场小小的诈唬牌对决。获取诈唬分赢得丰厚奖励。"
+  },
+  {
+    "id": "p_v3a7_skinstore_kaorng_01",
+    "lang": "凭【当季惠选·亡者的恩赐】可使用28元/680粹雨滴售价购买衣着【亡者的恩赐】，该优惠可与【成衣订购惠选】同时使用。"
+  },
+  {
+    "id": "p_v3a7_anniversary3_guessgame_playtasktipview_txt_rest",
+    "lang": "剩余"
+  },
+  {
+    "id": "p_v3a7_anniversary3_guessgame_playguessview_txt_continue",
+    "lang": "点击进行下一轮"
+  },
+  {
+    "id": "p_v3a7_anniversary3_actbpview_txt_level",
+    "lang": "准确度"
+  },
+  {
+    "id": "p_versionsummonpanel_txt_title",
+    "lang": "术具"
+  },
+  {
+    "id": "p_versionsummonpanel_txt_desc",
+    "lang": "通过使用交感能量为术具充能，在行动序列末尾，术具循环运转，消耗交感能量释放咒语"
+  },
+  {
+    "id": "p_v3a7_xiaoruiannong_help_1_txt_1",
+    "lang": "获得阅历以提升<#ff906a>阅历等级</color>\n提升等级时会<#ff906a>获得技能</color>"
+  },
+  {
+    "id": "p_v3a7_xiaoruiannong_help_1_txt_2",
+    "lang": "<#ff906a>魔力</color>：提升造成的伤害"
+  },
+  {
+    "id": "p_v3a7_xiaoruiannong_help_1_txt_3",
+    "lang": "<#ff906a>防御</color>：降低受到的伤害"
+  },
+  {
+    "id": "p_v3a7_xiaoruiannong_help_1_txt_4",
+    "lang": "<#ff906a>生命值</color>：承受伤害时消耗归零时冒险失"
+  },
+  {
+    "id": "p_v3a7_xiaoruiannong_help_1_txt_5",
+    "lang": "点击以推进旅程"
+  },
+  {
+    "id": "p_v3a7_anniversary3_guessgame_playguessview_txt_name",
+    "lang": "透视药水"
+  },
+  {
+    "id": "p_v3a7_anniversary3_guessgame_playguessview_txt_successTrust",
+    "lang": "信任成功"
+  },
+  {
+    "id": "p_v3a7_anniversary3_guessgame_playguessview_txt_successDoubt",
+    "lang": "质疑成功"
+  },
+  {
+    "id": "p_v3a7_anniversary3_guessgame_playguessview_txt_failTrust",
+    "lang": "信任失败"
+  },
+  {
+    "id": "p_v3a7_anniversary3_guessgame_playguessview_txt_failDoubt",
+    "lang": "质疑失败"
+  },
+  {
+    "id": "p_v3a7_anniversary3_signview_txt5",
+    "lang": "独一律"
+  },
+  {
+    "id": "p_v3a7_anniversary3_bpw_exp",
+    "lang": "准确分贝"
+  },
+  {
+    "id": "p_v3a7_skingift_fullview_cloth",
+    "lang": "衣着"
+  },
+  {
+    "id": "p_mainviem_image_free3",
+    "lang": "免费征集"
+  },
+  {
+    "id": "p_v3a7_skinstore_kaorng_10",
+    "lang": "凭【当季惠选·亡者的恩赐】可使用28元/680粹雨滴售价购买衣着【亡者的恩赐】，该优惠可与【成衣订购惠选】同享。"
+  },
+  {
+    "id": "p_rouge2_teamrecommendtips_gotype1_unselect",
+    "lang": "选择追踪配队"
+  },
+  {
+    "id": "p_rouge2_teamrecommendtips_gotype2_unselect",
+    "lang": "选择追踪配队"
+  },
+  {
+    "id": "p_rouge2fightsuccview_txt_MaxDamage",
+    "lang": "单局最高伤害"
+  },
+  {
+    "id": "p_v3a7_anniversary3_bpw_tips_05",
+    "lang": "解锁<#e28f52>【自我之歌】</color>后升级可得"
+  },
+  {
+    "id": "p_mainview_canuse",
+    "lang": "可使用"
+  },
+  {
+    "id": "p_saveinfolistitem_txt_Cover",
+    "lang": "覆盖"
+  },
+  {
+    "id": "p_v3a7_anniversary3_actbpview_txt_title_1",
+    "lang": "一周之音"
+  },
+  {
+    "id": "p_v3a7_anniversary3_actbpview_txt_title_2",
+    "lang": "时兴波动"
+  },
+  {
+    "id": "p_v3a7_anniversary3_bpw_tips_06",
+    "lang": "解锁<#e28f52>【自我之歌】</color>后立即可得"
+  },
+  {
+    "id": "p_playerclothview_furious8",
+    "lang": "使用能量卡"
   }
 ]

@@ -20,6 +20,22 @@ function SkillDescComp:init(go)
 end
 
 function SkillDescComp:updateInfo(txtComp, desc, heroId)
+	self.heroMo = HeroModel.instance:getByHeroId(heroId)
+
+	if not self.heroMo then
+		self.heroMo = HeroMo.New()
+
+		local config = HeroConfig.instance:getHeroCO(self._heroId)
+
+		self.heroMo:init({}, config)
+
+		self.heroMo.passiveSkillLevel = {}
+
+		for i = 1, 3 do
+			table.insert(self.heroMo.passiveSkillLevel, i)
+		end
+	end
+
 	self._txtComp = txtComp
 	self._heroId = heroId
 
@@ -41,22 +57,6 @@ function SkillDescComp:updateInfo(txtComp, desc, heroId)
 	self._fixTmpBreakLine = MonoHelper.addNoUpdateLuaComOnceToGo(self.viewGO.gameObject, FixTmpBreakLine)
 
 	self._fixTmpBreakLine:refreshTmpContent(self.viewGO)
-
-	self.heroMo = HeroModel.instance:getByHeroId(heroId)
-
-	if not self.heroMo then
-		self.heroMo = HeroMo.New()
-
-		local config = HeroConfig.instance:getHeroCO(self._heroId)
-
-		self.heroMo:init({}, config)
-
-		self.heroMo.passiveSkillLevel = {}
-
-		for i = 1, 3 do
-			table.insert(self.heroMo.passiveSkillLevel, i)
-		end
-	end
 end
 
 function SkillDescComp:setTipParam(skillTipAnchorX, buffTipAnchor)
@@ -82,15 +82,21 @@ function SkillDescComp:_replaceSkillTag(desc, pattern)
 	if skillIndex == 0 then
 		skillId = SkillConfig.instance:getpassiveskillsCO(self._heroId)[1].skillPassive
 	else
-		local _, _, _skillIndex = string.find(desc, "<(%d)>")
-		local skillIds = SkillConfig.instance:getHeroAllSkillIdDictByExSkillLevel(self._heroId, nil, self.heroMo, nil, true)
-		local skillChoice = SkillConfig.instance:getFightCardChoice(skillIds[skillIndex])
+		self._deviceMo = SkillConfig.instance:getHeroDeviceMO(self._heroId, self.heroMo)
 
-		if _skillIndex and skillChoice then
-			extraSkillIndex = tonumber(_skillIndex)
-			skillId = skillChoice[extraSkillIndex][skillIndex]
+		if self._deviceMo then
+			skillId = self._deviceMo:getSkillId(skillIndex)
 		else
-			skillId = skillIds[skillIndex][1]
+			local _, _, _skillIndex = string.find(desc, "▩%d%%s<(%d)>")
+			local skillIds = SkillConfig.instance:getHeroAllSkillIdDictByExSkillLevel(self._heroId, nil, self.heroMo, nil, true)
+			local skillChoice = SkillConfig.instance:getFightCardChoice(skillIds[skillIndex])
+
+			if _skillIndex and skillChoice then
+				extraSkillIndex = tonumber(_skillIndex)
+				skillId = skillChoice[extraSkillIndex][skillIndex]
+			else
+				skillId = skillIds[skillIndex][1]
+			end
 		end
 	end
 

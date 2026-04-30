@@ -498,6 +498,7 @@ function FightSuccView:_setSpineVoice()
 	local skinCO = self:_getSkin(self._randomEntityMO)
 
 	if skinCO then
+		self._skinCO = skinCO
 		self._spineLoaded = false
 
 		self._uiSpine:setImgPos(0)
@@ -506,7 +507,7 @@ function FightSuccView:_setSpineVoice()
 
 			self._uiSpine:setUIMask(true)
 			self:_playSpineVoice()
-			self._uiSpine:setAllLayer(UnityLayer.UI)
+			self._uiSpine:setAllLayer(UnityLayer.UI3D)
 		end, self, CharacterVoiceEnum.NormalFullScreenEffectCameraSize)
 
 		local offsets, isNil = SkinConfig.instance:getSkinOffset(skinCO.fightSuccViewOffset)
@@ -520,7 +521,7 @@ function FightSuccView:_setSpineVoice()
 		local offsetX = tonumber(offsets[1])
 		local offsetY = tonumber(offsets[2])
 
-		recthelper.setAnchor(self._gospine.transform, offsetX, offsetY)
+		CharacterVoiceEnum.setSpineOffset(self._uiSpine, tonumber(offsets[1]), tonumber(offsets[2]))
 		transformhelper.setLocalScale(self._gospine.transform, scale, scale, scale)
 	else
 		gohelper.setActive(self._gospine, false)
@@ -553,6 +554,33 @@ function FightSuccView:onLive2dCameraLoadedCallback()
 
 	TaskDispatcher.cancelTask(self._delayPlayVoice, self)
 	TaskDispatcher.runRepeat(self._delayPlayVoice, self, 0, self._repeatNum)
+	self:_adjustPos()
+end
+
+function FightSuccView:_adjustPos()
+	if self._skinCO and self._uiSpine:isLive2D() and not CharacterVoiceEnum.SkipMesFightSuccPosAdjust then
+		local skinId = self._skinCO.id
+
+		if skinId ~= 312703 then
+			return
+		end
+
+		local guiLive2d = self._uiSpine:_getLive2d()
+
+		if not guiLive2d then
+			return
+		end
+
+		local rawImg = guiLive2d._rawImageGo
+		local spineGo = guiLive2d:getSpineGo()
+
+		if not rawImg or not spineGo then
+			return
+		end
+
+		recthelper.setAnchorX(rawImg.transform, 200)
+		transformhelper.setLocalPosXY(spineGo.transform, -146, 0)
+	end
 end
 
 function FightSuccView:_delayPlayVoice()

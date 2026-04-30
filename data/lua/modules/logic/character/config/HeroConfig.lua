@@ -24,7 +24,10 @@ function HeroConfig:reqConfigNames()
 		"hero_trial_attr",
 		"hero_group_type",
 		"character_limited",
-		"character_rank_replace"
+		"character_limited_voice",
+		"character_rank_replace",
+		"fight_device",
+		"device_power"
 	}
 end
 

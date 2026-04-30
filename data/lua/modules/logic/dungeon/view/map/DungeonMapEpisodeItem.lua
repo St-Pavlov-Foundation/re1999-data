@@ -287,6 +287,10 @@ function DungeonMapEpisodeItem:_showAllElementTipView()
 			if ToughBattleConfig.instance:isActEleCo(v) then
 				noShowCo = v
 			end
+
+			if DungeonMapModel.instance:isImplicitElementType(v.type) then
+				noShowCo = v
+			end
 		end
 
 		if noShowCo then

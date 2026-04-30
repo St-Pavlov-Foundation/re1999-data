@@ -233,6 +233,16 @@ function CommandStationTaskView:_titleLoadCallback()
 	local imageTitle = gohelper.findChildImage(self.viewGO, "Left/simage_title")
 
 	imageTitle:SetNativeSize()
+
+	if self._curBigBonusIndex == 9 then
+		recthelper.setSize(imageTitle.transform, 480, 160)
+	end
+end
+
+function CommandStationTaskView:_rewardCallback()
+	local image = gohelper.findChildImage(self.viewGO, "Left/#simage_reward")
+
+	image:SetNativeSize()
 end
 
 function CommandStationTaskView:refreshBigBonus()
@@ -245,7 +255,7 @@ function CommandStationTaskView:refreshBigBonus()
 	gohelper.setActive(self._btnLeft, self._curBigBonusIndex > 1)
 	gohelper.setActive(self._btnRight, self._curBigBonusIndex < #self._bigBonusCos)
 	self._imageTitle:LoadImage(string.format("singlebg_lang/txt_commandstation_singlebg/commandstation_task_title%s.png", self._curBigBonusIndex), self._titleLoadCallback, self)
-	self._imageReward:LoadImage(string.format("singlebg/commandstation/task/commandstation_task_reward%s.png", self._curBigBonusIndex))
+	self._imageReward:LoadImage(string.format("singlebg/commandstation/task/commandstation_task_reward%s.png", self._curBigBonusIndex), self._rewardCallback, self)
 
 	local itemNames = {}
 	local dict = GameUtil.splitString2(co.bonus, true)

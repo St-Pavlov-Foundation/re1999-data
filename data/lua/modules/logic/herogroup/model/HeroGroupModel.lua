@@ -257,10 +257,19 @@ function HeroGroupModel:setParam(battleId, episodeId, adventure, isReConnect, ep
 			tempGroupMO
 		}
 
-		if isTowerEpisode then
+		if isTowerEpisode or self._episodeType == DungeonEnum.EpisodeType.Rouge2 then
 			self.heroGroupType = ModuleEnum.HeroGroupType.General
 
 			HeroGroupSnapshotModel.instance:setParam(self.episodeId)
+		elseif self._episodeType == DungeonEnum.EpisodeType.Rouge2Boss then
+			self.heroGroupType = ModuleEnum.HeroGroupType.Temp
+			self._heroGroupList = {}
+
+			local tempGroupMo = Rouge2_BossBattleController.instance:generateTempHeroGroup(self.battleId, self.episodeId)
+
+			table.insert(self._heroGroupList, tempGroupMo)
+
+			self._curGroupId = 1
 		end
 	elseif self._episodeType == DungeonEnum.EpisodeType.Odyssey then
 		self.heroGroupType = ModuleEnum.HeroGroupType.Odyssey
@@ -802,7 +811,7 @@ function HeroGroupModel:saveCurGroupData(callback, callbackObj, heroGroupMO)
 	else
 		local req = HeroGroupModule_pb.SetHeroGroupSnapshotRequest()
 
-		if HeroGroupHandler.checkIsTowerEpisodeByEpisodeId(self.episodeId) then
+		if HeroGroupHandler.checkIsTowerEpisodeByEpisodeId(self.episodeId) or self._episodeType == DungeonEnum.EpisodeType.Rouge2 then
 			FightParam.initTowerFightGroup(req.fightGroup, heroGroupMO.clothId, heroGroupMO:getMainList(), heroGroupMO:getSubList(), heroGroupMO:getAllHeroEquips(), heroGroupMO:getAllHeroActivity104Equips(), heroGroupMO:getAssistBossId())
 		elseif HeroGroupHandler.checkIsTowerComposeEpisodeByEpisodeId(self.episodeId) then
 			local recordFightParam = TowerComposeModel.instance:getRecordFightParam()

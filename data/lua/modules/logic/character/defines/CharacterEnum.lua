@@ -215,5 +215,17 @@ setmetatable(CharacterEnum.TalentTxtByHeroType, {
 })
 
 CharacterEnum.HumanHeroType = 6
+CharacterEnum.DeviceViewType = {
+	HeroGroupEditView = 2,
+	CharacterView = 1
+}
+CharacterEnum.DeviceViewParam = {
+	[CharacterEnum.DeviceViewType.CharacterView] = {
+		OpenAniName = "characterview_open"
+	},
+	[CharacterEnum.DeviceViewType.HeroGroupEditView] = {
+		OpenAniName = "herogroupeditview_open"
+	}
+}
 
 return CharacterEnum

@@ -548,7 +548,7 @@ end
 
 function SummonResultView:refreshCost10(costs)
 	local curPoolId = SummonMainModel.instance:getCurId()
-	local cost_type, cost_id, costNum, ownNum, cost_num = SummonMainModel.instance:getCost10ById(curPoolId)
+	local cost_type, cost_id, costNum, ownNum, cost_num = SummonMainModel.instance:getCost10ById(curPoolId, true)
 	local cost_icon = SummonMainModel.instance.getSummonItemIcon(cost_type, cost_id)
 
 	self._simagecurrency10:LoadImage(cost_icon)

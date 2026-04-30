@@ -41,7 +41,11 @@ function StoryNavigateItem:init(go)
 		[StoryEnum.NavigateType.ActivityStart] = self.showActivityChapterStart,
 		[StoryEnum.NavigateType.ActivityEnd] = self.showActivityChapterEnd,
 		[StoryEnum.NavigateType.RoleStoryStart] = self.showRoleStoryStart,
-		[StoryEnum.NavigateType.StormDeadline] = self.showStormDeadline
+		[StoryEnum.NavigateType.StormDeadline] = self.showStormDeadline,
+		[StoryEnum.NavigateType.FullScreenCountdown] = self.showFullScreenCountdown,
+		[StoryEnum.NavigateType.StormTimerStart] = self.showStormTimerStart,
+		[StoryEnum.NavigateType.StormTimerEnd] = self.showStormTimerEnd,
+		[StoryEnum.NavigateType.FullScreenCountdownEnd] = self.showCloseFullScreenCountdown
 	}
 end
 
@@ -215,30 +219,32 @@ function StoryNavigateItem:_chapterEndOut()
 	TaskDispatcher.cancelTask(self._chapterEndOut, self)
 end
 
-function StoryNavigateItem:showActivityChapterStart(chapterCo)
+function StoryNavigateItem:getActivityChapterPlayer()
 	if not self.activityChapterPlayer then
 		self.activityChapterPlayer = StoryActivityChapterPlayer.New(self._goActivityChapter)
 	end
 
-	self.activityChapterPlayer:playStart(chapterCo)
+	return self.activityChapterPlayer
+end
+
+function StoryNavigateItem:showActivityChapterStart(chapterCo)
+	local player = self:getActivityChapterPlayer()
+
+	player:playStart(chapterCo)
 end
 
 function StoryNavigateItem:showActivityChapterEnd(chapterCo)
 	gohelper.setActive(self._gobg, true)
 
-	if not self.activityChapterPlayer then
-		self.activityChapterPlayer = StoryActivityChapterPlayer.New(self._goActivityChapter)
-	end
+	local player = self:getActivityChapterPlayer()
 
-	self.activityChapterPlayer:playEnd(chapterCo)
+	player:playEnd(chapterCo)
 end
 
 function StoryNavigateItem:showRoleStoryStart(chapterCo)
-	if not self.activityChapterPlayer then
-		self.activityChapterPlayer = StoryActivityChapterPlayer.New(self._goActivityChapter)
-	end
+	local player = self:getActivityChapterPlayer()
 
-	self.activityChapterPlayer:playRoleStoryStart(chapterCo)
+	player:playRoleStoryStart(chapterCo)
 end
 
 function StoryNavigateItem:showStormDeadline(stormCo)
@@ -258,15 +264,75 @@ function StoryNavigateItem:showStormDeadline(stormCo)
 	self._txtTimeEn2.text = string.format(txt, deadlines[1] - deadlines[2])
 end
 
-function StoryNavigateItem:clear()
-	if self.activityChapterPlayer then
-		self.activityChapterPlayer:hide()
+function StoryNavigateItem:showFullScreenCountdown(stormCo)
+	ViewMgr.instance:openView(ViewName.StoryFullScreenStormView, {
+		data = stormCo
+	})
+end
+
+function StoryNavigateItem:showCloseFullScreenCountdown(stormCo)
+	self:realCloseFullScreenCountdown()
+end
+
+function StoryNavigateItem:realCloseFullScreenCountdown(isImmediate)
+	ViewMgr.instance:closeView(ViewName.StoryFullScreenStormView, isImmediate)
+end
+
+function StoryNavigateItem:showStormTimerStart(stormCo)
+	local player = self:getStormTimerPlayer()
+
+	player:setData(stormCo)
+end
+
+function StoryNavigateItem:showStormTimerEnd(stormCo)
+	if not self.stormTimerPlayer then
+		return
 	end
 
+	local player = self:getStormTimerPlayer()
+
+	player:playClose(stormCo)
+end
+
+function StoryNavigateItem:getStormTimerPlayer()
+	if not self.stormTimerPlayer then
+		local logicName = "StoryStormTimer"
+		local logic = _G[logicName]
+		local go = gohelper.findChild(self._go, "#go_storm_timer")
+
+		self.stormTimerPlayer = logic.New(go)
+	end
+
+	return self.stormTimerPlayer
+end
+
+function StoryNavigateItem:clear()
 	gohelper.setActive(self._goepisode, false)
 	gohelper.setActive(self._gochapter, false)
 	gohelper.setActive(self._gomap, false)
 	gohelper.setActive(self._gobg, false)
+
+	if self.activityChapterPlayer then
+		self.activityChapterPlayer:hide()
+	end
+end
+
+function StoryNavigateItem:onFadeOut()
+	self:clear()
+
+	if self.stormTimerPlayer then
+		self.stormTimerPlayer:hide()
+	end
+
+	self:realCloseFullScreenCountdown(true)
+end
+
+function StoryNavigateItem:onSkip()
+	if self.stormTimerPlayer then
+		self.stormTimerPlayer:hide()
+	end
+
+	self:realCloseFullScreenCountdown(true)
 end
 
 function StoryNavigateItem:destroy()
@@ -333,6 +399,13 @@ function StoryNavigateItem:destroy()
 		self.activityChapterPlayer = nil
 	end
 
+	if self.stormTimerPlayer then
+		self.stormTimerPlayer:onDestory()
+
+		self.stormTimerPlayer = nil
+	end
+
+	self:realCloseFullScreenCountdown(true)
 	gohelper.setActive(self._go, false)
 end
 

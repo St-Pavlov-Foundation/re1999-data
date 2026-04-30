@@ -145,6 +145,9 @@ ConstEnum.LaplaceMiniPartyTipTitle = 34010
 ConstEnum.LaplaceMiniPartyTipDesc = 34011
 ConstEnum.LaplaceChatRoomTipTitle = 34012
 ConstEnum.LaplaceChatRoomTipDesc = 34013
+ConstEnum.Act236HelpTitle = 83705
+ConstEnum.Act236HelpDesc = 83702
+ConstEnum.V3a7SkinConfigWeight = 83706
 ConstEnum.V3a4PackageStoreGoodsId = 34014
 ConstEnum.VersionId = 300
 

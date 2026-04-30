@@ -266,7 +266,7 @@ function ActivityCollectView:_isWeekWalkOpen(openId)
 
 	local info = WeekWalkModel.instance:getInfo()
 	local mapLayerInfo = info and info:getMapInfoByLayer(WeekWalkEnum.LastShallowLayer)
-	local isShallowLayerFinish = mapLayerInfo and mapLayerInfo.isFinished == 1
+	local isShallowLayerFinish = mapLayerInfo and mapLayerInfo.isFinished >= 1
 
 	if not isShallowLayerFinish then
 		return false

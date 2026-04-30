@@ -53,6 +53,10 @@ function FightHelper.getEntityStanceId(fightEntityMO, waveId)
 		if SkillEditorMgr and SkillEditorMgr.instance.inEditMode then
 			stanceId = SkillEditorMgr.instance.stance_id
 		end
+
+		if FightDataHelper.tempMgr.myStanceId then
+			stanceId = FightDataHelper.tempMgr.myStanceId
+		end
 	else
 		local curMonsterGroupId = FightModel.instance:getCurMonsterGroupId()
 		local monsterGroupCO = lua_monster_group.configDict[curMonsterGroupId]
@@ -130,6 +134,15 @@ function FightHelper.getEntityStandPos(fightEntityMO, waveId)
 		end
 
 		return 0, 0, 0, 1
+	end
+
+	if fightEntityMO:isEnemySide() and FightDataHelper.tempMgr.monsterPosList then
+		pos = FightDataHelper.tempMgr.monsterPosList[fightEntityMO.position] or {
+			0,
+			0,
+			0,
+			1
+		}
 	end
 
 	local posX = pos[1]
@@ -589,6 +602,23 @@ function FightHelper.getEntityLocalBottomPos(entity)
 end
 
 function FightHelper.getEntityBoxSizeOffsetV2(entity)
+	local entityData = entity.entityData
+
+	if entityData then
+		local skin = entityData.skin
+		local config3DMonster = lua_fight_monster_3d.configDict[skin]
+
+		if config3DMonster then
+			local targetSize = config3DMonster.size
+			local size = {}
+
+			size.x = targetSize[1]
+			size.y = targetSize[2]
+
+			return size, Vector2Zero
+		end
+	end
+
 	if FightHelper.isAssembledMonster(entity) then
 		local entityMO = entity:getMO()
 		local config = lua_fight_assembled_monster.configDict[entityMO.skin]
@@ -892,6 +922,11 @@ end
 
 function FightHelper.detectAttributeCounter()
 	local fight_param = FightModel.instance:getFightParam()
+	local sodacheRecommended, sodacheCounter = SodacheMapUtil.getBossCareerRecommend()
+
+	if sodacheRecommended then
+		return sodacheRecommended, sodacheCounter
+	end
 
 	if BossRushController.instance:isInBossRushDungeon() then
 		local concealCo = BossRushConfig.instance:getConcealCo(fight_param.episodeId)
@@ -1365,6 +1400,18 @@ function FightHelper.detectTimelinePlayEffectCondition(fightStepData, condition,
 		end
 
 		return true
+	elseif conditionType == 14 then
+		local count = fightStepData.playerOperationCountForPlayEffectTimeline
+
+		if count and count >= arr[2] and count <= arr[3] then
+			return true
+		end
+	elseif conditionType == 15 then
+		local count = FightMsgMgr.sendMsg(FightMsgId.GetCurRealPlayEffectTimelineByOperationCount, fightStepData)
+
+		if count and count >= arr[2] and count <= arr[3] then
+			return true
+		end
 	end
 
 	return false
@@ -2491,11 +2538,36 @@ function FightHelper.detectReplaceTimeline(timelineName, fightStepData)
 				end
 			elseif sign == "13" then
 				return FightHelper.getBLETimeLine(timelineName, fightStepData)
+			elseif sign == "14" then
+				return FightHelper.getUnnamedTimeLine(timelineName, fightStepData)
 			end
 		end
 	end
 
 	return timelineName
+end
+
+function FightHelper.getUnnamedTimeLine(timelineName, fightStepData)
+	local actEffect = FightHelper.getActEffectData(FightEnum.EffectType.UNNAMEDSTRENGTHEN, fightStepData, FightHelper.unnamedFilterFunc)
+
+	if not actEffect then
+		return timelineName
+	end
+
+	local cost = actEffect.effectNum1
+	local co = lua_fight_wmz_timeline.configDict[cost]
+
+	co = co or lua_fight_wmz_timeline.configList[1]
+
+	return co.timeline
+end
+
+function FightHelper.unnamedFilterFunc(actEffectData)
+	if not actEffectData then
+		return false
+	end
+
+	return actEffectData.effectNum == 1
 end
 
 FightHelper.TempMaxCrystalList = {}
@@ -3039,7 +3111,7 @@ function FightHelper.processNextSkillId(skillId)
 end
 
 function FightHelper.isTimelineStep(step)
-	if step and step.actType == FightEnum.ActType.SKILL then
+	if step and (step.actType == FightEnum.ActType.SKILL or step.actType == FightEnum.ActType.DEVICE) then
 		local entityMO = FightDataHelper.entityMgr:getById(step.fromId)
 		local skinId = entityMO and entityMO.skin
 		local timeline = FightConfig.instance:getSkinSkillTimeline(skinId, step.actId)
@@ -3089,8 +3161,9 @@ function FightHelper.getClickEntity(entityList, transform, screenPosition)
 			else
 				local rectPos1X, rectPos1Y, rectPos2X, rectPos2Y = FightHelper.calcRect(entity, transform)
 				local mountmiddleGO = entity:getHangPoint(ModuleEnum.SpineHangPoint.mountmiddle)
+				local config3DMonster = lua_fight_monster_3d.configDict[entityMO.skin]
 
-				if mountmiddleGO then
+				if mountmiddleGO and not config3DMonster then
 					local trposX, trposY, trposZ = transformhelper.getPos(mountmiddleGO.transform)
 
 					rectPosX, rectPosY = recthelper.worldPosToAnchorPosXYZ(trposX, trposY, trposZ, transform)
@@ -3103,6 +3176,11 @@ function FightHelper.getClickEntity(entityList, transform, screenPosition)
 				local height = math.abs(rectPos1Y - rectPos2Y)
 				local monsterSkinCO = lua_monster_skin.configDict[entityMO.skin]
 				local clickBoxUnlimit = monsterSkinCO and monsterSkinCO.clickBoxUnlimit == 1
+
+				if config3DMonster then
+					clickBoxUnlimit = true
+				end
+
 				local maxWidth = clickBoxUnlimit and 800 or 200
 				local maxHeight = clickBoxUnlimit and 800 or 500
 				local fixWidth = Mathf.Clamp(width, 150, maxWidth)
@@ -4429,7 +4507,7 @@ function FightHelper.checkBuffMoHasBuffActId(buffMo, buffActId)
 	return FightHelper.checkBuffCoHasBuffActId(buffCo, buffActId)
 end
 
-function FightHelper.getActEffectData(targetEffectType, fightStep)
+function FightHelper.getActEffectData(targetEffectType, fightStep, filterFunc)
 	local actEffectList = fightStep and fightStep.actEffect
 
 	if not actEffectList then
@@ -4438,13 +4516,19 @@ function FightHelper.getActEffectData(targetEffectType, fightStep)
 
 	local actEffect
 
-	for i, actEffectData in ipairs(actEffectList) do
+	for _, actEffectData in ipairs(actEffectList) do
 		local effectType = actEffectData.effectType
 
 		if effectType == FightEnum.EffectType.FIGHTSTEP then
-			actEffect = FightHelper.getActEffectData(targetEffectType, actEffectData.fightStep)
+			actEffect = FightHelper.getActEffectData(targetEffectType, actEffectData.fightStep, filterFunc)
 		elseif effectType == targetEffectType then
-			actEffect = actEffectData
+			if filterFunc then
+				if filterFunc(actEffectData) then
+					actEffect = actEffectData
+				end
+			else
+				actEffect = actEffectData
+			end
 		end
 
 		if actEffect then
@@ -4520,6 +4604,65 @@ function FightHelper.getEntityRecordSkillIdAndCount(entityId)
 	end
 
 	logError("not found ButterflyRecordSkill Buff")
+end
+
+function FightHelper.checkIsDevicePowerCard(skillId)
+	local skillCo = skillId and lua_skill.configDict[skillId]
+
+	return skillCo and skillCo.effectTag == FightEnum.EffectTag.Device
+end
+
+function FightHelper.checkIsUnnamedMainTarget(fightStepData, targetUid)
+	local actEffectData = FightHelper.getActEffectData(FightEnum.EffectType.UNNAMEDSTRENGTHEN, fightStepData)
+
+	if not actEffectData then
+		return false
+	end
+
+	return actEffectData.targetId == targetUid
+end
+
+function FightHelper.getLogicTargetType(skillCo)
+	if not skillCo then
+		return FightEnum.LogicTargetType.None
+	end
+
+	local logicTarget = skillCo.logicTarget
+	local array = FightStrUtil.instance:getSplitCache(logicTarget, "#")
+
+	logicTarget = array and array[1]
+
+	local co = logicTarget and lua_skill_target_type_define.configDict[logicTarget]
+
+	if not co then
+		return FightEnum.LogicTargetType.None
+	end
+
+	return co.define
+end
+
+function FightHelper.allIsDeviceEntity(teamType)
+	teamType = teamType or FightEnum.TeamType.MySide
+
+	local deviceInfo = FightDataHelper.getDeviceArea(teamType)
+
+	if not deviceInfo then
+		return false
+	end
+
+	local entityMoList = FightHelper.tempEntityMoList
+
+	tabletool.clear(entityMoList)
+
+	local entityList = FightDataHelper.entityMgr:getMyNormalList(entityMoList)
+
+	for _, entityMo in ipairs(entityList) do
+		if not deviceInfo:getServerDeviceInfo(entityMo.uid) then
+			return false
+		end
+	end
+
+	return true
 end
 
 return FightHelper

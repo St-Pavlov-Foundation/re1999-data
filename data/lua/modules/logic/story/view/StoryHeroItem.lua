@@ -320,6 +320,13 @@ function StoryHeroItem:_fadeOut()
 		return
 	end
 
+	local fadeOutDuration = 0.35
+
+	if self._heroGlowCls then
+		self._heroGlowCls:startFadeOut(fadeOutDuration)
+		self:_setHeroFadeMat()
+	end
+
 	self:_checkMatKeyWord()
 
 	if self._fadeOutTweenId then
@@ -328,7 +335,7 @@ function StoryHeroItem:_fadeOut()
 		self._fadeOutTweenId = nil
 	end
 
-	self._fadeOutTweenId = ZProj.TweenHelper.DOTweenFloat(1, 0, 0.35, self._fadeOutUpdate, self._fadeOutFinished, self, nil, EaseType.Linear)
+	self._fadeOutTweenId = ZProj.TweenHelper.DOTweenFloat(1, 0, fadeOutDuration, self._fadeOutUpdate, self._fadeOutFinished, self, nil, EaseType.Linear)
 end
 
 function StoryHeroItem:_fadeOutUpdate(value)
@@ -630,6 +637,7 @@ function StoryHeroItem:_checkAndPlayHeroEffect()
 		self:_clearHeroDissolve()
 		self:_clearHeroWaterWave()
 		self:_clearHeroErase()
+		self:_clearHeroGlow()
 
 		return
 	end
@@ -650,6 +658,10 @@ function StoryHeroItem:_checkAndPlayHeroEffect()
 
 	if not effs[1] or effs[1] ~= StoryEnum.HeroEffect.Erase then
 		self:_clearHeroErase()
+	end
+
+	if not effs[1] or effs[1] ~= StoryEnum.HeroEffect.Glow then
+		self:_clearHeroGlow()
 	end
 
 	if effs[1] == StoryEnum.HeroEffect.Gray then
@@ -686,6 +698,8 @@ function StoryHeroItem:_checkAndPlayHeroEffect()
 		self:_setHeroWaterWave()
 	elseif effs[1] == StoryEnum.HeroEffect.Erase then
 		self:_setHeroErase(tonumber(effs[2]))
+	elseif effs[1] == StoryEnum.HeroEffect.Glow then
+		self:_setHeroGlow()
 	else
 		if not self._heroSpineGo then
 			return
@@ -797,6 +811,23 @@ function StoryHeroItem:_clearHeroErase()
 		self._heroEraseCls:destroy()
 
 		self._heroEraseCls = nil
+	end
+end
+
+function StoryHeroItem:_setHeroGlow()
+	if not self._heroGlowCls then
+		self._heroGlowCls = StoryHeroEffsGlow.New()
+	end
+
+	self._heroGlowCls:init(self._heroSpineGo)
+	self._heroGlowCls:start()
+end
+
+function StoryHeroItem:_clearHeroGlow()
+	if self._heroGlowCls then
+		self._heroGlowCls:destroy()
+
+		self._heroGlowCls = nil
 	end
 end
 
@@ -929,6 +960,7 @@ function StoryHeroItem:onDestroy()
 	self:_clearHeroDissolve()
 	self:_clearHeroWaterWave()
 	self:_clearHeroErase()
+	self:_clearHeroGlow()
 	self:revertScreenSplitStencil()
 	TaskDispatcher.cancelTask(self._onDelay, self)
 	self:_grayUpdate(0)

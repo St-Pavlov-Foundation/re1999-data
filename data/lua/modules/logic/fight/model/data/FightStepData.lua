@@ -35,6 +35,24 @@ function FightStepData:initClientParam()
 	self.hasPlay = nil
 	self.custom_stepIndex = nil
 	self.custom_ingoreParallelSkill = nil
+	self.custom_deviceDone = nil
+	self.hitIndex = nil
+end
+
+function FightStepData:setCustomDeviceDone(done)
+	self.custom_deviceDone = done
+end
+
+function FightStepData:addHitIndex()
+	if not self.hitIndex then
+		self.hitIndex = 1
+	else
+		self.hitIndex = self.hitIndex + 1
+	end
+end
+
+function FightStepData:getHitIndex()
+	return self.hitIndex
 end
 
 function FightStepData:buildActEffect(actEffectProtoList)

@@ -245,5 +245,18 @@
     "sort": 19,
     "minNum": 4,
     "maxNum": 10
+  },
+  {
+    "id": 20,
+    "actType": 0,
+    "name": "无声综合征",
+    "unlockId": 50,
+    "batNum": 4,
+    "supNum": 0,
+    "isDisplay": 1,
+    "isChangeName": 1,
+    "sort": 20,
+    "minNum": 4,
+    "maxNum": 10
   }
 ]

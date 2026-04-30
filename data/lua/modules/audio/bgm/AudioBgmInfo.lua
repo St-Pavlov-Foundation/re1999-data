@@ -135,6 +135,10 @@ function AudioBgmInfo:_initBgmDatas()
 	self:_addBgmData(AudioBgmEnum.Layer.SurvivalView, AudioEnum3_5.Survival.SurvivalView, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	self:_addBgmData(AudioBgmEnum.Layer.VersionActivity3_6Main, AudioEnum3_6.bgm.play_activitymusic_theme_3_6, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	self:_addBgmData(AudioBgmEnum.Layer.V3a6YaMi, AudioEnum3_6.bgm.play_moni_main_music_3_6, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
+	self:_addBgmData(AudioBgmEnum.Layer.VersionActivity3_7Main, 0, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
+	self:_addBgmData(AudioBgmEnum.Layer.TowerV3a7, AudioEnum3_7.bgm.TowerV3a7, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
+	self:_addBgmData(AudioBgmEnum.Layer.SodacheMain, AudioEnum3_7.Sodache.play_soudache_main_theme_camp_3_7, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
+	self:_addBgmData(AudioBgmEnum.Layer.SodacheMap, AudioEnum3_7.Sodache.play_soudache_explore_3_7, AudioEnum3_7.Sodache.stop_activitymusic_soudache_3_7)
 end
 
 function AudioBgmInfo:_initBgmUsage()
@@ -780,6 +784,26 @@ function AudioBgmInfo:_initBgmUsage()
 		AudioBgmEnum.Layer.V3a6YaMi
 	}, AudioBgmEnum.UsageType.View, {
 		ViewName.V3a6YaMiMainView
+	}, nil, nil, true)
+	self:_addBgmUsage({
+		AudioBgmEnum.Layer.VersionActivity3_7Main
+	}, AudioBgmEnum.UsageType.View, {
+		ViewName.VersionActivity3_7EnterView
+	}, nil, nil, true)
+	self:_addBgmUsage({
+		AudioBgmEnum.Layer.TowerV3a7
+	}, AudioBgmEnum.UsageType.View, {
+		ViewName.TowerV3a7MapView
+	}, nil, nil, true)
+	self:_addBgmUsage({
+		AudioBgmEnum.Layer.SodacheMain
+	}, AudioBgmEnum.UsageType.View, {
+		ViewName.SodacheMainView
+	}, nil, nil, true)
+	self:_addBgmUsage({
+		AudioBgmEnum.Layer.SodacheMap
+	}, AudioBgmEnum.UsageType.View, {
+		ViewName.SodacheMapView
 	}, nil, nil, true)
 end
 

@@ -35,6 +35,7 @@ function GMToolViewContainer:buildViews()
 	return {
 		GMToolView.New(),
 		GMToolView2.New(),
+		GMToolStoryView.New(),
 		GMAddItemView.New(),
 		GMCommandHistoryView.New(),
 		GMCommandView.New(),
@@ -48,6 +49,7 @@ function GMToolViewContainer:buildViews()
 		GMSubViewNewFightView.New(),
 		GMSubViewBattle.New(),
 		GMSubViewFightPlayback.New(),
+		GMSubViewSodache.New(),
 		GMSubViewAudio.New(),
 		GMSubViewGuide.New(),
 		GMSubViewActivity.New(),

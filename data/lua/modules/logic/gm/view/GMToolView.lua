@@ -57,9 +57,6 @@ function GMToolView:onInitView()
 	self._btnGuideFinish = gohelper.findChildButtonWithAudio(self.viewGO, "viewport/content/item14/btnFinish")
 	self._btnGuideForbid = gohelper.findChildButtonWithAudio(self.viewGO, "viewport/content/item14/btnForbid")
 	self._btnGuideReset = gohelper.findChildButtonWithAudio(self.viewGO, "viewport/content/item14/btnReset")
-	self._inpStory = gohelper.findChildTextMeshInputField(self.viewGO, "viewport/content/item15/inpstorytxt")
-	self._btnStorySkip = gohelper.findChildButtonWithAudio(self.viewGO, "viewport/content/item15/btnstoryskip")
-	self._btnStoryOK = gohelper.findChildButtonWithAudio(self.viewGO, "viewport/content/item15/btnstoryok")
 	self._inpEpisode = gohelper.findChildTextMeshInputField(self.viewGO, "viewport/content/item18/inpText")
 	self._btnEpisodeOK = gohelper.findChildButtonWithAudio(self.viewGO, "viewport/content/item18/btnOK")
 	self._btnSkinOffsetAdjust = gohelper.findChildButtonWithAudio(self.viewGO, "viewport/content/item20/Button")
@@ -174,8 +171,6 @@ function GMToolView:addEvents()
 	self._btnGuideFinish:AddClickListener(self._onClickGuideFinish, self)
 	self._btnGuideForbid:AddClickListener(self._onClickGuideForbid, self)
 	self._btnGuideReset:AddClickListener(self._onClickGuideReset, self)
-	self._btnStorySkip:AddClickListener(self._onClickStorySkip, self)
-	self._btnStoryOK:AddClickListener(self._onClickStoryOK, self)
 	self._btnChangeColorOK:AddClickListener(self._onClickChangeColorOK, self)
 	self._btnFightSimulate:AddClickListener(self._onClickFightSimulate, self)
 	self._btnFightEntity:AddClickListener(self._onClickFightEntity, self)
@@ -266,8 +261,6 @@ function GMToolView:removeEvents()
 	self._btnGuideFinish:RemoveClickListener()
 	self._btnGuideForbid:RemoveClickListener()
 	self._btnGuideReset:RemoveClickListener()
-	self._btnStorySkip:RemoveClickListener()
-	self._btnStoryOK:RemoveClickListener()
 	self._btnChangeColorOK:RemoveClickListener()
 	self._btnFightSimulate:RemoveClickListener()
 	self._btnFightEntity:RemoveClickListener()
@@ -368,7 +361,6 @@ function GMToolView:onOpen()
 	self._inpJump:SetText(PlayerPrefsHelper.getString(PlayerPrefsKey.GMToolViewJump, ""))
 	self._inpGuide:SetText(PlayerPrefsHelper.getString(PlayerPrefsKey.GMToolViewGuide, ""))
 	self._inpEpisode:SetText(PlayerPrefsHelper.getString(PlayerPrefsKey.GMToolViewEpisode, ""))
-	self._inpStory:SetText(PlayerPrefsHelper.getString(PlayerPrefsKey.GMToolViewStory, ""))
 
 	local earMode = SDKMgr.instance:isEarphoneContact()
 
@@ -461,6 +453,14 @@ function GMToolView:_sendGM(input)
 	end
 
 	GMCommandHistoryModel.instance:addCommandHistory(input)
+
+	local tar = "小瑞安依"
+
+	if string.sub(input, 1, #tar) == tar then
+		TravelGoController.instance:exeGM(input)
+
+		return
+	end
 
 	if string.find(input, "#") == 1 then
 		local param = string.split(input, " ")
@@ -916,6 +916,10 @@ function GMToolView:_onClickSkinOffsetAdjust()
 	end
 
 	self:closeThis()
+	NavigateButtonsView.homeClick()
+
+	CharacterVoiceEnum.RTSizeLegacy = true
+
 	ViewMgr.instance:openView(ViewName.SkinOffsetAdjustView)
 end
 
@@ -1135,39 +1139,6 @@ function GMToolView:_doResetEpisode(episodeId)
 	if episodeCfg.afterStory > 0 then
 		print(episodeId .. " delete afterStory")
 		GMRpc.instance:sendGMRequest(string.format("delete story %s", episodeCfg.afterStory))
-	end
-end
-
-function GMToolView:_onClickStoryOK()
-	self:closeThis()
-
-	local txt = self._inpStory:GetText()
-
-	if not string.nilorempty(txt) then
-		local results = string.splitToNumber(txt, "#")
-		local storyId = results[1]
-		local stepId = results[2]
-
-		if storyId then
-			PlayerPrefsHelper.setString(PlayerPrefsKey.GMToolViewStory, storyId)
-
-			if stepId then
-				StoryController.instance:playStoryByStartStep(storyId, stepId)
-			else
-				local param = {}
-
-				param.isReplay = true
-				param.mark = false
-
-				StoryController.instance:playStory(storyId, param)
-			end
-		end
-	end
-end
-
-function GMToolView:_onClickStorySkip()
-	if ViewMgr.instance:isOpen(ViewName.StoryView) then
-		StoryController.instance:playFinished()
 	end
 end
 

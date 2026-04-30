@@ -121,6 +121,7 @@ HelpEnum.HelpId = {
 	Power = 3100101,
 	Fight = 115,
 	RougeHeroGroupFightViewHelp = 19711,
+	V3a7XRuiAnYiTravelGoViewHelp = 3701001,
 	VersionActivity_1_3_119 = 171,
 	Season166TrainHelp = 2200100,
 	AssassinStealthGame = 30500401,

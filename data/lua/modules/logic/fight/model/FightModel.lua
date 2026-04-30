@@ -243,7 +243,22 @@ function FightModel:initSpeedConfig()
 		self._rouge2UISpeed = {
 			arrs[1][2],
 			arrs[2][2],
-			arrs[2][2]
+			arrs[3][2]
+		}
+		arrs = GameUtil.splitString2(lua_rouge2_const.configDict[31010].value, true)
+		self._rouge2ExtraSpeed = {
+			{
+				arrs[1][1],
+				arrs[1][3]
+			},
+			{
+				arrs[2][1],
+				arrs[2][3]
+			},
+			{
+				arrs[3][1],
+				arrs[3][3]
+			}
 		}
 		arrs = GameUtil.splitString2(lua_survival_const.configDict[4704].value, true)
 		self._shelterSpeed = {
@@ -254,7 +269,18 @@ function FightModel:initSpeedConfig()
 		self._shelterUISpeed = {
 			arrs[1][2],
 			arrs[2][2],
-			arrs[2][2]
+			arrs[3][2]
+		}
+		arrs = GameUtil.splitString2(lua_sodache_const.configDict[19].value, true)
+		self._sdcSpeed = {
+			arrs[1][1],
+			arrs[2][1],
+			arrs[3][1]
+		}
+		self._sdcUISpeed = {
+			arrs[1][2],
+			arrs[2][2],
+			arrs[3][2]
 		}
 	end
 end
@@ -266,8 +292,14 @@ function FightModel:getSpeed()
 
 	self:initSpeedConfig()
 
+	if FightDataHelper.fieldMgr:isSouDaChe() then
+		return self._sdcSpeed[self._userSpeed] or 1
+	end
+
 	if FightDataHelper.fieldMgr:isRouge2() then
-		return self._rouge2Speed[self._userSpeed] or 1
+		local speed = self._rouge2Speed[self._userSpeed] or 1
+
+		return speed + self:getRouge2ExtraSpeed()
 	end
 
 	if FightDataHelper.fieldMgr:isShelter() then
@@ -301,6 +333,23 @@ function FightModel:getSpeed()
 	end
 end
 
+function FightModel:getRouge2ExtraSpeed()
+	if FightDataHelper.stageMgr:getCurStage() == FightStageMgr.StageType.Operate then
+		return 0
+	end
+
+	local roundData = FightDataHelper.roundMgr:getRoundData()
+	local timeCount = roundData and roundData.timelineCount or 0
+
+	for i = #self._rouge2ExtraSpeed, 1, -1 do
+		if timeCount >= self._rouge2ExtraSpeed[i][1] then
+			return self._rouge2ExtraSpeed[i][2]
+		end
+	end
+
+	return 0
+end
+
 function FightModel:addSpeed()
 	if self._userSpeed >= self:getMaxSpeed() then
 		self._userSpeed = 1
@@ -326,6 +375,10 @@ function FightModel:getMaxSpeed()
 		return 3
 	end
 
+	if FightDataHelper.fieldMgr:isSouDaChe() then
+		return 3
+	end
+
 	return 2
 end
 
@@ -344,8 +397,14 @@ end
 function FightModel:getUISpeed()
 	self:initSpeedConfig()
 
+	if FightDataHelper.fieldMgr:isSouDaChe() then
+		return self._sdcUISpeed[self._userSpeed] or 1
+	end
+
 	if FightDataHelper.fieldMgr:isRouge2() then
-		return self._rouge2UISpeed[self._userSpeed] or 1
+		local speed = self._rouge2UISpeed[self._userSpeed] or 1
+
+		return speed + self:getRouge2ExtraSpeed()
 	end
 
 	if FightDataHelper.fieldMgr:isShelter() then
@@ -599,6 +658,8 @@ function FightModel:_updatePlayerSkillInfo(skillInfos)
 
 		self._clothSkillDict[one.skillId] = skillInfo
 	end
+
+	FightController.instance:dispatchEvent(FightEvent.OnClothSkillDataUpdate)
 end
 
 function FightModel:onEndRound()

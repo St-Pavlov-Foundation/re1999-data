@@ -145,7 +145,11 @@ function StoryBackgroundView:_loadRes()
 		[StoryEnum.BgEffectType.EnterSplitScreen] = self._actBgEffEnterSplitScreen,
 		[StoryEnum.BgEffectType.ExitSplitScreen] = self._actBgEffExitSplitScreen,
 		[StoryEnum.BgEffectType.TextureShake] = self._actBgEffTextureShake,
-		[StoryEnum.BgEffectType.ShapeMask] = self._actBgEffShapeMask
+		[StoryEnum.BgEffectType.ShapeMask] = self._actBgEffShapeMask,
+		[StoryEnum.BgEffectType.PartialBlur] = self._actBgEffPartialBlur,
+		[StoryEnum.BgEffectType.PerspectiveCamera] = self._actBgEffPerspectiveCamera,
+		[StoryEnum.BgEffectType.TimeStop] = self._actBgEffTimeStop,
+		[StoryEnum.BgEffectType.UpFlow] = self._actBgEffUpFlow
 	}
 	self._handleResetBgEffs = {
 		[StoryEnum.BgEffectType.BgBlur] = self._resetBgEffBlur,
@@ -175,7 +179,11 @@ function StoryBackgroundView:_loadRes()
 		[StoryEnum.BgEffectType.EnterSplitScreen] = self._resetBgEffEnterSplitScreen,
 		[StoryEnum.BgEffectType.ExitSplitScreen] = self._resetBgEffExitSplitScreen,
 		[StoryEnum.BgEffectType.TextureShake] = self._resetBgEffTextureShake,
-		[StoryEnum.BgEffectType.ShapeMask] = self._resetBgEffShapeMask
+		[StoryEnum.BgEffectType.ShapeMask] = self._resetBgEffShapeMask,
+		[StoryEnum.BgEffectType.PartialBlur] = self._resetBgEffPartialBlur,
+		[StoryEnum.BgEffectType.PerspectiveCamera] = self._resetBgEffPerspectiveCamera,
+		[StoryEnum.BgEffectType.TimeStop] = self._resetBgEffTimeStop,
+		[StoryEnum.BgEffectType.UpFlow] = self._resetBgEffUpFlow
 	}
 end
 
@@ -1123,7 +1131,7 @@ function StoryBackgroundView:_onTurnPageBgResLoaded()
 	gohelper.setActive(self._turnPageGo, true)
 	StoryTool.enablePostProcess(true)
 
-	local storyViewGo = ViewMgr.instance:getContainer(ViewName.StoryView).viewGO
+	local storyViewGo = StoryViewMgr.instance:getStoryView()
 	local imgGo = gohelper.findChild(storyViewGo, "#go_middle/#go_img2")
 
 	self._imgAnim = imgGo:GetComponent(typeof(UnityEngine.Animation))
@@ -2081,6 +2089,48 @@ function StoryBackgroundView:_resetBgEffShapeMask()
 	end
 end
 
+function StoryBackgroundView:_actBgEffPartialBlur()
+	if not self._bgEffPartialBlur then
+		self._bgEffPartialBlur = StoryBgEffsPartialBlur.New()
+
+		self._bgEffPartialBlur:init(self._bgCo)
+		self._bgEffPartialBlur:start(self._resetBgEffPartialBlur, self)
+	else
+		self._bgEffPartialBlur:reset(self._bgCo)
+	end
+end
+
+function StoryBackgroundView:_resetBgEffPartialBlur()
+	if self._bgEffPartialBlur then
+		self._bgEffPartialBlur:destroy()
+
+		self._bgEffPartialBlur = nil
+	end
+end
+
+function StoryBackgroundView:_actBgEffPerspectiveCamera()
+	if not self._bgEffPerspectiveCamera then
+		if self._bgCo.effDegree == 1 then
+			return
+		end
+
+		self._bgEffPerspectiveCamera = StoryBgEffsPerspectiveCamera.New()
+
+		self._bgEffPerspectiveCamera:init(self._bgCo)
+		self._bgEffPerspectiveCamera:start(self._resetBgEffPerspectiveCamera, self)
+	else
+		self._bgEffPerspectiveCamera:reset(self._bgCo)
+	end
+end
+
+function StoryBackgroundView:_resetBgEffPerspectiveCamera()
+	if self._bgEffPerspectiveCamera then
+		self._bgEffPerspectiveCamera:destroy()
+
+		self._bgEffPerspectiveCamera = nil
+	end
+end
+
 function StoryBackgroundView:_resetBgEffOpposition()
 	if self._bgOppositionId then
 		ZProj.TweenHelper.KillById(self._bgOppositionId)
@@ -2094,7 +2144,7 @@ function StoryBackgroundView:_resetBgEffOpposition()
 		self._oppositionGo = nil
 	end
 
-	local storyViewGo = ViewMgr.instance:getContainer(ViewName.StoryView).viewGO
+	local storyViewGo = StoryViewMgr.instance:getStoryView()
 
 	gohelper.setLayer(storyViewGo, UnityLayer.UISecond, true)
 
@@ -2162,7 +2212,7 @@ function StoryBackgroundView:_setOpposition()
 		self._bgOppositionId = ZProj.TweenHelper.DOTweenFloat(value, oppositionEffDegrees[self._bgCo.effDegree + 1], self._bgCo.effTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()], self._oppositionUpdate, self._oppositionFinished, self)
 	end
 
-	local storyViewGo = ViewMgr.instance:getContainer(ViewName.StoryView).viewGO
+	local storyViewGo = StoryViewMgr.instance:getStoryView()
 
 	gohelper.setLayer(storyViewGo, UnityLayer.UITop, true)
 
@@ -2391,7 +2441,7 @@ end
 function StoryBackgroundView:_onTransMalfunctionResLoaded()
 	if self._transMalfunctionPrefPath then
 		local prefAssetItem = self._loader:getAssetItem(self._transMalfunctionPrefPath)
-		local frontGo = ViewMgr.instance:getContainer(ViewName.StoryView).viewGO
+		local frontGo = StoryViewMgr.instance:getStoryView()
 
 		self._malfunctionGo = gohelper.clone(prefAssetItem:GetResource(), frontGo)
 
@@ -2427,6 +2477,44 @@ end
 function StoryBackgroundView:_changeMalfunctionLayer()
 	if self._malfunctionGo then
 		gohelper.setLayer(self._malfunctionGo, UnityLayer.UITop, true)
+	end
+end
+
+function StoryBackgroundView:_actBgEffTimeStop()
+	if not self._bgTimeStopCls then
+		self._bgTimeStopCls = StoryBgEffsTimeStop.New()
+
+		self._bgTimeStopCls:init(self._bgCo)
+		self._bgTimeStopCls:start(self._resetBgEffTimeStop, self)
+	else
+		self._bgTimeStopCls:reset(self._bgCo)
+	end
+end
+
+function StoryBackgroundView:_resetBgEffTimeStop()
+	if self._bgTimeStopCls then
+		self._bgTimeStopCls:destroy()
+
+		self._bgTimeStopCls = nil
+	end
+end
+
+function StoryBackgroundView:_actBgEffUpFlow()
+	if not self._bgUpFlowCls then
+		self._bgUpFlowCls = StoryBgEffsUpFlow.New()
+
+		self._bgUpFlowCls:init(self._bgCo)
+		self._bgUpFlowCls:start(self._resetBgEffUpFlow, self)
+	else
+		self._bgUpFlowCls:reset(self._bgCo)
+	end
+end
+
+function StoryBackgroundView:_resetBgEffUpFlow()
+	if self._bgUpFlowCls then
+		self._bgUpFlowCls:destroy()
+
+		self._bgUpFlowCls = nil
 	end
 end
 
@@ -2478,6 +2566,8 @@ function StoryBackgroundView:_clearBg()
 	self:_resetBgEffTextureShake()
 	self:_resetBgEffShapeMask()
 	self:_resetBgEffMalfunction()
+	self:_resetBgEffPartialBlur()
+	self:_resetBgEffPerspectiveCamera()
 
 	if self._blurId then
 		ZProj.TweenHelper.KillById(self._blurId)

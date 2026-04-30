@@ -4081,7 +4081,7 @@
   },
   {
     "id": "herogift_custom_pick_title",
-    "lang": "可邀请以下任意一位角色加入到队伍中"
+    "lang": "可自选邀请以下任意一位角色"
   },
   {
     "id": "exploreview_optip_interact",
@@ -6525,7 +6525,7 @@
   },
   {
     "id": "anniversary_bonus_rule",
-    "lang": "在活动期间内，司辰可以选择范围内的已拥有的角色获取造像。\n包括以下角色：槲寄生、红弩箭、未锈铠、苏芙比、星锑、百夫长、泥鯭的士、兔毛手袋、远旅、温妮弗雷德、\n新巴别塔、牙仙、洁西卡、梅兰妮、皮克勒斯、伽菈波那、鬃毛沙砾、37、6、可燃点、爱兹拉、葛天、马库斯、\n伊索尔德、北方哨歌、维拉、塞梅尔维斯、卡卡尼亚、J、环状水星、阿尔古斯、蓝手帕、洛佩拉、笃笃骨、纸信圈儿、\n芭卡洛儿、图图石子、菲林士多、乌尔里希。\n当范围内角色的造像全部获取，则可邀请角色再会，并转化为28个大容量迷途之声。"
+    "lang": "在活动期间内，司辰可以选择范围内的已拥有的角色获取造像。\n包括以下角色：槲寄生、红弩箭、未锈铠、苏芙比、星锑、百夫长、泥鯭的士、兔毛手袋、远旅、温妮弗雷德、\n新巴别塔、牙仙、洁西卡、梅兰妮、皮克勒斯、伽菈波那、鬃毛沙砾、37、6、可燃点、爱兹拉、葛天、马库斯、\n伊索尔德、北方哨歌、维拉、塞梅尔维斯、卡卡尼亚、J、环状水星、阿尔古斯、蓝手帕、洛佩拉、笃笃骨、纸信圈儿、\n芭卡洛儿、图图石子、菲林士多、乌尔里希、虚构集、阿莱夫、冷周六、库珀花环、莫莉德尔、玛丽安娜、卡戎、\n野树莓、告死鸟、灰调蓝、玛尔莎、伊戈尔、程和光、珐琅眼。\n当范围内角色的造像已全部获取，则可邀请角色再会，并转化为28个大容量迷途之声和10个灵性显影液。"
   },
   {
     "id": "anniversary_activity_tip2",
@@ -7665,7 +7665,7 @@
   },
   {
     "id": "versionsummon_txt_tips1",
-    "lang": "活动期间，登录即可领取十全调·【剪春注我】*1"
+    "lang": "活动期间，登录游戏即可领取\n十全调·【故事的新啼】"
   },
   {
     "id": "versionsummon_txt_tips2",
@@ -8753,7 +8753,7 @@
   },
   {
     "id": "rouge2_mapdiceview_redicetips",
-    "lang": "检定失败，是否消耗▩1%s<sprite=0>重新检定?"
+    "lang": "检定失败，是否消耗▩1%s<sprite=3>重新检定?"
   },
   {
     "id": "rouge2_mapdiceview_startredice",
@@ -8765,7 +8765,7 @@
   },
   {
     "id": "rouge2_mapdiceview_startredicetips",
-    "lang": "<sprite=0>持有：▩1%s"
+    "lang": "<sprite=3>持有：▩1%s"
   },
   {
     "id": "rouge2_itemrefreshview_refreshcost",
@@ -8914,5 +8914,533 @@
   {
     "id": "collectView_weekwalk_unlock_tip",
     "lang": "通关浅眠域后解锁"
+  },
+  {
+    "id": "sodache_all",
+    "lang": "全部"
+  },
+  {
+    "id": "sodache_cardsubtype_101",
+    "lang": "岩"
+  },
+  {
+    "id": "sodache_cardsubtype_102",
+    "lang": "星"
+  },
+  {
+    "id": "sodache_cardsubtype_103",
+    "lang": "木"
+  },
+  {
+    "id": "sodache_cardsubtype_104",
+    "lang": "兽"
+  },
+  {
+    "id": "sodache_cardsubtype_105",
+    "lang": "灵"
+  },
+  {
+    "id": "sodache_cardsubtype_106",
+    "lang": "智"
+  },
+  {
+    "id": "sodache_cardsubtype_201",
+    "lang": "共鸣触媒"
+  },
+  {
+    "id": "sodache_cardsubtype_202",
+    "lang": "行前补给"
+  },
+  {
+    "id": "sodache_cardsubtype_203",
+    "lang": "医疗保障"
+  },
+  {
+    "id": "sodache_cardsubtype_204",
+    "lang": "勘察道具"
+  },
+  {
+    "id": "sodache_cardsubtype_205",
+    "lang": "随行装备"
+  },
+  {
+    "id": "sodache_cardsubtype_401",
+    "lang": "鼓舞状态"
+  },
+  {
+    "id": "sodache_cardsubtype_402",
+    "lang": "损毁状态"
+  },
+  {
+    "id": "sodache_cardsubtype_501",
+    "lang": "岩"
+  },
+  {
+    "id": "sodache_cardsubtype_502",
+    "lang": "星"
+  },
+  {
+    "id": "sodache_cardsubtype_503",
+    "lang": "木"
+  },
+  {
+    "id": "sodache_cardsubtype_504",
+    "lang": "兽"
+  },
+  {
+    "id": "sodache_cardsubtype_505",
+    "lang": "灵"
+  },
+  {
+    "id": "sodache_cardsubtype_506",
+    "lang": "智"
+  },
+  {
+    "id": "sodache_cardtype_1",
+    "lang": "补给"
+  },
+  {
+    "id": "sodache_cardtype_2",
+    "lang": "行动"
+  },
+  {
+    "id": "sodache_cardtype_3",
+    "lang": "对策"
+  },
+  {
+    "id": "sodache_cardtype_4",
+    "lang": "状态"
+  },
+  {
+    "id": "sodache_cardtype_5",
+    "lang": "造像"
+  },
+  {
+    "id": "sodache_map_btn_shop",
+    "lang": "后勤补给"
+  },
+  {
+    "id": "sodache_map_btn_altar",
+    "lang": "造像供奉"
+  },
+  {
+    "id": "sodache_map_btn_leave",
+    "lang": "移动"
+  },
+  {
+    "id": "sodache_takeview_costcount",
+    "lang": "理智极限："
+  },
+  {
+    "id": "sodache_takeview_cardcount",
+    "lang": "当前卡牌："
+  },
+  {
+    "id": "sodache_shopview_limit",
+    "lang": "限购▩1%s"
+  },
+  {
+    "id": "sodache_cardquickselectview_count",
+    "lang": "可选数量：▩1%s/▩2%s"
+  },
+  {
+    "id": "sodache_mapretreatview_count",
+    "lang": "只能带▩1%s张卡牌撤离"
+  },
+  {
+    "id": "sodache_altarview_lockdesc",
+    "lang": "服用树木后获得随机效果。"
+  },
+  {
+    "id": "sodache_carddetailview_btnuse",
+    "lang": "使用"
+  },
+  {
+    "id": "sodache_carddetailview_btnadd",
+    "lang": "携带"
+  },
+  {
+    "id": "sodache_carddetailview_btnsub",
+    "lang": "取消"
+  },
+  {
+    "id": "sodache_choice_condition_type",
+    "lang": "需要▩1%s牌"
+  },
+  {
+    "id": "sodache_choice_condition_subtype",
+    "lang": "需要▩1%s牌"
+  },
+  {
+    "id": "sodache_choice_condition_card",
+    "lang": "需要▩1%s牌"
+  },
+  {
+    "id": "sodache_drop_get_card",
+    "lang": "得到▩1%s×▩2%s"
+  },
+  {
+    "id": "sodache_drop_lose_card",
+    "lang": "失去▩1%s×▩2%s"
+  },
+  {
+    "id": "rouge2_backpackskillview_attrupdatetips",
+    "lang": "▩1%s 后升级"
+  },
+  {
+    "id": "rouge2_activeskilldropview_trialhero",
+    "lang": "获得后，解锁【▩1%s】的角色试用"
+  },
+  {
+    "id": "rouge2_saveinfoherogroupcomp",
+    "lang": "▩1%s队"
+  },
+  {
+    "id": "TravelGo_1",
+    "lang": "阅历"
+  },
+  {
+    "id": "TravelGo_2",
+    "lang": "连击！"
+  },
+  {
+    "id": "TravelGo_3",
+    "lang": "反击！"
+  },
+  {
+    "id": "TravelGoView_1",
+    "lang": "冒险至第▩1%s日（▩2%s/▩3%s）"
+  },
+  {
+    "id": "TravelGoView_2",
+    "lang": "第▩1%s日"
+  },
+  {
+    "id": "TravelGoLevelUpWork_1",
+    "lang": "阅历等级提升至▩1%s级，可选择1个新技能"
+  },
+  {
+    "id": "TravelGoResultView_1",
+    "lang": "冒险失败，本次旅程你坚持到了第▩1%s日（▩2%s/▩3%s）"
+  },
+  {
+    "id": "TravelGoDayComp_1",
+    "lang": "暂未获得技能"
+  },
+  {
+    "id": "TravelGoView_battleRound",
+    "lang": "第▩1%s回合"
+  },
+  {
+    "id": "sodache_cost_level",
+    "lang": "通过深邃获得：<nobr>理智极限<color=#D1974C>+▩1%s</color>"
+  },
+  {
+    "id": "sodache_cost_level_fail",
+    "lang": "通过深邃获得：<nobr>理智极限<color=#D1974C>+▩1%s</color></nobr>"
+  },
+  {
+    "id": "sodache_cost_buildlevel",
+    "lang": "通过建筑获得：<nobr>理智极限<color=#D1974C>+▩1%s</color>"
+  },
+  {
+    "id": "sodache_cost_buildlevel_fail",
+    "lang": "通过建筑获得：<nobr>理智极限<color=#D1974C>+▩1%s</color></nobr>"
+  },
+  {
+    "id": "sodache_cost_relic",
+    "lang": "通过造像获得：<nobr>理智极限<color=#D1974C>+▩1%s</color>"
+  },
+  {
+    "id": "sodache_cost_relic_fail",
+    "lang": "通过造像获得：<nobr>理智极限<color=#D1974C>+▩1%s</color></nobr>"
+  },
+  {
+    "id": "sodache_relicupgrade_active",
+    "lang": "[主动]："
+  },
+  {
+    "id": "sodache_relicupgrade_passive",
+    "lang": "[被动]："
+  },
+  {
+    "id": "rouge2_attributedetailview_skilloverview",
+    "lang": "共鸣器详情"
+  },
+  {
+    "id": "rouge2_iremrefreshcomp_currevivalcoin",
+    "lang": "<sprite=3>持有：▩1%s"
+  },
+  {
+    "id": "rouge2_attributedetailskillview_otherlv",
+    "lang": "升至▩1%s级"
+  },
+  {
+    "id": "sodache_cardquality_1",
+    "lang": "寻常"
+  },
+  {
+    "id": "sodache_cardquality_2",
+    "lang": "精巧"
+  },
+  {
+    "id": "sodache_cardquality_3",
+    "lang": "妙想"
+  },
+  {
+    "id": "sodache_cardquality_4",
+    "lang": "珍奇"
+  },
+  {
+    "id": "sodache_cardquality_5",
+    "lang": "传闻"
+  },
+  {
+    "id": "sodache_cardquality_6",
+    "lang": "未知"
+  },
+  {
+    "id": "sodache_refrain_all",
+    "lang": "克制全灵感"
+  },
+  {
+    "id": "sodache_refrain_native",
+    "lang": "克制原生灵感"
+  },
+  {
+    "id": "sodache_refrain_nature",
+    "lang": "克制自然灵感"
+  },
+  {
+    "id": "sodache_refrain_single",
+    "lang": "克制▩1%s灵感"
+  },
+  {
+    "id": "guessgame_needsubmitgift_tip",
+    "lang": "§需要提交▩1%s"
+  },
+  {
+    "id": "guessgame_dailymutiple_tip",
+    "lang": "每日首次游戏可获得<size=46><#B93900>▩1%s</size></color>倍诈唬分"
+  },
+  {
+    "id": "guessgame_npcsubmitgiftcount_tip",
+    "lang": "§▩1%s提交了▩2%s个礼盒"
+  },
+  {
+    "id": "guessgame_giftname_tip",
+    "lang": "透视药水揭晓卡牌为▩1%s"
+  },
+  {
+    "id": "guessgame_npcannouncegift_tip",
+    "lang": "▩1%s声称这<#EC8A3D>▩2%s</color>张牌都是<#EC8A3D>▩3%s</color>"
+  },
+  {
+    "id": "guessgame_roundtotalscore_tip",
+    "lang": "§本轮得分  ▩1%s"
+  },
+  {
+    "id": "guessgame_npcround_tip",
+    "lang": "本轮由 ▩1%s 出牌"
+  },
+  {
+    "id": "guessgame_searchcount_tip",
+    "lang": "剩余次数：▩1%s "
+  },
+  {
+    "id": "sodachehandbook_subType1",
+    "lang": "补给"
+  },
+  {
+    "id": "sodachehandbook_subType5",
+    "lang": "造像"
+  },
+  {
+    "id": "sodachehandbook_subType2",
+    "lang": "行动"
+  },
+  {
+    "id": "sodachehandbook_subType3",
+    "lang": "对策"
+  },
+  {
+    "id": "sodachehandbook_subType6",
+    "lang": "怪物"
+  },
+  {
+    "id": "sodachehandbook_subType7",
+    "lang": "首领"
+  },
+  {
+    "id": "act236_cost_desc",
+    "lang": "累计<size=40><sprite=0></size>▩1%s"
+  },
+  {
+    "id": "fight_3_7_boss_qte_dialogue1",
+    "lang": "是这么做吗？"
+  },
+  {
+    "id": "fight_3_7_boss_qte_dialogue2",
+    "lang": "一定是维尔汀！"
+  },
+  {
+    "id": "fight_3_7_boss_qte_dialogue3",
+    "lang": "没错，我也能感觉到她……"
+  },
+  {
+    "id": "fight_3_7_boss_qte_dialogue4",
+    "lang": "完全解开了"
+  },
+  {
+    "id": "fight_3_7_boss_qte_dialogue5",
+    "lang": "不要辜负她为我们创造的机会，各位！"
+  },
+  {
+    "id": "fight_3_7_boss_qte_dialogue6",
+    "lang": "这就是阿尔卡纳的谜题"
+  },
+  {
+    "id": "arcade_return_reward_introduction",
+    "lang": "亲爱的投币手：\n\n恭喜您在上次“8-bit街机秀”里取得了足够漂亮的成绩，昔日的荣光已经记录在案，我亦乐得将它们原样回赠于您。\n\n毕竟，时间不等人，在通货膨胀追上这些小玩意儿的身价前，不妨将它们重新放进投币口。\n\n那么，预祝您在下一局里，收获更多色块必杀。\n\n——缪斯三世"
+  },
+  {
+    "id": "fight_3_7_device_cost_power",
+    "lang": "术具耗能"
+  },
+  {
+    "id": "fight_3_7_device_use_skill",
+    "lang": "术具唤起"
+  },
+  {
+    "id": "fight_3_7_boss_born_dialogue1",
+    "lang": "向我引以为傲的孩子打个招呼吧。"
+  },
+  {
+    "id": "fight_3_7_boss_born_dialogue2",
+    "lang": "再见了，凡人。"
+  },
+  {
+    "id": "fight_3_7_boss_fuhuo_dialogue1",
+    "lang": "这是……梅蕾尔探病时送来的礼物……？"
+  },
+  {
+    "id": "PlayerCardGetView_special_tag1",
+    "lang": "旅卷集"
+  },
+  {
+    "id": "PlayerCardGetView_special_tag2",
+    "lang": "好友"
+  },
+  {
+    "id": "teaching_tips",
+    "lang": "该类角色需要激活狂想后，才能进入对应体系。"
+  },
+  {
+    "id": "teaching_main_desc_1",
+    "lang": "▩1%s角色"
+  },
+  {
+    "id": "teaching_main_desc_2",
+    "lang": "<color=#AD6538>狂想</color>▩1%s角色"
+  },
+  {
+    "id": "sodache_relicoverview_type1",
+    "lang": "金币加成"
+  },
+  {
+    "id": "sodache_relicoverview_type2",
+    "lang": "行动力加成"
+  },
+  {
+    "id": "sodache_relicoverview_type3",
+    "lang": "Cost加成"
+  },
+  {
+    "id": "sodache_relicoverview_type4",
+    "lang": "特殊加成"
+  },
+  {
+    "id": "story_option_continueask",
+    "lang": "继续提问"
+  },
+  {
+    "id": "story_option_endask",
+    "lang": "结束提问"
+  },
+  {
+    "id": "v3a7_act236_have_skin_tips",
+    "lang": "可在以下衣着中选择一个未拥有的衣着领取，若拥有全部则可转化为<sprite=▩1%s>▩2%s"
+  },
+  {
+    "id": "V3a7_Wmz_GameView_txtRound",
+    "lang": "剩余步数：<color=#D58965>%s</color>"
+  },
+  {
+    "id": "V3a7_Wmz_GameView_txtTarget",
+    "lang": "回溯所有回忆（▩1%s/▩2%s）"
+  },
+  {
+    "id": "p_v3a7_anniversary3_activitybp_rule_titile",
+    "lang": "规则说明"
+  },
+  {
+    "id": "p_v3a7_anniversary3_activitybp_rule_text",
+    "lang": "【等级说明】<br>本次活动默认解锁【精准之歌】，解锁<#b95323>【自我之歌】</color>可获取更丰厚的素材奖励。 <br>准确度的等级越高，可领取的奖励就越多。<br>可以通过完成唱片校准中的任务来获得准确分贝，提升准确度等级，获取丰厚的奖励。<br>一周之音中的任务于<#b95323>每周一5:00</color>（UTC+8）刷新。<br><br>【特殊说明】<br>为自我的歌儿结束时，已解锁但未领取的奖励将通过邮件发送至邮箱当中，邮件有效期为<#b95323>7天</color>，请及时领取。"
+  },
+  {
+    "id": "p_v3a7_anniversary4_activitybp_rule_text_01",
+    "lang": "立即获得"
+  },
+  {
+    "id": "p_v3a7_anniversary4_activitybp_rule_text_02",
+    "lang": "提升【准确度】等级可额外获得"
+  },
+  {
+    "id": "v3a7_skin_gift_hero_max_skill_tip_1",
+    "lang": "若限定角色已经满塑，可转化为<#E4B986>箱装友谊·制片答谢</color>"
+  },
+  {
+    "id": "v3a7_skin_gift_hero_max_skill_tip_2",
+    "lang": "若非限定角色已经满塑可转化为<#E4B986>非具象留影仪·制片答谢</color>和<#E4B986>灵魂压缩电池*3</color>"
+  },
+  {
+    "id": "v3a7_skin_gift_hero_max_skill_tip_and_1",
+    "lang": "、"
+  },
+  {
+    "id": "v3a7_skin_gift_hero_max_skill_tip_and_2",
+    "lang": "和"
+  },
+  {
+    "id": "MaterialTipViewPackageSkinDescFmt_3_7",
+    "lang": "【奢豪荐选衣箱规则说明】|该道具使用后可随机获得指定范围内一款衣着：<#b95323>30%%</color>概率获得<#b95323>Unique</color>品级衣着，<#b95323>70%%</color>概率获得<#b95323>Advanced</color>品级衣着；同一品级内的每件衣着获取概率均等。若重复获得<#b95323>已拥有的衣着</color>，Unique品级衣着将转化为<#b95323>1680粹雨滴</color>，Advanced品级衣着将转化为<#b95323>1080粹雨滴</color>。<br>注：<#b95323>奢豪荐选衣箱</color>存在使用期限，超出期限但未使用的情况下，该道具将在过期后从仓库内销毁，请务必在使用期限内使用。|【概率详情】|%s"
+  },
+  {
+    "id": "material_packageskin_rate_desc_3_7",
+    "lang": "▩1%s - ▩2%s<pos=30%>▩3%s%"
+  },
+  {
+    "id": "handbookskin_festival_WorldMilkDay",
+    "lang": "世界牛奶日"
+  },
+  {
+    "id": "V3a7_Wmz_GameItem_Title_txtTitle",
+    "lang": "？？？"
+  },
+  {
+    "id": "p_rouge2_finishview_txt_successtips103",
+    "lang": "延续或灭绝，是所有物种进化的必然结局。"
+  },
+  {
+    "id": "p_rouge2_finishview_txt_successtips104",
+    "lang": "文明与思想潜藏在动物的本能里。"
+  },
+  {
+    "id": "p_rouge2_finishview_txt_success103",
+    "lang": "误读"
+  },
+  {
+    "id": "p_rouge2_finishview_txt_success104",
+    "lang": "自我的超越"
   }
 ]

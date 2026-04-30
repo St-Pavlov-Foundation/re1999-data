@@ -358,5 +358,21 @@
     "name": "世界筹码",
     "nameEn": "All the World's a Chip",
     "year": ""
+  },
+  {
+    "id": 15,
+    "type": 1,
+    "order": 0,
+    "name": "他者的悲哀",
+    "nameEn": "On Another's Sorrow",
+    "year": "1921"
+  },
+  {
+    "id": 1031,
+    "type": 2,
+    "order": 0,
+    "name": "风暴里，雏鹰振翅",
+    "nameEn": "The Eaglet Takes Wing",
+    "year": ""
   }
 ]

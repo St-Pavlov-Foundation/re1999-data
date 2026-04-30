@@ -106,5 +106,68 @@
     "desc": "是否立刻使用道具【▩1%s】",
     "descParam": "1",
     "checkParam": ""
+  },
+  {
+    "id": 793701,
+    "priority": 1,
+    "type": 1,
+    "jumpId": 906,
+    "desc": "是否立即前往使用",
+    "descParam": "",
+    "checkParam": "2"
+  },
+  {
+    "id": 143706,
+    "priority": 1,
+    "type": 1,
+    "jumpId": 54,
+    "desc": "是否立即前往使用\n【箱装友谊】",
+    "descParam": "",
+    "checkParam": ""
+  },
+  {
+    "id": 713701,
+    "priority": 1,
+    "type": 1,
+    "jumpId": 10013737,
+    "desc": "是否立刻使用道具【▩1%s】",
+    "descParam": "1",
+    "checkParam": ""
+  },
+  {
+    "id": 823701,
+    "priority": 1,
+    "type": 1,
+    "jumpId": 54,
+    "desc": "是否立刻使用道具【▩1%s】",
+    "descParam": "1",
+    "checkParam": ""
+  },
+  {
+    "id": 753203,
+    "priority": 1,
+    "type": 1,
+    "jumpId": 54,
+    "desc": "是否立即前往使用\n【载波收藏匣】",
+    "descParam": "",
+    "checkParam": ""
+  },
+  {
+    "id": 713202,
+    "priority": 2,
+    "type": 1,
+    "jumpId": 54,
+    "desc": "是否立即前往使用\n【旧雨臻选衣箱·Unique】",
+    "descParam": "",
+    "checkParam": ""
+  },
+  {
+    "id": 481011,
+    "priority": 3,
+    "type": 1,
+    "jumpId": 54,
+    "desc": "是否立即前往使用\n【箱装同行录】",
+    "descParam": "",
+    "checkParam": ""
   }
 ]

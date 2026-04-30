@@ -15,10 +15,52 @@ function SummonCharacterProbUpPreloadConfig.getCharacterItemCountByName(name)
 	return SummonCharacterProbUpPreloadConfig.characterItemCounts[name] or 1
 end
 
+SummonCharacterProbUpPreloadConfig.preloadLists.SummonCharacterProbUpVer371 = {
+	"singlebg/summon/heroversion_3_7/v3a7_xiaoruian/v3a7_xiaoruian_dec01.png",
+	"singlebg/summon/heroversion_3_7/v3a7_xiaoruian/v3a7_xiaoruian_dec04.png",
+	"singlebg/summon/heroversion_3_7/v3a7_xiaoruian/v3a7_xiaoruian_mask.png",
+	"singlebg/summon/heroversion_3_7/v3a7_xiaoruian/v3a7_xiaoruian_role.png",
+	"singlebg/summon/heroversion_3_7/v3a7_xiaoruian/v3a7_xiaoruian_fullbg.png"
+}
 SummonCharacterProbUpPreloadConfig.preloadLists.SummonCharacterProbUpVer363 = {
 	"singlebg/summon/heroversion_3_6/v3a6_yami/v3a6_yami_role.png",
 	"singlebg/summon/heroversion_3_6/v3a6_yami/v3a6_yami_mask.png",
 	"singlebg/summon/heroversion_3_6/v3a6_yami/v3a6_yami_fullbg.png"
+}
+SummonCharacterProbUpPreloadConfig.preloadLists.SummonCharacterProbUpVer372 = {
+	"singlebg/summon/heroversion_3_7/v3a7_wumingzhe/v3a7_wumingzhe_role.png",
+	"singlebg/summon/heroversion_3_7/v3a7_wumingzhe/v3a7_wumingzhe_fullbg.png"
+}
+SummonCharacterProbUpPreloadConfig.preloadLists.SummonOneCustomPickView = {
+	"singlebg/summon/heroversion_1_9/selfselectsix/v1a9_selfselectsix_summon_frontbg.png",
+	"singlebg/summon/heroversion_2_2/selfselectsix/v2a2_selfselectsix_summon_line.png",
+	"singlebg/summon/heroversion_3_7/v3a7_selfselect2/v3a7_selfselect2_rolebg.png",
+	"singlebg/summon/heroversion_2_8/v2a8_selfselect2/v2a8_selfselect2_fullbg.png"
+}
+SummonCharacterProbUpPreloadConfig.preloadLists.SummonCharacterProbUpVer376 = {
+	"singlebg/summon/heroversion_2_8/v2a8_nuodika/v2a8_summon_nuodika_rolebg.png",
+	"singlebg/summon/heroversion_2_8/v2a8_nuodika/v2a8_summon_nuodika_decbg.png",
+	"singlebg/summon/heroversion_2_8/v2a8_nuodika/v2a8_summon_nuodika_fullbg.png"
+}
+SummonCharacterProbUpPreloadConfig.preloadLists.SummonCharacterProbUpVer375 = {
+	"singlebg/summon/heroversion_2_8/v2a8_molideer/v2a8_summon_molideer_fontbg.png",
+	"singlebg/summon/heroversion_3_3/v3a3_yigeer/v3a3_yigerer_role1.png",
+	"singlebg/summon/heroversion_3_3/v3a3_yigeer/v3a3_yigerer_fullbg.png"
+}
+SummonCharacterProbUpPreloadConfig.preloadLists.SummonCharacterProbUpVer374 = {
+	"singlebg/summon/heroversion_2_4/v2a4_tutushizi/v2a4_summon_tutushizi_role1.png",
+	"singlebg/summon/heroversion_2_4/v2a4_tutushizi/v2a4_summon_tutushizi_fullbg.png"
+}
+SummonCharacterProbUpPreloadConfig.preloadLists.SummonCharacterProbUpVer373 = {
+	"singlebg/summon/heroversion_3_0/v3a0_malianna/v3a0_malianna_role.png",
+	"singlebg/summon/heroversion_3_0/v3a0_malianna/v3a0_malianna_fullbg.png"
+}
+SummonCharacterProbUpPreloadConfig.preloadLists.SummonStrongOneCustomPick37 = {
+	"singlebg/characterdestiny/character_destiny_new_fullbg01.png",
+	"singlebg/summon/heroversion_2_3/v2a3_selfselectsix/v2a3_selfselectsix_reshapefullbg.png",
+	"singlebg/summon/heroversion_2_4/v2a4_selfselectsix/v2a4_selfselectsix_role1.png",
+	"singlebg/summon/heroversion_3_7/v3a7_selfselectsix/v3a7_selfselectsi_role.png",
+	"singlebg/summon/heroversion_2_3/v2a3_selfselectsix/v2a3_selfselectsix_fullbg.png"
 }
 SummonCharacterProbUpPreloadConfig.preloadLists.SummonCharacterProbUpVer339 = {
 	"singlebg/summon/heroversion_3_4/v3a4_cengheguang/v3a4_cengheguang_dec02.png",

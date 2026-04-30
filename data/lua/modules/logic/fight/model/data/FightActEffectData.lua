@@ -99,6 +99,10 @@ function FightActEffectData:onConstructor(proto)
 	if proto:HasField("rouge2FightMusicInfo") then
 		self.rouge2MusicInfo = FightRouge2MusicInfo.New(proto.rouge2FightMusicInfo)
 	end
+
+	if proto:HasField("deviceAreaInfo") then
+		self.deviceAreaInfo = FightDeviceAreaInfoData.New(proto.deviceAreaInfo)
+	end
 end
 
 function FightActEffectData:isDone()

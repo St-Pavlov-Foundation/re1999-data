@@ -149,8 +149,11 @@ function GameScreenTouch:_create(effectGO)
 
 	local materialPropsCtrl = effectItem:GetComponent(typeof(ZProj.MaterialPropsCtrl))
 
-	materialPropsCtrl.mas:Clear()
-	materialPropsCtrl.mas:Add(image.material)
+	if materialPropsCtrl then
+		materialPropsCtrl.mas:Clear()
+		materialPropsCtrl.mas:Add(image.material)
+	end
+
 	gohelper.setActive(effectItem, false)
 
 	local prefabName = self:getCurUseUIPrefabName()

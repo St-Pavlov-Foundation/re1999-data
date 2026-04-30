@@ -418,6 +418,54 @@ function CameraMgr:getRenderScale()
 	end
 end
 
+function CameraMgr:setShadowDistance(distance)
+	if self._urpProfileAsset then
+		self._urpProfileAsset.shadowDistance = distance
+	end
+end
+
+function CameraMgr:getShadowDistance()
+	if self._urpProfileAsset then
+		return self._urpProfileAsset.shadowDistance
+	end
+end
+
+function CameraMgr:setMainLightShadowmapResolution(resolution)
+	if self._urpProfileAsset then
+		self._urpProfileAsset.mainLightShadowmapResolution = resolution
+	end
+end
+
+function CameraMgr:getMainLightShadowmapResolution()
+	if self._urpProfileAsset then
+		return self._urpProfileAsset.mainLightShadowmapResolution
+	end
+end
+
+function CameraMgr:setShadowDepthBias(num)
+	if self._urpProfileAsset then
+		self._urpProfileAsset.shadowDepthBias = num
+	end
+end
+
+function CameraMgr:getShadowDepthBias()
+	if self._urpProfileAsset then
+		return self._urpProfileAsset.shadowDepthBias
+	end
+end
+
+function CameraMgr:setShadowNormalBias(num)
+	if self._urpProfileAsset then
+		self._urpProfileAsset.shadowNormalBias = num
+	end
+end
+
+function CameraMgr:getShadowNormalBias()
+	if self._urpProfileAsset then
+		return self._urpProfileAsset.shadowNormalBias
+	end
+end
+
 CameraMgr.instance = CameraMgr.New()
 
 return CameraMgr

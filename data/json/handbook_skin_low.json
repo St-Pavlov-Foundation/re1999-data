@@ -188,7 +188,7 @@
     "highId": 10008,
     "show": 1,
     "des": "月朗星稀，云卷云舒，剪灯开卷正相宜。君与古卷结新友，我随清风共徘徊。",
-    "skinContain": "301202|300904|308303|309803|307703",
+    "skinContain": "301202|300904|308303|309803|307703|307304",
     "backImg": "",
     "spineParams": "308303|roles_bust/v3a2_308303_qn_skinsuit/308303_qn_skinsuit.prefab|0,0|1.4",
     "tarotCardPath": "",
@@ -240,10 +240,10 @@
     "highId": 11001,
     "show": 1,
     "des": "§无小套组描述",
-    "skinContain": "305104|305604|312703|307905|304704|310003|308004|304804|308804|300731|310703|306204|300306",
+    "skinContain": "307905|304704|312803|310003|308004|304804|308804|300731|310703|306204|300306|305104|305604|312703",
     "backImg": "",
     "spineParams": "",
-    "tarotCardPath": "card03|card06|card08|card09|card12|card15|card16|card17|card18|card20|card21|card01|card02",
+    "tarotCardPath": "card09|card12|card13|card15|card16|card17|card18|card20|card21|card01|card02|card03|card06|card08",
     "festivalParams": ""
   },
   {
@@ -331,11 +331,11 @@
     "highId": 13001,
     "show": 1,
     "des": "",
-    "skinContain": "310404|309804|311404|309504|0",
+    "skinContain": "309804|311404|306605|309504|310404",
     "backImg": "",
     "spineParams": "",
     "tarotCardPath": "",
-    "festivalParams": "handbookskin_festival_yushui,2.18|handbookskin_festival_Easter,4.5|handbookskin_festival_dushu,4.23|handbookskin_festival_Christmas,12.25|handbookskin_festival_unknow,???"
+    "festivalParams": "handbookskin_festival_Easter,4.5|handbookskin_festival_dushu,4.23|handbookskin_festival_WorldMilkDay,6.1|handbookskin_festival_Christmas,12.25|handbookskin_festival_yushui,2.18"
   },
   {
     "id": 20022,
@@ -373,6 +373,19 @@
     "skinContain": "311704|313203|300503",
     "backImg": "",
     "spineParams": "",
+    "tarotCardPath": "",
+    "festivalParams": ""
+  },
+  {
+    "id": 20025,
+    "name": "生死诘问",
+    "nameEn": "Life and Loss",
+    "highId": 10002,
+    "show": 1,
+    "des": "在无尽的倾听里，命运终有一次向你我垂询。",
+    "skinContain": "310905|314403|312003|311803",
+    "backImg": "",
+    "spineParams": "314403|roles_bust/v3a7_314403_fly_skinstorecardface/314403_fly_skinstorecardface.prefab|120,-20|0.85#312003|roles_bust/v3a7_312003_ndk_skinsuit/312003_ndk_skinsuit.prefab|350,-90|1.4",
     "tarotCardPath": "",
     "festivalParams": ""
   }

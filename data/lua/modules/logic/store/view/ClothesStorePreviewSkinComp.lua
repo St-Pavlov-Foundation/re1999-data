@@ -25,9 +25,10 @@ function ClothesStorePreviewSkinComp:init(go)
 	self._txtskinNameEn = gohelper.findChildText(self.viewGO, "#txt_skinNameEn")
 	self.special2dBgScale = {
 		[305305] = 2,
-		[310003] = 0.5,
+		[312003] = 2,
 		[311003] = 2,
-		[308303] = 2
+		[308303] = 2,
+		[314403] = 1.5
 	}
 end
 
@@ -150,7 +151,9 @@ function ClothesStorePreviewSkinComp:_onUISpineLoaded()
 
 	local offsets = SkinConfig.instance:getSkinOffset(offsetStr)
 
-	recthelper.setAnchor(self._gobigspine.transform, tonumber(offsets[1]), tonumber(offsets[2]))
+	if self._uiSpine then
+		CharacterVoiceEnum.setSpineOffset(self._uiSpine, tonumber(offsets[1]), tonumber(offsets[2]))
+	end
 
 	local scale = tonumber(offsets[3]) * 1
 
@@ -182,9 +185,11 @@ function ClothesStorePreviewSkinComp:_tryPlayVoice()
 	local randomKey = keys[math.random(1, #keys)]
 	local voiceConfig = voiceConfigs[randomKey]
 
-	self._uiSpine:playVoice(voiceConfig, function()
-		self:stopVoice()
-	end)
+	if self._uiSpine then
+		self._uiSpine:playVoice(voiceConfig, function()
+			self:stopVoice()
+		end)
+	end
 end
 
 function ClothesStorePreviewSkinComp:stopVoice()
@@ -298,6 +303,7 @@ function ClothesStorePreviewSkinComp:clearSkin()
 
 	if self._goSpine then
 		self._goSpine:stopVoice()
+		self._goSpine:doClear()
 
 		self._goSpine = nil
 	end

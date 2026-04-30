@@ -132,6 +132,7 @@ function FightEntityMO:init(info, side)
 	self.toughnessValue = info.toughnessValue
 	self.toughnessPoint = info.toughnessPoint
 	self.isBroken = info.isBroken
+	self.exPointMax = info.exPointMax
 end
 
 function FightEntityMO:_buildAttr(attr)
@@ -670,7 +671,7 @@ function FightEntityMO:hasBuffActId(buffActId)
 		if featuresSplit then
 			for _, oneFeature in ipairs(featuresSplit) do
 				if oneFeature[1] == buffActId then
-					return true
+					return true, buffMO
 				end
 			end
 		end
@@ -964,6 +965,10 @@ function FightEntityMO:getASFDCareer()
 end
 
 function FightEntityMO:getConfigMaxExPoint()
+	if self.exPointMax and self.exPointMax > 0 then
+		return self.exPointMax
+	end
+
 	if self.configMaxExPoint then
 		return self.configMaxExPoint
 	end
@@ -1105,6 +1110,22 @@ function FightEntityMO:getHeroExtraMo()
 	end
 
 	return self.extraMo
+end
+
+function FightEntityMO:getDeviceMo()
+	if self.trialId and self.trialId > 0 then
+		local trialCo = lua_hero_trial.configDict[self.trialId][0]
+
+		if trialCo then
+			self.deviceMo = SkillConfig.instance:getHeroDeviceMO(self.modelId)
+		end
+	else
+		local heroMo = HeroModel.instance:getByHeroId(self.modelId)
+
+		self.deviceMo = SkillConfig.instance:getHeroDeviceMO(self.modelId, heroMo)
+	end
+
+	return self.deviceMo
 end
 
 function FightEntityMO:getEquipMo()

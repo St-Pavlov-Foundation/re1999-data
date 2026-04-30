@@ -744,6 +744,12 @@ function StoryModel:isMagicType(stepCo)
 		return false
 	end
 
+	local isSpMagicType = self:isSpMagicType(stepCo)
+
+	if isSpMagicType then
+		return true
+	end
+
 	if stepCo.conversation.effType == StoryEnum.ConversationEffectType.CommonMagic then
 		return true
 	end
@@ -756,6 +762,42 @@ function StoryModel:isMagicType(stepCo)
 		return true
 	end
 
+	if stepCo.conversation.effType == StoryEnum.ConversationEffectType.XranMagic then
+		return true
+	end
+
+	return false
+end
+
+function StoryModel:isSpMagicType(stepCo)
+	if not stepCo then
+		return false
+	end
+
+	if stepCo.conversation.effType == StoryEnum.ConversationEffectType.SandMagic then
+		return true
+	end
+
+	if stepCo.conversation.effType == StoryEnum.ConversationEffectType.GoldlineMagic then
+		return true
+	end
+
+	return false
+end
+
+function StoryModel:isSpOptionType(optionType)
+	if optionType == StoryEnum.OptionType.SpClick then
+		return true
+	end
+
+	if optionType == StoryEnum.OptionType.SpSlide then
+		return true
+	end
+
+	if optionType == StoryEnum.OptionType.SpLongClick then
+		return true
+	end
+
 	return false
 end
 
@@ -765,6 +807,30 @@ end
 
 function StoryModel:isInScreenSplitMode()
 	return self._inScreenSplit
+end
+
+function StoryModel:hasBranchPlayed(stepCo)
+	if not stepCo then
+		return false
+	end
+
+	if #stepCo.optList <= 0 then
+		return false
+	end
+
+	for _, v in ipairs(stepCo.optList) do
+		if v.type == StoryEnum.OptionType.EndAsk then
+			local logs = StoryModel.instance:getLog()
+
+			for _, option in pairs(stepCo.optList) do
+				if LuaUtil.tableContains(logs, option.followId) then
+					return true
+				end
+			end
+		end
+	end
+
+	return false
 end
 
 StoryModel.instance = StoryModel.New()

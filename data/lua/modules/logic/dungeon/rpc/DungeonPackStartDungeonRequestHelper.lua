@@ -13,7 +13,8 @@ function DungeonPackStartDungeonRequestHelper.initHandle()
 		[DungeonEnum.EpisodeType.Rouge] = DungeonPackStartDungeonRequestHelper.packRougeCustomParam,
 		[DungeonEnum.EpisodeType.WeekWalk_2] = DungeonPackStartDungeonRequestHelper.packWeekWalkCustomParam,
 		[DungeonEnum.EpisodeType.Act183] = DungeonPackStartDungeonRequestHelper.packAct183CustomParam,
-		[DungeonEnum.EpisodeType.TowerCompose] = DungeonPackStartDungeonRequestHelper.packTowerComposeCustomParam
+		[DungeonEnum.EpisodeType.TowerCompose] = DungeonPackStartDungeonRequestHelper.packTowerComposeCustomParam,
+		[DungeonEnum.EpisodeType.Rouge2] = DungeonPackStartDungeonRequestHelper.packRouge2CustomParam
 	}
 end
 
@@ -59,6 +60,18 @@ function DungeonPackStartDungeonRequestHelper.packTowerComposeCustomParam(reques
 	extraParams.supportAssistUid = tonumber(assistData.heroUid or 0)
 	extraParams.supportAssistType = assistData.assistType or 0
 	request.params = cjson.encode(extraParams)
+end
+
+function DungeonPackStartDungeonRequestHelper.packRouge2CustomParam(request, episodeConfig)
+	if request.fightGroup.trialHeroList then
+		for _, hero in pairs(request.fightGroup.trialHeroList) do
+			if hero.pos and hero.pos ~= 0 then
+				local pos = tonumber(hero.pos)
+
+				table.insert(request.fightGroup.heroList, pos, "0")
+			end
+		end
+	end
 end
 
 return DungeonPackStartDungeonRequestHelper

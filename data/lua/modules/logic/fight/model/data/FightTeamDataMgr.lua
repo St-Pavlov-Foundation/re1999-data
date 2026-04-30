@@ -45,6 +45,7 @@ function FightTeamDataMgr:refreshTeamDataByProto(teamData, sideData)
 	end
 
 	sideData.itemSkillInfos = FightDataUtil.coverData(teamData.itemSkillInfos, sideData.itemSkillInfos)
+	sideData.deviceArea = FightDataUtil.coverData(teamData.deviceArea, sideData.deviceArea)
 end
 
 function FightTeamDataMgr:checkBloodPoolExist(side)
@@ -79,6 +80,20 @@ end
 
 function FightTeamDataMgr:getAssistBossInfo()
 	return
+end
+
+function FightTeamDataMgr:setDeviceArea(deviceArea, side)
+	side = side or FightEnum.TeamType.MySide
+
+	local sideData = self[side]
+
+	if not sideData then
+		return
+	end
+
+	sideData.deviceArea = FightDataUtil.coverData(deviceArea, sideData.deviceArea)
+
+	FightController.instance:dispatchEvent(FightEvent.RefreshDeviceArea)
 end
 
 return FightTeamDataMgr

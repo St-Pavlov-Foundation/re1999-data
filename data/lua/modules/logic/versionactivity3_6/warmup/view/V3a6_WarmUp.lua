@@ -76,6 +76,7 @@ function V3a6_WarmUp:_btnClickBigDay1OnClick()
 end
 
 function V3a6_WarmUp:_onDay1Pass()
+	gohelper.setActive(self._imghandGo, false)
 	self:_setActive_vxGetGo(true)
 	gohelper.setActive(self._btnClickBigDay1Go, false)
 	self:_playAnim(UIAnimationName.Switch, self._onDay1SwitchAnimDone, self)
@@ -198,7 +199,6 @@ end
 function V3a6_WarmUp:onClose()
 	TaskController.instance:unregisterCallback(TaskEvent.SetTaskList, self._refreshTaskInfo, self)
 	TaskController.instance:unregisterCallback(TaskEvent.UpdateTaskList, self._refreshTaskInfo, self)
-	GameUtil.onDestroyViewMember(self, "_flow")
 	TaskDispatcher.cancelTask(self._refreshTaskGoto, self)
 	TaskDispatcher.cancelTask(self._showLeftTime, self)
 end

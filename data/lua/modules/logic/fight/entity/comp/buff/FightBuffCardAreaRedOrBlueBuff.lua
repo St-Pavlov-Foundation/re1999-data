@@ -51,7 +51,7 @@ function FightBuffCardAreaRedOrBlueBuff:startLoadRes()
 
 	self.resLoader:addPath(self.spine1Res)
 
-	if not string.nilorempty(self.spine1Res) then
+	if not string.nilorempty(self.spine2Res) then
 		self.resLoader:addPath(self.spine2Res)
 	end
 

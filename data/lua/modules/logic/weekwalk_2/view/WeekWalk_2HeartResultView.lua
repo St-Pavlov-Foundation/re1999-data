@@ -101,6 +101,7 @@ function WeekWalk_2HeartResultView:_initSpineNodes()
 	self._uiSpine = GuiModelAgent.Create(self._gospine, true)
 
 	self._uiSpine:useRT()
+	self._uiSpine:setShareRT(CharacterVoiceEnum.RTShareType.Normal, self.viewName)
 
 	self._txtSayCn = gohelper.findChildText(self._goleft, "txtSayCn")
 	self._txtSayEn = gohelper.findChildText(self._goleft, "SayEn/txtSayEn")
@@ -149,7 +150,7 @@ function WeekWalk_2HeartResultView:_showSpine(heroId)
 	local offsetX = tonumber(offsets[1])
 	local offsetY = tonumber(offsets[2])
 
-	recthelper.setAnchor(self._gospine.transform, offsetX, offsetY)
+	CharacterVoiceEnum.setSpineOffset(self._uiSpine, tonumber(offsets[1]), tonumber(offsets[2]))
 	transformhelper.setLocalScale(self._gospine.transform, scale, scale, scale)
 end
 

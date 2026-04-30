@@ -31,7 +31,8 @@ function NecologistStoryViewDefine.init(module_views)
 			NecrologistStorySystemItem.getResPath(),
 			NecrologistStoryClickPictureItem.getResPath(),
 			NecrologistStorySliderPictureItem.getResPath(),
-			V3A5NecrologistStoryLongPressItem.getResPath()
+			V3A5NecrologistStoryLongPressItem.getResPath(),
+			V3A7NecrologistStoryEmailItem.getResPath()
 		}
 	}
 	module_views.NecrologistStoryReviewView = {
@@ -213,6 +214,28 @@ function NecologistStoryViewDefine.init(module_views)
 		container = "V3A5_RoleStoryBulletViewContainer",
 		bgBlur = 1,
 		mainRes = "ui/viewres/dungeon/rolestory/v3a5/v3a5_rolestorybulletview.prefab",
+		layer = "POPUP_TOP",
+		viewType = ViewType.Normal
+	}
+	module_views.V3A7_RoleStoryGameView = {
+		destroy = 0,
+		container = "V3A7_RoleStoryGameViewContainer",
+		mainRes = "ui/viewres/dungeon/rolestory/v3a7/v3a7_rolestorygameview.prefab",
+		layer = "POPUP_TOP",
+		viewType = ViewType.Full,
+		tabRes = {
+			{
+				{
+					NavigateButtonsView.prefabPath
+				}
+			}
+		}
+	}
+	module_views.V3A7_RoleStoryEmailView = {
+		destroy = 0,
+		container = "V3A7_RoleStoryEmailViewContainer",
+		bgBlur = 1,
+		mainRes = "ui/viewres/dungeon/rolestory/v3a7/v3a7_rolestoryletterview.prefab",
 		layer = "POPUP_TOP",
 		viewType = ViewType.Normal
 	}

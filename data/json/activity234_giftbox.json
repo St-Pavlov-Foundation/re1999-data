@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "type": 0,
+    "name": "全优玻璃笔",
+    "icon": "v3a7_activity3nd_game_cardback_3_1",
+    "iconsmall": "v3a7_activity3nd_game_cardback_3_2"
+  },
+  {
+    "id": 2,
+    "type": 0,
+    "name": "幸运水晶球",
+    "icon": "v3a7_activity3nd_game_cardback_2_1",
+    "iconsmall": "v3a7_activity3nd_game_cardback_2_2"
+  },
+  {
+    "id": 3,
+    "type": 0,
+    "name": "贴心EM仪",
+    "icon": "v3a7_activity3nd_game_cardback_4_1",
+    "iconsmall": "v3a7_activity3nd_game_cardback_4_2"
+  }
+]

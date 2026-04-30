@@ -254,7 +254,7 @@ function CommandStationMapVersionView:onOpen()
 	local targetVersionId = CommandStationMapModel.instance:getVersionId()
 
 	if targetVersionId ~= versionId then
-		local targetIndex = CommandStationConfig.instance:getVersionIndex(targetVersionId) - 1
+		local targetIndex = CommandStationConfig.instance:getVersionIndex(targetVersionId, self._versionConfigList) - 1
 
 		self._focusVersionPosY = (targetIndex - dataIndex) * self._itemHeightWithSpace
 

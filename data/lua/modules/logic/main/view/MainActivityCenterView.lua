@@ -219,7 +219,9 @@ function MainActivityCenterView:_freshBtns()
 	self:_checkActivityCruiseBtn()
 	self:_checkActivityLaplaceBtn()
 	self:_checkActivity2ndCollectionPageViewBtn()
+	self:_checkAnniversary3Btn()
 	self:_checkActivityImgVisible()
+	self:_checkAct236Btn()
 	self:_sortBtns()
 end
 
@@ -664,6 +666,48 @@ function MainActivityCenterView:_checkActivityLaplaceBtn()
 	self._actLaplaceItem:refresh()
 end
 
+function MainActivityCenterView:_checkAnniversary3Btn()
+	local actId = VersionActivity3_7Enum.ActivityId.Anniversary3Main
+	local isOnline = ActivityHelper.isOpen(actId)
+
+	if not isOnline then
+		GameUtil.onDestroyViewMember(self, "_actAnniversary3Item")
+
+		return
+	end
+
+	if not self._actAnniversary3Item then
+		local go = gohelper.cloneInPlace(self._itemGo)
+
+		self._actAnniversary3Item = MonoHelper.addNoUpdateLuaComOnceToGo(go, Anniversary3BtnItem)
+
+		self:_addSortBtn(VersionActivity3_7Enum.ActivityId.Anniversary3Main, self._actAnniversary3Item)
+	end
+
+	self._actAnniversary3Item:refresh()
+end
+
+function MainActivityCenterView:_checkAct236Btn()
+	local actId = ActivityEnum.Activity.V3a7_Act236
+	local isOnline = ActivityHelper.isOpen(actId)
+
+	if not isOnline then
+		GameUtil.onDestroyViewMember(self, "_act236Item")
+
+		return
+	end
+
+	if not self._act236Item then
+		local go = gohelper.cloneInPlace(self._itemGo)
+
+		self._act236Item = MonoHelper.addNoUpdateLuaComOnceToGo(go, Act236BtnItem)
+
+		self:_addSortBtn(actId, self._act236Item)
+	end
+
+	self._act236Item:refresh()
+end
+
 function MainActivityCenterView:_createActCenterItem(class)
 	local go = gohelper.cloneInPlace(self._itemGo)
 
@@ -691,6 +735,8 @@ function MainActivityCenterView:onDestroyView()
 	GameUtil.onDestroyViewMember(self, "_springSignViewBtn")
 	GameUtil.onDestroyViewMember(self, "_2ndItem")
 	GameUtil.onDestroyViewMember(self, "_actLaplaceItem")
+	GameUtil.onDestroyViewMember(self, "_actAnniversary3Item")
+	GameUtil.onDestroyViewMember(self, "_act236Item")
 	self:removeEventCb(MainController.instance, MainEvent.OnFuncUnlockRefresh, self._freshBtns, self)
 	self:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseFullView, self._onCloseFullView, self)
 	self:removeEventCb(ActivityController.instance, ActivityEvent.RefreshActivityState, self._freshBtns, self)

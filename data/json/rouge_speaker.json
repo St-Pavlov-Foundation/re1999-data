@@ -160,5 +160,47 @@
     "name": "石头狮子",
     "icon": "",
     "nameIcon": ""
+  },
+  {
+    "id": 30,
+    "name": "大帽子",
+    "icon": "",
+    "nameIcon": ""
+  },
+  {
+    "id": 31,
+    "name": "沉思的人",
+    "icon": "",
+    "nameIcon": ""
+  },
+  {
+    "id": 32,
+    "name": "戴面具的人",
+    "icon": "",
+    "nameIcon": ""
+  },
+  {
+    "id": 33,
+    "name": "牵铁链的人",
+    "icon": "",
+    "nameIcon": ""
+  },
+  {
+    "id": 34,
+    "name": "罢工工人",
+    "icon": "",
+    "nameIcon": ""
+  },
+  {
+    "id": 35,
+    "name": "罢工工人",
+    "icon": "",
+    "nameIcon": ""
+  },
+  {
+    "id": 36,
+    "name": "“热沃当的野兽”",
+    "icon": "",
+    "nameIcon": ""
   }
 ]

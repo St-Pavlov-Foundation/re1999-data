@@ -1918,5 +1918,41 @@
     "recommendLevelDesc": "",
     "openDay": 15,
     "evaluate": "10102#10201#10301#10401"
+  },
+  {
+    "activityId": 13742,
+    "stage": 1,
+    "layer": 1,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500413,
+    "desc": "非现实属类，形如战士，蝶翼鸟爪，永远执着于逝去的荣耀。\n“但枯萎的龙舌兰知道，化作蝴蝶不过是烧成碎片；但血腥的蜂蜜知道，化作蜂鸟只是凯旋的谎言。”\n<i>他们说，荣耀是太阳的血，滴落在黑曜石的锋尖上。</i>",
+    "recommendLevelDesc": "",
+    "openDay": 1,
+    "evaluate": "10102#10201#10301#10401"
+  },
+  {
+    "activityId": 13742,
+    "stage": 2,
+    "layer": 1,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500414,
+    "desc": "非现实属类，它存在于文字与文字之间、墙角不起眼的裂隙中、镜子背面、一粒尘埃，以及一片枯萎的玫瑰花瓣上。\n“它并无意义，是的，我们总试图在无意义中寻求意义，借以填满长到可以被称为无限，又短到转瞬即逝的生命。”\n<i>不知为何，与它接触的人，总会陷入谵妄状态。</i>",
+    "recommendLevelDesc": "",
+    "openDay": 8,
+    "evaluate": "10102#10201#10301#10401"
+  },
+  {
+    "activityId": 13742,
+    "stage": 3,
+    "layer": 1,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500415,
+    "desc": "“无数的蛾，无名的蛾，它们让黑暗遮挡了日月，它们让黑暗吞没了自身。”\n<i>在茧完全成形之前，千万不要对里头的东西抱有任何期待。</i>",
+    "recommendLevelDesc": "",
+    "openDay": 15,
+    "evaluate": "10102#10201#10301#10401"
   }
 ]

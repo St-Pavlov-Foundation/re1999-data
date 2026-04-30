@@ -616,5 +616,17 @@
     "heroId": 3143,
     "skinId": 0,
     "location": 1
+  },
+  {
+    "id": 371111,
+    "heroId": 3146,
+    "skinId": 0,
+    "location": 1
+  },
+  {
+    "id": 371211,
+    "heroId": 3147,
+    "skinId": 0,
+    "location": 1
   }
 ]

@@ -761,6 +761,26 @@ function JumpController:canJump2Abyss(jumpParam)
 	return true
 end
 
+function JumpController:canJump2Act236(jumpParam)
+	local jumpActId = ActivityEnum.Activity.V3a7_Act236
+	local activityConfig = ActivityConfig.instance:getActivityCo(jumpActId)
+
+	if activityConfig.openId ~= 0 and not OpenModel.instance:isFunctionUnlock(activityConfig.openId) then
+		local toastId, toastParamList = OpenHelper.getToastIdAndParam(activityConfig.openId)
+
+		return false, toastId, toastParamList
+	end
+
+	local status, toastId, toastParam = ActivityHelper.getActivityStatusAndToast(jumpActId)
+	local canJump = status == ActivityEnum.ActivityStatus.Normal
+
+	if not canJump then
+		return false, toastId, toastParam
+	end
+
+	return true
+end
+
 JumpController.JumpViewToCanJumpFunc = {
 	[JumpEnum.JumpView.StoreView] = JumpController.canJumpToStoreView,
 	[JumpEnum.JumpView.SummonView] = JumpController.canJumpToSummonView,
@@ -801,7 +821,8 @@ JumpController.JumpViewToCanJumpFunc = {
 	[JumpEnum.JumpView.RougeMainView] = JumpController.canJumpToRougeMainView,
 	[JumpEnum.JumpView.StoreSupplementMonthCardUseView] = JumpController.canJumpToStoreSupplementMonthCardUseView,
 	[JumpEnum.JumpView.SurvivalView] = JumpController.canJumpToSurvivalView,
-	[JumpEnum.JumpView.Abyss] = JumpController.canJump2Abyss
+	[JumpEnum.JumpView.Abyss] = JumpController.canJump2Abyss,
+	[JumpEnum.JumpView.Act236] = JumpController.canJump2Act236
 }
 JumpController.CanJumpActFunc = {
 	[JumpEnum.ActIdEnum.Act113] = JumpController.canJump2Activity1_1Dungeon,

@@ -25,10 +25,10 @@ function FightEffectComp:onConstructor(entity)
 	self:_initSpecialEffectClass()
 end
 
-function FightEffectComp:setActive(isActive)
+function FightEffectComp:setActive(isActive, key)
 	if self._playingEffectDict then
 		for _, effectWrap in pairs(self._playingEffectDict) do
-			effectWrap:setActive(isActive)
+			effectWrap:setActive(isActive, key)
 		end
 	end
 end
@@ -430,6 +430,9 @@ function FightEffectComp:isDestroyed()
 end
 
 local skin2skin = {
+	[307305] = 307301,
+	[307304] = 307301,
+	[307306] = 307301,
 	[307303] = 307301,
 	[307302] = 307301
 }

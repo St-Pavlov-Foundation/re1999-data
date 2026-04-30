@@ -192,6 +192,11 @@ function HeroRpc:_onReceiveHeroGainPush(msg)
 
 	local hideView = CharacterModel.instance:getGainHeroViewShowState()
 	local hideNoNewView = CharacterModel.instance:getGainHeroViewShowNewState()
+	local hideToast = CharacterModel.instance:getGainHeroViewToastState()
+
+	param.hideToast = hideToast
+
+	CharacterModel.instance:setGainHeroViewToastState(false)
 
 	if not hideView then
 		if hideNoNewView and msg.duplicateCount > 0 then
@@ -222,6 +227,7 @@ function HeroRpc:onReceiveHeroUpdatePush(resultCode, msg)
 		HeroModel.instance:onSetHeroChange(msg.heroUpdates)
 		CharacterController.instance:dispatchEvent(CharacterEvent.HeroUpdatePush)
 		RedDotController.instance:dispatchEvent(RedDotEvent.RefreshClientCharacterDot)
+		CharacterController.instance:dispatchEvent(CharacterEvent.HeroUpdatePushData, msg.heroUpdates)
 	end
 end
 

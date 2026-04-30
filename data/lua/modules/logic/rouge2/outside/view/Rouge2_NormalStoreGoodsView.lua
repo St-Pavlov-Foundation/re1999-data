@@ -195,7 +195,7 @@ function Rouge2_NormalStoreGoodsView:onOpen()
 end
 
 function Rouge2_NormalStoreGoodsView:refreshUI()
-	local itemCo, itemIcon = ItemModel.instance:getItemConfigAndIcon(self.itemType, self.itemId)
+	local itemCo, itemIcon = ItemModel.instance:getItemConfigAndIcon(self.itemType, self.itemId, true)
 
 	self._txtgoodsNameCn.text = itemCo.name
 	self._txtgoodsDesc.text = itemCo.desc

@@ -1085,7 +1085,7 @@ function CharacterView:_refreshSpine()
 
 	local offsets = SkinConfig.instance:getSkinOffset(skinCo.characterViewOffset)
 
-	recthelper.setAnchor(self._gospine.transform, tonumber(offsets[1]), tonumber(offsets[2]))
+	CharacterVoiceEnum.setSpineOffset(self._uiSpine, tonumber(offsets[1]), tonumber(offsets[2]))
 	transformhelper.setLocalScale(self._gospine.transform, tonumber(offsets[3]), tonumber(offsets[3]), tonumber(offsets[3]))
 
 	local haloOffset = SkinConfig.instance:getSkinOffset(skinCo.haloOffset)
@@ -1552,7 +1552,7 @@ function CharacterView:_refreshRank()
 end
 
 function CharacterView:_refreshSkill()
-	self._skillContainer:onUpdateMO(self._heroMO.heroId, nil, self._heroMO)
+	self._skillContainer:onUpdateMO(self._heroMO.heroId, nil, self._heroMO, nil, CharacterEnum.DeviceViewType.CharacterView)
 end
 
 function CharacterView:_onRefreshDestiny(heroId, stoneId)
@@ -1722,6 +1722,7 @@ function CharacterView:onClose()
 	if self._skillContainer then
 		self._skillContainer:onFinishreplaceSkillAnim()
 		self._skillContainer:clearDelay()
+		self._skillContainer:onClose()
 	end
 end
 

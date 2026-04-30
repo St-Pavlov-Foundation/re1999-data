@@ -525,9 +525,17 @@ function ArcadeHallView:onOpen()
 end
 
 function ArcadeHallView:_onLoadFinishHallScene()
-	self._anim.enabled = true
+	self._animPlayer:Play(UIAnimationName.Open, self._onPlayOpenAnimFinish, self)
+end
 
-	self._anim:Play(UIAnimationName.Open, 0, 0)
+function ArcadeHallView:_onPlayOpenAnimFinish()
+	local strReturnReward = ArcadeOutSizeModel.instance:getStrReturnRewardData()
+
+	if string.nilorempty(strReturnReward) then
+		return
+	end
+
+	ViewMgr.instance:openView(ViewName.ArcadeRefundTipView)
 end
 
 function ArcadeHallView:initCamera()

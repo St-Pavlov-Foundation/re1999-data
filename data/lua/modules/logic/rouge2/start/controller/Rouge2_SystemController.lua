@@ -5,6 +5,12 @@ module("modules.logic.rouge2.start.controller.Rouge2_SystemController", package.
 local Rouge2_SystemController = class("Rouge2_SystemController", BaseController)
 
 function Rouge2_SystemController:isRecommendHero(heroId)
+	local isGetFromSkill = Rouge2_BackpackController.instance:isHeroGetFromActiveSkill(heroId)
+
+	if isGetFromSkill then
+		return true
+	end
+
 	local curSystemId = Rouge2_Model.instance:getCurTeamSystemId()
 
 	if not heroId or not curSystemId or curSystemId == Rouge2_Enum.UnselectTeamSystemId then
@@ -14,25 +20,33 @@ function Rouge2_SystemController:isRecommendHero(heroId)
 	return self:checkHeroContainBattleTag(heroId, tostring(curSystemId))
 end
 
-function Rouge2_SystemController:getHeroListByBattleTag(tagId)
-	local resultList = {}
-	local checkHeroIdMap = {}
-	local heroList = HeroConfig.instance:getHeroListByBattleTag(tagId)
+function Rouge2_SystemController:getHeroMo(heroId)
+	local heroMo = HeroModel.instance:getByHeroId(heroId)
 
-	if heroList then
-		for _, heroCo in ipairs(heroList) do
-			if self:checkHeroContainBattleTag(heroCo.id, tagId) then
-				table.insert(resultList, heroCo)
-			end
+	if not heroMo then
+		local trialCo = Rouge2_BackpackController.instance:getTrialConfigByHeroId(heroId)
 
-			checkHeroIdMap[heroCo.id] = true
+		if trialCo then
+			heroMo = HeroMo.New()
+
+			heroMo:initFromTrial(trialCo.id, trialCo.trialTemplate)
 		end
 	end
 
-	local allHeroList = HeroModel.instance:getAllHero()
+	return heroMo
+end
+
+function Rouge2_SystemController:getHeroListByBattleTag(tagId)
+	local resultList = {}
+	local checkHeroIdMap = {}
+
+	self:_checkHeroBattleTag(tagId, resultList, checkHeroIdMap)
+	self:_checkHeroBattleTag("10000", resultList, checkHeroIdMap)
+
+	local allHeroList = Rouge2_BackpackController.instance:getAllHeroIdList()
 
 	if allHeroList then
-		for heroId in pairs(allHeroList) do
+		for _, heroId in ipairs(allHeroList) do
 			if not checkHeroIdMap[heroId] then
 				if self:checkHeroContainBattleTag(heroId, tagId) then
 					local heroCo = HeroConfig.instance:getHeroCO(heroId)
@@ -46,6 +60,29 @@ function Rouge2_SystemController:getHeroListByBattleTag(tagId)
 	end
 
 	return resultList
+end
+
+function Rouge2_SystemController:_checkHeroBattleTag(tagId, resultList, checkHeroIdMap)
+	resultList = resultList or {}
+	checkHeroIdMap = checkHeroIdMap or {}
+
+	local heroList = HeroConfig.instance:getHeroListByBattleTag(tagId)
+
+	if heroList then
+		for _, heroCo in ipairs(heroList) do
+			local heroId = heroCo.id
+
+			if not checkHeroIdMap[heroId] then
+				if self:checkHeroContainBattleTag(heroId, tagId) then
+					table.insert(resultList, heroCo)
+				end
+
+				checkHeroIdMap[heroId] = true
+			end
+		end
+	end
+
+	return resultList, checkHeroIdMap
 end
 
 function Rouge2_SystemController:checkHeroContainBattleTag(heroId, tagId)
@@ -68,9 +105,7 @@ function Rouge2_SystemController:getHeroBattleTagList(heroId)
 end
 
 function Rouge2_SystemController:isContainBattleTag(battleTagList, targetTag)
-	if battleTagList and targetTag then
-		return tabletool.indexOf(battleTagList, targetTag) ~= nil
-	end
+	return Rouge2_SystemCheckHelper.isContainBattleTag(battleTagList, targetTag)
 end
 
 function Rouge2_SystemController:hasAnyRecommendHero(battleTag)
@@ -78,15 +113,31 @@ function Rouge2_SystemController:hasAnyRecommendHero(battleTag)
 		return
 	end
 
-	local allHeroList = HeroModel.instance:getAllHero()
+	local allHeroList = Rouge2_BackpackController.instance:getAllHeroIdList()
 
 	if allHeroList then
-		for heroId in pairs(allHeroList) do
+		for _, heroId in ipairs(allHeroList) do
 			if self:checkHeroContainBattleTag(heroId, battleTag) then
 				return true
 			end
 		end
 	end
+end
+
+function Rouge2_SystemController:checkCurTeamSystemId()
+	local curTeamSystemId = Rouge2_Model.instance:getCurTeamSystemId()
+
+	if not curTeamSystemId or curTeamSystemId == Rouge2_Enum.UnselectTeamSystemId then
+		return
+	end
+
+	local careerId = Rouge2_Model.instance:getCareerId()
+
+	if Rouge2_CareerConfig.instance:isCareerRecommendSystem(careerId, curTeamSystemId) then
+		return
+	end
+
+	Rouge2_Rpc.instance:sendRouge2SetSystemIdRequest(Rouge2_Enum.UnselectTeamSystemId)
 end
 
 Rouge2_SystemController.instance = Rouge2_SystemController.New()

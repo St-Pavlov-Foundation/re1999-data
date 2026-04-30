@@ -128,5 +128,15 @@
     "nextSelect": "",
     "autoUse1": 10,
     "autoUse2": 10
+  },
+  {
+    "id": 3303016,
+    "title": "合体技",
+    "desc": "发动合体技击破boss结界",
+    "icon": 300101,
+    "confirm": "开始作战",
+    "nextSelect": "",
+    "autoUse1": 10,
+    "autoUse2": 10
   }
 ]

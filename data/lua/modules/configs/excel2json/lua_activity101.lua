@@ -4,8 +4,9 @@ module("modules.configs.excel2json.lua_activity101", package.seeall)
 
 local lua_activity101 = {}
 local fields = {
+	isnotPush = 4,
+	sourceid = 5,
 	id = 2,
-	sourceid = 4,
 	activityId = 1,
 	bonus = 3
 }

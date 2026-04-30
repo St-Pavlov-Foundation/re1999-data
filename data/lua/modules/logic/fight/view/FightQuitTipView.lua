@@ -31,6 +31,7 @@ function FightQuitTipView:onInitView()
 	self._btnsure = gohelper.findChildButtonWithAudio(self.viewGO, "#go_quittipview/#btn_sure")
 	self._btnno = gohelper.findChildButtonWithAudio(self.viewGO, "#go_quittipview/#btn_no")
 	self._simagenumline = gohelper.findChildSingleImage(self.viewGO, "#go_quittipview/num")
+	self._btnbackherogroup = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_backherogroup")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -40,6 +41,7 @@ end
 function FightQuitTipView:addEvents()
 	self._btnquitgame:AddClickListener(self._btnyesOnClick, self)
 	self._btnrestart:AddClickListener(self._btnRestart, self)
+	self._btnbackherogroup:AddClickListener(self._btnBackHeroGroup, self)
 	self._btnfighttechnical:AddClickListener(self._btnfighttechnicalOnClick, self)
 	self._btnrouge:AddClickListener(self._btnrougeOnClick, self)
 	self._btnrouge2:AddClickListener(self._btnrouge2OnClick, self)
@@ -56,6 +58,7 @@ end
 function FightQuitTipView:removeEvents()
 	self._btnquitgame:RemoveClickListener()
 	self._btnrestart:RemoveClickListener()
+	self._btnbackherogroup:RemoveClickListener()
 	self._btnfighttechnical:RemoveClickListener()
 	self._btnrouge:RemoveClickListener()
 	self._btnrouge2:RemoveClickListener()
@@ -66,6 +69,21 @@ function FightQuitTipView:removeEvents()
 	ViewMgr.instance:unregisterCallback(ViewEvent.OnOpenView, self._onOpenView, self)
 	self:removeEventCb(PCInputController.instance, PCInputEvent.NotifyCommonCancel, self._btnnoOnClick, self)
 	self:removeEventCb(PCInputController.instance, PCInputEvent.NotifyCommonConfirm, self._onKeyExit, self)
+end
+
+function FightQuitTipView:_btnBackHeroGroup()
+	if not isDebugBuild then
+		return
+	end
+
+	FightController.instance:setBackToHeroGroup(true)
+	self:closeThis()
+
+	if not FightModel.instance:getFightParam().isTestFight then
+		DungeonFightController.instance:sendEndFightRequest(true, DungeonEnum.EndType.Exit)
+	else
+		FightRpc.instance:sendEndFightRequest(true)
+	end
 end
 
 function FightQuitTipView:_onOpenView(viewName)
@@ -245,6 +263,8 @@ function FightQuitTipView:onUpdateParam()
 end
 
 function FightQuitTipView:onOpen()
+	gohelper.setActive(self._btnbackherogroup.gameObject, isDebugBuild)
+
 	if self:episodeNeedHideRestart() then
 		gohelper.setActive(self._btnrestart.gameObject, false)
 	else

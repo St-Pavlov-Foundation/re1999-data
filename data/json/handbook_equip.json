@@ -802,5 +802,23 @@
     "order": 0,
     "equipId": 1567,
     "desc": "哑谜"
+  },
+  {
+    "id": 5070,
+    "order": 0,
+    "equipId": 1568,
+    "desc": "小瑞安侬"
+  },
+  {
+    "id": 5072,
+    "order": 0,
+    "equipId": 1570,
+    "desc": "珐琅眼"
+  },
+  {
+    "id": 4048,
+    "order": 0,
+    "equipId": 1448,
+    "desc": "银装小春雀儿"
   }
 ]

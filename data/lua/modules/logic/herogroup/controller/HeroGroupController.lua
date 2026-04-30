@@ -174,8 +174,10 @@ function HeroGroupController:_getGroupFightViewName(episodeId)
 			[DungeonEnum.ChapterType.Shelter] = ViewName.ShelterHeroGroupFightView,
 			[DungeonEnum.ChapterType.Act191] = ViewName.Act191HeroGroupView,
 			[DungeonEnum.ChapterType.Rouge2] = ViewName.Rouge2_HeroGroupFightView,
+			[DungeonEnum.ChapterType.Rouge2Boss] = ViewName.Rouge2_BossHeroGroupFightView,
 			[DungeonEnum.ChapterType.TowerCompose] = ViewName.TowerComposeHeroGroupView,
-			[DungeonEnum.ChapterType.Abyss] = ViewName.AbyssHeroGroupFightView
+			[DungeonEnum.ChapterType.Abyss] = ViewName.AbyssHeroGroupFightView,
+			[DungeonEnum.ChapterType.Sodache] = ViewName.SodacheHeroGroupFightView
 		}
 		self.ChapterIdToHeroGroupView = {
 			[DungeonEnum.ChapterId.BossStory] = ViewName.VersionActivity2_8HeroGroupBossView

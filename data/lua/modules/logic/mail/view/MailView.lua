@@ -117,11 +117,55 @@ function MailView:_btnjumpOnClick()
 
 			SDKMgr.instance:openSoJump(resultJson)
 		else
-			GameUtil.openURL(jump)
+			GameUtil.openURL(self:_analysisJumpUrl(jump))
 		end
 
 		MailRpc.instance:sendMarkMailJumpRequest(self._selectMO.id)
 	end
+end
+
+function MailView:_analysisJumpUrl(url)
+	local arr = string.split(url, "|")
+
+	if #arr > 1 then
+		local urlType = arr[1]
+
+		if urlType == "TrafficJump" then
+			local WXURL = arr[2]
+			local noWXURL = arr[3]
+			local biz_name = arr[4] or ""
+
+			if string.len(biz_name) > 0 then
+				biz_name = string.urlencode(string.urlencode(biz_name))
+			end
+
+			local hasWX = SLFramework.NativeUtil.BoolCallNative(SDKNativeUtil.nativeClsName, "isPlatformClientValid", "2")
+			local finalUrl = hasWX and WXURL or noWXURL
+
+			if not string.find(finalUrl, "?") then
+				finalUrl = finalUrl .. "?"
+			else
+				finalUrl = finalUrl .. "&"
+			end
+
+			local timestamp = ServerTime.now()
+			local salt = "881957120b6dc0ce40470e55cd433cd3"
+			local userId = SDKMgr.instance:getGameId() .. "|" .. LoginModel.instance.channelUserId .. "|" .. PlayerModel.instance:getMyUserId()
+
+			userId = Base64Util.encode(userId)
+
+			local signStr = userId .. "|" .. biz_name .. "|" .. LoginModel.instance.channelId .. "|" .. timestamp .. "|" .. salt
+			local sign = GameLuaMD5.sumhexa(signStr)
+			local extend = sign .. "|" .. timestamp .. "|" .. SDKMgr.instance:getChannelId()
+			local extendBase64 = Base64Util.encode(extend)
+
+			finalUrl = finalUrl .. "userid=" .. userId .. "&biz_name=" .. biz_name .. "&extend=" .. extendBase64
+
+			return finalUrl
+		end
+	end
+
+	return url
 end
 
 function MailView:_btnLockOnClick()

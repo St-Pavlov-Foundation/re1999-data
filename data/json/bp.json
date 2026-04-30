@@ -648,5 +648,30 @@
     "activityId": 13607,
     "specialBonus": 375,
     "specialPropDesc": "解锁即赠十连/电池2选1"
+  },
+  {
+    "bpId": 26,
+    "chargeId1": 710001,
+    "chargeId2": 710002,
+    "chargeId1to2": 710003,
+    "payStatus1Bonus": "1#823701#1|1#481010#1",
+    "payStatus2Bonus": "2#2#400|1#173803#1|1#770001#1|10#21#3|1#120013#5",
+    "name": "",
+    "payStatus2AddLevel": 10,
+    "expLevelUp": 1000,
+    "bpSkinDesc": "完美的流体",
+    "bpSkinNametxt": "——37",
+    "bpSkinEnNametxt": "A Gift of Nourishment",
+    "bpviewicon": "",
+    "bpviewpos": "",
+    "showBonus": "",
+    "showBonusDate": "2026-05-21 05:00:00",
+    "isSp": false,
+    "weekLimitTimes": 0,
+    "expUpShow": false,
+    "promptDays": 7,
+    "activityId": 13736,
+    "specialBonus": 395,
+    "specialPropDesc": "解锁即赠十连/电池2选1"
   }
 ]

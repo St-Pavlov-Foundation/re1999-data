@@ -817,6 +817,32 @@ function GameUtil.randomTable(t)
 	return t
 end
 
+function GameUtil.getUniqueRandomNumbers(min, max, count)
+	local range = max - min + 1
+
+	count = math.min(count, range)
+
+	local numbers = {}
+
+	for i = min, max do
+		table.insert(numbers, i)
+	end
+
+	for i = range, 2, -1 do
+		local j = math.random(1, i)
+
+		numbers[i], numbers[j] = numbers[j], numbers[i]
+	end
+
+	local result = {}
+
+	for i = 1, count do
+		result[i] = numbers[i]
+	end
+
+	return result
+end
+
 function GameUtil.artTextNumReplace(text)
 	if string.nilorempty(text) then
 		return text
@@ -1228,11 +1254,17 @@ function GameUtil.rpcInfoToMo(info, cls, oldMo)
 	return mo
 end
 
-function GameUtil.rpcInfosToList(infos, cls)
+function GameUtil.rpcInfosToList(infos, cls, key, oldMap)
 	local list = {}
 
 	for i, v in ipairs(infos) do
-		local mo = GameUtil.rpcInfoToMo(v, cls)
+		local oldMo
+
+		if key and oldMap then
+			oldMo = oldMap[key]
+		end
+
+		local mo = GameUtil.rpcInfoToMo(v, cls, oldMo)
 
 		table.insert(list, mo)
 	end
@@ -1240,13 +1272,14 @@ function GameUtil.rpcInfosToList(infos, cls)
 	return list
 end
 
-function GameUtil.rpcInfosToMap(infos, cls, key)
+function GameUtil.rpcInfosToMap(infos, cls, key, oldMap)
 	local map = {}
 
 	key = key or "id"
 
 	for i, v in ipairs(infos) do
-		local mo = GameUtil.rpcInfoToMo(v, cls)
+		local oldMo = oldMap and oldMap[v[key]]
+		local mo = GameUtil.rpcInfoToMo(v, cls, oldMo)
 
 		map[mo[key]] = mo
 	end
@@ -1254,7 +1287,7 @@ function GameUtil.rpcInfosToMap(infos, cls, key)
 	return map
 end
 
-function GameUtil.rpcInfosToListAndMap(infos, cls, key)
+function GameUtil.rpcInfosToListAndMap(infos, cls, key, oldMap)
 	local map = {}
 
 	key = key or "id"
@@ -1262,7 +1295,8 @@ function GameUtil.rpcInfosToListAndMap(infos, cls, key)
 	local list = {}
 
 	for i, v in ipairs(infos) do
-		local mo = GameUtil.rpcInfoToMo(v, cls)
+		local oldMo = oldMap and oldMap[v[key]]
+		local mo = GameUtil.rpcInfoToMo(v, cls, oldMo)
 
 		table.insert(list, mo)
 

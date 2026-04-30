@@ -9,6 +9,7 @@ function FightSceneViewComp:onScenePrepared(sceneId, levelId)
 end
 
 function FightSceneViewComp:onSceneClose(sceneId, levelId)
+	FightTLDeviceCardTriggerPowerEffect.clearFlyNode()
 	ViewMgr.instance:closeView(ViewName.FightView)
 	ViewMgr.instance:closeView(ViewName.FightSkillSelectView, true)
 	ViewMgr.instance:closeView(ViewName.FightTechniqueView, true)

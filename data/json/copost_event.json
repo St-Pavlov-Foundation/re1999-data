@@ -2743,5 +2743,928 @@
     ],
     "reduceTime": 5,
     "bonus": "1#110302#2"
+  },
+  {
+    "id": 12000,
+    "frontEventId": [],
+    "eventType": 1,
+    "eventCoordinate": [],
+    "eventTitleId": "节点",
+    "eventTextId": "62000",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 12001,
+    "frontEventId": [],
+    "eventType": 1,
+    "eventCoordinate": [
+      9,
+      -6.6
+    ],
+    "eventTitleId": "审判现场",
+    "eventTextId": "62001",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 12002,
+    "frontEventId": [],
+    "eventType": 1,
+    "eventCoordinate": [
+      14.03,
+      -4.86
+    ],
+    "eventTitleId": "开学典礼",
+    "eventTextId": "62002",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 12003,
+    "frontEventId": [],
+    "eventType": 1,
+    "eventCoordinate": [
+      13.26,
+      -4.7
+    ],
+    "eventTitleId": "制止出逃行动",
+    "eventTextId": "62003",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 12004,
+    "frontEventId": [],
+    "eventType": 1,
+    "eventCoordinate": [
+      10.11,
+      -6.97
+    ],
+    "eventTitleId": "研究“奇迹”",
+    "eventTextId": "62004",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 12005,
+    "frontEventId": [],
+    "eventType": 1,
+    "eventCoordinate": [
+      10.11,
+      -6.97
+    ],
+    "eventTitleId": "学校遇袭",
+    "eventTextId": "62005",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 12006,
+    "frontEventId": [],
+    "eventType": 1,
+    "eventCoordinate": [
+      9.54,
+      -6.97
+    ],
+    "eventTitleId": "准备救援",
+    "eventTextId": "62006",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 12007,
+    "frontEventId": [],
+    "eventType": 1,
+    "eventCoordinate": [
+      13.83,
+      -5.18
+    ],
+    "eventTitleId": "幸存者会合",
+    "eventTextId": "62007",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 12008,
+    "frontEventId": [],
+    "eventType": 1,
+    "eventCoordinate": [
+      12.31,
+      -7
+    ],
+    "eventTitleId": "遭遇伏击",
+    "eventTextId": "62008",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 12009,
+    "frontEventId": [],
+    "eventType": 1,
+    "eventCoordinate": [
+      9.37,
+      -5.6
+    ],
+    "eventTitleId": "不请自来",
+    "eventTextId": "62009",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 12010,
+    "frontEventId": [],
+    "eventType": 1,
+    "eventCoordinate": [
+      9.37,
+      -5.6
+    ],
+    "eventTitleId": "仓促反击",
+    "eventTextId": "62010",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 12011,
+    "frontEventId": [],
+    "eventType": 1,
+    "eventCoordinate": [
+      12.31,
+      -7
+    ],
+    "eventTitleId": "意外的援军",
+    "eventTextId": "62011",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 12012,
+    "frontEventId": [],
+    "eventType": 1,
+    "eventCoordinate": [
+      13.98,
+      -5.05
+    ],
+    "eventTitleId": "开启“奇迹”",
+    "eventTextId": "62012",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 12013,
+    "frontEventId": [],
+    "eventType": 1,
+    "eventCoordinate": [
+      9.46,
+      -6.29
+    ],
+    "eventTitleId": "有生力量集结",
+    "eventTextId": "62013",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 12014,
+    "frontEventId": [],
+    "eventType": 1,
+    "eventCoordinate": [
+      9.44,
+      -6.5
+    ],
+    "eventTitleId": "静默",
+    "eventTextId": "62014",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 12015,
+    "frontEventId": [],
+    "eventType": 1,
+    "eventCoordinate": [
+      14.25,
+      -4.3
+    ],
+    "eventTitleId": "舍命赌注",
+    "eventTextId": "62015",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 12016,
+    "frontEventId": [],
+    "eventType": 1,
+    "eventCoordinate": [
+      13.83,
+      -5.18
+    ],
+    "eventTitleId": "紊乱中的指引",
+    "eventTextId": "62016",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 12017,
+    "frontEventId": [],
+    "eventType": 1,
+    "eventCoordinate": [
+      9.46,
+      -6.56
+    ],
+    "eventTitleId": "挣扎求存",
+    "eventTextId": "62017",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 12018,
+    "frontEventId": [],
+    "eventType": 1,
+    "eventCoordinate": [
+      8.9,
+      -6.11
+    ],
+    "eventTitleId": "形势逆转",
+    "eventTextId": "62018",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 12019,
+    "frontEventId": [],
+    "eventType": 1,
+    "eventCoordinate": [
+      14.24,
+      -4.25
+    ],
+    "eventTitleId": "突破口",
+    "eventTextId": "62019",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 12020,
+    "frontEventId": [],
+    "eventType": 1,
+    "eventCoordinate": [
+      14.25,
+      -4.15
+    ],
+    "eventTitleId": "“暴雨”将至",
+    "eventTextId": "62020",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 12021,
+    "frontEventId": [],
+    "eventType": 1,
+    "eventCoordinate": [
+      9.54,
+      -5.82
+    ],
+    "eventTitleId": "高层会谈",
+    "eventTextId": "62021",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 12022,
+    "frontEventId": [],
+    "eventType": 1,
+    "eventCoordinate": [
+      13.64,
+      -5.3
+    ],
+    "eventTitleId": "再一次回溯",
+    "eventTextId": "62022",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 12023,
+    "frontEventId": [],
+    "eventType": 1,
+    "eventCoordinate": [
+      9.12,
+      -6.42
+    ],
+    "eventTitleId": "尘埃落定",
+    "eventTextId": "62023",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 12024,
+    "frontEventId": [],
+    "eventType": 1,
+    "eventCoordinate": [
+      8.89,
+      -6.12
+    ],
+    "eventTitleId": "向新时代",
+    "eventTextId": "62024",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 12025,
+    "frontEventId": [],
+    "eventType": 1,
+    "eventCoordinate": [
+      13.33,
+      -6.5
+    ],
+    "eventTitleId": "新时代的“旧相识”",
+    "eventTextId": "62025",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 40053,
+    "frontEventId": [],
+    "eventType": 4,
+    "eventCoordinate": [
+      9.68,
+      -6.9
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40053#41053",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "530301",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 5,
+    "bonus": "1#111001#2"
+  },
+  {
+    "id": 40054,
+    "frontEventId": [],
+    "eventType": 4,
+    "eventCoordinate": [
+      10.5,
+      -6.1
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40054#41054",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "300901",
+    "needchaText": "苏芙比可以缩短委托完成时间",
+    "chaId": [
+      3009
+    ],
+    "reduceTime": 5,
+    "bonus": "2#3#10000"
+  },
+  {
+    "id": 40055,
+    "frontEventId": [],
+    "eventType": 4,
+    "eventCoordinate": [
+      10.7,
+      -5.86
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40055#41055",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "309403",
+    "needchaText": "J可以缩短委托完成时间",
+    "chaId": [
+      3094
+    ],
+    "reduceTime": 5,
+    "bonus": "1#110202#2"
+  },
+  {
+    "id": 40056,
+    "frontEventId": [],
+    "eventType": 4,
+    "eventCoordinate": [
+      9.08,
+      -6.7
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40056#41056",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "510401",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 5,
+    "bonus": "2#5#10000"
+  },
+  {
+    "id": 40057,
+    "frontEventId": [],
+    "eventType": 4,
+    "eventCoordinate": [
+      13.7,
+      -6.7
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40057#41057",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "312701",
+    "needchaText": "玛尔纱可以缩短委托完成时间",
+    "chaId": [
+      3127
+    ],
+    "reduceTime": 5,
+    "bonus": "1#110702#2"
+  },
+  {
+    "id": 40058,
+    "frontEventId": [],
+    "eventType": 4,
+    "eventCoordinate": [
+      12.5,
+      -7.03
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40058#41058",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "310201",
+    "needchaText": "洛佩拉可以缩短委托完成时间",
+    "chaId": [
+      3102
+    ],
+    "reduceTime": 5,
+    "bonus": "2#3#10000"
+  },
+  {
+    "id": 40059,
+    "frontEventId": [],
+    "eventType": 4,
+    "eventCoordinate": [
+      9.02,
+      -6.85
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40059#41059",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "313901",
+    "needchaText": "洛伦兹蝴蝶可以缩短委托完成时间",
+    "chaId": [
+      3139
+    ],
+    "reduceTime": 5,
+    "bonus": "1#110102#2"
+  },
+  {
+    "id": 40060,
+    "frontEventId": [],
+    "eventType": 4,
+    "eventCoordinate": [
+      10.43,
+      -6.1
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40060#41060",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "311201",
+    "needchaText": "空脑袋可以缩短委托完成时间",
+    "chaId": [
+      3112
+    ],
+    "reduceTime": 5,
+    "bonus": "2#5#10000"
+  },
+  {
+    "id": 40061,
+    "frontEventId": [],
+    "eventType": 4,
+    "eventCoordinate": [
+      13.52,
+      -6.7
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40061#41061",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "303601",
+    "needchaText": "约翰·提托可以缩短委托完成时间",
+    "chaId": [
+      3036
+    ],
+    "reduceTime": 5,
+    "bonus": "1#110902#2"
+  },
+  {
+    "id": 40062,
+    "frontEventId": [],
+    "eventType": 4,
+    "eventCoordinate": [
+      9.02,
+      -6.88
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40062#41062",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "300401",
+    "needchaText": "红弩箭可以缩短委托完成时间",
+    "chaId": [
+      3004
+    ],
+    "reduceTime": 5,
+    "bonus": "2#3#10000"
+  },
+  {
+    "id": 40063,
+    "frontEventId": [
+      40061
+    ],
+    "eventType": 4,
+    "eventCoordinate": [
+      13.52,
+      -6.7
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40063#41063",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "310701",
+    "needchaText": "乌尔里希可以缩短委托完成时间",
+    "chaId": [
+      3107
+    ],
+    "reduceTime": 5,
+    "bonus": "1#110302#2"
+  },
+  {
+    "id": 40064,
+    "frontEventId": [],
+    "eventType": 4,
+    "eventCoordinate": [
+      9.2,
+      -5.6
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40064#41064",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "300301",
+    "needchaText": "槲寄生可以缩短委托完成时间",
+    "chaId": [
+      3003
+    ],
+    "reduceTime": 5,
+    "bonus": "2#5#10000"
+  },
+  {
+    "id": 40065,
+    "frontEventId": [
+      40058
+    ],
+    "eventType": 4,
+    "eventCoordinate": [
+      11.97,
+      -7.03
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40065#41065",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "526303",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 5,
+    "bonus": "1#111102#2"
+  },
+  {
+    "id": 40066,
+    "frontEventId": [],
+    "eventType": 4,
+    "eventCoordinate": [
+      13.52,
+      -6.7
+    ],
+    "eventTitleId": "派遣",
+    "eventTextId": "40066#41066",
+    "chaNum": 4,
+    "allTime": 10,
+    "charaProfile": "312016",
+    "needchaText": "诺谛卡可以缩短委托完成时间",
+    "chaId": [
+      3120
+    ],
+    "reduceTime": 5,
+    "bonus": "2#3#10000"
+  },
+  {
+    "id": 20025,
+    "frontEventId": [],
+    "eventType": 2,
+    "eventCoordinate": [
+      13.85,
+      -4.55
+    ],
+    "eventTitleId": "乔治橡树的“传统”",
+    "eventTextId": "20025",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 20026,
+    "frontEventId": [],
+    "eventType": 2,
+    "eventCoordinate": [
+      13.7,
+      -5.2
+    ],
+    "eventTitleId": "图书馆藏书其一",
+    "eventTextId": "20026",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 20027,
+    "frontEventId": [],
+    "eventType": 2,
+    "eventCoordinate": [
+      12.14,
+      -7
+    ],
+    "eventTitleId": "狮鹫军驰骋",
+    "eventTextId": "20027",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 20028,
+    "frontEventId": [],
+    "eventType": 2,
+    "eventCoordinate": [
+      8.92,
+      -6.65
+    ],
+    "eventTitleId": "登记员手记",
+    "eventTextId": "20028",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 20029,
+    "frontEventId": [],
+    "eventType": 2,
+    "eventCoordinate": [
+      14.17,
+      -4.6
+    ],
+    "eventTitleId": "教职工笔记",
+    "eventTextId": "20029",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 20030,
+    "frontEventId": [],
+    "eventType": 2,
+    "eventCoordinate": [
+      10.39,
+      -5.9
+    ],
+    "eventTitleId": "梅蕾尔留下的笔记",
+    "eventTextId": "20030",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 20031,
+    "frontEventId": [],
+    "eventType": 2,
+    "eventCoordinate": [
+      8.86,
+      -6.65
+    ],
+    "eventTitleId": "关于某些人员",
+    "eventTextId": "20031",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 30011,
+    "frontEventId": [],
+    "eventType": 3,
+    "eventCoordinate": [
+      7.67,
+      -5.88
+    ],
+    "eventTitleId": "空战情况",
+    "eventTextId": "30064#30065#30066#30067#30068#30069#30070",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 30012,
+    "frontEventId": [],
+    "eventType": 3,
+    "eventCoordinate": [
+      9.21,
+      -6.6
+    ],
+    "eventTitleId": "应激反应",
+    "eventTextId": "30071#30072#30073#30074#30075#30076",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
+  },
+  {
+    "id": 30013,
+    "frontEventId": [],
+    "eventType": 3,
+    "eventCoordinate": [
+      12.3,
+      -7
+    ],
+    "eventTitleId": "去留抉择",
+    "eventTextId": "30077#30078#30079#30080#30081#30082",
+    "chaNum": 0,
+    "allTime": 0,
+    "charaProfile": "",
+    "needchaText": "",
+    "chaId": [],
+    "reduceTime": 0,
+    "bonus": ""
   }
 ]

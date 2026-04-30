@@ -55,13 +55,13 @@ function StoryPictureItem:_build()
 	end
 
 	if self._picCo.picType == StoryEnum.PictureType.FullScreen then
-		local path = "ui/viewres/story/storyfullfocusitem.prefab"
+		local path = "ui/viewres/story/view/storyfullfocusitem.prefab"
 
 		self._pictureLoader = PrefabInstantiate.Create(self._picParentGo)
 
 		self._pictureLoader:startLoad(path, self._onFullFocusPictureLoaded, self)
 	else
-		local path = "ui/viewres/story/storynormalpicitem.prefab"
+		local path = "ui/viewres/story/view/storynormalpicitem.prefab"
 
 		self._pictureLoader = PrefabInstantiate.Create(self._picParentGo)
 

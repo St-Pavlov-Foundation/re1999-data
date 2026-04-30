@@ -808,5 +808,32 @@
     "permanentUnlock": "2#24#1",
     "signature": "3032",
     "preStoryId": 0
+  },
+  {
+    "id": 31,
+    "chapterId": 0,
+    "unlock": "2#24#0",
+    "bonus": "",
+    "heroName": "银装小春雀儿",
+    "photo": "315402",
+    "cgBg": "315401",
+    "order": 31,
+    "name": "风暴里，雏鹰振翅",
+    "nameEn": "All the World's a Chip",
+    "queryVersion": "3.7",
+    "episodeId": 0,
+    "main_pic": "rolestory_img_31",
+    "monster_pic": "",
+    "challengeBonus": "",
+    "activityId": 13722,
+    "activity_pic": "",
+    "cgUnlockEpisodeId": 0,
+    "cgUnlockStoryId": 315408,
+    "cgPos": "771.6#-18.4",
+    "cgScale": "1",
+    "mainviewName": "风暴里，雏鹰振翅",
+    "permanentUnlock": "2#24#1",
+    "signature": "3154",
+    "preStoryId": 0
   }
 ]

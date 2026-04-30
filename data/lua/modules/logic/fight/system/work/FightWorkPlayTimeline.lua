@@ -26,7 +26,7 @@ function FightWorkPlayTimeline:_playTimeline()
 		return
 	end
 
-	if self._entity.skill then
+	if self._entity.skill and self._entity:__isActive() then
 		local temp_data = {
 			actId = 0,
 			actEffect = {

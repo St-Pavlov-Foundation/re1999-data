@@ -108,5 +108,15 @@
     "decStage": 303,
     "feature": "lorenz",
     "desc": "分维"
+  },
+  {
+    "id": 10012,
+    "coverType": "1",
+    "excludeTypes": "",
+    "rejectTypes": "10001#10002#10005#10007#10011",
+    "stage": 0,
+    "decStage": 303,
+    "feature": "degradation",
+    "desc": "噤声的高墙"
   }
 ]

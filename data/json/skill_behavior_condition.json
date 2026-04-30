@@ -28006,5 +28006,833 @@
   {
     "id": 785307,
     "type": "PerBuffGetByGroup"
+  },
+  {
+    "id": 786,
+    "type": "PerDeviceCounter"
+  },
+  {
+    "id": 786002,
+    "type": "PerDeviceCounter"
+  },
+  {
+    "id": 786021,
+    "type": "PerDeviceCounter"
+  },
+  {
+    "id": 786100,
+    "type": "PerDeviceCounter"
+  },
+  {
+    "id": 786101,
+    "type": "PerDeviceCounter"
+  },
+  {
+    "id": 786102,
+    "type": "PerDeviceCounter"
+  },
+  {
+    "id": 786103,
+    "type": "PerDeviceCounter"
+  },
+  {
+    "id": 786104,
+    "type": "PerDeviceCounter"
+  },
+  {
+    "id": 786105,
+    "type": "PerDeviceCounter"
+  },
+  {
+    "id": 786106,
+    "type": "PerDeviceCounter"
+  },
+  {
+    "id": 786201,
+    "type": "PerDeviceCounter"
+  },
+  {
+    "id": 786202,
+    "type": "PerDeviceCounter"
+  },
+  {
+    "id": 786203,
+    "type": "PerDeviceCounter"
+  },
+  {
+    "id": 786204,
+    "type": "PerDeviceCounter"
+  },
+  {
+    "id": 786205,
+    "type": "PerDeviceCounter"
+  },
+  {
+    "id": 786206,
+    "type": "PerDeviceCounter"
+  },
+  {
+    "id": 786207,
+    "type": "PerDeviceCounter"
+  },
+  {
+    "id": 786208,
+    "type": "PerDeviceCounter"
+  },
+  {
+    "id": 786209,
+    "type": "PerDeviceCounter"
+  },
+  {
+    "id": 786210,
+    "type": "PerDeviceCounter"
+  },
+  {
+    "id": 786211,
+    "type": "PerDeviceCounter"
+  },
+  {
+    "id": 786212,
+    "type": "PerDeviceCounter"
+  },
+  {
+    "id": 786213,
+    "type": "PerDeviceCounter"
+  },
+  {
+    "id": 786301,
+    "type": "PerDeviceCounter"
+  },
+  {
+    "id": 786302,
+    "type": "PerDeviceCounter"
+  },
+  {
+    "id": 786303,
+    "type": "PerDeviceCounter"
+  },
+  {
+    "id": 787,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787002,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787021,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787100,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787101,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787102,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787103,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787104,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787105,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787106,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787201,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787202,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787203,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787204,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787205,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787206,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787207,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787208,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787209,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787210,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787211,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787212,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787213,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787301,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787302,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787303,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787304,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787305,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787306,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787307,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787401,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 787402,
+    "type": "DeviceExPoint"
+  },
+  {
+    "id": 788,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788002,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788021,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788100,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788101,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788102,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788103,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788104,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788105,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788106,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788201,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788202,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788203,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788204,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788205,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788206,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788207,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788208,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788209,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788210,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788211,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788212,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788213,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788301,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788302,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788303,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788304,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788305,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788306,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788307,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788401,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 788402,
+    "type": "PerDeviceCurrCost"
+  },
+  {
+    "id": 501402,
+    "type": "UseHurtSkill"
+  },
+  {
+    "id": 789,
+    "type": "Rank"
+  },
+  {
+    "id": 789002,
+    "type": "Rank"
+  },
+  {
+    "id": 789021,
+    "type": "Rank"
+  },
+  {
+    "id": 789100,
+    "type": "Rank"
+  },
+  {
+    "id": 789101,
+    "type": "Rank"
+  },
+  {
+    "id": 789102,
+    "type": "Rank"
+  },
+  {
+    "id": 789103,
+    "type": "Rank"
+  },
+  {
+    "id": 789104,
+    "type": "Rank"
+  },
+  {
+    "id": 789105,
+    "type": "Rank"
+  },
+  {
+    "id": 789106,
+    "type": "Rank"
+  },
+  {
+    "id": 789201,
+    "type": "Rank"
+  },
+  {
+    "id": 789202,
+    "type": "Rank"
+  },
+  {
+    "id": 789203,
+    "type": "Rank"
+  },
+  {
+    "id": 789204,
+    "type": "Rank"
+  },
+  {
+    "id": 789205,
+    "type": "Rank"
+  },
+  {
+    "id": 789206,
+    "type": "Rank"
+  },
+  {
+    "id": 789207,
+    "type": "Rank"
+  },
+  {
+    "id": 789208,
+    "type": "Rank"
+  },
+  {
+    "id": 789209,
+    "type": "Rank"
+  },
+  {
+    "id": 789210,
+    "type": "Rank"
+  },
+  {
+    "id": 789211,
+    "type": "Rank"
+  },
+  {
+    "id": 789212,
+    "type": "Rank"
+  },
+  {
+    "id": 789213,
+    "type": "Rank"
+  },
+  {
+    "id": 789301,
+    "type": "Rank"
+  },
+  {
+    "id": 789302,
+    "type": "Rank"
+  },
+  {
+    "id": 789303,
+    "type": "Rank"
+  },
+  {
+    "id": 789304,
+    "type": "Rank"
+  },
+  {
+    "id": 789305,
+    "type": "Rank"
+  },
+  {
+    "id": 789306,
+    "type": "Rank"
+  },
+  {
+    "id": 789307,
+    "type": "Rank"
+  },
+  {
+    "id": 789401,
+    "type": "Rank"
+  },
+  {
+    "id": 789402,
+    "type": "Rank"
+  },
+  {
+    "id": 790,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790002,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790021,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790100,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790101,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790102,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790103,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790104,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790105,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790106,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790201,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790202,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790203,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790204,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790205,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790206,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790207,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790208,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790209,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790210,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790211,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790212,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790213,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790301,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790302,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790303,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790304,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790305,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790306,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790307,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790401,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 790402,
+    "type": "UnnamedCardAnchor"
+  },
+  {
+    "id": 791,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791002,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791021,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791100,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791101,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791102,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791103,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791104,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791105,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791106,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791201,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791202,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791203,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791204,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791205,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791206,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791207,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791208,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791209,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791210,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791211,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791212,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791213,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791301,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791302,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791303,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791304,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791305,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791306,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791307,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791401,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 791402,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 2032,
+    "type": "None"
+  },
+  {
+    "id": 98208,
+    "type": "IndicatorNum"
+  },
+  {
+    "id": 792,
+    "type": "UseDeviceSkill"
+  },
+  {
+    "id": 792201,
+    "type": "UseDeviceSkill"
+  },
+  {
+    "id": 792202,
+    "type": "UseDeviceSkill"
+  },
+  {
+    "id": 792203,
+    "type": "UseDeviceSkill"
+  },
+  {
+    "id": 792204,
+    "type": "UseDeviceSkill"
+  },
+  {
+    "id": 792205,
+    "type": "UseDeviceSkill"
+  },
+  {
+    "id": 792206,
+    "type": "UseDeviceSkill"
+  },
+  {
+    "id": 792207,
+    "type": "UseDeviceSkill"
+  },
+  {
+    "id": 792208,
+    "type": "UseDeviceSkill"
+  },
+  {
+    "id": 792209,
+    "type": "UseDeviceSkill"
+  },
+  {
+    "id": 792210,
+    "type": "UseDeviceSkill"
+  },
+  {
+    "id": 792211,
+    "type": "UseDeviceSkill"
+  },
+  {
+    "id": 792212,
+    "type": "UseDeviceSkill"
+  },
+  {
+    "id": 792213,
+    "type": "UseDeviceSkill"
+  },
+  {
+    "id": 780002,
+    "type": "HasWeakCareer"
+  },
+  {
+    "id": 42209,
+    "type": "HasTypeBuffMoreThan"
+  },
+  {
+    "id": 792402,
+    "type": "UseDeviceSkill"
+  },
+  {
+    "id": 10500,
+    "type": "None"
   }
 ]

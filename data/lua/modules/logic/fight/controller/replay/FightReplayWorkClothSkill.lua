@@ -60,6 +60,14 @@ function FightReplayWorkClothSkill:onStart()
 		return
 	end
 
+	if self.clothSkillOp.skillId == FightEnum.DeviceDiscardSkillId then
+		FightController.instance:registerCallback(FightEvent.RespUseClothSkillFail, self._failDone, self)
+		FightController.instance:registerCallback(FightEvent.OnClothSkillRoundSequenceFinish, self._onClothSkillDone, self)
+		FightRpc.instance:sendUseClothSkillRequest(self.clothSkillOp.skillId, nil, self.clothSkillOp.toId)
+
+		return
+	end
+
 	local skillCO = lua_skill.configDict[self.clothSkillOp.skillId]
 
 	if skillCO then

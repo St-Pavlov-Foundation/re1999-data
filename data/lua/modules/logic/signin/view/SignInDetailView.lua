@@ -1331,7 +1331,7 @@ function SignInDetailView:haveFestival()
 end
 
 function SignInDetailView:_setFestivalColor(textOrImg)
-	local hexColor = self:haveFestival() and "#792D22" or "#222222"
+	local hexColor = self:haveFestival() and "#48606C" or "#222222"
 
 	SLFramework.UGUI.GuiHelper.SetColor(textOrImg, hexColor)
 end

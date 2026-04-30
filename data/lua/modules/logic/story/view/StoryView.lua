@@ -89,7 +89,11 @@ function StoryView:_isUnInteractType()
 	end
 
 	if self._stepCo.conversation.type == StoryEnum.ConversationType.ScreenDialog then
-		return true
+		if self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.GostMagic then
+			return false
+		else
+			return true
+		end
 	end
 
 	if self._stepCo.conversation.type == StoryEnum.ConversationType.IrregularShake then
@@ -146,7 +150,7 @@ function StoryView:addEvent()
 	self:addEventCb(StoryController.instance, StoryEvent.Log, self._btnlogOnClick, self)
 	self:addEventCb(StoryController.instance, StoryEvent.Hide, self._btnhideOnClick, self)
 	self:addEventCb(StoryController.instance, StoryEvent.Auto, self._btnautoOnClick, self)
-	self:addEventCb(StoryController.instance, StoryEvent.Skip, self._btnskipOnClick, self)
+	self:addEventCb(StoryController.instance, StoryEvent.OnSkipConfirm, self._btnskipOnClick, self)
 	self:addEventCb(StoryController.instance, StoryEvent.PvPause, self._btnPvPauseOnClick, self)
 	self:addEventCb(StoryController.instance, StoryEvent.PvPlay, self._btnPvPlayOnClick, self)
 	self:addEventCb(StoryController.instance, StoryEvent.EnterNextStep, self._btnnextOnClick, self)
@@ -167,7 +171,7 @@ function StoryView:removeEvent()
 	self:removeEventCb(StoryController.instance, StoryEvent.Log, self._btnlogOnClick, self)
 	self:removeEventCb(StoryController.instance, StoryEvent.Hide, self._btnhideOnClick, self)
 	self:removeEventCb(StoryController.instance, StoryEvent.Auto, self._btnautoOnClick, self)
-	self:removeEventCb(StoryController.instance, StoryEvent.Skip, self._btnskipOnClick, self)
+	self:removeEventCb(StoryController.instance, StoryEvent.OnSkipConfirm, self._btnskipOnClick, self)
 	self:removeEventCb(StoryController.instance, StoryEvent.PvPause, self._btnPvPauseOnClick, self)
 	self:removeEventCb(StoryController.instance, StoryEvent.PvPlay, self._btnPvPlayOnClick, self)
 	self:removeEventCb(StoryController.instance, StoryEvent.EnterNextStep, self._btnnextOnClick, self)
@@ -422,7 +426,14 @@ function StoryView:_onUpdateUI(param)
 end
 
 function StoryView:_showBranchLeadHero()
-	self._dialogItem:hideDialog()
+	local hasOptionPlayed = StoryModel.instance:hasBranchPlayed(self._stepCo)
+
+	if hasOptionPlayed then
+		self._dialogItem:playHardIn()
+	else
+		self._dialogItem:hideDialog()
+	end
+
 	self._dialogItem:stopConAudio()
 
 	if self._confadeId then
@@ -435,14 +446,32 @@ function StoryView:_showBranchLeadHero()
 	TaskDispatcher.cancelTask(self._shakeStop, self)
 	TaskDispatcher.cancelTask(self._enterNextStep, self)
 
-	self._conCanvasGroup.alpha = 1
+	local showHero = true
 
-	gohelper.setActive(self._goname, true)
-	gohelper.setActive(self._txtnameen.gameObject, true)
-	gohelper.setActive(self._gocontentroot, true)
-	gohelper.setActive(self._gonoconversation, true)
+	for _, v in pairs(self._stepCo.optList) do
+		if v.conditionType == StoryEnum.OptionConditionType.None then
+			local isSpType = StoryModel.instance:isSpOptionType(v.type)
 
-	local normalOptionParam
+			if isSpType then
+				showHero = false
+			end
+		end
+	end
+
+	self._conCanvasGroup.alpha = showHero and 1 or 0
+
+	gohelper.setActive(self._goname, showHero)
+	gohelper.setActive(self._txtnameen.gameObject, showHero)
+	gohelper.setActive(self._gocontentroot, showHero)
+	gohelper.setActive(self._gonoconversation, showHero)
+
+	if not showHero then
+		gohelper.setActive(self._gohead, false)
+		gohelper.setActive(self._gospine, false)
+		StoryController.instance:dispatchEvent(StoryEvent.ShowLeadRole, self._stepCo, false, false, false, 0)
+
+		return
+	end
 
 	for _, v in pairs(self._stepCo.optList) do
 		if v.condition and v.conditionType == StoryEnum.OptionConditionType.NormalLead then
@@ -500,16 +529,6 @@ function StoryView:_updateStep(stepId)
 	end
 
 	self._stepCo = StoryStepModel.instance:getStepListById(stepId)
-
-	if self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.SoftLight then
-		gohelper.setActive(self._goline, false)
-		gohelper.setActive(self._gonexticon, false)
-		gohelper.setActive(self._goblackbottom, false)
-	else
-		gohelper.setActive(self._goline, true)
-		gohelper.setActive(self._gonexticon, true)
-		gohelper.setActive(self._goblackbottom, true)
-	end
 
 	if self._stepCo.bg.transType ~= StoryEnum.BgTransType.DarkFade and self._stepCo.bg.transType ~= StoryEnum.BgTransType.WhiteFade then
 		self:_refreshView()
@@ -813,7 +832,12 @@ function StoryView:_showText()
 	StoryModel.instance:setTextShowing(true)
 
 	if self._stepCo.conversation.type == StoryEnum.ConversationType.ScreenDialog then
-		StoryModel.instance:enableClick(false)
+		if self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.GostMagic then
+			StoryModel.instance:enableClick(true)
+		else
+			StoryModel.instance:enableClick(false)
+		end
+
 		self:_playDialog()
 		StoryController.instance:dispatchEvent(StoryEvent.PlayFullText, self._stepCo)
 	elseif self._stepCo.conversation.type == StoryEnum.ConversationType.IrregularShake then

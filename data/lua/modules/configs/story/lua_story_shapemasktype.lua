@@ -90,5 +90,20 @@ return {
 		0,
 		0,
 		1
+	},
+	{
+		6,
+		"圆形3",
+		0.5,
+		"ui/viewres/story/v3a7/v3a6_shapemask_circle.prefab",
+		-30,
+		9,
+		2.9,
+		-3,
+		0,
+		2.9,
+		-3,
+		0,
+		31
 	}
 }

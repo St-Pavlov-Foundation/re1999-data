@@ -170,6 +170,18 @@ function PlayerCardModel:getPlayerCardSkinId()
 	end
 end
 
+function PlayerCardModel:isSpecialCardSkin(skinId)
+	if not self._speialCardSkins then
+		local constCo = lua_playercard_const.configDict[5]
+
+		if constCo and not string.nilorempty(constCo.value2) then
+			self._speialCardSkins = string.splitToNumber(constCo.value2, "#")
+		end
+	end
+
+	return LuaUtil.tableContains(self._speialCardSkins, skinId)
+end
+
 function PlayerCardModel:setSelectSkinMO(skinMO)
 	self.selectSkinMO = skinMO
 end

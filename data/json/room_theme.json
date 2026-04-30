@@ -322,5 +322,17 @@
     "collectionBonus": "11#13603#1",
     "extraShowBuilding": "",
     "sourcesType": ""
+  },
+  {
+    "id": 3701,
+    "name": "秩序的净土",
+    "nameEn": "The Kingdom of Order",
+    "desc": "愿和平与我们同在，愿希望的净土永存。",
+    "rewardIcon": "1702700",
+    "building": "13701|13702|13703",
+    "packages": "3701|3702|3703|3704",
+    "collectionBonus": "11#13703#1",
+    "extraShowBuilding": "",
+    "sourcesType": ""
   }
 ]

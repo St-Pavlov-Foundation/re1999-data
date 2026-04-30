@@ -21,10 +21,6 @@ function PatFaceCustomHandler.decalogPresentCheckCanPat(patFaceId)
 	return DecalogPresentModel.instance:isShowRedDot()
 end
 
-function PatFaceCustomHandler.goldenMilletPresentCheckCanPat(patFaceId)
-	return GoldenMilletPresentModel.instance:isShowRedDot()
-end
-
 function PatFaceCustomHandler.matildaGiftCheckCanPat(patFaceId)
 	return V1a9_MatildaGiftModel.instance:isShowRedDot()
 end
@@ -81,10 +77,6 @@ function PatFaceCustomHandler.decalogPresentPat(patFaceId)
 	DecalogPresentController.instance:openDecalogPresentView(patViewName)
 end
 
-function PatFaceCustomHandler.goldenMilletPresentPat(patFaceId)
-	GoldenMilletPresentController.instance:openGoldenMilletPresentView()
-end
-
 function PatFaceCustomHandler.matildaGiftPat(patFaceId)
 	V1a9_MatildaGiftController.instance:openMatildaGiftView()
 end
@@ -135,7 +127,7 @@ function PatFaceCustomHandler.V2a8_BPSkinFaceViewCanPat(patFaceId)
 		return false
 	end
 
-	if BpController.instance:isEmptySkinFaceViewStr(skinId) then
+	if BpController.instance:isSkinFaceOnlineBySkinId(skinId) and BpController.instance:isEmptySkinFaceViewStr(skinId) then
 		local stroeGoodsMO = StoreClothesGoodsItemListModel.instance:findMOByProduct(MaterialEnum.MaterialType.HeroSkin, skinId)
 
 		if stroeGoodsMO and not stroeGoodsMO:alreadyHas() then

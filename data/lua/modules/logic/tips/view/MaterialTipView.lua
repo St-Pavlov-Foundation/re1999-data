@@ -162,12 +162,17 @@ local ti = table.insert
 local FakeIconTab = {
 	[MaterialEnum.MaterialType.Item] = {
 		[BpEnum.ScoreItemId] = true,
+		[Anniversary3ActBpEnum.ScoreItemId] = true,
 		[MaterialEnum.PowerMakerItemId] = true
 	},
 	[MaterialEnum.MaterialType.Currency] = {
 		[CurrencyEnum.CurrencyType.V1a6CachotCoin] = true,
 		[CurrencyEnum.CurrencyType.V1a6CachotCurrency] = true
 	}
+}
+local HideHadnumberSubType = {
+	[ItemEnum.SubType.Portrait] = true,
+	[ItemEnum.SubType.Badge] = true
 }
 
 function MaterialTipView:_btndetailOnClick()
@@ -192,7 +197,16 @@ function MaterialTipView:_btnsummonsimulationOnClick()
 	end
 
 	if self:_isPackageSkin() then
-		HelpController.instance:openBpRuleTipsView(luaLang("ruledetail"), "Rule Details", self:_getPackageSkinDesc())
+		if self._config.id == V3a7_SkinGiftEnum.ItemId then
+			local param = {}
+
+			param.itemId = self.viewParam.id
+			param.type = self.viewParam.type
+
+			ViewMgr.instance:openView(ViewName.V3a7_SkinGiftCheckView, param)
+		else
+			HelpController.instance:openBpRuleTipsView(luaLang("ruledetail"), "Rule Details", V3a7_SkinGiftHelper.getSkinGiftRareDesc(self._config.id, "material_packageskin_rate_desc_3_7", "MaterialTipViewPackageSkinDescFmt_3_7"))
+		end
 	elseif self._config.activityId then
 		SummonSimulationPickController.instance:openSummonTips(self._config.activityId)
 	end
@@ -698,6 +712,10 @@ function MaterialTipView:_btnuseOnClick()
 		CharacterModel.instance:setGainHeroViewShowState(false)
 		CharacterModel.instance:setGainHeroViewNewShowState(false)
 		ItemRpc.instance:simpleSendUseItemRequest(materialId, quantity)
+	elseif self:_isGoldenMilletPresentSkin() then
+		local jumpId = self._config.effect
+
+		GameFacade.jump(jumpId)
 	elseif MaterialTipController.instance:isSpecifiedGift(self._config) then
 		local o = {}
 
@@ -714,6 +732,16 @@ function MaterialTipView:_btnuseOnClick()
 		o.subType = self._config.subType
 
 		GiftController.instance:openGiftMultipleChoiceView(o)
+	elseif MaterialTipController.instance:isHeroSelect(self._config) then
+		local o = {}
+
+		o.param = self.viewParam
+		o.quantity = quantity
+		o.subType = self._config.subType
+		o.itemId = self._config.id
+		o.type = SkinDiscountCompensateEnum.SelectDisplayType.Select
+
+		GiftController.instance:openGiftMultipleHeroChoiceView(o)
 	elseif self._config.subType == ItemEnum.SubType.OptionalGift then
 		local o = {}
 
@@ -1180,7 +1208,7 @@ function MaterialTipView:_refreshUI()
 
 	local isExp = self.viewParam.type == MaterialEnum.MaterialType.Exp
 
-	gohelper.setActive(self._gohadnumber, not isExp and self._config.subType ~= ItemEnum.SubType.Portrait and not self:_checkIsFakeIcon())
+	gohelper.setActive(self._gohadnumber, not isExp and not self:_checkHideHadNum() and not self:_checkIsFakeIcon())
 	gohelper.setActive(self._goupgrade, self._config.subType == ItemEnum.SubType.Portrait and not string.nilorempty(self._config.effect))
 
 	local effectArr = string.split(self._config.effect, "#")
@@ -1284,6 +1312,14 @@ function MaterialTipView:_refreshUI()
 	if self.viewContainer.refreshCurrencyView then
 		self.viewContainer:refreshCurrencyView(currency)
 	end
+end
+
+function MaterialTipView:_checkHideHadNum()
+	if HideHadnumberSubType[self._config.subType] then
+		return true
+	end
+
+	return false
 end
 
 function MaterialTipView:_checkIsFakeIcon()
@@ -1444,10 +1480,10 @@ function MaterialTipView:_refreshItemQuantity()
 end
 
 function MaterialTipView:_refreshItemQuantityVisible()
-	local isShow = self.viewParam.id ~= BpEnum.ScoreItemId
+	local isShow = self.viewParam.id ~= BpEnum.ScoreItemId and self.viewParam.id ~= Anniversary3ActBpEnum.ScoreItemId
 	local isExp = self.viewParam.type == MaterialEnum.MaterialType.Exp
 
-	gohelper.setActive(self._gohadnumber, isShow and not isExp)
+	gohelper.setActive(self._gohadnumber, isShow and not isExp and not self:_checkHideHadNum())
 	gohelper.setActive(self._txthadnumber, isShow)
 end
 
@@ -1519,7 +1555,7 @@ function MaterialTipView:_refreshInclude()
 				end
 			end
 		elseif self._config.subType == ItemEnum.SubType.SkinSelelctGift then
-			local effectArr = string.splitToNumber(self._config.effect, "#")
+			local effectArr = GameUtil.splitString2(self._config.effect, true)[1]
 
 			includeItems = {}
 
@@ -1704,7 +1740,7 @@ function MaterialTipView:_isUseBtnShow()
 	end
 
 	if self._config.subType == ItemEnum.SubType.SkinSelelctGift then
-		if ViewMgr.instance:isOpen(ViewName.StoreView) then
+		if self.viewParam.inpack == false or ViewMgr.instance:isOpen(ViewName.StoreView) then
 			return false
 		end
 
@@ -1837,6 +1873,10 @@ end
 
 function MaterialTipView:_isRoomBlockGift()
 	return self._config.subType == ItemEnum.SubType.RoomBlockGiftNew or self._config.subType == ItemEnum.SubType.RoomBlockGift
+end
+
+function MaterialTipView:_isGoldenMilletPresentSkin()
+	return self._config.clienttag == ItemEnum.Tag.GoldenMilletPresentSkin
 end
 
 return MaterialTipView

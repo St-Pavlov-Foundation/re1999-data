@@ -1,0 +1,146 @@
+[
+  {
+    "id": 11000,
+    "mapId": 1372301,
+    "pieceResNamePrefix": "v3a7_wmz_piece_01_01_",
+    "pieceMinX": 3,
+    "pieceMinY": 2,
+    "pieceMaxX": 11,
+    "pieceMaxY": 6
+  },
+  {
+    "id": 12000,
+    "mapId": 1372301,
+    "pieceResNamePrefix": "v3a7_wmz_piece_01_02_",
+    "pieceMinX": 18,
+    "pieceMinY": 8,
+    "pieceMaxX": 22,
+    "pieceMaxY": 12
+  },
+  {
+    "id": 13000,
+    "mapId": 1372301,
+    "pieceResNamePrefix": "v3a7_wmz_piece_01_03_",
+    "pieceMinX": 6,
+    "pieceMinY": 15,
+    "pieceMaxX": 15,
+    "pieceMaxY": 18
+  },
+  {
+    "id": 21000,
+    "mapId": 1372302,
+    "pieceResNamePrefix": "v3a7_wmz_piece_03_01_",
+    "pieceMinX": 4,
+    "pieceMinY": 3,
+    "pieceMaxX": 6,
+    "pieceMaxY": 6
+  },
+  {
+    "id": 22000,
+    "mapId": 1372302,
+    "pieceResNamePrefix": "v3a7_wmz_piece_03_02_",
+    "pieceMinX": 14,
+    "pieceMinY": 3,
+    "pieceMaxX": 18,
+    "pieceMaxY": 6
+  },
+  {
+    "id": 23000,
+    "mapId": 1372302,
+    "pieceResNamePrefix": "v3a7_wmz_piece_03_03_",
+    "pieceMinX": 28,
+    "pieceMinY": 4,
+    "pieceMaxX": 30,
+    "pieceMaxY": 6
+  },
+  {
+    "id": 31000,
+    "mapId": 1372303,
+    "pieceResNamePrefix": "v3a7_wmz_piece_04_01_",
+    "pieceMinX": 3,
+    "pieceMinY": 2,
+    "pieceMaxX": 5,
+    "pieceMaxY": 5
+  },
+  {
+    "id": 32000,
+    "mapId": 1372303,
+    "pieceResNamePrefix": "v3a7_wmz_piece_04_02_",
+    "pieceMinX": 14,
+    "pieceMinY": 4,
+    "pieceMaxX": 16,
+    "pieceMaxY": 6
+  },
+  {
+    "id": 33000,
+    "mapId": 1372303,
+    "pieceResNamePrefix": "v3a7_wmz_piece_04_03_",
+    "pieceMinX": 6,
+    "pieceMinY": 9,
+    "pieceMaxX": 8,
+    "pieceMaxY": 12
+  },
+  {
+    "id": 34000,
+    "mapId": 1372303,
+    "pieceResNamePrefix": "v3a7_wmz_piece_04_04_",
+    "pieceMinX": 26,
+    "pieceMinY": 6,
+    "pieceMaxX": 32,
+    "pieceMaxY": 10
+  },
+  {
+    "id": 41000,
+    "mapId": 1372304,
+    "pieceResNamePrefix": "v3a7_wmz_piece_06_01_",
+    "pieceMinX": 7,
+    "pieceMinY": 2,
+    "pieceMaxX": 10,
+    "pieceMaxY": 5
+  },
+  {
+    "id": 42000,
+    "mapId": 1372304,
+    "pieceResNamePrefix": "v3a7_wmz_piece_06_02_",
+    "pieceMinX": 1,
+    "pieceMinY": 11,
+    "pieceMaxX": 14,
+    "pieceMaxY": 17
+  },
+  {
+    "id": 43000,
+    "mapId": 1372304,
+    "pieceResNamePrefix": "v3a7_wmz_piece_06_03_",
+    "pieceMinX": 19,
+    "pieceMinY": 3,
+    "pieceMaxX": 31,
+    "pieceMaxY": 8
+  },
+  {
+    "id": 51000,
+    "mapId": 1372305,
+    "pieceResNamePrefix": "v3a7_wmz_piece_sp_01_",
+    "pieceMinX": 4,
+    "pieceMinY": 2,
+    "pieceMaxX": 6,
+    "pieceMaxY": 5
+  },
+  {
+    "id": 52000,
+    "mapId": 1372305,
+    "pieceResNamePrefix": "v3a7_wmz_piece_sp_02_",
+    "pieceMinX": 12,
+    "pieceMinY": 2,
+    "pieceMaxX": 14,
+    "pieceMaxY": 5
+  },
+  {
+    "id": 53000,
+    "mapId": 1372305,
+    "pieceResNamePrefix": "v3a7_wmz_piece_sp_03_",
+    "pieceMinX": 3,
+    "pieceMinY": 9,
+    "pieceMaxX": 15,
+    "pieceMaxY": 14
+  }
+]

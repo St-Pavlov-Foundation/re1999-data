@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "condition": "haveItem#10000000:500",
+    "desc": "消耗回报x500"
+  },
+  {
+    "id": 2,
+    "condition": "haveItem#10000000:1000",
+    "desc": "消耗回报x1000"
+  },
+  {
+    "id": 3,
+    "condition": "buildingLevel#104#2",
+    "desc": "打捞建筑达到1级"
+  },
+  {
+    "id": 4,
+    "condition": "buildingLevel#104#3",
+    "desc": "打捞建筑达到2级"
+  },
+  {
+    "id": 5,
+    "condition": "buildingLevel#105#1",
+    "desc": "收容建筑达到1级"
+  },
+  {
+    "id": 6,
+    "condition": "buildingLevel#105#2",
+    "desc": "收容建筑达到2级"
+  },
+  {
+    "id": 7,
+    "condition": "buildingLevel#105#3",
+    "desc": "收容建筑达到3级"
+  },
+  {
+    "id": 8,
+    "condition": "level#7",
+    "desc": "调查等级达到7"
+  }
+]

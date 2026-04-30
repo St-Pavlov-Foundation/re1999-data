@@ -30,6 +30,8 @@ function FightGameMgr:registMgr()
 	self.playMgr = self:addMgr(FightPlayMgr)
 	self.operateMgr = self:addMgr(FightOperateMgr)
 	self.checkCrashMgr = self:addMgr(FightCheckCrashMgr)
+	self.cameraMgr = self:addMgr(FightCameraMgr)
+	self.lightMgr = self:addMgr(FightLightMgr)
 	self.entrustEntityMgr = self:addMgr(FightEntrustEntityMgr)
 	self.entrustDeadEntityMgr = self:addMgr(FightEntrustDeadEntityMgr)
 
@@ -54,6 +56,7 @@ function FightGameMgr:registMgr()
 	self.asfdMgr = self:addMgr(FightASFDMgr)
 	self.transitionMgr = self:addMgr(FightTransitionMgr)
 	self.triggerBuffMgr = self:addMgr(FightTriggerBuffMgr)
+	self.tokenReleaseEntityMgr = self:addMgr(FightTokenReleaseEntityMgr)
 end
 
 function FightGameMgr:addMgr(class)

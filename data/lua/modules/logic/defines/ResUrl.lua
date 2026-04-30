@@ -73,6 +73,12 @@ function ResUrl.getSpineFightPrefabBySkin(skinCO)
 		return ""
 	end
 
+	local skinId = skinCO.id
+
+	if lua_fight_monster_3d.configDict[skinId] then
+		return skinCO.spine .. ".prefab"
+	end
+
 	local spinePath
 	local isPath = string.find(skinCO.spine, "/")
 
@@ -367,6 +373,14 @@ end
 
 function ResUrl.getStoryPrefabRes(resName)
 	return string.format("ui/viewres/story/%s.prefab", resName)
+end
+
+function ResUrl.getStoryPrefabViewRes(resName)
+	return string.format("ui/viewres/story/view/%s.prefab", resName)
+end
+
+function ResUrl.getStoryPrefabOptionRes(resName)
+	return string.format("ui/viewres/story/option/%s.prefab", resName)
 end
 
 function ResUrl.getStoryBgEffect(effectName)
@@ -1826,6 +1840,42 @@ end
 
 function ResUrl.getSummonPoolPackageItemPath(type)
 	return string.format("ui/viewres/summon/summonpoolpackage/summonpoolpackageitem_%s.prefab", type)
+end
+
+function ResUrl.getSodacheSingleBg(resName, path)
+	if path then
+		return string.format("modules/sodache/ui/singlebg/%s/%s.png", path, resName)
+	else
+		return string.format("modules/sodache/ui/singlebg/%s.png", resName)
+	end
+end
+
+function ResUrl.getAct236SingleBg(resName, path)
+	if path then
+		return string.format("singlebg_lang/txt_v3a7_cumulativerecharge_singlebg/%s/%s.png", path, resName)
+	else
+		return string.format("singlebg_lang/txt_v3a7_cumulativerecharge_singlebg/%s.png", resName)
+	end
+end
+
+function ResUrl.getTravelGoSingleBg(res)
+	return string.format("singlebg/v3a7_xiaoruiannong_singlebg/%s.png", res)
+end
+
+function ResUrl.getGiftMultipleHeroSingleBg(resName, path)
+	return string.format("singlebg/store/cumulativerechargeselect/role/%s.png", resName)
+end
+
+function ResUrl.getGiftMultipleHeroNameSingleBg(resName, path)
+	return string.format("singlebg_lang/txt_store/cumulativerechargeselect/%s.png", resName)
+end
+
+function ResUrl.getV3a7WmzGameSingleBg(resName)
+	return ResUrl.getV3a7WmzSingleBg("game/" .. resName)
+end
+
+function ResUrl.getV3a7WmzSingleBg(resName)
+	return string.format("singlebg/v3a7_wmz_singlebg/%s.png", resName)
 end
 
 return ResUrl

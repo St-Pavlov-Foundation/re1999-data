@@ -45,6 +45,8 @@ function GMSubViewNewFightView:initViewContent()
 	})
 	self.btnSend = self:addButton(self:getLineGroup(), "发送", self.onClickSendBtn, self)
 	self.btnCustomFight = self:addButton(self:getLineGroup(), "自定义战斗", self.onBtnCustomFight, self)
+	self.btnSkipFightPerformance = self:addButton(self:getLineGroup(), "跳过战斗演出", self.onbtnSkipFightPerformance, self)
+	self.btnCancelSkipFightPerformance = self:addButton(self:getLineGroup(), "取消跳过演出", self.onbtnCancelSkipFightPerformance, self)
 
 	self:addTitleSplitLine("战前GM")
 	self:addLineIndex()
@@ -722,6 +724,18 @@ end
 
 function GMSubViewNewFightView:onBtnCustomFight()
 	ViewMgr.instance:openView(ViewName.FightGmCustomFightView)
+end
+
+function GMSubViewNewFightView:onbtnSkipFightPerformance()
+	FightGameMgr.skipPerformance = true
+
+	self:closeThis()
+end
+
+function GMSubViewNewFightView:onbtnCancelSkipFightPerformance()
+	FightGameMgr.skipPerformance = false
+
+	self:closeThis()
 end
 
 return GMSubViewNewFightView

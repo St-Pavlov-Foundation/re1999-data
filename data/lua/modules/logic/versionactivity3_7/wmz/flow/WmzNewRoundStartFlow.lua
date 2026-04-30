@@ -1,0 +1,18 @@
+﻿-- chunkname: @modules/logic/versionactivity3_7/wmz/flow/WmzNewRoundStartFlow.lua
+
+local sf = string.format
+
+module("modules.logic.versionactivity3_7.wmz.flow.WmzNewRoundStartFlow", package.seeall)
+
+local Base = WmzFlowSequence
+local WmzNewRoundStartFlow = class("WmzNewRoundStartFlow", Base)
+
+function WmzNewRoundStartFlow:ctor(...)
+	Base.ctor(self, ...)
+end
+
+function WmzNewRoundStartFlow:onStart()
+	self.viewObj:_refreshMap()
+end
+
+return WmzNewRoundStartFlow

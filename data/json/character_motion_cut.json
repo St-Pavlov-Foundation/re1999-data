@@ -264,9 +264,15 @@
     "onlyStopCut": 1
   },
   {
-    "heroId": 3143,
+    "heroId": 3146,
     "skinId": 1,
-    "motion": "yansuan1|yansuan2|zhize|baishou",
+    "motion": "chizhang|chizhang_start|chizhang_transition|chizhang_loop|chizhang_end|piaofu",
+    "onlyStopCut": 1
+  },
+  {
+    "heroId": 3154,
+    "skinId": 1,
+    "motion": "sikao",
     "onlyStopCut": 1
   }
 ]

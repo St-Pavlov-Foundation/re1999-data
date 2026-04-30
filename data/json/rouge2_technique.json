@@ -200,16 +200,6 @@
     "pos": "498#160|397#58"
   },
   {
-    "id": 25,
-    "mainTitleId": 8,
-    "subTitleId": 2,
-    "mainTitle": "乐鞭手",
-    "subTitle": "乐鞭手天赋树",
-    "picture": "rouge2_help_21",
-    "content": "<#FF906A>属性突破</color>后将获得天赋点|\n消耗天赋点激活节点，获得效果。\n需激活前置节点才可解锁后置节点",
-    "pos": "419#170|406#58"
-  },
-  {
     "id": 22,
     "mainTitleId": 9,
     "subTitleId": 1,
@@ -238,5 +228,35 @@
     "picture": "rouge2_help_22",
     "content": "属性值达到突破门槛\n即可进行<#FF906A>属性突破</color>|\n突破效果仅针对部分\n<#FF906A>角色标签</color>的角色生效，\n\n点击此处可以查看\n适用角色范围",
     "pos": "378#-204|1050#-126"
+  },
+  {
+    "id": 25,
+    "mainTitleId": 8,
+    "subTitleId": 2,
+    "mainTitle": "乐鞭手",
+    "subTitle": "乐鞭手天赋树",
+    "picture": "rouge2_help_21",
+    "content": "<#FF906A>属性突破</color>后将获得天赋点|\n消耗天赋点激活节点，获得效果。\n需激活前置节点才可解锁后置节点",
+    "pos": "419#170|406#58"
+  },
+  {
+    "id": 26,
+    "mainTitleId": 9,
+    "subTitleId": 2,
+    "mainTitle": "通用战斗",
+    "subTitle": "共鸣咒语Ⅰ",
+    "picture": "v3a7_rouge2_help_1",
+    "content": "共鸣器获取后会<#FF906A>自动装配</color>\n达到对应的属性需求后会<#FF906A>大幅强化|\n在战斗中，主动使用咒语和仪式会积累共鸣能量\n共鸣能量满值后将<#FF906A>激活共鸣咒语</color>",
+    "pos": "728#-15|728#-92"
+  },
+  {
+    "id": 27,
+    "mainTitleId": 9,
+    "subTitleId": 3,
+    "mainTitle": "通用战斗",
+    "subTitle": "共鸣咒语Ⅱ",
+    "picture": "v3a7_rouge2_help_2",
+    "content": "点击共鸣器图标可以查看共鸣器效果详情|\n共鸣器的共鸣能量进度将在界面左下方显示",
+    "pos": "587#-303|366#-332"
   }
 ]

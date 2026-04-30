@@ -25726,5 +25726,965 @@
     "notAddLink": 0,
     "isSpecialCharacter": 0,
     "desc": "群体攻击，对所有敌人造成240%的现实创伤，并使己方全体获得5层【密文】，并额外获得自身攻击340%【壁障<id:1>】，若已持有【壁障<id:1>】，将此【壁障<id:1>】叠加至原【壁障<id:1>】上，叠加的【壁障<id:1>】不超过哑谜攻击*1250%；持有该【壁障<id:1>】时，己方全体每回合可共享6次免疫【控制】的效果；攻击后使自身激情+1，并获得5层【电能】"
+  },
+  {
+    "id": 103379901,
+    "name": "仪式<id:103337075>",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "角色标签带有[仪式]的角色"
+  },
+  {
+    "id": 103379902,
+    "name": "中毒<id:103337075>",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "角色标签带有[中毒]的角色"
+  },
+  {
+    "id": 103379903,
+    "name": "术具<id:103337075>",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "角色标签带有[术具]的角色"
+  },
+  {
+    "id": 1033702010,
+    "name": "万事·预备",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "下回合开始时生成1张自身2阶的预备咒语，可叠加，不可驱散"
+  },
+  {
+    "id": 1033702020,
+    "name": "万事·齐备",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "下回合开始时生成1张自身2阶的咒语，可叠加，不可驱散"
+  },
+  {
+    "id": 1033702030,
+    "name": "猛毒",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合结束时受到持有者攻击*300%的本源创伤，可叠加，不可驱散"
+  },
+  {
+    "id": 1033702040,
+    "name": "裁虚为实Ⅰ",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "鹭鸶剪在场时，即兴咒语最大攻击次数+1，可叠加，不可驱散"
+  },
+  {
+    "id": 1033702050,
+    "name": "裁虚为实Ⅱ",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "鹭鸶剪在场时，即兴咒语最大攻击次数+2，可叠加，不可驱散"
+  },
+  {
+    "id": 103374118,
+    "name": "荣光渴望",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "最大生命提升5%，仪式威力提升10%，最多叠加2层，持续2回合"
+  },
+  {
+    "id": 103374115,
+    "name": "据守",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "暴击防御提升3%，最多叠加10层；"
+  },
+  {
+    "id": 103374116,
+    "name": "殊死悲局",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "暴击率降低20%，最多可叠加5层，持续3回合"
+  },
+  {
+    "id": 103374117,
+    "name": "郁愤",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "精神防御，现实防御，抗暴率-5%，最多叠加5层；"
+  },
+  {
+    "id": 103374119,
+    "name": "筹备Ⅰ型",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合开始时，生成1张自身1阶的咒语1，持续2回合"
+  },
+  {
+    "id": 103374120,
+    "name": "筹备Ⅱ型",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合开始时，生成1张自身1阶的咒语2，持续2回合"
+  },
+  {
+    "id": 103373001,
+    "name": "音栓",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "灵魂的底座的嗡鸣回响，能够增强它的各项能力，最多叠加10层"
+  },
+  {
+    "id": 103373141,
+    "name": "灯芯暗影",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "创伤减免降低5%，创伤加成提升10%，最多叠加10层"
+  },
+  {
+    "id": 103373281,
+    "name": "余音嗡鸣",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "对敌方全体造成100%的精神创伤"
+  },
+  {
+    "id": 103373282,
+    "name": "噤声的高墙",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "咒语造成的现实/精神创伤降低80%"
+  },
+  {
+    "id": 103373283,
+    "name": "共鸣咒语",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "主动使用咒语1，2，术具技能时有50%概率共鸣能量+1，主动使用至终的仪式时共鸣能量+1；共鸣能量达到上限时，自动触发共鸣咒语"
+  },
+  {
+    "id": 117371021,
+    "name": "“词的意象”",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "单体攻击，造成700%精神创伤；攻击后赋予目标2层【激情萃取】"
+  },
+  {
+    "id": 117371022,
+    "name": "“林间，静默将至”",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，对敌方全体造成500%精神创伤；并使随机1个敌方陷入【石化】状态，持续1回合"
+  },
+  {
+    "id": 117371023,
+    "name": "“赠与暴力的谏言”",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，对敌方全体造成500%精神创伤，攻击命中时赋予目标4层【燃烧】"
+  },
+  {
+    "id": 117371024,
+    "name": "“狂欢与不眠夜”",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "自我增强，赋予自身1层【“躁动摇滚”】（不可驱散）"
+  },
+  {
+    "id": 117371025,
+    "name": "“躁动摇滚”",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "闪避所有非至终的仪式的任意攻击（生效后减少1层，不可驱散）"
+  },
+  {
+    "id": 117371041,
+    "name": "学习行为",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "自我吟诵，吟诵结束时模仿并释放我方角色技能（不可驱散）"
+  },
+  {
+    "id": 117371042,
+    "name": "依恋成长",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "自我吟诵，吟诵结束时模仿并释放我方角色技能（不可驱散）"
+  },
+  {
+    "id": 117371031,
+    "name": "延迟命运",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合结束时受到使用者攻击*10%的本源创伤"
+  },
+  {
+    "id": 117371036,
+    "name": "“母亲”的庇佑",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "不会被任何状态影响，不会被治疗，受到所有伤害固定为1（不可驱散）"
+  },
+  {
+    "id": 117373041,
+    "name": "调音指令",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "场上所有友方都携带【调音指令】，并叠加一定层数后，进入【会演开幕】状态（不可驱散）"
+  },
+  {
+    "id": 117373042,
+    "name": "会演开幕",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "进入该状态后，部分技能将触发特殊效果（不可驱散）"
+  },
+  {
+    "id": 117373043,
+    "name": "设宴",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "单体攻击，造成250%精神创伤，本次攻击穿透率提升30%，并附加【重伤】状态；优先攻击当前生命值百分比最低的敌人"
+  },
+  {
+    "id": 31440001,
+    "name": "术具耗能",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "所有术具本回合累计消耗的交感能量，回合开始时清空"
+  },
+  {
+    "id": 31440002,
+    "name": "术具唤起",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "所有术具本回合累计发动的次数，回合开始时清空"
+  },
+  {
+    "id": 31440003,
+    "name": "损耗",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "该术具释放咒语后会在当前回合停用"
+  },
+  {
+    "id": 31440004,
+    "name": "齐奏",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "暴击率+40%，获得相当于珐琅眼暴击创伤*20%的暴击创伤，最多不超过48%"
+  },
+  {
+    "id": 31440005,
+    "name": "流转：指法深造",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "该术具释放该咒语后，自动切换到对应的咒语"
+  },
+  {
+    "id": 31440006,
+    "name": "音阶拾级",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "仪式威力提升1%（效果可叠加，最多叠加30层）"
+  },
+  {
+    "id": 31440007,
+    "name": "术具",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "通过使用交感能量为术具充能，在行动序列末尾，术具循环运转，消耗交感能量能量释放咒语"
+  },
+  {
+    "id": 31440008,
+    "name": "术具调谐Ⅰ",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "发动术具时，消耗交感能量-1（生效后减少1层）"
+  },
+  {
+    "id": 31440009,
+    "name": "齐奏<id:1>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "暴击率+50%，获得相当于珐琅眼暴击创伤*30%的暴击创伤，最多不超过72%"
+  },
+  {
+    "id": 31440010,
+    "name": "音阶拾级<id:5>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "仪式威力提升1%（效果可叠加，最多叠加50层）"
+  },
+  {
+    "id": 31440011,
+    "name": "岩交感能量Ⅰ",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "岩交感能量+1"
+  },
+  {
+    "id": 31440012,
+    "name": "岩交感能量Ⅱ",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "岩交感能量+2"
+  },
+  {
+    "id": 31440013,
+    "name": "岩交感能量Ⅲ",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "岩交感能量+3"
+  },
+  {
+    "id": 31440014,
+    "name": "音程跳进",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "岩交感能量+2，使珐琅眼获得10层【音阶拾级】"
+  },
+  {
+    "id": 30250001,
+    "name": "躁动的心<id:2>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "暴击率+50%，溢出暴击率转化为暴击创伤；攻击后未暴击消失"
+  },
+  {
+    "id": 30250002,
+    "name": "洗洗耳朵",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 30250003,
+    "name": "晒晒眼睛",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 30250004,
+    "name": "躁动摇滚<id:00>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "闪避所有非至终的仪式的任意攻击（生效后减少1层）"
+  },
+  {
+    "id": 31540001,
+    "name": "弱点暴露",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合结束受到自身最大生命*15%的【稳态本源创伤<id:1>】，最高不超过来源攻击*7000%"
+  },
+  {
+    "id": 31540002,
+    "name": "洛伦兹追踪法",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "单体攻击，造成200%现实创伤，本次攻击视为至终的仪式，本次攻击是一次追击；\n使其他友方【木】灵感激情最低的角色激情+1，使自身激情+1"
+  },
+  {
+    "id": 31540003,
+    "name": "洛伦兹追踪法<id:3>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "单体攻击，造成300%现实创伤，本次攻击视为至终的仪式，本次攻击是一次追击；\n使其他友方【木】灵感激情最低的角色激情+1，使自身激情+1"
+  },
+  {
+    "id": 114300001,
+    "name": "主格特殊咒语",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "释放该咒语视为角色主动行动"
+  },
+  {
+    "id": 31470023,
+    "name": "类型2",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 31470024,
+    "name": "类型3",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 31470025,
+    "name": "类型4",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 312001411,
+    "name": "暖意<id:2>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "最大生命+2%，创伤加成+1%（效果可叠加，最多叠加15层，持续3回合，每次获得刷新时间）"
+  },
+  {
+    "id": 312001412,
+    "name": "暖意<id:3>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "最大生命+3%，创伤加成+1%（效果可叠加，最多叠加15层，持续3回合，每次获得刷新时间）"
+  },
+  {
+    "id": 312001413,
+    "name": "地母加护<id:3>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受到攻击后，获得2层【暖意<id:2>】；受治疗效果+10%；自身每损失10%生命，受治疗效果额外+5%（上限为40%）"
+  },
+  {
+    "id": 312001414,
+    "name": "地母加护<id:4>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受到攻击后，获得2层【暖意<id:3>】；受治疗效果+10%；自身每损失10%生命，受治疗效果额外+5%（上限为40%）"
+  },
+  {
+    "id": 312001415,
+    "name": "地母加护<id:5>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受到攻击后，获得2层【暖意<id:3>】；受治疗效果+20%；自身每损失10%生命，受治疗效果额外+7.5%（上限为60%）"
+  },
+  {
+    "id": 312001416,
+    "name": "生祭<id:6>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合结束时尽可能消耗【薪血】，每消耗8点【薪血】获得3点【生祭<id:5>】，若拥有不少于3点【生祭<id:5>】则释放【千万道伤痕<id:3>】,否则释放【千万个春天<id:2>】（吟诵时无法行动，最多获得24点【生祭<id:5>】）"
+  },
+  {
+    "id": 312001417,
+    "name": "生祭<id:7>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合结束时尽可能消耗【薪血】，每消耗7点【薪血】获得3点【生祭<id:5>】，若拥有不少于3点【生祭<id:5>】则释放【千万道伤痕<id:4>】,否则释放【千万个春天<id:3>】（吟诵时无法行动，最多获得27点【生祭<id:5>】）"
+  },
+  {
+    "id": 312001418,
+    "name": "生祭<id:8>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合结束时尽可能消耗【薪血】，每消耗6点【薪血】获得3点【生祭<id:5>】，若拥有不少于3点【生祭<id:5>】则释放【千万道伤痕<id:5>】,否则释放【千万个春天<id:3>】（吟诵时无法行动，最多获得30点【生祭<id:5>】）"
+  },
+  {
+    "id": 312001419,
+    "name": "千万道伤痕<id:3>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，造成次数等于【生祭<id:5>】点数的攻击，每次攻击对随机目标以自身最大生命*25%替代攻击造成115%的现实创伤；之后对敌方全体以自身最大生命*50%替代攻击造成115%的现实创伤，回复自身消耗【生祭<id:5>】点数*5%的最大生命"
+  },
+  {
+    "id": 312001420,
+    "name": "千万道伤痕<id:4>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，造成次数等于【生祭<id:5>】点数的攻击，每次攻击对随机目标以自身最大生命*27.5%替代攻击造成115%的现实创伤；之后对敌方全体以自身最大生命*50%替代攻击造成115%的现实创伤，回复自身消耗【生祭<id:5>】点数*10%的最大生命"
+  },
+  {
+    "id": 312001421,
+    "name": "千万道伤痕<id:5>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，造成次数等于【生祭<id:5>】点数的攻击，每次攻击对随机目标以自身最大生命*35%替代攻击造成115%的现实创伤；之后对敌方全体以自身最大生命*50%替代攻击造成115%的现实创伤，回复自身消耗【生祭<id:5>】点数*10%的最大生命"
+  },
+  {
+    "id": 312001422,
+    "name": "千万个春天<id:2>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，对敌方全体造成500%现实创伤；额外以自身最大生命*25%替代攻击造成115%的现实创伤，回复自身15%最大生命"
+  },
+  {
+    "id": 312001423,
+    "name": "千万个春天<id:3>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，对敌方全体造成500%现实创伤；额外以自身最大生命*50%替代攻击造成115%的现实创伤，回复自身30%最大生命"
+  },
+  {
+    "id": 31200193,
+    "name": "地母之口<id:2>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，失去20%当前生命，对敌方全体造成150%现实创伤；额外以自身最大生命*15%替代攻击附加115%现实创伤"
+  },
+  {
+    "id": 31200194,
+    "name": "地母之口<id:3>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，失去30%当前生命，对敌方全体造成150%现实创伤；额外以自身最大生命*25%替代攻击附加115%现实创伤"
+  },
+  {
+    "id": 116370022,
+    "name": "目标屏障",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "最终免伤+30%，每完成1个关卡目标，减少1层（不可驱散）"
+  },
+  {
+    "id": 116371102,
+    "name": "威力解放I",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "术法威力+10%，仪式威力+10%（不可驱散）"
+  },
+  {
+    "id": 116371017,
+    "name": "调音屏障",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受创减免+30%，受到克制攻击时移除，并赋予攻击者1层【音阶共鸣】，若受到术具攻击则额外赋予攻击者1层【音阶共鸣】(不可驱散)"
+  },
+  {
+    "id": 116371018,
+    "name": "音阶共鸣",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "达到5/10/20层时，分别获得15%暴击率/50%创伤加成/20%攻击力提升（最多叠加20层，不可驱散）"
+  },
+  {
+    "id": 116371111,
+    "name": "轰鸣震颤",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合结束时对敌方全体造成伤害，并赋予目标【侵染】；每次释放的效果逐渐变强，分别造成200%/300%/400%现实创伤，并赋予目标1/2/3层【侵染】"
+  },
+  {
+    "id": 31460001,
+    "name": "默契同调<id:1>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "被消耗时，使【使役通感<id:1>】注入8%能量，自身获得2层【灵犀<id:1>】，持续3回合\n（【默契同调<id:1>】至多叠加4层）"
+  },
+  {
+    "id": 31460002,
+    "name": "灵犀<id:1>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "【力场】：使己方克制伤害系数提升4%（上限5层，每层持续时间独立计算，不可驱散）"
+  },
+  {
+    "id": 31460003,
+    "name": "灵犀<id:2>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "【力场】：使己方克制伤害系数提升5%（上限7层，每层持续时间独立计算，不可驱散）"
+  },
+  {
+    "id": 31460004,
+    "name": "灵犀<id:3>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "【力场】：使己方克制伤害系数提升5%（上限10层，每层持续时间独立计算，不可驱散）"
+  },
+  {
+    "id": 31460005,
+    "name": "默契同调<id:2>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "被消耗时，使【使役通感<id:2>】注入10%能量，自身获得3层【灵犀<id:2>】，持续3回合\n（【默契同调<id:2>】至多叠加4层）"
+  },
+  {
+    "id": 31460006,
+    "name": "默契同调<id:3>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "被消耗时，使【使役通感<id:3>】注入12.5%能量，自身获得4层【灵犀<id:3>】，持续3回合\n（【默契同调<id:3>】至多叠加4层）"
+  },
+  {
+    "id": 31460007,
+    "name": "使役通感<id:1>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "当能量达到100%时，可在使用咒语前主动释放，消耗100%能量并进入【超凡五感<id:1>】"
+  },
+  {
+    "id": 31460008,
+    "name": "使役通感<id:2>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "当能量达到100%时，可在使用咒语前主动释放，消耗100%能量并进入【超凡五感<id:2>】"
+  },
+  {
+    "id": 31460009,
+    "name": "使役通感<id:3>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "当能量达到100%时，可在使用咒语前主动释放，消耗100%能量并进入【超凡五感<id:3>】"
+  },
+  {
+    "id": 31460010,
+    "name": "超凡五感<id:1>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "处于该状态时己方可额外主动行动一回合，此时敌方无法主动行动；本回合行动区咒语生效前，1张无阶次的【虫虫黑莓唤回术<id:1>】进入咒语序列"
+  },
+  {
+    "id": 31460011,
+    "name": "超凡五感<id:2>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "处于该状态时己方可额外主动行动一回合，此时敌方无法主动行动；本回合行动区咒语生效前，1张无阶次的【虫虫黑莓唤回术<id:2>】进入咒语序列"
+  },
+  {
+    "id": 31460012,
+    "name": "超凡五感<id:3>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "处于该状态时己方可额外主动行动一回合，此时敌方无法主动行动；本回合行动区咒语生效前，1张无阶次的【虫虫黑莓唤回术<id:3>】进入咒语序列"
+  },
+  {
+    "id": 31460181,
+    "name": "虫虫黑莓唤回术<id:1>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，对敌方全体造成1500%的精神创伤，每拥有1层【灵犀<id:1>】，额外造成150%的精神创伤，本次攻击任何灵感都视为克制"
+  },
+  {
+    "id": 31460182,
+    "name": "虫虫黑莓唤回术<id:2>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，对敌方全体造成3000%的精神创伤，每拥有1层【灵犀<id:2>】，额外造成300%的精神创伤，本次攻击任何灵感都视为克制"
+  },
+  {
+    "id": 31460183,
+    "name": "虫虫黑莓唤回术<id:3>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，对敌方全体造成5000%的精神创伤，每拥有1层【灵犀<id:3>】，额外造成500%的精神创伤，本次攻击任何灵感都视为克制"
+  },
+  {
+    "id": 31460131,
+    "name": "尘酿鹰<id:1>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "获得相当于小瑞安侬攻击*8%的攻击，最多不超过250；获得相当于小瑞安侬最大生命*8%的最大生命，最多不超过1250"
+  },
+  {
+    "id": 31460132,
+    "name": "尘酿鹰<id:2>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "获得相当于小瑞安侬攻击*10%的攻击，最多不超过310；获得相当于小瑞安侬最大生命*10%的最大生命，最多不超过1550"
+  },
+  {
+    "id": 31460124,
+    "name": "群鸟之歌<id:1>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "术法威力+30%，仪式威力+30%"
+  },
+  {
+    "id": 31460125,
+    "name": "群鸟之歌<id:2>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "术法威力+45%，仪式威力+45%"
+  },
+  {
+    "id": 31460210,
+    "name": "囫囵囵咒<id:1>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，对敌方全体造成200%精神创伤，攻击前消耗一层【默契同调<id:1>】，使自身攻击提升12%，持续3回合"
+  },
+  {
+    "id": 31460211,
+    "name": "囫囵囵咒<id:2>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，对敌方全体造成200%精神创伤，攻击前消耗一层【默契同调<id:2>】，使自身攻击提升12%，持续3回合"
+  },
+  {
+    "id": 31460212,
+    "name": "囫囵囵咒<id:3>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，对敌方全体造成200%精神创伤，攻击前消耗一层【默契同调<id:3>】，使自身攻击提升12%，持续3回合"
+  },
+  {
+    "id": 31460220,
+    "name": "悄冥冥术阵<id:1>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体增强，使己方全体获得【群鸟之歌<id:1>】3回合，攻击前消耗一层【默契同调<id:1>】，使自身最大生命提升12%，持续3回合"
+  },
+  {
+    "id": 31460221,
+    "name": "悄冥冥术阵<id:2>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体增强，使己方全体获得【群鸟之歌<id:2>】3回合，攻击前消耗一层【默契同调<id:1>】，使自身最大生命提升12%，持续3回合"
+  },
+  {
+    "id": 31460222,
+    "name": "悄冥冥术阵<id:3>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体增强，使己方全体获得【群鸟之歌<id:2>】3回合，攻击前消耗一层【默契同调<id:2>】，使自身最大生命提升12%，持续3回合"
+  },
+  {
+    "id": 31460223,
+    "name": "悄冥冥术阵<id:4>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体增强，使己方全体获得【群鸟之歌<id:2>】3回合，攻击前消耗一层【默契同调<id:3>】，使自身最大生命提升12%，持续3回合"
+  },
+  {
+    "id": 31460134,
+    "name": "加护<id:1>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "自身主动释放咒语时不消耗行动点；并使自身普通咒语升华"
+  },
+  {
+    "id": 31460135,
+    "name": "加护<id:2>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "自身主动释放咒语时不消耗行动点；并使自身普通咒语升华"
+  },
+  {
+    "id": 31460136,
+    "name": "加护<id:3>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "自身主动释放咒语时不消耗行动点；并使自身普通咒语升华"
+  },
+  {
+    "id": 31460137,
+    "name": "加护<id:4>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "自身主动释放咒语时不消耗行动点；并使自身普通咒语升华"
+  },
+  {
+    "id": 31460138,
+    "name": "加护<id:5>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "自身主动释放咒语时不消耗行动点；并使自身普通咒语升华"
+  },
+  {
+    "id": 31460244,
+    "name": "百灵百验",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "被视为是【余辉<id:3146>】【薪血<id:3146>】【电能<id:3146>】【启示<id:3146>】【术具<id:3146>】【燃烧<id:3146>】【燃血<id:3146>】【中毒<id:3146>】【仪式<id:3146>】【升阶<id:3146>】【额外行动<id:3146>】【位移<id:3146>】体系队伍中的一员。"
+  },
+  {
+    "id": 31460245,
+    "name": "余辉<id:3146>",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 31460246,
+    "name": "薪血<id:3146>",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 31460247,
+    "name": "电能<id:3146>",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 31460248,
+    "name": "启示<id:3146>",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 31460249,
+    "name": "术具<id:3146>",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 31460250,
+    "name": "燃烧<id:3146>",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 31460251,
+    "name": "燃血<id:3146>",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 31460252,
+    "name": "中毒<id:3146>",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 31460253,
+    "name": "仪式<id:3146>",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 31460254,
+    "name": "升阶<id:3146>",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 31460255,
+    "name": "额外行动<id:3146>",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 31460256,
+    "name": "位移<id:3146>",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
   }
 ]

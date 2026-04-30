@@ -1,0 +1,162 @@
+[
+  {
+    "attrId": 0,
+    "name": "生命值",
+    "special": 0,
+    "min": 0,
+    "max": 199999,
+    "desc": "受到伤害时扣除，归零时冒险失败"
+  },
+  {
+    "attrId": 1,
+    "name": "生命上限",
+    "special": 0,
+    "min": 0,
+    "max": 199999,
+    "desc": ""
+  },
+  {
+    "attrId": 2,
+    "name": "怒气",
+    "special": 1,
+    "min": 0,
+    "max": 100,
+    "desc": "进战斗时会被置为0"
+  },
+  {
+    "attrId": 3,
+    "name": "魔力",
+    "special": 0,
+    "min": 0,
+    "max": 1999,
+    "desc": "提升造成的伤害"
+  },
+  {
+    "attrId": 4,
+    "name": "防御",
+    "special": 0,
+    "min": 0,
+    "max": 1999,
+    "desc": "降低受到的伤害"
+  },
+  {
+    "attrId": 5,
+    "name": "普攻伤害",
+    "special": 1,
+    "min": -1,
+    "max": 10,
+    "desc": ""
+  },
+  {
+    "attrId": 6,
+    "name": "技能伤害",
+    "special": 1,
+    "min": -1,
+    "max": 10,
+    "desc": ""
+  },
+  {
+    "attrId": 11,
+    "name": "连击率",
+    "special": 1,
+    "min": 0,
+    "max": 1,
+    "desc": ""
+  },
+  {
+    "attrId": 12,
+    "name": "暴击率",
+    "special": 1,
+    "min": 0,
+    "max": 1,
+    "desc": ""
+  },
+  {
+    "attrId": 13,
+    "name": "反击率",
+    "special": 1,
+    "min": 0,
+    "max": 1,
+    "desc": ""
+  },
+  {
+    "attrId": 14,
+    "name": "连击伤害",
+    "special": 1,
+    "min": -1,
+    "max": 10,
+    "desc": ""
+  },
+  {
+    "attrId": 15,
+    "name": "暴击伤害",
+    "special": 1,
+    "min": -1,
+    "max": 10,
+    "desc": ""
+  },
+  {
+    "attrId": 16,
+    "name": "反击伤害",
+    "special": 1,
+    "min": -1,
+    "max": 10,
+    "desc": ""
+  },
+  {
+    "attrId": 17,
+    "name": "绝技伤害",
+    "special": 1,
+    "min": -1,
+    "max": 10,
+    "desc": ""
+  },
+  {
+    "attrId": 3710,
+    "name": "闪电伤害",
+    "special": 1,
+    "min": -1,
+    "max": 10,
+    "desc": ""
+  },
+  {
+    "attrId": 3730,
+    "name": "飞光伤害",
+    "special": 1,
+    "min": -1,
+    "max": 10,
+    "desc": ""
+  },
+  {
+    "attrId": 3740,
+    "name": "每回合连击次数上限",
+    "special": 1,
+    "min": 2,
+    "max": 5,
+    "desc": ""
+  },
+  {
+    "attrId": 3750,
+    "name": "冰冻计数",
+    "special": 0,
+    "min": 0,
+    "max": 1,
+    "desc": ""
+  },
+  {
+    "attrId": 3760,
+    "name": "每回合回血数量",
+    "special": 0,
+    "min": 0,
+    "max": 500,
+    "desc": ""
+  },
+  {
+    "attrId": 3720,
+    "name": "冰晶伤害",
+    "special": 1,
+    "min": -1,
+    "max": 10,
+    "desc": ""
+  }
+]

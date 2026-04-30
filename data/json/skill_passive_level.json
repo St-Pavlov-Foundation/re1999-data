@@ -2532,5 +2532,110 @@
     "skillPassive": 31430171,
     "uiFilterSkill": "",
     "skillGroup": 3
+  },
+  {
+    "heroId": 3146,
+    "skillLevel": 0,
+    "skillPassive": 31460141,
+    "uiFilterSkill": "",
+    "skillGroup": 0
+  },
+  {
+    "heroId": 3146,
+    "skillLevel": 1,
+    "skillPassive": 31460151,
+    "uiFilterSkill": "",
+    "skillGroup": 1
+  },
+  {
+    "heroId": 3146,
+    "skillLevel": 2,
+    "skillPassive": 31460161,
+    "uiFilterSkill": "",
+    "skillGroup": 2
+  },
+  {
+    "heroId": 3146,
+    "skillLevel": 3,
+    "skillPassive": 31460171,
+    "uiFilterSkill": "",
+    "skillGroup": 3
+  },
+  {
+    "heroId": 3147,
+    "skillLevel": 0,
+    "skillPassive": 31470151,
+    "uiFilterSkill": "",
+    "skillGroup": 0
+  },
+  {
+    "heroId": 3147,
+    "skillLevel": 1,
+    "skillPassive": 31470152,
+    "uiFilterSkill": "",
+    "skillGroup": 1
+  },
+  {
+    "heroId": 3147,
+    "skillLevel": 2,
+    "skillPassive": 31470153,
+    "uiFilterSkill": "",
+    "skillGroup": 2
+  },
+  {
+    "heroId": 3147,
+    "skillLevel": 3,
+    "skillPassive": 31470154,
+    "uiFilterSkill": "",
+    "skillGroup": 3
+  },
+  {
+    "heroId": 3154,
+    "skillLevel": 1,
+    "skillPassive": 31540141,
+    "uiFilterSkill": "",
+    "skillGroup": 1
+  },
+  {
+    "heroId": 3154,
+    "skillLevel": 2,
+    "skillPassive": 31540142,
+    "uiFilterSkill": "",
+    "skillGroup": 2
+  },
+  {
+    "heroId": 3154,
+    "skillLevel": 3,
+    "skillPassive": 31540143,
+    "uiFilterSkill": "",
+    "skillGroup": 3
+  },
+  {
+    "heroId": 3144,
+    "skillLevel": 0,
+    "skillPassive": 31440140,
+    "uiFilterSkill": "",
+    "skillGroup": 0
+  },
+  {
+    "heroId": 3144,
+    "skillLevel": 1,
+    "skillPassive": 31440141,
+    "uiFilterSkill": "",
+    "skillGroup": 1
+  },
+  {
+    "heroId": 3144,
+    "skillLevel": 2,
+    "skillPassive": 31440142,
+    "uiFilterSkill": "",
+    "skillGroup": 2
+  },
+  {
+    "heroId": 3144,
+    "skillLevel": 3,
+    "skillPassive": 31440143,
+    "uiFilterSkill": "",
+    "skillGroup": 3
   }
 ]

@@ -43,6 +43,7 @@ function HeroMo:ctor()
 	self.belongOtherPlayer = false
 	self.otherPlayerEquipMo = nil
 	self.extraStr = nil
+	self.deviceMo = nil
 end
 
 function HeroMo:init(info, config)
@@ -327,6 +328,8 @@ function HeroMo:update(info)
 	self.extraMo = self.extraMo or CharacterExtraMO.New(self)
 
 	self.extraMo:refreshMo(info.extraStr)
+
+	self.deviceMo = self:getDeviceMo()
 end
 
 function HeroMo:_getListInfo(originList, cls)
@@ -1027,6 +1030,49 @@ function HeroMo:getTalentTxtByHeroType()
 	local heroType = self:getHeroType()
 
 	return CharacterEnum.TalentTxtByHeroType[heroType]
+end
+
+function HeroMo:getDeviceId()
+	if self.destinyStoneMo then
+		local exSkillCo = self.destinyStoneMo:getExpExchangeSkillCo(self.exSkillLevel)
+
+		if exSkillCo and exSkillCo.deviceId > 0 then
+			return exSkillCo.deviceId
+		end
+
+		local stoneCo = self.destinyStoneMo:getCurUseStoneCo()
+
+		if stoneCo and not string.nilorempty(stoneCo.deviceAdd) then
+			local devices = GameUtil.splitString2(stoneCo.deviceAdd, true)
+
+			for _, v in pairs(devices) do
+				if v[1] == self.exSkillLevel then
+					return
+				end
+			end
+		end
+	end
+
+	local exSkillCos = SkillConfig.instance:getheroexskillco(self.heroId)
+	local exSkillCo = exSkillCos and exSkillCos[self.exSkillLevel]
+
+	if exSkillCo and exSkillCo.deviceId > 0 then
+		return exSkillCo.deviceId
+	end
+
+	return self.config and self.config.deviceId
+end
+
+function HeroMo:getDeviceMo()
+	local deviceId = self:getDeviceId()
+
+	if deviceId and deviceId > 0 then
+		self.deviceMo = self.deviceMo or HeroDeviceMO.New(self.heroId)
+
+		self.deviceMo:refreshDevice(deviceId)
+
+		return self.deviceMo
+	end
 end
 
 return HeroMo

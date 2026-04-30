@@ -2,7 +2,8 @@
   {
     "id": 101,
     "name": "力量",
-    "careerDesc": "<color=#87817B><i>你欲磨利刀刃，蓄蕴咒语。<i></color>",
+    "exAttrLimit": "7#2|8#4",
+    "careerDesc": "<color=#87817B><i>你欲磨利刀刃，蓄蕴咒语。大概率获得余辉、薪血的属性强化<i></color>",
     "icon": "rouge2_skillicon1",
     "spriteIndex": 0,
     "type": 1,
@@ -13,7 +14,8 @@
   {
     "id": 102,
     "name": "反应",
-    "careerDesc": "<color=#87817B><i>你欲机动行事，因时制宜。<i></color>",
+    "exAttrLimit": "7#2|8#4",
+    "careerDesc": "<color=#87817B><i>你欲机动行事，因时制宜。大概率获得薪血、电能的属性强化<i></color>",
     "icon": "rouge2_skillicon2",
     "spriteIndex": 1,
     "type": 1,
@@ -24,7 +26,8 @@
   {
     "id": 103,
     "name": "奥秘",
-    "careerDesc": "<color=#87817B><i>你欲勘破迷雾，识见真知。<i></color>",
+    "exAttrLimit": "7#2|8#4",
+    "careerDesc": "<color=#87817B><i>你欲勘破迷雾，识见真知。大概率获得余辉、术具的属性强化<i></color>",
     "icon": "rouge2_skillicon3",
     "spriteIndex": 2,
     "type": 1,
@@ -35,7 +38,8 @@
   {
     "id": 104,
     "name": "感知",
-    "careerDesc": "<color=#87817B><i>你欲行至幽微，以心为镜。<i></color>",
+    "exAttrLimit": "7#2|8#4",
+    "careerDesc": "<color=#87817B><i>你欲行至幽微，以心为镜。大概率获得启示、术具的属性强化<i></color>",
     "icon": "rouge2_skillicon4",
     "spriteIndex": 3,
     "type": 1,
@@ -46,7 +50,8 @@
   {
     "id": 105,
     "name": "激情",
-    "careerDesc": "<color=#87817B><i>你欲抛却重负，长驱直进。<i></color>",
+    "exAttrLimit": "7#2|8#4",
+    "careerDesc": "<color=#87817B><i>你欲抛却重负，长驱直进。大概率获得电能、启示的属性强化<i></color>",
     "icon": "rouge2_skillicon5",
     "spriteIndex": 4,
     "type": 1,
@@ -57,6 +62,7 @@
   {
     "id": 106,
     "name": "良知",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -68,6 +74,7 @@
   {
     "id": 201,
     "name": "§造物掉落次数",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -79,6 +86,7 @@
   {
     "id": 202,
     "name": "§造物背包容量",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -90,6 +98,7 @@
   {
     "id": 203,
     "name": "§隐藏造物背包容量",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -101,6 +110,7 @@
   {
     "id": 204,
     "name": "§谐波背包容量",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -112,17 +122,19 @@
   {
     "id": 205,
     "name": "§主动技能背包容量",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
     "type": 2,
     "level": "",
-    "min": 30,
+    "min": 3,
     "showMax": 0
   },
   {
     "id": 206,
     "name": "§鸡煲扩容槽位属性",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -134,6 +146,7 @@
   {
     "id": 301,
     "name": "身体素质",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "rouge2_skillicon6",
     "spriteIndex": 0,
@@ -145,6 +158,7 @@
   {
     "id": 310,
     "name": "§虚血",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -156,6 +170,7 @@
   {
     "id": 311,
     "name": "§力量 - 最大生命",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -167,6 +182,7 @@
   {
     "id": 312,
     "name": "§力量 - 攻击",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -178,6 +194,7 @@
   {
     "id": 313,
     "name": "§力量 - 暴击创伤",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -189,6 +206,7 @@
   {
     "id": 314,
     "name": "§力量 - 创伤加成",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -200,6 +218,7 @@
   {
     "id": 315,
     "name": "§反应 - 本源创伤加成",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -211,6 +230,7 @@
   {
     "id": 316,
     "name": "§反应 - 最终免伤",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -222,6 +242,7 @@
   {
     "id": 317,
     "name": "§奥秘 - 倍率",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -233,6 +254,7 @@
   {
     "id": 318,
     "name": "§奥秘 - 威力",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -244,6 +266,7 @@
   {
     "id": 319,
     "name": "§奥秘 - 缓冲",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -255,6 +278,7 @@
   {
     "id": 320,
     "name": "§检定层数动态修正",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -266,6 +290,7 @@
   {
     "id": 321,
     "name": "§反应 - 额外行动附加自身攻击",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -277,6 +302,7 @@
   {
     "id": 322,
     "name": "§反应 - 目标最大生命",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -288,6 +314,7 @@
   {
     "id": 323,
     "name": "§力量收益公式系数",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -299,6 +326,7 @@
   {
     "id": 324,
     "name": "§反应收益公式系数",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -310,6 +338,7 @@
   {
     "id": 325,
     "name": "§奥秘收益公式系数",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -321,6 +350,7 @@
   {
     "id": 326,
     "name": "§奥秘主目标重刃",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -332,6 +362,7 @@
   {
     "id": 327,
     "name": "§奥秘副目标反向重刃",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -343,6 +374,7 @@
   {
     "id": 328,
     "name": "§鸡煲用力量",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -354,6 +386,7 @@
   {
     "id": 329,
     "name": "§鸡煲用反应",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -365,6 +398,7 @@
   {
     "id": 330,
     "name": "§鸡煲黄球用奥秘",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -376,6 +410,7 @@
   {
     "id": 331,
     "name": "§管钟手主属性成长",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -387,6 +422,7 @@
   {
     "id": 332,
     "name": "§鸡煲黑球用激情",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -398,6 +434,7 @@
   {
     "id": 333,
     "name": "§拨弦手主属性成长",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -409,6 +446,7 @@
   {
     "id": 334,
     "name": "§鸡煲黄球用0.5奥秘",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -420,6 +458,7 @@
   {
     "id": 335,
     "name": "§鸡煲绿球用奥秘",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -431,6 +470,7 @@
   {
     "id": 401,
     "name": "§感知检定收益 - 力量",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -442,6 +482,7 @@
   {
     "id": 402,
     "name": "§感知检定收益 - 反应",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -453,6 +494,7 @@
   {
     "id": 403,
     "name": "§感知检定收益 - 奥秘",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -464,6 +506,7 @@
   {
     "id": 404,
     "name": "§感知检定收益 - 感知",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -475,6 +518,7 @@
   {
     "id": 405,
     "name": "§感知检定收益 - 激情",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -486,6 +530,7 @@
   {
     "id": 406,
     "name": "§五维基础成长 2%*力量",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -497,6 +542,7 @@
   {
     "id": 407,
     "name": "§五维基础成长 1%*力量",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -508,6 +554,7 @@
   {
     "id": 408,
     "name": "§五维基础成长 2%*反应",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -519,6 +566,7 @@
   {
     "id": 409,
     "name": "§五维基础成长 2%*奥秘",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -530,6 +578,7 @@
   {
     "id": 410,
     "name": "§五维基础成长 2%*感知",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -541,6 +590,7 @@
   {
     "id": 411,
     "name": "§激情委托计数收益 - 力量",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -552,6 +602,7 @@
   {
     "id": 412,
     "name": "§激情委托计数收益 - 反应",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -563,6 +614,7 @@
   {
     "id": 413,
     "name": "§激情委托计数收益 - 奥秘",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -574,6 +626,7 @@
   {
     "id": 414,
     "name": "§激情委托计数收益 - 感知",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -585,6 +638,7 @@
   {
     "id": 415,
     "name": "§激情委托计数收益 - 激情",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -596,6 +650,7 @@
   {
     "id": 416,
     "name": "§商品价格修正基础值",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -607,6 +662,7 @@
   {
     "id": 417,
     "name": "§商品价格修正千分比",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -618,6 +674,7 @@
   {
     "id": 418,
     "name": "§获得金币修正基础值",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -629,6 +686,7 @@
   {
     "id": 419,
     "name": "§获得金币修正千分比",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -640,6 +698,7 @@
   {
     "id": 420,
     "name": "§获得复活币修正基础值",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -651,6 +710,7 @@
   {
     "id": 421,
     "name": "§商店不再可以偷窃",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -662,17 +722,19 @@
   {
     "id": 501,
     "name": "§主角技能COST上限",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
     "type": 2,
     "level": "",
-    "min": 12,
+    "min": 0,
     "showMax": 0
   },
   {
     "id": 502,
     "name": "§线上热更备用2",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -684,6 +746,7 @@
   {
     "id": 503,
     "name": "§线上热更备用3",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -695,6 +758,7 @@
   {
     "id": 504,
     "name": "§线上热更备用4",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -706,6 +770,7 @@
   {
     "id": 505,
     "name": "§线上热更备用5",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "",
     "spriteIndex": 0,
@@ -717,10 +782,167 @@
   {
     "id": 601,
     "name": "推荐属性",
+    "exAttrLimit": "",
     "careerDesc": "",
     "icon": "rouge2_careerattribute_careerrecommand",
     "spriteIndex": 5,
     "type": 3,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 121,
+    "name": "§塞纳河畔marker",
+    "exAttrLimit": "",
+    "careerDesc": "",
+    "icon": "",
+    "spriteIndex": 0,
+    "type": 1,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 122,
+    "name": "§拉斯帕伊大道marker",
+    "exAttrLimit": "",
+    "careerDesc": "",
+    "icon": "",
+    "spriteIndex": 0,
+    "type": 1,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 123,
+    "name": "§塞纳河畔marker",
+    "exAttrLimit": "",
+    "careerDesc": "",
+    "icon": "",
+    "spriteIndex": 0,
+    "type": 1,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 131,
+    "name": "§斗争之路marker",
+    "exAttrLimit": "",
+    "careerDesc": "",
+    "icon": "",
+    "spriteIndex": 0,
+    "type": 1,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 132,
+    "name": "§巴黎子午线marker",
+    "exAttrLimit": "",
+    "careerDesc": "",
+    "icon": "",
+    "spriteIndex": 0,
+    "type": 1,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 133,
+    "name": "§斗争之路marker",
+    "exAttrLimit": "",
+    "careerDesc": "",
+    "icon": "",
+    "spriteIndex": 0,
+    "type": 1,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 141,
+    "name": "§仪式之路marker",
+    "exAttrLimit": "",
+    "careerDesc": "",
+    "icon": "",
+    "spriteIndex": 0,
+    "type": 1,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 142,
+    "name": "§仪式之路marker",
+    "exAttrLimit": "",
+    "careerDesc": "",
+    "icon": "",
+    "spriteIndex": 0,
+    "type": 1,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 143,
+    "name": "§回响之路marker",
+    "exAttrLimit": "",
+    "careerDesc": "",
+    "icon": "",
+    "spriteIndex": 0,
+    "type": 1,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 513,
+    "name": "第三大层隐藏marker",
+    "exAttrLimit": "",
+    "careerDesc": "",
+    "icon": "",
+    "spriteIndex": 0,
+    "type": 1,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 514,
+    "name": "第四大层隐藏marker",
+    "exAttrLimit": "",
+    "careerDesc": "",
+    "icon": "",
+    "spriteIndex": 0,
+    "type": 1,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 611,
+    "name": "1/2结局隐藏marker",
+    "exAttrLimit": "",
+    "careerDesc": "",
+    "icon": "",
+    "spriteIndex": 0,
+    "type": 1,
+    "level": "",
+    "min": 0,
+    "showMax": 0
+  },
+  {
+    "id": 612,
+    "name": "3结局隐藏marker",
+    "exAttrLimit": "",
+    "careerDesc": "",
+    "icon": "",
+    "spriteIndex": 0,
+    "type": 1,
     "level": "",
     "min": 0,
     "showMax": 0

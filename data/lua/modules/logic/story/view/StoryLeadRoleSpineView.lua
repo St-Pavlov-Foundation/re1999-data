@@ -126,6 +126,8 @@ function StoryLeadRoleSpineView:_isSpineKeepShow(roleType)
 end
 
 function StoryLeadRoleSpineView:_showLeadHero(co, show, fadeIn, fadeOut)
+	local isSameStep = self._stepCo and self._stepCo.id == co.id
+
 	self._stepCo = co
 
 	local heroIcon = string.split(self._stepCo.conversation.heroIcon, ".")[1]
@@ -150,7 +152,7 @@ function StoryLeadRoleSpineView:_showLeadHero(co, show, fadeIn, fadeOut)
 		self._tweenId = nil
 	end
 
-	if self:_keepSpineAni(self._roleType) then
+	if not isSameStep and self:_keepSpineAni(self._roleType) then
 		return
 	end
 
@@ -198,10 +200,12 @@ function StoryLeadRoleSpineView:_playHeroLeadSpineVoice(roleType)
 		return
 	end
 
+	local hasOptionPlayed = StoryModel.instance:hasBranchPlayed(self._stepCo)
+
 	self._mainheroco = {}
 	self._mainheroco.motion = self._stepCo.mainRole.anims[GameLanguageMgr.instance:getVoiceTypeStoryIndex()]
 	self._mainheroco.face = self._stepCo.mainRole.expressions[GameLanguageMgr.instance:getVoiceTypeStoryIndex()]
-	self._mainheroco.mouth = self._stepCo.mainRole.mouses[GameLanguageMgr.instance:getVoiceTypeStoryIndex()]
+	self._mainheroco.mouth = hasOptionPlayed and "" or self._stepCo.mainRole.mouses[GameLanguageMgr.instance:getVoiceTypeStoryIndex()]
 
 	for index, v in ipairs(self._heroSpines) do
 		v:stopVoice()

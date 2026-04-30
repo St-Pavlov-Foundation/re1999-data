@@ -46,6 +46,7 @@ function MainHeroView:onOpen()
 	self:addEventCb(MainController.instance, MainEvent.OnShowMainThumbnailView, self._onShowMainThumbnailView, self)
 	self:addEventCb(MainController.instance, MainEvent.SetMainViewRootVisible, self._setViewRootVisible, self)
 	self:addEventCb(MainController.instance, MainEvent.ForceStopVoice, self._forceStopVoice, self)
+	self:addEventCb(MainController.instance, MainEvent.SetHeroInScene, self._onSetHeroInScene, self)
 	self:addEventCb(MainSceneSwitchController.instance, MainSceneSwitchEvent.StartSwitchScene, self._onStartSwitchScene, self, LuaEventSystem.High)
 	self:addEventCb(MainSceneSwitchController.instance, MainSceneSwitchEvent.SwitchSceneFinish, self._onSwitchSceneFinish, self)
 	self:addEventCb(StoryController.instance, StoryEvent.Start, self._onStart, self)
@@ -56,6 +57,11 @@ function MainHeroView:onOpen()
 	self:addEventCb(LoginController.instance, LoginEvent.OnBeginLogout, self._onBeginLogout, self)
 	self:addEventCb(PlayerCardController.instance, PlayerCardEvent.RefreshMainHeroSkin, self._onRefreshMainHeroSkin, self)
 	self:addEventCb(CharacterController.instance, CharacterEvent.MainHeroGmPlayVoice, self._onMainHeroGmPlayVoice, self)
+	self:addEventCb(CharacterVoiceController.instance, CharacterVoiceEvent.XRAnInteractionStart, self._onXRAnInteractionStart, self)
+end
+
+function MainHeroView:_onXRAnInteractionStart()
+	self._animator:Play("mainview_out", 0, 0)
 end
 
 function MainHeroView:_onMainHeroGmPlayVoice(voiceId)
@@ -81,6 +87,10 @@ function MainHeroView:_onScreenResize()
 end
 
 function MainHeroView:_onStart(storyId)
+	if CharacterVoiceEnum.MainViewIgnoreStory[storyId] then
+		return
+	end
+
 	if self._lightSpine then
 		self._isSpineCleared = true
 
@@ -96,6 +106,10 @@ function MainHeroView:_onStart(storyId)
 end
 
 function MainHeroView:_onFinish(storyId)
+	if CharacterVoiceEnum.MainViewIgnoreStory[storyId] then
+		return
+	end
+
 	if not self._isSpineCleared then
 		return
 	end
@@ -1274,6 +1288,12 @@ function MainHeroView:_setShowInScene(showInScene)
 	end
 
 	MainController.instance:dispatchEvent(MainEvent.HeroShowInScene, self._showInScene)
+end
+
+function MainHeroView:_onSetHeroInScene(showInScene)
+	if self._showInScene ~= showInScene then
+		self:_setShowInScene(showInScene)
+	end
 end
 
 function MainHeroView:debugShowMode(showInScene)

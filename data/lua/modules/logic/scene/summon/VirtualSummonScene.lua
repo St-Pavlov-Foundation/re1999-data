@@ -19,7 +19,6 @@ function VirtualSummonScene:ctor()
 	self._isOpenImmediately = false
 	self._isOpen = false
 
-	self:checkSummonSkin()
 	self:checkInitLoader()
 
 	self._sceneObj = SummonSceneShell.New()
@@ -43,17 +42,18 @@ function VirtualSummonScene:createLoader(resMap, extendPath)
 	return loader
 end
 
-function VirtualSummonScene:checkSummonSkin()
+function VirtualSummonScene:checkInitLoader()
 	local curScenePath = SummonController.getCharScenePrefabPath()
+	local isNeedChangeScene = false
 
 	if self.charGoPath == nil or self.charGoPath ~= curScenePath then
 		self.charGoPath = curScenePath
 
 		logNormal("切换抽卡皮肤路径")
-	end
-end
 
-function VirtualSummonScene:checkInitLoader()
+		isNeedChangeScene = true
+	end
+
 	if not self._loaderChar then
 		local preloadUrlMap = tabletool.copy(SummonEnum.SummonCharPreloadPath)
 
@@ -63,6 +63,9 @@ function VirtualSummonScene:checkInitLoader()
 
 		self._loaderChar = self:createLoader(preloadUrlMap, self.charGoPath)
 		self._isCharLoaded = false
+	elseif isNeedChangeScene and not self._loaderChar:isResInList(curScenePath) then
+		logNormal("添加抽卡皮肤路径")
+		self._loaderChar:addSceneUrl(curScenePath)
 	end
 end
 
@@ -131,7 +134,6 @@ function VirtualSummonScene:openSummonScene(immediately)
 	self._isOpenImmediately = immediately
 
 	self:checkInitRootGO()
-	self:checkSummonSkin()
 	self:checkInitLoader()
 	gohelper.setActive(self:getRootGO(), true)
 

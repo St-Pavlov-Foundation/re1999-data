@@ -106,6 +106,7 @@ function StoryController:playStory(storyId, storyParams, callback, target, param
 				ViewMgr.instance:closeView(ViewName.StoryHeroView, true)
 				ViewMgr.instance:closeView(ViewName.StoryFrontView, true)
 				ViewMgr.instance:closeView(ViewName.StoryLogView, true)
+				ViewMgr.instance:closeView(ViewName.StoryBranchView, true)
 			end
 
 			ViewMgr.instance:openView(ViewName.StoryBackgroundView, nil, true)
@@ -233,15 +234,12 @@ function StoryController:playStepChoose(stepId)
 
 	for _, opt in ipairs(optList) do
 		if opt.conditionType == StoryEnum.OptionConditionType.None then
-			local o = {}
-
-			o.name = opt.branchTxts[GameLanguageMgr.instance:getLanguageTypeStoryIndex()]
 			index = index + 1
-			o.index = index
-			o.id = opt.followId
-			o.stepId = stepId
 
-			table.insert(list, o)
+			local mo = StorySelectMo.New()
+
+			mo:init(index, opt.followId, opt.branchTxts[GameLanguageMgr.instance:getLanguageTypeStoryIndex()], stepId, opt)
+			table.insert(list, mo)
 		end
 	end
 
@@ -464,6 +462,10 @@ function StoryController:finished(isSkip)
 		ViewMgr.instance:closeView(ViewName.StoryLogView, true)
 	end
 
+	if ViewMgr.instance:isOpen(ViewName.StoryBranchView) then
+		ViewMgr.instance:closeView(ViewName.StoryBranchView, true)
+	end
+
 	if not isSkip then
 		self:statFinishStory()
 	end
@@ -548,10 +550,12 @@ function StoryController:statFinishStory()
 end
 
 function StoryController:openStoryLogView()
+	PostProcessingMgr.instance:setIgnoreUIBlur(true)
 	ViewMgr.instance:openView(ViewName.StoryLogView, nil, true)
 end
 
 function StoryController:openStoryBranchView(param)
+	PostProcessingMgr.instance:setIgnoreUIBlur(true)
 	ViewMgr.instance:openView(ViewName.StoryBranchView, param, true)
 end
 
@@ -561,6 +565,10 @@ end
 
 function StoryController:closeStoryBranchView()
 	ViewMgr.instance:closeView(ViewName.StoryBranchView, true)
+end
+
+function StoryController:openStoryHeroPreview()
+	ViewMgr.instance:openView(ViewName.StoryHeroPreview, nil, true)
 end
 
 StoryController.instance = StoryController.New()

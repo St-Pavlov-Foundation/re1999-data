@@ -199,6 +199,16 @@ function BpController:isEmptySkinFaceViewStr(skinId)
 	return string.nilorempty(data)
 end
 
+function BpController:isSkinFaceOnlineBySkinId(skinId)
+	local bpsvpCfg = BpConfig.instance:getBpSkinViewParamCO(skinId)
+
+	if bpsvpCfg and bpsvpCfg.online == BpEnum.StoreSkinOnlineState.Online then
+		return true
+	end
+
+	return false
+end
+
 function BpController:setSkinFaceViewStr(skinId)
 	skinId = skinId or 0
 

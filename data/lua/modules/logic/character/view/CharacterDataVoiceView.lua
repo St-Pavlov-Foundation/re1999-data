@@ -180,7 +180,7 @@ function CharacterDataVoiceView:_refreshSpine()
 		offsets = SkinConfig.instance:getSkinOffset(offsetStr)
 	end
 
-	recthelper.setAnchor(self._gospine.transform, offsets[1], offsets[2])
+	CharacterVoiceEnum.setSpineOffset(self._uiSpine, tonumber(offsets[1]), tonumber(offsets[2]))
 	transformhelper.setLocalScale(self._gospine.transform, offsets[3], offsets[3], offsets[3])
 end
 

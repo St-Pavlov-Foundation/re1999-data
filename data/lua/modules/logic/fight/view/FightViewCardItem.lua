@@ -17,8 +17,8 @@ function FightViewCardItem:init(go)
 	if self.handCardType == FightEnum.CardShowType.HandCard or self.handCardType == FightEnum.CardShowType.Operation or self.handCardType == FightEnum.CardShowType.PlayCard then
 		local cardSkin = FightCardDataHelper.getCardSkin()
 
-		if cardSkin == 672801 then
-			self.useSkin = true
+		if cardSkin then
+			self.useSkin = cardSkin
 		end
 	end
 
@@ -110,6 +110,10 @@ function FightViewCardItem:init(go)
 
 	self._predisplay = gohelper.findChild(go, "layout/predisplay")
 	self._predisplayLorentz = gohelper.findChild(go, "layout/predisplay_lorentz")
+	self.noCostTips = gohelper.findChild(go, "layout/noCostTips")
+
+	gohelper.setActive(self.noCostTips, false)
+
 	self.baifuzhang_wheel_card = gohelper.findChild(go, "layout/baifuzhang_wheel_card")
 	self.baifuzhang_wheel_cardText = gohelper.findChildText(self.baifuzhang_wheel_card, "image_BG/txt_predisplay")
 	self._cardAni = gohelper.onceAddComponent(go, typeof(UnityEngine.Animator))
@@ -208,6 +212,7 @@ function FightViewCardItem:init(go)
 	self.goTowerAssistRole = gohelper.findChild(go, "#go_towerAssist")
 	self.goTowerAssistSmallSkillIcon = gohelper.findChild(self.goTowerAssistRole, "eff")
 	self.goTowerAssistBigSkillIcon = gohelper.findChild(self.goTowerAssistRole, "eff2")
+	self.go3_7Rouge2FuMo = gohelper.findChild(go, "3_7rouge2fumo")
 	self.xingtiTxt = gohelper.findChildText(go, "txt_xingti")
 	self.xingtiGo = self.xingtiTxt.gameObject
 	self.alfLoadStatus = FightViewCardItem.AlfLoadStatus.None
@@ -234,16 +239,18 @@ function FightViewCardItem:init(go)
 		recthelper.setAnchorY(frontBgNormal.transform, -14)
 		recthelper.setAnchorY(frontBgBigSkill.transform, 20)
 
-		local backBgRoot = gohelper.create2d(go, "skinBackBg")
+		if self.useSkin == 672801 then
+			local backBgRoot = gohelper.create2d(go, "skinBackBg")
 
-		self.backBgRoot = backBgRoot
+			self.backBgRoot = backBgRoot
 
-		gohelper.setActive(backBgRoot, true)
-		gohelper.setSibling(backBgRoot, 0)
+			gohelper.setActive(backBgRoot, true)
+			gohelper.setSibling(backBgRoot, 0)
 
-		local img = gohelper.onceAddComponent(backBgRoot, gohelper.Type_Image)
+			local img = gohelper.onceAddComponent(backBgRoot, gohelper.Type_Image)
 
-		UISpriteSetMgr.instance:setFightSkillCardSprite(img, "card_dz3", true)
+			UISpriteSetMgr.instance:setFightSkillCardSprite(img, "card_dz3", true)
+		end
 
 		for i = 1, #self._innerStartGOs do
 			local obj = self._innerStartGOs[i]
@@ -347,6 +354,10 @@ end
 function FightViewCardItem:addEventListeners()
 	self:addEventCb(FightController.instance, FightEvent.ASFD_EmitterEnergyChange, self.onEmitterEnergyChange, self)
 	self:addEventCb(FightController.instance, FightEvent.UpdateBuffActInfo, self.onUpdateBuffActInfo, self)
+
+	if self.handCardType == FightEnum.CardShowType.HandCard or self.handCardType == FightEnum.CardShowType.Operation then
+		self:addEventCb(FightController.instance, FightEvent.OnClientUnnamedTypeChange, self.onClientUnnamedTypeChange, self)
+	end
 
 	if self:checkCanShowHideCardEffect() then
 		self:addEventCb(FightController.instance, FightEvent.OnAddHideCardBuff, self.onAddHideCardBuff, self)
@@ -473,7 +484,7 @@ function FightViewCardItem:resetAllNode()
 	end
 end
 
-function FightViewCardItem:updateItem(entityId, skillId, cardInfoMO)
+function FightViewCardItem:updateItem(entityId, skillId, cardInfoMO, updateFromType)
 	self.entityId = entityId
 	self.skillId = skillId
 	self._cardInfoMO = cardInfoMO
@@ -511,29 +522,9 @@ function FightViewCardItem:updateItem(entityId, skillId, cardInfoMO)
 	self:refreshCardIcon()
 	self:refreshStar()
 	self:refreshTag()
-
-	local skillCO = lua_skill.configDict[self.skillId]
-	local skillCardLv = FightCardDataHelper.getSkillLv(self.entityId, self.skillId)
-
-	self._txt.text = skillCO.id .. "\nLv." .. skillCardLv
-
-	local showBigSkillEffect = skillCardLv == FightEnum.UniqueSkillCardLv
-
-	if self.useSkin then
-		showBigSkillEffect = false
-	end
-
-	if skillCardLv == FightEnum.UniqueSkillCardLv and not self._uniqueCardEffect then
-		local url = ResUrl.getUIEffect(FightPreloadViewWork.ui_dazhaoka)
-		local assetItem = FightHelper.getPreloadAssetItem(url)
-
-		self._uniqueCardEffect = gohelper.clone(assetItem:GetResource(url), self.go)
-	end
-
-	gohelper.setActive(self._uniqueCardEffect, showBigSkillEffect)
-	gohelper.setActive(self.frontBgNormal, skillCardLv ~= FightEnum.UniqueSkillCardLv)
-	gohelper.setActive(self.frontBgBigSkill, skillCardLv == FightEnum.UniqueSkillCardLv)
+	self:refreshUniqueCover()
 	self:_refreshPreDisplay()
+	self:showNoCostTips()
 	self:_showUpgradeEffect()
 	self:_showEnchantsEffect()
 	self:_showRouge2EnchantsEffect()
@@ -547,7 +538,29 @@ function FightViewCardItem:updateItem(entityId, skillId, cardInfoMO)
 	self:refreshSuperimposeIcon()
 	self:refreshAssistRoleIcon()
 	self:refreshBaiFuZhangWheelCard()
+	self:refreshUnnamedUi(updateFromType)
 	self:refreshEnchantText()
+end
+
+function FightViewCardItem:refreshUniqueCover()
+	local skillCO = lua_skill.configDict[self.skillId]
+	local skillCardLv = FightCardDataHelper.getSkillLv(self.entityId, self.skillId)
+
+	self._txt.text = skillCO.id .. "\nLv." .. skillCardLv
+
+	local coverType = FightConfig.instance:getCoverType(self.skillId, self.entityId)
+	local showBigSkillEffect = coverType == FightEnum.CoverType.Unique
+
+	if showBigSkillEffect and not self._uniqueCardEffect then
+		local url = ResUrl.getUIEffect(FightPreloadViewWork.ui_dazhaoka)
+		local assetItem = FightHelper.getPreloadAssetItem(url)
+
+		self._uniqueCardEffect = gohelper.clone(assetItem:GetResource(url), self.go)
+	end
+
+	gohelper.setActive(self._uniqueCardEffect, not self.useSkin and showBigSkillEffect)
+	gohelper.setActive(self.frontBgNormal, not showBigSkillEffect)
+	gohelper.setActive(self.frontBgBigSkill, showBigSkillEffect)
 end
 
 function FightViewCardItem:refreshBaiFuZhangWheelCard()
@@ -569,6 +582,167 @@ function FightViewCardItem:refreshBaiFuZhangWheelCard()
 		self.baifuzhang_wheel_cardText.text = luaLang("fight_bai_fu_zhang_wheel_7")
 
 		return
+	end
+end
+
+function FightViewCardItem:onClientUnnamedTypeChange()
+	self:refreshUnnamedLayer()
+end
+
+local UnnamedUIPath = "ui/viewres/fight/fight3_7nonamecard.prefab"
+
+function FightViewCardItem:refreshUnnamedUi(updateFromType)
+	if self.handCardType ~= FightEnum.CardShowType.HandCard and self.handCardType ~= FightEnum.CardShowType.PlayCard and self.handCardType ~= FightEnum.CardShowType.Operation then
+		return
+	end
+
+	local unnamedCardData = self._cardInfoMO and self._cardInfoMO:getCardData(FightCardInfo_CardData.CardDataKey.Unnamed)
+
+	if not unnamedCardData then
+		self:_refreshUnnamedUi(updateFromType)
+
+		return
+	end
+
+	if self.goUnnamedUi then
+		self:_refreshUnnamedUi(updateFromType)
+	else
+		if self.unnamedUiLoader then
+			return
+		end
+
+		self.unnamedUiLoader = MultiAbLoader.New()
+
+		self.unnamedUiLoader:addPath(UnnamedUIPath)
+		self.unnamedUiLoader:startLoad(self.onLoadUnnamedUiDone, self)
+	end
+end
+
+function FightViewCardItem:onLoadUnnamedUiDone()
+	local prefab = self.unnamedUiLoader:getFirstAssetItem():GetResource()
+
+	self.goUnnamedRoot = gohelper.findChild(self.go, "noname")
+	self.goUnnamedUi = gohelper.clone(prefab, gohelper.findChild(self.goUnnamedRoot, "#go_v3a7_nonamecard"))
+	self.goUnnamedLockBg = gohelper.findChild(self.goUnnamedUi, "bg_01")
+	self.goUnnamedUnlockBg = gohelper.findChild(self.goUnnamedUi, "bg_03")
+	self.unnamedAnimator = ZProj.ProjAnimatorPlayer.Get(self.goUnnamedUi)
+	self.unnamedLayerList = {}
+
+	table.insert(self.unnamedLayerList, self:buildUnnamedImageList(gohelper.findChild(self.goUnnamedUi, "top_left")))
+	table.insert(self.unnamedLayerList, self:buildUnnamedImageList(gohelper.findChild(self.goUnnamedUi, "top_right")))
+	table.insert(self.unnamedLayerList, self:buildUnnamedImageList(gohelper.findChild(self.goUnnamedUi, "bottom_left")))
+	table.insert(self.unnamedLayerList, self:buildUnnamedImageList(gohelper.findChild(self.goUnnamedUi, "bottom_right")))
+	self:refreshUnnamedUi()
+end
+
+function FightViewCardItem:buildUnnamedImageList(go)
+	local goList = self:getUserDataTb_()
+
+	for i = 1, 4 do
+		table.insert(goList, gohelper.findChild(go, i))
+	end
+
+	return goList
+end
+
+function FightViewCardItem:_refreshUnnamedUi(updateFromType)
+	if not self.goUnnamedUi then
+		return
+	end
+
+	local unnamedCardData = self._cardInfoMO and self._cardInfoMO:getCardData(FightCardInfo_CardData.CardDataKey.Unnamed)
+
+	if not unnamedCardData then
+		gohelper.setActive(self.goUnnamedRoot, false)
+
+		return
+	end
+
+	gohelper.setActive(self.goUnnamedRoot, true)
+
+	local unnamedDataMgr = FightDataHelper.tempMgr:getUnnamedDataMgr()
+
+	if not unnamedDataMgr:checkPlayedAnim("open") then
+		self:playUnnamedAnim("open")
+	end
+
+	local isLock = unnamedCardData.jsonValue.lock
+
+	gohelper.setActive(self.goUnnamedLockBg, isLock)
+	gohelper.setActive(self.goUnnamedUnlockBg, not isLock)
+	self:refreshUnnamedLayer(updateFromType)
+
+	if not isLock and not unnamedDataMgr:checkPlayedAnim("unlock") and self:playUnnamedAnim("unlock") then
+		self:playCardAnim("noname_unlock")
+	end
+end
+
+function FightViewCardItem:refreshUnnamedLayer(updateFromType)
+	local unnamedCardData = self._cardInfoMO and self._cardInfoMO:getCardData(FightCardInfo_CardData.CardDataKey.Unnamed)
+
+	if not unnamedCardData then
+		return
+	end
+
+	local unnamedMgr = FightDataHelper.tempMgr:getUnnamedDataMgr()
+
+	for type, goList in ipairs(self.unnamedLayerList) do
+		local severValue = unnamedCardData.jsonValue.strengthen[tostring(type)] or 0
+		local clientValue = unnamedMgr:getUnnamedTypeValue(type)
+		local totalValue = severValue + clientValue
+
+		for i = 1, 4 do
+			local active = i <= totalValue
+
+			gohelper.setActive(goList[i], active)
+
+			if active then
+				local playAnim = false
+
+				if i <= severValue then
+					if unnamedMgr:checkPlayedData(type, i) then
+						unnamedMgr:setPlayedData(type, i)
+
+						playAnim = true
+					end
+				elseif i <= totalValue and unnamedMgr:checkClientPlayedData(type, i) then
+					unnamedMgr:setClientPlayedData(type, i)
+
+					playAnim = true
+				end
+
+				if playAnim then
+					local animator = goList[i]:GetComponent(gohelper.Type_Animator)
+
+					animator:Play("fight3_7nonamecard_effpiece", 0, 0)
+				end
+			end
+		end
+	end
+end
+
+function FightViewCardItem:tryPlayInsertAnim()
+	return
+end
+
+function FightViewCardItem:tryStopInsertAnim()
+	return
+end
+
+function FightViewCardItem:playUnnamedAnim(animName)
+	if self.unnamedAnimator and self.unnamedAnimator.isActiveAndEnabled then
+		local unnamedDataMgr = FightDataHelper.tempMgr:getUnnamedDataMgr()
+
+		unnamedDataMgr:setPlayedAnim(animName)
+		self.unnamedAnimator:Play(animName, self.stopUnnamedAnim, self)
+
+		return true
+	end
+end
+
+function FightViewCardItem:stopUnnamedAnim()
+	if self.unnamedAnimator then
+		self.unnamedAnimator:Stop()
 	end
 end
 
@@ -595,6 +769,42 @@ function FightViewCardItem:_refreshPreDisplay()
 	end
 
 	gohelper.setActive(self._predisplay, true)
+end
+
+function FightViewCardItem:showNoCostTips()
+	gohelper.setActive(self.noCostTips, false)
+
+	if self.handCardType ~= FightEnum.CardShowType.HandCard and self.handCardType ~= FightEnum.CardShowType.Operation then
+		return
+	end
+
+	local entityId = self._cardInfoMO and self._cardInfoMO.uid
+
+	if not entityId then
+		return
+	end
+
+	local skillId = self._cardInfoMO.skillId
+	local skillCo = lua_skill.configDict[skillId]
+
+	if not skillCo then
+		return
+	end
+
+	local entityData = FightDataHelper.entityMgr:getById(entityId)
+
+	if not entityData then
+		return
+	end
+
+	local isBigSkill = skillCo.isBigSkill == 1
+	local noCost = entityData:hasBuffFeature(FightEnum.BuffFeature.SkillNoUseActPoint)
+
+	if isBigSkill then
+		noCost = noCost or entityData:hasBuffFeature(FightEnum.BuffType_BigSkillNoUseActPoint)
+	end
+
+	gohelper.setActive(self.noCostTips, noCost)
 end
 
 function FightViewCardItem:refreshEnchantText()
@@ -699,6 +909,8 @@ function FightViewCardItem:refreshCardIcon()
 		targetIconUrl = ResUrl.getSkillIcon(skillCO.icon)
 	end
 
+	local name = self.tr.parent.parent.name
+
 	for level, one in pairs(self._lvImgIcons) do
 		if gohelper.isNil(self._lvImgComps[level].sprite) then
 			one:UnLoadImage()
@@ -716,21 +928,34 @@ function FightViewCardItem:checkCanShowHideCardEffect()
 	return self.handCardType == FightEnum.CardShowType.HandCard or self.handCardType == FightEnum.CardShowType.Operation
 end
 
+FightViewCardItem.attributePrefix = {
+	[672802] = "v3a7_skin/attribute_",
+	[672801] = "v2a8_skin/attribute_"
+}
+FightViewCardItem.cardTagWidth = {
+	[672802] = 180,
+	[672801] = 180
+}
+FightViewCardItem.cardTagHeight = {
+	[672802] = 64,
+	[672801] = 64
+}
+
 function FightViewCardItem:refreshTag()
 	local skillCO = lua_skill.configDict[self.skillId]
 	local skillCardLv = FightCardDataHelper.getSkillLv(self.entityId, self.skillId)
-	local prefixStr = "attribute_"
-	local tagWidth = 168
-	local tagHeight = 56
+	local prefixStr = FightViewCardItem.attributePrefix[self.useSkin] or "attribute_"
+	local tagWidth = FightViewCardItem.cardTagWidth[self.useSkin] or 168
+	local tagHeight = FightViewCardItem.cardTagHeight[self.useSkin] or 56
+	local showTag = skillCO.showTag
 
-	if self.useSkin then
-		prefixStr = "v2a8_skin/attribute_"
-		tagWidth = 180
-		tagHeight = 64
+	if FightCardDataHelper.isSkill3(self._cardInfoMO) then
+		showTag = "skill3"
 	end
 
-	local tagUrl = ResUrl.getAttributeIcon(prefixStr .. skillCO.showTag)
+	local tagUrl = ResUrl.getAttributeIcon(prefixStr .. showTag)
 
+	self._tag:UnLoadImage()
 	self._tag:LoadImage(tagUrl)
 	recthelper.setSize(self.tagTransform, tagWidth, tagHeight)
 
@@ -980,6 +1205,7 @@ function FightViewCardItem:_showEnchantsEffect()
 	gohelper.setActive(self._precision, false)
 	gohelper.setActive(self._precisionEffect, false)
 	gohelper.setActive(self.goLorentzVx, false)
+	gohelper.setActive(self.go3_7Rouge2FuMo, false)
 
 	if not self._cardInfoMO then
 		return
@@ -1018,6 +1244,8 @@ function FightViewCardItem:_showEnchantsEffect()
 			elseif v.enchantId == FightEnum.EnchantedType.Lorenz then
 				gohelper.setActive(self.goLorentzVx, true)
 				self:tryLoadLorentzEnchantVxPrefab()
+			elseif v.enchantId == FightEnum.EnchantedType.Degradation then
+				gohelper.setActive(self.go3_7Rouge2FuMo, true)
 			end
 		end
 	end
@@ -1274,21 +1502,69 @@ function FightViewCardItem:changeToTempCard()
 	gohelper.setActive(self._predisplay, true)
 end
 
-function FightViewCardItem:dissolveCard(scale, tarGameObject)
+function FightViewCardItem:playDeviceRemoveEffect(go, handCardItem, removeDoneCallback, removeDoneCallbackObj)
 	if not self.go.activeInHierarchy then
+		if removeDoneCallback then
+			removeDoneCallback(removeDoneCallbackObj)
+		end
+
+		return
+	end
+
+	self:setASFDActive(false)
+	self:revertASFDSkillAnimator()
+
+	local context = self:getUserDataTb_()
+
+	context.handCardItem = handCardItem
+
+	if not self._playDeviceRemoveCardFlow then
+		self._playDeviceRemoveCardFlow = FlowSequence.New()
+
+		self._playDeviceRemoveCardFlow:registerDoneListener(self.doDeviceRemoveDoneCallback, self)
+		self._playDeviceRemoveCardFlow:addWork(FightCardDeviceRemoveCardEffect.New())
+	else
+		self:doDeviceRemoveDoneCallback()
+		self._playDeviceRemoveCardFlow:stop()
+	end
+
+	self.deviceRemoveDoneCallback = removeDoneCallback
+	self.deviceRemoveDoneCallbackObj = removeDoneCallbackObj
+
+	self._playDeviceRemoveCardFlow:start(context)
+end
+
+function FightViewCardItem:doDeviceRemoveDoneCallback()
+	local callback = self.deviceRemoveDoneCallback
+	local callbackObj = self.deviceRemoveDoneCallbackObj
+
+	self.deviceRemoveDoneCallback = nil
+	self.deviceRemoveDoneCallbackObj = nil
+
+	if callback then
+		callback(callbackObj)
+	end
+end
+
+function FightViewCardItem:dissolveCard(scale, tarGameObject, dissolveDoneCallback, dissolveDoneCallbackObj)
+	if not self.go.activeInHierarchy then
+		if dissolveDoneCallback then
+			dissolveDoneCallback(dissolveDoneCallbackObj)
+		end
+
 		return
 	end
 
 	if FightHelper.isASFDSkill(self.skillId) then
-		return self:disappearCard()
+		return self:disappearCard(dissolveDoneCallback, dissolveDoneCallbackObj)
 	end
 
 	if FightHelper.isPreDeleteSkill(self.skillId) then
-		return self:disappearCard()
+		return self:disappearCard(dissolveDoneCallback, dissolveDoneCallbackObj)
 	end
 
 	if FightHelper.isBloodPoolSkill(self.skillId) then
-		return self:disappearCard()
+		return self:disappearCard(dissolveDoneCallback, dissolveDoneCallbackObj)
 	end
 
 	self:setASFDActive(false)
@@ -1309,17 +1585,38 @@ function FightViewCardItem:dissolveCard(scale, tarGameObject)
 	if not self._dissolveFlow then
 		self._dissolveFlow = FlowSequence.New()
 
+		self._dissolveFlow:registerDoneListener(self.doDissolveDoneCallback, self)
 		self._dissolveFlow:addWork(FightCardDissolveEffect.New())
 	else
+		self:doDissolveDoneCallback()
 		self._dissolveFlow:stop()
 	end
+
+	self.dissolveDoneCallback = dissolveDoneCallback
+	self.dissolveDoneCallbackObj = dissolveDoneCallbackObj
 
 	self:_hideAllEffect()
 	self._dissolveFlow:start(context)
 end
 
-function FightViewCardItem:disappearCard()
+function FightViewCardItem:doDissolveDoneCallback()
+	local callback = self.dissolveDoneCallback
+	local callbackObj = self.dissolveDoneCallbackObj
+
+	self.dissolveDoneCallback = nil
+	self.dissolveDoneCallbackObj = nil
+
+	if callback then
+		callback(callbackObj)
+	end
+end
+
+function FightViewCardItem:disappearCard(disappearCallback, disappearCallbackObj)
 	if not self.go.activeInHierarchy then
+		if disappearCallback then
+			disappearCallback(disappearCallbackObj)
+		end
+
 		return
 	end
 
@@ -1335,12 +1632,29 @@ function FightViewCardItem:disappearCard()
 	if not self._disappearFlow then
 		self._disappearFlow = FlowSequence.New()
 
+		self._disappearFlow:registerDoneListener(self.doDissolveDoneCallback, self)
 		self._disappearFlow:addWork(FightCardDisplayHideAllEffect.New())
 	else
+		self:doDisappearDoneCallback()
 		self._disappearFlow:stop()
 	end
 
+	self.disappearCallback = disappearCallback
+	self.disappearCallbackObj = disappearCallbackObj
+
 	self._disappearFlow:start(context)
+end
+
+function FightViewCardItem:doDisappearDoneCallback()
+	local callback = self.disappearCallback
+	local callbackObj = self.disappearCallbackObj
+
+	self.disappearCallback = nil
+	self.disappearCallbackObj = nil
+
+	if callback then
+		callback(callbackObj)
+	end
 end
 
 function FightViewCardItem:revertASFDSkillAnimator()
@@ -1695,6 +2009,12 @@ function FightViewCardItem:getASFDScreenPos()
 	return recthelper.uiPosToScreenPos2(self.rectTrASFD)
 end
 
+function FightViewCardItem:isDevicePowerCard()
+	local skillId = self.skillId
+
+	return FightHelper.checkIsDevicePowerCard(skillId)
+end
+
 function FightViewCardItem:setActiveRed(active)
 	if gohelper.isNil(self.goRed) then
 		self.ly_red_active = active
@@ -1702,7 +2022,7 @@ function FightViewCardItem:setActiveRed(active)
 		return
 	end
 
-	gohelper.setActive(self.goRed, active)
+	gohelper.setActive(self.goRed, active and not self:isDevicePowerCard())
 	self:refreshLyMaskActive()
 end
 
@@ -1713,7 +2033,7 @@ function FightViewCardItem:setActiveBlue(active)
 		return
 	end
 
-	gohelper.setActive(self.goBlue, active)
+	gohelper.setActive(self.goBlue, active and not self:isDevicePowerCard())
 	self:refreshLyMaskActive()
 end
 
@@ -1724,7 +2044,7 @@ function FightViewCardItem:setActiveBoth(active)
 		return
 	end
 
-	gohelper.setActive(self.goBoth, active)
+	gohelper.setActive(self.goBoth, active and not self:isDevicePowerCard())
 	self:refreshLyMaskActive()
 end
 
@@ -1774,6 +2094,7 @@ end
 function FightViewCardItem:onDestroy()
 	TaskDispatcher.cancelTask(self.onLorentzLvChangeDone, self)
 	self.simageRouge2SkillIcon:UnLoadImage()
+	self:clearDeviceAnim()
 
 	if self._loader then
 		self._loader:disposeSelf()
@@ -1797,6 +2118,12 @@ function FightViewCardItem:onDestroy()
 		self.lorentzEnchantVxLoader:dispose()
 
 		self.lorentzEnchantVxLoader = nil
+	end
+
+	if self.unnamedUiLoader then
+		self.unnamedUiLoader:dispose()
+
+		self.unnamedUiLoader = nil
 	end
 
 	self:releaseEffectFlow()
@@ -2032,6 +2359,167 @@ function FightViewCardItem:refreshStar()
 			end
 		end
 	end
+end
+
+function FightViewCardItem:isDeviceAreaCard()
+	return false
+end
+
+function FightViewCardItem:isDeviceCard()
+	return FightHelper.checkIsDevicePowerCard(self.skillId)
+end
+
+function FightViewCardItem:playCardAnim(animName, callback, callbackObj)
+	self:doAnimCallback()
+
+	self.animCallback = callback
+	self.animCallbackObj = callbackObj
+	self.cardAnimName = animName
+
+	self._loader:loadAsset(ViewAnim.FightCardBalance, self.onDefaultAnimLoadDone, self)
+end
+
+function FightViewCardItem:onDefaultAnimLoadDone(success, loader)
+	if not success then
+		self:onCardAnimDone()
+
+		return
+	end
+
+	if not self.cardAnimName then
+		self:onCardAnimDone()
+
+		return
+	end
+
+	self._cardAni.runtimeAnimatorController = loader:GetResource()
+	self._cardAni.enabled = true
+	self.animatorPlayer = self.animatorPlayer or SLFramework.AnimatorPlayer.Get(self.go)
+	self._cardAni.speed = FightModel.instance:getUISpeed()
+
+	if not self.animatorPlayer.isActiveAndEnabled then
+		self:onCardAnimDone()
+
+		return
+	end
+
+	self.animatorPlayer:Play(self.cardAnimName, self.onCardAnimDone, self)
+
+	self.cardAnimName = nil
+end
+
+function FightViewCardItem:onCardAnimDone()
+	self._cardAni.enabled = false
+
+	self:doAnimCallback()
+end
+
+function FightViewCardItem:doAnimCallback()
+	local callback = self.animCallback
+	local callbackObj = self.animCallbackObj
+
+	self.animCallback = nil
+	self.animCallbackObj = nil
+
+	if callback then
+		callback(callbackObj)
+	end
+end
+
+local DeviceAnimEventName = "fly"
+
+function FightViewCardItem:playDeviceCardAnim(eventCallback, eventCallbackObj)
+	self:initDeviceAnimNodeList()
+
+	local curCareer = self:getCurDeviceAddCareer()
+
+	for career, go in pairs(self.deviceAnimNodeDict) do
+		gohelper.setActive(go, career == curCareer)
+	end
+
+	self.deviceAnimEventCallback = eventCallback
+	self.deviceAnimEventCallbackObj = eventCallbackObj
+	self.cardAnimEvent = self.cardAnimEvent or self.go:GetComponent(gohelper.Type_AnimationEventWrap)
+
+	self.cardAnimEvent:AddEventListener(DeviceAnimEventName, self.onTriggerDeviceFlyEvent, self)
+	self:playCardAnim("light", self.onPlayDeviceAnimDone, self)
+
+	for _, lvGO in pairs(self._lvGOs) do
+		gohelper.setActiveCanvasGroup(lvGO, false)
+	end
+end
+
+function FightViewCardItem:onTriggerDeviceFlyEvent()
+	if self.deviceAnimEventCallback then
+		self.deviceAnimEventCallback(self.deviceAnimEventCallbackObj, DeviceAnimEventName)
+	end
+end
+
+function FightViewCardItem:onPlayDeviceAnimDone()
+	if self.deviceAnimNodeDict then
+		for _, go in pairs(self.deviceAnimNodeDict) do
+			gohelper.setActive(go, false)
+		end
+	end
+
+	self.cardAnimEvent:RemoveAllEventListener()
+
+	local eventCallback = self.deviceAnimEventCallback
+	local eventCallbackObj = self.deviceAnimEventCallbackObj
+
+	self.deviceAnimEventCallback = nil
+	self.deviceAnimEventCallbackObj = nil
+
+	if eventCallback then
+		eventCallback(eventCallbackObj, "finish")
+	end
+end
+
+function FightViewCardItem:clearDeviceAnim()
+	if self.cardAnimEvent then
+		self.cardAnimEvent:RemoveAllEventListener()
+	end
+
+	self._cardAni.enabled = false
+	self.deviceAnimEventCallback = nil
+	self.deviceAnimEventCallbackObj = nil
+end
+
+function FightViewCardItem:initDeviceAnimNodeList()
+	self.deviceAnimNodeDict = self:getUserDataTb_()
+
+	local careerType = CharacterEnum.CareerType
+
+	self.deviceAnimNodeDict[0] = gohelper.findChild(self.go, "vx_device/node_colorful")
+	self.deviceAnimNodeDict[careerType.Yan] = gohelper.findChild(self.go, "vx_device/node_yellow")
+	self.deviceAnimNodeDict[careerType.Xing] = gohelper.findChild(self.go, "vx_device/node_blue")
+end
+
+function FightViewCardItem:getCurDeviceAddCareer()
+	local skillId = self.skillId
+	local skillCo = skillId and lua_skill.configDict[skillId]
+
+	if not skillCo then
+		return CharacterEnum.CareerType.Xing
+	end
+
+	local behaviourId = FightEnum.BehaviourId.AddDevicePower
+
+	for i = 1, FightEnum.MaxBehavior do
+		local behavior = skillCo["behavior" .. i]
+
+		if not string.nilorempty(behavior) then
+			local array = FightStrUtil.instance:getSplitString2Cache(behavior, true)
+
+			for _, behaviourArray in ipairs(array) do
+				if behaviourArray[1] == behaviourId then
+					return behaviourArray[2]
+				end
+			end
+		end
+	end
+
+	return CharacterEnum.CareerType.Xing
 end
 
 return FightViewCardItem

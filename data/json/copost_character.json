@@ -310,5 +310,179 @@
     "chaPicture": "",
     "chaName": "冷周六：",
     "chaCamp": 0
+  },
+  {
+    "chaId": 53,
+    "chaPicture": "300301",
+    "chaName": "槲寄生",
+    "chaCamp": 8
+  },
+  {
+    "chaId": 54,
+    "chaPicture": "302501",
+    "chaName": "星锑",
+    "chaCamp": 8
+  },
+  {
+    "chaId": 55,
+    "chaPicture": "302801",
+    "chaName": "APPLe",
+    "chaCamp": 8
+  },
+  {
+    "chaId": 56,
+    "chaPicture": "509005",
+    "chaName": "会长",
+    "chaCamp": 6
+  },
+  {
+    "chaId": 57,
+    "chaPicture": "506801",
+    "chaName": "康斯坦丁",
+    "chaCamp": 6
+  },
+  {
+    "chaId": 58,
+    "chaPicture": "314701",
+    "chaName": "无名者",
+    "chaCamp": 6
+  },
+  {
+    "chaId": 59,
+    "chaPicture": "531701",
+    "chaName": "梅蕾尔",
+    "chaCamp": 9
+  },
+  {
+    "chaId": 60,
+    "chaPicture": "304101",
+    "chaName": "玛蒂尔达",
+    "chaCamp": 9
+  },
+  {
+    "chaId": 61,
+    "chaPicture": "532203",
+    "chaName": "拉文德",
+    "chaCamp": 9
+  },
+  {
+    "chaId": 62,
+    "chaPicture": "524501",
+    "chaName": "阿尔卡纳",
+    "chaCamp": 10
+  },
+  {
+    "chaId": 63,
+    "chaPicture": "315401",
+    "chaName": "小春雀儿",
+    "chaCamp": 7
+  },
+  {
+    "chaId": 64,
+    "chaPicture": "300101",
+    "chaName": "维尔汀",
+    "chaCamp": 8
+  },
+  {
+    "chaId": 65,
+    "chaPicture": "302301",
+    "chaName": "十四行诗",
+    "chaCamp": 8
+  },
+  {
+    "chaId": 66,
+    "chaPicture": "523701",
+    "chaName": "刻雷乌斯",
+    "chaCamp": 6
+  },
+  {
+    "chaId": 67,
+    "chaPicture": "501201",
+    "chaName": "Z",
+    "chaCamp": 6
+  },
+  {
+    "chaId": 68,
+    "chaPicture": "529701",
+    "chaName": "格鲁托夫",
+    "chaCamp": 10
+  },
+  {
+    "chaId": 69,
+    "chaPicture": "530101",
+    "chaName": "仪式术士",
+    "chaCamp": 10
+  },
+  {
+    "chaId": 70,
+    "chaPicture": "",
+    "chaName": "飞行巫师Ⅰ：",
+    "chaCamp": 0
+  },
+  {
+    "chaId": 71,
+    "chaPicture": "",
+    "chaName": "飞行巫师Ⅱ：",
+    "chaCamp": 0
+  },
+  {
+    "chaId": 72,
+    "chaPicture": "",
+    "chaName": "重塑士兵：",
+    "chaCamp": 0
+  },
+  {
+    "chaId": 73,
+    "chaPicture": "",
+    "chaName": "重塑小队长：",
+    "chaCamp": 0
+  },
+  {
+    "chaId": 74,
+    "chaPicture": "",
+    "chaName": "队员Ⅰ：",
+    "chaCamp": 0
+  },
+  {
+    "chaId": 75,
+    "chaPicture": "",
+    "chaName": "队员Ⅱ：",
+    "chaCamp": 0
+  },
+  {
+    "chaId": 76,
+    "chaPicture": "531701",
+    "chaName": "梅蕾尔",
+    "chaCamp": 0
+  },
+  {
+    "chaId": 77,
+    "chaPicture": "535903",
+    "chaName": "司辰小队",
+    "chaCamp": 0
+  },
+  {
+    "chaId": 78,
+    "chaPicture": "524501",
+    "chaName": "阿尔卡纳",
+    "chaCamp": 0
+  },
+  {
+    "chaId": 79,
+    "chaPicture": "536001",
+    "chaName": "拉普拉斯科算中心",
+    "chaCamp": 0
+  },
+  {
+    "chaId": 80,
+    "chaPicture": "536102",
+    "chaName": "重塑之手",
+    "chaCamp": 0
+  },
+  {
+    "chaId": 81,
+    "chaPicture": "314722",
+    "chaName": "无名者",
+    "chaCamp": 0
   }
 ]

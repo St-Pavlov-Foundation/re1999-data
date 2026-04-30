@@ -23,6 +23,8 @@ function MainThumbnailBtnView:onInitView()
 	self._btnrecordvideo = gohelper.findChildButtonWithAudio(self.viewGO, "btns/btn_content/#go_content/#btn_recordvideo")
 	self._btnteam = gohelper.findChildButtonWithAudio(self.viewGO, "btns/btn_content/#go_content/#btn_team")
 	self._btnudimo = gohelper.findChildButtonWithAudio(self.viewGO, "btns/btn_content/#go_content/#btn_udimo")
+	self._btnTeaching = gohelper.findChildButtonWithAudio(self.viewGO, "btns/btn_content/#go_content/#btn_teaching")
+	self._goRedDotTeaching = gohelper.findChild(self.viewGO, "btns/btn_content/#go_content/#btn_teaching/#go_reddot")
 	self._btnleft = gohelper.findChildButtonWithAudio(self.viewGO, "btns/#btn_left")
 	self._btnright = gohelper.findChildButtonWithAudio(self.viewGO, "btns/#btn_right")
 	self._gocontent = gohelper.findChild(self.viewGO, "btns/btn_content/#go_content")
@@ -49,6 +51,7 @@ function MainThumbnailBtnView:addEvents()
 	self._btnrecordvideo:AddClickListener(self._btnrecordvideoOnClick, self)
 	self._btnteam:AddClickListener(self._btnteamOnClick, self)
 	self._btnudimo:AddClickListener(self._btnudimoOnClick, self)
+	self._btnTeaching:AddClickListener(self._btnTeachingOnClick, self)
 	self._btnleft:AddClickListener(self._btnleftOnClick, self)
 	self._btnright:AddClickListener(self._btnrightOnClick, self)
 	self:addEventCb(PCInputController.instance, PCInputEvent.NotifyEnterBook, self._btnhandbookOnClick, self)
@@ -77,6 +80,7 @@ function MainThumbnailBtnView:removeEvents()
 	self._btnrecordvideo:RemoveClickListener()
 	self._btnteam:RemoveClickListener()
 	self._btnudimo:RemoveClickListener()
+	self._btnTeaching:RemoveClickListener()
 	self:removeEventCb(PCInputController.instance, PCInputEvent.NotifyEnterBook, self._btnhandbookOnClick, self)
 	self:removeEventCb(PCInputController.instance, PCInputEvent.NotifyEnterAchievement, self._btnachievementOnClick, self)
 	self:removeEventCb(PCInputController.instance, PCInputEvent.NotifyEnterFriend, self._btnsocialOnClick, self)
@@ -189,6 +193,14 @@ function MainThumbnailBtnView:_btnudimoOnClick()
 	UdimoController.instance:enterUdimo()
 end
 
+function MainThumbnailBtnView:_btnTeachingOnClick()
+	TeachingController.instance:openTeachingMainView()
+	StatController.instance:track(StatEnum.EventName.ButtonClick, {
+		[StatEnum.EventProperties.ViewName] = "MainThumbnailBtnView",
+		[StatEnum.EventProperties.ButtonName] = "Teaching"
+	})
+end
+
 function MainThumbnailBtnView:_btnplayercardOnClick()
 	if OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.PlayerCard) then
 		local playerInfo = PlayerModel.instance:getPlayinfo()
@@ -241,6 +253,9 @@ function MainThumbnailBtnView:onOpen()
 	self:addEventCb(PlayerCardController.instance, PlayerCardEvent.SwitchTheme, self._isShowPlayerCardRedDot, self)
 	self:addEventCb(HandbookController.instance, HandbookEvent.EnterHandbookSkin, self._onRefreshHandbookRedDot, self)
 	self:addEventCb(HandbookController.instance, HandbookEvent.MarkHandbookSkinSuitRedDot, self._onRefreshHandbookRedDot, self)
+	self:addEventCb(TeachNoteController.instance, TeachNoteEvent.GetServerTopicInfo, self._onRefreshTeachingRedDot, self)
+	self:addEventCb(TeachingController.instance, TeachingEvent.OnTeachingBonusUpdate, self._onRefreshTeachingRedDot, self)
+	self:addEventCb(TeachingController.instance, TeachingEvent.OnSelectTeachingId, self._onRefreshTeachingRedDot, self)
 end
 
 function MainThumbnailBtnView:_checkOpen()
@@ -287,6 +302,7 @@ function MainThumbnailBtnView:_editableInitView()
 	table.insert(self._btnGoList, self._btncalendar.gameObject)
 	table.insert(self._btnGoList, self._btnsetting.gameObject)
 	table.insert(self._btnGoList, self._btnudimo.gameObject)
+	table.insert(self._btnGoList, self._btnTeaching.gameObject)
 
 	if not VersionValidator.instance:isInReviewing() then
 		table.insert(self._btnGoList, self._btnteam.gameObject)
@@ -362,6 +378,7 @@ function MainThumbnailBtnView:_refreshRedDot()
 
 	self.noticeRedDot = RedDotController.instance:addNotEventRedDot(self._gobelllreddot, NoticeModel.hasNotRedNotice, NoticeModel.instance)
 	self.handbookskinRedDot = RedDotController.instance:addNotEventRedDot(self._goreddotHandbook, HandbookController.hasAnyHandBookSkinGroupRedDot, HandbookController.instance)
+	self.teachingRedDot = RedDotController.instance:addRedDot(self._goRedDotTeaching, RedDotEnum.DotNode.V3a7Teaching, nil, self._checkTeachingRed, self)
 end
 
 function MainThumbnailBtnView:_checkSignInRed(redDotIcon)
@@ -382,10 +399,32 @@ function MainThumbnailBtnView:_onRefreshHandbookRedDot()
 	self.handbookskinRedDot:refreshRedDot()
 end
 
+function MainThumbnailBtnView:_onRefreshTeachingRedDot()
+	if self.teachingRedDot then
+		self.teachingRedDot:refreshDot()
+	end
+end
+
 function MainThumbnailBtnView:_isShowPlayerCardRedDot()
 	gohelper.setActive(self._goreddotplayercard, PlayerCardModel.instance:getShowRed())
 
 	return PlayerCardModel.instance:getShowRed()
+end
+
+function MainThumbnailBtnView:_checkTeachingRed(redDotIcon)
+	redDotIcon:defaultRefreshDot()
+
+	if not redDotIcon.show then
+		redDotIcon.show = TeachingModel.instance:haveCanReceiveRewardTeaching() or TeachNoteModel.instance:hasRewardCouldGet()
+
+		redDotIcon:showRedDot(RedDotEnum.Style.Normal)
+	end
+
+	if not redDotIcon.show then
+		redDotIcon.show = TeachingModel.instance:haveNewTeaching() or tabletool.len(TeachNoteModel.instance:getNewOpenTopics()) > 0
+
+		redDotIcon:showRedDot(RedDotEnum.Style.Green)
+	end
 end
 
 local kPageMaxNum = 8
@@ -411,6 +450,7 @@ function MainThumbnailBtnView:_refreshBtns()
 	gohelper.setActive(self._btnrecordvideo, SettingsShowHelper.canShowRecordVideo())
 	gohelper.setActive(self._btnzhoubian.gameObject, not self._isGamePad and OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.ZhouBian) and ActivityModel.instance:isActOnLine(10004))
 	gohelper.setActive(self._btnudimo.gameObject, OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.Udimo))
+	gohelper.setActive(self._btnTeaching.gameObject, OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.Teaching))
 
 	local addNum = 0
 

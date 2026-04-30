@@ -4597,5 +4597,85 @@
     "levels": [
       36401
     ]
+  },
+  {
+    "id": 35201,
+    "name": "会长办公室",
+    "nameen": "President's Office",
+    "levels": [
+      35201
+    ]
+  },
+  {
+    "id": 35101,
+    "name": "会长办公室",
+    "nameen": "President's Office",
+    "levels": [
+      35101
+    ]
+  },
+  {
+    "id": 36501,
+    "name": "盘山路",
+    "nameen": "Mountain Road",
+    "levels": [
+      36501
+    ]
+  },
+  {
+    "id": 36601,
+    "name": "南翼建筑群",
+    "nameen": "Southern Annex",
+    "levels": [
+      36601
+    ]
+  },
+  {
+    "id": 36701,
+    "name": "委员会大楼",
+    "nameen": "Committee Building",
+    "levels": [
+      36701
+    ]
+  },
+  {
+    "id": 36801,
+    "name": "中央瞭望塔",
+    "nameen": "Central Watchtower",
+    "levels": [
+      36801
+    ]
+  },
+  {
+    "id": 36802,
+    "name": "西南瞭望塔",
+    "nameen": "Southwestern Watchtower",
+    "levels": [
+      36801
+    ]
+  },
+  {
+    "id": 36901,
+    "name": "登记处",
+    "nameen": "Registration Desk",
+    "levels": [
+      36901
+    ]
+  },
+  {
+    "id": 37001,
+    "name": "黄金国遗址",
+    "nameen": "El Dorado Ruins",
+    "levels": [
+      37001
+    ]
+  },
+  {
+    "id": 37101,
+    "name": "妖精莓果园",
+    "nameen": "Tylwyth Teg Berry Garden",
+    "levels": [
+      37101
+    ]
   }
 ]

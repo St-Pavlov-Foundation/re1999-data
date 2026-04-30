@@ -5214,5 +5214,165 @@
     "invokeType": 5,
     "param": "0",
     "switch": "Fightboos_Second"
+  },
+  {
+    "id": 11321,
+    "battleId": 117371010,
+    "monster": 0,
+    "invokeType": 4,
+    "param": "0",
+    "switch": "Fightboos_First"
+  },
+  {
+    "id": 11321,
+    "battleId": 117371010,
+    "monster": 117371020,
+    "invokeType": 8,
+    "param": "610414_change",
+    "switch": "Fightboos_Second"
+  },
+  {
+    "id": 11321,
+    "battleId": 117371010,
+    "monster": 117371030,
+    "invokeType": 8,
+    "param": "610415_die",
+    "switch": "ThirdCue"
+  },
+  {
+    "id": 11321,
+    "battleId": 117371010,
+    "monster": 117371030,
+    "invokeType": 9,
+    "param": "610416_guodu1",
+    "switch": "Puzzle"
+  },
+  {
+    "id": 11321,
+    "battleId": 117371010,
+    "monster": 117371030,
+    "invokeType": 8,
+    "param": "610416_guodu2",
+    "switch": "Fightboos_Third"
+  },
+  {
+    "id": 11321,
+    "battleId": 117374130,
+    "monster": 0,
+    "invokeType": 4,
+    "param": "0",
+    "switch": "Fightboos_First"
+  },
+  {
+    "id": 11321,
+    "battleId": 117374130,
+    "monster": 117371220,
+    "invokeType": 8,
+    "param": "610414_change",
+    "switch": "Fightboos_Second"
+  },
+  {
+    "id": 11321,
+    "battleId": 117374130,
+    "monster": 117371230,
+    "invokeType": 8,
+    "param": "610415_die",
+    "switch": "ThirdCue"
+  },
+  {
+    "id": 11321,
+    "battleId": 117374130,
+    "monster": 117371230,
+    "invokeType": 9,
+    "param": "610416_guodu1",
+    "switch": "Puzzle"
+  },
+  {
+    "id": 11321,
+    "battleId": 117374130,
+    "monster": 117371230,
+    "invokeType": 4,
+    "param": "610416_guodu2",
+    "switch": "Fightboos_Third"
+  },
+  {
+    "id": 1321,
+    "battleId": 117373130,
+    "monster": 0,
+    "invokeType": 4,
+    "param": "0",
+    "switch": "Fightboos_First"
+  },
+  {
+    "id": 1321,
+    "battleId": 117373130,
+    "monster": 117371120,
+    "invokeType": 8,
+    "param": "610414_change",
+    "switch": "Fightboos_Second"
+  },
+  {
+    "id": 1321,
+    "battleId": 117373130,
+    "monster": 117371130,
+    "invokeType": 8,
+    "param": "610415_die",
+    "switch": "ThirdCue"
+  },
+  {
+    "id": 1321,
+    "battleId": 117373130,
+    "monster": 117371130,
+    "invokeType": 9,
+    "param": "610416_guodu1",
+    "switch": "Puzzle"
+  },
+  {
+    "id": 1321,
+    "battleId": 117373130,
+    "monster": 117371130,
+    "invokeType": 4,
+    "param": "610416_guodu2",
+    "switch": "Fightboos_Third"
+  },
+  {
+    "id": 21313,
+    "battleId": 117375130,
+    "monster": 0,
+    "invokeType": 4,
+    "param": "0",
+    "switch": "Fightboos_First"
+  },
+  {
+    "id": 21313,
+    "battleId": 117375130,
+    "monster": 117371320,
+    "invokeType": 8,
+    "param": "610414_change",
+    "switch": "Fightboos_Second"
+  },
+  {
+    "id": 21313,
+    "battleId": 117375130,
+    "monster": 117371330,
+    "invokeType": 8,
+    "param": "610415_die",
+    "switch": "ThirdCue"
+  },
+  {
+    "id": 21313,
+    "battleId": 117375130,
+    "monster": 117371330,
+    "invokeType": 9,
+    "param": "610416_guodu1",
+    "switch": "Puzzle"
+  },
+  {
+    "id": 21313,
+    "battleId": 117375130,
+    "monster": 117371330,
+    "invokeType": 4,
+    "param": "610416_guodu2",
+    "switch": "Fightboos_Third"
   }
 ]

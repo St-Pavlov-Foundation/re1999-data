@@ -2030,5 +2030,37 @@
     "bindActivityId": 0,
     "roomLevel": 0,
     "dailyOpenTime": ""
+  },
+  {
+    "id": 86,
+    "name": "后验者聚落",
+    "isOnline": 1,
+    "playerLv": 1,
+    "episodeId": 10315,
+    "elementId": 0,
+    "verifingEpisodeId": 10315,
+    "isAlwaysShowBtn": 0,
+    "showInEpisode": 1,
+    "dec": 2003,
+    "verifingHide": 1,
+    "bindActivityId": 0,
+    "roomLevel": 0,
+    "dailyOpenTime": ""
+  },
+  {
+    "id": 87,
+    "name": "教学笔记",
+    "isOnline": 1,
+    "playerLv": 1,
+    "episodeId": 10115,
+    "elementId": 0,
+    "verifingEpisodeId": 10115,
+    "isAlwaysShowBtn": 0,
+    "showInEpisode": 0,
+    "dec": 2003,
+    "verifingHide": 1,
+    "bindActivityId": 0,
+    "roomLevel": 0,
+    "dailyOpenTime": ""
   }
 ]

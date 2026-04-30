@@ -34,7 +34,7 @@ function StoryBgEffsCustomBlur:start(callback, callbackObj)
 	self:_setViewTop(true)
 	ViewMgr.instance:registerCallback(ViewEvent.OnOpenView, self._onOpenView, self)
 	ViewMgr.instance:registerCallback(ViewEvent.OnCloseViewFinish, self._onCloseView, self)
-	StoryController.instance:registerCallback(StoryEvent.SkipClick, self._btnskipOnClick, self)
+	StoryController.instance:registerCallback(StoryEvent.OnBtnSkipClick, self._btnskipOnClick, self)
 
 	self._captureGo = PostProcessingMgr.instance:getCaptureView()
 	self._capture = self._captureGo:GetComponent(typeof(UrpCustom.UIGaussianEffect))
@@ -201,7 +201,7 @@ function StoryBgEffsCustomBlur:destroy()
 	self:_setViewTop(false)
 	ViewMgr.instance:unregisterCallback(ViewEvent.OnOpenView, self._onOpenView, self)
 	ViewMgr.instance:unregisterCallback(ViewEvent.OnCloseViewFinish, self._onCloseView, self)
-	StoryController.instance:unregisterCallback(StoryEvent.SkipClick, self._btnskipOnClick, self)
+	StoryController.instance:unregisterCallback(StoryEvent.OnBtnSkipClick, self._btnskipOnClick, self)
 	StoryController.instance:dispatchEvent(StoryEvent.PlayFullBlurOut, 0)
 
 	self._finishedCallback = nil

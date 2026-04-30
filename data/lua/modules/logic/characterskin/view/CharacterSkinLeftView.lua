@@ -322,7 +322,7 @@ function CharacterSkinLeftView:onBigSpineLoaded()
 
 	local offsets = SkinConfig.instance:getSkinOffset(offsetStr)
 
-	recthelper.setAnchor(self._gobigspine.transform, tonumber(offsets[1]), tonumber(offsets[2]))
+	CharacterVoiceEnum.setSpineOffset(self.bigSpine, tonumber(offsets[1]), tonumber(offsets[2]))
 	transformhelper.setLocalScale(self._gobigspine.transform, tonumber(offsets[3]), tonumber(offsets[3]), tonumber(offsets[3]))
 end
 

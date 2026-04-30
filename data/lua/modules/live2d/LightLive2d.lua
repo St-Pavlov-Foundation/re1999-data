@@ -98,10 +98,40 @@ function LightLive2d:setEffectFrameVisible(value)
 	end
 
 	if self._effectMainFrameList then
+		local recordMap = {}
+
 		for i, v in ipairs(self._effectMainFrameList) do
 			local root = gohelper.findChild(self._spineGo, v)
 
 			gohelper.setActive(root, value)
+
+			if not recordMap[v] then
+				recordMap[v] = true
+
+				if root then
+					local parent = root.transform.parent
+
+					if parent and parent.name ~= "Drawables" then
+						gohelper.setActive(parent, value)
+					end
+
+					if value then
+						transformhelper.setLocalScale(root.transform, 1, 1, 1)
+					else
+						local x, y, z = transformhelper.getLocalScale(root.transform)
+
+						if x ~= 1 or y ~= 1 or z ~= 1 then
+							logError("LightLive2d:setEffectFrameVisible scale is not 1,1,1 value:", tostring(x), tostring(y), tostring(z), v)
+						end
+
+						transformhelper.setLocalScale(root.transform, 0, 0, 0)
+					end
+				else
+					logError("LightLive2d:setEffectFrameVisible can not find child:", self._resPath, v)
+				end
+			else
+				logError("LightLive2d:setEffectFrameVisible repeat:", self._resPath, v)
+			end
 		end
 	end
 end

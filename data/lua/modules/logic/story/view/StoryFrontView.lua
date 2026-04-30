@@ -132,7 +132,7 @@ function StoryFrontView:_onKeyExit()
 	end
 
 	if self._exitBtn and self._goexit.activeInHierarchy then
-		StoryController.instance:dispatchEvent(StoryEvent.SkipClick)
+		StoryController.instance:dispatchEvent(StoryEvent.OnBtnSkipClick)
 		self._exitBtn:onClickExitBtn()
 	end
 end
@@ -199,7 +199,7 @@ function StoryFrontView:_btnskipOnClick()
 		return
 	end
 
-	StoryController.instance:dispatchEvent(StoryEvent.SkipClick)
+	StoryController.instance:dispatchEvent(StoryEvent.OnBtnSkipClick)
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_plot_common)
 	StoryModel.instance:setStoryAuto(false)
 
@@ -248,7 +248,7 @@ end
 function StoryFrontView:_onSkipConfirm()
 	gohelper.setActive(self._goepisode, false)
 	gohelper.setActive(self._gochapteropen, false)
-	StoryController.instance:dispatchEvent(StoryEvent.Skip)
+	StoryController.instance:dispatchEvent(StoryEvent.OnSkipConfirm)
 end
 
 function StoryFrontView:_btnnextOnClick()
@@ -309,6 +309,12 @@ function StoryFrontView:_btnnextOnClick()
 		self:setBtnVisible(true)
 	end
 
+	if self._frontItem.showingClickableScreenText then
+		self._frontItem:clickFullScreentText()
+
+		return
+	end
+
 	if not autoSkip then
 		StoryController.instance:dispatchEvent(StoryEvent.EnterNextStep)
 	end
@@ -334,7 +340,7 @@ end
 
 function StoryFrontView:onOpen()
 	self._btnnext:AddClickListener(self._btnnextOnClick, self)
-	self:addEventCb(StoryController.instance, StoryEvent.Skip, self._onSkip, self)
+	self:addEventCb(StoryController.instance, StoryEvent.OnSkipConfirm, self._onSkip, self)
 	self:addEventCb(StoryController.instance, StoryEvent.AutoChange, self._onAutoChange, self)
 	self:addEventCb(StoryController.instance, StoryEvent.ReOpenStoryView, self._reOpenStory, self)
 	self:addEventCb(StoryController.instance, StoryEvent.AllStepFinished, self._screenFadeOut, self)
@@ -348,7 +354,7 @@ function StoryFrontView:onOpen()
 	self:addEventCb(StoryController.instance, StoryEvent.PlayFullTextLineShow, self._onPlayLineShow, self)
 	self:addEventCb(StoryController.instance, StoryEvent.RefreshNavigate, self._refreshNavigate, self)
 	self:addEventCb(StoryController.instance, StoryEvent.HideTopBtns, self._onHideBtns, self)
-	self:addEventCb(StoryController.instance, StoryEvent.OnSkipClick, self._onPrologueSkip, self)
+	self:addEventCb(StoryController.instance, StoryEvent.OnPrologueSkipClick, self._onPrologueSkip, self)
 	self:addEventCb(ViewMgr.instance, ViewEvent.OnOpenViewFinish, self._setBtnsVisible, self)
 	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self._setBtnsVisible, self)
 	self:addEventCb(ViewMgr.instance, ViewEvent.OnOpenView, self._onOpenView, self)
@@ -385,7 +391,7 @@ end
 
 function StoryFrontView:onClose()
 	self._btnnext:RemoveClickListener()
-	self:removeEventCb(StoryController.instance, StoryEvent.Skip, self._onSkip, self)
+	self:removeEventCb(StoryController.instance, StoryEvent.OnSkipConfirm, self._onSkip, self)
 	self:removeEventCb(StoryController.instance, StoryEvent.AutoChange, self._onAutoChange, self)
 	self:removeEventCb(StoryController.instance, StoryEvent.ReOpenStoryView, self._reOpenStory, self)
 	self:removeEventCb(StoryController.instance, StoryEvent.AllStepFinished, self._screenFadeOut, self)
@@ -399,7 +405,7 @@ function StoryFrontView:onClose()
 	self:removeEventCb(StoryController.instance, StoryEvent.PlayFullTextLineShow, self._onPlayLineShow, self)
 	self:removeEventCb(StoryController.instance, StoryEvent.RefreshNavigate, self._refreshNavigate, self)
 	self:removeEventCb(StoryController.instance, StoryEvent.HideTopBtns, self._onHideBtns, self)
-	self:removeEventCb(StoryController.instance, StoryEvent.OnSkipClick, self._onPrologueSkip, self)
+	self:removeEventCb(StoryController.instance, StoryEvent.OnPrologueSkipClick, self._onPrologueSkip, self)
 	self:removeEventCb(ViewMgr.instance, ViewEvent.OnOpenViewFinish, self._setBtnsVisible, self)
 	self:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self._setBtnsVisible, self)
 	self:removeEventCb(ViewMgr.instance, ViewEvent.OnOpenView, self._onOpenView, self)
@@ -409,6 +415,10 @@ end
 function StoryFrontView:_onSkip()
 	gohelper.setActive(self._goepisode, false)
 	gohelper.setActive(self._gochapteropen, false)
+
+	if self._navigateItem then
+		self._navigateItem:onSkip()
+	end
 end
 
 function StoryFrontView:_onAutoChange()
@@ -442,6 +452,8 @@ function StoryFrontView:_onPlayFullText(stepCo)
 	elseif self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.Glitch then
 		self._frontItem:playTextFadeIn(self._stepCo, self._onFullTextShowFinished, self)
 		self._frontItem:playGlitch()
+	elseif self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.GostMagic then
+		self._frontItem:playGostMagic(self._stepCo, self._onFullTextShowFinished, self)
 	end
 end
 
@@ -687,7 +699,7 @@ end
 
 function StoryFrontView:_onScreenFadeOut()
 	if self._navigateItem then
-		self._navigateItem:clear()
+		self._navigateItem:onFadeOut()
 	end
 end
 

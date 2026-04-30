@@ -698,7 +698,7 @@ function SummonMainModel:checkFree10CountOver(poolId)
 	return false
 end
 
-function SummonMainModel:getCost10ById(poolId)
+function SummonMainModel:getCost10ById(poolId, isGetFirstCost)
 	local poolCfg = SummonConfig.instance:getSummonPool(poolId)
 
 	if not poolCfg then
@@ -710,10 +710,10 @@ function SummonMainModel:getCost10ById(poolId)
 	local discount = self:getDiscountTime10Server(poolId)
 
 	if discount > 0 then
-		return SummonMainModel.getCostByConfig(poolCfg.cost10, false, poolCfg.discountCost10)
+		return SummonMainModel.getCostByConfig(poolCfg.cost10, isGetFirstCost, poolCfg.discountCost10)
 	end
 
-	return SummonMainModel.getCostByConfig(poolCfg.cost10, false, nil)
+	return SummonMainModel.getCostByConfig(poolCfg.cost10, isGetFirstCost, nil)
 end
 
 function SummonMainModel._getCostToDict(costs)

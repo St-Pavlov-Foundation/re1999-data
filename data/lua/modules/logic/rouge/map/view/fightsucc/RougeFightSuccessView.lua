@@ -108,7 +108,7 @@ function RougeFightSuccessView:onSpineLoaded()
 	self.spineLoaded = true
 
 	self.uiSpine:setUIMask(true)
-	self.uiSpine:setAllLayer(UnityLayer.UI)
+	self.uiSpine:setAllLayer(UnityLayer.UI3D)
 	self:setSkinOffset()
 
 	if self.uiSpine:isLive2D() then
@@ -152,7 +152,7 @@ function RougeFightSuccessView:setSkinOffset()
 	local offsetX = tonumber(offsets[1])
 	local offsetY = tonumber(offsets[2])
 
-	recthelper.setAnchor(self.spineTr, offsetX, offsetY)
+	CharacterVoiceEnum.setSpineOffset(self.uiSpine, tonumber(offsets[1]), tonumber(offsets[2]))
 	transformhelper.setLocalScale(self.spineTr, scale, scale, scale)
 end
 

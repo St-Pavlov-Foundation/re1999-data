@@ -15,10 +15,11 @@ function FightWorkAddHandCard:onStart()
 
 	FightController.instance:dispatchEvent(FightEvent.SetHandCardVisible, true)
 
+	local skillId = self.actEffectData.effectNum
 	local version = FightModel.instance:getVersion()
 
 	if version >= 4 then
-		local delayTime = 0.5
+		local delayTime = 0.5 / FightModel.instance:getUISpeed()
 
 		self:com_registTimer(self._delayAfterPerformance, delayTime)
 		FightController.instance:dispatchEvent(FightEvent.AddHandCard)

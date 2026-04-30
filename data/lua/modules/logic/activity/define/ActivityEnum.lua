@@ -110,6 +110,7 @@ ActivityEnum.Activity = {
 	RoleSignViewPart1_1_9 = 11913,
 	V3a6_Abyss = 13601,
 	V2a8_WarmUp = 12875,
+	V3a7_SkinGift = 13746,
 	RoleSignViewPart2_1_9 = 11914,
 	DecalogPresent = 11613,
 	DreamShow = 10011,
@@ -133,6 +134,7 @@ ActivityEnum.Activity = {
 	NewWelfare = 11924,
 	V2a8_welfareActivity = 12863,
 	V2a3_WarmUp = 12310,
+	V3a7_SelfSelect = 13737,
 	V2a9_Calendar_Decoration = 130510,
 	RoleSignViewPart1_1_8 = 11800,
 	V2a8_Calendar_Decoration = 12878,
@@ -174,6 +176,7 @@ ActivityEnum.Activity = {
 	V3a0_WarmUp = 13017,
 	V2a0_WarmUp = 12029,
 	V2a9_Act205 = 130519,
+	V3a7_Act236 = 13728,
 	V2a8_PVPopupReward = 12881,
 	V2a4_NewInsight = 12437,
 	V2a5_NewInsight = 12511,
@@ -260,13 +263,14 @@ ActivityEnum.VersionActivityIdDict = {
 	Activity1_1 = 11101,
 	Activity2_2 = 12201,
 	Activity2_7 = 12705,
+	Activity3_7 = 13702,
 	Activity2_8 = 12801,
 	Activity3_2 = 13222
 }
 ActivityEnum.VersionActivityIdList = {
 	ActivityEnum.VersionActivityIdDict.Activity_Assassin_1,
 	ActivityEnum.VersionActivityIdDict.Activity_Assassin_2,
-	ActivityEnum.VersionActivityIdDict.Activity3_6
+	ActivityEnum.VersionActivityIdDict.Activity3_7
 }
 ActivityEnum.MainIcon = {
 	[ActivityEnum.VersionActivityIdDict.Activity1_1] = "rk1111",
@@ -297,7 +301,8 @@ ActivityEnum.MainIcon = {
 	[ActivityEnum.VersionActivityIdDict.Activity3_3] = "rk_3_3",
 	[ActivityEnum.VersionActivityIdDict.Activity3_4] = "rk_3_4",
 	[ActivityEnum.VersionActivityIdDict.Activity3_5] = "rk_3_5",
-	[ActivityEnum.VersionActivityIdDict.Activity3_6] = "rk_3_6"
+	[ActivityEnum.VersionActivityIdDict.Activity3_6] = "rk_3_6",
+	[ActivityEnum.VersionActivityIdDict.Activity3_7] = "rk_3_7"
 }
 ActivityEnum.ShowVersionActivityEpisode = 10103
 ActivityEnum.MainViewActivityState = {
@@ -315,6 +320,7 @@ ActivityEnum.MainViewActivityState = {
 	DouQuQu = 6,
 	Arcade = 13,
 	Survival = 11,
+	Sodache = 15,
 	None = 0
 }
 ActivityEnum.IOSHideActIdMap = {
@@ -329,14 +335,20 @@ ActivityEnum.ActBtnPrefix = {
 	mainView = "act_"
 }
 ActivityEnum.ConstId = {
-	BpSpActId = 5,
 	BpOperAct = 12,
-	ActivityCollect = 13
+	ActivityCollect = 13,
+	BpSpActId = 5,
+	Gifg6StarCharacter = 30702,
+	Gifg5StarCharacter = 30701,
+	SelfSelectCharacterExp = 30703
 }
 ActivityEnum.Act101RewardState = {
 	Received = 2,
 	Available = 1,
 	None = 0
+}
+ActivityEnum.CheckFinishActDic = {
+	[ActivityEnum.Activity.V3a7_SkinGift] = true
 }
 
 return ActivityEnum

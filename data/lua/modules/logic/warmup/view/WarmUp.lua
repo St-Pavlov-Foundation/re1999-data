@@ -245,7 +245,6 @@ end
 
 function WarmUp:onClose()
 	TaskDispatcher.cancelTask(self._inDone, self)
-	GameUtil.onDestroyViewMember(self, "_drag")
 	GameUtil.onDestroyViewMember_TweenId(self, "_movetweenId")
 	GameUtil.onDestroyViewMember_TweenId(self, "_tweenId")
 	TaskDispatcher.cancelTask(self._showLeftTime, self)

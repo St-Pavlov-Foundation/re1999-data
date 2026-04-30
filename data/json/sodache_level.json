@@ -1,0 +1,98 @@
+[
+  {
+    "level": 1,
+    "cosume": 0,
+    "desc": "",
+    "effect": "",
+    "effectDesc": "",
+    "globalAttri": ""
+  },
+  {
+    "level": 2,
+    "cosume": 30,
+    "desc": "可建造【水晶馆】",
+    "effect": "",
+    "effectDesc": "",
+    "globalAttri": ""
+  },
+  {
+    "level": 3,
+    "cosume": 100,
+    "desc": "【拾荒人帐篷】可提升到2级\n后勤补给可购买妙想品质行动牌",
+    "effect": "",
+    "effectDesc": "",
+    "globalAttri": ""
+  },
+  {
+    "level": 4,
+    "cosume": 225,
+    "desc": "【水晶馆】可提升到2级\n后勤补给可购买珍奇品质对策牌",
+    "effect": "",
+    "effectDesc": "",
+    "globalAttri": ""
+  },
+  {
+    "level": 5,
+    "cosume": 425,
+    "desc": "后勤补给可购买【黄金树叶Ⅱ】\n撤离理智极限增加20",
+    "effect": "",
+    "effectDesc": "",
+    "globalAttri": "30013#20#0"
+  },
+  {
+    "level": 6,
+    "cosume": 720,
+    "desc": "【拾荒人帐篷】可提升到3级\n后勤补给可购买部分珍奇品质行动牌",
+    "effect": "",
+    "effectDesc": "",
+    "globalAttri": ""
+  },
+  {
+    "level": 7,
+    "cosume": 1120,
+    "desc": "后勤补给开启黑市商人\n后勤补给可购买所有珍奇品质行动牌\n后勤补给购买价格降低10%",
+    "effect": "",
+    "effectDesc": "后勤补给开启黑市商人",
+    "globalAttri": "40004#-100#0|40003#1#0"
+  },
+  {
+    "level": 8,
+    "cosume": 1655,
+    "desc": "【水晶馆】可提升至3级",
+    "effect": "",
+    "effectDesc": "",
+    "globalAttri": ""
+  },
+  {
+    "level": 9,
+    "cosume": 2335,
+    "desc": "撤离理智极限增加50",
+    "effect": "",
+    "effectDesc": "",
+    "globalAttri": "30013#50#0"
+  },
+  {
+    "level": 10,
+    "cosume": 3185,
+    "desc": "后勤补给购买价格降低10%→20%\n撤离理智极限增加30",
+    "effect": "",
+    "effectDesc": "",
+    "globalAttri": "30013#30#0|40004#-100#0"
+  },
+  {
+    "level": 11,
+    "cosume": 4215,
+    "desc": "撤离理智极限增加50",
+    "effect": "",
+    "effectDesc": "",
+    "globalAttri": "30013#50#0"
+  },
+  {
+    "level": 12,
+    "cosume": 5465,
+    "desc": "后勤补给可购买【黄金树叶Ⅲ】",
+    "effect": "",
+    "effectDesc": "",
+    "globalAttri": ""
+  }
+]

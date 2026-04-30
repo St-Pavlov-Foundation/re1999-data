@@ -114,6 +114,16 @@ function FightFocusView:onInitView()
 	self.closeYaMiShieldTipsClick = gohelper.findChildClickWithDefaultAudio(self.viewGO, "fightinfocontainer/layout/#go_shield/#go_detailView/#btn_detailClose")
 	self.tipsYaMiShieldValueText = gohelper.findChildText(self.viewGO, "fightinfocontainer/layout/#go_shield/#go_detailView/#scroll_content/viewport/content/#go_detailpassiveitem/shieldTitle/txt_title/#txt_curShield")
 	self.yaMiTipsDescText = gohelper.findChildText(self.viewGO, "fightinfocontainer/layout/#go_shield/#go_detailView/#scroll_content/viewport/content/#go_detailpassiveitem/txt_desc")
+	self.go_meiLeiEr = gohelper.findChild(self.viewGO, "fightinfocontainer/#go_infoView/content/info/hp/layout/go_leimeier")
+
+	gohelper.setActive(self.go_meiLeiEr, false)
+
+	self.meiLeiErSlider1 = gohelper.findChildImage(self.go_meiLeiEr, "#image_progress1")
+	self.meiLeiErSlider2 = gohelper.findChildImage(self.go_meiLeiEr, "#image_progress2")
+	self.meiLeiErExroundRateText = gohelper.findChildText(self.go_meiLeiEr, "#txt_hp")
+	self.goDevicePower = gohelper.findChild(self.viewGO, "fightinfocontainer/#go_infoView/content/info/hp/layout/go_device")
+	self.txtDevicePower = gohelper.findChildText(self.goDevicePower, "#txt_hp")
+	self.imageDevicePowerProgress = gohelper.findChildImage(self.goDevicePower, "#image_fill")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -132,7 +142,6 @@ function FightFocusView:addEvents()
 	self.healthClick:AddClickListener(self.onClickHealth, self)
 	self:com_registFightEvent(FightEvent.onReceiveEntityInfoReply, self._onReceiveEntityInfoReply)
 	self:com_registClick(self.yaMiShieldClick, self._onClickYaMiShield)
-	self:com_registClick(self.closeYaMiShieldTipsClick, self._onCloseYaMiShieldTips)
 end
 
 function FightFocusView:removeEvents()
@@ -308,6 +317,8 @@ function FightFocusView:_editableInitView()
 	self.resistanceComp = FightEntityResistanceComp.New(self._goresistance, self.viewContainer)
 
 	self.resistanceComp:onInitView()
+
+	self._godevice = gohelper.findChild(self.viewGO, "fightinfocontainer/#go_infoView/content/#go_device")
 end
 
 function FightFocusView:createSuperItem()
@@ -1206,6 +1217,8 @@ function FightFocusView:_refreshSkill(skillIdDict)
 	for i = #skillIdDict + 1, #self._skillGOs do
 		gohelper.setActive(self._skillGOs[i].go, false)
 	end
+
+	self:_checkDevice()
 end
 
 function FightFocusView:_refreshSuper(uniqueSkillList)
@@ -1266,6 +1279,8 @@ function FightFocusView:_refreshMO(entityMO)
 	self:refreshToughnessReward(entityMO)
 	self:refreshWeakness(entityMO, hasToughness)
 	self:refreshYaMiShield(entityMO)
+	self:refreshMeiLeiEr(entityMO)
+	self:refreshDevicePower(entityMO)
 end
 
 function FightFocusView:_refreshEnemyPassiveSkill(monsterCO)
@@ -1909,6 +1924,12 @@ function FightFocusView:onDestroyView()
 
 		self._assistBossView = nil
 	end
+
+	if self._loader then
+		self._loader:dispose()
+
+		self._loader = nil
+	end
 end
 
 function FightFocusView:removeStressComp()
@@ -2426,8 +2447,6 @@ function FightFocusView:refreshWeakness(entityMO, hasToughness)
 	gohelper.setActive(self.go_weakness, hasWeakness)
 
 	if hasWeakness then
-		table.insert(weaknessList, 1, -99)
-
 		local weaknessItem = gohelper.findChild(self.go_weakness, "#image_icon")
 
 		gohelper.CreateObjList(self, self.onWeaknessItemShow, weaknessList, self.go_weakness, weaknessItem)
@@ -2439,10 +2458,6 @@ function FightFocusView:refreshWeakness(entityMO, hasToughness)
 end
 
 function FightFocusView:onWeaknessItemShow(obj, data, index)
-	if index == 1 then
-		return
-	end
-
 	local image = gohelper.onceAddComponent(obj, gohelper.Type_Image)
 
 	UISpriteSetMgr.instance:setFightSprite(image, "fight_toughness_fighticon_" .. data)
@@ -2480,6 +2495,126 @@ end
 
 function FightFocusView:_onCloseYaMiShieldTips()
 	gohelper.setActive(self.yaMiShieldTips, false)
+end
+
+function FightFocusView:_checkDevice()
+	if not self._godevice then
+		return
+	end
+
+	self._deviceMo = SkillConfig.instance:getHeroDeviceMO(self._entityMO.modelId, self._entityMO)
+
+	if self._deviceMo then
+		if self._deviceView then
+			self:_refreshDevice()
+		else
+			self._deviceViewPath = "ui/viewres/character/characterdeviceview_1.prefab"
+			self._loader = MultiAbLoader.New()
+
+			self._loader:addPath(self._deviceViewPath)
+			self._loader:startLoad(self._onLoadFinish, self)
+		end
+	else
+		gohelper.setActive(self._godevice, false)
+		gohelper.setActive(self._skill, true)
+	end
+end
+
+function FightFocusView:_refreshDevice()
+	if not self._deviceView then
+		return
+	end
+
+	self._deviceView:onUpdateMO(self._entityMO.modelId, self._entityMO)
+
+	self._deviceMo = SkillConfig.instance:getHeroDeviceMO(self._entityMO.modelId, self._entityMO)
+
+	local isDevice = self._deviceMo ~= nil
+
+	gohelper.setActive(self._godevice, isDevice)
+	gohelper.setActive(self._skill, not isDevice)
+end
+
+function FightFocusView:_onLoadFinish()
+	if not self._deviceView then
+		local assetItem = self._loader:getAssetItem(self._deviceViewPath)
+		local viewPrefab = assetItem:GetResource(self._deviceViewPath)
+		local go = gohelper.clone(viewPrefab, self._godevice)
+
+		self._deviceView = MonoHelper.addNoUpdateLuaComOnceToGo(go, CharacterDeviceView)
+	end
+
+	self:_refreshDevice()
+end
+
+function FightFocusView:refreshMeiLeiEr(entityMO)
+	local hasAct, buffData = entityMO:hasBuffActId(1139)
+
+	if not hasAct then
+		gohelper.setActive(self.go_meiLeiEr, false)
+
+		return
+	end
+
+	gohelper.setActive(self.go_meiLeiEr, true)
+
+	local trigger = 100
+	local limit = 100
+	local featuresSplit = entityMO:getFeaturesSplitInfoByBuffId(buffData.buffId)
+
+	if featuresSplit then
+		for _, oneFeature in ipairs(featuresSplit) do
+			if oneFeature[1] == 1139 then
+				trigger = oneFeature[2]
+				limit = oneFeature[3]
+			end
+		end
+	end
+
+	local actInfo
+	local actInfos = buffData.actInfo
+
+	if actInfos then
+		for _, buffActInfo in pairs(actInfos) do
+			if buffActInfo.actId == 1139 then
+				actInfo = buffActInfo
+
+				break
+			end
+		end
+	end
+
+	if actInfo then
+		self.meiLeiErSlider1.fillAmount = (actInfo.param[1] or 0) / trigger
+		self.meiLeiErSlider2.fillAmount = ((actInfo.param[1] or 0) - trigger) / (limit - trigger)
+	else
+		self.meiLeiErSlider1.fillAmount = 0
+		self.meiLeiErSlider2.fillAmount = 0
+	end
+
+	self.meiLeiErExroundRateText.text = (actInfo.param[1] or 0) / trigger * 100 .. "%"
+end
+
+function FightFocusView:refreshDevicePower(entityMo)
+	if not entityMo then
+		gohelper.setActive(self.goDevicePower, false)
+
+		return
+	end
+
+	if entityMo.exPointType ~= FightEnum.ExPointType.DevicePower then
+		gohelper.setActive(self.goDevicePower, false)
+
+		return
+	end
+
+	gohelper.setActive(self.goDevicePower, true)
+
+	local curPower = entityMo:getExPoint()
+	local maxPower = entityMo:getMaxExPoint()
+
+	self.txtDevicePower.text = string.format("%s/%s", curPower, maxPower)
+	self.imageDevicePowerProgress.fillAmount = maxPower > 0 and curPower / maxPower or 1
 end
 
 return FightFocusView

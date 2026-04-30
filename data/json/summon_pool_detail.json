@@ -250,5 +250,14 @@
     "historyShowType": 0,
     "order": 4,
     "openId": 11
+  },
+  {
+    "id": 27,
+    "desc": "",
+    "info": "83701",
+    "name": "周年限定征集\n【故事的新啼】",
+    "historyShowType": 0,
+    "order": 1,
+    "openId": 11
   }
 ]

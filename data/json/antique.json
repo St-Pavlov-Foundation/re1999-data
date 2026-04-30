@@ -208,5 +208,20 @@
     "storyId": 0,
     "iconArea": 0,
     "effect": "v1a9_caidai"
+  },
+  {
+    "id": 371001,
+    "name": "奇迹鸽",
+    "nameen": "Miraculous Dove",
+    "icon": "v3a7_antique_icon_1",
+    "gifticon": "v3a7_antique_icon_1",
+    "sign": "501210",
+    "title": "奇迹鸽",
+    "titleen": "Miraculous Dove",
+    "desc": "几只仿制的气象鸽，孩子们用稚嫩的模仿，来铭记这场“暴雨”，与从“暴雨”中救下他们的人。\n司辰代其他人收下了这份礼物，并承诺一定会转交给她们。",
+    "sources": "",
+    "storyId": 0,
+    "iconArea": 0,
+    "effect": "v1a9_caidai"
   }
 ]

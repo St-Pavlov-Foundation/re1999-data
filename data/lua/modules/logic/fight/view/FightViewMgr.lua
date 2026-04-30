@@ -29,10 +29,15 @@ function FightViewMgr:addEvents()
 	self:com_registMsg(FightMsgId.ShowDouQuQuXianHouShou, self._onShowDouQuQuXianHouShou)
 	self:com_registMsg(FightMsgId.RefreshPlayerFinisherSkill, self._showPlayerFinisherSkill)
 	self:com_registMsg(FightMsgId.RefreshSimplePolarizationLevel, self._onRefreshSimplePolarizationLevel)
+	self:com_registMsg(FightMsgId.GetFightViewGameObject, self._onGetFightViewGameObject)
 end
 
 function FightViewMgr:removeEvents()
 	return
+end
+
+function FightViewMgr:_onGetFightViewGameObject()
+	FightMsgMgr.replyMsg(FightMsgId.GetFightViewGameObject, self.viewGO)
 end
 
 function FightViewMgr:onCreateDoomsdayClock()
@@ -185,6 +190,7 @@ function FightViewMgr:onOpen()
 	self:showRouge2Task()
 	self:showRouge2Slapstick()
 	self:openLorentzCardView()
+	self:showMeileiierExRound()
 end
 
 function FightViewMgr:openLorentzCardView()
@@ -288,10 +294,7 @@ function FightViewMgr:showRouge2MusicInfo()
 		return
 	end
 
-	local teamDataMgr = FightDataHelper.teamDataMgr[FightEnum.TeamType.MySide]
-	local rouge2MusicInfo = teamDataMgr and teamDataMgr.rouge2MusicInfo
-
-	if not rouge2MusicInfo then
+	if not FightDataHelper.hasMusicInfo() then
 		return
 	end
 
@@ -386,22 +389,13 @@ function FightViewMgr:showDouQuQuBoss()
 end
 
 function FightViewMgr:showZongMaoScore()
-	local episodeId = FightDataHelper.fieldMgr.episodeId
-	local episodeConfig = DungeonConfig.instance:getEpisodeCO(episodeId)
+	if FightDataHelper.fieldMgr:isV3_2ZongMao() or FightDataHelper.fieldMgr:isRouge2Boss() then
+		local parentRoot = self.viewContainer.rightElementLayoutView:getElementContainer(FightRightElementEnum.Elements.BossRush)
 
-	if not episodeConfig then
-		return
+		self.zongMaoScoreView = self:com_openSubView(FightZongMaoScoreView, "ui/viewres/versionactivity_1_4/v1a4_bossrush/v3a2_bossrush/v3a2_bossrush_ig_scoretips.prefab", parentRoot)
+
+		self.viewContainer.rightElementLayoutView:showElement(FightRightElementEnum.Elements.BossRush)
 	end
-
-	if episodeConfig.type ~= DungeonEnum.EpisodeType.V3_2ZongMao then
-		return
-	end
-
-	local parentRoot = self.viewContainer.rightElementLayoutView:getElementContainer(FightRightElementEnum.Elements.BossRush)
-
-	self.zongMaoScoreView = self:com_openSubView(FightZongMaoScoreView, "ui/viewres/versionactivity_1_4/v1a4_bossrush/v3a2_bossrush/v3a2_bossrush_ig_scoretips.prefab", parentRoot)
-
-	self.viewContainer.rightElementLayoutView:showElement(FightRightElementEnum.Elements.BossRush)
 end
 
 function FightViewMgr:_showDoomsdayClock()
@@ -439,6 +433,10 @@ function FightViewMgr:_showHeatScale()
 	if heatScale then
 		self:_createHeatScale(FightEnum.TeamType.MySide)
 	end
+end
+
+function FightViewMgr:showMeileiierExRound()
+	self.meiLeiErMgrView = self:com_openSubView(FightMeileLeiErBtnView)
 end
 
 function FightViewMgr:_createBloodPool(teamType)

@@ -57,12 +57,44 @@ function NewPlayerCardContentView:onOpen()
 	self.playercardinfo = PlayerCardModel.instance:getCardInfo(self.userId)
 
 	gohelper.setActive(self._goBottom, self._openswitchskin)
-	gohelper.setActive(self._btnswitchskin.gameObject, self.playercardinfo:isSelf())
+
+	local themeInfo = self:_getThemeInfo(self.userId)
+	local delayShowTime = themeInfo and themeInfo.BtnDelayShowTime or 0
+
+	TaskDispatcher.cancelTask(self._showSwitchBtn, self)
+
+	if self.playercardinfo:isSelf() then
+		gohelper.setActive(self._btnswitchskin.gameObject, self.playercardinfo:isSelf())
+
+		if delayShowTime > 0 then
+			gohelper.setActive(self._btnswitchskin.gameObject, false)
+			TaskDispatcher.runDelay(self._showSwitchBtn, self, delayShowTime)
+		else
+			self:_showSwitchBtn()
+		end
+	else
+		gohelper.setActive(self._btnswitchskin.gameObject, false)
+	end
 
 	self.skinId = self.playercardinfo:getThemeId()
 
 	self:loadRes(self.skinId)
 	self:_initSkinPreView()
+end
+
+function NewPlayerCardContentView:_getThemeInfo(userid)
+	local cardInfo = PlayerCardModel.instance:getCardInfo(userid)
+	local themeId = cardInfo and cardInfo:getThemeId()
+
+	if themeId then
+		local info = PlayerCardEnum.Theme[themeId]
+
+		return info
+	end
+end
+
+function NewPlayerCardContentView:_showSwitchBtn()
+	gohelper.setActive(self._btnswitchskin.gameObject, true)
 end
 
 function NewPlayerCardContentView:_initSkinPreView()
@@ -89,6 +121,7 @@ function NewPlayerCardContentView:loadRes(skinId)
 
 	self._loader:addPath(self._path)
 	self._loader:startLoad(self._onLoadFinish, self)
+	self.viewContainer:setShowSkinId(skinId)
 end
 
 function NewPlayerCardContentView:_onLoadFinish()
@@ -96,7 +129,11 @@ function NewPlayerCardContentView:_onLoadFinish()
 	local viewPrefab = assetItem:GetResource(self._path)
 
 	self._viewGo = gohelper.clone(viewPrefab, self._goContent)
-	self._viewCls = MonoHelper.addNoUpdateLuaComOnceToGo(self._viewGo, NewPlayerCardView)
+
+	local skinId = self._tempSkinId or self.skinId
+	local playerCardViewClass = _G["NewPlayerCardView_" .. skinId] or NewPlayerCardView
+
+	self._viewCls = MonoHelper.addNoUpdateLuaComOnceToGo(self._viewGo, playerCardViewClass)
 	self._achievementCls = MonoHelper.addNoUpdateLuaComOnceToGo(self._viewGo, PlayerCardAchievement)
 	self._infoCls = MonoHelper.addNoUpdateLuaComOnceToGo(self._viewGo, PlayerCardPlayerInfo)
 	self._viewCls.viewParam = self.viewParam
@@ -119,6 +156,8 @@ function NewPlayerCardContentView:_onLoadFinish()
 			self._viewCls:backBottomView()
 		end
 	end
+
+	PlayerCardController.instance:checkPlayCardSpecialBgm(skinId)
 
 	self._firstopen = false
 end
@@ -269,6 +308,7 @@ function NewPlayerCardContentView:onClose()
 	TaskDispatcher.cancelTask(self.afterOpenLoad, self)
 	TaskDispatcher.cancelTask(self.afterClose, self)
 	TaskDispatcher.cancelTask(self.closeLoading, self)
+	TaskDispatcher.cancelTask(self._showSwitchBtn, self)
 
 	if self._loader then
 		self._loader:dispose()
@@ -277,6 +317,7 @@ function NewPlayerCardContentView:onClose()
 	end
 
 	PlayerCardModel.instance:setIsOpenSkinView(false)
+	PlayerCardController.instance:stopCardSpecialBgm()
 end
 
 function NewPlayerCardContentView:onDestroyView()

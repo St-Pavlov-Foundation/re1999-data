@@ -50,8 +50,12 @@ function JumpController:jumpToStoreView(jumpParam)
 			table.insert(self.remainViewNames, ViewName.PackageStoreGoodsView)
 		end
 
-		if (jumpTab == StoreEnum.StoreId.NewDecorateStore or jumpTab == StoreEnum.StoreId.OldDecorateStore) and jumpGoodsId then
-			table.insert(self.remainViewNames, ViewName.DecorateStoreGoodsView)
+		if jumpTab == StoreEnum.StoreId.NewDecorateStore or jumpTab == StoreEnum.StoreId.OldDecorateStore then
+			if jumpGoodsId then
+				table.insert(self.remainViewNames, ViewName.DecorateStoreGoodsView)
+			end
+
+			DecorateStoreModel.instance:setCurGood(jumpGoodsId or 0)
 		end
 
 		StoreController.instance:openStoreView(jumpTab, jumpGoodsId, isFocus)
@@ -324,13 +328,13 @@ function JumpController:jumpToBackpackUseTypeView(jumpParam)
 end
 
 function JumpController:jumpToSkinGiftUseTypeView(jumpParam)
-	table.insert(self.waitOpenViewNames, ViewName.DecorateSkinSelectView)
+	table.insert(self.waitOpenViewNames, ViewName.SkinSelfSelectView)
 
 	local jumpArray = string.splitToNumber(jumpParam, "#")
 	local itemId = jumpArray[2]
 
 	CharacterController.instance:useSkinGiftItem(itemId)
-	table.insert(self.remainViewNames, ViewName.DecorateSkinSelectView)
+	table.insert(self.remainViewNames, ViewName.SkinSelfSelectView)
 
 	return JumpEnum.JumpResult.Success
 end
@@ -1821,7 +1825,7 @@ function JumpController:jumpToWeekWalk(jumpParam)
 
 	local info = WeekWalkModel.instance:getInfo()
 	local mapLayerInfo = info and info:getMapInfoByLayer(WeekWalkEnum.LastShallowLayer)
-	local isShallowLayerFinish = mapLayerInfo and mapLayerInfo.isFinished == 1
+	local isShallowLayerFinish = mapLayerInfo and mapLayerInfo.isFinished >= 1
 
 	if not isShallowLayerFinish then
 		GameFacade.showToast(ToastEnum.ActivityWeekWalkDeepShowView)
@@ -1841,8 +1845,38 @@ function JumpController:jumpToWeekWalk(jumpParam)
 	return JumpEnum.JumpResult.Success
 end
 
+function JumpController:jumpToAnniversary3GameView()
+	local actId = VersionActivity3_7Enum.ActivityId.Anniversary3GuessGame
+	local actInfoMo = ActivityModel.instance:getActivityInfo()[actId]
+	local isExpire = actInfoMo:isExpired()
+
+	if isExpire then
+		GameFacade.showToast(ToastEnum.ActivityEnd)
+
+		return JumpEnum.JumpResult.Fail
+	end
+
+	local isUnlock = actInfoMo:isOnline() and actInfoMo:isOpen()
+
+	if not isUnlock then
+		GameFacade.showToast(ToastEnum.ActivityNotOpen)
+
+		return JumpEnum.JumpResult.Fail
+	end
+
+	Anniversary3Controller.instance:openGuessGameMainView()
+
+	return JumpEnum.JumpResult.Success
+end
+
 function JumpController:_useSupplementMonthCard()
 	SignInRpc.instance:sendSupplementMonthCardRequest()
+end
+
+function JumpController:jumpToAct236()
+	Act236Controller.instance:openMainView(ActivityEnum.Activity.V3a7_Act236)
+
+	return JumpEnum.JumpResult.Success
 end
 
 JumpController.JumpViewToHandleFunc = {
@@ -1907,7 +1941,9 @@ JumpController.JumpViewToHandleFunc = {
 	[JumpEnum.JumpView.LaplaceChatRoom] = JumpController.jumpToLaplaceChatRoomView,
 	[JumpEnum.JumpView.SurvivalView] = JumpController.jumpToSurvivalView,
 	[JumpEnum.JumpView.Abyss] = JumpController.jumpToAbyss,
-	[JumpEnum.JumpView.WeekWalk] = JumpController.jumpToWeekWalk
+	[JumpEnum.JumpView.WeekWalk] = JumpController.jumpToWeekWalk,
+	[JumpEnum.JumpView.Anniversary3Game] = JumpController.jumpToAnniversary3GameView,
+	[JumpEnum.JumpView.Act236] = JumpController.jumpToAct236
 }
 JumpController.JumpActViewToHandleFunc = {
 	[JumpEnum.ActIdEnum.Act117] = JumpController.jumpToAct117,

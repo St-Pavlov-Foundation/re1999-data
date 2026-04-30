@@ -8,7 +8,7 @@
     "monsterDesc": "1",
     "scoreReward": 100,
     "startView": "",
-    "initCollections": "",
+    "initCollections": "137001",
     "desc": "没有特殊效果",
     "balanceLevel": "121#10#60"
   },
@@ -21,7 +21,7 @@
     "monsterDesc": "2",
     "scoreReward": 120,
     "startView": "",
-    "initCollections": "100022",
+    "initCollections": "100022#137001",
     "desc": "所有检定结果-1\n任意战斗回合数超过5后，回合开始时敌方全体攻击+5%",
     "balanceLevel": "121#10#60"
   },
@@ -34,7 +34,7 @@
     "monsterDesc": "3",
     "scoreReward": 140,
     "startView": "",
-    "initCollections": "100022#100023",
+    "initCollections": "100022#100023#137001",
     "desc": "购物契机中商品价格+30%，偷窃检定结果-2\n敌方行动点+1",
     "balanceLevel": "121#10#60"
   },
@@ -47,7 +47,7 @@
     "monsterDesc": "4",
     "scoreReward": 160,
     "startView": "",
-    "initCollections": "100022#100023#100024",
+    "initCollections": "100022#100023#100024#137001",
     "desc": "所有敌人最终免伤+40%",
     "balanceLevel": "121#10#60"
   },
@@ -60,7 +60,7 @@
     "monsterDesc": "5",
     "scoreReward": 180,
     "startView": "",
-    "initCollections": "100022#100023#100024#151001",
+    "initCollections": "100022#100023#100024#151001#137001",
     "desc": "幕后的敌人会在第4回合开始，每2回合释放强力攻击",
     "balanceLevel": "121#10#60"
   },
@@ -70,11 +70,37 @@
     "title_en": "Piano",
     "bg": "rouge2_difficulty_bg3",
     "preDifficulty": 5,
-    "monsterDesc": "5",
+    "monsterDesc": "6",
     "scoreReward": 200,
     "startView": "",
-    "initCollections": "100022#100023#100024#151001",
+    "initCollections": "100022#100023#100024#151001#137001",
     "desc": "敌人的生命获得大幅强化",
+    "balanceLevel": "121#10#60"
+  },
+  {
+    "difficulty": 7,
+    "title": "崩解 I",
+    "title_en": "Piano",
+    "bg": "rouge2_difficulty_bg3",
+    "preDifficulty": 6,
+    "monsterDesc": "7",
+    "scoreReward": 200,
+    "startView": "",
+    "initCollections": "100022#100023#100024#151001#137001",
+    "desc": "敌人的伤害获得强化，所有属性点上限+2",
+    "balanceLevel": "121#10#60"
+  },
+  {
+    "difficulty": 8,
+    "title": "崩解 II",
+    "title_en": "Piano",
+    "bg": "rouge2_difficulty_bg3",
+    "preDifficulty": 7,
+    "monsterDesc": "8",
+    "scoreReward": 200,
+    "startView": "",
+    "initCollections": "100022#100023#100024#151001#137001",
+    "desc": "所有精英、首领的强度大幅提升，所有属性点上限+4",
     "balanceLevel": "121#10#60"
   }
 ]

@@ -1445,6 +1445,14 @@ function CharacterModel:getGainHeroViewShowNewState()
 	return self._hideOldGainHeroView
 end
 
+function CharacterModel:setGainHeroViewToastState(hideToast)
+	self._hideHeroToast = hideToast
+end
+
+function CharacterModel:getGainHeroViewToastState()
+	return self._hideHeroToast
+end
+
 function CharacterModel:getSpecialEffectDesc(skin, rank)
 	local co = lua_character_limited.configDict[skin]
 	local descList

@@ -72,10 +72,6 @@ function FightTotalDamageComp:_showTotalFloat()
 					if FightTLEventDefHit.originHitEffectType[et] then
 						hasOrigin = true
 					end
-
-					if actEffectData.effectNum1 == 1 then
-						hasAssassinate = true
-					end
 				end
 			end
 

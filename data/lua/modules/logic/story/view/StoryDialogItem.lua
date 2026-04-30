@@ -35,7 +35,7 @@ function StoryDialogItem:init(go)
 	self._slideItem:init(self._goslidecontent)
 	self._slideItem:hideDialog()
 
-	local storyviewGo = ViewMgr.instance:getContainer(ViewName.StoryView).viewGO
+	local storyviewGo = StoryViewMgr.instance:getStoryView()
 
 	self._goroleaudio = gohelper.findChild(storyviewGo, "go_roleaudio")
 	self._goroleaudioleft = gohelper.findChild(self._goroleaudio, "left")
@@ -66,11 +66,29 @@ end
 function StoryDialogItem:_addEvent()
 	StoryController.instance:registerCallback(StoryEvent.LogSelected, self._btnlogOnClick, self)
 	ViewMgr.instance:registerCallback(ViewEvent.OnCloseView, self._checkCloseView, self)
+	StoryController.instance:registerCallback(StoryEvent.OnPerspectiveDialogMat, self._onSetPerspectiveMat, self)
+	StoryController.instance:registerCallback(StoryEvent.OnResetPerspectiveDialogMat, self._onResetPerspectiveMat, self)
+end
+
+function StoryDialogItem:_onSetPerspectiveMat()
+	local color = Color.New(1, 0, 1, 1)
+
+	self._conMat:SetColor("_BloomColor", color)
+	self._conMat:SetFloat("_BloomColorMask", 12)
+end
+
+function StoryDialogItem:_onResetPerspectiveMat()
+	local color = Color.New(1, 1, 1, 1)
+
+	self._conMat:SetColor("_BloomColor", color)
+	self._conMat:SetFloat("_BloomColorMask", 8)
 end
 
 function StoryDialogItem:_removeEvent()
 	StoryController.instance:unregisterCallback(StoryEvent.LogSelected, self._btnlogOnClick, self)
 	ViewMgr.instance:unregisterCallback(ViewEvent.OnCloseView, self._checkCloseView, self)
+	StoryController.instance:unregisterCallback(StoryEvent.OnPerspectiveDialogMat, self._onSetPerspectiveMat, self)
+	StoryController.instance:unregisterCallback(StoryEvent.OnResetPerspectiveDialogMat, self._onResetPerspectiveMat, self)
 end
 
 function StoryDialogItem:_checkCloseView(viewName)
@@ -231,6 +249,18 @@ function StoryDialogItem:playSlideDialog(txt, callback, callbackobj)
 	self._slideItem:startShowDialog(data, callback, callbackobj)
 end
 
+function StoryDialogItem:_isSoftLightStep()
+	if self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.SoftLight then
+		return true
+	end
+
+	if self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.SoftLightDarkBg then
+		return true
+	end
+
+	return false
+end
+
 function StoryDialogItem:playNormalText(txt, callback, callbackobj)
 	self._txt = txt
 	self._textShowFinished = false
@@ -247,7 +277,9 @@ function StoryDialogItem:playNormalText(txt, callback, callbackobj)
 	self._subemtext = StoryTool.filterMarkTop(self._subemtext)
 	self._txtcontentcn.text = string.gsub(self._subemtext, "(<sprite=%d>)", "")
 
-	if self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.SoftLight then
+	local isSoftLight = self:_isSoftLightStep()
+
+	if isSoftLight then
 		self._txtcontentcn.alignment = TMPro.TextAlignmentOptions.Top
 
 		if self._txtcontentcn.fontSharedMaterial:IsKeywordEnabled("UNDERLAY_ON") == false then
@@ -271,8 +303,8 @@ function StoryDialogItem:playNormalText(txt, callback, callbackobj)
 		PostProcessingMgr.instance:setUIPPValue("localBloomActive", true)
 		PostProcessingMgr.instance:setUIPPValue("bloomDiffusion", 5)
 		gohelper.setActive(self._goline, false)
-		gohelper.setActive(self._goblackbottom, false)
 		gohelper.setActive(self._gonexticon, false)
+		gohelper.setActive(self._goblackbottom, self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.SoftLightDarkBg)
 		transformhelper.setLocalPosXY(self._gonormalcontent.transform, 475, -50)
 	else
 		self._txtcontentcn.fontSharedMaterial:DisableKeyword("UNDERLAY_ON")
@@ -281,7 +313,6 @@ function StoryDialogItem:playNormalText(txt, callback, callbackobj)
 		self._txtcontentcn.fontSharedMaterial = self._fontNormalMat
 
 		self._txtcontentcn.fontSharedMaterial:SetFloat("_BloomFactor", 0)
-		PostProcessingMgr.instance:setUIPPValue("localBloomActive", false)
 		PostProcessingMgr.instance:setUIPPValue("bloomDiffusion", 7)
 
 		local showContent = self._stepCo.conversation.type ~= StoryEnum.ConversationType.IrregularShake
@@ -298,9 +329,9 @@ function StoryDialogItem:playNormalText(txt, callback, callbackobj)
 	self._subemtext = string.gsub(self._subemtext, "</glitch>", "</i></b>")
 
 	if self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.Hard then
-		self:_playHardIn()
+		self:playHardIn()
 	else
-		self:_playGradualIn()
+		self:playGradualIn()
 	end
 end
 
@@ -443,13 +474,14 @@ function StoryDialogItem:_checkPlayGlitch(txt)
 	end
 end
 
-function StoryDialogItem:_playHardIn()
+function StoryDialogItem:playHardIn()
 	self:_showMagicItem(false)
 	gohelper.setActive(self._gonormalcontent, true)
+	TaskDispatcher.cancelTask(self._delayShow, self)
 	self:conFinished()
 end
 
-function StoryDialogItem:_playGradualIn()
+function StoryDialogItem:playGradualIn()
 	local height = UnityEngine.Screen.height
 
 	self._conMat:EnableKeyword("_GRADUAL_ON")
@@ -810,11 +842,12 @@ function StoryDialogItem:_conUpdate(value)
 
 			local rate = startCount == endCount and 1 or (value - startCount) / (endCount - startCount)
 			local screenPosX = Mathf.Lerp(maxBL.x - 10, lastBR.x + 10, rate)
-			local posZ = self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.SoftLight and 0 or 1 - screenPosX / screenWidth
+			local isSoftLight = self:_isSoftLightStep()
+			local posZ = isSoftLight and 0 or 1 - screenPosX / screenWidth
 
 			transformhelper.setLocalPos(self._txtcontentcn.transform, self._contentX, self._contentY, posZ)
 
-			if self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.SoftLight then
+			if isSoftLight then
 				self._conMat:SetFloat(self._LineMinYId, 0)
 				self._conMat:SetFloat(self._LineMaxYId, 0)
 

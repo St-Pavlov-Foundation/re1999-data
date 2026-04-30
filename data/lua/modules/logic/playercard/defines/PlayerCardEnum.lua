@@ -62,5 +62,13 @@ PlayerCardEnum.ShowSettingsType = {
 	ShowEquipType = 1,
 	HideBadgeFormOther = 2
 }
+PlayerCardEnum.Theme = {
+	[210015] = {
+		BgmId = 370201,
+		BtnDelayShowTime = 2,
+		isJustEquipedShow = true,
+		OpenAudioId = AudioEnum3_7.PlayCard.play_ui_lvquanji_open1
+	}
+}
 
 return PlayerCardEnum

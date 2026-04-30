@@ -208,53 +208,64 @@ function PackageStoreGoodsItem:onUpdateMO(mo)
 
 	self._simageicon:LoadImage(ResUrl.getStorePackageIcon(self._mo.config.bigImg))
 
+	local underlayParam
+
 	if string.nilorempty(self._mo.config.underlay) then
-		logError("商店改版 缺少底板配置 商品id:" .. tostring(self._mo.goodsId))
+		logError("商店改版 缺少底板配置 使用保底配置 商品id:" .. tostring(self._mo.goodsId))
+
+		underlayParam = string.splitToNumber(ChargePackageEnum.DefaultUnderlayParam, "#")
 	else
-		local underlayParam = string.splitToNumber(self._mo.config.underlay, "#")
+		underlayParam = string.splitToNumber(self._mo.config.underlay, "#")
+	end
 
-		logNormal(string.format("---商店改版 底板配置 id: %s 底板id: %s 价格: %s ", self._mo.goodsId, underlayParam[1], self._mo.isChargeGoods and PayModel.instance:getProductOriginPriceNum(self._mo.id) or 0))
+	logNormal(string.format("---商店改版 底板配置 id: %s 底板id: %s 价格: %s ", self._mo.goodsId, underlayParam[1], self._mo.isChargeGoods and PayModel.instance:getProductOriginPriceNum(self._mo.id) or 0))
 
-		local itemBgIconName = "panel/package_quality_" .. self:_getNumStr(underlayParam[1])
+	local itemBgIconName = "panel/package_quality_" .. self:_getNumStr(underlayParam[1])
 
-		logNormal("商店改版 底板: " .. itemBgIconName)
-		self._simageitembg:LoadImage(ResUrl.getStorePackageIcon(itemBgIconName))
+	logNormal("商店改版 底板: " .. itemBgIconName)
+	self._simageitembg:LoadImage(ResUrl.getStorePackageIcon(itemBgIconName))
 
-		local itemBgIndex = StoreHelper.getPackageIconBgIndex(self._mo.goodsId, self._mo.id, underlayParam[1])
-		local itemIconBgName = itemBgIconName .. "_" .. self:_getNumStr(itemBgIndex)
+	local itemBgIndex
 
-		logNormal("商店改版 图标底板: " .. itemIconBgName)
-		self._simageiconbg:LoadImage(ResUrl.getStorePackageIcon(itemIconBgName))
+	if self._mo.config.showBg ~= nil and self._mo.config.showBg ~= 0 then
+		itemBgIndex = self._mo.config.showBg
+	else
+		itemBgIndex = StoreHelper.getPackageIconBgIndex(self._mo.goodsId, self._mo.id, underlayParam[1])
+	end
 
-		local showLevelBg = mo.buyLevel ~= nil and mo.buyLevel ~= 0
+	local itemIconBgName = itemBgIconName .. "_" .. self:_getNumStr(itemBgIndex)
 
-		gohelper.setActive(self._simageiconnum, showLevelBg)
+	logNormal("商店改版 图标底板: " .. itemIconBgName)
+	self._simageiconbg:LoadImage(ResUrl.getStorePackageIcon(itemIconBgName))
 
-		if showLevelBg then
-			local levelIconName = itemBgIconName .. "_" .. self:_getNumStr(mo.buyLevel)
+	local showLevelBg = mo.buyLevel ~= nil and mo.buyLevel ~= 0
 
-			logNormal("商店改版 等级图标: " .. levelIconName)
-			self._simageiconnum:LoadImage(ResUrl.getStorePackageIcon(levelIconName))
-		end
+	gohelper.setActive(self._simageiconnum, showLevelBg)
 
-		local bgEffectId = underlayParam[2]
-		local showEffect = bgEffectId ~= nil and bgEffectId ~= 0
+	if showLevelBg then
+		local levelIconName = itemBgIconName .. "_" .. self:_getNumStr(mo.buyLevel)
 
-		gohelper.setActive(self._gofx, showEffect)
+		logNormal("商店改版 等级图标: " .. levelIconName)
+		self._simageiconnum:LoadImage(ResUrl.getStorePackageIcon(levelIconName))
+	end
 
-		if showEffect then
-			self._curBgEffectId = bgEffectId
+	local bgEffectId = underlayParam[2]
+	local showEffect = bgEffectId ~= nil and bgEffectId ~= 0
 
-			logNormal("商店改版 特效:" .. tostring(bgEffectId))
+	gohelper.setActive(self._gofx, showEffect)
 
-			if not self._bgEffectDic[bgEffectId] then
-				local resPath = "ui/viewres/store/effect/packagestoregoodsitem_effect_" .. self:_getNumStr(bgEffectId) .. ".prefab"
+	if showEffect then
+		self._curBgEffectId = bgEffectId
 
-				self._loader:addPath(resPath)
-				self._loader:startLoad(self.onEffectLoadFinish, self)
-			else
-				self:refreshBgEffect()
-			end
+		logNormal("商店改版 特效:" .. tostring(bgEffectId))
+
+		if not self._bgEffectDic[bgEffectId] then
+			local resPath = "ui/viewres/store/effect/packagestoregoodsitem_effect_" .. self:_getNumStr(bgEffectId) .. ".prefab"
+
+			self._loader:addPath(resPath)
+			self._loader:startLoad(self.onEffectLoadFinish, self)
+		else
+			self:refreshBgEffect()
 		end
 	end
 

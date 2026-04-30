@@ -14,12 +14,12 @@
     "id": 10002,
     "name": "帷幕的里侧",
     "nameEn": "Behind the Curtain",
-    "show": false,
+    "show": true,
     "order": 2,
     "des": "如何才能够在雨声中，做一个安详的美梦。",
-    "scenePath": "",
-    "nameRes": "",
-    "iconRes": ""
+    "scenePath": "scenes/v2a8_m_s17_pftj/prefab/sence_10002.prefab",
+    "nameRes": "skinhandbook_titletxt_10",
+    "iconRes": "skinhandbook_titleicon_10"
   },
   {
     "id": 10003,

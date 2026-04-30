@@ -13,6 +13,10 @@ function StoryVideoItem:init(go, name, co, startCallBack, startCallBackObj)
 	self._startCallBackObj = startCallBackObj
 	self._videoPlayer, self._videoGo = VideoPlayerMgr.instance:createGoAndVideoPlayer(self.viewGO, "videoTest")
 
+	if string.find(self._videoName, "3_7_xran_jh") then
+		gohelper.setAsFirstSibling(self._videoGo)
+	end
+
 	self:_build()
 end
 
@@ -77,6 +81,12 @@ end
 function StoryVideoItem:destroyVideo(co)
 	self._videoCo = co
 
+	if self._videoName == "3_7_xran_jh" then
+		self._videoFadeTweenId = ZProj.TweenHelper.DOFadeCanvasGroup(self._videoGo, 1, 0, 2, self._realDestroy, self)
+
+		return
+	end
+
 	TaskDispatcher.cancelTask(self._playVideo, self)
 	TaskDispatcher.cancelTask(self._realDestroy, self)
 
@@ -94,6 +104,12 @@ function StoryVideoItem:_realDestroy()
 end
 
 function StoryVideoItem:onDestroy()
+	if self._videoFadeTweenId then
+		ZProj.TweenHelper.KillById(self._videoFadeTweenId)
+
+		self._videoFadeTweenId = nil
+	end
+
 	TaskDispatcher.cancelTask(self._realDestroy, self)
 	TaskDispatcher.cancelTask(self._playVideo, self)
 	StoryModel.instance:setSpecialVideoEnd(self._videoName)

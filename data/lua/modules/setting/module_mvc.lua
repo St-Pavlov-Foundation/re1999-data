@@ -1,6 +1,47 @@
 ﻿-- chunkname: @modules/setting/module_mvc.lua
 
 local module_mvc = {
+	Activity236 = {
+		model = {
+			"Act236Model"
+		},
+		controller = {
+			"Act236Controller"
+		},
+		rpc = {
+			"Act236Rpc"
+		},
+		config = {
+			"Act236Config"
+		}
+	},
+	Teaching = {
+		model = {
+			"TeachingModel"
+		},
+		controller = {
+			"TeachingController"
+		},
+		rpc = {
+			"TeachingRpc"
+		},
+		config = {
+			"TeachingConfig"
+		}
+	},
+	TowerV3a7 = {
+		model = {
+			"TowerV3a7Model",
+			"TowerV3a7ChessManModel",
+			"TowerV3a7RoomModel"
+		},
+		controller = {
+			"TowerV3a7Controller"
+		},
+		config = {
+			"TowerV3a7Config"
+		}
+	},
 	CurrencyExchange = {
 		model = {
 			"CurrencyExchangeModel"
@@ -719,7 +760,8 @@ local module_mvc = {
 			"Rouge2_CollectionConfig",
 			"Rouge2_AttributeConfig",
 			"Rouge2_MapConfig",
-			"Rouge2_ChatConfig"
+			"Rouge2_ChatConfig",
+			"Rouge2_BossBattleConfig"
 		},
 		controller = {
 			"Rouge2_Controller",
@@ -1591,7 +1633,8 @@ local module_mvc = {
 		},
 		controller = {
 			"ActivityController",
-			"ActivityBeginnerController"
+			"ActivityBeginnerController",
+			"Act101VersionSummonController"
 		},
 		rpc = {
 			"ActivityRpc",
@@ -1920,6 +1963,17 @@ local module_mvc = {
 		},
 		config = {
 			"DungeonGameConfig"
+		}
+	},
+	mazeV3a7 = {
+		model = {
+			"DungeonMazeV3a7Model"
+		},
+		controller = {
+			"DungeonMazeV3a7Controller"
+		},
+		config = {
+			"DungeonMazeV3a7Config"
 		}
 	},
 	JumpGame = {
@@ -3641,6 +3695,77 @@ local module_mvc = {
 		},
 		config = {
 			"ActivityCollectConfig"
+		}
+	},
+	Sodache = {
+		model = {
+			"SodacheModel"
+		},
+		config = {
+			"SodacheConfig"
+		},
+		rpc = {
+			"SodacheInsideRpc",
+			"SodacheOutsideRpc"
+		},
+		controller = {
+			"SodacheController"
+		}
+	},
+	Anniversary3 = {
+		model = {
+			"Anniversary3Model",
+			"GuessGameModel",
+			"Anniversary3ActBpModel"
+		},
+		config = {
+			"Anniversary3Config",
+			"Activity233Config",
+			"Activity234Config"
+		},
+		rpc = {
+			"Activity233Rpc",
+			"Activity234Rpc"
+		},
+		controller = {
+			"Anniversary3Controller",
+			"GuessGameController",
+			"Anniversary3ActBpController"
+		}
+	},
+	TravelGo = {
+		model = {
+			"TravelGoModel"
+		},
+		config = {
+			"TravelGoConfig"
+		},
+		controller = {
+			"TravelGoController"
+		}
+	},
+	XRuiAnYi = {
+		model = {
+			"XRuiAnYiModel",
+			"XRuiAnYiTaskListModel"
+		},
+		config = {
+			"XRuiAnYiConfig"
+		},
+		controller = {
+			"XRuiAnYiController"
+		}
+	},
+	Wmz = {
+		model = {
+			"WmzSysModel",
+			"WmzBattleModel"
+		},
+		config = {
+			"WmzConfig"
+		},
+		controller = {
+			"WmzController"
 		}
 	}
 }

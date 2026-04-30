@@ -1,0 +1,62 @@
+[
+  {
+    "difficulty": 1,
+    "evil": 0,
+    "stepAttr": "life#0|attack#0"
+  },
+  {
+    "difficulty": 1,
+    "evil": 1,
+    "stepAttr": "life#100|attack#0"
+  },
+  {
+    "difficulty": 1,
+    "evil": 2,
+    "stepAttr": "life#200|attack#0"
+  },
+  {
+    "difficulty": 1,
+    "evil": 3,
+    "stepAttr": "life#300|attack#0"
+  },
+  {
+    "difficulty": 1,
+    "evil": 4,
+    "stepAttr": "life#400|attack#0"
+  },
+  {
+    "difficulty": 1,
+    "evil": 5,
+    "stepAttr": "life#500|attack#0"
+  },
+  {
+    "difficulty": 2,
+    "evil": 0,
+    "stepAttr": "life#3000|attack#200"
+  },
+  {
+    "difficulty": 2,
+    "evil": 1,
+    "stepAttr": "life#3500|attack#200"
+  },
+  {
+    "difficulty": 2,
+    "evil": 2,
+    "stepAttr": "life#4000|attack#200"
+  },
+  {
+    "difficulty": 2,
+    "evil": 3,
+    "stepAttr": "life#4500|attack#200"
+  },
+  {
+    "difficulty": 2,
+    "evil": 4,
+    "stepAttr": "life#5000|attack#200"
+  },
+  {
+    "difficulty": 2,
+    "evil": 5,
+    "stepAttr": "life#5500|attack#200"
+  }
+]

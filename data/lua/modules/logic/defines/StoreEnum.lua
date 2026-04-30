@@ -121,6 +121,7 @@ StoreEnum.V3a2_SummonSimulationPickItemId = 832004
 StoreEnum.V3a3_SkinDiscountItemId = 833005
 StoreEnum.V3a3_SkinDiscountAdvancedItemId = 713301
 StoreEnum.V3a4_DestinySummonPackage = 834005
+StoreEnum.V3a7_MultipleHeroChoiceItemId = 481011
 StoreEnum.NewbiePackId = 811422
 StoreEnum.NormalRoomTicket = 600001
 StoreEnum.TopRoomTicket = 600002
@@ -190,6 +191,11 @@ StoreEnum.ChargeStoreMonthCardDic = {
 	[StoreEnum.MonthCardGoodsId] = true,
 	[StoreEnum.SeasonCardGoodsId] = true,
 	[StoreEnum.LittleMonthCardGoodsId] = true
+}
+StoreEnum.DefaultCurrencyItem = CurrencyEnum.CurrencyType.Diamond
+StoreEnum.CurrencyItemSprite = {
+	[CurrencyEnum.CurrencyType.Diamond] = 0,
+	[CurrencyEnum.CurrencyType.GlowingFilament] = 6
 }
 StoreEnum.RecommendPackageMaxCount = 8
 

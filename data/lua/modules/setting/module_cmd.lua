@@ -2592,6 +2592,59 @@ local module_cmd = {
 		"Activity231",
 		"Act231MissionPush"
 	},
+	[-15260] = {
+		"Activity233",
+		"GetAct233BpInfoRequest",
+		"GetAct233BpInfoReply"
+	},
+	[21759] = {
+		"Activity233",
+		"GetAct233BpBonusRequest",
+		"GetAct233BpBonusReply"
+	},
+	[-11625] = {
+		"Activity233",
+		"Act233BpScoreUpdatePush"
+	},
+	[-5694] = {
+		"Activity233",
+		"Act233BpPayRequest",
+		"Act233BpPayReply"
+	},
+	[3420] = {
+		"Activity234",
+		"Get234InfoRequest",
+		"Get234InfoReply"
+	},
+	[1123] = {
+		"Activity234",
+		"Act234FinishGameRequest",
+		"Act234FinishGameReply"
+	},
+	[18055] = {
+		"Activity234",
+		"Act234ExploreRequest",
+		"Act234ExploreReply"
+	},
+	[-29827] = {
+		"Activity234",
+		"Act234AcceptRewardRequest",
+		"Act234AcceptRewardReply"
+	},
+	[6200] = {
+		"Activity236",
+		"GetAct236InfoRequest",
+		"GetAct236InfoReply"
+	},
+	[30249] = {
+		"Activity236",
+		"Act236GetAutoGainRewardRequest",
+		"Act236GetAutoGainRewardReply"
+	},
+	[-5541] = {
+		"Activity236",
+		"Act236UpdateInfoPush"
+	},
 	[-14582] = {
 		"Activity",
 		"GetActivityInfosRequest",
@@ -2682,6 +2735,11 @@ local module_cmd = {
 	[4399] = {
 		"ArcadeOutSide",
 		"ArcadeAttrChangePush"
+	},
+	[-3207] = {
+		"ArcadeOutSide",
+		"ArcadeCloseRewardPanelRequest",
+		"ArcadeCloseRewardPanelReply"
 	},
 	[-415] = {
 		"AssassinOutSide",
@@ -3709,6 +3767,11 @@ local module_cmd = {
 		"Fight",
 		"GetGMFightTeamDetailInfosRequest",
 		"GetGMFightTeamDetailInfosReply"
+	},
+	[2347] = {
+		"Fight",
+		"GetGMFightLogRequest",
+		"GetGMFightLogReply"
 	},
 	[-8980] = {
 		"FightTool",
@@ -5767,6 +5830,21 @@ local module_cmd = {
 		"Rouge2Outside",
 		"Rouge2UpdateGeniusPointPush"
 	},
+	[16362] = {
+		"Rouge2Outside",
+		"Rouge2SaveContextRequest",
+		"Rouge2SaveContextReply"
+	},
+	[-32592] = {
+		"Rouge2Outside",
+		"Rouge2ChoiceSaveRequest",
+		"Rouge2ChoiceSaveReply"
+	},
+	[22226] = {
+		"Rouge2Outside",
+		"Rouge2BossRewardRequest",
+		"Rouge2BossRewardReply"
+	},
 	[-7647] = {
 		"Rouge",
 		"GetRougeInfoRequest",
@@ -6198,6 +6276,146 @@ local module_cmd = {
 		"SignIn",
 		"SupplementMonthCardRequest",
 		"SupplementMonthCardReply"
+	},
+	[30499] = {
+		"SodacheInside",
+		"SodacheInsideEnterSceneRequest",
+		"SodacheInsideEnterSceneReply"
+	},
+	[-16985] = {
+		"SodacheInside",
+		"SodacheInsideBuyRequest",
+		"SodacheInsideBuyReply"
+	},
+	[32105] = {
+		"SodacheInside",
+		"SodacheInsideBatchBuyRequest",
+		"SodacheInsideBatchBuyReply"
+	},
+	[32679] = {
+		"SodacheInside",
+		"SodacheInsideSellRequest",
+		"SodacheInsideSellReply"
+	},
+	[-6459] = {
+		"SodacheInside",
+		"SodacheInsideGetSceneRequest",
+		"SodacheInsideGetSceneReply"
+	},
+	[19478] = {
+		"SodacheInside",
+		"SodacheInsideSceneOperationRequest",
+		"SodacheInsideSceneOperationReply"
+	},
+	[6136] = {
+		"SodacheInside",
+		"SodacheInsideAbandonSceneRequest",
+		"SodacheInsideAbandonSceneReply"
+	},
+	[-26453] = {
+		"SodacheInside",
+		"SodacheInsideSubmitMaterialSettleRequest",
+		"SodacheInsideSubmitMaterialSettleReply"
+	},
+	[-11017] = {
+		"SodacheInside",
+		"SodacheInsideSceneFinishSettlePush"
+	},
+	[20413] = {
+		"SodacheInside",
+		"SodacheInsideClosePanelRequest",
+		"SodacheInsideClosePanelReply"
+	},
+	[-2982] = {
+		"SodacheInside",
+		"SodacheInsideHotfix1Request",
+		"SodacheInsideHotfix1Reply"
+	},
+	[-2981] = {
+		"SodacheInside",
+		"SodacheInsideHotfix2Request",
+		"SodacheInsideHotfix2Reply"
+	},
+	[-2980] = {
+		"SodacheInside",
+		"SodacheInsideHotfix3Request",
+		"SodacheInsideHotfix3Reply"
+	},
+	[-14193] = {
+		"SodacheInside",
+		"SodacheInsideStatisticPush"
+	},
+	[-18705] = {
+		"SodacheInside",
+		"SodacheInsideStatisticGetRequest",
+		"SodacheInsideStatisticGetReply"
+	},
+	[-31417] = {
+		"SodacheOutside",
+		"SodacheOutsideGetSceneRequest",
+		"SodacheOutsideGetSceneReply"
+	},
+	[32690] = {
+		"SodacheOutside",
+		"SodacheBuildingUpgradeRequest",
+		"SodacheBuildingUpgradeReply"
+	},
+	[-20173] = {
+		"SodacheOutside",
+		"SodacheRelicUpgradeRequest",
+		"SodacheRelicUpgradeReply"
+	},
+	[20222] = {
+		"SodacheOutside",
+		"SodacheRelicOneKeyUpgradeRequest",
+		"SodacheRelicOneKeyUpgradeReply"
+	},
+	[22985] = {
+		"SodacheOutside",
+		"SodacheBagUpdatePush"
+	},
+	[8504] = {
+		"SodacheOutside",
+		"SodacheStepPush"
+	},
+	[-17449] = {
+		"SodacheOutside",
+		"SodacheAttrPush"
+	},
+	[2579] = {
+		"SodacheOutside",
+		"SodacheTaskGainRewardRequest",
+		"SodacheTaskGainRewardReply"
+	},
+	[-7742] = {
+		"SodacheOutside",
+		"SodacheTaskAbandonRequest",
+		"SodacheTaskAbandonReply"
+	},
+	[4959] = {
+		"SodacheOutside",
+		"SodacheTaskAcceptRequest",
+		"SodacheTaskAcceptReply"
+	},
+	[15491] = {
+		"SodacheOutside",
+		"SodacheTaskSubmitRequest",
+		"SodacheTaskSubmitReply"
+	},
+	[-13668] = {
+		"SodacheOutside",
+		"SodacheOutsideHotfix1Request",
+		"SodacheOutsideHotfix1Reply"
+	},
+	[-13667] = {
+		"SodacheOutside",
+		"SodacheOutsideHotfix2Request",
+		"SodacheOutsideHotfix2Reply"
+	},
+	[-13666] = {
+		"SodacheOutside",
+		"SodacheOutsideHotfix3Request",
+		"SodacheOutsideHotfix3Reply"
 	},
 	[-28177] = {
 		"Stat",
@@ -6768,6 +6986,20 @@ local module_cmd = {
 		"Task",
 		"FinishReadTaskRequest",
 		"FinishReadTaskReply"
+	},
+	[9952] = {
+		"Teaching",
+		"TeachingGetInfoRequest",
+		"TeachingGetInfoReply"
+	},
+	[1787] = {
+		"Teaching",
+		"TeachingGetBonusRequest",
+		"TeachingGetBonusReply"
+	},
+	[20515] = {
+		"Teaching",
+		"TeachingUpdateInfoPush"
 	},
 	[13540] = {
 		"TowerCompose",

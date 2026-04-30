@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "艾米莉亚",
+    "type": "10#1|10#2|80#3",
+    "icon": "guessgame_rolechess_1"
+  },
+  {
+    "id": 2,
+    "name": "卢卡斯",
+    "type": "20#1|80#2",
+    "icon": "guessgame_rolechess_2"
+  },
+  {
+    "id": 3,
+    "name": "拉文德",
+    "type": "70#1|30#3",
+    "icon": "guessgame_rolechess_3"
+  },
+  {
+    "id": 4,
+    "name": "玛蒂尔达",
+    "type": "30#2|70#3",
+    "icon": "guessgame_rolechess_4"
+  },
+  {
+    "id": 5,
+    "name": "十四行诗",
+    "type": "70#1|30#3",
+    "icon": "guessgame_rolechess_5"
+  },
+  {
+    "id": 6,
+    "name": "牙仙",
+    "type": "30#1|70#2",
+    "icon": "guessgame_rolechess_6"
+  },
+  {
+    "id": 7,
+    "name": "纸信圈儿",
+    "type": "100#1",
+    "icon": "guessgame_rolechess_7"
+  }
+]

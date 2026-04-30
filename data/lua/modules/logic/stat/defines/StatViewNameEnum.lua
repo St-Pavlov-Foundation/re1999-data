@@ -155,7 +155,7 @@ StatViewNameEnum.ChineseViewName = {
 	[ViewName.NuoDiKaTaskView] = "诺谛卡角色任务",
 	[ViewName.MoLiDeErLevelView] = "莫莉德尔角色活动",
 	[ViewName.MoLiDeErTaskView] = "莫莉德尔角色任务",
-	[ViewName.VersionActivity2_8StoreView] = "3.0副本商店",
+	[ViewName.VersionActivity2_8StoreView] = "3.7副本商店",
 	[ViewName.SurvivalView] = "雨前漫游指南",
 	[ViewName.VersionActivity3_0EnterView] = "3.0版本活动页",
 	[ViewName.Activity201MaLiAnNaLevelView] = "玛丽安娜角色活动",
@@ -227,7 +227,20 @@ StatViewNameEnum.ChineseViewName = {
 	[ViewName.VersionActivity3_6DungeonMapView] = "副本地图-人们向何处去",
 	[ViewName.VersionActivity3_6StoreView] = "3.6副本商店",
 	[ViewName.AbyssMainView] = "焦点闪回-选择关卡",
-	[ViewName.V3a6YaMiMainView] = "哑谜角色活动"
+	[ViewName.V3a6YaMiMainView] = "哑谜角色活动",
+	[ViewName.VersionActivity3_7EnterView] = "3.7版本活动页",
+	[ViewName.XRuiAnYiTaskView] = "小瑞安侬角色任务",
+	[ViewName.XRuiAnYiLevelView] = "小瑞安侬角色活动",
+	[ViewName.V3A7_RoleStoryGameView] = "轶事玩法",
+	[ViewName.SodacheMainView] = "搜打撤玩法局外",
+	[ViewName.SodacheMapSelectView] = "搜打撤选择门票",
+	[ViewName.TeachingMainView] = "体系教学手册主界面",
+	[ViewName.TeachingEnterView] = "教学手册总界面",
+	[ViewName.Anniversary3ActBpView] = " 珐琅眼BP界面",
+	[ViewName.Anniversary3MainView] = "三周年庆典界面",
+	[ViewName.Act236MainView] = "累充活动界面",
+	[ViewName.V3a7_Wmz_LevelView] = "无名者角色活动",
+	[ViewName.V3a7_Wmz_TaskView] = "无名者角色任务"
 }
 StatViewNameEnum.NeedTrackViewDict = {
 	[ViewName.VersionActivity1_8EnterView] = true,
@@ -431,7 +444,20 @@ StatViewNameEnum.NeedTrackViewDict = {
 	[ViewName.VersionActivity3_6DungeonMapView] = true,
 	[ViewName.VersionActivity3_6StoreView] = true,
 	[ViewName.AbyssMainView] = true,
-	[ViewName.V3a6YaMiMainView] = true
+	[ViewName.V3a6YaMiMainView] = true,
+	[ViewName.VersionActivity3_7EnterView] = true,
+	[ViewName.XRuiAnYiTaskView] = true,
+	[ViewName.XRuiAnYiLevelView] = true,
+	[ViewName.V3A7_RoleStoryGameView] = true,
+	[ViewName.SodacheMainView] = true,
+	[ViewName.SodacheMapSelectView] = true,
+	[ViewName.TeachingMainView] = true,
+	[ViewName.TeachingEnterView] = true,
+	[ViewName.Anniversary3ActBpView] = true,
+	[ViewName.Anniversary3MainView] = true,
+	[ViewName.Act236MainView] = true,
+	[ViewName.V3a7_Wmz_LevelView] = true,
+	[ViewName.V3a7_Wmz_TaskView] = true
 }
 StatViewNameEnum.NeedListenTabSwitchList = {
 	ViewName.VersionActivity1_8EnterView,
@@ -452,7 +478,8 @@ StatViewNameEnum.NeedListenTabSwitchList = {
 	ViewName.VersionActivity3_3EnterView,
 	ViewName.VersionActivity3_4EnterView,
 	ViewName.VersionActivity3_5EnterView,
-	ViewName.VersionActivity3_6EnterView
+	ViewName.VersionActivity3_6EnterView,
+	ViewName.VersionActivity3_7EnterView
 }
 StatViewNameEnum.TabViewContainerID = {
 	[ViewName.VersionActivity1_8EnterView] = 2,
@@ -473,7 +500,8 @@ StatViewNameEnum.TabViewContainerID = {
 	[ViewName.VersionActivity3_3EnterView] = 2,
 	[ViewName.VersionActivity3_4EnterView] = 2,
 	[ViewName.VersionActivity3_5EnterView] = 2,
-	[ViewName.VersionActivity3_6EnterView] = 2
+	[ViewName.VersionActivity3_6EnterView] = 2,
+	[ViewName.VersionActivity3_7EnterView] = 2
 }
 StatViewNameEnum.TabViewName = {
 	VersionActivity2_6DungeonEnterView = "疯癫与文明",
@@ -507,7 +535,7 @@ StatViewNameEnum.TabViewName = {
 	Act183VersionActivityEnterView = "挑战玩法",
 	VersionActivity3_4DungeonEnterView = "不老春",
 	VersionActivity3_2BeiLiErEnterView = "贝丽尔",
-	V3a4_v2a5_ReactivityEnterview = "2.5活动复刻",
+	V3a7_Wmz_EnterView = "无名者",
 	V3a4_Chg_EnterView = "程和光",
 	V3a1_v2a4_ReactivityEnterview = "2.4活动复刻",
 	VersionActivity3_5DungeonEnterView = "绿松石蛇俱乐部",
@@ -519,7 +547,9 @@ StatViewNameEnum.TabViewName = {
 	V2a5_v1a6_ReactivityEnterview = "1.6活动复刻",
 	AbyssEnterView = "焦点闪回",
 	ActivityWeekWalkDeepShowView = "深眠域",
+	VersionActivity3_7DungeonEnterView = "他者的悲哀",
 	V3a5_v2a7_ReactivityEnterview = "2.7活动复刻",
+	V3a4_v2a5_ReactivityEnterview = "2.5活动复刻",
 	V2a2_RoomCritterEnterView = "魔精公司",
 	VersionActivity3_0KaRongEnterView = "卡戎",
 	VersionActivity3_0_v2a1_ReactivityEnterview = "2.1活动复刻",
@@ -551,11 +581,13 @@ StatViewNameEnum.TabViewName = {
 	ArcadeEnterView = "8-bit街机秀",
 	Rouge2_ActivityView = "肉鸽2",
 	VersionActivity2_8DungeonEnterView = "复乐园",
+	VersionActivity3_7SodacheEnterView = "搜打撤玩法",
 	V2a2_TianShiNaNaEnterView = "天使娜娜",
 	V2a6_Season166EnterView = "赛季",
 	VersionActivity3_1DungeonEnterView = "长夜鸣笛",
 	V2a4_Season166EnterView = "赛季",
 	VersionActivity3_0DungeonEnterView = "行于漫漫长路",
+	VersionActivity3_7XRuiAnYiEnterView = "小瑞安侬",
 	[V1a8_DungeonEnterView] = "副本",
 	[V1a8_Season123EnterView] = "赛季",
 	[V1a8_WeilaEnterView] = "维拉",

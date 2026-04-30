@@ -21,6 +21,10 @@ function FightNameUI:onConstructor(entity)
 end
 
 function FightNameUI:load(url)
+	if self.entity.isTempEntity then
+		return
+	end
+
 	if self._uiLoader then
 		self._uiLoader:dispose()
 	end
@@ -223,6 +227,7 @@ function FightNameUI:_onLoaded()
 	self:initToughnessMgr()
 	self:initToughnessIconMgr()
 	self:initYaMiShieldMgr()
+	self:initMeiLeiErMgr()
 
 	self._opContainerGO = gohelper.findChild(self._uiGO, "layout/top/op")
 	self._opContainerTr = self._opContainerGO.transform
@@ -401,6 +406,10 @@ function FightNameUI:initYaMiShieldMgr()
 	self.yaMiShieldMgr = self:newClass(FightNameUIYaMiShieldMgr, self.entity, self._uiGO)
 end
 
+function FightNameUI:initMeiLeiErMgr()
+	self.meiLeiErMgr = self:newClass(FightNameUIMeiLeiErMgr, self.entity, self._uiGO)
+end
+
 function FightNameUI:initStressMgr()
 	local entityMo = self.entity:getMO()
 
@@ -571,8 +580,14 @@ function FightNameUI:_updateFollow(unitSpine)
 		self._uiFollower:Set(unitCamera, uiCamera, plane, hangPointGO.transform, assembledConfig.hpPos[1] or 0, assembledConfig.hpPos[2] or 0, 0, 0, 0)
 	else
 		local scaleX, scaleY = transformhelper.getLocalScale(self.entity.go.transform)
+		local entityMO = self.entity:getMO()
+		local config3d = entityMO and lua_fight_monster_3d.configDict[entityMO.skin]
 
-		self._uiFollower:Set(unitCamera, uiCamera, plane, hangPointGO.transform, 0 + worldOffsetX, boxHeight + spineY - middleY + worldOffsetY * scaleY, 0, uiOffsetX, uiOffsetY + 15)
+		if config3d then
+			self._uiFollower:Set(unitCamera, uiCamera, plane, self.entity.go.transform, 0 + worldOffsetX - 5, 0, 0, uiOffsetX, uiOffsetY + 15)
+		else
+			self._uiFollower:Set(unitCamera, uiCamera, plane, hangPointGO.transform, 0 + worldOffsetX, boxHeight + spineY - middleY + worldOffsetY * scaleY, 0, uiOffsetX, uiOffsetY + 15)
+		end
 	end
 
 	self._uiFollower:SetEnable(true)

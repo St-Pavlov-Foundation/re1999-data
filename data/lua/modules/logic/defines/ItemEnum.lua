@@ -5,8 +5,10 @@ module("modules.logic.defines.ItemEnum", package.seeall)
 local ItemEnum = _M
 
 ItemEnum.clientDisplayType = {
-	SpecifiedGift = 1,
-	BpCustomSelect = 2
+	BpCustomSelect = 2,
+	SkinGift = 4,
+	HeroSelect = 3,
+	SpecifiedGift = 1
 }
 ItemEnum.SubType = {
 	RandomGift = 49,
@@ -89,8 +91,9 @@ ItemEnum.RoomBackpackPropSubType = {
 ItemEnum.NewbiePackGiftId = 520010
 ItemEnum.NoExpiredNum = 70128
 ItemEnum.Tag = {
-	PackageSkin = 2,
-	SummonSkin = 1
+	GoldenMilletPresentSkin = 3,
+	SummonSkin = 1,
+	PackageSkin = 2
 }
 ItemEnum.GetApproach2Tag = {
 	[MaterialEnum.GetApproach.MonthCard] = 1

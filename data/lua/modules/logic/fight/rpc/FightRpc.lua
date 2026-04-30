@@ -121,6 +121,22 @@ function FightRpc:sendBeginRoundRequest(beginRoundOps)
 	local req = FightModule_pb.BeginRoundRequest()
 
 	tabletool.addValues(req.opers, list)
+
+	local deviceArea = FightDataHelper.getDeviceArea()
+
+	if deviceArea then
+		deviceArea:applyClientChange()
+
+		for _, deviceInfo in ipairs(deviceArea:getServerDeviceList()) do
+			local op = FightDef_pb.FightDeviceOper()
+
+			op.index = deviceInfo.index
+			op.uid = deviceInfo.uid
+
+			table.insert(req.devicesOpers, op)
+		end
+	end
+
 	self:sendMsg(req)
 end
 
@@ -397,6 +413,8 @@ function FightRpc:sendUseClothSkillRequest(skillId, fromId, toId, type)
 end
 
 function FightRpc:onReceiveUseClothSkillReply(resultCode, msg)
+	FightDataHelper.stageMgr:exitOperateState(FightStageMgr.FightStateType.sendOperation2Server)
+
 	if resultCode == 0 then
 		if isDebugBuild then
 			FightPlayBackController.instance:recordUseClothSkillReply(msg)

@@ -53,7 +53,9 @@ function FightViewHandCardItem:init(go)
 	self._loader = self._loader or LoaderComponent.New()
 	self._lockGO = gohelper.findChild(self.go, "foranim/lock")
 
-	if FightCardDataHelper.getCardSkin() == 672801 then
+	local cardSkin = FightCardDataHelper.getCardSkin()
+
+	if cardSkin then
 		FightViewHandCardItem.replaceLockBg(self._lockGO)
 	end
 
@@ -234,7 +236,7 @@ function FightViewHandCardItem:refreshPreDelete(needPreDelete)
 	end
 end
 
-function FightViewHandCardItem:updateItem(index, cardInfoMO)
+function FightViewHandCardItem:updateItem(index, cardInfoMO, updateFromType)
 	self.index = index or self.index
 
 	if cardInfoMO then
@@ -249,7 +251,7 @@ function FightViewHandCardItem:updateItem(index, cardInfoMO)
 			return
 		end
 
-		self._cardItem:updateItem(cardInfoMO.uid, cardInfoMO.skillId, cardInfoMO)
+		self._cardItem:updateItem(cardInfoMO.uid, cardInfoMO.skillId, cardInfoMO, updateFromType)
 
 		self._isDraging = false
 		self._isLongPress = false
@@ -369,7 +371,7 @@ function FightViewHandCardItem:_onDragHandCardBegin(index, position, cardInfoMO)
 
 	gohelper.setActive(universalMaskGO, true)
 
-	for i = 1, 4 do
+	for i = 0, 4 do
 		local innerGO = gohelper.findChild(universalMaskGO, "jinengpai_" .. i)
 
 		gohelper.setActive(innerGO, i == thisLevel)
@@ -1021,7 +1023,7 @@ function FightViewHandCardItem:_onClickThis()
 
 	local curOperateState = FightDataHelper.stageMgr:getCurOperateState()
 
-	if not FightDataHelper.stageMgr:isEmptyOperateState() and curOperateState ~= FightStageMgr.OperateStateType.Discard and curOperateState ~= FightStageMgr.OperateStateType.RecordSkill then
+	if not FightDataHelper.stageMgr:isEmptyOperateState() and curOperateState ~= FightStageMgr.OperateStateType.Discard and curOperateState ~= FightStageMgr.OperateStateType.RecordSkill and curOperateState ~= FightStageMgr.OperateStateType.DeviceDiscard then
 		return
 	end
 
@@ -1031,6 +1033,10 @@ function FightViewHandCardItem:_onClickThis()
 		return
 	elseif curOperateState == FightStageMgr.OperateStateType.RecordSkill then
 		self:handleRecordSkillOperateState()
+
+		return
+	elseif curOperateState == FightStageMgr.OperateStateType.DeviceDiscard then
+		self:handleDeviceDiscardCardOperateState()
 
 		return
 	end
@@ -1054,6 +1060,12 @@ function FightViewHandCardItem:_onClickThis()
 	end
 
 	if self._isDraging then
+		return
+	end
+
+	if FightCardDataHelper.hasUnnamedLockState(self.cardInfoMO) then
+		self._cardItem:playCardAnim("noname_shake")
+
 		return
 	end
 
@@ -1130,6 +1142,15 @@ function FightViewHandCardItem:handleDiscardOperateState()
 
 	FightDataHelper.stageMgr:exitOperateState(FightStageMgr.OperateStateType.Discard)
 	FightController.instance:dispatchEvent(FightEvent.PlayDiscardEffect, self.index)
+end
+
+function FightViewHandCardItem:handleDeviceDiscardCardOperateState()
+	if not FightDataHelper.handCardMgr:checkCardIsDeviceCard(self.cardInfoMO) then
+		return
+	end
+
+	FightController.instance:dispatchEvent(FightEvent.OnDevice_DiscardDone, self.index)
+	FightDataHelper.stageMgr:exitOperateState(FightStageMgr.OperateStateType.DeviceDiscard)
 end
 
 local RecordEffectDuration = 1
@@ -1322,15 +1343,21 @@ function FightViewHandCardItem:_onLongPress()
 	end
 
 	if not FightDataHelper.stageMgr:isEmptyOperateState() then
-		if FightDataHelper.stageMgr:getCurOperateState() == FightStageMgr.OperateStateType.Discard then
+		local curOperateState = FightDataHelper.stageMgr:getCurOperateState()
+
+		if curOperateState == FightStageMgr.OperateStateType.Discard then
 			return
 		end
 
-		if FightDataHelper.stageMgr:getCurOperateState() == FightStageMgr.OperateStateType.DiscardEffect then
+		if curOperateState == FightStageMgr.OperateStateType.DiscardEffect then
 			return
 		end
 
-		if FightDataHelper.stageMgr:getCurOperateState() == FightStageMgr.OperateStateType.RecordSkill then
+		if curOperateState == FightStageMgr.OperateStateType.RecordSkill then
+			return
+		end
+
+		if curOperateState == FightStageMgr.OperateStateType.DeviceDiscard then
 			return
 		end
 	end
@@ -1479,6 +1506,39 @@ function FightViewHandCardItem:_onGMForceRefreshNameUIBuff()
 	self:_onRefreshOneHandCard(self.index)
 end
 
+function FightViewHandCardItem:playDeviceAddCard(callback, callbackDone)
+	if not self._deviceAddCardFlow then
+		self._deviceAddCardFlow = FlowSequence.New()
+
+		self._deviceAddCardFlow:registerDoneListener(self.doDeviceAddCardCallback, self)
+		self._deviceAddCardFlow:addWork(FightDeviceAddCardEffect.New())
+	else
+		self:doDeviceAddCardCallback()
+		self._deviceAddCardFlow:stop()
+	end
+
+	self.deviceAddCardCallback = callback
+	self.deviceAddCardCallbackObj = callbackDone
+
+	local context = self:getUserDataTb_()
+
+	context.handCardItem = self
+
+	self._deviceAddCardFlow:start(context)
+end
+
+function FightViewHandCardItem:doDeviceAddCardCallback()
+	local callback = self.deviceAddCardCallback
+	local callbackObj = self.deviceAddCardCallbackObj
+
+	self.deviceAddCardCallback = nil
+	self.deviceAddCardCallbackObj = nil
+
+	if callback then
+		callback(callbackObj, self)
+	end
+end
+
 function FightViewHandCardItem:playDistribute()
 	if not self._distributeFlow then
 		self._distributeFlow = FlowSequence.New()
@@ -1514,14 +1574,19 @@ function FightViewHandCardItem:playMasterAddHandCard()
 	self._masterAddHandCardFlow:start(context)
 end
 
-function FightViewHandCardItem:playMasterCardRemove()
+function FightViewHandCardItem:playMasterCardRemove(masterRemoveCardDoneCallback, masterRemoveCardDoneCallbackObj)
 	if not self._masterCardRemoveFlow then
 		self._masterCardRemoveFlow = FlowSequence.New()
 
+		self._masterCardRemoveFlow:registerDoneListener(self.doMasterRemoveCardCallback, self)
 		self._masterCardRemoveFlow:addWork(FigthMasterCardRemoveEffect.New())
 	else
+		self:doMasterRemoveCardCallback()
 		self._masterCardRemoveFlow:stop()
 	end
+
+	self.masterRemoveCardDoneCallback = masterRemoveCardDoneCallback
+	self.masterRemoveCardDoneCallbackObj = masterRemoveCardDoneCallbackObj
 
 	local context = self:getUserDataTb_()
 
@@ -1530,7 +1595,19 @@ function FightViewHandCardItem:playMasterCardRemove()
 	self._masterCardRemoveFlow:start(context)
 end
 
-function FightViewHandCardItem:dissolveEntityCard(entityId)
+function FightViewHandCardItem:doMasterRemoveCardCallback()
+	local callback = self.masterRemoveCardDoneCallback
+	local callbackObj = self.masterRemoveCardDoneCallbackObj
+
+	self.masterRemoveCardDoneCallback = nil
+	self.masterRemoveCardDoneCallbackObj = nil
+
+	if callback then
+		callback(callbackObj, self)
+	end
+end
+
+function FightViewHandCardItem:dissolveEntityCard(entityId, dissolveDoneCallback, dissolveDoneCallbackObj)
 	if not self.cardInfoMO then
 		return
 	end
@@ -1539,21 +1616,65 @@ function FightViewHandCardItem:dissolveEntityCard(entityId)
 		return
 	end
 
-	self:dissolveCard()
+	self:dissolveCard(dissolveDoneCallback, dissolveDoneCallbackObj)
 
 	return true
 end
 
-function FightViewHandCardItem:dissolveCard()
+function FightViewHandCardItem:dissolveCard(dissolveDoneCallback, dissolveDoneCallbackObj)
+	self.dissolveDoneCallback = dissolveDoneCallback
+	self.dissolveDoneCallbackObj = dissolveDoneCallbackObj
+
 	if not self.go.activeInHierarchy then
+		self:doDissolveDoneCallback()
+
 		return
 	end
 
 	self:setASFDActive(false)
-	self._cardItem:dissolveCard(transformhelper.getLocalScale(self._subViewInst._handCardContainer.transform), self.go)
+	self._cardItem:dissolveCard(transformhelper.getLocalScale(self._subViewInst._handCardContainer.transform), self.go, self.doDissolveDoneCallback, self)
 end
 
-function FightViewHandCardItem:moveSelfPos(index, delayCount)
+function FightViewHandCardItem:doDissolveDoneCallback()
+	local callback = self.dissolveDoneCallback
+	local callbackObj = self.dissolveDoneCallbackObj
+
+	self.dissolveDoneCallback = nil
+	self.dissolveDoneCallbackObj = nil
+
+	if callback then
+		callback(callbackObj, self)
+	end
+end
+
+function FightViewHandCardItem:playDeviceRemoveEffect(removeDoneCallback, removeDoneCallbackObj)
+	if not self.go.activeInHierarchy then
+		if removeDoneCallback then
+			removeDoneCallback(removeDoneCallbackObj)
+		end
+
+		return
+	end
+
+	self.removeDoneCallback = removeDoneCallback
+	self.removeDoneCallbackObj = removeDoneCallbackObj
+
+	self._cardItem:playDeviceRemoveEffect(self.go, self, self.onDeviceRemoveCardDone, self)
+end
+
+function FightViewHandCardItem:onDeviceRemoveCardDone()
+	local callback = self.removeDoneCallback
+	local callbackObj = self.removeDoneCallbackObj
+
+	self.removeDoneCallback = nil
+	self.removeDoneCallbackObj = nil
+
+	if callback then
+		callback(callbackObj, self)
+	end
+end
+
+function FightViewHandCardItem:moveSelfPos(index, delayCount, callback, callbackObj)
 	self:_releaseMoveFlow()
 
 	self._moveCardFlow = FlowParallel.New()
@@ -1579,6 +1700,11 @@ function FightViewHandCardItem:moveSelfPos(index, delayCount)
 		to = cardTargetPosX,
 		t = dt * 2
 	}))
+
+	if callback then
+		self._moveCardFlow:registerDoneListener(callback, callbackObj)
+	end
+
 	self._moveCardFlow:addWork(oneCardFlow)
 	self._moveCardFlow:start()
 end
@@ -1603,50 +1729,62 @@ function FightViewHandCardItem:_onCardLevelChangeDone(cardInfoMO)
 	end
 end
 
-function FightViewHandCardItem:playCardAConvertCardB()
+function FightViewHandCardItem:playCardAConvertCardB(actEffectData)
 	if not self.cardInfoMO then
 		return
+	end
+
+	self.covertCardActEffectData = actEffectData
+
+	local effectUrl = "ui/viewres/fight/card_intensive.prefab"
+
+	if actEffectData and actEffectData.reserveId == "1" then
+		effectUrl = "ui/viewres/fight/fightmeileierercard.prefab"
 	end
 
 	gohelper.setActive(self._cardConvertEffect, true)
 	TaskDispatcher.cancelTask(self._afterConvertCardEffect, self)
 
 	if self._convertEffect then
-		local transform = self._convertEffect.transform
-		local childCount = transform.childCount
-		local uniqueSkill = FightCardDataHelper.isBigSkill(self.cardInfoMO.skillId)
-		local animation
+		if effectUrl == "ui/viewres/fight/card_intensive.prefab" then
+			local transform = self._convertEffect.transform
+			local childCount = transform.childCount
+			local uniqueSkill = FightCardDataHelper.isBigSkill(self.cardInfoMO.skillId)
+			local animation
 
-		if uniqueSkill then
-			for i = 0, childCount - 1 do
-				local obj = transform:GetChild(i).gameObject
+			if uniqueSkill then
+				for i = 0, childCount - 1 do
+					local obj = transform:GetChild(i).gameObject
 
-				if i == 3 then
-					gohelper.setActive(obj, true)
+					if i == 3 then
+						gohelper.setActive(obj, true)
 
-					animation = gohelper.onceAddComponent(obj, typeof(UnityEngine.Animation))
-				else
-					gohelper.setActive(obj, false)
+						animation = gohelper.onceAddComponent(obj, typeof(UnityEngine.Animation))
+					else
+						gohelper.setActive(obj, false)
+					end
+				end
+			else
+				local skillLv = FightCardDataHelper.getSkillLv(self.cardInfoMO.uid, self.cardInfoMO.skillId)
+
+				for i = 0, childCount - 1 do
+					local obj = transform:GetChild(i).gameObject
+
+					if i + 1 == skillLv then
+						gohelper.setActive(obj, true)
+
+						animation = gohelper.onceAddComponent(obj, typeof(UnityEngine.Animation))
+					else
+						gohelper.setActive(obj, false)
+					end
 				end
 			end
-		else
-			local skillLv = FightCardDataHelper.getSkillLv(self.cardInfoMO.uid, self.cardInfoMO.skillId)
 
-			for i = 0, childCount - 1 do
-				local obj = transform:GetChild(i).gameObject
-
-				if i + 1 == skillLv then
-					gohelper.setActive(obj, true)
-
-					animation = gohelper.onceAddComponent(obj, typeof(UnityEngine.Animation))
-				else
-					gohelper.setActive(obj, false)
-				end
+			if animation and animation.clip then
+				animation.this:get(animation.clip.name).speed = FightModel.instance:getUISpeed()
 			end
-		end
-
-		if animation then
-			animation.this:get(animation.clip.name).speed = FightModel.instance:getUISpeed()
+		elseif effectUrl == "ui/viewres/fight/fightmeileierercard.prefab" then
+			AudioMgr.instance:trigger(370102)
 		end
 
 		TaskDispatcher.runDelay(self._afterConvertCardEffect, self, FightEnum.PerformanceTime.CardAConvertCardB / FightModel.instance:getUISpeed())
@@ -1655,7 +1793,7 @@ function FightViewHandCardItem:playCardAConvertCardB()
 			return
 		end
 
-		self._loader:loadAsset("ui/viewres/fight/card_intensive.prefab", self._onCardAConvertCardBLoaded, self)
+		self._loader:loadAsset(effectUrl, self._onCardAConvertCardBLoaded, self)
 	end
 end
 
@@ -1666,7 +1804,7 @@ function FightViewHandCardItem:_onCardAConvertCardBLoaded(loader)
 
 	self._convertEffect = gohelper.clone(tarPrefab, self._cardConvertEffect)
 
-	self:playCardAConvertCardB()
+	self:playCardAConvertCardB(self.covertCardActEffectData)
 	TaskDispatcher.runDelay(self._afterConvertCardEffect, self, FightEnum.PerformanceTime.CardAConvertCardB / FightModel.instance:getUISpeed())
 end
 
@@ -1762,6 +1900,12 @@ function FightViewHandCardItem:releaseSelf()
 
 		self.recordSkillClickLoader = nil
 	end
+
+	if self.deviceEffectLoader then
+		self.deviceEffectLoader:dispose()
+
+		self.deviceEffectLoader = nil
+	end
 end
 
 function FightViewHandCardItem.replaceLockBg(obj)
@@ -1830,6 +1974,92 @@ end
 function FightViewHandCardItem:setPreLv(lv)
 	if self._cardItem then
 		self._cardItem:setPreLv(lv)
+	end
+end
+
+local DeviceEffectPath = "ui/viewres/fight/ui_effect_cube_a.prefab"
+local DeviceEffectName = "device_effect"
+
+function FightViewHandCardItem:loadDeviceEffectGo(callback, callbackObj)
+	if self:checkDeviceEffectLoadDone() then
+		if callback then
+			callback(callbackObj)
+		end
+
+		return
+	end
+
+	if callback then
+		self.deviceLoadedCallbackList = self.deviceLoadedCallbackList or {}
+		self.deviceLoadedCallbackObjList = self.deviceLoadedCallbackObjList or {}
+
+		table.insert(self.deviceLoadedCallbackList, callback)
+		table.insert(self.deviceLoadedCallbackObjList, callbackObj)
+	end
+
+	if self.deviceEffectLoader then
+		return
+	end
+
+	self.deviceEffectLoader = MultiAbLoader.New()
+
+	self.deviceEffectLoader:addPath(DeviceEffectPath)
+	self.deviceEffectLoader:startLoad(self.onDeviceEffectLoadDone, self)
+end
+
+function FightViewHandCardItem:onDeviceEffectLoadDone()
+	local effectPrefab = self.deviceEffectLoader:getFirstAssetItem():GetResource()
+
+	self.deviceEffectGo = effectPrefab and gohelper.clone(effectPrefab, self.go, DeviceEffectName)
+	self.deviceEffectAnimator = self.deviceEffectGo:GetComponent(gohelper.Type_Animator)
+
+	if self.deviceLoadedCallbackList then
+		for index, callback in ipairs(self.deviceLoadedCallbackList) do
+			local callbackObj = self.deviceLoadedCallbackObjList[index]
+
+			callback(callbackObj)
+		end
+	end
+
+	tabletool.clear(self.deviceLoadedCallbackList)
+	tabletool.clear(self.deviceLoadedCallbackObjList)
+
+	self.deviceLoadedCallbackList = nil
+	self.deviceLoadedCallbackObjList = nil
+end
+
+function FightViewHandCardItem:checkDeviceEffectLoadDone()
+	return self.deviceEffectGo ~= nil
+end
+
+function FightViewHandCardItem:playDeviceAnim(animName)
+	if not self:checkDeviceEffectLoadDone() then
+		return
+	end
+
+	self:setDeviceEffectGoActive(true)
+	self.deviceEffectAnimator:Play(animName, 0, 0)
+end
+
+function FightViewHandCardItem:setDeviceEffectGoActive(active)
+	if self.deviceEffectGo then
+		gohelper.setActive(self.deviceEffectGo, active)
+	end
+end
+
+function FightViewHandCardItem:getForAnimGo()
+	return self._forAnimGO
+end
+
+function FightViewHandCardItem:tryPlayInsertAnim()
+	if self._cardItem then
+		self._cardItem:tryPlayInsertAnim()
+	end
+end
+
+function FightViewHandCardItem:tryStopInsertAnim()
+	if self._cardItem then
+		self._cardItem:tryStopInsertAnim()
 	end
 end
 

@@ -190,6 +190,8 @@ function MaterialRpc:_onReceiveMaterialChangePush(msg, materialDataMOList, faith
 		PartyClothController.instance:openSummonRewardView(materialDataMOList)
 	elseif getApproach == MaterialEnum.GetApproach.CommandStationPaperReward then
 		-- block empty
+	elseif getApproach == MaterialEnum.GetApproach.ActBp then
+		Anniversary3ActBpModel.instance:setWaitShowRewards(materialDataMOList)
 	else
 		self:_onReceiveMaterialChangePush_default(msg, materialDataMOList, faithCO, equip_cards, season123EquipCards)
 	end

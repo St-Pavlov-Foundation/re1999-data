@@ -36,7 +36,8 @@ function FightHeroSpEffectConfig:reqConfigNames()
 		"fight_ble_skill_2_crystal",
 		"fight_anan_focus_timeline",
 		"fight_yaxian_timeline",
-		"fight_hudie_special_effect"
+		"fight_hudie_special_effect",
+		"fight_wmz_timeline"
 	}
 end
 

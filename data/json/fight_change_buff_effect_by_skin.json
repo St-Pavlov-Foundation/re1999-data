@@ -169,5 +169,86 @@
     "duration": 0.0,
     "effectHangPoint": "mountroot",
     "audio": 431170446
+  },
+  {
+    "effectPath": "v2a8_ndk02/ndk_skill2_02_middle",
+    "target": 1,
+    "skinId": 312003,
+    "changedPath": "v3a7_ndk02/ndk_skill2_02_middle",
+    "duration": 0.0,
+    "effectHangPoint": "mountmiddle",
+    "audio": 431200361
+  },
+  {
+    "effectPath": "v2a8_ndk02/ndk_hl",
+    "target": 1,
+    "skinId": 312003,
+    "changedPath": "v3a7_ndk02/ndk_hl",
+    "duration": 0.0,
+    "effectHangPoint": "mountroot",
+    "audio": 431200362
+  },
+  {
+    "effectPath": "v3a0_kr/kr_innate_02",
+    "target": 1,
+    "skinId": 312803,
+    "changedPath": "v3a7_kr/kr_innate_02",
+    "duration": 0.0,
+    "effectHangPoint": "mountroot",
+    "audio": 431280152
+  },
+  {
+    "effectPath": "v1a4_37/37_innate1",
+    "target": 1,
+    "skinId": 306605,
+    "changedPath": "v3a7_37/37_innate1",
+    "duration": 0.0,
+    "effectHangPoint": "",
+    "audio": 0
+  },
+  {
+    "effectPath": "v1a4_37/37_innate2",
+    "target": 1,
+    "skinId": 306605,
+    "changedPath": "v3a7_37/37_innate2",
+    "duration": 0.0,
+    "effectHangPoint": "",
+    "audio": 0
+  },
+  {
+    "effectPath": "v1a4_37/37_innate3",
+    "target": 1,
+    "skinId": 306605,
+    "changedPath": "v3a7_37/37_innate3",
+    "duration": 0.0,
+    "effectHangPoint": "",
+    "audio": 0
+  },
+  {
+    "effectPath": "v1a4_37/37_innate4",
+    "target": 1,
+    "skinId": 306605,
+    "changedPath": "v3a7_37/37_innate4",
+    "duration": 0.0,
+    "effectHangPoint": "",
+    "audio": 0
+  },
+  {
+    "effectPath": "v1a4_37/37_innate5",
+    "target": 1,
+    "skinId": 306605,
+    "changedPath": "v3a7_37/37_innate5",
+    "duration": 0.0,
+    "effectHangPoint": "",
+    "audio": 0
+  },
+  {
+    "effectPath": "v2a7_mmr/mmr_innate_1",
+    "target": 1,
+    "skinId": 311803,
+    "changedPath": "v3a7_mmr/mmr_innate_1",
+    "duration": 0.0,
+    "effectHangPoint": "mountroot",
+    "audio": 431180141
   }
 ]

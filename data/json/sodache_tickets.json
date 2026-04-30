@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1000101,
+    "name": "严阵以待",
+    "tips": "<color=#7bb681>潜在风险</color>",
+    "pic": "sodache_difficult_btn_4",
+    "price": "10000000:7000",
+    "skillIds": ""
+  },
+  {
+    "id": 1000102,
+    "name": "充分准备",
+    "tips": "<color=#5e7fad>轻度风险</color>",
+    "pic": "sodache_difficult_btn_3",
+    "price": "10000000:5000",
+    "skillIds": ""
+  },
+  {
+    "id": 1000103,
+    "name": "稍作准备",
+    "tips": "<color=#bf9a5a>风险显著</color>",
+    "pic": "sodache_difficult_btn_2",
+    "price": "10000000:3000",
+    "skillIds": ""
+  },
+  {
+    "id": 1000104,
+    "name": "不做准备",
+    "tips": "<color=#bd5243>风险极高</color>",
+    "pic": "sodache_difficult_btn_1",
+    "price": "",
+    "skillIds": ""
+  },
+  {
+    "id": 2000101,
+    "name": "如临大敌",
+    "tips": "<color=#7bb681>潜在风险</color>",
+    "pic": "sodache_difficult_btn_4",
+    "price": "10000000:10000",
+    "skillIds": ""
+  },
+  {
+    "id": 2000102,
+    "name": "严阵以待",
+    "tips": "<color=#5e7fad>轻度风险</color>",
+    "pic": "sodache_difficult_btn_3",
+    "price": "10000000:8000",
+    "skillIds": ""
+  },
+  {
+    "id": 2000103,
+    "name": "准备充分",
+    "tips": "<color=#bf9a5a>风险显著</color>",
+    "pic": "sodache_difficult_btn_2",
+    "price": "10000000:6000",
+    "skillIds": ""
+  },
+  {
+    "id": 2000104,
+    "name": "稍作准备",
+    "tips": "<color=#bd5243>风险极高</color>",
+    "pic": "sodache_difficult_btn_1",
+    "price": "10000000:3000",
+    "skillIds": ""
+  },
+  {
+    "id": 9000001,
+    "name": "充分准备",
+    "tips": "<color=#5e7fad>轻度风险</color>",
+    "pic": "sodache_difficult_btn_3",
+    "price": "10000000:5000",
+    "skillIds": "50"
+  }
+]

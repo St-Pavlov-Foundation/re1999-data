@@ -12,11 +12,13 @@ local fields = {
 	entranceMv = 4,
 	specialInsightDesc = 12,
 	voice = 6,
-	audio = 10,
+	characterVoice = 14,
 	stopAudio = 11,
 	effectDuration = 9,
 	specialLive2d = 13,
-	id = 1
+	id = 1,
+	storeMv = 15,
+	audio = 10
 }
 local primaryKey = {
 	"id"

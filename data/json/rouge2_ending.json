@@ -8,5 +8,15 @@
     "id": 102,
     "desc": "人性的底层",
     "endingStoryId": 603202
+  },
+  {
+    "id": 103,
+    "desc": "误读",
+    "endingStoryId": 603701
+  },
+  {
+    "id": 104,
+    "desc": "自我的超越",
+    "endingStoryId": 603702
   }
 ]

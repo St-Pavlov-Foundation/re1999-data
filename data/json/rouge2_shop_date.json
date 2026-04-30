@@ -12,5 +12,12 @@
     "endTime": "2026-03-05 05:00:00",
     "shopTitle": "第II期",
     "currencyMax": 158400
+  },
+  {
+    "id": 3,
+    "startTime": "2026-04-22 05:00:00",
+    "endTime": "2026-06-11 05:00:00",
+    "shopTitle": "第III期",
+    "currencyMax": 78350
   }
 ]

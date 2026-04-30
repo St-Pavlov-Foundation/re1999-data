@@ -1318,5 +1318,250 @@
     "posOffset": [],
     "category": "",
     "icon": "v3a3_m_s12_cp1x1_013"
+  },
+  {
+    "id": 21013,
+    "name": "数码蓄能枪Ω27型",
+    "type": "weapon",
+    "describe": "类型：方块武装\n耐久：▩1%s\n攻击+5，额外攻击其后1格敌方单位。非常适合近距离伏击和封闭区域遭遇，经济窘迫时的绝佳选择\n\n<i>“你怎么每一把都起这个枪？”——来自不知名投币手的疑问</i>",
+    "durable": 5,
+    "passiveSkills": "21014",
+    "showTmpAttrChange": 0,
+    "level": 0,
+    "goodsWeight": 0,
+    "isUnique": false,
+    "dropWeight": 0,
+    "price": 500,
+    "resPath": "v3a7_m_s12_jh1x1_005",
+    "scale": [
+      0.92,
+      0.92
+    ],
+    "posOffset": [],
+    "category": "item",
+    "icon": "v3a7_m_s12_jh1x1_005"
+  },
+  {
+    "id": 10004,
+    "name": "电击自走榴弹",
+    "type": "jewelry",
+    "describe": "类型：缪斯秘宝（唯一）\n攻击潮湿的敌方单位时，会对所有潮湿的敌方单位造成连锁攻击",
+    "durable": 0,
+    "passiveSkills": "21013",
+    "showTmpAttrChange": 0,
+    "level": 3,
+    "goodsWeight": 0,
+    "isUnique": true,
+    "dropWeight": 0,
+    "price": 2500,
+    "resPath": "v3a7_m_s12_cp1x1_004",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "category": "item",
+    "icon": "v3a7_m_s12_cp1x1_004"
+  },
+  {
+    "id": 10005,
+    "name": "锡兵的礼盒",
+    "type": "jewelry",
+    "describe": "类型：缪斯秘宝（唯一）\n方块武装耐久归零时，移除本缪斯秘宝并恢复方块武装耐久",
+    "durable": 0,
+    "passiveSkills": "30001",
+    "showTmpAttrChange": 0,
+    "level": 1,
+    "goodsWeight": 1,
+    "isUnique": true,
+    "dropWeight": 1,
+    "price": 500,
+    "resPath": "v3a7_m_s12_cp1x1_006",
+    "scale": [
+      0.88,
+      0.88
+    ],
+    "posOffset": [],
+    "category": "item",
+    "icon": "v3a7_m_s12_cp1x1_006"
+  },
+  {
+    "id": 10006,
+    "name": "幸运水壶",
+    "type": "jewelry",
+    "describe": "类型：缪斯秘宝（唯一）\n处于短路地带的敌方单位阵亡时，回复1点生命",
+    "durable": 0,
+    "passiveSkills": "30002",
+    "showTmpAttrChange": 0,
+    "level": 2,
+    "goodsWeight": 1,
+    "isUnique": true,
+    "dropWeight": 1,
+    "price": 1500,
+    "resPath": "v3a7_m_s12_cp1x1_001",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "category": "item",
+    "icon": "v3a7_m_s12_cp1x1_001"
+  },
+  {
+    "id": 10007,
+    "name": "贮灵壶",
+    "type": "jewelry",
+    "describe": "类型：缪斯秘宝（唯一）\n进入新的关卡时，额外生成10个短路地带",
+    "durable": 0,
+    "passiveSkills": "30003",
+    "showTmpAttrChange": 0,
+    "level": 0,
+    "goodsWeight": 0,
+    "isUnique": true,
+    "dropWeight": 0,
+    "price": 0,
+    "resPath": "v3a7_m_s12_cp1x1_005",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [
+      0.06,
+      0
+    ],
+    "category": "item",
+    "icon": "v3a7_m_s12_cp1x1_005"
+  },
+  {
+    "id": 10008,
+    "name": "伞蜥皱领",
+    "type": "jewelry",
+    "describe": "类型：缪斯秘宝\n周围方形1格范围内没有短路地带时，攻击力+1",
+    "durable": 0,
+    "passiveSkills": "30004",
+    "showTmpAttrChange": 0,
+    "level": 1,
+    "goodsWeight": 1,
+    "isUnique": false,
+    "dropWeight": 1,
+    "price": 750,
+    "resPath": "v3a7_m_s12_cp1x1_007",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "category": "item",
+    "icon": "v3a7_m_s12_cp1x1_007"
+  },
+  {
+    "id": 10009,
+    "name": "漂浮纪念奖章",
+    "type": "jewelry",
+    "describe": "类型：缪斯秘宝（唯一）\n周围方形1格范围内的敌方单位超过5时，攻击力+1",
+    "durable": 0,
+    "passiveSkills": "30005",
+    "showTmpAttrChange": 0,
+    "level": 2,
+    "goodsWeight": 1,
+    "isUnique": true,
+    "dropWeight": 1,
+    "price": 1500,
+    "resPath": "v3a7_m_s12_cp1x1_002",
+    "scale": [
+      0.87,
+      0.87
+    ],
+    "posOffset": [],
+    "category": "item",
+    "icon": "v3a7_m_s12_cp1x1_002"
+  },
+  {
+    "id": 10010,
+    "name": "二手打火机",
+    "type": "jewelry",
+    "describe": "类型：缪斯秘宝（唯一）\n每12次攻击，放置1个会弹跳的噪点炸弹",
+    "durable": 0,
+    "passiveSkills": "30006",
+    "showTmpAttrChange": 0,
+    "level": 0,
+    "goodsWeight": 0,
+    "isUnique": true,
+    "dropWeight": 0,
+    "price": 0,
+    "resPath": "v3a7_m_s12_cp1x1_003",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "category": "item",
+    "icon": "v3a7_m_s12_cp1x1_003"
+  },
+  {
+    "id": 10011,
+    "name": "数码蓄能枪Ω27型",
+    "type": "jewelry",
+    "describe": "类型：缪斯秘宝（唯一）\n进入新的关卡时，获得方块武装“数码蓄能枪Ω27型”。非常适合近距离伏击和封闭区域遭遇，经济窘迫时的绝佳选择\n\n<i>“你怎么每一把都起这个枪？”——来自不知名投币手的疑问</i>",
+    "durable": 0,
+    "passiveSkills": "30009",
+    "showTmpAttrChange": 0,
+    "level": 0,
+    "goodsWeight": 0,
+    "isUnique": true,
+    "dropWeight": 0,
+    "price": 2000,
+    "resPath": "v3a7_m_s12_jh1x1_005",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "category": "item",
+    "icon": "v3a7_m_s12_jh1x1_005"
+  },
+  {
+    "id": 10012,
+    "name": "衔金天秤",
+    "type": "jewelry",
+    "describe": "类型：缪斯秘宝（唯一）\n生命上限-5，击杀80个敌方单位后，恢复生命上限，攻击力+1",
+    "durable": 0,
+    "passiveSkills": "30008",
+    "showTmpAttrChange": 0,
+    "level": 3,
+    "goodsWeight": 0,
+    "isUnique": true,
+    "dropWeight": 1,
+    "price": 2000,
+    "resPath": "v3a7_m_s12_jh1x1_004",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "category": "item",
+    "icon": "v3a7_m_s12_jh1x1_004"
+  },
+  {
+    "id": 10013,
+    "name": "毛绒绒",
+    "type": "jewelry",
+    "describe": "类型：缪斯秘宝（唯一）\n这个缪斯秘宝没有什么加成，但是你可以摸摸这位毛绒绒的朋友！\n\n<i>修复了小鸡奔跑动画中存在轻微倾斜的问题</i>",
+    "durable": 0,
+    "passiveSkills": "",
+    "showTmpAttrChange": 0,
+    "level": 0,
+    "goodsWeight": 0,
+    "isUnique": true,
+    "dropWeight": 0,
+    "price": 2000,
+    "resPath": "v3a7_m_s12_jh1x1_006",
+    "scale": [
+      1,
+      1
+    ],
+    "posOffset": [],
+    "category": "item",
+    "icon": "v3a7_m_s12_jh1x1_006"
   }
 ]
