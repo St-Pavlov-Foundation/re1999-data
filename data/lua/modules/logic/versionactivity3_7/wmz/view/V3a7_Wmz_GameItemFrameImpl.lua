@@ -64,6 +64,13 @@ function V3a7_Wmz_GameItemFrameImpl:setActive_goTopLeft(bActive)
 	gohelper.setActive(self._goTopLeft, bActive)
 end
 
+function V3a7_Wmz_GameItemFrameImpl:setActiveAllEdges(bActive)
+	self:setActive_goTop(bActive)
+	self:setActive_goRight(bActive)
+	self:setActive_goBottom(bActive)
+	self:setActive_goLeft(bActive)
+end
+
 function V3a7_Wmz_GameItemFrameImpl:setActive_Edge(eDir, bActive)
 	if isDebugBuild then
 		assert(eDir)

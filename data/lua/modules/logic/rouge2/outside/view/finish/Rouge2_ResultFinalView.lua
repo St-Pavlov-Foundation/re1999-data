@@ -58,6 +58,7 @@ function Rouge2_ResultFinalView:addEvents()
 	self._btnClose:AddClickListener(self._btnCloseOnClick, self)
 	self._btnAssessTips:AddClickListener(self._btnAssessTipsOnClick, self)
 	self._btnCloseAssess:AddClickListener(self._btnCloseAssessOnClick, self)
+	self:addEventCb(Rouge2_OutsideController.instance, Rouge2_OutsideEvent.OnSaveRecordDone, self._onSaveRecordDone, self)
 end
 
 function Rouge2_ResultFinalView:removeEvents()
@@ -89,9 +90,11 @@ function Rouge2_ResultFinalView:_btnSaveOnClick()
 		GameFacade.showToast(ToastEnum.Rouge2CantSave, minDiffName, minDiff)
 
 		return
-	end
+	elseif self._isSaveRecordDone then
+		GameFacade.showToast(ToastEnum.Rouge2HasSave)
 
-	self._isCanSave = false
+		return
+	end
 
 	self:refreshBtn()
 	Rouge2_FightRecordController.instance:startSaveRecord()
@@ -140,6 +143,8 @@ function Rouge2_ResultFinalView:_editableInitView()
 	self._activeSkillComp:updateSystemParam(Rouge2_Enum.TeamRecommendParam.Spacing, 35)
 	self._activeSkillComp:setLayoutSpacing(-50)
 	gohelper.setActive(self._goAssessTips, false)
+
+	self._isSaveRecordDone = false
 end
 
 function Rouge2_ResultFinalView:onUpdateParam()
@@ -197,8 +202,8 @@ end
 
 function Rouge2_ResultFinalView:refreshBtn()
 	gohelper.setActive(self._goBtnContainer, self._isResultType)
-	gohelper.setActive(self._goCanSave, self._isCanSave)
-	gohelper.setActive(self._goNotSave, not self._isCanSave)
+	gohelper.setActive(self._goCanSave, self._isCanSave and not self._isSaveRecordDone)
+	gohelper.setActive(self._goNotSave, not self._isCanSave or self._isSaveRecordDone)
 end
 
 function Rouge2_ResultFinalView.getEndingDesc(reviewInfo)
@@ -334,6 +339,12 @@ function Rouge2_ResultFinalView:refreshItemList(reviewInfo)
 
 	self.viewContainer:setAttrBuffList(attrBuffList)
 	gohelper.setActive(self._goEmptyAttrBuff, attrBuffNum <= 0)
+end
+
+function Rouge2_ResultFinalView:_onSaveRecordDone()
+	self._isSaveRecordDone = true
+
+	self:refreshBtn()
 end
 
 function Rouge2_ResultFinalView:onClose()

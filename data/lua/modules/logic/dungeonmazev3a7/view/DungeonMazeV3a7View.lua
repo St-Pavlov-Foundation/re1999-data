@@ -212,6 +212,7 @@ function DungeonMazeV3a7View:_doMoveTweenDone()
 		self._needRestart = false
 
 		self:_doClickRestartAction()
+		self:_showSkipGameTip()
 	end
 
 	self:_refreshCurCellView()
@@ -336,6 +337,14 @@ function DungeonMazeV3a7View:onMazeRestart()
 	gohelper.setActive(self._goResetEffect, false)
 	gohelper.setActive(self._goResetEffect, true)
 	AudioMgr.instance:trigger(AudioEnum3_7.DungeonMaze.Reset)
+end
+
+function DungeonMazeV3a7View:_showSkipGameTip()
+	GameFacade.showMessageBox(MessageBoxIdDefine.DungeonMazeV3a7Exit, MsgBoxEnum.BoxType.Yes_No, self._confirmSkipGame, nil, nil, self)
+end
+
+function DungeonMazeV3a7View:_confirmSkipGame()
+	DungeonMazeV3a7Controller.instance:gmWin()
 end
 
 function DungeonMazeV3a7View:_editableInitView()

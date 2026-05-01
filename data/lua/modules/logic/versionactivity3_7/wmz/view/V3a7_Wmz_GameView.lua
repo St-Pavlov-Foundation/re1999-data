@@ -1,13 +1,5 @@
 ﻿-- chunkname: @modules/logic/versionactivity3_7/wmz/view/V3a7_Wmz_GameView.lua
 
-local math_floor = math.floor
-local math_min = math.min
-local math_max = math.max
-local math_abs = math.abs
-local sf = string.format
-local string_rep = string.rep
-local ti = table.insert
-
 module("modules.logic.versionactivity3_7.wmz.view.V3a7_Wmz_GameView", package.seeall)
 
 local V3a7_Wmz_GameView = class("V3a7_Wmz_GameView", BaseView)
@@ -23,6 +15,8 @@ function V3a7_Wmz_GameView:onInitView()
 	self._gotiles = gohelper.findChild(self.viewGO, "#go_map/Viewport/Content/#go_tiles")
 	self._goselections = gohelper.findChild(self.viewGO, "#go_map/Viewport/Content/#go_selections")
 	self._gotitles = gohelper.findChild(self.viewGO, "#go_map/Viewport/Content/#go_titles")
+	self._goFrame = gohelper.findChild(self.viewGO, "#go_map/Viewport/Content/#go_Frame")
+	self._goframes = gohelper.findChild(self.viewGO, "#go_map/Viewport/Content/#go_frames")
 	self._goTarget = gohelper.findChild(self.viewGO, "#go_Target")
 	self._txtRound = gohelper.findChildText(self.viewGO, "#go_Target/#txt_Round")
 	self._txtTarget = gohelper.findChildText(self.viewGO, "#go_Target/#txt_Target")
@@ -42,22 +36,23 @@ function V3a7_Wmz_GameView:onInitView()
 end
 
 function V3a7_Wmz_GameView:addEvents()
-	self._btnClickPoint:AddClickListener(self._btnClickPointOnClick, self)
 	self._btnback:AddClickListener(self._btnbackOnClick, self)
 	self._btnreset:AddClickListener(self._btnresetOnClick, self)
 end
 
 function V3a7_Wmz_GameView:removeEvents()
-	self._btnClickPoint:RemoveClickListener()
 	self._btnback:RemoveClickListener()
 	self._btnreset:RemoveClickListener()
 end
 
+local math_floor = math.floor
+local math_min = math.min
+local math_max = math.max
+local math_abs = math.abs
+local sf = string.format
+local string_rep = string.rep
+local ti = table.insert
 local csTweenHelper = ZProj.TweenHelper
-
-function V3a7_Wmz_GameView:_btnClickPointOnClick()
-	return
-end
 
 function V3a7_Wmz_GameView:_btnbackOnClick()
 	return
@@ -112,6 +107,7 @@ function V3a7_Wmz_GameView:ctor(...)
 	self._pointItemList = {}
 	self._titleItemList = {}
 	self._selectionItemList = {}
+	self._frameItemList = {}
 end
 
 function V3a7_Wmz_GameView:_editableInitView()
@@ -211,6 +207,7 @@ function V3a7_Wmz_GameView:onDestroyView()
 	GameUtil.onDestroyViewMemberList(self, "_pointItemList")
 	GameUtil.onDestroyViewMemberList(self, "_titleItemList")
 	GameUtil.onDestroyViewMemberList(self, "_selectionItemList")
+	GameUtil.onDestroyViewMemberList(self, "_frameItemList")
 	GameUtil.onDestroyViewMemberList(self, "_tileItemList")
 	GameUtil.onDestroyViewMemberList(self, "_cellItemList")
 end
@@ -256,6 +253,7 @@ function V3a7_Wmz_GameView:_onEndRound()
 end
 
 function V3a7_Wmz_GameView:onCompleteGame()
+	self:setActive_goComplete(true)
 	self.viewContainer:completeGame(true)
 end
 
@@ -393,8 +391,8 @@ end
 function V3a7_Wmz_GameView:coordToContentLocalXY(gridCoordX, gridCoordY)
 	local gridCX, gridCY = self:gridCXCY(gridCoordX, gridCoordY)
 	local contentHalfSizeV2 = self:contentHalfSizeV2()
-	local contentLocalX = gridCX - contentHalfSizeV2.x
-	local contentLocalY = -(gridCY - contentHalfSizeV2.y)
+	local contentLocalX = contentHalfSizeV2.x - gridCX
+	local contentLocalY = -(contentHalfSizeV2.y - gridCY)
 
 	return contentLocalX, contentLocalY
 end
@@ -419,7 +417,7 @@ function V3a7_Wmz_GameView:_refreshMap()
 	self:_refreshEnergy()
 	self:_refreshPoints()
 	self:_refreshTitles()
-	GameUtil.loadSImage(self._mapContentSingleBg, self.viewContainer:getContentBgResUrl())
+	self:_refreshFrames()
 	self:_autoSelectZone()
 end
 
@@ -642,6 +640,31 @@ function V3a7_Wmz_GameView:_refreshTitles()
 	end
 end
 
+function V3a7_Wmz_GameView:_refreshFrames()
+	local zoneCOList = self.viewContainer:getZoneCOList()
+
+	for i, zoneCO in ipairs(zoneCOList) do
+		local item
+
+		if i > #self._frameItemList then
+			item = self:_create_V3a7_Wmz_GameItem_Frame(i)
+
+			ti(self._frameItemList, item)
+		else
+			item = self._frameItemList[i]
+		end
+
+		item:onUpdateMO(zoneCO)
+		item:setActive(true)
+	end
+
+	for i = #zoneCOList + 1, #self._frameItemList do
+		local item = self._frameItemList[i]
+
+		item:setActive(false)
+	end
+end
+
 function V3a7_Wmz_GameView:_create_V3a7_Wmz_CellItem(index, gridObj)
 	local go = gohelper.clone(self._goPiece, self._gocells)
 	local item
@@ -697,6 +720,20 @@ function V3a7_Wmz_GameView:_create_V3a7_Wmz_GameItem_Title(index)
 		baseViewContainer = self.viewContainer
 	}
 	local item = V3a7_Wmz_GameItem_Title.New(ctroParams)
+
+	item:setIndex(index)
+	item:init(go)
+
+	return item
+end
+
+function V3a7_Wmz_GameView:_create_V3a7_Wmz_GameItem_Frame(index)
+	local go = gohelper.clone(self._goFrame, self._goframes)
+	local ctroParams = {
+		parent = self,
+		baseViewContainer = self.viewContainer
+	}
+	local item = V3a7_Wmz_GameItem_Frame.New(ctroParams)
 
 	item:setIndex(index)
 	item:init(go)

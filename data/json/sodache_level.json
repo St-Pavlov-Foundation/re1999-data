@@ -17,7 +17,7 @@
   },
   {
     "level": 3,
-    "cosume": 100,
+    "cosume": 70,
     "desc": "【拾荒人帐篷】可提升到2级\n后勤补给可购买妙想品质行动牌",
     "effect": "",
     "effectDesc": "",
@@ -25,7 +25,7 @@
   },
   {
     "level": 4,
-    "cosume": 225,
+    "cosume": 125,
     "desc": "【水晶馆】可提升到2级\n后勤补给可购买珍奇品质对策牌",
     "effect": "",
     "effectDesc": "",
@@ -33,7 +33,7 @@
   },
   {
     "level": 5,
-    "cosume": 425,
+    "cosume": 200,
     "desc": "后勤补给可购买【黄金树叶Ⅱ】\n撤离理智极限增加20",
     "effect": "",
     "effectDesc": "",
@@ -41,7 +41,7 @@
   },
   {
     "level": 6,
-    "cosume": 720,
+    "cosume": 295,
     "desc": "【拾荒人帐篷】可提升到3级\n后勤补给可购买部分珍奇品质行动牌",
     "effect": "",
     "effectDesc": "",
@@ -49,7 +49,7 @@
   },
   {
     "level": 7,
-    "cosume": 1120,
+    "cosume": 400,
     "desc": "后勤补给开启黑市商人\n后勤补给可购买所有珍奇品质行动牌\n后勤补给购买价格降低10%",
     "effect": "",
     "effectDesc": "后勤补给开启黑市商人",
@@ -57,7 +57,7 @@
   },
   {
     "level": 8,
-    "cosume": 1655,
+    "cosume": 535,
     "desc": "【水晶馆】可提升至3级",
     "effect": "",
     "effectDesc": "",
@@ -65,7 +65,7 @@
   },
   {
     "level": 9,
-    "cosume": 2335,
+    "cosume": 680,
     "desc": "撤离理智极限增加50",
     "effect": "",
     "effectDesc": "",
@@ -73,7 +73,7 @@
   },
   {
     "level": 10,
-    "cosume": 3185,
+    "cosume": 850,
     "desc": "后勤补给购买价格降低10%→20%\n撤离理智极限增加30",
     "effect": "",
     "effectDesc": "",
@@ -81,7 +81,7 @@
   },
   {
     "level": 11,
-    "cosume": 4215,
+    "cosume": 1030,
     "desc": "撤离理智极限增加50",
     "effect": "",
     "effectDesc": "",
@@ -89,7 +89,7 @@
   },
   {
     "level": 12,
-    "cosume": 5465,
+    "cosume": 1250,
     "desc": "后勤补给可购买【黄金树叶Ⅲ】",
     "effect": "",
     "effectDesc": "",

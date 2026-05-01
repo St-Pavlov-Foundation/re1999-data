@@ -153,8 +153,6 @@ function TravelGoSpineComp:setData(entity)
 
 		self.loader:addPath(self.res)
 		self.loader:startLoad(self.onLoaded, self)
-	else
-		logError("缺少配置spine资源路径")
 	end
 
 	self.battleBar:setEntity(self.entity)

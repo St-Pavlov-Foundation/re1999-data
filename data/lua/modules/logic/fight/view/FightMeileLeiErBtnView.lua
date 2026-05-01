@@ -51,6 +51,8 @@ function FightMeileLeiErBtnView:onStageChanged(stage)
 
 				self:com_loadAsset(url, self.onBtnLoadFinish)
 			end
+		else
+			self.viewContainer.rightBottomElementLayoutView:hideElement(FightRightBottomElementEnum.Elements.MeiLeiErExRound)
 		end
 	end
 end

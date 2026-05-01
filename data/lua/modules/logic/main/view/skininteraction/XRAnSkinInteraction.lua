@@ -96,6 +96,7 @@ function XRAnSkinInteraction:_onHeroShowInScene(showInScene)
 
 		self._featherGo = gohelper.clone(prefab, self._view.viewGO)
 		self._featherStoryGo = gohelper.findChild(self._featherGo, "#feather_stroy")
+		self._clickFeatherGo = gohelper.findChild(self._featherGo, "click")
 
 		local clickGo = gohelper.findChild(self._featherGo, "click/#click")
 
@@ -110,6 +111,7 @@ function XRAnSkinInteraction:_onHeroShowInScene(showInScene)
 	self._clickMaskableGraphic.raycastTarget = true
 
 	self._featherAnimator:Play("open", 0, 0)
+	gohelper.setActive(self._clickFeatherGo, true)
 	TaskDispatcher.cancelTask(self._hideFeather, self)
 	TaskDispatcher.runDelay(self._hideFeather, self, featherHideTime)
 	AudioMgr.instance:trigger(FeatherSoundId.startId)
@@ -226,6 +228,7 @@ end
 function XRAnSkinInteraction:_delayResetCamera()
 	UIBlockMgrExtend.setNeedCircleMv(true)
 	self:_resetCameraPos()
+	gohelper.setActive(self._clickFeatherGo, false)
 end
 
 function XRAnSkinInteraction:_storyFinish()
@@ -241,6 +244,7 @@ function XRAnSkinInteraction:_showCloseAnim()
 	gohelper.setActive(self._featherStoryGo, true)
 	TaskDispatcher.cancelTask(self._delayHideFeatherStoryGo, self)
 	TaskDispatcher.runDelay(self._delayHideFeatherStoryGo, self, 5)
+	gohelper.setActive(self._clickFeatherGo, false)
 	self._featherAnimator:Play("close", 0, 0)
 	AudioMgr.instance:trigger(FeatherSoundId.endId)
 end

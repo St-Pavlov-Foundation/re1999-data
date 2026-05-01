@@ -505,6 +505,12 @@ function FightModel:canParallelSkill(fightStepData)
 		return false
 	end
 
+	local episodeId = FightDataHelper.fieldMgr.episodeId
+
+	if episodeId == 11306 or episodeId == 21304 or episodeId == 1306 then
+		return false
+	end
+
 	return FightDataHelper.stateMgr:getIsAuto() or FightDataHelper.stateMgr.isReplay or self:isGMFightJoin()
 end
 

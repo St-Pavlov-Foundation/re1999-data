@@ -28,13 +28,13 @@ local function _readAllText(filename)
 	return res or ""
 end
 
-rawset(_G, "_readAllText", _readAllText)
-
 local function _isFileExists(assetPath)
 	return SLFramework.FileHelper.IsFileExists(assetPath)
 end
 
-rawset(_G, "_isFileExists", _isFileExists)
+local function _writeTextToPath(filePath, content)
+	SLFramework.FileHelper.WriteTextToPath(filePath, content)
+end
 
 local function _loadGameRawJson(assetPath)
 	if not _isFileExists(assetPath) then
@@ -231,18 +231,22 @@ local function _genJson(mapCO)
 		for _, cellInfo in pairs(v) do
 			local fromX = cellInfo.x
 			local fromY = cellInfo.y
+			local bDirty = dirtyDict[fromX][fromY]
 
-			if not toDict[fromX] then
-				toDict[fromX] = {}
-				toDict[fromX][fromY] = tabletool.copy(cellInfo)
-			elseif not toDict[fromX][fromY] then
-				local bDirty = dirtyDict[fromX][fromY]
-
+			local function _simpleMakeCellInfo()
 				if bDirty then
 					toDict[fromX][fromY] = WmzMapInfo.s_makeEmpty(fromX, fromY)
 				else
 					toDict[fromX][fromY] = tabletool.copy(cellInfo)
 				end
+			end
+
+			if not toDict[fromX] then
+				toDict[fromX] = {}
+
+				_simpleMakeCellInfo()
+			elseif not toDict[fromX][fromY] then
+				_simpleMakeCellInfo()
 			end
 		end
 	end
@@ -285,12 +289,16 @@ local function _genJson(mapCO)
 	local savePath = sf("Assets/ZProj/Scripts/Lua/modules/configs/wmz/map_%s.lua", mapId)
 	local tbl = {}
 
-	ti(tbl, "--please save to " .. savePath)
+	ti(tbl, "--start please save to " .. savePath)
 	ti(tbl, "--auto gen by WmzTesting.lua")
 	ti(tbl, "--json:" .. jsonAssetPath)
 	ti(tbl, "--lua:" .. modulePath)
 	ti(tbl, jsonStr)
-	logError(table.concat(tbl, "\n"))
+
+	local content = table.concat(tbl, "\n")
+
+	_writeTextToPath(savePath, content)
+	logError(content)
 end
 
 WmzEnum.rDir = RD(WmzEnum, "Dir")

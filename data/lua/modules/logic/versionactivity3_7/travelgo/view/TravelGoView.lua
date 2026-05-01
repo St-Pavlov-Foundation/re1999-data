@@ -20,6 +20,7 @@ function TravelGoView:onInitView()
 	gohelper.setActive(self.goActor, false)
 
 	self.simage_FG = gohelper.findChildSingleImage(self.viewGO, "SceneView/#simage_FG")
+	self.simage_FG_img = gohelper.findChildImage(self.viewGO, "SceneView/#simage_FG")
 	self.moveBkg1 = gohelper.findChildSingleImage(self.viewGO, "SceneView/moveBkgs/imgBkg1")
 	self.moveBkg2 = gohelper.findChildSingleImage(self.viewGO, "SceneView/moveBkgs/imgBkg2")
 	self.moveBkg3 = gohelper.findChildSingleImage(self.viewGO, "SceneView/moveBkgs/imgBkg3")
@@ -81,9 +82,10 @@ function TravelGoView:onOpen()
 	end
 
 	local str = string.format("v3a7_xiaoruiannong_game_scenefg%s", map)
-	local res = ResUrl.getTravelGoSingleBg(str)
 
-	self.simage_FG:LoadImage(res)
+	self.res = ResUrl.getTravelGoSingleBg(str)
+
+	self.simage_FG:LoadImage(self.res, self.onImageLoaded, self)
 	TaskDispatcher.runRepeat(self.tick, self, 0)
 	recthelper.setAnchorX(self.moveBkg1.transform, -self.bkgW)
 	recthelper.setAnchorX(self.moveBkg2.transform, 0)
@@ -99,6 +101,14 @@ function TravelGoView:onOpen()
 
 	self.playerSpine:setData(self.controller.travelGoEntityMgr.playerEntity)
 	self.travelGoDayComp:onOpen()
+end
+
+function TravelGoView:onImageLoaded()
+	if self.res == "singlebg/v3a7_xiaoruiannong_singlebg/v3a7_xiaoruiannong_game_scenefg3.png" then
+		self.simage_FG_img:SetNativeSize()
+	else
+		recthelper.setSize(self.simage_FG_img.transform, 2592, 648)
+	end
 end
 
 function TravelGoView:onClose()

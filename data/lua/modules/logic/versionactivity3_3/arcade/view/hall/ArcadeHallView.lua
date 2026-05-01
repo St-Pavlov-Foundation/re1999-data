@@ -341,7 +341,7 @@ end
 local dragOffset = 10
 
 function ArcadeHallView:_onDrag(param, pointerEventData)
-	if self._readyEnterLevel then
+	if self._readyEnterLevel or not self._prePosition or not self._preDirection then
 		return
 	end
 

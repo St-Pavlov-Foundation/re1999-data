@@ -21,6 +21,12 @@ function Anniversary3ActBpController:addConstEvents()
 	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, self._onDailyRefresh, self)
 end
 
+function Anniversary3ActBpController:again‌RequestActivity()
+	self._hasGet = nil
+
+	self:onRefreshActivity()
+end
+
 function Anniversary3ActBpController:_onDailyRefresh()
 	self._hasGet = nil
 

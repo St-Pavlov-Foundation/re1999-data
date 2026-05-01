@@ -166,7 +166,7 @@
     "listenerParam": "13744",
     "maxProgress": 3,
     "maxFinishCount": 1,
-    "bonus": "1#140120#1|2#28#3000"
+    "bonus": "1#140120#1"
   },
   {
     "id": 760014,
@@ -179,7 +179,7 @@
     "listenerParam": "13744",
     "maxProgress": 6,
     "maxFinishCount": 1,
-    "bonus": "1#140120#1|2#28#2000"
+    "bonus": "1#140120#1"
   },
   {
     "id": 760015,
@@ -192,7 +192,7 @@
     "listenerParam": "13744",
     "maxProgress": 9,
     "maxFinishCount": 1,
-    "bonus": "1#140120#1|2#28#1000"
+    "bonus": "1#140120#1"
   },
   {
     "id": 760016,
@@ -200,12 +200,12 @@
     "isOnline": 1,
     "minType": "新深渊任务",
     "name": "新深渊任务",
-    "desc": "在焦点闪回中第1关获得2颗星",
+    "desc": "在焦点闪回中第1关获得1颗星",
     "listenerType": "Act229EpisodeStar",
     "listenerParam": "13744#1",
-    "maxProgress": 2,
+    "maxProgress": 1,
     "maxFinishCount": 1,
-    "bonus": "2#28#1200"
+    "bonus": "2#28#3200"
   },
   {
     "id": 760017,
@@ -213,12 +213,12 @@
     "isOnline": 1,
     "minType": "新深渊任务",
     "name": "新深渊任务",
-    "desc": "在焦点闪回中第2关获得2颗星",
+    "desc": "在焦点闪回中第2关获得1颗星",
     "listenerType": "Act229EpisodeStar",
     "listenerParam": "13744#2",
-    "maxProgress": 2,
+    "maxProgress": 1,
     "maxFinishCount": 1,
-    "bonus": "2#28#1200"
+    "bonus": "2#28#3200"
   },
   {
     "id": 760018,
@@ -226,11 +226,11 @@
     "isOnline": 1,
     "minType": "新深渊任务",
     "name": "新深渊任务",
-    "desc": "在焦点闪回中第3关获得2颗星",
+    "desc": "在焦点闪回中第3关获得1颗星",
     "listenerType": "Act229EpisodeStar",
     "listenerParam": "13744#3",
-    "maxProgress": 2,
+    "maxProgress": 1,
     "maxFinishCount": 1,
-    "bonus": "2#28#1200"
+    "bonus": "2#28#3200"
   }
 ]

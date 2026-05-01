@@ -303,7 +303,12 @@ function WmzMapDragContext:_doMoving(refId2TileItemDict)
 
 	self._viewObj:_doSelectedTiles()
 	self:_onMoveDone()
+	self:_subEnergy()
+end
+
+function WmzMapDragContext:_subEnergy()
 	self:setEnergy(self:curEnergy() - 1)
+	self._viewObj:_refreshEnergy()
 end
 
 function WmzMapDragContext:_onMoveDone()

@@ -571,6 +571,11 @@ function GuiLive2d:_loadL2dResFinish()
 		camera.farClipPlane = 30
 	end
 
+	if self._rtViewName == ViewName.CharacterSkinGainView and camera then
+		camera.nearClipPlane = -30
+		camera.farClipPlane = 30
+	end
+
 	transformhelper.setLocalPosXY(self._cameraGo.transform, 0, CharacterVoiceEnum.getCameraOffsetY(self._createType))
 
 	if self._cameraLayer then

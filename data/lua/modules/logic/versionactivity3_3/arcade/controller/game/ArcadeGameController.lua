@@ -1294,7 +1294,7 @@ function ArcadeGameController:_enterDeathSettleFlow(entityMO, attackerMO)
 	local entityType = entityMO:getEntityType()
 	local uid = entityMO:getUid()
 
-	if entityType == ArcadeGameEnum.EntityType.Monster then
+	if attackerMO and entityType == ArcadeGameEnum.EntityType.Monster then
 		ArcadeGameModel.instance:addKillMonsterNum()
 
 		local buffSetMO = entityMO:getBuffSetMO()

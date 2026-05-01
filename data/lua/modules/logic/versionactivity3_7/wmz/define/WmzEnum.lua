@@ -168,7 +168,7 @@ local _PI = {
 		spriteId = _PSI.Exit2_Straight
 	},
 	[_PT.L] = {
-		zRot = -90,
+		zRot = 180,
 		outZM = _ZM.West
 	},
 	[_PT.T] = {
@@ -180,7 +180,7 @@ local _PI = {
 		outZM = _ZM.East
 	},
 	[_PT.B] = {
-		zRot = 180,
+		zRot = -90,
 		outZM = _ZM.South
 	}
 }

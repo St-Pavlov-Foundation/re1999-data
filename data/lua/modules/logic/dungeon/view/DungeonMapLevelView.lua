@@ -1131,7 +1131,7 @@ function DungeonMapLevelView:onStoryStatus()
 		showStory = not DungeonMapModel.instance:checkStoryElementFinished(self._config.afterStory)
 	end
 
-	if not showStory and self._config.type == DungeonEnum.EpisodeType.Story then
+	if not showStory and self._config.type == DungeonEnum.EpisodeType.Story and self._episodeInfo.star > DungeonEnum.StarType.None then
 		showStory = self._config.beforeStory > 0 and StoryModel.instance:isStoryFinished(self._config.beforeStory) and not DungeonMapModel.instance:checkStoryElementFinished(self._config.beforeStory)
 	end
 

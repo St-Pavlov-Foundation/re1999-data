@@ -4,250 +4,250 @@ local _ = {}
 
 _[62] = {
 	floorType = 0,
-	x = 30,
+	x = 32,
 	zoneId = 23000,
-	y = 6,
+	y = 9,
 	pathType = -1,
 	sprite = "v3a7_wmz_piece_03_03_008"
 }
 _[61] = {
 	floorType = 0,
-	x = 29,
+	x = 31,
 	zoneId = 23000,
-	y = 6,
+	y = 9,
 	pathType = 5,
 	sprite = "v3a7_wmz_piece_03_03_004"
 }
 _[60] = {
 	floorType = 2,
 	zoneId = 0,
-	y = 4,
+	y = 7,
 	pathType = 1,
-	x = 31
+	x = 33
 }
 _[59] = {
 	floorType = 0,
-	x = 30,
+	x = 32,
 	zoneId = 23000,
-	y = 5,
+	y = 8,
 	pathType = -1,
 	sprite = "v3a7_wmz_piece_03_03_005"
 }
 _[58] = {
+	floorType = 4,
+	x = 30,
+	y = 9
+}
+_[57] = {
 	floorType = 0,
-	x = 29,
+	x = 31,
 	zoneId = 23000,
-	y = 5,
+	y = 8,
 	pathType = 8,
 	sprite = "v3a7_wmz_piece_03_03_001"
 }
-_[57] = {
-	floorType = 4,
-	x = 28,
-	y = 6
-}
 _[56] = {
 	floorType = 1,
-	x = 30,
+	x = 32,
 	zoneId = 23000,
-	y = 4,
+	y = 7,
 	pathType = 10,
 	sprite = "v3a7_wmz_piece_03_03_003"
 }
 _[55] = {
 	floorType = 0,
-	x = 28,
+	x = 30,
 	zoneId = 23000,
-	y = 5,
+	y = 8,
 	pathType = -1,
 	sprite = "v3a7_wmz_piece_03_03_007"
 }
 _[54] = {
 	floorType = 4,
-	x = 29,
-	y = 4
+	x = 31,
+	y = 7
 }
 _[53] = {
 	floorType = 2,
 	zoneId = 0,
-	y = 5,
+	y = 8,
 	pathType = 10,
-	x = 27
+	x = 29
 }
 _[52] = {
 	floorType = 0,
-	x = 28,
+	x = 30,
 	zoneId = 23000,
-	y = 4,
+	y = 7,
 	pathType = 10,
 	sprite = "v3a7_wmz_piece_03_03_002"
 }
 _[51] = {
 	floorType = 2,
 	zoneId = 0,
-	y = 5,
+	y = 8,
 	pathType = 10,
-	x = 26
+	x = 28
 }
 _[50] = {
 	floorType = 2,
 	zoneId = 0,
-	y = 5,
+	y = 8,
 	pathType = 10,
-	x = 25
+	x = 27
 }
 _[49] = {
 	floorType = 2,
 	zoneId = 0,
-	y = 5,
+	y = 8,
 	pathType = 10,
-	x = 24
+	x = 26
 }
 _[48] = {
 	floorType = 2,
 	zoneId = 0,
-	y = 5,
+	y = 8,
 	pathType = 10,
-	x = 23
+	x = 25
 }
 _[47] = {
 	floorType = 2,
 	zoneId = 0,
-	y = 5,
+	y = 8,
 	pathType = 10,
-	x = 22
+	x = 24
 }
 _[46] = {
 	floorType = 2,
 	zoneId = 0,
-	y = 5,
+	y = 8,
 	pathType = 7,
-	x = 21
+	x = 23
 }
 _[45] = {
 	floorType = 2,
 	zoneId = 0,
-	y = 4,
+	y = 7,
 	pathType = 6,
-	x = 21
+	x = 23
 }
 _[44] = {
-	floorType = 2,
-	zoneId = 0,
-	y = 4,
-	pathType = 10,
-	x = 20
-}
-_[43] = {
 	pathType = 5,
 	floorType = 0,
 	zoneId = 22000,
-	y = 6,
+	y = 9,
 	groupId = 226,
-	x = 18,
+	x = 20,
 	sprite = "v3a7_wmz_piece_03_02_019"
 }
+_[43] = {
+	floorType = 2,
+	zoneId = 0,
+	y = 7,
+	pathType = 10,
+	x = 22
+}
 _[42] = {
+	floorType = 2,
+	zoneId = 0,
+	y = 7,
+	pathType = 10,
+	x = 21
+}
+_[41] = {
 	pathType = 9,
 	floorType = 0,
 	zoneId = 22000,
-	y = 5,
+	y = 8,
 	groupId = 226,
-	x = 18,
+	x = 20,
 	sprite = "v3a7_wmz_piece_03_02_014"
 }
-_[41] = {
+_[40] = {
 	pathType = 8,
 	floorType = 0,
 	zoneId = 22000,
-	y = 6,
+	y = 9,
 	groupId = 223,
-	x = 17,
+	x = 19,
 	sprite = "v3a7_wmz_piece_03_02_009"
 }
-_[40] = {
-	floorType = 2,
-	zoneId = 0,
-	y = 4,
-	pathType = 10,
-	x = 19
-}
 _[39] = {
-	floorType = 1,
-	x = 16,
+	pathType = -1,
+	floorType = 0,
 	zoneId = 22000,
-	y = 6,
+	y = 8,
+	groupId = 223,
+	x = 19,
+	sprite = "v3a7_wmz_piece_03_02_004"
+}
+_[38] = {
+	floorType = 1,
+	x = 18,
+	zoneId = 22000,
+	y = 9,
 	pathType = 10,
 	sprite = "v3a7_wmz_piece_03_02_018"
 }
-_[38] = {
-	pathType = -1,
-	floorType = 0,
-	zoneId = 22000,
-	y = 5,
-	groupId = 223,
-	x = 17,
-	sprite = "v3a7_wmz_piece_03_02_004"
-}
 _[37] = {
 	floorType = 4,
-	x = 18,
-	y = 4
+	x = 20,
+	y = 7
 }
 _[36] = {
-	floorType = 0,
-	x = 16,
-	zoneId = 22000,
-	y = 5,
-	pathType = -1,
-	sprite = "v3a7_wmz_piece_03_02_013"
-}
-_[35] = {
 	pathType = 6,
 	floorType = 0,
 	zoneId = 22000,
-	y = 6,
+	y = 9,
 	groupId = 222,
-	x = 15,
+	x = 17,
 	sprite = "v3a7_wmz_piece_03_02_007"
 }
-_[34] = {
+_[35] = {
 	floorType = 4,
-	x = 18,
-	y = 3
+	x = 20,
+	y = 6
 }
-_[33] = {
+_[34] = {
 	pathType = 10,
 	floorType = 0,
 	zoneId = 22000,
-	y = 4,
+	y = 7,
 	groupId = 224,
-	x = 17,
+	x = 19,
 	sprite = "v3a7_wmz_piece_03_02_010"
+}
+_[33] = {
+	floorType = 0,
+	x = 18,
+	zoneId = 22000,
+	y = 8,
+	pathType = -1,
+	sprite = "v3a7_wmz_piece_03_02_013"
 }
 _[32] = {
 	pathType = 7,
 	floorType = 0,
 	zoneId = 22000,
-	y = 6,
+	y = 9,
 	groupId = 225,
-	x = 14,
+	x = 16,
 	sprite = "v3a7_wmz_piece_03_02_017"
 }
 _[31] = {
 	pathType = -1,
 	floorType = 0,
 	zoneId = 22000,
-	y = 5,
+	y = 8,
 	groupId = 222,
-	x = 15,
+	x = 17,
 	sprite = "v3a7_wmz_piece_03_02_002"
 }
 _[30] = {
 	floorType = 0,
-	x = 16,
+	x = 18,
 	zoneId = 22000,
-	y = 4,
+	y = 7,
 	pathType = -1,
 	sprite = "v3a7_wmz_piece_03_02_008"
 }
@@ -255,208 +255,208 @@ _[29] = {
 	pathType = -1,
 	floorType = 0,
 	zoneId = 22000,
-	y = 3,
+	y = 6,
 	groupId = 224,
-	x = 17,
+	x = 19,
 	sprite = "v3a7_wmz_piece_03_02_005"
 }
 _[28] = {
-	pathType = 9,
 	floorType = 0,
+	x = 18,
 	zoneId = 22000,
-	y = 5,
-	groupId = 225,
-	x = 14,
-	sprite = "v3a7_wmz_piece_03_02_012"
-}
-_[27] = {
-	floorType = 0,
-	x = 16,
-	zoneId = 22000,
-	y = 3,
+	y = 6,
 	pathType = -1,
 	sprite = "v3a7_wmz_piece_03_02_003"
 }
-_[26] = {
+_[27] = {
 	pathType = 10,
 	floorType = 0,
 	zoneId = 22000,
-	y = 4,
+	y = 7,
 	groupId = 221,
-	x = 15,
+	x = 17,
 	sprite = "v3a7_wmz_piece_03_02_006"
 }
+_[26] = {
+	pathType = 9,
+	floorType = 0,
+	zoneId = 22000,
+	y = 8,
+	groupId = 225,
+	x = 16,
+	sprite = "v3a7_wmz_piece_03_02_012"
+}
 _[25] = {
+	floorType = 4,
+	x = 16,
+	y = 7
+}
+_[24] = {
 	pathType = -1,
 	floorType = 0,
 	zoneId = 22000,
-	y = 3,
+	y = 6,
 	groupId = 221,
-	x = 15,
+	x = 17,
 	sprite = "v3a7_wmz_piece_03_02_001"
-}
-_[24] = {
-	floorType = 4,
-	x = 14,
-	y = 4
 }
 _[23] = {
 	floorType = 4,
-	x = 14,
-	y = 3
+	x = 16,
+	y = 6
 }
 _[22] = {
 	floorType = 2,
 	zoneId = 0,
-	y = 4,
+	y = 7,
 	pathType = 10,
-	x = 13
+	x = 15
 }
 _[21] = {
 	floorType = 2,
 	zoneId = 0,
-	y = 4,
+	y = 7,
 	pathType = 10,
-	x = 12
+	x = 14
 }
 _[20] = {
 	floorType = 2,
 	zoneId = 0,
-	y = 4,
+	y = 7,
 	pathType = 10,
-	x = 11
+	x = 13
 }
 _[19] = {
 	floorType = 2,
 	zoneId = 0,
-	y = 4,
+	y = 7,
 	pathType = 10,
-	x = 10
+	x = 12
 }
 _[18] = {
 	floorType = 2,
 	zoneId = 0,
-	y = 4,
+	y = 7,
 	pathType = 10,
-	x = 9
+	x = 11
 }
 _[17] = {
+	floorType = 2,
+	zoneId = 0,
+	y = 7,
+	pathType = 10,
+	x = 10
+}
+_[16] = {
 	floorType = 0,
-	x = 6,
+	x = 8,
 	zoneId = 21000,
-	y = 6,
+	y = 9,
 	pathType = -1,
 	sprite = "v3a7_wmz_piece_03_01_012"
 }
-_[16] = {
-	floorType = 2,
-	zoneId = 0,
-	y = 4,
-	pathType = 10,
-	x = 8
-}
 _[15] = {
 	floorType = 4,
-	x = 5,
-	y = 6
+	x = 7,
+	y = 9
 }
 _[14] = {
-	floorType = 2,
-	zoneId = 0,
-	y = 4,
-	pathType = 10,
-	x = 7
-}
-_[13] = {
 	floorType = 1,
-	x = 6,
+	x = 8,
 	zoneId = 21000,
-	y = 5,
+	y = 8,
 	pathType = 5,
 	sprite = "v3a7_wmz_piece_03_01_009"
 }
+_[13] = {
+	floorType = 2,
+	zoneId = 0,
+	y = 7,
+	pathType = 10,
+	x = 9
+}
 _[12] = {
 	floorType = 0,
-	x = 5,
+	x = 7,
 	zoneId = 21000,
-	y = 5,
+	y = 8,
 	pathType = -1,
 	sprite = "v3a7_wmz_piece_03_01_011"
 }
 _[11] = {
-	floorType = 4,
-	x = 6,
-	y = 4
-}
-_[10] = {
 	floorType = 0,
-	x = 4,
+	x = 6,
 	zoneId = 21000,
-	y = 6,
+	y = 9,
 	pathType = -1,
 	sprite = "v3a7_wmz_piece_03_01_007"
 }
+_[10] = {
+	floorType = 4,
+	x = 8,
+	y = 7
+}
 _[9] = {
 	floorType = 0,
-	x = 4,
+	x = 6,
 	zoneId = 21000,
-	y = 5,
+	y = 8,
 	pathType = 7,
 	sprite = "v3a7_wmz_piece_03_01_008"
 }
 _[8] = {
 	floorType = 0,
-	x = 5,
+	x = 8,
 	zoneId = 21000,
-	y = 4,
-	pathType = 8,
-	sprite = "v3a7_wmz_piece_03_01_006"
-}
-_[7] = {
-	floorType = 0,
-	x = 6,
-	zoneId = 21000,
-	y = 3,
+	y = 6,
 	pathType = 6,
 	sprite = "v3a7_wmz_piece_03_01_002"
 }
+_[7] = {
+	floorType = 0,
+	x = 7,
+	zoneId = 21000,
+	y = 7,
+	pathType = 8,
+	sprite = "v3a7_wmz_piece_03_01_006"
+}
 _[6] = {
 	floorType = 0,
-	x = 5,
+	x = 7,
 	zoneId = 21000,
-	y = 3,
+	y = 6,
 	pathType = 9,
 	sprite = "v3a7_wmz_piece_03_01_005"
 }
 _[5] = {
 	floorType = 0,
-	x = 4,
+	x = 6,
 	zoneId = 21000,
-	y = 4,
+	y = 7,
 	pathType = -1,
 	sprite = "v3a7_wmz_piece_03_01_004"
 }
 _[4] = {
 	floorType = 1,
-	x = 4,
+	x = 6,
 	zoneId = 21000,
-	y = 3,
+	y = 6,
 	pathType = 7,
 	sprite = "v3a7_wmz_piece_03_01_001"
 }
 _[3] = {
 	floorType = 2,
 	zoneId = 0,
-	y = 2,
+	y = 5,
 	pathType = 9,
-	x = 4
+	x = 6
 }
 _[2] = {
 	floorType = 2,
 	zoneId = 0,
-	y = 1,
+	y = 4,
 	pathType = 4,
-	x = 4
+	x = 6
 }
 _[1] = {
 	_[2],
@@ -523,7 +523,7 @@ _[1] = {
 }
 
 return {
-	height = 24,
-	width = 38,
+	height = 30,
+	width = 46,
 	girds = _[1]
 }

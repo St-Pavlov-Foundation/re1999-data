@@ -104,8 +104,16 @@ function Rouge2_SystemController:getHeroBattleTagList(heroId)
 	return battleTagStr and string.split(battleTagStr, "#")
 end
 
-function Rouge2_SystemController:isContainBattleTag(battleTagList, targetTag)
-	return Rouge2_SystemCheckHelper.isContainBattleTag(battleTagList, targetTag)
+function Rouge2_SystemController:isContainBattleTag(tagList, targetTag)
+	if not tagList or not targetTag then
+		return
+	end
+
+	for _, tag in ipairs(tagList) do
+		if tag == targetTag or tag == "10000" and targetTag ~= "101" and targetTag ~= "102" or targetTag == "10000" and tag ~= "101" and tag ~= "102" then
+			return true
+		end
+	end
 end
 
 function Rouge2_SystemController:hasAnyRecommendHero(battleTag)

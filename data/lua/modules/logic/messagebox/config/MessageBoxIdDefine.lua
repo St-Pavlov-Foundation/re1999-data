@@ -309,6 +309,7 @@ local MessageBoxIdDefine = {
 	AutoChessFreeChessClean = 250011,
 	SDKPcUseResetPwdLogin = 25,
 	PlayerCardSelectTips = 240031,
+	DungeonMazeV3a7Exit = 370001,
 	RecommendTalentChess = 53,
 	MusicDelConfirm = 240012,
 	TowerComposeResearchJumpAllPlaneLock = 340103,

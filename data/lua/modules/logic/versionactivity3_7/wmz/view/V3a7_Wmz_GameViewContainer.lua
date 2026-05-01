@@ -189,11 +189,4 @@ function V3a7_Wmz_GameViewContainer:curEnergy()
 	return self:mapMO():curEnergy()
 end
 
-function V3a7_Wmz_GameViewContainer:getContentBgResUrl()
-	local CO = self:getGameCO()
-	local bgResName = CO.bgResName
-
-	return string.nilorempty(bgResName) and "" or ResUrl.getV3a7WmzSingleBg(bgResName)
-end
-
 return V3a7_Wmz_GameViewContainer

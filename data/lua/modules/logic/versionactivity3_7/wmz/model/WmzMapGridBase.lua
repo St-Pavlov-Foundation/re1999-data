@@ -208,19 +208,19 @@ function WmzMapGridBase:calcCellFlattenIndex()
 end
 
 function WmzMapGridBase:T()
-	self:getCell(self:x(), self:y() - 1)
+	return self:getCell(self:x(), self:y() - 1)
 end
 
 function WmzMapGridBase:R()
-	self:getCell(self:x() + 1, self:y())
+	return self:getCell(self:x() + 1, self:y())
 end
 
 function WmzMapGridBase:B()
-	self:getCell(self:x(), self:y() + 1)
+	return self:getCell(self:x(), self:y() + 1)
 end
 
 function WmzMapGridBase:L()
-	self:getCell(self:x() - 1, self:y())
+	return self:getCell(self:x() - 1, self:y())
 end
 
 function WmzMapGridBase:isConnedT()

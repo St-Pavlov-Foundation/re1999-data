@@ -183,9 +183,11 @@ end
 function DungeonChapterListModel._sortChapterList(a, b)
 	local countA, maxCountA = DungeonChapterListModel._getCount(a)
 	local countB, maxCountB = DungeonChapterListModel._getCount(b)
+	local freeA = math.max(0, countA)
+	local freeB = math.max(0, countB)
 
-	if countA ~= countB then
-		return countB < countA
+	if freeA ~= freeB then
+		return freeB < freeA
 	end
 
 	local valueA = DungeonModel.instance:getChapterOpenTimeValid(a)
@@ -198,6 +200,10 @@ function DungeonChapterListModel._sortChapterList(a, b)
 		if aAdditionIdx ~= bAdditionIdx then
 			return bAdditionIdx < aAdditionIdx
 		end
+	end
+
+	if countA ~= countB then
+		return countB < countA
 	end
 
 	if maxCountA ~= maxCountB then

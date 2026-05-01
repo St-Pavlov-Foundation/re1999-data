@@ -85,6 +85,7 @@ function Anniversary3ActBpView:_addSelfEvents()
 	self:addEventCb(Anniversary3ActBpController.instance, Anniversary3ActBpEvent.OnUpdateScore, self._onUpdateScore, self)
 	self:addEventCb(Anniversary3ActBpController.instance, Anniversary3ActBpEvent.OnGetBonus, self._onGetBonus, self)
 	self:addEventCb(Anniversary3ActBpController.instance, Anniversary3ActBpEvent.OnBuySuccess, self._onBuySuccess, self)
+	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self._onCloseViewFinish, self)
 end
 
 function Anniversary3ActBpView:_removeSelfEvents()
@@ -94,6 +95,7 @@ function Anniversary3ActBpView:_removeSelfEvents()
 	self:removeEventCb(Anniversary3ActBpController.instance, Anniversary3ActBpEvent.OnUpdateScore, self._onUpdateScore, self)
 	self:removeEventCb(Anniversary3ActBpController.instance, Anniversary3ActBpEvent.OnGetBonus, self._onGetBonus, self)
 	self:removeEventCb(Anniversary3ActBpController.instance, Anniversary3ActBpEvent.OnBuySuccess, self._onBuySuccess, self)
+	self:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self._onCloseViewFinish, self)
 end
 
 function Anniversary3ActBpView:_onTaskUpdate()
@@ -131,6 +133,26 @@ function Anniversary3ActBpView:onOpen()
 	self:_refresh(true)
 	self:_refreshTime()
 	TaskDispatcher.runRepeat(self._refreshTime, self, 1)
+end
+
+function Anniversary3ActBpView:onUpdateParam()
+	Anniversary3ActBpController.instance:again‌RequestActivity()
+end
+
+function Anniversary3ActBpView:_onCloseViewFinish()
+	if self:_checkIsTopView() then
+		Anniversary3ActBpController.instance:again‌RequestActivity()
+	end
+end
+
+function Anniversary3ActBpView:_checkIsTopView()
+	local openViewList = ViewMgr.instance:getOpenViewNameList()
+
+	if openViewList and #openViewList > 0 then
+		local viewName = openViewList[#openViewList]
+
+		return viewName == self.viewName
+	end
 end
 
 function Anniversary3ActBpView:_refreshTime()

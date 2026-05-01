@@ -18,25 +18,29 @@ function FightMeiLeiErExRoundDataMgr:onStageChanged(stage)
 end
 
 function FightMeiLeiErExRoundDataMgr:refreshData()
+	self.value = 0
+
 	for k, entityData in pairs(FightDataHelper.entityMgr.entityDataDic) do
-		local buffDic = entityData.buffDic
+		if not entityData:isStatusDead() then
+			local buffDic = entityData.buffDic
 
-		for _, buffData in pairs(buffDic) do
-			local actInfo = buffData.actInfo
+			for _, buffData in pairs(buffDic) do
+				local actInfo = buffData.actInfo
 
-			for i, v in ipairs(actInfo) do
-				if v.actId == 1139 then
-					local featuresSplit = entityData:getFeaturesSplitInfoByBuffId(buffData.buffId)
+				for i, v in ipairs(actInfo) do
+					if v.actId == 1139 then
+						local featuresSplit = entityData:getFeaturesSplitInfoByBuffId(buffData.buffId)
 
-					if featuresSplit then
-						for _, oneFeature in ipairs(featuresSplit) do
-							if oneFeature[1] == 1139 then
-								self.trigger = oneFeature[2]
-								self.limit = oneFeature[3]
-								self.value = v.param[1]
-								self.fromId = buffData.entityId
+						if featuresSplit then
+							for _, oneFeature in ipairs(featuresSplit) do
+								if oneFeature[1] == 1139 then
+									self.trigger = oneFeature[2]
+									self.limit = oneFeature[3]
+									self.value = v.param[1]
+									self.fromId = buffData.entityId
 
-								return
+									return
+								end
 							end
 						end
 					end

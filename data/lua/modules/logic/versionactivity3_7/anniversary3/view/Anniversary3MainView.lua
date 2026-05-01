@@ -289,6 +289,10 @@ function Anniversary3MainView:onOpen()
 	self:_initReddot()
 end
 
+function Anniversary3MainView:onOpenFinish()
+	Anniversary3ActBpController.instance:again‌RequestActivity()
+end
+
 function Anniversary3MainView:_initReddot()
 	RedDotController.instance:addRedDot(self._goactbpreddot, RedDotEnum.DotNode.V3a7Anniversary3ActBp)
 	RedDotController.instance:addRedDot(self._gogamereddot, RedDotEnum.DotNode.V3a7Anniversary3GuessGame)
@@ -366,7 +370,7 @@ function Anniversary3MainView:_refreshTime()
 	local isGameUnlock = ActivityModel.instance:isActOnLine(VersionActivity3_7Enum.ActivityId.Anniversary3GuessGame)
 
 	if not isGameUnlock then
-		local second = ActivityModel.instance:getActStartTime(VersionActivity3_7Enum.ActivityId.Anniversary3ActBp) / 1000 - ServerTime.now()
+		local second = ActivityModel.instance:getActStartTime(VersionActivity3_7Enum.ActivityId.Anniversary3GuessGame) / 1000 - ServerTime.now()
 
 		self._txtgametips.text = self:_getLockStr(second)
 	end

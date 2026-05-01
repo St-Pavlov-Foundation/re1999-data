@@ -78,4 +78,14 @@ function WmzMapCell:bSelected()
 	return tileObj:bSelected()
 end
 
+function WmzMapCell:groupId()
+	local tileObj = self:getTile()
+
+	if tileObj then
+		return tileObj:groupId()
+	end
+
+	return self._cellInfo.groupId or 0
+end
+
 return WmzMapCell

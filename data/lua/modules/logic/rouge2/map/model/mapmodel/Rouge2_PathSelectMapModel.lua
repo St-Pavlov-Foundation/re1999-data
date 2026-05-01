@@ -97,6 +97,10 @@ function Rouge2_PathSelectMapModel:initNextLayerList()
 
 		table.insert(self.allLayerList, layerId)
 	end
+
+	if #self.nextLayerList <= 0 then
+		logError(string.format("没有可以解锁的下层layer, middleLayerId = %s", self.middleLayerId))
+	end
 end
 
 function Rouge2_PathSelectMapModel:updateSelectLayerId(layerId)

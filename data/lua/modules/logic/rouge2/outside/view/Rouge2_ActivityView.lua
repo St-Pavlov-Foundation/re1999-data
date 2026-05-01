@@ -113,14 +113,15 @@ function Rouge2_ActivityView:onOpen()
 	Rouge2_Model.instance:setCurActId(self.actId)
 	self:_refreshTime()
 	TaskDispatcher.runRepeat(self._refreshTime, self, TimeUtil.OneSecond)
-	Rouge2OutsideRpc.instance:sendGetRouge2OutsideInfoRequest(function(_, resultCode)
+
+	self._outsideRpcId = Rouge2OutsideRpc.instance:sendGetRouge2OutsideInfoRequest(function(_, resultCode)
 		if resultCode ~= 0 then
 			logError("openRouge2ActivityView sendGetRouge2OutsideInfoRequest resultCode=" .. tostring(resultCode))
 
 			return
 		end
 
-		Rouge2_Rpc.instance:sendGetRouge2InfoRequest(function(_, resultCode2)
+		self._infoRpcId = Rouge2_Rpc.instance:sendGetRouge2InfoRequest(function(_, resultCode2)
 			if resultCode2 ~= 0 then
 				logError("openRouge2ActivityView sendGetRouge2InfoRequest resultCode=" .. tostring(resultCode2))
 
@@ -130,6 +131,7 @@ function Rouge2_ActivityView:onOpen()
 			self:refreshUI()
 		end)
 	end)
+
 	Rouge2_Controller.instance:dispatchEvent(Rouge2_Event.OpenRougeView, Rouge2_Enum.GuideView.ActivityView)
 	Rouge2_OutsideController.instance:tryOpenActivityUpdateTips()
 end
@@ -207,6 +209,18 @@ end
 
 function Rouge2_ActivityView:onClose()
 	TaskDispatcher.cancelTask(self._refreshTime, self)
+
+	if self._outsideRpcId then
+		Rouge2OutsideRpc.instance:removeCallbackById(self._outsideRpcId)
+
+		self._outsideRpcId = nil
+	end
+
+	if self._infoRpcId then
+		Rouge2_Rpc.instance:removeCallbackById(self._infoRpcId)
+
+		self._infoRpcId = nil
+	end
 end
 
 function Rouge2_ActivityView:onDestroyView()

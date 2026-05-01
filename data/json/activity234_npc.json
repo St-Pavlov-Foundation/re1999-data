@@ -3,19 +3,19 @@
     "id": 1,
     "name": "艾米莉亚",
     "type": "10#1|10#2|80#3",
-    "icon": "guessgame_rolechess_1"
+    "icon": "guessgame_rolechess_8"
   },
   {
     "id": 2,
     "name": "卢卡斯",
     "type": "20#1|80#2",
-    "icon": "guessgame_rolechess_2"
+    "icon": "guessgame_rolechess_9"
   },
   {
     "id": 3,
     "name": "拉文德",
     "type": "70#1|30#3",
-    "icon": "guessgame_rolechess_3"
+    "icon": "guessgame_rolechess_10"
   },
   {
     "id": 4,

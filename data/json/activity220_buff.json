@@ -246,7 +246,7 @@
     "lifeParam": 0,
     "attriId": 3760,
     "type": 0,
-    "param": 100.0,
+    "param": 50.0,
     "icon": ""
   },
   {
@@ -647,6 +647,16 @@
     "attriId": 4,
     "type": 0,
     "param": 20.0,
+    "icon": ""
+  },
+  {
+    "buffId": 137705,
+    "isShow": 0,
+    "lifeRule": 0,
+    "lifeParam": 0,
+    "attriId": 4,
+    "type": 1,
+    "param": -50.0,
     "icon": ""
   }
 ]

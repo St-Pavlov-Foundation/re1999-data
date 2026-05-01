@@ -765,8 +765,8 @@
   {
     "gameId": 1371004,
     "day": 20,
-    "eventType": 0,
-    "eventParam": "0#200|1#200|2#515",
+    "eventType": 1,
+    "eventParam": "16#1|172#1|182#1",
     "difficult": 3.3012
   },
   {

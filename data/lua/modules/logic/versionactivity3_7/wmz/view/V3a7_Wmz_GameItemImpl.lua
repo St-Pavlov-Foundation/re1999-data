@@ -44,7 +44,6 @@ function V3a7_Wmz_GameItemImpl:_editableInitView()
 	self:setActive_goLocked(false)
 	self:setActive_goLine(false)
 	gohelper.setActive(self._godragArea, false)
-	self._border:setActive(false)
 end
 
 function V3a7_Wmz_GameItemImpl:onDestroyView()
@@ -169,6 +168,22 @@ function V3a7_Wmz_GameItemImpl:isIndex(...)
 	return self._mo:isIndex(...)
 end
 
+function V3a7_Wmz_GameItemImpl:T(...)
+	return self._mo:T(...)
+end
+
+function V3a7_Wmz_GameItemImpl:R(...)
+	return self._mo:R(...)
+end
+
+function V3a7_Wmz_GameItemImpl:B(...)
+	return self._mo:B(...)
+end
+
+function V3a7_Wmz_GameItemImpl:L(...)
+	return self._mo:L(...)
+end
+
 function V3a7_Wmz_GameItemImpl:setSelected(...)
 	self._mo:setSelected(...)
 end
@@ -201,7 +216,46 @@ function V3a7_Wmz_GameItemImpl:setData(mo)
 		self:setActive_goPiece(false)
 	end
 
+	self:_refreshBorder()
 	self:setActive_Image_BGGo(not self:isVoid())
+end
+
+function V3a7_Wmz_GameItemImpl:_refreshBorder()
+	local bDisactive = self:isVoid() or self:isStart()
+
+	if bDisactive then
+		self._border:setActive(false)
+
+		return
+	end
+
+	self._border:setActive(true)
+
+	local gp = self:groupId()
+
+	if gp == 0 then
+		self._border:setActiveAllEdges(true)
+
+		return
+	end
+
+	local TCell = self:T()
+	local RCell = self:R()
+	local BCell = self:B()
+	local LCell = self:L()
+
+	local function _handler(eDir, cellObj)
+		if not cellObj then
+			self._border:setActive_Edge(eDir, true)
+		else
+			self._border:setActive_Edge(eDir, cellObj:groupId() ~= gp)
+		end
+	end
+
+	_handler(WmzEnum.Dir.Up, TCell)
+	_handler(WmzEnum.Dir.Right, RCell)
+	_handler(WmzEnum.Dir.Down, BCell)
+	_handler(WmzEnum.Dir.Left, LCell)
 end
 
 function V3a7_Wmz_GameItemImpl:resetPos()
