@@ -17,10 +17,12 @@ end
 function FightWorkTimelineItem:onStart()
 	local entityMo = self.entity and self.entity:getMO()
 	local skin = entityMo and entityMo.skin
+	local flow = self:com_registFlowSequence()
 	local work = FightPreloadOneTimelineRefWork.New(self.timelineName, skin, self)
 
-	work:registerDoneListener(self.onLoadTimelineDone, self)
-	work:onStart()
+	flow:addWork(work)
+	flow:registFinishCallback(self.onLoadTimelineDone, self)
+	flow:onStart()
 	self:cancelFightWorkSafeTimer()
 end
 
