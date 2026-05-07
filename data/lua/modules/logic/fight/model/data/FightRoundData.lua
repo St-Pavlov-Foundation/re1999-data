@@ -108,6 +108,10 @@ function FightRoundData:processRoundData()
 
 	self:maskDeviceDone()
 	self:calculateTimelineCount()
+
+	if FightDataHelper.fieldMgr:isRouge2() then
+		FightController.instance:dispatchEvent(FightEvent.OnUpdateSpeed)
+	end
 end
 
 function FightRoundData:calculateTimelineCount()

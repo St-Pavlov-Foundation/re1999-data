@@ -111,6 +111,7 @@ function FightMeileLeiErBtnView:onClick()
 	local work = FightGameMgr.entityMgr:getMyVertin().skill:registTimelineWork("xiaoruiannong_314601_special1", fightStepData)
 
 	parallel:addWork(work)
+	flow:registWork(FightWorkFunction, GameTimeMgr.instance.setTimeScale, GameTimeMgr.instance, GameTimeMgr.TimeScaleType.FightTLEventSpeed, 1)
 	flow:registWork(FightWorkSendMsg, FightMsgId.StartMeiLeiErExRound)
 	flow:registWork(FightWorkPlayAnimator, self.animator.gameObject, "close")
 	flow:registWork(FightWorkFunction, FightRpc.instance.sendUseClothSkillRequest, FightRpc.instance, 0, FightDataHelper.meiLeiErExRoundDataMgr.fromId, "0", FightEnum.ClothSkillType.MeiLeiErExtraRound)
@@ -131,9 +132,12 @@ function FightMeileLeiErBtnView:onViewStart()
 		fightStepData.actType = FightEnum.ActType.SKILL
 		fightStepData.stepUid = FightTLEventEntityVisible.latestStepUid or 0
 
+		local flow = self:com_registFlowSequence()
 		local work = FightGameMgr.entityMgr:getMyVertin().skill:registTimelineWork("xiaoruiannong_314601_special1", fightStepData)
 
-		work:start()
+		flow:addWork(work)
+		flow:registWork(FightWorkFunction, GameTimeMgr.instance.setTimeScale, GameTimeMgr.instance, GameTimeMgr.TimeScaleType.FightTLEventSpeed, 1)
+		flow:start()
 	end
 end
 

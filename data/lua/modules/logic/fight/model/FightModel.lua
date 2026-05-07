@@ -334,6 +334,8 @@ function FightModel:getSpeed()
 end
 
 function FightModel:getRouge2ExtraSpeed()
+	do return 0 end
+
 	if FightDataHelper.stageMgr:getCurStage() == FightStageMgr.StageType.Operate then
 		return 0
 	end
