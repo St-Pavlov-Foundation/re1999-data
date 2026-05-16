@@ -338,5 +338,6 @@ PlayerPrefsKey.TeachingPopViewInfo = "PlayerPrefsKey.TeachingPopViewInfo"
 PlayerPrefsKey.TeachingShowInfo = "PlayerPrefsKey.TeachingShowInfo"
 PlayerPrefsKey.TeachingAniPlay = "PlayerPrefsKey.TeachingAniPlay"
 PlayerPrefsKey.Anniversary3ReportReaded = "Anniversary3ReportReaded"
+PlayerPrefsKey.GuessGameFirstShowTime = "GuessGameFirstShowTime"
 
 return PlayerPrefsKey

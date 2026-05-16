@@ -52,12 +52,17 @@ function Anniversary3BtnItem:_checkRed()
 	end
 
 	local reportRead = PlayerPrefsHelper.getString(PlayerModel.instance:getPlayerPrefsKey(PlayerPrefsKey.Anniversary3ReportReaded), "")
-	local actId = VersionActivity3_7Enum.ActivityId.Anniversary3Report
-	local actInfoMo = ActivityModel.instance:getActivityInfo()[actId]
+	local actInfoMo = ActivityModel.instance:getActivityInfo()[VersionActivity3_7Enum.ActivityId.Anniversary3Report]
 	local isExpire = actInfoMo:isExpired()
 	local isUnlock = actInfoMo:isOnline() and actInfoMo:isOpen()
 
 	if not isExpire and isUnlock and LuaUtil.isEmptyStr(reportRead) then
+		return true
+	end
+
+	local hasMultiRewardCouldGet = GuessGameModel.instance:hasMultiRewardCouldGet(VersionActivity3_7Enum.ActivityId.Anniversary3GuessGame)
+
+	if hasMultiRewardCouldGet then
 		return true
 	end
 

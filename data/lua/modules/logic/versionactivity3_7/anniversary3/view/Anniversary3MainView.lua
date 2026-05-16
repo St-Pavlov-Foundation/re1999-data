@@ -234,6 +234,10 @@ function Anniversary3MainView:_btngameOnClick()
 		return
 	end
 
+	local nowTime = ServerTime.now()
+
+	PlayerPrefsHelper.setString(PlayerModel.instance:getPlayerPrefsKey(PlayerPrefsKey.GuessGameFirstShowTime), nowTime)
+	self:_refreshGameBtn()
 	Anniversary3Controller.instance:openGuessGameMainView()
 end
 
@@ -258,6 +262,7 @@ end
 function Anniversary3MainView:_onRefreshDot()
 	self:_refreshReportBtn()
 	self:_refreshActBpBtn()
+	self:_refreshGameBtn()
 end
 
 function Anniversary3MainView:_onCheckActState()
@@ -295,13 +300,13 @@ end
 
 function Anniversary3MainView:_initReddot()
 	RedDotController.instance:addRedDot(self._goactbpreddot, RedDotEnum.DotNode.V3a7Anniversary3ActBp)
-	RedDotController.instance:addRedDot(self._gogamereddot, RedDotEnum.DotNode.V3a7Anniversary3GuessGame)
 	RedDotController.instance:addRedDot(self._gomailreddot, RedDotEnum.DotNode.V3a7Anniversary3Mail)
 	RedDotController.instance:addRedDot(self._goskinreddot, RedDotEnum.DotNode.V3a7Anniversary3Skin)
 	RedDotController.instance:addRedDot(self._gosignreddot, RedDotEnum.DotNode.V3a7Anniversary3Sign)
 	RedDotController.instance:addRedDot(self._goinvitereddot, RedDotEnum.DotNode.V3a7Anniversary3Invite)
 
 	self._reportReddotComponent = RedDotController.instance:addNotEventRedDot(self._goreportreddot, self._isShowReportReddot, self)
+	self._guessGameReddotComponent = RedDotController.instance:addNotEventRedDot(self._gogamereddot, self._isShowGameReddot, self)
 end
 
 function Anniversary3MainView:_isShowReportReddot()
@@ -318,6 +323,26 @@ function Anniversary3MainView:_isShowReportReddot()
 	local reportStr = PlayerPrefsHelper.getString(PlayerModel.instance:getPlayerPrefsKey(PlayerPrefsKey.Anniversary3ReportReaded), "")
 
 	if isDotShow or LuaUtil.isEmptyStr(reportStr) then
+		return true
+	end
+
+	return false
+end
+
+function Anniversary3MainView:_isShowGameReddot()
+	local actId = VersionActivity3_7Enum.ActivityId.Anniversary3GuessGame
+	local actInfoMo = ActivityModel.instance:getActivityInfo()[actId]
+	local isExpire = actInfoMo:isExpired()
+	local isUnlock = actInfoMo:isOnline() and actInfoMo:isOpen()
+
+	if isExpire or not isUnlock then
+		return false
+	end
+
+	local isDotShow = RedDotModel.instance:isDotShow(RedDotEnum.DotNode.V3a7Anniversary3GuessGame, 0)
+	local hasMultiRewardCouldGet = GuessGameModel.instance:hasMultiRewardCouldGet(actId)
+
+	if isDotShow or hasMultiRewardCouldGet then
 		return true
 	end
 
@@ -560,6 +585,10 @@ function Anniversary3MainView:_refreshGameBtn()
 
 		self._imageprogresscircle.fillAmount = percent
 	end
+
+	local isReddotShow = self:_isShowGameReddot()
+
+	gohelper.setActive(self._gogamereddot, isReddotShow)
 end
 
 function Anniversary3MainView:_getLockStr(second)

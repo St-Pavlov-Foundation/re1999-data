@@ -261,6 +261,39 @@ function GuessGameModel:getGiftUnlockCount(giftId)
 	return self._unlockGifts[giftId] or 0
 end
 
+function GuessGameModel:hasMultiRewardCouldGet(actId)
+	actId = actId or VersionActivity3_7Enum.ActivityId.Anniversary3GuessGame
+
+	local isFirstShow = self:isFirstShow(actId)
+
+	if not isFirstShow then
+		return false
+	end
+
+	local firstShowTime = PlayerPrefsHelper.getString(PlayerModel.instance:getPlayerPrefsKey(PlayerPrefsKey.GuessGameFirstShowTime), "")
+
+	if not LuaUtil.isEmptyStr(firstShowTime) then
+		local nowTime = ServerTime.now()
+		local isSameDay = TimeUtil.isSameDay(tonumber(firstShowTime) - TimeDispatcher.DailyRefreshSecond, nowTime - TimeDispatcher.DailyRefreshSecond)
+
+		if isSameDay then
+			return false
+		end
+	end
+
+	local bonusCos = Activity234Config.instance:getBonusCos(actId)
+
+	for _, bonusCo in pairs(bonusCos) do
+		local rewardGet = self:isRewardGet(bonusCo.rewardId, actId)
+
+		if not rewardGet then
+			return true
+		end
+	end
+
+	return false
+end
+
 GuessGameModel.instance = GuessGameModel.New()
 
 return GuessGameModel

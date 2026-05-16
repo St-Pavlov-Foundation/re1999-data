@@ -121,6 +121,7 @@ function MailView:_btnjumpOnClick()
 		end
 
 		MailRpc.instance:sendMarkMailJumpRequest(self._selectMO.id)
+		self:_onClickUrlTrack(self._selectMO, jump)
 	end
 end
 
@@ -166,6 +167,10 @@ function MailView:_analysisJumpUrl(url)
 			local extendBase64 = Base64Util.encode(extend)
 
 			finalUrl = finalUrl .. "userid=" .. userId .. "&biz_name=" .. biz_name .. "&extend=" .. extendBase64
+
+			return finalUrl
+		elseif urlType == "H5AutoLogin" then
+			local finalUrl = WebViewController:getRecordUserUrl(arr[2])
 
 			return finalUrl
 		end
@@ -237,6 +242,29 @@ function MailView:_onHyperLinkClick(url)
 			GameUtil.openURL(url)
 		end
 	end
+
+	self:_onClickUrlTrack(nil, url)
+end
+
+function MailView:_onClickUrlTrack(mo, url)
+	local mailMO = mo or self._selectMO
+
+	if not mailMO or string.nilorempty(url) then
+		return
+	end
+
+	local mailInfoList = {
+		{
+			id = mailMO.id,
+			mail_id = mailMO.mailId,
+			title = mailMO.title,
+			url = url
+		}
+	}
+
+	StatController.instance:track(StatEnum.EventName.MailUrClick, {
+		[StatEnum.EventProperties.MailInfo] = mailInfoList
+	})
 end
 
 function MailView:_refreshCount()
