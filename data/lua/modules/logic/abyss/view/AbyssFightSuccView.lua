@@ -43,13 +43,11 @@ function AbyssFightSuccView:removeEvents()
 end
 
 function AbyssFightSuccView:_btnfullcloseOnClick()
-	self:closeThis()
-	FightController.onResultViewClose()
+	self:clickClose()
 end
 
 function AbyssFightSuccView:_btncloseOnClick()
-	self:closeThis()
-	FightController.onResultViewClose()
+	self:clickClose()
 end
 
 function AbyssFightSuccView:_btnDataOnClick()
@@ -60,6 +58,8 @@ function AbyssFightSuccView:_editableInitView()
 	self.heroItemList = self:getUserDataTb_()
 	self.orderTextList = self:getUserDataTb_()
 	self.heroGroupParent = gohelper.findChild(self.viewGO, "#go_herogroupcontain/hero")
+
+	NavigateMgr.instance:addEscape(self.viewName, self.clickClose, self)
 end
 
 function AbyssFightSuccView:onUpdateParam()
@@ -70,6 +70,11 @@ function AbyssFightSuccView:onOpen()
 	AudioMgr.instance:trigger(AudioEnum3_6.Abyss.play_ui_stage_finish)
 	self:checkParam()
 	self:refreshUI()
+end
+
+function AbyssFightSuccView:clickClose()
+	self:closeThis()
+	FightController.onResultViewClose()
 end
 
 function AbyssFightSuccView:checkParam()

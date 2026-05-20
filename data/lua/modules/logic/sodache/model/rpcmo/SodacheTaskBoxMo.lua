@@ -28,6 +28,9 @@ function SodacheTaskBoxMo:updateTasks(tasks)
 		end
 	end
 
+	table.sort(self.tasks, function(a, b)
+		return a.id < b.id
+	end)
 	SodacheController.instance:dispatchEvent(SodacheEvent.OnTaskChange)
 end
 
@@ -43,6 +46,48 @@ function SodacheTaskBoxMo:abandonTasks(ids)
 	end
 
 	SodacheController.instance:dispatchEvent(SodacheEvent.OnTaskChange)
+end
+
+function SodacheTaskBoxMo:getInsideTasks()
+	local tasks = {}
+	local mainTask, subTask
+
+	for _, taskMo in ipairs(self.tasks) do
+		if taskMo:isShowInside() then
+			if taskMo.config.type == SodacheEnum.TaskType.Main then
+				mainTask = taskMo
+			else
+				subTask = taskMo
+			end
+		end
+	end
+
+	table.insert(tasks, mainTask)
+	table.insert(tasks, subTask)
+
+	return tasks
+end
+
+function SodacheTaskBoxMo:hasRewardToGet()
+	for _, taskMo in ipairs(self.tasks) do
+		if taskMo.state == SodacheEnum.TaskState.Finished then
+			return true
+		end
+	end
+
+	return false
+end
+
+function SodacheTaskBoxMo:getShowTasks()
+	local list = {}
+
+	for _, taskMo in ipairs(self.tasks) do
+		if taskMo.state ~= SodacheEnum.TaskState.Received or taskMo.config.remove ~= 1 then
+			table.insert(list, taskMo)
+		end
+	end
+
+	return list
 end
 
 return SodacheTaskBoxMo

@@ -8,6 +8,9 @@ local make = GameUtil.getUniqueTb()
 WmzEvent.onReceiveGetAct220InfoReply = make()
 WmzEvent.onReceiveAct220FinishEpisodeReply = make()
 WmzEvent.onReceiveAct220EpisodePush = make()
-WmzEvent.GuideStart = make()
+WmzEvent.GuideStart1 = make()
+WmzEvent.GuideStart2 = make()
+WmzEvent.onGameResultClickQuit = make()
+WmzEvent.onGameResultClickRestart = make()
 
 return WmzEvent

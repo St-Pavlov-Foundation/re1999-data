@@ -4,7 +4,7 @@ module("modules.logic.sodache.controller.work.step.SodacheStepMoveWork", package
 
 local SodacheStepMoveWork = class("SodacheStepMoveWork", SodacheStepBaseWork)
 
-function SodacheStepMoveWork:onStart(context)
+function SodacheStepMoveWork:onWorkStart(context)
 	local uid = self._stepMo.paramLong[1]
 	local newPos = self._stepMo.paramInt[1]
 	local subPosId = self._stepMo.paramInt[2]
@@ -48,10 +48,8 @@ function SodacheStepMoveWork:onStart(context)
 end
 
 function SodacheStepMoveWork:_onMoveEnd()
-	local insideMo = SodacheModel.instance:getInsideMo()
-
-	insideMo.unitDirty = true
-
+	SodacheMapUtil.setUnitDataDirty()
+	SodacheController.instance:dispatchEvent(SodacheEvent.OnUnitMoveStepEnd)
 	self:onDone(true)
 end
 

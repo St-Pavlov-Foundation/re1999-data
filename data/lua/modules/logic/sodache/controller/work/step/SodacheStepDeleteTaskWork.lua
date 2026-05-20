@@ -4,7 +4,7 @@ module("modules.logic.sodache.controller.work.step.SodacheStepDeleteTaskWork", p
 
 local SodacheStepDeleteTaskWork = class("SodacheStepDeleteTaskWork", SodacheStepBaseWork)
 
-function SodacheStepDeleteTaskWork:onStart(context)
+function SodacheStepDeleteTaskWork:onWorkStart(context)
 	self:onDone(true)
 end
 

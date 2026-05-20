@@ -38,7 +38,6 @@ function WmzViewBaseContainer:setSprite(img, spriteName, bSetNativeSize)
 end
 
 function WmzViewBaseContainer:onContainerDestroy()
-	UIBlockMgrExtend.setNeedCircleMv(true)
 	WmzViewBaseContainer.super.onContainerDestroy(self)
 end
 
@@ -128,24 +127,26 @@ function WmzViewBaseContainer:setIsActFirstEnter(isFirst)
 	self:saveInt(key, isFirst and 1 or 0)
 end
 
-function WmzViewBaseContainer:trackReset()
-	return
+function WmzViewBaseContainer:trackReset(curEnergy)
+	self:trackMO():onGameReset()
+	WmzBattleModel.instance:track_act_WMZ_operation(WmzEnum.OperationType.Reset, curEnergy)
 end
 
-function WmzViewBaseContainer:trackFailReset()
-	return
+function WmzViewBaseContainer:trackFailReset(curEnergy)
+	self:trackMO():onGameReset()
+	WmzBattleModel.instance:track_act_WMZ_operation(WmzEnum.OperationType.FailReset, curEnergy)
 end
 
-function WmzViewBaseContainer:trackExit()
-	return
+function WmzViewBaseContainer:trackExit(curEnergy)
+	WmzBattleModel.instance:track_act_WMZ_operation(WmzEnum.OperationType.Exit, curEnergy)
 end
 
-function WmzViewBaseContainer:trackFailExit()
-	return
+function WmzViewBaseContainer:trackFailExit(curEnergy)
+	WmzBattleModel.instance:track_act_WMZ_operation(WmzEnum.OperationType.FailExit, curEnergy)
 end
 
-function WmzViewBaseContainer:trackPass(IsFirst)
-	return
+function WmzViewBaseContainer:trackPass(curEnergy)
+	WmzBattleModel.instance:track_act_WMZ_operation(WmzEnum.OperationType.Pass, curEnergy)
 end
 
 return WmzViewBaseContainer

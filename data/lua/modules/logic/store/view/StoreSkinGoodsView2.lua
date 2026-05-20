@@ -79,6 +79,7 @@ function StoreSkinGoodsView2:onInitView()
 	self._gospecialDescGo = gohelper.findChild(self.viewGO, "view/propinfo/content/desc/#go_special")
 	self._goimg_orange = gohelper.findChild(self.viewGO, "view/common/#btn_buy/bg/#go_img_orange")
 	self._goimg_red = gohelper.findChild(self.viewGO, "view/common/#btn_buy/bg/#go_img_red")
+	self.goUniqueMask = gohelper.findChild(self.viewGO, "view/bgroot/mask")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -354,6 +355,7 @@ function StoreSkinGoodsView2:_refreshSkinIcon(skinStoreCfg)
 	gohelper.setActive(self._goUniqueSkinsSpineRoot, isUniqueSkin)
 	gohelper.setActive(self._goUniqueSkinsSpineRoot2, isUniqueSkin)
 	gohelper.setActive(self._goUniqueSkinsTitle, isUniqueSkin)
+	gohelper.setActive(self.goUniqueMask, isUniqueSkin)
 
 	local signTexturePath = defaultSignaturePng
 

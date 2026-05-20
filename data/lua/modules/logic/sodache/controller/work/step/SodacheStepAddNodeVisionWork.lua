@@ -4,7 +4,7 @@ module("modules.logic.sodache.controller.work.step.SodacheStepAddNodeVisionWork"
 
 local SodacheStepAddNodeVisionWork = class("SodacheStepAddNodeVisionWork", SodacheStepBaseWork)
 
-function SodacheStepAddNodeVisionWork:onStart(context)
+function SodacheStepAddNodeVisionWork:onWorkStart(context)
 	local insideMo = SodacheModel.instance:getInsideMo()
 
 	insideMo:addNodeVision(self._stepMo.paramInt)

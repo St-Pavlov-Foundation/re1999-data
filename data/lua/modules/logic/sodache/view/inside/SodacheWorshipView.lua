@@ -16,6 +16,7 @@ function SodacheWorshipView:onInitView()
 	self._godesc = gohelper.findChild(self.viewGO, "Bottom/selected/scroll_Desc/Viewport/Content/#txt_Desc")
 	self._godesc2 = gohelper.findChild(self.viewGO, "Bottom/effected/scroll_Desc/Viewport/Content/#txt_Desc")
 	self._gocoin = gohelper.findChild(self.viewGO, "#go_topright/currencyview")
+	self._btnattr = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_ViewAll")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -24,16 +25,22 @@ end
 
 function SodacheWorshipView:addEvents()
 	self._btnCheck:AddClickListener(self.checkHandle, self)
+	self._btnattr:AddClickListener(self._onClickAttr, self)
 	SodacheController.instance:registerCallback(SodacheEvent.OnScenePropUpdate, self._onPropUpdate, self)
 end
 
 function SodacheWorshipView:removeEvents()
 	self._btnCheck:RemoveClickListener()
+	self._btnattr:RemoveClickListener()
 	SodacheController.instance:unregisterCallback(SodacheEvent.OnScenePropUpdate, self._onPropUpdate, self)
 end
 
 function SodacheWorshipView:_editableInitView()
 	gohelper.setActive(self._goevent, false)
+end
+
+function SodacheWorshipView:_onClickAttr()
+	ViewMgr.instance:openView(ViewName.SodacheRelicOverView)
 end
 
 function SodacheWorshipView:onOpen()
@@ -50,6 +57,33 @@ function SodacheWorshipView:onOpen()
 		2,
 		3
 	}, nil, self._gocard)
+
+	local selectCards = GameUtil.playerPrefsGetStringByUserId(PlayerPrefsKey.SodacheWorshipSelectCard, "")
+
+	if not string.nilorempty(selectCards) then
+		local allShowItems = isDebugBuild and SodacheMapUtil.getWorshipItems()
+
+		for i, v in ipairs(string.splitToNumber(selectCards, "#")) do
+			local isHave = false
+
+			if isDebugBuild then
+				for _, cardMo in ipairs(allShowItems) do
+					if cardMo.serverMo.configId == v then
+						isHave = true
+
+						break
+					end
+				end
+			else
+				isHave = true
+			end
+
+			if isHave then
+				table.insert(self._selectCards, v)
+			end
+		end
+	end
+
 	self:_refreshCardShow()
 end
 
@@ -78,7 +112,7 @@ function SodacheWorshipView:initCost()
 		if self._isEnoughCoin then
 			self._txtCost.text = -costNum
 		else
-			self._txtCost.text = "<color=red>" .. -costNum
+			self._txtCost.text = "<color=#C00017>" .. -costNum
 		end
 	else
 		self._txtCost.text = "0"
@@ -101,6 +135,8 @@ function SodacheWorshipView:_createCard(obj, data, index)
 	tb.click = gohelper.findChildButtonWithAudio(obj, "#btn_click")
 	self._cardAnim[index] = gohelper.findComponentAnim(tb.cardGo)
 
+	tb.cardItem:showInfo()
+	tb.cardItem:setShowStar(true)
 	self:addClickCb(tb.click, self._onCardSelect, self, index)
 
 	self._cardItems[data] = tb
@@ -157,13 +193,7 @@ function SodacheWorshipView:checkHandle()
 end
 
 function SodacheWorshipView:_realTriggerEvent()
-	local selectArr = {}
-
-	if self.selectMo then
-		for k, v in pairs(self.selectMo.selectCards) do
-			table.insert(selectArr, tostring(k))
-		end
-	end
+	local selectArr = self._selectCards
 
 	if selectArr[1] then
 		SodacheInsideRpc.instance:sendSodacheInsideSceneOperation(SodacheEnum.OperType.Interaction, tostring(self._unitMo.uid) .. "#" .. table.concat(selectArr, ","))
@@ -193,6 +223,8 @@ function SodacheWorshipView:_refreshCardShow(isServer)
 	end
 
 	if isServer and isChecked then
+		AudioMgr.instance:trigger(AudioEnum3_7.Sodache.check_success)
+
 		for i = 1, 3 do
 			local cardId = self._selectCards[i] or 0
 
@@ -233,7 +265,7 @@ function SodacheWorshipView:_createDesc(obj, data, index)
 
 	local txt = gohelper.findChildTextMesh(obj, "")
 
-	txt.text = string.format("<#F0E8BB>%s：</color>%s", mo.itemCo.name, mo.relicCo.effect2Desc)
+	txt.text = string.format("<#F0E8BB>%s：</color>%s", mo.itemCo.name, SodacheUtil.changeDescColor(mo.relicCo.effect2Desc))
 end
 
 function SodacheWorshipView:isUnitChecked()
@@ -252,6 +284,7 @@ function SodacheWorshipView:onSelectCardEnd(selectCards)
 		end
 	end
 
+	GameUtil.playerPrefsSetStringByUserId(PlayerPrefsKey.SodacheWorshipSelectCard, table.concat(self._selectCards, "#"))
 	self:_refreshCardShow()
 end
 

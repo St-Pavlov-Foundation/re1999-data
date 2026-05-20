@@ -65,4 +65,22 @@ function WmzMapTile:bind(x, y)
 	curCellObj:setTileId(self:tileId())
 end
 
+function WmzMapTile:resetToInit()
+	self.index:Set(self._cellInfo.x, self._cellInfo.y)
+
+	self._tileId = -1
+	self._bWelded = false
+	self._bSelected = false
+end
+
+function WmzMapTile:finalSprite()
+	local cellObj = self:getCell(self.index:Get())
+
+	if cellObj then
+		return cellObj:finalSprite()
+	end
+
+	return self._cellInfo._fSprite or self:sprite()
+end
+
 return WmzMapTile

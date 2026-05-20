@@ -24,7 +24,7 @@ function WmzController:_cbOnPostHookRestartGame(refFlow)
 end
 
 function WmzController:onTrackPassImpl(bFirst)
-	local bWin = true
+	self._battle:track_act_WMZ_operation(WmzEnum.OperationType.Pass)
 end
 
 WmzController.instance = WmzController.New()

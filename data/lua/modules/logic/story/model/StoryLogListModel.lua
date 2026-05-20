@@ -59,7 +59,7 @@ function StoryLogListModel:getInfoList(scrollGO)
 				mixType = 0
 			end
 		elseif type(v) == "table" then
-			lineWidth = 55 * #StoryModel.instance:getStoryBranchOpts(v.stepId) + 25
+			lineWidth = 55 * #StoryModel.instance:getShowStoryBranchOpts(v.stepId) + 25
 			mixType = 0
 		end
 

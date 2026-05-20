@@ -227,5 +227,13 @@ CharacterEnum.DeviceViewParam = {
 		OpenAniName = "herogroupeditview_open"
 	}
 }
+CharacterEnum.SkinRare = {
+	Common = 1,
+	Garment = 3,
+	Good = 2,
+	Unique = 5,
+	Advanced = 4,
+	None = 0
+}
 
 return CharacterEnum

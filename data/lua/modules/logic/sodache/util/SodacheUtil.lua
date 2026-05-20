@@ -14,6 +14,16 @@ function SodacheUtil.isInside()
 	return outSideMo.inside
 end
 
+function SodacheUtil.isRookie()
+	local outSideMo = SodacheModel.instance:getOutsideMo()
+
+	if not outSideMo then
+		return false
+	end
+
+	return outSideMo.prop.rookie
+end
+
 function SodacheUtil.getAttr(attrId)
 	local outSideMo = SodacheModel.instance:getOutsideMo()
 
@@ -227,41 +237,51 @@ function SodacheUtil.showCardToast(data)
 end
 
 function SodacheUtil.checkOneKeyUpRelic()
-	local canUp = false
 	local outsideMo = SodacheModel.instance:getOutsideMo()
-	local relics = outsideMo.relicBox.relics
 
-	for i = #relics, 1, -1 do
-		local mo = relics[i]
+	return outsideMo.relicBox:getFirstUpMo()
+end
 
-		if mo.level ~= mo.maxLevel then
-			local nextCfg = lua_sodache_upgrade.configDict[mo.id][mo.level + 1]
+function SodacheUtil.isSodacheEpisode()
+	local episodeId = HeroGroupModel.instance.episodeId
 
-			if nextCfg then
-				local params = GameUtil.splitString2(nextCfg.cost, true, "&", ":")
-				local needCnt = params[1][2]
-				local relicCnt = SodacheUtil.getItemCount(mo.id)
+	return episodeId == SodacheEnum.EpisodeId
+end
 
-				if needCnt <= relicCnt then
-					if params[2] then
-						local coinCnt = SodacheUtil.getItemCount(SodacheEnum.CurrencyId.Coin)
+local colorDict = {
+	["3"] = "#CC38D9",
+	["6"] = "#D70F0F",
+	["2"] = "#2C62FF",
+	["5"] = "#E56C01",
+	["1"] = "#00AF13",
+	["4"] = "#E5963A"
+}
 
-						if coinCnt >= params[2][2] then
-							canUp = true
-
-							break
-						end
-					else
-						canUp = true
-
-						break
-					end
-				end
-			end
+function SodacheUtil.changeDescColor(desc)
+	desc = string.gsub(desc, "【(.-)<([^<>]-)>】", function(content, colorIndex)
+		if colorDict[colorIndex] then
+			return string.format("<color=%s>【%s】</color>", colorDict[colorIndex], content)
 		end
-	end
 
-	return canUp
+		return string.format("【%s<%s>】", content, colorIndex)
+	end)
+	desc = string.gsub(desc, "{(.-)<([^<>]-)>}", function(content, colorIndex)
+		if colorDict[colorIndex] then
+			return string.format("<color=%s>%s</color>", colorDict[colorIndex], content)
+		end
+
+		return string.format("{%s<%s>}", content, colorIndex)
+	end)
+
+	return desc
+end
+
+function SodacheUtil.setMaterialValue(material, value)
+	material:SetFloat("_LerpOffset", value)
+
+	local waveX = value == 0 and 0 or 0.05
+
+	material:SetVector("_WaveOffset", Vector4.New(waveX, 3.94, 5, 5))
 end
 
 return SodacheUtil

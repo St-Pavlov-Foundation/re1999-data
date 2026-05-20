@@ -9,6 +9,12 @@ function SodacheStepBaseWork:ctor(stepMo)
 end
 
 function SodacheStepBaseWork:onStart(context)
+	context.beginDt = ServerTime.now()
+
+	self:onWorkStart(context)
+end
+
+function SodacheStepBaseWork:onWorkStart(context)
 	self:onDone(true)
 end
 

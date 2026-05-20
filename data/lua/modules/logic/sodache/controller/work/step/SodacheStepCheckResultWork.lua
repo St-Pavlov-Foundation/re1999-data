@@ -4,7 +4,7 @@ module("modules.logic.sodache.controller.work.step.SodacheStepCheckResultWork", 
 
 local SodacheStepCheckResultWork = class("SodacheStepCheckResultWork", SodacheStepBaseWork)
 
-function SodacheStepCheckResultWork:onStart(context)
+function SodacheStepCheckResultWork:onWorkStart(context)
 	if SodacheModel.instance.____gmfastrun then
 		self:onDone(true)
 

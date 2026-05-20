@@ -4,7 +4,7 @@ module("modules.logic.sodache.controller.work.step.SodacheStepRemoveUnitsWork", 
 
 local SodacheStepRemoveUnitsWork = class("SodacheStepRemoveUnitsWork", SodacheStepBaseWork)
 
-function SodacheStepRemoveUnitsWork:onStart(context)
+function SodacheStepRemoveUnitsWork:onWorkStart(context)
 	local insideMo = SodacheModel.instance:getInsideMo()
 
 	insideMo.unitBox:removeUnits(self._stepMo.paramLong)

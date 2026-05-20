@@ -9,7 +9,7 @@ function SodacheMsgPushWork:ctor(msgName, msg)
 	self._msg = msg
 end
 
-function SodacheMsgPushWork:onStart(context)
+function SodacheMsgPushWork:onWorkStart(context)
 	self:onDone(true)
 end
 

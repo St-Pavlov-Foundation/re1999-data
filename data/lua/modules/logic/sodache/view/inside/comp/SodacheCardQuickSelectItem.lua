@@ -16,6 +16,13 @@ function SodacheCardQuickSelectItem:init(go)
 	gohelper.setActive(self._btnsub, false)
 
 	self.item = MonoHelper.addNoUpdateLuaComOnceToGo(self._goitem, SodacheCardItem)
+
+	self.item:showInfo({
+		false,
+		true,
+		false
+	})
+	self.item:setShowStar(true)
 end
 
 function SodacheCardQuickSelectItem:addEventListeners()
@@ -34,10 +41,10 @@ function SodacheCardQuickSelectItem:_onClickItem()
 	local curSelectCount = self.cellParam:getItemSelectCount(self.data.serverMo.configId)
 
 	if curSelectCount >= 1 then
-		self.cellParam:addItemCount(self.data.serverMo.configId, -1)
-		SodacheController.instance:dispatchEvent(SodacheEvent.OnClickCardQuickSelectItem, self.data, false)
-	else
-		self.cellParam:addItemCount(self.data.serverMo.configId, 1)
+		if self.cellParam:addItemCount(self.data.serverMo.configId, -1) then
+			SodacheController.instance:dispatchEvent(SodacheEvent.OnClickCardQuickSelectItem, self.data, false)
+		end
+	elseif self.cellParam:addItemCount(self.data.serverMo.configId, 1) then
 		SodacheController.instance:dispatchEvent(SodacheEvent.OnClickCardQuickSelectItem, self.data, true)
 	end
 end

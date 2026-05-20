@@ -16,6 +16,7 @@ function SodacheInsidePropMo:init(data)
 	self.bossCareerIds = data.bossCareerIds
 	self.escapeCardCountLimit = data.escapeCardCountLimit
 	self.altarSkillIds = data.altarSkillIds
+	self.hotfix = data.hotfix
 end
 
 return SodacheInsidePropMo

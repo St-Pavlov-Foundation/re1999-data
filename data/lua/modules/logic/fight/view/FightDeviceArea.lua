@@ -145,6 +145,11 @@ function FightDeviceArea:addEvents()
 	self:addEventCb(FightController.instance, FightEvent.OnDevice_PowerChange, self.onDevicePowerChange, self)
 	self:addEventCb(FightController.instance, FightEvent.OnDevice_BeforeFly, self.onDeviceBeforeFly, self)
 	self:addEventCb(FightController.instance, FightEvent.RefreshDeviceArea, self.onRefreshDeviceArea, self)
+	self:addEventCb(FightController.instance, FightEvent.OnCreateDeviceArea, self.onCreateDeviceArea, self)
+end
+
+function FightDeviceArea:onCreateDeviceArea()
+	self:refreshUI()
 end
 
 function FightDeviceArea:onRefreshDeviceArea()

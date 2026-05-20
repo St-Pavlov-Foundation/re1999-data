@@ -50,18 +50,30 @@ function V3a7_Wmz_GameItem_Tile:_editableInitView_drag()
 end
 
 function V3a7_Wmz_GameItem_Tile:_onDragBegin(...)
+	if not self:bPlayingZone() then
+		return
+	end
+
 	local p = self:parent()
 
 	p:onDragBegin(self, ...)
 end
 
 function V3a7_Wmz_GameItem_Tile:_onDrag(...)
+	if not self:bPlayingZone() then
+		return
+	end
+
 	local p = self:parent()
 
 	p:onDrag(self, ...)
 end
 
 function V3a7_Wmz_GameItem_Tile:_onDragEnd(...)
+	if not self:bPlayingZone() then
+		return
+	end
+
 	local p = self:parent()
 
 	p:onDragEnd(self, ...)
@@ -69,20 +81,21 @@ end
 
 function V3a7_Wmz_GameItem_Tile:setData(mo)
 	V3a7_Wmz_GameItem_Tile.super.setData(self, mo)
-
-	if isDebugBuild then
-		self:_debug_refresh()
-	end
+	self:_debug_refresh()
 end
 
 function V3a7_Wmz_GameItem_Tile:_onBtnClick()
-	local p = self:parent()
-
-	p:onTileItemClick(self)
+	return
 end
 
 function V3a7_Wmz_GameItem_Tile:getTileItem()
 	return self
+end
+
+function V3a7_Wmz_GameItem_Tile:getCellItem()
+	local p = self:parent()
+
+	return p:getCellItem(self:xy())
 end
 
 function V3a7_Wmz_GameItem_Tile:_debug_refresh()
@@ -93,6 +106,21 @@ function V3a7_Wmz_GameItem_Tile:_debug_refresh()
 	local ptDebugName = WmzEnum.nameOfPT(self:pathType())
 
 	self:setName(sf("%s: %s", self:indexStr(), ptDebugName))
+end
+
+function V3a7_Wmz_GameItem_Tile:_refreshBorder()
+	local isCompleted = self:isCompleted() or self:bZoneCompleted()
+
+	if isCompleted then
+		self:_setAsCellBorder()
+	else
+		self:_setAsTileBorder()
+	end
+end
+
+function V3a7_Wmz_GameItem_Tile:onCompleteZone(bCompleted)
+	V3a7_Wmz_GameItem_Tile.super.onCompleteZone(self, bCompleted)
+	self:_refreshBorder()
 end
 
 return V3a7_Wmz_GameItem_Tile

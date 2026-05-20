@@ -67,9 +67,9 @@ function SodacheCardSelectMo:setCards(source)
 
 	for i, v in ipairs(source) do
 		if not itemDict[v.configId] then
-			itemDict[v.configId] = v:toCardMo()
+			itemDict[v.configId] = SodacheCardMo.Create(v.configId, v.count)
 
-			table.insert(cards, v:toCardMo())
+			table.insert(cards, itemDict[v.configId])
 		else
 			itemDict[v.configId].serverMo.count = itemDict[v.configId].serverMo.count + v.count
 		end

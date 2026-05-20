@@ -48,6 +48,14 @@ function WmzMapDragContext:curEnergy(...)
 	return self._viewContainer:curEnergy(...)
 end
 
+function WmzMapDragContext:setClearZoneCnt(...)
+	self._viewContainer:setClearZoneCnt(...)
+end
+
+function WmzMapDragContext:zoneClearCurAndMax()
+	return self._viewContainer:zoneClearCurAndMax()
+end
+
 function WmzMapDragContext:clear()
 	self:__onDispose()
 	self:__onInit()
@@ -56,6 +64,7 @@ function WmzMapDragContext:clear()
 	self._viewObj = false
 	self._viewContainer = false
 	self._isCompleted = false
+	self._edit_Energy = 0
 	self._fromV2 = Vector2.New(-1, -1)
 	self._toV2 = Vector2.New(-1, -1)
 
@@ -69,7 +78,9 @@ function WmzMapDragContext:reset(current_V3a7_Wmz_GameView)
 
 	self._viewObj = current_V3a7_Wmz_GameView
 	self._viewContainer = self._viewObj.viewContainer
+	self._edit_Energy = self:curEnergy()
 
+	self._viewObj:selectTile(nil)
 	self:setEnabled(true)
 
 	if isDebugBuild then
@@ -97,19 +108,14 @@ function WmzMapDragContext:setCompleted()
 	self._isCompleted = true
 
 	self:setEnabled(false)
-	self._viewObj:onCompleteGame()
 end
 
 function WmzMapDragContext:_isZeroEnergy()
-	return self._viewContainer:curEnergy() <= 0
+	return self._edit_Energy <= 0
 end
 
-function WmzMapDragContext:_isValidDrag(tileItem, dragObj, userParams)
+function WmzMapDragContext:_isValidDrag()
 	if self:_isZeroEnergy() then
-		return false
-	end
-
-	if not self:curSelectedTileItem() then
 		return false
 	end
 
@@ -129,9 +135,14 @@ function WmzMapDragContext:onDragBegin(tileItem, dragObj, userParams)
 	end
 
 	if not self:_isValidDrag() then
+		if self:_isZeroEnergy() then
+			self:doFailed()
+		end
+
 		return
 	end
 
+	self._viewObj:selectTile(tileItem)
 	self:_onResetSelectTileItem(tileItem)
 end
 
@@ -141,11 +152,27 @@ function WmzMapDragContext:onDrag(tileItem, dragObj, userParams)
 	end
 
 	if not self:_isValidDrag() then
+		if self:_isZeroEnergy() then
+			self:doFailed()
+		end
+
+		return
+	end
+
+	if not self:curSelectedTileItem() then
 		return
 	end
 
 	if self:curSelectedTileItem() ~= tileItem then
-		return false
+		local lastGpId = self:curSelectedTileItem():groupId()
+
+		if not lastGpId or lastGpId == 0 then
+			return
+		end
+
+		if lastGpId == tileItem:groupId() then
+			self:_onResetSelectTileItem(tileItem)
+		end
 	end
 
 	local dragInfo = dragObj:dragInfo()
@@ -285,9 +312,13 @@ function WmzMapDragContext:_calcMovable(refId2TileItemDict, newToV2)
 end
 
 function WmzMapDragContext:_doMoving(refId2TileItemDict)
+	AudioMgr.instance:trigger(AudioEnum2_7.Act191.play_ui_yuzhou_dqq_pmgressbar_01)
+
 	local deltaV2 = self._toV2 - self._fromV2
 
 	for tileId, tileItem in pairs(refId2TileItemDict) do
+		local lastCellItem = tileItem:getCellItem()
+
 		tileItem:unbind()
 	end
 
@@ -303,28 +334,67 @@ function WmzMapDragContext:_doMoving(refId2TileItemDict)
 
 	self._viewObj:_doSelectedTiles()
 	self:_onMoveDone()
-	self:_subEnergy()
 end
 
 function WmzMapDragContext:_subEnergy()
-	self:setEnergy(self:curEnergy() - 1)
-	self._viewObj:_refreshEnergy()
+	self._edit_Energy = self._edit_Energy - 1
+
+	self._viewObj:_refreshEnergy(self._edit_Energy)
+
+	if self:_isZeroEnergy() then
+		self:doFailed()
+
+		return
+	end
+
+	WmzController.instance:dispatchEvent(WmzEvent.GuideStart2)
 end
 
 function WmzMapDragContext:_onMoveDone()
+	if isDebugBuild and not self:curSelectedTileItem() then
+		assert(false)
+	end
+
 	self._fromV2:Set(self._toV2:Get())
 
-	local bCompleted = self._viewContainer:floodfill()
+	local bAllCompleted = self._viewContainer:floodfill()
 
 	self._viewContainer:foreachWire(function(gridObj, x, y)
 		local item = self:getItemByObj(gridObj)
 
-		item:refresh()
+		if not item:isStart() then
+			item:refresh()
+		end
 	end)
+	self:_subEnergy()
 
-	if bCompleted then
+	if bAllCompleted then
 		self:setCompleted()
 	end
+
+	local bZoneCompleted = false
+
+	if self:curSelectedTileItem():bInZone() then
+		bZoneCompleted = self:_mapMO():isZoneCompleted(self:curSelectedTileItem():zoneId())
+	end
+
+	if bZoneCompleted then
+		self:setZoneCompleted()
+	end
+end
+
+function WmzMapDragContext:setZoneCompleted()
+	local zoneClearCur = self:zoneClearCurAndMax()
+
+	self:setClearZoneCnt(zoneClearCur + 1)
+	self:setEnergy(self._edit_Energy)
+	self._viewObj:onCompleteZone()
+end
+
+function WmzMapDragContext:doFailed()
+	self._enabled = false
+
+	self._viewObj:onFailed()
 end
 
 function WmzMapDragContext:_clamp(x, y)
@@ -342,6 +412,8 @@ function WmzMapDragContext:_clamp(x, y)
 end
 
 function WmzMapDragContext:onDragEnd(tileItem, dragObj, userParams)
+	self._viewObj:selectTile(nil)
+
 	if not self._enabled then
 		return
 	end
@@ -395,8 +467,25 @@ function WmzMapDragContext:_onTick()
 		local gridCoordX, gridCoordY = self._viewContainer:screenToGridCoordXY(v3)
 		local refStrBuf = {}
 
-		ti(refStrBuf, sf("(%s, %s)", gridCoordX, gridCoordY))
-		self._viewObj:setText_txtTarget(table.concat(refStrBuf, "\n"))
+		ti(refStrBuf, sf("(%s,%s)", gridCoordX, gridCoordY))
+
+		local cellItem = self:getCellItem(gridCoordX, gridCoordY)
+
+		if cellItem then
+			ti(refStrBuf, sf("%s zId:%s", cellItem:name(), cellItem:zoneId()))
+		end
+
+		local str = table.concat(refStrBuf, "\n")
+
+		self._viewObj:setText_txtTarget(str)
+	end
+
+	if isDebugBuild then
+		local leftControl = Input.GetKey(UnityEngine.KeyCode.LeftControl)
+
+		if leftControl and Input.GetKeyDown(KeyCode.W) then
+			self:setCompleted()
+		end
 	end
 end
 

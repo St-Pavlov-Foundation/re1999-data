@@ -29,6 +29,10 @@ function SodacheCardDetailUseItemPart:onOpen()
 end
 
 function SodacheCardDetailUseItemPart:_onClickBtn()
+	if SodacheMapUtil.instance:isInFlow() then
+		return
+	end
+
 	local cardMo = self.viewParam.cardMo
 
 	SodacheInsideRpc.instance:sendSodacheInsideSceneOperation(SodacheEnum.OperType.UseCard, tostring(cardMo.serverMo.configId))

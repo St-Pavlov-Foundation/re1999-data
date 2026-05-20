@@ -4,24 +4,25 @@ module("modules.configs.excel2json.lua_sodache_task", package.seeall)
 
 local lua_sodache_task = {}
 local fields = {
-	failCondition = 13,
-	abandon = 14,
-	group = 3,
+	failCondition = 14,
+	abandon = 15,
+	insideShow = 4,
+	desc1 = 7,
+	rewardShow = 16,
+	remove = 19,
+	name = 6,
+	desc = 8,
+	listenerParam = 10,
 	type = 2,
-	rewardShow = 15,
-	remove = 18,
-	name = 5,
-	desc = 7,
-	listenerParam = 9,
-	desc1 = 6,
-	needAccept = 11,
-	maxProgress = 10,
-	reward = 16,
-	prepose = 12,
-	listenerType = 8,
-	track = 17,
+	needAccept = 12,
+	group = 3,
+	maxProgress = 11,
+	reward = 17,
+	prepose = 13,
+	listenerType = 9,
+	track = 18,
 	id = 1,
-	step = 4
+	step = 5
 }
 local primaryKey = {
 	"id"

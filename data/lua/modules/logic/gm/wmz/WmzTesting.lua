@@ -193,6 +193,7 @@ local function _genJson(mapCO)
 			end
 
 			cellInfo.sprite = sprite
+			cellInfo._fSprite = sprite
 
 			local spriteAssetPath = kWmzSpriteFolder .. sprite .. ".png"
 
@@ -223,7 +224,7 @@ local function _genJson(mapCO)
 			toDict[toX][toY].x = toX
 			toDict[toX][toY].y = toY
 			dirtyDict[fromX][fromY] = true
-			dirtyDict[toX][toX] = false
+			dirtyDict[toX][toY] = false
 		end
 	end
 
@@ -231,11 +232,18 @@ local function _genJson(mapCO)
 		for _, cellInfo in pairs(v) do
 			local fromX = cellInfo.x
 			local fromY = cellInfo.y
+			local fromZoneId = cellInfo.zoneId
+			local fromSprite = cellInfo.sprite
+			local fromFloorType = cellInfo.floorType
+			local fromPathType = cellInfo.pathType
+			local fromFSprite = cellInfo._fSprite
 			local bDirty = dirtyDict[fromX][fromY]
 
 			local function _simpleMakeCellInfo()
 				if bDirty then
-					toDict[fromX][fromY] = WmzMapInfo.s_makeEmpty(fromX, fromY)
+					local emptyCellInfo = WmzMapInfo.s_makeEmpty(fromX, fromY, cellInfo)
+
+					toDict[fromX][fromY] = emptyCellInfo
 				else
 					toDict[fromX][fromY] = tabletool.copy(cellInfo)
 				end
@@ -247,6 +255,8 @@ local function _genJson(mapCO)
 				_simpleMakeCellInfo()
 			elseif not toDict[fromX][fromY] then
 				_simpleMakeCellInfo()
+			else
+				toDict[fromX][fromY]._fSprite = fromFSprite
 			end
 		end
 	end
@@ -255,12 +265,47 @@ local function _genJson(mapCO)
 
 	for _, v in pairs(toDict) do
 		for _, cellInfo in pairs(v) do
-			if cellInfo.floorType == WmzEnum.FloorType._edit_MoveableEmpty then
-				cellInfo.floorType = WmzEnum.FloorType.Passable
+			if WmzMapInfo.s_isTile(pt, ft) then
+				cellInfo.zoneId = nil
+			elseif WmzMapInfo.s_isStart(pt) then
+				cellInfo.groupId = nil
+			else
+				local bNeedCheck = true
+
+				if ft ~= WmzEnum.FloorType.Void then
+					bNeedCheck = false
+				end
+
+				if bNeedCheck then
+					local zoneId = cellInfo.zoneId
+
+					assert(zoneId and zoneId ~= 0, sf("invalid zoneId for non-tile and non-start cell! mapId:%s, pos:(%s,%s)", mapId, cellInfo.x, cellInfo.y))
+				end
+			end
+
+			local x = cellInfo.x
+			local y = cellInfo.y
+			local ft = cellInfo.floorType
+			local pt = cellInfo.pathType
+
+			if ft == WmzEnum.FloorType._edit_MoveableEmpty then
+				ft = WmzEnum.FloorType.Passable
 				cellInfo.pathType = WmzEnum.PathType.MoveableNone
 			end
 
 			if cellInfo.groupId == 0 then
+				cellInfo.groupId = nil
+			end
+
+			if cellInfo.zoneId == 0 then
+				cellInfo.zoneId = nil
+			end
+
+			if cellInfo.sprite == "" then
+				cellInfo.sprite = nil
+			end
+
+			if ft == WmzEnum.FloorType.Void then
 				cellInfo.groupId = nil
 			end
 

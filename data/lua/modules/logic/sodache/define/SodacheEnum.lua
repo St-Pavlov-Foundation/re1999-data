@@ -7,8 +7,9 @@ local SodacheEnum = _M
 SodacheEnum.ConstId = {
 	WorshipItemCond = 7,
 	WorshipCost = 1,
-	PlayerModel = 2,
-	BaseDiceCount = 8
+	BaseDiceCount = 8,
+	CoinConvertCoefficient = 12,
+	PlayerModel = 2
 }
 SodacheEnum.ShopType = {
 	BlackMarket = 2,
@@ -130,6 +131,7 @@ SodacheEnum.StepType = {
 	UpdatePatrolInfo = 20,
 	UpdateBattle = 3,
 	DropCard = 9,
+	FuncOpenUpdate = 25,
 	LevelUpdate = 16,
 	LoseCard = 22,
 	UseCard = 21,
@@ -206,15 +208,12 @@ SodacheEnum.DungeonMapCameraSize2 = 3.5
 SodacheEnum.EpisodeId = 1374701
 SodacheEnum.MapPlayerMoveTime = 0.5
 SodacheEnum.HandBookType = {
-	Card = 1,
-	Monster = 2
+	Card = 1
 }
 SodacheEnum.HandBookSubType = {
 	Supplies = 1,
-	Moster1 = 6,
-	Adventure = 2,
-	Moster2 = 7,
 	Ammo = 3,
+	Adventure = 2,
 	Offering = 5
 }
 SodacheEnum.TaskType = {

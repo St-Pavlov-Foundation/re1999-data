@@ -9664,5 +9664,14 @@
     "name": "刻雷乌斯",
     "avatar": "523701",
     "chessId": 1
+  },
+  {
+    "groupId": 3704,
+    "id": 3704021,
+    "type": 3,
+    "content": "对话结束",
+    "name": "",
+    "avatar": "",
+    "chessId": 0
   }
 ]

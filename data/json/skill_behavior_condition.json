@@ -28834,5 +28834,9 @@
   {
     "id": 10500,
     "type": "None"
+  },
+  {
+    "id": 750012,
+    "type": "PlayerHasBuff"
   }
 ]

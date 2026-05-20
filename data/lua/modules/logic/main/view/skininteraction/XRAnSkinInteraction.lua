@@ -36,6 +36,15 @@ function XRAnSkinInteraction:_onInit()
 	StoryController.instance:registerCallback(StoryEvent.FrontItemFadeOut, self._onFrontItemFadeOut, self)
 end
 
+function XRAnSkinInteraction:_onStopVoice()
+	XRAnSkinInteraction.super._onStopVoice(self)
+
+	if self._clickFeatherGo then
+		TaskDispatcher.cancelTask(self._hideFeather, self)
+		gohelper.setActive(self._clickFeatherGo, false)
+	end
+end
+
 function XRAnSkinInteraction:_onStep(params)
 	if params.storyId == interactionStoryId and params.stepId == 12 then
 		return
@@ -105,12 +114,13 @@ function XRAnSkinInteraction:_onHeroShowInScene(showInScene)
 
 		self._click:AddClickListener(self._onFeatherClick, self)
 
-		self._featherAnimator = self._featherGo:GetComponent("Animator")
+		self._featherAnimator = ZProj.ProjAnimatorPlayer.Get(self._featherGo)
 	end
 
 	self._clickMaskableGraphic.raycastTarget = true
 
-	self._featherAnimator:Play("open", 0, 0)
+	self._featherAnimator:Play("open")
+	gohelper.setActive(self._featherGo, true)
 	gohelper.setActive(self._clickFeatherGo, true)
 	TaskDispatcher.cancelTask(self._hideFeather, self)
 	TaskDispatcher.runDelay(self._hideFeather, self, featherHideTime)
@@ -122,7 +132,11 @@ function XRAnSkinInteraction:_hideFeather()
 
 	self._clickMaskableGraphic.raycastTarget = false
 
-	self._featherAnimator:Play("click", 0, 0)
+	self._featherAnimator:Play("click", self._onHideClick, self)
+end
+
+function XRAnSkinInteraction:_onHideClick()
+	gohelper.setActive(self._clickFeatherGo, false)
 end
 
 function XRAnSkinInteraction:_onFeatherClick()
@@ -130,7 +144,7 @@ function XRAnSkinInteraction:_onFeatherClick()
 
 	self._clickMaskableGraphic.raycastTarget = false
 
-	self._featherAnimator:Play("click", 0, 0)
+	self._featherAnimator:Play("click")
 	self:_playCameraAnim("314602_xran_jh")
 	StoryController.instance:playStory(interactionStoryId, nil, self._storyFinish, self)
 	self:_addBlurPrefab()
@@ -245,7 +259,7 @@ function XRAnSkinInteraction:_showCloseAnim()
 	TaskDispatcher.cancelTask(self._delayHideFeatherStoryGo, self)
 	TaskDispatcher.runDelay(self._delayHideFeatherStoryGo, self, 5)
 	gohelper.setActive(self._clickFeatherGo, false)
-	self._featherAnimator:Play("close", 0, 0)
+	self._featherAnimator:Play("close")
 	AudioMgr.instance:trigger(FeatherSoundId.endId)
 end
 
@@ -253,6 +267,7 @@ function XRAnSkinInteraction:_delayHideFeatherStoryGo()
 	self._showFeatherStoryGo = false
 
 	gohelper.setActive(self._featherStoryGo, false)
+	gohelper.setActive(self._featherGo, false)
 end
 
 function XRAnSkinInteraction:_resetCameraPos()

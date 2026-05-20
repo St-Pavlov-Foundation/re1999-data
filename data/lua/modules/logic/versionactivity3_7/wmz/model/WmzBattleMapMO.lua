@@ -71,11 +71,33 @@ function WmzBattleMapMO:getZoneCOList()
 	return self._cache_zoneCOList[mapId]
 end
 
+function WmzBattleMapMO:getZoneId2IndexDict()
+	local mapId = self:gameId()
+
+	if not self._cache_zoneId2IndexList[mapId] then
+		local dict = {}
+		local zoneCOList = self:getZoneCOList()
+
+		for index, zoneCO in ipairs(zoneCOList) do
+			local zoneId = zoneCO.id
+
+			dict[zoneId] = index
+		end
+
+		self._cache_zoneId2IndexList[mapId] = dict
+	end
+
+	return self._cache_zoneId2IndexList[mapId]
+end
+
 function WmzBattleMapMO:ctor()
 	self._cache_zoneCOList = {}
+	self._cache_zoneId2IndexList = {}
 	self._cellList = {}
 	self._tileList = {}
 	self._startCellList = {}
+	self._groupId2TileIdxList = {}
+	self._zoneId2TileIdxList = {}
 	self._mapSize = Vector2.New(0, 0)
 	self._wireList = {}
 	self._curEnergy = 0
@@ -115,18 +137,23 @@ function WmzBattleMapMO:_createGrids(mapCO)
 	self._cellList = {}
 	self._startCellList = {}
 	self._groupId2TileIdxList = {}
+	self._zoneId2TileIdxList = {}
 	self._wireList = {}
 
 	local tmpGridDict = {}
 
 	for _, cellInfo in ipairs(mapCO.girds) do
+		local zoneId = cellInfo.zoneId
+		local sprite = cellInfo.sprite
 		local gridObj = WmzMapGridBase.s_ctor(self, cellInfo)
 		local x, y = gridObj:xy()
 
 		tmpGridDict[x] = tmpGridDict[x] or {}
 
 		if gridObj:isTile() then
-			tmpGridDict[x][y] = WmzMapGridBase.s_ctor(self, WmzMapInfo.s_makeEmpty(x, y))
+			local emptyCellInfo = WmzMapInfo.s_makeEmpty(x, y, cellInfo)
+
+			tmpGridDict[x][y] = WmzMapGridBase.s_ctor(self, emptyCellInfo)
 
 			local tileId = #self._tileList + 1
 
@@ -137,9 +164,19 @@ function WmzBattleMapMO:_createGrids(mapCO)
 			if gridObj:bHasGroup() then
 				local groupId = gridObj:groupId()
 
+				if isDebugBuild then
+					assert(groupId ~= 0)
+				end
+
 				self._groupId2TileIdxList[groupId] = self._groupId2TileIdxList[groupId] or {}
 
 				ti(self._groupId2TileIdxList[groupId], tileId)
+			end
+
+			if zoneId ~= 0 then
+				self._zoneId2TileIdxList[zoneId] = self._zoneId2TileIdxList[zoneId] or {}
+
+				ti(self._zoneId2TileIdxList[zoneId], tileId)
 			end
 		else
 			tmpGridDict[x][y] = gridObj
@@ -153,7 +190,7 @@ function WmzBattleMapMO:_createGrids(mapCO)
 			end
 		end
 
-		if not gridObj:isPathNone() and not gridObj:isStart() then
+		if not gridObj:isPathNone() then
 			ti(self._wireList, gridObj)
 		end
 	end
@@ -247,13 +284,10 @@ function WmzBattleMapMO:floodfill()
 		gridObj:setWelded(false)
 	end
 
-	local weledCnt = 0
+	local weldedCnt = 0
 
 	while hh <= tt do
 		local gridObj = _pop()
-		local flattenIndex = gridObj:calcCellFlattenIndex()
-
-		set[flattenIndex] = true
 
 		for i = 1, 4 do
 			local targetX = gridObj:x() + WmzEnum.dX[i]
@@ -271,7 +305,7 @@ function WmzBattleMapMO:floodfill()
 				local ok = gridObj:_isConnedNeighbor(targetNeighborObj, relativeZoneMask)
 
 				if ok then
-					weledCnt = weledCnt + 1
+					weldedCnt = weldedCnt + 1
 
 					targetNeighborObj:setWelded(true)
 					_append(targetNeighborObj)
@@ -282,9 +316,27 @@ function WmzBattleMapMO:floodfill()
 		end
 	end
 
-	local bCompleted = weledCnt == #self._wireList
+	for _, startObj in ipairs(self._startCellList) do
+		local bConned = false
 
-	return bCompleted
+		for i = 1, 4 do
+			local targetCell = self:getCell(startObj:x() + WmzEnum.dX[i], startObj:y() + WmzEnum.dY[i])
+
+			if targetCell and targetCell:bWelded() and startObj:_isConnedNeighbor(targetCell, WmzEnum.bitPos2Dir(i - 1)) then
+				bConned = true
+
+				break
+			end
+		end
+
+		startObj:setWelded(bConned)
+
+		if bConned then
+			weldedCnt = weldedCnt + 1
+		end
+	end
+
+	return weldedCnt == #self._wireList
 end
 
 function WmzBattleMapMO:mapSize()
@@ -384,6 +436,10 @@ function WmzBattleMapMO:clearZoneCnt()
 	return self._clearZoneCnt or 0
 end
 
+function WmzBattleMapMO:setClearZoneCnt(value)
+	self._clearZoneCnt = GameUtil.clamp(value, 0, self:zoneCount())
+end
+
 function WmzBattleMapMO:setEnergy(value)
 	self._curEnergy = GameUtil.clamp(value, 0, self:maxEnergy())
 end
@@ -402,6 +458,98 @@ function WmzBattleMapMO:getTileIdListByGroup(groupId)
 	local tileIdList = self._groupId2TileIdxList[groupId]
 
 	return tileIdList or {}
+end
+
+function WmzBattleMapMO:getZoneIdListByGroup(zoneId)
+	local tileIdList = self._zoneId2TileIdxList[zoneId]
+
+	return tileIdList or {}
+end
+
+function WmzBattleMapMO:restartZone(zoneId)
+	if not zoneId or zoneId == 0 then
+		return
+	end
+
+	self:foreachCell(function(cellObj, i, x, y)
+		if cellObj:zoneId() ~= zoneId then
+			return
+		end
+
+		local tileObj = cellObj:getTile()
+
+		if tileObj then
+			tileObj:resetToInit()
+		end
+
+		cellObj:resetToInit()
+	end)
+	self:_bindTiles()
+end
+
+function WmzBattleMapMO:curPlayingZoneIndex()
+	local clearZoneCnt = self:clearZoneCnt()
+
+	return clearZoneCnt + 1
+end
+
+function WmzBattleMapMO:curPlayingZoneId()
+	local zoneId = self:zoneIndex2ZoneId(self:curPlayingZoneIndex())
+
+	return zoneId
+end
+
+function WmzBattleMapMO:restartCurZone()
+	local zoneId = self:curPlayingZoneId()
+
+	if zoneId == 0 then
+		return
+	end
+
+	local zoneCO = WmzConfig.instance:getZoneCO(zoneId)
+
+	if not zoneCO then
+		return
+	end
+
+	self:restartZone(zoneId)
+end
+
+function WmzBattleMapMO:zoneIndex2ZoneId(zoneIndex)
+	local gameCO = self:getGameCO()
+	local mem = "zoneId" .. tostring(zoneIndex)
+
+	return gameCO[mem] or 0
+end
+
+function WmzBattleMapMO:getZoneId2Index(zoneId)
+	local dict = self:getZoneId2IndexDict()
+
+	if not dict then
+		return -1
+	end
+
+	return dict[zoneId] or -1
+end
+
+function WmzBattleMapMO:isZoneCompleted(zoneId)
+	if not zoneId or zoneId <= 0 then
+		return false
+	end
+
+	local bHasZoneMember = false
+
+	for _, gridObj in ipairs(self._wireList) do
+		if gridObj:zoneId() == zoneId then
+			bHasZoneMember = true
+
+			if not gridObj:bWelded() then
+				return false
+			end
+		end
+	end
+
+	return bHasZoneMember
 end
 
 return WmzBattleMapMO

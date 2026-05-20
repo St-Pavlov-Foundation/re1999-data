@@ -12,6 +12,7 @@ function SodacheGetCardView:onInitView()
 	self._gogetcard2 = gohelper.findChild(self.viewGO, "bg/#go_get/txt_title")
 	self._golosecard2 = gohelper.findChild(self.viewGO, "bg/#go_get/txt_title2")
 	self._btnclose = gohelper.findChildClickWithAudio(self.viewGO, "#btn_close")
+	self._btnFlipAll = gohelper.findChildClickWithAudio(self.viewGO, "#go_dragArea")
 	self._godragarea = gohelper.findChild(self.viewGO, "#go_dragArea")
 	self._goLayout = gohelper.findChild(self.viewGO, "#go_content/#go_Layout")
 	self._gocarditem = gohelper.findChild(self.viewGO, "#go_content/#go_Layout/#go_carditem")
@@ -22,12 +23,28 @@ function SodacheGetCardView:addEvents()
 	self._drag:AddDragBeginListener(self._onBeginDrag, self)
 	self._drag:AddDragEndListener(self._onEndDrag, self)
 	self._btnclose:AddClickListener(self.closeThis, self)
+	self._btnFlipAll:AddClickDownListener(self.onClickDown, self)
+	self._btnFlipAll:AddClickUpListener(self.onClickUp, self)
 end
 
 function SodacheGetCardView:removeEvents()
 	self._drag:RemoveDragBeginListener()
 	self._drag:RemoveDragEndListener()
 	self._btnclose:RemoveClickListener()
+	self._btnFlipAll:RemoveClickDownListener()
+	self._btnFlipAll:RemoveClickUpListener()
+end
+
+function SodacheGetCardView:onClickDown()
+	self._isDown = true
+end
+
+function SodacheGetCardView:onClickUp()
+	if self._isDown then
+		for k, v in pairs(self._waitDict1) do
+			self:_flipCard(k)
+		end
+	end
 end
 
 function SodacheGetCardView:_onBeginDrag(param, pointerEventData)
@@ -54,7 +71,7 @@ end
 function SodacheGetCardView:_onClickCard(cardIndex)
 	if self._waitDict1[cardIndex] then
 		self:_flipCard(cardIndex)
-	else
+	elseif not self._waitDict2[cardIndex] then
 		local cardMo = self._cardItemDict[cardIndex].cardObj.data
 
 		ViewMgr.instance:openView(ViewName.SodacheCardDetailView, {
@@ -64,8 +81,16 @@ function SodacheGetCardView:_onClickCard(cardIndex)
 end
 
 function SodacheGetCardView:_flipCard(cardIndex)
+	self._isDown = false
+
 	if not self._waitDict1[cardIndex] then
 		return
+	end
+
+	if self._isAllDebuff then
+		AudioMgr.instance:trigger(AudioEnum3_7.Sodache.losecard_flip)
+	else
+		AudioMgr.instance:trigger(AudioEnum3_7.Sodache.getcard_flip)
 	end
 
 	self._waitDict1[cardIndex] = nil
@@ -83,7 +108,7 @@ function SodacheGetCardView:checkComplete()
 	local isComplete = not next(self._waitDict2)
 
 	gohelper.setActive(self._godragarea, not isComplete)
-	gohelper.setActive(self._goclosebtn, isComplete)
+	gohelper.setActive(self._btnclose, isComplete)
 end
 
 function SodacheGetCardView:onOpen()
@@ -111,6 +136,15 @@ function SodacheGetCardView:onOpen()
 	gohelper.setActive(self._golosecard2, not self.viewParam.isGetCard)
 	gohelper.setActive(self._golose, isAllDebuff)
 	gohelper.setActive(self._goget, not isAllDebuff)
+
+	self._isAllDebuff = isAllDebuff
+
+	if self._isAllDebuff then
+		AudioMgr.instance:trigger(AudioEnum3_7.Sodache.losecard)
+	else
+		AudioMgr.instance:trigger(AudioEnum3_7.Sodache.getcard)
+	end
+
 	gohelper.CreateObjList(self, self._onCreateItem, self.viewParam.items, self._goLayout, self._gocarditem)
 	self:checkComplete()
 end

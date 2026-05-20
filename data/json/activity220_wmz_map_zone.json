@@ -43,7 +43,7 @@
     "titlePosY": "1149",
     "frameBgResName": "v3a7_wmz_game_kuang_3_4",
     "frameFocusX": -1736,
-    "frameFocusY": 1014,
+    "frameFocusY": 790,
     "focusX": 7,
     "focusY": 7
   },
@@ -55,7 +55,7 @@
     "titlePosY": "1149",
     "frameBgResName": "v3a7_wmz_game_kuang_5_4",
     "frameFocusX": -505,
-    "frameFocusY": 1014,
+    "frameFocusY": 790,
     "focusX": 18,
     "focusY": 7
   },
@@ -67,7 +67,7 @@
     "titlePosY": "1038",
     "frameBgResName": "v3a7_wmz_game_kuang_3_3",
     "frameFocusX": 952,
-    "frameFocusY": 958,
+    "frameFocusY": 734,
     "focusX": 31,
     "focusY": 8
   },
@@ -127,7 +127,7 @@
     "titlePosY": "1259",
     "frameBgResName": "v3a7_wmz_game_kuang_4_4",
     "frameFocusX": -1120,
-    "frameFocusY": 1124,
+    "frameFocusY": 900,
     "focusX": 12,
     "focusY": 6
   },
@@ -139,7 +139,7 @@
     "titlePosY": "-736",
     "frameBgResName": "v3a7_wmz_game_kuang_14_7",
     "frameFocusX": -1234,
-    "frameFocusY": -48,
+    "frameFocusY": -272,
     "focusX": 11,
     "focusY": 17
   },
@@ -151,7 +151,7 @@
     "titlePosY": "1094",
     "frameBgResName": "v3a7_wmz_game_kuang_13_6",
     "frameFocusX": 727,
-    "frameFocusY": 900,
+    "frameFocusY": 676,
     "focusX": 29,
     "focusY": 8
   },
@@ -159,36 +159,36 @@
     "id": 51000,
     "bgResName": "v3a7_wmz_game_bg_partsp",
     "titleDesc": "维尔汀",
-    "titlePosX": "-1616",
+    "titlePosX": "-1392",
     "titlePosY": "1259",
     "frameBgResName": "v3a7_wmz_game_kuang_3_4",
-    "frameFocusX": -1624,
-    "frameFocusY": 1126,
-    "focusX": 8,
+    "frameFocusX": -1400,
+    "frameFocusY": 902,
+    "focusX": 10,
     "focusY": 6
   },
   {
     "id": 52000,
     "bgResName": "v3a7_wmz_game_bg_partsp",
     "titleDesc": "“我”",
-    "titlePosX": "-720",
+    "titlePosX": "176",
     "titlePosY": "1259",
     "frameBgResName": "v3a7_wmz_game_kuang_3_4",
-    "frameFocusX": -728,
-    "frameFocusY": 1126,
-    "focusX": 16,
+    "frameFocusX": 168,
+    "frameFocusY": 902,
+    "focusX": 24,
     "focusY": 6
   },
   {
     "id": 53000,
     "bgResName": "v3a7_wmz_game_bg_partsp",
     "titleDesc": "再见、再见",
-    "titlePosX": "-1168",
-    "titlePosY": "491",
+    "titlePosX": "-608",
+    "titlePosY": "155",
     "frameBgResName": "v3a7_wmz_game_kuang_13_6",
-    "frameFocusX": -1178,
-    "frameFocusY": 230,
-    "focusX": 12,
-    "focusY": 14
+    "frameFocusX": -618,
+    "frameFocusY": -330,
+    "focusX": 17,
+    "focusY": 17
   }
 ]

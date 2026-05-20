@@ -45780,7 +45780,7 @@
     "name": "",
     "desc": "",
     "pause": 0,
-    "addControl": "12",
+    "addControl": "4",
     "controlDelay": "",
     "controlParam": "1",
     "level": ""
@@ -45804,7 +45804,7 @@
     "type": "location",
     "param": "",
     "name": "",
-    "desc": "科算中心·实习生宿舍",
+    "desc": "拉普拉斯科算中心·实习生宿舍",
     "pause": 0,
     "addControl": "",
     "controlDelay": "",
@@ -45921,7 +45921,7 @@
     "type": "location",
     "param": "",
     "name": "",
-    "desc": "科算中心·会议室",
+    "desc": "拉普拉斯科算中心·会议室",
     "pause": 0,
     "addControl": "",
     "controlDelay": "",
@@ -46233,7 +46233,7 @@
     "type": "location",
     "param": "",
     "name": "",
-    "desc": "科算中心·食堂",
+    "desc": "拉普拉斯科算中心·食堂",
     "pause": 0,
     "addControl": "",
     "controlDelay": "",
@@ -46250,7 +46250,7 @@
     "pause": 0,
     "addControl": "1",
     "controlDelay": "",
-    "controlParam": "rolestory_3154_pic_03",
+    "controlParam": "rolestory_3154_pic_02",
     "level": ""
   },
   {
@@ -46755,9 +46755,9 @@
     "name": "",
     "desc": "",
     "pause": 0,
-    "addControl": "12|4",
+    "addControl": "4",
     "controlDelay": "",
-    "controlParam": "1|4",
+    "controlParam": "4",
     "level": ""
   },
   {
@@ -46779,7 +46779,7 @@
     "type": "location",
     "param": "",
     "name": "",
-    "desc": "曼彻斯特·街道房顶",
+    "desc": "曼彻斯特·街道",
     "pause": 0,
     "addControl": "",
     "controlDelay": "",
@@ -47764,19 +47764,6 @@
   {
     "id": 315402080,
     "storygroup": 315402,
-    "type": "location",
-    "param": "",
-    "name": "",
-    "desc": "曼彻斯特·街道",
-    "pause": 0,
-    "addControl": "",
-    "controlDelay": "",
-    "controlParam": "",
-    "level": ""
-  },
-  {
-    "id": 315402081,
-    "storygroup": 315402,
     "type": "control",
     "param": "",
     "name": "",
@@ -47788,7 +47775,7 @@
     "level": ""
   },
   {
-    "id": 315402082,
+    "id": 315402081,
     "storygroup": 315402,
     "type": "aside",
     "param": "",
@@ -47801,7 +47788,7 @@
     "level": ""
   },
   {
-    "id": 315402083,
+    "id": 315402082,
     "storygroup": 315402,
     "type": "dialog",
     "param": "",
@@ -47814,7 +47801,7 @@
     "level": ""
   },
   {
-    "id": 315402084,
+    "id": 315402083,
     "storygroup": 315402,
     "type": "dialog",
     "param": "",
@@ -47827,7 +47814,7 @@
     "level": ""
   },
   {
-    "id": 315402085,
+    "id": 315402084,
     "storygroup": 315402,
     "type": "dialog",
     "param": "",
@@ -47840,7 +47827,7 @@
     "level": ""
   },
   {
-    "id": 315402086,
+    "id": 315402085,
     "storygroup": 315402,
     "type": "dialog",
     "param": "",
@@ -47853,7 +47840,7 @@
     "level": ""
   },
   {
-    "id": 315402087,
+    "id": 315402086,
     "storygroup": 315402,
     "type": "dialog",
     "param": "",
@@ -47866,7 +47853,7 @@
     "level": ""
   },
   {
-    "id": 315402088,
+    "id": 315402087,
     "storygroup": 315402,
     "type": "aside",
     "param": "",
@@ -47879,7 +47866,7 @@
     "level": ""
   },
   {
-    "id": 315402089,
+    "id": 315402088,
     "storygroup": 315402,
     "type": "dialog",
     "param": "",
@@ -47892,7 +47879,7 @@
     "level": ""
   },
   {
-    "id": 315402090,
+    "id": 315402089,
     "storygroup": 315402,
     "type": "aside",
     "param": "",
@@ -47905,7 +47892,7 @@
     "level": ""
   },
   {
-    "id": 315402091,
+    "id": 315402090,
     "storygroup": 315402,
     "type": "dialog",
     "param": "",
@@ -47918,7 +47905,7 @@
     "level": ""
   },
   {
-    "id": 315402092,
+    "id": 315402091,
     "storygroup": 315402,
     "type": "dialog",
     "param": "",
@@ -47931,7 +47918,7 @@
     "level": ""
   },
   {
-    "id": 315402093,
+    "id": 315402092,
     "storygroup": 315402,
     "type": "dialog",
     "param": "",
@@ -47944,7 +47931,7 @@
     "level": ""
   },
   {
-    "id": 315402094,
+    "id": 315402093,
     "storygroup": 315402,
     "type": "control",
     "param": "",
@@ -47957,7 +47944,7 @@
     "level": ""
   },
   {
-    "id": 315402095,
+    "id": 315402094,
     "storygroup": 315402,
     "type": "aside",
     "param": "",
@@ -47970,7 +47957,7 @@
     "level": ""
   },
   {
-    "id": 315402096,
+    "id": 315402095,
     "storygroup": 315402,
     "type": "dialog",
     "param": "",
@@ -47983,7 +47970,7 @@
     "level": ""
   },
   {
-    "id": 315402097,
+    "id": 315402096,
     "storygroup": 315402,
     "type": "dialog",
     "param": "",
@@ -47996,7 +47983,7 @@
     "level": ""
   },
   {
-    "id": 315402098,
+    "id": 315402097,
     "storygroup": 315402,
     "type": "dialog",
     "param": "",
@@ -48009,7 +47996,7 @@
     "level": ""
   },
   {
-    "id": 315402099,
+    "id": 315402098,
     "storygroup": 315402,
     "type": "dialog",
     "param": "",
@@ -48027,7 +48014,7 @@
     "type": "control",
     "param": "",
     "name": "",
-    "desc": "拼贴画-暴雨观测中心",
+    "desc": "拼贴画-拉普拉斯科算中心·“暴雨”观测中心",
     "pause": 0,
     "addControl": "1",
     "controlDelay": "",
@@ -48042,7 +48029,7 @@
     "name": "",
     "desc": "",
     "pause": 0,
-    "addControl": "12",
+    "addControl": "4",
     "controlDelay": "",
     "controlParam": "1",
     "level": ""
@@ -48066,7 +48053,7 @@
     "type": "location",
     "param": "",
     "name": "",
-    "desc": "暴雨观测中心",
+    "desc": "拉普拉斯科算中心·“暴雨”观测中心",
     "pause": 0,
     "addControl": "",
     "controlDelay": "",
@@ -48614,7 +48601,7 @@
     "name": "",
     "desc": "",
     "pause": 0,
-    "addControl": "12",
+    "addControl": "4",
     "controlDelay": "",
     "controlParam": "1",
     "level": ""
@@ -48638,7 +48625,7 @@
     "type": "location",
     "param": "",
     "name": "",
-    "desc": "科算中心·杂物仓库",
+    "desc": "拉普拉斯科算中心·仓库",
     "pause": 0,
     "addControl": "",
     "controlDelay": "",
@@ -49498,7 +49485,7 @@
     "name": "",
     "desc": "",
     "pause": 0,
-    "addControl": "12",
+    "addControl": "4",
     "controlDelay": "",
     "controlParam": "1",
     "level": ""
@@ -49522,7 +49509,7 @@
     "type": "location",
     "param": "",
     "name": "",
-    "desc": "科算中心·实习生宿舍",
+    "desc": "拉普拉斯科算中心·实习生宿舍",
     "pause": 0,
     "addControl": "",
     "controlDelay": "",
@@ -49548,7 +49535,7 @@
     "type": "aside",
     "param": "",
     "name": "",
-    "desc": "我遇到了点麻烦，能过来帮我一把吗？以下是坐标。——X",
+    "desc": "<b><i>我遇到了点麻烦，能过来帮我一把吗？以下是坐标。——X</i></b>",
     "pause": 0,
     "addControl": "",
     "controlDelay": "",
@@ -49561,7 +49548,7 @@
     "type": "aside",
     "param": "",
     "name": "",
-    "desc": "注：如果可能的话，带上点趁手的家伙。我的意思是，能够对付大块头的那种～",
+    "desc": "<b><i>注：如果可能的话，带上点趁手的家伙。我的意思是，能够对付大块头的那种～</i></b>",
     "pause": 0,
     "addControl": "",
     "controlDelay": "",
@@ -49587,7 +49574,7 @@
     "type": "location",
     "param": "",
     "name": "",
-    "desc": "驼鹿栖息地",
+    "desc": "天然丛林·深处",
     "pause": 0,
     "addControl": "",
     "controlDelay": "",
@@ -50759,7 +50746,7 @@
     "name": "",
     "desc": "",
     "pause": 0,
-    "addControl": "12",
+    "addControl": "4",
     "controlDelay": "",
     "controlParam": "1",
     "level": ""
@@ -50900,7 +50887,7 @@
     "type": "aside",
     "param": "",
     "name": "",
-    "desc": "只有玛格丽特女士和洛伦兹蝴蝶女士吗？",
+    "desc": "<b><i>只有玛格丽特女士和洛伦兹蝴蝶女士吗？</i></b>",
     "pause": 0,
     "addControl": "",
     "controlDelay": "",
@@ -51095,7 +51082,7 @@
     "type": "location",
     "param": "",
     "name": "",
-    "desc": "科算中心·茶水间",
+    "desc": "拉普拉斯科算中心·休息区",
     "pause": 0,
     "addControl": "",
     "controlDelay": "",
@@ -51316,7 +51303,7 @@
     "type": "location",
     "param": "",
     "name": "",
-    "desc": "暴雨观测中心",
+    "desc": "拉普拉斯科算中心·“暴雨”观测中心",
     "pause": 0,
     "addControl": "",
     "controlDelay": "",
@@ -51329,11 +51316,11 @@
     "type": "control",
     "param": "",
     "name": "",
-    "desc": "拼贴画-暴雨观测中心",
+    "desc": "拼贴画-拉普拉斯科算中心·“暴雨”观测中心",
     "pause": 0,
     "addControl": "1|8",
     "controlDelay": "",
-    "controlParam": "rolestory_3154_pic_03|500279#3",
+    "controlParam": "rolestory_3154_pic_07|500279#3",
     "level": ""
   },
   {
@@ -51565,7 +51552,7 @@
     "name": "",
     "desc": "",
     "pause": 0,
-    "addControl": "12",
+    "addControl": "4",
     "controlDelay": "",
     "controlParam": "1",
     "level": ""
@@ -51589,7 +51576,7 @@
     "type": "location",
     "param": "",
     "name": "",
-    "desc": "废弃工厂",
+    "desc": "？？？·废弃工厂",
     "pause": 0,
     "addControl": "",
     "controlDelay": "",
@@ -51820,19 +51807,6 @@
   {
     "id": 315407022,
     "storygroup": 315407,
-    "type": "location",
-    "param": "",
-    "name": "",
-    "desc": "废弃工厂深处",
-    "pause": 0,
-    "addControl": "",
-    "controlDelay": "",
-    "controlParam": "",
-    "level": ""
-  },
-  {
-    "id": 315407023,
-    "storygroup": 315407,
     "type": "control",
     "param": "",
     "name": "",
@@ -51844,7 +51818,7 @@
     "level": ""
   },
   {
-    "id": 315407024,
+    "id": 315407023,
     "storygroup": 315407,
     "type": "aside",
     "param": "",
@@ -51857,7 +51831,7 @@
     "level": ""
   },
   {
-    "id": 315407025,
+    "id": 315407024,
     "storygroup": 315407,
     "type": "aside",
     "param": "",
@@ -51870,7 +51844,7 @@
     "level": ""
   },
   {
-    "id": 315407026,
+    "id": 315407025,
     "storygroup": 315407,
     "type": "options",
     "param": "1#2",
@@ -51883,7 +51857,7 @@
     "level": ""
   },
   {
-    "id": 315407027,
+    "id": 315407026,
     "storygroup": 315407,
     "type": "selector",
     "param": "1",
@@ -51896,7 +51870,7 @@
     "level": ""
   },
   {
-    "id": 315407028,
+    "id": 315407027,
     "storygroup": 315407,
     "type": "aside",
     "param": "",
@@ -51909,7 +51883,7 @@
     "level": ""
   },
   {
-    "id": 315407029,
+    "id": 315407028,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -51922,7 +51896,7 @@
     "level": ""
   },
   {
-    "id": 315407030,
+    "id": 315407029,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -51935,7 +51909,7 @@
     "level": ""
   },
   {
-    "id": 315407031,
+    "id": 315407030,
     "storygroup": 315407,
     "type": "selector",
     "param": "2",
@@ -51948,7 +51922,7 @@
     "level": ""
   },
   {
-    "id": 315407032,
+    "id": 315407031,
     "storygroup": 315407,
     "type": "aside",
     "param": "",
@@ -51961,7 +51935,7 @@
     "level": ""
   },
   {
-    "id": 315407033,
+    "id": 315407032,
     "storygroup": 315407,
     "type": "aside",
     "param": "",
@@ -51974,7 +51948,7 @@
     "level": ""
   },
   {
-    "id": 315407034,
+    "id": 315407033,
     "storygroup": 315407,
     "type": "selectorend",
     "param": "",
@@ -51987,7 +51961,7 @@
     "level": ""
   },
   {
-    "id": 315407035,
+    "id": 315407034,
     "storygroup": 315407,
     "type": "aside",
     "param": "",
@@ -52000,7 +51974,7 @@
     "level": ""
   },
   {
-    "id": 315407036,
+    "id": 315407035,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52013,7 +51987,7 @@
     "level": ""
   },
   {
-    "id": 315407037,
+    "id": 315407036,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52026,7 +52000,7 @@
     "level": ""
   },
   {
-    "id": 315407038,
+    "id": 315407037,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52039,7 +52013,7 @@
     "level": ""
   },
   {
-    "id": 315407039,
+    "id": 315407038,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52052,7 +52026,7 @@
     "level": ""
   },
   {
-    "id": 315407040,
+    "id": 315407039,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52065,7 +52039,7 @@
     "level": ""
   },
   {
-    "id": 315407041,
+    "id": 315407040,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52078,20 +52052,7 @@
     "level": ""
   },
   {
-    "id": 315407042,
-    "storygroup": 315407,
-    "type": "location",
-    "param": "",
-    "name": "",
-    "desc": "废弃工厂控制室",
-    "pause": 0,
-    "addControl": "",
-    "controlDelay": "",
-    "controlParam": "",
-    "level": ""
-  },
-  {
-    "id": 315407043,
+    "id": 315407041,
     "storygroup": 315407,
     "type": "control",
     "param": "",
@@ -52104,7 +52065,7 @@
     "level": ""
   },
   {
-    "id": 315407044,
+    "id": 315407042,
     "storygroup": 315407,
     "type": "aside",
     "param": "",
@@ -52117,7 +52078,7 @@
     "level": ""
   },
   {
-    "id": 315407045,
+    "id": 315407043,
     "storygroup": 315407,
     "type": "aside",
     "param": "",
@@ -52130,7 +52091,7 @@
     "level": ""
   },
   {
-    "id": 315407046,
+    "id": 315407044,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52143,7 +52104,7 @@
     "level": ""
   },
   {
-    "id": 315407047,
+    "id": 315407045,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52156,7 +52117,7 @@
     "level": ""
   },
   {
-    "id": 315407048,
+    "id": 315407046,
     "storygroup": 315407,
     "type": "aside",
     "param": "",
@@ -52169,7 +52130,7 @@
     "level": ""
   },
   {
-    "id": 315407049,
+    "id": 315407047,
     "storygroup": 315407,
     "type": "aside",
     "param": "",
@@ -52182,7 +52143,7 @@
     "level": ""
   },
   {
-    "id": 315407050,
+    "id": 315407048,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52195,7 +52156,7 @@
     "level": ""
   },
   {
-    "id": 315407051,
+    "id": 315407049,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52208,7 +52169,7 @@
     "level": ""
   },
   {
-    "id": 315407052,
+    "id": 315407050,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52221,7 +52182,7 @@
     "level": ""
   },
   {
-    "id": 315407053,
+    "id": 315407051,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52234,7 +52195,7 @@
     "level": ""
   },
   {
-    "id": 315407054,
+    "id": 315407052,
     "storygroup": 315407,
     "type": "aside",
     "param": "",
@@ -52247,7 +52208,7 @@
     "level": ""
   },
   {
-    "id": 315407055,
+    "id": 315407053,
     "storygroup": 315407,
     "type": "aside",
     "param": "",
@@ -52260,7 +52221,7 @@
     "level": ""
   },
   {
-    "id": 315407056,
+    "id": 315407054,
     "storygroup": 315407,
     "type": "aside",
     "param": "",
@@ -52273,7 +52234,7 @@
     "level": ""
   },
   {
-    "id": 315407057,
+    "id": 315407055,
     "storygroup": 315407,
     "type": "aside",
     "param": "",
@@ -52286,7 +52247,7 @@
     "level": ""
   },
   {
-    "id": 315407058,
+    "id": 315407056,
     "storygroup": 315407,
     "type": "control",
     "param": "",
@@ -52299,7 +52260,7 @@
     "level": ""
   },
   {
-    "id": 315407059,
+    "id": 315407057,
     "storygroup": 315407,
     "type": "aside",
     "param": "",
@@ -52312,7 +52273,7 @@
     "level": ""
   },
   {
-    "id": 315407060,
+    "id": 315407058,
     "storygroup": 315407,
     "type": "aside",
     "param": "",
@@ -52325,7 +52286,7 @@
     "level": ""
   },
   {
-    "id": 315407061,
+    "id": 315407059,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52338,7 +52299,7 @@
     "level": ""
   },
   {
-    "id": 315407062,
+    "id": 315407060,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52351,7 +52312,7 @@
     "level": ""
   },
   {
-    "id": 315407063,
+    "id": 315407061,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52364,7 +52325,7 @@
     "level": ""
   },
   {
-    "id": 315407064,
+    "id": 315407062,
     "storygroup": 315407,
     "type": "aside",
     "param": "",
@@ -52377,7 +52338,7 @@
     "level": ""
   },
   {
-    "id": 315407065,
+    "id": 315407063,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52390,7 +52351,7 @@
     "level": ""
   },
   {
-    "id": 315407066,
+    "id": 315407064,
     "storygroup": 315407,
     "type": "aside",
     "param": "",
@@ -52403,7 +52364,7 @@
     "level": ""
   },
   {
-    "id": 315407067,
+    "id": 315407065,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52416,7 +52377,7 @@
     "level": ""
   },
   {
-    "id": 315407068,
+    "id": 315407066,
     "storygroup": 315407,
     "type": "aside",
     "param": "",
@@ -52429,7 +52390,7 @@
     "level": ""
   },
   {
-    "id": 315407069,
+    "id": 315407067,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52442,7 +52403,7 @@
     "level": ""
   },
   {
-    "id": 315407070,
+    "id": 315407068,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52455,7 +52416,7 @@
     "level": ""
   },
   {
-    "id": 315407071,
+    "id": 315407069,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52468,7 +52429,7 @@
     "level": ""
   },
   {
-    "id": 315407072,
+    "id": 315407070,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52481,7 +52442,7 @@
     "level": ""
   },
   {
-    "id": 315407073,
+    "id": 315407071,
     "storygroup": 315407,
     "type": "aside",
     "param": "",
@@ -52494,20 +52455,7 @@
     "level": ""
   },
   {
-    "id": 315407074,
-    "storygroup": 315407,
-    "type": "location",
-    "param": "",
-    "name": "",
-    "desc": "废弃工厂外围",
-    "pause": 0,
-    "addControl": "",
-    "controlDelay": "",
-    "controlParam": "",
-    "level": ""
-  },
-  {
-    "id": 315407075,
+    "id": 315407072,
     "storygroup": 315407,
     "type": "control",
     "param": "",
@@ -52520,7 +52468,7 @@
     "level": ""
   },
   {
-    "id": 315407076,
+    "id": 315407073,
     "storygroup": 315407,
     "type": "aside",
     "param": "",
@@ -52533,7 +52481,7 @@
     "level": ""
   },
   {
-    "id": 315407077,
+    "id": 315407074,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52546,7 +52494,7 @@
     "level": ""
   },
   {
-    "id": 315407078,
+    "id": 315407075,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52559,7 +52507,7 @@
     "level": ""
   },
   {
-    "id": 315407079,
+    "id": 315407076,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52572,7 +52520,7 @@
     "level": ""
   },
   {
-    "id": 315407080,
+    "id": 315407077,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52585,7 +52533,7 @@
     "level": ""
   },
   {
-    "id": 315407081,
+    "id": 315407078,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52598,7 +52546,7 @@
     "level": ""
   },
   {
-    "id": 315407082,
+    "id": 315407079,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52611,7 +52559,7 @@
     "level": ""
   },
   {
-    "id": 315407083,
+    "id": 315407080,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52624,7 +52572,7 @@
     "level": ""
   },
   {
-    "id": 315407084,
+    "id": 315407081,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52637,7 +52585,7 @@
     "level": ""
   },
   {
-    "id": 315407085,
+    "id": 315407082,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52650,7 +52598,7 @@
     "level": ""
   },
   {
-    "id": 315407086,
+    "id": 315407083,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52663,7 +52611,7 @@
     "level": ""
   },
   {
-    "id": 315407087,
+    "id": 315407084,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52676,7 +52624,7 @@
     "level": ""
   },
   {
-    "id": 315407088,
+    "id": 315407085,
     "storygroup": 315407,
     "type": "dialog",
     "param": "",
@@ -52694,11 +52642,11 @@
     "type": "control",
     "param": "",
     "name": "",
-    "desc": "拼贴画-暴雨观测中心",
+    "desc": "拼贴画-拉普拉斯科算中心·“暴雨”观测中心",
     "pause": 0,
     "addControl": "1",
     "controlDelay": "",
-    "controlParam": "rolestory_3154_pic_03",
+    "controlParam": "rolestory_3154_pic_07",
     "level": ""
   },
   {
@@ -52709,7 +52657,7 @@
     "name": "",
     "desc": "",
     "pause": 0,
-    "addControl": "12",
+    "addControl": "4",
     "controlDelay": "",
     "controlParam": "1",
     "level": ""
@@ -52733,7 +52681,7 @@
     "type": "location",
     "param": "",
     "name": "",
-    "desc": "暴雨观测中心",
+    "desc": "拉普拉斯科算中心·“暴雨”观测中心",
     "pause": 0,
     "addControl": "",
     "controlDelay": "",
@@ -52889,7 +52837,7 @@
     "type": "location",
     "param": "",
     "name": "",
-    "desc": "科算中心·试验场",
+    "desc": "拉普拉斯科算中心·试验场",
     "pause": 0,
     "addControl": "",
     "controlDelay": "",
@@ -52906,7 +52854,7 @@
     "pause": 0,
     "addControl": "1|2",
     "controlDelay": "",
-    "controlParam": "rolestory_3154_pic_18|500163#0.8#3",
+    "controlParam": "rolestory_3154_pic_19|500163#0.8#3",
     "level": ""
   },
   {

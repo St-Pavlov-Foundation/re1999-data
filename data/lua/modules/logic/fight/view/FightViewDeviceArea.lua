@@ -36,7 +36,9 @@ end
 
 function FightViewDeviceArea:onStartSequenceFinish()
 	if self.deviceArea then
-		self.deviceArea:setActive(true)
+		local actPoint = FightDataHelper.operationDataMgr.actPoint
+
+		self.deviceArea:setActive(actPoint > 0)
 		self:resetAnchor()
 		self.deviceArea:appearTween()
 	end
@@ -44,7 +46,9 @@ end
 
 function FightViewDeviceArea:onAfterEffectWorkDone()
 	if self.deviceArea then
-		self.deviceArea:setActive(true)
+		local actPoint = FightDataHelper.operationDataMgr.actPoint
+
+		self.deviceArea:setActive(actPoint > 0)
 		self:resetAnchor()
 		self.deviceArea:refreshUI()
 		self.deviceArea:appearTween()

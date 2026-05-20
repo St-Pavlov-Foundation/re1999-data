@@ -1917,7 +1917,10 @@ function FightViewHandCardItem.replaceLockBg(obj)
 
 	for i = 0, 4 do
 		local isBig = i == 4
-		local spName = isBig and "card_mask_big" or "card_mask_small"
+		local spName
+
+		spName = i == 0 and "card_mask_small_2" or i == 4 and "card_mask_big" or "card_mask_small"
+
 		local prefix = isBig and "bigskill" or "normal"
 
 		path = string.format("%s/%d/seal/ani/mask/di", prefix, i)

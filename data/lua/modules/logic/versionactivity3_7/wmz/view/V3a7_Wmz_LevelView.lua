@@ -29,6 +29,7 @@ function V3a7_Wmz_LevelView:removeEvents()
 end
 
 local ti = table.insert
+local csTweenHelper = ZProj.TweenHelper
 
 function V3a7_Wmz_LevelView:ctor(...)
 	V3a7_Wmz_LevelView.super.ctor(self, ...)
@@ -134,6 +135,13 @@ function V3a7_Wmz_LevelView:_editableInitView()
 	self:_refreshItemList()
 	gohelper.setActive(self._btnPlayBtn, activityCo.storyId > 0)
 	self.viewContainer:addRedDot_Activity220Task(self._goReddot)
+
+	self._simageFullBGTrans = self._simageFullBG.transform
+	self._bgMoveRange = {
+		max = 0,
+		min = 0
+	}
+	self._bgwidth = recthelper.getWidth(self._simageFullBGTrans)
 end
 
 function V3a7_Wmz_LevelView:onOpen()
@@ -146,11 +154,32 @@ function V3a7_Wmz_LevelView:onOpen()
 	self:addEventCb(StoryController.instance, StoryEvent.Start, self._onStoryStart, self)
 	self:addEventCb(Activity220Controller.instance, Activity220Event.EpisodePush, self._onEpisodePush, self)
 	self:addEventCb(RedDotController.instance, RedDotEvent.RefreshClientCharacterDot, self._onRefreshClientCharacterDot, self)
+	self:addEventCb(GameGlobalMgr.instance, GameStateEvent.OnScreenResize, self._onScreenResize, self)
+	self:_onScreenResize()
+	self._scrollStory:AddOnValueChanged(self._onScrollValueChanged, self)
+end
+
+function V3a7_Wmz_LevelView:_onScrollValueChanged()
+	local value01 = self._scrollStory.horizontalNormalizedPosition
+
+	value01 = GameUtil.saturate(value01)
+
+	local moveX = GameUtil.remap(value01, 0, 1, self._bgMoveRange.min, self._bgMoveRange.max)
+
+	recthelper.setAnchorX(self._simageFullBGTrans, -moveX)
+end
+
+function V3a7_Wmz_LevelView:_onScreenResize()
+	local canvasWidth = recthelper.getWidth(ViewMgr.instance:getUIRoot().transform)
+	local move = math.abs(self._bgwidth - canvasWidth) * 0.5
+
+	self._bgMoveRange.min = -move
+	self._bgMoveRange.max = move
 end
 
 function V3a7_Wmz_LevelView:_initPathStatus()
 	for i, _ in ipairs(self._goLevelItemContainerList) do
-		if i <= self._latestStoryItem - 1 then
+		if i <= self._latestStoryItem then
 			self:playAnim_PathIdle(i)
 		end
 	end
@@ -182,7 +211,7 @@ function V3a7_Wmz_LevelView:_checkFirstEnter()
 		return false
 	end
 
-	local episodeId = episodeCO.id
+	local episodeId = episodeCO.episodeId
 	local isEpisodeUnlock = self.viewContainer:isEpisodeUnlock(episodeId)
 
 	if not isEpisodeUnlock and not self.viewContainer:getIsActFirstEnter() then
@@ -235,7 +264,7 @@ end
 function V3a7_Wmz_LevelView:_onStoryStart(storyId)
 	local latestStoryCo = self:_getLatestStoryCo()
 
-	if not latestStoryCo or latestStoryCo.afterStory ~= storyId then
+	if not latestStoryCo or latestStoryCo.storyClear ~= storyId then
 		return
 	end
 
@@ -259,7 +288,7 @@ function V3a7_Wmz_LevelView:_onEpisodePush()
 	local latestEpisodeId = latestStoryCo and latestStoryCo.id or 0
 	local bHasGame = self.viewContainer:bHasGame(latestEpisodeId)
 
-	if latestStoryCo and latestStoryCo.afterStory ~= 0 then
+	if latestStoryCo and latestStoryCo.storyClear ~= 0 then
 		return
 	end
 
@@ -316,7 +345,7 @@ function V3a7_Wmz_LevelView:_refreshItemList()
 
 	for i, episodeCO in ipairs(list or {}) do
 		local parentGO = self._goLevelItemContainerList[i]
-		local episodeId = episodeCO.id
+		local episodeId = episodeCO.episodeId
 		local item
 
 		if i > #self._storyItemList then
@@ -416,7 +445,7 @@ function V3a7_Wmz_LevelView:_playPathAnim()
 		return
 	end
 
-	self:playAnim_PathUnlock(self._finishStoryIndex)
+	self:playAnim_PathUnlock(self._finishStoryIndex + 1)
 	TaskDispatcher.cancelTask(self._unlockStory, self)
 	TaskDispatcher.runDelay(self._unlockStory, self, 0.33)
 end
@@ -475,7 +504,7 @@ function V3a7_Wmz_LevelView:_focusStoryItem(index, isTween, needPlayStory)
 	GameUtil.onDestroyViewMember_TweenId(self, "_moveTweenId")
 
 	if isTween then
-		self._moveTweenId = ZProj.TweenHelper.DOAnchorPosX(self._goMoveTrans, offsetX, kFocusDuration, self._onFocusEnd, self, needPlayStory and index or nil)
+		self._moveTweenId = csTweenHelper.DOAnchorPosX(self._goMoveTrans, offsetX, kFocusDuration, self._onFocusEnd, self, needPlayStory and index or nil)
 	else
 		recthelper.setAnchorX(self._goMoveTrans, offsetX)
 	end
@@ -514,22 +543,22 @@ function V3a7_Wmz_LevelView:_setFocusFlag(index)
 	self.viewContainer:simpleLockScreen(false)
 end
 
-local kPathAnimPrefix = "stages_path_"
-
-local function _animName_Path(animIndex)
-	animIndex = GameUtil.clamp(animIndex, 0, 8)
-
-	return kPathAnimPrefix .. tostring(animIndex)
-end
-
 function V3a7_Wmz_LevelView:playAnim_PathIdle(itemIndex)
-	local animName = _animName_Path(itemIndex)
+	itemIndex = GameUtil.clamp(itemIndex, 1, 9)
+
+	local animName = "idle" .. tostring(itemIndex)
 
 	self._lineAnimCmp:Play(animName, 0, 1)
 end
 
 function V3a7_Wmz_LevelView:playAnim_PathUnlock(itemIndex)
-	local animName = _animName_Path(itemIndex)
+	itemIndex = GameUtil.clamp(itemIndex, 1, 9)
+
+	if itemIndex <= 1 then
+		return
+	end
+
+	local animName = "move" .. tostring(itemIndex)
 
 	self._lineAnimCmp:Play(animName, 0, 0)
 end

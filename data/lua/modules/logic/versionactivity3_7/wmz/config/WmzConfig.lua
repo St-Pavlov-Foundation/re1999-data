@@ -56,10 +56,10 @@ function WmzConfig:getZoneCOList(mapId)
 	return list
 end
 
-function WmzConfig:getConst(id)
+function WmzConfig:getConst(id, fallback)
 	local CO = _constCO(id)
 
-	return CO and CO.strValue or nil
+	return CO and CO.strValue or fallback
 end
 
 function WmzConfig:getConstAsNumber(id, fallback)
@@ -68,6 +68,26 @@ end
 
 function WmzConfig:focusDurationSec()
 	return self:getConstAsNumber(1, 0.5)
+end
+
+function WmzConfig:titleDescDurationSec()
+	return self:getConstAsNumber(2, 3)
+end
+
+function WmzConfig:grayScaleHex()
+	return self:getConst(6, "#1c1209D9")
+end
+
+function WmzConfig:waitDurationSecOnCompletedZone()
+	return self:getConstAsNumber(4, 1.5)
+end
+
+function WmzConfig:waitDurationSecOnCompletedGame()
+	return self:getConstAsNumber(5, 2)
+end
+
+function WmzConfig:selectedCompletedFrameGrayScaleHex()
+	return self:getConst(3, "#828282ff")
 end
 
 WmzConfig.instance = WmzConfig.New()

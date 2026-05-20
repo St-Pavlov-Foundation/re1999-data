@@ -12,6 +12,7 @@ function SodacheRelicItem:init(go)
 	self.cardItem = MonoHelper.addNoUpdateLuaComOnceToGo(goCard, SodacheCardItem)
 
 	self.cardItem:showInfo()
+	self.cardItem:setShowStar(true)
 
 	self.goGrayBg = gohelper.findChild(go, "go_GrayBg")
 	self.goActiveBg = gohelper.findChild(go, "go_ActiveBg")
@@ -21,7 +22,6 @@ function SodacheRelicItem:init(go)
 	self.btnClick = gohelper.findChildButtonWithAudio(go, "btn_Click")
 
 	self:addClickCb(self.btnClick, self.onClick, self)
-	self:refreshPos()
 end
 
 function SodacheRelicItem:addEventListeners()
@@ -35,6 +35,11 @@ function SodacheRelicItem:onUpdateMO(mo)
 
 	self.cardItem:updateMo(SodacheCardMo.Create(mo.id))
 	self:refreshActiveStatus()
+	self:refreshPos()
+end
+
+function SodacheRelicItem:onDestroy()
+	TaskDispatcher.cancelTask(self.refreshActiveStatus, self)
 end
 
 function SodacheRelicItem:onClick()
@@ -73,22 +78,34 @@ function SodacheRelicItem:refreshActiveStatus()
 		gohelper.setActive(self.goActiveTag, canUp and level == 0)
 		gohelper.setActive(self.goUpTag, canUp and level ~= 0)
 	end
+
+	self.cardItem:setRelicGray(level == 0)
 end
 
 function SodacheRelicItem:onRelicUpgrade(mo)
+	self:refreshActiveStatus()
+
 	if self.data.id == mo.id then
-		self:refreshActiveStatus()
+		self.cardItem:refreshStar()
 	end
 end
 
 function SodacheRelicItem:onRelicUpgradeOneKey(relics)
+	local isChange = false
+
 	for _, relic in ipairs(relics) do
 		if relic.id == self.data.id then
-			self:refreshActiveStatus()
-			self.cardItem:playLevelUp(self.data.level == self.data.maxLevel)
+			isChange = true
 
 			break
 		end
+	end
+
+	if isChange then
+		self.cardItem:playLevelUp(self.data.level == self.data.maxLevel)
+		TaskDispatcher.runDelay(self.refreshActiveStatus, self, 0.34)
+	else
+		self:refreshActiveStatus()
 	end
 end
 

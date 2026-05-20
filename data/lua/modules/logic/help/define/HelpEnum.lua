@@ -110,6 +110,7 @@ HelpEnum.HelpId = {
 	Summon = 106,
 	RoomManufacture = 2200400,
 	TowerLimit = 2310006,
+	V3a7_Wmz_GameViewHelp = 3702001,
 	Season1_7SelectHeroHelp = 1700003,
 	EquipInfo = 142,
 	RougeInitTeamViewHelp = 19705,

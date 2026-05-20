@@ -82,6 +82,20 @@ function SodacheUnitMo:canTrigger()
 	return self.eventCo and self.eventCo.probability <= 0
 end
 
+function SodacheUnitMo:getShowIcon()
+	if not self.eventGroupCo then
+		return
+	end
+
+	if self.status == SodacheEnum.UnitStatus.Finish then
+		return
+	end
+
+	local icon = self.eventGroupCo.icon
+
+	return icon
+end
+
 function SodacheUnitMo:compareOrder(unitMo)
 	if not unitMo then
 		return self

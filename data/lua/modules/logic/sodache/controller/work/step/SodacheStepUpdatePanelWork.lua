@@ -4,7 +4,7 @@ module("modules.logic.sodache.controller.work.step.SodacheStepUpdatePanelWork", 
 
 local SodacheStepUpdatePanelWork = class("SodacheStepUpdatePanelWork", SodacheStepBaseWork)
 
-function SodacheStepUpdatePanelWork:onStart(context)
+function SodacheStepUpdatePanelWork:onWorkStart(context)
 	local insideMo = SodacheModel.instance:getInsideMo()
 
 	insideMo.panelBox.currPanel:init(self._stepMo.panel)

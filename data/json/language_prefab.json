@@ -27573,7 +27573,7 @@
   },
   {
     "id": "p_sodache_resultview_txt_currency",
-    "lang": "带出货币"
+    "lang": "获得回报"
   },
   {
     "id": "p_sodache_resultview_txt_roundEn",
@@ -27581,11 +27581,11 @@
   },
   {
     "id": "p_sodache_resultview_txt_value",
-    "lang": "带出价值"
+    "lang": "获得错层标尺"
   },
   {
     "id": "p_sodache_resultview_txt_card",
-    "lang": "带出卡牌"
+    "lang": "获得卡牌"
   },
   {
     "id": "p_sodache_resultview_txt_valueEn",
@@ -27629,11 +27629,11 @@
   },
   {
     "id": "p_sodache_costview_txt_WinCost",
-    "lang": "行动成功-理智极限"
+    "lang": "回收成功-理智极限"
   },
   {
     "id": "p_sodache_costview_txt_FailCost",
-    "lang": "行动失败-理智极限"
+    "lang": "失联-理智极限"
   },
   {
     "id": "p_sodache_relicview_txt_ViewAll",
@@ -27641,7 +27641,7 @@
   },
   {
     "id": "p_sodache_relicview_txt_WareHouse",
-    "lang": "一键收容"
+    "lang": "快速收藏"
   },
   {
     "id": "p_sodache_relicview_txt_tab1",
@@ -27722,14 +27722,6 @@
   {
     "id": "p_sodache_handbookview_txt_title",
     "lang": "<size=94>图</size>鉴"
-  },
-  {
-    "id": "p_sodache_handbookview_txt_card",
-    "lang": "造像"
-  },
-  {
-    "id": "p_sodache_handbookview_txt_monster",
-    "lang": "怪物"
   },
   {
     "id": "p_sodache_cardsubmitview_txt_title",
@@ -27845,7 +27837,7 @@
   },
   {
     "id": "p_sodache_mapselectview_txt_tips",
-    "lang": "选择勘探初始资金"
+    "lang": "选择挖掘初始资金"
   },
   {
     "id": "p_sodache_takeview_txt_quick",
@@ -27877,7 +27869,7 @@
   },
   {
     "id": "p_sodache_takeview_txt_cost",
-    "lang": "极限理智："
+    "lang": "理智极限："
   },
   {
     "id": "p_sodache_takeview_txt_empty",
@@ -27893,11 +27885,11 @@
   },
   {
     "id": "p_sodache_shopview_txt_market",
-    "lang": "神秘卖家"
+    "lang": "黄金集市"
   },
   {
     "id": "p_sodache_shopview_txt_market2",
-    "lang": "后勤补给"
+    "lang": "旧物贩售"
   },
   {
     "id": "p_sodache_mapview_txt_card",
@@ -27913,7 +27905,7 @@
   },
   {
     "id": "p_sodache_mapselecttimeview_txt_title",
-    "lang": "<size=80>选</size>择探险时段"
+    "lang": "<size=80>选</size>择挖掘时间"
   },
   {
     "id": "p_sodache_mapselecttimeview_txt_titleEn",
@@ -27929,7 +27921,7 @@
   },
   {
     "id": "p_sodache_mapaltarview_txt_desc",
-    "lang": "信仰等级越高，难度与奖励提升"
+    "lang": "提高信仰等级，将获得额外奖励，等级5时出现雨林的最终威胁，击败获得大量奖励"
   },
   {
     "id": "p_sodache_herogroupview_txt_preview",
@@ -27945,7 +27937,7 @@
   },
   {
     "id": "p_sodache_bagview_txt_cost",
-    "lang": "极限理智："
+    "lang": "理智极限："
   },
   {
     "id": "p_sodache_bagview_txt_tab1",
@@ -28560,26 +28552,6 @@
     "lang": "数据窃取已完成"
   },
   {
-    "id": "p_v3a7_rolestorygameview_txt_dec1",
-    "lang": "临时文本1"
-  },
-  {
-    "id": "p_v3a7_rolestorygameview_txt_dec2",
-    "lang": "临时文本2"
-  },
-  {
-    "id": "p_v3a7_rolestorygameview_txt_dec3",
-    "lang": "临时文本3"
-  },
-  {
-    "id": "p_v3a7_rolestorygameview_txt_dec4",
-    "lang": "临时文本4"
-  },
-  {
-    "id": "p_v3a7_rolestorygameview_txt_dec5",
-    "lang": "临时文本5"
-  },
-  {
     "id": "p_v3a7_anniversary3_signview_txt1",
     "lang": "14天内累计登录7天可得"
   },
@@ -28622,10 +28594,6 @@
   {
     "id": "p_v3a7_skingift_checkview_title",
     "lang": "奢豪荐选衣箱"
-  },
-  {
-    "id": "p_sodache_mapview_txt_cardtips",
-    "lang": "点击查看详情，拖至框外使用"
   },
   {
     "id": "p_v3a7_anniversary3_guessgame_mainview_txt_desc",
@@ -28754,5 +28722,37 @@
   {
     "id": "p_playerclothview_furious8",
     "lang": "使用能量卡"
+  },
+  {
+    "id": "p_v3a7_wmz_help_1_txt_1",
+    "lang": "<#FF906A>滑动拼图</color>以连通路线"
+  },
+  {
+    "id": "p_v3a7_wmz_help_2_txt_1",
+    "lang": "连通<#ff906a>所有路线</color>后，即可成功<#ff906a>回溯记忆</color>"
+  },
+  {
+    "id": "p_v3a7_wmz_help_3_txt_1",
+    "lang": "点击<#ff906a>光点</color>可切换至其他已完成的拼图"
+  },
+  {
+    "id": "p_sodache_shopview_txt_empty",
+    "lang": "点击左侧卡牌进行购买"
+  },
+  {
+    "id": "p_sodache_shopview_txt_choose",
+    "lang": "任选一组购买"
+  },
+  {
+    "id": "p_sodache_statusview_txt_evilTips",
+    "lang": "信仰等级越高，难度与奖励提升"
+  },
+  {
+    "id": "p_sodache_mapview_txt_newTask",
+    "lang": "当前任务"
+  },
+  {
+    "id": "p_sodache_relicupgradeview_txt_Upgrade",
+    "lang": "研究"
   }
 ]

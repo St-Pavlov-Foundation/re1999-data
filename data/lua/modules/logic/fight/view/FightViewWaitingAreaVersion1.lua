@@ -441,7 +441,13 @@ function FightViewWaitingAreaVersion1:_onSkillPlayFinish(entity, skillId, fightS
 		return
 	end
 
-	cardItem:playUsedCardFinish(self._skillTipsGO, self._waitingAreaGO)
+	local param = {}
+
+	if FightHelper.checkIsDevicePowerCard(skillId) then
+		param.noCardFade = true
+	end
+
+	cardItem:playUsedCardFinish(self._skillTipsGO, self._waitingAreaGO, param)
 end
 
 function FightViewWaitingAreaVersion1:_onDeviceSkillPlayFinish(entity, skillId, fightStepData)

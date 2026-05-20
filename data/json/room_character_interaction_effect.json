@@ -7157,7 +7157,7 @@
     "skinId": 314701,
     "id": 137314706,
     "point": "special1",
-    "effectRes": "v3a7_wmz/v3a7_wmz interact1",
+    "effectRes": "v3a7_wmz/v3a7_wmz_interact1",
     "animName": "interact"
   },
   {
@@ -7171,7 +7171,7 @@
     "skinId": 314702,
     "id": 137314708,
     "point": "special1",
-    "effectRes": "v3a7_wmz/v3a7_wmz interact1",
+    "effectRes": "v3a7_wmz/v3a7_wmz_interact1",
     "animName": "interact"
   },
   {

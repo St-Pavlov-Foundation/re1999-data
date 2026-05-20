@@ -10,6 +10,7 @@ local fields = {
 	min = 6,
 	id = 1,
 	icon = 3,
+	percent = 8,
 	max = 7
 }
 local primaryKey = {

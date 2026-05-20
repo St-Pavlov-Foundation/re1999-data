@@ -64,7 +64,7 @@ function SodacheStoreGoodsItem:updateInfo(storeGoodsCo)
 		logWarn("material type : %s, material id : %s not had rare attribute")
 	end
 
-	UISpriteSetMgr.instance:setAct174Sprite(self.imageRare, "act174_store_quality_" .. rare)
+	UISpriteSetMgr.instance:setV2a7MainActivitySprite(self.imageRare, "v2a7_store_quality_" .. rare)
 	gohelper.setActive(self.goMaxRareEffect, rare >= MaterialEnum.ItemRareSSR)
 
 	if productItemType == MaterialEnum.MaterialType.Equip then
@@ -100,7 +100,7 @@ function SodacheStoreGoodsItem:refreshRemainBuyCount()
 
 		self.remainBuyCount = 9999
 	else
-		local actId = VersionActivity3_1Enum.ActivityId.DouQuQu3Store
+		local actId = VersionActivity3_7Enum.ActivityId.SodacheStore
 
 		gohelper.setActive(self.txtLimitBuy.gameObject, true)
 

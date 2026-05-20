@@ -7,7 +7,7 @@ local showPanelReason = {
 	[20] = true
 }
 
-function SodacheStepDropCardWork:onStart(context)
+function SodacheStepDropCardWork:onWorkStart(context)
 	if SodacheModel.instance.____gmfastrun then
 		self:onDone(true)
 

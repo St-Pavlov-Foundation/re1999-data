@@ -10,6 +10,20 @@ function SodacheMapCardUseItem:init(go)
 	self.cardItem = MonoHelper.addNoUpdateLuaComOnceToGo(self.cardGo, SodacheCardItem)
 
 	self.cardItem:setOverrideClick(self.onCardClick, self)
+
+	self._btnUse = gohelper.findChildButtonWithAudio(go, "#btn_use")
+end
+
+function SodacheMapCardUseItem:addEventListeners()
+	self._btnUse:AddClickListener(self._onUseItem, self)
+end
+
+function SodacheMapCardUseItem:removeEventListeners()
+	self._btnUse:RemoveClickListener()
+end
+
+function SodacheMapCardUseItem:_onUseItem()
+	SodacheInsideRpc.instance:sendSodacheInsideSceneOperation(SodacheEnum.OperType.UseCard, tostring(self.data.serverMo.configId))
 end
 
 function SodacheMapCardUseItem:updateMo(data)

@@ -10,6 +10,12 @@ function SodacheShopItemMo:init(data)
 	self.buyCount = data.buyCount
 	self.goodCo = lua_sodache_goods.configDict[self.id]
 
+	if not self.goodCo then
+		logError("商品不存在" .. self.id)
+
+		return
+	end
+
 	local params = self.goodCo and string.splitToNumber(self.goodCo.cost, ":") or {}
 
 	self.price = params[2] or 0
@@ -24,6 +30,7 @@ function SodacheShopItemMo:init(data)
 
 	if #self.items == 1 then
 		self.itemType = GameUtil.getTbValue(self.items, 1, "serverMo", "itemCo", "type")
+		self.itemSubType = GameUtil.getTbValue(self.items, 1, "serverMo", "itemCo", "subType")
 	end
 end
 

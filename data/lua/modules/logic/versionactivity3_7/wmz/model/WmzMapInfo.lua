@@ -7,22 +7,58 @@ local decode = cjson.decode
 local ti = table.insert
 local sf = string.format
 
-function WmzMapInfo.s_makeEmpty(x, y)
-	return {
+function WmzMapInfo.s_makeEmpty(x, y, optCellInfo)
+	local res = {
 		x = x,
 		y = y,
 		floorType = WmzEnum.FloorType.PassableEmpty,
 		pathType = WmzEnum.FloorType.None
 	}
+
+	if optCellInfo then
+		res.zoneId = optCellInfo.zoneId
+		res.sprite = optCellInfo.sprite
+		res._fSprite = optCellInfo._fSprite
+	end
+
+	return res
 end
 
-function WmzMapInfo.s_makeVoid(x, y)
-	return {
+function WmzMapInfo.s_makeVoid(x, y, optCellInfo)
+	local res = {
 		x = x,
 		y = y,
 		floorType = WmzEnum.FloorType.Void,
 		pathType = WmzEnum.FloorType.None
 	}
+
+	if optCellInfo then
+		res.zoneId = optCellInfo.zoneId
+		res.sprite = optCellInfo.sprite
+		res._fSprite = optCellInfo._fSprite
+	end
+
+	return res
+end
+
+function WmzMapInfo.s_isStart(pt)
+	return pt == WmzEnum.PathType.L or pt == WmzEnum.PathType.T or pt == WmzEnum.PathType.R or pt == WmzEnum.PathType.B
+end
+
+function WmzMapInfo.s_isTile(pt, ft)
+	if WmzMapInfo.s_isStart(pt) then
+		return false
+	end
+
+	if pt == WmzEnum.PathType.MoveableNone then
+		return true
+	end
+
+	if ft ~= WmzEnum.FloorType.Passable then
+		return false
+	end
+
+	return pt ~= WmzEnum.PathType.None and pt ~= WmzEnum.PathType.__End
 end
 
 function WmzMapInfo:ctor()
@@ -72,7 +108,7 @@ function WmzMapInfo:mapCO()
 				local ptStr = WmzEnum.nameOfPT(cellInfo.pathType or WmzEnum.PathType.None)
 				local ftStr = WmzEnum.nameOfFT(cellInfo.floorType or WmzEnum.FloorType.Void)
 
-				ti(strBuf, sf("(%s,%s): pt:%s, ft:%s, gp:%s, sprite:%s", cellInfo.x, cellInfo.y, ptStr, ftStr, cellInfo.groupId or 0, cellInfo.sprite or "None"))
+				ti(strBuf, sf("(%s,%s): pt:%s, ft:%s, gp:%s, zId:%s, sprite:%s fsprite:%s", cellInfo.x, cellInfo.y, ptStr, ftStr, cellInfo.groupId or 0, cellInfo.zoneId or 0, cellInfo.sprite or "None", cellInfo._fSprite or "None"))
 			end
 
 			logError(table.concat(strBuf, "\n"))

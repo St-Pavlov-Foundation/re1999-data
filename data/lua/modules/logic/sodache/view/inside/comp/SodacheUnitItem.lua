@@ -61,8 +61,11 @@ end
 function SodacheUnitItem:updatePos()
 	local pos = self:getPos(self._unitMo.locationId)
 	local offsetPos = self._unitMo:getOffsetPos(self._unitMo.locationId)
+	local x = offsetPos.x + pos.x
+	local y = offsetPos.y + pos.y
+	local z = y / 1000
 
-	transformhelper.setLocalPos(self.trans, offsetPos.x + pos.x, offsetPos.y + pos.y, offsetPos.z + pos.z)
+	transformhelper.setLocalPos(self.trans, x, y, z)
 end
 
 function SodacheUnitItem:getPos(nodeId)
@@ -140,7 +143,7 @@ function SodacheUnitItem:moveTo(newLocationId, subPosId, reason, callback, callo
 
 		self.moveTargetPoints = allTargetPoints
 
-		self:moveToTargetPoint()
+		self:moveToTargetPoint(reason)
 
 		return
 	end
@@ -150,9 +153,18 @@ function SodacheUnitItem:moveTo(newLocationId, subPosId, reason, callback, callo
 	self:doMoveCallback()
 end
 
-function SodacheUnitItem:moveToTargetPoint()
+function SodacheUnitItem:moveToTargetPoint(reason)
 	if not self.moveTargetPoints or not self.moveTargetPoints[1] then
 		self:_onMoveEnd()
+
+		return
+	end
+
+	if reason == 3001 and self._unitMo.type == SodacheEnum.UnitType.Player then
+		local lastPoint = self.moveTargetPoints[#self.moveTargetPoints]
+
+		transformhelper.setLocalPos(self.trans, lastPoint.point.x, lastPoint.point.y, lastPoint.point.y / 1000)
+		SodacheController.instance:dispatchEvent(SodacheEvent.TweenCameraToNode, self._unitMo.locationId, self._unitMo.locationNo, self._onMoveEnd, self)
 
 		return
 	end
@@ -161,7 +173,7 @@ function SodacheUnitItem:moveToTargetPoint()
 	local point = target.point
 	local costTime = target.costTime
 
-	ZProj.TweenHelper.DOLocalMove(self.trans, point.x, point.y, point.z, costTime, self.moveToTargetPoint, self, nil, EaseType.Linear)
+	ZProj.TweenHelper.DOLocalMove(self.trans, point.x, point.y, point.y / 1000, costTime, self.moveToTargetPoint, self, nil, EaseType.Linear)
 end
 
 function SodacheUnitItem:_onMoveEnd()

@@ -19,8 +19,13 @@ function SodacheTakeView:onInitView()
 	self._gorightscroll = gohelper.findChild(self.viewGO, "right_container/#scroll_card")
 	self._txtcosttype = gohelper.findChildTextMesh(self.viewGO, "right_container/cost/titletxt")
 	self._txtnum = gohelper.findChildTextMesh(self.viewGO, "right_container/cost/#txt_num")
+	self._gosuccess = gohelper.findChild(self.viewGO, "right_container/cost/bg/go_success")
+	self._gofail = gohelper.findChild(self.viewGO, "right_container/cost/bg/go_fail")
 	self._btnquick = gohelper.findChildButtonWithAudio(self.viewGO, "btnlayout/#btn_quick")
 	self._btnconfirm = gohelper.findChildButtonWithAudio(self.viewGO, "btnlayout/#btn_confirm")
+	self._goeffect = gohelper.findChild(self.viewGO, "btnlayout/#go_preview/bg/vx_add")
+	self._txtpreview = gohelper.findChildTextMesh(self.viewGO, "btnlayout/#go_preview/#txt_preview")
+	self._gosortBg = gohelper.findChild(self.viewGO, "left_container/#go_Sort/#drop_mature/sortBg")
 end
 
 function SodacheTakeView:addEvents()
@@ -57,15 +62,20 @@ function SodacheTakeView:onOpen()
 		self._txtcosttype.text = luaLang("sodache_takeview_costcount")
 
 		local winCost = SodacheUtil.getAttr(SodacheEnum.AttrId.WinCost) + SodacheUtil.getAttr(SodacheEnum.AttrId.WinCostEx)
-		local failCost = SodacheUtil.getAttr(SodacheEnum.AttrId.FailCost) + SodacheUtil.getAttr(SodacheEnum.AttrId.WinCostEx)
+		local failCost = SodacheUtil.getAttr(SodacheEnum.AttrId.FailCost) + SodacheUtil.getAttr(SodacheEnum.AttrId.FailCostEx)
 		local costTotal = winCost
 
 		if not insideMo.prop.win then
 			costTotal = math.min(winCost, failCost)
 		end
 
+		costTotal = math.max(costTotal, 0)
+
 		self.selectMo:setCardCountOrCost(true, costTotal)
 	end
+
+	gohelper.setActive(self._gosuccess, insideMo.prop.win)
+	gohelper.setActive(self._gofail, not insideMo.prop.win)
 
 	local items1 = SodacheUtil.getItemsByCardType(SodacheEnum.CardType.Offering, SodacheEnum.BagType.Inside)
 	local items2 = SodacheUtil.getItemsByCardType(SodacheEnum.CardType.Supplies, SodacheEnum.BagType.Inside)
@@ -127,6 +137,14 @@ function SodacheTakeView:_onBatchSelect()
 end
 
 function SodacheTakeView:onConfirmHandle()
+	if #self.selectMo.selectItems == 0 and #self.selectMo.unSelectItems > 0 then
+		GameFacade.showMessageBox(MessageBoxIdDefine.SodacheMessageId373005, MsgBoxEnum.BoxType.Yes_No, self._realConfirm, nil, nil, self)
+	else
+		self:_realConfirm()
+	end
+end
+
+function SodacheTakeView:_realConfirm()
 	local items = {}
 
 	for i, v in ipairs(self.selectMo.selectItems) do
@@ -179,6 +197,7 @@ function SodacheTakeView:onDropValueChange(index)
 
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_set_volume_button)
 	self:_refreshLeftItems()
+	ZProj.UGUIHelper.SetGrayscale(self._gosortBg, index == DropIndex.All)
 end
 
 function SodacheTakeView:_refreshLeftItems()
@@ -225,6 +244,20 @@ function SodacheTakeView:_refreshRightItems()
 	else
 		self._txtnum.text = string.format("%d/%d", self.selectMo.selectCount, self.selectMo.selectTotalCount)
 	end
+
+	local totalCoin = 0
+
+	for i, v in ipairs(self.selectMo.selectItems) do
+		totalCoin = totalCoin + v.serverMo.count * v.serverMo.itemCo.price
+	end
+
+	if self._totalCoin and totalCoin > self._totalCoin then
+		gohelper.setActive(self._goeffect, false)
+		gohelper.setActive(self._goeffect, true)
+	end
+
+	self._totalCoin = totalCoin
+	self._txtpreview.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("sodache_takeview_preview"), totalCoin)
 end
 
 function SodacheTakeView:onQuickHandle()

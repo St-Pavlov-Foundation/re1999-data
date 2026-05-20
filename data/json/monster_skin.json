@@ -19085,7 +19085,12 @@
     "retangleIcon": "670410",
     "matId": 0,
     "weatherParam": 100001,
-    "topuiOffset": [],
+    "topuiOffset": [
+      0,
+      0,
+      0,
+      -13
+    ],
     "focusOffset": [],
     "showTemplate": 0,
     "noDeadEffect": 0,
@@ -19095,7 +19100,7 @@
     "mainBody": 0,
     "floatOffset": "",
     "bossSkillSpeed": 0,
-    "outlineWidth": 0.0,
+    "outlineWidth": 0.002,
     "clickBoxUnlimit": 0
   },
   {
@@ -19113,7 +19118,12 @@
     "retangleIcon": "670313",
     "matId": 0,
     "weatherParam": 100001,
-    "topuiOffset": [],
+    "topuiOffset": [
+      0,
+      0,
+      0,
+      -6.75
+    ],
     "focusOffset": [],
     "showTemplate": 0,
     "noDeadEffect": 0,
@@ -19123,7 +19133,7 @@
     "mainBody": 0,
     "floatOffset": "",
     "bossSkillSpeed": 0,
-    "outlineWidth": 0.0,
+    "outlineWidth": 0.002,
     "clickBoxUnlimit": 0
   },
   {

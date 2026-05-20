@@ -5,6 +5,8 @@ module("modules.logic.necrologiststory.view.item.V3A7NecrologistStoryEmailItem",
 local V3A7NecrologistStoryEmailItem = class("V3A7NecrologistStoryEmailItem", NecrologistStoryControlItem)
 
 function V3A7NecrologistStoryEmailItem:onInit()
+	self._isClick = false
+	self._anim = self.viewGO:GetComponent(typeof(UnityEngine.Animator))
 	self._btnOpen = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_open")
 	self._click = gohelper.getClick(self.viewGO)
 end
@@ -22,23 +24,52 @@ function V3A7NecrologistStoryEmailItem:removeEventListeners()
 end
 
 function V3A7NecrologistStoryEmailItem:_clickOpen()
+	if self._isClick then
+		return
+	end
+
+	self._isClick = true
+	self._clickCount = self._clickCount + 1
+
+	if self._anim then
+		self._anim:Play("click")
+	end
+
+	AudioMgr.instance:trigger(AudioEnum.NecrologistStory.play_ui_call_back_letter_expansion)
+	TaskDispatcher.runDelay(self._openMail, self, 0.5)
+end
+
+function V3A7NecrologistStoryEmailItem:_openMail()
+	TaskDispatcher.cancelTask(self._openMail, self)
+
 	local storyConfig = self:getStoryConfig()
 
-	ViewMgr.instance:openView(ViewName.V3A7_RoleStoryEmailView, {
+	ViewMgr.instance:openView(ViewName.NecrologistStoryTipView, {
 		tagId = storyConfig.param
 	})
 end
 
 function V3A7NecrologistStoryEmailItem:onCloseView(viewName)
 	if viewName == ViewName.NecrologistStoryTipView then
+		if self._anim then
+			self._anim:Play("open", 0, 1)
+		end
+
+		self._isClick = false
 		self._isFinish = true
 
-		self:onPlayFinish(true)
+		if self._clickCount <= 1 then
+			self:onPlayFinish(true)
+		end
 	end
 end
 
 function V3A7NecrologistStoryEmailItem:onPlayStory()
-	return
+	self._isFinish = false
+	self._clickCount = 0
+
+	NecrologistStoryController.instance:dispatchEvent(NecrologistStoryEvent.OnV3A7EmailItem)
+	AudioMgr.instance:trigger(AudioEnum.NecrologistStory.play_ui_call_back_interface_entry_04)
 end
 
 function V3A7NecrologistStoryEmailItem:isDone()
@@ -50,7 +81,7 @@ function V3A7NecrologistStoryEmailItem:caleHeight()
 end
 
 function V3A7NecrologistStoryEmailItem:onDestroy()
-	return
+	TaskDispatcher.cancelTask(self._openMail, self)
 end
 
 function V3A7NecrologistStoryEmailItem.getResPath()

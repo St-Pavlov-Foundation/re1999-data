@@ -11,12 +11,12 @@
   },
   {
     "id": 3,
-    "condition": "buildingLevel#104#2",
+    "condition": "buildingLevel#104#1",
     "desc": "打捞建筑达到1级"
   },
   {
     "id": 4,
-    "condition": "buildingLevel#104#3",
+    "condition": "buildingLevel#104#2",
     "desc": "打捞建筑达到2级"
   },
   {
@@ -38,5 +38,40 @@
     "id": 8,
     "condition": "level#7",
     "desc": "调查等级达到7"
+  },
+  {
+    "id": 9,
+    "condition": "haveItem#10000000:2000",
+    "desc": "消耗回报x2000"
+  },
+  {
+    "id": 10,
+    "condition": "haveItem#10000000:4000",
+    "desc": "消耗回报x4000"
+  },
+  {
+    "id": 11,
+    "condition": "haveItem#10000000:6000",
+    "desc": "消耗回报x6000"
+  },
+  {
+    "id": 12,
+    "condition": "haveItem#10000000:8000",
+    "desc": "消耗回报x8000"
+  },
+  {
+    "id": 13,
+    "condition": "haveItem#10000000:10000",
+    "desc": "消耗回报x10000"
+  },
+  {
+    "id": 14,
+    "condition": "haveItem#10000000:15000",
+    "desc": "消耗回报x15000"
+  },
+  {
+    "id": 15,
+    "condition": "haveItem#10000000:5000",
+    "desc": "消耗回报x5000"
   }
 ]

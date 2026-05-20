@@ -45,7 +45,7 @@ function SodacheMapSelectTimeView:_onCreateTimeItem(obj, data, index)
 	cardItem:updateMo(cardMo)
 
 	name.text = cardMo.serverMo.itemCo.name
-	desc.text = cardMo.serverMo.itemCo.funcDesc
+	desc.text = SodacheUtil.changeDescColor(cardMo.serverMo.itemCo.funcDesc)
 
 	self:addClickCb(click, self._onTimeClick, self, index)
 end

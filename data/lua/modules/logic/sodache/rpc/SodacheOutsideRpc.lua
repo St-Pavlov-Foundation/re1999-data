@@ -87,8 +87,11 @@ end
 
 function SodacheOutsideRpc:onReceiveSodacheBagUpdatePush(resultCode, msg)
 	if resultCode == 0 then
-		SodacheModel.instance:updateBag(msg.type, msg)
-		SodacheController.instance:dispatchEvent(SodacheEvent.OnBagUpdate, msg.type)
+		if SodacheUtil.isInside() then
+			SodacheMapUtil.instance:addPushToFlow("SodacheBagUpdatePush", msg)
+		else
+			SodacheBagUpdatePushWork.doMsg(msg)
+		end
 	end
 end
 

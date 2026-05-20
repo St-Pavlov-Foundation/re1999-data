@@ -18,8 +18,6 @@ function SkinSelfSelectItem:onInitView()
 	self._goGarment = gohelper.findChild(self.viewGO, "#go_Garment")
 	self._goAdvance = gohelper.findChild(self.viewGO, "#go_Advance")
 	self._goUnique = gohelper.findChild(self.viewGO, "#go_Unique")
-	self._simageUniqueBg = gohelper.findChildSingleImage(self.viewGO, "#go_Unique/#simage_iconbg")
-	self._simageUniqueIcon = gohelper.findChildSingleImage(self.viewGO, "#go_Unique/#simage_icon_1")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -74,6 +72,13 @@ function SkinSelfSelectItem:_editableInitView()
 	self._goProp = gohelper.findChild(self.viewGO, "#go_prop")
 	self._simageProp = gohelper.findChildSingleImage(self.viewGO, "#go_prop/#simage_prop")
 	self._txtPropNum = gohelper.findChildTextMesh(self.viewGO, "#go_prop/txt_Num")
+	self._simageUniqueBg = gohelper.findChildSingleImage(self.viewGO, "#go_Unique/#simage_iconbg")
+	self._simageUniqueIcon = gohelper.findChildSingleImage(self.viewGO, "#go_Unique/#simage_icon_1")
+	self._simagedreesing = gohelper.findChildSingleImage(self.viewGO, "#simage_dreesing")
+	self._skinRareGoList = self:getUserDataTb_()
+	self._skinRareGoList[CharacterEnum.SkinRare.Garment] = self._goGarment
+	self._skinRareGoList[CharacterEnum.SkinRare.Advanced] = self._goAdvance
+	self._skinRareGoList[CharacterEnum.SkinRare.Unique] = self._goUnique
 end
 
 function SkinSelfSelectItem:_editableAddEvents()
@@ -96,13 +101,15 @@ function SkinSelfSelectItem:onUpdateMO(mo)
 	gohelper.setActive(self._btnView, isSkin)
 	gohelper.setActive(self._simageicon, isSkin)
 	gohelper.setActive(self._simagesign, isSkin)
-	gohelper.setActive(self._goAdvance, isSkin)
-	gohelper.setActive(self._goGarment, isSkin)
-	gohelper.setActive(self._goUnique, isSkin)
+
+	for _, rareGo in pairs(self._skinRareGoList) do
+		gohelper.setActive(rareGo, isSkin)
+	end
+
 	gohelper.setActive(self._goGet, isSkin)
 	gohelper.setActive(self._txtskinname, isSkin)
-	gohelper.setActive(self._txtskinname, isSkin)
 	gohelper.setActive(self._goProp, not isSkin)
+	gohelper.setActive(self._simagedreesing, isSkin)
 
 	if not isSkin then
 		local itemPram = self.mo.itemParam
@@ -126,8 +133,7 @@ function SkinSelfSelectItem:onUpdateMO(mo)
 
 	gohelper.setActive(self._goGet, haveSkin)
 
-	local isAdvanced = StoreEnum.AdvancedSkinPackageMap[self.mo.itemId] == true
-	local isUnique = StoreEnum.UniqueSkinPackageMap[self.mo.itemId] == true
+	local isUnique = skinConfig.skinLevel == CharacterEnum.SkinRare.Unique
 
 	if isUnique then
 		self._simageUniqueIcon:LoadImage(ResUrl.getHeadSkinIconUnique(skinId))
@@ -135,6 +141,8 @@ function SkinSelfSelectItem:onUpdateMO(mo)
 	else
 		self._simageicon:LoadImage(ResUrl.getStoreSkin(skinId))
 	end
+
+	gohelper.setActive(self._simageicon, not isUnique)
 
 	self.haveSkin = haveSkin
 
@@ -147,10 +155,38 @@ function SkinSelfSelectItem:onUpdateMO(mo)
 	end
 
 	self:refreshGotAnim(haveSkin)
-	gohelper.setActive(self._goGarment, not isAdvanced and not isUnique)
-	gohelper.setActive(self._simageicon, not isUnique)
-	gohelper.setActive(self._goAdvance, isAdvanced)
-	gohelper.setActive(self._goUnique, isUnique)
+	self:refreshRare(skinConfig.skinLevel)
+	self:refreshSign(isUnique, skinConfig.skinSignature)
+end
+
+function SkinSelfSelectItem:refreshSign(isUnique, resPath)
+	gohelper.setActive(self._simagesign, not isUnique)
+	gohelper.setActive(self._simagedreesing, isUnique)
+
+	if isUnique then
+		local name = not string.nilorempty(resPath) and resPath or "img_dressing2"
+		local signTexturePath = ResUrl.getSignature(string.format("color/%s", name))
+
+		self._simagedreesing:LoadImage(signTexturePath)
+	end
+end
+
+function SkinSelfSelectItem:refreshRare(rare)
+	if rare == nil or rare == CharacterEnum.SkinRare.None then
+		logError("皮肤品级未配置,使用默认配置 请检查 id: " .. tostring(self.mo.id))
+
+		rare = CharacterEnum.SkinRare.Garment
+	end
+
+	if not self._skinRareGoList[rare] then
+		logError("item缺少对应品级节点,使用默认配置 请检查 id: " .. tostring(self.mo.id) .. " skinLevel: " .. tostring(rare))
+
+		rare = CharacterEnum.SkinRare.Garment
+	end
+
+	for index, rareGo in pairs(self._skinRareGoList) do
+		gohelper.setActive(rareGo, index == rare)
+	end
 end
 
 function SkinSelfSelectItem:getAnimator()
@@ -174,6 +210,7 @@ end
 
 function SkinSelfSelectItem:onDestroyView()
 	self._simageicon:UnLoadImage()
+	tabletool.clear(self._skinRareGoList)
 end
 
 return SkinSelfSelectItem

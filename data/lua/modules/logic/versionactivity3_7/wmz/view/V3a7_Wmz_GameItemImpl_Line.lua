@@ -24,7 +24,7 @@ function V3a7_Wmz_GameItemImpl_Line:removeEvents()
 end
 
 function V3a7_Wmz_GameItemImpl_Line:onDestroyView()
-	return
+	V3a7_Wmz_GameItemImpl_Line.super.onDestroyView(self)
 end
 
 function V3a7_Wmz_GameItemImpl_Line:ctor(...)
@@ -33,6 +33,11 @@ end
 
 function V3a7_Wmz_GameItemImpl_Line:_editableInitView()
 	V3a7_Wmz_GameItemImpl_Line.super._editableInitView(self)
+
+	self._imgLine01 = gohelper.findChildImage(self._goLine01, "")
+	self._imgLine02 = gohelper.findChildImage(self._goLine02, "")
+	self._imgLine03 = gohelper.findChildImage(self._goLine03, "")
+	self._imgLine04 = gohelper.findChildImage(self._goLine04, "")
 end
 
 function V3a7_Wmz_GameItemImpl_Line:setData(mo)
@@ -59,6 +64,24 @@ function V3a7_Wmz_GameItemImpl_Line:setData(mo)
 	end
 
 	self:localRotateZ(zRot)
+end
+
+local kWhite = Color.white
+
+function V3a7_Wmz_GameItemImpl_Line:setGrayScale(bSelected)
+	if bSelected then
+		self._imgLine01.color = kWhite
+		self._imgLine02.color = kWhite
+		self._imgLine03.color = kWhite
+		self._imgLine04.color = kWhite
+	else
+		local hexColor = WmzConfig.instance:grayScaleHex()
+
+		UIColorHelper.set(self._imgLine01, hexColor)
+		UIColorHelper.set(self._imgLine02, hexColor)
+		UIColorHelper.set(self._imgLine03, hexColor)
+		UIColorHelper.set(self._imgLine04, hexColor)
+	end
 end
 
 return V3a7_Wmz_GameItemImpl_Line

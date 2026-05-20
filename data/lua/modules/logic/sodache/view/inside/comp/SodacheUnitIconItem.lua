@@ -20,7 +20,7 @@ end
 function SodacheUnitIconItem:addEventListeners()
 	self._btnclick:AddClickListener(self._onClickIcon, self)
 	GameGlobalMgr.instance:registerCallback(GameStateEvent.OnScreenResize, self._onScreenResize, self)
-	SodacheController.instance:registerCallback(SodacheEvent.OnUnitMoveStep, self._refreshIconShow, self)
+	SodacheController.instance:registerCallback(SodacheEvent.OnUnitMoveStepEnd, self._refreshIconShow, self)
 	SodacheController.instance:registerCallback(SodacheEvent.OnAddUnits, self._refreshIconShow, self)
 	SodacheController.instance:registerCallback(SodacheEvent.OnRemoveUnits, self._refreshIconShow, self)
 	SodacheController.instance:registerCallback(SodacheEvent.OnScenePropUpdate, self._refreshIconShow, self)
@@ -30,7 +30,7 @@ end
 function SodacheUnitIconItem:removeEventListeners()
 	self._btnclick:RemoveClickListener()
 	GameGlobalMgr.instance:unregisterCallback(GameStateEvent.OnScreenResize, self._onScreenResize, self)
-	SodacheController.instance:unregisterCallback(SodacheEvent.OnUnitMoveStep, self._refreshIconShow, self)
+	SodacheController.instance:unregisterCallback(SodacheEvent.OnUnitMoveStepEnd, self._refreshIconShow, self)
 	SodacheController.instance:unregisterCallback(SodacheEvent.OnAddUnits, self._refreshIconShow, self)
 	SodacheController.instance:unregisterCallback(SodacheEvent.OnRemoveUnits, self._refreshIconShow, self)
 	SodacheController.instance:unregisterCallback(SodacheEvent.OnScenePropUpdate, self._refreshIconShow, self)
@@ -62,11 +62,11 @@ function SodacheUnitIconItem:_refreshIconShow()
 
 	if self._insideMo.prop.status == SodacheEnum.InsideSceneStatus.Normal then
 		for _, v in pairs(self._insideMo:getUnitsByNodeId(self._nodeId)) do
-			local icon = v.eventGroupCo.icon
+			local icon = v:getShowIcon()
 
 			if not string.nilorempty(icon) then
 				unitIcon = icon
-				isNoModel = string.nilorempty(v.prefabPath)
+				isNoModel = true
 
 				break
 			end

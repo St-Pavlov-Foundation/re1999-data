@@ -29,4 +29,9 @@ function V3a7_Wmz_LevelViewContainer:buildTabViews(tabContainerId)
 	end
 end
 
+function V3a7_Wmz_LevelViewContainer:onContainerDestroy()
+	UIBlockMgrExtend.setNeedCircleMv(true)
+	V3a7_Wmz_LevelViewContainer.super.onContainerDestroy(self)
+end
+
 return V3a7_Wmz_LevelViewContainer

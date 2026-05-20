@@ -5,6 +5,7 @@ module("modules.logic.sodache.view.inside.SodacheToastView", package.seeall)
 local SodacheToastView = class("SodacheToastView", BaseView)
 
 function SodacheToastView:onInitView()
+	self._anim = gohelper.findComponentAnim(self.viewGO)
 	self._txtTips = gohelper.findChildTextMesh(self.viewGO, "#go_Tips/#txt_Tips")
 end
 
@@ -30,9 +31,13 @@ function SodacheToastView:showNextToast()
 	local msg = table.remove(self._showList, 1)
 
 	if msg then
+		self._anim.enabled = true
+
+		self._anim:Play("open", 0, 0)
+
 		self._txtTips.text = msg
 
-		TaskDispatcher.runDelay(self.showNextToast, self, 0.5)
+		TaskDispatcher.runDelay(self.showNextToast, self, 1.5)
 	else
 		self:closeThis()
 	end

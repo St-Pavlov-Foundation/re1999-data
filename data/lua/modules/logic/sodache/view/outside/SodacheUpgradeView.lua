@@ -58,6 +58,8 @@ function SodacheUpgradeView:_btnUpgradeOnClick()
 end
 
 function SodacheUpgradeView:_editableInitView()
+	gohelper.setActive(self._goTaskItem, false)
+
 	self.canClick = true
 end
 
@@ -143,10 +145,6 @@ function SodacheUpgradeView:refreshTask(unlockPram)
 
 		local curNum, totalNum, itemId = SodacheUtil.checkUnlockCondition(unlockCfg.condition)
 
-		if itemId then
-			local itemCfg = SodacheConfig.instance:getItemCo(SodacheEnum.ItemType.Item, itemId)
-		end
-
 		txtCurrent.text = totalNum <= curNum and curNum or string.format("<color=#ce4949>%d</color>", curNum)
 		txtTotal.text = totalNum
 
@@ -157,9 +155,9 @@ function SodacheUpgradeView:refreshTask(unlockPram)
 		if curNum < totalNum then
 			self.canClick = false
 		end
-	end
 
-	gohelper.setActive(self._goTaskItem, false)
+		gohelper.setActive(go, true)
+	end
 end
 
 function SodacheUpgradeView.BuildEffectDesc(configs)

@@ -9,26 +9,6 @@ module("modules.logic.versionactivity3_7.wmz.model.WmzMapGridBase", package.seea
 
 local WmzMapGridBase = class("WmzMapGridBase")
 
-local function _isStart(pt)
-	return pt == WmzEnum.PathType.L or pt == WmzEnum.PathType.T or pt == WmzEnum.PathType.R or pt == WmzEnum.PathType.B
-end
-
-local function _isTile(pt, ft)
-	if _isStart(pt) then
-		return false
-	end
-
-	if pt == WmzEnum.PathType.MoveableNone then
-		return true
-	end
-
-	if ft ~= WmzEnum.FloorType.Passable then
-		return false
-	end
-
-	return pt ~= WmzEnum.PathType.None and pt ~= WmzEnum.PathType.__End
-end
-
 function WmzMapGridBase.s_ctor(mapMO, cellInfo)
 	local res
 
@@ -40,9 +20,9 @@ function WmzMapGridBase.s_ctor(mapMO, cellInfo)
 	local pt = cellInfo.pathType
 	local ft = cellInfo.floorType
 
-	if _isTile(pt, ft) then
+	if WmzMapInfo.s_isTile(pt, ft) then
 		res = WmzMapTile.New(mapMO, cellInfo)
-	elseif _isStart(pt) then
+	elseif WmzMapInfo.s_isStart(pt) then
 		res = WmzMapStart.New(mapMO, cellInfo)
 	else
 		res = WmzMapCell.New(mapMO, cellInfo)
@@ -55,6 +35,11 @@ function WmzMapGridBase:ctor(mapMO, cellInfo)
 	self._mapMO = mapMO
 	self._cellInfo = cellInfo
 	self.index = Vector2.New(cellInfo.x, cellInfo.y)
+
+	self:resetToInit()
+end
+
+function WmzMapGridBase:resetToInit()
 	self._tileId = -1
 	self._bWelded = false
 	self._bSelected = false
@@ -134,6 +119,10 @@ function WmzMapGridBase:zoneId()
 	return self._cellInfo.zoneId or 0
 end
 
+function WmzMapGridBase:bInZone()
+	return self:zoneId() ~= 0
+end
+
 function WmzMapGridBase:bHasGroup()
 	return self:groupId() ~= 0
 end
@@ -142,17 +131,21 @@ function WmzMapGridBase:sprite()
 	return self._cellInfo.sprite or ""
 end
 
+function WmzMapGridBase:finalSprite()
+	return self._cellInfo._fSprite or self:sprite()
+end
+
 function WmzMapGridBase:isStart()
 	local pt = self:pathType()
 
-	return _isStart(pt)
+	return WmzMapInfo.s_isStart(pt)
 end
 
 function WmzMapGridBase:isTile()
 	local pt = self:pathType()
 	local ft = self:floorType()
 
-	return _isTile(pt, ft)
+	return WmzMapInfo.s_isTile(pt, ft)
 end
 
 function WmzMapGridBase:setId(id)

@@ -6,7 +6,8 @@
     "retain": 0,
     "init": 0,
     "min": 0,
-    "max": 0
+    "max": 0,
+    "percent": 0
   },
   {
     "id": 10000002,
@@ -15,7 +16,8 @@
     "retain": 0,
     "init": 0,
     "min": 0,
-    "max": 0
+    "max": 0,
+    "percent": 0
   },
   {
     "id": 10000003,
@@ -24,7 +26,8 @@
     "retain": 0,
     "init": 0,
     "min": 0,
-    "max": 0
+    "max": 0,
+    "percent": 0
   },
   {
     "id": 10000004,
@@ -33,7 +36,8 @@
     "retain": 0,
     "init": 0,
     "min": 0,
-    "max": 0
+    "max": 0,
+    "percent": 0
   },
   {
     "id": 10000005,
@@ -42,7 +46,8 @@
     "retain": 0,
     "init": 0,
     "min": 0,
-    "max": 0
+    "max": 0,
+    "percent": 0
   },
   {
     "id": 10000006,
@@ -51,16 +56,18 @@
     "retain": 0,
     "init": 0,
     "min": 0,
-    "max": 0
+    "max": 0,
+    "percent": 0
   },
   {
     "id": 30001,
     "name": "",
     "icon": "",
     "retain": 0,
-    "init": 200,
+    "init": 120,
     "min": 0,
-    "max": 0
+    "max": 0,
+    "percent": 0
   },
   {
     "id": 30003,
@@ -69,7 +76,8 @@
     "retain": 0,
     "init": 2,
     "min": 1,
-    "max": 3
+    "max": 3,
+    "percent": 0
   },
   {
     "id": 30004,
@@ -78,34 +86,38 @@
     "retain": 0,
     "init": 0,
     "min": 0,
-    "max": 1
+    "max": 1,
+    "percent": 0
   },
   {
     "id": 30005,
     "name": "",
     "icon": "",
-    "retain": 0,
+    "retain": 1,
     "init": 1,
     "min": 1,
-    "max": 3
+    "max": 3,
+    "percent": 0
   },
   {
     "id": 30012,
-    "name": "撤离成功极限理智",
+    "name": "回收成功理智极限",
     "icon": "",
     "retain": 1,
-    "init": 200,
+    "init": 1000,
     "min": 0,
-    "max": 0
+    "max": 0,
+    "percent": 0
   },
   {
     "id": 30013,
-    "name": "撤离失败极限理智",
+    "name": "失联理智极限",
     "icon": "",
     "retain": 1,
-    "init": 30,
+    "init": 100,
     "min": 0,
-    "max": 0
+    "max": 0,
+    "percent": 0
   },
   {
     "id": 30014,
@@ -113,8 +125,9 @@
     "icon": "",
     "retain": 0,
     "init": 0,
-    "min": -200,
-    "max": 2000
+    "min": -1000,
+    "max": 2000,
+    "percent": 0
   },
   {
     "id": 30015,
@@ -122,17 +135,19 @@
     "icon": "",
     "retain": 0,
     "init": 0,
-    "min": -50,
-    "max": 2000
+    "min": -200,
+    "max": 2000,
+    "percent": 0
   },
   {
     "id": 30016,
-    "name": "",
+    "name": "耐心上限",
     "icon": "",
     "retain": 1,
-    "init": 200,
+    "init": 120,
     "min": 0,
-    "max": 0
+    "max": 0,
+    "percent": 0
   },
   {
     "id": 30017,
@@ -141,7 +156,8 @@
     "retain": 0,
     "init": 0,
     "min": 0,
-    "max": 0
+    "max": 0,
+    "percent": 0
   },
   {
     "id": 30018,
@@ -150,7 +166,8 @@
     "retain": 0,
     "init": 0,
     "min": 0,
-    "max": 0
+    "max": 0,
+    "percent": 0
   },
   {
     "id": 30019,
@@ -159,7 +176,8 @@
     "retain": 0,
     "init": 5,
     "min": 0,
-    "max": 0
+    "max": 0,
+    "percent": 0
   },
   {
     "id": 30020,
@@ -168,7 +186,8 @@
     "retain": 0,
     "init": 5,
     "min": 0,
-    "max": 0
+    "max": 0,
+    "percent": 0
   },
   {
     "id": 30021,
@@ -177,7 +196,8 @@
     "retain": 0,
     "init": 0,
     "min": 0,
-    "max": 0
+    "max": 0,
+    "percent": 0
   },
   {
     "id": 30022,
@@ -186,7 +206,8 @@
     "retain": 0,
     "init": 0,
     "min": -1000,
-    "max": 0
+    "max": 0,
+    "percent": 1
   },
   {
     "id": 40001,
@@ -195,16 +216,18 @@
     "retain": 0,
     "init": 0,
     "min": 0,
-    "max": 0
+    "max": 0,
+    "percent": 0
   },
   {
     "id": 40002,
     "name": "",
     "icon": "",
-    "retain": 0,
+    "retain": 1,
     "init": 2,
     "min": 1,
-    "max": 0
+    "max": 4,
+    "percent": 0
   },
   {
     "id": 40003,
@@ -213,25 +236,28 @@
     "retain": 1,
     "init": 0,
     "min": 0,
-    "max": 1
+    "max": 1,
+    "percent": 0
   },
   {
     "id": 40004,
-    "name": "",
+    "name": "旧物贩售价格",
     "icon": "",
     "retain": 1,
     "init": 0,
-    "min": -1000,
-    "max": 1000
+    "min": -500,
+    "max": 1000,
+    "percent": 1
   },
   {
     "id": 40005,
-    "name": "",
+    "name": "黄金集市价格",
     "icon": "",
     "retain": 1,
     "init": 0,
-    "min": -1000,
-    "max": 1000
+    "min": -500,
+    "max": 1000,
+    "percent": 1
   },
   {
     "id": 40006,
@@ -240,7 +266,8 @@
     "retain": 0,
     "init": 0,
     "min": 0,
-    "max": 0
+    "max": 0,
+    "percent": 0
   },
   {
     "id": 50001,
@@ -249,7 +276,8 @@
     "retain": 0,
     "init": 0,
     "min": 0,
-    "max": 0
+    "max": 5,
+    "percent": 0
   },
   {
     "id": 60001,
@@ -258,7 +286,8 @@
     "retain": 0,
     "init": 0,
     "min": 0,
-    "max": 0
+    "max": 0,
+    "percent": 1
   },
   {
     "id": 60002,
@@ -267,7 +296,8 @@
     "retain": 0,
     "init": 0,
     "min": 0,
-    "max": 0
+    "max": 0,
+    "percent": 1
   },
   {
     "id": 60003,
@@ -276,6 +306,7 @@
     "retain": 0,
     "init": 0,
     "min": 0,
-    "max": 0
+    "max": 0,
+    "percent": 1
   }
 ]

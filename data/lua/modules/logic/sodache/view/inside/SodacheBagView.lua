@@ -23,6 +23,7 @@ function SodacheBagView:onInitView()
 	self._goscrolltitle = gohelper.findChild(self.viewGO, "#scroll_bag/Viewport/Content/title")
 	self._goscrollcardgrid = gohelper.findChild(self.viewGO, "#scroll_bag/Viewport/Content/grid")
 	self._goscrollspace = gohelper.findChild(self.viewGO, "#scroll_bag/Viewport/Content/space")
+	self._goempty = gohelper.findChild(self.viewGO, "#go_empty")
 
 	gohelper.setActive(self._goscrolltitle, false)
 	gohelper.setActive(self._goscrollcardgrid, false)
@@ -85,6 +86,7 @@ function SodacheBagView:onOpen()
 	self.datas = datas
 
 	self:setCurSortType(SortType.Value, false)
+	gohelper.setActive(self._goempty, isEmpty)
 end
 
 function SodacheBagView:_onClickValue()

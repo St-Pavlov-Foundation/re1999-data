@@ -16,9 +16,7 @@ function SodacheCardQuickSelectView:onInitView()
 	self._goleftinfo = gohelper.findChild(self.viewGO, "root/left/sodache_cardinfoleft")
 	self._goempty = gohelper.findChild(self.viewGO, "root/left/#go_empty")
 	self._godices = gohelper.findChild(self.viewGO, "root/left/#go_dices")
-	self._gosuccessdiceitem = gohelper.findChild(self.viewGO, "root/left/#go_dices/#go_success/dices/#go_item")
-	self._gobigsuccess = gohelper.findChild(self.viewGO, "root/left/#go_dices/#go_bigsuccess")
-	self._gobigsuccessdiceitem = gohelper.findChild(self.viewGO, "root/left/#go_dices/#go_bigsuccess/dices/#go_item")
+	self._godice = gohelper.findChild(self.viewGO, "root/left/#go_dices")
 end
 
 function SodacheCardQuickSelectView:addEvents()
@@ -36,8 +34,13 @@ function SodacheCardQuickSelectView:removeEvents()
 end
 
 function SodacheCardQuickSelectView:onOpen()
-	self._cardInfo = MonoHelper.addNoUpdateLuaComOnceToGo(self._goleftinfo, SodacheCardInfoLeft)
+	self._diceComp = MonoHelper.addNoUpdateLuaComOnceToGo(self._godice, SodacheCheckDicePart)
+	self._cardInfo = MonoHelper.addNoUpdateLuaComOnceToGo(self._goleftinfo, SodacheQuickSelectCardInfoLeft)
+
+	self._cardInfo:setNoShowPassive()
+
 	self._isColorDec = true
+	self._attrRestraintIcons = self:getUserDataTb_()
 	self.mo = self.viewParam
 	self._simpleList = MonoHelper.addNoUpdateLuaComOnceToGo(self._scroll, SurvivalSimpleListPart)
 
@@ -66,6 +69,8 @@ function SodacheCardQuickSelectView:onOpen()
 		gohelper.setActive(self._goleftinfo, false)
 		gohelper.setActive(self._goempty, true)
 	end
+
+	self:updateRestraintIcon(curItem)
 end
 
 function SodacheCardQuickSelectView:_onClickSort()
@@ -113,14 +118,34 @@ end
 function SodacheCardQuickSelectView:_onClickItem(cardMo, isAdd)
 	if self.mo.isMultSelect or isAdd then
 		self._cardInfo:setData(cardMo)
+		self:updateRestraintIcon(cardMo)
 		gohelper.setActive(self._goempty, false)
 		gohelper.setActive(self._goleftinfo, true)
 	else
 		gohelper.setActive(self._goempty, true)
 		gohelper.setActive(self._goleftinfo, false)
+		self:updateRestraintIcon()
 	end
 
 	self:refreshCount()
+end
+
+function SodacheCardQuickSelectView:updateRestraintIcon(cardMo)
+	if cardMo then
+		local dict = cardMo.serverMo:getRefrainDict() or {}
+
+		for i, v in pairs(self._attrRestraintIcons) do
+			if dict[i] then
+				gohelper.setActive(v, true)
+			else
+				gohelper.setActive(v, false)
+			end
+		end
+	else
+		for i, v in pairs(self._attrRestraintIcons) do
+			gohelper.setActive(v, false)
+		end
+	end
 end
 
 function SodacheCardQuickSelectView:refreshCount()
@@ -147,41 +172,16 @@ function SodacheCardQuickSelectView:refreshDices()
 	end
 
 	gohelper.setActive(self._godices, true)
-
-	local arr = string.split(self.mo.choiceCo.verifyCond, "|") or {}
-
-	self:setDices(arr[1], self._gosuccessdiceitem)
-	self:setDices(arr[2], self._gobigsuccessdiceitem)
-	gohelper.setActive(self._gobigsuccess, arr[2])
-end
-
-function SodacheCardQuickSelectView:setDices(str, itemGo)
-	if string.nilorempty(str) then
-		return
-	end
-
-	local arr = GameUtil.splitString2(str, true, "&", ":") or {}
-	local datas = {}
-
-	for i, v in ipairs(arr) do
-		for count = 1, v[1] do
-			table.insert(datas, v[2])
-		end
-	end
-
-	gohelper.CreateObjList(self, self._createDices, datas, nil, itemGo)
-end
-
-function SodacheCardQuickSelectView:_createDices(obj, data, index)
-	local icon = gohelper.findChildImage(obj, "#image_icon")
-
-	UISpriteSetMgr.instance:setSodache2Sprite(icon, "sodache_touzi_" .. data)
+	self._diceComp:updateDices(self.mo.choiceCo.verifyCond)
 end
 
 function SodacheCardQuickSelectView:_createCareerIcon(obj, data, index)
+	local restraint = gohelper.findChild(obj, "#go_kezhi")
 	local icon = gohelper.findChildImage(obj, "icon")
 
 	UISpriteSetMgr.instance:setHeroGroupSprite(icon, "career_" .. data)
+
+	self._attrRestraintIcons[data] = restraint
 end
 
 function SodacheCardQuickSelectView:_onConfirmClick()

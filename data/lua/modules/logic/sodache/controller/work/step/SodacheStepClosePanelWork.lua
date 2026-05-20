@@ -4,7 +4,7 @@ module("modules.logic.sodache.controller.work.step.SodacheStepClosePanelWork", p
 
 local SodacheStepClosePanelWork = class("SodacheStepClosePanelWork", SodacheStepBaseWork)
 
-function SodacheStepClosePanelWork:onStart(context)
+function SodacheStepClosePanelWork:onWorkStart(context)
 	context.isEventEnd = true
 
 	local insideMo = SodacheModel.instance:getInsideMo()

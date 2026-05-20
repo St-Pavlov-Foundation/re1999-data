@@ -4,7 +4,7 @@ module("modules.logic.sodache.controller.work.step.SodacheStepActiveAltarWork", 
 
 local SodacheStepActiveAltarWork = class("SodacheStepActiveAltarWork", SodacheStepBaseWork)
 
-function SodacheStepActiveAltarWork:onStart(context)
+function SodacheStepActiveAltarWork:onWorkStart(context)
 	self:onDone(true)
 end
 

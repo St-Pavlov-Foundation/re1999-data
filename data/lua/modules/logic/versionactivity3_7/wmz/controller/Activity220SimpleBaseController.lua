@@ -181,6 +181,7 @@ function Activity220SimpleBaseController:startSimpleGameFlow(episodeId)
 
 	if not self._system:isEpisodePass(episodeId) then
 		flow:addWork(FunctionWork.New(self._onFirstPassEpisode, self, episodeId))
+		flow:addWork(WmzWork_WaitEvent.s_create(self, Activity220Event.ClientGameExit))
 	else
 		flow:addWork(FunctionWork.New(self.onTrackPassImpl, self))
 	end
@@ -203,6 +204,8 @@ function Activity220SimpleBaseController:_onFirstPassEpisode(episodeId)
 		local isWin = self._battle:isWin()
 
 		if not isWin then
+			self:dispatchEvent(Activity220Event.ClientGameExit)
+
 			return
 		end
 	end
@@ -219,6 +222,7 @@ function Activity220SimpleBaseController:_onSendAct220FinishEpisodeCallback(_, r
 	local episodeId = msg.episodeId
 
 	self._system:setNewFinishEpisode(episodeId)
+	self:dispatchEvent(Activity220Event.ClientGameExit)
 end
 
 function Activity220SimpleBaseController:onTrackPassImpl(bFirstPass)

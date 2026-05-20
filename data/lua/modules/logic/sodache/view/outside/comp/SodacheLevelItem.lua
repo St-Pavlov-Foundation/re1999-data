@@ -17,18 +17,27 @@ function SodacheLevelItem:init(go)
 	self.goLock = gohelper.findChild(go, "Lock")
 	self.txtLevelL = gohelper.findChildText(go, "Lock/txt_Level")
 	self.goUnlock = gohelper.findChild(go, "Unlock")
+	self.imageProgressU = gohelper.findChildImage(go, "Unlock/image_ProgressU")
 	self.txtLevelU = gohelper.findChildText(go, "Unlock/txt_Level")
 	self.goSelect = gohelper.findChild(go, "Select")
-	self.imageProgress = gohelper.findChildImage(go, "Select/image_Progress")
+	self.imageProgressS = gohelper.findChildImage(go, "Select/image_ProgressS")
 	self.txtLevelS = gohelper.findChildText(go, "Select/txt_Level")
 
 	local btnClick = gohelper.findChildButtonWithAudio(go, "btn_Click")
 
 	self:addClickCb(btnClick, self._btnOnClick, self)
+
+	self.matProgress = UnityEngine.Object.Instantiate(self.imageProgressS.material)
+	self.imageProgressU.material = self.matProgress
+	self.imageProgressS.material = self.matProgress
 end
 
 function SodacheLevelItem:onDestroy()
 	self:_killTween()
+
+	if self.matProgress then
+		UnityEngine.Object.Destroy(self.matProgress)
+	end
 end
 
 function SodacheLevelItem:_btnOnClick()
@@ -45,16 +54,21 @@ function SodacheLevelItem:setData(config)
 	self.txtLevelU.text = config.level
 	self.txtLevelS.text = config.level
 
+	local value = 0
+
 	if self.config.level == self.curLvl then
 		local nextCfg = lua_sodache_level.configDict[self.curLvl + 1]
 
 		if nextCfg then
-			self.imageProgress.fillAmount = outsideMo.prop.exp / nextCfg.cosume
+			value = outsideMo.prop.exp / nextCfg.cosume
+		else
+			value = 1
 		end
 	else
-		self.imageProgress.fillAmount = 1
+		value = self.config.level > self.curLvl and 0 or 1
 	end
 
+	SodacheUtil.setMaterialValue(self.matProgress, value)
 	self:refreshSelect()
 end
 

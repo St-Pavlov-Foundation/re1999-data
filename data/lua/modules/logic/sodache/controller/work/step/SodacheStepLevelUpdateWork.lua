@@ -4,7 +4,7 @@ module("modules.logic.sodache.controller.work.step.SodacheStepLevelUpdateWork", 
 
 local SodacheStepLevelUpdateWork = class("SodacheStepLevelUpdateWork", SodacheStepBaseWork)
 
-function SodacheStepLevelUpdateWork:onStart(context)
+function SodacheStepLevelUpdateWork:onWorkStart(context)
 	local propMo = SodacheModel.instance:getOutsideMo().prop
 	local params = self._stepMo.paramInt
 

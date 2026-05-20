@@ -632,6 +632,21 @@ function StoryModel:getStoryBranchOpts(stepId)
 	return opts
 end
 
+function StoryModel:getShowStoryBranchOpts(stepId)
+	local opts = {}
+	local optList = StoryStepModel.instance:getStepListById(stepId).optList
+
+	for _, opt in ipairs(optList) do
+		local isSpType = StoryModel.instance:isSpOptionType(opt.type)
+
+		if opt.conditionType == StoryEnum.OptionConditionType.None and not isSpType then
+			table.insert(opts, opt)
+		end
+	end
+
+	return opts
+end
+
 function StoryModel:hasConfigNotExist()
 	local stepCos = StoryStepModel.instance:getStepList()
 

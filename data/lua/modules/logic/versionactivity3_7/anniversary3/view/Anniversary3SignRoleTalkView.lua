@@ -56,16 +56,24 @@ end
 
 function Anniversary3SignRoleTalkView:_refreshUI()
 	local heroId = self._config and self._config.characterId
+	local skinId = self._config.skinid
 
-	if heroId then
+	if skinId == 0 and heroId then
 		local heroCo = HeroConfig.instance:getHeroCO(heroId)
-		local skinId = heroCo and heroCo.skinId
 
-		if skinId then
-			self._simagerole:LoadImage(ResUrl.getHeadIconImg(skinId), self._onRoleImageLoaded, self)
-		end
+		skinId = heroCo and heroCo.skinId
+	end
 
-		self._simagerolename:LoadImage(ResUrl.getSignature(heroCo.signature), self._onRoleNameLoaded, self)
+	if skinId then
+		self._simagerole:LoadImage(ResUrl.getHeadIconImg(skinId), self._onRoleImageLoaded, self)
+	end
+
+	self._simagerolename:LoadImage(ResUrl.getSignature(self._config.signature, "characterget"), self._onRoleNameLoaded, self)
+
+	if not LuaUtil.isEmptyStr(self._config.skinlocation) then
+		local pos = string.splitToNumber(self._config.skinlocation, "#")
+
+		transformhelper.setLocalPos(self._simagerole.gameObject.transform, pos[1], pos[2], 0)
 	end
 
 	self._txtrolename.text = self._config.name

@@ -27,10 +27,17 @@ function SodacheEventChoiceItem:_createItem(obj, data, index)
 	local desc2 = gohelper.findChildTextMesh(obj, "#btn_suboption/#txt_suboption2")
 	local condition = gohelper.findChildTextMesh(obj, "#btn_suboption/#txt_condition")
 	local icon = gohelper.findChildImage(obj, "#image_icon")
+	local gogray = gohelper.findChild(obj, "#btn_suboption_disable")
 	local co = lua_sodache_choice.configDict[data]
 	local isValid = SodacheOptionUtil.instance:checkOption(co.selectCond)
 
-	ZProj.UGUIHelper.SetGrayscale(btnBg or btn.gameObject, not isValid)
+	if btnBg then
+		ZProj.UGUIHelper.SetGrayscale(btnBg, not isValid)
+	end
+
+	if gogray then
+		gohelper.setActive(gogray, not isValid)
+	end
 
 	local conditionStr = SodacheOptionUtil.instance:getOptionConditionStr(co.selectCond)
 

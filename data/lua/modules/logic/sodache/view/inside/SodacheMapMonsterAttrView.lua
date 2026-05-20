@@ -5,7 +5,6 @@ module("modules.logic.sodache.view.inside.SodacheMapMonsterAttrView", package.se
 local SodacheMapMonsterAttrView = class("SodacheMapMonsterAttrView", BaseView)
 
 function SodacheMapMonsterAttrView:onInitView()
-	self._simageIcon = gohelper.findChildSingleImage(self.viewGO, "root/#image_icon")
 	self._gocareer = gohelper.findChild(self.viewGO, "root/basebg/#image_career")
 	self._btnclose = gohelper.findChildButtonWithAudio(self.viewGO, "root/#btn_Close")
 end
@@ -19,9 +18,6 @@ function SodacheMapMonsterAttrView:removeEvents()
 end
 
 function SodacheMapMonsterAttrView:onOpen()
-	self._simageIcon:LoadImage(ResUrl.getSodacheSingleBg("sodache_chess_05", "chess"))
-	recthelper.setSize(self._simageIcon.transform, 150, 408)
-
 	local insideMo = SodacheModel.instance:getInsideMo()
 
 	gohelper.CreateObjList(self, self._createCareer, insideMo.prop.bossCareerIds, nil, self._gocareer)

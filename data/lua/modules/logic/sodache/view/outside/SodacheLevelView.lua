@@ -20,14 +20,6 @@ function SodacheLevelView:onInitView()
 	end
 end
 
-function SodacheLevelView:addEvents()
-	return
-end
-
-function SodacheLevelView:removeEvents()
-	return
-end
-
 function SodacheLevelView:_editableInitView()
 	self.cellW = 250
 	self.cellH = 300
@@ -91,7 +83,7 @@ function SodacheLevelView:initLevelItem()
 	self.levelItemList = {}
 
 	for k, config in ipairs(self.levelCoList) do
-		local go = gohelper.cloneInPlace(self._goLevelItem)
+		local go = gohelper.cloneInPlace(self._goLevelItem, k)
 		local item = MonoHelper.addNoUpdateLuaComOnceToGo(go, SodacheLevelItem, k)
 
 		item:setData(config)
@@ -121,7 +113,7 @@ function SodacheLevelView:_onSelectIndex(index, noAnim)
 	if string.nilorempty(desc) then
 		self.animUnlock:Play("close")
 	else
-		self._txtDesc.text = desc
+		self._txtDesc.text = SodacheUtil.changeDescColor(desc)
 
 		self.animUnlock:Play("open")
 	end

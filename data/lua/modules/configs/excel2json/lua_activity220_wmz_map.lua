@@ -4,14 +4,15 @@ module("modules.configs.excel2json.lua_activity220_wmz_map", package.seeall)
 
 local lua_activity220_wmz_map = {}
 local fields = {
-	maxEnergy = 4,
-	zoneId4 = 8,
-	zoneId3 = 7,
+	guildId = 5,
+	zoneId4 = 9,
 	mapSizeX = 2,
+	zoneId2 = 7,
+	maxEnergy = 4,
+	zoneId3 = 8,
 	id = 1,
 	mapSizeY = 3,
-	zoneId2 = 6,
-	zoneId1 = 5
+	zoneId1 = 6
 }
 local primaryKey = {
 	"id"

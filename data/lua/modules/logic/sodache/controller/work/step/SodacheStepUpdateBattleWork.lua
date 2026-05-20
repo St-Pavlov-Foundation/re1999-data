@@ -4,7 +4,7 @@ module("modules.logic.sodache.controller.work.step.SodacheStepUpdateBattleWork",
 
 local SodacheStepUpdateBattleWork = class("SodacheStepUpdateBattleWork", SodacheStepBaseWork)
 
-function SodacheStepUpdateBattleWork:onStart(context)
+function SodacheStepUpdateBattleWork:onWorkStart(context)
 	context.isEventEnd = true
 
 	local battleInfo = SodacheModel.instance:getInsideMo().prop.battleInfo

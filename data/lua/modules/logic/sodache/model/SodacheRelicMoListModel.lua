@@ -4,14 +4,6 @@ module("modules.logic.sodache.model.SodacheRelicMoListModel", package.seeall)
 
 local SodacheRelicMoListModel = class("SodacheRelicMoListModel", ListScrollModel)
 
-function SodacheRelicMoListModel:onInit()
-	self:reInit()
-end
-
-function SodacheRelicMoListModel:reInit()
-	self:onInit()
-end
-
 function SodacheRelicMoListModel:setData(quality)
 	local relicMoList = {}
 	local outsideMo = SodacheModel.instance:getOutsideMo()

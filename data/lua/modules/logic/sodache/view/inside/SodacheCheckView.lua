@@ -11,17 +11,13 @@ function SodacheCheckView:onInitView()
 	self._gobaseitem = gohelper.findChild(self.viewGO, "event/Middle/base/Attr/Icons/sodache_diceitem")
 	self._goexitem = gohelper.findChild(self.viewGO, "event/Middle/extra/Attr/Icons/sodache_diceitem")
 	self._btncheck = gohelper.findChildButtonWithAudio(self.viewGO, "event/Bottom/#btn_throw")
-	self._gosuccessdiceitem = gohelper.findChild(self.viewGO, "event/Bottom/success/dices/#go_item")
-	self._gobigsuccess = gohelper.findChild(self.viewGO, "event/Bottom/bigsuccess")
-	self._gobigsuccessdiceitem = gohelper.findChild(self.viewGO, "event/Bottom/bigsuccess/dices/#go_item")
+	self._godice = gohelper.findChild(self.viewGO, "event/Bottom")
 	self._goresult = gohelper.findChild(self.viewGO, "result")
 	self._btnclose2 = gohelper.findChildButtonWithAudio(self.viewGO, "result/root/#btn_close")
 	self._goresultsuccess = gohelper.findChild(self.viewGO, "result/root/Bg/Success")
 	self._goresultbigsuccess2 = gohelper.findChild(self.viewGO, "result/root/Bg/BigSuccess")
 	self._goresultfail = gohelper.findChild(self.viewGO, "result/root/Bg/Fail")
-	self._goresultsuccessdiceitem = gohelper.findChild(self.viewGO, "result/root/Bottom/success/dices/#go_item")
-	self._goresultbigsuccess = gohelper.findChild(self.viewGO, "result/root/Bottom/bigsuccess")
-	self._goresultbigsuccessdiceitem = gohelper.findChild(self.viewGO, "result/root/Bottom/bigsuccess/dices/#go_item")
+	self._goresultdice = gohelper.findChild(self.viewGO, "result/root/Bottom")
 	self._goresultsuccessbg = gohelper.findChild(self.viewGO, "result/root/Bottom/success/go_successbg")
 	self._goresultbigsuccessbg = gohelper.findChild(self.viewGO, "result/root/Bottom/bigsuccess/go_successbg")
 	self._anim = gohelper.findComponentAnim(self.viewGO)
@@ -45,6 +41,8 @@ function SodacheCheckView:onOpen()
 	gohelper.setActive(self._goevent, true)
 	gohelper.setActive(self._goresult, false)
 
+	self._diceComp = MonoHelper.addNoUpdateLuaComOnceToGo(self._godice, SodacheCheckDicePart)
+	self._diceComp2 = MonoHelper.addNoUpdateLuaComOnceToGo(self._goresultdice, SodacheCheckDicePart)
 	self.useCardMo = self.viewParam.cardMo
 	self.choiceCo = self.viewParam.choiceCo
 
@@ -76,42 +74,12 @@ function SodacheCheckView:onOpen()
 	gohelper.setActive(self._goexdice, #exDiceList > 0)
 	gohelper.CreateObjList(self, self._createDiceItems, baseDiceList, nil, self._gobaseitem, SodacheDiceItem)
 	gohelper.CreateObjList(self, self._createDiceItems, exDiceList, nil, self._goexitem, SodacheDiceItem)
-
-	local arr = string.split(self.choiceCo.verifyCond, "|") or {}
-
-	self:setDices(arr[1], self._gosuccessdiceitem)
-	self:setDices(arr[2], self._gobigsuccessdiceitem)
-	self:setDices(arr[1], self._goresultsuccessdiceitem)
-	self:setDices(arr[2], self._goresultbigsuccessdiceitem)
-	gohelper.setActive(self._gobigsuccess, arr[2])
-	gohelper.setActive(self._goresultbigsuccess, arr[2])
+	self._diceComp:updateDices(self.choiceCo.verifyCond)
+	self._diceComp2:updateDices(self.choiceCo.verifyCond)
 end
 
 function SodacheCheckView:_createDiceItems(obj, data, index)
 	obj:setData(data, true)
-end
-
-function SodacheCheckView:setDices(str, itemGo)
-	if string.nilorempty(str) then
-		return
-	end
-
-	local arr = GameUtil.splitString2(str, true, "&", ":") or {}
-	local datas = {}
-
-	for i, v in ipairs(arr) do
-		for count = 1, v[1] do
-			table.insert(datas, v[2])
-		end
-	end
-
-	gohelper.CreateObjList(self, self._createDices, datas, nil, itemGo)
-end
-
-function SodacheCheckView:_createDices(obj, data, index)
-	local icon = gohelper.findChildImage(obj, "#image_icon")
-
-	UISpriteSetMgr.instance:setSodache2Sprite(icon, "sodache_touzi_" .. data)
 end
 
 function SodacheCheckView:onClickCheck()
@@ -135,6 +103,8 @@ local CloseAnimName = {
 }
 
 function SodacheCheckView:_onResult(resultMo)
+	AudioMgr.instance:trigger(AudioEnum3_7.Sodache.check_begin)
+
 	self._resultMo = resultMo
 	resultMo.isUse = true
 
@@ -173,6 +143,14 @@ function SodacheCheckView:_onResult(resultMo)
 end
 
 function SodacheCheckView:_delayShowResult()
+	if self._resultMo.result == SodacheEnum.CheckResult.Fail then
+		AudioMgr.instance:trigger(AudioEnum3_7.Sodache.check_fail)
+	elseif self._resultMo.result == SodacheEnum.CheckResult.Success then
+		AudioMgr.instance:trigger(AudioEnum3_7.Sodache.check_success)
+	elseif self._resultMo.result == SodacheEnum.CheckResult.BigSuccess then
+		AudioMgr.instance:trigger(AudioEnum3_7.Sodache.check_bigsuccess)
+	end
+
 	local openAnimName = CloseAnimName[self._resultMo.result] .. "open"
 
 	self._anim:Play(openAnimName, 0, 0)

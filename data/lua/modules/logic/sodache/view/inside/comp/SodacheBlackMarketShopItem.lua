@@ -13,7 +13,7 @@ function SodacheBlackMarketShopItem:init(go)
 	self._goselect = gohelper.findChild(go, "go_Select")
 	self._btnClick = gohelper.findChildButtonWithAudio(go, "btn_Click")
 	self._goitemparent = gohelper.findChild(go, "layout")
-	self._goitem = gohelper.findChild(go, "layout/CardItem")
+	self._goitem = gohelper.findChild(go, "#scroll_card/viewport/content/CardItem")
 	self._gosoldout = gohelper.findChild(go, "go_soldout")
 end
 
@@ -36,12 +36,8 @@ end
 function SodacheBlackMarketShopItem:updateMo(data)
 	self.data = data
 
-	gohelper.setActive(self._golimit, data.count > 0)
-	gohelper.setActive(self._gosoldout, data.count == 0)
-
-	if data.count > 0 then
-		self._txtlimit.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("sodache_shopview_limit"), data.count)
-	end
+	gohelper.setActive(self._golimit, false)
+	gohelper.setActive(self._gosoldout, false)
 
 	self._txtname.text = data.goodCo.bundleName
 
@@ -54,6 +50,13 @@ function SodacheBlackMarketShopItem:updateMo(data)
 	end
 
 	self:refreshCount()
+
+	if not self._cardAnims then
+		self._cardAnims = self:getUserDataTb_()
+	else
+		tabletool.clear(self._cardAnims)
+	end
+
 	gohelper.CreateObjList(self, self._createItem, data.items, self._goitemparent, self._goitem, SodacheCardItem)
 end
 
@@ -62,30 +65,30 @@ function SodacheBlackMarketShopItem:onShopItemUpdate(updateIds)
 		return
 	end
 
-	if self.cloneGo then
-		gohelper.destroy(self.cloneGo)
+	for i, anim in ipairs(self._cardAnims) do
+		anim:Play("shop", 0, 0)
 	end
-
-	local cloneGo = gohelper.cloneInPlace(self._goitemparent)
-
-	self.cloneGo = cloneGo
-
-	ZProj.TweenHelper.DOScale(cloneGo.transform, 0.2, 0.2, 0.2, 0.5)
-	ZProj.TweenHelper.DOFadeCanvasGroup(cloneGo, 1, 0.1, 0.5, self._destoryCloneGo, self)
-end
-
-function SodacheBlackMarketShopItem:_destoryCloneGo()
-	gohelper.destroy(self.cloneGo)
-
-	self.cloneGo = nil
 end
 
 function SodacheBlackMarketShopItem:_createItem(obj, data, index)
 	obj:updateMo(data)
+	obj:setOverrideClick(self._onClickCardItem, self, data)
+
+	self._cardAnims[index] = gohelper.findComponentAnim(obj.go)
 end
 
 function SodacheBlackMarketShopItem:refreshCount()
 	gohelper.setActive(self._goselect, self.cellParam:getGoodSelectCount(self.data.id) > 0)
+end
+
+function SodacheBlackMarketShopItem:_onClickCardItem(data)
+	if self.cellParam:getGoodSelectCount(self.data.id) > 0 then
+		ViewMgr.instance:openView(ViewName.SodacheCardDetailView, {
+			cardMo = data
+		})
+	else
+		self:_onClickItem()
+	end
 end
 
 function SodacheBlackMarketShopItem:_onClickItem()

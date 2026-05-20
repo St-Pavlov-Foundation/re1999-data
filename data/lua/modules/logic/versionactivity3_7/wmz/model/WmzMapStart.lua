@@ -40,16 +40,6 @@ function WmzMapStart:out_ZoneMask()
 	return self:_out_ZoneMask_default()
 end
 
-function WmzMapStart:setWelded(bWelded)
-	if isDebugBuild then
-		assert(false, "[setWelded] invalid call")
-	end
-end
-
-function WmzMapStart:bWelded()
-	return true
-end
-
 function WmzMapStart:setSelected(bSelected)
 	if isDebugBuild then
 		assert(false, "[setSelected] invalid call")

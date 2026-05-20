@@ -76911,7 +76911,7 @@
     "id": 1083200251,
     "type": 6,
     "group": 0,
-    "includeTypes": "10",
+    "includeTypes": "10#10",
     "excludeTypes": "",
     "takeStage": 303,
     "takeAct": "",
@@ -88112,7 +88112,7 @@
   },
   {
     "id": 103370001,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#4",
     "excludeTypes": "",
@@ -88129,7 +88129,7 @@
   },
   {
     "id": 103370011,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#6",
     "excludeTypes": "",
@@ -88146,7 +88146,7 @@
   },
   {
     "id": 103370021,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#5",
     "excludeTypes": "",
@@ -88163,7 +88163,7 @@
   },
   {
     "id": 103370031,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#5",
     "excludeTypes": "",
@@ -88180,7 +88180,7 @@
   },
   {
     "id": 103370041,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#4",
     "excludeTypes": "",
@@ -88197,7 +88197,7 @@
   },
   {
     "id": 103370051,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#6",
     "excludeTypes": "",
@@ -88214,7 +88214,7 @@
   },
   {
     "id": 103370061,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#3",
     "excludeTypes": "",
@@ -88231,7 +88231,7 @@
   },
   {
     "id": 103370071,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#3",
     "excludeTypes": "",
@@ -88248,7 +88248,7 @@
   },
   {
     "id": 103370081,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#5",
     "excludeTypes": "",
@@ -88265,7 +88265,7 @@
   },
   {
     "id": 103370091,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#6",
     "excludeTypes": "",
@@ -88282,7 +88282,7 @@
   },
   {
     "id": 103370101,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#5",
     "excludeTypes": "",
@@ -88299,7 +88299,7 @@
   },
   {
     "id": 103370111,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#4",
     "excludeTypes": "",
@@ -88316,7 +88316,7 @@
   },
   {
     "id": 103370121,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#2",
     "excludeTypes": "",
@@ -88333,7 +88333,7 @@
   },
   {
     "id": 103370131,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#3",
     "excludeTypes": "",
@@ -88350,7 +88350,7 @@
   },
   {
     "id": 103370141,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#4",
     "excludeTypes": "",
@@ -88367,7 +88367,7 @@
   },
   {
     "id": 103370151,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#6",
     "excludeTypes": "",
@@ -88384,7 +88384,7 @@
   },
   {
     "id": 103370161,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#7",
     "excludeTypes": "",
@@ -88401,7 +88401,7 @@
   },
   {
     "id": 103370171,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#4",
     "excludeTypes": "",
@@ -88418,7 +88418,7 @@
   },
   {
     "id": 103370181,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#6",
     "excludeTypes": "",
@@ -88435,7 +88435,7 @@
   },
   {
     "id": 103370191,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#7",
     "excludeTypes": "",
@@ -88452,7 +88452,7 @@
   },
   {
     "id": 103370201,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#4",
     "excludeTypes": "",
@@ -88469,7 +88469,7 @@
   },
   {
     "id": 103370211,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#5",
     "excludeTypes": "",
@@ -88486,7 +88486,7 @@
   },
   {
     "id": 103370221,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#6",
     "excludeTypes": "",
@@ -88503,7 +88503,7 @@
   },
   {
     "id": 103370231,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#4",
     "excludeTypes": "",
@@ -88520,7 +88520,7 @@
   },
   {
     "id": 103370241,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#4",
     "excludeTypes": "",
@@ -88537,7 +88537,7 @@
   },
   {
     "id": 103370251,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#4",
     "excludeTypes": "",
@@ -88554,7 +88554,7 @@
   },
   {
     "id": 103370261,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#4",
     "excludeTypes": "",
@@ -88571,7 +88571,7 @@
   },
   {
     "id": 103370271,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#4",
     "excludeTypes": "",
@@ -88588,7 +88588,7 @@
   },
   {
     "id": 103370281,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#4",
     "excludeTypes": "",
@@ -88605,7 +88605,7 @@
   },
   {
     "id": 103370291,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#4",
     "excludeTypes": "",
@@ -88799,7 +88799,7 @@
     "takeStage": -1,
     "takeAct": "",
     "cannotRemove": false,
-    "dontShowFloat": 1,
+    "dontShowFloat": 0,
     "removeNum": 0,
     "skipDelay": 0,
     "matSort": 0,
@@ -88816,7 +88816,7 @@
     "takeStage": -1,
     "takeAct": "",
     "cannotRemove": false,
-    "dontShowFloat": 1,
+    "dontShowFloat": 0,
     "removeNum": 0,
     "skipDelay": 0,
     "matSort": 0,
@@ -89183,7 +89183,7 @@
   },
   {
     "id": 1033760020,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "1",
     "excludeTypes": "",
@@ -89268,7 +89268,7 @@
   },
   {
     "id": 103374118,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "1",
     "excludeTypes": "",
@@ -89302,7 +89302,7 @@
   },
   {
     "id": 103374120,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "1",
     "excludeTypes": "",
@@ -89319,7 +89319,7 @@
   },
   {
     "id": 103374322,
-    "type": 5,
+    "type": 9,
     "group": 0,
     "includeTypes": "2",
     "excludeTypes": "",
@@ -89336,7 +89336,7 @@
   },
   {
     "id": 1033700110,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#20",
     "excludeTypes": "",
@@ -89353,7 +89353,7 @@
   },
   {
     "id": 1033700120,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#20",
     "excludeTypes": "",
@@ -89370,7 +89370,7 @@
   },
   {
     "id": 1033701310,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#20",
     "excludeTypes": "",
@@ -89387,7 +89387,7 @@
   },
   {
     "id": 1033701320,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#20",
     "excludeTypes": "",
@@ -89404,7 +89404,7 @@
   },
   {
     "id": 1033702420,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#20",
     "excludeTypes": "",
@@ -89421,7 +89421,7 @@
   },
   {
     "id": 1033702620,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#20",
     "excludeTypes": "",
@@ -89455,7 +89455,7 @@
   },
   {
     "id": 103373051,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "1",
     "excludeTypes": "",
@@ -89489,7 +89489,7 @@
   },
   {
     "id": 103373142,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "1",
     "excludeTypes": "",
@@ -89506,7 +89506,7 @@
   },
   {
     "id": 103373150,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "1",
     "excludeTypes": "",
@@ -89523,7 +89523,7 @@
   },
   {
     "id": 103373151,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "1",
     "excludeTypes": "",
@@ -89540,7 +89540,7 @@
   },
   {
     "id": 103373152,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "1",
     "excludeTypes": "",
@@ -89557,7 +89557,7 @@
   },
   {
     "id": 103373153,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "1",
     "excludeTypes": "",
@@ -89574,7 +89574,7 @@
   },
   {
     "id": 103373154,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "1",
     "excludeTypes": "",
@@ -89591,7 +89591,7 @@
   },
   {
     "id": 103373155,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "1",
     "excludeTypes": "",
@@ -89608,7 +89608,7 @@
   },
   {
     "id": 103373156,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "1",
     "excludeTypes": "",
@@ -89625,7 +89625,7 @@
   },
   {
     "id": 103373157,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#3",
     "excludeTypes": "",
@@ -89642,7 +89642,7 @@
   },
   {
     "id": 103371005,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#10",
     "excludeTypes": "",
@@ -89659,7 +89659,7 @@
   },
   {
     "id": 103371006,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#10",
     "excludeTypes": "",
@@ -89676,7 +89676,7 @@
   },
   {
     "id": 103371007,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10#10",
     "excludeTypes": "",
@@ -89693,7 +89693,7 @@
   },
   {
     "id": 1033770010,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "1",
     "excludeTypes": "",
@@ -89710,7 +89710,7 @@
   },
   {
     "id": 1033770020,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "1",
     "excludeTypes": "",
@@ -89727,7 +89727,7 @@
   },
   {
     "id": 1033770030,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "1",
     "excludeTypes": "",
@@ -89744,7 +89744,7 @@
   },
   {
     "id": 1033770040,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "1",
     "excludeTypes": "",
@@ -89761,7 +89761,7 @@
   },
   {
     "id": 1033770050,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "1",
     "excludeTypes": "",
@@ -89778,7 +89778,7 @@
   },
   {
     "id": 1033770060,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "1",
     "excludeTypes": "",
@@ -89795,7 +89795,7 @@
   },
   {
     "id": 1033770070,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "1",
     "excludeTypes": "",
@@ -89812,7 +89812,7 @@
   },
   {
     "id": 1033770080,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "1",
     "excludeTypes": "",
@@ -91378,7 +91378,7 @@
     "id": 31470004,
     "type": 8,
     "group": 0,
-    "includeTypes": "10",
+    "includeTypes": "10#10",
     "excludeTypes": "",
     "takeStage": -1,
     "takeAct": "",
@@ -91393,7 +91393,7 @@
   },
   {
     "id": 31470005,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "10",
     "excludeTypes": "",
@@ -91494,6 +91494,23 @@
     "sortPriority": 0
   },
   {
+    "id": 31470011,
+    "type": 9,
+    "group": 0,
+    "includeTypes": "10#1",
+    "excludeTypes": "",
+    "takeStage": -1,
+    "takeAct": "",
+    "cannotRemove": true,
+    "dontShowFloat": 0,
+    "removeNum": 0,
+    "skipDelay": 0,
+    "matSort": 0,
+    "aniSort": 0,
+    "playEffect": 0,
+    "sortPriority": 0
+  },
+  {
     "id": 116370001,
     "type": 1,
     "group": 0,
@@ -91529,7 +91546,7 @@
   },
   {
     "id": 116370311,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "1",
     "excludeTypes": "",
@@ -91546,7 +91563,7 @@
   },
   {
     "id": 116370312,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "1",
     "excludeTypes": "",
@@ -91614,7 +91631,7 @@
   },
   {
     "id": 116371011,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "1",
     "excludeTypes": "",
@@ -91631,7 +91648,7 @@
   },
   {
     "id": 116371012,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "1",
     "excludeTypes": "",
@@ -91716,7 +91733,7 @@
   },
   {
     "id": 116371113,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "1",
     "excludeTypes": "",
@@ -91767,7 +91784,7 @@
   },
   {
     "id": 109371002,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "1",
     "excludeTypes": "",
@@ -91784,13 +91801,47 @@
   },
   {
     "id": 109371003,
-    "type": 8,
+    "type": 9,
     "group": 0,
     "includeTypes": "1",
     "excludeTypes": "",
     "takeStage": -1,
     "takeAct": "",
     "cannotRemove": true,
+    "dontShowFloat": 0,
+    "removeNum": 0,
+    "skipDelay": 0,
+    "matSort": 0,
+    "aniSort": 0,
+    "playEffect": 0,
+    "sortPriority": 0
+  },
+  {
+    "id": 109371004,
+    "type": 10,
+    "group": 0,
+    "includeTypes": "1",
+    "excludeTypes": "",
+    "takeStage": -1,
+    "takeAct": "",
+    "cannotRemove": false,
+    "dontShowFloat": 0,
+    "removeNum": 0,
+    "skipDelay": 0,
+    "matSort": 0,
+    "aniSort": 0,
+    "playEffect": 0,
+    "sortPriority": 0
+  },
+  {
+    "id": 109371005,
+    "type": 9,
+    "group": 0,
+    "includeTypes": "5",
+    "excludeTypes": "",
+    "takeStage": -1,
+    "takeAct": "",
+    "cannotRemove": false,
     "dontShowFloat": 0,
     "removeNum": 0,
     "skipDelay": 0,

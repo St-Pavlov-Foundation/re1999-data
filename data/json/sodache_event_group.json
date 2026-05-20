@@ -98,7 +98,13 @@
   {
     "groupId": 403,
     "force": 200,
-    "icon": "sodache_map_icon_4",
+    "icon": "sodache_map_icon_8",
+    "hide": 0
+  },
+  {
+    "groupId": 500,
+    "force": 0,
+    "icon": "",
     "hide": 0
   },
   {

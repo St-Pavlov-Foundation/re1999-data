@@ -14,10 +14,7 @@ end
 function WmzGameStartFlow:onStart()
 	self.viewObj:_clearCache()
 	self.viewObj:_refreshMap()
-	self.viewObj:_refreshItems()
-	self.viewObj:setText_txtTarget(GameUtil.getSubPlaceholderLuaLang(luaLang("V3a7_Wmz_GameView_txtTarget"), {
-		self.viewContainer:zoneClearCurAndMax()
-	}))
+	self.viewObj:setEnableDragTiles(nil, true)
 end
 
 return WmzGameStartFlow

@@ -11,6 +11,7 @@ function SodacheMapSelectView:onInitView()
 	self._gonormal = gohelper.findChild(self.viewGO, "#go_normalmask")
 	self._gohard = gohelper.findChild(self.viewGO, "#go_difficultymask")
 	self._mapItemRoot = gohelper.findChild(self.viewGO, "#go_mapcontent/#go_mapItems")
+	self._gotypecontainer = gohelper.findChild(self.viewGO, "#go_ticketcontainer")
 	self._gotypeitem = gohelper.findChild(self.viewGO, "#go_ticketcontainer/types/item")
 	self._gocoin = gohelper.findChild(self.viewGO, "#go_topright/currencyview")
 	self._goswitch = gohelper.findChild(self.viewGO, "#go_switchmodecontainer")
@@ -19,6 +20,9 @@ function SodacheMapSelectView:onInitView()
 	self._goHardSelect = gohelper.findChild(self.viewGO, "#go_switchmodecontainer/#go_hard")
 	self._animHard = gohelper.findComponentAnim(self._gohard)
 	self._animSwitch = gohelper.findComponentAnim(self._goswitch)
+
+	self._animHard:Play("close", 0, 1)
+	self._animHard:Update(0)
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -37,13 +41,25 @@ function SodacheMapSelectView:_editableInitView()
 	MonoHelper.addNoUpdateLuaComOnceToGo(self._gocoin, SodacheCurrencyComp, {
 		bagType = SodacheEnum.BagType.Outside
 	})
+
+	self._pos = self:getUserDataTb_()
+
+	gohelper.setActive(self._gotypeitem, false)
+
+	for i = 1, 4 do
+		local pos = gohelper.findChild(self.viewGO, "#go_ticketcontainer/types/pos" .. i)
+
+		self._pos[i] = gohelper.clone(self._gotypeitem, pos, "Pos" .. i)
+
+		recthelper.setAnchor(self._pos[i].transform, 0, 0)
+		gohelper.setActive(self._pos[i], false)
+	end
 end
 
 function SodacheMapSelectView:onOpen()
 	gohelper.setActive(self._gohard, true)
-	self._animHard:Play("close", 0, 1)
 
-	self._isRookie = SodacheModel.instance:getOutsideMo().prop.rookie
+	self._isRookie = SodacheUtil.isRookie()
 
 	gohelper.setActive(self._goswitch, not self._isRookie and SodacheUtil.isOpen(SodacheEnum.OpenId.HardMode))
 
@@ -71,10 +87,12 @@ function SodacheMapSelectView:switchMode()
 
 	UIBlockHelper.instance:startBlock("SodacheMapSelectView_SwitchMode", 0.167)
 	self._animSwitch:Play("refresh", 0, 0)
+	ZProj.TweenHelper.DOAnchorPosX(self._gotypecontainer.transform, 400, 0.167)
 	TaskDispatcher.runDelay(self._delaySwitchMode, self, 0.167)
 end
 
 function SodacheMapSelectView:_delaySwitchMode()
+	ZProj.TweenHelper.DOAnchorPosX(self._gotypecontainer.transform, -347.7, 0.3)
 	self:setMode(self._toMode)
 
 	self._toMode = nil
@@ -115,7 +133,15 @@ function SodacheMapSelectView:_onMapItemChange()
 
 	self._selectId = nil
 
-	gohelper.CreateObjList(self, self._createTypeItem, arr, nil, self._gotypeitem)
+	if #arr == 1 then
+		gohelper.setActive(self._pos[2], true)
+		self:_createTypeItem(self._pos[2], arr[1], 1)
+	else
+		for i = 1, 4 do
+			gohelper.setActive(self._pos[i], true)
+			self:_createTypeItem(self._pos[i], arr[i], i)
+		end
+	end
 end
 
 function SodacheMapSelectView:_createTypeItem(obj, data, index)
@@ -148,10 +174,20 @@ function SodacheMapSelectView:_createTypeItem(obj, data, index)
 
 	name.text = co.name
 	desc.text = co.tips
-	cost.text = -costCoin
 	name2.text = co.name
 	desc2.text = co.tips
-	cost2.text = -costCoin
+
+	local coinCount = SodacheUtil.getItemCount(SodacheEnum.CurrencyId.Coin)
+
+	if coinCount < costCoin then
+		local costDesc = string.format("<color=#E5482B>-%d</color>", costCoin)
+
+		cost.text = costDesc
+		cost2.text = costDesc
+	else
+		cost.text = -costCoin
+		cost2.text = -costCoin
+	end
 
 	gohelper.setActive(select, true)
 	gohelper.setActive(unselect, true)

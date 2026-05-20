@@ -13,6 +13,7 @@ function SodacheResultView:onInitView()
 	self._txtvalue2 = gohelper.findChildTextMesh(self.viewGO, "layout/#go_value/#txt_value")
 	self._gocard = gohelper.findChild(self.viewGO, "layout/#go_card")
 	self._gocardItem = gohelper.findChild(self.viewGO, "layout/#go_card/#scroll_card/viewport/content/carditem")
+	self._animlayout = gohelper.findChildAnim(self.viewGO, "layout")
 	self._goeffect1 = gohelper.findChild(self.viewGO, "#add_num")
 	self._goeffect2 = gohelper.findChild(self.viewGO, "#fly")
 end
@@ -27,6 +28,12 @@ end
 
 function SodacheResultView:onOpen()
 	local isWin = self.viewParam.isWin
+
+	if isWin then
+		AudioMgr.instance:trigger(AudioEnum3_7.Sodache.settle_win)
+	else
+		AudioMgr.instance:trigger(AudioEnum3_7.Sodache.settle_lose)
+	end
 
 	self._anim:Play(isWin and "success" or "fail")
 	gohelper.setActive(self._gofail, not isWin)
@@ -80,8 +87,22 @@ function SodacheResultView:onOpen()
 	self._anims = self:getUserDataTb_()
 
 	gohelper.setActive(self._gocard, #self._datas > 0)
-	gohelper.CreateObjList(self, self._createCardList, self._datas, nil, self._gocardItem)
+
+	self._isHaveNoSell = false
+
 	TaskDispatcher.runDelay(self._delayPlayAnim, self, 1)
+
+	if #self._datas > 0 then
+		gohelper.CreateObjList(self, self._createCardList, self._datas, nil, self._gocardItem)
+
+		if not self._isHaveNoSell then
+			TaskDispatcher.runDelay(self._hideCard, self, 2.2)
+		end
+	end
+end
+
+function SodacheResultView:_hideCard()
+	self._animlayout:Play("card_close")
 end
 
 function SodacheResultView:_delayPlayAnim()
@@ -90,6 +111,7 @@ function SodacheResultView:_delayPlayAnim()
 	end
 
 	if #self._anims > 0 then
+		AudioMgr.instance:trigger(AudioEnum3_7.Sodache.settle_change)
 		gohelper.setActive(self._goeffect1, true)
 		gohelper.setActive(self._goeffect2, true)
 
@@ -112,6 +134,8 @@ function SodacheResultView:_createCardList(obj, data, index)
 
 	if data.isSell then
 		table.insert(self._anims, gohelper.findComponentAnim(obj))
+	else
+		self._isHaveNoSell = true
 	end
 end
 
@@ -121,6 +145,9 @@ function SodacheResultView:onClose()
 
 		self._tweenId = nil
 	end
+
+	TaskDispatcher.cancelTask(self._delayPlayAnim, self)
+	TaskDispatcher.cancelTask(self._hideCard, self)
 end
 
 return SodacheResultView

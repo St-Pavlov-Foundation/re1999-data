@@ -108,9 +108,10 @@ function SodacheViewDefine.init(module_views)
 	module_views.SodacheRelicUpgradeView = {
 		destroy = 0,
 		container = "SodacheRelicUpgradeViewContainer",
+		bgBlur = 1,
 		mainRes = "modules/sodache/ui/viewres/sodache_relicupgradeview.prefab",
 		layer = "POPUP_TOP",
-		viewType = ViewType.Full,
+		viewType = ViewType.Modal,
 		anim = ViewAnim.Internal
 	}
 	module_views.SodacheRelicOverView = {

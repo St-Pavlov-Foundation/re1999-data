@@ -15568,5 +15568,155 @@
     "id": 371115,
     "eventName": "play_ui_beiai_kapai_score",
     "bankName": "ui_activity_3_7_beiai_kapai"
+  },
+  {
+    "id": 373001,
+    "eventName": "play_ui_yuzhou_dqq_pmgressbar_02",
+    "bankName": "ui_activity_2_7_yuzou_dqq"
+  },
+  {
+    "id": 373002,
+    "eventName": "play_ui_mln_day_night",
+    "bankName": "ui_activity"
+  },
+  {
+    "id": 373003,
+    "eventName": "play_ui_molu_jlbn_level_unlock",
+    "bankName": "ui_activity_molu"
+  },
+  {
+    "id": 373004,
+    "eventName": "play_ui_molu_jlbn_open",
+    "bankName": "ui_activity_molu"
+  },
+  {
+    "id": 373005,
+    "eventName": "play_ui_wenming_cards_cover",
+    "bankName": "ui_activity_2_6_wenming_xugouji"
+  },
+  {
+    "id": 373006,
+    "eventName": "play_ui_beiai_front_obtain",
+    "bankName": "ui_activity_3_7_beiai_soudache"
+  },
+  {
+    "id": 373007,
+    "eventName": "play_ui_beiai_front_fanpai",
+    "bankName": "ui_activity_3_7_beiai_soudache"
+  },
+  {
+    "id": 373008,
+    "eventName": "play_ui_beiai_search",
+    "bankName": "ui_activity_3_7_beiai_soudache"
+  },
+  {
+    "id": 373009,
+    "eventName": "play_ui_beiai_dice_throw",
+    "bankName": "ui_activity_3_7_beiai_soudache"
+  },
+  {
+    "id": 373010,
+    "eventName": "play_ui_beiai_verify_fail",
+    "bankName": "ui_activity_3_7_beiai_soudache"
+  },
+  {
+    "id": 373011,
+    "eventName": "play_ui_beiai_verify_success",
+    "bankName": "ui_activity_3_7_beiai_soudache"
+  },
+  {
+    "id": 373012,
+    "eventName": "play_ui_beiai_verify_bigsuccess",
+    "bankName": "ui_activity_3_7_beiai_soudache"
+  },
+  {
+    "id": 373013,
+    "eventName": "play_ui_activity_subject_choose",
+    "bankName": "ui_activity_lvhu"
+  },
+  {
+    "id": 373014,
+    "eventName": "play_ui_pkls_endpoint_arrival",
+    "bankName": "ui_activity"
+  },
+  {
+    "id": 373015,
+    "eventName": "play_ui_pkls_challenge_fail",
+    "bankName": "ui_activity"
+  },
+  {
+    "id": 373016,
+    "eventName": "play_ui_pkls_prop_pick",
+    "bankName": "ui_activity"
+  },
+  {
+    "id": 373017,
+    "eventName": "play_ui_beiai_profound_enhance",
+    "bankName": "ui_activity_3_7_beiai_soudache"
+  },
+  {
+    "id": 373018,
+    "eventName": "play_ui_beiai_front_obtain",
+    "bankName": "ui_activity_3_7_beiai_soudache"
+  },
+  {
+    "id": 373019,
+    "eventName": "play_ui_molu_astrology_confirm",
+    "bankName": "ui_activity_molu"
+  },
+  {
+    "id": 373020,
+    "eventName": "play_ui_beiai_card_lose",
+    "bankName": "ui_activity_3_7_beiai_soudache"
+  },
+  {
+    "id": 374001,
+    "eventName": "play_ui_call_back_interface_entry_04",
+    "bankName": "ui_call_back_2_4"
+  },
+  {
+    "id": 374002,
+    "eventName": "play_ui_call_back_letter_expansion",
+    "bankName": "ui_call_back_2_4"
+  },
+  {
+    "id": 374003,
+    "eventName": "play_ui_call_back_interface_entry_03",
+    "bankName": "ui_call_back_2_4"
+  },
+  {
+    "id": 374004,
+    "eventName": "play_ui_yzqe_yishi_click",
+    "bankName": "ui_yinzhuangqueer_yishi_sfx3_7"
+  },
+  {
+    "id": 374005,
+    "eventName": "play_ui_yzqe_yishi_planet_rotates",
+    "bankName": "ui_yinzhuangqueer_yishi_sfx3_7"
+  },
+  {
+    "id": 374006,
+    "eventName": "play_ui_yzqe_yishi_interface_noise",
+    "bankName": "ui_yinzhuangqueer_yishi_sfx3_7"
+  },
+  {
+    "id": 374007,
+    "eventName": "stop_ui_yzqe_yishi_interface_noise",
+    "bankName": "ui_yinzhuangqueer_yishi_sfx3_7"
+  },
+  {
+    "id": 374008,
+    "eventName": "play_ui_yzqe_yishi_spam_short",
+    "bankName": "ui_yinzhuangqueer_yishi_sfx3_7"
+  },
+  {
+    "id": 374009,
+    "eventName": "play_ui_yzqe_yishi_tab",
+    "bankName": "ui_yinzhuangqueer_yishi_sfx3_7"
+  },
+  {
+    "id": 374010,
+    "eventName": "play_ui_yzqe_yishi_spam_long",
+    "bankName": "ui_yinzhuangqueer_yishi_sfx3_7"
   }
 ]

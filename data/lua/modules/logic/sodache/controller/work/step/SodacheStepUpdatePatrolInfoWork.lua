@@ -4,7 +4,7 @@ module("modules.logic.sodache.controller.work.step.SodacheStepUpdatePatrolInfoWo
 
 local SodacheStepUpdatePatrolInfoWork = class("SodacheStepUpdatePatrolInfoWork", SodacheStepBaseWork)
 
-function SodacheStepUpdatePatrolInfoWork:onStart(context)
+function SodacheStepUpdatePatrolInfoWork:onWorkStart(context)
 	local insideMo = SodacheModel.instance:getInsideMo()
 
 	insideMo.patrolBox = self._stepMo.patrolBox

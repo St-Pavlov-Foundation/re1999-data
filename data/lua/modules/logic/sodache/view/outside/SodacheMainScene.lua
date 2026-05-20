@@ -31,7 +31,7 @@ function SodacheMainScene:_editableInitView()
 		local go = gohelper.cloneInPlace(self._goBuildItem, "Build_" .. mo.type)
 		local item = MonoHelper.addNoUpdateLuaComOnceToGo(go, SodacheBuildingItem)
 
-		item:initData(mo, self.goScene)
+		item:setData(mo, self.goScene)
 	end
 
 	gohelper.setActive(self._goBuildItem, false)

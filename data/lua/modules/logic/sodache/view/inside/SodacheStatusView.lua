@@ -6,15 +6,27 @@ local SodacheStatusView = class("SodacheStatusView", BaseView)
 
 function SodacheStatusView:onInitView()
 	self._txtEvilLv = gohelper.findChildTextMesh(self.viewGO, "left/layout_schedule/#btn_evil/#txt_level")
+	self._goEvilBg = gohelper.findChild(self.viewGO, "left/layout_schedule/#btn_evil/bg")
+	self._goEvilProgress = gohelper.findChild(self.viewGO, "left/layout_schedule/#btn_evil/#image_progressfg")
 	self._txtActionPoint = gohelper.findChildTextMesh(self.viewGO, "left/layout/#btn_action/#txt_current")
 	self._goscroll = gohelper.findChild(self.viewGO, "#scroll_bag")
 	self._goscrolltitle = gohelper.findChild(self.viewGO, "#scroll_bag/Viewport/Content/title")
 	self._goscrollcardgrid = gohelper.findChild(self.viewGO, "#scroll_bag/Viewport/Content/grid")
 	self._goscrollspace = gohelper.findChild(self.viewGO, "#scroll_bag/Viewport/Content/space")
+	self._goempty = gohelper.findChild(self.viewGO, "#go_empty")
+	self._btnattr = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_ViewAll")
 
 	gohelper.setActive(self._goscrolltitle, false)
 	gohelper.setActive(self._goscrollcardgrid, false)
 	gohelper.setActive(self._goscrollspace, false)
+end
+
+function SodacheStatusView:addEvents()
+	self._btnattr:AddClickListener(self._onClickAttr, self)
+end
+
+function SodacheStatusView:removeEvents()
+	self._btnattr:RemoveClickListener()
 end
 
 function SodacheStatusView:onOpen()
@@ -25,12 +37,19 @@ function SodacheStatusView:onOpen()
 	local evilLv = SodacheUtil.getAttr(SodacheEnum.AttrId.EvilValue)
 
 	self._txtEvilLv.text = evilLv
+
+	local isActive = evilLv > 0
+
+	ZProj.UGUIHelper.SetColorAlpha(self._txtEvilLv, isActive and 1 or 0.5)
+	ZProj.UGUIHelper.SetGrayscale(self._goEvilBg, not isActive)
+	gohelper.setActive(self._goEvilProgress, isActive)
+
 	self._firstLoadCount = 15
 
 	local showTypes = {
+		SodacheEnum.CardType.Status,
 		SodacheEnum.CardType.Adventure,
-		SodacheEnum.CardType.Ammo,
-		SodacheEnum.CardType.Status
+		SodacheEnum.CardType.Ammo
 	}
 
 	self._mixScroll = MonoHelper.addNoUpdateLuaComOnceToGo(self._goscroll, SodacheMixScrollPart)
@@ -90,6 +109,7 @@ function SodacheStatusView:onOpen()
 	end
 
 	self._mixScroll:setData(allDatas)
+	gohelper.setActive(self._goempty, isEmpty)
 end
 
 function SodacheStatusView:_onCellUpdate(obj, type, data)
@@ -133,6 +153,10 @@ function SodacheStatusView:getCardList(cardType)
 	end
 
 	return list
+end
+
+function SodacheStatusView:_onClickAttr()
+	ViewMgr.instance:openView(ViewName.SodacheRelicOverView)
 end
 
 return SodacheStatusView

@@ -6,6 +6,7 @@ local SodacheDiceItem = class("SodacheDiceItem", LuaCompBase)
 
 function SodacheDiceItem:init(go)
 	self.go = go
+	self.transform = transform
 	self.imageFaceList = self:getUserDataTb_()
 
 	for i = 1, 3 do

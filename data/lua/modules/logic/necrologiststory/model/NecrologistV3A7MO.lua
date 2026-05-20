@@ -25,6 +25,12 @@ function NecrologistV3A7MO:allLevelIsFinish()
 	return true
 end
 
+function NecrologistV3A7MO:levelIsFinish(levelId)
+	local state = self:getLevelState(levelId)
+
+	return state == NecrologistStoryEnum.StoryState.Finish
+end
+
 function NecrologistV3A7MO:isFirstSpLevel(levelId)
 	return levelId == NecrologistStoryEnum.V3A7SpLevelId.Sp1
 end
@@ -49,6 +55,38 @@ function NecrologistV3A7MO:getLastUnLockLevel()
 	end
 
 	return lastUnLockLevelId
+end
+
+function NecrologistV3A7MO:getLastFinishLevel()
+	local baseList = NecrologistStoryV3A7Config.instance:getBaseList()
+	local lastFinishLevelId
+
+	for i = 1, #baseList do
+		local levelConfig = baseList[i]
+		local state = self:getStoryState(levelConfig.storyId)
+
+		if state == NecrologistStoryEnum.StoryState.Finish then
+			return lastFinishLevelId
+		else
+			lastFinishLevelId = levelConfig.id
+		end
+	end
+
+	return lastFinishLevelId
+end
+
+function NecrologistV3A7MO:getNextLockLevel(levelId)
+	local baseList = NecrologistStoryV3A7Config.instance:getBaseList()
+
+	for i = 1, #baseList do
+		local levelConfig = baseList[i]
+
+		if levelConfig.id == levelId and baseList[i + 1] ~= nil then
+			return baseList[i + 1].id
+		end
+	end
+
+	return nil
 end
 
 return NecrologistV3A7MO

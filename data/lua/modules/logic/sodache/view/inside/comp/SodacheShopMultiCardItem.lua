@@ -9,6 +9,7 @@ function SodacheShopMultiCardItem:ctor(param)
 end
 
 function SodacheShopMultiCardItem:init(go)
+	self._anim = gohelper.findChildAnim(go, "Info/Right/go_Count")
 	self.cardItem = MonoHelper.addNoUpdateLuaComOnceToGo(go, SodacheCardItem)
 
 	self.cardItem:setOverrideClick(self._onItemClick, self)
@@ -20,16 +21,30 @@ function SodacheShopMultiCardItem:init(go)
 end
 
 function SodacheShopMultiCardItem:updateMo(mo)
+	local isAdd = false
+
+	if self.cellParam.isMultSelect and self.mo and self.mo.cardMo.serverMo.configId == mo.cardMo.serverMo.configId and self.mo.count < mo.count then
+		isAdd = true
+	end
+
 	self.mo = mo
 
 	self.cardItem:updateMo(mo.cardMo)
 	self.cardItem:setCount(mo.count)
+
+	if isAdd then
+		self._anim:Play("buy", 0, 0)
+	end
 end
 
 function SodacheShopMultiCardItem:_onItemClick()
 	if self.cellParam.isMultSelect then
 		self.cellParam:addGoodCount(self.mo.shopMo, -1)
 		SodacheController.instance:dispatchEvent(SodacheEvent.OnClickGoodsItem)
+	else
+		ViewMgr.instance:openView(ViewName.SodacheCardDetailView, {
+			cardMo = self.mo.cardMo
+		})
 	end
 end
 

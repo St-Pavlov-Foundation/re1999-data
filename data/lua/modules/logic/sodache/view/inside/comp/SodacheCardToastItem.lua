@@ -27,8 +27,8 @@ end
 local colorStrDict = {
 	[SodacheEnum.ItemQuality.One] = "#7bb681",
 	[SodacheEnum.ItemQuality.Two] = "#5e7fad",
-	[SodacheEnum.ItemQuality.Three] = "#bf9a5a",
-	[SodacheEnum.ItemQuality.Four] = "#c898da",
+	[SodacheEnum.ItemQuality.Three] = "#c898da",
+	[SodacheEnum.ItemQuality.Four] = "#bf9a5a",
 	[SodacheEnum.ItemQuality.Five] = "#D2854D",
 	[SodacheEnum.ItemQuality.Six] = "#E76D6D"
 }
@@ -51,6 +51,12 @@ function SodacheCardToastItem:setMsg(data)
 	end
 
 	self._txt.text = GameUtil.getSubPlaceholderLuaLangTwoParam(desc, cardName, data.cardMo.serverMo.count)
+
+	if data.isGet then
+		AudioMgr.instance:trigger(AudioEnum3_7.Sodache.getcard_flip)
+	else
+		AudioMgr.instance:trigger(AudioEnum3_7.Sodache.losecard_toast)
+	end
 end
 
 function SodacheCardToastItem:_delay()

@@ -4,9 +4,12 @@ module("modules.configs.excel2json.lua_hero_story_mode_v3a7_base", package.seeal
 
 local lua_hero_story_mode_v3a7_base = {}
 local fields = {
-	id = 1,
+	mapRotate = 4,
+	spDesc = 5,
 	preId = 3,
-	storyId = 2
+	storyId = 2,
+	id = 1,
+	spDescPic = 6
 }
 local primaryKey = {
 	"id"

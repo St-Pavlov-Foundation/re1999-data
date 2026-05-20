@@ -4,7 +4,7 @@ module("modules.logic.sodache.controller.work.step.SodacheStepUpdateUnitsWork", 
 
 local SodacheStepUpdateUnitsWork = class("SodacheStepUpdateUnitsWork", SodacheStepBaseWork)
 
-function SodacheStepUpdateUnitsWork:onStart(context)
+function SodacheStepUpdateUnitsWork:onWorkStart(context)
 	local insideMo = SodacheModel.instance:getInsideMo()
 	local unitBox = insideMo.unitBox
 

@@ -66,6 +66,11 @@ function GMSubViewSodache:initViewContent()
 	self:addButton(self:getLineGroup(), "一键解锁所有条件", self.funcOneKey, self)
 	self:addLineIndex()
 
+	self._txtEventId = self:addInputText(self:getLineGroup(), nil, "事件ID")
+
+	self:addButton(self:getLineGroup(), "生成事件", self.createEvent, self)
+	self:addLineIndex()
+
 	self._txtItemId = self:addInputText(self:getLineGroup(), nil, "道具ID")
 	self._txtItemNum = self:addInputText(self:getLineGroup(), nil, "道具数量")
 
@@ -147,9 +152,7 @@ function GMSubViewSodache:_onRecvMsg(cmd, resultCode, msg)
 		if SodacheUtil.isInside() then
 			self:enterGame()
 		else
-			local outSideMo = SodacheModel.instance:getOutsideMo()
-
-			if outSideMo.prop.rookie then
+			if SodacheUtil.isRookie() then
 				SodacheInsideRpc.instance:sendSodacheInsideEnterScene(90000, 9000001, self.enterGame, self)
 
 				return
@@ -170,6 +173,18 @@ end
 
 function GMSubViewSodache:addItem()
 	GMRpc.instance:sendGMRequest(string.format("soadditem %s %s", self._txtItemId:GetText(), self._txtItemNum:GetText()))
+end
+
+function GMSubViewSodache:createEvent()
+	local insideMo = SodacheModel.instance:getInsideMo()
+
+	if not insideMo then
+		GameFacade.showToastString("不在局内!")
+
+		return
+	end
+
+	GMRpc.instance:sendGMRequest(string.format("socreateUnit %s %s", self._txtEventId:GetText(), insideMo.player.locationId))
 end
 
 function GMSubViewSodache:openFunction()

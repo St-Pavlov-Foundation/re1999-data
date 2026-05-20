@@ -5,8 +5,7 @@ module("modules.logic.sodache.view.outside.SodacheHandbookView", package.seeall)
 local SodacheHandbookView = class("SodacheHandbookView", BaseView)
 
 function SodacheHandbookView:onInitView()
-	self._btnCardTab = gohelper.findChildButtonWithAudio(self.viewGO, "Tab/Card/#btn_CardTab")
-	self._btnMonsterTab = gohelper.findChildButtonWithAudio(self.viewGO, "Tab/Monster/#btn_MonsterTab")
+	self._goTabItem = gohelper.findChild(self.viewGO, "Tab/#go_TabItem")
 	self._scrollCard = gohelper.findChildScrollRect(self.viewGO, "#scroll_Card")
 	self._goCardInfo = gohelper.findChild(self.viewGO, "Right/#go_CardInfo")
 	self._goMonsterInfo = gohelper.findChild(self.viewGO, "Right/#go_MonsterInfo")
@@ -18,53 +17,26 @@ function SodacheHandbookView:onInitView()
 	end
 end
 
-function SodacheHandbookView:addEvents()
-	self._btnCardTab:AddClickListener(self._btnCardTabOnClick, self)
-	self._btnMonsterTab:AddClickListener(self._btnMonsterTabOnClick, self)
-end
-
-function SodacheHandbookView:removeEvents()
-	self._btnCardTab:RemoveClickListener()
-	self._btnMonsterTab:RemoveClickListener()
-end
-
 local switchEvt = "switch content"
 local freshEvt = "refresh content"
 
-function SodacheHandbookView:_btnCardTabOnClick()
-	if self.type == SodacheEnum.HandBookType.Card then
+function SodacheHandbookView:_btnTabOnClick(type)
+	if self.type == type then
 		return
 	end
 
-	self.type = SodacheEnum.HandBookType.Card
-
-	self.animCard:Play("select", 0, 0)
-	self.animMonster:Play("unselect", 0, 0)
-	self.animScroll:Play("refresh", 0, 0)
-end
-
-function SodacheHandbookView:_btnMonsterTabOnClick()
-	if self.type == SodacheEnum.HandBookType.Monster then
-		return
+	if self.type then
+		self.tabItemMap[self.type].anim:Play("unselect", 0, 0)
 	end
 
-	self.type = SodacheEnum.HandBookType.Monster
+	self.type = type
 
-	self.animCard:Play("unselect", 0, 0)
-	self.animMonster:Play("select", 0, 0)
+	self.tabItemMap[self.type].anim:Play("select", 0, 0)
 	self.animScroll:Play("refresh", 0, 0)
 end
 
 function SodacheHandbookView:_editableInitView()
 	self.cardInfo = MonoHelper.addNoUpdateLuaComOnceToGo(self._goCardInfo, SodacheCardInfoRight)
-	self.goNormal = gohelper.findChild(self._goMonsterInfo, "Monster/go_Normal")
-	self.goBoss = gohelper.findChild(self._goMonsterInfo, "Monster/go_Boss")
-	self.simageMonster = gohelper.findChildSingleImage(self._goMonsterInfo, "Monster/simage_Monster")
-	self.imageCareer = gohelper.findChildImage(self._goMonsterInfo, "Monster/image_Career")
-	self.txtDesc1 = gohelper.findChildText(self._goMonsterInfo, "scroll_Desc/Viewport/Content/txt_Desc1")
-	self.txtDesc2 = gohelper.findChildText(self._goMonsterInfo, "scroll_Desc/Viewport/Content/txt_Desc2")
-	self.animCard = gohelper.findChildAnim(self.viewGO, "Tab/Card")
-	self.animMonster = gohelper.findChildAnim(self.viewGO, "Tab/Monster")
 	self.animScroll = gohelper.findChildAnim(self.viewGO, "#scroll_Card")
 	self.animScrollEvent = self.animScroll.gameObject:GetComponent(gohelper.Type_AnimationEventWrap)
 
@@ -74,79 +46,99 @@ function SodacheHandbookView:_editableInitView()
 	self.animRightEvent = self.animRight.gameObject:GetComponent(gohelper.Type_AnimationEventWrap)
 
 	self.animRightEvent:AddEventListener(freshEvt, self._onFreshEnd, self)
+
+	local typeList = {
+		SodacheEnum.HandBookSubType.Supplies,
+		SodacheEnum.HandBookSubType.Adventure,
+		SodacheEnum.HandBookSubType.Ammo,
+		SodacheEnum.HandBookSubType.Offering
+	}
+
+	self.tabItemMap = {}
+
+	for _, type in ipairs(typeList) do
+		local item = self:getUserDataTb_()
+		local go = gohelper.cloneInPlace(self._goTabItem)
+
+		item.anim = gohelper.findComponentAnim(go)
+
+		local txtName = gohelper.findChildText(go, "node_card/txt_itemcn")
+
+		txtName.text = luaLang("sodachehandbook_subType" .. tostring(type))
+
+		local btnTab = gohelper.findChildButtonWithAudio(go, "btn_Tab")
+
+		self:addClickCb(btnTab, self._btnTabOnClick, self, type)
+
+		self.tabItemMap[type] = item
+	end
+
+	gohelper.setActive(self._goTabItem, false)
+	self:buildScroll()
 end
 
 function SodacheHandbookView:onOpen()
 	self:addEventCb(SodacheController.instance, SodacheEvent.OnClickHandbookItem, self.onClickItem, self)
-	self:_btnCardTabOnClick()
+	self:_btnTabOnClick(SodacheEnum.HandBookSubType.Supplies)
 end
 
 function SodacheHandbookView:onDestroyView()
 	self.animScrollEvent:RemoveEventListener(switchEvt)
 	self.animRightEvent:RemoveEventListener(freshEvt)
-	TaskDispatcher.cancelTask(self.delaySelect, self)
 end
 
-function SodacheHandbookView:delaySelect()
-	local handbookId = SodacheHandbookListModel.instance:getTypeFirstHnadbookId(self.type)
-
-	self:onClickItem(handbookId)
-end
-
-function SodacheHandbookView:onClickItem(handbookId)
-	if self.handbookId == handbookId then
+function SodacheHandbookView:onClickItem(handbookCfg)
+	if self.handbookCfg == handbookCfg then
 		return
 	end
 
-	self.handbookId = handbookId
+	self.handbookCfg = handbookCfg
 
-	SodacheController.instance:dispatchEvent(SodacheEvent.OnHandbookSelectChange, handbookId)
+	local index = self.modelInst:getIndex(handbookCfg)
+
+	self.modelInst:selectCell(index, true)
 	self.animRight:Play("refresh", 0, 0)
 end
 
-function SodacheHandbookView:refreshMonsterInfo(config)
-	local monsterCo = lua_monster.configDict[config.eleId]
-
-	if monsterCo then
-		local skinCo = lua_monster_skin.configDict[monsterCo.skinId]
-
-		self.simageMonster:LoadImage(ResUrl.monsterHeadIcon(skinCo.headIcon))
-		UISpriteSetMgr.instance:setEnemyInfoSprite(self.imageCareer, "sxy_" .. tostring(monsterCo.career))
-
-		self.txtDesc1.text = monsterCo.highPriorityDes
-		self.txtDesc2.text = config.monsterDesc
-	else
-		logError(string.format("怪物表不存在怪物ID ： %s", config.eleId))
-	end
-end
-
 function SodacheHandbookView:_onSwitchEnd()
-	SodacheHandbookListModel.instance:setData(self.type)
+	local handbookCfgList = SodacheConfig.instance:getHandBookCfgList(self.type)
 
-	local handbookId = SodacheHandbookListModel.instance:getTypeFirstHnadbookId(self.type)
+	self.modelInst:setList(handbookCfgList)
 
-	self.switching = true
+	local handbookCfg = handbookCfgList[1]
 
-	self:onClickItem(handbookId, true)
+	self:onClickItem(handbookCfg, true)
 end
 
 function SodacheHandbookView:_onFreshEnd()
-	local config = lua_sodache_handbook.configDict[self.handbookId]
+	if self.handbookCfg then
+		self.cardInfo:setData(SodacheCardMo.Create(self.handbookCfg.eleId))
 
-	if config then
-		if config.tab1 == SodacheEnum.HandBookType.Monster then
-			self:refreshMonsterInfo(config)
-		else
-			self.cardInfo:setData(SodacheCardMo.Create(config.eleId))
+		if self._goEmpty.activeInHierarchy then
+			gohelper.setActive(self._goEmpty, false)
+			gohelper.setActive(self._goCardInfo, true)
 		end
 	end
+end
 
-	if self.switching then
-		gohelper.setActive(self._goCardInfo, self.type == SodacheEnum.HandBookType.Card)
-		gohelper.setActive(self._goMonsterInfo, self.type == SodacheEnum.HandBookType.Monster)
+function SodacheHandbookView:buildScroll()
+	self.modelInst = ListScrollModel.New()
 
-		self.switching = false
-	end
+	local scrollParam = ListScrollParam.New()
+
+	scrollParam.scrollGOPath = "#scroll_Card"
+	scrollParam.prefabType = ScrollEnum.ScrollPrefabFromView
+	scrollParam.prefabUrl = "#scroll_Card/Viewport/Content/CardItem"
+	scrollParam.cellClass = SodacheHandbookItem
+	scrollParam.scrollDir = ScrollEnum.ScrollDirV
+	scrollParam.cellWidth = 230
+	scrollParam.cellHeight = 300
+	scrollParam.lineCount = 4
+	scrollParam.startSpace = 15
+	scrollParam.cellSpaceV = 20
+	self.scrollView = LuaListScrollExtend.New(self.modelInst, scrollParam)
+
+	self:addChildView(self.scrollView)
 end
 
 return SodacheHandbookView

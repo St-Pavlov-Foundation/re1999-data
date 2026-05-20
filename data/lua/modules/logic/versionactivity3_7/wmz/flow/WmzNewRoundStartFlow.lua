@@ -12,7 +12,12 @@ function WmzNewRoundStartFlow:ctor(...)
 end
 
 function WmzNewRoundStartFlow:onStart()
-	self.viewObj:_refreshMap()
+	local gameCO = self.viewContainer:getGameCO()
+	local guildId = gameCO.guildId
+
+	if guildId > 0 then
+		self:addWork(WmzGuideWork.s_create(guildId))
+	end
 end
 
 return WmzNewRoundStartFlow

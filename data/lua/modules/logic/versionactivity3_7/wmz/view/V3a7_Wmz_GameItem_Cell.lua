@@ -27,12 +27,7 @@ function V3a7_Wmz_GameItem_Cell:setData(mo)
 	self._line0:setData(ePathType)
 	self._line1:setData(ePathType)
 	self:setActive_goLine(self:bWelded())
-
-	if WmzEnum.rDir then
-		local floorType = self:floorType()
-
-		self:setName(sf("(%s,%s): %s", self:x(), self:y(), WmzEnum.nameOfFT(floorType)))
-	end
+	self:_debug_refresh()
 end
 
 function V3a7_Wmz_GameItem_Cell:setIndexXY()
@@ -43,6 +38,20 @@ function V3a7_Wmz_GameItem_Cell:getTileItem()
 	local p = self:parent()
 
 	return p:getTileItem(self:tileId())
+end
+
+function V3a7_Wmz_GameItem_Cell:_refreshBorder()
+	self:_setAsCellBorder()
+end
+
+function V3a7_Wmz_GameItem_Cell:_debug_refresh()
+	if not WmzEnum.rDir then
+		return
+	end
+
+	local floorType = self:floorType()
+
+	self:setName(sf("(%s,%s): %s", self:x(), self:y(), WmzEnum.nameOfFT(floorType)))
 end
 
 return V3a7_Wmz_GameItem_Cell

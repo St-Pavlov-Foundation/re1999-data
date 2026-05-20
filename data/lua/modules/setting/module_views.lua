@@ -27354,6 +27354,15 @@ module_views.V3a7_Wmz_GameView = {
 		}
 	}
 }
+module_views.V3a7_Wmz_ResultView = {
+	destroy = 0,
+	container = "V3a7_Wmz_ResultViewContainer",
+	bgBlur = 0,
+	mainRes = "ui/viewres/versionactivity_3_7/v3a7_wmz/v3a7_wmz_resultview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Modal,
+	anim = ViewAnim.Default
+}
 
 local ViewName = {}
 

@@ -6,6 +6,7 @@ local SodacheUpgradeResultView = class("SodacheUpgradeResultView", BaseView)
 
 function SodacheUpgradeResultView:onInitView()
 	self._simageBuild = gohelper.findChildSingleImage(self.viewGO, "#simage_Build")
+	self._txtName = gohelper.findChildText(self.viewGO, "Name/#txt_Name")
 	self._txtLastLevel = gohelper.findChildText(self.viewGO, "Level/#txt_LastLevel")
 	self._goArrow = gohelper.findChild(self.viewGO, "Level/#go_Arrow")
 	self._txtCurLevel = gohelper.findChildText(self.viewGO, "Level/#txt_CurLevel")
@@ -21,12 +22,15 @@ function SodacheUpgradeResultView:onClickModalMask()
 end
 
 function SodacheUpgradeResultView:onOpen()
+	AudioMgr.instance:trigger(AudioEnum3_7.Sodache.building_lvup_popup)
+
 	self.data = self.viewParam
 
 	local outsideMo = SodacheModel.instance:getOutsideMo()
 	local buildingMo = outsideMo.buildingBox:getBuildingMo(self.data.type)
 	local curLvl = buildingMo.level
 
+	self._txtName.text = buildingMo.co.name
 	self._txtLastLevel.text = "Lv." .. tostring(curLvl - 1)
 	self._txtCurLevel.text = "Lv." .. tostring(curLvl)
 	self._txtDesc.text = buildingMo.co.unlockDesc

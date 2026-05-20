@@ -174,6 +174,7 @@ function SodacheAltarView:_refreshView()
 
 	if isActive and self._animTxt[evilVal] then
 		self._animTxt[evilVal]:Play("unlock")
+		AudioMgr.instance:trigger(AudioEnum3_7.Sodache.altar_lvup)
 	end
 end
 
@@ -190,7 +191,7 @@ function SodacheAltarView:_createDesc(obj, data, index)
 
 	gohelper.setActive(arrow, data.isCur)
 
-	txt.text = index .. "." .. data.desc
+	txt.text = index .. "." .. SodacheUtil.changeDescColor(data.desc)
 
 	local anim = gohelper.findComponentAnim(obj)
 

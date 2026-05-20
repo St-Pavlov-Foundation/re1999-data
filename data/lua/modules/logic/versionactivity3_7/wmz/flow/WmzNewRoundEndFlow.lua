@@ -12,11 +12,27 @@ function WmzNewRoundEndFlow:ctor(...)
 end
 
 function WmzNewRoundEndFlow:onStart()
-	local isThisRoundSucc = true
-	local isEnddingRound = false
+	self:selectTile(nil)
+
+	local isEnddingRound = self:isCompleted()
+	local zoneClearCur = self:zoneClearCurAndMax()
+	local lastCompletedZoneId = self:zoneIndex2ZoneId(zoneClearCur)
+	local curPlayingZoneIndex = self:curPlayingZoneIndex()
+
+	self:onCompleteZone_Titles(zoneClearCur, true)
+	self:onCompleteZone_Points(curPlayingZoneIndex, true)
+	self:onCompleteZone_Cells(zoneClearCur, true)
+	self:onCompleteZone_Tiles(zoneClearCur, true)
+	self:_refreshZoneProgress()
+	self:addWork(DelayWork.New(WmzConfig.instance:waitDurationSecOnCompletedZone()))
 
 	if isEnddingRound then
-		self:addWork(FunctionWork.New(self.completeGame, self, isThisRoundSucc))
+		self:setActive_goComplete(true)
+		self:addWork(DelayWork.New(WmzConfig.instance:waitDurationSecOnCompletedGame()))
+		self:addWork(FunctionWork.New(self.onCompleteGame, self))
+	else
+		self:addWork(FunctionWork.New(self.selectZone, self, curPlayingZoneIndex))
+		self:addWork(DelayWork.New(WmzConfig.instance:focusDurationSec()))
 	end
 end
 

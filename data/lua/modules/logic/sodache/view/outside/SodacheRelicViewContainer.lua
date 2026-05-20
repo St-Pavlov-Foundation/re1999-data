@@ -20,8 +20,9 @@ function SodacheRelicViewContainer:buildViews()
 	scrollParam.endSpace = 200
 	scrollParam.cellSpaceH = 50
 	scrollParam.cellSpaceV = 100
+	self.scrollView = LuaListScrollExtend.New(SodacheRelicMoListModel.instance, scrollParam)
 
-	table.insert(views, LuaListScrollView.New(SodacheRelicMoListModel.instance, scrollParam))
+	table.insert(views, self.scrollView)
 	table.insert(views, SodacheRelicView.New())
 	table.insert(views, TabViewGroup.New(1, "#go_topleft"))
 

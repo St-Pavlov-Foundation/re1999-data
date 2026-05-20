@@ -4,7 +4,7 @@ module("modules.logic.sodache.controller.work.step.SodacheStepUpdateInsidePropWo
 
 local SodacheStepUpdateInsidePropWork = class("SodacheStepUpdateInsidePropWork", SodacheStepBaseWork)
 
-function SodacheStepUpdateInsidePropWork:onStart(context)
+function SodacheStepUpdateInsidePropWork:onWorkStart(context)
 	local insideMo = SodacheModel.instance:getInsideMo()
 	local preStatus = insideMo.prop.status
 

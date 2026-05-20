@@ -6,6 +6,7 @@ local SodacheMapView = class("SodacheMapView", BaseView)
 
 function SodacheMapView:onInitView()
 	self._btnAbort = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_abort")
+	self._gobubble = gohelper.findChild(self.viewGO, "Bubble")
 	self._gopathcost = gohelper.findChild(self.viewGO, "Bubble/#go_usePreview")
 	self._btninteract = gohelper.findChild(self.viewGO, "Right/#go_interact/#btn_interact")
 	self._btnstatus = gohelper.findChildButtonWithAudio(self.viewGO, "Right/Btns/#btn_person")
@@ -18,7 +19,7 @@ function SodacheMapView:onInitView()
 	self._animSkip.keepAnimatorStateOnDisable = true
 	self._gouniticonroot = gohelper.findChild(self.viewGO, "Bubble/#go_unitItem")
 	self._anim = gohelper.findComponentAnim(self.viewGO)
-	self._goleft = gohelper.findChild(self.viewGO, "Left")
+	self._goleft = gohelper.findChild(self.viewGO, "Left/Card")
 	self._goright = gohelper.findChild(self.viewGO, "Right/Btns")
 end
 
@@ -59,7 +60,7 @@ function SodacheMapView:removeEvents()
 end
 
 function SodacheMapView:onOpen()
-	gohelper.setActive(self._btnAbort, not SodacheModel.instance:getOutsideMo().prop.rookie)
+	gohelper.setActive(self._btnAbort, not SodacheUtil.isRookie())
 	self._anim:Play("open")
 	self:refreshSkipBtn()
 
@@ -84,12 +85,6 @@ function SodacheMapView:_refreshInitOper()
 	if insideMo.prop.status == SodacheEnum.InsideSceneStatus.ShopAndOffering then
 		local btnDatas = {}
 
-		table.insert(btnDatas, {
-			iconType = 1,
-			desc = luaLang("sodache_map_btn_shop"),
-			type = SodacheEnum.MapNodeOperBtnType.Shop
-		})
-
 		if SodacheUtil.isOpen(SodacheEnum.OpenId.Offering_Worship) then
 			local isGray = #SodacheMapUtil.getWorshipItems() <= 0
 
@@ -101,6 +96,11 @@ function SodacheMapView:_refreshInitOper()
 			})
 		end
 
+		table.insert(btnDatas, {
+			iconType = 1,
+			desc = luaLang("sodache_map_btn_shop"),
+			type = SodacheEnum.MapNodeOperBtnType.Shop
+		})
 		table.insert(btnDatas, {
 			iconType = 1,
 			desc = luaLang("sodache_map_btn_leave"),
@@ -162,6 +162,8 @@ function SodacheMapView:checkOpenPanel()
 				}
 			})
 		end
+	else
+		self:showUnits()
 	end
 end
 
@@ -202,6 +204,12 @@ function SodacheMapView:_onClickNode(nodeGo, nodeCo)
 		SodacheMapUtil.instance:setMovePaths(pathInfo)
 		SodacheMapUtil.instance:tryMoveNextPath(true)
 		self:setBtnDatas()
+
+		return
+	end
+
+	if not pathInfo then
+		GameFacade.showToast(ToastEnum.SodacheToastId373019)
 
 		return
 	end
@@ -337,8 +345,10 @@ function SodacheMapView:_onClickBtn(index)
 		self:setBtnDatas()
 
 		self._curFocusData = data
+		self._isFocusItem = true
 
 		self.viewContainer:dispatchEvent(SodacheEvent.OnMapFocusEventChange, true)
+		UIBlockHelper.instance:startBlock("SodacheMapView_FocusUnit", 0.6)
 		SodacheController.instance:dispatchEvent(SodacheEvent.TweenCameraToNode, data.unitMo.locationId, data.unitMo.locationNo, self._triggerType, self)
 
 		return
@@ -349,6 +359,11 @@ end
 
 function SodacheMapView:_triggerType(data)
 	data = data or self._curFocusData
+	self._isFocusItem = false
+
+	if not data then
+		return
+	end
 
 	local func = self["_onTriggerType_" .. SodacheEnum.MapNodeOperBtnName[data.type]]
 
@@ -394,7 +409,13 @@ function SodacheMapView:_onTriggerType_Altar(data)
 end
 
 function SodacheMapView:_onTriggerType_Leave(data)
-	SodacheInsideRpc.instance:sendSodacheInsideSceneOperation(SodacheEnum.OperType.LeaveBorn, "")
+	local isOpered = SodacheModel.instance:getInsideMo().prop.hotfix[1] == "1"
+
+	if isOpered then
+		self:_realLeaveBorn()
+	else
+		GameFacade.showMessageBox(MessageBoxIdDefine.SodacheMessageId373004, MsgBoxEnum.BoxType.Yes_No, self._realLeaveBorn, nil, nil, self)
+	end
 end
 
 function SodacheMapView:_onTriggerType_Fight(data)
@@ -405,6 +426,10 @@ function SodacheMapView:_onTriggerType_StrongEvent(data)
 	self:onTriggerOpenPanel()
 end
 
+function SodacheMapView:_realLeaveBorn()
+	SodacheInsideRpc.instance:sendSodacheInsideSceneOperation(SodacheEnum.OperType.LeaveBorn, "")
+end
+
 function SodacheMapView:onOpenPanel()
 	local panelMo = SodacheModel.instance:getInsideMo().panelBox.currPanel
 	local unitMo = panelMo:getUnitMo()
@@ -413,6 +438,7 @@ function SodacheMapView:onOpenPanel()
 		return
 	end
 
+	UIBlockHelper.instance:startBlock("SodacheMapView_FocusUnit", 0.6)
 	SodacheController.instance:dispatchEvent(SodacheEvent.TweenCameraToNode, unitMo.locationId, unitMo.locationNo, self.onTriggerOpenPanel, self)
 end
 
@@ -421,6 +447,10 @@ function SodacheMapView:_onViewOpen(viewName)
 end
 
 function SodacheMapView:_onViewClose(viewName)
+	if self._isFocusItem then
+		return
+	end
+
 	self:_refreshLeftRightBtnShow()
 
 	if not self:isTopView() then
@@ -461,7 +491,10 @@ function SodacheMapView:_refreshLeftRightBtnShow()
 end
 
 function SodacheMapView:onUpdateBattleInfo()
-	SodacheMapUtil.enterFight()
+	if SodacheMapUtil.enterFight() then
+		return
+	end
+
 	self:onTriggerOpenPanel(true)
 end
 
@@ -546,6 +579,10 @@ function SodacheMapView:onStepFlowEnd(context)
 		self.viewContainer:dispatchEvent(SodacheEvent.OnMapFocusEventChange, false)
 		SodacheController.instance:dispatchEvent(SodacheEvent.TweenCameraToNode)
 	end
+end
+
+function SodacheMapView:onClose()
+	gohelper.setActive(self._gobubble, false)
 end
 
 function SodacheMapView:onDestroyView()

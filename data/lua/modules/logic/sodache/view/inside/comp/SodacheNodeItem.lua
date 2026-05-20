@@ -72,6 +72,8 @@ function SodacheNodeItem:_onClickUp()
 	SodacheMapUtil.instance:clearClickType()
 
 	if SodacheMapUtil.instance:isInFlow() then
+		SodacheMapUtil.instance:tryRemoveFlow()
+
 		return
 	end
 

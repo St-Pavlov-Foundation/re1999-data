@@ -4,7 +4,7 @@ module("modules.logic.sodache.controller.work.step.SodacheAttrPushWork", package
 
 local SodacheAttrPushWork = class("SodacheAttrPushWork", SodacheMsgPushWork)
 
-function SodacheAttrPushWork:onStart(context)
+function SodacheAttrPushWork:onWorkStart(context)
 	local outSideMo = SodacheModel.instance:getOutsideMo()
 
 	outSideMo.attrContainer:updateAttr(self._msg.updates)

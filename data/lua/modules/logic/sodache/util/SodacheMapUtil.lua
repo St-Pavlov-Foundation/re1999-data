@@ -121,7 +121,7 @@ function SodacheMapUtil.enterFight()
 	local insideMo = SodacheModel.instance:getInsideMo()
 
 	if not insideMo then
-		return
+		return false
 	end
 
 	local battleInfo = insideMo.prop.battleInfo
@@ -135,6 +135,8 @@ function SodacheMapUtil.enterFight()
 		end
 
 		DungeonFightController.instance:enterFightByBattleId(config.chapterId, episodeId, battleInfo.fightId)
+
+		return true
 	end
 end
 
@@ -290,6 +292,50 @@ end
 
 function SodacheMapUtil:isInFlow()
 	return self.flow ~= nil or self._steps and #self._steps > 0
+end
+
+function SodacheMapUtil:tryRemoveFlow()
+	if not self.flow then
+		return
+	end
+
+	if ServerTime.now() - self.flow.context.beginDt > 10 then
+		local curWorks = self:getCurRunningWorks(self.flow)
+		local workNames = {}
+
+		for i, v in ipairs(curWorks) do
+			table.insert(workNames, v.__cname)
+		end
+
+		logError("可能卡主了，清掉数据吧!runningwork:" .. table.concat(workNames, ","))
+
+		self._steps = nil
+
+		self.flow:onDestroyInternal()
+
+		self.flow = nil
+	end
+end
+
+function SodacheMapUtil:getCurRunningWorks(flow)
+	local works = {}
+	local workList = flow:getWorkList()
+
+	if not workList or flow.status ~= WorkStatus.Running then
+		return works
+	end
+
+	for i, work in ipairs(workList) do
+		if work.status == WorkStatus.Running then
+			if isTypeOf(work, BaseFlow) then
+				tabletool.addValues(works, self:getCurRunningWorks(work))
+			else
+				table.insert(works, work)
+			end
+		end
+	end
+
+	return works
 end
 
 function SodacheMapUtil:clear()

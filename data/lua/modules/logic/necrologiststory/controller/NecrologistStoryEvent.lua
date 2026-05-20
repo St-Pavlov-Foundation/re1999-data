@@ -37,5 +37,6 @@ NecrologistStoryEvent.OnSituationValue = GameUtil.getEventId()
 NecrologistStoryEvent.OnLinkText = GameUtil.getEventId()
 NecrologistStoryEvent.ShowBranch = GameUtil.getEventId()
 NecrologistStoryEvent.OnV3A5LongPress = GameUtil.getEventId()
+NecrologistStoryEvent.OnV3A7EmailItem = GameUtil.getEventId()
 
 return NecrologistStoryEvent

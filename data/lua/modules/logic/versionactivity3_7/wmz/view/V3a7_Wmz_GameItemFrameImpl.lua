@@ -2,7 +2,7 @@
 
 module("modules.logic.versionactivity3_7.wmz.view.V3a7_Wmz_GameItemFrameImpl", package.seeall)
 
-local V3a7_Wmz_GameItemFrameImpl = class("V3a7_Wmz_GameItemFrameImpl", RougeSimpleItemBase)
+local V3a7_Wmz_GameItemFrameImpl = class("V3a7_Wmz_GameItemFrameImpl", V3a7_Wmz_GameItemBase)
 
 function V3a7_Wmz_GameItemFrameImpl:ctor(...)
 	V3a7_Wmz_GameItemFrameImpl.super.ctor(self, ...)
@@ -11,20 +11,29 @@ end
 function V3a7_Wmz_GameItemFrameImpl:_editableInitView()
 	V3a7_Wmz_GameItemFrameImpl.super._editableInitView(self)
 
+	self._goLeftImg = gohelper.findChildImage(self._goLeft, "")
+	self._goBottomImg = gohelper.findChildImage(self._goBottom, "")
+	self._goRightImg = gohelper.findChildImage(self._goRight, "")
+	self._goTopImg = gohelper.findChildImage(self._goTop, "")
+
 	if self._goTopRight then
 		self._goTopRightTrans = self._goTopRight.transform
+		self._goTopRightImg = gohelper.findChildImage(self._goTopRight, "")
 	end
 
 	if self._goBottomRight then
 		self._goBottomRightTrans = self._goBottomRight.transform
+		self._goBottomRightImg = gohelper.findChildImage(self._goBottomRight, "")
 	end
 
 	if self._goBottomLeft then
 		self._goBottomLeftTrans = self._goBottomLeft.transform
+		self._goBottomLeftImg = gohelper.findChildImage(self._goBottomLeft, "")
 	end
 
 	if self._goTopLeft then
 		self._goTopLeftTrans = self._goTopLeft.transform
+		self._goTopLeftImg = gohelper.findChildImage(self._goTopLeft, "")
 	end
 end
 
@@ -124,6 +133,38 @@ function V3a7_Wmz_GameItemFrameImpl:rotateCorner(eCorner, zDegree)
 		self:localRotateZ(zDegree, self._goBottomRightTrans)
 	else
 		assert(false, "unsupprted eCorner" .. tostring(eCorner))
+	end
+end
+
+local kWhite = Color.white
+
+function V3a7_Wmz_GameItemFrameImpl:setGrayScale(bSelected)
+	local hexColor = WmzConfig.instance:grayScaleHex()
+
+	if self._goTopRightImg then
+		if bSelected then
+			self._goTopRightImg.color = kWhite
+			self._goBottomRightImg.color = kWhite
+			self._goBottomLeftImg.color = kWhite
+			self._goTopLeftImg.color = kWhite
+		else
+			UIColorHelper.set(self._goTopRightImg, hexColor)
+			UIColorHelper.set(self._goBottomRightImg, hexColor)
+			UIColorHelper.set(self._goBottomLeftImg, hexColor)
+			UIColorHelper.set(self._goTopLeftImg, hexColor)
+		end
+	end
+
+	if bSelected then
+		self._goLeftImg.color = kWhite
+		self._goBottomImg.color = kWhite
+		self._goRightImg.color = kWhite
+		self._goTopImg.color = kWhite
+	else
+		UIColorHelper.set(self._goLeftImg, hexColor)
+		UIColorHelper.set(self._goBottomImg, hexColor)
+		UIColorHelper.set(self._goRightImg, hexColor)
+		UIColorHelper.set(self._goTopImg, hexColor)
 	end
 end
 

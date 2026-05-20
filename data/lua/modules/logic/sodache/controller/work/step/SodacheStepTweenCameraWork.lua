@@ -4,7 +4,7 @@ module("modules.logic.sodache.controller.work.step.SodacheStepTweenCameraWork", 
 
 local SodacheStepTweenCameraWork = class("SodacheStepTweenCameraWork", SodacheStepBaseWork)
 
-function SodacheStepTweenCameraWork:onStart(context)
+function SodacheStepTweenCameraWork:onWorkStart(context)
 	if SodacheModel.instance.____gmfastrun then
 		self:onDone(true)
 

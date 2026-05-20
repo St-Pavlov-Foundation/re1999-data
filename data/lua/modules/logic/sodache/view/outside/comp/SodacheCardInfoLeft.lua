@@ -40,6 +40,10 @@ function SodacheCardInfoLeft:onDestroy()
 	TaskDispatcher.cancelTask(self.delayHideEffect, self)
 end
 
+function SodacheCardInfoLeft:setNoShowPassive()
+	self.isNoShowPassive = true
+end
+
 function SodacheCardInfoLeft:setData(data)
 	self.cardMo = data
 	self.config = self.cardMo.serverMo.itemCo
@@ -68,19 +72,20 @@ function SodacheCardInfoLeft:setData(data)
 end
 
 function SodacheCardInfoLeft:refreshType1()
-	self.txtMaterialDesc.text = self.config.funcDesc
+	self.txtMaterialDesc.text = SodacheUtil.changeDescColor(self.config.funcDesc)
 end
 
 function SodacheCardInfoLeft:refreshType2()
-	self.txtAdventureDesc.text = self.config.funcDesc
+	self.txtAdventureDesc.text = SodacheUtil.changeDescColor(self.config.funcDesc)
 
 	if not self.diceItemList then
 		self.diceItemList = {}
 	end
 
 	local diceIds = string.splitToNumber(self.config.diceList, "#")
+	local diceCnt = #diceIds
 
-	for i = 1, #diceIds do
+	for i = 1, diceCnt do
 		local diceItem = self.diceItemList[i]
 
 		if not diceItem then
@@ -94,13 +99,17 @@ function SodacheCardInfoLeft:refreshType2()
 		gohelper.setActive(diceItem.go, true)
 	end
 
-	for i = #diceIds + 1, #self.diceItemList do
+	for i = diceCnt + 1, #self.diceItemList do
 		gohelper.setActive(self.diceItemList[i].go, false)
 	end
+
+	local scale = diceCnt <= 4 and 1 or 0.7
+
+	transformhelper.setLocalScale(self.goDiceItem.transform.parent, scale, scale, 1)
 end
 
 function SodacheCardInfoLeft:refreshType3()
-	self.txtBulletDesc.text = self.config.funcDesc
+	self.txtBulletDesc.text = SodacheUtil.changeDescColor(self.config.funcDesc)
 
 	local refrains = string.splitToNumber(self.config.refrain, "#")
 	local refrainCnt = #refrains
@@ -146,7 +155,7 @@ function SodacheCardInfoLeft:refreshType3()
 end
 
 function SodacheCardInfoLeft:refreshType4()
-	self.txtBuffDesc.text = self.config.funcDesc
+	self.txtBuffDesc.text = SodacheUtil.changeDescColor(self.config.funcDesc)
 end
 
 function SodacheCardInfoLeft:refreshType5()
@@ -179,17 +188,26 @@ function SodacheCardInfoLeft:refreshType5()
 			gohelper.setActive(item.goStarList[i], i <= k)
 		end
 
-		local passive = luaLang("sodache_relicupgrade_passive")
-		local passiveDesc = string.format("%s%s", passive, config.effectDesc)
+		local passiveDesc, activeDesc
 
-		if string.nilorempty(config.effect2Desc) then
-			item.txtDesc.text = passiveDesc
-		else
-			local active = luaLang("sodache_relicupgrade_active")
-			local activeDesc = string.format("%s%s", active, config.effect2Desc)
+		if not self.isNoShowPassive and not string.nilorempty(config.effectDesc) then
+			local passive = luaLang("sodache_relicupgrade_passive")
 
-			item.txtDesc.text = string.format("%s<br>%s", passiveDesc, activeDesc)
+			passiveDesc = string.format("%s%s", passive, config.effectDesc)
 		end
+
+		if not string.nilorempty(config.effect2Desc) then
+			local active = luaLang("sodache_relicupgrade_active")
+
+			activeDesc = string.format("%s%s", active, config.effect2Desc)
+		end
+
+		local arr = {}
+
+		table.insert(arr, passiveDesc)
+		table.insert(arr, activeDesc)
+
+		item.txtDesc.text = SodacheUtil.changeDescColor(table.concat(arr, "<br>"))
 
 		gohelper.setActive(item.goSelect, relicLv == config.level)
 		gohelper.setActive(item.go, true)

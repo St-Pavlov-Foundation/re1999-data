@@ -13,18 +13,24 @@ function SodacheBuildingItem:init(go)
 	self._btnBuild = gohelper.findChildButtonWithAudio(go, "btn_Build")
 	self._btnUp = gohelper.findChildButtonWithAudio(go, "btn_Up")
 	self._btnEnter = gohelper.findChildButtonWithAudio(go, "btn_Enter")
+	self._goReddot = gohelper.findChild(go, "btn_Enter/go_Reddot")
 	self._btnMax = gohelper.findChildButtonWithAudio(go, "btn_Max")
 
 	self:addClickCb(self._btnBuild, self._btnUpOnClick, self)
 	self:addClickCb(self._btnUp, self._btnUpOnClick, self)
 	self:addClickCb(self._btnEnter, self._btnEnterOnClick, self)
 	self:addClickCb(self._btnMax, self._btnUpOnClick, self)
+
+	self.reddot = RedDotController.instance:addNotEventRedDot(self._goReddot, self.checkReddot, self)
 end
 
 function SodacheBuildingItem:addEventListeners()
 	self:addEventCb(SodacheController.instance, SodacheEvent.OnBuildingUpgrade, self.onBuildingUpgrade, self)
 	self:addEventCb(SodacheController.instance, SodacheEvent.GuideClickBuilding, self.onGuildClickBuilding, self)
 	self:addEventCb(SodacheController.instance, SodacheEvent.PlayBuildingUpEffect, self.onPlayEffect, self)
+	self:addEventCb(SodacheController.instance, SodacheEvent.OnRelicUpgrade, self.refreshReddot, self)
+	self:addEventCb(SodacheController.instance, SodacheEvent.OnRelicUpgradeOneKey, self.refreshReddot, self)
+	self:addEventCb(SodacheController.instance, SodacheEvent.OnBagUpdate, self.refreshReddot, self)
 end
 
 function SodacheBuildingItem:onDestroy()
@@ -39,7 +45,7 @@ function SodacheBuildingItem:onDestroy()
 	end
 end
 
-function SodacheBuildingItem:initData(data, goScene)
+function SodacheBuildingItem:setData(data, goScene)
 	self.data = data
 	self.goScene = goScene
 
@@ -125,6 +131,7 @@ function SodacheBuildingItem:onBuildingUpgrade(type)
 	if self.data.type == type then
 		self:refreshUI()
 		self:refreshBuilding()
+		AudioMgr.instance:trigger(AudioEnum3_7.Sodache.building_lvup_effect)
 	end
 end
 
@@ -153,8 +160,7 @@ end
 
 function SodacheBuildingItem:clickBoxCollinder()
 	if ViewHelper.instance:checkViewOnTheTop(ViewName.SodacheMainView, {
-		ViewName.GuideView,
-		ViewName.GuideView2,
+		ViewName.GMGuideStatusView,
 		ViewName.GuideStepEditor,
 		ViewName.SodacheToastView,
 		ViewName.SodacheCardToastView
@@ -173,6 +179,18 @@ function SodacheBuildingItem:onPlayEffect(type)
 	if self.data.type == type then
 		self.animBuilding:Play("leveup", 0, 0)
 	end
+end
+
+function SodacheBuildingItem:checkReddot()
+	if self.data and self.data.type == SodacheEnum.BuildingType.Relic then
+		return SodacheUtil.checkOneKeyUpRelic()
+	end
+
+	return false
+end
+
+function SodacheBuildingItem:refreshReddot()
+	self.reddot:refreshRedDot()
 end
 
 return SodacheBuildingItem

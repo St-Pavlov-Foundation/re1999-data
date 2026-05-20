@@ -41,10 +41,12 @@ end
 
 function V3A7_RoleStoryEmailView:onOpen()
 	self.tagId = self.viewParam.tagId
+
+	TaskDispatcher.runDelay(self._btnclickOnClick, self, 0.5)
 end
 
 function V3A7_RoleStoryEmailView:onClose()
-	return
+	TaskDispatcher.cancelTask(self._btnclickOnClick, self)
 end
 
 function V3A7_RoleStoryEmailView:onDestroyView()

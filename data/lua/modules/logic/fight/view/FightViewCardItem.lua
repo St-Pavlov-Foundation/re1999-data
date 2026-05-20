@@ -224,7 +224,7 @@ function FightViewCardItem:init(go)
 		self.frontBgRoot = frontBgRoot
 
 		gohelper.setActive(frontBgRoot, true)
-		gohelper.setSibling(frontBgRoot, 5)
+		gohelper.setSibling(frontBgRoot, 6)
 
 		local frontBgNormal = gohelper.create2d(frontBgRoot, "skinFrontBgNormal")
 		local frontBgBigSkill = gohelper.create2d(frontBgRoot, "skinFrontBgBigSkill")
@@ -1687,7 +1687,7 @@ function FightViewCardItem:playUsedCardDisplay(tipsGO)
 	self._cardDisplayFlow:start(context)
 end
 
-function FightViewCardItem:playUsedCardFinish(tipsGO, waitingAreaGO)
+function FightViewCardItem:playUsedCardFinish(tipsGO, waitingAreaGO, param)
 	if not self.go.activeInHierarchy then
 		return
 	end
@@ -1703,6 +1703,7 @@ function FightViewCardItem:playUsedCardFinish(tipsGO, waitingAreaGO)
 	context.skillTipsGO = tipsGO
 	context.skillItemGO = self.go
 	context.waitingAreaGO = waitingAreaGO
+	context.param = param
 
 	self._cardDisplayEndFlow:start(context)
 end

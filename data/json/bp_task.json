@@ -27462,7 +27462,7 @@
     "loopType": 5,
     "minType": "战令赛季",
     "name": "§在“后验者聚落”中，调查等级到达3级",
-    "desc": "在“后验者聚落”中，调查等级到达3级",
+    "desc": "在“后验者聚落”中，深邃等级到达3级",
     "listenerType": "SodacheLevel",
     "listenerParam": "13701",
     "maxProgress": 3,

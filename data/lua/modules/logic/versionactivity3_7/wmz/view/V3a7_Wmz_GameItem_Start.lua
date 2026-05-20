@@ -27,12 +27,7 @@ function V3a7_Wmz_GameItem_Start:setData(mo)
 	self:setActive_goLineStart(true)
 	self:setActive_goLine()
 	self:localRotateZ(pathInfo.zRot, self._goLineStartTran)
-
-	if WmzEnum.rDir then
-		local floorType = self:floorType()
-
-		self:setName(sf("(%s,%s): %s -- START --", self:x(), self:y(), WmzEnum.nameOfFT(floorType)))
-	end
+	self:_debug_refresh()
 end
 
 function V3a7_Wmz_GameItem_Start:setActive_goLine()
@@ -42,6 +37,20 @@ end
 
 function V3a7_Wmz_GameItem_Start:getTileItem()
 	return nil
+end
+
+function V3a7_Wmz_GameItem_Start:_refreshBorder()
+	self._border:setActive(false)
+end
+
+function V3a7_Wmz_GameItem_Start:_debug_refresh()
+	if not WmzEnum.rDir then
+		return
+	end
+
+	local floorType = self:floorType()
+
+	self:setName(sf("(%s,%s): %s -- START --", self:x(), self:y(), WmzEnum.nameOfFT(floorType)))
 end
 
 return V3a7_Wmz_GameItem_Start

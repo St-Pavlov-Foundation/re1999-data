@@ -4,7 +4,7 @@ module("modules.logic.sodache.controller.work.step.SodacheStepUpdateTaskWork", p
 
 local SodacheStepUpdateTaskWork = class("SodacheStepUpdateTaskWork", SodacheStepBaseWork)
 
-function SodacheStepUpdateTaskWork:onStart(context)
+function SodacheStepUpdateTaskWork:onWorkStart(context)
 	local taskBox = SodacheModel.instance:getOutsideMo().taskBox
 
 	taskBox:updateTasks(self._stepMo.tasks)

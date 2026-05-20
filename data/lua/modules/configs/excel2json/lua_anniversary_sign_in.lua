@@ -4,9 +4,11 @@ module("modules.configs.excel2json.lua_anniversary_sign_in", package.seeall)
 
 local lua_anniversary_sign_in = {}
 local fields = {
-	content = 5,
-	name = 4,
-	characterId = 3,
+	skinid = 3,
+	name = 6,
+	skinlocation = 4,
+	content = 7,
+	signature = 5,
 	activityId = 1,
 	day = 2
 }

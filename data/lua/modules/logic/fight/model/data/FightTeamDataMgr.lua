@@ -92,8 +92,6 @@ function FightTeamDataMgr:setDeviceArea(deviceArea, side)
 	end
 
 	sideData.deviceArea = FightDataUtil.coverData(deviceArea, sideData.deviceArea)
-
-	FightController.instance:dispatchEvent(FightEvent.RefreshDeviceArea)
 end
 
 return FightTeamDataMgr

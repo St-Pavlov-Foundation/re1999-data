@@ -11457,7 +11457,7 @@
   },
   {
     "id": 373002,
-    "tips": "请选择勘探时段",
+    "tips": "请选择挖掘时段",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,
@@ -11497,7 +11497,7 @@
   },
   {
     "id": 373007,
-    "tips": "▩1%s可购买数量不足",
+    "tips": "商品可购买数量不足",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,
@@ -11521,7 +11521,7 @@
   },
   {
     "id": 373010,
-    "tips": "极限理智不足",
+    "tips": "理智极限不足",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,
@@ -11553,7 +11553,7 @@
   },
   {
     "id": 373014,
-    "tips": "需放置黄金树叶进行共鸣",
+    "tips": "没有满足条件的卡牌",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,
@@ -11578,6 +11578,30 @@
   {
     "id": 373017,
     "tips": "不可选择超过数量的卡牌",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 373018,
+    "tips": "暂未触发信仰效果",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 373019,
+    "tips": "该地点无法到达",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 373020,
+    "tips": "请前往临时营地提交任务",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,
@@ -11618,6 +11642,22 @@
   {
     "id": 377001,
     "tips": "陷入战斗狂热，无法指挥",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 379001,
+    "tips": "拼图未解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 379011,
+    "tips": "上阵角色未持有1阶咒语，不可使用",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,

@@ -73,10 +73,13 @@ function SodacheMainView:_editableInitView()
 
 		self.currencyComp:setCount(count)
 	end
+
+	self.reddotTask = RedDotController.instance:addNotEventRedDot(self._goTaskReddot, self.checkTaskReddot, self)
 end
 
 function SodacheMainView:onOpen()
 	AudioMgr.instance:setSwitch(AudioMgr.instance:getIdFromString("music_vocal_filter"), AudioMgr.instance:getIdFromString("accompaniment"))
+	self:addEventCb(SodacheController.instance, SodacheEvent.OnTaskChange, self.refreshTaskReddot, self)
 	self:addEventCb(CurrencyController.instance, CurrencyEvent.CurrencyChange, self.refreshCurrency, self)
 	self:refreshCurrency()
 
@@ -89,7 +92,9 @@ function SodacheMainView:onOpen()
 	elseif self.nextLvlCfg and self.propMo.oldExp then
 		self._txtLevel.text = self.propMo.level
 
-		self.matProgress:SetFloat("_LerpOffset", self.propMo.oldExp / self.nextLvlCfg.cosume)
+		local value = self.propMo.oldExp / self.nextLvlCfg.cosume
+
+		SodacheUtil.setMaterialValue(self.matProgress, value)
 	else
 		self:refreshLevel()
 	end
@@ -100,6 +105,24 @@ end
 
 function SodacheMainView:onClose()
 	AudioMgr.instance:setSwitch(AudioMgr.instance:getIdFromString("music_vocal_filter"), AudioMgr.instance:getIdFromString("original"))
+end
+
+function SodacheMainView:onDestroyView()
+	if not ViewMgr.instance:isOpen(ViewName.SodacheMapView) then
+		SodacheMapUtil.instance:clear()
+	end
+
+	if self.tweenId then
+		ZProj.TweenHelper.KillById(self.tweenId)
+
+		self.tweenId = nil
+	end
+
+	if self.matProgress then
+		UnityEngine.Object.Destroy(self.matProgress)
+	end
+
+	TaskDispatcher.cancelTask(self.delayPlayChangeAnim, self)
 end
 
 function SodacheMainView.checkLv(param)
@@ -114,11 +137,15 @@ end
 function SodacheMainView:refreshLevel()
 	self._txtLevel.text = self.propMo.level
 
+	local value = 0
+
 	if self.nextLvlCfg then
-		self.matProgress:SetFloat("_LerpOffset", self.propMo.exp / self.nextLvlCfg.cosume)
+		value = self.propMo.exp / self.nextLvlCfg.cosume
 	else
-		self.matProgress:SetFloat("_LerpOffset", 1)
+		value = 1
 	end
+
+	SodacheUtil.setMaterialValue(self.matProgress, value)
 end
 
 function SodacheMainView:refreshCurrency()
@@ -129,20 +156,6 @@ end
 
 function SodacheMainView:playLevelUp()
 	ViewMgr.instance:openView(ViewName.SodacheLevelUpView)
-end
-
-function SodacheMainView:onDestroyView()
-	if not ViewMgr.instance:isOpen(ViewName.SodacheMapView) then
-		SodacheMapUtil.instance:clear()
-	end
-
-	if self.tweenId then
-		ZProj.TweenHelper.KillById(self.tweenId)
-
-		self.tweenId = nil
-	end
-
-	TaskDispatcher.cancelTask(self.delayPlayChangeAnim, self)
 end
 
 function SodacheMainView:delayPlayChangeAnim()
@@ -170,12 +183,26 @@ function SodacheMainView:delayPlayChangeAnim()
 end
 
 function SodacheMainView:_frameCall(value)
-	self.matProgress:SetFloat("_LerpOffset", value)
+	SodacheUtil.setMaterialValue(self.matProgress, value)
 end
 
 function SodacheMainView:_endCall()
 	self:refreshLevel()
 	self.propMo:clearOldExp()
+end
+
+function SodacheMainView:checkTaskReddot()
+	local isShow = false
+
+	if self.outsideMo and self.outsideMo.taskBox:hasRewardToGet() then
+		isShow = true
+	end
+
+	return isShow
+end
+
+function SodacheMainView:refreshTaskReddot()
+	self.reddotTask:refreshRedDot()
 end
 
 return SodacheMainView

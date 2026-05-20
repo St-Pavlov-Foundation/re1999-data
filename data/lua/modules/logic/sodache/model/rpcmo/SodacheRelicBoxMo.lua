@@ -82,4 +82,51 @@ function SodacheRelicBoxMo:getRelicNeedCount(relicId)
 	return needCount
 end
 
+function SodacheRelicBoxMo:getFirstUpMo()
+	local coinCnt = SodacheUtil.getItemCount(SodacheEnum.CurrencyId.Coin)
+	local canUpMoList = {}
+
+	for i = #self.relics, 1, -1 do
+		local mo = self.relics[i]
+		local nextCfg = lua_sodache_upgrade.configDict[mo.id][mo.level + 1]
+
+		if nextCfg then
+			local params = GameUtil.splitString2(nextCfg.cost, true, "&", ":")
+			local needCnt = params[1][2]
+			local relicCnt = SodacheUtil.getItemCount(mo.id)
+
+			if needCnt <= relicCnt then
+				if params[2] then
+					local coinCost = params[2][2]
+
+					if coinCost <= coinCnt then
+						canUpMoList[#canUpMoList + 1] = mo
+					end
+				else
+					canUpMoList[#canUpMoList + 1] = mo
+				end
+			end
+		end
+	end
+
+	table.sort(canUpMoList, function(a, b)
+		local configA = a.itemCo
+		local configB = b.itemCo
+
+		if configA.quality == configB.quality then
+			if a.level == b.level then
+				return configA.id < configB.id
+			else
+				return a.level < b.level
+			end
+		else
+			return configA.quality > configB.quality
+		end
+	end)
+
+	if #canUpMoList ~= 0 then
+		return canUpMoList[1]
+	end
+end
+
 return SodacheRelicBoxMo

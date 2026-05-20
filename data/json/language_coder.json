@@ -7993,7 +7993,7 @@
   },
   {
     "id": "v3a3_skindiscount_compensate",
-    "lang": "可在以下衣着中选择一个领取，领取重复衣着可转化为<sprite=0>▩1%s"
+    "lang": "可在以下衣着中选择一个领取，领取重复衣着可转化为售价相等数量的粹雨滴"
   },
   {
     "id": "tower_fight_switch_tow_plane",
@@ -9017,7 +9017,7 @@
   },
   {
     "id": "sodache_map_btn_shop",
-    "lang": "后勤补给"
+    "lang": "旧物贩售"
   },
   {
     "id": "sodache_map_btn_altar",
@@ -9049,7 +9049,7 @@
   },
   {
     "id": "sodache_altarview_lockdesc",
-    "lang": "服用树木后获得随机效果。"
+    "lang": "祈祷后可获得特殊效果。"
   },
   {
     "id": "sodache_carddetailview_btnuse",
@@ -9082,6 +9082,14 @@
   {
     "id": "sodache_drop_lose_card",
     "lang": "失去▩1%s×▩2%s"
+  },
+  {
+    "id": "sodache_takeview_preview",
+    "lang": "预计获得回报<size=40><sprite=2><#ffc87e>×▩1%s</color></size>"
+  },
+  {
+    "id": "sodache_inside_taskdesc",
+    "lang": "▩1%s(撤离后完成)"
   },
   {
     "id": "rouge2_backpackskillview_attrupdatetips",
@@ -9157,11 +9165,11 @@
   },
   {
     "id": "sodache_relicupgrade_active",
-    "lang": "[主动]："
+    "lang": "<i>[供奉]：</i>"
   },
   {
     "id": "sodache_relicupgrade_passive",
-    "lang": "[被动]："
+    "lang": "<i>[收藏]：</i>"
   },
   {
     "id": "rouge2_attributedetailview_skilloverview",
@@ -9325,7 +9333,7 @@
   },
   {
     "id": "PlayerCardGetView_special_tag1",
-    "lang": "旅卷集"
+    "lang": "旅券集"
   },
   {
     "id": "PlayerCardGetView_special_tag2",
@@ -9345,15 +9353,15 @@
   },
   {
     "id": "sodache_relicoverview_type1",
-    "lang": "金币加成"
+    "lang": "回报加成"
   },
   {
     "id": "sodache_relicoverview_type2",
-    "lang": "行动力加成"
+    "lang": "耐心加成"
   },
   {
     "id": "sodache_relicoverview_type3",
-    "lang": "Cost加成"
+    "lang": "理智极限加成"
   },
   {
     "id": "sodache_relicoverview_type4",
@@ -9377,7 +9385,7 @@
   },
   {
     "id": "V3a7_Wmz_GameView_txtTarget",
-    "lang": "回溯所有回忆（▩1%s/▩2%s）"
+    "lang": "回溯所有记忆（▩1%s/▩2%s）"
   },
   {
     "id": "p_v3a7_anniversary3_activitybp_rule_titile",

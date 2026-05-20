@@ -14,23 +14,15 @@ function SodacheRelicOverView:onInitView()
 	self._goDescGroupItem = gohelper.findChild(self.viewGO, "#scroll_Desc/Viewport/Content/#go_Descs1/#go_DescGroupItem")
 	self._goAttributes2 = gohelper.findChild(self.viewGO, "#scroll_Desc/Viewport/Content/#go_Attributes2")
 	self._goActiveAttributes = gohelper.findChild(self.viewGO, "#scroll_Desc/Viewport/Content/#go_Attributes2/#go_ActiveAttributes")
-	self._goLine2 = gohelper.findChild(self.viewGO, "#scroll_Desc/Viewport/Content/#go_Line2")
 	self._goDescs2 = gohelper.findChild(self.viewGO, "#scroll_Desc/Viewport/Content/#go_Descs2")
 	self._goDescItem = gohelper.findChild(self.viewGO, "#scroll_Desc/Viewport/Content/#go_Descs2/#go_DescItem")
+	self._goEmpty = gohelper.findChild(self.viewGO, "#go_Empty")
 	self._goArrow = gohelper.findChild(self.viewGO, "#go_Arrow")
 	self._gotopleft = gohelper.findChild(self.viewGO, "#go_topleft")
 
 	if self._editableInitView then
 		self:_editableInitView()
 	end
-end
-
-function SodacheRelicOverView:addEvents()
-	return
-end
-
-function SodacheRelicOverView:removeEvents()
-	return
 end
 
 function SodacheRelicOverView:_editableInitView()
@@ -40,8 +32,10 @@ end
 function SodacheRelicOverView:onOpen()
 	self.relicBox = SodacheModel.instance:getOutsideMo().relicBox
 
-	self:refreshPassive()
-	self:refreshActive()
+	local hasPassive = self:refreshPassive()
+	local hasActive = self:refreshActive()
+
+	gohelper.setActive(self._goEmpty, not hasPassive and not hasActive)
 	gohelper.setActive(self._goAttributeItem, false)
 	gohelper.setActive(self._goDescItem, false)
 end
@@ -61,17 +55,19 @@ function SodacheRelicOverView:refreshPassive()
 				SodacheUtil.getGlobalAttrMap(attr, attrMap)
 			end
 
-			local descType = tonumber(mo.relicCo.type)
+			if string.nilorempty(mo.relicCo.globalAttri) then
+				local descType = tonumber(mo.relicCo.type)
 
-			if not passiveDescMap[descType] then
-				passiveDescMap[descType] = {}
+				if not passiveDescMap[descType] then
+					passiveDescMap[descType] = {}
+				end
+
+				table.insert(passiveDescMap[descType], mo.relicCo.effectDesc)
 			end
-
-			table.insert(passiveDescMap[descType], mo.relicCo.effectDesc)
 		end
 	end
 
-	for type, descs in ipairs(passiveDescMap) do
+	for type, descs in pairs(passiveDescMap) do
 		local item = self:getUserDataTb_()
 		local goGroup = gohelper.cloneInPlace(self._goDescGroupItem)
 		local btnFold = gohelper.findChildButtonWithAudio(goGroup, "title/btn_Fold")
@@ -93,7 +89,7 @@ function SodacheRelicOverView:refreshPassive()
 			local goDesc = gohelper.clone(self._goDescItem, root)
 			local text = gohelper.findChildText(goDesc, "")
 
-			text.text = desc
+			text.text = SodacheUtil.changeDescColor(desc)
 		end
 
 		self.descGroupItemMap[type] = item
@@ -110,11 +106,25 @@ function SodacheRelicOverView:refreshPassive()
 
 		local value1 = gohelper.findChildText(go, "value")
 
-		value1.text = value
+		if config.percent == 1 then
+			local format = value > 0 and "+%d%%" or "%d%%"
+
+			value1.text = string.format(format, value / 10)
+		else
+			local format = value > 0 and "+%d" or "%d"
+
+			value1.text = string.format(format, value)
+		end
 	end
 
 	gohelper.setActive(self._goDescs1, next(passiveDescMap))
 	gohelper.setActive(self._goLine1, next(attrMap))
+
+	local hasPassive = next(attrMap) or next(passiveDescMap)
+
+	gohelper.setActive(self._goAttributes1, hasPassive)
+
+	return hasPassive
 end
 
 function SodacheRelicOverView:refreshActive()
@@ -132,14 +142,15 @@ function SodacheRelicOverView:refreshActive()
 				local go = gohelper.cloneInPlace(self._goDescItem)
 				local desc = gohelper.findChildText(go, "")
 
-				desc.text = mo.relicCo.effect2Desc
+				desc.text = SodacheUtil.changeDescColor(mo.relicCo.effect2Desc)
 			end
 		end
 	end
 
-	gohelper.setActive(self._goLine2, false)
 	gohelper.setActive(self._goAttributes2, isShow)
 	gohelper.setActive(self._goDescs2, isShow)
+
+	return isShow
 end
 
 function SodacheRelicOverView:_btnFoldOnClick(type)

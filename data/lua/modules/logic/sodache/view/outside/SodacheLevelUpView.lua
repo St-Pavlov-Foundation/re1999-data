@@ -38,6 +38,8 @@ function SodacheLevelUpView:_editableInitView()
 end
 
 function SodacheLevelUpView:onOpen()
+	AudioMgr.instance:trigger(AudioEnum3_7.Sodache.levelup)
+
 	local outsideMo = SodacheModel.instance:getOutsideMo()
 
 	self.prop = outsideMo.prop
@@ -45,7 +47,7 @@ function SodacheLevelUpView:onOpen()
 	local curCfg = lua_sodache_level.configDict[self.prop.level]
 
 	self._txtLevel.text = self.prop.oldLevel
-	self._txtDesc.text = curCfg.desc
+	self._txtDesc.text = SodacheUtil.changeDescColor(curCfg.desc)
 	self.nextCfg = lua_sodache_level.configDict[self.prop.level + 1]
 
 	if self.nextCfg then
@@ -59,8 +61,9 @@ function SodacheLevelUpView:onOpen()
 	gohelper.setActive(self._goMax, not self.nextCfg)
 
 	local startNextCfg = lua_sodache_level.configDict[self.prop.oldLevel + 1]
+	local value = self.prop.oldExp / startNextCfg.cosume
 
-	self.matLevel:SetFloat("_LerpOffset", self.prop.oldExp / startNextCfg.cosume)
+	SodacheUtil.setMaterialValue(self.matLevel, value)
 
 	self.diffLvl = self.prop.level - self.prop.oldLevel
 
@@ -68,12 +71,11 @@ function SodacheLevelUpView:onOpen()
 		TaskDispatcher.runDelay(self.delayPlay, self, 0.35)
 	else
 		logError("数据异常，未升级进入了升级界面")
-
-		self.canClick = true
+		self:closeThis()
 	end
 end
 
-function SodacheLevelUpView:onClose()
+function SodacheLevelUpView:onDestroyView()
 	if self.prop then
 		self.prop:clearOldLevel()
 		self.prop:clearOldExp()
@@ -87,6 +89,10 @@ function SodacheLevelUpView:onClose()
 
 		self.tweenId = nil
 	end
+
+	if self.matLevel then
+		UnityEngine.Object.Destroy(self.matLevel)
+	end
 end
 
 function SodacheLevelUpView:delayPlay()
@@ -97,32 +103,40 @@ function SodacheLevelUpView:delayPlay()
 end
 
 function SodacheLevelUpView:loop()
-	local s, e = 0, 1
+	local begin, final = 0, 1
 
 	if self.addLevel == 0 then
 		local nextCfg = lua_sodache_level.configDict[self.prop.oldLevel + 1]
 
-		s = self.prop.oldExp / nextCfg.cosume
+		begin = self.prop.oldExp / nextCfg.cosume
 	elseif self.addLevel == self.diffLvl then
-		if self.prop.exp == 0 then
-			self:_frameCall(0)
+		local nextCfg = lua_sodache_level.configDict[self.prop.level + 1]
+
+		if nextCfg then
+			if self.prop.exp == 0 then
+				self:_frameCall(0)
+				self:setSafety()
+
+				return
+			else
+				final = self.prop.exp / nextCfg.cosume
+			end
+		else
+			self:_frameCall(1)
 			self:setSafety()
 
 			return
-		else
-			local nextCfg = lua_sodache_level.configDict[self.prop.level + 1]
-
-			e = self.prop.exp / nextCfg.cosume
 		end
 	end
 
-	local duration = (e - s) * SodacheEnum.LevelProgressTime
+	local duration = (final - begin) * SodacheEnum.LevelProgressTime
 
 	if self.tweenId then
 		ZProj.TweenHelper.KillById(self.tweenId)
+		self:_endCall()
 	end
 
-	self.tweenId = ZProj.TweenHelper.DOTweenFloat(s, e, duration, self._frameCall, self._endCall, self, nil, EaseType.Linear)
+	self.tweenId = ZProj.TweenHelper.DOTweenFloat(begin, final, duration, self._frameCall, self._endCall, self, nil, EaseType.Linear)
 
 	if self.addLevel < self.diffLvl then
 		self.addLevel = self.addLevel + 1
@@ -135,7 +149,7 @@ end
 
 function SodacheLevelUpView:_frameCall(value)
 	if self.matLevel then
-		self.matLevel:SetFloat("_LerpOffset", value)
+		SodacheUtil.setMaterialValue(self.matLevel, value)
 	end
 end
 

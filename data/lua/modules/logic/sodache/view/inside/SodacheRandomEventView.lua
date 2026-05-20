@@ -27,6 +27,8 @@ function SodacheRandomEventView:removeEvents()
 end
 
 function SodacheRandomEventView:onOpen()
+	AudioMgr.instance:trigger(AudioEnum3_7.Sodache.randomevent_open)
+
 	local panelMo = SodacheModel.instance:getInsideMo().panelBox.currPanel
 	local unitMo = panelMo:getUnitMo()
 
@@ -61,6 +63,8 @@ function SodacheRandomEventView:_refreshOptions()
 		gohelper.setActive(self._goresult, true)
 
 		self._txtresult.text = resultTxt
+
+		AudioMgr.instance:trigger(AudioEnum3_7.Sodache.randomevent_result)
 	end
 
 	self._choiceComp:initData(self._panelMo.options)
@@ -80,7 +84,7 @@ end
 
 function SodacheRandomEventView:onClose()
 	if not self.isPanelClose then
-		SodacheInsideRpc.instance:sendSodacheInsideClosePanel()
+		-- block empty
 	end
 end
 

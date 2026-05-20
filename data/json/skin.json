@@ -92,6 +92,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -187,6 +189,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -282,6 +286,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -377,6 +383,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -472,6 +480,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -567,6 +577,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -662,6 +674,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -760,6 +774,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -858,6 +874,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -953,6 +971,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -1048,6 +1068,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -1143,6 +1165,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -1238,6 +1262,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -1333,6 +1359,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 1,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -1428,6 +1456,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -1523,6 +1553,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -1618,6 +1650,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -1713,6 +1747,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -1808,6 +1844,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -1903,6 +1941,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -1915,7 +1955,7 @@
     "itemIcon": "300903",
     "rare": 5,
     "colorbg": 1,
-    "compensate": "",
+    "compensate": "2#1#880",
     "showDrawingSwitch": 1,
     "defaultStencilValue": "",
     "frameStencilValue": "",
@@ -1991,13 +2031,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": false,
-    "repeatBuyTime": "",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "",
     "skinStoreId": 0,
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -2093,6 +2135,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -2188,6 +2232,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -2276,13 +2322,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": false,
-    "repeatBuyTime": "2025-2-27 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "510",
     "skinStory": "",
     "skinStoreId": 0,
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -2378,6 +2426,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -2473,6 +2523,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -2568,6 +2620,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -2663,6 +2717,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -2758,6 +2814,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -2853,6 +2911,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -2948,6 +3008,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -3043,6 +3105,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -3138,6 +3202,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -3236,6 +3302,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -3334,6 +3402,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -3432,6 +3502,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -3530,6 +3602,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -3628,6 +3702,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -3723,6 +3799,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -3818,6 +3896,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -3913,6 +3993,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -4008,6 +4090,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -4106,6 +4190,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -4204,6 +4290,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -4299,6 +4387,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -4394,6 +4484,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -4489,6 +4581,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -4584,6 +4678,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -4679,6 +4775,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -4774,6 +4872,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -4869,6 +4969,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -4964,6 +5066,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -5062,6 +5166,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -5160,6 +5266,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -5255,6 +5363,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -5350,6 +5460,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -5445,6 +5557,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -5457,7 +5571,7 @@
     "itemIcon": "302503",
     "rare": 4,
     "colorbg": 1,
-    "compensate": "",
+    "compensate": "2#1#880",
     "showDrawingSwitch": 1,
     "defaultStencilValue": "",
     "frameStencilValue": "",
@@ -5533,13 +5647,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": false,
-    "repeatBuyTime": "",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "",
     "skinStoreId": 0,
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -5635,6 +5751,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -5730,6 +5848,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -5825,6 +5945,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -5923,6 +6045,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -6021,6 +6145,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -6119,6 +6245,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -6217,6 +6345,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 1,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -6315,6 +6445,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -6410,6 +6542,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -6505,6 +6639,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -6600,6 +6736,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -6695,6 +6833,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -6790,6 +6930,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -6888,6 +7030,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -6986,6 +7130,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -7081,6 +7227,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -7176,6 +7324,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -7188,7 +7338,7 @@
     "itemIcon": "303203",
     "rare": 4,
     "colorbg": 4,
-    "compensate": "",
+    "compensate": "2#1#880",
     "showDrawingSwitch": 1,
     "defaultStencilValue": "",
     "frameStencilValue": "",
@@ -7267,13 +7417,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": false,
-    "repeatBuyTime": "",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "",
     "skinStoreId": 0,
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -7369,6 +7521,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -7464,6 +7618,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -7562,6 +7718,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -7660,6 +7818,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -7755,6 +7915,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -7850,6 +8012,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -7945,6 +8109,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -8040,6 +8206,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -8135,6 +8303,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -8230,6 +8400,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -8328,6 +8500,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -8426,6 +8600,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -8521,6 +8697,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -8616,6 +8794,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -8711,6 +8891,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -8809,6 +8991,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -8907,6 +9091,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -9002,6 +9188,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -9097,6 +9285,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -9192,6 +9382,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -9287,6 +9479,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -9382,6 +9576,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -9480,6 +9676,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -9578,6 +9776,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -9673,6 +9873,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -9768,6 +9970,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -9863,6 +10067,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -9958,6 +10164,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -10053,6 +10261,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -10151,6 +10361,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -10246,6 +10458,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -10341,6 +10555,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -10436,6 +10652,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -10531,6 +10749,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -10626,6 +10846,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -10721,6 +10943,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -10816,6 +11040,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -10911,6 +11137,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -11009,6 +11237,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -11107,6 +11337,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -11205,6 +11437,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -11300,6 +11534,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -11395,6 +11631,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -11490,6 +11728,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -11585,6 +11825,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -11683,6 +11925,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -11781,6 +12025,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -11879,6 +12125,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -11974,6 +12222,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -12069,6 +12319,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -12167,6 +12419,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -12265,6 +12519,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -12363,6 +12619,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -12461,6 +12719,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -12556,6 +12816,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -12651,6 +12913,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -12746,6 +13010,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -12841,6 +13107,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -12936,6 +13204,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -13031,6 +13301,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -13126,6 +13398,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -13221,6 +13495,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -13316,6 +13592,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -13411,6 +13689,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 1,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -13506,6 +13786,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -13518,7 +13800,7 @@
     "itemIcon": "304303",
     "rare": 5,
     "colorbg": 1,
-    "compensate": "",
+    "compensate": "2#1#880",
     "showDrawingSwitch": 1,
     "defaultStencilValue": "",
     "frameStencilValue": "",
@@ -13594,13 +13876,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "",
     "skinStoreId": 0,
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -13613,7 +13897,7 @@
     "itemIcon": "306303",
     "rare": 5,
     "colorbg": 1,
-    "compensate": "",
+    "compensate": "2#1#880",
     "showDrawingSwitch": 1,
     "defaultStencilValue": "",
     "frameStencilValue": "",
@@ -13689,13 +13973,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "",
     "skinStoreId": 0,
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -13791,6 +14077,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -13886,6 +14174,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -13981,6 +14271,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -14076,6 +14368,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -14171,6 +14465,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -14266,6 +14562,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -14364,6 +14662,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -14462,6 +14762,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -14557,6 +14859,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -14652,6 +14956,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -14740,13 +15046,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2025-2-27 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "510",
     "skinStory": "",
     "skinStoreId": 0,
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -14842,6 +15150,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -14854,7 +15164,7 @@
     "itemIcon": "306403",
     "rare": 5,
     "colorbg": 1,
-    "compensate": "",
+    "compensate": "2#1#880",
     "showDrawingSwitch": 1,
     "defaultStencilValue": "",
     "frameStencilValue": "",
@@ -14930,13 +15240,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "嬉皮士手记\n\n这真是一个可怕的地方！\n我一点儿都不想再回忆那些事情——关于我怎样自以为逃出了小岛，又怎样重新回到了重塑之手……为了拜访海岛的哲人，我花光积蓄请人为我订制了新的衣服，以此表示尊重，但到头来我连一个酒神的信徒都没遇到！难道艺术将要迎来真正的消亡了吗？这里的人只想着怎么造出大炮和军舰，却没有人愿意停下来听我说话。\n除此之外，还存在着更严峻的情况：即使我找到了志同道合的朋友，也无法与他们保持联系——这关乎重塑之手，他们的话语总是诱人，连我都差点迷失在那些状似美好的描述之中。\n所幸有一位香气女士向我提供了帮助，她告诉了我一些实话，并帮助我说服了几位先生和小姐，让我的艺术能够在此地推行——好吧，即使那些家伙根本不懂艺术！\n伟大艺术的路途总是曲折的，而前方是光明的。",
     "skinStoreId": 0,
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -15032,6 +15344,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 1,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -15127,6 +15441,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -15222,6 +15538,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -15322,6 +15640,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -15422,6 +15742,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -15517,6 +15839,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -15612,6 +15936,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -15707,6 +16033,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -15802,6 +16130,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -15897,6 +16227,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 1,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -15909,7 +16241,7 @@
     "itemIcon": "301503",
     "rare": 5,
     "colorbg": 1,
-    "compensate": "",
+    "compensate": "2#1#880",
     "showDrawingSwitch": 1,
     "defaultStencilValue": "",
     "frameStencilValue": "",
@@ -15985,13 +16317,15 @@
     "lucidescapeViewImgOffset": "39#35#0.51",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "",
     "skinStoreId": 0,
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -16087,6 +16421,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -16175,13 +16511,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-1-20 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "",
     "skinStoreId": 0,
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -16277,6 +16615,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -16372,6 +16712,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -16467,6 +16809,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -16562,6 +16906,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -16657,6 +17003,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -16752,6 +17100,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -16840,13 +17190,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-6-11 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "510",
     "skinStory": "",
     "skinStoreId": 0,
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -16938,13 +17290,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-6-11 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "510",
     "skinStory": "",
     "skinStoreId": 0,
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -17040,6 +17394,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 1,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -17135,6 +17491,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -17233,6 +17591,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -17331,6 +17691,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -17429,6 +17791,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -17524,6 +17888,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -17619,6 +17985,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -17714,6 +18082,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -17809,6 +18179,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 1,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -17897,13 +18269,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2025-2-27 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "510",
     "skinStory": "<b>第四幕  夜色笼罩的城堡花园</b>\n\n月光幽静，女孩儿的头纱如水般闪耀；草地青翠，玫瑰花环的香气在空气中弥漫。\n“幸福时刻即将来临，爱人的怀抱如此美妙——”\n是女高音的声音过于曼妙，抑或是神秘术在不知不觉中已控制人心？观众皆痴痴地沉浸在充满爱氛的歌唱中，无人发觉舞台上的苏珊娜已消失不见。\n与此同时，千里之外的博物馆中，某件被视为稀世珍宝的馆藏也失去了踪影。一场巧妙而怪异的偷窃计划又成功了。\n这当然是完美的计划——谁都不会发现女主角脖子上的仿冒品，已在悄无声息间被替换成了真品。",
     "skinStoreId": 0,
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -17992,13 +18366,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-1-20 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "灯光渐渐地暗了下去，森林从黑暗中浮现出来。\n身着绿衣的捕鸟人正坐在树上，她将排箫举到嘴边，吹奏出第一个音符。这些音符像一串发光的素数，向远方飞去。随后，隐约的啁啾声从遥远的草叶深处，传至她的耳畔。\n也许是害怕惊扰了远方的鸟儿，观众席中有人屏住了呼吸。\n鸟儿们不负众望地出来了——那些彩色的、炫目的、闪着光的精灵。它们身披霞光的精粹，扑着翅膀落在了舞台的中心。其中一只踉跄地摔下，恰巧落在了捕鸟人的掌心。\n在二楼的包厢里，有人举起了相机，将这一幕定格为永恒。",
     "skinStoreId": 0,
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -18094,6 +18470,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -18189,6 +18567,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -18284,6 +18664,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -18379,6 +18761,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -18474,6 +18858,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -18569,6 +18955,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -18664,6 +19052,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -18759,6 +19149,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 1,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -18847,13 +19239,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2025-2-27 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "510",
     "skinStory": "伟大的科考航船即将前往北极考察！\n这个消息以前所未有的速度传遍了世界的所有角落。人们渴望从这次航程中了解些新东西，譬如极地的生态、因纽特人的文化、古老的传说与奇迹。\n就连神秘学界名流温妮弗雷德都愿登上这艘勇敢的破冰船，前往极地一探究竟。梦想与浪漫，正是极地的美妙所在。在她眼中，那里是一望无尽的未知，其中也许蕴藏着莫大财富。一切险境都是机遇，她如此相信着，甚至不惜在此项目上进行了一笔至关重要的投资。\n当然，对她来说，前往北极不仅是一次探险，也是一种度假。对长生的神秘学家来说，没有比新奇体验更重要的东西了。\n她永远都在路上，为商机，也为了更多的新东西。",
     "skinStoreId": 0,
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -18942,13 +19336,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-1-20 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "那个研究员总是让人头痛。\n它不讲礼貌，肆无忌惮地咬坏实验室的桌椅，在安静的室内大吵大闹。在各位同事的力荐之下，这名研究员成功地当选了“年度科研之星”，作为奖赏，它将拥有一间隔音良好的独立办公室。这下，噪音问题得到了彻底的解决。\n在场的所有人都非常满意，包括研究员本人。它难得安静地坐了下来，开始了新一轮的药剂实验，这吸引了它所有的注意力。\n恰巧，有一名画家经过此处，他感慨于研究员的认真，于是把这一幕作为写生素材画了下来，并为此幅画作取名为《一名恬静的研究员》。",
     "skinStoreId": 0,
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -19044,6 +19440,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 1,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -19139,6 +19537,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -19234,6 +19634,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -19329,6 +19731,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -19424,6 +19828,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -19519,6 +19925,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -19614,6 +20022,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -19709,6 +20119,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -19804,6 +20216,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -19899,6 +20313,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -19994,6 +20410,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -20082,13 +20500,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2025-2-27 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "510",
     "skinStory": "有孩子声称自己做了这样一个梦。\n在梦里，有一座真实而怪诞的小镇，里面布满了扭曲而奇幻的建筑，像一座巨大的迷宫。\n在突破迷宫的过程中，他遇到了许多与他处境相同的孩子。他们花费了许多时间，却依然无法找到出口。等到星星与月亮升上了天空，他们耗尽了最后一丝体力。\n在这时，远方的道路上传来了一阵空灵的乐声。\n“我想知道是谁能演奏出这样美妙的音乐，于是就走了过去……但是我只看到了一片雪白的衣角，还有一只巨大的兔子——真奇怪，怎么会有这么大的兔子？”\n“沿着乐声的方向，我们居然真的走出了迷宫——这太不可思议了！我想，一定是一位好心的吟游诗人发现了我们，将我们带出了那个迷宫。”",
     "skinStoreId": 0,
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -20184,6 +20604,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 1,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -20272,13 +20694,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-6-11 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "510",
     "skinStory": "一条河，连接着所有的朋友，拜访老朋友，认识新朋友……\n“所以，我走得越远，朋友就会越多。”在明澈的月光下，一个女孩抱着枕头，掰着手指，小声嘟囔着，“我需要记得提醒朋友，要记得床的下面不是草坪，而是水流；当与朋友们聊天的时候，要固定好‘锚’，否则小床很快就会漂走……”\n月光散碎在河水上，波光漫在女孩的脸颊，她慢慢闭上了眼。\n“还有，划桨的时候，要坐在一侧用力……这样，就可以在水中心一直打转，我可以编一个河底仙女的故事……”\n水流仍然前行，载着刚启程的梦与一颗好奇的心。",
     "skinStoreId": 0,
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -20367,13 +20791,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-6-11 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "510",
     "skinStory": "更多、更立体、更饱满的摇滚乐！\n“因为躲避追捕而进入公海的时代已经过去！伟大的星锑船长宣布，摇滚乐将要迎来一个新的高峰！环游世界的目标航线，三千英尺的滞空高度，摇滚乐将随我一起自由起航！飞艇的最终目标是：为尽可能多的人分享摇滚乐——天哪，高空与地面全方位的音乐节！史上海拔最高的音乐节！”\n“咳咳，APPLe某能够理解船长的心情。不过，请船长避免在深夜时进行摇滚派对。虽然箱中并不受警察的管辖，但这里显然有些人比警察更难对付。”",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_1_9.png",
     "skin2dParams": "roles_bust\\v3a1_302504_xt_skinsuit\\302504_xt_skinsuit.prefab#-143.8,-11.8#0.87",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 5,
+    "skinSignature": "302504",
     "costafterbuy": ""
   },
   {
@@ -20469,6 +20895,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 1,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -20564,6 +20992,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -20659,6 +21089,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -20754,6 +21186,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -20849,6 +21283,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -20944,6 +21380,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -21039,6 +21477,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 1,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -21127,13 +21567,15 @@
     "lucidescapeViewImgOffset": "-13.1#110#0.58",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-6-11 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "510",
     "skinStory": "",
     "skinStoreId": 0,
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -21229,6 +21671,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -21317,13 +21761,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-6-11 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "510",
     "skinStory": "“波茨人～！正义勇敢的电子英雄，波茨人～！”\n这是电子游戏风头正盛的年代，无数游戏角色成为了孩童们心目中的偶像。其中人气最高的，便是《电子英雄波茨人》。\n“能够一步跃上10米高的平台，拳头可以积蓄能量打出电光拳，波茨人真的太厉害了！我也好想变得像他一样～！”\n拉普拉斯科算中心承担了圣诞老人的职责。研究人员把废旧电烤箱改造成可穿戴头盔，用真空管打造了一副可以变形的手套。他们甚至偷偷使用了科算中心的相关机密技术，制造出真正的火箭背包。似乎在游戏面前，科研机构的工作人员也不过是另一群孩子而已。\n当许下愿望的孩童穿上这些礼物的瞬间，虚拟屏幕中的超级英雄便来到了现实世界之中。",
     "skinStoreId": 0,
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -21412,13 +21858,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-1-20 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "20世纪末，曾经风靡全球的《街头干探》推出新作《神秘的数字》。一时间，崭新的街机遍布了大街小巷，成为了许多玩家茶余饭后的谈资。\n“嘿，你们知道吗？我见到那个‘神秘人’的原型了！”\n不知何时起，围绕着某位爱琴海的岛上访客，一则流言飞快传播开去。玩家谈论着他和那名人气角色的相似度：深色的风衣、金属的假面、神秘的身世，还有单一字符组成的名字。\n据不愿透露姓名的基金会员工称，曾有人建议当事者出面澄清，但是遭到了拒绝。有趣的是，这份拒绝和回避造就了同原作一般的神秘氛围，时至今日，这条“都市传说”仍为众多玩家津津乐道。",
     "skinStoreId": 0,
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -21514,6 +21962,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -21609,6 +22059,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -21704,6 +22156,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -21799,6 +22253,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -21894,6 +22350,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -21989,6 +22447,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -22084,6 +22544,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 1,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -22179,6 +22641,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -22267,13 +22731,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-1-20 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "评判帽子是否优秀的标准是什么？是大小，大帽子可以遮阳与防尘，在复杂的野外环境中还可以起到保护头部的作用。\n评判靴子是否优秀的标准是什么？是大小，大鞋底可以让你在各种糟糕的地形里如履平地，粗厚的皮革还可以隔热保温，高大的鞋跟能让你牢牢踩住马镫，宽大的靴筒一样能保护腿部。\n大帽子、大靴子、大声的口号、名为西尔弗的爱马，现在你也是伟大的独行侠了！\n“我已经完全理解了这段广告词，独行侠的特征就是成熟和冷酷。以及我为人人的公正精神，也是这个角色魅力的一部分。”\n导演的眼中射出了赞许的目光。\n“这孩子天生是当牛仔的料！”",
     "skinStoreId": 0,
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -22362,13 +22828,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-6-11 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "510",
     "skinStory": "“在座的各位都是康复中心首屈一指的心理医生，对这位小姐的病症有什么看法么？”\n“结合过往病历，我认为应该采取一些保守治疗。一个自由放松的新环境，最好还能与她熟悉的东西挂钩，这应该会有助于改善她的病情。”\n“爵士乐怎么样？爵士的时代与她的时代相近，涉及范围广泛，充满多样性，歌词也都是即兴的。在各种旋律的带动中，她可以以没有规则束缚的状态即兴唱出自己的想法，这有助于她建立自我。”\n“我去联络一下芝加哥与奥斯汀的基金会支部，相关事宜对方会安排，我们只需要派出专员跟随即可。让这位尊贵的小姐顺着风城的风一路漂泊，欣赏欣赏德克萨斯的蓝帽花吧。”",
     "skinStoreId": 0,
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -22469,6 +22937,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -22569,6 +23039,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -22664,6 +23136,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -22764,6 +23238,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -22859,6 +23335,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -22954,6 +23432,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -23049,6 +23529,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -23144,6 +23626,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -23239,6 +23723,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 1,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -23327,13 +23813,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-6-11 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "510",
     "skinStory": "<i>一份皱巴巴的申请表。</i>\n\n申请内容：女士，非常感谢您愿意给我这个机会……但我只是尽了应尽的职责，并不值得被邀请到里约热内卢分部做专题分享会……\n\n处理意见：马库斯调查员，无需担忧，里约热内卢分部已经为你准备好了盛大的沙滩派对。\n\n申请内容：沙滩派对……？呃，女士……我……需要提前做一些心理准备……\n\n处理结果：你最近在看关于海滩与贝壳的书，对吗？马库斯调查员，难道你就不好奇那些贝壳到底长什么样子吗？在科帕卡巴纳海滩，你可以尽情地观察那些贝壳，或许还能用它们做一些手工？别担心，这只是一次假期。\n\n申请内容：好的……女士，我会努力的！",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_2_2.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -23422,13 +23910,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-6-11 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "510",
     "skinStory": "“我想我找到了新的斐波那契数列！在前往泉眼的旅途中，我见到了一种奇怪的花朵！当地人管它们叫作向日葵，它们花盘中有2组螺旋线，方向相反，但彼此镶嵌。”\n“不仅仅是向日葵，我还看见了仙人掌与台风，这也是一种新的形式。现象世界总有那么多的方式来诠释同一条定理。”\n“现象世界中的一切总会有被穷尽的一天，无论外表如何变化，它们都具有相同的性质——时间性。这证明了所有现象都是有限的，也包括了我的小罐子。但至少此刻，数列还完美地存在于花盘之中……这也正是现象世界的奇妙之处：即使本身是有限的，但它仍不吝于向我们展示更多的可能性。”",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_2_2.png",
     "skin2dParams": "roles_bust/v3a1_306604_37_skinsuit/306604_37_skinsuit.prefab#-26.2,25.9#0.75",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 5,
+    "skinSignature": "3066",
     "costafterbuy": ""
   },
   {
@@ -23517,13 +24007,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-1-20 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "20世纪初，玛瑙斯因为橡胶而繁荣。工人们割开胶树，用那些乳白的汁液换取黄金。他们的愿望成真了，来源于森林的财富沿着亚马孙河的通路汇聚而来。劳动换来了收获，家中的孩子终于可以不再忍饥挨饿。\n随着财富一起到来的，还有数不尽的游客。他们急于目睹森林所造就的伟业，急于目睹粉色的河豚、金刚鹦鹉，还有口耳相传的“库鲁皮拉”。\n一辆来自旁遮普邦的探险车驶入了森林。探险者在泥沼上看见了美洲豹的足迹，进而得知了它背上的花纹是如何排布，捕猎的身姿是如何敏捷。他们又险些落入蟒蛇的肚腹，借以某一瞬间的机智才摆脱了危险。\n森林沉默地俯瞰着人类的闯入，正如它多年前目睹人类的离开。",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_2_2.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -23619,6 +24111,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -23707,13 +24201,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-6-11 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "510",
     "skinStory": "同样的色彩被不同的文化赋予了迥异的含义。\n里约热内卢是一座浓墨重彩的城市，无数游客不远万里地赶来，只是为了一睹它的风采。这里的人喜欢鲜艳的颜色，因为它足够热烈，能够让人重燃对生活的希望。\n“在来亚什基，紫色通常寓意着高贵与威严。在前工业时代，它最主要的来源是骨螺的汁液，含量稀少，难以提取，因此成为了旧贵族的特权。但在这儿，紫色是悲伤的象征。如果与黄色搭配，那将是不祥的前兆。”\n“只有红色是例外。在我们的文明中，它大部分时候都代表着：一往无前的勇气，与永不退缩的热情。”",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_2_2.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -23814,6 +24310,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -23914,6 +24412,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -24009,6 +24509,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -24104,6 +24606,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -24204,6 +24708,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -24304,6 +24810,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -24392,13 +24900,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-6-11 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "510",
     "skinStory": "首席裁判记录简报\n事件：水怪竞速赛场，出现魔精暴动。\n处理记录：已打晕，交由后勤部处置。\nPs：没打选手！8号选手晕厥原因：从魔精背部摔下。\n\n事件：叩门飞匙赛，4号选手串通道具筹备组，使用磁铁作弊。\n处理记录：在场地内飞了一圈，所有携带磁铁的翼造门匙已被吸附于蜂鸣喇叭。违规道具已取证。\n\n事件：15kg级负重竞速，选手因大雾偏离赛道。\n处理记录：已取消选手该场成绩，撞碎裁判酒瓶一个。<s>为什么我不能找他赔？</s>\nPs：该选手已因酒精过敏送至医疗组",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_2_3.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -24494,6 +25004,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 1,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -24589,6 +25101,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -24684,6 +25198,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -24779,6 +25295,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -24867,13 +25385,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-1-20 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "在18世纪的末期，叩门飞匙成为了乌卢鲁运动会的正式项目。\n这项运动最早起源于一种神秘学造物：翼造门匙。正是它寻找锁孔的本能，引发了后续所有不必要的麻烦——一切始于约克郡的一个赌约，一个神秘学家宣称：他能够在钥匙找到锁孔的前一个瞬间，用银箭穿过钥匙上的孔洞，将它牢牢地钉死在门板上。\n为了验证这件事，有好事者找来了十把钥匙和十个门锁。于是，赌局开始了。虽然这个神秘学家在后续的比赛中仅仅射中了一把老旧的钥匙而遭遇了惨败，但活动本身已成为一种茶余饭后的游戏，一直延续，直到今天。",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_2_3.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -24969,6 +25489,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -25064,6 +25586,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -25159,6 +25683,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -25254,6 +25780,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -25342,13 +25870,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-1-20 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "<i>“这场旅途，我们只邀请特别的客人。”</i>\n途经地：复活节岛-百慕大群岛-亚特兰蒂斯\n\n复活节岛：\n一个只停留在过去，没有未来的岛屿。文明在它的土地上留下了令人惊叹的奇迹。\n登船指南：为了您的安全，请不要擅自与船员搭话。\n\n百慕大群岛：\n无数传说的发源地，在耸人听闻的故事之中，体验一场亲身经历的奇迹。\n登船指南：如果在C区舞池附近听到哭声，请勿惊慌。船员们会在深夜进行一些娱乐活动，部分船员在生前有演唱歌曲的爱好。\n\n亚特兰蒂斯：\n旅程的最后一站，波赛多尼亚，大西洲不可或缺的明珠。\n登船指南：切勿投喂船员！本游轮对后果概不负责！\n\n启航日期：1991.1.15（大洋洲日环食）\n登船信物：船长亲笔邀请函",
     "skinStoreId": 811451,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_2_4.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -25444,6 +25974,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -25539,6 +26071,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -25634,6 +26168,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 1,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -25722,13 +26258,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-6-11 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "510",
     "skinStory": "深夜的沙龙，女主人正在与她的听众们对谈。\n“医生，您是怎么做到的呢？”一位年轻的小姐好奇地问道，“明明我什么话都没有说，但您却什么都知道——就好像您一直陪在我身边似的。”\n“所有外在的迹象，都是你的一部分，”女主人回答道，“我说出了我看见的东西，仅此而已。”\n话音未落，另一位年长些的女士也迫不及待地抛出了自己的问题——从语气和神色上看，她已经等待很久。\n由此，沙龙中又展开了一段连续不断的谈话，偶尔夹杂着几声轻笑。\n每一个看似无端的梦境，都有着一条远超想象的解答。投射在艺术画作中，它可以是时钟上的壁虎，也可以是电话上的龙虾，或者是一枚悬置于面前的青苹果。",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_2_4.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -25824,6 +26362,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -25919,6 +26459,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -26014,6 +26556,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -26109,6 +26653,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -26204,6 +26750,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -26299,6 +26847,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -26387,13 +26937,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-6-11 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "510",
     "skinStory": "年节时分，有一落魄独行客路过夜半未打烊的酒坊，入内休憩，闻酒香扑鼻，痛饮几碗。醉眼迷离之时，望见壁上绘有仙人图，画中少女肩头挑着盏绢花提灯，嫣然含笑，素手一翻，酒壶隐现，睇视来人，作迎客状。\n行客心驰神往，趔趄上前，跌入画中，再次睁眼，已入桃源。身在此间，有甘澧可浇心中块垒，有奇景可供赏玩，更有神妃仙子言笑晏晏把酒共饮，落魄人抛却尘世难解之烦忧，只愿永居桃源。\n不曾想，三盏过后，天光已亮，行客竟只是趴在酒坛上酣睡一宿，昨夜种种皆是虚妄。\n抬眼望去，壁上桃源仍在，可仙人不知去处，但闻酒坊内一少女笑问：“再开一坛？”",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_2_5_2.png",
     "skin2dParams": "roles_bust/v3a2_308303_qn_skinstorecardface/308303_qn_skinstorecardface.prefab#-270.7,38.9#0.78",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 5,
+    "skinSignature": "308303",
     "costafterbuy": ""
   },
   {
@@ -26482,13 +27034,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-6-11 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "510",
     "skinStory": "永丰镇有个老妇，常与人说起自己年少时曾遇到过精怪。她说幼时曾在山中挖出一棵大参，还未来得及给它系上红绳，它就遁土而去。老妇坚信这参必定已成精，化形成了仙人。邻人听说这件事，都觉得她不过是瞎说罢了。\n老妇有一子，以农桑为业。有一日，他干完农活回家，发现有一个女童在门边玩耍，翻绞红绳，周身上下泛着微光，可面容朦胧，看不真切。他心里觉得奇怪，想要上前搭话问个究竟。可女童似乎有所察觉，忽然没入草丛中，只剩一截红绳掉在地上。\n于是他拾起红绳回家给母亲看，老妇拍掌道：“是了！是她！她就是当年我所见的那参精啊！”",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_2_5_2.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -26577,13 +27131,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-6-11 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "510",
     "skinStory": "一个书生赴京赶考，恐路长途远，易生波折，于是雇了一个老仆随行照应。\n主仆二人行至深山，忽逢电光裂空，雷雨大作。书生望见远处有一荒废庙宇，想要入内暂避。\n老仆极力劝阻，盖因此庙宇向来有邪祟传闻。乡人都称它为“玉瓶娘娘庙”，祠中神像手持宝瓶，最喜戏弄人。凡是入庙避雨的人，必遭惊扰，轻则受到惊吓，重则失了魂魄。\n书生嗤笑一声，不以为意，径自推门而入。\n翌日拂晓，老仆入庙宇寻找书生，只见行囊散落一地，人已是杳然无踪。",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_2_5_2.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -26679,6 +27235,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -26774,6 +27332,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -26869,6 +27429,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 1,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -26964,6 +27526,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -27059,6 +27623,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -27154,6 +27720,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -27249,6 +27817,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -27337,13 +27907,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-1-20 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "诚征队友！为防止本人或你在黑水森林中遭遇不测\n嘿！各位酒馆里的冒险者们，本人准备去黑水森林探险，需要队友三位，有以下要求：\n1.身手过硬，能够连续击败多名地精首领\n2.没有连续掷出过三次大失败\n3.不介意随行的动物伙伴偷吃你的口粮\n4.有地下城探险经验，欢迎宝箱怪爱好者\n\n关于本人：\n1.接受过军事训练、实力强劲的猎人，手脚十分灵活，可以破坏大部分的机关\n2.懂炼金术，能够调配出几种常见药剂，但不保证百分百有效，欢迎免疫毒药体质的队友\n\n附加：谢绝之前的队友，和你们组队后我的大失败记录已经榜上有名。",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_2_6.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -27439,6 +28011,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -27527,13 +28101,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-6-11 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "510",
     "skinStory": "在第一枚预兆落下的时候，她得到了启示。\n那是某种遥远而含糊的预言，借由清晨的太阳、闪光的露水、脚趾间的蛰痛来完成传递。舞者必须进行一场永不休止的舞蹈，哪怕双脚布满鲜血，也不能就此停止——直至神明回应，直到命运朝她展露另一种好运的预兆。\n但不是每个舞者都能拥有被回应的幸运，她将自我坠入一场严酷的修行，每当最煎熬的时刻来临，她就会将自己想象成一枚骰子，在就此放弃还是祈祷下一秒得到回应间摇摆，在休憩的诱惑下享受苦痛，在大成功与大失败之间煎熬折磨。此时，门扉那侧，响起了轻轻的敲门声。\n“夏洛特，你还好吗？”\n很可惜，这是任何沉浸派玩家必然会面临的意外情况——来自亲友的关心。就在她准备放弃仪式欲作答时，命运朝她丢出了第二枚幸运的骰子。",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_2_6.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -27629,6 +28205,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 1,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -27724,6 +28302,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -27819,6 +28399,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -27914,6 +28496,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -28009,6 +28593,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -28104,6 +28690,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -28199,6 +28787,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -28287,13 +28877,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-1-20 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "“星间追猎秀”特邀演出\n\n各位观众，在下周六，将有一位神秘嘉宾为我们带来一场演出。您一定听说过那位“星际猎人”——████小姐！在行星航线上她是最靠谱的保镖，相信每个经过这条航线的人，都或多或少地听说过她的名字。传说她的子弹曾经击穿一颗小行星，那颗行星的碎片成为了她新的子弹。传说即将变为现实，千万不要错过！\n届时，马戏团将会抽取三名观众与这位“星际猎人”进行互动。门票数量有限，欲购从速。\n\n订购电话：███-████\n没意思的演出！不如马丁内斯的吉他秀！\n马丁内斯，怎么又是你？没完了！\n\n演出坐标：\nRA: 05h 55m 10.3s        Dec: +07° 24' 25.43\"\n\n备注：我们会为幸运观众购买星际保险公司的特殊保险服务，请勿担忧！",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_2_7.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -28389,6 +28981,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -28484,6 +29078,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -28579,6 +29175,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -28667,13 +29265,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-6-11 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "510",
     "skinStory": "“飞跃行星带”系列巡回演出\n——由享誉盛名的芭卡洛儿小姐倾情演奏\n\n马戏团十分荣幸地邀请到了蓝星演奏艺术家——芭卡洛儿小姐。这位年轻的音乐家，将在此进行“飞跃行星带”系列的第三十一场演奏。在本次演出中，您将目睹独一无二的“啪唧匣子”，这是一种来自蓝色星球的融合式新乐器。与此同时芭卡洛儿小姐将试奏全新的未来主义曲目，据传灵感来自天体音乐，相信能够给予您一种全新的体验。\n\n曲目单如下：\n《月相协奏曲》\n《安德洛墨达》\n\n演出坐标：\nRA: 05h 55m 10.3s        Dec: +07° 24' 25.43\"\n\n诚邀每一位音乐爱好者跨越星系，来访位于参宿四的巡回演出！",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_2_7.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -28769,6 +29369,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 1,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -28864,6 +29466,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -28959,6 +29563,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -29054,6 +29660,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -29154,6 +29762,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -29254,6 +29864,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -29354,6 +29966,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -29449,6 +30063,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -29544,6 +30160,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -29637,13 +30255,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-6-11 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "510",
     "skinStory": "涂装改造-废弃备选方案\n废弃提案：头冠内置装置，可在极端情况下，展开并连接躯体构成法拉第笼。\n废弃原因：实验经费未获审批。\n\n废弃提案：将双腿更换为棋子造型，内部用于存放电池和弹药，露西女士改为用棋子底部的履带前进。\n废弃原因：<s>连楼梯都不能上，哪个蠢货想的？</s>该方案已经废弃过一次，谁把它从垃圾堆里刨出来了？\n\n废弃提案：在权杖内置便携电池，为露西女士临时补充电量。\n废弃原因：内置电池版权杖的半径激增至12cm，外形过丑，被研究员一致投票废弃。（该方案未告知露西女士，否则露西女士或许会成为唯一的支持者。）",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title.png",
     "skin2dParams": "roles_bust\\v3a1_308603_lx_skinsuit\\308603_lx_skinsuit.prefab#-94.2,12.3#0.86",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 5,
+    "skinSignature": "3086",
     "costafterbuy": ""
   },
   {
@@ -29732,13 +30352,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-6-11 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "510",
     "skinStory": "宇宙在演化的过程中，经历了多少次求索？\n地心说认为，地球是宇宙的中心，是永恒静止的球体。所有的天体遵循着本轮与均轮的理论运动，各行其是。\n1543年，哥白尼提出了“日心说”，这是一种更简洁、优美的理论。理论并没有得到掌权者的认可，他们为此付出了代价——即使它在之后被证明为正确。\n古往今来，无数的人以疑问叩响世界的大门。他们苦苦求索，只为了寻求一个答案。但答案往往会引出新的问题。科学与文明相互嵌合，不断演变，直至如今。\n缸中的磁流体浮动着，模拟出下一个宇宙。\n所有的问题总要有一个答案，即使拥有它的代价是无尽的自我折磨——总要有人来做这些事情。",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang\\txt_skinhandbook_singlebg\\skinsuitdetailview_title_taluo.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -29827,13 +30449,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "2026-6-11 04:59:59",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "510",
     "skinStory": "一份未署名的手稿\n“嗯……我还没有任何饲养动物的经验，但如果要成为一名骑士，确实是需要一匹马。一匹好马能够做到很多事情，譬如冲破包围、提升速度（但我不需要这个，对我来说，流浪也是生活与写作的一部分）……更重要的是，我又多了一个读者——马是有灵性的动物，我可以把手稿读给它听！”\n（一片被涂掉了的字迹）\n“我觉得它应该叫贝纳尔达，这是一个好名字。每次当我给它念一些新故事，它总会用湿润的鼻子轻轻地拱我的手，就像它每次向我讨要苜蓿那样。”",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -29846,7 +30470,7 @@
     "itemIcon": "311703",
     "rare": 5,
     "colorbg": 1,
-    "compensate": "",
+    "compensate": "2#1#880",
     "showDrawingSwitch": 1,
     "defaultStencilValue": "",
     "frameStencilValue": "",
@@ -29922,13 +30546,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "一本演出记录，来源于马戏团成员\n\n“她之前从未在城堡上进行演出，那儿的情况比我们设想的要坏上许多……长年的风吹日晒让砖石发脆，砖缝里长满了土黄色的草根，这些草根甚至起到了粘合剂的作用——让这座城堡不至于立刻坍塌。”\n……\n“当我把这些情况告诉了她——我们的空中飞人演员之后，她反而打定了演出的主意。我问她为什么，她没有回答，只是看向那座城堡的城垛，那儿正飘着小小的旗帜。”\n……\n“城堡无言地耸立着，几乎要与天空融为一体。我沿着她的目光看去，发现城堡的顶端比平时演出的高度更高，几乎像一把劈开天空的利剑——她是正在为此着迷吗？”",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -30024,6 +30650,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -30119,6 +30747,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 1,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -30214,6 +30844,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -30309,6 +30941,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -30404,6 +31038,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -30499,6 +31135,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -30511,7 +31149,7 @@
     "itemIcon": "310503",
     "rare": 5,
     "colorbg": 1,
-    "compensate": "",
+    "compensate": "2#1#1080",
     "showDrawingSwitch": 1,
     "defaultStencilValue": "",
     "frameStencilValue": "",
@@ -30587,13 +31225,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "“她走了，已经3个月没有回信了。”纸信圈儿跑下台阶时，听见老妇人向屋内说道。她顿住脚，回头看见门边歪斜的信箱。信箱上裂了条大缝，因此，这家老妇人总守在门边等她。\n战地邮票从来都不充裕，没有信来才是常事，纸信圈儿见过太多次类似的失望。小信使想了想，又敲敲门将一朵报春花送给了略带失望的老人。\n“送给我的？谢谢你……孩子。”老妇人拄着拐杖，挪出房门，“我在等一个消息，像这朵报春花似的消息。”\n小信使仰起头：“您是说……？”\n“战争和冬天一样难熬，但愿和平能和春天一同到来。”\n“我明白了。春天来临的时候，我保证，您会很快、很快地知道的。传递春天只需要一阵风……我很擅长那个。”",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_3_0.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -30606,7 +31246,7 @@
     "itemIcon": "309403",
     "rare": 5,
     "colorbg": 1,
-    "compensate": "",
+    "compensate": "2#1#1080",
     "showDrawingSwitch": 1,
     "defaultStencilValue": "",
     "frameStencilValue": "",
@@ -30682,13 +31322,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "这身打扮属于所向披靡的冲锋者，由基金会旗下的新晋骑士打造。J向未锈铠提起这副铠甲时，拿出了一整摞物资申请与驳回单，“耗费了足足80块秘银！嘿，希望剃刀小队的伙计看到别眼红，毕竟它不支持量产。”话虽如此，未锈铠表示J的神情里看不出一丝一毫的抱歉。\n正因为掺入了足量的神秘学金属，这层钢铁肌肤足以支撑他完成那些危险的孤狼任务。虽然J一直宣称他喜欢集体作战，但面对危险时他更愿意一人扛下，把生路留给战友。\n当未锈铠问及J打造盔甲的目的时，他只是习惯性抚平了蓝色丝带上的褶皱，攥紧了一枚旧徽章，转而向未锈铠提了个没头没尾的问题：“你觉得，新的时代会来临吗？”",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_3_0.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -30784,6 +31426,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -30884,6 +31528,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 1,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -30979,6 +31625,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -31074,6 +31722,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -31174,6 +31824,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -31274,6 +31926,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -31374,6 +32028,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -31474,6 +32130,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -31569,6 +32227,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -31664,6 +32324,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -31759,6 +32421,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -31854,6 +32518,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -31954,6 +32620,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 1,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -32049,6 +32717,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -32144,6 +32814,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -32239,6 +32911,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -32334,6 +33008,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -32346,7 +33022,7 @@
     "itemIcon": "307704",
     "rare": 5,
     "colorbg": 1,
-    "compensate": "",
+    "compensate": "2#1#1080",
     "showDrawingSwitch": 1,
     "defaultStencilValue": "",
     "frameStencilValue": "",
@@ -32422,13 +33098,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "\n\n一名称职的血食怪猎人需要敏锐的嗅觉与洞穿谎言的双眼，所幸她都具备。\n\n促使她踏入此地的理由是一笔丰厚的赏金——它足以支持她推进理线学的研究，以及一封华丽却艰涩的邀请函。\n\n若说危险？她见过狂暴的地脉乱流。\n\n若论刺激？或许吧，毕竟，她从未涉足过如此怪诞的宅邸。\n\n深绿的虚影们无声起舞，扭曲的钟摆来回摇晃，一只黑猫蹲伏在钟表上头，金色的眼睛一动不动地凝视着她。血色的月光倾泻而下，冰冷地覆在她身上。\n\n一场鬼魂的舞会，诡异又美好。唯独她，像个格格不入的闯入者。是的，任何舞会都需要谢幕的时机，一个不突兀，又能稍微引发遐想的时机。\n\n于是，她缓缓举起了手中的枪——瞄准了那虚影中的一抹红。\n\n\n\n\n\n",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_3_1.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -32441,7 +33119,7 @@
     "itemIcon": "311303",
     "rare": 5,
     "colorbg": 1,
-    "compensate": "",
+    "compensate": "2#1#1080",
     "showDrawingSwitch": 1,
     "defaultStencilValue": "",
     "frameStencilValue": "",
@@ -32517,13 +33195,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "\n他在喧嚣中醒来，置身一场假面舞会。舞动的人们皆戴着红色的面具，他们的身形因疯狂而扭曲，却依旧在舞池里尽情狂欢。\n\n他很快便认出了他们——自己笔下的角色们：神经质的长兄与被活埋的妹妹、受执念折磨的恋人、戴着面具的红死魔、黑猫，以及那只不肯沉默的乌鸦。\n\n他们汇聚于此，和他共舞，将他拖回书页之中，镜子映出他破碎的身影。他低声自问：“我是谁？”\n\n——他是他们的作者，他们的朋友、恋人，也是他们的囚徒。\n\n月光如流水般倾泻，那些由他创作的意象仍在嬉戏，乌鸦仍在吟唱——\n\n“仅此而已，再无他事。”\n\n\n\n\n\n",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_3_1.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -32619,6 +33299,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -32719,6 +33401,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 1,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -32814,6 +33498,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -32909,6 +33595,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -33004,6 +33692,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -33099,6 +33789,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -33111,7 +33803,7 @@
     "itemIcon": "310003",
     "rare": 5,
     "colorbg": 1,
-    "compensate": "",
+    "compensate": "2#1#1680",
     "showDrawingSwitch": 1,
     "defaultStencilValue": "",
     "frameStencilValue": "",
@@ -33187,13 +33879,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "一个鲜红的、饱满的、多汁的苹果，正悬挂在乐园的中央。\n饥渴的蒙昧者们注意到了它。它生在如此近的枝上，恰好能够触及。它色泽鲜艳，散发着甘甜的香气。\n耳中传来窃窃私语声，那声音说：摘下它。因它长在此处，它是最出风头的果实，这是它自己的罪过。\n没有理由不伸出手。\n当甜美的汁水在舌尖绽放，他们也首次体会到了世界的轻盈。那滋味令人着迷，蒙昧者们迫不及待地品尝更多，直到在某一个瞬间，一种从未有过的意识在脑海中生根发芽。\n“这颗果实将要永远属于我！这世界朝我隐藏了太多欢乐滋味！”\n等他们溺毙于甘美的美梦时，他们依旧没有醒悟，那最初怂恿的声音，并非来自周围，而是来自他们内心。\n\n最终那枚果实找到了可安歇的枝头，至少在这里，所有人都不会因为自己的罪而审判它。",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_taluo.png",
     "skin2dParams": "roles_bust/v3a2_310003_tsnn_skinstorecardface/310003_tsnn_skinstorecardface.prefab#-183.3,106.8#0.65",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 5,
+    "skinSignature": "3100",
     "costafterbuy": ""
   },
   {
@@ -33206,7 +33900,7 @@
     "itemIcon": "308104",
     "rare": 5,
     "colorbg": 1,
-    "compensate": "",
+    "compensate": "2#1#1080",
     "showDrawingSwitch": 1,
     "defaultStencilValue": "",
     "frameStencilValue": "",
@@ -33287,13 +33981,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "巴黎的春日，与维也纳并无不同。\n这里是名流的聚集地，他们交谈着服装、首饰与香水，脸上挂着微笑与恰到好处的轻蔑，这是名流们的法则，而她恰好熟悉这些。\n一名先生展示了他收藏的蝴蝶标本，那是很珍贵的品种。它被钉在黑丝绒的底板上，闪烁着动人心魄的光泽——在它死去之后，这份美丽才得以留存。\n在加尼叶歌剧院的中心，管弦乐适时地奏响，她在万众期待的目光下被聚光灯点亮。\n如果蝴蝶的宿命就是死去，为何还要在此虚度时光？何不快快成为永生的美丽？千百个死灵在她的大脑里窃窃私语，为她勾勒了一个华丽棺椁的虚像。\n她的灵魂已经迫不及待想要休憩了，在标本框下，在玻璃樽里，死亡是最好的逃离之法。",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_3_2.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -33306,7 +34002,7 @@
     "itemIcon": "307004",
     "rare": 5,
     "colorbg": 1,
-    "compensate": "",
+    "compensate": "2#1#680",
     "showDrawingSwitch": 1,
     "defaultStencilValue": "",
     "frameStencilValue": "",
@@ -33382,13 +34078,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "罗睺吞下了太阳，但那颗滚烫的火球，仍旧在祂的喉咙中灼烧。\n她回到了简塔·曼塔天文台，这个地方发生过太多的故事。星空也许能够让灵魂徜徉，却不能治愈现实的痼疾——无论发生了什么，星空依旧永恒，旧日的伤痛也一样。\n所有目光短浅之人都无法看到她所描绘的那颗星子，倘若星子取代了头顶的太阳，众人应作何表情？\n这是一次出乎意料的日蚀，就好像某位隐居于暗物质中的神明挪动了星辰的位置一样，所有的仪器均未检测出先兆。巨大的天体高悬于顶，火红的余光照亮了大地。\n当所有仪器和眼球都被这诡异的红光灼烧时，她静静坐在天文台顶端巨大的黑色掌心中，而那颗星子已经落进了她的瞳孔中。",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_3_2.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -33484,6 +34182,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -33579,6 +34279,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 1,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -33674,6 +34376,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -33769,6 +34473,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -33864,6 +34570,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -33959,6 +34667,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -33971,7 +34681,7 @@
     "itemIcon": "309504",
     "rare": 5,
     "colorbg": 1,
-    "compensate": "",
+    "compensate": "2#1#1080",
     "showDrawingSwitch": 1,
     "defaultStencilValue": "",
     "frameStencilValue": "",
@@ -34047,13 +34757,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "<b>礼物清单</b>\n\n1.《你为什么永远不合群——一个孤独撰稿人的自述》\n<i>奇怪的书本，可以送给马库斯小姐，或许虚构集小姐也会感兴趣。</i>\n\n2.木梳子\n<i>野树莓曾说过一个关于梳子的故事。在她讲述的时候，我看到了一种淡彩色的能量，这通常代表着怀念与眷恋——毫无疑问，她需要一把梳子。</i>\n\n3.蜂蜜罐头\n<i>这是为那些不被祝福的魔精而准备的礼物。\n在严寒的冬季，觅食是一件困难的事。糖分是它们无法拒绝的珍贵养料，它们会需要的。</i>\n\n4.有着圣诞树印花的毯子\n<i>那只徘徊在角落的幽灵，它的能量冰冷而深邃，就像潜泳在百米深的海洋之中。没有人和它交流吗？它感到孤独吗？\n为它准备了一条毯子，它会喜欢吗？</i>\n\n……\n最后一项：迪斯科舞曲\n这是给我自己的礼物，但箱子中有人不喜欢迪斯科，也许需要送她一对耳塞。",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_3_3.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -34066,7 +34778,7 @@
     "itemIcon": "312603",
     "rare": 5,
     "colorbg": 1,
-    "compensate": "",
+    "compensate": "2#1#1080",
     "showDrawingSwitch": 1,
     "defaultStencilValue": "",
     "frameStencilValue": "",
@@ -34142,13 +34854,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "如今，她身着笔挺的礼装，站立在历史性的会场之外。\n凡尔赛宫作为君主制时代的明珠，曾引来无数人的惊叹。但在此刻，这份美丽被选择性地忽视了。人们将目光汇聚在此处，只是为了一个重获和平的可能性。\n她并非受邀的使节，亦不是宫内的仆从。凭借曾经纵横战场的经验，这位狙击手成功地潜入了这座辉煌的宫殿。她的任务明确而坚定——扫清所有潜在的威胁，确保这场关乎千万人命运的会议，不出一丝意外地走向终点。\n镜廊之内，笔尖高悬，条约即将被签署——这不是一份公平的条约，它因各方的利益纠葛而产生，因此也不可避免地带有虚伪和谎言。但它的确短暂地中止了战争，也让人们向着看似更具秩序的世界迈进了一步。\n她相信，真正的和平迟早降临，它会化作经久不息的欢声笑语，充盈在每一个不经意的瞬间。",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_3_3_tile.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -34161,7 +34875,7 @@
     "itemIcon": "312103",
     "rare": 5,
     "colorbg": 1,
-    "compensate": "",
+    "compensate": "2#1#1080",
     "showDrawingSwitch": 1,
     "defaultStencilValue": "",
     "frameStencilValue": "",
@@ -34237,13 +34951,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "在普罗旺斯的夏季，薰衣草会汇成一片紫色的海洋。\n薰衣草田的不远处，是戈尔德城堡。这座建立于11世纪的城堡，时至如今依然坚不可摧，能够庇护那些因为战火而无家可归的人。\n莫莉德尔和亲如手足的“弟妹”们来到了这里。在离开了战场之后，他们终于越过硝烟，看清了世界原本的面貌。空气中的尖啸声不再来源于炸弹，而是来自急速上升之后又炸开的烟花。\n只是战争的阴影依旧如影随形，一个人在习惯了某样事物之后，总是很难立即抽身。每到夜晚，莫莉德尔会检视城堡的各处，以保证它能够抵御可能的敌袭。\n一遍，一遍，又一遍。",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_3_3_tile.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -34339,6 +35055,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -34434,6 +35152,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 1,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -34529,6 +35249,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -34624,6 +35346,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -34719,6 +35443,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -34814,6 +35540,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -34909,6 +35637,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -35004,6 +35734,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -35016,7 +35748,7 @@
     "itemIcon": "305305",
     "rare": 5,
     "colorbg": 1,
-    "compensate": "",
+    "compensate": "2#1#1680",
     "showDrawingSwitch": 1,
     "defaultStencilValue": "",
     "frameStencilValue": "",
@@ -35092,13 +35824,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "时近傍晚，绣房之中的织机仍是密密地响着。\n一缕霞光映入绣房，照亮了织机上的丝帛。霎那间映出无数轻红浓碧，流光照影，源自绣房主人的织物。\n“既然来了，何必畏首畏尾？”她对着空荡荡的屋子朝着暗处的人发出了邀请。\n“听过五色琉璃茧吗？”绣房主人微笑，“世人皆知它幻彩斑斓，重金求来绣花制衣，真是暴殄天物。人常常着眼于其鲜花着锦之相，却不知它饮血开刃之后，更是削骨如泥的宝物。”\n她指尖轻捻，丝线骤然绷紧，房梁上无数黑影挣扎着落下，均被割破喉咙，银针穿心而过，一击毙命。谁知丝线在饮血之后，竟泛起琉璃光泽。\n绣坊主人再次捻起饮血的丝线，忆起旧日种种——无论如何，她都要借这白马派剑谱，裁断一切恩怨丝线，让绣坊永远离开江湖是非。",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_3_4.png",
     "skin2dParams": "roles_bust\\v3a4_305305_yx_skinsuit\\305305_yx_skinsuit.prefab#-135.5,27.9#0.29",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 5,
+    "skinSignature": "3053",
     "costafterbuy": ""
   },
   {
@@ -35111,7 +35845,7 @@
     "itemIcon": "311003",
     "rare": 5,
     "colorbg": 1,
-    "compensate": "",
+    "compensate": "2#1#1680",
     "showDrawingSwitch": 1,
     "defaultStencilValue": "",
     "frameStencilValue": "",
@@ -35187,13 +35921,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "论剑台边，月大如斗。\n劲风如同一把剔骨尖刀，席卷而过。天边偶有寒鸦掠去，惊起一连串尖锐的啸声。\n佩刀正在鞘中嗡鸣，鞘中封印着猛兽，名唤强梁，每逢恶战，便兴奋不已，兀自颤鸣。她拍了拍剑鞘，随即踏上最后一阶，而怀中密信所记载的线索，正指向这孤峰之顶的论剑台——这是绣坊主人交予她的密信。白马派剑谱一经出世，江湖之中风声鹤唳，正邪交锋再起，三教九流更是浑水摸鱼，最后连朝廷大员也命丧于此。\n事关白马派剑谱一事，她不敢怠慢，连夜赶至此处。不知此时，一心想要金盆洗手的绣坊主人是否安好？\n正值此刻，黑影从四面草石之中现形。为首之人虎视眈眈地望向她，正是线索中所载贼首。她心下了然，乍然间，虎啸随风起，长刀饮月光，这注定是不平静的一夜。",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_3_4.png",
     "skin2dParams": "roles_bust\\v3a4_311003_ly_skinsuit\\311003_ly_skinsuit.prefab#-237.5,-32.8#0.27",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 5,
+    "skinSignature": "3110",
     "costafterbuy": ""
   },
   {
@@ -35206,7 +35942,7 @@
     "itemIcon": "312503",
     "rare": 5,
     "colorbg": 1,
-    "compensate": "",
+    "compensate": "2#1#1080",
     "showDrawingSwitch": 1,
     "defaultStencilValue": "",
     "frameStencilValue": "",
@@ -35282,13 +36018,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "篝火在溪边燃起时，她吹响了那支银笛。\n笛子是阿妈留给她的，也是阿妈的阿妈传给阿妈的。当她吹起这只笛子，就有无数的影子会从火光里站起来，手拉着手围着她旋转。\n它们举起双手，唱起无声的歌谣，就像某种古老而亲切的呼唤。她熟悉这些影子的气味，在她还不会说话的时候，影子曾为她带来了食物，这是一种比火更温暖的象征。那些带着香气的食物落入她饥瘦的胃囊之中，让她抽条生长，变成今日的模样。\n阿嬷、阿姐、阿舅、阿叔，她念出这些称谓，感受着舌尖的弧度与胸腔的震鸣。影子们挥舞着长手，整理她发皱的衣摆；也会把带着露水的鲜花，簪在她的头发上。\n就像妈妈一样。",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_3_4.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -35301,7 +36039,7 @@
     "itemIcon": "307905",
     "rare": 5,
     "colorbg": 1,
-    "compensate": "",
+    "compensate": "2#1#1080",
     "showDrawingSwitch": 1,
     "defaultStencilValue": "",
     "frameStencilValue": "",
@@ -35377,13 +36115,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "那条名为“命运”的河流，曾经由无数人的书写。\n在剧作家的笔下，这条河流足以溺死奥菲利亚。她还没能来得及拥有独立的灵魂，便因无意志的顺从成为了傀儡，消失在了王权与父权的阴影之下。\n在诗人的笔下，这条河流平缓如镜，足以映出水仙花的倒影。名为纳西瑟斯的少年沉溺于自我的映照，只为了拥抱河畔边那个完美的虚相。\n隐者涉水而行，他既不随波逐流，也不因水中的呼唤而止步。他恪守自身的法度，始终与诸事诸相保持着既定的距离。\n孤独与他成为了一种永恒，他是河流中一块沉默的礁石，望着那些分流而去的河水。\n无论这些河水将要流向何方，礁石总会在原地等待。",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_taluo.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -35479,6 +36219,8 @@
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_3_3.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -35574,6 +36316,8 @@
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_3_4.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -35669,6 +36413,8 @@
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_3_4.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 2,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -35764,6 +36510,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -35859,6 +36607,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -35957,6 +36707,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -36052,6 +36804,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -36152,6 +36906,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -36252,6 +37008,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -36264,7 +37022,7 @@
     "itemIcon": "311704",
     "rare": 5,
     "colorbg": 1,
-    "compensate": "",
+    "compensate": "2#1#1080",
     "showDrawingSwitch": 1,
     "defaultStencilValue": "",
     "frameStencilValue": "",
@@ -36340,13 +37098,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "这是一个很好的下午，阳光照在了调色板上，骨螺紫色正微微地发亮——几个世纪前，这种颜色仅能从骨螺中提取，因稀少而成为了皇室和贵族的象征，而如今却可以在商店的货架上买到。\n初学画画的时候，总会过度在乎比例和形准。她担心自己画得不对，落笔也格外犹豫。幸好，有一只手从背后握住了她的笔，在画布上落下了第一根线条。\n“维拉老师？”她转过头，看见了自己的美术老师。\n“别着急，库珀花环同志，”一个温和而坚定的声音响起，“大胆些，有时候，精准的测量并不是美学和艺术的答案。”\n“不过……”美术老师眨了眨眼睛，“这种测量方法很独特。我曾经看另一位同志使用过，我相信这是很管用的辅助方法。”",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_3_5.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -36359,7 +37119,7 @@
     "itemIcon": "313203",
     "rare": 5,
     "colorbg": 1,
-    "compensate": "",
+    "compensate": "2#1#1080",
     "showDrawingSwitch": 1,
     "defaultStencilValue": "",
     "frameStencilValue": "",
@@ -36435,13 +37195,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "该用什么去拯救一幅被损毁的画？\n数张漂浮的碎片，源自于一副举世皆知的名画。其上布有仰首的牛、嘶吼的马、怀抱着死去孩子的母亲，以及手握断剑的战士尸首。一盏电灯在其中闪烁着，如同一只记录一切的眼睛——整幅画记录了一次军事轰炸。伴随着炮火的尖啸，那些居住在西班牙北部的居民，再也没能睁开他们的眼睛。\n人们说，她在布置一场关于死亡的展览，这寓意着不详。当她拉紧最后一根线，画布的碎片便在空中拼合，形成一幕不应发生的悲剧——这场悲剧将会在接下来的展览中，被事无巨细地呈现。\n她将会把它布置在展厅中最显眼的那个角落。\n因为牺牲永不能被遗忘。",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_3_5.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -36537,6 +37299,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -36632,6 +37396,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 1,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -36727,6 +37493,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -36822,6 +37590,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -36834,7 +37604,7 @@
     "itemIcon": "312703",
     "rare": 5,
     "colorbg": 1,
-    "compensate": "",
+    "compensate": "2#1#1080",
     "showDrawingSwitch": 1,
     "defaultStencilValue": "",
     "frameStencilValue": "",
@@ -36910,13 +37680,15 @@
     "lucidescapeViewImgOffset": "",
     "summonPickUpImgOffset": "",
     "isSkinVideo": true,
-    "repeatBuyTime": "",
+    "repeatBuyTime": "2026-10-31 04:59:59",
     "unavailableStore": "",
     "skinStory": "她的善意促使她穿梭在夜晚的病床间，正如她的使命感支撑她在这片吞噬美好的战场上行走一样——人类的一切认知都被其幽暗所摧毁，无一幸存。她俯下身，抚慰那些受伤的灵魂，以纯洁的温柔来包容所有的疼痛。\n烛火还在幽暗中燃烧，她微微地拢住它，于是它便开始在她的掌间闪烁，正如同赫斯提亚所执掌的圣火。正是温柔、坚韧与无尽的勇敢，构成了她无限力量的来源。\n在今夜，她手握灯台，谦恭地走入了这片阴影环伺的黑暗之中。",
     "skinStoreId": 0,
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_taluo.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -37012,6 +37784,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -37112,6 +37886,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 1,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -37207,6 +37983,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -37302,6 +38080,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -37402,6 +38182,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -37502,6 +38284,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -37597,6 +38381,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -37692,6 +38478,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -37787,6 +38575,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -37882,6 +38672,8 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 0,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -37977,6 +38769,8 @@
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_3_7.png",
     "skin2dParams": "roles_bust/v3a7_312003_ndk_skinstorecardface/312003_ndk_skinstorecardface.prefab#-174.2,80.8#0.28",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 5,
+    "skinSignature": "3120",
     "costafterbuy": ""
   },
   {
@@ -38072,6 +38866,8 @@
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_3_7.png",
     "skin2dParams": "roles_bust/v3a7_314403_fly_skinstorecardface/314403_fly_skinstorecardface.prefab#-193.3,-80.7#0.87",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 5,
+    "skinSignature": "3144",
     "costafterbuy": ""
   },
   {
@@ -38167,6 +38963,8 @@
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_3_7.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 4,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -38262,6 +39060,8 @@
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_3_3.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -38357,6 +39157,8 @@
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_taluo.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": "1#622208#1"
   },
   {
@@ -38457,6 +39259,8 @@
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_2_5_2.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 3,
+    "skinSignature": "",
     "costafterbuy": ""
   },
   {
@@ -38505,7 +39309,7 @@
     "effectHangPoint": "",
     "haloOffset": "",
     "mainViewFrameOffset": "2.8#1.2#0.32",
-    "mainViewOffset": "-0.1#0.3#1.5",
+    "mainViewOffset": "-0.1#0.6#1.5",
     "mainThumbnailViewOffset": "",
     "characterRankUpViewOffset": "-10#-380#1.25",
     "fightSuccViewOffset": "-70#-690#1.25",
@@ -38552,6 +39356,8 @@
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_3_7.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
+    "skinLevel": 2,
+    "skinSignature": "",
     "costafterbuy": ""
   }
 ]

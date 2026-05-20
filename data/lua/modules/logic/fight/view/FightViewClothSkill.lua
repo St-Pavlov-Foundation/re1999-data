@@ -622,6 +622,22 @@ function FightViewClothSkill:_onClickSkillIcon(index, isReplay)
 		FightDataHelper.stageMgr:enterOperateState(FightStageMgr.OperateStateType.DeviceDiscard)
 
 		return
+	elseif self._toUseSkillId == FightEnum.GenerateOneLevelCardSkillId then
+		if FightHelper.allIsDeviceEntity() then
+			GameFacade.showToast(379011)
+
+			return
+		end
+
+		if clothSkillOp then
+			self:_selectCallback(clothSkillOp.toId)
+		else
+			ViewMgr.instance:openView(ViewName.FightSkillTargetView, {
+				skillId = self._toUseSkillId,
+				callback = self._selectCallback,
+				callbackObj = self
+			})
+		end
 	elseif behaviorId and behaviorId == Behavior_ChangeSub then
 		if clothSkillOp then
 			self._fromId = clothSkillOp.fromId

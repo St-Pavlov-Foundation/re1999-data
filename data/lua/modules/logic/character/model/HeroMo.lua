@@ -1051,7 +1051,7 @@ function HeroMo:getDeviceId()
 
 			for _, v in pairs(devices) do
 				if v[1] == self.exSkillLevel then
-					return
+					return v[2]
 				end
 			end
 		end

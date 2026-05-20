@@ -4,7 +4,7 @@ module("modules.logic.sodache.controller.work.step.SodacheStepUseCardWork", pack
 
 local SodacheStepUseCardWork = class("SodacheStepUseCardWork", SodacheStepBaseWork)
 
-function SodacheStepUseCardWork:onStart(context)
+function SodacheStepUseCardWork:onWorkStart(context)
 	local cardCo = lua_sodache_card.configDict[self._stepMo.paramInt[1]]
 
 	if cardCo then

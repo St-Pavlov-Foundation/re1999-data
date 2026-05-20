@@ -9,9 +9,7 @@ function SodacheCheckPanelView:onInitView()
 	self._goscroll = gohelper.findChild(self.viewGO, "left/#scroll_rewardview")
 	self._godropitem = gohelper.findChild(self.viewGO, "left/#scroll_rewardview/Viewport/Content/sodache_carditem")
 	self._gocheck = gohelper.findChild(self.viewGO, "right/check")
-	self._gosuccessdiceitem = gohelper.findChild(self.viewGO, "right/check/#go_dices/#go_success/dices/#go_item")
-	self._gobigsuccess = gohelper.findChild(self.viewGO, "right/check/#go_dices/#go_bigsuccess")
-	self._gobigsuccessdiceitem = gohelper.findChild(self.viewGO, "right/check/#go_dices/#go_bigsuccess/dices/#go_item")
+	self._godice = gohelper.findChild(self.viewGO, "right/check/#go_dices")
 	self._animcard = gohelper.findChildAnim(self.viewGO, "right/check/base")
 	self._goempty = gohelper.findChild(self.viewGO, "right/check/base/#go_empty")
 	self._gocard = gohelper.findChild(self.viewGO, "right/check/base/go_card/#go_carditem/sodache_carditem")
@@ -35,6 +33,8 @@ function SodacheCheckPanelView:removeEvents()
 end
 
 function SodacheCheckPanelView:onOpen()
+	self._diceComp = MonoHelper.addNoUpdateLuaComOnceToGo(self._godice, SodacheCheckDicePart)
+
 	local insideMo = SodacheModel.instance:getInsideMo()
 	local panelMo = insideMo.panelBox.currPanel
 	local unitMo = panelMo:getUnitMo()
@@ -113,17 +113,7 @@ function SodacheCheckPanelView:refreshCheck()
 
 	self._choiceCo = choiceCo
 
-	local arr = string.split(choiceCo.verifyCond, "|") or {}
-
-	if #arr <= 0 then
-		logError("不需要检定的事件也打开了弹窗？？" .. tostring(choiceCo.id))
-
-		return
-	end
-
-	self:setDices(arr[1], self._gosuccessdiceitem)
-	self:setDices(arr[2], self._gobigsuccessdiceitem)
-	gohelper.setActive(self._gobigsuccess, arr[2])
+	self._diceComp:updateDices(choiceCo.verifyCond)
 
 	local isValid, cards = SodacheOptionUtil.instance:checkOption(self._choiceCo.verifyCard)
 
@@ -144,31 +134,14 @@ function SodacheCheckPanelView:refreshCheck()
 	self:_refreshCardShow()
 end
 
-function SodacheCheckPanelView:setDices(str, itemGo)
-	if string.nilorempty(str) then
+function SodacheCheckPanelView:_onClickCard()
+	if not self._canUseCards then
 		return
 	end
 
-	local arr = GameUtil.splitString2(str, true, "&", ":") or {}
-	local datas = {}
+	if not self._canUseCards[1] then
+		GameFacade.showToast(ToastEnum.SodacheToastId373015)
 
-	for i, v in ipairs(arr) do
-		for count = 1, v[1] do
-			table.insert(datas, v[2])
-		end
-	end
-
-	gohelper.CreateObjList(self, self._createDices, datas, nil, itemGo)
-end
-
-function SodacheCheckPanelView:_createDices(obj, data, index)
-	local icon = gohelper.findChildImage(obj, "#image_icon")
-
-	UISpriteSetMgr.instance:setSodache2Sprite(icon, "sodache_touzi_" .. data)
-end
-
-function SodacheCheckPanelView:_onClickCard()
-	if not self._canUseCards then
 		return
 	end
 

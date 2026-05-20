@@ -339,5 +339,8 @@ PlayerPrefsKey.TeachingShowInfo = "PlayerPrefsKey.TeachingShowInfo"
 PlayerPrefsKey.TeachingAniPlay = "PlayerPrefsKey.TeachingAniPlay"
 PlayerPrefsKey.Anniversary3ReportReaded = "Anniversary3ReportReaded"
 PlayerPrefsKey.GuessGameFirstShowTime = "GuessGameFirstShowTime"
+PlayerPrefsKey.SodacheWorshipSelectCard = "SodacheWorshipSelectCard"
+PlayerPrefsKey.SodacheTaskItemNewTag = "SodacheTaskItemNewTag"
+PlayerPrefsKey.SodacheTrialHeroGroupKey = "SodacheTrialHeroGroupKey"
 
 return PlayerPrefsKey

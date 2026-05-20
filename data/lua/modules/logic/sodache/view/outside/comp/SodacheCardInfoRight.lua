@@ -4,6 +4,15 @@ module("modules.logic.sodache.view.outside.comp.SodacheCardInfoRight", package.s
 
 local SodacheCardInfoRight = class("SodacheCardInfoRight", LuaCompBase)
 
+SodacheCardInfoRight.ShowType = {
+	Handbook = 1,
+	Shop = 2
+}
+
+function SodacheCardInfoRight:ctor(type)
+	self.type = type or SodacheCardInfoRight.ShowType.Handbook
+end
+
 function SodacheCardInfoRight:init(go)
 	local goCard = gohelper.findChild(go, "CardItem")
 
@@ -21,16 +30,13 @@ function SodacheCardInfoRight:init(go)
 	self.txtKezhi = gohelper.findChildText(go, "Tags/go_Kezhi/txt_Kezhi")
 	self.goAdventureInfo = gohelper.findChild(go, "go_AdventureInfo")
 	self.txtAdventureDesc = gohelper.findChildText(self.goAdventureInfo, "Scroll/Viewport/Content/txt_AdventureDesc")
-	self.goDiceItem = gohelper.findChild(self.goAdventureInfo, "Attr/Icons/go_DiceItem")
+	self.goDices = gohelper.findChild(self.goAdventureInfo, "Dices")
+	self.goDiceItem = gohelper.findChild(self.goAdventureInfo, "Dices/go_DiceItem")
 
 	gohelper.setActive(self.goDiceItem, false)
 
 	self.goBulletInfo = gohelper.findChild(go, "go_BulletInfo")
 	self.txtBulletDesc = gohelper.findChildText(self.goBulletInfo, "txt_BulletDesc")
-	self.goRelicInfo = gohelper.findChild(go, "go_RelicInfo")
-	self.goRelicItem = gohelper.findChild(self.goRelicInfo, "Scroll/Viewport/Content/go_RelicItem")
-
-	gohelper.setActive(self.goRelicItem, false)
 end
 
 function SodacheCardInfoRight:setData(data)
@@ -50,79 +56,40 @@ function SodacheCardInfoRight:setData(data)
 
 	UISpriteSetMgr.instance:setSodache2Sprite(self.imageType, "sodache_handbook_icon_" .. tostring(cardType))
 
-	local func = self["refreshType" .. tostring(cardType)]
-
-	if func then
-		func(self)
+	if cardType == SodacheEnum.CardType.Adventure then
+		self:refreshSpecial()
+	else
+		self:refreshNormal()
 	end
 
 	gohelper.setActive(self.goAdventureInfo, cardType == SodacheEnum.CardType.Adventure)
-	gohelper.setActive(self.goBulletInfo, cardType ~= SodacheEnum.CardType.Adventure and cardType ~= SodacheEnum.CardType.Offering)
-	gohelper.setActive(self.goRelicInfo, cardType == SodacheEnum.CardType.Offering)
+	gohelper.setActive(self.goBulletInfo, cardType ~= SodacheEnum.CardType.Adventure)
 end
 
-function SodacheCardInfoRight:refreshType1()
-	self.txtBulletDesc.text = self.config.funcDesc
+function SodacheCardInfoRight:refreshNormal()
+	if self.type == SodacheCardInfoRight.ShowType.Handbook then
+		self.txtBulletDesc.text = SodacheUtil.changeDescColor(self.config.desc)
+	elseif self.type == SodacheCardInfoRight.ShowType.Shop then
+		self.txtBulletDesc.text = SodacheUtil.changeDescColor(self.config.funcDesc)
+	end
 end
 
-function SodacheCardInfoRight:refreshType2()
-	self.txtAdventureDesc.text = self.config.funcDesc
+function SodacheCardInfoRight:refreshSpecial()
+	if self.type == SodacheCardInfoRight.ShowType.Handbook then
+		self.txtAdventureDesc.text = SodacheUtil.changeDescColor(self.config.desc)
+	elseif self.type == SodacheCardInfoRight.ShowType.Shop then
+		self.txtAdventureDesc.text = SodacheUtil.changeDescColor(self.config.funcDesc)
 
-	local diceIds = string.splitToNumber(self.config.diceList, "#") or {}
+		local diceIds = string.splitToNumber(self.config.diceList, "#") or {}
+		local scale = #diceIds <= 4 and 1 or 0.7
 
-	self._scale = #diceIds <= 3 and 1 or 0.8
-
-	gohelper.CreateObjList(self, self._createDiceItem, diceIds, nil, self.goDiceItem, SodacheDiceItem)
+		transformhelper.setLocalScale(self.goDices.transform, scale, scale, 1)
+		gohelper.CreateObjList(self, self._createDiceItem, diceIds, nil, self.goDiceItem, SodacheDiceItem)
+	end
 end
 
 function SodacheCardInfoRight:_createDiceItem(obj, data, index)
 	obj:setData(data, true)
-	transformhelper.setLocalScale(obj.go.transform, self._scale, self._scale, self._scale)
-end
-
-function SodacheCardInfoRight:refreshType3()
-	self.txtBulletDesc.text = self.config.funcDesc
-end
-
-function SodacheCardInfoRight:refreshType5()
-	if not self.relicItemList then
-		self.relicItemList = {}
-	end
-
-	local relicCfgs = lua_sodache_upgrade.configDict[self.config.id]
-
-	for k, config in ipairs(relicCfgs) do
-		local item = self.relicItemList[k]
-
-		if not item then
-			item = self:getUserDataTb_()
-			item.go = gohelper.cloneInPlace(self.goRelicItem)
-
-			local txtNum = gohelper.findChildText(item.go, "txt_Num")
-
-			txtNum.text = k
-			item.txtDesc = gohelper.findChildText(item.go, "txt_Desc")
-			self.relicItemList[k] = item
-		end
-
-		local passive = luaLang("sodache_relicupgrade_passive")
-		local passiveDesc = string.format("%s%s", passive, config.effectDesc)
-
-		if string.nilorempty(config.effect2Desc) then
-			item.txtDesc.text = passiveDesc
-		else
-			local active = luaLang("sodache_relicupgrade_active")
-			local activeDesc = string.format("%s%s", active, config.effect2Desc)
-
-			item.txtDesc.text = string.format("%s<br>%s", passiveDesc, activeDesc)
-		end
-
-		gohelper.setActive(item.go, true)
-	end
-
-	for i = #relicCfgs + 1, #self.relicItemList do
-		gohelper.setActive(self.relicItemList[i].go, false)
-	end
 end
 
 return SodacheCardInfoRight

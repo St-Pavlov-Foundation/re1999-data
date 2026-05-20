@@ -28,7 +28,7 @@ function SodacheMapSceneView:onInitView()
 	self._pathRoot = gohelper.create3d(self._mapRoot, "path")
 	self._unitRoot = gohelper.create3d(self._mapRoot, "unit")
 
-	transformhelper.setLocalPos(self._unitRoot.transform, 0, 0, -3)
+	transformhelper.setLocalPos(self._unitRoot.transform, 0, 0, -1)
 
 	self._mapTrans = self._mapRoot.transform
 	self._hasBtn = false
@@ -216,7 +216,7 @@ function SodacheMapSceneView:_initScene()
 
 	local sizeGo = gohelper.findChild(self._sceneGo, "root/size")
 
-	if SodacheModel.instance:getOutsideMo().prop.rookie then
+	if SodacheUtil.isRookie() then
 		local sizeGo2 = gohelper.findChild(self._sceneGo, "root/size2")
 
 		if sizeGo2 then
@@ -262,6 +262,8 @@ function SodacheMapSceneView:_initScene()
 	self._mapMaxX = posTL.x + self._mapSize.x / 2 - center.x * lossyScale.x
 	self._mapMinY = posTL.y - self._mapSize.y / 2 - center.y * lossyScale.y
 	self._mapMaxY = posTL.y + (self._mapSize.y / 2 - self._viewHeight) - center.y * lossyScale.y
+	self._mapMinX = math.min(self._mapMinX, self._mapMaxX)
+	self._mapMinY = math.min(self._mapMinY, self._mapMaxY)
 end
 
 function SodacheMapSceneView:initNodes()

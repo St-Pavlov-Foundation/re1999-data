@@ -10,6 +10,9 @@ end
 
 function WmzBattleModel:onInit()
 	WmzBattleMapMO.default_ctor(self, "_mapMO")
+
+	self._trackMO = WmzBattleTrackMO.New()
+
 	self:reInit()
 end
 
@@ -65,6 +68,10 @@ function WmzBattleModel:setIsWin(bWin, optEpisodeId)
 	end
 
 	self._isWin = bWin
+end
+
+function WmzBattleModel:track_act_WMZ_operation(eOperationType, ...)
+	self._trackMO:track_act_WMZ_operation(self._mapMO, eOperationType, ...)
 end
 
 WmzBattleModel.instance = WmzBattleModel.New()

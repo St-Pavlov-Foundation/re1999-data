@@ -232,4 +232,12 @@ function WmzEnum.unitTest()
 	assert(f(_B["|"](_ZM.NE, _ZM.South)) == _B["|"](_ZM.SW, _ZM.North))
 end
 
+WmzEnum.OperationType = {
+	FailReset = "失败主动重置",
+	Reset = "中途主动重置",
+	FailExit = "失败主动退出",
+	Exit = "中途主动放弃",
+	Pass = "成功通关地图"
+}
+
 return WmzEnum

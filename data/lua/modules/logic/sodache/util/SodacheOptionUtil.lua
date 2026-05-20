@@ -13,19 +13,10 @@ function SodacheOptionUtil:checkOption(condition)
 
 	for i, v in ipairs(arr) do
 		local arr2 = string.split(v, "#") or {}
+		local isValid, ret = self:_checkCondition(arr2)
 
-		for ii, vv in ipairs(arr2) do
-			arr2[ii] = tonumber(vv) or vv
-		end
-
-		local checkFunc = self["checkOption_" .. arr2[1]]
-
-		if checkFunc then
-			local isValid, ret = checkFunc(self, unpack(arr2, 2))
-
-			if isValid then
-				return isValid, ret
-			end
+		if isValid then
+			return isValid, ret
 		end
 	end
 
@@ -37,33 +28,50 @@ function SodacheOptionUtil:getOptionConditionStr(condition)
 		return ""
 	end
 
+	local firstDesc = ""
 	local arr = string.split(condition, "|")
 
 	for i, v in ipairs(arr) do
 		local arr2 = string.split(v, "#") or {}
+		local isValid = self:_checkCondition(arr2)
+		local desc
 
 		if arr2[1] == "type" then
-			do return GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("sodache_choice_condition_type"), luaLang("sodache_cardtype_" .. arr2[2])) end
-
-			break
-		end
-
-		if arr2[1] == "subtype" then
-			do return GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("sodache_choice_condition_subtype"), luaLang("sodache_cardsubtype_" .. arr2[2])) end
-
-			break
-		end
-
-		if arr2[1] == "card" then
+			desc = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("sodache_choice_condition_type"), luaLang("sodache_cardtype_" .. arr2[2]))
+		elseif arr2[1] == "subtype" then
+			desc = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("sodache_choice_condition_subtype"), luaLang("sodache_cardsubtype_" .. arr2[2]))
+		elseif arr2[1] == "card" then
 			local cardCo = lua_sodache_card.configDict[tonumber(arr2[2])]
 
-			return GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("sodache_choice_condition_card"), cardCo and cardCo.name or "error")
+			desc = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("sodache_choice_condition_card"), cardCo and cardCo.name or "error")
 		end
 
-		break
+		if isValid then
+			return desc
+		end
+
+		if string.nilorempty(firstDesc) and not string.nilorempty(desc) then
+			firstDesc = desc
+		end
 	end
 
-	return ""
+	return firstDesc
+end
+
+function SodacheOptionUtil:_checkCondition(arr2)
+	for ii, vv in ipairs(arr2) do
+		arr2[ii] = tonumber(vv) or vv
+	end
+
+	local checkFunc = self["checkOption_" .. arr2[1]]
+
+	if checkFunc then
+		local isValid, ret = checkFunc(self, unpack(arr2, 2))
+
+		if isValid then
+			return isValid, ret
+		end
+	end
 end
 
 function SodacheOptionUtil:checkOption_card(cardId, num)

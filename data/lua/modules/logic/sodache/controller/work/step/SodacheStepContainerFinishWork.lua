@@ -4,7 +4,7 @@ module("modules.logic.sodache.controller.work.step.SodacheStepContainerFinishWor
 
 local SodacheStepContainerFinishWork = class("SodacheStepContainerFinishWork", SodacheStepDropCardWork)
 
-function SodacheStepContainerFinishWork:onStart(context)
+function SodacheStepContainerFinishWork:onWorkStart(context)
 	local insideMo = SodacheModel.instance:getInsideMo()
 	local uid = self._stepMo.paramLong[1]
 
@@ -14,6 +14,7 @@ function SodacheStepContainerFinishWork:onStart(context)
 		return
 	end
 
+	AudioMgr.instance:trigger(AudioEnum3_7.Sodache.search)
 	SodacheController.instance:dispatchEvent(SodacheEvent.ContainerFinish, uid, self._onFinish, self)
 end
 

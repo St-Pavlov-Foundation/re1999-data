@@ -1724,6 +1724,30 @@
         "mainRes": 5,
         "defineId": 365001,
         "blockId": 81127
+      },
+      {
+        "ownType": 1,
+        "mainRes": 5,
+        "defineId": 375001,
+        "blockId": 83121
+      },
+      {
+        "ownType": 1,
+        "mainRes": 5,
+        "defineId": 375002,
+        "blockId": 83122
+      },
+      {
+        "ownType": 1,
+        "mainRes": 5,
+        "defineId": 375003,
+        "blockId": 83123
+      },
+      {
+        "ownType": 1,
+        "mainRes": 5,
+        "defineId": 375004,
+        "blockId": 83124
       }
     ],
     "id": 16

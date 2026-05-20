@@ -162,7 +162,7 @@ end
 
 function SodacheStoreView:checkBigReward(goodsCoList)
 	for _, config in ipairs(goodsCoList) do
-		if config.specProduct then
+		if config.specProduct == 1 then
 			self.bigRewardCo = config
 
 			local params = string.splitToNumber(self.bigRewardCo.product, "#")

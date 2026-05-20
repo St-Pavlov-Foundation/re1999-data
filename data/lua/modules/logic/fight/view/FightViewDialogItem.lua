@@ -54,7 +54,11 @@ function FightViewDialogItem:showDialogContent(icon, config)
 end
 
 function FightViewDialogItem:onDestroy()
-	self._tmpFadeIn = nil
+	if self._tmpFadeIn then
+		self._tmpFadeIn:hideDialog()
+
+		self._tmpFadeIn = nil
+	end
 
 	self._simageicon:UnLoadImage()
 	self._simagebg:UnLoadImage()

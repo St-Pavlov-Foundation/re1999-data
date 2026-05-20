@@ -11,6 +11,7 @@ function SodacheMapViewContainer:buildViews()
 		SodacheMapUnitView.New(),
 		SodacheMapTopView.New(),
 		SodacheMapUseCardView.New(),
+		SodacheInsideTaskView.New(),
 		SodacheGMView.New(),
 		TabViewGroup.New(1, "#go_lefttop")
 	}

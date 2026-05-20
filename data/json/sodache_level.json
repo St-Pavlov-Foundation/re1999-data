@@ -10,87 +10,87 @@
   {
     "level": 2,
     "cosume": 30,
-    "desc": "可建造【水晶馆】",
+    "desc": "可建造【水晶馆<2>】",
     "effect": "",
     "effectDesc": "",
     "globalAttri": ""
   },
   {
     "level": 3,
-    "cosume": 70,
-    "desc": "【拾荒人帐篷】可提升到2级\n后勤补给可购买妙想品质行动牌",
+    "cosume": 130,
+    "desc": "【拾荒人帐篷<2>】可以提升到{Lv.2<5>}\n旧物贩售可购买{妙想<3>}品质行动牌",
     "effect": "",
     "effectDesc": "",
     "globalAttri": ""
   },
   {
     "level": 4,
-    "cosume": 125,
-    "desc": "【水晶馆】可提升到2级\n后勤补给可购买珍奇品质对策牌",
+    "cosume": 270,
+    "desc": "【水晶馆<2>】可以提升到{Lv.2<5>}\n旧物贩售可购买{珍奇<4>}品质对策牌",
     "effect": "",
     "effectDesc": "",
     "globalAttri": ""
   },
   {
     "level": 5,
-    "cosume": 200,
-    "desc": "后勤补给可购买【黄金树叶Ⅱ】\n撤离理智极限增加20",
+    "cosume": 450,
+    "desc": "【拾荒人帐篷<2>】可以提升为{Lv.3<5>}\n旧物贩售可购买【黄金树叶Ⅱ<4>】\n失联时理智极限{+50<5>}",
     "effect": "",
     "effectDesc": "",
-    "globalAttri": "30013#20#0"
+    "globalAttri": "30013#50#0"
   },
   {
     "level": 6,
-    "cosume": 295,
-    "desc": "【拾荒人帐篷】可提升到3级\n后勤补给可购买部分珍奇品质行动牌",
+    "cosume": 670,
+    "desc": "【拾荒人帐篷<2>】可以提升到{Lv.4<5>}\n旧物贩售可购买部分{珍奇<4>}品质行动牌",
     "effect": "",
     "effectDesc": "",
     "globalAttri": ""
   },
   {
     "level": 7,
-    "cosume": 400,
-    "desc": "后勤补给开启黑市商人\n后勤补给可购买所有珍奇品质行动牌\n后勤补给购买价格降低10%",
-    "effect": "",
-    "effectDesc": "后勤补给开启黑市商人",
-    "globalAttri": "40004#-100#0|40003#1#0"
-  },
-  {
-    "level": 8,
-    "cosume": 535,
-    "desc": "【水晶馆】可提升至3级",
+    "cosume": 930,
+    "desc": "【拾荒人帐篷<2>】可以提升到{Lv.5<5>}\n挖掘地图解锁{困难<6>}模式\n旧物贩售可购买所有{珍奇<4>}品质行动牌",
     "effect": "",
     "effectDesc": "",
     "globalAttri": ""
   },
   {
+    "level": 8,
+    "cosume": 1230,
+    "desc": "【水晶馆<2>】可以提升到{Lv.3<5>}\n【拾荒人帐篷<2>】可以提升到{Lv.6<5>}\n旧物贩售购买价格{-10%<5>}",
+    "effect": "",
+    "effectDesc": "",
+    "globalAttri": "40004#-100#0"
+  },
+  {
     "level": 9,
-    "cosume": 680,
-    "desc": "撤离理智极限增加50",
+    "cosume": 1570,
+    "desc": "【拾荒人帐篷<2>】可以提升到{Lv.7<5>}\n失联时理智极限{+50<5>}",
     "effect": "",
     "effectDesc": "",
     "globalAttri": "30013#50#0"
   },
   {
     "level": 10,
-    "cosume": 850,
-    "desc": "后勤补给购买价格降低10%→20%\n撤离理智极限增加30",
+    "cosume": 1950,
+    "desc": "旧物贩售购买价格额外{-10%<5>}",
     "effect": "",
     "effectDesc": "",
-    "globalAttri": "30013#30#0|40004#-100#0"
+    "globalAttri": "40004#-100#0"
   },
   {
     "level": 11,
-    "cosume": 1030,
-    "desc": "撤离理智极限增加50",
+    "cosume": 2370,
+    "desc": "失联时理智极限{+100<5>}",
     "effect": "",
     "effectDesc": "",
-    "globalAttri": "30013#50#0"
+    "globalAttri": "30013#100#0"
   },
   {
     "level": 12,
-    "cosume": 1250,
-    "desc": "后勤补给可购买【黄金树叶Ⅲ】",
+    "cosume": 2830,
+    "desc": "旧物贩售可购买【黄金树叶Ⅲ<5>】",
     "effect": "",
     "effectDesc": "",
     "globalAttri": ""

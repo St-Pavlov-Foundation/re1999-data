@@ -1104,6 +1104,20 @@ function MainView:_refreshSummonTuziRed()
 
 	if not bLooked then
 		bShowRed = Act101VersionSummonController.instance:isCliamed()
+
+		local actId = Act101VersionSummonController.instance:actId()
+		local dayBonusList = ActivityType101Config.instance:getDayBonusList(actId, 1)
+
+		if bShowRed and dayBonusList and #dayBonusList > 0 then
+			local itemCO = dayBonusList[1]
+			local materilType = itemCO[1]
+			local materilId = itemCO[2]
+			local has = ItemModel.instance:getItemQuantity(materilType, materilId)
+
+			bShowRed = has > 0
+		else
+			bShowRed = false
+		end
 	end
 
 	for _, go in ipairs(self._tuziGoList) do

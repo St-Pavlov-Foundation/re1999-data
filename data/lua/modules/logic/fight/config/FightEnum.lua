@@ -1445,6 +1445,7 @@ FightEnum.LogicTargetType = {
 	None = 0
 }
 FightEnum.DeviceDiscardSkillId = 30010701
+FightEnum.GenerateOneLevelCardSkillId = 30010501
 FightEnum.DevicePowerChangeType = {
 	SpecialChange = 1,
 	TriggerDeviceSkill = -1,

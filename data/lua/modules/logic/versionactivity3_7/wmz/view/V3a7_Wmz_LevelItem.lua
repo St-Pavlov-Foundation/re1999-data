@@ -50,6 +50,8 @@ function V3a7_Wmz_LevelItem:_editableInitView()
 	})
 
 	self._normal:init(self._goNormal)
+
+	self._anim = self.viewGO:GetComponent(gohelper.Type_Animator)
 end
 
 function V3a7_Wmz_LevelItem:onDestroyView()
@@ -79,6 +81,18 @@ function V3a7_Wmz_LevelItem:bHasGame()
 	local episodeCO = self._mo
 
 	return episodeCO.gameId and episodeCO.gameId > 0 or false
+end
+
+function V3a7_Wmz_LevelItem:bHasPreStory()
+	local episodeCO = self._mo
+
+	return episodeCO.storyBefore and episodeCO.storyBefore > 0 or false
+end
+
+function V3a7_Wmz_LevelItem:bHasPostStory()
+	local episodeCO = self._mo
+
+	return episodeCO.storyClear and episodeCO.storyClear > 0 or false
 end
 
 function V3a7_Wmz_LevelItem:setData(mo)
@@ -122,6 +136,7 @@ end
 function V3a7_Wmz_LevelItem:playStarAnim(...)
 	self._special:playStarAnim(...)
 	self._normal:playStarAnim(...)
+	self._anim:Play(UIAnimationName.Finish, 0, 0)
 end
 
 function V3a7_Wmz_LevelItem:setActive_goCurrent(isActive)
@@ -150,10 +165,16 @@ function V3a7_Wmz_LevelItem:_cbOnPreHookGamePostStory(refFlow)
 		return
 	end
 
-	refFlow:addWork(FunctionWork.New(self._lockScreen, self, true))
+	if self:bHasPostStory() then
+		refFlow:addWork(FunctionWork.New(self._lockScreen, self, true))
+	end
+
 	refFlow:addWork(WorkWaitSeconds.New(kWaitSecBeforPlayAfterStory))
 	refFlow:addWork(BpCloseViewWork.New(ViewName.V3a7_Wmz_GameView))
-	refFlow:addWork(FunctionWork.New(self._lockScreen, self, false))
+
+	if self:bHasPostStory() then
+		refFlow:addWork(FunctionWork.New(self._lockScreen, self, false))
+	end
 end
 
 local kBlock = "V3a7_Wmz_LevelItem"
@@ -169,11 +190,26 @@ end
 function V3a7_Wmz_LevelItem:playUnlock()
 	self._normal:playUnlock()
 	self._special:playUnlock()
+	self._anim:Play(UIAnimationName.Unlock, 0, 0)
 end
 
 function V3a7_Wmz_LevelItem:playIdle(isUnLocked)
 	self._normal:playIdle(isUnLocked)
 	self._special:playIdle(isUnLocked)
+
+	if isUnLocked then
+		self:playIdle_Unlocked()
+	else
+		self:playIdle_Locked()
+	end
+end
+
+function V3a7_Wmz_LevelItem:playIdle_Unlocked()
+	self._anim:Play(UIAnimationName.Unlock, 0, 1)
+end
+
+function V3a7_Wmz_LevelItem:playIdle_Locked()
+	self._anim:Play(UIAnimationName.Idle, 0, 0)
 end
 
 return V3a7_Wmz_LevelItem

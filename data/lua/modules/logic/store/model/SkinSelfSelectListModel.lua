@@ -46,6 +46,7 @@ function SkinSelfSelectListModel:initList(itemId)
 			local isOwned = HeroModel.instance:checkHasSkin(id)
 
 			mo.isOwned = isOwned and 1 or 0
+			mo.skinLevel = -skinConfig.skinLevel
 
 			table.insert(moList, mo)
 
@@ -57,6 +58,7 @@ function SkinSelfSelectListModel:initList(itemId)
 
 	table.sort(moList, SortUtil.tableKeyLower({
 		"isOwned",
+		"skinLevel",
 		"id"
 	}))
 

@@ -59,7 +59,24 @@ function V3a7_Wmz_GameView:_btnbackOnClick()
 end
 
 function V3a7_Wmz_GameView:_btnresetOnClick()
-	return
+	GameFacade.showMessageBox(MessageBoxIdDefine.WmzRestartZone, MsgBoxEnum.BoxType.Yes_No, self._endYesRestartCallback, nil, nil, self, nil, nil)
+end
+
+function V3a7_Wmz_GameView:_endYesRestartCallback()
+	self.viewContainer:trackReset(self._ctx._edit_Energy)
+
+	local lastPointItem = self._lastPointItem
+
+	self._ctx:_critical_beforeClear()
+	self.viewContainer:restartCurZone()
+
+	local curPlayingZoneIndex = self.viewContainer:curPlayingZoneIndex()
+
+	self:onCompleteZone_Cells(curPlayingZoneIndex, false)
+	self:onCompleteZone_Tiles(curPlayingZoneIndex, false)
+	self._ctx:reset(self)
+	self:_onNewRound()
+	self:_onClickPointItem(lastPointItem)
 end
 
 function V3a7_Wmz_GameView:gridSizeV2()
@@ -110,6 +127,8 @@ function V3a7_Wmz_GameView:ctor(...)
 	self._frameItemList = {}
 end
 
+local kCachedSelectionCnt = 10
+
 function V3a7_Wmz_GameView:_editableInitView()
 	self._goPieceTrans = self._goPiece.transform
 
@@ -131,7 +150,7 @@ function V3a7_Wmz_GameView:_editableInitView()
 	self:setText_txtRound("")
 	gohelper.setActive(self._goselections, false)
 
-	for i = 1, 10 do
+	for i = 1, kCachedSelectionCnt do
 		local item = self:_create_V3a7_Wmz_GameItem_Selection(i)
 
 		ti(self._selectionItemList, item)
@@ -179,7 +198,9 @@ function V3a7_Wmz_GameView:onOpen()
 	self._ctx = self.viewContainer:dragContext()
 
 	self:_onGameStart()
+	self.viewContainer:trackMO():onGameStart()
 	GameGlobalMgr.instance:registerCallback(GameStateEvent.OnScreenResize, self._onScreenResize, self)
+	AudioMgr.instance:trigger(AudioEnum2_8.MoLiDeEr.play_ui_molu_exit_appear)
 end
 
 function V3a7_Wmz_GameView:_onScreenResize()
@@ -225,8 +246,9 @@ function V3a7_Wmz_GameView:onDragEnd(...)
 end
 
 function V3a7_Wmz_GameView:_onGameStart()
-	self:setActive_goComplete(false)
 	self._ctx:reset(self)
+	GameUtil.onDestroyViewMember(self, "_newRoundStartFlow")
+	GameUtil.onDestroyViewMember(self, "_newRoundEndFlow")
 	GameUtil.onDestroyViewMember(self, "_gameStartFlow")
 
 	self._gameStartFlow = WmzGameStartFlow.New()
@@ -236,8 +258,11 @@ function V3a7_Wmz_GameView:_onGameStart()
 end
 
 function V3a7_Wmz_GameView:_onNewRound()
+	self:_refreshEnergy()
+	self:_refreshZoneProgress()
 	self:setActive_goComplete(false)
 	GameUtil.onDestroyViewMember(self, "_newRoundStartFlow")
+	GameUtil.onDestroyViewMember(self, "_newRoundEndFlow")
 
 	self._newRoundStartFlow = WmzNewRoundStartFlow.New()
 
@@ -245,6 +270,7 @@ function V3a7_Wmz_GameView:_onNewRound()
 end
 
 function V3a7_Wmz_GameView:_onEndRound()
+	GameUtil.onDestroyViewMember(self, "_newRoundStartFlow")
 	GameUtil.onDestroyViewMember(self, "_newRoundEndFlow")
 
 	self._newRoundEndFlow = WmzNewRoundEndFlow.New()
@@ -253,7 +279,6 @@ function V3a7_Wmz_GameView:_onEndRound()
 end
 
 function V3a7_Wmz_GameView:onCompleteGame()
-	self:setActive_goComplete(true)
 	self.viewContainer:completeGame(true)
 end
 
@@ -414,15 +439,28 @@ function V3a7_Wmz_GameView:coordToAPosInContentSpace(gridCoordX, gridCoordY)
 end
 
 function V3a7_Wmz_GameView:_refreshMap()
-	self:_refreshEnergy()
+	self:_refreshItems()
 	self:_refreshPoints()
 	self:_refreshTitles()
 	self:_refreshFrames()
 	self:_autoSelectZone()
 end
 
-function V3a7_Wmz_GameView:_refreshEnergy()
-	self:setText_txtRound(sf(luaLang("V3a7_Wmz_GameView_txtRound"), self.viewContainer:curEnergy()))
+function V3a7_Wmz_GameView:_refreshEnergy(displayEnergy)
+	displayEnergy = displayEnergy or self.viewContainer:curEnergy()
+
+	self:setText_txtRound(sf(luaLang("V3a7_Wmz_GameView_txtRound"), displayEnergy))
+end
+
+function V3a7_Wmz_GameView:_refreshZoneProgress(displayMin, displayMax)
+	if not displayMin then
+		displayMin, displayMax = self.viewContainer:zoneClearCurAndMax()
+	end
+
+	self:setText_txtTarget(GameUtil.getSubPlaceholderLuaLang(luaLang("V3a7_Wmz_GameView_txtTarget"), {
+		displayMin,
+		displayMax
+	}))
 end
 
 function V3a7_Wmz_GameView:getCellItem(x, y)
@@ -521,6 +559,7 @@ function V3a7_Wmz_GameView:_refreshTiles()
 		end
 
 		self._tileIdToTileListIndex[tileId] = validCnt
+		item._tmpbWelded = nil
 
 		item:onUpdateMO(tileObj)
 		item:resetPos()
@@ -572,14 +611,24 @@ function V3a7_Wmz_GameView:onClickPointItem(item)
 		return
 	end
 
-	if self._lastPointItem and self._lastPointItem:index() == item:index() then
-		return
+	if item then
+		if self._lastPointItem and self._lastPointItem:index() == item:index() then
+			return
+		end
+
+		if not item:bZoneUnlocked() then
+			GameFacade.showToast(ToastEnum.WmzClickLockedZone)
+
+			return
+		end
 	end
 
 	self:_onClickPointItem(item)
 end
 
 function V3a7_Wmz_GameView:_onClickPointItem(item)
+	local selectedZoneIndex = -1
+
 	if self._lastPointItem then
 		self._lastPointItem:setSelected(false)
 	end
@@ -587,6 +636,8 @@ function V3a7_Wmz_GameView:_onClickPointItem(item)
 	self._lastPointItem = item
 
 	if item then
+		selectedZoneIndex = item:index()
+
 		item:setSelected(true)
 
 		local gridCoordX, gridCoordY = item:focusCoordXY()
@@ -594,6 +645,30 @@ function V3a7_Wmz_GameView:_onClickPointItem(item)
 		self:focusByGridCoordXY(gridCoordX, gridCoordY, true)
 		GameUtil.loadSImage(self._simageFullBG, item:getZoneBgResUrl())
 	end
+
+	for _, frameItem in ipairs(self._frameItemList) do
+		local bSelected = frameItem:zoneIndex() == selectedZoneIndex
+
+		frameItem:setGrayScale(bSelected)
+	end
+
+	for _, cellItem in ipairs(self._cellItemList) do
+		local bSelected = cellItem:zoneIndex() == selectedZoneIndex
+
+		cellItem:setGrayScale(bSelected)
+
+		local tileItem = cellItem:getTileItem()
+
+		if tileItem then
+			tileItem:setGrayScale(bSelected)
+		end
+	end
+end
+
+function V3a7_Wmz_GameView:selectZone(zoneIndex)
+	local item = self._pointItemList[zoneIndex]
+
+	self:_onClickPointItem(item)
 end
 
 function V3a7_Wmz_GameView:getSelectedZoneIdx()
@@ -601,6 +676,8 @@ function V3a7_Wmz_GameView:getSelectedZoneIdx()
 
 	if self._lastPointItem then
 		res = self._lastPointItem:index()
+	else
+		res = self.viewContainer:curPlayingZoneIndex()
 	end
 
 	local zoneCOList = self.viewContainer:getZoneCOList()
@@ -631,6 +708,7 @@ function V3a7_Wmz_GameView:_refreshTitles()
 
 		item:onUpdateMO(zoneCO)
 		item:setActive(true)
+		item:playIdleAnim()
 	end
 
 	for i = #zoneCOList + 1, #self._titleItemList do
@@ -756,6 +834,10 @@ function V3a7_Wmz_GameView:_create_V3a7_Wmz_GameItem_Selection(index)
 end
 
 function V3a7_Wmz_GameView:setActive_goComplete(bActive)
+	if bActive then
+		AudioMgr.instance:trigger(AudioEnum.VersionActivity2_4Dungeon.play_ui_diqiu_complete)
+	end
+
 	gohelper.setActive(self._goComplete, bActive)
 end
 
@@ -768,7 +850,9 @@ function V3a7_Wmz_GameView:setText_txtRound(str)
 end
 
 function V3a7_Wmz_GameView:_clearCache()
-	return
+	self._lastPointItem = nil
+	self._lastTileItem = nil
+	self._id2TileItemDict = {}
 end
 
 function V3a7_Wmz_GameView:_refreshSelections(refSelectedXYDict)
@@ -791,15 +875,15 @@ function V3a7_Wmz_GameView:_refreshSelections(refSelectedXYDict)
 	end
 
 	local function _bConvex(adj1Bool, adj2Bool, diagBool)
-		return adj1Bool and adj1Bool and not diagBool
+		return adj1Bool and adj2Bool and not diagBool
 	end
 
 	local function _bConcave(adj1Bool, adj2Bool, diagBool)
-		return not adj1Bool and not adj1Bool and diagBool
+		return not adj1Bool and not adj2Bool and diagBool
 	end
 
-	local function _bConner(adj1Bool, adj2Bool, diagBool)
-		return not adj1Bool and not adj1Bool and not diagBool
+	local function _bCorner(adj1Bool, adj2Bool, diagBool)
+		return not adj1Bool and not adj2Bool and not diagBool
 	end
 
 	local validCnt = 0
@@ -846,10 +930,10 @@ function V3a7_Wmz_GameView:_refreshSelections(refSelectedXYDict)
 		item:setActive_Edge(WmzEnum.Dir.Down, dbShowEdge)
 		item:setActive_Edge(WmzEnum.Dir.Left, lbShowEdge)
 
-		local bConnerLT = _bConner(lbSelected, ubSelected, ltbSelected)
-		local bConnerRT = _bConner(rbSelected, ubSelected, rtbSelected)
-		local bConnerLB = _bConner(lbSelected, dbSelected, lbbSelected)
-		local bConnerRB = _bConner(rbSelected, dbSelected, rbbSelected)
+		local bConnerLT = _bCorner(lbSelected, ubSelected, ltbSelected)
+		local bConnerRT = _bCorner(rbSelected, ubSelected, rtbSelected)
+		local bConnerLB = _bCorner(lbSelected, dbSelected, lbbSelected)
+		local bConnerRB = _bCorner(rbSelected, dbSelected, rbbSelected)
 		local bConcaveLT = _bConcave(lbSelected, ubSelected, ltbSelected)
 		local bConcaveRT = _bConcave(rbSelected, ubSelected, rtbSelected)
 		local bConcaveLB = _bConcave(lbSelected, dbSelected, lbbSelected)
@@ -974,6 +1058,55 @@ end
 
 function V3a7_Wmz_GameView:curSelectedId2TileItemDict()
 	return self._id2TileItemDict
+end
+
+function V3a7_Wmz_GameView:onCompleteZone()
+	AudioMgr.instance:trigger(AudioEnum2_8.Survival.play_ui_wangshi_argus_level_finish)
+	self:_onEndRound()
+end
+
+function V3a7_Wmz_GameView:onFailed()
+	self.viewContainer:onFailed()
+end
+
+function V3a7_Wmz_GameView:_onCompleteZoneImpl(list, optZoneIndex, bCompleted)
+	for i, item in ipairs(list) do
+		local zoneIndex = item:zoneIndex()
+
+		if not optZoneIndex then
+			item:onCompleteZone(bCompleted)
+		elseif zoneIndex == optZoneIndex then
+			item:onCompleteZone(bCompleted)
+		end
+	end
+end
+
+function V3a7_Wmz_GameView:onCompleteZone_Titles(optZoneIndex, bCompleted)
+	self:_onCompleteZoneImpl(self._titleItemList, optZoneIndex, bCompleted)
+end
+
+function V3a7_Wmz_GameView:onCompleteZone_Points(optZoneIndex, bCompleted)
+	self:_onCompleteZoneImpl(self._pointItemList, optZoneIndex, bCompleted)
+end
+
+function V3a7_Wmz_GameView:onCompleteZone_Cells(optZoneIndex, bCompleted)
+	self:_onCompleteZoneImpl(self._cellItemList, optZoneIndex, bCompleted)
+end
+
+function V3a7_Wmz_GameView:onCompleteZone_Tiles(optZoneIndex, bCompleted)
+	self:_onCompleteZoneImpl(self._tileItemList, optZoneIndex, bCompleted)
+end
+
+function V3a7_Wmz_GameView:setEnableDragTiles(optZoneIndex, bEnabled)
+	for i, item in ipairs(self._tileItemList) do
+		local zoneIndex = item:zoneIndex()
+
+		if not optZoneIndex then
+			item:setActive_godragArea(bEnabled)
+		elseif zoneIndex == optZoneIndex then
+			item:setActive_godragArea(bEnabled)
+		end
+	end
 end
 
 function V3a7_Wmz_GameView:dump(refStrBuf, depth)

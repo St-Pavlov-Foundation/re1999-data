@@ -341,7 +341,7 @@ function StoryLogItem:onUpdateMO(mo, mixType)
 			false,
 			false
 		}
-		local optList = StoryModel.instance:getStoryBranchOpts(mo.info.stepId)
+		local optList = StoryModel.instance:getShowStoryBranchOpts(mo.info.stepId)
 
 		for i, opt in ipairs(optList) do
 			boolbranchs[i] = true

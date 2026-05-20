@@ -7,8 +7,49 @@ local SodacheHeroGroupFightViewLevel = class("SodacheHeroGroupFightViewLevel", H
 function SodacheHeroGroupFightViewLevel:onOpen()
 	self._insideMo = SodacheModel.instance:getInsideMo()
 	self._battleInfo = self._insideMo.prop.battleInfo
+	self._attrRestraintIcons = self:getUserDataTb_()
 
 	SodacheHeroGroupFightViewLevel.super.onOpen(self)
+	self:_refreshInfo()
+end
+
+function SodacheHeroGroupFightViewLevel:addEvents()
+	SodacheHeroGroupFightViewLevel.super.addEvents(self)
+	SodacheController.instance:registerCallback(SodacheEvent.OnUpdateBattleInfo, self._refreshInfo, self)
+end
+
+function SodacheHeroGroupFightViewLevel:removeEvents()
+	SodacheHeroGroupFightViewLevel.super.removeEvents(self)
+	SodacheController.instance:unregisterCallback(SodacheEvent.OnUpdateBattleInfo, self._refreshInfo, self)
+end
+
+function SodacheHeroGroupFightViewLevel:_onRecommendCareerItemShow(obj, data, index)
+	local restraint = gohelper.findChild(obj, "#go_kezhi")
+	local icon = gohelper.findChildImage(obj, "icon")
+
+	UISpriteSetMgr.instance:setHeroGroupSprite(icon, "career_" .. data)
+
+	self._attrRestraintIcons[data] = restraint
+end
+
+function SodacheHeroGroupFightViewLevel:_refreshInfo()
+	local cardMo = self._battleInfo.itemId > 0 and SodacheCardMo.Create(self._battleInfo.itemId)
+
+	if cardMo then
+		local dict = cardMo.serverMo:getRefrainDict() or {}
+
+		for i, v in pairs(self._attrRestraintIcons) do
+			if dict[i] then
+				gohelper.setActive(v, true)
+			else
+				gohelper.setActive(v, false)
+			end
+		end
+	else
+		for i, v in pairs(self._attrRestraintIcons) do
+			gohelper.setActive(v, false)
+		end
+	end
 end
 
 function SodacheHeroGroupFightViewLevel:_btnenemyOnClick()
@@ -20,7 +61,7 @@ function SodacheHeroGroupFightViewLevel:_btnenemyOnClick()
 		local arr = GameUtil.splitString2(fixCo.stepAttr)
 
 		for i, v in ipairs(arr) do
-			if v[1] == "life" then
+			if v[1] == "hp" then
 				hpFixRate = tonumber(v[2]) or 0
 			end
 		end

@@ -27,10 +27,26 @@ function SodacheRelicView:removeEvents()
 	self._btnOneKeyUp:RemoveClickListener()
 end
 
+local OneKeyUpBlock = "SodacheRelicViewBlock"
+
 function SodacheRelicView:_btnOneKeyUpOnClick()
-	if self.canUpgrade then
-		SodacheOutsideRpc.instance:sendSodacheRelicOneKeyUpgrade()
+	if self.firstUpMo then
+		if self.quality ~= 0 then
+			self:_btnQualityOnClick(0)
+		end
+
+		GameUtil.setActiveUIBlock(OneKeyUpBlock, true, false)
+
+		local upIndex = SodacheRelicMoListModel.instance:getIndex(self.firstUpMo) or 1
+
+		self._listExtend:moveTo(upIndex, true, -self.scrollWidth / 2)
+		TaskDispatcher.runDelay(self.delayOneKeyUp, self, 0.2)
 	end
+end
+
+function SodacheRelicView:delayOneKeyUp()
+	SodacheOutsideRpc.instance:sendSodacheRelicOneKeyUpgrade()
+	GameUtil.setActiveUIBlock(OneKeyUpBlock, false, true)
 end
 
 function SodacheRelicView:_btnViewAllOnClick()
@@ -53,6 +69,7 @@ function SodacheRelicView:_btnQualityOnClick(quality)
 end
 
 function SodacheRelicView:_editableInitView()
+	self._listExtend = self.viewContainer.scrollView
 	self.tabItemMap = {}
 
 	local qualityTbl = {
@@ -75,17 +92,37 @@ function SodacheRelicView:_editableInitView()
 
 		self.tabItemMap[quality] = item
 	end
+
+	self.scrollWidth = recthelper.getWidth(self._scrollCard.transform)
+
+	local goCoin = gohelper.findChild(self.viewGO, "#go_topright/currencyview")
+
+	MonoHelper.addNoUpdateLuaComOnceToGo(goCoin, SodacheCurrencyComp, {
+		bagType = SodacheEnum.BagType.Outside
+	})
 end
 
 function SodacheRelicView:onOpen()
 	self:addEventCb(SodacheController.instance, SodacheEvent.OnRelicUpgradeOneKey, self.refreshOneKeyUp, self)
+	self:addEventCb(SodacheController.instance, SodacheEvent.OnRelicUpgrade, self.refreshOneKeyUp, self)
 	self:_btnQualityOnClick(0)
 	self._scrollCard:AddOnValueChanged(self.onScrollMove, self)
 	self:refreshOneKeyUp()
+
+	if self.firstUpMo and (GuideController.instance:isForbidGuides() or GuideModel.instance:isGuideFinish(37018)) then
+		local upIndex = SodacheRelicMoListModel.instance:getIndex(self.firstUpMo) or 1
+
+		self._listExtend:moveTo(upIndex, false, -self.scrollWidth / 2)
+	end
 end
 
 function SodacheRelicView:onDestroyView()
 	self._scrollCard:RemoveOnValueChanged()
+	TaskDispatcher.cancelTask(self.delayOneKeyUp, self)
+
+	if UIBlockMgr.instance:isKeyBlock(OneKeyUpBlock) then
+		GameUtil.setActiveUIBlock(OneKeyUpBlock, false, true)
+	end
 end
 
 function SodacheRelicView:onScrollMove()
@@ -93,9 +130,9 @@ function SodacheRelicView:onScrollMove()
 end
 
 function SodacheRelicView:refreshOneKeyUp()
-	self.canUpgrade = SodacheUtil.checkOneKeyUpRelic()
+	self.firstUpMo = SodacheUtil.checkOneKeyUpRelic()
 
-	gohelper.setActive(self._btnOneKeyUp, self.canUpgrade)
+	gohelper.setActive(self._btnOneKeyUp, self.firstUpMo)
 end
 
 return SodacheRelicView

@@ -20,4 +20,16 @@ function SodacheTaskMo:update(data)
 	self.state = data.state
 end
 
+function SodacheTaskMo:isShowInside()
+	if not self.config then
+		return false
+	end
+
+	if self.state ~= SodacheEnum.TaskState.Finished and self.state ~= SodacheEnum.TaskState.Processing then
+		return false
+	end
+
+	return self.config.insideShow == 1
+end
+
 return SodacheTaskMo

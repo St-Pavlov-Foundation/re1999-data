@@ -39,6 +39,8 @@ function SodacheCardItem:init(go)
 	self.imageRelicRare = gohelper.findChildImage(parentGo, "image_RelicRare")
 	self.simageRelic = gohelper.findChildSingleImage(parentGo, "frame/simage_Relic")
 	self.imageRelicAttr = gohelper.findChildImage(parentGo, "Attrs/image_RelicAttr")
+	self.goStars = gohelper.findChild(parentGo, "Stars")
+	self.isShowStar = false
 	self.goRelicStars = self:getUserDataTb_()
 
 	for i = 1, 5 do
@@ -53,6 +55,8 @@ function SodacheCardItem:init(go)
 	self.txtCost = gohelper.findChildText(go, "Info/Right/go_Cost/txt_Cost")
 	self.goSelect = gohelper.findChild(go, "go_Select")
 	self.btnClick = gohelper.findChildButtonWithAudio(go, "btn_Click")
+	self._gorecommend = gohelper.findChild(go, "Info/go_Recommend")
+	self._goRate = gohelper.findChild(go, "Info/go_Rate")
 
 	self:_editableInitView()
 end
@@ -75,8 +79,8 @@ function SodacheCardItem:_editableInitView()
 		true
 	}
 	self.anim = gohelper.findComponentAnim(self.go)
-	self.goVx1 = gohelper.findChild(self.go, "#levelup1")
-	self.goVx2 = gohelper.findChild(self.go, "#levelup2")
+	self.goVx1 = gohelper.findChild(self.go, "#leveup1")
+	self.goVx2 = gohelper.findChild(self.go, "#leveup2")
 end
 
 function SodacheCardItem:addEventListeners()
@@ -114,22 +118,30 @@ function SodacheCardItem:updateMo(mo)
 	for type, go in pairs(self.goTypeMap) do
 		gohelper.setActive(go, type == cardType)
 	end
+
+	if self._gorecommend then
+		gohelper.setActive(self._gorecommend, self.data.serverMo:isRecommend())
+	end
 end
 
 function SodacheCardItem:_onClickItem()
+	if self.noNeedClick then
+		return
+	end
+
 	if self.callback then
 		self.callback(self.callbackObj, self.callbackParam)
 
 		return
 	end
 
-	SodacheController.instance:dispatchEvent(SodacheEvent.OnClickCardItem, self.data)
-
-	if not self.noNeedClick then
-		ViewMgr.instance:openView(ViewName.SodacheCardDetailView, {
-			cardMo = self.data
-		})
+	if not self.data then
+		return
 	end
+
+	ViewMgr.instance:openView(ViewName.SodacheCardDetailView, {
+		cardMo = self.data
+	})
 end
 
 function SodacheCardItem:setNoNeedClick()
@@ -265,19 +277,22 @@ function SodacheCardItem:refreshCardType5()
 end
 
 function SodacheCardItem:refreshStar()
-	local relicBox = SodacheModel.instance:getOutsideMo().relicBox
-	local level = relicBox:getRelicLv(self.config.id)
+	if self.isShowStar then
+		local relicBox = SodacheModel.instance:getOutsideMo().relicBox
+		local level = relicBox:getRelicLv(self.config.id)
 
-	for k, goStar in ipairs(self.goRelicStars) do
-		gohelper.setActive(goStar, k <= level)
+		for k, goStar in ipairs(self.goRelicStars) do
+			gohelper.setActive(goStar, k <= level)
+		end
 	end
+
+	gohelper.setActive(self.goStars, self.isShowStar)
 end
 
 function SodacheCardItem:playLevelUp(isMax)
 	self.showVx = isMax and self.goVx2 or self.goVx1
 
 	gohelper.setActive(self.showVx, true)
-	self.anim:Play("shop", 0, 0)
 	TaskDispatcher.runDelay(self.delayHide, self, 0.67)
 	TaskDispatcher.runDelay(self.refreshStar, self, 0.34)
 end
@@ -288,6 +303,22 @@ function SodacheCardItem:delayHide()
 
 		self.showVx = nil
 	end
+end
+
+function SodacheCardItem:setRelicGray(isGray)
+	UIColorHelper.setGray(self.imageRelicRare.gameObject, isGray)
+	UIColorHelper.setGray(self.simageRelic.gameObject, isGray)
+	UIColorHelper.setGray(self.imageRelicAttr.gameObject, isGray)
+end
+
+function SodacheCardItem:setRate(bool)
+	if self._goRate then
+		gohelper.setActive(self._goRate, bool)
+	end
+end
+
+function SodacheCardItem:setShowStar(bool)
+	self.isShowStar = bool
 end
 
 function SodacheCardItem:setRelicImage(quality)

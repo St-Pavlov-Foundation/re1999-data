@@ -120,27 +120,27 @@
     "id": 51000,
     "mapId": 1372305,
     "pieceResNamePrefix": "v3a7_wmz_piece_sp_01_",
-    "pieceMinX": 7,
+    "pieceMinX": 9,
     "pieceMinY": 5,
-    "pieceMaxX": 9,
+    "pieceMaxX": 11,
     "pieceMaxY": 8
   },
   {
     "id": 52000,
     "mapId": 1372305,
     "pieceResNamePrefix": "v3a7_wmz_piece_sp_02_",
-    "pieceMinX": 15,
+    "pieceMinX": 23,
     "pieceMinY": 5,
-    "pieceMaxX": 17,
+    "pieceMaxX": 25,
     "pieceMaxY": 8
   },
   {
     "id": 53000,
     "mapId": 1372305,
     "pieceResNamePrefix": "v3a7_wmz_piece_sp_03_",
-    "pieceMinX": 6,
-    "pieceMinY": 12,
-    "pieceMaxX": 18,
-    "pieceMaxY": 17
+    "pieceMinX": 11,
+    "pieceMinY": 15,
+    "pieceMaxX": 23,
+    "pieceMaxY": 20
   }
 ]

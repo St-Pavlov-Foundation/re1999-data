@@ -4,7 +4,7 @@ module("modules.logic.sodache.controller.work.step.SodacheInsideSceneFinishSettl
 
 local SodacheInsideSceneFinishSettlePushWork = class("SodacheInsideSceneFinishSettlePushWork", SodacheMsgPushWork)
 
-function SodacheInsideSceneFinishSettlePushWork:onStart(context)
+function SodacheInsideSceneFinishSettlePushWork:onWorkStart(context)
 	if SodacheModel.instance.____gmfastrun then
 		local outSideMo = SodacheModel.instance:getOutsideMo()
 

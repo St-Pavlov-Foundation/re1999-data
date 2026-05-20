@@ -40,24 +40,26 @@ function WmzWork_WaitEvent:onStart()
 end
 
 function WmzWork_WaitEvent:_onDispatchedEvt(a1, a2, a3, a4, a5)
-	if a1 ~= self._a1 then
-		return
-	end
+	if self._a1 ~= nil then
+		if a1 ~= self._a1 then
+			return
+		end
 
-	if a2 ~= self._a2 then
-		return
-	end
+		if a2 ~= self._a2 then
+			return
+		end
 
-	if a3 ~= self._a3 then
-		return
-	end
+		if a3 ~= self._a3 then
+			return
+		end
 
-	if a4 ~= self._a4 then
-		return
-	end
+		if a4 ~= self._a4 then
+			return
+		end
 
-	if a5 ~= self._a5 then
-		return
+		if a5 ~= self._a5 then
+			return
+		end
 	end
 
 	self._sender:unregisterCallback(self._evtName, self._onDispatchedEvt, self)

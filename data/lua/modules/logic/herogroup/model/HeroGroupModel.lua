@@ -223,6 +223,8 @@ function HeroGroupModel:setParam(battleId, episodeId, adventure, isReConnect, ep
 
 		if isSeasonChapter then
 			str = PlayerPrefsHelper.getString(Activity104Model.instance:getSeasonTrialPrefsKey(), "")
+		elseif SodacheUtil.isSodacheEpisode() then
+			str = GameUtil.playerPrefsGetStringByUserId(PlayerPrefsKey.SodacheTrialHeroGroupKey, "")
 		else
 			str = PlayerPrefsHelper.getString(PlayerPrefsKey.HeroGroupTrial .. tostring(PlayerModel.instance:getMyUserId()) .. battleCO.id, "")
 		end

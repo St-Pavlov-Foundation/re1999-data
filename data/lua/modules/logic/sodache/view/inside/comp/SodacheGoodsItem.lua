@@ -9,6 +9,8 @@ function SodacheGoodsItem:ctor(param)
 end
 
 function SodacheGoodsItem:init(go)
+	self.parentScroll = go:GetComponentInParent(gohelper.Type_ScrollRect)
+	self.parentScroll = self.parentScroll and self.parentScroll.gameObject
 	self.imageRare = gohelper.findChildImage(go, "image_Rare")
 	self.goCardItem = gohelper.findChild(go, "CardItem")
 	self.animCardItem = gohelper.findComponentAnim(self.goCardItem)
@@ -32,6 +34,12 @@ function SodacheGoodsItem:init(go)
 	self._goselect = gohelper.findChild(go, "select")
 
 	local goAdd = gohelper.findChild(go, "btn_Add")
+
+	self._drag = SLFramework.UGUI.UIDragListener.Get(goAdd)
+
+	self._drag:AddDragBeginListener(self._onDragBegin, self)
+	self._drag:AddDragListener(self._onDrag, self)
+	self._drag:AddDragEndListener(self._onDragEnd, self)
 
 	self.clickAdd = gohelper.getClickWithDefaultAudio(goAdd)
 
@@ -96,25 +104,7 @@ function SodacheGoodsItem:onShopItemUpdate(updateIds)
 		return
 	end
 
-	if self.cloneGo then
-		gohelper.destroy(self.cloneGo)
-	end
-
-	local cloneGo = gohelper.cloneInPlace(self.goCardItem)
-
-	self.cloneGo = cloneGo
-	cloneGo.transform.pivot = Vector2(1, 0)
-
-	recthelper.setAnchor(cloneGo.transform, 84.2, -300.6)
-	ZProj.TweenHelper.DOScale(cloneGo.transform, 0.2, 0.2, 0.2, 0.5)
-	ZProj.TweenHelper.DOFadeCanvasGroup(cloneGo, 1, 0.1, 0.5, self._destoryCloneGo, self)
 	self.animCardItem:Play("shop", 0, 0)
-end
-
-function SodacheGoodsItem:_destoryCloneGo()
-	gohelper.destroy(self.cloneGo)
-
-	self.cloneGo = nil
 end
 
 function SodacheGoodsItem:refreshCount()
@@ -137,19 +127,46 @@ function SodacheGoodsItem:onDestroy()
 	self.clickSub:RemoveClickUpListener()
 	self.clickSub:RemoveClickDownListener()
 	self.longPressSub:RemoveLongPressListener()
+	self._drag:RemoveDragBeginListener()
+	self._drag:RemoveDragListener()
+	self._drag:RemoveDragEndListener()
 end
 
 function SodacheGoodsItem:onClickAddDown()
 	self.isLongPress = false
+	self.isClickDown = true
+end
+
+function SodacheGoodsItem:_onDragBegin(_, pointerEventData)
+	ZProj.UGUIHelper.PassEvent(self.parentScroll, pointerEventData, 4)
+end
+
+function SodacheGoodsItem:_onDrag(_, pointerEventData)
+	self.isClickDown = false
+	self.isDrag = true
+
+	ZProj.UGUIHelper.PassEvent(self.parentScroll, pointerEventData, 5)
+end
+
+function SodacheGoodsItem:_onDragEnd(_, pointerEventData)
+	self.isDrag = false
+
+	ZProj.UGUIHelper.PassEvent(self.parentScroll, pointerEventData, 6)
 end
 
 function SodacheGoodsItem:onClickAddUp()
-	if not self.isLongPress then
+	if not self.isLongPress and self.isClickDown then
 		self:doAddItem()
 	end
+
+	self.isClickDown = false
 end
 
 function SodacheGoodsItem:onLongPressAdd()
+	if not self.cellParam.isMultSelect or self.isDrag then
+		return
+	end
+
 	self.isLongPress = true
 
 	self:doAddItem()
@@ -180,7 +197,16 @@ function SodacheGoodsItem:doSubItem()
 end
 
 function SodacheGoodsItem:addItemCount(count)
+	local preCount = self.cellParam:getGoodSelectCount(self.goodsMo.id)
+
 	self.cellParam:addGoodCount(self.goodsMo, count)
+
+	local curCount = self.cellParam:getGoodSelectCount(self.goodsMo.id)
+
+	if preCount == curCount then
+		return
+	end
+
 	SodacheController.instance:dispatchEvent(SodacheEvent.OnClickGoodsItem)
 end
 

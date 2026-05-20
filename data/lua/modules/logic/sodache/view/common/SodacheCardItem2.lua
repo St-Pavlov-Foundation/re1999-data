@@ -82,14 +82,19 @@ function SodacheCardItem2:playAnim(callback, callobj, param)
 
 	local anim = self._anims[self.config.type]
 	local animIndex = 1
-	local time = 0.334
+	local time = 0.667
+	local quality = self.config.quality
 
-	if self.config.quality == SodacheEnum.ItemQuality.Six then
+	if self.config.type == SodacheEnum.CardType.Status and self.config.subType == SodacheEnum.CardSubType.Status_Debuff then
+		quality = math.min(quality, SodacheEnum.ItemQuality.Five)
+	end
+
+	if quality == SodacheEnum.ItemQuality.Six then
 		animIndex = 3
-		time = 1
-	elseif self.config.quality == SodacheEnum.ItemQuality.Five and self.config.type == SodacheEnum.CardType.Offering then
+		time = 2.3
+	elseif quality == SodacheEnum.ItemQuality.Five and self.config.type == SodacheEnum.CardType.Offering then
 		animIndex = 2
-		time = 0.667
+		time = 1.433
 	end
 
 	if anim then
