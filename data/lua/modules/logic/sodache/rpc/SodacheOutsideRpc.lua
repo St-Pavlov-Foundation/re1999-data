@@ -12,8 +12,44 @@ end
 
 function SodacheOutsideRpc:onReceiveSodacheOutsideGetSceneReply(resultCode, msg)
 	if resultCode == 0 then
+		if not msg.scene.prop.rookie then
+			self:forceFinishGuide(37006)
+			self:forceFinishGuide(37007)
+			self:forceFinishGuide(37008)
+			self:forceFinishGuide(37010)
+			self:forceFinishGuide(37011)
+			self:forceFinishGuide(37012)
+			self:forceFinishGuide(37013)
+			self:forceFinishGuide(37014)
+			self:forceFinishGuide(37015)
+			self:forceFinishGuide(37016)
+		end
+
 		SodacheMapUtil.instance:clear()
 		SodacheModel.instance:updateOutsideMo(msg.scene)
+	end
+end
+
+function SodacheOutsideRpc:forceFinishGuide(guideId)
+	local guideMO = GuideModel.instance:getById(guideId)
+
+	if guideMO and not guideMO.isFinish then
+		local stepList = GuideConfig.instance:getStepList(guideId)
+
+		for j = #stepList, 1, -1 do
+			local stepCO = stepList[j]
+
+			if stepCO.keyStep == 1 then
+				GuideRpc.instance:sendFinishGuideRequest(guideId, stepCO.stepId)
+
+				break
+			end
+		end
+
+		guideMO.isJumpPass = true
+
+		GuideStepController.instance:clearFlow(guideId)
+		guideMO:exceptionFinishGuide()
 	end
 end
 
