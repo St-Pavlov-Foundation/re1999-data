@@ -8930,7 +8930,7 @@
     "sceneType": 1,
     "sceneId": 37001,
     "cameraId": 0,
-    "cameraOffset": "",
+    "cameraOffset": "[0,1,-1.8]",
     "cardCamera": "",
     "useBloom": 1,
     "spineR": 0.83,

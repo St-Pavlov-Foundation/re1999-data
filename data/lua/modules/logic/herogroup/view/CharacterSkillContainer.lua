@@ -64,7 +64,7 @@ function CharacterSkillContainer:_onLoadFinish()
 end
 
 function CharacterSkillContainer:_playOpenAni()
-	if not self._isPlayedOpenAnim and self._godevice.activeInHierarchy then
+	if not self._isPlayedOpenAnim and self._godevice and self._godevice.activeInHierarchy then
 		local deviceViewParam = CharacterEnum.DeviceViewParam[self._viewType]
 		local aniName = deviceViewParam and deviceViewParam.OpenAniName
 

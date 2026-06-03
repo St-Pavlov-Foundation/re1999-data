@@ -44,6 +44,14 @@ function SodacheCurrencyComp:setCount(value)
 end
 
 function SodacheCurrencyComp:playAddAnim(value)
+	if self._tweenId then
+		ZProj.TweenHelper.KillById(self._tweenId)
+
+		self._tweenId = nil
+
+		self:_endCall()
+	end
+
 	self._animCoin:Play("add", 0, 0)
 
 	self._tweenId = ZProj.TweenHelper.DOTweenFloat(self._quantity - value, self._quantity, 1.5, self._frameCall, self._endCall, self)

@@ -233,200 +233,200 @@
   },
   {
     "id": 130,
-    "name": "焦木林-救治所-下雨",
-    "nameen": "Hello World",
+    "name": "焦木林·救治所",
+    "nameen": "Scorch Woods -Shelter-",
     "levels": [
       13001
     ]
   },
   {
     "id": 131,
-    "name": "焦木林-救治所-石油雨",
-    "nameen": "Hello World",
+    "name": "焦木林·救治所",
+    "nameen": "Scorch Woods -Shelter-",
     "levels": [
       13101
     ]
   },
   {
     "id": 132,
-    "name": "卡纳比街-临时站位",
-    "nameen": "Hello World",
+    "name": "卡纳比街",
+    "nameen": "Carnaby Street",
     "levels": [
       13201
     ]
   },
   {
     "id": 133,
-    "name": "卡纳比街-临时站位",
-    "nameen": "Hello World",
+    "name": "卡纳比街",
+    "nameen": "Carnaby Street",
     "levels": [
       13301
     ]
   },
   {
     "id": 134,
-    "name": "卡纳比街-临时站位",
-    "nameen": "Hello World",
+    "name": "卡纳比街",
+    "nameen": "Carnaby Street",
     "levels": [
       13401
     ]
   },
   {
     "id": 135,
-    "name": "卡纳比街-临时站位",
-    "nameen": "Hello World",
+    "name": "卡纳比街",
+    "nameen": "Carnaby Street",
     "levels": [
       13501
     ]
   },
   {
     "id": 136,
-    "name": "华尔街-下雨",
-    "nameen": "Hello World",
+    "name": "华尔街",
+    "nameen": "Wall Street",
     "levels": [
       13601
     ]
   },
   {
     "id": 137,
-    "name": "焦木林-夜晚-下雨",
-    "nameen": "Hello World",
+    "name": "焦木林·边缘",
+    "nameen": "Scorched Woods -Surroundings-",
     "levels": [
       13701
     ]
   },
   {
     "id": 138,
-    "name": "拉普拉斯康复中心走廊",
-    "nameen": "Hello World",
+    "name": "康复中心·长廊",
+    "nameen": "Rehab Center -Hallway-",
     "levels": [
       13801
     ]
   },
   {
     "id": 139,
-    "name": "禁闭室",
-    "nameen": "Hello World",
+    "name": "防线学校·禁闭室",
+    "nameen": "SPDM -Guard House-",
     "levels": [
       13901
     ]
   },
   {
     "id": 140,
-    "name": "基金会广场",
-    "nameen": "Hello World",
+    "name": "特别训练场",
+    "nameen": "Special Training Field",
     "levels": [
       14001
     ]
   },
   {
     "id": 141,
-    "name": "基金会学校走廊",
-    "nameen": "Hello World",
+    "name": "防线学校·课堂",
+    "nameen": "SPDM -Classroom-",
     "levels": [
       14101
     ]
   },
   {
     "id": 142,
-    "name": "地下防空通道",
-    "nameen": "Hello World",
+    "name": "防空通道·中庭",
+    "nameen": "Tunnel -Midpoint-",
     "levels": [
       14201
     ]
   },
   {
     "id": 143,
-    "name": "基金会广场空中",
-    "nameen": "Hello World",
+    "name": "防线学校·广场上空",
+    "nameen": "SPDM -Above the Square-",
     "levels": [
       14301
     ]
   },
   {
     "id": 144,
-    "name": "卡纳比街-临时站位",
-    "nameen": "Hello World",
+    "name": "卡纳比街",
+    "nameen": "Carnaby Street",
     "levels": [
       14401
     ]
   },
   {
     "id": 145,
-    "name": "露营地—昼",
-    "nameen": "Hello World",
+    "name": "绿湖营地",
+    "nameen": "Green Lake Campsite",
     "levels": [
       14501
     ]
   },
   {
     "id": 146,
-    "name": "露营地—昼-雨",
-    "nameen": "Hello World",
+    "name": "露营地——昼-雨",
+    "nameen": "Campground(Rainy Day)",
     "levels": [
       14601
     ]
   },
   {
     "id": 147,
-    "name": "露营地—夜",
-    "nameen": "Hello World",
+    "name": "露营地——夜",
+    "nameen": "Campground(Night)",
     "levels": [
       14701
     ]
   },
   {
     "id": 148,
-    "name": "露营地—夜-雨",
-    "nameen": "Hello World",
+    "name": "露营地——夜-雨",
+    "nameen": "Campground(Rainy Night)",
     "levels": [
       14801
     ]
   },
   {
     "id": 149,
-    "name": "木屋大厅",
-    "nameen": "Hello World",
+    "name": "木屋·大厅",
+    "nameen": "Lobby, Cabin",
     "levels": [
       14901
     ]
   },
   {
     "id": 150,
-    "name": "木屋门外-夜",
-    "nameen": "MuWu",
+    "name": "木屋门外",
+    "nameen": "Outside, Cabin",
     "levels": [
       15001
     ]
   },
   {
     "id": 151,
-    "name": "木屋门外-夜-雨",
-    "nameen": "Hello World",
+    "name": "木屋·门外",
+    "nameen": "Outside, Cabin",
     "levels": [
       15101
     ]
   },
   {
     "id": 152,
-    "name": "湖边-夜",
-    "nameen": "YeJing",
+    "name": "绿湖·岸边",
+    "nameen": "Lake Shore, Green Lake Campsite",
     "levels": [
       15201
     ]
   },
   {
     "id": 197,
-    "name": "湖边夜-雾",
-    "nameen": "LAKE NIGHT WU",
+    "name": "绿湖·岸边",
+    "nameen": "Lake Shore, Green Lake Campsite",
     "levels": [
       19701
     ]
   },
   {
     "id": 153,
-    "name": "苔藓山洞-夜",
-    "nameen": "ShanDong",
+    "name": "苔藓山洞夜",
+    "nameen": "Moss Cave(Night)",
     "levels": [
       15301
     ]
@@ -434,151 +434,151 @@
   {
     "id": 154,
     "name": "晨曦森林-夜",
-    "nameen": "senlin",
+    "nameen": "Dawnwoods(Night)",
     "levels": [
       15401
     ]
   },
   {
     "id": 155,
-    "name": "晨曦森林-夜-雨",
-    "nameen": "senlin",
+    "name": "绿湖营地·林中",
+    "nameen": "Forest, Green Lake Campsite",
     "levels": [
       15501
     ]
   },
   {
     "id": 156,
-    "name": "灯塔-夜",
-    "nameen": "DengTa",
+    "name": "绿湖营地·灯塔",
+    "nameen": "Lighthouse, Green Lake Campsite",
     "levels": [
       15601
     ]
   },
   {
     "id": 157,
-    "name": "灯塔-夜-雨",
-    "nameen": "DengTa",
+    "name": "绿湖营地·灯塔",
+    "nameen": "Lighthouse, Green Lake Campsite",
     "levels": [
       15701
     ]
   },
   {
     "id": 158,
-    "name": "湖边-夜-雨",
-    "nameen": "yejing",
+    "name": "绿湖·岸边",
+    "nameen": "Lake Shore, Green Lake Campsite",
     "levels": [
       15801
     ]
   },
   {
     "id": 159,
-    "name": "摄政街",
-    "nameen": "SheZheng",
+    "name": "摄政街·街道",
+    "nameen": "Regent Street",
     "levels": [
       15901
     ]
   },
   {
     "id": 160,
-    "name": "雷米特杯展厅",
-    "nameen": "Zhanting",
+    "name": "雷米特杯展厅·序厅",
+    "nameen": "Exhibition Hall",
     "levels": [
       16001
     ]
   },
   {
     "id": 161,
-    "name": "雷米特杯展厅后门",
-    "nameen": "Houmen",
+    "name": "雷米特杯展厅·后门外",
+    "nameen": "Back Door, Exhibition Hall",
     "levels": [
       16101
     ]
   },
   {
     "id": 162,
-    "name": "公墓",
-    "nameen": "Gongmu",
+    "name": "郊野的墓园",
+    "nameen": "Cemetery",
     "levels": [
       16201
     ]
   },
   {
     "id": 163,
-    "name": "警长办公室",
-    "nameen": "Jingzhang",
+    "name": "警察局·警长室",
+    "nameen": "Police Station",
     "levels": [
       16301
     ]
   },
   {
     "id": 164,
-    "name": "基金会森林广场1",
-    "nameen": "SenLin",
+    "name": "基金会·功能大楼",
+    "nameen": "The Foundation -Founctional Building-",
     "levels": [
       16401
     ]
   },
   {
     "id": 165,
-    "name": "基金会客房",
-    "nameen": "KeFang",
+    "name": "基金会·橡树枝干",
+    "nameen": "The Foundation -Oak Tree Branch-",
     "levels": [
       16501
     ]
   },
   {
     "id": 166,
-    "name": "丰获林地",
-    "nameen": "XiaoWu",
+    "name": "基金会·房间",
+    "nameen": "The Foundation -Guest Room-",
     "levels": [
       16601
     ]
   },
   {
     "id": 167,
-    "name": "基金会森林广场2",
-    "nameen": "GuangChang",
+    "name": "丰获林地",
+    "nameen": "Harvested Field",
     "levels": [
       16701
     ]
   },
   {
     "id": 168,
-    "name": "基金会委员法庭",
-    "nameen": "FaTing",
+    "name": "基金会·林地边缘",
+    "nameen": "The Foundation -Edge of the Woods-",
     "levels": [
       16801
     ]
   },
   {
     "id": 169,
-    "name": "创伤梦境",
-    "nameen": "MengJing",
+    "name": "梦境一隅",
+    "nameen": "The Corner of a Dream ",
     "levels": [
       16901
     ]
   },
   {
     "id": 190,
-    "name": "1.2赛季",
-    "nameen": "saiji",
+    "name": "夜访幽潭：绿湖",
+    "nameen": "A Night Visit to the Lake",
     "levels": [
       19001
     ]
   },
   {
     "id": 191,
-    "name": "苔藓山洞-夜-雨",
-    "nameen": "shandong",
+    "name": "绿湖营地·深林",
+    "nameen": "Deep Forest, Green Lake Campsite",
     "levels": [
       19101
     ]
   },
   {
     "id": 193,
-    "name": "赛季战斗",
-    "nameen": "saiji",
+    "name": "昨日金杯·摄政街",
+    "nameen": "Trophy of the Past Glory：Regent Street",
     "levels": [
       19301
     ]
@@ -1161,8 +1161,8 @@
   },
   {
     "id": 14401,
-    "name": "卡纳比街-临时站位",
-    "nameen": "Hello World",
+    "name": "卡纳比街",
+    "nameen": "Carnaby Street",
     "levels": [
       14401
     ]

@@ -250,5 +250,23 @@
     "duration": 0.0,
     "effectHangPoint": "mountroot",
     "audio": 431180141
+  },
+  {
+    "effectPath": "v2a8_mlde/mlde_skill2_innate",
+    "target": 1,
+    "skinId": 312103,
+    "changedPath": "v3a3_mlde/mlde_innate1_01",
+    "duration": 0.0,
+    "effectHangPoint": "",
+    "audio": 0
+  },
+  {
+    "effectPath": "v2a8_mlde/mlde_skill2_innate_02",
+    "target": 1,
+    "skinId": 312103,
+    "changedPath": "v3a3_mlde/mlde_innate1_02",
+    "duration": 0.0,
+    "effectHangPoint": "",
+    "audio": 0
   }
 ]

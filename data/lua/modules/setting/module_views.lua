@@ -27287,7 +27287,7 @@ module_views.V3a7_SkinGiftFullView = {
 	container = "V3a7_SkinGiftFullViewContainer",
 	mainRes = "ui/viewres/activity/v3a7_skingift_fullview.prefab",
 	layer = "POPUP_TOP",
-	viewType = ViewType.Modal
+	viewType = ViewType.Normal
 }
 module_views.V3a7_SkinGiftCheckView = {
 	destroy = 0,

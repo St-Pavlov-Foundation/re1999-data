@@ -252,9 +252,9 @@ local colorDict = {
 	["3"] = "#CC38D9",
 	["6"] = "#D70F0F",
 	["2"] = "#2C62FF",
-	["5"] = "#E56C01",
-	["1"] = "#00AF13",
-	["4"] = "#E5963A"
+	["5"] = "#D45100",
+	["1"] = "#068E15",
+	["4"] = "#C56D08"
 }
 
 function SodacheUtil.changeDescColor(desc)

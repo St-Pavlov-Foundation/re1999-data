@@ -799,7 +799,7 @@ function CharacterTipView:_checkReplaceSkill(skillIdList, heroMo)
 end
 
 function CharacterTipView:_setTipPos(tipTran, tipPos, anchorParams)
-	if not tipTran then
+	if not tipTran or not self._goBuffItem then
 		return
 	end
 
