@@ -1296,23 +1296,23 @@
   },
   {
     "heroResName": "311604_lzl",
-    "effectCompName": "CommonRoleEffect",
+    "effectCompName": "CommonRoleEffectContinue",
     "motion": "b_jiaoshu|b_mianju",
     "node": "Drawables/bone7/effect-Bone/roleeffect_lzl_js7|Drawables/bone4/effect-Bone/roleeffect_lzl_mj4#Drawables/bone5/effect-Bone/roleeffect_lzl_mj5#Drawables/bone8/effect-Bone/roleeffect_lzl_mj8",
-    "everNode": ""
+    "everNode": "Drawables/bone8/effect-Bone/roleeffect_lzl_idle8"
   },
   {
     "heroResName": "313903_llzhd",
-    "effectCompName": "CommonRoleEffect",
+    "effectCompName": "CommonRoleEffectContinue",
     "motion": "b_cisha|b_wuqiku",
     "node": "Drawables/bone/effect-Bone/roleeffect_llzhd_cs0#Drawables/bone2/effect-Bone/roleeffect_llzhd_cs2#Drawables/bone4/effect-Bone/roleeffect_llzhd_cs4|Drawables/bone/effect-Bone/roleeffect_llzhd_wqk0#Drawables/bone2/effect-Bone/roleeffect_llzhd_wqk2#Drawables/bone2/effect-Bone/roleeffect_llzhd_wqk2_2",
-    "everNode": ""
+    "everNode": "Drawables/bone5/effect-Bone/roleeffect_llzhd_idle5#Drawables/bone6/effect-Bone/roleeffect_llzhd_idle6#Drawables/bone7/effect-Bone/roleeffect_llzhd_idle7"
   },
   {
     "heroResName": "309203_yge",
-    "effectCompName": "CommonRoleEffect",
-    "motion": "b_idle|b_qusan|b_men|b_tanshou|b_bajian|b_baoxiong|b_sikao|b_diantou|b_yaotou",
-    "node": "Drawables/bone/effect-Bone/roleeffect_yge_idle0|Drawables/bone/effect-Bone/roleeffect_yge_idle0#Drawables/bone2/effect-Bone/roleeffect_yge_qs2#Drawables/bone4/effect-Bone/roleeffect_yge_qs4#Drawables/bone5/effect-Bone/roleeffect_yge_qs5#Drawables/bone6/effect-Bone/roleeffect_yge_qs6#Drawables/bone7/effect-Bone/roleeffect_yge_qs7|Drawables/bone/effect-Bone/roleeffect_yge_men0#Drawables/bone2/effect-Bone/roleeffect_yge_men2#Drawables/bone8/effect-Bone/roleeffect_yge_men8|Drawables/bone/effect-Bone/roleeffect_yge_men0|Drawables/bone/effect-Bone/roleeffect_yge_men0|Drawables/bone/effect-Bone/roleeffect_yge_men0|Drawables/bone/effect-Bone/roleeffect_yge_idle0|Drawables/bone/effect-Bone/roleeffect_yge_idle0|Drawables/bone/effect-Bone/roleeffect_yge_idle0",
-    "everNode": ""
+    "effectCompName": "CommonRoleEffectContinue",
+    "motion": "b_qusan|b_men",
+    "node": "Drawables/bone2/effect-Bone/roleeffect_yge_qs2#Drawables/bone4/effect-Bone/roleeffect_yge_qs4#Drawables/bone5/effect-Bone/roleeffect_yge_qs5#Drawables/bone6/effect-Bone/roleeffect_yge_qs6#Drawables/bone7/effect-Bone/roleeffect_yge_qs7|Drawables/bone2/effect-Bone/roleeffect_yge_men2#Drawables/bone8/effect-Bone/roleeffect_yge_men8",
+    "everNode": "Drawables/bone/effect-Bone/roleeffect_yge_idle0"
   }
 ]

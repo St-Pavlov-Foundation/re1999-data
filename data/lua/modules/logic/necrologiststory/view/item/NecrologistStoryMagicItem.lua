@@ -18,11 +18,11 @@ function NecrologistStoryMagicItem:onInit()
 	self.imgFill = gohelper.findChildImage(self.goProgress, "fill")
 end
 
-function NecrologistStoryMagicItem:addEventListeners()
+function NecrologistStoryMagicItem:onAddEvent()
 	self:addClickCb(self.btnMagic, self.onClickMagic, self)
 end
 
-function NecrologistStoryMagicItem:removeEventListeners()
+function NecrologistStoryMagicItem:onRemoveEvent()
 	self:removeClickCb(self.btnMagic)
 end
 

@@ -33,6 +33,10 @@ function VersionActivity3_8FreeMonthCardTaskView:_editableInitView()
 	self._taskItems = self:getUserDataTb_()
 end
 
+function VersionActivity3_8FreeMonthCardTaskView:onClickModalMask()
+	self:closeThis()
+end
+
 function VersionActivity3_8FreeMonthCardTaskView:_addSelfEvents()
 	self:addEventCb(TaskController.instance, TaskEvent.SuccessGetBonus, self._refreshUI, self)
 	self:addEventCb(TaskController.instance, TaskEvent.OnFinishTask, self._refreshUI, self)
@@ -53,37 +57,49 @@ function VersionActivity3_8FreeMonthCardTaskView:onOpen()
 end
 
 function VersionActivity3_8FreeMonthCardTaskView:_refreshTimeTick()
-	local remainTimeSec = ActivityModel.instance:getRemainTimeSec(self._actId) or 0
+	self._txtlimittime.text = self:_getRemainTimeStr()
+end
 
-	if remainTimeSec <= 0 then
-		self._txtlimittime.text = luaLang("turnback_end")
+function VersionActivity3_8FreeMonthCardTaskView:_getRemainTimeStr()
+	local actRemainTime = ActivityModel.instance:getRemainTimeSec(self._actId) or 0
 
-		return
+	if actRemainTime <= 0 then
+		return luaLang("turnback_end")
 	end
 
-	local day, hour, min, sec = TimeUtil.secondsToDDHHMMSS(remainTimeSec)
+	local taskRemainTime = TaskModel.instance:getTaskTypeExpireTime(TaskEnum.TaskType.Weekly) - ServerTime.now()
+
+	if taskRemainTime < actRemainTime then
+		local date = TimeUtil.secondToRoughTime3(taskRemainTime, false)
+
+		return formatLuaLang("refresh_remain_time", date)
+	end
+
+	local day, hour, min, sec = TimeUtil.secondsToDDHHMMSS(actRemainTime)
 
 	if day > 0 then
-		self._txtlimittime.text = GameUtil.getSubPlaceholderLuaLang(luaLang("time_day_hour2"), {
+		return GameUtil.getSubPlaceholderLuaLang(luaLang("time_day_hour2"), {
 			day,
 			hour
 		})
 	elseif hour > 0 then
-		self._txtlimittime.text = GameUtil.getSubPlaceholderLuaLang(luaLang("summonmain_deadline_time"), {
+		return GameUtil.getSubPlaceholderLuaLang(luaLang("summonmain_deadline_time"), {
 			hour,
 			min
 		})
 	elseif min > 0 then
-		self._txtlimittime.text = GameUtil.getSubPlaceholderLuaLang(luaLang("summonmain_deadline_time"), {
+		return GameUtil.getSubPlaceholderLuaLang(luaLang("summonmain_deadline_time"), {
 			0,
 			min
 		})
-	else
-		self._txtlimittime.text = GameUtil.getSubPlaceholderLuaLang(luaLang("summonmain_deadline_time"), {
+	elseif sec > 0 then
+		return GameUtil.getSubPlaceholderLuaLang(luaLang("summonmain_deadline_time"), {
 			0,
 			1
 		})
 	end
+
+	return luaLang("turnback_end")
 end
 
 function VersionActivity3_8FreeMonthCardTaskView:_refreshUI()

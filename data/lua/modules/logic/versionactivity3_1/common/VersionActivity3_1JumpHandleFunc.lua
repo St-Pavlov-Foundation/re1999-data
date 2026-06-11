@@ -40,25 +40,24 @@ end
 function VersionActivity3_1JumpHandleFunc:jumpTo13103(paramsList)
 	local actId = paramsList[2]
 	local episodeId = paramsList[3]
-	local mapLevelViewName = VersionActivityFixedHelper.getVersionActivityDungeonMapLevelViewName()
 
-	table.insert(self.waitOpenViewNames, ViewName.VersionActivity3_1EnterView)
-	table.insert(self.closeViewNames, mapLevelViewName)
-	VersionActivityFixedDungeonModel.instance:setMapNeedTweenState(true)
+	table.insert(self.waitOpenViewNames, ViewName.VersionActivity3_8EnterView)
+	table.insert(self.closeViewNames, ViewName.VersionActivity3_1DungeonMapLevelView)
 
-	local dungeonController = VersionActivityFixedHelper.getVersionActivityDungeonController()
+	local enterController = VersionActivityFixedHelper.getVersionActivityEnterController(3, 8)
+	local dungeonController = VersionActivityFixedHelper.getVersionActivityDungeonController(3, 1)
 
 	if episodeId then
-		VersionActivityFixedHelper.getVersionActivityEnterController().instance:openVersionActivityEnterViewIfNotOpened(function()
-			dungeonController.instance:openVersionActivityDungeonMapView(nil, episodeId, function()
-				ViewMgr.instance:openView(mapLevelViewName, {
+		enterController.instance:openVersionActivityEnterViewIfNotOpened(function()
+			dungeonController.instance:openVersionActivityReactivityDungeonMapView(3, 1, nil, episodeId, function()
+				ViewMgr.instance:openView(ViewName.VersionActivity3_1DungeonMapLevelView, {
 					isJump = true,
 					episodeId = episodeId
 				})
 			end)
 		end, nil, actId, true)
 	else
-		VersionActivityFixedHelper.getVersionActivityEnterController().instance:openVersionActivityEnterViewIfNotOpened(dungeonController.openVersionActivityDungeonMapView, dungeonController.instance, actId, true)
+		enterController.instance:openVersionActivityEnterViewIfNotOpened(dungeonController.openVersionActivityReactivityDungeonMapView, dungeonController.instance, actId, true)
 	end
 
 	return JumpEnum.JumpResult.Success

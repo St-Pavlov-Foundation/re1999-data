@@ -5974,6 +5974,24 @@ module_views.HandbookSkinSuitDetailView3_7 = {
 		[1] = "ui/viewres/skinhandbook/skinsuitdetailviewbtns.prefab"
 	}
 }
+module_views.HandbookSkinSuitDetailView3_8 = {
+	destroy = 0,
+	container = "HandbookSkinSuitDetailView3_8Container",
+	mainRes = "ui/viewres/skinhandbook/skinsuitdetailview_3_8.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full,
+	anim = ViewAnim.Default,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	},
+	otherRes = {
+		[1] = "ui/viewres/skinhandbook/skinsuitdetailviewbtns.prefab"
+	}
+}
 module_views.HandbookSkinSuitDetailView1_7 = {
 	destroy = 0,
 	container = "HandbookSkinSuitDetailView1_7Container",
@@ -16681,6 +16699,14 @@ module_views.NewPlayerCardContentView = {
 		achieveitem = "ui/viewres/achievement/achievementmainicon.prefab",
 		skinpreview = "ui/viewres/player/playercard/playercardskinpreview.prefab"
 	}
+}
+module_views.PlayerCardEnterSettingView = {
+	destroy = 0,
+	container = "PlayerCardEnterSettingViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/player/playercard/playercardsettingview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Model
 }
 module_views.PlayerCardCritterPlaceView = {
 	destroy = 0,

@@ -213,7 +213,7 @@ function ActivityCategoryItem:_refreshItem()
 			RedDotController.instance:addRedDot(self._goreddot, redDotId, nil, self.checkActivityShowFirstEnter, self)
 		elseif typeId == ActivityEnum.ActivityTypeID.Act217 then
 			RedDotController.instance:addRedDot(self._goreddot, redDotId, nil, self.checkIsAct217NeedReddot, self)
-		elseif actId == ActivityEnum.Activity.V3a5_SchoolStart then
+		elseif actId == ActivityEnum.Activity.V3a5_SchoolStart or actId == VersionActivity3_8Enum.ActivityId.FreeMonthCard then
 			RedDotController.instance:addRedDot(self._goreddot, redDotId)
 		else
 			RedDotController.instance:addRedDot(self._goreddot, dotId, self._mo.id)

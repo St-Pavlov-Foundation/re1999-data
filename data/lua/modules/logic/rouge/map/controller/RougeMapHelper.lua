@@ -250,11 +250,15 @@ function RougeMapHelper._onEnterMainSceneDone()
 	local sequence = FlowSequence.New()
 
 	sequence:addWork(OpenViewWork.New({
-		openFunction = RougeController.enterDungeonView,
-		openFunctionObj = RougeController.instance,
+		openFunction = RougeMapHelper.openEnterView,
 		waitOpenViewName = ViewName.DungeonView
 	}))
 	sequence:start()
+end
+
+function RougeMapHelper.openEnterView()
+	RougeController.instance:enterDungeonView()
+	RougeController.instance:openRougeMainView()
 end
 
 function RougeMapHelper.getEpisodeIndex(stage)

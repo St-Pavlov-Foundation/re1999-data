@@ -655,6 +655,8 @@ function StoryBackgroundView:_onOldBgImgLoaded()
 	end
 
 	self._imagebgold:SetNativeSize()
+
+	self._imagebgold.color = Color.white
 end
 
 function StoryBackgroundView:_onNewBgEffectLoaded()

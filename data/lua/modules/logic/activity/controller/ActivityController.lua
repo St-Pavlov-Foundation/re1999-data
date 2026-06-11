@@ -112,7 +112,8 @@ local kAct101RedList = {
 	ActivityEnum.Activity.V3a4_DestinyGift,
 	ActivityEnum.Activity.V3a4_GiftRecommend,
 	ActivityEnum.Activity.V3a7_SelfSelect,
-	ActivityEnum.Activity.V3a7_SkinGift
+	ActivityEnum.Activity.V3a7_SkinGift,
+	ActivityEnum.Activity.V3a8_SelfSelectSix
 }
 local kAct125List = {
 	ActivityEnum.Activity.VersionActivity1_3Radio,

@@ -44,7 +44,8 @@ HandbookSkinScene.SkinSuitId2SuitView = {
 	[20022] = ViewName.HandbookSkinSuitDetailView3_3_1,
 	[20023] = ViewName.HandbookSkinSuitDetailView3_4,
 	[20024] = ViewName.HandbookSkinSuitDetailView3_5,
-	[20025] = ViewName.HandbookSkinSuitDetailView3_7
+	[20025] = ViewName.HandbookSkinSuitDetailView3_7,
+	[20026] = ViewName.HandbookSkinSuitDetailView3_8
 }
 
 function HandbookSkinScene:onInitView()
@@ -459,7 +460,7 @@ function HandbookSkinScene:_createSuitItems()
 		local iconGo = gohelper.findChild(self._curSceneGo, "sence/StandStill/Obj-Plant/near/shuqian/v3a3_m_s17_pftj_shuqian_03")
 
 		if iconGo then
-			self:addBoxColliderListener(iconGo, skinSuitCfg.id, 3)
+			self:addBoxColliderListener(iconGo, skinSuitCfg.id, 5)
 		end
 	else
 		self._suitItemLoaderList = {}
@@ -1022,6 +1023,8 @@ function HandbookSkinScene:enterFestivalSkinScene()
 	self._sceneAnimatorPlayer:Play(UIAnimationName.Click, nil, nil)
 	HandbookController.instance:statSkinSuitDetail(self._suitId)
 	TaskDispatcher.runDelay(self.openFestivalSkinView, self, 2)
+	UIBlockMgrExtend.setNeedCircleMv(false)
+	UIBlockHelper.instance:startBlock(UIBlockKey.WaitItemAnimeDone, 2)
 end
 
 function HandbookSkinScene:_exitFestivalSkinScene()
@@ -1030,6 +1033,9 @@ function HandbookSkinScene:_exitFestivalSkinScene()
 end
 
 function HandbookSkinScene:openFestivalSkinView()
+	UIBlockHelper.instance:endBlock(UIBlockKey.WaitItemAnimeDone)
+	UIBlockMgrExtend.setNeedCircleMv(true)
+
 	local viewName = HandbookSkinScene.SkinSuitId2SuitView[self._suitId]
 
 	if viewName then

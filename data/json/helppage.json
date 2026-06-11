@@ -5598,5 +5598,95 @@
     "iconText": "v3a7_wmz_help_3",
     "unlockGuideId": 37500,
     "isCn": 0
+  },
+  {
+    "id": 3851001,
+    "title": "",
+    "type": 2,
+    "text": "回声谣引导图1",
+    "icon": "v3a8_huishengyao_help_1",
+    "iconText": "v3a8_huishengyao_help_1",
+    "unlockGuideId": 38201,
+    "isCn": 0
+  },
+  {
+    "id": 3851002,
+    "title": "",
+    "type": 2,
+    "text": "回声谣引导图2",
+    "icon": "v3a8_huishengyao_help_2",
+    "iconText": "v3a8_huishengyao_help_2",
+    "unlockGuideId": 38201,
+    "isCn": 0
+  },
+  {
+    "id": 3851003,
+    "title": "",
+    "type": 2,
+    "text": "回声谣引导图3",
+    "icon": "v3a8_huishengyao_help_5",
+    "iconText": "v3a8_huishengyao_help_5",
+    "unlockGuideId": 38201,
+    "isCn": 0
+  },
+  {
+    "id": 3851004,
+    "title": "",
+    "type": 2,
+    "text": "回声谣引导图4（初始）",
+    "icon": "v3a8_huishengyao_help_6",
+    "iconText": "v3a8_huishengyao_help_6",
+    "unlockGuideId": 38201,
+    "isCn": 0
+  },
+  {
+    "id": 3851005,
+    "title": "",
+    "type": 2,
+    "text": "回声谣引导图4（新增）",
+    "icon": "v3a8_huishengyao_help_7_2",
+    "iconText": "v3a8_huishengyao_help_7_2",
+    "unlockGuideId": 38202,
+    "isCn": 0
+  },
+  {
+    "id": 3851006,
+    "title": "",
+    "type": 2,
+    "text": "回声谣引导图4（全量）",
+    "icon": "v3a8_huishengyao_help_7",
+    "iconText": "v3a8_huishengyao_help_7",
+    "unlockGuideId": 0,
+    "isCn": 0
+  },
+  {
+    "id": 3851007,
+    "title": "",
+    "type": 2,
+    "text": "回声谣引导图5（初始）",
+    "icon": "v3a8_huishengyao_help_3",
+    "iconText": "v3a8_huishengyao_help_3",
+    "unlockGuideId": 38203,
+    "isCn": 0
+  },
+  {
+    "id": 3851008,
+    "title": "",
+    "type": 2,
+    "text": "回声谣引导图5（新增）",
+    "icon": "v3a8_huishengyao_help_4_2",
+    "iconText": "v3a8_huishengyao_help_4_2",
+    "unlockGuideId": 38204,
+    "isCn": 0
+  },
+  {
+    "id": 3851009,
+    "title": "",
+    "type": 2,
+    "text": "回声谣引导图5（全量）",
+    "icon": "v3a8_huishengyao_help_4",
+    "iconText": "v3a8_huishengyao_help_4",
+    "unlockGuideId": 0,
+    "isCn": 0
   }
 ]

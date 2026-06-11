@@ -46,9 +46,13 @@ end
 
 function VersionActivity3_8NoviceSignItem:_initItem()
 	self._actId = ActivityEnum.Activity.NoviceSign
-	self._normalItemClick = gohelper.getClickWithAudio(self._gotodaynormalbg)
-	self._spItemClick = gohelper.getClickWithAudio(self._gotodayspbg)
-	self._finalItemClick = gohelper.getClickWithAudio(self._gofinalbg)
+	self._normalBgGetClick = gohelper.getClickWithAudio(self._gotodaynormalbg)
+	self._spBgGetClick = gohelper.getClickWithAudio(self._gotodayspbg)
+	self._finalBgGetClick = gohelper.getClickWithAudio(self._gofinalbg)
+	self._normalItemClick1 = gohelper.getClickWithAudio(self._simagenormalreward1.gameObject)
+	self._normalItemClick2 = gohelper.getClickWithAudio(self._simagenormalreward2.gameObject)
+	self._spItemClick1 = gohelper.getClickWithAudio(self._simagespreward1.gameObject)
+	self._spItemClick2 = gohelper.getClickWithAudio(self._simagespreward2.gameObject)
 	self._canvasdate = self._godate:GetComponent(typeof(UnityEngine.CanvasGroup))
 	self._cannormalcontent = self._gonormalcontent:GetComponent(typeof(UnityEngine.CanvasGroup))
 	self._anim = self._go:GetComponent(typeof(UnityEngine.Animator))
@@ -63,34 +67,48 @@ function VersionActivity3_8NoviceSignItem:_initItem()
 end
 
 function VersionActivity3_8NoviceSignItem:_addEvents()
-	self._normalItemClick:AddClickListener(self._onItemClick, self)
-	self._spItemClick:AddClickListener(self._onItemClick, self)
-	self._finalItemClick:AddClickListener(self._onItemClick, self)
+	self._normalBgGetClick:AddClickListener(self._onGetBonusClick, self)
+	self._spBgGetClick:AddClickListener(self._onGetBonusClick, self)
+	self._finalBgGetClick:AddClickListener(self._onGetBonusClick, self)
+	self._normalItemClick1:AddClickListener(self._onRewardItemClick, self, 1)
+	self._normalItemClick2:AddClickListener(self._onRewardItemClick, self, 2)
+	self._spItemClick1:AddClickListener(self._onRewardItemClick, self, 1)
+	self._spItemClick2:AddClickListener(self._onRewardItemClick, self, 2)
 end
 
 function VersionActivity3_8NoviceSignItem:_removeEvents()
-	self._normalItemClick:RemoveClickListener()
-	self._spItemClick:RemoveClickListener()
-	self._finalItemClick:RemoveClickListener()
+	self._normalBgGetClick:RemoveClickListener()
+	self._spBgGetClick:RemoveClickListener()
+	self._finalBgGetClick:RemoveClickListener()
+	self._normalItemClick1:RemoveClickListener()
+	self._normalItemClick2:RemoveClickListener()
+	self._spItemClick1:RemoveClickListener()
+	self._spItemClick2:RemoveClickListener()
 end
 
-function VersionActivity3_8NoviceSignItem:_onItemClick()
+function VersionActivity3_8NoviceSignItem:_onGetBonusClick()
 	AudioMgr.instance:trigger(AudioEnum.UI.Store_Good_Click)
 
 	local couldGet = ActivityType101Model.instance:isType101RewardCouldGet(ActivityEnum.Activity.NoviceSign, self._index)
 
-	if couldGet then
-		Activity101Rpc.instance:sendGet101BonusRequest(ActivityEnum.Activity.NoviceSign, self._index)
-
+	if not couldGet then
 		return
 	end
 
-	if self._index == self._maxDay then
-		local signCo = ActivityConfig.instance:getNorSignActivityCo(ActivityEnum.Activity.NoviceSign, self._index)
-		local props = string.splitToNumber(signCo.v2Bonus, "#")
+	Activity101Rpc.instance:sendGet101BonusRequest(ActivityEnum.Activity.NoviceSign, self._index)
+end
 
-		MaterialTipController.instance:showMaterialInfo(tonumber(props[1]), tonumber(props[2]))
+function VersionActivity3_8NoviceSignItem:_onRewardItemClick(index)
+	local signCo = ActivityConfig.instance:getNorSignActivityCo(ActivityEnum.Activity.NoviceSign, self._index)
+	local rewards = string.split(signCo.v2Bonus, "|")
+
+	if not rewards or not rewards[index] then
+		return
 	end
+
+	local props = string.splitToNumber(rewards[index], "#")
+
+	MaterialTipController.instance:showMaterialInfo(tonumber(props[1]), tonumber(props[2]))
 end
 
 function VersionActivity3_8NoviceSignItem:refresh(co)
@@ -107,7 +125,7 @@ function VersionActivity3_8NoviceSignItem:_refreshItem()
 
 	gohelper.setActive(self._gotag, not LuaUtil.isEmptyStr(self._co.clientDisplayTxt))
 
-	self._txttag.text = luaLang(self._co.clientDisplayTxt)
+	self._txttag.text = not LuaUtil.isEmptyStr(self._co.clientDisplayTxt) and luaLang(self._co.clientDisplayTxt) or ""
 
 	local isTomorrow = self._index == totalday + 1
 
@@ -159,7 +177,7 @@ function VersionActivity3_8NoviceSignItem:_refreshItem()
 				self["_simagenormalreward" .. i]:LoadImage(icon)
 				UISpriteSetMgr.instance:setSeasonSprite(self["_imagenormalrare" .. i], "img_pz_" .. rare, true)
 
-				self["_txtnormalrewardnum" .. i].text = luaLang("multiple") .. itemCos[3]
+				self["_txtnormalrewardnum" .. i].text = itemCos[3]
 			end
 		end
 	else

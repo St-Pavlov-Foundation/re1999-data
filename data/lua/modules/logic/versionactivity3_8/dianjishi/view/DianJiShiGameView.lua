@@ -14,7 +14,6 @@ function DianJiShiGameView:onInitView()
 	self._goDragBlockItem = gohelper.findChild(self.viewGO, "#go_Root/#go_Left/#go_Scale/#go_DragArea/#go_DragBlockItem")
 	self._goPlaceArea = gohelper.findChild(self.viewGO, "#go_Root/#go_Left/#go_Scale/#go_PlaceArea")
 	self._goPlaceCubeItem = gohelper.findChild(self.viewGO, "#go_Root/#go_Left/#go_Scale/#go_PlaceArea/#go_PlaceCubeItem")
-	self._goStart = gohelper.findChild(self.viewGO, "#go_Root/#go_Left/#go_Scale/#simage_Map/#go_Start")
 	self._goRight = gohelper.findChild(self.viewGO, "#go_Root/#go_Left/#go_Scale")
 	self._goDragArea = gohelper.findChild(self.viewGO, "#go_Root/#go_Left/#go_Scale/#go_DragArea")
 	self._goLineArea = gohelper.findChild(self.viewGO, "#go_Root/#go_Left/#go_Scale/#go_LineArea")
@@ -63,6 +62,7 @@ function DianJiShiGameView:addEvents()
 	self:addEventCb(DianJiShiGameController.instance, DianJiShiGameEvent.OnEndDragBlock, self._onEndDragBlock, self)
 	self:addEventCb(DianJiShiGameController.instance, DianJiShiGameEvent.OnUpdateGameStatus, self._onUpdateGameStatus, self)
 	self:addEventCb(DianJiShiGameController.instance, DianJiShiGameEvent.OnHelpPlaceBlock, self._onHelpPlaceBlock, self)
+	self:addEventCb(DianJiShiGameController.instance, DianJiShiGameEvent.OnMapAreaValueNotFit, self._onMapAreaValueNotFit, self)
 end
 
 function DianJiShiGameView:removeEvents()
@@ -73,10 +73,18 @@ function DianJiShiGameView:removeEvents()
 end
 
 function DianJiShiGameView:_btnRollbackOnClick()
+	if DianJiShiGameModel.instance:isDraging() then
+		return
+	end
+
 	DianJiShiGameController.instance:rollBack()
 end
 
 function DianJiShiGameView:_btnResetOnClick()
+	if DianJiShiGameModel.instance:isDraging() then
+		return
+	end
+
 	local status = DianJiShiGameModel.instance:getGameStatus()
 
 	if status ~= DianJiShiGameEnum.GameStatus.Failed then
@@ -96,6 +104,10 @@ function DianJiShiGameView:_reallyStartReset()
 end
 
 function DianJiShiGameView:_btnHelpOnClick()
+	if DianJiShiGameModel.instance:isDraging() then
+		return
+	end
+
 	local nextHelpBlock, nextHelpBlockRightPos = DianJiShiGameController.instance:getNextHelpBlockInfo()
 
 	if not nextHelpBlock or not nextHelpBlockRightPos then
@@ -108,7 +120,15 @@ function DianJiShiGameView:_btnHelpOnClick()
 end
 
 function DianJiShiGameView:_btnCloseOnClick()
+	if self._isSucc then
+		DianJiShiStatController.instance:sendGameSettle()
+		DianJiShiLevelController.instance:_onGameFinished(self._actId, self._episodeId)
+
+		return
+	end
+
 	self:closeThis()
+	DianJiShiStatController.instance:sendGameAbort()
 end
 
 function DianJiShiGameView:_editableInitView()
@@ -126,6 +146,13 @@ function DianJiShiGameView:_editableInitView()
 	gohelper.setActive(self._goHelpArea, false)
 	gohelper.setActive(self._goHelpLineItem, false)
 	gohelper.setActive(self._goShadowArea, false)
+	NavigateMgr.instance:addEscape(self.viewName, self._btnCloseOnClick, self)
+
+	local navigateButtonView = self.viewContainer and self.viewContainer:getNavigateButtonView()
+
+	if navigateButtonView then
+		navigateButtonView:setOverrideClose(self._btnCloseOnClick, self)
+	end
 end
 
 function DianJiShiGameView:onOpen()
@@ -138,6 +165,8 @@ function DianJiShiGameView:onOpen()
 	self:initMapIconAndPos()
 	self:initPlaceAreaPos()
 	self:refreshUI()
+	AudioMgr.instance:trigger(AudioEnum3_8.DianJiShi.EnterGame)
+	DianJiShiStatController.instance:enterGame(self._episodeId)
 end
 
 function DianJiShiGameView:initPlaceAreaPos()
@@ -185,7 +214,10 @@ function DianJiShiGameView:refreshUI()
 end
 
 function DianJiShiGameView:refreshStatusUI()
-	self._txtTargetDesc.text = self._gameCo and self._gameCo.targetDesc
+	self._passAreaNum = DianJiShiGameModel.instance:getPassMapAreaInfoNum()
+
+	self:refreshTargetDesc(self._passAreaNum)
+
 	self._curStatus = DianJiShiGameModel.instance:getGameStatus()
 
 	local isSuccess = self._curStatus == DianJiShiGameEnum.GameStatus.Success
@@ -221,12 +253,27 @@ function DianJiShiGameView:refreshStatusUI()
 
 	self._isSucc = isSuccess
 
-	if isSuccess then
-		DianJiShiLevelController.instance:_onGameFinished(self._actId, self._episodeId)
+	GameUtil.setActiveUIBlock(self.viewName, false, true)
+
+	if self._isSucc then
 		GameUtil.setActiveUIBlock(self.viewName, true, false)
-		TaskDispatcher.cancelTask(self._onSettleEnd, self)
-		TaskDispatcher.runDelay(self._onSettleEnd, self, DianJiShiGameEnum.DelayCloseAfterSucc)
+		AudioMgr.instance:trigger(AudioEnum3_8.DianJiShi.OnGameFinished)
+		AudioMgr.instance:trigger(AudioEnum3_8.DianJiShi.OnGameCompleted)
+		TaskDispatcher.runDelay(self._playGameSuccEffectDone, self, 1)
 	end
+end
+
+function DianJiShiGameView:_playGameSuccEffectDone()
+	GameUtil.setActiveUIBlock(self.viewName, false, true)
+end
+
+function DianJiShiGameView:refreshTargetDesc(passAreaNum)
+	local allAreaNum = DianJiShiGameModel.instance:getMapAreaInfoNum()
+	local isFinish = allAreaNum <= passAreaNum
+	local targetDesc = self._gameCo and self._gameCo.targetDesc
+	local descColor = isFinish and DianJiShiGameEnum.FinishCountColor or DianJiShiGameEnum.UnfinishCountColor
+
+	self._txtTargetDesc.text = GameUtil.getSubPlaceholderLuaLangThreeParam(targetDesc, descColor, passAreaNum, allAreaNum)
 end
 
 function DianJiShiGameView:_onPlayOpenFailedTipsAnimDone()
@@ -237,10 +284,6 @@ function DianJiShiGameView:_onPlayCloseFailedTipsAnimDone()
 	gohelper.setActive(self._goFailed, false)
 
 	self._isFailedTipsVisible = false
-end
-
-function DianJiShiGameView:_onSettleEnd()
-	GameUtil.setActiveUIBlock(self.viewName, false, true)
 end
 
 function DianJiShiGameView:refreshMapArea()
@@ -315,14 +358,16 @@ function DianJiShiGameView:_onAfterPlaceBlockOp(blockInfo)
 end
 
 function DianJiShiGameView:_onBeginDragBlock(blockInfo)
+	AudioMgr.instance:trigger(AudioEnum3_8.DianJiShi.BeginDragGameBlock)
+
 	local dragItem = self:_getOrCreateDragBlockItem()
 
 	dragItem:onUpdateMO(blockInfo)
 	self:refreshShadowArea(blockInfo)
+	DianJiShiGameController.instance:dispatchEvent(DianJiShiGameEvent.OnHelpPlaceBlock)
 end
 
 function DianJiShiGameView:_onDragBlock(blockInfo)
-	local startTime = os.time()
 	local dragItem = self:_getOrCreateDragBlockItem()
 	local posXIndex, posYIndex = dragItem:refreshPosition()
 
@@ -330,6 +375,8 @@ function DianJiShiGameView:_onDragBlock(blockInfo)
 end
 
 function DianJiShiGameView:_onEndDragBlock(blockInfo)
+	AudioMgr.instance:trigger(AudioEnum3_8.DianJiShi.EndDragGameBlock)
+
 	local dragItem = self:_getOrCreateDragBlockItem()
 	local posXIndex, posYIndex = dragItem:refreshPosition()
 
@@ -360,7 +407,11 @@ function DianJiShiGameView:showLightLineArea(blockInfo, posXIndex, posYIndex)
 	local hasFilterCell = filterCellList and #filterCellList > 0
 
 	gohelper.setActive(self._goLineArea, hasFilterCell)
-	DianJiShiGameController.instance:dispatchEvent(DianJiShiGameEvent.OnLightAreaValue, filterAreaDict)
+
+	local canPlace = DianJiShiGameModel.instance:checkCanPlaceBlock(posXIndex, posYIndex, blockInfo)
+	local lightAreaDict = canPlace and filterAreaDict
+
+	DianJiShiGameController.instance:dispatchEvent(DianJiShiGameEvent.OnLightAreaValue, lightAreaDict)
 
 	if not hasFilterCell then
 		return
@@ -392,9 +443,15 @@ function DianJiShiGameView:_onHelpPlaceBlock(blockInfo, helpRightPos)
 		return
 	end
 
+	DianJiShiStatController.instance:addHelpTimes()
+
 	local filterCellList = DianJiShiGameController.instance:getBlockFilterCellList(blockInfo, self._helpBlockRightPos[1], self._helpBlockRightPos[2]) or {}
 
 	gohelper.CreateObjList(self, self._refreshHelpLine, filterCellList, self._goHelpArea, self._goHelpLineItem, DianJiShiGameHelpLineItem)
+end
+
+function DianJiShiGameView:_onMapAreaValueNotFit()
+	self:refreshTargetDesc(self._passAreaNum - 1)
 end
 
 function DianJiShiGameView:_refreshHelpLine(lineItem, cellInfo, index)
@@ -420,12 +477,8 @@ function DianJiShiGameView:_refreshShadowItem(shadowItem, shadowInfo, index)
 end
 
 function DianJiShiGameView:onClose()
-	TaskDispatcher.cancelTask(self._onSettleEnd, self)
 	GameUtil.setActiveUIBlock(self.viewName, false, true)
-
-	if self._isSucc then
-		DianJiShiLevelController.instance:dispatchEpisodeFinishEvent()
-	end
+	TaskDispatcher.cancelTask(self._playGameSuccEffectDone, self)
 end
 
 function DianJiShiGameView:onDestroyView()

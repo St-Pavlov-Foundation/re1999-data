@@ -52,7 +52,7 @@ function RougeController:openRougeMainView(callback, callbackTarget)
 				return
 			end
 
-			RougeController.instance:enterDungeonView()
+			ViewMgr.instance:openView(ViewName.RougeMainView)
 
 			if callback then
 				callback(callbackTarget)

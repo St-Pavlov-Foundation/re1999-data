@@ -7649,5 +7649,40 @@
     "point": "birthday",
     "effectRes": "v1a9_birthday/juese_birthday",
     "animName": "idle_birthday_loop"
+  },
+  {
+    "skinId": 302306,
+    "id": 138302306,
+    "point": "birthday",
+    "effectRes": "v1a9_birthday/juese_birthday_15zhen",
+    "animName": "idle_birthday_up"
+  },
+  {
+    "skinId": 302306,
+    "id": 138302307,
+    "point": "birthday",
+    "effectRes": "v1a9_birthday/juese_birthday",
+    "animName": "idle_birthday_loop"
+  },
+  {
+    "skinId": 304504,
+    "id": 138304504,
+    "point": "birthday",
+    "effectRes": "v1a9_birthday/juese_birthday_15zhen",
+    "animName": "idle_birthday_up"
+  },
+  {
+    "skinId": 304504,
+    "id": 138304505,
+    "point": "birthday",
+    "effectRes": "v1a9_birthday/juese_birthday",
+    "animName": "idle_birthday_loop"
+  },
+  {
+    "skinId": 302306,
+    "id": 138302301,
+    "point": "special2",
+    "effectRes": "v3a5_sshs/v3a5_sshs_idleroom2",
+    "animName": "idle_room"
   }
 ]

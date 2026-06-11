@@ -100,7 +100,8 @@ function V3a8_DragonBoatActivity_BubbleItem:playBubble(bReplay)
 	end
 
 	if repeatCnt > 0 then
-		TaskDispatcher.runRepeat(self._onShowBubble, self, V3a8_DragonBoatConfig.instance:getBubbleIntervalSec(), repeatCnt + 1)
+		self:_onShowBubble()
+		TaskDispatcher.runRepeat(self._onShowBubble, self, V3a8_DragonBoatConfig.instance:getBubbleIntervalSec(), repeatCnt)
 	else
 		self:setActive_gotag(false)
 	end

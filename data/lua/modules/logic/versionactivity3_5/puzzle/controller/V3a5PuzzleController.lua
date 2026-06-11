@@ -30,26 +30,42 @@ function V3a5PuzzleController:_initStoryViewInfo()
 	end
 end
 
-function V3a5PuzzleController:checkOpenPuzzleView(storyId, episodeId)
+function V3a5PuzzleController:isOpenPuzzleView(storyId, isOpen, episodeId, afterStory)
 	if not self._storyViewInfos then
 		self:_initStoryViewInfo()
 	end
 
-	for _storyId, viewName in pairs(self._storyViewInfos) do
+	for _storyId, _ in pairs(self._storyViewInfos) do
 		if _storyId == storyId then
-			ViewMgr.instance:openView(viewName, {
-				storyId = storyId,
-				episodeId = episodeId
-			})
+			if isOpen then
+				self:openPuzzleView(storyId, episodeId, afterStory)
+			end
 
 			return true
 		end
 	end
-
-	return false
 end
 
-function V3a5PuzzleController:playNextStory(viewName, cb, cbObj)
+function V3a5PuzzleController:openPuzzleView(storyId, episodeId, afterStory)
+	local viewName = self._storyViewInfos[storyId]
+
+	if string.nilorempty(viewName) then
+		return
+	end
+
+	ViewMgr.instance:openView(viewName, {
+		storyId = storyId,
+		episodeId = episodeId,
+		afterStory = afterStory
+	})
+end
+
+function V3a5PuzzleController:playNextStory(storyId, viewName, cb, cbObj)
+	if not StoryModel.instance:isStoryFinished(storyId) then
+		StoryController.instance:setStoryFinished(storyId)
+		StoryRpc.instance:sendUpdateStoryRequest(storyId, -1, 0)
+	end
+
 	local nextStory = V3a5PuzzleEnum.NextStoryView[viewName]
 
 	if not nextStory then
@@ -69,7 +85,12 @@ function V3a5PuzzleController:playNextStory(viewName, cb, cbObj)
 	StoryController.instance:playStory(nextStoryId, nil, _cb)
 end
 
-function V3a5PuzzleController:playNextStoryByPreStoryId(preStoryId, episodeId, viewName, cb, cbObj)
+function V3a5PuzzleController:playNextStoryByPreStoryId(preStoryId, episodeId, afterStory, viewName, cb, cbObj)
+	if not StoryModel.instance:isStoryFinished(preStoryId) then
+		StoryController.instance:setStoryFinished(preStoryId)
+		StoryRpc.instance:sendUpdateStoryRequest(preStoryId, -1, 0)
+	end
+
 	local nextStory = V3a5PuzzleEnum.NextStoryView[viewName]
 
 	if not nextStory then
@@ -83,6 +104,10 @@ function V3a5PuzzleController:playNextStoryByPreStoryId(preStoryId, episodeId, v
 			local function _cb()
 				if cb then
 					cb(cbObj)
+
+					if afterStory and afterStory > 0 and afterStory ~= nextStoryId then
+						StoryController.instance:playStory(afterStory)
+					end
 				end
 
 				local episodeMo = episodeId and DungeonModel.instance:getEpisodeInfo(episodeId)

@@ -38,6 +38,7 @@ function NecrologistStoryBranchSectionItem:onInitView()
 	self.optionLayoutItemList = {}
 	self.goEmpty = gohelper.findChild(self.viewGO, "empty")
 	self.goEmptyFinish = gohelper.findChild(self.viewGO, "empty/go_line")
+	self.animEmpty = gohelper.findComponentAnim(self.goEmptyFinish)
 end
 
 function NecrologistStoryBranchSectionItem:addEventListeners()
@@ -67,9 +68,18 @@ function NecrologistStoryBranchSectionItem:onUpdateMO(data)
 end
 
 function NecrologistStoryBranchSectionItem:addOptionDataList(branchDataList)
-	if self.optionDataList then
-		tabletool.addValues(branchDataList, self.optionDataList)
+	local data = {}
+
+	data.storygroup = self.plotId
+	data.optionsList = {}
+
+	if self.optionDataList and #self.optionDataList > 0 then
+		tabletool.addValues(data.optionsList, self.optionDataList)
+	else
+		table.insert(data.optionsList, {})
 	end
+
+	table.insert(branchDataList, data)
 end
 
 function NecrologistStoryBranchSectionItem:refreshView()
@@ -90,11 +100,9 @@ function NecrologistStoryBranchSectionItem:refreshView()
 
 	self.plotGroupConfig = config
 	self.storyId = config.storyId
-
-	local storyMo = NecrologistStoryModel.instance:getGameMO(self.storyId)
-
-	self.plotInfo = storyMo:getPlotInfo(self.plotId, true)
-	self.isStoryFinish = storyMo:isStoryFinish(self.plotId)
+	self.storyMo = NecrologistStoryModel.instance:getGameMO(self.storyId)
+	self.plotInfo = self.storyMo:getPlotInfo(self.plotId, true)
+	self.isStoryFinish = self.storyMo:isStoryFinish(self.plotId)
 
 	self:refreshTitle()
 	self:refreshTips()
@@ -117,7 +125,7 @@ function NecrologistStoryBranchSectionItem:refreshTips()
 		local isFinish = true
 
 		for optionId, _ in pairs(self.data.affectsEndingOptionIndexs) do
-			if not self.plotInfo:isOptionSelected(optionId) then
+			if not self.plotInfo:isOptionUnlocked(optionId) then
 				isFinish = false
 
 				break
@@ -156,11 +164,24 @@ function NecrologistStoryBranchSectionItem:refreshOptions()
 		self:refreshOptionLayout(optionLayout, options)
 	end
 
+	local emptyVisible = false
+
 	if dataCount == 0 then
 		gohelper.setActive(self.goEmpty, true)
-		gohelper.setActive(self.goEmptyFinish, self.isStoryFinish)
+
+		emptyVisible = self.isStoryFinish
 	else
 		gohelper.setActive(self.goEmpty, false)
+	end
+
+	local lastEmptyVisible = self._emptyVisible
+
+	self._emptyVisible = emptyVisible
+
+	if not emptyVisible then
+		self.animEmpty:Play("idle1")
+	else
+		self.animEmpty:Play(lastEmptyVisible == false and "move" or "idle2")
 	end
 
 	local width = self:getSectionItemWidth(dataCount)
@@ -207,8 +228,6 @@ function NecrologistStoryBranchSectionItem:refreshOptionLayout(optionLayout, opt
 		self:refreshOptionItem(item, optionData)
 		table.insert(optionStrList, NecrologistStoryHelper.getOptionDesc(optionData, true))
 	end
-
-	logError(table.concat(optionStrList, ", "))
 end
 
 function NecrologistStoryBranchSectionItem:getOrCreateOptionItem(index, parentItem)
@@ -229,6 +248,7 @@ function NecrologistStoryBranchSectionItem:getOrCreateOptionItem(index, parentIt
 
 		item.btnClick:AddClickListener(self.onClickOptionItem, self, item)
 
+		item.anim = gohelper.findComponentAnim(item.go)
 		parentItem.optionItemList[index] = item
 	end
 
@@ -253,11 +273,23 @@ function NecrologistStoryBranchSectionItem:refreshOptionItem(item, data)
 		isFinish = self.plotInfo:isEndingUnlocked(optionData.id)
 		icon = isFinish and "rolestory_new3_btn_3" or "rolestory_new3_btn_4"
 	else
-		isFinish = self.plotInfo:isOptionSelected(optionData.id)
+		isFinish = self.plotInfo:isOptionUnlocked(optionData.id)
 
 		if self.data.affectsEndingOptionIndexs[optionData.id] then
 			icon = "rolestory_new3_btn_2"
 		end
+	end
+
+	local lastIsFinish = item.isFinish
+
+	item.isFinish = isFinish or false
+
+	if not isFinish then
+		item.anim:Play("lock_idle")
+	elseif lastIsFinish == false then
+		item.anim:Play("unlock")
+	else
+		item.anim:Play("unlock_idle")
 	end
 
 	gohelper.setActive(item.goUnlock, isFinish)
@@ -294,19 +326,34 @@ function NecrologistStoryBranchSectionItem:refreshBranchs(dataList, startIndex)
 		end
 	end
 
-	gohelper.setActive(self.goEnding, self.isEnding)
-
 	if self.isEnding then
 		local lastData = self.optionDataList[optionDataCount]
 		local connectOptionCount = Mathf.Clamp(lastData and #lastData or 0, 1, MAX_OPTION_COUNT)
+		local finishCount = 0
 
-		for i, v in ipairs(self.endingList) do
-			gohelper.setActive(v, i == connectOptionCount)
+		for _, optionData in ipairs(lastData) do
+			local plotInfo = self.storyMo:getPlotInfo(optionData.config.storygroup, true)
+
+			if optionData.isEnding and plotInfo:isEndingUnlocked(optionData.id) then
+				finishCount = finishCount + 1
+			end
 		end
 
-		local x, y = self:getBranchPos(dataCount + 1)
+		local isAllFinish = connectOptionCount <= finishCount
 
-		recthelper.setAnchor(self.goEnding.transform, x, y)
+		gohelper.setActive(self.goEnding, isAllFinish)
+
+		if isAllFinish then
+			for i, v in ipairs(self.endingList) do
+				gohelper.setActive(v, i == connectOptionCount)
+			end
+
+			local x = self:getBranchPos(dataCount)
+
+			recthelper.setAnchorX(self.goEnding.transform, x)
+		end
+	else
+		gohelper.setActive(self.goEnding, false)
 	end
 
 	return dataCount
@@ -349,7 +396,15 @@ function NecrologistStoryBranchSectionItem:createChildBranchItem(go)
 		lineItem.lineList = {}
 
 		for j = 1, i do
-			lineItem.lineList[j] = gohelper.findChild(lineItem.go, string.format("go_line%d", j))
+			local go = gohelper.findChild(lineItem.go, string.format("go_line%d", j))
+
+			if go then
+				local lineGOItem = self:getUserDataTb_()
+
+				lineGOItem.go = go
+				lineGOItem.anim = gohelper.findComponentAnim(lineGOItem.go)
+				lineItem.lineList[j] = lineGOItem
+			end
 		end
 
 		table.insert(item.itemList, lineItem)
@@ -372,7 +427,7 @@ function NecrologistStoryBranchSectionItem:refreshChildBranchItem(item, optionDa
 			gohelper.setActive(v.go, true)
 
 			for j, optionData in ipairs(optionDatas) do
-				self:refreshLineGO(v.lineList[j], optionData)
+				self:refreshLineGOItem(v.lineList[j], optionData)
 			end
 		else
 			gohelper.setActive(v.go, false)
@@ -380,26 +435,46 @@ function NecrologistStoryBranchSectionItem:refreshChildBranchItem(item, optionDa
 	end
 end
 
-function NecrologistStoryBranchSectionItem:refreshLineGO(go, optionData)
+function NecrologistStoryBranchSectionItem:refreshLineGOItem(item, optionData)
+	if not item then
+		return
+	end
+
+	local isVisible = false
+
 	if optionData then
 		local isEnding = optionData.isEnding
+		local config = optionData.config
+		local plotInfo = self.storyMo:getPlotInfo(config.storygroup, true)
 
 		if isEnding then
-			gohelper.setActive(go, self.plotInfo:isEndingUnlocked(optionData.id))
+			isVisible = plotInfo:isEndingSelected(optionData.id) or false
 		else
-			gohelper.setActive(go, self.plotInfo:isOptionSelected(optionData.id))
+			isVisible = plotInfo:isOptionSelected(optionData.id) or false
 		end
 	else
-		gohelper.setActive(go, true)
+		isVisible = true
+	end
+
+	local lastVisible = item.isVisible
+
+	item.isVisible = isVisible
+
+	if not isVisible then
+		item.anim:Play("idle1")
+	else
+		item.anim:Play(lastVisible == false and "move" or "idle2")
 	end
 end
 
 function NecrologistStoryBranchSectionItem:refreshBranchItem(item, data)
 	item.data = data
 
-	gohelper.setActive(item.go, data ~= nil)
+	local isEmpty = data == nil or #data == 0
 
-	if data == nil then
+	gohelper.setActive(item.go, not isEmpty)
+
+	if isEmpty then
 		return
 	end
 
@@ -407,18 +482,17 @@ function NecrologistStoryBranchSectionItem:refreshBranchItem(item, data)
 		self:refreshChildBranchItem(childItem, data[i])
 	end
 
-	local x, y = self:getBranchPos(item.index)
+	local x = self:getBranchPos(item.index)
 
-	recthelper.setAnchor(item.transform, x, y)
+	recthelper.setAnchorX(item.transform, x)
 end
 
 function NecrologistStoryBranchSectionItem:getBranchPos(index)
 	local startX = 352
-	local startY = -59
 	local spaceX = 711
 	local x = startX + (index - 1) * spaceX
 
-	return x, startY
+	return x
 end
 
 function NecrologistStoryBranchSectionItem:getSectionItemWidth(indexCount)

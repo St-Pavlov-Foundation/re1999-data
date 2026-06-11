@@ -25,6 +25,10 @@ function V3a8EchoSongGameBallView:_acquireBallItem()
 		return table.remove(self._ballItemCache)
 	end
 
+	return self:_createBallItem()
+end
+
+function V3a8EchoSongGameBallView:_createBallItem()
 	local go = gohelper.cloneInPlace(self._goball)
 	local item = V3a8EchoSongGameBallItem.New()
 
@@ -235,7 +239,11 @@ function V3a8EchoSongGameBallView:_updateHandler()
 		local item = self._hitBallList[i]
 
 		if item:isDead() then
-			table.remove(self._hitBallList, i)
+			local last = #self._hitBallList
+
+			self._hitBallList[i] = self._hitBallList[last]
+			self._hitBallList[last] = nil
+
 			item:reset()
 			table.insert(self._hitBallItemCache, item)
 		else
@@ -245,15 +253,23 @@ function V3a8EchoSongGameBallView:_updateHandler()
 		end
 	end
 
+	UnityEngine.Physics2D.SyncTransforms()
+
 	for i = #self._runningBallList, 1, -1 do
 		local item = self._runningBallList[i]
 
 		if item:isDead() then
-			table.remove(self._runningBallList, i)
+			local last = #self._runningBallList
+
+			self._runningBallList[i] = self._runningBallList[last]
+			self._runningBallList[last] = nil
+
 			item:reset()
 			table.insert(self._ballItemCache, item)
 		else
-			item:update(deltaTime)
+			local needRaycast = i % 2 == frameMod
+
+			item:update(deltaTime, needRaycast)
 
 			if gameSceneView then
 				gameSceneView:checkEntityHit(item)
@@ -275,6 +291,40 @@ function V3a8EchoSongGameBallView:onOpen()
 	self:addEventCb(V3a8EchoSongController.instance, V3a8EchoSongEvent.PauseGame, self._onPauseGame, self)
 	self:addEventCb(V3a8EchoSongController.instance, V3a8EchoSongEvent.ResumeGame, self._onResumeGame, self)
 	self:addEventCb(V3a8EchoSongController.instance, V3a8EchoSongEvent.ResetGame, self._onResetGame, self)
+	self:addEventCb(V3a8EchoSongController.instance, V3a8EchoSongEvent.RestartGame, self._onResetGame, self)
+	self:_startPrewarm()
+end
+
+function V3a8EchoSongGameBallView:_startPrewarm()
+	self._prewarmRemain = V3a8EchoSongEnum.BallConst.PrewarmCount or 0
+
+	if self._prewarmRemain <= 0 then
+		return
+	end
+
+	TaskDispatcher.cancelTask(self._prewarmHandler, self)
+	TaskDispatcher.runRepeat(self._prewarmHandler, self, 0)
+end
+
+function V3a8EchoSongGameBallView:_prewarmHandler()
+	local perFrame = V3a8EchoSongEnum.BallConst.PrewarmPerFrame or 1
+
+	for _ = 1, perFrame do
+		if self._prewarmRemain <= 0 then
+			break
+		end
+
+		local item = self:_createBallItem()
+
+		gohelper.setActive(item.viewGO, false)
+		table.insert(self._ballItemCache, item)
+
+		self._prewarmRemain = self._prewarmRemain - 1
+	end
+
+	if self._prewarmRemain <= 0 then
+		TaskDispatcher.cancelTask(self._prewarmHandler, self)
+	end
 end
 
 function V3a8EchoSongGameBallView:_onResetGame()
@@ -283,7 +333,8 @@ function V3a8EchoSongGameBallView:_onResetGame()
 
 		item:reset()
 		table.insert(self._hitBallItemCache, item)
-		table.remove(self._hitBallList, i)
+
+		self._hitBallList[i] = nil
 	end
 
 	for i = #self._runningBallList, 1, -1 do
@@ -291,7 +342,8 @@ function V3a8EchoSongGameBallView:_onResetGame()
 
 		item:reset()
 		table.insert(self._ballItemCache, item)
-		table.remove(self._runningBallList, i)
+
+		self._runningBallList[i] = nil
 	end
 
 	for i = #self._batchList, 1, -1 do
@@ -302,7 +354,8 @@ function V3a8EchoSongGameBallView:_onResetGame()
 		end
 
 		self:_releaseBatch(batch)
-		table.remove(self._batchList, i)
+
+		self._batchList[i] = nil
 	end
 end
 
@@ -324,6 +377,10 @@ function V3a8EchoSongGameBallView:_onResumeGame()
 			for i = 1, #self._hitBallList do
 				self._hitBallList[i]:offsetStartTime(pauseDuration)
 			end
+
+			for i = 1, #self._batchList do
+				self._batchList[i].startTime = self._batchList[i].startTime + pauseDuration
+			end
 		end
 
 		self._pauseTime = nil
@@ -335,10 +392,50 @@ end
 
 function V3a8EchoSongGameBallView:onClose()
 	TaskDispatcher.cancelTask(self._updateHandler, self)
+	TaskDispatcher.cancelTask(self._prewarmHandler, self)
+	self:_destroyAllMatInstances()
 end
 
 function V3a8EchoSongGameBallView:onDestroyView()
 	return
+end
+
+function V3a8EchoSongGameBallView:_destroyAllMatInstances()
+	for i = #self._batchList, 1, -1 do
+		local batch = self._batchList[i]
+
+		if batch.matGroup then
+			self:_destroyMatGroup(batch.matGroup)
+		end
+
+		self._batchList[i] = nil
+	end
+
+	for i = #self._matGroupCache, 1, -1 do
+		self:_destroyMatGroup(self._matGroupCache[i])
+
+		self._matGroupCache[i] = nil
+	end
+end
+
+function V3a8EchoSongGameBallView:_destroyMatGroup(group)
+	if not group then
+		return
+	end
+
+	if group.ballMat then
+		UnityEngine.Object.Destroy(group.ballMat)
+
+		group.ballMat = nil
+	end
+
+	if group.lineMat then
+		UnityEngine.Object.Destroy(group.lineMat)
+
+		group.lineMat = nil
+	end
+
+	group.color = nil
 end
 
 return V3a8EchoSongGameBallView

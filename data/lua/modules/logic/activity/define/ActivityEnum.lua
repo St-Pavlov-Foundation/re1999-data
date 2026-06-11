@@ -155,6 +155,7 @@ ActivityEnum.Activity = {
 	V2a6_WeekwalkHeart = 12613,
 	V2a9_WarmUp = 130530,
 	V3a2_Rouge = 13209,
+	V3a8_SelfSelectSix = 13815,
 	RoomSign = 12239,
 	V2a8_NewCultivationDestiny = 12877,
 	V2a5_Act186Sign = 12519,

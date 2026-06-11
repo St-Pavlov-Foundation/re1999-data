@@ -104,6 +104,7 @@ function FightDeviceCardItem:playStopEffect(skillId)
 		return
 	end
 
+	AudioMgr.instance:trigger(380038)
 	self:playAnim("delicate_open")
 end
 
@@ -112,6 +113,7 @@ function FightDeviceCardItem:restartDevice()
 		return
 	end
 
+	AudioMgr.instance:trigger(380039)
 	self:playAnim("delicate_close")
 end
 

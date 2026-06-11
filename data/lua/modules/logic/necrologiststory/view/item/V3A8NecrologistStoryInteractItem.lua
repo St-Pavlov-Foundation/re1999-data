@@ -5,18 +5,29 @@ module("modules.logic.necrologiststory.view.item.V3A8NecrologistStoryInteractIte
 local V3A8NecrologistStoryInteractItem = class("V3A8NecrologistStoryInteractItem", NecrologistStoryBaseItem)
 
 function V3A8NecrologistStoryInteractItem:onInit()
+	self.simage = gohelper.findChildSingleImage(self.viewGO, "#simage_pic")
 	self.btnClick = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_open")
 	self.txtBtn = gohelper.findChildTextMesh(self.viewGO, "#btn_open/#txt_place")
 	self.goProgress = gohelper.findChild(self.viewGO, "progress")
 	self.imgFill = gohelper.findChildImage(self.goProgress, "#image_fill")
 end
 
-function V3A8NecrologistStoryInteractItem:addEventListeners()
+function V3A8NecrologistStoryInteractItem:onAddEvent()
 	self:addClickCb(self.btnClick, self.onClickBtn, self)
+	self:addEventCb(NecrologistStoryController.instance, NecrologistStoryEvent.PlotChangePic, self.onPlotChangePic, self)
 end
 
-function V3A8NecrologistStoryInteractItem:removeEventListeners()
+function V3A8NecrologistStoryInteractItem:onRemoveEvent()
 	self:removeClickCb(self.btnClick)
+	self:removeEventCb(NecrologistStoryController.instance, NecrologistStoryEvent.PlotChangePic, self.onPlotChangePic, self)
+end
+
+function V3A8NecrologistStoryInteractItem:onPlotChangePic(param)
+	if param.storyId ~= self:getStoryId() then
+		return
+	end
+
+	self:refreshPicture(param.picRes)
 end
 
 function V3A8NecrologistStoryInteractItem:onClickBtn()
@@ -26,6 +37,8 @@ function V3A8NecrologistStoryInteractItem:onClickBtn()
 
 	self.isClicked = true
 
+	gohelper.setActive(self.btnClick, false)
+
 	if self.leftTime and self.leftTime > 0 and self._tweenId then
 		local mo = NecrologistStoryModel.instance:getCurStoryMO()
 
@@ -33,21 +46,38 @@ function V3A8NecrologistStoryInteractItem:onClickBtn()
 			mo:markSpecial(self:getStoryId())
 		end
 
-		self:_onFadeInFinish()
+		gohelper.setActive(self.goProgress, false)
+		self:killTweenId()
 	end
 
-	self:onPlayFinish()
+	self:onPlayFinish(true)
 end
 
 function V3A8NecrologistStoryInteractItem:onPlayStory(isSkip)
 	self.isClicked = false
 
+	gohelper.setActive(self.btnClick, true)
+
 	local storyConfig = self:getStoryConfig()
 	local param = string.split(storyConfig.param, "#")
 
 	self.leftTime = param[1] and tonumber(param[1]) or 0
+	self.txtBtn.text = NecrologistStoryHelper.getDescByConfig(storyConfig)
 
 	self:startCountDown()
+	self:refreshPicture(param[2])
+end
+
+function V3A8NecrologistStoryInteractItem:refreshPicture(picRes)
+	if string.nilorempty(picRes) then
+		picRes = "rolestory_3020_gamepic_09_1"
+	end
+
+	self.simage:LoadImage(ResUrl.getNecrologistStoryPicBg(picRes), self.onSimageLoaded, self)
+end
+
+function V3A8NecrologistStoryInteractItem:onSimageLoaded()
+	ZProj.UGUIHelper.SetImageSize(self.simage.gameObject)
 end
 
 function V3A8NecrologistStoryInteractItem:startCountDown()
@@ -71,6 +101,7 @@ end
 function V3A8NecrologistStoryInteractItem:_onFadeInFinish()
 	gohelper.setActive(self.goProgress, false)
 	self:killTweenId()
+	self:onClickBtn()
 end
 
 function V3A8NecrologistStoryInteractItem:killTweenId()

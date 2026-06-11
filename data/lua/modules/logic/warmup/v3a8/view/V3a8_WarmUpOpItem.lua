@@ -44,20 +44,27 @@ function V3a8_WarmUpOpItem:_editableInitView()
 	self._click = gohelper.findChildButtonWithAudio(self.viewGO, "")
 	self._txtanswer.text = ""
 
-	self:_setActive_goyes(false)
-	self:_setActive_gono(false)
+	self:_clearResult()
 end
 
 function V3a8_WarmUpOpItem:setData(mo)
 	V3a8_WarmUpOpItem.super.setData(self, mo)
 
 	self._txtanswer.text = mo or ""
+
+	self:_clearResult()
 end
 
 function V3a8_WarmUpOpItem:_onClick(mo)
-	local p = self:parent()
+	local bingo = self:_isBingo()
 
-	p:onOpItemClick(self)
+	self:_setActiveYes(bingo)
+
+	if bingo then
+		local p = self:parent()
+
+		p:_playAnimAfterSwipe()
+	end
 end
 
 function V3a8_WarmUpOpItem:_setActive_goyes(bActive)
@@ -68,9 +75,33 @@ function V3a8_WarmUpOpItem:_setActive_gono(bActive)
 	gohelper.setActive(self._gono, bActive)
 end
 
-function V3a8_WarmUpOpItem:setActiveYes(bActive)
+function V3a8_WarmUpOpItem:_setActiveYes(bActive)
 	self:_setActive_goyes(bActive)
 	self:_setActive_gono(not bActive)
+end
+
+function V3a8_WarmUpOpItem:_clearResult()
+	self:_setActive_goyes(false)
+	self:_setActive_gono(false)
+end
+
+function V3a8_WarmUpOpItem:_showResult()
+	local bingo = self:_isBingo()
+
+	self:_setActive_goyes(bingo)
+end
+
+function V3a8_WarmUpOpItem:_isBingo()
+	local playCO = self:_getPlayCO()
+	local bingo = playCO.answer == self:index()
+
+	return bingo
+end
+
+function V3a8_WarmUpOpItem:_getPlayCO()
+	local p = self:parent()
+
+	return p:_getPlayCO()
 end
 
 return V3a8_WarmUpOpItem

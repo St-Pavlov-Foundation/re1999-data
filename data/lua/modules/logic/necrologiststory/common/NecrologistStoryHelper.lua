@@ -267,7 +267,7 @@ function NecrologistStoryHelper.getOptionDesc(optionData, isFinish)
 	local isEnding = optionData.isEnding
 
 	if isEnding then
-		return isFinish and NecrologistStoryHelper.getEndingLang(optionData.id) or NecrologistStoryHelper.EmptyString
+		return isFinish and optionData.endingCo.name or NecrologistStoryHelper.EmptyString
 	end
 
 	local optionDescs = string.split(NecrologistStoryHelper.getDescByConfig(optionData.config), "#")
@@ -275,42 +275,56 @@ function NecrologistStoryHelper.getOptionDesc(optionData, isFinish)
 	return optionDescs[optionData.index] or NecrologistStoryHelper.EmptyString
 end
 
-function NecrologistStoryHelper.getEndingLang(endingId)
-	local langKey = string.format("necrologist_story_ending_%d", endingId)
-
-	return luaLang(langKey)
-end
-
 function NecrologistStoryHelper.setWeatherIcon(imgWeather, weather, setNativeSize)
-	local hasIcon = weather and NecrologistStoryEnum.NotWeatherIcon[weather] == nil or false
-
-	gohelper.setActive(imgWeather, hasIcon)
-
-	if hasIcon then
-		local icon = string.format("rolestory_weather%s", weather)
-
-		UISpriteSetMgr.instance:setRoleStorySprite(imgWeather, icon, setNativeSize)
-	end
-end
-
-function NecrologistStoryHelper.setWeatherWihteIcon(imgWeather, weather, setNativeSize)
-	local hasIcon = weather and NecrologistStoryEnum.NotWeatherIcon[weather] == nil or false
-
-	gohelper.setActive(imgWeather, hasIcon)
-
-	if hasIcon then
-		local icon = string.format("rolestory_weather%s_1", weather)
-
-		UISpriteSetMgr.instance:setRoleStorySprite(imgWeather, icon, setNativeSize)
-	end
-end
-
-function NecrologistStoryHelper.setWeatherTxt(txtWeather, weather)
-	if not weather then
+	if not imgWeather then
 		return
 	end
 
-	txtWeather.text = luaLang(string.format("necrologiststory_weather_%s", weather))
+	if not weather or weather == 0 then
+		gohelper.setActive(imgWeather, false)
+
+		return
+	end
+
+	gohelper.setActive(imgWeather, true)
+
+	local resIndex = NecrologistStoryEnum.WeatherType2ResIndex[weather]
+	local icon = string.format("rolestory_weather%s", resIndex)
+
+	UISpriteSetMgr.instance:setRoleStorySprite(imgWeather, icon, setNativeSize)
+end
+
+function NecrologistStoryHelper.setWeatherWihteIcon(imgWeather, weather, setNativeSize)
+	if not imgWeather then
+		return
+	end
+
+	if not weather or weather == 0 then
+		gohelper.setActive(imgWeather, false)
+
+		return
+	end
+
+	gohelper.setActive(imgWeather, true)
+
+	local resIndex = NecrologistStoryEnum.WeatherType2ResIndex[weather]
+	local icon = string.format("rolestory_weather%s_1", resIndex)
+
+	UISpriteSetMgr.instance:setRoleStorySprite(imgWeather, icon, setNativeSize)
+end
+
+function NecrologistStoryHelper.setWeatherTxt(txtWeather, weather)
+	if not txtWeather then
+		return
+	end
+
+	if not weather or weather == 0 then
+		return
+	end
+
+	local resIndex = NecrologistStoryEnum.WeatherType2ResIndex[weather]
+
+	txtWeather.text = luaLang(string.format("necrologiststory_weather_%s", resIndex))
 end
 
 function NecrologistStoryHelper.stringTotimeData(str)
@@ -336,6 +350,17 @@ function NecrologistStoryHelper.getTimeStrByConfig(config)
 	local timeStr = string.format("%d:%02d", displayHour, minute)
 
 	return timeStr
+end
+
+function NecrologistStoryHelper.parseEventParam(eventId, param)
+	local data = {}
+
+	if eventId == NecrologistStoryEvent.PlotChangePic then
+		data.storyId = tonumber(param[1])
+		data.picRes = param[2]
+	end
+
+	return data
 end
 
 return NecrologistStoryHelper

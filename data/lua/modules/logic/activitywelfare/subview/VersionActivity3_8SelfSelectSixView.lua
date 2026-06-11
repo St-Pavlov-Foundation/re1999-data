@@ -65,13 +65,15 @@ function VersionActivity3_8SelfSelectSixView:_btncanuseOnClick()
 end
 
 function VersionActivity3_8SelfSelectSixView:_addSelfEvents()
-	ActivityController.instance:registerCallback(ActivityEvent.RefreshNorSignActivity, self._refresh, self)
+	self:addEventCb(BackpackController.instance, BackpackEvent.onUseItemFinished, self._refresh, self)
+	self:addEventCb(ActivityController.instance, ActivityEvent.RefreshNorSignActivity, self._refresh, self)
 	ViewMgr.instance:registerCallback(ViewEvent.OnCloseView, self._onCloseView, self)
 end
 
 function VersionActivity3_8SelfSelectSixView:_removeSelfEvents()
-	ActivityController.instance:unregisterCallback(ActivityEvent.RefreshNorSignActivity, self._refresh, self)
-	ViewMgr.instance:unregisterCallback(ViewEvent.OnCloseView, self._onCloseView, self)
+	self:removeEventCb(BackpackController.instance, BackpackEvent.onUseItemFinished, self._refresh, self)
+	self:removeEventCb(ActivityController.instance, ActivityEvent.RefreshNorSignActivity, self._refresh, self)
+	self:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseView, self._onCloseView, self)
 end
 
 function VersionActivity3_8SelfSelectSixView:_onCloseView(viewName)

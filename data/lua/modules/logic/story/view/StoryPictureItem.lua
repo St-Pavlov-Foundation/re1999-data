@@ -513,6 +513,7 @@ function StoryPictureItem:onDestroy()
 	UIBlockMgr.instance:endBlock("waitHero")
 	StoryController.instance:unregisterCallback(StoryEvent.OnHeroShowed, self._checkFollowHero, self)
 	TaskDispatcher.cancelTask(self._build, self)
+	TaskDispatcher.cancelTask(self._checkDestroyItem, self)
 
 	if self._picDestroyCo and self._picDestroyCo.picType == StoryEnum.PictureType.FullScreen then
 		TaskDispatcher.runRepeat(self._checkDestroyItem, self, 0.1)
@@ -543,6 +544,12 @@ function StoryPictureItem:_releaseLoader()
 end
 
 function StoryPictureItem:_realDestroy()
+	if gohelper.isNil(self.viewGO) then
+		TaskDispatcher.cancelTask(self._checkDestroyItem, self)
+
+		return
+	end
+
 	if self._picRootCanvas then
 		self._picRootCanvas.sortingOrder = 1008
 		self._picRootCanvas.overrideSorting = true

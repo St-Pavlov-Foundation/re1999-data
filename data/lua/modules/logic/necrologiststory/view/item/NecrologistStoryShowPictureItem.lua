@@ -8,11 +8,35 @@ function NecrologistStoryShowPictureItem:onInit()
 	self.simage = gohelper.findChildSingleImage(self.viewGO, "root/simage")
 end
 
+function NecrologistStoryShowPictureItem:onAddEvent()
+	self:addEventCb(NecrologistStoryController.instance, NecrologistStoryEvent.PlotChangePic, self.onPlotChangePic, self)
+end
+
+function NecrologistStoryShowPictureItem:onRemoveEvent()
+	self:removeEventCb(NecrologistStoryController.instance, NecrologistStoryEvent.PlotChangePic, self.onPlotChangePic, self)
+end
+
+function NecrologistStoryShowPictureItem:isAsyncItem()
+	return true
+end
+
+function NecrologistStoryShowPictureItem:onPlotChangePic(param)
+	if param.storyId ~= self:getStoryId() then
+		return
+	end
+
+	self:refreshPicture(param.picRes)
+end
+
 function NecrologistStoryShowPictureItem:onPlayStory()
 	self._isFinish = false
 
 	local picRes = tostring(self._controlParam)
 
+	self:refreshPicture(picRes)
+end
+
+function NecrologistStoryShowPictureItem:refreshPicture(picRes)
 	self.simage:LoadImage(ResUrl.getNecrologistStoryPicBg(picRes), self.onSimageLoaded, self)
 end
 

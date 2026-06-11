@@ -27,14 +27,24 @@ end
 
 function NecrologistStoryBranchView:addEvents()
 	self.scroll:AddOnValueChanged(self._onScrollChange, self)
+	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self._onCloseViewFinish, self)
 end
 
 function NecrologistStoryBranchView:removeEvents()
 	self.scroll:RemoveOnValueChanged()
+	self:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self._onCloseViewFinish, self)
 end
 
 function NecrologistStoryBranchView:_editableInitView()
 	return
+end
+
+function NecrologistStoryBranchView:_onCloseViewFinish(viewName)
+	if viewName == self.viewName then
+		return
+	end
+
+	self:refreshView()
 end
 
 function NecrologistStoryBranchView:onOpen()
@@ -49,13 +59,15 @@ end
 function NecrologistStoryBranchView:refreshParam()
 	local viewParam = self.viewParam or {}
 
-	self.storyId = viewParam.roleStoryId or 26
+	self.storyId = viewParam.roleStoryId or 29
 end
 
 function NecrologistStoryBranchView:refreshView()
 	local list = NecrologistStoryConfig.instance:getOptionListByStoryId(self.storyId)
 	local dataCount = #list
 	local optionsList = {}
+
+	self.dataCount = dataCount
 
 	for i = 1, math.max(dataCount, #self.itemList) do
 		local item = self.itemList[i] or self:createSectionItem(i)
@@ -71,27 +83,33 @@ function NecrologistStoryBranchView:refreshView()
 	local lastStoryGroup, curStoryGroup
 	local branchCount = 0
 
-	for i, options in ipairs(optionsList) do
-		table.insert(branchDataList, {
-			options
-		})
+	for _, storyData in ipairs(optionsList) do
+		for _, options in ipairs(storyData.optionsList) do
+			local isEnding = options[1] and options[1].isEnding
 
-		branchCount = branchCount + 1
-		curStoryGroup = options[1].config.storygroup
-
-		if branchCount > 1 then
-			if curStoryGroup - lastStoryGroup <= 1 then
-				table.insert(branchDataList[branchCount - 1], options)
-			else
-				table.insert(branchDataList, branchCount, {
-					[2] = options
+			if not isEnding then
+				table.insert(branchDataList, {
+					options
 				})
-
-				branchCount = branchCount + 1
 			end
-		end
 
-		lastStoryGroup = curStoryGroup
+			branchCount = branchCount + 1
+			curStoryGroup = storyData.storygroup
+
+			if branchCount > 1 then
+				if curStoryGroup - lastStoryGroup <= 1 then
+					table.insert(branchDataList[branchCount - 1], options)
+				else
+					table.insert(branchDataList, branchCount, {
+						[2] = options
+					})
+
+					branchCount = branchCount + 1
+				end
+			end
+
+			lastStoryGroup = curStoryGroup
+		end
 	end
 
 	local curIndex = 0
@@ -103,8 +121,12 @@ function NecrologistStoryBranchView:refreshView()
 		curIndex = curIndex + useCount
 	end
 
-	TaskDispatcher.cancelTask(self.refreshTabShowState, self)
-	TaskDispatcher.runDelay(self.refreshTabShowState, self, 0.1)
+	TaskDispatcher.cancelTask(self.delayRefresh, self)
+	TaskDispatcher.runDelay(self.delayRefresh, self, 0.1)
+end
+
+function NecrologistStoryBranchView:delayRefresh()
+	self:refreshTabShowState()
 end
 
 function NecrologistStoryBranchView:createSectionItem(index)
@@ -131,6 +153,7 @@ function NecrologistStoryBranchView:createTabItem(index)
 
 	item.btnClick:AddClickListener(self.onClickTabItem, self, item)
 
+	item.anim = gohelper.findComponentAnim(item.go)
 	self.tabItemList[index] = item
 
 	return item
@@ -165,8 +188,29 @@ end
 
 function NecrologistStoryBranchView:refreshTabList(showIndex)
 	for i, v in ipairs(self.tabItemList) do
-		gohelper.setActive(v.goSelect, i == showIndex)
-		gohelper.setActive(v.goUnSelect, i ~= showIndex)
+		self:refreshTabItem(v, i == showIndex)
+	end
+end
+
+function NecrologistStoryBranchView:refreshTabItem(item, isSelected)
+	if item.isSelected == isSelected then
+		return
+	end
+
+	local lastSelected = item.isSelected
+
+	item.isSelected = isSelected
+
+	if isSelected then
+		if lastSelected == nil then
+			item.anim:Play("idle")
+		else
+			item.anim:Play("select")
+		end
+	elseif lastSelected == nil then
+		item.anim:Play("unselect_idle")
+	else
+		item.anim:Play("unselect")
 	end
 end
 
@@ -202,7 +246,7 @@ function NecrologistStoryBranchView:moveToByIndex(moveIndex, time)
 end
 
 function NecrologistStoryBranchView:onDestroyView()
-	TaskDispatcher.cancelTask(self.refreshTabShowState, self)
+	TaskDispatcher.cancelTask(self.delayRefresh, self)
 
 	for i, v in ipairs(self.tabItemList) do
 		v.btnClick:RemoveClickListener()

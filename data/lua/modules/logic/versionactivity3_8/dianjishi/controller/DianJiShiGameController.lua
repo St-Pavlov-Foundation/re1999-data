@@ -128,6 +128,7 @@ function DianJiShiGameController:rollBack()
 		return
 	end
 
+	DianJiShiStatController.instance:addRollBackTimes()
 	self:tryPlaceCube2Map(preXIndex, preYIndex, blockInfo, true)
 end
 

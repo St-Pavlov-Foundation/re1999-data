@@ -49,6 +49,7 @@ StoryEnum.HeroEffect = {
 	SetSkin = "setSkin",
 	WaterWave = "waterWave",
 	SetDissolve = "setDissolve",
+	DissolveAndSoft = "dissolveAndSoft",
 	Erase = "erase",
 	HideNode = "hideNode",
 	KeepAction = "keepAction",

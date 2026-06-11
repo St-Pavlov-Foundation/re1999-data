@@ -216,7 +216,7 @@ function Act191StageView:onOpen()
 							txtTag.text = lua_activity191_const.configDict[Activity191Enum.ConstKey.RoleTag].value2
 						elseif mo.type == Activity191Enum.NodeType.CollectionShop then
 							txtTag.text = lua_activity191_const.configDict[Activity191Enum.ConstKey.CollectionTag].value2
-						elseif tabletool.indexOf(Activity191Enum.TagShopField, mo.type) then
+						elseif mo.type == Activity191Enum.NodeType.TagShop then
 							txtTag.text = lua_activity191_const.configDict[Activity191Enum.ConstKey.FetterTag].value2
 						end
 

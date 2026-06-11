@@ -9,7 +9,8 @@ local fields = {
 	direction = 6,
 	icon = 5,
 	value = 3,
-	position = 4
+	position = 4,
+	offset = 7
 }
 local primaryKey = {
 	"mapId",

@@ -11,13 +11,13 @@ function V3A7NecrologistStoryEmailItem:onInit()
 	self._click = gohelper.getClick(self.viewGO)
 end
 
-function V3A7NecrologistStoryEmailItem:addEventListeners()
+function V3A7NecrologistStoryEmailItem:onAddEvent()
 	self._btnOpen:AddClickListener(self._clickOpen, self)
 	self._click:AddClickListener(self._clickOpen, self)
 	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, self.onCloseView, self)
 end
 
-function V3A7NecrologistStoryEmailItem:removeEventListeners()
+function V3A7NecrologistStoryEmailItem:onRemoveEvent()
 	self._btnOpen:RemoveClickListener()
 	self._click:RemoveClickListener()
 	self:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseView, self.onCloseView, self)

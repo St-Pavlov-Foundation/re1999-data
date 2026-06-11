@@ -9020,8 +9020,8 @@
     "weatherEffect": 0,
     "flyEffect": "",
     "wadeEffect": "",
-    "bgm": 0,
-    "ambientSound": 0,
+    "bgm": 3380004,
+    "ambientSound": 3200124,
     "sceneEffects": ""
   },
   {
@@ -9045,8 +9045,8 @@
     "weatherEffect": 0,
     "flyEffect": "",
     "wadeEffect": "",
-    "bgm": 0,
-    "ambientSound": 0,
+    "bgm": 3380004,
+    "ambientSound": 3200123,
     "sceneEffects": ""
   },
   {
@@ -9070,8 +9070,8 @@
     "weatherEffect": 0,
     "flyEffect": "",
     "wadeEffect": "",
-    "bgm": 0,
-    "ambientSound": 0,
+    "bgm": 3380004,
+    "ambientSound": 3370006,
     "sceneEffects": ""
   },
   {
@@ -9095,8 +9095,8 @@
     "weatherEffect": 0,
     "flyEffect": "",
     "wadeEffect": "",
-    "bgm": 0,
-    "ambientSound": 0,
+    "bgm": 3380004,
+    "ambientSound": 3200123,
     "sceneEffects": ""
   },
   {
@@ -9120,8 +9120,8 @@
     "weatherEffect": 0,
     "flyEffect": "",
     "wadeEffect": "",
-    "bgm": 0,
-    "ambientSound": 0,
+    "bgm": 3380004,
+    "ambientSound": 3200123,
     "sceneEffects": ""
   },
   {
@@ -9145,8 +9145,8 @@
     "weatherEffect": 0,
     "flyEffect": "",
     "wadeEffect": "",
-    "bgm": 0,
-    "ambientSound": 0,
+    "bgm": 3380005,
+    "ambientSound": 3380006,
     "sceneEffects": ""
   },
   {
@@ -9170,8 +9170,8 @@
     "weatherEffect": 0,
     "flyEffect": "",
     "wadeEffect": "",
-    "bgm": 0,
-    "ambientSound": 0,
+    "bgm": 3380004,
+    "ambientSound": 3330007,
     "sceneEffects": ""
   },
   {
@@ -9195,8 +9195,8 @@
     "weatherEffect": 0,
     "flyEffect": "",
     "wadeEffect": "",
-    "bgm": 0,
-    "ambientSound": 0,
+    "bgm": 3380004,
+    "ambientSound": 3200011,
     "sceneEffects": ""
   }
 ]

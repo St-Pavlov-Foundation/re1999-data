@@ -63,6 +63,10 @@ function VersionActivity3_8EnterViewTabItem1:onClick()
 	if self.isSelect then
 		return
 	end
+
+	if self.actId == VersionActivity3_8Enum.ActivityId.Dungeon then
+		self._audioId = AudioMgr.instance:trigger(AudioEnum3_8.VersionActivity3_8.play_ui_shiji_3_8_open_2)
+	end
 end
 
 function VersionActivity3_8EnterViewTabItem1:setDrag(isDrag)

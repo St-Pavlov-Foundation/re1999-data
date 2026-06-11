@@ -7,8 +7,9 @@ local DianJiShiGameViewContainer = class("DianJiShiGameViewContainer", BaseViewC
 function DianJiShiGameViewContainer:buildViews()
 	local views = {}
 
-	table.insert(views, DianJiShiGameView.New())
 	table.insert(views, TabViewGroup.New(1, "#go_topleft"))
+	table.insert(views, DianJiShiGameView.New())
+	table.insert(views, DianJiShiGameGuideView.New())
 
 	return views
 end
@@ -25,6 +26,10 @@ function DianJiShiGameViewContainer:buildTabViews(tabContainerId)
 			self._navigateButtonsView
 		}
 	end
+end
+
+function DianJiShiGameViewContainer:getNavigateButtonView()
+	return self._navigateButtonsView
 end
 
 return DianJiShiGameViewContainer

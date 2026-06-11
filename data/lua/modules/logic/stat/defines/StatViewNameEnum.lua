@@ -241,7 +241,19 @@ StatViewNameEnum.ChineseViewName = {
 	[ViewName.Anniversary3MainView] = "三周年庆典界面",
 	[ViewName.Act236MainView] = "累充活动界面",
 	[ViewName.V3a7_Wmz_LevelView] = "无名者角色活动",
-	[ViewName.V3a7_Wmz_TaskView] = "无名者角色任务"
+	[ViewName.V3a7_Wmz_TaskView] = "无名者角色任务",
+	[ViewName.VersionActivity3_8EnterView] = "3.8版本活动页",
+	[ViewName.VersionActivity3_8DungeonMapView] = "副本地图-世纪末尺度",
+	[ViewName.VersionActivity3_8StoreView] = "3.8副本商店",
+	[ViewName.V3a8EchoSongLevelView] = "回声谣角色活动",
+	[ViewName.V3a8EchoSongTaskView] = "回声谣角色任务",
+	[ViewName.DianJiShiLevelView] = "奠基石角色活动",
+	[ViewName.DianJiShiTaskView] = "奠基石角色任务",
+	[ViewName.V3A8_RoleStoryGameView] = "轶事玩法",
+	[ViewName.SummonHeroDetailView] = "角色预览",
+	[ViewName.ActivityNoviceSignView] = "新手活动界面",
+	[ViewName.VersionActivity3_8NoviceSignView] = "新手活动界面",
+	[ViewName.VersionActivity3_8SelfSelectSixView] = "狂想序曲界面"
 }
 StatViewNameEnum.NeedTrackViewDict = {
 	[ViewName.VersionActivity1_8EnterView] = true,
@@ -459,7 +471,15 @@ StatViewNameEnum.NeedTrackViewDict = {
 	[ViewName.Anniversary3MainView] = true,
 	[ViewName.Act236MainView] = true,
 	[ViewName.V3a7_Wmz_LevelView] = true,
-	[ViewName.V3a7_Wmz_TaskView] = true
+	[ViewName.V3a7_Wmz_TaskView] = true,
+	[ViewName.VersionActivity3_8EnterView] = true,
+	[ViewName.VersionActivity3_8DungeonMapView] = true,
+	[ViewName.VersionActivity3_8StoreView] = true,
+	[ViewName.V3a8EchoSongLevelView] = true,
+	[ViewName.V3a8EchoSongTaskView] = true,
+	[ViewName.DianJiShiLevelView] = true,
+	[ViewName.DianJiShiTaskView] = true,
+	[ViewName.V3A8_RoleStoryGameView] = true
 }
 StatViewNameEnum.NeedListenTabSwitchList = {
 	ViewName.VersionActivity1_8EnterView,
@@ -481,7 +501,8 @@ StatViewNameEnum.NeedListenTabSwitchList = {
 	ViewName.VersionActivity3_4EnterView,
 	ViewName.VersionActivity3_5EnterView,
 	ViewName.VersionActivity3_6EnterView,
-	ViewName.VersionActivity3_7EnterView
+	ViewName.VersionActivity3_7EnterView,
+	ViewName.VersionActivity3_8EnterView
 }
 StatViewNameEnum.TabViewContainerID = {
 	[ViewName.VersionActivity1_8EnterView] = 2,
@@ -503,7 +524,8 @@ StatViewNameEnum.TabViewContainerID = {
 	[ViewName.VersionActivity3_4EnterView] = 2,
 	[ViewName.VersionActivity3_5EnterView] = 2,
 	[ViewName.VersionActivity3_6EnterView] = 2,
-	[ViewName.VersionActivity3_7EnterView] = 2
+	[ViewName.VersionActivity3_7EnterView] = 2,
+	[ViewName.VersionActivity3_8EnterView] = 2
 }
 StatViewNameEnum.TabViewName = {
 	VersionActivity2_6DungeonEnterView = "疯癫与文明",
@@ -554,6 +576,10 @@ StatViewNameEnum.TabViewName = {
 	V3a4_v2a5_ReactivityEnterview = "2.5活动复刻",
 	V2a2_RoomCritterEnterView = "魔精公司",
 	VersionActivity3_0KaRongEnterView = "卡戎",
+	VersionActivity3_8DungeonEnterView = "世纪末尺度",
+	V3a8_v3a1_ReactivityEnterview = "3.1活动复刻",
+	VersionActivity3_8EchoSongEnterView = "回声谣",
+	VersionActivity3_8DianJiShiEnterView = "奠基石",
 	VersionActivity3_0_v2a1_ReactivityEnterview = "2.1活动复刻",
 	V3a5_Season123EnterView = "UTTU",
 	VersionActivity2_8MoLiDeErEnterView = "莫莉德尔",

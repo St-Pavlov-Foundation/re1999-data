@@ -21,7 +21,7 @@ function FullScreenVideoView:removeEvents()
 end
 
 function FullScreenVideoView:_btnskipOnClick()
-	self:closeThis()
+	self:onPlayVideoDone()
 end
 
 function FullScreenVideoView:onOpen()

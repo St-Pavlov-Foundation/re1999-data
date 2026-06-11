@@ -2101,8 +2101,14 @@ function FightViewHandCard:_longPressHandCardEnd(index)
 		return
 	end
 
-	self._handCardItemList[index]:stopLongPressEffect()
-	self._handCardItemList[index]:onLongPressEnd()
+	local cardItem = self._handCardItemList[index]
+
+	if not cardItem then
+		return
+	end
+
+	cardItem:stopLongPressEffect()
+	cardItem:onLongPressEnd()
 
 	if self._cardLongPressFlow.status == WorkStatus.Running then
 		self._cardLongPressFlow:stop()

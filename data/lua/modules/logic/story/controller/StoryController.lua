@@ -438,7 +438,9 @@ function StoryController:playFinished(isSkip)
 
 	StoryModel.instance:setPlayFnished()
 
-	if self._mark then
+	local isOpenPuzzleView = V3a5PuzzleController.instance:isOpenPuzzleView(self._curStoryId)
+
+	if self._mark and not isOpenPuzzleView then
 		self:setStoryFinished(self._curStoryId)
 		StoryRpc.instance:sendUpdateStoryRequest(self._curStoryId, -1, 0)
 	end

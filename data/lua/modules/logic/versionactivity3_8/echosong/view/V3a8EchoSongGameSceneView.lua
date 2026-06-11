@@ -42,10 +42,14 @@ function V3a8EchoSongGameSceneView:_onRestartGame()
 	self._skipLateUpdate = false
 end
 
-function V3a8EchoSongGameSceneView:_onShowResultView()
+function V3a8EchoSongGameSceneView:_onShowResultView(isSuccess)
 	self._skipLateUpdate = true
 
 	self:_resetJoystick()
+
+	if isSuccess then
+		gohelper.setActive(self._sceneRoot, false)
+	end
 end
 
 function V3a8EchoSongGameSceneView:_onFinishSavePoint()
@@ -53,7 +57,7 @@ function V3a8EchoSongGameSceneView:_onFinishSavePoint()
 end
 
 function V3a8EchoSongGameSceneView:_onGuideDragJoystick()
-	self._guideDragJoyStickTime = Time.time
+	self._isGuideDragJoystick = true
 end
 
 function V3a8EchoSongGameSceneView:_onGuideShortPress()
@@ -87,10 +91,18 @@ function V3a8EchoSongGameSceneView:_showBg()
 	local res = self.viewContainer:getSetting().otherRes["bg" .. showBgIndex]
 	local texture = self.viewContainer:getRes(res)
 	local meshRender = self._sceneBgGo:GetComponent(typeof(UnityEngine.MeshRenderer))
-	local mat = meshRender and meshRender.material
 
-	if mat then
-		mat:SetTexture("_MainTex", texture)
+	if not self._sceneBgMat then
+		local sharedMat = meshRender and meshRender.sharedMaterial
+
+		if sharedMat then
+			self._sceneBgMat = UnityEngine.Object.Instantiate(sharedMat)
+			meshRender.sharedMaterial = self._sceneBgMat
+		end
+	end
+
+	if self._sceneBgMat then
+		self._sceneBgMat:SetTexture("_MainTex", texture)
 	end
 
 	gohelper.setActive(self["_goBg" .. showBgIndex], true)
@@ -171,12 +183,22 @@ end
 function V3a8EchoSongGameSceneView:checkEntityHit(ballItem)
 	if ballItem and ballItem:getTriggerType() == V3a8EchoSongEnum.ParticleType.Enemy2 then
 		self._mainPlayer:checkHitParticle(ballItem)
+	else
+		for k, v in pairs(self._enemys) do
+			v:checkHitParticle(ballItem)
+		end
 
+		self:_checkTrapBallHit(ballItem)
+	end
+end
+
+function V3a8EchoSongGameSceneView:_checkTrapBallHit(ballItem)
+	if not ballItem then
 		return
 	end
 
-	for k, v in pairs(self._enemys) do
-		v:checkHitParticle(ballItem)
+	for i = 1, #self._traps do
+		self._traps[i]:checkBallInBounds(ballItem)
 	end
 end
 
@@ -286,6 +308,7 @@ end
 function V3a8EchoSongGameSceneView:onOpen()
 	self._comps = self:getUserDataTb_()
 	self._enemys = self:getUserDataTb_()
+	self._traps = self:getUserDataTb_()
 	self._isMobilePlayer = GameUtil.isMobilePlayerAndNotEmulator()
 	self._isSlow = true
 	self._sceneNode = self:getResInst(V3a8EchoSongController.instance:getScenePath(), self._goscene)
@@ -364,6 +387,10 @@ function V3a8EchoSongGameSceneView:_initUnits()
 					item:initComp(self, unitValue, id, thirdParam, paramList)
 
 					self._comps[id] = item
+
+					if unitValue == V3a8EchoSongEnum.UnitType.Trap then
+						table.insert(self._traps, item)
+					end
 				end
 			end
 		end
@@ -438,8 +465,17 @@ function V3a8EchoSongGameSceneView:_onLateUpdate()
 	end
 
 	local pressKeyX, pressKeyY
+	local skipInput = false
 
-	if not self._isMobilePlayer then
+	if GuideModel.instance:isFlagEnable(GuideModel.GuideFlag.EchoSongInGuide) then
+		skipInput = true
+	end
+
+	if GuideModel.instance:isFlagEnable(GuideModel.GuideFlag.EchoSongDragScreen) then
+		return
+	end
+
+	if not self._isMobilePlayer and not skipInput then
 		if UnityEngine.Input.GetKey(UnityEngine.KeyCode.D) then
 			pressKeyX = 1
 		elseif UnityEngine.Input.GetKey(UnityEngine.KeyCode.A) then
@@ -478,10 +514,6 @@ function V3a8EchoSongGameSceneView:_onLateUpdate()
 
 	local isDragging = self._joystick:getIsDragging()
 
-	if self._guideDragJoyStickTime and Time.time - self._guideDragJoyStickTime <= 0.3 then
-		pressKeyX = 0.5
-	end
-
 	if not isDragging and (pressKeyX or pressKeyY) then
 		self._joystick:setInPutValue(pressKeyX, pressKeyY)
 	end
@@ -493,6 +525,13 @@ function V3a8EchoSongGameSceneView:_onLateUpdate()
 		self:_moveMainPlayer(input.x, input.y, strength)
 
 		self._needReset = true
+
+		if self._isGuideDragJoystick then
+			self._isGuideDragJoystick = nil
+
+			TaskDispatcher.cancelTask(self._sendGuideMovePlayer, self)
+			TaskDispatcher.runDelay(self._sendGuideMovePlayer, self, 1)
+		end
 	elseif self._needReset then
 		self:_stopMove()
 		self:_resetJoystick()
@@ -501,6 +540,11 @@ function V3a8EchoSongGameSceneView:_onLateUpdate()
 	end
 
 	transformhelper.setPosXY(self._cameraRootTrans, 0, 0)
+end
+
+function V3a8EchoSongGameSceneView:_sendGuideMovePlayer()
+	self._joystick:reset()
+	V3a8EchoSongController.instance:dispatchEvent(V3a8EchoSongEvent.GuideMoveMainPlayer)
 end
 
 function V3a8EchoSongGameSceneView:_resetJoystick()
@@ -518,6 +562,7 @@ end
 
 function V3a8EchoSongGameSceneView:onClose()
 	LateUpdateBeat:Remove(self._onLateUpdate, self)
+	TaskDispatcher.cancelTask(self._sendGuideMovePlayer, self)
 
 	local trace = CameraMgr.instance:getCameraTrace()
 
@@ -527,6 +572,12 @@ function V3a8EchoSongGameSceneView:onClose()
 end
 
 function V3a8EchoSongGameSceneView:onDestroyView()
+	if self._sceneBgMat then
+		UnityEngine.Object.Destroy(self._sceneBgMat)
+
+		self._sceneBgMat = nil
+	end
+
 	if self._sceneRoot then
 		gohelper.destroy(self._sceneRoot)
 

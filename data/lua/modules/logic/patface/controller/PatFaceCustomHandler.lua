@@ -189,13 +189,21 @@ function PatFaceCustomHandler.V3a3TowerGiftPanelViewPatFaceViewPat()
 end
 
 function PatFaceCustomHandler.V3a8FreeMonthCardCanPat()
-	local isReview = VersionValidator.instance:isInReviewing()
+	local actId = VersionActivity3_8Enum.ActivityId.FreeMonthCard
+	local actInfoMo = ActivityModel.instance:getActivityInfo()[actId]
 
-	if isReview then
+	if not actInfoMo then
 		return false
 	end
 
-	local curDay = VersionActivity3_8FreeMonthCardModel.instance:getOpenDay()
+	local isExpired = actInfoMo:getRealEndTimeStamp() - ServerTime.now() < 1
+	local canPat = actInfoMo:isOnline() and actInfoMo:isOpen() and not isExpired
+
+	if not canPat then
+		return false
+	end
+
+	local curDay = VersionActivity3_8FreeMonthCardModel.instance:getCurSignDay()
 	local couldGet = VersionActivity3_8FreeMonthCardModel.instance:isDayCanSign(curDay)
 
 	return couldGet

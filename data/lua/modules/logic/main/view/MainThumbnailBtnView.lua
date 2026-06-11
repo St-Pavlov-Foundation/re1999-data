@@ -63,6 +63,7 @@ function MainThumbnailBtnView:addEvents()
 	self:addEventCb(PCInputController.instance, PCInputEvent.NotifyEnterFeedback, self._btnfeedbackOnClick, self)
 	self:addEventCb(PCInputController.instance, PCInputEvent.NotifyEnterSign, self._btncalendarOnClick, self)
 	self:addEventCb(PCInputController.instance, PCInputEvent.NotifyEnterStore, self._btnzhoubianOnClick, self)
+	self:addEventCb(PlayerCardController.instance, PlayerCardEvent.OnCancelShowEnterAnimSettingNewReddot, self._isShowPlayerCardRedDot, self)
 end
 
 function MainThumbnailBtnView:removeEvents()
@@ -90,6 +91,7 @@ function MainThumbnailBtnView:removeEvents()
 	self:removeEventCb(PCInputController.instance, PCInputEvent.NotifyEnterFeedback, self._btnfeedbackOnClick, self)
 	self:removeEventCb(PCInputController.instance, PCInputEvent.NotifyEnterSign, self._btncalendarOnClick, self)
 	self:removeEventCb(PCInputController.instance, PCInputEvent.NotifyEnterStore, self._btnzhoubianOnClick, self)
+	self:removeEventCb(PlayerCardController.instance, PlayerCardEvent.OnCancelShowEnterAnimSettingNewReddot, self._isShowPlayerCardRedDot, self)
 end
 
 function MainThumbnailBtnView:_btnhandbookOnClick()
@@ -406,9 +408,25 @@ function MainThumbnailBtnView:_onRefreshTeachingRedDot()
 end
 
 function MainThumbnailBtnView:_isShowPlayerCardRedDot()
-	gohelper.setActive(self._goreddotplayercard, PlayerCardModel.instance:getShowRed())
+	if PlayerCardModel.instance:isShowEnterAnimSettingNewReddot() then
+		gohelper.setActive(self._goreddotplayercard, true)
 
-	return PlayerCardModel.instance:getShowRed()
+		if self._playercardreddot then
+			self._playercardreddot:setShowType(RedDotEnum.Style.NewTag)
+		end
+
+		return true
+	end
+
+	local isShow = PlayerCardModel.instance:getShowRed()
+
+	if isShow and self._playercardreddot then
+		self._playercardreddot:setShowType(RedDotEnum.Style.Normal)
+	end
+
+	gohelper.setActive(self._goreddotplayercard, isShow)
+
+	return isShow
 end
 
 function MainThumbnailBtnView:_checkTeachingRed(redDotIcon)

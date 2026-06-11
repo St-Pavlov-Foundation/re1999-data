@@ -82,14 +82,7 @@ function BpController:_openBpView()
 end
 
 function BpController:getBpChargeView()
-	local userId = PlayerModel.instance:getMyUserId()
-	local last = tonumber(userId) % 10
-
-	if last == 1 or last == 2 then
-		return ViewName.BpChargeView
-	else
-		return ViewName.BpChargeABTestView
-	end
+	return ViewName.BpChargeABTestView
 end
 
 function BpController:onViewOpen(viewName)

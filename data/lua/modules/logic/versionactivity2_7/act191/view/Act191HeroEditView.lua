@@ -96,10 +96,6 @@ function Act191HeroEditView:_btnCloseDetailOnClick()
 	gohelper.setActive(self._goDetail, false)
 end
 
-function Act191HeroEditView:_btncloseFilterViewOnClick()
-	gohelper.setActive(self._gosearchfilter, false)
-end
-
 function Act191HeroEditView:_btnclassifyOnClick()
 	gohelper.setActive(self._gosearchfilter, true)
 end

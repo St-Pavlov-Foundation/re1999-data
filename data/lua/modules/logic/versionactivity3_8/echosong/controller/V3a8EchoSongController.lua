@@ -73,8 +73,46 @@ function V3a8EchoSongController:enterGame(episodeId, gameId)
 	end
 
 	V3a8EchoSongModel.instance:onEnterGame(episodeId, gameId)
+	self:clearGameResult()
 	self:statGameStart()
 	self:openV3a8EchoSongGameView()
+end
+
+function V3a8EchoSongController:dispatchGameResult(isSuccess)
+	if self._gameResultDispatched then
+		return
+	end
+
+	self._gameResultDispatched = true
+	self._gameResult = isSuccess and true or false
+
+	self:dispatchEvent(V3a8EchoSongEvent.ShowResultView, isSuccess)
+end
+
+function V3a8EchoSongController:setGameResult(isSuccess)
+	if self._gameResultDispatched then
+		return
+	end
+
+	self._gameResultDispatched = true
+	self._gameResult = isSuccess and true or false
+end
+
+function V3a8EchoSongController:isGameOver()
+	return self._gameResultDispatched == true
+end
+
+function V3a8EchoSongController:isGameWin()
+	return self._gameResultDispatched == true and self._gameResult == true
+end
+
+function V3a8EchoSongController:isGameFail()
+	return self._gameResultDispatched == true and self._gameResult == false
+end
+
+function V3a8EchoSongController:clearGameResult()
+	self._gameResultDispatched = false
+	self._gameResult = nil
 end
 
 function V3a8EchoSongController:clickEpisodeLevel(episodeId, index)

@@ -80,7 +80,7 @@ function V3a8EchoSongMainPlayerEntityComp:rollback(info)
 		local item = self._footprintList[i]
 
 		if item.animator then
-			item.animator:Play("close", 0, 0)
+			item.animator:Play("close" .. tostring(item.footprintType), 0, 0)
 		end
 
 		local cacheList = self._footprintCache[item.index]
@@ -98,8 +98,7 @@ function V3a8EchoSongMainPlayerEntityComp:rollback(info)
 		self._curStandFootprint = nil
 	end
 
-	self._angle = nil
-	self._createStandFootprintTime = Time.time
+	self._createStandFootprintTime = Time.time - V3a8EchoSongEnum.MainPlayerConst.StandFootprintInterval
 
 	for i = #self._standFootprintList, 1, -1 do
 		local item = self._standFootprintList[i]
@@ -119,10 +118,17 @@ function V3a8EchoSongMainPlayerEntityComp:rollback(info)
 
 	self._moveTime = nil
 	self._isDead = false
+	self._isWin = false
 
 	if self._exploreItem then
 		self._exploreItem:reset()
 	end
+
+	if self._line then
+		gohelper.setActive(self._line, false)
+	end
+
+	self._lastDragAngle = nil
 
 	local pos = info.pos
 
@@ -147,18 +153,26 @@ end
 
 function V3a8EchoSongMainPlayerEntityComp:addEventListeners()
 	V3a8EchoSongController.instance:registerCallback(V3a8EchoSongEvent.DragLine, self._onDragLine, self)
+	V3a8EchoSongController.instance:registerCallback(V3a8EchoSongEvent.DragEnd, self._onDragEnd, self)
 	V3a8EchoSongController.instance:registerCallback(V3a8EchoSongEvent.DragExplore, self._onDragExplore, self)
 	V3a8EchoSongController.instance:registerCallback(V3a8EchoSongEvent.PauseGame, self._onPauseGame, self)
 	V3a8EchoSongController.instance:registerCallback(V3a8EchoSongEvent.ResumeGame, self._onResumeGame, self)
 	V3a8EchoSongController.instance:registerCallback(V3a8EchoSongEvent.TouchEmitted, self._onTouchEmitted, self)
+	V3a8EchoSongController.instance:registerCallback(V3a8EchoSongEvent.MainPlayerWin, self._onMainPlayerWin, self)
 end
 
 function V3a8EchoSongMainPlayerEntityComp:removeEventListeners()
 	V3a8EchoSongController.instance:unregisterCallback(V3a8EchoSongEvent.DragLine, self._onDragLine, self)
+	V3a8EchoSongController.instance:unregisterCallback(V3a8EchoSongEvent.DragEnd, self._onDragEnd, self)
 	V3a8EchoSongController.instance:unregisterCallback(V3a8EchoSongEvent.DragExplore, self._onDragExplore, self)
 	V3a8EchoSongController.instance:unregisterCallback(V3a8EchoSongEvent.PauseGame, self._onPauseGame, self)
 	V3a8EchoSongController.instance:unregisterCallback(V3a8EchoSongEvent.ResumeGame, self._onResumeGame, self)
 	V3a8EchoSongController.instance:unregisterCallback(V3a8EchoSongEvent.TouchEmitted, self._onTouchEmitted, self)
+	V3a8EchoSongController.instance:unregisterCallback(V3a8EchoSongEvent.MainPlayerWin, self._onMainPlayerWin, self)
+end
+
+function V3a8EchoSongMainPlayerEntityComp:_onMainPlayerWin()
+	self._isWin = true
 end
 
 function V3a8EchoSongMainPlayerEntityComp:_onTouchEmitted(type)
@@ -217,37 +231,49 @@ function V3a8EchoSongMainPlayerEntityComp:_onResumeGame()
 	TaskDispatcher.runRepeat(self._frameHandler, self, 0)
 end
 
-function V3a8EchoSongMainPlayerEntityComp:_onDragExplore(screenPos)
+function V3a8EchoSongMainPlayerEntityComp:_onDragExplore()
 	local posX, posY = transformhelper.getPos(self._go.transform)
 
 	transformhelper.setPosXY(self._exploreItem.viewGO.transform, posX, posY)
 
-	local angle = self._lastDragAngle
-
-	if not angle then
-		local x, y = recthelper.screenPosToAnchorPos2(screenPos, self._go.transform)
-
-		angle = math.atan2(y, x)
+	if not self._lastDragAngle then
+		return
 	end
 
+	local angle = self._lastDragAngle
+
 	self._lastDragAngle = nil
+	self._lineLength = 0
 
 	self._exploreItem:onUpdateMO(angle)
 end
 
-function V3a8EchoSongMainPlayerEntityComp:_onDragLine(showLine, screenPos)
+function V3a8EchoSongMainPlayerEntityComp:_onDragEnd()
+	self._lineLength = 0
+end
+
+function V3a8EchoSongMainPlayerEntityComp:_onDragLine(showLine, screenPosBegin, screenPosEnd, lineLength)
 	gohelper.setActive(self._line, showLine)
 
 	if not showLine then
 		return
 	end
 
-	local x, y = recthelper.screenPosToAnchorPos2(screenPos, self._go.transform)
-	local angleRad = math.atan2(y, x)
+	lineLength = lineLength or 0
+	lineLength = math.min(lineLength, V3a8EchoSongEnum.DragLength)
+
+	if self._lineLength then
+		lineLength = math.max(lineLength, self._lineLength)
+	end
+
+	recthelper.setWidth(self._line.transform, lineLength)
+
+	local angleRad = math.atan2(screenPosEnd.y - screenPosBegin.y, screenPosEnd.x - screenPosBegin.x)
+
+	transformhelper.setLocalRotation(self._line.transform, 0, 0, math.deg(angleRad - (self._angle and math.rad(self._angle) or 0)))
 
 	self._lastDragAngle = angleRad
-
-	transformhelper.setLocalRotation(self._line.transform, 0, 0, math.deg(angleRad))
+	self._lineLength = lineLength
 end
 
 function V3a8EchoSongMainPlayerEntityComp:_frameHandler()
@@ -259,11 +285,13 @@ function V3a8EchoSongMainPlayerEntityComp:_frameHandler()
 	for i = #self._footprintList, 1, -1 do
 		local item = self._footprintList[i]
 
-		if item.time + V3a8EchoSongEnum.MainPlayerConst.FootprintLifeTime < Time.time then
+		if item.time + V3a8EchoSongEnum.MainPlayerConst.SingleFootprintLifeTime < Time.time then
 			table.remove(self._footprintList, i)
 
 			if item.animator then
-				item.animator:Play("close", 0, 0)
+				item.isClosed = true
+
+				item.animator:Play("close" .. tostring(item.footprintType), 0, 0)
 			end
 
 			local list = self._footprintCache[item.index]
@@ -275,7 +303,7 @@ function V3a8EchoSongMainPlayerEntityComp:_frameHandler()
 	for i = #self._standFootprintList, 1, -1 do
 		local item = self._standFootprintList[i]
 
-		if item.time + V3a8EchoSongEnum.MainPlayerConst.FootprintLifeTime < Time.time then
+		if item.time + V3a8EchoSongEnum.MainPlayerConst.DoubleFootprintLifeTime < Time.time then
 			table.remove(self._standFootprintList, i)
 
 			if item.animator then
@@ -294,7 +322,7 @@ function V3a8EchoSongMainPlayerEntityComp:_frameHandler()
 		self._exploreItem:reset()
 	end
 
-	if self._createStandFootprintTime and self._createStandFootprintTime + V3a8EchoSongEnum.MainPlayerConst.StandFootprintInterval >= Time.time then
+	if self._createStandFootprintTime and self._createStandFootprintTime + V3a8EchoSongEnum.MainPlayerConst.StandFootprintInterval <= Time.time then
 		self._createStandFootprintTime = nil
 
 		self:_checkAddStandFootprint()
@@ -323,25 +351,34 @@ function V3a8EchoSongMainPlayerEntityComp:checkHitParticle(ballItem)
 		return
 	end
 
+	if self._isWin then
+		return
+	end
+
 	local worldPos = ballItem:getPos()
+	local dx = worldPos.x - self._posCache.x
+	local dy = worldPos.y - self._posCache.y
 
-	self._tempPos.x = worldPos.x - self._posCache.x
-	self._tempPos.y = worldPos.y - self._posCache.y
-
-	if self._tempPos.magnitude < 1 then
+	if dx * dx + dy * dy < 1 then
 		self._isDead = true
 
-		V3a8EchoSongController.instance:dispatchEvent(V3a8EchoSongEvent.ShowResultView, false)
+		V3a8EchoSongController.instance:dispatchGameResult(false)
 	end
 end
 
 function V3a8EchoSongMainPlayerEntityComp:move(x, y, strength)
+	if self._isDead or self._isWin then
+		return
+	end
+
 	if self._curStandFootprint then
 		table.insert(self._standFootprintList, self._curStandFootprint)
 
 		self._curStandFootprint.time = Time.time
 		self._curStandFootprint = nil
 	end
+
+	self._createStandFootprintTime = nil
 
 	local posX, posY = transformhelper.getPos(self._go.transform)
 	local speed = V3a8EchoSongEnum.MainPlayerConst.MoveSpeed
@@ -366,14 +403,21 @@ function V3a8EchoSongMainPlayerEntityComp:move(x, y, strength)
 		self._tempPos.y = posY
 
 		local lifeTime = strength >= V3a8EchoSongEnum.MainPlayerConst.StrengthThreshold and V3a8EchoSongEnum.ParticleLifeTime.Long or V3a8EchoSongEnum.ParticleLifeTime.Short
+		local footprintType = V3a8EchoSongEnum.FootprintType.Normal
 
 		if lifeTime == V3a8EchoSongEnum.ParticleLifeTime.Short then
+			footprintType = V3a8EchoSongEnum.FootprintType.Light
+
 			V3a8EchoSongController.instance:dispatchEvent(V3a8EchoSongEvent.EmittedParticle, self._tempPos, V3a8EchoSongEnum.ParticleType.MainPlayerShort, lifeTime)
+			AudioMgr.instance:trigger(V3a8EchoSongEnum.Audio.play_ui_shiji3_8_hsy_fstp1)
 		else
+			footprintType = V3a8EchoSongEnum.FootprintType.Normal
+
 			V3a8EchoSongController.instance:dispatchEvent(V3a8EchoSongEvent.EmittedParticle, self._tempPos, V3a8EchoSongEnum.ParticleType.MainPlayer, lifeTime)
+			AudioMgr.instance:trigger(V3a8EchoSongEnum.Audio.play_ui_shiji3_8_hsy_fstp2)
 		end
 
-		self:_addFootprint(posX, posY, angle)
+		self:_addFootprint(posX, posY, angle, footprintType)
 	end
 
 	local hit = UnityEngine.Physics2D.CircleCast(self._posCache, radius, self._dirCache, V3a8EchoSongEnum.MainPlayerConst.CircleCastDist, V3a8EchoSongEnum.ColliderLayer)
@@ -388,14 +432,22 @@ function V3a8EchoSongMainPlayerEntityComp:move(x, y, strength)
 	transformhelper.setPosXY(self._go.transform, posX + offsetX, posY + offsetY)
 end
 
-function V3a8EchoSongMainPlayerEntityComp:_addFootprint(x, y, angle)
+function V3a8EchoSongMainPlayerEntityComp:_addFootprint(x, y, angle, footprintType)
 	local footPrintItem = self:_getFootprint(self._curFootprintIndex)
 
 	if footPrintItem then
+		local lastFootPrintItem = self._footprintList[#self._footprintList]
+
+		if lastFootPrintItem and not lastFootPrintItem.isClosed then
+			lastFootPrintItem.animator:Play("reduce" .. tostring(lastFootPrintItem.footprintType), 0, 0)
+		end
+
 		table.insert(self._footprintList, footPrintItem)
 
+		footPrintItem.footprintType = footprintType
+
 		if footPrintItem.animator then
-			footPrintItem.animator:Play("open", 0, 0)
+			footPrintItem.animator:Play("open" .. tostring(footPrintItem.footprintType), 0, 0)
 		end
 
 		footPrintItem.time = Time.time
@@ -443,7 +495,11 @@ function V3a8EchoSongMainPlayerEntityComp:_getFootprint(index)
 	end
 
 	if #list > 0 then
-		return table.remove(list)
+		local item = table.remove(list)
+
+		item.isClosed = false
+
+		return item
 	end
 
 	local go = self._footprint[index]
@@ -454,6 +510,7 @@ function V3a8EchoSongMainPlayerEntityComp:_getFootprint(index)
 		gohelper.setActive(fpGo, true)
 
 		return {
+			isClosed = false,
 			index = index,
 			go = fpGo,
 			animator = fpGo:GetComponent("Animator")

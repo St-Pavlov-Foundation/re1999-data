@@ -97,7 +97,7 @@ function Act191ShopView:_editableInitView()
 
 	local paramStr
 
-	if tabletool.indexOf(Activity191Enum.TagShopField, self.nodeDetailMo.type) then
+	if self.nodeDetailMo.type == Activity191Enum.NodeType.TagShop then
 		paramStr = lua_activity191_const.configDict[Activity191Enum.ConstKey.TagShopFreshCost].value
 		self.freshLimit = tonumber(lua_activity191_const.configDict[Activity191Enum.ConstKey.TagShopFreshLimit].value)
 	else

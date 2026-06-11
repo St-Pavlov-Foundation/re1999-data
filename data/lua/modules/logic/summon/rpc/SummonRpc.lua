@@ -16,7 +16,7 @@ function SummonRpc:sendSummonRequest(poolId, count, guideId, stepId, callback, c
 
 	SummonController.instance.isWaitingSummonResult = true
 
-	SummonController.instance:dispatchEvent(SummonEvent.onSummonPoolHistorySummonRequest, poolId)
+	SummonController.instance:dispatchEvent(SummonEvent.onSummonPoolHistorySummonRequest, poolId, count)
 end
 
 function SummonRpc:onReceiveSummonReply(resultCode, msg)

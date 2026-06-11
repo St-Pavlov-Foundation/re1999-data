@@ -2239,21 +2239,26 @@ function FightHelper.getTimelineListByName(timelineName, skin)
 
 	if configDict then
 		for k, v in pairs(configDict) do
-			local condition = FightStrUtil.instance:getSplitCache(v.condition, "#")
-			local sign = condition[1]
+			local conditionList = FightStrUtil.instance:getSplitCache(v.condition, "|")
 
-			if sign == "5" then
-				local conditionDic = {}
+			for _, condition in ipairs(conditionList) do
+				condition = FightStrUtil.instance:getSplitCache(condition, "#")
 
-				for i = 2, #condition do
-					conditionDic[tonumber(condition[i])] = true
+				local sign = condition[1]
+
+				if sign == "5" then
+					local conditionDic = {}
+
+					for i = 2, #condition do
+						conditionDic[tonumber(condition[i])] = true
+					end
+
+					if conditionDic[skin] then
+						originTimelineName = v.timeline
+					end
+				else
+					table.insert(list, v.timeline)
 				end
-
-				if conditionDic[skin] then
-					originTimelineName = v.timeline
-				end
-			else
-				table.insert(list, v.timeline)
 			end
 		end
 	end
@@ -2307,244 +2312,267 @@ function FightHelper.detectReplaceTimeline(timelineName, fightStepData)
 				for i, v in ipairs(dataList) do
 					entityDataDic[v.id] = v
 				end
+			elseif config.target == 5 then
+				for k, v in pairs(FightDataHelper.entityMgr.entityDataDic) do
+					entityDataDic[k] = v
+				end
 			end
 
-			local condition = FightStrUtil.instance:getSplitCache(config.condition, "#")
-			local sign = condition[1]
+			local conditionList = FightStrUtil.instance:getSplitCache(config.condition, "|")
+			local conditionCount = #conditionList
+			local replacedTimeline
 
-			if sign == "1" then
-				local buffList = FightHelper.getBuffListForReplaceTimeline(config, entityDataDic, fightStepData)
-				local buffId = tonumber(condition[2])
-				local count = tonumber(condition[3])
+			for _, condition in ipairs(conditionList) do
+				replacedTimeline = FightHelper.processTimelineReplaceCondition(condition, config, entityDataDic, fightStepData, timelineName, configList)
 
-				for index, buffMO in ipairs(buffList) do
-					if buffMO.buffId == buffId and count <= buffMO.count then
-						return config.timeline
-					end
+				if replacedTimeline then
+					conditionCount = conditionCount - 1
 				end
-			elseif sign == "2" then
-				for i, actEffectData in pairs(fightStepData.actEffect) do
-					if actEffectData.effectType == FightEnum.EffectType.DEAD then
-						return config.timeline
-					end
-				end
-			elseif sign == "3" then
-				local buffList = FightHelper.getBuffListForReplaceTimeline(config, entityDataDic, fightStepData)
+			end
 
-				for i = 2, #condition do
-					if FightHelper.detectEntityIncludeBuffType(nil, tonumber(condition[i]), buffList) then
-						return config.timeline
-					end
-				end
-			elseif sign == "4" then
-				local conditionDic = {}
-
-				for i = 2, #condition do
-					conditionDic[tonumber(condition[i])] = true
-				end
-
-				local buffList = FightHelper.getBuffListForReplaceTimeline(config, entityDataDic, fightStepData)
-
-				for index, buffMO in ipairs(buffList) do
-					if conditionDic[buffMO.buffId] then
-						return config.timeline
-					end
-				end
-			elseif sign == "5" then
-				local conditionDic = {}
-
-				for i = 2, #condition do
-					conditionDic[tonumber(condition[i])] = true
-				end
-
-				for k, entityMO in pairs(entityDataDic) do
-					local tempSkin = entityMO.skin
-
-					if config.target == 1 then
-						tempSkin = FightHelper.processSkinByStepData(fightStepData, entityMO)
-					end
-
-					if entityMO and conditionDic[tempSkin] then
-						return config.timeline
-					end
-				end
-			elseif sign == "6" then
-				local conditionDic = {}
-
-				for i = 2, #condition do
-					conditionDic[tonumber(condition[i])] = true
-				end
-
-				for index, actEffectData in ipairs(fightStepData.actEffect) do
-					if entityDataDic[actEffectData.targetId] and conditionDic[actEffectData.configEffect] then
-						return config.timeline
-					end
-				end
-			elseif sign == "7" then
-				local conditionDic = {}
-
-				for i = 2, #condition do
-					conditionDic[tonumber(condition[i])] = true
-				end
-
-				local buffList = FightHelper.getBuffListForReplaceTimeline(config, entityDataDic, fightStepData)
-
-				for index, buffMO in ipairs(buffList) do
-					if conditionDic[buffMO.buffId] then
-						return timelineName
-					end
-				end
-
-				return config.timeline
-			elseif sign == "8" then
-				local buffId = tonumber(condition[2])
-				local count = tonumber(condition[3])
-				local buffDic = FightHelper.getEntitysCloneBuff(entityDataDic)
-
-				if config.simulate == 1 then
-					local buffList = FightHelper.getBuffListForReplaceTimeline(nil, entityDataDic, fightStepData)
-
-					for index, buffMO in ipairs(buffList) do
-						if buffMO.buffId == buffId and count <= buffMO.count then
-							return config.timeline
-						end
-					end
-
-					buffDic = FightHelper.simulateFightStepData(fightStepData, buffDic, FightHelper.detectBuffCountEnough, {
-						buffId = buffId,
-						count = count
-					})
-
-					if buffDic == true then
-						return config.timeline
-					end
-				else
-					local buffList = FightHelper.getBuffListForReplaceTimeline(config, entityDataDic, fightStepData)
-
-					for index, buffMO in ipairs(buffList) do
-						if buffMO.buffId == buffId and count <= buffMO.count then
-							return config.timeline
-						end
-					end
-				end
-			elseif sign == "9" then
-				local list = {}
-
-				for i, v in ipairs(configList) do
-					local tarSkin = tonumber(string.split(v.condition, "#")[2])
-
-					for k, entityMO in pairs(entityDataDic) do
-						local tempSkin = entityMO.skin
-
-						if config.target == 1 then
-							tempSkin = FightHelper.processSkinByStepData(fightStepData, entityMO)
-						end
-
-						if tempSkin == tarSkin then
-							table.insert(list, v)
-						end
-					end
-				end
-
-				local listCount = #list
-
-				if listCount > 1 then
-					local lastIndex = lastRandomTimeline[timelineName]
-
-					while true do
-						local random = math.random(1, listCount)
-
-						if random ~= lastIndex then
-							lastRandomTimeline[timelineName] = random
-
-							return list[random].timeline
-						end
-					end
-				elseif listCount > 0 then
-					return list[1].timeline
-				end
-			elseif sign == "10" then
-				local selectCondition = tonumber(condition[2])
-
-				if selectCondition == 1 then
-					if fightStepData.fromId == fightStepData.toId then
-						return config.timeline
-					end
-				elseif selectCondition == 2 and fightStepData.fromId ~= fightStepData.toId then
-					return config.timeline
-				end
-			elseif sign == "11" then
-				local conditionDic = {}
-				local checkSkin = tonumber(condition[2])
-
-				for i = 3, #condition do
-					conditionDic[tonumber(condition[i])] = true
-				end
-
-				for k, entityMO in pairs(entityDataDic) do
-					local tempSkin = entityMO.skin
-
-					if config.target == 1 then
-						tempSkin = FightHelper.processSkinByStepData(fightStepData, entityMO)
-					end
-
-					if checkSkin == tempSkin then
-						local buffList = FightHelper.getBuffListForReplaceTimeline(config, entityDataDic, fightStepData)
-
-						for b_index, buffMO in ipairs(buffList) do
-							if conditionDic[buffMO.buffId] then
-								return config.timeline
-							end
-						end
-					end
-				end
-			elseif sign == "12" then
-				local conditionDic = {}
-
-				for i = 2, #condition - 1 do
-					conditionDic[tonumber(condition[i])] = true
-				end
-
-				for k, entityMO in pairs(entityDataDic) do
-					local tempSkin = entityMO.skin
-
-					if config.target == 1 then
-						tempSkin = FightHelper.processSkinByStepData(fightStepData, entityMO)
-					end
-
-					if entityMO and conditionDic[tempSkin] then
-						local toIdType = condition[#condition]
-
-						if toIdType == "1" then
-							if fightStepData.fromId == fightStepData.toId then
-								return config.timeline
-							end
-						elseif toIdType == "2" then
-							local fromEntityMO = FightDataHelper.entityMgr:getById(fightStepData.fromId)
-							local toEntityMO = FightDataHelper.entityMgr:getById(fightStepData.toId)
-
-							if fromEntityMO and toEntityMO and fromEntityMO.id ~= toEntityMO.id and fromEntityMO.side == toEntityMO.side then
-								return config.timeline
-							end
-						elseif toIdType == "3" then
-							local fromEntityMO = FightDataHelper.entityMgr:getById(fightStepData.fromId)
-							local toEntityMO = FightDataHelper.entityMgr:getById(fightStepData.toId)
-
-							if fromEntityMO and toEntityMO and fromEntityMO.side ~= toEntityMO.side then
-								return config.timeline
-							end
-						end
-					end
-				end
-			elseif sign == "13" then
-				return FightHelper.getBLETimeLine(timelineName, fightStepData)
-			elseif sign == "14" then
-				return FightHelper.getUnnamedTimeLine(timelineName, fightStepData)
+			if conditionCount == 0 then
+				return replacedTimeline or timelineName
 			end
 		end
 	end
 
 	return timelineName
+end
+
+function FightHelper.processTimelineReplaceCondition(condition, config, entityDataDic, fightStepData, timelineName, configList)
+	condition = FightStrUtil.instance:getSplitCache(condition, "#")
+
+	local sign = condition[1]
+
+	if sign == "1" then
+		local buffList = FightHelper.getBuffListForReplaceTimeline(config, entityDataDic, fightStepData)
+		local buffId = tonumber(condition[2])
+		local count = tonumber(condition[3])
+
+		for index, buffMO in ipairs(buffList) do
+			if buffMO.buffId == buffId and count <= buffMO.count then
+				return config.timeline
+			end
+		end
+	elseif sign == "2" then
+		for i, actEffectData in pairs(fightStepData.actEffect) do
+			if actEffectData.effectType == FightEnum.EffectType.DEAD then
+				return config.timeline
+			end
+		end
+	elseif sign == "3" then
+		local buffList = FightHelper.getBuffListForReplaceTimeline(config, entityDataDic, fightStepData)
+
+		for i = 2, #condition do
+			if FightHelper.detectEntityIncludeBuffType(nil, tonumber(condition[i]), buffList) then
+				return config.timeline
+			end
+		end
+	elseif sign == "4" then
+		local conditionDic = {}
+
+		for i = 2, #condition do
+			conditionDic[tonumber(condition[i])] = true
+		end
+
+		local buffList = FightHelper.getBuffListForReplaceTimeline(config, entityDataDic, fightStepData)
+
+		for index, buffMO in ipairs(buffList) do
+			if conditionDic[buffMO.buffId] then
+				return config.timeline
+			end
+		end
+	elseif sign == "5" then
+		local conditionDic = {}
+
+		for i = 2, #condition do
+			conditionDic[tonumber(condition[i])] = true
+		end
+
+		for k, entityMO in pairs(entityDataDic) do
+			local tempSkin = entityMO.skin
+
+			if config.target == 1 then
+				tempSkin = FightHelper.processSkinByStepData(fightStepData, entityMO)
+			end
+
+			if entityMO and conditionDic[tempSkin] then
+				return config.timeline
+			end
+		end
+	elseif sign == "6" then
+		local conditionDic = {}
+
+		for i = 2, #condition do
+			conditionDic[tonumber(condition[i])] = true
+		end
+
+		for index, actEffectData in ipairs(fightStepData.actEffect) do
+			if entityDataDic[actEffectData.targetId] and conditionDic[actEffectData.configEffect] then
+				return config.timeline
+			end
+		end
+	elseif sign == "7" then
+		local conditionDic = {}
+
+		for i = 2, #condition do
+			conditionDic[tonumber(condition[i])] = true
+		end
+
+		local buffList = FightHelper.getBuffListForReplaceTimeline(config, entityDataDic, fightStepData)
+
+		for index, buffMO in ipairs(buffList) do
+			if conditionDic[buffMO.buffId] then
+				return timelineName
+			end
+		end
+
+		return config.timeline
+	elseif sign == "8" then
+		local buffId = tonumber(condition[2])
+		local count = tonumber(condition[3])
+		local buffDic = FightHelper.getEntitysCloneBuff(entityDataDic)
+
+		if config.simulate == 1 then
+			local buffList = FightHelper.getBuffListForReplaceTimeline(nil, entityDataDic, fightStepData)
+
+			for index, buffMO in ipairs(buffList) do
+				if buffMO.buffId == buffId and count <= buffMO.count then
+					return config.timeline
+				end
+			end
+
+			buffDic = FightHelper.simulateFightStepData(fightStepData, buffDic, FightHelper.detectBuffCountEnough, {
+				buffId = buffId,
+				count = count
+			})
+
+			if buffDic == true then
+				return config.timeline
+			end
+		else
+			local buffList = FightHelper.getBuffListForReplaceTimeline(config, entityDataDic, fightStepData)
+
+			for index, buffMO in ipairs(buffList) do
+				if buffMO.buffId == buffId and count <= buffMO.count then
+					return config.timeline
+				end
+			end
+		end
+	elseif sign == "9" then
+		local list = {}
+
+		for i, v in ipairs(configList) do
+			local tarSkin = tonumber(string.split(v.condition, "#")[2])
+
+			for k, entityMO in pairs(entityDataDic) do
+				local tempSkin = entityMO.skin
+
+				if config.target == 1 then
+					tempSkin = FightHelper.processSkinByStepData(fightStepData, entityMO)
+				end
+
+				if tempSkin == tarSkin then
+					table.insert(list, v)
+				end
+			end
+		end
+
+		local listCount = #list
+
+		if listCount > 1 then
+			local lastIndex = lastRandomTimeline[timelineName]
+
+			while true do
+				local random = math.random(1, listCount)
+
+				if random ~= lastIndex then
+					lastRandomTimeline[timelineName] = random
+
+					return list[random].timeline
+				end
+			end
+		elseif listCount > 0 then
+			return list[1].timeline
+		end
+	elseif sign == "10" then
+		local selectCondition = tonumber(condition[2])
+
+		if selectCondition == 1 then
+			if fightStepData.fromId == fightStepData.toId then
+				return config.timeline
+			end
+		elseif selectCondition == 2 and fightStepData.fromId ~= fightStepData.toId then
+			return config.timeline
+		end
+	elseif sign == "11" then
+		local conditionDic = {}
+		local checkSkin = tonumber(condition[2])
+
+		for i = 3, #condition do
+			conditionDic[tonumber(condition[i])] = true
+		end
+
+		for k, entityMO in pairs(entityDataDic) do
+			local tempSkin = entityMO.skin
+
+			if config.target == 1 then
+				tempSkin = FightHelper.processSkinByStepData(fightStepData, entityMO)
+			end
+
+			if checkSkin == tempSkin then
+				local buffList = FightHelper.getBuffListForReplaceTimeline(config, entityDataDic, fightStepData)
+
+				for b_index, buffMO in ipairs(buffList) do
+					if conditionDic[buffMO.buffId] then
+						return config.timeline
+					end
+				end
+			end
+		end
+	elseif sign == "12" then
+		local conditionDic = {}
+
+		for i = 2, #condition - 1 do
+			conditionDic[tonumber(condition[i])] = true
+		end
+
+		for k, entityMO in pairs(entityDataDic) do
+			local tempSkin = entityMO.skin
+
+			if config.target == 1 then
+				tempSkin = FightHelper.processSkinByStepData(fightStepData, entityMO)
+			end
+
+			if entityMO and conditionDic[tempSkin] then
+				local toIdType = condition[#condition]
+
+				if toIdType == "1" then
+					if fightStepData.fromId == fightStepData.toId then
+						return config.timeline
+					end
+				elseif toIdType == "2" then
+					local fromEntityMO = FightDataHelper.entityMgr:getById(fightStepData.fromId)
+					local toEntityMO = FightDataHelper.entityMgr:getById(fightStepData.toId)
+
+					if fromEntityMO and toEntityMO and fromEntityMO.id ~= toEntityMO.id and fromEntityMO.side == toEntityMO.side then
+						return config.timeline
+					end
+				elseif toIdType == "3" then
+					local fromEntityMO = FightDataHelper.entityMgr:getById(fightStepData.fromId)
+					local toEntityMO = FightDataHelper.entityMgr:getById(fightStepData.toId)
+
+					if fromEntityMO and toEntityMO and fromEntityMO.side ~= toEntityMO.side then
+						return config.timeline
+					end
+				end
+			end
+		end
+	elseif sign == "13" then
+		return FightHelper.getBLETimeLine(timelineName, fightStepData)
+	elseif sign == "14" then
+		return FightHelper.getUnnamedTimeLine(timelineName, fightStepData)
+	end
 end
 
 function FightHelper.getUnnamedTimeLine(timelineName, fightStepData)
@@ -2803,7 +2831,7 @@ function FightHelper.buildMonsterA2B(entity, oldEntityMO, fightFlow, work)
 	fightFlow:addWork(Work2FightWork.New(FightWorkNormalDialog, FightViewDialog.Type.BeforeMonsterA2B, oldEntityMO.modelId))
 
 	if config then
-		fightFlow:addWork(Work2FightWork.New(FightWorkPlayTimeline, entity, config.timeline))
+		fightFlow:registWork(FightWorkPlayTimeline, entity, config.timeline)
 
 		if config.nextSkinId ~= 0 then
 			fightFlow:registWork(FightWorkFunction, FightHelper.setBossEvolution, FightHelper, entity, config)
@@ -2841,7 +2869,7 @@ function FightHelper.buildDeadPerformanceWork(config, entity)
 		end
 
 		if actType == 1 then
-			fightFlow:addWork(FightWorkPlayTimeline.New(entity, param))
+			fightFlow:addWork(FightWork2Work.New(FightWorkPlayTimeline, entity, param))
 		elseif actType == 2 then
 			fightFlow:addWork(FightWorkNormalDialog.New(FightViewDialog.Type.DeadPerformanceNoCondition, tonumber(param)))
 		end

@@ -195,7 +195,6 @@ function V3a8_WarmUpContainer:tryTweenDesc(bNoAnim)
 	if bNoAnim then
 		self:_onOpenDescDone()
 	else
-		self:setLocalIsPlayCurByUser()
 		self:openDesc()
 	end
 end

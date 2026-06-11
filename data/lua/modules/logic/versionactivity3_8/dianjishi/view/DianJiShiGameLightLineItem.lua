@@ -39,12 +39,6 @@ function DianJiShiGameLightLineItem:refreshUI()
 	local posX, posY = DianJiShiGameController.instance:posIndex2Pos(curPosXIndex, curPosYIndex, true)
 
 	recthelper.setAnchor(self._tran, posX, posY)
-
-	local left = self:_checkIsEdge(self._posXIndex - 1, self._posYIndex)
-	local right = self:_checkIsEdge(self._posXIndex + 1, self._posYIndex)
-	local top = self:_checkIsEdge(self._posXIndex, self._posYIndex + 1)
-	local bottom = self:_checkIsEdge(self._posXIndex, self._posYIndex - 1)
-
 	gohelper.setActive(self._goLeft, self:_checkIsEdge(self._posXIndex - 1, self._posYIndex))
 	gohelper.setActive(self._goRight, self:_checkIsEdge(self._posXIndex + 1, self._posYIndex))
 	gohelper.setActive(self._goTop, self:_checkIsEdge(self._posXIndex, self._posYIndex + 1))

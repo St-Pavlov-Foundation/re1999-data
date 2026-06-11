@@ -114,7 +114,7 @@ function StoryVideoItem:onDestroy()
 	TaskDispatcher.cancelTask(self._playVideo, self)
 	StoryModel.instance:setSpecialVideoEnd(self._videoName)
 
-	if self._videoName then
+	if self._videoPlayer then
 		self._videoPlayer:stop()
 	end
 

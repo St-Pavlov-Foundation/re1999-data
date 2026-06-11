@@ -8690,7 +8690,7 @@
     "effect": "",
     "effectHangPoint": "",
     "effectRemoveTime": 0.0,
-    "audioId": 442020192,
+    "audioId": 462014592,
     "dieAnim": ""
   },
   {
@@ -8772,6 +8772,15 @@
     "effectHangPoint": "mountroot#special3",
     "effectRemoveTime": 0.0,
     "audioId": 431390391,
+    "dieAnim": ""
+  },
+  {
+    "skinId": 313903,
+    "actionName": "die",
+    "effect": "",
+    "effectHangPoint": "",
+    "effectRemoveTime": 0.0,
+    "audioId": 431390392,
     "dieAnim": ""
   },
   {

@@ -105,7 +105,7 @@ function HeroRpc:onReceiveHeroSkinGainPush(resultCode, msg)
 
 	HeroModel.instance:onGainSkinList(msg.skinId)
 
-	if msg.getApproach == MaterialEnum.GetApproach.Task or msg.getApproach == MaterialEnum.GetApproach.TaskAct then
+	if ItemApproachHelper.isTaskApproach(msg.getApproach) then
 		TaskController.instance:getRewardByLine(msg.getApproach, ViewName.CharacterSkinGainView, param)
 	elseif msg.getApproach == MaterialEnum.GetApproach.AutoChessRankReward then
 		AutoChessController.instance:addPopupView(ViewName.CharacterSkinGainView, param)

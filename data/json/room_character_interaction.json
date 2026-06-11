@@ -9450,8 +9450,8 @@
     "relateHeroId": 0,
     "dialogId": 1381022,
     "reward": "2#23#5|2#5#500",
-    "faithDialog": 0,
-    "excludeDaily": false,
+    "faithDialog": 1000,
+    "excludeDaily": true,
     "showtime": 0,
     "conditionStr": ""
   },
@@ -9522,8 +9522,8 @@
     "relateHeroId": 0,
     "dialogId": 1381032,
     "reward": "2#23#5|2#5#500",
-    "faithDialog": 0,
-    "excludeDaily": false,
+    "faithDialog": 1000,
+    "excludeDaily": true,
     "showtime": 0,
     "conditionStr": ""
   }

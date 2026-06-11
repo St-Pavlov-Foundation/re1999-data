@@ -35,7 +35,7 @@ function V3a8EchoSongTipComp:_showEffect()
 	self._tempPos.x = posX
 	self._tempPos.y = posY
 
-	V3a8EchoSongController.instance:dispatchEvent(V3a8EchoSongEvent.EmittedParticle, self._tempPos, V3a8EchoSongEnum.ParticleType.Tip)
+	V3a8EchoSongController.instance:dispatchEvent(V3a8EchoSongEvent.EmittedParticle, self._tempPos, V3a8EchoSongEnum.ParticleType.Tip, V3a8EchoSongEnum.ParticleLifeTime.Tip)
 end
 
 function V3a8EchoSongTipComp:_onPauseGame()

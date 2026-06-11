@@ -5,6 +5,8 @@ module("modules.logic.scene.common.camera.EyeProtectionModeMgr", package.seeall)
 local EyeProtectionModeMgr = class("EyeProtectionModeMgr")
 
 function EyeProtectionModeMgr:ctor()
+	self.m_ppVolumeGo = nil
+
 	GameSceneMgr.instance:registerCallback(SceneEventName.EnterSceneFinish, self.onEnterSceneFinish, self)
 	GameSceneMgr.instance:registerCallback(SceneEventName.ExitScene, self.onExistScene, self)
 end
@@ -49,22 +51,46 @@ function EyeProtectionModeMgr:trySetPPVolumeValue()
 	if active and inFightScene then
 		self:setPPVolumeValue(ActiveIntensityValue, ActiveFactorValue)
 	else
-		self:setPPVolumeValue(1, 1)
+		self:setPPVolumeValue(1, 0)
 	end
 end
 
-function EyeProtectionModeMgr:setProFile()
+function EyeProtectionModeMgr:_getPPVolume()
+	if not self.m_ppVolumeGo then
+		local unitGo = CameraMgr.instance:getUnitCameraGO()
+
+		self.m_ppVolumeGo = gohelper.findChild(unitGo, "PPVolume")
+	end
+
+	return self.m_ppVolumeGo
+end
+
+function EyeProtectionModeMgr:changeProFile()
 	local targetProfile = PostProcessingMgr.instance:getProfile()
-	local unitGo = CameraMgr.instance:getUnitCameraGO()
-	local pp = gohelper.findChild(unitGo, "PPVolume")
+
+	if targetProfile == self.preProfile then
+		return
+	end
+
+	self.preProfile = targetProfile
+
+	local pp = self:_getPPVolume()
 	local wrap = pp:GetComponent(PostProcessingMgr.PPVolumeWrapType)
+	local intensityValue = wrap.uberBrightnessIntensity
+	local factorValue = wrap.uberBrightnessFactor
 
 	wrap:SetProfile(targetProfile)
+
+	wrap.uberBrightnessIntensity = intensityValue
+	wrap.UberBrightnessIntensity = intensityValue
+	wrap.uberBrightnessFactor = factorValue
+	wrap.UberBrightnessFactor = factorValue
+
+	wrap:Load()
 end
 
 function EyeProtectionModeMgr:setPPVolumeValue(intensityValue, factorValue)
-	local unitGo = CameraMgr.instance:getUnitCameraGO()
-	local pp = gohelper.findChild(unitGo, "PPVolume")
+	local pp = self:_getPPVolume()
 	local wrap = pp:GetComponent(PostProcessingMgr.PPVolumeWrapType)
 
 	wrap.uberBrightnessIntensity = intensityValue
@@ -72,50 +98,41 @@ function EyeProtectionModeMgr:setPPVolumeValue(intensityValue, factorValue)
 	wrap.uberBrightnessFactor = factorValue
 	wrap.UberBrightnessFactor = factorValue
 
-	self:setProFile()
-
-	unitGo = CameraMgr.instance:getUnitCameraGO()
-	pp = gohelper.findChild(unitGo, "PPVolume")
-	wrap = pp:GetComponent(PostProcessingMgr.PPVolumeWrapType)
-	wrap.uberBrightnessIntensity = intensityValue
-	wrap.UberBrightnessIntensity = intensityValue
-	wrap.uberBrightnessFactor = factorValue
-	wrap.UberBrightnessFactor = factorValue
+	wrap:Load()
+	self:changeProFile()
 end
 
 function EyeProtectionModeMgr:setIntensityValue(intensityValue)
-	local unitGo = CameraMgr.instance:getUnitCameraGO()
-	local pp = gohelper.findChild(unitGo, "PPVolume")
+	local pp = self:_getPPVolume()
 	local wrap = pp:GetComponent(PostProcessingMgr.PPVolumeWrapType)
 
 	wrap.uberBrightnessIntensity = intensityValue
 	wrap.UberBrightnessIntensity = intensityValue
 
-	self:setProFile()
+	wrap:Load()
+	self:changeProFile()
 end
 
 function EyeProtectionModeMgr:getIntensityValue()
-	local unitGo = CameraMgr.instance:getUnitCameraGO()
-	local pp = gohelper.findChild(unitGo, "PPVolume")
+	local pp = self:_getPPVolume()
 	local wrap = pp:GetComponent(PostProcessingMgr.PPVolumeWrapType)
 
 	return wrap.uberBrightnessIntensity
 end
 
 function EyeProtectionModeMgr:setFactorValue(factorValue)
-	local unitGo = CameraMgr.instance:getUnitCameraGO()
-	local pp = gohelper.findChild(unitGo, "PPVolume")
+	local pp = self:_getPPVolume()
 	local wrap = pp:GetComponent(PostProcessingMgr.PPVolumeWrapType)
 
 	wrap.uberBrightnessFactor = factorValue
 	wrap.UberBrightnessFactor = factorValue
 
-	self:setProFile()
+	wrap:Load()
+	self:changeProFile()
 end
 
 function EyeProtectionModeMgr:getFactorValue()
-	local unitGo = CameraMgr.instance:getUnitCameraGO()
-	local pp = gohelper.findChild(unitGo, "PPVolume")
+	local pp = self:_getPPVolume()
 	local wrap = pp:GetComponent(PostProcessingMgr.PPVolumeWrapType)
 
 	return wrap.uberBrightnessFactor

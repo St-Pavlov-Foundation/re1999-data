@@ -132,6 +132,7 @@ function Rouge2_BossBattleController:onExitHeroGroup(selectEpisodeId)
 end
 
 function Rouge2_BossBattleController._onEnterMainSceneDone(selectEpisodeId)
+	Rouge2_Controller.instance:enterDungeonView()
 	Rouge2_ViewHelper.openEnterView({
 		openMain = true,
 		openMainCallback = function()

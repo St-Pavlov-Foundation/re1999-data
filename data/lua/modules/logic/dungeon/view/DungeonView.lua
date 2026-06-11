@@ -374,7 +374,7 @@ function DungeonView:_refreshBtnUnlock()
 	local hasPermanentOnline = PermanentModel.instance:hasActivityOnline()
 
 	gohelper.setActive(self._btnpermanent, OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.Permanent) and hasPermanentOnline)
-	gohelper.setActive(self._btnrouge, RougeOutsideController.instance:isOpen())
+	gohelper.setActive(self._btnrouge, RougeOutsideController.instance:isOpen() or Rouge2_Controller.instance:checkIsOpen())
 	gohelper.setActive(self._btntower, TowerController.instance:isOpen())
 end
 

@@ -521,7 +521,7 @@ function CurrencyView:_onRefreshExpireItemDeadline()
 end
 
 function CurrencyView:_onRefreshExpireItemDeadlineUI()
-	local itemDeadline = CurrencyController.instance:getExpireItemDeadLineTime()
+	local itemDeadline = ItemExpireModel.instance:getSpecialExpireItemEarliestExpireTime(StoreEnum.SupplementMonthCardItemId)
 
 	if itemDeadline and itemDeadline > 0 then
 		local limitSec = itemDeadline - ServerTime.now()

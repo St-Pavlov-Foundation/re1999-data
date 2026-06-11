@@ -326,7 +326,7 @@ end
 
 function ActivityModel:removeSelectSixAfterRemoveFinished(actCo)
 	for index, id in pairs(actCo) do
-		if id == ActivityEnum.Activity.V2a7_SelfSelectSix2 and ActivityType101Model.instance:isType101RewardGet(id, 1) then
+		if (id == ActivityEnum.Activity.V2a7_SelfSelectSix2 or id == ActivityEnum.Activity.V3a8_SelfSelectSix) and ActivityType101Model.instance:isType101RewardGet(id, 1) then
 			actCo[index] = nil
 		end
 	end

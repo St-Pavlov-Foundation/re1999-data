@@ -43,5 +43,10 @@
     "activityId": 13745,
     "link": "https://re.bluepoch.com/event/3rdanniversary/",
     "bgResUrl": "singlebg_lang/txt_activity/activity_h5_banner_2.png"
+  },
+  {
+    "activityId": 13823,
+    "link": "https://re.bluepoch.com/event/enigmaoffice/",
+    "bgResUrl": "singlebg_lang/txt_activity/activity_h5_banner.png"
   }
 ]

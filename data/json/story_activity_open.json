@@ -4878,5 +4878,309 @@
     "titleEn": "Don't Look Back In Anger",
     "labelRes": "14",
     "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 1,
+    "title": "世纪末的忧郁",
+    "titleEn": "\"Fin-de-Siècle\"",
+    "labelRes": "1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 2,
+    "title": "来自东方",
+    "titleEn": "Eastward",
+    "labelRes": "2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 3,
+    "title": "寂静之声",
+    "titleEn": "Sound of Silence",
+    "labelRes": "3",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 4,
+    "title": "栖居者",
+    "titleEn": "Beneath the Shades",
+    "labelRes": "4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 5,
+    "title": "建筑的母语",
+    "titleEn": "A Building's Message",
+    "labelRes": "5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 6,
+    "title": "异想天开",
+    "titleEn": "Dream Houses",
+    "labelRes": "6",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 7,
+    "title": "流水别墅",
+    "titleEn": "Fallingwater",
+    "labelRes": "7",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 8,
+    "title": "光的物性",
+    "titleEn": "The Workings of Light",
+    "labelRes": "8",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 9,
+    "title": "基准线",
+    "titleEn": "The Baseline",
+    "labelRes": "9",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 10,
+    "title": "记忆看见我",
+    "titleEn": "Memories Look at Me",
+    "labelRes": "10",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 11,
+    "title": "漫游式建筑",
+    "titleEn": "Promenade Architecturale",
+    "labelRes": "11",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 12,
+    "title": "万物有灵",
+    "titleEn": "Omnipresence",
+    "labelRes": "12",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 13,
+    "title": "不可量度",
+    "titleEn": "The Immeasurable",
+    "labelRes": "13",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 14,
+    "title": "存在之欲",
+    "titleEn": "Existence-Will",
+    "labelRes": "14",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 15,
+    "title": "城市的血肉",
+    "titleEn": "Veins of the City",
+    "labelRes": "15",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 16,
+    "title": "“第0卷”",
+    "titleEn": "Volume Zero",
+    "labelRes": "16",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 17,
+    "title": "模度",
+    "titleEn": "Modulor",
+    "labelRes": "17",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 18,
+    "title": "未来主义宣言",
+    "titleEn": "To Claim Tomorrow",
+    "labelRes": "18",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 19,
+    "title": "场所精神",
+    "titleEn": "Genius Loci",
+    "labelRes": "19",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 20,
+    "title": "开始，完成",
+    "titleEn": "New Beginnings and the End",
+    "labelRes": "20",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 21,
+    "title": "静谧与光明",
+    "titleEn": "Silence and Light",
+    "labelRes": "21",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 22,
+    "title": "早春，在诺瓦米奇",
+    "titleEn": "Spring of Nowa Miedź",
+    "labelRes": "22",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 23,
+    "title": "一百万亿张图稿",
+    "titleEn": "A Hundred Thousand Billion Sketches",
+    "labelRes": "1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 24,
+    "title": "两端燃烧的枝杈",
+    "titleEn": "Burning from Both Ends",
+    "labelRes": "2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 25,
+    "title": "第五类接触",
+    "titleEn": "Fifth Encounter",
+    "labelRes": "3",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 26,
+    "title": "建筑的乐园",
+    "titleEn": "An Architectural Paradise",
+    "labelRes": "4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 27,
+    "title": "呼捷玛斯的泪水",
+    "titleEn": "Vkhutemas's Tears",
+    "labelRes": "5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 28,
+    "title": "却在此刻诞生",
+    "titleEn": "The Birth of Architecture",
+    "labelRes": "6",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 29,
+    "title": "请不要对我冷酷",
+    "titleEn": "Do Not Be Cruel to Me",
+    "labelRes": "7",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 30,
+    "title": "所有我爱的人儿啊",
+    "titleEn": "Please Watch over Us",
+    "labelRes": "8",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 31,
+    "title": "寻鬼启事",
+    "titleEn": "Shade Search",
+    "labelRes": "1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 32,
+    "title": "朋友再见",
+    "titleEn": "Until We Meet Again",
+    "labelRes": "2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 33,
+    "title": "变形记",
+    "titleEn": "The Metamorphosis",
+    "labelRes": "3",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 34,
+    "title": "白痴",
+    "titleEn": "The Idiot",
+    "labelRes": "4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 35,
+    "title": "一种错觉",
+    "titleEn": "An Unknown Familiarity",
+    "labelRes": "5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 36,
+    "title": "彷徨少女时",
+    "titleEn": "Disoriented",
+    "labelRes": "6",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 37,
+    "title": "梦",
+    "titleEn": "Dream",
+    "labelRes": "7",
+    "storyBg": ""
+  },
+  {
+    "chapter": 38,
+    "part": 38,
+    "title": "宇宙飞行员",
+    "titleEn": "The Cosmonaut",
+    "labelRes": "8",
+    "storyBg": ""
   }
 ]

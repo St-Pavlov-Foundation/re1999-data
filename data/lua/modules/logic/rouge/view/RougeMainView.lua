@@ -38,8 +38,6 @@ function RougeMainView:onInitView()
 	self._btnclosetips = gohelper.findChildButtonWithAudio(self.viewGO, "Right/#go_token/#go_tips/#btn_closetips")
 	self._txttips = gohelper.findChildText(self.viewGO, "Right/#go_token/#go_tips/TipsView/Viewport/Content/#txt_tips")
 
-	self:addChildView(RougeBaseDLCViewComp.New())
-
 	if self._editableInitView then
 		self:_editableInitView()
 	end

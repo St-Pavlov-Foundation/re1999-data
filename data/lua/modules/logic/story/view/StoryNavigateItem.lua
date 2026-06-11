@@ -100,15 +100,15 @@ function StoryNavigateItem:showEpisode(episodeCo)
 	if self._episodeVideoPlayer then
 		self._episodeVideoPlayer:stop()
 		self._episodeVideoPlayer:clear()
-
-		self._episodeVideoPlayer = nil
 	end
 
 	if gohelper.isNil(self._episodeVideoGO) then
 		self._episodeVideoPlayer, self._episodeVideoGO = VideoPlayerMgr.instance:createGoAndVideoPlayer(self._goepisodevideo)
 	end
 
-	self._episodeVideoPlayer:play("story_rian_bg", true, nil, nil)
+	if self._episodeVideoPlayer then
+		self._episodeVideoPlayer:play("story_rian_bg", true, nil, nil)
+	end
 
 	self._episodeIconLoader = PrefabInstantiate.Create(self._goepisodeicon)
 
@@ -194,15 +194,16 @@ function StoryNavigateItem:showChapterEnd(chapterCo)
 	if self._chapterCloseVideoPlayer then
 		self._chapterCloseVideoPlayer:stop()
 		self._chapterCloseVideoPlayer:clear()
-
-		self._chapterCloseVideoPlayer = nil
 	end
 
 	if gohelper.isNil(self._chapterCloseVideoGO) then
 		self._chapterCloseVideoPlayer, self._chapterCloseVideoGO = VideoPlayerMgr.instance:createGoAndVideoPlayer(self._gochapterclosevideo)
 	end
 
-	self._chapterCloseVideoPlayer:play("story_rian_bg", true, nil, nil)
+	if self._chapterCloseVideoPlayer then
+		self._chapterCloseVideoPlayer:play("story_rian_bg", true, nil, nil)
+	end
+
 	AudioEffectMgr.instance:playAudio(AudioEnum.Story.Play_Chapter_End)
 	TaskDispatcher.cancelTask(self._chapterEndOut, self)
 	TaskDispatcher.runDelay(self._chapterEndOut, self, 3.2)

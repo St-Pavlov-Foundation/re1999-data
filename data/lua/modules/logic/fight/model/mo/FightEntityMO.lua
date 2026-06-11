@@ -869,6 +869,8 @@ end
 function FightEntityMO:updateStoredDeviceExPoint()
 	self.storedDeviceExPoint = 0
 
+	self:logStoredDeviceExPoint("update Stored Device Ex Point")
+
 	local targetId = FightEnum.BuffActId.DeviceExPointOverflowBank
 
 	for _, buffMo in ipairs(self:getBuffList()) do
@@ -881,11 +883,22 @@ function FightEntityMO:updateStoredDeviceExPoint()
 end
 
 function FightEntityMO:setStoredDeviceExPoint(num)
+	self:logStoredDeviceExPoint("setStoredDeviceExPoint .." .. num)
+
 	self.storedDeviceExPoint = num
 end
 
 function FightEntityMO:changeStoredDeviceExPoint(offsetNum)
+	self:logStoredDeviceExPoint(string.format("changeStoredDeviceExPoint .. before %s, after %s", self.storedDeviceExPoint, self.storedDeviceExPoint + offsetNum))
+
 	self.storedDeviceExPoint = self.storedDeviceExPoint + offsetNum
+end
+
+function FightEntityMO:logStoredDeviceExPoint(msg)
+	if isDebugBuild then
+		logNormal(string.format("[device store ex point][%s] %s", self:getEntityName(), msg))
+		logNormal(string.format("[device store ex point][%s] %s", self:getEntityName(), debug.traceback()))
+	end
 end
 
 function FightEntityMO:getStoredDeviceExPoint()
@@ -1235,7 +1248,8 @@ function FightEntityMO:getHpAndShieldFillAmount(hp, shield)
 	shieldPercent = shieldPercent * maxHpLockRate
 
 	local realHpPercent, fictionHpPercent = self:getHpPercentAndFictionHpPercent(hpPercent, currHp)
-	local fakeHpPercent = self:getFakeHpPercent()
+	local fakeHp = self:getFakeHp()
+	local fakeHpPercent = fakeHp < 0 and 0 or Mathf.Clamp01(fakeHp / lockedMaxHp)
 
 	if fakeHpPercent > 0 then
 		fakeHpPercent = fakeHpPercent + shieldPercent
@@ -1283,7 +1297,7 @@ function FightEntityMO:getFictionHp()
 	return -1
 end
 
-function FightEntityMO:getFakeHpAndMaxFakeHp()
+function FightEntityMO:getFakeHp()
 	local actId = FightEnum.BuffActId.LostHpToFakeHp
 
 	for _, buffMo in pairs(self.buffDic) do
@@ -1293,25 +1307,14 @@ function FightEntityMO:getFakeHpAndMaxFakeHp()
 			for _, buffActInfo in pairs(actInfo) do
 				if buffActInfo.actId == actId then
 					local fakeHp = buffActInfo.param[1]
-					local maxFakeHp = buffActInfo.param[2]
 
-					return fakeHp or -1, maxFakeHp or -1
+					return fakeHp or -1
 				end
 			end
 		end
 	end
 
 	return -1, -1
-end
-
-function FightEntityMO:getFakeHpPercent()
-	local fakeHp, maxFakeHp = self:getFakeHpAndMaxFakeHp()
-
-	if fakeHp < 0 then
-		return 0
-	end
-
-	return Mathf.Clamp01(fakeHp / maxFakeHp)
 end
 
 function FightEntityMO:set_position(key, position)

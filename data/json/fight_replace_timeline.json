@@ -642,7 +642,7 @@
   {
     "id": "xingti2hao_302501_skill1",
     "timeline": "xingti2hao_302504_skill1",
-    "priority": 1,
+    "priority": 2,
     "target": 1,
     "simulate": 1,
     "condition": "5#302504"
@@ -4038,5 +4038,13 @@
     "target": 1,
     "simulate": 0,
     "condition": "5#313903"
+  },
+  {
+    "id": "xingti2hao_302501_skill1",
+    "timeline": "xingti2hao_302504_skill1_2",
+    "priority": 1,
+    "target": 5,
+    "simulate": 1,
+    "condition": "5#302504|6#30001"
   }
 ]

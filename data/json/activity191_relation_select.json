@@ -326,97 +326,87 @@
   },
   {
     "activityId": 13808,
-    "tag": "peace",
+    "tag": "afterglow",
     "sortIndex": 10
   },
   {
     "activityId": 13808,
-    "tag": "hunt",
+    "tag": "counter",
     "sortIndex": 11
   },
   {
     "activityId": 13808,
-    "tag": "oldFriend",
+    "tag": "cure",
     "sortIndex": 12
   },
   {
     "activityId": 13808,
-    "tag": "school",
+    "tag": "lapras",
     "sortIndex": 13
   },
   {
     "activityId": 13808,
-    "tag": "cure",
+    "tag": "child",
     "sortIndex": 14
   },
   {
     "activityId": 13808,
-    "tag": "lapras",
+    "tag": "sportsMeet",
     "sortIndex": 15
   },
   {
     "activityId": 13808,
-    "tag": "child",
+    "tag": "artist",
     "sortIndex": 16
   },
   {
     "activityId": 13808,
-    "tag": "sportsMeet",
+    "tag": "legend",
     "sortIndex": 17
   },
   {
     "activityId": 13808,
-    "tag": "artist",
+    "tag": "warfare",
     "sortIndex": 18
   },
   {
     "activityId": 13808,
-    "tag": "legend",
+    "tag": "flashlight",
     "sortIndex": 19
   },
   {
     "activityId": 13808,
-    "tag": "warfare",
+    "tag": "chess",
     "sortIndex": 20
   },
   {
     "activityId": 13808,
-    "tag": "flashlight",
+    "tag": "tarotCards",
     "sortIndex": 21
   },
   {
     "activityId": 13808,
-    "tag": "dnd",
+    "tag": "revival",
     "sortIndex": 22
   },
   {
     "activityId": 13808,
-    "tag": "chess",
+    "tag": "family",
     "sortIndex": 23
   },
   {
     "activityId": 13808,
-    "tag": "tarotCards",
+    "tag": "greenDeer",
     "sortIndex": 24
   },
   {
     "activityId": 13808,
-    "tag": "revival",
+    "tag": "omnipotent",
     "sortIndex": 25
   },
   {
     "activityId": 13808,
-    "tag": "ancient",
-    "sortIndex": 26
-  },
-  {
-    "activityId": 13808,
     "tag": "confidant",
-    "sortIndex": 27
-  },
-  {
-    "activityId": 13808,
-    "tag": "lineScience",
-    "sortIndex": 28
+    "sortIndex": 26
   }
 ]

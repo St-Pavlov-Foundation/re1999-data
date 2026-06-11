@@ -8,8 +8,7 @@ local fields = {
 	cost = 2
 }
 local primaryKey = {
-	"activityId",
-	"cost"
+	"activityId"
 }
 local mlStringKey = {}
 

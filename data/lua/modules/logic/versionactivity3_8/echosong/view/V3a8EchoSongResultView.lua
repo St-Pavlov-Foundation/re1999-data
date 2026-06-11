@@ -32,9 +32,33 @@ function V3a8EchoSongResultView:removeEvents()
 end
 
 function V3a8EchoSongResultView:_btncloseOnClick()
+	if self._isWin and self._episodeId then
+		self:addEventCb(ViewMgr.instance, ViewEvent.OnOpenView, self._onOpenView, self)
+
+		local time = 0.5
+
+		UIBlockHelper.instance:startBlock("V3a8EchoSongResultView close", time)
+		TaskDispatcher.cancelTask(self._delayClose, self)
+		TaskDispatcher.runDelay(self._delayClose, self, time)
+		V3a8EchoSongController.instance:finishEpisodeLevel(self._episodeId)
+
+		return
+	end
+
 	if self._isWin then
 		self:closeThis()
 	end
+end
+
+function V3a8EchoSongResultView:_onOpenView(viewName)
+	if viewName == ViewName.StoryLeadRoleSpineView then
+		TaskDispatcher.cancelTask(self._delayClose, self)
+		self:_delayClose()
+	end
+end
+
+function V3a8EchoSongResultView:_delayClose()
+	self:closeThis()
 end
 
 function V3a8EchoSongResultView:_btnquitgameOnClick()
@@ -45,11 +69,14 @@ end
 function V3a8EchoSongResultView:_btnrestartOnClick()
 	V3a8EchoSongController.instance:statGameStart()
 	self:closeThis()
+	V3a8EchoSongController.instance:clearGameResult()
 	V3a8EchoSongController.instance:dispatchEvent(V3a8EchoSongEvent.RestartGame)
 end
 
 function V3a8EchoSongResultView:_editableInitView()
 	self._goBtn = gohelper.findChild(self.viewGO, "btn")
+	self._goFinishStar = gohelper.findChild(self.viewGO, "targets/#go_targetitem/result/go_finish")
+	self._goUnfinishStar = gohelper.findChild(self.viewGO, "targets/#go_targetitem/result/go_unfinish")
 end
 
 function V3a8EchoSongResultView:onUpdateParam()
@@ -63,12 +90,21 @@ function V3a8EchoSongResultView:onOpen()
 	gohelper.setActive(self._gosuccess, self._isWin)
 	gohelper.setActive(self._gofail, not self._isWin)
 	gohelper.setActive(self._goBtn, not self._isWin)
+	gohelper.setActive(self._goFinishStar, self._isWin)
+	gohelper.setActive(self._goUnfinishStar, not self._isWin)
+
+	if self._isWin then
+		AudioMgr.instance:trigger(V3a8EchoSongEnum.Audio.play_ui_shiji3_8_hsy_win)
+	else
+		AudioMgr.instance:trigger(V3a8EchoSongEnum.Audio.play_ui_shiji3_8_hsy_fail)
+	end
 end
 
 function V3a8EchoSongResultView:onClose()
+	TaskDispatcher.cancelTask(self._delayClose, self)
+
 	if self._isWin and self._episodeId then
 		ViewMgr.instance:closeView(ViewName.V3a8EchoSongGameView)
-		V3a8EchoSongController.instance:finishEpisodeLevel(self._episodeId)
 	end
 end
 

@@ -30,13 +30,18 @@ function DianJiShiGameMapAreaItem:init(go)
 	gohelper.setActive(self._goCheck, false)
 	gohelper.setActive(self._goPlaced, false)
 
+	self._tranFlag = self._goFlag.transform
 	self._tranLight = self._goLight.transform
 	self._tranImagePlacedBg = self._imagePlacedBg.transform
 	self._tranImageValueBg = self._imageValue.transform
 	self._tranImageCheckBg = self._imageCheckBg.transform
+	self._filterCellList = {}
+	self._filterAreaMap = {}
+	self._resultValue = 0
 end
 
 function DianJiShiGameMapAreaItem:addEventListeners()
+	self:addEventCb(DianJiShiGameController.instance, DianJiShiGameEvent.OnBeginDragBlock, self._onBeginDragBlock, self)
 	self:addEventCb(DianJiShiGameController.instance, DianJiShiGameEvent.OnPlaceBlockDone, self._onPlaceBlockDone, self)
 	self:addEventCb(DianJiShiGameController.instance, DianJiShiGameEvent.OnPlaceBlockError, self._onPlaceBlockError, self)
 	self:addEventCb(DianJiShiGameController.instance, DianJiShiGameEvent.OnLightAreaValue, self._onLightAreaValue, self)
@@ -50,6 +55,7 @@ function DianJiShiGameMapAreaItem:onUpdateMO(areaInfo, index)
 	self._areaInfo = areaInfo
 	self._areaId = self._areaInfo.id
 	self._index = index
+	self._areaCo = self._areaInfo and self._areaInfo.config
 
 	self:refreshUI()
 end
@@ -80,8 +86,7 @@ function DianJiShiGameMapAreaItem:setBonus()
 end
 
 function DianJiShiGameMapAreaItem:setAreaFlag()
-	local areaCo = self._areaInfo and self._areaInfo.config
-	local dir = areaCo and areaCo.direction
+	local dir = self._areaCo and self._areaCo.direction
 
 	dir = dir or DianJiShiGameEnum.Direction.LeftTop
 
@@ -93,19 +98,26 @@ function DianJiShiGameMapAreaItem:setAreaFlag()
 
 	gohelper.addChild(goDir, self._goFlag)
 
-	local configValue = areaCo and areaCo.value or 0
+	local configValue = self._areaCo and self._areaCo.value or 0
 	local placeValue = self._areaInfo and self._areaInfo.value or 0
-	local resultValue = configValue - placeValue
+
+	self._resultValue = configValue - placeValue
+
+	self:setTagByValue(self._resultValue)
+	self:setTagBgDir(dir)
+	self:setTagOffset(self._areaCo.offset)
+end
+
+function DianJiShiGameMapAreaItem:setTagByValue(resultValue)
 	local isFinish = resultValue == 0
 
-	self:setTagBgDir(dir)
 	gohelper.setActive(self._goValue, not isFinish)
 	gohelper.setActive(self._goCheck, isFinish)
 
 	if not isFinish then
 		self._txtValue.text = resultValue
 
-		local valueBgName = areaCo.icon
+		local valueBgName = self._areaCo and self._areaCo.icon
 
 		UISpriteSetMgr.instance:setV3a8DianJiShiSprite(self._imageValue, valueBgName, true)
 	end
@@ -119,6 +131,17 @@ function DianJiShiGameMapAreaItem:setTagBgDir(dir)
 	transformhelper.setLocalScale(self._tranImagePlacedBg, xScale, 1, 1)
 	transformhelper.setLocalScale(self._tranImageValueBg, xScale, 1, 1)
 	transformhelper.setLocalScale(self._tranImageCheckBg, xScale, 1, 1)
+end
+
+function DianJiShiGameMapAreaItem:setTagOffset(offsetStr)
+	local offsetList = string.splitToNumber(offsetStr, "#")
+	local offsetX = offsetList and offsetList[1]
+	local offsetY = offsetList and offsetList[2]
+
+	offsetX = offsetX or 0
+	offsetY = offsetY or 0
+
+	recthelper.setAnchor(self._tranFlag, offsetX, offsetY)
 end
 
 function DianJiShiGameMapAreaItem:_onLightAreaValue(areaIdMap)
@@ -135,6 +158,10 @@ function DianJiShiGameMapAreaItem:_onPlaceBlockDone()
 	self:_updateLightEffect(false)
 	gohelper.setActive(self._goPlaced, false)
 	gohelper.setActive(self._goPlaced, true)
+
+	local tagFullPath = SLFramework.GameObjectHelper.GetPath(self._goFlag)
+
+	DianJiShiGameModel.instance:recordLastUpdateAreaTagPath(tagFullPath)
 end
 
 function DianJiShiGameMapAreaItem:_onPlaceBlockError()
@@ -149,6 +176,36 @@ function DianJiShiGameMapAreaItem:_updateLightEffect(isLight)
 	self._isLight = isLight
 
 	gohelper.setActive(self._goLight, self._isLight)
+end
+
+function DianJiShiGameMapAreaItem:_onBeginDragBlock(blockInfo)
+	local isInThisArea = self:_isBlockInThisArea(blockInfo)
+
+	if not isInThisArea then
+		return
+	end
+
+	local blockCo = blockInfo.config
+	local blockValue = blockCo and blockCo.value or 0
+	local tempAreaValue = self._resultValue + blockValue
+
+	self:setTagByValue(tempAreaValue)
+
+	if self._resultValue == blockValue and tempAreaValue ~= blockValue then
+		DianJiShiGameController.instance:dispatchEvent(DianJiShiGameEvent.OnMapAreaValueNotFit)
+	end
+end
+
+function DianJiShiGameMapAreaItem:_isBlockInThisArea(blockInfo)
+	local status = blockInfo and blockInfo.status
+
+	if status ~= DianJiShiGameEnum.BlockStatus.Placed then
+		return
+	end
+
+	DianJiShiGameController.instance:getBlockFilterCellList(blockInfo, blockInfo.posIndex[1], blockInfo.posIndex[2], self._filterCellList, self._filterAreaMap)
+
+	return self._filterAreaMap and self._filterAreaMap[self._areaId] ~= nil
 end
 
 function DianJiShiGameMapAreaItem:onDestroy()

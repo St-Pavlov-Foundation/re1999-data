@@ -74,6 +74,7 @@ NecrologistStoryEnum.BaseType = {
 }
 NecrologistStoryEnum.WeatherType = {
 	Light = 7,
+	CloudyNotEffect = 10,
 	Cloudy = 3,
 	Rainy = 5,
 	Sunny = 1,
@@ -83,9 +84,15 @@ NecrologistStoryEnum.WeatherType = {
 	Fog = 2,
 	Night = 9
 }
-NecrologistStoryEnum.NotWeatherIcon = {
-	[NecrologistStoryEnum.WeatherType.Light] = true,
-	[NecrologistStoryEnum.WeatherType.Fire] = true
+NecrologistStoryEnum.WeatherType2ResIndex = {
+	[NecrologistStoryEnum.WeatherType.Sunny] = 1,
+	[NecrologistStoryEnum.WeatherType.Fog] = 2,
+	[NecrologistStoryEnum.WeatherType.Cloudy] = 3,
+	[NecrologistStoryEnum.WeatherType.Snowy] = 4,
+	[NecrologistStoryEnum.WeatherType.Rainy] = 5,
+	[NecrologistStoryEnum.WeatherType.Flow] = 6,
+	[NecrologistStoryEnum.WeatherType.Night] = 9,
+	[NecrologistStoryEnum.WeatherType.CloudyNotEffect] = 3
 }
 NecrologistStoryEnum.WeatherType2Name = {
 	[NecrologistStoryEnum.WeatherType.Sunny] = "sun",

@@ -60,6 +60,7 @@ function CharacterDialogComp:onOpen()
 end
 
 function CharacterDialogComp:startDialog(groupId)
+	V3a5PuzzleController.instance:dispatchEvent(V3a5PuzzleEvent.onStartDialog, groupId)
 	self:_showDialog(true)
 
 	self._groupId = groupId
@@ -303,6 +304,7 @@ function CharacterDialogComp:_checkNextStep()
 	else
 		self:_showDialog(false)
 		self.viewContainer:finishDialog(self._groupId)
+		V3a5PuzzleController.instance:dispatchEvent(V3a5PuzzleEvent.onFinishDialog, self._groupId)
 	end
 end
 

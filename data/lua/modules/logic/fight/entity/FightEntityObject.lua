@@ -71,7 +71,13 @@ function FightEntityObject:initComponents()
 	end
 
 	if self.entityData.modelId == 3092 then
+		local skin = self.entityData.skin
+
 		FightGameMgr.timelinePreLoaderMgr:preLoadTimeline("yigeer_309201_unique", self.entityData)
+
+		if skin == 309203 then
+			FightGameMgr.timelinePreLoaderMgr:preLoadTimeline("yigeer_309203_unique", self.entityData)
+		end
 	end
 end
 

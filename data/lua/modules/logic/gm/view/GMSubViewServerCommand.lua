@@ -78,12 +78,17 @@ function GMSubViewServerCommand:clearAllUI()
 		gohelper.destroy(v)
 	end
 
+	for k, v in pairs(self._goTitles) do
+		gohelper.destroy(v)
+	end
+
 	tabletool.clear(self._buttons)
 	tabletool.clear(self._inputTexts)
 	tabletool.clear(self._toggles)
 	tabletool.clear(self._sliders)
 	tabletool.clear(self._dropDowns)
 	tabletool.clear(self._horizontalGroups)
+	tabletool.clear(self._goTitles)
 end
 
 function GMSubViewServerCommand:buildUI()
@@ -113,6 +118,7 @@ function GMSubViewServerCommand:buildUI()
 
 		return countB < countA
 	end)
+	self:addTitleSplitLine("后端指令")
 
 	for i, v in ipairs(commands) do
 		self:addLineIndex()
@@ -141,6 +147,12 @@ function GMSubViewServerCommand:buildUI()
 			cmd = v.name,
 			paramInput = allParamTxt
 		})
+	end
+
+	if self._content then
+		local y = PlayerPrefsHelper.getNumber("GMSubViewServerCommand_contentY", 0)
+
+		recthelper.setAnchorY(self._content.transform, y)
 	end
 
 	self.initUIDone = true
@@ -184,6 +196,16 @@ function GMSubViewServerCommand:onCommandClick(data)
 	local count = PlayerPrefsHelper.getNumber("GMSubViewServerCommand_count#" .. data.cmd, 0)
 
 	PlayerPrefsHelper.setNumber("GMSubViewServerCommand_count#" .. data.cmd, count + 1)
+end
+
+function GMSubViewServerCommand:onClose()
+	if self._content then
+		local y = recthelper.getAnchorY(self._content.transform)
+
+		PlayerPrefsHelper.setNumber("GMSubViewServerCommand_contentY", y)
+	end
+
+	GMSubViewServerCommand.super.onClose(self)
 end
 
 return GMSubViewServerCommand

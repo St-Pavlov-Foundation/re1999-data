@@ -24,10 +24,14 @@ function NecrologistStoryOptionsItem:onClickOption(item)
 	self:refreshOptionList()
 
 	local storyConfig = self:getStoryConfig()
-	local optionId = NecrologistStoryConfig.instance:getOptionIdByConfigAndIndex(storyConfig, item.index)
+	local optionId, optionIds = NecrologistStoryConfig.instance:getOptionIdByConfigAndIndex(storyConfig, item.index)
 
 	if optionId then
-		NecrologistStoryController.instance:dispatchEvent(NecrologistStoryEvent.OnSelectOption, optionId)
+		local mo = NecrologistStoryModel.instance:getCurStoryMO()
+
+		if mo then
+			mo:onSelectOption(optionId, optionIds)
+		end
 	end
 
 	NecrologistStoryController.instance:dispatchEvent(NecrologistStoryEvent.OnSelectSection, self.selectSection)

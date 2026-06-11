@@ -12,9 +12,13 @@ DianJiShiGameEvent.OnPlaceBlockError = GameUtil.getEventId()
 DianJiShiGameEvent.OnUpdateGameStatus = GameUtil.getEventId()
 DianJiShiGameEvent.OnHelpPlaceBlock = GameUtil.getEventId()
 DianJiShiGameEvent.OnLightAreaValue = GameUtil.getEventId()
+DianJiShiGameEvent.OnMapAreaValueNotFit = GameUtil.getEventId()
 DianJiShiGameEvent.OneClickClaimReward = GameUtil.getEventId()
 DianJiShiGameEvent.EpisodeFinished = GameUtil.getEventId()
 DianJiShiGameEvent.OnBackToLevel = GameUtil.getEventId()
 DianJiShiGameEvent.GuideOnEnterEpisode = GameUtil.getEventId()
+DianJiShiGameEvent.GuideFindShowDragEffect = GameUtil.getEventId()
+DianJiShiGameEvent.GuideStartShowDragEffect = GameUtil.getEventId()
+DianJiShiGameEvent.GuideShowDragEffectDone = GameUtil.getEventId()
 
 return DianJiShiGameEvent

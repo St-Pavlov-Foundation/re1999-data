@@ -8,6 +8,7 @@ PostProcessingMgr.PPEffectMaskType = typeof(UrpCustom.PPEffectMask)
 PostProcessingMgr.PPCustomCamDataType = typeof(UrpCustom.CustomCameraData)
 PostProcessingMgr.PPVolumeType = typeof(UnityEngine.Rendering.Volume)
 PostProcessingMgr.PPVolumeWrapType = typeof(UrpCustom.PPVolumeWrap)
+PostProcessingMgr.MainAllProfilePath = "ppassets/profiles/main_profile_all.asset"
 PostProcessingMgr.MainHighProfilePath = "ppassets/profiles/main_profile_high.asset"
 PostProcessingMgr.MainMiddleProfilePath = "ppassets/profiles/main_profile_middle.asset"
 PostProcessingMgr.MainLowProfilePath = "ppassets/profiles/main_profile_low.asset"
@@ -773,7 +774,7 @@ function PostProcessingMgr:setMainPPLevel(grade)
 
 	local targetProfile = self:getProfile()
 
-	self._unitPPVolume:SetProfile(targetProfile)
+	self:setProfile(targetProfile)
 end
 
 function PostProcessingMgr:getProfile()
@@ -796,6 +797,14 @@ function PostProcessingMgr:getProfile()
 	end
 
 	return targetProfile
+end
+
+function PostProcessingMgr:setProfile(profile)
+	self._unitPPVolume:SetProfile(profile)
+end
+
+function PostProcessingMgr:getUnitProfile()
+	return self._unitPPVolume.PPVolume.sharedProfile
 end
 
 function PostProcessingMgr:ClearPPRenderRts()

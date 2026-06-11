@@ -44,6 +44,7 @@ function V3a8_WarmUpLeftView:_editableInitView()
 	self._golist2 = gohelper.findChild(self._ansGo, "Scroll_list/#go_list_2")
 	self._animatorPlayer = csAnimatorPlayer.Get(self._leftGo)
 	self._animtor = self._animatorPlayer.animator
+	self._ansAnimator = self._ansGo:GetComponent(gohelper.Type_Animator)
 	self._dayItemList = self:getUserDataTb_()
 
 	for i = 1, 5 do
@@ -83,6 +84,12 @@ function V3a8_WarmUpLeftView:onDataUpdateFirst()
 	local isDone = self:_checkIsDone()
 
 	self._draggedState = isDone and kFirstUnlocked or kFirstLocked
+
+	if isDone then
+		self:_playAnsAnimIdleOpened()
+	else
+		self:_playAnsAnimOpen()
+	end
 end
 
 function V3a8_WarmUpLeftView:onDataUpdate()
@@ -240,6 +247,22 @@ function V3a8_WarmUpLeftView:_play_ui_fuleyuan_yure_whoosh()
 	return
 end
 
+function V3a8_WarmUpLeftView:_playAnsAnim(name, ...)
+	self._ansAnimator:Play(name, ...)
+end
+
+function V3a8_WarmUpLeftView:_playAnsAnimOpen()
+	self:_playAnsAnim(UIAnimationName.Open, 0, 0)
+end
+
+function V3a8_WarmUpLeftView:_playAnsAnimIdleHide()
+	self:_playAnsAnim("idle1", 0, 1)
+end
+
+function V3a8_WarmUpLeftView:_playAnsAnimIdleOpened()
+	self:_playAnsAnim("idle2", 0, 1)
+end
+
 function V3a8_WarmUpLeftView:_create_V3a8_WarmUpOpItem(srcGo, index)
 	local item = V3a8_WarmUpOpItem.New({
 		parent = self,
@@ -296,18 +319,6 @@ function V3a8_WarmUpLeftView:_refreshIssue()
 	end
 
 	self._txttitle.text = playCO.issue
-end
-
-function V3a8_WarmUpLeftView:onOpItemClick(item)
-	local index = item:index()
-	local playCO = self:_getPlayCO()
-	local bingo = playCO.answer == item:index()
-
-	item:setActiveYes(bingo)
-
-	if bingo then
-		self:_playAnimAfterSwipe()
-	end
 end
 
 return V3a8_WarmUpLeftView

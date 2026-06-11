@@ -37,15 +37,21 @@ function V3a8EchoSongEnemyBaseEntityComp:_frameUpdate()
 end
 
 function V3a8EchoSongEnemyBaseEntityComp:_checkMainPlayerHurt()
+	if V3a8EchoSongController.instance:isGameOver() then
+		return
+	end
+
 	local mainPlayer = self._view:getMainPlayerGo()
 
 	if mainPlayer then
 		self._tempPos.x, self._tempPos.y = recthelper.getAnchor(mainPlayer.transform)
 
 		local hurtDistance = self._hurtDistance or self:_getHurtDistance()
+		local dx = self._curPos.x - self._tempPos.x
+		local dy = self._curPos.y - self._tempPos.y
 
-		if hurtDistance >= Vector2.Distance(self._curPos, self._tempPos) then
-			V3a8EchoSongController.instance:dispatchEvent(V3a8EchoSongEvent.ShowResultView, false)
+		if dx * dx + dy * dy <= hurtDistance * hurtDistance then
+			V3a8EchoSongController.instance:dispatchGameResult(false)
 		end
 	end
 end

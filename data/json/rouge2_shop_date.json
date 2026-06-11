@@ -19,5 +19,12 @@
     "endTime": "2026-06-11 05:00:00",
     "shopTitle": "第III期",
     "currencyMax": 78350
+  },
+  {
+    "id": 4,
+    "startTime": "2026-06-09 05:00:00",
+    "endTime": "2038-06-11 05:00:00",
+    "shopTitle": "常驻奖励",
+    "currencyMax": 139350
   }
 ]

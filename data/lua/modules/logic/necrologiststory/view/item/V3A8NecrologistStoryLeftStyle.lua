@@ -12,13 +12,13 @@ function V3A8NecrologistStoryLeftStyle:onInit()
 	end
 end
 
-function V3A8NecrologistStoryLeftStyle:addEventListeners()
+function V3A8NecrologistStoryLeftStyle:onAddEvent()
 	self:addEventCb(NecrologistStoryController.instance, NecrologistStoryEvent.OnChangeWeather, self.refreshView, self)
 	self:addEventCb(NecrologistStoryController.instance, NecrologistStoryEvent.OnChangeTime, self.refreshView, self)
 	self:addEventCb(NecrologistStoryController.instance, NecrologistStoryEvent.OnChangePlace, self.refreshView, self)
 end
 
-function V3A8NecrologistStoryLeftStyle:removeEventListeners()
+function V3A8NecrologistStoryLeftStyle:onRemoveEvent()
 	self:removeEventCb(NecrologistStoryController.instance, NecrologistStoryEvent.OnChangeWeather, self.refreshView, self)
 	self:removeEventCb(NecrologistStoryController.instance, NecrologistStoryEvent.OnChangeTime, self.refreshView, self)
 	self:removeEventCb(NecrologistStoryController.instance, NecrologistStoryEvent.OnChangePlace, self.refreshView, self)
@@ -32,6 +32,7 @@ function V3A8NecrologistStoryLeftStyle:initTypeList(type)
 	item.txtPlace = gohelper.findChildTextMesh(item.go, "Title/#txt_place")
 	item.txtTime = gohelper.findChildTextMesh(item.go, "Title/#txt_time")
 	item.txtWeather = gohelper.findChildTextMesh(item.go, "Title/#txt_weather")
+	item.imgWeather = gohelper.findChildImage(item.go, "Title/#image_weather")
 	item.txtNum = gohelper.findChildTextMesh(item.go, "Title/#txt_num")
 	item.txtChapterName = gohelper.findChildTextMesh(item.go, "Title/#txt_chapterName")
 
@@ -58,17 +59,28 @@ function V3A8NecrologistStoryLeftStyle:refreshTypeItem(item, curType)
 	local success, y, m1, d = NecrologistStoryHelper.stringTotimeData(mo.time)
 
 	if success then
-		item.txtTime.text = string.format("%02d.%02d.%d", m1, d, y)
+		item.txtTime.text = string.format("%02d.%02d.%d", d, m1, y)
 	else
 		item.txtTime.text = ""
 	end
 
 	item.txtPlace.text = mo.place or ""
 
-	NecrologistStoryHelper.setWeatherTxt(item.txtWeather, mo.weather)
+	NecrologistStoryHelper.setWeatherTxt(item.txtWeather, mo.showWeather)
+	NecrologistStoryHelper.setWeatherWihteIcon(item.imgWeather, mo.showWeather)
 
 	item.txtNum.text = string.format("%02d", NecrologistStoryHelper.getStoryGroupIndex(mo.id))
 	item.txtChapterName.text = mo.config.storyName
+
+	if curType == 3 then
+		item.simage = gohelper.findChildSingleImage(item.go, "")
+
+		if item.simage then
+			local resPath = string.format("singlebg/dungeon/rolestory_singlebg/3020/rolestory_3020_leftbg_%s.png", tonumber(y) == 1992 and "3" or "4")
+
+			item.simage:LoadImage(resPath)
+		end
+	end
 end
 
 function V3A8NecrologistStoryLeftStyle:refreshView()
@@ -83,7 +95,11 @@ function V3A8NecrologistStoryLeftStyle:refreshView()
 end
 
 function V3A8NecrologistStoryLeftStyle:onDestroy()
-	return
+	for _, item in pairs(self.typeList) do
+		if item.simage then
+			item.simage:UnLoadImage()
+		end
+	end
 end
 
 function V3A8NecrologistStoryLeftStyle.getResPath()

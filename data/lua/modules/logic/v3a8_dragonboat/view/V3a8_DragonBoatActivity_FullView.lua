@@ -12,7 +12,6 @@ function V3a8_DragonBoatActivity_FullView:onInitView()
 	self._goclaim = gohelper.findChild(self.viewGO, "Root/#go_reward/#go_claim")
 	self._gohasget = gohelper.findChild(self.viewGO, "Root/#go_reward/#go_hasget")
 	self._txtLimitTime = gohelper.findChildText(self.viewGO, "Root/LimitTime/image_LimitTimeBG/#txt_LimitTime")
-	self._txtLimitTime2 = gohelper.findChildText(self.viewGO, "Root/LimitTime2/image_LimitTimeBG/#txt_LimitTime2")
 	self._goroletip = gohelper.findChild(self.viewGO, "Root/scroll_line/#go_roletip")
 	self._btnplay = gohelper.findChildButtonWithAudio(self.viewGO, "Root/Btn/#btn_play")
 	self._godesc = gohelper.findChild(self.viewGO, "Root/Btn/#btn_play/#go_desc")
@@ -47,7 +46,6 @@ function V3a8_DragonBoatActivity_FullView:_editableInitView()
 
 	self._rewardItemList = {}
 	self._txtLimitTime.text = ""
-	self._txtLimitTime2.text = ""
 	self._scroll_lineGo = gohelper.findChild(self.viewGO, "Root/scroll_line")
 	self._scrllLine = self.viewContainer:create_V3a8_DragonBoatActivity_ScrollLine(self, self._scroll_lineGo)
 
@@ -127,6 +125,7 @@ function V3a8_DragonBoatActivity_FullView:onDestroyView()
 	GameUtil.onDestroyViewMemberList(self, "_rewardItemList")
 	GameUtil.onDestroyViewMember(self, "_roleItem")
 	GameUtil.onDestroyViewMemberList(self, "_boatItemList")
+	GameUtil.onDestroyViewMember(self, "_scrllLine")
 
 	self._blueBoatItem = nil
 	self._redBoatItem = nil
@@ -150,6 +149,7 @@ function V3a8_DragonBoatActivity_FullView:onOpen()
 	V3a8_DragonBoatController.instance:registerCallback(Activity241Event.onReceiveAct241GetInfoReply, self._onReceiveAct241GetInfoReply, self)
 	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, self._onDailyRefresh, self, LuaEventSystem.Low)
 	ActivityController.instance:registerCallback(ActivityEvent.UpdateActivity, self._onUpdateActivity, self, LuaEventSystem.Low)
+	CurrencyController.instance:registerCallback(CurrencyEvent.CurrencyChange, self._onCurrencyChange, self, LuaEventSystem.Low)
 end
 
 function V3a8_DragonBoatActivity_FullView:onClose()
@@ -159,6 +159,7 @@ function V3a8_DragonBoatActivity_FullView:onClose()
 	TimeDispatcher.instance:unregisterCallback(TimeDispatcher.OnDailyRefresh, self._onDailyRefresh, self)
 	ActivityController.instance:unregisterCallback(ActivityEvent.UpdateActivity, self._onUpdateActivity, self)
 	V3a8_DragonBoatController.instance:unregisterCallback(Activity241Event.onReceiveAct241GetInfoReply, self._onReceiveAct241GetInfoReply, self)
+	CurrencyController.instance:unregisterCallback(CurrencyEvent.CurrencyChange, self._onCurrencyChange, self)
 end
 
 function V3a8_DragonBoatActivity_FullView:_onReceiveGlobalVoteGetInfoReply()
@@ -344,8 +345,13 @@ function V3a8_DragonBoatActivity_FullView:_clearTimeTick()
 end
 
 function V3a8_DragonBoatActivity_FullView:_refreshTimeTick()
-	self._txtLimitTime.text = self:_getRemainTimeStr1()
-	self._txtLimitTime2.text = self:_getRemainTimeStr2()
+	local isOpenedVoteFinal = self.viewContainer:isOpenedVoteFinal()
+
+	if isOpenedVoteFinal then
+		self._txtLimitTime.text = self:_getRemainTimeStr2()
+	else
+		self._txtLimitTime.text = self:_getRemainTimeStr1()
+	end
 end
 
 function V3a8_DragonBoatActivity_FullView:_getRemainTimeStr1()
@@ -572,6 +578,10 @@ end
 
 function V3a8_DragonBoatActivity_FullView:_tweenUpdateCb(votedCount)
 	self:_setRewardProgImpl(votedCount)
+end
+
+function V3a8_DragonBoatActivity_FullView:_onCurrencyChange()
+	self:_refreshCurMaxTicket()
 end
 
 return V3a8_DragonBoatActivity_FullView

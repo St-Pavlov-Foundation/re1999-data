@@ -44,8 +44,9 @@ function SummonController:addConstEvents()
 	self:registerCallback(SummonEvent.onSummonPoolHistorySummonRequest, self._onSummonPoolHistorySummonRequest, self)
 end
 
-function SummonController:_onSummonPoolHistorySummonRequest(poolId)
+function SummonController:_onSummonPoolHistorySummonRequest(poolId, count)
 	SummonPoolHistoryModel.instance:addRequestHistoryPool(poolId)
+	self:checkNewbieConvert(poolId, count)
 end
 
 function SummonController:_guideSpecialEventStart(eventEnum, guideId, stepId)
@@ -987,6 +988,44 @@ function SummonController:onInfallibleSummonSuccess(summonResult)
 			break
 		end
 	end
+end
+
+function SummonController:checkNewbieConvert(poolId, summonCount)
+	if SummonMainModel.instance:getNewbiePoolExist() == false then
+		SummonMainModel.instance:setItemConvertTag(nil)
+
+		return
+	end
+
+	local poolConfig = SummonConfig.instance:getSummonPool(poolId)
+
+	if poolConfig and SummonMainModel.getADPageTabIndex(poolConfig) == SummonEnum.TabContentIndex.CharNewbie then
+		local poolInfoMo = SummonMainModel.instance:getPoolServerMO(poolId)
+
+		if poolInfoMo and poolInfoMo.summonCount + summonCount >= SummonConfig.getSummonSSRTimes(poolConfig) then
+			local summonParam = GameUtil.splitString2(poolConfig.cost1, true)
+
+			for _, singleParam in ipairs(summonParam) do
+				local itemConfig = ItemConfig.instance:getItemConfig(singleParam[1], singleParam[2])
+
+				if itemConfig and itemConfig.subType == ItemEnum.SubType.ItemConvert then
+					local itemCount = ItemModel.instance:getItemQuantity(singleParam[1], singleParam[2])
+
+					if itemCount and itemCount - summonCount > 0 then
+						SummonMainModel.instance:setItemConvertTag({
+							singleParam[1],
+							singleParam[2]
+						})
+						logNormal("Add checkNewbieConvertTag id: " .. tostring(itemConfig.id))
+
+						return
+					end
+				end
+			end
+		end
+	end
+
+	SummonMainModel.instance:setItemConvertTag(nil)
 end
 
 SummonController.instance = SummonController.New()

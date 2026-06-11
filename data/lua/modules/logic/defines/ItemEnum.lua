@@ -48,6 +48,7 @@ ItemEnum.SubType = {
 	ItemConvert = 85,
 	UnlimitedPower = 32,
 	Badge = 39,
+	NewDestinyStoneUp = 86,
 	DecorateDiscountTicket = 63,
 	CritterTrain = 28,
 	EquipBreak = 18,

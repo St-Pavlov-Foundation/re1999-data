@@ -274,5 +274,17 @@
     "skinId": 1,
     "motion": "sikao",
     "onlyStopCut": 1
+  },
+  {
+    "heroId": 3092,
+    "skinId": 309203,
+    "motion": "bajian",
+    "onlyStopCut": 1
+  },
+  {
+    "heroId": 3140,
+    "skinId": 1,
+    "motion": "suxie1|suxie2|suxie3|zhihui",
+    "onlyStopCut": 1
   }
 ]

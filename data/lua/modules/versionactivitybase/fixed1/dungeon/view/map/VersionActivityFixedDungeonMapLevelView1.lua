@@ -206,7 +206,7 @@ function VersionActivityFixedDungeonMapLevelView1:onStoryFinished()
 end
 
 function VersionActivityFixedDungeonMapLevelView1:onReplayStoryFinished()
-	self:_isOpenPuzzleView()
+	self:_isOpenPuzzleView(true)
 end
 
 return VersionActivityFixedDungeonMapLevelView1

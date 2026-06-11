@@ -137,7 +137,7 @@ function DianJiShiLevelController:_finishEpisode(param)
 	local hasGame = config.gameId ~= 0
 
 	if hasGame and ViewMgr.instance:isOpen(ViewName.DianJiShiGameView) then
-		return
+		ViewMgr.instance:closeView(ViewName.DianJiShiGameView)
 	end
 
 	self:dispatchEpisodeFinishEvent()

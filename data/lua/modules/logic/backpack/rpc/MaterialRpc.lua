@@ -121,7 +121,7 @@ function MaterialRpc:_onReceiveMaterialChangePush(msg, materialDataMOList, faith
 		VersionActivity1_3AstrologyModel.instance:setStarReward(materialDataMOList)
 
 		return
-	elseif getApproach == MaterialEnum.GetApproach.Task or msg.getApproach == MaterialEnum.GetApproach.TaskAct then
+	elseif ItemApproachHelper.isTaskApproach(getApproach) then
 		if ViewMgr.instance:isOpen(ViewName.WeekWalkRewardView) or ViewMgr.instance:isOpen(ViewName.WeekWalkLayerRewardView) then
 			WeekWalkTaskListModel.instance:setTaskRewardList(materialDataMOList)
 
@@ -195,6 +195,13 @@ function MaterialRpc:_onReceiveMaterialChangePush(msg, materialDataMOList, faith
 	else
 		self:_onReceiveMaterialChangePush_default(msg, materialDataMOList, faithCO, equip_cards, season123EquipCards)
 	end
+
+	local params = {
+		msg = msg,
+		materialDataMOList = materialDataMOList
+	}
+
+	PopupController.instance:dispatchEvent(PopupEvent.OnMaterialChangePush, params)
 end
 
 function MaterialRpc:_onReceiveMaterialChangePush_default(msg, materialDataMOList, faithCO, equip_cards, season123EquipCards)
@@ -292,20 +299,14 @@ function MaterialRpc:_onReceiveMaterialChangePush_default(msg, materialDataMOLis
 		end
 	end
 
-	for _, mo in ipairs(materialDataMOList) do
-		if mo.materilType == MaterialEnum.MaterialType.Item then
-			local itemConfig = ItemConfig.instance:getItemConfig(mo.materilType, mo.materilId)
-
-			if itemConfig and itemConfig.subType == ItemEnum.SubType.ItemConvert and ItemConvertHelper.isItemConvert(mo.materilId) then
-				self:showItemConvertView(mo)
-			end
-		end
-	end
-
 	self:simpleShowView(materialDataMOList)
 end
 
 function MaterialRpc:isShowBadgeGetView(materialDataMOList)
+	if not materialDataMOList then
+		return
+	end
+
 	local showBadgeId
 
 	for _, mo in ipairs(materialDataMOList) do

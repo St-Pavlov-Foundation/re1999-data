@@ -235,4 +235,12 @@ function V3a8_DragonBoatActivity_ImplContainer:_sendGlobalVoteGetInfoFromDailyRe
 	end
 end
 
+function V3a8_DragonBoatActivity_ImplContainer:play_ui_shiji_vote_open()
+	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_shiji_vote_open or 380001)
+end
+
+function V3a8_DragonBoatActivity_ImplContainer:play_ui_shiji_vote_success()
+	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_shiji_vote_success or 380002)
+end
+
 return V3a8_DragonBoatActivity_ImplContainer

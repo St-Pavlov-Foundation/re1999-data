@@ -4,23 +4,6 @@ module("modules.logic.versionactivity3_8.enter.view.subview.VersionActivity3_8Du
 
 local VersionActivity3_8DungeonEnterView = class("VersionActivity3_8DungeonEnterView", VersionActivityFixedDungeonEnterView)
 
-function VersionActivityMainFixedDungeonEnterView:_editableInitView()
-	self._txtstorename = gohelper.findChildText(self.viewGO, "entrance/#btn_store/normal/txt_shop")
-	self._chapterId = DungeonConfig.instance:getLastEarlyAccessChapterId()
-	self.animComp = VersionActivityFixedHelper.getVersionActivitySubAnimatorComp().get(self.viewGO, self)
-	self.goEnter = self._btnenter.gameObject
-	self.goFinish = self._btnFinished.gameObject
-	self.goStore = self._btnstore.gameObject
-	self.actId = VersionActivityMainFixedHelper.getVersionActivityEnum().ActivityId.Dungeon
-	self.actCo = ActivityConfig.instance:getActivityCo(self.actId)
-	self._gobg = gohelper.findChild(self.viewGO, "#simage_bg")
-	self._videoComp = VersionActivityVideoComp.get(gohelper.findChild(self.viewGO, "#simage_bg"), self)
-
-	self:_setDesc()
-	self:refreshDot()
-	self:_updateBg()
-end
-
 function VersionActivity3_8DungeonEnterView:onInitView()
 	self._txtdesc = gohelper.findChildText(self.viewGO, "logo/#txt_dec")
 	self._gotime = gohelper.findChild(self.viewGO, "logo/actbg")
@@ -43,6 +26,24 @@ function VersionActivity3_8DungeonEnterView:onInitView()
 	end
 end
 
+function VersionActivity3_8DungeonEnterView:_editableInitView()
+	self._txtstorename = gohelper.findChildText(self.viewGO, "entrance/#btn_store/normal/txt_shop")
+	self._chapterId = DungeonConfig.instance:getLastEarlyAccessChapterId()
+	self.animComp = VersionActivityFixedHelper.getVersionActivitySubAnimatorComp().get(self.viewGO, self)
+	self.goEnter = self._btnenter.gameObject
+	self.goFinish = self._btnFinished.gameObject
+	self.goStore = self._btnstore.gameObject
+	self.actId = VersionActivityMainFixedHelper.getVersionActivityEnum().ActivityId.Dungeon
+	self.actCo = ActivityConfig.instance:getActivityCo(self.actId)
+	self._gobg = gohelper.findChild(self.viewGO, "#simage_bg")
+	self._videoComp = VersionActivityVideoComp.get(self._gobg, self)
+	self._animator = self.viewGO:GetComponent("Animator")
+
+	RedDotController.instance:addRedDot(self._goboardreddot, RedDotEnum.DotNode.CommandStationTask)
+	RedDotController.instance:addRedDot(self._goreddot, VersionActivityFixedHelper.getVersionActivityDungeonEnterReddotId())
+	self:_setDesc()
+end
+
 function VersionActivity3_8DungeonEnterView:addEvents()
 	VersionActivity3_8DungeonEnterView.super.addEvents(self)
 	self._btnBoard:AddClickListener(self._btnBoardOnClick, self)
@@ -51,6 +52,7 @@ function VersionActivity3_8DungeonEnterView:addEvents()
 	CommandStationController.instance:registerCallback(CommandStationEvent.OneClickClaimReward, self.refreshPaperCount, self)
 	CommandStationController.instance:registerCallback(CommandStationEvent.OnGetCommandPostInfo, self.refreshPaperCount, self)
 	TaskController.instance:registerCallback(TaskEvent.UpdateTaskList, self._onGetTaskBonus, self)
+	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, self._onCloseView, self)
 end
 
 function VersionActivity3_8DungeonEnterView:removeEvents()
@@ -61,16 +63,13 @@ function VersionActivity3_8DungeonEnterView:removeEvents()
 	CommandStationController.instance:unregisterCallback(CommandStationEvent.OneClickClaimReward, self.refreshPaperCount, self)
 	CommandStationController.instance:unregisterCallback(CommandStationEvent.OnGetCommandPostInfo, self.refreshPaperCount, self)
 	TaskController.instance:unregisterCallback(TaskEvent.UpdateTaskList, self._onGetTaskBonus, self)
+	self:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseView, self._onCloseView, self)
 end
 
-function VersionActivity3_8DungeonEnterView:_editableInitView()
-	VersionActivity3_8DungeonEnterView.super._editableInitView(self)
-
-	self._gobg = gohelper.findChild(self.viewGO, "#simage_bg")
-	self._videoComp = VersionActivityVideoComp.get(self._gobg, self)
-	self._animator = self.viewGO:GetComponent("Animator")
-
-	RedDotController.instance:addRedDot(self._goboardreddot, RedDotEnum.DotNode.CommandStationTask)
+function VersionActivity3_8DungeonEnterView:_onCloseView(viewName)
+	if viewName == ViewName.FullScreenVideoView and self.animComp and self.animComp.skipPlayVideo then
+		self.animComp:skipPlayVideo()
+	end
 end
 
 function VersionActivity3_8DungeonEnterView:onDestroyView()

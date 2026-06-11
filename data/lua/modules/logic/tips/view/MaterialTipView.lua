@@ -882,7 +882,10 @@ function MaterialTipView:_btnuseOnClick()
 		local param = string.format("%s#%s", JumpEnum.JumpView.SummonView, poolId)
 
 		JumpController.instance:jumpByParam(param)
+	elseif self._config.subType == ItemEnum.SubType.NewDestinyStoneUp then
+		VersionActivity3_8SelfSelectSixController.instance:openHeroChoiceView()
 	else
+		logError(materialId)
 		ItemRpc.instance:simpleSendUseItemRequest(materialId, quantity)
 	end
 
@@ -1403,9 +1406,9 @@ function MaterialTipView:_onRefreshNewInsightDeadline()
 end
 
 function MaterialTipView:_onRefreshSpecialExpiredItemDeadline()
-	local ts = CurrencyController.instance:getExpireItemDeadLineTime()
+	local ts = ItemExpireModel.instance:getSpecialExpireItemEarliestExpireTime(self.viewParam.id)
 
-	if ts then
+	if ts and ts > 0 then
 		local hasExpire = ts <= ServerTime.now()
 
 		if hasExpire then

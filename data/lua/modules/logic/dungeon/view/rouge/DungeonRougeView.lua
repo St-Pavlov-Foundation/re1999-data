@@ -78,26 +78,7 @@ function DungeonRougeView:onOpen()
 end
 
 function DungeonRougeView:openRougeMainView()
-	local season = RougeOutsideModel.instance:season()
-
-	RougeOutsideRpc.instance:sendGetRougeOutSideInfoRequest(season, function(_, resultCode)
-		if resultCode ~= 0 then
-			logError("RougeController:openRougeMainView resultCode=" .. tostring(resultCode))
-
-			return
-		end
-
-		RougeOutsideRpc.instance:sendRougeGetNewReddotInfoRequest(season)
-		RougeRpc.instance:sendGetRougeInfoRequest(season, function(_, resultCode2)
-			if resultCode2 ~= 0 then
-				logError("RougeController:openRougeMainView resultCode=" .. tostring(resultCode2))
-
-				return
-			end
-
-			self:openExclusiveView(1, 1, RougeMainView, "ui/viewres/rouge/rougemainview.prefab", self.go_fragments)
-		end)
-	end)
+	self:openExclusiveView(1, 1, RougeActivityView, "ui/viewres/rouge/rougeactivityview.prefab", self.go_fragments)
 end
 
 function DungeonRougeView:openRouge2MainView()

@@ -4779,8 +4779,8 @@
     "type": 2,
     "iconType": 0,
     "items": "1#173810#0",
-    "tagType": 3,
-    "tagTxt": "限定",
+    "tagType": 1,
+    "tagTxt": "头像",
     "icon": "",
     "des": ""
   },
@@ -4824,7 +4824,7 @@
     "iconType": 0,
     "items": "5#311604#0",
     "tagType": 1,
-    "tagTxt": "限定",
+    "tagTxt": "衣着",
     "icon": "",
     "des": ""
   },

@@ -26,8 +26,8 @@ function V3a8EchoSongGameViewContainer:buildTabViews(tabContainerId)
 		self.navigateView = NavigateButtonsView.New({
 			true,
 			false,
-			false
-		})
+			true
+		}, 3855001)
 
 		self.navigateView:setOverrideClose(self.overrideCloseFunc, self)
 
@@ -38,6 +38,12 @@ function V3a8EchoSongGameViewContainer:buildTabViews(tabContainerId)
 end
 
 function V3a8EchoSongGameViewContainer:overrideCloseFunc()
+	if GuideModel.instance:isFlagEnable(GuideModel.GuideFlag.EchoSongInGuide) then
+		logNormal("V3a8EchoSongGameViewContainer 指引中，不能操作")
+
+		return
+	end
+
 	V3a8EchoSongController.instance:dispatchEvent(V3a8EchoSongEvent.PauseGame)
 	GameFacade.showMessageBox(MessageBoxIdDefine.EchoSongGameExitConfirm, MsgBoxEnum.BoxType.Yes_No, self.yesClose, self.resumeGame, nil, self, self)
 end

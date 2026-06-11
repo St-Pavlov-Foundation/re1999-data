@@ -11457,7 +11457,7 @@
   },
   {
     "id": 373002,
-    "tips": "请选择勘探时段",
+    "tips": "请选择挖掘时段",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,
@@ -11690,6 +11690,30 @@
   {
     "id": 383002,
     "tips": "正在重播中",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 384001,
+    "tips": "暂无可补领奖励的日期",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 384002,
+    "tips": "暂无往日咆哮·咆哮惊喜月，无法补领",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 385001,
+    "tips": "已成功切换旅券集开启效果",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,

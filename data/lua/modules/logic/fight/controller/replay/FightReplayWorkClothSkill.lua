@@ -30,7 +30,7 @@ function FightReplayWorkClothSkill:onStart()
 			FightDataHelper.tempMgr.replayAiJiAoQtePreTimeline = true
 			self.aiJiAoPreTimeline = FightWorkFlowSequence.New()
 
-			self.aiJiAoPreTimeline:registWork(Work2FightWork, FightWorkPlayTimeline, playEntity, "aijiao_312301_unique_pre", self.clothSkillOp.toId)
+			self.aiJiAoPreTimeline:registWork(FightWorkPlayTimeline, playEntity, "aijiao_312301_unique_pre", self.clothSkillOp.toId)
 			self.aiJiAoPreTimeline:registFinishCallback(self._aiJiAoPreTimelineFinish, self)
 			self.aiJiAoPreTimeline:start()
 		else

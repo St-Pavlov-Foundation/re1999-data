@@ -188,6 +188,12 @@ function SocialFriendsBtnView:onDestroy()
 	for _, item in ipairs(self._selectitemList) do
 		item.btn:RemoveClickListener()
 	end
+
+	if self._tweenId then
+		ZProj.TweenHelper.KillById(self._tweenId)
+
+		self._tweenId = nil
+	end
 end
 
 return SocialFriendsBtnView

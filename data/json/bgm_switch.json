@@ -1204,5 +1204,23 @@
     "audioLength": 120.0,
     "audioEvaluates": "槲寄生#道别吗？我想……道别就是为挚诚的爱献上缄默的伤口。",
     "isNonLoop": 0
+  },
+  {
+    "id": 1013801,
+    "audio": 380003,
+    "isReport": 0,
+    "unlockCondition": "",
+    "itemId": 221281,
+    "defaultUnlock": 0,
+    "audioName": "世纪末尺度",
+    "audioNameEn": "The Temporal Scale",
+    "audioIntroduce": "答案在光之中，捡拾砖石的人们最终触碰到了它。生活，生活于此复苏。",
+    "audioBg": "102831_1",
+    "audioicon": "102831_2",
+    "sort": 0,
+    "audioType": 28,
+    "audioLength": 122.0,
+    "audioEvaluates": "奠基石#那是我的城市的声音。那是我们每个人的声音，汇入那道光中。",
+    "isNonLoop": 0
   }
 ]

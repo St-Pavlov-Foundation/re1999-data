@@ -383,9 +383,26 @@ function FightDevicePlayCardItem:onMeiLerErEffectLoaded(success, assetItem)
 	end
 
 	local prefab = assetItem:GetResource()
-	local go = gohelper.clone(prefab, self.go)
+	local parentRoot
 
-	transformhelper.setLocalScale(go.transform, 0.7, 0.7, 0.7)
+	if self.isBigSkill then
+		parentRoot = gohelper.findChild(self.go, "unique/melieercard")
+	else
+		parentRoot = gohelper.findChild(self.go, "normal/melieercard")
+	end
+
+	local go = gohelper.clone(prefab, parentRoot)
+	local normal = gohelper.findChild(go, "#nomal")
+	local unique = gohelper.findChild(go, "ultimate")
+
+	gohelper.setActive(normal, true)
+	gohelper.setActive(unique, false)
+
+	if self.isBigSkill then
+		gohelper.setActive(normal, false)
+		gohelper.setActive(unique, true)
+	end
+
 	self.timerComp:registRepeatTimer(self.removeMeiLerErEffect, self, 1.2, 1, go)
 end
 

@@ -290,6 +290,12 @@ function CameraMgr:getCameraRootAnimatorPlayer()
 	return self._cameraRootAnimatorPlayer
 end
 
+function CameraMgr:getCameraRootAnimationEventWrap()
+	self._cameraRootAnimationEventWrap = self._cameraRootAnimationEventWrap or gohelper.onceAddComponent(self._cameraRootGO, typeof(ZProj.AnimationEventWrap))
+
+	return self._cameraRootAnimationEventWrap
+end
+
 function CameraMgr:hasCameraRootAnimatorPlayer()
 	return self._cameraRootAnimatorPlayer ~= nil
 end

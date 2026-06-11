@@ -107,8 +107,9 @@ function V3a8_WarmUp_radiotaskitem:onSelect(isSelect, bSlient)
 		self:playAnimLocked()
 	else
 		local isLock = not self:_isEpisodeReallyOpen()
+		local bShowLocked = isLock or self:_unlockedIndex() < self:index()
 
-		if isLock then
+		if bShowLocked then
 			self:playAnimLocked()
 		else
 			self:playAnimIdleUnSelected()
@@ -131,9 +132,11 @@ function V3a8_WarmUp_radiotaskitem:setData(mo)
 	self._txtDateSelected.text = openDayDesc
 	self._txtDateLocked.text = openDayDesc
 
-	gohelper.setActive(self._goreddot, showReddot)
+	gohelper.setActive(self._goreddot, showReddot and self:_unlockedIndex() >= self:index())
 
-	if isLock then
+	local bShowLocked = isLock or self:_unlockedIndex() < self:index()
+
+	if bShowLocked then
 		self:playAnimLocked()
 	end
 end

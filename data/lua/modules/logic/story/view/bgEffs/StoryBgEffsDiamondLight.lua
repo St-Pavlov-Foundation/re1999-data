@@ -138,6 +138,7 @@ function StoryBgEffsDiamondLight:_setViewTop(set)
 end
 
 function StoryBgEffsDiamondLight:destroy()
+	UIBlockMgr.instance:endBlock("diamondLightEnding")
 	StoryBgEffsDiamondLight.super.destroy(self)
 	ViewMgr.instance:unregisterCallback(ViewEvent.OnOpenView, self._onOpenView, self)
 	ViewMgr.instance:unregisterCallback(ViewEvent.OnCloseView, self._onCloseView, self)

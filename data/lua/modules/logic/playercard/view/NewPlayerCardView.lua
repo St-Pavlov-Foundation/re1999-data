@@ -178,6 +178,15 @@ function NewPlayerCardView:onOpen(tempSkinId)
 	self:_initBadge()
 	self:_onCutEquipType()
 
+	if themeInfo and themeInfo.EnterAnim then
+		local type = self.playercardinfo:getShowEnterAnimType(themeId)
+		local enterAnim = themeInfo.EnterAnim[type]
+
+		if enterAnim and not string.nilorempty(enterAnim.aniName) then
+			self._animator:Play(enterAnim.aniName)
+		end
+	end
+
 	if self.viewParam and self.viewParam.justOpenBadgeView then
 		self:_btncritterOnClick()
 

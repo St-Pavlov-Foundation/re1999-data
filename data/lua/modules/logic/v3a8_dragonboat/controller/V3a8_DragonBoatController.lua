@@ -7,6 +7,7 @@ local V3a8_DragonBoatController = class("V3a8_DragonBoatController", BaseControl
 function V3a8_DragonBoatController:addConstEvents()
 	MainController.instance:registerCallback(MainEvent.OnMainPopupFlowFinish, self._onMainPopupFlowFinish, self)
 	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, self._onDailyRefresh, self, LuaEventSystem.Low)
+	ActivityController.instance:registerCallback(ActivityEvent.UpdateActivity, self._onUpdateActivity, self, LuaEventSystem.Low)
 end
 
 function V3a8_DragonBoatController:_onMainPopupFlowFinish()
@@ -21,6 +22,21 @@ end
 
 function V3a8_DragonBoatController:_onDailyRefresh()
 	self:_updateAct101Info()
+end
+
+function V3a8_DragonBoatController:_onUpdateActivity(actId)
+	if self:actId() == actId then
+		self:sendGlobalVoteGetInfo()
+		self:sendAct241GetInfo()
+
+		return
+	end
+
+	if V3a8_DragonBoatConfig.instance:getVoteFinalResultActId() == actId then
+		self:_updateAct101Info()
+
+		return
+	end
 end
 
 function V3a8_DragonBoatController:actId()

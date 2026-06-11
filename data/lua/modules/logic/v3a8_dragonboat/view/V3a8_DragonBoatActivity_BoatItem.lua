@@ -51,6 +51,12 @@ end
 
 function V3a8_DragonBoatActivity_BoatItem:setActive_waveGo(bActive)
 	gohelper.setActive(self._waveGo, bActive)
+
+	if bActive then
+		local c = self:baseViewContainer()
+
+		c:play_ui_shiji_vote_success()
+	end
 end
 
 function V3a8_DragonBoatActivity_BoatItem:eOp()

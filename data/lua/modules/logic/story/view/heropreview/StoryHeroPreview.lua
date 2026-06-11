@@ -106,6 +106,7 @@ function StoryHeroPreview:_onSearchInputValueChanged()
 
 	self:_setDropPath()
 	self:_setHeroAnimDropItem()
+	self:_refresh()
 end
 
 function StoryHeroPreview:_onTypeValueChanged(index)
@@ -200,8 +201,8 @@ end
 function StoryHeroPreview:_initData()
 	StoryHeroPreviewModel.instance:initData()
 
-	self._showNode = false
-	self._showHero = false
+	self._showNode = true
+	self._showHero = true
 	self._curPathIndex = 0
 	self._curBodyIndex = 0
 	self._curFaceIndex = 0
@@ -255,6 +256,7 @@ function StoryHeroPreview:_refreshUI()
 	gohelper.setActive(self._godown, not self._showNode)
 	gohelper.setActive(self._goroot, self._showHero)
 
+	self._toggleoption.isOn = self._showHero
 	self._txttoggle.text = self._showHero and "show" or "hide"
 end
 

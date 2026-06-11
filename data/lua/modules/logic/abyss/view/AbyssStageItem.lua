@@ -83,7 +83,7 @@ function AbyssStageItem:refreshUI()
 
 	gohelper.setActive(self._gocurherogroup, haveChallenge)
 	gohelper.setActive(self._txtstarMaxtxt, haveChallenge)
-	gohelper.setActive(self._goPlayerBg, haveChallenge)
+	gohelper.setActive(self._goPlayerBg, true)
 	gohelper.setActive(self._goRecommendTitle, not haveChallenge)
 	gohelper.setActive(self._goenemygroup, not haveChallenge)
 	gohelper.setActive(self._txtenemy, not haveChallenge)

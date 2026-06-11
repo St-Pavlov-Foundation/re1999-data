@@ -57,6 +57,12 @@ function V3a8_v3a1_ReactivityEnterview:_onClickEnter()
 	VersionActivityFixedDungeonController.instance:openVersionActivityReactivityDungeonMapView(3, 1)
 end
 
+function V3a8_v3a1_ReactivityEnterview:_editableInitView()
+	self._videoPath = VersionActivity3_1Enum.EnterLoopVideoName
+
+	V3a8_v3a1_ReactivityEnterview.super._editableInitView(self)
+end
+
 function V3a8_v3a1_ReactivityEnterview:initRedDot()
 	if self.actId then
 		return

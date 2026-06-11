@@ -13,10 +13,12 @@ end
 
 local needSetHsyLightTexture = {
 	"b_piaofu1",
+	"b_piaofu2",
 	"b_huiyin"
 }
 local needResetHsyLightTexture = {
-	"b_idle"
+	"b_idle",
+	"b_piaofu3"
 }
 
 function Live2dSpecialEffect_314501_hsy:_onBodyChange(prevBodyName, curBodyName)
@@ -50,6 +52,12 @@ function Live2dSpecialEffect_314501_hsy:_setHsyLightTexture()
 		return
 	end
 
+	if self._hasSetHsyLightTexture then
+		return
+	end
+
+	self._hasSetHsyLightTexture = true
+
 	self:_playCameraBloomAnim()
 	TaskDispatcher.runDelay(self._delaySetHsyLightTexture, self, 1)
 end
@@ -76,11 +84,23 @@ end
 function Live2dSpecialEffect_314501_hsy:_resetHsyLightTexture()
 	self._isSetHsyLightTexture = false
 
+	if not self._hasSetHsyLightTexture then
+		return
+	end
+
+	self._hasSetHsyLightTexture = false
+
+	self:_resetPPVolume()
 	self:_resetCamera()
-	TaskDispatcher.runDelay(self._delayResetHsyLightTexture, self, 1)
+
+	if self:isInStoryView() then
+		TaskDispatcher.runDelay(self._delayResetHsyLightTexture, self, 1)
+	end
 end
 
 function Live2dSpecialEffect_314501_hsy:_delayResetHsyLightTexture()
+	self:_delayDisableKeyword()
+
 	local cubctrl = self:getCubismController()
 
 	if gohelper.isNil(cubctrl) then
@@ -159,6 +179,7 @@ function Live2dSpecialEffect_314501_hsy:_playCameraBloomAnim()
 	end
 
 	self:initAnimatorName()
+	self:_setPPVolume()
 
 	local url = string.format("ui/animations/dynamic/%s.controller", self._animationControllerName)
 	local assetItem = self._effectLoader:getAssetItem(url)
@@ -168,7 +189,7 @@ function Live2dSpecialEffect_314501_hsy:_playCameraBloomAnim()
 	animator.runtimeAnimatorController = animatorInst
 	animator.enabled = true
 
-	animator:Play("start", 0, 0)
+	animator:Play("start")
 	self:setUnitCamera()
 end
 
@@ -186,8 +207,37 @@ function Live2dSpecialEffect_314501_hsy:_resetCamera()
 		return
 	end
 
-	player:Play("end", self._clearCameraAnimationController, self)
-	self:_delayDisableKeyword()
+	local defaultEndAnim = "end"
+	local endAnim
+
+	if not self:isInVoiceView() and not self:isInStoryView() then
+		local curLightMode = WeatherController.instance:getCurLightMode()
+
+		if curLightMode then
+			local animList = {
+				"end_sunny",
+				"end_cloudy",
+				"end_dusk",
+				"end_night"
+			}
+
+			endAnim = animList[curLightMode]
+		end
+	end
+
+	player:Play(endAnim or defaultEndAnim, self._clearCameraAnimationController, self)
+
+	if not self:isInStoryView() then
+		local animationEventWrap = CameraMgr.instance:getCameraRootAnimationEventWrap()
+
+		if animationEventWrap then
+			animationEventWrap:AddEventListener("bloomTexExchange", self._onBloomTexExchange, self)
+		end
+	end
+end
+
+function Live2dSpecialEffect_314501_hsy:_onBloomTexExchange()
+	self:_delayResetHsyLightTexture()
 end
 
 function Live2dSpecialEffect_314501_hsy:setUnitCamera()
@@ -198,8 +248,6 @@ function Live2dSpecialEffect_314501_hsy:setUnitCamera()
 	TaskDispatcher.runDelay(self._delayEnableKeyword, self, 0.5)
 
 	local go = CameraMgr.instance:getUnitCameraGO()
-	local camera = CameraMgr.instance:getUnitCamera()
-	local trs = CameraMgr.instance:getUnitCameraTrs()
 
 	gohelper.setActive(go, true)
 
@@ -207,6 +255,8 @@ function Live2dSpecialEffect_314501_hsy:setUnitCamera()
 		return
 	end
 
+	local camera = CameraMgr.instance:getUnitCamera()
+	local trs = CameraMgr.instance:getUnitCameraTrs()
 	local rawData = {}
 
 	rawData.posX, rawData.posY, rawData.posZ = transformhelper.getPos(trs)
@@ -275,6 +325,14 @@ end
 function Live2dSpecialEffect_314501_hsy:_clearCameraAnimationController()
 	self:resetUnitCamera()
 
+	if self:isInVoiceView() then
+		local animationEventWrap = CameraMgr.instance:getCameraRootAnimationEventWrap()
+
+		if animationEventWrap then
+			animationEventWrap:RemoveEventListener("bloomTexExchange")
+		end
+	end
+
 	local animator = CameraMgr.instance:getCameraRootAnimator()
 	local animatorInst = animator.runtimeAnimatorController
 
@@ -321,6 +379,28 @@ function Live2dSpecialEffect_314501_hsy:isInStoryView()
 	return self._isInStoryView
 end
 
+function Live2dSpecialEffect_314501_hsy:_resetPPVolume()
+	if not self._rawPPVolumeProfile then
+		return
+	end
+
+	PostProcessingMgr.instance:setProfile(self._rawPPVolumeProfile)
+
+	self._rawPPVolumeProfile = nil
+end
+
+function Live2dSpecialEffect_314501_hsy:_setPPVolume()
+	if self._rawPPVolumeProfile then
+		return
+	end
+
+	self._rawPPVolumeProfile = PostProcessingMgr.instance:getUnitProfile()
+
+	local profile = ConstAbCache.instance:getRes(PostProcessingMgr.MainAllProfilePath)
+
+	PostProcessingMgr.instance:setProfile(profile)
+end
+
 function Live2dSpecialEffect_314501_hsy:onDestroy()
 	if self._effectLoader then
 		self._effectLoader:dispose()
@@ -328,6 +408,7 @@ function Live2dSpecialEffect_314501_hsy:onDestroy()
 		self._effectLoader = nil
 	end
 
+	self:_resetPPVolume()
 	self:_clearCameraAnimationController()
 	self:_delayDisableKeyword()
 

@@ -29,6 +29,7 @@ function FightFocusView:onInitView()
 	self.enemyHpRect = gohelper.findChildComponent(self.viewGO, "fightinfocontainer/#go_infoView/content/info/hp/layout/go_xuetiao/#slider_hp/Fill Area/hp", gohelper.Type_RectTransform)
 	self.myHpRect = gohelper.findChildComponent(self.viewGO, "fightinfocontainer/#go_infoView/content/info/hp/layout/go_xuetiao/#slider_hp/Fill Area/hp2", gohelper.Type_RectTransform)
 	self.fictionHp = gohelper.findChildImage(self.viewGO, "fightinfocontainer/#go_infoView/content/info/hp/layout/go_xuetiao/xuxue")
+	self.fakeHp = gohelper.findChildImage(self.viewGO, "fightinfocontainer/#go_infoView/content/info/hp/layout/go_xuetiao/#image_fakehp")
 	self.reduceHpGo = gohelper.findChild(self.viewGO, "fightinfocontainer/#go_infoView/content/info/hp/layout/go_xuetiao/reducehp")
 	self.reduceHpImage = self.reduceHpGo:GetComponent(gohelper.Type_Image)
 	self._goattributeroot = gohelper.findChild(self.viewGO, "fightinfocontainer/#go_attribute_root")
@@ -1461,6 +1462,16 @@ function FightFocusView:_refreshHp(entityMO)
 
 	self.fictionHp.fillAmount = fictionHpPercent
 
+	local fakeHp = entityMO:getFakeHp()
+
+	if fakeHp <= 0 then
+		self.fakeHp.fillAmount = 0
+	else
+		local fakeHpPercent = Mathf.Clamp01(fakeHp / maxHp)
+
+		self.fakeHp.fillAmount = fakeHpPercent + realHpPercent
+	end
+
 	local showReduceHp = rate < 1
 
 	gohelper.setActive(self.reduceHpGo, showReduceHp)
@@ -2613,8 +2624,16 @@ function FightFocusView:refreshDevicePower(entityMo)
 
 	local curPower = entityMo:getExPoint()
 	local maxPower = entityMo:getMaxExPoint()
+	local storeExPoint = entityMo:getStoredDeviceExPoint()
 
-	self.txtDevicePower.text = string.format("%s/%s", curPower, maxPower)
+	if storeExPoint > 0 then
+		local txt = string.format("%s<color=#E99B56>(+%s)</color>/%s", curPower, storeExPoint, maxPower)
+
+		self.txtDevicePower.text = txt
+	else
+		self.txtDevicePower.text = string.format("%s/%s", curPower, maxPower)
+	end
+
 	self.imageDevicePowerProgress.fillAmount = maxPower > 0 and curPower / maxPower or 1
 
 	local storePoint = entityMo:getStoredDeviceExPoint()

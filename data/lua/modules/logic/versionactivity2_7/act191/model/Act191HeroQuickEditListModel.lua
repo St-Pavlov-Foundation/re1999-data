@@ -7,26 +7,30 @@ local Act191HeroQuickEditListModel = class("Act191HeroQuickEditListModel", ListS
 function Act191HeroQuickEditListModel:initData()
 	self.moList = {}
 	self._index2HeroIdMap = {}
+	self._heroId2IndexMap = {}
 
 	local gameInfo = Activity191Model.instance:getActInfo():getGameInfo()
 
 	for _, heroInfo in ipairs(gameInfo.warehouseInfo.hero) do
-		local mo = {}
-
-		mo.heroId = heroInfo.heroId
-		mo.star = heroInfo.star
-		mo.exp = heroInfo.exp
-		mo.config = Activity191Config.instance:getRoleCoByNativeId(mo.heroId, mo.star)
-
+		local mo = {
+			heroId = heroInfo.heroId,
+			star = heroInfo.star,
+			exp = heroInfo.exp,
+			config = Activity191Config.instance:getRoleCoByNativeId(heroInfo.heroId, heroInfo.star)
+		}
 		local battleHeroInfo = gameInfo:getBattleHeroInfoInTeam(mo.heroId)
 
 		if battleHeroInfo then
 			self._index2HeroIdMap[battleHeroInfo.index] = mo.heroId
+			self._heroId2IndexMap[mo.heroId] = battleHeroInfo.index
 		else
 			local subHeroInfo = gameInfo:getSubHeroInfoInTeam(mo.heroId)
 
 			if subHeroInfo then
-				self._index2HeroIdMap[subHeroInfo.index + 4] = mo.heroId
+				local mainCnt = Activity191Enum.MaxMainHeroCnt
+
+				self._index2HeroIdMap[subHeroInfo.index + mainCnt] = mo.heroId
+				self._heroId2IndexMap[mo.heroId] = subHeroInfo.index + mainCnt
 			end
 		end
 
@@ -46,34 +50,33 @@ function Act191HeroQuickEditListModel:selectHero(heroId, isSelect)
 
 		if emptyPos ~= 0 then
 			self._index2HeroIdMap[emptyPos] = heroId
+			self._heroId2IndexMap[heroId] = emptyPos
 		end
 	else
 		local index = self:getHeroTeamPos(heroId)
 
 		self._index2HeroIdMap[index] = nil
+		self._heroId2IndexMap[heroId] = nil
 	end
 end
 
 function Act191HeroQuickEditListModel:getHeroTeamPos(heroId)
-	if self._index2HeroIdMap then
-		for index, id in pairs(self._index2HeroIdMap) do
-			if id == heroId then
-				return index
-			end
-		end
-	end
-
-	return 0
+	return self._heroId2IndexMap[heroId] or 0
 end
 
 function Act191HeroQuickEditListModel:findEmptyPos()
-	for i = 1, 8 do
+	local pos = 0
+	local maxCnt = Activity191Enum.MaxMainHeroCnt + Activity191Enum.MaxSubHeroCnt
+
+	for i = 1, maxCnt do
 		if not self._index2HeroIdMap[i] then
-			return i
+			pos = i
+
+			break
 		end
 	end
 
-	return 0
+	return pos
 end
 
 function Act191HeroQuickEditListModel:filterData(tag, rule)

@@ -19,9 +19,7 @@ end
 function Activity191Helper.getNodeIcon(nodeType)
 	nodeType = tonumber(nodeType)
 
-	if nodeType == 0 then
-		return "act191_progress_largeicon_0"
-	elseif nodeType == Activity191Enum.NodeType.MixStore then
+	if nodeType == Activity191Enum.NodeType.MixStore then
 		return "act191_progress_largeicon_1"
 	elseif Activity191Helper.isPveBattle(nodeType) then
 		return "act191_progress_largeicon_2"
@@ -29,15 +27,17 @@ function Activity191Helper.getNodeIcon(nodeType)
 		return "act191_progress_largeicon_3"
 	elseif nodeType == Activity191Enum.NodeType.RewardEvent or nodeType == Activity191Enum.NodeType.BattleEvent then
 		return "act191_progress_largeicon_4"
-	elseif nodeType == Activity191Enum.NodeType.MixStore then
+	elseif nodeType == Activity191Enum.NodeType.RoleShop or nodeType == Activity191Enum.NodeType.CollectionShop then
 		return "act191_progress_largeicon_5"
-	elseif nodeType == Activity191Enum.NodeType.RoleShop or nodeType == Activity191Enum.NodeType.CollectionShop or tabletool.indexOf(Activity191Enum.TagShopField, nodeType) then
+	elseif nodeType == Activity191Enum.NodeType.TagShop or nodeType == Activity191Enum.NodeType.AfterGlowShop then
 		return "act191_progress_largeicon_6"
 	elseif nodeType == Activity191Enum.NodeType.Enhance then
 		return "act191_progress_largeicon_7"
 	elseif nodeType == Activity191Enum.NodeType.ReplaceEvent or nodeType == Activity191Enum.NodeType.UpgradeEvent then
 		return "act191_progress_largeicon_8"
 	end
+
+	return "act191_progress_largeicon_0"
 end
 
 function Activity191Helper.lockScreen(key, lock)
@@ -101,9 +101,11 @@ function Activity191Helper.isPvpBattle(type)
 end
 
 function Activity191Helper.isShopNode(type)
-	if type == Activity191Enum.NodeType.MixStore or type == Activity191Enum.NodeType.RoleShop or type == Activity191Enum.NodeType.CollectionShop or tabletool.indexOf(Activity191Enum.TagShopField, type) then
+	if tabletool.indexOf(Activity191Enum.ShopFiled, type) then
 		return true
 	end
+
+	return false
 end
 
 function Activity191Helper.getActiveFetterInfoList(fetterCntDic)

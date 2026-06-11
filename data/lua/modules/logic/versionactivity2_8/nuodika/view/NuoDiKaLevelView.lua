@@ -200,7 +200,7 @@ function NuoDiKaLevelView:_onBackToLevel()
 end
 
 function NuoDiKaLevelView:_refreshTask()
-	if RedDotModel.instance:isDotShow(RedDotEnum.DotNode.V2a4WuErLiXiTask, 0) then
+	if RedDotModel.instance:isDotShow(RedDotEnum.DotNode.V2a4WuErLiXiTask, self.actId) then
 		self._taskAnim:Play("loop", 0, 0)
 	else
 		self._taskAnim:Play("idle", 0, 0)

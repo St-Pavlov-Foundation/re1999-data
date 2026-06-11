@@ -6965,7 +6965,7 @@
   {
     "id": 31005,
     "desc": "主界面指挥所开启",
-    "isOnline": 1,
+    "isOnline": 0,
     "trigger": "EpisodeFinish#10115",
     "invalid": "",
     "interruptFinish": 1,
@@ -9507,9 +9507,31 @@
     "id": 38100,
     "desc": "",
     "isOnline": 1,
-    "trigger": "EnterEpisode#10110",
+    "trigger": "EpisodeFinish#10109",
     "invalid": "EpisodeFinish#10110",
     "interruptFinish": 0,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 38300,
+    "desc": "3.8 主活动小游戏",
+    "isOnline": 1,
+    "trigger": "OpenView#V3a8PuzzleView",
+    "invalid": "",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 38400,
+    "desc": "3.8奠基石角色活动",
+    "isOnline": 1,
+    "trigger": "OpenView#DianJiShiGameView",
+    "invalid": "ActivityEnd#13812",
+    "interruptFinish": 1,
     "priority": 0,
     "parallel": 1,
     "restart": 0

@@ -30,19 +30,38 @@ function V3a8EchoSongEndPointComp:_onInitComp()
 	self._isWin = false
 end
 
+function V3a8EchoSongEndPointComp:rollback(info)
+	self._isWin = false
+	self._inBoundsState = false
+
+	if self._projAnimator then
+		self._projAnimator:Play("open")
+	end
+
+	gohelper.setActive(self._greenEffect, false)
+	gohelper.setActive(self._purpleEffect, false)
+end
+
 function V3a8EchoSongEndPointComp:_checkMainPlayerInBounds()
 	return not self._isWin
 end
 
 function V3a8EchoSongEndPointComp:_mainPlayerInBounds()
+	if V3a8EchoSongController.instance:isGameOver() then
+		return
+	end
+
 	self._isWin = true
 
+	V3a8EchoSongController.instance:dispatchEvent(V3a8EchoSongEvent.MainPlayerWin)
+	V3a8EchoSongController.instance:setGameResult(true)
 	self._projAnimator:Play("finish", self._finishAnimDone, self)
 
 	local showGreenEffect = V3a8EchoSongModel.instance:getBgType() == V3a8EchoSongEnum.BgType.Green
 
 	gohelper.setActive(self._greenEffect, showGreenEffect)
 	gohelper.setActive(self._purpleEffect, not showGreenEffect)
+	AudioMgr.instance:trigger(V3a8EchoSongEnum.Audio.play_ui_shiji3_8_hsy_finish)
 end
 
 function V3a8EchoSongEndPointComp:_finishAnimDone()

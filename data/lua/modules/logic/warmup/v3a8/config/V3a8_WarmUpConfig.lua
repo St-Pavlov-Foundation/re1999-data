@@ -26,6 +26,7 @@ end
 function V3a8_WarmUpConfig:onConfigLoaded(configName, configTable)
 	if configName == "v3a8_warmup_play" then
 		self.__v3a8_warmup_play = nil
+		self.__markSet = nil
 
 		self:__init_v3a8_warmup_play(configTable)
 	end

@@ -260,13 +260,13 @@ function GMSubViewNewFightView:initViewContent()
 
 	self:addLineIndex()
 
-	local arr = self:addSlider(self:getLineGroup(), "系数", self.onFactorValueChange, self, {
+	local arr = self:addSlider(self:getLineGroup(), "强度", self.onFactorValueChange, self, {
 		w = 500
 	})
 
 	self.factor = arr[1]
 	self.txtFactor = self:addLabel(self:getLineGroup(), "0.25")
-	arr = self:addSlider(self:getLineGroup(), "强度", self.onIntensityValueChange, self, {
+	arr = self:addSlider(self:getLineGroup(), "系数", self.onIntensityValueChange, self, {
 		w = 500
 	})
 	self.intensity = arr[1]

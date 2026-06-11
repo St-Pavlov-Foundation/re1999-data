@@ -129,6 +129,7 @@ function V3a8EchoSongLevelView:_unlockStory()
 	self:_focusStoryItem(self._finishEpisodeIndex + 1, true)
 	TaskDispatcher.cancelTask(self._unlockLvEnd, self)
 	TaskDispatcher.runDelay(self._unlockLvEnd, self, 1.5)
+	AudioMgr.instance:trigger(V3a8EchoSongEnum.Audio.play_ui_shiji3_8_hsy_level)
 end
 
 function V3a8EchoSongLevelView:_unlockLvEnd()

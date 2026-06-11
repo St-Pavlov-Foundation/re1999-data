@@ -30,6 +30,7 @@ function V3a8EchoSongGameBallItem:_editableInitView()
 	self._meshRenderer = self.viewGO:GetComponent(typeof(UnityEngine.MeshRenderer))
 	self._tempVector1 = Vector3.New(0, 0, 0)
 	self._tempVector2 = Vector3.New(0, 0, 0)
+	self._moveDir = Vector2.New(0, 0)
 	self._maxReflectCount = V3a8EchoSongEnum.BallConst.MaxReflectCount
 	self._trailPoints = {}
 
@@ -280,7 +281,9 @@ function V3a8EchoSongGameBallItem:_updateTrail()
 	self._lineCompMethod:Call(self._lineComp, writeIdx, self._tempVector1)
 end
 
-function V3a8EchoSongGameBallItem:_castRayFromCurrent()
+function V3a8EchoSongGameBallItem:_castRayFromCurrent(skipSync)
+	self._needInitRaycast = false
+
 	local remainTime = self._lifeTime - (Time.time - self._startTime)
 
 	if remainTime <= 0 then
@@ -294,7 +297,9 @@ function V3a8EchoSongGameBallItem:_castRayFromCurrent()
 
 	local maxDist = remainTime * self._moveSpeed
 
-	UnityEngine.Physics2D.SyncTransforms()
+	if not skipSync then
+		UnityEngine.Physics2D.SyncTransforms()
+	end
 
 	local hit = UnityEngine.Physics2D.Raycast(self._rayOrigin, self._moveDir, maxDist, V3a8EchoSongEnum.ColliderLayer)
 
@@ -312,7 +317,8 @@ function V3a8EchoSongGameBallItem:_reflectDir()
 	local dx, dy = self._moveDir.x, self._moveDir.y
 	local dot2 = 2 * (dx * nx + dy * ny)
 
-	self._moveDir = Vector2.New(dx - dot2 * nx, dy - dot2 * ny)
+	self._moveDir.x = dx - dot2 * nx
+	self._moveDir.y = dy - dot2 * ny
 
 	self._moveDir:SetNormalize()
 end
@@ -370,7 +376,7 @@ function V3a8EchoSongGameBallItem:getTriggerType()
 	return self._triggerType
 end
 
-function V3a8EchoSongGameBallItem:update(deltaTime)
+function V3a8EchoSongGameBallItem:update(deltaTime, needRaycast)
 	local time = Time.time - self._startTime
 
 	if time > self._lifeTime then
@@ -383,6 +389,14 @@ function V3a8EchoSongGameBallItem:update(deltaTime)
 
 	self._pos.x, self._pos.y = transformhelper.getPos(self.viewGO.transform)
 
+	if self._needInitRaycast then
+		if needRaycast ~= false then
+			self:_castRayFromCurrent(true)
+		else
+			return
+		end
+	end
+
 	local curFrameDist = self._moveSpeed * deltaTime
 
 	if self._hitDist >= 0 and self._movedDist + curFrameDist >= self._hitDist then
@@ -392,6 +406,9 @@ function V3a8EchoSongGameBallItem:update(deltaTime)
 
 		self._rayOrigin.x = hitX
 		self._rayOrigin.y = hitY
+
+		self._mainView:addHitBall(self._rayOrigin)
+
 		self._reflectCount = self._reflectCount + 1
 
 		if self._reflectCount > self._maxReflectCount then
@@ -412,7 +429,7 @@ function V3a8EchoSongGameBallItem:update(deltaTime)
 
 		self._movedDist = 0
 
-		self:_castRayFromCurrent()
+		self:_castRayFromCurrent(true)
 		self:_updateTrail()
 
 		return
@@ -433,7 +450,8 @@ function V3a8EchoSongGameBallItem:onUpdateMO(angle, mainView, lifeTime, sceneAnc
 	self:_resetState()
 
 	self._mainView = mainView
-	self._moveDir = Vector2.New(Mathf.Cos(angle), Mathf.Sin(angle))
+	self._moveDir.x = Mathf.Cos(angle)
+	self._moveDir.y = Mathf.Sin(angle)
 
 	self._moveDir:SetNormalize()
 
@@ -442,7 +460,8 @@ function V3a8EchoSongGameBallItem:onUpdateMO(angle, mainView, lifeTime, sceneAnc
 	self._pos.x, self._pos.y = transformhelper.getPos(self.viewGO.transform)
 
 	self:_pushTrailPoint(self._pos.x, self._pos.y)
-	self:_castRayFromCurrent()
+
+	self._needInitRaycast = true
 end
 
 function V3a8EchoSongGameBallItem:getSrcPos()

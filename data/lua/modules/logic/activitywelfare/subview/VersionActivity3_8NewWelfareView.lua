@@ -99,7 +99,7 @@ function VersionActivity3_8NewWelfareView:_refreshProgress()
 
 	local finishCount = Activity160Model.instance:getFinishCount(self._actId)
 
-	self._progress = stageProgresses[finishCount]
+	self._progress = stageProgresses[finishCount] or 0
 
 	if not self._isfirstopen then
 		self._faithTweenId = ZProj.TweenHelper.DOTweenFloat(0, self._progress, 0.5, self._progressUpdate, self._progressFinished, self, nil, EaseType.Linear)

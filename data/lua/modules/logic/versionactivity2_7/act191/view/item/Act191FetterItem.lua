@@ -14,6 +14,7 @@ function Act191FetterItem:init(go)
 	self.imageIcon = gohelper.findChildImage(go, "icon")
 	self.txtCnt = gohelper.findChildText(go, "count")
 	self.btnClick = gohelper.findChildButtonWithAudio(go, "clickArea")
+	self.goGreenDeer = gohelper.findChild(go, "go_GreenDeer")
 end
 
 function Act191FetterItem:addEventListeners()
@@ -46,6 +47,7 @@ function Act191FetterItem:setData(config, count)
 	self.imageIcon.color = color
 
 	Activity191Helper.setFetterIcon(self.imageIcon, self.config.icon)
+	gohelper.setActive(self.goGreenDeer, self.config.tag == Activity191Enum.GreenDeer)
 end
 
 function Act191FetterItem:onClick()

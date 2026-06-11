@@ -35,6 +35,12 @@ function FightBuffDianJiShiEffectItem:showEffect()
 
 	self.effectWrap:setLocalPos(0, 0, 0)
 	FightRenderOrderMgr.instance:onAddEffectWrap(self.entityId, self.effectWrap)
+	self.entity.buff:addLoopBuff(self.effectWrap)
+	self:showInitEffect()
+end
+
+function FightBuffDianJiShiEffectItem:showInitEffect()
+	local config = self.dianJiShiConfig
 
 	self.initEffectWrap = self.entity.effect:addHangEffect(config.initEffect, config.initEffectHang, nil, config.initEffectDuration)
 
@@ -62,6 +68,7 @@ function FightBuffDianJiShiEffectItem:onRemoveBuff(buffData)
 	if self.effectWrap then
 		FightRenderOrderMgr.instance:onRemoveEffectWrap(self.entityId, self.effectWrap)
 		self.entity.effect:removeEffect(self.effectWrap)
+		self.entity.buff:removeLoopBuff(self.effectWrap)
 
 		self.effectWrap = nil
 	end
@@ -73,6 +80,7 @@ function FightBuffDianJiShiEffectItem:onRemoveBuff(buffData)
 	if list then
 		table.sort(list, FightBuffDianJiShiEffectItem.sortByPriority)
 		list[1].effectWrap:setActive(true, "FightBuffDianJiShiEffectItemPriority")
+		list[1]:showInitEffect()
 	end
 end
 
@@ -133,13 +141,17 @@ function FightBuffDianJiShiEffectItem:onUpdateEntityBuffActInfo(entityId, buffUi
 		return
 	end
 
+	if self.chargePlaying then
+		return
+	end
+
 	self.chargePlaying = true
 	self.counter = cusCounter
 
 	local config = self.dianJiShiConfig
 	local duration = config.chargeEffectDuration
 
-	self:com_registTimer(self.afterChargeEffect, duration)
+	self:com_registTimer(self.afterChargeEffect, 2)
 
 	self.chargeEffectWrap = self.entity.effect:addHangEffect(config.chargeEffect, config.chargeEffectHang, nil, duration)
 
@@ -155,6 +167,7 @@ end
 
 function FightBuffDianJiShiEffectItem:afterChargeEffect()
 	self.chargePlaying = false
+	self.chargeEffectWrap = nil
 end
 
 return FightBuffDianJiShiEffectItem

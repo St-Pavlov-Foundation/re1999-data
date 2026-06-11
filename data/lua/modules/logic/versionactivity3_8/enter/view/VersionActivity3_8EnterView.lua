@@ -45,6 +45,8 @@ function VersionActivity3_8EnterView:childAddEvents()
 		self._drag:AddDragBeginListener(self._onBeginDrag, self)
 		self._drag:AddDragEndListener(self._onEndDrag, self)
 	end
+
+	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, self._onCloseView, self)
 end
 
 function VersionActivity3_8EnterView:childRemoveEvents()
@@ -53,6 +55,14 @@ function VersionActivity3_8EnterView:childRemoveEvents()
 	if self._drag then
 		self._drag:RemoveDragBeginListener()
 		self._drag:RemoveDragEndListener()
+	end
+
+	self:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseView, self._onCloseView, self)
+end
+
+function VersionActivity3_8EnterView:_onCloseView(viewName)
+	if viewName == ViewName.FullScreenVideoView then
+		self:_skipPlayVideo()
 	end
 end
 
@@ -100,7 +110,7 @@ function VersionActivity3_8EnterView:onClose()
 	end
 end
 
-local VIDEO_DURATION = 6.5
+local VIDEO_DURATION = 8
 
 function VersionActivity3_8EnterView:playVideo()
 	TaskDispatcher.cancelTask(self._playOpen1Anim, self)
@@ -119,15 +129,27 @@ function VersionActivity3_8EnterView:playVideo()
 		self.viewAnim.speed = 0
 		self.gosubviewCanvasGroup.alpha = 0
 
-		VideoController.instance:openFullScreenVideoView(VersionActivity3_8Enum.EnterAnimVideoName, nil, VIDEO_DURATION)
+		local isCanSkip = GameUtil.playerPrefsGetNumberByUserId(VersionActivity3_8Enum.EnterVideoFirstKey, 0) ~= 0
+
+		if not isCanSkip then
+			GameUtil.playerPrefsSetNumberByUserId(VersionActivity3_8Enum.EnterVideoFirstKey, 1)
+		end
+
+		VideoController.instance:openFullScreenVideoView(VersionActivity3_8Enum.EnterAnimVideoName, nil, VIDEO_DURATION, nil, nil, {
+			couldSkip = isCanSkip
+		})
 		TimeUtil.setDayFirstLoginRed(VersionActivity3_8Enum.EnterVideoDayKey)
 		self:addEventCb(VideoController.instance, VideoEvent.OnVideoPlayFinished, self.onPlayVideoDone, self)
 		self:addEventCb(VideoController.instance, VideoEvent.OnVideoPlayOverTime, self.onPlayVideoDone, self)
 		self:addEventCb(VideoController.instance, VideoEvent.OnVideoStarted, self._delayPlayOpen1Anim, self)
+
+		self._audioId = AudioMgr.instance:trigger(AudioEnum3_8.VersionActivity3_8.play_ui_shiji_3_8_open_1)
 	else
 		self.viewAnim.speed = 1
 
 		self:_playOpenAnim()
+
+		self._audioId = AudioMgr.instance:trigger(AudioEnum3_8.VersionActivity3_8.play_ui_shiji_3_8_open_2)
 	end
 end
 
@@ -151,6 +173,18 @@ function VersionActivity3_8EnterView:_delayPlayOpen1Anim()
 
 	TaskDispatcher.runDelay(self._playOpen1Anim, self, VersionActivity3_8Enum.OpenAnimDelayTime)
 	self:removeEventCb(VideoController.instance, VideoEvent.OnVideoStarted, self._delayPlayOpen1Anim, self)
+end
+
+function VersionActivity3_8EnterView:_skipPlayVideo()
+	self:removeEventCb(VideoController.instance, VideoEvent.OnVideoPlayFinished, self.onPlayVideoDone, self)
+	self:removeEventCb(VideoController.instance, VideoEvent.OnVideoPlayOverTime, self.onPlayVideoDone, self)
+	self:removeEventCb(VideoController.instance, VideoEvent.OnVideoStarted, self._delayPlayOpen1Anim, self)
+	TaskDispatcher.cancelTask(self._playOpen1Anim, self)
+	self:_playOpen1Anim()
+
+	if self._audioId then
+		AudioMgr.instance:stopPlayingID(self._audioId)
+	end
 end
 
 function VersionActivity3_8EnterView:_playOpen1Anim()
@@ -178,6 +212,24 @@ function VersionActivity3_8EnterView:onDestroyView()
 		self:removeEventCb(VideoController.instance, VideoEvent.OnVideoPlayFinished, self.onPlayVideoDone, self)
 		self:removeEventCb(VideoController.instance, VideoEvent.OnVideoPlayOverTime, self.onPlayVideoDone, self)
 	end
+
+	if self.activityTabItemList then
+		for _, activityItem in ipairs(self.activityTabItemList) do
+			activityItem._originalAnchorY = nil
+			activityItem._originalAnchorX = nil
+
+			if activityItem.tweenId then
+				ZProj.TweenHelper.KillById(activityItem.tweenId)
+
+				activityItem.tweenId = nil
+			end
+
+			activityItem:dispose()
+		end
+	end
+
+	self.activityTabItemList = nil
+	self.activityTabItemDict = nil
 end
 
 local function openActSortFunc(actId1, actId2)
@@ -357,24 +409,6 @@ function VersionActivity3_8EnterView:_checkHorizontalScroll()
 	end
 
 	gohelper.setActive(self.goArrowRedDot, hasRedDotOutOfView)
-end
-
-function VersionActivity3_8EnterView:onDestroyView()
-	for _, activityItem in ipairs(self.activityTabItemList) do
-		activityItem._originalAnchorY = nil
-		activityItem._originalAnchorX = nil
-
-		if activityItem.tweenId then
-			ZProj.TweenHelper.KillById(activityItem.tweenId)
-
-			activityItem.tweenId = nil
-		end
-
-		activityItem:dispose()
-	end
-
-	self.activityTabItemList = nil
-	self.activityTabItemDict = nil
 end
 
 return VersionActivity3_8EnterView

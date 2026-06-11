@@ -245,10 +245,11 @@ function VersionActivityFixedDungeonMapLevelView:_checkStoryFinish(param)
 	self:_enterFight()
 end
 
-function VersionActivityFixedDungeonMapLevelView:_isOpenPuzzleView()
+function VersionActivityFixedDungeonMapLevelView:_isOpenPuzzleView(isReplay)
 	local co = VersionActivityFixedDungeonConfig.instance:getStoryEpisodeCo(self.originEpisodeId)
 	local storyId = co.beforeStory
-	local isOpenPuzzleView = storyId and V3a5PuzzleController.instance:checkOpenPuzzleView(storyId, co.id)
+	local afterStory = isReplay and co.afterStory
+	local isOpenPuzzleView = storyId and V3a5PuzzleController.instance:isOpenPuzzleView(storyId, true, co.id, afterStory)
 
 	return isOpenPuzzleView
 end

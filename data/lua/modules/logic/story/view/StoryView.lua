@@ -823,6 +823,10 @@ function StoryView:_isHeroLead()
 end
 
 function StoryView:_showText()
+	if not self._stepCo then
+		return
+	end
+
 	if self._stepCo.conversation.type == StoryEnum.ConversationType.None then
 		self._dialogItem:stopConAudio()
 

@@ -163,6 +163,8 @@ function DianJiShiLevelItem:playUnlock()
 
 		self._anim2:Play("unlock", 0, 0)
 	end
+
+	AudioMgr.instance:trigger(AudioEnum3_8.DianJiShi.UnlockNewEpisode)
 end
 
 function DianJiShiLevelItem:playStarAnim()

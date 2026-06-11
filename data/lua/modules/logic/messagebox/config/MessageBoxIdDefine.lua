@@ -231,6 +231,7 @@ local MessageBoxIdDefine = {
 	DianJiShiGameReset = 382001,
 	LoginLostConnect2 = 3,
 	AbyssEnterEpisodeTip = 382002,
+	V3a8SelfSelectSixAllHeroLvMaxChangeItem = 382004,
 	V3A1NecrologistStory_ResetGame = 310005,
 	Season123CancelAssist = 70004,
 	PartyGameLobbyTips4 = 340304,

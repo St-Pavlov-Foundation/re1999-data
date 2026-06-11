@@ -34,12 +34,18 @@ function VersionActivity3_8FreeMonthCardModel:_buildAct240Infos(infos)
 end
 
 function VersionActivity3_8FreeMonthCardModel:setDaySignIn(dayIds)
+	local curDay = self:getCurSignDay()
+
 	if not self._act240Infos then
 		return
 	end
 
 	for _, dayId in ipairs(dayIds) do
 		if self._act240Infos[dayId] then
+			if dayId == curDay then
+				self._todaySigned = true
+			end
+
 			self._act240Infos[dayId]:updateState(MonthCardEnum.Act240SignState.HasGet)
 		end
 	end
@@ -51,6 +57,24 @@ end
 
 function VersionActivity3_8FreeMonthCardModel:getOpenDay()
 	return self._openDay
+end
+
+function VersionActivity3_8FreeMonthCardModel:getCurSignDay()
+	local maxSignDay = self:getMaxSignDay()
+
+	for i = maxSignDay, 2, -1 do
+		if self._act240Infos[i] and self._act240Infos[i - 1] and self._act240Infos[i - 1].state == MonthCardEnum.Act240SignState.HasGet and self._act240Infos[i].state ~= MonthCardEnum.Act240SignState.HasGet then
+			local todaySigned = self:isTodaySigned()
+
+			if todaySigned then
+				return i - 1
+			else
+				return i
+			end
+		end
+	end
+
+	return 1
 end
 
 function VersionActivity3_8FreeMonthCardModel:getDaySignState(dayId)
@@ -98,14 +122,39 @@ function VersionActivity3_8FreeMonthCardModel:getMaxSignDay()
 	return day
 end
 
-function VersionActivity3_8FreeMonthCardModel:getCanBackdateDayCount()
+function VersionActivity3_8FreeMonthCardModel:getCanBackdateDayCount(actId)
+	actId = actId or VersionActivity3_8Enum.ActivityId.FreeMonthCard
+
+	local hasSignDay = self:getRewardGetDayCount()
+	local totalDay = self:getMaxSignDay()
+
+	if self._todaySigned then
+		return math.min(self._openDay - hasSignDay, totalDay - hasSignDay)
+	else
+		return math.min(self._openDay - 1 - hasSignDay, totalDay - hasSignDay)
+	end
+end
+
+function VersionActivity3_8FreeMonthCardModel:getCanBackdateTotalDayCount(actId)
+	actId = actId or VersionActivity3_8Enum.ActivityId.FreeMonthCard
+
 	local hasSignDay = self:getRewardGetDayCount()
 
-	if hasSignDay >= self._openDay - 1 then
-		return 0
+	if self._todaySigned then
+		return self._openDay - hasSignDay > 0 and self._openDay - hasSignDay or 0
+	else
+		return self._openDay - hasSignDay - 1 > 0 and self._openDay - hasSignDay - 1 or 0
 	end
+end
 
-	return self._openDay - 1 - hasSignDay
+function VersionActivity3_8FreeMonthCardModel:getCanBackdateDayItemCount(actId)
+	actId = actId or VersionActivity3_8Enum.ActivityId.FreeMonthCard
+
+	local backdateCo = Activity240Config.instance:getActivity240BackdateCo(actId)
+	local itemCos = string.splitToNumber(backdateCo.cost, "#")
+	local itemCount = ItemModel.instance:getItemQuantity(itemCos[1], itemCos[2])
+
+	return itemCount
 end
 
 function VersionActivity3_8FreeMonthCardModel:getAllTasks(actId)
@@ -141,6 +190,20 @@ function VersionActivity3_8FreeMonthCardModel.sortFunc(a, b)
 	else
 		return a < b
 	end
+end
+
+function VersionActivity3_8FreeMonthCardModel:isAllTasksFinished()
+	local taskCos = Activity240Config.instance:getActivity240TaskCos(VersionActivity3_8Enum.ActivityId.FreeMonthCard)
+
+	for _, taskCo in ipairs(taskCos) do
+		local taskMo = TaskModel.instance:getTaskById(taskCo.id)
+
+		if not taskMo or taskMo.finishCount < taskCo.maxProgress then
+			return false
+		end
+	end
+
+	return true
 end
 
 VersionActivity3_8FreeMonthCardModel.instance = VersionActivity3_8FreeMonthCardModel.New()

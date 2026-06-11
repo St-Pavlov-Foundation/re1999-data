@@ -114,10 +114,10 @@ end
 
 function StoryActivityChapterOpen3_8:getAudioId(part)
 	if part == 1 then
-		return AudioEnum.Story.play_activitysfx_renmen_avg_open
+		return AudioEnum.Story.play_activitysfx_shiji3_8_avgopen
 	end
 
-	return AudioEnum.Story.play_activitysfx_renmen_avg_open2
+	return AudioEnum.Story.play_activitysfx_shiji3_8_open
 end
 
 function StoryActivityChapterOpen3_8:onHide()

@@ -135,12 +135,12 @@ function CharacterDeviceView:_refreshCardUI()
 			if not item.super then
 				local skillInfo = self._deviceMo:getSkillInfo(index)
 
-				UISpriteSetMgr.instance:setFightSprite(item.imageCareerBg, FightDeviceHelper.getCareerImage(skillInfo[2]))
+				UISpriteSetMgr.instance:setFightSprite(item.imageCareerBg, FightDeviceHelper.getCareerImage(skillInfo.costType))
 
-				item.txtPower.text = skillInfo[3]
+				item.txtPower.text = skillInfo.costValue
 
 				item.tagIcon:LoadImage(ResUrl.getAttributeIcon("attribute_" .. skillCO.showTag))
-				UISpriteSetMgr.instance:setFightSprite(item.normalImageCardCover, FightDeviceHelper.getCareerCoverImage(skillInfo[2]))
+				UISpriteSetMgr.instance:setFightSprite(item.normalImageCardCover, FightDeviceHelper.getCareerCoverImage(skillInfo.costType))
 			end
 		end
 

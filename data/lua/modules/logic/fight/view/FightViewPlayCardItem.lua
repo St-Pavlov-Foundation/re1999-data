@@ -431,6 +431,16 @@ function FightViewPlayCardItem:onMeiLerErEffectLoaded(success, assetItem)
 
 	local prefab = assetItem:GetResource()
 	local go = gohelper.clone(prefab, self.go)
+	local normal = gohelper.findChild(go, "#nomal")
+	local unique = gohelper.findChild(go, "ultimate")
+
+	gohelper.setActive(normal, true)
+	gohelper.setActive(unique, false)
+
+	if self._cardItem and self._cardItem.isBigSkillShow then
+		gohelper.setActive(normal, false)
+		gohelper.setActive(unique, true)
+	end
 
 	transformhelper.setLocalScale(go.transform, 0.78, 0.78, 0.78)
 	self.timerComp:registRepeatTimer(self.removeMeiLerErEffect, self, 1.2, 1, go)

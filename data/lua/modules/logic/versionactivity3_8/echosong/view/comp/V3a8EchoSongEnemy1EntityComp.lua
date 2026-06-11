@@ -106,11 +106,10 @@ function V3a8EchoSongEnemy1EntityComp:checkHitParticle(ballItem)
 	end
 
 	local worldPos = ballItem:getPos()
+	local dx = worldPos.x - self._cachedWorldX
+	local dy = worldPos.y - self._cachedWorldY
 
-	self._tempPos.x = worldPos.x - self._cachedWorldX
-	self._tempPos.y = worldPos.y - self._cachedWorldY
-
-	if self._tempPos.magnitude < 1 then
+	if dx * dx + dy * dy < 1 then
 		self._triggerType = triggerType
 
 		if triggerType == V3a8EchoSongEnum.ParticleType.MainPlayerShort then

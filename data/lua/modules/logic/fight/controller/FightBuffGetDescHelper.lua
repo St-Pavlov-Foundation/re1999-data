@@ -247,9 +247,8 @@ end
 
 function FightBuffGetDescHelper.getLostHpToFakeHpDesc(buffMo, buffCo, buffActCo, paramArray, buffActInfo)
 	local param = buffActInfo.param
-	local str = string.format("%s。%s/%s", buffCo.desc, param[1], param[2])
 
-	return str
+	return GameUtil.getSubPlaceholderLuaLangOneParam(buffCo.desc, string.format("%s/%s", param[1], param[2]))
 end
 
 function FightBuffGetDescHelper.onFoundationShield(buffMo, buffCo, buffActCo, paramArray, buffActInfo)

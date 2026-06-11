@@ -113,6 +113,7 @@ FightMsgId.InvokeCancelPlayerOperate = GameUtil.getMsgId()
 FightMsgId.PlayStoryEndInTimeline = GameUtil.getMsgId()
 FightMsgId.GetDianJiShiBiggerPriorityBuffEffect = GameUtil.getMsgId()
 FightMsgId.DestroyDianJiShiSmallerPriorityBuffEffect = GameUtil.getMsgId()
+FightMsgId.OnSetEntityAlpha = GameUtil.getMsgId()
 FightMsgId.GMDouQuQuSkip2IndexRound = GameUtil.getMsgId()
 
 local id2Name = {}

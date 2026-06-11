@@ -92,6 +92,10 @@ function FightHeroHSYComp:createEffect(targetId)
 	FightRenderOrderMgr.instance:onAddEffectWrap(targetId, effectWrap)
 
 	self.existEffectWrapDict[targetId] = effectWrap
+
+	if self.audio ~= 0 then
+		AudioMgr.instance:trigger(self.audio)
+	end
 end
 
 function FightHeroHSYComp:hideEffect(targetId)

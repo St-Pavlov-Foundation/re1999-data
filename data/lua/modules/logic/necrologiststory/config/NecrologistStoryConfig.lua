@@ -21,7 +21,8 @@ function NecrologistStoryConfig:reqConfigNames()
 		"hero_story_plot",
 		"hero_story_plot_group",
 		"hero_story_introduce",
-		"hero_story_task"
+		"hero_story_task",
+		"hero_story_ending"
 	}
 
 	self.configNameLoadedDict = {}
@@ -58,6 +59,12 @@ function NecrologistStoryConfig:onConfigLoaded(configName, configTable)
 	if func then
 		func(self, configTable)
 	end
+end
+
+function NecrologistStoryConfig:onhero_story_endingLoaded(configTable)
+	self._heroStoryEndingConfig = configTable
+
+	self:initEndingDict()
 end
 
 function NecrologistStoryConfig:onhero_story_plot_groupLoaded(configTable)
@@ -108,7 +115,6 @@ function NecrologistStoryConfig:_formatPlotOptionData(config, dataDict)
 	end
 
 	local list = data.optionList
-	local endingList = data.endingList
 
 	if string.find(config.type, "options") then
 		local sections = GameUtil.splitString2(config.param, true, "#", ",")
@@ -127,13 +133,6 @@ function NecrologistStoryConfig:_formatPlotOptionData(config, dataDict)
 
 			table.insert(optionList, optionData)
 		end
-	elseif config.type == "ending" then
-		local endingData = {}
-
-		endingData.id = tonumber(config.param)
-		endingData.isEnding = true
-
-		table.insert(endingList, endingData)
 	elseif config.type == "situationValue" then
 		local optionList = data.optionList[#data.optionList]
 
@@ -142,6 +141,19 @@ function NecrologistStoryConfig:_formatPlotOptionData(config, dataDict)
 				data.affectsEndingOptionIndexs[v.id] = true
 			end
 		end
+	end
+
+	local endingCo = self:getEndingCoByStep(config.id)
+
+	if endingCo then
+		local endingData = {}
+
+		endingData.id = endingCo.id
+		endingData.isEnding = true
+		endingData.config = config
+		endingData.endingCo = endingCo
+
+		table.insert(data.endingList, endingData)
 	end
 end
 
@@ -211,13 +223,24 @@ function NecrologistStoryConfig:getOptionIdByConfigAndIndex(config, index)
 		return nil
 	end
 
+	local optionIds, curId
+
 	for _, options in ipairs(optionList) do
 		for _, optionData in ipairs(options) do
 			if optionData.index == index and optionData.config.id == config.id then
-				return optionData.id
+				curId = optionData.id
+				optionIds = {}
+
+				for _, v in ipairs(options) do
+					optionIds[v.id] = true
+				end
+
+				break
 			end
 		end
 	end
+
+	return curId, optionIds
 end
 
 function NecrologistStoryConfig:onhero_story_introduceLoaded(configTable)
@@ -312,6 +335,33 @@ function NecrologistStoryConfig:getPlotListByStoryId(storyId)
 	end
 
 	return self._plotListByStoryIdDict[storyId] or {}
+end
+
+function NecrologistStoryConfig:initEndingDict()
+	self._endingDict = {}
+	self._heroStory2EndingDict = {}
+
+	for _, co in ipairs(self._heroStoryEndingConfig.configList) do
+		self._endingDict[co.storyStep] = co
+
+		if not self._heroStory2EndingDict[co.storyId] then
+			self._heroStory2EndingDict[co.storyId] = {}
+		end
+
+		table.insert(self._heroStory2EndingDict[co.storyId], co)
+	end
+end
+
+function NecrologistStoryConfig:getEndingCo(id)
+	return self._heroStoryEndingConfig.configDict[id]
+end
+
+function NecrologistStoryConfig:getEndingCoByStep(step)
+	return self._endingDict[step]
+end
+
+function NecrologistStoryConfig:getEndingListByStoryId(storyId)
+	return self._heroStory2EndingDict[storyId]
 end
 
 NecrologistStoryConfig.instance = NecrologistStoryConfig.New()

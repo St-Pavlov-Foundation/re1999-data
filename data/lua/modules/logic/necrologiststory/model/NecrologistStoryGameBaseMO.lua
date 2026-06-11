@@ -161,18 +161,74 @@ function NecrologistStoryGameBaseMO:setPlotSituationTab(plotId, dict)
 	self:setDataDirty()
 end
 
-function NecrologistStoryGameBaseMO:setPlotOptionSelected(plotId, optionId)
+function NecrologistStoryGameBaseMO:setPlotOptionSelected(plotId, optionId, optionIds)
 	local plotMo = self:getPlotInfo(plotId, true)
+	local isDirty = false
 
-	plotMo:setOptionSelected(optionId)
-	self:setDataDirty()
+	if not plotMo:isOptionUnlocked(optionId) then
+		plotMo:setOptionUnlocked(optionId)
+
+		isDirty = true
+	end
+
+	if self:resetOtherOption(plotId, optionId, optionIds) then
+		isDirty = true
+	end
+
+	if isDirty then
+		self:setDataDirty()
+	end
 end
 
 function NecrologistStoryGameBaseMO:setPlotEndingUnlock(plotId, endingId)
 	local plotMo = self:getPlotInfo(plotId, true)
+	local isDirty = false
 
-	plotMo:setEndingUnlock(endingId)
-	self:setDataDirty()
+	if not plotMo:isEndingUnlocked(endingId) then
+		plotMo:setEndingUnlock(endingId)
+
+		isDirty = true
+	end
+
+	if self:resetOtherEnding(plotId, endingId) then
+		isDirty = true
+	end
+
+	if isDirty then
+		self:setDataDirty()
+	end
+end
+
+function NecrologistStoryGameBaseMO:resetOtherOption(plotId, optionId, optionIds)
+	local isDirty = false
+
+	for id, info in pairs(self.plotInfoDict) do
+		if plotId < id then
+			if info:resetOptionAndEnding() then
+				isDirty = true
+			end
+		elseif id == plotId and info:resetOptionAndEnding(optionId, optionIds) then
+			isDirty = true
+		end
+	end
+
+	return isDirty
+end
+
+function NecrologistStoryGameBaseMO:resetOtherEnding(plotId, endingId)
+	local isDirty = false
+
+	for id, info in pairs(self.plotInfoDict) do
+		if id == plotId then
+			if info:resetEnding(endingId) then
+				isDirty = true
+			end
+		elseif info:resetEnding(0) then
+			isDirty = true
+		end
+	end
+
+	return isDirty
 end
 
 function NecrologistStoryGameBaseMO:toString()

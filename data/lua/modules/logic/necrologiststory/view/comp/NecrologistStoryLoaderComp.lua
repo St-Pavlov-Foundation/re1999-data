@@ -102,11 +102,7 @@ function NecrologistStoryLoaderComp:_onItemLoaded(loaderId, loader, loadingPathL
 
 	if callbackInfo then
 		self:_invokeCallback(callbackInfo.callback, callbackInfo.obj, callbackInfo.pathList, unpack(callbackInfo.extraParams))
-
-		self.callbackDict[loaderId] = nil
 	end
-
-	self.loaderDict[loaderId] = nil
 end
 
 function NecrologistStoryLoaderComp:_cacheLoadedResources(loader, pathList)

@@ -272,7 +272,7 @@ function Activity191Rpc:onReceiveEndAct191GameReply(resultCode, msg)
 
 	actInfo:getGameInfo().state = Activity191Enum.GameState.None
 
-	actInfo:setEnfInfo(gameEndInfo)
+	actInfo:setEndInfo(gameEndInfo)
 	Activity191Controller.instance:dispatchEvent(Activity191Event.EndGame)
 end
 

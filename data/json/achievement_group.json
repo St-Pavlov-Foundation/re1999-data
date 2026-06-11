@@ -295,8 +295,8 @@
     "order": 968,
     "name": "空间诗学",
     "desc": "",
-    "uiListParam": "{\"groupNormalBgUrl\":\"singlebg_lang/txt_achievement/list/130.png\",\"groupUpgradeBgUrl\":\"singlebg_lang/txt_achievement/list/130_1.png\",\"id\":[1,2,3,4,5,6,7,8,9],\"pX\":[60.8,260.6,439.5,594.3,-97.2,56.8,243.4,412.4,557.1],\"pY\":[120.2,98.0,98.0,39.9,-1.0,-57.7,-88.9,-65.2,-105.5],\"sX\":[0.81,0.69,0.8,0.57,0.57,0.65,0.8,0.59,0.67],\"sY\":[0.81,0.69,0.8,0.57,0.57,0.65,0.8,0.59,0.67]}",
-    "uiPlayerParam": "{\"groupNormalBgUrl\":\"singlebg_lang/txt_achievement/player/130.png\",\"groupUpgradeBgUrl\":\"singlebg_lang/txt_achievement/player/130_1.png\",\"groupTitleColor\":\"#E2DACAFF\",\"id\":[1,2,3,4,5,6,7,8,9],\"pX\":[32.4,111.1,179.9,240.1,-29.4,30.7,101.8,170.9,227.6],\"pY\":[20.1,12.4,11.4,-11.5,-26.7,-49.2,-59.7,-51.8,-67.9],\"sX\":[0.32,0.27,0.3,0.22,0.23,0.26,0.35,0.23,0.26],\"sY\":[0.32,0.27,0.3,0.22,0.23,0.26,0.35,0.23,0.26]}",
+    "uiListParam": "{\"groupNormalBgUrl\":\"singlebg_lang/txt_achievement/list/133.png\",\"groupUpgradeBgUrl\":\"singlebg_lang/txt_achievement/list/133_1.png\",\"id\":[1,2,3,4,5,6,7,8],\"pX\":[14.5,194.7,375.8,553.5,-110.0,81.3,299.0,504.3],\"pY\":[108.7,118.6,109.1,117.7,-63.0,-62.3,-62.4,-62.4],\"sX\":[0.82,1.0,0.82,1.0,0.78,1.18,1.18,1.0],\"sY\":[0.82,1.0,0.82,1.0,0.78,1.18,1.18,1.0]}",
+    "uiPlayerParam": "{\"groupNormalBgUrl\":\"singlebg_lang/txt_achievement/player/133.png\",\"groupUpgradeBgUrl\":\"singlebg_lang/txt_achievement/player/133_1.png\",\"groupTitleColor\":\"#E2DACAFF\",\"id\":[1,2,3,4,5,6,7,8],\"pX\":[-18.7,53.5,126.09,198.9,-69.0,8.38,95.6,178.4],\"pY\":[13.8,17.4,13.81,17.64,-55.9,-55.14,-54.4,-57.2],\"sX\":[0.32,0.4,0.32,0.4,0.32,0.48,0.46,0.42],\"sY\":[0.32,0.4,0.32,0.4,0.32,0.48,0.46,0.42]}",
     "unLockAchievement": 41330801
   }
 ]

@@ -108,20 +108,28 @@ function NecrologistStoryView_PlayStory:playStory_time(storyConfig, isSkip)
 	storyView:runNextStep(isSkip)
 end
 
-function NecrologistStoryView_PlayStory:playStory_ending(storyConfig, isSkip)
-	local storyView = self:getStoryView()
-	local mo = NecrologistStoryModel.instance:getCurStoryMO()
-
-	mo:onEndingUnlock(tonumber(storyConfig.param))
-	storyView:runNextStep(isSkip)
-end
-
 function NecrologistStoryView_PlayStory:playStory_v3a8LeftStyle(storyConfig, isSkip)
 	self:createStoryItemAsync(V3A8NecrologistStoryLeftStyle, storyConfig, isSkip, self.goLeftStyle)
 end
 
 function NecrologistStoryView_PlayStory:playStory_v3a8Interact(storyConfig, isSkip)
 	self:createStoryItemAsync(V3A8NecrologistStoryInteractItem, storyConfig, isSkip)
+end
+
+function NecrologistStoryView_PlayStory:playStory_event(storyConfig, isSkip)
+	local param = string.split(storyConfig.param, "#")
+	local eventName = table.remove(param, 1)
+	local eventId = NecrologistStoryEvent[eventName]
+
+	if eventId then
+		local eventParam = NecrologistStoryHelper.parseEventParam(eventId, param)
+
+		NecrologistStoryController.instance:dispatchEvent(eventId, eventParam)
+	end
+
+	local storyView = self:getStoryView()
+
+	storyView:runNextStep(isSkip)
 end
 
 return NecrologistStoryView_PlayStory

@@ -156,15 +156,12 @@ function RoomCharacterBirthdayComp:checkBirthday()
 
 	if isOnBirthday and inSelfBirthdayBlock then
 		local targetHeroId = HeroConfig.instance:getSPOriginalHero(heroId) or heroId
-		local heroMo = HeroModel.instance:getByHeroId(targetHeroId)
+		local targetHeroMo = HeroModel.instance:getByHeroId(targetHeroId)
+		local meetingYear = targetHeroMo and targetHeroMo:getMeetingYear()
 
-		if heroMo then
-			local meetingYear = heroMo:getMeetingYear()
+		self:playBirthdayFirework(meetingYear)
 
-			self:playBirthdayFirework(meetingYear)
-
-			replaceAnimState = RoomCharacterEnum.CharacterMoveState.BirthdayIdle
-		end
+		replaceAnimState = RoomCharacterEnum.CharacterMoveState.BirthdayIdle
 	end
 
 	mo:replaceIdleState(replaceAnimState)

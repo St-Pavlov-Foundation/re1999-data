@@ -46,7 +46,7 @@ function VersionActivity3_8JumpHandleFunc:jumpTo13812(paramsList)
 	return JumpEnum.JumpResult.Success
 end
 
-function VersionActivity3_1JumpHandleFunc:jumpTo13808()
+function VersionActivity3_8JumpHandleFunc:jumpTo13808()
 	local actId = Activity191Controller.instance:getActId()
 
 	table.insert(self.waitOpenViewNames, VersionActivityFixedHelper.getVersionActivityEnterViewName())
@@ -58,7 +58,7 @@ function VersionActivity3_1JumpHandleFunc:jumpTo13808()
 	return JumpEnum.JumpResult.Success
 end
 
-function VersionActivity3_1JumpHandleFunc:jumpTo13819()
+function VersionActivity3_8JumpHandleFunc:jumpTo13819()
 	local actId = Activity191Controller.instance:getActId()
 
 	table.insert(self.waitOpenViewNames, VersionActivityFixedHelper.getVersionActivityEnterViewName())
@@ -76,6 +76,16 @@ function VersionActivity3_8JumpHandleFunc:jumpTo13810(paramsList)
 	VersionActivityFixedHelper.getVersionActivityEnterController().instance:openVersionActivityEnterViewIfNotOpened(function()
 		AbyssController.instance:openMainView(VersionActivity3_8Enum.ActivityId.Abyss)
 	end, nil, VersionActivity3_8Enum.ActivityId.Abyss, true)
+
+	return JumpEnum.JumpResult.Success
+end
+
+function VersionActivity3_8JumpHandleFunc:jumpTo13804(paramsList)
+	table.insert(self.waitOpenViewNames, VersionActivityFixedHelper.getVersionActivityEnterViewName())
+	VersionActivityFixedHelper.getVersionActivityEnterController().instance:openVersionActivityEnterViewIfNotOpened(function()
+		table.insert(self.waitOpenViewNames, ViewName.ReactivityStoreView)
+		ReactivityController.instance:openReactivityStoreView(VersionActivity3_8Enum.ActivityId.Reactivity)
+	end)
 
 	return JumpEnum.JumpResult.Success
 end

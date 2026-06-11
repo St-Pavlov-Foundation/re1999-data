@@ -13,6 +13,8 @@ function NewPlayerCardContentView:onInitView()
 	self._goskinpreviewnode = gohelper.findChild(self.viewGO, "bottom/#go_skinpreview")
 	self._btnswitchskin = gohelper.findChildButton(self.viewGO, "#btn_switch")
 	self._goswitchskinreddot = gohelper.findChild(self.viewGO, "#btn_switch/#go_reddot")
+	self._btnsettingskin = gohelper.findChildButton(self.viewGO, "#btn_setting")
+	self._gosettingreddot = gohelper.findChild(self.viewGO, "#btn_setting/#go_reddot")
 	self._bgreddot = RedDotController.instance:addNotEventRedDot(self._goswitchskinreddot, self._isShowRedDot, self)
 	self._openswitchskin = false
 	self._firstopen = true
@@ -26,6 +28,7 @@ end
 function NewPlayerCardContentView:addEvents()
 	self._btnbottomclose:AddClickListener(self._btnswitchskinOnClick, self)
 	self._btnswitchskin:AddClickListener(self._btnswitchskinOnClick, self)
+	self._btnsettingskin:AddClickListener(self._btnsettingOnClick, self)
 	self:addEventCb(PlayerCardController.instance, PlayerCardEvent.SwitchTheme, self.SwitchTheme, self)
 	self:addEventCb(PlayerCardController.instance, PlayerCardEvent.ChangeSkin, self.ChangeSkin, self)
 end
@@ -33,8 +36,27 @@ end
 function NewPlayerCardContentView:removeEvents()
 	self._btnbottomclose:RemoveClickListener()
 	self._btnswitchskin:RemoveClickListener()
+	self._btnsettingskin:RemoveClickListener()
 	self:removeEventCb(PlayerCardController.instance, PlayerCardEvent.SwitchTheme, self.SwitchTheme, self)
 	self:removeEventCb(PlayerCardController.instance, PlayerCardEvent.ChangeSkin, self.ChangeSkin, self)
+end
+
+function NewPlayerCardContentView:_btnsettingOnClick()
+	local skinId = self._tempSkinId or self.skinId
+
+	ViewMgr.instance:openView(ViewName.PlayerCardEnterSettingView, {
+		SkinId = skinId,
+		playercardinfo = self.playercardinfo
+	})
+
+	local isNew = PlayerCardModel.instance:isShowEnterAnimSettingNewReddot(skinId)
+
+	if isNew then
+		PlayerCardModel.instance:cancelShowEnterAnimSettingNewReddot(skinId)
+		PlayerCardController.instance:dispatchEvent(PlayerCardEvent.OnCancelShowEnterAnimSettingNewReddot)
+	end
+
+	gohelper.setActive(self._gosettingreddot.gameObject, false)
 end
 
 function NewPlayerCardContentView:_editableInitView()
@@ -122,6 +144,18 @@ function NewPlayerCardContentView:loadRes(skinId)
 	self._loader:addPath(self._path)
 	self._loader:startLoad(self._onLoadFinish, self)
 	self.viewContainer:setShowSkinId(skinId)
+
+	local isSelf = self.playercardinfo:isSelf()
+	local themeInfo = PlayerCardEnum.Theme[skinId]
+	local isSettingEnterAnim = isSelf and themeInfo and themeInfo.EnterAnim ~= nil
+
+	gohelper.setActive(self._btnsettingskin.gameObject, isSettingEnterAnim)
+
+	if isSettingEnterAnim then
+		local isNew = PlayerCardModel.instance:isShowEnterAnimSettingNewReddot(skinId)
+
+		gohelper.setActive(self._gosettingreddot.gameObject, isNew)
+	end
 end
 
 function NewPlayerCardContentView:_onLoadFinish()

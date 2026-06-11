@@ -57,7 +57,7 @@ function Act191MO:getGameEndInfo()
 	return self.gameEndInfo
 end
 
-function Act191MO:setEnfInfo(endInfo)
+function Act191MO:setEndInfo(endInfo)
 	for _, badgeInfo in ipairs(endInfo.badgeInfoList) do
 		local id = badgeInfo.id
 		local badgeMO = self.badgeMoDic[id]

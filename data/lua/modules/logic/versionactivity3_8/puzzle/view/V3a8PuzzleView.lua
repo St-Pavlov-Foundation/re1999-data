@@ -8,6 +8,7 @@ function V3a8PuzzleView:onInitView()
 	self._btnReset = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_Reset")
 	self._gotopleft = gohelper.findChild(self.viewGO, "#go_topleft")
 	self._gohand = gohelper.findChild(self.viewGO, "#go_hand")
+	self._goComplete = gohelper.findChild(self.viewGO, "#go_Complete")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -16,13 +17,19 @@ end
 
 function V3a8PuzzleView:addEvents()
 	self._btnReset:AddClickListener(self._btnResetOnClick, self)
+	self:addEventCb(GuideController.instance, GuideEvent.StartGuideStep, self._onStartGuideStep, self)
 end
 
 function V3a8PuzzleView:removeEvents()
 	self._btnReset:RemoveClickListener()
+	self:removeEventCb(GuideController.instance, GuideEvent.StartGuideStep, self._onStartGuideStep, self)
 end
 
 function V3a8PuzzleView:_btnResetOnClick()
+	if self._gameSuccess then
+		return
+	end
+
 	if self._isPlayingAudioSlot then
 		ToastController.instance:showToast(ToastEnum.V3a8PuzzlePlayAudioTip)
 
@@ -30,6 +37,12 @@ function V3a8PuzzleView:_btnResetOnClick()
 	end
 
 	self:_reallyPlaySlotsAudio(0)
+end
+
+function V3a8PuzzleView:_onStartGuideStep(guideId, stepId)
+	if guideId == 38300 and stepId == 3 then
+		gohelper.setActive(self._gohand, true)
+	end
 end
 
 local ItemCount = 6
@@ -50,6 +63,10 @@ function V3a8PuzzleView:_editableInitView()
 	local audioIds = string.splitToNumber(audioIdsConstValue, "|")
 
 	self._playSlotAudioTime = self:_getConstValue(V3a5PuzzleEnum.ConstId.V3a8_PlaySlotAudioTime)
+	self._goRepeat = gohelper.findChild(self.viewGO, "vx_order")
+
+	gohelper.setActive(self._goRepeat, true)
+
 	self._itemParams = {}
 
 	for i = 1, ItemCount do
@@ -57,7 +74,7 @@ function V3a8PuzzleView:_editableInitView()
 
 		self._slotItems[i] = slotItem
 		slotItem.audioId = audioIds[i]
-		slotItem.audioTime = 1
+		slotItem.audioTime = 1.2
 		slotItem.delayTime = delayTimes[i] or 0.2
 
 		local stoneItem = self:_getStoneItem(i, stoneroot)
@@ -67,7 +84,17 @@ function V3a8PuzzleView:_editableInitView()
 
 	gohelper.setActive(self._gohand, false)
 
+	local gobg = gohelper.findChild(self.viewGO, "Image_Base")
+
+	self._bgAnim = gobg:GetComponent(typeof(UnityEngine.Animator))
 	self._txtTitleDesc = gohelper.findChildText(self.viewGO, "Target/txt_TargetDescr")
+
+	gohelper.setActive(self._goComplete, false)
+end
+
+function V3a8PuzzleView:_onClickSlotItem(slotItem)
+	slotItem.playRepeat()
+	self:_reallyPlaySlotsAudio()
 end
 
 function V3a8PuzzleView:_getSlotItem(i, slotroot)
@@ -76,7 +103,16 @@ function V3a8PuzzleView:_getSlotItem(i, slotroot)
 	slotItem.go = gohelper.findChild(slotroot, "Slot_" .. i)
 	slotItem.golight = gohelper.findChild(slotItem.go, "Slot")
 	slotItem.goVx = gohelper.findChild(slotItem.go, "vx_ring")
+	slotItem.goStoneRoot = gohelper.findChild(slotItem.go, "stone")
 	slotItem.index = i
+
+	local goSlot = gohelper.findChild(slotItem.go, "Image_Groove")
+
+	slotItem.btnClick = gohelper.getClick(goSlot)
+
+	slotItem.btnClick:AddClickListener(self._onClickSlotItem, self, slotItem)
+
+	slotItem.animPlayer = slotItem.go:GetComponent(typeof(UnityEngine.Animator))
 
 	local x, y = recthelper.getAnchor(slotItem.go.transform)
 	local width = recthelper.getWidth(slotItem.go.transform)
@@ -87,32 +123,59 @@ function V3a8PuzzleView:_getSlotItem(i, slotroot)
 	slotItem.bottom = y - height * 0.5
 	slotItem.top = y + height * 0.5
 	slotItem.orignAnchor = Vector2(x, y)
-
-	local gobg = gohelper.findChild(self.viewGO, "Image_Base")
-
-	self._bgAnim = gobg:GetComponent(typeof(UnityEngine.Animator))
 	slotItem.stoneIndex = 0
 
-	function slotItem.activeLight(light, vx)
-		gohelper.setActive(slotItem.golight, light)
-		gohelper.setActive(slotItem.goVx, vx)
-	end
-
-	function slotItem.refreshLight()
-		slotItem.activeLight(slotItem.stoneIndex == slotItem.index, slotItem.stoneIndex == slotItem.index)
-	end
-
 	function slotItem.stopAudio()
-		slotItem.refreshLight()
-
-		if slotItem.playAudioId then
-			AudioMgr.instance:stopPlayingID(slotItem.playAudioId)
-		end
-
 		slotItem.playAudioId = nil
 	end
 
-	slotItem.refreshLight()
+	function slotItem.playAnim(aniName)
+		if slotItem.playAniName ~= aniName then
+			slotItem.animPlayer:Play(aniName, 0, 0)
+
+			slotItem.playAniName = aniName
+		end
+	end
+
+	function slotItem.playLightAnim(isLight)
+		if isLight then
+			slotItem.playAnim("loop1")
+
+			if not slotItem.playLightAudio then
+				slotItem.playLightAudio = AudioMgr.instance:trigger(AudioEnum3_8.Puzzle.play_ui_shiji_slot_light)
+			end
+		else
+			slotItem.playAnim("idle")
+
+			slotItem.playLightAudio = nil
+		end
+	end
+
+	function slotItem.refreshSlot()
+		slotItem.playAnim(slotItem.stoneIndex == slotItem.index and "loop2" or "close")
+	end
+
+	function slotItem.playRepeat()
+		if not slotItem.animRepeat then
+			local goRepeat = gohelper.findChild(self._goRepeat, "vx_ring_" .. i)
+
+			slotItem.animRepeat = goRepeat:GetComponent(typeof(UnityEngine.Animator))
+		end
+
+		gohelper.setActive(slotItem.animRepeat.gameObject, true)
+
+		if slotItem.animRepeat then
+			TaskDispatcher.runDelay(slotItem.cancelPlayRepeat, slotItem, slotItem.audioTime)
+		end
+
+		slotItem.playAudioId = AudioMgr.instance:trigger(slotItem.audioId)
+	end
+
+	function slotItem.cancelPlayRepeat()
+		if slotItem.animRepeat then
+			gohelper.setActive(slotItem.animRepeat.gameObject, false)
+		end
+	end
 
 	return slotItem
 end
@@ -152,17 +215,21 @@ function V3a8PuzzleView:_getStoneItem(i, stoneroot)
 	end
 
 	function stoneItem.stopClickAnim()
-		stoneItem.anim:Play("unselect", 0, 0)
+		stoneItem.playAnim("unselect")
 	end
 
 	function stoneItem.playErrorAnim()
-		stoneItem.anim:Play("error", 0, 0)
+		stoneItem.playAnim("error")
+	end
+
+	function stoneItem.playAnim(aniName)
+		stoneItem.anim:Play(aniName, 0, 0)
 	end
 
 	return stoneItem
 end
 
-function V3a8PuzzleView:_getNearSlot(item)
+function V3a8PuzzleView:_getNearSlot(item, isCheck)
 	for i, slotItem in pairs(self._slotItems) do
 		if not slotItem.stoneIndex or slotItem.stoneIndex == 0 then
 			local isNearSlot = self:_isNearSlot(item, slotItem)
@@ -171,7 +238,7 @@ function V3a8PuzzleView:_getNearSlot(item)
 				if isNearSlot then
 					return slotItem
 				end
-			elseif isNearSlot and slotItem.index == item.index then
+			elseif isNearSlot and (not isCheck or slotItem.index == item.index) then
 				return slotItem
 			end
 		end
@@ -179,6 +246,8 @@ function V3a8PuzzleView:_getNearSlot(item)
 end
 
 function V3a8PuzzleView:_onDragBegin(item, pointerEventData)
+	gohelper.setActive(self._gohand, false)
+
 	if not item or item.isSuccess then
 		return
 	end
@@ -189,10 +258,12 @@ function V3a8PuzzleView:_onDragBegin(item, pointerEventData)
 		item.tweenId = nil
 	end
 
-	item.anim:Play("select", 0, 0)
+	item.playAnim("select")
 
 	item.isDraging = true
 	self._selectItem = item
+
+	AudioMgr.instance:trigger(AudioEnum3_8.Puzzle.play_ui_qiutu_stele_put)
 end
 
 function V3a8PuzzleView:_onDrag(item, pointerEventData)
@@ -202,12 +273,14 @@ function V3a8PuzzleView:_onDrag(item, pointerEventData)
 
 	self._selectItem = item
 
-	local nearSlot = self:_getNearSlot(item)
+	local nearSlot = self:_getNearSlot(item, true)
 
 	for i, slotItem in pairs(self._slotItems) do
-		local isLight = nearSlot and nearSlot == slotItem
+		if slotItem.stoneIndex ~= slotItem.index then
+			local isLight = nearSlot and nearSlot.index == slotItem.index
 
-		gohelper.setActive(slotItem.golight, isLight)
+			slotItem.playLightAnim(isLight)
+		end
 	end
 
 	local _dragPos = recthelper.screenPosToAnchorPos(GamepadController.instance:getMousePosition(), self.viewGO.transform)
@@ -222,7 +295,7 @@ function V3a8PuzzleView:_onDragEnd(item, pointerEventData)
 
 	item.isDraging = false
 
-	item.anim:Play("unselect", 0, 0)
+	item.playAnim("unselect")
 	self:_checkSuccessPutIn(item)
 
 	if not self._gameSuccess then
@@ -247,11 +320,28 @@ function V3a8PuzzleView:_isNearSlot(item, slotItem)
 end
 
 function V3a8PuzzleView:_onClick(item)
-	if item.isSuccess or item.isDraging then
+	if item.isDraging then
 		return
 	end
 
-	item.anim:Play("click", 0, 0)
+	if item.isSuccess then
+		item.playAnim("error")
+		AudioMgr.instance:trigger(AudioEnum3_8.Puzzle.play_ui_shiji_stone_shake_short)
+
+		if self._gameType == GameType.Game1 then
+			local dialogConstId = 381004
+
+			if not self._isPlayedDialogs[dialogConstId] then
+				self._isPlayedDialogs[dialogConstId] = true
+
+				self:_playDialogByConst(dialogConstId)
+			end
+		end
+
+		return
+	end
+
+	item.playAnim("click")
 	self:_reallyPlaySlotsAudio()
 
 	local slotItem = self._slotItems[item.index]
@@ -263,7 +353,7 @@ function V3a8PuzzleView:_onClick(item)
 end
 
 function V3a8PuzzleView:_checkSuccessPutIn(item)
-	local slotItem = self:_getNearSlot(item)
+	local slotItem = self:_getNearSlot(item, true)
 
 	if slotItem then
 		self:_successPutIn(item, slotItem)
@@ -278,20 +368,18 @@ function V3a8PuzzleView:_successPutIn(item, slotItem)
 	end
 
 	item.isSuccess = true
-
-	slotItem.refreshLight()
-
-	local nowAnchor = item.go.transform.anchoredPosition
-	local anchor = slotItem.orignAnchor
-	local time = Vector2.Distance(nowAnchor, Vector2(anchor.x, anchor.y)) * 0.001
-
-	item.tweenId = ZProj.TweenHelper.DOAnchorPos(item.go.transform, anchor.x, anchor.y, time)
-
-	gohelper.setAsFirstSibling(item.go)
-
 	slotItem.stoneIndex = item.index
 
-	gohelper.setActive(item.goRipple, true)
+	slotItem.refreshSlot()
+	gohelper.addChildPosStay(slotItem.goStoneRoot, item.go)
+
+	local nowAnchor = item.go.transform.anchoredPosition
+	local anchor = Vector2.zero
+	local time = Vector2.Distance(nowAnchor, Vector2(anchor.x, anchor.y)) * 0.001
+
+	item.tweenId = ZProj.TweenHelper.DOAnchorPos(item.go.transform, 0, 0, time)
+
+	gohelper.setAsFirstSibling(item.go)
 	self:_checkAllSuccessPutIn()
 
 	if self._gameType == GameType.Game1 then
@@ -308,7 +396,9 @@ function V3a8PuzzleView:_successPutIn(item, slotItem)
 				self._isPlayedDialogs[381002] = true
 			end
 		else
-			item.anim:Play("error", 0, 0)
+			item.playAnim("error")
+			AudioMgr.instance:trigger(AudioEnum3_8.Puzzle.play_ui_shiji_stone_shake_short)
+			AudioMgr.instance:trigger(AudioEnum3_8.Puzzle.play_ui_mistakes)
 
 			if not self._isPlayedDialogs[381003] then
 				dialogConstId = 381003
@@ -320,16 +410,26 @@ function V3a8PuzzleView:_successPutIn(item, slotItem)
 			self:_playDialogByConst(dialogConstId)
 		end
 	end
+
+	if item.index == slotItem.index then
+		slotItem.playAudioId = AudioMgr.instance:trigger(slotItem.audioId)
+	end
+
+	AudioMgr.instance:trigger(AudioEnum3_8.Puzzle.play_ui_qiutu_organ_sink)
 end
 
 function V3a8PuzzleView:_failPutIn(item, slotItem)
-	if slotItem then
-		slotItem.refreshLight()
-	end
-
 	gohelper.setActive(item.goRipple, false)
-	item.anim:Play("error", 0, 0)
-	item:returnPosFunc()
+
+	local nearSlot = self:_getNearSlot(item)
+
+	if nearSlot then
+		item.playAnim("error")
+		AudioMgr.instance:trigger(AudioEnum3_8.Puzzle.play_ui_shiji_stone_shake_short)
+		TaskDispatcher.runDelay(item.returnPosFunc, item, 0.5)
+	else
+		item:returnPosFunc()
+	end
 end
 
 function V3a8PuzzleView:_checkAllSuccessPutIn()
@@ -344,21 +444,40 @@ function V3a8PuzzleView:_checkAllSuccessPutIn()
 			item:playErrorAnim()
 			TaskDispatcher.runRepeat(item.playErrorAnim, item, 0.35)
 		end
+
+		AudioMgr.instance:trigger(AudioEnum3_8.Puzzle.play_ui_shiji_stone_shake_long)
 	end
 
 	if self._gameType == GameType.Game1 then
 		TaskDispatcher.runDelay(self._checkPlayNextStory, self, 2)
 	else
-		local dialogConstId = 382002
-
-		self:_playDialogByConst(dialogConstId)
+		TaskDispatcher.runDelay(self._playSuccessDialog, self, 9)
+		AudioMgr.instance:trigger(AudioEnum3_8.Puzzle.play_ui_shiji_stone_music)
 	end
 
-	self._bgAnim:Play("finish", 0, 0)
+	TaskDispatcher.runDelay(self._onFinish, self, 0.5)
 
 	self._gameSuccess = true
 
+	AudioMgr.instance:trigger(AudioEnum3_8.Puzzle.play_ui_shiji_place_success)
+	AudioMgr.instance:trigger(AudioEnum3_8.Puzzle.play_ui_lushang_level_complete)
+
 	return true
+end
+
+function V3a8PuzzleView:_playSuccessDialog()
+	local dialogConstId = 382002
+
+	self:_playDialogByConst(dialogConstId)
+end
+
+function V3a8PuzzleView:_onFinish()
+	self._bgAnim:Play("finish", 0, 0)
+	gohelper.setActive(self._goComplete, true)
+
+	for i, item in pairs(self._slotItems) do
+		item.cancelPlayRepeat()
+	end
 end
 
 function V3a8PuzzleView:onUpdateParam()
@@ -384,6 +503,7 @@ function V3a8PuzzleView:onOpen()
 	local lang = self._gameType == GameType.Game1 and "v3a8_puzzleview_txt_title1" or "v3a8_puzzleview_txt_title2"
 
 	self._txtTitleDesc.text = luaLang(lang)
+	self._stoneambAudioId = AudioMgr.instance:trigger(AudioEnum3_8.Puzzle.play_ui_shiji_stoneamb_loop)
 end
 
 function V3a8PuzzleView:_getGameType()
@@ -432,7 +552,7 @@ function V3a8PuzzleView:_playSlotItemAudio()
 		return
 	end
 
-	slotItem.activeLight(true, true)
+	slotItem.playRepeat()
 	TaskDispatcher.cancelTask(slotItem.stopAudio, slotItem)
 	TaskDispatcher.runDelay(slotItem.stopAudio, slotItem, slotItem.audioTime)
 
@@ -440,13 +560,19 @@ function V3a8PuzzleView:_playSlotItemAudio()
 
 	TaskDispatcher.cancelTask(self._playSlotItemAudio, self)
 	TaskDispatcher.runDelay(self._playSlotItemAudio, self, slotItem.delayTime)
-
-	slotItem.playAudioId = AudioMgr.instance:trigger(slotItem.audioId)
 end
 
 function V3a8PuzzleView:_checkPlayNextStory()
 	TaskDispatcher.runDelay(self.closeThis, self, 1)
-	V3a5PuzzleController.instance:playNextStoryByPreStoryId(self._storyId, self.viewParam.episodeId, self.viewName, self.closeThis, self)
+	V3a5PuzzleController.instance:playNextStoryByPreStoryId(self._storyId, self.viewParam.episodeId, self.viewParam.afterStory, self.viewName, self.closeThis, self)
+end
+
+function V3a8PuzzleView:_checkAfterStory()
+	if self.viewParam.afterStory and self.viewParam.afterStory > 0 then
+		-- block empty
+	end
+
+	self.closeThis()
 end
 
 function V3a8PuzzleView:startDialog(groupId)
@@ -467,6 +593,8 @@ end
 function V3a8PuzzleView:finishDialog(groupId)
 	if groupId == 382002 then
 		self:_checkPlayNextStory()
+	elseif groupId == 381001 then
+		self:_reallyPlaySlotsAudio(0)
 	else
 		self:_reallyPlaySlotsAudio()
 	end
@@ -477,7 +605,13 @@ function V3a8PuzzleView:_showDialog(isShow)
 end
 
 function V3a8PuzzleView:onClose()
-	return
+	if self._stoneambAudioId then
+		AudioMgr.instance:stopPlayingID(self._stoneambAudioId)
+
+		self._stoneambAudioId = nil
+	end
+
+	AudioMgr.instance:trigger(AudioEnum3_8.Puzzle.stop_ui_shiji_stoneamb_loop)
 end
 
 function V3a8PuzzleView:_cancelPlaySlotAudio()
@@ -509,6 +643,8 @@ function V3a8PuzzleView:onDestroyView()
 
 	for i, item in pairs(self._slotItems) do
 		TaskDispatcher.cancelTask(item.stopAudio, item)
+		TaskDispatcher.cancelTask(item.cancelPlayRepeat, item)
+		item.btnClick:RemoveClickListener()
 
 		if item.playAudioId then
 			AudioMgr.instance:stopPlayingID(item.playAudioId)
@@ -519,6 +655,8 @@ function V3a8PuzzleView:onDestroyView()
 
 	TaskDispatcher.cancelTask(self._playSlotItemAudio, self)
 	TaskDispatcher.cancelTask(self._playSlotsAudio, self)
+	TaskDispatcher.cancelTask(self._onFinish, self)
+	TaskDispatcher.cancelTask(self._playSuccessDialog, self)
 
 	self._isPlayingAudioSlot = false
 end

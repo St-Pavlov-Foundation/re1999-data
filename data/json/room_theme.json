@@ -344,7 +344,7 @@
     "building": "13801|13802|13803",
     "packages": "3801|3802|3803|3804",
     "collectionBonus": "11#13803#1",
-    "extraShowBuilding": "",
+    "extraShowBuilding": "13811|13812",
     "sourcesType": ""
   }
 ]

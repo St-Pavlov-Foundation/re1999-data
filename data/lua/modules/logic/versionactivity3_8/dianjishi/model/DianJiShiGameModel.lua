@@ -6,6 +6,9 @@ local DianJiShiGameModel = class("DianJiShiGameModel", BaseModel)
 
 function DianJiShiGameModel:initGame(mapId)
 	self._mapId = mapId
+	self._guieBlockInfo = nil
+	self._lastAreaTagPath = nil
+	self._isDraging = false
 	self._cmdList = {}
 
 	self:setIsDraging(false)
@@ -63,6 +66,8 @@ function DianJiShiGameModel:_initMapConfig()
 			table.insert(self._mapAreaInfoList, areaInfo)
 		end
 	end
+
+	self._mapAreaInfoNum = self._mapAreaInfoList and #self._mapAreaInfoList or 0
 end
 
 function DianJiShiGameModel:_processOneMapCellCo(areaCo, cellCo)
@@ -372,6 +377,27 @@ function DianJiShiGameModel:getMapAreaInfoList()
 	return self._mapAreaInfoList
 end
 
+function DianJiShiGameModel:getPassMapAreaInfoNum()
+	local passNum = 0
+
+	if self._mapAreaInfoList then
+		for _, areaInfo in ipairs(self._mapAreaInfoList) do
+			local areaCo = areaInfo and areaInfo.config
+			local areaValue = areaCo and areaCo.value or 0
+
+			if areaInfo.value == areaValue then
+				passNum = passNum + 1
+			end
+		end
+	end
+
+	return passNum
+end
+
+function DianJiShiGameModel:getMapAreaInfoNum()
+	return self._mapAreaInfoNum or 0
+end
+
 function DianJiShiGameModel:getMapAreaInfoByPos(posX, posY)
 	local row = self._mapConfigMap and self._mapConfigMap[posX]
 	local cellCo = row and row[posY]
@@ -464,6 +490,22 @@ end
 
 function DianJiShiGameModel:isDraging()
 	return self._isDraging
+end
+
+function DianJiShiGameModel:recordCurGuideBlock(blockInfo)
+	self._guieBlockInfo = blockInfo
+end
+
+function DianJiShiGameModel:getCurGuideBlock()
+	return self._guieBlockInfo
+end
+
+function DianJiShiGameModel:recordLastUpdateAreaTagPath(tagPath)
+	self._lastAreaTagPath = tagPath
+end
+
+function DianJiShiGameModel:getLastUpdateAreaTagPath()
+	return self._lastAreaTagPath
 end
 
 DianJiShiGameModel.instance = DianJiShiGameModel.New()

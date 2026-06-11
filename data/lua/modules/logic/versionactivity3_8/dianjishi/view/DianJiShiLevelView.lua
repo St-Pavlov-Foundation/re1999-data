@@ -219,8 +219,6 @@ function DianJiShiLevelView:_onEpisodeFinished()
 	if newEpisode then
 		TaskDispatcher.runDelay(self._playStoryFinishAnim, self, 1)
 	end
-
-	AudioMgr.instance:trigger(AudioEnum3_5.Lorentz.play_ui_shengyan_beilier_open_sp)
 end
 
 function DianJiShiLevelView:_playStoryFinishAnim()

@@ -12,6 +12,9 @@ function VersionActivity3_8FreeMonthCardPanelView:onInitView()
 	self._gorewarditem = gohelper.findChild(self.viewGO, "root/scroll_reward/Viewport/Content/#go_rewarditem")
 	self._gobackdate = gohelper.findChild(self.viewGO, "root/#go_backdate")
 	self._gocanpatch = gohelper.findChild(self.viewGO, "root/#go_backdate/#go_canpatch")
+	self._gocanbackdate = gohelper.findChild(self.viewGO, "root/#go_backdate/#go_canpatch/#go_canbackdate")
+	self._gonobackdate = gohelper.findChild(self.viewGO, "root/#go_backdate/#go_canpatch/#go_nobackdate")
+	self._golimittxt = gohelper.findChild(self.viewGO, "root/#go_backdate/#go_canpatch/limittxt")
 	self._txtcanpatch = gohelper.findChildText(self.viewGO, "root/#go_backdate/#go_canpatch/#txt_canpatch")
 	self._btnjump = gohelper.findChildButtonWithAudio(self.viewGO, "root/#go_backdate/#btn_jump")
 	self._btnbuqian = gohelper.findChildButtonWithAudio(self.viewGO, "root/#go_backdate/#btn_buqian")
@@ -57,9 +60,19 @@ function VersionActivity3_8FreeMonthCardPanelView:_btnjumpOnClick()
 end
 
 function VersionActivity3_8FreeMonthCardPanelView:_btnbuqianOnClick()
-	local canback = VersionActivity3_8FreeMonthCardModel.instance:getCanBackdateDayCount() > 0
+	local totalDayCount = VersionActivity3_8FreeMonthCardModel.instance:getCanBackdateTotalDayCount(self._actId)
 
-	if not canback then
+	if totalDayCount <= 0 then
+		GameFacade.showToast(ToastEnum.V3a8MonthCardNoDayBackdate)
+
+		return
+	end
+
+	local itemCount = VersionActivity3_8FreeMonthCardModel.instance:getCanBackdateDayItemCount(self._actId)
+
+	if itemCount <= 0 then
+		GameFacade.showToast(ToastEnum.V3a8MonthCardNoItemBackdate)
+
 		return
 	end
 
@@ -67,7 +80,9 @@ function VersionActivity3_8FreeMonthCardPanelView:_btnbuqianOnClick()
 end
 
 function VersionActivity3_8FreeMonthCardPanelView:_btnbuyOnClick()
-	local curDay = VersionActivity3_8FreeMonthCardModel.instance:getOpenDay()
+	UIBlockMgr.instance:endBlock("VersionActivity3_8FreeMonthCardGetReward")
+
+	local curDay = VersionActivity3_8FreeMonthCardModel.instance:getCurSignDay()
 	local couldGet = VersionActivity3_8FreeMonthCardModel.instance:isDayCanSign(curDay)
 
 	if not couldGet then
@@ -81,11 +96,9 @@ function VersionActivity3_8FreeMonthCardPanelView:_showRewardGet()
 	for _, item in pairs(self._rewardItems) do
 		gohelper.setActive(item.gocanget, false)
 		gohelper.setActive(item.gohasget, true)
-		item.anim:Play("go_hasget_in", 0, 0)
 	end
 
-	UIBlockMgr.instance:startBlock("waitShowMonthCardReward")
-	TaskDispatcher.runDelay(self._startGetBonus, self, 1)
+	TaskDispatcher.runDelay(self._startGetBonus, self, 0.5)
 end
 
 function VersionActivity3_8FreeMonthCardPanelView:_startGetBonus()
@@ -106,7 +119,9 @@ function VersionActivity3_8FreeMonthCardPanelView:_initData()
 	self._actId = VersionActivity3_8Enum.ActivityId.FreeMonthCard
 
 	gohelper.setActive(self._gorewarditem, false)
+	gohelper.setActive(self._btnjump.gameObject, false)
 
+	self._buyAnim = self._gobuy:GetComponent(typeof(UnityEngine.Animator))
 	self._rewardItems = self:getUserDataTb_()
 end
 
@@ -129,14 +144,46 @@ function VersionActivity3_8FreeMonthCardPanelView:_onCloseViewFinish(viewName)
 end
 
 function VersionActivity3_8FreeMonthCardPanelView:onOpen()
-	AudioMgr.instance:trigger(AudioEnum2_9.VersionActivity2_9FreeMonthCard.play_ui_cikeshang_yueka_unfold)
+	AudioMgr.instance:trigger(AudioEnum3_8.FreeMonthCard.play_ui_mln_unlock)
 	self:_refreshTime()
+	self._buyAnim:Play("receive", 0, 0)
+	UIBlockMgrExtend.setNeedCircleMv(false)
+	UIBlockMgr.instance:startBlock("waitShowMonthCardReward")
+	TaskDispatcher.runDelay(self._playGetAudio, self, 0.7)
+	TaskDispatcher.runDelay(self._btnbuyOnClick, self, 1.5)
 	TaskDispatcher.runRepeat(self._refreshTime, self, 1)
 	Activity240Rpc.instance:sendAct240GetInfoRequest(self._actId)
 end
 
+function VersionActivity3_8FreeMonthCardPanelView:_playGetAudio()
+	AudioMgr.instance:trigger(AudioEnum3_8.FreeMonthCard.play_ui_wulu_kerandian_monster02_stand)
+end
+
 function VersionActivity3_8FreeMonthCardPanelView:_refreshTime()
 	self._txtlimittime.text = self:getRemainTimeStr()
+
+	self:_refreshBackdateTime()
+end
+
+function VersionActivity3_8FreeMonthCardPanelView:_refreshBackdateTime()
+	local backdateCo = Activity240Config.instance:getActivity240BackdateCo()
+	local itemCos = string.splitToNumber(backdateCo.cost, "#")
+	local itemCount = ItemModel.instance:getItemQuantity(itemCos[1], itemCos[2])
+
+	gohelper.setActive(self._godeadline, itemCount > 0)
+
+	if itemCount <= 0 then
+		return
+	end
+
+	local itemDeadline = ItemExpireModel.instance:getSpecialExpireItemEarliestExpireTime(itemCos[2])
+
+	if itemDeadline and itemDeadline > 0 then
+		local limitSec = itemDeadline - ServerTime.now()
+		local date, dateFormat = TimeUtil.secondToRoughTime(limitSec, true)
+
+		self._txtdeadline.text = string.format("%s%s", date, dateFormat)
+	end
 end
 
 function VersionActivity3_8FreeMonthCardPanelView:getRemainTimeStr()
@@ -179,6 +226,12 @@ function VersionActivity3_8FreeMonthCardPanelView:_refresh()
 end
 
 function VersionActivity3_8FreeMonthCardPanelView:_refreshUI()
+	local itemCount = VersionActivity3_8FreeMonthCardModel.instance:getCanBackdateDayItemCount()
+	local canBackdateDayCount = VersionActivity3_8FreeMonthCardModel.instance:getCanBackdateDayCount()
+
+	gohelper.setActive(self._gocanbackdate, canBackdateDayCount > 0 and itemCount > 0)
+	gohelper.setActive(self._gonobackdate, canBackdateDayCount <= 0 or itemCount <= 0)
+
 	local maxDay = VersionActivity3_8FreeMonthCardModel.instance:getMaxSignDay()
 	local rewardGetDayCount = VersionActivity3_8FreeMonthCardModel.instance:getRewardGetDayCount()
 	local allSign = maxDay <= rewardGetDayCount
@@ -195,19 +248,19 @@ function VersionActivity3_8FreeMonthCardPanelView:_refreshUI()
 		return
 	end
 
-	local curDay = VersionActivity3_8FreeMonthCardModel.instance:getOpenDay()
+	local curDay = VersionActivity3_8FreeMonthCardModel.instance:getCurSignDay()
 	local canSign = VersionActivity3_8FreeMonthCardModel.instance:isDayCanSign(curDay)
 
 	gohelper.setActive(self._btnbuy.gameObject, canSign)
 	gohelper.setActive(self._gohasget, not canSign)
-
-	local canBackdateDayCount = VersionActivity3_8FreeMonthCardModel.instance:getCanBackdateDayCount()
+	gohelper.setActive(self._txtcanpatch.gameObject, canBackdateDayCount > 0)
+	gohelper.setActive(self._golimittxt, canBackdateDayCount > 0)
 
 	self._txtcanpatch.text = tostring(canBackdateDayCount)
 end
 
 function VersionActivity3_8FreeMonthCardPanelView:_refreshRewards()
-	local curDay = VersionActivity3_8FreeMonthCardModel.instance:getOpenDay()
+	local curDay = VersionActivity3_8FreeMonthCardModel.instance:getCurSignDay()
 	local couldGet = VersionActivity3_8FreeMonthCardModel.instance:isDayCanSign(curDay)
 	local act240Config = Activity240Config.instance:getActivity240Co(curDay, self._actId)
 	local rewards = string.split(act240Config.bonus, "|")
@@ -225,7 +278,6 @@ function VersionActivity3_8FreeMonthCardPanelView:_refreshRewards()
 			item.btn:AddClickListener(self._btnbuyOnClick, self)
 
 			item.gohasget = gohelper.findChild(item.go, "go_hasget")
-			item.anim = item.gohasget:GetComponent(typeof(UnityEngine.Animator))
 
 			table.insert(self._rewardItems, item)
 		end
@@ -235,6 +287,7 @@ function VersionActivity3_8FreeMonthCardPanelView:_refreshRewards()
 		local props = string.splitToNumber(reward, "#")
 
 		self._rewardItems[i].item:setMOValue(props[1], props[2], props[3], nil, true)
+		self._rewardItems[i].item:setCountFontSize(46)
 		self._rewardItems[i].item:isShowName(false)
 		gohelper.setActive(self._rewardItems[i].gocanget, couldGet)
 		gohelper.setActive(self._rewardItems[i].gohasget, not couldGet)
@@ -248,8 +301,10 @@ end
 function VersionActivity3_8FreeMonthCardPanelView:onDestroyView()
 	self:_removeSelfEvents()
 	UIBlockMgr.instance:endBlock("waitShowMonthCardReward")
+	TaskDispatcher.cancelTask(self._playGetAudio, self)
 	TaskDispatcher.cancelTask(self._startGetBonus, self)
 	TaskDispatcher.cancelTask(self._refreshTime, self)
+	TaskDispatcher.cancelTask(self._btnbuyOnClick, self)
 
 	if self._rewardItems then
 		for _, v in pairs(self._rewardItems) do

@@ -2683,5 +2683,35 @@
     "id": 3370019,
     "eventName": "stop_activitymusic_soudache_3_7",
     "bankName": "activity_soudache_music"
+  },
+  {
+    "id": 3380001,
+    "eventName": "play_activitymusic_theme_3_8",
+    "bankName": "activity3_8_music"
+  },
+  {
+    "id": 3380002,
+    "eventName": "play_activitymusic_shensheng_3_8",
+    "bankName": "activity3_8_music"
+  },
+  {
+    "id": 3380003,
+    "eventName": "play_ui_dungeon_music_main",
+    "bankName": "dungeon_1_6_music"
+  },
+  {
+    "id": 3380004,
+    "eventName": "play_battle_shiji_3_8_normalfight",
+    "bankName": "activity_shiji_3_8_combataudio"
+  },
+  {
+    "id": 3380005,
+    "eventName": "play_battle_shiji_3_8_bossfight",
+    "bankName": "activity_shiji_3_8_combataudio"
+  },
+  {
+    "id": 3380006,
+    "eventName": "play_ui_checkpoint_noise_sea_light",
+    "bankName": "activity_shiji_3_8_combataudio_noise"
   }
 ]

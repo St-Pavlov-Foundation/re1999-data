@@ -5,6 +5,11 @@ module("modules.logic.necrologiststory.game.v3a8.V3A8_RoleStoryGameView", packag
 local V3A8_RoleStoryGameView = class("V3A8_RoleStoryGameView", BaseView)
 
 function V3A8_RoleStoryGameView:onInitView()
+	self.goMiddle = gohelper.findChild(self.viewGO, "Middle")
+	self.animMiddle = gohelper.findComponentAnim(self.goMiddle)
+	self.goChapter = gohelper.findChild(self.viewGO, "Middle/#go_chapter")
+	self.goRefresh = gohelper.findChild(self.viewGO, "Middle/#go_chapter/vx_refresh")
+	self.refreshAnimEvent = gohelper.findChildComponent(self.viewGO, "Middle/#go_chapter/vx_refresh", typeof(ZProj.AnimationEventWrap))
 	self.txtChapterName = gohelper.findChildTextMesh(self.viewGO, "Middle/#go_chapter/#txt_chapterName")
 	self.txtCurIndex = gohelper.findChildTextMesh(self.viewGO, "Middle/#go_chapter/#txt_currency")
 	self.txtTotal = gohelper.findChildTextMesh(self.viewGO, "Middle/#go_chapter/#txt_total")
@@ -23,11 +28,13 @@ end
 function V3A8_RoleStoryGameView:addEvents()
 	self:addClickCb(self.btnStart, self.onClickBtnStart, self)
 	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self._onCloseViewFinish, self)
+	self.refreshAnimEvent:AddEventListener("refresh", self.onRefreshAnim, self)
 end
 
 function V3A8_RoleStoryGameView:removeEvents()
 	self:removeClickCb(self.btnStart)
 	self:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self._onCloseViewFinish, self)
+	self.refreshAnimEvent:RemoveAllEventListener()
 end
 
 function V3A8_RoleStoryGameView:_editableInitView()
@@ -53,6 +60,7 @@ function V3A8_RoleStoryGameView:_onCloseViewFinish(viewName)
 end
 
 function V3A8_RoleStoryGameView:onOpen()
+	AudioMgr.instance:trigger(AudioEnum.NecrologistStory.play_ui_mingdi_gsn_open2)
 	self:refreshParam()
 	self:refreshView()
 end
@@ -94,19 +102,38 @@ function V3A8_RoleStoryGameView:refreshData()
 	if self.curPlotConfig == nil then
 		self.curPlotConfig = plotList[self.totalIndex]
 	end
+
+	self.isChange = self.lastIndex and self.lastIndex ~= self.curIndex
+	self.lastIndex = self.curIndex
 end
 
 function V3A8_RoleStoryGameView:refreshView()
 	self:refreshData()
+	self:refreshDate()
+
+	if self.isChange then
+		self.animMiddle:Play("open", 0, 0)
+		gohelper.setActive(self.goRefresh, false)
+		gohelper.setActive(self.goRefresh, true)
+		AudioMgr.instance:trigger(AudioEnum.NecrologistStory.play_ui_mingdi_gsn_open2)
+	else
+		self:refreshChapter()
+	end
+end
+
+function V3A8_RoleStoryGameView:refreshChapter()
 	gohelper.setActive(self.goEnd, self.isFinish)
 	gohelper.setActive(self.btnStart, not self.isFinish)
+	gohelper.setActive(self.goChapter, not self.isFinish)
 
 	if not self.isFinish then
 		self.txtCurIndex.text = string.format("%02d", self.curIndex)
 		self.txtTotal.text = string.format("%02d", self.totalIndex)
 		self.txtChapterName.text = self.curPlotConfig.storyName
 	end
+end
 
+function V3A8_RoleStoryGameView:refreshDate()
 	local weather = self.curPlotConfig.weather
 
 	NecrologistStoryHelper.setWeatherWihteIcon(self.imgWeather, weather, true)
@@ -115,12 +142,16 @@ function V3A8_RoleStoryGameView:refreshView()
 	local success, y, m1, d = NecrologistStoryHelper.stringTotimeData(self.curPlotConfig.date)
 
 	if success then
-		self.txtDate.text = string.format("%02d.%02d", m1, d)
+		self.txtDate.text = string.format("%02d.%02d", d, m1)
 		self.txtYear.text = y
 	else
 		self.txtDate.text = ""
 		self.txtYear.text = ""
 	end
+end
+
+function V3A8_RoleStoryGameView:onRefreshAnim()
+	self:refreshChapter()
 end
 
 function V3A8_RoleStoryGameView:onDestroyView()

@@ -28,7 +28,7 @@ function V3a8EchoSongJoystick:refreshHandlePos()
 	end
 
 	if strength > 0 then
-		local r = self._inOuter and self._radius or self._radius / 2
+		local r = self._inOuter and self._radius or self._radius / 2.5
 		local lenSq = self._input.x * self._input.x + self._input.y * self._input.y
 
 		if lenSq > 0 then

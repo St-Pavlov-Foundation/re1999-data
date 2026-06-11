@@ -78,6 +78,7 @@ function V3a8_DragonBoatActivity_PanelView:onOpen()
 	self._voteResultInfo = {}
 
 	self:onUpdateParam()
+	self.viewContainer:play_ui_shiji_vote_open()
 	GlobalVoteController.instance:registerCallback(GlobalVoteEvent.onReceiveGlobalVoteGetInfoReply, self._onReceiveGlobalVoteGetInfoReply, self)
 	ActivityController.instance:registerCallback(ActivityEvent.UpdateActivity, self._onUpdateActivity, self)
 	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, self._onDailyRefresh, self, LuaEventSystem.Low)

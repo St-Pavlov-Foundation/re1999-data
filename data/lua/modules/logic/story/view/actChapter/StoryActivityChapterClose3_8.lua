@@ -33,10 +33,10 @@ end
 
 function StoryActivityChapterClose3_8:getAudioId(part)
 	if part == 2 then
-		return AudioEnum.Story.play_activitysfx_renmen_avg_end
+		return AudioEnum.Story.play_activitysfx_shiji3_8_end
 	end
 
-	return AudioEnum.Story.play_activitysfx_renmen_avg_continue
+	return AudioEnum.Story.play_activitysfx_shiji3_8_continue
 end
 
 function StoryActivityChapterClose3_8:_playAudio()

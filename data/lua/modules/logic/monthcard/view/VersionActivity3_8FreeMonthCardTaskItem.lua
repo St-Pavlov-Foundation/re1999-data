@@ -88,7 +88,7 @@ function VersionActivity3_8FreeMonthCardTaskItem:_refreshRewards()
 		end
 
 		self._rewardItems[i]:setMOValue(type, id, quantity, nil, true)
-		self._rewardItems[i]:setCountFontSize(26)
+		self._rewardItems[i]:setCountFontSize(46)
 		self._rewardItems[i]:showStackableNum2()
 		self._rewardItems[i]:isShowEffect(true)
 		gohelper.setActive(self._rewardItems[i].go, true)

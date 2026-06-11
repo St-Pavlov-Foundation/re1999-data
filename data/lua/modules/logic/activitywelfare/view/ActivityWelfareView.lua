@@ -70,7 +70,7 @@ function ActivityWelfareView:_initActivitySelfSelectSix()
 	local is3_8NewRegister = ActivityWelfareModel.instance:is3_8NewRegisterPlayer()
 
 	if is3_8NewRegister then
-		activitySubViewDict[VersionActivity3_8Enum.ActivityId.V3a8SelfSelectSix] = ViewName.VersionActivity3_8SelfSelectSixView
+		activitySubViewDict[ActivityEnum.Activity.V3a8_SelfSelectSix] = ViewName.VersionActivity3_8SelfSelectSixView
 	end
 end
 
@@ -125,6 +125,7 @@ function ActivityWelfareView:_refreshView()
 
 		if c then
 			ViewMgr.instance:openView(self._viewName, c.viewParam, true)
+			self:_statSubViewEnter(self._viewName)
 
 			return
 		end
@@ -160,6 +161,17 @@ function ActivityWelfareView:_openSubView()
 	}
 
 	ViewMgr.instance:openView(self._viewName, viewParam, true)
+	self:_statSubViewEnter(self._viewName)
+end
+
+function ActivityWelfareView:_statSubViewEnter(viewSubName)
+	local isNotSame = self._lastStatName ~= viewSubName
+
+	self._lastStatName = viewSubName
+
+	if isNotSame and viewSubName and StatViewNameEnum.ChineseViewName[viewSubName] then
+		StatViewController.instance:trackViewName(StatViewNameEnum.ChineseViewName[viewSubName])
+	end
 end
 
 function ActivityWelfareView:setCategoryRedDotData(actId)

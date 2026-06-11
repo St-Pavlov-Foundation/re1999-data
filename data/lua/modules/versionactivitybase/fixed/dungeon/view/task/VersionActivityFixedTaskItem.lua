@@ -93,7 +93,9 @@ function VersionActivityFixedTaskItem:secondAnimationDone()
 	self.animatorPlayer:Play(UIAnimationName.Idle)
 
 	if self.taskMo.getAll then
-		TaskRpc.instance:sendFinishAllTaskRequest(TaskEnum.TaskType.ActivityDungeon, nil, nil, nil, nil, VersionActivityFixedHelper.getVersionActivityEnum().ActivityId.Dungeon)
+		local dungeonActId = VersionActivityFixedHelper.getVersionActivityEnum(self._bigVersion, self._smallVersion).ActivityId.Dungeon
+
+		TaskRpc.instance:sendFinishAllTaskRequest(TaskEnum.TaskType.ActivityDungeon, nil, nil, nil, nil, dungeonActId)
 	else
 		TaskRpc.instance:sendFinishTaskRequest(self.co.id)
 	end

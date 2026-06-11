@@ -18,14 +18,6 @@ function NecrologistStoryErasePictureItem:onInit()
 	self.eraseComp:setCallback(self.startDraw, self.showRate, self.endDraw, self.finishDraw, self)
 end
 
-function NecrologistStoryErasePictureItem:addEventListeners()
-	return
-end
-
-function NecrologistStoryErasePictureItem:removeEventListeners()
-	return
-end
-
 function NecrologistStoryErasePictureItem:onPlayStory()
 	self.inPlayFinishing = false
 

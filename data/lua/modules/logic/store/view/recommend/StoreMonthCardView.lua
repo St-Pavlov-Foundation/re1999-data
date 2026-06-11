@@ -367,7 +367,7 @@ function StoreMonthCardView:_refreshSupplement()
 	if itemcount < 1 then
 		showlimiticon = true
 	else
-		local itemDeadline = CurrencyController.instance:getExpireItemDeadLineTime()
+		local itemDeadline = ItemExpireModel.instance:getSpecialExpireItemEarliestExpireTime(StoreEnum.SupplementMonthCardItemId)
 
 		if itemDeadline and itemDeadline > 0 then
 			local limitSec = itemDeadline - ServerTime.now()

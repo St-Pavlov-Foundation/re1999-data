@@ -151,7 +151,8 @@ function FightConfig:reqConfigNames()
 		"fight_spell_show_type",
 		"skill_target_type_define",
 		"fight_direct_switch_battle_when_end",
-		"fight_dian_ji_shi_buff_effect"
+		"fight_dian_ji_shi_buff_effect",
+		"fight_effect_follow_entity_visible"
 	}
 
 	if SLFramework.FrameworkSettings.IsEditor then

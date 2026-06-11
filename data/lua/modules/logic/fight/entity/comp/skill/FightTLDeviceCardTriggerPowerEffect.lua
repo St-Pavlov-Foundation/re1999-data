@@ -3,19 +3,32 @@
 module("modules.logic.fight.entity.comp.skill.FightTLDeviceCardTriggerPowerEffect", package.seeall)
 
 local FightTLDeviceCardTriggerPowerEffect = class("FightTLDeviceCardTriggerPowerEffect", FightTimelineTrackItem)
-local FlyNodeList = {}
+local FlyNodePoolDictList = {}
 
-function FightTLDeviceCardTriggerPowerEffect.getFlyNode()
-	return table.remove(FlyNodeList)
+function FightTLDeviceCardTriggerPowerEffect.getFlyNode(careerType)
+	local list = FlyNodePoolDictList[careerType]
+
+	if list then
+		return table.remove(list)
+	end
 end
 
-function FightTLDeviceCardTriggerPowerEffect.recycleFlyNode(goNode)
+function FightTLDeviceCardTriggerPowerEffect.recycleFlyNode(careerType, goNode)
+	local list = FlyNodePoolDictList[careerType]
+
+	if not list then
+		list = {}
+		FlyNodePoolDictList[careerType] = list
+	end
+
 	gohelper.setActive(goNode, false)
-	table.insert(FlyNodeList, goNode)
+	table.insert(list, goNode)
 end
 
 function FightTLDeviceCardTriggerPowerEffect.clearFlyNode()
-	tabletool.clear(FlyNodeList)
+	for _, list in pairs(FlyNodePoolDictList) do
+		tabletool.clear(list)
+	end
 end
 
 function FightTLDeviceCardTriggerPowerEffect:triggerPowerChange(fightStepData)
@@ -68,6 +81,7 @@ function FightTLDeviceCardTriggerPowerEffect:onTrackStart(fightStepData, duratio
 	cardItem:playDeviceCardAnim(self.onDeviceAnimEventTrigger, self)
 
 	self.cardItem = cardItem
+	self.career = self.cardItem:getCurDeviceAddCareer()
 end
 
 function FightTLDeviceCardTriggerPowerEffect:onDeviceAnimEventTrigger(eventName)
@@ -81,7 +95,7 @@ end
 local FlyNodePath = "ui/viewres/fight/fight3_7devicefly.prefab"
 
 function FightTLDeviceCardTriggerPowerEffect:handleFlyEvent()
-	local flyGo = self.getFlyNode()
+	local flyGo = self.getFlyNode(self.career)
 
 	if flyGo then
 		self:startFly(flyGo)
@@ -105,15 +119,15 @@ local Career2NodeNameDict = {
 	[CharacterEnum.CareerType.Yan] = "node_fly_y",
 	[CharacterEnum.CareerType.Xing] = "node_fly_b"
 }
+local UIFlyingType = typeof(UnityEngine.UI.UIFlying)
 
 function FightTLDeviceCardTriggerPowerEffect:startFly(flyGo)
 	self.flyGo = flyGo
 
-	local flyScript = flyGo:GetComponent(typeof(UnityEngine.UI.UIFlying))
+	local flyScript = flyGo:GetComponent(UIFlyingType)
 
 	flyScript:SetAllFlyItemDoneCallback(self.onFlyItemDone, self)
 
-	local career = self.cardItem:getCurDeviceAddCareer()
 	local tr = flyGo.transform
 
 	for i = 0, tr.childCount - 1 do
@@ -122,7 +136,7 @@ function FightTLDeviceCardTriggerPowerEffect:startFly(flyGo)
 		gohelper.setActive(child.gameObject, false)
 	end
 
-	local go = gohelper.findChild(flyGo, Career2NodeNameDict[career])
+	local go = gohelper.findChild(flyGo, Career2NodeNameDict[self.career])
 
 	flyScript:SetFlyItemObj(go)
 
@@ -130,7 +144,7 @@ function FightTLDeviceCardTriggerPowerEffect:startFly(flyGo)
 
 	local viewContainer = ViewMgr.instance:getContainer(ViewName.FightView)
 	local deviceCardItem = viewContainer and viewContainer:getCacheUserData(FightViewContainerCacheKey.UserDataKey.DeviceAreaCardItem)
-	local powerWorldPos = deviceCardItem and deviceCardItem:getPowerWorldPos(career)
+	local powerWorldPos = deviceCardItem and deviceCardItem:getPowerWorldPos(self.career)
 	local endPos
 
 	if not powerWorldPos then
@@ -161,7 +175,7 @@ end
 
 function FightTLDeviceCardTriggerPowerEffect:clear()
 	if self.flyGo then
-		self.recycleFlyNode(self.flyGo)
+		self.recycleFlyNode(self.career, self.flyGo)
 
 		self.flyGo = nil
 	end

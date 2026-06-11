@@ -47,8 +47,14 @@ DianJiShiGameEnum.MapCellSize = {
 	182,
 	181
 }
-DianJiShiGameEnum.DelayCloseAfterSucc = 1
-DianJiShiGameEnum.WaitBlockTagScale = 2.4
-DianJiShiGameEnum.DragBlockTagScale = 2.4
+DianJiShiGameEnum.WaitBlockTagScale = 2
+DianJiShiGameEnum.DragBlockTagScale = 1
+DianJiShiGameEnum.UnfinishCountColor = "#FF001B"
+DianJiShiGameEnum.FinishCountColor = "#25FF00"
+DianJiShiGameEnum.GuideHoleSpace = {
+	100,
+	100
+}
+DianJiShiGameEnum.GuideHandMoveDuration = 2
 
 return DianJiShiGameEnum

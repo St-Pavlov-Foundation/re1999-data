@@ -509,7 +509,7 @@ end
 
 function MailView:_getExpireTimeString(time)
 	if time == 0 then
-		return ""
+		return luaLang("mail_not_expire_time")
 	end
 
 	local time1 = time / 1000

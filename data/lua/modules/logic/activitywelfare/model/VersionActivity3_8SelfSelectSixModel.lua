@@ -134,6 +134,36 @@ function VersionActivity3_8SelfSelectSixModel:getAllChoiceHeroDestinyList()
 	return list
 end
 
+function VersionActivity3_8SelfSelectSixModel:isAllHeroDestinyLvMaxed()
+	local heroList = self:getAllPreviewHeroList()
+
+	for _, heroId in pairs(heroList) do
+		local heroMo = HeroModel.instance:getByHeroId(heroId)
+
+		if not heroMo then
+			return false
+		end
+
+		local isSlotMaxLevel = heroMo.destinyStoneMo and heroMo.destinyStoneMo:isSlotMaxLevel()
+		local stoneList = heroMo.destinyStoneMo and heroMo.destinyStoneMo:getStoneMoList()
+		local ignoreIds = self:getIgnoreIds()
+
+		if not isSlotMaxLevel then
+			return false
+		else
+			for _, stoneMo in pairs(stoneList) do
+				local isIgnore = LuaUtil.tableContains(ignoreIds, stoneMo.stoneId)
+
+				if not stoneMo.isUnlock and not isIgnore then
+					return false
+				end
+			end
+		end
+	end
+
+	return true
+end
+
 function VersionActivity3_8SelfSelectSixModel:isHeroOpenDestinyStone(heroId)
 	local heroMo = HeroModel.instance:getByHeroId(heroId)
 

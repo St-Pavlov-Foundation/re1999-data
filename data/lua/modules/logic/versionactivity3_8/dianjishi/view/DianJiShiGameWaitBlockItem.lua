@@ -29,6 +29,7 @@ function DianJiShiGameWaitBlockItem:addEventListeners()
 	self._dragListener:AddDragListener(self._onDrag, self)
 	self._dragListener:AddDragEndListener(self._onDragEnd, self)
 	self:addEventCb(DianJiShiGameController.instance, DianJiShiGameEvent.OnHelpPlaceBlock, self._onHelpPlaceBlock, self)
+	self:addEventCb(DianJiShiGameController.instance, DianJiShiGameEvent.GuideFindShowDragEffect, self._guideFindShowDragEffect, self)
 end
 
 function DianJiShiGameWaitBlockItem:removeEventListeners()
@@ -40,7 +41,7 @@ end
 function DianJiShiGameWaitBlockItem:_onDragBegin(param, pointerEventData)
 	self._isDragScroll = false
 
-	if DianJiShiGameController.instance:isMultiTouch() then
+	if not self:isCanDrag() then
 		return
 	end
 
@@ -58,7 +59,7 @@ function DianJiShiGameWaitBlockItem:_onDragBegin(param, pointerEventData)
 end
 
 function DianJiShiGameWaitBlockItem:_onDrag(param, pointerEventData)
-	if DianJiShiGameController.instance:isMultiTouch() then
+	if not self:isCanDrag() then
 		return
 	end
 
@@ -72,7 +73,7 @@ function DianJiShiGameWaitBlockItem:_onDrag(param, pointerEventData)
 end
 
 function DianJiShiGameWaitBlockItem:_onDragEnd(param, pointerEventData)
-	if DianJiShiGameController.instance:isMultiTouch() then
+	if not self:isCanDrag() then
 		return
 	end
 
@@ -85,6 +86,16 @@ function DianJiShiGameWaitBlockItem:_onDragEnd(param, pointerEventData)
 	end
 
 	DianJiShiGameController.instance:dispatchEvent(DianJiShiGameEvent.OnEndDragBlock, self._firstWaitBlock)
+end
+
+function DianJiShiGameWaitBlockItem:isCanDrag()
+	if DianJiShiGameController.instance:isMultiTouch() then
+		return
+	end
+
+	local curDragBlock = DianJiShiGameModel.instance:getCurGuideBlock()
+
+	return not curDragBlock or curDragBlock == self._blockInfo
 end
 
 function DianJiShiGameWaitBlockItem:initScrollView(goScroll, tranScrollContent)
@@ -212,6 +223,14 @@ function DianJiShiGameWaitBlockItem:_isNeedPlayPutAnim(blockInfo)
 			return true
 		end
 	end
+end
+
+function DianJiShiGameWaitBlockItem:_guideFindShowDragEffect(index)
+	if self._index ~= tonumber(index) or self._waitBlockNum <= 0 then
+		return
+	end
+
+	DianJiShiGameController.instance:dispatchEvent(DianJiShiGameEvent.GuideStartShowDragEffect, self._tran, self._blockInfo)
 end
 
 return DianJiShiGameWaitBlockItem

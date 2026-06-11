@@ -26,6 +26,7 @@ function SummonMainModel:releaseServerData()
 	self._validServerPoolMap = nil
 	self._useInfallibleItemTipDic = nil
 	self._useInfallibleItemTriggerDic = nil
+	self._itemConvertParam = nil
 end
 
 function SummonMainModel:releaseViewData()
@@ -1209,6 +1210,14 @@ function SummonMainModel:clearShowUseInfallibleItemTipRecord()
 	local userKey = string.format("%s_%s", PlayerModel.instance:getMyUserId(), SummonMainModel.useInfallibleItemTipKey)
 
 	PlayerPrefsHelper.setString(userKey, "")
+end
+
+function SummonMainModel:setItemConvertTag(param)
+	self._itemConvertParam = param
+end
+
+function SummonMainModel:getItemConvertTag()
+	return self._itemConvertParam
 end
 
 SummonMainModel.instance = SummonMainModel.New()

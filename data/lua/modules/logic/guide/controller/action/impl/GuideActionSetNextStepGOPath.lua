@@ -510,4 +510,10 @@ function GuideActionSetNextStepGOPath:getAbyssCanClickStagePath()
 	end
 end
 
+function GuideActionSetNextStepGOPath:getV3a8DianJiShiMapAreaTagPath()
+	local lastUpdateTagPath = DianJiShiGameModel.instance:getLastUpdateAreaTagPath()
+
+	return lastUpdateTagPath
+end
+
 return GuideActionSetNextStepGOPath

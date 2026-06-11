@@ -4,6 +4,10 @@ module("modules.logic.fight.entity.comp.skill.FightTLEventCreateSpine", package.
 
 local FightTLEventCreateSpine = class("FightTLEventCreateSpine", FightTimelineTrackItem)
 
+function FightTLEventCreateSpine:onConstructor()
+	self.classId = FightObject.Counter
+end
+
 function FightTLEventCreateSpine.getSkinSpineName(spineParam, skinId)
 	if string.nilorempty(spineParam) or skinId == 0 then
 		return spineParam
@@ -309,6 +313,9 @@ function FightTLEventCreateSpine:_clear()
 	if self._spineEntityList then
 		for i, spineEntity in ipairs(self._spineEntityList) do
 			local entityMgr = FightGameMgr.entityMgr
+
+			FightDataHelper.entityExMgr.exDataDic[spineEntity.id] = nil
+
 			local canRemove = true
 
 			if self._paramsArr[14] == "1" then

@@ -102,6 +102,14 @@ function FightViewCardItem:init(go)
 		end
 
 		table.insert(self._innerStarPreLvGoDict, lvGoList)
+
+		if not self.useSkin then
+			if i == 2 then
+				recthelper.setAnchorX(starObj.transform, 16)
+			elseif i == 3 then
+				recthelper.setAnchorX(starObj.transform, 9)
+			end
+		end
 	end
 
 	self._layout = gohelper.findChild(self.go, "layout")
@@ -895,6 +903,8 @@ end
 function FightViewCardItem:refreshCardIcon()
 	local skillCO = lua_skill.configDict[self.skillId]
 	local skillCardLv = FightCardDataHelper.getSkillLv(self.entityId, self.skillId)
+
+	self.isBigSkillShow = skillCardLv == 4
 
 	for level, lvGO in pairs(self._lvGOs) do
 		gohelper.setActive(lvGO, true)

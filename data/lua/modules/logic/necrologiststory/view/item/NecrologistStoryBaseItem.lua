@@ -10,6 +10,10 @@ function NecrologistStoryBaseItem:ctor(param)
 	self.resList = param.resList
 end
 
+function NecrologistStoryBaseItem:isAsyncItem()
+	return false
+end
+
 function NecrologistStoryBaseItem:getRes(resPath)
 	if not self.resList then
 		return
@@ -35,6 +39,27 @@ function NecrologistStoryBaseItem:init(go)
 	self._posY = 0
 
 	self:onInit()
+	self:addEventListeners()
+end
+
+function NecrologistStoryBaseItem:addEventListeners()
+	if self.hasEventListeners then
+		return
+	end
+
+	self.hasEventListeners = true
+
+	self:onAddEvent()
+end
+
+function NecrologistStoryBaseItem:removeEventListeners()
+	if not self.hasEventListeners then
+		return
+	end
+
+	self.hasEventListeners = false
+
+	self:onRemoveEvent()
 end
 
 function NecrologistStoryBaseItem:getIsContentItem()
@@ -147,6 +172,14 @@ end
 
 function NecrologistStoryBaseItem:isDone()
 	return true
+end
+
+function NecrologistStoryBaseItem:onAddEvent()
+	return
+end
+
+function NecrologistStoryBaseItem:onRemoveEvent()
+	return
 end
 
 function NecrologistStoryBaseItem:justDone()

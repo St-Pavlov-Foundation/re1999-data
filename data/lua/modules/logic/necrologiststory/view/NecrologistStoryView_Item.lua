@@ -72,7 +72,9 @@ function NecrologistStoryView_Item:_createStoryItemGo(go, resList, cls, storyCon
 		item:playStory(storyConfig, isSkip, storyView.onItemPlayFinish, storyView)
 	end
 
-	if storyView:_canContinueSkip() then
+	local flag = storyView:_canContinueSkip()
+
+	if flag then
 		storyView:_continueSkip()
 	end
 end

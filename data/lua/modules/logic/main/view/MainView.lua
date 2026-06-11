@@ -46,7 +46,7 @@ function MainView:onInitView()
 		self._btngm = gohelper.findChildButtonWithAudio(guideGMNode, "#btn_gm")
 	end
 
-	if GameFacade.isKOLTest() then
+	if GameFacade.isKOLTest() or isDebugBuild then
 		local url = "ui/viewres/fight/fightstandardepisodebtn.prefab"
 
 		self.fightStandardEpisodeLoader = MultiAbLoader.New()

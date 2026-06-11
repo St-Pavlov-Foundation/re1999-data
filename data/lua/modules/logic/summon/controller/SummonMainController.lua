@@ -71,6 +71,14 @@ function SummonMainController:openSummonView(param, fromEnterScene, callback, ca
 	end
 
 	SummonModel.instance:clearCacheReward()
+
+	local convertParam = SummonMainModel.instance:getItemConvertTag()
+
+	if convertParam and convertParam.needShowConvert then
+		MaterialRpc.instance:showItemConvertView(convertParam)
+	end
+
+	SummonMainModel.instance:setItemConvertTag(nil)
 end
 
 function SummonMainController:trySetDefaultPoolId(param)
@@ -347,6 +355,52 @@ function SummonMainController:setDiamondEnoughTipCb(params)
 		end
 
 		GameFacade.showToast(ToastEnum.ExchangeDiamondSummon, params.miss_quantity)
+	end
+end
+
+function SummonMainController:checkItemConvert(items)
+	if SummonMainModel.instance:getNewbiePoolExist() then
+		local itemConvertParam = SummonMainModel.instance:getItemConvertTag()
+
+		if itemConvertParam then
+			local itemConfig = ItemConfig.instance:getItemConfig(itemConvertParam[1], itemConvertParam[2])
+			local convertParam = string.splitToNumber(itemConfig.effect, "#")
+
+			for _, item in ipairs(items) do
+				if item.quantity > 0 and item.itemId == convertParam[2] then
+					local beforeConvertMo = {}
+
+					beforeConvertMo.materilType = itemConvertParam[1]
+					beforeConvertMo.materilId = itemConvertParam[2]
+
+					local beforeQuantity = ItemModel.instance:getItemCount(item.itemId)
+					local showNum = item.quantity - beforeQuantity
+
+					beforeConvertMo.quantity = tonumber(showNum)
+					beforeConvertMo.needShowConvert = true
+
+					SummonMainModel.instance:setItemConvertTag(beforeConvertMo)
+
+					return
+				end
+			end
+		end
+	else
+		for _, item in ipairs(items) do
+			if item.quantity > 0 then
+				local itemConfig = ItemConfig.instance:getItemCo(item.itemId)
+
+				if itemConfig and itemConfig.subType == ItemEnum.SubType.ItemConvert and ItemConvertHelper.isItemConvert(item.itemId) then
+					local mo = {}
+
+					mo.materilType = MaterialEnum.MaterialType.Item
+					mo.materilId = item.itemId
+					mo.quantity = item.quantity
+
+					MaterialRpc.instance:showItemConvertView(mo)
+				end
+			end
+		end
 	end
 end
 

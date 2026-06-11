@@ -161,8 +161,8 @@
   },
   {
     "id": 18,
-    "mainTitleId": 6,
-    "subTitleId": 2,
+    "mainTitleId": 0,
+    "subTitleId": 0,
     "mainTitle": "拨弦手",
     "subTitle": "拨弦手战斗",
     "picture": "rouge2_help_3",

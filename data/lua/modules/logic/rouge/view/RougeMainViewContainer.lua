@@ -8,6 +8,7 @@ local kTabContainerId_NavigateButtonsView = 1
 function RougeMainViewContainer:buildViews()
 	return {
 		RougeMainView.New(),
+		RougeBaseDLCViewComp.New(),
 		TabViewGroup.New(kTabContainerId_NavigateButtonsView, "#go_lefttop")
 	}
 end

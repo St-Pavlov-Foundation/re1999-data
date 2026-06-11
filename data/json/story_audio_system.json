@@ -5623,5 +5623,240 @@
     "id": 923700110,
     "eventName": "play_battle_chap13_hero3127_26",
     "bankName": "hero3127_level_beiai3_7"
+  },
+  {
+    "id": 923800001,
+    "eventName": "play_level_plot38_npc650202_1",
+    "bankName": "npc650202_level_shiji3_8"
+  },
+  {
+    "id": 923800002,
+    "eventName": "play_level_plot38_npc649302_2",
+    "bankName": "npc649302_level_shiji3_8"
+  },
+  {
+    "id": 923800003,
+    "eventName": "play_level_plot38_hero3140_3",
+    "bankName": "hero3140_level_shiji3_8"
+  },
+  {
+    "id": 923800004,
+    "eventName": "play_level_plot38_npc649302_4",
+    "bankName": "npc649302_level_shiji3_8"
+  },
+  {
+    "id": 923800005,
+    "eventName": "play_level_plot38_npc649302_5",
+    "bankName": "npc649302_level_shiji3_8"
+  },
+  {
+    "id": 923800006,
+    "eventName": "play_level_plot38_hero3140_6",
+    "bankName": "hero3140_level_shiji3_8"
+  },
+  {
+    "id": 923800007,
+    "eventName": "play_level_plot38_npc649302_7",
+    "bankName": "npc649302_level_shiji3_8"
+  },
+  {
+    "id": 923800008,
+    "eventName": "play_level_plot38_npcnoname335_8",
+    "bankName": "npcnoname335_level_shiji3_8"
+  },
+  {
+    "id": 923800009,
+    "eventName": "play_level_plot38_npcnoname335_9",
+    "bankName": "npcnoname335_level_shiji3_8"
+  },
+  {
+    "id": 923800010,
+    "eventName": "play_level_plot38_hero3145_10",
+    "bankName": "hero3145_level_shiji3_8"
+  },
+  {
+    "id": 923800011,
+    "eventName": "play_level_plot38_npcnoname333_11",
+    "bankName": "npcnoname333_level_shiji3_8"
+  },
+  {
+    "id": 923800012,
+    "eventName": "play_level_plot38_hero3145_12",
+    "bankName": "hero3145_level_shiji3_8"
+  },
+  {
+    "id": 923800013,
+    "eventName": "play_level_plot38_npcnoname333_13",
+    "bankName": "npcnoname333_level_shiji3_8"
+  },
+  {
+    "id": 923800014,
+    "eventName": "play_level_plot38_npcnoname333_14",
+    "bankName": "npcnoname333_level_shiji3_8"
+  },
+  {
+    "id": 923800015,
+    "eventName": "play_level_plot38_npcnoname333_15",
+    "bankName": "npcnoname333_level_shiji3_8"
+  },
+  {
+    "id": 923800016,
+    "eventName": "play_level_plot38_hero3145_16",
+    "bankName": "hero3145_level_shiji3_8"
+  },
+  {
+    "id": 923800017,
+    "eventName": "play_level_plot38_npc649302_17",
+    "bankName": "npc649302_level_shiji3_8"
+  },
+  {
+    "id": 923800018,
+    "eventName": "play_level_plot38_npc649302_18",
+    "bankName": "npc649302_level_shiji3_8"
+  },
+  {
+    "id": 923800019,
+    "eventName": "play_level_plot38_npc649302_19",
+    "bankName": "npc649302_level_shiji3_8"
+  },
+  {
+    "id": 923800020,
+    "eventName": "play_level_plot38_npc527401_20",
+    "bankName": "npc527401_level_shiji3_8"
+  },
+  {
+    "id": 923800021,
+    "eventName": "play_level_plot38_npc650102_21",
+    "bankName": "npc650102_level_shiji3_8"
+  },
+  {
+    "id": 923800022,
+    "eventName": "play_level_plot38_npc527401_22",
+    "bankName": "npc527401_level_shiji3_8"
+  },
+  {
+    "id": 923800023,
+    "eventName": "play_level_plot38_npc650102_23",
+    "bankName": "npc650102_level_shiji3_8"
+  },
+  {
+    "id": 923800024,
+    "eventName": "play_level_plot38_npc650102_24",
+    "bankName": "npc650102_level_shiji3_8"
+  },
+  {
+    "id": 923800025,
+    "eventName": "play_level_plot38_npc527401_25",
+    "bankName": "npc527401_level_shiji3_8"
+  },
+  {
+    "id": 923800026,
+    "eventName": "play_level_plot38_npc523601_26",
+    "bankName": "npc523601_level_shiji3_8"
+  },
+  {
+    "id": 923800027,
+    "eventName": "play_level_plot38_npc650102_27",
+    "bankName": "npc650102_level_shiji3_8"
+  },
+  {
+    "id": 923800028,
+    "eventName": "play_level_plot38_npc650102_28",
+    "bankName": "npc650102_level_shiji3_8"
+  },
+  {
+    "id": 923800029,
+    "eventName": "play_level_plot38_npc527401_29",
+    "bankName": "npc527401_level_shiji3_8"
+  },
+  {
+    "id": 923800030,
+    "eventName": "play_level_plot38_npc650102_30",
+    "bankName": "npc650102_level_shiji3_8"
+  },
+  {
+    "id": 923800031,
+    "eventName": "play_battle_plot38_hero3145_1",
+    "bankName": "hero3145_level_shiji3_8"
+  },
+  {
+    "id": 923800032,
+    "eventName": "play_battle_plot38_hero3140_2",
+    "bankName": "hero3140_level_shiji3_8"
+  },
+  {
+    "id": 923800033,
+    "eventName": "play_battle_plot38_npcnoname346_3",
+    "bankName": "npcnoname346_level_shiji3_8"
+  },
+  {
+    "id": 923800034,
+    "eventName": "play_battle_plot38_npcnoname346_4",
+    "bankName": "npcnoname346_level_shiji3_8"
+  },
+  {
+    "id": 923800035,
+    "eventName": "play_battle_plot38_npcnoname346_5",
+    "bankName": "npcnoname346_level_shiji3_8"
+  },
+  {
+    "id": 923800036,
+    "eventName": "play_battle_plot38_npc650202_6",
+    "bankName": "npc650202_level_shiji3_8"
+  },
+  {
+    "id": 923800037,
+    "eventName": "play_battle_plot38_npc649003_7",
+    "bankName": "npc649003_level_shiji3_8"
+  },
+  {
+    "id": 923800038,
+    "eventName": "play_battle_plot38_hero3140_8",
+    "bankName": "hero3140_level_shiji3_8"
+  },
+  {
+    "id": 923800039,
+    "eventName": "play_battle_plot38_npcnoname353_9",
+    "bankName": "npcnoname353_level_shiji3_8"
+  },
+  {
+    "id": 923800040,
+    "eventName": "play_battle_plot38_npc649202_10",
+    "bankName": "npc649202_level_shiji3_8"
+  },
+  {
+    "id": 923800041,
+    "eventName": "play_battle_plot38_npcnoname354_11",
+    "bankName": "npcnoname354_level_shiji3_8"
+  },
+  {
+    "id": 923800042,
+    "eventName": "play_battle_plot38_npc564801_12",
+    "bankName": "npc564801_level_shiji3_8"
+  },
+  {
+    "id": 923800043,
+    "eventName": "play_battle_plot38_npc649302_13",
+    "bankName": "npc649302_level_shiji3_8"
+  },
+  {
+    "id": 923800044,
+    "eventName": "play_battle_plot38_hero3145_14",
+    "bankName": "hero3145_level_shiji3_8"
+  },
+  {
+    "id": 923800045,
+    "eventName": "play_battle_plot38_hero3145_15",
+    "bankName": "hero3145_level_shiji3_8"
+  },
+  {
+    "id": 923800046,
+    "eventName": "play_battle_plot38_npc649302_16",
+    "bankName": "npc649302_level_shiji3_8"
+  },
+  {
+    "id": 923800047,
+    "eventName": "play_battle_plot38_npcnoname346_17",
+    "bankName": "npcnoname346_level_shiji3_8"
   }
 ]

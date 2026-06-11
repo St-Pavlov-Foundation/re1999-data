@@ -3754,5 +3754,17 @@
     "image": "story_atcg/3_7/3_7_at_ys_yinzhuangxiaochunqueer.jpg",
     "preCgId": 0,
     "herostoryId": 31
+  },
+  {
+    "id": 103201,
+    "order": 0,
+    "storyChapterId": 1032,
+    "name": "倾听者的独白",
+    "nameEn": "The Silent Listener's Soliloquy",
+    "desc": "潜藏于冬夜星星里的，一段心声，与许多许多的故事。",
+    "episodeId": 0,
+    "image": "story_atcg/3_8/3_8_at_ys_bolinyidong.jpg",
+    "preCgId": 0,
+    "herostoryId": 32
   }
 ]

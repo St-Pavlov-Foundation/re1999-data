@@ -43,7 +43,7 @@
     "canReturn": 1,
     "openDay": "",
     "openLevel": 1,
-    "rewardPoint": 40,
+    "rewardPoint": 0,
     "preChapter": 101,
     "elementList": "",
     "canPlayOpenMv": 1,
@@ -73,7 +73,7 @@
     "canReturn": 1,
     "openDay": "",
     "openLevel": 1,
-    "rewardPoint": 85,
+    "rewardPoint": 0,
     "preChapter": 102,
     "elementList": "",
     "canPlayOpenMv": 1,
@@ -7166,7 +7166,7 @@
     "rewindChapterBg": 0,
     "ambientMusic": 0,
     "isHeroRecommend": 0,
-    "actId": 12701,
+    "actId": 13808,
     "episodeId": 0
   },
   {

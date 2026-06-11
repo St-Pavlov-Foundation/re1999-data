@@ -155,7 +155,7 @@ function CommandStationTaskView:refreshTask()
 
 	if CommandStationEnum.ForceHideCommandStation then
 		gohelper.setActive(self._btnCatchTask, false)
-		gohelper.setActive(self._goTime, haveCatchTask)
+		gohelper.setActive(self._goTime, false)
 		gohelper.setActive(self._goline, haveCatchTask)
 	end
 

@@ -482,11 +482,13 @@ end
 function SummonHeroDetailView:onUpdateParam()
 	self:_initViewParam()
 	self:_refreshUI()
+	self:_statEnterView(self._heroId)
 end
 
 function SummonHeroDetailView:onOpen()
 	self:_initViewParam()
 	self:_refreshUI()
+	self:_statEnterView(self._heroId)
 end
 
 function SummonHeroDetailView:onClose()
@@ -496,6 +498,19 @@ end
 function SummonHeroDetailView:onDestroyView()
 	self._simageredlight:UnLoadImage()
 	self._simagebg:UnLoadImage()
+end
+
+function SummonHeroDetailView:_statEnterView(heroId)
+	if self._lasHeroId == heroId then
+		return
+	end
+
+	self._lasHeroId = heroId
+
+	local heroCfg = HeroConfig.instance:getHeroCO(heroId)
+	local chineseViewNameStr = (StatViewNameEnum.ChineseViewName[self.viewName] or self.viewName) .. "-" .. (heroCfg and heroCfg.name or "")
+
+	StatViewController.instance:trackViewName(chineseViewNameStr)
 end
 
 return SummonHeroDetailView

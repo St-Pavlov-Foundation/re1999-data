@@ -1108,5 +1108,53 @@
     "id": 2,
     "res": "dialogue_jianchaguan_right",
     "pos": "165#0"
+  },
+  {
+    "dialogueId": 64,
+    "id": 1,
+    "res": "dialogue_lantu_left",
+    "pos": "-165#0"
+  },
+  {
+    "dialogueId": 64,
+    "id": 2,
+    "res": "dialogue_dianjishi_right",
+    "pos": "165#0"
+  },
+  {
+    "dialogueId": 65,
+    "id": 1,
+    "res": "dialogue_dianjishi_left",
+    "pos": "-165#0"
+  },
+  {
+    "dialogueId": 65,
+    "id": 2,
+    "res": "dialogue_kenna_right",
+    "pos": "165#0"
+  },
+  {
+    "dialogueId": 66,
+    "id": 1,
+    "res": "dialogue_madun_left",
+    "pos": "-165#0"
+  },
+  {
+    "dialogueId": 66,
+    "id": 2,
+    "res": "dialogue_lantu_right",
+    "pos": "165#0"
+  },
+  {
+    "dialogueId": 67,
+    "id": 1,
+    "res": "dialogue_bolinyidong_left",
+    "pos": "-165#0"
+  },
+  {
+    "dialogueId": 67,
+    "id": 2,
+    "res": "dialogue_jijinhuguanyuan_right",
+    "pos": "165#0"
   }
 ]

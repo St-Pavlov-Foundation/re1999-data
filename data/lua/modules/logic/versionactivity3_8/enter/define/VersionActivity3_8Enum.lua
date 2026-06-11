@@ -8,10 +8,9 @@ VersionActivity3_8Enum.ActivityId = {
 	DianJiShi = 13812,
 	EnterView = 13801,
 	EchoSong = 13811,
-	V3a8SelfSelectSix = 13815,
 	DouQuQu4Store = 13819,
-	DouQuQu4 = 13808,
 	RoleStory = 13821,
+	DouQuQu4 = 13808,
 	Abyss = 13810,
 	DungeonStore = 13803,
 	Dungeon = 13802,
@@ -20,7 +19,8 @@ VersionActivity3_8Enum.ActivityId = {
 	Reactivity = VersionActivity3_1Enum.ActivityId.Dungeon
 }
 VersionActivity3_8Enum.CharacterActId = {
-	[VersionActivity3_8Enum.ActivityId.DianJiShi] = true
+	[VersionActivity3_8Enum.ActivityId.DianJiShi] = true,
+	[VersionActivity3_8Enum.ActivityId.EchoSong] = true
 }
 VersionActivity3_8Enum.EnterViewActSetting = {
 	{
@@ -114,7 +114,8 @@ VersionActivity3_8Enum.RedDotOffsetX = 10
 VersionActivity3_8Enum.EnterLoopVideoName = "v3a8_kv_loop"
 VersionActivity3_8Enum.EnterAnimVideoName = "v3a8_kv_open"
 VersionActivity3_8Enum.EnterVideoDayKey = "v3a8_EnterVideoDayKey"
-VersionActivity3_8Enum.OpenAnimDelayTime = 5
+VersionActivity3_8Enum.EnterVideoFirstKey = "v3a8_EnterVideoFirstKey"
+VersionActivity3_8Enum.OpenAnimDelayTime = 6.4
 VersionActivity3_8Enum.ScriptSuffix = 1
 
 return VersionActivity3_8Enum

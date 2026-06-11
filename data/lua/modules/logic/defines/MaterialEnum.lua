@@ -75,6 +75,10 @@ MaterialEnum.GetApproach = {
 	LifeCircleSign = 133,
 	NoviceStageReward = 54
 }
+MaterialEnum.TaskGetApproachLimit = {
+	Max = 19999,
+	Min = 10000
+}
 MaterialEnum.SubTypePackages = {
 	[53] = true,
 	[50] = true,

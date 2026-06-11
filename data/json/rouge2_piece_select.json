@@ -347,7 +347,7 @@
     "descSuccess": "9#1001091|10010911|5#10010912|9#10010913|5#10010914|9#10010915|10010916|5#10010917|9#10010918",
     "descLose": "",
     "descBigSuccess": "",
-    "triggerType": 0,
+    "triggerType": 1,
     "triggerParam": "null-2#141:1|2#504:1",
     "display": 0
   },
@@ -363,7 +363,7 @@
     "descSuccess": "9#1001091|10010911|5#10010912|9#10010913|5#10010914|9#10010915|10010916|5#10010917|9#10010918",
     "descLose": "",
     "descBigSuccess": "",
-    "triggerType": 0,
+    "triggerType": 1,
     "triggerParam": "null-2#141:1|2#504:1",
     "display": 0
   },
@@ -411,7 +411,7 @@
     "descSuccess": "11211003|30#11211004|1#11211005|30#11211006|11211007|30#112110071",
     "descLose": "",
     "descBigSuccess": "",
-    "triggerType": 0,
+    "triggerType": 1,
     "triggerParam": "null-1#9321002|2#132:1|2#503:1",
     "display": 0
   },
