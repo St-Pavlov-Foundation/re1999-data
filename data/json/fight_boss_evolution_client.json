@@ -128,5 +128,10 @@
     "id": 610307,
     "nextSkinId": 610308,
     "timeline": "610307_die"
+  },
+  {
+    "id": 670411,
+    "nextSkinId": 670412,
+    "timeline": "670411_change"
   }
 ]

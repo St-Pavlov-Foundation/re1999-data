@@ -16240,6 +16240,781 @@
     "bankName": "prologuechapter_13_sfx"
   },
   {
+    "id": 38500001,
+    "eventName": "play_activitysfx_shiji_chaotic_streets_01",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500002,
+    "eventName": "play_activitysfx_shiji_slide_transition",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500003,
+    "eventName": "play_activitysfx_shiji_whisper_discussions_01",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500004,
+    "eventName": "play_activitysfx_shiji_whisper_discussions_02",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500005,
+    "eventName": "play_activitysfx_shiji_two_steps",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500006,
+    "eventName": "play_activitysfx_shiji_many_people_walk",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500007,
+    "eventName": "play_activitysfx_shiji_listening_room",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500008,
+    "eventName": "play_activitysfx_shiji_shake_communicator",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500009,
+    "eventName": "play_activitysfx_shiji_stone_umbrella",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500010,
+    "eventName": "play_activitysfx_shiji_mysterious_restoration",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500011,
+    "eventName": "play_activitysfx_shiji_open_box",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500012,
+    "eventName": "play_activitysfx_shiji_change_visual",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500013,
+    "eventName": "play_activitysfx_shiji_stretch_oneself",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500014,
+    "eventName": "play_activitysfx_shiji_strolling_streets",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500015,
+    "eventName": "play_activitysfx_shiji_echo_stone_whispering",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500016,
+    "eventName": "play_activitysfx_shiji_knocking_wall",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500017,
+    "eventName": "play_activitysfx_shiji_puppet_creaking",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500018,
+    "eventName": "play_activitysfx_shiji_puppet_stage_collapsed",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500019,
+    "eventName": "play_activitysfx_shiji_empty_footsteps",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500020,
+    "eventName": "play_activitysfx_shiji_child_laughs_run",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500021,
+    "eventName": "play_activitysfx_shiji_highheelfootsteps_reverb",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500022,
+    "eventName": "play_activitysfx_shiji_comical_exit",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500023,
+    "eventName": "play_activitysfx_shiji_footsteps_many_people",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500024,
+    "eventName": "play_activitysfx_shiji_desolate_bistro",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500025,
+    "eventName": "play_activitysfx_shiji_desolate_bistro_music",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500026,
+    "eventName": "play_activitysfx_shiji_take_wine_bottle",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500027,
+    "eventName": "play_activitysfx_shiji_mixology",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500028,
+    "eventName": "play_activitysfx_shiji_pen_painting",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500029,
+    "eventName": "play_activitysfx_shiji_raise_hair",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500030,
+    "eventName": "play_activitysfx_shiji_meeting_deadlocked",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500031,
+    "eventName": "play_activitysfx_shiji_baby",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500032,
+    "eventName": "play_activitysfx_shiji_pencil_drawing",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500033,
+    "eventName": "play_activitysfx_shiji_hit_echo_stone",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500034,
+    "eventName": "play_activitysfx_shiji_marker_error",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500035,
+    "eventName": "play_activitysfx_shiji_strange_rustling",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500036,
+    "eventName": "play_activitysfx_shiji_wall_collapsed",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500037,
+    "eventName": "play_activitysfx_shiji_distant_applause_scattered",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500038,
+    "eventName": "play_activitysfx_shiji_cross_ruins",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500039,
+    "eventName": "play_activitysfx_shiji_pat_back",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500040,
+    "eventName": "play_activitysfx_shiji_get_trapped",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500041,
+    "eventName": "play_activitysfx_shiji_building_stones",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500042,
+    "eventName": "play_activitysfx_shiji_echo_song",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500043,
+    "eventName": "play_activitysfx_shiji_echo_stones_hum",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500044,
+    "eventName": "play_activitysfx_shiji_use_eraser",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500045,
+    "eventName": "play_activitysfx_shiji_close_folder",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500046,
+    "eventName": "play_activitysfx_shiji_tv_shows",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500047,
+    "eventName": "play_activitysfx_shiji_wine_bottle_rolling",
+    "bankName": "activity_shiji3_8_sfx_part01"
+  },
+  {
+    "id": 38500048,
+    "eventName": "play_activitysfx_shiji_sea_light",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500049,
+    "eventName": "play_activitysfx_shiji_overlook_mountain",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500050,
+    "eventName": "play_activitysfx_shiji_cloudy_office",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500051,
+    "eventName": "play_activitysfx_shiji_construction_site",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500052,
+    "eventName": "play_activitysfx_shiji_chaotic_streets_02",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500053,
+    "eventName": "play_activitysfx_shiji_inside_rainstorm",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500054,
+    "eventName": "play_activitysfx_shiji_child_light",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500055,
+    "eventName": "play_activitysfx_shiji_child_light_loop",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500056,
+    "eventName": "play_activitysfx_shiji_giant_creature_collapsed",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500057,
+    "eventName": "play_activitysfx_shiji_darkness_recedes",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500058,
+    "eventName": "play_activitysfx_shiji_cement_friction",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500059,
+    "eventName": "play_activitysfx_shiji_workers_dispersed",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500060,
+    "eventName": "play_activitysfx_shiji_people_approach",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500061,
+    "eventName": "play_activitysfx_shiji_echo_stone_rises",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500062,
+    "eventName": "play_activitysfx_shiji_echo_stone_click",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500063,
+    "eventName": "play_activitysfx_shiji_echo_stone_harmonic",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500064,
+    "eventName": "play_activitysfx_shiji_echo_stone_dissonance",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500065,
+    "eventName": "play_activitysfx_shiji_echo_stone_noise",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500066,
+    "eventName": "play_activitysfx_shiji_collapse_reorganization",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500067,
+    "eventName": "play_activitysfx_shiji_videotape_noise",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500068,
+    "eventName": "play_activitysfx_shiji_hit_head",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500069,
+    "eventName": "play_activitysfx_shiji_sign_loudspeaker",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500070,
+    "eventName": "play_activitysfx_shiji_sledgehammer",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500071,
+    "eventName": "play_activitysfx_shiji_break_stone",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500072,
+    "eventName": "play_activitysfx_shiji_sit_grass",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500073,
+    "eventName": "play_activitysfx_shiji_printer_operation",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500074,
+    "eventName": "play_activitysfx_shiji_smoke_exhaled",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500075,
+    "eventName": "play_activitysfx_shiji_crowd_chaos",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500076,
+    "eventName": "play_activitysfx_shiji_tramcar_pass",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500077,
+    "eventName": "play_activitysfx_shiji_bandage",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500078,
+    "eventName": "play_activitysfx_shiji_mocha_pot",
+    "bankName": "activity_shiji3_8_sfx_part02"
+  },
+  {
+    "id": 38500079,
+    "eventName": "play_activitystory_huishengyao_documents_rope",
+    "bankName": "activitystory_shiji3_8_huishengyao_sfx"
+  },
+  {
+    "id": 38500080,
+    "eventName": "play_activitystory_huishengyao_remove_key",
+    "bankName": "activitystory_shiji3_8_huishengyao_sfx"
+  },
+  {
+    "id": 38500081,
+    "eventName": "play_activitystory_huishengyao_ghost_by",
+    "bankName": "activitystory_shiji3_8_huishengyao_sfx"
+  },
+  {
+    "id": 38500082,
+    "eventName": "play_activitystory_huishengyao_knock_wall",
+    "bankName": "activitystory_shiji3_8_huishengyao_sfx"
+  },
+  {
+    "id": 38500083,
+    "eventName": "play_activitystory_huishengyao_garbage_truck",
+    "bankName": "activitystory_shiji3_8_huishengyao_sfx"
+  },
+  {
+    "id": 38500084,
+    "eventName": "play_activitystory_huishengyao_pop_head",
+    "bankName": "activitystory_shiji3_8_huishengyao_sfx"
+  },
+  {
+    "id": 38500085,
+    "eventName": "play_activitystory_huishengyao_pack",
+    "bankName": "activitystory_shiji3_8_huishengyao_sfx"
+  },
+  {
+    "id": 38500086,
+    "eventName": "play_activitystory_huishengyao_large_bell",
+    "bankName": "activitystory_shiji3_8_huishengyao_sfx"
+  },
+  {
+    "id": 38500087,
+    "eventName": "play_activitystory_huishengyao_drop_joystick",
+    "bankName": "activitystory_shiji3_8_huishengyao_sfx"
+  },
+  {
+    "id": 38500088,
+    "eventName": "play_activitystory_huishengyao_radio_noise",
+    "bankName": "activitystory_shiji3_8_huishengyao_sfx"
+  },
+  {
+    "id": 38500089,
+    "eventName": "play_activitystory_huishengyao_push_wheelchair",
+    "bankName": "activitystory_shiji3_8_huishengyao_sfx"
+  },
+  {
+    "id": 38500090,
+    "eventName": "play_activitystory_huishengyao_rotating_joystick",
+    "bankName": "activitystory_shiji3_8_huishengyao_sfx"
+  },
+  {
+    "id": 38500091,
+    "eventName": "play_activitystory_huishengyao_wood_cracking",
+    "bankName": "activitystory_shiji3_8_huishengyao_sfx"
+  },
+  {
+    "id": 38500092,
+    "eventName": "play_activitystory_huishengyao_wood_cracking_loud",
+    "bankName": "activitystory_shiji3_8_huishengyao_sfx"
+  },
+  {
+    "id": 38500093,
+    "eventName": "play_activitystory_huishengyao_echo_01",
+    "bankName": "activitystory_shiji3_8_huishengyao_sfx"
+  },
+  {
+    "id": 38500094,
+    "eventName": "play_activitystory_huishengyao_echo_02",
+    "bankName": "activitystory_shiji3_8_huishengyao_sfx"
+  },
+  {
+    "id": 38500095,
+    "eventName": "play_activitystory_dianjishi_classroom",
+    "bankName": "activitystory_3_8_shiji_dianjish_sfx"
+  },
+  {
+    "id": 38500096,
+    "eventName": "play_activitystory_dianjishi_students_laughter_01",
+    "bankName": "activitystory_3_8_shiji_dianjish_sfx"
+  },
+  {
+    "id": 38500097,
+    "eventName": "play_activitystory_dianjishi_students_laughter_02",
+    "bankName": "activitystory_3_8_shiji_dianjish_sfx"
+  },
+  {
+    "id": 38500098,
+    "eventName": "play_activitystory_dianjishi_chair_up",
+    "bankName": "activitystory_3_8_shiji_dianjish_sfx"
+  },
+  {
+    "id": 38500099,
+    "eventName": "play_activitystory_dianjishi_sit_down",
+    "bankName": "activitystory_3_8_shiji_dianjish_sfx"
+  },
+  {
+    "id": 38500100,
+    "eventName": "play_activitystory_dianjishi_pound_back",
+    "bankName": "activitystory_3_8_shiji_dianjish_sfx"
+  },
+  {
+    "id": 38500101,
+    "eventName": "play_activitystory_dianjishi_rush_out",
+    "bankName": "activitystory_3_8_shiji_dianjish_sfx"
+  },
+  {
+    "id": 38500102,
+    "eventName": "play_activitystory_dianjishi_faucet_open",
+    "bankName": "activitystory_3_8_shiji_dianjish_sfx"
+  },
+  {
+    "id": 38500103,
+    "eventName": "play_activitystory_dianjishi_camp_work",
+    "bankName": "activitystory_3_8_shiji_dianjish_sfx"
+  },
+  {
+    "id": 38500104,
+    "eventName": "play_activitystory_dianjishi_pen_hitting",
+    "bankName": "activitystory_3_8_shiji_dianjish_sfx"
+  },
+  {
+    "id": 38500105,
+    "eventName": "play_activitystory_dianjishi_mind_pen",
+    "bankName": "activitystory_3_8_shiji_dianjish_sfx"
+  },
+  {
+    "id": 38500106,
+    "eventName": "play_activitystory_dianjishi_mind_pen_loop",
+    "bankName": "activitystory_3_8_shiji_dianjish_sfx"
+  },
+  {
+    "id": 38500107,
+    "eventName": "play_activitystory_dianjishi_mind_destruction",
+    "bankName": "activitystory_3_8_shiji_dianjish_sfx"
+  },
+  {
+    "id": 38500108,
+    "eventName": "play_activitystory_dianjishi_push_blackboard",
+    "bankName": "activitystory_3_8_shiji_dianjish_sfx"
+  },
+  {
+    "id": 38500109,
+    "eventName": "play_activitystory_dianjishi_pencil_drawing",
+    "bankName": "activitystory_3_8_shiji_dianjish_sfx"
+  },
+  {
+    "id": 38500110,
+    "eventName": "play_activitystory_dianjishi_remove_glasses",
+    "bankName": "activitystory_3_8_shiji_dianjish_sfx"
+  },
+  {
+    "id": 38500111,
+    "eventName": "play_activitystory_dianjishi_wear_glasses",
+    "bankName": "activitystory_3_8_shiji_dianjish_sfx"
+  },
+  {
+    "id": 38500112,
+    "eventName": "play_activitystory_dianjishi_campsite_operation_chaos",
+    "bankName": "activitystory_3_8_shiji_dianjish_sfx"
+  },
+  {
+    "id": 38500113,
+    "eventName": "play_activitystory_dianjishi_mind_transportation",
+    "bankName": "activitystory_3_8_shiji_dianjish_sfx"
+  },
+  {
+    "id": 38500114,
+    "eventName": "play_activitystory_dianjishi_orderly_evacuation",
+    "bankName": "activitystory_3_8_shiji_dianjish_sfx"
+  },
+  {
+    "id": 38500115,
+    "eventName": "play_activitystory_dianjishi_high_heeled_running",
+    "bankName": "activitystory_3_8_shiji_dianjish_sfx"
+  },
+  {
+    "id": 38500116,
+    "eventName": "play_activitystory_dianjishi_car_horn",
+    "bankName": "activitystory_3_8_shiji_dianjish_sfx"
+  },
+  {
+    "id": 38500117,
+    "eventName": "play_activitystory_dianjishi_poker_collapses",
+    "bankName": "activitystory_3_8_shiji_dianjish_sfx"
+  },
+  {
+    "id": 38500118,
+    "eventName": "play_activitystory_dianjishi_collect_poker",
+    "bankName": "activitystory_3_8_shiji_dianjish_sfx"
+  },
+  {
+    "id": 38500119,
+    "eventName": "play_activitystory_dianjishi_registration_serbia",
+    "bankName": "activitystory_3_8_shiji_dianjish_sfx"
+  },
+  {
+    "id": 38500120,
+    "eventName": "play_activitystory_shiji_shinei_lp",
+    "bankName": "activitystory_shiji3_8_yishi_bolin_sfx"
+  },
+  {
+    "id": 38500121,
+    "eventName": "play_activitystory_shiji_diantai",
+    "bankName": "activitystory_shiji3_8_yishi_bolin_sfx"
+  },
+  {
+    "id": 38500122,
+    "eventName": "play_activitystory_shiji_diantai_lp",
+    "bankName": "activitystory_shiji3_8_yishi_bolin_sfx"
+  },
+  {
+    "id": 38500123,
+    "eventName": "play_activitystory_shiji_diantai2_lp",
+    "bankName": "activitystory_shiji3_8_yishi_bolin_sfx"
+  },
+  {
+    "id": 38500124,
+    "eventName": "play_activitystory_shiji_jinayu_lp",
+    "bankName": "activitystory_shiji3_8_yishi_bolin_sfx"
+  },
+  {
+    "id": 38500125,
+    "eventName": "play_activitystory_shiji_kaiguan",
+    "bankName": "activitystory_shiji3_8_yishi_bolin_sfx"
+  },
+  {
+    "id": 38500126,
+    "eventName": "play_activitystory_shiji_moca",
+    "bankName": "activitystory_shiji3_8_yishi_bolin_sfx"
+  },
+  {
+    "id": 38500127,
+    "eventName": "play_activitystory_shiji_bao",
+    "bankName": "activitystory_shiji3_8_yishi_bolin_sfx"
+  },
+  {
+    "id": 38500128,
+    "eventName": "play_activitystory_shiji_sidai",
+    "bankName": "activitystory_shiji3_8_yishi_bolin_sfx"
+  },
+  {
+    "id": 38500129,
+    "eventName": "play_activitystory_shiji_guizi",
+    "bankName": "activitystory_shiji3_8_yishi_bolin_sfx"
+  },
+  {
+    "id": 38500130,
+    "eventName": "play_activitystory_shiji_jiandao",
+    "bankName": "activitystory_shiji3_8_yishi_bolin_sfx"
+  },
+  {
+    "id": 38500131,
+    "eventName": "play_activitystory_shiji_cloth",
+    "bankName": "activitystory_shiji3_8_yishi_bolin_sfx"
+  },
+  {
+    "id": 38500132,
+    "eventName": "play_activitystory_shiji_door",
+    "bankName": "activitystory_shiji3_8_yishi_bolin_sfx"
+  },
+  {
+    "id": 38500133,
+    "eventName": "play_activitystory_shiji_bi",
+    "bankName": "activitystory_shiji3_8_yishi_bolin_sfx"
+  },
+  {
+    "id": 38500134,
+    "eventName": "play_activitystory_shiji_phone",
+    "bankName": "activitystory_shiji3_8_yishi_bolin_sfx"
+  },
+  {
+    "id": 38500135,
+    "eventName": "play_activitystory_shiji_baoqi",
+    "bankName": "activitystory_shiji3_8_yishi_bolin_sfx"
+  },
+  {
+    "id": 38500136,
+    "eventName": "play_activitysfx_shiji_geyao_converge_01",
+    "bankName": "activity_shiji3_8_sfx_part03"
+  },
+  {
+    "id": 38500137,
+    "eventName": "play_activitysfx_shiji_geyao_converge_02",
+    "bankName": "activity_shiji3_8_sfx_part03"
+  },
+  {
+    "id": 38500138,
+    "eventName": "play_activitysfx_shiji_echo",
+    "bankName": "activity_shiji3_8_sfx_part03"
+  },
+  {
+    "id": 38500139,
+    "eventName": "play_activitysfx_shiji_light_shadow",
+    "bankName": "activity_shiji3_8_sfx_part03"
+  },
+  {
+    "id": 38500140,
+    "eventName": "play_activitysfx_shiji_echo_river",
+    "bankName": "activity_shiji3_8_sfx_part03"
+  },
+  {
+    "id": 38500141,
+    "eventName": "play_activitysfx_shiji_soul_absorption",
+    "bankName": "activity_shiji3_8_sfx_part03"
+  },
+  {
+    "id": 38500142,
+    "eventName": "play_activitysfx_shiji_golden_arc_01",
+    "bankName": "activity_shiji3_8_sfx_part03"
+  },
+  {
+    "id": 38500143,
+    "eventName": "play_activitysfx_shiji_golden_arc_02",
+    "bankName": "activity_shiji3_8_sfx_part03"
+  },
+  {
+    "id": 38500144,
+    "eventName": "play_activitysfx_shiji_vascularization_cables",
+    "bankName": "activity_shiji3_8_sfx_part03"
+  },
+  {
+    "id": 38500145,
+    "eventName": "play_activitysfx_shiji_skylight",
+    "bankName": "activity_shiji3_8_sfx_part03"
+  },
+  {
+    "id": 38500146,
+    "eventName": "play_activitysfx_shiji_measuring_angle",
+    "bankName": "activity_shiji3_8_sfx_part03"
+  },
+  {
+    "id": 38500147,
+    "eventName": "play_activitysfx_shiji_geometric_scheme",
+    "bankName": "activity_shiji3_8_sfx_part03"
+  },
+  {
+    "id": 38500148,
+    "eventName": "play_activitysfx_shiji_shadow_approaches",
+    "bankName": "activity_shiji3_8_sfx_part03"
+  },
+  {
+    "id": 38500149,
+    "eventName": "play_activitysfx_shiji_wall_cracks",
+    "bankName": "activity_shiji3_8_sfx_part03"
+  },
+  {
+    "id": 38500150,
+    "eventName": "play_activitysfx_shiji_quick_exit",
+    "bankName": "activity_shiji3_8_sfx_part03"
+  },
+  {
+    "id": 38500151,
+    "eventName": "play_activitysfx_shiji_sign_flashing",
+    "bankName": "activity_shiji3_8_sfx_part03"
+  },
+  {
+    "id": 38500152,
+    "eventName": "play_activitysfx_shiji_cylindrical",
+    "bankName": "activity_shiji3_8_sfx_part03"
+  },
+  {
+    "id": 38500153,
+    "eventName": "play_activitysfx_shiji_puppet_cotton_01",
+    "bankName": "activity_shiji3_8_sfx_part03"
+  },
+  {
+    "id": 38500154,
+    "eventName": "play_activitysfx_shiji_puppet_cotton_02",
+    "bankName": "activity_shiji3_8_sfx_part03"
+  },
+  {
+    "id": 38500155,
+    "eventName": "play_activitysfx_shiji_puppet_cotton_03",
+    "bankName": "activity_shiji3_8_sfx_part03"
+  },
+  {
     "id": 530053,
     "eventName": "play_activitymusic_thememusic_full_2_0",
     "bankName": "activity2_0_music"
@@ -16718,6 +17493,21 @@
     "id": 37530009,
     "eventName": "play_activitymusic_airingclothes_combatlist_3_7",
     "bankName": "activity3_7_music"
+  },
+  {
+    "id": 38530001,
+    "eventName": "play_activitymusic_theme_3_8",
+    "bankName": "activity3_8_music"
+  },
+  {
+    "id": 38530002,
+    "eventName": "play_activitymusic_huanle_3_8",
+    "bankName": "activity3_8_music"
+  },
+  {
+    "id": 38530003,
+    "eventName": "play_activitymusic_shensheng_3_8",
+    "bankName": "activity3_8_music"
   },
   {
     "id": 520105,
@@ -17423,6 +18213,41 @@
     "id": 37520005,
     "eventName": "play_plotpvsfx_tuxi_jijinhui_chap13",
     "bankName": "prologuechapter_13_cutscene"
+  },
+  {
+    "id": 38520001,
+    "eventName": "play_shiji3_8_cutscene_huishengyao_appear",
+    "bankName": "shiji3_8_cutscene_sfx_vo"
+  },
+  {
+    "id": 38520002,
+    "eventName": "play_shiji3_8_cutscene_dianjishi_appear",
+    "bankName": "shiji3_8_cutscene_sfx_vo"
+  },
+  {
+    "id": 38520003,
+    "eventName": "play_shiji3_8_cutscene_guangzhihai",
+    "bankName": "shiji3_8_cutscene_sfx_vo"
+  },
+  {
+    "id": 38520004,
+    "eventName": "play_activitysfx_shiji3_8_avgopen",
+    "bankName": "activity_shiji3_8_sfx"
+  },
+  {
+    "id": 38520005,
+    "eventName": "play_activitysfx_shiji3_8_open",
+    "bankName": "activity_shiji3_8_sfx"
+  },
+  {
+    "id": 38520006,
+    "eventName": "play_activitysfx_shiji3_8_continue",
+    "bankName": "activity_shiji3_8_sfx"
+  },
+  {
+    "id": 38520007,
+    "eventName": "play_activitysfx_shiji3_8_end",
+    "bankName": "activity_shiji3_8_sfx"
   },
   {
     "id": 20530011,

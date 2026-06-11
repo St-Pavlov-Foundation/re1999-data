@@ -12605,7 +12605,7 @@
   },
   {
     "id": "p_bpchargeview_txt_Tips",
-    "lang": "立即提升<color=#E99B56>10级</color>分贝等级"
+    "lang": "立即提升<color=#FFE14D>10级</color>分贝等级"
   },
   {
     "id": "p_v1a9_explore_enterview_txt_Title",
@@ -25265,7 +25265,7 @@
   },
   {
     "id": "p_bpface_skinfestivalview_txt_title2",
-    "lang": "《岁月的书签》新的一页：牛奶在复杂曲面上流动的微分方程，这将是她的下一个课题。"
+    "lang": "《岁月的书签》新的一页：孔盖兮翠旍，登九天兮抚彗星。"
   },
   {
     "id": "p_bpface_skinfestivalview_txt_title3",
@@ -28149,7 +28149,7 @@
   },
   {
     "id": "p_bpfaceview_txt_desc",
-    "lang": "《亡者的恩赐》北风拂过幽冥的死地，而他以羽翼为缰绳。"
+    "lang": "《幽冥无归》于是他离开光，重回至暗之地。"
   },
   {
     "id": "p_bpfaceview_txt_title",
@@ -28754,5 +28754,297 @@
   {
     "id": "p_sodache_relicupgradeview_txt_Upgrade",
     "lang": "研究"
+  },
+  {
+    "id": "p_act191teamitem_txt_new_Enhance",
+    "lang": "查看祝福"
+  },
+  {
+    "id": "p_act191initbuildview_txt_new_tips",
+    "lang": "初始资金"
+  },
+  {
+    "id": "p_act191stageview_txt_new_attribute2",
+    "lang": "血量"
+  },
+  {
+    "id": "v3a8_dungeonenter_txt_Finished",
+    "lang": "<size=80>已</size>结束"
+  },
+  {
+    "id": "v3a8_dungeonenter_txt_Locked",
+    "lang": "<size=80>未</size>解锁"
+  },
+  {
+    "id": "p_summonmaincharacternewbie_txt_tips4",
+    "lang": "完成故事<#FEF4AC>2ND-15</color>可获得专属征集道具"
+  },
+  {
+    "id": "p_summonmaincharacterpropview_txt_tips",
+    "lang": "由于第一滴雨征集已关闭，以下道具将自动转化"
+  },
+  {
+    "id": "p_fightquit_protectmode",
+    "lang": "护眼模式"
+  },
+  {
+    "id": "p_settingsgraphicsview_protectmode",
+    "lang": "开启后将降低特效的强度和亮度，某些特效与画面可能会产生畸变"
+  },
+  {
+    "id": "p_v3a8_dragonboatactivity_fullview_txt_votetitle",
+    "lang": "支持队伍"
+  },
+  {
+    "id": "p_v3a8_dragonboatactivity_fullview_txt_boat01",
+    "lang": "铁甲洪流队"
+  },
+  {
+    "id": "p_v3a8_dragonboatactivity_fullview_txt_boat02",
+    "lang": "毛球战车队"
+  },
+  {
+    "id": "p_v3a8_dragonboatactivity_fullview_txt",
+    "lang": "支持"
+  },
+  {
+    "id": "p_v3a8_dragonboatactivity_fullview_txt_play",
+    "lang": "去支持"
+  },
+  {
+    "id": "p_v3a8_dragonboatactivity_fullview_txt_reward",
+    "lang": "累计支持"
+  },
+  {
+    "id": "p_v3a8_avg_txt_Reset",
+    "lang": "回声重播"
+  },
+  {
+    "id": "p_v3a8_newbie_rhapsody_01",
+    "lang": "唤起指定闪念，并将对应角色的狂想或结构等级升至Max"
+  },
+  {
+    "id": "p_a18_reappear_mainactivity_enterview_txt_EntranceRole1",
+    "lang": "虚无的倒影"
+  },
+  {
+    "id": "p_a18_reappear_mainactivity_enterview_txt_EntranceRole2",
+    "lang": "冰原时隙"
+  },
+  {
+    "id": "p_a19_reappear_mainactivity_enterview_txt_EntranceRole1",
+    "lang": "三重赋格"
+  },
+  {
+    "id": "p_a19_reappear_mainactivity_enterview_txt_EntranceRole2",
+    "lang": "谋杀始于清晨"
+  },
+  {
+    "id": "p_v3a8_dianjishi_gameview_failed",
+    "lang": "好像不太对，重置后再试试"
+  },
+  {
+    "id": "p_v3a8_dianjishi_gameview_txt_help",
+    "lang": "提示"
+  },
+  {
+    "id": "p_v3a8_versionsummonluolunzihalfview_txt_name",
+    "lang": "洛伦兹蝴蝶"
+  },
+  {
+    "id": "p_v3a8_versionsummonzhixinquanerhalfview_txt_name",
+    "lang": "纸信圈儿"
+  },
+  {
+    "id": "p_v3a8_dragonboatactivity_fullview_txt_boat1",
+    "lang": "沃们赢了！沃们是冠军！荣耀属于伟大的卡邦克鲁！"
+  },
+  {
+    "id": "p_v3a8_dragonboatactivity_fullview_txt_boat2",
+    "lang": "嘶嘶！嘶！嘶嘶！（我们赢了！我们要奖品、要庆祝、要更多的小石子糖！）"
+  },
+  {
+    "id": "p_cloudredemption_chapterdetailview_txt_tuijian",
+    "lang": "阵容推荐"
+  },
+  {
+    "id": "p_v3a8_warmup_txt_tip",
+    "lang": "请选择正确的答案"
+  },
+  {
+    "id": "p_v3a8_warmup_txt_reward",
+    "lang": "堪察后领取"
+  },
+  {
+    "id": "p_v3a8_dragonboatactivity_fullview_txt_desc01",
+    "lang": "活动期间每日一次投票机会，投给你喜欢的战队吧"
+  },
+  {
+    "id": "p_v3a8_dragonboatactivity_fullview_txt_desc02",
+    "lang": "史无前例的龙舟赛！魔精们赌上尊严（还有小石子糖）的一战！当然，属于你们的支持也很重要！"
+  },
+  {
+    "id": "p_dungeonrougeview_rouge1",
+    "lang": "黄昏的音序"
+  },
+  {
+    "id": "p_dungeonrougeview_rouge2",
+    "lang": "无声综合征"
+  },
+  {
+    "id": "p_v3a8_newcomerevent_txt_01",
+    "lang": "唤起指定闪念，并将对应角色的狂想或解构等级升至Max"
+  },
+  {
+    "id": "p_rolestorybranchview_txt_tips",
+    "lang": "选项会影响结局"
+  },
+  {
+    "id": "p_v3a8_rolestorygameview_txt_review",
+    "lang": "回顾"
+  },
+  {
+    "id": "p_v3a8_rolestorygameview_txt_branch",
+    "lang": "分支"
+  },
+  {
+    "id": "p_v3a8_dragonboatactivity_fullview_txt_limite",
+    "lang": "投票次数已用尽"
+  },
+  {
+    "id": "p_v3a8_dragonboatactivity_fullview_txt_win01",
+    "lang": "投票期已结束，铁甲洪流队获胜"
+  },
+  {
+    "id": "p_v3a8_dragonboatactivity_fullview_txt_win02",
+    "lang": "投票期已结束，毛球战车队获胜"
+  },
+  {
+    "id": "p_v3a8_selfselectsixview_txt_desc_1",
+    "lang": "燃血减抗"
+  },
+  {
+    "id": "p_v3a8_selfselectsixview_txt_desc_2",
+    "lang": "受击自动回血"
+  },
+  {
+    "id": "p_v3a8_selfselectsixview_txt_desc_3",
+    "lang": "仪式威力提升"
+  },
+  {
+    "id": "p_v3a8_selfselectsixview_txt_desc_4",
+    "lang": "自动释放仪式"
+  },
+  {
+    "id": "p_v3a8_selfselectsixview_txt_desc_5",
+    "lang": "咒语升阶"
+  },
+  {
+    "id": "p_v3a8_selfselectsixview_txt_desc_6",
+    "lang": "自身增益提升"
+  },
+  {
+    "id": "p_v3a8_selfselectsixview_txt_tips_1",
+    "lang": "角色等级提升至<#FD8B31>洞悉三30级</color>即可解锁狂想与解构"
+  },
+  {
+    "id": "p_v3a8_selfselectsixview_txt_tips_2",
+    "lang": "唤起指定闪念，并将对应角色的狂想或解构等级升至<#FD8B31>MAX</color>"
+  },
+  {
+    "id": "p_v3a8_selfselectsixview_txt_canuse",
+    "lang": "去使用"
+  },
+  {
+    "id": "p_v3a8_versionsummonfalangyanhalfview_txt_name",
+    "lang": "珐琅眼"
+  },
+  {
+    "id": "p_v3a8_versionsummondianjishihalfview_txt_name",
+    "lang": "奠基石"
+  },
+  {
+    "id": "p_v3a2_activitycollect_fullview_txt_jump",
+    "lang": "<size=64>前</size>往体验"
+  },
+  {
+    "id": "p_v3a8_versionsummonhuishengyaohalfview_txt_name",
+    "lang": "回声谣"
+  },
+  {
+    "id": "p_fight3_8bossview_txt_title",
+    "lang": "蓄力进度"
+  },
+  {
+    "id": "p_v3a8_storeview_txt_title1",
+    "lang": "<size=38>“果</size>腹”餐点"
+  },
+  {
+    "id": "p_v3a8_storeview_txt_title2",
+    "lang": "<size=38>“果</size>腹”餐点"
+  },
+  {
+    "id": "p_v3a8_storeview_txt_title3",
+    "lang": "<size=38>“果</size>腹”餐点"
+  },
+  {
+    "id": "p_v3a8_xinshou8day_day3",
+    "lang": "可得<color=#D86A36>6星\n心相自选</color>"
+  },
+  {
+    "id": "p_v3a8_xinshou8day_txt_old",
+    "lang": "累计签到<color=#D86A36>8</color>日，可获得5星角色<color=#D86A36>帕米埃</color>。"
+  },
+  {
+    "id": "p_v3a8_xinshou8day_txt_new",
+    "lang": "累计签到<color=#D86A36>8</color>日\n即可获得<color=#D86A36>独一律×13</color>、<color=#D86A36>6星心相自选</color>、5星角色<color=#D86A36>帕米埃</color>等奖励。"
+  },
+  {
+    "id": "p_v3a8_xinshouguanqia_txt_new",
+    "lang": "此为启程时刻的赠礼。\n完成故事，即可领取<color=#D86A36>独一律×20</color>、<color=#D86A36>纯雨滴×1800</color>、5星角色<color=#D86A36>玛蒂尔达</color>等奖励。"
+  },
+  {
+    "id": "p_v3a8_warmup_txt_tip01",
+    "lang": "选择正确答案后可查看"
+  },
+  {
+    "id": "p_summonmaincharacternewbie_txt_role_1",
+    "lang": "塞梅尔维斯"
+  },
+  {
+    "id": "p_summonmaincharacternewbie_txt_role_2",
+    "lang": "环状水星"
+  },
+  {
+    "id": "p_summonmaincharacternewbie_txt_role_3",
+    "lang": "未锈铠"
+  },
+  {
+    "id": "p_sp02_storeseasoncard_fullview_txt_nums",
+    "lang": "剩余奖励次数"
+  },
+  {
+    "id": "p_sp02_storeseasoncard_fullview_txt_goods",
+    "lang": "惊喜日历"
+  },
+  {
+    "id": "p_sp02_storeseasoncard_taskview_txt_title",
+    "lang": "完成任务即可获得往日咆哮.咆哮惊喜月"
+  },
+  {
+    "id": "p_sp02_storeseasoncard_taskview_txt_tip",
+    "lang": "可用于补领咆哮惊喜月历中错失的奖励"
+  },
+  {
+    "id": "p_sp02_storeseasoncard_fullview_txt_desc2",
+    "lang": "每日登录领取 <#EDD18E>纯雨滴×90、苦木糖果×1</color>"
+  },
+  {
+    "id": "p_sp02_storeseasoncard_fullview_txt_desc",
+    "lang": "聆听特别的咆哮，这本免费的日历等待着所有朋友"
+  },
+  {
+    "id": "p_v3a8_huishengyao_result_txt_target",
+    "lang": "寻找道路，抵达目的地"
   }
 ]

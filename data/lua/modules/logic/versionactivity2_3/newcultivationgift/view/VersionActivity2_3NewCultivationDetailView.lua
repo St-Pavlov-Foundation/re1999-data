@@ -10,11 +10,12 @@ function VersionActivity2_3NewCultivationDetailView:onInitView()
 	self._btnclose = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_close")
 	self._simagemask = gohelper.findChildSingleImage(self.viewGO, "effect/#simage_mask")
 	self._simagemasksp = gohelper.findChildSingleImage(self.viewGO, "effect/#simage_mask_sp")
-	self._goroleitemcontent = gohelper.findChild(self.viewGO, "effect/#go_roleitemcontent")
-	self._goroleitem = gohelper.findChild(self.viewGO, "effect/#go_roleitemcontent/#go_roleitem")
-	self._goselectsp = gohelper.findChild(self.viewGO, "effect/#go_roleitemcontent/#go_roleitem/#go_select_sp")
-	self._goselect = gohelper.findChild(self.viewGO, "effect/#go_roleitemcontent/#go_roleitem/#go_select")
-	self._goclick = gohelper.findChild(self.viewGO, "effect/#go_roleitemcontent/#go_roleitem/#go_select/#go_click")
+	self._scrollrole = gohelper.findChildScrollRect(self.viewGO, "effect/#scroll_role")
+	self._goroleitemcontent = gohelper.findChild(self.viewGO, "effect/#scroll_role/Viewport/#go_roleitemcontent")
+	self._goroleitem = gohelper.findChild(self.viewGO, "effect/#scroll_role/Viewport/#go_roleitemcontent/#go_roleitem")
+	self._goselectsp = gohelper.findChild(self.viewGO, "effect/#scroll_role/Viewport/#go_roleitemcontent/#go_roleitem/#go_select_sp")
+	self._goselect = gohelper.findChild(self.viewGO, "effect/#scroll_role/Viewport/#go_roleitemcontent/#go_roleitem/#go_select")
+	self._goclick = gohelper.findChild(self.viewGO, "effect/#scroll_role/Viewport/#go_roleitemcontent/#go_roleitem/#go_select/#go_click")
 	self._scrolleffect = gohelper.findChildScrollRect(self.viewGO, "effect/#scroll_effect")
 	self._godestinycontent = gohelper.findChild(self.viewGO, "effect/#scroll_effect/Viewport/#go_destinycontent")
 	self._goeffectitem = gohelper.findChild(self.viewGO, "effect/#scroll_effect/Viewport/#go_destinycontent/#go_effectitem")
@@ -53,7 +54,23 @@ function VersionActivity2_3NewCultivationDetailView:_actId()
 end
 
 function VersionActivity2_3NewCultivationDetailView:_destinyIdList()
-	return self.viewParam and self.viewParam.destinyId or {}
+	local destinyIds = self.viewParam and self.viewParam.destinyId or {}
+
+	if not destinyIds or not next(destinyIds) then
+		return {}
+	end
+
+	local filterDestinyIds = {}
+
+	for _, destinyId in ipairs(destinyIds) do
+		local isIgnore = self:_isIgnoreDestiny(destinyId)
+
+		if not isIgnore then
+			table.insert(filterDestinyIds, destinyId)
+		end
+	end
+
+	return filterDestinyIds
 end
 
 function VersionActivity2_3NewCultivationDetailView:_destinyIdDict()
@@ -73,6 +90,10 @@ end
 
 function VersionActivity2_3NewCultivationDetailView:_heroIdList()
 	return self.viewParam and self.viewParam.heroId or {}
+end
+
+function VersionActivity2_3NewCultivationDetailView:_ignoreIdList()
+	return self.viewParam and self.viewParam.ignoreIds or {}
 end
 
 function VersionActivity2_3NewCultivationDetailView:_showType()
@@ -205,6 +226,16 @@ function VersionActivity2_3NewCultivationDetailView:_setActive_titleGo(isSp)
 	gohelper.setActive(self._titleGo_sp, isSp)
 end
 
+function VersionActivity2_3NewCultivationDetailView:_isIgnoreDestiny(destinyId)
+	local ignoreIds = self:_ignoreIdList()
+
+	if not ignoreIds or not next(ignoreIds) then
+		return false
+	end
+
+	return LuaUtil.tableContains(ignoreIds, destinyId)
+end
+
 function VersionActivity2_3NewCultivationDetailView:_refreshRoleInfo()
 	local lua_character_destinyCOList
 	local heroIds = self:_heroIdList()
@@ -272,12 +303,18 @@ end
 
 function VersionActivity2_3NewCultivationDetailView:_refreshEffectInfo(heroId)
 	local lua_character_destiny_CO = self.viewContainer:getHeroDestiny(heroId)
-	local destinyIds
+	local destinyIds = {}
 
 	if lua_character_destiny_CO then
-		destinyIds = string.splitToNumber(lua_character_destiny_CO.facetsId, "#")
-	else
-		destinyIds = {}
+		local facetsIds = string.splitToNumber(lua_character_destiny_CO.facetsId, "#")
+
+		for i, facetsId in ipairs(facetsIds) do
+			local isIgnore = self:_isIgnoreDestiny(facetsId)
+
+			if not isIgnore then
+				table.insert(destinyIds, facetsId)
+			end
+		end
 	end
 
 	local destinyCount = #destinyIds

@@ -638,6 +638,7 @@ function StoryHeroItem:_checkAndPlayHeroEffect()
 		self:_clearHeroWaterWave()
 		self:_clearHeroErase()
 		self:_clearHeroGlow()
+		self:_clearHeroBlackFog()
 
 		return
 	end
@@ -662,6 +663,10 @@ function StoryHeroItem:_checkAndPlayHeroEffect()
 
 	if not effs[1] or effs[1] ~= StoryEnum.HeroEffect.Glow then
 		self:_clearHeroGlow()
+	end
+
+	if not effs[1] or effs[1] ~= StoryEnum.HeroEffect.BlackFog then
+		self:_clearHeroBlackFog()
 	end
 
 	if effs[1] == StoryEnum.HeroEffect.Gray then
@@ -700,6 +705,8 @@ function StoryHeroItem:_checkAndPlayHeroEffect()
 		self:_setHeroErase(tonumber(effs[2]))
 	elseif effs[1] == StoryEnum.HeroEffect.Glow then
 		self:_setHeroGlow()
+	elseif effs[1] == StoryEnum.HeroEffect.BlackFog then
+		self:_setHeroBlackFog()
 	else
 		if not self._heroSpineGo then
 			return
@@ -828,6 +835,23 @@ function StoryHeroItem:_clearHeroGlow()
 		self._heroGlowCls:destroy()
 
 		self._heroGlowCls = nil
+	end
+end
+
+function StoryHeroItem:_setHeroBlackFog()
+	if not self._heroBlackFogCls then
+		self._heroBlackFogCls = StoryHeroEffsBlackFog.New()
+	end
+
+	self._heroBlackFogCls:init(self._heroSpineGo)
+	self._heroBlackFogCls:start()
+end
+
+function StoryHeroItem:_clearHeroBlackFog()
+	if self._heroBlackFogCls then
+		self._heroBlackFogCls:destroy()
+
+		self._heroBlackFogCls = nil
 	end
 end
 
@@ -961,6 +985,7 @@ function StoryHeroItem:onDestroy()
 	self:_clearHeroWaterWave()
 	self:_clearHeroErase()
 	self:_clearHeroGlow()
+	self:_clearHeroBlackFog()
 	self:revertScreenSplitStencil()
 	TaskDispatcher.cancelTask(self._onDelay, self)
 	self:_grayUpdate(0)

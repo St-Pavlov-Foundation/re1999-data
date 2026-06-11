@@ -76,9 +76,21 @@ local TweenDuration = 0.2
 function FightSpineScaleComp:setScale()
 	local scale = self:getCurScale()
 
+	if self._targetScale == scale then
+		return
+	end
+
+	self._targetScale = scale
+
 	self:clearTween()
 
-	self.tweenId = ZProj.TweenHelper.DOScale(self.spineTr, scale, scale, scale, TweenDuration)
+	if self.spineTr then
+		if isDebugBuild then
+			logNormal(string.format("[set scale] entityId : %s, set scale : %s, \n %s", self.entity.entityId, scale, debug.traceback()))
+		end
+
+		self.tweenId = ZProj.TweenHelper.DOScale(self.spineTr, scale, scale, scale, TweenDuration)
+	end
 end
 
 function FightSpineScaleComp:clearTween()
@@ -108,7 +120,7 @@ function FightSpineScaleComp:getCurScale()
 
 		for _, actInfo in ipairs(buffMo.actInfo) do
 			if actInfo.actId == targetActId then
-				value = value + actInfo.param[1]
+				value = value + (actInfo.param[1] or 0)
 			end
 		end
 	end

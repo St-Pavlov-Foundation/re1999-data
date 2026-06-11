@@ -221,6 +221,13 @@ function FightRpc:onReceiveBeginRoundReply(resultCode, msg)
 
 		FightController.instance:dispatchEvent(FightEvent.RespBeginRoundFail)
 	end
+
+	if canLogNormal and isDebugBuild then
+		local colorTagStart = resultCode == 0 and "" or "<color=#FFA500>"
+		local colorTagEnd = resultCode == 0 and "" or "</color>"
+
+		logNormal(string.format("%s<== Recv Msg, cmd:%d %s resultCode:%d%s\n%s", colorTagStart, 13744, "BeginRoundReply", resultCode, colorTagEnd, tostring(msg)))
+	end
 end
 
 function FightRpc:sendChangeSubHeroRequest(subHeroId, changeHeroId)

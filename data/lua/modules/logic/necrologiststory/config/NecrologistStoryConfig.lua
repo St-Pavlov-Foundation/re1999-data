@@ -70,10 +70,98 @@ end
 
 function NecrologistStoryConfig:onhero_story_plotLoaded(configTable)
 	self._heroStoryMainConfig = configTable
+end
+
+function NecrologistStoryConfig:getOptionListByStoryId(storyId)
+	self:_initGroupList()
+
+	local plotList = self:getPlotListByStoryId(storyId)
+	local list = {}
+
+	for _, plot in ipairs(plotList) do
+		local data = self._heroStroyPlotGroupOptionDict[plot.id]
+
+		if data then
+			table.insert(list, data)
+		else
+			table.insert(list, {
+				storygroup = plot.id
+			})
+		end
+	end
+
+	return list
+end
+
+function NecrologistStoryConfig:_formatPlotOptionData(config, dataDict)
+	local data = dataDict[config.storygroup]
+
+	if not data then
+		data = {
+			storygroup = config.storygroup,
+			optionList = {},
+			affectsEndingOptionIndexs = {}
+		}
+		data.optionIndex = 0
+		data.endingList = {}
+		dataDict[config.storygroup] = data
+	end
+
+	local list = data.optionList
+	local endingList = data.endingList
+
+	if string.find(config.type, "options") then
+		local sections = GameUtil.splitString2(config.param, true, "#", ",")
+		local optionList = {}
+
+		table.insert(list, optionList)
+
+		for i, v in ipairs(sections) do
+			data.optionIndex = data.optionIndex + 1
+
+			local optionData = {}
+
+			optionData.id = data.optionIndex
+			optionData.config = config
+			optionData.index = i
+
+			table.insert(optionList, optionData)
+		end
+	elseif config.type == "ending" then
+		local endingData = {}
+
+		endingData.id = tonumber(config.param)
+		endingData.isEnding = true
+
+		table.insert(endingList, endingData)
+	elseif config.type == "situationValue" then
+		local optionList = data.optionList[#data.optionList]
+
+		if optionList then
+			for i, v in ipairs(optionList) do
+				data.affectsEndingOptionIndexs[v.id] = true
+			end
+		end
+	end
+end
+
+function NecrologistStoryConfig:_initGroupList()
+	if self._heroStoryMainDict then
+		return
+	end
+
 	self._heroStoryMainDict = {}
+	self._heroStroyPlotGroupOptionDict = {}
 
 	local sectionId
 	local defaultId = 0
+	local configTable = self._heroStoryMainConfig
+	local selectKeys = {
+		selector = 1
+	}
+	local selectEndKeys = {
+		selectorend = 1
+	}
 
 	for _, co in ipairs(configTable.configList) do
 		local group = self._heroStoryMainDict[co.storygroup]
@@ -84,15 +172,17 @@ function NecrologistStoryConfig:onhero_story_plotLoaded(configTable)
 			sectionId = defaultId
 		end
 
-		if co.type == "selector" then
+		if selectKeys[co.type] then
 			sectionId = tonumber(co.param)
-		elseif co.type == "selectorend" then
+		elseif selectEndKeys[co.type] then
 			sectionId = defaultId
 		else
 			group[sectionId] = group[sectionId] or {}
 
 			table.insert(group[sectionId], co)
 		end
+
+		self:_formatPlotOptionData(co, self._heroStroyPlotGroupOptionDict)
 	end
 
 	for _, group in pairs(self._heroStoryMainDict) do
@@ -102,11 +192,41 @@ function NecrologistStoryConfig:onhero_story_plotLoaded(configTable)
 	end
 end
 
+function NecrologistStoryConfig:getOptionIdByConfigAndIndex(config, index)
+	if not config then
+		return nil
+	end
+
+	self:_initGroupList()
+
+	local data = self._heroStroyPlotGroupOptionDict[config.storygroup]
+
+	if not data then
+		return nil
+	end
+
+	local optionList = data.optionList
+
+	if not optionList then
+		return nil
+	end
+
+	for _, options in ipairs(optionList) do
+		for _, optionData in ipairs(options) do
+			if optionData.index == index and optionData.config.id == config.id then
+				return optionData.id
+			end
+		end
+	end
+end
+
 function NecrologistStoryConfig:onhero_story_introduceLoaded(configTable)
 	self._heroStoryIntroduceConfig = configTable
 end
 
 function NecrologistStoryConfig:getStoryListByGroupId(groupId)
+	self:_initGroupList()
+
 	local storyGroup = self._heroStoryMainDict[groupId]
 
 	if not storyGroup then
@@ -145,6 +265,10 @@ function NecrologistStoryConfig:getIntroduceCoByName(name)
 end
 
 function NecrologistStoryConfig:getIntroduceCo(id)
+	if id == nil then
+		return
+	end
+
 	local co = self._heroStoryIntroduceConfig.configDict[id]
 
 	if not co then

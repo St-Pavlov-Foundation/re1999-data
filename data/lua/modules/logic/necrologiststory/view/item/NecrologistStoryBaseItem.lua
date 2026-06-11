@@ -4,8 +4,28 @@ module("modules.logic.necrologiststory.view.item.NecrologistStoryBaseItem", pack
 
 local NecrologistStoryBaseItem = class("NecrologistStoryBaseItem", LuaCompBase)
 
-function NecrologistStoryBaseItem:ctor(storyView)
-	self.storyView = storyView
+function NecrologistStoryBaseItem:ctor(param)
+	self.storyView = param.storyView
+	self.isContentItem = param.isContentItem
+	self.resList = param.resList
+end
+
+function NecrologistStoryBaseItem:getRes(resPath)
+	if not self.resList then
+		return
+	end
+
+	return self.resList[resPath]
+end
+
+function NecrologistStoryBaseItem:getResInst(resPath, parentGO, name)
+	local prefab = self:getRes(resPath)
+
+	if prefab then
+		return gohelper.clone(prefab, parentGO, name)
+	else
+		logError(string.format("prefab not exist: %s", resPath))
+	end
 end
 
 function NecrologistStoryBaseItem:init(go)
@@ -15,6 +35,10 @@ function NecrologistStoryBaseItem:init(go)
 	self._posY = 0
 
 	self:onInit()
+end
+
+function NecrologistStoryBaseItem:getIsContentItem()
+	return self.isContentItem
 end
 
 function NecrologistStoryBaseItem:setCallback(playFinishCallback, playFinishCallbackObj, refreshHeightCallback, callbackObj)
@@ -115,6 +139,10 @@ end
 
 function NecrologistStoryBaseItem.getResPath()
 	logError("need override getResPath")
+end
+
+function NecrologistStoryBaseItem.getOtherResPath()
+	return
 end
 
 function NecrologistStoryBaseItem:isDone()

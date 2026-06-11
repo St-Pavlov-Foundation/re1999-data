@@ -673,5 +673,30 @@
     "activityId": 13736,
     "specialBonus": 395,
     "specialPropDesc": "解锁即赠十连/电池2选1"
+  },
+  {
+    "bpId": 27,
+    "chargeId1": 710001,
+    "chargeId2": 710002,
+    "chargeId1to2": 710003,
+    "payStatus1Bonus": "1#823801#1|1#481010#1",
+    "payStatus2Bonus": "1#173810#1|2#2#400|10#21#3|1#120013#5",
+    "name": "",
+    "payStatus2AddLevel": 10,
+    "expLevelUp": 1000,
+    "bpSkinDesc": "巫阳抚彗歌",
+    "bpSkinNametxt": "——冷周六",
+    "bpSkinEnNametxt": "Verses to Heaven",
+    "bpviewicon": "",
+    "bpviewpos": "",
+    "showBonus": "",
+    "showBonusDate": "2026-07-02 05:00:00",
+    "isSp": false,
+    "weekLimitTimes": 0,
+    "expUpShow": false,
+    "promptDays": 7,
+    "activityId": 13822,
+    "specialBonus": 416,
+    "specialPropDesc": "解锁即赠十连/电池2选1"
   }
 ]

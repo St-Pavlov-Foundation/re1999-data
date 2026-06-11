@@ -234,7 +234,23 @@ function VersionActivityFixedDungeonMapLevelView:_playStoryAndEnterFight(storyId
 	param.mark = true
 	param.episodeId = self.showEpisodeCo.id
 
-	StoryController.instance:playStory(storyId, param, self._enterFight, self)
+	StoryController.instance:playStory(storyId, param, self._checkStoryFinish, self)
+end
+
+function VersionActivityFixedDungeonMapLevelView:_checkStoryFinish(param)
+	if self:_isOpenPuzzleView() then
+		return
+	end
+
+	self:_enterFight()
+end
+
+function VersionActivityFixedDungeonMapLevelView:_isOpenPuzzleView()
+	local co = VersionActivityFixedDungeonConfig.instance:getStoryEpisodeCo(self.originEpisodeId)
+	local storyId = co.beforeStory
+	local isOpenPuzzleView = storyId and V3a5PuzzleController.instance:checkOpenPuzzleView(storyId, co.id)
+
+	return isOpenPuzzleView
 end
 
 function VersionActivityFixedDungeonMapLevelView:_enterFight()
@@ -280,7 +296,7 @@ function VersionActivityFixedDungeonMapLevelView:_btnreplayStoryOnClick()
 		return
 	end
 
-	StoryController.instance:playStories(self.storyIdList)
+	StoryController.instance:playStories(self.storyIdList, nil, self.onReplayStoryFinished, self)
 
 	local param = {}
 

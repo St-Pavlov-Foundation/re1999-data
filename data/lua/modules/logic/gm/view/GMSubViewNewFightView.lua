@@ -34,8 +34,6 @@ function GMSubViewNewFightView:initViewContent()
 		return
 	end
 
-	GMSubViewBase.initViewContent(self)
-
 	self.lineIndex = 0
 
 	self:addLineIndex()
@@ -254,6 +252,29 @@ function GMSubViewNewFightView:initViewContent()
 	self.btnLogAttr = self:addButton(self:getLineGroup(), "打印当前属性", self.onClickLogAttr, self)
 	self.btnLogBaseAttr = self:addButton(self:getLineGroup(), "打印基础属性", self.onClickLogBaseAttr, self)
 	self.btnLogLife = self:addButton(self:getLineGroup(), "打印生命百分比", self.onClickLogLife, self)
+
+	self:addTitleSplitLine("战中护眼模式")
+	self:addLineIndex()
+
+	self.eyeActiveToggle = self:addToggle(self:getLineGroup(), "护眼模式", self.onEyeActiveChange, self)
+
+	self:addLineIndex()
+
+	local arr = self:addSlider(self:getLineGroup(), "系数", self.onFactorValueChange, self, {
+		w = 500
+	})
+
+	self.factor = arr[1]
+	self.txtFactor = self:addLabel(self:getLineGroup(), "0.25")
+	arr = self:addSlider(self:getLineGroup(), "强度", self.onIntensityValueChange, self, {
+		w = 500
+	})
+	self.intensity = arr[1]
+	self.txtIntensity = self:addLabel(self:getLineGroup(), "0.25")
+	self.eyeActiveToggle.isOn = EyeProtectionModeMgr.instance:getEyeModeActive()
+
+	self:refreshEyeModeSliderValue()
+	GMSubViewBase.initViewContent(self)
 end
 
 function GMSubViewNewFightView:initFightFloatCo()
@@ -736,6 +757,46 @@ function GMSubViewNewFightView:onbtnCancelSkipFightPerformance()
 	FightGameMgr.skipPerformance = false
 
 	self:closeThis()
+end
+
+function GMSubViewNewFightView:onEyeActiveChange()
+	local active = self.eyeActiveToggle.isOn
+
+	EyeProtectionModeMgr.instance:setEyeModeActive(active)
+	self:refreshEyeModeSliderValue()
+end
+
+function GMSubViewNewFightView:refreshEyeModeSliderValue()
+	local value = EyeProtectionModeMgr.instance:getFactorValue()
+
+	self.factor:SetValue(value)
+
+	self.txtFactor.text = string.format("%.2f", value)
+	value = EyeProtectionModeMgr.instance:getIntensityValue()
+
+	self.intensity:SetValue(value)
+
+	self.txtIntensity.text = string.format("%.2f", value)
+end
+
+function GMSubViewNewFightView:onFactorValueChange(param, value)
+	if not self._inited then
+		return
+	end
+
+	EyeProtectionModeMgr.instance:setFactorValue(value)
+
+	self.txtFactor.text = string.format("%.2f", value)
+end
+
+function GMSubViewNewFightView:onIntensityValueChange(param, value)
+	if not self._inited then
+		return
+	end
+
+	EyeProtectionModeMgr.instance:setIntensityValue(value)
+
+	self.txtIntensity.text = string.format("%.2f", value)
 end
 
 return GMSubViewNewFightView

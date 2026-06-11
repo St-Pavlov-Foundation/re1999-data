@@ -64,6 +64,8 @@ FightDef_pb.FIGHTROUNDUSECARDLISTFIELD = protobuf.FieldDescriptor()
 FightDef_pb.FIGHTROUNDCURROUNDFIELD = protobuf.FieldDescriptor()
 FightDef_pb.FIGHTROUNDHEROSPATTRIBUTESFIELD = protobuf.FieldDescriptor()
 FightDef_pb.FIGHTROUNDLASTCHANGEHEROUIDFIELD = protobuf.FieldDescriptor()
+FightDef_pb.FIGHTROUNDTOTALSTEPFIELD = protobuf.FieldDescriptor()
+FightDef_pb.FIGHTROUNDFIGHTSTEPBYTESFIELD = protobuf.FieldDescriptor()
 FightDef_pb.FIGHTDEVICESKILLGROUPINFO_MSG = protobuf.Descriptor()
 FightDef_pb.FIGHTDEVICESKILLGROUPINFOSKILLSFIELD = protobuf.FieldDescriptor()
 FightDef_pb.ITEMPLAYERSKILLINFO_MSG = protobuf.Descriptor()
@@ -198,6 +200,11 @@ FightDef_pb.CARDINFOAREAREDORBLUEFIELD = protobuf.FieldDescriptor()
 FightDef_pb.CARDINFOHEATIDFIELD = protobuf.FieldDescriptor()
 FightDef_pb.CARDINFOMUSICNOTEFIELD = protobuf.FieldDescriptor()
 FightDef_pb.CARDINFOCARDDATAESFIELD = protobuf.FieldDescriptor()
+FightDef_pb.CLOTHSKILLINFO_MSG = protobuf.Descriptor()
+FightDef_pb.CLOTHSKILLINFOSKILLIDFIELD = protobuf.FieldDescriptor()
+FightDef_pb.CLOTHSKILLINFOFROMIDFIELD = protobuf.FieldDescriptor()
+FightDef_pb.CLOTHSKILLINFOTOIDFIELD = protobuf.FieldDescriptor()
+FightDef_pb.CLOTHSKILLINFOTYPEFIELD = protobuf.FieldDescriptor()
 FightDef_pb.INDICATORINFO_MSG = protobuf.Descriptor()
 FightDef_pb.INDICATORINFOINTICATORIDFIELD = protobuf.FieldDescriptor()
 FightDef_pb.INDICATORINFONUMFIELD = protobuf.FieldDescriptor()
@@ -422,6 +429,7 @@ FightDef_pb.FIGHTDEVICESKILLINFO_MSG = protobuf.Descriptor()
 FightDef_pb.FIGHTDEVICESKILLINFOSKILLIDFIELD = protobuf.FieldDescriptor()
 FightDef_pb.FIGHTDEVICESKILLINFOCOSTTYPEFIELD = protobuf.FieldDescriptor()
 FightDef_pb.FIGHTDEVICESKILLINFOCOSTVALUEFIELD = protobuf.FieldDescriptor()
+FightDef_pb.FIGHTDEVICESKILLINFOISSTOPFIELD = protobuf.FieldDescriptor()
 FightDef_pb.PLAYERFINISHERSKILLINFO_MSG = protobuf.Descriptor()
 FightDef_pb.PLAYERFINISHERSKILLINFOSKILLIDFIELD = protobuf.FieldDescriptor()
 FightDef_pb.PLAYERFINISHERSKILLINFONEEDPOWERFIELD = protobuf.FieldDescriptor()
@@ -1097,6 +1105,24 @@ FightDef_pb.FIGHTROUNDLASTCHANGEHEROUIDFIELD.has_default_value = false
 FightDef_pb.FIGHTROUNDLASTCHANGEHEROUIDFIELD.default_value = 0
 FightDef_pb.FIGHTROUNDLASTCHANGEHEROUIDFIELD.type = 3
 FightDef_pb.FIGHTROUNDLASTCHANGEHEROUIDFIELD.cpp_type = 2
+FightDef_pb.FIGHTROUNDTOTALSTEPFIELD.name = "totalStep"
+FightDef_pb.FIGHTROUNDTOTALSTEPFIELD.full_name = ".FightRound.totalStep"
+FightDef_pb.FIGHTROUNDTOTALSTEPFIELD.number = 18
+FightDef_pb.FIGHTROUNDTOTALSTEPFIELD.index = 17
+FightDef_pb.FIGHTROUNDTOTALSTEPFIELD.label = 1
+FightDef_pb.FIGHTROUNDTOTALSTEPFIELD.has_default_value = false
+FightDef_pb.FIGHTROUNDTOTALSTEPFIELD.default_value = 0
+FightDef_pb.FIGHTROUNDTOTALSTEPFIELD.type = 5
+FightDef_pb.FIGHTROUNDTOTALSTEPFIELD.cpp_type = 1
+FightDef_pb.FIGHTROUNDFIGHTSTEPBYTESFIELD.name = "fightStepBytes"
+FightDef_pb.FIGHTROUNDFIGHTSTEPBYTESFIELD.full_name = ".FightRound.fightStepBytes"
+FightDef_pb.FIGHTROUNDFIGHTSTEPBYTESFIELD.number = 19
+FightDef_pb.FIGHTROUNDFIGHTSTEPBYTESFIELD.index = 18
+FightDef_pb.FIGHTROUNDFIGHTSTEPBYTESFIELD.label = 1
+FightDef_pb.FIGHTROUNDFIGHTSTEPBYTESFIELD.has_default_value = false
+FightDef_pb.FIGHTROUNDFIGHTSTEPBYTESFIELD.default_value = ""
+FightDef_pb.FIGHTROUNDFIGHTSTEPBYTESFIELD.type = 12
+FightDef_pb.FIGHTROUNDFIGHTSTEPBYTESFIELD.cpp_type = 9
 FightDef_pb.FIGHTROUND_MSG.name = "FightRound"
 FightDef_pb.FIGHTROUND_MSG.full_name = ".FightRound"
 FightDef_pb.FIGHTROUND_MSG.nested_types = {}
@@ -1118,7 +1144,9 @@ FightDef_pb.FIGHTROUND_MSG.fields = {
 	FightDef_pb.FIGHTROUNDUSECARDLISTFIELD,
 	FightDef_pb.FIGHTROUNDCURROUNDFIELD,
 	FightDef_pb.FIGHTROUNDHEROSPATTRIBUTESFIELD,
-	FightDef_pb.FIGHTROUNDLASTCHANGEHEROUIDFIELD
+	FightDef_pb.FIGHTROUNDLASTCHANGEHEROUIDFIELD,
+	FightDef_pb.FIGHTROUNDTOTALSTEPFIELD,
+	FightDef_pb.FIGHTROUNDFIGHTSTEPBYTESFIELD
 }
 FightDef_pb.FIGHTROUND_MSG.is_extendable = false
 FightDef_pb.FIGHTROUND_MSG.extensions = {}
@@ -2388,6 +2416,54 @@ FightDef_pb.CARDINFO_MSG.fields = {
 }
 FightDef_pb.CARDINFO_MSG.is_extendable = false
 FightDef_pb.CARDINFO_MSG.extensions = {}
+FightDef_pb.CLOTHSKILLINFOSKILLIDFIELD.name = "skillId"
+FightDef_pb.CLOTHSKILLINFOSKILLIDFIELD.full_name = ".ClothSkillInfo.skillId"
+FightDef_pb.CLOTHSKILLINFOSKILLIDFIELD.number = 1
+FightDef_pb.CLOTHSKILLINFOSKILLIDFIELD.index = 0
+FightDef_pb.CLOTHSKILLINFOSKILLIDFIELD.label = 1
+FightDef_pb.CLOTHSKILLINFOSKILLIDFIELD.has_default_value = false
+FightDef_pb.CLOTHSKILLINFOSKILLIDFIELD.default_value = 0
+FightDef_pb.CLOTHSKILLINFOSKILLIDFIELD.type = 5
+FightDef_pb.CLOTHSKILLINFOSKILLIDFIELD.cpp_type = 1
+FightDef_pb.CLOTHSKILLINFOFROMIDFIELD.name = "fromId"
+FightDef_pb.CLOTHSKILLINFOFROMIDFIELD.full_name = ".ClothSkillInfo.fromId"
+FightDef_pb.CLOTHSKILLINFOFROMIDFIELD.number = 2
+FightDef_pb.CLOTHSKILLINFOFROMIDFIELD.index = 1
+FightDef_pb.CLOTHSKILLINFOFROMIDFIELD.label = 1
+FightDef_pb.CLOTHSKILLINFOFROMIDFIELD.has_default_value = false
+FightDef_pb.CLOTHSKILLINFOFROMIDFIELD.default_value = 0
+FightDef_pb.CLOTHSKILLINFOFROMIDFIELD.type = 3
+FightDef_pb.CLOTHSKILLINFOFROMIDFIELD.cpp_type = 2
+FightDef_pb.CLOTHSKILLINFOTOIDFIELD.name = "toId"
+FightDef_pb.CLOTHSKILLINFOTOIDFIELD.full_name = ".ClothSkillInfo.toId"
+FightDef_pb.CLOTHSKILLINFOTOIDFIELD.number = 3
+FightDef_pb.CLOTHSKILLINFOTOIDFIELD.index = 2
+FightDef_pb.CLOTHSKILLINFOTOIDFIELD.label = 1
+FightDef_pb.CLOTHSKILLINFOTOIDFIELD.has_default_value = false
+FightDef_pb.CLOTHSKILLINFOTOIDFIELD.default_value = 0
+FightDef_pb.CLOTHSKILLINFOTOIDFIELD.type = 3
+FightDef_pb.CLOTHSKILLINFOTOIDFIELD.cpp_type = 2
+FightDef_pb.CLOTHSKILLINFOTYPEFIELD.name = "type"
+FightDef_pb.CLOTHSKILLINFOTYPEFIELD.full_name = ".ClothSkillInfo.type"
+FightDef_pb.CLOTHSKILLINFOTYPEFIELD.number = 4
+FightDef_pb.CLOTHSKILLINFOTYPEFIELD.index = 3
+FightDef_pb.CLOTHSKILLINFOTYPEFIELD.label = 1
+FightDef_pb.CLOTHSKILLINFOTYPEFIELD.has_default_value = false
+FightDef_pb.CLOTHSKILLINFOTYPEFIELD.default_value = 0
+FightDef_pb.CLOTHSKILLINFOTYPEFIELD.type = 5
+FightDef_pb.CLOTHSKILLINFOTYPEFIELD.cpp_type = 1
+FightDef_pb.CLOTHSKILLINFO_MSG.name = "ClothSkillInfo"
+FightDef_pb.CLOTHSKILLINFO_MSG.full_name = ".ClothSkillInfo"
+FightDef_pb.CLOTHSKILLINFO_MSG.nested_types = {}
+FightDef_pb.CLOTHSKILLINFO_MSG.enum_types = {}
+FightDef_pb.CLOTHSKILLINFO_MSG.fields = {
+	FightDef_pb.CLOTHSKILLINFOSKILLIDFIELD,
+	FightDef_pb.CLOTHSKILLINFOFROMIDFIELD,
+	FightDef_pb.CLOTHSKILLINFOTOIDFIELD,
+	FightDef_pb.CLOTHSKILLINFOTYPEFIELD
+}
+FightDef_pb.CLOTHSKILLINFO_MSG.is_extendable = false
+FightDef_pb.CLOTHSKILLINFO_MSG.extensions = {}
 FightDef_pb.INDICATORINFOINTICATORIDFIELD.name = "inticatorId"
 FightDef_pb.INDICATORINFOINTICATORIDFIELD.full_name = ".IndicatorInfo.inticatorId"
 FightDef_pb.INDICATORINFOINTICATORIDFIELD.number = 1
@@ -4467,6 +4543,15 @@ FightDef_pb.FIGHTDEVICESKILLINFOCOSTVALUEFIELD.has_default_value = false
 FightDef_pb.FIGHTDEVICESKILLINFOCOSTVALUEFIELD.default_value = 0
 FightDef_pb.FIGHTDEVICESKILLINFOCOSTVALUEFIELD.type = 5
 FightDef_pb.FIGHTDEVICESKILLINFOCOSTVALUEFIELD.cpp_type = 1
+FightDef_pb.FIGHTDEVICESKILLINFOISSTOPFIELD.name = "isStop"
+FightDef_pb.FIGHTDEVICESKILLINFOISSTOPFIELD.full_name = ".FightDeviceSkillInfo.isStop"
+FightDef_pb.FIGHTDEVICESKILLINFOISSTOPFIELD.number = 4
+FightDef_pb.FIGHTDEVICESKILLINFOISSTOPFIELD.index = 3
+FightDef_pb.FIGHTDEVICESKILLINFOISSTOPFIELD.label = 1
+FightDef_pb.FIGHTDEVICESKILLINFOISSTOPFIELD.has_default_value = false
+FightDef_pb.FIGHTDEVICESKILLINFOISSTOPFIELD.default_value = false
+FightDef_pb.FIGHTDEVICESKILLINFOISSTOPFIELD.type = 8
+FightDef_pb.FIGHTDEVICESKILLINFOISSTOPFIELD.cpp_type = 7
 FightDef_pb.FIGHTDEVICESKILLINFO_MSG.name = "FightDeviceSkillInfo"
 FightDef_pb.FIGHTDEVICESKILLINFO_MSG.full_name = ".FightDeviceSkillInfo"
 FightDef_pb.FIGHTDEVICESKILLINFO_MSG.nested_types = {}
@@ -4474,7 +4559,8 @@ FightDef_pb.FIGHTDEVICESKILLINFO_MSG.enum_types = {}
 FightDef_pb.FIGHTDEVICESKILLINFO_MSG.fields = {
 	FightDef_pb.FIGHTDEVICESKILLINFOSKILLIDFIELD,
 	FightDef_pb.FIGHTDEVICESKILLINFOCOSTTYPEFIELD,
-	FightDef_pb.FIGHTDEVICESKILLINFOCOSTVALUEFIELD
+	FightDef_pb.FIGHTDEVICESKILLINFOCOSTVALUEFIELD,
+	FightDef_pb.FIGHTDEVICESKILLINFOISSTOPFIELD
 }
 FightDef_pb.FIGHTDEVICESKILLINFO_MSG.is_extendable = false
 FightDef_pb.FIGHTDEVICESKILLINFO_MSG.extensions = {}
@@ -5765,6 +5851,7 @@ FightDef_pb.CardExtraInfo = protobuf.Message(FightDef_pb.CARDEXTRAINFO_MSG)
 FightDef_pb.CardHeatInfo = protobuf.Message(FightDef_pb.CARDHEATINFO_MSG)
 FightDef_pb.CardHeatValue = protobuf.Message(FightDef_pb.CARDHEATVALUE_MSG)
 FightDef_pb.CardInfo = protobuf.Message(FightDef_pb.CARDINFO_MSG)
+FightDef_pb.ClothSkillInfo = protobuf.Message(FightDef_pb.CLOTHSKILLINFO_MSG)
 FightDef_pb.CustomData = protobuf.Message(FightDef_pb.CUSTOMDATA_MSG)
 FightDef_pb.EmitterInfo = protobuf.Message(FightDef_pb.EMITTERINFO_MSG)
 FightDef_pb.EnhanceInfoBox = protobuf.Message(FightDef_pb.ENHANCEINFOBOX_MSG)

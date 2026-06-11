@@ -35,6 +35,8 @@ function HeroGroupModel:reInit()
 	self._episodeType = nil
 	self.weekwalk = nil
 	self.curGroupSelectIndex = 1
+	self.tempRecommendUseParam = nil
+	self.isAfterUpdateRecommend = nil
 end
 
 function HeroGroupModel:onGetHeroGroupList(groupInfoList)
@@ -1163,6 +1165,22 @@ end
 function HeroGroupModel:setBattleAndEpisodeId(battleId, episodeId)
 	self.battleId = battleId
 	self.episodeId = episodeId
+end
+
+function HeroGroupModel:setAfterUpdateRecommendState(value)
+	self.isAfterUpdateRecommend = value
+end
+
+function HeroGroupModel:getAfterUpdateRecommendState()
+	return self.isAfterUpdateRecommend
+end
+
+function HeroGroupModel:setTempBattleRecommendParam(param)
+	self.tempRecommendUseParam = param
+end
+
+function HeroGroupModel:getTempBattleRecommendParam()
+	return self.tempRecommendUseParam
 end
 
 HeroGroupModel.instance = HeroGroupModel.New()

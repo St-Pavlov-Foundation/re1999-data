@@ -628,7 +628,7 @@ function StoryFrontItem:playGostMagic(co, callback, callbackobj)
 	self._effLoader = MultiAbLoader.New()
 
 	self._effLoader:addPath(self._gostFontGlitchPath)
-	self._effLoader:startLoad(self._glitchEffLoaded, self)
+	self._effLoader:startLoad(self._gostGlitchEffLoaded, self)
 
 	local posX, posY, realTxt = string.match(txt, "^(-?%d+),(-?%d+)#(.*)")
 
@@ -770,7 +770,7 @@ function StoryFrontItem:_gostMagicFinished()
 	end
 end
 
-function StoryFrontItem:_glitchEffLoaded(loader)
+function StoryFrontItem:_gostGlitchEffLoaded(loader)
 	local glitchAssetItem = loader:getAssetItem(self._gostFontGlitchPath)
 
 	self._gostFontGlitchGo = gohelper.clone(glitchAssetItem:GetResource(self._gostFontGlitchPath), self._tmpscreentext.gameObject)

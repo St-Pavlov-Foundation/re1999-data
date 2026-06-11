@@ -826,5 +826,23 @@
     "order": 0,
     "equipId": 1448,
     "desc": "银装小春雀儿"
+  },
+  {
+    "id": 5073,
+    "order": 0,
+    "equipId": 1573,
+    "desc": "回声谣"
+  },
+  {
+    "id": 5074,
+    "order": 0,
+    "equipId": 1574,
+    "desc": "奠基石"
+  },
+  {
+    "id": 4049,
+    "order": 0,
+    "equipId": 1449,
+    "desc": "柏林以东"
   }
 ]

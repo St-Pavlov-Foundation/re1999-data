@@ -900,6 +900,18 @@ function GameUtil.tabletool_dictIsEmpty(dict)
 end
 
 function GameUtil.tabletool_checkDictTable(refDict, key)
+	if type(refDict) ~= "table" then
+		logError("GameUtil.tabletool_checkDictTable error, refDict is not a table")
+
+		return
+	end
+
+	if not key then
+		logError("GameUtil.tabletool_checkDictTable error, key is nil")
+
+		return
+	end
+
 	local table = refDict[key]
 
 	if not table then

@@ -628,5 +628,41 @@
     "heroId": 3147,
     "skinId": 0,
     "location": 1
+  },
+  {
+    "id": 31,
+    "heroId": 3088,
+    "skinId": 0,
+    "location": 1
+  },
+  {
+    "id": 32,
+    "heroId": 3095,
+    "skinId": 0,
+    "location": 2
+  },
+  {
+    "id": 33,
+    "heroId": 3007,
+    "skinId": 0,
+    "location": 3
+  },
+  {
+    "id": 381111,
+    "heroId": 3145,
+    "skinId": 0,
+    "location": 1
+  },
+  {
+    "id": 381211,
+    "heroId": 3140,
+    "skinId": 0,
+    "location": 1
+  },
+  {
+    "id": 381311,
+    "heroId": 3144,
+    "skinId": 0,
+    "location": 1
   }
 ]

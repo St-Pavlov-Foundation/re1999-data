@@ -181,32 +181,6 @@ function Act191GameMO:getPreviewFetterCntDic(heroIdDic)
 			end
 		end
 
-		if index <= 4 then
-			local info = Activity191Helper.matchKeyInArray(teamInfo.battleHeroInfo, index)
-
-			if info then
-				local itemUid = info.itemUid1
-
-				if itemUid ~= 0 then
-					local itemInfo = self:getItemInfoInWarehouse(itemUid)
-					local itemCo = Activity191Config.instance:getCollectionCo(itemInfo.itemId)
-					local tagStr = not string.nilorempty(itemCo.tag) and itemCo.tag or itemCo.tag2
-
-					if not string.nilorempty(tagStr) then
-						fetterArr = string.split(tagStr, "#")
-
-						for _, tag in ipairs(fetterArr) do
-							if not cntDic[tag] then
-								cntDic[tag] = 1
-							else
-								cntDic[tag] = cntDic[tag] + 1
-							end
-						end
-					end
-				end
-			end
-		end
-
 		local fetterTbl = self.heroId2ExtraFetterMap[heroId]
 
 		if fetterTbl then
@@ -238,24 +212,6 @@ function Act191GameMO:getTeamFetterCntDic()
 					cntDic[tag] = cntDic[tag] + 1
 				else
 					cntDic[tag] = 1
-				end
-			end
-
-			if info.itemUid1 ~= 0 then
-				local itemInfo = self:getItemInfoInWarehouse(info.itemUid1)
-				local itemCo = Activity191Config.instance:getCollectionCo(itemInfo.itemId)
-				local tagStr = not string.nilorempty(itemCo.tag) and itemCo.tag or itemCo.tag2
-
-				if not string.nilorempty(tagStr) then
-					fetterArr = string.split(tagStr, "#")
-
-					for _, tag in ipairs(fetterArr) do
-						if cntDic[tag] then
-							cntDic[tag] = cntDic[tag] + 1
-						else
-							cntDic[tag] = 1
-						end
-					end
 				end
 			end
 
@@ -329,27 +285,6 @@ function Act191GameMO:getFetterHeroList(tag)
 				}
 
 				fetterHeroList[#fetterHeroList + 1] = data
-			else
-				local info = self:getBattleHeroInfoInTeam(heroId)
-
-				if info and info.itemUid1 ~= 0 then
-					local itemInfo = self:getItemInfoInWarehouse(info.itemUid1)
-					local itemCo = Activity191Config.instance:getCollectionCo(itemInfo.itemId)
-
-					if not string.nilorempty(itemCo.tag) then
-						fetterArr = string.split(itemCo.tag, "#")
-
-						if tabletool.indexOf(fetterArr, tag) then
-							local data = {
-								inBag = 2,
-								transfer = 1,
-								config = roleCo
-							}
-
-							fetterHeroList[#fetterHeroList + 1] = data
-						end
-					end
-				end
 			end
 
 			local fetterTbl = self.heroId2ExtraFetterMap[heroId]
@@ -615,17 +550,12 @@ end
 
 function Act191GameMO:autoFill()
 	local teamInfo = self:getTeamInfo()
-	local itemInfos = self.warehouseInfo.item
 
 	for k, v in ipairs(self.warehouseInfo.hero) do
 		if k <= 4 then
 			local battleHeroInfo = Activity191Helper.getWithBuildBattleHeroInfo(teamInfo.battleHeroInfo, k)
 
 			battleHeroInfo.heroId = v.heroId
-
-			if itemInfos[k] then
-				battleHeroInfo.itemUid1 = itemInfos[k].uid
-			end
 		elseif k <= 8 then
 			local subHeroInfo = Activity191Helper.getWithBuildSubHeroInfo(teamInfo.subHeroInfo, k - 4)
 

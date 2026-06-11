@@ -165,6 +165,12 @@ function NecrologistStoryController:getNecrologistStoryActivityRed(storyId)
 	return RedDotModel.instance:isDotShow(RedDotEnum.DotNode.NecrologistStoryTask, storyId)
 end
 
+function NecrologistStoryController:openBranchView(roleStoryId)
+	ViewMgr.instance:openView(ViewName.NecrologistStoryBranchView, {
+		roleStoryId = roleStoryId
+	})
+end
+
 NecrologistStoryController.instance = NecrologistStoryController.New()
 
 return NecrologistStoryController

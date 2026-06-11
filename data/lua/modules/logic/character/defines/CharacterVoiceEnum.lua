@@ -208,7 +208,8 @@ CharacterVoiceEnum.NormalBloomView = {
 	CharacterRecommedView = CharacterVoiceEnum.NormalBloomViewType.Normal,
 	StoreSkinDefaultShowView = CharacterVoiceEnum.NormalBloomViewType.Normal,
 	StoreView = CharacterVoiceEnum.NormalBloomViewType.CustomOpen,
-	FightSuccView = CharacterVoiceEnum.NormalBloomViewType.Capture
+	FightSuccView = CharacterVoiceEnum.NormalBloomViewType.Capture,
+	V3a8EchoSongGameView = CharacterVoiceEnum.NormalBloomViewType.Normal
 }
 CharacterVoiceEnum.RTShareType = {
 	BloomClose = 2,

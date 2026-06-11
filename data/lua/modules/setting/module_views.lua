@@ -2239,6 +2239,9 @@ module_views.DungeonView = {
 			},
 			{
 				"ui/viewres/dungeon/advplay/dungeonadvplayview.prefab"
+			},
+			{
+				"ui/viewres/dungeon/rouge/dungeonrougeview.prefab"
 			}
 		}
 	},
@@ -3263,6 +3266,13 @@ module_views.GMFightSimulateView = {
 	layer = "POPUP_TOP",
 	viewType = ViewType.Normal
 }
+module_views.GMFightStandardEpisodeForTestServerView = {
+	destroy = 0,
+	container = "GMFightStandardEpisodeForTestServerViewContainer",
+	mainRes = "ui/viewres/fight/gmfightstandardepisodefortestserverview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal
+}
 module_views.GMGuideStatusView = {
 	destroy = 0,
 	container = "GMGuideStatusViewContainer",
@@ -3341,6 +3351,20 @@ module_views.CommonPropView = {
 				"ui/viewres/common/commonrighttipsview.prefab"
 			}
 		}
+	}
+}
+module_views.CommonPropConvertView = {
+	destroy = 0,
+	container = "CommonPropConvertViewContainer",
+	mainRes = "ui/viewres/summon/summonmaincharacterpropview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default,
+	otherRes = {
+		[1] = "ui/viewres/common/commonpropitem.prefab"
+	},
+	customAnimBg = {
+		"blackbg"
 	}
 }
 module_views.GiftMultipleChoiceView = {
@@ -3495,19 +3519,6 @@ module_views.ActivityBeginnerView = {
 				NavigateButtonsView.prefabPath
 			}
 		}
-	},
-	customAnimBg = {}
-}
-module_views.ActivityNoviceSignView = {
-	bgBlur = 0,
-	container = "ActivityNoviceSignViewContainer",
-	destroy = 0,
-	mainRes = "ui/viewres/activity/activitynovicesignview.prefab",
-	layer = "POPUP_TOP",
-	viewType = ViewType.Normal,
-	anim = ViewAnim.Default,
-	otherRes = {
-		[1] = "ui/viewres/activity/activitynovicesignitem.prefab"
 	},
 	customAnimBg = {}
 }
@@ -7797,6 +7808,22 @@ module_views.BpChargeView = {
 		}
 	}
 }
+module_views.BpChargeABTestView = {
+	destroy = 0,
+	container = "BpChargeABTestViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/battlepass/bpchargeviewabtest.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Modal,
+	anim = ViewAnim.Internal,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	}
+}
 module_views.BpBonusSelectView = {
 	destroy = 0,
 	container = "BpBonusSelectViewContainer",
@@ -10243,10 +10270,10 @@ module_views.V1a4_BossRushMainView = {
 	bgBlur = 0,
 	container = "V1a4_BossRushMainViewContainer",
 	destroy = 0,
+	mainRes = "ui/viewres/versionactivity_1_4/v1a4_bossrush/v1a4_bossrushmainview.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Full,
 	anim = ViewAnim.Default,
-	mainRes = BossRushModel.instance:getActivityMainViewPath(),
 	tabRes = {
 		{
 			{
@@ -10255,18 +10282,18 @@ module_views.V1a4_BossRushMainView = {
 		}
 	},
 	otherRes = {
-		BossRushModel.instance:getActivityMainViewItemPath(),
-		BossRushEnum.ResPath.v1a4_bossrush_mainview_assessicon
+		[1] = "ui/viewres/versionactivity_1_4/v1a4_bossrush/v1a4_bossrushmainitem.prefab",
+		[2] = BossRushEnum.ResPath.v1a4_bossrush_mainview_assessicon
 	}
 }
 module_views.V1a4_BossRushLevelDetail = {
 	bgBlur = 0,
 	container = "V1a4_BossRushLevelDetailContainer",
 	destroy = 0,
+	mainRes = "ui/viewres/versionactivity_1_4/v1a4_bossrush/v1a4_bossrushleveldetail.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Full,
 	anim = ViewAnim.Default,
-	mainRes = BossRushModel.instance:getActivityLevelDetailPath(),
 	tabRes = {
 		{
 			{
@@ -10402,7 +10429,14 @@ module_views.V1a6_BossRush_BonusView = {
 				NavigateButtonsView.prefabPath
 			}
 		},
-		(V1a6_BossRush_BonusModel.instance:getBonusViewPath())
+		{
+			{
+				BossRushEnum.ResPath.v1a6_bossrush_achievementview
+			},
+			{
+				BossRushEnum.ResPath.v1a6_bossrush_scheduleview
+			}
+		}
 	},
 	otherRes = {
 		"ui/viewres/versionactivity_1_4/v1a4_bossrush/v1a6_bossrush_achievementitem.prefab",
@@ -10452,6 +10486,7 @@ module_views.V2a1_BossRush_OfferRoleView = {
 }
 
 BossRushDefine.init(module_views)
+V3a8EchoSongViewDefine.init(module_views)
 
 module_views.VersionActivity1_4DungeonView = {
 	bgBlur = 0,
@@ -13192,7 +13227,7 @@ module_views.ReactivityStoreView = {
 	destroy = 0,
 	container = "ReactivityStoreViewContainer",
 	bgBlur = 1,
-	mainRes = "ui/viewres/versionactivity_2_7/v2a7_dungeon/v2a7_storeview.prefab",
+	mainRes = "ui/viewres/versionactivity_3_1/v3a1_dungeon/v3a1_storeview.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Normal,
 	tabRes = {
@@ -13231,7 +13266,7 @@ module_views.ReactivityRuleView = {
 module_views.ReactivityTaskView = {
 	bgBlur = 3,
 	container = "ReactivityTaskViewContainer",
-	mainRes = "ui/viewres/versionactivity_2_7/v2a7_dungeon/v2a7_taskview.prefab",
+	mainRes = "ui/viewres/versionactivity_3_1/v3a1_dungeon/v3a1_taskview.prefab",
 	destroy = 0,
 	blurFactor = 0.64,
 	layer = "POPUP_TOP",
@@ -13244,7 +13279,7 @@ module_views.ReactivityTaskView = {
 		}
 	},
 	otherRes = {
-		"ui/viewres/versionactivity_2_5/v2a5_dungeon/v2a5_taskitem.prefab"
+		"ui/viewres/versionactivity_3_1/v3a1_dungeon/v3a1_taskitem.prefab"
 	}
 }
 module_views.LimitedRoleView = {
@@ -16243,46 +16278,9 @@ module_views.Permanent2_0EnterView = {
 		}
 	}
 }
-module_views.ActivityWelfareView = {
-	destroy = 0,
-	container = "ActivityWelfareViewContainer",
-	mainRes = "ui/viewres/activity/activitybeginnerview.prefab",
-	layer = "POPUP_TOP",
-	viewType = ViewType.Full,
-	tabRes = {
-		{
-			{
-				NavigateButtonsView.prefabPath
-			}
-		},
-		{
-			{
-				"ui/viewres/newwelfare/newwelfarefullview.prefab"
-			}
-		}
-	},
-	otherRes = {
-		[1] = "ui/viewres/activity/activitynormalcategoryitem.prefab"
-	}
-}
-module_views.NewWelfareView = {
-	destroy = 0,
-	container = "NewWelfareViewContainer",
-	bgBlur = 0,
-	mainRes = "ui/viewres/newwelfare/newwelfarefullview.prefab",
-	layer = "POPUP_TOP",
-	viewType = ViewType.Normal,
-	anim = ViewAnim.Default
-}
-module_views.NewWelfarePanel = {
-	destroy = 0,
-	container = "NewWelfarePanelContainer",
-	bgBlur = 1,
-	mainRes = "ui/viewres/newwelfare/newwelfarepanelview.prefab",
-	layer = "POPUP_TOP",
-	viewType = ViewType.Modal,
-	anim = ViewAnim.Default
-}
+
+ActivityWelfareViewDefine.init(module_views)
+
 module_views.GMErrorView = {
 	destroy = 0,
 	container = "GMErrorViewContainer",
@@ -21737,7 +21735,8 @@ module_views.Act191InitBuildView = {
 		}
 	},
 	otherRes = {
-		Activity191Enum.PrefabPath.HeroHeadItem
+		Activity191Enum.PrefabPath.HeroHeadItem,
+		Activity191Enum.PrefabPath.FetterItem
 	}
 }
 module_views.Act191StageView = {
@@ -22704,6 +22703,34 @@ module_views.Permanent2_7EnterView = {
 		}
 	}
 }
+module_views.Permanent2_8EnterView = {
+	destroy = 0,
+	container = "Permanent2_8EnterViewContainer",
+	mainRes = "ui/viewres/dungeon/reappear/v2a8_reappear_mainactivity_enterview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	}
+}
+module_views.Permanent3_0EnterView = {
+	destroy = 0,
+	container = "Permanent3_0EnterViewContainer",
+	mainRes = "ui/viewres/dungeon/reappear/v3a0_reappear_mainactivity_enterview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	}
+}
 module_views.Permanent2_2EnterView = {
 	destroy = 0,
 	container = "Permanent2_2EnterViewContainer",
@@ -23290,24 +23317,9 @@ module_views.V2a9_LoginSign_FullView = {
 		[1] = "ui/viewres/sp01/loginsign/activity_signitem.prefab"
 	}
 }
-module_views.V2a9_FreeMonthCard_PanelView = {
-	destroy = 0,
-	container = "V2a9_FreeMonthCard_PanelViewContainer",
-	bgBlur = 1,
-	mainRes = "ui/viewres/activity/v2a9_monthcard_panelview.prefab",
-	layer = "POPUP_TOP",
-	viewType = ViewType.Normal,
-	anim = ViewAnim.Default
-}
-module_views.V2a9_FreeMonthCard_FullView = {
-	destroy = 0,
-	container = "V2a9_FreeMonthCard_FullViewContainer",
-	bgBlur = 0,
-	mainRes = "ui/viewres/activity/v2a9_monthcard_fullview.prefab",
-	layer = "POPUP_TOP",
-	viewType = ViewType.Normal,
-	anim = ViewAnim.Default
-}
+
+MonthCardViewDefine.init(module_views)
+
 module_views.V2a9_LinkGiftView = {
 	destroy = 0,
 	container = "V2a9_LinkGiftViewContainer",
@@ -24136,6 +24148,7 @@ VersionActivity3_4ViewDefine.init(module_views)
 VersionActivity3_5ViewDefine.init(module_views)
 VersionActivity3_6ViewDefine.init(module_views)
 VersionActivity3_7ViewDefine.init(module_views)
+VersionActivity3_8ViewDefine.init(module_views)
 
 module_views.GMYeShuMeiView = {
 	destroy = 0,
@@ -27361,6 +27374,33 @@ module_views.V3a7_Wmz_ResultView = {
 	mainRes = "ui/viewres/versionactivity_3_7/v3a7_wmz/v3a7_wmz_resultview.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Modal,
+	anim = ViewAnim.Default
+}
+module_views.V3a8_DragonBoatActivity_FullView = {
+	destroy = 0,
+	container = "V3a8_DragonBoatActivity_FullViewContainer",
+	bgBlur = 0,
+	mainRes = "ui/viewres/activity/v3a8_dragonboatactivity_fullview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default
+}
+module_views.V3a8_DragonBoatActivity_PanelView = {
+	destroy = 0,
+	container = "V3a8_DragonBoatActivity_PanelViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/activity/v3a8_dragonboatactivity_panelview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Modal,
+	anim = ViewAnim.Default
+}
+module_views.V3a8_WarmUp = {
+	destroy = 0,
+	container = "V3a8_WarmUpContainer",
+	bgBlur = 0,
+	mainRes = "ui/viewres/warmup/v3a8_warmup.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
 	anim = ViewAnim.Default
 }
 

@@ -582,7 +582,7 @@
   },
   {
     "id": 30201,
-    "patFaceActivityId": 13512,
+    "patFaceActivityId": 13814,
     "patFaceViewName": "",
     "patFaceStoryId": 0,
     "patFaceOrder": 50000
@@ -628,5 +628,12 @@
     "patFaceViewName": "",
     "patFaceStoryId": 800007,
     "patFaceOrder": 30199
+  },
+  {
+    "id": 30801,
+    "patFaceActivityId": 13813,
+    "patFaceViewName": "VersionActivity3_8FreeMonthCardPanelView",
+    "patFaceStoryId": 0,
+    "patFaceOrder": 1000
   }
 ]

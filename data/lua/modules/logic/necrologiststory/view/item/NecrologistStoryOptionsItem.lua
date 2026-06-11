@@ -22,6 +22,14 @@ function NecrologistStoryOptionsItem:onClickOption(item)
 	self.selectSection = item.section
 
 	self:refreshOptionList()
+
+	local storyConfig = self:getStoryConfig()
+	local optionId = NecrologistStoryConfig.instance:getOptionIdByConfigAndIndex(storyConfig, item.index)
+
+	if optionId then
+		NecrologistStoryController.instance:dispatchEvent(NecrologistStoryEvent.OnSelectOption, optionId)
+	end
+
 	NecrologistStoryController.instance:dispatchEvent(NecrologistStoryEvent.OnSelectSection, self.selectSection)
 end
 
@@ -87,6 +95,7 @@ function NecrologistStoryOptionsItem:getOptionItem(index)
 
 	if not item then
 		item = self:getUserDataTb_()
+		item.index = index
 
 		local go = gohelper.cloneInPlace(self.goOption, tostring(index))
 

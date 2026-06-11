@@ -21,12 +21,13 @@ local fields = {
 	powerMax = 14,
 	birthdayBonus = 33,
 	roleBirthday = 31,
-	firstItem = 16,
+	isSP = 40,
 	useDesc = 35,
 	heroType = 29,
 	mvskinId = 37,
 	stat = 38,
 	rare = 6,
+	firstItem = 16,
 	actor = 30,
 	duplicateItem2 = 19,
 	initials = 3,
@@ -41,7 +42,8 @@ local fields = {
 	characterTag = 24,
 	photoFrameBg = 27,
 	school = 23,
-	rank = 11
+	rank = 11,
+	statShare = 39
 }
 local primaryKey = {
 	"id"

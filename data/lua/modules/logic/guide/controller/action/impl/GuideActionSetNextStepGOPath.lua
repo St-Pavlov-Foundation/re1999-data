@@ -224,7 +224,7 @@ end
 function GuideActionSetNextStepGOPath:getMoveHeroPath()
 	local index = HeroGroupEditListModel.instance:getMoveHeroIndex() or 1
 
-	return string.format("UIRoot/POPUP_TOP/HeroGroupEditView/#go_rolecontainer/#scroll_card/scrollcontent/cell%s", index - 1)
+	return string.format("UIRoot/POPUP_TOP/HeroGroupEditView/#go_rolecontainer/#scroll_card/scrollcontent/cell%s/prefabInst/hero/commonheroitemnew(Clone)", index - 1)
 end
 
 function GuideActionSetNextStepGOPath:getConnectPuzzlePipeEntry()

@@ -2,7 +2,7 @@
 
 module("modules.logic.rouge.view.RougeMainView", package.seeall)
 
-local RougeMainView = class("RougeMainView", BaseView)
+local RougeMainView = class("RougeMainView", BaseViewExtended)
 
 function RougeMainView:onInitView()
 	self._btnfavorite = gohelper.findChildButtonWithAudio(self.viewGO, "Left/#btn_favorite")
@@ -37,6 +37,8 @@ function RougeMainView:onInitView()
 	self._btnopentips = gohelper.findChildButtonWithAudio(self.viewGO, "Right/#go_token/#btn_opentips")
 	self._btnclosetips = gohelper.findChildButtonWithAudio(self.viewGO, "Right/#go_token/#go_tips/#btn_closetips")
 	self._txttips = gohelper.findChildText(self.viewGO, "Right/#go_token/#go_tips/TipsView/Viewport/Content/#txt_tips")
+
+	self:addChildView(RougeBaseDLCViewComp.New())
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -160,6 +162,7 @@ end
 
 function RougeMainView:onOpenFinish()
 	RougeController.instance:startEndFlow()
+	RougeController.instance:dispatchEvent(RougeEvent.OpenRougeView)
 end
 
 function RougeMainView:onClose()

@@ -28,6 +28,7 @@ function CommandStationTaskView:onInitView()
 	self._slider = gohelper.findChildImage(self.viewGO, "Right/Progress/#scroll_view/Viewport/Content/progressbg/fill")
 	self._goContent = gohelper.findChild(self.viewGO, "Right/Progress/#scroll_view/Viewport/Content")
 	self._anim = gohelper.findChildAnim(self.viewGO, "")
+	self._goline = gohelper.findChild(self.viewGO, "Right/Top/image_line")
 end
 
 function CommandStationTaskView:addEvents()
@@ -77,6 +78,13 @@ function CommandStationTaskView:onOpen()
 	})
 
 	CommandStationTaskListModel.instance.curSelectType = 1
+
+	if CommandStationEnum.ForceHideCommandStation then
+		CommandStationTaskListModel.instance.curSelectType = 2
+
+		gohelper.setActive(self._btnNormalTask, false)
+	end
+
 	self._bonusCos, self._bonusCountList = CommandStationConfig.instance:getTotalTaskRewards()
 	self._bigBonusCos = {}
 
@@ -144,6 +152,12 @@ function CommandStationTaskView:refreshTask()
 	local haveCatchTask = self:haveCatchTask()
 
 	gohelper.setActive(self._btnCatchTask, haveCatchTask)
+
+	if CommandStationEnum.ForceHideCommandStation then
+		gohelper.setActive(self._btnCatchTask, false)
+		gohelper.setActive(self._goTime, haveCatchTask)
+		gohelper.setActive(self._goline, haveCatchTask)
+	end
 
 	local isCatch = CommandStationTaskListModel.instance.curSelectType == CommandStationEnum.TaskType.Catch
 

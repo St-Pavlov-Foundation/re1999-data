@@ -31,6 +31,9 @@ function FightQuitTipView:onInitView()
 	self._btnsure = gohelper.findChildButtonWithAudio(self.viewGO, "#go_quittipview/#btn_sure")
 	self._btnno = gohelper.findChildButtonWithAudio(self.viewGO, "#go_quittipview/#btn_no")
 	self._simagenumline = gohelper.findChildSingleImage(self.viewGO, "#go_quittipview/num")
+	self._btnProtectMode = gohelper.findChildButtonWithAudio(self.viewGO, "#go_quitshowview/center/btn/#btn_protectmode")
+	self.goEyeModeOn = gohelper.findChild(self.viewGO, "#go_quitshowview/center/btn/#btn_protectmode/#go_on")
+	self.goEyeModeOff = gohelper.findChild(self.viewGO, "#go_quitshowview/center/btn/#btn_protectmode/#go_off")
 	self._btnbackherogroup = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_backherogroup")
 
 	if self._editableInitView then
@@ -50,6 +53,7 @@ function FightQuitTipView:addEvents()
 	self._btnsure:AddClickListener(self._btnsureOnClick, self)
 	self._btnno:AddClickListener(self._btnnoOnClick, self)
 	self._btncloserule:AddClickListener(self._btncloseruleOnClick, self)
+	self._btnProtectMode:AddClickListener(self._onClickProtectMode, self)
 	ViewMgr.instance:registerCallback(ViewEvent.OnOpenView, self._onOpenView, self)
 	self:addEventCb(PCInputController.instance, PCInputEvent.NotifyCommonCancel, self._btnnoOnClick, self)
 	self:addEventCb(PCInputController.instance, PCInputEvent.NotifyCommonConfirm, self._onKeyExit, self)
@@ -66,9 +70,22 @@ function FightQuitTipView:removeEvents()
 	self._btnsure:RemoveClickListener()
 	self._btnno:RemoveClickListener()
 	self._btncloserule:RemoveClickListener()
+	self._btnProtectMode:RemoveClickListener()
 	ViewMgr.instance:unregisterCallback(ViewEvent.OnOpenView, self._onOpenView, self)
 	self:removeEventCb(PCInputController.instance, PCInputEvent.NotifyCommonCancel, self._btnnoOnClick, self)
 	self:removeEventCb(PCInputController.instance, PCInputEvent.NotifyCommonConfirm, self._onKeyExit, self)
+end
+
+function FightQuitTipView:_onClickProtectMode()
+	EyeProtectionModeMgr.instance:changeEyeModeActive()
+	self:refreshEyeModeUI()
+end
+
+function FightQuitTipView:refreshEyeModeUI()
+	local active = EyeProtectionModeMgr.instance:getEyeModeActive()
+
+	gohelper.setActive(self.goEyeModeOn, active)
+	gohelper.setActive(self.goEyeModeOff, not active)
 end
 
 function FightQuitTipView:_btnBackHeroGroup()
@@ -284,6 +301,7 @@ function FightQuitTipView:onOpen()
 	NavigateMgr.instance:addEscape(ViewName.FightQuitTipView, self._onBtnContinueGame, self)
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_fight_keeporquit)
 	FightAudioMgr.instance:obscureBgm(true)
+	self:refreshEyeModeUI()
 end
 
 function FightQuitTipView:episodeNeedHideRestart()

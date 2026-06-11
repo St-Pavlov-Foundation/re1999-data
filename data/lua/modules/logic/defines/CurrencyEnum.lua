@@ -24,6 +24,7 @@ CurrencyEnum.CurrencyType = {
 	V1a7Dungeon = 1701,
 	SkinCard = 12,
 	V1a8Dungeon = 1804,
+	V3a8DouQuQu = 3803,
 	BulbCurrency = 2881,
 	V1a9Dungeon = 1901,
 	Act134Clue = 1414,
@@ -68,6 +69,7 @@ CurrencyEnum.CurrencyType = {
 	Planet = 1301,
 	LeiMiTeBei = 111,
 	V2a7Dungeon = 2701,
+	V3a8Dungeon = 3801,
 	V1a5DungeonBuild = 1502,
 	V3a7Dungeon = 3702
 }

@@ -2645,6 +2645,36 @@ local module_cmd = {
 		"Activity236",
 		"Act236UpdateInfoPush"
 	},
+	[-22802] = {
+		"Activity240",
+		"Act240GetInfoRequest",
+		"Act240GetInfoReply"
+	},
+	[5098] = {
+		"Activity240",
+		"Act240SignInRequest",
+		"Act240SignInReply"
+	},
+	[26560] = {
+		"Activity240",
+		"Act240BackdateRequest",
+		"Act240BackdateReply"
+	},
+	[-27888] = {
+		"Activity241",
+		"Act241GetInfoRequest",
+		"Act241GetInfoReply"
+	},
+	[-18174] = {
+		"Activity241",
+		"Act241VoteRequest",
+		"Act241VoteReply"
+	},
+	[-1749] = {
+		"Activity241",
+		"Act241GetBonusRequest",
+		"Act241GetBonusReply"
+	},
 	[-14582] = {
 		"Activity",
 		"GetActivityInfosRequest",
@@ -3886,6 +3916,11 @@ local module_cmd = {
 		"GetRecommendedFriendsRequest",
 		"GetRecommendedFriendsReply"
 	},
+	[-22437] = {
+		"GlobalVote",
+		"GlobalVoteGetInfoRequest",
+		"GlobalVoteGetInfoReply"
+	},
 	[9762] = {
 		"GM",
 		"GMRequest",
@@ -3911,6 +3946,11 @@ local module_cmd = {
 	[28434] = {
 		"GM",
 		"ServerErrorInfoPush"
+	},
+	[19592] = {
+		"GM",
+		"GmModuleRequest",
+		"GmModuleReply"
 	},
 	[18894] = {
 		"Guide",

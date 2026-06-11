@@ -334,5 +334,17 @@
     "collectionBonus": "11#13703#1",
     "extraShowBuilding": "",
     "sourcesType": ""
+  },
+  {
+    "id": 3801,
+    "name": "砖石长诗",
+    "nameEn": "Verses in the Brick",
+    "desc": "人们捡起往日，也筑起未来，靠一块块石头，靠一千个不曾弥散的梦。",
+    "rewardIcon": "1702800",
+    "building": "13801|13802|13803",
+    "packages": "3801|3802|3803|3804",
+    "collectionBonus": "11#13803#1",
+    "extraShowBuilding": "",
+    "sourcesType": ""
   }
 ]

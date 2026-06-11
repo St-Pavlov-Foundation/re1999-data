@@ -814,6 +814,20 @@ function FightBuffComp:registSkinBuffEffect()
 
 	local skinBuffEffectMgr = self.skinBuffEffectMgr
 	local skinId = entityData.skin
+	local skinConfig = lua_skin.configDict[skinId]
+
+	if skinConfig then
+		local dianJiShiConfig = lua_fight_dian_ji_shi_buff_effect.configDict[skinId]
+
+		if not dianJiShiConfig and skinConfig.characterId == 3140 then
+			dianJiShiConfig = lua_fight_dian_ji_shi_buff_effect.configDict[0]
+		end
+
+		if dianJiShiConfig then
+			self:newClass(FightBuffDianJiShiEffect, self._entity, entityData, dianJiShiConfig)
+		end
+	end
+
 	local luxiUpgradeEffectConfig = lua_fight_luxi_upgrade_effect.configDict[skinId]
 
 	if luxiUpgradeEffectConfig then

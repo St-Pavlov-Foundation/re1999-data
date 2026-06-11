@@ -74,7 +74,11 @@ function FightBuffGetDescHelper.getBuffFeatureHandle(feature)
 			[FightEnum.BuffFeature.HeatScaleUseSkill] = FightBuffGetDescHelper.formatActInfoOneParam,
 			[FightEnum.BuffFeature.TeamShareShield] = FightBuffGetDescHelper.formatActInfoOneParam,
 			[FightEnum.BuffFeature.TeamExElectricTransConsumeValueAttr] = FightBuffGetDescHelper.getTeamExElectricTransConsumeValueAttrDesc,
-			[FightEnum.BuffFeature.EachChangeAttrOneWay] = FightBuffGetDescHelper.getEachChangeAttrOneWayDesc
+			[FightEnum.BuffFeature.EachChangeAttrOneWay] = FightBuffGetDescHelper.getAttrDesc,
+			[FightEnum.BuffFeature.LostHpToFakeHp] = FightBuffGetDescHelper.getLostHpToFakeHpDesc,
+			[FightEnum.BuffFeature.AttrFromEntityNoLayer] = FightBuffGetDescHelper.getAttrDesc,
+			[FightEnum.BuffFeature.FoundationCounter] = FightBuffGetDescHelper.formatActInfoTwoParam,
+			[FightEnum.BuffFeature.FoundationShield] = FightBuffGetDescHelper.onFoundationShield
 		}
 	end
 
@@ -218,7 +222,7 @@ function FightBuffGetDescHelper.getTeamExElectricTransConsumeValueAttrDesc(buffM
 	return GameUtil.getSubPlaceholderLuaLangOneParam(buffCo.desc, param[1] / 10)
 end
 
-function FightBuffGetDescHelper.getEachChangeAttrOneWayDesc(buffMo, buffCo, buffActCo, paramArray, buffActInfo)
+function FightBuffGetDescHelper.getAttrDesc(buffMo, buffCo, buffActCo, paramArray, buffActInfo)
 	local paramList = {}
 	local actInfoList = buffMo.actInfo
 
@@ -239,6 +243,55 @@ function FightBuffGetDescHelper.getEachChangeAttrOneWayDesc(buffMo, buffCo, buff
 	end
 
 	return GameUtil.getSubPlaceholderLuaLang(buffCo.desc, paramList)
+end
+
+function FightBuffGetDescHelper.getLostHpToFakeHpDesc(buffMo, buffCo, buffActCo, paramArray, buffActInfo)
+	local param = buffActInfo.param
+	local str = string.format("%s。%s/%s", buffCo.desc, param[1], param[2])
+
+	return str
+end
+
+function FightBuffGetDescHelper.onFoundationShield(buffMo, buffCo, buffActCo, paramArray, buffActInfo)
+	local param = buffActInfo.param
+	local value = param[1]
+	local entityData = FightDataHelper.entityMgr:getById(buffMo.entityId)
+
+	if entityData then
+		local hasBuff = false
+		local targetBuffId, xRate, yRate
+		local featuresSplit = entityData:getFeaturesSplitInfoByBuffId(buffCo.id)
+
+		if featuresSplit then
+			for _, oneFeature in ipairs(featuresSplit) do
+				if oneFeature[1] == 1146 then
+					targetBuffId = tonumber(oneFeature[4])
+					xRate = tonumber(oneFeature[3])
+					yRate = tonumber(oneFeature[5])
+
+					break
+				end
+			end
+		end
+
+		for k, buff in pairs(entityData.buffDic) do
+			if buff.buffId == targetBuffId then
+				hasBuff = true
+
+				break
+			end
+		end
+
+		if hasBuff then
+			value = value * yRate
+		else
+			value = value * xRate
+		end
+
+		value = math.floor(value / 1000 + 0.5)
+	end
+
+	return GameUtil.getSubPlaceholderLuaLangOneParam(buffCo.desc, value)
 end
 
 return FightBuffGetDescHelper

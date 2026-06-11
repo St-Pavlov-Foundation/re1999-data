@@ -12,4 +12,10 @@ function FightDeviceSkillGroupInfoData:onConstructor(proto)
 	end
 end
 
+function FightDeviceSkillGroupInfoData:resetStopAttr()
+	for _, skill in ipairs(self.skills) do
+		skill:resetStopAttr()
+	end
+end
+
 return FightDeviceSkillGroupInfoData

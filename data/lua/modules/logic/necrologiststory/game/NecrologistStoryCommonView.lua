@@ -18,6 +18,7 @@ function NecrologistStoryCommonView:onInitView()
 	self.txtRewardTime = gohelper.findChildTextMesh(self.rootGO, "#btn_reward/#go_time/#txt_time")
 	self.txtRewardTimeFormat = gohelper.findChildTextMesh(self.rootGO, "#btn_reward/#go_time/#txt_time/#txt_format")
 	self.btnReview = gohelper.findChildButtonWithAudio(self.rootGO, "#btn_review")
+	self.btnBranch = gohelper.findChildButtonWithAudio(self.rootGO, "#btn_branch")
 	self.animReward = self.btnReward.gameObject:GetComponent(typeof(UnityEngine.Animator))
 
 	if self._editableInitView then
@@ -28,17 +29,27 @@ end
 function NecrologistStoryCommonView:addEvents()
 	self:addClickCb(self.btnReward, self.onClickBtnReward, self)
 	self:addClickCb(self.btnReview, self.onClickBtnReview, self)
+	self:addClickCb(self.btnBranch, self.onClickBtnBranch, self)
 	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self._onCloseViewFinish, self)
 end
 
 function NecrologistStoryCommonView:removeEvents()
 	self:removeClickCb(self.btnReward)
 	self:removeClickCb(self.btnReview)
+	self:removeClickCb(self.btnBranch)
 	self:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self._onCloseViewFinish, self)
 end
 
 function NecrologistStoryCommonView:_editableInitView()
 	return
+end
+
+function NecrologistStoryCommonView:onClickBtnBranch()
+	if not self.gameBaseMO then
+		return
+	end
+
+	NecrologistStoryController.instance:openBranchView(self.gameBaseMO.id)
 end
 
 function NecrologistStoryCommonView:onClickBtnReward()
@@ -138,6 +149,10 @@ function NecrologistStoryCommonView:refreshButton()
 	local hasPlotFinish = NecrologistStoryModel.instance:isReviewCanShow(self.gameBaseMO.id)
 
 	gohelper.setActive(self.btnReview, hasPlotFinish)
+
+	local isShowBranch = NecrologistStoryModel.instance:isBranchCanShow(self.gameBaseMO.id)
+
+	gohelper.setActive(self.btnBranch, isShowBranch)
 end
 
 function NecrologistStoryCommonView:onDestroyView()

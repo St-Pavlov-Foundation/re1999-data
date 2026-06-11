@@ -59,7 +59,7 @@ function Act191MainView:endGame()
 end
 
 function Act191MainView:_btnShopOnClick()
-	Activity191Controller.instance:openStoreView(VersionActivity3_1Enum.ActivityId.DouQuQu3Store)
+	Activity191Controller.instance:openStoreView()
 	Act191StatController.instance:statButtonClick(self.viewName, "_btnShopOnClick")
 end
 
@@ -146,7 +146,7 @@ function Act191MainView:initRule()
 end
 
 function Act191MainView:refreshCurrency()
-	local currencyMo = CurrencyModel.instance:getCurrency(CurrencyEnum.CurrencyType.V3a1DouQuQu)
+	local currencyMo = CurrencyModel.instance:getCurrency(CurrencyEnum.CurrencyType.V3a8DouQuQu)
 
 	self._txtnum.text = currencyMo.quantity
 end

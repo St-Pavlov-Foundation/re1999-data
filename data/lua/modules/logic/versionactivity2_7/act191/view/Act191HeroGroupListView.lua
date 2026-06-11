@@ -59,10 +59,6 @@ function Act191HeroGroupListView:onDestroyView()
 		CommonDragHelper.instance:unregisterDragObj(item.go)
 	end
 
-	for _, item in ipairs(self.equipItemList) do
-		CommonDragHelper.instance:unregisterDragObj(item.go)
-	end
-
 	TaskDispatcher.cancelTask(self.refreshTeam, self)
 end
 
@@ -100,7 +96,6 @@ function Act191HeroGroupListView:initHeroAndEquipItem()
 	local goEquipItem = gohelper.findChild(self.heroContainer, "go_EquipItem")
 
 	self.heroItemList = {}
-	self.equipItemList = {}
 
 	for i = 1, 8 do
 		local cloneGo = gohelper.cloneInPlace(goHeroItem, "hero" .. i)
@@ -111,18 +106,6 @@ function Act191HeroGroupListView:initHeroAndEquipItem()
 		self.heroItemList[i] = heroItem
 
 		CommonDragHelper.instance:registerDragObj(cloneGo, self._onBeginDrag, nil, self._onEndDrag, self._checkDrag, self, i)
-
-		if i <= 4 then
-			cloneGo = gohelper.cloneInPlace(goEquipItem, "equip" .. i)
-
-			local equipItem = MonoHelper.addNoUpdateLuaComOnceToGo(cloneGo, Act191HeroGroupItem2)
-
-			equipItem:setIndex(i)
-
-			self.equipItemList[i] = equipItem
-
-			CommonDragHelper.instance:registerDragObj(cloneGo, self._onBeginDrag1, nil, self._onEndDrag1, self._checkDrag1, self, i)
-		end
 	end
 
 	gohelper.setActive(goHeroItem, false)
@@ -137,25 +120,19 @@ function Act191HeroGroupListView:refreshTeam()
 
 	for i = 1, 8 do
 		self:_setHeroItemPos(self.heroItemList[i], i)
-
-		if i <= 4 then
-			self:_setEquipItemPos(self.equipItemList[i], i)
-		end
 	end
 
 	local teamInfo = self.gameInfo:getTeamInfo()
 
 	for i = 1, 4 do
 		local info = Activity191Helper.matchKeyInArray(teamInfo.battleHeroInfo, i)
-		local heroId, itemUid1
+		local heroId
 
 		if info then
 			heroId = info.heroId
-			itemUid1 = info.itemUid1
 		end
 
 		self.heroItemList[i]:setData(heroId)
-		self.equipItemList[i]:setData(itemUid1)
 
 		local infoItem = self.heroInfoItemList[i]
 

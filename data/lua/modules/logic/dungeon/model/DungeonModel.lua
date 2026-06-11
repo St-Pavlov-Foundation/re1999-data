@@ -976,6 +976,16 @@ function DungeonModel:chapterListIsTower(type)
 	return result
 end
 
+function DungeonModel:chapterListIsRouge(type)
+	local curChapterType = type or self.curChapterType
+	local result = curChapterType == DungeonEnum.ChapterType.Rouge
+
+	result = result or curChapterType == DungeonEnum.ChapterType.Rouge2
+	result = result or curChapterType == DungeonEnum.ChapterType.Rouge2Boss
+
+	return result
+end
+
 function DungeonModel:getChapterListTypes(type)
 	return self:chapterListIsNormalType(type), self:chapterListIsResType(type), self:chapterListIsBreakType(type), self:chapterListIsWeekWalkType(type), self:chapterListIsSeasonType(type), self:chapterListIsExploreType(type)
 end

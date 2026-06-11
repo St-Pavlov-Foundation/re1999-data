@@ -2,7 +2,7 @@
 
 module("modules.logic.rouge2.outside.view.Rouge2_ActivityView", package.seeall)
 
-local Rouge2_ActivityView = class("Rouge2_ActivityView", BaseView)
+local Rouge2_ActivityView = class("Rouge2_ActivityView", BaseViewExtended)
 
 function Rouge2_ActivityView:onInitView()
 	self._txttime = gohelper.findChildText(self.viewGO, "title/LimitTime/#txt_time")

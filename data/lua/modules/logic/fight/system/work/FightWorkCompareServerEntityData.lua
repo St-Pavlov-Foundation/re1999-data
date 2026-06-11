@@ -118,11 +118,12 @@ local errorDes = {
 	[FightDataUtil.diffType.difference] = "数据不一致"
 }
 local filterCompareKey = {
-	buffFeaturesSplit = true,
+	storedDeviceExPoint = true,
 	playCardExPoint = true,
 	resistanceDict = true,
 	_playCardAddExpoint = true,
 	configMaxExPoint = true,
+	buffFeaturesSplit = true,
 	moveCardExPoint = true,
 	passiveSkillDic = true,
 	_combineCardAddExpoint = true,

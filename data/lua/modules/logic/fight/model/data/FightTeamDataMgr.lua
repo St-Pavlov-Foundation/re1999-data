@@ -20,8 +20,12 @@ function FightTeamDataMgr:onCancelOperation()
 	self:clearClientSimulationData()
 end
 
-function FightTeamDataMgr:onStageChanged()
+function FightTeamDataMgr:onStageChanged(curStage, preStage)
 	self:clearClientSimulationData()
+
+	if curStage == FightStageMgr.StageType.Play and self.deviceArea then
+		self.deviceArea:resetStopAttr()
+	end
 end
 
 function FightTeamDataMgr:updateData(fightData)

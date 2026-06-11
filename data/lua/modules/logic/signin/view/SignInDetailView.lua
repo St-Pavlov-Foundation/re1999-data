@@ -22,7 +22,8 @@ function SignInDetailView:onInitView()
 	self._simagebirthdaybg = gohelper.findChildSingleImage(self.viewGO, "content/reward/#go_birthdayrewarditem/#simage_birthdaybg")
 	self._simagebirthdaybg2 = gohelper.findChildSingleImage(self.viewGO, "content/reward/#go_birthdayrewarditem/#simage_birthdaybg2")
 	self._gobirthday = gohelper.findChild(self.viewGO, "content/reward/#go_birthdayrewarditem/#go_birthday")
-	self._simageicon = gohelper.findChildSingleImage(self.viewGO, "content/reward/#go_birthdayrewarditem/#go_birthday/#simage_icon")
+	self._gobirthdayHeroContent = gohelper.findChild(self.viewGO, "content/reward/#go_birthdayrewarditem/#go_birthday/scroll_icon/Viewport/Content")
+	self._gobirthdayHeroIcon = gohelper.findChild(self.viewGO, "content/reward/#go_birthdayrewarditem/#go_birthday/scroll_icon/Viewport/Content/#go_icon")
 	self._btngift = gohelper.findChildButtonWithAudio(self.viewGO, "content/reward/#go_birthdayrewarditem/#go_birthday/#btn_gift")
 	self._gogiftnoget = gohelper.findChild(self.viewGO, "content/reward/#go_birthdayrewarditem/#go_birthday/#btn_gift/#go_noget")
 	self._gogiftget = gohelper.findChild(self.viewGO, "content/reward/#go_birthdayrewarditem/#go_birthday/#btn_gift/#go_get")
@@ -915,10 +916,12 @@ function SignInDetailView:_setBirthdayInfo()
 	end
 
 	local heroId = birthdayHeros[self._index]
-	local heroMo = HeroModel.instance:getByHeroId(heroId)
-	local skin = heroMo and heroMo.skin or HeroConfig.instance:getHeroCO(heroId).skinId
 
-	self._simageicon:LoadImage(ResUrl.getHeadIconSmall(skin))
+	self._birthdayHeroIconList = {}
+
+	local heroIdWithSPList = HeroConfig.instance:getSPHeroIdList(heroId, true)
+
+	gohelper.CreateObjList(self, self._onCreateBirthdayHeroIcon, heroIdWithSPList, self._gobirthdayHeroContent, self._gobirthdayHeroIcon)
 
 	local birthdayCount = SignInModel.instance:getHeroBirthdayCount(heroId)
 	local index = birthdayCount
@@ -954,6 +957,18 @@ function SignInDetailView:_setBirthdayInfo()
 
 	gohelper.setActive(self._gogiftnoget, not giftGet)
 	gohelper.setActive(self._gogiftget, giftGet)
+end
+
+function SignInDetailView:_onCreateBirthdayHeroIcon(obj, data, index)
+	local iconItem = self:getUserDataTb_()
+
+	iconItem.go = obj
+	iconItem.icon = gohelper.findChildSingleImage(obj, "#simage_icon")
+
+	local heroMo = HeroModel.instance:getByHeroId(data)
+	local skin = heroMo and heroMo.skin or HeroConfig.instance:getHeroCO(data).skinId
+
+	iconItem.icon:LoadImage(ResUrl.getHeadIconSmall(skin))
 end
 
 function SignInDetailView:_delaySignInRequest()
@@ -1311,6 +1326,12 @@ function SignInDetailView:onDestroyView()
 	self._simagemonthicon1:UnLoadImage()
 	self._simagemonthicon2:UnLoadImage()
 	self._simagemonthicon3:UnLoadImage()
+
+	if self._birthdayHeroIconList then
+		for _, iconItem in ipairs(self._birthdayHeroIconList) do
+			iconItem.icon:UnLoadImage()
+		end
+	end
 
 	if self._festivalAtmosphereComp then
 		self._festivalAtmosphereComp:onDestroy()

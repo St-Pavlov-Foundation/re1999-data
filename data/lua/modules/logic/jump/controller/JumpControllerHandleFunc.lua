@@ -1525,7 +1525,7 @@ function JumpController:jumpToRougeRewardView(jumpParam)
 	local arg1 = paramsList[2]
 	local arg2 = paramsList[3]
 
-	RougeController.instance:openRougeMainView(nil, nil, function()
+	RougeController.instance:openRougeMainView(function()
 		ViewMgr.instance:openView(ViewName.RougeRewardView, {
 			version = arg1,
 			stage = arg2

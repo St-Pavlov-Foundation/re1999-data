@@ -37,7 +37,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "漫游于林间的术杖制造师，橡树与月亮的友人，你最沉静的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3004,
@@ -77,7 +79,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "热爱伏特加的飞行员，永远的胜利女神，你最可以托付的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3005,
@@ -117,7 +121,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3006,
@@ -157,7 +163,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3007,
@@ -197,7 +205,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "彬彬有礼的流浪骑士，知名骑士笑话爱好者，你最忠诚的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3009,
@@ -237,7 +247,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "勇于尝试一切新配方的魔药师，善良而慷慨的淑女，你好奇心最重的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3010,
@@ -277,7 +289,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "精于机械附魔的“双面”天才，福利院孩子们的好榜样，你最难以捉摸的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3011,
@@ -317,7 +331,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "万众瞩目的“美国甜心”，辉光四溢的荧幕焦点，你最惹人注目的明星朋友。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3012,
@@ -357,7 +373,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3013,
@@ -397,7 +415,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3014,
@@ -437,7 +457,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3015,
@@ -477,7 +499,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3016,
@@ -517,7 +541,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "徜徉于美梦的少女，仙境所爱的爱丽丝，你最悠闲的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3017,
@@ -557,7 +583,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "民众剧团的团长，舞台上的暴君，你最富理想的“乡下朋友”。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3018,
@@ -597,7 +625,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3020,
@@ -637,7 +667,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "并不沉默的监听员，深爱生活的理想主义者，你最擅长倾听的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3022,
@@ -677,7 +709,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "执剑的特别裁判所法官，永无偏移的制裁者，你最威严的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3023,
@@ -717,7 +751,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3024,
@@ -757,7 +793,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "孩子们的好朋友，带来气球与健康的派对来客，你最古怪的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3025,
@@ -797,7 +835,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "叛逆电台的幕后骑师。胡椒博士与摇滚唱片的忠诚收藏者，你最有趣的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3026,
@@ -837,7 +877,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3027,
@@ -877,7 +919,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3028,
@@ -917,7 +961,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3029,
@@ -957,7 +1003,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3030,
@@ -997,7 +1045,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3031,
@@ -1037,7 +1087,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3032,
@@ -1077,7 +1129,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "亲切而热情的赌场老手，野心勃勃的冒险家，你最受好运眷顾的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3033,
@@ -1117,7 +1171,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3034,
@@ -1157,7 +1213,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3035,
@@ -1197,7 +1255,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3036,
@@ -1237,7 +1297,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3037,
@@ -1277,7 +1339,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "墓碑博物馆的负责人，人们最后一个愿望的记录者，你最温柔的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3038,
@@ -1317,7 +1381,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "温柔的茶室招待姑娘，经风历雨重新绽放之花，你最惹人怜爱的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3039,
@@ -1357,7 +1423,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "颠覆印象的捉鬼人，新科学道具专家，你最古灵精怪的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3040,
@@ -1397,7 +1465,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3041,
@@ -1437,7 +1507,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3042,
@@ -1477,7 +1549,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3043,
@@ -1517,7 +1591,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "编织美梦的钻石商，游走于欲望之间的巧诈师，你最狡猾又迷人的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3044,
@@ -1557,7 +1633,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3045,
@@ -1597,7 +1675,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3046,
@@ -1637,7 +1717,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3047,
@@ -1677,7 +1759,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "以自体试药的天才研究员，肆意妄为的破坏专家，你最任性的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3048,
@@ -1717,7 +1801,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "如星空般温柔的少女，安静而擅长倾听的小提琴手，你最神秘的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3049,
@@ -1757,7 +1843,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "锲而不舍的战地摄影师，箱中经典影集的创造者，你最敬业的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3050,
@@ -1797,7 +1885,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3051,
@@ -1837,7 +1927,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "擅于买卖的秘具商人，风趣而亲切的长辈，你阅历最为丰富的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3052,
@@ -1877,7 +1969,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "优雅而精明的魔精驯养商人，新时代的引领者，你最雄心勃勃的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3053,
@@ -1917,7 +2011,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "寡言少语的牙齿收集者，捕捉牙仙儿的好嗓子牙医，你最可靠的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3054,
@@ -1957,7 +2053,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3055,
@@ -1997,7 +2095,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3056,
@@ -2037,7 +2137,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "喜爱故事的爱尔兰换生灵，天真孤独的被遗留者，你最有创造力的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3057,
@@ -2077,7 +2179,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3058,
@@ -2117,7 +2221,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3059,
@@ -2157,7 +2263,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3060,
@@ -2197,7 +2305,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "花花世界中的金发女郎，恐怖电影界的造梦新星，你最尖锐的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3061,
@@ -2237,7 +2347,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "恐怖作品的百科全书，精准可靠的逻辑大师，你最“学识渊博”的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3062,
@@ -2277,7 +2389,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "天马行空的国际大盗，一丝不苟的优等生，你最富计划性的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3063,
@@ -2317,7 +2431,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "不同寻常的靛色系小狗，沉静忧郁的哲学家，你最爱思考的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3064,
@@ -2357,7 +2473,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "反叛传统的艺术家，爱、灵感与泡泡的传播者，你最有艺术气质的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 9998,
@@ -2397,7 +2515,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3070,
@@ -2437,7 +2557,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "实用至上的天文学家，不倦望向宇宙的占星者，你最执著的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3071,
@@ -2477,7 +2599,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "街头生活智慧的集大成者，大篷车中的可靠伙伴，你最灵巧的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3072,
@@ -2517,7 +2641,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "自融雪山麓而来的旅者，与过去挥别的萨满传人，你最豁达的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3066,
@@ -2557,7 +2683,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "洞察本质的天才，一位纯粹的求知者，你最专注的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3079,
@@ -2597,7 +2725,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "维持平衡的完全数，阿派朗学派的领导者，你最平静的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3073,
@@ -2637,7 +2767,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "点燃乌卢鲁圣火的少女，闪闪发光的运动新星，你最热情的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3074,
@@ -2677,7 +2809,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此人类伙伴。",
     "desc2": "永远乐于伸出援手的小研究员，理智可靠的和平主义者，你最温和的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3075,
@@ -2717,7 +2851,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "十项全能的生活专家，街头奔走的八比特牧人，你最能干的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3076,
@@ -2757,7 +2893,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "资历显赫的神圣火焰，红色大地的守望者，你最炽热的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3082,
@@ -2797,7 +2935,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "背离家族的少女，看似淡薄的保护者，你最果决的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3083,
@@ -2837,7 +2977,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "热心勤勉的酒坊娘子，竭力回应期许的少女，你最纯质的朋友之一。",
     "mvskinId": 308302,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3084,
@@ -2877,7 +3019,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "观望人世的的灭蒙鸟，经历漫长岁月的识骨者，你最自得其乐的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3065,
@@ -2917,7 +3061,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "亲历故事的阅读者，遨游书海的记录员，你最举棋不定的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3081,
@@ -2957,7 +3103,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "一扇朴素的门，一樽剔透的玻璃盏，一片素白的骨瓷盘。你最为适宜容纳的朋友。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3077,
@@ -2997,7 +3145,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "孤独的理线师，侃侃而谈的神秘现象专家，你最狡黠的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3078,
@@ -3037,7 +3187,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "生活在童话中的孩子，好奇心满溢的小小冒险家，你最友好的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3087,
@@ -3077,7 +3229,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "远离湖海的鲁萨尔卡，满怀理想的小镇教师，你最坚定的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3086,
@@ -3117,7 +3271,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "永不停歇的活塞，纯粹进步的机械，你最致力于发展的朋友之一。",
     "mvskinId": 308602,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3088,
@@ -3157,7 +3313,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "温和亲切的人类专家，拒人千里的漠视规则者，你最忠于自我的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3080,
@@ -3197,7 +3355,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "广受欢迎的活动家，关怀备至的心理医生，你最理想主义的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3091,
@@ -3237,7 +3397,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "心地善良的传道者，身着拘束衣的小女儿，你最擅于歌唱的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3094,
@@ -3277,7 +3439,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "街头恣意的疾驰者，扶危济困的热心肠，你最重情义的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3095,
@@ -3317,7 +3481,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "随心启程的流浪者，应时而停的疗愈师，你最自由的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3096,
@@ -3357,7 +3523,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3097,
@@ -3397,7 +3565,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "目光犀利的受雇调查员，南部公路的沉默追猎者，你最老练的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3098,
@@ -3437,7 +3607,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "怀抱襁褓的旅馆女主人，啜饮战栗的招待者，你最熟谙恐惧的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3099,
@@ -3477,7 +3649,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "永远年幼的沉静执笔者，游走于世界的温和羔羊，你最毛茸茸的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3100,
@@ -3517,7 +3691,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "敬老院的音乐天使，骄横无度的双生子妹妹，你最“邪恶”的朋友之一。",
     "mvskinId": 310002,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3101,
@@ -3557,7 +3733,9 @@
     "useDesc": "",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3102,
@@ -3597,7 +3775,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "巧舌如簧的诡计表演家，输多赢少的年轻赌徒，你最轻狂的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3103,
@@ -3637,7 +3817,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "浪迹贫民区的退伍老兵，桀骜不羁的拼凑艺术家，你最有活力的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3104,
@@ -3677,7 +3859,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "神秘幽暗的祭祀女巫，坚韧好胜的运动员，你最饱经磨砺的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3105,
@@ -3717,7 +3901,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "勤劳早熟的小叫醒工，轻盈随性的驭风者，你最爱提问的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3106,
@@ -3757,7 +3943,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "于红土驰骋的牛仔英雄，于话筒与闪光灯前健谈的发言人，你最“装腔作势”的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3108,
@@ -3797,7 +3985,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "随船巡游的音乐甜心，收集声音的单人乐队主角，你最多才多艺的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3109,
@@ -3837,7 +4027,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "引领族人的海岛少女，背井离乡的贝壳编造师，你最心灵手巧的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3110,
@@ -3877,7 +4069,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "凛然正义的执夜人，驱祟辟邪的险道兽继承者，你最严于律己的朋友之一。",
     "mvskinId": 311002,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3111,
@@ -3917,7 +4111,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "编织故事的创作者，以摄像与调度艺术俘获观众的导演，你最善于玩弄光影的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3112,
@@ -3957,7 +4153,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "健忘的历史记录者，丢弃一切烦忧的乐天派，你最热爱回忆的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3114,
@@ -3997,7 +4195,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "四处流浪的生活的“作品”，寻觅结局的无名创作者，你最热爱文学的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3113,
@@ -4037,7 +4237,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此人类伙伴。",
     "desc2": "觉察万象的超忆症顾问，步入混沌的现实囚徒，你最矛盾的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3116,
@@ -4077,7 +4279,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "永葆好奇心的探索者，九种思想的集合，你最乐于尝试的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3117,
@@ -4117,7 +4321,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "钢丝上的漫步者，曾叩问群星的小宇航员，你最努力生活的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3118,
@@ -4157,7 +4363,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "漂泊的旧物猎人，在词语中穿行的旅者，你最有距离感的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3107,
@@ -4197,7 +4405,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "随电律动的磁流体，以破译对抗现象的密码专家，你最特立独行的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3115,
@@ -4237,7 +4447,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "穿行叶间的松鼠，张扬热烈的企鹅指挥官，你最会爬树的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3120,
@@ -4277,7 +4489,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "醉心于未知的少女，脱胎于炼狱的“神话”，你最靠近神话的朋友之一。",
     "mvskinId": 312002,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3121,
@@ -4317,7 +4531,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "走向雨幕的变节者，记忆中坚定温和的长姐，你最自我倾轧的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3126,
@@ -4357,7 +4573,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "彩窗下的“恶魔”，本该拱卫秩序却质疑秩序的反叛者，你最锐利的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3128,
@@ -4397,7 +4615,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "一捧记忆，一片空洞，一缕本能，你最不知如何相处的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3122,
@@ -4437,7 +4657,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此人类伙伴。",
     "desc2": "隐秘掌控希腊世界的“德谟斯”，自傲于高贵血统的半神，你最残酷的朋友之一。",
     "mvskinId": 0,
-    "stat": 1
+    "stat": 1,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3123,
@@ -4477,7 +4699,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此人类伙伴。",
     "desc2": "守护自由的刺客大师，行于黑暗，侍奉光明，你最潇洒的朋友之一。",
     "mvskinId": 0,
-    "stat": 1
+    "stat": 1,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3124,
@@ -4517,7 +4741,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此人类伙伴。",
     "desc2": "寻找家人的自由佣兵，传奇遍布爱琴海的驯鹰人，你最可依赖的朋友之一。",
     "mvskinId": 0,
-    "stat": 1
+    "stat": 1,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3125,
@@ -4557,7 +4783,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "伪装外貌的流浪者，操弄影子的吹笛人，你“最懂”血食怪的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3132,
@@ -4597,7 +4825,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "多瑙黎明号的列车长，俯瞰色雷斯大地的猛鹫，你最靠得住的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3134,
@@ -4637,7 +4867,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "窥探将至未至之事的占卜师，惯于预言未来的涟漪或沉寂，你最熟络命运的朋友之一。",
     "mvskinId": 313402,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3135,
@@ -4677,7 +4909,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "无拘无束的宝石猎人，享受漫无边际的冒险、自由及法郎，你最随性的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3127,
@@ -4717,7 +4951,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "踏足人间的白衣骑士，以拯救与守护为己任的医者，你最具怜悯心的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3092,
@@ -4757,7 +4993,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "狮鹫军的总指挥官与领袖，于“暴雨”中艰难跋涉的战略家，你最具战争经验的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3141,
@@ -4797,7 +5035,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "不昧因果的道门传人，远东杂学术法的收集者，你最洒脱任真的朋友之一。",
     "mvskinId": 314102,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3137,
@@ -4837,7 +5077,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "“执迷不悟”的守正之士，勘破名利的失路之人，你最具浩然侠气的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3138,
@@ -4877,7 +5119,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3139,
@@ -4917,7 +5161,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "独行雨幕之中的混沌研究员，抽丝剥茧的暗杀者，你最难以捉摸的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3142,
@@ -4957,7 +5203,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "远离人群，走入夜色并与鬼同行的除灵师，你最擅长告别的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3136,
@@ -4997,7 +5245,9 @@
     "useDesc": "",
     "desc2": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3143,
@@ -5037,7 +5287,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此人类伙伴。",
     "desc2": "银色大厦中的守望者，探寻世界本质的研究员，你最相信“意义”的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3146,
@@ -5077,7 +5329,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "积极避世的女巫，珍兽的灵魂挚友，你在关键时刻最靠谱的朋友之一。",
     "mvskinId": 314602,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3147,
@@ -5117,7 +5371,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "没有名字，过往分崩离析的特工，你秘密最多的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   },
   {
     "id": 3154,
@@ -5157,7 +5413,9 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "童子军精神传承者，努力严谨的科算中心实习生，你最好学的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 3006,
+    "isSP": true
   },
   {
     "id": 3144,
@@ -5197,6 +5455,92 @@
     "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
     "desc2": "知晓了喜怒哀乐的音乐装置，拥有珐琅般双眼的少女，你最单纯的朋友之一。",
     "mvskinId": 0,
-    "stat": 0
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
+  },
+  {
+    "id": 3145,
+    "name": "回声谣",
+    "initials": "H",
+    "skinId": 314501,
+    "career": 1,
+    "rare": 5,
+    "dmgType": 1,
+    "gender": 2,
+    "battleTag": "103#131#117",
+    "equipRec": "1573",
+    "rank": 1,
+    "uniqueSkill_point": "4#100",
+    "deviceId": 31450001,
+    "powerMax": "",
+    "ai": 5,
+    "firstItem": "",
+    "duplicateItem": "1#133145#1",
+    "duplicateItemSpecial": "2#11#12",
+    "duplicateItem2": "2#11#28|1#780001#10",
+    "skill": "1#31450111#31450112#31450113|2#31450121#31450122#31450123",
+    "exSkill": 31450131,
+    "resistance": 0,
+    "school": 0,
+    "characterTag": "",
+    "nameEng": "Everecho",
+    "signature": "3147",
+    "photoFrameBg": 0,
+    "isOnline": "1",
+    "heroType": 1,
+    "actor": "——",
+    "roleBirthday": "4/16",
+    "trust": 0,
+    "birthdayBonus": "14#85052#1;14#85052#1;14#85052#1",
+    "desc": "回声谣并没有关于“日期”的概念。在她的记忆中，出生时第一眼看见的是光，随后感受到了身下雏菊的柔软触感。于是，箱中伙伴们估算着诺瓦米奇地区雏菊初绽的日子，为她确定了生日。|生日那天，一个摇摇晃晃的穹顶建筑形状的蛋糕被奠基石和伙伴们捧着送到回声谣门口，并在端上桌前的最后一刻塌陷。回声谣盯了蛋糕半晌，迷惘地看向众人，最终和大家一起唱了一首生日祝歌。|游荡在建筑中时，回声谣能感应到春天里某个熟悉的气温。她会在有着那样温度的日子里，轻轻地躺在穹顶下长满雏菊的草地上，感受光的气味和温度。就像她也曾被世界环抱过一般。",
+    "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
+    "desc2": "废墟中回荡的思乡歌谣，守护人们过往的“鬼魂”少女，你最珍惜往日的朋友之一。",
+    "mvskinId": 0,
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
+  },
+  {
+    "id": 3140,
+    "name": "奠基石",
+    "initials": "D",
+    "skinId": 314001,
+    "career": 1,
+    "rare": 5,
+    "dmgType": 1,
+    "gender": 2,
+    "battleTag": "101",
+    "equipRec": "1574",
+    "rank": 1,
+    "uniqueSkill_point": "0#5",
+    "deviceId": 0,
+    "powerMax": "",
+    "ai": 5,
+    "firstItem": "",
+    "duplicateItem": "1#133140#1",
+    "duplicateItemSpecial": "2#11#12",
+    "duplicateItem2": "2#11#28|1#780001#10",
+    "skill": "1#31400111#31400112#31400113|2#31400121#31400122#31400123",
+    "exSkill": 31400141,
+    "resistance": 0,
+    "school": 0,
+    "characterTag": "",
+    "nameEng": "Cornerstone",
+    "signature": "3147",
+    "photoFrameBg": 0,
+    "isOnline": "0",
+    "heroType": 1,
+    "actor": "——",
+    "roleBirthday": "2/9",
+    "trust": 0,
+    "birthdayBonus": "14#85051#1;14#85051#1;14#85051#1",
+    "desc": "当奠基石从大摞大摞的稿纸中抬起头时，她才发觉自己生日已经在两个小时前悄悄溜走了。她不慌不慢地为自己冲了杯蛋糕味的咖啡，随后向着时钟的方向敬了一杯。|除了建筑，奠基石设计的生日蛋糕也颇受箱中众人的追捧。尽管这些缺乏饼干钢筋与海绵地基约束的结构总会在端上桌的前一刻塌陷。|奠基石在自己生日这天拉着蓝图做了十四个蛋糕，以此验证“头重脚轻生日蛋糕”的承重结构。其中五个被赠送给了同样迎来生日的柏林以东。",
+    "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
+    "desc2": "对混凝土建筑情有独钟的建筑师，理念成熟而激情不减的成功人士，你最善于规划空间的朋友之一。",
+    "mvskinId": 0,
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false
   }
 ]

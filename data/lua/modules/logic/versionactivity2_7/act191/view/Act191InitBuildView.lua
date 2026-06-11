@@ -80,7 +80,7 @@ function Act191InitBuildView:_onInitBuildItem(go, info, i)
 	self:addClickCb(btnBuy, self.selectInitBuild, self, i)
 
 	local heroGo = gohelper.findChild(go, "hero/heroitem")
-	local collectionGo = gohelper.findChild(go, "collection/collectionitem")
+	local fetterRoot = gohelper.findChild(go, "fetter")
 
 	for _, v in ipairs(info.detail) do
 		if not self.extraBuildIndex and v.type == Activity191Enum.InitBuildType.Extra then
@@ -93,13 +93,17 @@ function Act191InitBuildView:_onInitBuildItem(go, info, i)
 			self:addHero(heroGo, id, extra)
 		end
 
-		for _, id in ipairs(v.addItem) do
-			self:addCollection(collectionGo, id, extra)
+		local infoList = Act191InitBuildView.getFetterInfoList(v.addHero)
+
+		for _, fetterInfo in ipairs(infoList) do
+			local goFetter = self:getResInst(Activity191Enum.PrefabPath.FetterItem, fetterRoot)
+			local item = MonoHelper.addNoUpdateLuaComOnceToGo(goFetter, Act191FetterItem)
+
+			item:setData(fetterInfo.config, fetterInfo.count)
 		end
 	end
 
 	gohelper.setActive(heroGo, false)
-	gohelper.setActive(collectionGo, false)
 
 	self.bagAnimList[i] = go:GetComponent(gohelper.Type_Animator)
 end
@@ -176,6 +180,25 @@ function Act191InitBuildView:nextStep()
 
 	Activity191Controller.instance:nextStep()
 	ViewMgr.instance:closeView(self.viewName)
+end
+
+function Act191InitBuildView.getFetterInfoList(ids)
+	local cntDic = {}
+
+	for _, id in ipairs(ids) do
+		local roleCo = Activity191Config.instance:getRoleCo(id)
+		local fetterArr = string.split(roleCo.tag, "#")
+
+		for _, tag in ipairs(fetterArr) do
+			if not cntDic[tag] then
+				cntDic[tag] = 1
+			else
+				cntDic[tag] = cntDic[tag] + 1
+			end
+		end
+	end
+
+	return Activity191Helper.getActiveFetterInfoList(cntDic)
 end
 
 return Act191InitBuildView

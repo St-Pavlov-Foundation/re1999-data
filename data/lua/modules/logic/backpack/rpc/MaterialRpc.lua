@@ -292,6 +292,16 @@ function MaterialRpc:_onReceiveMaterialChangePush_default(msg, materialDataMOLis
 		end
 	end
 
+	for _, mo in ipairs(materialDataMOList) do
+		if mo.materilType == MaterialEnum.MaterialType.Item then
+			local itemConfig = ItemConfig.instance:getItemConfig(mo.materilType, mo.materilId)
+
+			if itemConfig and itemConfig.subType == ItemEnum.SubType.ItemConvert and ItemConvertHelper.isItemConvert(mo.materilId) then
+				self:showItemConvertView(mo)
+			end
+		end
+	end
+
 	self:simpleShowView(materialDataMOList)
 end
 
@@ -335,6 +345,18 @@ function MaterialRpc:simpleShowView(materialDataMOList)
 
 	RoomController.instance:popUpRoomBlockPackageView(materialDataMOList)
 	PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.CommonPropView, materialDataMOList)
+end
+
+function MaterialRpc:showItemConvertView(materialDataMO)
+	if not materialDataMO then
+		return
+	end
+
+	local param = {}
+
+	param.convertMaterial = materialDataMO
+
+	PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropConvertView, ViewName.CommonPropConvertView, param)
 end
 
 MaterialRpc.instance = MaterialRpc.New()

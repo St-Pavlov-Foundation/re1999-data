@@ -235,13 +235,7 @@ function CameraMgr:switchVirtualCamera(setIndex)
 	end
 end
 
-function CameraMgr:setSceneCameraActive(active, key)
-	if not self._unitCameraGO then
-		return
-	end
-
-	self._showUnitCameraKeyDict[key] = active and true or false
-
+function CameraMgr:getSceneCameraActive()
 	local show = true
 
 	for _, value in pairs(self._showUnitCameraKeyDict) do
@@ -251,6 +245,18 @@ function CameraMgr:setSceneCameraActive(active, key)
 			break
 		end
 	end
+
+	return show
+end
+
+function CameraMgr:setSceneCameraActive(active, key)
+	if not self._unitCameraGO then
+		return
+	end
+
+	self._showUnitCameraKeyDict[key] = active and true or false
+
+	local show = self:getSceneCameraActive()
 
 	gohelper.setActive(self._unitCameraGO, show)
 	PostProcessingMgr.instance:dispatchEvent(PostProcessingEvent.onUnitCameraVisibleChange, show)

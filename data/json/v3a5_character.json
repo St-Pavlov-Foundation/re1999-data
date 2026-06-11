@@ -16,5 +16,17 @@
     "profileId": 646701,
     "name": "轰轰吼叫匣·X",
     "enName": "<voffset=4>/</voffset>\"Rumbling Roaring Box\""
+  },
+  {
+    "id": 3801,
+    "profileId": 314001,
+    "name": "奠基石",
+    "enName": "<voffset=4>/ </voffset>Cornerstone"
+  },
+  {
+    "id": 3802,
+    "profileId": 650202,
+    "name": "蓝图",
+    "enName": ""
   }
 ]

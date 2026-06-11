@@ -217,18 +217,18 @@ function DungeonCumulativeRewardsTipsView.getEpisodeList()
 									table.insert(result, episodeConfig)
 								end
 							elseif chapterConfig.type == DungeonEnum.ChapterType.Normal then
-								local episodeConfig = DungeonConfig.instance:getEpisodeCO(episodeInfo.episodeId)
+								local config = DungeonConfig.instance:getEpisodeCO(episodeInfo.episodeId)
 
-								if episodeConfig then
-									if episodeConfig.type == DungeonEnum.EpisodeType.Normal then
+								if config then
+									if config.type == DungeonEnum.EpisodeType.Normal then
 										if episodeInfo.star < DungeonEnum.StarType.Advanced then
-											table.insert(result, episodeConfig)
+											table.insert(result, config)
 										end
 									elseif episodeInfo.star == 0 then
-										table.insert(result, episodeConfig)
+										table.insert(result, config)
 									end
 								else
-									logError("DungeonCumulativeRewardsTipsView._collectElementList episodeConfig is nil", tostring(episodeInfo.episodeId))
+									logError("DungeonCumulativeRewardsTipsView._collectElementList config is nil", tostring(episodeInfo.episodeId))
 								end
 							else
 								logError("DungeonCumulativeRewardsTipsView._collectElementList chapterConfig.type error", tostring(chapterConfig.type))

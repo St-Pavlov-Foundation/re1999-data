@@ -835,5 +835,32 @@
     "permanentUnlock": "2#24#1",
     "signature": "3154",
     "preStoryId": 0
+  },
+  {
+    "id": 32,
+    "chapterId": 0,
+    "unlock": "2#24#0",
+    "bonus": "",
+    "heroName": "柏林以东",
+    "photo": "302002",
+    "cgBg": "302001",
+    "order": 32,
+    "name": "柏林以东",
+    "nameEn": "East of Berlin",
+    "queryVersion": "3.8",
+    "episodeId": 0,
+    "main_pic": "rolestory_img_32",
+    "monster_pic": "",
+    "challengeBonus": "",
+    "activityId": 13821,
+    "activity_pic": "",
+    "cgUnlockEpisodeId": 0,
+    "cgUnlockStoryId": 302007,
+    "cgPos": "771.6#-18.4",
+    "cgScale": "1",
+    "mainviewName": "柏林以东",
+    "permanentUnlock": "2#24#1",
+    "signature": "3020",
+    "preStoryId": 0
   }
 ]

@@ -49,6 +49,7 @@ function GMToolViewContainer:buildViews()
 		GMSubViewNewFightView.New(),
 		GMSubViewBattle.New(),
 		GMSubViewFightPlayback.New(),
+		GMSubViewServerCommand.New(),
 		GMSubViewSodache.New(),
 		GMSubViewAudio.New(),
 		GMSubViewGuide.New(),

@@ -102,7 +102,7 @@ function FightLogProtobufHelper.getFightStepString(fightStepData, level, index, 
 	FightLogProtobufHelper.addStack(strTb, pre, stack, className)
 	table.insert(strTb, string.format("%s actType : %s %s", pre, fightStepData.actType, FightLogProtobufHelper.getActTypeName(fightStepData.actType)))
 
-	if fightStepData.actType == FightEnum.ActType.SKILL then
+	if fightStepData.actType == FightEnum.ActTySKILL or fightStepData.actType == FightEnum.ActType.DEVICE then
 		table.insert(strTb, string.format("%s fromId : %s 技能发起者:%s", pre, fightStepData.fromId, FightLogProtobufHelper.getEntityName(fightStepData.fromId)))
 		table.insert(strTb, string.format("%s toId : %s 技能承受者:%s", pre, fightStepData.toId, FightLogProtobufHelper.getEntityName(fightStepData.toId)))
 		table.insert(strTb, string.format("%s actId : %s 技能名字:%s timeline : %s", pre, fightStepData.actId, FightLogProtobufHelper.getSkillName(fightStepData.actId), FightLogProtobufHelper.getTimelineName(fightStepData.fromId, fightStepData.actId)))

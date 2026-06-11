@@ -10,6 +10,7 @@ function ConstAbCache:ctor()
 		PostProcessingMgr.MainHighProfilePath,
 		PostProcessingMgr.MainMiddleProfilePath,
 		PostProcessingMgr.MainLowProfilePath,
+		PostProcessingMgr.MainLowBrightnessProfilePath,
 		ExploreScenePPVolume.ExploreHighProfilePath,
 		ExploreScenePPVolume.ExploreMiddleProfilePath,
 		ExploreScenePPVolume.ExploreLowProfilePath,

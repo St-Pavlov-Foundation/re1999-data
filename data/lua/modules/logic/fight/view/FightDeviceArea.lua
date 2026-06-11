@@ -160,6 +160,22 @@ function FightDeviceArea:onDeviceBeforeFly()
 	self:setLineActive(false)
 end
 
+function FightDeviceArea:refreshStopEffect()
+	if not self.loaded then
+		return
+	end
+
+	local count = FightDeviceHelper.getDeviceAreaCount()
+
+	if count < 1 then
+		return
+	end
+
+	for _, deviceItem in ipairs(self.deviceItemList) do
+		deviceItem:refreshStopEffect()
+	end
+end
+
 function FightDeviceArea:refreshUI()
 	if not self.loaded then
 		return
@@ -377,6 +393,26 @@ function FightDeviceArea:playScanEffect(index, success)
 
 	cardItem:setSelectFrameActive(true)
 	cardItem:playScanEffect(success)
+end
+
+function FightDeviceArea:playStopEffect(targetId, skillId)
+	for _, cardItem in ipairs(self.deviceItemList) do
+		if cardItem:getUid() == targetId then
+			cardItem:playStopEffect(skillId)
+
+			return
+		end
+	end
+end
+
+function FightDeviceArea:restartDevice(targetId)
+	for _, cardItem in ipairs(self.deviceItemList) do
+		if cardItem:getUid() == targetId then
+			cardItem:restartDevice()
+
+			return
+		end
+	end
 end
 
 function FightDeviceArea:setLineActive(active)

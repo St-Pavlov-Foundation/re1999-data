@@ -252,21 +252,39 @@
     "audio": 431180141
   },
   {
-    "effectPath": "v2a8_mlde/mlde_skill2_innate",
+    "effectPath": "v3a3_yge/yge_innate",
     "target": 1,
-    "skinId": 312103,
-    "changedPath": "v3a3_mlde/mlde_innate1_01",
+    "skinId": 309203,
+    "changedPath": "v3a8_yge/yge_innate",
     "duration": 0.0,
-    "effectHangPoint": "",
-    "audio": 0
+    "effectHangPoint": "mountroot",
+    "audio": 430920341
   },
   {
-    "effectPath": "v2a8_mlde/mlde_skill2_innate_02",
+    "effectPath": "buff/buff_hudun_fire_01",
     "target": 1,
-    "skinId": 312103,
-    "changedPath": "v3a3_mlde/mlde_innate1_02",
+    "skinId": 309403,
+    "changedPath": "buff/buff_hudun_joefire_01",
     "duration": 0.0,
-    "effectHangPoint": "",
-    "audio": 0
+    "effectHangPoint": "mountroot",
+    "audio": 430940341
+  },
+  {
+    "effectPath": "buff/buff_hudun_fire_02",
+    "target": 1,
+    "skinId": 309403,
+    "changedPath": "buff/buff_hudun_joefire_02",
+    "duration": 0.0,
+    "effectHangPoint": "mountroot",
+    "audio": 430940342
+  },
+  {
+    "effectPath": "v3a5_llzhd/llzhd_innate",
+    "target": 1,
+    "skinId": 313903,
+    "changedPath": "v3a8_llzhd/llzhd_innate",
+    "duration": 0.0,
+    "effectHangPoint": "mountroot",
+    "audio": 431390341
   }
 ]

@@ -1954,5 +1954,41 @@
     "recommendLevelDesc": "",
     "openDay": 15,
     "evaluate": "10102#10201#10301#10401"
+  },
+  {
+    "activityId": 13809,
+    "stage": 1,
+    "layer": 1,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500416,
+    "desc": "非现实属类。体型庞大，与多种异象伴生，永不停止吹奏。人们举起双手，迎接太阳王与美好年代的辉光覆盖当下，直至在号角声中融入倒影。\n<i>我们活在这样的年头——城市从天上来，雨向着天空去。下一桩怪事儿会是什么？</i>",
+    "recommendLevelDesc": "",
+    "openDay": 1,
+    "evaluate": "10102#10201#10301#10401"
+  },
+  {
+    "activityId": 13809,
+    "stage": 2,
+    "layer": 1,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500417,
+    "desc": "非现实属类，形如战士，蝶翼鸟爪，永远执着于逝去的荣耀。\n“但枯萎的龙舌兰知道，化作蝴蝶不过是烧成碎片；但血腥的蜂蜜知道，化作蜂鸟只是凯旋的谎言。”\n<i>他们说，荣耀是太阳的血，滴落在黑曜石的锋尖上。</i>",
+    "recommendLevelDesc": "",
+    "openDay": 8,
+    "evaluate": "10102#10201#10301#10401"
+  },
+  {
+    "activityId": 13809,
+    "stage": 3,
+    "layer": 1,
+    "type": 0,
+    "enhanceRole": 0,
+    "episodeId": 13500418,
+    "desc": "“我也想有一个如假包换的血食怪叔叔。报社的邮件催促不动那些拖欠稿件的家伙，但血翼和獠牙或许可以。”\n<i>是否只要足够渴求，就可以看见理想实现的那一天。</i>",
+    "recommendLevelDesc": "",
+    "openDay": 15,
+    "evaluate": "10102#10201#10301#10401"
   }
 ]

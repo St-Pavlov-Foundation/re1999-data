@@ -41,6 +41,7 @@ function BaseLive2d:setResPath(resPath, loadedCb, loadedCbObj)
 	end
 
 	self:_clear()
+	self:initSpecialEffect(resPath)
 
 	self._resPath = resPath
 	self._resLoadedCb = loadedCb
@@ -112,6 +113,10 @@ end
 
 function BaseLive2d:isPlayingVoice()
 	return self._live2dVoice and self._live2dVoice:playing()
+end
+
+function BaseLive2d:isPlayingVoiceId(id)
+	return self._live2dVoice and self._live2dVoice:isPlayingVoiceId(id)
 end
 
 function BaseLive2d:getPlayVoiceStartTime()
@@ -327,6 +332,10 @@ function BaseLive2d:setBodyAnimation(bodyName, loop, mixTime)
 	if self._bodyChangeCallback then
 		self._bodyChangeCallback(self._bodyChangeCallbackObj, oldBodyName, bodyName)
 	end
+
+	if self.customEffectComp then
+		self.customEffectComp:onBodyChange(oldBodyName, bodyName)
+	end
 end
 
 function BaseLive2d:getCurBody()
@@ -509,6 +518,22 @@ end
 
 function BaseLive2d:getMouthController()
 	return self._cubismMouthController
+end
+
+function BaseLive2d:initSpecialEffect(resPath)
+	if not self.customEffectComp then
+		local skinName = string.match(resPath, "([^/]-)%.[^.]*$")
+		local clsName = string.format("Live2dSpecialEffect_%s", skinName)
+		local cls = _G[clsName]
+
+		if cls then
+			self.customEffectComp = MonoHelper.addNoUpdateLuaComOnceToGo(self._gameObj, cls)
+		end
+	end
+
+	if self.customEffectComp then
+		self.customEffectComp:setLive2d(self)
+	end
 end
 
 function BaseLive2d:onDestroy()

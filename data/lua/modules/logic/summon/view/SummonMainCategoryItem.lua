@@ -28,6 +28,7 @@ function SummonMainCategoryItem:_editableInitView()
 	self._goUnSelectRole = gohelper.findChild(self.viewGO, "#go_normal_role")
 	self._goSelectEquip = gohelper.findChild(self.viewGO, "#go_select_equip")
 	self._goUnSelectEquip = gohelper.findChild(self.viewGO, "#go_normal_equip")
+	self._goSelectImageMask = gohelper.findChildImage(self.viewGO, "#go_select_role/#image_mask")
 	self.tipsList = self:getUserDataTb_()
 end
 
@@ -146,6 +147,7 @@ function SummonMainCategoryItem:_initCurrentComponents()
 
 	self:_refreshName()
 	self:_refreshBannerLine()
+	self:_refreshMask()
 end
 
 function SummonMainCategoryItem:_refreshSelected_overseas()
@@ -343,6 +345,17 @@ end
 
 function SummonMainCategoryItem:cleanData()
 	self._mo = nil
+end
+
+function SummonMainCategoryItem:_refreshMask()
+	local poolCfg = self._mo.originConf
+	local maskParam = string.split(poolCfg.maskColor, "|")
+	local maskColor = self._goSelectImageMask.color
+	local hexColor = maskParam[1] or "#FFFFFF"
+
+	maskColor = GameUtil.parseColor(hexColor)
+	maskColor.a = maskParam[2] and tonumber(maskParam[2]) or 1
+	self._goSelectImageMask.color = maskColor
 end
 
 function SummonMainCategoryItem:_refreshName()

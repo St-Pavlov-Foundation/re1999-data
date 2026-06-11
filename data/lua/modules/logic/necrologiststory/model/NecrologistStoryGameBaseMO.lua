@@ -161,6 +161,20 @@ function NecrologistStoryGameBaseMO:setPlotSituationTab(plotId, dict)
 	self:setDataDirty()
 end
 
+function NecrologistStoryGameBaseMO:setPlotOptionSelected(plotId, optionId)
+	local plotMo = self:getPlotInfo(plotId, true)
+
+	plotMo:setOptionSelected(optionId)
+	self:setDataDirty()
+end
+
+function NecrologistStoryGameBaseMO:setPlotEndingUnlock(plotId, endingId)
+	local plotMo = self:getPlotInfo(plotId, true)
+
+	plotMo:setEndingUnlock(endingId)
+	self:setDataDirty()
+end
+
 function NecrologistStoryGameBaseMO:toString()
 	local jsonStr = cjson.encode(self.data)
 

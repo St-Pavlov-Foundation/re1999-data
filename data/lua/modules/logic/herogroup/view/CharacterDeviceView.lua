@@ -209,32 +209,24 @@ end
 function CharacterDeviceView:_refreshUI()
 	self:_refreshCardUI()
 
-	local skills1, skills2 = self._deviceMo:getPowerSkills()
-
-	self._powerSkills, self._specialPowerSkill = skills1, skills2
+	self._powerSkills = self._deviceMo:getPowerSkills()
+	self._specialPowerSkill = self._deviceMo:getSpecialPowerSkills()
 
 	local count1 = 0
 
 	if self._powerSkills then
 		for i, info in ipairs(self._powerSkills) do
 			local item = self:_getPowerSkillItem(i)
-			local skillId = info[1]
-			local skillCO = lua_skill.configDict[skillId]
-			local skillEffectCO = skillCO and skillCO.skillEffect > 0 and lua_skill_effect.configDict[skillCO.skillEffect]
-			local behavior1 = skillEffectCO and skillEffectCO.behavior1
+			local skillId = info.skillId
+			local energyType = info.energyType
+			local count = info.energyCount
+			local powerCo = lua_device_power.configDict[energyType] and lua_device_power.configDict[energyType][count]
 
-			if not string.nilorempty(behavior1) then
-				local split = string.splitToNumber(behavior1, "#")
-				local powerCo = lua_device_power.configDict[split[2]] and lua_device_power.configDict[split[2]][split[3]]
-
-				if powerCo then
-					UISpriteSetMgr.instance:setUiCharacterSprite(item.imgIcon, powerCo.powerIcon)
-				end
-			else
-				logError("行为效果为空：skillId=" .. skillId)
+			if powerCo then
+				UISpriteSetMgr.instance:setUiCharacterSprite(item.imgIcon, powerCo.powerIcon)
 			end
 
-			item.txtnum.text = string.format("<size=18>%s</size>%s", luaLang("multiple"), info[2])
+			item.txtnum.text = string.format("<size=18>%s</size>%s", luaLang("multiple"), info.count)
 
 			item.btn:AddClickListener(self._onDeviceNormalSkillCardClick, self, i)
 
@@ -253,11 +245,12 @@ function CharacterDeviceView:_refreshUI()
 	if self._specialPowerSkill then
 		for i, info in ipairs(self._specialPowerSkill) do
 			local item = self:_getSpecialPowerSkillItem(i)
-			local skillCO = lua_skill.configDict[info[1]]
+			local skillId = info.skillId
+			local skillCO = lua_skill.configDict[skillId]
 
 			item.simgIcon:LoadImage(ResUrl.getSkillIcon(skillCO.icon))
 
-			item.txtnum.text = string.format("<size=18>%s</size>%s", luaLang("multiple"), info[2])
+			item.txtnum.text = string.format("<size=18>%s</size>%s", luaLang("multiple"), info.count)
 
 			item.btn:AddClickListener(self._onDeviceSecialSkillCardClick, self, i)
 
@@ -274,21 +267,29 @@ end
 
 function CharacterDeviceView:_onDeviceNormalSkillCardClick(index)
 	if self._powerSkills then
-		local skillIdList = {
-			self._powerSkills[index][1]
-		}
+		local skillInfo = self._powerSkills[index]
 
-		self:_onDeviceSkillCardClick(skillIdList)
+		if skillInfo then
+			local skillIdList = {
+				skillInfo.skillId
+			}
+
+			self:_onDeviceSkillCardClick(skillIdList)
+		end
 	end
 end
 
 function CharacterDeviceView:_onDeviceSecialSkillCardClick(index)
 	if self._specialPowerSkill then
-		local skillIdList = {
-			self._specialPowerSkill[index][1]
-		}
+		local skillInfo = self._specialPowerSkill[index]
 
-		self:_onDeviceSkillCardClick(skillIdList)
+		if skillInfo then
+			local skillIdList = {
+				skillInfo.skillId
+			}
+
+			self:_onDeviceSkillCardClick(skillIdList)
+		end
 	end
 end
 

@@ -123,6 +123,14 @@ function SpineVoice:playing()
 	return self._playVoice
 end
 
+function SpineVoice:isPlayingVoiceId(id)
+	if not self._playVoice then
+		return false
+	end
+
+	return self._voiceConfig and self._voiceConfig.audio == id
+end
+
 function SpineVoice:onSpineVoiceAudioStop()
 	self._spineVoiceText:onVoiceStop()
 	self:_doCallback()

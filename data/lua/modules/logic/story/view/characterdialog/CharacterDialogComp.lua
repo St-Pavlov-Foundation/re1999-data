@@ -54,7 +54,9 @@ function CharacterDialogComp:_editableInitView()
 end
 
 function CharacterDialogComp:onOpen()
-	return
+	if self.viewContainer.initDialogFinish then
+		self.viewContainer:initDialogFinish()
+	end
 end
 
 function CharacterDialogComp:startDialog(groupId)
@@ -78,7 +80,9 @@ function CharacterDialogComp:_setDialog(step)
 		AudioMgr.instance:stopPlayingID(self._playingId)
 	end
 
-	self._playingId = AudioMgr.instance:trigger(self._dialogCo.voiceId)
+	if self._dialogCo.voiceId ~= 0 then
+		self._playingId = AudioMgr.instance:trigger(self._dialogCo.voiceId)
+	end
 end
 
 function CharacterDialogComp:_playGradualIn()
@@ -331,6 +335,10 @@ function CharacterDialogComp:_clear()
 	end
 
 	self._conMat:DisableKeyword("_GRADUAL_ON")
+end
+
+function CharacterDialogComp:onClose()
+	self:_clear()
 end
 
 function CharacterDialogComp:onDestroy()

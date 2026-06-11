@@ -145,6 +145,11 @@ function UnityVideoPlayer:play(url, loop, callback, callbackObj)
 end
 
 function UnityVideoPlayer:playLoadMedia(value)
+	if value ~= nil then
+		self._loop = value
+		self._videoPlayer.isLooping = self._loop
+	end
+
 	if self._needRawImage then
 		if self._rtTarget then
 			self._videoPlayer.targetTexture = self._rtTarget
@@ -231,6 +236,18 @@ function UnityVideoPlayer:ondestroy()
 	end
 
 	self._defaultTexture = nil
+
+	if self.matLoader then
+		self.matLoader:dispose()
+
+		self.matLoader = nil
+	end
+
+	if self.videoMat then
+		gohelper.destroy(self.videoMat)
+
+		self.videoMat = nil
+	end
 end
 
 function UnityVideoPlayer:getVideoPlayer()
@@ -331,6 +348,51 @@ function UnityVideoPlayer:setSkipOnDrop(skipOnDrop)
 	if self._videoPlayer then
 		self._videoPlayer.skipOnDrop = skipOnDrop
 	end
+end
+
+local MatVector = Vector4()
+
+function UnityVideoPlayer:resetEyeModeMat()
+	if not self._rawImage then
+		return
+	end
+
+	local active = EyeProtectionModeMgr.instance:getEyeModeActive()
+
+	if not active then
+		self._rawImage.material = nil
+
+		return
+	end
+
+	if not self.videoMat then
+		return self:loadMatAsset()
+	end
+
+	self._rawImage.material = self.videoMat
+	MatVector.x = EyeProtectionModeMgr.instance:getFactorValue()
+	MatVector.y = EyeProtectionModeMgr.instance:getIntensityValue()
+
+	self.videoMat:SetVector(AvProMgrConfig.MatUberBrightnessId, MatVector)
+end
+
+function UnityVideoPlayer:loadMatAsset()
+	if self.matLoader then
+		return
+	end
+
+	self.matLoader = MultiAbLoader.New()
+
+	self.matLoader:addPath(AvProMgrConfig.VideoMat)
+	self.matLoader:startLoad(self.onMatLoadDone, self)
+end
+
+function UnityVideoPlayer:onMatLoadDone()
+	local mat = self.matLoader:getFirstAssetItem():GetResource()
+
+	self.videoMat = UnityEngine.Material.New(mat)
+
+	self:resetEyeModeMat()
 end
 
 function UnityVideoPlayer:setVerticesDirty()

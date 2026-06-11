@@ -21316,5 +21316,425 @@
     "eventName": "play_monster630138_death",
     "bankName": "monster630138",
     "weapon": 16
+  },
+  {
+    "id": 431400111,
+    "eventName": "play_hero3140_skill01",
+    "bankName": "hero3140_skill",
+    "weapon": 20
+  },
+  {
+    "id": 431400112,
+    "eventName": "play_hero3140_skill01_voc",
+    "bankName": "hero3140_vo",
+    "weapon": 20
+  },
+  {
+    "id": 431400121,
+    "eventName": "play_hero3140_skill02",
+    "bankName": "hero3140_skill",
+    "weapon": 20
+  },
+  {
+    "id": 431400122,
+    "eventName": "play_hero3140_skill02_voc",
+    "bankName": "hero3140_vo",
+    "weapon": 20
+  },
+  {
+    "id": 431400123,
+    "eventName": "play_hero3140_counter",
+    "bankName": "hero3140_skill",
+    "weapon": 20
+  },
+  {
+    "id": 431400131,
+    "eventName": "play_hero3140_skillmax1",
+    "bankName": "hero3140_skill",
+    "weapon": 20
+  },
+  {
+    "id": 431400132,
+    "eventName": "play_hero3140_fightingvoc_29",
+    "bankName": "hero3140_vo",
+    "weapon": 20
+  },
+  {
+    "id": 431400133,
+    "eventName": "play_hero3140_skillmax2",
+    "bankName": "hero3140_skill",
+    "weapon": 20
+  },
+  {
+    "id": 431400141,
+    "eventName": "play_buff_hero3140_posstive01",
+    "bankName": "hero3140_skill",
+    "weapon": 0
+  },
+  {
+    "id": 431400142,
+    "eventName": "play_buff_hero3140_posstive02",
+    "bankName": "hero3140_skill",
+    "weapon": 0
+  },
+  {
+    "id": 431400191,
+    "eventName": "play_hero3140_born",
+    "bankName": "hero3140_skill",
+    "weapon": 0
+  },
+  {
+    "id": 431400192,
+    "eventName": "play_hero3140_death",
+    "bankName": "hero3140_skill",
+    "weapon": 0
+  },
+  {
+    "id": 430920311,
+    "eventName": "play_hero309203_skill01",
+    "bankName": "hero309203_skill_skin",
+    "weapon": 22
+  },
+  {
+    "id": 430920312,
+    "eventName": "play_hero309203_skill01_voc",
+    "bankName": "hero309203_vo_skin",
+    "weapon": 0
+  },
+  {
+    "id": 430920321,
+    "eventName": "play_hero309203_skill02",
+    "bankName": "hero309203_skill_skin",
+    "weapon": 0
+  },
+  {
+    "id": 430920322,
+    "eventName": "play_hero309203_skill02_voc",
+    "bankName": "hero309203_vo_skin",
+    "weapon": 0
+  },
+  {
+    "id": 430920331,
+    "eventName": "play_hero309203_skillmax",
+    "bankName": "hero309203_skill_skin",
+    "weapon": 9
+  },
+  {
+    "id": 430920332,
+    "eventName": "play_hero309203_fightingvoc_65",
+    "bankName": "hero309203_vo_skin",
+    "weapon": 0
+  },
+  {
+    "id": 430920341,
+    "eventName": "play_buff_hero309203_possive01",
+    "bankName": "hero309203_skill_skin",
+    "weapon": 9
+  },
+  {
+    "id": 430920391,
+    "eventName": "play_hero309203_born",
+    "bankName": "hero309203_skill_skin",
+    "weapon": 0
+  },
+  {
+    "id": 430920392,
+    "eventName": "play_hero309203_death",
+    "bankName": "hero309203_skill_skin",
+    "weapon": 0
+  },
+  {
+    "id": 431450111,
+    "eventName": "play_hero3145_skill01",
+    "bankName": "hero3145_skill",
+    "weapon": 14
+  },
+  {
+    "id": 431450112,
+    "eventName": "play_hero3145_skill01_voc",
+    "bankName": "hero3145_vo",
+    "weapon": 14
+  },
+  {
+    "id": 431450121,
+    "eventName": "play_hero3145_skill02",
+    "bankName": "hero3145_skill",
+    "weapon": 0
+  },
+  {
+    "id": 431450122,
+    "eventName": "play_hero3145_skill02_voc",
+    "bankName": "hero3145_vo",
+    "weapon": 0
+  },
+  {
+    "id": 431450131,
+    "eventName": "play_hero3145_skillmax",
+    "bankName": "hero3145_skill",
+    "weapon": 19
+  },
+  {
+    "id": 431450132,
+    "eventName": "play_hero3145_fightingvoc_29",
+    "bankName": "hero3145_vo",
+    "weapon": 19
+  },
+  {
+    "id": 431450141,
+    "eventName": "play_hero3145_possive01",
+    "bankName": "hero3145_skill",
+    "weapon": 0
+  },
+  {
+    "id": 431450142,
+    "eventName": "play_hero3145_possive02",
+    "bankName": "hero3145_skill",
+    "weapon": 0
+  },
+  {
+    "id": 431450191,
+    "eventName": "play_hero3145_born",
+    "bankName": "hero3145_skill",
+    "weapon": 0
+  },
+  {
+    "id": 431450192,
+    "eventName": "play_hero3145_death",
+    "bankName": "hero3145_skill",
+    "weapon": 0
+  },
+  {
+    "id": 462016511,
+    "eventName": "play_monster620165_skill01",
+    "bankName": "monster620165",
+    "weapon": 0
+  },
+  {
+    "id": 462016521,
+    "eventName": "play_monster620165_skill02",
+    "bankName": "monster620165",
+    "weapon": 21
+  },
+  {
+    "id": 462016531,
+    "eventName": "play_monster620165_skillmax",
+    "bankName": "monster620165",
+    "weapon": 21
+  },
+  {
+    "id": 462016592,
+    "eventName": "play_monster620165_death",
+    "bankName": "monster620165",
+    "weapon": 0
+  },
+  {
+    "id": 462023211,
+    "eventName": "play_monster620232_skill01",
+    "bankName": "monster620232",
+    "weapon": 0
+  },
+  {
+    "id": 462023221,
+    "eventName": "play_monster620232_skill02",
+    "bankName": "monster620232",
+    "weapon": 21
+  },
+  {
+    "id": 462023231,
+    "eventName": "play_monster620232_skillmax",
+    "bankName": "monster620232",
+    "weapon": 20
+  },
+  {
+    "id": 462023292,
+    "eventName": "play_monster620232_death",
+    "bankName": "monster620232",
+    "weapon": 0
+  },
+  {
+    "id": 462031611,
+    "eventName": "play_monster620316_skill01",
+    "bankName": "monster620316",
+    "weapon": 0
+  },
+  {
+    "id": 462031621,
+    "eventName": "play_monster620316_skill02",
+    "bankName": "monster620316",
+    "weapon": 20
+  },
+  {
+    "id": 462031631,
+    "eventName": "play_monster620316_skillmax",
+    "bankName": "monster620316",
+    "weapon": 20
+  },
+  {
+    "id": 462031692,
+    "eventName": "play_monster620316_death",
+    "bankName": "monster620316",
+    "weapon": 0
+  },
+  {
+    "id": 463013711,
+    "eventName": "play_monster630137_skill01",
+    "bankName": "monster630137",
+    "weapon": 2
+  },
+  {
+    "id": 463013721,
+    "eventName": "play_monster630137_skill02",
+    "bankName": "monster630137",
+    "weapon": 16
+  },
+  {
+    "id": 463013731,
+    "eventName": "play_monster630137_skillmax",
+    "bankName": "monster630137",
+    "weapon": 16
+  },
+  {
+    "id": 463013792,
+    "eventName": "play_monster630137_death",
+    "bankName": "monster630137",
+    "weapon": 0
+  },
+  {
+    "id": 464015911,
+    "eventName": "play_monster640159_skill01",
+    "bankName": "monster640159",
+    "weapon": 14
+  },
+  {
+    "id": 464015921,
+    "eventName": "play_monster640159_skill02",
+    "bankName": "monster640159",
+    "weapon": 14
+  },
+  {
+    "id": 464015931,
+    "eventName": "play_monster640159_skillmax",
+    "bankName": "monster640159",
+    "weapon": 14
+  },
+  {
+    "id": 464015992,
+    "eventName": "play_monster640159_death",
+    "bankName": "monster640159",
+    "weapon": 0
+  },
+  {
+    "id": 467041111,
+    "eventName": "play_monster670411_skill01_1",
+    "bankName": "monster670411",
+    "weapon": 0
+  },
+  {
+    "id": 467041112,
+    "eventName": "play_monster670411_skill01_2",
+    "bankName": "monster670411",
+    "weapon": 20
+  },
+  {
+    "id": 467041121,
+    "eventName": "play_monster670411_skill02",
+    "bankName": "monster670411",
+    "weapon": 20
+  },
+  {
+    "id": 467041131,
+    "eventName": "play_monster670411_passive01",
+    "bankName": "monster670411",
+    "weapon": 0
+  },
+  {
+    "id": 467041141,
+    "eventName": "play_monster670411_skillmax",
+    "bankName": "monster670411",
+    "weapon": 20
+  },
+  {
+    "id": 467041191,
+    "eventName": "monster670411",
+    "bankName": "monster670411",
+    "weapon": 0
+  },
+  {
+    "id": 467041192,
+    "eventName": "play_monster670411_passive02",
+    "bankName": "monster670411",
+    "weapon": 0
+  },
+  {
+    "id": 467041193,
+    "eventName": "play_monster670411_death",
+    "bankName": "monster670411",
+    "weapon": 0
+  },
+  {
+    "id": 431390311,
+    "eventName": "play_hero313903_skill01_1",
+    "bankName": "hero313903_skill_skin",
+    "weapon": 8
+  },
+  {
+    "id": 431390312,
+    "eventName": "play_hero313903_skill01_2",
+    "bankName": "hero313903_skill_skin",
+    "weapon": 8
+  },
+  {
+    "id": 431390313,
+    "eventName": "play_hero313903_skill01_3",
+    "bankName": "hero313903_skill_skin",
+    "weapon": 8
+  },
+  {
+    "id": 431390314,
+    "eventName": "play_hero313903_skill01_voc",
+    "bankName": "hero313903_vo_skin",
+    "weapon": 8
+  },
+  {
+    "id": 431390321,
+    "eventName": "play_hero313903_skill02",
+    "bankName": "hero313903_skill_skin",
+    "weapon": 8
+  },
+  {
+    "id": 431390322,
+    "eventName": "play_hero313903_skill02_voc",
+    "bankName": "hero313903_vo_skin",
+    "weapon": 8
+  },
+  {
+    "id": 431390331,
+    "eventName": "play_hero313903_skillmax",
+    "bankName": "hero313903_skill_skin",
+    "weapon": 8
+  },
+  {
+    "id": 431390332,
+    "eventName": "play_hero313903_fightingvoc_65",
+    "bankName": "hero313903_vo_skin",
+    "weapon": 8
+  },
+  {
+    "id": 431390341,
+    "eventName": "play_buff_hero313903_possive01",
+    "bankName": "hero313903_skill_skin",
+    "weapon": 8
+  },
+  {
+    "id": 431390391,
+    "eventName": "play_hero313903_born",
+    "bankName": "hero313903_skill_skin",
+    "weapon": 8
+  },
+  {
+    "id": 431390392,
+    "eventName": "play_hero313903_death",
+    "bankName": "hero313903_skill_skin",
+    "weapon": 8
   }
 ]

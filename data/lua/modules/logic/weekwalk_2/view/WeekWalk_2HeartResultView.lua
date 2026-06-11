@@ -103,8 +103,8 @@ function WeekWalk_2HeartResultView:_initSpineNodes()
 	self._uiSpine:useRT()
 	self._uiSpine:setShareRT(CharacterVoiceEnum.RTShareType.Normal, self.viewName)
 
-	self._txtSayCn = gohelper.findChildText(self._goleft, "txtSayCn")
-	self._txtSayEn = gohelper.findChildText(self._goleft, "SayEn/txtSayEn")
+	self._txtSayCn = gohelper.findChildText(self._goleft, "layout/txtSayCn")
+	self._txtSayEn = gohelper.findChildText(self._goleft, "layout/txtSayEn")
 	self._txtSayCn.text = ""
 	self._txtSayEn.text = ""
 end

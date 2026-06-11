@@ -1878,4 +1878,12 @@ function ResUrl.getV3a7WmzSingleBg(resName)
 	return string.format("singlebg/v3a7_wmz_singlebg/%s.png", resName)
 end
 
+function ResUrl.getV3a8DianJiShiSingleBg(resName)
+	return string.format("singlebg/v3a8_dianjishi_singlebg/%s.png", resName)
+end
+
+function ResUrl.getV3a8WarmUpSingleBg(resName)
+	return string.format("singlebg/v3a8_warmup_singlebg/%s.png", resName)
+end
+
 return ResUrl

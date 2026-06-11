@@ -501,4 +501,8 @@ function WaitGuideActionOpenViewWithCondition.enterTowerFirstMap()
 	return TowerV3a7Model.instance:inFirstMap()
 end
 
+function WaitGuideActionOpenViewWithCondition.enterEchoSong(id)
+	return V3a8EchoSongModel.instance:getGameId() == tonumber(id)
+end
+
 return WaitGuideActionOpenViewWithCondition

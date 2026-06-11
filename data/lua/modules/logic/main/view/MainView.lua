@@ -46,6 +46,15 @@ function MainView:onInitView()
 		self._btngm = gohelper.findChildButtonWithAudio(guideGMNode, "#btn_gm")
 	end
 
+	if GameFacade.isKOLTest() then
+		local url = "ui/viewres/fight/fightstandardepisodebtn.prefab"
+
+		self.fightStandardEpisodeLoader = MultiAbLoader.New()
+
+		self.fightStandardEpisodeLoader:addPath(url)
+		self.fightStandardEpisodeLoader:startLoad(self._onLoadFightStandardEpisodeFinish, self)
+	end
+
 	self._gorighttop = gohelper.findChild(self.viewGO, "#go_righttop")
 	self._btnpower = gohelper.findChildButtonWithAudio(self.viewGO, "right/#btn_power")
 	self._btnrole = gohelper.findChildButtonWithAudio(self.viewGO, "right/#btn_role")
@@ -80,6 +89,15 @@ function MainView:onInitView()
 	if self._editableInitView then
 		self:_editableInitView()
 	end
+end
+
+function MainView:_onLoadFightStandardEpisodeFinish(loader)
+	local resObj = loader:getFirstAssetItem():GetResource()
+
+	self.fightStandardEpisodeGO = gohelper.clone(resObj, self.viewGO)
+	self.btnTestStandardEpisode = gohelper.findChildButtonWithAudio(self.fightStandardEpisodeGO, "")
+
+	self.btnTestStandardEpisode:AddClickListener(self._btnTestStandardEpisodeOnClick, self)
 end
 
 function MainView:addEvents()
@@ -123,6 +141,10 @@ function MainView:removeEvents()
 
 	if self._btngm then
 		self._btngm:RemoveClickListener()
+	end
+
+	if self.btnTestStandardEpisode then
+		self.btnTestStandardEpisode:RemoveClickListener()
 	end
 
 	self._btnpower:RemoveClickListener()
@@ -205,6 +227,10 @@ function MainView:_setViewVisible(value)
 end
 
 function MainView:_onPlayOpenAnim()
+	if CommandStationEnum.ForceHideCommandStation then
+		return
+	end
+
 	local zeroTime = WeatherModel.instance:getZeroTime()
 	local curTime = CommandStationController.getSaveNumber(CommandStationEnum.PrefsKey.MainViewEntryAnim)
 
@@ -245,6 +271,10 @@ function MainView:_btnsummonOnClick()
 end
 
 function MainView:_btncopostOnClick()
+	if CommandStationEnum.ForceHideCommandStation then
+		return
+	end
+
 	if OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.CommandStation) then
 		CommandStationController.instance:openCommandStationEnterAnimView()
 	else
@@ -327,9 +357,14 @@ function MainView:_refreshBtns()
 	gohelper.setActive(self._goroomlock, not isUnLockRoom)
 	gohelper.setActive(self._btnmail.gameObject, OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.Mail))
 	gohelper.setActive(self._btnsummon.gameObject, OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.Summon))
-	gohelper.setActive(self._btncopost.gameObject, OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.CommandStation) and not VersionValidator.instance:isInReviewing())
 	gohelper.setActive(self._btnrole.gameObject, OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.Role))
 	gohelper.setActive(self._btnswitchrole.gameObject, OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.MainThumbnail))
+
+	if CommandStationEnum.ForceHideCommandStation then
+		gohelper.setActive(self._btncopost.gameObject, false)
+	else
+		gohelper.setActive(self._btncopost.gameObject, OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.CommandStation) and not VersionValidator.instance:isInReviewing())
+	end
 end
 
 function MainView:_setBtnPos(btns)
@@ -346,6 +381,10 @@ end
 
 function MainView:_btngmOnClick()
 	ViewMgr.instance:openView(ViewName.GMToolView)
+end
+
+function MainView:_btnTestStandardEpisodeOnClick()
+	ViewMgr.instance:openView(ViewName.GMFightStandardEpisodeForTestServerView)
 end
 
 function MainView:_btnmailOnClick()
@@ -1007,6 +1046,12 @@ function MainView:_tryDoMainViewGuide()
 end
 
 function MainView:onClose()
+	if self.fightStandardEpisodeLoader then
+		self.fightStandardEpisodeLoader:dispose()
+
+		self.fightStandardEpisodeLoader = nil
+	end
+
 	TaskDispatcher.cancelTask(self._onRefreshDeadline, self)
 	TaskDispatcher.cancelTask(self._checkCamera, self)
 	LateUpdateBeat:Remove(self._forceUpdateCameraPos, self)

@@ -26581,7 +26581,7 @@
     "color": 0,
     "notAddLink": 0,
     "isSpecialCharacter": 0,
-    "desc": "战场弥漫着雾气，使你看不清黄金国遗骸并增强其技能"
+    "desc": "战场弥漫着雾气，使你看不清黄金国遗骸并增强其的技能"
   },
   {
     "id": 31460001,
@@ -26934,5 +26934,333 @@
     "notAddLink": 1,
     "isSpecialCharacter": 0,
     "desc": ""
+  },
+  {
+    "id": 30940113,
+    "name": "高温回火<id:3>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，对敌方全体造成300%现实创伤，命中时赋予2层【燃烧】；自身每拥有1层【燃烧】额外造成5%现实创伤；攻击后使己方全体获得J攻击*75%的护盾，若目标已持有护盾，将此护盾值叠加至原护盾上，叠加的护盾值不超过J攻击*600%；并将己方全体的【护盾】延长至2回合，自身每携带1层【燃烧】额外提升 5%护盾系数；攻击后使自身激情+1，每回合至多+2"
+  },
+  {
+    "id": 30940114,
+    "name": "高温回火<id:4>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，对敌方全体造成400%现实创伤，命中时赋予2层【燃烧】；自身每拥有1层【燃烧】额外造成7.5%现实创伤；攻击后使己方全体获得J攻击*75%的护盾，若目标已持有护盾，将此护盾值叠加至原护盾上，叠加的护盾值不超过J攻击*600%；并将己方全体的【护盾】延长至2回合，自身每携带1层【燃烧】额外提升 5%护盾系数；攻击后使自身激情+1，每回合至多+2"
+  },
+  {
+    "id": 30940115,
+    "name": "此身为炉膛",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 30940116,
+    "name": "此身为炉膛Ⅲ",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 116380010,
+    "name": "状态异常集合<id:116380010>",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "共有6种效果：【伤口】【中毒】【流血】【恐惧】【致盲】【失准】（优先赋予未拥有的效果）"
+  },
+  {
+    "id": 109380001,
+    "name": "空置",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "会使太阳的宠臣对持有者造成额外本源创伤"
+  },
+  {
+    "id": 109380002,
+    "name": "保守主义",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "额外行动时，暴击率降低100%，暴击创伤降低100%（无法驱散）"
+  },
+  {
+    "id": 109380007,
+    "name": "仰望",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "术法威力-15%，仪式威力-15%，造成本源创伤-15%（无法驱散，可叠层）"
+  },
+  {
+    "id": 119381115,
+    "name": "记忆的碎片",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "单体攻击，对攻击力最高的敌方，造成400%精神创伤"
+  },
+  {
+    "id": 119381116,
+    "name": "请记住我们",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "群体攻击，对敌方全体造成200%精神创伤"
+  },
+  {
+    "id": 31450111,
+    "name": "往日幽影<id:1>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "创伤加成提升，相当于回声谣攻击的0.6%；每持有1层，额外获得1%创伤加成，至多叠加15层（每层独立计算持续时间）"
+  },
+  {
+    "id": 31450112,
+    "name": "往日幽影<id:2>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "创伤加成提升，相当于回声谣攻击的0.6%；每持有1层，额外获得1%创伤加成，至多叠加20层（每层独立计算持续时间）"
+  },
+  {
+    "id": 31450113,
+    "name": "往日幽影<id:3>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "创伤加成提升，相当于回声谣攻击的0.8%；每持有1层，额外获得1.5%创伤加成，至多叠加20层（每层独立计算持续时间）"
+  },
+  {
+    "id": 31450114,
+    "name": "往日幽影<id:4>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "创伤加成提升，相当于回声谣攻击的1.2%；每持有1层，额外获得2%创伤加成，至多叠加20层（每层独立计算持续时间）"
+  },
+  {
+    "id": 31450131,
+    "name": "空躯干<id:1>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "现实防御降低10%，精神防御降低10%，暴击防御降低10%"
+  },
+  {
+    "id": 31450133,
+    "name": "空躯干<id:2>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "现实防御降低15%，精神防御降低15%，暴击防御降低15%"
+  },
+  {
+    "id": 31450132,
+    "name": "恍然如故<id:1>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "每拥有1层【往日幽影<id:1>】，可获得1%的暴击创伤"
+  },
+  {
+    "id": 31450134,
+    "name": "恍然如故<id:2>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "每拥有1层【往日幽影<id:2>】，可获得1%的暴击创伤"
+  },
+  {
+    "id": 31450135,
+    "name": "恍然如故<id:3>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "每拥有1层【往日幽影<id:3>】，可获得1%的暴击创伤"
+  },
+  {
+    "id": 31450136,
+    "name": "恍然如故<id:4>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "每拥有1层【往日幽影<id:4>】，可获得1%的暴击创伤"
+  },
+  {
+    "id": 31450181,
+    "name": "光的生息",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "混沌交感能量+1，使回声谣获得1层【久违的光】"
+  },
+  {
+    "id": 31450182,
+    "name": "光的生息Ⅱ",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "混沌交感能量+2，使回声谣获得1层【久违的光】"
+  },
+  {
+    "id": 31450183,
+    "name": "混沌交感能量Ⅰ",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "混沌交感能量+1"
+  },
+  {
+    "id": 31450184,
+    "name": "混沌交感能量Ⅱ",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "混沌交感能量+2"
+  },
+  {
+    "id": 31450185,
+    "name": "混沌交感能量Ⅲ",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "混沌交感能量+3"
+  },
+  {
+    "id": 31450121,
+    "name": "久违的光",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "可发动【术具】释放【明日所期盼】"
+  },
+  {
+    "id": 31450141,
+    "name": "告慰之歌",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "损失生命时获得【余念】，相当于本次损失生命百分比同等比例的【余念】最大值"
+  },
+  {
+    "id": 314501411,
+    "name": "余念",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "当生命值扣除至1时，剩余的伤害由【余念<id:1>】承担；【余念<id:1>】上限相当于回声谣攻击的500%"
+  },
+  {
+    "id": 314501412,
+    "name": "余念<id:1>",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 31450142,
+    "name": "修复",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "累积4层后，可将自身处于【损耗】的【术具】重新启动，至多叠加4层"
+  },
+  {
+    "id": 31450143,
+    "name": "流转：往日所寻求",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "该术具释放该咒语后，自动切换到对应的咒语"
+  },
+  {
+    "id": 31450144,
+    "name": "流转<id:3145>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "若持有【久违的光】，则释放该咒语后，自动切换至【明日所期盼】，否则自动切换至【往日所寻求】"
+  },
+  {
+    "id": 31450145,
+    "name": "流转：明日所期盼",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "该术具释放该咒语后，自动切换到对应的咒语"
+  },
+  {
+    "id": 31450146,
+    "name": "明日所期盼",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 31450147,
+    "name": "往日所寻求",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 31160301,
+    "name": "嘶嘶！<id:2>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "单体攻击，造成100%/200%/500%精神创伤，本次攻击受到30%/60%/100%仪式威力影响，施加1/2/4层【石棉鳞片】，获得0/1/2点激情（视为仪式，不消耗行动点）"
+  },
+  {
+    "id": 31160302,
+    "name": "嘶嘶！<id:3>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "单体攻击，造成150%/300%/750%精神创伤，本次攻击受到30%/60%/100%仪式威力影响，施加1/2/4层【石棉鳞片】，获得0/1/2点激情（视为仪式，不消耗行动点）"
+  },
+  {
+    "id": 31160303,
+    "name": "减益合集<id:3116>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "共有6种效果：【致盲】，【失准】，【裂伤Ⅰ】，【明昧】，【脆弱<id:3116>】，【忧惧<id:3116>】（优先赋予未拥有的效果）"
+  },
+  {
+    "id": 31160304,
+    "name": "脆弱<id:3116>",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 31160305,
+    "name": "忧惧<id:3116>",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 31160306,
+    "name": "意识串流",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "仪式威力提升20%，攻击时，目标每持有1种【减益集合<id:3116>】，额外提升2%仪式威力，至多提升20%"
   }
 ]

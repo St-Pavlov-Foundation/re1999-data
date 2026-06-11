@@ -15,6 +15,36 @@ function SummonCharacterProbUpPreloadConfig.getCharacterItemCountByName(name)
 	return SummonCharacterProbUpPreloadConfig.characterItemCounts[name] or 1
 end
 
+SummonCharacterProbUpPreloadConfig.preloadLists.SummonCharacterProbUpVer381 = {
+	"singlebg/summon/heroversion_3_8/v3a8_dianjishi/v3a8_dianjishi_role.png",
+	"singlebg/summon/heroversion_3_8/v3a8_dianjishi/v3a8_dianjishi_fullbg.png"
+}
+SummonCharacterProbUpPreloadConfig.preloadLists.SummonCharacterProbUpVer383 = {
+	"singlebg/summon/heroversion_3_8/v3a8_falangyan/v3a8_falangyan_role.png",
+	"singlebg/summon/heroversion_3_8/v3a8_falangyan/v3a8_falangyan_fullbg.png"
+}
+SummonCharacterProbUpPreloadConfig.preloadLists.SummonStrongOneCustomPick38 = {
+	"singlebg/characterdestiny/character_destiny_new_fullbg01.png",
+	"singlebg/summon/heroversion_2_3/v2a3_selfselectsix/v2a3_selfselectsix_reshapefullbg.png",
+	"singlebg/summon/heroversion_2_4/v2a4_selfselectsix/v2a4_selfselectsix_role1.png",
+	"singlebg/summon/heroversion_3_8/v3a8_selfselectsix/v3a8_selfselectsix_role.png",
+	"singlebg/summon/heroversion_2_3/v2a3_selfselectsix/v2a3_selfselectsix_fullbg.png"
+}
+SummonCharacterProbUpPreloadConfig.preloadLists.SummonCharacterProbUpVer384 = {
+	"singlebg/summon/heroversion_2_3/zhixinquaner/v2a3_summon_zhixinquaner_dec4.png",
+	"singlebg/summon/heroversion_2_3/zhixinquaner/v2a3_summon_zhixinquaner_role1.png",
+	"singlebg/summon/heroversion_2_3/zhixinquaner/v2a3_summon_zhixinquaner_fullbg.png"
+}
+SummonCharacterProbUpPreloadConfig.preloadLists.SummonCharacterProbUpVer382 = {
+	"singlebg/summon/heroversion_3_4/v3a4_lusijian/v3a4_lusijian_dec04.png",
+	"singlebg/summon/heroversion_3_4/v3a4_lusijian/v3a4_lusijian_rolefront_bg.png",
+	"singlebg/summon/heroversion_3_4/v3a4_lusijian/v3a4_lusijian_role.png",
+	"singlebg/summon/heroversion_3_5/v3a5_luolunzi/v3a5_luolunzi_fullbg.png"
+}
+SummonCharacterProbUpPreloadConfig.preloadLists.SummonCharacterProbUpVer380 = {
+	"singlebg/summon/heroversion_3_8/v3a8_huishengyao/v3a8_huishengyao_roel.png",
+	"singlebg/summon/heroversion_3_8/v3a8_huishengyao/v3a8_huishengyao_fullbg.png"
+}
 SummonCharacterProbUpPreloadConfig.preloadLists.SummonCharacterProbUpVer371 = {
 	"singlebg/summon/heroversion_3_7/v3a7_xiaoruian/v3a7_xiaoruian_dec01.png",
 	"singlebg/summon/heroversion_3_7/v3a7_xiaoruian/v3a7_xiaoruian_dec04.png",

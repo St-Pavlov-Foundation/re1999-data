@@ -3,6 +3,52 @@
 module("modules.logic.fight.model.data.FightRoundData", package.seeall)
 
 local FightRoundData = FightDataClass("FightRoundData")
+local stringSub = string.sub
+local stringByte = string.byte
+local stringChar = string.char
+local tableConcat = table.concat
+local UnzipBuffer = SLFramework.GameUpdate.UnityZipUtil.UnzipBuffer
+local fightStepFunc = FightDef_pb.FightStep
+
+local function readInt(bytes, idx)
+	local b1, b2, b3, b4 = stringByte(bytes, idx, idx + 3)
+	local val = b1 * 16777216 + b2 * 65536 + b3 * 256 + b4
+
+	return val, idx + 4
+end
+
+local function decodeStep(bytes)
+	if not bytes or #bytes == 0 then
+		return {}
+	end
+
+	local idx = 1
+	local count, newIdx = readInt(bytes, idx)
+
+	idx = newIdx
+
+	local steps = {}
+	local stepIndex = 1
+
+	for _ = 1, count do
+		local len
+
+		len, idx = readInt(bytes, idx)
+
+		local stepBytes = stringSub(bytes, idx, idx + len - 1)
+
+		idx = idx + len
+
+		local fightStep = fightStepFunc()
+
+		fightStep:ParseFromString(stepBytes)
+
+		steps[stepIndex] = fightStep
+		stepIndex = stepIndex + 1
+	end
+
+	return steps
+end
 
 function FightRoundData:onConstructor(proto)
 	if not proto then
@@ -10,7 +56,30 @@ function FightRoundData:onConstructor(proto)
 	end
 
 	self.hurtMergeFlag = {}
-	self.fightStep = self:buildFightStep(proto.fightStep)
+
+	if proto:HasField("fightStepBytes") then
+		local fightStepBytes = UnzipBuffer(proto.fightStepBytes)
+		local charList = {}
+		local charIndex = 1
+
+		for i = 0, fightStepBytes.Length - 1 do
+			charList[charIndex] = stringChar(fightStepBytes[i])
+			charIndex = charIndex + 1
+		end
+
+		local list = decodeStep(tableConcat(charList, ""))
+
+		self.fightStep = self:buildFightStep(list)
+		proto.fightStepBytes = ""
+
+		if isDebugBuild then
+			for i = 1, #list do
+				table.insert(proto.fightStep, list[i])
+			end
+		end
+	else
+		self.fightStep = self:buildFightStep(proto.fightStep)
+	end
 
 	if proto:HasField("actPoint") then
 		self.actPoint = proto.actPoint

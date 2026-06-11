@@ -4,6 +4,8 @@ module("modules.logic.necrologiststory.common.NecrologistStoryHelper", package.s
 
 local NecrologistStoryHelper = class("NecrologistStoryHelper")
 
+NecrologistStoryHelper.EmptyString = ""
+
 function NecrologistStoryHelper.addHyperLinkClick(textComp, clickCallback, clickCallbackObj)
 	if gohelper.isNil(textComp) then
 		logError("textComp is nil, please check !!!")
@@ -42,44 +44,26 @@ function NecrologistStoryHelper.buildDesc(desc, bracketColor)
 end
 
 function NecrologistStoryHelper.addLink(desc)
-	local count = 0
-	local hasLink = false
+	local result = string.gsub(desc, "%[(.-)%]", NecrologistStoryHelper._replaceDescTagFunc)
 
-	desc, count = string.gsub(desc, "%[(.-)%]", NecrologistStoryHelper._replaceDescTagFunc1)
-	hasLink = count ~= 0
-	desc, count = string.gsub(desc, "【(.-)】", NecrologistStoryHelper._replaceDescTagFunc2)
+	result = string.gsub(result, "【(.-)】", NecrologistStoryHelper._replaceDescTagFunc)
 
-	if count ~= 0 then
-		hasLink = true
-	end
+	local hasLink = string.find(result, "<link=") ~= nil
 
-	return desc, hasLink
+	return result, hasLink
 end
 
-function NecrologistStoryHelper._replaceDescTagFunc1(name)
-	local co = NecrologistStoryConfig.instance:getIntroduceCoByName(name)
-
+function NecrologistStoryHelper._replaceDescTagFunc(name)
 	name = NecrologistStoryHelper.removeRichTag(name)
+
+	local introduceId = tonumber(name)
+	local co = NecrologistStoryConfig.instance:getIntroduceCo(introduceId) or NecrologistStoryConfig.instance:getIntroduceCoByName(name)
 
 	if not co then
 		return name
 	end
 
-	if not co.notAddLink or co.notAddLink == 0 then
-		return string.format("<u><link=%s>%s</link></u>", co.id, name)
-	end
-
-	return name
-end
-
-function NecrologistStoryHelper._replaceDescTagFunc2(name)
-	local co = NecrologistStoryConfig.instance:getIntroduceCoByName(name)
-
-	name = NecrologistStoryHelper.removeRichTag(name)
-
-	if not co then
-		return name
-	end
+	name = co.name
 
 	if not co.notAddLink or co.notAddLink == 0 then
 		return string.format("<u><link=%s>%s</link></u>", co.id, name)
@@ -277,6 +261,81 @@ function NecrologistStoryHelper.getCenterPosAndSize(bl, tr, tmpText, camera)
 	local height = trPos.y - blPos.y
 
 	return centerPos, width, height
+end
+
+function NecrologistStoryHelper.getOptionDesc(optionData, isFinish)
+	local isEnding = optionData.isEnding
+
+	if isEnding then
+		return isFinish and NecrologistStoryHelper.getEndingLang(optionData.id) or NecrologistStoryHelper.EmptyString
+	end
+
+	local optionDescs = string.split(NecrologistStoryHelper.getDescByConfig(optionData.config), "#")
+
+	return optionDescs[optionData.index] or NecrologistStoryHelper.EmptyString
+end
+
+function NecrologistStoryHelper.getEndingLang(endingId)
+	local langKey = string.format("necrologist_story_ending_%d", endingId)
+
+	return luaLang(langKey)
+end
+
+function NecrologistStoryHelper.setWeatherIcon(imgWeather, weather, setNativeSize)
+	local hasIcon = weather and NecrologistStoryEnum.NotWeatherIcon[weather] == nil or false
+
+	gohelper.setActive(imgWeather, hasIcon)
+
+	if hasIcon then
+		local icon = string.format("rolestory_weather%s", weather)
+
+		UISpriteSetMgr.instance:setRoleStorySprite(imgWeather, icon, setNativeSize)
+	end
+end
+
+function NecrologistStoryHelper.setWeatherWihteIcon(imgWeather, weather, setNativeSize)
+	local hasIcon = weather and NecrologistStoryEnum.NotWeatherIcon[weather] == nil or false
+
+	gohelper.setActive(imgWeather, hasIcon)
+
+	if hasIcon then
+		local icon = string.format("rolestory_weather%s_1", weather)
+
+		UISpriteSetMgr.instance:setRoleStorySprite(imgWeather, icon, setNativeSize)
+	end
+end
+
+function NecrologistStoryHelper.setWeatherTxt(txtWeather, weather)
+	if not weather then
+		return
+	end
+
+	txtWeather.text = luaLang(string.format("necrologiststory_weather_%s", weather))
+end
+
+function NecrologistStoryHelper.stringTotimeData(str)
+	if string.nilorempty(str) then
+		return
+	end
+
+	local _, _, y, m1, d = string.find(str, "(%d+)-(%d+)-(%d+)")
+
+	return true, y, m1, d
+end
+
+function NecrologistStoryHelper.getStoryGroupIndex(storyGroup)
+	return storyGroup % 100
+end
+
+function NecrologistStoryHelper.getTimeStrByConfig(config)
+	if not string.nilorempty(config.date) then
+		return config.date
+	end
+
+	local displayHour, minute = NecrologistStoryHelper.getTimeFormat2(config.time)
+	local timeStr = string.format("%d:%02d", displayHour, minute)
+
+	return timeStr
 end
 
 return NecrologistStoryHelper

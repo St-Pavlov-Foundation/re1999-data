@@ -30,6 +30,20 @@ function FightDeviceAreaInfoData:onConstructor(proto)
 	self:updateShowPowerList()
 end
 
+function FightDeviceAreaInfoData:resetStopAttr()
+	for _, deviceInfo in ipairs(self.devices) do
+		deviceInfo:resetStopAttr()
+	end
+end
+
+function FightDeviceAreaInfoData:restartDeviceAttr(targetUid)
+	for _, deviceInfo in ipairs(self.devices) do
+		if deviceInfo.uid == targetUid then
+			deviceInfo:resetStopAttr()
+		end
+	end
+end
+
 function FightDeviceAreaInfoData:updateShowPowerList()
 	for _, power in ipairs(self.showPowerList) do
 		power:setPower(0)
@@ -278,6 +292,14 @@ function FightDeviceAreaInfoData:getClientPowerValue(powerId)
 	end
 
 	return 0
+end
+
+function FightDeviceAreaInfoData:stopSkill(targetId, skillId)
+	for _, device in ipairs(self.devices) do
+		if device.uid == targetId then
+			device:stopSkill(skillId)
+		end
+	end
 end
 
 return FightDeviceAreaInfoData

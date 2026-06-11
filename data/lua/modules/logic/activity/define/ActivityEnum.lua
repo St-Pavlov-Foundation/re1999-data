@@ -108,11 +108,12 @@ ActivityEnum.Activity = {
 	V2a2_SummonCustomPickNew = 12235,
 	GoldenMilletPresent = 11615,
 	RoleSignViewPart1_1_9 = 11913,
-	V3a6_Abyss = 13601,
+	V3a8_WarmUp = 13818,
 	V2a8_WarmUp = 12875,
 	V3a7_SkinGift = 13746,
 	RoleSignViewPart2_1_9 = 11914,
 	DecalogPresent = 11613,
+	V3a8_DragonBoatActivity_FullView = 13816,
 	DreamShow = 10011,
 	V2a3_NewCultivationGift = 12311,
 	V2a1_WarmUp = 12118,
@@ -120,6 +121,7 @@ ActivityEnum.Activity = {
 	RoleSignViewPart2_1_5 = 11514,
 	V3a0_NewCultivationGift = 13005,
 	V2a5_Calendar_Decoration = 12515,
+	V3a6_Abyss = 13601,
 	RoomGift = 11921,
 	RoleSignViewPart1_1_6 = 11614,
 	Activity1_9WarmUp = 11923,
@@ -239,7 +241,7 @@ ActivityEnum.VersionActivityIdDict = {
 	Activity1_42 = 11420,
 	Activity1_3 = 11301,
 	Activity1_41 = 11401,
-	Activity1_7 = 11701,
+	Activity3_8 = 13801,
 	Activity2_6 = 12601,
 	Activity1_52 = 11517,
 	Activity2_1 = 12101,
@@ -264,13 +266,14 @@ ActivityEnum.VersionActivityIdDict = {
 	Activity2_2 = 12201,
 	Activity2_7 = 12705,
 	Activity3_7 = 13702,
+	Activity1_7 = 11701,
 	Activity2_8 = 12801,
 	Activity3_2 = 13222
 }
 ActivityEnum.VersionActivityIdList = {
 	ActivityEnum.VersionActivityIdDict.Activity_Assassin_1,
 	ActivityEnum.VersionActivityIdDict.Activity_Assassin_2,
-	ActivityEnum.VersionActivityIdDict.Activity3_7
+	ActivityEnum.VersionActivityIdDict.Activity3_8
 }
 ActivityEnum.MainIcon = {
 	[ActivityEnum.VersionActivityIdDict.Activity1_1] = "rk1111",
@@ -302,7 +305,8 @@ ActivityEnum.MainIcon = {
 	[ActivityEnum.VersionActivityIdDict.Activity3_4] = "rk_3_4",
 	[ActivityEnum.VersionActivityIdDict.Activity3_5] = "rk_3_5",
 	[ActivityEnum.VersionActivityIdDict.Activity3_6] = "rk_3_6",
-	[ActivityEnum.VersionActivityIdDict.Activity3_7] = "rk_3_7"
+	[ActivityEnum.VersionActivityIdDict.Activity3_7] = "rk_3_7",
+	[ActivityEnum.VersionActivityIdDict.Activity3_8] = "rk_3_8"
 }
 ActivityEnum.ShowVersionActivityEpisode = 10103
 ActivityEnum.MainViewActivityState = {
@@ -337,9 +341,10 @@ ActivityEnum.ActBtnPrefix = {
 ActivityEnum.ConstId = {
 	BpOperAct = 12,
 	ActivityCollect = 13,
+	BossRushAct = 16,
+	Gifg5StarCharacter = 30701,
 	BpSpActId = 5,
 	Gifg6StarCharacter = 30702,
-	Gifg5StarCharacter = 30701,
 	SelfSelectCharacterExp = 30703
 }
 ActivityEnum.Act101RewardState = {

@@ -34,17 +34,17 @@ function StoryBgEffsEnterSplitScreen:start(callback, callbackObj)
 end
 
 function StoryBgEffsEnterSplitScreen:_onOpenView(viewName)
-	local setting = ViewMgr.instance:getSetting(viewName)
+	local isSetTopView = StoryModel.instance:isSetTopView(viewName)
 
-	if setting.layer == UILayerName.Message or setting.layer == UILayerName.IDCanvasPopUp then
+	if isSetTopView then
 		StoryViewMgr.instance:setStoryViewLayer(UnityLayer.UISecond)
 	end
 end
 
 function StoryBgEffsEnterSplitScreen:_onCloseView(viewName)
-	local setting = ViewMgr.instance:getSetting(viewName)
+	local isSetTopView = StoryModel.instance:isSetTopView(viewName)
 
-	if setting.layer == UILayerName.Message or setting.layer == UILayerName.IDCanvasPopUp then
+	if isSetTopView then
 		StoryViewMgr.instance:setStoryViewLayer(UnityLayer.UITop)
 	end
 end

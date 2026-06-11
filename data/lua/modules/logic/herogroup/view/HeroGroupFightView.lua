@@ -454,6 +454,17 @@ function HeroGroupFightView:onOpen()
 			TaskDispatcher.runDelay(self._btnTryOnClick, self, 0.5)
 		end
 	end
+
+	self:checkAfterUseRecommend()
+end
+
+function HeroGroupFightView:checkAfterUseRecommend()
+	local recommendParam = HeroGroupModel.instance:getTempBattleRecommendParam()
+
+	if recommendParam and recommendParam.recommendMo then
+		HeroGroupModel.instance:setTempBattleRecommendParam(nil)
+		HeroGroupController.instance:useRecommendGroup(recommendParam.recommendMo, nil, true)
+	end
 end
 
 function HeroGroupFightView:refreshFightCount(showPower)
@@ -831,6 +842,7 @@ function HeroGroupFightView:onClose()
 	end
 
 	self:removeEventCb(HelpController.instance, HelpEvent.RefreshHelp, self.isShowHelpBtnIcon, self)
+	HeroGroupModel.instance:setTempBattleRecommendParam(nil)
 end
 
 function HeroGroupFightView:_refreshReplay()

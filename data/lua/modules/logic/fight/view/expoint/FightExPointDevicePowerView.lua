@@ -20,6 +20,9 @@ function FightExPointDevicePowerView:onInitView()
 	recthelper.setAnchorY(rootTr, 0)
 
 	self.imageEnergy = gohelper.findChildImage(self.viewGO, "root/go_energy")
+	self.imageStoreEnergy = gohelper.findChildImage(self.viewGO, "root/go_store_energy")
+
+	gohelper.setActive(self.imageStoreEnergy.gameObject, false)
 end
 
 function FightExPointDevicePowerView:addEvents()
@@ -42,7 +45,16 @@ function FightExPointDevicePowerView:onOpen()
 	self:addEventCb(FightController.instance, FightEvent.OnPlayHandCard, self.onPlayHandCard, self)
 	self:addEventCb(FightController.instance, FightEvent.OnResetCard, self.onResetCard, self)
 	self:addEventCb(FightController.instance, FightEvent.StageChanged, self.onStageChange, self)
+	self:addEventCb(FightController.instance, FightEvent.OnDevice_StoreExPointChange, self.onDeviceStoreExPointChange, self)
 	self:refreshDevicePower()
+end
+
+function FightExPointDevicePowerView:onDeviceStoreExPointChange(entityId)
+	if entityId ~= self.entityId then
+		return
+	end
+
+	self:refreshStoreExPoint()
 end
 
 function FightExPointDevicePowerView:onExPointMaxAdd(entityId)
@@ -51,18 +63,21 @@ function FightExPointDevicePowerView:onExPointMaxAdd(entityId)
 	end
 
 	self:refreshDevicePower()
+	self:refreshStoreExPoint()
 end
 
 function FightExPointDevicePowerView:onStageChange()
 	self.clientAddDevicePower = 0
 
 	self:refreshDevicePower()
+	self:refreshStoreExPoint()
 end
 
 function FightExPointDevicePowerView:onResetCard()
 	self.clientAddDevicePower = 0
 
 	self:refreshDevicePower()
+	self:refreshStoreExPoint()
 end
 
 function FightExPointDevicePowerView:onPlayHandCard(cardMo)
@@ -100,6 +115,20 @@ function FightExPointDevicePowerView:refreshDevicePower()
 	self.tweenId = ZProj.TweenHelper.DOFillAmount(self.imageEnergy, rate, 0.3)
 end
 
+function FightExPointDevicePowerView:refreshStoreExPoint()
+	gohelper.setActive(self.imageStoreEnergy.gameObject, true)
+
+	local max = self.entityMo:getMaxExPoint()
+	local storePower = self.entityMo:getStoredDeviceExPoint()
+	local rate = storePower / max
+
+	rate = Mathf.Clamp01(rate)
+
+	self:clearStoreTween()
+
+	self.storeTweenId = ZProj.TweenHelper.DOFillAmount(self.imageStoreEnergy, rate, 0.3)
+end
+
 function FightExPointDevicePowerView:clearTween()
 	if self.tweenId then
 		ZProj.TweenHelper.KillById(self.tweenId)
@@ -108,8 +137,17 @@ function FightExPointDevicePowerView:clearTween()
 	end
 end
 
+function FightExPointDevicePowerView:clearStoreTween()
+	if self.storeTweenId then
+		ZProj.TweenHelper.KillById(self.storeTweenId)
+
+		self.storeTweenId = nil
+	end
+end
+
 function FightExPointDevicePowerView:onClose()
 	self:clearTween()
+	self:clearStoreTween()
 end
 
 function FightExPointDevicePowerView:onDestroyView()

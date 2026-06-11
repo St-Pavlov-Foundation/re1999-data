@@ -2834,4 +2834,26 @@ function FightCalculateDataMgr:playEffect382(actEffectData)
 	deviceArea:clearPower()
 end
 
+function FightCalculateDataMgr:playEffect383(actEffectData)
+	local teamDataMgr = self.dataMgr.teamDataMgr
+	local teamType = actEffectData.teamType
+
+	teamType = teamType ~= 0 and teamType or FightEnum.TeamType.MySide
+
+	local teamData = teamDataMgr and teamDataMgr[teamType]
+	local deviceArea = teamData and teamData.deviceArea
+
+	if not deviceArea then
+		return
+	end
+
+	local skillId = actEffectData.effectNum
+
+	if skillId ~= 0 then
+		deviceArea:stopSkill(actEffectData.targetId, actEffectData.effectNum)
+	else
+		deviceArea:restartDeviceAttr(actEffectData.targetId)
+	end
+end
+
 return FightCalculateDataMgr

@@ -11,7 +11,7 @@ function StoryHeroPreview:onInitView()
 	self._gosearch = gohelper.findChild(self.viewGO, "#go_topitems/#go_search")
 	self._btnclear = gohelper.findChildButtonWithAudio(self.viewGO, "#go_topitems/#go_search/#btn_clear")
 	self._txtsearch = gohelper.findChildText(self.viewGO, "#go_topitems/#go_search/#btn_clear/#txt_search")
-	self._inputsearch = gohelper.findChildInputField(self.viewGO, "#go_topitems/#go_search/#input_search")
+	self._inputsearch = gohelper.findChildTextMeshInputField(self.viewGO, "#go_topitems/#go_search/#input_search")
 	self._gotype = gohelper.findChild(self.viewGO, "#go_topitems/#go_type")
 	self._txttype = gohelper.findChildText(self.viewGO, "#go_topitems/#go_type/Image/#txt_type")
 	self._gopath = gohelper.findChild(self.viewGO, "#go_topitems/#go_path")
@@ -49,6 +49,7 @@ end
 
 function StoryHeroPreview:_btnclearOnClick()
 	self._inputsearch:SetText("")
+	StoryHeroPreviewModel.instance:setFilterTxt("")
 	self:_setViewDropItems()
 end
 
@@ -75,6 +76,7 @@ function StoryHeroPreview:_editableInitView()
 end
 
 function StoryHeroPreview:_addSelfEvents()
+	self._inputsearch:AddOnValueChanged(self._onSearchInputValueChanged, self)
 	self._droptype:AddOnValueChanged(self._onTypeValueChanged, self)
 	self._droppath:AddOnValueChanged(self._onPathValueChanged, self)
 	self._dropbody:AddOnValueChanged(self._onBodyValueChanged, self)
@@ -85,6 +87,7 @@ function StoryHeroPreview:_addSelfEvents()
 end
 
 function StoryHeroPreview:_removeSelfEvents()
+	self._inputsearch:RemoveOnValueChanged()
 	self._droptype:RemoveOnValueChanged()
 	self._droppath:RemoveOnValueChanged()
 	self._dropbody:RemoveOnValueChanged()
@@ -95,9 +98,13 @@ function StoryHeroPreview:_removeSelfEvents()
 end
 
 function StoryHeroPreview:_onSearchInputValueChanged()
-	self._filterTxt = self._inputsearch:GetText()
+	local txt = self._inputsearch:GetText()
 
-	self:_setViewDropItems()
+	StoryHeroPreviewModel.instance:setFilterTxt(txt)
+
+	self._curPathIndex = 0
+
+	self:_setDropPath()
 	self:_setHeroAnimDropItem()
 end
 
@@ -115,7 +122,7 @@ function StoryHeroPreview:_onTypeValueChanged(index)
 	self._curFaceIndex = 0
 	self._curTalkIndex = 0
 
-	self:_setDropType()
+	self:_setViewDropItems()
 	self:_refresh()
 end
 
@@ -129,7 +136,6 @@ function StoryHeroPreview:_onPathValueChanged(index)
 	self._curFaceIndex = 0
 	self._curTalkIndex = 0
 
-	self:_setDropPath()
 	self:_refresh()
 end
 
@@ -140,7 +146,6 @@ function StoryHeroPreview:_onBodyValueChanged(index)
 
 	self._curBodyIndex = index
 
-	self:_setDropBody()
 	self:_playAnim()
 end
 
@@ -151,7 +156,6 @@ function StoryHeroPreview:_onFaceValueChanged(index)
 
 	self._curFaceIndex = index
 
-	self:_setDropFace()
 	self:_playAnim()
 end
 
@@ -162,7 +166,6 @@ function StoryHeroPreview:_onTalkValueChanged(index)
 
 	self._curTalkIndex = index
 
-	self:_setDropTalk()
 	self:_playAnim()
 end
 
@@ -232,16 +235,7 @@ function StoryHeroPreview:_setDropType()
 end
 
 function StoryHeroPreview:_setDropPath()
-	local options = {}
-	local heroType = StoryHeroPreviewModel.instance:getCurHeroType()
-	local pathList = StoryHeroPreviewModel.instance:getAllPathListByType(heroType)
-
-	for _, path in ipairs(pathList) do
-		local fileName = string.match(path, "([^/]*)$")
-		local option = string.gsub(fileName, ".prefab", "")
-
-		table.insert(options, option)
-	end
+	local options = self:_getFilterPathOptions()
 
 	self._droppath:ClearOptions()
 	self._droppath:AddOptions(options)
@@ -271,12 +265,7 @@ function StoryHeroPreview:_refreshHero()
 
 	local heroType = StoryHeroPreviewModel.instance:getCurHeroType()
 	local heroList = StoryHeroPreviewModel.instance:getAllHeroListByType(heroType)
-
-	if self._curPathIndex == 0 then
-		self._curPathIndex = 1
-	end
-
-	local heroCo = heroList[self._curPathIndex]
+	local heroCo = heroList[self._curPathIndex + 1]
 
 	if not heroCo then
 		return
@@ -299,15 +288,28 @@ function StoryHeroPreview:_clearHero()
 	end
 end
 
-function StoryHeroPreview:_playHeroAnim()
-	local heroType = StoryHeroPreviewModel.instance:getCurHeroType()
-	local pathList = StoryHeroPreviewModel.instance:getAllPathListByType(heroType)
+function StoryHeroPreview:_getFilterPathOptions()
+	local options = {}
+	local pathList = StoryHeroPreviewModel.instance:getAllPathListByType()
 
-	if self._curPathIndex == 0 then
-		self._curPathIndex = 1
+	for _, path in ipairs(pathList) do
+		local fileName = string.match(path, "([^/]*)$")
+		local option = string.gsub(fileName, ".prefab", "")
+
+		table.insert(options, option)
 	end
 
-	local path = pathList[self._curPathIndex]
+	return options
+end
+
+function StoryHeroPreview:_playHeroAnim()
+	local pathList = StoryHeroPreviewModel.instance:getAllPathListByType()
+
+	if #pathList <= 0 then
+		return
+	end
+
+	local path = pathList[self._curPathIndex + 1]
 
 	if not path then
 		return
@@ -321,10 +323,12 @@ end
 function StoryHeroPreview:_onStartPlayHeroAnim(heroGo)
 	self._heroGo = heroGo
 
-	self:_setHeroAnimDropItem()
+	gohelper.setActive(self._goviewnode, false)
+	TaskDispatcher.runDelay(self._setHeroAnimDropItem, self, 0.01)
 end
 
 function StoryHeroPreview:_setHeroAnimDropItem()
+	gohelper.setActive(self._goviewnode, true)
 	self:_setDropBody()
 	self:_setDropFace()
 	self:_setDropTalk()
@@ -400,13 +404,21 @@ function StoryHeroPreview:_playAnim()
 		return
 	end
 
-	local bodyName = ""
-	local faceName = ""
-	local talkName = ""
-	local config = {}
+	local co = {}
+	local banims = self:_getFilterAnims("b_")
+
+	co.motion = #banims > 0 and string.gsub(banims[self._curBodyIndex + 1], "b_", "") .. "#0#999" or nil
+
+	local tanims = self:_getFilterAnims("t_")
+
+	co.mouth = #tanims > 0 and string.gsub(tanims[self._curTalkIndex + 1], "t_", "") .. "#0#999" or nil
+
+	local fanims = self:_getFilterAnims("e_")
+
+	co.face = #fanims > 0 and string.gsub(fanims[self._curFaceIndex + 1], "e_", "") .. "#0#999" or nil
 
 	if self._heroNode then
-		self._heroNode:playAnim(config)
+		self._heroNode:playAnim(co)
 	end
 end
 
@@ -416,7 +428,7 @@ function StoryHeroPreview:_setDir()
 	end
 
 	local heroList = self:_getHeroList()
-	local heroCo = heroList[self._curPathIndex]
+	local heroCo = heroList[self._curPathIndex + 1]
 
 	if not heroCo then
 		return

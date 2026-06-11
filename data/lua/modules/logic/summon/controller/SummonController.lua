@@ -628,6 +628,7 @@ function SummonController:updateSummonInfo(info)
 	SummonMainModel.instance:setNewbiePoolExist(info.isShowNewSummon)
 	SummonMainModel.instance:setNewbieProgress(info.newSummonCount)
 	SummonMainModel.instance:setServerPoolInfos(info.poolInfos)
+	SummonMainModel.instance:setNewbiePoolGetReward()
 	SummonMainModel.instance:updateByServerData()
 
 	if SummonMainModel.instance:getCount() <= 0 then

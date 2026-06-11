@@ -150,7 +150,8 @@ function FightConfig:reqConfigNames()
 		"fight_scene_level_camera_shadow",
 		"fight_spell_show_type",
 		"skill_target_type_define",
-		"fight_direct_switch_battle_when_end"
+		"fight_direct_switch_battle_when_end",
+		"fight_dian_ji_shi_buff_effect"
 	}
 
 	if SLFramework.FrameworkSettings.IsEditor then

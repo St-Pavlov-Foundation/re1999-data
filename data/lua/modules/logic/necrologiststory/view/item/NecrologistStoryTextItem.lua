@@ -31,7 +31,17 @@ function NecrologistStoryTextItem:refreshText(isSkip)
 	if isSkip then
 		self.txtComp:setTextNormal(desc)
 	else
-		self.txtComp:setTextWithTypewriter(desc, self.refreshHeight, self.onTextFinish, self)
+		self.txtComp:setTextWithTypewriter(desc, self.onFrameUpdateText, self.onTextFinish, self)
+	end
+end
+
+function NecrologistStoryTextItem:onFrameUpdateText()
+	local height = self:caleHeight()
+
+	if not self.lastHeight or math.abs(self.lastHeight - height) > 1 then
+		self.lastHeight = height
+
+		self:refreshHeight()
 	end
 end
 

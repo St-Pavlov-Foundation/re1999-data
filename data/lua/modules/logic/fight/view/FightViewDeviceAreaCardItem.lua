@@ -33,6 +33,37 @@ end
 function FightViewDeviceAreaCardItem:addEvents()
 	self:addEventCb(FightController.instance, FightEvent.OnDevice_ScanSkill, self.onDeviceScanSkill, self)
 	self:addEventCb(FightController.instance, FightEvent.AfterSkillEffect, self.onAfterSkillEffect, self)
+	self:addEventCb(FightController.instance, FightEvent.OnDevice_SkillStopStatusChange, self.onDeviceSkillStopStatusChange, self)
+	self:addEventCb(FightController.instance, FightEvent.OnDevice_RestartDeviceChange, self.onDeviceRestartDeviceChange, self)
+	self:addEventCb(FightController.instance, FightEvent.StageChanged, self.onStageChanged, self)
+end
+
+function FightViewDeviceAreaCardItem:onStageChanged(curStage)
+	if not self.deviceArea then
+		return
+	end
+
+	if curStage ~= FightStageMgr.StageType.Play then
+		return
+	end
+
+	self.deviceArea:refreshStopEffect()
+end
+
+function FightViewDeviceAreaCardItem:onDeviceSkillStopStatusChange(targetId, skillId)
+	if not self.deviceArea then
+		return
+	end
+
+	self.deviceArea:playStopEffect(targetId, skillId)
+end
+
+function FightViewDeviceAreaCardItem:onDeviceRestartDeviceChange(targetUid)
+	if not self.deviceArea then
+		return
+	end
+
+	self.deviceArea:restartDevice(targetUid)
 end
 
 function FightViewDeviceAreaCardItem:onDeviceScanSkill(deviceIndex, success)

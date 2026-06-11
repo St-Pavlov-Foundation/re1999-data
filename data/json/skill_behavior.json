@@ -3727,7 +3727,7 @@
   },
   {
     "id": 60294,
-    "type": "StopDevice",
+    "type": "StopDeviceSkill",
     "effect": "",
     "effectHangPoint": "",
     "audioId": 0,
@@ -3836,6 +3836,33 @@
   {
     "id": 60306,
     "type": "Rouge2CoinChangeByType",
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0,
+    "dec_Type": 0,
+    "dec": ""
+  },
+  {
+    "id": 60307,
+    "type": "FoundationCounterClear",
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0,
+    "dec_Type": 0,
+    "dec": ""
+  },
+  {
+    "id": 60308,
+    "type": "ConsumeBuffResetDevice",
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0,
+    "dec_Type": 0,
+    "dec": ""
+  },
+  {
+    "id": 60309,
+    "type": "FakeHpToHeal",
     "effect": "",
     "effectHangPoint": "",
     "audioId": 0,

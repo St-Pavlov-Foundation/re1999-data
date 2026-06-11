@@ -16,7 +16,6 @@ end
 
 function FightViewDeviceArea:addEvents()
 	self:addEventCb(FightController.instance, FightEvent.OnCreateDeviceArea, self.onCreateDeviceArea, self)
-	self:addEventCb(FightController.instance, FightEvent.BeforeChangeSubHero, self.onBeforeChangeSubHero, self)
 end
 
 function FightViewDeviceArea:onResLoadDoneAddEvents()
@@ -27,18 +26,6 @@ function FightViewDeviceArea:onResLoadDoneAddEvents()
 	self:addEventCb(FightController.instance, FightEvent.AfterEffectWorkDone, self.onAfterEffectWorkDone, self)
 	self:addEventCb(FightController.instance, FightEvent.OnStartSequenceFinish, self.onStartSequenceFinish, self)
 	self:addEventCb(FightController.instance, FightEvent.OnDevice_HidePlayArea, self.OnDeviceHidePlayArea, self)
-end
-
-function FightViewDeviceArea:onBeforeChangeSubHero()
-	if self.deviceArea then
-		return
-	end
-
-	if FightDataHelper.hasDeviceArea() then
-		self:createDevice()
-
-		return
-	end
 end
 
 function FightViewDeviceArea:OnDeviceHidePlayArea()
@@ -101,9 +88,7 @@ function FightViewDeviceArea:onDeviceAreaLoadDone()
 	self.deviceArea:setDeviceAreaScale(scale)
 	self:onResLoadDoneAddEvents()
 
-	local isPlaying = FightDataHelper.stageMgr:isPlayStage()
-
-	if isPlaying or FightDataHelper.stageMgr:inFightState(FightStageMgr.FightStateType.Enter) then
+	if FightDataHelper.stageMgr:inFightState(FightStageMgr.FightStateType.Enter) then
 		self.deviceArea:setActive(false)
 	else
 		self.deviceArea:setActive(true)

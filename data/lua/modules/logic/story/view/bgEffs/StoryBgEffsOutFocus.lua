@@ -44,17 +44,17 @@ function StoryBgEffsOutFocus:_btnskipOnClick()
 end
 
 function StoryBgEffsOutFocus:_onOpenView(viewName)
-	local setting = ViewMgr.instance:getSetting(viewName)
+	local isSetTopView = StoryModel.instance:isSetTopView(viewName)
 
-	if setting.layer == UILayerName.Message or setting.layer == UILayerName.IDCanvasPopUp then
+	if isSetTopView then
 		self:_setViewTop(false)
 	end
 end
 
 function StoryBgEffsOutFocus:_onCloseView(viewName)
-	local setting = ViewMgr.instance:getSetting(viewName)
+	local isSetTopView = StoryModel.instance:isSetTopView(viewName)
 
-	if setting.layer == UILayerName.Message or setting.layer == UILayerName.IDCanvasPopUp then
+	if isSetTopView then
 		if self._capture then
 			self._capture.enabled = true
 		end

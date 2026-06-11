@@ -15,54 +15,111 @@ function HeroDeviceMO:refreshDevice(deviceId)
 
 	self._deviceId = deviceId
 	self._config = lua_fight_device.configDict[self._deviceId]
-	self._powerSkill = GameUtil.splitString2(self._config.powerSkill, true, "|", "#")
-	self._specialPowerSkill = GameUtil.splitString2(self._config.specialPowerSkill, true, "|", "#")
+	self._powerSkill = self:_parsePowerSkillInfo(self._config.powerSkill)
+	self._specialPowerSkill = self:_parsePowerSkillInfo(self._config.specialPowerSkill)
 	self._skills = {}
-	self._skill1 = string.splitToNumber(self._config.skill1, "#")
-	self._skill2 = string.splitToNumber(self._config.skill2, "#")
-	self._uniqueSkill = string.splitToNumber(self._config.uniqueSkill, "#")
+	self._skills[1] = self:_parseSkillInfo(self._config.skill1)
+	self._skills[2] = self:_parseSkillInfo(self._config.skill2)
+	self._skills[3] = self:_parseSkillInfo(self._config.uniqueSkill)
+
+	if #self._skills[1] > 1 and #self._skills[2] > 1 then
+		local temp = tabletool.copy(self._skills[1][2])
+
+		self._skills[1][2] = tabletool.copy(self._skills[2][1])
+		self._skills[2][1] = temp
+	end
+end
+
+function HeroDeviceMO:_parsePowerSkillInfo(str)
+	local powerSkills = {}
+
+	if string.nilorempty(str) then
+		return powerSkills
+	end
+
+	local infos = GameUtil.splitString2(str, true, "|", "#")
+
+	for _, info in ipairs(infos) do
+		local skillId = info[1]
+		local energyCo = lua_skill_energy.configDict[skillId]
+
+		if energyCo then
+			local skillInfo = {}
+
+			skillInfo.skillId = skillId
+			skillInfo.energyType = energyCo.energyType
+			skillInfo.energyCount = energyCo.count or 0
+			skillInfo.count = info[2] or 0
+			skillInfo.isSpecialCard = energyCo.isSpecialCard == 1
+			skillInfo.energyCo = energyCo
+
+			table.insert(powerSkills, skillInfo)
+		end
+	end
+
+	return powerSkills
+end
+
+function HeroDeviceMO:_parseSkillInfo(str)
+	local tb = {}
+
+	if string.nilorempty(str) then
+		return tb
+	end
+
+	local split = GameUtil.splitString2(str, true)
+
+	for _, v in ipairs(split) do
+		local info = {}
+
+		info.skillId = v[1]
+		info.costType = v[2]
+		info.costValue = v[3]
+
+		table.insert(tb, info)
+	end
+
+	return tb
 end
 
 function HeroDeviceMO:setHeroMo(heroMo)
 	self._heroMo = heroMo
 end
 
-function HeroDeviceMO:getSkillIdsStr()
-	local str = string.format("1#%s|2#%s", self:getSkillId(1), self:getSkillId(2))
+function HeroDeviceMO:getSkillIdsStr(index)
+	index = index or 1
 
-	return str, self:getSkillId(3)
+	local str = string.format("1#%s|2#%s", self:getSkillId(1, index), self:getSkillId(2, index))
+
+	return str, self:getSkillId(3, index)
 end
 
-function HeroDeviceMO:getSkillId(skillIndex)
-	if skillIndex == 1 then
-		return self._skill1[1]
-	end
+function HeroDeviceMO:getSkillId(skillIndex, index)
+	index = index or 1
 
-	if skillIndex == 2 then
-		return self._skill2[1]
-	end
+	local info = self:getSkillInfo(skillIndex, index)
+	local skillId = info and info.skillId
 
-	if skillIndex == 3 then
-		return self._uniqueSkill[1]
-	end
+	return skillId
 end
 
-function HeroDeviceMO:getSkillInfo(skillIndex)
-	if skillIndex == 1 then
-		return self._skill1
-	end
+function HeroDeviceMO:getSkillInfo(skillIndex, index)
+	index = index or 1
 
-	if skillIndex == 2 then
-		return self._skill2
-	end
+	local tb = self._skills[skillIndex]
+	local info = tb and tb[index]
 
-	if skillIndex == 3 then
-		return self._uniqueSkill
-	end
+	info = info or tb and tb[1]
+
+	return info
 end
 
 function HeroDeviceMO:getPowerSkills()
-	return self._powerSkill, self._specialPowerSkill
+	return self._powerSkill
+end
+
+function HeroDeviceMO:getSpecialPowerSkills()
+	return self._specialPowerSkill
 end
 
 function HeroDeviceMO:getUniqueSkillPoint()

@@ -245,6 +245,10 @@ end
 function Rouge2_BackpackController:isCanResetTalentStage()
 	local activeTalentIdList = Rouge2_BackpackModel.instance:getActiveTalentIds()
 
+	if not activeTalentIdList then
+		return
+	end
+
 	for _, talentId in ipairs(activeTalentIdList) do
 		local talentCo = Rouge2_CareerConfig.instance:getTalentConfig(talentId)
 		local isNotInitStage = talentCo and talentCo.stage > -1

@@ -43,10 +43,12 @@ function StoryHeroPreviewModel:clearFilterTxt()
 end
 
 function StoryHeroPreviewModel:getAllHeroListByType(heroType)
+	heroType = heroType or self:getCurHeroType()
+
 	local list = {}
 	local heroPool = StoryHeroLibraryModel.instance:getStoryHeroLibraryList()
 
-	for _, hero in pairs(heroPool) do
+	for _, hero in ipairs(heroPool) do
 		if hero.type == heroType then
 			if LuaUtil.isEmptyStr(self._filterTxt) then
 				table.insert(list, hero)
@@ -64,11 +66,13 @@ function StoryHeroPreviewModel:getAllHeroListByType(heroType)
 end
 
 function StoryHeroPreviewModel:getAllPathListByType(heroType)
+	heroType = heroType or self:getCurHeroType()
+
 	local pathList = {}
 	local heroList = self:getAllHeroListByType(heroType)
 
 	if heroType == StoryHeroPreviewEnum.HeroType.Spine then
-		for _, hero in pairs(heroList) do
+		for _, hero in ipairs(heroList) do
 			local path = string.gsub(hero.prefab, "Assets/ZResourcesLib/", "")
 
 			if not string.find(path, "rolesstory/") then

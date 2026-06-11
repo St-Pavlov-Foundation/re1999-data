@@ -11457,7 +11457,7 @@
   },
   {
     "id": 373002,
-    "tips": "请选择挖掘时段",
+    "tips": "请选择勘探时段",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,
@@ -11658,6 +11658,38 @@
   {
     "id": 379011,
     "tips": "上阵角色未持有1阶咒语，不可使用",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 381001,
+    "tips": "本关难度较大，建议提升等级后挑战",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 382001,
+    "tips": "已经回退到最开始了",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 382002,
+    "tips": "已无剩余提示",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 383002,
+    "tips": "正在重播中",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,

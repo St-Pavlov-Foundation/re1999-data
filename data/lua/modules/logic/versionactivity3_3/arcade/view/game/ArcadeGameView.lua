@@ -1533,7 +1533,7 @@ function ArcadeGameView:setEventOptionList()
 		end
 	end
 
-	gohelper.CreateObjList(self, self._onCreateEventOption, optionList, self._goeventcontent, self._gooptionitem)
+	gohelper.CreateObjList(self, self._onCreateEventOption, optionList, self._gooptioncontent, self._gooptionitem)
 	self:refreshEventOptionList()
 end
 

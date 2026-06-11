@@ -108,6 +108,33 @@ function NecrologistStoryModel:isReviewCanShow(storyId)
 	return hasPlotFinish
 end
 
+function NecrologistStoryModel:isBranchCanShow(storyId)
+	if storyId < NecrologistStoryEnum.RoleStoryId.V3A8 then
+		return false
+	end
+
+	local mo = self:getGameMO(storyId)
+
+	if not mo then
+		return false
+	end
+
+	local plotList = NecrologistStoryConfig.instance:getPlotListByStoryId(storyId)
+	local allFinish = true
+
+	if plotList then
+		for i, v in ipairs(plotList) do
+			if not mo:isStoryFinish(v.id) then
+				allFinish = false
+
+				break
+			end
+		end
+	end
+
+	return allFinish
+end
+
 NecrologistStoryModel.instance = NecrologistStoryModel.New()
 
 return NecrologistStoryModel

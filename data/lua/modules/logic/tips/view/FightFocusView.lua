@@ -123,7 +123,8 @@ function FightFocusView:onInitView()
 	self.meiLeiErExroundRateText = gohelper.findChildText(self.go_meiLeiEr, "#txt_hp")
 	self.goDevicePower = gohelper.findChild(self.viewGO, "fightinfocontainer/#go_infoView/content/info/hp/layout/go_device")
 	self.txtDevicePower = gohelper.findChildText(self.goDevicePower, "#txt_hp")
-	self.imageDevicePowerProgress = gohelper.findChildImage(self.goDevicePower, "#image_fill")
+	self.imageDevicePowerProgress = gohelper.findChildImage(self.goDevicePower, "#image_device")
+	self.imageStoreDevicePowerProgress = gohelper.findChildImage(self.goDevicePower, "#image_store_device")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -2615,6 +2616,10 @@ function FightFocusView:refreshDevicePower(entityMo)
 
 	self.txtDevicePower.text = string.format("%s/%s", curPower, maxPower)
 	self.imageDevicePowerProgress.fillAmount = maxPower > 0 and curPower / maxPower or 1
+
+	local storePoint = entityMo:getStoredDeviceExPoint()
+
+	self.imageStoreDevicePowerProgress.fillAmount = maxPower > 0 and storePoint / maxPower or 1
 end
 
 return FightFocusView

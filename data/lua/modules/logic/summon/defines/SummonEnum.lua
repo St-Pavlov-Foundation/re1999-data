@@ -252,5 +252,6 @@ SummonEnum.InfallibleItemState = {
 	Unused = 0,
 	Used = 2
 }
+SummonEnum.NewbieFinishSortOrder = 100
 
 return SummonEnum

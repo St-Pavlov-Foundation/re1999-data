@@ -188,4 +188,21 @@ function PatFaceCustomHandler.V3a3TowerGiftPanelViewPatFaceViewPat()
 	ViewMgr.instance:openView(ViewName.V3a3TowerGiftPanelView)
 end
 
+function PatFaceCustomHandler.V3a8FreeMonthCardCanPat()
+	local isReview = VersionValidator.instance:isInReviewing()
+
+	if isReview then
+		return false
+	end
+
+	local curDay = VersionActivity3_8FreeMonthCardModel.instance:getOpenDay()
+	local couldGet = VersionActivity3_8FreeMonthCardModel.instance:isDayCanSign(curDay)
+
+	return couldGet
+end
+
+function PatFaceCustomHandler.V3a8FreeMonthCardPat()
+	MonthCardController.instance:openV3a8PanelView()
+end
+
 return PatFaceCustomHandler

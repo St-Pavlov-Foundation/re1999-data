@@ -1145,7 +1145,9 @@ function DungeonConfig:_initVersionActivityEpisodeList()
 		VersionActivity3_5DungeonEnum.DungeonChapterId.Story2,
 		VersionActivity3_5DungeonEnum.DungeonChapterId.Story3,
 		VersionActivity3_6DungeonEnum.DungeonChapterId.Story2,
-		VersionActivity3_6DungeonEnum.DungeonChapterId.Story3
+		VersionActivity3_6DungeonEnum.DungeonChapterId.Story3,
+		VersionActivity3_8DungeonEnum.DungeonChapterId.Story2,
+		VersionActivity3_8DungeonEnum.DungeonChapterId.Story3
 	}
 	local chapterEpisodeList
 

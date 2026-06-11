@@ -587,6 +587,10 @@ function CommandStationEnterView:_updateActBtn()
 end
 
 function CommandStationEnterView:_isShowActivity()
+	if CommandStationEnum.ForceHideCommandStation then
+		return false, nil
+	end
+
 	if self._constActParamConfig2 then
 		local actId = self._constActParamConfig2.value
 		local status = actId > 0 and ActivityHelper.getActivityStatus(actId)

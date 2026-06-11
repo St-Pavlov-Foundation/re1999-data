@@ -140,6 +140,19 @@ function FightBuffCardAreaRedOrBlueBuff:onResLoaded(loader)
 	self:playAnim(SpineAnimState.born)
 	self:refreshEffectActive()
 	FightController.instance:registerCallback(FightEvent.TimelineLYSpecialSpinePlayAniName, self.playAnim, self)
+	TaskDispatcher.runDelay(self.refreshSpineEffect, self, 0.1)
+end
+
+function FightBuffCardAreaRedOrBlueBuff:refreshSpineEffect()
+	if self.spine1Effect then
+		gohelper.setActive(self.spine1Effect.effectGO, false)
+		gohelper.setActive(self.spine1Effect.effectGO, true)
+	end
+
+	if self.spine2Effect then
+		gohelper.setActive(self.spine2Effect.effectGO, false)
+		gohelper.setActive(self.spine2Effect.effectGO, true)
+	end
 end
 
 function FightBuffCardAreaRedOrBlueBuff:addEffect(entity, effectWrap, side)
@@ -272,6 +285,7 @@ end
 
 function FightBuffCardAreaRedOrBlueBuff:clear()
 	self:clearLoader()
+	TaskDispatcher.cancelTask(self.refreshSpineEffect, self)
 	TaskDispatcher.cancelTask(self._showEntity, self)
 
 	if self.effectAnimator then

@@ -550,5 +550,29 @@
     "type": 0,
     "titleName": "",
     "tag": ""
+  },
+  {
+    "facetsId": 309401,
+    "name": "闯入，为命运淬火",
+    "consume": "1#620103#12|1#620102#40|1#620101#200|1#111009#3",
+    "tend": 2,
+    "icon": "309401",
+    "facetsSort": 100,
+    "keyword": "反击",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
+  },
+  {
+    "facetsId": 311601,
+    "name": "脑内有界，界外无界",
+    "consume": "1#620103#12|1#620102#40|1#620101#200|1#111008#3",
+    "tend": 5,
+    "icon": "311601",
+    "facetsSort": 100,
+    "keyword": "仪式",
+    "type": 0,
+    "titleName": "",
+    "tag": ""
   }
 ]

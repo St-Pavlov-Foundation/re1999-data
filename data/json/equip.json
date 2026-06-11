@@ -2037,7 +2037,7 @@
     "sources": "",
     "canShowHandbook": "",
     "upperLimit": 1,
-    "characterId": ""
+    "characterId": "3051"
   },
   {
     "id": 1556,
@@ -2117,7 +2117,7 @@
     "sources": "",
     "canShowHandbook": "",
     "upperLimit": 1,
-    "characterId": ""
+    "characterId": "3134"
   },
   {
     "id": 1559,
@@ -2137,7 +2137,7 @@
     "sources": "",
     "canShowHandbook": "",
     "upperLimit": 1,
-    "characterId": ""
+    "characterId": "3135"
   },
   {
     "id": 1560,
@@ -2157,7 +2157,7 @@
     "sources": "",
     "canShowHandbook": "",
     "upperLimit": 1,
-    "characterId": ""
+    "characterId": "3081"
   },
   {
     "id": 1444,
@@ -2177,7 +2177,7 @@
     "sources": "",
     "canShowHandbook": "",
     "upperLimit": 1,
-    "characterId": ""
+    "characterId": "3041"
   },
   {
     "id": 1561,
@@ -2197,7 +2197,7 @@
     "sources": "",
     "canShowHandbook": "",
     "upperLimit": 1,
-    "characterId": ""
+    "characterId": "3127"
   },
   {
     "id": 1562,
@@ -2217,7 +2217,7 @@
     "sources": "",
     "canShowHandbook": "",
     "upperLimit": 1,
-    "characterId": ""
+    "characterId": "3092"
   },
   {
     "id": 1445,
@@ -2237,7 +2237,7 @@
     "sources": "",
     "canShowHandbook": "",
     "upperLimit": 1,
-    "characterId": ""
+    "characterId": "3136"
   },
   {
     "id": 1563,
@@ -2257,7 +2257,7 @@
     "sources": "",
     "canShowHandbook": "",
     "upperLimit": 1,
-    "characterId": ""
+    "characterId": "3141"
   },
   {
     "id": 1564,
@@ -2277,7 +2277,7 @@
     "sources": "",
     "canShowHandbook": "",
     "upperLimit": 1,
-    "characterId": ""
+    "characterId": "3137"
   },
   {
     "id": 1446,
@@ -2297,7 +2297,7 @@
     "sources": "",
     "canShowHandbook": "",
     "upperLimit": 1,
-    "characterId": ""
+    "characterId": "3084"
   },
   {
     "id": 1565,
@@ -2317,7 +2317,7 @@
     "sources": "",
     "canShowHandbook": "",
     "upperLimit": 1,
-    "characterId": ""
+    "characterId": "3139"
   },
   {
     "id": 1566,
@@ -2337,7 +2337,7 @@
     "sources": "",
     "canShowHandbook": "",
     "upperLimit": 1,
-    "characterId": ""
+    "characterId": "3142"
   },
   {
     "id": 1447,
@@ -2377,7 +2377,7 @@
     "sources": "",
     "canShowHandbook": "",
     "upperLimit": 1,
-    "characterId": ""
+    "characterId": "3143"
   },
   {
     "id": 1568,
@@ -2397,7 +2397,7 @@
     "sources": "",
     "canShowHandbook": "",
     "upperLimit": 1,
-    "characterId": ""
+    "characterId": "3146"
   },
   {
     "id": 1569,
@@ -2417,7 +2417,7 @@
     "sources": "",
     "canShowHandbook": "",
     "upperLimit": 1,
-    "characterId": ""
+    "characterId": "3147"
   },
   {
     "id": 1570,
@@ -2437,7 +2437,7 @@
     "sources": "",
     "canShowHandbook": "",
     "upperLimit": 1,
-    "characterId": ""
+    "characterId": "3144"
   },
   {
     "id": 1448,
@@ -2453,6 +2453,66 @@
     "isSpRefine": 0,
     "useSpRefine": "1001",
     "desc": "腿骨抽痛着作别睡梦，长大时，\n最后一次与从前的尺码紧拥是在哪天？\n背负誓言呀，小小的她说，要前进，要变得挺拔。\n行囊沉在过去，转身之前，唯有一瞥。",
+    "useDesc": "",
+    "sources": "",
+    "canShowHandbook": "",
+    "upperLimit": 1,
+    "characterId": "3154"
+  },
+  {
+    "id": 1573,
+    "name": "光之外的梦",
+    "name_en": "A Dream Beyond Light",
+    "skillName": "",
+    "icon": "1573",
+    "rare": 5,
+    "skillType": 1573,
+    "strengthType": 1573,
+    "tag": "4#5",
+    "isExpEquip": 0,
+    "isSpRefine": 0,
+    "useSpRefine": "",
+    "desc": "轻柔地入梦，\n那一束温柔而黯淡的光。\n轻柔地落入我的梦中，友人啊——\n前路的雏菊已经盛开。\n昨日不再，给所有未散的迷惘，\n再多一场睡梦的徘徊。",
+    "useDesc": "",
+    "sources": "",
+    "canShowHandbook": "",
+    "upperLimit": 1,
+    "characterId": "3145"
+  },
+  {
+    "id": 1574,
+    "name": "光影的栖所",
+    "name_en": "Where Light and Shadows Rest",
+    "skillName": "",
+    "icon": "1574",
+    "rare": 5,
+    "skillType": 1501,
+    "strengthType": 1501,
+    "tag": "1#2",
+    "isExpEquip": 0,
+    "isSpRefine": 0,
+    "useSpRefine": "",
+    "desc": "构想，丈量，无止尽的涂改，\n一笔过往，勾勒一笔未来。\n一笔划开光与影，一次次起草，\n那愿景中的完美栖所，\n那沉重而实在的生活。\n砖石落定，我亦立于其中。",
+    "useDesc": "",
+    "sources": "",
+    "canShowHandbook": "",
+    "upperLimit": 1,
+    "characterId": "3140"
+  },
+  {
+    "id": 1449,
+    "name": "暂别旧夜",
+    "name_en": "Farewell to the Old Night",
+    "skillName": "",
+    "icon": "1449",
+    "rare": 4,
+    "skillType": 1449,
+    "strengthType": 1449,
+    "tag": "5",
+    "isExpEquip": 0,
+    "isSpRefine": 0,
+    "useSpRefine": "1001",
+    "desc": "这一年我们都缄默，\n而一朵矢车菊选择说话：\n见证世界崩塌又重建，\n正如每个冬日夺走的，每个春天又赴约。",
     "useDesc": "",
     "sources": "",
     "canShowHandbook": "",

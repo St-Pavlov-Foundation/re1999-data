@@ -163,6 +163,23 @@ function ActivityCategoryItem:_refreshItem()
 			end
 
 			RedDotController.instance:addRedDot(self._goreddot, redDotId, nil, self.checkActivityShowFirstWeekEnter, self)
+		elseif actId == ActivityEnum.Activity.V3a8_DragonBoatActivity_FullView then
+			local redList = {
+				{
+					id = redDotId,
+					uid = actId
+				},
+				{
+					uid = 0,
+					id = RedDotEnum.DotNode.V3a8DragonBoat
+				},
+				{
+					uid = 0,
+					id = RedDotEnum.DotNode.V3a8DragonBoatVoteFinal
+				}
+			}
+
+			RedDotController.instance:addMultiRedDot(self._goreddot, redList)
 		elseif typeId == ActivityEnum.ActivityTypeID.Act125 then
 			if self._selected then
 				Activity125Controller.instance:saveEnterActDateInfo(actId)

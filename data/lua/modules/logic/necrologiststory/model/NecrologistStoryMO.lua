@@ -240,4 +240,42 @@ function NecrologistStoryMO:saveTaskValue()
 	end
 end
 
+function NecrologistStoryMO:onSelectOption(optionId)
+	local storyMo = NecrologistStoryModel.instance:getGameMO(self.config.storyId)
+
+	if not storyMo then
+		return
+	end
+
+	storyMo:setPlotOptionSelected(self.id, optionId)
+end
+
+function NecrologistStoryMO:onEndingUnlock(endingId)
+	local storyMo = NecrologistStoryModel.instance:getGameMO(self.config.storyId)
+
+	if not storyMo then
+		return
+	end
+
+	storyMo:setPlotEndingUnlock(self.id, endingId)
+end
+
+function NecrologistStoryMO:setPlace(place)
+	self.place = place
+
+	NecrologistStoryController.instance:dispatchEvent(NecrologistStoryEvent.OnChangePlace, place)
+end
+
+function NecrologistStoryMO:setTime(time)
+	self.time = time
+
+	NecrologistStoryController.instance:dispatchEvent(NecrologistStoryEvent.OnChangeTime, time)
+end
+
+function NecrologistStoryMO:setWeather(weather)
+	self.weather = weather
+
+	NecrologistStoryController.instance:dispatchEvent(NecrologistStoryEvent.OnChangeWeather, weather)
+end
+
 return NecrologistStoryMO

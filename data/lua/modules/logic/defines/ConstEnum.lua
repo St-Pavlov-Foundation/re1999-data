@@ -150,5 +150,8 @@ ConstEnum.Act236HelpDesc = 83702
 ConstEnum.V3a7SkinConfigWeight = 83706
 ConstEnum.V3a4PackageStoreGoodsId = 34014
 ConstEnum.VersionId = 300
+ConstEnum.V3a8NewRegisterPlayerTime = 83801
+ConstEnum.V3a8FreeMonthCardTitle = 83809
+ConstEnum.V3a8FreeMonthCardDesc = 83810
 
 return ConstEnum

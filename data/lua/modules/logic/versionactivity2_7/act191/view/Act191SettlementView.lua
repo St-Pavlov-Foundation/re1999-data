@@ -87,7 +87,6 @@ end
 
 function Act191SettlementView:initHeroAndEquipItem()
 	self.heroPosTrList = self:getUserDataTb_()
-	self.equipPosTrList = self:getUserDataTb_()
 
 	local recordPos = gohelper.findChild(self.viewGO, "Left/herogroupcontain/recordPos")
 
@@ -95,18 +94,12 @@ function Act191SettlementView:initHeroAndEquipItem()
 		local go = gohelper.findChild(recordPos, "heroPos" .. i)
 
 		self.heroPosTrList[i] = go.transform
-
-		if i <= 4 then
-			go = gohelper.findChild(recordPos, "equipPos" .. i)
-			self.equipPosTrList[i] = go.transform
-		end
 	end
 
 	local goHeroItem = gohelper.findChild(self.heroContainer, "go_HeroItem")
 	local goEquipItem = gohelper.findChild(self.heroContainer, "go_EquipItem")
 
 	self.heroItemList = {}
-	self.equipItemList = {}
 
 	for i = 1, 8 do
 		local cloneGo = gohelper.cloneInPlace(goHeroItem, "hero" .. i)
@@ -117,19 +110,6 @@ function Act191SettlementView:initHeroAndEquipItem()
 		self.heroItemList[i] = heroItem
 
 		self:_setHeroItemPos(heroItem, i)
-
-		if i <= 4 then
-			cloneGo = gohelper.cloneInPlace(goEquipItem, "equip" .. i)
-
-			local equipItem = MonoHelper.addNoUpdateLuaComOnceToGo(cloneGo, Act191HeroGroupItem2)
-
-			equipItem:setIndex(i)
-			equipItem:setOverrideClick(self.clickCollection, self)
-
-			self.equipItemList[i] = equipItem
-
-			self:_setEquipItemPos(equipItem, i)
-		end
 	end
 
 	gohelper.setActive(goHeroItem, false)
@@ -147,15 +127,13 @@ function Act191SettlementView:refreshLeft()
 
 	for i = 1, 4 do
 		local info = Activity191Helper.matchKeyInArray(teamInfo.battleHeroInfo, i)
-		local heroId, itemUid1
+		local heroId
 
 		if info then
 			heroId = info.heroId
-			itemUid1 = info.itemUid1
 		end
 
 		self.heroItemList[i]:setData(heroId)
-		self.equipItemList[i]:setData(itemUid1)
 
 		local infoItem = self.heroInfoItemList[i]
 

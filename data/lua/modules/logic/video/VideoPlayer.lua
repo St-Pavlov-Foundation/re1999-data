@@ -81,4 +81,8 @@ function VideoPlayer:setSkipOnDrop(skipOnDrop)
 	return
 end
 
+function VideoPlayer:resetEyeModeMat()
+	return
+end
+
 return VideoPlayer

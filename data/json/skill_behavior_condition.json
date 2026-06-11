@@ -28838,5 +28838,277 @@
   {
     "id": 750012,
     "type": "PlayerHasBuff"
+  },
+  {
+    "id": 793,
+    "type": "Level"
+  },
+  {
+    "id": 793002,
+    "type": "Level"
+  },
+  {
+    "id": 793021,
+    "type": "Level"
+  },
+  {
+    "id": 793100,
+    "type": "Level"
+  },
+  {
+    "id": 793101,
+    "type": "Level"
+  },
+  {
+    "id": 793102,
+    "type": "Level"
+  },
+  {
+    "id": 793103,
+    "type": "Level"
+  },
+  {
+    "id": 793104,
+    "type": "Level"
+  },
+  {
+    "id": 793105,
+    "type": "Level"
+  },
+  {
+    "id": 793106,
+    "type": "Level"
+  },
+  {
+    "id": 793201,
+    "type": "Level"
+  },
+  {
+    "id": 793202,
+    "type": "Level"
+  },
+  {
+    "id": 793203,
+    "type": "Level"
+  },
+  {
+    "id": 793204,
+    "type": "Level"
+  },
+  {
+    "id": 793205,
+    "type": "Level"
+  },
+  {
+    "id": 793206,
+    "type": "Level"
+  },
+  {
+    "id": 793207,
+    "type": "Level"
+  },
+  {
+    "id": 793208,
+    "type": "Level"
+  },
+  {
+    "id": 793209,
+    "type": "Level"
+  },
+  {
+    "id": 793210,
+    "type": "Level"
+  },
+  {
+    "id": 793211,
+    "type": "Level"
+  },
+  {
+    "id": 793212,
+    "type": "Level"
+  },
+  {
+    "id": 793213,
+    "type": "Level"
+  },
+  {
+    "id": 793301,
+    "type": "Level"
+  },
+  {
+    "id": 793302,
+    "type": "Level"
+  },
+  {
+    "id": 793303,
+    "type": "Level"
+  },
+  {
+    "id": 793304,
+    "type": "Level"
+  },
+  {
+    "id": 793305,
+    "type": "Level"
+  },
+  {
+    "id": 793306,
+    "type": "Level"
+  },
+  {
+    "id": 793307,
+    "type": "Level"
+  },
+  {
+    "id": 793401,
+    "type": "Level"
+  },
+  {
+    "id": 793402,
+    "type": "Level"
+  },
+  {
+    "id": 794,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794002,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794021,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794100,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794101,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794102,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794103,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794104,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794105,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794106,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794107,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794201,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794202,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794203,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794204,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794205,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794206,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794207,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794208,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794209,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794210,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794211,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794212,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794213,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794301,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794302,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794303,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794304,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794305,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794306,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794307,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794401,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 794402,
+    "type": "DeviceSkillIndex"
+  },
+  {
+    "id": 1010012,
+    "type": "ProgressValue"
+  },
+  {
+    "id": 1010003,
+    "type": "ProgressValue"
+  },
+  {
+    "id": 1010004,
+    "type": "ProgressValue"
   }
 ]

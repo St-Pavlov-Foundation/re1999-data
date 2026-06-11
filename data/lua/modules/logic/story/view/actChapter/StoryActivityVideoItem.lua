@@ -87,7 +87,7 @@ function StoryActivityVideoItem:_onVideoEvent(path, status, errorCode)
 		self:onVideoStart()
 	end
 
-	if status == AvProEnum.PlayerStatus.FinishedPlaying then
+	if status == AvProEnum.PlayerStatus.FinishedPlaying and not self._loop then
 		self:onVideoOut(true)
 	end
 end

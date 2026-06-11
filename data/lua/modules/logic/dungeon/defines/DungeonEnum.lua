@@ -395,6 +395,7 @@ DungeonEnum.ChapterWidth = {
 	Normal = 415
 }
 DungeonEnum.DungeonViewTabEnum = {
+	Rouge = 6,
 	WeekWalk_2 = 4,
 	Explore = 2,
 	Permanent = 3,

@@ -1,0 +1,86 @@
+[
+  {
+    "id": 31446011,
+    "name": "岩交感能量Ⅰ",
+    "energyType": 1,
+    "count": 1,
+    "isSpecialCard": 0
+  },
+  {
+    "id": 31446012,
+    "name": "岩交感能量Ⅱ",
+    "energyType": 1,
+    "count": 2,
+    "isSpecialCard": 0
+  },
+  {
+    "id": 31446013,
+    "name": "岩交感能量Ⅲ",
+    "energyType": 1,
+    "count": 3,
+    "isSpecialCard": 0
+  },
+  {
+    "id": 31446021,
+    "name": "星交感能量Ⅰ",
+    "energyType": 2,
+    "count": 1,
+    "isSpecialCard": 0
+  },
+  {
+    "id": 31446022,
+    "name": "星交感能量Ⅱ",
+    "energyType": 2,
+    "count": 2,
+    "isSpecialCard": 0
+  },
+  {
+    "id": 31446062,
+    "name": "混沌交感能量Ⅱ",
+    "energyType": 0,
+    "count": 2,
+    "isSpecialCard": 0
+  },
+  {
+    "id": 31447001,
+    "name": "音程跳进",
+    "energyType": 1,
+    "count": 2,
+    "isSpecialCard": 1
+  },
+  {
+    "id": 31447051,
+    "name": "音程跳进",
+    "energyType": 1,
+    "count": 3,
+    "isSpecialCard": 1
+  },
+  {
+    "id": 31447002,
+    "name": "碳酸释放",
+    "energyType": 2,
+    "count": 2,
+    "isSpecialCard": 1
+  },
+  {
+    "id": 31450181,
+    "name": "光的生息",
+    "energyType": 0,
+    "count": 1,
+    "isSpecialCard": 1
+  },
+  {
+    "id": 31450182,
+    "name": "光的生息Ⅱ",
+    "energyType": 0,
+    "count": 2,
+    "isSpecialCard": 1
+  },
+  {
+    "id": 31446063,
+    "name": "混沌交感能量Ⅲ",
+    "energyType": 0,
+    "count": 3,
+    "isSpecialCard": 0
+  }
+]

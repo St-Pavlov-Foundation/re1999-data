@@ -75,9 +75,20 @@ function BpController:_openBpView()
 					return
 				end
 
-				ViewMgr.instance:openView(ViewName.BpChargeView)
+				ViewMgr.instance:openView(self:getBpChargeView())
 			end
 		end)
+	end
+end
+
+function BpController:getBpChargeView()
+	local userId = PlayerModel.instance:getMyUserId()
+	local last = tonumber(userId) % 10
+
+	if last == 1 or last == 2 then
+		return ViewName.BpChargeView
+	else
+		return ViewName.BpChargeABTestView
 	end
 end
 
@@ -158,7 +169,7 @@ function BpController:_onBpClose()
 	ViewMgr.instance:closeView(ViewName.BpRuleTipsView, true)
 	ViewMgr.instance:closeView(ViewName.BpSPInformationView, true)
 	ViewMgr.instance:closeView(ViewName.BpSPRuleTipsView, true)
-	ViewMgr.instance:closeView(ViewName.BpChargeView, true)
+	ViewMgr.instance:closeView(BpController.instance:getBpChargeView(), true)
 	ViewMgr.instance:closeView(ViewName.BpPropView2, true)
 	ViewMgr.instance:closeView(ViewName.BPSPFaceView, true)
 

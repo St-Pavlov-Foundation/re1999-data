@@ -78,6 +78,14 @@ function FightDeviceWaitAreaCardItem:playScanEffect(success)
 		return
 	end
 
+	if not self.deviceSkillInfo then
+		return
+	end
+
+	if self.deviceSkillInfo.isStop then
+		return
+	end
+
 	if success then
 		self:playAnim("success")
 		AudioMgr.instance:trigger(370807)
@@ -85,6 +93,36 @@ function FightDeviceWaitAreaCardItem:playScanEffect(success)
 		self:playAnim("fail")
 		AudioMgr.instance:trigger(370808)
 	end
+end
+
+function FightDeviceCardItem:playStopEffect(skillId)
+	if not self.deviceSkillInfo then
+		return
+	end
+
+	if self.deviceSkillInfo.skillId ~= skillId then
+		return
+	end
+
+	self:playAnim("delicate_open")
+end
+
+function FightDeviceCardItem:restartDevice()
+	if not self.deviceSkillInfo then
+		return
+	end
+
+	self:playAnim("delicate_close")
+end
+
+function FightDeviceCardItem:refreshStopEffect()
+	if not self.deviceSkillInfo then
+		return
+	end
+
+	local animName = self.deviceSkillInfo.isStop and "delicate_open" or "idle"
+
+	self:playAnim(animName)
 end
 
 function FightDeviceWaitAreaCardItem:dispose()

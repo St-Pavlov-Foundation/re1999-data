@@ -17,10 +17,14 @@ function FightWorkRequestAutoFight:onStart()
 end
 
 function FightWorkRequestAutoFight:onAutoRoundReply(msg)
-	if msg.clothSkill ~= 0 then
-		FightRpc.instance:sendUseClothSkillRequest(msg.clothSkill, nil, nil, 0)
+	if msg:HasField("clothSkill") ~= 0 then
+		local clothSkill = msg.clothSkill
 
-		return
+		if clothSkill.skillId ~= 0 then
+			FightRpc.instance:sendUseClothSkillRequest(clothSkill.skillId, clothSkill.fromId, clothSkill.toId, clothSkill.type)
+
+			return
+		end
 	end
 
 	local autoPlayCardList = {}

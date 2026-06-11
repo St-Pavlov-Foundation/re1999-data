@@ -45,8 +45,9 @@ StoryEnum.HeroEffect = {
 	StyDissolve = "stydissolve",
 	Glow = "glow",
 	Gray = "gray",
-	WaterWave = "waterWave",
+	BlackFog = "blackFog",
 	SetSkin = "setSkin",
+	WaterWave = "waterWave",
 	SetDissolve = "setDissolve",
 	Erase = "erase",
 	HideNode = "hideNode",
@@ -54,8 +55,9 @@ StoryEnum.HeroEffect = {
 	SetParam = "setParam"
 }
 StoryEnum.BgType = {
-	Effect = 1,
-	Picture = 0
+	Video = 2,
+	Picture = 0,
+	Effect = 1
 }
 StoryEnum.BgTransType = {
 	WhiteFade = 4,
@@ -196,6 +198,8 @@ StoryEnum.PictureOrderType = {
 	Produce = 0
 }
 StoryEnum.PictureInType = {
+	SoftLight = 3,
+	GostMagic = 4,
 	FadeIn = 1,
 	TxtFadeIn = 2,
 	Hard = 0

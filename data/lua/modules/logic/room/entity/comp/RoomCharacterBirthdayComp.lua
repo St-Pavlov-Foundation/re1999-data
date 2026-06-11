@@ -148,12 +148,15 @@ function RoomCharacterBirthdayComp:checkBirthday()
 		return
 	end
 
-	local mo = self.entity:getMO()
-	local isOnBirthday = RoomCharacterModel.instance:isOnBirthday(mo.id)
 	local replaceAnimState
+	local mo = self.entity:getMO()
+	local heroId = mo and mo.heroId
+	local isOnBirthday = RoomCharacterModel.instance:isOnBirthday(heroId)
+	local inSelfBirthdayBlock = self:_isSelfBirthdayBlock(self._curBlockMO, heroId)
 
-	if isOnBirthday and self:_isSelfBirthdayBlock(self._curBlockMO, mo.heroId) then
-		local heroMo = HeroModel.instance:getByHeroId(mo.id)
+	if isOnBirthday and inSelfBirthdayBlock then
+		local targetHeroId = HeroConfig.instance:getSPOriginalHero(heroId) or heroId
+		local heroMo = HeroModel.instance:getByHeroId(targetHeroId)
 
 		if heroMo then
 			local meetingYear = heroMo:getMeetingYear()
@@ -173,8 +176,9 @@ function RoomCharacterBirthdayComp:_isSelfBirthdayBlock(blockMO, heroId)
 	end
 
 	local cfg = RoomConfig.instance:getSpecialBlockConfig(blockMO.blockId)
+	local targetHeroId = HeroConfig.instance:getSPOriginalHero(heroId) or heroId
 
-	return cfg and cfg.heroId == heroId
+	return cfg and cfg.heroId == targetHeroId
 end
 
 function RoomCharacterBirthdayComp:playBirthdayFirework(meetingYear)

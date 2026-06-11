@@ -219,7 +219,7 @@ end
 function StoryModel:isStoryHasPlayed(storyId)
 	local played = false
 
-	if self._storyState.finishList[storyId] then
+	if self:isStoryFinished(storyId) then
 		return true
 	end
 
@@ -843,6 +843,24 @@ function StoryModel:hasBranchPlayed(stepCo)
 				end
 			end
 		end
+	end
+
+	return false
+end
+
+function StoryModel:isSetTopView(viewName)
+	local setting = ViewMgr.instance:getSetting(viewName)
+
+	if setting.layer == UILayerName.Message then
+		return true
+	end
+
+	if setting.layer == UILayerName.IDCanvasPopUp then
+		return true
+	end
+
+	if setting.layer == UILayerName.PopUpTop and setting.bgBlur and setting.bgBlur > 0 then
+		return true
 	end
 
 	return false

@@ -30,7 +30,7 @@ function V3a5PuzzleController:_initStoryViewInfo()
 	end
 end
 
-function V3a5PuzzleController:checkOpenPuzzleView(storyId)
+function V3a5PuzzleController:checkOpenPuzzleView(storyId, episodeId)
 	if not self._storyViewInfos then
 		self:_initStoryViewInfo()
 	end
@@ -38,7 +38,8 @@ function V3a5PuzzleController:checkOpenPuzzleView(storyId)
 	for _storyId, viewName in pairs(self._storyViewInfos) do
 		if _storyId == storyId then
 			ViewMgr.instance:openView(viewName, {
-				storyId = storyId
+				storyId = storyId,
+				episodeId = episodeId
 			})
 
 			return true
@@ -66,6 +67,36 @@ function V3a5PuzzleController:playNextStory(viewName, cb, cbObj)
 	end
 
 	StoryController.instance:playStory(nextStoryId, nil, _cb)
+end
+
+function V3a5PuzzleController:playNextStoryByPreStoryId(preStoryId, episodeId, viewName, cb, cbObj)
+	local nextStory = V3a5PuzzleEnum.NextStoryView[viewName]
+
+	if not nextStory then
+		return
+	end
+
+	for k, v in pairs(nextStory) do
+		if V3a5PuzzleConfig.instance:getConstValue(k) == preStoryId then
+			local nextStoryId = V3a5PuzzleConfig.instance:getConstValue(v)
+
+			local function _cb()
+				if cb then
+					cb(cbObj)
+				end
+
+				local episodeMo = episodeId and DungeonModel.instance:getEpisodeInfo(episodeId)
+
+				if episodeMo and episodeMo.star <= DungeonEnum.StarType.None then
+					DungeonFightController.instance:enterFight(episodeMo.chapterId, episodeId, 1)
+				end
+			end
+
+			StoryController.instance:playStory(nextStoryId, nil, _cb)
+
+			return
+		end
+	end
 end
 
 V3a5PuzzleController.instance = V3a5PuzzleController.New()

@@ -203,7 +203,11 @@ function FightViewDialog:_playDialogItem()
 
 	local dialogConfig = self._tempDialogConfig
 
-	gohelper.setActive(self._godialog2, true)
+	if dialogConfig.type == 2 then
+		gohelper.setActive(self._godialog2, true)
+	else
+		gohelper.setActive(self._godialog, true)
+	end
 
 	local icon
 

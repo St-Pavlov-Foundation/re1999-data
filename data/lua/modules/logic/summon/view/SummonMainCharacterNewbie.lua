@@ -28,6 +28,7 @@ function SummonMainCharacterNewbie:onInitView()
 	self._simagetips1 = gohelper.findChildSingleImage(self.viewGO, "#go_ui/tips/#simage_tips1")
 	self._simagetips2 = gohelper.findChildSingleImage(self.viewGO, "#go_ui/tips/#simage_tips2")
 	self._simagetips3 = gohelper.findChildSingleImage(self.viewGO, "#go_ui/tips/#simage_tips3")
+	self._imagetips4 = gohelper.findChildSingleImage(self.viewGO, "#go_ui/tips/#image_tips4")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -251,6 +252,10 @@ function SummonMainCharacterNewbie:_editableInitView()
 		table.insert(self._characteritems, characteritem)
 		characteritem.btndetail:AddClickListener(SummonMainCharacterNewbie._onClickDetailByIndex, self, i)
 	end
+
+	gohelper.setActive(self._imagetips4, false)
+
+	self._txtProgress = gohelper.findChildTextMesh(self.viewGO, "#go_ui/tips/txt1")
 end
 
 function SummonMainCharacterNewbie:_onClickDetailByIndex(index)
@@ -293,6 +298,7 @@ function SummonMainCharacterNewbie:_refreshPoolUI()
 	local times = SummonConfig.getSummonSSRTimes(pool) or "-"
 	local curTimes = SummonMainModel.instance:getNewbieProgress() or "-"
 
+	self._txtProgress.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("V3a8_Summon_Newbie_Progress_Desc"), times)
 	self._txtsummonnum.text = string.format("%s/%s", curTimes, times)
 
 	self:showSummonPool(pool)

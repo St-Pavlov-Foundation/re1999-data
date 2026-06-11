@@ -84,11 +84,37 @@ function V3a2_BossRush_HandBookView:_refreshBossGroups()
 
 	self._bossGroupItems = self:getUserDataTb_()
 
-	for i, mo in ipairs(moList) do
-		local item = self:_getBossGroupItem(i)
+	if moList then
+		local claimGroupIndex = 0
 
-		item:onUpdateMO(mo)
-		gohelper.setActive(item.viewGO, true)
+		for i, mo in ipairs(moList) do
+			if self:_hasClaimBounsGroup(mo.bossGroup) and claimGroupIndex < i then
+				claimGroupIndex = i
+			end
+		end
+
+		for i, mo in ipairs(moList) do
+			local item = self:_getBossGroupItem(i)
+
+			item:onUpdateMO(mo)
+			gohelper.setActive(item.viewGO, true)
+		end
+
+		if #moList > 0 then
+			self._scrollboss.verticalNormalizedPosition = 1 - claimGroupIndex / #moList
+		end
+	end
+end
+
+function V3a2_BossRush_HandBookView:_hasClaimBounsGroup(bossGroup)
+	if bossGroup then
+		for _, mo in ipairs(bossGroup) do
+			if mo:hasClaimBonus() then
+				V3a2_BossRush_HandBookListModel.instance:onSelect(mo)
+
+				return true
+			end
+		end
 	end
 end
 

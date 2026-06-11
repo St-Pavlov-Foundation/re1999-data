@@ -29,6 +29,9 @@ function SettingsGraphicsView:onInitView()
 	self._videoModeDrop = gohelper.findChildDropdown(self.viewGO, "graphicsScroll/Viewport/Content/videomode/dropvideoswitch")
 	self._videoModeDropClick = gohelper.getClick(self._videoModeDrop.gameObject)
 	self._videoModeTemplate = gohelper.findChild(self.viewGO, "graphicsScroll/Viewport/Content/videomode/dropvideoswitch/Template")
+	self._btnEyeProtect = gohelper.findChildButtonWithAudio(self.viewGO, "graphicsScroll/Viewport/Content/protectmode/switch/btn")
+	self._eyeProtectOn = gohelper.findChild(self.viewGO, "graphicsScroll/Viewport/Content/protectmode/switch/btn/on")
+	self._eyeProtectOff = gohelper.findChild(self.viewGO, "graphicsScroll/Viewport/Content/protectmode/switch/btn/off")
 	self._videoHD = gohelper.findChild(self.viewGO, "graphicsScroll/Viewport/Content/strength")
 	self._btnHdMode = gohelper.findChildButtonWithAudio(self.viewGO, "graphicsScroll/Viewport/Content/strength/switch/btn")
 	self._goHdModeOn = gohelper.findChild(self.viewGO, "graphicsScroll/Viewport/Content/strength/switch/btn/on")
@@ -68,6 +71,7 @@ function SettingsGraphicsView:addEvents()
 	self._btnmiddle:AddClickListener(self._btnmiddleOnClick, self)
 	self._btnhigh:AddClickListener(self._btnhighOnClick, self)
 	self._btnenergy:AddClickListener(self._btnenergyOnClick, self)
+	self._btnEyeProtect:AddClickListener(self._btnEyeProtectOnClick, self)
 	self._btnvideo:AddClickListener(self._btnvideoOnClick, self)
 	self._btnHdMode:AddClickListener(self._btnvideoHDOnClick, self)
 	self._btnVerticalmode:AddClickListener(self._btnVerticalmodeClick, self)
@@ -100,6 +104,18 @@ function SettingsGraphicsView:addEvents()
 	SettingsController.instance:registerCallback(SettingsEvent.OnChangeHDType, self._refreshVideoUI, self)
 end
 
+function SettingsGraphicsView:_btnEyeProtectOnClick()
+	EyeProtectionModeMgr.instance:changeEyeModeActive()
+	self:_refreshEyeProtectUI()
+end
+
+function SettingsGraphicsView:_refreshEyeProtectUI()
+	local active = EyeProtectionModeMgr.instance:getEyeModeActive()
+
+	gohelper.setActive(self._eyeProtectOn, active)
+	gohelper.setActive(self._eyeProtectOff, not active)
+end
+
 function SettingsGraphicsView:_onVideoModeValueChanged(index)
 	if index == 0 then
 		SettingsModel.instance:setVideoCompatible(false)
@@ -119,6 +135,7 @@ function SettingsGraphicsView:removeEvents()
 	self._btnmiddle:RemoveClickListener()
 	self._btnhigh:RemoveClickListener()
 	self._btnenergy:RemoveClickListener()
+	self._btnEyeProtect:RemoveClickListener()
 	self._btnvideo:RemoveClickListener()
 	self._btnHdMode:RemoveClickListener()
 	self._btnVerticalmode:RemoveClickListener()
@@ -298,6 +315,7 @@ function SettingsGraphicsView:_refreshUI()
 	self:_refreshShotUI()
 	self:_refreshEnergyUI()
 	self:_refreshVideoUI()
+	self:_refreshEyeProtectUI()
 end
 
 function SettingsGraphicsView:onClose()

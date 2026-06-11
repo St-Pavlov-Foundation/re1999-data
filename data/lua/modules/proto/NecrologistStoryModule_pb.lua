@@ -36,6 +36,8 @@ NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFO_MSG = protobuf.Descriptor()
 NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOIDFIELD = protobuf.FieldDescriptor()
 NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOSTATEFIELD = protobuf.FieldDescriptor()
 NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOVALUESFIELD = protobuf.FieldDescriptor()
+NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOSELECTEDOPTIONSFIELD = protobuf.FieldDescriptor()
+NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOUNLOCKENDIDSFIELD = protobuf.FieldDescriptor()
 NecrologistStoryModule_pb.NECROLOGISTSTORYSTORYIDFIELD.name = "storyId"
 NecrologistStoryModule_pb.NECROLOGISTSTORYSTORYIDFIELD.full_name = ".NecrologistStory.storyId"
 NecrologistStoryModule_pb.NECROLOGISTSTORYSTORYIDFIELD.number = 1
@@ -302,6 +304,24 @@ NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOVALUESFIELD.default_value = {}
 NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOVALUESFIELD.message_type = NecrologistStoryModule_pb.NECROLOGISTSTORYSITUATIONVALUE_MSG
 NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOVALUESFIELD.type = 11
 NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOVALUESFIELD.cpp_type = 10
+NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOSELECTEDOPTIONSFIELD.name = "selectedOptions"
+NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOSELECTEDOPTIONSFIELD.full_name = ".NecrologistStoryPlotInfo.selectedOptions"
+NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOSELECTEDOPTIONSFIELD.number = 4
+NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOSELECTEDOPTIONSFIELD.index = 3
+NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOSELECTEDOPTIONSFIELD.label = 3
+NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOSELECTEDOPTIONSFIELD.has_default_value = false
+NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOSELECTEDOPTIONSFIELD.default_value = {}
+NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOSELECTEDOPTIONSFIELD.type = 5
+NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOSELECTEDOPTIONSFIELD.cpp_type = 1
+NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOUNLOCKENDIDSFIELD.name = "unlockEndIds"
+NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOUNLOCKENDIDSFIELD.full_name = ".NecrologistStoryPlotInfo.unlockEndIds"
+NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOUNLOCKENDIDSFIELD.number = 5
+NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOUNLOCKENDIDSFIELD.index = 4
+NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOUNLOCKENDIDSFIELD.label = 3
+NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOUNLOCKENDIDSFIELD.has_default_value = false
+NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOUNLOCKENDIDSFIELD.default_value = {}
+NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOUNLOCKENDIDSFIELD.type = 5
+NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOUNLOCKENDIDSFIELD.cpp_type = 1
 NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFO_MSG.name = "NecrologistStoryPlotInfo"
 NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFO_MSG.full_name = ".NecrologistStoryPlotInfo"
 NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFO_MSG.nested_types = {}
@@ -309,7 +329,9 @@ NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFO_MSG.enum_types = {}
 NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFO_MSG.fields = {
 	NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOIDFIELD,
 	NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOSTATEFIELD,
-	NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOVALUESFIELD
+	NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOVALUESFIELD,
+	NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOSELECTEDOPTIONSFIELD,
+	NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFOUNLOCKENDIDSFIELD
 }
 NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFO_MSG.is_extendable = false
 NecrologistStoryModule_pb.NECROLOGISTSTORYPLOTINFO_MSG.extensions = {}

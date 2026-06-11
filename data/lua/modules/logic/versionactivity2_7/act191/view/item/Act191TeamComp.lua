@@ -118,20 +118,7 @@ function Act191TeamComp:_loadFinish()
 end
 
 function Act191TeamComp:onClickSwitch(manual)
-	self.editCollection = not self.editCollection
-
-	if manual then
-		self:refreshStatus()
-	else
-		self._anim:Play("switch", 0, 0)
-		TaskDispatcher.runDelay(self.refreshStatus, self, 0.16)
-	end
-
-	if not manual then
-		local param = self.editCollection and "Collection" or "Hero"
-
-		Act191StatController.instance:statButtonClick(self.handleViewName, string.format("onClickSwitch_%s", param))
-	end
+	return
 end
 
 function Act191TeamComp:refreshStatus()

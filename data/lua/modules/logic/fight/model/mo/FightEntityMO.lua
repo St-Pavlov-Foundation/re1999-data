@@ -114,6 +114,7 @@ function FightEntityMO:init(info, side)
 	self.career = info.career
 
 	self:updateStoredExPoint()
+	self:updateStoredDeviceExPoint()
 
 	self.status = info.status
 	self.guard = info.guard
@@ -865,6 +866,36 @@ function FightEntityMO:hadStoredExPoint()
 	return self.storedExPoint > 0
 end
 
+function FightEntityMO:updateStoredDeviceExPoint()
+	self.storedDeviceExPoint = 0
+
+	local targetId = FightEnum.BuffActId.DeviceExPointOverflowBank
+
+	for _, buffMo in ipairs(self:getBuffList()) do
+		for _, actInfo in ipairs(buffMo.actInfo) do
+			if actInfo.actId == targetId then
+				self:changeStoredDeviceExPoint(actInfo.param[1])
+			end
+		end
+	end
+end
+
+function FightEntityMO:setStoredDeviceExPoint(num)
+	self.storedDeviceExPoint = num
+end
+
+function FightEntityMO:changeStoredDeviceExPoint(offsetNum)
+	self.storedDeviceExPoint = self.storedDeviceExPoint + offsetNum
+end
+
+function FightEntityMO:getStoredDeviceExPoint()
+	return self.storedDeviceExPoint
+end
+
+function FightEntityMO:hadStoredDeviceExPoint()
+	return self.storedDeviceExPoint > 0
+end
+
 function FightEntityMO:getResistanceDict()
 	self.resistanceDict = self.resistanceDict or {}
 
@@ -1204,8 +1235,15 @@ function FightEntityMO:getHpAndShieldFillAmount(hp, shield)
 	shieldPercent = shieldPercent * maxHpLockRate
 
 	local realHpPercent, fictionHpPercent = self:getHpPercentAndFictionHpPercent(hpPercent, currHp)
+	local fakeHpPercent = self:getFakeHpPercent()
 
-	return realHpPercent, shieldPercent, fictionHpPercent
+	if fakeHpPercent > 0 then
+		fakeHpPercent = fakeHpPercent + shieldPercent
+	else
+		fakeHpPercent = 0
+	end
+
+	return realHpPercent, shieldPercent, fictionHpPercent, fakeHpPercent
 end
 
 function FightEntityMO:getHpPercentAndFictionHpPercent(hpPercent, currHp)
@@ -1226,12 +1264,14 @@ function FightEntityMO:getHpPercentAndFictionHpPercent(hpPercent, currHp)
 end
 
 function FightEntityMO:getFictionHp()
+	local actId = FightEnum.BuffActId.FictionHp
+
 	for _, buffMo in pairs(self.buffDic) do
 		local actInfo = buffMo.actInfo
 
 		if actInfo then
 			for _, buffActInfo in pairs(actInfo) do
-				if buffActInfo.actId == FightEnum.BuffActId.FictionHp then
+				if buffActInfo.actId == actId then
 					local fictionHp = buffActInfo.param[1]
 
 					return fictionHp or -1
@@ -1241,6 +1281,37 @@ function FightEntityMO:getFictionHp()
 	end
 
 	return -1
+end
+
+function FightEntityMO:getFakeHpAndMaxFakeHp()
+	local actId = FightEnum.BuffActId.LostHpToFakeHp
+
+	for _, buffMo in pairs(self.buffDic) do
+		local actInfo = buffMo.actInfo
+
+		if actInfo then
+			for _, buffActInfo in pairs(actInfo) do
+				if buffActInfo.actId == actId then
+					local fakeHp = buffActInfo.param[1]
+					local maxFakeHp = buffActInfo.param[2]
+
+					return fakeHp or -1, maxFakeHp or -1
+				end
+			end
+		end
+	end
+
+	return -1, -1
+end
+
+function FightEntityMO:getFakeHpPercent()
+	local fakeHp, maxFakeHp = self:getFakeHpAndMaxFakeHp()
+
+	if fakeHp < 0 then
+		return 0
+	end
+
+	return Mathf.Clamp01(fakeHp / maxFakeHp)
 end
 
 function FightEntityMO:set_position(key, position)

@@ -16,6 +16,8 @@ AvProMgrConfig.URLRolesprefabDict = {
 	["rolesstory/rolesprefab/305901_door_p/305901_door_p_light.prefab"] = "rolesstory/rolesprefab/305901_door_p/305901_door_p_light_compatible.prefab",
 	["rolesstory/rolesprefab/305901_door_p/305901_door_p.prefab"] = "rolesstory/rolesprefab/305901_door_p/305901_door_p_compatible.prefab"
 }
+AvProMgrConfig.VideoMat = "ui/materials/dynamic/fight_video_brightness.mat"
+AvProMgrConfig.MatUberBrightnessId = UnityEngine.Shader.PropertyToID("_UberBrightness")
 
 function AvProMgrConfig.getPreloadList()
 	return {

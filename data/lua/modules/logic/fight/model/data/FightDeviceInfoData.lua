@@ -46,4 +46,24 @@ function FightDeviceInfoData:actEffectSetIndex(index)
 	self.clientIndex = index
 end
 
+function FightDeviceInfoData:resetStopAttr()
+	for _, skillGroup in ipairs(self.skills) do
+		skillGroup:resetStopAttr()
+	end
+end
+
+function FightDeviceInfoData:stopSkill(skillId)
+	for _, skillGroup in ipairs(self.skills) do
+		local skills = skillGroup.skills
+
+		for _, skill in ipairs(skills) do
+			if skill.skillId == skillId then
+				skill:setStop(true)
+
+				return
+			end
+		end
+	end
+end
+
 return FightDeviceInfoData

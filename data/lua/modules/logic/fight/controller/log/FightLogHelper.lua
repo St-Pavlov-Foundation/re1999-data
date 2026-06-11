@@ -902,6 +902,7 @@ FightLogHelper.EffectTypeNameDict = {
 	[FightEnum.EffectType.UNNAMEDSTRENGTHEN] = "无名者强化效果",
 	[FightEnum.EffectType.COUNTERCHANGE] = "计数器变化(变化后的值)",
 	[FightEnum.EffectType.DEVICEPOWERCLEAR] = "装置能量清空",
+	[FightEnum.EffectType.DEVICESTOP] = "装置停止",
 	[FightEnum.EffectType.TRIGGER] = "触发器",
 	[FightEnum.EffectType.EZIOBIGSKILLDAMAGE] = "EZIO大招伤害",
 	[FightEnum.EffectType.EZIOBIGSKILLORIGINDAMAGE] = "EZIO大招本源创伤",

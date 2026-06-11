@@ -20,7 +20,7 @@ function TravelGoStatHelper:selectSkill(selectSkillId, selectableSkillIdList)
 
 	StatController.instance:track(StatEnum.EventName.TravelGame, {
 		[StatEnum.EventProperties.OperationType] = "选取技能",
-		[StatEnum.EventProperties.ActTravelMapId] = mapId,
+		[StatEnum.EventProperties.ActTravelMapId] = tostring(mapId),
 		[StatEnum.EventProperties.Day] = day,
 		[StatEnum.EventProperties.AfterLevel] = level,
 		[StatEnum.EventProperties.ActTravelSkillId] = selectSkillId,
@@ -48,7 +48,7 @@ function TravelGoStatHelper:endGame(operationType)
 
 	StatController.instance:track(StatEnum.EventName.TravelGame, {
 		[StatEnum.EventProperties.OperationType] = operationType,
-		[StatEnum.EventProperties.ActTravelMapId] = mapId,
+		[StatEnum.EventProperties.ActTravelMapId] = tostring(mapId),
 		[StatEnum.EventProperties.IsWin] = isWin,
 		[StatEnum.EventProperties.Day] = day,
 		[StatEnum.EventProperties.AfterLevel] = level,

@@ -208,6 +208,9 @@ function UISpriteSetMgr:ctor()
 	self._v3a7_teaching_system = self:newSpriteSetUnit("ui/spriteassets/v3a7_teaching_spriteset.asset")
 	self.v3a7_xiaoruiannong_spriteset = self:newSpriteSetUnit("ui/spriteassets/v3a7_xiaoruiannong_spriteset.asset")
 	self._v3a7_wmz_spriteset = self:newSpriteSetUnit("ui/spriteassets/v3a7_wmz_spriteset.asset")
+	self._v3a8_dianjishi_spriteset = self:newSpriteSetUnit("ui/spriteassets/v3a8_dianjishi_spriteset.asset")
+	self._v3a8_main_activity = self:newSpriteSetUnit("ui/spriteassets/v3a8_mainactivity_spriteset.asset")
+	self._v3a8_dungeon_sprite = self:newSpriteSetUnit("ui/spriteassets/v3a2_dungeon.asset")
 end
 
 function UISpriteSetMgr:newSpriteSetUnit(path)
@@ -1040,6 +1043,18 @@ end
 
 function UISpriteSetMgr:setV3a7WmzSprite(image, name, setNativeSize)
 	self._v3a7_wmz_spriteset:setSprite(image, name, setNativeSize)
+end
+
+function UISpriteSetMgr:setV3a8MainActivitySprite(image, name, setNativeSize)
+	self._v3a8_main_activity:setSprite(image, name, setNativeSize)
+end
+
+function UISpriteSetMgr:setV3a8DungeonSprite(image, name, setNativeSize)
+	self._v3a8_dungeon_sprite:setSprite(image, name, setNativeSize)
+end
+
+function UISpriteSetMgr:setV3a8DianJiShiSprite(image, name, setNativeSize)
+	self._v3a8_dianjishi_spriteset:setSprite(image, name, setNativeSize)
 end
 
 function UISpriteSetMgr:tryDispose()

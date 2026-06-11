@@ -269,8 +269,19 @@ function SummonMainModel:resetTabResSettings()
 end
 
 function SummonMainModel.sortSummonCategory(a, b)
-	if a.priority ~= b.priority then
-		return a.priority > b.priority
+	local priorityA = a.priority
+	local priorityB = b.priority
+
+	if SummonMainModel.instance:getNewbiePoolExist() and SummonMainModel.instance:isNewbiePoolGetReward() then
+		if SummonMainModel.getADPageTabIndex(a) == SummonEnum.TabContentIndex.CharNewbie then
+			priorityA = SummonEnum.NewbieFinishSortOrder
+		elseif SummonMainModel.getADPageTabIndex(b) == SummonEnum.TabContentIndex.CharNewbie then
+			priorityB = SummonEnum.NewbieFinishSortOrder
+		end
+	end
+
+	if priorityA ~= priorityB then
+		return priorityB < priorityA
 	else
 		return a.id < b.id
 	end
@@ -457,6 +468,40 @@ end
 
 function SummonMainModel:getNewbiePoolExist()
 	return self._hasNewbiePool
+end
+
+function SummonMainModel:isNewbiePoolGetReward()
+	return self._isNewbiePoolGetReward
+end
+
+function SummonMainModel:setNewbiePoolGetReward()
+	local poolId
+
+	if SummonMainModel.instance:getNewbiePoolExist() then
+		local list = SummonConfig.instance:getValidPoolList()
+
+		for i, co in pairs(list) do
+			local mo = SummonMainModel.instance:getPoolServerMO(co.id)
+
+			if mo and mo:isOpening() and SummonMainModel.getADPageTabIndex(co) == SummonEnum.TabContentIndex.CharNewbie then
+				poolId = co.id
+
+				break
+			end
+		end
+	end
+
+	if poolId then
+		local mainPoolInfo = SummonMainModel.instance:getPoolServerMO(poolId)
+		local poolCo = SummonConfig.instance:getSummonPool(poolId)
+		local ssrTimes = SummonConfig.getSummonSSRTimes(poolCo)
+		local nextSSRTime = ssrTimes - mainPoolInfo.notSSRcount
+		local newbieProgress = self:getNewbieProgress()
+
+		self._isNewbiePoolGetReward = ssrTimes - newbieProgress ~= nextSSRTime
+	else
+		self._isNewbiePoolGetReward = true
+	end
 end
 
 function SummonMainModel:setNewbieProgress(val)

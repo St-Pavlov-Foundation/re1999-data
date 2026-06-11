@@ -187,7 +187,6 @@ end
 
 function V3a2_BossRush_MainItem:_onClick()
 	BossRushController.instance:openV3a2LevelDetailView(self._mo)
-	self:_refreshReddot()
 end
 
 function V3a2_BossRush_MainItem:_refreshReddot()
@@ -273,6 +272,8 @@ function V3a2_BossRush_MainItem:onDestroyView()
 	if self._simageBG2 then
 		self._simageBG2:UnLoadImage()
 	end
+
+	self:_refreshReddot()
 end
 
 return V3a2_BossRush_MainItem

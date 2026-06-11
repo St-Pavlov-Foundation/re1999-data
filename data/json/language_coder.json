@@ -6297,7 +6297,7 @@
   },
   {
     "id": "survival_resultview_loss",
-    "lang": "撤离失败，收益损失▩1%s%"
+    "lang": "失联，收益损失▩1%s%"
   },
   {
     "id": "survival_eventview_commititem",
@@ -8777,7 +8777,7 @@
   },
   {
     "id": "v3a6_doubledrop_txt_title",
-    "lang": "▩1%s关卡酬劳+<color=#fb9133>▩2%s%</color>"
+    "lang": "▩1%s关卡酬劳"
   },
   {
     "id": "rouge2_fightrecord_confirm",
@@ -9450,5 +9450,101 @@
   {
     "id": "p_rouge2_finishview_txt_success104",
     "lang": "自我的超越"
+  },
+  {
+    "id": "V3a8_DragonBoatActivity_FullView_txtdesc",
+    "lang": "可支持次数：%s"
+  },
+  {
+    "id": "V3a8_DragonBoatActivity_RewardItem_txtvotenum",
+    "lang": "支持%s次"
+  },
+  {
+    "id": "V3a9_DragonBoatActivity_RewardItem_txtrewardcount",
+    "lang": "×%s"
+  },
+  {
+    "id": "necrologiststory_weather_1",
+    "lang": "晴"
+  },
+  {
+    "id": "necrologiststory_weather_2",
+    "lang": "雾"
+  },
+  {
+    "id": "necrologiststory_weather_3",
+    "lang": "云"
+  },
+  {
+    "id": "necrologiststory_weather_4",
+    "lang": "雪"
+  },
+  {
+    "id": "necrologiststory_weather_5",
+    "lang": "雨"
+  },
+  {
+    "id": "necrologiststory_weather_6",
+    "lang": "风"
+  },
+  {
+    "id": "necrologiststory_weather_9",
+    "lang": "夜"
+  },
+  {
+    "id": "necrologist_story_ending_1",
+    "lang": "结局一"
+  },
+  {
+    "id": "necrologist_story_ending_2",
+    "lang": "结局二"
+  },
+  {
+    "id": "necrologist_story_ending_3",
+    "lang": "结局三"
+  },
+  {
+    "id": "V3a8_DragonBoatActivity_FullView_txtLimitTime_end",
+    "lang": "投票期:活动已结束"
+  },
+  {
+    "id": "V3a8_DragonBoatActivity_FullView_txtLimitTime2_end",
+    "lang": "公示期:活动已结束"
+  },
+  {
+    "id": "V3a8_DragonBoatActivity_FullView_txtLimitTime_dh",
+    "lang": "投票期:▩1%s天▩2%s时"
+  },
+  {
+    "id": "V3a8_DragonBoatActivity_FullView_txtLimitTime2_dh",
+    "lang": "公示期:▩1%s天▩2%s时"
+  },
+  {
+    "id": "V3a8_DragonBoatActivity_FullView_txtLimitTime_hm",
+    "lang": "投票期:▩1%s时▩2%s分"
+  },
+  {
+    "id": "V3a8_DragonBoatActivity_FullView_txtLimitTime2_hm",
+    "lang": "公示期:▩1%s时▩2%s分"
+  },
+  {
+    "id": "V3a8_Summon_Newbie_Progress_Desc",
+    "lang": "<size=115><voffset=-13>▩1%s</voffset></size>次<color=#ffffff>征集内，必定邀请一名</color>6<sprite=0>    角色"
+  },
+  {
+    "id": "V3a8_Summon_Newbie_Progress_Finish_Desc",
+    "lang": "$临时文本$"
+  },
+  {
+    "id": "handbookskin_festival_DuanwuFestival",
+    "lang": "端午节"
+  },
+  {
+    "id": "v3a8_puzzleview_txt_title1",
+    "lang": "尝试将回声石放置到槽位内"
+  },
+  {
+    "id": "v3a8_puzzleview_txt_title2",
+    "lang": "将回声石放置正确的槽位"
   }
 ]

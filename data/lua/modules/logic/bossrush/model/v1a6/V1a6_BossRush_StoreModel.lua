@@ -94,7 +94,7 @@ function V1a6_BossRush_StoreModel:checkUpdateStoreActivity()
 						actId = mo.config.activityId
 					end
 				elseif actId ~= mo.config.activityId then
-					logError("鬃毛信托特约期汇绑定活动id不一致：" .. "  " .. mo.config.id)
+					logError("鬃毛信托特约期汇绑定活动id不一致：" .. "  " .. mo.config.id .. "  其他的活动：" .. actId)
 
 					return
 				end

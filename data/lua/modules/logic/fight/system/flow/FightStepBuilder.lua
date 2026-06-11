@@ -213,7 +213,8 @@ FightStepBuilder.ActEffectWorkCls = {
 	[FightEnum.EffectType.TOUGHNESSRESET] = FightWorkToughnessReset375,
 	[FightEnum.EffectType.UNNAMEDSTRENGTHEN] = FightWorkUnnamedStrengthen380,
 	[FightEnum.EffectType.COUNTERCHANGE] = FightWorkCounterChange381,
-	[FightEnum.EffectType.DEVICEPOWERCLEAR] = FightWorkDevicePowerClear382
+	[FightEnum.EffectType.DEVICEPOWERCLEAR] = FightWorkDevicePowerClear382,
+	[FightEnum.EffectType.DEVICESTOP] = FightWorkDeviceStop383
 }
 FightStepBuilder.EffectType2FlowOrWork = {
 	[FightEnum.EffectType.ADDSPHANDCARD] = FightWorkAddSpHandCard320Container,

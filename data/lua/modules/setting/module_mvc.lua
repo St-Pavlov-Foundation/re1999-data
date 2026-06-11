@@ -1,6 +1,20 @@
 ﻿-- chunkname: @modules/setting/module_mvc.lua
 
 local module_mvc = {
+	V3a8EchoSong = {
+		model = {
+			"V3a8EchoSongModel"
+		},
+		controller = {
+			"V3a8EchoSongController"
+		},
+		rpc = {
+			"V3a8EchoSongRpc"
+		},
+		config = {
+			"V3a8EchoSongConfig"
+		}
+	},
 	Activity236 = {
 		model = {
 			"Act236Model"
@@ -998,7 +1012,8 @@ local module_mvc = {
 		config = {
 			"Activity125Config",
 			"V2a4_WarmUpConfig",
-			"V3a6_WarmUpConfig"
+			"V3a6_WarmUpConfig",
+			"V3a8_WarmUpConfig"
 		},
 		rpc = {
 			"Activity156Rpc",
@@ -2849,7 +2864,8 @@ local module_mvc = {
 			"TowerTaskModel",
 			"TowerTimeLimitLevelModel",
 			"TowerPermanentDeepModel",
-			"TowerDeepTaskModel"
+			"TowerDeepTaskModel",
+			"TowerHeroTrialListModel"
 		},
 		rpc = {
 			"TowerRpc",
@@ -3766,6 +3782,68 @@ local module_mvc = {
 		},
 		controller = {
 			"WmzController"
+		}
+	},
+	V3a8DianJiShi = {
+		model = {
+			"DianJiShiGameModel",
+			"DianJiShiModel"
+		},
+		controller = {
+			"DianJiShiGameController",
+			"DianJiShiLevelController"
+		},
+		rpc = {},
+		config = {
+			"DianJiShiGameConfig"
+		}
+	},
+	GlobalVote = {
+		model = {
+			"GlobalVoteModel"
+		},
+		controller = {
+			"GlobalVoteController"
+		},
+		rpc = {
+			"GlobalVoteRpc"
+		}
+	},
+	V3a8_DragonBoat = {
+		config = {
+			"V3a8_DragonBoatConfig"
+		},
+		model = {
+			"V3a8_DragonBoatModel"
+		},
+		rpc = {
+			"V3a8_DragonBoatRpc",
+			"Activity241Rpc"
+		},
+		controller = {
+			"V3a8_DragonBoatController"
+		}
+	},
+	V3a8_SelfSelectSix = {
+		model = {
+			"VersionActivity3_8SelfSelectSixModel"
+		},
+		controller = {
+			"VersionActivity3_8SelfSelectSixController"
+		}
+	},
+	Act240 = {
+		model = {
+			"VersionActivity3_8FreeMonthCardModel"
+		},
+		controller = {
+			"MonthCardController"
+		},
+		rpc = {
+			"Activity240Rpc"
+		},
+		config = {
+			"Activity240Config"
 		}
 	}
 }

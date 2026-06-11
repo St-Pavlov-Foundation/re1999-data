@@ -92,7 +92,13 @@ function StoryHeroNode:setDir(dir)
 end
 
 function StoryHeroNode:playAnim(param)
-	return
+	local co = {}
+
+	co.motion = param.motion
+	co.face = param.face
+	co.mouth = param.mouth
+
+	self._heroSpine:playVoice(co)
 end
 
 function StoryHeroNode:getAnimations()
@@ -116,6 +122,12 @@ function StoryHeroNode:getAnimations()
 
 		for _, anim in pairs(animTable) do
 			table.insert(animations, anim.name)
+		end
+
+		local expressions = self:_getExpressionsViaReflection(cubctrl)
+
+		for _, name in ipairs(expressions) do
+			table.insert(animations, name)
 		end
 	end
 
@@ -153,6 +165,48 @@ function StoryHeroNode:clearHero()
 
 		self._heroSpineGo = nil
 	end
+end
+
+function StoryHeroNode:_getExpressionsViaReflection(cubctrl)
+	if not cubctrl then
+		return {}
+	end
+
+	require("tolua.reflection")
+	tolua.loadassembly("SL_AS")
+
+	local type_CubismController = typeof(ZProj.CubismController)
+	local method = tolua.getmethod(type_CubismController, "getExpressions")
+
+	if not method then
+		return {}
+	end
+
+	local dict = method:Call(cubctrl)
+
+	if not dict then
+		return {}
+	end
+
+	local result = {}
+	local dictType = dict:GetType()
+	local keysMethod = tolua.getmethod(dictType, "get_Keys")
+
+	if keysMethod then
+		local keys = keysMethod:Call(dict)
+
+		if keys then
+			local luaKeys = {}
+
+			RoomHelper.cArrayToLuaTable(keys, luaKeys)
+
+			for _, key in pairs(luaKeys) do
+				table.insert(result, tostring(key))
+			end
+		end
+	end
+
+	return result
 end
 
 function StoryHeroNode:destroy()

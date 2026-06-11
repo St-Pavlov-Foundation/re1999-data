@@ -100,7 +100,7 @@ function Rouge2_BackpackHelper.itemType2ShowViewName(itemType)
 		return ViewName.Rouge2_RelicsDropView
 	elseif itemType == Rouge2_Enum.BagType.ActiveSkill then
 		return ViewName.Rouge2_ActiveSkillDropView
-	elseif itemType == Rouge2_MapEnum.BagType.AttrBuff then
+	elseif itemType == Rouge2_Enum.BagType.AttrBuff then
 		return ViewName.Rouge2_AttrBuffDropView
 	else
 		logError(string.format("肉鸽未定义构筑物显示类型 itemType = " .. itemType))

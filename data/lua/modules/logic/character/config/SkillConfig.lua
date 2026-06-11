@@ -30,7 +30,8 @@ function SkillConfig:reqConfigNames()
 		"fight_const",
 		"skill_buff_desc",
 		"hero_upgrade_breaklevel",
-		"fight_card_footnote"
+		"fight_card_footnote",
+		"skill_energy"
 	}
 end
 

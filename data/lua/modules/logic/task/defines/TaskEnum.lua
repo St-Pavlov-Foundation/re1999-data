@@ -70,6 +70,7 @@ TaskEnum.TaskType = {
 	Activity188 = 52,
 	Odyssey = 60,
 	Activity109 = 12,
+	V3A8FreeMonthCard = 80,
 	Turnback = 18,
 	AssassinOutside = 59,
 	Activity164 = 33,

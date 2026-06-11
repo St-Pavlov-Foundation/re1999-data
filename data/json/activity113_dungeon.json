@@ -267,7 +267,7 @@
   {
     "chapterId": 31201,
     "activityId": 13103,
-    "openDay": 8
+    "openDay": 1
   },
   {
     "chapterId": 31301,
@@ -357,6 +357,26 @@
   {
     "chapterId": 36401,
     "activityId": 13604,
+    "openDay": 1
+  },
+  {
+    "chapterId": 38101,
+    "activityId": 13802,
+    "openDay": 1
+  },
+  {
+    "chapterId": 38201,
+    "activityId": 13802,
+    "openDay": 8
+  },
+  {
+    "chapterId": 38301,
+    "activityId": 13802,
+    "openDay": 1
+  },
+  {
+    "chapterId": 38401,
+    "activityId": 13802,
     "openDay": 1
   }
 ]

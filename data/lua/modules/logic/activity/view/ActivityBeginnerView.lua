@@ -33,7 +33,6 @@ function ActivityBeginnerView:_editableInitView()
 end
 
 local activitySubViewDict = {
-	[ActivityEnum.Activity.NoviceSign] = ViewName.ActivityNoviceSignView,
 	[ActivityEnum.Activity.NorSign] = ViewName.ActivityNorSignView,
 	[ActivityEnum.Activity.NoviceInsight] = ViewName.ActivityNoviceInsightView,
 	[ActivityEnum.Activity.StoryShow] = ViewName.ActivityStoryShowView,
@@ -113,7 +112,6 @@ local activitySubViewDict = {
 	[ActivityEnum.Activity.V2a9_VersionSummon_Part1] = ViewName.V2a9_VersionSummonFull_Part1,
 	[ActivityEnum.Activity.V2a9_VersionSummon_Part2] = ViewName.V2a9_VersionSummonFull_Part2,
 	[ActivityEnum.Activity.V2a9_TurnBackH5] = ViewName.TurnBackInvitationMainView,
-	[ActivityEnum.Activity.V2a9_FreeMonthCard] = ViewName.V2a9_FreeMonthCard_FullView,
 	[ActivityEnum.Activity.V2a9_NewCultivationGift] = ViewName.VersionActivity2_3NewCultivationGiftView,
 	[ActivityEnum.Activity.V2a7_SelfSelectSix2] = ViewName.V2a7_SelfSelectSix_FullView,
 	[ActivityEnum.Activity.V2a8_DecaLogPresent] = ViewName.V2a8DecalogPresentFullView,
@@ -137,7 +135,8 @@ local activitySubViewDict = {
 	[ActivityEnum.Activity.V3a4_GoldenMilletPresent] = ViewName.V3a4_GoldenMilletPresentFullView,
 	[ActivityEnum.Activity.V3a5_SchoolStart] = ViewName.V3a5_SchoolStartView,
 	[ActivityEnum.Activity.V3a7_SelfSelect] = ViewName.V3a7SelfSelectFullView,
-	[ActivityEnum.Activity.V3a7_SkinGift] = ViewName.V3a7_SkinGiftFullView
+	[ActivityEnum.Activity.V3a7_SkinGift] = ViewName.V3a7_SkinGiftFullView,
+	[ActivityEnum.Activity.V3a8_DragonBoatActivity_FullView] = ViewName.V3a8_DragonBoatActivity_FullView
 }
 local actTypeSubViewDict = {
 	[ActivityEnum.ActivityTypeID.OpenTestWarmUp] = ViewName.ActivityWarmUpView,
@@ -176,6 +175,7 @@ function ActivityBeginnerView:onOpen()
 	self:_initActivityCollect()
 	self:_initActivity()
 	self:_initGoldenMilletPresent()
+	self:_initFreeMonthCard()
 
 	self._needSetSortInfos = true
 
@@ -662,6 +662,11 @@ function ActivityBeginnerView:_initGoldenMilletPresent()
 
 		activitySubViewDict[actId] = viewName
 	end
+end
+
+function ActivityBeginnerView:_initFreeMonthCard()
+	activitySubViewDict[ActivityEnum.Activity.V2a9_FreeMonthCard] = ViewName.V2a9_FreeMonthCard_FullView
+	activitySubViewDict[VersionActivity3_8Enum.ActivityId.FreeMonthCard] = ViewName.VersionActivity3_8FreeMonthCardFullView
 end
 
 return ActivityBeginnerView

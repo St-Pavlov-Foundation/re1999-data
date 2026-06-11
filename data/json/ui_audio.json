@@ -15718,5 +15718,15 @@
     "id": 374010,
     "eventName": "play_ui_yzqe_yishi_spam_long",
     "bankName": "ui_yinzhuangqueer_yishi_sfx3_7"
+  },
+  {
+    "id": 380001,
+    "eventName": "play_ui_shiji_vote_open",
+    "bankName": "ui_activity_3_8_shiji_duanwu"
+  },
+  {
+    "id": 380002,
+    "eventName": "play_ui_shiji_vote_success",
+    "bankName": "ui_activity_3_8_shiji_duanwu"
   }
 ]

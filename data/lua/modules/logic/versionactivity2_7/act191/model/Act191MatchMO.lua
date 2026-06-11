@@ -113,23 +113,6 @@ function Act191MatchMO:getTeamFetterCntDic()
 				end
 			end
 
-			if info.itemUid1 ~= 0 then
-				local itemCo = self:getItemCo(info.itemUid1)
-				local tagStr = not string.nilorempty(itemCo.tag) and itemCo.tag or itemCo.tag2
-
-				if not string.nilorempty(tagStr) then
-					fetterArr = string.split(itemCo.tag, "#")
-
-					for _, tag in ipairs(fetterArr) do
-						if cntDic[tag] then
-							cntDic[tag] = cntDic[tag] + 1
-						else
-							cntDic[tag] = 1
-						end
-					end
-				end
-			end
-
 			local fetterTbl = self.heroId2ExtraFetterMap[info.heroId]
 
 			if fetterTbl then
@@ -200,26 +183,6 @@ function Act191MatchMO:getFetterHeroList(tag)
 				}
 
 				fetterHeroList[#fetterHeroList + 1] = data
-			else
-				local info = self:getBattleHeroInfoInTeam(roleCo.roleId)
-
-				if info and info.itemUid1 ~= 0 then
-					local itemCo = self:getItemCo(info.itemUid1)
-
-					if not string.nilorempty(itemCo.tag) then
-						fetterArr = string.split(itemCo.tag, "#")
-
-						if tabletool.indexOf(fetterArr, tag) then
-							local data = {
-								inBag = 2,
-								transfer = 1,
-								config = roleCo
-							}
-
-							fetterHeroList[#fetterHeroList + 1] = data
-						end
-					end
-				end
 			end
 
 			local fetterTbl = self.heroId2ExtraFetterMap[heroId]
