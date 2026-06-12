@@ -17015,6 +17015,141 @@
     "bankName": "activity_shiji3_8_sfx_part03"
   },
   {
+    "id": 38500156,
+    "eventName": "play_activitysfx_shiji_stack_documents",
+    "bankName": "activity_shiji3_8_sfx_fuyong"
+  },
+  {
+    "id": 38500157,
+    "eventName": "play_activitysfx_shiji_many_walk",
+    "bankName": "activity_shiji3_8_sfx_fuyong"
+  },
+  {
+    "id": 38500158,
+    "eventName": "play_activitysfx_shiji_niblet",
+    "bankName": "activity_shiji3_8_sfx_fuyong"
+  },
+  {
+    "id": 38500159,
+    "eventName": "play_activitysfx_shiji_wine_glass",
+    "bankName": "activity_shiji3_8_sfx_part03"
+  },
+  {
+    "id": 38500160,
+    "eventName": "play_activitysfx_shiji_beard_rub",
+    "bankName": "activity_shiji3_8_sfx_fuyong"
+  },
+  {
+    "id": 38500161,
+    "eventName": "play_activitysfx_shiji_open_pocket",
+    "bankName": "activity_shiji3_8_sfx_fuyong"
+  },
+  {
+    "id": 38500162,
+    "eventName": "play_activitysfx_shiji_dyeing_loop",
+    "bankName": "activity_shiji3_8_sfx_fuyong"
+  },
+  {
+    "id": 38500163,
+    "eventName": "play_activitysfx_shiji_energy_loop",
+    "bankName": "activity_shiji3_8_sfx_fuyong"
+  },
+  {
+    "id": 38500164,
+    "eventName": "play_activitysfx_shiji_room_lp",
+    "bankName": "activity_shiji3_8_sfx_fuyong"
+  },
+  {
+    "id": 38500165,
+    "eventName": "play_activitysfx_shiji_room2_lp",
+    "bankName": "activity_shiji3_8_sfx_fuyong"
+  },
+  {
+    "id": 38500166,
+    "eventName": "play_activitysfx_shiji_trunk_open",
+    "bankName": "activity_shiji3_8_sfx_fuyong"
+  },
+  {
+    "id": 38500167,
+    "eventName": "play_activitysfx_shiji_hypnosis_loop",
+    "bankName": "activity_shiji3_8_sfx_fuyong"
+  },
+  {
+    "id": 38500168,
+    "eventName": "play_activitysfx_shiji_whisper_loop",
+    "bankName": "activity_shiji3_8_sfx_fuyong"
+  },
+  {
+    "id": 38500169,
+    "eventName": "play_activitysfx_shiji_marvel_restrain",
+    "bankName": "activity_shiji3_8_sfx_fuyong"
+  },
+  {
+    "id": 38500170,
+    "eventName": "play_activitysfx_shiji_discuss_loop",
+    "bankName": "activity_shiji3_8_sfx_fuyong"
+  },
+  {
+    "id": 38500171,
+    "eventName": "play_activitystory_dianjishi_spitball",
+    "bankName": "activitystory_3_8_shiji_dianjish_sfx_fuyong"
+  },
+  {
+    "id": 38500172,
+    "eventName": "play_activitystory_dianjishi_boots_walk",
+    "bankName": "activitystory_3_8_shiji_dianjish_sfx_fuyong"
+  },
+  {
+    "id": 38500173,
+    "eventName": "play_activitystory_huishengyao_xiliya_loop",
+    "bankName": "activitystory_3_8_shiji_huishengyao_sfx_fuyong"
+  },
+  {
+    "id": 38500174,
+    "eventName": "play_activitystory_huishengyao_energy_flow",
+    "bankName": "activitystory_3_8_shiji_huishengyao_sfx_fuyong"
+  },
+  {
+    "id": 38500175,
+    "eventName": "play_activitystory_huishengyao_candlelight",
+    "bankName": "activitystory_3_8_shiji_huishengyao_sfx_fuyong"
+  },
+  {
+    "id": 38500176,
+    "eventName": "play_activitystory_huishengyao_communicator_throw",
+    "bankName": "activitystory_3_8_shiji_huishengyao_sfx_fuyong"
+  },
+  {
+    "id": 38500177,
+    "eventName": "play_activitystory_huishengyao_wall_touch",
+    "bankName": "activitystory_3_8_shiji_huishengyao_sfx_fuyong"
+  },
+  {
+    "id": 38500178,
+    "eventName": "play_activitystory_huishengyao_tears_paper",
+    "bankName": "activitystory_3_8_shiji_huishengyao_sfx_fuyong"
+  },
+  {
+    "id": 38500179,
+    "eventName": "play_activitystory_huishengyao_land_light",
+    "bankName": "activitystory_3_8_shiji_huishengyao_sfx_fuyong"
+  },
+  {
+    "id": 38500180,
+    "eventName": "play_activitystory_huishengyao_driving_loop",
+    "bankName": "activitystory_3_8_shiji_huishengyao_sfx_fuyong"
+  },
+  {
+    "id": 38500181,
+    "eventName": "play_activitystory_huishengyao_flashlight_1",
+    "bankName": "activitystory_3_8_shiji_huishengyao_sfx_fuyong"
+  },
+  {
+    "id": 38500182,
+    "eventName": "play_activitysfx_shiji_notebook_remove",
+    "bankName": "activity_shiji3_8_sfx_fuyong"
+  },
+  {
     "id": 530053,
     "eventName": "play_activitymusic_thememusic_full_2_0",
     "bankName": "activity2_0_music"
@@ -17508,6 +17643,11 @@
     "id": 38530003,
     "eventName": "play_activitymusic_shensheng_3_8",
     "bankName": "activity3_8_music"
+  },
+  {
+    "id": 38530004,
+    "eventName": "play_ui_dungeon_music_main",
+    "bankName": "dungeon_1_6_music"
   },
   {
     "id": 520105,
@@ -18248,6 +18388,16 @@
     "id": 38520007,
     "eventName": "play_activitysfx_shiji3_8_end",
     "bankName": "activity_shiji3_8_sfx"
+  },
+  {
+    "id": 38520008,
+    "eventName": "play_shiji3_8_cutscene_hsy_death",
+    "bankName": "shiji3_8_cutscene_sfx_vo"
+  },
+  {
+    "id": 38520009,
+    "eventName": "play_shiji3_8_pv_sfx_vo_music",
+    "bankName": "shiji3_8_cutscene_sfx_vo"
   },
   {
     "id": 20530011,

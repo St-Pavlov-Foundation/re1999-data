@@ -27,7 +27,13 @@ end
 
 function Act191MO:init(info)
 	for _, badgeInfo in ipairs(info.badgeInfoList) do
-		self.badgeMoDic[badgeInfo.id]:update(badgeInfo)
+		local badgeMo = self.badgeMoDic[badgeInfo.id]
+
+		if badgeMo then
+			badgeMo:update(badgeInfo)
+		else
+			logError("斗蛐蛐徽章ID未初始化 " .. badgeInfo.id)
+		end
 	end
 
 	self.gameInfo = Act191GameMO.New()
@@ -62,9 +68,13 @@ function Act191MO:setEndInfo(endInfo)
 		local id = badgeInfo.id
 		local badgeMO = self.badgeMoDic[id]
 
-		self.badgeScoreChangeDic[id] = badgeInfo.count - badgeMO.count
+		if badgeMO then
+			self.badgeScoreChangeDic[id] = badgeInfo.count - badgeMO.count
 
-		self.badgeMoDic[id]:update(badgeInfo)
+			badgeMO:update(badgeInfo)
+		else
+			logError("斗蛐蛐徽章数据不存在 " .. id)
+		end
 	end
 
 	self.gameEndInfo = endInfo

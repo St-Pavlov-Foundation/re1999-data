@@ -63,6 +63,10 @@ function FightNameUIMeiLeiErSliderItem:onUpdateFightParam(paramKey, oldValue, cu
 end
 
 function FightNameUIMeiLeiErSliderItem:refreshUI()
+	if not FightDataHelper.fieldMgr.param then
+		return
+	end
+
 	local oldFillAmount = self.curFillAmount or 0
 
 	self.curFillAmount = (self.actInfo.param[1] or 0) / self.trigger

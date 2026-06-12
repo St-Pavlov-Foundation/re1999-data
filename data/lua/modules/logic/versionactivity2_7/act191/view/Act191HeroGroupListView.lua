@@ -13,7 +13,6 @@ function Act191HeroGroupListView:onInitView()
 	self.fetterItemList = {}
 
 	self:initHeroInfoItem()
-	self:initHeroAndEquipItem()
 
 	local root = gohelper.findChild(self.viewGO, "herogroupcontain")
 
@@ -23,6 +22,10 @@ function Act191HeroGroupListView:onInitView()
 	self.txtBossName = gohelper.findChildText(self.goBoss, "name/txt_BossName")
 	self.imageBossCareer = gohelper.findChildImage(self.goBoss, "attribute/image_BossCareer")
 	self.btnBoss = gohelper.findChildButtonWithAudio(self.goBoss, "btn_Boss")
+	self.gameInfo = Activity191Model.instance:getActInfo():getGameInfo()
+	self.maxTeamSlot = Activity191Enum.BaseTeamSlot.Main + Activity191Enum.BaseTeamSlot.Sub + self.gameInfo.subTeamAddSlot
+
+	self:initHeroAndEquipItem()
 end
 
 function Act191HeroGroupListView:addEvents()
@@ -44,9 +47,6 @@ end
 
 function Act191HeroGroupListView:onOpen()
 	self:addEventCb(Activity191Controller.instance, Activity191Event.UpdateTeamInfo, self.refreshTeam, self)
-
-	self.gameInfo = Activity191Model.instance:getActInfo():getGameInfo()
-
 	self:refreshTeam()
 
 	local enhanceCnt = #self.gameInfo.warehouseInfo.enhanceId
@@ -81,14 +81,13 @@ function Act191HeroGroupListView:initHeroAndEquipItem()
 
 	local recordPos = gohelper.findChild(self.viewGO, "herogroupcontain/recordPos")
 
-	for i = 1, 8 do
+	for i = 1, self.maxTeamSlot do
 		local go = gohelper.findChild(recordPos, "heroPos" .. i)
 
-		self.heroPosTrList[i] = go.transform
-
-		if i <= 4 then
-			go = gohelper.findChild(recordPos, "equipPos" .. i)
-			self.equipPosTrList[i] = go.transform
+		if go then
+			self.heroPosTrList[i] = go.transform
+		else
+			logError("缺失Slot节点" .. i)
 		end
 	end
 
@@ -97,7 +96,7 @@ function Act191HeroGroupListView:initHeroAndEquipItem()
 
 	self.heroItemList = {}
 
-	for i = 1, 8 do
+	for i = 1, self.maxTeamSlot do
 		local cloneGo = gohelper.cloneInPlace(goHeroItem, "hero" .. i)
 		local heroItem = MonoHelper.addNoUpdateLuaComOnceToGo(cloneGo, Act191HeroGroupItem1)
 
@@ -118,7 +117,7 @@ function Act191HeroGroupListView:refreshTeam()
 
 	UISpriteSetMgr.instance:setAct174Sprite(self.imageLevel, "act191_level_" .. string.lower(rankStr))
 
-	for i = 1, 8 do
+	for i = 1, self.maxTeamSlot do
 		self:_setHeroItemPos(self.heroItemList[i], i)
 	end
 

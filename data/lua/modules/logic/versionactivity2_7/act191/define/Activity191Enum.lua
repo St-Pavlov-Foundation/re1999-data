@@ -55,6 +55,7 @@ Activity191Enum.EffectType = {
 	AttrEffect = 19,
 	EnhanceHero = 8,
 	HeroByTag = 3,
+	AddSubTeamSlot = 26,
 	ItemByTag = 6,
 	Money = 1,
 	Item = 5,
@@ -178,8 +179,18 @@ Activity191Enum.BadgeState = {
 	Light = 2,
 	Normal = 1
 }
-Activity191Enum.MaxMainHeroCnt = 4
-Activity191Enum.MaxSubHeroCnt = 4
+Activity191Enum.BaseTeamSlot = {
+	Sub = 4,
+	Main = 4
+}
 Activity191Enum.GreenDeer = "greenDeer"
+Activity191Enum.GreenDeerSkillIds = {
+	118380112,
+	118380116
+}
+Activity191Enum.ActiveBossType = {
+	Remodeling = 1,
+	RelationPerson = 2
+}
 
 return Activity191Enum

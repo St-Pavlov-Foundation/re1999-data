@@ -425,13 +425,7 @@ function Activity128Config:checkActivityId(activityId)
 end
 
 function Activity128Config:getActivityId()
-	if not self._actId then
-		local actId = ActivityConfig.instance:getConstAsNum(ActivityEnum.ConstId.BossRushAct, VersionActivity3_7Enum.ActivityId.BossRush)
-
-		self._actId = actId
-	end
-
-	return self._actId
+	return ActivityConfig.instance:getConstAsNum(ActivityEnum.ConstId.BossRushAct, VersionActivity3_7Enum.ActivityId.BossRush)
 end
 
 function Activity128Config:getActRoleEnhance()

@@ -124,7 +124,9 @@ function Act191StatController:statGameTime(viewName)
 	if self.startTime then
 		useTime = ServerTime.now() - self.startTime
 	else
-		useTime = ServerTime.now() - FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.Act191].createTime
+		local creatTime = FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.Act191].createTime or ServerTime.now()
+
+		useTime = ServerTime.now() - creatTime
 	end
 
 	local baseInfo = {}

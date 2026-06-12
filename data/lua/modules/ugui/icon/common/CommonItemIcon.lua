@@ -814,9 +814,10 @@ function CommonItemIcon:onDestroy()
 	end
 end
 
-function CommonItemIcon:customOnClickCallback(callback, params)
+function CommonItemIcon:customOnClickCallback(callback, params, targetParam)
 	self._customCallback = callback
 	self.params = params
+	self._targetParam = targetParam
 end
 
 function CommonItemIcon:setOnBeforeClickCallback(callback, callbackObj, param)
@@ -848,7 +849,7 @@ function CommonItemIcon:_onClick()
 	AudioMgr.instance:trigger(AudioEnum.UI.Store_Good_Click)
 
 	if self._customCallback then
-		return self._customCallback(self.params)
+		return self._customCallback(self.params, self._targetParam)
 	end
 
 	if self.onBeforeClickCallback then

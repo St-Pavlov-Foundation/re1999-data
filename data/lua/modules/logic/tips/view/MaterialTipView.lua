@@ -47,6 +47,8 @@ function MaterialTipView:onInitView()
 	self._simagebg1 = gohelper.findChildSingleImage(self.viewGO, "bg/#simage_bg1")
 	self._simagebg2 = gohelper.findChildSingleImage(self.viewGO, "bg/#simage_bg2")
 	self._goinclude = gohelper.findChild(self.viewGO, "#go_include")
+	self._goincludetxt = gohelper.findChild(self.viewGO, "#go_include/go_includetxt")
+	self._gofilterherotxt = gohelper.findChild(self.viewGO, "#go_include/go_filterherotxt")
 	self._goplayericon = gohelper.findChild(self.viewGO, "iconbg/#go_playericon")
 	self._simageheadicon = gohelper.findChildSingleImage(self.viewGO, "iconbg/#go_playericon/#simage_headicon")
 	self._goupgrade = gohelper.findChild(self.viewGO, "iconbg/#go_upgrade")
@@ -816,11 +818,22 @@ function MaterialTipView:_btnuseOnClick()
 			end
 		end
 
+		local isAllHasHeroDestinyLvMaxed = self:isAllHasHeroDestinyLvMaxed(ignoreIds)
+
+		if isAllHasHeroDestinyLvMaxed then
+			GameFacade.showToast(ToastEnum.NoHeroCanDestinyUp)
+
+			return
+		end
+
 		local heroList = HeroModel.instance:getAllHero()
 		local list = {}
 
 		for _, heroMo in pairs(heroList) do
-			if heroMo and self:checkHeroOpenDestinyStone(heroMo) and not heroMo.destinyStoneMo:checkAllUnlock() and not self:checkIgnoreAllDestinyStone(heroMo.destinyStoneMo, ignoreIds) then
+			local isHeroOpenDestinyStone = self:checkHeroOpenDestinyStone(heroMo)
+			local isIgnoreDestinyStone = self:checkIgnoreAllDestinyStone(heroMo.destinyStoneMo, ignoreIds)
+
+			if isHeroOpenDestinyStone and not isIgnoreDestinyStone and not heroMo.destinyStoneMo:checkAllUnlock() then
 				table.insert(list, heroMo)
 			end
 		end
@@ -828,7 +841,8 @@ function MaterialTipView:_btnuseOnClick()
 		if #list > 0 then
 			local param = {
 				materialId = materialId,
-				ignoreIds = ignoreIds
+				ignoreIds = ignoreIds,
+				heroList = list
 			}
 
 			ViewMgr.instance:openView(ViewName.DestinyStoneGiftPickChoiceView, param)
@@ -885,7 +899,6 @@ function MaterialTipView:_btnuseOnClick()
 	elseif self._config.subType == ItemEnum.SubType.NewDestinyStoneUp then
 		VersionActivity3_8SelfSelectSixController.instance:openHeroChoiceView()
 	else
-		logError(materialId)
 		ItemRpc.instance:simpleSendUseItemRequest(materialId, quantity)
 	end
 
@@ -894,6 +907,29 @@ function MaterialTipView:_btnuseOnClick()
 	end
 
 	self:closeThis()
+end
+
+function MaterialTipView:isAllHasHeroDestinyLvMaxed(ignoreIds)
+	local heroList = HeroModel.instance:getAllHero()
+
+	for _, heroMo in pairs(heroList) do
+		local isSlotMaxLevel = heroMo.destinyStoneMo and heroMo.destinyStoneMo:isSlotMaxLevel()
+		local stoneList = heroMo.destinyStoneMo and heroMo.destinyStoneMo:getStoneMoList()
+
+		if not isSlotMaxLevel then
+			return false
+		else
+			for _, stoneMo in pairs(stoneList) do
+				local isIgnore = LuaUtil.tableContains(ignoreIds, stoneMo.stoneId)
+
+				if not stoneMo.isUnlock and not isIgnore then
+					return false
+				end
+			end
+		end
+	end
+
+	return true
 end
 
 function MaterialTipView:checkIgnoreAllDestinyStone(destinyStoneMo, ignoreIds)
@@ -1105,6 +1141,10 @@ function MaterialTipView:_refreshUI()
 			showDetail = false
 
 			recthelper.setAnchorY(self._btnuse.transform, -190)
+		elseif self._config.subType == ItemEnum.SubType.NewDestinyStoneUp then
+			showDetail = false
+
+			recthelper.setAnchorY(self._btnuse.transform, -200)
 		elseif self._config.subType == ItemEnum.SubType.EquipSelectGift then
 			showDetail = false
 
@@ -1508,6 +1548,10 @@ function MaterialTipView:_refreshInclude()
 
 	gohelper.setActive(self._goinclude, showInclude)
 
+	if showInclude then
+		gohelper.setActive(self._goincludetxt, true)
+	end
+
 	local count = 0
 	local includetype
 
@@ -1571,6 +1615,24 @@ function MaterialTipView:_refreshInclude()
 
 				table.insert(includeItems, co)
 			end
+		elseif self._config.subType == ItemEnum.SubType.NewDestinyStoneUp then
+			gohelper.setActive(self._goincludetxt, false)
+			gohelper.setActive(self._gofilterherotxt, true)
+
+			local effectArr = GameUtil.splitString2(self._config.effect, true)[3]
+
+			includeItems = {}
+
+			for _, heroId in ipairs(effectArr) do
+				local co = {}
+
+				co[1] = MaterialEnum.MaterialType.Hero
+				co[2] = heroId
+				co[3] = 1
+				co[4] = ItemEnum.SubType.NewDestinyStoneUp
+
+				table.insert(includeItems, co)
+			end
 		elseif self:_isRoomBlockGift() then
 			self._contentHorizontal.enabled = false
 
@@ -1622,6 +1684,7 @@ function MaterialTipView:_refreshInclude()
 				local type = itemco[1]
 				local id = itemco[2]
 				local num = itemco[3]
+				local subType = itemco[4]
 
 				includetype = type
 
@@ -1641,6 +1704,10 @@ function MaterialTipView:_refreshInclude()
 
 					itemIcon:setMOValue(type, id, num, nil, true)
 					itemIcon:isShowCount(false)
+
+					if subType == ItemEnum.SubType.NewDestinyStoneUp then
+						itemIcon:customOnClickCallback(self._onNewDestinyPreveiew, self, id)
+					end
 				elseif type == MaterialEnum.MaterialType.HeroSkin then
 					itemIcon = IconMgr.instance:getCommonItemIcon(self._goincludeContent)
 
@@ -1670,6 +1737,10 @@ function MaterialTipView:_refreshInclude()
 	for i = count + 1, #self._iconItemList do
 		gohelper.setActive(self._iconItemList[i].go, false)
 	end
+end
+
+function MaterialTipView:_onNewDestinyPreveiew(heroId)
+	VersionActivity3_8SelfSelectSixController.instance:openHeroChoicePreview(heroId)
 end
 
 function MaterialTipView:checkOnlyShowEquip()

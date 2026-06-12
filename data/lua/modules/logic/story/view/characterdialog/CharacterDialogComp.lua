@@ -341,6 +341,7 @@ end
 
 function CharacterDialogComp:onClose()
 	self:_clear()
+	TaskDispatcher.cancelTask(self._delayShow, self)
 end
 
 function CharacterDialogComp:onDestroy()

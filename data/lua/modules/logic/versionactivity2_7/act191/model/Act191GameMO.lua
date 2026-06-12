@@ -51,6 +51,7 @@ function Act191GameMO:updateRank(rank)
 end
 
 function Act191GameMO:updateWareHouseInfo(info)
+	self.subTeamAddSlot = 0
 	self.warehouseInfo = info
 	self.heroId2ExtraFetterMap = {}
 
@@ -60,18 +61,22 @@ function Act191GameMO:updateWareHouseInfo(info)
 
 		for _, effectId in ipairs(effectIds) do
 			local effectCo = lua_activity191_effect.configDict[effectId]
-			local params = string.split(effectCo.typeParam, "#")
 
-			if effectCo.type == Activity191Enum.EffectType.ExtraFetter then
-				local heroId = tonumber(params[1])
-				local fetterTbl = self.heroId2ExtraFetterMap[heroId]
+			if effectCo then
+				if effectCo.type == Activity191Enum.EffectType.ExtraFetter then
+					local params = string.split(effectCo.typeParam, "#")
+					local heroId = tonumber(params[1])
+					local fetterTbl = self.heroId2ExtraFetterMap[heroId]
 
-				if not fetterTbl then
-					fetterTbl = {}
-					self.heroId2ExtraFetterMap[heroId] = fetterTbl
+					if not fetterTbl then
+						fetterTbl = {}
+						self.heroId2ExtraFetterMap[heroId] = fetterTbl
+					end
+
+					table.insert(fetterTbl, params[2])
+				elseif effectCo.type == Activity191Enum.EffectType.AddSubTeamSlot then
+					self.subTeamAddSlot = self.subTeamAddSlot + tonumber(effectCo.typeParam)
 				end
-
-				table.insert(fetterTbl, params[2])
 			end
 		end
 	end
@@ -137,7 +142,7 @@ function Act191GameMO:getNodeDetailMo(nodeId, notError)
 
 	if not nodeInfo or string.nilorempty(nodeInfo.nodeStr) then
 		if not notError then
-			logError("check select node" .. nodeId)
+			logError("NodeInfo中不存在节点ID: " .. nodeId)
 		end
 
 		return
@@ -166,18 +171,23 @@ end
 
 function Act191GameMO:getPreviewFetterCntDic(heroIdDic)
 	local cntDic = {}
-	local teamInfo = self:getTeamInfo()
 
-	for index, heroId in pairs(heroIdDic) do
+	for _, heroId in pairs(heroIdDic) do
 		local heroInfo = self:getHeroInfoInWarehouse(heroId)
-		local roleCo = Activity191Config.instance:getRoleCoByNativeId(heroId, heroInfo.star)
-		local fetterArr = string.split(roleCo.tag, "#")
 
-		for _, tag in ipairs(fetterArr) do
-			if not cntDic[tag] then
-				cntDic[tag] = 1
-			else
-				cntDic[tag] = cntDic[tag] + 1
+		if heroInfo then
+			local roleCo = Activity191Config.instance:getRoleCoByNativeId(heroId, heroInfo.star)
+
+			if roleCo then
+				local fetterArr = string.split(roleCo.tag, "#")
+
+				for _, tag in ipairs(fetterArr) do
+					if not cntDic[tag] then
+						cntDic[tag] = 1
+					else
+						cntDic[tag] = cntDic[tag] + 1
+					end
+				end
 			end
 		end
 
@@ -204,15 +214,20 @@ function Act191GameMO:getTeamFetterCntDic()
 	for _, info in ipairs(teamInfo.battleHeroInfo) do
 		if info.heroId ~= 0 then
 			local heroInfo = self:getHeroInfoInWarehouse(info.heroId)
-			local roleCo = Activity191Config.instance:getRoleCoByNativeId(info.heroId, heroInfo.star)
-			local fetterArr = string.split(roleCo.tag, "#")
 
-			for _, tag in ipairs(fetterArr) do
-				if cntDic[tag] then
-					cntDic[tag] = cntDic[tag] + 1
-				else
-					cntDic[tag] = 1
+			if heroInfo then
+				local roleCo = Activity191Config.instance:getRoleCoByNativeId(info.heroId, heroInfo.star)
+				local fetterArr = string.split(roleCo.tag, "#")
+
+				for _, tag in ipairs(fetterArr) do
+					if cntDic[tag] then
+						cntDic[tag] = cntDic[tag] + 1
+					else
+						cntDic[tag] = 1
+					end
 				end
+			else
+				logError("仓库中找不到编队角色" .. info.heroId)
 			end
 
 			local fetterTbl = self.heroId2ExtraFetterMap[info.heroId]
@@ -231,14 +246,17 @@ function Act191GameMO:getTeamFetterCntDic()
 
 	for _, info in ipairs(teamInfo.subHeroInfo) do
 		local heroInfo = self:getHeroInfoInWarehouse(info.heroId)
-		local roleCo = Activity191Config.instance:getRoleCoByNativeId(info.heroId, heroInfo.star)
-		local fetterArr = string.split(roleCo.tag, "#")
 
-		for _, tag in ipairs(fetterArr) do
-			if cntDic[tag] then
-				cntDic[tag] = cntDic[tag] + 1
-			else
-				cntDic[tag] = 1
+		if heroInfo then
+			local roleCo = Activity191Config.instance:getRoleCoByNativeId(info.heroId, heroInfo.star)
+			local fetterArr = string.split(roleCo.tag, "#")
+
+			for _, tag in ipairs(fetterArr) do
+				if cntDic[tag] then
+					cntDic[tag] = cntDic[tag] + 1
+				else
+					cntDic[tag] = 1
+				end
 			end
 		end
 
@@ -471,21 +489,13 @@ function Act191GameMO:exchangeHero(from, to)
 end
 
 function Act191GameMO:getItemInfoInWarehouse(itemUid)
-	local info
-
 	for _, itemInfo in ipairs(self.warehouseInfo.item) do
 		if itemInfo.uid == itemUid then
-			info = itemInfo
-
-			break
+			return itemInfo
 		end
 	end
 
-	if not info then
-		logError(string.format("itemUid : %s, itemInfo not found", itemUid))
-	end
-
-	return info
+	logError(string.format("itemUid : %s, itemInfo not found", itemUid))
 end
 
 function Act191GameMO:isItemInTeam(itemUid)
@@ -603,34 +613,64 @@ function Act191GameMO:getFetterActiveLevel(tag)
 	return activeLevel
 end
 
-function Act191GameMO:getActiveBossId()
-	local tag = "remodeling"
-	local bossId
-	local activeLevel = self:getFetterActiveLevel(tag)
-	local remodelingValue = self.recordInfo.remodelingValue
-	local bossCfgList = Activity191Config.instance:getBossCfgListByTag(tag)
+function Act191GameMO:getActiveBossId(tag)
+	local bossCgfMap = Activity191Config.instance:getBossCfgMap()
+	local tagBossList = bossCgfMap[tag]
 
-	for _, v in ipairs(bossCfgList) do
-		local conditions = string.splitToNumber(v.condition, "#")
+	if tagBossList then
+		local fetterCntDic = self:getTeamFetterCntDic()
 
-		if activeLevel >= conditions[1] and remodelingValue >= conditions[2] then
-			bossId = v.bossId
+		for i = #tagBossList, 1, -1 do
+			local config = tagBossList[i]
+			local conditions = string.splitToNumber(config.condition, "#")
+			local type = conditions[1]
+			local value = conditions[2]
 
-			break
+			if type == Activity191Enum.ActiveBossType.Remodeling then
+				if value <= self.recordInfo.remodelingValue then
+					return config.bossId
+				end
+			elseif type == Activity191Enum.ActiveBossType.RelationPerson and value <= fetterCntDic[tag] then
+				return config.bossId
+			end
+		end
+	else
+		logError(string.format("羁绊: %s 不存在协战Boss", tag))
+	end
+end
+
+function Act191GameMO:getActiveBossIdList()
+	local bossIdList = {}
+	local fetterCntDic = self:getTeamFetterCntDic()
+	local bossCgfMap = Activity191Config.instance:getBossCfgMap()
+
+	for tag, cfgList in pairs(bossCgfMap) do
+		for i = #cfgList, 1, -1 do
+			local config = cfgList[i]
+			local conditions = string.splitToNumber(config.condition, "#")
+			local type = conditions[1]
+			local value = conditions[2]
+
+			if type == Activity191Enum.ActiveBossType.Remodeling then
+				if value <= self.recordInfo.remodelingValue then
+					bossIdList[#bossIdList + 1] = config.bossId
+
+					break
+				end
+			elseif type == Activity191Enum.ActiveBossType.RelationPerson and fetterCntDic[tag] and value <= fetterCntDic[tag] then
+				bossIdList[#bossIdList + 1] = config.bossId
+
+				break
+			end
 		end
 	end
 
-	return bossId
+	return bossIdList
 end
 
 function Act191GameMO:getActiveSummonIdList()
-	local summonIdList = {}
-	local bossId = self:getActiveBossId()
-
-	if bossId then
-		summonIdList[#summonIdList + 1] = bossId
-	end
-
+	local bossIdList = self:getActiveBossIdList()
+	local summonIdList = bossIdList or {}
 	local fetterCntDic = self:getTeamFetterCntDic()
 	local fetterInfoList = Activity191Helper.getActiveFetterInfoList(fetterCntDic)
 
@@ -655,24 +695,27 @@ function Act191GameMO:getAttrUpDicByRoleId(roleId)
 
 			if tabletool.indexOf(roleIdList, roleId) then
 				local effectCo = lua_activity191_effect.configDict[effect.id]
-				local tag = effectCo.tag
 
-				if not string.nilorempty(tag) and not tabletool.indexOf(fetterList, tag) then
-					fetterList[#fetterList + 1] = tag
-				end
+				if effectCo then
+					local tag = effectCo.tag
 
-				local attrString = string.split(effectCo.typeParam, "#")[2]
-				local attrParams = GameUtil.splitString2(attrString, true, "|", ",")
-
-				for i = 1, #attrParams do
-					local key = attrParams[i][1]
-					local value = attrParams[i][2]
-
-					if not attrDic[key] then
-						attrDic[key] = 0
+					if not string.nilorempty(tag) and not tabletool.indexOf(fetterList, tag) then
+						fetterList[#fetterList + 1] = tag
 					end
 
-					attrDic[key] = attrDic[key] + value
+					local attrString = string.split(effectCo.typeParam, "#")[2]
+					local attrParams = GameUtil.splitString2(attrString, true, "|", ",")
+
+					for i = 1, #attrParams do
+						local key = attrParams[i][1]
+						local value = attrParams[i][2]
+
+						if not attrDic[key] then
+							attrDic[key] = 0
+						end
+
+						attrDic[key] = attrDic[key] + value
+					end
 				end
 			end
 		end
@@ -700,15 +743,17 @@ function Act191GameMO:getBossAttr()
 		end
 	end
 
-	attack = Mathf.Round(attack / heroCnt)
-	technic = Mathf.Round(technic / heroCnt)
+	if heroCnt ~= 0 then
+		attack = Mathf.Round(attack / heroCnt)
+		technic = Mathf.Round(technic / heroCnt)
+	end
 
 	return attack, technic
 end
 
 function Act191GameMO:getRelationDesc(relationCo)
 	if relationCo.tag == "remodeling" then
-		local bossId = self:getActiveBossId()
+		local bossId = self:getActiveBossId(relationCo.tag)
 
 		if bossId then
 			local bossCo = lua_activity191_assist_boss.configDict[bossId]
@@ -774,6 +819,19 @@ function Act191GameMO:updateStoneId(roleId, facetsId)
 	end
 
 	info.facetsId = facetsId
+end
+
+function Act191GameMO:getSkillCount(skillIds)
+	local count = 0
+	local skillCountMap = GameUtil.splitString2(self.recordInfo.globalSkillCountMap, true)
+
+	for _, data in ipairs(skillCountMap) do
+		if tabletool.indexOf(skillIds, data[1]) then
+			count = count + data[2]
+		end
+	end
+
+	return count
 end
 
 return Act191GameMO

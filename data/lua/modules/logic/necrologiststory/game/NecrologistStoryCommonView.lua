@@ -20,7 +20,10 @@ function NecrologistStoryCommonView:onInitView()
 	self.btnReview = gohelper.findChildButtonWithAudio(self.rootGO, "#btn_review")
 	self.btnBranch = gohelper.findChildButtonWithAudio(self.rootGO, "#btn_branch")
 	self.animReward = self.btnReward.gameObject:GetComponent(typeof(UnityEngine.Animator))
-	self.animBranch = gohelper.findComponentAnim(self.btnBranch.gameObject)
+
+	if self.btnBranch then
+		self.animBranch = gohelper.findComponentAnim(self.btnBranch.gameObject)
+	end
 
 	if self._editableInitView then
 		self:_editableInitView()

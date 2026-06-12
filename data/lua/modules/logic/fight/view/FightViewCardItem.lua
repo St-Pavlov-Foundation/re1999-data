@@ -1713,7 +1713,9 @@ function FightViewCardItem:playUsedCardFinish(tipsGO, waitingAreaGO, param)
 	context.skillTipsGO = tipsGO
 	context.skillItemGO = self.go
 	context.waitingAreaGO = waitingAreaGO
+	param = param or {}
 	context.param = param
+	param.skillId = self.skillId
 
 	self._cardDisplayEndFlow:start(context)
 end

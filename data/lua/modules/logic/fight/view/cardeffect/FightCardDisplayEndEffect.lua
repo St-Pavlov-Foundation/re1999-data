@@ -16,8 +16,16 @@ function FightCardDisplayEndEffect:onStart(context)
 		local canFade = true
 		local param = context.param
 
-		if param and param.noCardFade then
-			canFade = false
+		if param then
+			if param.noCardFade then
+				canFade = false
+			end
+
+			local skillId = param.skillId
+
+			if skillId and FightHelper.checkIsDevicePowerCard(skillId) then
+				canFade = false
+			end
 		end
 
 		if canFade then

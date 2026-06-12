@@ -181,7 +181,7 @@ function VersionActivity2_3NewCultivationDetailView:_refreshDestinyInfo()
 	self:_refreshRoleInfo()
 end
 
-function VersionActivity2_3NewCultivationDetailView:onSelectRoleItem(roleId)
+function VersionActivity2_3NewCultivationDetailView:onSelectRoleItem(roleId, focusIndex)
 	if self._roleId == roleId then
 		return
 	end
@@ -194,6 +194,13 @@ function VersionActivity2_3NewCultivationDetailView:onSelectRoleItem(roleId)
 		if isSelect then
 			self:setSelectedFixedBg(item:isSp())
 		end
+	end
+
+	if focusIndex and focusIndex > 0 then
+		local x, y = recthelper.getAnchor(self._goroleitemcontent.transform)
+		local curPosX = -(focusIndex - 1) * 200
+
+		recthelper.setAnchor(self._goroleitemcontent.transform, curPosX, y)
 	end
 
 	self:_refreshEffectInfo(roleId)
@@ -294,10 +301,22 @@ function VersionActivity2_3NewCultivationDetailView:_refreshRoleInfo()
 		roleItem:setActive(false)
 	end
 
-	local defaultRole = lua_character_destinyCOList[1]
+	local index = 1
+
+	if self.viewParam.targetHeroId then
+		for i, lua_character_destinyCO in ipairs(lua_character_destinyCOList) do
+			if lua_character_destinyCO.heroId == self.viewParam.targetHeroId then
+				index = i
+
+				break
+			end
+		end
+	end
+
+	local defaultRole = lua_character_destinyCOList[index]
 
 	if defaultRole then
-		self:onSelectRoleItem(defaultRole.heroId)
+		self:onSelectRoleItem(defaultRole.heroId, index)
 	end
 end
 

@@ -174,8 +174,8 @@ function ActivityCategoryItem:_refreshItem()
 					id = RedDotEnum.DotNode.V3a8DragonBoat
 				},
 				{
-					uid = 0,
-					id = RedDotEnum.DotNode.V3a8DragonBoatVoteFinal
+					id = RedDotEnum.DotNode.V3a8DragonBoatVoteFinal,
+					uid = V3a8_DragonBoatConfig.instance:getVoteFinalResultActId()
 				}
 			}
 

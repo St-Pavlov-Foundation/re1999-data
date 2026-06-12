@@ -43,10 +43,6 @@ function Act191EnemyInfoView:_editableInitView()
 	self._fetterIconItemList = {}
 end
 
-function Act191EnemyInfoView:onUpdateParam()
-	return
-end
-
 function Act191EnemyInfoView:onOpen()
 	self.nodeDetailMo = self.viewParam
 	self.matchMo = self.nodeDetailMo.matchInfo
@@ -90,14 +86,6 @@ function Act191EnemyInfoView:onOpen()
 	gohelper.setActive(self._goHeroItem, false)
 	self:onClickHero(self.selectMain, true)
 	self:refreshFetter()
-end
-
-function Act191EnemyInfoView:onClose()
-	return
-end
-
-function Act191EnemyInfoView:onDestroyView()
-	return
 end
 
 function Act191EnemyInfoView:refreshCharacter(heroId)

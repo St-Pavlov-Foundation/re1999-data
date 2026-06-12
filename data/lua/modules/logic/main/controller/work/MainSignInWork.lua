@@ -9,6 +9,10 @@ local function _checkCanShow()
 		return false
 	end
 
+	if not GuideModel.instance:isGuideFinish(108) then
+		return false
+	end
+
 	if GuideModel.instance:isDoingClickGuide() and not GuideController.instance:isForbidGuides() then
 		return false
 	end

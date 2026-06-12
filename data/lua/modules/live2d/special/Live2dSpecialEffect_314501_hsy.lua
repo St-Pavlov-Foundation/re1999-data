@@ -90,7 +90,6 @@ function Live2dSpecialEffect_314501_hsy:_resetHsyLightTexture()
 
 	self._hasSetHsyLightTexture = false
 
-	self:_resetPPVolume()
 	self:_resetCamera()
 
 	if self:isInStoryView() then
@@ -324,6 +323,7 @@ end
 
 function Live2dSpecialEffect_314501_hsy:_clearCameraAnimationController()
 	self:resetUnitCamera()
+	self:_resetPPVolume()
 
 	if self:isInVoiceView() then
 		local animationEventWrap = CameraMgr.instance:getCameraRootAnimationEventWrap()

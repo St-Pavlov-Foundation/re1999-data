@@ -5,36 +5,35 @@ module("modules.logic.versionactivity2_7.act191.model.Act191HeroQuickEditListMod
 local Act191HeroQuickEditListModel = class("Act191HeroQuickEditListModel", ListScrollModel)
 
 function Act191HeroQuickEditListModel:initData()
-	self.moList = {}
+	self._moList = {}
 	self._index2HeroIdMap = {}
 	self._heroId2IndexMap = {}
+	self.gameInfo = Activity191Model.instance:getActInfo():getGameInfo()
 
-	local gameInfo = Activity191Model.instance:getActInfo():getGameInfo()
-
-	for _, heroInfo in ipairs(gameInfo.warehouseInfo.hero) do
+	for _, heroInfo in ipairs(self.gameInfo.warehouseInfo.hero) do
 		local mo = {
 			heroId = heroInfo.heroId,
 			star = heroInfo.star,
 			exp = heroInfo.exp,
 			config = Activity191Config.instance:getRoleCoByNativeId(heroInfo.heroId, heroInfo.star)
 		}
-		local battleHeroInfo = gameInfo:getBattleHeroInfoInTeam(mo.heroId)
+		local battleHeroInfo = self.gameInfo:getBattleHeroInfoInTeam(mo.heroId)
 
 		if battleHeroInfo then
 			self._index2HeroIdMap[battleHeroInfo.index] = mo.heroId
 			self._heroId2IndexMap[mo.heroId] = battleHeroInfo.index
 		else
-			local subHeroInfo = gameInfo:getSubHeroInfoInTeam(mo.heroId)
+			local subHeroInfo = self.gameInfo:getSubHeroInfoInTeam(mo.heroId)
 
 			if subHeroInfo then
-				local mainCnt = Activity191Enum.MaxMainHeroCnt
+				local baseMainSlot = Activity191Enum.BaseTeamSlot.Main
 
-				self._index2HeroIdMap[subHeroInfo.index + mainCnt] = mo.heroId
-				self._heroId2IndexMap[mo.heroId] = subHeroInfo.index + mainCnt
+				self._index2HeroIdMap[subHeroInfo.index + baseMainSlot] = mo.heroId
+				self._heroId2IndexMap[mo.heroId] = subHeroInfo.index + baseMainSlot
 			end
 		end
 
-		self.moList[#self.moList + 1] = mo
+		self._moList[#self._moList + 1] = mo
 	end
 
 	self:filterData(nil, Activity191Enum.SortRule.Down)
@@ -66,7 +65,7 @@ end
 
 function Act191HeroQuickEditListModel:findEmptyPos()
 	local pos = 0
-	local maxCnt = Activity191Enum.MaxMainHeroCnt + Activity191Enum.MaxSubHeroCnt
+	local maxCnt = Activity191Enum.BaseTeamSlot.Main + Activity191Enum.BaseTeamSlot.Sub + self.gameInfo.subTeamAddSlot
 
 	for i = 1, maxCnt do
 		if not self._index2HeroIdMap[i] then
@@ -85,7 +84,7 @@ function Act191HeroQuickEditListModel:filterData(tag, rule)
 	if tag then
 		list = {}
 
-		for _, mo in ipairs(self.moList) do
+		for _, mo in ipairs(self._moList) do
 			local tagArr = string.split(mo.config.tag, "#")
 
 			if tabletool.indexOf(tagArr, tag) then
@@ -93,7 +92,7 @@ function Act191HeroQuickEditListModel:filterData(tag, rule)
 			end
 		end
 	else
-		list = tabletool.copy(self.moList)
+		list = tabletool.copy(self._moList)
 	end
 
 	table.sort(list, function(a, b)

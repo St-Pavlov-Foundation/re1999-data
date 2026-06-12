@@ -99,6 +99,10 @@ function V3a8EchoSongLevelView:_playStoryFinishAnim()
 end
 
 function V3a8EchoSongLevelView:_finishStoryEnd()
+	if not self._finishEpisodeIndex then
+		return
+	end
+
 	if self._finishEpisodeIndex == #self._episodeItems then
 		self._curEpisodeIndex = self._finishEpisodeIndex
 		self._finishEpisodeIndex = nil

@@ -59,6 +59,13 @@ function Act191StageView:onOpen()
 	self._txtCoin.text = gameInfo.coin
 
 	local nodeInfo = Activity191Helper.matchKeyInArray(gameInfo.nodeInfo, gameInfo.curNode, "nodeId")
+
+	if not nodeInfo then
+		logError("nodeInfos中不存在节点ID: " .. gameInfo.curNode)
+
+		return
+	end
+
 	local stageNum = #nodeInfo.selectNodeStr
 
 	self.stageItemList = {}

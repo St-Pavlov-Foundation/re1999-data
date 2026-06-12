@@ -34164,25 +34164,6 @@
   {
     "defineId": 375001,
     "prefabPath": "undefined/375001.prefab",
-    "guid": "8a8fcfaa0eba8f94da9d11ed72fad1fd",
-    "resourceIds": [
-      5,
-      5,
-      0,
-      5,
-      0,
-      5,
-      0
-    ],
-    "category": null,
-    "blockType": 0,
-    "waterType": 0,
-    "waterAreaType": 0,
-    "waterLink": 0
-  },
-  {
-    "defineId": 375001,
-    "prefabPath": "undefined/375001.prefab",
     "guid": "e236a58f67b7ea84e9be2042031f4b31",
     "resourceIds": [
       5,
@@ -34200,9 +34181,9 @@
     "waterLink": 0
   },
   {
-    "defineId": 375002,
-    "prefabPath": "undefined/375002.prefab",
-    "guid": "b429af9fdbbbfd441894918e1041fe60",
+    "defineId": 375001,
+    "prefabPath": "undefined/375001.prefab",
+    "guid": "eeb896c0fe808d74c8af31963fc6d906",
     "resourceIds": [
       5,
       5,
@@ -34238,9 +34219,9 @@
     "waterLink": 0
   },
   {
-    "defineId": 375003,
-    "prefabPath": "undefined/375003.prefab",
-    "guid": "e339f62d5c039e54b9634c4e29bc18bf",
+    "defineId": 375002,
+    "prefabPath": "undefined/375002.prefab",
+    "guid": "ec67146e4a3317143a1a0f18f7014096",
     "resourceIds": [
       5,
       5,
@@ -34276,9 +34257,9 @@
     "waterLink": 0
   },
   {
-    "defineId": 375004,
-    "prefabPath": "undefined/375004.prefab",
-    "guid": "483cf0eff26d7bd44bbfe58d37331b96",
+    "defineId": 375003,
+    "prefabPath": "undefined/375003.prefab",
+    "guid": "f2aae05414866fc4d99221a681705252",
     "resourceIds": [
       5,
       5,
@@ -34308,6 +34289,25 @@
       0
     ],
     "category": "v3a7旗帜",
+    "blockType": 0,
+    "waterType": 0,
+    "waterAreaType": 0,
+    "waterLink": 0
+  },
+  {
+    "defineId": 375004,
+    "prefabPath": "undefined/375004.prefab",
+    "guid": "2c1fbd6aedd5bb443b6b8caca7eedd7a",
+    "resourceIds": [
+      5,
+      5,
+      0,
+      5,
+      0,
+      5,
+      0
+    ],
+    "category": null,
     "blockType": 0,
     "waterType": 0,
     "waterAreaType": 0,
@@ -34470,9 +34470,9 @@
     "prefabPath": "3801/380009.prefab",
     "guid": "ff4ddc2f945fe024b844ea2e266468c9",
     "resourceIds": [
-      0,
-      0,
-      0,
+      1,
+      1,
+      1,
       0,
       0,
       0,
@@ -34489,13 +34489,13 @@
     "prefabPath": "common_38/380010.prefab",
     "guid": "5139db4351449374aba3acacda16e8bc",
     "resourceIds": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
     ],
     "category": "v3a8",
     "blockType": 83,
@@ -34508,13 +34508,13 @@
     "prefabPath": "3802/380011.prefab",
     "guid": "fbebfef85898fa74ab0d4f6ae250860c",
     "resourceIds": [
+      1,
+      1,
+      1,
       0,
       0,
-      0,
-      0,
-      0,
-      0,
-      0
+      1,
+      1
     ],
     "category": "v3a8",
     "blockType": 83,
@@ -34527,13 +34527,13 @@
     "prefabPath": "3802/380012.prefab",
     "guid": "4aa0d6d4a006cf94bb17e86e59231a66",
     "resourceIds": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
     ],
     "category": "v3a8",
     "blockType": 83,
@@ -34565,11 +34565,11 @@
     "prefabPath": "common_38/380014.prefab",
     "guid": "6084d95f2ff4e0f46b4b6e56af232727",
     "resourceIds": [
+      1,
+      1,
       0,
       0,
-      0,
-      0,
-      0,
+      1,
       0,
       0
     ],
@@ -34584,9 +34584,9 @@
     "prefabPath": "3802/380015.prefab",
     "guid": "efa3d96839ad38041b384d326f5d33cf",
     "resourceIds": [
-      0,
-      0,
-      0,
+      1,
+      1,
+      1,
       0,
       0,
       0,
@@ -34603,13 +34603,13 @@
     "prefabPath": "3802/380016.prefab",
     "guid": "23b1d79bc227f3941870e8a626f90318",
     "resourceIds": [
+      1,
       0,
       0,
       0,
+      1,
       0,
-      0,
-      0,
-      0
+      1
     ],
     "category": "v3a8",
     "blockType": 83,
@@ -34622,12 +34622,12 @@
     "prefabPath": "3802/380017.prefab",
     "guid": "46486d30a2a6a864a8659444e2cac6eb",
     "resourceIds": [
+      1,
+      0,
+      1,
       0,
       0,
-      0,
-      0,
-      0,
-      0,
+      1,
       0
     ],
     "category": "v3a8",
@@ -34641,9 +34641,9 @@
     "prefabPath": "common_38/380018.prefab",
     "guid": "81bb0701986a5cd49a8db68f8547b2ab",
     "resourceIds": [
+      1,
       0,
-      0,
-      0,
+      1,
       0,
       0,
       0,
@@ -34660,9 +34660,9 @@
     "prefabPath": "common_38/380019.prefab",
     "guid": "d91d4067edd5ce64ea41eeabcdd741a3",
     "resourceIds": [
-      0,
-      0,
-      0,
+      1,
+      1,
+      1,
       0,
       0,
       0,
@@ -34679,10 +34679,10 @@
     "prefabPath": "3802/380020.prefab",
     "guid": "d72d82e72ca413840a1c2501dcdd7283",
     "resourceIds": [
+      1,
+      1,
       0,
-      0,
-      0,
-      0,
+      1,
       0,
       0,
       0
@@ -34774,13 +34774,13 @@
     "prefabPath": "common_38/380025.prefab",
     "guid": "4289db0cd052e8044adcfe4231ca7dc1",
     "resourceIds": [
+      1,
+      1,
       0,
       0,
+      1,
       0,
-      0,
-      0,
-      0,
-      0
+      1
     ],
     "category": "v3a8",
     "blockType": 84,
@@ -34812,13 +34812,13 @@
     "prefabPath": "common_38/380027.prefab",
     "guid": "36d1bff1ee9789043a85977120a00808",
     "resourceIds": [
+      1,
+      1,
       0,
       0,
       0,
       0,
-      0,
-      0,
-      0
+      1
     ],
     "category": "v3a8",
     "blockType": 82,
@@ -34850,11 +34850,11 @@
     "prefabPath": "common_38/380029.prefab",
     "guid": "f8a6590b27ec99349aee504484777951",
     "resourceIds": [
+      1,
+      1,
       0,
       0,
-      0,
-      0,
-      0,
+      1,
       0,
       0
     ],
@@ -34869,12 +34869,12 @@
     "prefabPath": "common_38/380030.prefab",
     "guid": "49791424d7e4a7b4aa66424ec7836bf9",
     "resourceIds": [
+      1,
+      1,
       0,
       0,
       0,
-      0,
-      0,
-      0,
+      1,
       0
     ],
     "category": "v3a8",
@@ -34926,13 +34926,13 @@
     "prefabPath": "common_38/380033.prefab",
     "guid": "10f88d5697d039842b33a3d8ed6fe2cb",
     "resourceIds": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
     ],
     "category": "v3a8",
     "blockType": 82,

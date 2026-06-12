@@ -136,7 +136,7 @@ function V3A7_RoleStoryGameView:refreshView(needAni)
 	local state = self.gameBaseMO:getLevelState(self._selectLevelId)
 	local isFinish = state == NecrologistStoryEnum.StoryState.Finish
 
-	gohelper.setActive(self._btnstart.gameObject, state == NecrologistStoryEnum.StoryState.Normal)
+	gohelper.setActive(self._btnstart.gameObject, state == NecrologistStoryEnum.StoryState.Normal or state == NecrologistStoryEnum.StoryState.Reading)
 	gohelper.setActive(self._btnrestart.gameObject, isFinish)
 	gohelper.setActive(self._gofinished, self.gameBaseMO:allLevelIsFinish())
 

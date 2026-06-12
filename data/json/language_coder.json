@@ -6297,7 +6297,7 @@
   },
   {
     "id": "survival_resultview_loss",
-    "lang": "失联，收益损失▩1%s%"
+    "lang": "撤离失败，收益损失▩1%s%"
   },
   {
     "id": "survival_eventview_commititem",
@@ -9492,18 +9492,6 @@
     "lang": "夜"
   },
   {
-    "id": "necrologist_story_ending_1",
-    "lang": "结局一"
-  },
-  {
-    "id": "necrologist_story_ending_2",
-    "lang": "结局二"
-  },
-  {
-    "id": "necrologist_story_ending_3",
-    "lang": "结局三"
-  },
-  {
     "id": "V3a8_DragonBoatActivity_FullView_txtLimitTime_end",
     "lang": "投票期:活动已结束"
   },
@@ -9513,19 +9501,19 @@
   },
   {
     "id": "V3a8_DragonBoatActivity_FullView_txtLimitTime_dh",
-    "lang": "投票期:▩1%s天▩2%s时"
+    "lang": "▩1%s天▩2%s时后结束投票"
   },
   {
     "id": "V3a8_DragonBoatActivity_FullView_txtLimitTime2_dh",
-    "lang": "公示期:▩1%s天▩2%s时"
+    "lang": "▩1%s天▩2%s时后结束"
   },
   {
     "id": "V3a8_DragonBoatActivity_FullView_txtLimitTime_hm",
-    "lang": "投票期:▩1%s时▩2%s分"
+    "lang": "▩1%s时▩2%s分后结束投票"
   },
   {
     "id": "V3a8_DragonBoatActivity_FullView_txtLimitTime2_hm",
-    "lang": "公示期:▩1%s时▩2%s分"
+    "lang": "▩1%s时▩2%s分后结束"
   },
   {
     "id": "V3a8_Summon_Newbie_Progress_Desc",
@@ -9546,5 +9534,17 @@
   {
     "id": "v3a8_puzzleview_txt_title2",
     "lang": "将回声石放置正确的槽位"
+  },
+  {
+    "id": "v3a8_newbieevent_max_tips",
+    "lang": "您已将【迷思潮信】所有可选择的闪念唤起并升至MAX，使用后道具将转化为【迷思之茧】。"
+  },
+  {
+    "id": "mail_not_expire_time",
+    "lang": "永久"
+  },
+  {
+    "id": "v3a8_newbieevent_max_include",
+    "lang": "适用角色范围"
   }
 ]

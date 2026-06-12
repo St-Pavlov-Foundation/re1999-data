@@ -170,8 +170,10 @@ function Act191CollectionView:refreshItemList()
 	table.sort(itemInfoList, function(a, b)
 		local aCfg = Activity191Config.instance:getCollectionCo(a.itemId)
 		local bCfg = Activity191Config.instance:getCollectionCo(b.itemId)
+		local aRare = aCfg and aCfg.rare or 0
+		local bRare = bCfg and bCfg.rare or 0
 
-		return aCfg.rare > bCfg.rare
+		return bRare < aRare
 	end)
 
 	for k, itemInfo in ipairs(itemInfoList) do

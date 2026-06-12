@@ -78,17 +78,22 @@ function Activity191Config:onConfigLoaded(configName, configTable)
 			local actId = v.activityId
 
 			self._bossCfgMap[actId] = self._bossCfgMap[actId] or {}
-			self._bossCfgMap[actId][v.bossId] = v
+			self._bossCfgMap[actId][v.relation] = self._bossCfgMap[actId][v.relation] or {}
+
+			table.insert(self._bossCfgMap[actId][v.relation], v)
+			table.sort(self._bossCfgMap[actId][v.relation], function(a, b)
+				return a.bossId < b.bossId
+			end)
 		end
 	end
 end
 
 function Activity191Config:getRoleCoByNativeId(roleId, star, try)
 	local actId = Activity191Model.instance:getCurActId()
-	local config = self._roleId2CfgMap[actId][roleId][star]
+	local actCfgs = self._roleId2CfgMap[actId]
 
-	if config then
-		return config
+	if actCfgs and actCfgs[roleId] and actCfgs[roleId][star] then
+		return actCfgs[roleId][star]
 	elseif not try then
 		logError(string.format("找不到角色配置 : 活动ID %s 角色ID %s 角色星级 %s", actId, roleId, star))
 	end
@@ -109,13 +114,15 @@ end
 function Activity191Config:getShowRoleCoList(actId)
 	local list = {}
 
-	for _, config in ipairs(self._roleCfgList[actId]) do
-		if config.star == 1 then
-			list[#list + 1] = config
+	if self._roleCfgList[actId] then
+		for _, config in ipairs(self._roleCfgList[actId]) do
+			if config.star == 1 then
+				list[#list + 1] = config
+			end
 		end
-	end
 
-	table.sort(list, Activity191Helper.sortRoleCo)
+		table.sort(list, Activity191Helper.sortRoleCo)
+	end
 
 	return list
 end
@@ -131,10 +138,10 @@ function Activity191Config:getCollectionCo(itemId)
 end
 
 function Activity191Config:getEnhanceCo(actId, enhanceId)
-	local config = self._enhanceCfgMap[actId][enhanceId]
+	local actCfgs = self._enhanceCfgMap[actId]
 
-	if config then
-		return config
+	if actCfgs and actCfgs[enhanceId] then
+		return actCfgs[enhanceId]
 	else
 		logError(string.format("找不到强化配置 ： 强化ID %s", enhanceId))
 	end
@@ -142,25 +149,23 @@ end
 
 function Activity191Config:getRelationCoList(tag)
 	local actId = Activity191Model.instance:getCurActId()
-	local cfgList = self._relationCfgMap[actId][tag]
+	local actCfgs = self._relationCfgMap[actId]
 
-	if cfgList then
-		return cfgList
+	if actCfgs and actCfgs[tag] then
+		return actCfgs[tag]
 	else
 		logError(string.format("找不到羁绊配置 ： 羁绊Tag %s", tag))
 	end
 end
 
 function Activity191Config:getRelationCo(tag, level)
+	level = level or 0
+
 	local actId = Activity191Model.instance:getCurActId()
 	local cfgMap = self._relationCfgMap[actId]
 
-	level = level or 0
-
-	local config = cfgMap[tag] and cfgMap[tag][level]
-
-	if config then
-		return config
+	if cfgMap and cfgMap[tag] and cfgMap[tag][level] then
+		return cfgMap[tag][level]
 	else
 		logError(string.format("找不到羁绊配置 ： 羁绊Tag %s   羁绊等级 %s", tag, level))
 	end
@@ -372,20 +377,14 @@ Activity191Config.AttrIdToFieldName = {
 	[CharacterEnum.AttrId.Mdefense] = "mdefense"
 }
 
-function Activity191Config:getBossCfgListByTag(tag)
-	local bossCfgList = {}
+function Activity191Config:getBossCfgMap()
+	local actId = Activity191Model.instance:getCurActId()
 
-	for _, v in ipairs(lua_activity191_assist_boss.configList) do
-		if v.relation == tag then
-			bossCfgList[#bossCfgList + 1] = v
-		end
+	if self._bossCfgMap[actId] then
+		return self._bossCfgMap[actId]
+	else
+		logError("协战Boss无配置,活动ID: " .. actId)
 	end
-
-	table.sort(bossCfgList, function(a, b)
-		return a.bossId > b.bossId
-	end)
-
-	return bossCfgList
 end
 
 function Activity191Config:getSummonCfg(bossId)

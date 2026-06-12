@@ -21,6 +21,14 @@ function VersionActivity3_8SelfSelectSixController:openHeroChoiceView()
 		return
 	end
 
+	local isAllHasHeroDestinyLvMaxed = VersionActivity3_8SelfSelectSixModel.instance:isAllHasHeroDestinyLvMaxed()
+
+	if isAllHasHeroDestinyLvMaxed then
+		GameFacade.showToast(ToastEnum.NoHeroCanDestinyUp)
+
+		return
+	end
+
 	local heroList = VersionActivity3_8SelfSelectSixModel.instance:getAllChoiceHeroDestinyList()
 
 	if #heroList > 0 then
@@ -45,14 +53,15 @@ function VersionActivity3_8SelfSelectSixController:_onChangeStoneItem()
 	o.quantity = 1
 
 	table.insert(data, o)
-	ItemRpc.instance:sendUseItemRequest(data, 0)
+	ItemRpc.instance:sendUseItemRequest(data, -1)
 end
 
-function VersionActivity3_8SelfSelectSixController:openHeroChoicePreview()
+function VersionActivity3_8SelfSelectSixController:openHeroChoicePreview(heroId)
 	local heroList = VersionActivity3_8SelfSelectSixModel.instance:getAllPreviewHeroList()
 	local param = {
 		showType = VersionActivity2_3NewCultivationDetailView.DISPLAY_TYPE.Effect,
 		heroId = heroList,
+		targetHeroId = heroId,
 		ignoreIds = VersionActivity3_8SelfSelectSixModel.instance:getIgnoreIds()
 	}
 

@@ -24,52 +24,32 @@ function Act191TeamComp:init(go)
 
 	self:addClickCb(self.btnEnhance, self._btnEnhanceOnClick, self)
 
+	self.gameInfo = Activity191Model.instance:getActInfo():getGameInfo()
 	self.groupItem1List = {}
-	self.subGroupItem1List = {}
-	self.groupItem2List = {}
 	self.fetterItemList = {}
+	self.mainTeamSlot = Activity191Enum.BaseTeamSlot.Main
+	self.subTeamSlot = Activity191Enum.BaseTeamSlot.Sub + self.gameInfo.subTeamAddSlot
 	self.heroPosTrList = self:getUserDataTb_()
 
-	for i = 1, 8 do
+	for i = 1, 9 do
 		local recordGo = gohelper.findChild(self.go, "recordPos/hero" .. i)
-
-		self.heroPosTrList[i] = recordGo.transform
-
 		local heroGo = gohelper.findChild(self.goHeroTeam, "hero" .. i)
 
-		self.groupItem1List[i] = MonoHelper.addNoUpdateLuaComOnceToGo(heroGo, Act191HeroGroupItem1)
+		gohelper.setActive(heroGo, i <= self.mainTeamSlot + self.subTeamSlot)
 
-		self.groupItem1List[i]:setIndex(i)
-		self.groupItem1List[i]:setExtraParam({
-			type = "justHero",
-			fromView = self.handleViewName
-		})
-		CommonDragHelper.instance:registerDragObj(heroGo, self._onBeginDrag, nil, self._onEndDrag, self._checkDrag, self, i)
+		if i <= self.mainTeamSlot + self.subTeamSlot then
+			self.heroPosTrList[i] = recordGo.transform
+			self.groupItem1List[i] = MonoHelper.addNoUpdateLuaComOnceToGo(heroGo, Act191HeroGroupItem1)
 
-		if i <= 4 then
-			heroGo = gohelper.findChild(self.goCollectionTeam, "hero" .. i)
-			self.subGroupItem1List[i] = MonoHelper.addNoUpdateLuaComOnceToGo(heroGo, Act191HeroGroupItem1)
-
-			self.subGroupItem1List[i]:setIndex(i)
-			self.subGroupItem1List[i]:setClickEnable(false)
-			self.subGroupItem1List[i]:setExtraParam({
-				type = "heroItem",
+			self.groupItem1List[i]:setIndex(i)
+			self.groupItem1List[i]:setExtraParam({
+				type = "justHero",
 				fromView = self.handleViewName
 			})
-
-			local collectionGo = gohelper.findChild(self.goCollectionTeam, "collection" .. i)
-
-			self.groupItem2List[i] = MonoHelper.addNoUpdateLuaComOnceToGo(collectionGo, Act191HeroGroupItem2)
-
-			self.groupItem2List[i]:setIndex(i)
-			self.groupItem2List[i]:setExtraParam({
-				type = "heroItem",
-				fromView = self.handleViewName
-			})
+			CommonDragHelper.instance:registerDragObj(heroGo, self._onBeginDrag, nil, self._onEndDrag, self._checkDrag, self, i)
 		end
 	end
 
-	self.gameInfo = Activity191Model.instance:getActInfo():getGameInfo()
 	self._loader = MultiAbLoader.New()
 
 	self._loader:addPath(Activity191Enum.PrefabPath.FetterItem)
@@ -136,22 +116,22 @@ function Act191TeamComp:refreshTeam()
 
 	UISpriteSetMgr.instance:setAct174Sprite(self.imageLevel, "act191_level_" .. string.lower(rankStr))
 
-	for i = 1, 4 do
+	for i = 1, self.mainTeamSlot do
 		self:_setHeroItemPos(self.groupItem1List[i], i)
-		self:_setHeroItemPos(self.groupItem1List[i + 4], i + 4)
 
 		local battleHeroInfo = Activity191Helper.matchKeyInArray(teamInfo.battleHeroInfo, i)
 		local heroId = battleHeroInfo and battleHeroInfo.heroId
+
+		self.groupItem1List[i]:setData(heroId)
+	end
+
+	for i = 1, self.subTeamSlot do
+		self:_setHeroItemPos(self.groupItem1List[i + self.mainTeamSlot], i + self.mainTeamSlot)
+
 		local subHeroInfo = Activity191Helper.matchKeyInArray(teamInfo.subHeroInfo, i)
 		local subHeroId = subHeroInfo and subHeroInfo.heroId
 
-		self.groupItem1List[i]:setData(heroId)
-		self.groupItem1List[i + 4]:setData(subHeroId)
-		self.subGroupItem1List[i]:setData(heroId)
-
-		local itemUid = battleHeroInfo and battleHeroInfo.itemUid1
-
-		self.groupItem2List[i]:setData(itemUid)
+		self.groupItem1List[i + self.mainTeamSlot]:setData(subHeroId)
 	end
 
 	if self.canFreshFetter then

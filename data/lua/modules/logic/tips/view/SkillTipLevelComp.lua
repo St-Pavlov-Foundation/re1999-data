@@ -282,7 +282,7 @@ function SkillTipLevelComp:_refreshDevice(skillId)
 		if self._super then
 			self._txttongdiao.text = "-" .. deviceMo:getUniqueSkillPoint()
 		else
-			local cost = skillInfo and skillInfo[3] or 0
+			local cost = skillInfo and skillInfo.costValue or 0
 
 			self._txtenergy.text = "-" .. cost
 
@@ -291,7 +291,7 @@ function SkillTipLevelComp:_refreshDevice(skillId)
 			self._txttongdiao.text = "+" .. addExPoint
 		end
 
-		local costType = skillInfo and skillInfo[2]
+		local costType = skillInfo and skillInfo.costType
 
 		if costType then
 			local url = FightDeviceHelper.getCareerImage(costType)

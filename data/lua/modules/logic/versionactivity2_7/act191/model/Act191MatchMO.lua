@@ -26,22 +26,28 @@ function Act191MatchMO:updateEnhance(enhanceIdList)
 
 	for _, enhanceId in ipairs(self.enhanceSet) do
 		local enhanceCo = Activity191Config.instance:getEnhanceCo(actId, enhanceId)
-		local effectIds = string.splitToNumber(enhanceCo.effects, "|")
 
-		for _, effectId in ipairs(effectIds) do
-			local effectCo = lua_activity191_effect.configDict[effectId]
-			local params = string.split(effectCo.typeParam, "#")
+		if enhanceCo then
+			local effectIds = string.splitToNumber(enhanceCo.effects, "|")
 
-			if effectCo.type == Activity191Enum.EffectType.ExtraFetter then
-				local heroId = tonumber(params[1])
-				local fetterTbl = self.heroId2ExtraFetterMap[heroId]
+			for _, effectId in ipairs(effectIds) do
+				local effectCo = lua_activity191_effect.configDict[effectId]
 
-				if not fetterTbl then
-					fetterTbl = {}
-					self.heroId2ExtraFetterMap[heroId] = fetterTbl
+				if effectCo then
+					local params = string.split(effectCo.typeParam, "#")
+
+					if effectCo.type == Activity191Enum.EffectType.ExtraFetter then
+						local heroId = tonumber(params[1])
+						local fetterTbl = self.heroId2ExtraFetterMap[heroId]
+
+						if not fetterTbl then
+							fetterTbl = {}
+							self.heroId2ExtraFetterMap[heroId] = fetterTbl
+						end
+
+						table.insert(fetterTbl, params[2])
+					end
 				end
-
-				table.insert(fetterTbl, params[2])
 			end
 		end
 	end
@@ -103,13 +109,16 @@ function Act191MatchMO:getTeamFetterCntDic()
 	for _, info in pairs(self.heroMap) do
 		if info.heroId ~= 0 then
 			local roleCo = self:getRoleCo(info.heroId)
-			local fetterArr = string.split(roleCo.tag, "#")
 
-			for _, tag in ipairs(fetterArr) do
-				if cntDic[tag] then
-					cntDic[tag] = cntDic[tag] + 1
-				else
-					cntDic[tag] = 1
+			if roleCo then
+				local fetterArr = string.split(roleCo.tag, "#")
+
+				for _, tag in ipairs(fetterArr) do
+					if cntDic[tag] then
+						cntDic[tag] = cntDic[tag] + 1
+					else
+						cntDic[tag] = 1
+					end
 				end
 			end
 

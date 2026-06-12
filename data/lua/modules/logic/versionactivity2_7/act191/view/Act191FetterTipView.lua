@@ -61,7 +61,7 @@ function Act191FetterTipView:onOpen()
 	if not string.nilorempty(specDesc) then
 		gohelper.setActive(self._goUseTime, simpleCo.tag == Activity191Enum.GreenDeer)
 
-		self._txtUseTime.text = 0
+		self._txtUseTime.text = self.gameInfo:getSkillCount(Activity191Enum.GreenDeerSkillIds)
 
 		gohelper.setActive(self._goSpecDesc, true)
 

@@ -279,21 +279,21 @@
     "audio": 430920341
   },
   {
-    "effectPath": "buff/buff_hudun_fire_01",
+    "effectPath": "buff_hudun_fire_01",
     "target": 1,
     "skinId": 309403,
-    "changedPath": "buff/buff_hudun_joefire_01",
+    "changedPath": "buff_hudun_joefire_01",
     "duration": 0.0,
-    "effectHangPoint": "mountroot",
+    "effectHangPoint": "mountmiddle",
     "audio": 430940341
   },
   {
-    "effectPath": "buff/buff_hudun_fire_02",
+    "effectPath": "buff_hudun_fire_02",
     "target": 1,
     "skinId": 309403,
-    "changedPath": "buff/buff_hudun_joefire_02",
+    "changedPath": "buff_hudun_joefire_02",
     "duration": 0.0,
-    "effectHangPoint": "mountroot",
+    "effectHangPoint": "mountmiddle",
     "audio": 430940342
   },
   {
@@ -304,5 +304,32 @@
     "duration": 0.0,
     "effectHangPoint": "mountbody",
     "audio": 431390341
+  },
+  {
+    "effectPath": "buff_hudun_fire_01",
+    "target": 2,
+    "skinId": 309403,
+    "changedPath": "buff_hudun_joefire_01",
+    "duration": 0.0,
+    "effectHangPoint": "mountmiddle",
+    "audio": 430940341
+  },
+  {
+    "effectPath": "buff_hudun_fire_02",
+    "target": 2,
+    "skinId": 309403,
+    "changedPath": "buff_hudun_joefire_02",
+    "duration": 0.0,
+    "effectHangPoint": "mountmiddle",
+    "audio": 430940342
+  },
+  {
+    "effectPath": "xingti_innate01",
+    "target": 1,
+    "skinId": 302504,
+    "changedPath": "buff/pre_xt_innate01",
+    "duration": 0.0,
+    "effectHangPoint": "mountbottom",
+    "audio": 430250401
   }
 ]

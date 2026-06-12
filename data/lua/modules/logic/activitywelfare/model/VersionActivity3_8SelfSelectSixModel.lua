@@ -14,37 +14,6 @@ function VersionActivity3_8SelfSelectSixModel:reInit()
 end
 
 VersionActivity3_8SelfSelectSixModel.ItemId = 642802
-VersionActivity3_8SelfSelectSixModel.SkillLevel2Order = {
-	[0] = 50,
-	40,
-	30,
-	20,
-	10,
-	60
-}
-
-local function sortFunc(a, b)
-	local aHeroMo = HeroModel.instance:getByHeroId(a)
-	local bHeroMo = HeroModel.instance:getByHeroId(b)
-	local aHasHero = aHeroMo ~= nil
-	local bHasHero = bHeroMo ~= nil
-
-	if aHasHero ~= bHasHero then
-		return bHasHero
-	end
-
-	local aSkillLevel = aHeroMo and aHeroMo.exSkillLevel or -1
-	local bSkillLevel = bHeroMo and bHeroMo.exSkillLevel or -1
-
-	if aSkillLevel ~= bSkillLevel then
-		local aOrder = VersionActivity3_8SelfSelectSixModel.SkillLevel2Order[aSkillLevel] or 999
-		local bOrder = VersionActivity3_8SelfSelectSixModel.SkillLevel2Order[bSkillLevel] or 999
-
-		return aOrder < bOrder
-	end
-
-	return b < a
-end
 
 function VersionActivity3_8SelfSelectSixModel:getAllPreviewHeroList()
 	local itemCo = ItemConfig.instance:getItemCo(VersionActivity3_8SelfSelectSixModel.ItemId)
@@ -65,8 +34,6 @@ function VersionActivity3_8SelfSelectSixModel:getAllPreviewHeroList()
 	for _, heroId in ipairs(heroArr) do
 		table.insert(heroList, heroId)
 	end
-
-	table.sort(heroList, sortFunc)
 
 	return heroList
 end
@@ -132,6 +99,30 @@ function VersionActivity3_8SelfSelectSixModel:getAllChoiceHeroDestinyList()
 	end
 
 	return list
+end
+
+function VersionActivity3_8SelfSelectSixModel:isAllHasHeroDestinyLvMaxed()
+	local heroList = self:getAllChoiceHeroDestinyList()
+
+	for _, heroMo in pairs(heroList) do
+		local isSlotMaxLevel = heroMo.destinyStoneMo and heroMo.destinyStoneMo:isSlotMaxLevel()
+		local stoneList = heroMo.destinyStoneMo and heroMo.destinyStoneMo:getStoneMoList()
+		local ignoreIds = self:getIgnoreIds()
+
+		if not isSlotMaxLevel then
+			return false
+		else
+			for _, stoneMo in pairs(stoneList) do
+				local isIgnore = LuaUtil.tableContains(ignoreIds, stoneMo.stoneId)
+
+				if not stoneMo.isUnlock and not isIgnore then
+					return false
+				end
+			end
+		end
+	end
+
+	return true
 end
 
 function VersionActivity3_8SelfSelectSixModel:isAllHeroDestinyLvMaxed()

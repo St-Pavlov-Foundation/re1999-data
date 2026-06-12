@@ -29110,5 +29110,929 @@
   {
     "id": 1010004,
     "type": "ProgressValue"
+  },
+  {
+    "id": 795,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795002,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795004,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795005,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795100,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795101,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795102,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795103,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795104,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795105,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795106,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795201,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795202,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795203,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795204,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795205,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795206,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795207,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795208,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795209,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795210,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795211,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795212,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795213,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795301,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795302,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795303,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795304,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795305,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795306,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795307,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795401,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 795402,
+    "type": "Act191PerHeroQualityTotal"
+  },
+  {
+    "id": 796,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796002,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796004,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796005,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796100,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796101,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796102,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796103,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796104,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796105,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796106,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796201,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796202,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796203,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796204,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796205,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796206,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796207,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796208,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796209,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796210,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796211,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796212,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796213,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796301,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796302,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796303,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796304,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796305,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796306,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796307,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796401,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 796402,
+    "type": "Act191PerCoinNum"
+  },
+  {
+    "id": 797,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797002,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797004,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797005,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797100,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797101,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797102,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797103,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797104,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797105,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797106,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797201,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797202,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797203,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797204,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797205,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797206,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797207,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797208,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797209,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797210,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797211,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797212,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797213,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797301,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797302,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797303,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797304,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797305,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797306,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797307,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797401,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 797402,
+    "type": "Act191DiceAccumulateRange"
+  },
+  {
+    "id": 798,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798002,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798004,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798005,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798100,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798101,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798102,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798103,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798104,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798105,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798106,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798201,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798202,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798203,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798204,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798205,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798206,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798207,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798208,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798209,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798210,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798211,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798212,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798213,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798301,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798302,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798303,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798304,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798305,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798306,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798307,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798401,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 798402,
+    "type": "Act191PerGlobalActionCount"
+  },
+  {
+    "id": 799,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799002,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799004,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799005,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799100,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799101,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799102,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799103,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799104,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799105,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799106,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799201,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799202,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799203,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799204,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799205,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799206,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799207,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799208,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799209,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799210,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799211,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799212,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799213,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799301,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799302,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799303,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799304,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799305,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799306,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799307,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799401,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 799402,
+    "type": "Act191PerGlobalSkillCount"
+  },
+  {
+    "id": 800,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800002,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800004,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800005,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800100,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800101,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800102,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800103,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800104,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800105,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800106,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800201,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800202,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800203,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800204,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800205,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800206,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800207,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800208,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800209,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800210,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800211,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800212,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800213,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800301,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800302,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800303,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800304,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800305,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800306,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800307,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800401,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 800402,
+    "type": "Act191PerTagNum"
+  },
+  {
+    "id": 801,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801002,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801004,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801005,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801100,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801101,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801102,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801103,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801104,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801105,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801106,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801201,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801202,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801203,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801204,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801205,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801206,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801207,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801208,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801209,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801210,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801211,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801212,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801213,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801301,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801302,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801303,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801304,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801305,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801306,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801307,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801401,
+    "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 801402,
+    "type": "Act191PerHeroStarNum"
   }
 ]

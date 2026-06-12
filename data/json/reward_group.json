@@ -22603,16 +22603,16 @@
     "group": "jg_hsy_2",
     "materialType": 2,
     "materialId": 2,
-    "count": "20",
+    "count": "30",
     "label": "guding",
     "shownum": 1
   },
   {
     "id": 380047,
     "group": "jg_hsy_2",
-    "materialType": 9,
-    "materialId": 1003,
-    "count": "4",
+    "materialType": 1,
+    "materialId": 110103,
+    "count": "2",
     "label": "guding",
     "shownum": 1
   },
@@ -22630,16 +22630,16 @@
     "group": "jg_hsy_3",
     "materialType": 2,
     "materialId": 2,
-    "count": "30",
+    "count": "20",
     "label": "guding",
     "shownum": 1
   },
   {
     "id": 380050,
     "group": "jg_hsy_3",
-    "materialType": 1,
-    "materialId": 110103,
-    "count": "2",
+    "materialType": 9,
+    "materialId": 1003,
+    "count": "4",
     "label": "guding",
     "shownum": 1
   },
@@ -22657,7 +22657,7 @@
     "group": "jg_hsy_4",
     "materialType": 2,
     "materialId": 2,
-    "count": "20",
+    "count": "30",
     "label": "guding",
     "shownum": 1
   },
@@ -22665,7 +22665,7 @@
     "id": 380053,
     "group": "jg_hsy_4",
     "materialType": 1,
-    "materialId": 111012,
+    "materialId": 110803,
     "count": "2",
     "label": "guding",
     "shownum": 1
@@ -22684,7 +22684,7 @@
     "group": "jg_hsy_5",
     "materialType": 2,
     "materialId": 2,
-    "count": "30",
+    "count": "20",
     "label": "guding",
     "shownum": 1
   },
@@ -22711,7 +22711,7 @@
     "group": "jg_hsy_6",
     "materialType": 2,
     "materialId": 2,
-    "count": "40",
+    "count": "30",
     "label": "guding",
     "shownum": 1
   },
@@ -22719,7 +22719,7 @@
     "id": 380059,
     "group": "jg_hsy_6",
     "materialType": 1,
-    "materialId": 110603,
+    "materialId": 111002,
     "count": "2",
     "label": "guding",
     "shownum": 1
@@ -22738,16 +22738,16 @@
     "group": "jg_hsy_7",
     "materialType": 2,
     "materialId": 2,
-    "count": "20",
+    "count": "30",
     "label": "guding",
     "shownum": 1
   },
   {
     "id": 380062,
     "group": "jg_hsy_7",
-    "materialType": 9,
-    "materialId": 1003,
-    "count": "4",
+    "materialType": 1,
+    "materialId": 110303,
+    "count": "2",
     "label": "guding",
     "shownum": 1
   },
@@ -22772,9 +22772,9 @@
   {
     "id": 380065,
     "group": "jg_hsy_8",
-    "materialType": 1,
-    "materialId": 110703,
-    "count": "2",
+    "materialType": 9,
+    "materialId": 1003,
+    "count": "4",
     "label": "guding",
     "shownum": 1
   },
@@ -22800,7 +22800,7 @@
     "id": 380068,
     "group": "jg_hsy_9",
     "materialType": 1,
-    "materialId": 110903,
+    "materialId": 110403,
     "count": "2",
     "label": "guding",
     "shownum": 1
@@ -22818,7 +22818,7 @@
     "id": 380070,
     "group": "jg_hsy_10",
     "materialType": 1,
-    "materialId": 110503,
+    "materialId": 110103,
     "count": "2",
     "label": "guding",
     "shownum": 1
@@ -22882,16 +22882,16 @@
     "group": "jg_djs_2",
     "materialType": 2,
     "materialId": 2,
-    "count": "20",
+    "count": "30",
     "label": "guding",
     "shownum": 1
   },
   {
     "id": 380078,
     "group": "jg_djs_2",
-    "materialType": 9,
-    "materialId": 1003,
-    "count": "4",
+    "materialType": 1,
+    "materialId": 110703,
+    "count": "2",
     "label": "guding",
     "shownum": 1
   },
@@ -22917,7 +22917,7 @@
     "id": 380081,
     "group": "jg_djs_3",
     "materialType": 1,
-    "materialId": 110703,
+    "materialId": 110303,
     "count": "2",
     "label": "guding",
     "shownum": 1
@@ -22936,7 +22936,7 @@
     "group": "jg_djs_4",
     "materialType": 2,
     "materialId": 2,
-    "count": "20",
+    "count": "30",
     "label": "guding",
     "shownum": 1
   },
@@ -22944,7 +22944,7 @@
     "id": 380084,
     "group": "jg_djs_4",
     "materialType": 1,
-    "materialId": 110303,
+    "materialId": 111012,
     "count": "2",
     "label": "guding",
     "shownum": 1
@@ -22963,7 +22963,7 @@
     "group": "jg_djs_5",
     "materialType": 2,
     "materialId": 2,
-    "count": "30",
+    "count": "20",
     "label": "guding",
     "shownum": 1
   },
@@ -22997,9 +22997,9 @@
   {
     "id": 380090,
     "group": "jg_djs_6",
-    "materialType": 1,
-    "materialId": 110103,
-    "count": "2",
+    "materialType": 9,
+    "materialId": 1003,
+    "count": "4",
     "label": "guding",
     "shownum": 1
   },
@@ -23017,16 +23017,16 @@
     "group": "jg_djs_7",
     "materialType": 2,
     "materialId": 2,
-    "count": "40",
+    "count": "30",
     "label": "guding",
     "shownum": 1
   },
   {
     "id": 380093,
     "group": "jg_djs_7",
-    "materialType": 9,
-    "materialId": 1003,
-    "count": "4",
+    "materialType": 1,
+    "materialId": 110903,
+    "count": "2",
     "label": "guding",
     "shownum": 1
   },
@@ -23051,9 +23051,9 @@
   {
     "id": 380096,
     "group": "jg_djs_8",
-    "materialType": 1,
-    "materialId": 110903,
-    "count": "2",
+    "materialType": 9,
+    "materialId": 1003,
+    "count": "4",
     "label": "guding",
     "shownum": 1
   },
@@ -23097,7 +23097,7 @@
     "id": 380101,
     "group": "jg_djs_10",
     "materialType": 1,
-    "materialId": 110803,
+    "materialId": 110203,
     "count": "1",
     "label": "guding",
     "shownum": 1

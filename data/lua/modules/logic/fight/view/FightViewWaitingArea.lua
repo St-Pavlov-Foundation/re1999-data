@@ -355,6 +355,9 @@ function FightViewWaitingArea:_onSkillPlayFinish(entity, skillId, fightStepData)
 	context.skillTipsGO = self._skillTipsGO
 	context.skillItemGO = skillItemGO
 	context.waitingAreaGO = self._waitingAreaGO
+	context.param = {
+		skillId = skillId
+	}
 
 	self._cardDisplayEndFlow:start(context)
 end

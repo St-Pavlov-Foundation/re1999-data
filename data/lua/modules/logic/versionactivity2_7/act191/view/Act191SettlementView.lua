@@ -34,25 +34,22 @@ function Act191SettlementView:_editableInitView()
 	self.heroContainer = gohelper.findChild(self.viewGO, "Left/herogroupcontain/heroContainer")
 
 	self:initHeroInfoItem()
-	self:initHeroAndEquipItem()
 
 	self.animEvent = self.viewGO:GetComponent(gohelper.Type_AnimationEventWrap)
 
 	self.animEvent:AddEventListener("PlayBadgeAnim", self.playBadgeAnim, self)
 
 	self.actInfo = Activity191Model.instance:getActInfo()
+	self.gameInfo = self.actInfo:getGameInfo()
+	self.maxTeamSlot = Activity191Enum.BaseTeamSlot.Main + Activity191Enum.BaseTeamSlot.Sub + self.gameInfo.subTeamAddSlot
 
+	self:initHeroAndEquipItem()
 	self:initBadge()
-end
-
-function Act191SettlementView:onUpdateParam()
-	return
 end
 
 function Act191SettlementView:onOpen()
 	Act191StatController.instance:onViewOpen(self.viewName)
 
-	self.gameInfo = self.actInfo:getGameInfo()
 	self.gameEndInfo = self.actInfo:getGameEndInfo()
 
 	self:refreshLeft()
@@ -90,10 +87,14 @@ function Act191SettlementView:initHeroAndEquipItem()
 
 	local recordPos = gohelper.findChild(self.viewGO, "Left/herogroupcontain/recordPos")
 
-	for i = 1, 8 do
+	for i = 1, self.maxTeamSlot do
 		local go = gohelper.findChild(recordPos, "heroPos" .. i)
 
-		self.heroPosTrList[i] = go.transform
+		if go then
+			self.heroPosTrList[i] = go.transform
+		else
+			logError("缺失Slot节点" .. i)
+		end
 	end
 
 	local goHeroItem = gohelper.findChild(self.heroContainer, "go_HeroItem")
@@ -101,7 +102,7 @@ function Act191SettlementView:initHeroAndEquipItem()
 
 	self.heroItemList = {}
 
-	for i = 1, 8 do
+	for i = 1, self.maxTeamSlot do
 		local cloneGo = gohelper.cloneInPlace(goHeroItem, "hero" .. i)
 		local heroItem = MonoHelper.addNoUpdateLuaComOnceToGo(cloneGo, Act191HeroGroupItem1)
 

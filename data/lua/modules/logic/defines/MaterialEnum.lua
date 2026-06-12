@@ -89,7 +89,7 @@ MaterialEnum.SubTypeInPack = {
 	[ItemEnum.SubType.RoomBlockGift] = true,
 	[ItemEnum.SubType.SkinSelelctGift] = true,
 	[ItemEnum.SubType.EquipSelectGift] = true,
-	[ItemEnum.SubType.HeroExpBox] = true
+	[ItemEnum.SubType.NewDestinyStoneUp] = true
 }
 MaterialEnum.JumpProbabilityDisplay = {
 	[MaterialEnum.JumpProbability.Normal] = "material_jump_probability_normal",

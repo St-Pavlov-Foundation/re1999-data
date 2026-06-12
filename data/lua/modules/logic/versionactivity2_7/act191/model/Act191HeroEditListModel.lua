@@ -113,7 +113,7 @@ function Act191HeroEditListModel:getHeroIdMap()
 		end
 	end
 
-	return self._index2HeroIdMap or {}
+	return self._index2HeroIdMap
 end
 
 Act191HeroEditListModel.instance = Act191HeroEditListModel.New()

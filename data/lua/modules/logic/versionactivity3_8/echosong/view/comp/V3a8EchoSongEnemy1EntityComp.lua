@@ -105,6 +105,10 @@ function V3a8EchoSongEnemy1EntityComp:checkHitParticle(ballItem)
 		return
 	end
 
+	if not self._cachedWorldX or not self._cachedWorldY then
+		return
+	end
+
 	local worldPos = ballItem:getPos()
 	local dx = worldPos.x - self._cachedWorldX
 	local dy = worldPos.y - self._cachedWorldY

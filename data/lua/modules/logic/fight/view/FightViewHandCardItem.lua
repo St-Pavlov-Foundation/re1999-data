@@ -1785,6 +1785,18 @@ function FightViewHandCardItem:playCardAConvertCardB(actEffectData)
 			end
 		elseif effectUrl == "ui/viewres/fight/fightmeileierercard.prefab" then
 			AudioMgr.instance:trigger(370102)
+
+			local go = self._convertEffect
+			local normal = gohelper.findChild(go, "#nomal")
+			local unique = gohelper.findChild(go, "ultimate")
+
+			gohelper.setActive(normal, true)
+			gohelper.setActive(unique, false)
+
+			if self._cardItem and self._cardItem.isBigSkillShow then
+				gohelper.setActive(normal, false)
+				gohelper.setActive(unique, true)
+			end
 		end
 
 		TaskDispatcher.runDelay(self._afterConvertCardEffect, self, FightEnum.PerformanceTime.CardAConvertCardB / FightModel.instance:getUISpeed())

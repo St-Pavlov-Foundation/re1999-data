@@ -412,7 +412,7 @@ function HeroGroupController:realUseRecommendGroup()
 	}
 
 	if TowerModel.instance:isInTowerBattle() then
-		self:onTowerUse(info, heroGroupMO, configAids, battleConfig.roleNum, battleConfig.playerMax, true, configTrial)
+		self:onTowerUse(info, heroGroupMO, recommendMo, configAids, battleConfig.roleNum, battleConfig.playerMax, true, configTrial)
 
 		return
 	end
@@ -431,7 +431,7 @@ function HeroGroupController:realUseRecommendGroup()
 	HeroGroupController.instance:dispatchEvent(HeroGroupEvent.OnUseRecommendGroupFinish)
 end
 
-function HeroGroupController:onTowerUse(info, heroGroupMO, ...)
+function HeroGroupController:onTowerUse(info, heroGroupMO, recommendMo, ...)
 	local towerFightParam = TowerModel.instance:getRecordFightParam()
 
 	if towerFightParam and towerFightParam.isHeroGroupLock then
@@ -441,7 +441,7 @@ function HeroGroupController:onTowerUse(info, heroGroupMO, ...)
 		return
 	end
 
-	local assistBossId = self._mo.assistBossId
+	local assistBossId = recommendMo.assistBossId
 
 	if assistBossId and assistBossId > 0 and towerFightParam and not towerFightParam.isHeroGroupLock and not TowerModel.instance:isBossBan(assistBossId) and not TowerModel.instance:isLimitTowerBossBan(towerFightParam.towerType, towerFightParam.towerId, assistBossId) then
 		local bossMo = TowerAssistBossModel.instance:getById(assistBossId)

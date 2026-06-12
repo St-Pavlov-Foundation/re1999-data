@@ -11149,7 +11149,7 @@
   },
   {
     "id": "p_v1a7_warmup_txt_Reward",
-    "lang": "勘察后领取"
+    "lang": "查看后领取"
   },
   {
     "id": "p_v1a7_warmup_txt_Tips",
@@ -20977,7 +20977,7 @@
   },
   {
     "id": "p_v3a0_commandstation_help_2_txt_1",
-    "lang": "「解构进程」任务会跟随版本更新，请注意在版本结束前完成任务。"
+    "lang": "「解构进程」任务会在《故事的根须》主线章节结束前跟随版本更新。"
   },
   {
     "id": "p_v3a0_commandstation_help_2_txt_2",
@@ -21441,7 +21441,7 @@
   },
   {
     "id": "p_v2a9_monthcard_panelview_txt_canget",
-    "lang": "今日可领取"
+    "lang": "领取"
   },
   {
     "id": "p_v2a9_monthcard_panelview_txt_hasget",
@@ -28873,7 +28873,7 @@
   },
   {
     "id": "p_v3a8_warmup_txt_reward",
-    "lang": "堪察后领取"
+    "lang": "查看后领取"
   },
   {
     "id": "p_v3a8_dragonboatactivity_fullview_txt_desc01",
@@ -28977,15 +28977,15 @@
   },
   {
     "id": "p_v3a8_storeview_txt_title1",
-    "lang": "<size=38>“果</size>腹”餐点"
+    "lang": "伟大建筑"
   },
   {
     "id": "p_v3a8_storeview_txt_title2",
-    "lang": "<size=38>“果</size>腹”餐点"
+    "lang": "承重结构"
   },
   {
     "id": "p_v3a8_storeview_txt_title3",
-    "lang": "<size=38>“果</size>腹”餐点"
+    "lang": "地基之上"
   },
   {
     "id": "p_v3a8_xinshou8day_day3",
@@ -28997,7 +28997,7 @@
   },
   {
     "id": "p_v3a8_xinshou8day_txt_new",
-    "lang": "累计签到<color=#D86A36>8</color>日\n即可获得<color=#D86A36>独一律×13</color>、<color=#D86A36>6星心相自选</color>、5星角色<color=#D86A36>帕米埃</color>等奖励。"
+    "lang": "累计签到<color=#D86A36>8</color>日\n即可获得<color=#D86A36>独一律×13</color>、<color=#D86A36>6星心相自选</color>、5星角色<color=#D86A36>帕米埃</color>等奖励"
   },
   {
     "id": "p_v3a8_xinshouguanqia_txt_new",
@@ -29024,12 +29024,16 @@
     "lang": "剩余奖励次数"
   },
   {
+    "id": "p_sp02_storeseasoncard_fullview_txt_nums_2",
+    "lang": "可补领次数："
+  },
+  {
     "id": "p_sp02_storeseasoncard_fullview_txt_goods",
-    "lang": "惊喜日历"
+    "lang": "惊喜月历"
   },
   {
     "id": "p_sp02_storeseasoncard_taskview_txt_title",
-    "lang": "完成任务即可获得往日咆哮.咆哮惊喜月"
+    "lang": "完成周任务可获得往日咆哮·咆哮惊喜月"
   },
   {
     "id": "p_sp02_storeseasoncard_taskview_txt_tip",
@@ -29037,14 +29041,102 @@
   },
   {
     "id": "p_sp02_storeseasoncard_fullview_txt_desc2",
-    "lang": "每日登录领取 <#EDD18E>纯雨滴×90、苦木糖果×1</color>"
+    "lang": "每日登录领取 <#EDD18E>纯雨滴×90、苦目糖果×1</color>"
   },
   {
     "id": "p_sp02_storeseasoncard_fullview_txt_desc",
-    "lang": "聆听特别的咆哮，这本免费的日历等待着所有朋友"
+    "lang": "聆听特别的咆哮，这本免费的月历等待着所有朋友"
   },
   {
     "id": "p_v3a8_huishengyao_result_txt_target",
     "lang": "寻找道路，抵达目的地"
+  },
+  {
+    "id": "p_v3a8_rolestorygameview_txt_end",
+    "lang": "我是矢车菊，感谢你们的收听...晚安！"
+  },
+  {
+    "id": "p_playercardsettingview_txt_title",
+    "lang": "选择旅券集开启效果"
+  },
+  {
+    "id": "p_playercardsettingview_txt_seting",
+    "lang": "设置中"
+  },
+  {
+    "id": "p_act191fettertipview_txt_useTimes",
+    "lang": "释放次数"
+  },
+  {
+    "id": "p_v3a7_versionsummonyigeerhalfview_txt_name",
+    "lang": "伊戈尔"
+  },
+  {
+    "id": "p_v3a8_huishengyao_help_1_txt1",
+    "lang": "操控摇杆进行角色移动，角色移动时将产生<#ff906a>回声</color>，通过<#ff906a>回声</color>的反射判断前进的路线，抵达<#ff906a>无声场域</color>"
+  },
+  {
+    "id": "p_v3a8_huishengyao_help_1_txt2",
+    "lang": "这是<#ff906a>无声场域</color>，即终点。\n在这片废墟中，尝试寻找它吧"
+  },
+  {
+    "id": "p_v3a8_huishengyao_help_1_txt3",
+    "lang": "操控摇杆进行角色移动。"
+  },
+  {
+    "id": "p_v3a8_huishengyao_help_2_txt1",
+    "lang": "摇杆处于外圈时，角色将以正常速度移动移动期间的<#ff906a>回声</color>可以用于探寻前路。"
+  },
+  {
+    "id": "p_v3a8_huishengyao_help_2_txt2",
+    "lang": "摇杆处于内圈时，角色将以慢速移动，移动期间的微弱<#ff906a>回声</color>将不会吸引敌人。"
+  },
+  {
+    "id": "p_v3a8_huishengyao_help_3_txt1",
+    "lang": "<size=36>杂音</size>\n追踪型敌人，接触<#ff906a>回声</color>将向<#ff906a>回声</color>\n的起点移动，与角色触碰将会直接失败。"
+  },
+  {
+    "id": "p_v3a8_huishengyao_help_4_txt1",
+    "lang": "<size=36>杂音</size>\n追踪型敌人，接触<#ff906a>回声</color>时将向<#ff906a>声源</color>处\n移动，与角色触碰将会直接失败。"
+  },
+  {
+    "id": "p_v3a8_huishengyao_help_4_txt2",
+    "lang": "<size=36>颤音</size>\n巡逻型敌人，该敌人接触<#ff906a>回声</color>时\n将会死亡，并散播具有危险的<#ff906a>回声</color>。"
+  },
+  {
+    "id": "p_v3a8_huishengyao_help_5_txt1",
+    "lang": "<size=36>回响</size>\n通过点击/长按屏幕任意区域，可以触发\n一次较小/较大范围的<#ff906a>回声</color>。"
+  },
+  {
+    "id": "p_v3a8_huishengyao_help_5_txt2",
+    "lang": "<size=36>投射</size>\n在屏幕上向任意方向拖动，可以触发<#ff906a>投射</color>\n松开后将向对应方向投射<#ff906a>回声</color>。"
+  },
+  {
+    "id": "p_v3a8_huishengyao_help_6_txt1",
+    "lang": "<#ff906a>失真</color>区域：<#ff906a>回声</color>经过时为红色，角色接触该区域将直接失败"
+  },
+  {
+    "id": "p_v3a8_huishengyao_help_6_txt2",
+    "lang": "<#ff906a>发声</color>区域：<#ff906a>回声</color>经过时为黄色，进入该区域将解锁新的通行区域。\n                部分场景可能需要进入若干个<#ff906a>发声</color>区域以解锁通行区域。"
+  },
+  {
+    "id": "p_v3a8_huishengyao_help_7_txt1",
+    "lang": "<#ff906a>失真</color>区域：<#ff906a>回声</color>经过时为红色，角色接触该区域将直接失败。"
+  },
+  {
+    "id": "p_v3a8_huishengyao_help_7_txt2",
+    "lang": "<#ff906a>发声</color>区域：<#ff906a>回声</color>经过时为黄色，进入该区域将解锁新的通行区域。\n                部分场景可能需要进入若干个发声区域以解锁通行区域。"
+  },
+  {
+    "id": "p_v3a8_huishengyao_help_7_txt3",
+    "lang": "<#ff906a>转换</color>区域：<#ff906a>回声</color>经过时为蓝色，进入该区域将改变失真区域。\n                可重复触发。"
+  },
+  {
+    "id": "p_v3a8_huishengyao_help_2_txt3",
+    "lang": "PC设备可以使用[Alt]键切换移动态。"
+  },
+  {
+    "id": "p_act191stageview_txt_yuhui",
+    "lang": "余晖商店"
   }
 ]

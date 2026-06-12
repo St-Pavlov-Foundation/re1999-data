@@ -113893,5 +113893,60 @@
     "id": 613802005,
     "eventName": "play_activityvoc_plot38_npcnoname352_2360",
     "bankName": "activityvoc_npcnoname352_3_8_shiji"
+  },
+  {
+    "id": 613802006,
+    "eventName": "play_activityvoc_story_plot38_hero3140_2_1",
+    "bankName": "activityvoc_story_hero3140_shiji"
+  },
+  {
+    "id": 613802007,
+    "eventName": "play_activityvoc_story_plot38_hero3140_23_1",
+    "bankName": "activityvoc_story_hero3140_shiji"
+  },
+  {
+    "id": 613802008,
+    "eventName": "play_activityvoc_story_plot38_hero3140_24_1",
+    "bankName": "activityvoc_story_hero3140_shiji"
+  },
+  {
+    "id": 613802009,
+    "eventName": "play_activityvoc_story_plot38_hero3140_32_1",
+    "bankName": "activityvoc_story_hero3140_shiji"
+  },
+  {
+    "id": 613802010,
+    "eventName": "play_activityvoc_story_plot38_hero3140_33_1",
+    "bankName": "activityvoc_story_hero3140_shiji"
+  },
+  {
+    "id": 613802011,
+    "eventName": "play_activityvoc_plot38_npcnoname351_1625",
+    "bankName": "activityvoc_npcnoname351_3_8_shiji"
+  },
+  {
+    "id": 613802012,
+    "eventName": "play_activityvoc_plot38_npcnoname351_1848",
+    "bankName": "activityvoc_npcnoname351_3_8_shiji"
+  },
+  {
+    "id": 613802013,
+    "eventName": "play_activityvoc_plot38_npcnoname351_1849",
+    "bankName": "activityvoc_npcnoname351_3_8_shiji"
+  },
+  {
+    "id": 613802014,
+    "eventName": "play_activityvoc_plot38_npcnoname351_1850",
+    "bankName": "activityvoc_npcnoname351_3_8_shiji"
+  },
+  {
+    "id": 613802015,
+    "eventName": "play_activityvoc_story_plot38_hero3145_93_1",
+    "bankName": "activityvoc_story_hero3145_shiji"
+  },
+  {
+    "id": 613802016,
+    "eventName": "play_activityvoc_story_plot38_npcnoname366_20_1",
+    "bankName": "activityvoc_story_npcnoname366_shiji"
   }
 ]

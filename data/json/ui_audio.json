@@ -15728,5 +15728,205 @@
     "id": 380002,
     "eventName": "play_ui_shiji_vote_success",
     "bankName": "ui_activity_3_8_shiji_duanwu"
+  },
+  {
+    "id": 380003,
+    "eventName": "play_replay_music_theme_3_8",
+    "bankName": "ui_replay_mainmusic3_8"
+  },
+  {
+    "id": 380004,
+    "eventName": "play_ui_qiutu_stele_put",
+    "bankName": "ui_activity_qiutu_third_door"
+  },
+  {
+    "id": 380005,
+    "eventName": "play_ui_qiutu_organ_sink",
+    "bankName": "ui_activity_qiutu_third_door"
+  },
+  {
+    "id": 380006,
+    "eventName": "play_ui_mistakes",
+    "bankName": "main_ui"
+  },
+  {
+    "id": 380007,
+    "eventName": "play_ui_shiji_slot_light",
+    "bankName": "ui_activity_3_8_shiji"
+  },
+  {
+    "id": 380008,
+    "eventName": "play_ui_shiji_place_success",
+    "bankName": "ui_activity_3_8_shiji"
+  },
+  {
+    "id": 380009,
+    "eventName": "play_ui_shiji_stone_shake_short",
+    "bankName": "ui_activity_3_8_shiji"
+  },
+  {
+    "id": 380010,
+    "eventName": "play_ui_shiji_stone_shake_long",
+    "bankName": "ui_activity_3_8_shiji"
+  },
+  {
+    "id": 380011,
+    "eventName": "play_ui_shiji_stonenote_1",
+    "bankName": "ui_activity_3_8_shiji"
+  },
+  {
+    "id": 380012,
+    "eventName": "play_ui_shiji_stonenote_2",
+    "bankName": "ui_activity_3_8_shiji"
+  },
+  {
+    "id": 380013,
+    "eventName": "play_ui_shiji_stonenote_3",
+    "bankName": "ui_activity_3_8_shiji"
+  },
+  {
+    "id": 380014,
+    "eventName": "play_ui_shiji_stonenote_4",
+    "bankName": "ui_activity_3_8_shiji"
+  },
+  {
+    "id": 380015,
+    "eventName": "play_ui_shiji_stonenote_5",
+    "bankName": "ui_activity_3_8_shiji"
+  },
+  {
+    "id": 380016,
+    "eventName": "play_ui_shiji_stonenote_6",
+    "bankName": "ui_activity_3_8_shiji"
+  },
+  {
+    "id": 380017,
+    "eventName": "play_ui_shiji_stone_music",
+    "bankName": "ui_activity_3_8_shiji"
+  },
+  {
+    "id": 380018,
+    "eventName": "stop_ui_bus",
+    "bankName": "controlling_behavior"
+  },
+  {
+    "id": 380019,
+    "eventName": "play_ui_main_puzzles_character",
+    "bankName": "main_ui"
+  },
+  {
+    "id": 380020,
+    "eventName": "play_ui_shiji_3_8_open_1",
+    "bankName": "ui_activity_3_8_shiji"
+  },
+  {
+    "id": 380021,
+    "eventName": "play_ui_shiji_3_8_open_2",
+    "bankName": "ui_activity_3_8_shiji"
+  },
+  {
+    "id": 380022,
+    "eventName": "play_ui_mln_unlock",
+    "bankName": "ui_activity"
+  },
+  {
+    "id": 380023,
+    "eventName": "play_ui_wulu_kerandian_monster02_stand",
+    "bankName": "ui_activity_1_5_wulu_kerandian_checkpoint"
+  },
+  {
+    "id": 380024,
+    "eventName": "play_ui_shiji3_8_hsy_level",
+    "bankName": "ui_activity_3_8_shiji_huisheng"
+  },
+  {
+    "id": 380025,
+    "eventName": "play_ui_shiji3_8_hsy_fashe",
+    "bankName": "ui_activity_3_8_shiji_huisheng"
+  },
+  {
+    "id": 380026,
+    "eventName": "play_ui_shiji3_8_hsy_fail",
+    "bankName": "ui_activity_3_8_shiji_huisheng"
+  },
+  {
+    "id": 380027,
+    "eventName": "play_ui_shiji3_8_hsy_jigaun",
+    "bankName": "ui_activity_3_8_shiji_huisheng"
+  },
+  {
+    "id": 380028,
+    "eventName": "play_ui_shiji3_8_hsy_finish",
+    "bankName": "ui_activity_3_8_shiji_huisheng"
+  },
+  {
+    "id": 380029,
+    "eventName": "play_ui_shiji3_8_hsy_win",
+    "bankName": "ui_activity_3_8_shiji_huisheng"
+  },
+  {
+    "id": 380030,
+    "eventName": "play_ui_shiji3_8_hsy_fstp1",
+    "bankName": "ui_activity_3_8_shiji_huisheng"
+  },
+  {
+    "id": 380031,
+    "eventName": "play_ui_shiji3_8_hsy_fstp2",
+    "bankName": "ui_activity_3_8_shiji_huisheng"
+  },
+  {
+    "id": 380032,
+    "eventName": "play_ui_shiji_stoneamb_loop",
+    "bankName": "ui_activity_3_8_shiji"
+  },
+  {
+    "id": 380033,
+    "eventName": "stop_ui_shiji_stoneamb_loop",
+    "bankName": "ui_activity_3_8_shiji"
+  },
+  {
+    "id": 380034,
+    "eventName": "play_ui_fight_huishengtiao_level_one",
+    "bankName": "fight_ui_sfx_huishengtiao3_8"
+  },
+  {
+    "id": 380035,
+    "eventName": "play_ui_fight_huishengtiao_level_two",
+    "bankName": "fight_ui_sfx_huishengtiao3_8"
+  },
+  {
+    "id": 380036,
+    "eventName": "play_ui_fight_huishengtiao_level_three",
+    "bankName": "fight_ui_sfx_huishengtiao3_8"
+  },
+  {
+    "id": 380037,
+    "eventName": "play_ui_fight_huishengyao_blood_recovery",
+    "bankName": "fight_ui_sfx_huishengyao3_8"
+  },
+  {
+    "id": 380038,
+    "eventName": "play_ui_fight_huishengyao_equipment_damage",
+    "bankName": "fight_ui_sfx_huishengyao3_8"
+  },
+  {
+    "id": 380039,
+    "eventName": "play_ui_fight_huishengyao_equipment_recovery",
+    "bankName": "fight_ui_sfx_huishengyao3_8"
+  },
+  {
+    "id": 380040,
+    "eventName": "play_ui_shiji3_8_djs_level",
+    "bankName": "ui_activity_3_8_shiji_dianjishi"
+  },
+  {
+    "id": 380041,
+    "eventName": "play_ui_shiji3_8_djs_anzhu",
+    "bankName": "ui_activity_3_8_shiji_dianjishi"
+  },
+  {
+    "id": 380042,
+    "eventName": "play_ui_shiji3_8_djs_fang",
+    "bankName": "ui_activity_3_8_shiji_dianjishi"
   }
 ]
