@@ -26840,7 +26840,7 @@
   {
     "activityId": 13804,
     "id": 303,
-    "product": "2#3101#10",
+    "product": "2#3#10",
     "maxBuyCount": 0,
     "cost": "2#3101#10",
     "tag": 0,
@@ -26858,7 +26858,7 @@
   {
     "activityId": 13804,
     "id": 304,
-    "product": "2#3101#10",
+    "product": "2#5#20",
     "maxBuyCount": 0,
     "cost": "2#3101#10",
     "tag": 0,

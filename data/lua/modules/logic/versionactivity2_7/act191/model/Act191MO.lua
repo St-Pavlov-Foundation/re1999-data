@@ -107,4 +107,18 @@ function Act191MO:getBadgeMoList()
 	return list
 end
 
+function Act191MO:cacheLastNodeInfo(gameInfo)
+	for _, v in ipairs(gameInfo.nodeInfo) do
+		if v.nodeId == gameInfo.curNode then
+			self.lastNodeInfo = v
+
+			break
+		end
+	end
+end
+
+function Act191MO:clearLastNodeInfo()
+	self.lastNodeInfo = nil
+end
+
 return Act191MO

@@ -356,6 +356,7 @@ function Act191HeroEditView:_refreshCharacterInfo()
 			local item = self.upFetterItemList[k]
 
 			if not item then
+				item = self:getUserDataTb_()
 				item.go = gohelper.cloneInPlace(self._goAttrUpFetter)
 				item.icon = gohelper.findChildImage(item.go, "image_icon")
 				self.upFetterItemList[k] = item

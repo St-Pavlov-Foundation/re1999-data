@@ -76,14 +76,20 @@ function Activity191Config:onConfigLoaded(configName, configTable)
 
 		for _, v in ipairs(configTable.configList) do
 			local actId = v.activityId
+			local tag = v.relation
 
 			self._bossCfgMap[actId] = self._bossCfgMap[actId] or {}
-			self._bossCfgMap[actId][v.relation] = self._bossCfgMap[actId][v.relation] or {}
+			self._bossCfgMap[actId][tag] = self._bossCfgMap[actId][tag] or {}
 
-			table.insert(self._bossCfgMap[actId][v.relation], v)
-			table.sort(self._bossCfgMap[actId][v.relation], function(a, b)
-				return a.bossId < b.bossId
-			end)
+			table.insert(self._bossCfgMap[actId][tag], v)
+		end
+
+		for _, v1 in pairs(self._bossCfgMap) do
+			for _, v2 in pairs(v1) do
+				table.sort(v2, function(a, b)
+					return a.bossId < b.bossId
+				end)
+			end
 		end
 	end
 end
@@ -95,7 +101,7 @@ function Activity191Config:getRoleCoByNativeId(roleId, star, try)
 	if actCfgs and actCfgs[roleId] and actCfgs[roleId][star] then
 		return actCfgs[roleId][star]
 	elseif not try then
-		logError(string.format("找不到角色配置 : 活动ID %s 角色ID %s 角色星级 %s", actId, roleId, star))
+		logError(string.format("斗蛐蛐养成表_角色表找不到配置 : 活动ID %s 角色ID %s 星级 %s", actId, roleId, star))
 	end
 end
 
@@ -104,11 +110,11 @@ function Activity191Config:getRoleCo(id)
 
 	local config = lua_activity191_role.configDict[id]
 
-	if not config then
-		logError(string.format("找不到角色配置 ： 玩法角色ID %s", id))
+	if config then
+		return config
+	else
+		logError(string.format("斗蛐蛐养成表_角色表找不到配置ID: %s", id))
 	end
-
-	return config
 end
 
 function Activity191Config:getShowRoleCoList(actId)
@@ -359,14 +365,14 @@ function Activity191Config:getFetterHeroList(tag, actId)
 	return list
 end
 
-function Activity191Config:getEffDescCoByName(name)
+function Activity191Config:getEffDescCfgByName(name)
 	for _, v in ipairs(lua_activity191_eff_desc.configList) do
 		if v.name == name then
 			return v
 		end
 	end
 
-	logError("not fount skillId, skillIndex : " .. name)
+	logError(string.format("斗蛐蛐显示表_效果概要表找不到配置Name: %s", name))
 end
 
 Activity191Config.AttrIdToFieldName = {
@@ -394,6 +400,16 @@ function Activity191Config:getSummonCfg(bossId)
 		return summonCfg
 	else
 		logError(string.format("斗蛐蛐召唤物表 id : %s 找不到对应配置", bossId))
+	end
+end
+
+function Activity191Config:getStageCfg(actId, stageId)
+	local stageMap = lua_activity191_stage.configDict[actId]
+
+	if stageMap and stageMap[stageId] then
+		return stageMap[stageId]
+	else
+		logError(string.format("斗蛐蛐流程表_阶段表不存在配置 活动ID: %s 阶段ID: %s", actId, stageId))
 	end
 end
 

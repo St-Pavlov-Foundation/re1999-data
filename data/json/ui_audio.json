@@ -15928,5 +15928,20 @@
     "id": 380042,
     "eventName": "play_ui_shiji3_8_djs_fang",
     "bankName": "ui_activity_3_8_shiji_dianjishi"
+  },
+  {
+    "id": 380043,
+    "eventName": "play_ui_fight_wumingzhe_icon",
+    "bankName": "fight_ui_sfx_dqqux_3_8"
+  },
+  {
+    "id": 380044,
+    "eventName": "play_ui_fight_wumingzhe_cast",
+    "bankName": "fight_ui_sfx_dqqux_3_8"
+  },
+  {
+    "id": 380045,
+    "eventName": "play_ui_fight_lushu_cast",
+    "bankName": "fight_ui_sfx_dqqux_3_8"
   }
 ]

@@ -15537,7 +15537,7 @@
   },
   {
     "id": "p_act174ruledetailview_txt_rule3",
-    "lang": "本次赛程中，偶人、造物和变局规则不会更迭，在此处可以查看当前赛程中所有的偶人及其附带的【芯灵感应】。"
+    "lang": "本次赛程中，偶人和变局规则不会更迭，在此处可以查看当前赛程中所有的偶人及其附带的【芯灵感应】。"
   },
   {
     "id": "p_act174ruledetailview_txt_role",
@@ -16205,7 +16205,7 @@
   },
   {
     "id": "p_act174gameview_txt_shoptip",
-    "lang": "每个阶段赛后补给间都将迎来升级，刷新高稀有度物品的概率提升。"
+    "lang": "每个阶段赛后补给间都将迎来升级，刷新高稀有度偶人的概率提升。"
   },
   {
     "id": "p_act174forcepickview_txt_title",
@@ -28841,7 +28841,7 @@
   },
   {
     "id": "p_v3a8_dianjishi_gameview_failed",
-    "lang": "好像不太对，重置后再试试"
+    "lang": "好像不太对，尝试【回退】后再试试吧"
   },
   {
     "id": "p_v3a8_dianjishi_gameview_txt_help",

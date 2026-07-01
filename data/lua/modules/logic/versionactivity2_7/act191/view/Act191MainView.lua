@@ -104,8 +104,14 @@ function Act191MainView:onOpen()
 	self:addEventCb(Activity191Controller.instance, Activity191Event.EndGame, self.checkGameEndInfo, self)
 	self:refreshUI()
 
-	if self.viewParam and self.viewParam.exitFromFight and not Activity191Controller.instance:checkOpenGetView() then
-		self:_btnEnterGameOnClick()
+	if self.viewParam and self.viewParam.exitFromFight then
+		local needOpen = Activity191Controller.instance:checkOpenGetView()
+
+		if needOpen then
+			ViewMgr.instance:openView(ViewName.Act191GetView)
+		else
+			self:_btnEnterGameOnClick()
+		end
 	end
 end
 

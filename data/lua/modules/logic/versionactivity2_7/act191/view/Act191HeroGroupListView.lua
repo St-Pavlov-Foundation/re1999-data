@@ -12,8 +12,6 @@ function Act191HeroGroupListView:onInitView()
 	self.goFetterContent = gohelper.findChild(self.viewGO, "herogroupcontain/scroll_Fetter/Viewport/go_FetterContent")
 	self.fetterItemList = {}
 
-	self:initHeroInfoItem()
-
 	local root = gohelper.findChild(self.viewGO, "herogroupcontain")
 
 	self.animSwitch = root:GetComponent(gohelper.Type_Animator)
@@ -23,8 +21,9 @@ function Act191HeroGroupListView:onInitView()
 	self.imageBossCareer = gohelper.findChildImage(self.goBoss, "attribute/image_BossCareer")
 	self.btnBoss = gohelper.findChildButtonWithAudio(self.goBoss, "btn_Boss")
 	self.gameInfo = Activity191Model.instance:getActInfo():getGameInfo()
-	self.maxTeamSlot = Activity191Enum.BaseTeamSlot.Main + Activity191Enum.BaseTeamSlot.Sub + self.gameInfo.subTeamAddSlot
+	self.maxTeamSlot = self.gameInfo.mainTeamSize + self.gameInfo.subTeamSize
 
+	self:initHeroInfoItem()
 	self:initHeroAndEquipItem()
 end
 
@@ -65,7 +64,7 @@ end
 function Act191HeroGroupListView:initHeroInfoItem()
 	self.heroInfoItemList = {}
 
-	for i = 1, 4 do
+	for i = 1, self.gameInfo.mainTeamSize do
 		local heroInfoItem = self:getUserDataTb_()
 		local go = gohelper.findChild(self.heroContainer, "bg" .. i)
 
@@ -123,32 +122,29 @@ function Act191HeroGroupListView:refreshTeam()
 
 	local teamInfo = self.gameInfo:getTeamInfo()
 
-	for i = 1, 4 do
+	for i = 1, self.gameInfo.mainTeamSize do
 		local info = Activity191Helper.matchKeyInArray(teamInfo.battleHeroInfo, i)
-		local heroId
-
-		if info then
-			heroId = info.heroId
-		end
+		local heroId = info and info.heroId or 0
 
 		self.heroItemList[i]:setData(heroId)
 
 		local infoItem = self.heroInfoItemList[i]
 
-		if heroId and heroId ~= 0 then
-			local heroInfo = self.gameInfo:getHeroInfoInWarehouse(heroId)
-			local roleCo = Activity191Config.instance:getRoleCoByNativeId(heroId, heroInfo.star)
+		if infoItem then
+			if heroId ~= 0 then
+				local heroInfo = self.gameInfo:getHeroInfoInWarehouse(heroId)
+				local roleCo = Activity191Config.instance:getRoleCoByNativeId(heroId, heroInfo.star)
 
-			infoItem.txtName.text = roleCo.name
+				infoItem.txtName.text = roleCo.name
+			end
 
-			gohelper.setActive(infoItem.goIndex, false)
-			gohelper.setActive(infoItem.txtName, true)
-		else
-			gohelper.setActive(infoItem.goIndex, true)
-			gohelper.setActive(infoItem.txtName, false)
+			gohelper.setActive(infoItem.goIndex, heroId == 0)
+			gohelper.setActive(infoItem.txtName, heroId ~= 0)
 		end
+	end
 
-		local subIndex = i + 4
+	for i = 1, self.gameInfo.subTeamSize do
+		local subIndex = self.gameInfo.mainTeamSize + i
 		local subInfo = Activity191Helper.matchKeyInArray(teamInfo.subHeroInfo, i)
 		local subHeroId = subInfo and subInfo.heroId or 0
 
@@ -162,10 +158,15 @@ function Act191HeroGroupListView:refreshTeam()
 	if next(self.summonIdList) then
 		local summonCo = lua_activity191_summon.configDict[self.summonIdList[1]]
 
-		self.txtBossName.text = summonCo.name
+		if summonCo then
+			self.txtBossName.text = summonCo.name
 
-		UISpriteSetMgr.instance:setCommonSprite(self.imageBossCareer, "lssx_" .. summonCo.career)
-		self.simageBoss:LoadImage(ResUrl.monsterHeadIcon(summonCo.headIcon))
+			UISpriteSetMgr.instance:setCommonSprite(self.imageBossCareer, "lssx_" .. summonCo.career)
+			self.simageBoss:LoadImage(ResUrl.monsterHeadIcon(summonCo.headIcon))
+		else
+			logError("Act191召唤物表不存在ID：" .. tostring(self.summonIdList[1]))
+		end
+
 		Activity191Controller.instance:dispatchEvent(Activity191Event.ZTrigger31503)
 	end
 

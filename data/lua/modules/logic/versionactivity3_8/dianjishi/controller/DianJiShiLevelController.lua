@@ -42,17 +42,11 @@ end
 
 function DianJiShiLevelController:enterGame(episodeId)
 	local actId = VersionActivity3_8Enum.ActivityId.DianJiShi
-	local cfg = Activity220Config.instance:getEpisodeConfig(actId, episodeId)
 	local episodeInfo = Activity220Model.instance:getEpisodeInfo(actId, episodeId)
-	local gameId = cfg.gameId
 	local gameDataJson = episodeInfo and episodeInfo.progress
 	local isStart = DianJiShiGameController.instance:startGame(actId, episodeId, gameDataJson)
 
 	if isStart then
-		if cfg.type == 1 then
-			Activity220Rpc.instance:sendAct220FinishEpisodeRequest(actId, episodeId, nil, self._afterPlayPass, self)
-		end
-
 		self.gameEpisodeId = episodeId
 
 		self:dispatchEvent(DianJiShiGameEvent.GuideOnEnterEpisode, episodeId)

@@ -9196,7 +9196,7 @@
     "flyEffect": "",
     "wadeEffect": "",
     "bgm": 3380004,
-    "ambientSound": 3200011,
+    "ambientSound": 0,
     "sceneEffects": ""
   }
 ]

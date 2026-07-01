@@ -9529,7 +9529,7 @@
     "id": 38400,
     "desc": "3.8奠基石角色活动",
     "isOnline": 1,
-    "trigger": "OpenView#DianJiShiGameView",
+    "trigger": "OpenView#DianJiShiLevelView",
     "invalid": "ActivityEnd#13812",
     "interruptFinish": 1,
     "priority": 0,

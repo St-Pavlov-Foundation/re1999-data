@@ -2080,6 +2080,14 @@
     "itemParam": ""
   },
   {
+    "id": 1120032,
+    "group": 0,
+    "tag": "",
+    "type": 23,
+    "typeParam": "tagShop#1",
+    "itemParam": ""
+  },
+  {
     "id": 1120111,
     "group": 0,
     "tag": "",
@@ -2268,7 +2276,7 @@
     "group": 0,
     "tag": "",
     "type": 24,
-    "typeParam": "0#300#1",
+    "typeParam": "0#800#1",
     "itemParam": ""
   },
   {
@@ -2283,72 +2291,72 @@
     "id": 1120391,
     "group": 0,
     "tag": "",
-    "type": 2,
-    "typeParam": "20711#1",
+    "type": 27,
+    "typeParam": "rite#2",
     "itemParam": ""
   },
   {
     "id": 1120401,
     "group": 0,
     "tag": "",
-    "type": 2,
-    "typeParam": "20711#1",
+    "type": 27,
+    "typeParam": "enlightenment#2",
     "itemParam": ""
   },
   {
     "id": 1120411,
     "group": 0,
     "tag": "",
-    "type": 2,
-    "typeParam": "20711#1",
+    "type": 27,
+    "typeParam": "electricity#2",
     "itemParam": ""
   },
   {
     "id": 1120421,
     "group": 0,
     "tag": "",
-    "type": 2,
-    "typeParam": "20711#1",
+    "type": 27,
+    "typeParam": "lossLife#2",
     "itemParam": ""
   },
   {
     "id": 1120431,
     "group": 0,
     "tag": "",
-    "type": 2,
-    "typeParam": "20711#1",
+    "type": 27,
+    "typeParam": "afterglow#2",
     "itemParam": ""
   },
   {
     "id": 1120441,
     "group": 0,
     "tag": "",
-    "type": 2,
-    "typeParam": "20711#1",
+    "type": 27,
+    "typeParam": "counter#2",
     "itemParam": ""
   },
   {
     "id": 1120451,
     "group": 0,
     "tag": "",
-    "type": 2,
-    "typeParam": "20711#1",
+    "type": 27,
+    "typeParam": "upgrade#2",
     "itemParam": ""
   },
   {
     "id": 1120461,
     "group": 0,
     "tag": "",
-    "type": 2,
-    "typeParam": "20711#1",
+    "type": 27,
+    "typeParam": "unusual#2",
     "itemParam": ""
   },
   {
     "id": 1120471,
     "group": 0,
     "tag": "",
-    "type": 2,
-    "typeParam": "20711#1",
+    "type": 27,
+    "typeParam": "remodeling#2",
     "itemParam": ""
   },
   {
@@ -2523,8 +2531,8 @@
     "id": 1120591,
     "group": 0,
     "tag": "",
-    "type": 25,
-    "typeParam": "10",
+    "type": 23,
+    "typeParam": "tagShop#10",
     "itemParam": ""
   },
   {

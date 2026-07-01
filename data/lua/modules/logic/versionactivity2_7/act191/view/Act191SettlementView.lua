@@ -41,7 +41,7 @@ function Act191SettlementView:_editableInitView()
 
 	self.actInfo = Activity191Model.instance:getActInfo()
 	self.gameInfo = self.actInfo:getGameInfo()
-	self.maxTeamSlot = Activity191Enum.BaseTeamSlot.Main + Activity191Enum.BaseTeamSlot.Sub + self.gameInfo.subTeamAddSlot
+	self.maxTeamSlot = self.gameInfo.mainTeamSize + self.gameInfo.subTeamSize
 
 	self:initHeroAndEquipItem()
 	self:initBadge()
@@ -236,7 +236,7 @@ function Act191SettlementView:initBadge()
 			txtScore.text = "+" .. change
 		end
 
-		gohelper.setActive(txtScore, change ~= 0)
+		gohelper.setActive(txtScore, change and change ~= 0)
 
 		local state = badgeMo:getState()
 		local path = ResUrl.getAct174BadgeIcon(badgeMo.config.icon, state)
@@ -245,7 +245,7 @@ function Act191SettlementView:initBadge()
 
 		badgeItem.anim = go:GetComponent(gohelper.Type_Animator)
 		badgeItem.id = badgeMo.id
-		self.badgeItemList[#self.badgeItemList] = badgeItem
+		self.badgeItemList[#self.badgeItemList + 1] = badgeItem
 	end
 
 	gohelper.setActive(self._goBadgeItem, false)

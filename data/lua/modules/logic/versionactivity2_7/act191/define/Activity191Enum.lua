@@ -49,19 +49,33 @@ end
 
 Activity191Enum.EffectType = {
 	ItemByItem = 7,
-	CountEffects = 11,
-	DelayEffect = 10,
-	ExtraFetter = 18,
-	AttrEffect = 19,
-	EnhanceHero = 8,
 	HeroByTag = 3,
 	AddSubTeamSlot = 26,
 	ItemByTag = 6,
-	Money = 1,
+	AttrEffect = 19,
 	Item = 5,
 	EnhanceItem = 9,
 	HeroByHero = 4,
-	Hero = 2
+	Hero = 2,
+	DelayEffect = 10,
+	EnhanceHero = 8,
+	TeamPosExtraFetter = 33,
+	HeroRandomUp = 30,
+	HeroExtraFetter = 18,
+	Money = 1,
+	CountEffects = 11,
+	TeamExtraFetter = 27
+}
+Activity191Enum.EffectGetHero = {
+	Activity191Enum.EffectType.Hero,
+	Activity191Enum.EffectType.HeroByHero,
+	Activity191Enum.EffectType.HeroByTag,
+	Activity191Enum.EffectType.HeroRandomUp
+}
+Activity191Enum.EffectGetItem = {
+	Activity191Enum.EffectType.Item,
+	Activity191Enum.EffectType.ItemByItem,
+	Activity191Enum.EffectType.ItemByTag
 }
 Activity191Enum.PveFiled = {
 	8,
@@ -92,11 +106,11 @@ Activity191Enum.PvpFiled = {
 	31
 }
 Activity191Enum.ShopFiled = {
-	1,
-	2,
-	3,
-	4,
-	32
+	Activity191Enum.NodeType.MixStore,
+	Activity191Enum.NodeType.RoleShop,
+	Activity191Enum.NodeType.CollectionShop,
+	Activity191Enum.NodeType.TagShop,
+	Activity191Enum.NodeType.AfterGlowShop
 }
 Activity191Enum.AttrIdList = {
 	CharacterEnum.AttrId.Attack,

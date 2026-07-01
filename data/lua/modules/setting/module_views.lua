@@ -2241,7 +2241,9 @@ module_views.DungeonView = {
 				"ui/viewres/dungeon/advplay/dungeonadvplayview.prefab"
 			},
 			{
-				"ui/viewres/dungeon/rouge/dungeonrougeview.prefab"
+				"ui/viewres/dungeon/rouge/dungeonrougeview.prefab",
+				"ui/viewres/rouge/rougeactivityview.prefab",
+				"ui/viewres/rouge2/rouge2_activityview.prefab"
 			}
 		}
 	},
@@ -21780,7 +21782,6 @@ module_views.Act191StageView = {
 	},
 	otherRes = {
 		Activity191Enum.PrefabPath.NodeListItem,
-		Activity191Enum.PrefabPath.RewardItem,
 		Activity191Enum.PrefabPath.TeamComp
 	}
 }

@@ -19495,5 +19495,42 @@
     "bossSkillSpeed": 0,
     "outlineWidth": 0.0,
     "clickBoxUnlimit": 0
+  },
+  {
+    "id": 6104062,
+    "name": "茧化无名者2",
+    "nameEng": "",
+    "des": "",
+    "colorbg": 0,
+    "spine": "v2a4_610406_jhwmz/610406_jhwmz",
+    "fight_special": 0,
+    "flipX": 0,
+    "isFly": 0,
+    "skills": "",
+    "headIcon": "610406",
+    "retangleIcon": "",
+    "matId": 2,
+    "weatherParam": 100001,
+    "topuiOffset": [
+      0,
+      0,
+      0.2,
+      -2.11
+    ],
+    "focusOffset": [
+      1.72,
+      0,
+      -2.27
+    ],
+    "showTemplate": 610406,
+    "noDeadEffect": 0,
+    "effect": "",
+    "effectHangPoint": "",
+    "canHide": 0,
+    "mainBody": 0,
+    "floatOffset": "",
+    "bossSkillSpeed": 0,
+    "outlineWidth": 0.003,
+    "clickBoxUnlimit": 0
   }
 ]

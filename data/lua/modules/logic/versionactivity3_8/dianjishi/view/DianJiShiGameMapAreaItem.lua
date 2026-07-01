@@ -191,7 +191,7 @@ function DianJiShiGameMapAreaItem:_onBeginDragBlock(blockInfo)
 
 	self:setTagByValue(tempAreaValue)
 
-	if self._resultValue == blockValue and tempAreaValue ~= blockValue then
+	if self._resultValue == 0 and tempAreaValue ~= 0 then
 		DianJiShiGameController.instance:dispatchEvent(DianJiShiGameEvent.OnMapAreaValueNotFit)
 	end
 end

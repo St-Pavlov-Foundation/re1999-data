@@ -11,42 +11,102 @@ function Act191MatchMO:init(info)
 	self.playerUid = info.playerUid
 	self.heroMap = info.heroMap
 	self.subHeroMap = info.subHeroMap
+	self.enhanceSet = info.enhanceSet
 
-	self:updateEnhance(info.enhanceSet)
-
-	self.wareHouseInfo = info.warehouseInfo
+	self:updateWarehouseInfo(info.wareHouseInfo)
 end
 
-function Act191MatchMO:updateEnhance(enhanceIdList)
-	self.enhanceSet = enhanceIdList
-
-	local actId = Activity191Model.instance:getCurActId()
-
+function Act191MatchMO:updateWarehouseInfo(info)
+	self.wareHouseInfo = info
 	self.heroId2ExtraFetterMap = {}
+	self.teamExtraFetterMap = {}
+	self.teamPosExtraFetterMap = {}
 
-	for _, enhanceId in ipairs(self.enhanceSet) do
-		local enhanceCo = Activity191Config.instance:getEnhanceCo(actId, enhanceId)
+	if self.robot then
+		local fetterCntDic = self:getTeamFetterCntDic()
 
-		if enhanceCo then
-			local effectIds = string.splitToNumber(enhanceCo.effects, "|")
+		for tag, count in pairs(fetterCntDic) do
+			local activeLvl = Activity191Helper.getFetterActiveLvl(tag, count)
 
-			for _, effectId in ipairs(effectIds) do
-				local effectCo = lua_activity191_effect.configDict[effectId]
+			if activeLvl > 0 then
+				local fetterCo = Activity191Config.instance:getRelationCo(tag, activeLvl)
 
-				if effectCo then
-					local params = string.split(effectCo.typeParam, "#")
+				if fetterCo and not string.nilorempty(fetterCo.effects) then
+					local effectIdList = string.splitToNumber(fetterCo.effects, "|")
 
-					if effectCo.type == Activity191Enum.EffectType.ExtraFetter then
-						local heroId = tonumber(params[1])
-						local fetterTbl = self.heroId2ExtraFetterMap[heroId]
+					for _, effectId in ipairs(effectIdList) do
+						local effectCo = lua_activity191_effect.configDict[effectId]
 
-						if not fetterTbl then
-							fetterTbl = {}
-							self.heroId2ExtraFetterMap[heroId] = fetterTbl
+						if effectCo then
+							local params = string.split(effectCo.typeParam, "#")
+
+							if effectCo.type == Activity191Enum.EffectType.HeroExtraFetter then
+								local heroId = tonumber(params[1])
+								local fetterTbl = self.heroId2ExtraFetterMap[heroId]
+
+								if not fetterTbl then
+									fetterTbl = {}
+									self.heroId2ExtraFetterMap[heroId] = fetterTbl
+								end
+
+								table.insert(fetterTbl, params[2])
+							elseif effectCo.type == Activity191Enum.EffectType.TeamExtraFetter then
+								local tag1 = params[1]
+								local cnt = tonumber(params[2])
+
+								if self.teamExtraFetterMap[tag1] then
+									self.teamExtraFetterMap[tag1] = self.teamExtraFetterMap[tag1] + cnt
+								else
+									self.teamExtraFetterMap[tag1] = cnt
+								end
+							elseif effectCo.type == Activity191Enum.EffectType.TeamPosExtraFetter then
+								local pos = tonumber(params[1])
+
+								if not self.teamPosExtraFetterMap[pos] then
+									self.teamPosExtraFetterMap[pos] = {}
+								end
+
+								table.insert(self.teamPosExtraFetterMap[pos], params[2])
+							end
 						end
-
-						table.insert(fetterTbl, params[2])
 					end
+				end
+			end
+		end
+	else
+		for _, effect in ipairs(info.effect) do
+			local effectCo = lua_activity191_effect.configDict[effect.id]
+
+			if effectCo then
+				local params = string.split(effectCo.typeParam, "#")
+
+				if effectCo.type == Activity191Enum.EffectType.HeroExtraFetter then
+					local heroId = tonumber(params[1])
+					local fetterTbl = self.heroId2ExtraFetterMap[heroId]
+
+					if not fetterTbl then
+						fetterTbl = {}
+						self.heroId2ExtraFetterMap[heroId] = fetterTbl
+					end
+
+					table.insert(fetterTbl, params[2])
+				elseif effectCo.type == Activity191Enum.EffectType.TeamExtraFetter then
+					local tag = params[1]
+					local cnt = tonumber(params[2])
+
+					if self.teamExtraFetterMap[tag] then
+						self.teamExtraFetterMap[tag] = self.teamExtraFetterMap[tag] + cnt
+					else
+						self.teamExtraFetterMap[tag] = cnt
+					end
+				elseif effectCo.type == Activity191Enum.EffectType.TeamPosExtraFetter then
+					local pos = tonumber(params[1])
+
+					if not self.teamPosExtraFetterMap[pos] then
+						self.teamPosExtraFetterMap[pos] = {}
+					end
+
+					table.insert(self.teamPosExtraFetterMap[pos], params[2])
 				end
 			end
 		end
@@ -104,7 +164,7 @@ function Act191MatchMO:getItemInfo(itemUid)
 end
 
 function Act191MatchMO:getTeamFetterCntDic()
-	local cntDic = {}
+	local cntDic = tabletool.copy(self.teamExtraFetterMap)
 
 	for _, info in pairs(self.heroMap) do
 		if info.heroId ~= 0 then
@@ -114,11 +174,7 @@ function Act191MatchMO:getTeamFetterCntDic()
 				local fetterArr = string.split(roleCo.tag, "#")
 
 				for _, tag in ipairs(fetterArr) do
-					if cntDic[tag] then
-						cntDic[tag] = cntDic[tag] + 1
-					else
-						cntDic[tag] = 1
-					end
+					Activity191Helper.addOneCount(cntDic, tag)
 				end
 			end
 
@@ -126,11 +182,15 @@ function Act191MatchMO:getTeamFetterCntDic()
 
 			if fetterTbl then
 				for _, tag in ipairs(fetterTbl) do
-					if not cntDic[tag] then
-						cntDic[tag] = 1
-					else
-						cntDic[tag] = cntDic[tag] + 1
-					end
+					Activity191Helper.addOneCount(cntDic, tag)
+				end
+			end
+
+			fetterTbl = self.teamPosExtraFetterMap[info.index]
+
+			if fetterTbl then
+				for _, tag in ipairs(fetterTbl) do
+					Activity191Helper.addOneCount(cntDic, tag)
 				end
 			end
 		end
@@ -138,13 +198,12 @@ function Act191MatchMO:getTeamFetterCntDic()
 
 	for _, heroId in pairs(self.subHeroMap) do
 		local roleCo = self:getRoleCo(heroId)
-		local fetterArr = string.split(roleCo.tag, "#")
 
-		for _, tag in ipairs(fetterArr) do
-			if cntDic[tag] then
-				cntDic[tag] = cntDic[tag] + 1
-			else
-				cntDic[tag] = 1
+		if roleCo and not string.nilorempty(roleCo.tag) then
+			local fetterArr = string.split(roleCo.tag, "#")
+
+			for _, tag in ipairs(fetterArr) do
+				Activity191Helper.addOneCount(cntDic, tag)
 			end
 		end
 
@@ -152,11 +211,7 @@ function Act191MatchMO:getTeamFetterCntDic()
 
 		if fetterTbl then
 			for _, tag in ipairs(fetterTbl) do
-				if not cntDic[tag] then
-					cntDic[tag] = 1
-				else
-					cntDic[tag] = cntDic[tag] + 1
-				end
+				Activity191Helper.addOneCount(cntDic, tag)
 			end
 		end
 	end

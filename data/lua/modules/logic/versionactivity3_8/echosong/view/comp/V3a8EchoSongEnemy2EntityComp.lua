@@ -128,6 +128,10 @@ function V3a8EchoSongEnemy2EntityComp:checkHitParticle(ballItem)
 		return
 	end
 
+	if not self._cachedWorldX or not self._cachedWorldY then
+		return
+	end
+
 	local triggerType = ballItem:getTriggerType()
 	local validType = triggerType == V3a8EchoSongEnum.ParticleType.MainPlayer or triggerType == V3a8EchoSongEnum.ParticleType.Explore
 

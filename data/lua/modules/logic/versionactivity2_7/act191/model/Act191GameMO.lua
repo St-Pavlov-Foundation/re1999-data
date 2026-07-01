@@ -4,6 +4,11 @@ module("modules.logic.versionactivity2_7.act191.model.Act191GameMO", package.see
 
 local Act191GameMO = pureTable("Act191GameMO")
 
+function Act191GameMO:ctor()
+	self.mainTeamSize = Activity191Enum.BaseTeamSlot.Main
+	self.subTeamSize = Activity191Enum.BaseTeamSlot.Sub
+end
+
 function Act191GameMO:init(info)
 	self.actId = Activity191Model.instance:getCurActId()
 	self.coin = info.coin
@@ -51,35 +56,53 @@ function Act191GameMO:updateRank(rank)
 end
 
 function Act191GameMO:updateWareHouseInfo(info)
-	self.subTeamAddSlot = 0
+	local addSlot = 0
+
 	self.warehouseInfo = info
 	self.heroId2ExtraFetterMap = {}
+	self.teamExtraFetterMap = {}
+	self.teamPosExtraFetterMap = {}
 
-	for _, enhanceId in ipairs(info.enhanceId) do
-		local enhanceCo = Activity191Config.instance:getEnhanceCo(self.actId, enhanceId)
-		local effectIds = string.splitToNumber(enhanceCo.effects, "|")
+	for _, effect in ipairs(info.effect) do
+		local effectCo = lua_activity191_effect.configDict[effect.id]
 
-		for _, effectId in ipairs(effectIds) do
-			local effectCo = lua_activity191_effect.configDict[effectId]
+		if effectCo then
+			local params = string.split(effectCo.typeParam, "#")
 
-			if effectCo then
-				if effectCo.type == Activity191Enum.EffectType.ExtraFetter then
-					local params = string.split(effectCo.typeParam, "#")
-					local heroId = tonumber(params[1])
-					local fetterTbl = self.heroId2ExtraFetterMap[heroId]
+			if effectCo.type == Activity191Enum.EffectType.HeroExtraFetter then
+				local heroId = tonumber(params[1])
+				local fetterTbl = self.heroId2ExtraFetterMap[heroId]
 
-					if not fetterTbl then
-						fetterTbl = {}
-						self.heroId2ExtraFetterMap[heroId] = fetterTbl
-					end
-
-					table.insert(fetterTbl, params[2])
-				elseif effectCo.type == Activity191Enum.EffectType.AddSubTeamSlot then
-					self.subTeamAddSlot = self.subTeamAddSlot + tonumber(effectCo.typeParam)
+				if not fetterTbl then
+					fetterTbl = {}
+					self.heroId2ExtraFetterMap[heroId] = fetterTbl
 				end
+
+				table.insert(fetterTbl, params[2])
+			elseif effectCo.type == Activity191Enum.EffectType.AddSubTeamSlot then
+				addSlot = addSlot + tonumber(params[1])
+			elseif effectCo.type == Activity191Enum.EffectType.TeamExtraFetter then
+				local tag = params[1]
+				local cnt = tonumber(params[2])
+
+				if self.teamExtraFetterMap[tag] then
+					self.teamExtraFetterMap[tag] = self.teamExtraFetterMap[tag] + cnt
+				else
+					self.teamExtraFetterMap[tag] = cnt
+				end
+			elseif effectCo.type == Activity191Enum.EffectType.TeamPosExtraFetter then
+				local pos = tonumber(params[1])
+
+				if not self.teamPosExtraFetterMap[pos] then
+					self.teamPosExtraFetterMap[pos] = {}
+				end
+
+				table.insert(self.teamPosExtraFetterMap[pos], params[2])
 			end
 		end
 	end
+
+	self.subTeamSize = Activity191Enum.BaseTeamSlot.Sub + addSlot
 end
 
 function Act191GameMO:updateTeamInfo(teamIndex, teamInfo)
@@ -170,9 +193,9 @@ function Act191GameMO:getTeamInfo()
 end
 
 function Act191GameMO:getPreviewFetterCntDic(heroIdDic)
-	local cntDic = {}
+	local cntDic = tabletool.copy(self.teamExtraFetterMap)
 
-	for _, heroId in pairs(heroIdDic) do
+	for index, heroId in pairs(heroIdDic) do
 		local heroInfo = self:getHeroInfoInWarehouse(heroId)
 
 		if heroInfo then
@@ -182,11 +205,7 @@ function Act191GameMO:getPreviewFetterCntDic(heroIdDic)
 				local fetterArr = string.split(roleCo.tag, "#")
 
 				for _, tag in ipairs(fetterArr) do
-					if not cntDic[tag] then
-						cntDic[tag] = 1
-					else
-						cntDic[tag] = cntDic[tag] + 1
-					end
+					Activity191Helper.addOneCount(cntDic, tag)
 				end
 			end
 		end
@@ -195,11 +214,15 @@ function Act191GameMO:getPreviewFetterCntDic(heroIdDic)
 
 		if fetterTbl then
 			for _, tag in ipairs(fetterTbl) do
-				if not cntDic[tag] then
-					cntDic[tag] = 1
-				else
-					cntDic[tag] = cntDic[tag] + 1
-				end
+				Activity191Helper.addOneCount(cntDic, tag)
+			end
+		end
+
+		fetterTbl = self.teamPosExtraFetterMap[index]
+
+		if fetterTbl then
+			for _, tag in ipairs(fetterTbl) do
+				Activity191Helper.addOneCount(cntDic, tag)
 			end
 		end
 	end
@@ -208,7 +231,7 @@ function Act191GameMO:getPreviewFetterCntDic(heroIdDic)
 end
 
 function Act191GameMO:getTeamFetterCntDic()
-	local cntDic = {}
+	local cntDic = tabletool.copy(self.teamExtraFetterMap)
 	local teamInfo = self:getTeamInfo()
 
 	for _, info in ipairs(teamInfo.battleHeroInfo) do
@@ -217,13 +240,12 @@ function Act191GameMO:getTeamFetterCntDic()
 
 			if heroInfo then
 				local roleCo = Activity191Config.instance:getRoleCoByNativeId(info.heroId, heroInfo.star)
-				local fetterArr = string.split(roleCo.tag, "#")
 
-				for _, tag in ipairs(fetterArr) do
-					if cntDic[tag] then
-						cntDic[tag] = cntDic[tag] + 1
-					else
-						cntDic[tag] = 1
+				if roleCo and not string.nilorempty(roleCo.tag) then
+					local fetterArr = string.split(roleCo.tag, "#")
+
+					for _, tag in ipairs(fetterArr) do
+						Activity191Helper.addOneCount(cntDic, tag)
 					end
 				end
 			else
@@ -234,11 +256,15 @@ function Act191GameMO:getTeamFetterCntDic()
 
 			if fetterTbl then
 				for _, tag in ipairs(fetterTbl) do
-					if not cntDic[tag] then
-						cntDic[tag] = 1
-					else
-						cntDic[tag] = cntDic[tag] + 1
-					end
+					Activity191Helper.addOneCount(cntDic, tag)
+				end
+			end
+
+			fetterTbl = self.teamPosExtraFetterMap[info.index]
+
+			if fetterTbl then
+				for _, tag in ipairs(fetterTbl) do
+					Activity191Helper.addOneCount(cntDic, tag)
 				end
 			end
 		end
@@ -249,13 +275,12 @@ function Act191GameMO:getTeamFetterCntDic()
 
 		if heroInfo then
 			local roleCo = Activity191Config.instance:getRoleCoByNativeId(info.heroId, heroInfo.star)
-			local fetterArr = string.split(roleCo.tag, "#")
 
-			for _, tag in ipairs(fetterArr) do
-				if cntDic[tag] then
-					cntDic[tag] = cntDic[tag] + 1
-				else
-					cntDic[tag] = 1
+			if roleCo and not string.nilorempty(roleCo.tag) then
+				local fetterArr = string.split(roleCo.tag, "#")
+
+				for _, tag in ipairs(fetterArr) do
+					Activity191Helper.addOneCount(cntDic, tag)
 				end
 			end
 		end
@@ -264,11 +289,7 @@ function Act191GameMO:getTeamFetterCntDic()
 
 		if fetterTbl then
 			for _, tag in ipairs(fetterTbl) do
-				if not cntDic[tag] then
-					cntDic[tag] = 1
-				else
-					cntDic[tag] = cntDic[tag] + 1
-				end
+				Activity191Helper.addOneCount(cntDic, tag)
 			end
 		end
 	end
@@ -409,14 +430,16 @@ end
 function Act191GameMO:saveQuickGroupInfo(index2HeroMap)
 	local teamInfo = self:getTeamInfo()
 
-	for i = 1, 4 do
+	for i = 1, self.mainTeamSize do
 		local battleHeroInfo = Activity191Helper.getWithBuildBattleHeroInfo(teamInfo.battleHeroInfo, i)
 
 		battleHeroInfo.heroId = index2HeroMap[i] or 0
+	end
 
+	for i = 1, self.subTeamSize do
 		local subHeroInfo = Activity191Helper.getWithBuildSubHeroInfo(teamInfo.subHeroInfo, i)
 
-		subHeroInfo.heroId = index2HeroMap[i + 4] or 0
+		subHeroInfo.heroId = index2HeroMap[i + self.mainTeamSize] or 0
 	end
 
 	Activity191Rpc.instance:sendChangeAct191TeamRequest(self.actId, self.curTeamIndex, teamInfo)
@@ -427,12 +450,12 @@ function Act191GameMO:replaceHeroInTeam(heroId, slotIndex)
 
 	local teamInfo = self:getTeamInfo()
 
-	if slotIndex <= 4 then
+	if slotIndex <= self.mainTeamSize then
 		local battleHeroInfo = Activity191Helper.getWithBuildBattleHeroInfo(teamInfo.battleHeroInfo, slotIndex)
 
 		battleHeroInfo.heroId = heroId
 	else
-		local subHeroInfo = Activity191Helper.getWithBuildSubHeroInfo(teamInfo.subHeroInfo, slotIndex - 4)
+		local subHeroInfo = Activity191Helper.getWithBuildSubHeroInfo(teamInfo.subHeroInfo, slotIndex - self.mainTeamSize)
 
 		subHeroInfo.heroId = heroId
 	end
@@ -468,16 +491,16 @@ function Act191GameMO:exchangeHero(from, to)
 	local teamInfo = self:getTeamInfo()
 	local fromInfo, toInfo
 
-	if from <= 4 then
+	if from <= self.mainTeamSize then
 		fromInfo = Activity191Helper.getWithBuildBattleHeroInfo(teamInfo.battleHeroInfo, from)
 	else
-		fromInfo = Activity191Helper.getWithBuildSubHeroInfo(teamInfo.subHeroInfo, from - 4)
+		fromInfo = Activity191Helper.getWithBuildSubHeroInfo(teamInfo.subHeroInfo, from - self.mainTeamSize)
 	end
 
-	if to <= 4 then
+	if to <= self.mainTeamSize then
 		toInfo = Activity191Helper.getWithBuildBattleHeroInfo(teamInfo.battleHeroInfo, to)
 	else
-		toInfo = Activity191Helper.getWithBuildSubHeroInfo(teamInfo.subHeroInfo, to - 4)
+		toInfo = Activity191Helper.getWithBuildSubHeroInfo(teamInfo.subHeroInfo, to - self.mainTeamSize)
 	end
 
 	local tempHeroId = fromInfo.heroId
@@ -498,18 +521,22 @@ function Act191GameMO:getItemInfoInWarehouse(itemUid)
 	logError(string.format("itemUid : %s, itemInfo not found", itemUid))
 end
 
-function Act191GameMO:isItemInTeam(itemUid)
+function Act191GameMO:isItemInTeam(itemUid, release)
 	local teamInfo = self:getTeamInfo()
 
 	for _, heroInfo in ipairs(teamInfo.battleHeroInfo) do
 		if heroInfo.itemUid1 == itemUid then
+			if release then
+				heroInfo.itemUid1 = 0
+			end
+
 			return true
 		end
 	end
 end
 
 function Act191GameMO:replaceItemInTeam(itemUid, teamPos)
-	self:removeItemInTeam(itemUid)
+	self:isItemInTeam(itemUid, true)
 
 	local teamInfo = self:getTeamInfo()
 	local battleHeroInfo = Activity191Helper.getWithBuildBattleHeroInfo(teamInfo.battleHeroInfo, teamPos)
@@ -550,24 +577,16 @@ function Act191GameMO:exchangeItem(from, to)
 	Activity191Rpc.instance:sendChangeAct191TeamRequest(self.actId, self.curTeamIndex, teamInfo)
 end
 
-function Act191GameMO:isItemEnhance(itemId)
-	if tabletool.indexOf(self.enhanceItemList, itemId) then
-		return true
-	end
-
-	return false
-end
-
 function Act191GameMO:autoFill()
 	local teamInfo = self:getTeamInfo()
 
 	for k, v in ipairs(self.warehouseInfo.hero) do
-		if k <= 4 then
+		if k <= self.mainTeamSize then
 			local battleHeroInfo = Activity191Helper.getWithBuildBattleHeroInfo(teamInfo.battleHeroInfo, k)
 
 			battleHeroInfo.heroId = v.heroId
-		elseif k <= 8 then
-			local subHeroInfo = Activity191Helper.getWithBuildSubHeroInfo(teamInfo.subHeroInfo, k - 4)
+		else
+			local subHeroInfo = Activity191Helper.getWithBuildSubHeroInfo(teamInfo.subHeroInfo, k - self.mainTeamSize)
 
 			subHeroInfo.heroId = v.heroId
 		end
@@ -597,41 +616,31 @@ function Act191GameMO:clearRankMark()
 	self.rankMark = 0
 end
 
-function Act191GameMO:getFetterActiveLevel(tag)
-	local activeLevel = 0
-	local fetterCntDic = self:getTeamFetterCntDic()
-	local cnt = fetterCntDic[tag]
-
-	if cnt then
-		local config = Activity191Config.instance:getRelationCo(tag, 1)
-
-		if cnt >= config.activeNum and activeLevel < config.level then
-			activeLevel = config.level
-		end
-	end
-
-	return activeLevel
-end
-
 function Act191GameMO:getActiveBossId(tag)
 	local bossCgfMap = Activity191Config.instance:getBossCfgMap()
 	local tagBossList = bossCgfMap[tag]
 
 	if tagBossList then
 		local fetterCntDic = self:getTeamFetterCntDic()
+		local count = fetterCntDic[tag] or 0
 
 		for i = #tagBossList, 1, -1 do
 			local config = tagBossList[i]
-			local conditions = string.splitToNumber(config.condition, "#")
-			local type = conditions[1]
-			local value = conditions[2]
 
-			if type == Activity191Enum.ActiveBossType.Remodeling then
-				if value <= self.recordInfo.remodelingValue then
+			if config then
+				local conditions = string.splitToNumber(config.condition, "#")
+				local type = conditions[1]
+				local value = conditions[2]
+
+				if type == Activity191Enum.ActiveBossType.Remodeling then
+					local activeLvl = Activity191Helper.getFetterActiveLvl(tag, count)
+
+					if activeLvl > 0 and value <= self.recordInfo.remodelingValue then
+						return config.bossId
+					end
+				elseif type == Activity191Enum.ActiveBossType.RelationPerson and value <= count then
 					return config.bossId
 				end
-			elseif type == Activity191Enum.ActiveBossType.RelationPerson and value <= fetterCntDic[tag] then
-				return config.bossId
 			end
 		end
 	else
@@ -652,7 +661,9 @@ function Act191GameMO:getActiveBossIdList()
 			local value = conditions[2]
 
 			if type == Activity191Enum.ActiveBossType.Remodeling then
-				if value <= self.recordInfo.remodelingValue then
+				local activeLvl = Activity191Helper.getFetterActiveLvl(tag, fetterCntDic[tag])
+
+				if activeLvl > 0 and value <= self.recordInfo.remodelingValue then
 					bossIdList[#bossIdList + 1] = config.bossId
 
 					break
@@ -733,13 +744,19 @@ function Act191GameMO:getBossAttr()
 			heroCnt = heroCnt + 1
 
 			local heroCo = Activity191Config.instance:getRoleCoByNativeId(v.heroId, 1)
-			local attrCo = lua_activity191_template.configDict[heroCo.id]
-			local attrUpDic = self:getAttrUpDicByRoleId(v.heroId)
-			local attackRatio = attrUpDic[Activity191Enum.AttrIdList[1]] or 0
-			local technicRatio = attrUpDic[Activity191Enum.AttrIdList[3]] or 0
 
-			attack = attack + attrCo.attack * (1 + attackRatio / 1000)
-			technic = technic + attrCo.technic * (1 + technicRatio / 1000)
+			if heroCo then
+				local attrCo = lua_activity191_template.configDict[heroCo.id]
+
+				if attrCo then
+					local attrUpDic = self:getAttrUpDicByRoleId(v.heroId)
+					local attackRatio = attrUpDic[Activity191Enum.AttrIdList[1]] or 0
+					local technicRatio = attrUpDic[Activity191Enum.AttrIdList[3]] or 0
+
+					attack = attack + attrCo.attack * (1 + attackRatio / 1000)
+					technic = technic + attrCo.technic * (1 + technicRatio / 1000)
+				end
+			end
 		end
 	end
 
@@ -758,7 +775,11 @@ function Act191GameMO:getRelationDesc(relationCo)
 		if bossId then
 			local bossCo = lua_activity191_assist_boss.configDict[bossId]
 
-			return GameUtil.getSubPlaceholderLuaLangTwoParam(relationCo.desc, self.recordInfo.remodelingValue, bossCo.name)
+			if bossCo then
+				return GameUtil.getSubPlaceholderLuaLangTwoParam(relationCo.desc, self.recordInfo.remodelingValue, bossCo.name)
+			else
+				return relationCo.desc
+			end
 		else
 			local count = 0
 			local txt = string.gsub(relationCo.desc, "%b()", function(match)
@@ -825,9 +846,11 @@ function Act191GameMO:getSkillCount(skillIds)
 	local count = 0
 	local skillCountMap = GameUtil.splitString2(self.recordInfo.globalSkillCountMap, true)
 
-	for _, data in ipairs(skillCountMap) do
-		if tabletool.indexOf(skillIds, data[1]) then
-			count = count + data[2]
+	if skillCountMap then
+		for _, data in ipairs(skillCountMap) do
+			if tabletool.indexOf(skillIds, data[1]) then
+				count = count + data[2]
+			end
 		end
 	end
 

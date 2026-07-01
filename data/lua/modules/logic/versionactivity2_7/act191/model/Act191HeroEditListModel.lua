@@ -11,6 +11,7 @@ function Act191HeroEditListModel:initData(param)
 	self._index2HeroIdMap = {}
 
 	local gameInfo = Activity191Model.instance:getActInfo():getGameInfo()
+	local mainTeamSize = gameInfo.mainTeamSize
 
 	for _, heroInfo in ipairs(gameInfo.warehouseInfo.hero) do
 		local mo = {}
@@ -31,7 +32,7 @@ function Act191HeroEditListModel:initData(param)
 
 			if subHeroInfo then
 				mo.inTeam = 1
-				self._index2HeroIdMap[subHeroInfo.index + 4] = mo.heroId
+				self._index2HeroIdMap[subHeroInfo.index + mainTeamSize] = mo.heroId
 			end
 		end
 

@@ -138,6 +138,7 @@ function DianJiShiGameView:_editableInitView()
 	self._goScrollWaitBlock = self._scrollWaitBlock.gameObject
 	self._tranWaitBlockContent = self._scrollWaitBlock.content
 	self._failedAnim = ZProj.ProjAnimatorPlayer.Get(self._goFailed)
+	self._showPassAreaNum = 0
 
 	gohelper.setActive(self._goDragBlockItem, false)
 	gohelper.setActive(self._goLineArea, false)
@@ -274,6 +275,7 @@ function DianJiShiGameView:refreshTargetDesc(passAreaNum)
 	local descColor = isFinish and DianJiShiGameEnum.FinishCountColor or DianJiShiGameEnum.UnfinishCountColor
 
 	self._txtTargetDesc.text = GameUtil.getSubPlaceholderLuaLangThreeParam(targetDesc, descColor, passAreaNum, allAreaNum)
+	self._showPassAreaNum = passAreaNum
 end
 
 function DianJiShiGameView:_onPlayOpenFailedTipsAnimDone()
@@ -408,8 +410,9 @@ function DianJiShiGameView:showLightLineArea(blockInfo, posXIndex, posYIndex)
 
 	gohelper.setActive(self._goLineArea, hasFilterCell)
 
-	local canPlace = DianJiShiGameModel.instance:checkCanPlaceBlock(posXIndex, posYIndex, blockInfo)
-	local lightAreaDict = canPlace and filterAreaDict
+	self._canPlace = DianJiShiGameModel.instance:checkCanPlaceBlock(posXIndex, posYIndex, blockInfo)
+
+	local lightAreaDict = self._canPlace and filterAreaDict
 
 	DianJiShiGameController.instance:dispatchEvent(DianJiShiGameEvent.OnLightAreaValue, lightAreaDict)
 
@@ -424,7 +427,7 @@ function DianJiShiGameView:showLightLineArea(blockInfo, posXIndex, posYIndex)
 end
 
 function DianJiShiGameView:_refreshLightLine(lineItem, cellInfo, index)
-	lineItem:onUpdateMO(cellInfo, self._lightBlockInfo.cubeMap, self._lightBlockPos, index)
+	lineItem:onUpdateMO(cellInfo, self._lightBlockInfo.cubeMap, self._lightBlockPos, self._canPlace, index)
 end
 
 function DianJiShiGameView:_onUpdateGameStatus()
@@ -451,7 +454,7 @@ function DianJiShiGameView:_onHelpPlaceBlock(blockInfo, helpRightPos)
 end
 
 function DianJiShiGameView:_onMapAreaValueNotFit()
-	self:refreshTargetDesc(self._passAreaNum - 1)
+	self:refreshTargetDesc(self._showPassAreaNum - 1)
 end
 
 function DianJiShiGameView:_refreshHelpLine(lineItem, cellInfo, index)

@@ -16,6 +16,7 @@ function Act191NodeDetailMO:init(str)
 	self.type = result.type
 	self.shopId = result.shopId
 	self.shopFreshNum = result.shopFreshNum
+	self.freeRefreshNum = result.freeRefreshNum
 	self.shopPosMap = result.shopPosMap
 	self.boughtSet = result.boughtSet
 	self.enhanceList = result.enhanceList

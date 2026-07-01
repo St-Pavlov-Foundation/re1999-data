@@ -5357,14 +5357,14 @@
   {
     "skinId": 308404,
     "id": 30840401,
-    "point": "birthday",
+    "point": "special12",
     "effectRes": "v1a9_birthday/juese_birthday_15zhen",
     "animName": "idle_birthday_up"
   },
   {
     "skinId": 308404,
     "id": 30840402,
-    "point": "birthday",
+    "point": "special12",
     "effectRes": "v1a9_birthday/juese_birthday",
     "animName": "idle_birthday_loop"
   },

@@ -335,7 +335,13 @@ function Act191CollectionView:_endDrag(index, pointerEventData)
 end
 
 function Act191CollectionView:_checkDrag(index)
-	return not self.itemUIdMap[index]
+	local itemUid = self.itemUIdMap[index]
+
+	if itemUid and itemUid ~= 0 then
+		return false
+	else
+		return true
+	end
 end
 
 function Act191CollectionView:onUpdateTeam()

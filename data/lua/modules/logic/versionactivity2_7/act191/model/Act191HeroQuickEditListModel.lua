@@ -10,6 +10,8 @@ function Act191HeroQuickEditListModel:initData()
 	self._heroId2IndexMap = {}
 	self.gameInfo = Activity191Model.instance:getActInfo():getGameInfo()
 
+	local mainTeamSize = self.gameInfo.mainTeamSize
+
 	for _, heroInfo in ipairs(self.gameInfo.warehouseInfo.hero) do
 		local mo = {
 			heroId = heroInfo.heroId,
@@ -26,10 +28,8 @@ function Act191HeroQuickEditListModel:initData()
 			local subHeroInfo = self.gameInfo:getSubHeroInfoInTeam(mo.heroId)
 
 			if subHeroInfo then
-				local baseMainSlot = Activity191Enum.BaseTeamSlot.Main
-
-				self._index2HeroIdMap[subHeroInfo.index + baseMainSlot] = mo.heroId
-				self._heroId2IndexMap[mo.heroId] = subHeroInfo.index + baseMainSlot
+				self._index2HeroIdMap[subHeroInfo.index + mainTeamSize] = mo.heroId
+				self._heroId2IndexMap[mo.heroId] = subHeroInfo.index + mainTeamSize
 			end
 		end
 
@@ -65,7 +65,7 @@ end
 
 function Act191HeroQuickEditListModel:findEmptyPos()
 	local pos = 0
-	local maxCnt = Activity191Enum.BaseTeamSlot.Main + Activity191Enum.BaseTeamSlot.Sub + self.gameInfo.subTeamAddSlot
+	local maxCnt = self.gameInfo.mainTeamSize + self.gameInfo.subTeamSize
 
 	for i = 1, maxCnt do
 		if not self._index2HeroIdMap[i] then

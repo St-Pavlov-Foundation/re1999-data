@@ -1508,10 +1508,20 @@ function MaterialTipView:_onLoadCallback()
 end
 
 function MaterialTipView:_refreshItemQuantity()
-	if self.viewParam.type == MaterialEnum.MaterialType.PowerPotion and self.viewParam.id == MaterialEnum.PowerId.OverflowPowerId then
-		local ofMakerInfo = ItemPowerModel.instance:getPowerMakerInfo()
-		local count = ofMakerInfo and ofMakerInfo.itemTotalCount or ItemPowerModel.instance:getPowerCount(self.viewParam.id)
+	if self.viewParam.type == MaterialEnum.MaterialType.PowerPotion then
+		local count
 
+		if self.viewParam.id == MaterialEnum.PowerId.SmallPower_Expire or self.viewParam.id == MaterialEnum.PowerId.SmallPower then
+			count = ItemPowerModel.instance:getPowerCount(MaterialEnum.PowerId.SmallPower_Expire) + ItemPowerModel.instance:getPowerCount(MaterialEnum.PowerId.SmallPower)
+		elseif self.viewParam.id == MaterialEnum.PowerId.BigPower_Expire or self.viewParam.id == MaterialEnum.PowerId.BigPower then
+			count = ItemPowerModel.instance:getPowerCount(MaterialEnum.PowerId.BigPower_Expire) + ItemPowerModel.instance:getPowerCount(MaterialEnum.PowerId.BigPower)
+		elseif self.viewParam.id == MaterialEnum.PowerId.OverflowPowerId then
+			local ofMakerInfo = ItemPowerModel.instance:getPowerMakerInfo()
+
+			count = ofMakerInfo and ofMakerInfo.itemTotalCount
+		end
+
+		count = count or ItemPowerModel.instance:getPowerCount(self.viewParam.id)
 		self._txthadnumber.text = formatLuaLang("materialtipview_itemquantity", count)
 
 		return

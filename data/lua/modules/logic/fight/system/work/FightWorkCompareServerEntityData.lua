@@ -67,6 +67,10 @@ function FightWorkCompareServerEntityData.compareAttrMO(attrMO1, attrMO2, server
 		return
 	end
 
+	if serverEntityMO:isAct191Boss() then
+		return
+	end
+
 	if attrMO1.hp ~= attrMO2.hp then
 		FightDataUtil.addDiff("hp", FightDataUtil.diffType.difference)
 	end

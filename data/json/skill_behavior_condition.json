@@ -30034,5 +30034,9 @@
   {
     "id": 801402,
     "type": "Act191PerHeroStarNum"
+  },
+  {
+    "id": 1000210,
+    "type": "TeamContainHero"
   }
 ]

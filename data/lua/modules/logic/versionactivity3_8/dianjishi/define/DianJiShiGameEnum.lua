@@ -47,6 +47,14 @@ DianJiShiGameEnum.MapCellSize = {
 	182,
 	181
 }
+DianJiShiGameEnum.WaitBlockSpaceSize = {
+	130,
+	130
+}
+DianJiShiGameEnum.MinWaitBlockSize = {
+	236,
+	236
+}
 DianJiShiGameEnum.WaitBlockTagScale = 2
 DianJiShiGameEnum.DragBlockTagScale = 1
 DianJiShiGameEnum.UnfinishCountColor = "#FF001B"

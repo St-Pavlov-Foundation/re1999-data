@@ -20,6 +20,7 @@ function DianJiShiGameWaitBlockItem:init(go)
 	self._isDragScroll = false
 	self._hasSetScroll = false
 	self._animator = gohelper.onceAddComponent(self._goBlock, gohelper.Type_Animator)
+	self._layoutElement = gohelper.onceAddComponent(self._imageItemBG.gameObject, typeof(UnityEngine.UI.LayoutElement))
 
 	gohelper.setActive(self._goHelp, false)
 end
@@ -182,16 +183,23 @@ function DianJiShiGameWaitBlockItem:setBlockCenter()
 end
 
 function DianJiShiGameWaitBlockItem:refreshBg()
-	local iconName = "v3a8_dianjishi_game_listbg1"
+	local cellWidth, cellHeight = DianJiShiGameModel.instance:getCellSize()
 	local blockWidth, blockHeight = self._blockItem:getBlockSize()
+	local width = blockWidth * cellWidth * self._blockScaleX + DianJiShiGameEnum.WaitBlockSpaceSize[1]
+	local height = blockHeight * cellHeight * self._blockScaleY + DianJiShiGameEnum.WaitBlockSpaceSize[2]
 
-	if blockHeight > 2 and blockWidth <= 1 then
-		iconName = "v3a8_dianjishi_game_listbg3"
-	elseif blockWidth > 2 and blockHeight <= 1 then
-		iconName = "v3a8_dianjishi_game_listbg2"
+	if blockWidth <= 2 then
+		width = DianJiShiGameEnum.MinWaitBlockSize[1]
 	end
 
-	UISpriteSetMgr.instance:setV3a8DianJiShiSprite(self._imageItemBG, iconName, true)
+	if blockHeight <= 2 then
+		height = DianJiShiGameEnum.MinWaitBlockSize[2]
+	end
+
+	self._layoutElement.minHeight = height
+	self._layoutElement.minWidth = width
+
+	UISpriteSetMgr.instance:setV3a8DianJiShiSprite(self._imageItemBG, "v3a8_dianjishi_game_listbg1")
 end
 
 function DianJiShiGameWaitBlockItem:setInteract(isInteract)

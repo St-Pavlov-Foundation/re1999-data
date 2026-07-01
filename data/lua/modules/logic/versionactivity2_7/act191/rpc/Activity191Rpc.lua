@@ -277,15 +277,17 @@ function Activity191Rpc:onReceiveEndAct191GameReply(resultCode, msg)
 end
 
 function Activity191Rpc:onReceiveAct191GameInfoUpdatePush(resultCode, msg)
-	if resultCode ~= 0 then
-		return
+	if resultCode == 0 then
+		local actInfo = Activity191Model.instance:getActInfo(msg.activityId)
+
+		actInfo:updateGameInfo(msg.gameInfo)
+
+		if not actInfo.lastNodeInfo and GameSceneMgr.instance:isFightScene() then
+			actInfo:cacheLastNodeInfo(msg.gameInfo)
+		end
+
+		Activity191Controller.instance:dispatchEvent(Activity191Event.GameInfoUpdatePush, msg.gameInfo)
 	end
-
-	local activityId = msg.activityId
-	local gameInfo = msg.gameInfo
-	local actInfo = Activity191Model.instance:getActInfo(activityId)
-
-	actInfo:updateGameInfo(gameInfo)
 end
 
 function Activity191Rpc:onReceiveAct191TriggerEffectPush(resultCode, msg)

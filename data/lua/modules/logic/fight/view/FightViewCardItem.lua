@@ -2486,6 +2486,9 @@ function FightViewCardItem:onPlayDeviceAnimDone()
 	if eventCallback then
 		eventCallback(eventCallbackObj, "finish")
 	end
+
+	SLFramework.UGUI.GuiHelper.SetColor(self.imgFrontBgNormal, "#FFFFFF")
+	SLFramework.UGUI.GuiHelper.SetColor(self.imgFrontBgBigSkill, "#FFFFFF")
 end
 
 function FightViewCardItem:clearDeviceAnim()

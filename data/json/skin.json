@@ -5654,7 +5654,7 @@
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_carnivalonthepitch.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
-    "skinLevel": 0,
+    "skinLevel": 3,
     "skinSignature": "",
     "costafterbuy": ""
   },
@@ -6345,7 +6345,7 @@
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_carnivalonthepitch.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
-    "skinLevel": 0,
+    "skinLevel": 1,
     "skinSignature": "",
     "costafterbuy": ""
   },
@@ -7424,7 +7424,7 @@
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_carnivalonthepitch.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
-    "skinLevel": 0,
+    "skinLevel": 3,
     "skinSignature": "",
     "costafterbuy": ""
   },
@@ -16227,7 +16227,7 @@
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_ontheredland.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
-    "skinLevel": 0,
+    "skinLevel": 1,
     "skinSignature": "",
     "costafterbuy": ""
   },
@@ -16324,7 +16324,7 @@
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_ontheredland.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
-    "skinLevel": 0,
+    "skinLevel": 3,
     "skinSignature": "",
     "costafterbuy": ""
   },
@@ -16421,7 +16421,7 @@
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_ontheredland.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
-    "skinLevel": 0,
+    "skinLevel": 3,
     "skinSignature": "",
     "costafterbuy": ""
   },
@@ -16518,7 +16518,7 @@
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_ontheredland.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
-    "skinLevel": 0,
+    "skinLevel": 3,
     "skinSignature": "",
     "costafterbuy": ""
   },
@@ -21574,7 +21574,7 @@
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_ontheredland.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
-    "skinLevel": 0,
+    "skinLevel": 4,
     "skinSignature": "",
     "costafterbuy": ""
   },
@@ -32620,9 +32620,9 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
-    "skinLevel": 0,
+    "skinLevel": 1,
     "skinSignature": "",
-    "costafterbuy": "1"
+    "costafterbuy": ""
   },
   {
     "id": 313201,
@@ -39851,7 +39851,7 @@
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_taluo.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
-    "skinLevel": 0,
+    "skinLevel": 4,
     "skinSignature": "",
     "costafterbuy": ""
   },
@@ -39948,7 +39948,7 @@
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_3_8.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
-    "skinLevel": 0,
+    "skinLevel": 4,
     "skinSignature": "",
     "costafterbuy": ""
   },
@@ -40045,7 +40045,7 @@
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_3_3.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
-    "skinLevel": 0,
+    "skinLevel": 3,
     "skinSignature": "",
     "costafterbuy": ""
   },
@@ -40142,7 +40142,7 @@
     "subTitle": "",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
-    "skinLevel": 0,
+    "skinLevel": 3,
     "skinSignature": "",
     "costafterbuy": ""
   },
@@ -40239,7 +40239,7 @@
     "subTitle": "singlebg_lang/txt_skinhandbook_singlebg/skinsuitdetailview_title_3_8.png",
     "skin2dParams": "",
     "skinSwitchLive2dOffset": "",
-    "skinLevel": 0,
+    "skinLevel": 1,
     "skinSignature": "",
     "costafterbuy": ""
   }

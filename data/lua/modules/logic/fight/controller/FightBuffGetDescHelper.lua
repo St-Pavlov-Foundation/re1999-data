@@ -287,7 +287,7 @@ function FightBuffGetDescHelper.onFoundationShield(buffMo, buffCo, buffActCo, pa
 			value = value * xRate
 		end
 
-		value = math.floor(value / 1000 + 0.5)
+		value = math.floor(value / 1000)
 	end
 
 	return GameUtil.getSubPlaceholderLuaLangOneParam(buffCo.desc, value)

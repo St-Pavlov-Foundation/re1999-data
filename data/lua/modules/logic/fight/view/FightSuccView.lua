@@ -664,6 +664,9 @@ function FightSuccView:_onClickClose()
 		param.mark = true
 		param.episodeId = DungeonModel.instance.curSendEpisodeId
 
+		local sceneGo = FightGameMgr.sceneLevelMgr:getSceneGo()
+
+		gohelper.setActive(sceneGo, false)
 		StoryController.instance:playStory(storyId, param, function()
 			TaskDispatcher.runDelay(FightSuccView.onStoryEnd, nil, 3)
 
@@ -687,6 +690,10 @@ function FightSuccView._finishStoryFromServer(storyId)
 end
 
 function FightSuccView.checkStoryEnd()
+	local sceneGo = FightGameMgr.sceneLevelMgr:getSceneGo()
+
+	gohelper.setActive(sceneGo, true)
+
 	if FightSuccView._clientFinish and FightSuccView._serverFinish then
 		FightSuccView.onStoryEnd()
 	end

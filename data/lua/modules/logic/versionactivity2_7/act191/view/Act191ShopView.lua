@@ -207,6 +207,10 @@ function Act191ShopView:onLeaveShop(_, resultCode)
 end
 
 function Act191ShopView:getFreshShopCost()
+	if self.nodeDetailMo.freeRefreshNum > 0 then
+		return 0
+	end
+
 	local freshNum = self.nodeDetailMo.shopFreshNum
 
 	for i = #self.freshCostList, 1, -1 do

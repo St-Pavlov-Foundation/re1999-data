@@ -3,40 +3,40 @@
     "gameId": 1001,
     "targetDesc": "1、移动积木并放置到模具上\n2、使所有模具的计数归零<▩1%s>(▩2%s/▩3%s)</color>",
     "mapIcon": "v3a8_dianjishi_game_box1",
-    "startPos": "85.2#-162.7",
+    "startPos": "84.2#-162.7",
     "mapScale": 1000,
-    "areaSplitSize": "14#12"
+    "areaSplitSize": "14#14"
   },
   {
     "gameId": 1002,
     "targetDesc": "1、移动积木并放置到模具上\n2、使所有模具的计数归零<▩1%s>(▩2%s/▩3%s)</color>",
     "mapIcon": "v3a8_dianjishi_game_box2",
-    "startPos": "92.4#-165.9",
+    "startPos": "89.4#-162.9",
     "mapScale": 1000,
-    "areaSplitSize": "14#12"
+    "areaSplitSize": "14#17"
   },
   {
     "gameId": 1003,
     "targetDesc": "1、移动积木并放置到模具上\n2、使所有模具的计数归零<▩1%s>(▩2%s/▩3%s)</color>",
     "mapIcon": "v3a8_dianjishi_game_box3",
-    "startPos": "70.7#-157.15",
+    "startPos": "67#-176.5",
     "mapScale": 1000,
-    "areaSplitSize": "14#12"
+    "areaSplitSize": "14#16"
   },
   {
     "gameId": 1004,
     "targetDesc": "1、移动积木并放置到模具上\n2、使所有模具的计数归零<▩1%s>(▩2%s/▩3%s)</color>",
     "mapIcon": "v3a8_dianjishi_game_box4",
-    "startPos": "75.3#-134.2",
-    "mapScale": 760,
-    "areaSplitSize": "14#12"
+    "startPos": "92#-171.5",
+    "mapScale": 750,
+    "areaSplitSize": "13#17"
   },
   {
     "gameId": 1005,
     "targetDesc": "1、移动积木并放置到模具上\n2、使所有模具的计数归零<▩1%s>(▩2%s/▩3%s)</color>",
     "mapIcon": "v3a8_dianjishi_game_box5",
-    "startPos": "75.3#-134.2",
-    "mapScale": 760,
-    "areaSplitSize": "14#12"
+    "startPos": "92#-238.5",
+    "mapScale": 750,
+    "areaSplitSize": "13#16"
   }
 ]

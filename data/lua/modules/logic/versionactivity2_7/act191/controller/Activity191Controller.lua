@@ -165,15 +165,11 @@ function Activity191Controller:checkOpenGetView()
 		end
 	end
 
-	if hasGet then
-		ViewMgr.instance:openView(ViewName.Act191GetView)
-
-		return true
+	if not hasGet then
+		actInfo:clearTriggerEffectPush()
 	end
 
-	actInfo:clearTriggerEffectPush()
-
-	return false
+	return hasGet
 end
 
 Activity191Controller.instance = Activity191Controller.New()

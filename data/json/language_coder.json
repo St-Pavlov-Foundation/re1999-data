@@ -9546,5 +9546,21 @@
   {
     "id": "v3a8_newbieevent_max_include",
     "lang": "适用角色范围"
+  },
+  {
+    "id": "fight_douququ_dice_1_6",
+    "lang": "1号位角色无法释放最终的仪式"
+  },
+  {
+    "id": "fight_douququ_dice_7_18",
+    "lang": "战斗开始使使敌方全体获得【缴械】【缄默】1回合"
+  },
+  {
+    "id": "fight_douququ_dice_19_30",
+    "lang": "我方全体暴击率+50%，暴击创伤+50%"
+  },
+  {
+    "id": "fight_douququ_dice_31",
+    "lang": "我方全体主动使用咒语时，40%概率额外释放一次"
   }
 ]

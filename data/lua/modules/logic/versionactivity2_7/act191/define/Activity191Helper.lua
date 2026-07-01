@@ -118,7 +118,7 @@ function Activity191Helper.getActiveFetterInfoList(fetterCntDic)
 			for i = #fetterCoList, 0, -1 do
 				local fetterCo = fetterCoList[i]
 
-				if cnt >= fetterCo.activeNum then
+				if fetterCo and cnt >= fetterCo.activeNum then
 					fetterInfoList[#fetterInfoList + 1] = {
 						config = fetterCo,
 						count = cnt
@@ -315,6 +315,40 @@ function Activity191Helper.clickHyperLinkRole(param, clickPosition)
 	else
 		SkillHelper.defaultClick(param, clickPosition)
 	end
+end
+
+function Activity191Helper.addOneCount(countTbl, key)
+	local baseValue = countTbl[key]
+
+	if baseValue then
+		countTbl[key] = baseValue + 1
+	else
+		countTbl[key] = 1
+	end
+end
+
+function Activity191Helper.getFetterActiveLvl(tag, count)
+	local activeLevel = 0
+
+	if count then
+		local coList = Activity191Config.instance:getRelationCoList(tag)
+
+		for i = #coList, 0, -1 do
+			local config = coList[i]
+
+			if config then
+				if count >= config.activeNum then
+					activeLevel = config.level
+
+					break
+				end
+			else
+				logError("斗蛐蛐养成表_羁绊表配置异常,羁绊名: " .. tag)
+			end
+		end
+	end
+
+	return activeLevel
 end
 
 return Activity191Helper

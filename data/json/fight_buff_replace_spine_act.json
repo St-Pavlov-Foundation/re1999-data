@@ -775,5 +775,89 @@
     "priority": 1,
     "combination": [],
     "suffix": "_trans"
+  },
+  {
+    "id": 309401,
+    "buffId": 30941121,
+    "priority": 1,
+    "combination": [],
+    "suffix": "_trans"
+  },
+  {
+    "id": 309401,
+    "buffId": 30941131,
+    "priority": 1,
+    "combination": [],
+    "suffix": "_trans"
+  },
+  {
+    "id": 309401,
+    "buffId": 30941141,
+    "priority": 1,
+    "combination": [],
+    "suffix": "_trans"
+  },
+  {
+    "id": 309401,
+    "buffId": 30941151,
+    "priority": 1,
+    "combination": [],
+    "suffix": "_trans"
+  },
+  {
+    "id": 309402,
+    "buffId": 30941121,
+    "priority": 1,
+    "combination": [],
+    "suffix": "_trans"
+  },
+  {
+    "id": 309402,
+    "buffId": 30941131,
+    "priority": 1,
+    "combination": [],
+    "suffix": "_trans"
+  },
+  {
+    "id": 309402,
+    "buffId": 30941141,
+    "priority": 1,
+    "combination": [],
+    "suffix": "_trans"
+  },
+  {
+    "id": 309402,
+    "buffId": 30941151,
+    "priority": 1,
+    "combination": [],
+    "suffix": "_trans"
+  },
+  {
+    "id": 309403,
+    "buffId": 30941121,
+    "priority": 1,
+    "combination": [],
+    "suffix": "_trans"
+  },
+  {
+    "id": 309403,
+    "buffId": 30941131,
+    "priority": 1,
+    "combination": [],
+    "suffix": "_trans"
+  },
+  {
+    "id": 309403,
+    "buffId": 30941141,
+    "priority": 1,
+    "combination": [],
+    "suffix": "_trans"
+  },
+  {
+    "id": 309403,
+    "buffId": 30941151,
+    "priority": 1,
+    "combination": [],
+    "suffix": "_trans"
   }
 ]

@@ -7,12 +7,17 @@ local DungeonRougeView = class("DungeonRougeView", BaseViewExtended)
 function DungeonRougeView:onInitView()
 	self.go_fragments = gohelper.findChild(self.viewGO, "#go_fragments")
 	self.content = gohelper.findChild(self.viewGO, "#scroll_chapterlist/viewport/content")
-	self.DungeonAdvPlayTabItem_1 = gohelper.findChild(self.content, "DungeonAdvPlayTabItem_1")
-	self.DungeonAdvPlayTabItem_2 = gohelper.findChild(self.content, "DungeonAdvPlayTabItem_2")
+	self.DungeonPlayTabItem_1 = gohelper.findChild(self.content, "DungeonAdvPlayTabItem_1")
+	self.DungeonPlayTabItem_2 = gohelper.findChild(self.content, "DungeonAdvPlayTabItem_2")
+
+	local tabResList = self.viewContainer._viewSetting.tabRes
+	local subTabResList = tabResList and tabResList[2]
+
+	self._viewResList = subTabResList and subTabResList[6]
 	self.infos = self:getUserDataTb_()
 
 	table.insert(self.infos, {
-		tab = self.DungeonAdvPlayTabItem_1,
+		tab = self.DungeonPlayTabItem_1,
 		type = DungeonEnum.ChapterType.Rouge,
 		isOpenFunc = RougeOutsideModel.isUnlock,
 		isOpenFuncObj = RougeOutsideModel.instance,
@@ -21,7 +26,7 @@ function DungeonRougeView:onInitView()
 		tabRedDot = RedDotEnum.DotNode.RougeEnter
 	})
 	table.insert(self.infos, {
-		tab = self.DungeonAdvPlayTabItem_2,
+		tab = self.DungeonPlayTabItem_2,
 		type = DungeonEnum.ChapterType.Rouge2,
 		isOpenFunc = Rouge2_Controller.checkIsOpen,
 		isOpenFuncObj = Rouge2_Controller.instance,
@@ -78,11 +83,11 @@ function DungeonRougeView:onOpen()
 end
 
 function DungeonRougeView:openRougeMainView()
-	self:openExclusiveView(1, 1, RougeActivityView, "ui/viewres/rouge/rougeactivityview.prefab", self.go_fragments)
+	self:openExclusiveView(1, 1, RougeActivityView, self._viewResList[2], self.go_fragments)
 end
 
 function DungeonRougeView:openRouge2MainView()
-	self:openExclusiveView(1, 2, Rouge2_ActivityView, "ui/viewres/rouge2/rouge2_activityview.prefab", self.go_fragments)
+	self:openExclusiveView(1, 2, Rouge2_ActivityView, self._viewResList[3], self.go_fragments)
 end
 
 function DungeonRougeView:onClose()

@@ -56,18 +56,6 @@ function Act191FetterTipView:onOpen()
 
 	Activity191Helper.setFetterIcon(self._imageIcon, simpleCo.icon)
 
-	local specDesc = simpleCo.specDesc
-
-	if not string.nilorempty(specDesc) then
-		gohelper.setActive(self._goUseTime, simpleCo.tag == Activity191Enum.GreenDeer)
-
-		self._txtUseTime.text = self.gameInfo:getSkillCount(Activity191Enum.GreenDeerSkillIds)
-
-		gohelper.setActive(self._goSpecDesc, true)
-
-		self._txtSpecDesc.text = specDesc
-	end
-
 	local fetterDesc
 
 	if self.viewParam.isFight then
@@ -161,6 +149,17 @@ function Act191FetterTipView:onOpen()
 
 		fetterDesc = string.gsub(self.fetterCoList[0].desc, "（(.-)）", "")
 	else
+		local specDesc = simpleCo.specDesc
+
+		if not string.nilorempty(specDesc) then
+			gohelper.setActive(self._goUseTime, simpleCo.tag == Activity191Enum.GreenDeer)
+
+			self._txtUseTime.text = self.gameInfo:getSkillCount(Activity191Enum.GreenDeerSkillIds)
+			self._txtSpecDesc.text = specDesc
+
+			gohelper.setActive(self._goSpecDesc, true)
+		end
+
 		self.fetterHeroList = self.gameInfo:getFetterHeroList(self.tag)
 
 		local fetterCntDic = self.gameInfo:getTeamFetterCntDic()

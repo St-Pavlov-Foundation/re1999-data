@@ -8462,7 +8462,7 @@
   {
     "id": 180007,
     "product": "1#110103#1",
-    "maxBuyCount": 10,
+    "maxBuyCount": 28,
     "cost": "2#25#70",
     "cost2": "",
     "reduction": "",
@@ -8507,7 +8507,7 @@
   {
     "id": 180008,
     "product": "1#110203#1",
-    "maxBuyCount": 10,
+    "maxBuyCount": 28,
     "cost": "2#25#70",
     "cost2": "",
     "reduction": "",
@@ -8552,7 +8552,7 @@
   {
     "id": 180009,
     "product": "1#110303#1",
-    "maxBuyCount": 10,
+    "maxBuyCount": 28,
     "cost": "2#25#70",
     "cost2": "",
     "reduction": "",
@@ -8597,7 +8597,7 @@
   {
     "id": 180010,
     "product": "1#110403#1",
-    "maxBuyCount": 9,
+    "maxBuyCount": 28,
     "cost": "2#25#50",
     "cost2": "",
     "reduction": "",
@@ -8642,7 +8642,7 @@
   {
     "id": 180011,
     "product": "1#110503#1",
-    "maxBuyCount": 6,
+    "maxBuyCount": 28,
     "cost": "2#25#50",
     "cost2": "",
     "reduction": "",
@@ -8687,7 +8687,7 @@
   {
     "id": 180012,
     "product": "1#111002#1",
-    "maxBuyCount": 4,
+    "maxBuyCount": 28,
     "cost": "2#25#100",
     "cost2": "",
     "reduction": "",
@@ -8732,7 +8732,7 @@
   {
     "id": 180013,
     "product": "1#180002#1",
-    "maxBuyCount": 28,
+    "maxBuyCount": 27,
     "cost": "2#25#120",
     "cost2": "",
     "reduction": "",
@@ -8777,7 +8777,7 @@
   {
     "id": 180014,
     "product": "1#180001#1",
-    "maxBuyCount": 28,
+    "maxBuyCount": 41,
     "cost": "2#25#80",
     "cost2": "",
     "reduction": "",
@@ -8822,7 +8822,7 @@
   {
     "id": 180015,
     "product": "1#120012#1",
-    "maxBuyCount": 28,
+    "maxBuyCount": 29,
     "cost": "2#25#350",
     "cost2": "",
     "reduction": "",
@@ -8867,7 +8867,7 @@
   {
     "id": 180016,
     "product": "1#120011#1",
-    "maxBuyCount": 28,
+    "maxBuyCount": 70,
     "cost": "2#25#100",
     "cost2": "",
     "reduction": "",
@@ -8912,7 +8912,7 @@
   {
     "id": 180017,
     "product": "2#3#6000",
-    "maxBuyCount": 28,
+    "maxBuyCount": 75,
     "cost": "2#25#60",
     "cost2": "",
     "reduction": "",
@@ -8957,7 +8957,7 @@
   {
     "id": 180018,
     "product": "2#5#6000",
-    "maxBuyCount": 28,
+    "maxBuyCount": 140,
     "cost": "2#25#40",
     "cost2": "",
     "reduction": "",
@@ -18092,7 +18092,7 @@
   {
     "id": 180019,
     "product": "1#110604#1",
-    "maxBuyCount": 20,
+    "maxBuyCount": 10,
     "cost": "2#25#300",
     "cost2": "",
     "reduction": "",
@@ -18137,7 +18137,7 @@
   {
     "id": 180020,
     "product": "1#110704#1",
-    "maxBuyCount": 20,
+    "maxBuyCount": 10,
     "cost": "2#25#350",
     "cost2": "",
     "reduction": "",
@@ -18182,7 +18182,7 @@
   {
     "id": 180021,
     "product": "1#111013#1",
-    "maxBuyCount": 20,
+    "maxBuyCount": 10,
     "cost": "2#25#400",
     "cost2": "",
     "reduction": "",
@@ -18227,7 +18227,7 @@
   {
     "id": 180022,
     "product": "1#110603#1",
-    "maxBuyCount": 18,
+    "maxBuyCount": 20,
     "cost": "2#25#70",
     "cost2": "",
     "reduction": "",
@@ -18272,7 +18272,7 @@
   {
     "id": 180023,
     "product": "1#110703#1",
-    "maxBuyCount": 12,
+    "maxBuyCount": 20,
     "cost": "2#25#100",
     "cost2": "",
     "reduction": "",
@@ -18317,7 +18317,7 @@
   {
     "id": 180024,
     "product": "1#111012#1",
-    "maxBuyCount": 8,
+    "maxBuyCount": 20,
     "cost": "2#25#110",
     "cost2": "",
     "reduction": "",
@@ -26822,7 +26822,7 @@
   {
     "id": 180025,
     "product": "1#110804#1",
-    "maxBuyCount": 27,
+    "maxBuyCount": 9,
     "cost": "2#25#350",
     "cost2": "",
     "reduction": "",
@@ -26867,7 +26867,7 @@
   {
     "id": 180026,
     "product": "1#110803#1",
-    "maxBuyCount": 41,
+    "maxBuyCount": 18,
     "cost": "2#25#100",
     "cost2": "",
     "reduction": "",
@@ -42257,7 +42257,7 @@
   {
     "id": 180027,
     "product": "1#110904#1",
-    "maxBuyCount": 29,
+    "maxBuyCount": 6,
     "cost": "2#25#300",
     "cost2": "",
     "reduction": "",
@@ -42302,7 +42302,7 @@
   {
     "id": 180028,
     "product": "1#110903#1",
-    "maxBuyCount": 70,
+    "maxBuyCount": 12,
     "cost": "2#25#70",
     "cost2": "",
     "reduction": "",
@@ -56252,7 +56252,7 @@
   {
     "id": 180029,
     "product": "1#111104#1",
-    "maxBuyCount": 75,
+    "maxBuyCount": 4,
     "cost": "2#25#300",
     "cost2": "",
     "reduction": "",
@@ -56297,7 +56297,7 @@
   {
     "id": 180030,
     "product": "1#111103#1",
-    "maxBuyCount": 140,
+    "maxBuyCount": 8,
     "cost": "2#25#70",
     "cost2": "",
     "reduction": "",

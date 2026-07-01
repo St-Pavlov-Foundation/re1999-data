@@ -286,5 +286,11 @@
     "skinId": 1,
     "motion": "suxie1|suxie2|suxie3|zhihui",
     "onlyStopCut": 1
+  },
+  {
+    "heroId": 3128,
+    "skinId": 312803,
+    "motion": "fanshu1|fanshu2|fanshu3",
+    "onlyStopCut": 1
   }
 ]

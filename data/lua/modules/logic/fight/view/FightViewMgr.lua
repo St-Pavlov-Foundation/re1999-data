@@ -377,13 +377,40 @@ function FightViewMgr:showDouQuQuBoss()
 	local spFightEntities = FightDataHelper.entityMgr:getSpFightEntities(FightEnum.TeamType.MySide)
 
 	for k, entityData in pairs(spFightEntities) do
-		if entityData.entityType == FightEnum.EntityType.Act191Boss and entityData:getPowerInfo(FightEnum.PowerType.Act191Boss) then
-			local parentRoot = self.viewContainer.rightElementLayoutView:getElementContainer(FightRightElementEnum.Elements.DouQuQuBoss)
+		if entityData.entityType == FightEnum.EntityType.Act191Boss then
+			local skin = entityData.skin
 
-			self:com_openSubView(FightDouQuQuBossView, "ui/viewres/fight/fight_act191assistbossview.prefab", parentRoot, entityData)
-			self.viewContainer.rightElementLayoutView:showElement(FightRightElementEnum.Elements.DouQuQuBoss)
+			if entityData:getPowerInfo(FightEnum.PowerType.Act191Boss) then
+				local parentRoot = self.viewContainer.rightElementLayoutView:getElementContainer(FightRightElementEnum.Elements.DouQuQuBoss)
 
-			break
+				if skin == 6104062 then
+					do
+						local url = "ui/viewres/fight/fight_act191assistbossview3.prefab"
+						local class = FightDouQuQuBossView6104061
+
+						self:com_openSubView(class, url, parentRoot, entityData)
+						self.viewContainer.rightElementLayoutView:showElement(FightRightElementEnum.Elements.DouQuQuBoss)
+					end
+
+					break
+				end
+
+				if skin == 6104061 or skin == 610407 or skin == 413401 then
+					self:com_openSubView(FightDouQuQuBossView, "ui/viewres/fight/fight_act191assistbossview.prefab", parentRoot, entityData)
+					self.viewContainer.rightElementLayoutView:showElement(FightRightElementEnum.Elements.DouQuQuBoss)
+				end
+
+				break
+			end
+
+			if skin == 6704041 or skin == 6704042 or skin == 6704043 then
+				local url = "ui/viewres/fight/fight_act191assistbossview2.prefab"
+				local class = FightDouQuQuBossViewDeer
+				local parentRoot = self.viewContainer.rightElementLayoutView:getElementContainer(FightRightElementEnum.Elements.DouQuQuBoss)
+
+				self:com_openSubView(class, url, parentRoot, entityData)
+				self.viewContainer.rightElementLayoutView:showElement(FightRightElementEnum.Elements.DouQuQuBoss)
+			end
 		end
 	end
 end

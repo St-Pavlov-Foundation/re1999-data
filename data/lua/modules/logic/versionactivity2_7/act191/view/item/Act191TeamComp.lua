@@ -27,8 +27,8 @@ function Act191TeamComp:init(go)
 	self.gameInfo = Activity191Model.instance:getActInfo():getGameInfo()
 	self.groupItem1List = {}
 	self.fetterItemList = {}
-	self.mainTeamSlot = Activity191Enum.BaseTeamSlot.Main
-	self.subTeamSlot = Activity191Enum.BaseTeamSlot.Sub + self.gameInfo.subTeamAddSlot
+	self.mainTeamSlot = self.gameInfo.mainTeamSize
+	self.subTeamSlot = self.gameInfo.subTeamSize
 	self.heroPosTrList = self:getUserDataTb_()
 
 	for i = 1, 9 do
@@ -172,7 +172,7 @@ function Act191TeamComp:refreshFetter()
 		gohelper.setActive(item.go, false)
 	end
 
-	gohelper.setActive(self._goFetterContent, #fetterInfoList ~= 0)
+	gohelper.setActive(self.goFetterContent, #fetterInfoList ~= 0)
 
 	self.scrollFetter.horizontalNormalizedPosition = 0
 	self.needFreshFetter = false

@@ -53,7 +53,7 @@ function VersionActivity3_8SelfSelectSixController:_onChangeStoneItem()
 	o.quantity = 1
 
 	table.insert(data, o)
-	ItemRpc.instance:sendUseItemRequest(data, -1)
+	ItemRpc.instance:sendUseItemRequest(data, 0)
 end
 
 function VersionActivity3_8SelfSelectSixController:openHeroChoicePreview(heroId)

@@ -33303,7 +33303,7 @@
     "maxFinishCount": 1,
     "activity": 0,
     "jumpId": 43110113,
-    "bonus": "2#3101#500",
+    "bonus": "2#3101#200",
     "page": 0,
     "isKeyReward": 0
   },
@@ -33325,7 +33325,7 @@
     "maxFinishCount": 1,
     "activity": 0,
     "jumpId": 43110118,
-    "bonus": "2#3101#500",
+    "bonus": "2#3101#200",
     "page": 0,
     "isKeyReward": 0
   },
@@ -33347,7 +33347,7 @@
     "maxFinishCount": 1,
     "activity": 0,
     "jumpId": 43110119,
-    "bonus": "2#3101#600",
+    "bonus": "2#3101#300",
     "page": 0,
     "isKeyReward": 0
   },
@@ -33369,7 +33369,7 @@
     "maxFinishCount": 1,
     "activity": 0,
     "jumpId": 43130113,
-    "bonus": "2#3101#500",
+    "bonus": "2#3101#300",
     "page": 0,
     "isKeyReward": 0
   },
@@ -33391,7 +33391,7 @@
     "maxFinishCount": 1,
     "activity": 0,
     "jumpId": 43140113,
-    "bonus": "2#3101#500",
+    "bonus": "2#3101#300",
     "page": 0,
     "isKeyReward": 0
   },
@@ -33413,7 +33413,7 @@
     "maxFinishCount": 1,
     "activity": 0,
     "jumpId": 43130118,
-    "bonus": "2#3101#500",
+    "bonus": "2#3101#300",
     "page": 0,
     "isKeyReward": 0
   },
@@ -33435,7 +33435,7 @@
     "maxFinishCount": 1,
     "activity": 0,
     "jumpId": 43140118,
-    "bonus": "2#3101#500",
+    "bonus": "2#3101#300",
     "page": 0,
     "isKeyReward": 0
   },
@@ -33457,7 +33457,7 @@
     "maxFinishCount": 1,
     "activity": 0,
     "jumpId": 43130119,
-    "bonus": "2#3101#600",
+    "bonus": "2#3101#300",
     "page": 0,
     "isKeyReward": 0
   },
@@ -33479,12 +33479,34 @@
     "maxFinishCount": 1,
     "activity": 0,
     "jumpId": 43140119,
-    "bonus": "2#3101#600",
+    "bonus": "2#3101#300",
     "page": 0,
     "isKeyReward": 0
   },
   {
     "id": 213110,
+    "activityId": 13103,
+    "isOnline": 1,
+    "minType": "长夜鸣笛任务",
+    "name": "",
+    "desc": "在[“流动”餐车]中消耗<color=#BD5C13>3000个</color>“多瑙”之心",
+    "needAccept": 1,
+    "bonusMail": 0,
+    "params": "",
+    "prepose": "",
+    "openLimit": "",
+    "listenerType": "CurrencyDec",
+    "listenerParam": "3101",
+    "maxProgress": 3000,
+    "maxFinishCount": 1,
+    "activity": 0,
+    "jumpId": 10013804,
+    "bonus": "2#3101#300",
+    "page": 0,
+    "isKeyReward": 0
+  },
+  {
+    "id": 213111,
     "activityId": 13103,
     "isOnline": 1,
     "minType": "长夜鸣笛任务",
@@ -33501,29 +33523,7 @@
     "maxFinishCount": 1,
     "activity": 0,
     "jumpId": 10013804,
-    "bonus": "2#3101#500",
-    "page": 0,
-    "isKeyReward": 0
-  },
-  {
-    "id": 213111,
-    "activityId": 13103,
-    "isOnline": 1,
-    "minType": "长夜鸣笛任务",
-    "name": "",
-    "desc": "在[“流动”餐车]中消耗<color=#BD5C13>20000个</color>“多瑙”之心",
-    "needAccept": 1,
-    "bonusMail": 0,
-    "params": "",
-    "prepose": "",
-    "openLimit": "",
-    "listenerType": "CurrencyDec",
-    "listenerParam": "3101",
-    "maxProgress": 20000,
-    "maxFinishCount": 1,
-    "activity": 0,
-    "jumpId": 10013804,
-    "bonus": "2#3101#600",
+    "bonus": "2#3101#300",
     "page": 0,
     "isKeyReward": 0
   },
@@ -33533,7 +33533,7 @@
     "isOnline": 1,
     "minType": "长夜鸣笛任务",
     "name": "",
-    "desc": "在探索模式中完成<color=#BD5C13>TMW-01危机]</color>难度",
+    "desc": "在探索模式中完成<color=#BD5C13>TMW-01[危机]</color>难度",
     "needAccept": 1,
     "bonusMail": 0,
     "params": "",
@@ -33545,7 +33545,7 @@
     "maxFinishCount": 1,
     "activity": 0,
     "jumpId": 43120101,
-    "bonus": "2#3101#400",
+    "bonus": "2#3101#300",
     "page": 0,
     "isKeyReward": 0
   },
@@ -33567,7 +33567,7 @@
     "maxFinishCount": 1,
     "activity": 0,
     "jumpId": 43120106,
-    "bonus": "2#3101#400",
+    "bonus": "2#3101#300",
     "page": 0,
     "isKeyReward": 0
   },
@@ -33589,7 +33589,7 @@
     "maxFinishCount": 1,
     "activity": 0,
     "jumpId": 43120109,
-    "bonus": "2#3101#400",
+    "bonus": "2#3101#300",
     "page": 0,
     "isKeyReward": 0
   },
@@ -33611,7 +33611,7 @@
     "maxFinishCount": 1,
     "activity": 0,
     "jumpId": 43120110,
-    "bonus": "2#3101#400",
+    "bonus": "2#3101#300",
     "page": 0,
     "isKeyReward": 0
   },
@@ -33633,7 +33633,7 @@
     "maxFinishCount": 1,
     "activity": 0,
     "jumpId": 43120111,
-    "bonus": "2#3101#400",
+    "bonus": "2#3101#300",
     "page": 0,
     "isKeyReward": 0
   },
@@ -33655,7 +33655,7 @@
     "maxFinishCount": 1,
     "activity": 0,
     "jumpId": 43120113,
-    "bonus": "2#3101#500",
+    "bonus": "2#3101#300",
     "page": 0,
     "isKeyReward": 0
   },
@@ -33677,7 +33677,7 @@
     "maxFinishCount": 1,
     "activity": 0,
     "jumpId": 43120116,
-    "bonus": "2#3101#500",
+    "bonus": "2#3101#300",
     "page": 0,
     "isKeyReward": 0
   },
@@ -33699,7 +33699,7 @@
     "maxFinishCount": 1,
     "activity": 0,
     "jumpId": 43120117,
-    "bonus": "2#3101#500",
+    "bonus": "2#3101#300",
     "page": 0,
     "isKeyReward": 0
   },
@@ -33721,7 +33721,7 @@
     "maxFinishCount": 1,
     "activity": 0,
     "jumpId": 43120118,
-    "bonus": "2#3101#500",
+    "bonus": "2#3101#300",
     "page": 0,
     "isKeyReward": 0
   },
@@ -33743,7 +33743,7 @@
     "maxFinishCount": 1,
     "activity": 0,
     "jumpId": 43120119,
-    "bonus": "2#3101#600",
+    "bonus": "2#3101#300",
     "page": 0,
     "isKeyReward": 0
   },
@@ -33765,7 +33765,7 @@
     "maxFinishCount": 1,
     "activity": 0,
     "jumpId": 43120120,
-    "bonus": "2#3101#600",
+    "bonus": "2#3101#300",
     "page": 0,
     "isKeyReward": 0
   },
@@ -33775,7 +33775,7 @@
     "isOnline": 1,
     "minType": "长夜鸣笛任务",
     "name": "",
-    "desc": "在探索模式中以2星评价完成<color=#BD5C13>TMW-01危机]</color>难度",
+    "desc": "在探索模式中以2星评价完成<color=#BD5C13>TMW-01[危机]</color>难度",
     "needAccept": 1,
     "bonusMail": 0,
     "params": "",
@@ -33897,7 +33897,7 @@
     "maxFinishCount": 1,
     "activity": 0,
     "jumpId": 43120113,
-    "bonus": "2#3101#500",
+    "bonus": "2#3101#400",
     "page": 0,
     "isKeyReward": 0
   },
@@ -33919,7 +33919,7 @@
     "maxFinishCount": 1,
     "activity": 0,
     "jumpId": 43120116,
-    "bonus": "2#3101#500",
+    "bonus": "2#3101#400",
     "page": 0,
     "isKeyReward": 0
   },
@@ -33941,7 +33941,7 @@
     "maxFinishCount": 1,
     "activity": 0,
     "jumpId": 43120117,
-    "bonus": "2#3101#500",
+    "bonus": "2#3101#400",
     "page": 0,
     "isKeyReward": 0
   },
@@ -33963,7 +33963,7 @@
     "maxFinishCount": 1,
     "activity": 0,
     "jumpId": 43120118,
-    "bonus": "2#3101#500",
+    "bonus": "2#3101#400",
     "page": 0,
     "isKeyReward": 0
   },
@@ -33985,7 +33985,7 @@
     "maxFinishCount": 1,
     "activity": 0,
     "jumpId": 43120119,
-    "bonus": "2#3101#600",
+    "bonus": "2#3101#400",
     "page": 0,
     "isKeyReward": 0
   },
@@ -34007,7 +34007,7 @@
     "maxFinishCount": 1,
     "activity": 0,
     "jumpId": 43120120,
-    "bonus": "2#3101#600",
+    "bonus": "2#3101#400",
     "page": 0,
     "isKeyReward": 0
   }
