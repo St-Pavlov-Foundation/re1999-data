@@ -16,6 +16,7 @@ function Act191ShopView:onInitView()
 	self._goDetail = gohelper.findChild(self.viewGO, "Middle/shopRoot/#go_ShopLevel/#go_Detail")
 	self._btnCloseDetail = gohelper.findChildButtonWithAudio(self.viewGO, "Middle/shopRoot/#go_ShopLevel/#go_Detail/#btn_CloseDetail")
 	self._txtDetail = gohelper.findChildText(self.viewGO, "Middle/shopRoot/#go_ShopLevel/#go_Detail/go_scroll/viewport/content/#txt_Detail")
+	self._goEmpty = gohelper.findChild(self.viewGO, "Middle/shopRoot/#go_Empty")
 	self._btnNext = gohelper.findChildButtonWithAudio(self.viewGO, "Bottom/#btn_Next")
 	self._goTeam = gohelper.findChild(self.viewGO, "Bottom/#go_Team")
 	self._gotopleft = gohelper.findChild(self.viewGO, "#go_topleft")
@@ -169,11 +170,14 @@ function Act191ShopView:refreshShop()
 	self._txtFreshCost.text = cost
 	self._txtCoin.text = self.gameInfo.coin
 
+	local hasGoods = false
+
 	for i = 1, 6 do
 		local shopPos = self.nodeDetailMo.shopPosMap[tostring(i)]
 		local shopItem = self.shopItemList[i]
 
 		if shopPos then
+			hasGoods = true
 			shopItem = shopItem or self:createShopItem(i)
 
 			local soldOut = tabletool.indexOf(self.nodeDetailMo.boughtSet, i)
@@ -184,6 +188,9 @@ function Act191ShopView:refreshShop()
 			gohelper.setActive(shopItem.go, false)
 		end
 	end
+
+	gohelper.setActive(self._goEmpty, not hasGoods)
+	gohelper.setActive(self._btnFreshShop, hasGoods)
 end
 
 function Act191ShopView:createShopItem(index)

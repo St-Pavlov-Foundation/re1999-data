@@ -111,10 +111,13 @@ function Act191TeamComp:refreshStatus()
 end
 
 function Act191TeamComp:refreshTeam()
-	local teamInfo = self.gameInfo:getTeamInfo()
-	local rankStr = lua_activity191_rank.configDict[self.gameInfo.rank].fightLevel
+	local rankCfg = Activity191Config.instance:getRankCfg(self.gameInfo.rank)
 
-	UISpriteSetMgr.instance:setAct174Sprite(self.imageLevel, "act191_level_" .. string.lower(rankStr))
+	if rankCfg then
+		UISpriteSetMgr.instance:setAct174Sprite(self.imageLevel, "act191_level_" .. string.lower(rankCfg.fightLevel))
+	end
+
+	local teamInfo = self.gameInfo:getTeamInfo()
 
 	for i = 1, self.mainTeamSlot do
 		self:_setHeroItemPos(self.groupItem1List[i], i)

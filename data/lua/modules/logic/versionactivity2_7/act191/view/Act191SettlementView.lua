@@ -120,9 +120,11 @@ end
 function Act191SettlementView:refreshLeft()
 	local gameInfo = Activity191Model.instance:getActInfo():getGameInfo()
 	local rank = gameInfo.rank ~= 0 and gameInfo.rank or 1
-	local rankStr = lua_activity191_rank.configDict[rank].fightLevel or ""
+	local rankCfg = Activity191Config.instance:getRankCfg(rank)
 
-	UISpriteSetMgr.instance:setAct174Sprite(self._imageLevel, "act191_level_" .. string.lower(rankStr))
+	if rankCfg then
+		UISpriteSetMgr.instance:setAct174Sprite(self._imageLevel, "act191_level_" .. string.lower(rankCfg.fightLevel))
+	end
 
 	local teamInfo = gameInfo:getTeamInfo()
 

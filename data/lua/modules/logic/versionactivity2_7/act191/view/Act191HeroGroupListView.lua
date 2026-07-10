@@ -111,10 +111,11 @@ function Act191HeroGroupListView:initHeroAndEquipItem()
 end
 
 function Act191HeroGroupListView:refreshTeam()
-	local rank = self.gameInfo.rank
-	local rankStr = lua_activity191_rank.configDict[rank].fightLevel
+	local rankCfg = Activity191Config.instance:getRankCfg(self.gameInfo.rank)
 
-	UISpriteSetMgr.instance:setAct174Sprite(self.imageLevel, "act191_level_" .. string.lower(rankStr))
+	if rankCfg then
+		UISpriteSetMgr.instance:setAct174Sprite(self.imageLevel, "act191_level_" .. string.lower(rankCfg.fightLevel))
+	end
 
 	for i = 1, self.maxTeamSlot do
 		self:_setHeroItemPos(self.heroItemList[i], i)

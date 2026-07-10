@@ -20,9 +20,8 @@ end
 function Act191InitBuildView:onOpen()
 	Act191StatController.instance:onViewOpen(self.viewName)
 
-	local gameInfo = Activity191Model.instance:getActInfo():getGameInfo()
-
-	self.initBuildInfo = gameInfo.initBuildInfo
+	self.gameInfo = Activity191Model.instance:getActInfo():getGameInfo()
+	self.initBuildInfo = self.gameInfo.initBuildInfo
 
 	self:refreshUI()
 end
@@ -34,7 +33,7 @@ function Act191InitBuildView:onClose()
 end
 
 function Act191InitBuildView:onDestroyView()
-	TaskDispatcher.cancelTask(self.nextStep, self)
+	TaskDispatcher.cancelTask(self.onAnimFinish, self)
 end
 
 function Act191InitBuildView:refreshUI()
@@ -160,13 +159,16 @@ function Act191InitBuildView:buildReply(cmd, resultCode)
 		if index and self.bagAnimList[index] then
 			self.bagAnimList[index]:Play(UIAnimationName.Close)
 			AudioMgr.instance:trigger(AudioEnum.Act174.play_ui_shuori_qiyuan_reset)
+
+			self.selectIndex = nil
 		end
 
-		TaskDispatcher.runDelay(self.nextStep, self, 0.67)
+		TaskDispatcher.runDelay(self.onAnimFinish, self, 0.67)
 
 		local gameUid = Activity191Helper.getPlayerPrefs(self.actId, "Act191GameCostTime", 0)
 
 		Activity191Helper.setPlayerPrefs(self.actId, "Act191GameCostTime", gameUid + 1)
+		self.gameInfo:autoFill(self.onAutoFillFinish, self)
 	end
 end
 
@@ -178,11 +180,22 @@ function Act191InitBuildView:clickCollection(itemId)
 	Activity191Controller.instance:openCollectionTipView(param)
 end
 
-function Act191InitBuildView:nextStep()
-	self.selectIndex = nil
+function Act191InitBuildView:onAnimFinish()
+	if self.autoFillFinish then
+		Activity191Controller.instance:nextStep()
+		ViewMgr.instance:closeView(self.viewName)
+	else
+		self.animFinish = true
+	end
+end
 
-	Activity191Controller.instance:nextStep()
-	ViewMgr.instance:closeView(self.viewName)
+function Act191InitBuildView:onAutoFillFinish()
+	if self.animFinish then
+		Activity191Controller.instance:nextStep()
+		ViewMgr.instance:closeView(self.viewName)
+	else
+		self.autoFillFinish = true
+	end
 end
 
 function Act191InitBuildView.getFetterInfoList(ids)

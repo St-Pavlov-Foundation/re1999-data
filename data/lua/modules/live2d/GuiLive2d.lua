@@ -307,9 +307,7 @@ function GuiLive2d:_doProcessEffect()
 			end
 		end
 
-		if #self._uiEffectGos > 0 and CharacterVoiceEnum.RunMoreUpdate[self._rtViewName] then
-			TaskDispatcher.runRepeat(self._realtimeAdjustPos, self, 0.1)
-		end
+		TaskDispatcher.runRepeat(self._realtimeAdjustPos, self, 0.1)
 	end
 
 	self:_initEffectLayer()

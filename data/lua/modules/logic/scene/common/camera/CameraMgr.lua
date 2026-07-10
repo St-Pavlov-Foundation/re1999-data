@@ -284,6 +284,18 @@ function CameraMgr:getCameraRootAnimator()
 	return self._cameraRootAnimator
 end
 
+function CameraMgr:setCameraRootAnimatorController(controller)
+	local animator = self:getCameraRootAnimator()
+
+	if animator.runtimeAnimatorController ~= controller then
+		local controllerName = controller and controller.name
+
+		PostProcessingMgr.instance:dispatchEvent(PostProcessingEvent.onCameraRootAnimatorControllerChange, controllerName)
+	end
+
+	animator.runtimeAnimatorController = controller
+end
+
 function CameraMgr:getCameraRootAnimatorPlayer()
 	self._cameraRootAnimatorPlayer = self._cameraRootAnimatorPlayer or SLFramework.AnimatorPlayer.Get(self._cameraRootGO)
 

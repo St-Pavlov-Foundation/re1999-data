@@ -2204,7 +2204,7 @@
     "group": 0,
     "tag": "",
     "type": 33,
-    "typeParam": "1#artist",
+    "typeParam": "1#sportsMeet",
     "itemParam": ""
   },
   {
@@ -2212,7 +2212,7 @@
     "group": 0,
     "tag": "",
     "type": 33,
-    "typeParam": "1#greenDeer",
+    "typeParam": "1#artist",
     "itemParam": ""
   },
   {
@@ -2549,6 +2549,150 @@
     "tag": "",
     "type": 3,
     "typeParam": "6#4#1#1000#1",
+    "itemParam": ""
+  },
+  {
+    "id": 1120881,
+    "group": 0,
+    "tag": "",
+    "type": 27,
+    "typeParam": "rite#2",
+    "itemParam": ""
+  },
+  {
+    "id": 1120891,
+    "group": 0,
+    "tag": "",
+    "type": 27,
+    "typeParam": "enlightenment#2",
+    "itemParam": ""
+  },
+  {
+    "id": 1120901,
+    "group": 0,
+    "tag": "",
+    "type": 27,
+    "typeParam": "electricity#2",
+    "itemParam": ""
+  },
+  {
+    "id": 1120911,
+    "group": 0,
+    "tag": "",
+    "type": 27,
+    "typeParam": "lossLife#2",
+    "itemParam": ""
+  },
+  {
+    "id": 1120921,
+    "group": 0,
+    "tag": "",
+    "type": 27,
+    "typeParam": "afterglow#2",
+    "itemParam": ""
+  },
+  {
+    "id": 1120931,
+    "group": 0,
+    "tag": "",
+    "type": 27,
+    "typeParam": "counter#2",
+    "itemParam": ""
+  },
+  {
+    "id": 1120941,
+    "group": 0,
+    "tag": "",
+    "type": 27,
+    "typeParam": "upgrade#2",
+    "itemParam": ""
+  },
+  {
+    "id": 1120951,
+    "group": 0,
+    "tag": "",
+    "type": 27,
+    "typeParam": "unusual#2",
+    "itemParam": ""
+  },
+  {
+    "id": 1120961,
+    "group": 0,
+    "tag": "",
+    "type": 27,
+    "typeParam": "remodeling#2",
+    "itemParam": ""
+  },
+  {
+    "id": 1120661,
+    "group": 0,
+    "tag": "",
+    "type": 27,
+    "typeParam": "rite#1",
+    "itemParam": ""
+  },
+  {
+    "id": 1120671,
+    "group": 0,
+    "tag": "",
+    "type": 27,
+    "typeParam": "enlightenment#1",
+    "itemParam": ""
+  },
+  {
+    "id": 1120681,
+    "group": 0,
+    "tag": "",
+    "type": 27,
+    "typeParam": "electricity#1",
+    "itemParam": ""
+  },
+  {
+    "id": 1120691,
+    "group": 0,
+    "tag": "",
+    "type": 27,
+    "typeParam": "lossLife#1",
+    "itemParam": ""
+  },
+  {
+    "id": 1120701,
+    "group": 0,
+    "tag": "",
+    "type": 27,
+    "typeParam": "afterglow#1",
+    "itemParam": ""
+  },
+  {
+    "id": 1120711,
+    "group": 0,
+    "tag": "",
+    "type": 27,
+    "typeParam": "counter#1",
+    "itemParam": ""
+  },
+  {
+    "id": 1120721,
+    "group": 0,
+    "tag": "",
+    "type": 27,
+    "typeParam": "upgrade#1",
+    "itemParam": ""
+  },
+  {
+    "id": 1120731,
+    "group": 0,
+    "tag": "",
+    "type": 27,
+    "typeParam": "unusual#1",
+    "itemParam": ""
+  },
+  {
+    "id": 1120741,
+    "group": 0,
+    "tag": "",
+    "type": 27,
+    "typeParam": "remodeling#1",
     "itemParam": ""
   },
   {

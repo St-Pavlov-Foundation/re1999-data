@@ -413,6 +413,16 @@ function Activity191Config:getStageCfg(actId, stageId)
 	end
 end
 
+function Activity191Config:getRankCfg(rank)
+	local rankCfg = lua_activity191_rank.configDict[rank]
+
+	if rankCfg then
+		return rankCfg
+	else
+		logError(string.format("斗蛐蛐事件表_战力等级表不存在配置 战力等级: %s", rank))
+	end
+end
+
 Activity191Config.instance = Activity191Config.New()
 
 return Activity191Config

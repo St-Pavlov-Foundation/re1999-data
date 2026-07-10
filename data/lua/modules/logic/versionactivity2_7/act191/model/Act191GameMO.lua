@@ -577,7 +577,7 @@ function Act191GameMO:exchangeItem(from, to)
 	Activity191Rpc.instance:sendChangeAct191TeamRequest(self.actId, self.curTeamIndex, teamInfo)
 end
 
-function Act191GameMO:autoFill()
+function Act191GameMO:autoFill(callback, callbackObj)
 	local teamInfo = self:getTeamInfo()
 
 	for k, v in ipairs(self.warehouseInfo.hero) do
@@ -592,7 +592,7 @@ function Act191GameMO:autoFill()
 		end
 	end
 
-	Activity191Rpc.instance:sendChangeAct191TeamRequest(self.actId, 1, teamInfo)
+	Activity191Rpc.instance:sendChangeAct191TeamRequest(self.actId, 1, teamInfo, callback, callbackObj)
 end
 
 function Act191GameMO:getAct191Effect(effectId)

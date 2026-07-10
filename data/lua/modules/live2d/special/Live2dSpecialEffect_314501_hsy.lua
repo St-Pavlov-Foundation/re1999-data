@@ -11,6 +11,14 @@ function Live2dSpecialEffect_314501_hsy:_onInit()
 	self._normalMapPath1 = "live2d/dynamic/314501_hsy_00_bloom_special.png"
 end
 
+function Live2dSpecialEffect_314501_hsy:addEventListeners()
+	self:addEventCb(PostProcessingMgr.instance, PostProcessingEvent.onCameraRootAnimatorControllerChange, self.onAnimatorControllerChange, self)
+end
+
+function Live2dSpecialEffect_314501_hsy:removeEventListeners()
+	self:removeEventCb(PostProcessingMgr.instance, PostProcessingEvent.onCameraRootAnimatorControllerChange, self.onAnimatorControllerChange, self)
+end
+
 local needSetHsyLightTexture = {
 	"b_piaofu1",
 	"b_piaofu2",
@@ -185,7 +193,8 @@ function Live2dSpecialEffect_314501_hsy:_playCameraBloomAnim()
 	local animatorInst = assetItem:GetResource(url)
 	local animator = CameraMgr.instance:getCameraRootAnimator()
 
-	animator.runtimeAnimatorController = animatorInst
+	CameraMgr.instance:setCameraRootAnimatorController(animatorInst)
+
 	animator.enabled = true
 
 	animator:Play("start")
@@ -340,7 +349,7 @@ function Live2dSpecialEffect_314501_hsy:_clearCameraAnimationController()
 		return
 	end
 
-	animator.runtimeAnimatorController = nil
+	CameraMgr.instance:setCameraRootAnimatorController()
 end
 
 function Live2dSpecialEffect_314501_hsy:_delayEnableKeyword()
@@ -399,6 +408,36 @@ function Live2dSpecialEffect_314501_hsy:_setPPVolume()
 	local profile = ConstAbCache.instance:getRes(PostProcessingMgr.MainAllProfilePath)
 
 	PostProcessingMgr.instance:setProfile(profile)
+end
+
+function Live2dSpecialEffect_314501_hsy:onAnimatorControllerChange(controllerName)
+	if controllerName == self._animationControllerName then
+		return
+	end
+
+	local player = CameraMgr.instance:getCameraRootAnimatorPlayer()
+
+	if not player then
+		return
+	end
+
+	local animator = player.animator
+	local animatorInst = animator.runtimeAnimatorController
+
+	if not animatorInst or animatorInst.name ~= self._animationControllerName then
+		return
+	end
+
+	local layer = 0
+	local info = animator:GetCurrentAnimatorStateInfo(layer)
+
+	animator:Play(info.fullPathHash, layer, 1)
+	animator:Update(0)
+	self:_clearCameraAnimationController()
+
+	if not self:isInStoryView() then
+		self:_onBloomTexExchange()
+	end
 end
 
 function Live2dSpecialEffect_314501_hsy:onDestroy()

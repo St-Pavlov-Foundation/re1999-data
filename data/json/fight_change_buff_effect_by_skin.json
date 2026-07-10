@@ -306,6 +306,15 @@
     "audio": 431390341
   },
   {
+    "effectPath": "v3a5_llzhd/llzhd_innate",
+    "target": 2,
+    "skinId": 313903,
+    "changedPath": "v3a8_llzhd/llzhd_innate",
+    "duration": 0.0,
+    "effectHangPoint": "mountbody",
+    "audio": 431390341
+  },
+  {
     "effectPath": "buff_hudun_fire_01",
     "target": 2,
     "skinId": 309403,

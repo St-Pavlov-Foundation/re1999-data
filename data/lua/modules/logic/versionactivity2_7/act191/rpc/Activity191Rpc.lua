@@ -62,7 +62,6 @@ function Activity191Rpc:onReceiveSelect191InitBuildReply(resultCode, msg)
 	local actInfo = Activity191Model.instance:getActInfo(activityId)
 
 	actInfo:updateGameInfo(gameInfo)
-	actInfo:getGameInfo():autoFill()
 end
 
 function Activity191Rpc:sendSelect191NodeRequest(activityId, index, callback, callbackObj)
@@ -212,7 +211,7 @@ function Activity191Rpc:onReceiveGain191RewardEventReply(resultCode, msg)
 	actInfo:updateGameInfo(gameInfo)
 end
 
-function Activity191Rpc:sendChangeAct191TeamRequest(activityId, curTeamIndex, teamInfo)
+function Activity191Rpc:sendChangeAct191TeamRequest(activityId, curTeamIndex, teamInfo, callback, callbackObj)
 	local req = Activity191Module_pb.ChangeAct191TeamRequest()
 
 	req.activityId = activityId
@@ -234,7 +233,7 @@ function Activity191Rpc:sendChangeAct191TeamRequest(activityId, curTeamIndex, te
 
 	req.teamInfo.auto = teamInfo.auto
 
-	self:sendMsg(req)
+	self:sendMsg(req, callback, callbackObj)
 end
 
 function Activity191Rpc:onReceiveChangeAct191TeamReply(resultCode, msg)
