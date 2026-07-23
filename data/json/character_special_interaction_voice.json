@@ -196,5 +196,14 @@
     "timeoutVoice": 13120120,
     "protectionTime": 14,
     "statusParams": ""
+  },
+  {
+    "id": 13105101,
+    "time": 5.0,
+    "waitVoice": 13105102,
+    "waitVoiceParams": "",
+    "timeoutVoice": 13105103,
+    "protectionTime": 3,
+    "statusParams": ""
   }
 ]

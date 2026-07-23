@@ -1,6 +1,14 @@
 ﻿-- chunkname: @modules/setting/module_mvc.lua
 
 local module_mvc = {
+	EquipLvUp = {
+		model = {
+			"EquipLvUpModel"
+		},
+		controller = {
+			"EquipLvUpController"
+		}
+	},
 	V3a8EchoSong = {
 		model = {
 			"V3a8EchoSongModel"
@@ -79,6 +87,22 @@ local module_mvc = {
 		},
 		config = {
 			"V3a6YaMiConfig"
+		}
+	},
+	Activity235 = {
+		model = {
+			"AtomicOperationActivityModel",
+			"AtomicOperationActivityGameModel"
+		},
+		controller = {
+			"AtomicOperationActivityController",
+			"AtomicOperationActivityGameController"
+		},
+		rpc = {
+			"AtomicOperationActivityRpc"
+		},
+		config = {
+			"AtomicOperationActivityConfig"
 		}
 	},
 	V3a5Puzzle = {
@@ -3844,6 +3868,63 @@ local module_mvc = {
 		},
 		config = {
 			"Activity240Config"
+		}
+	},
+	AtomicHeart = {
+		config = {
+			"AtomicDungeonConfig",
+			"AtomicConfig"
+		},
+		model = {
+			"AtomicModel",
+			"AtomicDungeonModel",
+			"AtomicDungeonTaskModel",
+			"AtomicDataBaseViewModel",
+			"AtomicTalentViewModel"
+		},
+		rpc = {
+			"AtomicRpc"
+		},
+		controller = {
+			"AtomicController",
+			"AtomicDungeonController",
+			"VersionActivity3_10DungeonController"
+		}
+	},
+	Milestone = {
+		config = {
+			"MileStoneConfig"
+		},
+		model = {
+			"MileStoneModel"
+		},
+		rpc = {
+			"MileStoneRpc"
+		},
+		controller = {
+			"MileStoneController"
+		}
+	},
+	Sp02_PaoMian = {
+		config = {
+			"Sp02_GuessMeConfig",
+			"Sp02_MarcusConfig"
+		},
+		model = {
+			"Sp02_GuessMeModel",
+			"Sp02_MarcusModel"
+		},
+		rpc = {
+			"Activity238Rpc",
+			"Activity239Rpc"
+		},
+		controller = {
+			"Sp02_PaoMianController"
+		}
+	},
+	SceneUIPackage = {
+		model = {
+			"SceneUIPackageModel"
 		}
 	}
 }

@@ -176,10 +176,27 @@ function FightRoundData:processRoundData()
 	self.nextRoundBeginStep = self:processStepList(self.nextRoundBeginStep)
 
 	self:maskDeviceDone()
+	self:buildStepDeviceInnerIndex()
 	self:calculateTimelineCount()
 
 	if FightDataHelper.fieldMgr:isRouge2() then
 		FightController.instance:dispatchEvent(FightEvent.OnUpdateSpeed)
+	end
+end
+
+function FightRoundData:buildStepDeviceInnerIndex()
+	local wrapType = FightStepData.StepType.Wrap
+	local deviceType = FightEnum.ActType.DEVICE
+	local innerIndex = 1
+
+	for _, step in ipairs(self.fightStep) do
+		if step.actType == deviceType then
+			if step:getStepType() == wrapType then
+				innerIndex = step.supportHeroId
+			else
+				step:setDeviceInnerIndex(innerIndex)
+			end
+		end
 	end
 end
 
@@ -239,16 +256,17 @@ function FightRoundData:processStepList(stepList)
 	self.effectStepDeep = 0
 
 	for i, v in ipairs(stepList) do
-		self:addStep(v)
+		self:addStep(v, FightStepData.StepType.Wrap)
 	end
 
 	return self.stepList
 end
 
-function FightRoundData:addStep(step)
+function FightRoundData:addStep(step, stepType)
 	self.stepIndex = self.stepIndex + 1
 	step.custom_stepIndex = self.stepIndex
 
+	step:setStepType(stepType)
 	table.insert(self.stepList, step)
 	self:detectStepEffect(step.actEffect)
 end
@@ -296,7 +314,7 @@ function FightRoundData:detectStepEffect(actEffect)
 				index = index - 1
 				self.effectStepDeep = self.effectStepDeep + 1
 
-				self:addStep(actEffectData.fightStep)
+				self:addStep(actEffectData.fightStep, FightStepData.StepType.Inner)
 
 				self.effectStepDeep = self.effectStepDeep - 1
 			else
@@ -307,7 +325,7 @@ function FightRoundData:detectStepEffect(actEffect)
 
 					index = index - 1
 
-					self:addStep(fightStepData)
+					self:addStep(fightStepData, FightStepData.StepType.Inner)
 				else
 					self:detectStepEffect(fightStepData.actEffect)
 				end

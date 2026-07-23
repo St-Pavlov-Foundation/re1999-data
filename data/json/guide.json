@@ -9579,5 +9579,126 @@
     "priority": 0,
     "parallel": 1,
     "restart": 0
+  },
+  {
+    "id": 38501,
+    "desc": "从主线副本里首次进入外围指引",
+    "isOnline": 1,
+    "trigger": "OpenView#VersionActivity3_10DungeonMapView",
+    "invalid": "InvalidCondition#checkFinishGuideAndValidAct#38502|ActivityEnd#138507",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 38502,
+    "desc": "从活动页里首次进入外围指引",
+    "isOnline": 1,
+    "trigger": "OpenView#VersionActivity3_10EnterView",
+    "invalid": "InvalidCondition#checkFinishGuideAndValidAct#38501|ActivityEnd#138507",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 38503,
+    "desc": "外围养成",
+    "isOnline": 1,
+    "trigger": "OpenView#AtomicDungeonMainView",
+    "invalid": "ActivityEnd#138507",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 38504,
+    "desc": "试验场",
+    "isOnline": 1,
+    "trigger": "OpenView#AtomicDungeonMainView",
+    "invalid": "ActivityEnd#138507",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 38505,
+    "desc": "试验场挑战入口",
+    "isOnline": 1,
+    "trigger": "OpenView#AtomicDungeonMainView",
+    "invalid": "ActivityEnd#138507",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 38506,
+    "desc": "节奏锁解密",
+    "isOnline": 1,
+    "trigger": "OpenView#AtomicRhythmGameView",
+    "invalid": "ActivityEnd#138507",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 38507,
+    "desc": "射线锁解密",
+    "isOnline": 1,
+    "trigger": "OpenView#AtomicLineGameView",
+    "invalid": "ActivityEnd#138507",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 38508,
+    "desc": "颜色锁解密",
+    "isOnline": 1,
+    "trigger": "OpenView#AtomicColorGameView",
+    "invalid": "ActivityEnd#138507",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 38509,
+    "desc": "突发事件解锁",
+    "isOnline": 1,
+    "trigger": "OpenView#AtomicDungeonMainView",
+    "invalid": "ActivityEnd#138507",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 38510,
+    "desc": "首次进入外围副本",
+    "isOnline": 1,
+    "trigger": "OpenView#AtomicDungeonMainView",
+    "invalid": "ActivityEnd#138507",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 38511,
+    "desc": "试验场出现两把钥匙的事件",
+    "isOnline": 1,
+    "trigger": "OpenView#AtomicDungeonMainView",
+    "invalid": "ActivityEnd#138507",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
   }
 ]

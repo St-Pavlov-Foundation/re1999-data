@@ -33,6 +33,8 @@
     "poolDetail": 1,
     "characterDetail": "11#12#25",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 0,
     "jumpGroupId": 0,
     "mailIds": "",
@@ -45,7 +47,9 @@
     "bannerLineName": "bq012_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 2,
@@ -81,6 +85,8 @@
     "poolDetail": 2,
     "characterDetail": "23#24",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 2,
     "jumpGroupId": 0,
     "mailIds": "",
@@ -93,7 +99,9 @@
     "bannerLineName": "bq013_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 10111,
@@ -129,6 +137,8 @@
     "poolDetail": 4,
     "characterDetail": "101111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 0,
     "mailIds": "",
@@ -141,7 +151,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 10121,
@@ -177,6 +189,8 @@
     "poolDetail": 4,
     "characterDetail": "101211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 0,
     "mailIds": "",
@@ -189,7 +203,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 11111,
@@ -225,6 +241,8 @@
     "poolDetail": 3,
     "characterDetail": "111111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 1,
     "mailIds": "",
@@ -237,7 +255,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 11121,
@@ -273,6 +293,8 @@
     "poolDetail": 3,
     "characterDetail": "111211#111212",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 2,
     "mailIds": "",
@@ -285,7 +307,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 11131,
@@ -321,6 +345,8 @@
     "poolDetail": 4,
     "characterDetail": "111311",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 3,
     "mailIds": "",
@@ -333,7 +359,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 11141,
@@ -369,6 +397,8 @@
     "poolDetail": 4,
     "characterDetail": "111411",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 4,
     "mailIds": "",
@@ -381,7 +411,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 11151,
@@ -417,6 +449,8 @@
     "poolDetail": 4,
     "characterDetail": "111511",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 5,
     "mailIds": "",
@@ -429,7 +463,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 12111,
@@ -465,6 +501,8 @@
     "poolDetail": 3,
     "characterDetail": "121111#121112",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 6,
     "mailIds": "",
@@ -477,7 +515,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 12121,
@@ -513,6 +553,8 @@
     "poolDetail": 3,
     "characterDetail": "121211#121212",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 7,
     "mailIds": "",
@@ -525,7 +567,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 12131,
@@ -561,6 +605,8 @@
     "poolDetail": 4,
     "characterDetail": "121311",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 8,
     "mailIds": "",
@@ -573,7 +619,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 12141,
@@ -609,6 +657,8 @@
     "poolDetail": 4,
     "characterDetail": "121411",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 9,
     "mailIds": "",
@@ -621,7 +671,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 12151,
@@ -657,6 +709,8 @@
     "poolDetail": 4,
     "characterDetail": "121511",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 10,
     "mailIds": "",
@@ -669,7 +723,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 13111,
@@ -705,6 +761,8 @@
     "poolDetail": 3,
     "characterDetail": "131111#131112",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 11,
     "mailIds": "",
@@ -717,7 +775,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 13121,
@@ -753,6 +813,8 @@
     "poolDetail": 3,
     "characterDetail": "131211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 1,
     "mailIds": "",
@@ -765,7 +827,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 13131,
@@ -801,6 +865,8 @@
     "poolDetail": 4,
     "characterDetail": "131311",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 2,
     "mailIds": "",
@@ -813,7 +879,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 13141,
@@ -849,6 +917,8 @@
     "poolDetail": 4,
     "characterDetail": "131411",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 3,
     "mailIds": "",
@@ -861,7 +931,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 13151,
@@ -897,6 +969,8 @@
     "poolDetail": 4,
     "characterDetail": "131511",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 4,
     "mailIds": "",
@@ -909,7 +983,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 14111,
@@ -945,6 +1021,8 @@
     "poolDetail": 3,
     "characterDetail": "141111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 5,
     "mailIds": "",
@@ -957,7 +1035,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 14121,
@@ -993,6 +1073,8 @@
     "poolDetail": 3,
     "characterDetail": "141211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 6,
     "mailIds": "",
@@ -1005,7 +1087,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 14131,
@@ -1041,6 +1125,8 @@
     "poolDetail": 4,
     "characterDetail": "141311",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 7,
     "mailIds": "",
@@ -1053,7 +1139,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 14141,
@@ -1089,6 +1177,8 @@
     "poolDetail": 4,
     "characterDetail": "141411",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 8,
     "mailIds": "",
@@ -1101,7 +1191,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 14151,
@@ -1137,6 +1229,8 @@
     "poolDetail": 4,
     "characterDetail": "141511",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 9,
     "mailIds": "",
@@ -1149,7 +1243,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 14161,
@@ -1185,6 +1281,8 @@
     "poolDetail": 5,
     "characterDetail": "141611#141612#141613#141614",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 5,
     "jumpGroupId": 10,
     "mailIds": "",
@@ -1197,7 +1295,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 15011,
@@ -1233,6 +1333,8 @@
     "poolDetail": 6,
     "characterDetail": "21#22",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 6,
     "jumpGroupId": 6,
     "mailIds": "1108#1109",
@@ -1245,7 +1347,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 15111,
@@ -1281,6 +1385,8 @@
     "poolDetail": 3,
     "characterDetail": "151111#151112",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 1,
     "mailIds": "",
@@ -1293,7 +1399,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 15121,
@@ -1329,6 +1437,8 @@
     "poolDetail": 3,
     "characterDetail": "151211#151212",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 2,
     "mailIds": "",
@@ -1341,7 +1451,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 15131,
@@ -1377,6 +1489,8 @@
     "poolDetail": 4,
     "characterDetail": "151311",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 3,
     "mailIds": "",
@@ -1389,7 +1503,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 15141,
@@ -1425,6 +1541,8 @@
     "poolDetail": 4,
     "characterDetail": "151411",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 4,
     "mailIds": "",
@@ -1437,7 +1555,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 15151,
@@ -1473,6 +1593,8 @@
     "poolDetail": 4,
     "characterDetail": "151511",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 5,
     "mailIds": "",
@@ -1485,7 +1607,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 16111,
@@ -1521,6 +1645,8 @@
     "poolDetail": 7,
     "characterDetail": "161111#161112",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 7,
     "jumpGroupId": 7,
     "mailIds": "",
@@ -1533,7 +1659,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 16121,
@@ -1569,6 +1697,8 @@
     "poolDetail": 3,
     "characterDetail": "161211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 8,
     "mailIds": "",
@@ -1581,7 +1711,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 16131,
@@ -1617,6 +1749,8 @@
     "poolDetail": 4,
     "characterDetail": "161311",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 9,
     "mailIds": "",
@@ -1629,7 +1763,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 16141,
@@ -1665,6 +1801,8 @@
     "poolDetail": 4,
     "characterDetail": "161411",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 10,
     "mailIds": "",
@@ -1677,7 +1815,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 16151,
@@ -1713,6 +1853,8 @@
     "poolDetail": 4,
     "characterDetail": "161511",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 11,
     "mailIds": "",
@@ -1725,7 +1867,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 16161,
@@ -1761,6 +1905,8 @@
     "poolDetail": 8,
     "characterDetail": "161611",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 8,
     "jumpGroupId": 1,
     "mailIds": "",
@@ -1773,7 +1919,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 17111,
@@ -1809,6 +1957,8 @@
     "poolDetail": 3,
     "characterDetail": "171111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 2,
     "mailIds": "",
@@ -1821,7 +1971,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 17121,
@@ -1857,6 +2009,8 @@
     "poolDetail": 3,
     "characterDetail": "171112",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 3,
     "mailIds": "",
@@ -1869,7 +2023,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 17131,
@@ -1905,6 +2061,8 @@
     "poolDetail": 4,
     "characterDetail": "171113",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 4,
     "mailIds": "",
@@ -1917,7 +2075,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 17141,
@@ -1953,6 +2113,8 @@
     "poolDetail": 4,
     "characterDetail": "171114",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 5,
     "mailIds": "",
@@ -1965,7 +2127,9 @@
     "bannerLineName": "",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 17151,
@@ -2001,6 +2165,8 @@
     "poolDetail": 4,
     "characterDetail": "171115",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 10,
     "mailIds": "",
@@ -2013,7 +2179,9 @@
     "bannerLineName": "v1a4_role6_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 18111,
@@ -2049,6 +2217,8 @@
     "poolDetail": 13,
     "characterDetail": "181111#181311",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 1,
     "mailIds": "",
@@ -2061,7 +2231,9 @@
     "bannerLineName": "v1a8_weila",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 18121,
@@ -2097,6 +2269,8 @@
     "poolDetail": 3,
     "characterDetail": "181211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 2,
     "mailIds": "",
@@ -2109,7 +2283,9 @@
     "bannerLineName": "v1a8_windsong_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 18131,
@@ -2145,6 +2321,8 @@
     "poolDetail": 4,
     "characterDetail": "131211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 3,
     "mailIds": "",
@@ -2157,7 +2335,9 @@
     "bannerLineName": "v1a3_galapona_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 18141,
@@ -2193,6 +2373,8 @@
     "poolDetail": 4,
     "characterDetail": "151111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 4,
     "mailIds": "",
@@ -2205,7 +2387,9 @@
     "bannerLineName": "v1a8_kerandian_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 18151,
@@ -2241,6 +2425,8 @@
     "poolDetail": 4,
     "characterDetail": "141311",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 5,
     "mailIds": "",
@@ -2253,7 +2439,9 @@
     "bannerLineName": "bp014_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 19191,
@@ -2289,6 +2477,8 @@
     "poolDetail": 11,
     "characterDetail": "161611",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 11,
     "jumpGroupId": 6,
     "mailIds": "",
@@ -2301,7 +2491,9 @@
     "bannerLineName": "v1a9_selfselect_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 19111,
@@ -2337,6 +2529,8 @@
     "poolDetail": 10,
     "characterDetail": "191111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 10,
     "jumpGroupId": 7,
     "mailIds": "",
@@ -2349,7 +2543,9 @@
     "bannerLineName": "v1a9_lucy_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 19121,
@@ -2385,6 +2581,8 @@
     "poolDetail": 3,
     "characterDetail": "191112",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 8,
     "mailIds": "",
@@ -2397,7 +2595,9 @@
     "bannerLineName": "v1a9_kakaniya_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 19131,
@@ -2433,6 +2633,8 @@
     "poolDetail": 4,
     "characterDetail": "191113",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 9,
     "mailIds": "",
@@ -2445,7 +2647,9 @@
     "bannerLineName": "v1a9_yaxian_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 19141,
@@ -2481,6 +2685,8 @@
     "poolDetail": 4,
     "characterDetail": "191114",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 10,
     "mailIds": "",
@@ -2493,7 +2699,9 @@
     "bannerLineName": "v1a9_getian_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 19151,
@@ -2529,6 +2737,8 @@
     "poolDetail": 4,
     "characterDetail": "191115",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 11,
     "mailIds": "",
@@ -2541,7 +2751,9 @@
     "bannerLineName": "yuanlv_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 20131,
@@ -2577,6 +2789,8 @@
     "poolDetail": 4,
     "characterDetail": "171111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 1,
     "mailIds": "",
@@ -2589,7 +2803,9 @@
     "bannerLineName": "v2a0_yisuoerde_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 20141,
@@ -2625,6 +2841,8 @@
     "poolDetail": 4,
     "characterDetail": "131211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 2,
     "mailIds": "",
@@ -2637,7 +2855,9 @@
     "bannerLineName": "v1a3_galapona_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 20151,
@@ -2673,6 +2893,8 @@
     "poolDetail": 4,
     "characterDetail": "151211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 3,
     "mailIds": "",
@@ -2685,7 +2907,9 @@
     "bannerLineName": "v2a0_aizila_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 20111,
@@ -2721,6 +2945,8 @@
     "poolDetail": 3,
     "characterDetail": "201111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 4,
     "mailIds": "",
@@ -2733,7 +2959,9 @@
     "bannerLineName": "v2a0_joe_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 20121,
@@ -2769,6 +2997,8 @@
     "poolDetail": 3,
     "characterDetail": "201211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 5,
     "mailIds": "",
@@ -2781,7 +3011,9 @@
     "bannerLineName": "v2a0_mercury_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 21111,
@@ -2817,6 +3049,8 @@
     "poolDetail": 13,
     "characterDetail": "211111#211112",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 4,
     "mailIds": "",
@@ -2829,7 +3063,9 @@
     "bannerLineName": "v2a1_tuesday_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 21121,
@@ -2865,6 +3101,8 @@
     "poolDetail": 3,
     "characterDetail": "211211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 5,
     "mailIds": "",
@@ -2877,7 +3115,9 @@
     "bannerLineName": "v2a1_aergusi_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 21131,
@@ -2913,6 +3153,8 @@
     "poolDetail": 4,
     "characterDetail": "171112",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 9,
     "mailIds": "",
@@ -2925,7 +3167,9 @@
     "bannerLineName": "v2a1_makusi_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 21141,
@@ -2961,6 +3205,8 @@
     "poolDetail": 4,
     "characterDetail": "181211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 10,
     "mailIds": "",
@@ -2973,7 +3219,9 @@
     "bannerLineName": "v1a8_windsong_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 21151,
@@ -3009,6 +3257,8 @@
     "poolDetail": 4,
     "characterDetail": "181111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 11,
     "mailIds": "",
@@ -3021,7 +3271,9 @@
     "bannerLineName": "v1a8_weila_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 22111,
@@ -3057,6 +3309,8 @@
     "poolDetail": 14,
     "characterDetail": "221111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 14,
     "jumpGroupId": 7,
     "mailIds": "",
@@ -3069,7 +3323,9 @@
     "bannerLineName": "v2a2_tianshinana_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 22121,
@@ -3105,6 +3361,8 @@
     "poolDetail": 3,
     "characterDetail": "221112",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 5,
     "mailIds": "",
@@ -3117,7 +3375,9 @@
     "bannerLineName": "v2a2_luopeila_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 22161,
@@ -3153,6 +3413,8 @@
     "poolDetail": 12,
     "characterDetail": "161611",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 12,
     "jumpGroupId": 6,
     "mailIds": "",
@@ -3165,7 +3427,9 @@
     "bannerLineName": "v2a2_selfselect_line",
     "totalPosibility": 1000,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 22101,
@@ -3201,6 +3465,8 @@
     "poolDetail": 101,
     "characterDetail": "23#24",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 101,
     "jumpGroupId": 0,
     "mailIds": "",
@@ -3213,7 +3479,9 @@
     "bannerLineName": "bq013_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 22131,
@@ -3249,6 +3517,8 @@
     "poolDetail": 4,
     "characterDetail": "171111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 8,
     "mailIds": "",
@@ -3261,7 +3531,9 @@
     "bannerLineName": "v2a0_yisuoerde_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 22141,
@@ -3297,6 +3569,8 @@
     "poolDetail": 4,
     "characterDetail": "141211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 9,
     "mailIds": "",
@@ -3309,7 +3583,9 @@
     "bannerLineName": "v1a4_role6_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 22151,
@@ -3345,6 +3621,8 @@
     "poolDetail": 4,
     "characterDetail": "191114",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 10,
     "mailIds": "",
@@ -3357,7 +3635,9 @@
     "bannerLineName": "v1a9_getian_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 23111,
@@ -3393,6 +3673,8 @@
     "poolDetail": 3,
     "characterDetail": "231111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 7,
     "mailIds": "",
@@ -3405,7 +3687,9 @@
     "bannerLineName": "v2a3_dudugu_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 23121,
@@ -3441,6 +3725,8 @@
     "poolDetail": 13,
     "characterDetail": "231211#231212",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 5,
     "mailIds": "",
@@ -3453,7 +3739,9 @@
     "bannerLineName": "v2a3_zhixinquaner_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 23161,
@@ -3489,6 +3777,8 @@
     "poolDetail": 15,
     "characterDetail": "161611",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 15,
     "jumpGroupId": 6,
     "mailIds": "",
@@ -3501,7 +3791,9 @@
     "bannerLineName": "v2a3_selfselectsix_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 23131,
@@ -3537,6 +3829,8 @@
     "poolDetail": 4,
     "characterDetail": "191112",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 8,
     "mailIds": "",
@@ -3549,7 +3843,9 @@
     "bannerLineName": "v1a9_kakaniya_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 23141,
@@ -3585,6 +3881,8 @@
     "poolDetail": 4,
     "characterDetail": "201111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 9,
     "mailIds": "",
@@ -3597,7 +3895,9 @@
     "bannerLineName": "v2a0_joe_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 23151,
@@ -3633,6 +3933,8 @@
     "poolDetail": 4,
     "characterDetail": "201211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 10,
     "mailIds": "",
@@ -3645,7 +3947,9 @@
     "bannerLineName": "v2a0_mercury_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 24161,
@@ -3681,6 +3985,8 @@
     "poolDetail": 15,
     "characterDetail": "",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 15,
     "jumpGroupId": 6,
     "mailIds": "",
@@ -3693,7 +3999,9 @@
     "bannerLineName": "v2a3_selfselectsix_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 24111,
@@ -3729,6 +4037,8 @@
     "poolDetail": 3,
     "characterDetail": "241111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 7,
     "mailIds": "",
@@ -3741,7 +4051,9 @@
     "bannerLineName": "v2a4_bakaluoer_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 24121,
@@ -3777,6 +4089,8 @@
     "poolDetail": 3,
     "characterDetail": "241211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 5,
     "mailIds": "",
@@ -3789,7 +4103,9 @@
     "bannerLineName": "v2a4_tutushizi_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 24101,
@@ -3825,6 +4141,8 @@
     "poolDetail": 6,
     "characterDetail": "",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 6,
     "jumpGroupId": 8,
     "mailIds": "1127#1128",
@@ -3837,7 +4155,9 @@
     "bannerLineName": "v2a4_fudai_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 24131,
@@ -3873,6 +4193,8 @@
     "poolDetail": 4,
     "characterDetail": "211211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 9,
     "mailIds": "",
@@ -3885,7 +4207,9 @@
     "bannerLineName": "v2a1_aergusi_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 24141,
@@ -3921,6 +4245,8 @@
     "poolDetail": 4,
     "characterDetail": "181211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 10,
     "mailIds": "",
@@ -3933,7 +4259,9 @@
     "bannerLineName": "v1a8_windsong_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 25171,
@@ -3969,6 +4297,8 @@
     "poolDetail": 8,
     "characterDetail": "",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 8,
     "jumpGroupId": 1,
     "mailIds": "",
@@ -3981,7 +4311,9 @@
     "bannerLineName": "v2a5_selfselectsix_line",
     "totalPosibility": 700,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 25111,
@@ -4017,6 +4349,8 @@
     "poolDetail": 17,
     "characterDetail": "251111#251112",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 17,
     "jumpGroupId": 7,
     "mailIds": "",
@@ -4029,7 +4363,9 @@
     "bannerLineName": "v2a5_liangyue_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 25161,
@@ -4065,6 +4401,8 @@
     "poolDetail": 15,
     "characterDetail": "",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 15,
     "jumpGroupId": 6,
     "mailIds": "",
@@ -4077,7 +4415,9 @@
     "bannerLineName": "v2a5_selfselectsix_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 25121,
@@ -4113,6 +4453,8 @@
     "poolDetail": 3,
     "characterDetail": "251211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 5,
     "mailIds": "",
@@ -4125,7 +4467,9 @@
     "bannerLineName": "v2a5_feilinshiduo_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 25181,
@@ -4161,6 +4505,8 @@
     "poolDetail": 18,
     "characterDetail": "161111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 18,
     "jumpGroupId": 8,
     "mailIds": "",
@@ -4173,7 +4519,9 @@
     "bannerLineName": "v2a5_quniang_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 25131,
@@ -4209,6 +4557,8 @@
     "poolDetail": 4,
     "characterDetail": "211111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 3,
     "mailIds": "",
@@ -4221,7 +4571,9 @@
     "bannerLineName": "v2a1_tuesday_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 25141,
@@ -4257,6 +4609,8 @@
     "poolDetail": 4,
     "characterDetail": "181111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 4,
     "mailIds": "",
@@ -4269,7 +4623,9 @@
     "bannerLineName": "v1a8_weila_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 25151,
@@ -4305,6 +4661,8 @@
     "poolDetail": 4,
     "characterDetail": "171112",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 9,
     "mailIds": "",
@@ -4317,7 +4675,9 @@
     "bannerLineName": "v2a1_makusi_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 26161,
@@ -4353,6 +4713,8 @@
     "poolDetail": 15,
     "characterDetail": "",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 15,
     "jumpGroupId": 6,
     "mailIds": "",
@@ -4365,7 +4727,9 @@
     "bannerLineName": "v2a5_selfselectsix_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 26111,
@@ -4401,6 +4765,8 @@
     "poolDetail": 3,
     "characterDetail": "261111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 1,
     "mailIds": "",
@@ -4413,7 +4779,9 @@
     "bannerLineName": "v2a6_xugouji_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 26121,
@@ -4449,6 +4817,8 @@
     "poolDetail": 3,
     "characterDetail": "261211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 2,
     "mailIds": "",
@@ -4461,7 +4831,9 @@
     "bannerLineName": "v2a6_dicehero_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 26131,
@@ -4497,6 +4869,8 @@
     "poolDetail": 4,
     "characterDetail": "231111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 3,
     "mailIds": "",
@@ -4509,7 +4883,9 @@
     "bannerLineName": "v2a3_dudugu_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 26141,
@@ -4545,6 +4921,8 @@
     "poolDetail": 4,
     "characterDetail": "221112",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 4,
     "mailIds": "",
@@ -4557,7 +4935,9 @@
     "bannerLineName": "v2a2_luopeila_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 26151,
@@ -4593,6 +4973,8 @@
     "poolDetail": 4,
     "characterDetail": "231211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 5,
     "mailIds": "",
@@ -4605,7 +4987,9 @@
     "bannerLineName": "v2a3_zhixinquaner_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 27161,
@@ -4641,6 +5025,8 @@
     "poolDetail": 15,
     "characterDetail": "",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 15,
     "jumpGroupId": 6,
     "mailIds": "",
@@ -4653,7 +5039,9 @@
     "bannerLineName": "v2a5_selfselectsix_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 27111,
@@ -4689,6 +5077,8 @@
     "poolDetail": 13,
     "characterDetail": "271111#271112",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 7,
     "mailIds": "",
@@ -4701,7 +5091,9 @@
     "bannerLineName": "v2a7_hissabeth_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 27121,
@@ -4737,6 +5129,8 @@
     "poolDetail": 3,
     "characterDetail": "271211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 8,
     "mailIds": "",
@@ -4749,7 +5143,9 @@
     "bannerLineName": "v2a7_coopergarland_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 27131,
@@ -4785,6 +5181,8 @@
     "poolDetail": 4,
     "characterDetail": "241211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 9,
     "mailIds": "",
@@ -4797,7 +5195,9 @@
     "bannerLineName": "v2a4_tutushizi_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 27141,
@@ -4833,6 +5233,8 @@
     "poolDetail": 4,
     "characterDetail": "241111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 10,
     "mailIds": "",
@@ -4845,7 +5247,9 @@
     "bannerLineName": "v2a4_bakaluoer_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 27151,
@@ -4881,6 +5285,8 @@
     "poolDetail": 4,
     "characterDetail": "211111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 11,
     "mailIds": "",
@@ -4893,7 +5299,9 @@
     "bannerLineName": "v2a1_tuesday_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 28111,
@@ -4929,6 +5337,8 @@
     "poolDetail": 20,
     "characterDetail": "281111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 20,
     "jumpGroupId": 1,
     "mailIds": "",
@@ -4941,7 +5351,9 @@
     "bannerLineName": "v2a8_nuodika_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 28112,
@@ -4977,6 +5389,8 @@
     "poolDetail": 3,
     "characterDetail": "281112",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 2,
     "mailIds": "",
@@ -4989,7 +5403,9 @@
     "bannerLineName": "v2a8_molideer_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 28121,
@@ -5025,6 +5441,8 @@
     "poolDetail": 11,
     "characterDetail": "",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 11,
     "jumpGroupId": 3,
     "mailIds": "",
@@ -5037,7 +5455,9 @@
     "bannerLineName": "v2a8_selfselectsix2_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 28122,
@@ -5073,6 +5493,8 @@
     "poolDetail": 19,
     "characterDetail": "191111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 19,
     "jumpGroupId": 4,
     "mailIds": "",
@@ -5085,7 +5507,9 @@
     "bannerLineName": "v1a9_lucy_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 28123,
@@ -5121,6 +5545,8 @@
     "poolDetail": 21,
     "characterDetail": "",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 21,
     "jumpGroupId": 6,
     "mailIds": "",
@@ -5133,7 +5559,9 @@
     "bannerLineName": "v2a5_selfselectsix_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 28131,
@@ -5169,6 +5597,8 @@
     "poolDetail": 4,
     "characterDetail": "201211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 5,
     "mailIds": "",
@@ -5181,7 +5611,9 @@
     "bannerLineName": "v2a0_mercury_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 28132,
@@ -5217,6 +5649,8 @@
     "poolDetail": 4,
     "characterDetail": "251211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 7,
     "mailIds": "",
@@ -5229,7 +5663,9 @@
     "bannerLineName": "v2a5_feilinshiduo_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 28133,
@@ -5265,6 +5701,8 @@
     "poolDetail": 4,
     "characterDetail": "201111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 8,
     "mailIds": "",
@@ -5277,7 +5715,9 @@
     "bannerLineName": "v2a0_joe_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 30161,
@@ -5313,6 +5753,8 @@
     "poolDetail": 15,
     "characterDetail": "",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 15,
     "jumpGroupId": 6,
     "mailIds": "",
@@ -5325,7 +5767,9 @@
     "bannerLineName": "v2a5_selfselectsix_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 30111,
@@ -5361,6 +5805,8 @@
     "poolDetail": 3,
     "characterDetail": "301111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 1,
     "mailIds": "",
@@ -5373,7 +5819,9 @@
     "bannerLineName": "v3a0_malianna_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 30121,
@@ -5409,6 +5857,8 @@
     "poolDetail": 3,
     "characterDetail": "301211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 2,
     "mailIds": "",
@@ -5421,7 +5871,9 @@
     "bannerLineName": "v3a0_karong_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 30131,
@@ -5457,6 +5909,8 @@
     "poolDetail": 4,
     "characterDetail": "261111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 3,
     "mailIds": "",
@@ -5469,7 +5923,9 @@
     "bannerLineName": "v2a6_xugouji_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 30141,
@@ -5505,6 +5961,8 @@
     "poolDetail": 4,
     "characterDetail": "171113",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 4,
     "mailIds": "",
@@ -5517,7 +5975,9 @@
     "bannerLineName": "v3a0_37_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 30151,
@@ -5553,6 +6013,8 @@
     "poolDetail": 4,
     "characterDetail": "231211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 5,
     "mailIds": "",
@@ -5565,7 +6027,9 @@
     "bannerLineName": "v2a3_zhixinquaner_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 305131,
@@ -5601,6 +6065,8 @@
     "poolDetail": 15,
     "characterDetail": "",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 15,
     "jumpGroupId": 6,
     "mailIds": "",
@@ -5613,7 +6079,9 @@
     "bannerLineName": "v2a5_selfselectsix_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 305121,
@@ -5648,7 +6116,9 @@
     "changeWeight": "5#500",
     "poolDetail": 306,
     "characterDetail": "305112",
-    "progressRewards": "100#3124|160#3124|220#3124|280#3124",
+    "progressRewards": "100,4#3124#1|160,4#3124#1|220,4#3124#1|280,4#3124#1",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 306,
     "jumpGroupId": 7,
     "mailIds": "",
@@ -5661,7 +6131,9 @@
     "bannerLineName": "v2a9_kashandela_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "version_2_9/v2a9_kashandelapanelview.prefab",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 305111,
@@ -5696,7 +6168,9 @@
     "changeWeight": "5#500",
     "poolDetail": 305,
     "characterDetail": "305111",
-    "progressRewards": "100#3123|160#3123|220#3123|280#3123",
+    "progressRewards": "100,4#3123#1|160,4#3123#1|220,4#3123#1|280,4#3123#1",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 305,
     "jumpGroupId": 8,
     "mailIds": "",
@@ -5709,7 +6183,9 @@
     "bannerLineName": "v2a9_azio_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "version_2_9/v2a9_aziopanelview.prefab",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 305141,
@@ -5745,6 +6221,8 @@
     "poolDetail": 4,
     "characterDetail": "271111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 3,
     "mailIds": "",
@@ -5757,7 +6235,9 @@
     "bannerLineName": "v2a7_hissabeth_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 305151,
@@ -5793,6 +6273,8 @@
     "poolDetail": 4,
     "characterDetail": "231111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 4,
     "mailIds": "",
@@ -5805,7 +6287,9 @@
     "bannerLineName": "v2a3_dudugu_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 305161,
@@ -5841,6 +6325,8 @@
     "poolDetail": 4,
     "characterDetail": "171115",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 5,
     "mailIds": "",
@@ -5853,7 +6339,9 @@
     "bannerLineName": "v1a4_role6_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 31141,
@@ -5889,6 +6377,8 @@
     "poolDetail": 15,
     "characterDetail": "",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 15,
     "jumpGroupId": 6,
     "mailIds": "",
@@ -5901,7 +6391,9 @@
     "bannerLineName": "v2a5_selfselectsix_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 31111,
@@ -5937,6 +6429,8 @@
     "poolDetail": 4,
     "characterDetail": "271211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 3,
     "mailIds": "",
@@ -5949,7 +6443,9 @@
     "bannerLineName": "v2a7_coopergarland_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 31121,
@@ -5985,6 +6481,8 @@
     "poolDetail": 4,
     "characterDetail": "261211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 4,
     "mailIds": "",
@@ -5997,7 +6495,9 @@
     "bannerLineName": "v2a6_dicehero_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 31131,
@@ -6033,6 +6533,8 @@
     "poolDetail": 4,
     "characterDetail": "191112",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 5,
     "mailIds": "",
@@ -6045,7 +6547,9 @@
     "bannerLineName": "v1a9_kakaniya_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 31151,
@@ -6081,6 +6585,8 @@
     "poolDetail": 3,
     "characterDetail": "311111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 1,
     "mailIds": "",
@@ -6093,7 +6599,9 @@
     "bannerLineName": "v3a1_yeshumei_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 31161,
@@ -6129,6 +6637,8 @@
     "poolDetail": 3,
     "characterDetail": "311211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 2,
     "mailIds": "",
@@ -6141,7 +6651,9 @@
     "bannerLineName": "v3a1_gaosiniao_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 32111,
@@ -6177,6 +6689,8 @@
     "poolDetail": 4,
     "characterDetail": "301211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 3,
     "mailIds": "",
@@ -6189,7 +6703,9 @@
     "bannerLineName": "v3a0_karong_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 32121,
@@ -6225,6 +6741,8 @@
     "poolDetail": 4,
     "characterDetail": "321311",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 4,
     "mailIds": "",
@@ -6237,7 +6755,9 @@
     "bannerLineName": "v3a2_wuerlixi_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 32131,
@@ -6273,6 +6793,8 @@
     "poolDetail": 4,
     "characterDetail": "301111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 5,
     "mailIds": "",
@@ -6285,7 +6807,9 @@
     "bannerLineName": "v3a0_malianna_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 32141,
@@ -6321,6 +6845,8 @@
     "poolDetail": 22,
     "characterDetail": "221111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 22,
     "jumpGroupId": 7,
     "mailIds": "",
@@ -6333,7 +6859,9 @@
     "bannerLineName": "v2a2_tianshinana_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 32151,
@@ -6369,6 +6897,8 @@
     "poolDetail": 12,
     "characterDetail": "161611",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 12,
     "jumpGroupId": 8,
     "mailIds": "",
@@ -6381,7 +6911,9 @@
     "bannerLineName": "v3a2_selfselectnine_line",
     "totalPosibility": 1000,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 32161,
@@ -6417,6 +6949,8 @@
     "poolDetail": 23,
     "characterDetail": "321611",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 23,
     "jumpGroupId": 1,
     "mailIds": "",
@@ -6429,7 +6963,9 @@
     "bannerLineName": "v3a2_beilier_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 32171,
@@ -6465,6 +7001,8 @@
     "poolDetail": 3,
     "characterDetail": "321711",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 2,
     "mailIds": "",
@@ -6477,7 +7015,9 @@
     "bannerLineName": "v3a2_huidiaolan_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 32181,
@@ -6513,6 +7053,8 @@
     "poolDetail": 15,
     "characterDetail": "",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 15,
     "jumpGroupId": 6,
     "mailIds": "",
@@ -6525,7 +7067,9 @@
     "bannerLineName": "v2a5_selfselectsix_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 32191,
@@ -6561,6 +7105,8 @@
     "poolDetail": 2,
     "characterDetail": "23#24",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 102,
     "jumpGroupId": 0,
     "mailIds": "",
@@ -6573,7 +7119,9 @@
     "bannerLineName": "bq013_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 33101,
@@ -6609,6 +7157,8 @@
     "poolDetail": 4,
     "characterDetail": "281112",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 3,
     "mailIds": "",
@@ -6621,7 +7171,9 @@
     "bannerLineName": "v2a8_molideer_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 33111,
@@ -6657,6 +7209,8 @@
     "poolDetail": 4,
     "characterDetail": "221112",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 4,
     "mailIds": "",
@@ -6669,7 +7223,9 @@
     "bannerLineName": "v2a2_luopeila_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 33121,
@@ -6705,6 +7261,8 @@
     "poolDetail": 4,
     "characterDetail": "251211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 5,
     "mailIds": "",
@@ -6717,7 +7275,9 @@
     "bannerLineName": "v2a5_feilinshiduo_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 33131,
@@ -6753,6 +7313,8 @@
     "poolDetail": 15,
     "characterDetail": "",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 15,
     "jumpGroupId": 6,
     "mailIds": "",
@@ -6765,7 +7327,9 @@
     "bannerLineName": "v2a5_selfselectsix_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 33141,
@@ -6801,6 +7365,8 @@
     "poolDetail": 6,
     "characterDetail": "",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 6,
     "jumpGroupId": 8,
     "mailIds": "3303#3304",
@@ -6813,7 +7379,9 @@
     "bannerLineName": "v1a5_fudai_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 33151,
@@ -6849,6 +7417,8 @@
     "poolDetail": 3,
     "characterDetail": "331111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 1,
     "mailIds": "",
@@ -6861,7 +7431,9 @@
     "bannerLineName": "v3a3_maersha_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 33161,
@@ -6897,6 +7469,8 @@
     "poolDetail": 3,
     "characterDetail": "331211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 2,
     "mailIds": "",
@@ -6909,7 +7483,9 @@
     "bannerLineName": "v3a3_yigeer_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 33171,
@@ -6945,6 +7521,8 @@
     "poolDetail": 24,
     "characterDetail": "",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 24,
     "jumpGroupId": 9,
     "mailIds": "",
@@ -6957,7 +7535,9 @@
     "bannerLineName": "v3a3_100summon_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 34111,
@@ -6993,6 +7573,8 @@
     "poolDetail": 25,
     "characterDetail": "341111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 25,
     "jumpGroupId": 1,
     "mailIds": "",
@@ -7005,7 +7587,9 @@
     "bannerLineName": "v3a4_lusijian_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": "roles_special/role_summon/v3a4_311002_lsj_summon/311002_lsj_summon_ui.prefab"
+    "spinePrefab": "roles_special/role_summon/v3a4_311002_lsj_summon/311002_lsj_summon_ui.prefab",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 34121,
@@ -7041,6 +7625,8 @@
     "poolDetail": 3,
     "characterDetail": "341211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 2,
     "mailIds": "",
@@ -7053,7 +7639,9 @@
     "bannerLineName": "v3a4_cengheguang_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 34131,
@@ -7089,6 +7677,8 @@
     "poolDetail": 4,
     "characterDetail": "311111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 3,
     "mailIds": "",
@@ -7101,7 +7691,9 @@
     "bannerLineName": "v3a1_yeshumei_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 34141,
@@ -7137,6 +7729,8 @@
     "poolDetail": 4,
     "characterDetail": "231211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 4,
     "mailIds": "",
@@ -7149,7 +7743,9 @@
     "bannerLineName": "v2a3_zhixinquaner_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 34151,
@@ -7185,6 +7781,8 @@
     "poolDetail": 4,
     "characterDetail": "271211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 5,
     "mailIds": "",
@@ -7197,7 +7795,9 @@
     "bannerLineName": "v2a7_coopergarland_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 34161,
@@ -7233,6 +7833,8 @@
     "poolDetail": 8,
     "characterDetail": "",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 8,
     "jumpGroupId": 8,
     "mailIds": "",
@@ -7245,7 +7847,9 @@
     "bannerLineName": "v2a5_selfselectsix_line",
     "totalPosibility": 700,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 34171,
@@ -7281,6 +7885,8 @@
     "poolDetail": 26,
     "characterDetail": "",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 26,
     "jumpGroupId": 10,
     "mailIds": "",
@@ -7293,7 +7899,9 @@
     "bannerLineName": "v2a5_selfselectsix_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 34181,
@@ -7329,6 +7937,8 @@
     "poolDetail": 17,
     "characterDetail": "251111#251112",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 17,
     "jumpGroupId": 7,
     "mailIds": "",
@@ -7341,7 +7951,9 @@
     "bannerLineName": "v2a5_liangyue_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 34191,
@@ -7377,6 +7989,8 @@
     "poolDetail": 15,
     "characterDetail": "",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 15,
     "jumpGroupId": 6,
     "mailIds": "",
@@ -7389,7 +8003,9 @@
     "bannerLineName": "v2a5_selfselectsix_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 35111,
@@ -7425,6 +8041,8 @@
     "poolDetail": 3,
     "characterDetail": "351111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 1,
     "mailIds": "",
@@ -7437,7 +8055,9 @@
     "bannerLineName": "v3a5_luolunzi_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 35121,
@@ -7473,6 +8093,8 @@
     "poolDetail": 3,
     "characterDetail": "351211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 2,
     "mailIds": "",
@@ -7485,7 +8107,9 @@
     "bannerLineName": "v3a5_lamona_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 35141,
@@ -7521,6 +8145,8 @@
     "poolDetail": 4,
     "characterDetail": "311211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 4,
     "mailIds": "",
@@ -7533,7 +8159,9 @@
     "bannerLineName": "v3a1_gaosiniao_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 35131,
@@ -7569,6 +8197,8 @@
     "poolDetail": 4,
     "characterDetail": "271111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 3,
     "mailIds": "",
@@ -7581,7 +8211,9 @@
     "bannerLineName": "v2a7_hissabeth_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 35161,
@@ -7617,6 +8249,8 @@
     "poolDetail": 15,
     "characterDetail": "",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 15,
     "jumpGroupId": 6,
     "mailIds": "",
@@ -7629,7 +8263,9 @@
     "bannerLineName": "v2a5_selfselectsix_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 36111,
@@ -7665,6 +8301,8 @@
     "poolDetail": 4,
     "characterDetail": "331111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 5,
     "mailIds": "",
@@ -7677,7 +8315,9 @@
     "bannerLineName": "v3a3_maersha_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 36121,
@@ -7713,6 +8353,8 @@
     "poolDetail": 4,
     "characterDetail": "301211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 4,
     "mailIds": "",
@@ -7725,7 +8367,9 @@
     "bannerLineName": "v3a0_karong_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 36131,
@@ -7761,6 +8405,8 @@
     "poolDetail": 15,
     "characterDetail": "",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 15,
     "jumpGroupId": 6,
     "mailIds": "",
@@ -7773,7 +8419,9 @@
     "bannerLineName": "v2a5_selfselectsix_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 36141,
@@ -7809,6 +8457,8 @@
     "poolDetail": 3,
     "characterDetail": "361111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 1,
     "mailIds": "",
@@ -7821,7 +8471,9 @@
     "bannerLineName": "v3a6_yami_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 37111,
@@ -7857,6 +8509,8 @@
     "poolDetail": 27,
     "characterDetail": "371111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 27,
     "jumpGroupId": 1,
     "mailIds": "",
@@ -7869,7 +8523,9 @@
     "bannerLineName": "v3a7_xiaoruiannong_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": "roles_special/role_summon/v3a7_314602_xran_summon/314602_xran_summon_ui.prefab"
+    "spinePrefab": "roles_special/role_summon/v3a7_314602_xran_summon/314602_xran_summon_ui.prefab",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 37121,
@@ -7905,6 +8561,8 @@
     "poolDetail": 3,
     "characterDetail": "371211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 2,
     "mailIds": "",
@@ -7917,7 +8575,9 @@
     "bannerLineName": "v3a7_wumingzhe_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 37131,
@@ -7953,6 +8613,8 @@
     "poolDetail": 4,
     "characterDetail": "301111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 3,
     "mailIds": "",
@@ -7965,7 +8627,9 @@
     "bannerLineName": "v3a7_malianna_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 37141,
@@ -8001,6 +8665,8 @@
     "poolDetail": 4,
     "characterDetail": "241211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 4,
     "mailIds": "",
@@ -8013,7 +8679,9 @@
     "bannerLineName": "v3a7_tutushizi_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 37151,
@@ -8049,6 +8717,8 @@
     "poolDetail": 4,
     "characterDetail": "331211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 5,
     "mailIds": "",
@@ -8061,7 +8731,9 @@
     "bannerLineName": "v3a7_yigeer_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 37161,
@@ -8097,6 +8769,8 @@
     "poolDetail": 15,
     "characterDetail": "",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 15,
     "jumpGroupId": 6,
     "mailIds": "",
@@ -8109,7 +8783,9 @@
     "bannerLineName": "v2a5_selfselectsix_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 37171,
@@ -8145,6 +8821,8 @@
     "poolDetail": 11,
     "characterDetail": "",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 11,
     "jumpGroupId": 7,
     "mailIds": "",
@@ -8157,7 +8835,9 @@
     "bannerLineName": "v3a7_selfselect2_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 37181,
@@ -8193,6 +8873,8 @@
     "poolDetail": 26,
     "characterDetail": "",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 26,
     "jumpGroupId": 10,
     "mailIds": "",
@@ -8205,7 +8887,9 @@
     "bannerLineName": "v3a4_huxinzhuishu_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 37191,
@@ -8241,6 +8925,8 @@
     "poolDetail": 20,
     "characterDetail": "281111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 20,
     "jumpGroupId": 11,
     "mailIds": "",
@@ -8253,7 +8939,9 @@
     "bannerLineName": "v3a7_nuodika_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 11,
@@ -8289,6 +8977,8 @@
     "poolDetail": 28,
     "characterDetail": "31#32#33",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 0,
     "jumpGroupId": 0,
     "mailIds": "",
@@ -8301,7 +8991,9 @@
     "bannerLineName": "bq012_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 38111,
@@ -8337,6 +9029,8 @@
     "poolDetail": 3,
     "characterDetail": "381111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 1,
     "mailIds": "",
@@ -8349,7 +9043,9 @@
     "bannerLineName": "v3a8_huishengyao_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 38121,
@@ -8385,6 +9081,8 @@
     "poolDetail": 3,
     "characterDetail": "381211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 2,
     "mailIds": "",
@@ -8397,7 +9095,9 @@
     "bannerLineName": "v3a8_dianjishi_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 38131,
@@ -8433,6 +9133,8 @@
     "poolDetail": 4,
     "characterDetail": "351111",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 3,
     "mailIds": "",
@@ -8445,7 +9147,9 @@
     "bannerLineName": "v3a8_luolunzi_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 38141,
@@ -8481,6 +9185,8 @@
     "poolDetail": 4,
     "characterDetail": "381311",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 4,
     "mailIds": "",
@@ -8493,7 +9199,9 @@
     "bannerLineName": "v3a8_falangyan_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 38151,
@@ -8529,6 +9237,8 @@
     "poolDetail": 4,
     "characterDetail": "231211",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 4,
     "jumpGroupId": 5,
     "mailIds": "",
@@ -8541,7 +9251,9 @@
     "bannerLineName": "v3a8_zhixinquaner_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   },
   {
     "id": 38161,
@@ -8577,6 +9289,8 @@
     "poolDetail": 15,
     "characterDetail": "",
     "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
     "historyShowType": 15,
     "jumpGroupId": 6,
     "mailIds": "",
@@ -8589,6 +9303,164 @@
     "bannerLineName": "v2a5_selfselectsix_line",
     "totalPosibility": 0,
     "progressRewardPrefab": "",
-    "spinePrefab": ""
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
+  },
+  {
+    "id": 385111,
+    "priority": 1500,
+    "totalFreeCount": 0,
+    "subType": 0,
+    "dailyFreeSummon10Count": 0,
+    "param2": "",
+    "free10MaxUseCount": 0,
+    "type": 21,
+    "param": "",
+    "ticketId": 0,
+    "nameCn": "银色拟剧论",
+    "nameEn": "Analysis of Metallic Dramaturgy",
+    "desc": "§联动征集-双生舞伶",
+    "advertising": "",
+    "banner": "sp02_shuangshengwuling",
+    "bannerFlag": 5,
+    "prefabPath": "version_sp02/sp02_versionsummonshuangshengwulinghalfview",
+    "customClz": "SummonStrongOneCustomPick385",
+    "cost1": "1#140140#1|1#140001#1",
+    "cost10": "1#140141#1|1#140002#1|1#140140#10|1#140001#10",
+    "priorCost1": "1#140140#1",
+    "priorCost10": "1#140141#1|1#140002#1",
+    "discountTime10": 0,
+    "discountCost10": "",
+    "initWeight": "5#150|4#850|3#4000|2#4500|1#500",
+    "doubleSsrUpRates": "",
+    "upWeight": "3149|3038#3106",
+    "guaranteeSRParam": "1#10",
+    "awardTime": "60|70",
+    "changeWeight": "5#500",
+    "poolDetail": 385,
+    "characterDetail": "3851111",
+    "progressRewards": "",
+    "progressChooseGroupId": "3851",
+    "unchosenMailId": 38509,
+    "historyShowType": 385,
+    "jumpGroupId": 1,
+    "mailIds": "",
+    "infallibleItemId": 0,
+    "infallibleItemMaxUseCount": 0,
+    "infallibleMailIds": "",
+    "nameUnderlayColor": "#1b2239|1|#F7F5EF|1",
+    "maskColor": "#202431|1",
+    "ornamentName": "<color=#78a0bb>Analysis of Metallic Dramaturgy</color>",
+    "bannerLineName": "sp02_shuangshengwuling_line",
+    "totalPosibility": 0,
+    "progressRewardPrefab": "version_sp02/sp02_summonrewardpanel.prefab",
+    "spinePrefab": "",
+    "progressRewardClass": "SP02_SummonPoolProgressRewardView",
+    "freeTagStyle": "2"
+  },
+  {
+    "id": 385121,
+    "priority": 1408,
+    "totalFreeCount": 0,
+    "subType": 0,
+    "dailyFreeSummon10Count": 0,
+    "param2": "",
+    "free10MaxUseCount": 0,
+    "type": 3,
+    "param": "",
+    "ticketId": 0,
+    "nameCn": "石心瓦解时",
+    "nameEn": "A Beating Heart Beneath the Stone",
+    "desc": "§玛丽安娜",
+    "advertising": "",
+    "banner": "v3a7_malianna",
+    "bannerFlag": 0,
+    "prefabPath": "version_sp02/sp02_versionsummonmaliannahalfview",
+    "customClz": "SummonCharacterProbUpVer3852",
+    "cost1": "1#140001#1",
+    "cost10": "1#140002#1|1#140001#10",
+    "priorCost1": "",
+    "priorCost10": "",
+    "discountTime10": 0,
+    "discountCost10": "",
+    "initWeight": "5#150|4#850|3#4000|2#4500|1#500",
+    "doubleSsrUpRates": "",
+    "upWeight": "3126|3024#3064",
+    "guaranteeSRParam": "",
+    "awardTime": "60|70",
+    "changeWeight": "5#500",
+    "poolDetail": 4,
+    "characterDetail": "301111",
+    "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
+    "historyShowType": 4,
+    "jumpGroupId": 3,
+    "mailIds": "",
+    "infallibleItemId": 0,
+    "infallibleItemMaxUseCount": 0,
+    "infallibleMailIds": "",
+    "nameUnderlayColor": "#165458|1|#F7F5EF|1",
+    "maskColor": "#68518f|1",
+    "ornamentName": "<color=#e0d4f466>A BEATING HEART BENEATH THE STONE</color>",
+    "bannerLineName": "v3a7_malianna_line",
+    "totalPosibility": 0,
+    "progressRewardPrefab": "",
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
+  },
+  {
+    "id": 385131,
+    "priority": 1400,
+    "totalFreeCount": 0,
+    "subType": 0,
+    "dailyFreeSummon10Count": 0,
+    "param2": "",
+    "free10MaxUseCount": 0,
+    "type": 12,
+    "param": "3102#3077#3025#3039#3053#3081#3079",
+    "ticketId": 0,
+    "nameCn": "湖的涟漪",
+    "nameEn": "Ripples on the Water",
+    "desc": "§湖的涟漪",
+    "advertising": "",
+    "banner": "sp02_selfselectsix",
+    "bannerFlag": 0,
+    "prefabPath": "version_sp02/sp02_versionsummonselfselectsixhalfview",
+    "customClz": "SummonStrongOneCustomPick385",
+    "cost1": "1#140120#1|1#140001#1",
+    "cost10": "1#140133#1|1#140002#1|1#140120#10|1#140001#10",
+    "priorCost1": "1#140120#1",
+    "priorCost10": "1#140133#1|1#140002#1",
+    "discountTime10": 1,
+    "discountCost10": "1#140120#7|1#140001#7",
+    "initWeight": "5#150|4#850|3#4000|2#4500|1#500",
+    "doubleSsrUpRates": "",
+    "upWeight": "",
+    "guaranteeSRParam": "",
+    "awardTime": "60|70",
+    "changeWeight": "5#500",
+    "poolDetail": 15,
+    "characterDetail": "",
+    "progressRewards": "",
+    "progressChooseGroupId": "",
+    "unchosenMailId": 0,
+    "historyShowType": 15,
+    "jumpGroupId": 6,
+    "mailIds": "",
+    "infallibleItemId": 0,
+    "infallibleItemMaxUseCount": 0,
+    "infallibleMailIds": "",
+    "nameUnderlayColor": "f7f5ef",
+    "maskColor": "#000000|0.5",
+    "ornamentName": "<color=#BC8D6E>RIPPLES ON THE WATER</color>",
+    "bannerLineName": "v2a5_selfselectsix_line",
+    "totalPosibility": 0,
+    "progressRewardPrefab": "",
+    "spinePrefab": "",
+    "progressRewardClass": "",
+    "freeTagStyle": ""
   }
 ]

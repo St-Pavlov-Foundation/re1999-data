@@ -158,7 +158,8 @@ function HeroGroupController:_getGroupFightViewName(episodeId)
 			[VersionActivity1_5Enum.ActivityId.Dungeon] = ViewName.V1a5_HeroGroupFightView,
 			[VersionActivity1_6Enum.ActivityId.Dungeon] = ViewName.V1a6_HeroGroupFightView,
 			[VersionActivity1_6Enum.ActivityId.DungeonBossRush] = ViewName.V1a6_HeroGroupFightView,
-			[VersionActivity2_9Enum.ActivityId.Dungeon] = ViewName.VersionActivity2_9HeroGroupFightView
+			[VersionActivity2_9Enum.ActivityId.Dungeon] = ViewName.VersionActivity2_9HeroGroupFightView,
+			[VersionActivity3_10Enum.ActivityId.Dungeon] = ViewName.V3A10_HeroGroupFightView
 		}
 		self.ChapterTypeToHeroGroupView = {
 			[DungeonEnum.ChapterType.WeekWalk] = ViewName.HeroGroupFightWeekwalkView,
@@ -177,7 +178,8 @@ function HeroGroupController:_getGroupFightViewName(episodeId)
 			[DungeonEnum.ChapterType.Rouge2Boss] = ViewName.Rouge2_BossHeroGroupFightView,
 			[DungeonEnum.ChapterType.TowerCompose] = ViewName.TowerComposeHeroGroupView,
 			[DungeonEnum.ChapterType.Abyss] = ViewName.AbyssHeroGroupFightView,
-			[DungeonEnum.ChapterType.Sodache] = ViewName.SodacheHeroGroupFightView
+			[DungeonEnum.ChapterType.Sodache] = ViewName.SodacheHeroGroupFightView,
+			[DungeonEnum.ChapterType.AtomicDungeon] = ViewName.AtomicDungeonHeroGroupView
 		}
 		self.ChapterIdToHeroGroupView = {
 			[DungeonEnum.ChapterId.BossStory] = ViewName.VersionActivity2_8HeroGroupBossView

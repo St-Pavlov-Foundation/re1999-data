@@ -267,6 +267,9 @@ function StoreSkinGoodsView2:_editableInitView()
 	self._goadvancedtitle = gohelper.findChild(self.viewGO, "view/bgroot/#go_advanced_title")
 
 	self:_setActive_redOrOrange(false)
+
+	self._godiscount2 = gohelper.findChild(self.viewGO, "view/common/#btn_buy/#go_discount2")
+	self._txtdiscount2 = gohelper.findChildText(self._godiscount2, "#txt_cost_price")
 end
 
 function StoreSkinGoodsView2:onUpdateParam()
@@ -580,7 +583,10 @@ function StoreSkinGoodsView2:refreshCost()
 			id = deductionItemId
 		})
 
-		self.txtDiscount3.text = -coinsReduction
+		local disCntStr = tostring(-coinsReduction)
+
+		self.txtDiscount3.text = disCntStr
+		self._txtdiscount2.text = disCntStr
 	end
 
 	if hasSpecialOfferItem then
@@ -592,6 +598,7 @@ function StoreSkinGoodsView2:refreshCost()
 	end
 
 	gohelper.setActive(self.goDiscount3, hasDeductionItem)
+	gohelper.setActive(self._godiscount2, hasDeductionItem and not rmbCurPrice)
 	self.viewContainer:setCurrencyType(showCurrency)
 
 	local isShowOffTag = false
@@ -618,6 +625,10 @@ function StoreSkinGoodsView2:refreshCost()
 	gohelper.setActive(self._gocostsingle, not rmbCurPrice)
 
 	if not rmbCurPrice then
+		if curIndex == 1 then
+			self:setCurCostIndex(2)
+		end
+
 		UISpriteSetMgr.instance:setCurrencyItemSprite(self._imageiconsingle, imageiconsingleSpriteName, true)
 		SLFramework.UGUI.GuiHelper.SetColor(self._txtcurpricesingle, bCoinsEnough and "#393939" or "#bf2e11")
 

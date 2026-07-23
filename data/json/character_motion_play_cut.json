@@ -40,5 +40,19 @@
     "motion": "sikao",
     "whenStopped": 0,
     "whenNotStopped": 1
+  },
+  {
+    "heroId": 3105,
+    "skinId": 310504,
+    "motion": "ruchang",
+    "whenStopped": 0,
+    "whenNotStopped": 1
+  },
+  {
+    "heroId": 3106,
+    "skinId": 310604,
+    "motion": "chongfeng",
+    "whenStopped": 0,
+    "whenNotStopped": 1
   }
 ]

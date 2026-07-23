@@ -446,5 +446,13 @@
   {
     "id": 112,
     "skipvideo": "3_8_activity_04"
+  },
+  {
+    "id": 113,
+    "skipvideo": "s02_activity_01"
+  },
+  {
+    "id": 114,
+    "skipvideo": "s02_activity_02"
   }
 ]

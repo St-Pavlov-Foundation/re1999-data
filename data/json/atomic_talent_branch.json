@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "电震波",
+    "unlockCondition": "",
+    "unlockTips": "",
+    "skillId": 116385101
+  },
+  {
+    "id": 2,
+    "name": "霜冻",
+    "unlockCondition": "",
+    "unlockTips": "",
+    "skillId": 116385201
+  },
+  {
+    "id": 3,
+    "name": "聚合喷射",
+    "unlockCondition": "",
+    "unlockTips": "",
+    "skillId": 116385301
+  },
+  {
+    "id": 4,
+    "name": "聚合护盾",
+    "unlockCondition": "",
+    "unlockTips": "",
+    "skillId": 116385401
+  }
+]

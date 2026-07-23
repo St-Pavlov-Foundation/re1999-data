@@ -70,6 +70,7 @@ function GMToolView:onInitView()
 	self._btnConfirm = gohelper.getClick(gohelper.findChild(self.viewGO, "viewport/content/item24/btnConfirm"))
 	self._dropSkinGetView = gohelper.findChildDropdown(self.viewGO, "viewport/content/item25/Dropdown")
 	self._btnOpenSeasonView = gohelper.findChildButtonWithAudio(self.viewGO, "viewport/content/item27/ButtonSeason")
+	self._inptSeason = gohelper.findChildTextMeshInputField(self.viewGO, "viewport/content/item27/inpTextSeason")
 	self._btnOpenHuaRongView = gohelper.getClick(gohelper.findChild(self.viewGO, "viewport/content/item27_2/huarong"))
 	self._inpChangeColor = gohelper.findChildTextMeshInputField(self.viewGO, "viewport/content/item27_2/changecolor/inpchangecolortxt")
 	self._btnChangeColorOK = gohelper.findChildButtonWithAudio(self.viewGO, "viewport/content/item27_2/changecolor/btnchangecolorok")
@@ -1434,12 +1435,15 @@ function GMToolView:_onClickOpenHuaRongViewBtn()
 end
 
 function GMToolView:_onClickOpenSeasonViewBtn()
-	local viewParam = {}
+	local mapId = self._inptSeason:GetText()
 
-	viewParam.episodeId = 1322902
+	self._inptSeason:SetText(mapId)
 
-	HuiDiaoLanModel.instance:setCurEpisodeId(viewParam.episodeId)
-	HuiDiaoLanGameController.instance:openGameView(viewParam)
+	if string.nilorempty(mapId) then
+		mapId = 0
+	end
+
+	AtomicDungeonModel.instance:setGMCurMapId(tonumber(mapId))
 end
 
 function GMToolView:_onEarToggleValueChange()

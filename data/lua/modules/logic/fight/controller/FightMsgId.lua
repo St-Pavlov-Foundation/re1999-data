@@ -114,6 +114,10 @@ FightMsgId.PlayStoryEndInTimeline = GameUtil.getMsgId()
 FightMsgId.GetDianJiShiBiggerPriorityBuffEffect = GameUtil.getMsgId()
 FightMsgId.DestroyDianJiShiSmallerPriorityBuffEffect = GameUtil.getMsgId()
 FightMsgId.OnSetEntityAlpha = GameUtil.getMsgId()
+FightMsgId.CardRemoveRefrieratorTimeline = GameUtil.getMsgId()
+FightMsgId.CardAddRefrieratorTimeline = GameUtil.getMsgId()
+FightMsgId.CardRemoveRefrieratorEffect = GameUtil.getMsgId()
+FightMsgId.CheckCardRemoveRefrieratorEffect = GameUtil.getMsgId()
 FightMsgId.GMDouQuQuSkip2IndexRound = GameUtil.getMsgId()
 
 local id2Name = {}

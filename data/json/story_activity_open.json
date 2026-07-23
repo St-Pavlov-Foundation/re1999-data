@@ -5182,5 +5182,133 @@
     "titleEn": "The Cosmonaut",
     "labelRes": "8",
     "storyBg": ""
+  },
+  {
+    "chapter": 3100,
+    "part": 0,
+    "title": "敞开",
+    "titleEn": "A New Gate Opened",
+    "labelRes": "0",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3100,
+    "part": 1,
+    "title": "在清新空气里",
+    "titleEn": "Breathing a Different Air",
+    "labelRes": "1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3100,
+    "part": 2,
+    "title": "无限光明",
+    "titleEn": "A Bright, Limitless Future",
+    "labelRes": "2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3100,
+    "part": 3,
+    "title": "“她”",
+    "titleEn": "\"Her\"",
+    "labelRes": "3",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3100,
+    "part": 4,
+    "title": "现代图景",
+    "titleEn": "Only in Modern Times",
+    "labelRes": "4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3100,
+    "part": 5,
+    "title": "新式英雄",
+    "titleEn": "A Different Definition of \"Hero\"",
+    "labelRes": "5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3100,
+    "part": 6,
+    "title": "“反记忆”之家",
+    "titleEn": "Home of Forgotten Memories",
+    "labelRes": "6",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3100,
+    "part": 7,
+    "title": "怀旧的伦理",
+    "titleEn": "The Logic behind Nostalgia",
+    "labelRes": "7",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3100,
+    "part": 8,
+    "title": "欲疯狂者",
+    "titleEn": "The Crazy-to-Be",
+    "labelRes": "8",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3100,
+    "part": 9,
+    "title": "颤栗的真相",
+    "titleEn": "The Dreadful Truth",
+    "labelRes": "9",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3100,
+    "part": 10,
+    "title": "症状",
+    "titleEn": "Symptoms",
+    "labelRes": "10",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3100,
+    "part": 11,
+    "title": "复古技术",
+    "titleEn": "Retro-Futurism",
+    "labelRes": "11",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3100,
+    "part": 12,
+    "title": "集体梦魇",
+    "titleEn": "Trapped in \"Limbo\"",
+    "labelRes": "12",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3100,
+    "part": 13,
+    "title": "无记名性",
+    "titleEn": "A Drop in the Ocean",
+    "labelRes": "13",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3100,
+    "part": 14,
+    "title": "再见，切洛梅",
+    "titleEn": "Goodbye, Chelomey",
+    "labelRes": "14",
+    "storyBg": ""
+  },
+  {
+    "chapter": 3100,
+    "part": 15,
+    "title": "原子观照",
+    "titleEn": "The Nature of Being",
+    "labelRes": "15",
+    "storyBg": ""
   }
 ]

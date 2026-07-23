@@ -1,0 +1,146 @@
+[
+  {
+    "animeid": 1,
+    "levelid": "38510101",
+    "name": "敞开",
+    "res": "chapter_pic16",
+    "video": "sp02_episode_1",
+    "isloop": 1,
+    "place": "拉普拉斯走廊"
+  },
+  {
+    "animeid": 2,
+    "levelid": "38510102",
+    "name": "在清新空气里",
+    "res": "chapter_pic01",
+    "video": "sp02_episode_2",
+    "isloop": 1,
+    "place": "“旋风号”车厢"
+  },
+  {
+    "animeid": 3,
+    "levelid": "38510103",
+    "name": "无限光明",
+    "res": "chapter_pic02",
+    "video": "sp02_episode_3",
+    "isloop": 1,
+    "place": "聚合物展览馆·入口"
+  },
+  {
+    "animeid": 4,
+    "levelid": "38510104|38520104",
+    "name": "“她”",
+    "res": "chapter_pic03",
+    "video": "sp02_episode_4",
+    "isloop": 1,
+    "place": "聚合物展览馆·装配间"
+  },
+  {
+    "animeid": 5,
+    "levelid": "38510105|38520105",
+    "name": "现代图景",
+    "res": "chapter_pic04",
+    "video": "sp02_episode_5",
+    "isloop": 1,
+    "place": "聚合物展览馆·走廊"
+  },
+  {
+    "animeid": 6,
+    "levelid": "38510106",
+    "name": "新式英雄",
+    "res": "chapter_pic05",
+    "video": "sp02_episode_6",
+    "isloop": 1,
+    "place": "聚合物展览馆·主展厅"
+  },
+  {
+    "animeid": 7,
+    "levelid": "38510107",
+    "name": "“反记忆”之家",
+    "res": "chapter_pic06",
+    "video": "sp02_episode_7",
+    "isloop": 1,
+    "place": "金色原野"
+  },
+  {
+    "animeid": 8,
+    "levelid": "38510108|38520108|38530108|38540108",
+    "name": "怀旧的伦理",
+    "res": "chapter_pic07",
+    "video": "sp02_episode_8",
+    "isloop": 1,
+    "place": "小楼内"
+  },
+  {
+    "animeid": 9,
+    "levelid": "38510109",
+    "name": "欲疯狂者",
+    "res": "chapter_pic08",
+    "video": "sp02_episode_9",
+    "isloop": 1,
+    "place": "聚合物展览馆·装配间"
+  },
+  {
+    "animeid": 10,
+    "levelid": "38510110|38520110",
+    "name": "颤栗的真相",
+    "res": "chapter_pic09",
+    "video": "sp02_episode_10",
+    "isloop": 1,
+    "place": "聚合物展览馆·走廊"
+  },
+  {
+    "animeid": 11,
+    "levelid": "38510111|38520111|38530111|38540111",
+    "name": "症状",
+    "res": "chapter_pic10",
+    "video": "sp02_episode_11",
+    "isloop": 1,
+    "place": "聚合物展览馆·装配间"
+  },
+  {
+    "animeid": 12,
+    "levelid": "38510112",
+    "name": "复古技术",
+    "res": "chapter_pic11",
+    "video": "sp02_episode_12",
+    "isloop": 1,
+    "place": "聚合物展览馆·能源室"
+  },
+  {
+    "animeid": 13,
+    "levelid": "38510113|38520113|38530113|38540113",
+    "name": "集体梦魇",
+    "res": "chapter_pic12",
+    "video": "sp02_episode_13",
+    "isloop": 1,
+    "place": "潜意识世界"
+  },
+  {
+    "animeid": 14,
+    "levelid": "38510114",
+    "name": "无记名性",
+    "res": "chapter_pic13",
+    "video": "sp02_episode_14",
+    "isloop": 1,
+    "place": "潜意识世界"
+  },
+  {
+    "animeid": 15,
+    "levelid": "38510115",
+    "name": "再见，切洛梅",
+    "res": "chapter_pic14",
+    "video": "sp02_episode_15",
+    "isloop": 1,
+    "place": "切洛梅"
+  },
+  {
+    "animeid": 16,
+    "levelid": "38510116",
+    "name": "原子观照",
+    "res": "chapter_pic15",
+    "video": "sp02_episode_16",
+    "isloop": 1,
+    "place": "洛伦兹实验室"
+  }
+]

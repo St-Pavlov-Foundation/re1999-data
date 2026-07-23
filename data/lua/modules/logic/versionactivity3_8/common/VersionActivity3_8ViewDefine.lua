@@ -51,6 +51,9 @@ function VersionActivity3_8ViewDefine.initEnter(module_views)
 					"ui/viewres/dungeon/rolestory/rolestoryenterview.prefab"
 				},
 				{
+					"ui/viewres/cloudredemption/cloudredemption_enterview.prefab"
+				},
+				{
 					"ui/viewres/activity/show/activityweekwalkdeepshowview.prefab"
 				},
 				{

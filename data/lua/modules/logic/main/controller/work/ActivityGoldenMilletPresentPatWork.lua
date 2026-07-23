@@ -13,7 +13,7 @@ function ActivityGoldenMilletPresentPatWork:onGetViewNames()
 		}
 	end
 
-	viewName = GameBranchMgr.instance:Vxax_ViewName("GoldenMilletPresent", ViewName.V3a7_GoldenMilletPresent)
+	viewName = GameBranchMgr.instance:Vxax_ViewName("GoldenMilletPresent", ViewName.GoldenMilletPresent)
 
 	return {
 		viewName

@@ -41,7 +41,6 @@ function BaseLive2d:setResPath(resPath, loadedCb, loadedCbObj)
 	end
 
 	self:_clear()
-	self:initSpecialEffect(resPath)
 
 	self._resPath = resPath
 	self._resLoadedCb = loadedCb
@@ -67,6 +66,12 @@ function BaseLive2d:doClear()
 end
 
 function BaseLive2d:_clear()
+	if self.customEffectComp then
+		MonoHelper.removeLuaComFromGo(self._gameObj, BaseLive2dSpecialEffect)
+
+		self.customEffectComp = nil
+	end
+
 	if self._resLoader then
 		self._resLoader:dispose()
 	end
@@ -84,6 +89,7 @@ function BaseLive2d:_clear()
 	end
 
 	self._cubismController = nil
+	self._cubismParameterModifider = nil
 	self._resPath = nil
 
 	if self._spineGo then
@@ -200,6 +206,7 @@ function BaseLive2d:_onResLoaded()
 	self._spineTr = self._spineGo.transform
 	self._renderer = nil
 
+	self:initSpecialEffect(self._resPath)
 	self:_initRoleEffect()
 	self:_initFaceEffect()
 	self:initSkeletonComponent()
@@ -534,6 +541,32 @@ function BaseLive2d:initSpecialEffect(resPath)
 	if self.customEffectComp then
 		self.customEffectComp:setLive2d(self)
 	end
+end
+
+function BaseLive2d:addParameter(name, mode, value)
+	if not self._cubismController then
+		return
+	end
+
+	self._cubismParameterModifider = self._cubismParameterModifider or self._cubismController:GetCubismParameterModifier()
+
+	return self._cubismParameterModifider:AddParameter(name, mode, value)
+end
+
+function BaseLive2d:updateParameter(index, value)
+	if not self._cubismParameterModifider then
+		return
+	end
+
+	self._cubismParameterModifider:UpdateParameter(index, value)
+end
+
+function BaseLive2d:removeParameter(name)
+	if not self._cubismParameterModifider then
+		return
+	end
+
+	self._cubismParameterModifider:RemoveParameter(name)
 end
 
 function BaseLive2d:onDestroy()

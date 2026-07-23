@@ -184,5 +184,11 @@
     "name": "新手狂想直升券",
     "useType": 2,
     "use_max": 1
+  },
+  {
+    "id": 84,
+    "name": "心相提升道具",
+    "useType": 2,
+    "use_max": 1
   }
 ]

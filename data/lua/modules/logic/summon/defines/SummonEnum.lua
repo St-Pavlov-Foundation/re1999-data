@@ -253,5 +253,6 @@ SummonEnum.InfallibleItemState = {
 	Used = 2
 }
 SummonEnum.NewbieFinishSortOrder = 100
+SummonEnum.DefaultTagStyle = 1
 
 return SummonEnum

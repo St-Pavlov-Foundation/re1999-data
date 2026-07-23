@@ -4291,5 +4291,50 @@
     "effect": "",
     "effectHangPoint": "",
     "audioId": 0
+  },
+  {
+    "id": 10030,
+    "type": "TwinsNotifySelect",
+    "effectTime": 0,
+    "effectCondition": 0,
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0
+  },
+  {
+    "id": 10031,
+    "type": "AddSkillTarget",
+    "effectTime": 0,
+    "effectCondition": 0,
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0
+  },
+  {
+    "id": 10032,
+    "type": "ExpandSkillTarget",
+    "effectTime": 0,
+    "effectCondition": 0,
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0
+  },
+  {
+    "id": 10033,
+    "type": "ReviveByLayer",
+    "effectTime": 12,
+    "effectCondition": 0,
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0
+  },
+  {
+    "id": 10034,
+    "type": "StoreClearTempCard",
+    "effectTime": 105,
+    "effectCondition": 0,
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0
   }
 ]

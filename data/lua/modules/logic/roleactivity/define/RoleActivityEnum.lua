@@ -33,7 +33,9 @@ RoleActivityEnum.LevelView = {
 	[VersionActivity2_7Enum.ActivityId.CooperGarland] = ViewName.CooperGarlandLevelView,
 	[VersionActivity2_7Enum.ActivityId.LengZhou6] = ViewName.LengZhou6LevelView,
 	[VersionActivity2_8Enum.ActivityId.NuoDiKa] = ViewName.NuoDiKaLevelView,
-	[VersionActivity2_8Enum.ActivityId.MoLiDeEr] = ViewName.MoLiDeErLevelView
+	[VersionActivity2_8Enum.ActivityId.MoLiDeEr] = ViewName.MoLiDeErLevelView,
+	[VersionActivity3_1Enum.ActivityId.YeShuMei] = ViewName.YeShuMeiLevelView,
+	[VersionActivity3_1Enum.ActivityId.GaoSiNiao] = ViewName.V3a1_GaoSiNiao_LevelView
 }
 
 return RoleActivityEnum

@@ -844,5 +844,17 @@
     "order": 0,
     "equipId": 1449,
     "desc": "柏林以东"
+  },
+  {
+    "id": 5075,
+    "order": 0,
+    "equipId": 1571,
+    "desc": "双生舞伶"
+  },
+  {
+    "id": 5076,
+    "order": 0,
+    "equipId": 1572,
+    "desc": "双生舞伶"
   }
 ]

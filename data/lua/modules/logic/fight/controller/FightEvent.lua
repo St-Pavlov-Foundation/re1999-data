@@ -531,6 +531,7 @@ FightEvent.OnDevice_RestartDeviceChange = GameUtil.getEventId()
 FightEvent.OnDevice_StoreExPointChange = GameUtil.getEventId()
 FightEvent.OnFakeHpChange = GameUtil.getEventId()
 FightEvent.OnTrigger_HSY_FakeHPEffect = GameUtil.getEventId()
+FightEvent.OnDevice_SingleSkillDone = GameUtil.getEventId()
 FightEvent.DeviceTestEvent = GameUtil.getEventId()
 
 return FightEvent

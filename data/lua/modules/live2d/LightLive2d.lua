@@ -16,7 +16,6 @@ end
 function LightLive2d:_onResLoaded()
 	self._recalcBounds = true
 	self._sharedMaterials = nil
-	self._cubismParameterModifider = nil
 
 	LightLive2d.super._onResLoaded(self)
 	self:_initSkinUiEffect()
@@ -136,28 +135,6 @@ function LightLive2d:setEffectFrameVisible(value)
 	end
 end
 
-function LightLive2d:addParameter(name, mode, value)
-	self._cubismParameterModifider = self._cubismParameterModifider or self._cubismController:GetCubismParameterModifier()
-
-	return self._cubismParameterModifider:AddParameter(name, mode, value)
-end
-
-function LightLive2d:updateParameter(index, value)
-	if not self._cubismParameterModifider then
-		return
-	end
-
-	self._cubismParameterModifider:UpdateParameter(index, value)
-end
-
-function LightLive2d:removeParameter(name)
-	if not self._cubismParameterModifider then
-		return
-	end
-
-	self._cubismParameterModifider:RemoveParameter(name)
-end
-
 function LightLive2d:getBoundsMinMaxPos()
 	if not self._recalcBounds then
 		return self._boundsMin, self._boundsMax
@@ -224,6 +201,14 @@ function LightLive2d:changeRenderQueue(value)
 	else
 		self._cubismController:SetSortingMode(CubismSortingMode.BackToFrontOrder)
 	end
+end
+
+function LightLive2d:changeSortingMode(mode)
+	if not self._cubismController then
+		return
+	end
+
+	self._cubismController:SetSortingMode(mode)
 end
 
 function LightLive2d:getSharedMaterials()

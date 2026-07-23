@@ -145,6 +145,12 @@ function AudioBgmInfo:_initBgmDatas()
 	self:_addBgmData(AudioBgmEnum.Layer.SodacheMap, AudioEnum3_7.Sodache.play_soudache_explore_3_7, AudioEnum3_7.Sodache.stop_activitymusic_soudache_3_7)
 	self:_addBgmData(AudioBgmEnum.Layer.VersionActivity3_8Main, 0, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	self:_addBgmData(AudioBgmEnum.Layer.V3a8Puzzle, 0, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
+	self:_addBgmData(AudioBgmEnum.Layer.SP02_AtomicOperationActivityGame, AudioEnum3_10.OperationActivity.play_8bit_music_combat, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
+	self:_addBgmData(AudioBgmEnum.Layer.SP02_AtomicDungeonMain, AudioEnum3_10.Outside.play_qieluomei_map_music, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
+	self:_addBgmData(AudioBgmEnum.Layer.SP02_AtomicDungeonPolygonSelect, AudioEnum3_10.Outside.play_qieluomei_xuanguan_music, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
+	self:_addBgmData(AudioBgmEnum.Layer.VersionActivity3_10Main, AudioEnum3_10.Enter.play_activitymusic_theme_s02, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
+	self:_addBgmData(AudioBgmEnum.Layer.SP02_AtomicDungeonTalent, AudioEnum3_10.Outside.play_qieluomei_qianghua_music, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
+	self:_addBgmData(AudioBgmEnum.Layer.SP02_AVGView, AudioEnum3_10.Dungeon.play_activitymusic_3_database_s02, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 end
 
 function AudioBgmInfo:_initBgmUsage()
@@ -842,6 +848,36 @@ function AudioBgmInfo:_initBgmUsage()
 		AudioBgmEnum.Layer.V3a8Puzzle
 	}, AudioBgmEnum.UsageType.View, {
 		ViewName.V3a8PuzzleView
+	}, nil, nil, true)
+	self:_addBgmUsage({
+		AudioBgmEnum.Layer.SP02_AtomicOperationActivityGame
+	}, AudioBgmEnum.UsageType.View, {
+		ViewName.AtomicOperationActivityGameView
+	}, nil, nil, true)
+	self:_addBgmUsage({
+		AudioBgmEnum.Layer.SP02_AtomicDungeonMain
+	}, AudioBgmEnum.UsageType.View, {
+		ViewName.AtomicDungeonMainView
+	}, nil, nil, true)
+	self:_addBgmUsage({
+		AudioBgmEnum.Layer.SP02_AtomicDungeonPolygonSelect
+	}, AudioBgmEnum.UsageType.View, {
+		ViewName.AtomicDungeonPolygonSelectView
+	}, nil, nil, true)
+	self:_addBgmUsage({
+		AudioBgmEnum.Layer.SP02_AtomicDungeonTalent
+	}, AudioBgmEnum.UsageType.View, {
+		ViewName.AtomicCultivateView
+	}, nil, nil, true)
+	self:_addBgmUsage({
+		AudioBgmEnum.Layer.VersionActivity3_10Main
+	}, AudioBgmEnum.UsageType.View, {
+		ViewName.VersionActivity3_10EnterView
+	}, nil, nil, true)
+	self:_addBgmUsage({
+		AudioBgmEnum.Layer.SP02_AVGView
+	}, AudioBgmEnum.UsageType.View, {
+		ViewName.AtomicAvgPlayView
 	}, nil, nil, true)
 end
 

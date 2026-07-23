@@ -55,11 +55,8 @@ function StoryBgEffsExitSplitScreen:onLoadFinished()
 	StoryTool.enablePostProcess(true)
 
 	local bgGo = StoryViewMgr.instance:getStoryBackgroundView()
-	local bgGo = StoryViewMgr.instance:getStoryBackgroundView()
-
-	self._rootGo = gohelper.findChild(bgGo, "#go_upbg/#simage_bgimg")
-
-	local img = self._rootGo:GetComponent(gohelper.Type_Image)
+	local bgImgGo = StoryViewMgr.instance:getStoryFrontBgImgGo()
+	local img = bgImgGo:GetComponent(gohelper.Type_Image)
 
 	img.material = nil
 

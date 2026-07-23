@@ -11718,5 +11718,125 @@
     "audioId": 1,
     "notMerge": 0,
     "notShow": 0
+  },
+  {
+    "id": 385009,
+    "tips": "请选中转盘后再旋转",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 385002,
+    "tips": "地图未解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 385003,
+    "tips": "手套养成未解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 385004,
+    "tips": "神经聚合物不足，无法解锁技能",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 385005,
+    "tips": "前置奖励未获取",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 385006,
+    "tips": "无法重置，当前无解锁技能",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 385007,
+    "tips": "难度未解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 385008,
+    "tips": "后续关卡解锁时，已自动解锁全难度",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 386001,
+    "tips": "▩1%s后解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 386002,
+    "tips": "完成前置小节后解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 386003,
+    "tips": "未解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 385011,
+    "tips": "尚未拥有心相",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 385012,
+    "tips": "存在待领取的征集次数奖励",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 385013,
+    "tips": "请选择角色",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 385014,
+    "tips": "通关\"活动正篇\"后日谈后开启",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
   }
 ]

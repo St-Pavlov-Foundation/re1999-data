@@ -112,7 +112,8 @@ function MainActivityEnterView:_editableInitView()
 
 	self.txtChapters = self:getUserDataTb_()
 
-	for _, skinId in pairs(MainUISwitchEnum.Skin) do
+	for _, co in ipairs(lua_scene_ui.configList) do
+		local skinId = co.id
 		local name1 = string.format("right/go_fight/#go_normalfight/#btn_jumpfight/%s/#txt_chapter", skinId)
 		local name2 = string.format("right/go_fight/#go_normalfight/#btn_jumpfight/%s/#txt_chaptername", skinId)
 		local item = self:getUserDataTb_()
@@ -337,7 +338,7 @@ end
 function MainActivityEnterView:getActivityEnterHandleFunc(activityId)
 	if not self._activityEnterHandleFuncDict then
 		self._activityEnterHandleFuncDict = {
-			[ActivityEnum.VersionActivityIdDict.Activity3_7] = VersionActivityMainFixedHelper.getVersionActivityEnterController().instance
+			[ActivityEnum.VersionActivityIdDict.Activity_sp02] = VersionActivity3_10EnterController.instance
 		}
 	end
 

@@ -277,7 +277,7 @@ function SkillTipLevelComp:_refreshDevice(skillId)
 	local isShowEnergyPoint = self.skillIndex ~= nil and deviceMo ~= nil
 
 	if isShowEnergyPoint then
-		local skillInfo = deviceMo:getSkillInfo(self.skillIndex)
+		local skillInfo = deviceMo:getSkillInfo(self.skillIndex, self._selectCardGroupIndex)
 
 		if self._super then
 			self._txttongdiao.text = "-" .. deviceMo:getUniqueSkillPoint()
@@ -461,6 +461,7 @@ function SkillTipLevelComp:initInfo(param)
 	self.entityMo = FightDataHelper.entityMgr:getById(param.entityId)
 	self.entitySkillIndex = param.entitySkillIndex
 	self._supplement = false
+	self._selectCardGroupIndex = self.viewParam.selectCardGroupIndex or 1
 
 	self:refreshUpgradeBtn(self.isCharacter)
 	self:_setNewSkills(self.srcSkillIdList, self.isSuper, self.isCharacter)

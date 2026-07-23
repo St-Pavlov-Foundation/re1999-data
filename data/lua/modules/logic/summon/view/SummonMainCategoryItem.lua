@@ -6,6 +6,26 @@ local SummonMainCategoryItem = class("SummonMainCategoryItem", LuaCompBase)
 
 function SummonMainCategoryItem:onInitView()
 	self._btnself = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_self")
+	self._summonSelectFreeTagList = self:getUserDataTb_()
+	self._summonUnselectFreeTagList = self:getUserDataTb_()
+	self._goSelectFreeTipsRoot = gohelper.findChild(self.viewGO, "#go_select_role/#go_freetipsRoot")
+	self._goUnselectFreeTipsRoot = gohelper.findChild(self.viewGO, "#go_normal_role/#go_freetipsRoot")
+
+	local childCount = self._goSelectFreeTipsRoot.transform.childCount
+
+	for i = 1, childCount do
+		local freeTag = self._goSelectFreeTipsRoot.transform:GetChild(i - 1)
+
+		table.insert(self._summonSelectFreeTagList, freeTag.gameObject)
+	end
+
+	childCount = self._goUnselectFreeTipsRoot.transform.childCount
+
+	for i = 1, childCount do
+		local freeTag = self._goUnselectFreeTipsRoot.transform:GetChild(i - 1)
+
+		table.insert(self._summonUnselectFreeTagList, freeTag.gameObject)
+	end
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -40,7 +60,13 @@ function SummonMainCategoryItem:onDestroyView()
 		self._simageline:UnLoadImage()
 		self:removeEvents()
 		self:customRemoveEvent()
+		tabletool.clear(self._summonSelectFreeTagList)
 
+		self._summonSelectFreeTagList = nil
+
+		tabletool.clear(self._summonUnselectFreeTagList)
+
+		self._summonUnselectFreeTagList = nil
 		self._isDisposed = true
 	end
 end
@@ -52,11 +78,15 @@ end
 function SummonMainCategoryItem:customAddEvent()
 	self:addEventCb(SummonController.instance, SummonEvent.onSummonTabSet, self._refreshSelected, self)
 	self:addEventCb(RedDotController.instance, RedDotEvent.RefreshClientCharacterDot, self._refreshNewFlag, self)
+	self:addEventCb(SummonController.instance, SummonEvent.onSummonProgressRewards, self._refreshNewFlag, self)
+	self:addEventCb(SummonController.instance, SummonEvent.onSummonOptionalProgressRewards, self._refreshNewFlag, self)
 end
 
 function SummonMainCategoryItem:customRemoveEvent()
 	self:removeEventCb(SummonController.instance, SummonEvent.onSummonTabSet, self._refreshSelected, self)
 	self:removeEventCb(RedDotController.instance, RedDotEvent.RefreshClientCharacterDot, self._refreshNewFlag, self)
+	self:removeEventCb(SummonController.instance, SummonEvent.onSummonProgressRewards, self._refreshNewFlag, self)
+	self:removeEventCb(SummonController.instance, SummonEvent.onSummonOptionalProgressRewards, self._refreshNewFlag, self)
 end
 
 function SummonMainCategoryItem:_btnselfOnClick()
@@ -293,22 +323,35 @@ end
 
 function SummonMainCategoryItem:_refreshFree(isSelect)
 	local poolCfg = self._mo.originConf
-	local freeTips = isSelect and self._goSelected or self._goUnselected
-
-	self._gofreetips = gohelper.findChild(freeTips, "#go_freetips")
-
-	local txttips = isSelect and gohelper.findChildText(self._gofreetips, "#txt_selecttips") or gohelper.findChildText(self._gofreetips, "#txt_normaltips")
 	local summonMO = SummonMainModel.instance:getPoolServerMO(poolCfg.id)
 	local haveFree = summonMO.haveFree
 	local havefree10Count = summonMO.havefree10Count > 0
+	local freeTipsList = isSelect and self._summonSelectFreeTagList or self._summonUnselectFreeTagList
+	local freeTipRoot = isSelect and self._goSelectFreeTipsRoot or self._goUnselectFreeTipsRoot
+	local goFreeStyleTipGo
+	local showSingle = haveFree and not havefree10Count
+	local tagStyleParam = string.splitToNumber(poolCfg.freeTagStyle, "#")
+	local styleId = showSingle and tagStyleParam[1] or tagStyleParam[2]
+
+	styleId = styleId or SummonEnum.DefaultTagStyle
+
+	for index, itemGo in ipairs(freeTipsList) do
+		gohelper.setActive(itemGo, index == styleId)
+
+		if index == styleId then
+			goFreeStyleTipGo = itemGo
+		end
+	end
+
+	local txttips = isSelect and gohelper.findChildText(goFreeStyleTipGo, "#txt_selecttips") or gohelper.findChildText(goFreeStyleTipGo, "#txt_normaltips")
 
 	if summonMO and (haveFree or havefree10Count) then
-		table.insert(self.tipsList, self._gofreetips)
-		gohelper.setActive(self._gofreetips, true)
+		table.insert(self.tipsList, freeTipRoot)
+		gohelper.setActive(freeTipRoot, true)
 
 		txttips.text = havefree10Count and luaLang("havefree10Count") or luaLang("p_summon_timelimit_flag_free")
 	else
-		gohelper.setActive(self._gofreetips, false)
+		gohelper.setActive(freeTipRoot, false)
 	end
 end
 
@@ -348,6 +391,10 @@ function SummonMainCategoryItem:cleanData()
 end
 
 function SummonMainCategoryItem:_refreshMask()
+	if not self._goSelectImageMask then
+		return
+	end
+
 	local poolCfg = self._mo.originConf
 	local maskParam = string.split(poolCfg.maskColor, "|")
 	local maskColor = self._goSelectImageMask.color

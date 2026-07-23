@@ -25265,7 +25265,7 @@
   },
   {
     "id": "p_bpface_skinfestivalview_txt_title2",
-    "lang": "《岁月的书签》新的一页：孔盖兮翠旍，登九天兮抚彗星。"
+    "lang": "《岁月的书签》新的一页：她描绘闪耀的线，描绘一个全新的开始。"
   },
   {
     "id": "p_bpface_skinfestivalview_txt_title3",
@@ -27097,7 +27097,7 @@
   },
   {
     "id": "p_warmup_txt_title",
-    "lang": "砖石何踟蹰"
+    "lang": "非纪实传说"
   },
   {
     "id": "p_warmup_txt_reward",
@@ -27973,7 +27973,7 @@
   },
   {
     "id": "p_v3a7_goldenmilletpresentfull_txt_desc",
-    "lang": "限时赠送<#BD6438>390粹雨滴</color>衣着抵扣券+<#BD6438>卡戎</color>衣着特惠"
+    "lang": "限时赠送<#BD6438>390粹雨滴</color>衣着抵扣券+<#BD6438>泥鯭的士</color>衣着特惠"
   },
   {
     "id": "p_v3a7_cumulativerecharge_maintxt1",
@@ -28149,7 +28149,7 @@
   },
   {
     "id": "p_bpfaceview_txt_desc",
-    "lang": "《幽冥无归》于是他离开光，重回至暗之地。"
+    "lang": "《称量罪与理》焚毁罪孽而冶炼公理。"
   },
   {
     "id": "p_bpfaceview_txt_title",
@@ -28681,7 +28681,7 @@
   },
   {
     "id": "p_v3a7_skinstore_kaorng_10",
-    "lang": "凭【当季惠选·亡者的恩赐】可使用28元/680粹雨滴售价购买衣着【亡者的恩赐】，该优惠可与【成衣订购惠选】同享。"
+    "lang": "凭【当季惠选·共生花】可使用28元/680粹雨滴售价购买衣着【共生花】，该优惠可与【成衣订购惠选】同享。"
   },
   {
     "id": "p_rouge2_teamrecommendtips_gotype1_unselect",
@@ -29138,5 +29138,461 @@
   {
     "id": "p_act191stageview_txt_yuhui",
     "lang": "余晖商店"
+  },
+  {
+    "id": "p_sp02_atomicdungeon_taskview_txt_desc",
+    "lang": "完成任务获得<#ffc898>角色衣着</color>及<#ffc898>专属满增幅心相</color>"
+  },
+  {
+    "id": "p_sp02_activityenterview_txt_entrance1",
+    "lang": "有终的劳作"
+  },
+  {
+    "id": "p_sp02_activityenterview_txt_entrance2",
+    "lang": "婆婆的秩序"
+  },
+  {
+    "id": "p_sp02_activityenterview_txt_tip1",
+    "lang": "完成任务领奖励"
+  },
+  {
+    "id": "p_sp02_activityenterview_txt_tip2",
+    "lang": "击退敌人得部件"
+  },
+  {
+    "id": "p_sp02_activityenterpanelview_txt_desc",
+    "lang": "活动期间，登录即可领取十全调·【银色拟剧论】\n累计登录3日，即可邀请4星角色诺拉"
+  },
+  {
+    "id": "p_sp02_activityenterview_txt_game_desc1",
+    "lang": "击退设施中出现的敌对机器人！但同时也要小心，别误伤友善机器人。\n每日第一次游玩可获得金属部件。"
+  },
+  {
+    "id": "p_sp02_activityenterview_txt_game_title2",
+    "lang": "目标"
+  },
+  {
+    "id": "p_sp02_activityenterview_txt_game_desc2",
+    "lang": "击退敌对机器人，获得更高的分数"
+  },
+  {
+    "id": "p_sp02_activityenterview_txt_game_start",
+    "lang": "开始"
+  },
+  {
+    "id": "p_sp02_activityenterview_txt_game_instruction_title",
+    "lang": "婆婆的秩序玩法说明"
+  },
+  {
+    "id": "p_sp02_activityenterview_txt_game_instruction_desc",
+    "lang": "场景中会随机出现以下三种单位。点击即可进行攻击。\n攻击敌对机器人即可获得积分，但误伤友善机器人将会扣分。"
+  },
+  {
+    "id": "p_sp02_activityenterview_txt_game_instruction_robot1",
+    "lang": "敌对机器人"
+  },
+  {
+    "id": "p_sp02_activityenterview_txt_game_instruction_robot2",
+    "lang": "敌对机器人"
+  },
+  {
+    "id": "p_sp02_activityenterview_txt_game_instruction_robot3",
+    "lang": "友善机器人"
+  },
+  {
+    "id": "p_sp02_activityenterview_txt_game_instruction_robot1_name",
+    "lang": "MA-9炸肉包"
+  },
+  {
+    "id": "p_sp02_activityenterview_txt_game_instruction_robot2_name",
+    "lang": "VOV-A6型实验助手"
+  },
+  {
+    "id": "p_sp02_activityenterview_txt_game_instruction_robot3_name",
+    "lang": "捷列什科娃"
+  },
+  {
+    "id": "p_sp02_activitygameresultview_txt_current",
+    "lang": "当前得分"
+  },
+  {
+    "id": "p_sp02_activitygameresultview_txt_combo",
+    "lang": "最大Combo数"
+  },
+  {
+    "id": "p_sp02_activitygameresultview_txt_again",
+    "lang": "再来一局"
+  },
+  {
+    "id": "p_sp02_activitygameresultview_txt_limit",
+    "lang": "今日已达奖励上限"
+  },
+  {
+    "id": "p_a20_reappear_mainactivity_enterview_txt_EntranceRole1",
+    "lang": "灵魂影映"
+  },
+  {
+    "id": "p_a20_reappear_mainactivity_enterview_txt_EntranceRole2",
+    "lang": "冷铁"
+  },
+  {
+    "id": "p_sp02_linkgift_fullview_txt_reward2",
+    "lang": "【银色拟剧论】征集可用"
+  },
+  {
+    "id": "p_sp02_linkgift_fullview_txt_reward3",
+    "lang": "【湖的涟漪】征集可用"
+  },
+  {
+    "id": "p_s02_skillstrengthenview_txt_Title",
+    "lang": "整合程序启动"
+  },
+  {
+    "id": "p_s02_mainuiswitchview_txt_tips",
+    "lang": "点击任意按钮退出预览"
+  },
+  {
+    "id": "p_sp02_activitychaingiftpanelview_txt_task1",
+    "lang": "奖励待解锁"
+  },
+  {
+    "id": "p_sp02_activitychaingiftpanelview_txt_task2",
+    "lang": "奖励可领取"
+  },
+  {
+    "id": "p_sp02_activitychaingiftpanelview_txt_getpackage",
+    "lang": "已购买"
+  },
+  {
+    "id": "p_sp02_activitychaingiftpanelview_txt_tag",
+    "lang": "获取<color=#AC5320>双生舞伶</color>后可得"
+  },
+  {
+    "id": "p_sp02_activitychaingiftpanelview_txt_tag2",
+    "lang": "超值"
+  },
+  {
+    "id": "p_sp02_activitychaingiftpanelview_txt_extra",
+    "lang": "获取<color=#AC5320>双生舞伶</color>后可得"
+  },
+  {
+    "id": "p_sp02_activitychaingiftpanelview_txt_get",
+    "lang": "立刻获得"
+  },
+  {
+    "id": "p_sp02_activitychaingiftpanelview_txt_desc",
+    "lang": "购买银色双子星系列礼包，可立即获取【银色拟剧论】征集道具。\n在<color=#AC5320>获取双生舞伶</color>后，还可追加领取征集道具！"
+  },
+  {
+    "id": "p_sp02_activitychaingiftpanelview_txt_title1",
+    "lang": "共可进行<size=80><#ffffff>7</color></size>次征集"
+  },
+  {
+    "id": "p_sp02_activitychaingiftpanelview_txt_title2",
+    "lang": "共可进行<size=80><#ffffff>13</color></size>次征集"
+  },
+  {
+    "id": "p_storelinkgiftgoodsview_txt_newtips",
+    "lang": "共计获得"
+  },
+  {
+    "id": "p_sp02_storeview_txt_title1",
+    "lang": "<size=48>核心</size>物资"
+  },
+  {
+    "id": "p_sp02_storeview_txt_title2",
+    "lang": "<size=48>研发</size>专供"
+  },
+  {
+    "id": "p_sp02_storeview_txt_title3",
+    "lang": "<size=48>日常</size>配额"
+  },
+  {
+    "id": "p_sp02_activitystore_txt_title",
+    "lang": "维修小站"
+  },
+  {
+    "id": "p_equippickchoiceview_txt_hasget",
+    "lang": "可选心相"
+  },
+  {
+    "id": "p_equippickchoiceview_txt_locked",
+    "lang": "等级已满"
+  },
+  {
+    "id": "p_equippickchoiceview_txt_tips",
+    "lang": "长按可查看心相详情"
+  },
+  {
+    "id": "p_equippickchoiceview_txt_title",
+    "lang": "请在以下心相中选择<#ffa46d>1</color>个心相提升至满级"
+  },
+  {
+    "id": "p_sp02_atomicdungeon_mainview_txt_polygon",
+    "lang": "试验场挑战"
+  },
+  {
+    "id": "p_sp02_atomicforyou_cultivateview_reset",
+    "lang": "重置此页"
+  },
+  {
+    "id": "p_sp02_atomicforyou_cultivateview_txt1",
+    "lang": "使用技能"
+  },
+  {
+    "id": "p_sp02_atomicforyou_cultivateview_txt2",
+    "lang": "要求"
+  },
+  {
+    "id": "p_sp02_atomicforyou_cultivateview_txt3",
+    "lang": "神经聚合物"
+  },
+  {
+    "id": "p_sp02_atomicforyou_cultivateview_txt4",
+    "lang": "安装"
+  },
+  {
+    "id": "sp02_game_help_1_txt_1",
+    "lang": "待办事项"
+  },
+  {
+    "id": "sp02_game_help_1_txt_2",
+    "lang": "局部失控"
+  },
+  {
+    "id": "sp02_game_help_1_txt_3",
+    "lang": "技术难题"
+  },
+  {
+    "id": "sp02_game_help_1_txt_4",
+    "lang": "公开档案"
+  },
+  {
+    "id": "sp02_game_help_1_txt_5",
+    "lang": "每个设施内存在许多事件点，完成部分事件点将积累设施探索的阶段进度。"
+  },
+  {
+    "id": "sp02_game_help_1_txt_6",
+    "lang": "警报层会影响战斗难度\n在部分事件内将标注完成事件对警报层的变化影响。\n善用警报层会使战斗更加轻松。"
+  },
+  {
+    "id": "sp02_game_help_2_txt_1",
+    "lang": "每个阶段完成特定数量的事件即可进入下一探索阶段\n完成全部探索阶段将解锁试炼场区域。"
+  },
+  {
+    "id": "sp02_game_help_2_txt_2",
+    "lang": "【阶段-已完成事件/需完成事件】"
+  },
+  {
+    "id": "sp02_game_help_2_txt_3",
+    "lang": "完成部分事件还将获得一定养成材料，用于战斗中手套的技能制作与强化。"
+  },
+  {
+    "id": "sp02_game_help_2_txt_4",
+    "lang": "祝你在3826号设施度过一段美好的旅程！"
+  },
+  {
+    "id": "sp02_game_help_3_txt_1",
+    "lang": "当红点与锁栓重合时，\n点击按钮确认。"
+  },
+  {
+    "id": "sp02_game_help_3_txt_2",
+    "lang": "确保在倒计时结束前，所有锁栓全部解锁即可完成。"
+  },
+  {
+    "id": "sp02_game_help_4_txt_1",
+    "lang": "1.激光模块谜题中，三道从右向左放射的射线，具有红或蓝两种颜色"
+  },
+  {
+    "id": "sp02_game_help_4_txt_2",
+    "lang": "2.射线向左发射的路径节点上，具有不同的三种标识"
+  },
+  {
+    "id": "sp02_game_help_4_txt_3",
+    "lang": "3.通过结合射线交汇时的颜色变化规则，调整圆盘"
+  },
+  {
+    "id": "sp02_game_help_4_txt_4",
+    "lang": "4.将最左侧的射线颜色调整为与终点一致的颜色即可完成。"
+  },
+  {
+    "id": "sp02_game_help_4_txt_5",
+    "lang": "默认"
+  },
+  {
+    "id": "sp02_game_help_4_txt_6",
+    "lang": "向上/向下分叉"
+  },
+  {
+    "id": "sp02_game_help_4_txt_7",
+    "lang": "发射点"
+  },
+  {
+    "id": "sp02_game_help_5_txt_1",
+    "lang": "颜色锁具有内圈与外圈两种状态"
+  },
+  {
+    "id": "sp02_game_help_5_txt_2",
+    "lang": "通过旋转内圈，以及下方三角区域，\n使得内圈的光点颜色与外圈对应即可完成。"
+  },
+  {
+    "id": "p_sp02_versionsummonshuangshengwulinghalfview_txt_hasget",
+    "lang": "所有奖励已领取"
+  },
+  {
+    "id": "p_sp02_versionsummonshuangshengwulinghalfview_txt_or",
+    "lang": "或"
+  },
+  {
+    "id": "p_sp02_versionsummonshuangshengwulinghalfview_txt_name",
+    "lang": "双生舞伶"
+  },
+  {
+    "id": "p_sp02_summonrewardpanel_txt_name02",
+    "lang": "随机灵感角色自选"
+  },
+  {
+    "id": "p_sp02_selfselect_pickrewardview_txt_name01",
+    "lang": "双生舞伶×1"
+  },
+  {
+    "id": "p_sp02_selfselect_pickrewardview_txt_name02",
+    "lang": "随机角色灵感箱×1"
+  },
+  {
+    "id": "p_sp02_selfselect_pickrewardview_txt_desc",
+    "lang": "获取时可随机获得岩、星、木、兽、灵·智五种箱装印象中的一种"
+  },
+  {
+    "id": "p_sp02_selfselect_pickrewardview_txt_title",
+    "lang": "请在以下奖励中选择1个进行获取"
+  },
+  {
+    "id": "p_sp02_selfselect_pickchoiceview_txt_Title",
+    "lang": "随机获得任意一种灵感箱，使用后可自选指定灵感的对应常驻角色"
+  },
+  {
+    "id": "p_fight_s02_sswl_selectcardview_txt_confirm",
+    "lang": "确认整合"
+  },
+  {
+    "id": "p_sp02_marcusview_txt_reward",
+    "lang": "阅读行为准则后领取"
+  },
+  {
+    "id": "p_sp02_paomian_mainview_hasget",
+    "lang": "已拥有"
+  },
+  {
+    "id": "p_sp02_herolibraryview_txt_role",
+    "lang": "出演者"
+  },
+  {
+    "id": "p_sp02_herolibraryview_txt_descr",
+    "lang": "幕后闲谈"
+  },
+  {
+    "id": "p_sp02_guessmeview_txt_reward",
+    "lang": "猜中答案后可领"
+  },
+  {
+    "id": "p_sp02_marcusview_txt_lock",
+    "lang": "点击查看准则"
+  },
+  {
+    "id": "p_sp02_versionsummonmaliannahalfview_txt_name",
+    "lang": "玛丽安娜"
+  },
+  {
+    "id": "p_sp02_atomicdungeon_polygonselect_txt_skill",
+    "lang": "推荐技能："
+  },
+  {
+    "id": "p_sp02_atomicdungeon_result_txt_failed",
+    "lang": "这下脆了"
+  },
+  {
+    "id": "p_sp02_atomicdungeon_interactview_txt_1",
+    "lang": "继续"
+  },
+  {
+    "id": "p_sp02_atomicdungeon_interactview_txt_2",
+    "lang": "确定"
+  },
+  {
+    "id": "p_sp02_atomicdungeon_interactview_txt_3",
+    "lang": "破解谜题"
+  },
+  {
+    "id": "p_sp02_atomicdungeon_mainview_txt_alarmLevel",
+    "lang": "警报层"
+  },
+  {
+    "id": "p_sp02_atomicdungeon_mainview_txt_talent",
+    "lang": "养成"
+  },
+  {
+    "id": "p_sp02_atomicdungeon_mainview_txt_data",
+    "lang": "公开档案"
+  },
+  {
+    "id": "p_sp02_atomicdungeon_mainview_txt_emergency",
+    "lang": "突发事件，请尽快处理"
+  },
+  {
+    "id": "p_sp02_atomicdungeon_polygonselectview_txt_start",
+    "lang": "开始挑战"
+  },
+  {
+    "id": "p_sp02_atomicdungeon_polygonselectview_txt_unfinish",
+    "lang": "难度未通关"
+  },
+  {
+    "id": "p_sp02_atomicdungeon_resultview_txt_alarm",
+    "lang": "警报层已重置为0"
+  },
+  {
+    "id": "p_sp02_atomicheart_colorgameview_txt_title",
+    "lang": "在红点与锁栓重合时点击按钮确认"
+  },
+  {
+    "id": "p_sp02_atomicheart_colorgameview_txt_rotateInner",
+    "lang": "旋转内圈"
+  },
+  {
+    "id": "p_sp02_atomicheart_colorgameview_txt_rotateOuter",
+    "lang": "旋转外圈"
+  },
+  {
+    "id": "p_sp02_atomicheart_colorgameview_txt_reset",
+    "lang": "重置"
+  },
+  {
+    "id": "p_sp02_atomicheart_colorgameview_txt_forceSucc",
+    "lang": "暴力破解"
+  },
+  {
+    "id": "p_sp02_atomicheart_colorgameview_txt_title2",
+    "lang": "使光路符合终点颜色"
+  },
+  {
+    "id": "p_sp02_atomicheart_colorgameview_txt_totate",
+    "lang": "旋转"
+  },
+  {
+    "id": "p_sp02_twinspsychubeequipinfoview_txt_totate",
+    "lang": "额外激活"
+  },
+  {
+    "id": "p_sp02_enterview_txt_enter_05",
+    "lang": "焦点闪回"
+  },
+  {
+    "id": "p_sp02_ramdomlingganbox_tips_01",
+    "lang": "请选择角色"
+  },
+  {
+    "id": "p_sp02_atomicheart_colorgameview_txt_title3",
+    "lang": "使内圈的光点颜色与最外圈对应"
   }
 ]

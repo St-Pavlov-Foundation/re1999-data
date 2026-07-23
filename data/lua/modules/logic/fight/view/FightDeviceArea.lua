@@ -194,7 +194,7 @@ function FightDeviceArea:refreshUI()
 end
 
 function FightDeviceArea:refreshDeviceList()
-	recthelper.setWidth(self.rectTrPlayCards, FightDeviceHelper.getDeviceAreaTotalWidth())
+	self:resetDeviceWidth()
 
 	local deviceArea = FightDataHelper.getDeviceArea()
 	local deviceList = deviceArea:getClientDeviceList()
@@ -212,9 +212,6 @@ function FightDeviceArea:refreshDeviceList()
 
 		item:setName("deviceCardItem" .. index)
 		item:setSelectFrameActive(false)
-		item:setScanLineActive(false)
-		item:setScanSuccessActive(false)
-		item:setScanFailActive(false)
 		item:show()
 		item:refreshUI(index, deviceInfo)
 	end
@@ -306,6 +303,12 @@ function FightDeviceArea:setDeviceCardItemActive(entityUid)
 	end
 end
 
+function FightDeviceArea:hideAllDeviceCardSelectFrame()
+	for _, deviceItem in ipairs(self.deviceItemList) do
+		deviceItem:setSelectFrameActive(false)
+	end
+end
+
 function FightDeviceArea:createPowerItem()
 	local item = self:getUserDataTb_()
 
@@ -337,6 +340,19 @@ function FightDeviceArea:onSwitchDeviceGroup(uid, index)
 			cardItem:updateData()
 		end
 	end
+
+	self:resetDeviceWidth()
+	self:updateItemPos()
+end
+
+function FightDeviceArea:updateItemPos()
+	for _, cardItem in ipairs(self.deviceItemList) do
+		cardItem:refreshAnchor()
+	end
+end
+
+function FightDeviceArea:resetDeviceWidth()
+	recthelper.setWidth(self.rectTrPlayCards, FightDeviceHelper.getDeviceAreaTotalWidth())
 end
 
 function FightDeviceArea:onDevicePowerChange(changeStr, changeType)
@@ -377,22 +393,26 @@ function FightDeviceArea:setCanvasAlpha(alpha)
 	self.canvasGroupDevice.alpha = alpha
 end
 
-function FightDeviceArea:playScanEffect(index, success)
-	local itemList = self.deviceItemList
-
-	for _, deviceCardItem in ipairs(itemList) do
-		deviceCardItem:setSelectFrameActive(false)
-		deviceCardItem:setScanLineActive(false)
+function FightDeviceArea:hideAllInnerSelectFrame()
+	for _, cardItem in ipairs(self.deviceItemList) do
+		cardItem:hideAllInnerSelectFrame()
 	end
+end
 
-	local cardItem = self.deviceItemList[index]
+function FightDeviceArea:playScanEffect(success, deviceIndex, innerIndex)
+	local cardItem = self.deviceItemList[deviceIndex]
 
 	if not cardItem then
 		return
 	end
 
-	cardItem:setSelectFrameActive(true)
-	cardItem:playScanEffect(success)
+	if success then
+		cardItem:showInnerSelectFrame(innerIndex)
+	else
+		cardItem:hideAllInnerSelectFrame(innerIndex)
+	end
+
+	cardItem:playScanEffect(success, innerIndex)
 end
 
 function FightDeviceArea:playStopEffect(targetId, skillId)

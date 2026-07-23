@@ -36,7 +36,7 @@ end
 
 function FightDeviceSwitchCardItem:onClickDeviceCard()
 	if self.longPressed then
-		self.longPressed = nil
+		self.longPressed = false
 
 		return
 	end
@@ -64,7 +64,7 @@ function FightDeviceSwitchCardItem:checkCanSwitch()
 		return
 	end
 
-	if self.isBigSkill then
+	if self.index == FightDeviceInfoData.Index.Unique then
 		local needPoint = entityMo:getUniqueSkillPoint()
 		local curExPoint = entityMo.exPoint
 
@@ -76,22 +76,114 @@ function FightDeviceSwitchCardItem:checkCanSwitch()
 	return true
 end
 
-function FightDeviceSwitchCardItem:refreshUI(uid, index, deviceSkillInfo)
+function FightDeviceSwitchCardItem:refreshUI(uid, index, groupSkillInfo)
 	self.uid = uid
 	self.index = index
-	self.deviceSkillInfo = deviceSkillInfo
+	self.groupSkillInfo = groupSkillInfo
 
-	FightDeviceSwitchCardItem.super.refreshUI(self, deviceSkillInfo)
+	if not self.loadedDone then
+		return
+	end
+
+	if not groupSkillInfo then
+		return
+	end
+
+	if index == FightDeviceInfoData.Index.Unique then
+		gohelper.setActive(self.goNormal, false)
+		gohelper.setActive(self.goNormal1, false)
+		gohelper.setActive(self.goSpecialBg, false)
+		gohelper.setActive(self.goUnique, true)
+		self.uniqueComp:refreshUI(groupSkillInfo.skills[1])
+		self.uniqueComp:setActive(true)
+		self.normalComp:setActive(false)
+		self.normal1Comp:setActive(false)
+	else
+		gohelper.setActive(self.goNormal, true)
+		self.normalComp:refreshUI(groupSkillInfo.skills[1])
+		self.normalComp:setActive(true)
+
+		local skillInfo = groupSkillInfo.skills[2]
+
+		if skillInfo then
+			gohelper.setActive(self.goNormal1, true)
+			self.normal1Comp:refreshUI(skillInfo)
+			self.normal1Comp:setActive(true)
+			gohelper.setActive(self.goSpecialBg, true)
+		else
+			self.normal1Comp:setActive(false)
+			gohelper.setActive(self.goSpecialBg, false)
+			gohelper.setActive(self.goNormal1, false)
+		end
+
+		self.uniqueComp:setActive(false)
+		gohelper.setActive(self.goUnique, false)
+	end
+
+	recthelper.setWidth(self.rectTr, FightDeviceHelper.getDeviceGroupWidth(groupSkillInfo))
 	self:setSelectFrameActive(self.selectFrameActive)
 	self:setGrayMaskActive(not self:checkCanSwitch())
 end
 
-function FightDeviceSwitchCardItem:afterLoadDone()
-	self:refreshUI(self.uid, self.index, self.deviceSkillInfo)
+function FightDeviceSwitchCardItem:setSelectFrameActive(active)
+	self.selectFrameActive = active
 
+	if not self.loadedDone then
+		return
+	end
+
+	if not self.groupSkillInfo then
+		gohelper.setActive(self.goSelect, false)
+		self.uniqueComp:setSelectFrameActive(active)
+
+		return
+	end
+
+	if self.index == FightDeviceInfoData.Index.Unique then
+		gohelper.setActive(self.goSelect, false)
+		self.uniqueComp:setSelectFrameActive(active)
+	else
+		self.uniqueComp:setSelectFrameActive(false)
+		gohelper.setActive(self.goSelect, active)
+		recthelper.setWidth(self.rectSelect, FightDeviceHelper.getSelectFrameWidthByGroup(self.groupSkillInfo))
+		recthelper.setAnchorX(self.rectSelect, FightDeviceHelper.getSelectFrameAnchorXByGroup(self.groupSkillInfo))
+	end
+end
+
+function FightDeviceSwitchCardItem:afterLoadDone()
 	self.parentTr = self.rectTr.parent
 
-	self:playAnim("open2")
+	self:refreshUI(self.uid, self.index, self.groupSkillInfo)
+	self:playGroupAnim("open2")
+end
+
+function FightDeviceSwitchCardItem:playGroupAnim(animName, callback, callbackObj)
+	if self.index == FightDeviceInfoData.Index.Unique then
+		self.uniqueComp:playAnim(animName, callback, callbackObj)
+	else
+		self.normalComp:playAnim(animName, callback, callbackObj)
+		self.normal1Comp:playAnim(animName)
+	end
+end
+
+function FightDeviceSwitchCardItem:playAnim(animName, callback, callbackObj)
+	return
+end
+
+function FightDeviceSwitchCardItem:playOneItemAnim(animName, index, callback, callbackObj)
+	return
+end
+
+function FightDeviceSwitchCardItem:playScanEffect(success, index)
+	return
+end
+
+function FightDeviceSwitchCardItem:getGroupInfo()
+	return self.groupSkillInfo
+end
+
+function FightDeviceSwitchCardItem:setAnchorX(anchorX)
+	recthelper.setAnchorX(self.rectTr, anchorX)
 end
 
 function FightDeviceSwitchCardItem:refreshSelectFrameActive(curSelectIndex)

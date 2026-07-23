@@ -80,6 +80,7 @@ function PackageStoreGoodsItem:_editableInitView()
 	self._gologoTab = gohelper.findChild(self.viewGO, "#simage_logo")
 	self._gotxtv2a8_09 = gohelper.findChild(self.viewGO, "txt_v2a8_09")
 	self._gojinfanglun = gohelper.findChild(self.viewGO, "#go_jinfanglun")
+	self._goSP02Logo = gohelper.findChild(self.viewGO, "go_logo")
 
 	gohelper.setActive(self._txteng, false)
 	gohelper.setActive(self._gooptionalgift, false)
@@ -110,16 +111,32 @@ function PackageStoreGoodsItem:_onClick()
 	end
 
 	if self._cfgType == StoreEnum.StoreChargeType.LinkGiftGoods then
-		if self._mo.buyCount > 0 and StoreCharageConditionalHelper.isHasCanFinishGoodsTask(self._mo.goodsId) then
-			TaskRpc.instance:sendFinishTaskRequest(self._mo.config.taskid)
-			StoreGoodsTaskController.instance:requestGoodsTaskList()
-		else
-			StoreController.instance:openPackageStoreGoodsView(self._mo)
+		local chargeConditionalConfig = StoreConfig.instance:getChargeConditionalConfig(self._mo.config.taskid)
+
+		if chargeConditionalConfig.clientType == StoreEnum.ChargeConditionalClientType.Default then
+			if self._mo.buyCount > 0 and StoreCharageConditionalHelper.isHasCanFinishGoodsTask(self._mo.goodsId) then
+				TaskRpc.instance:sendFinishTaskRequest(self._mo.config.taskid)
+				StoreGoodsTaskController.instance:requestGoodsTaskList()
+			else
+				StoreController.instance:openPackageStoreGoodsView(self._mo)
+			end
+		elseif chargeConditionalConfig.clientType == StoreEnum.ChargeConditionalClientType.SP02 then
+			local param = {}
+			local actParam = string.splitToNumber(chargeConditionalConfig.signInIdParam, "#")
+
+			param.actId = actParam[1]
+
+			ViewMgr.instance:openView(ViewName.SP02_LinkGiftPanelView, param)
 		end
 	elseif self._hascloth then
 		GameFacade.showToast(ToastEnum.PackageStoreGoodsHasCloth)
 	elseif self._soldout then
 		GameFacade.showToast(ToastEnum.ActivityNoRemainBuyCount)
+	elseif self._cfgType == StoreEnum.StoreChargeType.SceneUIPackage then
+		ViewMgr.instance:openView(ViewName.SceneUIPackageGoodsTipView, {
+			canJump = true,
+			goodsId = self._mo.goodsId
+		})
 	else
 		StoreController.instance:openPackageStoreGoodsView(self._mo)
 	end
@@ -423,6 +440,7 @@ function PackageStoreGoodsItem:onUpdateMO(mo)
 	self:_onUpdateMO_goskinDiscountTag(mo)
 	self:_onUpdateMO_godestinySummonPackageTag(mo)
 	self:refreshSkinTips(mo)
+	self:_onUpdateMO_newLinkTag(mo)
 	gohelper.setActive(self._gotxtv2a8_09, PackageStoreEnum.AnimHeadDict[mo.goodsId])
 end
 
@@ -538,17 +556,44 @@ end
 
 function PackageStoreGoodsItem:_onUpdateMO_linkPackage(mo)
 	local isLinkGift = self._cfgType == StoreEnum.StoreChargeType.LinkGiftGoods
+	local chargeConditionalConfig = StoreConfig.instance:getChargeConditionalConfig(self._mo.config.taskid)
 
-	gohelper.setActive(self._golinkgift, isLinkGift)
-	gohelper.setActive(self._txtname, not isLinkGift)
+	if not isLinkGift or not chargeConditionalConfig then
+		self:_setShowGoLinkGift(false)
 
-	if isLinkGift then
-		if self._linkGiftItemComp == nil then
-			self._linkGiftItemComp = MonoHelper.addNoUpdateLuaComOnceToGo(self._golinkgift, StoreLinkGiftItemComp, self)
-		end
-
-		self._linkGiftItemComp:onUpdateMO(mo)
+		return
 	end
+
+	self:_setShowGoLinkGift(chargeConditionalConfig.clientType == StoreEnum.ChargeConditionalClientType.Default)
+
+	if chargeConditionalConfig.clientType == StoreEnum.ChargeConditionalClientType.Default then
+		if isLinkGift then
+			if self._linkGiftItemComp == nil then
+				self._linkGiftItemComp = MonoHelper.addNoUpdateLuaComOnceToGo(self._golinkgift, StoreLinkGiftItemComp, self)
+			end
+
+			self._linkGiftItemComp:onUpdateMO(mo)
+
+			local str = self._linkGiftItemComp:getBuyStateStr()
+
+			if not string.nilorempty(str) then
+				self._txtmaterialNum.text = str
+			end
+		end
+	elseif chargeConditionalConfig.clientType == StoreEnum.ChargeConditionalClientType.SP02 then
+		local haveCanFinishTask = StoreCharageConditionalHelper.isHasCanFinishGoodsTask(self._mo.config.id)
+
+		gohelper.setActive(self._txtremain, not haveCanFinishTask)
+
+		if haveCanFinishTask then
+			self._txtmaterialNum.text = luaLang("sp02_link_gift_store_reward_tip")
+		end
+	end
+end
+
+function PackageStoreGoodsItem:_setShowGoLinkGift(show)
+	gohelper.setActive(self._golinkgift, show)
+	gohelper.setActive(self._iconImage, not show)
 end
 
 function PackageStoreGoodsItem:_onUpdateMO_gosummonSimulationPickTag(mo)
@@ -567,6 +612,12 @@ function PackageStoreGoodsItem:_onUpdateMO_godestinySummonPackageTag(mo)
 	local isActive = mo.config.id == StoreEnum.V3a4_DestinySummonPackage
 
 	gohelper.setActive(self._godestinygift, isActive)
+end
+
+function PackageStoreGoodsItem:_onUpdateMO_newLinkTag(mo)
+	local isActive = mo.config.newShowLinkTag == StoreEnum.NewLinkTagType.SP02
+
+	gohelper.setActive(self._goSP02Logo, isActive)
 end
 
 function PackageStoreGoodsItem:setClickCallback(callback, callbackObj)

@@ -16,7 +16,8 @@ function StoryViewDefine.init(module_views)
 		otherRes = {
 			AvProMgrConfig.UrlStoryVideo,
 			AvProMgrConfig.UrlStoryVideoCompatible,
-			[3] = "ui/viewres/story/view/storyslidedialog.prefab"
+			[3] = "ui/viewres/story/view/storyslidedialog.prefab",
+			[4] = AvProMgrConfig.UrlVideoDisable
 		}
 	}
 	module_views.StoryLeadRoleSpineView = {

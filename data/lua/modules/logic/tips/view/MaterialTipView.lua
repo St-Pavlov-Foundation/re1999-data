@@ -898,6 +898,10 @@ function MaterialTipView:_btnuseOnClick()
 		JumpController.instance:jumpByParam(param)
 	elseif self._config.subType == ItemEnum.SubType.NewDestinyStoneUp then
 		VersionActivity3_8SelfSelectSixController.instance:openHeroChoiceView()
+	elseif self._config.subType == ItemEnum.SubType.EquipLvUp then
+		local itemId = self._config.id
+
+		EquipLvUpController.instance:checkOpenEquipLvUpChooseView(itemId)
 	else
 		ItemRpc.instance:simpleSendUseItemRequest(materialId, quantity)
 	end

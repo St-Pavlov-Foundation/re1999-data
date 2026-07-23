@@ -4,6 +4,20 @@ module("modules.logic.story.view.StoryView", package.seeall)
 
 local StoryView = class("StoryView", BaseView)
 
+function StoryView:_clearAllTimers()
+	TaskDispatcher.cancelTask(self._conShowIn, self)
+	TaskDispatcher.cancelTask(self._onEnableClick, self)
+	TaskDispatcher.cancelTask(self._enterNextStep, self)
+	TaskDispatcher.cancelTask(self._onFullTextFinished, self)
+	TaskDispatcher.cancelTask(self._startShowText, self)
+	TaskDispatcher.cancelTask(self._onCheckNext, self)
+	TaskDispatcher.cancelTask(self._guaranteeEnterNextStep, self)
+	TaskDispatcher.cancelTask(self._playShowHero, self)
+	TaskDispatcher.cancelTask(self._startShake, self)
+	TaskDispatcher.cancelTask(self._shakeStop, self)
+	TaskDispatcher.cancelTask(self._viewFadeIn, self)
+end
+
 function StoryView:onInitView()
 	self._imagefullbottom = gohelper.findChildImage(self.viewGO, "#image_fullbottom")
 	self._gomiddle = gohelper.findChild(self.viewGO, "#go_middle")
@@ -13,18 +27,18 @@ function StoryView:onInitView()
 	self._gocontentroot = gohelper.findChild(self.viewGO, "#go_contentroot")
 	self._gonexticon = gohelper.findChild(self.viewGO, "#go_contentroot/nexticon")
 	self._goconversation = gohelper.findChild(self.viewGO, "#go_contentroot/#go_conversation")
-	self._goblackbottom = gohelper.findChild(self.viewGO, "#go_contentroot/#go_conversation/blackBottom")
-	self._gohead = gohelper.findChild(self.viewGO, "#go_contentroot/#go_conversation/#go_head")
-	self._goheadgrey = gohelper.findChild(self.viewGO, "#go_contentroot/#go_conversation/#go_head/#go_headgrey")
-	self._simagehead = gohelper.findChildSingleImage(self.viewGO, "#go_contentroot/#go_conversation/#go_head/#simage_head")
-	self._gospine = gohelper.findChild(self.viewGO, "#go_contentroot/#go_conversation/#go_spine")
-	self._gonamebg = gohelper.findChild(self.viewGO, "#go_contentroot/#go_conversation/#go_spine/#go_namebg")
-	self._gospineobj = gohelper.findChild(self.viewGO, "#go_contentroot/#go_conversation/#go_spine/mask/#go_spineobj")
-	self._goname = gohelper.findChild(self.viewGO, "#go_contentroot/#go_conversation/#go_name")
-	self._txtnamecn1 = gohelper.findChildText(self.viewGO, "#go_contentroot/#go_conversation/#go_name/namelayout/#txt_namecn1")
-	self._txtnamecn2 = gohelper.findChildText(self.viewGO, "#go_contentroot/#go_conversation/#go_name/namelayout/#txt_namecn2")
-	self._txtnameen = gohelper.findChildText(self.viewGO, "#go_contentroot/#go_conversation/#go_name/namelayout/#txt_nameen")
 	self._gocontents = gohelper.findChild(self.viewGO, "#go_contentroot/#go_conversation/#go_contents")
+	self._goblackbottom = gohelper.findChild(self.viewGO, "#go_contentroot/#go_conversation/#go_contents/content/blackBottom")
+	self._gohead = gohelper.findChild(self.viewGO, "#go_contentroot/#go_conversation/#go_contents/content/#go_head")
+	self._goheadgrey = gohelper.findChild(self.viewGO, "#go_contentroot/#go_conversation/#go_contents/content/#go_head/#go_headgrey")
+	self._simagehead = gohelper.findChildSingleImage(self.viewGO, "#go_contentroot/#go_conversation/#go_contents/content/#go_head/#simage_head")
+	self._gospine = gohelper.findChild(self.viewGO, "#go_contentroot/#go_conversation/#go_contents/content/#go_spine")
+	self._gospineobj = gohelper.findChild(self.viewGO, "#go_contentroot/#go_conversation/#go_contents/content/#go_spine/mask/#go_spineobj")
+	self._goname = gohelper.findChild(self.viewGO, "#go_contentroot/#go_conversation/#go_contents/content/#go_name")
+	self._gonamebg = gohelper.findChild(self.viewGO, "#go_contentroot/#go_conversation/#go_contents/content/#go_name/#go_namebg")
+	self._txtnamecn1 = gohelper.findChildText(self.viewGO, "#go_contentroot/#go_conversation/#go_contents/content/#go_name/namelayout/#txt_namecn1")
+	self._txtnamecn2 = gohelper.findChildText(self.viewGO, "#go_contentroot/#go_conversation/#go_contents/content/#go_name/namelayout/#txt_namecn2")
+	self._txtnameen = gohelper.findChildText(self.viewGO, "#go_contentroot/#go_conversation/#go_contents/content/#go_name/namelayout/#txt_nameen")
 	self._gonoconversation = gohelper.findChild(self.viewGO, "#go_contentroot/#go_noconversation")
 	self._gotop = gohelper.findChild(self.viewGO, "#go_top")
 	self._goimg3 = gohelper.findChild(self.viewGO, "#go_top/#go_img3")
@@ -134,6 +148,18 @@ function StoryView:_btnskipOnClick(isSkipAll)
 	end
 
 	StoryTool.enablePostProcess(true)
+
+	local isOverseas = SettingsModel.instance:isOverseas()
+
+	if isOverseas and self._curStoryId == SDKMediaEventEnum.FirstStoryId then
+		local playerPrefsKey = string.format(PlayerPrefsKey.SDKDataTrackMgr_MediaEvent_first_story_skip, PlayerModel.instance:getMyUserId())
+
+		if PlayerPrefsHelper.getNumber(playerPrefsKey, 0) == 0 then
+			SDKDataTrackMgr.instance:trackMediaEvent(SDKDataTrackMgr.MediaEvent.first_story_skip)
+			PlayerPrefsHelper.setNumber(playerPrefsKey, 1)
+		end
+	end
+
 	self:_skipStep(isSkipAll)
 end
 
@@ -308,6 +334,8 @@ function StoryView:_dialogConFinished()
 end
 
 function StoryView:_storyFinished(isSkip)
+	self:_clearAllTimers()
+
 	self._stepId = 0
 	self._finished = true
 	self._stepCo = nil
@@ -324,7 +352,7 @@ function StoryView:_storyFinished(isSkip)
 
 	if StoryController.instance._hideStartAndEndDark then
 		self:stopAllAudio(1.5)
-		gohelper.setActive(self._gospine, false)
+		self:_showLeadRoleSpine(false)
 
 		if self._confadeId then
 			ZProj.TweenHelper.KillById(self._confadeId)
@@ -344,7 +372,14 @@ function StoryView:_storyFinished(isSkip)
 	self:stopAllAudio(1.5)
 end
 
+function StoryView:_showLeadRoleSpine(show)
+	gohelper.setActive(self._gospine, show)
+	gohelper.setActive(self._gonamebg, show)
+end
+
 function StoryView:onClose()
+	self:_clearAllTimers()
+
 	if not self._finished then
 		self:stopAllAudio(0)
 	end
@@ -377,7 +412,12 @@ function StoryView:_enterNextStep()
 	end
 
 	TaskDispatcher.cancelTask(self._enterNextStep, self)
+	TaskDispatcher.cancelTask(self._guaranteeEnterNextStep, self)
 	StoryController.instance:enterNext()
+end
+
+function StoryView:_guaranteeEnterNextStep()
+	self:_enterNextStep()
 end
 
 function StoryView:_skipStep(isSkipAll)
@@ -431,6 +471,7 @@ function StoryView:_showBranchLeadHero()
 	if hasOptionPlayed then
 		self._dialogItem:playHardIn()
 	else
+		StoryModel.instance:setTextShowing(false)
 		self._dialogItem:hideDialog()
 	end
 
@@ -490,7 +531,7 @@ end
 
 function StoryView:_showNormalLeadHero(param)
 	gohelper.setActive(self._gohead, true)
-	gohelper.setActive(self._gospine, false)
+	self:_showLeadRoleSpine(false)
 
 	local name = param.conditionValue2[GameLanguageMgr.instance:getLanguageTypeStoryIndex()]
 	local nameEn = param.conditionValue2[LanguageEnum.LanguageStoryType.EN]
@@ -504,7 +545,7 @@ function StoryView:_showSpineLeadHero(param)
 
 	StoryController.instance:dispatchEvent(StoryEvent.LeadRoleViewShow, true, heroIcon)
 	gohelper.setActive(self._gohead, false)
-	gohelper.setActive(self._gospine, true)
+	self:_showLeadRoleSpine(true)
 
 	self._txtnamecn1.text = luaLang("mainrolename")
 	self._txtnamecn2.text = luaLang("mainrolename")
@@ -521,6 +562,18 @@ function StoryView:_showSpineLeadHero(param)
 	end
 
 	StoryController.instance:dispatchEvent(StoryEvent.ShowLeadRole, self._stepCo, true, false, false, spineType)
+	gohelper.setActive(self._txtnamecn1.gameObject, true)
+	gohelper.setActive(self._txtnamecn2.gameObject, false)
+
+	if GameLanguageMgr.instance:getLanguageTypeStoryIndex() ~= LanguageEnum.LanguageStoryType.EN then
+		self._txtnameen.text = "<voffset=4>/ </voffset>Vertin"
+
+		gohelper.setActive(self._txtnameen.gameObject, true)
+	else
+		self._txtnameen.text = ""
+
+		gohelper.setActive(self._txtnameen.gameObject, false)
+	end
 end
 
 function StoryView:_updateStep(stepId)
@@ -529,6 +582,16 @@ function StoryView:_updateStep(stepId)
 	end
 
 	self._stepCo = StoryStepModel.instance:getStepListById(stepId)
+
+	if self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.SoftLight then
+		gohelper.setActive(self._goline, false)
+		gohelper.setActive(self._gonexticon, false)
+		gohelper.setActive(self._goblackbottom, false)
+	else
+		gohelper.setActive(self._goline, true)
+		gohelper.setActive(self._gonexticon, true)
+		gohelper.setActive(self._goblackbottom, true)
+	end
 
 	if self._stepCo.bg.transType ~= StoryEnum.BgTransType.DarkFade and self._stepCo.bg.transType ~= StoryEnum.BgTransType.WhiteFade then
 		self:_refreshView()
@@ -607,12 +670,16 @@ function StoryView:_conShowIn()
 	self._diatxt = StoryTool.getFilterDia(self._stepCo.conversation.diaTexts[GameLanguageMgr.instance:getLanguageTypeStoryIndex()])
 
 	self._dialogItem:hideDialog()
+	StoryModel.instance:setTextShowing(false)
 	TaskDispatcher.cancelTask(self._enterNextStep, self)
 	TaskDispatcher.cancelTask(self._onFullTextKeepFinished, self)
+	TaskDispatcher.cancelTask(self._guaranteeEnterNextStep, self)
+	TaskDispatcher.cancelTask(self._onFullTextFinished, self)
 	TaskDispatcher.cancelTask(self._startShowText, self)
 
 	if self._stepCo.conversation.type == StoryEnum.ConversationType.None then
 		self:_showConversationItem(false)
+		TaskDispatcher.runDelay(self._guaranteeEnterNextStep, self, self._stepCo.conversation.delayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] + 0.2)
 		TaskDispatcher.runDelay(self._enterNextStep, self, self._stepCo.conversation.delayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()])
 	else
 		StoryController.instance:dispatchEvent(StoryEvent.SetFullText, "")
@@ -620,6 +687,7 @@ function StoryView:_conShowIn()
 
 		if self._stepCo.conversation.type == StoryEnum.ConversationType.NoInteract then
 			StoryModel.instance:enableClick(false)
+			TaskDispatcher.runDelay(self._guaranteeEnterNextStep, self, self._stepCo.conversation.delayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] + 0.2)
 			TaskDispatcher.runDelay(self._enterNextStep, self, self._stepCo.conversation.delayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()])
 		elseif self._stepCo.conversation.type == StoryEnum.ConversationType.LimitNoInteract then
 			StoryModel.instance:setLimitNoInteractLock(true)
@@ -629,6 +697,8 @@ function StoryView:_conShowIn()
 
 		self:_showConversationItem(true)
 	end
+
+	UIBlockMgr.instance:startBlock("waitShowText")
 
 	if StoryModel.instance:isNeedFadeIn() then
 		if self._gospine.activeSelf then
@@ -656,6 +726,8 @@ function StoryView:_onLimitNoInteractFinished()
 end
 
 function StoryView:_startShowText()
+	UIBlockMgr.instance:endBlock("waitShowText")
+
 	if not self._stepCo then
 		return
 	end
@@ -678,7 +750,7 @@ function StoryView:_showConversationItem(show)
 
 	if not show then
 		gohelper.setActive(self._gocontentroot, false)
-		self._simagehead:UnLoadImage()
+		gohelper.setActive(self._simagehead.gameObject, false)
 		StoryController.instance:dispatchEvent(StoryEvent.LeadRoleViewShow, false)
 
 		return
@@ -695,12 +767,20 @@ function StoryView:_showConversationItem(show)
 
 	self:_showHeadContentTxt(name, nameEn)
 	gohelper.setActive(self._goname, self._stepCo.conversation.nameShow)
-	gohelper.setActive(self._txtnameen.gameObject, self._stepCo.conversation.nameEnShow)
+
+	local isNumberName = tonumber(self._stepCo.conversation.heroNames[LanguageEnum.LanguageStoryType.CN])
+	local enShow = self._stepCo.conversation.nameEnShow
+
+	if isNumberName and GameLanguageMgr.instance:getLanguageTypeStoryIndex() == LanguageEnum.LanguageStoryType.EN then
+		enShow = false
+	end
+
+	gohelper.setActive(self._txtnameen.gameObject, enShow)
 
 	if not self._stepCo.conversation.iconShow then
 		gohelper.setActive(self._gohead, false)
-		gohelper.setActive(self._gospine, false)
-		self._simagehead:UnLoadImage()
+		self:_showLeadRoleSpine(false)
+		gohelper.setActive(self._simagehead.gameObject, false)
 		StoryController.instance:dispatchEvent(StoryEvent.ShowLeadRole, self._stepCo, false, false, false)
 
 		return
@@ -710,7 +790,7 @@ function StoryView:_showConversationItem(show)
 end
 
 function StoryView:_showHeadContentTxt(name, nameEn)
-	local hasQuestion = string.find(name, "?")
+	local hasQuestion = string.match(name, "[^?]") == nil
 
 	gohelper.setActive(self._txtnamecn1.gameObject, not hasQuestion)
 	gohelper.setActive(self._txtnamecn2.gameObject, hasQuestion)
@@ -721,9 +801,34 @@ function StoryView:_showHeadContentTxt(name, nameEn)
 		self._txtnamecn1.text = string.split(name, "_")[1]
 	end
 
-	local txt = nameEn ~= "" and "<voffset=4>/ </voffset>" .. nameEn or ""
+	local isNumberName = tonumber(self._stepCo.conversation.heroNames[LanguageEnum.LanguageStoryType.CN])
+	local filterStr = isNumberName and StoryTool.FilterStrByPatterns(name, {
+		"%a",
+		"%s",
+		"%p"
+	}) or StoryTool.FilterStrByPatterns(name, {
+		"%w",
+		"%s",
+		"%p"
+	})
 
-	self._txtnameen.text = txt
+	if filterStr ~= "" and GameLanguageMgr.instance:getLanguageTypeStoryIndex() ~= LanguageEnum.LanguageStoryType.EN then
+		if LangSettings.instance:isJp() and nameEn == "Aleph" then
+			nameEn = ""
+		end
+
+		self._txtnameen.text = nameEn ~= "" and "<voffset=4>/ </voffset>" .. nameEn or ""
+
+		gohelper.setActive(self._txtnameen.gameObject, true)
+	else
+		self._txtnameen.text = ""
+
+		if isNumberName and GameLanguageMgr.instance:getLanguageTypeStoryIndex() == LanguageEnum.LanguageStoryType.EN then
+			self._txtnamecn1.text = self._stepCo.conversation.heroNames[LanguageEnum.LanguageStoryType.CN]
+		end
+
+		gohelper.setActive(self._txtnameen.gameObject, false)
+	end
 end
 
 function StoryView:_showHeadContentIcon(icon)
@@ -735,10 +840,11 @@ function StoryView:_showHeadContentIcon(icon)
 
 	if self:_isHeroLead() then
 		gohelper.setActive(self._gohead, false)
-		gohelper.setActive(self._gospine, true)
+		self:_showLeadRoleSpine(true)
+		gohelper.setActive(self._simagehead.gameObject, false)
 		StoryController.instance:dispatchEvent(StoryEvent.ShowLeadRole, self._stepCo, true, false, false)
 	else
-		gohelper.setActive(self._gospine, false)
+		self:_showLeadRoleSpine(false)
 		gohelper.setActive(self._gohead, true)
 
 		local isCut = StoryModel.instance:isHeroIconCuts(string.split(icon, ".")[1])
@@ -756,9 +862,12 @@ function StoryView:_showHeadContentIcon(icon)
 
 			table.insert(resList, self._headEffectResPath)
 			self:loadRes(resList, self._headEffectResLoaded, self)
+			gohelper.setActive(self._simagehead.gameObject, false)
 			gohelper.setActive(self._goheadgrey, true)
 		else
 			local path = string.format("singlebg/headicon_small/%s", icon)
+
+			gohelper.setActive(self._simagehead.gameObject, true)
 
 			if self._simagehead.curImageUrl == path then
 				gohelper.setActive(self._goheadgrey, true)
@@ -776,6 +885,8 @@ function StoryView:_headEffectResLoaded()
 		local prefAssetItem = self._loader:getAssetItem(self._headEffectResPath)
 
 		self._goeffectIcon = gohelper.clone(prefAssetItem:GetResource(), self._gohead)
+
+		gohelper.setLayer(self._goeffectIcon, UnityLayer.UISecond, true)
 	end
 end
 
@@ -870,7 +981,11 @@ function StoryView:_playDialog()
 	self._finishTime = nil
 
 	self._dialogItem:hideDialog()
-	self._dialogItem:playDialog(self._diatxt, self._stepCo, self._conFinished, self)
+
+	local audioId = self._stepCo.conversation.audios[1] or 0
+	local diatxt = StoryModel.instance:getStoryTxtByVoiceType(self._diatxt, audioId)
+
+	self._dialogItem:playDialog(diatxt, self._stepCo, self._conFinished, self)
 end
 
 function StoryView:_conFinished()
@@ -958,6 +1073,11 @@ function StoryView:_fadeInFinished()
 
 	StoryModel.instance:setTextShowing(false)
 	TaskDispatcher.cancelTask(self._onCheckNext, self)
+
+	if not self._stepCo then
+		return
+	end
+
 	TaskDispatcher.runDelay(self._onCheckNext, self, self._stepCo.conversation.delayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()])
 end
 
@@ -1219,8 +1339,15 @@ function StoryView:_destroyEffect(name, v)
 		return
 	end
 
-	self._effects[name]:destroyEffect(v)
+	local data = {}
 
+	data.callback = self._effectRealDestroy
+	data.callbackObj = self
+
+	self._effects[name]:destroyEffect(v, data)
+end
+
+function StoryView:_effectRealDestroy(name)
 	self._effects[name] = nil
 end
 
@@ -1463,7 +1590,8 @@ function StoryView:_updateOptionList(param)
 	self._optCo = param
 end
 
-function StoryView:_clearItems()
+function StoryView:_clearItems(noCancel)
+	self:_clearAllTimers()
 	TaskDispatcher.cancelTask(self._viewFadeIn, self)
 	TaskDispatcher.cancelTask(self._enterNextStep, self)
 	TaskDispatcher.cancelTask(self._startShowText, self)
@@ -1490,6 +1618,8 @@ function StoryView:_clearItems()
 end
 
 function StoryView:onDestroyView()
+	UIBlockMgr.instance:endBlock("waitShowText")
+
 	if ViewMgr.instance:isOpen(ViewName.MessageBoxView) then
 		ViewMgr.instance:closeView(ViewName.MessageBoxView, true)
 	end
@@ -1506,6 +1636,7 @@ function StoryView:onDestroyView()
 	TaskDispatcher.cancelTask(self._enterNextStep, self)
 	TaskDispatcher.cancelTask(self._onFullTextKeepFinished, self)
 	TaskDispatcher.cancelTask(self._startShake, self)
+	TaskDispatcher.cancelTask(self._guaranteeEnterNextStep, self)
 	TaskDispatcher.cancelTask(self._shakeStop, self)
 	StoryTool.enablePostProcess(false)
 	ViewMgr.instance:closeView(ViewName.StoryFrontView, nil, true)

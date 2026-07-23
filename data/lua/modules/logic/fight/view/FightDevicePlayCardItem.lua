@@ -18,6 +18,9 @@ end
 
 function FightDevicePlayCardItem:initViews()
 	FightDevicePlayCardItem.super.initViews(self)
+	self.normalComp:enableLockComp()
+	self.normal1Comp:enableLockComp()
+	self.uniqueComp:enableLockComp()
 
 	self.click = gohelper.getClick(self.go)
 
@@ -39,9 +42,7 @@ function FightDevicePlayCardItem:initViews()
 	self.drag:AddDragEndListener(self.onDragEnd, self)
 
 	self.dt = dt / FightModel.instance:getUISpeed()
-	self.lockComp = FightDevicePlayCardLockItem.New()
 
-	self.lockComp:init(self)
 	self:addEventCb(FightController.instance, FightEvent.OnDevice_SwitchIndex, self.onSwitchIndex, self)
 
 	self.loaderComp = FightGameMgr.entityMgr:addComponent(FightLoaderComponent)
@@ -52,35 +53,13 @@ function FightDevicePlayCardItem:initViews()
 end
 
 function FightDevicePlayCardItem:onSwitchIndex(srcIndex, targetIndex)
-	if srcIndex == self.index then
+	self:updateIndex()
+
+	if self.index == targetIndex then
 		return
 	end
 
-	if srcIndex < targetIndex then
-		if srcIndex > self.index or targetIndex < self.index then
-			local anchorX = FightDeviceHelper.getDeviceItemAnchorX(self.index)
-
-			self:tweenToAnchorPos(anchorX)
-
-			return
-		end
-
-		local anchorX = FightDeviceHelper.getDeviceItemAnchorX(self.index - 1)
-
-		self:tweenToAnchorPos(anchorX)
-
-		return
-	end
-
-	if targetIndex > self.index or srcIndex < self.index then
-		local anchorX = FightDeviceHelper.getDeviceItemAnchorX(self.index)
-
-		self:tweenToAnchorPos(anchorX)
-
-		return
-	end
-
-	local anchorX = FightDeviceHelper.getDeviceItemAnchorX(self.index + 1)
+	local anchorX = FightDeviceHelper.getDeviceItemAnchorX(self.index)
 
 	self:tweenToAnchorPos(anchorX)
 end
@@ -105,10 +84,10 @@ function FightDevicePlayCardItem:onDragBegin(param, pointerEventData)
 
 	self.dt = dt / FightModel.instance:getUISpeed()
 
-	local anchorX = self:getAnchorX(pointerEventData)
+	local anchorX = self:getMousePositionAnchorX(pointerEventData)
 
-	self:tweenToAnchorPos(anchorX)
-	self:tryDispatchSwitchEvent(anchorX)
+	self:tweenToAnchorPos(self:mouseAnchorXToItemAnchorX(anchorX))
+	self:tryMoveDeviceIndex(anchorX)
 end
 
 function FightDevicePlayCardItem:onDragging(param, pointerEventData)
@@ -120,18 +99,30 @@ function FightDevicePlayCardItem:onDragging(param, pointerEventData)
 		return
 	end
 
-	local anchorX = self:getAnchorX(pointerEventData)
+	local anchorX = self:getMousePositionAnchorX(pointerEventData)
 
-	self:tweenToAnchorPos(anchorX)
-	self:tryDispatchSwitchEvent(anchorX)
+	self:tweenToAnchorPos(self:mouseAnchorXToItemAnchorX(anchorX))
+	self:tryMoveDeviceIndex(anchorX)
 end
 
 function FightDevicePlayCardItem:onDragEnd(param, pointerEventData)
 	if not self:checkCanOperate() then
+		self:killMoveTween()
+
+		self.dragging = false
+
+		transformhelper.setLocalScale(self.rectTr, 1, 1, 1)
+
 		return
 	end
 
 	if FightDeviceHelper.getDeviceAreaCount() <= 1 then
+		self:killMoveTween()
+
+		self.dragging = false
+
+		transformhelper.setLocalScale(self.rectTr, 1, 1, 1)
+
 		return
 	end
 
@@ -139,70 +130,94 @@ function FightDevicePlayCardItem:onDragEnd(param, pointerEventData)
 	self:killMoveTween()
 	transformhelper.setLocalScale(self.rectTr, 1, 1, 1)
 
-	local anchorX = self:getAnchorX(pointerEventData)
+	local anchorX = self:getMousePositionAnchorX(pointerEventData)
 
-	recthelper.setAnchorX(self.rectTr, anchorX)
-
-	local targetIndex = self:getTargetIndex(anchorX)
-	local deviceArea = FightDataHelper.getDeviceArea()
-
-	deviceArea:moveDevice(self.index, targetIndex)
+	self:tweenToAnchorPos(self:mouseAnchorXToItemAnchorX(anchorX))
+	self:tryMoveDeviceIndex(anchorX)
 	FightController.instance:dispatchEvent(FightEvent.OnDevice_DragDone)
 
 	self.dragging = false
 end
 
-function FightDevicePlayCardItem:tryDispatchSwitchEvent(anchorX)
+function FightDevicePlayCardItem:tryMoveDeviceIndex(anchorX)
 	local targetIndex = self:getTargetIndex(anchorX)
 
+	if self.index == targetIndex then
+		return
+	end
+
+	local selfWidth = FightDeviceHelper.getDeviceInfoWidthByIndex(self.index)
+	local targetWidth = FightDeviceHelper.getDeviceInfoWidthByIndex(targetIndex)
+
+	if targetWidth <= selfWidth then
+		return self:_moveDevice(targetIndex)
+	end
+
+	local targetAnchor = FightDeviceHelper.getDeviceItemAnchorX(targetIndex)
+
+	if targetIndex > self.index then
+		targetAnchor = targetAnchor + (targetWidth - selfWidth)
+
+		if targetAnchor <= anchorX then
+			return self:_moveDevice(targetIndex)
+		end
+	else
+		targetAnchor = targetAnchor + selfWidth
+
+		if anchorX <= targetAnchor then
+			return self:_moveDevice(targetIndex)
+		end
+	end
+end
+
+function FightDevicePlayCardItem:_moveDevice(targetIndex)
+	local deviceArea = FightDataHelper.getDeviceArea()
+
+	if not deviceArea then
+		return
+	end
+
+	deviceArea:moveDevice(self.index, targetIndex)
 	FightController.instance:dispatchEvent(FightEvent.OnDevice_SwitchIndex, self.index, targetIndex)
 end
 
-function FightDevicePlayCardItem:getAnchorX(pointerEventData)
+function FightDevicePlayCardItem:getMousePositionAnchorX(pointerEventData)
 	local screenPos = pointerEventData.position
 	local anchorX = recthelper.screenPosToAnchorPos2(screenPos, self.rectTrParent)
-	local itemWidth = FightDeviceHelper.getDeviceItemWidth()
+	local totalWidth = FightDeviceHelper.getDeviceAreaTotalWidth()
 
-	anchorX = anchorX + itemWidth
+	anchorX = anchorX + totalWidth * 0.5
 
-	local maxAnchorX = FightDeviceHelper.getDeviceAreaTotalWidth() - itemWidth
+	local maxAnchorX = totalWidth
 
 	return Mathf.Clamp(anchorX, 0, maxAnchorX)
 end
 
-function FightDevicePlayCardItem:getTargetIndex(anchorX)
-	local halfWidth = FightDeviceHelper.getDeviceItemHalfWidth()
-	local interval = FightDeviceHelper.getDeviceItemInterValWidth()
-	local targetAnchor
+function FightDevicePlayCardItem:mouseAnchorXToItemAnchorX(mouseAnchorX)
+	local width = FightDeviceHelper.getDeviceInfoWidth(self.deviceInfo)
+	local halfWidth = width * 0.5
 
-	for i = 1, self.index - 1 do
-		targetAnchor = FightDeviceHelper.getDeviceItemAnchorX(i)
-		targetAnchor = targetAnchor + halfWidth
+	return mouseAnchorX - halfWidth
+end
+
+function FightDevicePlayCardItem:getTargetIndex(anchorX)
+	local deviceArea = FightDataHelper.getDeviceArea()
+
+	if not deviceArea then
+		return 1
+	end
+
+	for index, deviceInfo in ipairs(deviceArea.clientDeviceList) do
+		local targetAnchor = FightDeviceHelper.getDeviceItemAnchorX(index)
+
+		targetAnchor = targetAnchor + FightDeviceHelper.getDeviceInfoWidth(deviceInfo)
 
 		if anchorX <= targetAnchor then
-			return i
+			return index
 		end
 	end
 
-	local curTargetAnchor = FightDeviceHelper.getDeviceItemAnchorX(self.index) - halfWidth - interval
-	local nextTargetAnchor = FightDeviceHelper.getDeviceItemAnchorX(self.index + 1) - halfWidth
-
-	if curTargetAnchor < anchorX and anchorX < nextTargetAnchor then
-		return self.index
-	end
-
-	local count = FightDeviceHelper.getDeviceAreaCount()
-
-	for i = self.index + 1, FightDeviceHelper.getDeviceAreaCount() do
-		targetAnchor = FightDeviceHelper.getDeviceItemAnchorX(i)
-		targetAnchor = targetAnchor + halfWidth
-
-		if targetAnchor <= anchorX then
-			return i
-		end
-	end
-
-	return count
+	return #deviceArea.clientDeviceList
 end
 
 function FightDevicePlayCardItem:tweenToAnchorPos(anchorX)
@@ -246,7 +261,7 @@ function FightDevicePlayCardItem:onLongPress()
 
 	local width = recthelper.getWidth(self.rectPlayCards) * 0.5
 
-	FightDeviceCardTipController.instance:openCommonView(self:getDeviceSkillInfo(), self.uid, TempScreenPos, FightDeviceCardTipController.Pivot.TopRight, FightDeviceCardTipController.Pivot.TopRight, -width, OffsetY)
+	FightDeviceCardTipController.instance:openCommonViewByDeviceInfo(self:getDeviceInfo(), TempScreenPos, FightDeviceCardTipController.Pivot.TopRight, FightDeviceCardTipController.Pivot.TopRight, -width, OffsetY)
 end
 
 function FightDevicePlayCardItem:checkCanOperate()
@@ -312,14 +327,8 @@ function FightDevicePlayCardItem:refreshUI(index, deviceInfo)
 	self.index = index
 	self.uid = deviceInfo.uid
 
-	local groupInfo = deviceInfo.skills[deviceInfo.clientIndex]
-
-	FightDevicePlayCardItem.super.refreshUI(self, groupInfo.skills[1])
+	FightDevicePlayCardItem.super.refreshUI(self, deviceInfo)
 	self:refreshAnchor()
-
-	if self.lockComp then
-		self.lockComp:updateLock()
-	end
 end
 
 function FightDevicePlayCardItem:afterLoadDone()
@@ -330,7 +339,17 @@ function FightDevicePlayCardItem:afterLoadDone()
 	end
 
 	self:refreshUI(self.index, deviceInfo)
-	self:playAnim("open1")
+	self:playGroupAnim("open1")
+end
+
+function FightDevicePlayCardItem:updateIndex()
+	local deviceArea = FightDataHelper.getDeviceArea()
+
+	if not deviceArea then
+		return
+	end
+
+	self.index = deviceArea:getClientIndex(self.uid)
 end
 
 function FightDevicePlayCardItem:getUid()
@@ -357,18 +376,6 @@ function FightDevicePlayCardItem:refreshAnchor()
 	local anchor = FightDeviceHelper.getDeviceItemAnchorX(self.index)
 
 	recthelper.setAnchorX(self.rectTr, anchor)
-end
-
-function FightDevicePlayCardItem:playScanEffect(success)
-	if not self.loadedDone then
-		return
-	end
-
-	if success then
-		self:playAnim("success")
-	else
-		self:playAnim("fail")
-	end
 end
 
 function FightDevicePlayCardItem:onCancelOperateWhenMeiLeiErExRound()
@@ -449,12 +456,6 @@ function FightDevicePlayCardItem:dispose()
 		self.longPress:RemoveLongPressListener()
 
 		self.longPress = nil
-	end
-
-	if self.lockComp then
-		self.lockComp:dispose()
-
-		self.lockComp = nil
 	end
 
 	FightDevicePlayCardItem.super.dispose(self)

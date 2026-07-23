@@ -7,6 +7,8 @@ local mySideIdCounter = 1000001
 local enemySideIdCounter = -1000001
 local Vector2Zero = Vector2.zero
 
+FightHelper.tempEntityMoList = {}
+
 function FightHelper.getEntityStanceId(fightEntityMO, waveId)
 	if FightHelper.checkInPaTaAfterSwitchScene() then
 		local key = FightParamData.ParamKey.SceneId
@@ -2572,7 +2574,150 @@ function FightHelper.processTimelineReplaceCondition(condition, config, entityDa
 		return FightHelper.getBLETimeLine(timelineName, fightStepData)
 	elseif sign == "14" then
 		return FightHelper.getUnnamedTimeLine(timelineName, fightStepData)
+	elseif sign == "15" then
+		return FightHelper.getSSWLUniqueTimeline(timelineName, fightStepData)
+	elseif sign == "16" then
+		return FightHelper.getSSWLNormalTimeline(timelineName, fightStepData)
+	elseif sign == "17" then
+		return FightHelper.getSSWLXingNormalTimeline(timelineName, fightStepData)
 	end
+end
+
+local SortTable = {}
+
+function FightHelper.getSSWLUniqueTimeline(timelineName, fightStepData)
+	local entityMo = FightDataHelper.entityMgr:getById(fightStepData.fromId)
+
+	if not entityMo then
+		return timelineName
+	end
+
+	local effect = FightHelper.getActEffectData(FightEnum.EffectType.TWINSPOWERUPCOUNT, fightStepData)
+
+	if not effect then
+		return timelineName
+	end
+
+	local skin = entityMo.skin
+	local configDict = lua_fight_sswl_unique_effect.configDict[skin]
+
+	configDict = configDict or lua_fight_sswl_unique_effect.configDict[0]
+
+	tabletool.clear(SortTable)
+
+	for _, co in pairs(configDict) do
+		table.insert(SortTable, co)
+	end
+
+	table.sort(SortTable, function(a, b)
+		return a.energy > b.energy
+	end)
+
+	local costEnergy = effect.effectNum
+
+	for _, co in ipairs(SortTable) do
+		if costEnergy >= co.energy then
+			return co.timeline
+		end
+	end
+
+	tabletool.clear(SortTable)
+
+	return timelineName
+end
+
+function FightHelper.getSSWLNormalTimeline(timelineName, fightStepData)
+	local entityMo = FightDataHelper.entityMgr:getById(fightStepData.fromId)
+
+	if not entityMo then
+		return timelineName
+	end
+
+	local effect = FightHelper.getActEffectData(FightEnum.EffectType.TWINSUPCOUNTER, fightStepData)
+
+	if not effect then
+		return timelineName
+	end
+
+	local skin = entityMo.skin
+	local configDict = lua_fight_sswl_skill2_effect.configDict[skin]
+
+	configDict = configDict or lua_fight_sswl_skill2_effect.configDict[0]
+
+	tabletool.clear(SortTable)
+
+	for _, co in pairs(configDict) do
+		table.insert(SortTable, co)
+	end
+
+	table.sort(SortTable, function(a, b)
+		return a.count > b.count
+	end)
+
+	local counter = effect.effectNum
+
+	for _, co in ipairs(SortTable) do
+		if counter >= co.count then
+			return co.timeline
+		end
+	end
+
+	return timelineName
+end
+
+function FightHelper.getSSWLXingNormalTimeline(timelineName, fightStepData)
+	local entityMo = FightDataHelper.entityMgr:getById(fightStepData.fromId)
+
+	if not entityMo then
+		return timelineName
+	end
+
+	local dict = lua_fight_sswl_skill1_effect.configDict[entityMo.skin]
+
+	dict = dict or lua_fight_sswl_skill1_effect.configDict[0]
+
+	local list = SortTable
+
+	tabletool.clear(list)
+
+	for _, co in pairs(dict) do
+		table.insert(list, co)
+	end
+
+	table.sort(list, function(a, b)
+		return a.buffId > b.buffId
+	end)
+
+	for _, co in ipairs(list) do
+		local buffId = co.buffId
+
+		if buffId == 0 then
+			return FightHelper.getSSWLXingRandomTimeline(co, timelineName)
+		elseif entityMo:hasBuffId(buffId) then
+			return FightHelper.getSSWLXingRandomTimeline(co, timelineName)
+		end
+	end
+
+	return timelineName
+end
+
+local SSWLLastRandomIndexDict = {}
+
+function FightHelper.getSSWLXingRandomTimeline(co, timelineName)
+	if not co then
+		return timelineName
+	end
+
+	local key = string.format("%s_%s", co.id, co.buffId)
+	local lastIndex = SSWLLastRandomIndexDict[key]
+
+	lastIndex = lastIndex or math.random(2)
+	lastIndex = lastIndex == 1 and 2 or 1
+	SSWLLastRandomIndexDict[key] = lastIndex
+
+	local list = FightStrUtil.instance:getSplitCache(co.timeline, "|")
+
+	return list[lastIndex]
 end
 
 function FightHelper.getUnnamedTimeLine(timelineName, fightStepData)
@@ -4179,8 +4324,6 @@ function FightHelper.isRestrain(entityId1, entityId2)
 	return restrain > 1000
 end
 
-FightHelper.tempEntityMoList = {}
-
 function FightHelper.hasSkinId(skinId)
 	local entityMoList = FightHelper.tempEntityMoList
 
@@ -4691,6 +4834,48 @@ function FightHelper.allIsDeviceEntity(teamType)
 	end
 
 	return true
+end
+
+function FightHelper.getSSWLSelectCardParam()
+	local entityMoList = FightHelper.tempEntityMoList
+
+	tabletool.clear(entityMoList)
+
+	entityMoList = FightDataHelper.entityMgr:getMyNormalList(entityMoList)
+
+	if not entityMoList then
+		return
+	end
+
+	local targetBuffActId = FightEnum.BuffActId.TwinsUpByCounter
+
+	for _, entityMo in ipairs(entityMoList) do
+		local buffDict = entityMo:getBuffDic()
+
+		if buffDict then
+			for _, buffMo in pairs(buffDict) do
+				for _, actInfo in ipairs(buffMo.actInfo) do
+					if actInfo.actId == targetBuffActId then
+						return actInfo.param, entityMo.uid
+					end
+				end
+			end
+		end
+	end
+end
+
+function FightHelper.buildSSWLSelectedValue(selectedIndexList)
+	local value = 0
+
+	for _, index in pairs(selectedIndexList) do
+		if index >= 1 and index <= 8 then
+			value = bit.bor(value, bit.lshift(1, index - 1))
+		else
+			logError("警告: 索引 " .. index .. " 超出范围1-8，已忽略")
+		end
+	end
+
+	return value
 end
 
 return FightHelper

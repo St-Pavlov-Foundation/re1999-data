@@ -322,5 +322,11 @@
     "monsterId": "109380001",
     "finalMonsterId": "109380001",
     "maxPoints": 0
+  },
+  {
+    "battleId": 109360001,
+    "monsterId": "109360001",
+    "finalMonsterId": "109360001",
+    "maxPoints": 0
   }
 ]

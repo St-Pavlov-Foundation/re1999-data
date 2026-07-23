@@ -201,30 +201,24 @@ function StoryDialogEffsMagic:_magicConUpdate(value)
 	end
 
 	local width = recthelper.getWidth(txtTrans)
+	local maxMagicShowWidth = 2215
 
-	if value > (width + 100) / 2215 and width > 1 then
+	if value > (width + 100) / maxMagicShowWidth and width > 1 then
 		self:_killTween()
 		self:_magicConFinished()
 
 		return
 	end
 
-	local conWidth = 1107.5
+	local conWidth = 0.5 * maxMagicShowWidth
 	local x, y, _ = transformhelper.getLocalPos(txtTrans)
 	local screenWidth, screenheight = UnityEngine.Screen.width, UnityEngine.Screen.height
-	local totalWidth = 1920 * (1080 * screenWidth / (1920 * screenheight))
-	local posX = transformhelper.getLocalPos(self._gocontent.transform)
-	local startPosX = 0
-
-	if screenWidth / screenheight >= 1.7777777777777777 then
-		startPosX = 0.5 * (1080 * screenWidth / screenheight - 1920) + (960 + posX)
-	else
-		startPosX = 960 - 0.5 * (1920 - 1080 * screenWidth / screenheight) + posX
-	end
-
+	local lockScreenWidth, lockScreenHeight = 1920, 1080
+	local totalWidth = lockScreenWidth * (lockScreenHeight * screenWidth / (lockScreenWidth * screenheight))
+	local contetnPosX = transformhelper.getLocalPos(self._gocontent.transform)
+	local posX = transformhelper.getLocalPos(txtTrans.gameObject.transform)
+	local startPosX = 0.5 * (lockScreenHeight * screenWidth / screenheight) + posX + contetnPosX
 	local rate = (startPosX + value * (conWidth + 10)) / totalWidth
-	local screenposy = recthelper.uiPosToScreenPos(txtTrans, ViewMgr.instance:getUICanvas()).y
-	local psPos = recthelper.screenPosToAnchorPos(Vector2(rate * screenWidth, screenposy), self._magicTab.fireroots[self._stepCo.conversation.effType].transform)
 
 	transformhelper.setLocalPos(txtTrans, x, y, 1 - rate)
 
@@ -233,6 +227,8 @@ function StoryDialogEffsMagic:_magicConUpdate(value)
 	end
 
 	local gofireTrans = self._magicTab.gofires[self._stepCo.conversation.effType].transform
+	local screenposy = recthelper.uiPosToScreenPos(txtTrans, ViewMgr.instance:getUICanvas()).y
+	local psPos = recthelper.screenPosToAnchorPos(Vector2(rate * screenWidth, screenposy), self._magicTab.fireroots[self._stepCo.conversation.effType].transform)
 
 	transformhelper.setLocalPos(gofireTrans, psPos.x, psPos.y, 0)
 end

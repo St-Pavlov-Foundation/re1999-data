@@ -35,5 +35,7 @@ StoreEvent.StopRecommendViewAuto = GameUtil.getEventId()
 StoreEvent.DecorateSkinSelectItemClick = GameUtil.getEventId()
 StoreEvent.DecorateStoreSkinSelectItemClick = GameUtil.getEventId()
 StoreEvent.SkinPlayPriceAnim = GameUtil.getEventId()
+StoreEvent.OnSelectDecorateMultiGoods = GameUtil.getEventId()
+StoreEvent.OnSelectDecoratePayItem = GameUtil.getEventId()
 
 return StoreEvent

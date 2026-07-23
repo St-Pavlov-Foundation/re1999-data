@@ -193,6 +193,18 @@ module_views.MainSceneSkinMaterialTipView2 = {
 	desampleRate = PostProcessingMgr.DesamplingRate.x8,
 	reduceRate = PostProcessingMgr.DesamplingRate.x8
 }
+module_views.SceneUIPackageGoodsTipView = {
+	container = "SceneUIPackageGoodsTipViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/mainsceneswitch/sceneuipackagegoodstipview.prefab",
+	destroy = 0,
+	blurIterations = 3,
+	blurFactor = 0.85,
+	layer = "POPUP_TOP",
+	viewType = ViewType.Modal,
+	desampleRate = PostProcessingMgr.DesamplingRate.x8,
+	reduceRate = PostProcessingMgr.DesamplingRate.x8
+}
 module_views.FightUISkinMaterialTipView = {
 	container = "FightUISkinMaterialTipViewContainer",
 	bgBlur = 1,
@@ -326,6 +338,25 @@ module_views.MainUISwitchInfoView = {
 	otherRes = {
 		CurrencyView.prefabPath,
 		[2] = "ui/viewres/mainsceneswitch/mainuiswitchblurmask.prefab"
+	},
+	tabRes = {
+		{
+			{
+				"ui/viewres/main/mainview.prefab"
+			}
+		}
+	},
+	preloader = module_views_preloader
+}
+module_views.SceneUIPackageInfoView = {
+	bgBlur = 4,
+	container = "SceneUIPackageInfoViewContainer",
+	destroy = 0,
+	mainRes = "ui/viewres/mainsceneswitch/mainuioverview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	otherRes = {
+		CurrencyView.prefabPath
 	},
 	tabRes = {
 		{
@@ -1037,6 +1068,18 @@ module_views.FightBLESelectCrystalView = {
 	layer = "POPUP_TOP",
 	viewType = ViewType.Normal,
 	anim = ViewAnim.Default
+}
+module_views.FightS02SSWLSelectCardView = {
+	destroy = 0,
+	container = "FightS02SSWLSelectCardViewContainer",
+	bgBlur = 3,
+	mainRes = "ui/viewres/fight/fight_s02_sswl_selectcardview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default,
+	otherRes = {
+		[1] = "ui/viewres/fight/fightcarditem.prefab"
+	}
 }
 module_views.FightSupportEventView = {
 	destroy = 0,
@@ -4538,6 +4581,14 @@ module_views.DecorateStoreDefaultShowView = {
 	layer = "POPUP_TOP",
 	viewType = ViewType.Full
 }
+module_views.DecorateMultiGoodsTipsView = {
+	destroy = 0,
+	container = "DecorateMultiGoodsTipsViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/store/decoratemultigoodstipsview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal
+}
 module_views.StoreSkinDefaultShowView = {
 	destroy = 0,
 	container = "StoreSkinDefaultShowViewContainer",
@@ -5980,6 +6031,42 @@ module_views.HandbookSkinSuitDetailView3_8 = {
 	destroy = 0,
 	container = "HandbookSkinSuitDetailView3_8Container",
 	mainRes = "ui/viewres/skinhandbook/skinsuitdetailview_3_8.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full,
+	anim = ViewAnim.Default,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	},
+	otherRes = {
+		[1] = "ui/viewres/skinhandbook/skinsuitdetailviewbtns.prefab"
+	}
+}
+module_views.HandbookSkinSuitDetailView3_8_5 = {
+	destroy = 0,
+	container = "HandbookSkinSuitDetailView3_8_5Container",
+	mainRes = "ui/viewres/skinhandbook/skinsuitdetailview_3_8_5.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full,
+	anim = ViewAnim.Default,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	},
+	otherRes = {
+		[1] = "ui/viewres/skinhandbook/skinsuitdetailviewbtns.prefab"
+	}
+}
+module_views.HandbookSkinSuitDetailView3_8_5_1 = {
+	destroy = 0,
+	container = "HandbookSkinSuitDetailView3_8_5_1Container",
+	mainRes = "ui/viewres/skinhandbook/skinsuitdetailview_1_4.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Full,
 	anim = ViewAnim.Default,
@@ -22758,6 +22845,20 @@ module_views.Permanent3_0EnterView = {
 		}
 	}
 }
+module_views.Permanent3_1EnterView = {
+	destroy = 0,
+	container = "Permanent3_1EnterViewContainer",
+	mainRes = "ui/viewres/dungeon/reappear/v3a1_reappear_mainactivity_enterview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	}
+}
 module_views.Permanent2_2EnterView = {
 	destroy = 0,
 	container = "Permanent2_2EnterViewContainer",
@@ -23351,16 +23452,7 @@ module_views.V2a9_LinkGiftView = {
 	destroy = 0,
 	container = "V2a9_LinkGiftViewContainer",
 	bgBlur = 1,
-	mainRes = "ui/viewres/activity/v2a9_gift_panelview.prefab",
-	layer = "POPUP_TOP",
-	viewType = ViewType.Normal,
-	anim = ViewAnim.Default
-}
-module_views.V2a9_LinkGiftView2 = {
-	destroy = 0,
-	container = "V2a9_LinkGiftViewContainer",
-	bgBlur = 1,
-	mainRes = "ui/viewres/activity/v2a9_gift_panelview2.prefab",
+	mainRes = "ui/viewres/activity/s02_gift_panelview.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Normal,
 	anim = ViewAnim.Default
@@ -26698,6 +26790,24 @@ module_views.V3a4GiftRecommendPanelview = {
 	viewType = ViewType.Normal,
 	anim = ViewAnim.Default
 }
+module_views.SceneUIPackageFullView = {
+	destroy = 0,
+	container = "SceneUIPackageFullViewContainer",
+	bgBlur = 0,
+	mainRes = "ui/viewres/activity/sceneuipackage_fullview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default
+}
+module_views.SceneUIPackagePanelView = {
+	destroy = 0,
+	container = "SceneUIPackagePanelViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/activity/sceneuipackage_panelview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default
+}
 module_views.V3A4ActivityCollectView = {
 	destroy = 0,
 	container = "V3A4ActivityCollectViewContainer",
@@ -27429,6 +27539,175 @@ module_views.V3a8_WarmUp = {
 	layer = "POPUP_TOP",
 	viewType = ViewType.Normal,
 	anim = ViewAnim.Default
+}
+
+AtomicDungeonMapViewDefine.init(module_views)
+AtomicViewDefine.init(module_views)
+
+module_views.Sp02_PaoMian_MainView = {
+	destroy = 0,
+	container = "Sp02_PaoMian_MainViewContainer",
+	mainRes = "ui/viewres/sp02/paomian/sp02_paomian_mainview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	}
+}
+module_views.Sp02_GuessMeView = {
+	destroy = 0,
+	container = "Sp02_GuessMeViewContainer",
+	mainRes = "ui/viewres/sp02/paomian/sp02_guessmeview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	}
+}
+module_views.Sp02_MarcusView = {
+	destroy = 0,
+	container = "Sp02_MarcusViewContainer",
+	mainRes = "ui/viewres/sp02/paomian/sp02_marcusview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	}
+}
+module_views.Sp02_HeroLibraryView = {
+	destroy = 0,
+	container = "Sp02_HeroLibraryViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/sp02/paomian/sp02_herolibraryview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal
+}
+module_views.Sp02_PaoMian_ShopPanelView = {
+	destroy = 0,
+	container = "Sp02_PaoMian_ShopPanelViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/sp02/paomian/sp02_paomian_shoppanelview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	},
+	otherRes = {
+		misihaiitem = "ui/viewres/player/playercard/playercardachieve_misihai.prefab",
+		achieveitem = "ui/viewres/achievement/achievementmainicon.prefab"
+	}
+}
+module_views.TwinssychubeEquipInfoView = {
+	destroy = 0,
+	container = "TwinssychubeEquipInfoViewContainer",
+	mainRes = "ui/viewres/sp02/twins/sp02_twinspsychubeequipinfoview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	}
+}
+module_views.SP02_SummonPoolProgressRewardView = {
+	destroy = 0,
+	container = "SP02_SummonPoolProgressRewardViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/summon/version_sp02/sp02_summonrewardpanel.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Internal
+}
+module_views.SP02_SummonPoolProgressRewardSelectView = {
+	destroy = 0,
+	container = "SP02_SummonPoolProgressRewardSelectViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/sp02/summon/sp02_selfselect_pickrewardview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Internal
+}
+module_views.GiftMultipleInspirationHeroPreviewView = {
+	destroy = 0,
+	container = "GiftMultipleInspirationHeroPreviewViewContainer",
+	mainRes = "ui/viewres/sp02/summon/sp02_selfselect_pickchoiceview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full
+}
+module_views.SP02_LinkGiftFullView = {
+	destroy = 0,
+	container = "SP02_LinkGiftFullViewContainer",
+	mainRes = "ui/viewres/activity/sp02_linkgift_fullview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal
+}
+module_views.SP02_LinkGiftPanelView = {
+	destroy = 0,
+	container = "SP02_LinkGiftPanelViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/store/sp02_linkgift_panelview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal
+}
+module_views.EquipLvUpChooseView = {
+	destroy = 0,
+	container = "EquipLvUpChooseViewContainer",
+	mainRes = "ui/viewres/equip/equippickchoiceview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal
+}
+module_views.EquipLvUpItemUseTipView = {
+	bgBlur = 1,
+	container = "EquipLvUpItemUseTipViewContainer",
+	destroy = 0,
+	mainRes = "ui/viewres/power/powerbuytipview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Modal,
+	anim = ViewAnim.Default,
+	customAnimBg = {
+		"#simage_tipbg"
+	},
+	tabRes = {
+		{
+			{
+				CurrencyView.prefabPath
+			}
+		}
+	}
+}
+module_views.GoldenMilletPresent = {
+	destroy = 0,
+	container = "GoldenMilletPresentContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/activity/goldenmilletpresent.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Modal,
+	anim = ViewAnim.Default
+}
+module_views.GoldenMilletPresentFull = {
+	destroy = 0,
+	container = "GoldenMilletPresentFullContainer",
+	mainRes = "ui/viewres/activity/goldenmilletpresentfull.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal
 }
 
 local ViewName = {}

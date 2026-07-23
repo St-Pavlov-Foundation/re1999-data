@@ -15,15 +15,7 @@ function FightCardInfoData:onConstructor(proto)
 
 	if proto.enchants then
 		for i, v in ipairs(proto.enchants) do
-			local tab = {}
-
-			tab.enchantId = v.enchantId
-			tab.duration = v.duration
-			tab.exInfo = {}
-
-			for index, value in ipairs(v.exInfo) do
-				table.insert(tab.exInfo, value)
-			end
+			local tab = FightCardEnchantData.New(v)
 
 			table.insert(self.enchants, tab)
 		end
@@ -77,6 +69,8 @@ function FightCardInfoData:initClientData()
 	clientData.custom_handCardIndex = nil
 	clientData.custom_color = FightEnum.CardColor.None
 	clientData.custom_fromSkillId = 0
+	clientData.custom_addFromRefrigerator = nil
+	clientData.custom_addToRefrigerator = nil
 	self.clientData = clientData
 end
 

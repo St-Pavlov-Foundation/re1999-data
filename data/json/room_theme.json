@@ -346,5 +346,17 @@
     "collectionBonus": "11#13803#1",
     "extraShowBuilding": "13811|13812",
     "sourcesType": ""
+  },
+  {
+    "id": 38501,
+    "name": "聚合乌托邦",
+    "nameEn": "Polymer Utopia",
+    "desc": "雕像正伸出手，向你指引没有阴影的明天。",
+    "rewardIcon": "17028500",
+    "building": "138501|138502|138503",
+    "packages": "38501|38502|38503|38504",
+    "collectionBonus": "11#138503#1",
+    "extraShowBuilding": "",
+    "sourcesType": ""
   }
 ]

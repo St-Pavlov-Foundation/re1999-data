@@ -15,6 +15,13 @@ function HeroDeviceMO:refreshDevice(deviceId)
 
 	self._deviceId = deviceId
 	self._config = lua_fight_device.configDict[self._deviceId]
+
+	if not self._config then
+		logError("未找到装置配置 deviceId：" .. deviceId)
+
+		return
+	end
+
 	self._powerSkill = self:_parsePowerSkillInfo(self._config.powerSkill)
 	self._specialPowerSkill = self:_parsePowerSkillInfo(self._config.specialPowerSkill)
 	self._skills = {}

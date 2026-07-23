@@ -288,9 +288,21 @@
     "onlyStopCut": 1
   },
   {
-    "heroId": 3128,
-    "skinId": 312803,
-    "motion": "fanshu1|fanshu2|fanshu3",
+    "heroId": 3105,
+    "skinId": 310504,
+    "motion": "ruchang",
+    "onlyStopCut": 1
+  },
+  {
+    "heroId": 3106,
+    "skinId": 310604,
+    "motion": "chongfeng",
+    "onlyStopCut": 1
+  },
+  {
+    "heroId": 3149,
+    "skinId": 1,
+    "motion": "jingjie2|jingjie|jingjie01|jingjie02|jingjie03",
     "onlyStopCut": 1
   }
 ]

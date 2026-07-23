@@ -118,5 +118,15 @@
     "decStage": 303,
     "feature": "degradation",
     "desc": "噤声的高墙"
+  },
+  {
+    "id": 10013,
+    "coverType": "1",
+    "excludeTypes": "",
+    "rejectTypes": "",
+    "stage": 0,
+    "decStage": 303,
+    "feature": "notCalSize",
+    "desc": "保鲜"
   }
 ]

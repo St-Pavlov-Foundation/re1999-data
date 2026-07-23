@@ -46,7 +46,7 @@ function MainView:onInitView()
 		self._btngm = gohelper.findChildButtonWithAudio(guideGMNode, "#btn_gm")
 	end
 
-	if GameFacade.isKOLTest() or isDebugBuild then
+	if GameFacade.isKOLTest() then
 		local url = "ui/viewres/fight/fightstandardepisodebtn.prefab"
 
 		self.fightStandardEpisodeLoader = MultiAbLoader.New()
@@ -61,9 +61,6 @@ function MainView:onInitView()
 	self._btnsummon = gohelper.findChildButtonWithAudio(self.viewGO, "right/#btn_summon")
 	self._btncopost = gohelper.findChildButtonWithAudio(self.viewGO, "right/#btn_copost")
 	self._gocopostred = gohelper.findChild(self.viewGO, "right/#btn_copost/#go_reddot")
-	self._imagesummonfree = gohelper.findChildImage(self.viewGO, "right/#btn_summon/#image_free")
-	self._imagesummonfree2 = gohelper.findChildImage(self.viewGO, "right/#btn_summon/#image_free2")
-	self._imagesummonreddot = gohelper.findChildImage(self.viewGO, "right/#btn_summon/#image_summonreddot")
 	self._txtpower = gohelper.findChildText(self.viewGO, "right/txtContainer/#txt_power")
 	self._gospinescale = gohelper.findChild(self.viewGO, "#go_spine_scale")
 	self._golightspine = gohelper.findChild(self.viewGO, "#go_spine_scale/lightspine/#go_lightspine")
@@ -95,6 +92,9 @@ function MainView:_onLoadFightStandardEpisodeFinish(loader)
 	local resObj = loader:getFirstAssetItem():GetResource()
 
 	self.fightStandardEpisodeGO = gohelper.clone(resObj, self.viewGO)
+
+	recthelper.setAnchorY(self.fightStandardEpisodeGO.transform, -200)
+
 	self.btnTestStandardEpisode = gohelper.findChildButtonWithAudio(self.fightStandardEpisodeGO, "")
 
 	self.btnTestStandardEpisode:AddClickListener(self._btnTestStandardEpisodeOnClick, self)
@@ -128,6 +128,9 @@ function MainView:addEvents()
 	self:addEventCb(SignInController.instance, SignInEvent.GetSignInReply, self._onReceiveSupplementMonthCardReply, self)
 	self:addEventCb(BackpackController.instance, BackpackEvent.UpdateItemList, self._onReceiveSupplementMonthCardReply, self)
 	self:addEventCb(MainController.instance, MainEvent.OnPlayViewAnim, self._onPlayViewAnim, self)
+	self:addEventCb(TaskController.instance, TaskEvent.UpdateTaskList, self.showStoreRedDot, self)
+	self:addEventCb(TaskController.instance, TaskEvent.SetTaskList, self.showStoreRedDot, self)
+	self:addEventCb(TaskController.instance, TaskEvent.OnFinishTask, self.showStoreRedDot, self)
 end
 
 function MainView:removeEvents()
@@ -161,6 +164,9 @@ function MainView:removeEvents()
 	self:removeEventCb(SettingsController.instance, SettingsEvent.OnKeyTipsChange, self.showKeyTips, self)
 	self:removeEventCb(BackpackController.instance, BackpackEvent.UpdateItemList, self._onReceiveSupplementMonthCardReply, self)
 	self:removeEventCb(MainController.instance, MainEvent.OnPlayViewAnim, self._onPlayViewAnim, self)
+	self:removeEventCb(TaskController.instance, TaskEvent.UpdateTaskList, self.showStoreRedDot, self)
+	self:removeEventCb(TaskController.instance, TaskEvent.SetTaskList, self.showStoreRedDot, self)
+	self:removeEventCb(TaskController.instance, TaskEvent.OnFinishTask, self.showStoreRedDot, self)
 end
 
 function MainView:_btnhideOnClick()
@@ -498,6 +504,7 @@ function MainView:_editableInitView()
 		table.insert(self._tuziGoList, gohelper.findChild(self.viewGO, tuziName))
 	end
 
+	self:_initFreeTag()
 	self:_refreshRedDot()
 	self:_refreshPower()
 	self:_refreshBgm()
@@ -531,6 +538,43 @@ function MainView:_editableInitView()
 	self._goroomImage = gohelper.findChild(self.viewGO, "right/#btn_room")
 	self._roomCanvasGroup = gohelper.onceAddComponent(self._goroomImage, typeof(UnityEngine.CanvasGroup))
 	self._openMainThumbnailTime = Time.realtimeSinceStartup
+end
+
+function MainView:_initFreeTag()
+	self._goFreeTag = gohelper.findChild(self.viewGO, "right/#btn_summon/Tag")
+	self._gosummonreddot = gohelper.findChild(self.viewGO, "right/#btn_summon/#go_summonreddot")
+	self._goSummonFreeOne = gohelper.findChild(self.viewGO, "right/#btn_summon/Tag/single")
+	self._goSummonFreeTen = gohelper.findChild(self.viewGO, "right/#btn_summon/Tag/ten")
+	self._goSummonCanget = gohelper.findChild(self.viewGO, "right/#btn_summon/Tag/canget")
+	self._summonFreeSingleTagList = self:getUserDataTb_()
+	self._summonFreeTenTagList = self:getUserDataTb_()
+
+	local childCount = self._goSummonFreeOne.transform.childCount
+
+	for i = 1, childCount do
+		local singleTagTran = self._goSummonFreeOne.transform:GetChild(i - 1)
+
+		table.insert(self._summonFreeSingleTagList, singleTagTran.gameObject)
+	end
+
+	childCount = self._goSummonFreeTen.transform.childCount
+
+	for i = 1, childCount do
+		local singleTagTran = self._goSummonFreeTen.transform:GetChild(i - 1)
+
+		table.insert(self._summonFreeTenTagList, singleTagTran.gameObject)
+	end
+
+	self._summonreddot = RedDotController.instance:addNotEventRedDot(self._gosummonreddot, self._isShowSummonReddot, self)
+
+	gohelper.setActive(self._gosummonreddot, true)
+end
+
+function MainView:_isShowSummonReddot()
+	local isSummonUnlock = OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.Summon)
+	local needReddot = SummonMainModel.instance:entryNeedReddot()
+
+	return isSummonUnlock and needReddot
 end
 
 function MainView:_refreshRedDot()
@@ -609,7 +653,15 @@ function MainView:showBankNewEffect(state)
 	gohelper.setActive(self._gobankeffect, state)
 end
 
+function MainView:showStoreRedDot()
+	self._redBank.show = false
+
+	self._redBank:showRedDot(RedDotEnum.Style.Normal)
+	self:storeRedDotRefreshFunc(self._redBank)
+end
+
 function MainView:storeRedDotRefreshFunc(redDotIcon)
+	logNormal("storeRedDotRefreshFunc")
 	redDotIcon:defaultRefreshDot()
 	self:showBankNewEffect(false)
 
@@ -718,7 +770,16 @@ function MainView:showStoreDeadline(needShow)
 			end
 		end
 
-		local decorateSec = StoreHelper.getRemainExpireTimeDeepByStoreId(StoreEnum.StoreId.DecorateStore)
+		local decorateSec = 0
+		local decorateStoreCfg = StoreConfig.instance:getTabConfig(StoreEnum.StoreId.DecorateStore)
+
+		if decorateStoreCfg and decorateStoreCfg.openId ~= nil and decorateStoreCfg.openId ~= 0 then
+			if OpenModel.instance:isFunctionUnlock(decorateStoreCfg.openId) then
+				decorateSec = StoreHelper.getRemainExpireTimeDeepByStoreId(StoreEnum.StoreId.DecorateStore)
+			end
+		else
+			decorateSec = StoreHelper.getRemainExpireTimeDeepByStoreId(StoreEnum.StoreId.DecorateStore)
+		end
 
 		if decorateSec > 0 and decorateSec < TimeUtil.OneWeekSecond then
 			deadlineTimeSec = deadlineTimeSec <= 0 and decorateSec or Mathf.Min(decorateSec, deadlineTimeSec)
@@ -1078,24 +1139,59 @@ function MainView:_refreshPower()
 	self._txtpower.text = string.format("%s/%s", power, recoverLimit)
 end
 
+function MainView:_refreshSummonNewFlagStyle()
+	local isShowReddot = self:_isShowSummonReddot()
+
+	if isShowReddot and self._summonreddot then
+		local curSkinId = MainUISwitchModel.instance:getCurUseUI()
+		local style = MainUISwitchModel.instance:getUIReddotType(curSkinId)
+
+		style = style or RedDotEnum.Style.Normal
+
+		self._summonreddot:setShowType(style)
+	end
+end
+
 function MainView:_refreshSummonNewFlag()
+	self:_refreshSummonNewFlagStyle()
+
 	local isSummonUnlock = OpenModel.instance:isFuncBtnShow(OpenEnum.UnlockFunc.Summon)
 	local needReddot = SummonMainModel.instance:entryNeedReddot()
 
-	gohelper.setActive(self._imagesummonreddot, isSummonUnlock and needReddot)
+	self._summonreddot:refreshRedDot()
 
-	local hasFree10Count = SummonMainModel.instance:entryHasFree10Count()
+	local hasFree, freeSinglePoolId = SummonMainModel.instance:entryHasFree()
+	local hasFree10Count, freeTenPoolId = SummonMainModel.instance:entryHasFree10Count()
 	local hasNew = SummonMainModel.instance:entryHasNew()
+	local hasCanget = SummonMainModel.instance:entryHasCanget()
+	local showNew = isSummonUnlock and not needReddot and not hasFree10Count and hasNew
 
 	for _, new in ipairs(self._imagesummonnews) do
-		gohelper.setActive(new, isSummonUnlock and hasNew and not needReddot and not hasFree10Count)
+		gohelper.setActive(new, showNew)
 	end
 
-	local hasFree = SummonMainModel.instance:entryHasFree()
-	local hasFree10Count = SummonMainModel.instance:entryHasFree10Count()
+	gohelper.setActive(self._goFreeTag, isSummonUnlock and (hasFree or hasFree10Count))
+	gohelper.setActive(self._goSummonFreeOne.gameObject, isSummonUnlock and hasFree and not hasFree10Count)
+	gohelper.setActive(self._goSummonFreeTen.gameObject, isSummonUnlock and hasFree10Count)
+	gohelper.setActive(self._goSummonCanget, isSummonUnlock and hasCanget and not hasFree and not hasFree10Count)
 
-	gohelper.setActive(self._imagesummonfree.gameObject, isSummonUnlock and hasFree and not hasFree10Count)
-	gohelper.setActive(self._imagesummonfree2.gameObject, isSummonUnlock and hasFree10Count)
+	if not isSummonUnlock or not hasFree and not hasFree10Count then
+		return
+	end
+
+	local showSingle = hasFree and not hasFree10Count
+	local poolId = showSingle and freeSinglePoolId or freeTenPoolId
+	local poolConfig = SummonConfig.instance:getSummonPool(poolId)
+	local tagStyleParam = string.splitToNumber(poolConfig.freeTagStyle, "#")
+	local styleId = showSingle and tagStyleParam[1] or tagStyleParam[2]
+
+	styleId = styleId or SummonEnum.DefaultTagStyle
+
+	local tagItemList = showSingle and self._summonFreeSingleTagList or self._summonFreeTenTagList
+
+	for index, itemGo in ipairs(tagItemList) do
+		gohelper.setActive(itemGo, index == styleId)
+	end
 end
 
 function MainView:_refreshBgm()
@@ -1140,7 +1236,11 @@ function MainView:onUpdateParam()
 end
 
 function MainView:onDestroyView()
-	return
+	tabletool.clear(self._summonFreeSingleTagList)
+	tabletool.clear(self._summonFreeTenTagList)
+
+	self._summonFreeSingleTagList = nil
+	self._summonFreeTenTagList = nil
 end
 
 function MainView:_refreshSummonTuziRed()

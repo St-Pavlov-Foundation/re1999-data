@@ -5688,5 +5688,55 @@
     "iconText": "v3a8_huishengyao_help_4",
     "unlockGuideId": 0,
     "isCn": 0
+  },
+  {
+    "id": 38500101,
+    "title": "",
+    "type": 2,
+    "text": "外围基础指引图1",
+    "icon": "sp02_game_help_1",
+    "iconText": "sp02_game_help_1",
+    "unlockGuideId": 38510,
+    "isCn": 0
+  },
+  {
+    "id": 38500102,
+    "title": "",
+    "type": 2,
+    "text": "外围基础指引图2",
+    "icon": "sp02_game_help_2",
+    "iconText": "sp02_game_help_2",
+    "unlockGuideId": 38510,
+    "isCn": 0
+  },
+  {
+    "id": 38500201,
+    "title": "",
+    "type": 2,
+    "text": "外围玩法计时锁说明1",
+    "icon": "sp02_game_help_3",
+    "iconText": "sp02_game_help_3",
+    "unlockGuideId": 38506,
+    "isCn": 0
+  },
+  {
+    "id": 38500301,
+    "title": "",
+    "type": 2,
+    "text": "外围玩法射线锁说明1",
+    "icon": "sp02_game_help_4",
+    "iconText": "sp02_game_help_4",
+    "unlockGuideId": 38507,
+    "isCn": 0
+  },
+  {
+    "id": 38500401,
+    "title": "",
+    "type": 2,
+    "text": "外围玩法颜色锁说明1",
+    "icon": "sp02_game_help_5",
+    "iconText": "sp02_game_help_5",
+    "unlockGuideId": 38508,
+    "isCn": 0
   }
 ]

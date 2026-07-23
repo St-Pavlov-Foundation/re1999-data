@@ -45,7 +45,9 @@ HandbookSkinScene.SkinSuitId2SuitView = {
 	[20023] = ViewName.HandbookSkinSuitDetailView3_4,
 	[20024] = ViewName.HandbookSkinSuitDetailView3_5,
 	[20025] = ViewName.HandbookSkinSuitDetailView3_7,
-	[20026] = ViewName.HandbookSkinSuitDetailView3_8
+	[20026] = ViewName.HandbookSkinSuitDetailView3_8,
+	[22004] = ViewName.HandbookSkinSuitDetailView3_8_5,
+	[20004] = ViewName.HandbookSkinSuitDetailView3_8_5_1
 }
 
 function HandbookSkinScene:onInitView()

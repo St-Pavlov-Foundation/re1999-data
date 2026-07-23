@@ -167,8 +167,9 @@ function StoryHeroItem:_fadeInUpdate(value)
 end
 
 function StoryHeroItem:_setHeroFadeMat()
-	local posx, posy = transformhelper.getLocalPos(self._bgGo.transform)
-	local scalex, scaley = transformhelper.getLocalScale(self._bgGo.transform)
+	local bgImgGo = StoryViewMgr.instance:getStoryFrontBgImgGo()
+	local posx, posy = transformhelper.getLocalPos(bgImgGo.transform)
+	local scalex, scaley = transformhelper.getLocalScale(bgImgGo.transform)
 	local vec4 = Vector4.New(scalex, scaley, posx, posy)
 	local texture = self._blitEff.capturedTexture
 
@@ -391,10 +392,6 @@ function StoryHeroItem:buildHero(v, mat, hasBottomEffect, callback, callbackObj,
 	local siblingIndex = gohelper.getSibling(self._heroGo)
 
 	self._blitEff = StoryViewMgr.instance:getStoryBlitEff()
-
-	local bgRootGo = ViewMgr.instance:getContainer(ViewName.StoryBackgroundView).viewGO
-
-	self._bgGo = gohelper.findChild(bgRootGo, "#go_upbg/#simage_bgimg")
 
 	gohelper.setLayer(self._heroGo, self.viewGO.layer, true)
 

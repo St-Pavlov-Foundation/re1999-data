@@ -15943,5 +15943,425 @@
     "id": 380045,
     "eventName": "play_ui_fight_lushu_cast",
     "bankName": "fight_ui_sfx_dqqux_3_8"
+  },
+  {
+    "id": 385001,
+    "eventName": "play_ui_fight_artificial_stars_pad",
+    "bankName": "fight_ui_sfx_artificial_2_6"
+  },
+  {
+    "id": 385010,
+    "eventName": "play_ui_fight_fumo_appear",
+    "bankName": "fight_ui_sfx_nuolaux_s02"
+  },
+  {
+    "id": 385011,
+    "eventName": "play_ui_fight_fumo_disappear",
+    "bankName": "fight_ui_sfx_nuolaux_s02"
+  },
+  {
+    "id": 385012,
+    "eventName": "play_ui_fight_nuolacard_appear",
+    "bankName": "fight_ui_sfx_nuolaux_s02"
+  },
+  {
+    "id": 385013,
+    "eventName": "play_ui_fight_nuolacard_disappear",
+    "bankName": "fight_ui_sfx_nuolaux_s02"
+  },
+  {
+    "id": 385021,
+    "eventName": "play_ui_langchao_link_special_refresh",
+    "bankName": "ui_activity_s02_langchao_link"
+  },
+  {
+    "id": 385022,
+    "eventName": "play_ui_langchao_link_additional_activation",
+    "bankName": "ui_activity_s02_langchao_link"
+  },
+  {
+    "id": 385023,
+    "eventName": "play_ui_langchao_link_refresh_light",
+    "bankName": "ui_activity_s02_langchao_link"
+  },
+  {
+    "id": 385024,
+    "eventName": "play_ui_langchao_link_entry",
+    "bankName": "ui_activity_s02_langchao_link"
+  },
+  {
+    "id": 385025,
+    "eventName": "play_ui_langchao_pailian",
+    "bankName": "ui_activity_s02_langchao_pailian"
+  },
+  {
+    "id": 385026,
+    "eventName": "play_ui_langchao_pailian_special",
+    "bankName": "ui_activity_s02_langchao_pailian"
+  },
+  {
+    "id": 385027,
+    "eventName": "play_ui_fight_energy_open_s02",
+    "bankName": "fight_ui_sfx_wujiux_s02"
+  },
+  {
+    "id": 385028,
+    "eventName": "play_ui_fight_energy_click_s02",
+    "bankName": "fight_ui_sfx_wujiux_s02"
+  },
+  {
+    "id": 385029,
+    "eventName": "play_ui_fight_energy_confirm_s02",
+    "bankName": "fight_ui_sfx_wujiux_s02"
+  },
+  {
+    "id": 385030,
+    "eventName": "play_ui_shenghuo_building_collect",
+    "bankName": "ui_activity_2_3_shenghuo"
+  },
+  {
+    "id": 3852010,
+    "eventName": "play_replay_music_9_flower_waltz_s02",
+    "bankName": "ui_replay_mainmusic_s02"
+  },
+  {
+    "id": 3852011,
+    "eventName": "play_ui_langchao_open_1",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3852012,
+    "eventName": "play_ui_langchao_open_2",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3852013,
+    "eventName": "play_ui_mln_day_night",
+    "bankName": "ui_activity"
+  },
+  {
+    "id": 3852014,
+    "eventName": "play_ui_common_click",
+    "bankName": "uiclick"
+  },
+  {
+    "id": 3852015,
+    "eventName": "play_ui_task_page",
+    "bankName": "main_ui"
+  },
+  {
+    "id": 3852016,
+    "eventName": "play_ui_langchao_tv_click",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3852017,
+    "eventName": "play_ui_langchao_tv_click",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3852018,
+    "eventName": "play_ui_langchao_tv_unlock",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3852019,
+    "eventName": "play_ui_langchao_tv_unfold",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3852020,
+    "eventName": "play_ui_langchao_tv_close",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3852021,
+    "eventName": "play_ui_action_return",
+    "bankName": "ui_action"
+  },
+  {
+    "id": 3853010,
+    "eventName": "play_ui_langchao_mapamb_loop",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3853011,
+    "eventName": "stop_ui_langchao_mapamb_loop",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3853012,
+    "eventName": "play_ui_langchao_map_transition_1",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3853013,
+    "eventName": "play_ui_langchao_map_transition_2",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3853014,
+    "eventName": "play_ui_task_page",
+    "bankName": "main_ui"
+  },
+  {
+    "id": 3853015,
+    "eventName": "play_ui_mln_unlock",
+    "bankName": "ui_activity"
+  },
+  {
+    "id": 3853016,
+    "eventName": "play_ui_langchao_emergency_alarm",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3853017,
+    "eventName": "play_ui_langchao_emergency_alarm",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3853018,
+    "eventName": "play_ui_langchao_icon_emerge",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3853019,
+    "eventName": "play_ui_langchao_icon_disappear",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3853020,
+    "eventName": "play_ui_common_click",
+    "bankName": "uiclick"
+  },
+  {
+    "id": 3853021,
+    "eventName": "play_ui_gudu_kaishi",
+    "bankName": "ui_activity_1_9_gudu"
+  },
+  {
+    "id": 3853022,
+    "eventName": "play_ui_langchao_screen_open",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3853023,
+    "eventName": "play_ui_molu_arm_repair",
+    "bankName": "ui_activity_molu"
+  },
+  {
+    "id": 3853024,
+    "eventName": "play_ui_langchao_decrypt_click",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3853025,
+    "eventName": "play_ui_langchao_ray_rotate",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3853026,
+    "eventName": "play_ui_langchao_ray_success",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3853027,
+    "eventName": "play_ui_langchao_decrypt_success",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3853028,
+    "eventName": "play_ui_langchao_lock_unfold",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3853029,
+    "eventName": "play_ui_langchao_color_rotate",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3853030,
+    "eventName": "play_ui_langchao_bolt_land",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3853031,
+    "eventName": "play_ui_langchao_lock_success",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3853032,
+    "eventName": "play_ui_activity_countdown",
+    "bankName": "ui_activity"
+  },
+  {
+    "id": 3853033,
+    "eventName": "play_ui_langchao_screen_open",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3853034,
+    "eventName": "play_ui_langchao_general_click",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3853035,
+    "eventName": "play_ui_langchao_screen_open",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3853036,
+    "eventName": "play_ui_langchao_skill_light",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3853037,
+    "eventName": "play_ui_langchao_install_open",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3853038,
+    "eventName": "play_ui_langchao_death_open",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3853039,
+    "eventName": "play_ui_langchao_crack_loop",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3853040,
+    "eventName": "stop_ui_langchao_crack_loop",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3853041,
+    "eventName": "play_ui_gudu_bubble_click",
+    "bankName": "ui_activity_1_9_gudu"
+  },
+  {
+    "id": 3853042,
+    "eventName": "play_ui_mistakes",
+    "bankName": "main_ui"
+  },
+  {
+    "id": 3853043,
+    "eventName": "play_ui_langchao_decrypt_success",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 3853044,
+    "eventName": "play_ui_checkpoint_unlock",
+    "bankName": "ui_checkpoint"
+  },
+  {
+    "id": 3853045,
+    "eventName": "play_ui_langchao_popup_reward",
+    "bankName": "ui_activity_s02_langchao_kachi"
+  },
+  {
+    "id": 3853046,
+    "eventName": "play_ui_langchao_page_open",
+    "bankName": "ui_activity_s02_langchao_kachi"
+  },
+  {
+    "id": 3853047,
+    "eventName": "play_ui_langchao_role_open",
+    "bankName": "ui_activity_s02_langchao_kachi"
+  },
+  {
+    "id": 3853048,
+    "eventName": "play_ui_langchao_switch_prop",
+    "bankName": "ui_activity_s02_langchao_kachi"
+  },
+  {
+    "id": 3853049,
+    "eventName": "play_ui_wulu_aizila_level_open",
+    "bankName": "ui_activity_1_5_wulu_aizila"
+  },
+  {
+    "id": 3853050,
+    "eventName": "play_ui_wulu_kerandian_close",
+    "bankName": "ui_activity_1_5_wulu_kerandian_interface"
+  },
+  {
+    "id": 3853051,
+    "eventName": "play_ui_tangren_chess_upgrade",
+    "bankName": "ui_activity_2_5_tangren_zizouqi"
+  },
+  {
+    "id": 3853052,
+    "eventName": "play_ui_gudu_input_mistake",
+    "bankName": "ui_activity_1_9_gudu"
+  },
+  {
+    "id": 3853053,
+    "eventName": "play_ui_mail_open_1",
+    "bankName": "ui_mail"
+  },
+  {
+    "id": 3853054,
+    "eventName": "play_ui_mln_day_night",
+    "bankName": "ui_activity"
+  },
+  {
+    "id": 3853055,
+    "eventName": "play_ui_mail_open",
+    "bankName": "ui_mail"
+  },
+  {
+    "id": 3853056,
+    "eventName": "play_ui_wulu_atticletter_write_loop",
+    "bankName": "ui_activity_1_5_wulu"
+  },
+  {
+    "id": 3853057,
+    "eventName": "stop_ui_bus",
+    "bankName": "controlling_behavior"
+  },
+  {
+    "id": 3853058,
+    "eventName": "play_hero306604_skin_hunjian",
+    "bankName": "hero_skin_hunjian_s02"
+  },
+  {
+    "id": 3853059,
+    "eventName": "play_hero308603_skin_hunjian",
+    "bankName": "hero_skin_hunjian_s02"
+  },
+  {
+    "id": 3853060,
+    "eventName": "play_hero308303_skin_hunjian",
+    "bankName": "hero_skin_hunjian_s02"
+  },
+  {
+    "id": 3853061,
+    "eventName": "play_hero302504_skin_hunjian",
+    "bankName": "hero_skin_hunjian_s02"
+  },
+  {
+    "id": 3853062,
+    "eventName": "play_hero310504_skin_hunjian",
+    "bankName": "hero_skin_hunjian_s02"
+  },
+  {
+    "id": 3853063,
+    "eventName": "play_hero312003_skin_hunjian",
+    "bankName": "hero_skin_hunjian_s02"
+  },
+  {
+    "id": 3853064,
+    "eventName": "play_hero314403_skin_hunjian",
+    "bankName": "hero_skin_hunjian_s02"
+  },
+  {
+    "id": 3853065,
+    "eventName": "stop_heroshowsfx_bus_1p",
+    "bankName": "heroshowsfx_bus_1p"
+  },
+  {
+    "id": 3853066,
+    "eventName": "play_ui_langchao_skill_light",
+    "bankName": "ui_activity_s02_langchao"
   }
 ]

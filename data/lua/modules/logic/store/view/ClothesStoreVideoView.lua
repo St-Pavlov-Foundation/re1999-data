@@ -68,6 +68,8 @@ function ClothesStoreVideoView:playSkinVideo(goodsMo, isStoreMv)
 
 	if isStoreMv == true then
 		self._videoPath = skinViewCfg.storeMv
+		self._videoAudioId = skinViewCfg.storeMvAudio
+		self._stopAudioId = skinViewCfg.storeMvStopAudio
 		finishAnimName = "videoout"
 	else
 		NavigateMgr.instance:addEscape(self.viewName, self._onEscBtnClick, self)

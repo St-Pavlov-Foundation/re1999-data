@@ -781,6 +781,41 @@ function JumpController:canJump2Act236(jumpParam)
 	return true
 end
 
+function JumpController:canJumpToAtomicDungeonView(jumpParam)
+	local actId = VersionActivity3_10Enum.ActivityId.Outside
+
+	if not VersionActivityEnterHelper.checkCanOpen(actId) then
+		return false, ToastEnum.ActivityNotOpen
+	end
+
+	local jumpArray = string.splitToNumber(jumpParam, "#")
+	local jumpType = jumpArray[2]
+	local jumpMapId = jumpArray[3]
+
+	if jumpType == AtomicDungeonEnum.JumpType.DungeonMap then
+		local mapInfoConfig = AtomicDungeonConfig.instance:getMapInfoConfig(jumpMapId)
+		local mapId = jumpMapId
+
+		if mapInfoConfig.type == AtomicDungeonEnum.MapType.Normal then
+			mapId = AtomicDungeonModel.instance:getMapIdByArenaMapId(jumpMapId)
+		end
+
+		local mapInfo = AtomicDungeonModel.instance:getMapInfo(mapId)
+
+		if not mapInfo then
+			return false, ToastEnum.AtomicDungeonMapLock
+		end
+	elseif jumpType == AtomicDungeonEnum.JumpType.Talent then
+		local canUnlock = AtomicDungeonModel.instance:checkTalentUnlock()
+
+		if not canUnlock then
+			return false, ToastEnum.AtomicTalentLockLock
+		end
+	end
+
+	return self:defaultCanJump(jumpParam)
+end
+
 JumpController.JumpViewToCanJumpFunc = {
 	[JumpEnum.JumpView.StoreView] = JumpController.canJumpToStoreView,
 	[JumpEnum.JumpView.SummonView] = JumpController.canJumpToSummonView,
@@ -822,7 +857,8 @@ JumpController.JumpViewToCanJumpFunc = {
 	[JumpEnum.JumpView.StoreSupplementMonthCardUseView] = JumpController.canJumpToStoreSupplementMonthCardUseView,
 	[JumpEnum.JumpView.SurvivalView] = JumpController.canJumpToSurvivalView,
 	[JumpEnum.JumpView.Abyss] = JumpController.canJump2Abyss,
-	[JumpEnum.JumpView.Act236] = JumpController.canJump2Act236
+	[JumpEnum.JumpView.Act236] = JumpController.canJump2Act236,
+	[JumpEnum.JumpView.AtomicDungeon] = JumpController.canJumpToAtomicDungeonView
 }
 JumpController.CanJumpActFunc = {
 	[JumpEnum.ActIdEnum.Act113] = JumpController.canJump2Activity1_1Dungeon,

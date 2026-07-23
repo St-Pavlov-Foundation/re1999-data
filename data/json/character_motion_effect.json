@@ -1314,5 +1314,54 @@
     "motion": "b_qusan|b_men",
     "node": "Drawables/bone2/effect-Bone/roleeffect_yge_qs2#Drawables/bone4/effect-Bone/roleeffect_yge_qs4#Drawables/bone5/effect-Bone/roleeffect_yge_qs5#Drawables/bone6/effect-Bone/roleeffect_yge_qs6#Drawables/bone7/effect-Bone/roleeffect_yge_qs7|Drawables/bone2/effect-Bone/roleeffect_yge_men2#Drawables/bone8/effect-Bone/roleeffect_yge_men8",
     "everNode": "Drawables/bone/effect-Bone/roleeffect_yge_idle0"
+  },
+  {
+    "heroResName": "307705_bfsg",
+    "effectCompName": "CommonRoleEffect",
+    "motion": "b_luopan|b_yanjing",
+    "node": "Drawables/bone6/effect-Bone/roleeffect_bfsg_lp6#Drawables/bone9/effect-Bone/roleeffect_bfsg_lp9|Drawables/bone6/effect-Bone/roleeffect_bfsg_yj6#Drawables/bone7/effect-Bone/roleeffect_bfsg_yj7",
+    "everNode": ""
+  },
+  {
+    "heroResName": "303904_nmds",
+    "effectCompName": "CommonRoleEffect",
+    "motion": "b_kaiji|b_tushoulei|b_daiyanjing",
+    "node": "Drawables/bone/effect-Bone/roleeffect_nmds_kj0#Drawables/bone2/effect-Bone/roleeffect_nmds_kj2#Drawables/bone5/effect-Bone/roleeffect_nmds_kj5#Drawables/bone6/effect-Bone/roleeffect_nmds_kj6#Drawables/bone7/effect-Bone/roleeffect_nmds_kj7#Drawables/bone8/effect-Bone/roleeffect_nmds_kj8#Drawables/bone9/effect-Bone/roleeffect_nmds_kj9|Drawables/bone/effect-Bone/roleeffect_nmds_tsl0#Drawables/bone2/effect-Bone/roleeffect_nmds_tsl2#Drawables/bone5/effect-Bone/roleeffect_nmds_tsl5#Drawables/bone6/effect-Bone/roleeffect_nmds_tsl6#Drawables/bone7/effect-Bone/roleeffect_nmds_tsl7#Drawables/bone8/effect-Bone/roleeffect_nmds_tsl8#Drawables/bone9/effect-Bone/roleeffect_nmds_tsl9#Drawables/bone10/effect-Bone/roleeffect_nmds_tsl10|Drawables/bone/effect-Bone/roleeffect_nmds_dyj0#Drawables/bone3/effect-Bone/roleeffect_nmds_dyj3",
+    "everNode": ""
+  },
+  {
+    "heroResName": "310604_kym",
+    "effectCompName": "CommonRoleEffect",
+    "motion": "b_jianchi",
+    "node": "Drawables/bone/effect-Bone/roleeffect_kym_jc0",
+    "everNode": ""
+  },
+  {
+    "heroResName": "314902_sswl",
+    "effectCompName": "CommonRoleEffect",
+    "motion": "b_zhandou",
+    "node": "Drawables/bone4/effect-Bone/roleeffect_sswl_zd4#Drawables/bone5/effect-Bone/roleeffect_sswl_zd5#Drawables/bone6/effect-Bone/roleeffect_sswl_zd6#Drawables/bone8/effect-Bone/roleeffect_sswl_zd8#Drawables/bone9/effect-Bone/roleeffect_sswl_zd9#Drawables/bone10/effect-Bone/roleeffect_sswl_zd10",
+    "everNode": ""
+  },
+  {
+    "heroResName": "314903_sswl",
+    "effectCompName": "CommonRoleEffect",
+    "motion": "b_hudun|b_jingjie|b_jingjie01",
+    "node": "Drawables/bone/effect-Bone/roleeffect_sswl_hd0#Drawables/bone3/effect-Bone/roleeffect_sswl_hd3#Drawables/bone4/effect-Bone/roleeffect_sswl_hd4#Drawables/bone5/effect-Bone/roleeffect_sswl_hd5|Drawables/bone2/effect-Bone/roleeffect_sswl_jj2|Drawables/bone2/effect-Bone/roleeffect_sswl_jj2",
+    "everNode": ""
+  },
+  {
+    "heroResName": "310504_zxqe",
+    "effectCompName": "CommonRoleEffectContinue",
+    "motion": "b_taitou01|b_fengzhizi|b_ruchang|b_jiaohu01|b_jiaohu02|b_jiaohu03|b_jiaohu04|b_jiaocha|b_jiaocha1|b_jiaocha2|b_jiaocha3|b_erji|b_erji1|b_zhaoshou|b_diantou|b_yaotou|b_sikao|b_idle|b_taitou",
+    "node": "Drawables/bone5/effect-Bone/roleeffect_zxqe_tt5#Drawables/bone3/effect-Bone/roleeffect_zxqe_idlelizi3#Drawables/bone4/effect-Bone/roleeffect_zxqe_idlelizi4|Drawables/bone5/effect-Bone/roleeffect_zxqe_fzz5#Drawables/bone3/effect-Bone/roleeffect_zxqe_idlelizi3#Drawables/bone4/effect-Bone/roleeffect_zxqe_idlelizi4|Drawables/bone3/effect-Bone/roleeffect_zxqe_rc3#Drawables/bone4/effect-Bone/roleeffect_zxqe_rc4#Drawables/bone5/effect-Bone/roleeffect_zxqe_rc5|Drawables/bone3/effect-Bone/roleeffect_zxqe_jh01_3#Drawables/bone4/effect-Bone/roleeffect_zxqe_jh01_4#Drawables/bone6/effect-Bone/roleeffect_zxqe_jh01_6#Drawables/bone7/effect-Bone/roleeffect_zxqe_jh01_7#Drawables/bone5/effect-Bone/roleeffect_zxqe_idlefeng5#Drawables/bone5/effect-Bone/roleeffect_zxqe_idleniao5#Drawables/bone3/effect-Bone/roleeffect_zxqe_idlelizi3#Drawables/bone4/effect-Bone/roleeffect_zxqe_idlelizi4|Drawables/bone3/effect-Bone/roleeffect_zxqe_jh01_3#Drawables/bone4/effect-Bone/roleeffect_zxqe_jh01_4#Drawables/bone6/effect-Bone/roleeffect_zxqe_jh01_6#Drawables/bone7/effect-Bone/roleeffect_zxqe_jh01_7#Drawables/bone5/effect-Bone/roleeffect_zxqe_idlefeng5#Drawables/bone5/effect-Bone/roleeffect_zxqe_idleniao5#Drawables/bone3/effect-Bone/roleeffect_zxqe_idlelizi3#Drawables/bone4/effect-Bone/roleeffect_zxqe_idlelizi4|Drawables/bone5/effect-Bone/roleeffect_zxqe_jh03_5#Drawables/bone6/effect-Bone/roleeffect_zxqe_jh03_6#Drawables/bone7/effect-Bone/roleeffect_zxqe_jh03_7#Drawables/bone5/effect-Bone/roleeffect_zxqe_idlefeng5#Drawables/bone5/effect-Bone/roleeffect_zxqe_idleniao5#Drawables/bone3/effect-Bone/roleeffect_zxqe_idlelizi3#Drawables/bone4/effect-Bone/roleeffect_zxqe_idlelizi4|Drawables/bone6/effect-Bone/roleeffect_zxqe_jh04_6#Drawables/bone7/effect-Bone/roleeffect_zxqe_jh04_7#Drawables/bone5/effect-Bone/roleeffect_zxqe_idlefeng5#Drawables/bone5/effect-Bone/roleeffect_zxqe_idleniao5#Drawables/bone3/effect-Bone/roleeffect_zxqe_idlelizi3#Drawables/bone4/effect-Bone/roleeffect_zxqe_idlelizi4|Drawables/bone5/effect-Bone/roleeffect_zxqe_idlefeng5#Drawables/bone5/effect-Bone/roleeffect_zxqe_idleniao5#Drawables/bone3/effect-Bone/roleeffect_zxqe_idlelizi3#Drawables/bone4/effect-Bone/roleeffect_zxqe_idlelizi4|Drawables/bone5/effect-Bone/roleeffect_zxqe_idlefeng5#Drawables/bone5/effect-Bone/roleeffect_zxqe_idleniao5#Drawables/bone3/effect-Bone/roleeffect_zxqe_idlelizi3#Drawables/bone4/effect-Bone/roleeffect_zxqe_idlelizi4|Drawables/bone5/effect-Bone/roleeffect_zxqe_idlefeng5#Drawables/bone5/effect-Bone/roleeffect_zxqe_idleniao5#Drawables/bone3/effect-Bone/roleeffect_zxqe_idlelizi3#Drawables/bone4/effect-Bone/roleeffect_zxqe_idlelizi4|Drawables/bone5/effect-Bone/roleeffect_zxqe_idlefeng5#Drawables/bone5/effect-Bone/roleeffect_zxqe_idleniao5#Drawables/bone3/effect-Bone/roleeffect_zxqe_idlelizi3#Drawables/bone4/effect-Bone/roleeffect_zxqe_idlelizi4|Drawables/bone5/effect-Bone/roleeffect_zxqe_idlefeng5#Drawables/bone5/effect-Bone/roleeffect_zxqe_idleniao5#Drawables/bone3/effect-Bone/roleeffect_zxqe_idlelizi3#Drawables/bone4/effect-Bone/roleeffect_zxqe_idlelizi4|Drawables/bone5/effect-Bone/roleeffect_zxqe_idlefeng5#Drawables/bone5/effect-Bone/roleeffect_zxqe_idleniao5#Drawables/bone3/effect-Bone/roleeffect_zxqe_idlelizi3#Drawables/bone4/effect-Bone/roleeffect_zxqe_idlelizi4|Drawables/bone5/effect-Bone/roleeffect_zxqe_idlefeng5#Drawables/bone5/effect-Bone/roleeffect_zxqe_idleniao5#Drawables/bone3/effect-Bone/roleeffect_zxqe_idlelizi3#Drawables/bone4/effect-Bone/roleeffect_zxqe_idlelizi4|Drawables/bone5/effect-Bone/roleeffect_zxqe_idlefeng5#Drawables/bone5/effect-Bone/roleeffect_zxqe_idleniao5#Drawables/bone3/effect-Bone/roleeffect_zxqe_idlelizi3#Drawables/bone4/effect-Bone/roleeffect_zxqe_idlelizi4|Drawables/bone5/effect-Bone/roleeffect_zxqe_idlefeng5#Drawables/bone5/effect-Bone/roleeffect_zxqe_idleniao5#Drawables/bone3/effect-Bone/roleeffect_zxqe_idlelizi3#Drawables/bone4/effect-Bone/roleeffect_zxqe_idlelizi4|Drawables/bone5/effect-Bone/roleeffect_zxqe_idlefeng5#Drawables/bone5/effect-Bone/roleeffect_zxqe_idleniao5#Drawables/bone3/effect-Bone/roleeffect_zxqe_idlelizi3#Drawables/bone4/effect-Bone/roleeffect_zxqe_idlelizi4|Drawables/bone5/effect-Bone/roleeffect_zxqe_idlefeng5#Drawables/bone5/effect-Bone/roleeffect_zxqe_idleniao5#Drawables/bone3/effect-Bone/roleeffect_zxqe_idlelizi3#Drawables/bone4/effect-Bone/roleeffect_zxqe_idlelizi4|Drawables/bone5/effect-Bone/roleeffect_zxqe_idlefeng5#Drawables/bone5/effect-Bone/roleeffect_zxqe_idleniao5#Drawables/bone3/effect-Bone/roleeffect_zxqe_idlelizi3#Drawables/bone4/effect-Bone/roleeffect_zxqe_idlelizi4",
+    "everNode": ""
+  },
+  {
+    "heroResName": "312606_mlan",
+    "effectCompName": "CommonRoleEffectContinue",
+    "motion": "b_huijian|b_kanshou|b_mangmu|b_kanshou1|b_zhengli|b_idle|b_tianping|b_diantou|b_yaotou",
+    "node": "Drawables/bone/effect-Bone/roleeffect_mlan_hj0#Drawables/bone2/effect-Bone/roleeffect_mlan_hj2#Drawables/bone3/effect-Bone/roleeffect_mlan_hj3#Drawables/bone6/effect-Bone/roleeffect_mlan_hj6#Drawables/bone10/effect-Bone/roleeffect_mlan_hj10#Drawables/bone13/effect-Bone/roleeffect_mlan_hj13#Drawables/bone4/effect-Bone/roleeffect_mlan_idle_out4|Drawables/bone8/effect-Bone/roleeffect_mlan_ks8#Drawables/bone4/effect-Bone/roleeffect_mlan_idle_out4|Drawables/bone/effect-Bone/roleeffect_mlan_mm0#Drawables/bone2/effect-Bone/roleeffect_mlan_mm2#Drawables/bone3/effect-Bone/roleeffect_mlan_mm3#Drawables/bone4/effect-Bone/roleeffect_mlan_idle_out4|Drawables/bone4/effect-Bone/roleeffect_mlan_idle_out4|Drawables/bone4/effect-Bone/roleeffect_mlan_idle_out4|Drawables/bone4/effect-Bone/roleeffect_mlan_idle4|Drawables/bone4/effect-Bone/roleeffect_mlan_idle4|Drawables/bone4/effect-Bone/roleeffect_mlan_idle4|Drawables/bone4/effect-Bone/roleeffect_mlan_idle4",
+    "everNode": ""
   }
 ]

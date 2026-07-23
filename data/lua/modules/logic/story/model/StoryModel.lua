@@ -17,6 +17,7 @@ function StoryModel:reInit()
 	self._storyState = {}
 	self._isVersionActivityPV = false
 	self._isReplay = false
+	self._statStepClickTime = 0
 
 	self:resetStoryState()
 end
@@ -217,15 +218,15 @@ function StoryModel:updateStoryList(info)
 end
 
 function StoryModel:isStoryHasPlayed(storyId)
-	local played = false
-
 	if self:isStoryFinished(storyId) then
 		return true
 	end
 
-	for _, v in pairs(self._storyState.processList) do
-		if v.storyId == storyId then
-			return true
+	if self._storyState and self._storyState.processList then
+		for _, v in pairs(self._storyState.processList) do
+			if v.storyId == storyId then
+				return true
+			end
 		end
 	end
 
@@ -619,19 +620,6 @@ function StoryModel:setPrologueSkipId(storyId)
 	self._skipStoryId = storyId
 end
 
-function StoryModel:getStoryBranchOpts(stepId)
-	local opts = {}
-	local optList = StoryStepModel.instance:getStepListById(stepId).optList
-
-	for _, opt in ipairs(optList) do
-		if opt.conditionType == StoryEnum.OptionConditionType.None then
-			table.insert(opts, opt)
-		end
-	end
-
-	return opts
-end
-
 function StoryModel:getShowStoryBranchOpts(stepId)
 	local opts = {}
 	local optList = StoryStepModel.instance:getStepListById(stepId).optList
@@ -665,6 +653,18 @@ function StoryModel:hasConfigNotExist()
 	end
 
 	return false
+end
+
+function StoryModel:addStepClickTime()
+	self._statStepClickTime = self._statStepClickTime + 1
+end
+
+function StoryModel:getStepClickTime()
+	return self._statStepClickTime
+end
+
+function StoryModel:resetStepClickTime()
+	self._statStepClickTime = 0
 end
 
 function StoryModel:needWaitStoryFinish()
@@ -724,11 +724,15 @@ function StoryModel:getCurStepId()
 	return self._curStepId
 end
 
-function StoryModel:isS01Story(storyId)
+function StoryModel:isSpVersionStory(storyId)
 	local curStoryId = storyId or self:getCurStoryId()
+	local storyPrefixs = CommonConfig.instance:getConstStr(ConstEnum.SP_StoryIdPrefix)
+	local prefixs = string.splitToNumber(storyPrefixs, "#")
 
-	if math.floor(curStoryId / 100) == 20305 then
-		return true
+	for _, prefix in pairs(prefixs) do
+		if math.floor(curStoryId / 100) == prefix then
+			return true
+		end
 	end
 
 	return false

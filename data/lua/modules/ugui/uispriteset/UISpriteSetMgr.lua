@@ -211,6 +211,10 @@ function UISpriteSetMgr:ctor()
 	self._v3a8_dianjishi_spriteset = self:newSpriteSetUnit("ui/spriteassets/v3a8_dianjishi_spriteset.asset")
 	self._v3a8_main_activity = self:newSpriteSetUnit("ui/spriteassets/v3a8_mainactivity_spriteset.asset")
 	self._v3a8_dungeon_sprite = self:newSpriteSetUnit("ui/spriteassets/v3a2_dungeon.asset")
+	self._sp02_atomicdungeonelement = self:newSpriteSetUnit("ui/spriteassets/sp02_atomicdungeonelement.asset")
+	self._sp02_atomicIcon = self:newSpriteSetUnit("ui/spriteassets/sp02_atomicforyou.asset")
+	self._sp02_atomicActivityIcon = self:newSpriteSetUnit("ui/spriteassets/sp02_atomic_activity.asset")
+	self._sp02_paomian = self:newSpriteSetUnit("ui/spriteassets/sp02_paomian.asset")
 end
 
 function UISpriteSetMgr:newSpriteSetUnit(path)
@@ -1055,6 +1059,22 @@ end
 
 function UISpriteSetMgr:setV3a8DianJiShiSprite(image, name, setNativeSize)
 	self._v3a8_dianjishi_spriteset:setSprite(image, name, setNativeSize)
+end
+
+function UISpriteSetMgr:setSp02AtomicDungeonElementSprite(image, name, setNativeSize)
+	self._sp02_atomicdungeonelement:setSprite(image, name, setNativeSize)
+end
+
+function UISpriteSetMgr:setSp02AtomicIconSprite(image, name, setNativeSize)
+	self._sp02_atomicIcon:setSprite(image, name, setNativeSize)
+end
+
+function UISpriteSetMgr:setSp02AtomicActivityIconSprite(image, name, setNativeSize)
+	self._sp02_atomicActivityIcon:setSprite(image, name, setNativeSize)
+end
+
+function UISpriteSetMgr:setSp02PaoMianIconSprite(image, name, setNativeSize)
+	self._sp02_paomian:setSprite(image, name, setNativeSize)
 end
 
 function UISpriteSetMgr:tryDispose()

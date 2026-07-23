@@ -476,6 +476,10 @@ function HeroRpc:onReceiveHeroDefaultEquipReply(resultCode, msg)
 		local uid = msg.defaultEquipUid
 
 		CharacterController.instance:dispatchEvent(CharacterEvent.successSetDefaultEquip, uid)
+
+		if msg.heroId == CharacterEnum.TwinssychubeHeroId then
+			EquipModel.instance:refreshShowActivateDoubleTip()
+		end
 	end
 end
 

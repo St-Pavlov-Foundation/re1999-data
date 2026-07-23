@@ -201,6 +201,16 @@ function FightDeviceAreaInfoData:moveDevice(srcIndex, targetIndex)
 	end
 end
 
+function FightDeviceAreaInfoData:getClientIndex(uid)
+	for index, deviceInfo in ipairs(self.clientDeviceList) do
+		if deviceInfo.uid == uid then
+			return index
+		end
+	end
+
+	return 1
+end
+
 function FightDeviceAreaInfoData:getClientDeviceList()
 	return self.clientDeviceList
 end

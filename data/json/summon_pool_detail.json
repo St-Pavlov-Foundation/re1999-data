@@ -268,5 +268,14 @@
     "historyShowType": 99,
     "order": 999,
     "openId": 11
+  },
+  {
+    "id": 385,
+    "desc": "",
+    "info": "38511101",
+    "name": "联动征集【银色拟剧论】",
+    "historyShowType": 0,
+    "order": 2,
+    "openId": 11
   }
 ]

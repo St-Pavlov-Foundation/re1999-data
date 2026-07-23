@@ -8760,5 +8760,18 @@
     "mapState": 0,
     "mapIdGroup": 0,
     "playEffect": 0
+  },
+  {
+    "id": 38510101,
+    "chapterId": 385101,
+    "unlockCondition": "",
+    "res": "sp02_m_s08_zhujiemian/scenes_prefab/sp02_m_s08_zhujiemian_p",
+    "desc": "",
+    "initPos": "0#0",
+    "effectAudio": 0,
+    "areaAudio": "",
+    "mapState": 0,
+    "mapIdGroup": 0,
+    "playEffect": 0
   }
 ]

@@ -3895,5 +3895,68 @@
     "audioId": 0,
     "dec_Type": 0,
     "dec": ""
+  },
+  {
+    "id": 100030,
+    "type": "TwinsUpByCounter",
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0,
+    "dec_Type": 0,
+    "dec": ""
+  },
+  {
+    "id": 100031,
+    "type": "TwinsPowerUp",
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0,
+    "dec_Type": 0,
+    "dec": ""
+  },
+  {
+    "id": 100032,
+    "type": "MasterAddMaxPower",
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0,
+    "dec_Type": 0,
+    "dec": ""
+  },
+  {
+    "id": 100033,
+    "type": "OriginDamageOnHit",
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0,
+    "dec_Type": 0,
+    "dec": ""
+  },
+  {
+    "id": 100034,
+    "type": "StopDeviceSkill",
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0,
+    "dec_Type": 0,
+    "dec": ""
+  },
+  {
+    "id": 100035,
+    "type": "ProcessStoreClearTempCard",
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0,
+    "dec_Type": 0,
+    "dec": ""
+  },
+  {
+    "id": 100036,
+    "type": "SkillChangeAttackCareer",
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0,
+    "dec_Type": 0,
+    "dec": ""
   }
 ]

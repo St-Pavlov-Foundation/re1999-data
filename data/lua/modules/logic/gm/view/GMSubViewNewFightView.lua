@@ -57,6 +57,7 @@ function GMSubViewNewFightView:initViewContent()
 
 	self.btnSimulateBattle = self:addButton(self:getLineGroup(), "战场模拟", self.onClickSimulateBattle, self)
 	self.btnSkillEditor = self:addButton(self:getLineGroup(), "技能编辑器", self.onClickSkillEditor, self)
+	self.stdStageBattle = self:addButton(self:getLineGroup(), "标准战斗", self.onClickStdStageBattle, self)
 
 	self:addLineIndex()
 	self:initFightFloatCo()
@@ -461,6 +462,11 @@ end
 function GMSubViewNewFightView:onClickSimulateBattle()
 	self:closeThis()
 	ViewMgr.instance:openView(ViewName.GMFightSimulateView)
+end
+
+function GMSubViewNewFightView:onClickStdStageBattle()
+	self:closeThis()
+	ViewMgr.instance:openView(ViewName.GMFightStandardEpisodeForTestServerView)
 end
 
 function GMSubViewNewFightView:onClickSkillEditor()

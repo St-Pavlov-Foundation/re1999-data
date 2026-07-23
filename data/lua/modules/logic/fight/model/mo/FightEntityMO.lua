@@ -1081,6 +1081,18 @@ function FightEntityMO:initSkin(info)
 		end
 	end
 
+	if string.sub(skin, 1, 4) == "3120" and lua_skin.configDict[skin] then
+		local showLevel, rank = HeroConfig.instance:getShowLevel(info.level)
+
+		if rank then
+			rank = rank - 1
+
+			if rank < 2 then
+				skin = 312001
+			end
+		end
+	end
+
 	return skin
 end
 

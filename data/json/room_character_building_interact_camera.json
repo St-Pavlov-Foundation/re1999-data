@@ -1339,5 +1339,23 @@
     "focusXYZ": "-0.102#0#-2.219",
     "nodesXYZ": "1.257#0.11#-0.154",
     "nextCameraParams": ""
+  },
+  {
+    "id": 38501,
+    "angle": "7#7",
+    "distance": "2.8392#2.8392",
+    "rotate": "46",
+    "focusXYZ": "1.354#0.1#0.327",
+    "nodesXYZ": "0.198#0.11#-1.591",
+    "nextCameraParams": ""
+  },
+  {
+    "id": 38502,
+    "angle": "7#7",
+    "distance": "2.8392#2.8392",
+    "rotate": "43.3",
+    "focusXYZ": "1.196#0.1#0.448",
+    "nodesXYZ": "-0.539#0.11#-0.569",
+    "nextCameraParams": ""
   }
 ]

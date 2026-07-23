@@ -8,12 +8,7 @@ function FightDeviceCardTipView:onInitView()
 	self.viewRect = self.viewGO:GetComponent(gohelper.Type_RectTransform)
 	self.viewWidth = recthelper.getWidth(self.viewRect)
 	self.viewHeight = recthelper.getHeight(self.viewRect)
-	self.rootRect = gohelper.findChildComponent(self.viewGO, "layout", gohelper.Type_RectTransform)
-	self._txttitle = gohelper.findChildText(self.viewGO, "layout/#txt_title")
-	self._txtdesc = gohelper.findChildText(self.viewGO, "layout/#txt_desc")
-	self._txtCostPower = gohelper.findChildText(self.viewGO, "layout/grid/#txt_energy")
-	self._txtAddExPoint = gohelper.findChildText(self.viewGO, "layout/grid/#txt_tongdiao")
-	self._imageEnergyIcon = gohelper.findChildImage(self.viewGO, "layout/grid/#txt_energy/icon")
+	self.goRoot = gohelper.findChild(self.viewGO, "layout")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -33,6 +28,25 @@ function FightDeviceCardTipView:_editableInitView()
 	self.click = gohelper.findChildClickWithDefaultAudio(self.viewGO, "close_block")
 
 	self.click:AddClickListener(self.closeThis, self)
+
+	self.skillItemList = {}
+
+	table.insert(self.skillItemList, self:createSkillItem(self.goRoot))
+end
+
+function FightDeviceCardTipView:createSkillItem(goRoot)
+	local skillItem = self:getUserDataTb_()
+
+	skillItem.goRoot = goRoot
+	skillItem.rectRoot = goRoot:GetComponent(gohelper.Type_RectTransform)
+	skillItem.using = false
+	skillItem._txttitle = gohelper.findChildText(goRoot, "#txt_title")
+	skillItem._txtdesc = gohelper.findChildText(goRoot, "#txt_desc")
+	skillItem._txtCostPower = gohelper.findChildText(goRoot, "grid/#txt_energy")
+	skillItem._txtAddExPoint = gohelper.findChildText(goRoot, "grid/#txt_tongdiao")
+	skillItem._imageEnergyIcon = gohelper.findChildImage(goRoot, "grid/#txt_energy/icon")
+
+	return skillItem
 end
 
 function FightDeviceCardTipView:onUpdateParam()
@@ -44,57 +58,117 @@ function FightDeviceCardTipView:onOpen()
 end
 
 function FightDeviceCardTipView:refreshUI()
-	local deviceSkillInfo = self.viewParam.deviceSkillInfo
-	local skillId = deviceSkillInfo.skillId
-	local uid = self.viewParam.entityUid
+	if self.viewParam.openType == FightDeviceCardTipController.OpenType.DeviceSkillInfo then
+		self:refreshByDeviceSkillInfo()
+	else
+		self:refreshByDeviceInfo()
+	end
 
-	FightDeviceCardTipView.refreshContent(deviceSkillInfo, uid, self._txttitle, self._txtdesc, self._txtCostPower, self._txtAddExPoint, self._imageEnergyIcon)
-
-	local srcWidth = recthelper.getWidth(self.rootRect)
-
-	self.rootRect.pivot = self.viewParam.pivot
-	self.rootRect.anchorMin = self.viewParam.anchorMinAndMax
-	self.rootRect.anchorMax = self.viewParam.anchorMinAndMax
-	self.offsetPosX = self.viewParam.offsetPosX
-	self.offsetPosY = self.viewParam.offsetPosY
-
-	recthelper.setWidth(self.rootRect, srcWidth)
 	self:setPos()
 	self:checkIgnoreClick()
 end
 
+function FightDeviceCardTipView:refreshByDeviceSkillInfo()
+	local deviceSkillInfo = self.viewParam.deviceSkillInfo
+	local uid = self.viewParam.entityUid
+	local skillItem = self.skillItemList[1]
+
+	skillItem.using = true
+
+	FightDeviceCardTipView.refreshContent(deviceSkillInfo, uid, skillItem._txttitle, skillItem._txtdesc, skillItem._txtCostPower, skillItem._txtAddExPoint, skillItem._imageEnergyIcon)
+
+	for i = 2, #self.skillItemList do
+		self.skillItemList[i].using = false
+	end
+end
+
+function FightDeviceCardTipView:refreshByDeviceInfo()
+	local deviceInfo = self.viewParam.deviceInfo
+	local uid = self.viewParam.entityUid
+	local group = deviceInfo.skills[deviceInfo.clientIndex]
+	local skills = group and group.skills
+
+	if not skills then
+		for i = 1, #self.skillItemList do
+			self.skillItemList[i].using = false
+		end
+
+		return
+	end
+
+	for index, skillInfo in ipairs(skills) do
+		local skillItem = self.skillItemList[index]
+
+		if not skillItem then
+			skillItem = self:createSkillItem(gohelper.cloneInPlace(self.goRoot))
+
+			table.insert(self.skillItemList, skillItem)
+		end
+
+		skillItem.using = true
+
+		FightDeviceCardTipView.refreshContent(skillInfo, uid, skillItem._txttitle, skillItem._txtdesc, skillItem._txtCostPower, skillItem._txtAddExPoint, skillItem._imageEnergyIcon)
+	end
+
+	for i = #skills + 1, #self.skillItemList do
+		self.skillItemList[i].using = false
+	end
+end
+
 function FightDeviceCardTipView:setPos()
+	local initAnchorX, initAnchorY = self:getInitPos()
+	local preHeight = 0
+
+	for _, skillItem in ipairs(self.skillItemList) do
+		if skillItem.using then
+			gohelper.setActive(skillItem.goRoot, true)
+			ZProj.UGUIHelper.RebuildLayout(skillItem.rectRoot)
+
+			skillItem.rectRoot.pivot = self.viewParam.pivot
+			skillItem.rectRoot.anchorMin = self.viewParam.anchorMinAndMax
+			skillItem.rectRoot.anchorMax = self.viewParam.anchorMinAndMax
+
+			recthelper.setAnchor(skillItem.rectRoot, initAnchorX, initAnchorY - preHeight)
+
+			preHeight = preHeight + recthelper.getHeight(skillItem.rectRoot)
+		else
+			gohelper.setActive(skillItem.goRoot, false)
+		end
+	end
+end
+
+function FightDeviceCardTipView:getInitPos()
 	local anchorX, anchorY = recthelper.screenPosToAnchorPos2(self.viewParam.screenPos, self.viewRect)
 	local anchorMinAndMax = self.viewParam.anchorMinAndMax
 
-	if anchorMinAndMax == FightCommonTipController.Pivot.TopLeft then
+	if anchorMinAndMax == FightDeviceCardTipController.Pivot.TopLeft then
 		anchorX = anchorX + self.viewWidth * 0.5
 		anchorY = anchorY - self.viewHeight * 0.5
-	elseif anchorMinAndMax == FightCommonTipController.Pivot.TopCenter then
+	elseif anchorMinAndMax == FightDeviceCardTipController.Pivot.TopCenter then
 		anchorY = anchorY - self.viewHeight * 0.5
-	elseif anchorMinAndMax == FightCommonTipController.Pivot.TopRight then
+	elseif anchorMinAndMax == FightDeviceCardTipController.Pivot.TopRight then
 		anchorX = anchorX - self.viewWidth * 0.5
 		anchorY = anchorY - self.viewHeight * 0.5
-	elseif anchorMinAndMax == FightCommonTipController.Pivot.CenterLeft then
+	elseif anchorMinAndMax == FightDeviceCardTipController.Pivot.CenterLeft then
 		anchorX = anchorX + self.viewWidth * 0.5
-	elseif anchorMinAndMax == FightCommonTipController.Pivot.Center then
+	elseif anchorMinAndMax == FightDeviceCardTipController.Pivot.Center then
 		-- block empty
-	elseif anchorMinAndMax == FightCommonTipController.Pivot.CenterRight then
+	elseif anchorMinAndMax == FightDeviceCardTipController.Pivot.CenterRight then
 		anchorX = anchorX - self.viewWidth * 0.5
-	elseif anchorMinAndMax == FightCommonTipController.Pivot.BottomLeft then
+	elseif anchorMinAndMax == FightDeviceCardTipController.Pivot.BottomLeft then
 		anchorX = anchorX + self.viewWidth * 0.5
 		anchorY = anchorY + self.viewHeight * 0.5
-	elseif anchorMinAndMax == FightCommonTipController.Pivot.BottomCenter then
+	elseif anchorMinAndMax == FightDeviceCardTipController.Pivot.BottomCenter then
 		anchorY = anchorY + self.viewHeight * 0.5
-	elseif anchorMinAndMax == FightCommonTipController.Pivot.BottomRight then
+	elseif anchorMinAndMax == FightDeviceCardTipController.Pivot.BottomRight then
 		anchorX = anchorX - self.viewWidth * 0.5
 		anchorY = anchorY + self.viewHeight * 0.5
 	end
 
-	anchorX = anchorX + self.offsetPosX
-	anchorY = anchorY + self.offsetPosY
+	anchorX = anchorX + self.viewParam.offsetPosX
+	anchorY = anchorY + self.viewParam.offsetPosY
 
-	recthelper.setAnchor(self.rootRect, anchorX, anchorY)
+	return anchorX, anchorY
 end
 
 function FightDeviceCardTipView:checkIgnoreClick()

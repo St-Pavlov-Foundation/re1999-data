@@ -67,7 +67,9 @@ PatFaceEnum.patFace = {
 	V1a9_AnniversarySign_PanelSignView = 10905,
 	VersionActivity3_8FreeMonthCardPanelView = 30801,
 	V2a0_Role_PanelSignView_Part2 = 20002,
+	SP02_OperationActivity = 385002,
 	V2a1_Role_PanelSignView_Part2 = 20101,
+	Sp02_GiftRecommend = 385003,
 	V2a2_Role_PanelSignView_Part2 = 20201,
 	DoubleDanPanel = 30300,
 	V2a3_Role_PanelSignView_Part2 = 20302,
@@ -114,7 +116,8 @@ PatFaceEnum.CustomCheckCanPatFun = {
 	[PatFaceEnum.patFace.BPSkinFaceView] = PatFaceCustomHandler.V2a8_BPSkinFaceViewCanPat,
 	[PatFaceEnum.patFace.PowerMakerPatFaceView] = PatFaceCustomHandler.PowerMakerPatFaceViewCanPat,
 	[PatFaceEnum.patFace.V3a3_TowerGiftPanelView] = PatFaceCustomHandler.V3a3TowerGiftPanelViewPatFaceViewCanPat,
-	[PatFaceEnum.patFace.VersionActivity3_8FreeMonthCardPanelView] = PatFaceCustomHandler.V3a8FreeMonthCardCanPat
+	[PatFaceEnum.patFace.VersionActivity3_8FreeMonthCardPanelView] = PatFaceCustomHandler.V3a8FreeMonthCardCanPat,
+	[PatFaceEnum.patFace.SP02_OperationActivity] = PatFaceCustomHandler.SP02_OperationActivityPatFaceViewCanPat
 }
 PatFaceEnum.CustomPatFun = {
 	[PatFaceEnum.patFace.DecalogPresent] = PatFaceCustomHandler.decalogPresentPat,
@@ -125,7 +128,8 @@ PatFaceEnum.CustomPatFun = {
 	[PatFaceEnum.patFace.BPSkinFaceView] = PatFaceCustomHandler.V2a8_openBPSkinFaceViewPat,
 	[PatFaceEnum.patFace.PowerMakerPatFaceView] = PatFaceCustomHandler.PowerMakerPatFaceViewPat,
 	[PatFaceEnum.patFace.V3a3_TowerGiftPanelView] = PatFaceCustomHandler.V3a3TowerGiftPanelViewPatFaceViewPat,
-	[PatFaceEnum.patFace.VersionActivity3_8FreeMonthCardPanelView] = PatFaceCustomHandler.V3a8FreeMonthCardPat
+	[PatFaceEnum.patFace.VersionActivity3_8FreeMonthCardPanelView] = PatFaceCustomHandler.V3a8FreeMonthCardPat,
+	[PatFaceEnum.patFace.SP02_OperationActivity] = PatFaceCustomHandler.SP02_OperationActivityPatFaceViewPat
 }
 PatFaceEnum.patFaceCustomWork = {
 	[PatFaceEnum.patFace.TurnBackStory] = TurnbackStoryPatFaceWork,
@@ -199,7 +203,8 @@ PatFaceEnum.patFaceCustomWork = {
 	[PatFaceEnum.patFace.CultivationDestiny] = CultivationDestinyPatWork,
 	[PatFaceEnum.patFace.DoubleDanPanel] = ActivityDoubleDanPanelPatWork,
 	[PatFaceEnum.patFace.V3a4_GiftRecommend] = Activity101SignPatFaceWork,
-	[PatFaceEnum.patFace.GoldenMilletPresent] = ActivityGoldenMilletPresentPatWork
+	[PatFaceEnum.patFace.GoldenMilletPresent] = ActivityGoldenMilletPresentPatWork,
+	[PatFaceEnum.patFace.Sp02_GiftRecommend] = Activity101SignPatFaceWork
 }
 
 return PatFaceEnum

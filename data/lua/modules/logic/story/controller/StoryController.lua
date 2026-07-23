@@ -60,6 +60,8 @@ function StoryController:playStoryByStartStep(storyId, stepId)
 end
 
 function StoryController:playStory(storyId, storyParams, callback, target, param)
+	PostProcessingMgr.instance:setUIActive(true, true)
+
 	local levelId = storyParams and storyParams.levelIdDict and storyParams.levelIdDict[storyId]
 
 	if levelId and levelId ~= 0 then
@@ -202,6 +204,10 @@ end
 
 function StoryController:playStep(stepId)
 	logNormal("Play storyId : " .. tostring(self._curStoryId) .. " stepId : " .. tostring(stepId))
+
+	if SettingsModel.instance:isOverseas() then
+		self:statStepStory()
+	end
 
 	self._curStepId = stepId
 
@@ -455,6 +461,8 @@ function StoryController:setStoryFinished(id)
 end
 
 function StoryController:finished(isSkip)
+	PostProcessingMgr.instance:setUIActive(false, true)
+
 	local frameRate = SettingsModel.instance:getModelTargetFrameRate()
 
 	SettingsModel.instance:setTargetFrameRate(frameRate)
@@ -471,6 +479,8 @@ function StoryController:finished(isSkip)
 	if not isSkip then
 		self:statFinishStory()
 	end
+
+	StoryModel.instance:resetStepClickTime()
 
 	local skipStoryIds = {
 		100014
@@ -513,6 +523,30 @@ end
 
 function StoryController:statStartStory()
 	self._viewTime = ServerTime.now()
+	self._lastStepTime = self._viewTime
+end
+
+function StoryController:statStepStory()
+	if not self._lastStepTime then
+		return
+	end
+
+	local clickTimes = StoryModel.instance:getStepClickTime()
+	local duration = ServerTime.now() - self._lastStepTime
+
+	StatController.instance:track(StatEnum.EventName.StoryStepEnd, {
+		[StatEnum.EventProperties.StoryId] = tostring(self._curStoryId or ""),
+		[StatEnum.EventProperties.StepId] = self._curStepId or 0,
+		[StatEnum.EventProperties.IsAuto] = StoryModel.instance:isStoryAuto(),
+		[StatEnum.EventProperties.ClickTimes] = clickTimes,
+		[StatEnum.EventProperties.Time] = math.floor(1000 * duration),
+		[StatEnum.EventProperties.LanguageType] = LangSettings.shortcutTab[GameConfig:GetCurLangType()],
+		[StatEnum.EventProperties.VoiceType] = GameConfig:GetCurVoiceShortcut(),
+		[StatEnum.EventProperties.Volume] = SDKMgr.instance:getSystemMediaVolume()
+	})
+	StoryModel.instance:resetStepClickTime()
+
+	self._lastStepTime = ServerTime.now()
 end
 
 function StoryController:statSkipStory()

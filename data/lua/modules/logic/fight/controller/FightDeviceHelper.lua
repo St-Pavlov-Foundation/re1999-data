@@ -3,11 +3,9 @@
 module("modules.logic.fight.controller.FightDeviceHelper", package.seeall)
 
 local FightDeviceHelper = _M
-local DeviceItemWidth = 130
-local DeviceItemHalfWidth = DeviceItemWidth * 0.5
-local DeviceWidthOffset = 20
 local DeviceItemInterVal = 0
-local DeviceEndInterval = 30
+local DeviceStartInterval = 25
+local DeviceEndInterval = 25
 local PowerItemWidth = 68
 local PowerItemInterval = 5
 local DeviceScanSuccessDuration = 0.5
@@ -23,37 +21,142 @@ local Career2CoverImage = {
 	[1] = "fight_device_card_career_1",
 	[2] = "fight_device_card_career_2"
 }
+local DeviceCardGroupItemWidthDict = {
+	[1] = 130,
+	[2] = 250
+}
+local DeviceCardGroupSelectFrameWidthDict = {
+	[1] = 126,
+	[2] = 235
+}
+local DeviceCardGroupSelectFrameAnchorXDict = {
+	[1] = 6,
+	[2] = 0
+}
+
+function FightDeviceHelper.getSelectFrameWidth(deviceInfo, index)
+	if not deviceInfo then
+		return 0
+	end
+
+	index = index or deviceInfo.clientIndex
+
+	return FightDeviceHelper.getSelectFrameWidthByGroup(deviceInfo.skills[index])
+end
+
+function FightDeviceHelper.getSelectFrameWidthByGroup(groupInfo)
+	if not groupInfo then
+		return 0
+	end
+
+	local skillCount = groupInfo:getCount()
+
+	return DeviceCardGroupSelectFrameWidthDict[skillCount] or 0
+end
+
+function FightDeviceHelper.getSelectFrameAnchorX(deviceInfo, index)
+	if not deviceInfo then
+		return 0
+	end
+
+	index = index or deviceInfo.clientIndex
+
+	return FightDeviceHelper.getSelectFrameAnchorXByGroup(deviceInfo.skills[index])
+end
+
+function FightDeviceHelper.getSelectFrameAnchorXByGroup(groupInfo)
+	if not groupInfo then
+		return 0
+	end
+
+	local skillCount = groupInfo:getCount()
+
+	return DeviceCardGroupSelectFrameAnchorXDict[skillCount] or 0
+end
 
 function FightDeviceHelper.getDeviceScanDuration(success)
 	return success and DeviceScanSuccessDuration or DeviceScanFailDuration
-end
-
-function FightDeviceHelper.getDeviceItemWidth()
-	return DeviceItemWidth
 end
 
 function FightDeviceHelper.getDeviceItemInterValWidth()
 	return DeviceItemInterVal
 end
 
-function FightDeviceHelper.getDeviceItemHalfWidth()
-	return DeviceItemHalfWidth
-end
-
 function FightDeviceHelper.getDeviceAreaInitAnchor()
 	return DeviceAreaInitAnchorX, DeviceAreaInitAnchorY
 end
 
-function FightDeviceHelper.getDeviceItemAnchorX(index)
-	return (index - 1) * (DeviceItemWidth + DeviceItemInterVal)
+function FightDeviceHelper.getDeviceItemAnchorX(targetIndex)
+	local anchor = DeviceStartInterval
+	local deviceArea = FightDataHelper.getDeviceArea()
+
+	if not deviceArea then
+		return anchor
+	end
+
+	for index, deviceInfo in ipairs(deviceArea.clientDeviceList) do
+		if index == targetIndex then
+			return anchor
+		end
+
+		anchor = anchor + FightDeviceHelper.getDeviceInfoWidth(deviceInfo) + DeviceItemInterVal
+	end
+
+	return anchor
+end
+
+function FightDeviceHelper.getDeviceInfoWidthByIndex(index)
+	local deviceArea = FightDataHelper.getDeviceArea()
+
+	if not deviceArea then
+		return 0
+	end
+
+	local deviceInfo = deviceArea.clientDeviceList[index]
+
+	return FightDeviceHelper.getDeviceInfoWidth(deviceInfo)
 end
 
 function FightDeviceHelper.getDeviceAreaTotalWidth()
 	local deviceArea = FightDataHelper.getDeviceArea()
-	local count = deviceArea:getCount()
-	local width = count * DeviceItemWidth + (count - 1) * DeviceItemInterVal + DeviceEndInterval
 
-	return width + DeviceWidthOffset
+	if not deviceArea then
+		return 0
+	end
+
+	local width = 0
+	local count = 0
+
+	for _, deviceInfo in ipairs(deviceArea.clientDeviceList) do
+		width = width + FightDeviceHelper.getDeviceInfoWidth(deviceInfo)
+		count = count + 1
+	end
+
+	width = width + (count - 1) * DeviceItemInterVal
+
+	return DeviceStartInterval + width + DeviceEndInterval
+end
+
+function FightDeviceHelper.getDeviceInfoWidth(deviceInfo, index)
+	if not deviceInfo then
+		logError("input deviceInfo is nil")
+
+		return 0
+	end
+
+	index = index or deviceInfo.clientIndex
+
+	return FightDeviceHelper.getDeviceGroupWidth(deviceInfo.skills[index])
+end
+
+function FightDeviceHelper.getDeviceGroupWidth(groupSkillInfo)
+	if not groupSkillInfo then
+		return 0
+	end
+
+	local skillCount = groupSkillInfo:getCount()
+
+	return DeviceCardGroupItemWidthDict[skillCount] or 0
 end
 
 function FightDeviceHelper.getDeviceAreaCount()

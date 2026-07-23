@@ -216,7 +216,8 @@ function GMFightEntityInfoView:initPowerOnEndEditHandleDict()
 			[FightEnum.PowerType.AssistBoss] = self._onEndEditAssistBoss,
 			[FightEnum.PowerType.SurvivalDot] = self._onEndEditSurvivalDot,
 			[FightEnum.PowerType.ZongMaoBossEnergy] = self._onEndEditZongMaoBossEnergy,
-			[FightEnum.PowerType.ZongMaoYinNiZhi] = self._onEndEditZongMaoYinNiZhi
+			[FightEnum.PowerType.ZongMaoYinNiZhi] = self._onEndEditZongMaoYinNiZhi,
+			[FightEnum.PowerType.Atomic] = self._onEndEditAtomic
 		}
 	end
 end
@@ -370,6 +371,10 @@ end
 
 function GMFightEntityInfoView:_onEndEditZongMaoYinNiZhi(inputStr)
 	self:onEndEditPower(FightEnum.PowerType.ZongMaoYinNiZhi, inputStr)
+end
+
+function GMFightEntityInfoView:_onEndEditAtomic(inputStr)
+	self:onEndEditPower(FightEnum.PowerType.Atomic, inputStr)
 end
 
 function GMFightEntityInfoView:onEndEditPower(powerId, text)

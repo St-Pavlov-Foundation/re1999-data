@@ -47,6 +47,7 @@ function FightWorkRequestAutoFight:onAutoRoundReply(msg)
 		flow:registWork(FightAutoDetectUpgradeWork)
 		flow:registWork(FightAutoMeiLeiErExRoundWork)
 		flow:registWork(FightAutoSelectCrystalWork)
+		flow:registWork(FightSSWLAutoSelectCardWork)
 		flow:registWork(FightWorkSelectBattleEvent)
 		flow:registWork(FightWorkWaitAllOperateDone)
 

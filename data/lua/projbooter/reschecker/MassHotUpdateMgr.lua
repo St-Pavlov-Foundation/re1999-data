@@ -12,11 +12,7 @@ function MassHotUpdateMgr:ctor()
 end
 
 function MassHotUpdateMgr:_needShowChangeZipDownload()
-	if VersionUtil.isVersionLess("3.6.0") then
-		return self._downloadFailAlertNum > 3
-	else
-		return false
-	end
+	return self._downloadFailAlertNum > 3
 end
 
 function MassHotUpdateMgr:isDownloading()

@@ -218,6 +218,12 @@ function LightModelAgent:removeParameter(name)
 	end
 end
 
+function LightModelAgent:changeSortingMode(mode)
+	if self._isLive2D then
+		self._curModel:changeSortingMode(mode)
+	end
+end
+
 function LightModelAgent:getSpineGo()
 	return self._curModel:getSpineGo()
 end

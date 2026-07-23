@@ -76,7 +76,17 @@ function CustomPickChoiceController:tryChoice(viewParam)
 	end
 
 	if selectCount < maxSelectCount then
-		GameFacade.showToast(ToastEnum.CustomPickMoreSelect)
+		local toastId
+
+		if viewParam and viewParam.id and CustomPickChoiceEnum.SelectHeroToastEnum[viewParam.id] then
+			toastId = CustomPickChoiceEnum.SelectHeroToastEnum[viewParam.id]
+		end
+
+		if toastId == nil then
+			toastId = ToastEnum.CustomPickMoreSelect
+		end
+
+		GameFacade.showToast(toastId)
 
 		return false
 	end

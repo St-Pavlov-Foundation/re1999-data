@@ -4,13 +4,14 @@ module("modules.configs.excel2json.lua_store_charge_goods", package.seeall)
 
 local lua_store_charge_goods = {}
 local fields = {
-	notShowInRecommend = 27,
+	newEndTime = 26,
 	name = 5,
-	newStartTime = 25,
+	preGoodsId = 24,
 	type = 3,
 	extraDiamond = 21,
-	newEndTime = 26,
-	isShowTurnback = 34,
+	newStartTime = 25,
+	showLogoTag = 33,
+	isShowTurnback = 35,
 	onlineTime = 15,
 	quickUseItemList = 29,
 	item = 22,
@@ -20,7 +21,7 @@ local fields = {
 	diamond = 19,
 	product = 9,
 	id = 1,
-	overviewJumpId = 33,
+	overviewJumpId = 34,
 	nameEn = 6,
 	taskid = 31,
 	detailDesc = 28,
@@ -28,7 +29,7 @@ local fields = {
 	desc = 7,
 	originalCost = 18,
 	slogan = 12,
-	showLogoTag = 32,
+	notShowInRecommend = 27,
 	underlay = 10,
 	price = 17,
 	order = 4,
@@ -37,7 +38,7 @@ local fields = {
 	offlineTime = 16,
 	limit = 23,
 	showBg = 11,
-	preGoodsId = 24
+	newShowLinkTag = 32
 }
 local primaryKey = {
 	"id"

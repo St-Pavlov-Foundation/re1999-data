@@ -2062,5 +2062,21 @@
     "bindActivityId": 0,
     "roomLevel": 0,
     "dailyOpenTime": ""
+  },
+  {
+    "id": 3850101,
+    "name": "重返切洛梅",
+    "isOnline": 1,
+    "playerLv": 1,
+    "episodeId": 38510116,
+    "elementId": 0,
+    "verifingEpisodeId": 38510116,
+    "isAlwaysShowBtn": 0,
+    "showInEpisode": 0,
+    "dec": 385014,
+    "verifingHide": 0,
+    "bindActivityId": 0,
+    "roomLevel": 0,
+    "dailyOpenTime": ""
   }
 ]

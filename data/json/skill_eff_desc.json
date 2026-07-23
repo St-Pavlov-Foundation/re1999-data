@@ -27614,5 +27614,445 @@
     "notAddLink": 0,
     "isSpecialCharacter": 0,
     "desc": "商店的质量由【辉光度】决定，队伍的品质和塑造会影响【辉光度】，每个低阶、中阶、高阶偶人分别使【辉光度】+1、+2、+5；每个余辉偶人额外使【辉光度】+1；每个偶人的每个塑造，【辉光度】+2"
+  },
+  {
+    "id": 31021001,
+    "name": "预备开火<id:11>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "若回合结束时，仍处于该吟诵状态，则释放一次【找准靶心<id:11>】（若释放后燃烧子弹数量为0，则解除该状态）"
+  },
+  {
+    "id": 31021002,
+    "name": "预备开火<id:12>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "若回合结束时，仍处于该吟诵状态，则释放一次【找准靶心<id:12>】（若释放后燃烧子弹数量为0，则解除该状态）"
+  },
+  {
+    "id": 31021003,
+    "name": "预备开火<id:13>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "若回合结束时，仍处于该吟诵状态，则释放一次【找准靶心<id:13>】（若释放后燃烧子弹数量为0，则解除该状态）"
+  },
+  {
+    "id": 31021004,
+    "name": "坩埚军火库<id:11>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "暴击率+40%；子弹触发时：子弹不会耗尽，至少保留一发，溢出暴击率转化为40%数额的暴击创伤，每有一种子弹类型，系数提升10%，最多提升8次；攻击时，每持有1种子弹，造成伤害、术法威力和仪式威力提升5%，最多提升8次；持续3回合"
+  },
+  {
+    "id": 31021005,
+    "name": "坩埚军火库<id:12>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "暴击率+50%；子弹触发时：子弹不会耗尽，至少保留一发，溢出暴击率转化为65%数额的暴击创伤，每有一种子弹类型，系数提升10%，最多提升8次；攻击时，每持有1种子弹，造成伤害、术法威力和仪式威力提升5%，最多提升8次；持续3回合"
+  },
+  {
+    "id": 31021006,
+    "name": "坩埚军火库<id:13>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "暴击率+50%；子弹触发时：子弹不会耗尽，至少保留一发，溢出暴击率转化为65%数额的暴击创伤，每有一种子弹类型，系数提升10%，最多提升8次；攻击时，每持有1种子弹，造成伤害、术法威力和仪式威力提升5%，最多提升8次；持续4回合"
+  },
+  {
+    "id": 31021007,
+    "name": "尺度<id:10>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 1,
+    "desc": "暴击率、暴击创伤提升3%（效果可叠加，上限55层，不可驱散）"
+  },
+  {
+    "id": 31021008,
+    "name": "测绘<id:10>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 1,
+    "desc": "不再失去灵光（不可驱散）"
+  },
+  {
+    "id": 31021009,
+    "name": "找准靶心<id:11>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "单体攻击，对目标造成180%现实创伤，必定暴击；赋予己方全体【直击要害<id:1>】，持续2回合；如果目标燃烧大于等于20层，【直击要害<id:1>】效果提高100%"
+  },
+  {
+    "id": 31021010,
+    "name": "找准靶心<id:12>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "单体攻击，对目标造成180%现实创伤，必定暴击；赋予己方全体【直击要害<id:2>】，持续2回合；如果目标燃烧大于等于20层，【直击要害<id:2>】效果提高100%"
+  },
+  {
+    "id": 31021011,
+    "name": "找准靶心<id:13>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "单体攻击，对目标造成300%现实创伤，必定暴击；赋予己方全体【直击要害<id:2>】，持续2回合；如果目标燃烧大于等于20层，【直击要害<id:2>】效果提高100%"
+  },
+  {
+    "id": 31021012,
+    "name": "科学编舞法",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 31021013,
+    "name": "艺术原子能",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 0,
+    "desc": ""
+  },
+  {
+    "id": 116385000,
+    "name": "原子能量",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "达到特定等级时强化自身技能；回合开始时，若点数为1/2/3/4/5，则回复10%/20%/40%/60%/80%的最大生命值（回复效果仅在3826号设施中生效）"
+  },
+  {
+    "id": 116385008,
+    "name": "能量增幅",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "最终增伤+15%，效果可叠加，不可驱散"
+  },
+  {
+    "id": 116385009,
+    "name": "维修防护",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受创减免+100%，受到的本源伤害提升30%，不可驱散"
+  },
+  {
+    "id": 116385010,
+    "name": "维修复原Ⅰ",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "拥有者受到致命攻击时恢复50%自身最大生命，并获得1层【能量增幅】，生效后减少1层，不可驱散"
+  },
+  {
+    "id": 116385020,
+    "name": "维修复原Ⅱ",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "拥有者受到致命攻击时恢复75%自身最大生命，并获得1层【能量增幅】，生效后减少1层，不可驱散"
+  },
+  {
+    "id": 116385040,
+    "name": "维修复原Ⅲ",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "拥有者受到致命攻击时恢复100%自身最大生命，并获得1层【能量增幅】和1回合【维修防护】；生效后减少1层，不可驱散"
+  },
+  {
+    "id": 116385121,
+    "name": "聚合-电击",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "行动后受到自身当前生命*3%的本源伤害(效果可叠加，最多叠加5层)"
+  },
+  {
+    "id": 116385122,
+    "name": "电击抵抗",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受到手套的电击技能攻击时，减少1层，不会触发弱点效果（不可驱散）"
+  },
+  {
+    "id": 116385221,
+    "name": "聚合-霜冻",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合结束时【原子能量】-1层，持续1回合，2层时变为【聚合-绝对零度】"
+  },
+  {
+    "id": 116385222,
+    "name": "聚合-绝对零度",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "无法行动，无法获得【原子能量】，持续1回合"
+  },
+  {
+    "id": 116385223,
+    "name": "霜冻抵抗",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受到手套的霜冻技能攻击时，减少1层，不会获得【聚合-霜冻】（不可驱散）"
+  },
+  {
+    "id": 116385321,
+    "name": "聚合-强化反应",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "此状态下可传导电击和霜冻；解锁手套强化可获得额外效果：\n聚合物溶解：受击时额外承受-回合限次；\n高效导电：受到电击时额外承受伤害\n高效吸热：获得【聚合-霜冻】时额外获得1层"
+  },
+  {
+    "id": 116385421,
+    "name": "聚合-护盾",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "创伤减免提升50%"
+  },
+  {
+    "id": 116385423,
+    "name": "聚合-能量吸收",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "免疫1次伤害，持续1回合"
+  },
+  {
+    "id": 116385425,
+    "name": "聚合-诺拉之吻",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受到致命伤害时，恢复1%生命"
+  },
+  {
+    "id": 116385511,
+    "name": "迟滞",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受治疗效果-50%，攻击力-20%，现实防御-20%"
+  },
+  {
+    "id": 116385615,
+    "name": "诺拉的束缚",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "无法行动，回合结束时激情-3，不可驱散"
+  },
+  {
+    "id": 116385670,
+    "name": "精神超越",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "术具发动后，减少我方全体2层【啁啾信号】；术具对目标造成伤害时，扣除目标1层【灵薄壁垒】"
+  },
+  {
+    "id": 116385671,
+    "name": "啁啾信号",
+    "color": 2,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "每层创伤加成-10%，使用咒语后受到5%最大生命的伤害(可被护盾抵挡)，使用普通咒语后减少1层(最多叠加10层，不可驱散)"
+  },
+  {
+    "id": 116385672,
+    "name": "昔时之声",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "每层创伤加成+10%，回合结束时每层获得20%最大生命值的护盾(最多叠加5层，不可驱散)"
+  },
+  {
+    "id": 116385679,
+    "name": "灵薄壁垒",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "受到的伤害固定为1（不可驱散）"
+  },
+  {
+    "id": 1163852100,
+    "name": "锋锐",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "术法威力提升60%，穿透率提升20%，不可驱散，持续2回合。拥有【锋锐】时，不再获得【余锐】"
+  },
+  {
+    "id": 1163852101,
+    "name": "余锐",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "术法威力提升5%，效果可叠加，不可驱散，持续2回合。叠加至10层时变为【锋锐】"
+  },
+  {
+    "id": 1163857104,
+    "name": "暴击校准",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "暴击率+25%，暴击伤害+25%，创伤减免+25%(最多叠加4层，不可驱散)"
+  },
+  {
+    "id": 1163857134,
+    "name": "强化装甲",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "创伤减免提升30%(最多叠加10层，不可驱散)"
+  },
+  {
+    "id": 109360001,
+    "name": "振声宣告",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "叠加至5层后，牺牲者的遗名会追加额外攻击（至多叠加5层）"
+  },
+  {
+    "id": 109360002,
+    "name": "灵薄体",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "抗暴率+40%，暴击防御+40%，受到本源创伤降低40%（至多叠加2层）"
+  },
+  {
+    "id": 109360003,
+    "name": "心念动摇",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "回合结束时失去10%最大生命（无法驱散，最多叠加5层，每层独立计算持续时间，每回合1次，受到治疗咒语影响后减少1回合）"
+  },
+  {
+    "id": 109360005,
+    "name": "磐石<id:109360005>",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "现实防御、精神防御+10%（可以叠加）"
+  },
+  {
+    "id": 31490001,
+    "name": "聚合射线",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 1,
+    "desc": ""
+  },
+  {
+    "id": 31490002,
+    "name": "迈向群星",
+    "color": 1,
+    "notAddLink": 1,
+    "isSpecialCharacter": 1,
+    "desc": ""
+  },
+  {
+    "id": 31490003,
+    "name": "高效转化",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 1,
+    "desc": "岩交感能量+1，使本回合释放【聚合射线】时的术具威力提升30%"
+  },
+  {
+    "id": 31490004,
+    "name": "增幅脉冲",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 1,
+    "desc": "星交感能量+1，使本回合释放【迈向群星】时的术具威力提升30%"
+  },
+  {
+    "id": 31490005,
+    "name": "星交感能量Ⅰ",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "星交感能量+1"
+  },
+  {
+    "id": 31490006,
+    "name": "星交感能量Ⅱ",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "星交感能量+2"
+  },
+  {
+    "id": 31490007,
+    "name": "星交感能量Ⅲ",
+    "color": 0,
+    "notAddLink": 0,
+    "isSpecialCharacter": 0,
+    "desc": "星交感能量+3"
+  },
+  {
+    "id": 31510121,
+    "name": "筹备·诺拉Ⅰ",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 1,
+    "desc": "下回合开始时，生成1张1阶预备咒语-鞭笞技法（效果可叠加）"
+  },
+  {
+    "id": 31510122,
+    "name": "筹备·诺拉Ⅱ",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 1,
+    "desc": "下回合开始时，生成1张2阶预备咒语-鞭笞技法（效果可叠加）"
+  },
+  {
+    "id": 31510123,
+    "name": "筹备·诺拉Ⅲ",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 1,
+    "desc": "下回合开始时，生成1张3阶预备咒语-鞭笞技法（效果可叠加）"
+  },
+  {
+    "id": 31510131,
+    "name": "粉红武装<id:1>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 1,
+    "desc": "释放1/2/3阶咒语时，使本次攻击术法威力提升15%/20%/30%，造成的伤害提升15%/20%/30%"
+  },
+  {
+    "id": 31510132,
+    "name": "粉红武装<id:2>",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 1,
+    "desc": "释放1/2/3阶咒语时，使本次攻击术法威力提升20%/30%/40%，造成的伤害提升20%/30%/40%"
+  },
+  {
+    "id": 31510133,
+    "name": "保鲜",
+    "color": 1,
+    "notAddLink": 0,
+    "isSpecialCharacter": 1,
+    "desc": "改写咒语表面，不占己方咒语获取数量上限（无法和其他改写咒语表面的效果叠加）"
   }
 ]

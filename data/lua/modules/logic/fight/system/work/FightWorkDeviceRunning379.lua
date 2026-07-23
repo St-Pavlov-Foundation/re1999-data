@@ -7,8 +7,9 @@ local FightWorkDeviceRunning379 = class("FightWorkDeviceRunning379", FightEffect
 function FightWorkDeviceRunning379:onStart()
 	local success = self.actEffectData.effectNum == 1
 	local deviceCardIndex = self.fightStepData.cardIndex
+	local innerIndex = self.fightStepData:getDeviceInnerIndex()
 
-	FightController.instance:dispatchEvent(FightEvent.OnDevice_ScanSkill, deviceCardIndex, success)
+	FightController.instance:dispatchEvent(FightEvent.OnDevice_ScanSkill, success, deviceCardIndex, innerIndex)
 	self:onDone(true)
 end
 

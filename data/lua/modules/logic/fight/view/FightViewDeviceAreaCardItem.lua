@@ -33,6 +33,7 @@ end
 function FightViewDeviceAreaCardItem:addEvents()
 	self:addEventCb(FightController.instance, FightEvent.OnDevice_ScanSkill, self.onDeviceScanSkill, self)
 	self:addEventCb(FightController.instance, FightEvent.AfterSkillEffect, self.onAfterSkillEffect, self)
+	self:addEventCb(FightController.instance, FightEvent.OnDevice_SingleSkillDone, self.onSingleSkillDone, self)
 	self:addEventCb(FightController.instance, FightEvent.OnDevice_SkillStopStatusChange, self.onDeviceSkillStopStatusChange, self)
 	self:addEventCb(FightController.instance, FightEvent.OnDevice_RestartDeviceChange, self.onDeviceRestartDeviceChange, self)
 	self:addEventCb(FightController.instance, FightEvent.StageChanged, self.onStageChanged, self)
@@ -66,12 +67,22 @@ function FightViewDeviceAreaCardItem:onDeviceRestartDeviceChange(targetUid)
 	self.deviceArea:restartDevice(targetUid)
 end
 
-function FightViewDeviceAreaCardItem:onDeviceScanSkill(deviceIndex, success)
+function FightViewDeviceAreaCardItem:onSingleSkillDone()
 	if not self.deviceArea then
 		return
 	end
 
-	self.deviceArea:playScanEffect(deviceIndex, success)
+	self.deviceArea:refreshStopEffect()
+	self.deviceArea:hideAllDeviceCardSelectFrame()
+	self.deviceArea:hideAllInnerSelectFrame()
+end
+
+function FightViewDeviceAreaCardItem:onDeviceScanSkill(success, deviceIndex, innerIndex)
+	if not self.deviceArea then
+		return
+	end
+
+	self.deviceArea:playScanEffect(success, deviceIndex, innerIndex)
 end
 
 function FightViewDeviceAreaCardItem:onAfterSkillEffect(fightStepData)

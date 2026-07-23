@@ -40,6 +40,11 @@ StoryEnum.ConversationEffectType = {
 	CommonMagic = 7,
 	None = 0
 }
+StoryEnum.HeroPos = {
+	Right = 2,
+	Middle = 1,
+	Left = 0
+}
 StoryEnum.HeroEffect = {
 	SetFlash = "setFlash",
 	StyDissolve = "stydissolve",

@@ -153,5 +153,9 @@ ConstEnum.VersionId = 300
 ConstEnum.V3a8NewRegisterPlayerTime = 83801
 ConstEnum.V3a8FreeMonthCardTitle = 83809
 ConstEnum.V3a8FreeMonthCardDesc = 83810
+ConstEnum.SP02_LinkGiftDesc = 38501
+ConstEnum.SP02_LinkGiftTitle = 38502
+ConstEnum.ForceNeedKrJpActivityId = 38504
+ConstEnum.SP_StoryIdPrefix = 38507
 
 return ConstEnum

@@ -29,6 +29,14 @@
     "storePrefab": "bpface_skintaluoview",
     "openAudioId": 0,
     "closeAudioId": 0,
+    "online": 0
+  },
+  {
+    "skinId": 312606,
+    "audioId": 0,
+    "storePrefab": "bpface_skintaluoview",
+    "openAudioId": 0,
+    "closeAudioId": 0,
     "online": 1
   }
 ]

@@ -209,16 +209,19 @@ function StoryBackgroundView:onOpen()
 	ViewMgr.instance:openView(ViewName.StoryHeroView, nil, false)
 	ViewMgr.instance:openView(ViewName.StoryLeadRoleSpineView, nil, true)
 	ViewMgr.instance:openView(ViewName.StoryView, nil, true)
-
-	local isS01Story = StoryModel.instance:isS01Story()
-
-	self._initVoice = GameConfig:GetCurVoiceShortcut()
-
-	if not isS01Story and (self._initVoice == "jp" or self._initVoice == "kr") then
-		AudioMgr.instance:changeLang("en")
-	end
-
 	self:_addEvents()
+
+	local isOverseas = SettingsModel.instance:isOverseas()
+
+	if not isOverseas then
+		local isSpVersionStory = StoryModel.instance:isSpVersionStory()
+
+		self._initVoice = GameConfig:GetCurVoiceShortcut()
+
+		if not isSpVersionStory and (self._initVoice == "jp" or self._initVoice == "kr") then
+			AudioMgr.instance:changeLang("en")
+		end
+	end
 end
 
 function StoryBackgroundView:_addEvents()
@@ -341,7 +344,9 @@ function StoryBackgroundView:_resetData()
 	self._imagebgold.material = nil
 	self._imagebgoldtop.material = nil
 
-	ZProj.TweenHelper.KillByObj(self._simagebgimg.gameObject.transform)
+	if self._simagebgimg and self._simagebgimg.gameObject then
+		ZProj.TweenHelper.KillByObj(self._simagebgimg.gameObject.transform)
+	end
 
 	if self._dissolveId then
 		ZProj.TweenHelper.KillById(self._dissolveId)
@@ -428,6 +433,10 @@ function StoryBackgroundView:_refreshBg()
 	end
 
 	self:_hideVideo()
+
+	if not self._simagebgimg then
+		return
+	end
 
 	if self._bgCo.bgType == StoryEnum.BgType.Picture then
 		self._lastCaptureTexture = UnityEngine.RenderTexture.GetTemporary(self._blitEff.capturedTexture.width, self._blitEff.capturedTexture.height, 0, UnityEngine.RenderTextureFormat.ARGB32)
@@ -838,6 +847,10 @@ function StoryBackgroundView:_resetBgEffDiamondLight()
 end
 
 function StoryBackgroundView:_resetBgState()
+	if not self._simagebgimg or not self._simagebgimg.gameObject then
+		return
+	end
+
 	local transTimes = self._bgCo.transTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()]
 
 	if transTimes < 0.05 then
@@ -1700,6 +1713,12 @@ function StoryBackgroundView:_actBgEffBlindFilter()
 		self._bgBlindFilterCls:init(self._bgCo)
 		self._bgBlindFilterCls:start(self._resetBgEffBlindFilter, self)
 	else
+		if self._bgCo.effDegree == 0 then
+			self:_resetBgEffBlindFilter()
+
+			return
+		end
+
 		self._bgBlindFilterCls:reset(self._bgCo)
 	end
 end
@@ -2526,11 +2545,6 @@ function StoryBackgroundView:_hideVideo(isBottom)
 end
 
 function StoryBackgroundView:onClose()
-	if not self._initVoice then
-		self._initVoice = GameConfig:GetCurVoiceShortcut()
-	end
-
-	AudioMgr.instance:changeLang(self._initVoice)
 	self:_clearBg()
 
 	if self._bgFadeId then
@@ -2540,6 +2554,18 @@ function StoryBackgroundView:onClose()
 	gohelper.setActive(self.viewGO, false)
 	ViewMgr.instance:closeView(ViewName.StoryHeroView)
 	self:_removeEvents()
+
+	local isOverseas = SettingsModel.instance:isOverseas()
+
+	if isOverseas then
+		return
+	end
+
+	if not self._initVoice then
+		self._initVoice = GameConfig:GetCurVoiceShortcut()
+	end
+
+	AudioMgr.instance:changeLang(self._initVoice)
 end
 
 function StoryBackgroundView:_clearBg()

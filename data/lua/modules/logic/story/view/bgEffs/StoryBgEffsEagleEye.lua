@@ -61,13 +61,10 @@ function StoryBgEffsEagleEye:onLoadFinished()
 	StoryBgEffsEagleEye.super.onLoadFinished(self)
 	StoryTool.enablePostProcess(true)
 
-	local bgGo = StoryViewMgr.instance:getStoryBackgroundView()
-
-	self._rootGo = gohelper.findChild(bgGo, "#go_upbg/#simage_bgimg")
-
 	local prefAssetItem = self._loader:getAssetItem(self._eagleEyePrefabPath)
+	local bgImgGo = StoryViewMgr.instance:getStoryFrontBgImgGo()
 
-	self._eagleEyeGo = gohelper.clone(prefAssetItem:GetResource(), self._rootGo)
+	self._eagleEyeGo = gohelper.clone(prefAssetItem:GetResource(), bgImgGo)
 	self._eagleCtrl = self._eagleEyeGo:GetComponent(typeof(ZProj.MaterialPropsCtrl))
 	self._eagleCtrl.float_01 = 0.2
 	self._eagleCtrl.float_02 = 1.5

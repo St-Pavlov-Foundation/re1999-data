@@ -158,10 +158,23 @@ function StoryLogItem:_onPlayClick()
 	self:_setItemContentColor("#D56B39")
 	SLFramework.UGUI.GuiHelper.SetColor(self._gonorole:GetComponent(gohelper.Type_Image), "#BD5C2F")
 
-	if self._audioId ~= 0 and StoryLogListModel.instance:getPlayingLogAudioId() ~= self._audioId then
-		AudioEffectMgr.instance:stopAudio(StoryLogListModel.instance:getPlayingLogAudioId(), 0)
-		AudioEffectMgr.instance:stopAudio(self._audioId, 0)
+	if not self._audioId or self._audioId == 0 then
+		return
 	end
+
+	local playLogAudioId = StoryLogListModel.instance:getPlayingLogAudioId()
+
+	if playLogAudioId == self._audioId then
+		return
+	end
+
+	local isPlaying = AudioEffectMgr.instance:isPlaying(self._audioId)
+
+	if isPlaying then
+		return
+	end
+
+	AudioEffectMgr.instance:stopAudio(playLogAudioId, 0)
 
 	local param = {}
 
@@ -199,7 +212,7 @@ function StoryLogItem:_onStopClick()
 
 	local co = StoryStepModel.instance:getStepListById(self._mo.info).conversation
 
-	if co.type == StoryEnum.ConversationType.Player or co.nameShow and co.heroNames[LanguageEnum.LanguageStoryType.CN] == luaLang("mainrolename") and co.type ~= StoryEnum.ConversationType.None and co.type ~= StoryEnum.ConversationType.ScreenDialog then
+	if co.type == StoryEnum.ConversationType.Player or co.nameShow and co.heroNames[GameLanguageMgr.instance:getLanguageTypeStoryIndex()] == luaLang("mainrolename") and co.type ~= StoryEnum.ConversationType.None and co.type ~= StoryEnum.ConversationType.ScreenDialog then
 		self:_setItemContentColor("#CCAD8F")
 	else
 		self:_setItemContentColor("#EEF1E8")
@@ -217,7 +230,13 @@ function StoryLogItem:_onAudioFinished()
 		StoryLogListModel.instance:setPlayingLogAudio(0)
 	end
 
-	if self._audioId == 0 then
+	if not self._mo or self._audioId == 0 then
+		return
+	end
+
+	if type(self._mo.info) == "table" then
+		StoryLogListModel.instance:setPlayingLogAudio(0)
+
 		return
 	end
 
@@ -229,7 +248,7 @@ function StoryLogItem:_onAudioFinished()
 
 	local co = StoryStepModel.instance:getStepListById(self._mo.info).conversation
 
-	if co.type == StoryEnum.ConversationType.Player or co.nameShow and co.heroNames[LanguageEnum.LanguageStoryType.CN] == luaLang("mainrolename") and co.type ~= StoryEnum.ConversationType.None and co.type ~= StoryEnum.ConversationType.ScreenDialog then
+	if co.type == StoryEnum.ConversationType.Player or co.nameShow and co.heroNames[GameLanguageMgr.instance:getLanguageTypeStoryIndex()] == luaLang("mainrolename") and co.type ~= StoryEnum.ConversationType.None and co.type ~= StoryEnum.ConversationType.ScreenDialog then
 		self:_setItemContentColor("#CCAD8F")
 	else
 		self:_setItemContentColor("#EEF1E8")
@@ -255,16 +274,43 @@ function StoryLogItem:onUpdateMO(mo, mixType)
 		local co = stepCo.conversation
 		local txt = string.find(co.diaTexts[GameLanguageMgr.instance:getLanguageTypeStoryIndex()], "<voffset") and co.diaTexts[GameLanguageMgr.instance:getLanguageTypeStoryIndex()] or GameUtil.filterRichText(co.diaTexts[GameLanguageMgr.instance:getLanguageTypeStoryIndex()])
 
+		if SDKModel.instance:isDmm() and LangSettings.instance:isJp() then
+			local storyId = StoryController.instance._curStoryId
+			local stepId = mo.info
+
+			if storyId == 100601 and stepId == 36 then
+				txt = "はっ！　正気の沙汰じゃない。一家そろって◯◯◯だぞ！"
+			elseif storyId == 100602 and stepId == 30 then
+				txt = "あんたらがマヌス・ヴェンデッタの仮面を研究したおかげで、その副作用が徹底的に分かったぜ！　おかげで、ラプラスの廊下は身体のあちこちから石油を垂らす◯◯◯で埋まっちまったがな。"
+			elseif storyId == 100726 and stepId == 32 then
+				txt = "ははは！　死ね、無様な◯◯◯どもが！！"
+			end
+		end
+
+		self._audioId = 0
+
+		if co.audios[1] and not co.disableAudio[GameLanguageMgr.instance:getLanguageTypeStoryIndex()] then
+			self._audioId = co.audios[1]
+		end
+
+		txt = StoryModel.instance:getStoryTxtByVoiceType(StoryTool.getFilterDia(txt), self._audioId)
+
+		local markTopList = StoryTool.getMarkTopTextList(txt)
+
+		txt = StoryTool.filterMarkTop(txt)
+
 		if StoryModel.instance:isMagicType(stepCo) then
 			txt = StoryConfig.instance:replaceStoryMagicText(txt)
 		end
 
-		self._audioId = co.audios[1] or 0
+		if GameLanguageMgr.instance:getLanguageTypeStoryIndex() == LanguageEnum.LanguageStoryType.EN then
+			txt = string.gsub(txt, "<glitch>", "")
+			txt = string.gsub(txt, "</glitch>", "")
+		else
+			txt = string.gsub(txt, "<glitch>", "<i><b>")
+			txt = string.gsub(txt, "</glitch>", "</i></b>")
+		end
 
-		local txt = StoryModel.instance:getStoryTxtByVoiceType(StoryTool.getFilterDia(txt), self._audioId)
-
-		txt = string.gsub(txt, "<glitch>", "<i><b>")
-		txt = string.gsub(txt, "</glitch>", "</i></b>")
 		self._txtcontent.text = StoryTool.filterSpTag(txt)
 
 		if co.type ~= StoryEnum.ConversationType.Aside then
@@ -321,7 +367,7 @@ function StoryLogItem:onUpdateMO(mo, mixType)
 			end
 		end
 
-		if co.type == StoryEnum.ConversationType.Player or co.nameShow and co.heroNames[LanguageEnum.LanguageStoryType.CN] == luaLang("mainrolename") and co.type ~= StoryEnum.ConversationType.None and co.type ~= StoryEnum.ConversationType.ScreenDialog then
+		if co.type == StoryEnum.ConversationType.Player or co.nameShow and co.heroNames[GameLanguageMgr.instance:getLanguageTypeStoryIndex()] == luaLang("mainrolename") and co.type ~= StoryEnum.ConversationType.None and co.type ~= StoryEnum.ConversationType.ScreenDialog then
 			gohelper.setActive(self._goicon, true)
 			self:_setItemContentColor("#CCAD8F")
 		else

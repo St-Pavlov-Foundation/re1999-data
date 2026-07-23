@@ -17150,6 +17150,526 @@
     "bankName": "activity_shiji3_8_sfx_fuyong"
   },
   {
+    "id": 28550001,
+    "eventName": "play_activitysfx_langchao_three_footsteps",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550002,
+    "eventName": "play_activitysfx_langchao_maglev_interior",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550003,
+    "eventName": "play_activitysfx_langchao_maglev_external",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550004,
+    "eventName": "play_activitysfx_langchao_aerial_flyby",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550005,
+    "eventName": "play_activitysfx_langchao_aerial_flyby_close",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550006,
+    "eventName": "play_activitysfx_langchao_maglev_external_loop",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550007,
+    "eventName": "play_activitysfx_langchao_maglev_slow_down",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550008,
+    "eventName": "play_activitysfx_langchao_crowd_dispersed",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550009,
+    "eventName": "play_activitysfx_langchao_mechanical",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550010,
+    "eventName": "play_activitysfx_langchao_ready_take_off",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550011,
+    "eventName": "play_activitysfx_langchao_push_hard",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550012,
+    "eventName": "play_activitysfx_langchao_crowd_hurriedly",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550013,
+    "eventName": "play_activitysfx_langchao_applause",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550014,
+    "eventName": "play_activitysfx_langchao_cylinder_rising",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550015,
+    "eventName": "play_activitysfx_langchao_worksho",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550016,
+    "eventName": "play_activitysfx_langchao_electricity_crackling",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550017,
+    "eventName": "play_activitysfx_langchao_stalks_sway",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550018,
+    "eventName": "play_activitysfx_langchao_facility_noise",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550019,
+    "eventName": "play_activitysfx_langchao_alarm_bell",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550020,
+    "eventName": "play_activitysfx_langchao_powerdown_explode",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550021,
+    "eventName": "play_activitysfx_langchao_pull_protective_door",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550022,
+    "eventName": "play_activitysfx_langchao_gate_closed_turn",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550023,
+    "eventName": "play_activitysfx_langchao_head_hit_wall",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550024,
+    "eventName": "play_activitysfx_langchao_chirp_table",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550025,
+    "eventName": "play_activitysfx_langchao_terrified",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550026,
+    "eventName": "play_activitysfx_langchao_robots_run",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550027,
+    "eventName": "play_activitysfx_langchao_vova_reach",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550028,
+    "eventName": "play_activitysfx_langchao_hammer_strikes",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550029,
+    "eventName": "play_activitysfx_langchao_pull_heavy_objects",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550030,
+    "eventName": "play_activitysfx_langchao_deploy_landmines",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550031,
+    "eventName": "play_activitysfx_langchao_break_door",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550032,
+    "eventName": "play_activitysfx_langchao_shotgun",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550033,
+    "eventName": "play_activitysfx_langchao_shotgun_continuous",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550034,
+    "eventName": "play_activitysfx_langchao_huge_explosion",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550035,
+    "eventName": "play_activitysfx_langchao_kick_metal_objects",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550036,
+    "eventName": "play_activitysfx_langchao_load_shotgun",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550037,
+    "eventName": "play_activitysfx_langchao_run_quickly",
+    "bankName": "activitysfx_langchao_s02_sfx_part01"
+  },
+  {
+    "id": 28550038,
+    "eventName": "play_activitysfx_langchao_zharoubao_appear",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550039,
+    "eventName": "play_activitysfx_langchao_robot_search",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550040,
+    "eventName": "play_activitysfx_langchao_zharoubao_run",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550041,
+    "eventName": "play_activitysfx_langchao_zharoubao_stone_close",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550042,
+    "eventName": "play_activitysfx_langchao_zharoubao_stone_distance",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550043,
+    "eventName": "play_activitysfx_langchao_walk_carefully",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550044,
+    "eventName": "play_activitysfx_langchao_fly_cabin_landed",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550045,
+    "eventName": "play_activitysfx_langchao_loading_gun",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550046,
+    "eventName": "play_activitysfx_langchao_alarm_clock_left",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550047,
+    "eventName": "play_activitysfx_langchao_alarm_clock_right",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550048,
+    "eventName": "play_activitysfx_langchao_alarm_clock",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550049,
+    "eventName": "play_activitysfx_langchao_grenade_blast",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550050,
+    "eventName": "play_activitysfx_langchao_zharoubao_shatter",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550051,
+    "eventName": "play_activitysfx_langchao_shoes_scorching",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550052,
+    "eventName": "play_activitysfx_langchao_mechanical_reformation",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550053,
+    "eventName": "play_activitysfx_langchao_zharoubao_launch",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550054,
+    "eventName": "play_activitysfx_langchao_zharoubao_crouch",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550055,
+    "eventName": "play_activitysfx_langchao_cabin_takes_off",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550056,
+    "eventName": "play_activitysfx_langchao_chase_battle",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550057,
+    "eventName": "play_activitysfx_langchao_device_activated",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550058,
+    "eventName": "play_activitysfx_langchao_heavy_object_falls",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550059,
+    "eventName": "play_activitysfx_langchao_mechanical_impact",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550060,
+    "eventName": "play_activitysfx_langchao_remove_plastic",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550061,
+    "eventName": "play_activitysfx_langchao_tighten",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550062,
+    "eventName": "play_activitysfx_langchao_spark",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550063,
+    "eventName": "play_activitysfx_langchao_bullet_body",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550064,
+    "eventName": "play_activitysfx_langchao_knead_ball",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550065,
+    "eventName": "play_activitysfx_langchao_grandfather_clock",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550066,
+    "eventName": "play_activitysfx_langchao_minute_ticks",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550067,
+    "eventName": "play_activitysfx_langchao_turn_back_time",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550068,
+    "eventName": "play_activitysfx_langchao_funeral_bell_tolling",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550069,
+    "eventName": "play_activitysfx_langchao_drawer_open_close",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550070,
+    "eventName": "play_activitysfx_langchao_fork_shaking",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550071,
+    "eventName": "play_activitysfx_langchao_watch_dropped",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550072,
+    "eventName": "play_activitysfx_langchao_celebration",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550073,
+    "eventName": "play_activitysfx_langchao_robot_hovering",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550074,
+    "eventName": "play_activitysfx_langchao_marching_formation",
+    "bankName": "activitysfx_langchao_s02_sfx_part02"
+  },
+  {
+    "id": 28550075,
+    "eventName": "play_activitysfx_langchao_chess_jump_01",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550076,
+    "eventName": "play_activitysfx_langchao_chess_jump_02",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550077,
+    "eventName": "play_activitysfx_langchao_chess_jump_03",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550078,
+    "eventName": "play_activitysfx_langchao_chess_jump_04",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550079,
+    "eventName": "play_activitysfx_langchao_door_open",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550080,
+    "eventName": "play_activitysfx_langchao_door_close",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550081,
+    "eventName": "play_activitysfx_langchao_thought_controller",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550082,
+    "eventName": "play_activitysfx_langchao_hat",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550083,
+    "eventName": "play_activitysfx_langchao_hat_fireworks",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550084,
+    "eventName": "play_activitysfx_langchao_tentacle",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550085,
+    "eventName": "play_activitysfx_langchao_tentacles_out",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550086,
+    "eventName": "play_activitysfx_langchao_close_refrigerator",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550087,
+    "eventName": "play_activitysfx_langchao_cover_current",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550088,
+    "eventName": "play_activitysfx_langchao_cover_cracks",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550089,
+    "eventName": "play_activitysfx_langchao_cover_broken",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550090,
+    "eventName": "play_activitysfx_langchao_screech_01",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550091,
+    "eventName": "play_activitysfx_langchao_screech_02",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550092,
+    "eventName": "play_activitysfx_langchao_screech_03",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550093,
+    "eventName": "play_activitysfx_langchao_screech_04",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550094,
+    "eventName": "play_activitysfx_langchao_screech_05",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550095,
+    "eventName": "play_activitysfx_langchao_screech_06",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550096,
+    "eventName": "play_activitysfx_langchao_crazy_01",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550097,
+    "eventName": "play_activitysfx_langchao_crazy_02",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550098,
+    "eventName": "play_activitysfx_langchao_stone_fell",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550099,
+    "eventName": "play_activitysfx_langchao_disintegrated",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550100,
+    "eventName": "play_activitysfx_langchao_communicator_01",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550101,
+    "eventName": "play_activitysfx_langchao_communicator_02",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550102,
+    "eventName": "play_activitysfx_langchao_communicator_damage",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550103,
+    "eventName": "play_activitysfx_langchao_chirp_tables",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550104,
+    "eventName": "play_activitysfx_langchao_chirp_table_echo",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
     "id": 530053,
     "eventName": "play_activitymusic_thememusic_full_2_0",
     "bankName": "activity2_0_music"
@@ -17648,6 +18168,56 @@
     "id": 38530004,
     "eventName": "play_ui_dungeon_music_main",
     "bankName": "dungeon_1_6_music"
+  },
+  {
+    "id": 38553001,
+    "eventName": "play_activitymusic_theme_s02",
+    "bankName": "activity_s02_music"
+  },
+  {
+    "id": 38553002,
+    "eventName": "play_activitymusic_1_limbo_s02",
+    "bankName": "activity_s02_music"
+  },
+  {
+    "id": 38553003,
+    "eventName": "play_activitymusic_2_danger_s02",
+    "bankName": "activity_s02_music"
+  },
+  {
+    "id": 38553004,
+    "eventName": "play_activitymusic_3_database_s02",
+    "bankName": "activity_s02_music"
+  },
+  {
+    "id": 38553005,
+    "eventName": "play_activitymusic_4_nora_s02",
+    "bankName": "activity_s02_music"
+  },
+  {
+    "id": 38553006,
+    "eventName": "play_activitymusic_5_zharoubao_s02",
+    "bankName": "activity_s02_music"
+  },
+  {
+    "id": 38553007,
+    "eventName": "play_activitymusic_6_doubt_s02",
+    "bankName": "activity_s02_music"
+  },
+  {
+    "id": 38553008,
+    "eventName": "play_activitymusic_7_limbo_peace_s02",
+    "bankName": "activity_s02_music"
+  },
+  {
+    "id": 38553009,
+    "eventName": "play_activitymusic_8_sacrifice_s02",
+    "bankName": "activity_s02_music"
+  },
+  {
+    "id": 38553010,
+    "eventName": "play_activitymusic_9_flower_waltz_s02",
+    "bankName": "activity_s02_music"
   },
   {
     "id": 520105,
@@ -18398,6 +18968,41 @@
     "id": 38520009,
     "eventName": "play_shiji3_8_pv_sfx_vo_music",
     "bankName": "shiji3_8_cutscene_sfx_vo"
+  },
+  {
+    "id": 38552001,
+    "eventName": "play_langchaos02_cutscene_3826_sfx",
+    "bankName": "langchaos02_cutscene_sfx_vo"
+  },
+  {
+    "id": 38552002,
+    "eventName": "play_langchaos02_cutscene_twindancers_sacrifice",
+    "bankName": "langchaos02_cutscene_sfx_vo"
+  },
+  {
+    "id": 38552003,
+    "eventName": "play_activitysfx_langchao_chapter_open",
+    "bankName": "activitysfx_langchao_s02_sfx"
+  },
+  {
+    "id": 38552004,
+    "eventName": "play_activitysfx_langchao_subsection_open",
+    "bankName": "activitysfx_langchao_s02_sfx"
+  },
+  {
+    "id": 38552005,
+    "eventName": "play_activitysfx_langchao_chapter_continue",
+    "bankName": "activitysfx_langchao_s02_sfx"
+  },
+  {
+    "id": 38552006,
+    "eventName": "play_activitysfx_langchao_prologue_open",
+    "bankName": "activitysfx_langchao_s02_sfx"
+  },
+  {
+    "id": 38552007,
+    "eventName": "play_langchao_s02_pv_sfx_vo_music",
+    "bankName": "langchaos02_cutscene_sfx_vo"
   },
   {
     "id": 20530011,

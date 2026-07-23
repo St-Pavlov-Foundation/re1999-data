@@ -79,6 +79,7 @@ JumpEnum.JumpView = {
 	VersionEnterView = 110,
 	V1a6Dungeon = 1601,
 	LaplaceChatRoom = 10013418,
+	AtomicDungeon = 232,
 	Turnback = 104,
 	Achievement = 30,
 	ActivityView = 100,

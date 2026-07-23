@@ -12,6 +12,7 @@ function FightViewCardItem:ctor(handCardType)
 end
 
 function FightViewCardItem:init(go)
+	self.classComp = FightGameMgr.playMgr:newClass(FightBaseClass)
 	self.useSkin = false
 
 	if self.handCardType == FightEnum.CardShowType.HandCard or self.handCardType == FightEnum.CardShowType.Operation or self.handCardType == FightEnum.CardShowType.PlayCard then
@@ -547,6 +548,7 @@ function FightViewCardItem:updateItem(entityId, skillId, cardInfoMO, updateFromT
 	self:refreshAssistRoleIcon()
 	self:refreshBaiFuZhangWheelCard()
 	self:refreshUnnamedUi(updateFromType)
+	self:refreshRefrigeratorEffect()
 	self:refreshEnchantText()
 end
 
@@ -1201,6 +1203,25 @@ function FightViewCardItem:hidePrecisionEffect()
 	gohelper.setActive(self._precisionEffect, false)
 end
 
+function FightViewCardItem:refreshRefrigeratorEffect()
+	local hasRefrigerator = false
+
+	if self._cardInfoMO and self._cardInfoMO.enchants then
+		for i, v in ipairs(self._cardInfoMO.enchants) do
+			if v.enchantId == FightEnum.EnchantedType.Refrigerator then
+				self.refrigeratorEffect = self.refrigeratorEffect or self.classComp:newClass(FightViewCardItemRefrigeratorEffect, v, self)
+				hasRefrigerator = true
+			end
+		end
+	end
+
+	if not hasRefrigerator and self.refrigeratorEffect then
+		self.refrigeratorEffect:disposeSelf()
+
+		self.refrigeratorEffect = nil
+	end
+end
+
 local enchantId2EffectPath = {
 	[FightEnum.EnchantedType.Frozen] = "ui/viewres/fight/card_freeze.prefab",
 	[FightEnum.EnchantedType.Burn] = "ui/viewres/fight/card_flaring.prefab",
@@ -1577,6 +1598,10 @@ function FightViewCardItem:dissolveCard(scale, tarGameObject, dissolveDoneCallba
 		return self:disappearCard(dissolveDoneCallback, dissolveDoneCallbackObj)
 	end
 
+	if self._cardInfoMO and self._cardInfoMO.clientData and self._cardInfoMO.clientData.custom_addToRefrigerator then
+		return self:addCard2Refrigerator(dissolveDoneCallback, dissolveDoneCallbackObj)
+	end
+
 	self:setASFDActive(false)
 	self:revertASFDSkillAnimator()
 
@@ -1665,6 +1690,22 @@ function FightViewCardItem:doDisappearDoneCallback()
 	if callback then
 		callback(callbackObj)
 	end
+end
+
+function FightViewCardItem:addCard2Refrigerator(dissolveDoneCallback, dissolveDoneCallbackObj)
+	self:setASFDActive(false)
+	self:revertASFDSkillAnimator()
+
+	local flow = self.classComp:com_registFlowSequence()
+
+	flow:registFinishCallback(self.doDissolveDoneCallback, self)
+	flow:registWork(FightCardDissolveByRefrigeratorEffect, self.go)
+
+	self.dissolveDoneCallback = dissolveDoneCallback
+	self.dissolveDoneCallbackObj = dissolveDoneCallbackObj
+
+	self:_hideAllEffect()
+	flow:start()
 end
 
 function FightViewCardItem:revertASFDSkillAnimator()
@@ -2108,6 +2149,12 @@ function FightViewCardItem:onDestroy()
 	TaskDispatcher.cancelTask(self.onLorentzLvChangeDone, self)
 	self.simageRouge2SkillIcon:UnLoadImage()
 	self:clearDeviceAnim()
+
+	if self.classComp then
+		self.classComp:disposeSelf()
+
+		self.classComp = nil
+	end
 
 	if self._loader then
 		self._loader:disposeSelf()

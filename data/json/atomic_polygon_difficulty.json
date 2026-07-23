@@ -1,0 +1,167 @@
+[
+  {
+    "id": 101,
+    "difficulty": 1,
+    "conditionType": 0,
+    "unlockCondition": "finish#101015",
+    "image": "polygonfight1",
+    "name": "试验场1-1",
+    "description": "同志！喷射铺好\n让他们焦巴脆",
+    "episodeId": 38550111,
+    "skillId": "1001#3001"
+  },
+  {
+    "id": 101,
+    "difficulty": 2,
+    "conditionType": 1,
+    "unlockCondition": "targetPolygon#101#1|arbitraryPolygon#3",
+    "image": "polygonfight1",
+    "name": "试验场1-2",
+    "description": "同志！喷射铺好\n让他们焦巴脆",
+    "episodeId": 38550112,
+    "skillId": "1001#3001"
+  },
+  {
+    "id": 101,
+    "difficulty": 3,
+    "conditionType": 1,
+    "unlockCondition": "targetPolygon#101#2|arbitraryPolygon#3",
+    "image": "polygonfight1",
+    "name": "试验场1-3",
+    "description": "同志！难度提升\n可别焦巴脆了！",
+    "episodeId": 38550113,
+    "skillId": "1001#3001"
+  },
+  {
+    "id": 102,
+    "difficulty": 1,
+    "conditionType": 0,
+    "unlockCondition": "finish#102014",
+    "image": "polygonfight2",
+    "name": "试验场2-1",
+    "description": "同志！先冻透\n维修就报废",
+    "episodeId": 38550121,
+    "skillId": "2001#3001"
+  },
+  {
+    "id": 102,
+    "difficulty": 2,
+    "conditionType": 1,
+    "unlockCondition": "targetPolygon#102#1|arbitraryPolygon#3",
+    "image": "polygonfight2",
+    "name": "试验场2-2",
+    "description": "同志！先冻透\n维修就报废",
+    "episodeId": 38550122,
+    "skillId": "2001#3001"
+  },
+  {
+    "id": 102,
+    "difficulty": 3,
+    "conditionType": 1,
+    "unlockCondition": "targetPolygon#102#2|arbitraryPolygon#3",
+    "image": "polygonfight2",
+    "name": "试验场2-3",
+    "description": "同志！难度提升\n可别被报废了！",
+    "episodeId": 38550123,
+    "skillId": "2001#3001"
+  },
+  {
+    "id": 103,
+    "difficulty": 1,
+    "conditionType": 0,
+    "unlockCondition": "finish#103017",
+    "image": "polygonfight3",
+    "name": "试验场3-1",
+    "description": "同志！先电麻\n再让它自己挨打",
+    "episodeId": 38550131,
+    "skillId": "1001#4001"
+  },
+  {
+    "id": 103,
+    "difficulty": 2,
+    "conditionType": 1,
+    "unlockCondition": "targetPolygon#103#1|arbitraryPolygon#3",
+    "image": "polygonfight3",
+    "name": "试验场3-2",
+    "description": "同志！先电麻\n再让它自己挨打",
+    "episodeId": 38550132,
+    "skillId": "1001#4001"
+  },
+  {
+    "id": 103,
+    "difficulty": 3,
+    "conditionType": 1,
+    "unlockCondition": "targetPolygon#103#2|arbitraryPolygon#3",
+    "image": "polygonfight3",
+    "name": "试验场3-3",
+    "description": "同志！难度提升\n可别被打爆了！",
+    "episodeId": 38550133,
+    "skillId": "1001#4001"
+  },
+  {
+    "id": 104,
+    "difficulty": 1,
+    "conditionType": 0,
+    "unlockCondition": "finish#104015",
+    "image": "polygonfight4",
+    "name": "试验场4-1",
+    "description": "同志！降降温\n暴击会手软",
+    "episodeId": 38550141,
+    "skillId": "2001#4001"
+  },
+  {
+    "id": 104,
+    "difficulty": 2,
+    "conditionType": 1,
+    "unlockCondition": "targetPolygon#104#1|arbitraryPolygon#3",
+    "image": "polygonfight4",
+    "name": "试验场4-2",
+    "description": "同志！降降温\n暴击会手软",
+    "episodeId": 38550142,
+    "skillId": "2001#4001"
+  },
+  {
+    "id": 104,
+    "difficulty": 3,
+    "conditionType": 1,
+    "unlockCondition": "targetPolygon#104#2|arbitraryPolygon#3",
+    "image": "polygonfight4",
+    "name": "试验场4-3",
+    "description": "同志！难度提升\n千万别手软！",
+    "episodeId": 38550143,
+    "skillId": "2001#4001"
+  },
+  {
+    "id": 105,
+    "difficulty": 1,
+    "conditionType": 0,
+    "unlockCondition": "finish#105015",
+    "image": "polygonfight5",
+    "name": "试验场5-1",
+    "description": "同志！电击冰块\n装甲才好碎",
+    "episodeId": 38550151,
+    "skillId": "1001#2001"
+  },
+  {
+    "id": 105,
+    "difficulty": 2,
+    "conditionType": 1,
+    "unlockCondition": "targetPolygon#105#1|arbitraryPolygon#3",
+    "image": "polygonfight5",
+    "name": "试验场5-2",
+    "description": "同志！电击冰块\n装甲才好碎",
+    "episodeId": 38550152,
+    "skillId": "1001#2001"
+  },
+  {
+    "id": 105,
+    "difficulty": 3,
+    "conditionType": 1,
+    "unlockCondition": "targetPolygon#105#2|arbitraryPolygon#3",
+    "image": "polygonfight5",
+    "name": "试验场5-3",
+    "description": "同志！难度提升\n多动动脑筋！",
+    "episodeId": 38550153,
+    "skillId": "1001#2001"
+  }
+]

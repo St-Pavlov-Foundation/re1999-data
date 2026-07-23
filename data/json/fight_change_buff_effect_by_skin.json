@@ -306,15 +306,6 @@
     "audio": 431390341
   },
   {
-    "effectPath": "v3a5_llzhd/llzhd_innate",
-    "target": 2,
-    "skinId": 313903,
-    "changedPath": "v3a8_llzhd/llzhd_innate",
-    "duration": 0.0,
-    "effectHangPoint": "mountbody",
-    "audio": 431390341
-  },
-  {
     "effectPath": "buff_hudun_fire_01",
     "target": 2,
     "skinId": 309403,
@@ -340,5 +331,41 @@
     "duration": 0.0,
     "effectHangPoint": "mountbottom",
     "audio": 430250401
+  },
+  {
+    "effectPath": "v1a8_bfsg/bfsg_start",
+    "target": 1,
+    "skinId": 307705,
+    "changedPath": "buff/pre_s02_bfsg_buff",
+    "duration": 0.0,
+    "effectHangPoint": "special3",
+    "audio": 0
+  },
+  {
+    "effectPath": "buff/nimengdishi_innate_01",
+    "target": 1,
+    "skinId": 303904,
+    "changedPath": "s02_nmds/nmds_innate_01",
+    "duration": 0.0,
+    "effectHangPoint": "mountroot",
+    "audio": 0
+  },
+  {
+    "effectPath": "buff/nimengdishi_innate_02",
+    "target": 1,
+    "skinId": 303904,
+    "changedPath": "s02_nmds/nmds_innate_02",
+    "duration": 0.0,
+    "effectHangPoint": "mountroot",
+    "audio": 0
+  },
+  {
+    "effectPath": "v3a0_mlan/mlan_innate_2_01",
+    "target": 1,
+    "skinId": 312606,
+    "changedPath": "s02_mlan/mlan_innate_2",
+    "duration": 0.0,
+    "effectHangPoint": "mountroot",
+    "audio": 431260651
   }
 ]

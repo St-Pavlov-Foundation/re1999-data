@@ -347,8 +347,10 @@ function VersionActivity2_3NewCultivationDetailView:_refreshEffectInfo(heroId)
 				return destinyIdDict[destinyIdA]
 			end
 
-			return destinyIdB < destinyIdA
+			return VersionActivity2_3NewCultivationDetailView._sortIdFunc(destinyIdA, destinyIdB)
 		end)
+	else
+		table.sort(destinyIds, VersionActivity2_3NewCultivationDetailView._sortIdFunc)
 	end
 
 	for i, destinyId in ipairs(destinyIds) do
@@ -420,6 +422,12 @@ function VersionActivity2_3NewCultivationDetailView:_create_VersionActivity2_3Ne
 	item:init(go)
 
 	return item
+end
+
+function VersionActivity2_3NewCultivationDetailView._sortIdFunc(idA, idB)
+	if idA ~= idB then
+		return idB < idA
+	end
 end
 
 return VersionActivity2_3NewCultivationDetailView

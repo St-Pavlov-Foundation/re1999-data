@@ -170,8 +170,7 @@ function StoryEffectItem:_doResetParticleStencil()
 end
 
 function StoryEffectItem:_playFollowBg()
-	self._bgGo = StoryViewMgr.instance:getStoryFrontBgGo()
-	self._bgFrontGo = gohelper.findChild(self._bgGo, "#simage_bgimg")
+	self._bgFrontGo = StoryViewMgr.instance:getStoryFrontBgImgGo()
 
 	local frontTransX, frontTransY = transformhelper.getLocalPos(self._bgFrontGo.transform)
 
@@ -191,7 +190,8 @@ function StoryEffectItem:_playFollowBg()
 end
 
 function StoryEffectItem:_followBg()
-	local scaleX, scaleY = transformhelper.getLocalScale(self._bgGo.transform)
+	local bgGo = StoryViewMgr.instance:getStoryFrontBgGo()
+	local scaleX, scaleY = transformhelper.getLocalScale(bgGo.transform)
 	local frontTransX, frontTransY = transformhelper.getLocalPos(self._bgFrontGo.transform)
 	local posX = scaleX * (self._deltaPos[1] + frontTransX - self._initFrontPos[1])
 	local posY = scaleY * (self._deltaPos[2] + frontTransY - self._initFrontPos[2])
@@ -280,10 +280,12 @@ function StoryEffectItem:_effFinished()
 	self:onDestroy()
 end
 
-function StoryEffectItem:destroyEffect(effCo)
+function StoryEffectItem:destroyEffect(effCo, param)
 	if effCo then
 		self._effectCo = effCo
 	end
+
+	self._destroyParam = param
 
 	TaskDispatcher.cancelTask(self._buildNormalEffect, self)
 
@@ -296,6 +298,11 @@ end
 
 function StoryEffectItem:onDestroy()
 	TaskDispatcher.cancelTask(self._effFinished, self)
+
+	if self._destroyParam then
+		self._destroyParam.callback(self._destroyParam.callbackObj, self._effectPath)
+	end
+
 	TaskDispatcher.cancelTask(self._buildNormalEffect, self)
 	TaskDispatcher.cancelTask(self._followBg, self)
 

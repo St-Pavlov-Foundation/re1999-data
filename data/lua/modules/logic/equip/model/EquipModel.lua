@@ -117,6 +117,124 @@ function EquipModel:isLimitAndAlreadyHas(id)
 	return hasEquipNum >= equipCfg.upperLimit
 end
 
+function EquipModel:isAllUnlockTwinssychubeEquip()
+	for _, id in ipairs(CharacterEnum.TwinssychubeEquip) do
+		local haveEquip = self:haveEquip(id)
+
+		if not haveEquip then
+			return false
+		end
+	end
+
+	return true
+end
+
+function EquipModel:isEuipedTwinssychubeEquip(heroMo)
+	local equipMo = heroMo and (heroMo:getTrialEquipMo() or self:getEquip(heroMo.defaultEquipUid))
+
+	for _, id in ipairs(CharacterEnum.TwinssychubeEquip) do
+		if equipMo and equipMo.config.id == id then
+			return true
+		end
+	end
+end
+
+function EquipModel:isActivateTwinssychubeEquip(heroMo, equipMo)
+	equipMo = equipMo or heroMo and (heroMo:getTrialEquipMo() or self:getEquip(heroMo.defaultEquipUid))
+
+	local isEquiped = false
+
+	for _, id in ipairs(CharacterEnum.TwinssychubeEquip) do
+		local haveEquip = self:haveEquip(id)
+
+		if not haveEquip then
+			return false
+		end
+
+		if equipMo and equipMo.config.id == id then
+			isEquiped = true
+		end
+	end
+
+	return isEquiped
+end
+
+function EquipModel:getTwinssychubeEquipMo(id)
+	if not self._twinssychubeEquipMos then
+		self._twinssychubeEquipMos = {}
+	end
+
+	local equipMo = self._twinssychubeEquipMos[id]
+
+	if equipMo then
+		local _mo = self:getEquip(equipMo.uid)
+
+		if _mo and _mo.equipId == id then
+			return equipMo
+		end
+	end
+
+	local mos = self:getEquips()
+
+	if mos then
+		for _, mo in ipairs(mos) do
+			if mo.equipId == id then
+				self._twinssychubeEquipMos[id] = mo
+
+				return mo
+			end
+		end
+	end
+end
+
+function EquipModel:getOtherTwinssychubeEquipId(id)
+	if id == CharacterEnum.TwinssychubeEquip[1] then
+		return CharacterEnum.TwinssychubeEquip[2]
+	end
+
+	if id == CharacterEnum.TwinssychubeEquip[2] then
+		return CharacterEnum.TwinssychubeEquip[1]
+	end
+end
+
+function EquipModel:refreshShowActivateDoubleTip()
+	local heroId = CharacterEnum.TwinssychubeHeroId
+	local heroMo = HeroModel.instance:getByHeroId(heroId)
+
+	if heroMo and not self:isShowActivateDoubleTip() and not self:isActivateTwinssychubeEquip(heroMo) then
+		self:setShowActivateDoubleTip(true)
+		self:setPlayDoubleUnlockAnim(true)
+	end
+end
+
+function EquipModel:isShowActivateDoubleTip()
+	local heroId = CharacterEnum.TwinssychubeHeroId
+	local heroMo = HeroModel.instance:getByHeroId(heroId)
+	local isShowTip = GameUtil.playerPrefsGetNumberByUserId("ShowActivateDoubleTip_" .. heroId, 0) == 0
+
+	return isShowTip and heroMo and self:isActivateTwinssychubeEquip(heroMo)
+end
+
+function EquipModel:setShowActivateDoubleTip(isShow)
+	local heroId = CharacterEnum.TwinssychubeHeroId
+
+	GameUtil.playerPrefsSetNumberByUserId("ShowActivateDoubleTip_" .. heroId, isShow and 0 or 1)
+end
+
+function EquipModel:isPlayDoubleUnlockAnim()
+	local heroId = CharacterEnum.TwinssychubeHeroId
+	local heroMo = HeroModel.instance:getByHeroId(heroId)
+	local isShowTip = GameUtil.playerPrefsGetNumberByUserId("PlayDoubleUnlockAnim_" .. heroId, 0) == 0
+
+	return isShowTip and heroMo and self:isActivateTwinssychubeEquip(heroMo)
+end
+
+function EquipModel:setPlayDoubleUnlockAnim(isShow)
+	local heroId = CharacterEnum.TwinssychubeHeroId
+
+	GameUtil.playerPrefsSetNumberByUserId("PlayDoubleUnlockAnim_" .. heroId, isShow and 0 or 1)
+end
+
 EquipModel.instance = EquipModel.New()
 
 return EquipModel

@@ -4749,5 +4749,45 @@
     "levels": [
       11610
     ]
+  },
+  {
+    "id": 37801,
+    "name": "聚合物展览馆·走廊",
+    "nameen": "Hallway, Polymer Exhibition Hall",
+    "levels": [
+      37801
+    ]
+  },
+  {
+    "id": 37901,
+    "name": "金色原野",
+    "nameen": "Golden Fields",
+    "levels": [
+      37901
+    ]
+  },
+  {
+    "id": 38001,
+    "name": "聚合物展览馆·装配间",
+    "nameen": "Assembly Room, Polymer Exhibition Hall",
+    "levels": [
+      38001
+    ]
+  },
+  {
+    "id": 38101,
+    "name": "聚合物展览馆·能源室",
+    "nameen": "Power Control Room, Polymer Exhibition Hall",
+    "levels": [
+      38101
+    ]
+  },
+  {
+    "id": 38201,
+    "name": "潜意识世界",
+    "nameen": "Maxim's Subconsciousness",
+    "levels": [
+      38201
+    ]
   }
 ]

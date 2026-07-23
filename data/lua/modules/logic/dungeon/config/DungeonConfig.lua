@@ -1147,15 +1147,19 @@ function DungeonConfig:_initVersionActivityEpisodeList()
 		VersionActivity3_6DungeonEnum.DungeonChapterId.Story2,
 		VersionActivity3_6DungeonEnum.DungeonChapterId.Story3,
 		VersionActivity3_8DungeonEnum.DungeonChapterId.Story2,
-		VersionActivity3_8DungeonEnum.DungeonChapterId.Story3
+		VersionActivity3_8DungeonEnum.DungeonChapterId.Story3,
+		VersionActivity3_10DungeonEnum.DungeonChapterId.Story2,
+		VersionActivity3_10DungeonEnum.DungeonChapterId.Story3
 	}
 	local chapterEpisodeList
 
 	for _, chapterId in ipairs(chapterIdList) do
 		chapterEpisodeList = self._chapterEpisodeDict[chapterId]
 
-		for _, episodeCo in ipairs(chapterEpisodeList) do
-			self.versionActivityPreEpisodeDict[episodeCo.preEpisode] = episodeCo
+		if chapterEpisodeList then
+			for _, episodeCo in ipairs(chapterEpisodeList) do
+				self.versionActivityPreEpisodeDict[episodeCo.preEpisode] = episodeCo
+			end
 		end
 	end
 end

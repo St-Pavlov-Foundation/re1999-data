@@ -5858,5 +5858,130 @@
     "id": 923800047,
     "eventName": "play_battle_plot38_npcnoname346_17",
     "bankName": "npcnoname346_level_shiji3_8"
+  },
+  {
+    "id": 923850001,
+    "eventName": "play_level_plots02_npc650503_1",
+    "bankName": "npc650503_level_langchao_s02"
+  },
+  {
+    "id": 923850002,
+    "eventName": "play_level_plots02_npc650503_2",
+    "bankName": "npc650503_level_langchao_s02"
+  },
+  {
+    "id": 923850003,
+    "eventName": "play_level_plots02_hero3057_3",
+    "bankName": "hero3057_level_langchao_s02"
+  },
+  {
+    "id": 923850004,
+    "eventName": "play_level_plots02_hero3010_4",
+    "bankName": "hero3010_level_langchao_s02"
+  },
+  {
+    "id": 923850005,
+    "eventName": "play_level_plots02_npc650503_5",
+    "bankName": "npc650503_level_langchao_s02"
+  },
+  {
+    "id": 923850006,
+    "eventName": "play_level_plots02_npc650503_6",
+    "bankName": "npc650503_level_langchao_s02"
+  },
+  {
+    "id": 923850007,
+    "eventName": "play_battle_plots02_hero3057_1",
+    "bankName": "hero3057_level_langchao_s02"
+  },
+  {
+    "id": 923850008,
+    "eventName": "play_battle_plots02_hero5043_2",
+    "bankName": "hero5043_level_langchao_s02"
+  },
+  {
+    "id": 923850009,
+    "eventName": "play_battle_plots02_npc652103_3",
+    "bankName": "npc652103_level_langchao_s02"
+  },
+  {
+    "id": 923850010,
+    "eventName": "play_battle_plots02_hero5043_4",
+    "bankName": "hero5043_level_langchao_s02"
+  },
+  {
+    "id": 923850011,
+    "eventName": "play_battle_plots02_hero3057_5",
+    "bankName": "hero3057_level_langchao_s02"
+  },
+  {
+    "id": 923850012,
+    "eventName": "play_battle_plots02_npc652103_6",
+    "bankName": "npc652103_level_langchao_s02"
+  },
+  {
+    "id": 923850013,
+    "eventName": "play_battle_plots02_hero5043_7",
+    "bankName": "hero5043_level_langchao_s02"
+  },
+  {
+    "id": 923850014,
+    "eventName": "play_battle_plots02_hero3010_8",
+    "bankName": "hero3010_level_langchao_s02"
+  },
+  {
+    "id": 923850015,
+    "eventName": "play_battle_plots02_hero5043_9",
+    "bankName": "hero5043_level_langchao_s02"
+  },
+  {
+    "id": 923850016,
+    "eventName": "play_battle_plots02_hero3149a_10",
+    "bankName": "hero3149a_level_langchao_s02"
+  },
+  {
+    "id": 923850017,
+    "eventName": "play_battle_plots02_hero3149a_11",
+    "bankName": "hero3149a_level_langchao_s02"
+  },
+  {
+    "id": 923850018,
+    "eventName": "play_battle_plots02_hero3057_12",
+    "bankName": "hero3057_level_langchao_s02"
+  },
+  {
+    "id": 923850019,
+    "eventName": "play_battle_plots02_hero3010_13",
+    "bankName": "hero3010_level_langchao_s02"
+  },
+  {
+    "id": 923850020,
+    "eventName": "play_battle_plots02_hero3149a_14",
+    "bankName": "hero3149a_level_langchao_s02"
+  },
+  {
+    "id": 923850021,
+    "eventName": "play_battle_plots02_hero3149a_15",
+    "bankName": "hero3149a_level_langchao_s02"
+  },
+  {
+    "id": 923850022,
+    "eventName": "play_battle_plots02_hero3149a_16",
+    "bankName": "hero3149a_level_langchao_s02"
+  },
+  {
+    "id": 923850023,
+    "eventName": "play_battle_plots02_hero3149a_17",
+    "bankName": "hero3149a_level_langchao_s02"
+  },
+  {
+    "id": 923850024,
+    "eventName": "play_battle_plots02_npc652103_18",
+    "bankName": "npc652103_level_langchao_s02"
+  },
+  {
+    "id": 923850025,
+    "eventName": "play_battle_plots02_hero5043_19",
+    "bankName": "hero5043_level_langchao_s02"
   }
 ]

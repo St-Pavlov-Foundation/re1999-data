@@ -70,6 +70,7 @@ ModuleEnum.HeroGroupSnapshotType = {
 	TowerPermanentAndLimit = 10,
 	Abyss = 19,
 	Rouge2 = 20,
+	AtomicDungeon = 21,
 	TowerBoss = 11,
 	TowerComposeBoss = 18,
 	Act183Normal = 12,

@@ -181,6 +181,28 @@ function SummonRpc:onReceiveInfallibleSummonReply(resultCode, msg)
 	SummonController.instance:dispatchEvent(SummonEvent.onReceiveSummonReply, msg)
 end
 
+function SummonRpc:sendSelectSummonchoosableRewardRequest(poolId, progress, chooseIndex, callback, callbackObj)
+	local req = SummonModule_pb.SelectSummonchoosableRewardRequest()
+
+	req.poolId = poolId
+	req.progress = progress
+	req.chooseIndex = chooseIndex
+
+	self:sendMsg(req, callback, callbackObj)
+end
+
+function SummonRpc:onReceiveSelectSummonchoosableRewardReply(resultCode, msg)
+	if resultCode ~= 0 then
+		return
+	end
+
+	local poolId = msg.poolId
+	local progress = msg.progress
+	local chooseIndex = msg.chooseIndex
+
+	SummonController.instance:summonOptionProgressRewards(msg)
+end
+
 SummonRpc.instance = SummonRpc.New()
 
 return SummonRpc

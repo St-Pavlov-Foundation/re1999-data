@@ -276,14 +276,16 @@ end
 function StoreHelper.getRemainExpireTimeByStoreId(storeId)
 	local deadlineTimeSec = 0
 	local storeMo = StoreModel.instance:getStoreMO(storeId)
-	local goods = storeMo:getGoodsList()
+	local goods = storeMo and storeMo:getGoodsList()
 
-	for _, v in pairs(goods) do
-		if not string.nilorempty(v.config.offlineTime) and type(v.config.offlineTime) == "string" then
-			local curGoodDeadlineTimeSec = TimeUtil.stringToTimestamp(v.config.offlineTime) - ServerTime.now()
+	if goods and next(goods) then
+		for _, v in pairs(goods) do
+			if not string.nilorempty(v.config.offlineTime) and type(v.config.offlineTime) == "string" then
+				local curGoodDeadlineTimeSec = TimeUtil.stringToTimestamp(v.config.offlineTime) - ServerTime.now()
 
-			if curGoodDeadlineTimeSec > 0 then
-				deadlineTimeSec = deadlineTimeSec == 0 and curGoodDeadlineTimeSec or math.min(curGoodDeadlineTimeSec, deadlineTimeSec)
+				if curGoodDeadlineTimeSec > 0 then
+					deadlineTimeSec = deadlineTimeSec == 0 and curGoodDeadlineTimeSec or math.min(curGoodDeadlineTimeSec, deadlineTimeSec)
+				end
 			end
 		end
 	end
@@ -552,6 +554,17 @@ local function _getSkinGoodsPriceInfo_specialofferItem(refTbl, goodsCOspecialoff
 	refTbl.hasSpecialOfferItem = hasSpecialOfferItem
 	refTbl.rmbCurPrice = hasSpecialOfferItem and rmbYsSpecialItem or rmbNoSpecialItem
 
+	if SettingsModel.instance:isOverseas() then
+		local goodsId = refTbl.goodsId
+		local currencyCode = StoreConfig.instance:getChargeGoodsCurrencyCode(goodsId or 0)
+
+		if PayEnum.CurrencySymbol[currencyCode] then
+			local symbol = PayEnum.CurrencySymbol[currencyCode]
+
+			refTbl.rmbCurPrice = symbol .. refTbl.rmbCurPrice
+		end
+	end
+
 	if refTbl.hasDeductionItem then
 		refTbl.coinsOriginalPrice = coinsNoSpecialItem
 		refTbl.coinsCurPrice = hasSpecialOfferItem and coinsYsSpecialItem - refTbl.coinsReduction or coinsNoSpecialItem - refTbl.coinsReduction
@@ -568,22 +581,23 @@ end
 
 function StoreHelper.getSkinGoodsPriceInfo(goodsConfig, skinId)
 	local res = {
-		hasSpecialOfferItem = false,
-		coinsReduction = 0,
-		rmbOriginalPrice = false,
 		coinsCurPrice = false,
-		deductionItemType = false,
+		specialofferItemId = false,
+		hasSpecialOfferItem = false,
+		rmbOriginalPrice = false,
 		coinsCostPrice = false,
 		coinsItemId = false,
-		specialofferItemType = false,
+		coinsReduction = 0,
 		deductionItemId = false,
-		coinsItemType = false,
 		hasDeductionItem = false,
 		rmbCurPrice = false,
-		specialofferItemId = false,
 		bCoinsEnough = false,
+		deductionItemType = false,
+		specialofferItemType = false,
 		overuseCoinsReductionDt = 0,
-		coinsOriginalPrice = goodsConfig and goodsConfig.originalCost or 0
+		coinsItemType = false,
+		coinsOriginalPrice = goodsConfig and goodsConfig.originalCost or 0,
+		goodsId = goodsConfig and goodsConfig.id or 0
 	}
 
 	if not goodsConfig then
@@ -593,7 +607,7 @@ function StoreHelper.getSkinGoodsPriceInfo(goodsConfig, skinId)
 	_getSkinGoodsPriceInfo_skinCo(res, skinId)
 	_getSkinGoodsPriceInfo_cost(res, goodsConfig.cost)
 	_getSkinGoodsPriceInfo_deductionItem(res, goodsConfig.deductionItem)
-	_getSkinGoodsPriceInfo_specialofferItem(res, goodsConfig.specialofferItem)
+	_getSkinGoodsPriceInfo_specialofferItem(res, SettingsModel.instance:extractByRegionEx(goodsConfig.specialofferItem))
 
 	if res.coinsItemType then
 		local hasCoins = ItemModel.instance:getItemQuantity(res.coinsItemType, res.coinsItemId)

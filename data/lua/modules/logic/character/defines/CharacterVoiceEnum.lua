@@ -176,10 +176,16 @@ CharacterVoiceEnum.WaitVoiceParamsCls = {
 	[CharacterVoiceEnum.WaitVoiceParamsType.MultiGroup] = "MultiGroupWaitVoiceParams",
 	[CharacterVoiceEnum.WaitVoiceParamsType.VoiceWithWeightGroup] = "VoiceWithWeightGroupParams"
 }
+CharacterVoiceEnum.EffectsType = {
+	DelayPlayAudio = 2,
+	RestrictedInteraction = 3,
+	HideMainView = 1
+}
 CharacterVoiceEnum.SkinInteraction = {
 	[313402] = "BleSkinInteraction",
 	[314102] = "LuSiJianSkinInteraction",
 	[314702] = "WMZSkinInteraction",
+	[310504] = "ZxqeSkinInteraction",
 	[311003] = "LiangYueSkinInteraction",
 	[314602] = "XRAnSkinInteraction"
 }
@@ -210,6 +216,9 @@ CharacterVoiceEnum.NormalBloomView = {
 	StoreView = CharacterVoiceEnum.NormalBloomViewType.CustomOpen,
 	FightSuccView = CharacterVoiceEnum.NormalBloomViewType.Capture,
 	V3a8EchoSongGameView = CharacterVoiceEnum.NormalBloomViewType.Normal
+}
+CharacterVoiceEnum.RunMoreUpdate = {
+	CharacterView = true
 }
 CharacterVoiceEnum.RTShareType = {
 	BloomClose = 2,

@@ -154,6 +154,15 @@ function HeroGroupHandler.getRouge2Snapshot()
 	}
 end
 
+function HeroGroupHandler.getAtomicDungeonSnapshot()
+	return ModuleEnum.HeroGroupSnapshotType.AtomicDungeon, {
+		1,
+		2,
+		3,
+		4
+	}
+end
+
 HeroGroupHandler.getSnapShotHandleFunc = {
 	[DungeonEnum.EpisodeType.TowerPermanent] = HeroGroupHandler.getTowerPermanentSnapShot,
 	[DungeonEnum.EpisodeType.TowerBoss] = HeroGroupHandler.getTowerBossSnapShot,
@@ -164,7 +173,8 @@ HeroGroupHandler.getSnapShotHandleFunc = {
 	[DungeonEnum.EpisodeType.Shelter] = HeroGroupHandler.getShelterSnapShot,
 	[DungeonEnum.EpisodeType.Survival] = HeroGroupHandler.getSurvivalSnapShot,
 	[DungeonEnum.EpisodeType.Abyss] = HeroGroupHandler.getAbyssSnapShot,
-	[DungeonEnum.EpisodeType.Rouge2] = HeroGroupHandler.getRouge2Snapshot
+	[DungeonEnum.EpisodeType.Rouge2] = HeroGroupHandler.getRouge2Snapshot,
+	[DungeonEnum.EpisodeType.AtomicDungeon] = HeroGroupHandler.getAtomicDungeonSnapshot
 }
 
 function HeroGroupHandler.getSnapShot(episodeId)
@@ -355,7 +365,8 @@ HeroGroupHandler.getHeroListDataHandlerFunc = {
 	[DungeonEnum.EpisodeType.TowerLimited] = HeroGroupHandler.setTowerHeroListData,
 	[DungeonEnum.EpisodeType.TowerDeep] = HeroGroupHandler.setTowerHeroListData,
 	[DungeonEnum.EpisodeType.TowerCompose] = HeroGroupHandler.setTowerHeroListData,
-	[DungeonEnum.EpisodeType.Rouge2] = HeroGroupHandler.setRouge2HeroListData
+	[DungeonEnum.EpisodeType.Rouge2] = HeroGroupHandler.setRouge2HeroListData,
+	[DungeonEnum.EpisodeType.AtomicDungeon] = HeroGroupHandler.setTowerHeroListData
 }
 
 function HeroGroupHandler.hanldeHeroListData(episodeId)

@@ -343,6 +343,8 @@ PlayerPrefsKey.GuessGameFirstShowTime = "GuessGameFirstShowTime"
 PlayerPrefsKey.SodacheWorshipSelectCard = "SodacheWorshipSelectCard"
 PlayerPrefsKey.SodacheTaskItemNewTag = "SodacheTaskItemNewTag"
 PlayerPrefsKey.SodacheTrialHeroGroupKey = "SodacheTrialHeroGroupKey"
+PlayerPrefsKey.Sp02MarcusPlayedDesc = "Sp02MarcusPlayedDesc"
+PlayerPrefsKey.Sp02PaoMainWebReddot = "Sp02PaoMainWebReddot"
 PlayerPrefsKey.EyeModeActive = "EyeModeActive"
 
 return PlayerPrefsKey

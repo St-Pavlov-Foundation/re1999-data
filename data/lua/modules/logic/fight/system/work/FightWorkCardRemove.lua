@@ -12,6 +12,8 @@ function FightWorkCardRemove:onConstructor()
 end
 
 function FightWorkCardRemove:beforePlayEffectData()
+	self:setRefrigeratorSign()
+
 	self.oldCardList = FightDataUtil.copyData(FightDataHelper.handCardMgr.handCard)
 end
 
@@ -49,6 +51,10 @@ function FightWorkCardRemove:onStart()
 
 				delayTime = delayTime / FightModel.instance:getUISpeed()
 
+				if self.timeOffsetRefrigerator then
+					delayTime = delayTime + self.timeOffsetRefrigerator
+				end
+
 				self:com_registTimer(self._delayAfterPerformance, delayTime)
 				FightController.instance:dispatchEvent(FightEvent.CardRemove, removeIndexes)
 			end
@@ -61,6 +67,36 @@ function FightWorkCardRemove:onStart()
 	end
 
 	self:onDone(true)
+end
+
+function FightWorkCardRemove:setRefrigeratorSign()
+	local jsonParam = self.actEffectData.jsonParam
+
+	if jsonParam then
+		local buffActActiveIds = jsonParam.buffActActiveIds
+		local arr = string.split(buffActActiveIds, "|")
+
+		for _, v in ipairs(arr) do
+			local value = string.split(v, "#")
+			local buffActId = tonumber(value[1])
+
+			if buffActId == 10034 then
+				local cardList = FightDataHelper.handCardMgr:getHandCard()
+				local indexArr = string.split(value[2], ",")
+
+				for i = 1, #indexArr do
+					local index = tonumber(indexArr[i])
+
+					if cardList[index] then
+						cardList[index].clientData.custom_addToRefrigerator = true
+						self.timeOffsetRefrigerator = 0.5
+
+						FightMsgMgr.sendMsg(FightMsgId.CardRemoveRefrieratorTimeline)
+					end
+				end
+			end
+		end
+	end
 end
 
 function FightWorkCardRemove:_onCombineDone()

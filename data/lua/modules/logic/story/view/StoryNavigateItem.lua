@@ -23,7 +23,7 @@ function StoryNavigateItem:init(go)
 	self._gochapterclosevideo = gohelper.findChild(go, "#go_chapter/#go_close/#go_chapterclosevideo")
 	self._txtchaptercloseNum = gohelper.findChildText(go, "#go_chapter/#go_close/icon/#txt_chaptercloseNum")
 	self._gomap = gohelper.findChild(go, "#go_map")
-	self._txtmapname = gohelper.findChildText(go, "#go_map/line/#txt_mapname")
+	self._txtmapname = gohelper.findChildText(go, "#go_map/#txt_mapname")
 	self._txtmapnameen = gohelper.findChildText(go, "#go_map/#txt_mapnameen")
 	self._mapAnimator = self._gomap:GetComponent(typeof(UnityEngine.Animator))
 	self._goActivityChapter = gohelper.findChild(go, "#go_activity_chapter")
@@ -143,6 +143,11 @@ function StoryNavigateItem:showChapterStart(chapterCo)
 
 	self._txtchapterName.text = chapterCo.navigateTxts[GameLanguageMgr.instance:getLanguageTypeStoryIndex()]
 	self._txtchapterNameEn.text = chapterCo.navigateTxts[LanguageEnum.LanguageStoryType.EN]
+
+	if LangSettings.instance:isJp() and self._txtchapterNameEn.text == "Aleph" then
+		self._txtchapterNameEn.text = ""
+	end
+
 	self._txtchapterNum.text = chapterCo.navigateChapterEn
 
 	if self._chapterOpenVideoPlayer then

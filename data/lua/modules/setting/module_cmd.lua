@@ -50,6 +50,11 @@ local module_cmd = {
 		"AcceptAct186SpBonusRequest",
 		"AcceptAct186SpBonusReply"
 	},
+	[22643] = {
+		"Activity101",
+		"Get101BonusListRequest",
+		"Get101BonusListReply"
+	},
 	[30322] = {
 		"Activity104",
 		"Get104InfosRequest",
@@ -2631,6 +2636,21 @@ local module_cmd = {
 		"Act234AcceptRewardRequest",
 		"Act234AcceptRewardReply"
 	},
+	[-6026] = {
+		"Activity235",
+		"GetAct235InfoRequest",
+		"GetAct235InfoReply"
+	},
+	[20473] = {
+		"Activity235",
+		"ActivePreparationRequest",
+		"ActivePreparationReply"
+	},
+	[-19456] = {
+		"Activity235",
+		"FinishMiniGameRequest",
+		"FinishMiniGameReply"
+	},
 	[6200] = {
 		"Activity236",
 		"GetAct236InfoRequest",
@@ -2644,6 +2664,31 @@ local module_cmd = {
 	[-5541] = {
 		"Activity236",
 		"Act236UpdateInfoPush"
+	},
+	[30652] = {
+		"Activity238",
+		"GetAct238InfoRequest",
+		"GetAct238InfoReply"
+	},
+	[1152] = {
+		"Activity238",
+		"Act238AnswerRequest",
+		"Act238AnswerReply"
+	},
+	[18871] = {
+		"Activity238",
+		"Act238BonusRequest",
+		"Act238BonusReply"
+	},
+	[-22658] = {
+		"Activity239",
+		"GetAct239InfoRequest",
+		"GetAct239InfoReply"
+	},
+	[-15000] = {
+		"Activity239",
+		"Act239BonusRequest",
+		"Act239BonusReply"
 	},
 	[-22802] = {
 		"Activity240",
@@ -2920,6 +2965,78 @@ local module_cmd = {
 	[-32619] = {
 		"AssassinScene",
 		"HeroUpdatePush"
+	},
+	[27511] = {
+		"Atomic",
+		"AtomicGetInfoRequest",
+		"AtomicGetInfoReply"
+	},
+	[-8806] = {
+		"Atomic",
+		"AtomicUpdateInfoPush"
+	},
+	[12330] = {
+		"Atomic",
+		"AtomicUpdateAlarmPush"
+	},
+	[27579] = {
+		"Atomic",
+		"AtomicMapSetCurrElementRequest",
+		"AtomicMapSetCurrElementReply"
+	},
+	[-2365] = {
+		"Atomic",
+		"AtomicMapInteractRequest",
+		"AtomicMapInteractReply"
+	},
+	[14492] = {
+		"Atomic",
+		"AtomicUpdateEmergencyTimeRequest",
+		"AtomicUpdateEmergencyTimeReply"
+	},
+	[-7326] = {
+		"Atomic",
+		"AtomicMapSaveElementRequest",
+		"AtomicMapSaveElementReply"
+	},
+	[5718] = {
+		"Atomic",
+		"AtomicMapElementUpdatePush"
+	},
+	[32140] = {
+		"Atomic",
+		"AtomicMapUpdatePush"
+	},
+	[19045] = {
+		"Atomic",
+		"AtomicPolygonUpdatePush"
+	},
+	[10949] = {
+		"Atomic",
+		"AtomicTalentNodeUnlockRequest",
+		"AtomicTalentNodeUnlockReply"
+	},
+	[-13706] = {
+		"Atomic",
+		"AtomicTalentResetRequest",
+		"AtomicTalentResetReply"
+	},
+	[17683] = {
+		"Atomic",
+		"AtomicTalentSkillChooseRequest",
+		"AtomicTalentSkillChooseReply"
+	},
+	[28822] = {
+		"Atomic",
+		"AtomicTalentUpdatePush"
+	},
+	[16444] = {
+		"Atomic",
+		"AtomicFightResultPush"
+	},
+	[1452] = {
+		"Atomic",
+		"AtomicUnlockLibraryPush"
 	},
 	[-10819] = {
 		"AutoChess",
@@ -4448,6 +4565,16 @@ local module_cmd = {
 	[22389] = {
 		"Material",
 		"MaterialChangePush"
+	},
+	[25533] = {
+		"Milestone",
+		"GetMilestoneInfoRequest",
+		"GetMilestoneInfoReply"
+	},
+	[-8328] = {
+		"Milestone",
+		"GetMilestoneBonusRequest",
+		"GetMilestoneBonusReply"
 	},
 	[-32123] = {
 		"NecrologistStory",
@@ -6539,6 +6666,11 @@ local module_cmd = {
 		"Summon",
 		"GetSummonProgressRewardsRequest",
 		"GetSummonProgressRewardsReply"
+	},
+	[-21980] = {
+		"Summon",
+		"SelectSummonchoosableRewardRequest",
+		"SelectSummonchoosableRewardReply"
 	},
 	[-5258] = {
 		"Summon",

@@ -20,5 +20,12 @@ CustomPickChoiceEnum.ComponentVisible = {
 		_goTips = false
 	}
 }
+CustomPickChoiceEnum.SelectHeroToastEnum = {
+	[823853] = ToastEnum.NewCustomPickMoreSelect,
+	[823854] = ToastEnum.NewCustomPickMoreSelect,
+	[823855] = ToastEnum.NewCustomPickMoreSelect,
+	[823856] = ToastEnum.NewCustomPickMoreSelect,
+	[823857] = ToastEnum.NewCustomPickMoreSelect
+}
 
 return CustomPickChoiceEnum

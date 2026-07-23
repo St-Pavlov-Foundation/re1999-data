@@ -16,6 +16,7 @@ function FightDevicePlayCardLockItem:init(cardItem)
 	self.status = Status.UnLock
 
 	self:addEvents()
+	self:updateLock()
 end
 
 function FightDevicePlayCardLockItem:addEvents()
@@ -50,6 +51,11 @@ end
 function FightDevicePlayCardLockItem:getCurStatus()
 	local uid = self.cardItem:getUid()
 	local skillCo = self.cardItem:getSkillCo()
+
+	if not skillCo then
+		return Status.UnLock
+	end
+
 	local skillId = skillCo.id
 	local entityMo = FightDataHelper.entityMgr:getById(uid)
 	local buffList = FightBuffHelper.simulateBuffList(entityMo)

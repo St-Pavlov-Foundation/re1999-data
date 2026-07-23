@@ -11,21 +11,32 @@ function CharacterDeviceView:init(go)
 	self._gonormalItem = gohelper.findChild(self.viewGO, "#go_device/#go_nomal/item")
 	self._gospecial = gohelper.findChild(self.viewGO, "#go_device/#go_special")
 	self._gospecialItem = gohelper.findChild(self.viewGO, "#go_device/#go_special/item")
+	self._animEventWrap = self.viewGO:GetComponent(typeof(ZProj.AnimationEventWrap))
 
 	if self._editableInitView then
 		self:_editableInitView()
 	end
 end
 
-function CharacterDeviceView:addEvents()
-	return
+function CharacterDeviceView:addEventListeners()
+	if self._animEventWrap then
+		self._animEventWrap:AddEventListener("switch", self._animSwitchEvent, self)
+	end
 end
 
-function CharacterDeviceView:removeEvents()
-	return
+function CharacterDeviceView:removeEventListeners()
+	if self.s02btn then
+		self.s02btn:RemoveClickListener()
+	end
+
+	if self._animEventWrap then
+		self._animEventWrap:AddEventListener("switch", self._animSwitchEvent, self)
+	end
 end
 
-local CardPath = "ui/viewres/fight/fight3_7devicecarditem.prefab"
+function CharacterDeviceView:_animSwitchEvent()
+	self:_refreshTwinssychubeSelectCardGroup()
+end
 
 function CharacterDeviceView:_editableInitView()
 	gohelper.setActive(self._gonormalItem, false)
@@ -45,106 +56,71 @@ function CharacterDeviceView:_editableInitView()
 		self._cardItems[i] = item
 	end
 
-	self.loader = MultiAbLoader.New()
-
-	self.loader:addPath(CardPath)
-	self.loader:startLoad(self.onLoadedCallback, self)
-
 	self._animator = self.viewGO:GetComponent(typeof(UnityEngine.Animator))
-end
-
-function CharacterDeviceView:onLoadedCallback()
-	local assetItem = self.loader:getFirstAssetItem()
-	local prefab = assetItem:GetResource()
 
 	for i, item in ipairs(self._cardItems) do
 		item.index = i
 		item.super = item.index == 3
-		item.go = gohelper.clone(prefab, item.root)
 
-		recthelper.setAnchor(item.go.transform, 0, 0)
+		if item.super then
+			item.cardItem = CharacterDeviceCardItemUnique.Create(item.root)
+		else
+			item.cardItem = CharacterDeviceCardItemNormal.Create(item.root)
+		end
 
-		item.btn = gohelper.getClick(item.go)
-
-		item.btn:AddClickListener(self._onSkillCardClick, self, item.index)
-
-		item.goNormal = gohelper.findChild(item.go, "normal")
-		item.goNormalSelect = gohelper.findChild(item.goNormal, "go_select")
-		item.normalImageIcon = gohelper.findChildSingleImage(item.goNormal, "imgIcon")
-		item.normalImageCardCover = gohelper.findChildImage(item.goNormal, "#image_cardCareer")
-		item.tagIcon = gohelper.findChildSingleImage(item.goNormal, "tag/tagIcon")
-		item.imageCareerBg = gohelper.findChildImage(item.goNormal, "cost/#image_numCareer")
-		item.txtPower = gohelper.findChildText(item.goNormal, "cost/#txt_enough")
-		item.goNormalGrayMask = gohelper.findChild(item.goNormal, "gray_mask")
-		item.goNormalLock = gohelper.findChild(item.goNormal, "lock")
-		item.goUnique = gohelper.findChild(item.go, "unique")
-		item.goUniqueSelect = gohelper.findChild(item.goUnique, "go_select")
-		item.uniqueImageIcon = gohelper.findChildSingleImage(item.goUnique, "imgIcon")
-		item.goUniqueGrayMask = gohelper.findChild(item.goUnique, "gray_mask")
-		item.goUniqueLock = gohelper.findChild(item.goUnique, "lock")
-		item.goScanSuccess = gohelper.findChild(item.go, "success")
-		item.goScanFail = gohelper.findChild(item.go, "fail")
-		item.goScanLine = gohelper.findChild(item.go, "scanline")
-		item.goMask = gohelper.findChild(item.go, "normal/mask")
-		item.goVx1 = gohelper.findChild(item.go, "normal/vx_success")
-		item.goVx2 = gohelper.findChild(item.go, "normal/vx_fail")
-
-		gohelper.setActive(item.goNormal, not item.super)
-		gohelper.setActive(item.goUnique, item.super)
-
-		item.icon = item.super and item.uniqueImageIcon or item.normalImageIcon
-
-		gohelper.setActive(item.goNormalGrayMask, false)
-		gohelper.setActive(item.goMask, false)
-		gohelper.setActive(item.goNormalLock, false)
-		gohelper.setActive(item.goUniqueLock, false)
-		gohelper.setActive(item.goUniqueGrayMask, false)
-		gohelper.setActive(item.goScanSuccess, false)
-		gohelper.setActive(item.goScanFail, false)
-		gohelper.setActive(item.goScanLine, false)
-		gohelper.setActive(item.goNormalSelect, false)
-		gohelper.setActive(item.goUniqueSelect, false)
-		gohelper.setActive(item.goVx1, false)
-		gohelper.setActive(item.goVx2, false)
+		item.cardItem:AddClickListener(self._onSkillCardClick, self, item.index)
+		item.cardItem:startLoad(self._refreshCardUI, self)
 	end
+end
 
-	self._isLoadFinish = true
+function CharacterDeviceView:_initS02()
+	if not self._gos02switch then
+		local deviceType = self._param and self._param.deviceType or 1
+		local path = deviceType == 1 and "playcards/go_s02_switch" or "playcards/card_layout/go_s02_switch"
 
-	self:_refreshCardUI()
+		self._selectCardGroupIndex = 1
+		self._gos02switch = gohelper.findChild(self.viewGO, path)
+		self._s02tbs = self:getUserDataTb_()
+
+		if self._gos02switch then
+			local s02tab = gohelper.findChild(self._gos02switch, "Tab")
+
+			for i = 1, 2 do
+				local item = self:getUserDataTb_()
+
+				item.go = gohelper.findChild(s02tab, "tab_" .. i)
+				item.select = gohelper.findChild(item.go, "select")
+				item.unselect = gohelper.findChild(item.go, "unselect")
+				self._s02tbs[i] = item
+			end
+
+			self.s02btn = gohelper.findChildButtonWithAudio(self._gos02switch, "#btn_switch")
+
+			self.s02btn:AddClickListener(self._btnS02CardOnClick, self)
+		end
+	end
+end
+
+function CharacterDeviceView:_btnS02CardOnClick()
+	self._selectCardGroupIndex = self._selectCardGroupIndex == 1 and 2 or 1
+
+	if self._animEventWrap then
+		self:playAnim("characterview_switch")
+	else
+		self:_refreshTwinssychubeSelectCardGroup()
+	end
 end
 
 function CharacterDeviceView:_refreshCardUI()
-	if not self._isLoadFinish or not self._deviceMo then
+	if not self._deviceMo or not self._cardItems then
 		return
 	end
 
 	for i, item in ipairs(self._cardItems) do
 		local index = item.index
-		local skillId = self._deviceMo:getSkillId(index)
-		local hasSkill = skillId ~= 0
+		local skillInfo = self._deviceMo:getSkillInfo(index, self._selectCardGroupIndex)
 
-		if hasSkill then
-			local skillCO = lua_skill.configDict[skillId]
-
-			if not skillCO then
-				logError(string.format("heroID : %s, skillId not found : %s", self._heroId, skillId))
-			end
-
-			item.icon:LoadImage(ResUrl.getSkillIcon(skillCO.icon))
-
-			if not item.super then
-				local skillInfo = self._deviceMo:getSkillInfo(index)
-
-				UISpriteSetMgr.instance:setFightSprite(item.imageCareerBg, FightDeviceHelper.getCareerImage(skillInfo.costType))
-
-				item.txtPower.text = skillInfo.costValue
-
-				item.tagIcon:LoadImage(ResUrl.getAttributeIcon("attribute_" .. skillCO.showTag))
-				UISpriteSetMgr.instance:setFightSprite(item.normalImageCardCover, FightDeviceHelper.getCareerCoverImage(skillInfo.costType))
-			end
-		end
-
-		gohelper.setActive(item.go.gameObject, hasSkill)
+		item.cardItem:refreshUI(skillInfo)
 	end
 end
 
@@ -165,14 +141,11 @@ function CharacterDeviceView:onUpdateMO(heroId, heroMo, param, isBalance, showAt
 		return
 	end
 
+	self:_initS02()
 	self:_refreshUI()
 end
 
 function CharacterDeviceView:_getPowerSkillItem(index)
-	if not self._normalPowerSkillItems then
-		self._normalPowerSkillItems = self:getUserDataTb_()
-	end
-
 	local item = self._normalPowerSkillItems[index]
 
 	if not item then
@@ -188,10 +161,6 @@ function CharacterDeviceView:_getPowerSkillItem(index)
 end
 
 function CharacterDeviceView:_getSpecialPowerSkillItem(index)
-	if not self._specialPowerSkillItems then
-		self._specialPowerSkillItems = self:getUserDataTb_()
-	end
-
 	local item = self._specialPowerSkillItems[index]
 
 	if not item then
@@ -211,6 +180,14 @@ function CharacterDeviceView:_refreshUI()
 
 	self._powerSkills = self._deviceMo:getPowerSkills()
 	self._specialPowerSkill = self._deviceMo:getSpecialPowerSkills()
+
+	if not self._normalPowerSkillItems then
+		self._normalPowerSkillItems = self:getUserDataTb_()
+	end
+
+	if not self._specialPowerSkillItems then
+		self._specialPowerSkillItems = self:getUserDataTb_()
+	end
 
 	local count1 = 0
 
@@ -234,10 +211,12 @@ function CharacterDeviceView:_refreshUI()
 		end
 	end
 
-	for i = 1, #self._normalPowerSkillItems do
-		local item = self._normalPowerSkillItems[i]
+	if self._normalPowerSkillItems then
+		for i = 1, #self._normalPowerSkillItems do
+			local item = self._normalPowerSkillItems[i]
 
-		gohelper.setActive(item.go, i <= count1)
+			gohelper.setActive(item.go, i <= count1)
+		end
 	end
 
 	local count2 = 0
@@ -255,14 +234,39 @@ function CharacterDeviceView:_refreshUI()
 			item.btn:AddClickListener(self._onDeviceSecialSkillCardClick, self, i)
 
 			count2 = count2 + 1
+			count2 = count2 + 1
 		end
 	end
 
-	for i = 1, #self._specialPowerSkillItems do
-		local item = self._specialPowerSkillItems[i]
+	if self._specialPowerSkillItems then
+		for i = 1, #self._specialPowerSkillItems do
+			local item = self._specialPowerSkillItems[i]
 
-		gohelper.setActive(item.go, i <= count2)
+			gohelper.setActive(item.go, i <= count2)
+		end
 	end
+
+	self:_refreshTwinssychube()
+end
+
+function CharacterDeviceView:_refreshTwinssychube()
+	local isTwinssychube = self._heroId and self._heroId == CharacterEnum.TwinssychubeHeroId
+
+	gohelper.setActive(self._gos02switch, isTwinssychube)
+	self:_refreshTwinssychubeSelectCardGroup()
+end
+
+function CharacterDeviceView:_refreshTwinssychubeSelectCardGroup()
+	if not self._s02tbs then
+		return
+	end
+
+	for i, item in ipairs(self._s02tbs) do
+		gohelper.setActive(item.select, self._selectCardGroupIndex == i)
+		gohelper.setActive(item.unselect, self._selectCardGroupIndex ~= i)
+	end
+
+	self:_refreshCardUI()
 end
 
 function CharacterDeviceView:_onDeviceNormalSkillCardClick(index)
@@ -280,16 +284,14 @@ function CharacterDeviceView:_onDeviceNormalSkillCardClick(index)
 end
 
 function CharacterDeviceView:_onDeviceSecialSkillCardClick(index)
-	if self._specialPowerSkill then
-		local skillInfo = self._specialPowerSkill[index]
+	local skillInfo = self._specialPowerSkill[index]
 
-		if skillInfo then
-			local skillIdList = {
-				skillInfo.skillId
-			}
+	if skillInfo then
+		local skillIdList = {
+			skillInfo.skillId
+		}
 
-			self:_onDeviceSkillCardClick(skillIdList)
-		end
+		self:_onDeviceSkillCardClick(skillIdList)
 	end
 end
 
@@ -313,6 +315,7 @@ function CharacterDeviceView:_onDeviceSkillCardClick(skillIdList, skillIndex)
 				info.showAssassinBg = self._param.showAssassinBg
 			end
 
+			info.selectCardGroupIndex = self._selectCardGroupIndex
 			info.isDeviceSkill = true
 
 			ViewMgr.instance:openView(ViewName.SkillTipView, info)
@@ -322,7 +325,7 @@ end
 
 function CharacterDeviceView:_onSkillCardClick(index)
 	if self._heroId and self._deviceMo then
-		local skillid = self._deviceMo:getSkillId(index)
+		local skillid = self._deviceMo:getSkillId(index, self._selectCardGroupIndex)
 
 		self:_onDeviceSkillCardClick({
 			skillid
@@ -359,15 +362,7 @@ function CharacterDeviceView:onDestroy()
 	end
 
 	for i, item in ipairs(self._cardItems) do
-		item.btn:RemoveClickListener()
-		item.icon:UnLoadImage()
-		item.tagIcon:UnLoadImage()
-	end
-
-	if self.loader then
-		self.loader:dispose()
-
-		self.loader = nil
+		item.cardItem:onDestroy()
 	end
 end
 

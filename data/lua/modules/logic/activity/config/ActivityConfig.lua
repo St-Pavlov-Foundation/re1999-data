@@ -22,7 +22,8 @@ function ActivityConfig:reqConfigNames()
 		"activity_show",
 		"main_act_extra_display",
 		"main_act_atmosphere",
-		"activity_const"
+		"activity_const",
+		"activity_decoration"
 	}
 end
 

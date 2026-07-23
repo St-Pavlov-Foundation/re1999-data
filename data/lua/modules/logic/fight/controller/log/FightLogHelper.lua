@@ -907,7 +907,9 @@ FightLogHelper.EffectTypeNameDict = {
 	[FightEnum.EffectType.EZIOBIGSKILLDAMAGE] = "EZIO大招伤害",
 	[FightEnum.EffectType.EZIOBIGSKILLORIGINDAMAGE] = "EZIO大招本源创伤",
 	[FightEnum.EffectType.UPDATEITEMPLAYERSKILL] = "更新道具主角技能",
-	[FightEnum.EffectType.EZIOBIGSKILLEXIT] = "EZIO大招意外退出"
+	[FightEnum.EffectType.EZIOBIGSKILLEXIT] = "EZIO大招意外退出",
+	[FightEnum.EffectType.TWINSPOWERUPCOUNT] = "TwinsPower双生计数",
+	[FightEnum.EffectType.TWINSUPCOUNTER] = "TwinsUpByCounter双生提升"
 }
 
 function FightLogHelper.getEffectTypeName(effectType)

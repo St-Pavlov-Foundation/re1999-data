@@ -31,10 +31,7 @@ function StoreSkinGoodsItem:onInitView()
 	self._uniqueImagebg = gohelper.findChildSingleImage(self.viewGO, "#go_UniqueSkin/#simage_iconbg")
 	self._goUniqueSkinBubble = gohelper.findChild(self.viewGO, "#go_UniqueSkin/#simage_bubble")
 	self._xtIconbg = gohelper.findChild(self.viewGO, "#go_UniqueSkin/#xingti_iconbg")
-	self._goLinkageLetterG = gohelper.findChild(self.viewGO, "#go_Linkage/#simage_g")
-	self._goLinkageLetterA = gohelper.findChild(self.viewGO, "#go_Linkage/#image_A")
-	self._goLinkageBgG = gohelper.findChildSingleImage(self.viewGO, "#go_Linkage/#simage_bg")
-	self._goLinkageBgA = gohelper.findChildSingleImage(self.viewGO, "#go_Linkage/#simage_bgA")
+	self._goLinkTag = gohelper.findChild(self.viewGO, "go_tagTR/#go_linkTag")
 	self._gocost = gohelper.findChild(self.viewGO, "cost")
 	self._gocostline = gohelper.findChild(self.viewGO, "cost/line")
 	self._goprice = gohelper.findChild(self.viewGO, "cost/#go_price")
@@ -54,7 +51,7 @@ function StoreSkinGoodsItem:onInitView()
 	self._goSkinTips = gohelper.findChild(self.viewGO, "#go_SkinTips")
 	self._imgProp = gohelper.findChildImage(self.viewGO, "#go_SkinTips/image/#txt_Tips/#txt_Num/#image_Prop")
 	self._txtPropNum = gohelper.findChildTextMesh(self.viewGO, "#go_SkinTips/image/#txt_Tips/#txt_Num")
-	self._goSpecial = gohelper.findChild(self.viewGO, "#go_Special")
+	self._goSpecial = gohelper.findChild(self.viewGO, "go_tagTR/#go_Special")
 	self.goSelect = gohelper.findChild(self.viewGO, "#go_select")
 
 	if self._editableInitView then
@@ -79,9 +76,6 @@ function StoreSkinGoodsItem:_editableInitView()
 
 	self._txtmaterialNum = gohelper.findChildText(self._goprice, "txt_materialNum")
 	self._simagematerial = gohelper.findChildImage(self._goprice, "simage_material")
-	self._goLinkage = gohelper.findChild(self.viewGO, "#go_Linkage")
-	self._goLinkageLogo = gohelper.findChild(self.viewGO, "#go_Linkage/image_Logo")
-	self._linkage_simageicon = gohelper.findChildSingleImage(self._goLinkage, "#simage_icon")
 	self._btnGO = gohelper.findChild(self.viewGO, "clickArea")
 	self._btn = gohelper.getClickWithAudio(self._btnGO, AudioEnum.UI.play_ui_rolesopen)
 
@@ -90,8 +84,7 @@ function StoreSkinGoodsItem:_editableInitView()
 	self._animator = self.viewGO:GetComponent(typeof(UnityEngine.Animator))
 	self.viewGOTrs = self.viewGO.transform
 	self.parentViewGO = self.viewGO.transform.parent.gameObject
-	self._costAnimPlayer = csAnimatorPlayer.Get(self._gocost)
-	self._costAnimator = self._costAnimPlayer.animator
+	self._costAnimator = self._gocost:GetComponent(gohelper.Type_Animator)
 end
 
 function StoreSkinGoodsItem:_onSkinPreviewChanged()
@@ -164,9 +157,9 @@ function StoreSkinGoodsItem:onUpdateMO(mo)
 	local productInfo = string.splitToNumber(product, "#")
 	local skinId = productInfo[2]
 	local isShowLinkageSkin = self:_isLinkageSkin()
-	local isShowNormalSkin = not isShowLinkageSkin and self:_isNormalSkin()
-	local isShowAdvancedSkin = not isShowLinkageSkin and self:_isAdvanceSkin()
-	local isShowUniqueSkin = not isShowLinkageSkin and self:_isUniqueSkin()
+	local isShowNormalSkin = self:_isNormalSkin()
+	local isShowAdvancedSkin = self:_isAdvanceSkin()
+	local isShowUniqueSkin = self:_isUniqueSkin()
 
 	self._skinId = skinId
 	self.skinCo = SkinConfig.instance:getSkinCo(skinId)
@@ -175,22 +168,14 @@ function StoreSkinGoodsItem:onUpdateMO(mo)
 	gohelper.setActive(self._goNormalSkin, isShowNormalSkin)
 	gohelper.setActive(self._goAdvanceSkin, isShowAdvancedSkin)
 	gohelper.setActive(self._goUniqueSkin, isShowUniqueSkin)
-	gohelper.setActive(self._goLinkage, isShowLinkageSkin)
-	gohelper.setActive(self._goLinkageLogo, self:_isShowLinkageLogo())
+	gohelper.setActive(self._goLinkTag, isShowLinkageSkin)
 
 	if isShowUniqueSkin then
 		self:_onUpdateMO_uniqueSkin()
 	else
 		local imageIcon
 
-		if isShowLinkageSkin then
-			imageIcon = self._linkage_simageicon
-
-			gohelper.setActive(self._goLinkageBgA, self:_isAdvanceSkin())
-			gohelper.setActive(self._goLinkageBgG, self:_isNormalSkin())
-			gohelper.setActive(self._goLinkageLetterA, self:_isAdvanceSkin())
-			gohelper.setActive(self._goLinkageLetterG, self:_isNormalSkin())
-		elseif isShowAdvancedSkin then
+		if isShowAdvancedSkin then
 			imageIcon = self._advanceImageicon
 		else
 			imageIcon = self._simageicon
@@ -239,6 +224,10 @@ function StoreSkinGoodsItem:refreshChargeInfo()
 	gohelper.setActive(self._goowned, alreadyHas)
 	gohelper.setActive(self._goprice, not alreadyHas)
 	gohelper.setActive(self._gocostline, not alreadyHas)
+
+	if not alreadyHas then
+		recthelper.setAnchorX(self._goprice.transform, rmbCurPrice and 60 or 5)
+	end
 
 	self._txtdeduction.text = -coinsReduction
 
@@ -370,20 +359,16 @@ function StoreSkinGoodsItem:_refreshSpecial()
 	gohelper.setActive(self._goSpecial, hasSpecialOfferItem)
 end
 
-function StoreSkinGoodsItem:_playAnimCostIdle(cb, cbObj)
-	self:_playAnimCost(UIAnimationName.Idle, cb, cbObj)
+function StoreSkinGoodsItem:_playAnimCostIdle()
+	self:_playAnimCost(UIAnimationName.Idle, 0, 1)
 end
 
-function StoreSkinGoodsItem:_playAnimCostSwitch(cb, cbObj)
-	self:_playAnimCost(UIAnimationName.Switch, cb, cbObj)
+function StoreSkinGoodsItem:_playAnimCostSwitch()
+	self:_playAnimCost(UIAnimationName.Switch, 0, 0)
 end
 
-function StoreSkinGoodsItem:_playAnimCost(name, cb, cbObj)
-	self._costAnimator.enabled = true
-
-	self._costAnimPlayer:Play(name, cb or function()
-		return
-	end, cbObj)
+function StoreSkinGoodsItem:_playAnimCost(name, ...)
+	self._costAnimator:Play(name, ...)
 end
 
 function StoreSkinGoodsItem:_onSkinPlayPriceAnim()

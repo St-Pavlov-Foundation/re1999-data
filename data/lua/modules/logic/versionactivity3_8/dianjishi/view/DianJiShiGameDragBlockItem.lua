@@ -49,10 +49,6 @@ function DianJiShiGameDragBlockItem:refreshUI()
 end
 
 function DianJiShiGameDragBlockItem:refreshPosition()
-	if not self._blockInfo then
-		return
-	end
-
 	local startPosX, startPosY = recthelper.screenPosToAnchorPos2(GamepadController.instance:getMousePosition(), self._tranParent)
 	local endPosX = startPosX - self._blockWidth
 	local endPosY = startPosY + self._blockHeight

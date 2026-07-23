@@ -24,33 +24,25 @@ function GameLanguageMgr:setVoiceTypeByStoryIndex(index)
 end
 
 function GameLanguageMgr:getVoiceTypeStoryIndex()
-	if self._voiceType then
-		local isS01Story = StoryModel.instance:isS01Story()
+	local curVoiceShortCut = SettingsController.instance:getStoryVoiceType()
+	local voiceType = self._voiceType or self:getStoryIndexByShortCut(curVoiceShortCut)
+	local isOverseas = SettingsModel.instance:isOverseas()
 
-		if not isS01Story then
-			if self._voiceType == LanguageEnum.LanguageStoryType.JP or self._voiceType == LanguageEnum.LanguageStoryType.KR then
-				return LanguageEnum.LanguageStoryType.EN
-			else
-				return self._voiceType
-			end
-		end
-
-		return self._voiceType
-	else
-		local curVoiceShortCut = SettingsController.instance:getStoryVoiceType()
-		local voiceType = self:getStoryIndexByShortCut(curVoiceShortCut)
-		local isS01Story = StoryModel.instance:isS01Story()
-
-		if not isS01Story then
-			if voiceType == LanguageEnum.LanguageStoryType.JP or voiceType == LanguageEnum.LanguageStoryType.KR then
-				return LanguageEnum.LanguageStoryType.EN
-			else
-				return voiceType
-			end
-		end
-
+	if isOverseas then
 		return voiceType
 	end
+
+	local isSpVersionStory = StoryModel.instance:isSpVersionStory()
+
+	if not isSpVersionStory then
+		if voiceType == LanguageEnum.LanguageStoryType.JP or voiceType == LanguageEnum.LanguageStoryType.KR then
+			return LanguageEnum.LanguageStoryType.EN
+		else
+			return voiceType
+		end
+	end
+
+	return voiceType
 end
 
 function GameLanguageMgr:getShortCutByStoryIndex(index)

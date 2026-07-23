@@ -52,64 +52,75 @@ function FightDeviceCardItem:onLoadedCallback()
 
 	self:initViews()
 	self:setName(self.name)
+end
+
+function FightDeviceCardItem:initViews()
+	self.goNormal = gohelper.findChild(self.go, "normal")
+	self.goNormal1 = gohelper.findChild(self.go, "normal_1")
+	self.goUnique = gohelper.findChild(self.go, "unique")
+	self.goSpecialBg = gohelper.findChild(self.go, "special_bg")
+	self.goSelect = gohelper.findChild(self.go, "go_select")
+	self.rectSelect = self.goSelect:GetComponent(gohelper.Type_RectTransform)
+
+	gohelper.setActive(self.goNormal, false)
+	gohelper.setActive(self.goNormal1, false)
+	gohelper.setActive(self.goUnique, false)
+	gohelper.setActive(self.goSpecialBg, false)
+	gohelper.setActive(self.goSelect, false)
+
+	self.normalComp = FightDeviceCardItemNormal.Create(self.goNormal, self)
+
+	self.normalComp:startLoad(self.onNormalLoadDone, self)
+
+	self.normal1Comp = FightDeviceCardItemNormal.Create(self.goNormal1, self)
+
+	self.normal1Comp:startLoad(self.onNormal1LoadDone, self)
+
+	self.uniqueComp = FightDeviceCardItemUnique.Create(self.goUnique, self)
+
+	self.uniqueComp:startLoad(self.onUniqueLoadDone, self)
+end
+
+function FightDeviceCardItem:onNormalLoadDone()
+	self.normalLoadDone = true
+
+	self:checkAllLoadDone()
+end
+
+function FightDeviceCardItem:onNormal1LoadDone()
+	self.normal1LoadDone = true
+
+	self:checkAllLoadDone()
+end
+
+function FightDeviceCardItem:onUniqueLoadDone()
+	self.uniqueLoadDone = true
+
+	self:checkAllLoadDone()
+end
+
+function FightDeviceCardItem:checkAllLoadDone()
+	if not self.normalLoadDone then
+		return
+	end
+
+	if not self.normal1LoadDone then
+		return
+	end
+
+	if not self.uniqueLoadDone then
+		return
+	end
+
+	self.loadedDone = true
+
+	self:setSelectFrameActive(self.selectFrameActive)
+	self:setGrayMaskActive(self.grayMaskActive)
 	self:afterLoadDone()
 end
 
 function FightDeviceCardItem:afterLoadDone()
 	return
-end
-
-local LockTextPathList = {
-	"seal/ani/txtLockName",
-	"seal/notani/txtLockName",
-	"sealing/ani/txtLockName",
-	"sealing/notani/txtLockName",
-	"unseal/ani/txtLockName"
-}
-
-function FightDeviceCardItem:initViews()
-	self.animatorPlayer = ZProj.ProjAnimatorPlayer.Get(self.go)
-	self.goNormal = gohelper.findChild(self.go, "normal")
-	self.goNormalSelect = gohelper.findChild(self.goNormal, "go_select")
-	self.normalImageIcon = gohelper.findChildSingleImage(self.goNormal, "imgIcon")
-	self.normalImageCardCover = gohelper.findChildImage(self.goNormal, "#image_cardCareer")
-	self.tagIcon = gohelper.findChildSingleImage(self.goNormal, "tag/tagIcon")
-	self.imageCareerBg = gohelper.findChildImage(self.goNormal, "cost/#image_numCareer")
-	self.txtPower = gohelper.findChildText(self.goNormal, "cost/#txt_enough")
-	self.goNormalGrayMask = gohelper.findChild(self.goNormal, "gray_mask")
-	self.goNormalLock = gohelper.findChild(self.goNormal, "lock")
-	self.txtLockList = self:getUserDataTb_()
-
-	for _, path in ipairs(LockTextPathList) do
-		table.insert(self.txtLockList, gohelper.findChildText(self.goNormalLock, "anim/" .. path))
-	end
-
-	self.goUnique = gohelper.findChild(self.go, "unique")
-	self.goUniqueSelect = gohelper.findChild(self.goUnique, "go_select")
-	self.uniqueImageIcon = gohelper.findChildSingleImage(self.goUnique, "imgIcon")
-	self.goUniqueGrayMask = gohelper.findChild(self.goUnique, "gray_mask")
-	self.goUniqueLock = gohelper.findChild(self.goUnique, "lock")
-
-	for _, path in ipairs(LockTextPathList) do
-		table.insert(self.txtLockList, gohelper.findChildText(self.goUniqueLock, "anim/" .. path))
-	end
-
-	self.goScanSuccess = gohelper.findChild(self.go, "success")
-	self.goScanFail = gohelper.findChild(self.go, "fail")
-	self.goScanLine = gohelper.findChild(self.go, "scanline")
-	self.rectScanLine = self.goScanLine:GetComponent(gohelper.Type_RectTransform)
-	self.goMask = gohelper.findChild(self.go, "normal/mask")
-
-	gohelper.setActive(self.goMask, false)
-
-	self.loadedDone = true
-
-	self:setSelectFrameActive(self.selectFrameActive)
-	self:setScanLineActive(self.scanLineActive)
-	self:setScanSuccessActive(self.scanSuccessActive)
-	self:setScanFailActive(self.scanFailActive)
-	self:setLockActive(self.lockActive)
-	self:setGrayMaskActive(self.grayMaskActive)
 end
 
 function FightDeviceCardItem:setGrayMaskActive(active)
@@ -119,70 +130,9 @@ function FightDeviceCardItem:setGrayMaskActive(active)
 		return
 	end
 
-	gohelper.setActive(self.goNormalGrayMask, active)
-	gohelper.setActive(self.goUniqueGrayMask, active)
-end
-
-function FightDeviceCardItem:setLockActive(active)
-	self.lockActive = active
-
-	if not self.loadedDone then
-		return
-	end
-
-	gohelper.setActive(self.goUniqueLock, active)
-	gohelper.setActive(self.goNormalLock, active)
-end
-
-function FightDeviceCardItem:setLockText(text)
-	if not self.loadedDone then
-		return
-	end
-
-	for _, txt in ipairs(self.txtLockList) do
-		txt.text = text
-	end
-end
-
-function FightDeviceCardItem:playLockAnim(animName, animDoneCallback, animDoneCallbackObj)
-	if not self.loadedDone then
-		return
-	end
-
-	if not self.skillCo then
-		return
-	end
-
-	self.animDoneCallback = animDoneCallback
-	self.animDoneCallbackObj = animDoneCallbackObj
-
-	self:setLockActive(true)
-
-	local animGo
-
-	if self.isBigSkill then
-		animGo = gohelper.findChild(self.goUniqueLock, "anim")
-	else
-		animGo = gohelper.findChild(self.goNormalLock, "anim")
-	end
-
-	local animComp = animGo and ZProj.ProjAnimatorPlayer.Get(animGo)
-
-	if animComp then
-		animComp:Play(animName, self.playLockAnimDone, self)
-	end
-end
-
-function FightDeviceCardItem:playLockAnimDone()
-	local animDoneCallback = self.animDoneCallback
-	local animDoneCallbackObj = self.animDoneCallbackObj
-
-	self.animDoneCallback = nil
-	self.animDoneCallbackObj = nil
-
-	if animDoneCallback then
-		animDoneCallback(animDoneCallbackObj)
-	end
+	self.normalComp:setGrayMaskActive(active)
+	self.normal1Comp:setGrayMaskActive(active)
+	self.uniqueComp:setGrayMaskActive(active)
 end
 
 function FightDeviceCardItem:hide()
@@ -197,50 +147,67 @@ function FightDeviceCardItem:show()
 	end
 end
 
-function FightDeviceCardItem:refreshUI(deviceSkillInfo)
+function FightDeviceCardItem:refreshUI(deviceInfo)
 	if not self.loadedDone then
 		return
 	end
 
-	if not deviceSkillInfo then
+	if not deviceInfo then
 		return
 	end
 
-	self.deviceSkillInfo = deviceSkillInfo
+	self.deviceInfo = deviceInfo
+	self.uid = self.deviceInfo.uid
 
-	local skillCo = lua_skill.configDict[deviceSkillInfo.skillId]
-	local isBigSkill = skillCo.isBigSkill == 1
+	local index = self.deviceInfo.clientIndex
+	local group = deviceInfo.skills[index]
 
-	self.skillCo = skillCo
-	self.isBigSkill = isBigSkill
+	if not group then
+		logError("group is nil, " .. tostring(index))
 
-	gohelper.setActive(self.goNormal, not isBigSkill)
-	gohelper.setActive(self.goUnique, isBigSkill)
-
-	local targetIconUrl = ResUrl.getSkillIcon(skillCo.icon)
-
-	if isBigSkill then
-		self.uniqueImageIcon:LoadImage(targetIconUrl)
-	else
-		self.normalImageIcon:LoadImage(targetIconUrl)
-
-		local tagUrl = ResUrl.getAttributeIcon("attribute_" .. skillCo.showTag)
-
-		self.tagIcon:LoadImage(tagUrl)
-		UISpriteSetMgr.instance:setFightSprite(self.imageCareerBg, FightDeviceHelper.getCareerImage(deviceSkillInfo.costType))
-
-		self.txtPower.text = deviceSkillInfo.costValue
-
-		UISpriteSetMgr.instance:setFightSprite(self.normalImageCardCover, FightDeviceHelper.getCareerCoverImage(deviceSkillInfo.costType))
+		return
 	end
+
+	if index == FightDeviceInfoData.Index.Unique then
+		gohelper.setActive(self.goNormal, false)
+		gohelper.setActive(self.goNormal1, false)
+		gohelper.setActive(self.goSpecialBg, false)
+		gohelper.setActive(self.goUnique, true)
+		self.uniqueComp:refreshUI(group.skills[1])
+		self.uniqueComp:setActive(true)
+		self.normalComp:setActive(false)
+		self.normal1Comp:setActive(false)
+	else
+		gohelper.setActive(self.goNormal, true)
+		self.normalComp:refreshUI(group.skills[1])
+		self.normalComp:setActive(true)
+
+		local skillInfo = group.skills[2]
+
+		if skillInfo then
+			gohelper.setActive(self.goNormal1, true)
+			self.normal1Comp:refreshUI(skillInfo)
+			self.normal1Comp:setActive(true)
+			gohelper.setActive(self.goSpecialBg, true)
+		else
+			self.normal1Comp:setActive(false)
+			gohelper.setActive(self.goSpecialBg, false)
+			gohelper.setActive(self.goNormal1, false)
+		end
+
+		self.uniqueComp:setActive(false)
+		gohelper.setActive(self.goUnique, false)
+	end
+
+	recthelper.setWidth(self.rectTr, FightDeviceHelper.getDeviceInfoWidth(deviceInfo))
 end
 
-function FightDeviceCardItem:getDeviceSkillInfo()
-	return self.deviceSkillInfo
+function FightDeviceCardItem:getUid()
+	return self.uid
 end
 
-function FightDeviceCardItem:getSkillCo()
-	return self.skillCo
+function FightDeviceCardItem:getDeviceInfo()
+	return self.deviceInfo
 end
 
 function FightDeviceCardItem:setName(name)
@@ -264,38 +231,36 @@ function FightDeviceCardItem:setSelectFrameActive(active)
 		return
 	end
 
-	gohelper.setActive(self.goNormalSelect, active)
-	gohelper.setActive(self.goUniqueSelect, active)
-end
+	if not self.deviceInfo then
+		gohelper.setActive(self.goSelect, false)
+		self.uniqueComp:setSelectFrameActive(false)
 
-function FightDeviceCardItem:setScanLineActive(active)
-	self.scanLineActive = active
-
-	if not self.loadedDone then
 		return
 	end
 
-	gohelper.setActive(self.goScanLine, false)
+	local index = self.deviceInfo.clientIndex
+
+	if index == FightDeviceInfoData.Index.Unique then
+		gohelper.setActive(self.goSelect, false)
+		self.uniqueComp:setSelectFrameActive(active)
+	else
+		self.uniqueComp:setSelectFrameActive(false)
+		gohelper.setActive(self.goSelect, active)
+		recthelper.setWidth(self.rectSelect, FightDeviceHelper.getSelectFrameWidth(self.deviceInfo))
+		recthelper.setAnchorX(self.rectSelect, FightDeviceHelper.getSelectFrameAnchorX(self.deviceInfo))
+	end
 end
 
-function FightDeviceCardItem:setScanSuccessActive(active)
-	self.scanSuccessActive = active
-
-	if not self.loadedDone then
-		return
-	end
-
-	gohelper.setActive(self.goScanSuccess, active)
+function FightDeviceCardItem:showInnerSelectFrame(innerIndex)
+	self.normalComp:setSelectFrameActive(innerIndex == 1)
+	self.normal1Comp:setSelectFrameActive(innerIndex == 2)
+	self.uniqueComp:setSelectFrameActive(true)
 end
 
-function FightDeviceCardItem:setScanFailActive(active)
-	self.scanFailActive = active
-
-	if not self.loadedDone then
-		return
-	end
-
-	gohelper.setActive(self.goScanFail, active)
+function FightDeviceCardItem:hideAllInnerSelectFrame()
+	self.normalComp:setSelectFrameActive(false)
+	self.normal1Comp:setSelectFrameActive(false)
+	self.uniqueComp:setSelectFrameActive(false)
 end
 
 function FightDeviceCardItem:getRectTr()
@@ -303,9 +268,118 @@ function FightDeviceCardItem:getRectTr()
 end
 
 function FightDeviceCardItem:playAnim(animName, callback, callbackObj)
-	if self.animatorPlayer then
-		self.animatorPlayer:Play(animName, callback, callbackObj)
+	if not self.deviceInfo then
+		logError("device info is nil")
+
+		return
 	end
+
+	logError("play device anim : " .. tostring(animName))
+
+	local groupIndex = self.deviceInfo.clientIndex
+
+	if groupIndex == FightDeviceInfoData.Index.Unique then
+		self.uniqueComp:playAnim(animName, callback, callbackObj)
+	else
+		self.normalComp:playAnim(animName, callback, callbackObj)
+	end
+end
+
+function FightDeviceCardItem:playGroupAnim(animName, callback, callbackObj)
+	if not self.deviceInfo then
+		logError("device info is nil")
+
+		return
+	end
+
+	local groupIndex = self.deviceInfo.clientIndex
+
+	if groupIndex == FightDeviceInfoData.Index.Unique then
+		self.uniqueComp:playAnim(animName, callback, callbackObj)
+	else
+		self.normalComp:playAnim(animName, callback, callbackObj)
+		self.normal1Comp:playAnim(animName)
+	end
+end
+
+function FightDeviceCardItem:playOneItemAnim(animName, index, callback, callbackObj)
+	if not self.deviceInfo then
+		logError("device info is nil")
+
+		return
+	end
+
+	local groupIndex = self.deviceInfo.clientIndex
+
+	if groupIndex == FightDeviceInfoData.Index.Unique then
+		self.uniqueComp:playAnim(animName, callback, callbackObj)
+	elseif index == FightDeviceInfoData.Index.One then
+		self.normalComp:playAnim(animName, callback, callbackObj)
+	else
+		self.normal1Comp:playAnim(animName, callback, callbackObj)
+	end
+end
+
+function FightDeviceCardItem:playScanEffect(success, index)
+	if not self.loadedDone then
+		return
+	end
+
+	if not self.deviceInfo then
+		logError("device info is nil")
+
+		return
+	end
+
+	local groupIndex = self.deviceInfo.clientIndex
+	local group = self.deviceInfo.skills[groupIndex]
+
+	if not group then
+		return
+	end
+
+	local skillInfo = group.skills[index]
+
+	if not skillInfo then
+		return
+	end
+
+	if skillInfo.isStop then
+		return
+	end
+
+	if groupIndex == FightDeviceInfoData.Index.Unique then
+		self:setAsLastGo(self.goUnique)
+	elseif index == FightDeviceInfoData.Index.One then
+		self:setAsLastGo(self.goNormal)
+	else
+		self:setAsLastGo(self.goNormal1)
+	end
+
+	local animName = success and "success" or "fail"
+
+	self:playOneItemAnim(animName, index)
+
+	local audioId = success and 370807 or 370808
+
+	AudioMgr.instance:trigger(audioId)
+end
+
+function FightDeviceCardItem:setAsLastGo(go)
+	gohelper.setAsLastSibling(go)
+	gohelper.setAsLastSibling(self.goSelect)
+end
+
+function FightDeviceCardItem:playStopEffect(skillId)
+	return
+end
+
+function FightDeviceCardItem:restartDevice()
+	return
+end
+
+function FightDeviceCardItem:refreshStopEffect()
+	return
 end
 
 function FightDeviceCardItem:dispose()
@@ -318,22 +392,22 @@ function FightDeviceCardItem:dispose()
 		self.loader = nil
 	end
 
-	if self.tagIcon then
-		self.tagIcon:UnLoadImage()
+	if self.normalComp then
+		self.normalComp:dispose()
 
-		self.tagIcon = nil
+		self.normalComp = nil
 	end
 
-	if self.normalImageIcon then
-		self.normalImageIcon:UnLoadImage()
+	if self.normal1Comp then
+		self.normal1Comp:dispose()
 
-		self.normalImageIcon = nil
+		self.normal1Comp = nil
 	end
 
-	if self.uniqueImageIcon then
-		self.uniqueImageIcon:UnLoadImage()
+	if self.uniqueComp then
+		self.uniqueComp:dispose()
 
-		self.uniqueImageIcon = nil
+		self.uniqueComp = nil
 	end
 
 	self:__onDispose()

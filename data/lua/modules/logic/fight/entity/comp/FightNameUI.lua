@@ -497,11 +497,17 @@ function FightNameUI:_refreshCareer()
 	local version = FightModel.instance:getVersion()
 
 	if SkillEditorMgr.instance.inEditMode then
-		UISpriteSetMgr.instance:setCommonSprite(self._imgCareerIcon, "sx_icon_" .. tostring(entityMO:getCO().career), true)
+		local careerStr = "sx_icon_" .. tostring(entityMO:getCO().career)
+
+		UISpriteSetMgr.instance:setCommonSprite(self._imgCareerIcon, careerStr, true)
 	elseif version >= 2 and entityMO.career ~= 0 then
-		UISpriteSetMgr.instance:setCommonSprite(self._imgCareerIcon, "sx_icon_" .. tostring(entityMO.career), true)
+		local careerStr = "sx_icon_" .. tostring(entityMO.career)
+
+		UISpriteSetMgr.instance:setCommonSprite(self._imgCareerIcon, careerStr, true)
 	else
-		UISpriteSetMgr.instance:setCommonSprite(self._imgCareerIcon, "sx_icon_" .. tostring(entityMO:getCO().career), true)
+		local careerStr = "sx_icon_" .. tostring(entityMO:getCO().career)
+
+		UISpriteSetMgr.instance:setCommonSprite(self._imgCareerIcon, careerStr, true)
 	end
 end
 

@@ -223,5 +223,20 @@
     "storyId": 0,
     "iconArea": 0,
     "effect": "v1a9_caidai"
+  },
+  {
+    "id": 3851001,
+    "name": "齿轮啁啾之声",
+    "nameen": "Ticking Chirper",
+    "icon": "v3a85_antique_icon_1",
+    "gifticon": "v3a85_antique_icon_1",
+    "sign": "501211",
+    "title": "齿轮啁啾之声",
+    "titleen": "Ticking Chirper",
+    "desc": "风环绕着空岛发出有节奏的叹息，抚慰着它们，没有什么惊醒科学的好梦。齿轮滴答，齿轮啁啾，黎明把它们金属的脆响织进白色的晨衣，新的一天开始了。",
+    "sources": "",
+    "storyId": 800008,
+    "iconArea": 0,
+    "effect": "v1a9_caidai"
   }
 ]

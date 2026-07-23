@@ -596,11 +596,11 @@ function SummonMainModel:entryHasFree()
 		local summonMO = self:getPoolServerMO(co.id)
 
 		if summonMO and summonMO.haveFree then
-			return true
+			return true, co.id
 		end
 	end
 
-	return false
+	return false, nil
 end
 
 function SummonMainModel:entryHasFree10Count()
@@ -610,7 +610,39 @@ function SummonMainModel:entryHasFree10Count()
 		local summonMO = self:getPoolServerMO(co.id)
 
 		if summonMO and summonMO.havefree10Count > 0 then
+			return true, co.id
+		end
+	end
+
+	return false, nil
+end
+
+function SummonMainModel:entryHasCanget()
+	local result = SummonMainModel.getValidPools()
+
+	for i, co in ipairs(result) do
+		local summonMO = self:getPoolServerMO(co.id)
+
+		if summonMO and summonMO:isHasProgressReward() or summonMO:isHasOptionalProgressReward() then
 			return true
+		end
+
+		if self:isHasCanFinishTaskByPoolId(co.id) then
+			return true
+		end
+	end
+
+	return false
+end
+
+function SummonMainModel:isHasCanFinishTaskByPoolId(poolId)
+	local goodsCfgList = StoreConfig.instance:getCharageGoodsCfgListByPoolId(poolId)
+
+	if goodsCfgList then
+		for _, goodsCfg in ipairs(goodsCfgList) do
+			if StoreCharageConditionalHelper.isHasCanFinishGoodsTask(goodsCfg.id) then
+				return true
+			end
 		end
 	end
 
@@ -744,7 +776,7 @@ function SummonMainModel:checkFree10CountOver(poolId)
 	return false
 end
 
-function SummonMainModel:getCost10ById(poolId, isGetFirstCost)
+function SummonMainModel:getCost10ById(poolId, isGetFirstCost, isGetCostItemList)
 	local poolCfg = SummonConfig.instance:getSummonPool(poolId)
 
 	if not poolCfg then
@@ -756,10 +788,10 @@ function SummonMainModel:getCost10ById(poolId, isGetFirstCost)
 	local discount = self:getDiscountTime10Server(poolId)
 
 	if discount > 0 then
-		return SummonMainModel.getCostByConfig(poolCfg.cost10, isGetFirstCost, poolCfg.discountCost10)
+		return SummonMainModel.getCostByConfig(poolCfg.cost10, isGetFirstCost, poolCfg.discountCost10, isGetCostItemList)
 	end
 
-	return SummonMainModel.getCostByConfig(poolCfg.cost10, isGetFirstCost, nil)
+	return SummonMainModel.getCostByConfig(poolCfg.cost10, isGetFirstCost, nil, isGetCostItemList)
 end
 
 function SummonMainModel._getCostToDict(costs)
@@ -784,7 +816,7 @@ function SummonMainModel._getCostToDict(costs)
 	return dict
 end
 
-function SummonMainModel.getCostByConfig(costs, isGetFirstCost, discountCost)
+function SummonMainModel.getCostByConfig(costs, isGetFirstCost, discountCost, isGetCostItemList)
 	if string.nilorempty(costs) then
 		logError("no summon cost config")
 
@@ -792,6 +824,7 @@ function SummonMainModel.getCostByConfig(costs, isGetFirstCost, discountCost)
 	end
 
 	isGetFirstCost = isGetFirstCost == true
+	isGetCostItemList = isGetCostItemList == true
 
 	local costs = string.split(costs, "|")
 	local costsNumDict = {}
@@ -799,6 +832,7 @@ function SummonMainModel.getCostByConfig(costs, isGetFirstCost, discountCost)
 	local firstIdDict = isGetFirstCost and {} or nil
 	local firstTypeDict = isGetFirstCost and {} or nil
 	local discountDict = SummonMainModel._getCostToDict(discountCost)
+	local costListDict = isGetCostItemList and {} or nil
 
 	for i, costStr in ipairs(costs) do
 		local cost = string.splitToNumber(costStr, "#")
@@ -816,13 +850,21 @@ function SummonMainModel.getCostByConfig(costs, isGetFirstCost, discountCost)
 			firstTypeDict[cost_num] = cost_type
 		end
 
+		if isGetCostItemList and count > 0 then
+			if not costListDict[cost_num] then
+				costListDict[cost_num] = {}
+			end
+
+			table.insert(costListDict[cost_num], cost)
+		end
+
 		if i >= #costs or cost_num <= ownNum then
 			if isGetFirstCost then
 				cost_id = firstIdDict[cost_num] or cost_id
 				cost_type = firstTypeDict[cost_num] or cost_type
 			end
 
-			return cost_type, cost_id, cost_num, ownNum, cost[3]
+			return cost_type, cost_id, cost_num, ownNum, cost[3], costListDict and costListDict[cost_num]
 		end
 
 		if not itemCostFlagDict[costStr] then
@@ -998,7 +1040,7 @@ function SummonMainModel:entryNeedReddot()
 
 	if serverMap then
 		for poolId, summonMO in pairs(serverMap) do
-			local needShow = SummonMainModel.needShowReddot(summonMO)
+			local needShow = SummonMainModel.needShowReddot(summonMO, true)
 
 			if needShow then
 				return true
@@ -1009,7 +1051,7 @@ function SummonMainModel:entryNeedReddot()
 	return false
 end
 
-function SummonMainModel.needShowReddot(summonMO)
+function SummonMainModel.needShowReddot(summonMO, isMainView)
 	if not summonMO:isOpening() then
 		return false
 	end
@@ -1022,21 +1064,15 @@ function SummonMainModel.needShowReddot(summonMO)
 		return true
 	end
 
-	if summonMO:isHasProgressReward() then
+	if isMainView then
+		return false
+	end
+
+	if summonMO:isHasProgressReward() or summonMO:isHasOptionalProgressReward() then
 		return true
 	end
 
-	local goodsCfgList = StoreConfig.instance:getCharageGoodsCfgListByPoolId(summonMO.id)
-
-	if goodsCfgList then
-		for _, goodsCfg in ipairs(goodsCfgList) do
-			if StoreCharageConditionalHelper.isHasCanFinishGoodsTask(goodsCfg.id) then
-				return true
-			end
-		end
-	end
-
-	if StoreGoodsTaskController.instance:isHasNewRedDotByPoolId(summonMO.id) then
+	if SummonMainModel.instance:isHasCanFinishTaskByPoolId(summonMO.id) then
 		return true
 	end
 

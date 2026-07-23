@@ -340,13 +340,10 @@ function StoryBgEffsTextureShake:onLoadFinished()
 	StoryTool.enablePostProcess(true)
 
 	if self._prefabPath then
-		local bgGo = StoryViewMgr.instance:getStoryBackgroundView()
-
-		self._rootGo = gohelper.findChild(bgGo, "#go_upbg/#simage_bgimg")
-
 		local prefAssetItem = self._loader:getAssetItem(self._prefabPath)
+		local bgImgGo = StoryViewMgr.instance:getStoryFrontBgImgGo()
 
-		self._effsGo = gohelper.clone(prefAssetItem:GetResource(), self._rootGo)
+		self._effsGo = gohelper.clone(prefAssetItem:GetResource(), bgImgGo)
 
 		self:_cacheEffectNodes()
 		self:_applyEffectParams()

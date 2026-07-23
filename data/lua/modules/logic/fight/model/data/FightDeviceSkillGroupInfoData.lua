@@ -18,4 +18,8 @@ function FightDeviceSkillGroupInfoData:resetStopAttr()
 	end
 end
 
+function FightDeviceSkillGroupInfoData:getCount()
+	return #self.skills
+end
+
 return FightDeviceSkillGroupInfoData

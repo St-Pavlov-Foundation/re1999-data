@@ -30038,5 +30038,13 @@
   {
     "id": 1000210,
     "type": "TeamContainHero"
+  },
+  {
+    "id": 180100,
+    "type": "PowerCompare"
+  },
+  {
+    "id": 518004,
+    "type": "PerHasBuffTypeLayer"
   }
 ]

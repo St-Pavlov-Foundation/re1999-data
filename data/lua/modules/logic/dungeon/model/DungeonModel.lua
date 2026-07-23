@@ -729,6 +729,7 @@ local BattleEpisodeTypes = {
 	[DungeonEnum.EpisodeType.V3_2ZongMao] = true,
 	[DungeonEnum.EpisodeType.Abyss] = true,
 	[DungeonEnum.EpisodeType.Sodache] = true,
+	[DungeonEnum.EpisodeType.AtomicDungeon] = true,
 	[DungeonEnum.EpisodeType.SystemFightManual] = true
 }
 

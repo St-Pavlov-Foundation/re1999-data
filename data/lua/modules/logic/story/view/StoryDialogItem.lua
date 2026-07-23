@@ -8,25 +8,38 @@ function StoryDialogItem:init(go)
 	self._gocontentroot = go
 	self._gonexticon = gohelper.findChild(go, "nexticon")
 	self._goconversation = gohelper.findChild(go, "#go_conversation")
-	self._goblackbottom = gohelper.findChild(go, "#go_conversation/blackBottom")
-	self._gocontent = gohelper.findChild(go, "#go_conversation/#go_contents")
+	self._gocontent = gohelper.findChild(go, "#go_conversation/#go_contents/content")
+	self._goblackbottom = gohelper.findChild(self._gocontent, "blackBottom")
 	self._goline = gohelper.findChild(self._gocontent, "line")
 	self._gonormalcontent = gohelper.findChild(self._gocontent, "go_normalcontent")
 	self._txtcontentcn = gohelper.findChildText(self._gonormalcontent, "txt_contentcn")
-	self._conMat = self._txtcontentcn.fontMaterial
+	self._norConMat = self._txtcontentcn.fontMaterial
 
 	local _shader = UnityEngine.Shader
 
 	self._LineMinYId = _shader.PropertyToID("_LineMinY")
 	self._LineMaxYId = _shader.PropertyToID("_LineMaxY")
-	self._godot = gohelper.findChild(self._gonormalcontent, "txt_contentcn/storytxtdot")
-	self._txtmarktop = gohelper.findChildText(self._gonormalcontent, "txt_contentcn/storymarktop")
-	self._dotMat = self._godot.transform:GetComponent(gohelper.Type_Image).material
-	self._markTopMat = self._txtmarktop.fontMaterial
-	self._conMark = gohelper.onceAddComponent(self._txtcontentcn.gameObject, typeof(ZProj.TMPMark))
+	self._gonormaldot = gohelper.findChild(self._gonormalcontent, "txt_contentcn/storytxtdot")
+	self._txtnormalmarktop = gohelper.findChildText(self._gonormalcontent, "txt_contentcn/storymarktop")
+	self._dotnormalMat = self._gonormaldot.transform:GetComponent(gohelper.Type_Image).material
+	self._normalmarkTopMat = self._txtnormalmarktop.fontMaterial
+	self._normalConMark = gohelper.onceAddComponent(self._txtcontentcn.gameObject, typeof(ZProj.TMPMark))
 
-	self._conMark:SetMarkGo(self._godot)
-	self._conMark:SetMarkTopGo(self._txtmarktop.gameObject)
+	self._normalConMark:SetMarkGo(self._gonormaldot)
+	self._normalConMark:SetMarkTopGo(self._txtnormalmarktop.gameObject)
+
+	self._gosoftlightcontent = gohelper.findChild(self._gocontent, "go_softlightcontent")
+	self._txtsoftlight = gohelper.findChildText(self._gosoftlightcontent, "txt_softlight")
+	self._softConMat = self._txtsoftlight.fontMaterial
+	self._softConMat = self._txtsoftlight.fontMaterial
+	self._softdot = gohelper.findChild(self._gosoftlightcontent, "txt_softlight/storytxtdot")
+	self._txtsoftmarktop = gohelper.findChildText(self._gosoftlightcontent, "txt_softlight/storymarktop")
+	self._softdotMat = self._softdot.transform:GetComponent(gohelper.Type_Image).material
+	self._softmarkTopMat = self._txtsoftmarktop.fontMaterial
+	self._softConMark = gohelper.onceAddComponent(self._txtsoftlight.gameObject, typeof(ZProj.TMPMark))
+
+	self._softConMark:SetMarkGo(self._softdot)
+	self._softConMark:SetMarkTopGo(self._txtsoftmarktop.gameObject)
 
 	self._gomagiccontent = gohelper.findChild(self._gocontent, "go_magiccontent")
 	self._goslidecontent = gohelper.findChild(go, "#go_slidecontent")
@@ -35,12 +48,6 @@ function StoryDialogItem:init(go)
 	self._slideItem:init(self._goslidecontent)
 	self._slideItem:hideDialog()
 
-	local storyviewGo = StoryViewMgr.instance:getStoryView()
-
-	self._goroleaudio = gohelper.findChild(storyviewGo, "go_roleaudio")
-	self._goroleaudioleft = gohelper.findChild(self._goroleaudio, "left")
-	self._goroleaudiomid = gohelper.findChild(self._goroleaudio, "middle")
-	self._goroleaudioright = gohelper.findChild(self._goroleaudio, "right")
 	self._fontNormalMat = self._txtcontentcn.fontSharedMaterial
 
 	self:_loadRes()
@@ -119,15 +126,22 @@ function StoryDialogItem:hideDialog()
 	end
 
 	gohelper.setActive(self._gonormalcontent, false)
+	gohelper.setActive(self._gosoftlightcontent, false)
 
 	local x, y, z = transformhelper.getLocalPos(self._txtcontentcn.transform)
 
 	transformhelper.setLocalPos(self._txtcontentcn.transform, x, y, 1)
 
 	self._txtcontentcn.text = ""
+	self._txtsoftlight.text = ""
 
-	self._conMat:DisableKeyword("_GRADUAL_ON")
-	self._markTopMat:DisableKeyword("_GRADUAL_ON")
+	if self._conMat then
+		self._conMat:DisableKeyword("_GRADUAL_ON")
+	end
+
+	if self._markTopMat then
+		self._markTopMat:DisableKeyword("_GRADUAL_ON")
+	end
 
 	if self._subMeshs then
 		for _, v in pairs(self._subMeshs) do
@@ -137,6 +151,7 @@ function StoryDialogItem:hideDialog()
 		end
 	end
 
+	UIBlockMgr.instance:endBlock("delayShow")
 	TaskDispatcher.cancelTask(self._delayShow, self)
 	self:_showMagicItem(false)
 
@@ -179,6 +194,7 @@ function StoryDialogItem:playMagicText(txt, callback, callbackobj)
 	self:_showMagicItem(true)
 	TaskDispatcher.cancelTask(self._playConAudio, self)
 	gohelper.setActive(self._gonormalcontent, false)
+	gohelper.setActive(self._gosoftlightcontent, false)
 
 	self._textShowFinished = false
 	self._playingAudioId = 0
@@ -193,10 +209,18 @@ function StoryDialogItem:playMagicText(txt, callback, callbackobj)
 
 	self._magicEff:start(self._stepCo, txt, callback, callbackobj)
 
-	if self._stepCo.conversation.audioDelayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] < 0.1 then
+	local disableAudio = self._stepCo.conversation.disableAudio[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] or false
+
+	if disableAudio then
+		return
+	end
+
+	local audioDelayTime = self._stepCo.conversation.audioDelayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] or 0
+
+	if audioDelayTime < 0.1 then
 		self:_playConAudio()
 	else
-		TaskDispatcher.runDelay(self._playConAudio, self, self._stepCo.conversation.audioDelayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()])
+		TaskDispatcher.runDelay(self._playConAudio, self, audioDelayTime)
 	end
 end
 
@@ -262,6 +286,19 @@ function StoryDialogItem:_isSoftLightStep()
 end
 
 function StoryDialogItem:playNormalText(txt, callback, callbackobj)
+	if SDKModel.instance:isDmm() and LangSettings.instance:isJp() then
+		local storyId = StoryController.instance._curStoryId
+		local stepId = StoryController.instance._curStepId
+
+		if storyId == 100601 and stepId == 36 then
+			txt = "はっ！　正気の沙汰じゃない。一家そろって◯◯◯だぞ！"
+		elseif storyId == 100602 and stepId == 30 then
+			txt = "あんたらがマヌス・ヴェンデッタの仮面を研究したおかげで、その副作用が徹底的に分かったぜ！　おかげで、ラプラスの廊下は身体のあちこちから石油を垂らす◯◯◯で埋まっちまったがな。"
+		elseif storyId == 100726 and stepId == 32 then
+			txt = "ははは！　死ね、無様な◯◯◯どもが！！"
+		end
+	end
+
 	self._txt = txt
 	self._textShowFinished = false
 
@@ -273,30 +310,60 @@ function StoryDialogItem:playNormalText(txt, callback, callbackobj)
 	self._finishCallbackObj = callbackobj
 	self._markIndexs = StoryTool.getMarkTextIndexs(self._txt)
 	self._subemtext = StoryTool.filterSpTag(self._txt)
-	self._markTop, self._markContent = StoryTool.getMarkTopTextList(self._subemtext)
+	self._markTopList = StoryTool.getMarkTopTextList(self._subemtext)
 	self._subemtext = StoryTool.filterMarkTop(self._subemtext)
-	self._txtcontentcn.text = string.gsub(self._subemtext, "(<sprite=%d>)", "")
 
-	local isSoftLight = self:_isSoftLightStep()
+	local hasGlitch = string.match(self._txt, "<glitch>")
 
-	if isSoftLight then
-		self._txtcontentcn.alignment = TMPro.TextAlignmentOptions.Top
+	if self._glitchGo then
+		gohelper.setActive(self._glitchGo, false)
+	end
 
-		if self._txtcontentcn.fontSharedMaterial:IsKeywordEnabled("UNDERLAY_ON") == false then
-			self._txtcontentcn.fontSharedMaterial:EnableKeyword("UNDERLAY_ON")
-			self._txtcontentcn.fontSharedMaterial:SetFloat("_BloomFactor", 2.5)
+	self._dialogTextShowFinishedCallback = nil
+	self._dialogTextShowFinishedCallbackObj = nil
 
-			self._txtcontentcn.fontSharedMaterial.renderQueue = 4995
+	if hasGlitch then
+		self._glitchTxt = string.gsub(self._txt, "<glitch>", "<i><b>")
+		self._glitchTxt = string.gsub(self._glitchTxt, "</glitch>", "</i></b>")
+		self._dialogTextShowFinishedCallback = self._onDialogTextShowFinished
+		self._dialogTextShowFinishedCallbackObj = self
 
-			local color = Color.New(0, 0, 0, 0.75)
+		if GameLanguageMgr.instance:getLanguageTypeStoryIndex() == LanguageEnum.LanguageStoryType.EN then
+			self._subemtext = string.gsub(self._subemtext, "<glitch>", "")
+			self._subemtext = string.gsub(self._subemtext, "</glitch>", "")
+		else
+			self._subemtext = string.gsub(self._subemtext, "<glitch>", "<i><b>")
+			self._subemtext = string.gsub(self._subemtext, "</glitch>", "</i></b>")
+		end
+	end
 
-			self._txtcontentcn.fontSharedMaterial:SetColor("_UnderlayColor", color)
-			self._txtcontentcn.fontSharedMaterial:SetFloat("_UnderlayOffsetX", 0.143)
-			self._txtcontentcn.fontSharedMaterial:SetFloat("_UnderlayOffsetY", -0.1)
-			self._txtcontentcn.fontSharedMaterial:SetFloat("_UnderlayDilate", 0.107)
-			self._txtcontentcn.fontSharedMaterial:SetFloat("_UnderlaySoftness", 0.447)
+	self._isSoftLight = self._stepCo and self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.SoftLight
 
-			self._txtcontentcn.fontSharedMaterial = self._txtcontentcn.fontMaterial
+	gohelper.setActive(self._gosoftlightcontent, self._isSoftLight)
+	gohelper.setActive(self._gonormalcontent, not self._isSoftLight)
+
+	self._targetTxt = self._isSoftLight and self._txtsoftlight or self._txtcontentcn
+	self._conMat = self._isSoftLight and self._softConMat or self._norConMat
+	self._godot = self._isSoftLight and self._softdot or self._gonormaldot
+	self._dotMat = self._isSoftLight and self._softdotMat or self._dotnormalMat
+	self._markTopMat = self._isSoftLight and self._softmarkTopMat or self._normalmarkTopMat
+	self._conMark = self._isSoftLight and self._softConMark or self._normalConMark
+	self._targetTxt.text = string.gsub(self._subemtext, "(<sprite=%d>)", "")
+
+	if self._isSoftLight then
+		if self._targetTxt.fontSharedMaterial:IsKeywordEnabled("UNDERLAY_ON") == false then
+			self._targetTxt.fontSharedMaterial:EnableKeyword("UNDERLAY_ON")
+			self._targetTxt.fontSharedMaterial:SetFloat("_BloomFactor", 2.5)
+			self._targetTxt.fontSharedMaterial:SetFloat("_BloomFactor", 2.5)
+
+			self._targetTxt.fontSharedMaterial.renderQueue = 4995
+
+			self._targetTxt.fontSharedMaterial:SetFloat("_UnderlayOffsetX", 0.143)
+			self._targetTxt.fontSharedMaterial:SetFloat("_UnderlayOffsetY", -0.1)
+			self._targetTxt.fontSharedMaterial:SetFloat("_UnderlayDilate", 0.107)
+			self._targetTxt.fontSharedMaterial:SetFloat("_UnderlaySoftness", 0.447)
+
+			self._targetTxt.fontSharedMaterial = self._targetTxt.fontMaterial
 		end
 
 		StoryTool.enablePostProcess(true)
@@ -307,12 +374,12 @@ function StoryDialogItem:playNormalText(txt, callback, callbackobj)
 		gohelper.setActive(self._goblackbottom, self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.SoftLightDarkBg)
 		transformhelper.setLocalPosXY(self._gonormalcontent.transform, 475, -50)
 	else
-		self._txtcontentcn.fontSharedMaterial:DisableKeyword("UNDERLAY_ON")
+		self._targetTxt.fontSharedMaterial:DisableKeyword("UNDERLAY_ON")
 
-		self._txtcontentcn.alignment = TMPro.TextAlignmentOptions.TopLeft
-		self._txtcontentcn.fontSharedMaterial = self._fontNormalMat
+		self._targetTxt.fontSharedMaterial = self._fontNormalMat
 
-		self._txtcontentcn.fontSharedMaterial:SetFloat("_BloomFactor", 0)
+		self._targetTxt.fontSharedMaterial:SetFloat("_BloomFactor", 0)
+		PostProcessingMgr.instance:setUIPPValue("localBloomActive", false)
 		PostProcessingMgr.instance:setUIPPValue("bloomDiffusion", 7)
 
 		local showContent = self._stepCo.conversation.type ~= StoryEnum.ConversationType.IrregularShake
@@ -320,13 +387,7 @@ function StoryDialogItem:playNormalText(txt, callback, callbackobj)
 		gohelper.setActive(self._goline, showContent)
 		gohelper.setActive(self._goblackbottom, showContent)
 		gohelper.setActive(self._gonexticon, showContent)
-		transformhelper.setLocalPosXY(self._gonormalcontent.transform, 550, 0)
 	end
-
-	self:_checkPlayGlitch(self._subemtext)
-
-	self._subemtext = string.gsub(self._subemtext, "<glitch>", "<i><b>")
-	self._subemtext = string.gsub(self._subemtext, "</glitch>", "</i></b>")
 
 	if self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.Hard then
 		self:playHardIn()
@@ -335,141 +396,277 @@ function StoryDialogItem:playNormalText(txt, callback, callbackobj)
 	end
 end
 
-function StoryDialogItem:_checkPlayGlitch(txt)
-	local hasGlitch = string.match(txt, "<glitch>")
+function StoryDialogItem:_onDialogTextShowFinished()
+	local hasGlitch = string.match(self._txt, "<glitch>")
 
 	gohelper.setActive(self._glitchGo, hasGlitch)
 
-	if not hasGlitch then
-		return
+	if hasGlitch then
+		self._glitchTxt = self:_getFitGlicthText(self._glitchTxt)
+
+		self:_checkPlayGlitch(self._glitchTxt)
+	end
+end
+
+function StoryDialogItem:_getFitGlicthText(glitchTxt)
+	local txt = StoryTool.filterMarkTop(glitchTxt)
+
+	txt = string.gsub(txt, "<nobr>", "")
+	txt = string.gsub(txt, "</nobr>", "")
+	txt = string.gsub(txt, "​", "")
+
+	local textInfo = self._targetTxt:GetTextInfo(txt)
+	local glitchWords = string.split(txt, "\n")
+
+	if textInfo.lineCount <= 1 or #glitchWords > 1 then
+		return txt
 	end
 
+	local hasStartGlitch = string.sub(txt, 1, string.len("<i><b>")) == "<i><b>"
+	local hasEndGlitch = string.sub(txt, string.len(txt) - string.len("</i></b>") + 1, string.len(txt)) == "</i></b>"
+	local isFullGlitch = hasStartGlitch and hasEndGlitch
+
+	if isFullGlitch then
+		return txt
+	end
+
+	local replaceTbs = {}
+
+	for index = 1, textInfo.lineCount do
+		local lineInfo = textInfo.lineInfo[index - 1]
+		local curLineText = LuaUtil.subString(txt, lineInfo.firstCharacterIndex + 1, lineInfo.firstCharacterIndex + lineInfo.characterCount)
+		local lineHasGlitchStart = string.find(curLineText, "<i><b>")
+		local lineHasGlicthEnd = string.find(curLineText, "</i></b>")
+		local endCharacterIndex = lineInfo.firstCharacterIndex + lineInfo.characterCount
+
+		endCharacterIndex = lineHasGlitchStart and endCharacterIndex + string.len("<i><b>") or endCharacterIndex
+		endCharacterIndex = lineHasGlicthEnd and endCharacterIndex + string.len("</i></b>") or endCharacterIndex
+		curLineText = LuaUtil.subString(txt, lineInfo.firstCharacterIndex + 1, endCharacterIndex)
+
+		if lineHasGlitchStart and not lineHasGlicthEnd then
+			table.insert(replaceTbs, curLineText)
+		end
+	end
+
+	if #replaceTbs > 0 then
+		for i = 1, #replaceTbs do
+			txt = string.gsub(txt, replaceTbs[i], replaceTbs[i] .. "</i></b>\n<i><b>")
+		end
+	end
+
+	return txt
+end
+
+function StoryDialogItem:_checkPlayGlitch(txt)
 	StoryTool.enablePostProcess(true)
 
-	local lineTxt = string.gsub(txt, "<glitch>", "")
+	local hasStartGlitch = string.sub(txt, 1, string.len("<i><b>")) == "<i><b>"
+	local hasEndGlitch = string.sub(txt, string.len(txt) - string.len("</i></b>") + 1, string.len(txt)) == "</i></b>"
+	local isFullGlitch = hasStartGlitch and hasEndGlitch
+	local resultTxt = txt
 
-	lineTxt = string.gsub(lineTxt, "</glitch>", "")
+	if GameLanguageMgr.instance:getLanguageTypeStoryIndex() == LanguageEnum.LanguageStoryType.EN then
+		resultTxt = string.gsub(resultTxt, "<i><b>", "")
+		resultTxt = string.gsub(resultTxt, "</i></b>", "")
+	end
 
-	local textInfo = self._txtcontentcn:GetTextInfo(lineTxt)
+	local textInfo = self._targetTxt:GetTextInfo(resultTxt)
 	local particleSystems = {}
-	local goGlitchScreen = gohelper.findChild(self._glitchGo, "part_screen")
 
-	gohelper.setActive(goGlitchScreen, false)
+	for i = 1, 5 do
+		local parGlitch = gohelper.findChild(self._glitchGo, "part_" .. tostring(i)):GetComponent(typeof(UnityEngine.ParticleSystem))
 
-	local goGlitchUp = gohelper.findChild(self._glitchGo, "part_up")
-
-	gohelper.setActive(goGlitchUp, true)
-
-	local parGlitchUp = goGlitchUp:GetComponent(typeof(UnityEngine.ParticleSystem))
-
-	table.insert(particleSystems, parGlitchUp)
-
-	local goGlitchDown = gohelper.findChild(self._glitchGo, "part_down")
-	local parGlitchDown = goGlitchDown:GetComponent(typeof(UnityEngine.ParticleSystem))
-
-	table.insert(particleSystems, parGlitchDown)
-	gohelper.setActive(goGlitchDown, textInfo.lineCount > 1)
+		table.insert(particleSystems, parGlitch)
+		gohelper.setActive(parGlitch.gameObject, false)
+	end
 
 	local uiCamera = CameraMgr.instance:getUICamera()
 	local characterInfo = textInfo.characterInfo
-	local lineLength = recthelper.getWidth(self._txtcontentcn.transform) + 121.8684
+	local lineLength = recthelper.getWidth(self._targetTxt.transform) + 121.8684
 	local lineDatas = {}
 	local glitchWords = string.split(txt, "\n")
 
 	if #glitchWords > 1 then
 		for index = 1, #glitchWords do
-			local curGlitchTxt = glitchWords[index]
-			local glitchStartIndex = string.find(curGlitchTxt, "<glitch>")
-			local lineHasGlitch = string.find(curGlitchTxt, "<glitch>")
+			local curLineText = glitchWords[index]
+			local lineHasGlitch = string.find(curLineText, "<i><b>")
 			local data = {}
 
 			if not lineHasGlitch then
 				data.hasGlitch = false
+				data.startIndex = 0
+				data.endIndex = 0
+				data.lineTxt = curLineText
 
 				table.insert(lineDatas, data)
 			else
-				local startTxt = string.sub(curGlitchTxt, 1, glitchStartIndex - 1)
-				local subGlicthTxt = string.gsub(curGlitchTxt, "<glitch>", "")
-				local glitchEndIndex = string.find(subGlicthTxt, "</glitch>")
+				local glitchStartIndex = string.find(curLineText, "<i><b>")
+				local startTxt = string.sub(curLineText, 1, glitchStartIndex - 1)
+				local subGlicthTxt = string.gsub(curLineText, "<i><b>", "")
+				local glitchEndIndex = string.find(subGlicthTxt, "</i></b>")
+
+				if not glitchEndIndex then
+					if isDebugBuild then
+						local storyId = StoryController.instance._curStoryId
+						local stepId = StoryController.instance._curStepId
+
+						logError(string.format("StoryId: %s StepId %s When using '<Glitch>' with multiple lines, please manually wrap the lines!", storyId, stepId))
+					end
+
+					return
+				end
+
 				local endTxt = string.sub(subGlicthTxt, 1, glitchEndIndex - 1)
-				local curLineText = string.gsub(subGlicthTxt, "</glitch>", "")
-				local lineInfo = textInfo.lineInfo[index - 1]
+				local curLineText = string.gsub(subGlicthTxt, "</i></b>", "")
 
 				data.hasGlitch = true
-				data.firstCharacterIndex = lineInfo.firstCharacterIndex
 				data.startIndex = utf8.len(startTxt)
 				data.endIndex = utf8.len(endTxt)
 				data.lineTxt = curLineText
-				data.glitchTxt = curGlitchTxt
 
 				table.insert(lineDatas, data)
 			end
 		end
 	else
 		for index = 1, textInfo.lineCount do
-			local lineInfo = textInfo.lineInfo[index - 1]
-			local curLineText = LuaUtil.subString(lineTxt, lineInfo.firstCharacterIndex + 1, lineInfo.firstCharacterIndex + lineInfo.characterCount + 1)
-			local startIndex = index > 1 and lineDatas[index - 1].endIndex + 1 or 0
-			local checkEndIndex = string.len(curLineText) + string.len("<glitch>")
-			local checkGlitchTxt = index > 1 and string.gsub(txt, lineDatas[index - 1].glitchTxt, "") or string.sub(txt, startIndex, checkEndIndex)
-			local lineHasGlitch = string.find(checkGlitchTxt, "<glitch>")
-			local endIndex = lineHasGlitch and string.len(curLineText) + string.len("<glitch>") + string.len("</glitch>") or string.len(curLineText)
-			local curGlitchTxt = index > 1 and string.gsub(txt, lineDatas[index - 1].glitchTxt, "") or string.sub(txt, startIndex, endIndex)
-			local glitchStartIndex = string.find(curGlitchTxt, "<glitch>")
-			local data = {}
+			if isFullGlitch then
+				local data = {}
 
-			if not lineHasGlitch then
-				data.hasGlitch = false
+				data.hasGlitch = true
+				data.lineGlitch = true
 
 				table.insert(lineDatas, data)
 			else
-				local startTxt = string.sub(curGlitchTxt, 1, glitchStartIndex - 1)
-				local subGlicthTxt = string.gsub(curGlitchTxt, "<glitch>", "")
-				local glitchEndIndex = string.find(subGlicthTxt, "</glitch>")
-				local endTxt = string.sub(subGlicthTxt, 1, glitchEndIndex - 1)
+				local lineInfo = textInfo.lineInfo[index - 1]
+				local curLineText = LuaUtil.subString(txt, lineInfo.firstCharacterIndex + 1, lineInfo.firstCharacterIndex + lineInfo.characterCount)
+				local lineHasGlitch = string.find(curLineText, "<i><b>")
 
-				data.hasGlitch = true
-				data.firstCharacterIndex = lineInfo.firstCharacterIndex
-				data.startIndex = utf8.len(startTxt)
-				data.endIndex = utf8.len(endTxt)
-				data.lineTxt = curLineText
-				data.glitchTxt = curGlitchTxt
+				if lineHasGlitch then
+					curLineText = LuaUtil.subString(txt, lineInfo.firstCharacterIndex + 1, lineInfo.firstCharacterIndex + lineInfo.characterCount + string.len("<i><b>") + string.len("</i></b>"))
+				end
 
-				table.insert(lineDatas, data)
+				local data = {}
+
+				if not lineHasGlitch then
+					data.hasGlitch = false
+					data.startIndex = 0
+					data.endIndex = 0
+					data.lineText = curLineText
+
+					table.insert(lineDatas, data)
+				else
+					local glitchStartIndex = string.find(curLineText, "<i><b>")
+					local startTxt = string.sub(curLineText, 1, glitchStartIndex - 1)
+					local subGlicthTxt = string.gsub(curLineText, "<i><b>", "")
+					local glitchEndIndex = string.find(subGlicthTxt, "</i></b>")
+
+					if not glitchEndIndex then
+						if isDebugBuild then
+							local storyId = StoryController.instance._curStoryId
+							local stepId = StoryController.instance._curStepId
+
+							logError(string.format("StoryId: %s StepId %s When using '<Glitch>' with multiple lines, please manually wrap the lines!", storyId, stepId))
+						end
+
+						return
+					end
+
+					local endTxt = string.sub(subGlicthTxt, 1, glitchEndIndex - 1)
+					local curLineText = string.gsub(subGlicthTxt, "</i></b>", "")
+
+					data.hasGlitch = true
+					data.startIndex = utf8.len(startTxt)
+					data.endIndex = utf8.len(endTxt)
+					data.lineTxt = curLineText
+
+					table.insert(lineDatas, data)
+				end
 			end
 		end
 	end
+
+	local glitchLinePosYs = {
+		{
+			76,
+			28,
+			98,
+			50,
+			2
+		},
+		{
+			76,
+			28,
+			98,
+			50,
+			2
+		},
+		{
+			120,
+			72,
+			24,
+			50,
+			2
+		},
+		{
+			168,
+			120,
+			72,
+			24,
+			2
+		},
+		{
+			294,
+			146,
+			98,
+			50,
+			2
+		}
+	}
 
 	for i = 1, #lineDatas do
 		local x, y, z = transformhelper.getLocalPos(particleSystems[i].transform)
 
 		if not lineDatas[i].hasGlitch then
-			transformhelper.setLocalPos(particleSystems[i].transform, -10000, y, z)
+			gohelper.setActive(particleSystems[i].gameObject, false)
 		else
-			local firstChar = characterInfo[0]
-			local startGlitchChar = characterInfo[lineDatas[i].startIndex]
-			local endGlitchChar = characterInfo[lineDatas[i].endIndex - 1]
-			local firstBL = uiCamera:WorldToScreenPoint(self._txtcontentcn.transform:TransformPoint(firstChar.bottomLeft))
-			local startBL = uiCamera:WorldToScreenPoint(self._txtcontentcn.transform:TransformPoint(startGlitchChar.bottomLeft))
-			local endBR = uiCamera:WorldToScreenPoint(self._txtcontentcn.transform:TransformPoint(endGlitchChar.bottomRight))
-			local w = UnityEngine.Screen.width
-			local h = UnityEngine.Screen.height
-			local percent = math.min(1, 0.9 * w / (1.6 * h))
-			local startTxtLength = 1080 * (startBL.x - firstBL.x) / (h * percent)
-			local glitchTxtLength = 1144.8 * (endBR.x - startBL.x) / (h * percent)
-			local scaleA = startTxtLength / lineLength
-			local scaleB = glitchTxtLength / lineLength
-			local posX = 647 * (2 * scaleA + scaleB)
-			local x, y, z = transformhelper.getLocalPos(particleSystems[i].transform)
+			gohelper.setActive(particleSystems[i].gameObject, true)
 
-			transformhelper.setLocalPos(particleSystems[i].transform, posX, y, z)
+			local posY = glitchLinePosYs[#lineDatas][i]
 
-			local shapeX = 12 * scaleB * percent
-			local shapeY = 0.4 * percent
+			if lineDatas[i].lineGlitch then
+				local x, y, z = transformhelper.getLocalPos(particleSystems[i].transform)
 
-			particleSystems[i].shape.scale = Vector3(shapeX, shapeY, 0)
+				transformhelper.setLocalPos(particleSystems[i].transform, 640, posY, z)
 
-			ZProj.ParticleSystemHelper.SetMaxParticles(particleSystems[i], math.floor(30 * scaleB))
+				particleSystems[i].shape.scale = Vector3(12, 0.4, 0)
+
+				ZProj.ParticleSystemHelper.SetMaxParticles(particleSystems[i], 30)
+			else
+				local firstChar = characterInfo[0]
+				local lineInfo = textInfo.lineInfo[i - 1]
+				local startGlitchChar = characterInfo[lineInfo.firstCharacterIndex + lineDatas[i].startIndex]
+				local endGlitchChar = characterInfo[lineInfo.firstCharacterIndex + lineDatas[i].endIndex - 1]
+				local firstBL = uiCamera:WorldToScreenPoint(self._targetTxt.transform:TransformPoint(firstChar.bottomLeft))
+				local startBL = uiCamera:WorldToScreenPoint(self._targetTxt.transform:TransformPoint(startGlitchChar.bottomLeft))
+				local endBR = uiCamera:WorldToScreenPoint(self._targetTxt.transform:TransformPoint(endGlitchChar.bottomRight))
+				local w = UnityEngine.Screen.width
+				local h = UnityEngine.Screen.height
+				local percent = math.min(1, 0.9 * w / (1.6 * h))
+				local startTxtLength = 1080 * (startBL.x - firstBL.x) / (h * percent)
+				local glitchTxtLength = 1144.8 * (endBR.x - startBL.x) / (h * percent)
+				local scaleA = startTxtLength / lineLength
+				local scaleB = glitchTxtLength / lineLength
+				local posX = 647 * (2 * scaleA + scaleB)
+
+				transformhelper.setLocalPos(particleSystems[i].transform, posX, posY, 0)
+
+				local shapeX = 12 * scaleB * percent
+				local shapeY = 0.4 * percent
+
+				particleSystems[i].shape.scale = Vector3(shapeX, shapeY, 0)
+
+				ZProj.ParticleSystemHelper.SetMaxParticles(particleSystems[i], math.floor(30 * scaleB))
+			end
 		end
 	end
 end
@@ -477,6 +674,7 @@ end
 function StoryDialogItem:playHardIn()
 	self:_showMagicItem(false)
 	gohelper.setActive(self._gonormalcontent, true)
+	UIBlockMgr.instance:endBlock("delayShow")
 	TaskDispatcher.cancelTask(self._delayShow, self)
 	self:conFinished()
 end
@@ -484,18 +682,23 @@ end
 function StoryDialogItem:playGradualIn()
 	local height = UnityEngine.Screen.height
 
-	self._conMat:EnableKeyword("_GRADUAL_ON")
-	self._conMat:DisableKeyword("_DISSOLVE_ON")
-	self._conMat:SetFloat(self._LineMinYId, height)
-	self._conMat:SetFloat(self._LineMaxYId, height)
-	self._markTopMat:EnableKeyword("_GRADUAL_ON")
-	self._markTopMat:DisableKeyword("_DISSOLVE_ON")
-	self._markTopMat:SetFloat(self._LineMinYId, height)
-	self._markTopMat:SetFloat(self._LineMaxYId, height)
+	if self._conMat then
+		self._conMat:EnableKeyword("_GRADUAL_ON")
+		self._conMat:DisableKeyword("_DISSOLVE_ON")
+		self._conMat:SetFloat(self._LineMinYId, height)
+		self._conMat:SetFloat(self._LineMaxYId, height)
+	end
+
+	if self._markTopMat then
+		self._markTopMat:EnableKeyword("_GRADUAL_ON")
+		self._markTopMat:DisableKeyword("_DISSOLVE_ON")
+		self._markTopMat:SetFloat(self._LineMinYId, height)
+		self._markTopMat:SetFloat(self._LineMaxYId, height)
+	end
 
 	self._subMeshs = {}
 
-	local subMeshs = self._txtcontentcn.gameObject:GetComponentsInChildren(typeof(TMPro.TMP_SubMeshUI), true)
+	local subMeshs = self._targetTxt.gameObject:GetComponentsInChildren(typeof(TMPro.TMP_SubMeshUI), true)
 
 	if subMeshs then
 		local iter = subMeshs:GetEnumerator()
@@ -521,9 +724,9 @@ function StoryDialogItem:playGradualIn()
 	self:_showMagicItem(false)
 	gohelper.setActive(self._gonormalcontent, true)
 
-	local x, y, z = transformhelper.getLocalPos(self._txtcontentcn.transform)
+	local x, y, z = transformhelper.getLocalPos(self._targetTxt.transform)
 
-	transformhelper.setLocalPos(self._txtcontentcn.transform, x, y, 1)
+	transformhelper.setLocalPos(self._targetTxt.transform, x, y, 1)
 
 	if self._conTweenId then
 		ZProj.TweenHelper.KillById(self._conTweenId)
@@ -531,15 +734,20 @@ function StoryDialogItem:playGradualIn()
 		self._conTweenId = nil
 	end
 
+	UIBlockMgr.instance:startBlock("delayShow")
 	TaskDispatcher.cancelTask(self._delayShow, self)
 	TaskDispatcher.runDelay(self._delayShow, self, 0.05)
 end
 
 function StoryDialogItem:_delayShow()
-	self._conMark:SetMarks(self._markIndexs)
-	self._conMark:SetMarksTop(self._markTop, self._markContent)
+	UIBlockMgr.instance:endBlock("delayShow")
 
-	self._textInfo = self._txtcontentcn:GetTextInfo(self._subemtext)
+	local height = UnityEngine.Screen.height
+
+	self._dotMat:SetFloat(self._LineMinYId, height)
+	self._dotMat:SetFloat(self._LineMaxYId, height)
+
+	self._textInfo = self._targetTxt:GetTextInfo(self._subemtext)
 	self._lineInfoList = {}
 
 	local totalVisibleCharacterCount = 0
@@ -557,10 +765,15 @@ function StoryDialogItem:_delayShow()
 		})
 	end
 
-	self._contentX, self._contentY, _ = transformhelper.getLocalPos(self._txtcontentcn.transform)
+	self._contentX, self._contentY, _ = transformhelper.getLocalPos(self._targetTxt.transform)
 	self._curLine = nil
 
 	local delay = self:_getDelayTime(totalVisibleCharacterCount)
+	local curLangType = GameLanguageMgr.instance:getLanguageTypeStoryIndex()
+
+	if curLangType == LangSettings.en then
+		delay = delay * 0.67
+	end
 
 	if self._conTweenId then
 		ZProj.TweenHelper.KillById(self._conTweenId)
@@ -568,12 +781,21 @@ function StoryDialogItem:_delayShow()
 		self._conTweenId = nil
 	end
 
-	if self._stepCo.conversation.audioDelayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] < 0.1 then
-		self:_playConAudio()
-	else
-		TaskDispatcher.runDelay(self._playConAudio, self, self._stepCo.conversation.audioDelayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()])
+	local disableAudio = self._stepCo.conversation.disableAudio[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] or false
+
+	if not disableAudio then
+		local audioDelayTime = self._stepCo.conversation.audioDelayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] or 0
+
+		if audioDelayTime < 0.1 then
+			self:_playConAudio()
+		else
+			TaskDispatcher.runDelay(self._playConAudio, self, audioDelayTime)
+		end
 	end
 
+	self._lastBottomLeft = 0
+	self._lineSpace = 0
+	self._hasUnderline = string.find(self._subemtext, "<u>") and string.find(self._subemtext, "</u>")
 	self._conTweenId = ZProj.TweenHelper.DOTweenFloat(1, totalVisibleCharacterCount, delay, self._conUpdate, self._onTextFinished, self, nil, EaseType.Linear)
 end
 
@@ -618,22 +840,20 @@ function StoryDialogItem:_playConAudio()
 		param.fadeInTime = 0
 		param.fadeOutTime = 0
 		param.volume = 100
-		param.audioGo = self:_getDialogGo()
 		param.callback = self._onConAudioFinished
 		param.callbackTarget = self
 		self._playingAudioId = self._conAudioId
 
-		local isS01Story = StoryModel.instance:isS01Story()
+		local isOverseas = SettingsModel.instance:isOverseas()
+		local isSpVersionStory = StoryModel.instance:isSpVersionStory()
 		local curVoice = GameConfig:GetCurVoiceShortcut()
+		local isSpVoiceType = curVoice == LangSettings.shortcutTab[LangSettings.jp] or curVoice == LangSettings.shortcutTab[LangSettings.kr]
+		local playSp = not isOverseas and isSpVersionStory and isSpVoiceType
 
-		if curVoice == "jp" or curVoice == "kr" then
-			if isS01Story then
-				param.audioLang = curVoice
+		if playSp then
+			param.audioLang = curVoice
 
-				AudioEffectMgr.instance:playAudio(self._conAudioId, param, param.audioLang)
-			else
-				AudioEffectMgr.instance:playAudio(self._conAudioId, param)
-			end
+			AudioEffectMgr.instance:playAudio(self._conAudioId, param, param.audioLang)
 		else
 			AudioEffectMgr.instance:playAudio(self._conAudioId, param)
 		end
@@ -656,28 +876,6 @@ function StoryDialogItem:_playConAudio()
 	end
 end
 
-function StoryDialogItem:_getDialogGo()
-	local audioGo = self._goroleaudiomid
-
-	if #self._stepCo.heroList > 0 and self._stepCo.conversation.showList[1] then
-		if not self._stepCo.heroList[self._stepCo.conversation.showList[1] + 1] then
-			return audioGo
-		end
-
-		local pos = self._stepCo.heroList[self._stepCo.conversation.showList[1] + 1].heroDir
-
-		if pos and pos == 0 then
-			audioGo = self._goroleaudioleft
-		end
-
-		if pos and pos == 2 then
-			audioGo = self._goroleaudioright
-		end
-	end
-
-	return audioGo
-end
-
 function StoryDialogItem:_onTextFinished()
 	self:_showMagicItem(false)
 
@@ -687,15 +885,32 @@ function StoryDialogItem:_onTextFinished()
 		self._conTweenId = nil
 	end
 
-	local x, y, z = transformhelper.getLocalPos(self._txtcontentcn.transform)
+	local x, y, z = transformhelper.getLocalPos(self._targetTxt.transform)
 
-	transformhelper.setLocalPos(self._txtcontentcn.transform, x, y, 0)
+	transformhelper.setLocalPos(self._targetTxt.transform, x, y, 0)
 	self._conMat:DisableKeyword("_GRADUAL_ON")
-	self._markTopMat:DisableKeyword("_GRADUAL_ON")
+	self._conMat:SetFloat(self._LineMinYId, 0)
+	self._conMat:SetFloat(self._LineMaxYId, 0)
+
+	self._subMeshs = {}
+
+	local subMeshs = self._targetTxt.gameObject:GetComponentsInChildren(typeof(TMPro.TMP_SubMeshUI), true)
+
+	if subMeshs then
+		local iter = subMeshs:GetEnumerator()
+
+		while iter:MoveNext() do
+			local subMesh = iter.Current.gameObject:GetComponent(typeof(TMPro.TMP_SubMeshUI))
+
+			table.insert(self._subMeshs, subMesh)
+		end
+	end
 
 	for _, v in pairs(self._subMeshs) do
-		if v.materialForRendering then
-			v.materialForRendering:DisableKeyword("_GRADUAL_ON")
+		if v.sharedMaterial then
+			v.sharedMaterial = self._fontNormalMat
+
+			v.sharedMaterial:DisableKeyword("_GRADUAL_ON")
 		end
 	end
 
@@ -745,12 +960,12 @@ end
 
 function StoryDialogItem:_conUpdate(value)
 	local screenWidth = UnityEngine.Screen.width
-	local contentTransform = self._txtcontentcn.transform
+	local contentTransform = self._targetTxt.transform
 	local uiCamera = CameraMgr.instance:getUICamera()
 
 	self._subMeshs = {}
 
-	local subMeshs = self._txtcontentcn.gameObject:GetComponentsInChildren(typeof(TMPro.TMP_SubMeshUI), true)
+	local subMeshs = self._targetTxt.gameObject:GetComponentsInChildren(typeof(TMPro.TMP_SubMeshUI), true)
 
 	if subMeshs then
 		local iter = subMeshs:GetEnumerator()
@@ -803,39 +1018,38 @@ function StoryDialogItem:_conUpdate(value)
 
 			local lastBR = uiCamera:WorldToScreenPoint(contentTransform:TransformPoint(lastChar.bottomRight))
 
-			if i == 1 then
-				self._conMat:SetFloat(self._LineMinYId, maxBL.y)
-				self._conMat:SetFloat(self._LineMaxYId, maxTL.y + 10)
-				self._markTopMat:SetFloat(self._LineMinYId, maxBL.y - 100)
-				self._markTopMat:SetFloat(self._LineMaxYId, maxTL.y - 90)
-
-				for _, mesh in pairs(self._subMeshs) do
-					if mesh.materialForRendering then
-						mesh.materialForRendering:SetFloat(self._LineMinYId, maxBL.y)
-						mesh.materialForRendering:SetFloat(self._LineMaxYId, maxTL.y + 10)
+			for _, mesh in pairs(self._subMeshs) do
+				if mesh.sharedMaterial then
+					if self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.SoftLight then
+						break
 					end
+
+					mesh.sharedMaterial = self._fontNormalMat
+				end
+			end
+
+			if i == 1 then
+				if self._hasUnderline then
+					self._conMat:SetFloat(self._LineMinYId, maxBL.y - 4)
+				else
+					self._conMat:SetFloat(self._LineMinYId, maxBL.y)
 				end
 
+				self._conMat:SetFloat(self._LineMaxYId, maxTL.y + 20)
 				self._dotMat:SetFloat(self._LineMinYId, maxBL.y - 10)
 				self._dotMat:SetFloat(self._LineMaxYId, maxTL.y)
 			else
+				self._lineSpace = self._lastBottomLeft - maxTL.y > 0 and self._lastBottomLeft - maxTL.y or self._lineSpace
+
 				self._conMat:SetFloat(self._LineMinYId, maxBL.y)
-				self._conMat:SetFloat(self._LineMaxYId, maxTL.y)
-				self._markTopMat:SetFloat(self._LineMinYId, maxBL.y)
-				self._markTopMat:SetFloat(self._LineMaxYId, maxTL.y)
-
-				for _, mesh in pairs(self._subMeshs) do
-					if mesh.materialForRendering then
-						mesh.materialForRendering:SetFloat(self._LineMinYId, maxBL.y)
-						mesh.materialForRendering:SetFloat(self._LineMaxYId, maxTL.y)
-					end
-				end
-
+				self._conMat:SetFloat(self._LineMaxYId, maxTL.y + self._lineSpace)
 				self._dotMat:SetFloat(self._LineMinYId, maxBL.y - 10)
 				self._dotMat:SetFloat(self._LineMaxYId, maxTL.y)
 			end
 
-			local go = self._txtcontentcn.gameObject
+			self._lastBottomLeft = maxBL.y
+
+			local go = self._targetTxt.gameObject
 
 			gohelper.setActive(go, false)
 			gohelper.setActive(go, true)
@@ -857,10 +1071,6 @@ function StoryDialogItem:_conUpdate(value)
 						mesh.materialForRendering:SetFloat(self._LineMaxYId, 0)
 					end
 				end
-
-				if #self._lineInfoList > 1 then
-					transformhelper.setLocalPosXY(self._gonormalcontent.transform, 475, 50 * (#self._lineInfoList - 2))
-				end
 			end
 		end
 	end
@@ -868,6 +1078,13 @@ end
 
 function StoryDialogItem:conFinished()
 	self._textShowFinished = true
+
+	if self._dialogTextShowFinishedCallback then
+		self._dialogTextShowFinishedCallback(self._dialogTextShowFinishedCallbackObj)
+
+		self._dialogTextShowFinishedCallback = nil
+		self._dialogTextShowFinishedCallbackObj = nil
+	end
 
 	if self._stepCo and (self._stepCo.conversation.type == StoryEnum.ConversationType.NoInteract or self._stepCo.conversation.type == StoryEnum.ConversationType.None) then
 		return
@@ -881,38 +1098,37 @@ function StoryDialogItem:conFinished()
 		self._conTweenId = nil
 	end
 
-	self._conMat:SetFloat(self._LineMinYId, 0)
-	self._conMat:SetFloat(self._LineMaxYId, 0)
-	self._conMat:DisableKeyword("_GRADUAL_ON")
-	self._markTopMat:SetFloat(self._LineMinYId, 0)
-	self._markTopMat:SetFloat(self._LineMaxYId, 0)
-	self._markTopMat:DisableKeyword("_GRADUAL_ON")
+	if self._conMat then
+		self._conMat:SetFloat(self._LineMinYId, 0)
+		self._conMat:SetFloat(self._LineMaxYId, 0)
+	end
 
-	self._subMeshs = {}
+	if self._targetTxt then
+		local x, y, z = transformhelper.getLocalPos(self._targetTxt.transform)
 
-	local subMeshs = self._txtcontentcn.gameObject:GetComponentsInChildren(typeof(TMPro.TMP_SubMeshUI), true)
+		transformhelper.setLocalPos(self._targetTxt.transform, x, y, 0)
 
-	if subMeshs then
-		local iter = subMeshs:GetEnumerator()
+		self._subMeshs = {}
 
-		while iter:MoveNext() do
-			local subMesh = iter.Current.gameObject:GetComponent(typeof(TMPro.TMP_SubMeshUI))
+		local subMeshs = self._targetTxt.gameObject:GetComponentsInChildren(typeof(TMPro.TMP_SubMeshUI), true)
 
-			table.insert(self._subMeshs, subMesh)
+		if subMeshs then
+			local iter = subMeshs:GetEnumerator()
+
+			while iter:MoveNext() do
+				local subMesh = iter.Current.gameObject:GetComponent(typeof(TMPro.TMP_SubMeshUI))
+
+				table.insert(self._subMeshs, subMesh)
+			end
+		end
+
+		for _, v in pairs(self._subMeshs) do
+			if v.sharedMaterial then
+				v.sharedMaterial:DisableKeyword("_GRADUAL_ON")
+			end
 		end
 	end
 
-	for _, v in pairs(self._subMeshs) do
-		if v.materialForRendering then
-			v.materialForRendering:SetFloat(self._LineMinYId, 0)
-			v.materialForRendering:SetFloat(self._LineMaxYId, 0)
-			v.materialForRendering:DisableKeyword("_GRADUAL_ON")
-		end
-	end
-
-	local x, y, z = transformhelper.getLocalPos(self._txtcontentcn.transform)
-
-	transformhelper.setLocalPos(self._txtcontentcn.transform, x, y, 0)
 	self:_showMagicItem(false)
 
 	if self._finishCallback then
@@ -921,7 +1137,7 @@ function StoryDialogItem:conFinished()
 end
 
 function StoryDialogItem:playNorDialogFadeIn(callback, callbackobj)
-	ZProj.TweenHelper.DoFade(self._txtcontentcn, 0, 1, 2, function()
+	ZProj.TweenHelper.DoFade(self._targetTxt, 0, 1, 2, function()
 		if callback then
 			callback(callbackobj)
 		end
@@ -929,9 +1145,9 @@ function StoryDialogItem:playNorDialogFadeIn(callback, callbackobj)
 end
 
 function StoryDialogItem:playWordByWord(callback, callbackobj)
-	self._txtcontentcn.text = ""
+	self._targetTxt.text = ""
 
-	ZProj.TweenHelper.DOText(self._txtcontentcn, self._diatxt, 2, function()
+	ZProj.TweenHelper.DOText(self._targetTxt, self._diatxt, 2, function()
 		if callback then
 			callback(callbackobj)
 		end
@@ -991,7 +1207,12 @@ function StoryDialogItem:_destoryMagic()
 end
 
 function StoryDialogItem:destroy()
-	self._txtcontentcn.fontSharedMaterial = self._fontNormalMat
+	UIBlockMgr.instance:endBlock("delayShow")
+
+	if self._targetTxt then
+		self._targetTxt.fontSharedMaterial = self._fontNormalMat
+		self._targetTxt = nil
+	end
 
 	self:_removeEvent()
 	TaskDispatcher.cancelTask(self._playConAudio, self)
@@ -1023,8 +1244,13 @@ function StoryDialogItem:destroy()
 	self._finishCallback = nil
 	self._finishCallbackObj = nil
 
-	self._conMat:DisableKeyword("_GRADUAL_ON")
-	self._markTopMat:DisableKeyword("_GRADUAL_ON")
+	if self._conMat then
+		self._conMat:DisableKeyword("_GRADUAL_ON")
+	end
+
+	if self._markTopMat then
+		self._markTopMat:DisableKeyword("_GRADUAL_ON")
+	end
 
 	if self._subMeshs then
 		for _, v in pairs(self._subMeshs) do

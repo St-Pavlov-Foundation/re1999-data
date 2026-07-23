@@ -33,6 +33,10 @@
     "usePower3": [],
     "cd3": 0,
     "allLimit3": 0,
+    "skill4": 0,
+    "usePower4": [],
+    "cd4": 0,
+    "allLimit4": 0,
     "exp": 0
   },
   {
@@ -69,6 +73,10 @@
     "usePower3": [],
     "cd3": 0,
     "allLimit3": 0,
+    "skill4": 0,
+    "usePower4": [],
+    "cd4": 0,
+    "allLimit4": 0,
     "exp": 0
   },
   {
@@ -105,6 +113,10 @@
     "usePower3": [],
     "cd3": 0,
     "allLimit3": 0,
+    "skill4": 0,
+    "usePower4": [],
+    "cd4": 0,
+    "allLimit4": 0,
     "exp": 0
   },
   {
@@ -141,6 +153,10 @@
     "usePower3": [],
     "cd3": 0,
     "allLimit3": 0,
+    "skill4": 0,
+    "usePower4": [],
+    "cd4": 0,
+    "allLimit4": 0,
     "exp": 0
   },
   {
@@ -177,6 +193,10 @@
     "usePower3": [],
     "cd3": 0,
     "allLimit3": 0,
+    "skill4": 0,
+    "usePower4": [],
+    "cd4": 0,
+    "allLimit4": 0,
     "exp": 0
   },
   {
@@ -211,6 +231,10 @@
     "usePower3": [],
     "cd3": 0,
     "allLimit3": 0,
+    "skill4": 0,
+    "usePower4": [],
+    "cd4": 0,
+    "allLimit4": 0,
     "exp": 0
   },
   {
@@ -245,6 +269,58 @@
     "usePower3": [],
     "cd3": 0,
     "allLimit3": 0,
+    "skill4": 0,
+    "usePower4": [],
+    "cd4": 0,
+    "allLimit4": 0,
+    "exp": 0
+  },
+  {
+    "id": 10,
+    "level": 1,
+    "maxPower": 49,
+    "use": 3,
+    "useDeviceCard": 5,
+    "move": 3,
+    "compose": 2,
+    "recover": "1#5",
+    "initial": 20,
+    "defeat": 0,
+    "death": 0,
+    "desc": "X仿制的手套",
+    "passiveSkills": "",
+    "skill1": 116385100,
+    "usePower1": [
+      25,
+      30,
+      40
+    ],
+    "cd1": 1,
+    "allLimit1": 0,
+    "skill2": 116385200,
+    "usePower2": [
+      25,
+      30,
+      40
+    ],
+    "cd2": 1,
+    "allLimit2": 0,
+    "skill3": 116385300,
+    "usePower3": [
+      25,
+      30,
+      40
+    ],
+    "cd3": 1,
+    "allLimit3": 0,
+    "skill4": 116385400,
+    "usePower4": [
+      25,
+      30,
+      40
+    ],
+    "cd4": 1,
+    "allLimit4": 0,
     "exp": 0
   }
 ]

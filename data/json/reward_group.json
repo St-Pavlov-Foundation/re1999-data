@@ -23110,5 +23110,212 @@
     "count": "10000",
     "label": "guding",
     "shownum": 1
+  },
+  {
+    "id": 3850001,
+    "group": "S02_story_3_8_5_4_normal_1",
+    "materialType": 2,
+    "materialId": 38502,
+    "count": "120",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 3850002,
+    "group": "S02_story_3_8_5_5_normal_1",
+    "materialType": 2,
+    "materialId": 38502,
+    "count": "120",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 3850003,
+    "group": "S02_story_3_8_5_8_normal_1",
+    "materialType": 2,
+    "materialId": 38502,
+    "count": "120",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 3850004,
+    "group": "S02_story_3_8_5_10_normal_1",
+    "materialType": 2,
+    "materialId": 38502,
+    "count": "120",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 3850005,
+    "group": "S02_story_3_8_5_11_normal_1",
+    "materialType": 2,
+    "materialId": 38502,
+    "count": "120",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 3850006,
+    "group": "S02_story_3_8_5_13_normal_1",
+    "materialType": 2,
+    "materialId": 38502,
+    "count": "120",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 3850007,
+    "group": "S02_easy_3_8_5_8_normal_1",
+    "materialType": 2,
+    "materialId": 38502,
+    "count": "170",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 3850008,
+    "group": "S02_easy_3_8_5_11_normal_1",
+    "materialType": 2,
+    "materialId": 38502,
+    "count": "180",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 3850009,
+    "group": "S02_easy_3_8_5_13_normal_1",
+    "materialType": 2,
+    "materialId": 38502,
+    "count": "200",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 3850010,
+    "group": "S02_hard_3_8_5_8_normal_1",
+    "materialType": 2,
+    "materialId": 38502,
+    "count": "250",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 3850011,
+    "group": "S02_hard_3_8_5_11_normal_1",
+    "materialType": 2,
+    "materialId": 38502,
+    "count": "270",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 3850012,
+    "group": "S02_hard_3_8_5_13_normal_1",
+    "materialType": 2,
+    "materialId": 38502,
+    "count": "300",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 3850013,
+    "group": "S02_easy_3_8_5_8_first_1",
+    "materialType": 2,
+    "materialId": 38502,
+    "count": "340",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 3850014,
+    "group": "S02_easy_3_8_5_11_first_1",
+    "materialType": 2,
+    "materialId": 38502,
+    "count": "340",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 3850015,
+    "group": "S02_easy_3_8_5_13_first_1",
+    "materialType": 2,
+    "materialId": 38502,
+    "count": "340",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 3850016,
+    "group": "S02_hard_3_8_5_8_first_1",
+    "materialType": 2,
+    "materialId": 38502,
+    "count": "340",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 3850017,
+    "group": "S02_hard_3_8_5_11_first_1",
+    "materialType": 2,
+    "materialId": 38502,
+    "count": "340",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 3850018,
+    "group": "S02_hard_3_8_5_13_first_1",
+    "materialType": 2,
+    "materialId": 38502,
+    "count": "340",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 3850019,
+    "group": "random_lingganbox",
+    "materialType": 1,
+    "materialId": 823853,
+    "count": "1",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 3850020,
+    "group": "random_lingganbox",
+    "materialType": 1,
+    "materialId": 823854,
+    "count": "1",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 3850021,
+    "group": "random_lingganbox",
+    "materialType": 1,
+    "materialId": 823855,
+    "count": "1",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 3850022,
+    "group": "random_lingganbox",
+    "materialType": 1,
+    "materialId": 823856,
+    "count": "1",
+    "label": "guding",
+    "shownum": 1
+  },
+  {
+    "id": 3850023,
+    "group": "random_lingganbox",
+    "materialType": 1,
+    "materialId": 823857,
+    "count": "1",
+    "label": "guding",
+    "shownum": 1
   }
 ]

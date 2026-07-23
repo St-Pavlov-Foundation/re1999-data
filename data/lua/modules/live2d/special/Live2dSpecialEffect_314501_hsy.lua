@@ -16,7 +16,7 @@ function Live2dSpecialEffect_314501_hsy:addEventListeners()
 end
 
 function Live2dSpecialEffect_314501_hsy:removeEventListeners()
-	self:removeEventCb(PostProcessingMgr.instance, PostProcessingEvent.onCameraRootAnimatorControllerChange, self.onAnimatorControllerChange, self)
+	self:removeEventCb(PostProcessingMgr.instance, PostProcessingEvent.onCameraRootAnimatorControllerChange, self.onOponAnimatorControllerChangeenView, self)
 end
 
 local needSetHsyLightTexture = {

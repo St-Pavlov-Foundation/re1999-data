@@ -49,7 +49,9 @@ function StoryVideoItem:_build()
 
 	self._videoName = videoArgs[1]
 
-	if self._videoName == "xuzhangkaichangpv" and BootNativeUtil.isWindows() then
+	local isOverseas = SettingsModel.instance:isOverseas()
+
+	if not isOverseas and self._videoName == "xuzhangkaichangpv" and BootNativeUtil.isWindows() then
 		local width, height = BootNativeUtil.getDisplayResolution()
 
 		if height >= 2160 then

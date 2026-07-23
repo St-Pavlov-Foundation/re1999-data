@@ -582,7 +582,7 @@
   },
   {
     "id": 30201,
-    "patFaceActivityId": 13814,
+    "patFaceActivityId": 138525,
     "patFaceViewName": "",
     "patFaceStoryId": 0,
     "patFaceOrder": 50000
@@ -635,5 +635,19 @@
     "patFaceViewName": "VersionActivity3_8FreeMonthCardPanelView",
     "patFaceStoryId": 0,
     "patFaceOrder": 1000
+  },
+  {
+    "id": 385002,
+    "patFaceActivityId": 138506,
+    "patFaceViewName": "AtomicOperationActivityEnterPatFaceView",
+    "patFaceStoryId": 0,
+    "patFaceOrder": 30200
+  },
+  {
+    "id": 385003,
+    "patFaceActivityId": 138516,
+    "patFaceViewName": "SceneUIPackagePanelView",
+    "patFaceStoryId": 0,
+    "patFaceOrder": 30198
   }
 ]

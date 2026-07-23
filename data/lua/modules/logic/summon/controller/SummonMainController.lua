@@ -289,8 +289,16 @@ function SummonMainController:openpPogressRewardView(poolId)
 		return
 	end
 
-	if string.nilorempty(poolCfg.progressRewards) then
-		logError(string.format("[export_召唤卡池] poolId:%s \"progressRewards\"字段为nil", poolId))
+	if string.nilorempty(poolCfg.progressRewards) and string.nilorempty(poolCfg.progressChooseGroupId) then
+		logError(string.format("[export_召唤卡池] poolId:%s \"progressRewards\" 和 \"progressChooseGroupId\" 字段为nil", poolId))
+
+		return
+	end
+
+	if not string.nilorempty(poolCfg.progressRewardClass) then
+		ViewMgr.instance:openView(poolCfg.progressRewardClass, {
+			poolId = poolId
+		})
 
 		return
 	end
@@ -410,6 +418,20 @@ end
 
 function SummonMainController:setLimitReplicatePoolSelect(poolId, heroIdList, callback, callbackObj)
 	SummonRpc.instance:sendChooseDoubleUpHeroRequest(poolId, heroIdList, callback, callbackObj)
+end
+
+function SummonMainController:summon10Action(param)
+	self:_summonAction(param, true)
+end
+
+function SummonMainController:summon1Action(param)
+	self:_summonAction(param)
+end
+
+function SummonMainController:_summonAction(param, isTen)
+	self._summonActionProcess = self._summonActionProcess or SummonActionProcess.New()
+
+	self._summonActionProcess:summonAction(param, isTen)
 end
 
 SummonMainController.instance = SummonMainController.New()

@@ -28,7 +28,8 @@ function ActivityBeginnerView:_editableInitView()
 	self._animUI = self.viewGO:GetComponent(typeof(UnityEngine.Animator))
 	self._actHideTab = {
 		[ActivityEnum.Activity.V3a4_GiftRecommend] = self._isCanOpenV3a4GiftRecommendAct,
-		[ActivityEnum.Activity.V3a7_SelfSelect] = self._isCanOpenV3a7SelfSelectAct
+		[ActivityEnum.Activity.V3a7_SelfSelect] = self._isCanOpenV3a7SelfSelectAct,
+		[ActivityEnum.Activity.S02SceneUIPackageAct] = self._isCanOpenV3a4GiftRecommendAct
 	}
 end
 
@@ -136,7 +137,9 @@ local activitySubViewDict = {
 	[ActivityEnum.Activity.V3a5_SchoolStart] = ViewName.V3a5_SchoolStartView,
 	[ActivityEnum.Activity.V3a7_SelfSelect] = ViewName.V3a7SelfSelectFullView,
 	[ActivityEnum.Activity.V3a7_SkinGift] = ViewName.V3a7_SkinGiftFullView,
-	[ActivityEnum.Activity.V3a8_DragonBoatActivity_FullView] = ViewName.V3a8_DragonBoatActivity_FullView
+	[ActivityEnum.Activity.SP02_LinkGift] = ViewName.SP02_LinkGiftFullView,
+	[ActivityEnum.Activity.V3a8_DragonBoatActivity_FullView] = ViewName.V3a8_DragonBoatActivity_FullView,
+	[ActivityEnum.Activity.SP02_WarmUp] = ViewName.WarmUp
 }
 local actTypeSubViewDict = {
 	[ActivityEnum.ActivityTypeID.OpenTestWarmUp] = ViewName.ActivityWarmUpView,
@@ -176,6 +179,7 @@ function ActivityBeginnerView:onOpen()
 	self:_initActivity()
 	self:_initGoldenMilletPresent()
 	self:_initFreeMonthCard()
+	self:_initSceneUIPackageAct()
 
 	self._needSetSortInfos = true
 
@@ -436,7 +440,15 @@ function ActivityBeginnerView:_initWarmUp()
 	local key = GameBranchMgr.instance:Vxax_ActId("WarmUp", actId)
 	local val = GameBranchMgr.instance:Vxax_ViewName("WarmUp", ViewName.WarmUp)
 
-	activitySubViewDict[key] = val
+	if not activitySubViewDict[key] then
+		activitySubViewDict[key] = val
+	end
+end
+
+function ActivityBeginnerView:_initSceneUIPackageAct()
+	local actId = SceneUIPackageModel.instance:getActId()
+
+	activitySubViewDict[actId] = ViewName.SceneUIPackageFullView
 end
 
 local s_WarmUpH5 = false
@@ -599,12 +611,11 @@ function ActivityBeginnerView:_isCanOpenV3a4GiftRecommendAct(actId)
 		end
 	end
 
-	local goodsIds = DecorateStoreModel.instance:getV3a4PackageStoreGoodsIds()
-	local canBuyPackage = DecorateStoreModel.instance:isCanBuySceneUIPackage()
-	local hasScene = DecorateStoreModel.instance:isDecorateGoodItemHas(goodsIds[2])
-	local hasUI = DecorateStoreModel.instance:isDecorateGoodItemHas(goodsIds[3])
+	local hasScene = SceneUIPackageModel.instance:hasScene(actId)
+	local hasUI = SceneUIPackageModel.instance:hasUI(actId)
+	local canBuy = SceneUIPackageModel.instance:canBuy(actId)
 
-	if canBuyPackage or not hasScene or not hasUI then
+	if canBuy or not hasScene or not hasUI then
 		return true
 	end
 
@@ -658,7 +669,7 @@ function ActivityBeginnerView:_initGoldenMilletPresent()
 	local actId = GoldenMilletPresentModel.instance:getGoldenMilletPresentActId()
 
 	if actId then
-		local viewName = GameBranchMgr.instance:Vxax_ViewName("GoldenMilletPresentFull", ViewName.V3a7_GoldenMilletPresentFull)
+		local viewName = GameBranchMgr.instance:Vxax_ViewName("GoldenMilletPresentFull", ViewName.GoldenMilletPresentFull)
 
 		activitySubViewDict[actId] = viewName
 	end

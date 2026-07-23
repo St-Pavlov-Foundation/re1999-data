@@ -10,6 +10,7 @@ function StoryDialogSlideItem:init(go)
 
 	self._dialogGo = viewContainer:getResInst(itemPath, go)
 	self._simagedialog = gohelper.findChildSingleImage(self._dialogGo, "#simage_dialog")
+	self._imagedialog = gohelper.findChildImage(self._dialogGo, "#simage_dialog")
 end
 
 function StoryDialogSlideItem:clearSlideDialog()
@@ -35,8 +36,12 @@ function StoryDialogSlideItem:hideDialog()
 end
 
 function StoryDialogSlideItem:_imgLoaded()
-	self._simagedialog.gameObject:GetComponent(gohelper.Type_Image):SetNativeSize()
-	self:_startMove()
+	gohelper.setActive(self._imagedialog.gameObject, false)
+	TaskDispatcher.runDelay(function()
+		gohelper.setActive(self._imagedialog.gameObject, true)
+		self._imagedialog:SetNativeSize()
+		self:_startMove()
+	end, nil, 0.05)
 end
 
 function StoryDialogSlideItem:_moveUpdate(value)

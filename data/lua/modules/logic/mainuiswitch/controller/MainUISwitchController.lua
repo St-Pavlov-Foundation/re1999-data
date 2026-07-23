@@ -47,6 +47,19 @@ function MainUISwitchController:openMainUISwitchInfoViewGiftSet(skinId, sceneId,
 	})
 end
 
+function MainUISwitchController:openSceneUIPackageInfoView(skinId, sceneId, isCloseMoHideScene, hideExtraDisPlay)
+	ViewMgr.instance:openView(ViewName.SceneUIPackageInfoView, {
+		isPreview = true,
+		isNotShowLeft = true,
+		isNotShowHero = true,
+		noInfoEffect = true,
+		SkinId = skinId,
+		sceneId = sceneId,
+		hideExtraDisPlay = hideExtraDisPlay,
+		isCloseMoHideScene = isCloseMoHideScene
+	})
+end
+
 function MainUISwitchController:setCurMainUIStyle(id, callback, callbackObj)
 	local co = lua_scene_ui.configDict[id]
 

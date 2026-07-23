@@ -78,6 +78,14 @@ function FightViewClothSkillMgrView:_onBeforeEnterStepBehaviour()
 		return
 	end
 
+	local shouTaoData = FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.ShowTaoFuBen]
+
+	if shouTaoData then
+		gohelper.setActive(self._goSimple, false)
+
+		return
+	end
+
 	self:openSubView(FightViewClothSkill, self.viewGO)
 end
 

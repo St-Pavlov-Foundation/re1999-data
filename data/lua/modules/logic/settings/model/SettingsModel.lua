@@ -242,6 +242,14 @@ function SettingsModel.isBilibili()
 	return not string.nilorempty(channelId) and channelId == "101"
 end
 
+function SettingsModel.isOfficial()
+	local channelId = SDKMgr.instance:getChannelId()
+
+	channelId = channelId and tostring(channelId)
+
+	return not string.nilorempty(channelId) and channelId == "100"
+end
+
 function SettingsModel:getScreenshotSwitch()
 	return self._screenshotSwitch > 0
 end
@@ -734,6 +742,16 @@ function SettingsModel:extractByRegion(str)
 	end
 
 	return str
+end
+
+function SettingsModel:extractByRegionEx(str)
+	if string.nilorempty(str) then
+		return str
+	end
+
+	local curRegion = self:getRegionShortcut()
+
+	return string.match(str, curRegion .. "<([^>]+)>") or str
 end
 
 function SettingsModel:isAvproVideo()

@@ -5,6 +5,7 @@ module("modules.logic.fight.view.cardeffect.FightDeviceCardDisplayEffect", packa
 local FightDeviceCardDisplayEffect = class("FightDeviceCardDisplayEffect", BaseWork)
 local TimeFactor = 1
 local dt = TimeFactor * 0.033
+local TipAnchorOffsetX = 80
 
 function FightDeviceCardDisplayEffect:onStart(context)
 	FightDeviceCardDisplayEffect.super.onStart(self, context)
@@ -15,8 +16,9 @@ function FightDeviceCardDisplayEffect:onStart(context)
 
 	local tipsTr = context.skillTipsGO.transform
 	local tipsWidth = recthelper.getWidth(tipsTr)
-	local curIndex = FightPlayCardModel.instance:getCurIndex()
-	local tipsPosX = FightViewWaitingAreaVersion1.getCardPosByServerData(curIndex - 1)
+	local tipsPosX = FightViewWaitingAreaVersion1.getDeviceAnchorXByServerData()
+
+	tipsPosX = tipsPosX - FightDeviceHelper.getDeviceAreaTotalWidth() - TipAnchorOffsetX
 
 	recthelper.setAnchorX(tipsTr, 1100 + tipsWidth)
 
@@ -25,41 +27,19 @@ function FightDeviceCardDisplayEffect:onStart(context)
 	tipsSequence:addWork(TweenWork.New({
 		type = "DOAnchorPosX",
 		tr = tipsTr,
-		to = tipsPosX - 63.3,
+		to = tipsPosX - 10,
 		t = self._dt * 7
 	}))
 	tipsSequence:addWork(TweenWork.New({
 		type = "DOAnchorPosX",
 		tr = tipsTr,
-		to = tipsPosX - 50,
-		t = self._dt * 3
-	}))
-
-	local itemTr = context.skillItemGO.transform
-	local itemAnchorSequence = FlowSequence.New()
-
-	itemAnchorSequence:addWork(TweenWork.New({
-		type = "DOAnchorPos",
-		tox = -15,
-		toy = 22,
-		tr = itemTr,
-		t = self._dt * 6
-	}))
-
-	local itemScaleSequence = FlowSequence.New()
-
-	itemScaleSequence:addWork(TweenWork.New({
-		to = 1.2,
-		type = "DOScale",
-		tr = itemTr,
+		to = tipsPosX,
 		t = self._dt * 3
 	}))
 
 	self._flow = FlowParallel.New()
 
 	self._flow:addWork(tipsSequence)
-	self._flow:addWork(itemAnchorSequence)
-	self._flow:addWork(itemScaleSequence)
 	self._flow:registerDoneListener(self._onWorkDone, self)
 	self._flow:start()
 end

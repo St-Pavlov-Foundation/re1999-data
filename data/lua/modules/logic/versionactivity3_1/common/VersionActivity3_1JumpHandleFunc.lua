@@ -65,8 +65,9 @@ end
 
 function VersionActivity3_1JumpHandleFunc:jumpTo13104(paramsList)
 	local dungeonController = VersionActivityFixedHelper.getVersionActivityDungeonController()
+	local enterController = VersionActivityFixedHelper.getVersionActivityEnterController(3, 1)
 
-	VersionActivityFixedHelper.getVersionActivityEnterController().instance:openVersionActivityEnterViewIfNotOpened(dungeonController.openStoreView, dungeonController.instance, VersionActivityFixedHelper.getVersionActivityEnum().ActivityId.Dungeon, true)
+	enterController.instance:openVersionActivityEnterViewIfNotOpened(dungeonController.openStoreView, dungeonController.instance, VersionActivityFixedHelper.getVersionActivityEnum().ActivityId.Dungeon, true)
 
 	return JumpEnum.JumpResult.Success
 end
@@ -75,10 +76,7 @@ function VersionActivity3_1JumpHandleFunc:jumpTo13117(paramsList)
 	local episodeId = paramsList and paramsList[3]
 
 	table.insert(self.waitOpenViewNames, VersionActivityFixedHelper.getVersionActivityEnterViewName())
-	VersionActivityFixedHelper.getVersionActivityEnterController().instance:openVersionActivityEnterViewIfNotOpened(function()
-		VersionActivityFixedHelper.getVersionActivityEnterController().instance:openVersionActivityEnterViewIfNotOpened(nil, nil, VersionActivity3_1Enum.ActivityId.YeShuMei, true)
-		YeShuMeiController.instance:enterLevelView(episodeId)
-	end)
+	YeShuMeiController.instance:enterLevelView(episodeId)
 
 	return JumpEnum.JumpResult.Success
 end

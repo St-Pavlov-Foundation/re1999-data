@@ -38,7 +38,10 @@ function FightHeroSpEffectConfig:reqConfigNames()
 		"fight_yaxian_timeline",
 		"fight_hudie_special_effect",
 		"fight_wmz_timeline",
-		"fight_hsy_effect"
+		"fight_hsy_effect",
+		"fight_sswl_skill1_effect",
+		"fight_sswl_skill2_effect",
+		"fight_sswl_unique_effect"
 	}
 end
 

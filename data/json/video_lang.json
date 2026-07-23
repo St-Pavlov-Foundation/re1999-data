@@ -331,5 +331,11 @@
       "en",
       "zh"
     ]
+  },
+  {
+    "name": "s02_pv",
+    "supportLang": [
+      "zh"
+    ]
   }
 ]

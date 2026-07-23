@@ -942,10 +942,20 @@ function FightFocusView:onEquipClick()
 
 	self.openEquipInfoTipView = true
 
+	local otherEquipId = self.equipMO and EquipModel.instance:getOtherTwinssychubeEquipId(self.equipMO.equipId)
+	local otherEquipMos = {}
+
+	if otherEquipId then
+		local equipMo = EquipModel.instance:getTwinssychubeEquipMo(otherEquipId)
+
+		table.insert(otherEquipMos, equipMo)
+	end
+
 	ViewMgr.instance:openView(ViewName.EquipInfoTipsView, {
 		notShowLockIcon = true,
 		equipMo = self.equipMO,
-		heroCo = self._entityMO:getCO()
+		heroCo = self._entityMO:getCO(),
+		otherEquipMos = otherEquipMos
 	})
 end
 

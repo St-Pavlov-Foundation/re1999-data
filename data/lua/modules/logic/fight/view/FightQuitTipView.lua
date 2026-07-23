@@ -534,6 +534,38 @@ end
 
 function FightQuitTipView:_setStarStatus(go, highLight)
 	local star = gohelper.findChildImage(go, "star")
+	local isSP02 = VersionActivity2_9DungeonHelper.isTargetActEpisode(self._episodeId, VersionActivity3_10Enum.ActivityId.Dungeon)
+
+	if isSP02 then
+		gohelper.setActive(star, false)
+
+		local goProgressItem = gohelper.findChild(go, "#go_progressitem")
+
+		gohelper.setActive(goProgressItem, true)
+
+		local mode = ActivityConfig.instance:getChapterIdMode(self._chapterId)
+
+		if mode == VersionActivityDungeonBaseEnum.DungeonMode.Hard then
+			mode = VersionActivityDungeonBaseEnum.DungeonMode.Story3
+		end
+
+		for i = 1, 3 do
+			local goIcon = gohelper.findChild(goProgressItem, "image_icon" .. i)
+
+			if i == mode then
+				gohelper.setActive(goIcon, true)
+
+				local img = gohelper.findChildImage(goIcon, "#image_fg")
+
+				img.fillAmount = highLight and 1 or 0
+			else
+				gohelper.setActive(goIcon, false)
+			end
+		end
+
+		return
+	end
+
 	local starImage = self._hardMode and "zhuxianditu_kn_xingxing_002" or "zhuxianditu_pt_xingxing_001"
 	local starColor = "#87898C"
 

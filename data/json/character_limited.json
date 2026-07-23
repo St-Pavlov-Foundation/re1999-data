@@ -18,7 +18,9 @@
     "specialInsightDesc": "",
     "specialLive2d": "",
     "characterVoice": 0,
-    "storeMv": ""
+    "storeMv": "",
+    "storeMvAudio": 0,
+    "storeMvStopAudio": 0
   },
   {
     "id": 308302,
@@ -43,7 +45,9 @@
     "specialInsightDesc": "",
     "specialLive2d": "",
     "characterVoice": 0,
-    "storeMv": ""
+    "storeMv": "",
+    "storeMvAudio": 0,
+    "storeMvStopAudio": 0
   },
   {
     "id": 308601,
@@ -64,7 +68,9 @@
     "specialInsightDesc": "",
     "specialLive2d": "",
     "characterVoice": 0,
-    "storeMv": ""
+    "storeMv": "",
+    "storeMvAudio": 0,
+    "storeMvStopAudio": 0
   },
   {
     "id": 308602,
@@ -91,7 +97,9 @@
     "specialInsightDesc": "",
     "specialLive2d": "",
     "characterVoice": 0,
-    "storeMv": ""
+    "storeMv": "",
+    "storeMvAudio": 0,
+    "storeMvStopAudio": 0
   },
   {
     "id": 302504,
@@ -116,7 +124,9 @@
     "specialInsightDesc": "",
     "specialLive2d": "",
     "characterVoice": 0,
-    "storeMv": ""
+    "storeMv": "s02_xt_show",
+    "storeMvAudio": 3853061,
+    "storeMvStopAudio": 3853065
   },
   {
     "id": 306604,
@@ -141,7 +151,9 @@
     "specialInsightDesc": "",
     "specialLive2d": "",
     "characterVoice": 0,
-    "storeMv": ""
+    "storeMv": "s02_37_show",
+    "storeMvAudio": 3853058,
+    "storeMvStopAudio": 3853065
   },
   {
     "id": 310001,
@@ -162,7 +174,9 @@
     "specialInsightDesc": "",
     "specialLive2d": "",
     "characterVoice": 0,
-    "storeMv": ""
+    "storeMv": "",
+    "storeMvAudio": 0,
+    "storeMvStopAudio": 0
   },
   {
     "id": 310002,
@@ -187,7 +201,9 @@
     "specialInsightDesc": "",
     "specialLive2d": "",
     "characterVoice": 0,
-    "storeMv": ""
+    "storeMv": "",
+    "storeMvAudio": 0,
+    "storeMvStopAudio": 0
   },
   {
     "id": 308303,
@@ -212,7 +228,9 @@
     "specialInsightDesc": "",
     "specialLive2d": "",
     "characterVoice": 0,
-    "storeMv": ""
+    "storeMv": "s02_qn_show",
+    "storeMvAudio": 3853060,
+    "storeMvStopAudio": 3853065
   },
   {
     "id": 311001,
@@ -233,7 +251,9 @@
     "specialInsightDesc": "",
     "specialLive2d": "",
     "characterVoice": 0,
-    "storeMv": ""
+    "storeMv": "",
+    "storeMvAudio": 0,
+    "storeMvStopAudio": 0
   },
   {
     "id": 311002,
@@ -258,7 +278,9 @@
     "specialInsightDesc": "",
     "specialLive2d": "",
     "characterVoice": 0,
-    "storeMv": ""
+    "storeMv": "",
+    "storeMvAudio": 0,
+    "storeMvStopAudio": 0
   },
   {
     "id": 312001,
@@ -279,7 +301,9 @@
     "specialInsightDesc": "3#领悟至终的仪式#获得全新神秘术",
     "specialLive2d": "1#3#diaozhui",
     "characterVoice": 0,
-    "storeMv": ""
+    "storeMv": "",
+    "storeMvAudio": 0,
+    "storeMvStopAudio": 0
   },
   {
     "id": 312002,
@@ -304,7 +328,9 @@
     "specialInsightDesc": "3#领悟至终的仪式#获得全新神秘术",
     "specialLive2d": "1#3#diaozhui",
     "characterVoice": 0,
-    "storeMv": ""
+    "storeMv": "",
+    "storeMvAudio": 0,
+    "storeMvStopAudio": 0
   },
   {
     "id": 308603,
@@ -331,7 +357,9 @@
     "specialInsightDesc": "",
     "specialLive2d": "",
     "characterVoice": 0,
-    "storeMv": ""
+    "storeMv": "s02_lx_show",
+    "storeMvAudio": 3853059,
+    "storeMvStopAudio": 3853065
   },
   {
     "id": 313401,
@@ -352,7 +380,9 @@
     "specialInsightDesc": "",
     "specialLive2d": "",
     "characterVoice": 0,
-    "storeMv": ""
+    "storeMv": "",
+    "storeMvAudio": 0,
+    "storeMvStopAudio": 0
   },
   {
     "id": 313402,
@@ -377,7 +407,9 @@
     "specialInsightDesc": "",
     "specialLive2d": "",
     "characterVoice": 0,
-    "storeMv": ""
+    "storeMv": "",
+    "storeMvAudio": 0,
+    "storeMvStopAudio": 0
   },
   {
     "id": 310003,
@@ -402,7 +434,9 @@
     "specialInsightDesc": "",
     "specialLive2d": "",
     "characterVoice": 0,
-    "storeMv": ""
+    "storeMv": "",
+    "storeMvAudio": 0,
+    "storeMvStopAudio": 0
   },
   {
     "id": 314101,
@@ -423,7 +457,9 @@
     "specialInsightDesc": "",
     "specialLive2d": "",
     "characterVoice": 0,
-    "storeMv": ""
+    "storeMv": "",
+    "storeMvAudio": 0,
+    "storeMvStopAudio": 0
   },
   {
     "id": 314102,
@@ -448,7 +484,9 @@
     "specialInsightDesc": "",
     "specialLive2d": "",
     "characterVoice": 0,
-    "storeMv": ""
+    "storeMv": "",
+    "storeMvAudio": 0,
+    "storeMvStopAudio": 0
   },
   {
     "id": 305305,
@@ -473,7 +511,9 @@
     "specialInsightDesc": "",
     "specialLive2d": "",
     "characterVoice": 0,
-    "storeMv": ""
+    "storeMv": "",
+    "storeMvAudio": 0,
+    "storeMvStopAudio": 0
   },
   {
     "id": 311003,
@@ -498,7 +538,9 @@
     "specialInsightDesc": "",
     "specialLive2d": "",
     "characterVoice": 0,
-    "storeMv": ""
+    "storeMv": "",
+    "storeMvAudio": 0,
+    "storeMvStopAudio": 0
   },
   {
     "id": 314601,
@@ -519,7 +561,9 @@
     "specialInsightDesc": "",
     "specialLive2d": "",
     "characterVoice": 0,
-    "storeMv": ""
+    "storeMv": "",
+    "storeMvAudio": 0,
+    "storeMvStopAudio": 0
   },
   {
     "id": 314602,
@@ -544,7 +588,9 @@
     "specialInsightDesc": "",
     "specialLive2d": "",
     "characterVoice": 0,
-    "storeMv": ""
+    "storeMv": "",
+    "storeMvAudio": 0,
+    "storeMvStopAudio": 0
   },
   {
     "id": 312003,
@@ -569,7 +615,9 @@
     "specialInsightDesc": "3#领悟至终的仪式#获得全新神秘术",
     "specialLive2d": "1#3#diaozhui",
     "characterVoice": 312003,
-    "storeMv": "v3a7_ndk_show"
+    "storeMv": "v3a7_ndk_show",
+    "storeMvAudio": 3853063,
+    "storeMvStopAudio": 3853065
   },
   {
     "id": 314403,
@@ -594,6 +642,35 @@
     "specialInsightDesc": "",
     "specialLive2d": "",
     "characterVoice": 0,
-    "storeMv": "v3a7_fly_show"
+    "storeMv": "v3a7_fly_show",
+    "storeMvAudio": 3853064,
+    "storeMvStopAudio": 3853065
+  },
+  {
+    "id": 310504,
+    "spine": "s02_310504_zxqexx/310504_zxqexx",
+    "spineParam": [
+      0,
+      0,
+      1
+    ],
+    "entranceMv": "s02_zxqe_open",
+    "mvtime": 13,
+    "voice": [
+      13105104
+    ],
+    "actionTime": [
+      16
+    ],
+    "entranceEffect": "",
+    "effectDuration": 0,
+    "audio": 13105111,
+    "stopAudio": 13105112,
+    "specialInsightDesc": "",
+    "specialLive2d": "",
+    "characterVoice": 0,
+    "storeMv": "s02_zxqe_show",
+    "storeMvAudio": 3853062,
+    "storeMvStopAudio": 3853065
   }
 ]

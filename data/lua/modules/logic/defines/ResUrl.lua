@@ -1384,6 +1384,10 @@ function ResUrl.getMainSceneSwitchLangIcon(resName)
 	return string.format("singlebg_lang/txt_mainsceneswitch_singlebg/%s.png", resName)
 end
 
+function ResUrl.getSceneUIPackageIcon(resName)
+	return string.format("singlebg/sceneuipackage_singlebg/%s.png", resName)
+end
+
 function ResUrl.getRougeIcon(resName)
 	return string.format("singlebg/rouge/%s.png", resName)
 end
@@ -1884,6 +1888,18 @@ end
 
 function ResUrl.getV3a8WarmUpSingleBg(resName)
 	return string.format("singlebg/v3a8_warmup_singlebg/%s.png", resName)
+end
+
+function ResUrl.getAtomicSingleBg(resName)
+	return string.format("singlebg/sp02_atomic_singlebg/%s.png", resName)
+end
+
+function ResUrl.getAtomicForyouSingleBg(path)
+	return string.format("singlebg/sp02_atomicforyou/%s.png", path)
+end
+
+function ResUrl.getS02PaoMianSingleBg(path)
+	return string.format("singlebg/sp02_paomian_singlebg/%s.png", path)
 end
 
 return ResUrl

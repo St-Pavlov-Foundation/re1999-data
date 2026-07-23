@@ -9562,5 +9562,241 @@
   {
     "id": "fight_douququ_dice_31",
     "lang": "我方全体主动使用咒语时，40%概率额外释放一次"
+  },
+  {
+    "id": "s02_atomic_emergencyShow",
+    "lang": "突发事件，请尽快处理"
+  },
+  {
+    "id": "s02_atomic_alarmAdd",
+    "lang": "警报层提升"
+  },
+  {
+    "id": "s02_atomic_alarmReduce",
+    "lang": "警报层下降"
+  },
+  {
+    "id": "s02_atomic_unlockElement",
+    "lang": "解锁新事件"
+  },
+  {
+    "id": "s02_atomic_emergencyExpired",
+    "lang": "突发事件已过期，警报值小幅提升！"
+  },
+  {
+    "id": "s02_atomic_alarmValue",
+    "lang": "警报层：▩1%s"
+  },
+  {
+    "id": "s02_atomic_recommend",
+    "lang": "推荐等级：▩1%s"
+  },
+  {
+    "id": "s02_atomic_databasetabtxt_1",
+    "lang": "地标"
+  },
+  {
+    "id": "s02_atomic_databasetabtxt_2",
+    "lang": "历史"
+  },
+  {
+    "id": "s02_atomic_databasetabtxt_3",
+    "lang": "角色"
+  },
+  {
+    "id": "s02_atomic_databasetabtxt_4",
+    "lang": "机械"
+  },
+  {
+    "id": "s02_atomic_databasetabtxt_5",
+    "lang": "功能道具"
+  },
+  {
+    "id": "p_sp02_twinspsychubeequipinfoview_1",
+    "lang": "未装备/激活"
+  },
+  {
+    "id": "p_sp02_twinspsychubeequipinfoview_2",
+    "lang": "去装备"
+  },
+  {
+    "id": "p_sp02_twinspsychubeequipinfoview_3",
+    "lang": "待解锁"
+  },
+  {
+    "id": "sp02_twinspsychubeequipinfoview_title_lock",
+    "lang": "未获得"
+  },
+  {
+    "id": "sp02_twinspsychubeequipinfoview_title_euiped",
+    "lang": "已装备"
+  },
+  {
+    "id": "sp02_twinspsychubeequipinfoview_title_unlock",
+    "lang": "已额外激活"
+  },
+  {
+    "id": "sp02_summon_progress_rewards_can_get_tip",
+    "lang": "存在待领取的奖励"
+  },
+  {
+    "id": "sp02_summon_progress_rewards_full_tip",
+    "lang": "已获取所有奖励"
+  },
+  {
+    "id": "sp02_summon_progress_rewards_tip",
+    "lang": "<SIZE=52><#FFEF99>▩1%s</color></SIZE>次征集后可自选奖励"
+  },
+  {
+    "id": "sp02_activityenterview_txt_game_instruction_robot_score",
+    "lang": "▩1%s▩2%s"
+  },
+  {
+    "id": "sp02_activityenterview_txt_task_title1",
+    "lang": "每日任务"
+  },
+  {
+    "id": "sp02_activityenterview_txt_task_title2",
+    "lang": "每周任务"
+  },
+  {
+    "id": "sp02_activityenterview_txt_task_title3",
+    "lang": "活动任务"
+  },
+  {
+    "id": "sp02_paomian_marcusentryitem_unlock",
+    "lang": "▩1%s后解锁下节"
+  },
+  {
+    "id": "sp02_paomian_mainview_open",
+    "lang": "▩1%s后开放"
+  },
+  {
+    "id": "sp02_summon_progress_task_title",
+    "lang": "阶段▩1%s"
+  },
+  {
+    "id": "sp02_summon_progress_task_desc",
+    "lang": "已抽取▩1%s/▩1%s次"
+  },
+  {
+    "id": "sp02_summon_progress_game_time_desc",
+    "lang": "今日奖励次数：▩1%s/▩1%s"
+  },
+  {
+    "id": "sp02_summon_progress_remain_game_time_desc",
+    "lang": "今日剩余奖励次数：▩1%s"
+  },
+  {
+    "id": "sp02_summon_progress_no_game_time_desc",
+    "lang": "今日奖励次数已达上限"
+  },
+  {
+    "id": "sp02_atomic_interact_alarmValue",
+    "lang": "<voffset=4>警报层</voffset><size=68> ▩1%s</size>"
+  },
+  {
+    "id": "sp02_store_linkgift_totalcount2_txt",
+    "lang": "<size=48>▩1%s次</size>征集"
+  },
+  {
+    "id": "sp02_v2a9linkgiftview_itemcount_txt",
+    "lang": "<size=28>×</size>▩1%s"
+  },
+  {
+    "id": "sp02_v2a9linkgiftview_title_txt",
+    "lang": "共可进行<size=80><#ffffff>▩1%s</color></size>次征集"
+  },
+  {
+    "id": "sp02_link_gift_store_reward_tip",
+    "lang": "奖励待领取"
+  },
+  {
+    "id": "sp02_atomic_polygon_doing",
+    "lang": "试验场进行中"
+  },
+  {
+    "id": "sp02_atomic_map_progress",
+    "lang": "[▩1%s - ▩2%s/▩3%s]"
+  },
+  {
+    "id": "sp02_atomic_alarmLevel",
+    "lang": "【警报层0▩1%s 】"
+  },
+  {
+    "id": "sp02_atomic_bar_alarmLevel",
+    "lang": "警报层▩1%s"
+  },
+  {
+    "id": "sp02_atomic_bar_alarmLevelUp",
+    "lang": "警报层<color=#CB6F5D>提升至▩1%s层</color>"
+  },
+  {
+    "id": "sp02_atomic_bar_alarmLevelDown",
+    "lang": "警报层<color=#6F96A8>降低至▩1%s层</color>"
+  },
+  {
+    "id": "handbookskin_festival_internationalyouthday",
+    "lang": "国际青年节"
+  },
+  {
+    "id": "sp02_atomic_database_locktips",
+    "lang": "当前未收集此档案"
+  },
+  {
+    "id": "sp02_atomic_talent_messagebox_yes",
+    "lang": "开始行动"
+  },
+  {
+    "id": "sp02_atomic_talent_messagebox_no",
+    "lang": "前往安装"
+  },
+  {
+    "id": "sp02_marcusview_day",
+    "lang": "EP.▩1%s"
+  },
+  {
+    "id": "sp02_marcusview_unlockTime",
+    "lang": "▩1%s后解锁"
+  },
+  {
+    "id": "sp02_guessmeview_day",
+    "lang": "Day.▩1%s"
+  },
+  {
+    "id": "sp02_summon_itemnum_confirm",
+    "lang": "<color=#cc492f>▩1%s×▩2%s</color>"
+  },
+  {
+    "id": "sp02_summon_itemnum_confirm_add",
+    "lang": "+"
+  },
+  {
+    "id": "sp02_summon_itemnum_transform_desc",
+    "lang": "本次征集将消耗▩6%s，缺少<color=#cc492f>▩1%d▩2%s▩3%s</color>，是否消耗<color=#cc492f>▩4%d▩5%s</color>购买？"
+  },
+  {
+    "id": "sp02_atomic_interact_needkey",
+    "lang": "待收集情报：<color=#B86757>▩1%s</color>/▩2%s"
+  },
+  {
+    "id": "sp02_dungeonmap_txt1",
+    "lang": "序章"
+  },
+  {
+    "id": "sp02_dungeonmap_txt2",
+    "lang": "后日谈"
+  },
+  {
+    "id": "common_comma_cn",
+    "lang": "，"
+  },
+  {
+    "id": "sp02_atomic_talent_coinMax",
+    "lang": "MAX"
+  },
+  {
+    "id": "sp02_atomic_mainactivity_hardlocktip",
+    "lang": "通关后日谈后开启"
   }
 ]

@@ -270,6 +270,12 @@ function FightTLEventCreateSpine:_createSpine(spineName, specificId, mirror, sca
 	end
 
 	table.insert(self._spineEntityList, spineEntity)
+
+	if not string.nilorempty(self._paramsArr[24]) then
+		local layer = tonumber(self._paramsArr[24])
+
+		spineEntity.spine:setLayer(layer, true)
+	end
 end
 
 function FightTLEventCreateSpine:_getHangPointGO(fightStepData, hangPointId, param)

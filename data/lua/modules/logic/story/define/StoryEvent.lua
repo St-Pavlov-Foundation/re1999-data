@@ -5,6 +5,7 @@ module("modules.logic.story.define.StoryEvent", package.seeall)
 local StoryEvent = _M
 
 StoryEvent.Start = GameUtil.getUniqueTb()
+StoryEvent.OnSkipClick = GameUtil.getUniqueTb()
 StoryEvent.StartFirstStep = GameUtil.getUniqueTb()
 StoryEvent.Finish = GameUtil.getUniqueTb()
 StoryEvent.EnterNextStep = GameUtil.getUniqueTb()

@@ -3,6 +3,12 @@
 module("modules.logic.fight.model.data.FightStepData", package.seeall)
 
 local FightStepData = FightDataClass("FightStepData")
+
+FightStepData.StepType = {
+	Inner = 2,
+	Wrap = 1
+}
+
 local uidCounter = 1
 
 function FightStepData:onConstructor(proto)
@@ -37,6 +43,34 @@ function FightStepData:initClientParam()
 	self.custom_ingoreParallelSkill = nil
 	self.custom_deviceDone = nil
 	self.hitIndex = nil
+	self.stepType = FightStepData.StepType.Wrap
+	self.deviceInnerIndex = 1
+end
+
+function FightStepData:setStepType(stepType)
+	self.stepType = stepType
+end
+
+function FightStepData:getStepType()
+	return self.stepType
+end
+
+function FightStepData:setDeviceInnerIndex(innerIndex)
+	self.deviceInnerIndex = innerIndex
+end
+
+function FightStepData:getDeviceInnerIndex()
+	local innerIndex
+
+	if self.stepType == FightStepData.StepType.Wrap then
+		innerIndex = self.supportHeroId
+	else
+		innerIndex = self.deviceInnerIndex
+	end
+
+	innerIndex = innerIndex < 1 and 1 or innerIndex
+
+	return innerIndex
 end
 
 function FightStepData:setCustomDeviceDone(done)

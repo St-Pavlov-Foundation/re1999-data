@@ -15,6 +15,8 @@ function StoryBgEffsUpFlow:init(bgCo)
 
 	table.insert(self._resList, self._matPath)
 
+	self._bgImgGo = StoryViewMgr.instance:getStoryFrontBgImgGo()
+	self._bgFrontImg = self._bgImgGo:GetComponent(gohelper.Type_Image)
 	self._effLoaded = false
 	self._cfg = bgCo
 end
@@ -33,15 +35,9 @@ function StoryBgEffsUpFlow:onLoadFinished()
 
 	self._effLoaded = true
 
-	local bgGo = StoryViewMgr.instance:getStoryBackgroundView()
-
-	self._rootGo = gohelper.findChild(bgGo, "#go_upbg/#simage_bgimg")
-
-	local img = self._rootGo:GetComponent(gohelper.Type_Image)
 	local mat = self._loader:getAssetItem(self._matPath):GetResource()
 
-	img.material = mat
-	self._bgImg = img
+	self._bgFrontImg.material = mat
 end
 
 function StoryBgEffsUpFlow:reset(bgCo)
@@ -51,21 +47,15 @@ function StoryBgEffsUpFlow:reset(bgCo)
 		return
 	end
 
-	local bgGo = StoryViewMgr.instance:getStoryBackgroundView()
-
-	self._rootGo = gohelper.findChild(bgGo, "#go_upbg/#simage_bgimg")
-
-	local img = self._rootGo:GetComponent(gohelper.Type_Image)
 	local mat = self._loader:getAssetItem(self._matPath):GetResource()
 
-	img.material = mat
-	self._bgImg = img
+	self._bgFrontImg.material = mat
 end
 
 function StoryBgEffsUpFlow:destroy()
-	if self._bgImg then
-		self._bgImg.material = nil
-		self._bgImg = nil
+	if self._bgFrontImg then
+		self._bgFrontImg.material = nil
+		self._bgFrontImg = nil
 	end
 
 	if self._effectGo then

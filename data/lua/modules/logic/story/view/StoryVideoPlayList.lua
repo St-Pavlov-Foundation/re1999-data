@@ -18,9 +18,19 @@ function StoryVideoPlayList:init(go, parent)
 	self._isPlaying = false
 	self.parentGO = parent
 	self.viewGO = go
-	self._uguiPlayList = self.viewGO:GetComponent(typeof(ZProj.AvProUGUIListPlayer))
-	self._mediaPlayList = self.viewGO:GetComponent(typeof(RenderHeads.Media.AVProVideo.PlaylistMediaPlayer))
-	self._displayUGUI = self.viewGO:GetComponent(typeof(RenderHeads.Media.AVProVideo.DisplayUGUI))
+
+	local isOverseas = SettingsModel.instance:isOverseas()
+	local isVideoEnabled = SettingsModel.instance:getVideoEnabled()
+	local unableVideo = not isVideoEnabled and isOverseas
+
+	if unableVideo then
+		self._uguiPlayList = AvProUGUIListPlayer_adjust.New()
+		self._mediaPlayList = PlaylistMediaPlayer_adjust.New()
+	else
+		self._uguiPlayList = self.viewGO:GetComponent(typeof(ZProj.AvProUGUIListPlayer))
+		self._mediaPlayList = self.viewGO:GetComponent(typeof(RenderHeads.Media.AVProVideo.PlaylistMediaPlayer))
+		self._displayUGUI = self.viewGO:GetComponent(typeof(RenderHeads.Media.AVProVideo.DisplayUGUI))
+	end
 
 	self._uguiPlayList:SetEventListener(self._onVideoEvent, self)
 	recthelper.setSize(self.viewGO.transform, 2592, 1080)
@@ -104,8 +114,9 @@ function StoryVideoPlayList:stop(targetName)
 	end
 
 	local playName = self._currentPlayNameMap[curPlayIndex]
+	local isVideoEnabled = SettingsModel.instance:getVideoEnabled()
 
-	if playName == targetName then
+	if playName == targetName or not isVideoEnabled then
 		logNormal("targetName = " .. tostring(targetName) .. " stop!")
 		self:_stopIOSDetectPause()
 

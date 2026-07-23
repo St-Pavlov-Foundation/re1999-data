@@ -20,6 +20,10 @@ StoreEnum.Discount = {
 	Flash = "104",
 	Super = "105"
 }
+StoreEnum.ChargeConditionalGetType = {
+	Auto = 0,
+	SP02 = 1
+}
 StoreEnum.RefreshTime = {
 	Day = 1,
 	Version = 1001,
@@ -141,6 +145,7 @@ StoreEnum.MonthCardStatus = {
 StoreEnum.Need4RDEpisodeId = 9999
 StoreEnum.StoreChargeType = {
 	LinkGiftGoods = 8,
+	SceneUIPackage = 21,
 	DailyReleasePackage = 4,
 	NationalGift = 9,
 	MonthCard = 2,
@@ -202,6 +207,13 @@ StoreEnum.DefaultCurrencyItem = CurrencyEnum.CurrencyType.Diamond
 StoreEnum.CurrencyItemSprite = {
 	[CurrencyEnum.CurrencyType.Diamond] = 0,
 	[CurrencyEnum.CurrencyType.GlowingFilament] = 6
+}
+StoreEnum.ChargeConditionalClientType = {
+	Default = 0,
+	SP02 = 1
+}
+StoreEnum.NewLinkTagType = {
+	SP02 = 1
 }
 StoreEnum.RecommendPackageMaxCount = 8
 

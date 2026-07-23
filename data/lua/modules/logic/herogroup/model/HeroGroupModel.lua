@@ -261,7 +261,7 @@ function HeroGroupModel:setParam(battleId, episodeId, adventure, isReConnect, ep
 			tempGroupMO
 		}
 
-		if isTowerEpisode or self._episodeType == DungeonEnum.EpisodeType.Rouge2 then
+		if isTowerEpisode or self._episodeType == DungeonEnum.EpisodeType.Rouge2 or self._episodeType == DungeonEnum.EpisodeType.AtomicDungeon then
 			self.heroGroupType = ModuleEnum.HeroGroupType.General
 
 			HeroGroupSnapshotModel.instance:setParam(self.episodeId)
@@ -388,6 +388,8 @@ function HeroGroupModel:_convertToPreset()
 				return
 			elseif episdoeConfig.type == DungeonEnum.EpisodeType.Abyss then
 				self._presetHeroGroupType = HeroGroupPresetEnum.HeroGroupType.Abyss
+			elseif episdoeConfig.type == DungeonEnum.EpisodeType.AtomicDungeon then
+				self._presetHeroGroupType = HeroGroupPresetEnum.HeroGroupType.AtomicDungeon
 			end
 		end
 	end
@@ -815,7 +817,7 @@ function HeroGroupModel:saveCurGroupData(callback, callbackObj, heroGroupMO)
 	else
 		local req = HeroGroupModule_pb.SetHeroGroupSnapshotRequest()
 
-		if HeroGroupHandler.checkIsTowerEpisodeByEpisodeId(self.episodeId) or self._episodeType == DungeonEnum.EpisodeType.Rouge2 then
+		if HeroGroupHandler.checkIsTowerEpisodeByEpisodeId(self.episodeId) or self._episodeType == DungeonEnum.EpisodeType.Rouge2 or self._episodeType == DungeonEnum.EpisodeType.AtomicDungeon then
 			FightParam.initTowerFightGroup(req.fightGroup, heroGroupMO.clothId, heroGroupMO:getMainList(), heroGroupMO:getSubList(), heroGroupMO:getAllHeroEquips(), heroGroupMO:getAllHeroActivity104Equips(), heroGroupMO:getAssistBossId())
 		elseif HeroGroupHandler.checkIsTowerComposeEpisodeByEpisodeId(self.episodeId) then
 			local recordFightParam = TowerComposeModel.instance:getRecordFightParam()

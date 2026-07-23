@@ -152,7 +152,8 @@ function FightConfig:reqConfigNames()
 		"skill_target_type_define",
 		"fight_direct_switch_battle_when_end",
 		"fight_dian_ji_shi_buff_effect",
-		"fight_effect_follow_entity_visible"
+		"fight_effect_follow_entity_visible",
+		"fight_effect_group"
 	}
 
 	if SLFramework.FrameworkSettings.IsEditor then
@@ -1102,6 +1103,34 @@ function FightConfig:getCoverType(skillId, entityId)
 	local skillCardLv = FightCardDataHelper.getSkillLv(entityId, skillId)
 
 	return skillCardLv == FightEnum.UniqueSkillCardLv and FightEnum.CoverType.Unique or FightEnum.CoverType.Normal
+end
+
+function FightConfig:getCareerList(career)
+	if not career then
+		return LuaUtil.emptyTable
+	end
+
+	self.careerCacheDict = self.careerCacheDict or {}
+
+	local list = self.careerCacheDict[career]
+
+	if list then
+		return list
+	end
+
+	local co = lua_fight_effect_group.configDict[career]
+
+	if co then
+		list = string.splitToNumber(co.career, "#")
+	else
+		list = {
+			career
+		}
+	end
+
+	self.careerCacheDict[career] = list
+
+	return list
 end
 
 FightConfig.instance = FightConfig.New()

@@ -19,6 +19,7 @@ function SummonController:onInit()
 	self._sendPoolId = nil
 	self._isInGuideAnim = false
 	self._isSkipInited = false
+	self.tempOptionalParam = nil
 end
 
 function SummonController:reInit()
@@ -654,6 +655,16 @@ function SummonController:summonProgressRewards(msg)
 	self:dispatchEvent(SummonEvent.onSummonProgressRewards)
 end
 
+function SummonController:summonOptionProgressRewards(msg)
+	local poolMO = SummonMainModel.instance:getPoolServerMO(msg.poolId)
+
+	if poolMO and poolMO.customPickMO then
+		poolMO.customPickMO:updateOptionalData(msg.progress, msg.chooseIndex)
+	end
+
+	self:dispatchEvent(SummonEvent.onSummonOptionalProgressRewards, msg)
+end
+
 function SummonController:insertSummonPopupList(priority, viewName, param)
 	self._popupParams = self._popupParams or {}
 
@@ -909,29 +920,33 @@ function SummonController:simpleEnterSummonScene(heroIdList, backToMainSceneCall
 	self._simpleFlow:start(heroIdList, backToMainSceneCallBack)
 end
 
-function SummonController:openSummonPoolPackageView(poolId, order)
+function SummonController:openSummonPoolPackageView(poolId, order, isAddProp)
 	local packageConfig = SummonConfig.instance:getSummonPoolPackageConfig(poolId, order)
 
 	if not packageConfig or not StoreModel.instance:isSummonPoolPackageValid(poolId, order) then
 		return
 	end
 
-	if string.nilorempty(packageConfig.className) then
-		self:openSummonPoolPackageDefaultView(poolId, order)
-	else
-		local viewParam = {}
+	local viewName = ViewName.SummonGiftPropBaseView
+	local viewParam = {}
 
-		viewParam.poolId = poolId
-		viewParam.order = order
+	viewParam.poolId = poolId
+	viewParam.order = order
 
-		local define = _G[packageConfig.className]
+	if not string.nilorempty(packageConfig.className) then
+		local define = ViewName[packageConfig.className]
 
 		if define then
-			ViewMgr.instance:openView(packageConfig.className, viewParam)
+			viewName = packageConfig.className
 		else
 			logError("卡池礼包 界面不存在" .. tostring(packageConfig.className))
-			self:openSummonPoolPackageDefaultView(poolId, order)
 		end
+	end
+
+	if isAddProp then
+		PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropConvertView, viewName, viewParam)
+	else
+		ViewMgr.instance:openView(viewName, viewParam)
 	end
 end
 
@@ -961,15 +976,6 @@ end
 
 function SummonController:noUseInfallibleItem()
 	self.tempInfallibleParam = nil
-end
-
-function SummonController:openSummonPoolPackageDefaultView(poolId, order)
-	local viewParam = {}
-
-	viewParam.poolId = poolId
-	viewParam.order = order
-
-	ViewMgr.instance:openView(ViewName.SummonGiftPropBaseView, viewParam)
 end
 
 function SummonController:onInfallibleSummonSuccess(summonResult)
@@ -1026,6 +1032,69 @@ function SummonController:checkNewbieConvert(poolId, summonCount)
 	end
 
 	SummonMainModel.instance:setItemConvertTag(nil)
+end
+
+function SummonController:trySelectOptionalProgressReward(poolId, progressId, index, name)
+	local tempParam = {}
+
+	tempParam.poolId = poolId
+	tempParam.progressId = progressId
+	tempParam.index = index
+	self.tempOptionalParam = tempParam
+
+	GameFacade.showOptionMessageBox(MessageBoxIdDefine.SummonOptionalRewardSelectTip, MsgBoxEnum.BoxType.Yes_No, MsgBoxEnum.optionType.Daily, self.realSelectOptionalProgressReward, nil, nil, self, nil, nil, name)
+end
+
+function SummonController:realSelectOptionalProgressReward()
+	local param = self.tempOptionalParam
+
+	SummonRpc.instance:sendSelectSummonchoosableRewardRequest(param.poolId, param.progressId, param.index, self.onSelectOptionalProgressReward, self)
+end
+
+function SummonController:onSelectOptionalProgressReward()
+	local param = self.tempOptionalParam
+
+	self.tempOptionalParam = nil
+
+	local poolConfig = SummonConfig.instance:getSummonPool(param.poolId)
+	local groupId = tonumber(poolConfig.progressChooseGroupId)
+	local rewardConfig = SummonConfig.instance:getProgressChooseConfig(groupId, param.progressId)
+
+	if not rewardConfig then
+		return
+	end
+
+	local rewardDataList = GameUtil.splitString2(rewardConfig.chooseRewards, true)
+	local reward = rewardDataList[param.index]
+
+	if reward[1] ~= MaterialEnum.MaterialType.Hero then
+		return
+	end
+
+	local heroConfig = HeroConfig.instance:getHeroCO(reward[2])
+
+	if not heroConfig then
+		return
+	end
+
+	local materialDataMOList = {}
+	local duplicateItem = GameUtil.splitString2(heroConfig.duplicateItem, true)
+
+	for _, duplicateReward in ipairs(duplicateItem) do
+		local materialDataMO = {}
+
+		materialDataMO.materilType = duplicateReward[1]
+		materialDataMO.materilId = duplicateReward[2]
+		materialDataMO.quantity = duplicateReward[3] * reward[3]
+
+		table.insert(materialDataMOList, materialDataMO)
+	end
+
+	if next(materialDataMOList) == nil then
+		return
+	end
+
+	PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.CommonPropView, materialDataMOList)
 end
 
 SummonController.instance = SummonController.New()

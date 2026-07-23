@@ -82,5 +82,33 @@
     "energyType": 0,
     "count": 3,
     "isSpecialCard": 0
+  },
+  {
+    "id": 31490201,
+    "name": "高效转化",
+    "energyType": 1,
+    "count": 1,
+    "isSpecialCard": 1
+  },
+  {
+    "id": 31490211,
+    "name": "增幅脉冲",
+    "energyType": 2,
+    "count": 1,
+    "isSpecialCard": 1
+  },
+  {
+    "id": 31495201,
+    "name": "高效转化",
+    "energyType": 1,
+    "count": 2,
+    "isSpecialCard": 1
+  },
+  {
+    "id": 31495211,
+    "name": "增幅脉冲",
+    "energyType": 2,
+    "count": 2,
+    "isSpecialCard": 1
   }
 ]

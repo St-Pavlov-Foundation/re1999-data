@@ -121,6 +121,8 @@ function MainFightReconnectWork:_onConfirm()
 		HeroGroupModel.instance:setBattleAndEpisodeId(fightReason.battleId, episodeId)
 		HeroGroupTrialModel.instance:setTrialByBattleId()
 		HeroGroupModel.instance:setParam(fightReason.battleId, episodeId, false, true)
+	elseif co.type == DungeonEnum.EpisodeType.AtomicDungeon then
+		AtomicRpc.instance:sendAtomicGetInfoRequest()
 	else
 		local isSeasonType = SeasonHeroGroupHandler.checkIsSeasonTypeByEpisodeId(episodeId)
 

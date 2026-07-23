@@ -11,6 +11,8 @@ function StoryFrontItem:init(go)
 	self._imagefulltop = gohelper.findChildImage(go, "image_fulltop")
 	self._imageupfade = gohelper.findChildImage(go, "go_upfade")
 	self._imageblock = gohelper.findChildImage(go, "#go_block")
+	self._txtscreentextmesh = gohelper.findChildText(go, "txt_screentextmesh")
+	self._imagefulltop = gohelper.findChildImage(go, "image_fulltop")
 	self._goupfade = gohelper.findChild(go, "go_upfade")
 	self._goirregularshake = gohelper.findChild(go.transform.parent.gameObject, "#go_irregularshake")
 
@@ -43,6 +45,7 @@ function StoryFrontItem:showFullScreenText(show, txt)
 		self._fadeOutCallbackObj = nil
 
 		ZProj.TweenHelper.KillByObj(self._txtscreentext)
+		self:_killFloatTween()
 		ZProj.TweenHelper.KillByObj(self._copyText)
 
 		if self._copyText then
@@ -55,7 +58,31 @@ function StoryFrontItem:showFullScreenText(show, txt)
 	gohelper.setActive(self._txtscreentext.gameObject, show)
 
 	self._diatxt = string.gsub(txt, "<notShowInLog>", "")
+	self._markScreenText = self._txtscreentext
 
+	if string.match(txt, "marktop") then
+		self._markScreenText = self._txtscreentextmesh
+
+		gohelper.setActive(self._txtscreentext.gameObject, false)
+		gohelper.setActive(self._txtscreentextmesh.gameObject, show)
+
+		self._markScreenText.alignment = StoryTool.getTxtAlignment(self._diatxt, gohelper.Type_TextMesh)
+		self._txtmarktop = IconMgr.instance:getCommonTextMarkTop(self._markScreenText.gameObject):GetComponent(gohelper.Type_TextMesh)
+		self._conMark = gohelper.onceAddComponent(self._markScreenText.gameObject, typeof(ZProj.TMPMark))
+
+		self._conMark:SetMarkTopGo(self._txtmarktop.gameObject)
+		self:_setFullScreenItem()
+	else
+		gohelper.setActive(self._txtscreentext.gameObject, show)
+		gohelper.setActive(self._txtscreentextmesh.gameObject, false)
+
+		self._txtscreentext.alignment = StoryTool.getTxtAlignment(self._diatxt, gohelper.Type_Text)
+
+		self:_setFullScreenItem()
+	end
+end
+
+function StoryFrontItem:_setFullScreenItem()
 	local stepId = StoryModel.instance:getCurStepId()
 	local stepCo = StoryStepModel.instance:getStepListById(stepId)
 
@@ -64,6 +91,9 @@ function StoryFrontItem:showFullScreenText(show, txt)
 	self._txtscreentext.text = StoryTool.getFilterAlignTxt(self._diatxt)
 
 	self:_showGlitch(stepCo.conversation.effType == StoryEnum.ConversationEffectType.Glitch)
+
+	self._diatxt = StoryModel.instance:getStoryTxtByVoiceType(self._diatxt, stepCo.conversation.audios[1] or 0)
+	self._markScreenText.text = StoryTool.getFilterAlignTxt(self._diatxt)
 end
 
 function StoryFrontItem:enableFrontRayCast(enable)
@@ -117,12 +147,14 @@ function StoryFrontItem:_glitchEffLoaded(loader)
 
 	gohelper.setActive(self._goGlitch, true)
 
-	local goGlitchUp = gohelper.findChild(self._goGlitch, "part_up")
-	local goGlitchDown = gohelper.findChild(self._goGlitch, "part_down")
+	for i = 1, 4 do
+		local glitchGo = gohelper.findChild(self._goGlitch, "part_" .. tostring(i))
+
+		gohelper.setActive(glitchGo, false)
+	end
+
 	local goScreen = gohelper.findChild(self._goGlitch, "part_screen")
 
-	gohelper.setActive(goGlitchUp, false)
-	gohelper.setActive(goGlitchDown, false)
 	gohelper.setActive(goScreen, true)
 
 	local ctxt = self._txtscreentext.gameObject:GetComponent(typeof(UnityEngine.UI.CustomText))
@@ -182,6 +214,7 @@ function StoryFrontItem:playStoryViewOut(callback, callbackobj, isSkip)
 	self._fadeOutCallbackObj = nil
 
 	ZProj.TweenHelper.KillByObj(self._txtscreentext)
+	self:_killFloatTween()
 	ZProj.TweenHelper.KillByObj(self._copyText)
 
 	if self._copyText then
@@ -199,6 +232,7 @@ end
 
 function StoryFrontItem:enterStoryFinish()
 	gohelper.setActive(self._txtscreentext.gameObject, false)
+	gohelper.setActive(self._txtscreentextmesh.gameObject, false)
 	StoryController.instance:dispatchEvent(StoryEvent.Hide)
 	ViewMgr.instance:registerCallback(ViewEvent.OnOpenFullView, self._onOpenView, self)
 	TaskDispatcher.runDelay(self._viewFadeOut, self, 0.5)
@@ -312,9 +346,10 @@ function StoryFrontItem:playIrregularShakeText(co, callback, callbackobj)
 		self._goshake = viewContainer:getResInst(viewContainer:getSetting().otherRes[1], self._goirregularshake)
 	end
 
+	self._shakeAni = self._goshake:GetComponent(typeof(UnityEngine.Animator))
+
 	local txt = gohelper.findChildText(self._goshake, "tex_ani/#tex")
 
-	self._shakeAni = self._goshake:GetComponent(typeof(UnityEngine.Animator))
 	txt.text = self._stepCo.conversation.diaTexts[GameLanguageMgr.instance:getLanguageTypeStoryIndex()]
 
 	local delayTime = self._stepCo.conversation.showTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] - 0.17
@@ -355,7 +390,7 @@ function StoryFrontItem:wordByWord(co, callback, callbackobj)
 	self._finishCallback = callback
 	self._finishCallbackObj = callbackobj
 
-	ZProj.UGUIHelper.SetColorAlpha(self._txtscreentext, 1)
+	self:_fadeUpdate(1)
 
 	if self._stepCo.conversation.showTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] < 0.1 then
 		if self._finishCallback then
@@ -372,7 +407,7 @@ function StoryFrontItem:wordByWord(co, callback, callbackobj)
 end
 
 function StoryFrontItem:_startWordByWord()
-	ZProj.TweenHelper.KillByObj(self._txtscreentext)
+	self:_killFloatTween()
 
 	self._txtscreentext.text = ""
 
@@ -395,14 +430,16 @@ end
 function StoryFrontItem:lineShow(lineCount, co, callback, callbackobj)
 	self._stepCo = co
 
-	gohelper.setActive(self._txtscreentext.gameObject, true)
+	gohelper.setActive(self._markScreenText.gameObject, true)
 
 	self._finishCallback = callback
 	self._finishCallbackObj = callbackobj
 
-	ZProj.UGUIHelper.SetColorAlpha(self._txtscreentext, 1)
+	self:_fadeUpdate(1)
 
 	if self._stepCo.conversation.showTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] < 0.1 then
+		self:_lineWordShowFinished()
+
 		if self._finishCallback then
 			self._finishCallback(self._finishCallbackObj)
 
@@ -417,14 +454,32 @@ function StoryFrontItem:lineShow(lineCount, co, callback, callbackobj)
 end
 
 function StoryFrontItem:_startShowLine(lineCount)
-	if not self._copyText then
-		local copyObj = gohelper.cloneInPlace(self._txtscreentext.gameObject, "copytext")
+	local textType = gohelper.Type_Text
 
-		self._copyCanvasGroup = gohelper.onceAddComponent(copyObj, typeof(UnityEngine.CanvasGroup))
-		self._copyText = copyObj:GetComponent(gohelper.Type_Text)
+	self._conCopyMark = nil
+
+	if not self._copyText then
+		local copyObj = gohelper.cloneInPlace(self._markScreenText.gameObject, "copytext")
+
+		gohelper.destroyAllChildren(copyObj)
+
+		local isTextMesh = copyObj:GetComponent(gohelper.Type_TextMesh)
+
+		textType = isTextMesh and gohelper.Type_TextMesh or textType
+		self._copyText = copyObj:GetComponent(textType)
+
+		if isTextMesh then
+			self._conMark:SetMarksTop({})
+
+			self._txtcopymarktop = IconMgr.instance:getCommonTextMarkTop(self._copyText.gameObject):GetComponent(gohelper.Type_TextMesh)
+			self._conCopyMark = gohelper.onceAddComponent(self._copyText.gameObject, typeof(ZProj.TMPMark))
+
+			self._conCopyMark:SetMarkTopGo(self._txtcopymarktop.gameObject)
+			self._conCopyMark:SetMarksTop({})
+		end
 	end
 
-	self._copyText.alignment = StoryTool.getTxtAlignment(self._diatxt)
+	self._copyText.alignment = StoryTool.getTxtAlignment(self._diatxt, textType)
 	self._diatxt = StoryTool.getFilterAlignTxt(self._diatxt)
 	self._diatxt = StoryModel.instance:getStoryTxtByVoiceType(self._diatxt, self._stepCo.conversation.audio or 0)
 
@@ -478,12 +533,31 @@ function StoryFrontItem:_startShowLine(lineCount)
 			end
 		end
 
-		self._txtscreentext.text = str
+		local markTopList = StoryTool.getMarkTopTextList(str)
+
+		str = StoryTool.filterMarkTop(str)
+		self._markScreenText.text = StoryTool.filterSpTag(str)
+
+		TaskDispatcher.runDelay(function()
+			if self._conMark and self._txtscreentextmesh.gameObject.activeSelf then
+				self._conMark:SetMarksTop(markTopList)
+			end
+		end, nil, 0.01)
+
+		local copymarkTopList = StoryTool.getMarkTopTextList(cpstr)
+
+		cpstr = StoryTool.filterMarkTop(cpstr)
+		cpstr = StoryTool.filterSpTag(cpstr)
 		self._copyText.text = cpstr
 
-		ZProj.TweenHelper.KillByObj(self._txtscreentext)
+		TaskDispatcher.runDelay(function()
+			if self._conCopyMark then
+				self._conCopyMark:SetMarksTop(copymarkTopList)
+			end
+		end, nil, 0.01)
+		ZProj.TweenHelper.KillByObj(self._markScreenText)
 		ZProj.TweenHelper.KillByObj(self._copyText)
-		ZProj.UGUIHelper.SetColorAlpha(self._txtscreentext, 1)
+		self:_fadeUpdate(1)
 		ZProj.TweenHelper.DOFadeCanvasGroup(self._copyText.gameObject, 0, 1, lineShowTime, function()
 			if index - #lineWords >= 0 then
 				self:_lineWordShowFinished()
@@ -538,11 +612,34 @@ function StoryFrontItem:_lineWordShowFinished()
 		self._finishCallback = nil
 	end
 
+	local str = StoryTool.getFilterAlignTxt(self._diatxt)
+	local markTopList = StoryTool.getMarkTopTextList(str)
+
+	str = StoryTool.filterMarkTop(str)
+	self._markScreenText.text = "\n" .. StoryTool.filterSpTag(str)
+
 	if self._copyText then
 		gohelper.setActive(self._copyText.gameObject, false)
 
 		self._copyText.text = ""
 	end
+
+	TaskDispatcher.runDelay(function()
+		if self._conMark and self._txtscreentextmesh.gameObject.activeSelf then
+			self._conMark:SetMarksTop(markTopList)
+		end
+
+		if self._copyText then
+			gohelper.destroyAllChildren(self._copyText.gameObject)
+			gohelper.destroy(self._copyText.gameObject)
+
+			self._copyText = nil
+		end
+
+		if self._finishCallback then
+			self._finishCallback(self._finishCallbackObj)
+		end
+	end, nil, 0.01)
 end
 
 function StoryFrontItem:playFullTextFadeOut(outTime, callback, callbackObj)
@@ -551,12 +648,13 @@ function StoryFrontItem:playFullTextFadeOut(outTime, callback, callbackObj)
 	self._fadeOutCallback = callback
 	self._fadeOutCallbackObj = callbackObj
 
-	ZProj.TweenHelper.KillByObj(self._txtscreentext)
-	ZProj.TweenHelper.DoFade(self._txtscreentext, 1, 0, fadeOutTime, self._hideScreenTxt, self, nil, EaseType.Linear)
+	self:_killFloatTween()
+
+	self._floatTweenId = ZProj.TweenHelper.DOTweenFloat(1, 0, fadeOutTime, self._fadeUpdate, self._hideScreenTxt, self, nil, EaseType.Linear)
 end
 
 function StoryFrontItem:_hideScreenTxt()
-	ZProj.TweenHelper.KillByObj(self._txtscreentext)
+	self:_killFloatTween()
 	gohelper.setActive(self._txtscreentext.gameObject, false)
 
 	if self._fadeOutCallback then
@@ -570,24 +668,28 @@ end
 function StoryFrontItem:playTextFadeIn(co, callback, callbackobj)
 	self._stepCo = co
 
-	gohelper.setActive(self._txtscreentext.gameObject, true)
+	gohelper.setActive(self._markScreenText.gameObject, true)
 
 	self._finishCallback = callback
 	self._finishCallbackObj = callbackobj
 
-	ZProj.TweenHelper.KillByObj(self._txtscreentext)
+	self:_killFloatTween()
+
+	local txt = self._markScreenText.text
+	local markTopList = StoryTool.getMarkTopTextList(txt)
+
+	txt = StoryTool.filterMarkTop(txt)
+	self._markScreenText.text = StoryTool.filterSpTag(txt)
+
+	TaskDispatcher.runDelay(function()
+		if self._conMark and markTopList and #markTopList > 0 then
+			self._conMark:SetMarksTop(markTopList)
+		end
+	end, nil, 0.01)
 
 	if self._stepCo.conversation.showTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] < 0.1 then
-		ZProj.UGUIHelper.SetColorAlpha(self._txtscreentext, 1)
 		self:_fadeFinished()
 	else
-		local txt = self._txtscreentext.text
-
-		if string.match(txt, "<color=#%x+>") then
-			txt = string.gsub(txt, "<color=#(%x%x%x%x%x%x)(%x-)>", "<color=#%100>")
-			self._txtscreentext.text = txt
-		end
-
 		self._floatTweenId = ZProj.TweenHelper.DOTweenFloat(0, 1, self._stepCo.conversation.showTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()], self._fadeUpdate, self._fadeFinished, self, nil, EaseType.Linear)
 	end
 end
@@ -833,26 +935,31 @@ function StoryFrontItem:_hideTmpScreenTxt()
 end
 
 function StoryFrontItem:_fadeUpdate(value)
-	local txt = self._txtscreentext.text
-	local result = math.ceil(255 * value)
-	local alpha = string.format("%02x", result)
-
-	if string.match(txt, "<color=#%x+>") then
-		txt = string.gsub(txt, "<color=#(%x%x%x%x%x%x)(%x+)>", "<color=#%1" .. alpha .. ">")
-		self._txtscreentext.text = txt
-
-		return
+	if not self._txtCanvasGroup then
+		self._txtCanvasGroup = gohelper.onceAddComponent(self._markScreenText, typeof(UnityEngine.CanvasGroup))
 	end
 
-	ZProj.UGUIHelper.SetColorAlpha(self._txtscreentext, value)
+	self._txtCanvasGroup.alpha = value
 end
 
 function StoryFrontItem:_fadeFinished()
+	if self._txtCanvasGroup then
+		self._txtCanvasGroup.alpha = 1
+	end
+
 	if self._finishCallback then
 		self._finishCallback(self._finishCallbackObj)
 
 		self._finishCallback = nil
 		self._finishCallbackObj = nil
+	end
+end
+
+function StoryFrontItem:_killFloatTween()
+	if self._floatTweenId then
+		ZProj.TweenHelper.KillById(self._floatTweenId)
+
+		self._floatTweenId = nil
 	end
 end
 
@@ -866,6 +973,7 @@ function StoryFrontItem:destroy()
 	self._fadeOutCallback = nil
 	self._fadeOutCallbackObj = nil
 
+	self:_killFloatTween()
 	TaskDispatcher.cancelTask(self._viewFadeOutFinished, self)
 	TaskDispatcher.cancelTask(self._startStoryViewIn, self)
 	TaskDispatcher.cancelTask(self._viewFadeOut, self)

@@ -34,5 +34,11 @@
     "name": "人类",
     "nameEng": "HUMAN",
     "icon": 6
+  },
+  {
+    "id": 7,
+    "name": "待考种",
+    "nameEng": "UNCLASSIFIED",
+    "icon": 7
   }
 ]

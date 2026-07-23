@@ -1879,6 +1879,20 @@ function JumpController:jumpToAct236()
 	return JumpEnum.JumpResult.Success
 end
 
+function JumpController:jumpToAtomicDungeonView(jumpParam)
+	local jumpArray = string.splitToNumber(jumpParam, "#")
+	local jumpType = jumpArray[2]
+	local jumpMapId = jumpArray[3]
+	local param = {
+		jumpType = jumpType,
+		jumpMapId = jumpMapId
+	}
+
+	AtomicDungeonController.instance:jumpView(param)
+
+	return JumpEnum.JumpResult.Success
+end
+
 JumpController.JumpViewToHandleFunc = {
 	[JumpEnum.JumpView.StoreView] = JumpController.jumpToStoreView,
 	[JumpEnum.JumpView.SummonView] = JumpController.jumpToSummonView,
@@ -1943,7 +1957,8 @@ JumpController.JumpViewToHandleFunc = {
 	[JumpEnum.JumpView.Abyss] = JumpController.jumpToAbyss,
 	[JumpEnum.JumpView.WeekWalk] = JumpController.jumpToWeekWalk,
 	[JumpEnum.JumpView.Anniversary3Game] = JumpController.jumpToAnniversary3GameView,
-	[JumpEnum.JumpView.Act236] = JumpController.jumpToAct236
+	[JumpEnum.JumpView.Act236] = JumpController.jumpToAct236,
+	[JumpEnum.JumpView.AtomicDungeon] = JumpController.jumpToAtomicDungeonView
 }
 JumpController.JumpActViewToHandleFunc = {
 	[JumpEnum.ActIdEnum.Act117] = JumpController.jumpToAct117,

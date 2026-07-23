@@ -45,6 +45,17 @@ SummonCharacterProbUpPreloadConfig.preloadLists.SummonCharacterProbUpVer380 = {
 	"singlebg/summon/heroversion_3_8/v3a8_huishengyao/v3a8_huishengyao_roel.png",
 	"singlebg/summon/heroversion_3_8/v3a8_huishengyao/v3a8_huishengyao_fullbg.png"
 }
+SummonCharacterProbUpPreloadConfig.preloadLists.SummonCharacterProbUpVer3852 = {
+	"singlebg/summon/heroversion_3_0/v3a0_malianna/v3a0_malianna_role.png",
+	"singlebg/summon/heroversion_3_0/v3a0_malianna/v3a0_malianna_fullbg.png"
+}
+SummonCharacterProbUpPreloadConfig.preloadLists.SummonStrongOneCustomPick385 = {
+	"singlebg/characterdestiny/character_destiny_new_fullbg01.png",
+	"singlebg/summon/heroversion_2_3/v2a3_selfselectsix/v2a3_selfselectsix_reshapefullbg.png",
+	"singlebg/summon/heroversion_2_4/v2a4_selfselectsix/v2a4_selfselectsix_role1.png",
+	"singlebg/summon/heroversion_sp02/sp02_selfselectsix/sp02_selfselectsix_role.png",
+	"singlebg/summon/heroversion_2_3/v2a3_selfselectsix/v2a3_selfselectsix_fullbg.png"
+}
 SummonCharacterProbUpPreloadConfig.preloadLists.SummonCharacterProbUpVer371 = {
 	"singlebg/summon/heroversion_3_7/v3a7_xiaoruian/v3a7_xiaoruian_dec01.png",
 	"singlebg/summon/heroversion_3_7/v3a7_xiaoruian/v3a7_xiaoruian_dec04.png",

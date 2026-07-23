@@ -1543,7 +1543,7 @@ function FightViewHandCardItem:playDistribute()
 	if not self._distributeFlow then
 		self._distributeFlow = FlowSequence.New()
 
-		self._distributeFlow:addWork(FigthCardDistributeEffect.New())
+		self._distributeFlow:addWork(FightWorkViewDistributeHandCardEffect.New())
 	else
 		self._distributeFlow:stop()
 	end

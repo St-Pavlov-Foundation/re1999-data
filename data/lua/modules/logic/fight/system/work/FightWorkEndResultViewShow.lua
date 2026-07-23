@@ -225,6 +225,14 @@ function FightWorkEndResultViewShow:_showSuccView()
 			AbyssController.instance:openFightSuccView()
 
 			return
+		elseif episode_config.type == DungeonEnum.EpisodeType.AtomicDungeon then
+			AtomicDungeonController.instance:openAtomicDungeonFightSuccView()
+
+			return
+		elseif VersionActivity2_9DungeonHelper.isTargetActEpisode(episode_config.id, VersionActivity3_10Enum.ActivityId.Dungeon) then
+			VersionActivity3_10DungeonController.instance:openFightSuccView()
+
+			return
 		end
 	end
 
@@ -294,6 +302,10 @@ function FightWorkEndResultViewShow:showFailView()
 
 				return
 			end
+		elseif AtomicDungeonModel.instance:checkIsHardFightEpisode(episode_config.id) then
+			AtomicDungeonController.instance:openAtomicDungeonHardFightResultView()
+
+			return
 		end
 	end
 

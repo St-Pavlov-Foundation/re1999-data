@@ -25,6 +25,7 @@ CurrencyEnum.CurrencyType = {
 	SkinCard = 12,
 	V1a8Dungeon = 1804,
 	V3a8DouQuQu = 3803,
+	V3a10Dungeon = 38502,
 	BulbCurrency = 2881,
 	V1a9Dungeon = 1901,
 	Act134Clue = 1414,

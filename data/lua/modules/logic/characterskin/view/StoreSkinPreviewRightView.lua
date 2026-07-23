@@ -26,6 +26,7 @@ function StoreSkinPreviewRightView:onInitView()
 	self._goSkinTips = gohelper.findChild(self.viewGO, "container/#go_SkinTips")
 	self._imgProp = gohelper.findChildImage(self.viewGO, "container/#go_SkinTips/image/#txt_Tips/#txt_Num/#image_Prop")
 	self._txtPropNum = gohelper.findChildTextMesh(self.viewGO, "container/#go_SkinTips/image/#txt_Tips/#txt_Num")
+	self._simagelogo = gohelper.findChildSingleImage(self.viewGO, "#simage_logo")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -291,8 +292,21 @@ function StoreSkinPreviewRightView:_refreshUI(skinCo)
 	local bSelectRmb
 
 	self:_setIsChargeBuy(bSelectRmb)
+
+	local isNotLogo = string.nilorempty(goodsConfig.logoRoots)
+
+	gohelper.setActive(self._simagelogo, not isNotLogo)
+
+	if not isNotLogo then
+		self._simagelogo:LoadImage(goodsConfig.logoRoots, self._onLogoLoadFinish, self)
+	end
+
 	CharacterController.instance:dispatchEvent(CharacterEvent.OnSwitchSkin, skinCo, self.viewName)
 	StoreController.instance:dispatchEvent(StoreEvent.OnSwitchSpine, skinId)
+end
+
+function StoreSkinPreviewRightView:_onLogoLoadFinish()
+	ZProj.UGUIHelper.SetImageSize(self._simagelogo.gameObject)
 end
 
 function StoreSkinPreviewRightView:_onViewDragBegin(param, pointerEventData)

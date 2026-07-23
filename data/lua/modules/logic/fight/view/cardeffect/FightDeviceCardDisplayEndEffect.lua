@@ -27,12 +27,20 @@ function FightDeviceCardDisplayEndEffect:onStart(context)
 	local hideWork = FunctionWork.New(FightDeviceCardDisplayEndEffect.hideFunc, self)
 
 	self._flow:addWork(hideWork)
+
+	local hideFrameWork = FunctionWork.New(FightDeviceCardDisplayEndEffect.onSingleSkillDone, self)
+
+	self._flow:addWork(hideFrameWork)
 	self._flow:registerDoneListener(self._onWorkDone, self)
 	self._flow:start()
 end
 
 function FightDeviceCardDisplayEndEffect:hideFunc()
 	gohelper.setActive(self.context.skillTipsGO, false)
+end
+
+function FightDeviceCardDisplayEndEffect:onSingleSkillDone()
+	FightController.instance:dispatchEvent(FightEvent.OnDevice_SingleSkillDone)
 end
 
 function FightDeviceCardDisplayEndEffect:onStop()

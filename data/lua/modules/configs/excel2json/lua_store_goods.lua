@@ -52,9 +52,8 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {
-	specialofferItem = 3,
-	name = 1,
-	offTag = 2
+	offTag = 2,
+	name = 1
 }
 
 function lua_store_goods.onLoad(json)

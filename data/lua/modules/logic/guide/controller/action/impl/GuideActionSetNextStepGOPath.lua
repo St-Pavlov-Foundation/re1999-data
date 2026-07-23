@@ -516,4 +516,20 @@ function GuideActionSetNextStepGOPath:getV3a8DianJiShiMapAreaTagPath()
 	return lastUpdateTagPath
 end
 
+function GuideActionSetNextStepGOPath:getAtomicDungeonEmergencyElementPath()
+	local isOpen = AtomicDungeonController.instance:isUnlockDungeon()
+
+	if not isOpen then
+		return
+	end
+
+	local elementCo = AtomicDungeonModel.instance:getCurMapEmergencyElement()
+
+	if not elementCo then
+		return
+	end
+
+	return string.format("UIRoot/POPUP_TOP/AtomicDungeonMainView/root/#go_elementClickRoot/%s/btn_click", elementCo.id)
+end
+
 return GuideActionSetNextStepGOPath

@@ -28,7 +28,9 @@ function FightSuccView:onInitView()
 	self._txtAddExp = gohelper.findChildText(self.viewGO, "goalcontent/txtLv/progress/txtAddExp")
 	self._sliderExp = gohelper.findChildSlider(self.viewGO, "goalcontent/txtLv/progress")
 	self._txtSayCn = gohelper.findChildText(self.viewGO, "layout/txtSayCn")
+	self._txtSayCn.text = ""
 	self._txtSayEn = gohelper.findChildText(self.viewGO, "layout/txtSayEn")
+	self._txtSayEn.text = ""
 	self._favorIcon = gohelper.findChild(self.viewGO, "scroll/viewport/content/favor")
 	self._goCondition = gohelper.findChild(self.viewGO, "goalcontent/goallist/fightgoal")
 	self._goPlatCondition = gohelper.findChild(self.viewGO, "goalcontent/goallist/platinum")

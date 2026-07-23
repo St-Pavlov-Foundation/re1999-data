@@ -1563,5 +1563,56 @@
     "uiFolder": [],
     "uiPath": [],
     "packName": "opsodache"
+  },
+  {
+    "id": 34,
+    "audio": [
+      3310012,
+      3310013,
+      3310014
+    ],
+    "chapter": [
+      31101,
+      31201,
+      31301,
+      31401,
+      31601,
+      31501
+    ],
+    "guide": [],
+    "story": [
+      313201,
+      313202,
+      313203,
+      313204,
+      313205,
+      313206,
+      313207,
+      313208,
+      313209,
+      312501,
+      312502,
+      312503,
+      312504,
+      312506,
+      312508,
+      312509,
+      312510,
+      312505,
+      312507,
+      312511
+    ],
+    "folderPath": [],
+    "videoPath": [
+      "3_1_pv"
+    ],
+    "path": [],
+    "uiFolder": [
+      "ui/viewres/versionactivity_3_1/v3a1_bpoper",
+      "ui/viewres/versionactivity_3_1/v3a1_dungeon",
+      "ui/viewres/versionactivity_3_1/v3a1_enter"
+    ],
+    "uiPath": [],
+    "packName": "opveract"
   }
 ]

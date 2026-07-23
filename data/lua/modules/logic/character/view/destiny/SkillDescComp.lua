@@ -43,7 +43,7 @@ function SkillDescComp:updateInfo(txtComp, desc, heroId)
 		tabletool.clear(self._skillNameList)
 	end
 
-	desc = self:_replaceSkillTag(desc, "▩(%d)%%s")
+	desc = self:_replaceSkillTag(desc, "▩(%d+)%%s")
 	desc = self:addLink(desc)
 	desc = self:filterBracketText(desc)
 	desc = self:addNumColor(desc)
@@ -77,7 +77,7 @@ function SkillDescComp:_replaceSkillTag(desc, pattern)
 
 	skillIndex = tonumber(skillIndex)
 
-	local skillId, extraSkillIndex
+	local skillId, extraSkillIndex, specialSkillId
 
 	if skillIndex == 0 then
 		skillId = SkillConfig.instance:getpassiveskillsCO(self._heroId)[1].skillPassive
@@ -85,7 +85,17 @@ function SkillDescComp:_replaceSkillTag(desc, pattern)
 		self._deviceMo = SkillConfig.instance:getHeroDeviceMO(self._heroId, self.heroMo)
 
 		if self._deviceMo then
-			skillId = self._deviceMo:getSkillId(skillIndex)
+			local index = 1
+
+			if skillIndex > 10 then
+				local _tempIndex = skillIndex
+
+				skillIndex = _tempIndex % 10
+				index = math.floor(_tempIndex / 10)
+			end
+
+			skillId = self._deviceMo:getSkillId(skillIndex, index)
+			specialSkillId = skillId
 		else
 			local _, _, _skillIndex = string.find(desc, "▩%d%%s<(%d)>")
 			local skillIds = SkillConfig.instance:getHeroAllSkillIdDictByExSkillLevel(self._heroId, nil, self.heroMo, nil, true)
@@ -107,8 +117,8 @@ function SkillDescComp:_replaceSkillTag(desc, pattern)
 	end
 
 	local skillName = lua_skill.configDict[skillId].name
-	local foramt = "<color=%s><link=\"skillIndex=%s|extraSkillIndex=%s\">【%s】</link></color>"
-	local _skillName = skillName and string.format(foramt, self:getLinkColor(), skillIndex, extraSkillIndex or -1, skillName) or ""
+	local foramt = "<color=%s><link=\"skillIndex=%s|extraSkillIndex=%s|specialSkillId={%s}\">【%s】</link></color>"
+	local _skillName = skillName and string.format(foramt, self:getLinkColor(), skillIndex, extraSkillIndex or -1, specialSkillId or -1, skillName) or ""
 
 	if not self._skillNameList then
 		self._skillNameList = {}
@@ -289,7 +299,7 @@ end
 function SkillDescComp:_onHyperLinkClick(data, clickPosition)
 	AudioMgr.instance:trigger(AudioEnum.UI.Play_UI_Universal_Click)
 
-	local skillIndex, extraSkillIndex = string.match(data, "skillIndex=(.-)|extraSkillIndex=(.+)")
+	local skillIndex, extraSkillIndex, specialSkillId = string.match(data, "skillIndex=(.-)|extraSkillIndex=(.-)|specialSkillId={(.-)}")
 
 	skillIndex = skillIndex and tonumber(skillIndex)
 
@@ -324,6 +334,16 @@ function SkillDescComp:_onHyperLinkClick(data, clickPosition)
 				if skillChoice then
 					skillIds = skillChoice[extraSkillIndex]
 				end
+			end
+		end
+
+		if specialSkillId then
+			specialSkillId = tonumber(specialSkillId)
+
+			if specialSkillId ~= -1 then
+				skillIds = {
+					specialSkillId
+				}
 			end
 		end
 

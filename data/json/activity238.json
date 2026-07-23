@@ -1,0 +1,93 @@
+[
+  {
+    "activityId": 138509,
+    "id": 1,
+    "desc": "她存在于某位书虫的幻想中，思维清晰，充满理性。她是书虫理想中的一个自己。\n请问这是谁？",
+    "questionMask": "sp02_guessme_unknownhero_1",
+    "questionPictuer": "sp02_guessme_hero_1",
+    "option1": "约翰·提托",
+    "option2": "马库斯",
+    "option3": "露西",
+    "correctOption": 3,
+    "answer": "尝试马库斯穿搭的露西",
+    "bonus": "1#173852#1"
+  },
+  {
+    "activityId": 138509,
+    "id": 2,
+    "desc": "她身处幻想中的拉普拉斯科算中心房间。办公室内的椅子能提供充足的电流，让她维持头脑清醒。\n请问这是谁？",
+    "questionMask": "sp02_guessme_unknownhero_2",
+    "questionPictuer": "sp02_guessme_hero_2",
+    "option1": "露西",
+    "option2": "马库斯",
+    "option3": "菲林士多",
+    "correctOption": 2,
+    "answer": "什么都不会告诉你的马库斯",
+    "bonus": "10#10#1"
+  },
+  {
+    "activityId": 138509,
+    "id": 3,
+    "desc": "她热衷于表演与惊喜。舞台上的热舞演出，让台下观众感动得热泪盈眶。\n请问这是谁？",
+    "questionMask": "sp02_guessme_unknownhero_3",
+    "questionPictuer": "sp02_guessme_hero_3",
+    "option1": "夏利",
+    "option2": "维尔汀",
+    "option3": "坦南特",
+    "correctOption": 2,
+    "answer": "陷入忘我演出中的维尔汀",
+    "bonus": "1#110204#1"
+  },
+  {
+    "activityId": 138509,
+    "id": 4,
+    "desc": "她并不愿意一直躲在这个小盒子中。如果时机成熟，她自会离开这里。\n请问这是谁？",
+    "questionMask": "sp02_guessme_unknownhero_4",
+    "questionPictuer": "sp02_guessme_hero_4",
+    "option1": "TTT",
+    "option2": "星锑",
+    "option3": "无线电小姐",
+    "correctOption": 2,
+    "answer": "躲猫猫的星锑",
+    "bonus": "10#10#1"
+  },
+  {
+    "activityId": 138509,
+    "id": 5,
+    "desc": "拘束衣中的囚徒陷入了沉思。“我是谁？”“我从何而来？”“我又要到哪里去？”\n请问这是谁？",
+    "questionMask": "sp02_guessme_unknownhero_5",
+    "questionPictuer": "sp02_guessme_hero_5",
+    "option1": "马库斯",
+    "option2": "罗蕾莱",
+    "option3": "阿莱夫",
+    "correctOption": 1,
+    "answer": "被五花大绑的马库斯",
+    "bonus": "1#110404#1"
+  },
+  {
+    "activityId": 138509,
+    "id": 6,
+    "desc": "一顶在半空中划出完美弧线的帽状物体，终将找到适合落下的那个地方。\n请问这是谁？",
+    "questionMask": "sp02_guessme_unknownhero_7",
+    "questionPictuer": "sp02_guessme_hero_7",
+    "option1": "维尔汀（的帽子）",
+    "option2": "宽檐帽",
+    "option3": "星之眼",
+    "correctOption": 3,
+    "answer": "丢失了DUU-DUU-BELL-BOO的星之眼",
+    "bonus": "10#10#1"
+  },
+  {
+    "activityId": 138509,
+    "id": 7,
+    "desc": "她身手矫健，飞檐走壁不在话下。她并不经常这样——只在一些需要她如此的特定时刻。\n请问这是谁？",
+    "questionMask": "sp02_guessme_unknownhero_6",
+    "questionPictuer": "sp02_guessme_hero_6",
+    "option1": "露西",
+    "option2": "梅兰妮",
+    "option3": "梁月",
+    "correctOption": 1,
+    "answer": "成为攀墙大师的露西",
+    "bonus": "1#110304#1"
+  }
+]

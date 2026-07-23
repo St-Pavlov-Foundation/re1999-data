@@ -698,5 +698,30 @@
     "activityId": 13822,
     "specialBonus": 416,
     "specialPropDesc": "解锁即赠十连/电池2选1"
+  },
+  {
+    "bpId": 28,
+    "chargeId1": 710001,
+    "chargeId2": 710002,
+    "chargeId1to2": 710003,
+    "payStatus1Bonus": "1#823851#1|1#481010#1",
+    "payStatus2Bonus": "1#173856#1|2#2#400|1#770001#1|10#21#3|1#120013#5",
+    "name": "",
+    "payStatus2AddLevel": 10,
+    "expLevelUp": 1000,
+    "bpSkinDesc": "银色等高线",
+    "bpSkinNametxt": "——北方哨歌",
+    "bpSkinEnNametxt": "Silver Isoheight",
+    "bpviewicon": "",
+    "bpviewpos": "",
+    "showBonus": "",
+    "showBonusDate": "2026-07-23 05:00:00",
+    "isSp": false,
+    "weekLimitTimes": 0,
+    "expUpShow": false,
+    "promptDays": 7,
+    "activityId": 138512,
+    "specialBonus": 436,
+    "specialPropDesc": "解锁即赠十连/电池2选1"
   }
 ]

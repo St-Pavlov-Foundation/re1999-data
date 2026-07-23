@@ -4,6 +4,12 @@ module("modules.logic.fight.model.data.FightDeviceInfoData", package.seeall)
 
 local FightDeviceInfoData = FightDataClass("FightDeviceInfoData")
 
+FightDeviceInfoData.Index = {
+	Two = 2,
+	One = 1,
+	Unique = 3
+}
+
 function FightDeviceInfoData:onConstructor(proto)
 	self.skills = {}
 

@@ -61,5 +61,26 @@
     "episodeId": 2290109,
     "careerPrefer": "3#4",
     "teamRecommend": "113"
+  },
+  {
+    "activityId": 138521,
+    "stage": 1,
+    "episodeId": 2290111,
+    "careerPrefer": "1#2",
+    "teamRecommend": "131"
+  },
+  {
+    "activityId": 138521,
+    "stage": 2,
+    "episodeId": 2290112,
+    "careerPrefer": "2#6",
+    "teamRecommend": "110#114"
+  },
+  {
+    "activityId": 138521,
+    "stage": 3,
+    "episodeId": 2290113,
+    "careerPrefer": "3#2",
+    "teamRecommend": "113"
   }
 ]

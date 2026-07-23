@@ -4,6 +4,13 @@ module("modules.logic.story.view.StoryPictureItem", package.seeall)
 
 local StoryPictureItem = class("StoryPictureItem")
 
+function StoryPictureItem:_isSpImg()
+	local isJp = GameLanguageMgr.instance:getLanguageTypeStoryIndex() == LanguageEnum.LanguageStoryType.JP
+	local isSp = string.match(self._picCo.picture, "v2a5_liangyue_story")
+
+	return isSp and not isJp
+end
+
 function StoryPictureItem:init(go, name, picCo)
 	self.viewGO = go
 	self._picParentGo = gohelper.create2d(self.viewGO, name)
@@ -52,6 +59,10 @@ function StoryPictureItem:_build()
 		self._pictureLoader:dispose()
 
 		self._pictureLoader = nil
+	end
+
+	if self:_isSpImg() then
+		return
 	end
 
 	if self._picCo.picType == StoryEnum.PictureType.FullScreen then
@@ -111,9 +122,12 @@ function StoryPictureItem:_onPicPrefabLoaded()
 		local curLang = GameLanguageMgr.instance:getShortCutByStoryIndex(index)
 		local txtCo = string.splitToNumber(self._picCo.picture, "#")
 		local picTxtCo = StoryConfig.instance:getStoryPicTxtConfig(tonumber(txtCo[1]))
-		local fontType = picTxtCo.fontType + 1
+		local fontType = 0
+		local hasCn = LuaUtil.containChinese(picTxtCo[LangSettings.shortcutTab[LangSettings.zh]])
 
-		if not self._spTxts[fontType] or not self._tmpTxts[fontType] then
+		fontType = hasCn and picTxtCo.fontType ~= 0 and self._picCo.inType == StoryEnum.PictureInType.TxtFadeIn and 0 or picTxtCo.fontType + 1
+
+		if fontType ~= 0 and not self._spTxts[fontType] then
 			logError(string.format("配置异常，目前还未设置相关fontType：%s的字体设定,请检查配置！", fontType))
 
 			return
@@ -124,27 +138,37 @@ function StoryPictureItem:_onPicPrefabLoaded()
 		gohelper.setActive(self._gotmptxt, useTmp)
 		gohelper.setActive(self._gosptxt, not useTmp)
 
-		self.useTxts = useTmp and self._tmpTxts or self._spTxts
+		self._useTxts = useTmp and self._tmpTxts or self._spTxts
 
 		for i = 1, 3 do
-			gohelper.setActive(self.useTxts[i], fontType == i)
+			gohelper.setActive(self._useTxts[i].gameObject, fontType == i)
 		end
 
 		local txt = picTxtCo[curLang]
 		local time = 0.1 * LuaUtil.getStrLen(txt) * txtCo[2]
-		local playDoText = not useTmp and self._picCo.inType ~= StoryEnum.PictureInType.TxtFadeIn
+		local playDoText = not useTmp and self._picCo.inType ~= StoryEnum.PictureInType.TxtFadeIn and fontType ~= 0
 
 		if playDoText then
-			self._dtTweenId = ZProj.TweenHelper.DOText(self.useTxts[fontType], txt, time, nil, nil, nil, EaseType.Linear)
-		else
-			self.useTxts[fontType].text = txt
+			self._dtTweenId = ZProj.TweenHelper.DOText(self._useTxts[fontType], txt, time, nil, nil, nil, EaseType.Linear)
 		end
 
 		if self._picCo.inType == StoryEnum.PictureInType.SoftLight or self._picCo.inType == StoryEnum.PictureInType.GostMagic then
-			self:_playTextEffect(true, self.useTxts[fontType], self._picCo.inType)
+			self:_playTextEffect(true, self._useTxts[fontType], self._picCo.inType)
 		end
 
 		if self._picCo.inType == StoryEnum.PictureInType.FadeIn or self._picCo.inType == StoryEnum.PictureInType.TxtFadeIn then
+			if fontType == 0 then
+				fontType = picTxtCo.fontType + 1
+
+				local filterResult = StoryTool.filterMarkTop(txt)
+
+				gohelper.setActive(self._useTxts[fontType].gameObject, true)
+
+				self._useTxts[fontType].text = filterResult
+			else
+				self._useTxts[fontType].text = txt
+			end
+
 			ZProj.TweenHelper.DOFadeCanvasGroup(self._picGoRoot, 0, 1, self._picCo.inTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()], nil, nil, nil, EaseType.Linear)
 		else
 			self._picGoRoot:GetComponent(typeof(UnityEngine.CanvasGroup)).alpha = 1
@@ -289,6 +313,10 @@ function StoryPictureItem:_followBg()
 end
 
 function StoryPictureItem:_playScale()
+	if not self._picCo then
+		return
+	end
+
 	local transTime = self._picCo.effTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()]
 	local color = SLFramework.UGUI.GuiHelper.ParseColor(self._picCo.picColor)
 
@@ -297,6 +325,10 @@ function StoryPictureItem:_playScale()
 		transformhelper.setLocalPosXY(self._picGoRoot.transform, self._picCo.pos[1], self._picCo.pos[2])
 
 		if self._picCo.picType ~= StoryEnum.PictureType.Transparency then
+			return
+		end
+
+		if not self._picImg then
 			return
 		end
 
@@ -309,6 +341,10 @@ function StoryPictureItem:_playScale()
 	self._scaleTweenId = ZProj.TweenHelper.DOScale(self._picGoRoot.transform, self._picCo.effRate, self._picCo.effRate, 1, transTime)
 
 	if self._picCo.picType ~= StoryEnum.PictureType.Transparency then
+		return
+	end
+
+	if not self._picImg then
 		return
 	end
 
@@ -359,7 +395,13 @@ function StoryPictureItem:reset(go, picCo)
 
 	TaskDispatcher.cancelTask(self._realDestroy, self)
 	TaskDispatcher.cancelTask(self._followBg, self)
+	TaskDispatcher.cancelTask(self._playScale, self)
+	TaskDispatcher.cancelTask(self._playShake, self)
 	self:_killTweenId()
+
+	if self:_isSpImg() then
+		return
+	end
 
 	if self._picCo.picType == StoryEnum.PictureType.FullScreen then
 		self:_setFullPicture()
@@ -403,6 +445,10 @@ function StoryPictureItem:_setNormalPicture()
 	self._simg:LoadImage(ResUrl.getStoryItem(self._picCo.picture), self._onPicImageLoaded, self)
 
 	if self._picCo.picType ~= StoryEnum.PictureType.Transparency then
+		return
+	end
+
+	if not self._picImg then
 		return
 	end
 
@@ -569,6 +615,7 @@ function StoryPictureItem:_realDestroy()
 	TaskDispatcher.cancelTask(self._checkDestroyItem, self)
 	TaskDispatcher.cancelTask(self._startDestroy, self)
 	TaskDispatcher.cancelTask(self._build, self)
+	ZProj.TweenHelper.KillByObj(self._picGoRoot)
 	TaskDispatcher.cancelTask(self._shakeStop, self)
 
 	if self._simg then

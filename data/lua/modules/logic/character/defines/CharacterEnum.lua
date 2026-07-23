@@ -235,5 +235,10 @@ CharacterEnum.SkinRare = {
 	Advanced = 4,
 	None = 0
 }
+CharacterEnum.TwinssychubeEquip = {
+	1571,
+	1572
+}
+CharacterEnum.TwinssychubeHeroId = 3149
 
 return CharacterEnum

@@ -85,6 +85,7 @@ function FightWorkPlay2Operate:onStart()
 		flow:registWork(FightWorkCheckNaNaBindContract)
 		flow:registWork(FightWorkCheckLuXiHeroUpgrade)
 		flow:registWork(FightWorkBLESelectCrystal)
+		flow:registWork(FightWorkSSWLSelectCard)
 		flow:registWork(FightWorkSelectBattleEvent)
 		flow:registWork(FightWorkFunction, FightDataHelper.tempMgr.clearBattleSelectCount, FightDataHelper.tempMgr)
 	end

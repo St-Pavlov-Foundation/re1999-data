@@ -105,13 +105,13 @@ function FightTLEventAtkFullEffect:onTrackStart(fightStepData, duration, paramsA
 			local posY = (pos1y + pos2y) / 2
 			local posZ = (pos1z + pos2z) / 2
 
-			offsetX = posX
-			offsetY = posY
-			offsetZ = posZ
+			offsetX = posX + (side == FightEnum.EntitySide.MySide and offsetX or -offsetX)
+			offsetY = posY + offsetY
+			offsetZ = posZ + offsetZ
 		else
-			offsetX = 0
-			offsetY = 0
-			offsetZ = 0
+			offsetX = 0 + offsetX
+			offsetY = 0 + offsetY
+			offsetZ = 0 + offsetZ
 		end
 	end
 

@@ -213,4 +213,20 @@ function PatFaceCustomHandler.V3a8FreeMonthCardPat()
 	MonthCardController.instance:openV3a8PanelView()
 end
 
+function PatFaceCustomHandler.SP02_OperationActivityPatFaceViewCanPat(patFaceId)
+	local actId = PatFaceConfig.instance:getPatFaceActivityId(patFaceId)
+	local isActOpen = ActivityHelper.isOpen(actId)
+	local haveCanGet = ActivityType101Model.instance:isType101RewardCouldGetAnyOne(actId)
+
+	return isActOpen and haveCanGet
+end
+
+function PatFaceCustomHandler.SP02_OperationActivityPatFaceViewPat(patFaceId)
+	local actId = PatFaceConfig.instance:getPatFaceActivityId(patFaceId)
+
+	ViewMgr.instance:openView(ViewName.AtomicOperationActivityEnterPatFaceView, {
+		actId = actId
+	})
+end
+
 return PatFaceCustomHandler
