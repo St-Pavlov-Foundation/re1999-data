@@ -24,4 +24,14 @@ function SP02_LinkGiftPanelView:_btncloseOnClick()
 	self:closeThis()
 end
 
+function SP02_LinkGiftPanelView:onOpenFinish()
+	SP02_LinkGiftPanelView.super.onOpenFinish(self)
+
+	local goodsMo = StoreModel.instance:getGoodsMO(self.curChangeGoodsId)
+
+	if goodsMo then
+		StoreController.instance:statOpenChargeGoods(goodsMo.belongStoreId, goodsMo.config)
+	end
+end
+
 return SP02_LinkGiftPanelView

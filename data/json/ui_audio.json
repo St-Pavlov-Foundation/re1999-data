@@ -16356,8 +16356,8 @@
   },
   {
     "id": 3853065,
-    "eventName": "stop_heroshowsfx_bus_1p",
-    "bankName": "heroshowsfx_bus_1p"
+    "eventName": "stop_hero_skin_store",
+    "bankName": "stop_hero_skin_store"
   },
   {
     "id": 3853066,

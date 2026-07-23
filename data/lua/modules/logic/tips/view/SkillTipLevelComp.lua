@@ -255,29 +255,23 @@ function SkillTipLevelComp:_refreshDevice(skillId)
 	if heroMo then
 		deviceMo = heroMo:getDeviceMo()
 	elseif self.heroId then
-		heroMo = HeroModel.instance:getByHeroId(self.heroId)
+		local heroCo = HeroConfig.instance:getHeroCO(self.heroId)
 
-		if heroMo then
-			deviceMo = heroMo:getDeviceMo()
-		else
-			local heroCo = HeroConfig.instance:getHeroCO(self.heroId)
+		if heroCo and heroCo.deviceId > 0 then
+			deviceMo = HeroDeviceMO.New(self.heroId)
 
-			if heroCo and heroCo.deviceId > 0 then
-				deviceMo = HeroDeviceMO.New()
-
-				deviceMo:refreshDevice(heroCo.deviceId)
-			end
+			deviceMo:refreshDevice(heroCo.deviceId)
 		end
 	end
 
+	local isDeviceSkillId = false
+
 	if deviceMo then
 		deviceMo:setHeroMo(heroMo)
-	end
 
-	local isShowEnergyPoint = self.skillIndex ~= nil and deviceMo ~= nil
+		local skillInfo = deviceMo:getSkillInfoById(skillId)
 
-	if isShowEnergyPoint then
-		local skillInfo = deviceMo:getSkillInfo(self.skillIndex, self._selectCardGroupIndex)
+		isDeviceSkillId = skillInfo ~= nil
 
 		if self._super then
 			self._txttongdiao.text = "-" .. deviceMo:getUniqueSkillPoint()
@@ -302,10 +296,10 @@ function SkillTipLevelComp:_refreshDevice(skillId)
 		gohelper.setActive(self._goenergytag1.gameObject, not self._super)
 	end
 
-	gohelper.setActive(self._godevice, isShowEnergyPoint)
+	gohelper.setActive(self._godevice, isDeviceSkillId)
 
 	for _, item in pairs(self._newskillitems) do
-		gohelper.setActive(item.gostar, self.viewParam and not self.viewParam.isDeviceSkill)
+		gohelper.setActive(item.gostar, not isDeviceSkillId)
 	end
 end
 

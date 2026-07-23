@@ -117,70 +117,36 @@ function EquipModel:isLimitAndAlreadyHas(id)
 	return hasEquipNum >= equipCfg.upperLimit
 end
 
-function EquipModel:isAllUnlockTwinssychubeEquip()
-	for _, id in ipairs(CharacterEnum.TwinssychubeEquip) do
-		local haveEquip = self:haveEquip(id)
-
-		if not haveEquip then
-			return false
-		end
-	end
-
-	return true
-end
-
-function EquipModel:isEuipedTwinssychubeEquip(heroMo)
-	local equipMo = heroMo and (heroMo:getTrialEquipMo() or self:getEquip(heroMo.defaultEquipUid))
-
-	for _, id in ipairs(CharacterEnum.TwinssychubeEquip) do
-		if equipMo and equipMo.config.id == id then
-			return true
-		end
-	end
-end
-
 function EquipModel:isActivateTwinssychubeEquip(heroMo, equipMo)
-	equipMo = equipMo or heroMo and (heroMo:getTrialEquipMo() or self:getEquip(heroMo.defaultEquipUid))
+	if not heroMo then
+		return
+	end
 
-	local isEquiped = false
+	if not equipMo then
+		equipMo = heroMo:getTrialEquipMo() or self:getEquip(heroMo.defaultEquipUid)
 
-	for _, id in ipairs(CharacterEnum.TwinssychubeEquip) do
-		local haveEquip = self:haveEquip(id)
-
-		if not haveEquip then
-			return false
-		end
-
-		if equipMo and equipMo.config.id == id then
-			isEquiped = true
+		if not equipMo then
+			return
 		end
 	end
 
-	return isEquiped
+	if heroMo.heroId ~= CharacterEnum.TwinssychubeHeroId then
+		return
+	end
+
+	local otherEquipId = self:getOtherTwinssychubeEquipId(equipMo.equipId)
+
+	if self:getTwinssychubeEquipMo(otherEquipId) then
+		return true
+	end
 end
 
 function EquipModel:getTwinssychubeEquipMo(id)
-	if not self._twinssychubeEquipMos then
-		self._twinssychubeEquipMos = {}
-	end
-
-	local equipMo = self._twinssychubeEquipMos[id]
-
-	if equipMo then
-		local _mo = self:getEquip(equipMo.uid)
-
-		if _mo and _mo.equipId == id then
-			return equipMo
-		end
-	end
-
 	local mos = self:getEquips()
 
 	if mos then
 		for _, mo in ipairs(mos) do
 			if mo.equipId == id then
-				self._twinssychubeEquipMos[id] = mo
-
 				return mo
 			end
 		end

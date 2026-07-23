@@ -6,6 +6,7 @@ local GMFightStandardEpisodeForTestServerView = class("GMFightStandardEpisodeFor
 
 function GMFightStandardEpisodeForTestServerView:onInitView()
 	self._btnClose = gohelper.findChildButtonWithAudio(self.viewGO, "btnClose")
+	self.hideEnterBtn = gohelper.findChildButtonWithAudio(self.viewGO, "hideEnterBtn")
 	self.chapterContent = gohelper.findChild(self.viewGO, "leftviewport/content")
 	self.chapterItem = gohelper.findChild(self.viewGO, "leftviewport/item")
 	self.episodeContent = gohelper.findChild(self.viewGO, "rightviewport/content")
@@ -27,6 +28,15 @@ end
 
 function GMFightStandardEpisodeForTestServerView:addEvents()
 	self:com_registClick(self._btnClose, self.closeThis)
+	self:com_registClick(self.hideEnterBtn, self.hideEnter)
+end
+
+function GMFightStandardEpisodeForTestServerView:hideEnter()
+	self:closeThis()
+
+	GMFightStandardEpisodeForTestServerView.hideEnterBtn = true
+
+	FightController.instance:dispatchEvent(FightEvent.HideKolStdStageEnterBtn)
 end
 
 function GMFightStandardEpisodeForTestServerView:removeEvents()

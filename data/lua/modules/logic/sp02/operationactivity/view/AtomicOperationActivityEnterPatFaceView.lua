@@ -41,13 +41,17 @@ function AtomicOperationActivityEnterPatFaceView:onNorSignActivityRefresh()
 end
 
 function AtomicOperationActivityEnterPatFaceView:_btntransOnClick()
+	local isDynamic = self.isDynamicRole
+
 	self:refreshRole(not self.isDynamicRole)
+	SDKDataTrackMgr.instance:trackClickEnterActivityButton(self.viewName, string.format("L2D_change_%s", isDynamic and StatEnum.CharacterResNameEnum.Art or StatEnum.CharacterResNameEnum.L2D))
 end
 
 function AtomicOperationActivityEnterPatFaceView:_btndetailOnClick()
 	ViewMgr.instance:openView(ViewName.SummonHeroDetailView, {
 		heroId = AtomicOperationActivityConfig.instance:getConstNum(AtomicOperationActivityEnum.ConstId.HeroId)
 	})
+	SDKDataTrackMgr.instance:trackClickEnterActivityButton(self.viewName, "character_view")
 end
 
 function AtomicOperationActivityEnterPatFaceView:_btnclaimOnClick()

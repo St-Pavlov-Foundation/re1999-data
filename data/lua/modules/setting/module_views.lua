@@ -27604,7 +27604,7 @@ module_views.Sp02_PaoMian_ShopPanelView = {
 	tabRes = {
 		{
 			{
-				NavigateButtonsView.prefabPath
+				CurrencyView.prefabPath
 			}
 		}
 	},

@@ -158,4 +158,76 @@ function V3A10_FightSuccView:_setEpisodeName(episodeCO, episodeIndex, normalEpis
 	self._txtEpisodeIndex.text = index - 1
 end
 
+function V3A10_FightSuccView:_addItem(material, customRefreshCallback, customRefreshCallbackParam)
+	local go = gohelper.clone(self._bonusItemGo, self._bonusItemContainer, material.id)
+	local itemIconGO = gohelper.findChild(go, "container/itemIcon")
+	local itemIcon = IconMgr.instance:getCommonPropItemIcon(itemIconGO)
+	local tagGO = gohelper.findChild(go, "container/tag")
+	local imgFirstGO = gohelper.findChild(go, "container/tag/imgFirst")
+	local imgFirstHardGO = gohelper.findChild(go, "container/tag/imgFirstHard")
+	local imgFirstSimpleGO = gohelper.findChild(go, "container/tag/imgFirstSimple")
+	local imgNormalGO = gohelper.findChild(go, "container/tag/imgNormal")
+	local imgAdvanceGO = gohelper.findChild(go, "container/tag/imgAdvance")
+	local imgEquipDailyGO = gohelper.findChild(go, "container/tag/imgEquipDaily")
+	local imgTimeFirstGO = gohelper.findChild(go, "container/tag/limitfirstbg")
+	local actTagGo = gohelper.findChild(go, "container/tag/imgact")
+	local containerGO = gohelper.findChild(go, "container")
+
+	gohelper.setActive(containerGO, false)
+	gohelper.setActive(tagGO, material.bonusTag)
+
+	if material.bonusTag then
+		gohelper.setActive(imgFirstGO, material.bonusTag == FightEnum.FightBonusTag.FirstBonus and self._normalMode)
+		gohelper.setActive(imgFirstHardGO, material.bonusTag == FightEnum.FightBonusTag.FirstBonus and self._hardMode)
+		gohelper.setActive(imgNormalGO, false)
+
+		local showTag = material.bonusTag == FightEnum.FightBonusTag.AdvencedBonus or material.bonusTag == FightEnum.FightBonusTag.FirstBonus
+
+		gohelper.setActive(imgAdvanceGO, showTag)
+
+		if showTag then
+			for i = 1, 3 do
+				local go = gohelper.findChild(imgAdvanceGO, string.format("#go_progressitem/image_icon%s", i))
+
+				gohelper.setActive(go, i == self._mode)
+			end
+		end
+
+		gohelper.setActive(imgEquipDailyGO, material.bonusTag == FightEnum.FightBonusTag.EquipDailyFreeBonus)
+		gohelper.setActive(imgTimeFirstGO, material.bonusTag == FightEnum.FightBonusTag.TimeFirstBonus)
+		gohelper.setActive(actTagGo, material.bonusTag == FightEnum.FightBonusTag.ActBonus)
+		gohelper.setActive(imgFirstSimpleGO, material.bonusTag == FightEnum.FightBonusTag.SimpleBouns or FightEnum.FightBonusTag.FirstBonus and self._simpleMode)
+	end
+
+	material.isIcon = true
+
+	itemIcon:onUpdateMO(material)
+	itemIcon:setCantJump(true)
+	itemIcon:setCountFontSize(40)
+	itemIcon:setAutoPlay(true)
+	itemIcon:isShowEquipRefineLv(true)
+
+	local isShowAddition = false
+
+	if material.bonusTag and material.bonusTag == FightEnum.FightBonusTag.AdditionBonus then
+		isShowAddition = true
+	end
+
+	itemIcon:isShowAddition(isShowAddition)
+
+	if customRefreshCallback then
+		customRefreshCallback(self, itemIcon, customRefreshCallbackParam)
+	end
+
+	gohelper.setActive(go, false)
+
+	local canvasGroup = tagGO:GetComponent(typeof(UnityEngine.CanvasGroup))
+
+	canvasGroup.alpha = 0
+
+	self:applyBonusVfx(material, go)
+
+	return containerGO, go
+end
+
 return V3A10_FightSuccView

@@ -31,6 +31,9 @@ end
 function SceneUIPackageInfoView:_editableInitView()
 	self._root = gohelper.findChild(self.viewGO, "root")
 	self._gorawImage = gohelper.findChild(self._root, "RawImage")
+
+	gohelper.setActive(self._gorawImage, false)
+
 	self._rawImage = gohelper.onceAddComponent(self._gorawImage, gohelper.Type_RawImage)
 end
 
@@ -43,20 +46,18 @@ function SceneUIPackageInfoView:_onSwitchUIVisible(visible)
 end
 
 function SceneUIPackageInfoView:onOpen()
-	local sceneId = self.viewParam and self.viewParam.sceneId or MainSceneSwitchModel.instance:getCurSceneId()
+	self._sceneId = self.viewParam and self.viewParam.sceneId or MainSceneSwitchModel.instance:getCurSceneId()
 
-	self:_onShowSceneInfo(sceneId)
+	self:_onShowSceneInfo()
 end
 
-function SceneUIPackageInfoView:_onShowSceneInfo(id)
-	self._sceneId = id
-
-	MainSceneSwitchCameraController.instance:showScene(id, self._showSceneFinished, self)
+function SceneUIPackageInfoView:_onShowSceneInfo()
+	MainSceneSwitchCameraController.instance:showScene(self._sceneId, self._showSceneFinished, self)
 end
 
 function SceneUIPackageInfoView:_showSceneFinished(rt)
-	gohelper.setActive(self._gorawImage, true)
 	MainSceneSwitchInfoDisplayView.adjustRt(self._rawImage, rt)
+	gohelper.setActive(self._gorawImage, true)
 end
 
 function SceneUIPackageInfoView.adjustRt(rawImage, rt)

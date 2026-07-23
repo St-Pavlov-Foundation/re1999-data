@@ -7,7 +7,9 @@ local AtomicAvgPlayViewContainer = class("AtomicAvgPlayViewContainer", BaseViewC
 function AtomicAvgPlayViewContainer:buildViews()
 	local views = {}
 
-	table.insert(views, AtomicAvgPlayView.New())
+	self.avgView = AtomicAvgPlayView.New()
+
+	table.insert(views, self.avgView)
 	table.insert(views, TabViewGroup.New(1, "#go_lefttop"))
 
 	return views
@@ -20,9 +22,15 @@ function AtomicAvgPlayViewContainer:buildTabViews(tabContainerId)
 		false
 	})
 
+	view:setOverrideClose(self.overrideCloseFunc, self)
+
 	return {
 		view
 	}
+end
+
+function AtomicAvgPlayViewContainer:overrideCloseFunc()
+	self.avgView:onClickClose()
 end
 
 return AtomicAvgPlayViewContainer

@@ -46,7 +46,7 @@ function MainView:onInitView()
 		self._btngm = gohelper.findChildButtonWithAudio(guideGMNode, "#btn_gm")
 	end
 
-	if GameFacade.isKOLTest() then
+	if GameFacade.isKOLTest() and not GMFightStandardEpisodeForTestServerView.hideEnterBtn then
 		local url = "ui/viewres/fight/fightstandardepisodebtn.prefab"
 
 		self.fightStandardEpisodeLoader = MultiAbLoader.New()
@@ -98,6 +98,11 @@ function MainView:_onLoadFightStandardEpisodeFinish(loader)
 	self.btnTestStandardEpisode = gohelper.findChildButtonWithAudio(self.fightStandardEpisodeGO, "")
 
 	self.btnTestStandardEpisode:AddClickListener(self._btnTestStandardEpisodeOnClick, self)
+	FightController.instance:registerCallback(FightEvent.HideKolStdStageEnterBtn, self.onHideKolStdStageEnterBtn, self)
+end
+
+function MainView:onHideKolStdStageEnterBtn()
+	gohelper.setActive(self.fightStandardEpisodeGO, false)
 end
 
 function MainView:addEvents()
@@ -167,6 +172,7 @@ function MainView:removeEvents()
 	self:removeEventCb(TaskController.instance, TaskEvent.UpdateTaskList, self.showStoreRedDot, self)
 	self:removeEventCb(TaskController.instance, TaskEvent.SetTaskList, self.showStoreRedDot, self)
 	self:removeEventCb(TaskController.instance, TaskEvent.OnFinishTask, self.showStoreRedDot, self)
+	FightController.instance:unregisterCallback(FightEvent.HideKolStdStageEnterBtn, self.onHideKolStdStageEnterBtn, self)
 end
 
 function MainView:_btnhideOnClick()
@@ -1170,7 +1176,7 @@ function MainView:_refreshSummonNewFlag()
 		gohelper.setActive(new, showNew)
 	end
 
-	gohelper.setActive(self._goFreeTag, isSummonUnlock and (hasFree or hasFree10Count))
+	gohelper.setActive(self._goFreeTag, isSummonUnlock and (hasFree or hasFree10Count or hasCanget))
 	gohelper.setActive(self._goSummonFreeOne.gameObject, isSummonUnlock and hasFree and not hasFree10Count)
 	gohelper.setActive(self._goSummonFreeTen.gameObject, isSummonUnlock and hasFree10Count)
 	gohelper.setActive(self._goSummonCanget, isSummonUnlock and hasCanget and not hasFree and not hasFree10Count)

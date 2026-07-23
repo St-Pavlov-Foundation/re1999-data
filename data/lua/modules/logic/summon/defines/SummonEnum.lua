@@ -252,6 +252,9 @@ SummonEnum.InfallibleItemState = {
 	Unused = 0,
 	Used = 2
 }
+SummonEnum.OldNewBiePoolId = {
+	[1] = true
+}
 SummonEnum.NewbieFinishSortOrder = 100
 SummonEnum.DefaultTagStyle = 1
 

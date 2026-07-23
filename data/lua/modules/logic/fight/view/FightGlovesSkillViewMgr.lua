@@ -536,7 +536,7 @@ function FightGlovesSkillViewMgr:_onClickSkillIcon(index, isReplay)
 	end
 
 	if not self._toUseSkillId or curPower < toUseSkillInfo.needPower then
-		GameFacade.showToast(ToastEnum.UseSkill1)
+		GameFacade.showToast(ToastEnum.NoShowTaoSkillPower)
 
 		return
 	end

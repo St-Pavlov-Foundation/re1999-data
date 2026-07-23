@@ -248,7 +248,9 @@ function Sp02_MarcusView:_tweenDescUpdateCb(value)
 	local scrollValue = 1
 
 	if value >= self._viewHeight then
-		scrollValue = Mathf.Lerp(0, 1, 1 - value / self._descHeight)
+		local scrollY = Mathf.Lerp(0, 1, (value - self._viewHeight) / (self._descHeight - self._viewHeight))
+
+		scrollValue = 1 - scrollY
 	end
 
 	self._scrollDesc.verticalNormalizedPosition = scrollValue

@@ -651,7 +651,7 @@ function SP02_LinkGiftBaseView:refreshGoodsInfo()
 		return
 	end
 
-	self._txtbuy.text = PayModel.instance:getProductOriginPriceNum(self.curChangeGoodsId)
+	self._txtbuy.text = PayModel.instance:getProductPrice(self.curChangeGoodsId)
 end
 
 function SP02_LinkGiftBaseView:refreshSingleItem(item, rewardData)

@@ -54,6 +54,9 @@ function AtomicRpc:sendAtomicTalentResetRequest(branchId, nodeId, callback, call
 	req.branchId = branchId
 	req.nodeId = nodeId or 0
 
+	local ids, installIds = AtomicTalentViewModel.instance:getResetIds(branchId, nodeId)
+
+	AtomicDungeonStatHelper.instance:senTalentInfo(ids, AtomicDungeonEnum.OptionType.Reset, installIds)
 	self:sendMsg(req, callback, callbackObj)
 end
 

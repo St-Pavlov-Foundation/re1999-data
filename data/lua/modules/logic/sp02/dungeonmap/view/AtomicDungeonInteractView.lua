@@ -114,6 +114,9 @@ function AtomicDungeonInteractView:optionItemClick(optionItem)
 		self.rewardOptionId = self.rewardOptionConfig.id
 	end
 
+	table.insert(self.optionIdList, optionItem.optionConfig.id)
+	table.insert(self.optionDescList, optionItem.optionConfig.desc)
+
 	local optionStoryId = optionItem.optionConfig.story
 	local nextOptionConfig = AtomicDungeonConfig.instance:getOptionElementConfig(self.elementConfig.id, self.curOptionStep)
 
@@ -151,6 +154,8 @@ end
 function AtomicDungeonInteractView:_editableInitView()
 	self.optionItemList = self:getUserDataTb_()
 	self.rewardItemTab = self:getUserDataTb_()
+	self.optionIdList = self:getUserDataTb_()
+	self.optionDescList = self:getUserDataTb_()
 
 	gohelper.setActive(self._gooptionItem, false)
 	gohelper.setActive(self._gorewardItem, false)
@@ -298,6 +303,10 @@ function AtomicDungeonInteractView:onOptionStepFinish()
 
 	if not self.isNotFinish then
 		AtomicRpc.instance:sendAtomicMapInteractRequest(self.elementConfig.id, optionParam)
+
+		local statData = AtomicDungeonModel.instance:getElementStatData(self.elementConfig.id)
+
+		AtomicDungeonStatHelper.instance:sendOptionInteractInfo(statData, self.optionIdList, self.optionDescList)
 	end
 end
 

@@ -154,9 +154,10 @@ function AtomicViewDefine.init(module_views)
 	module_views.AtomicOperationActivityGameTipView = {
 		destroy = 0,
 		container = "AtomicOperationActivityGameTipViewContainer",
+		bgBlur = 1,
 		mainRes = "ui/viewres/activity/sp02_activitygameinstruction.prefab",
 		layer = "POPUP_TOP",
-		viewType = ViewType.Normal
+		viewType = ViewType.Modal
 	}
 	module_views.AtomicOperationActivityEnterPatFaceView = {
 		destroy = 0,

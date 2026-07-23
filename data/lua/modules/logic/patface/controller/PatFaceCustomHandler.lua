@@ -149,7 +149,7 @@ function PatFaceCustomHandler.V2a8_openBPSkinFaceViewPat()
 end
 
 function PatFaceCustomHandler.PowerMakerPatFaceViewCanPat(patFaceId)
-	local ofMakerInfo = ItemPowerModel.instance:getPowerMakerInfo()
+	local ofMakerInfo = ItemPowerModel.instance:getCacheFirstPowerMakerInfo()
 
 	if not ofMakerInfo or ofMakerInfo.makeCount <= 0 then
 		return

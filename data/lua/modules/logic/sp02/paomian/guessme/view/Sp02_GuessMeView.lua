@@ -38,6 +38,7 @@ function Sp02_GuessMeView:addEvents()
 	self._btnGetReward:AddClickListener(self._btnGetRewardOnClick, self)
 	self:addEventCb(Sp02_PaoMianController.instance, Sp02_GuessMeEvent.OnUpdateGuessMe, self._onUpdateGuessMe, self)
 	self:addEventCb(Sp02_PaoMianController.instance, Sp02_GuessMeEvent.OnSelectGuessMeDay, self._onSelectGuessDay, self)
+	self:addEventCb(Sp02_PaoMianController.instance, Sp02_GuessMeEvent.OnSelectGuessMeOption, self._onSelectGuessMeOption, self)
 end
 
 function Sp02_GuessMeView:removeEvents()
@@ -100,10 +101,12 @@ function Sp02_GuessMeView:initSelectInfo(index)
 	self._preSelectTaskId = self._selectTaskId
 	self._selectTaskCo = self._taskConfigList and self._taskConfigList[self._selectIndex]
 	self._selectTaskId = self._selectTaskCo and self._selectTaskCo.id
+	self._correctOption = self._selectTaskCo and self._selectTaskCo.correctOption
 	self._optionList = self:_initOptionList(self._selectTaskCo)
 	self._rewardList = Sp02_GuessMeConfig.instance:getRewardIdList(self._selectTaskCo.activityId, self._selectTaskCo.id)
 	self._signMo = Sp02_GuessMeModel.instance:getSignInfo(self._selectTaskCo.activityId, self._selectTaskCo.id)
 	self._status = Sp02_GuessMeModel.instance:getStatus(self._activityId, self._selectTaskId)
+	self._selectFailCount = 0
 end
 
 function Sp02_GuessMeView:_initOptionList(dayCo)
@@ -222,6 +225,21 @@ function Sp02_GuessMeView:_startSwitchGuessMeDay()
 
 	self:initSelectInfo(self._readySelectIndex)
 	self:refreshUI()
+end
+
+function Sp02_GuessMeView:_onSelectGuessMeOption(index)
+	if not index or self._status >= Sp02_GuessMeEnum.TaskStatus.CanGet then
+		return
+	end
+
+	if index ~= self._correctOption then
+		self._selectFailCount = self._selectFailCount + 1
+	else
+		StatController.instance:track(StatEnum.EventName.Sp02GuessMe, {
+			[StatEnum.EventProperties.FaultTime] = self._selectFailCount,
+			[StatEnum.EventProperties.ActivityDays] = self._selectIndex
+		})
+	end
 end
 
 function Sp02_GuessMeView:onClose()

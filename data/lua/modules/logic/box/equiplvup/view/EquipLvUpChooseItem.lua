@@ -68,12 +68,12 @@ end
 function EquipLvUpChooseItem:onUpdateMO(mo, index)
 	self._mo = mo
 	self._index = index
+	self._config = self._mo.config
 
-	local maxLv = EquipConfig.instance:getCurrentBreakLevelMaxLevel(mo)
+	local maxLv = EquipConfig.instance:getMaxLevel(self._config)
 	local curLv = self._mo.level
 
 	self._isMax = maxLv <= curLv
-	self._config = self._mo.config
 	self._txtlevel.text = curLv
 
 	local refineLv = self._mo.refineLv

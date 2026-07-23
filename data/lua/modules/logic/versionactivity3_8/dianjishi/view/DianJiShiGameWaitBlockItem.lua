@@ -41,6 +41,7 @@ end
 
 function DianJiShiGameWaitBlockItem:_onDragBegin(param, pointerEventData)
 	self._isDragScroll = false
+	self._isDraging = false
 
 	if not self:isCanDrag() then
 		return
@@ -53,6 +54,8 @@ function DianJiShiGameWaitBlockItem:_onDragBegin(param, pointerEventData)
 
 		return
 	end
+
+	self._isDraging = true
 
 	self:setInteract(false)
 	self:_changeNumAndAlpha(self._waitBlockNum - 1)
@@ -67,6 +70,10 @@ function DianJiShiGameWaitBlockItem:_onDrag(param, pointerEventData)
 	if self._isDragScroll then
 		ZProj.UGUIHelper.PassEvent(self._goScrollList, pointerEventData, 5)
 
+		return
+	end
+
+	if not self._isDraging then
 		return
 	end
 
@@ -85,6 +92,12 @@ function DianJiShiGameWaitBlockItem:_onDragEnd(param, pointerEventData)
 
 		return
 	end
+
+	if not self._isDraging then
+		return
+	end
+
+	self._isDraging = false
 
 	DianJiShiGameController.instance:dispatchEvent(DianJiShiGameEvent.OnEndDragBlock, self._firstWaitBlock)
 end

@@ -230,7 +230,7 @@
     "item": "",
     "randHero": "",
     "randItem": "",
-    "rewardHero": "20051",
+    "rewardHero": "30061",
     "rewardItem": ""
   },
   {
@@ -243,7 +243,7 @@
     "item": "",
     "randHero": "",
     "randItem": "",
-    "rewardHero": "20321",
+    "rewardHero": "30241",
     "rewardItem": ""
   },
   {
@@ -256,7 +256,7 @@
     "item": "",
     "randHero": "",
     "randItem": "",
-    "rewardHero": "20191",
+    "rewardHero": "30141",
     "rewardItem": ""
   },
   {
@@ -269,7 +269,7 @@
     "item": "",
     "randHero": "",
     "randItem": "",
-    "rewardHero": "20131",
+    "rewardHero": "30101",
     "rewardItem": ""
   },
   {
@@ -282,7 +282,7 @@
     "item": "",
     "randHero": "",
     "randItem": "",
-    "rewardHero": "20251",
+    "rewardHero": "30171",
     "rewardItem": ""
   },
   {
@@ -295,7 +295,7 @@
     "item": "",
     "randHero": "",
     "randItem": "",
-    "rewardHero": "20041",
+    "rewardHero": "30051",
     "rewardItem": ""
   },
   {
@@ -308,7 +308,7 @@
     "item": "",
     "randHero": "",
     "randItem": "",
-    "rewardHero": "20861",
+    "rewardHero": "30861",
     "rewardItem": ""
   },
   {
@@ -321,7 +321,7 @@
     "item": "",
     "randHero": "",
     "randItem": "",
-    "rewardHero": "20021",
+    "rewardHero": "30031",
     "rewardItem": ""
   },
   {
@@ -329,25 +329,12 @@
     "style": 9,
     "name": "反制",
     "desc": "",
-    "coin": 25,
+    "coin": 30,
     "hero": "30591#30251#30471",
     "item": "",
     "randHero": "",
     "randItem": "",
-    "rewardHero": "20141",
-    "rewardItem": ""
-  },
-  {
-    "activityId": 13808,
-    "style": 10,
-    "name": "随机",
-    "desc": "",
-    "coin": 40,
-    "hero": "",
-    "item": "",
-    "randHero": "3#20291,20461,20491,20501,20521,20611",
-    "randItem": "3#21009,21010,21011,21012,21013",
-    "rewardHero": "20071#20241#20301#20671",
+    "rewardHero": "",
     "rewardItem": ""
   }
 ]

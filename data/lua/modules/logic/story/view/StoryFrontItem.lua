@@ -732,11 +732,28 @@ function StoryFrontItem:playGostMagic(co, callback, callbackobj)
 	self._effLoader:addPath(self._gostFontGlitchPath)
 	self._effLoader:startLoad(self._gostGlitchEffLoaded, self)
 
-	local posX, posY, realTxt = string.match(txt, "^(-?%d+),(-?%d+)#(.*)")
+	local anchorFlag, posX, posY, realTxt = string.match(txt, "^(L?)(-?%d+),(-?%d+)#(.*)")
+	local rt = self._tmpscreentext.rectTransform
 
 	if posX and posY then
-		self._tmpscreentext.rectTransform.anchoredPosition = Vector2(tonumber(posX), tonumber(posY))
 		self._tmpscreentext.text = realTxt
+
+		if anchorFlag == "L" then
+			rt.anchorMin = Vector2(0, 0.5)
+			rt.anchorMax = Vector2(0, 0.5)
+
+			self._tmpscreentext:ForceMeshUpdate()
+
+			rt.anchoredPosition = Vector2(tonumber(posX) + self._tmpscreentext.preferredWidth * 0.5, tonumber(posY))
+		else
+			rt.anchorMin = Vector2(0.5, 0.5)
+			rt.anchorMax = Vector2(0.5, 0.5)
+			rt.anchoredPosition = Vector2(tonumber(posX), tonumber(posY))
+		end
+	else
+		rt.anchorMin = Vector2(0.5, 0.5)
+		rt.anchorMax = Vector2(0.5, 0.5)
+		rt.anchoredPosition = Vector2(0, 0)
 	end
 
 	self._savedUIPPValues = {

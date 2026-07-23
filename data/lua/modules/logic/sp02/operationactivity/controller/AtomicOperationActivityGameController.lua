@@ -198,7 +198,7 @@ function AtomicOperationActivityGameController:getTargetByWeight(weight)
 		end
 	end
 
-	return nil
+	return 1
 end
 
 function AtomicOperationActivityGameController:addTargetNode(index, targetId)

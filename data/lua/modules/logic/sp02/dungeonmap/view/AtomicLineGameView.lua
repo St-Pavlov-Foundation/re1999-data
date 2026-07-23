@@ -588,8 +588,11 @@ function AtomicLineGameView:refreshSuccUI()
 	gohelper.setActive(self._golightLayout, not self.isSucc)
 	gohelper.setActive(self._btnrotate.gameObject, not self.isSucc)
 	gohelper.setActive(self._btnreset.gameObject, not self.isSucc)
-	gohelper.setActive(self._btnForceSucc.gameObject, not self.isSucc)
 	gohelper.setActive(self._gotopLeft, not self.isSucc)
+
+	if self.isSucc then
+		gohelper.setActive(self._btnForceSucc.gameObject, false)
+	end
 end
 
 function AtomicLineGameView:checkSucc()
@@ -649,6 +652,10 @@ function AtomicLineGameView:onClose()
 		optionParam.optionId = self.optionId
 
 		AtomicRpc.instance:sendAtomicMapInteractRequest(self.elementId, optionParam)
+
+		local statData = AtomicDungeonModel.instance:getElementStatData(self.elementId)
+
+		AtomicDungeonStatHelper.instance:sendPuzzleGameInteractInfo(statData, self.isForceSucc)
 	end
 
 	if self.isSucc then

@@ -21,7 +21,7 @@ function AtomicDungeonTaskViewContainer:buildTabViews(tabContainerId)
 			true,
 			true,
 			false
-		})
+		}, nil, nil, self._homeCallback, nil, self)
 
 		return {
 			self.navigateView
@@ -54,6 +54,14 @@ function AtomicDungeonTaskViewContainer:buildScrollViews()
 	end
 
 	self.scrollView = LuaListScrollViewWithAnimator.New(AtomicDungeonTaskModel.instance, scrollParam, animationDelayTimes)
+end
+
+function AtomicDungeonTaskViewContainer:_homeCallback()
+	local isInMapSelectState = AtomicDungeonModel.instance:getIsInMapSelectState()
+
+	if not isInMapSelectState then
+		AtomicDungeonStatHelper.instance:sendDungeonResultInfo("主动返回")
+	end
 end
 
 return AtomicDungeonTaskViewContainer

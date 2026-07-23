@@ -17670,6 +17670,31 @@
     "bankName": "activitysfx_langchao_s02_sfx_part03"
   },
   {
+    "id": 28550105,
+    "eventName": "play_activitysfx_langchao_wall_collapse",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550106,
+    "eventName": "play_activitysfx_langchao_earthquake",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550107,
+    "eventName": "play_activitysfx_langchao_unmask",
+    "bankName": "activitysfx_langchao_s02_sfx_part03"
+  },
+  {
+    "id": 28550108,
+    "eventName": "play_activitysfx_langchao_crowded",
+    "bankName": "activitysfx_langchao_s02_sfx_fuyong"
+  },
+  {
+    "id": 28550109,
+    "eventName": "play_activitysfx_langchao_put_down_rifle",
+    "bankName": "activitysfx_langchao_s02_sfx_fuyong"
+  },
+  {
     "id": 530053,
     "eventName": "play_activitymusic_thememusic_full_2_0",
     "bankName": "activity2_0_music"

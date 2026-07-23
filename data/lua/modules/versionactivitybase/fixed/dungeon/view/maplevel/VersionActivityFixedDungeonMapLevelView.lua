@@ -490,10 +490,14 @@ function VersionActivityFixedDungeonMapLevelView:refreshStoryIdList()
 		table.insert(self.storyIdList, beforeStory)
 	end
 
-	local afterStory = checkStoryEpisodeCfg.afterStory
+	local isOpenPuzzleView = V3a5PuzzleController.instance:isOpenPuzzleView(beforeStory)
 
-	if afterStory > 0 and StoryModel.instance:isStoryHasPlayed(afterStory) then
-		table.insert(self.storyIdList, afterStory)
+	if not isOpenPuzzleView then
+		local afterStory = checkStoryEpisodeCfg.afterStory
+
+		if afterStory > 0 and StoryModel.instance:isStoryHasPlayed(afterStory) then
+			table.insert(self.storyIdList, afterStory)
+		end
 	end
 end
 

@@ -42,7 +42,7 @@ end
 
 function CharacterDefaultEquipView:onClickS02()
 	ViewMgr.instance:openView(ViewName.TwinssychubeEquipInfoView, {
-		heroId = self.heroMo and self.heroMo.heroId
+		heroMo = self.heroMo
 	})
 end
 

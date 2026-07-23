@@ -65,9 +65,11 @@ function TwinssychubeEquipInfoView:_editableInitView()
 end
 
 function TwinssychubeEquipInfoView:_refreshView(isOpen)
-	local heroId = self.viewParam and self.viewParam.heroId or CharacterEnum.TwinssychubeHeroId
+	self._heroMo = self.viewParam and self.viewParam.heroMo
 
-	self._heroMo = HeroModel.instance:getByHeroId(heroId)
+	if not self._heroMo then
+		return
+	end
 
 	local isActivate = EquipModel.instance:isActivateTwinssychubeEquip(self._heroMo)
 	local heroEquipMo = self._heroMo and EquipModel.instance:getEquip(self._heroMo.defaultEquipUid)

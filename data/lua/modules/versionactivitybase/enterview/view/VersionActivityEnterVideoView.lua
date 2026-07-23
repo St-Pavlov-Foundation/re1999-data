@@ -13,6 +13,7 @@ function VersionActivityEnterVideoView:ctor(param)
 	self._enterVideoName = param.enterVideoName
 	self._enterVideoTime = param.enterVideoTime or 5
 	self._audioId = param.audioId
+	self._noVideoAudioId = param.noVideoAudioId
 	self._bgmLayer = param.bgmLayer
 end
 
@@ -55,8 +56,9 @@ end
 function VersionActivityEnterVideoView:playOrLoadMedia()
 	self._needPlayVideo = self:needPlayFullScreenVideo()
 
+	self:setAnimPause(true)
+
 	if self._needPlayVideo then
-		self:setAnimPause(true)
 		self:stopBgm()
 
 		local enterVideoFirstKey = string.format("EnterVideoFirstKey_%s", self.viewName)
@@ -95,11 +97,12 @@ function VersionActivityEnterVideoView:getFullScreenPlayTime()
 end
 
 function VersionActivityEnterVideoView:onFullScreenVideoPlayFinished()
-	local animName = self._needPlayVideo and "open1" or "open"
-
-	self:setAnimPause(false, animName)
 	self:refreshLoopVideo()
 	self:playBgm()
+
+	if self._noVideoAudioId and self._noVideoAudioId ~= 0 then
+		AudioMgr.instance:trigger(self._noVideoAudioId)
+	end
 end
 
 function VersionActivityEnterVideoView:refreshLoopVideo()
@@ -112,6 +115,13 @@ function VersionActivityEnterVideoView:refreshLoopVideo()
 	self._curLoopVideoName = videoName
 
 	self:getVideoComp():play(videoName, true)
+	self:getVideoComp():setStartCallback(self.onLoopVideoStarted, self)
+end
+
+function VersionActivityEnterVideoView:onLoopVideoStarted()
+	local animName = self._needPlayVideo and "open1" or "open"
+
+	self:setAnimPause(false, animName)
 end
 
 function VersionActivityEnterVideoView:onPlayVideoDone()

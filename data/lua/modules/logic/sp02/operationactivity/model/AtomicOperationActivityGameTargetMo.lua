@@ -27,7 +27,11 @@ function AtomicOperationActivityGameTargetMo:updateMo(targetId, index)
 	self.hitCD = 0
 	self.hitCount = 0
 
-	local radius = config.hitRadius
+	if not config then
+		logError("不存在的敌人 id:" .. tostring(targetId))
+	end
+
+	local radius = config and config.hitRadius or AtomicOperationActivityEnum.DefaultHitRadius
 
 	self.hitRadius = radius * radius
 end

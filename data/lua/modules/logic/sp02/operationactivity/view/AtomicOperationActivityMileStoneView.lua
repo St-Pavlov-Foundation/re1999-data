@@ -145,7 +145,7 @@ function AtomicOperationActivityMileStoneView:refreshList()
 end
 
 function AtomicOperationActivityMileStoneView:refreshLine()
-	local index = math.ceil(AtomicOperationActivityMileStoneListModel.instance:caleProgressIndex())
+	local index = AtomicOperationActivityMileStoneListModel.instance:caleProgressIndex()
 	local indexValue = math.floor(index)
 	local itemWidth = self:getItemWidth(indexValue)
 	local width = self:getItemPosX(indexValue)
@@ -294,7 +294,7 @@ function AtomicOperationActivityMileStoneView:getItemPosX(index)
 	end
 
 	local col = index - 1
-	local posX = col * (210 + self.cellSpace) + 50
+	local posX = col * (210 + self.cellSpace) + 280
 
 	return posX
 end

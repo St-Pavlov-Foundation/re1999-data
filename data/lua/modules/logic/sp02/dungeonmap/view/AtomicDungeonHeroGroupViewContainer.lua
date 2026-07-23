@@ -54,6 +54,7 @@ function AtomicDungeonHeroGroupViewContainer:_closeCallback()
 end
 
 function AtomicDungeonHeroGroupViewContainer:_homeCallback()
+	AtomicDungeonStatHelper.instance:sendDungeonResultInfo("主动返回")
 	AtomicDungeonModel.instance:cleanLastElementFightParam()
 	AtomicDungeonModel.instance:cleanLastPolygonFightParam()
 end

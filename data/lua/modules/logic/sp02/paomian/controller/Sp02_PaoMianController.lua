@@ -4,33 +4,6 @@ module("modules.logic.sp02.paomian.controller.Sp02_PaoMianController", package.s
 
 local Sp02_PaoMianController = class("Sp02_PaoMianController", BaseController)
 
-function Sp02_PaoMianController:onInit()
-	self._actIdMap = {
-		[ActivityEnum.Activity.SP02_PaoMianActivityMain] = true,
-		[ActivityEnum.Activity.SP02_PaoMianActivityGuessMe] = true,
-		[ActivityEnum.Activity.SP02_PaoMianActivityMarcus] = true,
-		[ActivityEnum.Activity.SP02_PaoMianActivityShop] = true
-	}
-end
-
-function Sp02_PaoMianController:addConstEvents()
-	self:addEventCb(ActivityController.instance, ActivityEvent.RefreshActivityState, self._refreshActivityState, self, LuaEventSystem.Low)
-end
-
-function Sp02_PaoMianController:_refreshActivityState(actId)
-	if not actId or not self._actIdMap[actId] then
-		return
-	end
-
-	if ActivityHelper.isOpen(ActivityEnum.Activity.SP02_PaoMianActivityGuessMe) then
-		Activity238Rpc.instance:sendGetAct238InfoRequest(ActivityEnum.Activity.SP02_PaoMianActivityGuessMe)
-	end
-
-	if ActivityHelper.isOpen(ActivityEnum.Activity.SP02_PaoMianActivityMarcus) then
-		Activity239Rpc.instance:sendGetAct239InfoRequest(ActivityEnum.Activity.SP02_PaoMianActivityMarcus)
-	end
-end
-
 function Sp02_PaoMianController:openGuessMeView(actId, param)
 	Activity238Rpc.instance:sendGetAct238InfoRequest(actId, function()
 		ViewMgr.instance:openView(ViewName.Sp02_GuessMeView, param)

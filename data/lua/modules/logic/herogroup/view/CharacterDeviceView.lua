@@ -109,6 +109,10 @@ function CharacterDeviceView:_btnS02CardOnClick()
 	else
 		self:_refreshTwinssychubeSelectCardGroup()
 	end
+
+	if self._deviceMo then
+		self._deviceMo:setSelectCardGroupIndex(self._selectCardGroupIndex)
+	end
 end
 
 function CharacterDeviceView:_refreshCardUI()
@@ -143,6 +147,10 @@ function CharacterDeviceView:onUpdateMO(heroId, heroMo, param, isBalance, showAt
 
 	self:_initS02()
 	self:_refreshUI()
+
+	if self._deviceMo then
+		self._deviceMo:setSelectCardGroupIndex(1)
+	end
 end
 
 function CharacterDeviceView:_getPowerSkillItem(index)

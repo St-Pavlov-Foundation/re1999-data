@@ -162,12 +162,18 @@ function VersionActivity3_10EnterView:initGroupIndex()
 end
 
 function VersionActivity3_10EnterView:onOpen()
-	VersionActivity3_10EnterView.super.onOpen(self)
+	self.onOpening = true
+
+	self:initViewParam()
+	self:initActivityNode()
+	self:initActivityItemList()
+	self:refreshUI()
 end
 
 function VersionActivity3_10EnterView:onOpenFinish()
 	VersionActivity3_10EnterView.super.onOpenFinish(self)
 	CameraMgr.instance:setSceneCameraActive(true, VersionActivity3_10EnterView.UnitCameraKey)
+	self:playOpenAnimation()
 end
 
 function VersionActivity3_10EnterView:refreshActivityItem(activityItem)
@@ -176,20 +182,6 @@ function VersionActivity3_10EnterView:refreshActivityItem(activityItem)
 	if activityItem.txtRemainTime then
 		activityItem.txtRemainTime.text = ActivityHelper.getActivityRemainTimeStr(activityItem.actId)
 	end
-
-	local isOpen = ActivityHelper.isOpen(activityItem.actId)
-	local showTimeFlag = isOpen and not activityItem.showTag
-
-	gohelper.setActive(activityItem.goTime, showTimeFlag)
-end
-
-function VersionActivity3_10EnterView:_playActTagAnimation(activityItem)
-	VersionActivity3_10EnterView.super._playActTagAnimation(self, activityItem)
-
-	local isOpen = ActivityHelper.isOpen(activityItem.actId)
-	local showTimeFlag = isOpen and not activityItem.showTag
-
-	gohelper.setActive(activityItem.goTime, showTimeFlag)
 end
 
 function VersionActivity3_10EnterView:getLockText(activityItem, activityStatus)

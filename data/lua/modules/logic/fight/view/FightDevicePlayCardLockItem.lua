@@ -23,6 +23,7 @@ function FightDevicePlayCardLockItem:addEvents()
 	self:addEventCb(FightController.instance, FightEvent.OnBuffUpdate, self.updateLock, self)
 	self:addEventCb(FightController.instance, FightEvent.BeforePlayHandCard, self.updateLock, self)
 	self:addEventCb(FightController.instance, FightEvent.OnPlayCardFlowDone, self.updateLock, self)
+	self:addEventCb(FightController.instance, FightEvent.StageChanged, self.updateLock, self)
 end
 
 function FightDevicePlayCardLockItem:initStatusHandle()
@@ -76,9 +77,6 @@ function FightDevicePlayCardLockItem:switchToLock()
 	local skillId = skillCo.id
 	local entityMo = FightDataHelper.entityMgr:getById(uid)
 	local buffList = FightBuffHelper.simulateBuffList(entityMo)
-
-	self.cardItem:setLockActive(true)
-
 	local buffCo = FightViewHandCardItemLock._getCardLockReason(uid, skillId, buffList)
 	local animName = self.status ~= Status.Lock and "fight_lock_seal_all" or "fight_lock_seal_allnot"
 
@@ -92,8 +90,6 @@ function FightDevicePlayCardLockItem:switchToLock()
 end
 
 function FightDevicePlayCardLockItem:switchToPreUnlock()
-	self.cardItem:setLockActive(true)
-
 	local animName = self.status ~= Status.PreUnlock and "fight_lock_sealing_all" or "fight_lock_sealing_allnot"
 
 	self.cardItem:playLockAnim(animName)
@@ -106,6 +102,8 @@ function FightDevicePlayCardLockItem:switchToUnLock()
 		self.status = Status.UnLock
 
 		self.cardItem:playLockAnim("fight_lock_unseal_all", self.onLockAnimDone, self)
+	else
+		self.cardItem:setLockActive(false)
 	end
 end
 

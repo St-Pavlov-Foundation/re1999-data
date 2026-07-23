@@ -60,7 +60,9 @@ function StoryController:playStoryByStartStep(storyId, stepId)
 end
 
 function StoryController:playStory(storyId, storyParams, callback, target, param)
-	PostProcessingMgr.instance:setUIActive(true, true)
+	if SettingsModel.instance:isOverseas() then
+		PostProcessingMgr.instance:setUIActive(true, true)
+	end
 
 	local levelId = storyParams and storyParams.levelIdDict and storyParams.levelIdDict[storyId]
 
@@ -461,7 +463,9 @@ function StoryController:setStoryFinished(id)
 end
 
 function StoryController:finished(isSkip)
-	PostProcessingMgr.instance:setUIActive(false, true)
+	if SettingsModel.instance:isOverseas() then
+		PostProcessingMgr.instance:setUIActive(false, true)
+	end
 
 	local frameRate = SettingsModel.instance:getModelTargetFrameRate()
 

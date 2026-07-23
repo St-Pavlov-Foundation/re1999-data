@@ -76,6 +76,7 @@ function AtomicDungeonController:openAtomicDungeonFightSuccView(param)
 end
 
 function AtomicDungeonController:openAtomicDungeonPolygonSuccView(param)
+	AtomicDungeonStatHelper.instance:sendDungeonResultInfo("成功")
 	ViewMgr.instance:openView(ViewName.AtomicDungeonPolygonSuccView, param)
 end
 

@@ -11838,5 +11838,13 @@
     "audioId": 1,
     "notMerge": 0,
     "notShow": 0
+  },
+  {
+    "id": 385015,
+    "tips": "手套的能量不足",
+    "icon": 142,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
   }
 ]

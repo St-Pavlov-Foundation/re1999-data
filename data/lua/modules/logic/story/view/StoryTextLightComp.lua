@@ -83,12 +83,22 @@ function StoryTextLightComp:showGostMagic(show)
 	self:_setGostGlitch()
 
 	local txt = self.textComp.text
-	local posX, posY, realTxt = string.match(txt, "^(-?%d+),(-?%d+)#(.*)")
+	local anchorFlag, posX, posY, realTxt = string.match(txt, "^(L?)(-?%d+),(-?%d+)#(.*)")
 
 	if posX and posY then
-		recthelper.setAnchor(self.textTransform, tonumber(posX), tonumber(posY))
-
 		self.textComp.text = realTxt
+
+		if anchorFlag == "L" then
+			local rt = self.textComp.rectTransform
+
+			rt.anchorMin = Vector2(0, rt.anchorMin.y)
+			rt.anchorMax = Vector2(0, rt.anchorMax.y)
+
+			self.textComp:ForceMeshUpdate()
+			recthelper.setAnchor(self.textTransform, tonumber(posX) + self.textComp.preferredWidth * 0.5, tonumber(posY))
+		else
+			recthelper.setAnchor(self.textTransform, tonumber(posX), tonumber(posY))
+		end
 	end
 
 	PostProcessingMgr.instance:setUIPPValue("localBloomActive", true)

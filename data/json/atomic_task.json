@@ -200,7 +200,7 @@
     "listenerParam": "AtomicPuzzleElement",
     "maxProgress": 5,
     "jumpId": 0,
-    "bonus": "1#110404#1|2#3#20000",
+    "bonus": "1#111002#2|2#5#20000",
     "isKeyReward": 0
   },
   {
@@ -217,7 +217,7 @@
     "listenerParam": "AtomicFightElement",
     "maxProgress": 10,
     "jumpId": 0,
-    "bonus": "1#111002#2|2#5#20000",
+    "bonus": "1#110404#1|2#3#20000",
     "isKeyReward": 0
   },
   {
@@ -249,7 +249,7 @@
     "openLimit": "",
     "listenerType": "AtomicTalentNode",
     "listenerParam": "",
-    "maxProgress": 5,
+    "maxProgress": 10,
     "jumpId": 438550011,
     "bonus": "1#120011#3|2#5#20000",
     "isKeyReward": 0
@@ -266,7 +266,7 @@
     "openLimit": "",
     "listenerType": "AtomicTalentNode",
     "listenerParam": "",
-    "maxProgress": 10,
+    "maxProgress": 20,
     "jumpId": 438550011,
     "bonus": "1#120012#3|2#3#20000",
     "isKeyReward": 0
@@ -278,12 +278,12 @@
     "isOnline": 1,
     "minType": "",
     "name": "",
-    "desc": "累计解锁40个手套节点",
+    "desc": "累计解锁36个手套节点",
     "bonusMail": 0,
     "openLimit": "",
     "listenerType": "AtomicTalentNode",
     "listenerParam": "",
-    "maxProgress": 20,
+    "maxProgress": 36,
     "jumpId": 438550011,
     "bonus": "1#111003#1|2#5#20000",
     "isKeyReward": 0

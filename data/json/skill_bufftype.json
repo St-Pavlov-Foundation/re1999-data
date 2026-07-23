@@ -95064,6 +95064,23 @@
     "sortPriority": 0
   },
   {
+    "id": 116385673,
+    "type": 7,
+    "group": 0,
+    "includeTypes": "6",
+    "excludeTypes": "1#7",
+    "takeStage": 103,
+    "takeAct": "",
+    "cannotRemove": false,
+    "dontShowFloat": 0,
+    "removeNum": 0,
+    "skipDelay": 0,
+    "matSort": 0,
+    "aniSort": 0,
+    "playEffect": 0,
+    "sortPriority": 0
+  },
+  {
     "id": 116385679,
     "type": 8,
     "group": 0,

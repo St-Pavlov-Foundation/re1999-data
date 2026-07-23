@@ -173,22 +173,22 @@ function FightDeviceCardItem:refreshUI(deviceInfo)
 		gohelper.setActive(self.goNormal1, false)
 		gohelper.setActive(self.goSpecialBg, false)
 		gohelper.setActive(self.goUnique, true)
-		self.uniqueComp:refreshUI(group.skills[1])
 		self.uniqueComp:setActive(true)
 		self.normalComp:setActive(false)
 		self.normal1Comp:setActive(false)
+		self.uniqueComp:refreshUI(group.skills[1])
 	else
 		gohelper.setActive(self.goNormal, true)
-		self.normalComp:refreshUI(group.skills[1])
 		self.normalComp:setActive(true)
+		self.normalComp:refreshUI(group.skills[1])
 
 		local skillInfo = group.skills[2]
 
 		if skillInfo then
 			gohelper.setActive(self.goNormal1, true)
-			self.normal1Comp:refreshUI(skillInfo)
 			self.normal1Comp:setActive(true)
 			gohelper.setActive(self.goSpecialBg, true)
+			self.normal1Comp:refreshUI(skillInfo)
 		else
 			self.normal1Comp:setActive(false)
 			gohelper.setActive(self.goSpecialBg, false)

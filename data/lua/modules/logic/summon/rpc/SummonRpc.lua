@@ -162,10 +162,6 @@ function SummonRpc:sendInfallibleSummonRequest(poolId, callback, callbackObj)
 end
 
 function SummonRpc:onReceiveInfallibleSummonReply(resultCode, msg)
-	if resultCode ~= 0 then
-		return
-	end
-
 	SummonController.instance.isWaitingSummonResult = false
 
 	if resultCode ~= 0 then

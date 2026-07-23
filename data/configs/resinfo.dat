@@ -9770,9 +9770,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/activity_langchao_combataudio.bnk": {
-        "md5": "8d99ca80e984ce64cce07bc5757c4830",
-        "size": 4560,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "200e85b88ea95d10c549d970b3a4c7ab",
+        "size": 4644,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/activity_langchao_combataudio_noise.bnk": {
         "md5": "d79e85ed0bde221554cca5e57c7a18dd",
@@ -9860,9 +9860,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/activity_qieluomei_music.bnk": {
-        "md5": "c2d77cbd414255b2fa87fd5424aa8e67",
-        "size": 1787,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "d648468eeb6d78997bcb7eae20bdb2e2",
+        "size": 1797,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/activity_renmen_combataudio.bnk": {
         "md5": "2d0a61a93f02fb89b5e3f88e57a236a2",
@@ -9875,9 +9875,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/activity_s02_music.bnk": {
-        "md5": "8c7e40574a4859598a121f4b52e25ce3",
-        "size": 5847,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "49aaa22eb4c8d7ead87ef984083a9252",
+        "size": 5867,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/activity_shenghuo2_3_sfx.bnk": {
         "md5": "0b14a0452ee25b74b7f030b096f50072",
@@ -10245,24 +10245,29 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/activitysfx_langchao_s02_sfx.bnk": {
-        "md5": "de1b68b92fd2a6a5c2b9a05b4eac6310",
+        "md5": "3f775dcc391b55c9c213374b99ee30d6",
         "size": 84418,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/activitysfx_langchao_s02_sfx_fuyong.bnk": {
+        "md5": "44cc13edc6e4d120cc3b986d87163102",
+        "size": 17608,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/activitysfx_langchao_s02_sfx_part01.bnk": {
-        "md5": "32df63fa6d2db86de6a641003965df4e",
-        "size": 1301593,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "a74a00c0f810814be5084bc5dd15dac7",
+        "size": 1301613,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/activitysfx_langchao_s02_sfx_part02.bnk": {
-        "md5": "d1f158e0325649bc87ea860d3e6ada1b",
-        "size": 970724,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "1d3c32002dd2de99a3266c26172795cb",
+        "size": 970734,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/activitysfx_langchao_s02_sfx_part03.bnk": {
-        "md5": "c03099cb591cf975f906304af34bace0",
-        "size": 837154,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "e73800df53f76bec8504e0ef6081afac",
+        "size": 882125,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/activitysfx_tangren2_5_sfx.bnk": {
         "md5": "f7b5339f5bf8e07e81a6ad38712571ac",
@@ -11315,9 +11320,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/hero_skin_hunjian_s02.bnk": {
-        "md5": "a76d6ba8a99fab3e0880577fcdb9ca0f",
-        "size": 1013551,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "9cd3b96202a71275141d5798aa8cad0b",
+        "size": 1013531,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/hero300305_skill_skin.bnk": {
         "md5": "8ece5d933eb5ef209f9cedf2fbff2113",
@@ -12245,9 +12250,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/hero310504_skill_skin.bnk": {
-        "md5": "c2befbdfffa1752863b24d7cae19446e",
-        "size": 561310,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "e92712f74c097c425405ce174c805aeb",
+        "size": 562894,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/hero3106_mainsfx.bnk": {
         "md5": "9513b731e7ec40228fab392aee86fd36",
@@ -12900,9 +12905,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/hero314903_skill_skin.bnk": {
-        "md5": "6d401a39437f0e78afa13090a54933d7",
-        "size": 1332970,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "d732411451cc4707f06b13eb3f3a3862",
+        "size": 1333577,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/hero3151_mainsfx.bnk": {
         "md5": "16298ae9c87e97aac985dbde0b6c713d",
@@ -13110,9 +13115,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/Init.bnk": {
-        "md5": "fb7e01d4060b22b15e7cd1a8b2293490",
-        "size": 10963,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "38276a3f7bc697211061e6a3924f6421",
+        "size": 11088,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/jiaomuforest_combataudio.bnk": {
         "md5": "bed3801a508fb9c9fc1f8c182f891e07",
@@ -15840,9 +15845,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/Media/305018213.wem": {
-        "md5": "540807a5eb1d619464098a5d78dc629b",
-        "size": 395629,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "a15918169ae85119ba4b2952e00e1573",
+        "size": 385626,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/Media/305058633.wem": {
         "md5": "aa6019bbc77b4e9fb5fda20d0af7c868",
@@ -21149,6 +21154,11 @@
         "size": 111311,
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
+      "audios/Android/Media/859140602.wem": {
+        "md5": "83548a9c67b872dc638475641d0c0eed",
+        "size": 50419,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
       "audios/Android/Media/860121132.wem": {
         "md5": "8b56ac30c243716c69920a31952e22d9",
         "size": 488374,
@@ -21848,6 +21858,11 @@
         "md5": "4cd3655c4b20181fafa100fa31b90b7a",
         "size": 59246,
         "v": "7ff9741afb36c5e76963df36eba86eb6"
+      },
+      "audios/Android/Media/926314541.wem": {
+        "md5": "1f096524d88ec0ec6e31cc0138a09464",
+        "size": 121453,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/Media/926801089.wem": {
         "md5": "4e13dbbb89bd6437e25f6625644a18f4",
@@ -22600,9 +22615,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/Media/99998950.wem": {
-        "md5": "2e828099fd511ae180f2b656e18a472c",
-        "size": 214809,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "c8daea8f576026aa7cdcdc66584fdc60",
+        "size": 210900,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/monster110202.bnk": {
         "md5": "3c178dccb0a0ae900073f9d5895c3733",
@@ -25084,6 +25099,11 @@
         "size": 3200,
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
+      "audios/Android/stop_hero_skin_store.bnk": {
+        "md5": "67c72cac7300d9601f6cf1736c356021",
+        "size": 100,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
       "audios/Android/stop_plot_noise.bnk": {
         "md5": "896b8294a5822629801436b0d574d055",
         "size": 95,
@@ -25770,9 +25790,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/ui_activity_s02_langchao.bnk": {
-        "md5": "a7bafe7681a41f3ceab02f6a2dbc9bca",
+        "md5": "e6df75fd03b0bac72476e13ef30e17d7",
         "size": 426600,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/ui_activity_s02_langchao_kachi.bnk": {
         "md5": "c51a14fd643a245308ecb28f5dde9ff8",
@@ -26605,9 +26625,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/01c5288180d574de07014fa9e79c28eb.dat": {
-        "md5": "4ab45a4133ff0b0dc6d924b19415b6ac",
-        "size": 2378532,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "e80c232bbd4d6cf4e6afd765c8ee406d",
+        "size": 2380923,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/01cf82f2377b20b08a1f9e276014041c.dat": {
         "md5": "b6ecd946138394289bb6351c76526886",
@@ -27014,6 +27034,11 @@
         "size": 316978,
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
+      "bundles/05f027a4e209361f79b1ff667621dc66.dat": {
+        "md5": "7e3a8e877a7a1e41e33256a2fb983518",
+        "size": 251507,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
       "bundles/06072c1b37c4788257a12ba91246a54e.dat": {
         "md5": "0b80b90aa09aef038325698dc0e3f587",
         "size": 928651,
@@ -27100,9 +27125,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/06a34edfac63f7cbcdde2e11610a6a0d.dat": {
-        "md5": "585176bcd5b1e88d6a2d285037260428",
-        "size": 8152168,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "3b3100f349b2d0542963b1d36368deb2",
+        "size": 7998573,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/06b1cbcda2c98ee0ae61d658333df7b5.dat": {
         "md5": "ebc7631e208c30803c56d7d99cb77e4c",
@@ -27885,9 +27910,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/0cbd13ffa82b8c089bb5ba85f3b28e39.dat": {
-        "md5": "9f8ea0914cf0eb1baa4689a9be798ef9",
-        "size": 7593084,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "d457214ff453d273c09d93b51a6950fe",
+        "size": 7591921,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/0cc48f0d9504270b5b1e9e90ee8528f0.dat": {
         "md5": "062ed39fde939af0d57864e3cd9ac101",
@@ -28185,9 +28210,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/0f1889058b6201f8c9389b82fcbf2b69.dat": {
-        "md5": "9b0f16bed6f25d5b3b7bf92ffd54ec44",
-        "size": 3375940,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "24c1e5674b4094e2c7a83563c06e6770",
+        "size": 3375626,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/0f1968000f7868a6d4668c0c1a569c63.dat": {
         "md5": "503c113757e11fae3289c56fc4f06da6",
@@ -28305,9 +28330,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/0ffdc7152c064bfc0b9abbda08237358.dat": {
-        "md5": "9326a860000a6feeda863e5ab45c4e78",
-        "size": 2013768,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "bb3d4f7fa9a838aa57aa7f3090d7e14c",
+        "size": 2013758,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/10001af6dd376e8aaaf6ada990fc0c49.dat": {
         "md5": "65b94b13db2f0cc0f8585f9cf78c55ad",
@@ -28420,9 +28445,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/10e0c36cc0668830894c29fe6da33959.dat": {
-        "md5": "3db6c0e983f982422929d6be990af026",
-        "size": 9343627,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "e0072884246fa98aa02352c459a0999d",
+        "size": 9343607,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/10e64c9eff1859b7543d13716a59573b.dat": {
         "md5": "62f0d30ad3f7413f99bc9d8c62cb19ae",
@@ -28540,9 +28565,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/11c23d5af28045a9ddb75ed11eccb37c.dat": {
-        "md5": "ea75df3c3db03cf50b7b7da7a25afd55",
-        "size": 7585274,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "f123a5f25d6dbc6b7fb6774b9d8390d4",
+        "size": 7593812,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/11c3000f7599b3d3e1033afdd4fc2fc0.dat": {
         "md5": "70ff3a38b629d1bd4840317a8eb52891",
@@ -29355,9 +29380,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/1a3a69cc79a318ab971c988eb46264d8.dat": {
-        "md5": "e35a87868a81c500fc2426b9fcfd2c04",
-        "size": 24349387,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "303185d042320ee468fea0dc2ab6d6a9",
+        "size": 24424473,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/1a3c3a00be57fd261d7087c614b61214.dat": {
         "md5": "0980bd1f8abe95efe22fbe4053652d2c",
@@ -29395,9 +29420,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/1aa355706e1767666124331a716c7890.dat": {
-        "md5": "664647ae7039daf9a990194192c43bd8",
-        "size": 1525377,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "b3d081023103b7f56bdf1dc460844fbd",
+        "size": 1558566,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/1aa5ac27099827796c98476627135673.dat": {
         "md5": "22b6af33dfd24e240217c88c9e18d8ab",
@@ -30315,9 +30340,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/227a87f71199e6f765d0484f1fb5445a.dat": {
-        "md5": "f186c6108ab9058bdf238467985f2a82",
-        "size": 9246820,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "6b8f1dc3d325bacf7ba190fa87a0dc3d",
+        "size": 9051286,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/2286e5bc41e25a05ed07c505f0353628.dat": {
         "md5": "7f5446aa64ea06097ca93c7895c0ca9c",
@@ -30395,9 +30420,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/231b90889516baf249496e9118ea1624.dat": {
-        "md5": "c6ca492b7b15a2bedae22456fd458342",
-        "size": 537375,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "16a3386632ab0333bb90c1589bf60207",
+        "size": 537671,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/231baa8082f2a734edb721b1eff2ef10.dat": {
         "md5": "ebc8a0dae7a7e337d3870156362521f4",
@@ -30760,9 +30785,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/265b7f0555ad935f5553d613b8689973.dat": {
-        "md5": "e12766b0ca26ba45c0900e821828e2c1",
-        "size": 8144340,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "b3d67ad1aa7f97f1b7c99278312881a6",
+        "size": 8324866,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/2662453b2cea6ce1eb0df4bfdc0162a9.dat": {
         "md5": "cc77127a20e4343ba96897d3ddd8a1dc",
@@ -31220,9 +31245,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/2addca4b114fd1ed31a5b6191f90b56b.dat": {
-        "md5": "9f65e16bd206d2cac2c5ddffb708bc44",
-        "size": 5124976,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "ba4a8ffaa83d5254877039b5351b999a",
+        "size": 5128985,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/2ae2149fb4cffe6476a35fb64ca90887.dat": {
         "md5": "7030b39284bf03af4bb043580ea14e52",
@@ -31475,9 +31500,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/2d7b0011d279dfdd82b67f7333dbdff8.dat": {
-        "md5": "92c6b022f0b214095ef5b27f529638ad",
-        "size": 4533141,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "ae284a71eeb282bdd3070c88b0736742",
+        "size": 4526882,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/2d94db2ba8d8470a9f631e5d73833167.dat": {
         "md5": "9e40df51ba17c86a884e976946759004",
@@ -31935,9 +31960,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/3101296c2fb50133b226be94474fbd79.dat": {
-        "md5": "b1e1c249956794046c3b4f3f956b6b45",
-        "size": 1183365,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "86bd8bf1d74b05723e9a4b36dd6d2c66",
+        "size": 1192015,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/3106dcce5dc9a39a56cac9c190f73de6.dat": {
         "md5": "ebe9c19acfec8be6d2f9611a1af55999",
@@ -32545,9 +32570,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/3663542d6abdbea2cd4e5c322c34be57.dat": {
-        "md5": "470efc234c5c4268bac5ef1e5763a431",
-        "size": 13919444,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "f74d9c00aac7cd3a1152e7b7ae653a45",
+        "size": 13919226,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/366b9ce35197142a79e97ecb4e842246.dat": {
         "md5": "ce813086d7101acb3e1643f8d304e1fd",
@@ -32840,9 +32865,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/38e43d21d6ca649ddf9deb5bd07f45c0.dat": {
-        "md5": "45ba94cd5666f08c67c79ccbee150d7f",
-        "size": 13725504,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "9084685185de1e17d1ad0410e22ca5c5",
+        "size": 13725412,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/38e455cbb7cbd8d35e6f2a75bd73ed6e.dat": {
         "md5": "473cb58a225ac2456494930ffad863fc",
@@ -32850,9 +32875,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/38e58d667bcebfc6802021f736512510.dat": {
-        "md5": "acfef336120d83ab7105c2fed8e4e319",
-        "size": 6039216,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "776717be7bd658500be96054411afc0e",
+        "size": 6040142,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/38f9e3ae377953a33152f7523064bdc9.dat": {
         "md5": "8f44d1694fd422f064382ba49608737e",
@@ -32945,9 +32970,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/39d910b5389c23cca492c9feee93e7d3.dat": {
-        "md5": "00c45853d573de5a3fc582357a382101",
-        "size": 7040648,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "f6c3cac2c24d8250bb214700a60f540c",
+        "size": 6938708,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/39dc07a52cf9d07cfc0650c53f89e820.dat": {
         "md5": "b50262c512bd1f8a11468210c953ed6c",
@@ -33355,9 +33380,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/3d1d7abbb5997db43e1495452e627fd9.dat": {
-        "md5": "3e6d30b78e33fdacf74fc38c815d1f35",
-        "size": 237370,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "c402b146f9343bbe5d6b81887516864b",
+        "size": 237451,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/3d1e514a44faf48cc250d9d338777f93.dat": {
         "md5": "c821b4d966a3d933fd9359c8a0985c10",
@@ -33435,9 +33460,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/3dcb664d08c3e38b4bc73d1b5224d817.dat": {
-        "md5": "f8d861970f26496a4fa438b772b72b73",
-        "size": 2158754,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "53642f4129cc5dfb5af062b7ef38e359",
+        "size": 2154782,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/3dd2fefabc9150fa305ffbd5d7129bae.dat": {
         "md5": "4403eca33eca71e632e006386dd895c8",
@@ -33575,9 +33600,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/3eb60288dec6d4b07a54f8a80f67f0cb.dat": {
-        "md5": "e3eaeea62671d75581e79b0e9f53aaf6",
-        "size": 371290,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "4dc65e8fe688a8d8dd23c88211dacffc",
+        "size": 371775,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/3ebb67f8d023ffb40978041e7f86209d.dat": {
         "md5": "8e1ecadadca632c0e7fcbbaf62abf70f",
@@ -34255,9 +34280,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/4504244be0e27c60786a188a31b7279a.dat": {
-        "md5": "dd926e28b1eee76bb841064ae745a508",
-        "size": 826986,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "26743af0a3ed7afc97e14a14a11f67a4",
+        "size": 829106,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/45194b42a72d1b9d373b3aba4463da64.dat": {
         "md5": "cdc6cfd019f243819a6f0f48e25a263a",
@@ -34495,9 +34520,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/465bab440a886e0d3a33caedf195bc0f.dat": {
-        "md5": "b31f14c990155bbe4dea365b528e2d35",
-        "size": 492114,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "b054b661a8f10fb0d49abc13d9ab07b4",
+        "size": 494146,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/46625289a2eeab5e215be74e04f7a109.dat": {
         "md5": "d71dde147289ab9dc2e58c097eca5aca",
@@ -34635,9 +34660,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/476854659be1583325d2f4f5ac769dd4.dat": {
-        "md5": "e8b74de48b988478aba45f89e123553e",
-        "size": 1412070,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "4e108a6527ed75577f4e213d67404e9b",
+        "size": 1410878,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/476c1af1a97df27774ec3e111974fa69.dat": {
         "md5": "ad449c39806d471288d14bc6e9e1b4f2",
@@ -35300,9 +35325,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/4c352a4cc11ef5419feb007d38ae1fc3.dat": {
-        "md5": "c9189e20030f29622b6a4702af09f3d7",
-        "size": 5445730,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "cacaf4c0aa53d3e5193bc40d602edc25",
+        "size": 5451541,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/4c5040d9b4d618ffee8417ab6e42e69f.dat": {
         "md5": "109f1fc8e3f99e60cdc393c7c0bf6c38",
@@ -35520,9 +35545,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/4e2e0085f6553ffaeaa04021c5b293d4.dat": {
-        "md5": "3d89962bd48c6f824463248b4e498b7c",
-        "size": 848316,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "0bb36d5b2e54b196774bcfdbf289e732",
+        "size": 848375,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/4e36befbc05f7ee6ecec73b72d52362c.dat": {
         "md5": "5b4dff79f10e57dcd157ac2866082c3c",
@@ -35585,9 +35610,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/4e9d651f2ce7b07abbd5a3ed9b55bb68.dat": {
-        "md5": "22544e6003baf2737f9fc1ab1a6811a1",
-        "size": 5776522,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "53cfac06e5025a98ab49c57d1458d503",
+        "size": 5776524,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/4ea15232f237483d04e6c8285bf894b2.dat": {
         "md5": "39b7a772856edc9c27b81c9bf35f8953",
@@ -36395,9 +36420,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/54c90c5ea671608e789b9b1fecb5d9f0.dat": {
-        "md5": "95f32f3b6a0e51bb703c4257c73b3528",
-        "size": 4229206,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "67b5079d7dfe37d8facd2ac78b345ae6",
+        "size": 4228741,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/54cf0b5a9d78546e1edb066a94f3c004.dat": {
         "md5": "0ba209d97fc14e0c118bb2cc4d459ea4",
@@ -37355,9 +37380,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/5ca7bc17c4f18c620d91016a5dd93658.dat": {
-        "md5": "da1c841e472e5f9cb39bc7a8cea3f695",
-        "size": 1009528,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "590b6e0a72939d6c7211570e30c8e93a",
+        "size": 1009452,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/5cb1d3160c273d9ce273603df84b858a.dat": {
         "md5": "07c36f2ccb3e812570443e61838f4299",
@@ -37405,9 +37430,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/5d192c3b4b86468818e4a638ec2dff67.dat": {
-        "md5": "85648696e1024d0125e80d1bd60019b1",
-        "size": 3988125,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "eeb14631f0fa0ff9455cdc06719326e3",
+        "size": 3946071,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/5d22acafebe31b596a2713d54395ad36.dat": {
         "md5": "7755e8476d5806492bf86f302c9eddc9",
@@ -37580,9 +37605,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/5e275ffcb0d908fd9084b78744e0d754.dat": {
-        "md5": "f92f99f1b8525e5782487922615f2665",
-        "size": 9549012,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "ae9d9f78e360a6167d80981e1201e382",
+        "size": 9437966,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/5e31f9d69d00ef2b2d5ac8d74f0d1d35.dat": {
         "md5": "bff18942bfeaab17bd7a07c938c9f614",
@@ -37955,9 +37980,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/61860b558a85cd397ba470ebd6770b40.dat": {
-        "md5": "a52b93b70b10374da0fcbfc96cd41453",
-        "size": 6547885,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "ff940809dc72d4583714199d5dd8e4de",
+        "size": 6564202,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/6187172c6a79e8ac3d71c8656620ecbb.dat": {
         "md5": "8ab9c1681caf68a8081ab0d361da4985",
@@ -38275,9 +38300,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/63a549bff5e46a9f76f56671c1312769.dat": {
-        "md5": "58373d08a7cd59277a1147e22cf7fd86",
-        "size": 8497737,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "6d009bbae8081ad8de527de5e60fb178",
+        "size": 8494236,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/63bc8d26fc6477f8920c672cca5cb7ca.dat": {
         "md5": "3879753831a8e06272b2febb337cd649",
@@ -38535,9 +38560,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/6633b50aa727fb3872dd8a61b22afc13.dat": {
-        "md5": "c5f2a9d92ee2f6341a5cbb4e55dad601",
-        "size": 16058423,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "3ce403c5b7252c1ef242611215a73a0e",
+        "size": 12276088,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/663a3a3a04a3b1ddfdaa565dcfd1d5b6.dat": {
         "md5": "34ab73b8c5550580212909a7250231d9",
@@ -39650,9 +39675,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/70125e06b3fb37904eacddbefbfc706e.dat": {
-        "md5": "1fe2367c06ee3a489252bff1916fe942",
-        "size": 2768044,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "8fa69a2448d38a5bddf49c223b7fb54e",
+        "size": 2774738,
+        "v": "b7d5392a1796ffb9a5b1e0c05fa4755b"
       },
       "bundles/702a8fe3e5d875b5bf5756114a5534e2.dat": {
         "md5": "c41165934d7176f013f23cc534454671",
@@ -39725,9 +39750,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/708de2644e3d5e3843f6cbadea032d6f.dat": {
-        "md5": "b4a533a213e93c989a480b75074f329a",
-        "size": 2045494,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "394c94c39f6c9b084d6e5585a53e56a2",
+        "size": 2063031,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/70a1f128a63347f0c9b565444219f7a4.dat": {
         "md5": "2f53a4972c49a980cc0793c528e4a8e4",
@@ -40160,9 +40185,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/741845e927127c756dfe6137fce25ab9.dat": {
-        "md5": "3fd722265473a86a7625f4423f38d30e",
-        "size": 1873123,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "7d2c924fa5e64875702c026adee97172",
+        "size": 1876928,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/741ba93e7abf97a5bee12152e661703c.dat": {
         "md5": "afc7bae96cc7eb89992f5ce18aed5e6e",
@@ -40805,9 +40830,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/7928485fe744f639521d865baa1daeb4.dat": {
-        "md5": "a9cacbbf050af338e40b8891fb7b8b3c",
-        "size": 635386,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "ad24c12a60718b0515dd81467cab0e71",
+        "size": 633477,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/792c2083b2298cc6160a8e7bc75254ba.dat": {
         "md5": "f3ece1e9713eb0a1742b5527cb41cb70",
@@ -41520,9 +41545,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/7f71438fbec802ea3f5b157b6321341b.dat": {
-        "md5": "f18f8cecd080543fc662fbc9390a8f00",
-        "size": 3235958,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "bfa6b9e2a5b841ec3e25f56e86d7ee0f",
+        "size": 3234715,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/7f736c12d8ff64bc41f594cb8970126a.dat": {
         "md5": "048ac18e33a5479b795b366b2a9384c2",
@@ -41710,9 +41735,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/80fb468449dae893c5248726ba96eefc.dat": {
-        "md5": "8a9c2d720cfc5d505bc6fa7150623dd8",
-        "size": 29799110,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "5e8055138f627a30d4ada1f6a325b9ac",
+        "size": 29799014,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/80ffc49c969c6250af09adfee8ff8fae.dat": {
         "md5": "17944a63a3775288446921953ed306d7",
@@ -42645,9 +42670,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/887c9d999119ce4def991c9ee6fbf2a3.dat": {
-        "md5": "0b3cfaac88effece6e356720e5ca6b1d",
-        "size": 11057322,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "beb6de24dbbc79185d842884f2d1533c",
+        "size": 11067402,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/888188a46eed42c4617e4e878866737f.dat": {
         "md5": "ffdd14283165d07ff751a5b7a8ffc511",
@@ -43790,9 +43815,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/922b45061636b32ac414680760de7bda.dat": {
-        "md5": "65503e4f588bdea494f2a453cb0c4c2e",
-        "size": 3642377,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "8c8c37345780212833bc3cb414603840",
+        "size": 3642032,
+        "v": "b7d5392a1796ffb9a5b1e0c05fa4755b"
       },
       "bundles/922df32cc4dab4db6a9d4b59b9bb8378.dat": {
         "md5": "34e8a3fe5b01c6ff6006e38e65c29517",
@@ -44040,9 +44065,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/946e4521dbcaa945dc3108570b9e8a6d.dat": {
-        "md5": "e229efa8c5c6078289928ae1d16c6197",
-        "size": 25828670,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "bd94ad6668b6ff9f12f4cb1981adc605",
+        "size": 25829646,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/94709e169444eeeb55f33eb0524b6c58.dat": {
         "md5": "c34e0a809c2703debaa9cccc883bc96a",
@@ -44485,9 +44510,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/971e7c7094e4f0374526890d38269f7a.dat": {
-        "md5": "72889993bf95056c29ee094e27fc15a7",
-        "size": 556804,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "e7acc7dd54b0548b4fccd385d3873839",
+        "size": 556991,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/972968326856a784204c07ee70f60537.dat": {
         "md5": "107778ec2337e2bcc5f26a2e06179686",
@@ -44935,9 +44960,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/9b961405626963f1e0bbbffa40fe210f.dat": {
-        "md5": "6eafa9cfa96a73213286915f54995183",
-        "size": 4123452,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "7456aa4f8a4495b0f94923760eda8858",
+        "size": 4119237,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/9ba0b6f7d51b41d40be36596e8184cab.dat": {
         "md5": "d01fdd1b0a3857e027fd5fca0a5499dc",
@@ -45030,9 +45055,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/9c5ff4efef3438bd1e1c0de9d0bfec7f.dat": {
-        "md5": "2db85f458cbb7d95d7990b3253905357",
-        "size": 6874038,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "169ba5845ed90ac543a47e4a6bdaf810",
+        "size": 6878836,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/9c64edbbf499c4c7c7b78e710ca2d204.dat": {
         "md5": "6628651ad50a541705351f665e95505b",
@@ -45655,9 +45680,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/a1e6011badce5bd55dce2406c1feacd3.dat": {
-        "md5": "8624b0d19668d0d094ca75e004d23b80",
-        "size": 2656081,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "bc8fc633298eb0c70aa9d13bf12c025b",
+        "size": 2656313,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/a1eca64145dffd4cfcf89b4068dced5a.dat": {
         "md5": "0f026414e34ab16bf6022c2e2a94749b",
@@ -45935,9 +45960,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/a419ea498700c4ddcd5839c5107d120b.dat": {
-        "md5": "3561b6a00599caeede7b733f190e73a2",
-        "size": 13123210,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "6b01f04798de226b9d54ee4381f1237d",
+        "size": 13122996,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/a4294db0870e9704acae8946e9c9b832.dat": {
         "md5": "b4ec47e53128b797c099afc814cd3439",
@@ -45980,9 +46005,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/a4ae19d3856e9fbc7813150dc927bc69.dat": {
-        "md5": "3de170bbdfaecf9a5fab9145632774d6",
-        "size": 2835647,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "b0d48c747b18621bfb790b3c03316f9d",
+        "size": 2841579,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/a4e207fc381af93bd9f4cd833f6e0462.dat": {
         "md5": "3f6bb18623e3fd802a8b10dbd975261b",
@@ -47905,9 +47930,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/b51f3dad54e1fdf9640f6532d622903f.dat": {
-        "md5": "321a73dd6d79c71a5d3db6fe65e62ff1",
-        "size": 4131054,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "419ffe6cf16f6084cbd4894b52bf5ad3",
+        "size": 4155610,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/b5204520c5b2788bcb646dd08697f063.dat": {
         "md5": "b1a10d87c18d196a95f8a795b64fe752",
@@ -48525,9 +48550,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/baaf3f625c9ee179d70424043b1b80b2.dat": {
-        "md5": "1e67f562904f5c7f89122d77c8d8248f",
-        "size": 7685238,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "7fd5caa800f718c08502f1f73ac3fd10",
+        "size": 4101368,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/baafb7930fdb2fe536daa42d106b3801.dat": {
         "md5": "7470fbe3117d6dd21d56623cc695f622",
@@ -48635,9 +48660,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/bbc9d59bf57a37016fc1dd7a2e85998c.dat": {
-        "md5": "18b37d3aa3feed85180af00201faee6b",
-        "size": 1041850,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "ea12a9f0017c087aae40e9555fa68211",
+        "size": 1028335,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/bbd74f28aace025c94d7afde65eb8213.dat": {
         "md5": "861b7a54e127b9720f1884bad22cb5b6",
@@ -50415,9 +50440,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/cb7baaa1e176dd91dbb5aff21abcb7b0.dat": {
-        "md5": "1e5146f6a75bfc51b23dd90cf88a9a36",
-        "size": 15784156,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "2578fd1c058972e97265ecaf5d8d10c0",
+        "size": 15785006,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/cb80acfac712ccab9671501214eb0b38.dat": {
         "md5": "00b6b7efe1fb54b8d18763ac1208055e",
@@ -51975,9 +52000,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/d8e33bc2bd8875700fc815cfec321947.dat": {
-        "md5": "7f653914d6bda8be6cff8ebe7b1323ec",
-        "size": 1342205,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "cdb0690e96cf5f3804d5669e638b3536",
+        "size": 1342211,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/d8f1586f4a3f25e70d0fa081f9914f47.dat": {
         "md5": "949635a81d92955197c6025c82bc388e",
@@ -52190,9 +52215,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/dacd3f23edae4c0a4c9958bc8a2c0104.dat": {
-        "md5": "f04a4a64428f1f7e8a248a21a1b69520",
-        "size": 599373,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "e06611b0ffe9fc717f88cf67e1ee79ff",
+        "size": 598611,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/dad1eec440756df3b7faa5a15a8043a2.dat": {
         "md5": "7e9e1ed0f8ebd714f0a462d86b0a4074",
@@ -53280,9 +53305,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/e49006710aa9f5e6bedbb2b20b46ba2b.dat": {
-        "md5": "5febb1f09c24aa58a2df5347ea266182",
-        "size": 1069900,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "346b4d8d3401a131575cddf872c2a50c",
+        "size": 1070193,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/e495667baa77ecebf3a5eff1a8a15124.dat": {
         "md5": "3a5f3ae04dab18d57225966e926440f5",
@@ -53290,9 +53315,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/e49af2676b9a534dcd8612f55ac3343b.dat": {
-        "md5": "8c2706beaa7b299d68af9d8246194176",
-        "size": 1265099,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "31210589f86e9e52d669282f67ff619a",
+        "size": 1265212,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/e4a2814c13cf04b3c3faaf54011f7df9.dat": {
         "md5": "2c87d00ecd6472ce70bb2b575c434e7b",
@@ -53725,9 +53750,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/e7b73f1178933d7551cc6c5be3591d9b.dat": {
-        "md5": "1931000e6d435463911ad2490c603179",
-        "size": 4100113,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "1e30a6c23f69808c7dd2a9c3443e3a4f",
+        "size": 4091008,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/e7bdab9e26bc24d940ea351af6310021.dat": {
         "md5": "b885743791089acf7a151b228bc30c9c",
@@ -53750,9 +53775,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/e7e7ef2870f6f2fde8379aa2188cf19e.dat": {
-        "md5": "07f8f7c68b76bbaae42e272bbeefdd27",
-        "size": 8572232,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "313e82b3d2f806657275bcd6611b2a5e",
+        "size": 8542770,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/e800aed5ea2f3839f1ade42e379e21f4.dat": {
         "md5": "7d3c64dba0d64d119bfd7dc527ae8b34",
@@ -53875,9 +53900,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/e9467f1ff8856e1a25d0fe533948491b.dat": {
-        "md5": "ca073722a58558c88834034967ee5f19",
-        "size": 1300201,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "ba16caa0a8099f63ab41cae37eb1dd93",
+        "size": 1300214,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/e95141e9c9afed6fd5aa05fbc29c3123.dat": {
         "md5": "dc98516a6abfdd86f4c6d40ff024f83d",
@@ -54680,9 +54705,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/efd33d7c27dafc8c58488993e50dddc3.dat": {
-        "md5": "f3adc411486de173da343014408d5e9c",
-        "size": 2098435,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "ebe7885173e564b05b7832dfe27efc27",
+        "size": 2120062,
+        "v": "b7d5392a1796ffb9a5b1e0c05fa4755b"
       },
       "bundles/efd83b85cd2d77656826e9495e1cd7be.dat": {
         "md5": "e7f4dd373efe6715953a31d7b2d230fb",
@@ -54800,9 +54825,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/f0dbd9e068cf2dfb63babaeab3d9cc55.dat": {
-        "md5": "fb964c60d0efe9429fe27bd9f3a5f854",
-        "size": 1984030,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "dc15209d12d03177a461cfd1ba972748",
+        "size": 1984345,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/f0e409e5c029c1b35e1ea5b38628b12a.dat": {
         "md5": "6b3a1d4654e2b2c4d12830966fc24a85",
@@ -55530,9 +55555,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "bundles/f6df1b8346464bb049b59c5900591cb8.dat": {
-        "md5": "a781229612222a2766907dd82139c837",
-        "size": 2480191,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "e2588e12ea9186e122057433c68eb631",
+        "size": 2585095,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "bundles/f6ec3aabb50f3ce8e07c3617ee51c252.dat": {
         "md5": "bca2dcc460789b695eead0204088e2cc",
@@ -56590,9 +56615,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "configs/allmanifest.dat": {
-        "md5": "4378ad14ca5530d757264fa1fbe3ff0c",
-        "size": 1186264,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "ded693b1c2133061040801e9a16129f4",
+        "size": 1187053,
+        "v": "b7d5392a1796ffb9a5b1e0c05fa4755b"
       },
       "configs/aotdlls.json": {
         "md5": "47f811dd62e2d11490091f654e5bfc93",
@@ -56600,29 +56625,29 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "configs/datacfg_1.dat": {
-        "md5": "97716b7ca568221164cc2309f4a4b049",
-        "size": 19192672,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "e205503eb942f448e08763a8c8814ddc",
+        "size": 19205936,
+        "v": "b7d5392a1796ffb9a5b1e0c05fa4755b"
       },
       "configs/datacfg_2.dat": {
-        "md5": "82351a9538e1f219bd5037ae84fe4db3",
-        "size": 15509792,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "1116eb27671a9b22068384b234fcd6d1",
+        "size": 15522752,
+        "v": "b7d5392a1796ffb9a5b1e0c05fa4755b"
       },
       "configs/datacfg_3.dat": {
-        "md5": "c41dd2eb73cfd1b8c73e853af1ba4f59",
-        "size": 17651648,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "7e1ba436eaccca7d7f244145ccb1d64a",
+        "size": 17663152,
+        "v": "b7d5392a1796ffb9a5b1e0c05fa4755b"
       },
       "configs/datacfg_4.dat": {
-        "md5": "08bb4bda111564395cec02000f504905",
-        "size": 18119360,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "98515305b7066abd47095e745550480e",
+        "size": 18142000,
+        "v": "b7d5392a1796ffb9a5b1e0c05fa4755b"
       },
       "configs/datacfg_5.dat": {
-        "md5": "9235c22b746a05be2d3d2216facd1322",
-        "size": 17848064,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "6577e7f3a92ef72100b836d0c8fde33b",
+        "size": 17851920,
+        "v": "b7d5392a1796ffb9a5b1e0c05fa4755b"
       },
       "configs/langcfg.dat": {
         "md5": "e5a904a9d3ca30475f58814f75b4d9bf",
@@ -56680,9 +56705,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "configs/metainfo.dat": {
-        "md5": "6adc4004418bc60737cadf264e9a8035",
-        "size": 260271,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "f5d934300d0de9c06a2dc1417ac6314b",
+        "size": 260265,
+        "v": "b7d5392a1796ffb9a5b1e0c05fa4755b"
       },
       "luabytes/0152dd935893d08e38c0685092d77c07.dat": {
         "md5": "14965d399582510b77715d1deb9ea6cb",
@@ -56690,9 +56715,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "luabytes/1ef779789c622b1c289aa82872b7fe05.dat": {
-        "md5": "1c2c386d2bb549ff79dd1f2a8d08ea4f",
-        "size": 39701445,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "dd51790ff554173b990ca10c12f61791",
+        "size": 39715341,
+        "v": "b7d5392a1796ffb9a5b1e0c05fa4755b"
       },
       "luabytes/24376b19ec1cdb7815e53e2be086b0bb.dat": {
         "md5": "9b5f88edad4feb02227fcb92588310c5",
@@ -56745,14 +56770,14 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "luabytes/9c2019bedb92e2327bfe12024e2922a4.dat": {
-        "md5": "df51d2a75a8eeaf178137ce148b1806a",
-        "size": 39765770,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "62176ac78caffd1fc5e77467ce9ae34d",
+        "size": 39779728,
+        "v": "b7d5392a1796ffb9a5b1e0c05fa4755b"
       },
       "luabytes/a29fb508bb459de53603293f1d8fff8a.dat": {
-        "md5": "a35e49c27964224d0dd285b36221a9f8",
+        "md5": "bd7bc5e201d1d170110110c111614fee",
         "size": 688192,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "v": "b7d5392a1796ffb9a5b1e0c05fa4755b"
       },
       "luabytes/a54237b415964e63a6ae90b7bb111416.dat": {
         "md5": "14b89ed275500e5d7e61b379b3a97091",
@@ -57390,9 +57415,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "videos/s02_pv.mp4": {
-        "md5": "b24ac2ba456a2347b7c2d4721075691a",
-        "size": 46266505,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "96b6ae8018dab9a9930fdbf678c6f723",
+        "size": 46184345,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "videos/s02_qn_show.mp4": {
         "md5": "c3966bf2cd64e34d22244ab95eedee1b",
@@ -57812,19 +57837,19 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/en/activityvoc_hero3010_s02_langchao_part01.bnk": {
-        "md5": "ccbfdcfc101f0e1f402e83b18ac983fa",
-        "size": 1892929,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "fef803bafa2f3192fe2dff68920fa31f",
+        "size": 1840736,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_hero3010_s02_langchao_part02.bnk": {
-        "md5": "68269156a2c704b690b53ce29b31f9ce",
-        "size": 1459630,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "4582f5b3e0e4229a6b228b7c7b09ece0",
+        "size": 1457009,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_hero3010_s02_langchao_part03.bnk": {
-        "md5": "056b271bfa06b6acd577c703888eba29",
-        "size": 1541504,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "c23ec03e35ef420d90295dbbfb17e123",
+        "size": 1537430,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_hero3025_2_4_diqiu_part02.bnk": {
         "md5": "469cd2fa1b7acb3664a388f3adb8cc5d",
@@ -57877,19 +57902,19 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/en/activityvoc_hero3057_s02_langchao_part01.bnk": {
-        "md5": "4c0c5a47c0c239cdf161649286239406",
-        "size": 1183584,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "731db35fa81998468ae1cff4253f57ca",
+        "size": 1180852,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_hero3057_s02_langchao_part02.bnk": {
-        "md5": "ecb306373e87afbe82bbb7f7ab6c32e5",
-        "size": 1263911,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "4fe8b9fcc3ffa42ec788106075a7198e",
+        "size": 1263077,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_hero3057_s02_langchao_part03.bnk": {
-        "md5": "761a7b08dab0517a2df7c54d422e9df0",
-        "size": 1247499,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "2d270a9ca9cfb1e0fef1d2f96506783b",
+        "size": 1247332,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_hero3060lvhu1_2_part01.bnk": {
         "md5": "8221770387ff10b2137e2da60b066a85",
@@ -58022,9 +58047,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/en/activityvoc_hero3086_s02_langchao.bnk": {
-        "md5": "29756d719c549069fdace440ce5d2c93",
-        "size": 1358808,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "6490804edc2fd478abd8185a6233a28f",
+        "size": 1352590,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_hero3087_1_8_shiji_part01.bnk": {
         "md5": "e4849b184a54155db86489f74d393b5d",
@@ -58142,44 +58167,44 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/en/activityvoc_hero3149_s02_langchao.bnk": {
-        "md5": "5518952caffa6ea12af5a1ac8870c584",
-        "size": 208014,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "2596433504ae37e38a216fa6b9d51870",
+        "size": 207787,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_hero3149a_s02_langchao_part01.bnk": {
-        "md5": "fb8adbe125ebb4019784a8214108623e",
-        "size": 1000049,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "dd7e49b611b08a2381bc47b8ff37495d",
+        "size": 997985,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_hero3149a_s02_langchao_part02.bnk": {
-        "md5": "b9be69f52b71f9e54c89bc262667788c",
-        "size": 2008087,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "0243517ae6214b210c3486890921e50c",
+        "size": 2004071,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_hero3149b_s02_langchao.bnk": {
-        "md5": "ceee7d377197dea711bbd978caabd7cd",
-        "size": 831830,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "f7880b81efd90856154de5a866f70387",
+        "size": 827422,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_hero3151_s02_langchao.bnk": {
-        "md5": "cba8710b8dbed4b29df0e20b47985481",
-        "size": 835720,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "5ee76463082554004d9aa00d3bafd637",
+        "size": 835733,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_hero5043_s02_langchao_part01.bnk": {
-        "md5": "1da8e408fb127112fc035f3560061dd8",
-        "size": 944128,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "f81969f8569e9d1a93ebbbc87b110684",
+        "size": 934759,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_hero5043_s02_langchao_part02.bnk": {
-        "md5": "546c25858f346bb26edd07c53e0cca0a",
-        "size": 890556,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "2a52e1c17cdfaeca202ef2a9b09caea7",
+        "size": 880035,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_hero5043_s02_langchao_part03.bnk": {
-        "md5": "b05f4d973753d7d9114d220a05836e2e",
-        "size": 1052587,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "43811f2c446655d948cc90d2bbc792ae",
+        "size": 1043921,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_npc3021_1_8_shiji.bnk": {
         "md5": "5e7199afa7931b18725b4722f8d8896c",
@@ -58262,9 +58287,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/en/activityvoc_npc509301_s02_langchao.bnk": {
-        "md5": "afbc2e4a4df3265809199927a9f01a9b",
-        "size": 21684,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "bb334871cbae8090a5dd7fd79be0b23f",
+        "size": 21689,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_npc509501_s02_langchao.bnk": {
         "md5": "0db418de118cc6a0bfd82ea14952cea4",
@@ -58287,19 +58312,19 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/en/activityvoc_npc517401a_s02_langchao.bnk": {
-        "md5": "81d1bb9f3de818ef9861d6f4091034e2",
-        "size": 44131,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "4b657bd7ac67d920c9c591938989aa20",
+        "size": 44136,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_npc517501a_s02_langchao.bnk": {
-        "md5": "d1d13a3a0bbebbb782a279c43d8a391e",
-        "size": 9875,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "41036ef0f51dc5414189516ba27e960a",
+        "size": 9880,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_npc521101a_s02_langchao.bnk": {
-        "md5": "802ff40daeaed513570c4a791f6d13f7",
-        "size": 21369,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "f1247ab4eee0f5e45adcd49bf2bf4d04",
+        "size": 21315,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_npc561901_2_3_shenghuo.bnk": {
         "md5": "b0353dfb36853880ab7b3f4111aa5434",
@@ -58477,14 +58502,14 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/en/activityvoc_npc621601_s02_langchao.bnk": {
-        "md5": "f0df07b96ad90b893430f5fcd7dc9d79",
-        "size": 28775,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "499ea89b301378d9dcc69eb2bcee0b8d",
+        "size": 28780,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_npc621901a_s02_langchao.bnk": {
-        "md5": "be89518aeecde213d91fe28a17a67250",
-        "size": 443128,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "2e12c0808479cf46e566ecefac896083",
+        "size": 439269,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_npc622001_1_6_shuori_os.bnk": {
         "md5": "fc2d3c823180de97181232c22e79da92",
@@ -58582,54 +58607,54 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/en/activityvoc_npc639801_s02_langchao.bnk": {
-        "md5": "87ec4c017cb196ab54bd56b6f05deb08",
-        "size": 36750,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "17c2e2ae93b5c3e4457cfae82ea7ae4b",
+        "size": 36760,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_npc650302_s02_langchao_part01.bnk": {
-        "md5": "69f940ce3297d155ef895e1a06cae82e",
-        "size": 1295463,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "3c7a8184deafb44ebdf295a3347bbaca",
+        "size": 1292906,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_npc650302_s02_langchao_part02.bnk": {
-        "md5": "d3f5fc50ec29ccf7973c33a3ce15b48e",
-        "size": 1589731,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "22e2d0b61ddf269bc21e8bc6404f2e33",
+        "size": 1585467,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_npc650403_s02_langchao.bnk": {
-        "md5": "b27693954122b6971d94b9c67d4c3ac3",
-        "size": 1485751,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "f6faadc191c61c36993eb14e1b398b20",
+        "size": 1492028,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_npc650503_s02_langchao.bnk": {
-        "md5": "077764b7a6b59cc7e42a0eeeb3aaf465",
-        "size": 875052,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "339cc0cea6de3f6419a340d03c15c2fc",
+        "size": 947852,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_npc650603_s02_langchao.bnk": {
-        "md5": "429559e1896313d0afba4011a0aff134",
-        "size": 1496035,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "67a90b210c740dabc5a18e7f7593dadc",
+        "size": 1482948,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_npc650702_s02_langchao_part01.bnk": {
-        "md5": "ad54b9104cc055f91c7415215c6ccda6",
-        "size": 636433,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "5608ef19fa5b3055b6928068cb34f699",
+        "size": 636588,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_npc650702_s02_langchao_part02.bnk": {
-        "md5": "981f4631332054542aa8350158e604b4",
-        "size": 1109262,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "9d8d5a3206025694e37453927578d54c",
+        "size": 1177444,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_npc651702_s02_langchao.bnk": {
-        "md5": "c277aa2a9cf03f937ac470a6175268ff",
-        "size": 256039,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "5c601c4282352220ddab410e0395ebb7",
+        "size": 256059,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_npc651802_s02_langchao.bnk": {
-        "md5": "7d95795bdccfe6c37af1ed6134c9c7f8",
-        "size": 384610,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "ef1665e2659393bbb8ba79e00d6c6601",
+        "size": 383696,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_npc652103_s02_langchao.bnk": {
         "md5": "5b93c0bb08880240fbb13c1896d5cbac",
@@ -58637,14 +58662,14 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/en/activityvoc_npc652202_s02_langchao.bnk": {
-        "md5": "04ded8edef0281d177c7514c4a4a42a0",
-        "size": 1784506,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "0c706d4a2cc4c9432efd1f606d5b6f6f",
+        "size": 1782011,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_npc652303_s02_langchao.bnk": {
-        "md5": "b584f8f61d6e70330896ebd0375f72fc",
-        "size": 795514,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "93c495a5f9bd6105e372e4a4064373d4",
+        "size": 795172,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_npcnoname07.bnk": {
         "md5": "0b62e56f8e32095fede67afc57af9b5d",
@@ -58662,9 +58687,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/en/activityvoc_npcnoname339_s02_langchao.bnk": {
-        "md5": "c283ae2051352d2f929324d4cd433d4d",
-        "size": 96030,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "3efd02121a25562cfc417e08da8657cc",
+        "size": 96035,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_npcnoname340_s02_langchao.bnk": {
         "md5": "77a169d68420701de895c9108d6c5d4c",
@@ -58677,9 +58702,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/en/activityvoc_npcnoname342_s02_langchao.bnk": {
-        "md5": "27bf0668107412a1e1067844573e8f0d",
-        "size": 52556,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "2919d0dde94fda18cda8b0cb1d8f33ea",
+        "size": 52566,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_npcnoname344_s02_langchao.bnk": {
         "md5": "d81f7716fe29fadc0c1bf6b320f63be6",
@@ -58687,19 +58712,19 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/en/activityvoc_npcnoname345_s02_langchao.bnk": {
-        "md5": "efe30b6879c298d4b299b08b86c53012",
-        "size": 168596,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "3e477e71dd05d511841513f5add8c663",
+        "size": 166326,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_npcnoname356_s02_langchao.bnk": {
-        "md5": "28a0976ef6859bd7b37d5775077b3650",
-        "size": 22602,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "31e0beaa2f8d0156ec683b753f72729b",
+        "size": 22607,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_npcnoname357_s02_langchao.bnk": {
-        "md5": "ff29740f5b78fef922a2f5f2304265ac",
-        "size": 219815,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "761f57095106088c32f427a2164ae906",
+        "size": 219530,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_npcnoname358_s02_langchao.bnk": {
         "md5": "d9078fda5533f20788d5ae9fec576e77",
@@ -58707,14 +58732,14 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/en/activityvoc_npcnoname359_s02_langchao.bnk": {
-        "md5": "cf210bdcc21dc619727e8dce9ebc87b9",
-        "size": 29257,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "67db5dc97f026612bd7753330cf68319",
+        "size": 29122,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_npcnoname360_s02_langchao.bnk": {
-        "md5": "cfaa0a9ed1cc6a2003e30c9d184f5ebd",
-        "size": 1015651,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "ae0cce653aa0bc7b2a6bc55ba17ba6a8",
+        "size": 1015831,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_npcnoname361_s02_langchao.bnk": {
         "md5": "4770ee067ec2cdc654d500dfb1ce3610",
@@ -58722,9 +58747,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/en/activityvoc_npcnoname362_s02_langchao.bnk": {
-        "md5": "74eae54858e5f1ed24177285c4142857",
-        "size": 8195,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "3f99bef2d0269b002c42a076d460d431",
+        "size": 8200,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/activityvoc_npcnoname78_1_8_shiji.bnk": {
         "md5": "1670259ce92497664e66bbf0fb9e62c6",
@@ -59422,9 +59447,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/en/hero3010_level_langchao_s02.bnk": {
-        "md5": "aa047dfea136a3a683f5056e282a11fa",
-        "size": 47628,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "36b334d9f53ec85cf9606b03365df73c",
+        "size": 47643,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/hero3010_mainstory.bnk": {
         "md5": "0168d15f56bacab5107aa7b5e3e6bc88",
@@ -60022,9 +60047,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/en/hero3057_level_langchao_s02.bnk": {
-        "md5": "889e63b72690e37ca270afd865b51fa9",
-        "size": 79668,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "9dd256460224a201e395e21ea59f8db9",
+        "size": 79703,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/hero3057_mainstory.bnk": {
         "md5": "2dbb5d7455297bbdc3aab3615c2806e5",
@@ -60857,14 +60882,14 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/en/hero310504_mainvoc.bnk": {
-        "md5": "e51000aade8c152473ff49797c0569bf",
-        "size": 1499388,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "7b65ac28ef1412d434122ff9e23a43ac",
+        "size": 1498138,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/hero310504_vo_skin.bnk": {
-        "md5": "fc6e42c0754e19992946811d96410e3c",
-        "size": 346345,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "984aa3b0998cbd0f9a718ea598c035b4",
+        "size": 346258,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/hero3106_level_shenghuo2_3.bnk": {
         "md5": "38833da83e5957fda5e018375673e68c",
@@ -61302,9 +61327,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/en/hero312606_vo_skin.bnk": {
-        "md5": "ad06b8f2b180d3dd007d635ce5413dc1",
-        "size": 334758,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "f420fa381807bb999623b25c1cc1eed5",
+        "size": 331016,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/hero3127_level_beiai3_7.bnk": {
         "md5": "1405eb62579f77a4ed4e26cd19e008e0",
@@ -61612,44 +61637,44 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/en/hero3149_mainstory.bnk": {
-        "md5": "61874fcf87192cd41d8fdc804389be92",
-        "size": 232878,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "a5e54d1c0ed1b39b7bb844be000a49d9",
+        "size": 232741,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/hero3149_mainvoc.bnk": {
-        "md5": "41afd2a173a4577364bac0706046682d",
-        "size": 3479877,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "40d28ca0d14d2c6e47ff12272fdc23a8",
+        "size": 3471724,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/hero3149_vo.bnk": {
-        "md5": "dd95d6fae7ed64ff320311c826dc0223",
-        "size": 862656,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "31dba8cf4eb0a5f69831c5d674d12e86",
+        "size": 859141,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/hero314903_vo_skin.bnk": {
-        "md5": "bc8c48e2c9c6f44009b2ba8b2be43540",
-        "size": 389813,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "166cc4557ca23ce71542793f8354dd3e",
+        "size": 388352,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/hero3149a_level_langchao_s02.bnk": {
-        "md5": "227b87af8a316860fd4023b532a23787",
-        "size": 117666,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "ba18775386b8c8c5e39fcf85202eab0c",
+        "size": 117696,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/hero3151_mainstory.bnk": {
-        "md5": "0304c0171b1a95beae2f5a66eb6e56f0",
-        "size": 187427,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "794911fdf08b8ae62253ae2af2b4582f",
+        "size": 187462,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/hero3151_mainvoc.bnk": {
-        "md5": "333263938bb04f5e2eb1ad447f82e252",
-        "size": 1286829,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "cb63ae7c016f06769ca55677dc221b00",
+        "size": 1283328,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/hero3151_vo.bnk": {
-        "md5": "da47f6117980f8cfb6fa15f3ae08f4d2",
-        "size": 421394,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "47d8c6218731d69e38d4e47a2bdf76b6",
+        "size": 421044,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/hero3154_level_beiai3_7.bnk": {
         "md5": "f76ed652ac3a3bec582be2800601390f",
@@ -61697,9 +61722,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/en/hero5043_level_langchao_s02.bnk": {
-        "md5": "cdc776511f7521a3649255df30cd9eab",
-        "size": 80401,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "b8d7604f3f1c4d8ff41ae96aca09d79e",
+        "size": 79389,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/hero5043_level_lvhu1_2.bnk": {
         "md5": "f4e2426059d5717c719ab8678f088f08",
@@ -62552,9 +62577,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/en/npc650503_level_langchao_s02.bnk": {
-        "md5": "3dc588364b059cb38cfe36d3ce3a70f6",
-        "size": 107761,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "004ce7bc55fa142c61283955d381ad65",
+        "size": 107801,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/en/npc652103_level_langchao_s02.bnk": {
         "md5": "6935eb2f010f46d258fbf971c6cd616a",
@@ -67348,6 +67373,266 @@
       }
     },
     "jp": {
+      "audios/Android/jp/activityvoc_hero3010_s02_langchao_part01.bnk": {
+        "md5": "b3457aff2b1c076e9742da51423e80ce",
+        "size": 1962213,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_hero3010_s02_langchao_part02.bnk": {
+        "md5": "f8cf53fa750d1dde416f35f26bbe1aeb",
+        "size": 1622711,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_hero3010_s02_langchao_part03.bnk": {
+        "md5": "e2feab3606d8838c2d2dd6e2fcbe6de3",
+        "size": 1615936,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_hero3057_s02_langchao_part01.bnk": {
+        "md5": "37fff0c423e3bb16308c5591856d3829",
+        "size": 1170551,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_hero3057_s02_langchao_part02.bnk": {
+        "md5": "cc1beee68697567cf64858122f144c46",
+        "size": 1467221,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_hero3057_s02_langchao_part03.bnk": {
+        "md5": "8b547f03b8c9fb596bde7a549317a21f",
+        "size": 1400528,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_hero3086_s02_langchao.bnk": {
+        "md5": "7defe0faee88c9f1274280cacaa081ad",
+        "size": 1174700,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_hero3149_s02_langchao.bnk": {
+        "md5": "e47fc4c88c60d88688267f7c6983fdbd",
+        "size": 223681,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_hero3149a_s02_langchao_part01.bnk": {
+        "md5": "a6f85773362d27f0c149f1bd11d0bfd5",
+        "size": 1020165,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_hero3149a_s02_langchao_part02.bnk": {
+        "md5": "80e6cf2e6bcabfb1df5dbe02086255b3",
+        "size": 1837100,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_hero3149b_s02_langchao.bnk": {
+        "md5": "65c7d1fa33f7271cfcf0cacd875ce2b3",
+        "size": 893015,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_hero3151_s02_langchao.bnk": {
+        "md5": "4fe388ec7793fb3e5046c1fb0f00b72b",
+        "size": 806704,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_hero5043_s02_langchao_part01.bnk": {
+        "md5": "cd7dc5b0433911c8c3e5d1144df95abc",
+        "size": 995584,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_hero5043_s02_langchao_part02.bnk": {
+        "md5": "2a2e60bc94ba91601e2c3894d6eddcb6",
+        "size": 1039384,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_hero5043_s02_langchao_part03.bnk": {
+        "md5": "34675963823b649f1af663cfdf7ad76b",
+        "size": 1279957,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npc509301_s02_langchao.bnk": {
+        "md5": "f0700d9c2cd7b1ace013b27be99be80b",
+        "size": 26619,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npc509501_s02_langchao.bnk": {
+        "md5": "360f452bf19f213e3bc7b262129ad457",
+        "size": 107105,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npc517401a_s02_langchao.bnk": {
+        "md5": "192c8c52679d0dca3528999c0b05d4cc",
+        "size": 54045,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npc517501a_s02_langchao.bnk": {
+        "md5": "7282bba20a7bb6d6a4a05b90f7433b77",
+        "size": 14302,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npc521101a_s02_langchao.bnk": {
+        "md5": "1c38f49ee85855ca1e786a7bb54b3c32",
+        "size": 17598,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npc563701a_s02_langchao.bnk": {
+        "md5": "91297afea01143b1c03eb26f6e4e8f9f",
+        "size": 8034,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npc621601_s02_langchao.bnk": {
+        "md5": "4d75350be9eed4c1093cb2dd1cb09661",
+        "size": 71850,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npc621901a_s02_langchao.bnk": {
+        "md5": "b2beca7c0122bdcf5e25e053a86eaa13",
+        "size": 578394,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npc626301a_s02_langchao.bnk": {
+        "md5": "8e31405af70dd72cf49bdba45f9da020",
+        "size": 18236,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npc639801_s02_langchao.bnk": {
+        "md5": "0bf449f1ba345d193c6a93c7a1ae975a",
+        "size": 41153,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npc650302_s02_langchao_part01.bnk": {
+        "md5": "00a8d9b867b266b6e6f58ca3440c010f",
+        "size": 1552075,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npc650302_s02_langchao_part02.bnk": {
+        "md5": "f8e12dc0614ac53d440ae916ab5045cb",
+        "size": 1590145,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npc650403_s02_langchao.bnk": {
+        "md5": "c8500e7e9fd0f1e44b2b8d605d891855",
+        "size": 2117006,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npc650503_s02_langchao.bnk": {
+        "md5": "f98c71ed79e1021ee51a51e14632271c",
+        "size": 1001952,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npc650603_s02_langchao.bnk": {
+        "md5": "e96a53630457182be43a87274e2fec9a",
+        "size": 1467439,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npc650702_s02_langchao_part01.bnk": {
+        "md5": "5ef02b0936698526586ee556d166e9a4",
+        "size": 656878,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npc650702_s02_langchao_part02.bnk": {
+        "md5": "3a9f9046ccec1df99b1adebb478a1dc1",
+        "size": 1216113,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npc651702_s02_langchao.bnk": {
+        "md5": "2a4e4cdcb75acc75a0fda26c44550424",
+        "size": 302987,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npc651802_s02_langchao.bnk": {
+        "md5": "8cb6bf79aca58b3dcac129f6a00a1aec",
+        "size": 460761,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npc652103_s02_langchao.bnk": {
+        "md5": "5aab52829527c5ab9c17a715225d633e",
+        "size": 74235,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npc652202_s02_langchao.bnk": {
+        "md5": "401bd9024d96eae06751b0feae878e69",
+        "size": 1840164,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npc652303_s02_langchao.bnk": {
+        "md5": "1e484638746ab3872b48e0e378e5b702",
+        "size": 1001702,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npcnoname339_s02_langchao.bnk": {
+        "md5": "4c2e00aaabaa2d545037837e0e7ffe50",
+        "size": 125516,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npcnoname340_s02_langchao.bnk": {
+        "md5": "18913dee5ec0848e5e4fd8bddbb507db",
+        "size": 18656,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npcnoname341_s02_langchao.bnk": {
+        "md5": "488848bbedc0a64bb90353dd811f60ae",
+        "size": 78413,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npcnoname342_s02_langchao.bnk": {
+        "md5": "c8329a10a0c4cfe3810f0aa7d1f4ec43",
+        "size": 57400,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npcnoname344_s02_langchao.bnk": {
+        "md5": "8abac3ef1775a62b94fdc789ae350a62",
+        "size": 16765,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npcnoname345_s02_langchao.bnk": {
+        "md5": "6ec3f8fd7bf6ec53d6d043f54b263695",
+        "size": 172974,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npcnoname356_s02_langchao.bnk": {
+        "md5": "50841e28702ae2452ad2d18540023502",
+        "size": 16203,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npcnoname357_s02_langchao.bnk": {
+        "md5": "b795278e11674c2e92b178373178854e",
+        "size": 242363,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npcnoname358_s02_langchao.bnk": {
+        "md5": "5ae7522aff37dfba08032ea6a5d83e89",
+        "size": 124823,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npcnoname359_s02_langchao.bnk": {
+        "md5": "b9fae788d4c61edae758469cc55c1fa3",
+        "size": 47964,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npcnoname360_s02_langchao.bnk": {
+        "md5": "b8c33810748394d02f5817d7ac84e032",
+        "size": 1023349,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npcnoname361_s02_langchao.bnk": {
+        "md5": "6de70d732a160f1c4cb227d639f94422",
+        "size": 61596,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/activityvoc_npcnoname362_s02_langchao.bnk": {
+        "md5": "1dd1c25878800819e71aa02da9a191ed",
+        "size": 8892,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/hero3010_level_langchao_s02.bnk": {
+        "md5": "43134872eee5d6da440fc0d1e254dd01",
+        "size": 63346,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/hero3057_level_langchao_s02.bnk": {
+        "md5": "a8f521af2f1863e0d805c64611464c21",
+        "size": 65813,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
       "audios/Android/jp/hero3122_mainstory.bnk": {
         "md5": "f689cead0a5fe2a271da1f0f8bc8aa21",
         "size": 108053,
@@ -67392,9 +67677,344 @@
         "md5": "a25c5117c38a6a379acc0bdb65b21ef1",
         "size": 276969,
         "v": "7ff9741afb36c5e76963df36eba86eb6"
+      },
+      "audios/Android/jp/hero3149_mainstory.bnk": {
+        "md5": "179ec443495ee422d7b4d55b106b77fc",
+        "size": 193321,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/hero3149_mainvoc.bnk": {
+        "md5": "5cdfb6df01656c8564f3e0885e258434",
+        "size": 3642719,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/hero3149_vo.bnk": {
+        "md5": "c11965c88e83c193b2609d099d2e3b6d",
+        "size": 821427,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/hero314903_vo_skin.bnk": {
+        "md5": "438c03c69d0e6d7fd5188eaea70e3889",
+        "size": 466278,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/hero3149a_level_langchao_s02.bnk": {
+        "md5": "531e8233977b43bb8742b9b5cee61812",
+        "size": 102194,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/hero3151_mainstory.bnk": {
+        "md5": "7b97e5d6f47d614c24c05825f9fe724f",
+        "size": 208156,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/hero3151_mainvoc.bnk": {
+        "md5": "f4e37382eba6de2e5ab4d1ca2468c606",
+        "size": 1310579,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/hero3151_vo.bnk": {
+        "md5": "520591126da408b9648702d8bad73c0d",
+        "size": 499176,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/hero5043_level_langchao_s02.bnk": {
+        "md5": "6aa86eec0fea74d4d4f2aa218cf09a11",
+        "size": 99907,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/langchaos02_cutscene_sfx_vo.bnk": {
+        "md5": "02750cd67ab62c3ce20d58f020a2787a",
+        "size": 2776,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/npc650503_level_langchao_s02.bnk": {
+        "md5": "a78b005cf3593b879ff4f0c135b9ec1f",
+        "size": 101283,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/jp/npc652103_level_langchao_s02.bnk": {
+        "md5": "cab2ac66275091c02cb2175c9cdcf0e1",
+        "size": 79663,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/Media/jp/386406044.wem": {
+        "md5": "0a1ca6e7bf54f1215d8fa5e5b37dc73a",
+        "size": 875893,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/Media/jp/591545464.wem": {
+        "md5": "2e3fc32e824ce00d86e8ddfd348033b6",
+        "size": 217882,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/Media/jp/914870151.wem": {
+        "md5": "b2d1a1fe9201a8e765143d1d82a158a9",
+        "size": 377196,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       }
     },
     "kr": {
+      "audios/Android/kr/activityvoc_hero3010_s02_langchao_part01.bnk": {
+        "md5": "e1df1cf0a4bac2eeb03b09aedbe4b2af",
+        "size": 1997260,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_hero3010_s02_langchao_part02.bnk": {
+        "md5": "10432b8f9c705fcb4f5c60dea1809adf",
+        "size": 1568110,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_hero3010_s02_langchao_part03.bnk": {
+        "md5": "8ececed7f8dfccfcf25d08df230bb0d0",
+        "size": 1530889,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_hero3057_s02_langchao_part01.bnk": {
+        "md5": "15adced3eafc4ed6152eaef33b93d6cb",
+        "size": 1247276,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_hero3057_s02_langchao_part02.bnk": {
+        "md5": "d429a01510935230927de962d821f9a9",
+        "size": 1360483,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_hero3057_s02_langchao_part03.bnk": {
+        "md5": "4a903154e804ffab28da70604d40c768",
+        "size": 1295754,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_hero3086_s02_langchao.bnk": {
+        "md5": "3f393df630f8dc24fcebd7ec3deb48b8",
+        "size": 1052737,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_hero3149_s02_langchao.bnk": {
+        "md5": "fe64a02bdfa395be02a81098c46ac4a4",
+        "size": 272701,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_hero3149a_s02_langchao_part01.bnk": {
+        "md5": "446eab954a40b6a190e2c09a64426b57",
+        "size": 1154976,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_hero3149a_s02_langchao_part02.bnk": {
+        "md5": "c3df9f05e60d9daddeb5c6bc389e2f72",
+        "size": 1875815,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_hero3149b_s02_langchao.bnk": {
+        "md5": "fb3b3fca41ad5d2192f871cd5f0530ac",
+        "size": 877976,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_hero3151_s02_langchao.bnk": {
+        "md5": "bd76c140884d09d07870bde34c233c28",
+        "size": 809257,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_hero5043_s02_langchao_part01.bnk": {
+        "md5": "498eb7a59465b15b1cd1556537bce531",
+        "size": 1140086,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_hero5043_s02_langchao_part02.bnk": {
+        "md5": "2f5b21225f84d4d991335027d6326fa4",
+        "size": 1071729,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_hero5043_s02_langchao_part03.bnk": {
+        "md5": "3f31637eecbedaf90c22958ef7605930",
+        "size": 1271258,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npc509301_s02_langchao.bnk": {
+        "md5": "27ed70d4302683ef99dd8600f62972b3",
+        "size": 35407,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npc509501_s02_langchao.bnk": {
+        "md5": "97ae3f56eca60cdf790c842d275efe68",
+        "size": 116291,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npc517401a_s02_langchao.bnk": {
+        "md5": "d9ca42f1712efbeeb3e2e79ed199c802",
+        "size": 62119,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npc517501a_s02_langchao.bnk": {
+        "md5": "e5a8c91d822dbb0f257bd8c7b8b6a05f",
+        "size": 15932,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npc521101a_s02_langchao.bnk": {
+        "md5": "a99728784e34bc3db29b2bb00068227f",
+        "size": 21756,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npc563701a_s02_langchao.bnk": {
+        "md5": "92d6d079a772c5f40d305c750ea7015f",
+        "size": 13015,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npc621601_s02_langchao.bnk": {
+        "md5": "50a7b1cffc808c409e4be3dd27ba4ac8",
+        "size": 44524,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npc621901a_s02_langchao.bnk": {
+        "md5": "f6f7f55fc7119e0dfe51866da9a8d82e",
+        "size": 444520,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npc626301a_s02_langchao.bnk": {
+        "md5": "d2486c6659c48b44d7bde7e268850f71",
+        "size": 19386,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npc639801_s02_langchao.bnk": {
+        "md5": "7dd3fe1378e6994a7ab90a3154fdb7d3",
+        "size": 40744,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npc650302_s02_langchao_part01.bnk": {
+        "md5": "1b2ee8adff05af17687c5a42aeeda194",
+        "size": 1363847,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npc650302_s02_langchao_part02.bnk": {
+        "md5": "b5abf831742ac03796949ef58d7da004",
+        "size": 1576532,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npc650403_s02_langchao.bnk": {
+        "md5": "f59f02a687b2c44e46995c4c8cbebfd1",
+        "size": 2104411,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npc650503_s02_langchao.bnk": {
+        "md5": "4a3b1feb25d6c20e299be91d5bf4feae",
+        "size": 920490,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npc650603_s02_langchao.bnk": {
+        "md5": "c427f4a4dec2ff408245fd01d98dab89",
+        "size": 1362141,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npc650702_s02_langchao_part01.bnk": {
+        "md5": "2d0522f15c41ad5512c137fde67f3b9f",
+        "size": 750083,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npc650702_s02_langchao_part02.bnk": {
+        "md5": "31a108f4a9292de7a288eaec14f443e2",
+        "size": 1314484,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npc651702_s02_langchao.bnk": {
+        "md5": "111f2151247af9443fef648e37de1d5a",
+        "size": 296204,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npc651802_s02_langchao.bnk": {
+        "md5": "33c1fac211dccacc92ca88eb65c4827d",
+        "size": 446556,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npc652103_s02_langchao.bnk": {
+        "md5": "1a49c6e25281fd177b9b88b77019b612",
+        "size": 51748,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npc652202_s02_langchao.bnk": {
+        "md5": "a670fc3011a2595dbe7a2815c3c241c6",
+        "size": 1712219,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npc652303_s02_langchao.bnk": {
+        "md5": "e7484e7dffb408e98f9ce98b5770c4de",
+        "size": 810948,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npcnoname339_s02_langchao.bnk": {
+        "md5": "066f2be60d83c60b28ed8c6dfdb0ad72",
+        "size": 87885,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npcnoname340_s02_langchao.bnk": {
+        "md5": "d76c21852dc749ff729a381b266eb256",
+        "size": 14916,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npcnoname341_s02_langchao.bnk": {
+        "md5": "a693d59438721cee78cae44ccaf03772",
+        "size": 65790,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npcnoname342_s02_langchao.bnk": {
+        "md5": "191ed8f7b9c73931dd0347a3944f06d3",
+        "size": 58706,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npcnoname344_s02_langchao.bnk": {
+        "md5": "b9d950470458e5e93ba7426d068f5eb0",
+        "size": 14423,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npcnoname345_s02_langchao.bnk": {
+        "md5": "e60d3a81bd17fab8f74997af080372fe",
+        "size": 100092,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npcnoname356_s02_langchao.bnk": {
+        "md5": "0fdf335bf13e031bf15631b58a5ddbc3",
+        "size": 20340,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npcnoname357_s02_langchao.bnk": {
+        "md5": "41b33ea5d4085f421079bcb683229db9",
+        "size": 267090,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npcnoname358_s02_langchao.bnk": {
+        "md5": "e11272af648d503393ad8efed314a775",
+        "size": 110348,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npcnoname359_s02_langchao.bnk": {
+        "md5": "10c2e0eb3a463c971285b63d8874eaac",
+        "size": 39346,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npcnoname360_s02_langchao.bnk": {
+        "md5": "43dd80cf9853a52eacc63621f4d5676e",
+        "size": 898623,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npcnoname361_s02_langchao.bnk": {
+        "md5": "f74f2f130175dbcfdd8ee20a2a3929c6",
+        "size": 56383,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/activityvoc_npcnoname362_s02_langchao.bnk": {
+        "md5": "44840ece6d7d8772365d30ebce0cff1b",
+        "size": 26025,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/hero3010_level_langchao_s02.bnk": {
+        "md5": "0480508f824f1b3b8e4796909e38dd31",
+        "size": 65014,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/hero3057_level_langchao_s02.bnk": {
+        "md5": "e67656f563fa9711ec77f4b83b73f11e",
+        "size": 98687,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
       "audios/Android/kr/hero3122_mainstory.bnk": {
         "md5": "22ff98ce62820bd1be3fa50521af93d9",
         "size": 145711,
@@ -67439,6 +68059,81 @@
         "md5": "1672bcb5b45867fbc0ff074b3177aa3a",
         "size": 328184,
         "v": "7ff9741afb36c5e76963df36eba86eb6"
+      },
+      "audios/Android/kr/hero3149_mainstory.bnk": {
+        "md5": "24f580cfe60c42815ee3cf83dd357740",
+        "size": 175574,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/hero3149_mainvoc.bnk": {
+        "md5": "692886387525f39f6005082e55963267",
+        "size": 3367249,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/hero3149_vo.bnk": {
+        "md5": "828bbb9fed71f8c84bc90a6614e61d59",
+        "size": 735129,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/hero314903_vo_skin.bnk": {
+        "md5": "542d3804688185e2e9bde8ea9906e382",
+        "size": 400096,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/hero3149a_level_langchao_s02.bnk": {
+        "md5": "625d61927af8200e7c3b30e3cd2191b3",
+        "size": 114027,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/hero3151_mainstory.bnk": {
+        "md5": "85d1ec45c2933a425950f895dd5cf380",
+        "size": 130757,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/hero3151_mainvoc.bnk": {
+        "md5": "bd1d00ffdb3a6cf6238a8be59c6d0050",
+        "size": 1045986,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/hero3151_vo.bnk": {
+        "md5": "8b88c28808c4018144a9b452732192c0",
+        "size": 408341,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/hero5043_level_langchao_s02.bnk": {
+        "md5": "9787c4e564b935bda56d29839c979fc6",
+        "size": 82932,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/langchaos02_cutscene_sfx_vo.bnk": {
+        "md5": "3883de7d439677506db10b3b6ec6aa3c",
+        "size": 2702,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/npc650503_level_langchao_s02.bnk": {
+        "md5": "fad0b881bbc4d296429feeb60278642d",
+        "size": 101603,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/kr/npc652103_level_langchao_s02.bnk": {
+        "md5": "0068a4baac7fdf5dbe67e1e279ec96f6",
+        "size": 68928,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/Media/kr/1059022651.wem": {
+        "md5": "a6279b55961878f3d4bc8d6fbe048df3",
+        "size": 214847,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/Media/kr/776303199.wem": {
+        "md5": "b235ee735927920a5baa230cf62ebc1f",
+        "size": 378051,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
+      },
+      "audios/Android/Media/kr/963996359.wem": {
+        "md5": "725a78afa0ef31000cb33721dd4ca133",
+        "size": 872522,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       }
     },
     "zh": {
@@ -68063,19 +68758,19 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/zh/activityvoc_hero3010_s02_langchao_part01.bnk": {
-        "md5": "dc02ecc43e34e210e6f65c95aaa538e0",
-        "size": 1407953,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "c09e452cb0c5dc17dfc382c7a1e649f4",
+        "size": 1407963,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_hero3010_s02_langchao_part02.bnk": {
-        "md5": "41b6fb6117f96248918a58e65b4e7554",
-        "size": 1139592,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "56dda5214dec4404fa6fedea5b7d5d75",
+        "size": 1139557,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_hero3010_s02_langchao_part03.bnk": {
-        "md5": "280970c96762f9af0a708ed6c3cc0458",
-        "size": 1086824,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "4c94c7363da4e66e71c3394c3fd5f319",
+        "size": 1086849,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_hero3025_2_4_diqiu_part02.bnk": {
         "md5": "b3f8c2cfdfb9daa2efdfa89b3240db36",
@@ -68128,19 +68823,19 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/zh/activityvoc_hero3057_s02_langchao_part01.bnk": {
-        "md5": "7f38ed905c8998fc899176339f86db14",
-        "size": 946139,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "a51bb527d081ff94c3b542c5cdbe827f",
+        "size": 1022548,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_hero3057_s02_langchao_part02.bnk": {
-        "md5": "fd79a40538f1420dd3fd959f89ac04ee",
-        "size": 1017230,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "24e5d753c82752f06ccccb1d3ae76202",
+        "size": 1104650,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_hero3057_s02_langchao_part03.bnk": {
-        "md5": "171fbe05c2ec5a54a77d7f41898663b6",
-        "size": 999792,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "4b860084c7ae067a96fe07192162b82d",
+        "size": 1062979,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_hero3060lvhu1_2_part01.bnk": {
         "md5": "c1711632e654ed4cd65c2aa2b1a8dd52",
@@ -68273,9 +68968,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/zh/activityvoc_hero3086_s02_langchao.bnk": {
-        "md5": "6fe41510b5709ad277808d4c2608c0f2",
-        "size": 769271,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "8242093b8023ae78f8c2e4d079d154f8",
+        "size": 769306,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_hero3087_1_8_shiji_part01.bnk": {
         "md5": "04cac3e7ef957aff104ed58e27f6e848",
@@ -68398,39 +69093,39 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/zh/activityvoc_hero3149a_s02_langchao_part01.bnk": {
-        "md5": "df46ea26ffea335644f8b10b4cc6c806",
-        "size": 775721,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "b0eb3ac29d681e6941ac67b6bcf4b547",
+        "size": 775731,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_hero3149a_s02_langchao_part02.bnk": {
-        "md5": "78f5eb1623921e9d532621e2c4052886",
-        "size": 1379507,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "5fefa1b28236cec7c67627e44c0e460e",
+        "size": 1379567,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_hero3149b_s02_langchao.bnk": {
-        "md5": "a2ef993abb79e8168ba59ea82be9cfe9",
-        "size": 684503,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "859c3512ef1306aefd4d85e7c11ac7cb",
+        "size": 684533,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_hero3151_s02_langchao.bnk": {
-        "md5": "de4259a6ffd6be067d7e640f906ad7c1",
-        "size": 754923,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "807b8e8544dfe8b008a5c031c5602c5c",
+        "size": 754953,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_hero5043_s02_langchao_part01.bnk": {
-        "md5": "573bf422b30885ad4ef60ab3fb8e2e91",
-        "size": 715154,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "85e6ad91f6adabb6b25ca8b3901fcd8c",
+        "size": 715209,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_hero5043_s02_langchao_part02.bnk": {
-        "md5": "528112f214b06a2809a438217fea3e40",
-        "size": 702201,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "24516ce2ff31d0c4a1cfad0aaa531e23",
+        "size": 702231,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_hero5043_s02_langchao_part03.bnk": {
-        "md5": "e766c7f0ca46036d0ba259b31e801e67",
-        "size": 844274,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "7c14705bfda1a8c6bebb2eec0ceed3dc",
+        "size": 844359,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_npc3021_1_8_shiji.bnk": {
         "md5": "b239929b2be3c1afd736afc4f44a4530",
@@ -68538,14 +69233,14 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/zh/activityvoc_npc517401a_s02_langchao.bnk": {
-        "md5": "0df7a5aac4bf477e15a4813401983016",
-        "size": 40880,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "9d6cc462501f351dd376ec81ff4ec3a2",
+        "size": 40885,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_npc517501a_s02_langchao.bnk": {
-        "md5": "83810e64d611fc2b622d457c0410ab05",
-        "size": 8242,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "d6c7d5edf46b56e9dedf955de6198262",
+        "size": 8252,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_npc521101a_s02_langchao.bnk": {
         "md5": "45e4bcd08c70dd65eac34833a2f45094",
@@ -68728,14 +69423,14 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/zh/activityvoc_npc621601_s02_langchao.bnk": {
-        "md5": "67d193bdceec18ea13c886138dd595dc",
-        "size": 39827,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "5e617d45a22c300f24096ae4bc6f91d3",
+        "size": 39837,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_npc621901a_s02_langchao.bnk": {
-        "md5": "b86cd62a89048e29c8bf7a1f88111813",
-        "size": 383145,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "bc88228e37e8957faa2e85b7b1527af1",
+        "size": 382067,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_npc622001_1_6_shuori_os.bnk": {
         "md5": "d0acdd0c7b391f0c7c01c9bdb9c527b4",
@@ -68838,49 +69533,49 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/zh/activityvoc_npc650302_s02_langchao_part01.bnk": {
-        "md5": "7b52158e431a4cf696ae203a67c9f359",
-        "size": 1047288,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "d5a6f9c25c1c117013a4b0ac4bb620c0",
+        "size": 1047328,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_npc650302_s02_langchao_part02.bnk": {
-        "md5": "75f472f07620016c24026c026be2d62b",
-        "size": 1197557,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "7cb5b9c3b38b9242c09a45fc9a1e8939",
+        "size": 1197672,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_npc650403_s02_langchao.bnk": {
-        "md5": "9a939a489772f9d6bb9e5013217e0a0e",
-        "size": 1476058,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "b856f88763d10d353cd348539b22604e",
+        "size": 1476088,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_npc650503_s02_langchao.bnk": {
-        "md5": "5ee3ae13e5cbac93883902afac06ddcf",
-        "size": 721499,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "a01180504467600378afac7d8b452252",
+        "size": 721598,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_npc650603_s02_langchao.bnk": {
-        "md5": "aa23939a2fde2ebcb69ac83bad75da56",
-        "size": 1182192,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "fe76da5f8e009bd43dfb120186040226",
+        "size": 1175130,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_npc650702_s02_langchao_part01.bnk": {
-        "md5": "0bf8137d82abb741d5973216760753a4",
-        "size": 603967,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "acc1752b85f02ccec0644f237215faa0",
+        "size": 604077,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_npc650702_s02_langchao_part02.bnk": {
-        "md5": "6bb8031ef92b61612a8b85f2b602b66f",
-        "size": 974007,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "5c57594fbe41cdd3c5ddfef32d3d4d81",
+        "size": 974355,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_npc651702_s02_langchao.bnk": {
-        "md5": "b20ca39296ee08654ad79cb53baf5a98",
-        "size": 205428,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "440032f524b769e7065fa261f86fb5a1",
+        "size": 205448,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_npc651802_s02_langchao.bnk": {
-        "md5": "c0efdaa9a7685a63efd9acd001c52865",
-        "size": 321100,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "674635511aa4bb44e4fe3c8f1e681ff3",
+        "size": 321125,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_npc652103_s02_langchao.bnk": {
         "md5": "d18e1c281dfe6de89b16ce22bb993fa0",
@@ -68888,14 +69583,14 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/zh/activityvoc_npc652202_s02_langchao.bnk": {
-        "md5": "cbbb28289d5d82e214e1645bb6144ec7",
-        "size": 1196751,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "dc5142014fa1691eee4ac6aedd58dcf6",
+        "size": 1196806,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_npc652303_s02_langchao.bnk": {
-        "md5": "6eaab75329bb0abcc3bda8513707ba45",
-        "size": 717815,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "681f0af0567cfd1cb638e58506fff4d1",
+        "size": 717830,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_npcnoname07.bnk": {
         "md5": "805b1b96d830c3e1d0f8a856a1044b7f",
@@ -68938,19 +69633,19 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/zh/activityvoc_npcnoname345_s02_langchao.bnk": {
-        "md5": "e0860fce3878dea578379809e596644d",
-        "size": 121099,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "04e398c6da12f44c36e4183ac2e2c8fc",
+        "size": 118280,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_npcnoname356_s02_langchao.bnk": {
-        "md5": "7c90ba4354eec27923584ff89c8be110",
-        "size": 35488,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "ac214ead0d3d0d7db384dc421cd364ba",
+        "size": 35493,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_npcnoname357_s02_langchao.bnk": {
-        "md5": "d2245f255ca21401d7ffb57a8b2ecae7",
-        "size": 172630,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "0a08a90fa7c06bcc7234fbccec16c48e",
+        "size": 172527,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_npcnoname358_s02_langchao.bnk": {
         "md5": "505fe521ffb9d31712cb301f9f56ab66",
@@ -68963,9 +69658,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/zh/activityvoc_npcnoname360_s02_langchao.bnk": {
-        "md5": "02052f8f7dc9d12b2f2a057697d16167",
-        "size": 788836,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "eefb15f70cd66914066872fcf9748b85",
+        "size": 788941,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/activityvoc_npcnoname361_s02_langchao.bnk": {
         "md5": "710a880177e62ee0a7703910bac21a39",
@@ -69673,9 +70368,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/zh/hero3010_level_langchao_s02.bnk": {
-        "md5": "ab5e178c4aa4ca4df1342ee4440c05ff",
-        "size": 43038,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "ba09fab4704892ed9ad31690b48f0c3b",
+        "size": 43053,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/hero3010_mainstory.bnk": {
         "md5": "74739895403db582733f15b88774b5b3",
@@ -70273,9 +70968,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/zh/hero3057_level_langchao_s02.bnk": {
-        "md5": "59491f904947062c19eb5853e549a5e5",
-        "size": 54795,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "0cdaed153b66052df8509fc0e1ece4a8",
+        "size": 55078,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/hero3057_mainstory.bnk": {
         "md5": "b1d89b417e8076b86515630422503a8a",
@@ -71108,14 +71803,14 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/zh/hero310504_mainvoc.bnk": {
-        "md5": "f89414a0a1e7bd9b9dc4b3a32462ca71",
-        "size": 1167923,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "68cfcb7d783b658a0a34a31d94a0fb57",
+        "size": 1165316,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/hero310504_vo_skin.bnk": {
-        "md5": "3e43af850aa32e24ba404b42c7caaa3d",
-        "size": 226055,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "d8de64cb456e6a7109cb880a4cd2bbfa",
+        "size": 225653,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/hero3106_level_shenghuo2_3.bnk": {
         "md5": "7def1a4ae184fa04175802bb4a3512c9",
@@ -71553,9 +72248,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/zh/hero312606_vo_skin.bnk": {
-        "md5": "8d31d82e4521b9cfa1102730b3176251",
-        "size": 263193,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "f5ef4ad00dd9ae1e6dab5bc3bf1448d7",
+        "size": 263741,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/hero3127_level_beiai3_7.bnk": {
         "md5": "5d24b79e44b32bd079dd898ce17451ff",
@@ -71863,44 +72558,44 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/zh/hero3149_mainstory.bnk": {
-        "md5": "b8f123bb26afd70918dabdb15606f50c",
-        "size": 161427,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "0b8af890d672bbb6711f50b690c80e60",
+        "size": 161212,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/hero3149_mainvoc.bnk": {
-        "md5": "55b120f28040a50f2c763d2b0dad15e2",
-        "size": 2235659,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "2fe7debf1a51563e2ba0646056ecf295",
+        "size": 2235148,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/hero3149_vo.bnk": {
-        "md5": "89b3b3a7d85200f670636e83170f9511",
-        "size": 517769,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "c56336f56a12785f1f42bfce7c49b5c2",
+        "size": 516462,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/hero314903_vo_skin.bnk": {
-        "md5": "e5c18c9004f276d5f7f186e711377d66",
-        "size": 288062,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "aeae001e743007b14e161ff5cef2e486",
+        "size": 287886,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/hero3149a_level_langchao_s02.bnk": {
-        "md5": "7845c67f23a1ebba398ca6f7d26bbdd7",
-        "size": 85205,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "e27a9c82cc868d5b43b54f5dc20d0e43",
+        "size": 85235,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/hero3151_mainstory.bnk": {
-        "md5": "d72723c46fbb44b5f8253f5905fe4f4e",
-        "size": 191271,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "21aa4ff60d84a4c505859f03395d23de",
+        "size": 192177,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/hero3151_mainvoc.bnk": {
-        "md5": "b8e44522a4df8fb831308ce353db1748",
-        "size": 1076312,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "1489180104d64d620809becda9bb75e2",
+        "size": 1076370,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/hero3151_vo.bnk": {
-        "md5": "4e289f333963f8116c1235c3bf93ef85",
-        "size": 397932,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "65c3e51a3b4dace64cf74ad66a35e07a",
+        "size": 398042,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/hero3154_level_beiai3_7.bnk": {
         "md5": "46557f8fc49841b394b5f6ffa0307623",
@@ -71948,9 +72643,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/zh/hero5043_level_langchao_s02.bnk": {
-        "md5": "3a29329ce91c8df4299e65a81e81ea9b",
-        "size": 64851,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "35b8acc2c53221500d6540c06eedf6b8",
+        "size": 64378,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/hero5043_level_lvhu1_2.bnk": {
         "md5": "cdd603d8ee642017b6a6d85ff6f5f5d3",
@@ -72803,14 +73498,14 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "audios/Android/zh/npc650503_level_langchao_s02.bnk": {
-        "md5": "26c703dc28dcb1f929a2adf9ba37bbf4",
-        "size": 85754,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "f5311aaeb74a01cf90d58af00fcb9361",
+        "size": 85694,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/npc652103_level_langchao_s02.bnk": {
-        "md5": "841f63fd320c6aa8402e34b84b2b6588",
-        "size": 75026,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "eac0afcdc4edecf41488b318d9cac421",
+        "size": 75041,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "audios/Android/zh/npcnoname07_activitystory_leimi.bnk": {
         "md5": "4e875acb51753a36a25b3b6c93f24d5f",
@@ -76978,9 +77673,9 @@
         "v": "7ff9741afb36c5e76963df36eba86eb6"
       },
       "videos/zh/s02_pv.mp4": {
-        "md5": "f89f37f103526a6dc36f05114516d202",
-        "size": 46275470,
-        "v": "7ff9741afb36c5e76963df36eba86eb6"
+        "md5": "4991555af8705395234c1611f2c09ca9",
+        "size": 46182402,
+        "v": "eee3d3b4997f6ad35e00e1e6aa884083"
       },
       "videos/zh/xuzhangkaichangpv2.mp4": {
         "md5": "196af913e48ca5af21694ec52ae92a17",

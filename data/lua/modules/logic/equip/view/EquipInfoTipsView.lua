@@ -54,8 +54,10 @@ function EquipInfoTipsView:onOpen()
 
 	useCount = useCount + 1
 
-	if self.viewParam.otherEquipMos and #self.viewParam.otherEquipMos > 0 then
-		for i, mo in ipairs(self.viewParam.otherEquipMos) do
+	local otherEquipMos = self.viewParam.otherEquipMos
+
+	if otherEquipMos and #otherEquipMos > 0 then
+		for i, mo in ipairs(otherEquipMos) do
 			local _panel = self:_getTipPanel(i + 1)
 
 			_panel.viewParam = tabletool.copy(self.viewParam)
@@ -85,7 +87,7 @@ function EquipInfoTipsView:_getTipPanel(index)
 	local panel = self._tipPanels[index]
 
 	if not panel then
-		local go = index == 1 and self._gocontainer or gohelper.cloneInPlace(self._gocontainer)
+		local go = gohelper.cloneInPlace(self._gocontainer)
 
 		panel = MonoHelper.addNoUpdateLuaComOnceToGo(go, EquipInfoTipsPanel)
 
@@ -104,8 +106,9 @@ function EquipInfoTipsView:_getTipPanel(index)
 end
 
 function EquipInfoTipsView:_changeViewGoPosition()
-	local sizeX = recthelper.getWidth(ViewMgr.instance:getUIRoot().transform)
-	local sizeY = recthelper.getHeight(ViewMgr.instance:getUIRoot().transform)
+	local uiRoot = ViewMgr.instance:getUIRoot()
+	local sizeX = recthelper.getWidth(uiRoot.transform)
+	local sizeY = recthelper.getHeight(uiRoot.transform)
 
 	recthelper.setSize(self.viewGO.transform, sizeX, sizeY)
 
@@ -114,7 +117,10 @@ function EquipInfoTipsView:_changeViewGoPosition()
 	self.viewGO.transform.pivot = RectTransformDefine.Anchor.LeftMiddle
 
 	recthelper.setAnchor(self.viewGO.transform, 0, 0)
-	recthelper.setAnchorX(self._gocontainer.transform, 600)
+
+	for _, item in ipairs(self._tipPanels) do
+		recthelper.setAnchorX(item.viewGO.transform, 600)
+	end
 end
 
 function EquipInfoTipsView:changeViewGoPosition()

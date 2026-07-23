@@ -580,7 +580,6 @@ function AtomicDungeonPolygonSelectView:refreshTalentItem()
 		if not talentItem then
 			talentItem = {
 				go = gohelper.findChild(self.viewGO, "root/info/Skill/skillslot/#go_slot" .. index),
-				id = talentId,
 				index = index
 			}
 			talentItem.imageIcon = gohelper.findChildImage(talentItem.go, "image_icon")
@@ -592,6 +591,7 @@ function AtomicDungeonPolygonSelectView:refreshTalentItem()
 			self.talentItemList[index] = talentItem
 		end
 
+		talentItem.id = talentId
 		talentItem.config = AtomicConfig.instance:getTalentConfig(talentId)
 
 		UISpriteSetMgr.instance:setSp02AtomicIconSprite(talentItem.imageIcon, talentItem.config.icon)

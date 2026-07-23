@@ -94,7 +94,7 @@ function HeroDeviceMO:setHeroMo(heroMo)
 end
 
 function HeroDeviceMO:getSkillIdsStr(index)
-	index = index or 1
+	index = index or self._selectCardGroupIndex or 1
 
 	local str = string.format("1#%s|2#%s", self:getSkillId(1, index), self:getSkillId(2, index))
 
@@ -102,7 +102,7 @@ function HeroDeviceMO:getSkillIdsStr(index)
 end
 
 function HeroDeviceMO:getSkillId(skillIndex, index)
-	index = index or 1
+	index = index or self._selectCardGroupIndex or 1
 
 	local info = self:getSkillInfo(skillIndex, index)
 	local skillId = info and info.skillId
@@ -119,6 +119,28 @@ function HeroDeviceMO:getSkillInfo(skillIndex, index)
 	info = info or tb and tb[1]
 
 	return info
+end
+
+function HeroDeviceMO:getSkillInfoById(skillId)
+	for _, v in ipairs(self._skills) do
+		for _, info in ipairs(v) do
+			if skillId == info.skillId then
+				return info
+			end
+		end
+	end
+end
+
+function HeroDeviceMO:getSelectCardGroupIndex()
+	return self._selectCardGroupIndex
+end
+
+function HeroDeviceMO:setSelectCardGroupIndex(index)
+	self._selectCardGroupIndex = index
+end
+
+function HeroDeviceMO:getSkills()
+	return self._skills
 end
 
 function HeroDeviceMO:getPowerSkills()

@@ -33,7 +33,8 @@ function AtomicOperationActivityMileStoneListModel:caleProgressIndex()
 	local index = 0
 	local currencyParam = AtomicOperationActivityConfig.instance:getConstStr(AtomicOperationActivityEnum.ConstId.CurrencyId)
 	local currencyData = string.splitToNumber(currencyParam, "#")
-	local hasCurrencyNum = ItemModel.instance:getItemQuantity(MaterialEnum.MaterialType.Currency, currencyData[2])
+	local currencyMo = CurrencyModel.instance:getCurrency(currencyData[2])
+	local hasCurrencyNum = currencyMo and currencyMo.quantity or 0
 	local lastCoinNum = 0
 
 	for i, v in ipairs(list) do

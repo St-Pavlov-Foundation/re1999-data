@@ -36,6 +36,7 @@ function AtomicAvgPlayView:addEvents()
 	self:addClickCb(self.btnGreen, self.onGreenClick, self)
 	self:addClickCb(self.btnRed, self.onRedClick, self)
 	self:addEventCb(GameGlobalMgr.instance, GameStateEvent.OnScreenResize, self._onScreenResize, self)
+	self:addEventCb(ViewMgr.instance, ViewEvent.OnOpenViewFinish, self.onOpenView, self)
 end
 
 function AtomicAvgPlayView:removeEvents()
@@ -45,10 +46,21 @@ function AtomicAvgPlayView:removeEvents()
 	self:removeClickCb(self.btnGreen)
 	self:removeClickCb(self.btnRed)
 	self:removeEventCb(GameGlobalMgr.instance, GameStateEvent.OnScreenResize, self._onScreenResize, self)
+	self:removeEventCb(ViewMgr.instance, ViewEvent.OnOpenViewFinish, self.onOpenView, self)
 end
 
 function AtomicAvgPlayView:_editableInitView()
 	return
+end
+
+function AtomicAvgPlayView:onOpenView(viewName)
+	if viewName == self._waitViewName then
+		self:closeThis()
+	end
+end
+
+function AtomicAvgPlayView:onClickClose()
+	self:playLastStory()
 end
 
 function AtomicAvgPlayView:onGreenClick()
@@ -198,8 +210,7 @@ function AtomicAvgPlayView:showBgIndex(index, tween)
 	self.curBgIndex = index
 
 	if index > self:getDataCount() then
-		self:_onShowBgIndexChange()
-		self:closeThis()
+		self:onClickClose()
 
 		return
 	end
@@ -228,12 +239,8 @@ function AtomicAvgPlayView:refreshChessPos()
 	end
 end
 
-function AtomicAvgPlayView:_onShowBgIndexChange()
-	if not self.lastIndex or self.curBgIndex <= self.lastIndex then
-		return
-	end
-
-	local data = self.dataList[self.lastIndex]
+function AtomicAvgPlayView:playLastStory()
+	local data = self.dataList[#self.dataList]
 
 	if not data then
 		return
@@ -248,6 +255,8 @@ function AtomicAvgPlayView:_onShowBgIndexChange()
 	local storyId = data.config.storyId
 
 	if storyId and storyId > 0 then
+		self._waitViewName = ViewName.StoryView
+
 		StoryController.instance:playStory(storyId)
 	end
 end
@@ -320,7 +329,6 @@ function AtomicAvgPlayView:_tweenPosFinish()
 	self:clearTween()
 	self:refreshUI()
 	self:refreshContent()
-	self:_onShowBgIndexChange()
 end
 
 function AtomicAvgPlayView:clearTween()
@@ -349,7 +357,6 @@ end
 
 function AtomicAvgPlayView:onDestroyView()
 	self:clearTween()
-	TaskDispatcher.cancelTask(self._onShowBgIndexChange, self)
 end
 
 return AtomicAvgPlayView

@@ -32,30 +32,36 @@ function FightMoveCardWork:onStart(context)
 	if startIndex < endIndex then
 		for i = startIndex + 1, endIndex do
 			local cardItem = handCardItemList[i]
-			local endAnchorX = FightViewHandCard.calcCardPosX(i - 1)
-			local anchorWork = TweenWork.New({
-				type = "DOAnchorPosX",
-				tr = cardItem.tr,
-				to = endAnchorX,
-				t = flyTime,
-				ease = EaseType.OutQuart
-			})
 
-			flow:addWork(anchorWork)
+			if cardItem then
+				local endAnchorX = FightViewHandCard.calcCardPosX(i - 1)
+				local anchorWork = TweenWork.New({
+					type = "DOAnchorPosX",
+					tr = cardItem.tr,
+					to = endAnchorX,
+					t = flyTime,
+					ease = EaseType.OutQuart
+				})
+
+				flow:addWork(anchorWork)
+			end
 		end
 	else
 		for i = endIndex, startIndex - 1 do
 			local cardItem = handCardItemList[i]
-			local endAnchorX = FightViewHandCard.calcCardPosX(i + 1)
-			local anchorWork = TweenWork.New({
-				type = "DOAnchorPosX",
-				tr = cardItem.tr,
-				to = endAnchorX,
-				t = flyTime,
-				ease = EaseType.OutQuart
-			})
 
-			flow:addWork(anchorWork)
+			if cardItem then
+				local endAnchorX = FightViewHandCard.calcCardPosX(i + 1)
+				local anchorWork = TweenWork.New({
+					type = "DOAnchorPosX",
+					tr = cardItem.tr,
+					to = endAnchorX,
+					t = flyTime,
+					ease = EaseType.OutQuart
+				})
+
+				flow:addWork(anchorWork)
+			end
 		end
 	end
 

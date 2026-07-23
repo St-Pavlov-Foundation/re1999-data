@@ -8,20 +8,27 @@ function Sp02_PaoMian_ShopPanelViewContainer:buildViews()
 	local views = {}
 
 	table.insert(views, Sp02_PaoMian_ShopPanelView.New())
+	table.insert(views, TabViewGroup.New(1, "#go_topright"))
 
 	return views
 end
 
 function Sp02_PaoMian_ShopPanelViewContainer:buildTabViews(tabContainerId)
 	if tabContainerId == 1 then
-		self.navigateView = NavigateButtonsView.New({
-			true,
-			true,
-			true
-		})
+		local _, secondTabId = StoreModel.instance:jumpTabIdToSelectTabId(StoreEnum.StoreId.DecorateStore)
+		local storeCo = StoreConfig.instance:getTabConfig(secondTabId)
+		local showCost = storeCo and storeCo.showCost or ""
+		local currencyTypeParam = {}
+		local costInfo = string.split(showCost, "#")
+
+		for i = #costInfo, 1, -1 do
+			table.insert(currencyTypeParam, tonumber(costInfo[i]))
+		end
+
+		self.currencyView = CurrencyView.New(currencyTypeParam)
 
 		return {
-			self.navigateView
+			self.currencyView
 		}
 	end
 end

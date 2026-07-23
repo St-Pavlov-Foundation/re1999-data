@@ -3038,6 +3038,24 @@ local module_cmd = {
 		"Atomic",
 		"AtomicUnlockLibraryPush"
 	},
+	[4686] = {
+		"Atomic",
+		"AtomicHotfix1Request",
+		"AtomicHotfix1Reply"
+	},
+	[4687] = {
+		"Atomic",
+		"AtomicHotfix2Request",
+		"AtomicHotfix2Reply"
+	},
+	[-24562] = {
+		"Atomic",
+		"AtomicHotfix1Push"
+	},
+	[-24561] = {
+		"Atomic",
+		"AtomicHotfix2Push"
+	},
 	[-10819] = {
 		"AutoChess",
 		"AutoChessGetSceneRequest",

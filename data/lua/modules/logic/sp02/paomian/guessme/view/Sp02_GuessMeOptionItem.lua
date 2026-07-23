@@ -28,9 +28,10 @@ function Sp02_GuessMeOptionItem:initTypeUITab()
 		subTypeTab.txtNormalContent = gohelper.findChildText(goRoot, "#nomal/txt_Content")
 		subTypeTab.goRight = gohelper.findChild(goRoot, "#right")
 		subTypeTab.txtRightContent = gohelper.findChildText(goRoot, "#right/txt_Content")
+		subTypeTab.rightAnim = gohelper.onceAddComponent(subTypeTab.goRight, gohelper.Type_Animator)
 		subTypeTab.goError = gohelper.findChild(goRoot, "#error")
 		subTypeTab.txtErrorContent = gohelper.findChildText(goRoot, "#error/txt_Content")
-		subTypeTab.animator = gohelper.onceAddComponent(goRoot, gohelper.Type_Animator)
+		subTypeTab.errorAnim = gohelper.onceAddComponent(subTypeTab.goError, gohelper.Type_Animator)
 		self._typeTab[i] = subTypeTab
 	end
 
@@ -47,7 +48,7 @@ function Sp02_GuessMeOptionItem:removeEventListeners()
 end
 
 function Sp02_GuessMeOptionItem:_btnClickOnClick()
-	if self._status >= Sp02_GuessMeEnum.TaskStatus.CanGet then
+	if self._status >= Sp02_GuessMeEnum.TaskStatus.CanGet or self._isEdit then
 		return
 	end
 
@@ -56,14 +57,18 @@ function Sp02_GuessMeOptionItem:_btnClickOnClick()
 	Sp02_PaoMianController.instance:dispatchEvent(Sp02_GuessMeEvent.OnSelectGuessMeOption, self._index)
 
 	if self._isRight then
-		self:_sendAnswerRpc()
+		GameUtil.setActiveUIBlock("Sp02_GuessMeOptionItem", true, false)
+		TaskDispatcher.runDelay(self._sendAnswerRpc, self, 0.2)
+		self:playTypeTabAnim("rightAnim", "open")
 		AudioMgr.instance:trigger(AudioEnum3_10.PaoMian.GuessMeSelectRight)
 	else
+		self:playTypeTabAnim("errorAnim", "open")
 		AudioMgr.instance:trigger(AudioEnum3_10.PaoMian.GuessMeSelectError)
 	end
 end
 
 function Sp02_GuessMeOptionItem:_sendAnswerRpc()
+	GameUtil.setActiveUIBlock("Sp02_GuessMeOptionItem", false, true)
 	Activity238Rpc.instance:sendAct238AnswerRequest(self._activityId, self._taskId)
 end
 
@@ -84,6 +89,9 @@ function Sp02_GuessMeOptionItem:onUpdateMO(index, optionInfo, taskCo, signMo)
 end
 
 function Sp02_GuessMeOptionItem:refreshUI()
+	TaskDispatcher.cancelTask(self._sendAnswerRpc, self)
+	GameUtil.setActiveUIBlock("Sp02_GuessMeOptionItem", false, true)
+
 	local typeTab = self:getAndShowTypeTab(self._index)
 
 	if not typeTab then
@@ -104,12 +112,6 @@ function Sp02_GuessMeOptionItem:refreshUI()
 	gohelper.setActive(typeTab.goNormal, isUnlock and not self._isEdit)
 	gohelper.setActive(typeTab.goRight, (isFinish or self._isEdit) and self._isRight)
 	gohelper.setActive(typeTab.goError, (isFinish or self._isEdit) and not self._isRight)
-
-	if self._isEdit then
-		self:playAnim(self._isSelect and "select" or "unselect")
-	else
-		self:playAnim("idle")
-	end
 end
 
 function Sp02_GuessMeOptionItem:getAndShowTypeTab(index)
@@ -129,26 +131,18 @@ function Sp02_GuessMeOptionItem:getAndShowTypeTab(index)
 	return self._typeTab and self._typeTab[index]
 end
 
-function Sp02_GuessMeOptionItem:playAnim(animName)
-	local animator = self:getCurAnimator()
-
-	if not animator or self._curAnim == animName then
-		return
-	end
-
-	animator:Play(animName, 0, 0)
-
-	self._curAnim = animName
-end
-
-function Sp02_GuessMeOptionItem:getCurAnimator()
+function Sp02_GuessMeOptionItem:playTypeTabAnim(animCompName, animName)
 	local typeTab = self._typeTab and self._typeTab[self._index]
+	local animInst = typeTab and typeTab[animCompName]
 
-	return typeTab and typeTab.animator
+	if animInst then
+		animInst:Play(animName, 0, 0)
+	end
 end
 
 function Sp02_GuessMeOptionItem:onDestroy()
 	TaskDispatcher.cancelTask(self._sendAnswerRpc, self)
+	GameUtil.setActiveUIBlock("Sp02_GuessMeOptionItem", false, true)
 end
 
 function Sp02_GuessMeOptionItem:_onSelectOption(index)

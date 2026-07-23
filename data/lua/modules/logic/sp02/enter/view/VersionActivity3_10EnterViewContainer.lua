@@ -20,6 +20,7 @@ function VersionActivity3_10EnterViewContainer:buildViews()
 	}
 	param.enterVideoTime = 5
 	param.audioId = AudioEnum3_10.Enter.play_ui_langchao_open_1
+	param.noVideoAudioId = AudioEnum3_10.LinkGift.play_ui_qiutu_revelation_open
 	param.bgmLayer = AudioBgmEnum.Layer.VersionActivity3_10Main
 
 	local videoView = VersionActivityEnterVideoView2.New(param)
@@ -44,6 +45,7 @@ function VersionActivity3_10EnterViewContainer:buildTabViews(tabContainerId)
 end
 
 function VersionActivity3_10EnterViewContainer:playOpenTransition()
+	UIBlockMgrExtend.setNeedCircleMv(false)
 	self:startViewOpenBlock()
 
 	local needPlayFullScreenVideo = self._videoView:needPlayFullScreenVideo()

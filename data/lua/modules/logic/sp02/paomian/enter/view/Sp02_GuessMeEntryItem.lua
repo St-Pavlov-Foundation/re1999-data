@@ -38,6 +38,8 @@ function Sp02_GuessMeEntryItem:removeEventListeners()
 end
 
 function Sp02_GuessMeEntryItem:_btnClickOnClick()
+	SDKDataTrackMgr.instance:trackClickEnterActivityButton("Sp02_PaoMian_MainView", "entry2")
+
 	local status, toastId = ActivityHelper.getActivityStatusAndToast(self._actId)
 
 	if status ~= ActivityEnum.ActivityStatus.Normal then

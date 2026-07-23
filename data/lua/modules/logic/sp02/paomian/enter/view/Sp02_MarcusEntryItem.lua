@@ -38,6 +38,8 @@ function Sp02_MarcusEntryItem:removeEventListeners()
 end
 
 function Sp02_MarcusEntryItem:_btnClickOnClick()
+	SDKDataTrackMgr.instance:trackClickEnterActivityButton("Sp02_PaoMian_MainView", "entry1")
+
 	local status, toastId = ActivityHelper.getActivityStatusAndToast(self._actId)
 
 	if status ~= ActivityEnum.ActivityStatus.Normal then

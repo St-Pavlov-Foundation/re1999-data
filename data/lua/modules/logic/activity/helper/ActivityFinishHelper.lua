@@ -38,7 +38,7 @@ function ActivityFinishHelper.CheckActivity138517Finish(actId)
 	for _, linkGiftId in ipairs(linkGiftList) do
 		local chargeGoodsMO = StoreModel.instance:getGoodsMO(linkGiftId)
 
-		if not chargeGoodsMO:isSoldOut() then
+		if not chargeGoodsMO or not chargeGoodsMO:isSoldOut() then
 			return false
 		end
 

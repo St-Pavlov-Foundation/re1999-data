@@ -110,5 +110,12 @@
     "energyType": 2,
     "count": 2,
     "isSpecialCard": 1
+  },
+  {
+    "id": 31446023,
+    "name": "星交感能量Ⅲ",
+    "energyType": 2,
+    "count": 3,
+    "isSpecialCard": 0
   }
 ]

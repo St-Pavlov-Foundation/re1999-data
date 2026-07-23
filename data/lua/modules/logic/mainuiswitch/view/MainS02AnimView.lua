@@ -88,6 +88,7 @@ end
 function MainS02AnimView:onShow()
 	self._isPlayingAnim = false
 
+	self:_refreshWeatherRoot()
 	self:_onRandomPlayAnim()
 end
 
@@ -121,6 +122,16 @@ function MainS02AnimView:_playAnim(name, time)
 
 	self._isPlayingAnim = true
 	self._playAnimName = name
+end
+
+function MainS02AnimView:_refreshWeatherRoot()
+	local report = WeatherController.instance:getCurrReport()
+	local isNight = report and report.lightMode == WeatherEnum.LightModeNight
+
+	for _, anim in ipairs(self._anim) do
+		gohelper.setActive(anim.nightAnim.gameObject, isNight)
+		gohelper.setActive(anim.dayAnim.gameObject, not isNight)
+	end
 end
 
 function MainS02AnimView:_onEndAnim()

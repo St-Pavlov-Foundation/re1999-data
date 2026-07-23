@@ -348,7 +348,7 @@ function SwitchMainUIShowView:_refreshSummonNewFlag()
 		gohelper.setActive(new, showNew)
 	end
 
-	gohelper.setActive(self._goFreeTag, isSummonUnlock and (hasFree or hasFree10Count))
+	gohelper.setActive(self._goFreeTag, isSummonUnlock and (hasFree or hasFree10Count or hasCanget))
 	gohelper.setActive(self._goSummonFreeOne.gameObject, isSummonUnlock and hasFree and not hasFree10Count)
 	gohelper.setActive(self._goSummonFreeTen.gameObject, isSummonUnlock and hasFree10Count)
 	gohelper.setActive(self._goSummonCanget, isSummonUnlock and hasCanget and not hasFree and not hasFree10Count)

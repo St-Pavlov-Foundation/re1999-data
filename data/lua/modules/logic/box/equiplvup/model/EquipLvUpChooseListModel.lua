@@ -15,7 +15,7 @@ function EquipLvUpChooseListModel:setEquipList(itemId)
 	if equips then
 		for _, mo in ipairs(equips) do
 			if idList[mo.equipId] then
-				local maxLv = EquipConfig.instance:getCurrentBreakLevelMaxLevel(mo)
+				local maxLv = EquipConfig.instance:getMaxLevel(mo.config)
 
 				if maxLv > mo.level then
 					table.insert(self._canLvUpList, mo)

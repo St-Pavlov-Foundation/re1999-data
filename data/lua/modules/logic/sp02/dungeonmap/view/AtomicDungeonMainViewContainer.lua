@@ -33,7 +33,7 @@ function AtomicDungeonMainViewContainer:buildTabViews(tabContainerId)
 			true,
 			true,
 			true
-		}, HelpEnum.HelpId.AtomicDungeonMain)
+		}, HelpEnum.HelpId.AtomicDungeonMain, nil, self._homeCallback, nil, self)
 
 		return {
 			self.navigateView
@@ -43,6 +43,10 @@ end
 
 function AtomicDungeonMainViewContainer:setOverrideCloseClick(overrideCloseFunc, overrideCloseObj)
 	self.navigateView:setOverrideClose(overrideCloseFunc, overrideCloseObj)
+end
+
+function AtomicDungeonMainViewContainer:_homeCallback()
+	AtomicDungeonStatHelper.instance:sendDungeonResultInfo("主动返回")
 end
 
 function AtomicDungeonMainViewContainer:getDungeonSceneView()

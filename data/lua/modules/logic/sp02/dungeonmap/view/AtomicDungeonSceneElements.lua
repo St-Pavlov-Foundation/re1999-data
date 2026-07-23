@@ -141,6 +141,10 @@ function AtomicDungeonSceneElements:realClickElement()
 		end, clickElemenet)
 	elseif clickElemenet.config.type == AtomicDungeonEnum.ElementType.DataBase then
 		AtomicRpc.instance:sendAtomicMapInteractRequest(clickElemenet.config.id, {})
+
+		local elementData = AtomicDungeonModel.instance:getElementStatData(clickElemenet.config.id)
+
+		AtomicDungeonStatHelper.instance:sendElementInteractInfo(elementData)
 	else
 		AtomicDungeonController.instance:openDungeonInteractView(clickElemenet)
 	end
@@ -672,8 +676,15 @@ end
 function AtomicDungeonSceneElements:elementFinished(finishElementId)
 	local newUnlockMapList = AtomicDungeonModel.instance:getNewUnlockMapList()
 	local isElementFinish = AtomicDungeonModel.instance:isElementFinish(finishElementId)
+	local isInPolygonState = AtomicDungeonModel.instance:getIsInPolygonState()
 
 	if not isElementFinish then
+		return
+	end
+
+	if #newUnlockMapList > 0 and not isInPolygonState then
+		self.unlockMapFinishElementId = finishElementId
+
 		return
 	end
 
@@ -1015,6 +1026,10 @@ function AtomicDungeonSceneElements:cleanLastFightElementAndJumpNext()
 			self:addOrUpdateElement(elementCo)
 			self:addOrUpdatePolygonLine(elementCo)
 			TaskDispatcher.runDelay(self.setElementFinished, self, 1.5)
+
+			local elementData = AtomicDungeonModel.instance:getElementStatData(lastEleFightParam.lastElementId)
+
+			AtomicDungeonStatHelper.instance:sendElementInteractInfo(elementData)
 		end
 	end
 
@@ -1091,6 +1106,12 @@ function AtomicDungeonSceneElements.doNewMapUnlock(params)
 		if not tabletool.indexOf(preMapUnFinishDataBaseAndEmergencyElementList, elementCo.id) then
 			self:playElementFinishAnim(elementCo.id)
 		end
+	end
+
+	if self.unlockMapFinishElementId then
+		self:playElementFinishAnim(self.unlockMapFinishElementId)
+
+		self.unlockMapFinishElementId = nil
 	end
 
 	local newMapConfig = AtomicDungeonConfig.instance:getDungeonMapConfig(newUnlockMapId)
@@ -1414,6 +1435,10 @@ function AtomicDungeonSceneElements:onPolygonKeyElementPutFinish(elementId)
 
 	if isAllKeyElementPut and not isElementFinish then
 		AtomicRpc.instance:sendAtomicMapInteractRequest(elementId, {})
+
+		local elementData = AtomicDungeonModel.instance:getElementStatData(elementId)
+
+		AtomicDungeonStatHelper.instance:sendElementInteractInfo(elementData)
 	end
 
 	self:checkKeyElementFinish()
@@ -1445,6 +1470,10 @@ function AtomicDungeonSceneElements:checkKeyElementFinish()
 
 				gohelper.setActive(self._goClickMask, true)
 				TaskDispatcher.runDelay(self.removeCurDragKeyElemenet, self, WAIT_TIME)
+
+				local elementData = AtomicDungeonModel.instance:getElementStatData(self.curDragKeyElementId)
+
+				AtomicDungeonStatHelper.instance:sendElementInteractInfo(elementData)
 			end
 		end
 	end
@@ -1534,6 +1563,8 @@ function AtomicDungeonSceneElements:cleanDataBaseSequence()
 
 		self.dataBaseShowSequence = nil
 	end
+
+	self.unlockMapFinishElementId = nil
 end
 
 return AtomicDungeonSceneElements

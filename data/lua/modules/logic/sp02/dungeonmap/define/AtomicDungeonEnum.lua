@@ -128,5 +128,11 @@ AtomicDungeonEnum.RhythmType = {
 	Normal = 0
 }
 AtomicDungeonEnum.lockAnimTime = 0.47
+AtomicDungeonEnum.OptionType = {
+	Unlock = "解锁",
+	Install = "安装",
+	Reset = "重置",
+	UnInstall = "卸下"
+}
 
 return AtomicDungeonEnum

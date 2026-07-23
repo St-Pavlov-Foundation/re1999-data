@@ -136,6 +136,11 @@ function FightEntityMO:init(info, side)
 	self.exPointMax = info.exPointMax
 end
 
+function FightEntityMO:onStageChanged(curStage, preStage)
+	self:updateStoredDeviceExPoint()
+	self:updateStoredExPoint()
+end
+
 function FightEntityMO:_buildAttr(attr)
 	local heroAttribute = self.attrMO or HeroAttributeMO.New()
 
@@ -834,7 +839,7 @@ end
 function FightEntityMO:updateStoredExPoint()
 	self.storedExPoint = 0
 
-	for _, buffMo in ipairs(self:getBuffList()) do
+	for _, buffMo in pairs(self:getBuffDic()) do
 		local params = buffMo.actCommonParams
 
 		if not string.nilorempty(params) then
@@ -873,7 +878,7 @@ function FightEntityMO:updateStoredDeviceExPoint()
 
 	local targetId = FightEnum.BuffActId.DeviceExPointOverflowBank
 
-	for _, buffMo in ipairs(self:getBuffList()) do
+	for _, buffMo in pairs(self:getBuffDic()) do
 		for _, actInfo in ipairs(buffMo.actInfo) do
 			if actInfo.actId == targetId then
 				self:changeStoredDeviceExPoint(actInfo.param[1])

@@ -96,6 +96,10 @@ end
 
 function SceneUIPackageGoodsTipView:onOpen()
 	self:_refreshView()
+
+	if self._goodsMo then
+		StoreController.instance:statOpenChargeGoods(self._goodsMo.belongStoreId, self._goodsMo.config)
+	end
 end
 
 function SceneUIPackageGoodsTipView:_refreshView()

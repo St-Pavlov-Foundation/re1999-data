@@ -251,7 +251,7 @@ function V3a7_SkinGiftFullView:refreshPackageInfo()
 	gohelper.setActive(self._gohasbuy, isSoldOut)
 	gohelper.setActive(self._btnbuy, not isSoldOut)
 
-	self._txtget.text = string.format("<size=31>￥</size>%s", packageConfig.price)
+	self._txtget.text = PayModel.instance:getProductPriceScaledSymbol(packageConfig.id, 31)
 end
 
 function V3a7_SkinGiftFullView:onClose()

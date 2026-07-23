@@ -12234,6 +12234,7 @@ setNeedLoadModule("modules.logic.sp02.dungeon.view.VersionActivity3_10DungeonMap
 setNeedLoadModule("modules.logic.sp02.dungeon.view.VersionActivity3_10TaskItem", "VersionActivity3_10TaskItem")
 setNeedLoadModule("modules.logic.sp02.dungeonmap.config.AtomicDungeonConfig", "AtomicDungeonConfig")
 setNeedLoadModule("modules.logic.sp02.dungeonmap.controller.AtomicDungeonController", "AtomicDungeonController")
+setNeedLoadModule("modules.logic.sp02.dungeonmap.controller.AtomicDungeonStatHelper", "AtomicDungeonStatHelper")
 setNeedLoadModule("modules.logic.sp02.dungeonmap.define.AtomicDungeonEnum", "AtomicDungeonEnum")
 setNeedLoadModule("modules.logic.sp02.dungeonmap.define.AtomicDungeonEvent", "AtomicDungeonEvent")
 setNeedLoadModule("modules.logic.sp02.dungeonmap.define.AtomicDungeonMapViewDefine", "AtomicDungeonMapViewDefine")

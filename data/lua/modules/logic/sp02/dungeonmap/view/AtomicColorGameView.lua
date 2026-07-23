@@ -74,11 +74,17 @@ end
 function AtomicColorGameView:_btnForceSuccOnClickDown()
 	self:cleanProgressTween()
 
-	self.progressTweenId = ZProj.TweenHelper.DOFillAmount(self._imageForceProgress, 1, (1 - self._imageForceProgress.fillAmount) * 2, self.showSuccess, self)
+	self.progressTweenId = ZProj.TweenHelper.DOFillAmount(self._imageForceProgress, 1, (1 - self._imageForceProgress.fillAmount) * 2, self.onForceSuccProgressFull, self)
 
 	AudioMgr.instance:trigger(AudioEnum3_10.Outside.play_ui_langchao_crack_loop)
 	self.btnForceSuccAnim:Play("click", 0, 0)
 	self.btnForceSuccAnim:Update(0)
+end
+
+function AtomicColorGameView:onForceSuccProgressFull()
+	self.isForceSucc = true
+
+	self:showSuccess()
 end
 
 function AtomicColorGameView:_btnForceSuccOnClickUp()
@@ -151,6 +157,7 @@ function AtomicColorGameView:initData()
 	gohelper.setActive(self._gotipBg, true)
 
 	self.isSucc = false
+	self.isForceSucc = false
 end
 
 function AtomicColorGameView:initGameScene()
@@ -385,6 +392,10 @@ function AtomicColorGameView:onClose()
 		optionParam.optionId = self.optionId
 
 		AtomicRpc.instance:sendAtomicMapInteractRequest(self.elementId, optionParam)
+
+		local statData = AtomicDungeonModel.instance:getElementStatData(self.elementId)
+
+		AtomicDungeonStatHelper.instance:sendPuzzleGameInteractInfo(statData, self.isForceSucc)
 	end
 
 	if self.isSucc then

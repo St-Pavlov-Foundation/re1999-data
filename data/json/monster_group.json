@@ -81165,6 +81165,21 @@
     "appearCameraPos": ""
   },
   {
+    "id": 116385108,
+    "monster": "1163851080",
+    "spMonster": "",
+    "spSupporter": "",
+    "sp2Monster": "",
+    "sp2Supporter": "",
+    "stanceId": 382011,
+    "bossId": "1163851070",
+    "aiId": 0,
+    "bgm": 0,
+    "appearMonsterId": 0,
+    "appearTimeline": "",
+    "appearCameraPos": ""
+  },
+  {
     "id": 116385201,
     "monster": "1163851012",
     "spMonster": "",
@@ -82666,7 +82681,7 @@
   },
   {
     "id": 116385711,
-    "monster": "1163857013#1163857012#1163857011#1163857013#1163857012#1163857013#1163857012#1163857013",
+    "monster": "1163857113#1163857112#1163857111#1163857113#1163857112#1163857113#1163857112#1163857113",
     "spMonster": "",
     "spSupporter": "",
     "sp2Monster": "",
@@ -82716,7 +82731,7 @@
     "spSupporter": "",
     "sp2Monster": "",
     "sp2Supporter": "",
-    "stanceId": 201105,
+    "stanceId": 382101,
     "bossId": "109360001",
     "aiId": 3,
     "bgm": 0,

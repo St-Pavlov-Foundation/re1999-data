@@ -517,8 +517,14 @@ function StoreModel:checkPreGoodsId(goodsId)
 	end
 
 	local preGoodsMO = self:getGoodsMO(goodsId)
+	local isSoldOut = preGoodsMO and preGoodsMO:isSoldOut()
+	local isFinishTask = true
 
-	return preGoodsMO and preGoodsMO:isSoldOut()
+	if isSoldOut and preGoodsMO and preGoodsMO.config.taskid ~= nil and preGoodsMO.config.taskid ~= 0 then
+		isFinishTask = StoreCharageConditionalHelper.isCharageTaskFinish(preGoodsMO.goodsId)
+	end
+
+	return isSoldOut and isFinishTask
 end
 
 function StoreModel:getBuyCount(storeId, goodsId)

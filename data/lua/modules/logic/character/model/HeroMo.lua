@@ -673,10 +673,47 @@ function HeroMo:getTotalBaseAttrDict(equipUidList, level, rankLevel, isBalance, 
 				local equipMO = HeroGroupTrialModel.instance:getEquipMo(equipUid)
 
 				self:_calcEquipAttr(equipMO, equipAttrDict, equipBreakAddAttrDict)
+
+				if self.heroId == CharacterEnum.TwinssychubeHeroId then
+					local otherEquipId = equipMO and EquipModel.instance:getOtherTwinssychubeEquipId(equipMO.equipId)
+					local otherEquipMo = EquipModel.instance:getTwinssychubeEquipMo(otherEquipId)
+
+					if otherEquipMo then
+						self:_calcEquipAttr(otherEquipMo, equipAttrDict, equipBreakAddAttrDict)
+					end
+				end
 			else
 				local equipMO = EquipModel.instance:getEquip(equipUid)
 
 				self:_calcEquipAttr(equipMO, equipAttrDict, equipBreakAddAttrDict, equipLv)
+
+				if self.heroId == CharacterEnum.TwinssychubeHeroId then
+					local otherEquipMo
+
+					if trialEquipMo then
+						local otherEquipId = EquipModel.instance:getOtherTwinssychubeEquipId(trialEquipMo.equipId)
+
+						if otherEquipId then
+							otherEquipMo = EquipMO.New()
+
+							local co = {
+								equipId = otherEquipId,
+								equipLv = trialEquipMo.level,
+								equipRefine = trialEquipMo.refineLv
+							}
+
+							otherEquipMo:initByTrialCO(co)
+						end
+					else
+						local otherEquipId = equipMO and EquipModel.instance:getOtherTwinssychubeEquipId(equipMO.equipId)
+
+						otherEquipMo = EquipModel.instance:getTwinssychubeEquipMo(otherEquipId)
+					end
+
+					if otherEquipMo then
+						self:_calcEquipAttr(otherEquipMo, equipAttrDict, equipBreakAddAttrDict, equipLv)
+					end
+				end
 			end
 		end
 

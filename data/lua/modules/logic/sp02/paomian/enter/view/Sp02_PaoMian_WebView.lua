@@ -26,6 +26,8 @@ function Sp02_PaoMian_WebView:removeEvents()
 end
 
 function Sp02_PaoMian_WebView:_btnWebOnClick()
+	SDKDataTrackMgr.instance:trackClickEnterActivityButton(self.viewName, "web")
+
 	local status, toastId, toastParam = ActivityHelper.getActivityStatusAndToast(self._actId)
 
 	if status ~= ActivityEnum.ActivityStatus.Normal then
@@ -42,7 +44,7 @@ function Sp02_PaoMian_WebView:_btnWebOnClick()
 
 	local webUrl = Activity125Config.instance:getH5BaseUrl(self._actId)
 
-	WebViewController.instance:openWebView(webUrl, false)
+	GameUtil.openURL(webUrl)
 	Sp02_PaoMianController.instance:setWebWeekFirstLoginRed()
 end
 

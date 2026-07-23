@@ -22075,13 +22075,13 @@
   },
   {
     "id": 464040892,
-    "eventName": "play_monster640408_change",
+    "eventName": "play_monster640408_death",
     "bankName": "monster640408",
     "weapon": 0
   },
   {
     "id": 464040893,
-    "eventName": "play_monster640408_death",
+    "eventName": "play_monster640408_change",
     "bankName": "monster640408",
     "weapon": 0
   },
@@ -22305,6 +22305,18 @@
     "id": 431490392,
     "eventName": "play_hero314903_death",
     "bankName": "hero314903_skill_skin",
+    "weapon": 0
+  },
+  {
+    "id": 430770591,
+    "eventName": "play_hero3077_born",
+    "bankName": "hero3077_skill",
+    "weapon": 0
+  },
+  {
+    "id": 430390491,
+    "eventName": "play_hero303904_born",
+    "bankName": "hero303904_skill_skin",
     "weapon": 0
   }
 ]

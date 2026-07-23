@@ -118,6 +118,7 @@ function SummonMainModel.getValidPools()
 	local list = SummonConfig.instance:getValidPoolList()
 	local result = {}
 	local needCreate = false
+	local hasOldNewBie = false
 
 	for i, co in pairs(list) do
 		local mo = SummonMainModel.instance:getPoolServerMO(co.id)
@@ -132,12 +133,20 @@ function SummonMainModel.getValidPools()
 			end
 
 			if needCreate then
+				if SummonEnum.OldNewBiePoolId[co.id] then
+					hasOldNewBie = true
+				end
+
 				table.insert(result, co)
 			end
 		end
 	end
 
-	table.sort(result, SummonMainModel.sortSummonCategory)
+	if hasOldNewBie then
+		table.sort(result, SummonMainModel.sortSummonCategory)
+	else
+		table.sort(result, SummonMainModel.sortSummonCategoryWithNew)
+	end
 
 	return result
 end
@@ -270,6 +279,17 @@ function SummonMainModel:resetTabResSettings()
 end
 
 function SummonMainModel.sortSummonCategory(a, b)
+	local priorityA = a.priority
+	local priorityB = b.priority
+
+	if priorityA ~= priorityB then
+		return priorityB < priorityA
+	else
+		return a.id < b.id
+	end
+end
+
+function SummonMainModel.sortSummonCategoryWithNew(a, b)
 	local priorityA = a.priority
 	local priorityB = b.priority
 

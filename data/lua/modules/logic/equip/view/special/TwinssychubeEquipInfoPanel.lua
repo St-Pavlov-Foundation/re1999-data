@@ -88,7 +88,7 @@ function TwinssychubeEquipInfoPanel:_btnfoldOnClick()
 end
 
 function TwinssychubeEquipInfoPanel:_btnjumpOnClick()
-	if self._heroEquipMo then
+	if self._equipMo then
 		ViewMgr.instance:openView(ViewName.EquipView, {
 			equipMO = self._equipMo,
 			defaultTabIds = {
@@ -148,18 +148,28 @@ function TwinssychubeEquipInfoPanel:onUpdateMO(heroMo, isOpen)
 end
 
 function TwinssychubeEquipInfoPanel:_refresh(isOpen)
-	self._heroMo = self._heroMo or HeroModel.instance:getByHeroId(CharacterEnum.TwinssychubeHeroId)
-	self._heroEquipMo = self._heroMo and (self._heroMo:getTrialEquipMo() or EquipModel.instance:getEquip(self._heroMo.defaultEquipUid))
+	if not self._heroMo then
+		return
+	end
+
+	self._traialEquipMo = self._heroMo:getTrialEquipMo()
+	self._heroEquipMo = not string.nilorempty(self._heroMo.defaultEquipUid) and EquipModel.instance:getEquip(self._heroMo.defaultEquipUid)
 	self._equipMo = EquipModel.instance:getTwinssychubeEquipMo(self._euqipId)
 
 	gohelper.setActive(self._goisBalance, false)
 	self:_refreshView(isOpen)
 end
 
+function TwinssychubeEquipInfoPanel:_getEquipMo()
+	return self._traialEquipMo or self._balanceEquipMo or self._equipMo
+end
+
 function TwinssychubeEquipInfoPanel:_refreshView(isOpen)
-	local had = EquipModel.instance:haveEquip(self._euqipId)
+	local equipMo = self:_getEquipMo()
+	local had = equipMo ~= nil
 	local isActivate = EquipModel.instance:isActivateTwinssychubeEquip(self._heroMo)
-	local isEquiped = self._heroEquipMo and self._heroEquipMo.config.id == self._euqipId
+	local heroEquipMo = self._traialEquipMo or self._heroEquipMo
+	local isEquiped = heroEquipMo and heroEquipMo.config.id == self._euqipId
 	local isNewUnlock = GameUtil.playerPrefsGetNumberByUserId(EquipEnum.sp02TwinssychubeUnlockKey .. self._euqipId, 0) == 0
 	local isPlayUnlock = isActivate or isEquiped
 
@@ -191,7 +201,6 @@ function TwinssychubeEquipInfoPanel:_refreshView(isOpen)
 
 	self._txtTilte.text = luaLang(title)
 
-	local equipMo = self._balanceEquipMo or self._equipMo
 	local level = equipMo and equipMo.level or 1
 	local isMaxLevel = false
 
@@ -220,7 +229,7 @@ end
 function TwinssychubeEquipInfoPanel:refreshEquipLevel()
 	local color1 = self._balanceEquipMo and HeroGroupBalanceHelper.BalanceColor or "#d9a06f"
 	local color2 = self._balanceEquipMo and HeroGroupBalanceHelper.BalanceColor or "#777676"
-	local equipMo = self._balanceEquipMo or self._equipMo
+	local equipMo = self:_getEquipMo()
 	local level = equipMo and equipMo.level or 1
 	local maxLevel = equipMo and EquipConfig.instance:getCurrentBreakLevelMaxLevel(equipMo) or EquipConfig.instance:getMaxLevel(self._quipConfig)
 
@@ -228,7 +237,7 @@ function TwinssychubeEquipInfoPanel:refreshEquipLevel()
 end
 
 function TwinssychubeEquipInfoPanel:_refreshEquipNormalAttr()
-	local equipMo = self._balanceEquipMo or self._equipMo
+	local equipMo = self:_getEquipMo()
 	local level = equipMo and equipMo.level or 1
 	local _, attrList = EquipConfig.instance:getEquipNormalAttr(self._euqipId, level, HeroConfig.sortAttrForEquipView)
 	local item, attrConfig
@@ -250,7 +259,8 @@ function TwinssychubeEquipInfoPanel:_refreshEquipNormalAttr()
 		gohelper.setActive(self.strengthenAttrItems[i].go, false)
 	end
 
-	local attrId, value = EquipConfig.instance:getEquipCurrentBreakLvAttrEffect(self._quipConfig, level)
+	local breakLv = equipMo and equipMo.breakLv or 0
+	local attrId, value = EquipConfig.instance:getEquipCurrentBreakLvAttrEffect(self._quipConfig, breakLv)
 
 	if attrId then
 		gohelper.setActive(self._gobreakeffect, true)
@@ -266,7 +276,8 @@ function TwinssychubeEquipInfoPanel:_refreshEquipNormalAttr()
 end
 
 function TwinssychubeEquipInfoPanel:_refreshEquipSkillDesc()
-	local refineLv = self._heroEquipMo and self._heroEquipMo.refineLv or 1
+	local equipMo = self:_getEquipMo()
+	local refineLv = equipMo and equipMo.refineLv or 1
 	local skillDesList = EquipHelper.getEquipSkillBaseDes(self._euqipId, refineLv, "#D9A06F")
 	local count = 0
 

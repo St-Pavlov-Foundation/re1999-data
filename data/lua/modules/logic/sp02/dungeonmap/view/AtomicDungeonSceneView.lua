@@ -276,6 +276,7 @@ function AtomicDungeonSceneView:refreshMap()
 	self.isInPolygonState = AtomicDungeonModel.instance:getIsInPolygonState()
 	self.curMapId = AtomicDungeonModel.instance:getCurMapId()
 	self.dungeonMapId = AtomicDungeonModel.instance:getMapInfoId(self.curMapId)
+	self.arenaMapId = AtomicDungeonConfig.instance:getDungeonMapId(self.curMapId)
 
 	self:initCameraSetting()
 
@@ -361,7 +362,7 @@ function AtomicDungeonSceneView:loadSceneFinish()
 	local assetItem = self.mapLoader:getAssetItem(assetUrl)
 	local mainPrefab = assetItem:GetResource(assetUrl)
 
-	self.sceneGo = gohelper.clone(mainPrefab, self.sceneRoot, self.dungeonMapId)
+	self.sceneGo = gohelper.clone(mainPrefab, self.sceneRoot, self.arenaMapId)
 	self.buildingSceneGO = gohelper.findChild(self.sceneGo, "Building")
 	self.polygonSceneGO = gohelper.findChild(self.sceneGo, "Trial")
 
@@ -371,6 +372,12 @@ function AtomicDungeonSceneView:loadSceneFinish()
 
 	if self.polygonSceneGO then
 		gohelper.setActive(self.polygonSceneGO, not self.isInMapSelectState and self.isInPolygonState)
+	end
+
+	local lastEleFightParam = AtomicDungeonModel.instance:getLastElementFightParam()
+
+	if not self.isInMapSelectState and not lastEleFightParam then
+		AtomicDungeonStatHelper.instance:initDungeonStartTime()
 	end
 
 	self.sceneTrans = self.sceneGo.transform
@@ -875,6 +882,7 @@ function AtomicDungeonSceneView:backToMapSelect()
 		self.dungeonMapAnim:Update(0)
 	end
 
+	AtomicDungeonStatHelper.instance:sendDungeonResultInfo("主动返回")
 	self.transitionAnimPlayer:Play("close02", self.doBackToMapRefrashMap, self)
 	AudioMgr.instance:trigger(AudioEnum3_10.Outside.play_ui_langchao_map_transition_1)
 

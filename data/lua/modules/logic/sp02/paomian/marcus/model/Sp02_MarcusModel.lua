@@ -52,12 +52,6 @@ function Sp02_MarcusModel:isFirstLock(actId, id)
 end
 
 function Sp02_MarcusModel:getBonusArriveOpenRemainTime(actId, id)
-	local status = self:getStatus(actId, id)
-
-	if status ~= Sp02_MarcusEnum.BonusStatus.Lock then
-		return 0
-	end
-
 	local openTime = Sp02_MarcusConfig.instance:getBonusOpenTime(actId, id)
 	local limitTime = openTime - ServerTime.now()
 
@@ -88,14 +82,10 @@ function Sp02_MarcusModel:getNextOpenBonusTime(actId)
 	end
 
 	for _, bonusCo in ipairs(bonusCoList) do
-		local status = self:getStatus(bonusCo.activityId, bonusCo.id)
+		local limitOpenTime = self:getBonusArriveOpenRemainTime(bonusCo.activityId, bonusCo.id)
 
-		if status == Sp02_MarcusEnum.BonusStatus.Lock then
-			local limitOpenTime = self:getBonusArriveOpenRemainTime(bonusCo.activityId, bonusCo.id)
-
-			if limitOpenTime > 0 then
-				return limitOpenTime, bonusCo
-			end
+		if limitOpenTime and limitOpenTime > 0 then
+			return limitOpenTime, bonusCo
 		end
 	end
 end

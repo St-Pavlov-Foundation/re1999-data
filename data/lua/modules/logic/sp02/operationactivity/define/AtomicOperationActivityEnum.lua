@@ -97,5 +97,6 @@ AtomicOperationActivityEnum.TaskLoopType = {
 	Forever = 3
 }
 AtomicOperationActivityEnum.ComboLimit = 2
+AtomicOperationActivityEnum.DefaultHitRadius = 150
 
 return AtomicOperationActivityEnum

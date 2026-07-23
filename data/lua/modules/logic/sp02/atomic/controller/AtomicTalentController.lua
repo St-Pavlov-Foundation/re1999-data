@@ -83,6 +83,9 @@ function AtomicTalentController:tryInstallTalent(nodeId, slot)
 
 	local list = AtomicTalentViewModel.instance:equipTalent(nodeId, slot)
 
+	AtomicDungeonStatHelper.instance:senTalentInfo({
+		nodeId
+	}, AtomicDungeonEnum.OptionType.Install, list)
 	AtomicRpc.instance:sendAtomicTalentSkillChooseRequest(list)
 end
 
@@ -95,6 +98,9 @@ function AtomicTalentController:tryRemoveTalent(nodeId)
 
 	local list = AtomicTalentViewModel.instance:removeTalent(nodeId)
 
+	AtomicDungeonStatHelper.instance:senTalentInfo({
+		nodeId
+	}, AtomicDungeonEnum.OptionType.UnInstall, list)
 	AtomicRpc.instance:sendAtomicTalentSkillChooseRequest(list)
 end
 
@@ -105,6 +111,11 @@ function AtomicTalentController:tryUnlockTalent(nodeId)
 		return
 	end
 
+	local installIds = AtomicTalentViewModel.instance:getTalentEquipList()
+
+	AtomicDungeonStatHelper.instance:senTalentInfo({
+		nodeId
+	}, AtomicDungeonEnum.OptionType.Unlock, installIds)
 	AtomicRpc.instance:sendAtomicTalentNodeUnlockRequest(nodeId)
 end
 

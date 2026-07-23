@@ -369,6 +369,9 @@ function StoryDialogItem:playNormalText(txt, callback, callbackobj)
 		StoryTool.enablePostProcess(true)
 		PostProcessingMgr.instance:setUIPPValue("localBloomActive", true)
 		PostProcessingMgr.instance:setUIPPValue("bloomDiffusion", 5)
+
+		self._softLightBloomOn = true
+
 		gohelper.setActive(self._goline, false)
 		gohelper.setActive(self._gonexticon, false)
 		gohelper.setActive(self._goblackbottom, self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.SoftLightDarkBg)
@@ -379,8 +382,13 @@ function StoryDialogItem:playNormalText(txt, callback, callbackobj)
 		self._targetTxt.fontSharedMaterial = self._fontNormalMat
 
 		self._targetTxt.fontSharedMaterial:SetFloat("_BloomFactor", 0)
-		PostProcessingMgr.instance:setUIPPValue("localBloomActive", false)
-		PostProcessingMgr.instance:setUIPPValue("bloomDiffusion", 7)
+
+		if self._softLightBloomOn then
+			PostProcessingMgr.instance:setUIPPValue("localBloomActive", false)
+			PostProcessingMgr.instance:setUIPPValue("bloomDiffusion", 7)
+
+			self._softLightBloomOn = false
+		end
 
 		local showContent = self._stepCo.conversation.type ~= StoryEnum.ConversationType.IrregularShake
 

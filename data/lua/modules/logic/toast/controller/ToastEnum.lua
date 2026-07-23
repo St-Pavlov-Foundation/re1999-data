@@ -851,6 +851,7 @@ local ToastEnum = {
 	NewCustomPickMoreSelect = 385013,
 	RoomErrorResourceId = 2628,
 	BPChargeEnd = 10501,
+	NoShowTaoSkillPower = 385015,
 	DungeonMapLevel3 = 82,
 	TowerComposePlaneTrialLimit = 331007,
 	NoChoiceHeroStoneUp = 270107,

@@ -427,6 +427,91 @@ function AtomicTalentViewModel:isTalentCanLight()
 	return false
 end
 
+function AtomicTalentViewModel:getResetIds(branchId, nodeId)
+	local ids = {}
+	local installIds = self:getTalentEquipList()
+	local idDict = {}
+
+	if nodeId == 0 or nodeId == nil then
+		local talentList = AtomicConfig.instance:getTalentList(branchId)
+
+		if talentList then
+			for i, v in ipairs(talentList) do
+				if self:isNodeUnlocked(v.id) then
+					table.insert(ids, v.id)
+
+					idDict[v.id] = true
+				end
+			end
+		end
+	else
+		table.insert(ids, nodeId)
+
+		idDict[nodeId] = true
+
+		local queue = {
+			nodeId
+		}
+
+		while #queue > 0 do
+			local currentLevel = {}
+
+			for i, currentNodeId in ipairs(queue) do
+				table.insert(currentLevel, currentNodeId)
+			end
+
+			queue = {}
+
+			for i, currentNodeId in ipairs(currentLevel) do
+				local nextIds = self:getNextIds(currentNodeId)
+
+				if nextIds then
+					for j, nextNodeId in ipairs(nextIds) do
+						if not idDict[nextNodeId] and self:isNodeUnlocked(nextNodeId) then
+							table.insert(ids, nextNodeId)
+
+							idDict[nextNodeId] = true
+
+							table.insert(queue, nextNodeId)
+						end
+					end
+				end
+			end
+		end
+	end
+
+	for k, v in pairs(installIds) do
+		if idDict[v] then
+			installIds[k] = nil
+		end
+	end
+
+	return ids, installIds
+end
+
+function AtomicTalentViewModel:getNextIds(nodeId)
+	local config = AtomicConfig.instance:getTalentConfig(nodeId)
+
+	if not config then
+		return
+	end
+
+	local nextIds
+	local talentList = AtomicConfig.instance:getTalentList(config.branchId)
+
+	for i, v in ipairs(talentList) do
+		local preNodeId = tonumber(v.preNodes)
+
+		if preNodeId == nodeId then
+			nextIds = nextIds or {}
+
+			table.insert(nextIds, v.id)
+		end
+	end
+
+	return nextIds
+end
+
 AtomicTalentViewModel.instance = AtomicTalentViewModel.New()
 
 return AtomicTalentViewModel

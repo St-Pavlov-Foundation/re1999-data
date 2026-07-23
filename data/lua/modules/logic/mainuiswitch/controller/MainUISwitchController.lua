@@ -48,16 +48,22 @@ function MainUISwitchController:openMainUISwitchInfoViewGiftSet(skinId, sceneId,
 end
 
 function MainUISwitchController:openSceneUIPackageInfoView(skinId, sceneId, isCloseMoHideScene, hideExtraDisPlay)
-	ViewMgr.instance:openView(ViewName.SceneUIPackageInfoView, {
-		isPreview = true,
-		isNotShowLeft = true,
-		isNotShowHero = true,
-		noInfoEffect = true,
-		SkinId = skinId,
-		sceneId = sceneId,
-		hideExtraDisPlay = hideExtraDisPlay,
-		isCloseMoHideScene = isCloseMoHideScene
-	})
+	local function openView()
+		ViewMgr.instance:openView(ViewName.SceneUIPackageInfoView, {
+			isPreview = true,
+			isNotShowLeft = true,
+			isNotShowHero = true,
+			noInfoEffect = true,
+			SkinId = skinId,
+			sceneId = sceneId,
+			hideExtraDisPlay = hideExtraDisPlay,
+			isCloseMoHideScene = isCloseMoHideScene
+		})
+	end
+
+	sceneId = sceneId or MainSceneSwitchModel.instance:getCurSceneId()
+
+	MainSceneSwitchCameraController.instance:showScene(sceneId, openView, self)
 end
 
 function MainUISwitchController:setCurMainUIStyle(id, callback, callbackObj)

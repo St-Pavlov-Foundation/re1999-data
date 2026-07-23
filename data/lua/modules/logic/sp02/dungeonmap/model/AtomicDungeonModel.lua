@@ -1146,6 +1146,40 @@ function AtomicDungeonModel:cleanEmergencyAddSeconds(elementList)
 	end
 end
 
+function AtomicDungeonModel:getElementStatData(elementId)
+	local statData = {}
+	local elementConfig = AtomicDungeonConfig.instance:getElementConfig(elementId)
+
+	elementConfig = elementConfig or AtomicDungeonConfig.instance:getKeyElementConfig(elementId)
+	statData.mapId = self:getCurMapId()
+	statData.elementId = elementConfig.id
+	statData.elementType = elementConfig.type
+	statData.alamrLevel = self:getCurAlarmLevel()
+
+	return statData
+end
+
+function AtomicDungeonModel:getMapAllFinishElementIdList(mapId)
+	local mapFinishElementIdList = {}
+	local arenaId = AtomicDungeonConfig.instance:getDungeonMapId(mapId)
+
+	for elementId, state in pairs(self.finishElementMap) do
+		local elementConfig = AtomicDungeonConfig.instance:getElementConfig(elementId)
+
+		elementConfig = elementConfig or AtomicDungeonConfig.instance:getKeyElementConfig(elementId)
+
+		if elementConfig then
+			local elementArenaId = AtomicDungeonConfig.instance:getDungeonMapId(elementConfig.mapId)
+
+			if arenaId == elementArenaId then
+				table.insert(mapFinishElementIdList, elementId)
+			end
+		end
+	end
+
+	return mapFinishElementIdList
+end
+
 AtomicDungeonModel.instance = AtomicDungeonModel.New()
 
 return AtomicDungeonModel
