@@ -9798,5 +9798,9 @@
   {
     "id": "sp02_atomic_mainactivity_hardlocktip",
     "lang": "通关后日谈后开启"
+  },
+  {
+    "id": "sp02_calendar_periphery_locked",
+    "lang": "通关活动正篇解锁"
   }
 ]
