@@ -907,7 +907,7 @@
     "acceptStage": "1",
     "minType": "活动任务",
     "name": "活动任务",
-    "desc": "在“银色拟剧论”中进行10次征集",
+    "desc": "进行10次征集",
     "bonusMail": 0,
     "listenerType": "Summon",
     "listenerParam": "385111",
