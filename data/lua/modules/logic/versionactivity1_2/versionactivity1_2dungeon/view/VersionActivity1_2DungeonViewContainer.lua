@@ -66,13 +66,14 @@ end
 
 function VersionActivity1_2DungeonViewContainer:buildTabViews(tabContainerId)
 	if tabContainerId == 1 then
-		self.navigateView = NavigateButtonsView.New({
+		self.navigateView = DungeonNavigateButtonsView.New({
 			true,
 			true,
 			false
 		})
 
 		self.navigateView:setOverrideClose(self.overClose, self)
+		self.navigateView:setOpenCallback(self.initChapterRecheck, self)
 
 		return {
 			self.navigateView
@@ -100,6 +101,24 @@ function VersionActivity1_2DungeonViewContainer:setVisibleInternal(isVisible)
 	if self.mapScene then
 		self.mapScene:setVisible(isVisible)
 	end
+end
+
+function VersionActivity1_2DungeonViewContainer:initChapterRecheck()
+	local chapterId = self:_getChapterId()
+
+	if self.navigateView then
+		self.navigateView:initChapterRecheck(chapterId)
+	end
+end
+
+function VersionActivity1_2DungeonViewContainer:getInteractiveItem()
+	return self.interactView
+end
+
+function VersionActivity1_2DungeonViewContainer:_getChapterId()
+	local chapterId = self.viewParam and self.viewParam.chapterId or VersionActivity1_2DungeonEnum.DungeonChapterId.Activity1_2DungeonNormal1
+
+	return chapterId
 end
 
 return VersionActivity1_2DungeonViewContainer

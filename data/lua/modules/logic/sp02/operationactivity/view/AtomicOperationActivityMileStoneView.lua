@@ -76,7 +76,7 @@ function AtomicOperationActivityMileStoneView:onCurrencyChange(changeIds)
 		return
 	end
 
-	local currencyId = Activity186Config.instance:getConstNum(Activity186Enum.ConstId.CurrencyId)
+	local currencyId = Activity186Config.instance:getConstNum(self.actId, Activity186Enum.ConstId.CurrencyId)
 
 	if changeIds[currencyId] then
 		self._waitRefresh = true

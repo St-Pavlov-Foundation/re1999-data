@@ -16,6 +16,7 @@ FightRenderOrderMgr.MinOrder = getIndex()
 FightRenderOrderMgr.LYEffect = getIndex()
 FightRenderOrderMgr.AssistBossOrder = getIndex()
 FightRenderOrderMgr.Act191Boss = getIndex()
+FightRenderOrderMgr.Boss3_9 = getIndex()
 FightRenderOrderMgr.NuoDiKa = getIndex()
 FightRenderOrderMgr.MinSpecialOrder = sortIndex
 
@@ -236,6 +237,10 @@ function FightRenderOrderMgr.sortOrder(renderOrderType, entityIdList, keepOrderP
 
 		if entityData.entityType == FightEnum.EntityType.Act191Boss then
 			result[k] = FightRenderOrderMgr.Act191Boss
+		end
+
+		if entityData.skin == 670415 then
+			result[k] = FightRenderOrderMgr.Boss3_9
 		end
 	end
 

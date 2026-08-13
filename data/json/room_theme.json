@@ -358,5 +358,17 @@
     "collectionBonus": "11#138503#1",
     "extraShowBuilding": "",
     "sourcesType": ""
+  },
+  {
+    "id": 3901,
+    "name": "爱琴游记",
+    "nameEn": "",
+    "desc": "何不收下这冠冕？将她的震怒化作桂叶与笛音。",
+    "rewardIcon": "1702900",
+    "building": "13901|13902|13903",
+    "packages": "3901|3902|3903|3904",
+    "collectionBonus": "11#13903#1",
+    "extraShowBuilding": "",
+    "sourcesType": ""
   }
 ]

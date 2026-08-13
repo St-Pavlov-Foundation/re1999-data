@@ -47,6 +47,7 @@ function VersionActivity1_8DungeonMapView:addEvents()
 	self:addEventCb(Activity157Controller.instance, Activity157Event.Act157RepairComponent, self.refreshReddot, self)
 	self:addEventCb(VersionActivity1_8DungeonController.instance, VersionActivity1_8DungeonEvent.OnClickElement, self.onClickElement, self)
 	self:addEventCb(VersionActivity1_8DungeonController.instance, VersionActivity1_8DungeonEvent.OnHideInteractUI, self.showBtnUI, self)
+	self:addEventCb(DungeonController.instance, DungeonMapElementEvent.OnRecheckInteractive, self._onRecheckInteractive, self)
 	self._btncloseview:AddClickListener(self._btncloseviewOnClick, self)
 	self._btnactivitystore:AddClickListener(self._btnactivitystoreOnClick, self)
 	self._btnactivitytask:AddClickListener(self._btnactivitytaskOnClick, self)
@@ -68,6 +69,7 @@ function VersionActivity1_8DungeonMapView:removeEvents()
 	self:removeEventCb(Activity157Controller.instance, Activity157Event.Act157RepairComponent, self.refreshReddot, self)
 	self:removeEventCb(VersionActivity1_8DungeonController.instance, VersionActivity1_8DungeonEvent.OnClickElement, self.onClickElement, self)
 	self:removeEventCb(VersionActivity1_8DungeonController.instance, VersionActivity1_8DungeonEvent.OnHideInteractUI, self.showBtnUI, self)
+	self:removeEventCb(DungeonController.instance, DungeonMapElementEvent.OnRecheckInteractive, self._onRecheckInteractive, self)
 	self._btncloseview:RemoveClickListener()
 	self._btnactivitystore:RemoveClickListener()
 	self._btnactivitytask:RemoveClickListener()
@@ -172,6 +174,18 @@ end
 function VersionActivity1_8DungeonMapView:onClickElement()
 	self:hideBtnUI()
 	self:setNavBtnIsShow(false)
+end
+
+function VersionActivity1_8DungeonMapView:_onRecheckInteractive(isShow)
+	if isShow then
+		self._rectmask2D.padding = RECT_MASK_PADDING
+
+		gohelper.setActive(self._btncloseview, false)
+		self:showBtnUI()
+	else
+		self:hideBtnUI()
+		self:setNavBtnIsShow(false)
+	end
 end
 
 function VersionActivity1_8DungeonMapView:_btncloseviewOnClick()

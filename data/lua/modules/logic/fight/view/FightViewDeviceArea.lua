@@ -147,6 +147,7 @@ function FightViewDeviceArea:onPlayHandCard(cardMo)
 
 	local dirty = false
 	local behaviourId = FightEnum.BehaviourId.AddDevicePower
+	local heDuoNieBehaviourId = FightEnum.BehaviourId.HedoneAddDevicePower
 
 	for i = 1, FightEnum.MaxBehavior do
 		local behavior = skillCo["behavior" .. i]
@@ -159,6 +160,19 @@ function FightViewDeviceArea:onPlayHandCard(cardMo)
 					deviceArea:changeOnePowerValueByClient(behaviourArray[2], behaviourArray[3])
 
 					dirty = true
+				elseif behaviourArray[1] == heDuoNieBehaviourId then
+					local powerType = behaviourArray[2]
+					local entityMo = FightDataHelper.entityMgr:getById(cardMo.uid)
+
+					if entityMo then
+						local count = entityMo:getHeDuoNieBuffData()
+
+						if count then
+							deviceArea:changeOnePowerValueByClient(powerType, count)
+
+							dirty = true
+						end
+					end
 				end
 			end
 		end

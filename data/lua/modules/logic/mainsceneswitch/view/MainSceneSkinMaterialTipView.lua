@@ -24,6 +24,7 @@ function MainSceneSkinMaterialTipView:onInitView()
 	self._txtcostnum = gohelper.findChildText(self.viewGO, "right/#go_buyContent/buy/#txt_costnum")
 	self._simagecosticon = gohelper.findChildSingleImage(self.viewGO, "right/#go_buyContent/buy/#txt_costnum/#simage_costicon")
 	self._gosource = gohelper.findChild(self.viewGO, "right/#go_source")
+	self._gotime = gohelper.findChild(self.viewGO, "right/#go_source/title/#txt_time")
 	self._txttime = gohelper.findChildText(self.viewGO, "right/#go_source/title/#txt_time")
 	self._scrolljump = gohelper.findChildScrollRect(self.viewGO, "right/#go_source/#scroll_jump")
 	self._gojumpItem = gohelper.findChild(self.viewGO, "right/#go_source/#scroll_jump/Viewport/Content/#go_jumpItem")
@@ -45,6 +46,10 @@ function MainSceneSkinMaterialTipView:removeEvents()
 	self._btnclose:RemoveClickListener()
 end
 
+function MainSceneSkinMaterialTipView:onClickModalMask()
+	self:closeThis()
+end
+
 function MainSceneSkinMaterialTipView:_btninsightOnClick()
 	return
 end
@@ -57,6 +62,7 @@ function MainSceneSkinMaterialTipView:_editableInitView()
 	gohelper.setActive(self._gojumpItem, false)
 	gohelper.setActive(self._gobuyContent, false)
 	gohelper.setActive(self._gosource, true)
+	gohelper.setActive(self._gotime, false)
 
 	self._jumpParentGo = gohelper.findChild(self.viewGO, "right/#go_source/#scroll_jump/Viewport/Content")
 	self.jumpItemGos = {}

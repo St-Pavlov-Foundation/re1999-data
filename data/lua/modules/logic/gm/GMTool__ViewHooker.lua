@@ -60,6 +60,16 @@ function M:_onBeforeOpenView(viewName)
 	local clsPath = _G.getModulePath(GMName)
 
 	if not clsPath then
+		local major, minor = string.match(viewName, "VersionActivity(%d+)_(%d+)DungeonMapView")
+
+		if major and minor then
+			clsPath = _G.getModulePath("GM_VersionActivity_DungeonMapView")
+
+			local cls = addGlobalModule(clsPath)
+
+			cls.register(tonumber(major), tonumber(minor))
+		end
+
 		return
 	end
 

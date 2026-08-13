@@ -13,7 +13,7 @@ function FightLorenzCardItem.Create(go)
 end
 
 function FightLorenzCardItem:init(go)
-	FightLorenzCardItem.super.__onInit(self)
+	self:__onInit()
 
 	self.go = go
 	self.rectTr = go:GetComponent(gohelper.Type_RectTransform)
@@ -83,7 +83,7 @@ end
 
 function FightLorenzCardItem:destroy()
 	self.simageIcon:UnLoadImage()
-	FightLorenzCardItem.super.__onDispose(self)
+	self:__onDispose()
 end
 
 return FightLorenzCardItem

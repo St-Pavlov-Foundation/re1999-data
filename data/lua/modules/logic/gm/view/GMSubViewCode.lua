@@ -34,6 +34,8 @@ function GMSubViewCode:initViewContent()
 	self._btnExecute = self:addButton("L2", "执行", self.executeCode, self)
 	self._toggleIsAutoClose = self:addToggle("L2", "是否执行完关闭GM面板")
 
+	self:addTitleSplitLine("杂项")
+	self:addButton("L3", "切换直连服务器功能", self.changeQuickEnterServer, self)
 	self:addTitleSplitLine("Tab 开关")
 
 	local allViews = self.viewContainer._views or {}
@@ -82,6 +84,17 @@ function GMSubViewCode:tabChange()
 	end
 
 	PlayerPrefsHelper.setString("GMHideTabNames", table.concat(ignoreNames, "#"))
+end
+
+function GMSubViewCode:changeQuickEnterServer()
+	if not SDKMgr.instance:useSimulateLogin() then
+		return
+	end
+
+	QuickEnterServerModel.enable = not QuickEnterServerModel.enable
+
+	PlayerPrefsHelper.setNumber("QuickEnterServerModel_Enable", QuickEnterServerModel.enable and 1 or 0)
+	GameFacade.showToastString(QuickEnterServerModel.enable and "已启用直连服务器功能" or "已禁用直连服务器功能")
 end
 
 function GMSubViewCode:executeCode()

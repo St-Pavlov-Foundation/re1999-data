@@ -256,6 +256,7 @@ function DungeonFragmentInfoView:onOpen()
 	self._fragmentId = self.viewParam.fragmentId
 	self._dialogIdList = self.viewParam.dialogIdList
 	self._isFromHandbook = self.viewParam.isFromHandbook
+	self._isFromRecheck = self.viewParam.isFromRecheck
 	self._notShowToast = self.viewParam.notShowToast
 
 	local config = lua_chapter_map_fragment.configDict[self._fragmentId]
@@ -273,7 +274,7 @@ function DungeonFragmentInfoView:onOpen()
 		handleFunc(self, config)
 	end
 
-	if not DungeonEnum.NotPopFragmentToastDict[self._fragmentId] and not self._isFromHandbook and not self._notShowToast then
+	if not DungeonEnum.NotPopFragmentToastDict[self._fragmentId] and not self._isFromHandbook and not self._isFromRecheck and not self._notShowToast then
 		local toastId = config.toastId
 
 		if toastId and toastId ~= 0 then
@@ -303,6 +304,12 @@ function DungeonFragmentInfoView:onClose()
 	if self._elementId then
 		DungeonController.instance:dispatchEvent(DungeonEvent.onGuideCloseFragmentInfoView, self._elementId)
 	end
+
+	if self.viewParam and self.viewParam.isRecheck then
+		local elementId = self.viewParam.elementId
+
+		DungeonController.instance:onAgainOpenRecheckView(elementId)
+	end
 end
 
 function DungeonFragmentInfoView:onDestroyView()
@@ -328,7 +335,7 @@ function DungeonFragmentInfoView:fragmentInfoShowHandleFunc2(config)
 	gohelper.setActive(self._txtcontent.gameObject, true)
 	gohelper.setActive(self._gochatarea, true)
 
-	if self._isFromHandbook and self._dialogIdList then
+	if (self._isFromHandbook or self._isFromRecheck) and self._dialogIdList then
 		self:_generateDialogByHandbook()
 	else
 		local isNoSpeakAudio = true

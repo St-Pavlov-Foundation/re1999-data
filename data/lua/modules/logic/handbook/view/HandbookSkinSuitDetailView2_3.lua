@@ -27,7 +27,7 @@ local handlerAdsorptionMax = 0.05
 local handlerAdsorptionMin = 0.01
 
 function HandbookSkinSuitDetailView2_3:onInitView()
-	self.super.onInitView(self)
+	HandbookSkinSuitDetailView2_3.super.onInitView(self)
 
 	self._locationItemList = self:getUserDataTb_()
 
@@ -182,7 +182,7 @@ function HandbookSkinSuitDetailView2_3:locationScroll(value)
 end
 
 function HandbookSkinSuitDetailView2_3:onDestroyView()
-	self.super.onDestroyView(self)
+	HandbookSkinSuitDetailView2_3.super.onDestroyView(self)
 
 	if self._locationItemList and next(self._locationItemList) then
 		for _, item in ipairs(self._locationItemList) do

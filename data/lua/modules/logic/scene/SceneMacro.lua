@@ -22,6 +22,7 @@ SceneType.PartyGame = 20
 SceneType.PartyGameLobby = 21
 SceneType.ChatRoom = 22
 SceneType.SurvivalCollectionRoom = 23
+SceneType.RacingCar = 24
 SceneType.NameDict = {}
 
 for k, v in pairs(SceneType) do

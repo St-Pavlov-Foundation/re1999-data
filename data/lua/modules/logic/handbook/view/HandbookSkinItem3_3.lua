@@ -27,11 +27,16 @@ function HandbookSkinItem3_3:init(go)
 	self._goCardSelect = gohelper.findChild(self.viewGO, "item/unlock/#go_select")
 	self._goItem = gohelper.findChild(self.viewGO, "item")
 	self._itemAnimator = self._goItem:GetComponent(gohelper.Type_Animator)
+	self._unlockVxLoader = nil
+	self._goUnlockVx = nil
+	self._unlockAnimator = nil
+	self._animEvent = nil
 end
 
-function HandbookSkinItem3_3:setData(idx, suitId)
+function HandbookSkinItem3_3:setData(idx, suitId, scrollRect)
 	self._cardIdx = idx
 	self._suitId = suitId
+	self._scrollRect = scrollRect
 end
 
 function HandbookSkinItem3_3:refreshItem(skinId)
@@ -54,17 +59,13 @@ function HandbookSkinItem3_3:refreshItem(skinId)
 
 	local spineParamsList = string.split(spineParams, "#")
 
-	gohelper.setActive(self._goUniqueSkinsImage, false)
 	self._roleImage:LoadImage(ResUrl.getSkinHandbookFestivalSkinImage(skinId), self._onLoadRoleImageDone, self)
 	self._roleImageLock:LoadImage(ResUrl.getSkinHandbookFestivalSkinImage(skinId), self._onLoadRoleImageDone, self)
 
 	self._width = self._roleImage.transform.parent.sizeDelta.x
+	self._needRefreshUnlockVx = true
 
-	local has = HeroModel.instance:checkHasSkin(skinId)
-
-	gohelper.setActive(self._goUnlock, has)
-	gohelper.setActive(self._goLock, not has)
-	gohelper.setActive(self._goEmpty, false)
+	self:tryRefreshUnlockVx()
 end
 
 function HandbookSkinItem3_3:refreshSelectedState(selected)
@@ -116,6 +117,12 @@ function HandbookSkinItem3_3:removeEventListeners()
 	end
 
 	self._btnEmpty:RemoveClickListener()
+
+	if self._animEvent then
+		self._animEvent:RemoveEventListener("unlock")
+
+		self._animEvent = nil
+	end
 end
 
 function HandbookSkinItem3_3:_btnclickOnClick()
@@ -126,9 +133,141 @@ function HandbookSkinItem3_3:getSkinId()
 	return self._skinId
 end
 
+function HandbookSkinItem3_3:_refreshUnlockVx()
+	local parentGo = self._roleImage.gameObject
+
+	self._unlockVxLoader = PrefabInstantiate.Create(parentGo)
+
+	local unlockSpinePath = HandbookEnum.SkinUnlockVxPath.Static
+
+	self._unlockVxLoader:startLoad(unlockSpinePath, self._onLoadUnlockVx, self)
+end
+
+function HandbookSkinItem3_3:tryRefreshUnlockVx()
+	if not self._needRefreshUnlockVx then
+		return
+	end
+
+	if self:_isVisibleInScroll() then
+		self._needRefreshUnlockVx = false
+
+		self:_refreshUnlockVx()
+	end
+end
+
+local VisibleRatioThreshold = 0.5
+
+function HandbookSkinItem3_3:_isVisibleInScroll()
+	if not self._scrollRect then
+		return true
+	end
+
+	if not self._scrollRect.horizontal then
+		return true
+	end
+
+	local viewport = self._scrollRect.viewport
+
+	if not viewport then
+		return true
+	end
+
+	local itemTrans = self._goItem and self._goItem.transform or self.viewGO.transform
+	local itemLocalPos = viewport:InverseTransformPoint(itemTrans.position)
+	local itemLocalX = itemLocalPos.x
+	local itemWidth = recthelper.getWidth(itemTrans)
+	local itemPivot = itemTrans.pivot
+	local viewportWidth = recthelper.getWidth(viewport)
+	local viewportPivot = viewport.pivot
+	local itemLeft = itemLocalX - itemWidth * itemPivot.x
+	local itemRight = itemLocalX + itemWidth * (1 - itemPivot.x)
+	local viewportLeft = -viewportWidth * viewportPivot.x
+	local viewportRight = viewportWidth * (1 - viewportPivot.x)
+
+	if itemWidth <= 0 then
+		return false
+	end
+
+	local overlapWidth = math.min(itemRight, viewportRight) - math.max(itemLeft, viewportLeft)
+
+	if overlapWidth <= 0 then
+		return false
+	end
+
+	return overlapWidth / itemWidth >= VisibleRatioThreshold
+end
+
+function HandbookSkinItem3_3:_onLoadUnlockVx()
+	if self._unlockVxLoader then
+		local go = self._unlockVxLoader:getInstGO()
+
+		if not gohelper.isNil(go) then
+			self._goUnlockVx = go
+			self._unlockAnimator = gohelper.findChildComponent(go, "", gohelper.Type_Animator)
+
+			gohelper.setAsFirstSibling(go)
+			gohelper.onceAddComponent(self._roleImage.gameObject, typeof(UnityEngine.UI.Mask))
+			self:refreshUnlockVxState()
+		end
+	end
+end
+
+function HandbookSkinItem3_3:refreshUnlockVxState()
+	local skinId = self._skinId
+	local haveSkin = HeroModel.instance:checkHasSkin(skinId)
+
+	gohelper.setActive(self._goUnlockVx, haveSkin)
+
+	if haveSkin then
+		local showUnlockAnim = HandbookController.instance:isHandbookSkinUnlockRedDotShow(skinId)
+		local animName = showUnlockAnim and HandbookEnum.SkinUnlockAnimName.Open or HandbookEnum.SkinUnlockAnimName.Idle
+
+		if showUnlockAnim then
+			local audioId = HandbookEnum.Audio.play_ui_activity_hero37_checkpoint_gather
+
+			AudioMgr.instance:trigger(audioId)
+			HandbookController.instance:delaySendUnlockSkinRedDotInfo(skinId)
+			gohelper.setActive(self._goUnlock, false)
+			gohelper.setActive(self._goLock, true)
+			gohelper.setActive(self._goEmpty, false)
+
+			self._animEvent = self._goUnlockVx:GetComponent(gohelper.Type_AnimationEventWrap)
+
+			self._animEvent:AddEventListener("unlock", self._refreshUnlockGray, self)
+			TaskDispatcher.runDelay(self._delayPlayAnim, self, 0.8)
+		else
+			self._unlockAnimator:Play(animName, 0, 0)
+			self:_refreshUnlockGray()
+		end
+	else
+		self:_refreshUnlockGray()
+	end
+end
+
+function HandbookSkinItem3_3:_delayPlayAnim()
+	logNormal(string.format("[Handbook] _delayPlayAnim(解锁动画播放) time: %.3f, skinId: %s", Time.realtimeSinceStartup, tostring(self._skinId)))
+	gohelper.setActive(self._goUnlock, true)
+	gohelper.setActive(self._goLock, false)
+	gohelper.setActive(self._goEmpty, false)
+	self._unlockAnimator:Play(HandbookEnum.SkinUnlockAnimName.Open, 0, 0)
+end
+
+function HandbookSkinItem3_3:_refreshUnlockGray()
+	local haveSkin = HeroModel.instance:checkHasSkin(self._skinId)
+
+	self:_setUnlockGray(haveSkin)
+end
+
+function HandbookSkinItem3_3:_setUnlockGray(has)
+	gohelper.setActive(self._goUnlock, has)
+	gohelper.setActive(self._goLock, not has)
+	gohelper.setActive(self._goEmpty, false)
+end
+
 function HandbookSkinItem3_3:onDestroy()
 	self:resetRes()
 	self:removeEventListeners()
+	TaskDispatcher.cancelTask(self._delayPlayAnim, self)
 end
 
 return HandbookSkinItem3_3

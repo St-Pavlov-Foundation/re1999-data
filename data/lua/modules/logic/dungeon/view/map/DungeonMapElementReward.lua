@@ -30,11 +30,12 @@ function DungeonMapElementReward:onOpen()
 	self:addEventCb(DungeonController.instance, DungeonEvent.OnRemoveElement, self._OnRemoveElement, self, LuaEventSystem.High)
 	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self._onCloseViewFinish, self)
 	self:addEventCb(DungeonMazeController.instance, DungeonMazeEvent.DungeonMazeCompleted, self._onMazeCompleted, self)
+	self:_cacheFinishElements()
 end
 
-function DungeonMapElementReward:_onCloseViewFinish(viewName)
+function DungeonMapElementReward:_onCloseViewFinish(viewName, viewParam)
 	if viewName == self._lastViewName then
-		if self._rewardPoint then
+		if self._rewardPoint and not viewParam.isRecheck then
 			self:_dispatchEvent()
 		end
 
@@ -87,13 +88,22 @@ function DungeonMapElementReward:_OnRemoveElement(id)
 			self._lastViewName = ViewName.DungeonFragmentInfoView
 		end
 
+		local isRecheck = LuaUtil.tableContains(self._canElements, id)
+
+		if isRecheck then
+			self.notShowToast = true
+		end
+
 		if self._lastViewName then
 			PopupController.instance:addPopupView(PopupEnum.PriorityType.DungeonFragmentInfoView, self._lastViewName, {
 				elementId = config.id,
 				fragmentId = config.fragment,
-				notShowToast = self.notShowToast
+				notShowToast = self.notShowToast,
+				isRecheck = isRecheck
 			})
 		end
+
+		self:_cacheFinishElements()
 	end
 
 	if config.type == DungeonEnum.ElementType.EnterDialogue then
@@ -115,6 +125,13 @@ function DungeonMapElementReward:_OnRemoveElement(id)
 			self:_dispatchEvent()
 		end
 	end
+end
+
+function DungeonMapElementReward:_cacheFinishElements()
+	local chapterId = self.viewContainer:_getChapterId()
+	local elements = DungeonMapModel.instance:getCanRecheckElements(chapterId)
+
+	self._canElements = elements and tabletool.copy(elements)
 end
 
 function DungeonMapElementReward:_dispatchEvent()

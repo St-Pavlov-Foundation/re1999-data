@@ -68,7 +68,7 @@ function ActivityNoviceSignView:_refresh()
 		gohelper.setActive(self._gostarlist, true)
 
 		self._txtdesc.text = string.format("%s", co.actDesc)
-		self._txtreward.text = string.format("%s<color=#c66030>%s</color>。", luaLang("activitynovicesign_character"), itemCo.name)
+		self._txtreward.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("activitynovicesignview_reward"), luaLang("activitynovicesign_character"), itemCo.name)
 
 		if not self._hasCreateStar then
 			for i = 1, 4 do

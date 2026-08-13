@@ -149,6 +149,7 @@ function BpChargeABTestView:createItems(go, colist, type, noShowNum)
 			end
 
 			itemIcon:setCanShowDeadLine(not isCruise)
+			itemIcon:setOnBeforeClickCallback(self._statItemOnClick, self, arr)
 		end
 	end
 end
@@ -212,6 +213,14 @@ function BpChargeABTestView:_onUpdatePayStatus()
 
 	for _, go in pairs(self._itemGetTags[2]) do
 		gohelper.setActive(go, BpModel.instance.payStatus == BpEnum.PayStatus.Pay2)
+	end
+end
+
+function BpChargeABTestView:_statItemOnClick(params)
+	if params then
+		local itemType, itemId = params[1], params[2]
+
+		BpController.instance:statItemClick(itemType, itemId, self.viewName)
 	end
 end
 

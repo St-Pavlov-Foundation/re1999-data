@@ -1,0 +1,1058 @@
+[
+  {
+    "buffId": 39600,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 4,
+    "affectType": 1,
+    "affectParam": "13#6#0.04|7#1#0.01|7#2#0.01|7#3#0.01|7#4#0.01|7#5#0.01|7#6#0.01|7#7#0.01"
+  },
+  {
+    "buffId": 39601,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "13#1#0.35"
+  },
+  {
+    "buffId": 39602,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "11#1#30"
+  },
+  {
+    "buffId": 39603,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "5#1#0.12|13#1#0.15"
+  },
+  {
+    "buffId": 39604,
+    "lifeRule": "2",
+    "subLifeRule": "1",
+    "lifeParam": 1,
+    "affectType": 1,
+    "affectParam": "12#1#2"
+  },
+  {
+    "buffId": 39605,
+    "lifeRule": "2",
+    "subLifeRule": "3",
+    "lifeParam": 1,
+    "affectType": 1,
+    "affectParam": "10#3#1"
+  },
+  {
+    "buffId": 39606,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "12#1#1|13#1#-0.30|5#1#0.08"
+  },
+  {
+    "buffId": 39607,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 4,
+    "affectType": 1,
+    "affectParam": "11#1#45"
+  },
+  {
+    "buffId": 39608,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 2,
+    "affectType": 1,
+    "affectParam": "12#3#1"
+  },
+  {
+    "buffId": 39609,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 6,
+    "affectType": 1,
+    "affectParam": "5#5#0.2|13#5#0.3125"
+  },
+  {
+    "buffId": 39610,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 15,
+    "affectType": 1,
+    "affectParam": "13#7#0.0375|14#7#0.0375"
+  },
+  {
+    "buffId": 39611,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "13#1#0.5907"
+  },
+  {
+    "buffId": 39612,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 4,
+    "affectType": 1,
+    "affectParam": "12#3#2"
+  },
+  {
+    "buffId": 39613,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 15,
+    "affectType": 1,
+    "affectParam": "13#7#0.0375|14#7#0.0375"
+  },
+  {
+    "buffId": 39614,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 15,
+    "affectType": 1,
+    "affectParam": "13#7#0.0562|14#7#0.0562"
+  },
+  {
+    "buffId": 39615,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 6,
+    "affectType": 1,
+    "affectParam": "12#6#1"
+  },
+  {
+    "buffId": 39616,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "13#2#0.35"
+  },
+  {
+    "buffId": 39617,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "11#2#30"
+  },
+  {
+    "buffId": 39618,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "5#2#0.12|13#2#0.15"
+  },
+  {
+    "buffId": 39619,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "14#2#0.15|13#2#0.12"
+  },
+  {
+    "buffId": 39620,
+    "lifeRule": "2",
+    "subLifeRule": "3",
+    "lifeParam": 1,
+    "affectType": 1,
+    "affectParam": "10#3#1"
+  },
+  {
+    "buffId": 39621,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "15#2#3"
+  },
+  {
+    "buffId": 39622,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "12#2#1|13#2#-0.35"
+  },
+  {
+    "buffId": 39623,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 6,
+    "affectType": 1,
+    "affectParam": "15#4#2.5|14#4#0.25"
+  },
+  {
+    "buffId": 39624,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 6,
+    "affectType": 1,
+    "affectParam": "13#5#0.875|11#5#50"
+  },
+  {
+    "buffId": 39625,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 15,
+    "affectType": 1,
+    "affectParam": "13#7#0.075|14#7#0.075"
+  },
+  {
+    "buffId": 39626,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 15,
+    "affectType": 1,
+    "affectParam": "13#7#0.0375|14#7#0.0375"
+  },
+  {
+    "buffId": 39627,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 15,
+    "affectType": 1,
+    "affectParam": "13#7#0.1125|14#7#0.1125"
+  },
+  {
+    "buffId": 39628,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 15,
+    "affectType": 1,
+    "affectParam": "13#7#0.0375|14#7#0.0375"
+  },
+  {
+    "buffId": 39629,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 2,
+    "affectType": 1,
+    "affectParam": "12#3#1"
+  },
+  {
+    "buffId": 39630,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "7#3#0.12|13#3#0.15"
+  },
+  {
+    "buffId": 39631,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "11#3#30"
+  },
+  {
+    "buffId": 39632,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "5#3#0.12|13#3#0.15"
+  },
+  {
+    "buffId": 39633,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "10#3#1|13#3#-0.15"
+  },
+  {
+    "buffId": 39634,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 4,
+    "affectType": 1,
+    "affectParam": "11#1#31.25|5#1#0.1"
+  },
+  {
+    "buffId": 39635,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "10#3#2|13#3#-0.20"
+  },
+  {
+    "buffId": 39636,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 6,
+    "affectType": 1,
+    "affectParam": "12#1#1"
+  },
+  {
+    "buffId": 39637,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 6,
+    "affectType": 1,
+    "affectParam": "5#2#0.3"
+  },
+  {
+    "buffId": 39638,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 6,
+    "affectType": 1,
+    "affectParam": "12#5#1"
+  },
+  {
+    "buffId": 39639,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "10#3#2"
+  },
+  {
+    "buffId": 39640,
+    "lifeRule": "2",
+    "subLifeRule": "2",
+    "lifeParam": 1,
+    "affectType": 1,
+    "affectParam": "12#2#1"
+  },
+  {
+    "buffId": 39641,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 4,
+    "affectType": 1,
+    "affectParam": "12#5#1.00"
+  },
+  {
+    "buffId": 39642,
+    "lifeRule": "2",
+    "subLifeRule": "6",
+    "lifeParam": 1,
+    "affectType": 1,
+    "affectParam": "12#6#1"
+  },
+  {
+    "buffId": 39643,
+    "lifeRule": "2",
+    "subLifeRule": "7",
+    "lifeParam": 1,
+    "affectType": 1,
+    "affectParam": "12#7#1"
+  },
+  {
+    "buffId": 39644,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 15,
+    "affectType": 1,
+    "affectParam": "13#7#0.1125|14#7#0.1125"
+  },
+  {
+    "buffId": 39645,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "13#4#0.35"
+  },
+  {
+    "buffId": 39646,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "15#4#0.8"
+  },
+  {
+    "buffId": 39647,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 4,
+    "affectType": 1,
+    "affectParam": "12#4#1"
+  },
+  {
+    "buffId": 39648,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "14#4#0.15|13#4#0.3"
+  },
+  {
+    "buffId": 39649,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 4,
+    "affectType": 1,
+    "affectParam": "12#2#1"
+  },
+  {
+    "buffId": 39650,
+    "lifeRule": "2",
+    "subLifeRule": "3",
+    "lifeParam": 1,
+    "affectType": 1,
+    "affectParam": "10#3#1"
+  },
+  {
+    "buffId": 39651,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "7#4#0.12"
+  },
+  {
+    "buffId": 39652,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "5#4#0.12|13#4#0.15"
+  },
+  {
+    "buffId": 39653,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 6,
+    "affectType": 1,
+    "affectParam": "12#2#1"
+  },
+  {
+    "buffId": 39654,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 6,
+    "affectType": 1,
+    "affectParam": "12#3#1"
+  },
+  {
+    "buffId": 39655,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 6,
+    "affectType": 1,
+    "affectParam": "12#6#1"
+  },
+  {
+    "buffId": 39656,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 15,
+    "affectType": 1,
+    "affectParam": "13#7#0.0375|14#7#0.0375"
+  },
+  {
+    "buffId": 39657,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 6,
+    "affectType": 1,
+    "affectParam": "12#4#1"
+  },
+  {
+    "buffId": 39658,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 6,
+    "affectType": 1,
+    "affectParam": "13#6#0.1875"
+  },
+  {
+    "buffId": 39659,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 5,
+    "affectType": 1,
+    "affectParam": "5#5#0.015"
+  },
+  {
+    "buffId": 39660,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "13#5#0.9"
+  },
+  {
+    "buffId": 39661,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "5#5#0.12"
+  },
+  {
+    "buffId": 39662,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 3,
+    "affectType": 1,
+    "affectParam": "12#5#1"
+  },
+  {
+    "buffId": 39663,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 6,
+    "affectType": 1,
+    "affectParam": "11#1#43.75"
+  },
+  {
+    "buffId": 39664,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 2,
+    "affectType": 1,
+    "affectParam": "12#3#1"
+  },
+  {
+    "buffId": 39665,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "12#5#1|13#5#-0.10"
+  },
+  {
+    "buffId": 39666,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "5#5#0.12"
+  },
+  {
+    "buffId": 39667,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 6,
+    "affectType": 1,
+    "affectParam": "11#1#56.25"
+  },
+  {
+    "buffId": 39668,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 4,
+    "affectType": 1,
+    "affectParam": "12#3#1"
+  },
+  {
+    "buffId": 39669,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 6,
+    "affectType": 1,
+    "affectParam": "14#2#0.75"
+  },
+  {
+    "buffId": 39670,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 6,
+    "affectType": 1,
+    "affectParam": "7#4#0.04"
+  },
+  {
+    "buffId": 39671,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "12#5#1|11#5#45"
+  },
+  {
+    "buffId": 39672,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 6,
+    "affectType": 1,
+    "affectParam": "12#3#2"
+  },
+  {
+    "buffId": 39673,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 6,
+    "affectType": 1,
+    "affectParam": "14#2#1.25"
+  },
+  {
+    "buffId": 39674,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 15,
+    "affectType": 1,
+    "affectParam": "13#7#0.1125|14#7#0.1125"
+  },
+  {
+    "buffId": 39675,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 15,
+    "affectType": 1,
+    "affectParam": "13#7#0.0375|14#7#0.0375"
+  },
+  {
+    "buffId": 39676,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "13#6#0.35"
+  },
+  {
+    "buffId": 39677,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "11#6#30"
+  },
+  {
+    "buffId": 39678,
+    "lifeRule": "2",
+    "subLifeRule": "6",
+    "lifeParam": 1,
+    "affectType": 1,
+    "affectParam": "12#6#1"
+  },
+  {
+    "buffId": 39679,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 4,
+    "affectType": 1,
+    "affectParam": "5#1#0.2"
+  },
+  {
+    "buffId": 39680,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 4,
+    "affectType": 1,
+    "affectParam": "7#4#0.2"
+  },
+  {
+    "buffId": 39681,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 4,
+    "affectType": 1,
+    "affectParam": "12#6#1"
+  },
+  {
+    "buffId": 39682,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 4,
+    "affectType": 1,
+    "affectParam": "12#1#1"
+  },
+  {
+    "buffId": 39683,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 4,
+    "affectType": 1,
+    "affectParam": "12#3#1"
+  },
+  {
+    "buffId": 39684,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 4,
+    "affectType": 1,
+    "affectParam": "7#4#0.3"
+  },
+  {
+    "buffId": 39685,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 4,
+    "affectType": 1,
+    "affectParam": "5#5#0.3"
+  },
+  {
+    "buffId": 39686,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "1#18.75"
+  },
+  {
+    "buffId": 39687,
+    "lifeRule": "2",
+    "subLifeRule": "1",
+    "lifeParam": 1,
+    "affectType": 1,
+    "affectParam": "10#1#3|12#1#3"
+  },
+  {
+    "buffId": 39688,
+    "lifeRule": "2",
+    "subLifeRule": "3",
+    "lifeParam": 1,
+    "affectType": 1,
+    "affectParam": "10#3#5|13#3#0.75"
+  },
+  {
+    "buffId": 39689,
+    "lifeRule": "2",
+    "subLifeRule": "4",
+    "lifeParam": 1,
+    "affectType": 1,
+    "affectParam": "14#4#4.5|13#4#1.5"
+  },
+  {
+    "buffId": 39690,
+    "lifeRule": "2",
+    "subLifeRule": "2",
+    "lifeParam": 1,
+    "affectType": 1,
+    "affectParam": "14#2#4.5|13#2#1.5"
+  },
+  {
+    "buffId": 39691,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 15,
+    "affectType": 1,
+    "affectParam": "13#7#0.15|14#7#0.08"
+  },
+  {
+    "buffId": 39692,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 15,
+    "affectType": 1,
+    "affectParam": "13#7#0.02|14#7#0.01"
+  },
+  {
+    "buffId": 39693,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "13#7#0.35"
+  },
+  {
+    "buffId": 39694,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "14#7#0.2"
+  },
+  {
+    "buffId": 39695,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 15,
+    "affectType": 1,
+    "affectParam": "13#7#0.0375|14#7#0.0375"
+  },
+  {
+    "buffId": 39696,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 15,
+    "affectType": 1,
+    "affectParam": "13#7#0.02|14#7#0.005"
+  },
+  {
+    "buffId": 39697,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 6,
+    "affectType": 1,
+    "affectParam": "11#1#70"
+  },
+  {
+    "buffId": 39698,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 6,
+    "affectType": 1,
+    "affectParam": "7#4#0.45"
+  },
+  {
+    "buffId": 39699,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 15,
+    "affectType": 1,
+    "affectParam": "13#7#0.015|14#7#0.004"
+  },
+  {
+    "buffId": 39700,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "7#7#0.2"
+  },
+  {
+    "buffId": 39701,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 16,
+    "affectType": 1,
+    "affectParam": "7#7#0.15"
+  },
+  {
+    "buffId": 39702,
+    "lifeRule": "2",
+    "subLifeRule": "1",
+    "lifeParam": 1,
+    "affectType": 1,
+    "affectParam": "12#1#4"
+  },
+  {
+    "buffId": 39703,
+    "lifeRule": "2",
+    "subLifeRule": "2",
+    "lifeParam": 1,
+    "affectType": 1,
+    "affectParam": "14#2#0.8|15#2#10"
+  },
+  {
+    "buffId": 39704,
+    "lifeRule": "2",
+    "subLifeRule": "6",
+    "lifeParam": 1,
+    "affectType": 1,
+    "affectParam": "12#6#2"
+  },
+  {
+    "buffId": 39705,
+    "lifeRule": "2",
+    "subLifeRule": "5",
+    "lifeParam": 1,
+    "affectType": 1,
+    "affectParam": "12#5#3"
+  },
+  {
+    "buffId": 39706,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 15,
+    "affectType": 1,
+    "affectParam": "13#7#0.12|14#7#0.06"
+  },
+  {
+    "buffId": 39707,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 15,
+    "affectType": 1,
+    "affectParam": "13#7#0.02|14#7#0.01"
+  },
+  {
+    "buffId": 39708,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "14#7#0.25"
+  },
+  {
+    "buffId": 39709,
+    "lifeRule": "2",
+    "subLifeRule": "1",
+    "lifeParam": 1,
+    "affectType": 1,
+    "affectParam": "13#1#1.5|12#1#5"
+  },
+  {
+    "buffId": 39710,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 6,
+    "affectType": 1,
+    "affectParam": "12#5#3"
+  },
+  {
+    "buffId": 39711,
+    "lifeRule": "2",
+    "subLifeRule": "3",
+    "lifeParam": 3,
+    "affectType": 1,
+    "affectParam": "10#3#5"
+  },
+  {
+    "buffId": 39712,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "1#16"
+  },
+  {
+    "buffId": 39713,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "9#24"
+  },
+  {
+    "buffId": 39714,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "7#1#0.10|7#2#0.10|7#3#0.10|7#4#0.10|7#5#0.10|7#6#0.10|7#7#0.10"
+  },
+  {
+    "buffId": 39715,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "5#1#0.10|5#2#0.10|5#3#0.10|5#4#0.10|5#5#0.10|5#6#0.10|5#7#0.10"
+  },
+  {
+    "buffId": 39716,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "14#2#0.20|14#4#0.20|14#6#0.20|14#7#0.20|13#2#0.12|13#4#0.12|13#6#0.12|13#7#0.12"
+  },
+  {
+    "buffId": 39717,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "15#2#0.6|15#4#0.6|15#5#0.6|13#2#0.06|13#4#0.06|13#5#0.06"
+  },
+  {
+    "buffId": 39718,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "11#1#24|11#3#24|11#5#24"
+  },
+  {
+    "buffId": 39719,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "1#36"
+  },
+  {
+    "buffId": 39720,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "7#1#0.08|7#2#0.08|7#3#0.08|7#4#0.08|7#5#0.08|7#6#0.08|7#7#0.08|5#1#0.08|5#2#0.08|5#3#0.08|5#4#0.08|5#5#0.08|5#6#0.08|5#7#0.08"
+  },
+  {
+    "buffId": 39721,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "12#2#1|12#4#1|12#6#1|13#2#-0.50|13#4#-0.50|13#6#-0.50"
+  },
+  {
+    "buffId": 39722,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "11#1#50|11#3#50|11#5#50"
+  },
+  {
+    "buffId": 39723,
+    "lifeRule": "1",
+    "subLifeRule": "",
+    "lifeParam": 15,
+    "affectType": 1,
+    "affectParam": "1#36|7#1#0.18|7#2#0.18|7#3#0.18|7#4#0.18|7#5#0.18|7#6#0.18|7#7#0.18|5#1#0.18|5#2#0.18|5#3#0.18|5#4#0.18|5#5#0.18|5#6#0.18|5#7#0.18"
+  },
+  {
+    "buffId": 39724,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "1#45|7#1#0.06|7#2#0.06|7#3#0.06|7#4#0.06|7#5#0.06|7#6#0.06|7#7#0.06|5#1#0.06|5#2#0.06|5#3#0.06|5#4#0.06|5#5#0.06|5#6#0.06|5#7#0.06"
+  },
+  {
+    "buffId": 39725,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "13#2#0.15|13#4#0.15|13#5#0.15|13#6#0.15|13#7#0.15|14#2#0.12|14#4#0.12|14#6#0.12|14#7#0.12|15#2#1.2|15#4#1.2|15#5#1.2"
+  },
+  {
+    "buffId": 39726,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "12#2#1|12#4#1|12#6#1|13#2#-0.25|13#4#-0.25|13#6#-0.25"
+  },
+  {
+    "buffId": 39727,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "11#1#67.5|11#3#67.5|11#5#67.5"
+  },
+  {
+    "buffId": 39728,
+    "lifeRule": "2",
+    "subLifeRule": "1",
+    "lifeParam": 1,
+    "affectType": 1,
+    "affectParam": "12#1#4"
+  },
+  {
+    "buffId": 39729,
+    "lifeRule": "2",
+    "subLifeRule": "6",
+    "lifeParam": 1,
+    "affectType": 1,
+    "affectParam": "10#6#3"
+  },
+  {
+    "buffId": 39730,
+    "lifeRule": "2",
+    "subLifeRule": "4",
+    "lifeParam": 1,
+    "affectType": 1,
+    "affectParam": "12#4#1"
+  },
+  {
+    "buffId": 39731,
+    "lifeRule": "0",
+    "subLifeRule": "",
+    "lifeParam": 0,
+    "affectType": 1,
+    "affectParam": "13#3#0.3"
+  }
+]

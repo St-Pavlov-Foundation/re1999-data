@@ -365,6 +365,67 @@ function GameUtil.getRomanNums(index)
 	return romanNums[index]
 end
 
+local ROMAN_NUM_MIN = 1
+local ROMAN_NUM_MAX = 3999
+local romanValueList = {
+	1000,
+	900,
+	500,
+	400,
+	100,
+	90,
+	50,
+	40,
+	10,
+	9,
+	5,
+	4,
+	1
+}
+local romanSymbolList = {
+	"M",
+	"CM",
+	"D",
+	"CD",
+	"C",
+	"XC",
+	"L",
+	"XL",
+	"X",
+	"IX",
+	"V",
+	"IV",
+	"I"
+}
+
+function GameUtil.getRomanNums2(num)
+	if type(num) ~= "number" or num ~= math.floor(num) then
+		logError(string.format("GameUtil.getRomanNums2 error, need integer, num=%s", num))
+
+		return
+	end
+
+	if num < ROMAN_NUM_MIN or num > ROMAN_NUM_MAX then
+		logError(string.format("GameUtil.getRomanNums2 error, num=%d out of range [%d, %d]", num, ROMAN_NUM_MIN, ROMAN_NUM_MAX))
+
+		return
+	end
+
+	local result = ""
+
+	for i = 1, #romanValueList do
+		local val = romanValueList[i]
+		local count = math.floor(num / val)
+
+		if count > 0 then
+			result = result .. string.rep(romanSymbolList[i], count)
+			num = num - val * count
+		end
+	end
+
+	return result
+end
+
 local num2Chinese = {
 	[0] = "零",
 	"一",

@@ -9,6 +9,8 @@ function FightViewHandCardSkinMgr:onConstructor()
 
 	if self.cardSkin == 672802 then
 		self:newClass(FightViewHandCardSkin672802)
+	elseif self.cardSkin == 672803 then
+		self:newClass(FightViewHandCardSkin672803)
 	end
 end
 

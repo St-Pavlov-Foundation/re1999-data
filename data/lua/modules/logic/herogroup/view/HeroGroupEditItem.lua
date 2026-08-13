@@ -111,10 +111,22 @@ function HeroGroupEditItem:updateTrialTag()
 		txt = luaLang("herogroup_trial_tag0")
 	end
 
+	if self._mo:isOtherPlayerHero() then
+		txt = luaLang("herogroup_trial_tag0")
+	end
+
 	self._heroItem:setTrialTxt(txt)
 end
 
 function HeroGroupEditItem:updateTrialRepeat()
+	local _, assistMo = HeroGroupModel.instance:getAssistMo()
+
+	if assistMo and (assistMo.id == self._view.viewContainer.viewParam.singleGroupMOId or assistMo.heroUid == self._mo.uid) then
+		self._heroItem:setTrialRepeat(false)
+
+		return
+	end
+
 	local singleGroupMO = HeroSingleGroupModel.instance:getById(self._view.viewContainer.viewParam.singleGroupMOId)
 
 	if singleGroupMO and not singleGroupMO:isEmpty() and (singleGroupMO.trial and singleGroupMO:getTrialCO().heroId == self._mo.heroId or not singleGroupMO.trial and (not singleGroupMO:getHeroCO() or singleGroupMO:getHeroCO().id == self._mo.heroId)) then
@@ -151,18 +163,20 @@ function HeroGroupEditItem:_onItemClick()
 		return
 	end
 
-	local singleGroupMO = HeroSingleGroupModel.instance:getById(self._view.viewContainer.viewParam.singleGroupMOId)
+	if self._view.viewContainer.viewParam.singleGroupMOId then
+		local singleGroupMO = HeroSingleGroupModel.instance:getById(self._view.viewContainer.viewParam.singleGroupMOId)
 
-	if self._mo:isTrial() and not HeroSingleGroupModel.instance:isInGroup(self._mo.uid) and (singleGroupMO:isEmpty() or not singleGroupMO.trial) and HeroGroupEditListModel.instance:isTrialLimit() then
-		GameFacade.showToast(ToastEnum.TrialJoinLimit, HeroGroupTrialModel.instance:getLimitNum())
+		if self._mo:isTrial() and not HeroSingleGroupModel.instance:isInGroup(self._mo.uid) and (singleGroupMO:isEmpty() or not singleGroupMO.trial) and HeroGroupEditListModel.instance:isTrialLimit() then
+			GameFacade.showToast(ToastEnum.TrialJoinLimit, HeroGroupTrialModel.instance:getLimitNum())
 
-		return
-	end
+			return
+		end
 
-	if self._mo.isPosLock or not singleGroupMO:isEmpty() and singleGroupMO.trialPos then
-		GameFacade.showToast(ToastEnum.TrialCantTakeOff)
+		if self._mo.isPosLock or not singleGroupMO:isEmpty() and singleGroupMO.trialPos then
+			GameFacade.showToast(ToastEnum.TrialCantTakeOff)
 
-		return
+			return
+		end
 	end
 
 	if HeroGroupModel.instance:isRestrict(self._mo.uid) then

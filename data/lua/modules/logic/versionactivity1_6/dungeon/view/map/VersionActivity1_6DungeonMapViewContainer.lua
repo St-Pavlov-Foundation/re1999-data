@@ -26,11 +26,13 @@ function VersionActivity1_6DungeonMapViewContainer:getMapScene()
 end
 
 function VersionActivity1_6DungeonMapViewContainer:buildTabViews(tabContainerId)
-	self.navigateView = NavigateButtonsView.New({
+	self.navigateView = DungeonNavigateButtonsView.New({
 		true,
 		true,
 		false
 	}, nil, nil, self.homeCallback, nil, self)
+
+	self.navigateView:setOpenCallback(self.initChapterRecheck, self)
 
 	return {
 		self.navigateView
@@ -79,6 +81,24 @@ end
 
 function VersionActivity1_6DungeonMapViewContainer:onContainerClose()
 	return
+end
+
+function VersionActivity1_6DungeonMapViewContainer:initChapterRecheck()
+	local chapterId = self:_getChapterId()
+
+	if self.navigateView then
+		self.navigateView:initChapterRecheck(chapterId)
+	end
+end
+
+function VersionActivity1_6DungeonMapViewContainer:getInteractiveItem()
+	return self.interactView
+end
+
+function VersionActivity1_6DungeonMapViewContainer:_getChapterId()
+	local chapterId = self.viewParam and self.viewParam.chapterId or VersionActivity1_6DungeonEnum.DungeonChapterId.Story
+
+	return chapterId
 end
 
 return VersionActivity1_6DungeonMapViewContainer

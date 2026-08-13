@@ -136,7 +136,6 @@ function StoryHeroEffsGlow:_doDestroy()
 		self._glowMat = nil
 	end
 
-	PostProcessingMgr.instance:setUIPPValue("localBloomActive", false)
 	StoryHeroEffsGlow.super.destroy(self)
 end
 

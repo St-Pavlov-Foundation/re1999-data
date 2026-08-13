@@ -115,10 +115,9 @@ function SwitchMainUIShowView:_editableInitView()
 	self._mailreddot = MonoHelper.addNoUpdateLuaComOnceToGo(self._gomailreddot, SwitchMainUIReddotIcon)
 	self._taskreddot = MonoHelper.addNoUpdateLuaComOnceToGo(self._gotaskreddot, SwitchMainUIReddotIcon)
 	self._bankreddot = MonoHelper.addNoUpdateLuaComOnceToGo(self._gobankreddot, SwitchMainUIReddotIcon)
-	self._goskinBg = gohelper.findChild(self.viewGO, "#go_skinBg")
+	self._goskinBg = gohelper.findChild(self.viewGO, "right/#go_skinBg")
 
 	gohelper.setActive(self._btnhide.gameObject, false)
-	gohelper.setActive(self._goskinBg.gameObject, false)
 	gohelper.setActive(self._goactivity.gameObject, false)
 
 	self._imagesummonnews = self:getUserDataTb_()

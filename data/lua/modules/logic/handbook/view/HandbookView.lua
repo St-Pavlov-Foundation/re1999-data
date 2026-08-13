@@ -59,6 +59,12 @@ end
 function HandbookView:_editableInitView()
 	self._simagebg:LoadImage(ResUrl.getHandbookBg("full/bg"))
 	gohelper.setActive(self._btnweekWalk.gameObject, false)
+
+	self._skinNewRedDot = RedDotController.instance:addNotEventRedDot(self._goSkinRedDot)
+
+	self._skinNewRedDot:setShowType(RedDotEnum.Style.Green)
+	self._skinNewRedDot:setCheckShowRedDotFunc(self.checkHandBookRedDot, self)
+	self._skinNewRedDot:refreshRedDot()
 end
 
 function HandbookView:onOpen()
@@ -78,6 +84,10 @@ function HandbookView:refreshRedDot()
 	local hasRedDot = HandbookController.instance:hasAnyHandBookSkinGroupRedDot()
 
 	gohelper.setActive(self._goSkinRedDot, hasRedDot)
+end
+
+function HandbookView:checkHandBookRedDot()
+	return true
 end
 
 function HandbookView:onClose()

@@ -259,7 +259,7 @@ function VersionActivity3_4DungeonMapNormalInteractView:refreshFightUI()
 
 	self.isFinish = DungeonModel.instance:hasPassLevel(episodeId)
 
-	if self.isFinish then
+	if self.isFinish and not self._isRecheck then
 		self.txtFight.text = luaLang("p_v1a5_news_order_finish")
 
 		self:setFinishText()
@@ -275,7 +275,7 @@ function VersionActivity3_4DungeonMapNormalInteractView:refreshDialogueUI()
 	self.dialogueId = tonumber(self._config.param)
 	self.isFinish = DialogueModel.instance:isFinishDialogue(self.dialogueId)
 
-	if self.isFinish then
+	if self.isFinish and not self._isRecheck then
 		self.txtDialogue.text = luaLang("p_v1a5_news_order_finish")
 
 		self:setFinishText()
@@ -437,10 +437,18 @@ end
 
 function VersionActivity3_4DungeonMapNormalInteractView:onClickRoot()
 	self:hide()
+
+	if self._isRecheck then
+		DungeonController.instance:onAgainOpenRecheckView(self._config.id)
+	end
 end
 
 function VersionActivity3_4DungeonMapNormalInteractView:_btncloseOnClick()
 	self:hide()
+
+	if self._isRecheck then
+		DungeonController.instance:onAgainOpenRecheckView(self._config.id)
+	end
 end
 
 function VersionActivity3_4DungeonMapNormalInteractView:_onClickNoneBtn()
@@ -476,7 +484,7 @@ function VersionActivity3_4DungeonMapNormalInteractView:_onClickFightBtn()
 end
 
 function VersionActivity3_4DungeonMapNormalInteractView:_onClickEnterDialogueBtn()
-	if self.isFinish then
+	if self.isFinish and not self._isRecheck then
 		self:hide()
 		self:finishElement()
 
@@ -485,7 +493,12 @@ function VersionActivity3_4DungeonMapNormalInteractView:_onClickEnterDialogueBtn
 
 	gohelper.setActive(self._gointeractroot, false)
 	DialogueController.instance:enterDialogue(self.dialogueId, function()
-		gohelper.setActive(self._gointeractroot, true)
+		if self._isRecheck then
+			self:hide()
+			DungeonController.instance:onAgainOpenRecheckView(self._config.id)
+		else
+			gohelper.setActive(self._gointeractroot, true)
+		end
 	end)
 end
 

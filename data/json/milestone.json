@@ -4,5 +4,17 @@
     "activityId": 138507,
     "type": 1,
     "isNotPush": false
+  },
+  {
+    "milestoneId": 390001,
+    "activityId": 13920,
+    "type": 2,
+    "isNotPush": false
+  },
+  {
+    "milestoneId": 390002,
+    "activityId": 13919,
+    "type": 3,
+    "isNotPush": false
   }
 ]

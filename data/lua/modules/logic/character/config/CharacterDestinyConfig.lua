@@ -252,8 +252,12 @@ function CharacterDestinyConfig:getHeroIdBydDestinyLastBattleTag(battleTag)
 			local facetCostCo = self:getDestinyFacetConsumeCo(facetId)
 			local tagList = string.split(facetCostCo.tag, "#")
 
+			if facetCostCo.tag == "" then
+				tagList = HeroConfig.instance:getHeroBattleTagList(heroId)
+			end
+
 			for _, tag in ipairs(tagList) do
-				if self._destinyBattleTagHeroIdDic[tag] == nil then
+				if not self._destinyBattleTagHeroIdDic[tag] then
 					self._destinyBattleTagHeroIdDic[tag] = {}
 				end
 

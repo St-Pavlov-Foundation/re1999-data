@@ -75,5 +75,27 @@
     "previewImage": "mainsceneswitch_numbg_pic04",
     "banner": "10401#10402#10403#10404#10405#10406",
     "showres": "sence_01/num04"
+  },
+  {
+    "id": 204,
+    "type": 2,
+    "defaultUnlock": 0,
+    "itemId": 672803,
+    "sort": 3,
+    "image": "mainsceneswitch_cardbg_04",
+    "previewImage": "mainsceneswitch_cardbg_pic04",
+    "banner": "20401#20402#20403#20404",
+    "showres": "sence_01/card04"
+  },
+  {
+    "id": 105,
+    "type": 1,
+    "defaultUnlock": 0,
+    "itemId": 682804,
+    "sort": 4,
+    "image": "mainsceneswitch_numbg_05",
+    "previewImage": "mainsceneswitch_numbg_pic05",
+    "banner": "10501#10502#10503#10504#10505#10506",
+    "showres": "sence_01/num05"
   }
 ]

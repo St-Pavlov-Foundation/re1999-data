@@ -27,10 +27,12 @@ end
 
 function HandbookSkinSuitDetailView3_3:_editableInitView()
 	self._scrollValue = 0
+	self._scrollRectWrap = SLFramework.UGUI.ScrollRectWrap.Get(self._goscroll)
 end
 
 function HandbookSkinSuitDetailView3_3:addEvents()
 	self:addEventCb(HandbookController.instance, HandbookEvent.OnClickFestivalSkinCard, self._onClickCardItem, self)
+	self:addEventCb(ViewMgr.instance, ViewEvent.OnOpenViewFinish, self.onViewOpenedFinish, self)
 	self._scroll:AddDragBeginListener(self._onScrollDragBegin, self)
 	self._scroll:AddDragEndListener(self._onScrollDragEnd, self)
 	self._scroll:AddDragListener(self._onScrollDragging, self)
@@ -38,6 +40,7 @@ function HandbookSkinSuitDetailView3_3:addEvents()
 end
 
 function HandbookSkinSuitDetailView3_3:removeEvents()
+	self:removeEventCb(ViewMgr.instance, ViewEvent.OnOpenViewFinish, self.onViewOpenedFinish, self)
 	self._scroll:RemoveDragBeginListener()
 	self._scroll:RemoveDragEndListener()
 	self._scroll:RemoveDragListener()
@@ -166,6 +169,7 @@ function HandbookSkinSuitDetailView3_3:_onScrollSlideDone()
 
 	self:_applyCardLayout()
 	self:UpdateSkinItemSelectedState()
+	self:_checkVisibleItemsUnlockVx()
 	UIBlockMgr.instance:endBlock(UIBlockKey.WaitItemAnimeDone)
 end
 
@@ -201,6 +205,8 @@ function HandbookSkinSuitDetailView3_3:_onClickCardItem(nodeIdx, skinId)
 end
 
 function HandbookSkinSuitDetailView3_3:onOpen()
+	logNormal(string.format("[Handbook] onOpen time: %.3f, viewName: %s", Time.realtimeSinceStartup, tostring(self.viewContainer.viewName)))
+
 	local viewParam = self.viewParam
 
 	self._skinSuitId = viewParam and viewParam.skinThemeGroupId
@@ -216,6 +222,37 @@ function HandbookSkinSuitDetailView3_3:onOpen()
 	self._viewAnimator:Play(UIAnimationName.Click, 0, 1)
 	self:_getPhotoRootGo(#self._skinIdList)
 	self:_refreshSkinItems()
+
+	local hasNewRedDot = HandbookController.instance:isHandbookSkinSuitNewRedDotShow(self._skinSuitId)
+
+	if hasNewRedDot then
+		self:_scrollToFirstUnlockRedDotSkin()
+		HandbookController.instance:markHandbookSkinNewRedDotShow(self._skinSuitId)
+	end
+end
+
+function HandbookSkinSuitDetailView3_3:_scrollToFirstUnlockRedDotSkin()
+	if not self._skinItemList then
+		return
+	end
+
+	local targetNodeIdx
+
+	for i = 1, #self._skinItemList do
+		local skinItem = self._skinItemList[i]
+
+		if skinItem and skinItem._skinId and skinItem._skinId ~= 0 and HandbookController.instance:isHandbookSkinUnlockRedDotShow(skinItem._skinId) then
+			targetNodeIdx = i - 1
+
+			break
+		end
+	end
+
+	if not targetNodeIdx then
+		return
+	end
+
+	self:_slideScrollTo(targetNodeIdx)
 end
 
 function HandbookSkinSuitDetailView3_3:_refreshSkinItems()
@@ -247,7 +284,7 @@ function HandbookSkinSuitDetailView3_3:_refreshSkinItems()
 
 		local item = MonoHelper.addNoUpdateLuaComOnceToGo(go, HandbookSkinItem3_3, self)
 
-		item:setData(nodeIdx, self._skinSuitId)
+		item:setData(nodeIdx, self._skinSuitId, self._scrollRectWrap)
 
 		self._cardItems[nodeIdx] = item
 		self._cardItemGos[nodeIdx] = go

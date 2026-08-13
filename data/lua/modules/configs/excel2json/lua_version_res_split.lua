@@ -4,7 +4,7 @@ module("modules.configs.excel2json.lua_version_res_split", package.seeall)
 
 local lua_version_res_split = {}
 local fields = {
-	path = 8,
+	ignore = 12,
 	packName = 11,
 	videoPath = 7,
 	audio = 2,
@@ -12,6 +12,7 @@ local fields = {
 	guide = 4,
 	uiFolder = 9,
 	story = 5,
+	path = 8,
 	chapter = 3,
 	id = 1,
 	uiPath = 10

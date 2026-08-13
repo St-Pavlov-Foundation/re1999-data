@@ -40,5 +40,124 @@
     "needProgress": 15,
     "bonus": "2#5#20000",
     "special": false
+  },
+  {
+    "milestoneId": 390001,
+    "bonusId": 1,
+    "needProgress": 1,
+    "bonus": "1#110903#3",
+    "special": false
+  },
+  {
+    "milestoneId": 390001,
+    "bonusId": 2,
+    "needProgress": 3,
+    "bonus": "1#110304#1",
+    "special": false
+  },
+  {
+    "milestoneId": 390001,
+    "bonusId": 3,
+    "needProgress": 6,
+    "bonus": "1#110803#2",
+    "special": false
+  },
+  {
+    "milestoneId": 390001,
+    "bonusId": 4,
+    "needProgress": 9,
+    "bonus": "1#111012#3",
+    "special": false
+  },
+  {
+    "milestoneId": 390001,
+    "bonusId": 5,
+    "needProgress": 12,
+    "bonus": "1#110703#2",
+    "special": false
+  },
+  {
+    "milestoneId": 390001,
+    "bonusId": 6,
+    "needProgress": 14,
+    "bonus": "1#110604#1",
+    "special": false
+  },
+  {
+    "milestoneId": 390001,
+    "bonusId": 7,
+    "needProgress": 16,
+    "bonus": "1#110603#2",
+    "special": false
+  },
+  {
+    "milestoneId": 390001,
+    "bonusId": 8,
+    "needProgress": 17,
+    "bonus": "1#111103#2",
+    "special": false
+  },
+  {
+    "milestoneId": 390001,
+    "bonusId": 9,
+    "needProgress": 18,
+    "bonus": "1#481010#1",
+    "special": false
+  },
+  {
+    "milestoneId": 390001,
+    "bonusId": 10,
+    "needProgress": 19,
+    "bonus": "2#3#20000",
+    "special": false
+  },
+  {
+    "milestoneId": 390001,
+    "bonusId": 11,
+    "needProgress": 20,
+    "bonus": "2#5#20000",
+    "special": false
+  },
+  {
+    "milestoneId": 390002,
+    "bonusId": 1,
+    "needProgress": 5000000,
+    "bonus": "1#110104#1",
+    "special": false
+  },
+  {
+    "milestoneId": 390002,
+    "bonusId": 2,
+    "needProgress": 10000000,
+    "bonus": "1#110304#1",
+    "special": false
+  },
+  {
+    "milestoneId": 390002,
+    "bonusId": 3,
+    "needProgress": 15000000,
+    "bonus": "1#111005#1",
+    "special": false
+  },
+  {
+    "milestoneId": 390002,
+    "bonusId": 4,
+    "needProgress": 24000000,
+    "bonus": "1#110404#1",
+    "special": false
+  },
+  {
+    "milestoneId": 390002,
+    "bonusId": 5,
+    "needProgress": 36000000,
+    "bonus": "1#110504#1",
+    "special": false
+  },
+  {
+    "milestoneId": 390002,
+    "bonusId": 6,
+    "needProgress": 50000000,
+    "bonus": "1#111006#1",
+    "special": false
   }
 ]

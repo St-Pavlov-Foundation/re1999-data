@@ -23,7 +23,6 @@ function HeroDeviceMO:refreshDevice(deviceId)
 	end
 
 	self._powerSkill = self:_parsePowerSkillInfo(self._config.powerSkill)
-	self._specialPowerSkill = self:_parsePowerSkillInfo(self._config.specialPowerSkill)
 	self._skills = {}
 	self._skills[1] = self:_parseSkillInfo(self._config.skill1)
 	self._skills[2] = self:_parseSkillInfo(self._config.skill2)
@@ -34,6 +33,43 @@ function HeroDeviceMO:refreshDevice(deviceId)
 
 		self._skills[1][2] = tabletool.copy(self._skills[2][1])
 		self._skills[2][1] = temp
+	end
+
+	self:_checkSpecialPowerSkills()
+end
+
+function HeroDeviceMO:_checkSpecialPowerSkills()
+	local specialcardCos = HeroConfig.instance:getHeroSpecialcardCos(self._heroId)
+
+	if specialcardCos then
+		local heroMo = self:getHeroMo()
+		local exSkillLevel = self._exSkillLevel or heroMo and heroMo.exSkillLevel or 0
+
+		if not self._tempExSkillLevel or self._tempExSkillLevel ~= exSkillLevel then
+			self._tempExSkillLevel = exSkillLevel
+
+			local co = specialcardCos[exSkillLevel]
+
+			if co and not string.nilorempty(co.skillcard) then
+				self._specialPowerSkill = {}
+
+				local skillIds = string.splitToNumber(co.skillcard, "|")
+
+				for _, skillId in ipairs(skillIds) do
+					local skillInfo = self:_getPowerSkillInfo(skillId)
+
+					if skillInfo then
+						table.insert(self._specialPowerSkill, skillInfo)
+					end
+				end
+
+				return
+			end
+		end
+	end
+
+	if not self._specialPowerSkill then
+		self._specialPowerSkill = self:_parsePowerSkillInfo(self._config.specialPowerSkill)
 	end
 end
 
@@ -48,23 +84,31 @@ function HeroDeviceMO:_parsePowerSkillInfo(str)
 
 	for _, info in ipairs(infos) do
 		local skillId = info[1]
-		local energyCo = lua_skill_energy.configDict[skillId]
+		local skillInfo = self:_getPowerSkillInfo(skillId, info[2])
 
-		if energyCo then
-			local skillInfo = {}
-
-			skillInfo.skillId = skillId
-			skillInfo.energyType = energyCo.energyType
-			skillInfo.energyCount = energyCo.count or 0
-			skillInfo.count = info[2] or 0
-			skillInfo.isSpecialCard = energyCo.isSpecialCard == 1
-			skillInfo.energyCo = energyCo
-
+		if skillInfo then
 			table.insert(powerSkills, skillInfo)
 		end
 	end
 
 	return powerSkills
+end
+
+function HeroDeviceMO:_getPowerSkillInfo(skillId, count)
+	local energyCo = lua_skill_energy.configDict[skillId]
+	local skillInfo = {}
+
+	skillInfo.skillId = skillId
+
+	if energyCo then
+		skillInfo.energyType = energyCo.energyType
+		skillInfo.energyCount = energyCo.count or 0
+		skillInfo.isSpecialCard = energyCo.isSpecialCard == 1
+		skillInfo.count = count or 0
+		skillInfo.energyCo = energyCo
+	end
+
+	return skillInfo
 end
 
 function HeroDeviceMO:_parseSkillInfo(str)
@@ -131,6 +175,22 @@ function HeroDeviceMO:getSkillInfoById(skillId)
 	end
 end
 
+function HeroDeviceMO:getPowerSkillInfoById(skillId)
+	for _, v in ipairs(self._powerSkill) do
+		if skillId == v.skillId then
+			return v
+		end
+	end
+end
+
+function HeroDeviceMO:getSpecialPowerSkillInfoById(skillId)
+	for _, v in ipairs(self._specialPowerSkill) do
+		if skillId == v.skillId then
+			return v
+		end
+	end
+end
+
 function HeroDeviceMO:getSelectCardGroupIndex()
 	return self._selectCardGroupIndex
 end
@@ -148,6 +208,8 @@ function HeroDeviceMO:getPowerSkills()
 end
 
 function HeroDeviceMO:getSpecialPowerSkills()
+	self:_checkSpecialPowerSkills()
+
 	return self._specialPowerSkill
 end
 
@@ -184,7 +246,11 @@ function HeroDeviceMO:getUniqueSkillPoint()
 end
 
 function HeroDeviceMO:getHeroMo()
-	return self._heroMo or self._heroId and HeroModel.instance:getByHeroId(self._heroId)
+	return self._heroMo
+end
+
+function HeroDeviceMO:setExSkillLevel(exSkillLevel)
+	self._exSkillLevel = exSkillLevel
 end
 
 return HeroDeviceMO

@@ -663,11 +663,17 @@ function SurvivalCeremonyClosingView:_initTalentGain()
 		local roleTechSpriteId = lua_survival_role.configDict[roleId].techSpriteId
 
 		if roleTechSpriteId ~= 0 then
-			spriteStr2 = string.format("<sprite=%s>%s%s", roleTechSpriteId, luaLang("multiple"), self.roleTechPoint)
+			spriteStr2 = GameUtil.getSubPlaceholderLuaLang(luaLang("SurvivalCeremonyClosingView_2"), {
+				roleTechSpriteId,
+				self.roleTechPoint
+			})
 		end
 
 		local roleName = lua_survival_role.configDict[roleId].name
-		local spriteStr1 = string.format("<sprite=%s>%s%s", outSideTechSpriteId, luaLang("multiple"), self.commonTechPoint)
+		local spriteStr1 = GameUtil.getSubPlaceholderLuaLang(luaLang("SurvivalCeremonyClosingView_2"), {
+			outSideTechSpriteId,
+			self.commonTechPoint
+		})
 		local str = GameUtil.getSubPlaceholderLuaLang(luaLang("SurvivalCeremonyClosingView_1"), {
 			roleName,
 			spriteStr1,

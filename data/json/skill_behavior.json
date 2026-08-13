@@ -3958,5 +3958,68 @@
     "audioId": 0,
     "dec_Type": 0,
     "dec": ""
+  },
+  {
+    "id": 60331,
+    "type": "ClearHedoneCounter",
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0,
+    "dec_Type": 0,
+    "dec": ""
+  },
+  {
+    "id": 60332,
+    "type": "HedoneHurt",
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0,
+    "dec_Type": 0,
+    "dec": ""
+  },
+  {
+    "id": 60333,
+    "type": "HedoneAddCard",
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0,
+    "dec_Type": 0,
+    "dec": ""
+  },
+  {
+    "id": 60334,
+    "type": "HedoneAddDevicePower",
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0,
+    "dec_Type": 0,
+    "dec": ""
+  },
+  {
+    "id": 60335,
+    "type": "AddBuffByBuffLayerChance",
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0,
+    "dec_Type": 0,
+    "dec": ""
+  },
+  {
+    "id": 60336,
+    "type": "ConsumeBuffAddBuffLimit",
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0,
+    "dec_Type": 0,
+    "dec": ""
+  },
+  {
+    "id": 60337,
+    "type": "SkillRateAttrByTargetBuffType",
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0,
+    "dec_Type": 0,
+    "dec": ""
   }
 ]

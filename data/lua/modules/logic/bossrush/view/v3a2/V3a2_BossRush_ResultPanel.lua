@@ -58,7 +58,7 @@ function V3a2_BossRush_ResultPanel:_editableInitView()
 
 	gohelper.setActive(self._goscore, false)
 
-	self._curStage, self._curLayer = BossRushModel.instance:getBattleStageAndLayer()
+	self._curStage, self._curLayer, self._actId = BossRushModel.instance:getBattleStageAndLayer()
 	self.fightScore = BossRushModel.instance:getFightScore() or 0
 	self._txtScore.text = BossRushConfig.instance:getScoreStr(self.fightScore)
 	self._isSpecialLayer = BossRushModel.instance:isSpecialLayer(self._curLayer)
@@ -87,7 +87,12 @@ function V3a2_BossRush_ResultPanel:onOpen()
 end
 
 function V3a2_BossRush_ResultPanel:_openResultView()
-	ViewMgr.instance:openView(ViewName.V3a2_BossRush_ResultView, self.viewParam)
+	if self._actId == V3a9_BossRushModel.instance:getActModeActId() then
+		ViewMgr.instance:openView(ViewName.V3a9_BossRush_ResultView, self.viewParam)
+	else
+		ViewMgr.instance:openView(ViewName.V3a2_BossRush_ResultView, self.viewParam)
+	end
+
 	self:closeThis()
 end
 

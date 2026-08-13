@@ -21,35 +21,59 @@ function HeroGroupQuickEditListModel:copyQuickEditCardList()
 	self._originalHeroUidList = {}
 	self._selectUid = nil
 
+	local _, assistMo = HeroGroupModel.instance:getAssistMo()
+	local editorAssistMo = HeroGroupModel.instance:getEditorAssistMo()
+	local _assistMo = editorAssistMo or assistMo and assistMo.assistMo
+
+	if _assistMo then
+		table.insert(newMOList, _assistMo.heroMO)
+	end
+
+	if assistMo then
+		local posOpen = HeroGroupModel.instance:isPositionOpen(assistMo.id)
+
+		if posOpen then
+			self._inTeamHeroUidMap[assistMo.heroUid] = 1
+			repeatHero[assistMo.heroUid] = true
+		end
+	end
+
 	local alreadyList = HeroSingleGroupModel.instance:getList()
 
 	for pos, heroSingleGroupMO in ipairs(alreadyList) do
+		local isAssistPos = assistMo and assistMo.id == pos
 		local posOpen = HeroGroupModel.instance:isPositionOpen(pos)
 		local heroUid = heroSingleGroupMO.heroUid
 
-		if tonumber(heroUid) > 0 and not repeatHero[heroUid] then
-			table.insert(newMOList, HeroModel.instance:getById(heroUid))
-
-			if posOpen then
-				self._inTeamHeroUidMap[heroUid] = 1
-			end
-
-			repeatHero[heroUid] = true
-		else
-			local singleGroupMo = HeroSingleGroupModel.instance:getByIndex(pos)
-
-			if singleGroupMo.trial then
-				table.insert(newMOList, HeroGroupTrialModel.instance:getById(heroUid))
+		if not isAssistPos then
+			if tonumber(heroUid) > 0 and not repeatHero[heroUid] then
+				table.insert(newMOList, HeroModel.instance:getById(heroUid))
 
 				if posOpen then
 					self._inTeamHeroUidMap[heroUid] = 1
 				end
 
 				repeatHero[heroUid] = true
+			else
+				local singleGroupMo = HeroSingleGroupModel.instance:getByIndex(pos)
+
+				if singleGroupMo.trial then
+					table.insert(newMOList, HeroGroupTrialModel.instance:getById(heroUid))
+
+					if posOpen then
+						self._inTeamHeroUidMap[heroUid] = 1
+					end
+
+					repeatHero[heroUid] = true
+				end
 			end
 		end
 
 		if posOpen then
+			if assistMo and _assistMo and assistMo.id == pos then
+				heroUid = _assistMo.heroUid
+			end
+
 			table.insert(self._inTeamHeroUidList, heroUid)
 			table.insert(self._originalHeroUidList, heroUid)
 		end

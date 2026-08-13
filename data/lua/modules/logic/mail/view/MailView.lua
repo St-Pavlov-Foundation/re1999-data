@@ -170,7 +170,7 @@ function MailView:_analysisJumpUrl(url)
 
 			return finalUrl
 		elseif urlType == "H5AutoLogin" then
-			local finalUrl = WebViewController:getRecordUserUrl(arr[2])
+			local finalUrl = WebViewController.instance:getRecordUserUrl(arr[2])
 
 			return finalUrl
 		end

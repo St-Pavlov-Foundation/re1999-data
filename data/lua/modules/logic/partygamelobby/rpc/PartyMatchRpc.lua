@@ -4,6 +4,29 @@ module("modules.logic.partygamelobby.rpc.PartyMatchRpc", package.seeall)
 
 local PartyMatchRpc = class("PartyMatchRpc", BaseRpc)
 
+function PartyMatchRpc:sendPartyServerListRequest(callback, callbackObj)
+	local req = PartyMatchModule_pb.PartyServerListRequest()
+
+	return self:sendMsg(req, callback, callbackObj)
+end
+
+function PartyMatchRpc:onReceivePartyServerListReply(resultCode, msg)
+	if resultCode ~= 0 then
+		return
+	end
+
+	PartyGameRoomModel.instance:onReceivePartyServerListReply(msg)
+	PartyGameLobbyController.instance:dispatchEvent(PartyGameLobbyEvent.onReceivePartyServerListReply, msg)
+end
+
+function PartyMatchRpc:simpleSingleStartPartyMatchReq()
+	PartyGameRoomModel.instance:pingServerList(self._onPingDoneSingleStartPartyMatch, self)
+end
+
+function PartyMatchRpc:_onPingDoneSingleStartPartyMatch()
+	self:sendSingleStartPartyMatchRequest(PartyGameRoomModel.getResVersion())
+end
+
 function PartyMatchRpc:onReceiveMatchStatusPush(resultCode, msg)
 	if resultCode ~= 0 then
 		return
@@ -79,10 +102,11 @@ function PartyMatchRpc:onReceiveMatchFailPush(resultCode, msg)
 	GameFacade.showToast(ToastEnum.ParyGameMatchFail)
 end
 
-function PartyMatchRpc:sendSingleStartPartyMatchRequest(version)
+function PartyMatchRpc:sendSingleStartPartyMatchRequest(version, area)
 	local req = PartyMatchModule_pb.SingleStartPartyMatchRequest()
 
 	req.version = version
+	req.area = area or PartyGameRoomModel.instance:getFastestAreaId()
 
 	self:sendMsg(req)
 end

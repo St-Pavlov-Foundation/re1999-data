@@ -116,6 +116,11 @@ function StoreController:openPackageStoreGoodsView(packageGoodsMO)
 			canJump = true,
 			goodsId = packageGoodsMO.config.id
 		})
+	elseif PackageStoreEnum.DecorateCombinationIdDic[packageGoodsMO.config.id] then
+		ViewMgr.instance:openView(ViewName.StoreDecorateCombinationView, {
+			canJump = true,
+			goodsId = packageGoodsMO.config.id
+		})
 	else
 		ViewMgr.instance:openView(ViewName.PackageStoreGoodsView, packageGoodsMO)
 	end

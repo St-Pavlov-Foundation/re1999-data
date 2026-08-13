@@ -84,7 +84,7 @@ function OpenController:_delayCheckFuncUnlock()
 		BpRpc.instance:sendGetBpInfoRequest(false)
 	end
 
-	TurnbackRpc.instance:sendGetTurnbackInfoRequest()
+	TurnbackController.instance:sendGetTurnbackInfoRequest()
 	UserSettingRpc.instance:sendGetSettingInfosRequest()
 	ItemRpc.instance:sendGetPowerMakerInfoRequest(false, true)
 end

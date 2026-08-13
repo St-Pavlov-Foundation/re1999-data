@@ -109,6 +109,16 @@ function FightWorkBeforeStartNoticeView.canShowTips()
 				show_tips = true
 			end
 		end
+
+		local data229 = customData[FightCustomData.CustomDataType.Act229]
+
+		if data229 then
+			local selectSkillIds = data229.selectSkillIds
+
+			if selectSkillIds and #selectSkillIds > 0 then
+				show_tips = true
+			end
+		end
 	end
 
 	local firstGuide = GuideModel.instance:isDoingFirstGuide()

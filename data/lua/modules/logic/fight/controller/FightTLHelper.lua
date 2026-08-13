@@ -20,4 +20,35 @@ function FightTLHelper.getNumberParam(paramStr)
 	return tonumber(paramStr)
 end
 
+local DefaultEmptyTable = {}
+local TimelineJsonCacheDict = {}
+
+function FightTLHelper.getTLJsonData(assetItem, timelineUrl)
+	if not timelineUrl then
+		return DefaultEmptyTable
+	end
+
+	local cacheJson = TimelineJsonCacheDict[timelineUrl]
+
+	if cacheJson then
+		return cacheJson
+	end
+
+	local jsonStr = ZProj.SkillTimelineAssetHelper.GeAssetJson(assetItem, timelineUrl)
+
+	if not string.nilorempty(jsonStr) then
+		cacheJson = cjson.decode(jsonStr)
+	else
+		cacheJson = DefaultEmptyTable
+	end
+
+	TimelineJsonCacheDict[timelineUrl] = cacheJson
+
+	return cacheJson
+end
+
+function FightTLHelper.clearCache()
+	tabletool.clear(TimelineJsonCacheDict)
+end
+
 return FightTLHelper

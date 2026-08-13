@@ -105,6 +105,10 @@ function HeroRpc:onReceiveHeroSkinGainPush(resultCode, msg)
 
 	HeroModel.instance:onGainSkinList(msg.skinId)
 
+	if param.firstGain then
+		HandbookController.instance:onGainHandbookSkin(msg.skinId)
+	end
+
 	if ItemApproachHelper.isTaskApproach(msg.getApproach) then
 		TaskController.instance:getRewardByLine(msg.getApproach, ViewName.CharacterSkinGainView, param)
 	elseif msg.getApproach == MaterialEnum.GetApproach.AutoChessRankReward then

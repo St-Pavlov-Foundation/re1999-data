@@ -24,7 +24,7 @@ function PartyGameRewardCardItem:onSelect(isSelect)
 	gohelper.setActive(self._goselectframe_reward, isSelect)
 end
 
-function PartyGameCommonCard:showSelectFinish(isFinish)
+function PartyGameRewardCardItem:showSelectFinish(isFinish)
 	local needHide = isFinish and not self._isSelect
 
 	self._uiEffect:SetGray(needHide)
@@ -55,7 +55,7 @@ function PartyGameRewardCardItem:setCanSelect(state)
 	self._canSelect = state
 end
 
-function PartyGameCommonCard:showNewSelectState(show)
+function PartyGameRewardCardItem:showNewSelectState(show)
 	if self._ani then
 		self._ani:Play(show and "appear" or "empty", 0, 0)
 	end

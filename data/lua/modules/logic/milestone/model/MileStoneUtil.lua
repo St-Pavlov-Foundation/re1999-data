@@ -58,11 +58,27 @@ function MileStoneUtil.getMileStoneProgressByType(type)
 		return MileStoneUtil.getMileStoneProgress_SP02OutSide()
 	end
 
+	if type == MileStoneEnum.MileStoneType.V3a9Racing then
+		return MileStoneUtil.getMileStoneProgress_V3a9Racing()
+	end
+
+	if type == MileStoneEnum.MileStoneType.V3a9BossRush then
+		return MileStoneUtil.getMileStoneProgress_V3a9BossRush()
+	end
+
 	return 0
 end
 
 function MileStoneUtil.getMileStoneProgress_SP02OutSide()
 	return AtomicDungeonModel.instance:getPolygonProgress()
+end
+
+function MileStoneUtil.getMileStoneProgress_V3a9Racing()
+	return V3a9RacingCarEpisodeModel.instance:getTotalStar()
+end
+
+function MileStoneUtil.getMileStoneProgress_V3a9BossRush()
+	return V3a9_BossRushModel.instance:getBonusProgress()
 end
 
 return MileStoneUtil

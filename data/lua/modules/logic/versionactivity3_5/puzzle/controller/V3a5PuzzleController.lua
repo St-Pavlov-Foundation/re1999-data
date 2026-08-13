@@ -31,6 +31,14 @@ function V3a5PuzzleController:_initStoryViewInfo()
 end
 
 function V3a5PuzzleController:isOpenPuzzleView(storyId, isOpen, episodeId, afterStory)
+	if storyId == V3a9BirdModel.instance:getBeforeStoryId() then
+		if isOpen then
+			self:openPuzzleView(storyId, episodeId, afterStory)
+		end
+
+		return true
+	end
+
 	if not self._storyViewInfos then
 		self:_initStoryViewInfo()
 	end
@@ -47,6 +55,18 @@ function V3a5PuzzleController:isOpenPuzzleView(storyId, isOpen, episodeId, after
 end
 
 function V3a5PuzzleController:openPuzzleView(storyId, episodeId, afterStory)
+	if storyId == V3a9BirdModel.instance:getBeforeStoryId() then
+		local actId = V3a9BirdModel.instance:getActId()
+
+		V3a9BirdRpc.instance:sendGetAct243InfoRequest(actId, function()
+			local level = V3a9BirdModel.instance:getStoryEpisodeId()
+
+			V3a9BirdController.instance:enterGame(level)
+		end)
+
+		return
+	end
+
 	local viewName = self._storyViewInfos[storyId]
 
 	if string.nilorempty(viewName) then

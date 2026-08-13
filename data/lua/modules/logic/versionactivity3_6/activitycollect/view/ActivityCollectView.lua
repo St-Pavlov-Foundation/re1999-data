@@ -457,7 +457,9 @@ function ActivityCollectView:_refreshAct5Time()
 
 	local time, format = TimeUtil.secondToRoughTime2(math.floor(limitSec))
 
-	self._txtact5limit.text = luaLang("p_dungeonweekwalkview_device") .. time .. format
+	self._txtact5limit.text = GameUtil.getSubPlaceholderLuaLang(luaLang("weekwalkview_devicerestart"), {
+		time .. format
+	})
 end
 
 function ActivityCollectView:_refreshAct6Time()
@@ -485,7 +487,9 @@ function ActivityCollectView:_refreshAct6Time()
 
 	local time, format = TimeUtil.secondToRoughTime2(math.floor(limitSec))
 
-	self._txtact6limit.text = luaLang("p_dungeonweekwalkview_device") .. time .. format
+	self._txtact6limit.text = GameUtil.getSubPlaceholderLuaLang(luaLang("weekwalkview_devicerestart"), {
+		time .. format
+	})
 end
 
 function ActivityCollectView:onClose()

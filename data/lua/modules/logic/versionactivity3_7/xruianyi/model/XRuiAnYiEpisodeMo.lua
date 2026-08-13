@@ -31,7 +31,7 @@ function XRuiAnYiEpisodeMo:checkFinishGame()
 end
 
 function XRuiAnYiEpisodeMo:isGame()
-	local config = XRuiAnYiConfig:getEpisodeCo(self._actId, self.episodeId)
+	local config = XRuiAnYiConfig.instance:getEpisodeCo(self._actId, self.episodeId)
 
 	return config and config.gameId ~= 0
 end

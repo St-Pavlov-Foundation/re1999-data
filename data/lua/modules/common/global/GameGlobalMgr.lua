@@ -65,6 +65,10 @@ function GameGlobalMgr:refreshTouchEffectSkin()
 	self._screenTouch:refreshEffect()
 end
 
+function GameGlobalMgr:isBanGC()
+	return self._fullViewState:isBanGC()
+end
+
 GameGlobalMgr.instance = GameGlobalMgr.New()
 
 return GameGlobalMgr

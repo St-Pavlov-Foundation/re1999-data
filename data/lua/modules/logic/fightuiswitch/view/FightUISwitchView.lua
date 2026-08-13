@@ -114,7 +114,21 @@ function FightUISwitchView:_toSwitchTab(tabContainerId, tabId)
 end
 
 function FightUISwitchView:onOpen()
-	FightUISwitchModel.instance:setCurShowStyleClassify(FightUISwitchEnum.StyleClassify.FightCard)
+	local styleClassify
+
+	if self.viewParam and self.viewParam.jumpTabs and self.viewParam.jumpTabs[1] == MainEnum.SwitchType.FightUI and self.viewParam.jumpTabs[2] then
+		for tab, info in ipairs(FightUISwitchEnum.StyleClassifyInfo) do
+			if info.Sort == self.viewParam.jumpTabs[2] then
+				styleClassify = tab
+
+				break
+			end
+		end
+	end
+
+	styleClassify = styleClassify or FightUISwitchEnum.StyleClassify.FightCard
+
+	FightUISwitchModel.instance:setCurShowStyleClassify(styleClassify)
 
 	self._effectComp = MonoHelper.addNoUpdateLuaComOnceToGo(self._gobottom, FightUISwitchEffectComp)
 

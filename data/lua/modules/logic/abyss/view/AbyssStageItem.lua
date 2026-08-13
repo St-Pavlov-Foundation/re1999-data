@@ -43,7 +43,7 @@ function AbyssStageItem:_btnclickOnClick()
 	param.actId = self.actId
 	param.stageId = self.stageId
 
-	ViewMgr.instance:openView(ViewName.AbyssStageDetailView, param)
+	ViewMgr.instance:openView(ViewName.AbyssStageDetailsView, param)
 end
 
 function AbyssStageItem:_editableInitView()

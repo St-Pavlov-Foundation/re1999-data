@@ -59,15 +59,15 @@ function TravelGoAttackNode:onEnable()
 	local actId = TravelGoModel.instance.activityId
 
 	if self.attacker.entityType == TravelGoBattleEnum.EntityType.Player then
-		local attackKeyTimeScale = TravelGoConfig:getConsValue(actId, TravelGoConst.ConstId.AttackKeyTimeScale, true) or 1
+		local attackKeyTimeScale = TravelGoConfig.instance:getConsValue(actId, TravelGoConst.ConstId.AttackKeyTimeScale, true) or 1
 
 		keyTime = attackAnimTime * attackKeyTimeScale
 	else
 		keyTime = self.attacker.cfg.keyTime
 	end
 
-	local hitTime = TravelGoConfig:getConsValue(actId, TravelGoConst.ConstId.AttackHitTime, true) or 1
-	local battleSpeed = TravelGoConfig:getConsValue(actId, TravelGoConst.ConstId.BattleSpeed, true) or 1
+	local hitTime = TravelGoConfig.instance:getConsValue(actId, TravelGoConst.ConstId.AttackHitTime, true) or 1
+	local battleSpeed = TravelGoConfig.instance:getConsValue(actId, TravelGoConst.ConstId.BattleSpeed, true) or 1
 
 	attackAnimTime = attackAnimTime / battleSpeed + 0.3
 	keyTime = keyTime / battleSpeed

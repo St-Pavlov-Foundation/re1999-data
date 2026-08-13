@@ -118,7 +118,9 @@ local kAct101RedList = {
 	ActivityEnum.Activity.SP02_AtomicOperationActivitySignIn,
 	ActivityEnum.Activity.SP02_PaoMianActivityShop,
 	ActivityEnum.Activity.SP02_LinkGift,
-	ActivityEnum.Activity.S02SceneUIPackageAct
+	ActivityEnum.Activity.S02SceneUIPackageAct,
+	ActivityEnum.Activity.V3a9_BDuckLinkage,
+	ActivityEnum.Activity.S02GiftRecommend
 }
 local kAct125List = {
 	ActivityEnum.Activity.VersionActivity1_3Radio,
@@ -175,6 +177,10 @@ function ActivityController:checkGetActivityInfo()
 
 	if ActivityModel.instance:isActOnLine(ActivityEnum.Activity.V2a7_NewInsight) then
 		Activity172Rpc.instance:sendGetAct172InfoRequest(ActivityEnum.Activity.V2a7_NewInsight)
+	end
+
+	if ActivityModel.instance:isActOnLine(ActivityEnum.Activity.V3a9_NewInsight) then
+		Activity172Rpc.instance:sendGetAct172InfoRequest(ActivityEnum.Activity.V3a9_NewInsight)
 	end
 
 	if OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.Tower) then

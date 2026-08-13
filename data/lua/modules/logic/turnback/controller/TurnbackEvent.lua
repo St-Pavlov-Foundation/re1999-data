@@ -25,5 +25,8 @@ TurnbackEvent.OnTaskFinishAnim = 18
 TurnbackEvent.AfterReceiveDayFree = 19
 TurnbackEvent.FinishTaskItem = 20
 TurnbackEvent.OnViewOpenFinish = 21
+TurnbackEvent.OnTurnbackReturnRewardReply = 22
+TurnbackEvent.OnRefreshReturnRewardTask = 23
+TurnbackEvent.OnFinishReturnRewardRefreshAnim = 24
 
 return TurnbackEvent

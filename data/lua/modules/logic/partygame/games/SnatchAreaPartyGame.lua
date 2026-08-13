@@ -14,7 +14,7 @@ function SnatchAreaPartyGame:initCsGameBase(csGameBase)
 end
 
 function SnatchAreaPartyGame:csCallback()
-	GameFacade.showToast(341200)
+	GameFacade.showToast(ToastEnum.SnatchAreaPartyGame_341200)
 end
 
 function SnatchAreaPartyGame:onSceneClose()

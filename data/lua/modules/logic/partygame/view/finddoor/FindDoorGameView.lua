@@ -21,12 +21,12 @@ end
 
 function FindDoorGameView:addEvents()
 	self._btnEnter:AddClickListener(self._onEnterClick, self)
-	SecurityGameView.super.addEvents(self)
+	FindDoorGameView.super.addEvents(self)
 end
 
 function FindDoorGameView:removeEvents()
 	self._btnEnter:RemoveClickListener()
-	SecurityGameView.super.removeEvents(self)
+	FindDoorGameView.super.removeEvents(self)
 end
 
 function FindDoorGameView:onOpen()
@@ -39,7 +39,7 @@ function FindDoorGameView:onOpen()
 	self._cameraTween = nil
 	self._effectComp = MonoHelper.addNoUpdateLuaComOnceToGo(self.viewGO, FindDoorEffectComp)
 
-	SecurityGameView.super.onOpen(self)
+	FindDoorGameView.super.onOpen(self)
 end
 
 local cameraOffset = Vector3(-0.3348703, 21.22, -33.58772)

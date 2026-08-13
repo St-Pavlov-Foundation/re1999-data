@@ -40,6 +40,23 @@ function Activity186Rpc:onReceiveFinishAct186TaskReply(resultCode, msg)
 	Activity186Controller.instance:dispatchEvent(Activity186Event.FinishTask, msg)
 end
 
+function Activity186Rpc:sendFinishAllAct186TaskRequest(activityId)
+	local req = Activity186Module_pb.FinishAllAct186TaskRequest()
+
+	req.activityId = activityId
+
+	self:sendMsg(req)
+end
+
+function Activity186Rpc:onReceiveFinishAllAct186TaskReply(resultCode, msg)
+	if resultCode ~= 0 then
+		return
+	end
+
+	Activity186Model.instance:onFinishAllAct186Task(msg)
+	Activity186Controller.instance:dispatchEvent(Activity186Event.FinishAllTask, msg)
+end
+
 function Activity186Rpc:sendGetAct186MilestoneRewardRequest(activityId)
 	local req = Activity186Module_pb.GetAct186MilestoneRewardRequest()
 

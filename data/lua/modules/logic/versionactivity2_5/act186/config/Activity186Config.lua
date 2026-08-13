@@ -145,8 +145,8 @@ function Activity186Config:getQuestionConfig(actId, questionId)
 	return dict and dict[questionId]
 end
 
-function Activity186Config:getConstNum(constId)
-	local constStr = self:getConstStr(constId)
+function Activity186Config:getConstNum(activityId, constId)
+	local constStr = self:getConstStr(activityId, constId)
 
 	if string.nilorempty(constStr) then
 		return 0
@@ -155,8 +155,9 @@ function Activity186Config:getConstNum(constId)
 	end
 end
 
-function Activity186Config:getConstStr(constId)
-	local constCO = self.constConfig.configDict[constId]
+function Activity186Config:getConstStr(activityId, constId)
+	local constDict = self.constConfig.configDict[activityId]
+	local constCO = constDict and constDict[constId]
 
 	if not constCO then
 		return nil
@@ -169,6 +170,13 @@ function Activity186Config:getConstStr(constId)
 	end
 
 	return constCO.value2
+end
+
+function Activity186Config:isRefreshTask(taskId)
+	local taskCo = self:getTaskConfig(taskId)
+	local loopType = taskCo and taskCo.loopType
+
+	return loopType == Activity186Enum.LoopType.Day or loopType == Activity186Enum.LoopType.Week
 end
 
 Activity186Config.instance = Activity186Config.New()

@@ -746,5 +746,27 @@
     "rewardScore": 0,
     "rewardImage": "",
     "rewardPriority": 10
+  },
+  {
+    "id": 4011,
+    "stage": 4,
+    "value": "2#3#10",
+    "maxBuyCount": 0,
+    "num": 5,
+    "group": 3,
+    "rewardScore": 0,
+    "rewardImage": "",
+    "rewardPriority": 0
+  },
+  {
+    "id": 4012,
+    "stage": 4,
+    "value": "2#5#20",
+    "maxBuyCount": 0,
+    "num": 5,
+    "group": 3,
+    "rewardScore": 0,
+    "rewardImage": "",
+    "rewardPriority": 0
   }
 ]

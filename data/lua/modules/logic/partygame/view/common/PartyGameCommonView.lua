@@ -22,7 +22,7 @@ function PartyGameCommonView:onInitView()
 
 	self._enduiloader = PrefabInstantiate.Create(go)
 
-	self._enduiloader:startLoad("ui/viewres/partygame/common/component/partygameendui.prefab", self._onLoadEndUIFinish, self)
+	self._enduiloader:startLoad("modules/party_game/ui/viewres/common/component/partygameendui.prefab", self._onLoadEndUIFinish, self)
 end
 
 function PartyGameCommonView:addEvents()

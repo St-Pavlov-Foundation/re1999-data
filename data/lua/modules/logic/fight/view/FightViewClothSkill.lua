@@ -614,7 +614,7 @@ function FightViewClothSkill:_onClickSkillIcon(index, isReplay)
 
 	if self._toUseSkillId == FightEnum.DeviceDiscardSkillId then
 		if not FightDataHelper.handCardMgr:hasDeviceCard() then
-			GameFacade.showToast(374001)
+			GameFacade.showToast(ToastEnum.FightViewClothSkill_374001)
 
 			return
 		end
@@ -624,7 +624,7 @@ function FightViewClothSkill:_onClickSkillIcon(index, isReplay)
 		return
 	elseif self._toUseSkillId == FightEnum.GenerateOneLevelCardSkillId then
 		if FightHelper.allIsDeviceEntity() then
-			GameFacade.showToast(379011)
+			GameFacade.showToast(ToastEnum.FightViewClothSkill_379011)
 
 			return
 		end

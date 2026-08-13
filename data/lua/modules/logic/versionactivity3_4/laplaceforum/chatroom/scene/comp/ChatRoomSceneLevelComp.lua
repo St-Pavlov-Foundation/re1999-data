@@ -9,7 +9,7 @@ function ChatRoomSceneLevelComp:loadLevel(levelId)
 
 	self:getCurScene():setCurLevelId(self._levelId)
 
-	self._resPath = "modules/party_game/game_home/prefabs/party_game_home_p.prefab"
+	self._resPath = "modules/party_game/scene/game_home/prefabs/party_game_home_p.prefab"
 
 	loadAbAsset(self._resPath, false, self._onLoadCallback, self)
 end

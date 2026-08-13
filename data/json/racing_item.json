@@ -1,0 +1,50 @@
+[
+  {
+    "id": 13951,
+    "name": "加速冲浪板",
+    "effect": "10201|10202",
+    "icon": "v3a9_racing_game_skill_icon_4"
+  },
+  {
+    "id": 13952,
+    "name": "湛蓝的庇佑",
+    "effect": "10211|10212",
+    "icon": "v3a9_racing_game_skill_icon_1"
+  },
+  {
+    "id": 13953,
+    "name": "引力涡旋",
+    "effect": "10221",
+    "icon": "v3a9_racing_game_skill_icon_3"
+  },
+  {
+    "id": 13954,
+    "name": "减速沙滩球",
+    "effect": "10231|10232",
+    "icon": "v3a9_racing_game_skill_icon_5"
+  },
+  {
+    "id": 13955,
+    "name": "浮空马达",
+    "effect": "10241|10242",
+    "icon": "v3a9_racing_game_skill_icon_2"
+  },
+  {
+    "id": 13961,
+    "name": "加速冲浪板",
+    "effect": "10251|10252",
+    "icon": "v3a9_racing_game_skill_icon_4"
+  },
+  {
+    "id": 13962,
+    "name": "浮空马达",
+    "effect": "10261|10262",
+    "icon": "v3a9_racing_game_skill_icon_2"
+  },
+  {
+    "id": 13963,
+    "name": "引力涡旋",
+    "effect": "10263",
+    "icon": "v3a9_racing_game_skill_icon_3"
+  }
+]

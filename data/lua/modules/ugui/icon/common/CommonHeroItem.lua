@@ -384,6 +384,10 @@ function CommonHeroItem:setRestrict(isRestrict)
 	gohelper.setActive(self._gohurten, not isRestrict)
 end
 
+function CommonHeroItem:isRestrict()
+	return self._isRestrict
+end
+
 function CommonHeroItem:setGrayFactor(value)
 	self._commonHeroCard:setGrayFactor(value)
 end

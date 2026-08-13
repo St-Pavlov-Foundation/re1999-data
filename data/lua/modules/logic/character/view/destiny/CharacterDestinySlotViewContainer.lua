@@ -32,6 +32,12 @@ function CharacterDestinySlotViewContainer:setCurDestinySlot(destinySlot)
 end
 
 function CharacterDestinySlotViewContainer:playCloseTransition()
+	if self:_isJustOpenStone() then
+		self:onCloseAnimDone()
+
+		return
+	end
+
 	local animatorPlayer = ZProj.ProjAnimatorPlayer.Get(self.viewGO)
 	local isUnlock = self._destinySlot and self._destinySlot:isUnlockSlot()
 	local animName = isUnlock and CharacterDestinyEnum.SlotViewAnim.CloseUnlock or CharacterDestinyEnum.SlotViewAnim.CloseLock
@@ -43,6 +49,18 @@ function CharacterDestinySlotViewContainer:onCloseAnimDone()
 	self:onPlayCloseTransitionFinish()
 
 	self._destinySlot = nil
+end
+
+function CharacterDestinySlotViewContainer:_isJustOpenStone()
+	local heroMo = self.viewParam.heroMo
+
+	if not heroMo then
+		return
+	end
+
+	local isOpen = heroMo:isCanOpenDestinySystem()
+
+	return not isOpen
 end
 
 return CharacterDestinySlotViewContainer

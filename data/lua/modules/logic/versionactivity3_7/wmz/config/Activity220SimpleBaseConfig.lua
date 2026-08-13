@@ -17,7 +17,11 @@ function Activity220SimpleBaseConfig:taskType()
 end
 
 function Activity220SimpleBaseConfig:reqConfigNames()
-	return Activity220Config:reqConfigNames()
+	return {
+		"activity220_const",
+		"activity220_episode",
+		"activity220_task"
+	}
 end
 
 function Activity220SimpleBaseConfig:onConfigLoaded(configName, configTable)

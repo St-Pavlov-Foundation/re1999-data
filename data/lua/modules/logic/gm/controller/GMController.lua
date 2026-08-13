@@ -356,6 +356,23 @@ function GMController:playFightSceneSpineAnimation(animationName)
 
 	self._attacker = attacker
 
+	local entityData = FightDataHelper.entityMgr:getById(self._attacker.id)
+	local skinId = entityData and entityData.skin
+	local config = lua_fight_skin_entity_enter_timeline.configDict[skinId]
+
+	if animationName == "born" and config and self._attacker.skill then
+		local fightStepData = FightStepData.New(FightDef_pb.FightStep())
+
+		fightStepData.fromId = entityData.id
+		fightStepData.toId = entityData.id
+
+		local timelineWork = self._attacker.skill:registTimelineWork(config.timeline, fightStepData)
+
+		timelineWork:start()
+
+		return
+	end
+
 	local spineActionDict = FightConfig.instance:getSkinSpineActionDict(self._attacker:getMO().skin)
 	local spineActionCO = spineActionDict and spineActionDict[animationName]
 
@@ -442,7 +459,7 @@ end
 
 function GMController:getGMNode(pathInNode, setParentGO)
 	if isDebugBuild then
-		if not self._prefab then
+		if not self._prefab or not setParentGO then
 			return nil
 		end
 

@@ -5,7 +5,7 @@ module("modules.logic.versionactivity3_2.common.VersionActivity3_2CanJumpFunc", 
 local VersionActivity3_2CanJumpFunc = class("VersionActivity3_2CanJumpFunc")
 
 function VersionActivity3_2CanJumpFunc:canJumpTo13223(jumpParamArray)
-	local status, toastId, toastParamList = ActivityHelper.getActivityStatusAndToast(VersionActivity3_2Enum.ActivityId.EnterView)
+	local status, toastId, toastParamList = ActivityHelper.getActivityStatusAndToast(VersionActivity3_9Enum.ActivityId.EnterView)
 
 	if status ~= ActivityEnum.ActivityStatus.Normal then
 		return false, toastId, toastParamList

@@ -51,6 +51,10 @@ function FightViewCardItem:init(go)
 		obj = gohelper.findChild(lvGO, "bg")
 		self.skillIconBg[i] = obj
 		self.highlightEffect[i] = gohelper.findChild(lvGO, "#pc_highlighted")
+
+		if self.useSkin == 672802 then
+			recthelper.setAnchorX(lvImgComp.transform, 0)
+		end
 	end
 
 	if not FightViewCardItem.TagPosForLvs then
@@ -224,6 +228,7 @@ function FightViewCardItem:init(go)
 	self.go3_7Rouge2FuMo = gohelper.findChild(go, "3_7rouge2fumo")
 	self.xingtiTxt = gohelper.findChildText(go, "txt_xingti")
 	self.xingtiGo = self.xingtiTxt.gameObject
+	self.goHeDuoNieRoot = gohelper.findChild(self.go, "go_heduonie")
 	self.alfLoadStatus = FightViewCardItem.AlfLoadStatus.None
 	self.useCardCopyLoadStatus = FightViewCardItem.AlfLoadStatus.None
 
@@ -372,6 +377,18 @@ function FightViewCardItem:addEventListeners()
 		self:addEventCb(FightController.instance, FightEvent.OnAddHideCardBuff, self.onAddHideCardBuff, self)
 		self:addEventCb(FightController.instance, FightEvent.OnRemoveHideCardBuff, self.OnRemoveHideCardBuff, self)
 	end
+
+	if self.handCardType == FightEnum.CardShowType.HandCard or self.handCardType == FightEnum.CardShowType.Operation or self.handCardType == FightEnum.CardShowType.PlayCard then
+		self:addEventCb(FightController.instance, FightEvent.OnHeDuoNieBuffDataUpdate, self.onHeDuoNieBuffDataUpdate, self)
+	end
+end
+
+function FightViewCardItem:onHeDuoNieBuffDataUpdate(entityId)
+	if entityId ~= self.entityId then
+		return
+	end
+
+	self:refreshHeDuoNieUI()
 end
 
 function FightViewCardItem:onAddHideCardBuff()
@@ -549,6 +566,7 @@ function FightViewCardItem:updateItem(entityId, skillId, cardInfoMO, updateFromT
 	self:refreshBaiFuZhangWheelCard()
 	self:refreshUnnamedUi(updateFromType)
 	self:refreshRefrigeratorEffect()
+	self:refreshHeDuoNieUI()
 	self:refreshEnchantText()
 end
 
@@ -563,7 +581,7 @@ function FightViewCardItem:refreshUniqueCover()
 
 	if showBigSkillEffect and not self._uniqueCardEffect then
 		local url = ResUrl.getUIEffect(FightPreloadViewWork.ui_dazhaoka)
-		local assetItem = FightHelper.getPreloadAssetItem(url)
+		local assetItem = FightGameMgr.loaderMgr:getAsset(url).assetItem
 
 		self._uniqueCardEffect = gohelper.clone(assetItem:GetResource(url), self.go)
 	end
@@ -597,6 +615,194 @@ end
 
 function FightViewCardItem:onClientUnnamedTypeChange()
 	self:refreshUnnamedLayer()
+end
+
+local HeDuoNieUIPath = "ui/viewres/fight/fightcardheduonieview.prefab"
+
+function FightViewCardItem.GetHeDuoNieUiPath()
+	return HeDuoNieUIPath
+end
+
+function FightViewCardItem:refreshHeDuoNieUI()
+	if self.handCardType ~= FightEnum.CardShowType.HandCard and self.handCardType ~= FightEnum.CardShowType.PlayCard and self.handCardType ~= FightEnum.CardShowType.Operation then
+		return
+	end
+
+	if not FightHelper.isHeDuoNieSkill(self.skillId) then
+		gohelper.setActive(self.goHeDuoNieRoot, false)
+
+		return
+	end
+
+	if self.goHeDuoNieUi then
+		self:_refreshHeDuoNieUI()
+	else
+		if self.heDuoNieUiLoader then
+			return
+		end
+
+		self.heDuoNieUiLoader = MultiAbLoader.New()
+
+		self.heDuoNieUiLoader:addPath(HeDuoNieUIPath)
+		self.heDuoNieUiLoader:startLoad(self.onLoadHeDuoNieUiDone, self)
+	end
+end
+
+function FightViewCardItem:_refreshHeDuoNieUI()
+	local entityMo = FightDataHelper.entityMgr:getById(self.entityId)
+
+	if not entityMo then
+		gohelper.setActive(self.goHeDuoNieRoot, false)
+
+		return
+	end
+
+	local curCount, maxCount, unlock = entityMo:getHeDuoNieBuffData()
+
+	if not curCount then
+		gohelper.setActive(self.goHeDuoNieRoot, false)
+
+		return
+	end
+
+	local pointParent, parentList
+
+	for count, goParent in pairs(self.heDuoNie_PosRootDict) do
+		if count == maxCount then
+			pointParent = goParent
+			parentList = self.heDuoNie_CountDict[count]
+
+			gohelper.setActive(goParent, true)
+		else
+			gohelper.setActive(goParent, false)
+		end
+	end
+
+	if not pointParent then
+		logError("赫多涅 卡牌 布局不存在 : " .. tostring(maxCount))
+		gohelper.setActive(self.goHeDuoNieRoot, false)
+
+		return
+	end
+
+	local heDuoNieMgr = FightDataHelper.tempMgr:getHeDuoNieDataMgr()
+
+	gohelper.setActive(self.goHeDuoNieRoot, true)
+
+	for i = 1, maxCount do
+		if parentList[i] then
+			local pointItem = self.heDuoNiePointList[i]
+
+			if not pointItem then
+				pointItem = self:createHeDuoNiePointItem()
+				self.heDuoNiePointList[i] = pointItem
+			end
+
+			gohelper.setActive(pointItem.go, true)
+			gohelper.setParent(pointItem.go, parentList[i])
+			recthelper.setAnchor(pointItem.tr, 0, 0)
+			gohelper.setActive(pointItem.goLight, i <= curCount)
+			gohelper.setActive(pointItem.goGrey, curCount < i)
+
+			if i <= curCount and not heDuoNieMgr:checkPlayedPointAnim(i) then
+				heDuoNieMgr:playedPointAnim(i)
+				pointItem.lightAnimator:Play("light", 0, 0)
+				AudioMgr.instance:trigger(390028)
+			end
+		end
+	end
+
+	for i = maxCount + 1, #self.heDuoNiePointList do
+		local pointItem = self.heDuoNiePointList[i]
+
+		if pointItem then
+			gohelper.setActive(pointItem.go, true)
+		end
+	end
+
+	gohelper.setActive(self.heDuoNie_GoLockBg, not unlock)
+	gohelper.setActive(self.heDuoNie_GoUnlockBg, unlock)
+
+	if unlock then
+		heDuoNieMgr:tryPlayUnlockAudio()
+	end
+end
+
+function FightViewCardItem:createHeDuoNiePointItem()
+	local pointItem = self:getUserDataTb_()
+
+	pointItem.go = gohelper.cloneInPlace(self.heDuoNie_GoPoint)
+	pointItem.tr = pointItem.go:GetComponent(gohelper.Type_RectTransform)
+	pointItem.goGrey = gohelper.findChild(pointItem.go, "grey")
+	pointItem.goLight = gohelper.findChild(pointItem.go, "light")
+	pointItem.lightAnimator = pointItem.goLight:GetComponent(gohelper.Type_Animator)
+
+	return pointItem
+end
+
+function FightViewCardItem:onLoadHeDuoNieUiDone()
+	local prefab = self.heDuoNieUiLoader:getFirstAssetItem():GetResource()
+
+	self.goHeDuoNieUi = gohelper.clone(prefab, self.goHeDuoNieRoot)
+	self.heDuoNieAnimator = ZProj.ProjAnimatorPlayer.Get(self.goHeDuoNieUi)
+	self.heDuoNie_GoLockBg = gohelper.findChild(self.goHeDuoNieUi, "root/go_bg/lock")
+	self.heDuoNie_GoUnlockBg = gohelper.findChild(self.goHeDuoNieUi, "root/go_bg/unlock")
+	self.heDuoNie_PosRootDict = self:getUserDataTb_()
+
+	local rectTrPos = gohelper.findChildComponent(self.goHeDuoNieUi, "root/go_pos", gohelper.Type_RectTransform)
+	local childCount = rectTrPos.childCount
+
+	for i = 0, childCount - 1 do
+		local child = rectTrPos:GetChild(i)
+		local childName = tonumber(child.name)
+
+		if childName then
+			self.heDuoNie_PosRootDict[childName] = child.gameObject
+		end
+	end
+
+	self.heDuoNie_CountDict = {}
+
+	for count, goRoot in pairs(self.heDuoNie_PosRootDict) do
+		self.heDuoNie_CountDict[count] = self:buildHeDuoNiePosList(count, goRoot)
+
+		gohelper.setActive(goRoot, false)
+	end
+
+	self.heDuoNie_GoPoint = gohelper.findChild(self.goHeDuoNieUi, "root/go_effectPoint")
+
+	gohelper.setActive(self.heDuoNie_GoPoint, false)
+	gohelper.setActive(self.heDuoNie_GoPoint, false)
+
+	self.heDuoNiePointList = {}
+
+	self:refreshHeDuoNieUI()
+end
+
+function FightViewCardItem:buildHeDuoNiePosList(count, posRoot)
+	local posList = self:getUserDataTb_()
+
+	for i = 1, count do
+		table.insert(posList, gohelper.findChild(posRoot, i))
+	end
+
+	return posList
+end
+
+function FightViewCardItem:playHeDuoNieOpenAnim(playCallback, callbackObj)
+	self:refreshHeDuoNieUI()
+
+	if not self.heDuoNieAnimator then
+		logError("赫多涅 卡牌节点不存在 ?")
+
+		if playCallback then
+			playCallback(callbackObj)
+		end
+
+		return
+	end
+
+	self.heDuoNieAnimator:Play("open", playCallback, callbackObj)
 end
 
 local UnnamedUIPath = "ui/viewres/fight/fight3_7nonamecard.prefab"
@@ -942,15 +1148,18 @@ end
 
 FightViewCardItem.attributePrefix = {
 	[672802] = "v3a7_skin/attribute_",
-	[672801] = "v2a8_skin/attribute_"
+	[672801] = "v2a8_skin/attribute_",
+	[672803] = "v3a9_skin/attribute_"
 }
 FightViewCardItem.cardTagWidth = {
 	[672802] = 180,
-	[672801] = 180
+	[672801] = 180,
+	[672803] = 180
 }
 FightViewCardItem.cardTagHeight = {
 	[672802] = 64,
-	[672801] = 64
+	[672801] = 64,
+	[672803] = 64
 }
 
 function FightViewCardItem:refreshTag()
@@ -1577,6 +1786,107 @@ function FightViewCardItem:doDeviceRemoveDoneCallback()
 	end
 end
 
+function FightViewCardItem:heDuoNieDisappearCard(disappearCallback, disappearCallbackObj)
+	if not self.go.activeInHierarchy then
+		if disappearCallback then
+			disappearCallback(disappearCallbackObj)
+		end
+
+		return
+	end
+
+	self:setASFDActive(false)
+	self:revertASFDSkillAnimator()
+
+	if not self._heDuoNieDisappearFlow then
+		self._heDuoNieDisappearFlow = FlowSequence.New()
+
+		self._heDuoNieDisappearFlow:registerDoneListener(self.doHeDuoNieDisappearDoneCallback, self)
+		self._heDuoNieDisappearFlow:addWork(FightCardHeDuoNieDisappearEffect.New())
+	else
+		self:doHeDuoNieDisappearDoneCallback()
+		self._heDuoNieDisappearFlow:stop()
+	end
+
+	self.heDuoNieDisappearCallback = disappearCallback
+	self.heDuoNieDisappearCallbackObj = disappearCallbackObj
+
+	self._heDuoNieDisappearFlow:start(self)
+	AudioMgr.instance:trigger(390029)
+end
+
+function FightViewCardItem:doHeDuoNieDisappearDoneCallback()
+	local callback = self.heDuoNieDisappearCallback
+	local callbackObj = self.heDuoNieDisappearCallbackObj
+
+	self.heDuoNieDisappearCallback = nil
+	self.heDuoNieDisappearCallbackObj = nil
+
+	if callback then
+		callback(callbackObj)
+	end
+end
+
+local HeDuoNieCardRemoveEffectPath = "ui/viewres/fight/card_heduonie.prefab"
+
+function FightViewCardItem:startLoadHeDuoNieCardRemoveEffect(callback, callbackObj)
+	if self.goHeDuoNieCardRemoveEffect then
+		if callback then
+			callback(callbackObj)
+		end
+
+		return
+	end
+
+	if callback then
+		self.heDuoNieCardRemoveEffectLoadCallbackList = self.heDuoNieCardRemoveEffectLoadCallbackList or {}
+		self.heDuoNieCardRemoveEffectLoadCallbackObjList = self.heDuoNieCardRemoveEffectLoadCallbackObjList or {}
+
+		table.insert(self.heDuoNieCardRemoveEffectLoadCallbackList, callback)
+		table.insert(self.heDuoNieCardRemoveEffectLoadCallbackObjList, callbackObj or 0)
+	end
+
+	if self.heDuoNieCardRemoveEffectLoader then
+		return
+	end
+
+	self.heDuoNieCardRemoveEffectLoader = MultiAbLoader.New()
+
+	self.heDuoNieCardRemoveEffectLoader:addPath(HeDuoNieCardRemoveEffectPath)
+	self.heDuoNieCardRemoveEffectLoader:startLoad(self.onLoadHeDuoNieCardRemoveEffectDone, self)
+end
+
+function FightViewCardItem:onLoadHeDuoNieCardRemoveEffectDone()
+	local assetItem = self.heDuoNieCardRemoveEffectLoader:getFirstAssetItem()
+	local prefab = assetItem:GetResource()
+
+	self.goHeDuoNieCardRemoveEffect = gohelper.clone(prefab, self.go)
+
+	gohelper.setActive(self.goHeDuoNieCardRemoveEffect, false)
+
+	if self.heDuoNieCardRemoveEffectLoadCallbackList then
+		for i, callback in ipairs(self.heDuoNieCardRemoveEffectLoadCallbackList) do
+			callback(self.heDuoNieCardRemoveEffectLoadCallbackObjList[i])
+		end
+	end
+
+	self:clearHeDuoNieCardRemoveEffectCallbackList()
+end
+
+function FightViewCardItem:clearHeDuoNieCardRemoveEffectCallbackList()
+	if self.heDuoNieCardRemoveEffectLoadCallbackList then
+		tabletool.clear(self.heDuoNieCardRemoveEffectLoadCallbackList)
+
+		self.heDuoNieCardRemoveEffectLoadCallbackList = nil
+	end
+
+	if self.heDuoNieCardRemoveEffectLoadCallbackObjList then
+		tabletool.clear(self.heDuoNieCardRemoveEffectLoadCallbackObjList)
+
+		self.heDuoNieCardRemoveEffectLoadCallbackObjList = nil
+	end
+end
+
 function FightViewCardItem:dissolveCard(scale, tarGameObject, dissolveDoneCallback, dissolveDoneCallbackObj)
 	if not self.go.activeInHierarchy then
 		if dissolveDoneCallback then
@@ -1667,7 +1977,7 @@ function FightViewCardItem:disappearCard(disappearCallback, disappearCallbackObj
 	if not self._disappearFlow then
 		self._disappearFlow = FlowSequence.New()
 
-		self._disappearFlow:registerDoneListener(self.doDissolveDoneCallback, self)
+		self._disappearFlow:registerDoneListener(self.doDisappearDoneCallback, self)
 		self._disappearFlow:addWork(FightCardDisplayHideAllEffect.New())
 	else
 		self:doDisappearDoneCallback()
@@ -2195,6 +2505,20 @@ function FightViewCardItem:onDestroy()
 	self._tag:UnLoadImage()
 	self:clearAlfEffect()
 	self:clearUseCardCopyEffect()
+
+	if self.heDuoNieUiLoader then
+		self.heDuoNieUiLoader:dispose()
+
+		self.heDuoNieUiLoader = nil
+	end
+
+	if self.heDuoNieCardRemoveEffectLoader then
+		self.heDuoNieCardRemoveEffectLoader:dispose()
+
+		self.heDuoNieCardRemoveEffectLoader = nil
+	end
+
+	self:clearHeDuoNieCardRemoveEffectCallbackList()
 end
 
 function FightViewCardItem:_hideAllEffect()

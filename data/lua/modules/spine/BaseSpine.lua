@@ -218,7 +218,15 @@ function BaseSpine:_getRoleEffectComp(resPath)
 	end
 end
 
+function BaseSpine:setSkipBodyEffect(skip)
+	self._isSkipBodyEffect = skip
+end
+
 function BaseSpine:_showBodyEffect(bodyName)
+	if self._isSkipBodyEffect then
+		return
+	end
+
 	if self._roleEffectComp then
 		self._roleEffectComp:showBodyEffect(bodyName)
 	end

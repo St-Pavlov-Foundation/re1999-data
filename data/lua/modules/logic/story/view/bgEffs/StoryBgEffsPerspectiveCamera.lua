@@ -88,10 +88,6 @@ function StoryBgEffsPerspectiveCamera:reset(bgCo)
 	end
 end
 
-function StoryBgEffsOutFocus:_onEffFinished()
-	return
-end
-
 function StoryBgEffsPerspectiveCamera:_onOpenView(viewName)
 	local isSetTopView = StoryModel.instance:isSetTopView(viewName)
 

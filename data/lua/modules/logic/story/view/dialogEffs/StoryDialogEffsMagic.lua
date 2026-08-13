@@ -81,6 +81,7 @@ function StoryDialogEffsMagic:start(stepCo, txt, callback, callbackObj)
 		gohelper.setActive(go, false)
 	end
 
+	self._initTxt = txt
 	self._txt = StoryTool.filterSpTag(txt)
 
 	local isSpMagicType = StoryModel.instance:isSpMagicType(self._stepCo)
@@ -135,7 +136,7 @@ function StoryDialogEffsMagic:_startEffectShow()
 
 	transformhelper.setLocalPos(self._magicTab.txts[self._stepCo.conversation.effType].transform, x, y, 1)
 
-	local delay = self:_getMagicWordShowTime(self._txt)
+	local delay = self:_getMagicWordShowTime(self._initTxt)
 
 	self._magicConTweenId = ZProj.TweenHelper.DOTweenFloat(0, 1, delay, self._magicConUpdate, self._magicConFinished, self, nil, EaseType.Linear)
 

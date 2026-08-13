@@ -6,8 +6,12 @@ local PartyGameRpc = class("PartyGameRpc", BaseRpc)
 local PartyGame_Runtime_Utils_KcpSocketUtil = PartyGame.Runtime.Utils.KcpSocketUtil
 local partyGameMgrCs = PartyGame.Runtime.GameLogic.GameMgr
 
-function PartyGameRpc:onInit()
+function PartyGameRpc:setUpKcpRpcCallBack()
 	partyGameMgrCs.Instance:SetKcpRpcCallBack(self.handleServerMsg, self)
+end
+
+function PartyGameRpc:onInit()
+	return
 end
 
 function PartyGameRpc:reInit()
@@ -126,17 +130,23 @@ function PartyGameRpc:loginKcpResponse(bytes)
 end
 
 function PartyGameRpc:TransToGamePush(msg)
+	local transToGamePushMsg = {}
+
+	transToGamePushMsg.GameId = msg.GameId
+	transToGamePushMsg.Player = msg.Player
+	transToGamePushMsg.isLocal = false
+
 	logNormal("PartyGameRpc->:TransToGamePush")
-	PartyGameController.instance:dispatchEvent(PartyGameEvent.transToGamePush, msg)
+	PartyGameController.instance:dispatchEvent(PartyGameEvent.transToGamePush, transToGamePushMsg)
 
 	if PartyGameController.instance:getCurPartyGame() == nil then
-		PartyGameController.instance:transToGamePush(msg)
+		PartyGameController.instance:transToGamePush(transToGamePushMsg)
 
 		return
 	end
 
 	PopupController.instance:clear()
-	PartyGameModel.instance:setCacheNeedTranGameMsg(msg)
+	PartyGameModel.instance:setCacheNeedTranGameMsg(transToGamePushMsg)
 
 	if ViewMgr.instance:isOpenFinish(ViewName.PartyGameRewardView) then
 		PartyGameController.instance:dispatchEvent(PartyGameEvent.CacheNeedTranGame)
@@ -175,6 +185,14 @@ function PartyGameRpc:BattleCardRewardListPush(msg)
 end
 
 function PartyGameRpc:sendSelectCardRewardRequest(selectIds)
+	local curPartyGame = PartyGameController.instance:getCurPartyGame()
+
+	if curPartyGame and curPartyGame:getIsTrial() then
+		PartyGameTrialController.instance:setSelectCard(selectIds)
+
+		return
+	end
+
 	logNormal("PartyGame msg->PartyGame msg->sendSelectCardRewardRequest -> " .. table.concat(selectIds, ", "))
 
 	local msg = PartyGameProto.SelectCardRewardRequest.New()
@@ -197,6 +215,24 @@ end
 function PartyGameRpc:KcpLogout()
 	logError("PartyGame msg->PartyGameRpc: KcpLogout")
 	PartyGameController.instance.exitGame()
+end
+
+function PartyGameRpc:LocalGameEndPush(msg)
+	local curGame = PartyGameController.instance:getCurPartyGame()
+
+	if curGame and curGame:getIsTrial() then
+		local haveNextGame, id, needDel = PartyGameTrialPlayModel.instance:removeCurrentAndGetNextGameId(msg)
+
+		if not haveNextGame then
+			PartyGameTrialController.instance:trialEnd(msg)
+		else
+			PartyGameTrialController.instance:trialGameEnd(id, needDel)
+		end
+
+		return
+	end
+
+	self:GameEndPush(msg)
 end
 
 PartyGameRpc.instance = PartyGameRpc.New()

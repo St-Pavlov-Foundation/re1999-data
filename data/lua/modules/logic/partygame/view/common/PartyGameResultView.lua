@@ -50,7 +50,7 @@ function PartyGameResultView:onOpen()
 	self.data = self.viewParam
 
 	local rank = self.data.Rank
-	local rewardCount = self.data.Rewards
+	local rewardCount = self.data.Rewards or 0
 	local exReward = self.data.ExReward
 	local text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("knockout_result_rank_other"), rank)
 
@@ -85,7 +85,7 @@ function PartyGameResultView:onOpen()
 
 	local rewardItem = IconMgr.instance:getCommonPropItemIcon(self._goContent)
 
-	rewardItem:setMOValue(MaterialEnum.MaterialType.Currency, CurrencyEnum.CurrencyType.PartyGameStoreCoin, rewardCount)
+	rewardItem:setMOValue(MaterialEnum.MaterialType.Currency, CurrencyEnum.CurrencyType.V3a9PartyGameStoreCoin, rewardCount)
 
 	if not string.nilorempty(exReward) then
 		local allData = string.splitToNumber(exReward, "#")

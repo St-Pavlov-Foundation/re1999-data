@@ -4,14 +4,17 @@ module("modules.logic.fight.system.work.FightWorkLoadAnimator", package.seeall)
 
 local FightWorkLoadAnimator = class("FightWorkLoadAnimator", FightWorkItem)
 
-function FightWorkLoadAnimator:onConstructor(url, obj)
+function FightWorkLoadAnimator:onConstructor(url, obj, handle)
 	self.url = url
 	self.obj = obj
+	self.handle = handle
 	self.SAFETIME = 5
 end
 
 function FightWorkLoadAnimator:onStart()
-	FightGameMgr.loaderMgr.loader:loadAsset(self.url, self.onLoaded, self)
+	local comp = self.handle:getComponent(FightLoaderComponent)
+
+	comp:loadAsset(self.url, self.onLoaded, self)
 end
 
 function FightWorkLoadAnimator:onLoaded(success, loader)

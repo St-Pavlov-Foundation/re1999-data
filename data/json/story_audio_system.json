@@ -5983,5 +5983,100 @@
     "id": 923850025,
     "eventName": "play_battle_plots02_hero5043_19",
     "bankName": "hero5043_level_langchao_s02"
+  },
+  {
+    "id": 923900001,
+    "eventName": "play_level_plot39_hero3025_1",
+    "bankName": "hero3025_level_chongran3_9"
+  },
+  {
+    "id": 923900002,
+    "eventName": "play_level_plot39_hero3028_2",
+    "bankName": "hero3028_level_chongran3_9"
+  },
+  {
+    "id": 923900003,
+    "eventName": "play_level_plot39_hero3028_3",
+    "bankName": "hero3028_level_chongran3_9"
+  },
+  {
+    "id": 923900004,
+    "eventName": "play_level_plot39_hero3025_4",
+    "bankName": "hero3025_level_chongran3_9"
+  },
+  {
+    "id": 923900005,
+    "eventName": "play_level_plot39_hero3023_5",
+    "bankName": "hero3023_level_chongran3_9"
+  },
+  {
+    "id": 923900006,
+    "eventName": "play_level_plot39_hero5043_7",
+    "bankName": "hero5043_level_chongran3_9"
+  },
+  {
+    "id": 923900007,
+    "eventName": "play_level_plot39_hero3023_8",
+    "bankName": "hero3023_level_chongran3_9"
+  },
+  {
+    "id": 923900008,
+    "eventName": "play_battle_plot39_hero3156_1",
+    "bankName": "hero3156_level_chongran3_9"
+  },
+  {
+    "id": 923900009,
+    "eventName": "play_battle_plot39_hero3156_2",
+    "bankName": "hero3156_level_chongran3_9"
+  },
+  {
+    "id": 923900010,
+    "eventName": "play_battle_plot39_hero3156_4",
+    "bankName": "hero3156_level_chongran3_9"
+  },
+  {
+    "id": 923900011,
+    "eventName": "play_battle_plot39_hero3156_5",
+    "bankName": "hero3156_level_chongran3_9"
+  },
+  {
+    "id": 923900012,
+    "eventName": "play_battle_plot39_npc653202_6",
+    "bankName": "npc653202_level_chongran3_9"
+  },
+  {
+    "id": 923900013,
+    "eventName": "play_battle_plot39_npc653302_7",
+    "bankName": "npc653302_level_chongran3_9"
+  },
+  {
+    "id": 923900014,
+    "eventName": "play_battle_plot39_npc653101_8",
+    "bankName": "npc653101_level_chongran3_9"
+  },
+  {
+    "id": 923900015,
+    "eventName": "play_battle_plot39_hero3156_9",
+    "bankName": "hero3156_level_chongran3_9"
+  },
+  {
+    "id": 923900016,
+    "eventName": "play_battle_plot39_hero3156_10",
+    "bankName": "hero3156_level_chongran3_9"
+  },
+  {
+    "id": 923900017,
+    "eventName": "play_level_plot39_npc654903_sad",
+    "bankName": "npc654903_level_chongran3_9"
+  },
+  {
+    "id": 923900018,
+    "eventName": "play_level_plot39_npc654903_happy",
+    "bankName": "npc654903_level_chongran3_9"
+  },
+  {
+    "id": 923900019,
+    "eventName": "play_battle_plot39_npc670414_wailing",
+    "bankName": "npc670414_level_chongran3_9"
   }
 ]

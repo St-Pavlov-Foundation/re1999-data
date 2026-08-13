@@ -36,7 +36,7 @@ end
 
 function GaoSiNiaoWork_DelaySecond:clearWork()
 	TaskDispatcher.cancelTask(self._delaySucc, self)
-	V3a1_GaoSiNiao_LevelViewWork_UnlockPathAnim.super.clearWork(self)
+	GaoSiNiaoWork_DelaySecond.super.clearWork(self)
 end
 
 return GaoSiNiaoWork_DelaySecond

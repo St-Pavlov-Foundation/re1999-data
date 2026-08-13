@@ -123,6 +123,8 @@ function MainActivityEnterView:_editableInitView()
 
 		table.insert(self.txtChapters, item)
 	end
+
+	self._imageActivityIconChilds = self.imageActivityIcon.gameObject:GetComponentsInChildren(gohelper.Type_Image, true)
 end
 
 function MainActivityEnterView:onOpen()
@@ -289,6 +291,7 @@ function MainActivityEnterView:getEnterViewActIdList()
 			[ActivityEnum.VersionActivityIdDict.Activity3_6] = VersionActivity3_6Enum.EnterViewActIdListWithRedDot,
 			[ActivityEnum.VersionActivityIdDict.Activity3_7] = VersionActivity3_7Enum.EnterViewActIdListWithRedDot,
 			[ActivityEnum.VersionActivityIdDict.Activity3_8] = VersionActivity3_8Enum.EnterViewActIdListWithRedDot,
+			[ActivityEnum.VersionActivityIdDict.Activity3_9] = VersionActivity3_9Enum.EnterViewActIdListWithRedDot,
 			[ActivityEnum.VersionActivityIdDict.Activity_Assassin_1] = VersionActivity2_9Enum.EnterViewActIdListWithGroup[ActivityEnum.VersionActivityIdDict.Activity_Assassin_1],
 			[ActivityEnum.VersionActivityIdDict.Activity_Assassin_2] = VersionActivity2_9Enum.EnterViewActIdListWithGroup[ActivityEnum.VersionActivityIdDict.Activity_Assassin_2]
 		}
@@ -310,10 +313,26 @@ function MainActivityEnterView:refreshActivityIcon()
 		self.imageActivityIcon.color = MainActivityEnterView.notOpenColor
 
 		gohelper.setAsFirstSibling(self.btnEnterActivity.gameObject)
+
+		if self._imageActivityIconChilds then
+			for i = 0, self._imageActivityIconChilds.Length - 1 do
+				local image = self._imageActivityIconChilds[i]
+
+				image.color = MainActivityEnterView.notOpenColor
+			end
+		end
 	else
 		self.imageActivityIcon.color = Color.white
 
 		gohelper.setAsFirstSibling(self.btnEnterActivity.gameObject)
+
+		if self._imageActivityIconChilds then
+			for i = 0, self._imageActivityIconChilds.Length - 1 do
+				local image = self._imageActivityIconChilds[i]
+
+				image.color = Color.white
+			end
+		end
 	end
 end
 

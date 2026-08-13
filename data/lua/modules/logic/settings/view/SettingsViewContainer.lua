@@ -46,7 +46,8 @@ function SettingsViewContainer:buildTabViews(tabContainerId)
 			MultiView.New({
 				SettingsGameView.New(),
 				SettingsLoginPageView.New()
-			})
+			}),
+			SettingsFightView.New()
 		}
 	end
 end

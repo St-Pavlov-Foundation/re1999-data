@@ -51,7 +51,7 @@ end
 
 function VersionActivity3_4DungeonMapView:_btnreportOnClick()
 	if not self._isReportFinish then
-		GameFacade.showToast(321304)
+		GameFacade.showToast(ToastEnum.DungeonMapReportFinish)
 
 		return
 	end

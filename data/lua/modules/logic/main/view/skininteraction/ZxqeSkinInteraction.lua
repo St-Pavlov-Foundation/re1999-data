@@ -4,6 +4,12 @@ module("modules.logic.main.view.skininteraction.ZxqeSkinInteraction", package.se
 
 local ZxqeSkinInteraction = class("ZxqeSkinInteraction", CommonSkinInteraction)
 local CubismSortingMode = Live2D.Cubism.Rendering.CubismSortingMode
+local b_fengzhizi = "b_fengzhizi"
+local b_taitou01 = "b_taitou01"
+local b_idle = "b_idle"
+local b_ruchang = "b_ruchang"
+local b_jiaohu01 = "b_jiaohu01"
+local b_jiaohu02 = "b_jiaohu02"
 local b_jiaohu03 = "b_jiaohu03"
 
 function ZxqeSkinInteraction:_onInit()

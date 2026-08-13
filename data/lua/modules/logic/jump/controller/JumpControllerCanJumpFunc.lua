@@ -418,6 +418,18 @@ function JumpController:canJumpToBossRush(jumpParam)
 	return self:defaultCanJump(jumpParam)
 end
 
+function JumpController:canJumpToV3a9BossRush(jumpParam)
+	local jumpData = string.splitToNumber(jumpParam, "#")
+	local tabIndex = jumpData[2] or 1
+	local actId = Bossrush.instance:getActivityId(tabIndex)
+
+	if not ActivityHelper.isOpen(actId) then
+		return false, ToastEnum.V1a4_BossRushBossLockTip
+	end
+
+	return self:defaultCanJump(jumpParam)
+end
+
 function JumpController:canJumpToSeasonMainView(jumpParam)
 	local paramsList = string.splitToNumber(jumpParam, "#")
 	local jumpId = paramsList and paramsList[2]
@@ -549,6 +561,16 @@ function JumpController:canJumpToVersionEnterView(jumpParam)
 			return false, ToastEnum.ActivityNotOpen, JumpController.DefaultToastParam
 		end
 	else
+		local enum = VersionActivityFixedHelper.getVersionActivityEnum()
+
+		if enum and enum.ActivityId.EnterView then
+			local actMO = ActivityModel.instance:getActMO(enum.ActivityId.EnterView)
+
+			if actMO and actMO:isOpen() then
+				return self:defaultCanJump(jumpParam)
+			end
+		end
+
 		return false, ToastEnum.ActivityNotOpen, JumpController.DefaultToastParam
 	end
 
@@ -816,6 +838,51 @@ function JumpController:canJumpToAtomicDungeonView(jumpParam)
 	return self:defaultCanJump(jumpParam)
 end
 
+function JumpController:canJumpToActivityCenterView(jumpParam)
+	local jumpArray = string.splitToNumber(jumpParam, "#")
+	local activityType = jumpArray[1] or ActivityEnum.ActivityType.Beginner
+
+	if ActivityModel.instance:getCenterActivities(activityType) then
+		return self:defaultCanJump(jumpParam)
+	end
+
+	return false, ToastEnum.ActivityNotOpen
+end
+
+function JumpController:canJumpToPlayerCardView(jumpParam)
+	if OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.PlayerCard) then
+		return self:defaultCanJump(jumpParam)
+	end
+
+	local desc, param = OpenModel.instance:getFuncUnlockDesc(OpenEnum.UnlockFunc.PlayerCard)
+
+	return false, desc
+end
+
+function JumpController:canJumpToTeachingMainiew(jumpParam)
+	if OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.Teaching) then
+		return self:defaultCanJump(jumpParam)
+	end
+
+	local desc, param = OpenModel.instance:getFuncUnlockDesc(OpenEnum.UnlockFunc.Teaching)
+
+	return false, desc
+end
+
+function JumpController:canJumpToUdimoView(jumpParam)
+	if OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.Udimo) then
+		return self:defaultCanJump(jumpParam)
+	end
+
+	local desc, param = OpenModel.instance:getFuncUnlockDesc(OpenEnum.UnlockFunc.Udimo)
+
+	return false, desc
+end
+
+function JumpController:canJumpToMainSwitchView(jumpParam)
+	return self:defaultCanJump(jumpParam)
+end
+
 JumpController.JumpViewToCanJumpFunc = {
 	[JumpEnum.JumpView.StoreView] = JumpController.canJumpToStoreView,
 	[JumpEnum.JumpView.SummonView] = JumpController.canJumpToSummonView,
@@ -858,7 +925,13 @@ JumpController.JumpViewToCanJumpFunc = {
 	[JumpEnum.JumpView.SurvivalView] = JumpController.canJumpToSurvivalView,
 	[JumpEnum.JumpView.Abyss] = JumpController.canJump2Abyss,
 	[JumpEnum.JumpView.Act236] = JumpController.canJump2Act236,
-	[JumpEnum.JumpView.AtomicDungeon] = JumpController.canJumpToAtomicDungeonView
+	[JumpEnum.JumpView.AtomicDungeon] = JumpController.canJumpToAtomicDungeonView,
+	[JumpEnum.JumpView.ActivityCenter] = JumpController.canJumpToActivityCenterView,
+	[JumpEnum.JumpView.PlayerCard] = JumpController.canJumpToPlayerCardView,
+	[JumpEnum.JumpView.TeachingMain] = JumpController.canJumpToTeachingMainiew,
+	[JumpEnum.JumpView.Udimo] = JumpController.canJumpToUdimoView,
+	[JumpEnum.JumpView.MainSwitchView] = JumpController.canJumpToMainSwitchView,
+	[JumpEnum.JumpView.V3a9BossRush] = JumpController.canJumpToBossRush
 }
 JumpController.CanJumpActFunc = {
 	[JumpEnum.ActIdEnum.Act113] = JumpController.canJump2Activity1_1Dungeon,

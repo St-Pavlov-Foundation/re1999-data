@@ -97,6 +97,10 @@ function FightCheckCrashMgr:tick()
 		return
 	end
 
+	self:forceRefreshFight()
+end
+
+function FightCheckCrashMgr:forceRefreshFight()
 	local flow = self:com_registFlowSequence()
 
 	flow:registWork(FightWorkRefreshFightAfterCrash)

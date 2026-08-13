@@ -1,0 +1,200 @@
+[
+  {
+    "id": 39010,
+    "randomType": 2,
+    "randomParam": "39030#35|39031#35|39032#10|39034#10|39036#10",
+    "isBossWave": false
+  },
+  {
+    "id": 39011,
+    "randomType": 2,
+    "randomParam": "39032#40|39033#30|39031#15|39036#10|39044#5",
+    "isBossWave": false
+  },
+  {
+    "id": 39012,
+    "randomType": 2,
+    "randomParam": "39034#40|39035#25|39031#20|39036#10|39045#5",
+    "isBossWave": false
+  },
+  {
+    "id": 39013,
+    "randomType": 2,
+    "randomParam": "39036#50|39037#30|39034#10|39031#10",
+    "isBossWave": false
+  },
+  {
+    "id": 39014,
+    "randomType": 2,
+    "randomParam": "39038#30|39039#30|39040#25|39036#15",
+    "isBossWave": false
+  },
+  {
+    "id": 39015,
+    "randomType": 2,
+    "randomParam": "39035#35|39040#20|39037#20|39034#15|39044#10",
+    "isBossWave": false
+  },
+  {
+    "id": 39016,
+    "randomType": 2,
+    "randomParam": "39032#20|39034#20|39035#20|39036#15|39038#15|39044#10",
+    "isBossWave": false
+  },
+  {
+    "id": 39017,
+    "randomType": 2,
+    "randomParam": "39041#30|39042#35|39043#25|39039#10",
+    "isBossWave": false
+  },
+  {
+    "id": 39018,
+    "randomType": 2,
+    "randomParam": "39033#15|39035#20|39041#20|39042#20|39043#20|39044#5",
+    "isBossWave": false
+  },
+  {
+    "id": 39019,
+    "randomType": 2,
+    "randomParam": "39035#20|39038#10|39039#10|39040#10|39041#15|39042#20|39043#15",
+    "isBossWave": false
+  },
+  {
+    "id": 39020,
+    "randomType": 2,
+    "randomParam": "39046#100",
+    "isBossWave": false
+  },
+  {
+    "id": 39021,
+    "randomType": 2,
+    "randomParam": "39047#100",
+    "isBossWave": false
+  },
+  {
+    "id": 39022,
+    "randomType": 2,
+    "randomParam": "39048#100",
+    "isBossWave": false
+  },
+  {
+    "id": 39023,
+    "randomType": 2,
+    "randomParam": "39030#50|39031#35|39044#15",
+    "isBossWave": false
+  },
+  {
+    "id": 39024,
+    "randomType": 2,
+    "randomParam": "39031#20|39032#10|39033#10|39044#60",
+    "isBossWave": false
+  },
+  {
+    "id": 39025,
+    "randomType": 2,
+    "randomParam": "39049#100",
+    "isBossWave": false
+  },
+  {
+    "id": 39026,
+    "randomType": 2,
+    "randomParam": "39050#100",
+    "isBossWave": false
+  },
+  {
+    "id": 39027,
+    "randomType": 2,
+    "randomParam": "39051#100",
+    "isBossWave": false
+  },
+  {
+    "id": 39028,
+    "randomType": 2,
+    "randomParam": "39052#100",
+    "isBossWave": false
+  },
+  {
+    "id": 39029,
+    "randomType": 2,
+    "randomParam": "39053#100",
+    "isBossWave": false
+  },
+  {
+    "id": 39030,
+    "randomType": 2,
+    "randomParam": "39054#100",
+    "isBossWave": false
+  },
+  {
+    "id": 39031,
+    "randomType": 2,
+    "randomParam": "39055#100",
+    "isBossWave": false
+  },
+  {
+    "id": 39032,
+    "randomType": 2,
+    "randomParam": "39038#100",
+    "isBossWave": false
+  },
+  {
+    "id": 39033,
+    "randomType": 2,
+    "randomParam": "39034#30|39036#20|39037#25|39039#15|39030#10",
+    "isBossWave": false
+  },
+  {
+    "id": 39034,
+    "randomType": 2,
+    "randomParam": "39034#35|39036#15|39037#25|39039#25",
+    "isBossWave": false
+  },
+  {
+    "id": 39035,
+    "randomType": 2,
+    "randomParam": "39032#20|39033#10|39034#35|39037#35",
+    "isBossWave": false
+  },
+  {
+    "id": 39036,
+    "randomType": 2,
+    "randomParam": "39032#15|39033#10|39034#30|39037#25|39038#20",
+    "isBossWave": false
+  },
+  {
+    "id": 39037,
+    "randomType": 2,
+    "randomParam": "39056#100",
+    "isBossWave": false
+  },
+  {
+    "id": 39038,
+    "randomType": 2,
+    "randomParam": "39057#100",
+    "isBossWave": false
+  },
+  {
+    "id": 39039,
+    "randomType": 2,
+    "randomParam": "39058#100",
+    "isBossWave": false
+  },
+  {
+    "id": 39040,
+    "randomType": 2,
+    "randomParam": "39059#100",
+    "isBossWave": false
+  },
+  {
+    "id": 39041,
+    "randomType": 2,
+    "randomParam": "39060#100",
+    "isBossWave": false
+  },
+  {
+    "id": 39042,
+    "randomType": 2,
+    "randomParam": "39061#30|39062#30|39063#25|39064#15",
+    "isBossWave": false
+  }
+]

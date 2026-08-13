@@ -841,6 +841,9 @@ StoreModel.ignoreStoreTab = {
 	StoreEnum.TowerStore,
 	{
 		StoreEnum.StoreId.RoomFishingStore
+	},
+	{
+		StoreEnum.StoreId.TwinssychubeEquipStore
 	}
 }
 

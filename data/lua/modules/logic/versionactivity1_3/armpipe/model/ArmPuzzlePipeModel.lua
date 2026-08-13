@@ -229,8 +229,13 @@ function ArmPuzzlePipeModel:isPlaceSelectXY(x, y)
 	return self._placeSelectX == x and self._placeSelectY == y
 end
 
+function ArmPuzzlePipeModel:setGameSize(w, h)
+	self._gameWidth = w
+	self._gameHeight = h
+end
+
 function ArmPuzzlePipeModel:getGameSize()
-	return ArmPuzzlePipeModel.constWidth, ArmPuzzlePipeModel.constHeight
+	return self._gameWidth or ArmPuzzlePipeModel.constWidth, self._gameHeight or ArmPuzzlePipeModel.constHeight
 end
 
 function ArmPuzzlePipeModel:getGameClear()

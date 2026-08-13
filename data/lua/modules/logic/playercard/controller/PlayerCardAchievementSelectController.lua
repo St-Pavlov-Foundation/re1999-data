@@ -87,6 +87,10 @@ function PlayerCardAchievementSelectController:changeGroupSelect(groupId)
 end
 
 function PlayerCardAchievementSelectController:changeSingleSelect(taskId)
+	if PlayerCardAchievementSelectListModel.instance:getNamePlateSelectedCount() > 0 then
+		PlayerCardAchievementSelectListModel.instance:clearNamePlateAllSelect()
+	end
+
 	local isSelected = PlayerCardAchievementSelectListModel.instance:isSingleSelected(taskId)
 	local curCount = PlayerCardAchievementSelectListModel.instance:getSingleSelectedCount()
 

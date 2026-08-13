@@ -1,0 +1,72 @@
+[
+  {
+    "type": 101,
+    "recommendStrategy": "4#11",
+    "career_weak": ""
+  },
+  {
+    "type": 102,
+    "recommendStrategy": "4#13",
+    "career_weak": ""
+  },
+  {
+    "type": 103,
+    "recommendStrategy": "3#9",
+    "career_weak": ""
+  },
+  {
+    "type": 104,
+    "recommendStrategy": "4#19",
+    "career_weak": ""
+  },
+  {
+    "type": 105,
+    "recommendStrategy": "4#18",
+    "career_weak": ""
+  },
+  {
+    "type": 106,
+    "recommendStrategy": "4#11",
+    "career_weak": "6#4"
+  },
+  {
+    "type": 107,
+    "recommendStrategy": "3#9",
+    "career_weak": "6#5"
+  },
+  {
+    "type": 108,
+    "recommendStrategy": "3#9",
+    "career_weak": ""
+  },
+  {
+    "type": 109,
+    "recommendStrategy": "20#21",
+    "career_weak": ""
+  },
+  {
+    "type": 110,
+    "recommendStrategy": "4#15",
+    "career_weak": ""
+  },
+  {
+    "type": 111,
+    "recommendStrategy": "4#8",
+    "career_weak": "1#4"
+  },
+  {
+    "type": 112,
+    "recommendStrategy": "4#8",
+    "career_weak": "1#4"
+  },
+  {
+    "type": 113,
+    "recommendStrategy": "4#11",
+    "career_weak": "6#4"
+  },
+  {
+    "type": 114,
+    "recommendStrategy": "3#9",
+    "career_weak": "6#5"
+  }
+]

@@ -440,8 +440,18 @@ end
 
 function CharacterDestinySlotView:_onCloseViewFinish(viewName)
 	if viewName == ViewName.CharacterDestinyStoneView then
-		self:_playerOpenAnim()
+		if self:_isJustOpenStone() then
+			self:closeThis()
+		else
+			self:_playerOpenAnim()
+		end
 	end
+end
+
+function CharacterDestinySlotView:_isJustOpenStone()
+	local isOpen = self._heroMO:isCanOpenDestinySystem()
+
+	return not isOpen
 end
 
 function CharacterDestinySlotView:onOpen()
@@ -462,6 +472,12 @@ function CharacterDestinySlotView:onOpen()
 	local title = CharacterDestinyEnum.SlotTitle[heroType] or CharacterDestinyEnum.SlotTitle[1]
 
 	self._txttitle.text = luaLang(title)
+
+	if self:_isJustOpenStone() then
+		self:_openCharacterDestinyStoneView(true)
+
+		return
+	end
 
 	if self.viewParam.isBack then
 		local isUnlock = self._heroMO.destinyStoneMo:isUnlockSlot()
@@ -777,7 +793,7 @@ function CharacterDestinySlotView:_setSlotLevel(isOpenView)
 	end
 end
 
-function CharacterDestinySlotView:_openCharacterDestinyStoneView()
+function CharacterDestinySlotView:_openCharacterDestinyStoneView(isJust)
 	if self._isPlayingUnlockAnim then
 		return
 	end
@@ -785,7 +801,7 @@ function CharacterDestinySlotView:_openCharacterDestinyStoneView()
 	local isUnlock = self._heroMO.destinyStoneMo:isUnlockSlot()
 	local animName = isUnlock and CharacterDestinyEnum.SlotViewAnim.CloseUnlock or CharacterDestinyEnum.SlotViewAnim.CloseLock
 
-	self._anim:Play(animName, 0, 0)
+	self._anim:Play(animName, 0, isJust and 1 or 0)
 	CharacterDestinyController.instance:openCharacterDestinyStoneView(self._heroMO)
 end
 

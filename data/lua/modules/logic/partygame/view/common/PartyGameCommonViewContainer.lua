@@ -45,7 +45,7 @@ function PartyGameCommonViewContainer:_showBackBtn()
 
 	local game = PartyGameController.instance:getCurPartyGame()
 
-	return game and not game:getIsLocal()
+	return game and (not game:getIsLocal() or game:getIsTrial())
 end
 
 function PartyGameCommonViewContainer:getHelpId()
@@ -59,6 +59,7 @@ end
 function PartyGameCommonViewContainer:closeCallback()
 	MessageBoxController.instance:showSystemMsgBox(MessageBoxIdDefine.PartyGameExitGame, MsgBoxEnum.BoxType.Yes_No, function()
 		PartyGameStatHelper.instance:partyGameExit()
+		PartyGameTrialController.instance:clearTrialData()
 		PartyGameController.instance:exitGame()
 	end, nil)
 end

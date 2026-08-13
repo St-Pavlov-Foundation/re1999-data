@@ -67,6 +67,18 @@ function PlayerCardAchievementSelectView:onOpen()
 
 	PlayerCardAchievementSelectController.instance:onOpenView(focusType)
 	self:addEventCb(PlayerCardAchievementSelectController.instance, AchievementEvent.SelectViewUpdated, self.refreshUI, self)
+
+	for index, categoryType in pairs(self._focusTypes) do
+		local categorySelectCount = PlayerCardAchievementSelectListModel.instance:getSelectCountByCategory(categoryType)
+
+		if categorySelectCount > 0 then
+			focusType = categoryType
+
+			break
+		end
+	end
+
+	PlayerCardAchievementSelectController.instance:setCategory(focusType)
 	self:refreshUI()
 end
 
@@ -93,7 +105,7 @@ function PlayerCardAchievementSelectView:refreshUI()
 
 	if isNamePlate then
 		local tag = {
-			PlayerCardAchievementSelectListModel.instance:getSingleSelectedCount(),
+			PlayerCardAchievementSelectListModel.instance:getGroupSelectedCount(),
 			AchievementEnum.ShowMaxNamePlateCount
 		}
 

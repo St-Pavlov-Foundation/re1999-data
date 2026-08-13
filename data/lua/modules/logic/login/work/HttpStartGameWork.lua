@@ -55,6 +55,10 @@ function HttpStartGameWork:_onHttpStartGameResponse(isSuccess, msg)
 				LoginModel.instance.serverName = self.context.lastServerMO.name
 				LoginModel.instance.serverId = self.context.lastServerMO.id
 
+				if QuickEnterServerModel.enable and isDebugBuild then
+					QuickEnterServerModel.instance:addLastEnterServer(LoginModel.instance.serverIp, LoginModel.instance.serverPort, LoginModel.instance.serverName, LoginModel.instance.serverId)
+				end
+
 				logNormal("<color=#00FF00>http 登录成功</color>")
 				self:onDone(true)
 

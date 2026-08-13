@@ -24,6 +24,7 @@ function V1a4_BossRush_AssessIcon:init(go)
 	self._govx[BossRushEnum.ScoreLevelStr.SSSS] = go4s
 	self._govx[BossRushEnum.ScoreLevelStr.SSSSS] = go5s
 	self._govx[BossRushEnum.ScoreLevelStr.SSSSSS] = go6s
+	self.viewGO = go
 end
 
 local kEmptyWidthOverHeight = 1.6842105263157894

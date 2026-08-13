@@ -74,6 +74,7 @@ function StoryStepBGMo:ctor()
 		0
 	}
 	self.effRate = 1
+	self.materialId = 0
 end
 
 function StoryStepBGMo:init(info)
@@ -105,6 +106,7 @@ function StoryStepBGMo:init(info)
 	self.effDelayTimes = info[14]
 	self.effTimes = info[15]
 	self.effRate = info[16]
+	self.materialId = info[17]
 end
 
 return StoryStepBGMo

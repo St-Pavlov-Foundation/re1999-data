@@ -63,7 +63,7 @@ function AbyssModel:onResetStage(actId, stageId)
 	local infoMo = self:getInfoMo(actId)
 
 	infoMo:resetStage(stageId)
-	AbyssController.instance:dispatchEvent(AbyssEvent.OnResetStage, actId)
+	AbyssController.instance:dispatchEvent(AbyssEvent.OnResetStage, actId, stageId)
 end
 
 function AbyssModel:getInfoMo(actId)
@@ -153,6 +153,20 @@ function AbyssModel:isInAbyssBattle()
 	local episodeType = episodeCO and episodeCO.type
 
 	return episodeType == DungeonEnum.EpisodeType.Abyss
+end
+
+function AbyssModel:onUpdateTimePush(actId, stageNOs)
+	local actInfoMo = self:getInfoMo(actId)
+
+	if actInfoMo and stageNOs and next(stageNOs) then
+		for _, stageNO in ipairs(stageNOs) do
+			actInfoMo:updateStageInfo(stageNO)
+		end
+
+		actInfoMo:updateHeroUseInfo()
+	end
+
+	AbyssController.instance:dispatchEvent(AbyssEvent.OnAbyssLastUpdateTimeChange)
 end
 
 AbyssModel.instance = AbyssModel.New()

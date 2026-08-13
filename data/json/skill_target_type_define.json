@@ -434,5 +434,9 @@
   {
     "logicTarget": "4000",
     "define": 2
+  },
+  {
+    "logicTarget": "252",
+    "define": 2
   }
 ]

@@ -37,7 +37,7 @@ function StoryAudioItem:play(inTime, outTime, volume)
 	param.volume = 100 * volume
 
 	AudioEffectMgr.instance:playAudio(self._audioId, param)
-	self:_setSwitch()
+	self:_setSwitch(true)
 end
 
 function StoryAudioItem:setLoop()
@@ -57,15 +57,8 @@ function StoryAudioItem:_resetAudio()
 	self:_setSwitch()
 end
 
-function StoryAudioItem:_setSwitch()
-	if self._audioParam.orderType == StoryEnum.AudioOrderType.Adjust then
-		local groupId = AudioMgr.instance:getIdFromString("plot_music_stae_strength")
-		local stateId = AudioMgr.instance:getIdFromString("strength0" .. tostring(self._audioParam.audioState))
-
-		if groupId and stateId then
-			AudioEffectMgr.instance:setSwitch(self._audioId, groupId, stateId)
-		end
-	elseif self._audioParam.orderType == StoryEnum.AudioOrderType.SetSwitch then
+function StoryAudioItem:_setSwitch(init)
+	if self._audioParam.orderType == StoryEnum.AudioOrderType.SetSwitch then
 		local switchCo = StoryConfig.instance:getStoryAudioSwitchConfig(self._audioParam.audioState)
 
 		if switchCo then
@@ -75,6 +68,17 @@ function StoryAudioItem:_setSwitch()
 			if groupId and stateId then
 				AudioEffectMgr.instance:setSwitch(self._audioId, groupId, stateId)
 			end
+		end
+	else
+		if not init then
+			return
+		end
+
+		local groupId = AudioMgr.instance:getIdFromString("plot_music_stae_strength")
+		local stateId = AudioMgr.instance:getIdFromString("strength0" .. tostring(self._audioParam.audioState))
+
+		if groupId and stateId then
+			AudioEffectMgr.instance:setSwitch(self._audioId, groupId, stateId)
 		end
 	end
 end
@@ -138,7 +142,6 @@ end
 function StoryAudioItem:onDestroy()
 	self._hasDestroy = true
 
-	TaskDispatcher.cancelTask(self._dealAudio, self)
 	TaskDispatcher.cancelTask(self._playLoop, self)
 	TaskDispatcher.cancelTask(self._playSingle, self)
 	TaskDispatcher.cancelTask(self._stopAudio, self)

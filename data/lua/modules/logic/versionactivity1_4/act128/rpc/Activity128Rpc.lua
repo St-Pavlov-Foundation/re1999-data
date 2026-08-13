@@ -118,4 +118,58 @@ function Activity128Rpc:onReceiveAct128GetMilestoneBonusReply(resultCode, msg)
 	self:_onReceiveAct128GetMilestoneBonusReply(resultCode, msg)
 end
 
+function Activity128Rpc:sendAct128ChangeActModeRequest(activityId, isActivityModeOpen, callback, callbackobj)
+	local req = Activity128Module_pb.Act128ChangeActModeRequest()
+
+	req.activityId = activityId
+	req.isActivityModeOpen = isActivityModeOpen
+
+	return self:sendMsg(req, callback, callbackobj)
+end
+
+function Activity128Rpc:onReceiveAct128ChangeActModeReply(resultCode, msg)
+	self:_onReceiveAct128ChangeActModeReply(resultCode, msg)
+end
+
+function Activity128Rpc:sendSetAct128TeamRequest(activityId, bossId, callback, callbackobj)
+	local req = Activity128Module_pb.SetAct128TeamRequest()
+
+	req.activityId = activityId
+	req.bossId = bossId
+	req.addBondGroupId = V3a9_BossRushExpandBondModel.instance:getEditorAddBondGroupId()
+
+	local actModeTeam = V3a9_BossRushModel.instance:getActModeTeam(bossId)
+	local infos = actModeTeam:getHeroInfos()
+
+	for i = 1, 8 do
+		local info = infos[i]
+		local uid = info and info.uid or "0"
+		local friendUserId = info and info.friendUserId or "0"
+		local no = i > 4 and req.backHeroSlots:add() or req.frontHeroSlots:add()
+
+		no.uid = uid
+		no.isFriend = friendUserId ~= "0"
+		no.friendUserId = friendUserId
+	end
+
+	return self:sendMsg(req, callback, callbackobj)
+end
+
+function Activity128Rpc:onReceiveSetAct128TeamReply(resultCode, msg)
+	self:_onReceiveSetAct128TeamReply(resultCode, msg)
+end
+
+function Activity128Rpc:sendResetAct128TeamRequest(activityId, bossId, callback, callbackobj)
+	local req = Activity128Module_pb.ResetAct128TeamRequest()
+
+	req.activityId = activityId
+	req.bossId = bossId
+
+	return self:sendMsg(req, callback, callbackobj)
+end
+
+function Activity128Rpc:onReceiveResetAct128TeamReply(resultCode, msg)
+	self:_onReceiveResetAct128TeamReply(resultCode, msg)
+end
+
 return Activity128Rpc

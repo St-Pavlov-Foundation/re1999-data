@@ -15,6 +15,8 @@ function RougeActivityView:onInitView()
 	self._gonormaltitle = gohelper.findChild(self.viewGO, "Right/title/normal")
 	self._godlctitles = gohelper.findChild(self.viewGO, "Right/title/#go_dlctitles")
 
+	self:addChildView(RougeActivityTaskEntryView.New("Right/#go_ActivityTask"))
+
 	if self._editableInitView then
 		self:_editableInitView()
 	end
@@ -52,7 +54,7 @@ function RougeActivityView:_btnLockOnClick()
 end
 
 function RougeActivityView:_editableInitView()
-	return
+	self._animator = gohelper.onceAddComponent(self.viewGO, gohelper.Type_Animator)
 end
 
 function RougeActivityView:onOpen()
@@ -60,6 +62,7 @@ function RougeActivityView:onOpen()
 	self._openId = RougeOutsideModel.instance:openUnlockId()
 	self._rpcId = RougeOutsideRpc.instance:sendGetRougeOutSideInfoRequest(self._season)
 
+	self._animator:Play("open", 0, 0)
 	self:refreshUI()
 end
 

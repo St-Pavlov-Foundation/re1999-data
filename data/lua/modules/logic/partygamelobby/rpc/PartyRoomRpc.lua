@@ -4,10 +4,47 @@ module("modules.logic.partygamelobby.rpc.PartyRoomRpc", package.seeall)
 
 local PartyRoomRpc = class("PartyRoomRpc", BaseRpc)
 
-function PartyRoomRpc:sendCreatePartyRoomRequest(version)
+function PartyRoomRpc:sendCheckPartyRoomInfoRequest(roomId, callback, callbackObj)
+	local req = PartyRoomModule_pb.CheckPartyRoomInfoRequest()
+
+	req.roomId = roomId
+
+	return self:sendMsg(req, callback, callbackObj)
+end
+
+function PartyRoomRpc:onReceiveCheckPartyRoomInfoReply(resultCode, msg)
+	if resultCode ~= 0 then
+		return
+	end
+
+	PartyGameLobbyController.instance:dispatchEvent(PartyGameLobbyEvent.onReceiveCheckPartyRoomInfoReply, msg)
+end
+
+function PartyRoomRpc:simpleJoinPartyRoomReq(roomId)
+	PartyGameRoomModel.instance:pingServerList()
+	self:sendCheckPartyRoomInfoRequest(roomId, self._onSimpleJoinPartyRoomReqCb, self)
+end
+
+function PartyRoomRpc:_onSimpleJoinPartyRoomReqCb(_, resultCode, msg)
+	if resultCode ~= 0 then
+		return
+	end
+
+	local roomId = msg.roomId
+
+	self:sendJoinPartyRoomRequest(PartyGameRoomModel.getResVersion(), roomId)
+end
+
+function PartyRoomRpc:simpleCreatePartyRoomReq()
+	PartyGameRoomModel.instance:pingServerList()
+	PartyRoomRpc.instance:sendCreatePartyRoomRequest(PartyGameRoomModel.getResVersion())
+end
+
+function PartyRoomRpc:sendCreatePartyRoomRequest(version, area)
 	local req = PartyRoomModule_pb.CreatePartyRoomRequest()
 
 	req.version = version
+	req.area = area or PartyGameRoomModel.instance:getFastestAreaId()
 
 	self:sendMsg(req)
 end
@@ -106,11 +143,12 @@ function PartyRoomRpc:onReceiveClearSuccessMatchInfoReply(resultCode, msg)
 	PartyGameRoomModel.instance:setMatchInfo(nil)
 end
 
-function PartyRoomRpc:sendJoinPartyRoomRequest(version, roomId)
+function PartyRoomRpc:sendJoinPartyRoomRequest(version, roomId, area)
 	local req = PartyRoomModule_pb.JoinPartyRoomRequest()
 
 	req.version = version
 	req.roomId = roomId
+	req.area = area or PartyGameRoomModel.instance:getFastestAreaId()
 
 	self:sendMsg(req)
 end

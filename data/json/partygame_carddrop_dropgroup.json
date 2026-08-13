@@ -1,0 +1,1190 @@
+[
+  {
+    "id": 1,
+    "dropGroup": 100,
+    "cardId": 1,
+    "weight": 50
+  },
+  {
+    "id": 2,
+    "dropGroup": 100,
+    "cardId": 2,
+    "weight": 50
+  },
+  {
+    "id": 3,
+    "dropGroup": 100,
+    "cardId": 3,
+    "weight": 50
+  },
+  {
+    "id": 4,
+    "dropGroup": 100,
+    "cardId": 4,
+    "weight": 50
+  },
+  {
+    "id": 5,
+    "dropGroup": 100,
+    "cardId": 5,
+    "weight": 50
+  },
+  {
+    "id": 6,
+    "dropGroup": 100,
+    "cardId": 6,
+    "weight": 50
+  },
+  {
+    "id": 7,
+    "dropGroup": 100,
+    "cardId": 7,
+    "weight": 100
+  },
+  {
+    "id": 8,
+    "dropGroup": 100,
+    "cardId": 8,
+    "weight": 100
+  },
+  {
+    "id": 9,
+    "dropGroup": 100,
+    "cardId": 9,
+    "weight": 100
+  },
+  {
+    "id": 10,
+    "dropGroup": 101,
+    "cardId": 7,
+    "weight": 50
+  },
+  {
+    "id": 11,
+    "dropGroup": 101,
+    "cardId": 8,
+    "weight": 50
+  },
+  {
+    "id": 12,
+    "dropGroup": 101,
+    "cardId": 9,
+    "weight": 50
+  },
+  {
+    "id": 13,
+    "dropGroup": 101,
+    "cardId": 16,
+    "weight": 50
+  },
+  {
+    "id": 14,
+    "dropGroup": 101,
+    "cardId": 11,
+    "weight": 50
+  },
+  {
+    "id": 15,
+    "dropGroup": 101,
+    "cardId": 12,
+    "weight": 50
+  },
+  {
+    "id": 16,
+    "dropGroup": 101,
+    "cardId": 13,
+    "weight": 100
+  },
+  {
+    "id": 17,
+    "dropGroup": 101,
+    "cardId": 14,
+    "weight": 100
+  },
+  {
+    "id": 18,
+    "dropGroup": 101,
+    "cardId": 15,
+    "weight": 100
+  },
+  {
+    "id": 100101,
+    "dropGroup": 1001,
+    "cardId": 5,
+    "weight": 0
+  },
+  {
+    "id": 100102,
+    "dropGroup": 1001,
+    "cardId": 6,
+    "weight": 0
+  },
+  {
+    "id": 100103,
+    "dropGroup": 1001,
+    "cardId": 7,
+    "weight": 100
+  },
+  {
+    "id": 100104,
+    "dropGroup": 1001,
+    "cardId": 15,
+    "weight": 0
+  },
+  {
+    "id": 100105,
+    "dropGroup": 1001,
+    "cardId": 16,
+    "weight": 0
+  },
+  {
+    "id": 100106,
+    "dropGroup": 1001,
+    "cardId": 17,
+    "weight": 100
+  },
+  {
+    "id": 100107,
+    "dropGroup": 1001,
+    "cardId": 25,
+    "weight": 0
+  },
+  {
+    "id": 100108,
+    "dropGroup": 1001,
+    "cardId": 26,
+    "weight": 0
+  },
+  {
+    "id": 100109,
+    "dropGroup": 1001,
+    "cardId": 27,
+    "weight": 100
+  },
+  {
+    "id": 100110,
+    "dropGroup": 1001,
+    "cardId": 304,
+    "weight": 0
+  },
+  {
+    "id": 100111,
+    "dropGroup": 1001,
+    "cardId": 314,
+    "weight": 0
+  },
+  {
+    "id": 100112,
+    "dropGroup": 1001,
+    "cardId": 324,
+    "weight": 0
+  },
+  {
+    "id": 100113,
+    "dropGroup": 1001,
+    "cardId": 404,
+    "weight": 0
+  },
+  {
+    "id": 100114,
+    "dropGroup": 1001,
+    "cardId": 414,
+    "weight": 0
+  },
+  {
+    "id": 100115,
+    "dropGroup": 1001,
+    "cardId": 424,
+    "weight": 0
+  },
+  {
+    "id": 100116,
+    "dropGroup": 1001,
+    "cardId": 104,
+    "weight": 0
+  },
+  {
+    "id": 100117,
+    "dropGroup": 1001,
+    "cardId": 105,
+    "weight": 100
+  },
+  {
+    "id": 100201,
+    "dropGroup": 1002,
+    "cardId": 5,
+    "weight": 100
+  },
+  {
+    "id": 100202,
+    "dropGroup": 1002,
+    "cardId": 6,
+    "weight": 100
+  },
+  {
+    "id": 100203,
+    "dropGroup": 1002,
+    "cardId": 7,
+    "weight": 100
+  },
+  {
+    "id": 100204,
+    "dropGroup": 1002,
+    "cardId": 15,
+    "weight": 100
+  },
+  {
+    "id": 100205,
+    "dropGroup": 1002,
+    "cardId": 16,
+    "weight": 100
+  },
+  {
+    "id": 100206,
+    "dropGroup": 1002,
+    "cardId": 17,
+    "weight": 100
+  },
+  {
+    "id": 100207,
+    "dropGroup": 1002,
+    "cardId": 25,
+    "weight": 100
+  },
+  {
+    "id": 100208,
+    "dropGroup": 1002,
+    "cardId": 26,
+    "weight": 100
+  },
+  {
+    "id": 100209,
+    "dropGroup": 1002,
+    "cardId": 27,
+    "weight": 100
+  },
+  {
+    "id": 100210,
+    "dropGroup": 1002,
+    "cardId": 304,
+    "weight": 100
+  },
+  {
+    "id": 100211,
+    "dropGroup": 1002,
+    "cardId": 314,
+    "weight": 100
+  },
+  {
+    "id": 100212,
+    "dropGroup": 1002,
+    "cardId": 324,
+    "weight": 100
+  },
+  {
+    "id": 100213,
+    "dropGroup": 1002,
+    "cardId": 104,
+    "weight": 400
+  },
+  {
+    "id": 100214,
+    "dropGroup": 1002,
+    "cardId": 105,
+    "weight": 200
+  },
+  {
+    "id": 100301,
+    "dropGroup": 1003,
+    "cardId": 5,
+    "weight": 100
+  },
+  {
+    "id": 100302,
+    "dropGroup": 1003,
+    "cardId": 6,
+    "weight": 100
+  },
+  {
+    "id": 100303,
+    "dropGroup": 1003,
+    "cardId": 15,
+    "weight": 100
+  },
+  {
+    "id": 100304,
+    "dropGroup": 1003,
+    "cardId": 16,
+    "weight": 100
+  },
+  {
+    "id": 100305,
+    "dropGroup": 1003,
+    "cardId": 25,
+    "weight": 100
+  },
+  {
+    "id": 100306,
+    "dropGroup": 1003,
+    "cardId": 26,
+    "weight": 100
+  },
+  {
+    "id": 100307,
+    "dropGroup": 1003,
+    "cardId": 404,
+    "weight": 0
+  },
+  {
+    "id": 100308,
+    "dropGroup": 1003,
+    "cardId": 414,
+    "weight": 0
+  },
+  {
+    "id": 100309,
+    "dropGroup": 1003,
+    "cardId": 424,
+    "weight": 0
+  },
+  {
+    "id": 100401,
+    "dropGroup": 1004,
+    "cardId": 4,
+    "weight": 100
+  },
+  {
+    "id": 100402,
+    "dropGroup": 1004,
+    "cardId": 5,
+    "weight": 100
+  },
+  {
+    "id": 100403,
+    "dropGroup": 1004,
+    "cardId": 14,
+    "weight": 100
+  },
+  {
+    "id": 100404,
+    "dropGroup": 1004,
+    "cardId": 15,
+    "weight": 100
+  },
+  {
+    "id": 100405,
+    "dropGroup": 1004,
+    "cardId": 24,
+    "weight": 100
+  },
+  {
+    "id": 100406,
+    "dropGroup": 1004,
+    "cardId": 25,
+    "weight": 100
+  },
+  {
+    "id": 100501,
+    "dropGroup": 1005,
+    "cardId": 3,
+    "weight": 100
+  },
+  {
+    "id": 100502,
+    "dropGroup": 1005,
+    "cardId": 4,
+    "weight": 100
+  },
+  {
+    "id": 100503,
+    "dropGroup": 1005,
+    "cardId": 5,
+    "weight": 100
+  },
+  {
+    "id": 100504,
+    "dropGroup": 1005,
+    "cardId": 13,
+    "weight": 100
+  },
+  {
+    "id": 100505,
+    "dropGroup": 1005,
+    "cardId": 14,
+    "weight": 100
+  },
+  {
+    "id": 100506,
+    "dropGroup": 1005,
+    "cardId": 15,
+    "weight": 100
+  },
+  {
+    "id": 100507,
+    "dropGroup": 1005,
+    "cardId": 23,
+    "weight": 100
+  },
+  {
+    "id": 100508,
+    "dropGroup": 1005,
+    "cardId": 24,
+    "weight": 100
+  },
+  {
+    "id": 100509,
+    "dropGroup": 1005,
+    "cardId": 25,
+    "weight": 100
+  },
+  {
+    "id": 110101,
+    "dropGroup": 1101,
+    "cardId": 5,
+    "weight": 100
+  },
+  {
+    "id": 110102,
+    "dropGroup": 1101,
+    "cardId": 6,
+    "weight": 100
+  },
+  {
+    "id": 110103,
+    "dropGroup": 1101,
+    "cardId": 7,
+    "weight": 100
+  },
+  {
+    "id": 110104,
+    "dropGroup": 1101,
+    "cardId": 15,
+    "weight": 100
+  },
+  {
+    "id": 110105,
+    "dropGroup": 1101,
+    "cardId": 16,
+    "weight": 100
+  },
+  {
+    "id": 110106,
+    "dropGroup": 1101,
+    "cardId": 17,
+    "weight": 100
+  },
+  {
+    "id": 110107,
+    "dropGroup": 1101,
+    "cardId": 25,
+    "weight": 100
+  },
+  {
+    "id": 110108,
+    "dropGroup": 1101,
+    "cardId": 26,
+    "weight": 100
+  },
+  {
+    "id": 110109,
+    "dropGroup": 1101,
+    "cardId": 27,
+    "weight": 100
+  },
+  {
+    "id": 110110,
+    "dropGroup": 1101,
+    "cardId": 304,
+    "weight": 100
+  },
+  {
+    "id": 110111,
+    "dropGroup": 1101,
+    "cardId": 314,
+    "weight": 100
+  },
+  {
+    "id": 110112,
+    "dropGroup": 1101,
+    "cardId": 324,
+    "weight": 100
+  },
+  {
+    "id": 110113,
+    "dropGroup": 1101,
+    "cardId": 404,
+    "weight": 0
+  },
+  {
+    "id": 110114,
+    "dropGroup": 1101,
+    "cardId": 414,
+    "weight": 0
+  },
+  {
+    "id": 110115,
+    "dropGroup": 1101,
+    "cardId": 424,
+    "weight": 0
+  },
+  {
+    "id": 110116,
+    "dropGroup": 1101,
+    "cardId": 104,
+    "weight": 400
+  },
+  {
+    "id": 110117,
+    "dropGroup": 1101,
+    "cardId": 105,
+    "weight": 200
+  },
+  {
+    "id": 110201,
+    "dropGroup": 1102,
+    "cardId": 3,
+    "weight": 100
+  },
+  {
+    "id": 110202,
+    "dropGroup": 1102,
+    "cardId": 4,
+    "weight": 100
+  },
+  {
+    "id": 110203,
+    "dropGroup": 1102,
+    "cardId": 5,
+    "weight": 100
+  },
+  {
+    "id": 110204,
+    "dropGroup": 1102,
+    "cardId": 13,
+    "weight": 100
+  },
+  {
+    "id": 110205,
+    "dropGroup": 1102,
+    "cardId": 14,
+    "weight": 100
+  },
+  {
+    "id": 110206,
+    "dropGroup": 1102,
+    "cardId": 15,
+    "weight": 100
+  },
+  {
+    "id": 110207,
+    "dropGroup": 1102,
+    "cardId": 23,
+    "weight": 100
+  },
+  {
+    "id": 110208,
+    "dropGroup": 1102,
+    "cardId": 24,
+    "weight": 100
+  },
+  {
+    "id": 110209,
+    "dropGroup": 1102,
+    "cardId": 25,
+    "weight": 100
+  },
+  {
+    "id": 110210,
+    "dropGroup": 1102,
+    "cardId": 303,
+    "weight": 100
+  },
+  {
+    "id": 110211,
+    "dropGroup": 1102,
+    "cardId": 313,
+    "weight": 100
+  },
+  {
+    "id": 110212,
+    "dropGroup": 1102,
+    "cardId": 323,
+    "weight": 100
+  },
+  {
+    "id": 110213,
+    "dropGroup": 1102,
+    "cardId": 403,
+    "weight": 0
+  },
+  {
+    "id": 110214,
+    "dropGroup": 1102,
+    "cardId": 413,
+    "weight": 0
+  },
+  {
+    "id": 110215,
+    "dropGroup": 1102,
+    "cardId": 423,
+    "weight": 0
+  },
+  {
+    "id": 200101,
+    "dropGroup": 2001,
+    "cardId": 8,
+    "weight": 0
+  },
+  {
+    "id": 200102,
+    "dropGroup": 2001,
+    "cardId": 9,
+    "weight": 0
+  },
+  {
+    "id": 200103,
+    "dropGroup": 2001,
+    "cardId": 18,
+    "weight": 0
+  },
+  {
+    "id": 200104,
+    "dropGroup": 2001,
+    "cardId": 19,
+    "weight": 0
+  },
+  {
+    "id": 200105,
+    "dropGroup": 2001,
+    "cardId": 28,
+    "weight": 0
+  },
+  {
+    "id": 200106,
+    "dropGroup": 2001,
+    "cardId": 29,
+    "weight": 0
+  },
+  {
+    "id": 200107,
+    "dropGroup": 2001,
+    "cardId": 306,
+    "weight": 100
+  },
+  {
+    "id": 200108,
+    "dropGroup": 2001,
+    "cardId": 316,
+    "weight": 100
+  },
+  {
+    "id": 200109,
+    "dropGroup": 2001,
+    "cardId": 326,
+    "weight": 100
+  },
+  {
+    "id": 200110,
+    "dropGroup": 2001,
+    "cardId": 406,
+    "weight": 0
+  },
+  {
+    "id": 200111,
+    "dropGroup": 2001,
+    "cardId": 416,
+    "weight": 0
+  },
+  {
+    "id": 200112,
+    "dropGroup": 2001,
+    "cardId": 426,
+    "weight": 0
+  },
+  {
+    "id": 200113,
+    "dropGroup": 2001,
+    "cardId": 105,
+    "weight": 0
+  },
+  {
+    "id": 200114,
+    "dropGroup": 2001,
+    "cardId": 106,
+    "weight": 100
+  },
+  {
+    "id": 200115,
+    "dropGroup": 2001,
+    "cardId": 204,
+    "weight": 0
+  },
+  {
+    "id": 200116,
+    "dropGroup": 2001,
+    "cardId": 205,
+    "weight": 0
+  },
+  {
+    "id": 200201,
+    "dropGroup": 2002,
+    "cardId": 7,
+    "weight": 100
+  },
+  {
+    "id": 200202,
+    "dropGroup": 2002,
+    "cardId": 8,
+    "weight": 100
+  },
+  {
+    "id": 200203,
+    "dropGroup": 2002,
+    "cardId": 17,
+    "weight": 100
+  },
+  {
+    "id": 200204,
+    "dropGroup": 2002,
+    "cardId": 18,
+    "weight": 100
+  },
+  {
+    "id": 200205,
+    "dropGroup": 2002,
+    "cardId": 27,
+    "weight": 100
+  },
+  {
+    "id": 200206,
+    "dropGroup": 2002,
+    "cardId": 28,
+    "weight": 100
+  },
+  {
+    "id": 200207,
+    "dropGroup": 2002,
+    "cardId": 305,
+    "weight": 100
+  },
+  {
+    "id": 200208,
+    "dropGroup": 2002,
+    "cardId": 315,
+    "weight": 100
+  },
+  {
+    "id": 200209,
+    "dropGroup": 2002,
+    "cardId": 325,
+    "weight": 100
+  },
+  {
+    "id": 200210,
+    "dropGroup": 2002,
+    "cardId": 405,
+    "weight": 0
+  },
+  {
+    "id": 200211,
+    "dropGroup": 2002,
+    "cardId": 415,
+    "weight": 0
+  },
+  {
+    "id": 200212,
+    "dropGroup": 2002,
+    "cardId": 425,
+    "weight": 0
+  },
+  {
+    "id": 200213,
+    "dropGroup": 2002,
+    "cardId": 104,
+    "weight": 300
+  },
+  {
+    "id": 200214,
+    "dropGroup": 2002,
+    "cardId": 105,
+    "weight": 150
+  },
+  {
+    "id": 200215,
+    "dropGroup": 2002,
+    "cardId": 203,
+    "weight": 0
+  },
+  {
+    "id": 200216,
+    "dropGroup": 2002,
+    "cardId": 204,
+    "weight": 0
+  },
+  {
+    "id": 200301,
+    "dropGroup": 2003,
+    "cardId": 6,
+    "weight": 100
+  },
+  {
+    "id": 200302,
+    "dropGroup": 2003,
+    "cardId": 7,
+    "weight": 100
+  },
+  {
+    "id": 200303,
+    "dropGroup": 2003,
+    "cardId": 16,
+    "weight": 100
+  },
+  {
+    "id": 200304,
+    "dropGroup": 2003,
+    "cardId": 17,
+    "weight": 100
+  },
+  {
+    "id": 200305,
+    "dropGroup": 2003,
+    "cardId": 26,
+    "weight": 100
+  },
+  {
+    "id": 200306,
+    "dropGroup": 2003,
+    "cardId": 27,
+    "weight": 100
+  },
+  {
+    "id": 200307,
+    "dropGroup": 2003,
+    "cardId": 305,
+    "weight": 50
+  },
+  {
+    "id": 200308,
+    "dropGroup": 2003,
+    "cardId": 315,
+    "weight": 50
+  },
+  {
+    "id": 200309,
+    "dropGroup": 2003,
+    "cardId": 325,
+    "weight": 50
+  },
+  {
+    "id": 200310,
+    "dropGroup": 2003,
+    "cardId": 405,
+    "weight": 0
+  },
+  {
+    "id": 200311,
+    "dropGroup": 2003,
+    "cardId": 415,
+    "weight": 0
+  },
+  {
+    "id": 200312,
+    "dropGroup": 2003,
+    "cardId": 425,
+    "weight": 0
+  },
+  {
+    "id": 210101,
+    "dropGroup": 2101,
+    "cardId": 8,
+    "weight": 100
+  },
+  {
+    "id": 210102,
+    "dropGroup": 2101,
+    "cardId": 9,
+    "weight": 100
+  },
+  {
+    "id": 210103,
+    "dropGroup": 2101,
+    "cardId": 18,
+    "weight": 100
+  },
+  {
+    "id": 210104,
+    "dropGroup": 2101,
+    "cardId": 19,
+    "weight": 100
+  },
+  {
+    "id": 210105,
+    "dropGroup": 2101,
+    "cardId": 28,
+    "weight": 100
+  },
+  {
+    "id": 210106,
+    "dropGroup": 2101,
+    "cardId": 29,
+    "weight": 100
+  },
+  {
+    "id": 210107,
+    "dropGroup": 2101,
+    "cardId": 306,
+    "weight": 100
+  },
+  {
+    "id": 210108,
+    "dropGroup": 2101,
+    "cardId": 316,
+    "weight": 100
+  },
+  {
+    "id": 210109,
+    "dropGroup": 2101,
+    "cardId": 326,
+    "weight": 100
+  },
+  {
+    "id": 210110,
+    "dropGroup": 2101,
+    "cardId": 406,
+    "weight": 0
+  },
+  {
+    "id": 210111,
+    "dropGroup": 2101,
+    "cardId": 416,
+    "weight": 0
+  },
+  {
+    "id": 210112,
+    "dropGroup": 2101,
+    "cardId": 426,
+    "weight": 0
+  },
+  {
+    "id": 210113,
+    "dropGroup": 2101,
+    "cardId": 105,
+    "weight": 300
+  },
+  {
+    "id": 210114,
+    "dropGroup": 2101,
+    "cardId": 106,
+    "weight": 150
+  },
+  {
+    "id": 210115,
+    "dropGroup": 2101,
+    "cardId": 204,
+    "weight": 0
+  },
+  {
+    "id": 210116,
+    "dropGroup": 2101,
+    "cardId": 205,
+    "weight": 0
+  },
+  {
+    "id": 210201,
+    "dropGroup": 2102,
+    "cardId": 7,
+    "weight": 100
+  },
+  {
+    "id": 210202,
+    "dropGroup": 2102,
+    "cardId": 8,
+    "weight": 100
+  },
+  {
+    "id": 210203,
+    "dropGroup": 2102,
+    "cardId": 17,
+    "weight": 100
+  },
+  {
+    "id": 210204,
+    "dropGroup": 2102,
+    "cardId": 18,
+    "weight": 100
+  },
+  {
+    "id": 210205,
+    "dropGroup": 2102,
+    "cardId": 27,
+    "weight": 100
+  },
+  {
+    "id": 210206,
+    "dropGroup": 2102,
+    "cardId": 28,
+    "weight": 100
+  },
+  {
+    "id": 210207,
+    "dropGroup": 2102,
+    "cardId": 305,
+    "weight": 100
+  },
+  {
+    "id": 210208,
+    "dropGroup": 2102,
+    "cardId": 315,
+    "weight": 100
+  },
+  {
+    "id": 210209,
+    "dropGroup": 2102,
+    "cardId": 325,
+    "weight": 100
+  },
+  {
+    "id": 210210,
+    "dropGroup": 2102,
+    "cardId": 405,
+    "weight": 0
+  },
+  {
+    "id": 210211,
+    "dropGroup": 2102,
+    "cardId": 415,
+    "weight": 0
+  },
+  {
+    "id": 210212,
+    "dropGroup": 2102,
+    "cardId": 425,
+    "weight": 0
+  },
+  {
+    "id": 300101,
+    "dropGroup": 3001,
+    "cardId": 308,
+    "weight": 100
+  },
+  {
+    "id": 300102,
+    "dropGroup": 3001,
+    "cardId": 318,
+    "weight": 100
+  },
+  {
+    "id": 300103,
+    "dropGroup": 3001,
+    "cardId": 328,
+    "weight": 100
+  },
+  {
+    "id": 300104,
+    "dropGroup": 3001,
+    "cardId": 408,
+    "weight": 0
+  },
+  {
+    "id": 300105,
+    "dropGroup": 3001,
+    "cardId": 418,
+    "weight": 0
+  },
+  {
+    "id": 300106,
+    "dropGroup": 3001,
+    "cardId": 428,
+    "weight": 0
+  },
+  {
+    "id": 300107,
+    "dropGroup": 3001,
+    "cardId": 106,
+    "weight": 50
+  },
+  {
+    "id": 300108,
+    "dropGroup": 3001,
+    "cardId": 107,
+    "weight": 50
+  },
+  {
+    "id": 300109,
+    "dropGroup": 3001,
+    "cardId": 206,
+    "weight": 0
+  },
+  {
+    "id": 300110,
+    "dropGroup": 3001,
+    "cardId": 207,
+    "weight": 0
+  },
+  {
+    "id": 300201,
+    "dropGroup": 3002,
+    "cardId": 8,
+    "weight": 100
+  },
+  {
+    "id": 300202,
+    "dropGroup": 3002,
+    "cardId": 18,
+    "weight": 100
+  },
+  {
+    "id": 300203,
+    "dropGroup": 3002,
+    "cardId": 28,
+    "weight": 100
+  },
+  {
+    "id": 300204,
+    "dropGroup": 3002,
+    "cardId": 308,
+    "weight": 50
+  },
+  {
+    "id": 300205,
+    "dropGroup": 3002,
+    "cardId": 318,
+    "weight": 50
+  },
+  {
+    "id": 300206,
+    "dropGroup": 3002,
+    "cardId": 328,
+    "weight": 50
+  },
+  {
+    "id": 300207,
+    "dropGroup": 3002,
+    "cardId": 408,
+    "weight": 0
+  },
+  {
+    "id": 300208,
+    "dropGroup": 3002,
+    "cardId": 418,
+    "weight": 0
+  },
+  {
+    "id": 300209,
+    "dropGroup": 3002,
+    "cardId": 428,
+    "weight": 0
+  },
+  {
+    "id": 300210,
+    "dropGroup": 3002,
+    "cardId": 106,
+    "weight": 50
+  },
+  {
+    "id": 300211,
+    "dropGroup": 3002,
+    "cardId": 206,
+    "weight": 0
+  }
+]

@@ -9,6 +9,16 @@ local function _defaultBtnGmFunc()
 	ViewMgr.instance:openView(ViewName.GM_VersionActivity_DungeonMapView)
 end
 
+function GM_VersionActivity_DungeonMapView.register(major, minor)
+	local dungeonMapView = VersionActivityFixedHelper.getVersionActivityDungeonMapView(major, minor)
+	local dungeonMapEpisodeItem = VersionActivityFixedHelper.getVersionActivityDungeonMapEpisodeItem(major, minor)
+	local dungeonMapLevelView = VersionActivityFixedHelper.getVersionActivityDungeonMapLevelView(major, minor)
+
+	GM_VersionActivity_DungeonMapView.VersionActivityX_XDungeonMapView_register(dungeonMapView)
+	GM_VersionActivity_DungeonMapView.VersionActivityX_XMapEpisodeItem_register(dungeonMapEpisodeItem)
+	GM_VersionActivity_DungeonMapView.VersionActivityX_XDungeonMapLevelView_register(dungeonMapLevelView, major, minor)
+end
+
 function GM_VersionActivity_DungeonMapView.VersionActivityX_XDungeonMapView_register(T)
 	GMMinusModel.instance:saveOriginalFunc(T, "_editableInitView")
 	GMMinusModel.instance:saveOriginalFunc(T, "addEvents")

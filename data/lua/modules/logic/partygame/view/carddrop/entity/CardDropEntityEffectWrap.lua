@@ -12,7 +12,7 @@ local function GetUid()
 end
 
 function CardDropEntityEffectWrap:init(entityUid, entity)
-	CardDropEntityEffectWrap.super.__onInit(self)
+	self:__onInit()
 
 	self.uid = GetUid()
 	self.entityUid = entityUid
@@ -24,7 +24,7 @@ function CardDropEntityEffectWrap:createEffect(effectName, parentGo)
 	self.containerTr = self.containerGo.transform
 	self.loader = PrefabInstantiate.Create(self.containerGo)
 	self.effectName = effectName
-	self.effectFullPath = ResUrl.getEffect(effectName)
+	self.effectFullPath = ResUrl.getPartyGameEffectPath(effectName)
 
 	self.loader:startLoad(self.effectFullPath, self.onLoadEffectDone, self)
 end
@@ -95,7 +95,7 @@ end
 
 function CardDropEntityEffectWrap:destroy()
 	gohelper.destroy(self.containerGo)
-	CardDropEntityEffectWrap.super.__onDispose(self)
+	self:__onDispose()
 end
 
 return CardDropEntityEffectWrap

@@ -14,7 +14,7 @@ function FightParamChangeWork20:onStart()
 
 	local viewName = ViewName.FightDiceView
 
-	ViewMgr.instance:openView(viewName, diceList)
+	ViewMgr.instance:openView(viewName)
 	self:cancelFightWorkSafeTimer()
 end
 

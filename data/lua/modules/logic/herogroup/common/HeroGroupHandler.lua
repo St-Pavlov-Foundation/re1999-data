@@ -163,6 +163,14 @@ function HeroGroupHandler.getAtomicDungeonSnapshot()
 	}
 end
 
+function HeroGroupHandler.getBossRushActModeShot()
+	return ModuleEnum.HeroGroupSnapshotType.BossRushActMode, {
+		1,
+		2,
+		3
+	}
+end
+
 HeroGroupHandler.getSnapShotHandleFunc = {
 	[DungeonEnum.EpisodeType.TowerPermanent] = HeroGroupHandler.getTowerPermanentSnapShot,
 	[DungeonEnum.EpisodeType.TowerBoss] = HeroGroupHandler.getTowerBossSnapShot,
@@ -174,7 +182,8 @@ HeroGroupHandler.getSnapShotHandleFunc = {
 	[DungeonEnum.EpisodeType.Survival] = HeroGroupHandler.getSurvivalSnapShot,
 	[DungeonEnum.EpisodeType.Abyss] = HeroGroupHandler.getAbyssSnapShot,
 	[DungeonEnum.EpisodeType.Rouge2] = HeroGroupHandler.getRouge2Snapshot,
-	[DungeonEnum.EpisodeType.AtomicDungeon] = HeroGroupHandler.getAtomicDungeonSnapshot
+	[DungeonEnum.EpisodeType.AtomicDungeon] = HeroGroupHandler.getAtomicDungeonSnapshot,
+	[DungeonEnum.EpisodeType.BossRushActMode] = HeroGroupHandler.getBossRushActModeShot
 }
 
 function HeroGroupHandler.getSnapShot(episodeId)

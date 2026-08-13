@@ -52,10 +52,6 @@ function YeShuMeiGameController:finishGame()
 	ViewMgr.instance:openView(ViewName.YeShuMeiResultView)
 end
 
-function YeShuMeiGameController:reInit()
-	return
-end
-
 YeShuMeiGameController.instance = YeShuMeiGameController.New()
 
 return YeShuMeiGameController

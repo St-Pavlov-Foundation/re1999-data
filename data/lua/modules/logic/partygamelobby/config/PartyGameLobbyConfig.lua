@@ -6,7 +6,8 @@ local PartyGameLobbyConfig = class("PartyGameLobbyConfig", BaseConfig)
 
 function PartyGameLobbyConfig:reqConfigNames()
 	return {
-		"party_building"
+		"party_building",
+		"partygame_param"
 	}
 end
 

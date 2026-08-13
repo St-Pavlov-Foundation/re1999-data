@@ -304,8 +304,6 @@ function BpTaskView:_onTaskUpdate()
 
 	if showOper then
 		self._operactAnim:Play("open", 0, 0)
-
-		return
 	end
 
 	local showAllComplete = not showOper and self._taskLoopType <= 2 and BpModel.instance:isWeeklyScoreFull()

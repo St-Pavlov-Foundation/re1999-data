@@ -1156,5 +1156,29 @@
     "id": 2,
     "res": "dialogue_jijinhuguanyuan_right",
     "pos": "165#0"
+  },
+  {
+    "dialogueId": 68,
+    "id": 1,
+    "res": "dialogue_laplace_staff_left",
+    "pos": "-165#0"
+  },
+  {
+    "dialogueId": 68,
+    "id": 2,
+    "res": "dialogue_laplace_staff_right",
+    "pos": "165#0"
+  },
+  {
+    "dialogueId": 69,
+    "id": 1,
+    "res": "dialogue_yangcongtou_left",
+    "pos": "-165#0"
+  },
+  {
+    "dialogueId": 69,
+    "id": 2,
+    "res": "dialogue_hepingwulu_right",
+    "pos": "165#0"
   }
 ]

@@ -1,0 +1,541 @@
+[
+  {
+    "id": 10101,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "None#3#100011",
+    "limit": 0
+  },
+  {
+    "id": 10102,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "None#3#300011",
+    "limit": 0
+  },
+  {
+    "id": 10103,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "None#3#100101",
+    "limit": 0
+  },
+  {
+    "id": 10104,
+    "carAnimation": "",
+    "effectType": "TempFix",
+    "param": "None#3#1012#5#0",
+    "limit": 0
+  },
+  {
+    "id": 10105,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "None#3#300019",
+    "limit": 0
+  },
+  {
+    "id": 10121,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "None#3#100012",
+    "limit": 0
+  },
+  {
+    "id": 10122,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "None#3#300012",
+    "limit": 0
+  },
+  {
+    "id": 10123,
+    "carAnimation": "",
+    "effectType": "TempFix",
+    "param": "None#3#1012#10#0",
+    "limit": 0
+  },
+  {
+    "id": 10201,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "None#0#100019",
+    "limit": 0
+  },
+  {
+    "id": 10202,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "None#0#300021",
+    "limit": 0
+  },
+  {
+    "id": 10211,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "None#0#400023",
+    "limit": 0
+  },
+  {
+    "id": 10212,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "None#0#400033",
+    "limit": 0
+  },
+  {
+    "id": 10221,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "None#0#400102",
+    "limit": 0
+  },
+  {
+    "id": 10231,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "None#2#100020",
+    "limit": 0
+  },
+  {
+    "id": 10232,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "None#2#300022",
+    "limit": 0
+  },
+  {
+    "id": 10241,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "None#0#400062",
+    "limit": 0
+  },
+  {
+    "id": 10242,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "None#0#100021",
+    "limit": 0
+  },
+  {
+    "id": 10251,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "None#0#100022",
+    "limit": 0
+  },
+  {
+    "id": 10252,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "None#0#300021",
+    "limit": 0
+  },
+  {
+    "id": 10261,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "None#0#400062",
+    "limit": 0
+  },
+  {
+    "id": 10262,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "None#0#100023",
+    "limit": 0
+  },
+  {
+    "id": 10263,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "None#0#400103",
+    "limit": 0
+  },
+  {
+    "id": 20011,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "UseSkill#0#100013",
+    "limit": 0
+  },
+  {
+    "id": 20012,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "UseSkill#0#300013",
+    "limit": 0
+  },
+  {
+    "id": 20021,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "UseSkill#0#100014",
+    "limit": 0
+  },
+  {
+    "id": 20022,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "UseSkill#0#300014",
+    "limit": 0
+  },
+  {
+    "id": 20023,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "UseSkill#0#400011",
+    "limit": 0
+  },
+  {
+    "id": 20024,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "UseSkill#0#400021",
+    "limit": 0
+  },
+  {
+    "id": 20025,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "UseSkill#0#400031",
+    "limit": 0
+  },
+  {
+    "id": 20031,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "UseSkill#0#100015",
+    "limit": 0
+  },
+  {
+    "id": 20032,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "UseSkill#0#300015",
+    "limit": 0
+  },
+  {
+    "id": 20033,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "UseSkill#0#400022",
+    "limit": 0
+  },
+  {
+    "id": 20034,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "UseSkill#0#400051",
+    "limit": 0
+  },
+  {
+    "id": 20041,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "UseSkill#0#400061",
+    "limit": 0
+  },
+  {
+    "id": 20042,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "UseSkill#0#100016",
+    "limit": 0
+  },
+  {
+    "id": 20043,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "UseSkill#0#400101",
+    "limit": 0
+  },
+  {
+    "id": 20051,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "UseSkill#1#400071",
+    "limit": 0
+  },
+  {
+    "id": 20061,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "UseSkill#0#100018",
+    "limit": 0
+  },
+  {
+    "id": 20062,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "UseSkill#0#300017",
+    "limit": 0
+  },
+  {
+    "id": 20071,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "UseSkill#0#300018",
+    "limit": 0
+  },
+  {
+    "id": 20081,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "UseSkill#0#400024",
+    "limit": 0
+  },
+  {
+    "id": 20082,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "UseSkill#0#400025",
+    "limit": 0
+  },
+  {
+    "id": 30001,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "GetBuff&400071#0#400091",
+    "limit": 0
+  },
+  {
+    "id": 30002,
+    "carAnimation": "",
+    "effectType": "AddRangBuff",
+    "param": "GetBuff&400071#0#20#400081",
+    "limit": 0
+  },
+  {
+    "id": 30003,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "GetBuff&400071#0#100017",
+    "limit": 0
+  },
+  {
+    "id": 30004,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "GetBuff&400071#0#300016",
+    "limit": 0
+  },
+  {
+    "id": 30005,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "FightStart#0#400032",
+    "limit": 0
+  },
+  {
+    "id": 30006,
+    "carAnimation": "",
+    "effectType": "TempFix",
+    "param": "GetBuff&400031,400033#0#1001#2#0",
+    "limit": 0
+  },
+  {
+    "id": 30007,
+    "carAnimation": "",
+    "effectType": "TempFix",
+    "param": "Rank&1,2,3,4#0#1012#2#0",
+    "limit": 0
+  },
+  {
+    "id": 30008,
+    "carAnimation": "",
+    "effectType": "TempFix",
+    "param": "BeImpact#0#1012#-10#0",
+    "limit": 0
+  },
+  {
+    "id": 30009,
+    "carAnimation": "",
+    "effectType": "TempFix",
+    "param": "FightStart#0#1012#100#0",
+    "limit": 0
+  },
+  {
+    "id": 30010,
+    "carAnimation": "",
+    "effectType": "ItemConversion",
+    "param": "",
+    "limit": 0
+  },
+  {
+    "id": 30011,
+    "carAnimation": "",
+    "effectType": "TempFix",
+    "param": "Dodge#0#1021#1#0",
+    "limit": 0
+  },
+  {
+    "id": 30012,
+    "carAnimation": "",
+    "effectType": "TempSet",
+    "param": "BeImpact#0#1021#0",
+    "limit": 0
+  },
+  {
+    "id": 30013,
+    "carAnimation": "",
+    "effectType": "TempFix",
+    "param": "Rank&2,3,4#0#1012#1#0",
+    "limit": 0
+  },
+  {
+    "id": 30014,
+    "carAnimation": "",
+    "effectType": "TempFix",
+    "param": "FightStart#0#1004#60#0",
+    "limit": 0
+  },
+  {
+    "id": 30015,
+    "carAnimation": "",
+    "effectType": "TempFix",
+    "param": "FightStart#0#1004#90#0",
+    "limit": 0
+  },
+  {
+    "id": 30016,
+    "carAnimation": "",
+    "effectType": "TempFix",
+    "param": "Rank&2,3,4#0#1021#2#0",
+    "limit": 0
+  },
+  {
+    "id": 30017,
+    "carAnimation": "",
+    "effectType": "TempSet",
+    "param": "Rank&1#0#1021#0",
+    "limit": 0
+  },
+  {
+    "id": 40001,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "FightStart#0#300020",
+    "limit": 0
+  },
+  {
+    "id": 40002,
+    "carAnimation": "",
+    "effectType": "TempFix",
+    "param": "FightStart#0#1002#20#0",
+    "limit": 0
+  },
+  {
+    "id": 40003,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "Dodge#0#100102",
+    "limit": 0
+  },
+  {
+    "id": 40004,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "GetElement&13901#0#100103",
+    "limit": 0
+  },
+  {
+    "id": 40005,
+    "carAnimation": "",
+    "effectType": "AddItem",
+    "param": "FightStart#0#13953#1",
+    "limit": 0
+  },
+  {
+    "id": 40006,
+    "carAnimation": "",
+    "effectType": "ItemConversion",
+    "param": "GetItem&13951#0#13951#13961",
+    "limit": 0
+  },
+  {
+    "id": 40007,
+    "carAnimation": "",
+    "effectType": "ItemConversion",
+    "param": "GetItem&13953#0#13953#13963",
+    "limit": 0
+  },
+  {
+    "id": 40008,
+    "carAnimation": "",
+    "effectType": "ItemConversion",
+    "param": "GetItem&13955#0#13955#13962",
+    "limit": 0
+  },
+  {
+    "id": 40009,
+    "carAnimation": "",
+    "effectType": "TempFix",
+    "param": "Rank&2,3,4#0#1021#1#0",
+    "limit": 0
+  },
+  {
+    "id": 40010,
+    "carAnimation": "",
+    "effectType": "TempFix",
+    "param": "Rank&2,3,4#0#1012#1#0",
+    "limit": 0
+  },
+  {
+    "id": 40011,
+    "carAnimation": "",
+    "effectType": "TempFix",
+    "param": "Dodge#0#1012#5#0",
+    "limit": 0
+  },
+  {
+    "id": 40012,
+    "carAnimation": "",
+    "effectType": "TempFix",
+    "param": "Dodge#0#1012#10#0",
+    "limit": 0
+  },
+  {
+    "id": 40013,
+    "carAnimation": "",
+    "effectType": "TempFix",
+    "param": "Rank&1#0#1022#1#0",
+    "limit": 0
+  },
+  {
+    "id": 40014,
+    "carAnimation": "",
+    "effectType": "TempFix",
+    "param": "Rank&1#0#1022#2#0",
+    "limit": 0
+  },
+  {
+    "id": 40015,
+    "carAnimation": "",
+    "effectType": "TempSet",
+    "param": "Rank&2,3,4#0#1022#0",
+    "limit": 0
+  },
+  {
+    "id": 390207,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "None#3#390207",
+    "limit": 0
+  },
+  {
+    "id": 13903,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "UseItem#2#100020",
+    "limit": 0
+  },
+  {
+    "id": 13905,
+    "carAnimation": "",
+    "effectType": "AddBuff",
+    "param": "UseItem#0#100115",
+    "limit": 0
+  }
+]

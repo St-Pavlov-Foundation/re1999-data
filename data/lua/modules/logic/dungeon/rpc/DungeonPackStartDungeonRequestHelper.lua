@@ -15,7 +15,10 @@ function DungeonPackStartDungeonRequestHelper.initHandle()
 		[DungeonEnum.EpisodeType.Act183] = DungeonPackStartDungeonRequestHelper.packAct183CustomParam,
 		[DungeonEnum.EpisodeType.TowerCompose] = DungeonPackStartDungeonRequestHelper.packTowerComposeCustomParam,
 		[DungeonEnum.EpisodeType.Rouge2] = DungeonPackStartDungeonRequestHelper.packRouge2CustomParam,
-		[DungeonEnum.EpisodeType.AtomicDungeon] = DungeonPackStartDungeonRequestHelper.packAtomicDungeonCustomParam
+		[DungeonEnum.EpisodeType.AtomicDungeon] = DungeonPackStartDungeonRequestHelper.packAtomicDungeonCustomParam,
+		[DungeonEnum.EpisodeType.BossRush] = DungeonPackStartDungeonRequestHelper.packBossRushDungeonCustomParam,
+		[DungeonEnum.EpisodeType.V3_2ZongMao] = DungeonPackStartDungeonRequestHelper.packBossRushDungeonCustomParam,
+		[DungeonEnum.EpisodeType.BossRushActMode] = DungeonPackStartDungeonRequestHelper.packBossRushDungeonCustomParam
 	}
 end
 
@@ -96,6 +99,22 @@ function DungeonPackStartDungeonRequestHelper.packAtomicDungeonCustomParam(reque
 
 		request.params = string.format("1#%d", elementId)
 	end
+end
+
+function DungeonPackStartDungeonRequestHelper.packBossRushDungeonCustomParam(request, episodeConfig)
+	if not episodeConfig then
+		return
+	end
+
+	local _, _, actId = BossRushModel.instance:getBattleStageAndLayer()
+
+	if not actId then
+		local _, _, _actId = BossRushConfig.instance:tryGetStageAndLayerByEpisodeId(episodeConfig.id)
+
+		actId = _actId
+	end
+
+	request.params = tostring(actId)
 end
 
 return DungeonPackStartDungeonRequestHelper

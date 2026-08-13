@@ -85,13 +85,13 @@ function PackageStoreView:_refreshTabs(selectTabId, openUpdate, scrollToRadDot)
 	local firstConfig = StoreConfig.instance:getTabConfig(self.viewContainer:getSelectFirstTabId())
 
 	if thirdConfig and not string.nilorempty(thirdConfig.showCost) then
-		self.viewContainer:setCurrencyType(thirdConfig.showCost)
+		self.viewContainer:setCurrencyByParams(self:packShowCostParam(thirdConfig.showCost))
 	elseif secondConfig and not string.nilorempty(secondConfig.showCost) then
-		self.viewContainer:setCurrencyType(secondConfig.showCost)
+		self.viewContainer:setCurrencyByParams(self:packShowCostParam(secondConfig.showCost))
 	elseif firstConfig and not string.nilorempty(firstConfig.showCost) then
-		self.viewContainer:setCurrencyType(firstConfig.showCost)
+		self.viewContainer:setCurrencyByParams(self:packShowCostParam(firstConfig.showCost))
 	else
-		self.viewContainer:setCurrencyType(nil)
+		self.viewContainer:setCurrencyByParams(nil)
 	end
 
 	if not openUpdate and preSelectSecondTabId == self._selectSecondTabId and preSelectThirdTabId == self._selectThirdTabId then
@@ -105,6 +105,27 @@ function PackageStoreView:_refreshTabs(selectTabId, openUpdate, scrollToRadDot)
 	self._resetScrollPos = true
 
 	self:_refreshGoods(true, scrollToRadDot)
+end
+
+function PackageStoreView:packShowCostParam(showCost)
+	local currencyTypeParams = {}
+	local costInfo = string.split(showCost, "#")
+
+	for i = #costInfo, 1, -1 do
+		local costId = tonumber(costInfo[i])
+
+		if ItemModel.instance:getItemCount(costId) > 0 and not CurrencyModel.instance:getCurrency(costId) then
+			table.insert(currencyTypeParams, {
+				isCurrencySprite = true,
+				id = costId,
+				type = MaterialEnum.MaterialType.Item
+			})
+		elseif CurrencyModel.instance:getCurrency(costId) then
+			table.insert(currencyTypeParams, costId)
+		end
+	end
+
+	return currencyTypeParams
 end
 
 function PackageStoreView:_refreshAllSecondTabs()

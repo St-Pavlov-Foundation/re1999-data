@@ -154,6 +154,37 @@ function TurnbackRpc:onReceiveAcceptAllTurnbackBonusPointReply(resultCode, msg)
 	end
 end
 
+function TurnbackRpc:sendTurnbackReturnRewardRequest(turnbackId, rewardId)
+	local req = TurnbackModule_pb.TurnbackReturnRewardRequest()
+
+	req.id = turnbackId
+	req.rewardId = rewardId
+
+	return self:sendMsg(req)
+end
+
+function TurnbackRpc:onReceiveTurnbackReturnRewardReply(resultCode, msg)
+	if resultCode == 0 then
+		TurnbackModel.instance:onGetResourceReturnReward(msg.hasGetReturnRewardIds)
+		TurnbackController.instance:dispatchEvent(TurnbackEvent.OnTurnbackReturnRewardReply)
+	end
+end
+
+function TurnbackRpc:sendAcceptAllTurnbackReturnRewardRequest(turnbackId)
+	local req = TurnbackModule_pb.AcceptAllTurnbackReturnRewardRequest()
+
+	req.id = turnbackId
+
+	return self:sendMsg(req)
+end
+
+function TurnbackRpc:onReceiveAcceptAllTurnbackReturnRewardReply(resultCode, msg)
+	if resultCode == 0 then
+		TurnbackModel.instance:onGetResourceReturnReward(msg.hasGetReturnRewardIds)
+		TurnbackController.instance:dispatchEvent(TurnbackEvent.OnTurnbackReturnRewardReply)
+	end
+end
+
 TurnbackRpc.instance = TurnbackRpc.New()
 
 return TurnbackRpc

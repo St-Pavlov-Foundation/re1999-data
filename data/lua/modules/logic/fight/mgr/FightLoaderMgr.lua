@@ -5,7 +5,40 @@ module("modules.logic.fight.mgr.FightLoaderMgr", package.seeall)
 local FightLoaderMgr = class("FightLoaderMgr", FightBaseClass)
 
 function FightLoaderMgr:onConstructor()
-	self.loader = self:addComponent(FightLoaderComponent)
+	self.url2Item = {}
+end
+
+function FightLoaderMgr:loadAsset(url, callback, handle, param)
+	local item = self.url2Item[url]
+
+	if not item then
+		item = self:newClass(FightAssetItem, url)
+		self.url2Item[url] = item
+	end
+
+	item.refCounter = item.refCounter + 1
+
+	item:startLoad(callback, handle, param)
+
+	return item
+end
+
+function FightLoaderMgr:getAsset(url)
+	return self.url2Item[url]
+end
+
+function FightLoaderMgr:unloadAsset(url)
+	local item = self.url2Item[url]
+
+	if item then
+		item.refCounter = item.refCounter - 1
+
+		if item.refCounter <= 0 then
+			item:disposeSelf()
+
+			self.url2Item[url] = nil
+		end
+	end
 end
 
 function FightLoaderMgr:onDestructor()

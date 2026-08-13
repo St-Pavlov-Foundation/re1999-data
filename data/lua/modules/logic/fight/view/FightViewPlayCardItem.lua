@@ -26,6 +26,8 @@ function FightViewPlayCardItem:init(go)
 
 		if cardSkin == 672802 then
 			moveImgUrl = "singlebg_lang/txt_fight/change3.png"
+		elseif cardSkin == 672803 then
+			moveImgUrl = "singlebg_lang/txt_fight/change4.png"
 		end
 
 		local emptyDarkBg = gohelper.cloneInPlace(self._emptyNormal.gameObject, "emptyDarkBg")

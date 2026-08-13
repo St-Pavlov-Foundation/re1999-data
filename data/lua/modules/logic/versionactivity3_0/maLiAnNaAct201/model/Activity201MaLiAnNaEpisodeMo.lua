@@ -31,7 +31,7 @@ function Activity201MaLiAnNaEpisodeMo:checkFinishGame()
 end
 
 function Activity201MaLiAnNaEpisodeMo:isGame()
-	local config = Activity201MaLiAnNaConfig:getEpisodeCo(self._actId, self.episodeId)
+	local config = Activity201MaLiAnNaConfig.instance:getEpisodeCo(self._actId, self.episodeId)
 
 	return config and config.gameId ~= 0
 end

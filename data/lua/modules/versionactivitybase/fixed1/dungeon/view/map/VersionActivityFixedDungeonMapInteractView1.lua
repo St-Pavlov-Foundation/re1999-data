@@ -31,6 +31,14 @@ function VersionActivityFixedDungeonMapInteractView1:_onClickElement(mapElement)
 	self._interactView:showInteractUI(mapElement)
 end
 
+function VersionActivityFixedDungeonMapInteractView1:onRecheck(elementCo)
+	self._interactView = self:_getInteractView()
+
+	self._interactView:removeEvents()
+	self._interactView:addEvents()
+	self._interactView:onRecheck(elementCo)
+end
+
 function VersionActivityFixedDungeonMapInteractView1:_getInteractView()
 	if not self._interact1View then
 		local bigVersion, smallVersion = VersionActivityFixedDungeonController.instance:getEnterVerison()

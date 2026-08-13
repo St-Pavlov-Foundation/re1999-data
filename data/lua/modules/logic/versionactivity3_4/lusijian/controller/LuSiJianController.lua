@@ -121,10 +121,6 @@ function LuSiJianController:_onRecInfo(cmd, resultCode, msg)
 	end
 end
 
-function LuSiJianController:reInit()
-	return
-end
-
 LuSiJianController.instance = LuSiJianController.New()
 
 return LuSiJianController

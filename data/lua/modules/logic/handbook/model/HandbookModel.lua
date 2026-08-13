@@ -9,6 +9,10 @@ function HandbookModel:onInit()
 	self._fragmentDict = {}
 	self._characterReadDict = {}
 	self._equipDict = {}
+	self._skinRedDotReadDict = {}
+	self._skinRedDotDict = {}
+	self._skinRedDotUnlockReadDict = {}
+	self._skinRedDotUnlockDict = {}
 end
 
 function HandbookModel:reInit()
@@ -16,6 +20,10 @@ function HandbookModel:reInit()
 	self._fragmentDict = {}
 	self._characterReadDict = {}
 	self._equipDict = {}
+	self._skinRedDotReadDict = {}
+	self._skinRedDotDict = {}
+	self._skinRedDotUnlockReadDict = {}
+	self._skinRedDotUnlockDict = {}
 end
 
 function HandbookModel:setReadInfos(infos)
@@ -209,6 +217,291 @@ end
 
 function HandbookModel:haveEquip(equipId)
 	return self._equipDict[equipId]
+end
+
+function HandbookModel:updateSkinRedDotInfo(param)
+	tabletool.clear(self._skinRedDotReadDict)
+	tabletool.clear(self._skinRedDotUnlockReadDict)
+
+	if not string.nilorempty(param) then
+		local redDotInfoList = string.split(param, "|")
+
+		for _, singleRedDotInfoList in ipairs(redDotInfoList) do
+			local redDotInfo = string.split(singleRedDotInfoList, "#")
+			local redDotGroupId = tonumber(redDotInfo[1])
+			local singleDic
+
+			if not self._skinRedDotReadDict[redDotGroupId] then
+				singleDic = {}
+				self._skinRedDotReadDict[redDotGroupId] = singleDic
+			else
+				singleDic = self._skinRedDotReadDict[redDotGroupId]
+			end
+
+			local singleReadDic
+
+			if not self._skinRedDotUnlockReadDict[redDotGroupId] then
+				singleReadDic = {}
+				self._skinRedDotUnlockReadDict[redDotGroupId] = singleReadDic
+			else
+				singleReadDic = self._skinRedDotUnlockReadDict[redDotGroupId]
+			end
+
+			if #redDotInfo > 1 then
+				for i = 2, #redDotInfo do
+					if not string.nilorempty(redDotInfo[i]) then
+						local singleSkinParam = string.splitToNumber(redDotInfo[i], ":")
+						local skinId = singleSkinParam[1]
+						local redDotVersion = singleSkinParam[2] or 0
+						local unlockVersion = singleSkinParam[3] or 0
+
+						singleDic[skinId] = redDotVersion
+						singleReadDic[skinId] = unlockVersion
+					end
+				end
+			end
+		end
+	end
+
+	self:initSkinRedDotInfo()
+	self:initSkinRedDotUnlockInfo()
+end
+
+function HandbookModel:initSkinRedDotInfo()
+	tabletool.clear(self._skinRedDotDict)
+
+	local suitConfigs = HandbookConfig.instance:getSkinThemeGroupCfgs(true)
+
+	for _, config in ipairs(suitConfigs) do
+		local suitThemeConfigList = HandbookConfig.instance:getSkinSuitCfgListInGroup(config.id)
+
+		if suitThemeConfigList and next(suitThemeConfigList) then
+			for _, themeConfig in ipairs(suitThemeConfigList) do
+				local showRedDot = false
+				local skinList = HandbookConfig.instance:getSkinIdListBySuitId(themeConfig.id)
+
+				if skinList and next(skinList) then
+					for _, skinId in ipairs(skinList) do
+						if skinId ~= 0 then
+							local skinConfig = SkinConfig.instance:getSkinCo(skinId)
+
+							if not skinConfig then
+								logError(string.format("skinConfig not found skinId: %s", skinId))
+							elseif skinConfig.handbookRedDot and skinConfig.handbookRedDot ~= 0 and (not self._skinRedDotReadDict[themeConfig.id] or not self._skinRedDotReadDict[themeConfig.id][skinId] or self._skinRedDotReadDict[themeConfig.id][skinId] < skinConfig.handbookRedDot) then
+								showRedDot = true
+
+								break
+							end
+						end
+					end
+				end
+
+				if showRedDot then
+					if not self._skinRedDotDict[config.id] then
+						self._skinRedDotDict[config.id] = {}
+					end
+
+					logNormal("增加皮肤图鉴 未读红点 groupId: " .. tostring(config.id) .. " 套组id: " .. tostring(themeConfig.id))
+
+					self._skinRedDotDict[config.id][themeConfig.id] = showRedDot
+				end
+			end
+		end
+	end
+end
+
+function HandbookModel:initSkinRedDotUnlockInfo()
+	tabletool.clear(self._skinRedDotUnlockDict)
+
+	local suitConfigs = HandbookConfig.instance:getSkinThemeGroupCfgs(true)
+
+	for _, config in ipairs(suitConfigs) do
+		local suitThemeConfigList = HandbookConfig.instance:getSkinSuitCfgListInGroup(config.id)
+
+		if suitThemeConfigList and next(suitThemeConfigList) then
+			for _, themeConfig in ipairs(suitThemeConfigList) do
+				local showRedDot = false
+				local skinList = HandbookConfig.instance:getSkinIdListBySuitId(themeConfig.id)
+
+				if skinList and next(skinList) then
+					for _, skinId in ipairs(skinList) do
+						if skinId ~= 0 and self._skinRedDotUnlockReadDict[themeConfig.id] and self._skinRedDotUnlockReadDict[themeConfig.id][skinId] and self._skinRedDotUnlockReadDict[themeConfig.id][skinId] > 0 then
+							showRedDot = true
+
+							break
+						end
+					end
+				end
+
+				if showRedDot then
+					if not self._skinRedDotUnlockDict[config.id] then
+						self._skinRedDotUnlockDict[config.id] = {}
+					end
+
+					logNormal("增加皮肤图鉴 未读解锁红点 groupId: " .. tostring(config.id) .. " 套组id: " .. tostring(themeConfig.id))
+
+					self._skinRedDotUnlockDict[config.id][themeConfig.id] = showRedDot
+				end
+			end
+		end
+	end
+end
+
+function HandbookModel:getSkinRedDotInfoParam()
+	local resultList = {}
+	local needSaveSkinIdDic = {}
+
+	for redDotGroupId, singleDic in pairs(self._skinRedDotReadDict) do
+		for skinId, redDotVersion in pairs(singleDic) do
+			local skinConfig = SkinConfig.instance:getSkinCo(skinId)
+
+			if skinConfig and skinConfig.handbookRedDot and skinConfig.handbookRedDot ~= 0 then
+				if not needSaveSkinIdDic[redDotGroupId] then
+					needSaveSkinIdDic[redDotGroupId] = {}
+				end
+
+				needSaveSkinIdDic[redDotGroupId][skinId] = true
+			end
+		end
+	end
+
+	for redDotGroupId, singleDic in pairs(self._skinRedDotUnlockReadDict) do
+		for skinId, unlockReadState in pairs(singleDic) do
+			if unlockReadState ~= 0 then
+				if not needSaveSkinIdDic[redDotGroupId] then
+					needSaveSkinIdDic[redDotGroupId] = {}
+				end
+
+				needSaveSkinIdDic[redDotGroupId][skinId] = true
+			end
+		end
+	end
+
+	for redDotGroupId, singleDic in pairs(needSaveSkinIdDic) do
+		local groupParam = redDotGroupId .. "#"
+		local redDotParam = {}
+
+		for skinId, needSave in pairs(singleDic) do
+			if needSave then
+				local redDotVersion = self._skinRedDotReadDict[redDotGroupId] and self._skinRedDotReadDict[redDotGroupId][skinId] or 0
+				local unlockReadState = self._skinRedDotUnlockReadDict[redDotGroupId] and self._skinRedDotUnlockReadDict[redDotGroupId][skinId] or 0
+
+				table.insert(redDotParam, skinId .. ":" .. tostring(redDotVersion) .. ":" .. tostring(unlockReadState))
+			end
+		end
+
+		groupParam = groupParam .. table.concat(redDotParam, "#")
+
+		table.insert(resultList, groupParam)
+	end
+
+	if resultList and next(resultList) then
+		return table.concat(resultList, "|")
+	else
+		return ""
+	end
+end
+
+function HandbookModel:markHandbookSkinRedDotShow(suitId)
+	local config = HandbookConfig.instance:getSkinSuitCfg(suitId)
+
+	if config then
+		local skinList = HandbookConfig.instance:getSkinIdListBySuitId(suitId)
+
+		if skinList and next(skinList) then
+			local singleDic
+
+			if not self._skinRedDotReadDict[suitId] then
+				singleDic = {}
+				self._skinRedDotReadDict[suitId] = singleDic
+			else
+				singleDic = self._skinRedDotReadDict[suitId]
+			end
+
+			for _, skinId in ipairs(skinList) do
+				if skinId ~= 0 then
+					local skinConfig = SkinConfig.instance:getSkinCo(skinId)
+
+					if not skinConfig then
+						logError(string.format("skinConfig not found skinId: %s", skinId))
+					else
+						singleDic[skinId] = skinConfig.handbookRedDot
+					end
+				end
+			end
+		end
+
+		if self._skinRedDotDict[config.highId] and self._skinRedDotDict[config.id] then
+			self._skinRedDotDict[config.highId][config.id] = nil
+
+			if next(self._skinRedDotDict[config.highId]) == nil then
+				self._skinRedDotDict[config.highId] = nil
+			end
+		end
+	end
+end
+
+function HandbookModel:markHandbookSkinUnlockRedDotShow(skinId)
+	if skinId == 0 then
+		return
+	end
+
+	local suitId = HandbookConfig.instance:getSkinSuitIdBySkinId(skinId)
+	local config = HandbookConfig.instance:getSkinSuitCfg(suitId)
+
+	if config then
+		local singleDic
+
+		if not self._skinRedDotUnlockReadDict[suitId] then
+			singleDic = {}
+			self._skinRedDotUnlockReadDict[suitId] = singleDic
+		else
+			singleDic = self._skinRedDotUnlockReadDict[suitId]
+		end
+
+		singleDic[skinId] = 0
+	end
+end
+
+function HandbookModel:addOrRemoveUnlockSkinId(skinId, isAdd)
+	if skinId == 0 then
+		return
+	end
+
+	local suitId = HandbookConfig.instance:getSkinSuitIdBySkinId(skinId)
+
+	if suitId then
+		local singleDic
+
+		if not self._skinRedDotUnlockReadDict[suitId] then
+			singleDic = {}
+			self._skinRedDotUnlockReadDict[suitId] = singleDic
+		else
+			singleDic = self._skinRedDotUnlockReadDict[suitId]
+		end
+
+		singleDic[skinId] = isAdd and 1 or 0
+	end
+end
+
+function HandbookModel:getSkinRedDotInfo(skinGroupId)
+	return self._skinRedDotDict and self._skinRedDotDict[skinGroupId]
+end
+
+function HandbookModel:getAllSkinRedDotInfo()
+	return self._skinRedDotDict
+end
+
+function HandbookModel:getSkinUnlockRedDotInfo(skinGroupId)
+	return self._skinRedDotUnlockDict and self._skinRedDotUnlockDict[skinGroupId]
+end
+
+function HandbookModel:getAllSkinUnlockRedDotInfo()
+	return self._skinRedDotUnlockDict
+end
+
+function HandbookModel:getSkinUnlockRedDotReadInfo()
+	return self._skinRedDotUnlockReadDict
 end
 
 HandbookModel.instance = HandbookModel.New()

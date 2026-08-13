@@ -29,14 +29,14 @@ function CharacterDefaultDestinyView:_btndestinyOnClick()
 		return
 	end
 
-	local isOpen = self.heroMo:isCanOpenDestinySystem(true)
+	if not CharacterDestinyModel.instance:isOpenDestinySystem(true) then
+		return
+	end
 
-	if isOpen then
-		CharacterDestinyController.instance:openCharacterDestinySlotView(self.heroMo)
+	CharacterDestinyController.instance:openCharacterDestinySlotView(self.heroMo)
 
-		if self:_isShowDestinyReddot() then
-			HeroRpc.instance:setHeroRedDotReadRequest(self.heroMo.heroId, 2)
-		end
+	if self:_isShowDestinyReddot() then
+		HeroRpc.instance:setHeroRedDotReadRequest(self.heroMo.heroId, 2)
 	end
 end
 

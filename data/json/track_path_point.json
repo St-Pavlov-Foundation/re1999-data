@@ -1,0 +1,106 @@
+[
+  {
+    "traceId": "39001",
+    "pointId": 0,
+    "distance": 0.0,
+    "posX": 0.0,
+    "posY": 0.0,
+    "posZ": 0.0
+  },
+  {
+    "traceId": "39001",
+    "pointId": 1,
+    "distance": 184.83507,
+    "posX": -42.0,
+    "posY": 0.0,
+    "posZ": 180.0
+  },
+  {
+    "traceId": "39001",
+    "pointId": 2,
+    "distance": 408.16443,
+    "posX": -118.0,
+    "posY": 0.0,
+    "posZ": 390.0
+  },
+  {
+    "traceId": "39001",
+    "pointId": 3,
+    "distance": 640.6639,
+    "posX": -84.0,
+    "posY": 0.0,
+    "posZ": 620.0
+  },
+  {
+    "traceId": "39001",
+    "pointId": 4,
+    "distance": 905.8506,
+    "posX": 48.0,
+    "posY": 0.0,
+    "posZ": 850.0
+  },
+  {
+    "traceId": "39001",
+    "pointId": 5,
+    "distance": 1149.3666,
+    "posX": 128.0,
+    "posY": 0.0,
+    "posZ": 1080.0
+  },
+  {
+    "traceId": "39001",
+    "pointId": 6,
+    "distance": 1395.8132,
+    "posX": 72.0,
+    "posY": 0.0,
+    "posZ": 1320.0
+  },
+  {
+    "traceId": "39001",
+    "pointId": 7,
+    "distance": 1649.3403,
+    "posX": -54.0,
+    "posY": 0.0,
+    "posZ": 1540.0
+  },
+  {
+    "traceId": "39001",
+    "pointId": 8,
+    "distance": 1901.6973,
+    "posX": -132.0,
+    "posY": 0.0,
+    "posZ": 1780.0
+  },
+  {
+    "traceId": "39001",
+    "pointId": 9,
+    "distance": 2158.7266,
+    "posX": -40.0,
+    "posY": 0.0,
+    "posZ": 2020.0
+  },
+  {
+    "traceId": "39001",
+    "pointId": 10,
+    "distance": 2435.573,
+    "posX": 98.0,
+    "posY": 0.0,
+    "posZ": 2260.0
+  },
+  {
+    "traceId": "39001",
+    "pointId": 11,
+    "distance": 2703.334,
+    "posX": 34.0,
+    "posY": 0.0,
+    "posZ": 2520.0
+  },
+  {
+    "traceId": "39001",
+    "pointId": 12,
+    "distance": 2988.1218,
+    "posX": -18.0,
+    "posY": 0.0,
+    "posZ": 2800.0
+  }
+]

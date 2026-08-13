@@ -42,7 +42,7 @@ function FightDeviceSwitchCardItem:onClickDeviceCard()
 	end
 
 	if not self:checkCanSwitch() then
-		GameFacade.showToast(374002)
+		GameFacade.showToast(ToastEnum.FightDeviceSwitchCardItem_374002)
 
 		return
 	end

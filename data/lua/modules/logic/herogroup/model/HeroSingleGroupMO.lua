@@ -11,6 +11,7 @@ function HeroSingleGroupMO:ctor()
 	self.trial = nil
 	self.trialTemplate = nil
 	self.trialPos = nil
+	self.assistMo = nil
 end
 
 function HeroSingleGroupMO:init(id, heroUid)
@@ -19,6 +20,7 @@ function HeroSingleGroupMO:init(id, heroUid)
 	self.trial = nil
 	self.trialTemplate = nil
 	self.trialPos = nil
+	self.assistMo = nil
 end
 
 function HeroSingleGroupMO:setAid(aid)
@@ -57,8 +59,28 @@ function HeroSingleGroupMO:setTrial(trialId, templateId, pos, noCheckEquip)
 	end
 end
 
+function HeroSingleGroupMO:setAssist(assistMo)
+	self.assistMo = assistMo
+end
+
+function HeroSingleGroupMO:swapAssist(assistMo, index)
+	self.assistMo = assistMo
+	self.id = index
+end
+
 function HeroSingleGroupMO:getHeroMO()
-	return self.heroUid and HeroModel.instance:getById(self.heroUid)
+	if self.assistMo then
+		return self.assistMo.heroMO
+	end
+
+	local _, assistMo = HeroGroupModel.instance:getAssistMo()
+	local heroMo = self.heroUid and HeroModel.instance:getById(self.heroUid)
+
+	if assistMo and heroMo and assistMo.assistMo.heroId == heroMo.heroId then
+		return
+	end
+
+	return heroMo
 end
 
 function HeroSingleGroupMO:getHeroCO()
@@ -73,6 +95,10 @@ end
 
 function HeroSingleGroupMO:getTrialCO()
 	return self.trial and lua_hero_trial.configDict[self.trial][self.trialTemplate]
+end
+
+function HeroSingleGroupMO:getAssist()
+	return self.assistMo
 end
 
 function HeroSingleGroupMO:setEmpty()

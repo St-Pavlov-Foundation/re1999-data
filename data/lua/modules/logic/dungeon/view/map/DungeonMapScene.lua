@@ -29,6 +29,7 @@ function DungeonMapScene:addEvents()
 	self:addEventCb(GameGlobalMgr.instance, GameStateEvent.OnScreenResize, self._onScreenResize, self)
 	self:addEventCb(DungeonController.instance, DungeonEvent.CheckEnterDungeonMapView, self._delaySendGuideEnterDungeonMapEvent, self)
 	self:addEventCb(DungeonController.instance, DungeonEvent.CheckEnterEpisodeDungeonMapView, self._delaySendGuideEnterEpisodeDungeonMapView, self)
+	self:addEventCb(DungeonController.instance, DungeonMapElementEvent.OnRecheckElement, self._onRecheckElement, self)
 end
 
 function DungeonMapScene:removeEvents()
@@ -40,6 +41,7 @@ function DungeonMapScene:removeEvents()
 	self:removeEventCb(DungeonController.instance, DungeonEvent.CheckEnterEpisodeDungeonMapView, self._delaySendGuideEnterEpisodeDungeonMapView, self)
 	self:removeEventCb(ViewMgr.instance, ViewEvent.OnOpenView, self._onOpenView, self)
 	self:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseView, self._onCloseView, self)
+	self:removeEventCb(DungeonController.instance, DungeonMapElementEvent.OnRecheckElement, self._onRecheckElement, self)
 end
 
 function DungeonMapScene:_editableInitView()
@@ -864,6 +866,22 @@ function DungeonMapScene:_sendGuideEnterEpisodeDungeonMapView()
 	if self._mapCfg then
 		DungeonController.instance:dispatchEvent(DungeonEvent.OnEnterEpisodeDungeonMapView, self._mapCfg.id)
 	end
+end
+
+function DungeonMapScene:_onRecheckElement(elementId, isGM)
+	local elementCo = lua_chapter_map_element.configDict[elementId]
+	local chapterId = self.viewParam.chapterId or self.viewContainer:_getChapterId()
+
+	if not DungeonController.instance:isNeedRecheckInteractive(elementCo) then
+		DungeonController.instance:onRecheckElement(elementId, chapterId)
+
+		return
+	end
+
+	local item = self:getInteractiveItem()
+	local pos = self._sceneTrans.localPosition
+
+	DungeonController.instance:onRecheckElement(elementId, chapterId, item, pos, isGM)
 end
 
 function DungeonMapScene:onClose()

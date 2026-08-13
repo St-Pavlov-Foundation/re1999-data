@@ -144,7 +144,7 @@ function WaitGuideActionOpenViewInFirstWithCondition.checkTowerLimitGuideTrigger
 	return GuideTriggerOpenViewCondition.checkTowerLimitOpen()
 end
 
-function WaitGuideActionOpenViewInFirstWithCondition.NoOtherGuideExecute(param, self)
+function WaitGuideActionOpenViewInFirstWithCondition.NoOtherGuideExecute(param, instance)
 	if not DungeonModel.instance:chapterListIsNormalType() then
 		return false
 	end
@@ -165,11 +165,11 @@ function WaitGuideActionOpenViewInFirstWithCondition.NoOtherGuideExecute(param, 
 
 	local chapterId = DungeonConfig.instance:getLastEarlyAccessChapterId()
 
-	if self.guideId == DungeonMainStoryEnum.Guide.PreviouslyOn then
+	if instance.guideId == DungeonMainStoryEnum.Guide.PreviouslyOn then
 		return not DungeonMainStoryModel.instance:showPreviewChapterFlag(chapterId)
 	end
 
-	if self.guideId == DungeonMainStoryEnum.Guide.EarlyAccess then
+	if instance.guideId == DungeonMainStoryEnum.Guide.EarlyAccess then
 		return DungeonMainStoryModel.instance:showPreviewChapterFlag(chapterId)
 	end
 
@@ -204,6 +204,20 @@ function WaitGuideActionOpenViewInFirstWithCondition.checkV3A2NecrologistItemUnl
 	end
 
 	return mo:isItemUnlock(itemId)
+end
+
+function WaitGuideActionOpenViewInFirstWithCondition.checkV3a9RacingCarFinish(param)
+	local episodeId = tonumber(param)
+	local info = V3a9RacingCarEpisodeModel.instance:getEpisodeInfo(episodeId)
+
+	return info and info.isFinished
+end
+
+function WaitGuideActionOpenViewInFirstWithCondition.checkEnterV3a9RacingCarGame(param)
+	local episodeId = tonumber(param)
+	local episodeConfig = V3a9RacingCarModel.instance:getEpisodeConfig()
+
+	return episodeConfig and episodeConfig.episodeId == episodeId
 end
 
 return WaitGuideActionOpenViewInFirstWithCondition

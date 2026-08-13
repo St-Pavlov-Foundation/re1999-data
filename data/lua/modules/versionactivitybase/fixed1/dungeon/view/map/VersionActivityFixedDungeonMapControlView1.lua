@@ -264,7 +264,7 @@ function VersionActivityFixedDungeonMapControlView1:_updateMapInfo()
 	extraConfig = extraConfig or VersionActivityFixedDungeonConfig1.instance:getChapterMap(episodeId - 10000)
 	self._txtPlace.text = extraConfig and extraConfig.locationDesc
 
-	local isShowListBtn = extraConfig.isShow ~= 0
+	local isShowListBtn = extraConfig and extraConfig.isShow ~= 0
 
 	gohelper.setActive(self._btnlist, isShowListBtn)
 end

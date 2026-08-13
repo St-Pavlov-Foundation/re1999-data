@@ -878,6 +878,12 @@ function FightFocusView:_refreshHeroEquipInfo(entityMO)
 			end
 		end
 
+		local _, assistMo = HeroGroupModel.instance:getAssistMo()
+
+		if assistMo and assistMo.heroUid == heroUid then
+			equipUid = self._group.equips[assistMo.id - 1].equipUid[1]
+		end
+
 		if tonumber(equipUid) and tonumber(equipUid) < 0 then
 			local equipCo = lua_equip_trial.configDict[-tonumber(equipUid)]
 

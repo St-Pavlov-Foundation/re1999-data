@@ -294,6 +294,7 @@ function SimulateLoginView:onInitView()
 	self._button = gohelper.findChildButtonWithAudio(self.viewGO, "Button")
 	self._inputField = gohelper.findChildTextMeshInputField(self.viewGO, "InputField")
 	self._btnAgeFit = gohelper.findChildButtonWithAudio(self.viewGO, "leftbtn/#btn_agefit")
+	self._dropServer = gohelper.findChildDropdown(self.viewGO, "autoserver")
 end
 
 function SimulateLoginView:addEvents()
@@ -316,6 +317,27 @@ function SimulateLoginView:onOpen()
 
 	self._inputField:SetText(account)
 	TaskDispatcher.runRepeat(self._onTick, self, 0.1)
+	gohelper.setActive(self._dropServer, false)
+
+	if QuickEnterServerModel.enable and isDebugBuild and self._dropServer then
+		local list = QuickEnterServerModel.instance:getLastEnterServerList()
+
+		if #list > 0 then
+			gohelper.setActive(self._dropServer, true)
+			self._dropServer:ClearOptions()
+
+			local options = {
+				"正常登录"
+			}
+
+			for i, v in ipairs(list) do
+				table.insert(options, string.format("直连【%s】", v.name))
+			end
+
+			self._dropServer:AddOptions(options)
+			self._dropServer:SetValue(QuickEnterServerModel.instance:getLastIndex())
+		end
+	end
 
 	local isQQ = tostring(SDKMgr.instance:getChannelId()) == "102"
 
@@ -341,6 +363,31 @@ function SimulateLoginView:_onClickButton(param)
 		GameFacade.showToast(ToastEnum.SimulateLogin)
 
 		return
+	end
+
+	if QuickEnterServerModel.enable and isDebugBuild and self._dropServer then
+		local selectVal = self._dropServer:GetValue()
+
+		QuickEnterServerModel.instance:setLastIndex(selectVal)
+
+		local server = QuickEnterServerModel.instance:getLastEnterServerList()[selectVal]
+
+		if server then
+			self:closeThis()
+			ViewMgr.instance:closeView(ViewName.LoginView)
+			LoginModel.instance:setChannelParam("", account, "", "", "")
+
+			LoginModel.instance.userName = account
+			LoginModel.instance.sessionId = "1999"
+			LoginModel.instance.serverIp = server.ip
+			LoginModel.instance.serverPort = server.port
+			LoginModel.instance.serverName = server.name
+			LoginModel.instance.serverId = server.id
+
+			LoginController.instance:startLogin()
+
+			return
+		end
 	end
 
 	self:closeThis()

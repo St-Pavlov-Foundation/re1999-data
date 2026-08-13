@@ -266,7 +266,27 @@ StatViewNameEnum.ChineseViewName = {
 	[ViewName.Sp02_MarcusView] = "泡面番-员工行为准则",
 	[ViewName.AtomicOperationActivityEnterView] = "S02角色运营活动页",
 	[ViewName.AtomicOperationActivityTaskView] = "S02角色运营活动页-任务页面",
-	[ViewName.AtomicOperationActivityGameMainView] = "S02角色运营活动页-小游戏页面"
+	[ViewName.AtomicOperationActivityGameMainView] = "S02角色运营活动页-小游戏页面",
+	[ViewName.VersionActivity3_9EnterView] = "3.9版本活动页",
+	[ViewName.VersionActivity3_9DungeonMapView] = "副本地图-重燃！流金之海",
+	[ViewName.VersionActivity3_9StoreView] = "3.9副本商店",
+	[ViewName.V3a9_BossRush_MainSwitchModeView] = "鬃毛邮报",
+	[ViewName.V3a9_BossRush_LevelDetailView] = "鬃毛邮报Boss详情",
+	[ViewName.HedoneLevelView] = "赫多涅角色活动",
+	[ViewName.HedoneTaskView] = "赫多涅角色任务",
+	[ViewName.NaxisuosiLevelView] = "纳西索斯角色活动",
+	[ViewName.NaxisuosiTaskView] = "纳西索斯角色任务",
+	[ViewName.V3A9_RoleStoryGameView] = "轶事玩法",
+	[ViewName.V3a9BirdMainView] = "3.9外围小玩法-扑通障碍赛",
+	[ViewName.V3a9RacingCarMainView] = "3.9外围小玩法-湍流竞速场",
+	[ViewName.Turnback4SignInView] = "回归界面-归途七日",
+	[ViewName.Turnback3BpView] = "回归界面-箱中再会",
+	[ViewName.Turnback4DoubleView] = "回归界面-归途礼遇",
+	[ViewName.Turnback3StoreView] = "回归界面-归途特荐",
+	[ViewName.Turnback4ProgressView] = "回归界面-雨的归处",
+	[ViewName.TurnbackReviewView] = "回归界面-剧集回顾",
+	[ViewName.Turnback4RewardView] = "回归界面-手提箱再提",
+	[ViewName.V3a9_BDuckLinkageFullView] = "Bduck运营活动页"
 }
 StatViewNameEnum.NeedTrackViewDict = {
 	[ViewName.VersionActivity1_8EnterView] = true,
@@ -505,7 +525,26 @@ StatViewNameEnum.NeedTrackViewDict = {
 	[ViewName.Sp02_MarcusView] = true,
 	[ViewName.AtomicOperationActivityEnterView] = true,
 	[ViewName.AtomicOperationActivityTaskView] = true,
-	[ViewName.AtomicOperationActivityGameMainView] = true
+	[ViewName.AtomicOperationActivityGameMainView] = true,
+	[ViewName.VersionActivity3_9EnterView] = true,
+	[ViewName.VersionActivity3_9DungeonMapView] = true,
+	[ViewName.VersionActivity3_9StoreView] = true,
+	[ViewName.V3a9_BossRush_LevelDetailView] = true,
+	[ViewName.HedoneLevelView] = true,
+	[ViewName.HedoneTaskView] = true,
+	[ViewName.NaxisuosiLevelView] = true,
+	[ViewName.NaxisuosiTaskView] = true,
+	[ViewName.V3A9_RoleStoryGameView] = true,
+	[ViewName.V3a9BirdMainView] = true,
+	[ViewName.V3a9RacingCarMainView] = true,
+	[ViewName.Turnback4SignInView] = true,
+	[ViewName.Turnback3BpView] = true,
+	[ViewName.Turnback4DoubleView] = true,
+	[ViewName.Turnback3StoreView] = true,
+	[ViewName.Turnback4ProgressView] = true,
+	[ViewName.TurnbackReviewView] = true,
+	[ViewName.Turnback4RewardView] = true,
+	[ViewName.V3a9_BDuckLinkageFullView] = true
 }
 StatViewNameEnum.NeedViewOpenTimeDict = {
 	[ViewName.SceneUIPackagePanelView] = true,
@@ -533,7 +572,8 @@ StatViewNameEnum.NeedListenTabSwitchList = {
 	ViewName.VersionActivity3_5EnterView,
 	ViewName.VersionActivity3_6EnterView,
 	ViewName.VersionActivity3_7EnterView,
-	ViewName.VersionActivity3_8EnterView
+	ViewName.VersionActivity3_8EnterView,
+	ViewName.VersionActivity3_9EnterView
 }
 StatViewNameEnum.TabViewContainerID = {
 	[ViewName.VersionActivity1_8EnterView] = 2,
@@ -556,7 +596,8 @@ StatViewNameEnum.TabViewContainerID = {
 	[ViewName.VersionActivity3_5EnterView] = 2,
 	[ViewName.VersionActivity3_6EnterView] = 2,
 	[ViewName.VersionActivity3_7EnterView] = 2,
-	[ViewName.VersionActivity3_8EnterView] = 2
+	[ViewName.VersionActivity3_8EnterView] = 2,
+	[ViewName.VersionActivity3_9EnterView] = 2
 }
 StatViewNameEnum.TabViewName = {
 	VersionActivity2_6DungeonEnterView = "疯癫与文明",
@@ -611,10 +652,15 @@ StatViewNameEnum.TabViewName = {
 	V3a8_v3a1_ReactivityEnterview = "3.1活动复刻",
 	VersionActivity3_8EchoSongEnterView = "回声谣",
 	VersionActivity3_8DianJiShiEnterView = "奠基石",
+	VersionActivity3_9PartyGameEnterView = "联机玩法",
+	VersionActivity3_9HedoneEnterView = "赫多涅",
+	VersionActivity3_9NaxisuosiEnterView = "纳西索斯",
 	VersionActivity3_0_v2a1_ReactivityEnterview = "2.1活动复刻",
 	V3a5_Season123EnterView = "UTTU",
 	VersionActivity2_8MoLiDeErEnterView = "莫莉德尔",
 	V2a4_PinballEnterView = "图图石子",
+	V3a9_v3a2_ReactivityEnterview = "3.2活动复刻",
+	RougeActivityView = "肉鸽",
 	VersionActivity3_6DungeonEnterView = "人们向何处去",
 	V2a3_Season123EnterView = "赛季",
 	V2a6_XugoujiEnterView = "虚构集",
@@ -629,12 +675,14 @@ StatViewNameEnum.TabViewName = {
 	VersionActivity2_4MusicEnterView = "芭卡洛儿",
 	LuSiJianEnterView = "鹭鸶剪",
 	V2a2_DungeonEnterView = "忧郁的热带",
+	V3a9_BossRush_EnterRootView = "鬃毛邮报",
 	V1a6_BossRush_EnterView = "鬃毛邮报",
 	VersionActivity3_3MarshaEnterView = "玛尔纱",
 	V3a2_BossRush_EnterView = "鬃毛邮报",
 	AutoChessEnterView = "魔精自走棋",
 	SeasonEnterView = "赛季",
 	VersionActivity2_4WuErLiXiEnterView = "乌尔里希",
+	VersionActivity3_9DungeonEnterView = "重燃！流金之海",
 	TowerMainEntryView = "爬塔玩法",
 	RoleStoryEnterView = "轶事",
 	ArcadeEnterView = "8-bit街机秀",

@@ -9,6 +9,7 @@ NecrologistStoryEnum.RoleStoryId = {
 	V3A2 = 27,
 	V3A8 = 32,
 	V3A5 = 30,
+	V3A9 = 33,
 	V3A3 = 28,
 	V3A1 = 26,
 	V3A7 = 31
@@ -19,7 +20,8 @@ NecrologistStoryEnum.RoleStoryId2MOCls = {
 	[NecrologistStoryEnum.RoleStoryId.V3A3] = "NecrologistV3A3MO",
 	[NecrologistStoryEnum.RoleStoryId.V3A4] = "NecrologistV3A4MO",
 	[NecrologistStoryEnum.RoleStoryId.V3A5] = "NecrologistV3A5MO",
-	[NecrologistStoryEnum.RoleStoryId.V3A7] = "NecrologistV3A7MO"
+	[NecrologistStoryEnum.RoleStoryId.V3A7] = "NecrologistV3A7MO",
+	[NecrologistStoryEnum.RoleStoryId.V3A9] = "NecrologistV3A9MO"
 }
 NecrologistStoryEnum.StoryId2GameView = {
 	[NecrologistStoryEnum.RoleStoryId.V3A1] = ViewName.V3A1_RoleStoryGameView,
@@ -28,10 +30,12 @@ NecrologistStoryEnum.StoryId2GameView = {
 	[NecrologistStoryEnum.RoleStoryId.V3A4] = ViewName.V3A4_RoleStoryLevelView,
 	[NecrologistStoryEnum.RoleStoryId.V3A5] = ViewName.V3A5_RoleStoryGameView,
 	[NecrologistStoryEnum.RoleStoryId.V3A7] = ViewName.V3A7_RoleStoryGameView,
-	[NecrologistStoryEnum.RoleStoryId.V3A8] = ViewName.V3A8_RoleStoryGameView
+	[NecrologistStoryEnum.RoleStoryId.V3A8] = ViewName.V3A8_RoleStoryGameView,
+	[NecrologistStoryEnum.RoleStoryId.V3A9] = ViewName.V3A9_RoleStoryGameView
 }
 NecrologistStoryEnum.TaskParam = {
 	V3A3End2 = 2802,
+	V3A9ItemUnlockCount = 3301,
 	V3A3End1 = 2801,
 	V3A2ItemUnlockCount = 2701
 }
@@ -61,6 +65,10 @@ NecrologistStoryEnum.StoryControlType = {
 	StopAudio = 8,
 	SlidePic = 10,
 	ErasePic = 6
+}
+NecrologistStoryEnum.DialogTextAnimType = {
+	Word = 1,
+	Typewriter = 0
 }
 NecrologistStoryEnum.GameState = {
 	Win = 3,
@@ -144,6 +152,10 @@ NecrologistStoryEnum.V3A5NodeStatus = {
 NecrologistStoryEnum.V3A7SpLevelId = {
 	Sp2 = 6,
 	Sp1 = 3
+}
+NecrologistStoryEnum.PrefsKey = {
+	V3A9ItemHasPlayUnlockTag = "NecrologistV3A9ItemHasPlayUnlockTag",
+	V3A9ItemOldTag = "NecrologistV3A9ItemOldTag"
 }
 
 return NecrologistStoryEnum

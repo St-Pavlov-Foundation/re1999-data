@@ -12,4 +12,8 @@ function StoryFrontViewContainer:buildViews()
 	return views
 end
 
+function StoryFrontViewContainer:getFrontView()
+	return self._views[1]
+end
+
 return StoryFrontViewContainer

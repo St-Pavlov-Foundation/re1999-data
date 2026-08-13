@@ -87,8 +87,8 @@ function MiniPartyView:_refreshUI()
 	local popularCount = TitleAppointmentModel.instance:getPopularValueCount()
 
 	if self._popularCount ~= popularCount then
-		local lastStage = TitleAppointmentModel:getTitleStageByPopularCount(self._popularCount)
-		local curStage = TitleAppointmentModel:getTitleStageByPopularCount(popularCount)
+		local lastStage = TitleAppointmentModel.instance:getTitleStageByPopularCount(self._popularCount)
+		local curStage = TitleAppointmentModel.instance:getTitleStageByPopularCount(popularCount)
 
 		gohelper.setActive(self._gojumpreddot, lastStage < curStage)
 	end

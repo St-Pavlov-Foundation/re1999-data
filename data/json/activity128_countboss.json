@@ -328,5 +328,29 @@
     "monsterId": "109360001",
     "finalMonsterId": "109360001",
     "maxPoints": 0
+  },
+  {
+    "battleId": 109390001,
+    "monsterId": "109390001",
+    "finalMonsterId": "109390001",
+    "maxPoints": 0
+  },
+  {
+    "battleId": 120395101,
+    "monsterId": "120395101",
+    "finalMonsterId": "120395101",
+    "maxPoints": 0
+  },
+  {
+    "battleId": 120395201,
+    "monsterId": "120395201",
+    "finalMonsterId": "120395201",
+    "maxPoints": 0
+  },
+  {
+    "battleId": 120395301,
+    "monsterId": "120395301",
+    "finalMonsterId": "120395301",
+    "maxPoints": 0
   }
 ]

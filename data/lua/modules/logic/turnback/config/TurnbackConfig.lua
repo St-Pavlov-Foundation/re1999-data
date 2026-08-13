@@ -22,7 +22,10 @@ function TurnbackConfig:reqConfigNames()
 		"turnback_task_bonus",
 		"turnback_recommend",
 		"turnback_drop",
-		"turnback_daily_bonus"
+		"turnback_daily_bonus",
+		"turnback_const",
+		"turnback_return_reward",
+		"turnback_return_range"
 	}
 end
 
@@ -43,6 +46,10 @@ function TurnbackConfig:onConfigLoaded(configName, configTable)
 		self._turnbackDropConfig = configTable
 	elseif configName == "turnback_daily_bonus" then
 		self._turnbackDailyBonusConfig = configTable
+	elseif configName == "turnback_return_reward" then
+		self:_initReturnRewardCos(configTable)
+	elseif configName == "turnback_return_range" then
+		self:_initReturnDayRangeCos(configTable)
 	end
 end
 
@@ -242,6 +249,14 @@ function TurnbackConfig:getSearchTaskCoList(turnbackId)
 	return list
 end
 
+function TurnbackConfig:getTaskOneCoByTaskType(turnbackId, type)
+	for _, co in ipairs(self._turnbackTaskConfig.configList) do
+		if co.turnbackId == turnbackId and co.turnbackTaskType == type then
+			return co
+		end
+	end
+end
+
 function TurnbackConfig:getDropCoList()
 	return self._turnbackDropConfig.configList
 end
@@ -252,6 +267,88 @@ end
 
 function TurnbackConfig:getDropCoCount()
 	return #self._turnbackDropConfig.configList
+end
+
+function TurnbackConfig:getConstValue(constId, isValue2, isToNum, defaultValue)
+	local co = lua_turnback_const.configDict[constId]
+
+	if co then
+		if isValue2 then
+			return co.value2
+		end
+
+		local value = co.value
+
+		if isToNum then
+			return tonumber(value)
+		end
+
+		return value
+	end
+
+	return defaultValue
+end
+
+function TurnbackConfig:_initReturnDayRangeCos(configTable)
+	self._returnDayRangeDict = {}
+
+	for _, co in ipairs(configTable.configList) do
+		if not string.nilorempty(co.lossDays) then
+			local range = string.splitToNumber(co.lossDays, "|")
+
+			self._returnDayRangeDict[co.rangeId] = range
+		end
+	end
+end
+
+function TurnbackConfig:_initReturnRewardCos(configTable)
+	self._returnRewardDict = {}
+
+	for _, co in ipairs(configTable.configList) do
+		if not self._returnRewardDict[co.turnbackId] then
+			self._returnRewardDict[co.turnbackId] = {}
+		end
+
+		local cos = self._returnRewardDict[co.turnbackId][co.lossDaysRange]
+
+		if not cos then
+			cos = {}
+			self._returnRewardDict[co.turnbackId][co.lossDaysRange] = {}
+		end
+
+		table.insert(cos, co)
+	end
+end
+
+function TurnbackConfig:getRewardCosByRangeId(turnbackId, rangeId)
+	local cos = self._returnRewardDict[turnbackId]
+
+	return cos and cos[rangeId]
+end
+
+function TurnbackConfig:getReturnDayLevel(day)
+	local maxDay = 0
+	local minDay
+	local rangeId = 0
+
+	for id, v in pairs(self._returnDayRangeDict) do
+		if day >= v[1] and day < v[2] then
+			return id
+		else
+			if maxDay < v[2] then
+				maxDay = v[2]
+				rangeId = id
+			end
+
+			if not minDay or minDay > v[1] then
+				minDay = v[1]
+			end
+		end
+	end
+
+	if minDay < day then
+		return rangeId
+	end
 end
 
 TurnbackConfig.instance = TurnbackConfig.New()

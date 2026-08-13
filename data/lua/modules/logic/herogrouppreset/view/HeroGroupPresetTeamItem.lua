@@ -404,8 +404,9 @@ end
 
 function HeroGroupPresetTeamItem:_showFightInfo()
 	local isFightShowType = HeroGroupPresetController.instance:isFightShowType()
+	local isCopyShowType = HeroGroupPresetController.instance:isCopyShowType()
 
-	if not isFightShowType then
+	if not isFightShowType and not isCopyShowType then
 		return
 	end
 

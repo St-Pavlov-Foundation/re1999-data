@@ -227,6 +227,10 @@ function Activity125Config:getWarmUpActId(fallback)
 	return ActivityConfig.instance:getConstAsNum(11, fallback or 13443)
 end
 
+function Activity125Config:getWarmUp1ActId(fallback)
+	return ActivityConfig.instance:getConstAsNum(30900, fallback or 13443)
+end
+
 Activity125Config.instance = Activity125Config.New()
 
 return Activity125Config

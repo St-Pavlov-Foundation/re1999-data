@@ -762,6 +762,20 @@ function SettingsModel:isAvproVideo()
 	return self:getVideoCompatible() == false and self:getUseUnityVideo() == false
 end
 
+function SettingsModel:setFightCardDetail(isOn)
+	self.fightCardDetail = isOn
+
+	PlayerPrefsHelper.setNumber(PlayerPrefsKey.SettingsFightCardDetail, self.fightCardDetail and 1 or 0)
+end
+
+function SettingsModel:getFightCardDetail()
+	if self.fightCardDetail == nil then
+		self.fightCardDetail = PlayerPrefsHelper.getNumber(PlayerPrefsKey.SettingsFightCardDetail, 0) == 1
+	end
+
+	return self.fightCardDetail
+end
+
 SettingsModel.instance = SettingsModel.New()
 
 return SettingsModel

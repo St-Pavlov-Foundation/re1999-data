@@ -18,6 +18,7 @@ function V1a4_BossRush_HeroGroupItem2:init(go)
 	self._gostar4 = gohelper.findChild(go, "#go_hero/layout/vertical/go_starList/#go_star4")
 	self._gostar5 = gohelper.findChild(go, "#go_hero/layout/vertical/go_starList/#go_star5")
 	self._gostar6 = gohelper.findChild(go, "#go_hero/layout/vertical/go_starList/#go_star6")
+	self._goTrialTag = gohelper.findChild(go, "trialTag")
 
 	if self._editableInitView then
 		self:_editableInitView()

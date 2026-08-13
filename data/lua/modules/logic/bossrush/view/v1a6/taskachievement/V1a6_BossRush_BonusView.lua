@@ -135,21 +135,7 @@ function V1a6_BossRush_BonusView:_addRedDot()
 end
 
 function V1a6_BossRush_BonusView:_refreshRedDot()
-	local goRedDot1 = self._tabs[1].goRedDot
-
-	if goRedDot1 then
-		local isShow = V1a4_BossRush_ScoreTaskAchievementListModel.instance:isReddot(self._stage, 1)
-
-		gohelper.setActive(goRedDot1, isShow)
-	end
-
-	local goRedDot2 = self._tabs[2].goRedDot
-
-	if goRedDot2 then
-		local isShow = V1a4_BossRush_ScheduleViewListModel.instance:isReddot(self._stage, 2)
-
-		gohelper.setActive(goRedDot2, isShow)
-	end
+	return
 end
 
 function V1a6_BossRush_BonusView:_refreshTab()

@@ -48,7 +48,7 @@ function SpineVoiceAudio:_initAudio()
 
 					return
 				else
-					logError(string.format("SpineVoiceAudio _initAudio duration is nil for audio:%s effectType %s targetIndex:%s", config.audio, effectType, targetIndex))
+					logError(string.format("SpineVoiceAudio _initAudio duration is nil for audio:%s effectType %s targetIndex:%s", self._voiceConfig.audio, effectType, targetIndex))
 				end
 			end
 		end

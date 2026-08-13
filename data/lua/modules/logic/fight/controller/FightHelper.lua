@@ -932,8 +932,13 @@ function FightHelper.detectAttributeCounter()
 
 	if BossRushController.instance:isInBossRushDungeon() then
 		local concealCo = BossRushConfig.instance:getConcealCo(fight_param.episodeId)
+		local stage, _, actId = BossRushModel.instance:getBattleStageAndLayer()
+		local stageCo = BossRushConfig.instance:getStageCO(stage, actId)
+		local bossTypeParam = BossRushConfig.instance:getBossTypeParams(stageCo.type)
+		local careerWeak = bossTypeParam and bossTypeParam.careerWeak
+		local isConceal = concealCo and concealCo.maxConceal > 0 and (not careerWeak or not (#careerWeak > 0))
 
-		if not concealCo or not (concealCo.maxConceal > 0) then
+		if not isConceal then
 			for i, v in ipairs(fight_param.monsterGroupIds) do
 				local ids = FightStrUtil.instance:getSplitToNumberCache(lua_monster_group.configDict[v].monster, "#")
 
@@ -2727,16 +2732,22 @@ function FightHelper.getSSWLXingRandomTimeline(co, timelineName)
 end
 
 function FightHelper.getUnnamedTimeLine(timelineName, fightStepData)
-	local actEffect = FightHelper.getActEffectData(FightEnum.EffectType.UNNAMEDSTRENGTHEN, fightStepData, FightHelper.unnamedFilterFunc)
+	local entityMo = FightDataHelper.entityMgr:getById(fightStepData.fromId)
 
-	if not actEffect then
+	if not entityMo then
 		return timelineName
 	end
 
-	local cost = actEffect.effectNum1
-	local co = lua_fight_wmz_timeline.configDict[cost]
+	local skin = entityMo.skin
+	local coDict = lua_fight_wmz_timeline.configDict[skin]
 
-	co = co or lua_fight_wmz_timeline.configList[1]
+	coDict = coDict or lua_fight_wmz_timeline.configDict[0]
+
+	local actEffect = FightHelper.getActEffectData(FightEnum.EffectType.UNNAMEDSTRENGTHEN, fightStepData, FightHelper.unnamedFilterFunc)
+	local cost = actEffect and actEffect.effectNum1 or 0
+	local co = coDict[cost]
+
+	co = co or coDict[0]
 
 	return co.timeline
 end
@@ -4882,6 +4893,30 @@ function FightHelper.buildSSWLSelectedValue(selectedIndexList)
 	end
 
 	return value
+end
+
+function FightHelper.isHeDuoNieSkill(skillId)
+	local skillCo = skillId and lua_skill.configDict[skillId]
+
+	if not skillCo then
+		return
+	end
+
+	local targetBehaviourId = FightEnum.BehaviourId.HedoneAddDevicePower
+
+	for i = 1, FightEnum.MaxBehavior do
+		local behavior = skillCo["behavior" .. i]
+
+		if not string.nilorempty(behavior) then
+			local array = FightStrUtil.instance:getSplitString2Cache(behavior, true)
+
+			for _, behaviourArray in ipairs(array) do
+				if behaviourArray[1] == targetBehaviourId then
+					return true
+				end
+			end
+		end
+	end
 end
 
 return FightHelper

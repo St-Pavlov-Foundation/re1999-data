@@ -17,8 +17,7 @@ function LoginEnterMainSceneWork:onStart(context)
 
 	if LangSettings.instance:isOverseas() == false then
 		local forceNeedKrJpActivityId = tonumber(CommonConfig.instance:getConstStr(ConstEnum.ForceNeedKrJpActivityId))
-
-		needKrJp = forceNeedKrJpActivityId == 1
+		local needKrJp = forceNeedKrJpActivityId == 1
 
 		if not needKrJp and (voiceType == LangSettings.shortcutTab[LangSettings.jp] or voiceType == LangSettings.shortcutTab[LangSettings.kr]) then
 			local roleList = string.splitToNumber(CommonConfig.instance:getConstStr(ConstEnum.S01SpRole), "#")

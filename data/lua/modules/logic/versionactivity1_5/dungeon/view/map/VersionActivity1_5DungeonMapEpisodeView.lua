@@ -148,6 +148,7 @@ function VersionActivity1_5DungeonMapEpisodeView:onOpen()
 	self:addEventCb(VersionActivityDungeonBaseController.instance, VersionActivityDungeonEvent.OnModeChange, self.onModeChange, self)
 	self:addEventCb(VersionActivity1_5DungeonController.instance, VersionActivity1_5DungeonEvent.OnClickElement, self.hideUI, self)
 	self:addEventCb(VersionActivity1_5DungeonController.instance, VersionActivity1_5DungeonEvent.OnHideInteractUI, self.showUI, self)
+	self:addEventCb(DungeonController.instance, DungeonMapElementEvent.OnRecheckInteractive, self._onRecheckInteractive, self)
 	self:addEventCb(DungeonController.instance, DungeonEvent.OnUpdateDungeonInfo, self._onUpdateDungeonInfo, self)
 	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self._onCloseViewFinish, self)
 	self:initChapterEpisodes()
@@ -217,6 +218,14 @@ end
 function VersionActivity1_5DungeonMapEpisodeView:hideUI()
 	gohelper.setActive(self._gomodecontainer, false)
 	self:hideLayout()
+end
+
+function VersionActivity1_5DungeonMapEpisodeView:_onRecheckInteractive(isShow)
+	if isShow then
+		self:showUI()
+	else
+		self:hideUI()
+	end
 end
 
 function VersionActivity1_5DungeonMapEpisodeView:showLayout()

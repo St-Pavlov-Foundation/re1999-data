@@ -1,0 +1,130 @@
+[
+  {
+    "attrId": 1,
+    "name": "攻击力",
+    "ownerType": 0,
+    "min": 0.0,
+    "max": 199999.0,
+    "defaultValue": 0.0
+  },
+  {
+    "attrId": 2,
+    "name": "防御力",
+    "ownerType": 0,
+    "min": 0.0,
+    "max": 80.0,
+    "defaultValue": 0.0
+  },
+  {
+    "attrId": 3,
+    "name": "最大生命值",
+    "ownerType": 0,
+    "min": 0.0,
+    "max": 199999.0,
+    "defaultValue": 0.0
+  },
+  {
+    "attrId": 4,
+    "name": "生命值",
+    "ownerType": 0,
+    "min": 0.0,
+    "max": 199999.0,
+    "defaultValue": 200.0
+  },
+  {
+    "attrId": 5,
+    "name": "连击率",
+    "ownerType": 1,
+    "min": 0.0,
+    "max": 0.8,
+    "defaultValue": 0.05
+  },
+  {
+    "attrId": 6,
+    "name": "连击伤害",
+    "ownerType": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "defaultValue": 0.0
+  },
+  {
+    "attrId": 7,
+    "name": "暴击率",
+    "ownerType": 2,
+    "min": 0.0,
+    "max": 0.8,
+    "defaultValue": 0.05
+  },
+  {
+    "attrId": 8,
+    "name": "暴击伤害",
+    "ownerType": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "defaultValue": 0.0
+  },
+  {
+    "attrId": 9,
+    "name": "全局技能冷却",
+    "ownerType": 0,
+    "min": 0.0,
+    "max": 300.0,
+    "defaultValue": 0.0
+  },
+  {
+    "attrId": 11,
+    "name": "特定类型技能的冷却",
+    "ownerType": 1,
+    "min": 0.0,
+    "max": 300.0,
+    "defaultValue": 0.0
+  },
+  {
+    "attrId": 12,
+    "name": "子弹/效果同时释放数量",
+    "ownerType": 1,
+    "min": 1.0,
+    "max": 6.0,
+    "defaultValue": 1.0
+  },
+  {
+    "attrId": 10,
+    "name": "连锁受击数量",
+    "ownerType": 1,
+    "min": 0.0,
+    "max": 5.0,
+    "defaultValue": 0.0
+  },
+  {
+    "attrId": 13,
+    "name": "特定效果组的效果值",
+    "ownerType": 2,
+    "min": -0.9,
+    "max": 10.0,
+    "defaultValue": 0.0
+  },
+  {
+    "attrId": 14,
+    "name": "特定效果组的范围",
+    "ownerType": 2,
+    "min": 0.0,
+    "max": 4.0,
+    "defaultValue": 0.0
+  },
+  {
+    "attrId": 15,
+    "name": "特定效果组的持续值",
+    "ownerType": 2,
+    "min": 0.0,
+    "max": 10.0,
+    "defaultValue": 0.0
+  },
+  {
+    "attrId": 16,
+    "name": "怪物移动速度",
+    "ownerType": 0,
+    "min": 0.0,
+    "max": 200.0,
+    "defaultValue": 1.0
+  }
+]

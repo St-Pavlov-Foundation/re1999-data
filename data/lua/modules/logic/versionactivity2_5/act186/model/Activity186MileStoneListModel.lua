@@ -31,7 +31,7 @@ end
 function Activity186MileStoneListModel:caleProgressIndex()
 	local list = Activity186Config.instance:getMileStoneList(self.actMo.id)
 	local index = 0
-	local currencyId = Activity186Config.instance:getConstNum(Activity186Enum.ConstId.CurrencyId)
+	local currencyId = Activity186Config.instance:getConstNum(self.actMo.id, Activity186Enum.ConstId.CurrencyId)
 	local hasCurrencyNum = ItemModel.instance:getItemQuantity(MaterialEnum.MaterialType.Currency, currencyId)
 	local lastCoinNum = 0
 

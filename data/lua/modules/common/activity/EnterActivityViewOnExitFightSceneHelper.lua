@@ -16,8 +16,8 @@ function EnterActivityViewOnExitFightSceneHelper.checkIsActivityFight(chapterId)
 	local chapterCo = DungeonConfig.instance:getChapterCO(chapterId)
 	local actId = chapterCo and chapterCo.actId or 0
 
-	if actId ~= 0 and BossRushConfig.instance:getActivityId() == actId then
-		return EnterActivityViewOnExitFightSceneHelper.enterActivityBossRush()
+	if actId ~= 0 and AbyssConfig.instance:getActivityId() == actId then
+		return EnterActivityViewOnExitFightSceneHelper.enterAbyss()
 	end
 
 	return actId ~= 0 and EnterActivityViewOnExitFightSceneHelper["enterActivity" .. actId]
@@ -148,22 +148,17 @@ function EnterActivityViewOnExitFightSceneHelper.enterActivityBossRush(forceStar
 	end)
 end
 
-function EnterActivityViewOnExitFightSceneHelper.enterActivityBossRush(forceStarting, exitFightGroup)
-	local episodeId = DungeonModel.instance.curSendEpisodeId
-	local stage, layer = BossRushConfig.instance:tryGetStageAndLayerByEpisodeId(episodeId)
-
-	DungeonModel.instance.curSendEpisodeId = nil
-
+function EnterActivityViewOnExitFightSceneHelper.enterAbyss(forceStarting, exitFightGroup)
+	DungeonModel.instance:resetSendChapterEpisodeId()
 	MainController.instance:enterMainScene(forceStarting)
+
+	local actId = AbyssConfig.instance:getActivityId()
+
 	SceneHelper.instance:waitSceneDone(SceneType.Main, function()
-		GameSceneMgr.instance:dispatchEvent(SceneEventName.WaitViewOpenCloseLoading, ViewName.V3a2_BossRush_LevelDetailView)
+		GameSceneMgr.instance:dispatchEvent(SceneEventName.WaitViewOpenCloseLoading, ViewName.AbyssMainView)
 		VersionActivityFixedHelper.getVersionActivityEnterController().instance:openVersionActivityEnterViewIfNotOpened(function()
-			BossRushController.instance:openV3a2MainView({
-				isOpenLevelDetail = true,
-				stage = stage,
-				layer = layer
-			})
-		end, nil, BossRushConfig.instance:getActivityId())
+			AbyssController.instance:openMainView(actId, true)
+		end, nil, actId, true)
 	end)
 end
 

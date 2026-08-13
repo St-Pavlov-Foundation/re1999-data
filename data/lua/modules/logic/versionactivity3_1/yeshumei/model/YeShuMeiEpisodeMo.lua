@@ -31,7 +31,7 @@ function YeShuMeiEpisodeMo:checkFinishGame()
 end
 
 function YeShuMeiEpisodeMo:isGame()
-	local config = YeShuMeiConfig:getEpisodeCo(self._actId, self.episodeId)
+	local config = YeShuMeiConfig.instance:getEpisodeCo(self._actId, self.episodeId)
 
 	return config and config.gameId ~= 0
 end

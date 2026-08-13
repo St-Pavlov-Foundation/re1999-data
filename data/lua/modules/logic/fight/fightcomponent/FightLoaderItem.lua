@@ -12,37 +12,18 @@ function FightLoaderItem:onConstructor(url, callback, handle, param)
 end
 
 function FightLoaderItem:startLoad()
-	loadAbAsset(self.url, false, self.onLoadCallback, self)
+	self.item = FightGameMgr.loaderMgr:loadAsset(self.url, self.onAssetLoaded, self)
 end
 
-function FightLoaderItem:onLoadCallback(assetItem)
-	local oldAsstet = self.assetItem
-
-	self.assetItem = assetItem
-
-	local url = assetItem.ResPath
-	local success = assetItem.IsLoadSuccess
-
-	assetItem:Retain()
-
-	if oldAsstet then
-		oldAsstet:Release()
-	end
-
-	if not success then
-		logError("资源加载失败,URL:" .. url)
-	end
-
-	if not self.handle.IS_DISPOSED and self.callback then
+function FightLoaderItem:onAssetLoaded(success, assetItem)
+	if self:__isActive() then
 		self.callback(self.handle, success, assetItem, self.param)
 	end
 end
 
 function FightLoaderItem:onDestructor()
-	removeAssetLoadCb(self.url, self.onLoadCallback, self)
-
-	if self.assetItem then
-		self.assetItem:Release()
+	if self.item then
+		FightGameMgr.loaderMgr:unloadAsset(self.url)
 	end
 end
 

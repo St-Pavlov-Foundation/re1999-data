@@ -43,6 +43,7 @@ function VersionActivityFixedEnterViewContainer:buildTabViews(tabContainerId)
 		multiView[#multiView + 1] = ActivityWeekWalkDeepShowView.New()
 		multiView[#multiView + 1] = TowerMainEntryView.New()
 		multiView[#multiView + 1] = ActivityWeekWalkHeartShowView.New()
+		multiView[#multiView + 1] = AbyssEnterView.New()
 
 		return multiView
 	end

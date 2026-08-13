@@ -170,6 +170,21 @@ function CommonHeroIconNew:onUpdateMO(heroMO)
 	self:updateIsEmpty()
 end
 
+function CommonHeroIconNew:showLevel(level)
+	local showLevel, rank = HeroConfig.instance:getShowLevel(level)
+
+	if rank and rank > 1 then
+		local tmpRank = rank - 1
+
+		UISpriteSetMgr.instance:setCommonSprite(self._rankIcon, "dongxi_xiao_" .. tmpRank)
+		gohelper.setActive(self._rankIcon.gameObject, true)
+	else
+		gohelper.setActive(self._rankIcon.gameObject, false)
+	end
+
+	self._txtLevel.text = showLevel
+end
+
 function CommonHeroIconNew:updateIsEmpty()
 	local isHasHero = self:getIsHasHero()
 

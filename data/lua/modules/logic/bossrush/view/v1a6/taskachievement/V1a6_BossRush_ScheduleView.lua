@@ -42,6 +42,9 @@ end
 
 function V1a6_BossRush_ScheduleView:onOpen()
 	self.stage = self.viewParam.stage
+	self._stageCO = self.viewParam.stageCO
+	self.actId = self._stageCO.activityId
+	self._stageMo = V3a9_BossRushModel.instance:getStageMo(self.actId, self.stage)
 
 	gohelper.setActive(self._goRight, true)
 	self:_refresh()
@@ -63,11 +66,9 @@ function V1a6_BossRush_ScheduleView:onDestroyView()
 end
 
 function V1a6_BossRush_ScheduleView:refreshScore()
-	local lastPointInfo = BossRushModel.instance:getLastPointInfo(self.stage)
-	local curNum, maxNum = lastPointInfo.cur, lastPointInfo.max
-
-	curNum = Mathf.Min(curNum, maxNum)
-
+	local score = self._stageMo and self._stageMo:getTotalPoint()
+	local maxNum = self._stageMo and self._stageMo:getRewardMaxTotalScore()
+	local curNum = Mathf.Min(score, maxNum)
 	local param1 = {
 		curNum = curNum,
 		maxNum = maxNum
@@ -92,7 +93,7 @@ function V1a6_BossRush_ScheduleView:refreshScore()
 	local cellWidth = self._goprefabInst.transform.rect.width
 	local spacing = layout.spacing + cellWidth
 	local offset = 30 + cellWidth * 0.5
-	local grayWidth, gotWidth = V1a6_BossRush_BonusModel.instance:getScheduleProgressWidth(self.stage, spacing, offset)
+	local grayWidth, gotWidth = V1a6_BossRush_BonusModel.instance:getScheduleProgressWidth(self.actId, self.stage, spacing, offset)
 	local param = {
 		grayWidth = grayWidth,
 		gotWidth = gotWidth
@@ -157,8 +158,7 @@ end
 
 function V1a6_BossRush_ScheduleView:refreshScoreItem()
 	local dataList = BossRushModel.instance:getScheduleViewRewardList(self.stage)
-	local lastPointInfo = BossRushModel.instance:getLastPointInfo(self.stage)
-	local cur = lastPointInfo.cur
+	local cur = self._stageMo and self._stageMo:getTotalPoint()
 
 	for i, data in pairs(dataList) do
 		local co = data.stageRewardCO
@@ -195,7 +195,7 @@ function V1a6_BossRush_ScheduleView:_refresh()
 end
 
 function V1a6_BossRush_ScheduleView:_refreshRight()
-	V1a6_BossRush_BonusModel.instance:selectScheduleTab(self.stage)
+	V1a6_BossRush_BonusModel.instance:selectScheduleTab(self.stage, self.actId)
 end
 
 function V1a6_BossRush_ScheduleView:playAnim(name, callback, callbackobj)
@@ -217,9 +217,7 @@ function V1a6_BossRush_ScheduleView:_setPrefsSchedule(stage, score, width)
 end
 
 function V1a6_BossRush_ScheduleView:_getPrefsKey(stage)
-	local actId = BossRushConfig.instance:getActivityId()
-
-	return "V1a6_BossRush_ScheduleView_Schedule_" .. actId .. "_" .. stage
+	return "V1a6_BossRush_ScheduleView_Schedule_" .. self.actId .. "_" .. stage
 end
 
 return V1a6_BossRush_ScheduleView

@@ -12,7 +12,6 @@ function V3a2_BossRush_HandBookMO:initMO(co)
 	self.saveExp = 0
 
 	self:_initPointBonus()
-	self:_initStrategy()
 end
 
 function V3a2_BossRush_HandBookMO:_initPointBonus()
@@ -33,10 +32,6 @@ function V3a2_BossRush_HandBookMO:_initPointBonus()
 
 		self.maxBonusExp = math.max(self.maxBonusExp, point)
 	end
-end
-
-function V3a2_BossRush_HandBookMO:_initStrategy()
-	self.strategy = string.splitToNumber(self.config.recommendStrategy, "#")
 end
 
 function V3a2_BossRush_HandBookMO:setInfo(info)
@@ -122,10 +117,6 @@ function V3a2_BossRush_HandBookMO:hasClaimBonus()
 	local bouns = self:getCanClaimBonus(self.heightScore)
 
 	return bouns > 0
-end
-
-function V3a2_BossRush_HandBookMO:getStrategy()
-	return self.strategy or {}
 end
 
 function V3a2_BossRush_HandBookMO:getBossId()

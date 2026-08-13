@@ -73,6 +73,8 @@ function FightCardCombineEffect:onStart(context)
 
 	if cardSkin == 672802 then
 		effectUrl = FightPreloadViewWork.ui2_effect_dna_c
+	elseif cardSkin == 672803 then
+		effectUrl = FightPreloadViewWork.ui3_effect_dna_c
 	end
 
 	local effectGO = self:_createEffect(containerGO, effectUrl)

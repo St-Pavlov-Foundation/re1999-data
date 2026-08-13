@@ -59,7 +59,7 @@ function GMSubViewArcade:_addCollectionId()
 	local cfg = ArcadeConfig.instance:getCollectionCfg(collectionId)
 
 	if not cfg then
-		GameFacade.showToast(94, string.format("不存在藏品id:[%s]", collectionId))
+		GameFacade.showToast(ToastEnum.IconId, string.format("不存在藏品id:[%s]", collectionId))
 
 		return
 	end
@@ -67,9 +67,9 @@ function GMSubViewArcade:_addCollectionId()
 	local collectionMO = ArcadeGameController.instance:gainCollection(collectionId, Vector3.zero)
 
 	if collectionMO then
-		GameFacade.showToast(94, string.format("成功[%s-%s]", cfg.name, collectionId))
+		GameFacade.showToast(ToastEnum.IconId, string.format("成功[%s-%s]", cfg.name, collectionId))
 	else
-		GameFacade.showToast(94, string.format("失败"))
+		GameFacade.showToast(ToastEnum.IconId, string.format("失败"))
 	end
 end
 
@@ -85,7 +85,7 @@ function GMSubViewArcade:_addMonsterId()
 	local cfg = ArcadeConfig.instance:getMonsterCfg(monsterId)
 
 	if not cfg then
-		GameFacade.showToast(94, string.format("不存在怪物id:%s", monsterId))
+		GameFacade.showToast(ToastEnum.IconId, string.format("不存在怪物id:%s", monsterId))
 
 		return
 	end
@@ -93,9 +93,9 @@ function GMSubViewArcade:_addMonsterId()
 	local isSuccess, gridX, gridY = ArcadeGameSummonController.instance:summonMonster(monsterId, textArr[2], textArr[3])
 
 	if isSuccess then
-		GameFacade.showToast(94, string.format("成功[%s-%s](%s,%s)", cfg.name, monsterId, gridX, gridY))
+		GameFacade.showToast(ToastEnum.IconId, string.format("成功[%s-%s](%s,%s)", cfg.name, monsterId, gridX, gridY))
 	else
-		GameFacade.showToast(94, string.format("没有空位"))
+		GameFacade.showToast(ToastEnum.IconId, string.format("没有空位"))
 	end
 end
 
@@ -118,7 +118,7 @@ function GMSubViewArcade:_onClickUseSkillOk()
 	local skillId = tonumber(self._skillIdInputText:GetText())
 
 	if not skillId or skillId == 0 then
-		GameFacade.showToast(94, "请输入技能ID")
+		GameFacade.showToast(ToastEnum.IconId, "请输入技能ID")
 
 		return
 	end
@@ -140,7 +140,7 @@ end
 
 function GMSubViewArcade:_isLockClick()
 	if self._nextUnLockTime and self._nextUnLockTime > Time.time then
-		GameFacade.showToast(94, "点击太快了")
+		GameFacade.showToast(ToastEnum.IconId, "点击太快了")
 
 		return true
 	end
@@ -166,7 +166,7 @@ function GMSubViewArcade:_onClickSkillHitOk()
 	local hitStr = self._skillHitInputText:GetText()
 
 	if string.nilorempty(hitStr) then
-		GameFacade.showToast(94, "请输入技能效果")
+		GameFacade.showToast(ToastEnum.IconId, "请输入技能效果")
 
 		return
 	end
@@ -185,7 +185,7 @@ function GMSubViewArcade:_onClickSkillHitOk()
 	context.atker = target
 
 	hitBase:hit(context)
-	GameFacade.showToast(94, "run hitBase: " .. hitBase.__cname)
+	GameFacade.showToast(ToastEnum.IconId, "run hitBase: " .. hitBase.__cname)
 end
 
 local xpcall = xpcall
@@ -202,7 +202,7 @@ function GMSubViewArcade:_onClickCheckSkillOk()
 		xpcall(_createSkillFunc, __G__TRACKBACK__, cfg.id)
 	end
 
-	GameFacade.showToast(94, "请查看Log输出")
+	GameFacade.showToast(ToastEnum.IconId, "请查看Log输出")
 end
 
 function GMSubViewArcade:_openGMArcadeView()
@@ -250,7 +250,7 @@ function GMSubViewArcade:_changeRoom()
 	end
 
 	ArcadeGameController.instance:change2Room(roomId)
-	GameFacade.showToast(94, string.format("跳转到房间：%s", roomId))
+	GameFacade.showToast(ToastEnum.IconId, string.format("跳转到房间：%s", roomId))
 end
 
 local PREFS_KEY = "GMSubViewArcadeSelectedResIndex"
@@ -303,7 +303,7 @@ end
 
 function GMSubViewArcade:_onClickResChangeOk()
 	if not self._selectedRes then
-		GameFacade.showToast(94, "未选择资源")
+		GameFacade.showToast(ToastEnum.IconId, "未选择资源")
 
 		return
 	end
@@ -311,7 +311,7 @@ function GMSubViewArcade:_onClickResChangeOk()
 	local changeCount = tonumber(self._changeResCountText:GetText())
 
 	if not changeCount or changeCount == 0 then
-		GameFacade.showToast(94, "未填写变更数量")
+		GameFacade.showToast(ToastEnum.IconId, "未填写变更数量")
 
 		return
 	end
@@ -320,7 +320,7 @@ function GMSubViewArcade:_onClickResChangeOk()
 
 	local name = ArcadeConfig.instance:getAttributeName(self._selectedRes)
 
-	GameFacade.showToast(94, string.format("%s数量更改：%s", name, changeCount))
+	GameFacade.showToast(ToastEnum.IconId, string.format("%s数量更改：%s", name, changeCount))
 end
 
 function GMSubViewArcade:_initL5()
@@ -340,7 +340,7 @@ function GMSubViewArcade:_getInputFloorId()
 	local floorIdStr = self._floorIdInputText:GetText()
 
 	if string.nilorempty(floorIdStr) then
-		GameFacade.showToast(94, "请输入地块id")
+		GameFacade.showToast(ToastEnum.IconId, "请输入地块id")
 
 		return
 	end
@@ -348,7 +348,7 @@ function GMSubViewArcade:_getInputFloorId()
 	local floorId = tonumber(floorIdStr)
 
 	if not ArcadeConfig.instance:getFloorCfg(floorId) then
-		GameFacade.showToast(94, string.format("不存在地块Id:%s", floorIdStr))
+		GameFacade.showToast(ToastEnum.IconId, string.format("不存在地块Id:%s", floorIdStr))
 
 		return
 	end
@@ -423,7 +423,7 @@ function GMSubViewArcade:_onClickCreateInteractOk()
 	local interactIdStr = self._interactIdInputText:GetText()
 
 	if string.nilorempty(interactIdStr) then
-		GameFacade.showToast(94, "请输入交互物id")
+		GameFacade.showToast(ToastEnum.IconId, "请输入交互物id")
 
 		return
 	end
@@ -431,7 +431,7 @@ function GMSubViewArcade:_onClickCreateInteractOk()
 	local interactId = tonumber(interactIdStr)
 
 	if not ArcadeConfig.instance:getInteractiveCfg(interactId) then
-		GameFacade.showToast(94, "不存在交互物id:" .. interactIdStr)
+		GameFacade.showToast(ToastEnum.IconId, "不存在交互物id:" .. interactIdStr)
 
 		return
 	end
@@ -449,7 +449,7 @@ function GMSubViewArcade:_onClickCreateBombOk()
 	local bombIdStr = self._bombIdInputText:GetText()
 
 	if string.nilorempty(bombIdStr) then
-		GameFacade.showToast(94, "请输入炸弹id")
+		GameFacade.showToast(ToastEnum.IconId, "请输入炸弹id")
 
 		return
 	end
@@ -457,7 +457,7 @@ function GMSubViewArcade:_onClickCreateBombOk()
 	local bombId = tonumber(bombIdStr)
 
 	if not ArcadeConfig.instance:getBombCfg(bombId) then
-		GameFacade.showToast(94, "不存在炸弹id:" .. bombIdStr)
+		GameFacade.showToast(ToastEnum.IconId, "不存在炸弹id:" .. bombIdStr)
 
 		return
 	end
@@ -535,7 +535,7 @@ end
 
 function GMSubViewArcade:_onClickPortalOk()
 	if not self._selectedPortalId then
-		GameFacade.showToast(94, "未选择传送门")
+		GameFacade.showToast(ToastEnum.IconId, "未选择传送门")
 
 		return
 	end
@@ -554,7 +554,7 @@ function GMSubViewArcade:_onClickPortalOk()
 	local optionParam = ArcadeConfig.instance:getEventOptionParam(optionId)
 
 	ArcadeGameController.instance:triggerEventOption(nil, self._selectedPortalId, nil, optionId, optionParam, true, true)
-	GameFacade.showToast(94, string.format("触发传送门：%s", self._selectedPortalId))
+	GameFacade.showToast(ToastEnum.IconId, string.format("触发传送门：%s", self._selectedPortalId))
 end
 
 function GMSubViewArcade:_initL8()

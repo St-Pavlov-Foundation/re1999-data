@@ -61,20 +61,12 @@ function KaRongDrawPawnObj:setPos(x, y)
 	recthelper.setAnchor(self.tf, x, y)
 end
 
-function PuzzleMazeBasePawnObj:getPos()
-	return self.x or 0, self.y or 0
-end
-
 function KaRongDrawPawnObj:setDir(dir)
 	self.dir = self.isAvatar and -dir or dir
 
 	if math.abs(dir) == 1 then
 		transformhelper.setLocalRotation(self.tf, 0, self.dir == KaRongDrawEnum.dir.right and 180 or 0, 0)
 	end
-end
-
-function PuzzleMazeBasePawnObj:getDir()
-	return self.dir
 end
 
 function KaRongDrawPawnObj:onPawnJump()

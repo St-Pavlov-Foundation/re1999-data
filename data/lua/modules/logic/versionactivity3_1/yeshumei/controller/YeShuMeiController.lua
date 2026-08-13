@@ -109,10 +109,6 @@ function YeShuMeiController:_onRecInfo(cmd, resultCode, msg)
 	end
 end
 
-function YeShuMeiController:reInit()
-	return
-end
-
 YeShuMeiController.instance = YeShuMeiController.New()
 
 return YeShuMeiController

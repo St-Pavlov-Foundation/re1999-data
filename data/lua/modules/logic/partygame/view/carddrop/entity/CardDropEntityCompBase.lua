@@ -5,14 +5,14 @@ module("modules.logic.partygame.view.carddrop.entity.CardDropEntityCompBase", pa
 local CardDropEntityCompBase = class("CardDropEntityCompBase", UserDataDispose)
 
 function CardDropEntityCompBase:init(uid, entity)
-	CardDropEntityCompBase.super.__onInit(self)
+	self:__onInit()
 
 	self.uid = uid
 	self.entity = entity
 end
 
 function CardDropEntityCompBase:destroy()
-	CardDropEntityCompBase.super.__onDispose()
+	self:__onDispose()
 end
 
 return CardDropEntityCompBase

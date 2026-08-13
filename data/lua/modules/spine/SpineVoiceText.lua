@@ -36,9 +36,7 @@ function SpineVoiceText:init(spineVoice, voiceConfig, txtContent, txtEnContent, 
 		self:_initContent(self._enContentList, self:getContent(voiceConfig, LanguageEnum.LanguageStoryType.EN))
 	end
 
-	self._isSpecialAudio = voiceConfig.audio == 13105104
-
-	if not self._showBg and self._isSpecialAudio then
+	if not self._showBg then
 		self._spineVoice:setBgVisible(false)
 	end
 
@@ -109,7 +107,7 @@ function SpineVoiceText:_showOneLang(contentList, startTime, txtContent)
 
 			table.remove(contentList, 1)
 
-			if not self._showBg and self._isSpecialAudio then
+			if not self._showBg then
 				self._spineVoice:setBgVisible(true)
 			end
 		end

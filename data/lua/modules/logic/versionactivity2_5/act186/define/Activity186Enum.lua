@@ -58,6 +58,11 @@ Activity186Enum.ReadTaskId = {
 	Task1 = 500021,
 	Task3 = 500023
 }
+Activity186Enum.LoopType = {
+	Week = 2,
+	Activity = 3,
+	Day = 1
+}
 Activity186Enum.RolePath = "rolesstory/rolesprefab/v1a6_623801_hzd_p/623801_hzd_p.prefab"
 
 return Activity186Enum

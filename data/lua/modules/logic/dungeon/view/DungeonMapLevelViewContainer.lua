@@ -29,7 +29,7 @@ function DungeonMapLevelViewContainer:buildTabViews(tabContainerId)
 		local chapterType = DungeonModel.instance.curChapterType
 		local showHelp = chapterType == DungeonEnum.ChapterType.Normal and HelpModel.instance:isShowedHelp(HelpEnum.HelpId.Dungeon)
 
-		self._navigateButtonView = NavigateButtonsView.New({
+		self._navigateButtonView = DungeonNavigateButtonsView.New({
 			true,
 			true,
 			showHelp
@@ -37,6 +37,8 @@ function DungeonMapLevelViewContainer:buildTabViews(tabContainerId)
 
 		self._navigateButtonView:setOverrideClose(self._overrideClose, self)
 		self._navigateButtonView:setAnimEnabled(false)
+		self._navigateButtonView:setOpenCallback(self.initChapterRecheck, self)
+		self._navigateButtonView:setOverrideClickRecheck(self.closeThis, self)
 
 		return {
 			self._navigateButtonView
@@ -75,6 +77,18 @@ function DungeonMapLevelViewContainer:refreshHelp()
 			showHelp
 		})
 	end
+end
+
+function DungeonMapLevelViewContainer:initChapterRecheck()
+	local chapterId = self:_getChapterId()
+
+	if self._navigateButtonView then
+		self._navigateButtonView:initChapterRecheck(chapterId)
+	end
+end
+
+function DungeonMapLevelViewContainer:_getChapterId()
+	return self.viewParam and self.viewParam[1] and self.viewParam[1].chapterId
 end
 
 return DungeonMapLevelViewContainer

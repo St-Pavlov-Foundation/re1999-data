@@ -353,7 +353,6 @@ end
 
 function StoryPictureItem:resetStep()
 	TaskDispatcher.cancelTask(self._playShake, self)
-	TaskDispatcher.cancelTask(self._shakeStop, self)
 	ZProj.TweenHelper.KillByObj(self._picGoRoot)
 end
 

@@ -1,0 +1,62 @@
+[
+  {
+    "activityId": 13920,
+    "id": 1,
+    "value": "3902",
+    "value2": ""
+  },
+  {
+    "activityId": 13920,
+    "id": 2,
+    "value": "",
+    "value2": "完成湍流竞速场关卡并达到星级，即可获取对应奖励。风浪之上，每海里的航程都值得一份犒赏。"
+  },
+  {
+    "activityId": 13920,
+    "id": 3,
+    "value": "baseSpeed|baseAcceleration|maxSpeed",
+    "value2": ""
+  },
+  {
+    "activityId": 13920,
+    "id": 4,
+    "value": "203913",
+    "value2": ""
+  },
+  {
+    "activityId": 13921,
+    "id": 1,
+    "value": "3902",
+    "value2": ""
+  },
+  {
+    "activityId": 13921,
+    "id": 2,
+    "value": "10",
+    "value2": ""
+  },
+  {
+    "activityId": 13921,
+    "id": 3,
+    "value": "203911",
+    "value2": ""
+  },
+  {
+    "activityId": 13921,
+    "id": 4,
+    "value": "203912",
+    "value2": ""
+  },
+  {
+    "activityId": 13921,
+    "id": 5,
+    "value": "13912",
+    "value2": ""
+  },
+  {
+    "activityId": 13921,
+    "id": 6,
+    "value": "10",
+    "value2": ""
+  }
+]

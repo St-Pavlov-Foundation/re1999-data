@@ -27,6 +27,7 @@ CharacterBackpackEnum.CharacterSkillHideEffect = {
 	[3146] = true
 }
 CharacterBackpackEnum.dmgItemCount = 2
+CharacterBackpackEnum.destinyItemCount = 2
 CharacterBackpackEnum.attrItemCount = 6
 
 return CharacterBackpackEnum

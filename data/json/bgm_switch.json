@@ -1240,5 +1240,23 @@
     "audioLength": 101.0,
     "audioEvaluates": "库珀花环#很高兴得知两个世界里都存在这首曲子。",
     "isNonLoop": 0
+  },
+  {
+    "id": 1013901,
+    "audio": 390001,
+    "isReport": 0,
+    "unlockCondition": "",
+    "itemId": 221291,
+    "defaultUnlock": 0,
+    "audioName": "重燃!流金之海",
+    "audioNameEn": "Rekindled! Games of the Summer-Gold Sea",
+    "audioIntroduce": "在一杯气泡水中，找到神谕的注脚。",
+    "audioBg": "102931_1",
+    "audioicon": "102931_2",
+    "sort": 0,
+    "audioType": 29,
+    "audioLength": 128.0,
+    "audioEvaluates": "莉拉妮#最适合冲浪时听的音乐！我这就去申请一对防水耳机。",
+    "isNonLoop": 0
   }
 ]

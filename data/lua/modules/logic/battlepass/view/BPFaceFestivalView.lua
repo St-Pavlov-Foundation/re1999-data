@@ -18,7 +18,7 @@ BPFaceFestivalView.OPEN_TYPE = {
 
 function BPFaceFestivalView:onInitView()
 	self._anim = gohelper.findChildAnim(self.viewGO, "")
-	self._btnClose = gohelper.findChildButtonWithAudio(self.viewGO, "main/#simage_fullbg/icon/#btn_close")
+	self._btnClose = gohelper.findChildButtonWithAudio(self.viewGO, "main/icon/#btn_close")
 	self._btnCloseBg = gohelper.findChildButtonWithAudio(self.viewGO, "main/#btn_closeBg")
 	self._btnStart = gohelper.findChildButtonWithAudio(self.viewGO, "main/#btn_start")
 	self._btnClickCard = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_fullclick")

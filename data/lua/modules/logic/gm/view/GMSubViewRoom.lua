@@ -51,7 +51,7 @@ function GMSubViewRoom:_onClickRoomDebugBuildingArea()
 	if GameSceneMgr.instance:getCurSceneType() == SceneType.Room then
 		RoomDebugController.instance:openBuildingAreaView()
 	else
-		GameFacade.showToast(94, "GM需要进入小屋后使用。")
+		GameFacade.showToast(ToastEnum.IconId, "GM需要进入小屋后使用。")
 	end
 end
 
@@ -231,7 +231,7 @@ end
 
 function GMSubViewRoom:_onClickRoomInteractionOk()
 	if #self.characterInteractionList < 1 then
-		GameFacade.showToast(94, "GM需要进入小屋并放置可交互角色。")
+		GameFacade.showToast(ToastEnum.IconId, "GM需要进入小屋并放置可交互角色。")
 	end
 
 	if not self.selectCharacterInteractionCfg then
@@ -241,13 +241,13 @@ function GMSubViewRoom:_onClickRoomInteractionOk()
 	local roomCharacterMO = RoomCharacterModel.instance:getCharacterMOById(self.selectCharacterInteractionCfg.heroId)
 
 	if not roomCharacterMO or roomCharacterMO.characterState ~= RoomCharacterEnum.CharacterState.Map then
-		GameFacade.showToast(94, "GM 需要放置角色后可交互。")
+		GameFacade.showToast(ToastEnum.IconId, "GM 需要放置角色后可交互。")
 
 		return
 	end
 
 	if self.selectCharacterInteractionCfg.behaviour == RoomCharacterEnum.InteractionType.Dialog then
-		GameFacade.showToast(94, string.format("GM %s 触发交互", roomCharacterMO.heroConfig.name))
+		GameFacade.showToast(ToastEnum.IconId, string.format("GM %s 触发交互", roomCharacterMO.heroConfig.name))
 		roomCharacterMO:setCurrentInteractionId(self.selectCharacterInteractionCfg.id)
 		RoomCharacterController.instance:dispatchEvent(RoomEvent.UpdateCharacterInteractionUI)
 	elseif self.selectCharacterInteractionCfg.behaviour == RoomCharacterEnum.InteractionType.Building then
@@ -256,13 +256,13 @@ function GMSubViewRoom:_onClickRoomInteractionOk()
 		local builingName = buildingCfg and buildingCfg.name or self.selectCharacterInteractionCfg.buildingId
 
 		if not interctionMO then
-			GameFacade.showToast(94, string.format("GM 场景无【%s】建筑，【%s】无发交互", builingName, roomCharacterMO.heroConfig.name))
+			GameFacade.showToast(ToastEnum.IconId, string.format("GM 场景无【%s】建筑，【%s】无发交互", builingName, roomCharacterMO.heroConfig.name))
 
 			return
 		end
 
 		if not RoomHelper.isFSMState(RoomEnum.FSMObState.Idle) then
-			GameFacade.showToast(94, string.format("GM 当场景状态机非[%s]", RoomEnum.FSMObState.Idle))
+			GameFacade.showToast(ToastEnum.IconId, string.format("GM 当场景状态机非[%s]", RoomEnum.FSMObState.Idle))
 
 			return
 		end
@@ -270,7 +270,7 @@ function GMSubViewRoom:_onClickRoomInteractionOk()
 		local isSuccess = RoomInteractionController.instance:showTimeByInteractionMO(interctionMO)
 
 		if not isSuccess then
-			GameFacade.showToast(94, string.format("GM【%s】不在【%s】交互点范围内", roomCharacterMO.heroConfig.name, builingName))
+			GameFacade.showToast(ToastEnum.IconId, string.format("GM【%s】不在【%s】交互点范围内", roomCharacterMO.heroConfig.name, builingName))
 
 			return
 		end
@@ -372,7 +372,7 @@ function GMSubViewRoom:_onClickRoomBuildingCamera()
 		RoomDebugController.instance:openBuildingCamerView()
 		self:closeThis()
 	else
-		GameFacade.showToast(94, "GM需要进入小屋后使用。")
+		GameFacade.showToast(ToastEnum.IconId, "GM需要进入小屋后使用。")
 	end
 end
 
@@ -493,9 +493,9 @@ function GMSubViewRoom:_onClickTestVehicle()
 			end
 		end
 
-		GameFacade.showToast(94, "GM交通工具数量：" .. #mapVehicleMOList)
+		GameFacade.showToast(ToastEnum.IconId, "GM交通工具数量：" .. #mapVehicleMOList)
 	else
-		GameFacade.showToast(94, "GM需要进入小屋后观察模式下使用。")
+		GameFacade.showToast(ToastEnum.IconId, "GM需要进入小屋后观察模式下使用。")
 	end
 end
 
@@ -573,11 +573,11 @@ function GMSubViewRoom:_onRoomWeatherSelectChanged(index)
 			local wId = self.roomWeatherIdList[index]
 
 			scene.ambient:tweenToAmbientId(wId)
-			GameFacade.showToast(94, string.format("GM切换小屋天气:%s", wId))
+			GameFacade.showToast(ToastEnum.IconId, string.format("GM切换小屋天气:%s", wId))
 			self:closeThis()
 		end
 	else
-		GameFacade.showToast(94, "GM需要进入小屋可使用。")
+		GameFacade.showToast(ToastEnum.IconId, "GM需要进入小屋可使用。")
 	end
 end
 

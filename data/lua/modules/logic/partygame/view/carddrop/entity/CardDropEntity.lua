@@ -5,7 +5,7 @@ module("modules.logic.partygame.view.carddrop.entity.CardDropEntity", package.se
 local CardDropEntity = class("CardDropEntity", UserDataDispose)
 
 function CardDropEntity:init(uid, go)
-	CardDropEntity.super.__onInit(self)
+	self:__onInit()
 
 	self.uid = uid
 	self.stringUid = tostring(self.uid)
@@ -92,7 +92,7 @@ function CardDropEntity:destroy()
 		comp:destroy()
 	end
 
-	CardDropEntity.super.__onDispose()
+	self:__onDispose()
 end
 
 return CardDropEntity

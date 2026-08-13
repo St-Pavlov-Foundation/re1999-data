@@ -20,6 +20,7 @@ function StoryBackgroundView:onInitView()
 	self._gobliteffsecond = gohelper.findChild(self.viewGO, "#go_blitbgsecond")
 	self._goUpVideoRoot = gohelper.findChild(self.viewGO, "#go_upbg/#go_video")
 	self._goBottomVideoRoot = gohelper.findChild(self.viewGO, "#go_bottombg/#go_video")
+	self._playingBgEffDict = {}
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -151,7 +152,11 @@ function StoryBackgroundView:_loadRes()
 		[StoryEnum.BgEffectType.PartialBlur] = self._actBgEffPartialBlur,
 		[StoryEnum.BgEffectType.PerspectiveCamera] = self._actBgEffPerspectiveCamera,
 		[StoryEnum.BgEffectType.TimeStop] = self._actBgEffTimeStop,
-		[StoryEnum.BgEffectType.UpFlow] = self._actBgEffUpFlow
+		[StoryEnum.BgEffectType.UpFlow] = self._actBgEffUpFlow,
+		[StoryEnum.BgEffectType.ScreenHalo] = self._actBgEffScreenHalo,
+		[StoryEnum.BgEffectType.ScreenHalo2] = self._actBgEffScreenHalo,
+		[StoryEnum.BgEffectType.CrtFilter] = self._actBgEffCrtFilter,
+		[StoryEnum.BgEffectType.CameraEffect] = self._actBgEffCameraEffect
 	}
 	self._handleResetBgEffs = {
 		[StoryEnum.BgEffectType.BgBlur] = self._resetBgEffBlur,
@@ -185,7 +190,11 @@ function StoryBackgroundView:_loadRes()
 		[StoryEnum.BgEffectType.PartialBlur] = self._resetBgEffPartialBlur,
 		[StoryEnum.BgEffectType.PerspectiveCamera] = self._resetBgEffPerspectiveCamera,
 		[StoryEnum.BgEffectType.TimeStop] = self._resetBgEffTimeStop,
-		[StoryEnum.BgEffectType.UpFlow] = self._resetBgEffUpFlow
+		[StoryEnum.BgEffectType.UpFlow] = self._resetBgEffUpFlow,
+		[StoryEnum.BgEffectType.ScreenHalo] = self._resetBgEffScreenHalo,
+		[StoryEnum.BgEffectType.ScreenHalo2] = self._resetBgEffScreenHalo,
+		[StoryEnum.BgEffectType.CrtFilter] = self._resetBgEffCrtFilter,
+		[StoryEnum.BgEffectType.CameraEffect] = self._resetBgEffCameraEffect
 	}
 end
 
@@ -728,16 +737,19 @@ function StoryBackgroundView:_advanceLoadBgOld()
 end
 
 function StoryBackgroundView:_checkPlayEffect()
-	for key, v in pairs(self._handleResetBgEffs) do
-		if self._bgCo.effType ~= key then
-			v(self)
+	for effType, v in pairs(self._playingBgEffDict) do
+		if v and effType ~= self._bgCo.effType then
+			self._playingBgEffDict[effType] = nil
+
+			local handle = self._handleResetBgEffs[effType]
+
+			if handle then
+				handle(self)
+			end
 		end
 	end
 
-	if self._handleBgEffsFuncDict[self._bgCo.effType] then
-		self._handleBgEffsFuncDict[self._bgCo.effType](self)
-	end
-
+	self:_playBgEffsFunc(self._bgCo)
 	self:_checkBgEffStack()
 end
 
@@ -756,11 +768,19 @@ function StoryBackgroundView:_checkBgEffStack()
 	end
 
 	if preStepCo.conversation.type == StoryEnum.ConversationType.BgEffStack then
-		local effType = preStepCo.bg.effType
+		self:_playBgEffsFunc(preStepCo.bg)
+	end
+end
 
-		if self._handleBgEffsFuncDict[effType] then
-			self._handleBgEffsFuncDict[effType](self, preStepCo.bg)
-		end
+function StoryBackgroundView:_playBgEffsFunc(bgCo)
+	if not bgCo then
+		return
+	end
+
+	if self._handleBgEffsFuncDict[bgCo.effType] then
+		self._playingBgEffDict[bgCo.effType] = true
+
+		self._handleBgEffsFuncDict[bgCo.effType](self, bgCo)
 	end
 end
 
@@ -1555,11 +1575,13 @@ function StoryBackgroundView:_resetBgEffInterfere()
 		return
 	end
 
-	if self._interfereGo then
-		gohelper.destroy(self._interfereGo)
-
-		self._interfereGo = nil
+	if not self._interfereGo then
+		return
 	end
+
+	gohelper.destroy(self._interfereGo)
+
+	self._interfereGo = nil
 
 	StoryViewMgr.instance:setStoryViewLayer(UnityLayer.UISecond)
 	StoryViewMgr.instance:setStoryLeadRoleSpineViewLayer(UnityLayer.UIThird)
@@ -1613,11 +1635,13 @@ function StoryBackgroundView:_resetBgEffSketch()
 		self._bgSketchId = nil
 	end
 
-	if self._sketchGo then
-		gohelper.destroy(self._sketchGo)
-
-		self._sketchGo = nil
+	if not self._sketchGo then
+		return
 	end
+
+	gohelper.destroy(self._sketchGo)
+
+	self._sketchGo = nil
 
 	StoryViewMgr.instance:setStoryViewLayer(UnityLayer.UISecond)
 	StoryViewMgr.instance:setStoryLeadRoleSpineViewLayer(UnityLayer.UIThird)
@@ -2113,11 +2137,13 @@ function StoryBackgroundView:_resetBgEffOpposition()
 		self._bgOppositionId = nil
 	end
 
-	if self._oppositionGo then
-		gohelper.destroy(self._oppositionGo)
-
-		self._oppositionGo = nil
+	if not self._oppositionGo then
+		return
 	end
+
+	gohelper.destroy(self._oppositionGo)
+
+	self._oppositionGo = nil
 
 	local storyViewGo = StoryViewMgr.instance:getStoryView()
 
@@ -2211,11 +2237,13 @@ function StoryBackgroundView:_oppositionFinished()
 end
 
 function StoryBackgroundView:_resetBgEffRgbSplit()
-	if self._rbgSplitGo then
-		gohelper.destroy(self._rbgSplitGo)
-
-		self._rbgSplitGo = nil
+	if not self._rbgSplitGo then
+		return
 	end
+
+	gohelper.destroy(self._rbgSplitGo)
+
+	self._rbgSplitGo = nil
 
 	gohelper.setLayer(self._gobliteff, UnityLayer.UI, true)
 	StoryViewMgr.instance:setStoryHeroViewLayer(UnityLayer.UISecond)
@@ -2493,6 +2521,63 @@ function StoryBackgroundView:_resetBgEffUpFlow()
 	end
 end
 
+function StoryBackgroundView:_actBgEffScreenHalo()
+	if not self._bgScreenHaloCls then
+		self._bgScreenHaloCls = StoryBgEffsScreenHalo.New()
+
+		self._bgScreenHaloCls:init(self._bgCo)
+		self._bgScreenHaloCls:start()
+	else
+		self._bgScreenHaloCls:reset(self._bgCo)
+	end
+end
+
+function StoryBackgroundView:_resetBgEffScreenHalo()
+	if self._bgScreenHaloCls then
+		self._bgScreenHaloCls:destroy()
+
+		self._bgScreenHaloCls = nil
+	end
+end
+
+function StoryBackgroundView:_actBgEffCrtFilter()
+	if not self._bgCrtFilterCls then
+		self._bgCrtFilterCls = StoryBgEffsCrtFilter.New()
+
+		self._bgCrtFilterCls:init(self._bgCo)
+		self._bgCrtFilterCls:start()
+	else
+		self._bgCrtFilterCls:reset(self._bgCo)
+	end
+end
+
+function StoryBackgroundView:_resetBgEffCrtFilter()
+	if self._bgCrtFilterCls then
+		self._bgCrtFilterCls:destroy()
+
+		self._bgCrtFilterCls = nil
+	end
+end
+
+function StoryBackgroundView:_actBgEffCameraEffect(type)
+	if not self._bgCameraEffCls then
+		self._bgCameraEffCls = StoryBgEffsCameraEffect.New()
+
+		self._bgCameraEffCls:init(self._bgCo)
+		self._bgCameraEffCls:start()
+	else
+		self._bgCameraEffCls:reset(self._bgCo)
+	end
+end
+
+function StoryBackgroundView:_resetBgEffCameraEffect()
+	if self._bgCameraEffCls then
+		self._bgCameraEffCls:destroy()
+
+		self._bgCameraEffCls = nil
+	end
+end
+
 function StoryBackgroundView:loadRes(resList, callback, callbackObj)
 	if self._loader then
 		self._loader:dispose()
@@ -2588,6 +2673,9 @@ function StoryBackgroundView:_clearBg()
 	self:_resetBgEffMalfunction()
 	self:_resetBgEffPartialBlur()
 	self:_resetBgEffPerspectiveCamera()
+	self:_resetBgEffScreenHalo()
+	self:_resetBgEffCrtFilter()
+	self:_resetBgEffCameraEffect()
 
 	if self._blurId then
 		ZProj.TweenHelper.KillById(self._blurId)

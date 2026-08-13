@@ -47,7 +47,7 @@ function SummonSimulationRecommendView:_btndetailOnClick()
 end
 
 function SummonSimulationRecommendView:_editableInitView()
-	self.super._editableInitView(self)
+	SummonSimulationRecommendView.super._editableInitView(self)
 
 	self._txtprice.text = PayModel.instance:getProductOriginPriceNum(StoreEnum.V3a2_SummonSimulationPickItemId)
 end
@@ -57,7 +57,7 @@ function SummonSimulationRecommendView:onUpdateParam()
 end
 
 function SummonSimulationRecommendView:onOpen()
-	self.super.onOpen(self)
+	SummonSimulationRecommendView.super.onOpen(self)
 	self:refreshUI()
 end
 

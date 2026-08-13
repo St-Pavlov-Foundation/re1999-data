@@ -1,6 +1,41 @@
 ﻿-- chunkname: @modules/setting/module_mvc.lua
 
 local module_mvc = {
+	Activity243 = {
+		rpc = {
+			"Activity243Rpc"
+		}
+	},
+	V3a9RacingCar = {
+		model = {
+			"V3a9RacingCarModel",
+			"V3a9RacingTalentModel",
+			"V3a9RacingCarEpisodeModel"
+		},
+		controller = {
+			"V3a9RacingCarController"
+		},
+		rpc = {
+			"V3a9RacingCarRpc"
+		},
+		config = {
+			"V3a9RacingCarConfig"
+		}
+	},
+	V3a9Bird = {
+		model = {
+			"V3a9BirdModel"
+		},
+		controller = {
+			"V3a9BirdController"
+		},
+		rpc = {
+			"V3a9BirdRpc"
+		},
+		config = {
+			"V3a9BirdConfig"
+		}
+	},
 	EquipLvUp = {
 		model = {
 			"EquipLvUpModel"
@@ -105,6 +140,21 @@ local module_mvc = {
 			"AtomicOperationActivityConfig"
 		}
 	},
+	Hedone = {
+		model = {
+			"HedoneModel",
+			"HedoneGameModel"
+		},
+		controller = {
+			"HedoneController",
+			"HedoneGameController",
+			"HedoneSkillMgr",
+			"HedoneTriggerMgr"
+		},
+		config = {
+			"HedoneConfig"
+		}
+	},
 	V3a5Puzzle = {
 		controller = {
 			"V3a5PuzzleController"
@@ -196,7 +246,8 @@ local module_mvc = {
 			"PartyGameRoomModel"
 		},
 		controller = {
-			"PartyGameLobbyController"
+			"PartyGameLobbyController",
+			"PartyGameTrialController"
 		},
 		rpc = {
 			"PartyRoomRpc",
@@ -2248,6 +2299,14 @@ local module_mvc = {
 			"BossRushConfig"
 		}
 	},
+	V3a9_BossRush = {
+		model = {
+			"V3a9_BossRushModel"
+		},
+		controller = {
+			"V3a9_BossRushController"
+		}
+	},
 	Activity132 = {
 		model = {
 			"Activity132Model"
@@ -2338,7 +2397,8 @@ local module_mvc = {
 		},
 		controller = {
 			"TurnbackController",
-			"TurnbackPickEquipController"
+			"TurnbackPickEquipController",
+			"TurnbackReturnTaskController"
 		},
 		rpc = {
 			"TurnbackRpc"
@@ -3182,14 +3242,6 @@ local module_mvc = {
 			"V2a7_SelfSelectSix_PickChoiceController"
 		}
 	},
-	DestinyStoneGiftPickChoice = {
-		model = {
-			"DestinyStoneGiftPickChoiceListModel"
-		},
-		controller = {
-			"DestinyStoneGiftPickChoiceController"
-		}
-	},
 	Odyssey = {
 		model = {
 			"OdysseyModel",
@@ -3848,12 +3900,12 @@ local module_mvc = {
 			"V3a8_DragonBoatController"
 		}
 	},
-	V3a8_SelfSelectSix = {
+	DestinyStoneGiftPickChoice = {
 		model = {
-			"VersionActivity3_8SelfSelectSixModel"
+			"DestinyStoneGiftPickChoiceModel"
 		},
 		controller = {
-			"VersionActivity3_8SelfSelectSixController"
+			"DestinyStoneGiftPickChoiceController"
 		}
 	},
 	Act240 = {
@@ -3925,6 +3977,17 @@ local module_mvc = {
 	SceneUIPackage = {
 		model = {
 			"SceneUIPackageModel"
+		}
+	},
+	Naxisuosi = {
+		model = {
+			"NaxisuosiModel"
+		},
+		config = {
+			"NaxisuosiConfig"
+		},
+		controller = {
+			"NaxisuosiController"
 		}
 	}
 }

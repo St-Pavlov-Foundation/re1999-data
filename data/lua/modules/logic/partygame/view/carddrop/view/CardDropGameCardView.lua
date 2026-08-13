@@ -221,7 +221,7 @@ end
 function CardDropGameCardView:onWaitDoneStateStart(curState)
 	local curGame = PartyGameController.instance:getCurPartyGame()
 
-	if not curGame or not curGame:getConnectNet() then
+	if curGame and not curGame:getConnectNet() and not curGame:getIsTrial() then
 		PartyGameController.instance:exitGame()
 
 		return

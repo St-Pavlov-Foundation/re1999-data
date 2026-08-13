@@ -1153,12 +1153,20 @@ function FightEntityMO:getDeviceMo()
 		if deviceId and deviceId > 0 then
 			self.deviceMo = self.deviceMo or HeroDeviceMO.New(self.modelId)
 
+			self.deviceMo:setExSkillLevel(self.exSkillLevel)
 			self.deviceMo:refreshDevice(deviceId)
 		end
 	else
-		local heroMo = HeroModel.instance:getByHeroId(self.modelId)
+		local deviceId = self:getDeviceIdByExSkillLv(self.exSkillLevel)
 
-		self.deviceMo = SkillConfig.instance:getHeroDeviceMO(self.modelId, heroMo)
+		if deviceId and deviceId > 0 then
+			if not self.deviceMo then
+				self.deviceMo = HeroDeviceMO.New(self.modelId)
+			end
+
+			self.deviceMo:setExSkillLevel(self.exSkillLevel)
+			self.deviceMo:refreshDevice(deviceId)
+		end
 	end
 
 	return self.deviceMo
@@ -1170,10 +1178,25 @@ function FightEntityMO:getTrialDeviceId()
 	end
 
 	local trialCo = lua_hero_trial.configDict[self.trialId][0]
+
+	return self:getDeviceIdByExSkillLv(trialCo.exSkillLv)
+end
+
+function FightEntityMO:getDeviceIdByExSkillLv(exSkillLv)
+	local destinyStoneDeviceId = self:getDestinyStoneDeviceId(exSkillLv)
+
+	if destinyStoneDeviceId then
+		return destinyStoneDeviceId
+	end
+
+	return self:getExSkillDeviceId()
+end
+
+function FightEntityMO:getDestinyStoneDeviceId(exSkillLv)
 	local destinyStoneMo = self:getHeroDestinyStoneMo()
 
 	if destinyStoneMo then
-		local exSkillCo = destinyStoneMo:getExpExchangeSkillCo(trialCo.exSkillLv)
+		local exSkillCo = destinyStoneMo:getExpExchangeSkillCo(exSkillLv)
 
 		if exSkillCo and exSkillCo.deviceId > 0 then
 			return exSkillCo.deviceId
@@ -1186,12 +1209,14 @@ function FightEntityMO:getTrialDeviceId()
 
 			for _, v in pairs(devices) do
 				if v[1] == self.exSkillLevel then
-					return
+					return v[2]
 				end
 			end
 		end
 	end
+end
 
+function FightEntityMO:getExSkillDeviceId()
 	local exSkillCos = SkillConfig.instance:getheroexskillco(self.modelId)
 	local exSkillCo = exSkillCos and exSkillCos[self.exSkillLevel]
 
@@ -1332,6 +1357,37 @@ function FightEntityMO:getFakeHp()
 	end
 
 	return -1, -1
+end
+
+function FightEntityMO:getFakeHpPercent()
+	local fakeHp, maxFakeHp = self:getFakeHpAndMaxFakeHp()
+
+	if fakeHp < 0 then
+		return 0
+	end
+
+	return Mathf.Clamp01(fakeHp / maxFakeHp)
+end
+
+function FightEntityMO:getHeDuoNieBuffData()
+	local buffActId = FightEnum.BuffActId.HedoneCard
+
+	for _, buffMo in pairs(self.buffDic) do
+		local actInfo = buffMo.actInfo
+
+		if actInfo then
+			for _, buffActInfo in pairs(actInfo) do
+				if buffActInfo.actId == buffActId then
+					local param = buffActInfo.param
+					local curCount = param[1]
+					local maxCount = param[2]
+					local unlock = param[3] == 1
+
+					return curCount, maxCount, unlock
+				end
+			end
+		end
+	end
 end
 
 function FightEntityMO:set_position(key, position)

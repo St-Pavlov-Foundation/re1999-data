@@ -16,7 +16,8 @@ local Sp01LogoPathDict = {
 	[FightEnum.FloatType.crit_additional_damage] = "x/sp01_logo"
 }
 
-function FightFloatItem:ctor(floatType, typeGO, randomXRange)
+function FightFloatItem:ctor(floatType, typeGO, randomXRange, skinId)
+	self.skinId = skinId
 	self.entityId = nil
 	self.type = floatType
 	self._typeGO = typeGO
@@ -237,8 +238,18 @@ function FightFloatItem:_floatTotal(content, param, isAssassinate)
 			gohelper.setActive(text.gameObject, i == tar_index)
 			gohelper.setActive(logo, isAssassinate and i == tar_index)
 
+			local title = gohelper.findChild(self._typeGO, "x/title" .. i)
+
+			if title then
+				gohelper.setActive(title, i == tar_index)
+			end
+
 			if i == tar_index then
 				text.text = content
+
+				if self.skinId == FightFloatMgr.SkinId.Duck_3_9 then
+					self:updateDuckFloatPosition(title, text)
+				end
 
 				if isAssassinate then
 					AudioMgr.instance:trigger(20305030)
@@ -246,6 +257,32 @@ function FightFloatItem:_floatTotal(content, param, isAssassinate)
 			end
 		end
 	end
+end
+
+FightFloatItem.Interval = -10
+FightFloatItem.InitOffset = 15
+
+function FightFloatItem:updateDuckFloatPosition(titleGo, text)
+	local positionGo = gohelper.findChild(titleGo, "icon_position")
+
+	if not positionGo then
+		return
+	end
+
+	local textRectTr = text:GetComponent(gohelper.Type_RectTransform)
+	local positionRectTr = positionGo:GetComponent(gohelper.Type_RectTransform)
+	local pivot = textRectTr.pivot
+	local txtWidth = text.preferredWidth
+	local screenPos = recthelper.uiPosToScreenPos(textRectTr)
+	local anchorX, anchorY = recthelper.screenPosToAnchorPos2(screenPos, titleGo.transform)
+
+	anchorX = anchorX - txtWidth * pivot.x
+
+	recthelper.setAnchor(positionRectTr, anchorX, anchorY)
+
+	local len = text.text:len()
+
+	recthelper.setWidth(positionRectTr, txtWidth + (len - 1) * FightFloatItem.Interval + FightFloatItem.InitOffset)
 end
 
 function FightFloatItem:_floatStress(content, param)

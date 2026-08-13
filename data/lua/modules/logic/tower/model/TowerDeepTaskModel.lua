@@ -17,7 +17,7 @@ end
 
 function TowerDeepTaskModel:reInit()
 	self.tempTaskModel:clear()
-	TowerDeepTaskModel.super.clear(self)
+	self:clear()
 
 	self.taskList = {}
 end

@@ -64,13 +64,13 @@ function PartyGameEndUI:_onGameEnd()
 	PopupController.instance:setPause("PartyGameEndUI", true)
 
 	if self._isTeamType then
-		if self._curGame and self._curGame:getIsLocal() then
+		if self._curGame and self._curGame:getIsLocal() and not self._curGame:getIsTrial() then
 			logNormal("PartyGameEndUI open PartyGameTeamResultGuideView")
 			PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.PartyGameTeamResultGuideView)
 		else
 			PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.PartyGameTeamResultView)
 		end
-	elseif self._curGame and self._curGame:getIsLocal() then
+	elseif self._curGame and self._curGame:getIsLocal() and not self._curGame:getIsTrial() then
 		logNormal("PartyGameEndUI open PartyGameSoloResultGuideView")
 		PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.PartyGameSoloResultGuideView)
 	else

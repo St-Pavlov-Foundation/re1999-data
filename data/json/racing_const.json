@@ -1,0 +1,374 @@
+[
+  {
+    "activityId": 13920,
+    "id": 1001,
+    "value": 0.4,
+    "value2": ""
+  },
+  {
+    "activityId": 13920,
+    "id": 1002,
+    "value": 0.03,
+    "value2": ""
+  },
+  {
+    "activityId": 13920,
+    "id": 1003,
+    "value": 55.0,
+    "value2": ""
+  },
+  {
+    "activityId": 13920,
+    "id": 1004,
+    "value": 0.0,
+    "value2": "95#125"
+  },
+  {
+    "activityId": 13920,
+    "id": 1005,
+    "value": 0.0,
+    "value2": "86#120"
+  },
+  {
+    "activityId": 13920,
+    "id": 1011,
+    "value": 18.0,
+    "value2": ""
+  },
+  {
+    "activityId": 13920,
+    "id": 1012,
+    "value": 0.0,
+    "value2": "10121#10122"
+  },
+  {
+    "activityId": 13920,
+    "id": 1013,
+    "value": 0.0,
+    "value2": "80#240#1.2"
+  },
+  {
+    "activityId": 13920,
+    "id": 1014,
+    "value": 10.0,
+    "value2": ""
+  },
+  {
+    "activityId": 13920,
+    "id": 1015,
+    "value": 3.0,
+    "value2": ""
+  },
+  {
+    "activityId": 13920,
+    "id": 1016,
+    "value": 0.025,
+    "value2": ""
+  },
+  {
+    "activityId": 13920,
+    "id": 1017,
+    "value": 24.0,
+    "value2": ""
+  },
+  {
+    "activityId": 13920,
+    "id": 1018,
+    "value": 48.0,
+    "value2": ""
+  },
+  {
+    "activityId": 13920,
+    "id": 1,
+    "value": 50.0,
+    "value2": ""
+  },
+  {
+    "activityId": 13920,
+    "id": 2,
+    "value": 90.0,
+    "value2": ""
+  },
+  {
+    "activityId": 13920,
+    "id": 3,
+    "value": 57.5,
+    "value2": ""
+  },
+  {
+    "activityId": 13920,
+    "id": 4,
+    "value": 62.5,
+    "value2": ""
+  },
+  {
+    "activityId": 13920,
+    "id": 5,
+    "value": 1.81,
+    "value2": ""
+  },
+  {
+    "activityId": 13920,
+    "id": 6,
+    "value": 2.48,
+    "value2": ""
+  },
+  {
+    "activityId": 13920,
+    "id": 7,
+    "value": 0.08,
+    "value2": ""
+  },
+  {
+    "activityId": 13920,
+    "id": 8,
+    "value": 1.4,
+    "value2": ""
+  },
+  {
+    "activityId": 13920,
+    "id": 9,
+    "value": 0.5,
+    "value2": ""
+  },
+  {
+    "activityId": 13920,
+    "id": 10,
+    "value": 50.0,
+    "value2": ""
+  },
+  {
+    "activityId": 13920,
+    "id": 101,
+    "value": 0.0,
+    "value2": "entryWindowM#30|triggerToleranceM#8|requireOuterLane#1|entrySide#leftOrRight"
+  },
+  {
+    "activityId": 13920,
+    "id": 102,
+    "value": 0.0,
+    "value2": "exitMergeM#30|exitSide#leftOrRight|exitLaneId#1|autoMergeToMain#1"
+  },
+  {
+    "activityId": 13920,
+    "id": 103,
+    "value": 0.0,
+    "value2": "laneCount#2|inheritLaneWidth#1|laneWidthOverride#4|taperFraction#0.2"
+  },
+  {
+    "activityId": 13920,
+    "id": 104,
+    "value": 0.0,
+    "value2": "curveMode#Smooth|arcStrength#0.5|allowMiddlePoints#1|preserveAuthoringCurve#1"
+  },
+  {
+    "activityId": 13920,
+    "id": 105,
+    "value": 0.0,
+    "value2": "allowElements#1|allowCoins#1|showAllPreview#1|progressMapping#mainDistancePercent"
+  },
+  {
+    "activityId": 13920,
+    "id": 111,
+    "value": 0.0,
+    "value2": "layerIndex#1|heightM#12|laneCount#2|inheritLaneWidth#1|laneWidthOverride#4"
+  },
+  {
+    "activityId": 13920,
+    "id": 112,
+    "value": 0.0,
+    "value2": "progressScale#1|progressToleranceM#15|mainRouteId#Main|mainProgressAuthority#1"
+  },
+  {
+    "activityId": 13920,
+    "id": 113,
+    "value": 0.0,
+    "value2": "triggerToleranceM#8|flightDurationS#1|flightHeightOffsetM#4|allowLayerToLayer#1"
+  },
+  {
+    "activityId": 13920,
+    "id": 114,
+    "value": 0.0,
+    "value2": "allowReturnToNonMain#0|recoverToMainPreferred#1|autoFixProgressScale#1|debugExportOnError#1"
+  },
+  {
+    "activityId": 13920,
+    "id": 115,
+    "value": 0.0,
+    "value2": "showLayerIsolation#1|ghostOtherLayers#1|slotPickForTransfer#1|arrowDirectionPreview#1"
+  },
+  {
+    "activityId": 13920,
+    "id": 121,
+    "value": 0.0,
+    "value2": "entryMode#ElementTrigger|entryTriggerLengthM#30|triggerElementId#RuntimeElement_09|triggerToleranceM#8|autoPlaceEntryElements#1"
+  },
+  {
+    "activityId": 13920,
+    "id": 122,
+    "value": 0.0,
+    "value2": "laneCount#3|inheritLaneWidth#1|laneWidthOverride#4|cameraLaneId#2|cameraId#390101"
+  },
+  {
+    "activityId": 13920,
+    "id": 123,
+    "value": 0.0,
+    "value2": "lowAltitudeOffsetM#-6|midAltitudeOffsetM#0|highAltitudeOffsetM#6|descentEase#Linear"
+  },
+  {
+    "activityId": 13920,
+    "id": 124,
+    "value": 0.0,
+    "value2": "forwardSpeedMultiplier#0.5|lateralSwitchDurationS#1|verticalSwitchDurationS#0.9|diagonalSwitchDurationMul#1.25|interruptibleSwitch#1"
+  },
+  {
+    "activityId": 13920,
+    "id": 125,
+    "value": 0.0,
+    "value2": "settleHoverDurationS#0.55|settleOvershoot#0.15|landingPrepareDistanceM#30|landingLockDistanceM#15"
+  },
+  {
+    "activityId": 13920,
+    "id": 126,
+    "value": 0.0,
+    "value2": "curveMode#Smooth|arcStrength#0.35|airflowLineAlpha#0.45|jitterPosAmp#0.12|jitterRotAmpDeg#2.5|jitterFrequency#4"
+  },
+  {
+    "activityId": 13920,
+    "id": 131,
+    "value": 0.0,
+    "value2": "triggerToleranceM#8|triggerElementId#RuntimeElement_09|fallHeightOffsetM#8|cameraId#390102"
+  },
+  {
+    "activityId": 13920,
+    "id": 132,
+    "value": 0.0,
+    "value2": "baseFallDurationS#5|minFallDurationS#3|tapEnabled#1|tapFallProgressAdd#0.08"
+  },
+  {
+    "activityId": 13920,
+    "id": 133,
+    "value": 0.0,
+    "value2": "tapSpinSpeedAddDeg#180|maxSpinSpeedDeg#1080|spinDampingDegPerSec#240|tempForwardFlip#1"
+  },
+  {
+    "activityId": 13920,
+    "id": 134,
+    "value": 0.0,
+    "value2": "recoverToleranceM#8|recoverControlLockS#0.25|recoverSpeedMultiplier#0.75|failOnWater#0"
+  },
+  {
+    "activityId": 13920,
+    "id": 135,
+    "value": 0.0,
+    "value2": "waterDropEffectId#0|landingEffectId#0|allowTapAccel#1|rankProgressFromMain#1"
+  },
+  {
+    "activityId": 13920,
+    "id": 141,
+    "value": 0.0,
+    "value2": "triggerElementId#RuntimeElement_09|triggerToleranceM#8|entryBlendS#0.45|exitBlendS#0.35|cameraId#390103"
+  },
+  {
+    "activityId": 13920,
+    "id": 142,
+    "value": 0.0,
+    "value2": "laneCount#3|inheritLaneWidth#1|laneWidthOverride#4|depthOffsetM#-3|waterSurfaceEffect#0"
+  },
+  {
+    "activityId": 13920,
+    "id": 143,
+    "value": 0.0,
+    "value2": "speedMultiplier#0.5|steeringMultiplier#0.65|rankProgressFromMain#1|completeAtRouteEnd#1"
+  },
+  {
+    "activityId": 13920,
+    "id": 144,
+    "value": 0.0,
+    "value2": "curveMode#Smooth|arcStrength#0.5|allowMiddlePoints#1|preserveAuthoringCurve#1"
+  },
+  {
+    "activityId": 13920,
+    "id": 145,
+    "value": 0.0,
+    "value2": "allowElements#1|allowCoins#1|elementHeightFromRoute#1|renderUnderwaterRoad#1"
+  },
+  {
+    "activityId": 13920,
+    "id": 151,
+    "value": 0.0,
+    "value2": "triggerElementId#RuntimeElement_09|triggerToleranceM#8|entryBlendS#0.2|exitBlendS#0.2|cameraId#390104"
+  },
+  {
+    "activityId": 13920,
+    "id": 152,
+    "value": 0.0,
+    "value2": "laneCount#3|inheritLaneWidth#1|laneWidthOverride#4|preserveAuthoringCurve#1|renderSlopeRoad#1"
+  },
+  {
+    "activityId": 13920,
+    "id": 153,
+    "value": 0.0,
+    "value2": "baseSpeedMultiplier#1|slopeInfluence#0.8|maxDownhillGrade#0.35|maxUphillGrade#0.25|slopeSampleDistanceM#8"
+  },
+  {
+    "activityId": 13920,
+    "id": 154,
+    "value": 0.0,
+    "value2": "minSlopeSpeedMultiplier#0.85|maxSlopeSpeedMultiplier#1.25|rankProgressFromMain#1|completeAtRouteEnd#1"
+  },
+  {
+    "activityId": 13920,
+    "id": 155,
+    "value": 0.0,
+    "value2": "continuousSlideSpeed#18|slideAcceleration#60|slideDeceleration#45|edgeStopDamping#0.35"
+  },
+  {
+    "activityId": 13920,
+    "id": 156,
+    "value": 0.0,
+    "value2": "curveMode#Smooth|arcStrength#0.35|allowMiddlePoints#1|allowElements#1|allowCoins#1|snowSurfaceEffectId#0"
+  },
+  {
+    "activityId": 13920,
+    "id": 161,
+    "value": 0.0,
+    "value2": "triggerElementId#RuntimeElement_09|triggerToleranceM#8|cameraId#390106|faceCount#4"
+  },
+  {
+    "activityId": 13920,
+    "id": 162,
+    "value": 0.0,
+    "value2": "centerRadiusM#8|startY#0|endY#60|startAngleDeg#0|twistAngleDeg#0"
+  },
+  {
+    "activityId": 13920,
+    "id": 163,
+    "value": 0.0,
+    "value2": "baseSpeedMultiplier#0.75|climbAccelerationMultiplier#1.15|laneSwitchDurationS#0.45"
+  },
+  {
+    "activityId": 13920,
+    "id": 164,
+    "value": 0.0,
+    "value2": "rankProgressFromMain#1|completeAtRouteEnd#1|cameraFollowOutside#1|allowLaneWrap#1"
+  },
+  {
+    "activityId": 13920,
+    "id": 165,
+    "value": 0.0,
+    "value2": "allowElements#1|allowCoins#1|slotMode#FaceDistance|faceLabels#正面,右侧,背面,左侧"
+  },
+  {
+    "activityId": 13920,
+    "id": 166,
+    "value": 0.0,
+    "value2": "waterfallEffectId#0|sprayEffectId#0|runtimeWaterColumn#1|renderLaneGuide#1"
+  },
+  {
+    "activityId": 13920,
+    "id": 167,
+    "value": 3902.0,
+    "value2": ""
+  }
+]

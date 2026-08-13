@@ -245,6 +245,7 @@ function FightWorkChangeHero:_onEnterEntitySpineLoadFinish(unitSpine)
 			return
 		end
 
+		entity.IS_SUB_ENTITY_ENTER = true
 		self._work = FightWorkStartBornNormal.New(entity, false)
 
 		self._work:registerDoneListener(self._onEntityBornDone, self)

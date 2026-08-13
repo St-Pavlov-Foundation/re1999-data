@@ -6,9 +6,14 @@ local AbyssHeroGroupFightView = class("AbyssHeroGroupFightView", HeroGroupFightV
 local MaxMultiplication = 4
 
 function AbyssHeroGroupFightView:_editableInitView()
+	self._txtclothname = gohelper.findChildTextMesh(self.viewGO, "#go_container/btnContain/btnCloth/#txt_clothName")
+	self._txtclothnameen = gohelper.findChildTextMesh(self.viewGO, "#go_container/btnContain/btnCloth/#txt_clothName/#txt_clothNameEn")
 	MaxMultiplication = CommonConfig.instance:getConstNum(ConstEnum.MaxMultiplication) or MaxMultiplication
 	self._multiplication = 1
 	self._goherogroupcontain = gohelper.findChild(self.viewGO, "herogroupcontain")
+	self._imagebufficon = gohelper.findChildImage(self.viewGO, "herogroupcontain/hero/bg5/#img_icon")
+	self._goAddBuff = gohelper.findChild(self.viewGO, "herogroupcontain/hero/bg5/#go_jiahao")
+	self._btnbuff = gohelper.findChildButton(self.viewGO, "herogroupcontain/hero/bg5/#btn_click")
 	self._goBtnContain = gohelper.findChild(self.viewGO, "#go_container/btnContain")
 	self._btnContainAnim = self._goBtnContain:GetComponent(typeof(UnityEngine.Animator))
 
@@ -16,7 +21,7 @@ function AbyssHeroGroupFightView:_editableInitView()
 	self:addEventCb(ViewMgr.instance, ViewEvent.OnOpenFullView, self._onOpenFullView, self)
 	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, self._onCloseView, self)
 	self:addEventCb(HeroGroupController.instance, HeroGroupEvent.OnModifyHeroGroup, self._onModifyHeroGroup, self)
-	self:addEventCb(HeroGroupController.instance, HeroGroupEvent.OnModifyGroupName, self._initFightGroupDrop, self)
+	self:addEventCb(AbyssController.instance, AbyssEvent.OnUpdateStageInfo, self.refreshBuff, self)
 	self:addEventCb(HeroGroupController.instance, HeroGroupEvent.OnSnapshotSaveSucc, self._onModifySnapshot, self)
 	self:addEventCb(HeroGroupController.instance, HeroGroupEvent.OnClickHeroGroupItem, self._onClickHeroGroupItem, self)
 	self:addEventCb(FightController.instance, FightEvent.RespBeginFight, self._respBeginFight, self)
@@ -58,10 +63,41 @@ function AbyssHeroGroupFightView:_editableInitView()
 	end
 
 	gohelper.setActive(self._gomultispeed, false)
+	gohelper.setActive(self._dropherogroup, false)
+	gohelper.setActive(self._btnmodifyname, false)
+end
+
+function AbyssHeroGroupFightView:addEvents()
+	AbyssHeroGroupFightView.super.addEvents(self)
+
+	if self._btnbuff then
+		self._btnbuff:AddClickListener(self._btnbuffOnClick, self)
+	end
+end
+
+function AbyssHeroGroupFightView:removeEvents()
+	AbyssHeroGroupFightView.super.removeEvents(self)
+
+	if self._btnbuff then
+		self._btnbuff:RemoveClickListener()
+	end
+end
+
+function AbyssHeroGroupFightView:onOpen()
+	AbyssHeroGroupFightView.super.onOpen(self)
+	self:refreshBuff()
 end
 
 function AbyssHeroGroupFightView:_enterFight()
 	if HeroGroupModel.instance.episodeId then
+		local stageInfo = AbyssModel.instance:getCurStageMo()
+
+		if stageInfo.skillId == nil or stageInfo.skillId == 0 then
+			GameFacade.showToast(ToastEnum.V3a9_Abyss_Skill_Tips)
+
+			return
+		end
+
 		self._closeWithEnteringFight = true
 
 		local result = FightController.instance:setFightHeroSingleGroup()
@@ -106,41 +142,80 @@ function AbyssHeroGroupFightView:_onClickHeroGroupItem(id)
 		return
 	end
 
-	self.super._onClickHeroGroupItem(self, id)
+	AbyssHeroGroupFightView.super._onClickHeroGroupItem(self, id)
+end
+
+function AbyssHeroGroupFightView:_onModifyHeroGroup()
+	AbyssHeroGroupFightView.super._onModifyHeroGroup(self)
+	self:refreshBuff()
+end
+
+function AbyssHeroGroupFightView:isShowDropHeroGroup()
+	return false
 end
 
 function AbyssHeroGroupFightView:_initFightGroupDrop()
-	local heroGroupType = HeroGroupModel.instance:getPresetHeroGroupType()
+	return
+end
 
-	if heroGroupType then
-		self._dropherogroup.dropDown.enabled = false
+function AbyssHeroGroupFightView:refreshBuff()
+	if not self._imagebufficon then
+		return
+	end
+
+	local stageMo = AbyssModel.instance:getCurStageMo()
+
+	if not stageMo then
+		gohelper.setActive(self._imagebufficon.gameObject, false)
+		gohelper.setActive(self._goAddBuff.gameObject, true)
 
 		return
 	end
 
-	local episodeId = HeroGroupModel.instance.episodeId
-	local episdoeConfig = DungeonConfig.instance:getEpisodeCO(episodeId)
-	local episodeType = episdoeConfig.type
-	local list = {}
+	local skillId = stageMo.skillId or 0
+	local isEmpty = not skillId or skillId == 0
 
-	if episodeType == DungeonEnum.EpisodeType.Abyss then
-		table.insert(list, HeroGroupModel.instance:getCommonGroupName())
-	else
-		for i = 1, 4 do
-			list[i] = HeroGroupModel.instance:getCommonGroupName(i)
-		end
+	gohelper.setActive(self._goAddBuff.gameObject, isEmpty)
+	gohelper.setActive(self._imagebufficon.gameObject, not isEmpty)
+
+	if isEmpty then
+		return
 	end
 
-	local selectIndex = HeroGroupModel.instance:getHeroGroupSelectIndex()
+	local skillConfig = AbyssConfig.instance:getSkillConfig(skillId)
 
-	self._dropherogroup:ClearOptions()
-	self._dropherogroup:AddOptions(list)
-	self._dropherogroup:SetValue(selectIndex - 1)
-	gohelper.setActive(self._btnmodifyname, false)
+	if skillConfig and not string.nilorempty(skillConfig.icon) then
+		UISpriteSetMgr.instance:setAbyssSprite(self._imagebufficon, "jdsh_" .. skillConfig.icon)
+	end
+end
+
+function AbyssHeroGroupFightView:_btnbuffOnClick()
+	local stageId = AbyssModel.instance:getCurStageId()
+	local actId = AbyssModel.instance:getCurActId()
+	local stageInfo = AbyssModel.instance:getStageInfoMo(actId, stageId)
+
+	if not stageInfo then
+		return
+	end
+
+	AbyssController.instance:openBuffSelectView(stageId)
 end
 
 function AbyssHeroGroupFightView:_groupDropValueChanged(value)
-	self.super._groupDropValueChanged(self, value)
+	local heroGroupType = HeroGroupModel.instance:getPresetHeroGroupType()
+
+	if heroGroupType ~= HeroGroupPresetEnum.HeroGroupType.Abyss then
+		return
+	end
+
+	local selectIndex = value + 1
+	local stageId = AbyssModel.instance:getCurStageId()
+
+	if not stageId then
+		return
+	end
+
+	AbyssHeroGroupFightView.super._groupDropValueChanged(self, value)
 	gohelper.setActive(self._btnmodifyname, false)
 end
 

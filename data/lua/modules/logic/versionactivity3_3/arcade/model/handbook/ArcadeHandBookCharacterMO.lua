@@ -50,7 +50,7 @@ function ArcadeHandBookCharacterMO:getBigIconTrans()
 end
 
 function ArcadeHandBookCharacterMO:getLockTip()
-	local lockTip = ArcadeConfig:getCharacterLockTip(self.id)
+	local lockTip = ArcadeConfig.instance:getCharacterLockTip(self.id)
 
 	if string.nilorempty(lockTip) then
 		lockTip = ArcadeHandBookCharacterMO.super.getLockTip()

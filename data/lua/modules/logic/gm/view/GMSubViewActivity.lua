@@ -14,15 +14,15 @@ function GMSubViewActivity:initViewContent()
 	end
 
 	GMSubViewBase.initViewContent(self)
-	self:addLabel("L0", "轶事")
+	self:addLabel("L-1", "轶事")
 
-	self._rolestoryId = self:addInputText("L0", nil, "故事id")
+	self._rolestoryId = self:addInputText("L-1", nil, "故事id")
 
-	self:addButton("L0", "重置", self._resetRoleStory, self)
+	self:addButton("L-1", "重置", self._resetRoleStory, self)
 
-	self._rolestoryFlagKey = self:addInputText("L0", nil, "条件参数")
+	self._rolestoryFlagKey = self:addInputText("L-1", nil, "条件参数")
 
-	self:addButton("L0", "查询", self._printRoleStoryFlagKey, self)
+	self:addButton("L-1", "查询", self._printRoleStoryFlagKey, self)
 	self:addTitleSplitLine("活动状态")
 
 	self._dropActivity = self:addDropDown("L1", "活动ID：", nil, self._onActivityDropValueChange, self)
@@ -35,9 +35,25 @@ function GMSubViewActivity:initViewContent()
 		w = 150
 	})
 	self:addButton("L2", "重置解锁动画", self._onClickResetActivityUnlockAim, self)
+	self:addLabel("L2", "3.9 活动")
+	self:addButton("L2", "赫多涅角色活动GM", self._onClickHedoneGM, self)
 	self:addLabel("L3", "2.1外围玩法")
 	self:addButton("L3", "检查配置表是否正确", self._onClickCheckActivity165Config, self)
 	self:addButton("L3", "打印可能通往的结局步骤", self._onClickPrintActivity165CanRound, self)
+
+	local buffList = {}
+
+	for i, v in ipairs(lua_racing_buff.configList) do
+		table.insert(buffList, tostring(v.id))
+	end
+
+	self:addLabel("L-0", "3.9赛车")
+
+	self._racingCarDrop = self:addDropDown("L0", "赛车buff", buffList, self._onRacingCarBuffChange, self)
+
+	self._racingCarDrop:SetValue(V3a9RacingCarModel.instance._gmbuffIndex or 0)
+	self:addButton("L0", "执行buff", self._useRacingCarBuff, self)
+	self:addButton("L0", "移除所有buff", self._removeRacingCarBuff, self)
 	self:addLabel("L4", "2.2玩法")
 
 	self._txtLevelID = self:addInputText("L4", "222101", "输入关卡ID")
@@ -88,8 +104,30 @@ function GMSubViewActivity:initViewContent()
 	self:addButton("L9", "虚构集卡牌ID开关", self._setXugoujiDebugMode, self)
 	self:_initActivityCenter()
 	self:initActivityDrop()
+	self:addButton("L12", "重置活动版本页入场kv视频", self._resetVersionActivityKVOpenVideo, self)
 
 	self._inited = true
+end
+
+function GMSubViewActivity:_useRacingCarBuff()
+	local index = V3a9RacingCarModel.instance._gmbuffIndex or 0
+
+	index = index + 1
+
+	local config = lua_racing_buff.configList[index]
+	local player = V3a9RacingCarModel.instance:getPlayerVehicleController()
+
+	player.buffManager:addBuffById(config.id)
+end
+
+function GMSubViewActivity:_removeRacingCarBuff()
+	local player = V3a9RacingCarModel.instance:getPlayerVehicleController()
+
+	player.buffManager:clearAll()
+end
+
+function GMSubViewActivity:_onRacingCarBuffChange(index)
+	V3a9RacingCarModel.instance._gmbuffIndex = index
 end
 
 function GMSubViewActivity:_onAct178DropChange(index)
@@ -115,6 +153,7 @@ function GMSubViewActivity:_resetRoleStory()
 	local rolestoryId = tonumber(self._rolestoryId:GetText())
 
 	NecrologistStoryRpc.instance:_sendUpdateNecrologistStoryRequest(tonumber(rolestoryId))
+	NecrologistStoryPlayerPrefs.instance:deletePrefsData()
 	self:closeThis()
 end
 
@@ -316,6 +355,20 @@ function GMSubViewActivity:_douQuQuTestForceIndexRound()
 	self:closeThis()
 end
 
+function GMSubViewActivity:_onClickHedoneGM()
+	local gameId = HedoneGameModel.instance:getGameId()
+
+	if not gameId then
+		GameFacade.showToastString("未进入赫多涅角色活动游戏")
+
+		return
+	end
+
+	HedoneGameController.instance:stopGame(HedoneGameEnum.StopSource.GMPanel)
+	gohelper.setActive(self._subViewGo, false)
+	self.viewContainer.gmSubViewHedone:showSubView()
+end
+
 function GMSubViewActivity:_setXugoujiDebugMode()
 	local isDebugMode = XugoujiController.instance:isDebugMode()
 
@@ -377,6 +430,19 @@ function GMSubViewActivity.copyConfig(co)
 	end
 
 	return newCo
+end
+
+function GMSubViewActivity:_onToggleValueChanged(toggleId, isOn)
+	GMSubViewActivity.super._onToggleValueChanged(self, toggleId, isOn)
+	self.viewContainer.gmSubViewHedone:closeSubView()
+end
+
+function GMSubViewActivity:_resetVersionActivityKVOpenVideo()
+	local userId = PlayerModel.instance:getPlayinfo().userId
+	local enum = VersionActivityFixedHelper.getVersionActivityEnum()
+	local key = string.format("%s_%s_%s", userId, PlayerPrefsKey.FirstLoginTodayRed, enum.EnterVideoDayKey)
+
+	PlayerPrefsHelper.setString(key, "")
 end
 
 return GMSubViewActivity

@@ -13,6 +13,11 @@ function FightNecessaryAssetLoaderMgr:registWorkLoadAsset()
 
 	flow:registWork(FightWorkLoadAsset, "ui/viewres/fight/fightview.prefab", self.onAssetLoaded, self)
 	flow:registWork(FightWorkLoadAsset, "ui/viewres/fight/fightskillselectview.prefab", self.onAssetLoaded, self)
+	flow:registWork(FightWorkLoadAsset, FightPreloadOthersWork.ui_mesh, self.onAssetLoaded, self)
+	flow:registWork(FightWorkLoadAsset, FightPreloadOthersWork.ui_effectsmat, self.onAssetLoaded, self)
+	flow:registWork(FightWorkLoadAsset, ResUrl.getUIEffect(FightPreloadViewWork.ui_chupai_02), self.onAssetLoaded, self)
+	flow:registWork(FightWorkLoadAsset, ResUrl.getUIEffect(FightPreloadViewWork.ui_chupai_03), self.onAssetLoaded, self)
+	flow:registWork(FightWorkLoadAsset, ResUrl.getUIEffect(FightPreloadViewWork.ui_dazhaoka), self.onAssetLoaded, self)
 
 	return flow
 end

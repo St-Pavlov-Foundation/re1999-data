@@ -125,10 +125,6 @@ function StoreLinkGiftGoodsView:onDestroyView()
 	self._simagecurrency3:UnLoadImage()
 end
 
-function StoreLinkGiftGoodsView:_payFinished()
-	self:closeThis()
-end
-
 function StoreLinkGiftGoodsView:_updateNormal()
 	local isLevelOpen = self._mo:isLevelOpen()
 	local isCanBuy = self._mo.maxBuyCount > self._mo.buyCount

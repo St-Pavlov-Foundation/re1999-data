@@ -16,7 +16,7 @@ end
 
 function OdysseyTaskModel:reInit()
 	self.tempTaskModel:clear()
-	OdysseyTaskModel.super.clear(self)
+	self:clear()
 
 	self._itemStartAnimTime = nil
 	self.reddotShowMap = {}

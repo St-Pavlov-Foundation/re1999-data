@@ -38,7 +38,17 @@ function StoreSkinDefaultShowView:onOpen()
 	self.viewParam.contentBg.transform:SetParent(self._goview.transform, false)
 end
 
+function StoreSkinDefaultShowView:onOpenFinish()
+	local showTime = self.viewParam and self.viewParam.viewShowTime
+
+	if showTime and showTime > 0 then
+		TaskDispatcher.runDelay(self.closeThis, self, showTime)
+	end
+end
+
 function StoreSkinDefaultShowView:onClose()
+	TaskDispatcher.cancelTask(self.closeThis, self)
+
 	if self.viewParam.callback then
 		self.viewParam.callback(self.viewParam.callbackObj, self.viewParam)
 

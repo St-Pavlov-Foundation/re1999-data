@@ -139,56 +139,56 @@ function BossRushConfig:getScoreStr(num, symbol)
 	return str
 end
 
-function BossRushConfig:getBossRushMainItemBossSprite(stage)
-	local resName = self:getStageCO(stage).bossRushMainItemBossSprite
+function BossRushConfig:getBossRushMainItemBossSprite(stage, activityId)
+	local resName = self:getStageCO(stage, activityId).bossRushMainItemBossSprite
 
 	return ResUrl.getV1a4BossRushIcon(resName)
 end
 
-function BossRushConfig:getResultViewFullBgSImage(stage)
-	local resName = self:getStageCO(stage).resultViewFullBgSImage
+function BossRushConfig:getResultViewFullBgSImage(stage, activityId)
+	local resName = self:getStageCO(stage, activityId).resultViewFullBgSImage
 
 	return ResUrl.getV1a4BossRushSinglebg(resName)
 end
 
-function BossRushConfig:getResultViewNameSImage(stage)
-	local resName = self:getStageCO(stage).resultViewNameSImage
+function BossRushConfig:getResultViewNameSImage(stage, activityId)
+	local resName = self:getStageCO(stage, activityId).resultViewNameSImage
 
 	return ResUrl.getV1a4BossRushLangPath(resName)
 end
 
-function BossRushConfig:getBossDetailTitlePath(stage)
-	local resName = self:getStageCO(stage).resultViewNameSImage
+function BossRushConfig:getBossDetailTitlePath(stage, activityId)
+	local resName = self:getStageCO(stage, activityId).resultViewNameSImage
 
 	return ResUrl.getBossRushDetailPath(resName)
 end
 
-function BossRushConfig:getBossDetailFullPath(stage)
-	local resName = self:getStageCO(stage).bossRushLevelDetailFullBgSimage
+function BossRushConfig:getBossDetailFullPath(stage, activityId)
+	local resName = self:getStageCO(stage, activityId).bossRushLevelDetailFullBgSimage
 
 	return ResUrl.getBossRushDetailPath(resName)
 end
 
-function BossRushConfig:getBossRushLevelDetailFullBgSimage(stage)
-	local resName = self:getStageCO(stage).bossRushLevelDetailFullBgSimage
+function BossRushConfig:getBossRushLevelDetailFullBgSimage(stage, activityId)
+	local resName = self:getStageCO(stage, activityId).bossRushLevelDetailFullBgSimage
 
 	return ResUrl.getV1a4BossRushSinglebg(resName)
 end
 
-function BossRushConfig:getMonsterSkinIdList(stage)
-	local str = self:getStageCO(stage).skinIds
+function BossRushConfig:getMonsterSkinIdList(stage, activityId)
+	local str = self:getStageCO(stage, activityId).skinIds
 
 	return string.splitToNumber(str, "#")
 end
 
-function BossRushConfig:getMonsterSkinScaleList(stage)
-	local str = self:getStageCO(stage).skinScales
+function BossRushConfig:getMonsterSkinScaleList(stage, activityId)
+	local str = self:getStageCO(stage, activityId).skinScales
 
 	return string.splitToNumber(str, "#")
 end
 
-function BossRushConfig:getMonsterSkinOffsetXYs(stage)
-	local str = self:getStageCO(stage).skinOffsetXYs
+function BossRushConfig:getMonsterSkinOffsetXYs(stage, activityId)
+	local str = self:getStageCO(stage, activityId).skinOffsetXYs
 
 	return GameUtil.splitString2(str, true)
 end
@@ -317,9 +317,9 @@ function BossRushConfig:getBgmViewNames()
 	return self._bgmViews
 end
 
-function BossRushConfig:getMonsterResPathList(stage)
+function BossRushConfig:getMonsterResPathList(stage, activityId)
 	local res = {}
-	local skinIdList = BossRushConfig.instance:getMonsterSkinIdList(stage)
+	local skinIdList = BossRushConfig.instance:getMonsterSkinIdList(stage, activityId)
 
 	for _, skinId in ipairs(skinIdList) do
 		local skinCO = FightConfig.instance:getSkinCO(skinId)
@@ -369,8 +369,8 @@ function BossRushConfig:getAssassinStyleZongmaoCo(id)
 	return lua_assassin_style_zongmao.configDict[id]
 end
 
-function BossRushConfig:getV3a2BossTypeByStage(stage)
-	local co = self:getStageCO(stage)
+function BossRushConfig:getV3a2BossTypeByStage(stage, activityId)
+	local co = self:getStageCO(stage, activityId)
 
 	if co then
 		return co.type

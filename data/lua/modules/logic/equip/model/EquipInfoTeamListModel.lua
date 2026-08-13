@@ -5,6 +5,7 @@ module("modules.logic.equip.model.EquipInfoTeamListModel", package.seeall)
 local EquipInfoTeamListModel = class("EquipInfoTeamListModel", EquipInfoBaseListModel)
 
 function EquipInfoTeamListModel:onOpen(viewParam, filterMo)
+	self.viewParam = viewParam
 	self.heroMo = viewParam.heroMo
 
 	self:initTeamEquipList(viewParam, filterMo)
@@ -82,6 +83,10 @@ function EquipInfoTeamListModel:initInTeamEquipUidToHero()
 	self.equipUidToHeroMo = {}
 
 	local heroUidList = self.curGroupMO.heroList
+
+	if self.viewParam.fromView == EquipEnum.FromViewEnum.V3a9_BossRush_HeroGroupListView and self.viewParam.stage then
+		heroUidList = V3a9_BossRushModel.instance:getHeroUIds(self.viewParam.stage)
+	end
 
 	for index, heroGroupEquipMO in pairs(self.curGroupMO.equips) do
 		if not self.maxHeroNum or index + 1 <= self.maxHeroNum then

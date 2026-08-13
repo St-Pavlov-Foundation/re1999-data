@@ -9,6 +9,7 @@ function AbyssHeroGroupListView:addEvents()
 	self:addEventCb(AbyssController.instance, AbyssEvent.OnResetStage, self.onResetStage, self)
 	self:addEventCb(HeroGroupController.instance, HeroGroupEvent.OnModifyGroupSelectIndex, self._checkRestrictHero, self)
 	self:addEventCb(HeroGroupController.instance, HeroGroupEvent.OnModifyHeroGroup, self._checkRestrictHero, self)
+	self:addEventCb(HeroGroupController.instance, HeroGroupEvent.OnReadPreset, self.onReadPreset, self)
 end
 
 function AbyssHeroGroupListView:removeEvents()
@@ -16,6 +17,7 @@ function AbyssHeroGroupListView:removeEvents()
 	self:removeEventCb(AbyssController.instance, AbyssEvent.OnResetStage, self.onResetStage, self)
 	self:removeEventCb(HeroGroupController.instance, HeroGroupEvent.OnModifyGroupSelectIndex, self._checkRestrictHero, self)
 	self:removeEventCb(HeroGroupController.instance, HeroGroupEvent.OnModifyHeroGroup, self._checkRestrictHero, self)
+	self:removeEventCb(HeroGroupController.instance, HeroGroupEvent.OnReadPreset, self.onReadPreset, self)
 end
 
 function AbyssHeroGroupListView:_getHeroItemCls()
@@ -30,6 +32,13 @@ end
 
 function AbyssHeroGroupListView:onResetStage()
 	return
+end
+
+function AbyssHeroGroupListView:onReadPreset()
+	HeroSingleGroupModel.instance:setSingleGroup(HeroGroupModel.instance:getCurGroupMO(), true)
+	self:checkReplaceHeroList()
+	self:_updateHeroList()
+	self:_checkRestrictHero()
 end
 
 function AbyssHeroGroupListView:checkReplaceHeroList()
@@ -95,13 +104,32 @@ function AbyssHeroGroupListView:checkReplaceHeroList()
 
 		groupMO:replaceTowerHeroList(heroList)
 		HeroSingleGroupModel.instance:setSingleGroup(groupMO, #heroList > 0)
+	else
+		local groupMO = HeroGroupModel.instance:getCurGroupMO()
+		local actInfoMo = AbyssModel.instance:getCurInfoMo()
+		local removeList = {}
+
+		for _, heroUid in ipairs(groupMO.heroList) do
+			local heroMo = HeroModel.instance:getById(heroUid)
+
+			if heroMo and actInfoMo:isHeroUsed(heroMo.heroId, infoMo.lastUpdateTime) then
+				table.insert(removeList, heroUid)
+			end
+		end
+
+		if removeList and next(removeList) then
+			for i, id in ipairs(removeList) do
+				HeroSingleGroupModel.instance:remove(id)
+			end
+		end
 	end
 end
 
 function AbyssHeroGroupListView:_checkRestrictHero()
 	local curStageMo = AbyssModel.instance:getCurStageMo()
+	local haveChallenge = curStageMo:isChallenged()
 
-	if curStageMo:isChallenged() then
+	if haveChallenge then
 		return
 	end
 

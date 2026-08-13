@@ -34,7 +34,7 @@ function TravelGoGainRewardWork:onStart()
 		self.flow:addWork(TravelGoDispatchEventWork.New(TravelGoEvent.OnPlayerStopMove))
 		self.flow:addWork(TravelGoDispatchEventWork.New(TravelGoEvent.OnPlayGainRewardAnimation))
 
-		local speedScale = TravelGoConfig:getConsValue(TravelGoModel.instance.activityId, TravelGoConst.ConstId.NormalSpeed, true) or 1
+		local speedScale = TravelGoConfig.instance:getConsValue(TravelGoModel.instance.activityId, TravelGoConst.ConstId.NormalSpeed, true) or 1
 
 		self.flow:addWork(TimerWork.New(TravelGoConst.GainRewardAnimTime / speedScale))
 		self.flow:addWork(TravelGoDispatchEventWork.New(TravelGoEvent.OnPlayerStartMove))

@@ -157,5 +157,7 @@ ConstEnum.SP02_LinkGiftDesc = 38501
 ConstEnum.SP02_LinkGiftTitle = 38502
 ConstEnum.ForceNeedKrJpActivityId = 38504
 ConstEnum.SP_StoryIdPrefix = 38507
+ConstEnum.V3a9_BDuckLinkageDesc = 39001
+ConstEnum.V3a9_BDuckLinkageTitle = 39002
 
 return ConstEnum

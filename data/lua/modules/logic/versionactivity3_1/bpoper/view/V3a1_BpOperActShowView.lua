@@ -86,11 +86,21 @@ end
 function V3a1_BpOperActShowView:_addEvents()
 	self:addEventCb(BpController.instance, BpEvent.OnLevelUp, self._onBpLevelUp, self)
 	self:addEventCb(TaskController.instance, TaskEvent.UpdateTaskList, self._updateTask, self)
+	self:addEventCb(ActivityController.instance, ActivityEvent.RefreshActivitySelectState, self._onCategorySelected, self)
 end
 
 function V3a1_BpOperActShowView:_removeEvents()
 	self:removeEventCb(BpController.instance, BpEvent.OnLevelUp, self._onBpLevelUp, self)
 	self:removeEventCb(TaskController.instance, TaskEvent.UpdateTaskList, self._updateTask, self)
+	self:removeEventCb(ActivityController.instance, ActivityEvent.RefreshActivitySelectState, self._onCategorySelected, self)
+end
+
+function V3a1_BpOperActShowView:_onCategorySelected()
+	local actId = ActivityModel.instance:getCurTargetActivityCategoryId()
+
+	if self._actId ~= actId then
+		self._isOpenPlayed = false
+	end
 end
 
 function V3a1_BpOperActShowView:_onBpLevelUp(lv)
@@ -110,7 +120,6 @@ function V3a1_BpOperActShowView:onOpen()
 	local parentGO = self.viewParam.parent
 
 	gohelper.addChild(parentGO, self.viewGO)
-	AudioMgr.instance:trigger(AudioEnum3_1.BpOperAct.play_ui_bpoper_turn_card)
 
 	self._actId = self.viewParam.actId
 	self._config = ActivityConfig.instance:getActivityCo(self._actId)
@@ -118,7 +127,14 @@ function V3a1_BpOperActShowView:onOpen()
 
 	self:_refreshRemainTime()
 	gohelper.setActive(self._gomax, false)
-	self:_refresh(true)
+	self:_refresh(not self._isOpenPlayed)
+
+	if not self._isOpenPlayed then
+		AudioMgr.instance:trigger(AudioEnum3_1.BpOperAct.play_ui_bpoper_turn_card)
+
+		self._isOpenPlayed = true
+	end
+
 	TaskDispatcher.runRepeat(self._refreshRemainTime, self, TimeUtil.OneMinuteSecond)
 end
 
@@ -191,7 +207,7 @@ function V3a1_BpOperActShowView:_refreshTask(withAnim)
 	local taskList = V3a1_BpOperActModel.instance:getAllShowTask(self._actId)
 
 	for _, taskItem in pairs(self._taskItems) do
-		taskItem:show(false)
+		taskItem:show(false, withAnim)
 	end
 
 	for index, taskId in ipairs(taskList) do

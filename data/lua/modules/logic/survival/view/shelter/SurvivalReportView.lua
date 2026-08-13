@@ -257,7 +257,7 @@ function SurvivalReportView:_initTask()
 
 			local function appendScoreDesc(value, langKey)
 				if value > 0 then
-					scoreDesc = scoreDesc .. GameUtil.getSubPlaceholderLuaLangOneParam(luaLang(langKey), value) .. ","
+					scoreDesc = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("survival_report_score"), scoreDesc, GameUtil.getSubPlaceholderLuaLangOneParam(luaLang(langKey), value))
 				end
 			end
 

@@ -510,6 +510,24 @@ function GuideActionSetNextStepGOPath:getAbyssCanClickStagePath()
 	end
 end
 
+function GuideActionSetNextStepGOPath:getAbyssCanResetStagePath()
+	local actId = AbyssModel.instance:getCurActId()
+
+	if not actId or not ActivityModel.instance:isActOnLine(actId) then
+		return
+	end
+
+	local info = AbyssModel.instance:getInfoMo(actId)
+
+	if info.stageInfoList and next(info.stageInfoList) then
+		for _, stageInfo in ipairs(info.stageInfoList) do
+			if stageInfo:isChallenged() and stageInfo.star > 0 then
+				return string.format("UIRoot/POPUP_TOP/AbyssStageDetailsView/Left/#scroll_herogroup/Viewport/Content/%s/#btn_reset", stageInfo.stageId)
+			end
+		end
+	end
+end
+
 function GuideActionSetNextStepGOPath:getV3a8DianJiShiMapAreaTagPath()
 	local lastUpdateTagPath = DianJiShiGameModel.instance:getLastUpdateAreaTagPath()
 

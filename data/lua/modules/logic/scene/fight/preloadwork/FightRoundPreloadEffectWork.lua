@@ -34,34 +34,30 @@ function FightRoundPreloadEffectWork:onStart(context)
 	local effectPath2SideDict = {}
 
 	for timelineUrl, tlAssetItem in pairs(self.context.timelineDict) do
-		local jsonStr = ZProj.SkillTimelineAssetHelper.GeAssetJson(tlAssetItem, timelineUrl)
+		local jsonArr = FightTLHelper.getTLJsonData(tlAssetItem, timelineUrl)
 
-		if not string.nilorempty(jsonStr) then
-			local jsonArr = cjson.decode(jsonStr)
+		for i = 1, #jsonArr, 2 do
+			local tlType = tonumber(jsonArr[i])
+			local paramList = jsonArr[i + 1]
+			local effectName = paramList[1]
 
-			for i = 1, #jsonArr, 2 do
-				local tlType = tonumber(jsonArr[i])
-				local paramList = jsonArr[i + 1]
-				local effectName = paramList[1]
+			if TimelineEffectType[tlType] and not string.nilorempty(effectName) then
+				local effectUrl = FightHelper.getEffectUrlWithLod(effectName)
+				local timelineSide = self.context.timelineUrlDict[timelineUrl]
+				local oldSide = effectPath2SideDict[effectUrl]
+				local needSide = timelineSide
 
-				if TimelineEffectType[tlType] and not string.nilorempty(effectName) then
-					local effectUrl = FightHelper.getEffectUrlWithLod(effectName)
-					local timelineSide = self.context.timelineUrlDict[timelineUrl]
-					local oldSide = effectPath2SideDict[effectUrl]
-					local needSide = timelineSide
-
-					if TimelineEventOppositeSide[tlType] then
-						needSide = timelineSide == FightEnum.EntitySide.MySide and FightEnum.EntitySide.EnemySide or FightEnum.EntitySide.MySide
-					end
-
-					local newSide = needSide
-
-					if oldSide and oldSide ~= needSide then
-						newSide = FightEnum.EntitySide.BothSide
-					end
-
-					effectPath2SideDict[effectUrl] = newSide
+				if TimelineEventOppositeSide[tlType] then
+					needSide = timelineSide == FightEnum.EntitySide.MySide and FightEnum.EntitySide.EnemySide or FightEnum.EntitySide.MySide
 				end
+
+				local newSide = needSide
+
+				if oldSide and oldSide ~= needSide then
+					newSide = FightEnum.EntitySide.BothSide
+				end
+
+				effectPath2SideDict[effectUrl] = newSide
 			end
 		end
 	end

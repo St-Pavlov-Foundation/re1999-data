@@ -51,10 +51,12 @@ for k, v in pairs(PartyGameEnum.GameId) do
 	PartyGameEnum.GameIdToName[v] = k
 end
 
+PartyGameEnum.DefaultRoleLightFactor = 1
+PartyGameEnum.RoleLightFactor = {}
+PartyGameEnum.LobbyRoleLightFactor = PartyGameEnum.DefaultRoleLightFactor
 PartyGameEnum.PartyGameConfigData = PartyGame.Runtime.GameLogic.PartyGameConfigData
 PartyGameEnum.VirtualButtonId = PartyGame.Runtime.GameLogic.Component.VirtualButtonId
 PartyGameEnum.CommandUtil = PartyGame.Runtime.Utils.CommandUtil
-PartyGameEnum.PartyGameConfigData = PartyGame.Runtime.GameLogic.PartyGameConfigData
 PartyGameEnum.AllResultVsViewWaitDuration = 5
 PartyGameEnum.PromotionViewWaitDuration = 5
 PartyGameEnum.SelectCardRewardWaitTime = 10

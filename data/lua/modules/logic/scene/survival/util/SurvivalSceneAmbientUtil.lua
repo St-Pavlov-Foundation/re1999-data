@@ -34,7 +34,7 @@ function SurvivalSceneAmbientUtil:_onLightLoaded(lightGo, isUseShelterAmbient)
 	self._matFogParticle = self._sceneAmbient and self._sceneAmbient.matFogParticle
 
 	if isUseShelterAmbient == nil then
-		isUseShelterAmbient = SurvivalMapHelper:isUseShelterAmbient()
+		isUseShelterAmbient = SurvivalMapHelper.instance:isUseShelterAmbient()
 	end
 
 	self:initData(isUseShelterAmbient)

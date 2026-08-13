@@ -21,6 +21,9 @@ function HeroGroupRecommendGroupItem:init(go)
 	self._gobossContainer = gohelper.findChild(go, "#go_info/#go_bossitem/go_container")
 	self._simageBossIcon = gohelper.findChildSingleImage(go, "#go_info/#go_bossitem/go_container/simage_bossicon")
 	self._imageBossCareer = gohelper.findChildImage(go, "#go_info/#go_bossitem/go_container/image_career")
+	self._imageAbyssSkill = gohelper.findChildImage(go, "#go_info/#go_abyssSkill/#image_abyssSkill")
+	self._goAbyssSkill = gohelper.findChild(go, "#go_info/#go_abyssSkill")
+	self._goAbyssSkillEmpty = gohelper.findChild(go, "#go_info/#go_abyssSkill/#go_empty")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -37,135 +40,9 @@ end
 
 function HeroGroupRecommendGroupItem:_btnuseOnClick()
 	local curEpisodeId = HeroGroupRecommendGroupListModel.instance:getCurEpisodeId()
+	local hideMessageBox = not HeroGroupModel.instance:getAfterUpdateRecommendState()
 
-	HeroGroupController.instance:useRecommendGroup(self._mo, curEpisodeId, curEpisodeId == nil)
-
-	if self._mo then
-		return
-	end
-
-	if HeroGroupModel.instance:getAfterUpdateRecommendState() then
-		local enterEpisodeParam = {}
-
-		enterEpisodeParam.recommendMo = self._mo
-
-		HeroGroupModel.instance:setTempBattleRecommendParam(enterEpisodeParam)
-		HeroGroupModel.instance:setAfterUpdateRecommendState(false)
-		HeroGroupController.instance:dispatchEvent(HeroGroupEvent.OnUseRecommendGroupAfterEnterEpisode)
-
-		return
-	else
-		HeroGroupController.instance:dispatchEvent(HeroGroupEvent.OnUseRecommendGroup)
-	end
-
-	local heroDataList = self._mo.heroDataList
-	local uidList = {}
-	local battleId = HeroGroupModel.instance.battleId
-	local battleConfig = lua_battle.configDict[battleId]
-	local configAids = {}
-
-	if not string.nilorempty(battleConfig.aid) then
-		configAids = string.splitToNumber(battleConfig.aid, "#")
-	end
-
-	local configTrial = {}
-	local curBattleTrialHeros = HeroGroupHandler.getTrialHeros(HeroGroupModel.instance.episodeId)
-
-	if not string.nilorempty(curBattleTrialHeros) then
-		configTrial = GameUtil.splitString2(curBattleTrialHeros, true)
-	end
-
-	local allUseTrialHeros = {}
-
-	for _, v in pairs(configTrial) do
-		if v[3] then
-			local co = lua_hero_trial.configDict[v[1]][v[2]]
-
-			allUseTrialHeros[co.heroId] = true
-		end
-	end
-
-	for i = 1, #heroDataList do
-		local heroId = heroDataList[i].heroId
-
-		if heroId and heroId > 0 then
-			local heroMO = HeroModel.instance:getByHeroId(heroId)
-
-			if HeroGroupModel.instance:isAdventureOrWeekWalk() then
-				local cd = WeekWalkModel.instance:getCurMapHeroCd(heroId)
-
-				if cd > 0 then
-					GameFacade.showToast(ToastEnum.HeroGroupEdit)
-
-					heroMO = nil
-				end
-			elseif heroMO and HeroGroupModel.instance:isRestrict(heroMO.uid) then
-				local battleCo = HeroGroupModel.instance:getCurrentBattleConfig()
-				local restrictReason = battleCo and battleCo.restrictReason
-
-				if not string.nilorempty(restrictReason) then
-					ToastController.instance:showToastWithString(restrictReason)
-				end
-
-				heroMO = nil
-			end
-
-			if allUseTrialHeros[heroId] then
-				heroMO = nil
-			end
-
-			if heroMO then
-				table.insert(uidList, heroMO.uid)
-			else
-				table.insert(uidList, "0")
-			end
-		else
-			table.insert(uidList, "0")
-		end
-	end
-
-	local heroGroupMO = HeroGroupModel.instance:getCurGroupMO()
-	local clothId = 0
-
-	if self._mo.cloth and self._mo.cloth ~= 0 and PlayerClothModel.instance:canUse(self._mo.cloth) then
-		clothId = self._mo.cloth
-	elseif OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.LeadRoleSkill) then
-		local list = PlayerClothModel.instance:getList()
-
-		for _, clothMO in ipairs(list) do
-			if PlayerClothModel.instance:hasCloth(clothMO.id) then
-				clothId = clothMO.id
-
-				break
-			end
-		end
-	end
-
-	local info = {
-		groupId = heroGroupMO.id,
-		name = heroGroupMO.name,
-		clothId = clothId,
-		heroList = uidList
-	}
-
-	if TowerModel.instance:isInTowerBattle() then
-		self:onTowerUse(info, heroGroupMO, configAids, battleConfig.roleNum, battleConfig.playerMax, true, configTrial)
-
-		return
-	end
-
-	if AbyssModel.instance:isInAbyssBattle() then
-		self:onAbyssUse(info, heroGroupMO, configAids, battleConfig.roleNum, battleConfig.playerMax, true, configTrial)
-
-		return
-	end
-
-	heroGroupMO:initWithBattle(info, configAids, battleConfig.roleNum, battleConfig.playerMax, true, configTrial)
-	HeroSingleGroupModel.instance:setSingleGroup(heroGroupMO, true)
-	HeroGroupController.instance:dispatchEvent(HeroGroupEvent.OnModifyHeroGroup)
-	HeroGroupModel.instance:saveCurGroupData()
-	ViewMgr.instance:closeView(ViewName.HeroGroupRecommendView)
-	HeroGroupController.instance:dispatchEvent(HeroGroupEvent.OnUseRecommendGroupFinish)
+	HeroGroupController.instance:useRecommendGroup(self._mo, curEpisodeId, hideMessageBox)
 end
 
 function HeroGroupRecommendGroupItem:onTowerUse(info, heroGroupMO, ...)
@@ -278,6 +155,7 @@ function HeroGroupRecommendGroupItem:onUpdateMO(mo)
 	self._txtnum.text = GameUtil.getEnglishOrderNumber(self._index)
 
 	self:refreshTowerBossUI()
+	self:refreshAbyssUI()
 end
 
 function HeroGroupRecommendGroupItem:_refreshHeroItem()
@@ -358,6 +236,41 @@ function HeroGroupRecommendGroupItem:refreshTowerBossUI()
 		local skinConfig = FightConfig.instance:getSkinCO(bossConfig.skinId)
 
 		self._simageBossIcon:LoadImage(ResUrl.monsterHeadIcon(skinConfig and skinConfig.headIcon))
+	end
+end
+
+function HeroGroupRecommendGroupItem:refreshAbyssUI()
+	local curEpisodeId = HeroGroupRecommendGroupListModel.instance:getCurEpisodeId()
+	local episodeCO = curEpisodeId and lua_episode.configDict[curEpisodeId]
+	local episodeType = episodeCO and episodeCO.type
+	local isAbyss = episodeType == DungeonEnum.EpisodeType.Abyss or AbyssModel.instance:isInAbyssBattle()
+	local skillId, stageId
+	local actId = AbyssConfig.instance:getActivityId()
+
+	if curEpisodeId ~= nil then
+		stageId = AbyssConfig.instance:getStageIdByEpisodeId(actId, curEpisodeId)
+	else
+		stageId = AbyssModel.instance:getCurStageId()
+	end
+
+	if not string.nilorempty(self._mo.extString) then
+		local skillIds = string.splitToNumber(self._mo.extString, "#")
+
+		skillId = AbyssHelper.getValidSkill(stageId, skillIds[1])
+	end
+
+	local haveSkill = skillId ~= nil and skillId ~= 0
+
+	gohelper.setActive(self._goAbyssSkill, isAbyss)
+	gohelper.setActive(self._imageAbyssSkill.gameObject, haveSkill)
+	gohelper.setActive(self._goAbyssSkillEmpty, not haveSkill)
+
+	if haveSkill then
+		local skillConfig = AbyssConfig.instance:getSkillConfig(skillId)
+
+		if skillConfig and not string.nilorempty(skillConfig.icon) then
+			UISpriteSetMgr.instance:setAbyssSprite(self._imageAbyssSkill, "jdsh_" .. skillConfig.icon)
+		end
 	end
 end
 

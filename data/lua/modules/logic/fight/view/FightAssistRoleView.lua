@@ -390,7 +390,7 @@ function FightAssistRoleView:getCanUseSkill(floatError)
 
 	if power < needPower then
 		if floatError then
-			GameFacade.showToast(331018)
+			GameFacade.showToast(ToastEnum.FightAssistRoleView_331018)
 		end
 
 		return
@@ -404,7 +404,7 @@ function FightAssistRoleView:getCanUseSkill(floatError)
 
 	if cd and cd > 0 then
 		if floatError then
-			GameFacade.showToast(30)
+			GameFacade.showToast(ToastEnum.FightAssistRoleView_30)
 		end
 
 		return

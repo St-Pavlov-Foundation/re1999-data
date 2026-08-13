@@ -856,5 +856,17 @@
     "order": 0,
     "equipId": 1572,
     "desc": "双生舞伶"
+  },
+  {
+    "id": 4050,
+    "order": 0,
+    "equipId": 1450,
+    "desc": "洋葱头"
+  },
+  {
+    "id": 5077,
+    "order": 0,
+    "equipId": 1575,
+    "desc": "赫多涅"
   }
 ]

@@ -3,6 +3,10 @@
 module("modules.logic.story.view.StoryFrontItem", package.seeall)
 
 local StoryFrontItem = class("StoryFrontItem")
+local ScreenTextType = {
+	Text = 1,
+	TMP = 2
+}
 
 function StoryFrontItem:init(go)
 	self._frontGO = go
@@ -17,7 +21,7 @@ function StoryFrontItem:init(go)
 	self._goirregularshake = gohelper.findChild(go.transform.parent.gameObject, "#go_irregularshake")
 
 	self:setFullTopShow()
-	gohelper.setActive(self._txtscreentext.gameObject, false)
+	self:setCurScreenText()
 
 	self._imagefulltop.color.a = 1
 	self._imagefulltop.color = Color.black
@@ -44,7 +48,7 @@ function StoryFrontItem:showFullScreenText(show, txt)
 		self._fadeOutCallback = nil
 		self._fadeOutCallbackObj = nil
 
-		ZProj.TweenHelper.KillByObj(self._txtscreentext)
+		self:_killTextTween()
 		self:_killFloatTween()
 		ZProj.TweenHelper.KillByObj(self._copyText)
 
@@ -213,7 +217,7 @@ function StoryFrontItem:playStoryViewOut(callback, callbackobj, isSkip)
 	self._fadeOutCallback = nil
 	self._fadeOutCallbackObj = nil
 
-	ZProj.TweenHelper.KillByObj(self._txtscreentext)
+	self:_killTextTween()
 	self:_killFloatTween()
 	ZProj.TweenHelper.KillByObj(self._copyText)
 
@@ -231,7 +235,7 @@ function StoryFrontItem:playStoryViewOut(callback, callbackobj, isSkip)
 end
 
 function StoryFrontItem:enterStoryFinish()
-	gohelper.setActive(self._txtscreentext.gameObject, false)
+	self:setCurScreenText()
 	gohelper.setActive(self._txtscreentextmesh.gameObject, false)
 	StoryController.instance:dispatchEvent(StoryEvent.Hide)
 	ViewMgr.instance:registerCallback(ViewEvent.OnOpenFullView, self._onOpenView, self)
@@ -385,7 +389,7 @@ end
 function StoryFrontItem:wordByWord(co, callback, callbackobj)
 	self._stepCo = co
 
-	gohelper.setActive(self._txtscreentext.gameObject, true)
+	self:setCurScreenText(ScreenTextType.TMP)
 
 	self._finishCallback = callback
 	self._finishCallbackObj = callbackobj
@@ -393,12 +397,7 @@ function StoryFrontItem:wordByWord(co, callback, callbackobj)
 	self:_fadeUpdate(1)
 
 	if self._stepCo.conversation.showTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] < 0.1 then
-		if self._finishCallback then
-			self._finishCallback(self._finishCallbackObj)
-
-			self._finishCallback = nil
-			self._finishCallbackObj = nil
-		end
+		self:playFinishCallback()
 
 		return
 	end
@@ -409,22 +408,49 @@ end
 function StoryFrontItem:_startWordByWord()
 	self:_killFloatTween()
 
-	self._txtscreentext.text = ""
+	local tmpComp = self:getCurScreenText()
+	local align = StoryTool.getTxtAlignment(self._stepCo.conversation.diaTexts[GameLanguageMgr.instance:getLanguageTypeStoryIndex()], gohelper.Type_TextMesh)
 
-	local align = StoryTool.getTxtAlignment(self._stepCo.conversation.diaTexts[GameLanguageMgr.instance:getLanguageTypeStoryIndex()])
-
-	self._txtscreentext.alignment = align
+	tmpComp.alignment = align
 
 	local txt = StoryTool.getFilterAlignTxt(self._stepCo.conversation.diaTexts[GameLanguageMgr.instance:getLanguageTypeStoryIndex()])
 
-	ZProj.TweenHelper.DOText(self._txtscreentext, txt, self._stepCo.conversation.showTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()], function()
-		if self._finishCallback then
-			self._finishCallback(self._finishCallbackObj)
+	tmpComp.text = txt
 
-			self._finishCallback = nil
-			self._finishCallbackObj = nil
-		end
-	end)
+	tmpComp:ForceMeshUpdate()
+
+	local total = tmpComp.textInfo.characterCount
+
+	tmpComp.maxVisibleCharacters = 0
+
+	local time = self._stepCo.conversation.showTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()]
+	local cur = 0
+
+	self._textTweenId = ZProj.TweenHelper.DOTweenFloat(cur, total, time, self.onWordFameCallback, self.onWordPlayFinishCallback, self, nil, EaseType.Linear)
+end
+
+function StoryFrontItem:onWordFameCallback(val)
+	local tmpComp = self:getCurScreenText()
+
+	tmpComp.maxVisibleCharacters = math.floor(val)
+end
+
+function StoryFrontItem:onWordPlayFinishCallback()
+	local tmpComp = self:getCurScreenText()
+	local total = tmpComp.textInfo.characterCount
+
+	tmpComp.maxVisibleCharacters = total
+
+	self:playFinishCallback()
+end
+
+function StoryFrontItem:playFinishCallback()
+	if self._finishCallback then
+		self._finishCallback(self._finishCallbackObj)
+
+		self._finishCallback = nil
+		self._finishCallbackObj = nil
+	end
 end
 
 function StoryFrontItem:lineShow(lineCount, co, callback, callbackobj)
@@ -439,13 +465,6 @@ function StoryFrontItem:lineShow(lineCount, co, callback, callbackobj)
 
 	if self._stepCo.conversation.showTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] < 0.1 then
 		self:_lineWordShowFinished()
-
-		if self._finishCallback then
-			self._finishCallback(self._finishCallbackObj)
-
-			self._finishCallback = nil
-			self._finishCallbackObj = nil
-		end
 
 		return
 	end
@@ -605,12 +624,7 @@ end
 function StoryFrontItem:_lineWordShowFinished()
 	self._txtscreentext.text = "\n" .. self._diatxt
 
-	if self._finishCallback then
-		self._finishCallback(self._finishCallbackObj)
-
-		self._finishCallback = nil
-		self._finishCallback = nil
-	end
+	self:playFinishCallback()
 
 	local str = StoryTool.getFilterAlignTxt(self._diatxt)
 	local markTopList = StoryTool.getMarkTopTextList(str)
@@ -636,9 +650,7 @@ function StoryFrontItem:_lineWordShowFinished()
 			self._copyText = nil
 		end
 
-		if self._finishCallback then
-			self._finishCallback(self._finishCallbackObj)
-		end
+		self:playFinishCallback()
 	end, nil, 0.01)
 end
 
@@ -655,7 +667,7 @@ end
 
 function StoryFrontItem:_hideScreenTxt()
 	self:_killFloatTween()
-	gohelper.setActive(self._txtscreentext.gameObject, false)
+	self:setCurScreenText()
 
 	if self._fadeOutCallback then
 		self._fadeOutCallback(self._fadeOutCallbackObj)
@@ -706,16 +718,16 @@ function StoryFrontItem:playGostMagic(co, callback, callbackobj)
 	self.showingClickableScreenText = true
 	self.showClickableScreenTextEnd = false
 
-	local txt = self._txtscreentext.text
+	self:setCurScreenText(ScreenTextType.TMP)
 
 	self._stepCo = co
 
-	gohelper.setActive(self._tmpscreentext.gameObject, true)
+	local txt = StoryTool.getFilterAlignTxt(self._stepCo.conversation.diaTexts[GameLanguageMgr.instance:getLanguageTypeStoryIndex()])
 
 	self._finishCallback = callback
 	self._finishCallbackObj = callbackobj
 
-	ZProj.TweenHelper.KillByObj(self._tmpscreentext)
+	self:_killTextTween()
 	ZProj.UGUIHelper.SetColorAlpha(self._tmpscreentext, 1)
 
 	self._tmpscreentext.text = txt
@@ -790,6 +802,58 @@ function StoryFrontItem:playGostMagic(co, callback, callbackobj)
 	self._curScreenTextEndFunc = self._playGostMagicEnd
 end
 
+local _distortOwnFloatProps = {
+	"_TextureWidth",
+	"_TextureHeight",
+	"_GlitchBandHeight",
+	"_GlitchDensity",
+	"_GlitchSpeed",
+	"_GlitchGhost",
+	"_GlitchGhostOffset",
+	"_BloomFactor",
+	"_UnderlayOffsetX",
+	"_UnderlayOffsetY",
+	"_UnderlayDilate",
+	"_UnderlaySoftness"
+}
+local _distortOwnColorProps = {
+	"_UnderlayColor"
+}
+
+function StoryFrontItem:_buildDistortMaterial(templateMat)
+	if gohelper.isNil(self._tmpscreentext) or gohelper.isNil(templateMat) then
+		return nil
+	end
+
+	local baseMat = self._tmpscreentext.fontSharedMaterial
+
+	if gohelper.isNil(baseMat) then
+		return nil
+	end
+
+	local mat = UnityEngine.Object.Instantiate(baseMat)
+
+	mat.shader = templateMat.shader
+
+	mat:EnableKeyword("UNDERLAY_ON")
+
+	for _, name in ipairs(_distortOwnFloatProps) do
+		local id = UnityEngine.Shader.PropertyToID(name)
+
+		mat:SetFloat(id, templateMat:GetFloat(id))
+	end
+
+	for _, name in ipairs(_distortOwnColorProps) do
+		local id = UnityEngine.Shader.PropertyToID(name)
+
+		mat:SetColor(id, templateMat:GetColor(id))
+	end
+
+	mat.renderQueue = templateMat.renderQueue
+
+	return mat
+end
+
 function StoryFrontItem:_setDistortMaterial()
 	local matPath = "font/meshpro/outline_material/hwzs_dynamic_distort.mat"
 
@@ -812,9 +876,10 @@ function StoryFrontItem:_setDistortMaterial()
 	loader:addPath(matPath)
 	loader:startLoad(function()
 		local assetItem = loader:getAssetItem(matPath)
+		local templateMat = assetItem and assetItem:GetResource(matPath)
 
-		if assetItem then
-			self._distortMat = assetItem:GetResource(matPath)
+		if templateMat then
+			self._distortMat = self:_buildDistortMaterial(templateMat)
 		end
 
 		if self._distortMat and not gohelper.isNil(self._tmpscreentext) then
@@ -832,7 +897,6 @@ function StoryFrontItem:_startGlitchAmountAnim()
 
 	local glitchAmountId = UnityEngine.Shader.PropertyToID("_GlitchAmount")
 
-	ZProj.TweenHelper.KillByObj(self._tmpscreentext)
 	self._distortMat:SetFloat(glitchAmountId, 3.5)
 	ZProj.TweenHelper.DOTweenFloat(3.5, 1.8, 1.5, self._glitchAmountUpdate, self._glitchAmountEnd, self, nil, EaseType.Linear)
 end
@@ -869,17 +933,14 @@ function StoryFrontItem:_gostMagicFinished()
 	self.showClickableScreenTextEnd = true
 	self.showingClickableScreenText = false
 
-	if self._finishCallback then
-		self._finishCallback(self._finishCallbackObj)
-
-		self._finishCallback = nil
-		self._finishCallbackObj = nil
-	end
+	self:playFinishCallback()
 
 	local fadeOutTime = 1
 
-	ZProj.TweenHelper.KillByObj(self._tmpscreentext)
-	ZProj.TweenHelper.DoFade(self._tmpscreentext, 1, 0, fadeOutTime, self._hideTmpScreenTxt, self, nil, EaseType.Linear)
+	self:_killTextTween()
+
+	self._textTweenId = ZProj.TweenHelper.DoFade(self._tmpscreentext, 1, 0, fadeOutTime, self._hideTmpScreenTxt, self, nil, EaseType.Linear)
+
 	ZProj.TweenHelper.DOTweenFloat(1.8, 10, fadeOutTime, self._glitchAmountUpdate, nil, self, nil, EaseType.Linear)
 
 	if self._gostFontGlitchGo then
@@ -947,8 +1008,11 @@ function StoryFrontItem:_hideTmpScreenTxt()
 		PostProcessingMgr.instance:setUIPPValue("localBloomActive", false)
 	end
 
-	ZProj.TweenHelper.KillByObj(self._tmpscreentext)
-	gohelper.setActive(self._tmpscreentext.gameObject, false)
+	self:_killTextTween()
+
+	local txtComp = self:getCurScreenText()
+
+	gohelper.setActive(txtComp, false)
 end
 
 function StoryFrontItem:_fadeUpdate(value)
@@ -964,12 +1028,7 @@ function StoryFrontItem:_fadeFinished()
 		self._txtCanvasGroup.alpha = 1
 	end
 
-	if self._finishCallback then
-		self._finishCallback(self._finishCallbackObj)
-
-		self._finishCallback = nil
-		self._finishCallbackObj = nil
-	end
+	self:playFinishCallback()
 end
 
 function StoryFrontItem:_killFloatTween()
@@ -978,6 +1037,32 @@ function StoryFrontItem:_killFloatTween()
 
 		self._floatTweenId = nil
 	end
+end
+
+function StoryFrontItem:_killTextTween()
+	if self._textTweenId then
+		ZProj.TweenHelper.KillById(self._textTweenId)
+
+		self._textTweenId = nil
+	end
+end
+
+function StoryFrontItem:setCurScreenText(txtType)
+	self._curScreenTextType = txtType
+
+	local isText = txtType == ScreenTextType.Text
+	local isTMP = txtType == ScreenTextType.TMP
+
+	gohelper.setActive(self._txtscreentext, isText)
+	gohelper.setActive(self._tmpscreentext, isTMP)
+end
+
+function StoryFrontItem:getCurScreenText()
+	if self._curScreenTextType == ScreenTextType.TMP then
+		return self._tmpscreentext
+	end
+
+	return self._txtscreentext
 end
 
 function StoryFrontItem:destroy()
@@ -1005,7 +1090,7 @@ function StoryFrontItem:destroy()
 
 	ZProj.TweenHelper.KillByObj(self._imagefulltop)
 	ZProj.TweenHelper.KillByObj(self._goupfade.transform)
-	ZProj.TweenHelper.KillByObj(self._txtscreentext)
+	self:_killTextTween()
 
 	if self._effLoader then
 		self._effLoader:dispose()
@@ -1017,6 +1102,12 @@ function StoryFrontItem:destroy()
 		self._distortMatLoader:dispose()
 
 		self._distortMatLoader = nil
+	end
+
+	if self._distortMat then
+		gohelper.destroy(self._distortMat)
+
+		self._distortMat = nil
 	end
 
 	if self._gostFontGlitchGo then

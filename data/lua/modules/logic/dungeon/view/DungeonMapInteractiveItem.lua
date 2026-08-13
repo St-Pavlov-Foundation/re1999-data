@@ -177,7 +177,9 @@ function DungeonMapInteractiveItem:_btnsubmitOnClick()
 		answer = self._config.paramLang
 	end
 
-	if text == answer then
+	if self._isRecheck then
+		self:_onRecheckFinish()
+	elseif text == answer then
 		self:_onHide()
 		DungeonRpc.instance:sendMapElementRequest(self._config.id)
 	else
@@ -191,6 +193,10 @@ end
 function DungeonMapInteractiveItem:_btncloseOnClick()
 	if self._playScrollAnim then
 		return
+	end
+
+	if self._isRecheck then
+		DungeonController.instance:onAgainOpenRecheckView(self._config.id)
 	end
 
 	self:_onHide()
@@ -212,7 +218,13 @@ end
 
 function DungeonMapInteractiveItem:_btndoitOnClick()
 	self:_onHide()
-	DungeonRpc.instance:sendMapElementRequest(self._config.id)
+
+	if self._isRecheck then
+		self:_onRecheckFinish()
+	else
+		DungeonRpc.instance:sendMapElementRequest(self._config.id)
+	end
+
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_checkpoint_continuemesh)
 end
 
@@ -226,6 +238,12 @@ function DungeonMapInteractiveItem:_btndodialogOnClick()
 end
 
 function DungeonMapInteractiveItem:_onPlayDialogFinished(param, isFinish)
+	if self._isRecheck then
+		self:_onRecheckFinish()
+
+		return
+	end
+
 	if not isFinish then
 		return
 	end
@@ -253,7 +271,13 @@ end
 
 function DungeonMapInteractiveItem:_btnwinOnClick()
 	self:_onHide()
-	DungeonRpc.instance:sendMapElementRequest(self._config.id)
+
+	if self._isRecheck then
+		self:_onRecheckFinish()
+	else
+		DungeonRpc.instance:sendMapElementRequest(self._config.id)
+	end
+
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_checkpoint_continuemesh)
 end
 
@@ -264,7 +288,13 @@ end
 
 function DungeonMapInteractiveItem:_btnfinishtaskOnClick()
 	self:_onHide()
-	DungeonRpc.instance:sendMapElementRequest(self._config.id)
+
+	if self._isRecheck then
+		self:_onRecheckFinish()
+	else
+		DungeonRpc.instance:sendMapElementRequest(self._config.id)
+	end
+
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_checkpoint_continuemesh)
 end
 
@@ -286,7 +316,13 @@ end
 
 function DungeonMapInteractiveItem:_btnpuzzlequestionfinishOnClick()
 	self:_onHide()
-	DungeonRpc.instance:sendMapElementRequest(self._config.id)
+
+	if self._isRecheck then
+		self:_onRecheckFinish()
+	else
+		DungeonRpc.instance:sendMapElementRequest(self._config.id)
+	end
+
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_checkpoint_continuemesh)
 end
 
@@ -312,12 +348,22 @@ function DungeonMapInteractiveItem:_btn102okOnClick()
 end
 
 function DungeonMapInteractiveItem:_onPlayStoryFinished()
-	DungeonRpc.instance:sendMapElementRequest(self._config.id)
+	if self._isRecheck then
+		self:_onRecheckFinish()
+	else
+		DungeonRpc.instance:sendMapElementRequest(self._config.id)
+	end
 end
 
 function DungeonMapInteractiveItem:_btnpipefinishOnClick()
 	self:_onHide()
-	DungeonRpc.instance:sendMapElementRequest(self._config.id)
+
+	if self._isRecheck then
+		self:_onRecheckFinish()
+	else
+		DungeonRpc.instance:sendMapElementRequest(self._config.id)
+	end
+
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_checkpoint_continuemesh)
 end
 
@@ -333,7 +379,13 @@ end
 
 function DungeonMapInteractiveItem:_btnmazedrawfinishOnClick()
 	self:_onHide()
-	DungeonRpc.instance:sendMapElementRequest(self._config.id)
+
+	if self._isRecheck then
+		self:_onRecheckFinish()
+	else
+		DungeonRpc.instance:sendMapElementRequest(self._config.id)
+	end
+
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_checkpoint_continuemesh)
 end
 
@@ -344,7 +396,12 @@ end
 
 function DungeonMapInteractiveItem:_btnPutCubeGameFinishOnClick()
 	self:_onHide()
-	DungeonRpc.instance:sendMapElementRequest(self._config.id)
+
+	if self._isRecheck then
+		self:_onRecheckFinish()
+	else
+		DungeonRpc.instance:sendMapElementRequest(self._config.id)
+	end
 end
 
 function DungeonMapInteractiveItem:_btnOuijagameOnClick()
@@ -355,12 +412,23 @@ end
 
 function DungeonMapInteractiveItem:_btnOuijaGameFinishOnClick()
 	self:_onHide()
-	DungeonRpc.instance:sendMapElementRequest(self._config.id)
+
+	if self._isRecheck then
+		self:_onRecheckFinish()
+	else
+		DungeonRpc.instance:sendMapElementRequest(self._config.id)
+	end
 end
 
 function DungeonMapInteractiveItem:_btnchangecolorfinishOnClick()
 	self:_onHide()
-	DungeonRpc.instance:sendMapElementRequest(self._config.id)
+
+	if self._isRecheck then
+		self:_onRecheckFinish()
+	else
+		DungeonRpc.instance:sendMapElementRequest(self._config.id)
+	end
+
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_checkpoint_continuemesh)
 end
 
@@ -373,7 +441,13 @@ end
 
 function DungeonMapInteractiveItem:_btn101PuzzleGameFinishOnClick()
 	self:_onHide()
-	DungeonRpc.instance:sendMapElementRequest(self._config.id)
+
+	if self._isRecheck then
+		self:_onRecheckFinish()
+	else
+		DungeonRpc.instance:sendMapElementRequest(self._config.id)
+	end
+
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_checkpoint_continuemesh)
 end
 
@@ -503,7 +577,7 @@ function DungeonMapInteractiveItem:_onHide()
 	self:_playBtnsQuitAnim()
 	TaskDispatcher.runDelay(self._onOutAnimationFinished, self, 0.23)
 
-	if SLFramework.FrameworkSettings.IsEditor then
+	if SLFramework.FrameworkSettings.IsEditor and not self._isRecheck then
 		local x, y = transformhelper.getPos(self.viewGO.transform)
 		local deltaX = x - self._elementAddX
 		local deltaY = y - self._elementAddY
@@ -603,6 +677,8 @@ function DungeonMapInteractiveItem:_OnClickElement(mapElement)
 		return
 	end
 
+	self._isRecheck = nil
+
 	self:_onShow()
 
 	self._config = self._mapElement._config
@@ -656,6 +732,72 @@ function DungeonMapInteractiveItem:_OnClickElement(mapElement)
 		handleFunc(self)
 	else
 		logError("element type undefined!")
+	end
+end
+
+function DungeonMapInteractiveItem:_onRecheckFinish()
+	if not self._config then
+		return
+	end
+
+	DungeonController.instance:onRecheckFragmentInfoView(self._config)
+end
+
+function DungeonMapInteractiveItem:onRecheck(elementCo, posX, posY)
+	if not elementCo then
+		return
+	end
+
+	self._isRecheck = true
+
+	self:_onShow()
+	self._animator:Play("dungeonmap_interactive_in", 0, 1)
+
+	self._config = elementCo
+
+	self:_showElementTitle()
+	self:_refreshType()
+
+	self._elementX = posX or 0
+	self._elementY = posY or 0
+	self._elementAddX = self._elementX
+	self._elementAddY = self._elementY
+	self.viewGO.transform.localPosition = Vector3(posX or 0, posY or 0, 0)
+
+	self:_showRewards()
+
+	local showTip = not string.nilorempty(self._config.flagText)
+
+	gohelper.setActive(self._goimportanttips, showTip)
+
+	if showTip then
+		self._txttipsinfo.text = self._config.flagText
+	end
+
+	local interactType = self._config.type
+	local isStoryType = interactType == DungeonEnum.ElementType.Story
+
+	gohelper.setActive(self._txtinfo.gameObject, not isStoryType)
+	gohelper.setActive(self._gochatarea, isStoryType)
+
+	for _, value in pairs(DungeonEnum.ElementType) do
+		local go = self["_goop" .. value]
+
+		if go then
+			gohelper.setActive(go, value == interactType)
+		end
+	end
+
+	if interactType == DungeonEnum.ElementType.CircuitGame then
+		gohelper.setActive(self._goop9, true)
+	end
+
+	local handleFunc = self._handleTypeMap[interactType]
+
+	if handleFunc then
+		handleFunc(self)
+	else
+		self:_btncloseOnClick()
 	end
 end
 

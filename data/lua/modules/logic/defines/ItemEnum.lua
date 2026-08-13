@@ -56,6 +56,7 @@ ItemEnum.SubType = {
 	CommonGift = 50,
 	DecorateBundle = 83,
 	LimitPower = 31,
+	RandomNewItemBox = 87,
 	RoomManufactureItem = 25,
 	RoomBlockGiftNew = 69,
 	CritterFood = 27,

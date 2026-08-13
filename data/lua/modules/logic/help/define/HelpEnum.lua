@@ -75,6 +75,7 @@ HelpEnum.HelpId = {
 	Role37PuzzleViewHelp = 183,
 	OdysseyMyth = 30500901,
 	Season1_3MainViewHelp = 174,
+	V3a9BossRushActMode = 3901001,
 	DungeonAffix = 129,
 	Act183EnterDungeon = 2808002,
 	BossRushViewHelpSp01_2 = 30500301,

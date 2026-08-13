@@ -13,7 +13,7 @@ end
 
 function TowerComposeTaskModel:reInit()
 	self.tempTaskModel:clear()
-	TowerComposeTaskModel.super.clear(self)
+	self:clear()
 
 	self.normalTaskMap = {}
 	self.normalTaskList = {}

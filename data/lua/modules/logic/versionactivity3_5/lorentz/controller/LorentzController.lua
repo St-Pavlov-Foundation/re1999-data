@@ -132,10 +132,6 @@ function LorentzController:_onRecInfo(cmd, resultCode, msg)
 	end
 end
 
-function LorentzController:reInit()
-	return
-end
-
 LorentzController.instance = LorentzController.New()
 
 return LorentzController

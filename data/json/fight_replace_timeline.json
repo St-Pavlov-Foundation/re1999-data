@@ -4278,5 +4278,229 @@
     "target": 1,
     "simulate": 1,
     "condition": "11#310504#31050131#31050132#31050133#31050134#31050135#31050136"
+  },
+  {
+    "id": "kakaniya_308001_skill1",
+    "timeline": "kakaniya_308005_skill1",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#308005"
+  },
+  {
+    "id": "kakaniya_308001_skill2",
+    "timeline": "kakaniya_308005_skill2",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#308005"
+  },
+  {
+    "id": "kakaniya_308001_skill2",
+    "timeline": "kakaniya_308005_skill2_1",
+    "priority": 1,
+    "target": 1,
+    "simulate": 1,
+    "condition": "12#308005#2"
+  },
+  {
+    "id": "kakaniya_308001_unique",
+    "timeline": "kakaniya_308005_unique",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#308005"
+  },
+  {
+    "id": "molideer_312101_skill1",
+    "timeline": "molideer_312104_skill1",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#312104"
+  },
+  {
+    "id": "molideer_312101_skill2",
+    "timeline": "molideer_312104_skill2",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#312104"
+  },
+  {
+    "id": "molideer_312101_unique",
+    "timeline": "molideer_312104_unique",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#312104"
+  },
+  {
+    "id": "yami_314301_skill1",
+    "timeline": "yami_314303_skill1",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#314303"
+  },
+  {
+    "id": "yami_314301_skill2",
+    "timeline": "yami_314303_skill2",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#314303"
+  },
+  {
+    "id": "yami_314301_skill3",
+    "timeline": "yami_314303_skill3",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#314303"
+  },
+  {
+    "id": "yami_314301_unique",
+    "timeline": "yami_314303_unique",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#314303"
+  },
+  {
+    "id": "hdl_313501_skill1",
+    "timeline": "hdl_313503_skill1",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#313503"
+  },
+  {
+    "id": "hdl_313501_skill2",
+    "timeline": "hdl_313503_skill2",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#313503"
+  },
+  {
+    "id": "hdl_313501_skill2_1",
+    "timeline": "hdl_313503_skill2_1",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#313503"
+  },
+  {
+    "id": "hdl_313501_skill2_2",
+    "timeline": "hdl_313503_skill2_2",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#313503"
+  },
+  {
+    "id": "hdl_313501_skill2_3",
+    "timeline": "hdl_313503_skill2_3",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#313503"
+  },
+  {
+    "id": "hdl_313501_skill3",
+    "timeline": "hdl_313503_skill3",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#313503"
+  },
+  {
+    "id": "hdl_313501_skill4",
+    "timeline": "hdl_313503_skill4",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#313503"
+  },
+  {
+    "id": "hdl_313501_unique",
+    "timeline": "hdl_313503_unique",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#313503"
+  },
+  {
+    "id": "hdl_313501_skill2_ex",
+    "timeline": "hdl_313503_skill2_ex",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#313503"
+  },
+  {
+    "id": "wmz_314701_skill1",
+    "timeline": "wmz_314704_skill1",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#314704"
+  },
+  {
+    "id": "wmz_314701_skill2",
+    "timeline": "wmz_314704_skill2",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#314704"
+  },
+  {
+    "id": "wmz_314701_unique",
+    "timeline": "wmz_314704_unique",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#314704"
+  },
+  {
+    "id": "wmz_314701_skill3_1",
+    "timeline": "wmz_314704_skill3_1",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#314704"
+  },
+  {
+    "id": "wmz_314701_skill3_1_1",
+    "timeline": "wmz_314704_skill3_1_1",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#314704"
+  },
+  {
+    "id": "wmz_314701_skill3_1_2",
+    "timeline": "wmz_314704_skill3_1_2",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#314704"
+  },
+  {
+    "id": "wmz_314701_skill3_1_3",
+    "timeline": "wmz_314704_skill3_1_3",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#314704"
+  },
+  {
+    "id": "wmz_314701_skill3_1_4",
+    "timeline": "wmz_314704_skill3_1_4",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#314704"
   }
 ]

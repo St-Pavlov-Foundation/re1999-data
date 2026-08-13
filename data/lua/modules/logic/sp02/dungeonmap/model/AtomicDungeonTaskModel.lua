@@ -16,7 +16,7 @@ end
 
 function AtomicDungeonTaskModel:reInit()
 	self.tempTaskModel:clear()
-	AtomicDungeonTaskModel.super.clear(self)
+	self:clear()
 
 	self.taskList = {}
 end

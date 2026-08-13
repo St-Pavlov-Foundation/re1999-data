@@ -120,5 +120,20 @@ return {
 		0,
 		0,
 		1
+	},
+	{
+		8,
+		"纳西索斯闭幕",
+		2,
+		"ui/viewres/story/v3a6/v3a6_shapemask_circle.prefab",
+		1,
+		6,
+		-4.2,
+		0.9,
+		0,
+		-4.2,
+		0.9,
+		0,
+		22
 	}
 }

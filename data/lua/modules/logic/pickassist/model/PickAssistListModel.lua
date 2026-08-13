@@ -9,7 +9,9 @@ local assistType2PickAssistViewName = {
 	[PickAssistEnum.Type.Rouge] = "RougePickAssistView",
 	[PickAssistEnum.Type.Survival] = "SurvivalPickAssistView",
 	[PickAssistEnum.Type.TowerCompose1] = "TowerComposePickAssistView",
-	[PickAssistEnum.Type.TowerCompose2] = "TowerComposePickAssistView"
+	[PickAssistEnum.Type.TowerCompose2] = "TowerComposePickAssistView",
+	[PickAssistEnum.Type.Activity128General] = "PickAssistView",
+	[PickAssistEnum.Type.BossRushActMode] = "V3a9_BossRush_AssistView"
 }
 
 local function createPickAssistHeroMO(dungeonAssistHeroMo)
@@ -126,6 +128,61 @@ function PickAssistListModel:setListByCareer()
 
 	self:setList(list)
 	PickAssistController.instance:dispatchEvent(PickAssistEvent.SetCareer)
+end
+
+function PickAssistListModel:setListByCareerAndBattleTags()
+	local list = {}
+	local lastSelectMO = self:getSelectedMO()
+
+	self:setHeroSelect()
+
+	local assistType = self:getAssistType()
+	local dungeonAssistList = DungeonAssistModel.instance:getAssistList(assistType, self.career)
+	local selectTags = CharacterSearchFilterModel.instance:getSelectLocalTags()
+
+	if dungeonAssistList then
+		for _, dungeonAssistHeroMo in ipairs(dungeonAssistList) do
+			local mo = createPickAssistHeroMO(dungeonAssistHeroMo)
+
+			if mo then
+				local career = mo:getCareer()
+				local isCareer = career == self.career or self._notNeedCareer
+
+				if not isCareer then
+					local careerList = FightConfig.instance:getCareerList(career)
+
+					if careerList and LuaUtil.tableContains(careerList, self.career) then
+						isCareer = true
+					end
+				end
+
+				if isCareer then
+					local isFilterTag = selectTags and self:_isFilterTag(selectTags, mo)
+
+					if isFilterTag then
+						table.insert(list, mo)
+					end
+
+					if lastSelectMO and lastSelectMO:isSameHero(mo) then
+						self:setHeroSelect(mo, true)
+					end
+				end
+			end
+		end
+	end
+
+	self:setList(list)
+	PickAssistController.instance:dispatchEvent(PickAssistEvent.SetCareer)
+end
+
+function PickAssistListModel:_isFilterTag(selectTags, mo)
+	if not mo or not mo.heroMO then
+		return
+	end
+
+	local battleTag = mo.heroMO:getHeroBattleTag()
+
+	return CharacterModel.instance:isFilterTagByBattleTags(selectTags, battleTag, mo.heroMO.heroId)
 end
 
 function PickAssistListModel:getPickAssistViewName()

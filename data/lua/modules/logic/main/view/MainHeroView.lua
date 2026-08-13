@@ -1183,7 +1183,9 @@ function MainHeroView:playVoice(config)
 		self._skinInteraction:beforePlayVoice(config)
 	end
 
+	self._lightSpine:setSkipBodyEffect(true)
 	self:_onStopVoice()
+	self._lightSpine:setSkipBodyEffect(false)
 
 	if self._skinInteraction then
 		self:_initVoiceEffects(config)
@@ -1509,6 +1511,10 @@ function MainHeroView:_onOpenView(viewName)
 		end
 	elseif viewName == ViewName.SummonView then
 		self:_hideModelEffect()
+	elseif viewName == ViewName.MainSwitchView and self._tweenId then
+		ZProj.TweenHelper.KillById(self._tweenId)
+
+		self._tweenId = nil
 	end
 end
 

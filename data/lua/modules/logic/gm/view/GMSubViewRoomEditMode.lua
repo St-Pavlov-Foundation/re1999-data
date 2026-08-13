@@ -99,7 +99,7 @@ function GMSubViewRoomEditMode:_onClickPlaceBlockPackageOk(argsPackageIdStr)
 	local packageIdStr = argsPackageIdStr or self._placePackageInputText:GetText()
 
 	if string.nilorempty(packageIdStr) then
-		GameFacade.showToast(94, "请输入地块包id")
+		GameFacade.showToast(ToastEnum.IconId, "请输入地块包id")
 
 		return
 	end
@@ -150,7 +150,7 @@ function GMSubViewRoomEditMode:_onClickPlaceBuildingOk(argsBuildingIdStr)
 	local buildingIdStr = argsBuildingIdStr or self._placeBuildingInputText:GetText()
 
 	if string.nilorempty(buildingIdStr) then
-		GameFacade.showToast(94, "请输入建筑id")
+		GameFacade.showToast(ToastEnum.IconId, "请输入建筑id")
 
 		return
 	end
@@ -227,7 +227,7 @@ end
 
 function GMSubViewRoomEditMode:_onClickThemeOk()
 	if not self._selectedThemeCfg then
-		GameFacade.showToast(94, "未选择主题")
+		GameFacade.showToast(ToastEnum.IconId, "未选择主题")
 
 		return
 	end

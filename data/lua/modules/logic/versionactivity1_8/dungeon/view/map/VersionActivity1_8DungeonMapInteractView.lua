@@ -83,6 +83,10 @@ end
 
 function VersionActivity1_8DungeonMapInteractView:onClickRoot()
 	self:hide()
+
+	if self._isRecheck then
+		DungeonController.instance:onAgainOpenRecheckView(self._config.id)
+	end
 end
 
 function VersionActivity1_8DungeonMapInteractView:_onClickNoneBtn()
@@ -147,7 +151,11 @@ function VersionActivity1_8DungeonMapInteractView:finishElement(dialogIds)
 end
 
 function VersionActivity1_8DungeonMapInteractView:requestsFinishElement(elementId, dialogIds)
-	DungeonRpc.instance:sendMapElementRequest(elementId, dialogIds, self.updateAct157Info, self)
+	if self._isRecheck then
+		DungeonController.instance:onRecheckFragmentInfoView(self._config)
+	else
+		DungeonRpc.instance:sendMapElementRequest(elementId, dialogIds, self.updateAct157Info, self)
+	end
 end
 
 function VersionActivity1_8DungeonMapInteractView:updateAct157Info()
@@ -196,6 +204,8 @@ function VersionActivity1_8DungeonMapInteractView:showInteractUI(elementId)
 		return
 	end
 
+	self._isRecheck = false
+
 	DungeonMapModel.instance:clearDialog()
 
 	local elementComp = self.mapSceneElementsView:getElementComp(elementId)
@@ -206,6 +216,22 @@ function VersionActivity1_8DungeonMapInteractView:showInteractUI(elementId)
 	self._config = self._mapElement._config
 	self._elementGo = self._mapElement._go
 	self.isFinish = false
+
+	self:show()
+	self:refreshUI()
+end
+
+function VersionActivity1_8DungeonMapInteractView:onRecheck(elementCo)
+	if self._show then
+		return
+	end
+
+	DungeonMapModel.instance:clearDialog()
+	VersionActivity1_8DungeonModel.instance:setShowInteractView(true)
+
+	self._config = elementCo
+	self.isFinish = false
+	self._isRecheck = true
 
 	self:show()
 	self:refreshUI()

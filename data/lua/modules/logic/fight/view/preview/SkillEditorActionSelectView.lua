@@ -172,6 +172,23 @@ function SkillEditorActionSelectView:_onClickItem(index)
 	elseif self._toggleLoop.isOn then
 		self._attacker.spine:play(actionName, true, true)
 	else
+		local entityData = FightDataHelper.entityMgr:getById(self._attacker.id)
+		local skinId = entityData and entityData.skin
+		local config = lua_fight_skin_entity_enter_timeline.configDict[skinId]
+
+		if actionName == "born" and config and self._attacker.skill then
+			local fightStepData = FightStepData.New(FightDef_pb.FightStep())
+
+			fightStepData.fromId = entityData.id
+			fightStepData.toId = entityData.id
+
+			local timelineWork = self._attacker.skill:registTimelineWork(config.timeline, fightStepData)
+
+			timelineWork:start()
+
+			return
+		end
+
 		self._attacker.spine:removeAnimEventCallback(self._onAnimEvent, self)
 		TaskDispatcher.cancelTask(self._delayResetAnim, self)
 

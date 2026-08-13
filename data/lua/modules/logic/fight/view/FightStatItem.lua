@@ -327,6 +327,10 @@ function FightStatItem:_setSkillCardInfo(skillItem, cardmo)
 		return self:refreshASFDSkill(skillItem, cardmo)
 	end
 
+	if cardmo.skillId == 31560181 then
+		return self:refreshHeDuoNieCard(skillItem, cardmo)
+	end
+
 	local skillLv = self.entityMO:getSkillLv(cardmo.skillId)
 	local skillConfig = lua_skill.configDict[cardmo.skillId]
 
@@ -364,6 +368,38 @@ function FightStatItem:refreshASFDSkill(skillItem, cardMo)
 			cardinfo.tag:LoadImage(ResUrl.getAttributeIcon("attribute_asfd"))
 
 			cardinfo.count.text = cardMo.useCount
+		end
+	end
+end
+
+function FightStatItem:refreshHeDuoNieCard(skillItem, cardMo)
+	local skillLv = 0
+
+	for index, cardinfo in ipairs(skillItem.skillIconGo) do
+		index = index - 1
+
+		gohelper.setActive(cardinfo.go, index == skillLv)
+
+		if index == skillLv then
+			local exSkillLv = self.entityMO and self.entityMO.exSkillLevel or 0
+			local heroId = self.entityMO and self.entityMO.modelId or 0
+			local co = lua_heduonie_specialcard_client.configDict[heroId]
+
+			co = co and co[exSkillLv]
+
+			if co then
+				local skillId = tonumber(co.skillcard)
+				local skillConfig = skillId and lua_skill.configDict[skillId]
+
+				if skillConfig then
+					local skillIcon = ResUrl.getSkillIcon(skillConfig.icon)
+
+					cardinfo.imgIcon:LoadImage(skillIcon)
+					cardinfo.tag:LoadImage(ResUrl.getAttributeIcon("attribute_" .. skillConfig.showTag))
+
+					cardinfo.count.text = cardMo.useCount
+				end
+			end
 		end
 	end
 end

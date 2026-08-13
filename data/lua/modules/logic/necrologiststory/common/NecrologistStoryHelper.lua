@@ -363,4 +363,172 @@ function NecrologistStoryHelper.parseEventParam(eventId, param)
 	return data
 end
 
+function NecrologistStoryHelper.getUCharArr(ucharStr)
+	local ret = {}
+
+	if LuaUtil.isEmptyStr(ucharStr) then
+		return ret
+	end
+
+	local len = #ucharStr
+	local validTag = {}
+	local stack = {}
+	local i = 1
+
+	while i <= len do
+		if string.sub(ucharStr, i, i) == "<" then
+			local tagEnd = string.find(ucharStr, ">", i)
+
+			if not tagEnd then
+				i = i + 1
+			else
+				local tag = string.sub(ucharStr, i, tagEnd)
+
+				if string.find(tag, "/>", 1, true) then
+					validTag[i] = tagEnd
+					i = tagEnd + 1
+				else
+					local closeName = string.match(tag, "^</(%w+)")
+
+					if closeName then
+						local matchedIdx
+
+						for j = #stack, 1, -1 do
+							if stack[j].name == closeName then
+								matchedIdx = j
+
+								break
+							end
+						end
+
+						if matchedIdx then
+							local m = stack[matchedIdx]
+
+							table.remove(stack, matchedIdx)
+
+							validTag[m.startPos] = m.endPos
+							validTag[i] = tagEnd
+						end
+
+						i = tagEnd + 1
+					else
+						local openName = string.match(tag, "^<(%w+)")
+
+						if openName then
+							table.insert(stack, {
+								name = openName,
+								startPos = i,
+								endPos = tagEnd
+							})
+
+							i = tagEnd + 1
+						else
+							i = i + 1
+						end
+					end
+				end
+			end
+		else
+			i = i + 1
+		end
+	end
+
+	local i = 1
+
+	while i <= len do
+		if string.sub(ucharStr, i, i) == "<" and validTag[i] then
+			local tagEnd = validTag[i]
+
+			table.insert(ret, string.sub(ucharStr, i, tagEnd))
+
+			i = tagEnd + 1
+		else
+			local b = string.byte(ucharStr, i)
+			local charLen = 1
+
+			if b and b > 127 then
+				if b >= 194 and b <= 223 then
+					charLen = 2
+				elseif b >= 224 and b <= 239 then
+					charLen = 3
+				elseif b >= 240 and b <= 244 then
+					charLen = 4
+				end
+			end
+
+			table.insert(ret, string.sub(ucharStr, i, i + charLen - 1))
+
+			i = i + charLen
+		end
+	end
+
+	return ret
+end
+
+function NecrologistStoryHelper.getEachCharWithTags(charList)
+	local result = {}
+	local tagStack = {}
+
+	for i = 1, #charList do
+		local seg = charList[i]
+
+		if string.sub(seg, 1, 1) == "<" then
+			local closeName = string.match(seg, "^</(%w+)")
+
+			if closeName then
+				for j = #tagStack, 1, -1 do
+					if tagStack[j].name == closeName then
+						table.remove(tagStack, j)
+
+						break
+					end
+				end
+			elseif not string.find(seg, "/>", 1, true) then
+				local openName = string.match(seg, "^<(%w+)")
+
+				if openName then
+					table.insert(tagStack, {
+						name = openName,
+						raw = seg
+					})
+				else
+					result[#result + 1] = {
+						char = seg,
+						wrapped = NecrologistStoryHelper.wrapChar(seg, tagStack)
+					}
+				end
+			end
+		else
+			result[#result + 1] = {
+				char = seg,
+				wrapped = NecrologistStoryHelper.wrapChar(seg, tagStack)
+			}
+		end
+	end
+
+	return result
+end
+
+function NecrologistStoryHelper.wrapChar(ch, tagStack)
+	local n = #tagStack
+
+	if n == 0 then
+		return ch
+	end
+
+	local sb = {}
+
+	for j = 1, n do
+		sb[#sb + 1] = tagStack[j].raw
+	end
+
+	sb[#sb + 1] = ch
+
+	for j = n, 1, -1 do
+		sb[#sb + 1] = "</" .. tagStack[j].name .. ">"
+	end
+
+	return table.concat(sb)
+end
+
 return NecrologistStoryHelper

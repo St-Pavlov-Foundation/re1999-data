@@ -277,7 +277,15 @@ function BaseLive2d:_getRoleFaceEffectComp(resPath)
 	end
 end
 
+function BaseLive2d:setSkipBodyEffect(skip)
+	self._isSkipBodyEffect = skip
+end
+
 function BaseLive2d:_showBodyEffect(bodyName)
+	if self._isSkipBodyEffect then
+		return
+	end
+
 	if self._roleEffectComp then
 		self._roleEffectComp:showBodyEffect(bodyName, self._onBodyEffectShow, self)
 	end

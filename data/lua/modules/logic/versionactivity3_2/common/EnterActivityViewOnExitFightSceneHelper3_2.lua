@@ -45,9 +45,10 @@ function EnterActivityViewOnExitFightSceneHelper._enterActivity13223(cls, param)
 		EnterActivityViewOnExitFightSceneHelper.sequence = nil
 	end
 
+	local big, small = 3, 2
 	local needLoadMapLevel = false
-	local mapLevelViewName = VersionActivityFixedHelper.getVersionActivityDungeonMapLevelViewName()
-	local mapViewName = VersionActivityFixedHelper.getVersionActivityDungeonMapViewName()
+	local mapLevelViewName = VersionActivityFixedHelper.getVersionActivityDungeonMapLevelViewName(big, small)
+	local mapViewName = VersionActivityFixedHelper.getVersionActivityDungeonMapViewName(big, small)
 	local enterViewName = VersionActivityFixedHelper.getVersionActivityEnterViewName()
 
 	if DungeonModel.instance.curSendEpisodePass then
@@ -60,24 +61,25 @@ function EnterActivityViewOnExitFightSceneHelper._enterActivity13223(cls, param)
 		GameSceneMgr.instance:dispatchEvent(SceneEventName.WaitViewOpenCloseLoading, mapLevelViewName)
 	end
 
+	local enterController = VersionActivityFixedHelper.getVersionActivityEnterController()
 	local sequence = FlowSequence.New()
 
 	sequence:addWork(OpenViewWork.New({
-		openFunction = VersionActivityFixedHelper.getVersionActivityEnterController().exitFightEnterView,
-		openFunctionObj = VersionActivityFixedHelper.getVersionActivityEnterController().instance,
+		openFunction = EnterActivityViewOnExitFightSceneHelper.open3_9ReactivityEnterView,
+		openFunctionObj = enterController.instance,
 		waitOpenViewName = enterViewName
 	}))
 	sequence:registerDoneListener(function()
-		local dungeonController = VersionActivityFixedHelper.getVersionActivityDungeonController()
+		local dungeonController = VersionActivityFixedHelper.getVersionActivityDungeonController(big, small)
 
 		if needLoadMapLevel then
-			dungeonController.instance:openVersionActivityDungeonMapView(nil, episodeId, function()
+			dungeonController.instance:openVersionActivityReactivityDungeonMapView(big, small, nil, episodeId, function()
 				ViewMgr.instance:openView(mapLevelViewName, {
 					episodeId = episodeId
 				})
 			end, nil)
 		else
-			dungeonController.instance:openVersionActivityDungeonMapView(nil, episodeId)
+			dungeonController.instance:openVersionActivityReactivityDungeonMapView(big, small, nil, episodeId)
 		end
 	end)
 	sequence:start()
@@ -127,6 +129,12 @@ function EnterActivityViewOnExitFightSceneHelper.enterActivity13229(forceStartin
 			VersionActivityFixedHelper.getVersionActivityEnterController().instance:openVersionActivityEnterViewIfNotOpened(returnViewAction, nil, VersionActivity3_2Enum.ActivityId.HuiDiaoLan, true)
 		end
 	end)
+end
+
+function EnterActivityViewOnExitFightSceneHelper.open3_9ReactivityEnterView()
+	local enterController = VersionActivityFixedHelper.getVersionActivityEnterController()
+
+	enterController:directOpenVersionActivityEnterView(VersionActivity3_9Enum.ActivityId.Reactivity)
 end
 
 return EnterActivityViewOnExitFightSceneHelper

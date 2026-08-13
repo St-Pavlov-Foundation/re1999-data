@@ -16,12 +16,6 @@ function StoryConfig:ctor()
 	self._textRefrectConfig = {}
 	self._leadHeroSpineConfig = {}
 	self._picTxtsConfig = {}
-	self._storyHeroConfig = {}
-	self._storyBgEffTransConfig = {}
-	self._storyBlurTypeConfig = {}
-	self._storyTextureEffectTypeConfig = {}
-	self._storyShapeMaskEffectTypeConfig = {}
-	self._storyBgZoneConfig = {}
 	self._audioSwitchConfig = {}
 	self._bgEffStarburstConfig = {}
 end
@@ -84,6 +78,10 @@ function StoryConfig:_loadStoryConfig()
 	local blurTypeConfig = addGlobalModule("modules.configs.story.lua_story_blurtype")
 
 	StoryBlurTypeModel.instance:setStoryBlurTypeList(blurTypeConfig)
+
+	local cameraEffectConfig = addGlobalModule("modules.configs.story.lua_story_cameraeffect")
+
+	StoryCameraEffectModel.instance:setStoryCameraEffectList(cameraEffectConfig)
 
 	local textureEffectTypeConfig = addGlobalModule("modules.configs.story.lua_story_textureeffecttype")
 
@@ -290,6 +288,14 @@ function StoryConfig:replaceStoryMagicText(txt)
 	end
 
 	return txt
+end
+
+function StoryConfig:getMaterialConfig(id)
+	if self._materialConfig == nil then
+		self._materialConfig = addGlobalModule("modules.configs.story.lua_story_material_config")
+	end
+
+	return self._materialConfig[id]
 end
 
 StoryConfig.instance = StoryConfig.New()

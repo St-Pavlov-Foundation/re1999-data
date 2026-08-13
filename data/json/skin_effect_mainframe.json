@@ -26,5 +26,9 @@
   {
     "id": 312606,
     "effect": "Drawables/bone4/effect-Bone/roleeffect_mlan_idle4"
+  },
+  {
+    "id": 313503,
+    "effect": "Drawables/bone4/effect-Bone/roleeffect_hdl_idle4"
   }
 ]

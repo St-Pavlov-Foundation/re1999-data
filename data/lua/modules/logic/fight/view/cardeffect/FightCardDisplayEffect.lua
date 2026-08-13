@@ -20,20 +20,27 @@ function FightCardDisplayEffect:onStart(context)
 
 	recthelper.setAnchorX(tipsTr, 1100 + tipsWidth)
 
-	local tipsSequence = FlowSequence.New()
+	self._flow = FlowParallel.New()
 
-	tipsSequence:addWork(TweenWork.New({
-		type = "DOAnchorPosX",
-		tr = tipsTr,
-		to = tipsPosX - 47.5,
-		t = self._dt * 7
-	}))
-	tipsSequence:addWork(TweenWork.New({
-		type = "DOAnchorPosX",
-		tr = tipsTr,
-		to = tipsPosX - 34.2,
-		t = self._dt * 3
-	}))
+	self._flow:addWork(FunctionWork.New(self.tryPlayLaMoNaCloseAnim, self))
+
+	if SettingsModel.instance:getFightCardDetail() then
+		local tipsSequence = FlowSequence.New()
+
+		tipsSequence:addWork(TweenWork.New({
+			type = "DOAnchorPosX",
+			tr = tipsTr,
+			to = tipsPosX - 47.5,
+			t = self._dt * 7
+		}))
+		tipsSequence:addWork(TweenWork.New({
+			type = "DOAnchorPosX",
+			tr = tipsTr,
+			to = tipsPosX - 34.2,
+			t = self._dt * 3
+		}))
+		self._flow:addWork(tipsSequence)
+	end
 
 	local itemTr = context.skillItemGO.transform
 	local itemAnchorSequence = FlowSequence.New()
@@ -45,6 +52,7 @@ function FightCardDisplayEffect:onStart(context)
 		tr = itemTr,
 		t = self._dt * 6
 	}))
+	self._flow:addWork(itemAnchorSequence)
 
 	local itemScaleSequence = FlowSequence.New()
 
@@ -60,12 +68,6 @@ function FightCardDisplayEffect:onStart(context)
 		tr = itemTr,
 		t = self._dt * 3
 	}))
-
-	self._flow = FlowParallel.New()
-
-	self._flow:addWork(FunctionWork.New(self.tryPlayLaMoNaCloseAnim, self))
-	self._flow:addWork(tipsSequence)
-	self._flow:addWork(itemAnchorSequence)
 	self._flow:addWork(itemScaleSequence)
 	self._flow:registerDoneListener(self._onWorkDone, self)
 	self._flow:start()

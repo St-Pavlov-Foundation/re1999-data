@@ -36,7 +36,8 @@ function FightWorkBuffActInfoUpdate350.initBuffActHandle()
 		FightWorkBuffActInfoUpdate350.buffActHandleDict = {
 			[FightEnum.BuffActId.Rouge2CheckCount] = FightWorkBuffActInfoUpdate350.handleRouge2CheckCountUpdate,
 			[FightEnum.BuffActId.LostHpToFakeHp] = FightWorkBuffActInfoUpdate350.handleLostHpToFakeHpUpdate,
-			[FightEnum.BuffActId.DeviceExPointOverflowBank] = FightWorkBuffActInfoUpdate350.handleDeviceExPointOverflowBankUpdate
+			[FightEnum.BuffActId.DeviceExPointOverflowBank] = FightWorkBuffActInfoUpdate350.handleDeviceExPointOverflowBankUpdate,
+			[FightEnum.BuffActId.HedoneCard] = FightWorkBuffActInfoUpdate350.handleHedoneCardUpdate
 		}
 	end
 end
@@ -113,6 +114,13 @@ function FightWorkBuffActInfoUpdate350:handleRouge2CheckCountUpdate()
 		buffId = buffId
 	})
 	self:com_registTimer(self.defaultHandle, FightRouge2Check362View.DurationTime)
+end
+
+function FightWorkBuffActInfoUpdate350:handleHedoneCardUpdate()
+	local entityId = self.actEffectData.targetId
+
+	self:com_sendFightEvent(FightEvent.OnHeDuoNieBuffDataUpdate, entityId)
+	self:onDone(true)
 end
 
 function FightWorkBuffActInfoUpdate350.getBuffActInfoParam1(buffActMo)

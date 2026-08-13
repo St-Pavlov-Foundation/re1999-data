@@ -322,6 +322,15 @@ function PlayerCardController:ShowChangeBgSkin(id, materialDataMOList, isHideEqu
 	PlayerCardModel.instance:setShowRed()
 end
 
+function PlayerCardController:showPropChangeBgSkin(id, isHideEquipBtn)
+	PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.PlayerCardGetView, {
+		id = id,
+		isHideEquipBtn = isHideEquipBtn
+	})
+	self:setBgSkinRed(id, true)
+	PlayerCardModel.instance:setShowRed()
+end
+
 function PlayerCardController:openSimpleShowView()
 	if not self._cacheMaterialDataMOList or #self._cacheMaterialDataMOList < 1 then
 		return

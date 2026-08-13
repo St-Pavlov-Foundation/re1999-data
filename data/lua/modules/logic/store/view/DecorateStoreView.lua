@@ -152,6 +152,12 @@ function DecorateStoreView:_btnfoldOnClick()
 end
 
 function DecorateStoreView:_btnhideOnClick()
+	self:_hideUIShowDefaultView(false)
+end
+
+function DecorateStoreView:_hideUIShowDefaultView(isAutoClose)
+	self._isDefaultShowViewAutoClose = isAutoClose == true
+
 	self._viewAnim:Play("hide", 0, 0)
 	StoreController.instance:dispatchEvent(StoreEvent.PlayHideStoreAnim)
 	UIBlockMgr.instance:startBlock("decoratehide")
@@ -182,6 +188,10 @@ function DecorateStoreView:_startDefaultShowView()
 		data.callback = self._showHideCallback
 		data.callbackObj = self
 		data.viewCls = self._viewCls
+
+		if self._isDefaultShowViewAutoClose == true then
+			data.viewShowTime = DecorateStoreEnum.DefaultViewShowTime
+		end
 
 		ViewMgr.instance:openView(ViewName.DecorateStoreDefaultShowView, data)
 	end
@@ -516,7 +526,7 @@ function DecorateStoreView:_checkHideUI()
 		return
 	end
 
-	self:_btnhideOnClick()
+	self:_hideUIShowDefaultView(true)
 end
 
 function DecorateStoreView:_refreshGoodItems(isUnfold)

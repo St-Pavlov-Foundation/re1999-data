@@ -34,7 +34,6 @@ function V3a2_BossRush_ResultView:onInitView()
 	self._scrollTips = gohelper.findChildScrollRect(self.viewGO, "Right/#go_Evaluate/Tips/#scroll_Tips")
 	self._txtAffixDescr = gohelper.findChildText(self.viewGO, "Right/#go_Evaluate/Tips/#scroll_Tips/Viewport/Content/#txt_AffixDescr")
 	self._goAffixTitle = gohelper.findChild(self.viewGO, "Right/#go_Evaluate/Tips/#scroll_Tips/Viewport/Content/#txt_AffixDescr/#go_AffixTitle")
-	self._imagerankIcon = gohelper.findChildImage(self.viewGO, "Right/rank")
 	self._imageSliderFG = gohelper.findChildImage(self.viewGO, "Right/rank/#image_SliderFG")
 	self._txtrank = gohelper.findChildText(self.viewGO, "Right/rank/#txt_rank")
 
@@ -68,6 +67,7 @@ function V3a2_BossRush_ResultView:_btntipcloseOnClick()
 end
 
 function V3a2_BossRush_ResultView:_editableInitView()
+	self._imagerankIcon = gohelper.findChildImage(self.viewGO, "Right/rank")
 	self._simgAssessBG = gohelper.findChildSingleImage(self.viewGO, "Right/#go_NotEmpty/image_AssessBG")
 	self._imgAssessBG = gohelper.findChildImage(self.viewGO, "Right/#go_NotEmpty/image_AssessBG")
 	self._imgScoreBg = gohelper.findChildImage(self.viewGO, "Right/Score/image_ScoreBG")
@@ -81,7 +81,7 @@ function V3a2_BossRush_ResultView:_editableInitView()
 end
 
 function V3a2_BossRush_ResultView:onOpen()
-	self._curStage, self._curLayer = BossRushModel.instance:getBattleStageAndLayer()
+	self._curStage, self._curLayer, self._actId = BossRushModel.instance:getBattleStageAndLayer()
 	self.fightScore = BossRushModel.instance:getFightScore() or 0
 	self._txtScore.text = BossRushConfig.instance:getScoreStr(self.fightScore)
 	self._isSpecialLayer = BossRushModel.instance:isSpecialLayer(self._curLayer)
@@ -131,16 +131,16 @@ function V3a2_BossRush_ResultView:_refreshScore()
 
 		if i == 1 then
 			lang = "v3a2BossRush_Result_BaseScore"
-			scoreTxt = score.baseScore
+			scoreTxt = score and score.baseScore or 0
 		elseif i == 2 then
 			lang = "v3a2BossRush_Result_RuleScore"
-			scoreTxt = score.ruleScore
+			scoreTxt = score and score.ruleScore or 0
 		else
 			lang = "v3a2BossRush_Result_TotalScore"
 			scoreTxt = self.fightScore
 		end
 
-		item.txt.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang(lang), scoreTxt)
+		item.txt.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang(lang), scoreTxt or 0)
 
 		gohelper.setActive(item.go, true)
 	end

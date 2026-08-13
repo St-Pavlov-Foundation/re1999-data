@@ -139,10 +139,6 @@ function FightBuffBehaviour_3_3PaoPao:onUpdateBuff(entityId, buffId, buffMo)
 	return
 end
 
-function FightBuffBehaviour_3_3PaoPao:onUpdateBuff(entityId, buffId, buffMo)
-	return
-end
-
 function FightBuffBehaviour_3_3PaoPao:onRemoveBuff(entityId, buffId, buffMo)
 	self:clear()
 end

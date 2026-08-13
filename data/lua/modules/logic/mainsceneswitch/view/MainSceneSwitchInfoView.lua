@@ -161,6 +161,7 @@ function MainSceneSwitchInfoView:_btnHideOnClick()
 	self._hideTime = Time.time
 	self._showUI = not self._showUI
 
+	gohelper.setActive(self._goMask, self._showUI)
 	MainSceneSwitchController.instance:dispatchEvent(MainSceneSwitchEvent.PreviewSceneSwitchUIVisible, self._showUI)
 end
 
@@ -182,6 +183,7 @@ function MainSceneSwitchInfoView:_editableInitView()
 	self._showUI = true
 	self._goright = gohelper.findChild(self.viewGO, "right")
 	self._goLeft = gohelper.findChild(self.viewGO, "left")
+	self._goMask = gohelper.findChild(self.viewGO, "MaskBG")
 	self._rootAnimator = self.viewGO:GetComponent("Animator")
 
 	gohelper.setActive(self._btnchange, false)
@@ -234,6 +236,7 @@ function MainSceneSwitchInfoView:onOpen()
 
 	self:_showSceneStatus()
 	self:_updateBtnStatus()
+	gohelper.setActive(self._goMask, self._showUI)
 
 	if not self.viewParam.noInfoEffect then
 		self._rootAnimator:Play("info", 0, 0)

@@ -5,7 +5,7 @@ module("modules.logic.abyss.view.AbyssHeroGroupFightViewLevel", package.seeall)
 local AbyssHeroGroupFightViewLevel = class("AbyssHeroGroupFightViewLevel", HeroGroupFightViewLevel)
 
 function AbyssHeroGroupFightViewLevel:onInitView()
-	self.super.onInitView(self)
+	AbyssHeroGroupFightViewLevel.super.onInitView(self)
 
 	self._goabyssconditionitem = gohelper.findChild(self.viewGO, "#go_container/#scroll_info/infocontain/cloudredemption/conditionsList/#go_conditionstxt")
 	self._goabyssconditionContent = gohelper.findChild(self.viewGO, "#go_container/#scroll_info/infocontain/cloudredemption")
@@ -73,7 +73,7 @@ function AbyssHeroGroupFightViewLevel:_recommendCareer()
 end
 
 function AbyssHeroGroupFightViewLevel:_showEnemyList()
-	self.super._showEnemyList(self)
+	AbyssHeroGroupFightViewLevel.super._showEnemyList(self)
 
 	local actId = AbyssModel.instance:getCurActId()
 	local stageId = AbyssModel.instance:getCurStageId()
@@ -83,7 +83,7 @@ function AbyssHeroGroupFightViewLevel:_showEnemyList()
 end
 
 function AbyssHeroGroupFightViewLevel:_btnenemyOnClick()
-	self.super._btnenemyOnClick(self)
+	AbyssHeroGroupFightViewLevel.super._btnenemyOnClick(self)
 	AbyssController.instance:statCheckInformation(StatEnum.AbyssEntranceEnum.EnemyInformation, self._episodeId)
 end
 

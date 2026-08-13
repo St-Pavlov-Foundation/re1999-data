@@ -32,6 +32,8 @@ function SceneUIPackageGoodsTipView:onInitView()
 	if self._editableInitView then
 		self:_editableInitView()
 	end
+
+	gohelper.setActive(self._goicon, false)
 end
 
 function SceneUIPackageGoodsTipView:addEvents()
@@ -138,7 +140,8 @@ function SceneUIPackageGoodsTipView:_refreshTipTag()
 		offlineTime = string.format("%s%s", TimeUtil.secondToRoughTime(limitSec))
 	end
 
-	local content = string.format("%s:%d", luaLang("store_buylimit_forever"), remain)
+	local lang = luaLang("sceneuipackage_goods_remain")
+	local content = GameUtil.getSubPlaceholderLuaLangTwoParam(lang, luaLang("store_buylimit_forever"), remain)
 
 	self._txtremain.text = content or ""
 	self._txtremaintime.text = offlineTime or ""
@@ -215,7 +218,9 @@ function SceneUIPackageGoodsTipView:_getProductItem(index)
 	local item = self._productItems[index]
 
 	if not item then
-		local go = index == 1 and self._goicon or gohelper.cloneInPlace(self._goicon)
+		local go = gohelper.cloneInPlace(self._goicon)
+
+		gohelper.setActive(go, true)
 
 		item = self:getUserDataTb_()
 		item.go = go

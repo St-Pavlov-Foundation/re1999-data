@@ -238,7 +238,9 @@ function SurvivalStoreGoodsView:refreshUI()
 	else
 		gohelper.setActive(self._txtremain.gameObject, true)
 
-		self._txtremain.text = string.format("%s:%d", luaLang("store_buylimit"), self.remainBuyCount)
+		self._txtremain.text = GameUtil.getSubPlaceholderLuaLang(luaLang("store_buylimit_common"), {
+			self.remainBuyCount
+		})
 	end
 
 	self:refreshByCount()

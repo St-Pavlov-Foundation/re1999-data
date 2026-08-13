@@ -157,9 +157,12 @@ function VersionActivity2_0DungeonController:loadDictFromStr(jsonStr)
 	return result
 end
 
-function VersionActivity2_0DungeonController:openDialogueView(dialogueId)
+function VersionActivity2_0DungeonController:openDialogueView(dialogueId, callback, callbackTarget, callbackParams)
 	ViewMgr.instance:openView(ViewName.VersionActivity2_0DialogueView, {
-		dialogueId = dialogueId
+		dialogueId = dialogueId,
+		callback = callback,
+		callbackTarget = callbackTarget,
+		callbackParams = callbackParams
 	})
 end
 

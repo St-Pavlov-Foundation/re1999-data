@@ -153,7 +153,7 @@ function NecrologistStoryGameBaseMO:setStoryState(storyId, state)
 	if plotMo then
 		local curState = self:getStoryState(storyId)
 
-		if curState == state then
+		if curState == state or curState == NecrologistStoryEnum.StoryState.Finish then
 			return
 		end
 	else

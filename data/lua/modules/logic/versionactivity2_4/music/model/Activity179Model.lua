@@ -9,10 +9,6 @@ function Activity179Model:onInit()
 end
 
 function Activity179Model:reInit()
-	return
-end
-
-function Activity179Model:reInit()
 	self._episodeMap = {}
 	self._activityId = nil
 end

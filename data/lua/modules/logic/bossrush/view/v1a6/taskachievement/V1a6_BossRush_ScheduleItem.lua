@@ -92,8 +92,12 @@ function V1a6_BossRush_ScheduleItem:refreshNormalUI(mo)
 	local isGot = mo.isGot
 	local config = mo.stageRewardCO
 	local stage = config.stage
-	local lastPointInfo = BossRushModel.instance:getLastPointInfo(stage)
-	local isAlready = lastPointInfo.cur >= config.rewardPointNum
+	local actId = config.activityId
+
+	self._stageMo = V3a9_BossRushModel.instance:getStageMo(actId, stage)
+
+	local score = self._stageMo and self._stageMo:getTotalPoint()
+	local isAlready = score >= config.rewardPointNum
 	local itemDataList = ItemModel.instance:getItemDataListByConfigStr(config.reward)
 	local iconColor = isAlready and GameUtil.parseColor("#c48152") or GameUtil.parseColor("#919191")
 

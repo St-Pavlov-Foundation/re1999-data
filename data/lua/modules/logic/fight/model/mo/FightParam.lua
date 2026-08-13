@@ -152,15 +152,23 @@ function FightParam.initFightGroup(fightGroup, clothId, heroList, subHeroList, e
 	end
 
 	if equips then
+		local _, assistMo = HeroGroupModel.instance:getAssistMo()
+
 		for i, v in ipairs(equips) do
 			if trialDict[i] then
 				for _, uid in ipairs(v.equipUid) do
 					table.insert(trialDict[i].equipUid, uid)
 				end
 			else
+				local assistuid
+
+				if assistMo and assistMo.id == i then
+					assistuid = assistMo.heroUid
+				end
+
 				local fightEquip = FightDef_pb.FightEquip()
 
-				fightEquip.heroUid = v.heroUid
+				fightEquip.heroUid = assistuid or v.heroUid
 
 				for _, uid in ipairs(v.equipUid) do
 					table.insert(fightEquip.equipUid, uid)
@@ -407,10 +415,26 @@ function FightParam:getHeroEquipMoList()
 		heroUid2EquipMoDict[heroUid] = equipMo
 	end
 
+	local _, assistMo = HeroGroupModel.instance:getAssistMo()
+
 	for _, uid in ipairs(self.mySideUids) do
 		local heroMo = HeroModel.instance:getById(uid)
 
-		if heroMo then
+		if assistMo and uid == assistMo.heroUid then
+			heroMo = heroMo or assistMo.assistMo.heroMO
+
+			local info = self.equips[assistMo.id]
+			local equipMo = heroUid2EquipMoDict[assistMo.heroUid]
+
+			if not equipMo and info then
+				equipMo = EquipModel.instance:getEquip(info.equipUid[1])
+			end
+
+			table.insert(heroEquipMoList, {
+				heroMo = heroMo,
+				equipMo = equipMo
+			})
+		elseif heroMo then
 			local heroUid = heroMo.uid
 
 			table.insert(heroEquipMoList, {

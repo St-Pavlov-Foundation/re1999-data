@@ -502,7 +502,7 @@ function Rouge2_HeroGroupEditView:_refreshMainInfo()
 			end
 
 			local tagId = tags[i]
-			local tagCo = HeroConfig.instance:getBattleTagConfigCO()
+			local tagCo = HeroConfig.instance:getBattleTagConfigCO(tagId)
 			local desc = tagCo and tagCo.tagName
 			local wordCount = GameUtil.utf8len(desc)
 

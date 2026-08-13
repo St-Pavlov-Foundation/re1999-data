@@ -350,7 +350,7 @@ function ChatRoomPlayerListView:addPlayer(userId)
 
 		local effectLoader = PrefabInstantiate.Create(playerItem.go)
 
-		effectLoader:startLoad("effects/prefabs/v3a4_games/game_common02.prefab")
+		effectLoader:startLoad("modules/party_game/scene/effects/v3a4_games/game_common02.prefab")
 
 		playerItem.comp = MonoHelper.addNoUpdateLuaComOnceToGo(playerItem.go, PartyGameLobbyPlayerComp)
 		playerItem.headInfoItem = self:getHeadInfoItem(userId)

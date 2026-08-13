@@ -3,12 +3,35 @@
 module("modules.logic.partygame.scene.comp.PartyGameSceneGraphicsComp", package.seeall)
 
 local PartyGameSceneGraphicsComp = class("PartyGameSceneGraphicsComp", BaseSceneComp)
+local Shader = UnityEngine.Shader
+local RoleLightFactorId = Shader.PropertyToID("_PartyRoleLightFactor")
+local NormalizeTopLightId = Shader.PropertyToID("_PartyRoleNormalizeTopLight")
 
 function PartyGameSceneGraphicsComp:init()
 	return
 end
 
+function PartyGameSceneGraphicsComp:_applyRoleLightFactor()
+	local factor = PartyGameEnum.DefaultRoleLightFactor
+	local normalizeTopLight = 0
+	local game = PartyGameController.instance:getCurPartyGame()
+
+	if game then
+		local configuredFactor = PartyGameEnum.RoleLightFactor[game:getGameId()]
+
+		if configuredFactor ~= nil then
+			factor = configuredFactor
+			normalizeTopLight = 1
+		end
+	end
+
+	Shader.SetGlobalFloat(RoleLightFactorId, factor)
+	Shader.SetGlobalFloat(NormalizeTopLightId, normalizeTopLight)
+end
+
 function PartyGameSceneGraphicsComp:onScenePrepared(sceneId, levelId)
+	self:_applyRoleLightFactor()
+
 	RenderPipelineSetting.useRenderOpaqueWithSceneColorPass = true
 
 	local unitCamera = CameraMgr.instance:getUnitCamera()
@@ -40,6 +63,8 @@ end
 
 function PartyGameSceneGraphicsComp:onSceneClose()
 	GameGlobalMgr.instance:unregisterCallback(GameStateEvent.OnQualityChange, self._refreshGraphics, self)
+	Shader.SetGlobalFloat(RoleLightFactorId, PartyGameEnum.DefaultRoleLightFactor)
+	Shader.SetGlobalFloat(NormalizeTopLightId, 0)
 
 	RenderPipelineSetting.useRenderOpaqueWithSceneColorPass = false
 

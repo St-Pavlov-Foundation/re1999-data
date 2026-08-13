@@ -39,6 +39,7 @@ end
 function InvestigateTipsView:onOpen()
 	self._elementId = self.viewParam.elementId
 	self._fragmentId = self.viewParam.fragmentId
+	self._isRecheck = self.viewParam.isRecheck
 
 	local config = lua_chapter_map_fragment.configDict[self._fragmentId]
 
@@ -60,6 +61,12 @@ function InvestigateTipsView:onClose()
 end
 
 function InvestigateTipsView:onCloseFinish()
+	if self._isRecheck then
+		DungeonController.instance:onAgainOpenRecheckView(self._elementId)
+
+		return
+	end
+
 	InvestigateController.instance:dispatchEvent(InvestigateEvent.ShowGetEffect)
 end
 

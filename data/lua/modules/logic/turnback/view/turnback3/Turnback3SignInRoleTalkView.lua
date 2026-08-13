@@ -5,6 +5,7 @@ module("modules.logic.turnback.view.turnback3.Turnback3SignInRoleTalkView", pack
 local Turnback3SignInRoleTalkView = class("Turnback3SignInRoleTalkView", BaseView)
 
 function Turnback3SignInRoleTalkView:onInitView()
+	self._btnfullclosebtn = gohelper.findChildButtonWithAudio(self.viewGO, "root/#btn_fullclose")
 	self._btnclosebtn = gohelper.findChildButtonWithAudio(self.viewGO, "root/#btn_closebtn")
 	self._txtrolename = gohelper.findChildText(self.viewGO, "root/#txt_rolename")
 	self._txttalk = gohelper.findChildText(self.viewGO, "root/#txt_talk")
@@ -22,23 +23,31 @@ function Turnback3SignInRoleTalkView:onInitView()
 end
 
 function Turnback3SignInRoleTalkView:addEvents()
-	self._btnclosebtn:AddClickListener(self.closeThis, self)
+	self._btnfullclosebtn:AddClickListener(self._onClose, self)
+	self._btnclosebtn:AddClickListener(self._onClose, self)
 end
 
 function Turnback3SignInRoleTalkView:removeEvents()
+	self._btnfullclosebtn:RemoveClickListener()
 	self._btnclosebtn:RemoveClickListener()
 end
 
 function Turnback3SignInRoleTalkView:_btnclosebtnOnClick()
-	self:closeThis()
+	self:_onClose()
 end
 
 function Turnback3SignInRoleTalkView:_editableInitView()
-	return
+	self._animPlayer = SLFramework.AnimatorPlayer.Get(self.viewGO.gameObject)
+
+	NavigateMgr.instance:addEscape(self.viewName, self._onClose, self)
 end
 
 function Turnback3SignInRoleTalkView:onUpdateParam()
 	return
+end
+
+function Turnback3SignInRoleTalkView:_onClose()
+	self._animPlayer:Play("close", self.closeThis, self)
 end
 
 function Turnback3SignInRoleTalkView:onOpen()
@@ -101,6 +110,10 @@ function Turnback3SignInRoleTalkView:_initRewardList(count, bonusCo)
 				end
 
 				rewardItem.itemIcon:setMOValue(type, id, num, nil, true)
+
+				function rewardItem.itemIcon.callback(item)
+					item:setCountFontSize(40)
+				end
 			end
 
 			gohelper.setActive(rewardItem.go, true)

@@ -9,7 +9,11 @@ function ChgConfig:ctor()
 end
 
 function ChgConfig:reqConfigNames()
-	return Activity176Config:reqConfigNames()
+	return {
+		"activity176_bubble",
+		"activity176_episode",
+		"activity176_dogtag"
+	}
 end
 
 function ChgConfig:onConfigLoaded(configName, configTable)

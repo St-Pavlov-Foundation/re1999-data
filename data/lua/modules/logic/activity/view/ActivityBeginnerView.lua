@@ -139,7 +139,8 @@ local activitySubViewDict = {
 	[ActivityEnum.Activity.V3a7_SkinGift] = ViewName.V3a7_SkinGiftFullView,
 	[ActivityEnum.Activity.SP02_LinkGift] = ViewName.SP02_LinkGiftFullView,
 	[ActivityEnum.Activity.V3a8_DragonBoatActivity_FullView] = ViewName.V3a8_DragonBoatActivity_FullView,
-	[ActivityEnum.Activity.SP02_WarmUp] = ViewName.WarmUp
+	[ActivityEnum.Activity.SP02_WarmUp] = ViewName.WarmUp,
+	[ActivityEnum.Activity.V3a9_BDuckLinkage] = ViewName.V3a9_BDuckLinkageFullView
 }
 local actTypeSubViewDict = {
 	[ActivityEnum.ActivityTypeID.OpenTestWarmUp] = ViewName.ActivityWarmUpView,
@@ -442,6 +443,14 @@ function ActivityBeginnerView:_initWarmUp()
 
 	if not activitySubViewDict[key] then
 		activitySubViewDict[key] = val
+	end
+
+	local actId1 = Activity125Config.instance:getWarmUp1ActId()
+	local key1 = GameBranchMgr.instance:Vxax_ActId("WarmUp1", actId1)
+	local val1 = GameBranchMgr.instance:Vxax_ViewName("WarmUp1", ViewName.WarmUp1)
+
+	if not activitySubViewDict[key1] then
+		activitySubViewDict[key1] = val1
 	end
 end
 

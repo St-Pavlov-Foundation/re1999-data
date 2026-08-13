@@ -57,10 +57,6 @@ function LuSiJianGameController:finishGame()
 	ViewMgr.instance:openView(ViewName.LuSiJianResultView)
 end
 
-function LuSiJianGameController:reInit()
-	return
-end
-
 LuSiJianGameController.instance = LuSiJianGameController.New()
 
 return LuSiJianGameController

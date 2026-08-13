@@ -120,7 +120,7 @@ function Rouge2_StoreModel:refreshAllBuyState()
 				for _, goodConfig in ipairs(storeGroupDict) do
 					local buyCount = self:getGoodsBuyCount(goodConfig.id)
 
-					if buyCount < goodConfig.maxBuyCount then
+					if goodConfig.maxBuyCount > 0 and buyCount < goodConfig.maxBuyCount then
 						self.storeSaleOutDic[config.id] = false
 						notSoldOut = true
 

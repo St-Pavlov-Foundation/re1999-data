@@ -34,6 +34,10 @@ function HeroGroupPresetController:isFightShowType()
 	return self._showType == HeroGroupPresetEnum.ShowType.Fight
 end
 
+function HeroGroupPresetController:isCopyShowType()
+	return self._showType == HeroGroupPresetEnum.ShowType.Copy
+end
+
 function HeroGroupPresetController:useTrial()
 	return GameSceneMgr.instance:isFightScene()
 end
@@ -62,6 +66,7 @@ function HeroGroupPresetController:openHeroGroupPresetTeamView(param, isImmediat
 	self._showType = param and param.showType or HeroGroupPresetEnum.ShowType.Normal
 	self._heroGroupTypeList = param and param.heroGroupTypeList
 	self._subId = param and param.subId
+	self._targetId = param and param.targetId
 
 	if not self:isFightScene() then
 		HeroGroupModel.instance.episodeId = nil
@@ -267,6 +272,92 @@ end
 
 function HeroGroupPresetController:clearCopyList()
 	self._copyList = nil
+end
+
+function HeroGroupPresetController:copyPresetToOther(groupId, subId, targetGroupId, targetSubId, isDirectSave, callback, callbackObj)
+	local sourceMo
+
+	if groupId == HeroGroupPresetEnum.HeroGroupType.Common then
+		sourceMo = HeroGroupModel.instance:getCommonGroupList(subId)
+	else
+		local snapshotType = HeroGroupPresetEnum.HeroGroupType2SnapshotType[groupId]
+
+		if snapshotType then
+			sourceMo = HeroGroupSnapshotModel.instance:getHeroGroupInfo(snapshotType, subId)
+		end
+	end
+
+	if not sourceMo then
+		logError(string.format("HeroGroupPresetController:copyPresetToOther sourceMo not found, groupId:%s, subId:%s", tostring(groupId), tostring(subId)))
+
+		return
+	end
+
+	local targetMo
+
+	if targetGroupId == HeroGroupPresetEnum.HeroGroupType.Common then
+		targetMo = HeroGroupModel.instance:getCommonGroupList(targetSubId)
+	else
+		local targetSnapshotType = HeroGroupPresetEnum.HeroGroupType2SnapshotType[targetGroupId]
+
+		if targetSnapshotType then
+			targetMo = HeroGroupSnapshotModel.instance:getHeroGroupInfo(targetSnapshotType, targetSubId, true)
+		end
+	end
+
+	if not targetMo then
+		logError(string.format("HeroGroupPresetController:copyPresetToOther targetMo not found, targetGroupId:%s, targetSubId:%s", tostring(targetGroupId), tostring(targetSubId)))
+
+		return
+	end
+
+	local targetId = targetMo.id
+	local targetGroupIdValue = targetMo.groupId
+	local targetName = targetMo.name
+
+	targetMo:init(sourceMo)
+
+	targetMo.id = targetId
+	targetMo.groupId = targetGroupIdValue
+	targetMo.name = targetName
+
+	if sourceMo.aidDict then
+		targetMo.aidDict = {}
+
+		for k, v in pairs(sourceMo.aidDict) do
+			targetMo.aidDict[k] = v
+		end
+	else
+		targetMo.aidDict = nil
+	end
+
+	if sourceMo.trialDict then
+		targetMo.trialDict = {}
+
+		for k, v in pairs(sourceMo.trialDict) do
+			targetMo.trialDict[k] = v
+		end
+	end
+
+	targetMo.assistBossId = sourceMo:getAssistBossId() or 0
+
+	local snapshotId = HeroGroupPresetEnum.HeroGroupType2SnapshotAllType[targetGroupId]
+
+	if not snapshotId then
+		logError(string.format("HeroGroupPresetController:copyPresetToOther snapshotId not found, targetGroupId:%s", tostring(targetGroupId)))
+
+		return nil
+	end
+
+	if not isDirectSave then
+		return targetMo
+	end
+
+	local oldSnapshotType = HeroGroupPresetModel.instance._heroGroupSnapshotType
+
+	HeroGroupPresetModel.instance:setHeroGroupSnapshotType(snapshotId)
+	HeroGroupPresetModel.instance:externalSaveCurGroupData(callback, callbackObj, targetMo, snapshotId, targetSubId)
+	HeroGroupPresetModel.instance:setHeroGroupSnapshotType(oldSnapshotType)
 end
 
 HeroGroupPresetController.instance = HeroGroupPresetController.New()

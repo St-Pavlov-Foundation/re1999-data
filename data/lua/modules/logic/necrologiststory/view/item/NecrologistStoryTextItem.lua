@@ -6,7 +6,13 @@ local NecrologistStoryTextItem = class("NecrologistStoryTextItem", NecrologistSt
 
 function NecrologistStoryTextItem:onInit()
 	self.txtContent = gohelper.findChildTextMesh(self.viewGO, "content/txtContent")
-	self.txtComp = MonoHelper.addNoUpdateLuaComOnceToGo(self.txtContent.gameObject, NecrologistStoryTextComp)
+
+	local resPath = self:getOtherResPath()[1]
+	local res = self:getRes(resPath)
+
+	self.txtComp = MonoHelper.addNoUpdateLuaComOnceToGo(self.txtContent.gameObject, NecrologistStoryTextComp, {
+		wordRes = res
+	})
 	self.linkItemList = {}
 end
 
@@ -28,10 +34,15 @@ function NecrologistStoryTextItem:refreshText(isSkip)
 		mo:setIsAuto(false)
 	end
 
-	if isSkip then
+	local param = string.splitToNumber(storyConfig.param, "#")
+	local animType = param[1] or NecrologistStoryEnum.DialogTextAnimType.Typewriter
+
+	self.txtComp:setAnimType(animType)
+
+	if isSkip and self.txtComp:isCanSkip() then
 		self.txtComp:setTextNormal(desc, self.onTextFinish, self)
 	else
-		self.txtComp:setTextWithTypewriter(desc, self.onFrameUpdateText, self.onTextFinish, self)
+		self.txtComp:setTextWithAnim(desc, self.onFrameUpdateText, self.onTextFinish, self)
 	end
 end
 
@@ -125,7 +136,7 @@ function NecrologistStoryTextItem:hasLinkGuide()
 end
 
 function NecrologistStoryTextItem:justDone()
-	if self:hasLinkGuide() then
+	if self:hasLinkGuide() or not self.txtComp:isCanSkip() then
 		return
 	end
 
@@ -146,6 +157,12 @@ function NecrologistStoryTextItem:onDestroy()
 			v.btn:RemoveClickListener()
 		end
 	end
+end
+
+function NecrologistStoryTextItem.getOtherResPath()
+	return {
+		"ui/viewres/dungeon/rolestory/item/necrologiststoryword.prefab"
+	}
 end
 
 return NecrologistStoryTextItem

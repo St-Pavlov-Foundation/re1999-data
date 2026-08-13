@@ -48,6 +48,7 @@ DungeonEnum.EpisodeType = {
 	Act1_2Daily = 107,
 	DreamTailHard = 129,
 	Season = 11,
+	BossRushActMode = 144,
 	Sodache = 34,
 	Rouge2 = 32,
 	Adventure = 3,

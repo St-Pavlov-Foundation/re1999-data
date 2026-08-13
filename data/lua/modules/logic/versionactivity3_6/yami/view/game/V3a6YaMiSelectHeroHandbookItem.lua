@@ -26,7 +26,7 @@ end
 function V3a6YaMiSelectHeroHandbookItem:onUpdateMO(mo)
 	self.viewContainer = self._view.viewContainer
 
-	V3a6YaMiHeroHandBookItem.super.onUpdateMO(self, mo)
+	V3a6YaMiSelectHeroHandbookItem.super.onUpdateMO(self, mo)
 
 	local index = self._view.viewContainer:getIndexEquipedHero(mo.id)
 	local isEquip = index ~= nil and not mo.isLock
@@ -51,7 +51,7 @@ function V3a6YaMiSelectHeroHandbookItem:_refreshSelect(isSelect)
 end
 
 function V3a6YaMiSelectHeroHandbookItem:_editableInitView()
-	V3a6YaMiHeroHandBookItem.super._editableInitView(self)
+	V3a6YaMiSelectHeroHandbookItem.super._editableInitView(self)
 
 	self._txtselectNum = gohelper.findChildText(self._goselectNum, "#txt_num")
 	self._imgselect = gohelper.findChildImage(self.viewGO, "root/#go_select")

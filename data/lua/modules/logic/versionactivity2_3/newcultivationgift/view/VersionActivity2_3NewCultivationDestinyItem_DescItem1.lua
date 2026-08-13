@@ -26,7 +26,7 @@ function VersionActivity2_3NewCultivationDestinyItem_DescItem1:ctor(ctorParam)
 end
 
 function VersionActivity2_3NewCultivationDestinyItem_DescItem1:onDestroyView()
-	VersionActivity2_3NewCultivationDestinyItem.super.onDestroyView(self)
+	VersionActivity2_3NewCultivationDestinyItem_DescItem1.super.onDestroyView(self)
 	self:__onDispose()
 end
 

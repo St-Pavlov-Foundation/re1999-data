@@ -22,6 +22,7 @@ function VersionActivityFixedDungeonMapScene:addEvents()
 	self:addEventCb(VersionActivityFixedDungeonController.instance, VersionActivityFixedDungeonEvent.OnClickElement, self.onClickElement, self)
 	self:addEventCb(VersionActivityFixedDungeonController.instance, VersionActivityFixedDungeonEvent.FocusElement, self.onFocusElement, self)
 	self:addEventCb(VersionActivityFixedDungeonController.instance, VersionActivityFixedDungeonEvent.ManualClickElement, self.manualClickElement, self)
+	self:addEventCb(DungeonController.instance, DungeonMapElementEvent.OnRecheckElement, self._onRecheckElement, self)
 
 	if self._drag then
 		self._drag:AddDragBeginListener(self._onDragBegin, self)
@@ -39,6 +40,7 @@ function VersionActivityFixedDungeonMapScene:removeEvents()
 	self:removeEventCb(VersionActivityFixedDungeonController.instance, VersionActivityFixedDungeonEvent.OnClickElement, self.onClickElement, self)
 	self:removeEventCb(VersionActivityFixedDungeonController.instance, VersionActivityFixedDungeonEvent.FocusElement, self.onFocusElement, self)
 	self:removeEventCb(VersionActivityFixedDungeonController.instance, VersionActivityFixedDungeonEvent.ManualClickElement, self.manualClickElement, self)
+	self:removeEventCb(DungeonController.instance, DungeonMapElementEvent.OnRecheckElement, self._onRecheckElement, self)
 
 	if self._drag then
 		self._drag:RemoveDragBeginListener()
@@ -94,9 +96,12 @@ function VersionActivityFixedDungeonMapScene:onClickElement(elementComp)
 end
 
 function VersionActivityFixedDungeonMapScene:focusElementByCo(elementCo)
-	local pos = string.splitToNumber(elementCo.pos, "#")
-	local x = -pos[1] or 0
-	local x, y = x, -pos[2] or 0
+	local pos = elementCo and string.splitToNumber(elementCo.pos, "#")
+	local x, y = 0, 0
+
+	if pos and #pos >= 2 then
+		x, y = -pos[1] or 0, -pos[2] or 0
+	end
 
 	self._tempVector:Set(x, y, 0)
 	self:tweenSetScenePos(self._tempVector)
@@ -133,10 +138,10 @@ function VersionActivityFixedDungeonMapScene:changeToElementEpisode(elementId)
 
 	self._mapCfg = lua_chapter_map.configDict[mapId]
 
-	local pos = string.splitToNumber(config.pos, "#")
+	local pos = config and string.splitToNumber(config.pos, "#")
 
-	self.tempInitPosX = -pos[1] or 0
-	self.tempInitPosY = -pos[2] or 0
+	self.tempInitPosX = pos and pos[1] and -pos[1] or 0
+	self.tempInitPosY = pos and pos[2] and -pos[2] or 0
 
 	local episodeId = DungeonConfig.instance:getEpisodeIdByMapCo(self._mapCfg)
 
@@ -527,6 +532,28 @@ function VersionActivityFixedDungeonMapScene:_resetCamera()
 
 	camera.orthographicSize = 5
 	camera.orthographic = false
+end
+
+function VersionActivityFixedDungeonMapScene:getInteractiveItem()
+	if self.viewContainer.getInteractiveItem then
+		return self.viewContainer:getInteractiveItem()
+	end
+end
+
+function VersionActivityFixedDungeonMapScene:_onRecheckElement(elementId, isGM)
+	local elementCo = lua_chapter_map_element.configDict[elementId]
+	local chapterId = self.viewParam.chapterId or self.viewContainer:_getChapterId()
+
+	if not DungeonController.instance:isNeedRecheckInteractive(elementCo) then
+		DungeonController.instance:onRecheckElement(elementId, chapterId)
+
+		return
+	end
+
+	local item = self:getInteractiveItem()
+	local pos = self._sceneTrans.localPosition
+
+	DungeonController.instance:onRecheckElement(elementId, chapterId, item, pos, isGM)
 end
 
 function VersionActivityFixedDungeonMapScene:onDestroyView()

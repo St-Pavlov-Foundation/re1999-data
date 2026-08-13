@@ -124,6 +124,10 @@ function FightCalculateDataMgr:processHurtInfo(actEffectData)
 			end
 		end
 	end
+
+	if hurtInfo.immunityFromType == FightHurtInfoData.ImmunityFromType.Narcissus and hurtInfo.damage == 0 then
+		self:com_sendMsg(FightMsgId.NarcissusImmunityEffect, entityMO.uid)
+	end
 end
 
 function FightCalculateDataMgr:playEffect2(actEffectData)

@@ -95,7 +95,8 @@
       "ui/viewres/versionactivity"
     ],
     "uiPath": [],
-    "packName": "opveract"
+    "packName": "opveract",
+    "ignore": 0
   },
   {
     "id": 12,
@@ -297,7 +298,8 @@
       "ui/viewres/versionactivity_1_2/map"
     ],
     "uiPath": [],
-    "packName": "opveract"
+    "packName": "opveract",
+    "ignore": 0
   },
   {
     "id": 13,
@@ -460,7 +462,8 @@
       "ui/viewres/versionactivity_1_3/v1a3_role2"
     ],
     "uiPath": [],
-    "packName": "opveract"
+    "packName": "opveract",
+    "ignore": 0
   },
   {
     "id": 14,
@@ -507,7 +510,8 @@
       "ui/viewres/versionactivity_1_4/v1a4_37role"
     ],
     "uiPath": [],
-    "packName": "opveract"
+    "packName": "opveract",
+    "ignore": 0
   },
   {
     "id": 15,
@@ -538,6 +542,7 @@
       15403
     ],
     "story": [
+      200500,
       308015,
       308014,
       308013,
@@ -566,7 +571,8 @@
       "1_5_activity_01",
       "1_5_activity_02",
       "1_5_activity_03",
-      "1_5_activity_04"
+      "1_5_activity_04",
+      "1_5_pv"
     ],
     "path": [],
     "uiFolder": [
@@ -575,7 +581,8 @@
       "ui/viewres/versionactivity_1_5/v1a5_kerandian"
     ],
     "uiPath": [],
-    "packName": "opveract"
+    "packName": "opveract",
+    "ignore": 0
   },
   {
     "id": 16,
@@ -616,7 +623,8 @@
       "ui/viewres/versionactivity_1_7/v1a7_marcus"
     ],
     "uiPath": [],
-    "packName": "opveract"
+    "packName": "opveract",
+    "ignore": 0
   },
   {
     "id": 17,
@@ -627,6 +635,7 @@
     "chapter": [],
     "guide": [],
     "story": [
+      200800,
       307701,
       307702,
       307703,
@@ -659,7 +668,8 @@
       "ui/viewres/versionactivity_1_8/v1a8_windsong"
     ],
     "uiPath": [],
-    "packName": "opveract"
+    "packName": "opveract",
+    "ignore": 0
   },
   {
     "id": 18,
@@ -688,6 +698,7 @@
       16303
     ],
     "story": [
+      200600,
       308108,
       308107,
       308106,
@@ -714,7 +725,8 @@
       "1_6_activity_03",
       "1_6_activity_04",
       "1_6_enter",
-      "1_6_kaimu"
+      "1_6_kaimu",
+      "1_6_pv"
     ],
     "path": [],
     "uiFolder": [
@@ -723,7 +735,8 @@
       "ui/viewres/versionactivity_1_6/v1a6_talent"
     ],
     "uiPath": [],
-    "packName": "opveract"
+    "packName": "opveract",
+    "ignore": 0
   },
   {
     "id": 19,
@@ -765,7 +778,8 @@
       "ui/viewres/versionactivity_1_9/v1a9_lucy"
     ],
     "uiPath": [],
-    "packName": "opveract"
+    "packName": "opveract",
+    "ignore": 0
   },
   {
     "id": 20,
@@ -787,6 +801,7 @@
       20010
     ],
     "story": [
+      202000,
       2060101,
       2060102,
       2060103,
@@ -816,7 +831,8 @@
       "ui/viewres/versionactivity_2_0/v2a0_mercuria"
     ],
     "uiPath": [],
-    "packName": "opveract"
+    "packName": "opveract",
+    "ignore": 0
   },
   {
     "id": 21,
@@ -858,6 +874,7 @@
       21307
     ],
     "story": [
+      202100,
       1211401,
       1211402,
       1211403,
@@ -886,7 +903,8 @@
       "ui/viewres/versionactivity_2_1/v2a1_tuesday"
     ],
     "uiPath": [],
-    "packName": "opveract"
+    "packName": "opveract",
+    "ignore": 0
   },
   {
     "id": 24,
@@ -925,6 +943,7 @@
       24409
     ],
     "story": [
+      202400,
       310801,
       310802,
       310803,
@@ -962,7 +981,8 @@
       "ui/viewres/versionactivity_2_4/v2a4_wuerlixi"
     ],
     "uiPath": [],
-    "packName": "opveract"
+    "packName": "opveract",
+    "ignore": 0
   },
   {
     "id": 25,
@@ -1009,7 +1029,8 @@
       "ui/viewres/versionactivity_2_2/v2a2_tianshinana"
     ],
     "uiPath": [],
-    "packName": "opveract"
+    "packName": "opveract",
+    "ignore": 0
   },
   {
     "id": 26,
@@ -1019,6 +1040,7 @@
     "chapter": [],
     "guide": [],
     "story": [
+      202300,
       310401,
       310402,
       310403,
@@ -1057,7 +1079,8 @@
       "ui/viewres/versionactivity_2_3/v2a3_zhixinquaner"
     ],
     "uiPath": [],
-    "packName": "opveract"
+    "packName": "opveract",
+    "ignore": 0
   },
   {
     "id": 22,
@@ -1283,7 +1306,8 @@
     "path": [],
     "uiFolder": [],
     "uiPath": [],
-    "packName": "opexplore"
+    "packName": "opexplore",
+    "ignore": 0
   },
   {
     "id": 27,
@@ -1300,6 +1324,7 @@
     ],
     "guide": [],
     "story": [
+      202500,
       311001,
       311002,
       311003,
@@ -1327,7 +1352,8 @@
       "ui/viewres/versionactivity_2_5/feilinshiduo"
     ],
     "uiPath": [],
-    "packName": "opveract"
+    "packName": "opveract",
+    "ignore": 0
   },
   {
     "id": 28,
@@ -1360,7 +1386,8 @@
       "ui/viewres/versionactivity_2_6/dicehero"
     ],
     "uiPath": [],
-    "packName": "opveract"
+    "packName": "opveract",
+    "ignore": 0
   },
   {
     "id": 29,
@@ -1398,7 +1425,8 @@
     "path": [],
     "uiFolder": [],
     "uiPath": [],
-    "packName": "oppartygame"
+    "packName": "oppartygame",
+    "ignore": 1
   },
   {
     "id": 30,
@@ -1415,6 +1443,7 @@
     ],
     "guide": [],
     "story": [
+      202700,
       311601,
       311602,
       311603,
@@ -1448,7 +1477,8 @@
       "ui/viewres/versionactivity_2_7/v2a7_kubohuahuan"
     ],
     "uiPath": [],
-    "packName": "opveract"
+    "packName": "opveract",
+    "ignore": 0
   },
   {
     "id": 31,
@@ -1492,7 +1522,8 @@
       "ui/viewres/versionactivity_2_8/v2a8_molideer"
     ],
     "uiPath": [],
-    "packName": "opveract"
+    "packName": "opveract",
+    "ignore": 0
   },
   {
     "id": 32,
@@ -1536,7 +1567,8 @@
       "ui/viewres/versionactivity_3_0/v3a0_karong"
     ],
     "uiPath": [],
-    "packName": "opveract"
+    "packName": "opveract",
+    "ignore": 0
   },
   {
     "id": 33,
@@ -1562,7 +1594,8 @@
     "path": [],
     "uiFolder": [],
     "uiPath": [],
-    "packName": "opsodache"
+    "packName": "opsodache",
+    "ignore": 0
   },
   {
     "id": 34,
@@ -1581,6 +1614,7 @@
     ],
     "guide": [],
     "story": [
+      203100,
       313201,
       313202,
       313203,
@@ -1612,6 +1646,7 @@
       "ui/viewres/versionactivity_3_1/v3a1_enter"
     ],
     "uiPath": [],
-    "packName": "opveract"
+    "packName": "opveract",
+    "ignore": 0
   }
 ]

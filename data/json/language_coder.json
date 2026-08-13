@@ -9105,7 +9105,7 @@
   },
   {
     "id": "TravelGo_1",
-    "lang": "阅历"
+    "lang": "阅历+▩1%s"
   },
   {
     "id": "TravelGo_2",
@@ -9802,5 +9802,209 @@
   {
     "id": "sp02_calendar_periphery_locked",
     "lang": "通关活动正篇解锁"
+  },
+  {
+    "id": "v3a9Racing_talent_special_level",
+    "lang": "▩1%s/▩2%s"
+  },
+  {
+    "id": "settings_fight",
+    "lang": "战斗"
+  },
+  {
+    "id": "partygame_lobby_trial_select_has_select",
+    "lang": "选择游戏（▩1%s/▩2%s）"
+  },
+  {
+    "id": "partygame_lobby_trial_count",
+    "lang": "第▩1%s场"
+  },
+  {
+    "id": "v3a9_bpcharge_pay2item_name_num",
+    "lang": "▩1%s×▩2%s"
+  },
+  {
+    "id": "v3a9Racing_role_attr_name1",
+    "lang": "速度"
+  },
+  {
+    "id": "v3a9Racing_role_attr_name2",
+    "lang": "加速度"
+  },
+  {
+    "id": "v3a9Racing_role_attr_name3",
+    "lang": "速度上限"
+  },
+  {
+    "id": "v3a9_rouge2_buy_limit_tip",
+    "lang": "完成限购商品兑换"
+  },
+  {
+    "id": "v3a9_resultview_tips_txt",
+    "lang": "线索记录▩1%s为<#76B360>事实</color>\n线索记录▩2%s为<#E5733F>猜想</color>"
+  },
+  {
+    "id": "v3a9_hedon_game_time1",
+    "lang": "▩1%ss"
+  },
+  {
+    "id": "v3a9_hedon_game_time2",
+    "lang": "▩1%ss/▩2%ss"
+  },
+  {
+    "id": "v3a9Racing_car_target1",
+    "lang": "通关"
+  },
+  {
+    "id": "v3a9Racing_car_target2",
+    "lang": "前%s名通关"
+  },
+  {
+    "id": "v3a9Racing_car_target3",
+    "lang": "%s秒内通关"
+  },
+  {
+    "id": "v3a9Racing_car_congratulations",
+    "lang": "<#D6693C>%s</COLOR>本次成绩刷新个人最佳，祝贺！"
+  },
+  {
+    "id": "v3a9Racing_car_unfinished",
+    "lang": "未完赛"
+  },
+  {
+    "id": "v3a9Racing_car_selectdesc",
+    "lang": "%s，请选择参赛队员"
+  },
+  {
+    "id": "v3a9Racing_car_continue",
+    "lang": "点击继续(%ss)"
+  },
+  {
+    "id": "return4_reward_desc",
+    "lang": "完成任务并累计<sprite=0>积分，可找回离开期间损失的部分奖励。\n司辰离开的天数越长，可从手提箱中找回的奖励越多。"
+  },
+  {
+    "id": "return4_reward_getbonus_1",
+    "lang": "在你离开的日子里，魔精为你存起来一些资源"
+  },
+  {
+    "id": "return4_reward_getbonus_2",
+    "lang": "还需获得<sprite=0>▩1%s后可找回奖励"
+  },
+  {
+    "id": "return4_reward_getbonus_3",
+    "lang": "可找回奖励"
+  },
+  {
+    "id": "return4_reward_refreshtask_all_finish",
+    "lang": "已全部完成"
+  },
+  {
+    "id": "return4_reward_task_refresh",
+    "lang": "▩1%s刷新"
+  },
+  {
+    "id": "return4_reward_rule",
+    "lang": "1.箱中归客活动期间，司辰可以找回离开游戏期间所损失的部分奖励。\n2.完成每日任务即可获得活动积分，累计更多积分可解锁并领取更高档位的奖励。\n3.奖励分为6档，第1档登录即可领取，后续每累计获得4点活动积分可解锁下一档奖励。\n4.司辰离开游戏的天数越长，可找回的奖励数量越多。离开天数超过84天时，可找回的奖励数量达到上限。\n5.每日任务将于第二日的5:00（UTC+8）重置和刷新。\n6.活动结束后，已解锁但未领取的奖励将不会进行补发，请及时领取"
+  },
+  {
+    "id": "v3a9_abyss_stage_not_challenged",
+    "lang": "未挑战"
+  },
+  {
+    "id": "v3a9_rolestoryinteractitem_title_txt",
+    "lang": "线索▩1%s-▩2%s"
+  },
+  {
+    "id": "v3a9_bossrush_expandbonds_activenum",
+    "lang": "▩1%s/▩2%s"
+  },
+  {
+    "id": "TeachingTopicItem_Default",
+    "lang": "敬请期待"
+  },
+  {
+    "id": "v3a9_bossrush_reward",
+    "lang": "<size=25>▩1%s</size>▩2%s"
+  },
+  {
+    "id": "dungeonmap_interactive_finishtask",
+    "lang": "▩1%s▩2%s<color=▩3%s>▩4%s</color>/▩5%s"
+  },
+  {
+    "id": "activity_remain_1",
+    "lang": "活动剩余▩1%s天▩2%s时"
+  },
+  {
+    "id": "activity_remain_2",
+    "lang": "活动剩余▩1%s时▩2%s分"
+  },
+  {
+    "id": "activity_remain_3",
+    "lang": "活动剩余▩1%s分▩2%s秒"
+  },
+  {
+    "id": "character_device_skillpowernum",
+    "lang": "<size=18>▩1%s</size>▩2%s"
+  },
+  {
+    "id": "sceneuipackage_goods_remain",
+    "lang": "▩1%s:▩2%s"
+  },
+  {
+    "id": "day_common",
+    "lang": "▩1%s天"
+  },
+  {
+    "id": "store_buylimit_common",
+    "lang": "限购:▩1%s"
+  },
+  {
+    "id": "SurvivalCeremonyClosingView_2",
+    "lang": "<sprite=▩1%s>×▩2%s"
+  },
+  {
+    "id": "TravelGo_4",
+    "lang": "阅历+▩1%s"
+  },
+  {
+    "id": "herotalent_levelupresult_tip1",
+    "lang": "▩1%s 共鸣提升至"
+  },
+  {
+    "id": "herotalent_levelupresult_tip6",
+    "lang": "▩1%s 觉察提升至"
+  },
+  {
+    "id": "weekwalkview_devicerestart",
+    "lang": "装置重启：▩1%s"
+  },
+  {
+    "id": "activitynovicesignview_reward",
+    "lang": "▩1%s<color=#c66030>▩2%s</color>。"
+  },
+  {
+    "id": "optionalgroupchargeview_rewardItemCount",
+    "lang": "▩1%s▩2%s"
+  },
+  {
+    "id": "survival_report_score",
+    "lang": "▩1%s,▩2%s"
+  },
+  {
+    "id": "p_v3a9_bossrushherogroup_epandbond_tip",
+    "lang": "1.协同角色无需培养，可以直接为队伍提供对应的合作技能。\n2.协同角色在进行调查后将进入锁定状态，不可在其他怪相的调查中作为协同角色使用。\n3.锁定的协同角色，在当前怪相进行积分重置后可解除锁定，重新调整。"
+  },
+  {
+    "id": "p_v3a9_bossrush_actmode_startime_tip",
+    "lang": "▩1%s后开启联合报道"
+  },
+  {
+    "id": "p_v3a9_bossrushleveldetail_txt_Go_1",
+    "lang": "<size=44>开</size>始调<size=44>查</size>"
+  },
+  {
+    "id": "p_v3a9_bossrushleveldetail_txt_Go_2",
+    "lang": "<size=44>重</size>新调<size=44>查</size>"
   }
 ]

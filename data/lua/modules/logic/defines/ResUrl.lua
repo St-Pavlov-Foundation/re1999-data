@@ -152,11 +152,15 @@ function ResUrl.getRolesTimeline()
 end
 
 function ResUrl.getPartyGameTimelineUrl(timelineName)
-	return string.format("modules/party_game/game100/timelines/%s.playable", timelineName)
+	return string.format("modules/party_game/scene/game100/timelines/%s.playable", timelineName)
 end
 
 function ResUrl.getPartyGameTimelineAbName(timelineName)
 	return ResUrl.getPartyGameTimelineUrl(timelineName)
+end
+
+function ResUrl.getPartyTrialPlayPath(gameId)
+	return string.format("modules/party_game/ui/singlebg/v3a4_party_singlebg/trialplay/partygame_trialplay_game_%s.png", gameId)
 end
 
 function ResUrl.getLoginBg(bgNameWithExt)
@@ -357,6 +361,10 @@ end
 
 function ResUrl.getEffect(effectName)
 	return string.format("effects/prefabs/%s.prefab", effectName)
+end
+
+function ResUrl.getPartyGameEffectPath(effectName)
+	return string.format("modules/party_game/scene/effects/%s.prefab", effectName)
 end
 
 function ResUrl.getEffectName(effectPath)
@@ -1791,9 +1799,9 @@ end
 
 function ResUrl.getV3a4PartySingleBg(resName, path)
 	if path then
-		return string.format("singlebg/v3a4_party_singlebg/%s/%s.png", path, resName)
+		return string.format("modules/party_game/ui/singlebg/v3a4_party_singlebg/%s/%s.png", path, resName)
 	else
-		return string.format("singlebg/v3a4_party_singlebg/%s.png", resName)
+		return string.format("modules/party_game/ui/singlebg/v3a4_party_singlebg/%s.png", resName)
 	end
 end
 
@@ -1888,6 +1896,10 @@ end
 
 function ResUrl.getV3a8WarmUpSingleBg(resName)
 	return string.format("singlebg/v3a8_warmup_singlebg/%s.png", resName)
+end
+
+function ResUrl.getV3a9HedoneSingleBg(resName)
+	return string.format("singlebg/v3a9_hedone_singlebg/%s.png", resName)
 end
 
 function ResUrl.getAtomicSingleBg(resName)

@@ -13,7 +13,7 @@ function CardDropCommonPlayerItem.Create(go)
 end
 
 function CardDropCommonPlayerItem:init(go)
-	CardDropCommonPlayerItem.super.__onInit(self)
+	self:__onInit()
 
 	self.go = go
 
@@ -117,7 +117,7 @@ function CardDropCommonPlayerItem:playAnim(animName)
 end
 
 function CardDropCommonPlayerItem:onDestroy()
-	CardDropCommonPlayerItem.super.__onDispose(self)
+	self:__onDispose()
 end
 
 return CardDropCommonPlayerItem

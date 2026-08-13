@@ -9,7 +9,7 @@ function PartyClothViewDefine.init(module_views)
 		bgBlur = 2,
 		container = "PartyClothViewContainer",
 		destroy = 0,
-		mainRes = "ui/viewres/partygame/cloth/partyclothview.prefab",
+		mainRes = "modules/party_game/ui/viewres/cloth/partyclothview.prefab",
 		layer = "POPUP_TOP",
 		viewType = ViewType.Normal,
 		anim = ViewAnim.Internal,
@@ -28,7 +28,7 @@ function PartyClothViewDefine.init(module_views)
 	module_views.PartyClothLotteryView = {
 		destroy = 0,
 		container = "PartyClothLotteryViewContainer",
-		mainRes = "ui/viewres/partygame/cloth/partyclothlotteryview.prefab",
+		mainRes = "modules/party_game/ui/viewres/cloth/partyclothlotteryview.prefab",
 		layer = "POPUP_TOP",
 		viewType = ViewType.Normal,
 		anim = ViewAnim.Internal,
@@ -52,7 +52,7 @@ function PartyClothViewDefine.init(module_views)
 	module_views.PartyClothRewardView = {
 		destroy = 0,
 		container = "PartyClothRewardViewContainer",
-		mainRes = "ui/viewres/partygame/cloth/partyclothrewardview.prefab",
+		mainRes = "modules/party_game/ui/viewres/cloth/partyclothrewardview.prefab",
 		layer = "POPUP_TOP",
 		viewType = ViewType.Modal,
 		otherRes = {
@@ -70,7 +70,7 @@ function PartyClothViewDefine.init(module_views)
 	module_views.PartyClothLoadingView = {
 		destroy = 0,
 		container = "PartyClothLoadingViewContainer",
-		mainRes = "ui/viewres/partygame/cloth/partyclothloadingview.prefab",
+		mainRes = "modules/party_game/ui/viewres/cloth/partyclothloadingview.prefab",
 		layer = "POPUP_TOP",
 		viewType = ViewType.Modal
 	}

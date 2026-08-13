@@ -86,7 +86,7 @@ function FightSpineRendererComp:getSpineRenderMat()
 	end
 
 	if self.waitingReplaceMat then
-		logError("spine 替换材质球之后，还未等LateUpdate生效，就再次获取了材质球")
+		-- block empty
 	end
 
 	return self._spineRenderer.material

@@ -334,5 +334,53 @@
     "skill1": "31494111#1#0|31495121#1#3",
     "skill2": "31494131#2#0|31495141#2#1",
     "uniqueSkill": "31495151"
+  },
+  {
+    "id": 31560001,
+    "powerSkill": "31446011#3|31446012#2",
+    "specialPowerSkill": "",
+    "skill1": "31560111#1#0",
+    "skill2": "31560121#1#2",
+    "uniqueSkill": "31560131"
+  },
+  {
+    "id": 31560011,
+    "powerSkill": "31446011#2|31446012#3",
+    "specialPowerSkill": "",
+    "skill1": "31560112#1#0",
+    "skill2": "31560122#1#2",
+    "uniqueSkill": "31560132"
+  },
+  {
+    "id": 31560021,
+    "powerSkill": "31446012#5",
+    "specialPowerSkill": "",
+    "skill1": "31560113#1#0",
+    "skill2": "31560122#1#2",
+    "uniqueSkill": "31560133"
+  },
+  {
+    "id": 31560031,
+    "powerSkill": "31446012#5",
+    "specialPowerSkill": "",
+    "skill1": "31560114#1#0",
+    "skill2": "31560122#1#2",
+    "uniqueSkill": "31560134"
+  },
+  {
+    "id": 31560041,
+    "powerSkill": "31446012#5",
+    "specialPowerSkill": "",
+    "skill1": "31560114#1#0",
+    "skill2": "31560123#1#2",
+    "uniqueSkill": "31560135"
+  },
+  {
+    "id": 31560051,
+    "powerSkill": "31446012#3|31446013#2",
+    "specialPowerSkill": "",
+    "skill1": "31560114#1#0",
+    "skill2": "31560123#1#2",
+    "uniqueSkill": "31560136"
   }
 ]

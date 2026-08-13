@@ -421,6 +421,7 @@ function HeroGroupHeroItem:onUpdateMO(mo)
 	self._heroMO = mo:getHeroMO()
 	self.monsterCO = mo:getMonsterCO()
 	self.trialCO = mo:getTrialCO()
+	self.assistMo = mo:getAssist()
 
 	gohelper.setActive(self._replayReady, HeroGroupModel.instance:getCurGroupMO().isReplay)
 
@@ -437,7 +438,7 @@ function HeroGroupHeroItem:onUpdateMO(mo)
 	end
 
 	if self._heroMO then
-		local heroSkin = HeroModel.instance:getByHeroId(self._heroMO.heroId)
+		local heroSkin = self.assistMo or HeroModel.instance:getByHeroId(self._heroMO.heroId)
 		local skinConfig = FightConfig.instance:getSkinCO(replay_data and replay_data.skin or heroSkin.skin)
 
 		self._commonHeroCard:onUpdateMO(skinConfig)
@@ -573,7 +574,7 @@ function HeroGroupHeroItem:onUpdateMO(mo)
 
 	transformhelper.setLocalPosXY(self._tagTr, 36.3, self._subGO.activeSelf and 144.1 or 212.1)
 
-	if self.trialCO then
+	if self.trialCO or self.assistMo then
 		gohelper.setActive(self._trialTagGO, true)
 
 		self._trialTagTxt.text = luaLang("herogroup_trial_tag0")

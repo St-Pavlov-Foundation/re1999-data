@@ -51,6 +51,8 @@ function HeroGroupEditView:onInitView()
 	self._txtrecommendAttrDesc = gohelper.findChildText(self.viewGO, "#go_recommendAttr/bg/#txt_desc")
 	self._goattrlist = gohelper.findChild(self.viewGO, "#go_recommendAttr/bg/#go_attrlist")
 	self._goattritem = gohelper.findChild(self.viewGO, "#go_recommendAttr/bg/#go_attrlist/#go_attritem")
+	self._btnassist = gohelper.findChildButtonWithAudio(self.viewGO, "#go_ops/#btn_assist")
+	self._btnrelease = gohelper.findChildButtonWithAudio(self.viewGO, "#go_ops/#btn_release")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -71,6 +73,8 @@ function HeroGroupEditView:addEvents()
 	self._btncancel:AddClickListener(self._btncancelOnClick, self)
 	self._btnpassiveskill:AddClickListener(self._btnpassiveskillOnClick, self)
 	self._btnquickedit:AddClickListener(self._btnquickeditOnClick, self)
+	self._btnassist:AddClickListener(self._btnassistOnClick, self)
+	self._btnrelease:AddClickListener(self._btnreleaseOnClick, self)
 end
 
 function HeroGroupEditView:removeEvents()
@@ -87,6 +91,8 @@ function HeroGroupEditView:removeEvents()
 	self._btncancel:RemoveClickListener()
 	self._btnpassiveskill:RemoveClickListener()
 	self._btnquickedit:RemoveClickListener()
+	self._btnassist:RemoveClickListener()
+	self._btnrelease:RemoveClickListener()
 end
 
 function HeroGroupEditView:_btnclassifyOnClick()
@@ -123,6 +129,10 @@ function HeroGroupEditView:_btnpassiveskillOnClick()
 end
 
 function HeroGroupEditView:_btnconfirmOnClick()
+	if not self._singleGroupMOId then
+		return
+	end
+
 	if self._isShowQuickEdit then
 		local newHeroUids = HeroGroupQuickEditListModel.instance:getHeroUids()
 
@@ -199,6 +209,16 @@ function HeroGroupEditView:_btnconfirmOnClick()
 	end
 
 	if self._heroMO then
+		local editorAssistMo = HeroGroupModel.instance:getEditorAssistMo()
+		local isEditorAssist = editorAssistMo and editorAssistMo.heroUid == self._heroMO.uid
+
+		if isEditorAssist then
+			self:_saveCurGroupInfo()
+			self:closeThis()
+
+			return
+		end
+
 		if self._adventure then
 			local cd = WeekWalkModel.instance:getCurMapHeroCd(self._heroMO.heroId)
 
@@ -444,8 +464,8 @@ end
 
 function HeroGroupEditView:_refreshMainInfo()
 	if self._heroMO then
-		gohelper.setActive(self._btntrial.gameObject, self._heroMO:isTrial())
-		gohelper.setActive(self._btntrialWithTalent.gameObject, self._heroMO:isTrial())
+		gohelper.setActive(self._btntrial.gameObject, self._heroMO:isTrial() or self._heroMO:isOtherPlayerHero())
+		gohelper.setActive(self._btntrialWithTalent.gameObject, self._heroMO:isTrial() or self._heroMO:isOtherPlayerHero())
 		UISpriteSetMgr.instance:setCommonSprite(self._imagecareericon, "sx_biandui_" .. tostring(self._heroMO.config.career))
 		UISpriteSetMgr.instance:setCommonSprite(self._imagedmgtype, "dmgtype" .. tostring(self._heroMO.config.dmgType))
 
@@ -718,6 +738,34 @@ end
 
 function HeroGroupEditView:_saveCurGroupInfo()
 	local newHeroUids = HeroSingleGroupModel.instance:getHeroUids()
+	local editorAssistMo = HeroGroupModel.instance:getEditorAssistMo()
+	local _, assistMo = HeroGroupModel.instance:getAssistMo()
+
+	if self._heroMO then
+		if editorAssistMo and editorAssistMo.heroUid == self._heroMO.uid then
+			HeroGroupModel.instance:setAssistMo(editorAssistMo, index or self._singleGroupMOId)
+			HeroGroupController.instance:dispatchEvent(HeroGroupEvent.OnModifyHeroGroup)
+
+			return
+		end
+
+		if assistMo and assistMo.heroUid == self._heroMO.uid then
+			if newHeroUids[self._singleGroupMOId] ~= self._heroMO.uid then
+				HeroSingleGroupModel.instance:remove(newHeroUids[self._singleGroupMOId])
+				HeroGroupModel.instance:saveCurGroupData()
+			end
+
+			assistMo:swapAssist(assistMo.assistMo, self._singleGroupMOId)
+
+			return
+		end
+	end
+
+	if assistMo and self._originalHeroUid == assistMo.heroUid then
+		HeroGroupModel.instance:clearCurAssist(false)
+		HeroGroupController.instance:dispatchEvent(HeroGroupEvent.OnModifyHeroGroup)
+	end
+
 	local heroGroupMO = HeroGroupModel.instance:getCurGroupMO()
 
 	self:replaceSelectHeroDefaultEquip()
@@ -728,31 +776,62 @@ end
 
 function HeroGroupEditView:_saveQuickGroupInfo()
 	if HeroGroupQuickEditListModel.instance:getIsDirty() then
+		local _, assistMo = HeroGroupModel.instance:getAssistMo()
+		local editorAssistMo = HeroGroupModel.instance:getEditorAssistMo()
 		local newHeroUids = HeroGroupQuickEditListModel.instance:getHeroUids()
 		local heroGroupMO = HeroGroupModel.instance:getCurGroupMO()
 
 		self:replaceQuickGroupHeroDefaultEquip(newHeroUids)
 
+		local assistPos
+
 		for i = 1, HeroGroupModel.instance:getBattleRoleNum() do
 			local heroUid = newHeroUids[i]
 
 			if heroUid ~= nil then
-				HeroSingleGroupModel.instance:addTo(heroUid, i)
-
-				local singleGroupMO = HeroSingleGroupModel.instance:getByIndex(i)
-
-				if tonumber(heroUid) < 0 then
+				if editorAssistMo and heroUid ~= "0" then
 					local heroMO = HeroGroupTrialModel.instance:getById(heroUid)
 
-					if heroMO then
-						singleGroupMO:setTrial(heroMO.trialCo.id, heroMO.trialCo.trialTemplate)
+					if heroMO and heroMO.heroId == editorAssistMo.heroId then
+						HeroSingleGroupModel.instance:remove(heroMO.heroUid)
+						HeroGroupModel.instance:saveCurGroupData()
+
+						break
+					end
+				end
+
+				if editorAssistMo and heroUid == editorAssistMo.heroUid then
+					HeroGroupModel.instance:setAssistMo(editorAssistMo, i)
+
+					assistPos = i
+				elseif not assistMo or assistMo.heroUid ~= heroUid then
+					HeroSingleGroupModel.instance:addTo(heroUid, i)
+
+					local singleGroupMO = HeroSingleGroupModel.instance:getByIndex(i)
+
+					if tonumber(heroUid) < 0 then
+						local heroMO = HeroGroupTrialModel.instance:getById(heroUid)
+
+						if heroMO then
+							singleGroupMO:setTrial(heroMO.trialCo.id, heroMO.trialCo.trialTemplate)
+						else
+							singleGroupMO:setTrial()
+						end
 					else
 						singleGroupMO:setTrial()
 					end
-				else
-					singleGroupMO:setTrial()
 				end
 			end
+		end
+
+		if assistPos then
+			local singleGroupMO = HeroSingleGroupModel.instance:getByIndex(assistPos)
+
+			if singleGroupMO and singleGroupMO.heroUid ~= "0" and HeroSingleGroupModel.instance:hasHeroUids(singleGroupMO.heroUid, assistPos) then
+				HeroSingleGroupModel.instance:removeFrom(assistPos)
+			end
+		else
+			HeroGroupModel.instance:clearCurAssist(false)
 		end
 
 		HeroGroupModel.instance:replaceSingleGroup()
@@ -909,10 +988,18 @@ function HeroGroupEditView:_getGroupType()
 end
 
 function HeroGroupEditView:onOpen()
-	self._isShowQuickEdit = false
+	self._isShowQuickEdit = self.viewParam.isQiuckEditor or false
 	self._scrollcard.verticalNormalizedPosition = 1
 	self._scrollquickedit.verticalNormalizedPosition = 1
+
+	local _, assistMo = HeroGroupModel.instance:getAssistMo()
+
 	self._originalHeroUid = self.viewParam.originalHeroUid
+
+	if assistMo and assistMo.id == self.viewParam.singleGroupMOId then
+		self._originalHeroUid = assistMo.heroUid
+	end
+
 	self._singleGroupMOId = self.viewParam.singleGroupMOId
 	self._adventure = self.viewParam.adventure
 	self._equips = self.viewParam.equips
@@ -926,6 +1013,10 @@ function HeroGroupEditView:onOpen()
 	HeroGroupQuickEditListModel.instance:setParam(self._adventure, self._isTowerBattle, self._groupType)
 
 	self._heroMO = HeroGroupEditListModel.instance:copyCharacterCardList(true)
+
+	if self._isShowQuickEdit then
+		HeroGroupQuickEditListModel.instance:copyQuickEditCardList()
+	end
 
 	self:_refreshEditMode()
 	self:_refreshBtnIcon()
@@ -958,6 +1049,8 @@ function HeroGroupEditView:onOpen()
 	gohelper.addUIClickAudio(self._btncharacter.gameObject, AudioEnum.UI.UI_Common_Click)
 
 	_, self._initScrollContentPosY = transformhelper.getLocalPos(self._goScrollContent.transform)
+
+	self:_refreshAssistBtn()
 end
 
 function HeroGroupEditView:onClose()
@@ -1038,6 +1131,59 @@ function HeroGroupEditView:_onFilterList(param)
 	self:_refreshCurScrollBySort()
 	ViewMgr.instance:closeView(ViewName.CharacterLevelUpView)
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_hero_card_property)
+end
+
+function HeroGroupEditView:_btnassistOnClick()
+	if not self._episdoeType then
+		return
+	end
+
+	local assistType = PickAssistEnum.EpisdoeTypeAssistType[self._episdoeType]
+
+	if not assistType then
+		return
+	end
+
+	PickAssistController.instance:openPickAssistView(assistType, self._episdoeActId, nil, self._pickOverCallBack, self, true)
+end
+
+function HeroGroupEditView:_pickOverCallBack(mo)
+	self:_setAssistMo(mo)
+	self:_onGroupModify()
+	self:_refreshAssistBtn()
+
+	if self._isShowQuickEdit then
+		self._scrollquickedit.verticalNormalizedPosition = 1
+	else
+		self._scrollcard.verticalNormalizedPosition = 1
+	end
+
+	HeroGroupController.instance:dispatchEvent(HeroGroupEvent.OnModifyHeroGroup)
+end
+
+function HeroGroupEditView:_setAssistMo(mo)
+	if self._episdoeType == DungeonEnum.EpisodeType.V3_2ZongMao then
+		V3a2_BossRushModel.instance:setEditorAssistMo(mo)
+	end
+end
+
+function HeroGroupEditView:_btnreleaseOnClick()
+	HeroGroupModel.instance:clearCurAssist(true)
+	self:_refreshAssistBtn()
+	self:_onGroupModify()
+	HeroGroupController.instance:dispatchEvent(HeroGroupEvent.OnModifyHeroGroup)
+	GameFacade.showToast(ToastEnum.CancelAssist)
+end
+
+function HeroGroupEditView:_refreshAssistBtn()
+	local isAllow, assistMo, episdoeType, actId = HeroGroupModel.instance:getAssistMo()
+	local editorAssistMo = HeroGroupModel.instance:getEditorAssistMo()
+
+	self._episdoeType = episdoeType
+	self._episdoeActId = actId
+
+	gohelper.setActive(self._btnassist.gameObject, isAllow and assistMo == nil and editorAssistMo == nil)
+	gohelper.setActive(self._btnrelease.gameObject, isAllow and (assistMo ~= nil or editorAssistMo ~= nil))
 end
 
 function HeroGroupEditView:onDestroyView()

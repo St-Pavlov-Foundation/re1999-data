@@ -32,7 +32,8 @@ function TaskConfigGetDefine:ctor()
 		[TaskEnum.TaskType.Abyss] = TaskConfigGetDefine._getAbyssTask,
 		[TaskEnum.TaskType.Act231] = TaskConfigGetDefine._getAct231Task,
 		[TaskEnum.TaskType.ActBp] = TaskConfigGetDefine._getActBpTask,
-		[TaskEnum.TaskType.Activity220] = TaskConfigGetDefine._getAct220Task
+		[TaskEnum.TaskType.Activity220] = TaskConfigGetDefine._getAct220Task,
+		[TaskEnum.TaskType.Turnback] = TaskConfigGetDefine._getTurnBackTask
 	}
 end
 
@@ -136,6 +137,10 @@ end
 
 function TaskConfigGetDefine._getAct220Task(id)
 	return lua_activity220_task.configDict[id]
+end
+
+function TaskConfigGetDefine._getTurnBackTask(id)
+	return TurnbackConfig.instance:getTurnbackTaskCo(id)
 end
 
 TaskConfigGetDefine.instance = TaskConfigGetDefine.New()

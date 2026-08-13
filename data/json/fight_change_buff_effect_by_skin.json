@@ -412,5 +412,59 @@
     "duration": 0.0,
     "effectHangPoint": "special4",
     "audio": 0
+  },
+  {
+    "effectPath": "v3a6_ym/ym_innate3",
+    "target": 1,
+    "skinId": 314303,
+    "changedPath": "v3a9_ym/ym_innate3",
+    "duration": 0.0,
+    "effectHangPoint": "mountroot",
+    "audio": 0
+  },
+  {
+    "effectPath": "v3a2_hdl/hdl_dnjx_innate",
+    "target": 1,
+    "skinId": 313503,
+    "changedPath": "v3a9_hdl/hdl_dnjx_innate",
+    "duration": 0.0,
+    "effectHangPoint": "mountroot",
+    "audio": 0
+  },
+  {
+    "effectPath": "v3a2_hdl/hdl_dnjx_innate_hit",
+    "target": 1,
+    "skinId": 313503,
+    "changedPath": "v3a9_hdl/hdl_dnjx_innate_hit",
+    "duration": 0.0,
+    "effectHangPoint": "mountroot",
+    "audio": 431350325
+  },
+  {
+    "effectPath": "v3a7_wmz/wmz_innate",
+    "target": 1,
+    "skinId": 314704,
+    "changedPath": "v3a9_wmz/wmz_innate",
+    "duration": 0.0,
+    "effectHangPoint": "mountroot",
+    "audio": 0
+  },
+  {
+    "effectPath": "v2a8_mlde/mlde_skill2_innate",
+    "target": 1,
+    "skinId": 312104,
+    "changedPath": "v3a9_mlde/mlde_skill2_innate",
+    "duration": 0.0,
+    "effectHangPoint": "mountroot",
+    "audio": 0
+  },
+  {
+    "effectPath": "v2a8_mlde/mlde_skill2_innate_02",
+    "target": 1,
+    "skinId": 312104,
+    "changedPath": "v3a9_mlde/mlde_skill2_innate_2",
+    "duration": 0.0,
+    "effectHangPoint": "mountroot",
+    "audio": 0
   }
 ]

@@ -78,7 +78,10 @@ function FightBuffGetDescHelper.getBuffFeatureHandle(feature)
 			[FightEnum.BuffFeature.LostHpToFakeHp] = FightBuffGetDescHelper.getLostHpToFakeHpDesc,
 			[FightEnum.BuffFeature.AttrFromEntityNoLayer] = FightBuffGetDescHelper.getAttrDesc,
 			[FightEnum.BuffFeature.FoundationCounter] = FightBuffGetDescHelper.formatActInfoTwoParam,
-			[FightEnum.BuffFeature.FoundationShield] = FightBuffGetDescHelper.onFoundationShield
+			[FightEnum.BuffFeature.FoundationShield] = FightBuffGetDescHelper.onFoundationShield,
+			[FightEnum.BuffFeature.HedoneHurtCounter] = FightBuffGetDescHelper.formatActInfoOneParam,
+			[FightEnum.BuffFeature.NarcissusCounterDamageImmune] = FightBuffGetDescHelper.getNarcissusCounterDamageImmuneDesc,
+			[FightEnum.BuffFeature.NarcissusAddAttrByPassionEx] = FightBuffGetDescHelper.formatActInfoOneParam
 		}
 	end
 
@@ -291,6 +294,42 @@ function FightBuffGetDescHelper.onFoundationShield(buffMo, buffCo, buffActCo, pa
 	end
 
 	return GameUtil.getSubPlaceholderLuaLangOneParam(buffCo.desc, value)
+end
+
+function FightBuffGetDescHelper.getHedoneHurtCounterDesc(buffMo, buffCo, buffActCo, paramArray, buffActInfo)
+	local param = buffActInfo.param
+
+	return buffCo.desc .. string.format(". %s/%s", param[1], param[2])
+end
+
+function FightBuffGetDescHelper.getNarcissusCounterDamageImmuneDesc(buffMo, buffCo, buffActCo, paramArray, buffActInfo)
+	local param = buffActInfo.param
+	local paramTwo = param[1]
+	local entityId = buffMo.fromUid
+	local entityData = FightDataHelper.entityMgr:getById(entityId)
+
+	if entityData then
+		local tarFeatureType = FightEnum.BuffFeature.NarcissusHealToCounter
+		local hasFeature, tarBuffData = entityData:hasBuffFeature(tarFeatureType)
+
+		if hasFeature then
+			local actInfo = tarBuffData.actInfo
+
+			if actInfo then
+				for i, v in ipairs(actInfo) do
+					local config = lua_buff_act.configDict[v.actId]
+
+					if config.type == tarFeatureType then
+						paramTwo = v.param[1] or ""
+
+						break
+					end
+				end
+			end
+		end
+	end
+
+	return GameUtil.getSubPlaceholderLuaLangTwoParam(buffCo.desc, param[1], paramTwo)
 end
 
 return FightBuffGetDescHelper

@@ -13,5 +13,15 @@
     "id": 3,
     "switchgroup": "Checkpointstate",
     "switchstate": "Victory"
+  },
+  {
+    "id": 4,
+    "switchgroup": "AVGmusic",
+    "switchstate": "state1"
+  },
+  {
+    "id": 5,
+    "switchgroup": "AVGmusic",
+    "switchstate": "state2"
   }
 ]

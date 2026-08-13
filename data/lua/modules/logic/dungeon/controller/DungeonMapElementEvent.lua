@@ -17,5 +17,7 @@ DungeonMapElementEvent.OnClickExploreElement = 90310
 DungeonMapElementEvent.OnNormalDungeonInitElements = 90311
 DungeonMapElementEvent.OnElementAdd = 90312
 DungeonMapElementEvent.OnElementRemove = 90313
+DungeonMapElementEvent.OnRecheckElement = 90314
+DungeonMapElementEvent.OnRecheckInteractive = 90315
 
 return DungeonMapElementEvent

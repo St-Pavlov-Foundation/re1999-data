@@ -120,14 +120,17 @@ end
 
 function AbyssFightSuccView:_refreshHeroGroup()
 	local fightParam = FightModel.instance:getFightParam()
-	local heroEquipList, subHeroEquipList = fightParam:getHeroEquipMoListWithTrial()
 
 	for i = 1, ModuleEnum.MaxHeroCountInGroup do
+		local heroUid = fightParam.mySideUids[i]
+		local equip = fightParam.equips[i]
+		local equipUid = equip and equip.equipUid[1]
+		local heroMo = HeroModel.instance:getById(heroUid)
+		local equipMo = EquipModel.instance:getEquip(equipUid)
 		local heroItem = self.heroItemList[i]
-		local mo = heroEquipList[i]
 
-		if mo then
-			heroItem:setData(mo.heroMo, mo.equipMo)
+		if heroMo then
+			heroItem:setData(heroMo, equipMo)
 		else
 			heroItem:setData()
 		end

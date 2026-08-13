@@ -145,6 +145,26 @@ function MainThumbnailView:onOpen()
 	local isReview = VersionValidator.instance:isInReviewing()
 
 	gohelper.setActive(self._gobanner, not isReview)
+
+	if self.viewParam and self.viewParam.isSwitch then
+		self:_justSwithView()
+	end
+end
+
+function MainThumbnailView:_justSwithView()
+	local player = SLFramework.AnimatorPlayer.Get(self.viewGO)
+
+	player:Play(UIAnimationName.Close, self.onPlayCloseTransitionFinish, self)
+	TaskDispatcher.cancelTask(self._justSwithViewCb, self)
+	TaskDispatcher.runDelay(self._justSwithViewCb, self, 0.3)
+end
+
+function MainThumbnailView:_justSwithViewCb()
+	if self.viewParam and self.viewParam.jumpTabs then
+		local tab = self.viewParam.jumpTabs and self.viewParam.jumpTabs[1]
+
+		ViewMgr.instance:openTabView(ViewName.MainSwitchView, self.viewParam, nil, tab or 1)
+	end
 end
 
 function MainThumbnailView:_freshBtns()
@@ -174,6 +194,7 @@ end
 function MainThumbnailView:onClose()
 	UIBlockMgr.instance:endBlock("MainThumbnailView_CloseAnim")
 	self:removeEventCb(CharacterController.instance, CharacterEvent.MainThumbnailSignature, self.RefreshSignature, self)
+	TaskDispatcher.cancelTask(self._justSwithViewCb, self)
 end
 
 function MainThumbnailView:onDestroyView()

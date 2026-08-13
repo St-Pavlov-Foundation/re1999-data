@@ -63,8 +63,8 @@ PartyGameLobbyEnum.FriendState = {
 	Normal = 0
 }
 PartyGameLobbyEnum.TipsRes = {
-	Invite = "ui/viewres/partygame/main/partygame_invitetipsitem.prefab",
-	Join = "ui/viewres/partygame/main/partygame_roomtipsitem.prefab"
+	Invite = "modules/party_game/ui/viewres/main/partygame_invitetipsitem.prefab",
+	Join = "modules/party_game/ui/viewres/main/partygame_roomtipsitem.prefab"
 }
 PartyGameLobbyEnum.SceneLevelId = {
 	Lottery = 3,
@@ -72,9 +72,9 @@ PartyGameLobbyEnum.SceneLevelId = {
 	Dress = 2
 }
 PartyGameLobbyEnum.SceneUrl = {
-	[PartyGameLobbyEnum.SceneLevelId.Lobby] = "modules/party_game/game_home/prefabs/party_game_home_p.prefab",
-	[PartyGameLobbyEnum.SceneLevelId.Dress] = "modules/party_game/game_home/prefabs/party_game_home_huanzhuang_p.prefab",
-	[PartyGameLobbyEnum.SceneLevelId.Lottery] = "modules/party_game/game_home/prefabs/party_game_home_choujiang_p.prefab"
+	[PartyGameLobbyEnum.SceneLevelId.Lobby] = "modules/party_game/scene/game_home/prefabs/party_game_home_p.prefab",
+	[PartyGameLobbyEnum.SceneLevelId.Dress] = "modules/party_game/scene/game_home/prefabs/party_game_home_huanzhuang_p.prefab",
+	[PartyGameLobbyEnum.SceneLevelId.Lottery] = "modules/party_game/scene/game_home/prefabs/party_game_home_choujiang_p.prefab"
 }
 PartyGameLobbyEnum.CameraId = {
 	[PartyGameLobbyEnum.SceneLevelId.Lobby] = 24,

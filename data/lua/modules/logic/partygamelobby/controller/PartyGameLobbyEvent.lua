@@ -5,6 +5,8 @@ module("modules.logic.partygamelobby.controller.PartyGameLobbyEvent", package.se
 local PartyGameLobbyEvent = _M
 local _get = GameUtil.getUniqueTb()
 
+PartyGameLobbyEvent.onReceivePartyServerListReply = _get()
+PartyGameLobbyEvent.onReceiveCheckPartyRoomInfoReply = _get()
 PartyGameLobbyEvent.OpenTimeStatusChange = _get()
 PartyGameLobbyEvent.MatchStatusPush = _get()
 PartyGameLobbyEvent.MatchStatusChange = _get()
@@ -32,5 +34,7 @@ PartyGameLobbyEvent.PartyInviteRefusePush = _get()
 PartyGameLobbyEvent.GetInteractionPush = _get()
 PartyGameLobbyEvent.GetPosPush = _get()
 PartyGameLobbyEvent.ChangePlayerWearClothIds = _get()
+PartyGameLobbyEvent.TrialSelectFinish = _get()
+PartyGameLobbyEvent.TrialSelect = _get()
 
 return PartyGameLobbyEvent

@@ -48,11 +48,6 @@ function IgorGameMO:resetGame()
 	IgorController.instance:dispatchEvent(IgorEvent.OnGameReset)
 end
 
-function IgorGameMO:resetGame()
-	self:initGame()
-	IgorController.instance:dispatchEvent(IgorEvent.OnGameReset)
-end
-
 function IgorGameMO:setInited()
 	self._isInited = true
 

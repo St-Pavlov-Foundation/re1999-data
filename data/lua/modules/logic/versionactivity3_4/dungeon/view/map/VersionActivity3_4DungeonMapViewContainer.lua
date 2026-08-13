@@ -18,11 +18,11 @@ function VersionActivity3_4DungeonMapViewContainer:buildViews()
 	return views
 end
 
-function VersionActivityFixedDungeonMapViewContainer:showTimeline()
+function VersionActivity3_4DungeonMapViewContainer:showTimeline()
 	return self._dungeonMapControlView:showTimeline()
 end
 
-function VersionActivityFixedDungeonMapViewContainer:getDungeonMapElementReward()
+function VersionActivity3_4DungeonMapViewContainer:getDungeonMapElementReward()
 	return VersionActivity3_4DungeonMapElementReward.New()
 end
 

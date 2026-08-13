@@ -19,6 +19,7 @@ function V1a4_BossRush_HeroGroupItem1:init(go)
 	self._gostar5 = gohelper.findChild(go, "#go_hero/layout/vertical/go_starList/#go_star5")
 	self._gostar6 = gohelper.findChild(go, "#go_hero/layout/vertical/go_starList/#go_star6")
 	self._goequip = gohelper.findChild(go, "#go_hero/layout/#go_equip")
+	self._goTrialTag = gohelper.findChild(go, "#go_hero/trialTag")
 	self._imageequiprare = gohelper.findChildImage(go, "#go_hero/layout/#go_equip/#image_equiprare")
 	self._imageequipicon = gohelper.findChildImage(go, "#go_hero/layout/#go_equip/#image_equipicon")
 

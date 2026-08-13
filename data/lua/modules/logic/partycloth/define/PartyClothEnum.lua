@@ -13,9 +13,9 @@ PartyClothEnum.ClothType = {
 	Shoes = 4
 }
 PartyClothEnum.ResPath = {
-	LotterySuitItem = "ui/viewres/partygame/cloth/partyclothlotterysuititem.prefab",
-	SuitItem = "ui/viewres/partygame/cloth/partyclothsuititem.prefab",
-	PartItem = "ui/viewres/partygame/cloth/partyclothpartitem.prefab"
+	LotterySuitItem = "modules/party_game/ui/viewres/cloth/partyclothlotterysuititem.prefab",
+	SuitItem = "modules/party_game/ui/viewres/cloth/partyclothsuititem.prefab",
+	PartItem = "modules/party_game/ui/viewres/cloth/partyclothpartitem.prefab"
 }
 PartyClothEnum.ClothLangTxt = {
 	[PartyClothEnum.ClothType.Hat] = "p_partyclothview_txt_Hair",

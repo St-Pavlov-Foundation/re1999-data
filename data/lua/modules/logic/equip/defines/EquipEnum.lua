@@ -28,7 +28,8 @@ EquipEnum.FromViewEnum = {
 	FromTwinssychubeEquipInfoView = 13,
 	FromRougeHeroGroupFightView = 7,
 	FromCachotHeroGroupFightView = 5,
-	FromPresetPreviewView = 11
+	FromPresetPreviewView = 11,
+	V3a9_BossRush_HeroGroupListView = 14
 }
 EquipEnum.ConstId = {
 	equipNotShowRefineRare = 16

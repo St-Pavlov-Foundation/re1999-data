@@ -119,7 +119,7 @@ function GMLangTxtView:_onSearchValueChanged(value)
 	GMLangTxtModel.instance:setSearch(value)
 end
 
-function GMLangTxtModel:_onSearchEndEdit(value)
+function GMLangTxtView:_onSearchEndEdit(value)
 	return
 end
 

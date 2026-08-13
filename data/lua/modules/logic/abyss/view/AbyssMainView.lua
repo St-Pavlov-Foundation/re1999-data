@@ -78,6 +78,7 @@ function AbyssMainView:_onUseRecommendGroup(episodeId)
 		stageId = AbyssConfig.instance:getStageIdByEpisodeId(actId, episodeId)
 	end
 
+	AbyssModel.instance:setCurStageId(stageId)
 	AbyssController.instance:startFight(actId, stageId)
 end
 
@@ -113,6 +114,7 @@ function AbyssMainView:onOpen()
 	TaskDispatcher.runRepeat(self.refreshTime, self, AbyssMainView.RefreshTimeDuration)
 	self._animator:Play("in", 0, 0)
 	self:refreshUI()
+	AbyssController.instance:requestAbyssSnapshot()
 
 	if not ViewMgr.instance:isOpen(ViewName.LoadingView) then
 		self:playAnim()

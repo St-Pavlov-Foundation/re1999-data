@@ -13,7 +13,7 @@ function FightEnemyActionCardItem.get(go, cardMo)
 end
 
 function FightEnemyActionCardItem:init(go, cardMo)
-	FightEnemyActionCardItem.super.__onInit(self)
+	self:__onInit()
 
 	self.goCard = go
 	self.tr = go.transform
@@ -139,7 +139,7 @@ function FightEnemyActionCardItem:destroy()
 	end
 
 	self.tagIcon:UnLoadImage()
-	FightEnemyActionCardItem.super.__onDispose(self)
+	self:__onDispose()
 end
 
 return FightEnemyActionCardItem

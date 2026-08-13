@@ -26,6 +26,7 @@ end
 
 function AchievementNamePlateSelectItem:_onClickBtn()
 	if self._id then
+		AchievementSelectListModel.instance:clearAllSelect()
 		AchievementSelectController.instance:changeNamePlateSelect(self._id)
 
 		local isSelected = AchievementSelectListModel.instance:isSingleSelected(self._id)

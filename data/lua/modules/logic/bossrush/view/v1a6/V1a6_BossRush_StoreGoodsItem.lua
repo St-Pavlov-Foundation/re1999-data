@@ -41,10 +41,17 @@ function V1a6_BossRush_StoreGoodsItem:onClick()
 end
 
 function V1a6_BossRush_StoreGoodsItem:updateInfo(mo)
-	gohelper.setActive(self.go, true)
-
 	self._mo = mo
 	self._co = mo.config
+
+	local actId = self._co.activityId
+
+	if actId == 0 or ActivityHelper.isOpen(actId) then
+		gohelper.setActive(self.go, true)
+	else
+		gohelper.setActive(self.go, false)
+		logError("下线的商品还能拿的到数据：" .. self._co.id .. "  活动id:" .. actId)
+	end
 
 	self:refreshRemainBuyCount()
 

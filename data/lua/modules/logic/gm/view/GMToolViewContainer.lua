@@ -31,6 +31,7 @@ function GMToolViewContainer:buildViews()
 	gmPresetListParam.cellSpaceH = 0
 	gmPresetListParam.cellSpaceV = 5
 	self.gmSubViewRoomEditMode = GMSubViewRoomEditMode.New()
+	self.gmSubViewHedone = GM_V3a9_HedoneView.New()
 
 	return {
 		GMToolView.New(),
@@ -53,6 +54,7 @@ function GMToolViewContainer:buildViews()
 		GMSubViewSodache.New(),
 		GMSubViewAudio.New(),
 		GMSubViewGuide.New(),
+		self.gmSubViewHedone,
 		GMSubViewActivity.New(),
 		GMSubViewSurvival.New(),
 		GMSubViewRole.New(),
@@ -61,13 +63,14 @@ function GMToolViewContainer:buildViews()
 		GMSubViewRouge2.New(),
 		GMSubViewResource.New(),
 		GMSubViewProfiler.New(),
-		GMSubViewRoom.New(),
 		self.gmSubViewRoomEditMode,
+		GMSubViewRoom.New(),
 		GMSubViewEliminate.New(),
 		GMSubViewEditorFight.New(),
 		GMYeShuMeiBtnView.New(),
 		GMSubViewPartyGame.New(),
-		GMSubViewArcade.New()
+		GMSubViewArcade.New(),
+		GMSubViewDungeon.New()
 	}
 end
 

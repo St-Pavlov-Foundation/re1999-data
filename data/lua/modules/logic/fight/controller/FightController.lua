@@ -633,6 +633,7 @@ function FightController:setFightHeroSingleGroup()
 		return false
 	end
 
+	local _, assistMo = HeroGroupModel.instance:getAssistMo()
 	local curGroupMO = HeroGroupModel.instance:getCurGroupMO()
 
 	if not curGroupMO then
@@ -668,6 +669,25 @@ function FightController:setFightHeroSingleGroup()
 				equips[i].heroUid = "0"
 			end
 		end
+	end
+
+	if assistMo then
+		for i, info in ipairs(equips) do
+			local heroUid = info.heroUid
+			local heroMo = HeroModel.instance:getById(heroUid)
+
+			if heroMo and assistMo.assistMo.heroId == heroMo.heroId then
+				info.heroUid = assistMo.heroUid
+
+				break
+			end
+		end
+
+		main[assistMo.id] = assistMo.assistMo.heroUid
+
+		fightParam:setAssistHeroInfo(assistMo.assistMo.heroUid, assistMo.assistMo.userId)
+
+		mainCount = mainCount + 1
 	end
 
 	if (not curGroupMO.aidDict or #curGroupMO.aidDict <= 0) and mainCount + subCount == 0 then

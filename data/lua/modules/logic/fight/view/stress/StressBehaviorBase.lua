@@ -50,7 +50,7 @@ function StressBehaviorBase:getCurStress()
 	return data and data.num or 0
 end
 
-function FightNameUIStressMgr:log(text)
+function StressBehaviorBase:log(text)
 	local entityMo = self.entity:getMO()
 
 	logError(string.format("[%s] : %s", entityMo:getEntityName(), text))

@@ -52,7 +52,7 @@ function TravelGoStoryEventWork:onStoryEventSelect(choiceIndex)
 
 	if descList then
 		local actId = TravelGoModel.instance.activityId
-		local waitTime = TravelGoConfig:getConsValue(actId, TravelGoConst.ConstId.StorySelectWaitTime, true) or 0
+		local waitTime = TravelGoConfig.instance:getConsValue(actId, TravelGoConst.ConstId.StorySelectWaitTime, true) or 0
 
 		self.descFlow:addWork(TimerWork.New(waitTime))
 

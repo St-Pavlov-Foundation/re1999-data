@@ -10833,7 +10833,7 @@
   },
   {
     "id": -570,
-    "tips": "你的派对版本号过低, 需要重新登录",
+    "tips": "你的客户端版本号过低, 需要重新登录",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,
@@ -10841,7 +10841,7 @@
   },
   {
     "id": -571,
-    "tips": "对方派对版本号过低, 无法加入",
+    "tips": "对方客户端版本号过低, 无法加入",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,
@@ -10881,7 +10881,7 @@
   },
   {
     "id": -576,
-    "tips": "已在派对房间中",
+    "tips": "已在房间中",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,
@@ -11844,6 +11844,110 @@
     "tips": "手套的能量不足",
     "icon": 142,
     "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 391001,
+    "tips": "▩1%s|已收录至回望小径",
+    "icon": 11,
+    "audioId": 0,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": -870,
+    "tips": "已拥有包含的所有道具",
+    "icon": 11,
+    "audioId": 0,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 392001,
+    "tips": "完成全部限购商品兑换后解锁",
+    "icon": 11,
+    "audioId": 0,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 393001,
+    "tips": "未选择技能增益,请选择后进入战斗",
+    "icon": 11,
+    "audioId": 0,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 390003,
+    "tips": "航程凭证不足",
+    "icon": 11,
+    "audioId": 0,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 390004,
+    "tips": "该选手尚未解锁",
+    "icon": 11,
+    "audioId": 0,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 390005,
+    "tips": "完成活动任务并累计积分后解锁",
+    "icon": 11,
+    "audioId": 0,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 390006,
+    "tips": "读取队列成功",
+    "icon": 11,
+    "audioId": 0,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 390007,
+    "tips": "当前在试玩中，无法加入其他房间",
+    "icon": 11,
+    "audioId": 0,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 395001,
+    "tips": "已在其他关卡作为协同角色锁定",
+    "icon": 11,
+    "audioId": 0,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 395002,
+    "tips": "部分角色已作为其他关卡协同角色锁定",
+    "icon": 11,
+    "audioId": 0,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 395003,
+    "tips": "角色在其他关卡协同，已自动调整",
+    "icon": 11,
+    "audioId": 0,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 395004,
+    "tips": "已解除协助角色，队列自动调整",
+    "icon": 11,
+    "audioId": 0,
     "notMerge": 0,
     "notShow": 0
   }

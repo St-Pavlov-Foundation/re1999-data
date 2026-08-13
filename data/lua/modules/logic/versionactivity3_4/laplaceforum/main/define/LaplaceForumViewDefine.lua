@@ -166,7 +166,7 @@ function LaplaceForumViewDefine.init(module_views)
 			npcInfo = "ui/viewres/versionactivity_3_4/v3a4_laplace/chatroom/v3a4_chatroomscenenpcinfo.prefab",
 			npcMaterial = "spine/xiaowu_character.mat",
 			playerheadinfo = "ui/viewres/versionactivity_3_4/v3a4_laplace/chatroom/v3a4_chatroomsceneplayerheadinfo.prefab",
-			joystick = "ui/viewres/partygame/common/common_joystick.prefab"
+			joystick = "modules/party_game/ui/viewres/common/common_joystick.prefab"
 		}
 	}
 end

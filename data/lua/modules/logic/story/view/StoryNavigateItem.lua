@@ -45,7 +45,8 @@ function StoryNavigateItem:init(go)
 		[StoryEnum.NavigateType.FullScreenCountdown] = self.showFullScreenCountdown,
 		[StoryEnum.NavigateType.StormTimerStart] = self.showStormTimerStart,
 		[StoryEnum.NavigateType.StormTimerEnd] = self.showStormTimerEnd,
-		[StoryEnum.NavigateType.FullScreenCountdownEnd] = self.showCloseFullScreenCountdown
+		[StoryEnum.NavigateType.FullScreenCountdownEnd] = self.showCloseFullScreenCountdown,
+		[StoryEnum.NavigateType.ScoreCard] = self.showV3A9StoryScoreCard
 	}
 end
 
@@ -234,6 +235,16 @@ function StoryNavigateItem:getActivityChapterPlayer()
 	return self.activityChapterPlayer
 end
 
+function StoryNavigateItem:showV3A9StoryScoreCard(chapterCo)
+	ViewMgr.instance:openView(ViewName.V3A9StoryScoreCardView, {
+		data = chapterCo
+	})
+end
+
+function StoryNavigateItem:closeV3A9StoryScoreCard()
+	ViewMgr.instance:closeView(ViewName.V3A9StoryScoreCardView)
+end
+
 function StoryNavigateItem:showActivityChapterStart(chapterCo)
 	local player = self:getActivityChapterPlayer()
 
@@ -332,6 +343,7 @@ function StoryNavigateItem:onFadeOut()
 	end
 
 	self:realCloseFullScreenCountdown(true)
+	self:closeV3A9StoryScoreCard()
 end
 
 function StoryNavigateItem:onSkip()
@@ -413,6 +425,7 @@ function StoryNavigateItem:destroy()
 	end
 
 	self:realCloseFullScreenCountdown(true)
+	self:closeV3A9StoryScoreCard()
 	gohelper.setActive(self._go, false)
 end
 

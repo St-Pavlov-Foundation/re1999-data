@@ -77,9 +77,9 @@ function TravelGoSpineComp:setSkeletonTimeScale(isInBattle)
 	local speedScale
 
 	if isInBattle then
-		speedScale = TravelGoConfig:getConsValue(TravelGoModel.instance.activityId, TravelGoConst.ConstId.BattleSpeed, true) or 1
+		speedScale = TravelGoConfig.instance:getConsValue(TravelGoModel.instance.activityId, TravelGoConst.ConstId.BattleSpeed, true) or 1
 	else
-		speedScale = TravelGoConfig:getConsValue(TravelGoModel.instance.activityId, TravelGoConst.ConstId.NormalSpeed, true) or 1
+		speedScale = TravelGoConfig.instance:getConsValue(TravelGoModel.instance.activityId, TravelGoConst.ConstId.NormalSpeed, true) or 1
 	end
 
 	self.skeleton.timeScale = speedScale

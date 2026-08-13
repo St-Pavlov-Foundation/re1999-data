@@ -141,13 +141,14 @@ function PartyGameRewardView:_refreshCountDown()
 	gohelper.setActive(self._txttime2.gameObject, self._curTime >= 0)
 	gohelper.setActive(self._txttime3.gameObject, self._curTime >= 0)
 
-	if self._curTime < 0 then
-		TaskDispatcher.cancelTask(self._refreshCountDown, self)
-	end
-
 	if self._curTime <= 0 and not self._selectFinish then
 		self:autoSelect()
 		self:_btnselectOnClick()
+	end
+
+	if self._curTime < 0 then
+		TaskDispatcher.cancelTask(self._refreshCountDown, self)
+		self:checkTrial()
 	end
 end
 
@@ -416,6 +417,14 @@ function PartyGameRewardView:onClose()
 	TaskDispatcher.cancelTask(self._checkExitCurGame, self)
 	TaskDispatcher.cancelTask(self._refreshCountDown, self)
 	TaskDispatcher.cancelTask(self._checkExitCurGame, self)
+end
+
+function PartyGameRewardView:checkTrial()
+	local curPartyGame = PartyGameController.instance:getCurPartyGame()
+
+	if curPartyGame and curPartyGame:getIsTrial() then
+		PartyGameTrialController.instance:trialToNextGame()
+	end
 end
 
 function PartyGameRewardView:onDestroyView()

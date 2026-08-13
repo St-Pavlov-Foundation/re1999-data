@@ -161,24 +161,13 @@ function MiniPartyTaskItem:refresh(mo)
 	gohelper.setActive(self._gotimelimittag, false)
 
 	if self._mo.config.loopType == TaskEnum.TaskLoopType.Permanent and not LuaUtil.isEmptyStr(self._mo.config.showOfflineTime) and self._mo.progress < self._mo.config.maxProgress then
-		gohelper.setActive(self._gotimelimittag, true)
-
 		local endTime = TimeUtil.stringToTimestamp(self._mo.config.showOfflineTime) - ServerTime.clientToServerOffset()
 		local limitTime = endTime - ServerTime.now()
-		local day = math.floor(limitTime / TimeUtil.OneDaySecond)
-		local hour = math.floor((limitTime - day * TimeUtil.OneDaySecond) / TimeUtil.OneHourSecond)
-		local minute = math.floor((limitTime - day * TimeUtil.OneDaySecond - hour * TimeUtil.OneHourSecond) / TimeUtil.OneMinuteSecond)
 
 		if limitTime > 0 then
-			if day >= 1 then
-				self._txttime.text = string.format("%s%s%s%s", day, luaLang("time_day"), hour, luaLang("time_hour2"))
-			elseif day >= 0 then
-				if hour >= 1 then
-					self._txttime.text = string.format("%s%s%s%s", hour, luaLang("time_hour2"), minute, luaLang("time_minute2"))
-				else
-					self._txttime.text = string.format(luaLang("remain"), minute .. luaLang("time_minute2"))
-				end
-			end
+			gohelper.setActive(self._gotimelimittag, true)
+
+			self._txttime.text = TimeUtil.secondToRoughTime3(limitTime)
 		else
 			gohelper.setActive(self._gotimelimittag, false)
 		end

@@ -317,6 +317,25 @@ function module_views_preloader.V3a2_BossRush_LevelDetailView(allResPath)
 	table.insert(allResPath, BossRushConfig.instance:getBossDetailFullPath(stage))
 end
 
+function module_views_preloader.V3a9_BossRush_LevelDetailView(allResPath)
+	local container = ViewMgr.instance:getContainer(ViewName.V3a9_BossRush_LevelDetailView)
+	local viewParam = container and container.viewParam
+
+	if not viewParam then
+		return
+	end
+
+	local stage = viewParam.stage
+	local actId = viewParam.actId
+	local resPathList = BossRushConfig.instance:getMonsterResPathList(stage, actId)
+
+	for _, v in ipairs(resPathList) do
+		table.insert(allResPath, v)
+	end
+
+	table.insert(allResPath, BossRushConfig.instance:getBossDetailFullPath(stage, actId))
+end
+
 function module_views_preloader.VersionActivity2_7DungeonMapView(allResPath)
 	local spaceScenePath = VersionActivity2_7DungeonEnum.SpaceScene
 

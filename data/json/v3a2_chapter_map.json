@@ -2979,5 +2979,410 @@
     ],
     "descOffset": 60,
     "isShow": 0
+  },
+  {
+    "id": 3910101,
+    "locationDesc": "船舷",
+    "position": [],
+    "titleRotation": [
+      17,
+      -23,
+      -7.5
+    ],
+    "titlePos": [
+      -1022.21,
+      251,
+      36.25
+    ],
+    "descRotation": [
+      0,
+      0,
+      0
+    ],
+    "descPos": [
+      -117.23,
+      -20.03,
+      53.86
+    ],
+    "descOffset": -210,
+    "isShow": 0
+  },
+  {
+    "id": 3910102,
+    "locationDesc": "船舷",
+    "position": [],
+    "titleRotation": [
+      17,
+      -23,
+      -7.5
+    ],
+    "titlePos": [
+      -1022.21,
+      251,
+      36.25
+    ],
+    "descRotation": [
+      0,
+      0,
+      0
+    ],
+    "descPos": [
+      -117.23,
+      -20.03,
+      53.86
+    ],
+    "descOffset": -210,
+    "isShow": 0
+  },
+  {
+    "id": 3910103,
+    "locationDesc": "仪式广场",
+    "position": [],
+    "titleRotation": [
+      17,
+      -23,
+      -7.5
+    ],
+    "titlePos": [
+      -1022.21,
+      251,
+      36.25
+    ],
+    "descRotation": [
+      0,
+      0,
+      0
+    ],
+    "descPos": [
+      -117.23,
+      -20.03,
+      53.86
+    ],
+    "descOffset": -210,
+    "isShow": 0
+  },
+  {
+    "id": 3910104,
+    "locationDesc": "仪式广场",
+    "position": [],
+    "titleRotation": [
+      17,
+      -23,
+      -7.5
+    ],
+    "titlePos": [
+      -1022.21,
+      251,
+      36.25
+    ],
+    "descRotation": [
+      0,
+      0,
+      0
+    ],
+    "descPos": [
+      -117.23,
+      -20.03,
+      53.86
+    ],
+    "descOffset": -210,
+    "isShow": 0
+  },
+  {
+    "id": 3910105,
+    "locationDesc": "壁画前",
+    "position": [],
+    "titleRotation": [
+      17,
+      -23,
+      -7.5
+    ],
+    "titlePos": [
+      -1022.21,
+      251,
+      36.25
+    ],
+    "descRotation": [
+      0,
+      0,
+      0
+    ],
+    "descPos": [
+      -117.23,
+      -20.03,
+      53.86
+    ],
+    "descOffset": -210,
+    "isShow": 0
+  },
+  {
+    "id": 3910106,
+    "locationDesc": "赫利孔酒吧",
+    "position": [],
+    "titleRotation": [
+      17,
+      -23,
+      -7.5
+    ],
+    "titlePos": [
+      -1022.21,
+      251,
+      36.25
+    ],
+    "descRotation": [
+      0,
+      0,
+      0
+    ],
+    "descPos": [
+      -117.23,
+      -20.03,
+      53.86
+    ],
+    "descOffset": -210,
+    "isShow": 0
+  },
+  {
+    "id": 3910107,
+    "locationDesc": "飞行平台广场",
+    "position": [],
+    "titleRotation": [
+      17,
+      -23,
+      -7.5
+    ],
+    "titlePos": [
+      -1022.21,
+      251,
+      36.25
+    ],
+    "descRotation": [
+      0,
+      0,
+      0
+    ],
+    "descPos": [
+      -117.23,
+      -20.03,
+      53.86
+    ],
+    "descOffset": -210,
+    "isShow": 0
+  },
+  {
+    "id": 3910108,
+    "locationDesc": "赫利孔酒吧",
+    "position": [],
+    "titleRotation": [
+      17,
+      -23,
+      -7.5
+    ],
+    "titlePos": [
+      -1022.21,
+      251,
+      36.25
+    ],
+    "descRotation": [
+      0,
+      0,
+      0
+    ],
+    "descPos": [
+      -117.23,
+      -20.03,
+      53.86
+    ],
+    "descOffset": -210,
+    "isShow": 0
+  },
+  {
+    "id": 3910109,
+    "locationDesc": "海滩",
+    "position": [],
+    "titleRotation": [
+      17,
+      -23,
+      -7.5
+    ],
+    "titlePos": [
+      -1022.21,
+      251,
+      36.25
+    ],
+    "descRotation": [
+      0,
+      0,
+      0
+    ],
+    "descPos": [
+      -117.23,
+      -20.03,
+      53.86
+    ],
+    "descOffset": -210,
+    "isShow": 0
+  },
+  {
+    "id": 3910110,
+    "locationDesc": "赫利孔酒吧",
+    "position": [],
+    "titleRotation": [
+      17,
+      -23,
+      -7.5
+    ],
+    "titlePos": [
+      -1022.21,
+      251,
+      36.25
+    ],
+    "descRotation": [
+      0,
+      0,
+      0
+    ],
+    "descPos": [
+      -117.23,
+      -20.03,
+      53.86
+    ],
+    "descOffset": -210,
+    "isShow": 0
+  },
+  {
+    "id": 3910111,
+    "locationDesc": "终局赛道",
+    "position": [],
+    "titleRotation": [
+      17,
+      -23,
+      -7.5
+    ],
+    "titlePos": [
+      -1022.21,
+      251,
+      36.25
+    ],
+    "descRotation": [
+      0,
+      0,
+      0
+    ],
+    "descPos": [
+      -117.23,
+      -20.03,
+      53.86
+    ],
+    "descOffset": -210,
+    "isShow": 0
+  },
+  {
+    "id": 3910112,
+    "locationDesc": "火山口",
+    "position": [],
+    "titleRotation": [
+      17,
+      -23,
+      -7.5
+    ],
+    "titlePos": [
+      -1022.21,
+      251,
+      36.25
+    ],
+    "descRotation": [
+      0,
+      0,
+      0
+    ],
+    "descPos": [
+      -117.23,
+      -20.03,
+      53.86
+    ],
+    "descOffset": -210,
+    "isShow": 0
+  },
+  {
+    "id": 3910113,
+    "locationDesc": "火山深处",
+    "position": [],
+    "titleRotation": [
+      17,
+      -23,
+      -7.5
+    ],
+    "titlePos": [
+      -1022.21,
+      251,
+      36.25
+    ],
+    "descRotation": [
+      0,
+      0,
+      0
+    ],
+    "descPos": [
+      -117.23,
+      -20.03,
+      53.86
+    ],
+    "descOffset": -210,
+    "isShow": 0
+  },
+  {
+    "id": 3910114,
+    "locationDesc": "火山深处",
+    "position": [],
+    "titleRotation": [
+      17,
+      -23,
+      -7.5
+    ],
+    "titlePos": [
+      -1022.21,
+      251,
+      36.25
+    ],
+    "descRotation": [
+      0,
+      0,
+      0
+    ],
+    "descPos": [
+      -117.23,
+      -20.03,
+      53.86
+    ],
+    "descOffset": -210,
+    "isShow": 0
+  },
+  {
+    "id": 3910115,
+    "locationDesc": "赫利孔酒吧",
+    "position": [],
+    "titleRotation": [
+      17,
+      -23,
+      -7.5
+    ],
+    "titlePos": [
+      -1022.21,
+      251,
+      36.25
+    ],
+    "descRotation": [
+      0,
+      0,
+      0
+    ],
+    "descPos": [
+      -117.23,
+      -20.03,
+      53.86
+    ],
+    "descOffset": -210,
+    "isShow": 0
   }
 ]

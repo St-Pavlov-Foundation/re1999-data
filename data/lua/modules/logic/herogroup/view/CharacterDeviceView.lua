@@ -209,7 +209,9 @@ function CharacterDeviceView:_refreshUI()
 				UISpriteSetMgr.instance:setUiCharacterSprite(item.imgIcon, powerCo.powerIcon)
 			end
 
-			item.txtnum.text = string.format("<size=18>%s</size>%s", luaLang("multiple"), info.count)
+			local lang = luaLang("character_device_skillpowernum")
+
+			item.txtnum.text = GameUtil.getSubPlaceholderLuaLangTwoParam(lang, luaLang("multiple"), info.count)
 
 			item.btn:AddClickListener(self._onDeviceNormalSkillCardClick, self, i)
 		end
@@ -231,10 +233,15 @@ function CharacterDeviceView:_refreshUI()
 			local skillId = info.skillId
 			local skillCO = lua_skill.configDict[skillId]
 
-			item.simgIcon:LoadImage(ResUrl.getSkillIcon(skillCO.icon))
+			if skillCO then
+				item.simgIcon:LoadImage(ResUrl.getSkillIcon(skillCO.icon))
+			end
 
-			item.txtnum.text = string.format("<size=18>%s</size>%s", luaLang("multiple"), info.count)
+			local lang = luaLang("character_device_skillpowernum")
 
+			item.txtnum.text = GameUtil.getSubPlaceholderLuaLangTwoParam(lang, luaLang("multiple"), info.count or 0)
+
+			gohelper.setActive(item.txtnum.gameObject, info.count and info.count > 0)
 			item.btn:AddClickListener(self._onDeviceSecialSkillCardClick, self, i)
 		end
 	end

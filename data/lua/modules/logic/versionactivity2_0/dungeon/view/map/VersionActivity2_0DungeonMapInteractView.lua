@@ -125,6 +125,8 @@ function VersionActivity2_0DungeonMapInteractView:showInteractUI(mapElement)
 		return
 	end
 
+	self._isRecheck = false
+
 	if type(mapElement) ~= "table" then
 		mapElement = self.viewContainer.mapSceneElements:getElementComp(tonumber(mapElement))
 	end
@@ -135,6 +137,21 @@ function VersionActivity2_0DungeonMapInteractView:showInteractUI(mapElement)
 	self._config = self._mapElement._config
 	self._elementGo = self._mapElement._go
 	self.isFinish = false
+
+	self:show()
+	self:refreshUI()
+end
+
+function VersionActivity2_0DungeonMapInteractView:onRecheck(elementCo)
+	if self._show then
+		return
+	end
+
+	VersionActivity2_0DungeonModel.instance:setShowInteractView(true)
+
+	self._config = elementCo
+	self.isFinish = false
+	self._isRecheck = true
 
 	self:show()
 	self:refreshUI()
@@ -198,7 +215,7 @@ end
 function VersionActivity2_0DungeonMapInteractView:refreshRewards()
 	local rewardStr = self._config.retroReward
 
-	if string.nilorempty(rewardStr) then
+	if self._isRecheck or string.nilorempty(rewardStr) then
 		gohelper.setActive(self.goRewardContainer, false)
 
 		return
@@ -266,7 +283,7 @@ function VersionActivity2_0DungeonMapInteractView:refreshFightUI()
 
 	self.isFinish = DungeonModel.instance:hasPassLevel(episodeId)
 
-	if self.isFinish then
+	if self.isFinish and not self._isRecheck then
 		self.txtFight.text = luaLang("p_v1a5_news_order_finish")
 
 		self:setFinishText()
@@ -282,7 +299,7 @@ function VersionActivity2_0DungeonMapInteractView:refreshDialogueUI()
 	self.dialogueId = tonumber(self._config.param)
 	self.isFinish = DialogueModel.instance:isFinishDialogue(self.dialogueId)
 
-	if self.isFinish then
+	if self.isFinish and not self._isRecheck then
 		self.txtDialogue.text = luaLang("p_v1a5_news_order_finish")
 
 		self:setFinishText()
@@ -450,11 +467,19 @@ function VersionActivity2_0DungeonMapInteractView:onClickRoot()
 	self.interactItemAnim:Play(UIAnimationName.Close, self.hide, self)
 
 	self._isClickClose = true
+
+	if self._isRecheck then
+		DungeonController.instance:onAgainOpenRecheckView(self._config.id)
+	end
 end
 
 function VersionActivity2_0DungeonMapInteractView:_btncloseOnClick()
 	if self._isClickClose then
 		return
+	end
+
+	if self._isRecheck then
+		DungeonController.instance:onAgainOpenRecheckView(self._config.id)
 	end
 
 	self.interactItemAnim:Play(UIAnimationName.Close, self.hide, self)
@@ -495,14 +520,19 @@ function VersionActivity2_0DungeonMapInteractView:_onClickFightBtn()
 end
 
 function VersionActivity2_0DungeonMapInteractView:_onClickEnterDialogueBtn()
-	if self.isFinish then
+	if self.isFinish and not self._isRecheck then
 		self:hide()
 		self:finishElement()
 
 		return
 	end
 
-	VersionActivity2_0DungeonController.instance:openDialogueView(self.dialogueId)
+	VersionActivity2_0DungeonController.instance:openDialogueView(self.dialogueId, function()
+		if self._isRecheck then
+			self:hide()
+			DungeonController.instance:onAgainOpenRecheckView(self._config.id)
+		end
+	end)
 end
 
 function VersionActivity2_0DungeonMapInteractView:finishElement(dialogIds)
@@ -510,7 +540,12 @@ function VersionActivity2_0DungeonMapInteractView:finishElement(dialogIds)
 
 	DungeonMapModel.instance:addFinishedElement(elementId)
 	DungeonMapModel.instance:removeElement(elementId)
-	DungeonRpc.instance:sendMapElementRequest(elementId, dialogIds, self.updateAct161Info, self)
+
+	if self._isRecheck then
+		DungeonController.instance:onRecheckFragmentInfoView(self._config)
+	else
+		DungeonRpc.instance:sendMapElementRequest(elementId, dialogIds, self.updateAct161Info, self)
+	end
 end
 
 function VersionActivity2_0DungeonMapInteractView:updateAct161Info()

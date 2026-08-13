@@ -1,0 +1,13 @@
+[
+  {
+    "id": 39001,
+    "name": "海豚骑行测试赛道01",
+    "scene": "game001.unity",
+    "slotDistance": 40,
+    "laneCount": 4,
+    "laneWidth": 4,
+    "laneLength": 2800.0,
+    "startPoint": 0,
+    "isCircle": 0
+  }
+]

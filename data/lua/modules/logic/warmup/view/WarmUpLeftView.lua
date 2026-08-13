@@ -18,11 +18,11 @@ function WarmUpLeftView:onInitView()
 end
 
 function WarmUpLeftView:addEvents()
-	return
+	self._click:AddClickListener(self._onClick, self)
 end
 
 function WarmUpLeftView:removeEvents()
-	return
+	self._click:RemoveClickListener()
 end
 
 local kFirstLocked = -1
@@ -71,14 +71,6 @@ end
 
 function WarmUpLeftView:onOpen()
 	return
-end
-
-function WarmUpLeftView:addEvents()
-	self._click:AddClickListener(self._onClick, self)
-end
-
-function WarmUpLeftView:removeEvents()
-	self._click:RemoveClickListener()
 end
 
 function WarmUpLeftView:_onClick()

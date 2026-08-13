@@ -1,0 +1,14 @@
+[
+  {
+    "rangeId": 1,
+    "lossDays": "42|63"
+  },
+  {
+    "rangeId": 2,
+    "lossDays": "63|84"
+  },
+  {
+    "rangeId": 3,
+    "lossDays": "84|9999"
+  }
+]

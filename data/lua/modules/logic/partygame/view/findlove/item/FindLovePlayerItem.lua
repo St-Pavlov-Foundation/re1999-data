@@ -2,7 +2,7 @@
 
 module("modules.logic.partygame.view.findlove.item.FindLovePlayerItem", package.seeall)
 
-local FindLovePlayerItem = class("FIndLovePlayerItem", SimpleListItem)
+local FindLovePlayerItem = class("FindLovePlayerItem", SimpleListItem)
 
 function FindLovePlayerItem:onInit()
 	self.goSpine = gohelper.findChild(self.viewGO, "goSpine")

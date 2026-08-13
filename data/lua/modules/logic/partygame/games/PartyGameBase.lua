@@ -11,6 +11,7 @@ function PartyGameBase:ctor()
 	self._csGameBase = nil
 	self._initFinish = false
 	self._isLocal = false
+	self._isTrial = false
 	self._isTeamType = false
 	self._mainPlayerUid = -1
 	self.gameStartTime = 0
@@ -44,6 +45,18 @@ end
 
 function PartyGameBase:getIsLocal()
 	return self._isLocal
+end
+
+function PartyGameBase:setTrial(isTrial)
+	if isTrial == nil then
+		return
+	end
+
+	self._isTrial = isTrial
+end
+
+function PartyGameBase:getIsTrial()
+	return self._isTrial
 end
 
 function PartyGameBase:getGameId()
@@ -165,7 +178,7 @@ function PartyGameBase:exitGame()
 end
 
 function PartyGameBase:gameEndResult(data)
-	if not self._isLocal then
+	if not self._isLocal or self._isTrial then
 		PopupController.instance:setPause(PartyGameEnum.PopStopKey, true)
 	end
 

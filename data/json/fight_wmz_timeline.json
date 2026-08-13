@@ -1,22 +1,52 @@
 [
   {
+    "skin": 0,
+    "id": 0,
+    "timeline": "wmz_314701_skill3_1"
+  },
+  {
+    "skin": 0,
     "id": 1,
     "timeline": "wmz_314701_skill3_1_1"
   },
   {
+    "skin": 0,
     "id": 2,
     "timeline": "wmz_314701_skill3_1_2"
   },
   {
+    "skin": 0,
     "id": 3,
     "timeline": "wmz_314701_skill3_1_3"
   },
   {
+    "skin": 0,
     "id": 4,
     "timeline": "wmz_314701_skill3_1_4"
   },
   {
+    "skin": 314704,
     "id": 0,
-    "timeline": "wmz_314701_skill3_1"
+    "timeline": "wmz_314704_skill3_1"
+  },
+  {
+    "skin": 314704,
+    "id": 1,
+    "timeline": "wmz_314704_skill3_1_1"
+  },
+  {
+    "skin": 314704,
+    "id": 2,
+    "timeline": "wmz_314704_skill3_1_2"
+  },
+  {
+    "skin": 314704,
+    "id": 3,
+    "timeline": "wmz_314704_skill3_1_3"
+  },
+  {
+    "skin": 314704,
+    "id": 4,
+    "timeline": "wmz_314704_skill3_1_4"
   }
 ]

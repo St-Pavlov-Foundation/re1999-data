@@ -120,14 +120,6 @@ function WuErLiXiMapNodeMo:getUnitSignalOutDir()
 	return self.unit:getUnitSignalOutDir()
 end
 
-function WuErLiXiMapNodeMo:setUnitOutDirByRayDir(rayDir)
-	if not self.unit then
-		return
-	end
-
-	return self.unit:setUnitOutDirByRayDir(rayDir)
-end
-
 function WuErLiXiMapNodeMo:isUnitFreeType()
 	if not self.unit then
 		return false

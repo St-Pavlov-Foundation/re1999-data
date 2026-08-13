@@ -36,6 +36,9 @@ function FightWorkBuildSubEntityAfterChangeHero:_onNextSubSpineLoaded(unitSpine)
 		self:com_registTimer(self.finishWork, 5)
 
 		local sub_entity = FightGameMgr.entityMgr:getEntity(self._entityId)
+
+		sub_entity.IS_SUB_ENTITY_ENTER = true
+
 		local work = self:com_registWork(Work2FightWork, FightWorkStartBornNormal, sub_entity, true)
 
 		work:registFinishCallback(self.finishWork, self)

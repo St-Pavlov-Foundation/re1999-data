@@ -582,7 +582,7 @@
   },
   {
     "id": 30201,
-    "patFaceActivityId": 138525,
+    "patFaceActivityId": 0,
     "patFaceViewName": "",
     "patFaceStoryId": 0,
     "patFaceOrder": 50000
@@ -649,5 +649,12 @@
     "patFaceViewName": "SceneUIPackagePanelView",
     "patFaceStoryId": 0,
     "patFaceOrder": 30198
+  },
+  {
+    "id": 30901,
+    "patFaceActivityId": 13930,
+    "patFaceViewName": "V3a9_BDuckLinkagePatFaceView",
+    "patFaceStoryId": 0,
+    "patFaceOrder": 50000
   }
 ]

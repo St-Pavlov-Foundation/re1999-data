@@ -82,6 +82,7 @@ function CharacterBackpackHeroView:_btnclassifyOnClick()
 	local param = {}
 
 	param.dmgs = LuaUtil.deepCopy(self._selectDmgs)
+	param.destiny = LuaUtil.deepCopy(self._selectDestiny)
 	param.attrs = LuaUtil.deepCopy(self._selectAttrs)
 	param.filterType = CharacterEnum.FilterType.BackpackHero
 
@@ -131,19 +132,7 @@ function CharacterBackpackHeroView:_refreshBtnIcon()
 	gohelper.setActive(self._faithBtns[1], tag ~= 3)
 	gohelper.setActive(self._faithBtns[2], tag == 3)
 
-	local hasFilter = false
-
-	for _, v in pairs(self._selectDmgs) do
-		if v then
-			hasFilter = true
-		end
-	end
-
-	for _, v in pairs(self._selectAttrs) do
-		if v then
-			hasFilter = true
-		end
-	end
+	local hasFilter = CharacterSearchFilterModel.instance:hasFilter()
 
 	gohelper.setActive(self._classifyBtns[1], not hasFilter)
 	gohelper.setActive(self._classifyBtns[2], hasFilter)
@@ -176,6 +165,7 @@ end
 
 function CharacterBackpackHeroView:_onFilterList(param)
 	self._selectDmgs = param.dmgs
+	self._selectDestiny = param.destiny
 	self._selectAttrs = param.attrs
 	self._selectTags = param.selectTags
 
@@ -237,6 +227,7 @@ function CharacterBackpackHeroView:_updateHeroList()
 	local filterParam = {}
 
 	filterParam.dmgs = dmgs
+	filterParam.destiny = self._selectDestiny
 	filterParam.careers = careers
 	filterParam.locations = locations
 

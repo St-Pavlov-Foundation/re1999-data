@@ -12,17 +12,19 @@ function FightDeviceCardDisplayEndEffect:onStart(context)
 	self._dt = dt / FightModel.instance:getUISpeed()
 	self._flow = FlowSequence.New()
 
-	local waitTr = context.waitingAreaGO.transform
-	local tipsTr = context.skillTipsGO.transform
-	local width = recthelper.getWidth(waitTr) + recthelper.getWidth(tipsTr)
-	local tipsWork = TweenWork.New({
-		type = "DOAnchorPosX",
-		tr = tipsTr,
-		to = width,
-		t = self._dt * 3
-	})
+	if SettingsModel.instance:getFightCardDetail() then
+		local waitTr = context.waitingAreaGO.transform
+		local tipsTr = context.skillTipsGO.transform
+		local width = recthelper.getWidth(waitTr) + recthelper.getWidth(tipsTr)
+		local tipsWork = TweenWork.New({
+			type = "DOAnchorPosX",
+			tr = tipsTr,
+			to = width,
+			t = self._dt * 3
+		})
 
-	self._flow:addWork(tipsWork)
+		self._flow:addWork(tipsWork)
+	end
 
 	local hideWork = FunctionWork.New(FightDeviceCardDisplayEndEffect.hideFunc, self)
 

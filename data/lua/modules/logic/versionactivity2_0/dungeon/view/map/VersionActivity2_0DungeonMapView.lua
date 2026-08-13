@@ -50,6 +50,7 @@ function VersionActivity2_0DungeonMapView:addEvents()
 	self:addEventCb(VersionActivity2_0DungeonController.instance, VersionActivity2_0DungeonEvent.OnHideInteractUI, self.showBtnUI, self)
 	self:addEventCb(Activity161Controller.instance, Activity161Event.CloseGraffitiEnterView, self.closeGraffitiEnterView, self)
 	self:addEventCb(Activity161Controller.instance, Activity161Event.PlayExcessiveEffect, self.showExcessiveEffect, self)
+	self:addEventCb(DungeonController.instance, DungeonMapElementEvent.OnRecheckInteractive, self._onRecheckInteractive, self)
 	self._btncloseview:AddClickListener(self._btncloseviewOnClick, self)
 	self._btnactivitystore:AddClickListener(self._btnactivitystoreOnClick, self)
 	self._btnactivitytask:AddClickListener(self._btnactivitytaskOnClick, self)
@@ -71,6 +72,7 @@ function VersionActivity2_0DungeonMapView:removeEvents()
 	self:removeEventCb(VersionActivity2_0DungeonController.instance, VersionActivity2_0DungeonEvent.OnHideInteractUI, self.showBtnUI, self)
 	self:removeEventCb(Activity161Controller.instance, Activity161Event.CloseGraffitiEnterView, self.closeGraffitiEnterView, self)
 	self:removeEventCb(Activity161Controller.instance, Activity161Event.PlayExcessiveEffect, self.showExcessiveEffect, self)
+	self:removeEventCb(DungeonController.instance, DungeonMapElementEvent.OnRecheckInteractive, self._onRecheckInteractive, self)
 	self._btncloseview:RemoveClickListener()
 	self._btnactivitystore:RemoveClickListener()
 	self._btnactivitytask:RemoveClickListener()
@@ -322,6 +324,18 @@ end
 function VersionActivity2_0DungeonMapView:onClickElement()
 	self:hideBtnUI()
 	self:setNavBtnIsShow(false)
+end
+
+function VersionActivity2_0DungeonMapView:_onRecheckInteractive(isShow)
+	if isShow then
+		self._rectmask2D.padding = RECT_MASK_PADDING
+
+		gohelper.setActive(self._btncloseview, false)
+		self:showBtnUI()
+	else
+		self:hideBtnUI()
+		self:setNavBtnIsShow(false)
+	end
 end
 
 function VersionActivity2_0DungeonMapView:onModeChange()

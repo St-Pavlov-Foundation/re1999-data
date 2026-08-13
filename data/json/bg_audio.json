@@ -2773,5 +2773,55 @@
     "id": 3385012,
     "eventName": "play_ui_checkpoint_noise_subconscious",
     "bankName": "activity_langchao_combataudio_noise"
+  },
+  {
+    "id": 3390001,
+    "eventName": "play_battle_chongran_3_9_normalfight",
+    "bankName": "activity_chongran_3_9_combataudio"
+  },
+  {
+    "id": 3390002,
+    "eventName": "play_battle_chongran_3_9_bossfight",
+    "bankName": "activity_chongran_3_9_combataudio"
+  },
+  {
+    "id": 3390003,
+    "eventName": "play_ui_checkpoint_noise_1_3_main_activity_day",
+    "bankName": "activtiy_molu_combataudio"
+  },
+  {
+    "id": 3390004,
+    "eventName": "play_ui_checkpoint_noise_sea_area",
+    "bankName": "activtiy_fuleyuan_combataudio_noise"
+  },
+  {
+    "id": 3390005,
+    "eventName": "play_ui_checkpoint_noise_sea_area",
+    "bankName": "activtiy_fuleyuan_combataudio_noise"
+  },
+  {
+    "id": 3390006,
+    "eventName": "play_ui_checkpoint_noise_volcano_vent",
+    "bankName": "activity_chongran_3_9_combataudio_noise"
+  },
+  {
+    "id": 3390007,
+    "eventName": "play_ui_checkpoint_noise_cache_loop",
+    "bankName": "activtiy_lushang_combataudio_noise"
+  },
+  {
+    "id": 3390008,
+    "eventName": "play_ui_checkpoint_noise_misihai",
+    "bankName": "activity_lusongshi_combataudio_noise"
+  },
+  {
+    "id": 3390009,
+    "eventName": "play_ui_checkpoint_noise_volcano_inside",
+    "bankName": "activity_chongran_3_9_combataudio_noise"
+  },
+  {
+    "id": 3390010,
+    "eventName": "play_activitymusic_sailing_2_4",
+    "bankName": "activity2_4_music"
   }
 ]

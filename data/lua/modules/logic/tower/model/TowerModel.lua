@@ -177,10 +177,6 @@ function TowerModel:addTowerInfoList(towerType, mo)
 	table.insert(self.towerInfoList[towerType], mo)
 end
 
-function TowerModel:getTowerInfoList(towerType)
-	return self.towerInfoList[towerType]
-end
-
 function TowerModel:getTowerInfoById(towerType, towerId)
 	if not self.towerInfoMap[towerType] then
 		return

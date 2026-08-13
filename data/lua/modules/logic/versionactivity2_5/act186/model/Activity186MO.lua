@@ -45,7 +45,7 @@ function Activity186MO:getMilestoneRewardStatus(rewardId)
 	local config = Activity186Config.instance:getMileStoneConfig(self.id, rewardId)
 	local coinNum = config and config.coinNum or 0
 	local isLoop = config and config.isLoopBonus or false
-	local currencyId = Activity186Config.instance:getConstNum(Activity186Enum.ConstId.CurrencyId)
+	local currencyId = Activity186Config.instance:getConstNum(self.id, Activity186Enum.ConstId.CurrencyId)
 	local hasCurrencyNum = ItemModel.instance:getItemQuantity(MaterialEnum.MaterialType.Currency, currencyId)
 
 	if isLoop then
@@ -83,7 +83,7 @@ function Activity186MO:getMilestoneValue(rewardId)
 	end
 
 	local loopNum = config and config.loopBonusIntervalNum or 1
-	local currencyId = Activity186Config.instance:getConstNum(Activity186Enum.ConstId.CurrencyId)
+	local currencyId = Activity186Config.instance:getConstNum(self.id, Activity186Enum.ConstId.CurrencyId)
 	local hasCurrencyNum = ItemModel.instance:getItemQuantity(MaterialEnum.MaterialType.Currency, currencyId)
 	local nextTarget = coinNum
 
@@ -276,7 +276,7 @@ function Activity186MO:pushLike(infos)
 end
 
 function Activity186MO:getCurLikeType()
-	local baseLikeValue = Activity186Config.instance:getConstNum(Activity186Enum.ConstId.BaseLikeValue)
+	local baseLikeValue = Activity186Config.instance:getConstNum(self.id, Activity186Enum.ConstId.BaseLikeValue)
 	local curBaseLikeValue = self:getLikeValue(4)
 
 	if curBaseLikeValue < baseLikeValue then
@@ -432,7 +432,7 @@ function Activity186MO:hasActivityReward()
 end
 
 function Activity186MO:isInAvgTime()
-	local str = Activity186Config.instance:getConstStr(Activity186Enum.ConstId.AvgOpenTime)
+	local str = Activity186Config.instance:getConstStr(self.id, Activity186Enum.ConstId.AvgOpenTime)
 	local list = string.split(str, "#")
 	local openTime = TimeUtil.stringToTimestamp(list[1])
 	local closeTime = TimeUtil.stringToTimestamp(list[2])

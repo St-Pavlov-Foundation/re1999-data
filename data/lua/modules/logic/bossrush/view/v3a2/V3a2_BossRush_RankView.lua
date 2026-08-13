@@ -92,7 +92,7 @@ function V3a2_BossRush_RankView:refreshUI()
 	local content = self._scrollprogress.content
 
 	if not self._res then
-		local resPath = BossRushEnum.ResPath.v3a2_bossrush_rankbonus
+		local resPath = self.viewContainer:getSetting().otherRes[1]
 
 		self._res = self.viewContainer:getRes(resPath)
 	end

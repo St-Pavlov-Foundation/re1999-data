@@ -55,6 +55,17 @@ function Activity186Model:onFinishAct186Task(info)
 	end
 end
 
+function Activity186Model:onFinishAllAct186Task(info)
+	local mo = self:getById(info.activityId)
+	local taskIds = info.taskIds
+
+	if mo and taskIds then
+		for _, taskId in ipairs(taskIds) do
+			mo:finishTask(taskId)
+		end
+	end
+end
+
 function Activity186Model:onGetAct186MilestoneReward(info)
 	local mo = self:getById(info.activityId)
 

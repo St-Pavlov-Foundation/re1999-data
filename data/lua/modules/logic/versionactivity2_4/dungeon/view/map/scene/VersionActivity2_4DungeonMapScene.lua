@@ -22,6 +22,7 @@ function VersionActivity2_4DungeonMapScene:addEvents()
 	self:addEventCb(VersionActivity2_4DungeonController.instance, VersionActivity2_4DungeonEvent.OnClickElement, self.onClickElement, self)
 	self:addEventCb(VersionActivity2_4DungeonController.instance, VersionActivity2_4DungeonEvent.FocusElement, self.onFocusElement, self)
 	self:addEventCb(VersionActivity2_4DungeonController.instance, VersionActivity2_4DungeonEvent.ManualClickElement, self.manualClickElement, self)
+	self:addEventCb(DungeonController.instance, DungeonMapElementEvent.OnRecheckElement, self._onRecheckElement, self)
 
 	if self._drag then
 		self._drag:AddDragBeginListener(self._onDragBegin, self)
@@ -39,6 +40,7 @@ function VersionActivity2_4DungeonMapScene:removeEvents()
 	self:removeEventCb(VersionActivity2_4DungeonController.instance, VersionActivity2_4DungeonEvent.OnClickElement, self.onClickElement, self)
 	self:removeEventCb(VersionActivity2_4DungeonController.instance, VersionActivity2_4DungeonEvent.FocusElement, self.onFocusElement, self)
 	self:removeEventCb(VersionActivity2_4DungeonController.instance, VersionActivity2_4DungeonEvent.ManualClickElement, self.manualClickElement, self)
+	self:removeEventCb(DungeonController.instance, DungeonMapElementEvent.OnRecheckElement, self._onRecheckElement, self)
 
 	if self._drag then
 		self._drag:RemoveDragBeginListener()
@@ -535,6 +537,22 @@ function VersionActivity2_4DungeonMapScene:_resetCamera()
 
 	camera.orthographicSize = 5
 	camera.orthographic = false
+end
+
+function VersionActivity2_4DungeonMapScene:_onRecheckElement(elementId, isGM)
+	local elementCo = lua_chapter_map_element.configDict[elementId]
+	local chapterId = self.viewParam.chapterId or self.viewContainer:_getChapterId()
+
+	if not DungeonController.instance:isNeedRecheckInteractive(elementCo) then
+		DungeonController.instance:onRecheckElement(elementId, chapterId)
+
+		return
+	end
+
+	local item = self.viewContainer:getInteractiveItem()
+	local pos = self._sceneTrans.localPosition
+
+	DungeonController.instance:onRecheckElement(elementId, chapterId, item, pos, isGM)
 end
 
 function VersionActivity2_4DungeonMapScene:onDestroyView()

@@ -136,7 +136,7 @@ function FightFieldDataMgr:isRouge2Boss()
 end
 
 function FightFieldDataMgr:isV3_2ZongMao()
-	return self:isDungeonType(DungeonEnum.EpisodeType.V3_2ZongMao)
+	return self:isDungeonType(DungeonEnum.EpisodeType.V3_2ZongMao) or self:isDungeonType(DungeonEnum.EpisodeType.BossRushActMode)
 end
 
 function FightFieldDataMgr:isSouDaChe()

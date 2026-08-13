@@ -4,6 +4,12 @@ module("modules.logic.partygame.config.PartyGameConfig", package.seeall)
 
 local PartyGameConfig = class("PartyGameConfig", BaseConfig)
 
+function PartyGameConfig:getAlertMaxMs()
+	local strValue = self:getConstValue(340001)
+
+	return tonumber(strValue) or 200
+end
+
 function PartyGameConfig:reqConfigNames()
 	return {
 		"partygame_asset",

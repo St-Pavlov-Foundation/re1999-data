@@ -158,5 +158,55 @@
     "id": 10406,
     "name": "总伤害",
     "res": "root/fightfloat/total_damage"
+  },
+  {
+    "id": 20401,
+    "name": "开场效果",
+    "res": "root/#fapai"
+  },
+  {
+    "id": 20402,
+    "name": "出牌",
+    "res": "root/#chupai"
+  },
+  {
+    "id": 20403,
+    "name": "升阶",
+    "res": "root/#cardrising"
+  },
+  {
+    "id": 20404,
+    "name": "融合",
+    "res": "root/#cardmerging"
+  },
+  {
+    "id": 10501,
+    "name": "一般伤害",
+    "res": "root/fightfloat/crit_damage"
+  },
+  {
+    "id": 10502,
+    "name": "克制伤害",
+    "res": "root/fightfloat/crit_restrain"
+  },
+  {
+    "id": 10503,
+    "name": "治疗",
+    "res": "root/fightfloat/crit_heal"
+  },
+  {
+    "id": 10504,
+    "name": "本源伤害",
+    "res": "root/fightfloat/crit_damage_origin"
+  },
+  {
+    "id": 10505,
+    "name": "附加伤害",
+    "res": "root/fightfloat/crit_additional_damage"
+  },
+  {
+    "id": 10506,
+    "name": "总伤害",
+    "res": "root/fightfloat/total_damage"
   }
 ]

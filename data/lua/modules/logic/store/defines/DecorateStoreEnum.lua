@@ -37,5 +37,6 @@ DecorateStoreEnum.LinkTagType = {
 DecorateStoreEnum.DiscountItemActId = {
 	[V3a4GiftRecommendEnum.OffItemId] = ActivityEnum.Activity.V3a4_GiftRecommend
 }
+DecorateStoreEnum.DefaultViewShowTime = 1
 
 return DecorateStoreEnum

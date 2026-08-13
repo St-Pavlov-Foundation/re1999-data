@@ -234,6 +234,14 @@ function CharacterSearchFilterModel:getSelectDmgs()
 	return self._selectDmgs or {}
 end
 
+function CharacterSearchFilterModel:setSelectDestiny(destiny)
+	self._selectDestiny = destiny
+end
+
+function CharacterSearchFilterModel:getSelectDestiny()
+	return self._selectDestiny
+end
+
 function CharacterSearchFilterModel:setSelectAttrs(attrs)
 	self._selectAttrs = attrs
 end
@@ -246,6 +254,7 @@ function CharacterSearchFilterModel:clearSelectTag()
 	self._selectDmgs = {}
 	self._selectAttrs = {}
 	self._selectLocal = {}
+	self._selectDestiny = nil
 
 	CharacterModel.instance:clearTagCountDict()
 end
@@ -302,6 +311,10 @@ function CharacterSearchFilterModel:hasFilter()
 		if v then
 			return true
 		end
+	end
+
+	if self._selectDestiny then
+		return true
 	end
 
 	for _, v in pairs(self._selectLocal) do

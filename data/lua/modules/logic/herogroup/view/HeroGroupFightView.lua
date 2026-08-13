@@ -462,8 +462,10 @@ function HeroGroupFightView:checkAfterUseRecommend()
 	local recommendParam = HeroGroupModel.instance:getTempBattleRecommendParam()
 
 	if recommendParam and recommendParam.recommendMo then
+		local tempEpisodeId = recommendParam.episodeId
+
 		HeroGroupModel.instance:setTempBattleRecommendParam(nil)
-		HeroGroupController.instance:useRecommendGroup(recommendParam.recommendMo, nil, true)
+		HeroGroupController.instance:useRecommendGroup(recommendParam.recommendMo, tempEpisodeId, true)
 	end
 end
 

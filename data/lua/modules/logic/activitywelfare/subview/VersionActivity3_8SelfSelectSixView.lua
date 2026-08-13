@@ -29,13 +29,13 @@ function VersionActivity3_8SelfSelectSixView:removeEvents()
 end
 
 function VersionActivity3_8SelfSelectSixView:_btncheckOnClick()
-	local itemco = ItemConfig.instance:getItemCo(VersionActivity3_8SelfSelectSixModel.ItemId)
+	local itemco = ItemConfig.instance:getItemCo(DestinyStoneGiftPickChoiceEnum.V3a8ItemId)
 
 	if string.nilorempty(itemco.effect) then
 		return
 	end
 
-	VersionActivity3_8SelfSelectSixController.instance:openHeroChoicePreview()
+	DestinyStoneGiftPickChoiceController.instance:openHeroChoicePreview(nil, DestinyStoneGiftPickChoiceEnum.V3a8ItemId)
 end
 
 function VersionActivity3_8SelfSelectSixView:_btngetOnClick()
@@ -55,13 +55,15 @@ function VersionActivity3_8SelfSelectSixView:_btngetOnClick()
 end
 
 function VersionActivity3_8SelfSelectSixView:_btncanuseOnClick()
-	local itemcount = ItemModel.instance:getItemCount(VersionActivity3_8SelfSelectSixModel.ItemId)
+	local itemcount = ItemModel.instance:getItemCount(DestinyStoneGiftPickChoiceEnum.V3a8ItemId)
 
 	if itemcount <= 0 then
 		return
 	end
 
-	VersionActivity3_8SelfSelectSixController.instance:openHeroChoiceView()
+	local itemId = DestinyStoneGiftPickChoiceEnum.V3a8ItemId
+
+	DestinyStoneGiftPickChoiceController.instance:openHeroChoiceView(itemId)
 end
 
 function VersionActivity3_8SelfSelectSixView:_addSelfEvents()
@@ -100,7 +102,7 @@ end
 
 function VersionActivity3_8SelfSelectSixView:_refresh()
 	local hasGet = ActivityType101Model.instance:isType101RewardGet(self._actId, 1)
-	local itemcount = ItemModel.instance:getItemCount(VersionActivity3_8SelfSelectSixModel.ItemId)
+	local itemcount = ItemModel.instance:getItemCount(DestinyStoneGiftPickChoiceEnum.V3a8ItemId)
 	local canUse = itemcount > 0
 
 	gohelper.setActive(self._gocanget, not hasGet)

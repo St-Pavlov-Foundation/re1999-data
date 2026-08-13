@@ -29,7 +29,7 @@ function CardDropTimelineItem:setPlayUid(uid)
 end
 
 function CardDropTimelineItem:init(timelineId, goRoot)
-	CardDropTimelineItem.super.__onInit(self)
+	self:__onInit()
 
 	self.timelineId = timelineId
 	self.go = gohelper.create3d(nil, "timeline_" .. self.timelineId)
@@ -217,7 +217,7 @@ function CardDropTimelineItem:destroy()
 
 	self.updateHandle = nil
 
-	CardDropTimelineItem.super.__onDispose(self)
+	self:__onDispose()
 end
 
 return CardDropTimelineItem

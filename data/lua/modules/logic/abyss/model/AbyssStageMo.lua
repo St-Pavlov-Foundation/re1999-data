@@ -13,6 +13,9 @@ function AbyssStageMo:ctor()
 	self.heroList = {}
 	self.heroDic = {}
 	self.equipDic = {}
+	self.skillId = nil
+	self.heroGroupSubId = nil
+	self.lastUpdateTime = nil
 end
 
 function AbyssStageMo:init()
@@ -40,6 +43,17 @@ function AbyssStageMo:updateInfo(stageInfo, actId)
 			self.equipDic[heroNo.heroId] = heroNo.equipUids
 		end
 	end
+
+	self.heroGroupSubId = self.stageId
+
+	local skillId = stageInfo.skillIds and stageInfo.skillIds[1]
+
+	skillId = skillId or 0
+	self.skillId = AbyssHelper.getValidSkill(self.stageId, skillId)
+
+	local time = tonumber(stageInfo.lastUpdateTeamTime)
+
+	self.lastUpdateTime = time ~= nil and time ~= 0 and time or self.stageId
 end
 
 function AbyssStageMo:resetInfo()

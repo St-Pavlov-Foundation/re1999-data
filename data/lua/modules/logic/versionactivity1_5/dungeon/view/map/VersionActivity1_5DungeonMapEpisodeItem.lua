@@ -420,6 +420,13 @@ function VersionActivity1_5DungeonMapEpisodeItem:onRemoveElement(elementId)
 		return
 	end
 
+	local elementCo = lua_chapter_map_element.configDict[elementId]
+	local fragmentId = elementCo.fragment
+
+	if not fragmentId or fragmentId == 0 then
+		self.beginReward = false
+	end
+
 	for _, _elementId in ipairs(self.elementIdList) do
 		if _elementId == elementId then
 			self.isLock = self:checkLock()

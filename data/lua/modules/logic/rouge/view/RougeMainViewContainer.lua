@@ -9,6 +9,7 @@ function RougeMainViewContainer:buildViews()
 	return {
 		RougeMainView.New(),
 		RougeBaseDLCViewComp.New(),
+		RougeActivityTaskEntryView.New("Right/#go_ActivityTask"),
 		TabViewGroup.New(kTabContainerId_NavigateButtonsView, "#go_lefttop")
 	}
 end
@@ -26,14 +27,6 @@ function RougeMainViewContainer:buildTabViews(tabContainerId)
 		return {
 			navigationView
 		}
-	end
-end
-
-function RougeMainViewContainer:onContainerClose()
-	local c = ViewMgr.instance:getContainer(ViewName.DungeonView)
-
-	if not c then
-		return
 	end
 end
 

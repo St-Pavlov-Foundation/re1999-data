@@ -132,4 +132,12 @@ function NecrologistStoryView_PlayStory:playStory_event(storyConfig, isSkip)
 	storyView:runNextStep(isSkip)
 end
 
+function NecrologistStoryView_PlayStory:playStory_v3a9Item(storyConfig, isSkip)
+	self:createStoryItemAsync(V3A9NecrologistStoryItem, storyConfig, isSkip)
+end
+
+function NecrologistStoryView_PlayStory:playStory_v3a9Book(storyConfig, isSkip)
+	self:createStoryItemAsync(V3A9NecrologistStoryBookItem, storyConfig, isSkip)
+end
+
 return NecrologistStoryView_PlayStory

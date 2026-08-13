@@ -276,6 +276,13 @@ function JumpController:jumpToDungeonViewWithType(jumpParam)
 
 		table.insert(self.remainViewNames, ViewName.DungeonView)
 	else
+		if LuaUtil.tableContains(DungeonEnum.ChapterType, jumpChapterType) then
+			DungeonModel.instance:changeCategory(jumpChapterType)
+			DungeonController.instance:enterDungeonView()
+
+			return JumpEnum.JumpResult.Success
+		end
+
 		return JumpEnum.JumpResult.Fail
 	end
 
@@ -301,9 +308,20 @@ end
 function JumpController:jumpToHeroGroupView(jumpParam)
 	local jumpArray = string.splitToNumber(jumpParam, "#")
 	local episodeId = jumpArray[2]
+
+	if not episodeId then
+		return JumpEnum.JumpResult.Fail
+	end
+
 	local config = DungeonConfig.instance:getEpisodeCO(episodeId)
 
 	DungeonFightController.instance:enterFight(config.chapterId, episodeId)
+
+	return JumpEnum.JumpResult.Success
+end
+
+function JumpController:jumpToHeroGroupPreView(jumpParam)
+	HeroGroupPresetController.instance:openHeroGroupPresetTeamView()
 
 	return JumpEnum.JumpResult.Success
 end
@@ -1241,6 +1259,18 @@ function JumpController:jumpToBossRush(jumpParam)
 	return JumpEnum.JumpResult.Success
 end
 
+function JumpController:jumpToV3a9BossRush(jumpParam)
+	local jumpData = string.splitToNumber(jumpParam, "#")
+	local tabIndex = jumpData[2]
+	local viewParam = {
+		enterMode = tabIndex
+	}
+
+	V3a9_BossRushController.instance:openV3a9MainView(viewParam)
+
+	return JumpEnum.JumpResult.Success
+end
+
 function JumpController:jumpToAct1_5EnterView(jumpParam, paramList)
 	table.insert(self.waitOpenViewNames, ViewName.VersionActivity1_5EnterView)
 	VersionActivity1_5EnterController.instance:openVersionActivityEnterView()
@@ -1490,7 +1520,11 @@ function JumpController:jumpToVersionEnterView(jumpParam)
 	local actId = paramsList[2]
 
 	if not actId then
-		return JumpEnum.JumpResult.Fail
+		local controller = VersionActivityFixedHelper.getVersionActivityEnterController()
+
+		controller.instance:openVersionActivityEnterView()
+
+		return JumpEnum.JumpResult.Success
 	end
 
 	local version = ActivityHelper.getActivityVersion(actId)
@@ -1800,18 +1834,10 @@ function JumpController:jumpToAbyss()
 		return JumpEnum.JumpResult.Fail
 	end
 
-	local viewName = VersionActivityFixedHelper.getVersionActivityEnterViewName()
-
-	if not ViewMgr.instance:isOpen(viewName) then
-		self:jumpToMainView()
-	end
-
-	local version = ActivityHelper.getActivityVersion(jumpActId)
-	local jumpFuncs = _G[string.format("VersionActivity%sJumpHandleFunc", version)]
-
-	if jumpFuncs and jumpFuncs["jumpTo" .. jumpActId] then
-		return jumpFuncs["jumpTo" .. jumpActId](self)
-	end
+	GameSceneMgr.instance:dispatchEvent(SceneEventName.WaitViewOpenCloseLoading, ViewName.AbyssMainView)
+	VersionActivityFixedHelper.getVersionActivityEnterController().instance:openVersionActivityEnterViewIfNotOpened(function()
+		AbyssController.instance:openMainView(jumpActId, true)
+	end, nil, jumpActId, true)
 
 	return JumpEnum.JumpResult.Success
 end
@@ -1839,6 +1865,14 @@ function JumpController:jumpToWeekWalk(jumpParam)
 	if weekWalkType == 1 then
 		WeekWalkController.instance:jumpWeekWalkDeepLayerView()
 	elseif weekWalkType == 2 then
+		local weekWalkInfo = WeekWalk_2Model.instance:getInfo()
+
+		if not weekWalkInfo or not weekWalkInfo:isOpen() then
+			GameFacade.showToast(ToastEnum.ActivityWeekWalkDeepShowView)
+
+			return JumpEnum.JumpResult.Fail
+		end
+
 		WeekWalk_2Controller.instance:jumpWeekWalkHeartLayerView()
 	end
 
@@ -1889,6 +1923,62 @@ function JumpController:jumpToAtomicDungeonView(jumpParam)
 	}
 
 	AtomicDungeonController.instance:jumpView(param)
+
+	return JumpEnum.JumpResult.Success
+end
+
+function JumpController:jumpToActivityCenterView(jumpParam)
+	local jumpArray = string.splitToNumber(jumpParam, "#")
+	local activityType = jumpArray[2]
+
+	if activityType == ActivityEnum.ActivityType.Normal then
+		ActivityController.instance:openActivityNormalView(jumpParam)
+	elseif activityType == ActivityEnum.ActivityType.Welfare then
+		ActivityController.instance:openActivityWelfareView(jumpParam)
+	else
+		ActivityController.instance:openActivityBeginnerView(jumpParam)
+	end
+
+	return JumpEnum.JumpResult.Success
+end
+
+function JumpController:jumpToPlayerCardView(jumpParam)
+	local playerInfo = PlayerModel.instance:getPlayinfo()
+
+	PlayerCardController.instance:openPlayerCardView({
+		userId = playerInfo.userId
+	})
+
+	return JumpEnum.JumpResult.Success
+end
+
+function JumpController:jumpToTeachingMainiew(jumpParam)
+	TeachingController.instance:openTeachingMainView()
+
+	return JumpEnum.JumpResult.Success
+end
+
+function JumpController:jumpToUdimoView(jumpParam)
+	UdimoController.instance:enterUdimo()
+
+	return JumpEnum.JumpResult.Success
+end
+
+function JumpController:jumpToMainSwitchView(jumpParam)
+	local jumpArray = string.splitToNumber(jumpParam, "#")
+	local jumpTabs = {}
+
+	for i = 2, #jumpArray do
+		table.insert(jumpTabs, jumpArray[i])
+	end
+
+	local param = {
+		isSwitch = true,
+		jumpTabs = jumpTabs
+	}
+
+	NavigateButtonsView.homeClick()
+	MainController.instance:openMainThumbnailView(param, true)
 
 	return JumpEnum.JumpResult.Success
 end
@@ -1958,7 +2048,14 @@ JumpController.JumpViewToHandleFunc = {
 	[JumpEnum.JumpView.WeekWalk] = JumpController.jumpToWeekWalk,
 	[JumpEnum.JumpView.Anniversary3Game] = JumpController.jumpToAnniversary3GameView,
 	[JumpEnum.JumpView.Act236] = JumpController.jumpToAct236,
-	[JumpEnum.JumpView.AtomicDungeon] = JumpController.jumpToAtomicDungeonView
+	[JumpEnum.JumpView.AtomicDungeon] = JumpController.jumpToAtomicDungeonView,
+	[JumpEnum.JumpView.ActivityCenter] = JumpController.jumpToActivityCenterView,
+	[JumpEnum.JumpView.PlayerCard] = JumpController.jumpToPlayerCardView,
+	[JumpEnum.JumpView.TeachingMain] = JumpController.jumpToTeachingMainiew,
+	[JumpEnum.JumpView.Udimo] = JumpController.jumpToUdimoView,
+	[JumpEnum.JumpView.MainSwitchView] = JumpController.jumpToMainSwitchView,
+	[JumpEnum.JumpView.V3a9BossRush] = JumpController.jumpToV3a9BossRush,
+	[JumpEnum.JumpView.HeroGroupPreView] = JumpController.jumpToHeroGroupPreView
 }
 JumpController.JumpActViewToHandleFunc = {
 	[JumpEnum.ActIdEnum.Act117] = JumpController.jumpToAct117,

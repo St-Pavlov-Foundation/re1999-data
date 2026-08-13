@@ -24,7 +24,7 @@ function FightTLEventPlaySceneAnimator:onTrackStart(fightStepData, duration, par
 	local loadPath = paramsArr[4]
 
 	if not string.nilorempty(loadPath) then
-		local loadWork = self:com_registWork(FightWorkLoadAnimator, loadPath, playObj)
+		local loadWork = self:com_registWork(FightWorkLoadAnimator, loadPath, playObj, self)
 
 		loadWork:registFinishCallback(self.playAnimator, self)
 		loadWork:start()

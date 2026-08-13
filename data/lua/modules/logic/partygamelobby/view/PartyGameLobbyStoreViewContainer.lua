@@ -28,7 +28,7 @@ function PartyGameLobbyStoreViewContainer:buildTabViews(tabContainerId)
 	end
 
 	if tabContainerId == 2 then
-		local currencyType = CurrencyEnum.CurrencyType.PartyGameStoreCoin
+		local currencyType = CurrencyEnum.CurrencyType.V3a9PartyGameStoreCoin
 
 		self._currencyView = CurrencyView.New({
 			currencyType

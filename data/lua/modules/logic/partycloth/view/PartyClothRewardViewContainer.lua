@@ -16,7 +16,7 @@ end
 function PartyClothRewardViewContainer:buildTabViews(tabContainerId)
 	if tabContainerId == 1 then
 		local currencyParam = {
-			CurrencyEnum.CurrencyType.PartyGameStoreCoin
+			CurrencyEnum.CurrencyType.V3a9PartyGameStoreCoin
 		}
 
 		return {

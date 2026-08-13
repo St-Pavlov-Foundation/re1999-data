@@ -237,7 +237,7 @@ function PartyGameLobbyPlayerListView:_addPlayer(id, mo, hideBornEffect)
 	if not hideBornEffect then
 		local effectLoader = PrefabInstantiate.Create(go)
 
-		effectLoader:startLoad("effects/prefabs/v3a4_games/game_common04.prefab")
+		effectLoader:startLoad("modules/party_game/scene/effects/v3a4_games/game_common04.prefab")
 	end
 
 	local headInfoItem = self:_getHeadInfoItem()
@@ -386,7 +386,7 @@ function PartyGameLobbyPlayerListView:_sendMainPlayerPos()
 	self._mainPlayerPosZ = self._tempMainPlayerPosZ
 
 	if PartyGameRoomModel.instance:inGameRoom() then
-		PartyGameLobbyController:sendInteraction(0, self._mainPlayerPosX, self._mainPlayerPosZ)
+		PartyGameLobbyController.instance:sendInteraction(0, self._mainPlayerPosX, self._mainPlayerPosZ)
 	end
 end
 
@@ -414,7 +414,7 @@ function PartyGameLobbyPlayerListView:_initMainPlayer()
 
 	local effectLoader = PrefabInstantiate.Create(go)
 
-	effectLoader:startLoad("effects/prefabs/v3a4_games/game_common02.prefab")
+	effectLoader:startLoad("modules/party_game/scene/effects/v3a4_games/game_common02.prefab")
 
 	local scene = GameSceneMgr.instance:getCurScene()
 

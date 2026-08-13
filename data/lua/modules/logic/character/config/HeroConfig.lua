@@ -27,7 +27,8 @@ function HeroConfig:reqConfigNames()
 		"character_limited_voice",
 		"character_rank_replace",
 		"fight_device",
-		"device_power"
+		"device_power",
+		"heduonie_specialcard_client"
 	}
 end
 
@@ -466,6 +467,18 @@ end
 
 function HeroConfig:getHeroBattleTagList(heroId)
 	return self._heroId2BattleTagList and self._heroId2BattleTagList[heroId]
+end
+
+function HeroConfig:getHeroSpecialcardCo(heroId, skillLevel)
+	local cos = self:getHeroSpecialcardCos(heroId)
+
+	return cos and cos[skillLevel]
+end
+
+function HeroConfig:getHeroSpecialcardCos(heroId)
+	local cos = lua_heduonie_specialcard_client.configDict[heroId]
+
+	return cos
 end
 
 HeroConfig.instance = HeroConfig.New()

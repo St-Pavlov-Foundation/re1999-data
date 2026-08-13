@@ -61,12 +61,30 @@ end
 function FightBuffYaMiHuTiEffectItem:onSetYaMiShieldEffectVisible(visible)
 	if self.effectWrap then
 		self.effectWrap:setActive(visible, "onSetYaMiShieldEffectVisible")
+
+		if visible then
+			self.effectWrap:setLocalPos(10000, 0, 0)
+			self:com_registTimer(self.resetEffectPos, 0.1)
+		else
+			self.effectWrap:setLocalPos(10000, 0, 0)
+		end
 	end
+end
+
+function FightBuffYaMiHuTiEffectItem:resetEffectPos()
+	self.effectWrap:setLocalPos(self.posX, self.posY, self.posZ)
 end
 
 function FightBuffYaMiHuTiEffectItem:onSetMagicCircleVisible(visible, key)
 	if self.effectWrap then
 		self.effectWrap:setActive(visible, key)
+
+		if visible then
+			self.effectWrap:setLocalPos(10000, 0, 0)
+			self:com_registTimer(self.resetEffectPos, 0.1)
+		else
+			self.effectWrap:setLocalPos(10000, 0, 0)
+		end
 	end
 end
 
@@ -75,6 +93,7 @@ function FightBuffYaMiHuTiEffectItem:onSkillPlayStart()
 
 	if self.skillCount >= 1 and self.effectWrap then
 		self.effectWrap:setActive(false, "FightBuffYaMiHuTiEffectItem")
+		self.effectWrap:setLocalPos(10000, 0, 0)
 	end
 end
 
@@ -83,6 +102,8 @@ function FightBuffYaMiHuTiEffectItem:onSkillPlayFinish()
 
 	if self.skillCount <= 0 and self.effectWrap then
 		self.effectWrap:setActive(true, "FightBuffYaMiHuTiEffectItem")
+		self.effectWrap:setLocalPos(10000, 0, 0)
+		self:com_registTimer(self.resetEffectPos, 0.1)
 	end
 end
 

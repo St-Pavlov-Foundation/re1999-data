@@ -13,7 +13,9 @@ function TravelGoExpReward:giveRewards(param)
 end
 
 function TravelGoExpReward:getRewardDesc()
-	return luaLang("TravelGo_1") .. "+" .. self.exp
+	return GameUtil.getSubPlaceholderLuaLang(luaLang("TravelGo_1"), {
+		self.exp
+	})
 end
 
 function TravelGoExpReward:getRewardIcon()

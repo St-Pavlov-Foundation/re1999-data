@@ -31,7 +31,7 @@ function BeiLiErEpisodeMo:checkFinishGame()
 end
 
 function BeiLiErEpisodeMo:isGame()
-	local config = BeiLiErConfig:getEpisodeCo(self._actId, self.episodeId)
+	local config = BeiLiErConfig.instance:getEpisodeCo(self._actId, self.episodeId)
 
 	return config and config.gameId ~= 0
 end

@@ -40,7 +40,17 @@ function DecorateStoreDefaultShowView:onOpen()
 	self:_openPlayerCard()
 end
 
+function DecorateStoreDefaultShowView:onOpenFinish()
+	local showTime = self.viewParam and self.viewParam.viewShowTime
+
+	if showTime and showTime > 0 then
+		TaskDispatcher.runDelay(self.closeThis, self, showTime)
+	end
+end
+
 function DecorateStoreDefaultShowView:onClose()
+	TaskDispatcher.cancelTask(self.closeThis, self)
+
 	if self.viewParam.callback then
 		self.viewParam.callback(self.viewParam.callbackObj, self.viewParam)
 

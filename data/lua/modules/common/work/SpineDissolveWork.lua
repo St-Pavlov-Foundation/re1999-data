@@ -111,16 +111,10 @@ function SpineDissolveWork:_playDissolve()
 	local animatorPath = animatorParam and animatorParam.path
 
 	if animatorPath then
-		local assetItem = FightPreloadController.instance:getFightAssetItem(animatorPath)
+		self._animatorLoader = MultiAbLoader.New()
 
-		if assetItem then
-			self:_reallyPlayDissolve(assetItem)
-		else
-			self._animatorLoader = MultiAbLoader.New()
-
-			self._animatorLoader:addPath(animatorPath)
-			self._animatorLoader:startLoad(self._onAnimatorLoaded, self)
-		end
+		self._animatorLoader:addPath(animatorPath)
+		self._animatorLoader:startLoad(self._onAnimatorLoaded, self)
 	else
 		logError(self.context.dissolveEntity:getMO():getEntityName() .. "没有配置死亡消融动画 type = " .. (self.context.dissolveType or "nil"))
 	end

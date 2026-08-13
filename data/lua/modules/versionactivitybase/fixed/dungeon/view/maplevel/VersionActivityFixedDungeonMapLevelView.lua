@@ -220,7 +220,11 @@ function VersionActivityFixedDungeonMapLevelView:onStoryFinished()
 	DungeonModel.instance.curSendEpisodeId = nil
 
 	DungeonModel.instance:setLastSendEpisodeId(self.showEpisodeCo.id)
-	DungeonRpc.instance:sendEndDungeonRequest(false)
+
+	if not self:_isOpenPuzzleView() then
+		DungeonRpc.instance:sendEndDungeonRequest(false)
+	end
+
 	self:closeThis()
 end
 

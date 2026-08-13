@@ -19,21 +19,21 @@ function LoaderComponent:getAssetItem(url)
 	return self._assetDic[url]
 end
 
-function LoaderComponent:loadAsset(url, call_back, handler, failedCallback)
+function LoaderComponent:loadAsset(url, call_back, handler, failedCallback, param)
 	if self.component_dead then
 		return
 	end
 
 	if self._failedDic[url] then
 		if failedCallback then
-			failedCallback(handler, url)
+			failedCallback(handler, url, param)
 		end
 
 		return
 	end
 
 	if self._assetDic[url] then
-		call_back(handler, self._assetDic[url])
+		call_back(handler, self._assetDic[url], param)
 
 		return
 	end
@@ -45,7 +45,8 @@ function LoaderComponent:loadAsset(url, call_back, handler, failedCallback)
 	table.insert(self._callback[url], {
 		call_back = call_back,
 		handler = handler,
-		failedCallback = failedCallback
+		failedCallback = failedCallback,
+		param = param
 	})
 
 	if not self._urlDic[url] then
@@ -140,9 +141,9 @@ function LoaderComponent:_onLoadCallback(assetItem)
 	if self._callback[url] then
 		for i, v in ipairs(self._callback[url]) do
 			if success then
-				v.call_back(v.handler, assetItem)
+				v.call_back(v.handler, assetItem, v.param)
 			elseif v.failedCallback then
-				v.failedCallback(v.handler, url)
+				v.failedCallback(v.handler, url, v.param)
 			end
 
 			if self.component_dead then

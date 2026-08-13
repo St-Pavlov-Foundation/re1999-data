@@ -118,6 +118,9 @@ FightMsgId.CardRemoveRefrieratorTimeline = GameUtil.getMsgId()
 FightMsgId.CardAddRefrieratorTimeline = GameUtil.getMsgId()
 FightMsgId.CardRemoveRefrieratorEffect = GameUtil.getMsgId()
 FightMsgId.CheckCardRemoveRefrieratorEffect = GameUtil.getMsgId()
+FightMsgId.GetCardSkin672803Mgr = GameUtil.getMsgId()
+FightMsgId.GetCardSkin672803FloorEffect = GameUtil.getMsgId()
+FightMsgId.NarcissusImmunityEffect = GameUtil.getMsgId()
 FightMsgId.GMDouQuQuSkip2IndexRound = GameUtil.getMsgId()
 
 local id2Name = {}

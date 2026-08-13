@@ -14,6 +14,8 @@ function Turnback3CategoryItem:init(go)
 	self._txtunselectnameen = gohelper.findChildText(go, "noselected/noactivitynamecn/noactivitynameen")
 	self._goreddot = gohelper.findChild(go, "#go_reddot")
 	self._itemClick = gohelper.getClickWithAudio(self.go)
+	self._gobubble = gohelper.findChild(go, "bubble")
+	self._txtbubble = gohelper.findChildText(go, "bubble/#txt_num")
 	self._anim = self.go:GetComponent(typeof(UnityEngine.Animator))
 	self.curTurnbackId = TurnbackModel.instance:getCurTurnbackId()
 	self._openAnimTime = 0.43
@@ -49,6 +51,26 @@ function Turnback3CategoryItem:onUpdateMO(mo)
 	if Time.realtimeSinceStartup - TurnbackBeginnerCategoryListModel.instance.openViewTime > self._openAnimTime then
 		self._anim:Play(UIAnimationName.Idle, 0, 1)
 	end
+
+	local isShowBubble = self:_isShowBubble()
+
+	gohelper.setActive(self._gobubble, isShowBubble)
+end
+
+function Turnback3CategoryItem:_isShowBubble()
+	if TurnbackModel.instance:getTargetCategoryId(self.curTurnbackId) == TurnbackEnum.ActivityId.Turnback4ProgressView then
+		return false
+	end
+
+	if self._mo.id == TurnbackEnum.ActivityId.Turnback4ProgressView then
+		local count = TurnbackModel.instance:getTotalCouponCount()
+
+		self._txtbubble.text = count
+
+		return count > 0
+	end
+
+	return false
 end
 
 function Turnback3CategoryItem:_refreshItem()

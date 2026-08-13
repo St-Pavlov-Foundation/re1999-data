@@ -107,10 +107,12 @@ function StoryHeroItem:resetHero(v, mat, hasBottomEffect, conAudioId)
 
 		if self._heroGo.activeSelf then
 			if self._heroSpineGo then
-				ZProj.TweenHelper.DOLocalMove(self._heroSpineGo.transform, self._heroCo.heroPos[1], self._heroCo.heroPos[2], 0, 0.4)
+				ZProj.TweenHelper.DOLocalMoveX(self._heroSpineGo.transform, self._heroCo.heroPos[1], 0.4)
+				ZProj.TweenHelper.DOLocalMoveY(self._heroSpineGo.transform, self._heroCo.heroPos[2], 0.4)
 				ZProj.TweenHelper.DOScale(self._heroSpineGo.transform, self._heroCo.heroScale, self._heroCo.heroScale, 1, 0.1)
 			end
 
+			self:_fadeIn()
 			self:_playHeroVoice()
 		else
 			if self._heroSpineGo then
@@ -141,12 +143,30 @@ function StoryHeroItem:_fadeIn()
 		self._fadeInTweenId = nil
 	end
 
-	self:_fadeInUpdate(0)
+	local effCo = self._heroCo.effs[GameLanguageMgr.instance:getVoiceTypeStoryIndex()]
+	local targetAlpha = 1
 
-	self._fadeInTweenId = ZProj.TweenHelper.DOTweenFloat(0, 1, 0.5, self._fadeInUpdate, self._fadeInFinished, self, nil, EaseType.Linear)
+	if effCo and not LuaUtil.isEmptyStr(effCo) then
+		local effs = string.split(effCo, "#")
+
+		if effs[1] == StoryEnum.HeroEffect.SetAlpha then
+			targetAlpha = tonumber(effs[2])
+		end
+	end
+
+	if self._targetAlpha and self._targetAlpha == targetAlpha then
+		self:_fadeUpdate(targetAlpha)
+
+		return
+	end
+
+	local startAlpha = self._targetAlpha or 0
+
+	self._targetAlpha = targetAlpha
+	self._fadeInTweenId = ZProj.TweenHelper.DOTweenFloat(startAlpha, self._targetAlpha, 0.5, self._fadeUpdate, self._fadeInFinished, self, nil, EaseType.Linear)
 end
 
-function StoryHeroItem:_fadeInUpdate(value)
+function StoryHeroItem:_fadeUpdate(value)
 	if not self._heroSpine then
 		return
 	end
@@ -182,6 +202,16 @@ function StoryHeroItem:_setHeroFadeMat()
 end
 
 function StoryHeroItem:_fadeInFinished()
+	if self._fadeInTweenId then
+		ZProj.TweenHelper.KillById(self._fadeInTweenId)
+
+		self._fadeInTweenId = nil
+	end
+
+	if self._targetAlpha < 1 then
+		return
+	end
+
 	if self._heroSkeletonGraphic then
 		self._heroSkeletonGraphic.material:DisableKeyword("_SCENEMASKALPHA_ON")
 		self._heroSkeletonGraphic.material:DisableKeyword("_SCENEMASKALPHA2_ON")
@@ -189,12 +219,6 @@ function StoryHeroItem:_fadeInFinished()
 
 	if self._heroSpine and self._isLive2D then
 		self._heroSpine:disableSceneAlpha()
-	end
-
-	if self._fadeInTweenId then
-		ZProj.TweenHelper.KillById(self._fadeInTweenId)
-
-		self._fadeInTweenId = nil
 	end
 end
 
@@ -336,27 +360,9 @@ function StoryHeroItem:_fadeOut()
 		self._fadeOutTweenId = nil
 	end
 
-	self._fadeOutTweenId = ZProj.TweenHelper.DOTweenFloat(1, 0, fadeOutDuration, self._fadeOutUpdate, self._fadeOutFinished, self, nil, EaseType.Linear)
-end
+	local startAlpha = self._targetAlpha or 1
 
-function StoryHeroItem:_fadeOutUpdate(value)
-	if not self._heroSpine then
-		return
-	end
-
-	if not self._heroSpineGo then
-		return
-	end
-
-	if self._isLive2D then
-		self._heroSpine:setAlpha(value)
-	else
-		local x, y, z = transformhelper.getLocalPos(self._heroSpineGo.transform)
-
-		transformhelper.setLocalPos(self._heroSpineGo.transform, x, y, 1 - value)
-	end
-
-	self:_setHeroFadeMat()
+	self._fadeOutTweenId = ZProj.TweenHelper.DOTweenFloat(startAlpha, 0, fadeOutDuration, self._fadeUpdate, self._fadeOutFinished, self, nil, EaseType.Linear)
 end
 
 function StoryHeroItem:_fadeOutFinished()
@@ -365,7 +371,7 @@ function StoryHeroItem:_fadeOutFinished()
 	end
 
 	gohelper.setActive(self._heroGo, false)
-	self:_fadeOutUpdate(1)
+	self:_fadeUpdate(1)
 
 	if self._heroSkeletonGraphic then
 		self._heroSkeletonGraphic.material:DisableKeyword("_SCENEMASKALPHA_ON")
@@ -390,6 +396,7 @@ function StoryHeroItem:buildHero(v, mat, hasBottomEffect, callback, callbackObj,
 	canvas.overrideSorting = true
 
 	local siblingIndex = gohelper.getSibling(self._heroGo)
+	local baseOrder = 10
 
 	self._blitEff = StoryViewMgr.instance:getStoryBlitEff()
 
@@ -433,7 +440,7 @@ function StoryHeroItem:buildHero(v, mat, hasBottomEffect, callback, callbackObj,
 			gohelper.setLayer(self._heroSpineGo, self._heroGo.layer, true)
 			gohelper.setActive(self._heroSpineGo, false)
 
-			canvas.sortingOrder = (siblingIndex + 1) * 10
+			canvas.sortingOrder = (siblingIndex + 1) * 10 + baseOrder
 
 			if self._heroSkeletonGraphic and not string.match(self._heroSkeletonGraphic.material.name, "spine_ui_default") then
 				self._initMat = self._heroSkeletonGraphic.material
@@ -473,9 +480,9 @@ function StoryHeroItem:buildHero(v, mat, hasBottomEffect, callback, callbackObj,
 			end
 
 			gohelper.setActive(self._heroSpineGo, false)
-			self._heroSpine:setSortingOrder(siblingIndex * 10)
+			self._heroSpine:setSortingOrder(siblingIndex * 10 + baseOrder)
 
-			canvas.sortingOrder = (siblingIndex + 1) * 10
+			canvas.sortingOrder = (siblingIndex + 1) * 10 + baseOrder
 
 			gohelper.setLayer(self._heroSpineGo, self._heroGo.layer, true)
 			self:_setHeroMat(mat)
@@ -579,6 +586,11 @@ function StoryHeroItem:_waitHeroSpineLoaded()
 				local go = gohelper.findChild(self._heroSpineGo, nodeName)
 
 				gohelper.setActive(go, false)
+			elseif string.find(hideNodePath, StoryEnum.HeroEffect.ShowNode) then
+				local nodeName = string.split(hideNodePath, "#")[2]
+				local go = gohelper.findChild(self._heroSpineGo, nodeName)
+
+				gohelper.setActive(go, true)
 			else
 				local go = gohelper.findChild(self._heroSpineGo, hideNodePath)
 
@@ -711,6 +723,8 @@ function StoryHeroItem:_checkAndPlayHeroEffect()
 		self:_setHeroBlackFog()
 	elseif effs[1] == StoryEnum.HeroEffect.DissolveAndSoft then
 		self:_setHeroDissolveAndSoft(effs[2])
+	elseif effs[1] == StoryEnum.HeroEffect.SetAlpha then
+		-- block empty
 	else
 		if not self._heroSpineGo then
 			return

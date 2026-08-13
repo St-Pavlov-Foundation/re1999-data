@@ -6,6 +6,7 @@ local FightCardExtraInfoData = FightDataClass("FightCardExtraInfoData")
 
 FightCardExtraInfoData.ExtraKey = {
 	AnchorValue = 7,
+	NotUseActPoint = 8,
 	AnchorKey = 6,
 	NotUse = 5,
 	SpecialCard = 2,

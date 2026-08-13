@@ -104,7 +104,7 @@ function PartyClothLotteryView:refreshInfo()
 end
 
 function PartyClothLotteryView:onCurrecnyChange()
-	local cueerncyMo = CurrencyModel.instance:getCurrency(CurrencyEnum.CurrencyType.PartyGameStoreCoin)
+	local cueerncyMo = CurrencyModel.instance:getCurrency(CurrencyEnum.CurrencyType.V3a9PartyGameStoreCoin)
 
 	self.coinCnt = cueerncyMo and cueerncyMo.quantity or 0
 end

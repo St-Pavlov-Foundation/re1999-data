@@ -26,6 +26,7 @@ function DungeonMapModel:reInit()
 	self._mapInteractiveItemVisible = nil
 	self._focusElementId = nil
 	self._elementRecordInfos = {}
+	self._canRecheckElements = nil
 end
 
 function DungeonMapModel:setFocusElementId(elementId)
@@ -81,11 +82,15 @@ end
 
 function DungeonMapModel:addFinishedElement(id)
 	self._finishElements[id] = true
+
+	self:refreshCanRecheckElements(id)
 end
 
 function DungeonMapModel:addFinishedElements(list)
 	for i, v in ipairs(list) do
 		self._finishElements[v] = true
+
+		self:refreshCanRecheckElements(v)
 	end
 end
 
@@ -454,6 +459,93 @@ end
 
 function DungeonMapModel:getRecordInfo(id)
 	return self._elementRecordInfos[id]
+end
+
+function DungeonMapModel:getChapterElements(chapterId)
+	if not self._chapterElementsDict then
+		self._chapterElementsDict = {}
+	end
+
+	if self._chapterElementsDict[chapterId] then
+		return self._chapterElementsDict[chapterId]
+	end
+
+	for _, co in ipairs(lua_chapter_map_element.configList) do
+		local mapConfig = lua_chapter_map.configDict[co.mapId]
+
+		if co.mapId ~= 0 then
+			if mapConfig then
+				local _chapterId = mapConfig.chapterId
+
+				if not self._chapterElementsDict[_chapterId] then
+					self._chapterElementsDict[_chapterId] = {}
+				end
+
+				table.insert(self._chapterElementsDict[_chapterId], co)
+			else
+				logError(string.format("未找到地图配置？？？  episodeId==%s   mapId==%s", co.id, co.mapId))
+			end
+		end
+	end
+
+	return self._chapterElementsDict[chapterId]
+end
+
+function DungeonMapModel:refreshCanRecheckElements(elementId)
+	local elementCo = elementId and DungeonConfig.instance:getChapterMapElement(elementId)
+
+	if not elementCo then
+		return
+	end
+
+	local mapConfig = lua_chapter_map.configDict[elementCo.mapId]
+	local chapterId = mapConfig.chapterId
+
+	if self:_isNewRecheckElements(chapterId, elementCo) then
+		table.insert(self._canRecheckElements[chapterId], elementId)
+	end
+end
+
+function DungeonMapModel:_isNewRecheckElements(chapterId, elementCo)
+	if not self:isCanRecheckElements(elementCo) then
+		return false
+	end
+
+	if not self._canRecheckElements then
+		self._canRecheckElements = {}
+	end
+
+	if not self._canRecheckElements[chapterId] then
+		self._canRecheckElements[chapterId] = {}
+	end
+
+	if not LuaUtil.tableContains(self._canRecheckElements[chapterId], elementCo.id) then
+		return true
+	end
+end
+
+function DungeonMapModel:isCanRecheckElements(elementCo)
+	if not self._canRecheckElementTypes then
+		self._canRecheckElementTypes = {}
+
+		for _, co in ipairs(lua_paper_trail.configList) do
+			self._canRecheckElementTypes[co.type] = co.notShow
+		end
+	end
+
+	if self._canRecheckElementTypes[elementCo.type] then
+		return self._canRecheckElementTypes[elementCo.type] == 1
+	end
+
+	if elementCo.fragment ~= 0 then
+		return true
+	end
+
+	return false
+end
+
+function DungeonMapModel:getCanRecheckElements(chapterId)
+	return self._canRecheckElements and self._canRecheckElements[chapterId]
 end
 
 DungeonMapModel.instance = DungeonMapModel.New()

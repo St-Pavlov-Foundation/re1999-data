@@ -23,6 +23,7 @@ PlayerEnum.SimpleProperty = {
 	RoomFormulaShowTypeUnlockEffect = 7,
 	EquipPreferenceOpen = 9,
 	SummonUISkin = 24,
+	HandBookRedDot = 26,
 	V2a7_BossRushCurrencyNum = 16,
 	HeroSearchFilterTags = 25,
 	MainHero = 2,

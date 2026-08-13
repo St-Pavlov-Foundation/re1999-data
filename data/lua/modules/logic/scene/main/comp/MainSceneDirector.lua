@@ -17,6 +17,7 @@ function MainSceneDirector:_onLevelLoaded()
 
 	WeatherController.instance:initSceneGo(sceneGo, self._onSwitchResLoaded, self)
 	self._scene.yearAnimation:initAnimationCurve(self._onAnimationCurveLoaded, self)
+	PartyGameLobbyController.instance:sendPartyServerListRequest()
 end
 
 function MainSceneDirector:_onAnimationCurveLoaded()

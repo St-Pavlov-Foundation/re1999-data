@@ -54,7 +54,7 @@ function SurvivalShelterNpcMo:isRecommend(mapId)
 	local list = SurvivalConfig.instance:getNpcConfigTag(self.co.id)
 
 	for i, cfgId in ipairs(list) do
-		local cfg = SurvivalConfig:getTagCo(cfgId)
+		local cfg = SurvivalConfig.instance:getTagCo(cfgId)
 
 		if not string.nilorempty(cfg.suggestMap) then
 			local tags = string.splitToNumber(cfg.suggestMap, "#")

@@ -5,10 +5,12 @@ module("modules.logic.partygame.controller.PartyGameController", package.seeall)
 local PartyGameController = class("PartyGameController", BaseController)
 local partyGameMgrCs = PartyGame.Runtime.GameLogic.GameMgr
 
-function PartyGameController:onInit()
+function PartyGameController:setUpLuaCallBack()
 	partyGameMgrCs.Instance:SetLuaCallBack(self, self.gameStateChange, self.logicTickFinish, self.gamePlayerPush, self.kcpNetStateChange)
 	self:SetReconnectLuaCallBack()
+end
 
+function PartyGameController:onInit()
 	self._curPartyGame = nil
 	self._isFirstLogin = true
 	self._partyIsEnd = false
@@ -71,7 +73,7 @@ function PartyGameController:_getFakePlayerData(playerNum)
 	return string.format("%s#%s", mainPlayerName, names)
 end
 
-function PartyGameController:enterGame(gameId, islocal)
+function PartyGameController:enterGame(gameId, isLocal, isTrial)
 	if self._curPartyGame ~= nil then
 		self:clearGame()
 	end
@@ -79,7 +81,17 @@ function PartyGameController:enterGame(gameId, islocal)
 	self._curPartyGame = PartyGameUtils.getGameDefineClass(gameId)
 
 	self._curPartyGame:init(gameId)
-	self._curPartyGame:setIsLocal(islocal)
+	self._curPartyGame:setIsLocal(isLocal)
+
+	local var_14_0 = self._curPartyGame
+	local var_14_1 = var_14_0
+	local var_14_2 = var_14_0.setTrial
+
+	if isTrial == nil then
+		-- block empty
+	end
+
+	var_14_2(var_14_1, isTrial)
 	self._curPartyGame:setMainPlayerUid()
 	self._curPartyGame:enterGame()
 end
@@ -103,6 +115,7 @@ function PartyGameController:exitPartyGame()
 end
 
 function PartyGameController:partyGameCloseView()
+	ViewMgr.instance:closeView(ViewName.MaterialTipView)
 	ViewMgr.instance:closeView(ViewName.CardDropVSView)
 	ViewMgr.instance:closeView(ViewName.CardDropPromotionView)
 end
@@ -208,7 +221,16 @@ function PartyGameController:transToGamePush(data)
 
 	self:gamePlayerPush(data.Player)
 	logNormal("TransToGamePush-->" .. gameId)
-	self:enterGame(gameId, false)
+
+	local isLocal = data.isLocal ~= nil and data.isLocal or false
+	local isTrial = false
+
+	if not isLocal then
+		isLocal = data.isTrial ~= nil and data.isTrial or false
+		isTrial = data.isTrial ~= nil and data.isTrial or false
+	end
+
+	self:enterGame(gameId, isLocal, isTrial)
 end
 
 function PartyGameController:kcpNetStateChange(state)

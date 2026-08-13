@@ -7,11 +7,15 @@ local NecrologistStoryModel = class("NecrologistStoryModel", BaseModel)
 function NecrologistStoryModel:onInit()
 	self.storyGroupClientMos = {}
 	self._curStoryGroupId = nil
+
+	NecrologistStoryPlayerPrefs.instance:clear()
 end
 
 function NecrologistStoryModel:reInit()
 	self.storyGroupClientMos = {}
 	self._curStoryGroupId = nil
+
+	NecrologistStoryPlayerPrefs.instance:clear()
 end
 
 function NecrologistStoryModel:getCurStoryMO()

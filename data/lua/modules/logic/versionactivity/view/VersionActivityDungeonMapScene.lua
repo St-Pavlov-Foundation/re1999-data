@@ -15,11 +15,11 @@ function VersionActivityDungeonMapScene:onInitView()
 end
 
 function VersionActivityDungeonMapScene:addEvents()
-	return
+	self:addEventCb(DungeonController.instance, DungeonMapElementEvent.OnRecheckElement, self._onRecheckElement, self)
 end
 
 function VersionActivityDungeonMapScene:removeEvents()
-	return
+	self:removeEventCb(DungeonController.instance, DungeonMapElementEvent.OnRecheckElement, self._onRecheckElement, self)
 end
 
 function VersionActivityDungeonMapScene:_editableInitView()
@@ -575,6 +575,22 @@ function VersionActivityDungeonMapScene:setVisible(isVisible)
 	if isVisible then
 		self:_initCamera()
 	end
+end
+
+function VersionActivityDungeonMapScene:_onRecheckElement(elementId, isGM)
+	local elementCo = lua_chapter_map_element.configDict[elementId]
+	local chapterId = self.viewParam.chapterId or self.viewContainer:_getChapterId()
+
+	if not DungeonController.instance:isNeedRecheckInteractive(elementCo) then
+		DungeonController.instance:onRecheckElement(elementId, chapterId)
+
+		return
+	end
+
+	local item = self:getInteractiveItem()
+	local pos = self._sceneTrans.localPosition
+
+	DungeonController.instance:onRecheckElement(elementId, chapterId, item, pos, isGM)
 end
 
 function VersionActivityDungeonMapScene:onClose()

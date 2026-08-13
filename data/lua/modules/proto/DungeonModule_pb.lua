@@ -73,6 +73,7 @@ DungeonModule_pb.HERORECOMMENDINFOCLOTHFIELD = protobuf.FieldDescriptor()
 DungeonModule_pb.HERORECOMMENDINFORATEFIELD = protobuf.FieldDescriptor()
 DungeonModule_pb.HERORECOMMENDINFOLEVELSFIELD = protobuf.FieldDescriptor()
 DungeonModule_pb.HERORECOMMENDINFOASSISTBOSSIDFIELD = protobuf.FieldDescriptor()
+DungeonModule_pb.HERORECOMMENDINFOEXTSTRINGFIELD = protobuf.FieldDescriptor()
 DungeonModule_pb.REFRESHASSISTREQUEST_MSG = protobuf.Descriptor()
 DungeonModule_pb.REFRESHASSISTREQUESTASSISTTYPEFIELD = protobuf.FieldDescriptor()
 DungeonModule_pb.REFRESHASSISTREQUESTEXTFIELD = protobuf.FieldDescriptor()
@@ -753,6 +754,15 @@ DungeonModule_pb.HERORECOMMENDINFOASSISTBOSSIDFIELD.has_default_value = false
 DungeonModule_pb.HERORECOMMENDINFOASSISTBOSSIDFIELD.default_value = 0
 DungeonModule_pb.HERORECOMMENDINFOASSISTBOSSIDFIELD.type = 5
 DungeonModule_pb.HERORECOMMENDINFOASSISTBOSSIDFIELD.cpp_type = 1
+DungeonModule_pb.HERORECOMMENDINFOEXTSTRINGFIELD.name = "extString"
+DungeonModule_pb.HERORECOMMENDINFOEXTSTRINGFIELD.full_name = ".HeroRecommendInfo.extString"
+DungeonModule_pb.HERORECOMMENDINFOEXTSTRINGFIELD.number = 7
+DungeonModule_pb.HERORECOMMENDINFOEXTSTRINGFIELD.index = 6
+DungeonModule_pb.HERORECOMMENDINFOEXTSTRINGFIELD.label = 1
+DungeonModule_pb.HERORECOMMENDINFOEXTSTRINGFIELD.has_default_value = false
+DungeonModule_pb.HERORECOMMENDINFOEXTSTRINGFIELD.default_value = ""
+DungeonModule_pb.HERORECOMMENDINFOEXTSTRINGFIELD.type = 9
+DungeonModule_pb.HERORECOMMENDINFOEXTSTRINGFIELD.cpp_type = 9
 DungeonModule_pb.HERORECOMMENDINFO_MSG.name = "HeroRecommendInfo"
 DungeonModule_pb.HERORECOMMENDINFO_MSG.full_name = ".HeroRecommendInfo"
 DungeonModule_pb.HERORECOMMENDINFO_MSG.nested_types = {}
@@ -763,7 +773,8 @@ DungeonModule_pb.HERORECOMMENDINFO_MSG.fields = {
 	DungeonModule_pb.HERORECOMMENDINFOCLOTHFIELD,
 	DungeonModule_pb.HERORECOMMENDINFORATEFIELD,
 	DungeonModule_pb.HERORECOMMENDINFOLEVELSFIELD,
-	DungeonModule_pb.HERORECOMMENDINFOASSISTBOSSIDFIELD
+	DungeonModule_pb.HERORECOMMENDINFOASSISTBOSSIDFIELD,
+	DungeonModule_pb.HERORECOMMENDINFOEXTSTRINGFIELD
 }
 DungeonModule_pb.HERORECOMMENDINFO_MSG.is_extendable = false
 DungeonModule_pb.HERORECOMMENDINFO_MSG.extensions = {}

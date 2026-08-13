@@ -807,48 +807,9 @@ function MaterialTipView:_btnuseOnClick()
 			return
 		end
 
-		local effect = self._config.effect
-		local ignoreIds
+		local itemId = DestinyStoneGiftPickChoiceEnum.V2a7ItemId
 
-		if not string.nilorempty(effect) then
-			local _split = GameUtil.splitString2(effect, true)
-
-			if _split[2] then
-				ignoreIds = _split[2]
-			end
-		end
-
-		local isAllHasHeroDestinyLvMaxed = self:isAllHasHeroDestinyLvMaxed(ignoreIds)
-
-		if isAllHasHeroDestinyLvMaxed then
-			GameFacade.showToast(ToastEnum.NoHeroCanDestinyUp)
-
-			return
-		end
-
-		local heroList = HeroModel.instance:getAllHero()
-		local list = {}
-
-		for _, heroMo in pairs(heroList) do
-			local isHeroOpenDestinyStone = self:checkHeroOpenDestinyStone(heroMo)
-			local isIgnoreDestinyStone = self:checkIgnoreAllDestinyStone(heroMo.destinyStoneMo, ignoreIds)
-
-			if isHeroOpenDestinyStone and not isIgnoreDestinyStone and not heroMo.destinyStoneMo:checkAllUnlock() then
-				table.insert(list, heroMo)
-			end
-		end
-
-		if #list > 0 then
-			local param = {
-				materialId = materialId,
-				ignoreIds = ignoreIds,
-				heroList = list
-			}
-
-			ViewMgr.instance:openView(ViewName.DestinyStoneGiftPickChoiceView, param)
-		else
-			GameFacade.showToast(ToastEnum.NoHeroCanDestinyUp)
-		end
+		DestinyStoneGiftPickChoiceController.instance:openHeroChoiceView(itemId)
 	elseif self:_isRoomBlockGift() then
 		local function cb()
 			RoomBlockGiftController.instance:openBlockView(self._config.rare, materialId, self.closeThis, self)
@@ -897,7 +858,9 @@ function MaterialTipView:_btnuseOnClick()
 
 		JumpController.instance:jumpByParam(param)
 	elseif self._config.subType == ItemEnum.SubType.NewDestinyStoneUp then
-		VersionActivity3_8SelfSelectSixController.instance:openHeroChoiceView()
+		local itemId = DestinyStoneGiftPickChoiceEnum.V3a8ItemId
+
+		DestinyStoneGiftPickChoiceController.instance:openHeroChoiceView(itemId)
 	elseif self._config.subType == ItemEnum.SubType.EquipLvUp then
 		local itemId = self._config.id
 
@@ -911,57 +874,6 @@ function MaterialTipView:_btnuseOnClick()
 	end
 
 	self:closeThis()
-end
-
-function MaterialTipView:isAllHasHeroDestinyLvMaxed(ignoreIds)
-	local heroList = HeroModel.instance:getAllHero()
-
-	for _, heroMo in pairs(heroList) do
-		local isSlotMaxLevel = heroMo.destinyStoneMo and heroMo.destinyStoneMo:isSlotMaxLevel()
-		local stoneList = heroMo.destinyStoneMo and heroMo.destinyStoneMo:getStoneMoList()
-
-		if not isSlotMaxLevel then
-			return false
-		else
-			for _, stoneMo in pairs(stoneList) do
-				local isIgnore = LuaUtil.tableContains(ignoreIds, stoneMo.stoneId)
-
-				if not stoneMo.isUnlock and not isIgnore then
-					return false
-				end
-			end
-		end
-	end
-
-	return true
-end
-
-function MaterialTipView:checkIgnoreAllDestinyStone(destinyStoneMo, ignoreIds)
-	local stoneMoList = destinyStoneMo:getStoneMoList()
-
-	for _, stoneMo in pairs(stoneMoList) do
-		if not LuaUtil.tableContains(ignoreIds, stoneMo.stoneId) then
-			return false
-		end
-	end
-
-	return true
-end
-
-function MaterialTipView:checkHeroOpenDestinyStone(heroMo)
-	if not heroMo:isHasDestinySystem() then
-		return false
-	end
-
-	local rare = heroMo.config.rare or 5
-	local constId = CharacterDestinyEnum.DestinyStoneOpenLevelConstId[rare]
-	local openLevel = CommonConfig.instance:getConstStr(constId)
-
-	if heroMo.level >= tonumber(openLevel) then
-		return true
-	end
-
-	return false
 end
 
 function MaterialTipView:_useRoomTicket()
@@ -1153,15 +1065,17 @@ function MaterialTipView:_refreshUI()
 			showDetail = false
 
 			recthelper.setAnchorY(self._btnuse.transform, -190)
+			recthelper.setAnchorY(self._goincludeScroll.transform, 42)
 		elseif self._config.subType == ItemEnum.SubType.SkinSelelctGift or self._config.subType == ItemEnum.SubType.HeroExpBox then
 			showDetail = false
 
 			recthelper.setAnchorY(self._btnuse.transform, -190)
+			recthelper.setAnchorY(self._goincludeScroll.transform, 52)
 		elseif self:_isRoomBlockGift() then
 			showDetail = false
 
 			recthelper.setAnchorY(self._btnuse.transform, -190)
-			recthelper.setAnchorY(self._goincludeScroll.transform, 45)
+			recthelper.setAnchorY(self._goincludeScroll.transform, 52)
 		elseif self._config.subType == ItemEnum.SubType.SkinSelelctGift then
 			showDetail = false
 		elseif self._config.subType == ItemEnum.SubType.DestinySummonPackage then
@@ -1673,6 +1587,10 @@ function MaterialTipView:_refreshInclude()
 			MaterialTipListModel.instance:setData(includeItems)
 
 			return
+		elseif self._config.subType == ItemEnum.SubType.RandomNewItemBox then
+			local rewardParam = string.split(self._config.effect, "|")
+
+			includeItems = GameUtil.splitString2(rewardParam[2], true, "&", "#")
 		else
 			includeItems = GameUtil.splitString2(self._config.effect, true)
 		end
@@ -1744,7 +1662,7 @@ function MaterialTipView:_refreshInclude()
 
 	if includetype == MaterialEnum.MaterialType.Equip then
 		self._contentHorizontal.spacing = 6.62
-		self._contentHorizontal.padding.left = -2
+		self._contentHorizontal.padding.left = 36
 		self._contentHorizontal.padding.top = 10
 	end
 
@@ -1754,7 +1672,9 @@ function MaterialTipView:_refreshInclude()
 end
 
 function MaterialTipView:_onNewDestinyPreveiew(heroId)
-	VersionActivity3_8SelfSelectSixController.instance:openHeroChoicePreview(heroId)
+	local itemId = DestinyStoneGiftPickChoiceEnum.V3a8ItemId
+
+	DestinyStoneGiftPickChoiceController.instance:openHeroChoicePreview(heroId, itemId)
 end
 
 function MaterialTipView:checkOnlyShowEquip()

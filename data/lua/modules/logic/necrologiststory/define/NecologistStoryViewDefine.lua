@@ -264,6 +264,39 @@ function NecologistStoryViewDefine.init(module_views)
 			}
 		}
 	}
+	module_views.V3A9_RoleStoryGameView = {
+		destroy = 0,
+		container = "V3A9_RoleStoryGameViewContainer",
+		mainRes = "ui/viewres/dungeon/rolestory/v3a9/v3a9_rolestorygameview.prefab",
+		layer = "POPUP_TOP",
+		viewType = ViewType.Full,
+		anim = ViewAnim.Internal,
+		tabRes = {
+			{
+				{
+					NavigateButtonsView.prefabPath
+				}
+			}
+		}
+	}
+	module_views.V3A9_RoleStoryResultView = {
+		destroy = 0,
+		container = "V3A9_RoleStoryResultViewContainer",
+		bgBlur = 1,
+		mainRes = "ui/viewres/dungeon/rolestory/v3a9/v3a9_resultview.prefab",
+		layer = "POPUP_TOP",
+		viewType = ViewType.Normal,
+		anim = ViewAnim.Internal
+	}
+	module_views.V3A9_RoleStoryClueView = {
+		destroy = 0,
+		container = "V3A9_RoleStoryClueViewContainer",
+		bgBlur = 1,
+		mainRes = "ui/viewres/dungeon/rolestory/v3a9/v3a9_clueview.prefab",
+		layer = "POPUP_TOP",
+		viewType = ViewType.Normal,
+		anim = ViewAnim.Internal
+	}
 end
 
 return NecologistStoryViewDefine

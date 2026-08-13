@@ -46,13 +46,14 @@ function DungeonMapViewContainer:buildTabViews(tabContainerId)
 	local chapterType = DungeonModel.instance.curChapterType
 	local showHelp = chapterType == DungeonEnum.ChapterType.Normal and HelpModel.instance:isShowedHelp(HelpEnum.HelpId.Dungeon)
 
-	self._navigateButtonView = NavigateButtonsView.New({
+	self._navigateButtonView = DungeonNavigateButtonsView.New({
 		true,
 		true,
 		showHelp
 	}, HelpEnum.HelpId.Dungeon)
 
 	self._navigateButtonView:setOverrideClose(self.overrideClose, self)
+	self._navigateButtonView:setOpenCallback(self.initChapterRecheck, self)
 
 	if chapterType == DungeonEnum.ChapterType.Equip then
 		self._navigateButtonView.helpId = nil
@@ -110,16 +111,28 @@ function DungeonMapViewContainer:refreshHelp()
 	end
 end
 
-function DungeonMapViewContainer:onContainerUpdateParam()
-	self._mapScene:setSceneVisible(true)
-end
-
 function DungeonMapViewContainer:setVisibleInternal(isVisible)
 	DungeonMapViewContainer.super.setVisibleInternal(self, isVisible)
 
 	if self._mapScene then
 		self._mapScene:setSceneVisible(isVisible)
 	end
+end
+
+function DungeonMapViewContainer:getNavigateButtonView()
+	return self._navigateButtonView
+end
+
+function DungeonMapViewContainer:initChapterRecheck()
+	local chapterId = self:_getChapterId()
+
+	if self._navigateButtonView then
+		self._navigateButtonView:initChapterRecheck(chapterId)
+	end
+end
+
+function DungeonMapViewContainer:_getChapterId()
+	return self.viewParam.chapterId
 end
 
 return DungeonMapViewContainer

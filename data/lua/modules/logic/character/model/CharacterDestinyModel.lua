@@ -16,6 +16,21 @@ function CharacterDestinyModel:onRankUp(heroId)
 	return
 end
 
+function CharacterDestinyModel:isOpenDestinySystem(isShowToast)
+	if OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.DestinyStone) then
+		return true
+	end
+
+	local openCo = OpenConfig.instance:getOpenCo(OpenEnum.UnlockFunc.DestinyStone)
+	local episodeId = openCo and VersionValidator.instance:isInReviewing() and openCo.verifingEpisodeId or openCo.episodeId
+
+	if isShowToast and episodeId and episodeId ~= 0 and not DungeonModel.instance:hasPassLevel(episodeId) then
+		local episodeDisplay = DungeonConfig.instance:getEpisodeDisplay(episodeId)
+
+		GameFacade.showToast(ToastEnum.DungeonMapLevel, episodeDisplay)
+	end
+end
+
 function CharacterDestinyModel:getCurSlotAttrInfos(heroId, rank, level)
 	local attrInfos = {}
 	local specialAttrInfos = {}

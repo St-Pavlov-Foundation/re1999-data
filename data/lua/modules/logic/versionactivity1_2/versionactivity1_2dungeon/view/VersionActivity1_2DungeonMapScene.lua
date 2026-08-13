@@ -23,6 +23,7 @@ function VersionActivity1_2DungeonMapScene:onOpen()
 	self:addEventCb(VersionActivity1_2DungeonController.instance, VersionActivity1_2DungeonEvent.focusMap, self._onFocusMap, self)
 	self:addEventCb(VersionActivity1_2DungeonController.instance, VersionActivity1_2DungeonEvent.selectEpisodeItem, self._selectEpisodeItem, self)
 	self:addEventCb(VersionActivity1_2DungeonController.instance, VersionActivity1_2DungeonEvent.clickDailyEpisode, self._clickDailyEpisode, self)
+	self:addEventCb(DungeonController.instance, DungeonMapElementEvent.OnRecheckElement, self._onRecheckElement, self)
 	self:addEventCb(DungeonController.instance, DungeonEvent.OnRemoveElement, self._OnRemoveElement, self)
 	VersionActivity1_2DungeonMapScene.super.onOpen(self)
 	self:_showDailyBtn()
@@ -552,6 +553,22 @@ function VersionActivity1_2DungeonMapScene:_onClickBtn4()
 	gohelper.setActive(self._focusBtnStateOn, true)
 	gohelper.setActive(self._focusBtnStateOff, false)
 	VersionActivity1_2DungeonController.instance:dispatchEvent(VersionActivity1_2DungeonEvent.focusMap, Vector3(-85, 25, 0))
+end
+
+function VersionActivity1_2DungeonMapScene:_onRecheckElement(elementId, isGM)
+	local elementCo = lua_chapter_map_element.configDict[elementId]
+	local chapterId = self.viewParam.chapterId or self.viewContainer:_getChapterId()
+
+	if not DungeonController.instance:isNeedRecheckInteractive(elementCo) then
+		DungeonController.instance:onRecheckElement(elementId, chapterId)
+
+		return
+	end
+
+	local item = self:getInteractiveItem()
+	local pos = self._sceneTrans.localPosition
+
+	DungeonController.instance:onRecheckElement(elementId, chapterId, item, pos, isGM)
 end
 
 function VersionActivity1_2DungeonMapScene:onClose()

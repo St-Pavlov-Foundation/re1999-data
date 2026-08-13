@@ -21,6 +21,10 @@ function AbyssHeroGroupFightViewContainer:getFightRuleView()
 	return AbyssHeroGroupFightViewRule.New()
 end
 
+function AbyssHeroGroupFightViewContainer:getPresetFightView()
+	return AbyssHeroGroupPresetView.New()
+end
+
 function AbyssHeroGroupFightViewContainer:_closeCallback()
 	self:closeThis()
 

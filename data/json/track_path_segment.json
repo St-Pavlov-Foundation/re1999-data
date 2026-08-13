@@ -1,0 +1,110 @@
+[
+  {
+    "traceId": 39001,
+    "segmentId": 0,
+    "startPoint": 0,
+    "endPoint": 1,
+    "type": 0,
+    "rad": 0.35,
+    "len": 0.1
+  },
+  {
+    "traceId": 39001,
+    "segmentId": 1,
+    "startPoint": 1,
+    "endPoint": 2,
+    "type": 0,
+    "rad": 0.55,
+    "len": 0.18
+  },
+  {
+    "traceId": 39001,
+    "segmentId": 2,
+    "startPoint": 2,
+    "endPoint": 3,
+    "type": 0,
+    "rad": 0.45,
+    "len": 0.12
+  },
+  {
+    "traceId": 39001,
+    "segmentId": 3,
+    "startPoint": 3,
+    "endPoint": 4,
+    "type": 0,
+    "rad": 0.65,
+    "len": 0.2
+  },
+  {
+    "traceId": 39001,
+    "segmentId": 4,
+    "startPoint": 4,
+    "endPoint": 5,
+    "type": 0,
+    "rad": 0.5,
+    "len": 0.16
+  },
+  {
+    "traceId": 39001,
+    "segmentId": 5,
+    "startPoint": 5,
+    "endPoint": 6,
+    "type": 0,
+    "rad": 0.45,
+    "len": 0.14
+  },
+  {
+    "traceId": 39001,
+    "segmentId": 6,
+    "startPoint": 6,
+    "endPoint": 7,
+    "type": 0,
+    "rad": 0.6,
+    "len": 0.18
+  },
+  {
+    "traceId": 39001,
+    "segmentId": 7,
+    "startPoint": 7,
+    "endPoint": 8,
+    "type": 0,
+    "rad": 0.45,
+    "len": 0.14
+  },
+  {
+    "traceId": 39001,
+    "segmentId": 8,
+    "startPoint": 8,
+    "endPoint": 9,
+    "type": 0,
+    "rad": 0.62,
+    "len": 0.2
+  },
+  {
+    "traceId": 39001,
+    "segmentId": 9,
+    "startPoint": 9,
+    "endPoint": 10,
+    "type": 0,
+    "rad": 0.66,
+    "len": 0.22
+  },
+  {
+    "traceId": 39001,
+    "segmentId": 10,
+    "startPoint": 10,
+    "endPoint": 11,
+    "type": 0,
+    "rad": 0.42,
+    "len": 0.12
+  },
+  {
+    "traceId": 39001,
+    "segmentId": 11,
+    "startPoint": 11,
+    "endPoint": 12,
+    "type": 0,
+    "rad": 0.3,
+    "len": 0.08
+  }
+]

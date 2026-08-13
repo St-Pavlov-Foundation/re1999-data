@@ -4789,5 +4789,69 @@
     "levels": [
       38201
     ]
+  },
+  {
+    "id": 38301,
+    "name": "壁画遗迹",
+    "nameen": "Near the Fresco",
+    "levels": [
+      38301
+    ]
+  },
+  {
+    "id": 38401,
+    "name": "海面",
+    "nameen": "On the Sea",
+    "levels": [
+      38401
+    ]
+  },
+  {
+    "id": 38501,
+    "name": "终局赛道",
+    "nameen": "Final Event Site",
+    "levels": [
+      38501
+    ]
+  },
+  {
+    "id": 38601,
+    "name": "火山口",
+    "nameen": "The Volcanic Vent",
+    "levels": [
+      38601
+    ]
+  },
+  {
+    "id": 38701,
+    "name": "仪式广场",
+    "nameen": "Ritual Plaza",
+    "levels": [
+      38701
+    ]
+  },
+  {
+    "id": 38801,
+    "name": "海面",
+    "nameen": "On the Sea",
+    "levels": [
+      38801
+    ]
+  },
+  {
+    "id": 38901,
+    "name": "火山深处",
+    "nameen": "Deep Within the Volcano",
+    "levels": [
+      38901
+    ]
+  },
+  {
+    "id": 18903,
+    "name": "APPLe号",
+    "nameen": "Aboard the APPLe",
+    "levels": [
+      18903
+    ]
   }
 ]

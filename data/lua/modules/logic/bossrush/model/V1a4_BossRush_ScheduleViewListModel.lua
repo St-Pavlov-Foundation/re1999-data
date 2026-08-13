@@ -24,17 +24,10 @@ function V1a4_BossRush_ScheduleViewListModel:getFinishCount(moList, stage)
 	return count
 end
 
-function V1a4_BossRush_ScheduleViewListModel:setScheduleMoList(stage)
-	local moList = BossRushModel.instance:getScheduleViewRewardList(stage)
-	local info = BossRushModel.instance:getLastPointInfo(stage)
-	local cur = info and info.cur or 0
-
-	for _, v in pairs(moList) do
-		v.isAlready = cur >= v.stageRewardCO.rewardPointNum
-		v.stage = stage
-	end
-
-	local finishTaskCount = self:getFinishCount(moList, stage)
+function V1a4_BossRush_ScheduleViewListModel:setScheduleMoList(stage, actId)
+	local stageMo = V3a9_BossRushModel.instance:getStageMo(actId, stage)
+	local moList = stageMo and stageMo:getScheduleViewRewardList(stage) or {}
+	local finishTaskCount = stageMo and stageMo:getFinishScheduleRewardCount() or 0
 
 	if finishTaskCount > 1 then
 		table.insert(moList, 1, {

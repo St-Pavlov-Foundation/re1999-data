@@ -357,6 +357,11 @@ function DungeonController:canJumpDungeonType(jumpChapterType)
 	elseif jumpChapterType == JumpEnum.DungeonChapterType.Explore then
 		chapterType = DungeonEnum.ChapterType.Explore
 		chapterTypeOpen = OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.Explore)
+	elseif jumpChapterType == JumpEnum.DungeonChapterType.AdvPlay then
+		local isExploreOpen = ExploreSimpleModel.instance:isShowExplore()
+		local isSurvivalOpen = SurvivalController.instance:isOpenSurvival()
+
+		return isExploreOpen or isSurvivalOpen
 	end
 
 	if chapterTypeOpen and DungeonModel.instance:getChapterListOpenTimeValid(chapterType) then
@@ -1263,6 +1268,128 @@ function DungeonController:showDungeonViewByAdvPlay()
 	end
 
 	return viewName
+end
+
+function DungeonController:openRecheckElementView(chapterId, isAll, isGM)
+	local param = {
+		chapterId = chapterId,
+		isAll = isAll,
+		isGM = isGM
+	}
+
+	ViewMgr.instance:openView(ViewName.DungeonRecheckElementsView, param)
+end
+
+function DungeonController:onRecheckElement(elementId, chapterId, interactiveItem, pos, isGM)
+	if not elementId then
+		return
+	end
+
+	local elementCo = lua_chapter_map_element.configDict[elementId]
+
+	if not elementCo then
+		return
+	end
+
+	local mapCfg = lua_chapter_map.configDict[elementCo.mapId]
+
+	if mapCfg.chapterId ~= chapterId then
+		logError(string.format("该元件不在此章节 elementId=%s 所在章节 chapterId=%s  当前章节 chapterId=%s ", elementId, mapCfg.chapterId, chapterId))
+
+		if not isGM then
+			return
+		end
+	end
+
+	if elementCo.type == DungeonEnum.ElementType.V3a4BBS then
+		local postId = tonumber(elementCo.param)
+
+		V3a4BBSController.instance:openV3a4BBSView(postId, nil, elementCo.id, self.onAgainOpenRecheckView, self, elementCo.id)
+	else
+		if self:isNeedRecheckInteractive(elementCo) and interactiveItem and interactiveItem.onRecheck then
+			interactiveItem:onRecheck(elementCo, -pos.x, -pos.y + 2)
+			DungeonController.instance:dispatchEvent(DungeonMapElementEvent.OnRecheckInteractive, false)
+
+			return
+		end
+
+		self:onRecheckFragmentInfoView(elementCo)
+	end
+end
+
+function DungeonController:isNeedRecheckInteractive(elementCo)
+	if not elementCo then
+		return
+	end
+
+	if elementCo.type == DungeonEnum.ElementType.V3a4BBS then
+		return
+	end
+
+	if not self._needRecheckInteractiveElementType then
+		self._needRecheckInteractiveElementType = {
+			[DungeonEnum.ElementType.None] = true,
+			[DungeonEnum.ElementType.Story] = true,
+			[DungeonEnum.ElementType.EnterDialogue] = true,
+			[DungeonEnum.ElementType.V3a2Note] = true,
+			[DungeonEnum.ElementType.V3a2Dialogue] = true
+		}
+	end
+
+	return self._needRecheckInteractiveElementType[elementCo.type]
+end
+
+function DungeonController:onRecheckFragmentInfoView(elementCo)
+	DungeonController.instance:dispatchEvent(DungeonMapElementEvent.OnRecheckInteractive, true)
+
+	local fragmentId = elementCo.fragment
+
+	if not fragmentId or fragmentId == 0 then
+		self:onAgainOpenRecheckView(elementCo.id)
+
+		return
+	end
+
+	local viewName
+	local fragmentCo = lua_chapter_map_fragment.configDict[fragmentId]
+
+	if fragmentCo and fragmentCo.type == DungeonEnum.FragmentType.LeiMiTeBeiNew then
+		viewName = ViewName.VersionActivityNewsView
+	elseif elementCo.type == DungeonEnum.ElementType.SpStory then
+		-- block empty
+	elseif elementCo.type == DungeonEnum.ElementType.Investigate then
+		viewName = ViewName.InvestigateTipsView
+	elseif elementCo.type == DungeonEnum.ElementType.V3a2Note or elementCo.type == DungeonEnum.ElementType.V3a2Option or elementCo.type == DungeonEnum.ElementType.V3a2Dialogue or elementCo.type == DungeonEnum.ElementType.V3a2OptionFinish then
+		viewName = ViewName.VersionActivity3_2DungeonFragmentInfoView
+	else
+		viewName = ViewName.DungeonFragmentInfoView
+	end
+
+	local dialogIdList = HandbookModel.instance:getFragmentDialogIdList(fragmentId) or {}
+	local param = {
+		isRecheck = true,
+		notShowToast = true,
+		isFromRecheck = true,
+		fragmentId = fragmentId,
+		dialogIdList = dialogIdList,
+		elementId = elementCo.id
+	}
+
+	PopupController.instance:addPopupView(PopupEnum.PriorityType.DungeonFragmentInfoView, viewName, param)
+end
+
+function DungeonController:onAgainOpenRecheckView(elementId)
+	local elementCo = elementId and lua_chapter_map_element.configDict[elementId]
+
+	if elementCo then
+		local mapCo = lua_chapter_map.configDict[elementCo.mapId]
+
+		if mapCo then
+			local chapterId = mapCo.chapterId
+
+			self:openRecheckElementView(chapterId, false)
+		end
+	end
 end
 
 DungeonController.instance = DungeonController.New()

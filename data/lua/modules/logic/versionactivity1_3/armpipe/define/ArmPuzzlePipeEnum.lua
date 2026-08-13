@@ -14,14 +14,16 @@ ArmPuzzlePipeEnum.dir = {
 	right = 6
 }
 ArmPuzzlePipeEnum.type = {
-	first = 1,
-	last = 2,
+	x_shape = 10,
 	corner = 6,
-	wrong = 4,
-	t_shape = 7,
+	first = 1,
+	zhanwei = 8,
+	connect = 9,
 	signsingle = 3,
 	straight = 5,
-	zhanwei = 8
+	wrong = 4,
+	t_shape = 7,
+	last = 2
 }
 ArmPuzzlePipeEnum.status = {
 	correct = 2,
@@ -55,18 +57,22 @@ ArmPuzzlePipeEnum.ruleConnect = {
 	[ArmPuzzlePipeEnum.type.straight] = 28,
 	[ArmPuzzlePipeEnum.type.corner] = 26,
 	[ArmPuzzlePipeEnum.type.t_shape] = 468,
-	[ArmPuzzlePipeEnum.type.zhanwei] = 0
+	[ArmPuzzlePipeEnum.type.zhanwei] = 0,
+	[ArmPuzzlePipeEnum.type.connect] = 2468,
+	[ArmPuzzlePipeEnum.type.x_shape] = 2468
 }
 ArmPuzzlePipeEnum.entry = {
 	[ArmPuzzlePipeEnum.type.first] = true,
 	[ArmPuzzlePipeEnum.type.last] = true,
 	[ArmPuzzlePipeEnum.type.signsingle] = true,
-	[ArmPuzzlePipeEnum.type.wrong] = true
+	[ArmPuzzlePipeEnum.type.wrong] = true,
+	[ArmPuzzlePipeEnum.type.connect] = true
 }
 ArmPuzzlePipeEnum.pathConn = {
 	[ArmPuzzlePipeEnum.type.straight] = true,
 	[ArmPuzzlePipeEnum.type.corner] = true,
-	[ArmPuzzlePipeEnum.type.t_shape] = true
+	[ArmPuzzlePipeEnum.type.t_shape] = true,
+	[ArmPuzzlePipeEnum.type.x_shape] = true
 }
 ArmPuzzlePipeEnum.UIDragRes = {
 	[ArmPuzzlePipeEnum.type.straight] = "v1a3_arm_puzzlepipegrid3",
@@ -110,6 +116,14 @@ ArmPuzzlePipeEnum.res = {
 	[ArmPuzzlePipeEnum.type.zhanwei] = {
 		"v1a3_arm_puzzleputgrid3",
 		"v1a3_arm_puzzleputgrid3"
+	},
+	[ArmPuzzlePipeEnum.type.connect] = {
+		"v1a3_arm_puzzlesignsingle",
+		"v1a3_arm_puzzlesignright"
+	},
+	[ArmPuzzlePipeEnum.type.x_shape] = {
+		"v1a3_arm_puzzleputgrid2",
+		"v1a3_arm_puzzlesignright"
 	}
 }
 ArmPuzzlePipeEnum.resNumIcons = {

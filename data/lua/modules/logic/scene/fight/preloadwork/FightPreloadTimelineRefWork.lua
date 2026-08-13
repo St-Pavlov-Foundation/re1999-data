@@ -52,37 +52,33 @@ function FightPreloadTimelineRefWork:_getUrlList()
 	local urlDict = {}
 
 	for timelineUrl, tlAssetItem in pairs(self.context.timelineDict) do
-		local jsonStr = ZProj.SkillTimelineAssetHelper.GeAssetJson(tlAssetItem, timelineUrl)
+		local jsonArr = FightTLHelper.getTLJsonData(tlAssetItem, timelineUrl)
 
-		if not string.nilorempty(jsonStr) then
-			local jsonArr = cjson.decode(jsonStr)
+		for i = 1, #jsonArr, 2 do
+			local tlType = tonumber(jsonArr[i])
+			local paramList = jsonArr[i + 1]
 
-			for i = 1, #jsonArr, 2 do
-				local tlType = tonumber(jsonArr[i])
-				local paramList = jsonArr[i + 1]
+			if tlType == 30 then
+				-- block empty
+			elseif tlType == 31 then
+				-- block empty
+			elseif tlType == 32 then
+				local resName = paramList[2]
 
-				if tlType == 30 then
-					-- block empty
-				elseif tlType == 31 then
-					-- block empty
-				elseif tlType == 32 then
-					local resName = paramList[2]
+				if not string.nilorempty(resName) then
+					urlDict[ResUrl.getRoleSpineMatTex(resName)] = timelineUrl
+				end
+			elseif tlType == 11 then
+				local skinIdDict = self.context.timelineSkinDict[timelineUrl] or {}
 
-					if not string.nilorempty(resName) then
-						urlDict[ResUrl.getRoleSpineMatTex(resName)] = timelineUrl
-					end
-				elseif tlType == 11 then
-					local skinIdDict = self.context.timelineSkinDict[timelineUrl] or {}
+				for skinId, _ in pairs(skinIdDict) do
+					local spineName = FightTLEventCreateSpine.getSkinSpineName(paramList[1], skinId)
 
-					for skinId, _ in pairs(skinIdDict) do
-						local spineName = FightTLEventCreateSpine.getSkinSpineName(paramList[1], skinId)
-
-						if not string.nilorempty(spineName) then
-							if string.sub(spineName, 1, 8) == "roles_3d" then
-								urlDict[string.format("%s.prefab", spineName)] = timelineUrl
-							else
-								urlDict[ResUrl.getSpineFightPrefab(spineName)] = timelineUrl
-							end
+					if not string.nilorempty(spineName) then
+						if string.sub(spineName, 1, 8) == "roles_3d" then
+							urlDict[string.format("%s.prefab", spineName)] = timelineUrl
+						else
+							urlDict[ResUrl.getSpineFightPrefab(spineName)] = timelineUrl
 						end
 					end
 				end

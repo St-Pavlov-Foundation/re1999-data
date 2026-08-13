@@ -556,5 +556,239 @@
     "loopBonusIntervalNum": 60,
     "bonus": "2#3#500",
     "isSpBonus": false
+  },
+  {
+    "activityId": 13910,
+    "rewardId": 1,
+    "coinNum": 70,
+    "isLoopBonus": false,
+    "loopBonusIntervalNum": 0,
+    "bonus": "1#180001#10",
+    "isSpBonus": false
+  },
+  {
+    "activityId": 13910,
+    "rewardId": 2,
+    "coinNum": 140,
+    "isLoopBonus": false,
+    "loopBonusIntervalNum": 0,
+    "bonus": "1#115041#6",
+    "isSpBonus": false
+  },
+  {
+    "activityId": 13910,
+    "rewardId": 3,
+    "coinNum": 210,
+    "isLoopBonus": false,
+    "loopBonusIntervalNum": 0,
+    "bonus": "1#110102#6",
+    "isSpBonus": false
+  },
+  {
+    "activityId": 13910,
+    "rewardId": 4,
+    "coinNum": 280,
+    "isLoopBonus": false,
+    "loopBonusIntervalNum": 0,
+    "bonus": "1#110903#2",
+    "isSpBonus": false
+  },
+  {
+    "activityId": 13910,
+    "rewardId": 5,
+    "coinNum": 350,
+    "isLoopBonus": false,
+    "loopBonusIntervalNum": 0,
+    "bonus": "1#115042#6",
+    "isSpBonus": false
+  },
+  {
+    "activityId": 13910,
+    "rewardId": 6,
+    "coinNum": 420,
+    "isLoopBonus": false,
+    "loopBonusIntervalNum": 0,
+    "bonus": "2#23#240",
+    "isSpBonus": false
+  },
+  {
+    "activityId": 13910,
+    "rewardId": 7,
+    "coinNum": 490,
+    "isLoopBonus": false,
+    "loopBonusIntervalNum": 0,
+    "bonus": "1#110803#2",
+    "isSpBonus": false
+  },
+  {
+    "activityId": 13910,
+    "rewardId": 8,
+    "coinNum": 560,
+    "isLoopBonus": false,
+    "loopBonusIntervalNum": 0,
+    "bonus": "1#110902#6",
+    "isSpBonus": false
+  },
+  {
+    "activityId": 13910,
+    "rewardId": 9,
+    "coinNum": 630,
+    "isLoopBonus": false,
+    "loopBonusIntervalNum": 0,
+    "bonus": "1#115043#6",
+    "isSpBonus": false
+  },
+  {
+    "activityId": 13910,
+    "rewardId": 10,
+    "coinNum": 700,
+    "isLoopBonus": false,
+    "loopBonusIntervalNum": 0,
+    "bonus": "1#120011#10",
+    "isSpBonus": false
+  },
+  {
+    "activityId": 13910,
+    "rewardId": 11,
+    "coinNum": 770,
+    "isLoopBonus": false,
+    "loopBonusIntervalNum": 0,
+    "bonus": "1#481010#1",
+    "isSpBonus": true
+  },
+  {
+    "activityId": 13910,
+    "rewardId": 12,
+    "coinNum": 840,
+    "isLoopBonus": false,
+    "loopBonusIntervalNum": 0,
+    "bonus": "1#110703#2",
+    "isSpBonus": false
+  },
+  {
+    "activityId": 13910,
+    "rewardId": 13,
+    "coinNum": 910,
+    "isLoopBonus": false,
+    "loopBonusIntervalNum": 0,
+    "bonus": "1#111001#6",
+    "isSpBonus": false
+  },
+  {
+    "activityId": 13910,
+    "rewardId": 14,
+    "coinNum": 980,
+    "isLoopBonus": false,
+    "loopBonusIntervalNum": 0,
+    "bonus": "2#3#50000",
+    "isSpBonus": false
+  },
+  {
+    "activityId": 13910,
+    "rewardId": 15,
+    "coinNum": 1050,
+    "isLoopBonus": false,
+    "loopBonusIntervalNum": 0,
+    "bonus": "1#120012#5",
+    "isSpBonus": false
+  },
+  {
+    "activityId": 13910,
+    "rewardId": 16,
+    "coinNum": 1120,
+    "isLoopBonus": false,
+    "loopBonusIntervalNum": 0,
+    "bonus": "2#5#50000",
+    "isSpBonus": false
+  },
+  {
+    "activityId": 13910,
+    "rewardId": 17,
+    "coinNum": 1190,
+    "isLoopBonus": false,
+    "loopBonusIntervalNum": 0,
+    "bonus": "9#1005#5",
+    "isSpBonus": false
+  },
+  {
+    "activityId": 13910,
+    "rewardId": 18,
+    "coinNum": 1260,
+    "isLoopBonus": false,
+    "loopBonusIntervalNum": 0,
+    "bonus": "1#110802#6",
+    "isSpBonus": false
+  },
+  {
+    "activityId": 13910,
+    "rewardId": 19,
+    "coinNum": 1330,
+    "isLoopBonus": false,
+    "loopBonusIntervalNum": 0,
+    "bonus": "1#111002#2",
+    "isSpBonus": false
+  },
+  {
+    "activityId": 13910,
+    "rewardId": 20,
+    "coinNum": 1400,
+    "isLoopBonus": false,
+    "loopBonusIntervalNum": 0,
+    "bonus": "1#173901#1",
+    "isSpBonus": true
+  },
+  {
+    "activityId": 13910,
+    "rewardId": 21,
+    "coinNum": 1470,
+    "isLoopBonus": false,
+    "loopBonusIntervalNum": 0,
+    "bonus": "9#1005#5",
+    "isSpBonus": false
+  },
+  {
+    "activityId": 13910,
+    "rewardId": 22,
+    "coinNum": 1540,
+    "isLoopBonus": false,
+    "loopBonusIntervalNum": 0,
+    "bonus": "1#110602#6",
+    "isSpBonus": false
+  },
+  {
+    "activityId": 13910,
+    "rewardId": 23,
+    "coinNum": 1610,
+    "isLoopBonus": false,
+    "loopBonusIntervalNum": 0,
+    "bonus": "1#110403#2",
+    "isSpBonus": false
+  },
+  {
+    "activityId": 13910,
+    "rewardId": 24,
+    "coinNum": 1680,
+    "isLoopBonus": false,
+    "loopBonusIntervalNum": 0,
+    "bonus": "2#3#50000",
+    "isSpBonus": false
+  },
+  {
+    "activityId": 13910,
+    "rewardId": 25,
+    "coinNum": 1750,
+    "isLoopBonus": false,
+    "loopBonusIntervalNum": 0,
+    "bonus": "2#5#50000",
+    "isSpBonus": false
+  },
+  {
+    "activityId": 13910,
+    "rewardId": 26,
+    "coinNum": 1820,
+    "isLoopBonus": false,
+    "loopBonusIntervalNum": 0,
+    "bonus": "1#120013#3",
+    "isSpBonus": true
   }
 ]

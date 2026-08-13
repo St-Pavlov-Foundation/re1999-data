@@ -19,7 +19,7 @@ function TravelGoLevelUpWork:onStart()
 
 		self.flow = FlowSequence.New()
 
-		local delayShowTime = TravelGoConfig:getConsValue(actId, TravelGoConst.ConstId.DelayShowLevelUpReward, true) or 0
+		local delayShowTime = TravelGoConfig.instance:getConsValue(actId, TravelGoConst.ConstId.DelayShowLevelUpReward, true) or 0
 
 		self.flow:addWork(TimerWork.New(delayShowTime))
 		self.flow:registerDoneListener(self.onEventFinish, self)

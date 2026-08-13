@@ -47,8 +47,9 @@ end
 
 function PartyGameLobbyAddRoomView:_btnaddOnClick()
 	local txt = self._inputinform:GetText()
+	local roomId = tonumber(txt) or 1
 
-	PartyRoomRpc.instance:sendJoinPartyRoomRequest(PartyGameRoomModel.getResVersion(), tonumber(txt) or 1)
+	PartyRoomRpc.instance:simpleJoinPartyRoomReq(roomId)
 end
 
 function PartyGameLobbyAddRoomView:_editableInitView()

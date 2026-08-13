@@ -3766,5 +3766,17 @@
     "image": "story_atcg/3_8/3_8_at_ys_bolinyidong.jpg",
     "preCgId": 0,
     "herostoryId": 32
+  },
+  {
+    "id": 103301,
+    "order": 0,
+    "storyChapterId": 1033,
+    "name": "“鱼饵”",
+    "nameEn": "The Bait",
+    "desc": "像饵料对鱼的吸引力一样，“真相”的钓钩正被她牢牢攥紧。",
+    "episodeId": 0,
+    "image": "story_atcg/3_9/3_9_at_ys_yangcongtou.jpg",
+    "preCgId": 0,
+    "herostoryId": 33
   }
 ]

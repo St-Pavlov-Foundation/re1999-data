@@ -136,6 +136,30 @@ function StoryViewMgr:getStoryFrontView()
 	return viewContainer.viewGO
 end
 
+function StoryViewMgr:getStoryScreenTxtComp()
+	local viewContainer = ViewMgr.instance:getContainer(ViewName.StoryFrontView)
+
+	if not viewContainer then
+		return nil
+	end
+
+	local frontView = viewContainer:getFrontView()
+
+	if not frontView then
+		return nil
+	end
+
+	local frontItem = frontView:getFrontItem()
+
+	if not frontItem then
+		return nil
+	end
+
+	local txtComp = frontItem:getCurScreenText()
+
+	return txtComp
+end
+
 StoryViewMgr.instance = StoryViewMgr.New()
 
 return StoryViewMgr

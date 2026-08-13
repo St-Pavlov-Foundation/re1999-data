@@ -4336,5 +4336,95 @@
     "effect": "",
     "effectHangPoint": "",
     "audioId": 0
+  },
+  {
+    "id": 1153,
+    "type": "NarcissusCounterDamageImmune",
+    "effectTime": 0,
+    "effectCondition": 0,
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0
+  },
+  {
+    "id": 1154,
+    "type": "NarcissusHealToCounter",
+    "effectTime": 0,
+    "effectCondition": 0,
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0
+  },
+  {
+    "id": 1155,
+    "type": "NarcissusRitualHealByPassion",
+    "effectTime": 210,
+    "effectCondition": 2,
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0
+  },
+  {
+    "id": 1156,
+    "type": "NarcissusPassionOriginHurt",
+    "effectTime": 302,
+    "effectCondition": 0,
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0
+  },
+  {
+    "id": 1157,
+    "type": "NarcissusAddAttrByPassionEx",
+    "effectTime": 0,
+    "effectCondition": 0,
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0
+  },
+  {
+    "id": 1158,
+    "type": "HedoneHurtCounter",
+    "effectTime": 0,
+    "effectCondition": 0,
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0
+  },
+  {
+    "id": 1159,
+    "type": "HedoneCard",
+    "effectTime": 306,
+    "effectCondition": 0,
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0
+  },
+  {
+    "id": 1160,
+    "type": "HedoneFixAttr",
+    "effectTime": 0,
+    "effectCondition": 0,
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0
+  },
+  {
+    "id": 1161,
+    "type": "BeatBackLimit",
+    "effectTime": 401,
+    "effectCondition": 0,
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0
+  },
+  {
+    "id": 1162,
+    "type": "EachChangeAttrOneWayAfterAdd",
+    "effectTime": 0,
+    "effectCondition": 0,
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0
   }
 ]

@@ -40,7 +40,7 @@ function PartyGameLobbyMainView:_btnclothOnClick()
 end
 
 function PartyGameLobbyMainView:_btnmutiPlayerOnClick()
-	PartyRoomRpc.instance:sendCreatePartyRoomRequest(PartyGameRoomModel.getResVersion())
+	PartyRoomRpc.instance:simpleCreatePartyRoomReq()
 end
 
 function PartyGameLobbyMainView:_btnsinglePlayerOnClick()
@@ -50,7 +50,7 @@ function PartyGameLobbyMainView:_btnsinglePlayerOnClick()
 		return
 	end
 
-	PartyMatchRpc.instance:sendSingleStartPartyMatchRequest(PartyGameRoomModel.getResVersion())
+	PartyMatchRpc.instance:simpleSingleStartPartyMatchReq()
 end
 
 function PartyGameLobbyMainView:_btninputOnClick()
@@ -82,10 +82,14 @@ function PartyGameLobbyMainView:_onExitParty()
 end
 
 function PartyGameLobbyMainView:_onEnterMainSceneDone()
-	VersionActivity3_4EnterController.instance:directOpenVersionActivityEnterView(VersionActivity3_4Enum.ActivityId.PartyGame)
+	VersionActivity3_9EnterController.instance:directOpenVersionActivityEnterView(VersionActivity3_9Enum.ActivityId.V3_A9_PartyGame)
 end
 
 function PartyGameLobbyMainView:_editableInitView()
+	self._btntrialplay = gohelper.findChildButtonWithAudio(self.viewGO, "go_topleft/#btn_trialplay")
+
+	self._btntrialplay:AddClickListener(self._btnTrialPlayerOnClick, self)
+
 	local itemRes = self.viewContainer:getSetting().otherRes.joystick
 	local go = self.viewContainer:getResInst(itemRes, self._gojoystick)
 
@@ -312,8 +316,21 @@ function PartyGameLobbyMainView:onClose()
 	end
 end
 
+function PartyGameLobbyMainView:_btnTrialPlayerOnClick()
+	local matchStatus = PartyGameRoomModel.instance:getMatchStatus()
+	local roomState = PartyGameLobbyController.instance:getRoomState()
+
+	if matchStatus ~= nil and matchStatus ~= PartyGameLobbyEnum.MatchStatus.NoMatch or roomState ~= PartyGameLobbyEnum.RoomState.None then
+		ToastController.instance:showToast(ExploreConstValue.Toast.ExploreCantTrigger)
+
+		return
+	end
+
+	PartyGameTrialController.instance:enterTrialView()
+end
+
 function PartyGameLobbyMainView:onDestroyView()
-	return
+	self._btntrialplay:RemoveClickListener()
 end
 
 return PartyGameLobbyMainView

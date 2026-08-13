@@ -4,11 +4,140 @@ module("modules.logic.partygamelobby.model.PartyGameRoomModel", package.seeall)
 
 local PartyGameRoomModel = class("PartyGameRoomModel", BaseModel)
 
+function PartyGameRoomModel:onReceivePartyServerListReply(msg)
+	if tabletool.len(self._partyServers) > 0 then
+		return
+	end
+
+	self._partyServers = {}
+
+	local partyServers = msg.partyServers
+
+	if partyServers then
+		for _, info in ipairs(partyServers) do
+			local mo = ProcessInfoMO.New()
+
+			mo:init(info)
+
+			self._partyServers[info.id] = mo
+		end
+
+		self:pingServerList()
+	end
+end
+
+function PartyGameRoomModel:pingServerList(pingCompletedCb, pingCompletedObj)
+	if pingCompletedCb then
+		self._pingCompletedCb = pingCompletedCb
+		self._pingCompletedObj = pingCompletedObj
+		self._runningPingObjList = {}
+	end
+
+	local isFinish = false
+
+	for _, mo in pairs(self._partyServers) do
+		if mo:getIsPing() then
+			isFinish = true
+		end
+	end
+
+	if isFinish then
+		if self._pingCompletedCb then
+			callWithCatch(self._pingCompletedCb, self._pingCompletedObj)
+
+			self._pingCompletedCb = nil
+			self._pingCompletedObj = nil
+		end
+
+		return
+	end
+
+	for _, mo in pairs(self._partyServers) do
+		local pingObj = LuaKcpPingObjV2.New()
+
+		if pingCompletedCb then
+			self._runningPingObjList[mo.outerIp] = true
+		end
+
+		mo:startPing(pingObj)
+		table.insert(self._pingObjList, pingObj)
+	end
+end
+
+function PartyGameRoomModel:onOnePingObjCompleted(pingObj)
+	if not self._pingCompletedCb then
+		return
+	end
+
+	local key = pingObj:ip()
+
+	if not self._runningPingObjList[key] then
+		return
+	end
+
+	self._runningPingObjList[key] = nil
+
+	if not next(self._runningPingObjList) and self._pingCompletedCb then
+		callWithCatch(self._pingCompletedCb, self._pingCompletedObj)
+
+		self._pingCompletedCb = nil
+		self._pingCompletedObj = nil
+	end
+end
+
+function PartyGameRoomModel:_clearPingObjList()
+	GameUtil.onDestroyViewMemberList(self, "_pingObjList")
+
+	self._pingObjList = {}
+	self._runningPingObjList = {}
+	self._pingCompletedCb = nil
+	self._pingCompletedObj = nil
+end
+
+function PartyGameRoomModel:getFastestPartyServerMO()
+	local fastestMO
+
+	for _, mo in pairs(self._partyServers) do
+		local ms = mo:getMs()
+
+		if ms ~= -1 then
+			if not fastestMO then
+				fastestMO = mo
+			elseif ms < fastestMO:getMs() then
+				fastestMO = mo
+			end
+		end
+	end
+
+	return fastestMO
+end
+
+function PartyGameRoomModel:getFastestAreaId()
+	local fastestMO = self:getFastestPartyServerMO()
+	local areaId = 0
+
+	if fastestMO then
+		areaId = fastestMO:areaId()
+	else
+		local _, mo = next(self._partyServers)
+
+		if mo then
+			areaId = mo:areaId()
+		end
+	end
+
+	return areaId
+end
+
 function PartyGameRoomModel:onInit()
 	self:reInit()
 end
 
 function PartyGameRoomModel:reInit()
+	self._partyServers = {}
+
+	self:_clearPingObjList()
+
 	self._playerInfoUpdateTime = nil
 	self._matchTime = nil
 	self._matchInfo = nil

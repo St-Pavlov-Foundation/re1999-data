@@ -453,6 +453,8 @@ function HeroGroupListView:_onEndDrag(param, pointerEventData)
 
 		HeroSingleGroupModel.instance:swap(index, dragToIndex)
 
+		local _, assistMo = HeroGroupModel.instance:getAssistMo()
+		local isNeedUpdate = assistMo and (assistMo.id == index or assistMo.id == dragToIndex)
 		local newHeroUids = HeroSingleGroupModel.instance:getHeroUids()
 
 		for i, heroUid in ipairs(heroGroupMO.heroList) do
@@ -462,8 +464,14 @@ function HeroGroupListView:_onEndDrag(param, pointerEventData)
 				HeroGroupModel.instance:saveCurGroupData()
 				self:_updateHeroList()
 
+				isNeedUpdate = nil
+
 				break
 			end
+		end
+
+		if isNeedUpdate then
+			self:_updateHeroList()
 		end
 	end, self)
 end
@@ -500,9 +508,14 @@ end
 function HeroGroupListView:_updateHeroList()
 	local groupFightView = self.viewContainer:getHeroGroupFightView()
 	local isReplay = groupFightView:isReplayMode()
+	local _, assistMo = HeroGroupModel.instance:getAssistMo()
 
 	for i, heroItem in ipairs(self._heroItemList) do
 		local mo = HeroSingleGroupModel.instance:getById(i)
+
+		if assistMo and assistMo.id == i then
+			mo = assistMo
+		end
 
 		heroItem:onUpdateMO(mo)
 

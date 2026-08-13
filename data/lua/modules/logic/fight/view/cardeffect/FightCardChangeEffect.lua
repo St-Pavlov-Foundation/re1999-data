@@ -14,10 +14,12 @@ function FightCardChangeEffect:onStart(context)
 end
 
 FightCardChangeEffect.cardSkin2LvUpEffectPath = {
-	[672802] = FightPreloadOthersWork.LvUpEffect2Path
+	[672802] = FightPreloadOthersWork.LvUpEffect2Path,
+	[672803] = FightPreloadOthersWork.LvUpEffect3Path
 }
 FightCardChangeEffect.cardSkin2LvDownEffectPath = {
-	[672802] = FightPreloadOthersWork.LvDownEffect2Path
+	[672802] = FightPreloadOthersWork.LvDownEffect2Path,
+	[672803] = FightPreloadOthersWork.LvDownEffect3Path
 }
 
 function FightCardChangeEffect:_playEffects()
@@ -153,6 +155,8 @@ function FightCardChangeEffect:_onLvAnimLoaded(animLoader)
 		table.insert(self._animCompList, animator)
 		recthelper.setAnchor(cardGO.transform, 0, 0)
 	end
+
+	gohelper.onceAddComponent(cardGO, typeof(UnityEngine.CanvasGroup)).alpha = 1
 end
 
 function FightCardChangeEffect:_delayDone()

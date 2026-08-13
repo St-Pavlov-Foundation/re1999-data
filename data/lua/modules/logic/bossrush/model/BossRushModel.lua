@@ -6,6 +6,9 @@ local BossRushModel = class("BossRushModel", Activity128Model)
 
 function BossRushModel:onInit()
 	BossRushModel.super.onInit(self)
+
+	self._bossdetailMos = nil
+
 	V3a2_BossRushModel.instance:init()
 end
 
@@ -24,6 +27,7 @@ function BossRushModel:reInit()
 	self._bossHP = 0
 	self._bossIdList = nil
 	self._fightScoreList = nil
+	self._bossdetailMos = nil
 end
 
 function BossRushModel:setFightScore(num)
@@ -209,9 +213,10 @@ function BossRushModel:inUnlimit()
 	return info.multiHpNum - info.multiHpIdx <= 1
 end
 
-function BossRushModel:setBattleStageAndLayer(stage, layer)
+function BossRushModel:setBattleStageAndLayer(stage, layer, actId)
 	self._battleStageTemp = stage
 	self._battleLayerTemp = layer
+	self._battleActIdTemp = actId
 end
 
 function BossRushModel:getBattleStageAndLayer()
@@ -229,12 +234,13 @@ function BossRushModel:getBattleStageAndLayer()
 		self:setBattleStageAndLayer(config:tryGetStageAndLayerByEpisodeId(episodeId))
 	end
 
-	return self._battleStageTemp or 1, self._battleLayerTemp or 1
+	return self._battleStageTemp or 1, self._battleLayerTemp or 1, self._battleActIdTemp or BossRushConfig.instance:getActivityId()
 end
 
 function BossRushModel:_onReceiveGet128InfosReply(msg)
 	self:_initStageLastTotalPoint()
 	BossRushRedModel.instance:refreshAllStageLayerUnlockState()
+	V3a9_BossRushModel.instance:refreshBossDetailMos(msg)
 	BossRushController.instance:dispatchEvent(BossRushEvent.OnReceiveGet128InfosReply)
 end
 
@@ -305,7 +311,7 @@ function BossRushModel:getDoubleTimesInfo(stage)
 	}
 end
 
-function BossRushModel:getStagesInfo()
+function BossRushModel:getStagesInfo(activityId)
 	local res = {}
 	local config = self:getConfig()
 	local stages = config:getStages()

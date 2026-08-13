@@ -125,7 +125,7 @@ function GMSubViewRole:_onClickShowSkinGetView()
 
 	local id = tonumber(self._voiceId:GetText())
 
-	CharacterController:openCharacterSkinGainView({
+	CharacterController.instance:openCharacterSkinGainView({
 		skinId = id
 	})
 end

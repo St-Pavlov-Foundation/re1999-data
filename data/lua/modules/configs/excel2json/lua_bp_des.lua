@@ -6,8 +6,9 @@ local lua_bp_des = {}
 local fields = {
 	tagType = 6,
 	iconType = 4,
-	des = 9,
+	iconDesc = 10,
 	type = 3,
+	des = 9,
 	items = 5,
 	bpId = 2,
 	id = 1,
@@ -18,6 +19,7 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {
+	iconDesc = 2,
 	des = 1
 }
 

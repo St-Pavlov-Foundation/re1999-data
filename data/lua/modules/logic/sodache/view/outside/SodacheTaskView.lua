@@ -276,7 +276,10 @@ function SodacheTaskView:refreshTaskInfo()
 
 		if v[1] == SodacheEnum.CurrencyId.Coin then
 			hasCoin = true
-			self._txtCurrency.text = string.format("%s%s%d", cardMo.serverMo.itemCo.name, luaLang("multiple"), v[2])
+
+			local name = cardMo.serverMo.itemCo and cardMo.serverMo.itemCo.name or ""
+
+			self._txtCurrency.text = name .. luaLang("multiple") .. v[2]
 		elseif cardMo.serverMo.itemType == SodacheEnum.ItemType.Card then
 			count = count + 1
 

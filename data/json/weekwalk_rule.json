@@ -352,5 +352,17 @@
     "icon": "shen_guize_05",
     "additionRule": "1#120380020",
     "isCn": 0
+  },
+  {
+    "id": 60,
+    "icon": "shen_guize_22",
+    "additionRule": "1#120390010",
+    "isCn": 0
+  },
+  {
+    "id": 61,
+    "icon": "shen_guize_23",
+    "additionRule": "1#120390020",
+    "isCn": 0
   }
 ]

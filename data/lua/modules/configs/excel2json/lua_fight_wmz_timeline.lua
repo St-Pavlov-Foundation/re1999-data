@@ -4,10 +4,12 @@ module("modules.configs.excel2json.lua_fight_wmz_timeline", package.seeall)
 
 local lua_fight_wmz_timeline = {}
 local fields = {
-	id = 1,
-	timeline = 2
+	id = 2,
+	skin = 1,
+	timeline = 3
 }
 local primaryKey = {
+	"skin",
 	"id"
 }
 local mlStringKey = {}

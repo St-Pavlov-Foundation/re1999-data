@@ -16,5 +16,6 @@ Activity186Event.GetMilestoneReward = 9
 Activity186Event.PlayTalk = 10
 Activity186Event.UpdateTask = 11
 Activity186Event.RefreshRed = 12
+Activity186Event.FinishAllTask = 13
 
 return Activity186Event

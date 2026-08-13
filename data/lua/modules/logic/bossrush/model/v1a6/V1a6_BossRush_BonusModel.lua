@@ -4,25 +4,26 @@ module("modules.logic.bossrush.model.v1a6.V1a6_BossRush_BonusModel", package.see
 
 local V1a6_BossRush_BonusModel = class("V1a6_BossRush_BonusModel", BaseModel)
 
-function V1a6_BossRush_BonusModel:selecAchievementTab(stage)
-	V1a4_BossRush_ScoreTaskAchievementListModel.instance:setAchievementMoList(stage)
+function V1a6_BossRush_BonusModel:selecAchievementTab(stage, actId)
+	V1a4_BossRush_ScoreTaskAchievementListModel.instance:setAchievementMoList(stage, actId)
 end
 
-function V1a6_BossRush_BonusModel:selectScheduleTab(stage)
-	V1a4_BossRush_ScheduleViewListModel.instance:setScheduleMoList(stage)
+function V1a6_BossRush_BonusModel:selectScheduleTab(stage, actId)
+	V1a4_BossRush_ScheduleViewListModel.instance:setScheduleMoList(stage, actId)
 end
 
-function V1a6_BossRush_BonusModel:selectSpecialScheduleTab(stage)
-	V2a1_BossRush_SpecialScheduleViewListModel.instance:setMoList(stage)
+function V1a6_BossRush_BonusModel:selectSpecialScheduleTab(stage, actId)
+	V2a1_BossRush_SpecialScheduleViewListModel.instance:setMoList(stage, actId)
 end
 
-function V1a6_BossRush_BonusModel:getScheduleRewardData(stage)
+function V1a6_BossRush_BonusModel:getScheduleRewardData(actId, stage)
 	local dataList = BossRushModel.instance:getScheduleViewRewardList(stage)
 
 	if dataList then
+		local stageMo = V3a9_BossRushModel.instance:getStageMo(actId, stage)
 		local dataCount = #dataList
-		local info = BossRushModel.instance:getLastPointInfo(stage)
-		local cur = info and info.cur or 0
+		local cur = stageMo and stageMo:getTotalPoint() or 0
+		local max = stageMo and stageMo:getRewardMaxTotalScore() or 0
 		local data = {
 			dataCount = dataCount,
 			curNum = cur
@@ -31,7 +32,7 @@ function V1a6_BossRush_BonusModel:getScheduleRewardData(stage)
 		if cur == 0 then
 			data.lastIndex = 0
 			data.nextIndex = 1
-		elseif cur >= info.max then
+		elseif max <= cur then
 			data.lastIndex = dataCount
 			data.nextIndex = dataCount
 		else
@@ -56,8 +57,8 @@ function V1a6_BossRush_BonusModel:getScheduleRewardData(stage)
 	end
 end
 
-function V1a6_BossRush_BonusModel:getScheduleProgressWidth(stage, spacing, offset)
-	local data = self:getScheduleRewardData(stage)
+function V1a6_BossRush_BonusModel:getScheduleProgressWidth(actId, stage, spacing, offset)
+	local data = self:getScheduleRewardData(actId, stage)
 	local grayWidth, gotWidth
 
 	if data then

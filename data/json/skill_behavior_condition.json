@@ -30046,5 +30046,25 @@
   {
     "id": 518004,
     "type": "PerHasBuffTypeLayer"
+  },
+  {
+    "id": 51307,
+    "type": "HasTypeIdBuffMoreThan"
+  },
+  {
+    "id": 61402,
+    "type": "PerBuffIdCount"
+  },
+  {
+    "id": 89103,
+    "type": "ExpointMoreThan"
+  },
+  {
+    "id": 537208,
+    "type": "HasTypeIdBuffTotalCountMoreThan"
+  },
+  {
+    "id": 537104,
+    "type": "HasTypeIdBuffTotalCountMoreThan"
   }
 ]

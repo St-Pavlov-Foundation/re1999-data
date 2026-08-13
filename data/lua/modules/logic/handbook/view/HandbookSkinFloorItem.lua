@@ -26,10 +26,12 @@ end
 
 function HandbookSkinFloorItem:addEvents()
 	self._click:AddClickListener(self.onClick, self)
+	self:addEventCb(HandbookController.instance, HandbookEvent.MarkHandbookSkinSuitRedDot, self.refreshRedDot, self)
 end
 
 function HandbookSkinFloorItem:removeEvents()
 	self._click:RemoveClickListener()
+	self:removeEventCb(HandbookController.instance, HandbookEvent.MarkHandbookSkinSuitRedDot, self.refreshRedDot, self)
 end
 
 function HandbookSkinFloorItem:onClick()
@@ -44,7 +46,15 @@ function HandbookSkinFloorItem:setClickAction(clickAction, clickActionObj)
 end
 
 function HandbookSkinFloorItem:_editableInitView()
-	return
+	self._selectNewRedDot = RedDotController.instance:addNotEventRedDot(self._selectTabRedDot)
+
+	self._selectNewRedDot:setShowType(RedDotEnum.Style.Green)
+	self._selectNewRedDot:setCheckShowRedDotFunc(self.refreshSingleRedDot, self)
+
+	self._unSelectNewRedDot = RedDotController.instance:addNotEventRedDot(self._unSelectTabRedDot)
+
+	self._unSelectNewRedDot:setShowType(RedDotEnum.Style.Green)
+	self._unSelectNewRedDot:setCheckShowRedDotFunc(self.refreshSingleRedDot, self)
 end
 
 function HandbookSkinFloorItem:onUpdateData(cfg, index)
@@ -134,18 +144,18 @@ end
 function HandbookSkinFloorItem:refreshRedDot()
 	local groupId = self._suitGroupCfg.id
 	local needRedDot = HandbookEnum.HandbookSkinShowRedDotMap[groupId]
+	local showFirstRedDot = needRedDot and HandbookController.instance:isHandbookSkinRedDotShow(groupId)
 
-	if not needRedDot then
-		gohelper.setActive(self._selectTabRedDot, false)
-		gohelper.setActive(self._unSelectTabRedDot, false)
-
-		return
-	end
-
-	self._showRedDot = HandbookController.instance:isHandbookSkinRedDotShow(groupId)
+	self._showRedDot = showFirstRedDot or HandbookController.instance:isHandbookSkinGroupNewRedDotShow(groupId)
 
 	gohelper.setActive(self._selectTabRedDot, self._showRedDot)
 	gohelper.setActive(self._unSelectTabRedDot, self._showRedDot)
+	self._selectNewRedDot:refreshRedDot()
+	self._unSelectNewRedDot:refreshRedDot()
+end
+
+function HandbookSkinFloorItem:refreshSingleRedDot()
+	return self._showRedDot
 end
 
 function HandbookSkinFloorItem:hasRedDot()

@@ -35,7 +35,7 @@ function StoryEffectItem:reset(go, effCo, order)
 	self._effectCo = effCo
 	self._effOrder = order
 
-	self._effectGo.transform:SetParent(self._uieffectGo.transform, false)
+	self._effectGo.transform:SetParent(self._uieffectTransform, false)
 	self._effectOrderContainer:SetBaseOrder(self._effOrder)
 
 	if self._effectCo.layer == 11 or self._effectCo.layer == 13 then
@@ -49,6 +49,7 @@ end
 
 function StoryEffectItem:_buildNormalEffect()
 	self._uieffectGo = gohelper.create2d(self.viewGO, "effect")
+	self._uieffectTransform = self._uieffectGo.transform
 	self._canvas = gohelper.onceAddComponent(self._uieffectGo, typeof(UnityEngine.CanvasGroup))
 
 	local width, height = UnityEngine.Screen.width, UnityEngine.Screen.height
@@ -61,8 +62,8 @@ function StoryEffectItem:_buildNormalEffect()
 		scaley = 1
 	end
 
-	transformhelper.setLocalPosXY(self._uieffectGo.transform, self._effectCo.pos[1], self._effectCo.pos[2])
-	transformhelper.setLocalScale(self._uieffectGo.transform, scalex, scaley, 1)
+	transformhelper.setLocalPosXY(self._uieffectTransform, self._effectCo.pos[1], self._effectCo.pos[2])
+	transformhelper.setLocalScale(self._uieffectTransform, scalex, scaley, 1)
 
 	self._effectLoader = PrefabInstantiate.Create(self._uieffectGo)
 
@@ -77,7 +78,9 @@ function StoryEffectItem:_onNormalEffectLoaded()
 	self._fadeHelper:init(self._effectGo)
 
 	if self._effectCo.layer < 4 then
-		gohelper.setLayer(self._effectGo, UnityLayer.UI, true)
+		local layer = self.viewGO.layer
+
+		gohelper.setLayer(self._effectGo, layer, true)
 	elseif self._effectCo.layer < 10 then
 		gohelper.setLayer(self._effectGo, UnityLayer.UISecond, true)
 	elseif self._effectCo.layer == 12 or self._effectCo.layer == 11 then
@@ -100,6 +103,10 @@ function StoryEffectItem:_onNormalEffectLoaded()
 
 	if self._effectCo.orderType == StoryEnum.EffectOrderType.FollowBg or self._effectCo.orderType == StoryEnum.EffectOrderType.NoSettingFollowBg then
 		self:_playFollowBg()
+	end
+
+	if self._effectCo.orderType == StoryEnum.EffectOrderType.FollowDialog then
+		self:_playFollowDialog()
 	end
 
 	if self._effectCo.layer == 11 or self._effectCo.layer == 13 then
@@ -169,6 +176,20 @@ function StoryEffectItem:_doResetParticleStencil()
 	self:_setParticleStencil(0, 8, 0)
 end
 
+function StoryEffectItem:_addLateUpdateHandle(callback, callbackObj)
+	if not self._lateUpdateGroup then
+		self._lateUpdateGroup = LateUpdateHandleGroup.New()
+	end
+
+	self._lateUpdateGroup:add(callback, callbackObj)
+end
+
+function StoryEffectItem:_removeLateUpdateHandle(callback, callbackObj)
+	if self._lateUpdateGroup then
+		self._lateUpdateGroup:remove(callback, callbackObj)
+	end
+end
+
 function StoryEffectItem:_playFollowBg()
 	self._bgFrontGo = StoryViewMgr.instance:getStoryFrontBgImgGo()
 
@@ -179,7 +200,7 @@ function StoryEffectItem:_playFollowBg()
 		frontTransY
 	}
 
-	local picTransX, picTransY = transformhelper.getLocalPos(self._uieffectGo.transform)
+	local picTransX, picTransY = transformhelper.getLocalPos(self._uieffectTransform)
 
 	self._deltaPos = {
 		picTransX,
@@ -196,8 +217,30 @@ function StoryEffectItem:_followBg()
 	local posX = scaleX * (self._deltaPos[1] + frontTransX - self._initFrontPos[1])
 	local posY = scaleY * (self._deltaPos[2] + frontTransY - self._initFrontPos[2])
 
-	transformhelper.setLocalPosXY(self._uieffectGo.transform, posX, posY)
-	transformhelper.setLocalScale(self._uieffectGo.transform, scaleY, scaleY, 1)
+	transformhelper.setLocalPosXY(self._uieffectTransform, posX, posY)
+	transformhelper.setLocalScale(self._uieffectTransform, scaleY, scaleY, 1)
+end
+
+function StoryEffectItem:_playFollowDialog()
+	if not self._followDialogEff then
+		self._followDialogEff = StoryEffectFollowDialog.New(self)
+	end
+
+	self._followDialogEff:start()
+end
+
+function StoryEffectItem:setEffectVisible(isVisible, needFade)
+	if self._visible == isVisible then
+		return
+	end
+
+	self._visible = isVisible
+
+	if needFade and self:fadeByAnimator(isVisible) then
+		return
+	end
+
+	gohelper.setActive(self._uieffectGo, isVisible)
 end
 
 function StoryEffectItem:_doEffectFade(from, to, duration, destroy)
@@ -238,8 +281,10 @@ function StoryEffectItem:fadeByAnimator(fadeIn)
 	end
 
 	if fadeIn then
-		self._effectAnim:Play("open", 0, 0)
+		gohelper.setActive(self._uieffectGo, false)
+		gohelper.setActive(self._uieffectGo, true)
 	else
+		gohelper.setActive(self._uieffectGo, true)
 		self._effectAnim:Play("close", 0, 0)
 	end
 
@@ -297,6 +342,18 @@ function StoryEffectItem:destroyEffect(effCo, param)
 end
 
 function StoryEffectItem:onDestroy()
+	if self._lateUpdateGroup then
+		self._lateUpdateGroup:destroy()
+
+		self._lateUpdateGroup = nil
+	end
+
+	if self._followDialogEff then
+		self._followDialogEff:destroy()
+
+		self._followDialogEff = nil
+	end
+
 	TaskDispatcher.cancelTask(self._effFinished, self)
 
 	if self._destroyParam then

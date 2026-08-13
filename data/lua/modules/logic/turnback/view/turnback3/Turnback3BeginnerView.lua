@@ -32,7 +32,7 @@ function Turnback3BeginnerView:_editableInitView()
 		[TurnbackEnum.ActivityId.Turnback3BPView] = ViewName.Turnback3BpView,
 		[TurnbackEnum.ActivityId.Turnback3DoubleView] = ViewName.Turnback3DoubleView,
 		[TurnbackEnum.ActivityId.Turnback3StoreView] = ViewName.Turnback3StoreView,
-		[TurnbackEnum.ActivityId.Turnback3ProgressView] = ViewName.TurnbackNewProgressView,
+		[TurnbackEnum.ActivityId.Turnback3ProgressView] = ViewName.Turnback4ProgressView,
 		[TurnbackEnum.ActivityId.Turnback3ReviewView] = ViewName.TurnbackReviewView
 	}
 end

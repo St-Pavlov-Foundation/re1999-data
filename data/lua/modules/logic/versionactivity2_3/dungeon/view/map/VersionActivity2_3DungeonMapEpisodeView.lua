@@ -43,6 +43,7 @@ function VersionActivity2_3DungeonMapEpisodeView:addEvents()
 	self:addEventCb(VersionActivity2_3DungeonController.instance, VersionActivity2_3DungeonEvent.OnHideInteractUI, self.showUI, self)
 	self:addEventCb(DungeonController.instance, DungeonEvent.OnUpdateDungeonInfo, self._onUpdateDungeonInfo, self)
 	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self._onCloseViewFinish, self)
+	self:addEventCb(DungeonController.instance, DungeonMapElementEvent.OnRecheckInteractive, self._onRecheckInteractive, self)
 	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, self.dailyRefresh, self)
 	self._btnstorymode:AddClickListener(self.btnStoryModeClick, self)
 	self._btnhardmode:AddClickListener(self.btnHardModeClick, self)
@@ -57,6 +58,7 @@ function VersionActivity2_3DungeonMapEpisodeView:removeEvents()
 	self:removeEventCb(VersionActivity2_3DungeonController.instance, VersionActivity2_3DungeonEvent.OnHideInteractUI, self.showUI, self)
 	self:removeEventCb(DungeonController.instance, DungeonEvent.OnUpdateDungeonInfo, self._onUpdateDungeonInfo, self)
 	self:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self._onCloseViewFinish, self)
+	self:removeEventCb(DungeonController.instance, DungeonMapElementEvent.OnRecheckInteractive, self._onRecheckInteractive, self)
 	TimeDispatcher.instance:unregisterCallback(TimeDispatcher.OnDailyRefresh, self.dailyRefresh, self)
 	self._btnstorymode:RemoveClickListener()
 	self._btnhardmode:RemoveClickListener()
@@ -198,6 +200,14 @@ end
 
 function VersionActivity2_3DungeonMapEpisodeView:hideUI()
 	self:setLayoutVisible(false)
+end
+
+function VersionActivity2_3DungeonMapEpisodeView:_onRecheckInteractive(isShow)
+	if isShow then
+		self:showUI()
+	else
+		self:hideUI()
+	end
 end
 
 function VersionActivity2_3DungeonMapEpisodeView:setLayoutVisible(isShow)

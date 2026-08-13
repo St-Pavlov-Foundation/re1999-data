@@ -109,6 +109,7 @@ function V3a5PuzzleView:onOpen()
 	self._isClickBox = false
 	self._clickIndex = nil
 	self._canClickBox = nil
+	self._storyId = self.viewParam.storyId
 
 	AudioMgr.instance:trigger(AudioEnum3_5.Puzzle.play_ui_molu_sky_open)
 	self._dialogView:startDialog(6)
@@ -136,7 +137,7 @@ end
 
 function V3a5PuzzleView:_playNextStory()
 	TaskDispatcher.runDelay(self.closeThis, self, 1)
-	V3a5PuzzleController.instance:playNextStory(self.viewName, self.closeThis, self)
+	V3a5PuzzleController.instance:playNextStory(self._storyId, self.viewName, self.closeThis, self)
 end
 
 function V3a5PuzzleView:onClose()

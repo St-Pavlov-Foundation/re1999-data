@@ -1,0 +1,122 @@
+[
+  {
+    "id": 13901,
+    "name": "加速门",
+    "type": 2,
+    "prefab": "runtime_generated_boost_pad",
+    "param": "",
+    "effect": "10101|10102",
+    "refreshTime": 10,
+    "icon": "boost"
+  },
+  {
+    "id": 13902,
+    "name": "金币串",
+    "type": 0,
+    "prefab": "runtime_generated_coin_string",
+    "param": "",
+    "effect": "10104",
+    "refreshTime": 10,
+    "icon": "coin"
+  },
+  {
+    "id": 13903,
+    "name": "道具点",
+    "type": 3,
+    "prefab": "runtime_generated_item_pickup",
+    "param": "13951#100|13955#100",
+    "effect": "",
+    "refreshTime": 10,
+    "icon": "item"
+  },
+  {
+    "id": 139031,
+    "name": "道具点A",
+    "type": 3,
+    "prefab": "runtime_generated_item_pickup",
+    "param": "13951#100|13955#100|13953#50",
+    "effect": "",
+    "refreshTime": 10,
+    "icon": "item"
+  },
+  {
+    "id": 139032,
+    "name": "道具点B",
+    "type": 3,
+    "prefab": "runtime_generated_item_pickup",
+    "param": "13952#100",
+    "effect": "",
+    "refreshTime": 10,
+    "icon": "item"
+  },
+  {
+    "id": 13904,
+    "name": "障碍物",
+    "type": 1,
+    "prefab": "runtime_generated_obstacle",
+    "param": "",
+    "effect": "10103|10105",
+    "refreshTime": 10,
+    "icon": "obstacle"
+  },
+  {
+    "id": 13905,
+    "name": "起点",
+    "type": 1,
+    "prefab": "v3a9_racing_games_qidian_a",
+    "param": "",
+    "effect": "",
+    "refreshTime": 0,
+    "icon": "hazard"
+  },
+  {
+    "id": 13906,
+    "name": "终点",
+    "type": 1,
+    "prefab": "v3a9_racing_games_zhongdian_a",
+    "param": "",
+    "effect": "",
+    "refreshTime": 0,
+    "icon": "hazard"
+  },
+  {
+    "id": 13907,
+    "name": "水柱",
+    "type": 1,
+    "prefab": "runtime_generated_water_jet",
+    "param": "",
+    "effect": "",
+    "refreshTime": 0,
+    "icon": "hazard"
+  },
+  {
+    "id": 13908,
+    "name": "移动浮标墙",
+    "type": 1,
+    "prefab": "runtime_generated_moving_buoy_wall",
+    "param": "",
+    "effect": "",
+    "refreshTime": 0,
+    "icon": "hazard"
+  },
+  {
+    "id": 13909,
+    "name": "捷径跳台",
+    "type": 2,
+    "prefab": "runtime_generated_shortcut_jump_pad",
+    "param": "",
+    "effect": "390207",
+    "refreshTime": 10,
+    "icon": "boost"
+  },
+  {
+    "id": 13910,
+    "name": "加速门-滑翔",
+    "type": 2,
+    "prefab": "runtime_generated_glide_boost_pad",
+    "param": "",
+    "effect": "10101|10102",
+    "refreshTime": 10,
+    "icon": "boost"
+  }
+]

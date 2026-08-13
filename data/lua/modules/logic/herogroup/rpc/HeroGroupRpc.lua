@@ -283,6 +283,46 @@ function HeroGroupRpc:onReceiveCheckHeroGroupNameReply(resultCode, msg)
 	end
 end
 
+function HeroGroupRpc:sendSetHeroGroupSnapshotBatchRequest(snapshotId, result, callback, callbackObj)
+	local req = HeroGroupModule_pb.SetHeroGroupSnapshotBatchRequest()
+
+	req.snapshotId = snapshotId
+
+	local groupNos = {}
+
+	for subId, heroGroupMO in pairs(result) do
+		local groupNo = req.fightGroups:add()
+
+		groupNo.snapshotSubId = subId
+
+		FightParam.initFightGroup(groupNo.fightGroup, heroGroupMO.clothId, heroGroupMO:getMainList(), heroGroupMO:getSubList(), heroGroupMO:getAllHeroEquips(), heroGroupMO:getAllHeroActivity104Equips(), heroGroupMO:getAssistBossId())
+
+		groupNo.fightGroup.assistBossId = heroGroupMO:getAssistBossId() or 0
+
+		table.insert(groupNos, groupNo)
+	end
+
+	self:sendMsg(req, callback, callbackObj)
+end
+
+function HeroGroupRpc:onReceiveSetHeroGroupSnapshotBatchReply(resultCode, msg)
+	if resultCode ~= 0 then
+		return
+	end
+
+	local snapshotId = msg.snapshotId
+	local groupInfos = msg.groupInfos
+
+	logNormal("编队快照列表保存成功")
+	HeroGroupController.instance:onReceiveHeroGroupSnapshotBatch(msg)
+
+	if self._showSetHeroGroupEquipTip then
+		self._showSetHeroGroupEquipTip()
+
+		self._showSetHeroGroupEquipTip = nil
+	end
+end
+
 HeroGroupRpc.instance = HeroGroupRpc.New()
 
 return HeroGroupRpc

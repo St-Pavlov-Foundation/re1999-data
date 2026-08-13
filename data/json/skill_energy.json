@@ -117,5 +117,12 @@
     "energyType": 2,
     "count": 3,
     "isSpecialCard": 0
+  },
+  {
+    "id": 31560181,
+    "name": "复燃再燃",
+    "energyType": 1,
+    "count": 0,
+    "isSpecialCard": 1
   }
 ]

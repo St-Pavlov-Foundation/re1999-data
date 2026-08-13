@@ -454,6 +454,14 @@ function RougeController:getStartViewAllInfo()
 	return RougeOutsideModel.instance:getStartViewAllInfo(difficulty)
 end
 
+function RougeController:openActivityTaskView(actId)
+	Activity186Rpc.instance:sendGetAct186InfoRequest(actId, function()
+		ViewMgr.instance:openView(ViewName.RougeActivityTaskView, {
+			actId = actId
+		})
+	end)
+end
+
 RougeController.instance = RougeController.New()
 
 return RougeController

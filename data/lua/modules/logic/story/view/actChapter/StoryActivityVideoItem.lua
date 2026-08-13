@@ -65,7 +65,7 @@ function StoryActivityVideoItem:onVideoStart()
 	end
 
 	if self._videoStartCallback then
-		self._videoStartCallback(self._videoStartCallbackObj)
+		self._videoStartCallback(self._videoStartCallbackObj, self)
 	end
 end
 
@@ -73,7 +73,7 @@ function StoryActivityVideoItem:onVideoOut(isFinishPlay)
 	self:hide(isFinishPlay)
 
 	if self._videoOutCallback then
-		self._videoOutCallback(self._videoOutCallbackObj)
+		self._videoOutCallback(self._videoOutCallbackObj, self)
 	end
 end
 

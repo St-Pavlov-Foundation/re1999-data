@@ -566,6 +566,12 @@ function FightCardDataHelper.playActCost(cardData)
 		return costPoint
 	end
 
+	if cardData:checkHasExtraInfo(FightCardExtraInfoData.ExtraKey.NotUseActPoint) then
+		costPoint = 0
+
+		return costPoint
+	end
+
 	if FightCardDataHelper.isSkill3(cardData) then
 		costPoint = 0
 

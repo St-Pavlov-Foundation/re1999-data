@@ -358,10 +358,10 @@ function BaseViewExtended:onRefreshViewParam(...)
 	return
 end
 
-function BaseViewExtended:com_loadAsset(url, call_back, failedCallback)
+function BaseViewExtended:com_loadAsset(url, call_back, failedCallback, param)
 	local comp = self:registComponent(LoaderComponent)
 
-	comp:loadAsset(url, call_back, self, failedCallback)
+	comp:loadAsset(url, call_back, self, failedCallback, param)
 end
 
 function BaseViewExtended:com_loadListAsset(urlList, oneCallback, finishCallback, oneFailedCallback, listFailedCallback)

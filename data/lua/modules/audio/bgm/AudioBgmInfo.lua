@@ -151,6 +151,10 @@ function AudioBgmInfo:_initBgmDatas()
 	self:_addBgmData(AudioBgmEnum.Layer.VersionActivity3_10Main, AudioEnum3_10.Enter.play_activitymusic_theme_s02, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	self:_addBgmData(AudioBgmEnum.Layer.SP02_AtomicDungeonTalent, AudioEnum3_10.Outside.play_qieluomei_qianghua_music, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	self:_addBgmData(AudioBgmEnum.Layer.SP02_AVGView, AudioEnum3_10.Dungeon.play_activitymusic_3_database_s02, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
+	self:_addBgmData(AudioBgmEnum.Layer.VersionActivity3_9Main, 0, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
+	self:_addBgmData(AudioBgmEnum.Layer.V3a9RacingGameLobby, V3a9RacingCarEnum.bgm.partygame_lobby, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
+	self:_addBgmData(AudioBgmEnum.Layer.V3a9RacingGameMain, V3a9RacingCarEnum.bgm.partygame_main, V3a9RacingCarEnum.bgm.partygame_bgm_stop)
+	self:_addBgmData(AudioBgmEnum.Layer.V3a9Bird, AudioEnum.Bgm.play_lianji_playcards_music, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 end
 
 function AudioBgmInfo:_initBgmUsage()
@@ -879,6 +883,28 @@ function AudioBgmInfo:_initBgmUsage()
 		AudioBgmEnum.Layer.SP02_AVGView
 	}, AudioBgmEnum.UsageType.View, {
 		ViewName.AtomicAvgPlayView
+	}, nil, nil, true)
+	self:_addBgmUsage({
+		AudioBgmEnum.Layer.VersionActivity3_9Main
+	}, AudioBgmEnum.UsageType.View, {
+		ViewName.VersionActivity3_9EnterView
+	}, nil, nil, true)
+	self:_addBgmUsage({
+		AudioBgmEnum.Layer.V3a9RacingGameMain
+	}, AudioBgmEnum.UsageType.Scene, {
+		SceneType.RacingCar
+	})
+	self:_addBgmUsage({
+		AudioBgmEnum.Layer.V3a9RacingGameLobby
+	}, AudioBgmEnum.UsageType.View, {
+		ViewName.V3a9RacingCarMainView,
+		ViewName.V3a9RacingCarLoadingView
+	}, nil, nil, true)
+	self:_addBgmUsage({
+		AudioBgmEnum.Layer.V3a9Bird
+	}, AudioBgmEnum.UsageType.View, {
+		ViewName.V3a9BirdMainView,
+		ViewName.V3a9BirdGameView
 	}, nil, nil, true)
 end
 

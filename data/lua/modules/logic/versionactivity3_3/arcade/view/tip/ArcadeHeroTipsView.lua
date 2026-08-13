@@ -30,7 +30,7 @@ function ArcadeHeroTipsView:removeEventListeners()
 end
 
 function ArcadeHeroTipsView:_editableInitView()
-	ArcadeBuildingTipsView.super._editableInitView(self)
+	ArcadeHeroTipsView.super._editableInitView(self)
 
 	self._attrItemList = self:getUserDataTb_()
 	self._hpItemList = self:getUserDataTb_()

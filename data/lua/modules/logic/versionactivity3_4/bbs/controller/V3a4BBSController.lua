@@ -30,7 +30,7 @@ function V3a4BBSController:_onStep(param)
 	end
 end
 
-function V3a4BBSController:openV3a4BBSView(postId, step, elementId)
+function V3a4BBSController:openV3a4BBSView(postId, step, elementId, callback, callbackTarget, callbackParams)
 	if StoryModel.instance:isStoryAuto() then
 		StoryModel.instance:setStoryAuto(false)
 	end
@@ -38,7 +38,10 @@ function V3a4BBSController:openV3a4BBSView(postId, step, elementId)
 	local param = {
 		postId = postId,
 		step = step,
-		elementId = elementId
+		elementId = elementId,
+		callback = callback,
+		callbackTarget = callbackTarget,
+		callbackParams = callbackParams
 	}
 
 	ViewMgr.instance:openView(ViewName.V3a4BBSView, param)

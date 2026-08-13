@@ -372,6 +372,16 @@ function StoryView:_storyFinished(isSkip)
 	self:stopAllAudio(1.5)
 end
 
+function StoryView:_showNormalHead(show)
+	gohelper.setActive(self._gohead, show)
+
+	if not show then
+		self._simagehead:UnLoadImage()
+
+		self._simagehead.curImageUrl = nil
+	end
+end
+
 function StoryView:_showLeadRoleSpine(show)
 	gohelper.setActive(self._gospine, show)
 	gohelper.setActive(self._gonamebg, show)
@@ -508,7 +518,7 @@ function StoryView:_showBranchLeadHero()
 	gohelper.setActive(self._gonoconversation, showHero)
 
 	if not showHero then
-		gohelper.setActive(self._gohead, false)
+		self:_showNormalHead(false)
 		gohelper.setActive(self._gospine, false)
 		StoryController.instance:dispatchEvent(StoryEvent.ShowLeadRole, self._stepCo, false, false, false, 0)
 
@@ -531,7 +541,7 @@ function StoryView:_showBranchLeadHero()
 end
 
 function StoryView:_showNormalLeadHero(param)
-	gohelper.setActive(self._gohead, true)
+	self:_showNormalHead(true)
 	self:_showLeadRoleSpine(false)
 
 	local name = param.conditionValue2[GameLanguageMgr.instance:getLanguageTypeStoryIndex()]
@@ -545,7 +555,7 @@ function StoryView:_showSpineLeadHero(param)
 	local heroIcon = param and string.split(param.conditionValue, ".")[1] or nil
 
 	StoryController.instance:dispatchEvent(StoryEvent.LeadRoleViewShow, true, heroIcon)
-	gohelper.setActive(self._gohead, false)
+	self:_showNormalHead(false)
 	self:_showLeadRoleSpine(true)
 
 	self._txtnamecn1.text = luaLang("mainrolename")
@@ -751,7 +761,7 @@ function StoryView:_showConversationItem(show)
 
 	if not show then
 		gohelper.setActive(self._gocontentroot, false)
-		gohelper.setActive(self._simagehead.gameObject, false)
+		self:_showNormalHead(false)
 		StoryController.instance:dispatchEvent(StoryEvent.LeadRoleViewShow, false)
 
 		return
@@ -779,9 +789,8 @@ function StoryView:_showConversationItem(show)
 	gohelper.setActive(self._txtnameen.gameObject, enShow)
 
 	if not self._stepCo.conversation.iconShow then
-		gohelper.setActive(self._gohead, false)
+		self:_showNormalHead(false)
 		self:_showLeadRoleSpine(false)
-		gohelper.setActive(self._simagehead.gameObject, false)
 		StoryController.instance:dispatchEvent(StoryEvent.ShowLeadRole, self._stepCo, false, false, false)
 
 		return
@@ -840,13 +849,12 @@ function StoryView:_showHeadContentIcon(icon)
 	end
 
 	if self:_isHeroLead() then
-		gohelper.setActive(self._gohead, false)
+		self:_showNormalHead(false)
 		self:_showLeadRoleSpine(true)
-		gohelper.setActive(self._simagehead.gameObject, false)
 		StoryController.instance:dispatchEvent(StoryEvent.ShowLeadRole, self._stepCo, true, false, false)
 	else
 		self:_showLeadRoleSpine(false)
-		gohelper.setActive(self._gohead, true)
+		self:_showNormalHead(true)
 
 		local isCut = StoryModel.instance:isHeroIconCuts(string.split(icon, ".")[1])
 
@@ -863,20 +871,15 @@ function StoryView:_showHeadContentIcon(icon)
 
 			table.insert(resList, self._headEffectResPath)
 			self:loadRes(resList, self._headEffectResLoaded, self)
-			gohelper.setActive(self._simagehead.gameObject, false)
+			self:_showNormalHead(false)
 			gohelper.setActive(self._goheadgrey, true)
 		else
 			local path = string.format("singlebg/headicon_small/%s", icon)
 
-			gohelper.setActive(self._simagehead.gameObject, true)
-
-			if self._simagehead.curImageUrl == path then
+			self:_showNormalHead(true)
+			self._simagehead:LoadImage(path, function()
 				gohelper.setActive(self._goheadgrey, true)
-			else
-				self._simagehead:LoadImage(path, function()
-					gohelper.setActive(self._goheadgrey, true)
-				end)
-			end
+			end)
 		end
 	end
 end
@@ -1281,8 +1284,6 @@ function StoryView:_updateEffectList(param)
 			hasboteff = true
 		end
 	end
-
-	StoryTool.enablePostProcess(false)
 
 	for _, v in pairs(self._effects) do
 		StoryTool.enablePostProcess(true)

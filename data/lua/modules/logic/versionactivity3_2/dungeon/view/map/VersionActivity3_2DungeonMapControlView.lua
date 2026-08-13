@@ -37,6 +37,7 @@ function VersionActivity3_2DungeonMapControlView:onInitView()
 	self:addEventCb(VersionActivityDungeonBaseController.instance, VersionActivityDungeonEvent.OnActivityDungeonMoChange, self.onActivityDungeonMoChange, self)
 	self:addEventCb(VersionActivityFixedDungeonController.instance, VersionActivityFixedDungeonEvent.OnClickElement, self.onClickElement, self)
 	self:addEventCb(VersionActivityFixedDungeonController.instance, VersionActivityFixedDungeonEvent.OnHideInteractUI, self.showBtnUI, self)
+	self:addEventCb(DungeonController.instance, DungeonMapElementEvent.OnRecheckInteractive, self._onRecheckInteractive, self)
 end
 
 function VersionActivity3_2DungeonMapControlView:onClickElement()
@@ -170,6 +171,16 @@ function VersionActivity3_2DungeonMapControlView:_onTouchDown()
 	end
 
 	self:_btnhideOnClick()
+end
+
+function VersionActivity3_2DungeonMapControlView:_onRecheckInteractive(isShow)
+	if isShow then
+		self._rootAnimator:Play("open")
+	else
+		self._showAllView = true
+
+		self._rootAnimator:Play("close")
+	end
 end
 
 function VersionActivity3_2DungeonMapControlView:_btnhideOnClick()

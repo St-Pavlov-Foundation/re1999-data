@@ -43,7 +43,8 @@ function DungeonConfig:reqConfigNames()
 		"reward_group",
 		"chapter_puzzle_changecolor",
 		"chapter_puzzle_changecolor_interact",
-		"chapter_puzzle_changecolor_color"
+		"chapter_puzzle_changecolor_color",
+		"paper_trail"
 	}
 end
 
@@ -1148,6 +1149,8 @@ function DungeonConfig:_initVersionActivityEpisodeList()
 		VersionActivity3_6DungeonEnum.DungeonChapterId.Story3,
 		VersionActivity3_8DungeonEnum.DungeonChapterId.Story2,
 		VersionActivity3_8DungeonEnum.DungeonChapterId.Story3,
+		VersionActivity3_9DungeonEnum.DungeonChapterId.Story2,
+		VersionActivity3_9DungeonEnum.DungeonChapterId.Story3,
 		VersionActivity3_10DungeonEnum.DungeonChapterId.Story2,
 		VersionActivity3_10DungeonEnum.DungeonChapterId.Story3
 	}

@@ -30,40 +30,37 @@ function V3a2_BossRushModel:_onReceiveAct128GetMilestoneBonusReply(msg)
 	self:_refreshGainMilestoneLevel()
 end
 
-function V3a2_BossRushModel:getSortStages()
+function V3a2_BossRushModel:getSortStages(actId)
 	local lockInfoList = {}
 	local unlockInfoList = {}
-	local infoList = BossRushModel.instance:getStagesInfo()
 	local newOpenStage
-
-	if not infoList then
-		return
-	end
-
-	for _, info in ipairs(infoList) do
-		local isOpen = BossRushModel.instance:isBossOnline(info.stage) and BossRushModel.instance:isBossOpen(info.stage)
-
-		if isOpen then
-			newOpenStage = info
-
-			table.insert(unlockInfoList, info)
-		else
-			table.insert(lockInfoList, info)
-		end
-	end
-
 	local _infoList = {}
+	local dataList = V3a9_BossRushModel.instance:getStageMos(actId)
 
-	table.insert(_infoList, newOpenStage)
+	if dataList then
+		for _, mo in ipairs(dataList) do
+			local isOpen = mo:isOpen()
 
-	for _, info in ipairs(unlockInfoList) do
-		if newOpenStage ~= info then
+			if isOpen then
+				newOpenStage = mo
+
+				table.insert(unlockInfoList, mo)
+			else
+				table.insert(lockInfoList, mo)
+			end
+		end
+
+		table.insert(_infoList, newOpenStage)
+
+		for _, info in ipairs(unlockInfoList) do
+			if newOpenStage ~= info then
+				table.insert(_infoList, info)
+			end
+		end
+
+		for _, info in ipairs(lockInfoList) do
 			table.insert(_infoList, info)
 		end
-	end
-
-	for _, info in ipairs(lockInfoList) do
-		table.insert(_infoList, info)
 	end
 
 	return _infoList
@@ -205,8 +202,8 @@ function V3a2_BossRushModel:getHandBookMo(bossType)
 	return mos and mos[bossType]
 end
 
-function V3a2_BossRushModel:getHandBookMoByStage(stage)
-	local bossType = self._config:getV3a2BossTypeByStage(stage)
+function V3a2_BossRushModel:getHandBookMoByStage(stage, activityId)
+	local bossType = self._config:getV3a2BossTypeByStage(stage, activityId)
 	local mo = bossType and self:getHandBookMo(bossType)
 
 	return mo
@@ -217,7 +214,7 @@ function V3a2_BossRushModel:getStrategyByStage(stage)
 	local mo = self:getHandBookMoByStage(bossType)
 
 	if mo then
-		return mo:getStrategy()
+		return BossRushConfig.instance:getBossRecommendStrategy(bossType)
 	end
 end
 
@@ -229,18 +226,20 @@ function V3a2_BossRushModel:getHandBookGroupMos()
 
 		if mos then
 			for i, mo in pairs(mos) do
-				local minType = mo.config.minType
-				local groupMos = self._handbookGroupMOs[minType]
+				if mo.config.offline == 0 then
+					local minType = mo.config.minType
+					local groupMos = self._handbookGroupMOs[minType]
 
-				if not groupMos then
-					groupMos = {
-						bossGroup = {},
-						config = lua_activity128_bosstype.configDict[minType]
-					}
-					self._handbookGroupMOs[minType] = groupMos
+					if not groupMos then
+						groupMos = {
+							bossGroup = {},
+							config = lua_activity128_bosstype.configDict[minType]
+						}
+						self._handbookGroupMOs[minType] = groupMos
+					end
+
+					table.insert(groupMos.bossGroup, mo)
 				end
-
-				table.insert(groupMos.bossGroup, mo)
 			end
 		end
 	end
@@ -260,6 +259,90 @@ end
 
 function V3a2_BossRushModel:getScore()
 	return self._score or {}
+end
+
+function V3a2_BossRushModel:setAssistMo(assistMo, index)
+	local stage, _, actId = BossRushModel.instance:getBattleStageAndLayer()
+
+	if not self._assistMos then
+		self._assistMos = {}
+	end
+
+	if not self._assistMos[actId] then
+		self._assistMos[actId] = {}
+	end
+
+	local mo = self._assistMos[actId][stage] or HeroSingleGroupMO.New()
+
+	mo:init(index, assistMo.heroUid)
+	mo:setAssist(assistMo)
+
+	self._assistMos[actId][stage] = mo
+
+	self:setEditorAssistMo(assistMo)
+end
+
+function V3a2_BossRushModel:getAssistMo()
+	local stage, _, actId = BossRushModel.instance:getBattleStageAndLayer()
+
+	if not stage or not actId then
+		return
+	end
+
+	if not self._assistMos then
+		self._assistMos = {}
+	end
+
+	if not self._assistMos[actId] then
+		self._assistMos[actId] = {}
+	end
+
+	return self._assistMos[actId][stage]
+end
+
+function V3a2_BossRushModel:setEditorAssistMo(assistMo)
+	local stage, _, actId = BossRushModel.instance:getBattleStageAndLayer()
+
+	if not self._editorAssistMos then
+		self._editorAssistMos = {}
+	end
+
+	if not self._editorAssistMos[actId] then
+		self._editorAssistMos[actId] = {}
+	end
+
+	self._editorAssistMos[actId][stage] = assistMo
+end
+
+function V3a2_BossRushModel:getEditorAssistMo()
+	local stage, _, actId = BossRushModel.instance:getBattleStageAndLayer()
+
+	if not self._editorAssistMos then
+		self._editorAssistMos = {}
+	end
+
+	if not self._editorAssistMos[actId] then
+		self._editorAssistMos[actId] = {}
+	end
+
+	return self._editorAssistMos[actId][stage]
+end
+
+function V3a2_BossRushModel:clearAssist(isClearEditor)
+	local stage, _, actId = BossRushModel.instance:getBattleStageAndLayer()
+
+	if self._assistMos and self._assistMos[actId] and self._assistMos[actId][stage] then
+		self._assistMos[actId][stage] = nil
+	end
+
+	if isClearEditor and self._editorAssistMos and self._editorAssistMos[actId] and self._editorAssistMos[actId][stage] then
+		self._editorAssistMos[actId][stage] = nil
+	end
+end
+
+function V3a2_BossRushModel:clearAllAssist()
+	self._assistMos = nil
+	self._editorAssistMos = nil
 end
 
 V3a2_BossRushModel.instance = V3a2_BossRushModel.New()

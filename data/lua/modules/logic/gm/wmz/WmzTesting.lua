@@ -265,6 +265,9 @@ local function _genJson(mapCO)
 
 	for _, v in pairs(toDict) do
 		for _, cellInfo in pairs(v) do
+			local ft = cellInfo.floorType
+			local pt = cellInfo.pathType
+
 			if WmzMapInfo.s_isTile(pt, ft) then
 				cellInfo.zoneId = nil
 			elseif WmzMapInfo.s_isStart(pt) then
@@ -285,8 +288,6 @@ local function _genJson(mapCO)
 
 			local x = cellInfo.x
 			local y = cellInfo.y
-			local ft = cellInfo.floorType
-			local pt = cellInfo.pathType
 
 			if ft == WmzEnum.FloorType._edit_MoveableEmpty then
 				ft = WmzEnum.FloorType.Passable

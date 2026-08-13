@@ -129,6 +129,39 @@ function FightTLEventAtkFlyEffect:onTrackStart(fightStepData, duration, paramsAr
 		if atkEntity then
 			atkPosX, atkPosY, atkPosZ = FightHelper.getEntityWorldCenterPos(atkEntity)
 		end
+	elseif paramsArr[17] == "5" or paramsArr[17] == "6" then
+		local side = paramsArr[17] == "5" and self._attacker:getSide() or self._attacker:getSide() == FightEnum.EntitySide.MySide and FightEnum.EntitySide.EnemySide or FightEnum.EntitySide.MySide
+		local entityList = {}
+
+		for entityId, entity in pairs(FightGameMgr.entityMgr.entityDic) do
+			if entity:getSide() == side and entity:getTag() ~= SceneTag.UnitNpc then
+				local isSub = FightDataHelper.entityMgr:isSub(entity.id)
+
+				if not isSub then
+					table.insert(entityList, entity)
+				end
+			end
+		end
+
+		table.sort(entityList, FightTLEventAtkFullEffect.sortByEntityX)
+
+		local listCount = #entityList
+
+		if listCount > 0 then
+			local pos1x, pos1y, pos1z = transformhelper.getLocalPos(entityList[1].go.transform)
+			local pos2x, pos2y, pos2z = transformhelper.getLocalPos(entityList[#entityList].go.transform)
+			local posX = (pos1x + pos2x) / 2
+			local posY = (pos1y + pos2y) / 2
+			local posZ = (pos1z + pos2z) / 2
+
+			atkPosX = posX
+			atkPosY = posY
+			atkPosZ = posZ
+		else
+			atkPosX = 0
+			atkPosY = 0
+			atkPosZ = 0
+		end
 	end
 
 	local startX = atkPosX + atkOffsetX
@@ -171,6 +204,42 @@ function FightTLEventAtkFlyEffect:onTrackStart(fightStepData, duration, paramsAr
 		self:_flyEffectSingle(startX, startY, startZ, defOffsetX, defOffsetY, defOffsetZ)
 	elseif flyType == 6 then
 		self:_flyEffectAbsolutely(startX, startY, startZ, defOffsetX, defOffsetY, defOffsetZ)
+	elseif flyType == 7 or flyType == 8 then
+		local side = flyType == 7 and self._attacker:getSide() or self._attacker:getSide() == FightEnum.EntitySide.MySide and FightEnum.EntitySide.EnemySide or FightEnum.EntitySide.MySide
+		local entityList = {}
+
+		for entityId, entity in pairs(FightGameMgr.entityMgr.entityDic) do
+			if entity:getSide() == side and entity:getTag() ~= SceneTag.UnitNpc then
+				local isSub = FightDataHelper.entityMgr:isSub(entity.id)
+
+				if not isSub then
+					table.insert(entityList, entity)
+				end
+			end
+		end
+
+		table.sort(entityList, FightTLEventAtkFullEffect.sortByEntityX)
+
+		local listCount = #entityList
+		local endX, endY, endZ = 0, 0, 0
+
+		if listCount > 0 then
+			local pos1x, pos1y, pos1z = transformhelper.getLocalPos(entityList[1].go.transform)
+			local pos2x, pos2y, pos2z = transformhelper.getLocalPos(entityList[#entityList].go.transform)
+			local posX = (pos1x + pos2x) / 2
+			local posY = (pos1y + pos2y) / 2
+			local posZ = (pos1z + pos2z) / 2
+
+			endX = posX
+			endY = posY
+			endZ = posZ
+		else
+			endX = 0
+			endY = 0
+			endZ = 0
+		end
+
+		self:_flyEffectAbsolutely(startX, startY, startZ, endX + defOffsetX, endY + defOffsetY, endZ + defOffsetZ)
 	else
 		self:_flyEffectTarget(startX, startY, startZ, defOffsetX, defOffsetY, defOffsetZ, FightHelper.getEntityHangPointPos, paramsArr[2])
 	end

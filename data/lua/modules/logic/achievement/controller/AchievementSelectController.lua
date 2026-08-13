@@ -77,6 +77,10 @@ function AchievementSelectController:changeGroupSelect(groupId)
 end
 
 function AchievementSelectController:changeSingleSelect(taskId)
+	if AchievementSelectListModel.instance:getNamePlateSelectedCount() > 0 then
+		AchievementSelectListModel.instance:clearNamePlateAllSelect()
+	end
+
 	local isSelected = AchievementSelectListModel.instance:isSingleSelected(taskId)
 	local curCount = AchievementSelectListModel.instance:getSingleSelectedCount()
 

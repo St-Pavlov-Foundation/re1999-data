@@ -145,7 +145,9 @@ function NecrologistStoryView:onAutoChange()
 	end
 
 	if not self._storyGroupMo:getIsAuto() then
-		self:clearTweenBottom()
+		if self._tweenBottomId then
+			self:_onTweenBottomFinish()
+		end
 
 		return
 	end
@@ -472,6 +474,7 @@ function NecrologistStoryView:playStory(storyConfig, isSkip)
 
 	if isPause then
 		isSkip = false
+		self._isSkipping = false
 	end
 
 	self:tryEnding(storyConfig)
@@ -726,14 +729,6 @@ function NecrologistStoryView:delItem(item)
 end
 
 function NecrologistStoryView:addControl(storyConfig, isSkip, fromItem)
-	local storyId = storyConfig.id
-	local control = storyConfig.addControl
-	local isEmpty = string.nilorempty(control)
-
-	if isEmpty then
-		return
-	end
-
 	if not self.controlMgr then
 		self.controlMgr = MonoHelper.addNoUpdateLuaComOnceToGo(self.viewGO, NecrologistStoryControlMgrComp, self)
 	end

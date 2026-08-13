@@ -156,6 +156,10 @@ function LightModelAgent:setInMainView()
 	self._curModel:setInMainView()
 end
 
+function LightModelAgent:setSkipBodyEffect(value)
+	self._curModel:setSkipBodyEffect(value)
+end
+
 function LightModelAgent:setBodyChangeCallback(callback, callbackObj)
 	self._curModel:setBodyChangeCallback(callback, callbackObj)
 end

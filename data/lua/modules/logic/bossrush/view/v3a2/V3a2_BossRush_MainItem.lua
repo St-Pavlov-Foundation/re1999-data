@@ -4,6 +4,10 @@ module("modules.logic.bossrush.view.v3a2.V3a2_BossRush_MainItem", package.seeall
 
 local V3a2_BossRush_MainItem = class("V3a2_BossRush_MainItem", LuaCompBase)
 
+function V3a2_BossRush_MainItem:ctor(viewContainer)
+	self.viewContainer = viewContainer
+end
+
 function V3a2_BossRush_MainItem:init(go)
 	self.viewGO = go
 	self._btnItemBG = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_item")
@@ -105,7 +109,11 @@ function V3a2_BossRush_MainItem:_refresh()
 	local stage = stageCO.stage
 	local isOpened = self:_isOpen()
 	local issxIconName = BossRushConfig.instance:getIssxIconName(stage)
-	local highestPoint = BossRushModel.instance:getHighestPoint(stage)
+
+	self._actId = stageCO.activityId
+
+	local stageMo = V3a9_BossRushModel.instance:getStageMo(self._actId, stage)
+	local highestPoint = stageMo and stageMo.highestPoint or 0
 	local stageName = stageCO.name
 
 	UISpriteSetMgr.instance:setCommonSprite(self._imageIssxIcon, issxIconName)
@@ -118,6 +126,10 @@ function V3a2_BossRush_MainItem:_refresh()
 	self._txtTitle.text = stageName
 
 	local type = BossRushEnum.AssessType.V3a2
+
+	if not self._assessIcon then
+		self:_initAssessIcon()
+	end
 
 	self._assessIcon:setData(stage, highestPoint, type)
 
@@ -176,7 +188,7 @@ function V3a2_BossRush_MainItem:_onRefreshDeadline()
 end
 
 function V3a2_BossRush_MainItem:_initAssessIcon()
-	local viewContainer = ViewMgr.instance:getContainer(ViewName.V3a2_BossRush_MainView)
+	local viewContainer = self.viewContainer or ViewMgr.instance:getContainer(ViewName.V3a2_BossRush_MainView)
 	local itemClass = V1a4_BossRush_AssessIcon
 	local go = viewContainer:getResInst(BossRushEnum.ResPath.v1a4_bossrush_mainview_assessicon, self._goAssessIcon, itemClass.__cname)
 
@@ -187,11 +199,11 @@ end
 
 function V3a2_BossRush_MainItem:_onClick()
 	BossRushController.instance:openV3a2LevelDetailView(self._mo)
-	self:_refreshReddot()
-	gohelper.setActive(self._goRed, false)
+	self:_checkNewUnlock()
+	self:_refreshReddotType()
 end
 
-function V3a2_BossRush_MainItem:_refreshReddot()
+function V3a2_BossRush_MainItem:_checkNewUnlock()
 	local stage = self:_getStage()
 
 	if BossRushRedModel.instance:getIsNewUnlockStage(stage) then
@@ -212,16 +224,11 @@ function V3a2_BossRush_MainItem:_refreshReddot()
 end
 
 function V3a2_BossRush_MainItem:_isOpen()
-	local stage = self:_getStage()
-
-	return BossRushModel.instance:isBossOnline(stage)
+	return self._mo:isOpen()
 end
 
 function V3a2_BossRush_MainItem:_getStage()
-	local mo = self._mo
-	local stageCO = mo.stageCO
-
-	return stageCO.stage
+	return self._mo.stage
 end
 
 function V3a2_BossRush_MainItem:_refreshStatus()
@@ -233,7 +240,7 @@ function V3a2_BossRush_MainItem:_refreshStatus()
 	gohelper.setActive(self._goAssessIcon, isOpen)
 
 	if isOpen and self._index == 1 and self._unlockAnim then
-		local isNewUnlock = BossRushRedModel.instance:getIsPlayUnlockAnimStage(stage)
+		local isNewUnlock = BossRushRedModel.instance:getIsNewUnlockStage(stage)
 		local animName = isNewUnlock and V3a2BossRushEnum.AnimName.Unlock or V3a2BossRushEnum.AnimName.Idle
 
 		self._unlockAnim:Play(animName, 0, 0)
@@ -255,10 +262,27 @@ end
 
 function V3a2_BossRush_MainItem:_refreshReddotType()
 	local stage = self:_getStage()
-	local isNew = BossRushRedModel.instance:getIsNewUnlockStage(stage)
-	local type = isNew and RedDotEnum.Style.NewTag or RedDotConfig.instance:getRedDotCO(RedDotEnum.DotNode.BossRushBoss).style
+	local isNewUnlock = BossRushRedModel.instance:getIsNewUnlockStage(stage)
 
-	self._reddotItem:showRedDot(type)
+	if isNewUnlock then
+		local type = RedDotEnum.Style.NewTag
+
+		gohelper.setActive(self._goRed, true)
+		self._reddotItem:showRedDot(type)
+
+		return
+	end
+
+	if RedDotModel.instance:isDotShow(RedDotEnum.DotNode.BossRushBossReward, stage) then
+		local type = RedDotConfig.instance:getRedDotCO(RedDotEnum.DotNode.BossRushBoss).style
+
+		gohelper.setActive(self._goRed, true)
+		self._reddotItem:showRedDot(type)
+
+		return
+	end
+
+	gohelper.setActive(self._goRed, false)
 end
 
 function V3a2_BossRush_MainItem:onDestroy()
@@ -285,7 +309,7 @@ function V3a2_BossRush_MainItem:onDestroyView()
 		self._simageBG2:UnLoadImage()
 	end
 
-	self:_refreshReddot()
+	self:_checkNewUnlock()
 end
 
 return V3a2_BossRush_MainItem

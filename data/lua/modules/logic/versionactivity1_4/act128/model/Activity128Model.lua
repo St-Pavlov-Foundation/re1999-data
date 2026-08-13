@@ -268,6 +268,7 @@ function Activity128Model:onReceiveAct128GetTotalRewardsReply(msg)
 	local stage = msg.bossId
 	local hasGetBonusIds = msg.hasGetBonusIds
 
+	V3a9_BossRushModel.instance:refreshHasGetBonusIds(msg.activityId, stage, hasGetBonusIds)
 	self:_updateHasGetBonusIds(stage, hasGetBonusIds)
 	self:_onReceiveAct128GetTotalRewardsReply(msg)
 end
@@ -276,6 +277,7 @@ function Activity128Model:onReceiveAct128SingleRewardReply(msg)
 	local stage = msg.bossId
 	local rewardId = msg.rewardId
 
+	V3a9_BossRushModel.instance:refreshSingleHasGetBonusIds(msg.activityId, stage, rewardId)
 	self:_updateSingleHasGetBonusIds(stage, rewardId)
 	self:_onReceiveAct128SingleRewardReply(msg)
 end

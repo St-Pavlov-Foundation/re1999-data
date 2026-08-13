@@ -30,7 +30,7 @@ function PartyClothLotteryViewContainer:buildTabViews(tabContainerId)
 		}
 	elseif tabContainerId == 2 then
 		local currencyParam = {
-			CurrencyEnum.CurrencyType.PartyGameStoreCoin
+			CurrencyEnum.CurrencyType.V3a9PartyGameStoreCoin
 		}
 
 		return {

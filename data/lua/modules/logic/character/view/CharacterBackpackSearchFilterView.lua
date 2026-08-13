@@ -54,15 +54,21 @@ function CharacterBackpackSearchFilterView:_btnresetOnClick()
 		self._selectAttrs[i] = false
 	end
 
+	self._selectDestiny = nil
+
 	CharacterSearchFilterModel.instance:clearSelectTag()
 	self:_refreshView()
 end
 
 function CharacterBackpackSearchFilterView:_btnconfirmOnClick()
 	local dmgs, careers = CharacterSearchFilterModel.instance:onComfirmSearchFilter(self._selectDmgs, self._selectAttrs)
+
+	CharacterSearchFilterModel.instance:setSelectDestiny(self._selectDestiny)
+
 	local filterParam = {}
 
 	filterParam.dmgs = dmgs
+	filterParam.destiny = self._selectDestiny
 	filterParam.careers = careers
 
 	CharacterModel.instance:filterCardListByDmgAndCareer(filterParam, false, self._filterType)
@@ -73,6 +79,7 @@ function CharacterBackpackSearchFilterView:_btnconfirmOnClick()
 	param.attrs = self._selectAttrs
 	param.dmgs1 = dmgs
 	param.careers1 = careers
+	param.destiny = self._selectDestiny
 
 	CharacterController.instance:dispatchEvent(CharacterEvent.FilterBackpack, param)
 	self:closeThis()
@@ -80,6 +87,7 @@ end
 
 function CharacterBackpackSearchFilterView:_editableInitView()
 	self._dmgItems = self:getUserDataTb_()
+	self._destinyItems = self:getUserDataTb_()
 	self._attrItems = self:getUserDataTb_()
 	self._dmgContainer = gohelper.findChild(self.viewGO, "container/Scroll View/Viewport/Content/dmgContainer")
 
@@ -89,6 +97,16 @@ function CharacterBackpackSearchFilterView:_editableInitView()
 
 		item.click:AddClickListener(self._dmgBtnOnClick, self, i)
 		table.insert(self._dmgItems, item)
+	end
+
+	self._destinyContainer = gohelper.findChild(self.viewGO, "container/Scroll View/Viewport/Content/destinyContainer")
+
+	for i = 1, CharacterBackpackEnum.destinyItemCount do
+		local go = gohelper.findChild(self._destinyContainer, "#go_tag" .. i)
+		local item = self:_getItem(go)
+
+		item.click:AddClickListener(self._destinyBtnOnClick, self, i)
+		table.insert(self._destinyItems, item)
 	end
 
 	self._attrContainer = gohelper.findChild(self.viewGO, "container/Scroll View/Viewport/Content/attrContainer")
@@ -253,6 +271,12 @@ function CharacterBackpackSearchFilterView:_refreshEditor()
 		item.canvasGroup.alpha = isSelect and 1 or alpha
 	end
 
+	for i, item in pairs(self._destinyItems) do
+		local isSelect = CharacterSearchFilterModel.instance:getSelectDestiny() == i
+
+		item.canvasGroup.alpha = isSelect and 1 or alpha
+	end
+
 	for _, item in pairs(self._attrItems) do
 		local isSelect = CharacterSearchFilterModel.instance:isSelectLocalTag(item.id)
 
@@ -284,12 +308,25 @@ function CharacterBackpackSearchFilterView:_dmgBtnOnClick(i)
 	end
 end
 
+function CharacterBackpackSearchFilterView:_destinyBtnOnClick(i)
+	if not self._isEditing then
+		if self._selectDestiny == i then
+			self._selectDestiny = nil
+		else
+			self._selectDestiny = i
+		end
+
+		self:_refreshView()
+	end
+end
+
 function CharacterBackpackSearchFilterView:onUpdateParam()
 	return
 end
 
 function CharacterBackpackSearchFilterView:onOpen()
 	self._selectDmgs = self.viewParam and self.viewParam.dmgs
+	self._selectDestiny = self.viewParam and self.viewParam.destiny
 	self._selectAttrs = self.viewParam and self.viewParam.attrs
 
 	if not self._selectDmgs then
@@ -300,6 +337,10 @@ function CharacterBackpackSearchFilterView:onOpen()
 		for _, dmg in ipairs(dmgs) do
 			self._selectDmgs[dmg] = true
 		end
+	end
+
+	if not self._selectDestiny then
+		self._selectDestiny = CharacterSearchFilterModel.instance:getSelectDestiny()
 	end
 
 	if not self._selectAttrs then
@@ -327,6 +368,13 @@ end
 function CharacterBackpackSearchFilterView:_refreshView()
 	for i, item in ipairs(self._dmgItems) do
 		local select = self._selectDmgs[i]
+
+		gohelper.setActive(item.selected, select)
+		gohelper.setActive(item.unselected, not select)
+	end
+
+	for i, item in ipairs(self._destinyItems) do
+		local select = self._selectDestiny == i
 
 		gohelper.setActive(item.selected, select)
 		gohelper.setActive(item.unselected, not select)
@@ -428,6 +476,10 @@ end
 
 function CharacterBackpackSearchFilterView:onDestroyView()
 	for _, item in pairs(self._dmgItems) do
+		item.click:RemoveClickListener()
+	end
+
+	for _, item in pairs(self._destinyItems) do
 		item.click:RemoveClickListener()
 	end
 

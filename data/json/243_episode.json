@@ -1,0 +1,92 @@
+[
+  {
+    "episodeId": 1392001,
+    "episodeType": 2,
+    "activityId": 13920,
+    "preEpisodeId": 0,
+    "name": "见习水道",
+    "gameId": 13901,
+    "clearBonus": 39111111
+  },
+  {
+    "episodeId": 1392002,
+    "episodeType": 2,
+    "activityId": 13920,
+    "preEpisodeId": 1392001,
+    "name": "海风飞桥",
+    "gameId": 13902,
+    "clearBonus": 39111112
+  },
+  {
+    "episodeId": 1392003,
+    "episodeType": 2,
+    "activityId": 13920,
+    "preEpisodeId": 1392002,
+    "name": "轰隆大瀑布",
+    "gameId": 13903,
+    "clearBonus": 39111113
+  },
+  {
+    "episodeId": 1392004,
+    "episodeType": 2,
+    "activityId": 13920,
+    "preEpisodeId": 1392003,
+    "name": "飞瀑回旋",
+    "gameId": 13904,
+    "clearBonus": 39111114
+  },
+  {
+    "episodeId": 1392005,
+    "episodeType": 2,
+    "activityId": 13920,
+    "preEpisodeId": 1392004,
+    "name": "滑翔海湾",
+    "gameId": 13905,
+    "clearBonus": 39111115
+  },
+  {
+    "episodeId": 1392006,
+    "episodeType": 2,
+    "activityId": 13920,
+    "preEpisodeId": 1392005,
+    "name": "蹦蹦跳浴场",
+    "gameId": 13906,
+    "clearBonus": 39111116
+  },
+  {
+    "episodeId": 1392007,
+    "episodeType": 2,
+    "activityId": 13920,
+    "preEpisodeId": 1392006,
+    "name": "夜间航线",
+    "gameId": 13907,
+    "clearBonus": 39111117
+  },
+  {
+    "episodeId": 1392008,
+    "episodeType": 2,
+    "activityId": 13920,
+    "preEpisodeId": 1392007,
+    "name": "午夜决赛场",
+    "gameId": 13908,
+    "clearBonus": 39111118
+  },
+  {
+    "episodeId": 1392101,
+    "episodeType": 1,
+    "activityId": 13921,
+    "preEpisodeId": 0,
+    "name": "",
+    "gameId": 13911,
+    "clearBonus": 0
+  },
+  {
+    "episodeId": 1392102,
+    "episodeType": 1,
+    "activityId": 13921,
+    "preEpisodeId": 0,
+    "name": "",
+    "gameId": 13912,
+    "clearBonus": 0
+  }
+]

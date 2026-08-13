@@ -46,6 +46,8 @@ function SwitchMainActivityEnterView:_editableInitView()
 
 		table.insert(self.txtChapters, item)
 	end
+
+	self._imageActivityIconChilds = self.imageActivityIcon.gameObject:GetComponentsInChildren(gohelper.Type_Image, true)
 end
 
 function SwitchMainActivityEnterView:onOpen()
@@ -72,10 +74,26 @@ function SwitchMainActivityEnterView:refreshActivityIcon()
 		self.imageActivityIcon.color = MainActivityEnterView.notOpenColor
 
 		gohelper.setAsFirstSibling(self.btnEnterActivity.gameObject)
+
+		if self._imageActivityIconChilds then
+			for i = 0, self._imageActivityIconChilds.Length - 1 do
+				local image = self._imageActivityIconChilds[i]
+
+				image.color = MainActivityEnterView.notOpenColor
+			end
+		end
 	else
 		self.imageActivityIcon.color = Color.white
 
 		gohelper.setAsLastSibling(self.btnEnterActivity.gameObject)
+
+		if self._imageActivityIconChilds then
+			for i = 0, self._imageActivityIconChilds.Length - 1 do
+				local image = self._imageActivityIconChilds[i]
+
+				image.color = Color.white
+			end
+		end
 	end
 end
 

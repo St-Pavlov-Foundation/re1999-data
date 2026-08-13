@@ -28,7 +28,7 @@ function EquipInfoTeamShowViewContainer:buildViews()
 	elseif self.viewParam.fromView == EquipEnum.FromViewEnum.FromCharacterView then
 		self.listModel = CharacterEquipSettingListModel.instance
 		equipScrollParam.cellClass = CharacterEquipSettingItem
-	elseif self.viewParam.fromView == EquipEnum.FromViewEnum.FromSeasonFightView or self.viewParam.fromView == EquipEnum.FromViewEnum.FromSeason123HeroGroupFightView or self.viewParam.fromView == EquipEnum.FromViewEnum.FromSeason166HeroGroupFightView then
+	elseif self.viewParam.fromView == EquipEnum.FromViewEnum.FromSeasonFightView or self.viewParam.fromView == EquipEnum.FromViewEnum.FromSeason123HeroGroupFightView or self.viewParam.fromView == EquipEnum.FromViewEnum.FromSeason166HeroGroupFightView or self.viewParam.fromView == EquipEnum.FromViewEnum.V3a9_BossRush_HeroGroupListView then
 		self.listModel = EquipInfoTeamListModel.instance
 		equipScrollParam.cellClass = EquipInfoTeamItem
 	elseif self.viewParam.fromView == EquipEnum.FromViewEnum.FromCachotHeroGroupView then

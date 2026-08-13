@@ -271,5 +271,31 @@
     "sort": 21,
     "minNum": 1,
     "maxNum": 10
+  },
+  {
+    "id": 22,
+    "actType": 0,
+    "name": "鬃毛邮报特约观察",
+    "unlockId": 0,
+    "batNum": 4,
+    "supNum": 0,
+    "isDisplay": 1,
+    "isChangeName": 1,
+    "sort": 20,
+    "minNum": 4,
+    "maxNum": 10
+  },
+  {
+    "id": 23,
+    "actType": 229,
+    "name": "焦点闪回",
+    "unlockId": 50,
+    "batNum": 4,
+    "supNum": 0,
+    "isDisplay": 0,
+    "isChangeName": 1,
+    "sort": 23,
+    "minNum": 3,
+    "maxNum": 3
   }
 ]

@@ -102,11 +102,12 @@ local RevertUIBlurView = {
 	ViewName.VersionActivity2_7TaskView,
 	ViewName.DungeonRewardView,
 	ViewName.StoryFrontView,
-	ViewName.ReactivityStoreView
+	ViewName.ReactivityStoreView,
+	ViewName.DungeonRecheckElementsView
 }
 
 function VersionActivity2_7DungeonMapScene:_onOpenView(viewName)
-	if LuaUtil.tableContains(RevertUIBlurView, viewName) then
+	if LuaUtil.tableContains(RevertUIBlurView, viewName) or viewName == ViewName.DungeonFragmentInfoView then
 		self:_resetCameraParam()
 	end
 
@@ -119,9 +120,13 @@ function VersionActivity2_7DungeonMapScene:_openFinishMapLevelView(viewGO)
 	self:_setLoadParent(viewGO)
 end
 
-function VersionActivity2_7DungeonMapScene:_onCloseView(viewName)
+function VersionActivity2_7DungeonMapScene:_onCloseView(viewName, viewParam)
 	if LuaUtil.tableContains(RevertUIBlurView, viewName) then
 		self:_checkCameraParam()
+	end
+
+	if viewName == ViewName.DungeonFragmentInfoView and viewParam and viewParam.isRecheck then
+		self:_resetCameraParam()
 	end
 
 	if viewName == ViewName.VersionActivity2_7DungeonMapLevelView then

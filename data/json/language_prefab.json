@@ -9353,7 +9353,7 @@
   },
   {
     "id": "p_versionactivity_1_5_enterview_txt_Activity5",
-    "lang": "融于积雪之上"
+    "lang": "落于积雪之上"
   },
   {
     "id": "p_versionactivity_1_5_enterview_txt_Activity6",
@@ -25265,7 +25265,7 @@
   },
   {
     "id": "p_bpface_skinfestivalview_txt_title2",
-    "lang": "《岁月的书签》新的一页：她描绘闪耀的线，描绘一个全新的开始。"
+    "lang": "《岁月的书签》新的一页：将床单与芬芳一同折起，于褶皱里保留一点夏天。"
   },
   {
     "id": "p_bpface_skinfestivalview_txt_title3",
@@ -29594,5 +29594,573 @@
   {
     "id": "p_sp02_atomicheart_colorgameview_txt_title3",
     "lang": "使内圈的光点颜色与最外圈对应"
+  },
+  {
+    "id": "p_v3a9_fivestarsupgradeview_txt_dec",
+    "lang": "完成相应任务即可获得：\n【第一滴雨】十连征集、五星角色洞悉道具奖励！"
+  },
+  {
+    "id": "p_v3a9_fivestarsupgradeview_txt_tips1",
+    "lang": "完成任务可获得征集道具+洞悉直升道具！"
+  },
+  {
+    "id": "p_v3a9_storeview_txt_title1",
+    "lang": "<size=48>情节</size>误导"
+  },
+  {
+    "id": "p_v3a9_storeview_txt_title2",
+    "lang": "<size=48>线索</size>呼应"
+  },
+  {
+    "id": "p_v3a9_storeview_txt_title3",
+    "lang": "<size=48>题材</size>底色"
+  },
+  {
+    "id": "p_settingsfightview_cardDetail",
+    "lang": "施放咒语时显示详细信息"
+  },
+  {
+    "id": "p_rougemainview_txt_activityTask",
+    "lang": "活动名称"
+  },
+  {
+    "id": "p_partygame_trialplayview_txt_tab1",
+    "lang": "单个试玩"
+  },
+  {
+    "id": "p_partygame_trialplayview_txt_tab2",
+    "lang": "流程试玩"
+  },
+  {
+    "id": "p_partygame_trialplayview_txt_process_1",
+    "lang": "首轮-<#FF952E>8进4</color>"
+  },
+  {
+    "id": "p_partygame_trialplayview_txt_process_2",
+    "lang": "次轮-<#FF952E>4进2</color>"
+  },
+  {
+    "id": "p_partygame_trialplayview_txt_process_3",
+    "lang": "决赛"
+  },
+  {
+    "id": "p_partygame_trialplayview_txt_random",
+    "lang": "随机"
+  },
+  {
+    "id": "p_partygame_trialplayview_txt_start",
+    "lang": "开始试玩"
+  },
+  {
+    "id": "p_partygame_mainview_txt_trialplay",
+    "lang": "试玩"
+  },
+  {
+    "id": "p_v3a9_versionsummonselfselectsixhalfview_txt_dec",
+    "lang": "活动期间可从9名角色中选3名角色概率UP!!\n选定后不能变更"
+  },
+  {
+    "id": "p_v3a9_versionsummonhuidiaolanhalfview_txt_name",
+    "lang": "灰调蓝"
+  },
+  {
+    "id": "p_v3a9_versionsummonwumingzhehalfview_txt_name",
+    "lang": "无名者"
+  },
+  {
+    "id": "p_v3a9_versionsummonyamihalfview_txt_name",
+    "lang": "哑谜"
+  },
+  {
+    "id": "p_v3a9_activityinsightshowview_txt_item1",
+    "lang": "独一调·【第一滴雨】"
+  },
+  {
+    "id": "p_v3a9_activityinsightshowview_txt_item2",
+    "lang": "洞见之声"
+  },
+  {
+    "id": "p_v3a9_activityinsightshowview_txt_item3",
+    "lang": "顿悟之声"
+  },
+  {
+    "id": "p_v3a9_racing_mainview_txt_talent",
+    "lang": "驭兽指南"
+  },
+  {
+    "id": "p_v3a9_racing_mainview_txt_start",
+    "lang": "前往报名"
+  },
+  {
+    "id": "p_v3a9_racing_mainview_txt_best",
+    "lang": "最佳成绩"
+  },
+  {
+    "id": "p_turnback3_progressview_txt_rewardTitle",
+    "lang": "参与可得"
+  },
+  {
+    "id": "p_turnbacknewprogressview_txt_newdec",
+    "lang": "参与以下内容可获得更多纯雨滴"
+  },
+  {
+    "id": "p_turnbacknewprogressview_txt_newdec2",
+    "lang": "参与活动正篇\n获得大量纯雨滴<sprite=1>"
+  },
+  {
+    "id": "p_turnbacknewprogressview_txt_rest",
+    "lang": "剩余可得:"
+  },
+  {
+    "id": "p_bpchargeview_new_txt_All",
+    "lang": "包含所有「典藏吼吼光碟」奖励"
+  },
+  {
+    "id": "p_bpchargeview_new_txt_Normal",
+    "lang": "立即提升10吼吼分贝等级"
+  },
+  {
+    "id": "p_bpchargeview_new_txt_Extra",
+    "lang": "立即额外获得"
+  },
+  {
+    "id": "p_turnback3_returnrewardview_txt_canget",
+    "lang": "立即领取"
+  },
+  {
+    "id": "p_turnback3_returnrewardview_txt_lock",
+    "lang": "待领取"
+  },
+  {
+    "id": "p_turnback3_returnrewardview_txt_desc",
+    "lang": "从各玩法获得代币，可领取纯雨滴等奖励"
+  },
+  {
+    "id": "p_v3a9_versionsummonheduoniehalfview_txt_name",
+    "lang": "赫多涅"
+  },
+  {
+    "id": "p_return4_signinview_txt2",
+    "lang": "心相可选"
+  },
+  {
+    "id": "p_v3a9_racing_recordview_txt_again",
+    "lang": "再来一次"
+  },
+  {
+    "id": "p_v3a9_racing_recordview_txt_exit",
+    "lang": "退出"
+  },
+  {
+    "id": "p_v3a9_racing_recordview_txt_reward",
+    "lang": "星级奖励"
+  },
+  {
+    "id": "p_v3a9_racing_rolelistview_txt_start",
+    "lang": "选手就位"
+  },
+  {
+    "id": "p_characterbackpackview_destinytype",
+    "lang": "狂想类型"
+  },
+  {
+    "id": "p_characterbackpackview_destinytag1",
+    "lang": "狂想"
+  },
+  {
+    "id": "p_characterbackpackview_destinytag2",
+    "lang": "流变狂想"
+  },
+  {
+    "id": "p_v3a9_linkgift_fullview_txt_tag",
+    "lang": "联动建筑"
+  },
+  {
+    "id": "p_v3a9_linkgift_fullview_txt_tips",
+    "lang": "组合售价"
+  },
+  {
+    "id": "p_v3a9_linkgift_fullview_txt_dec",
+    "lang": "咒语辉光、旅券集上新，登录即送联动建筑！"
+  },
+  {
+    "id": "p_v3a9_bird_announce_name",
+    "lang": "Headonion"
+  },
+  {
+    "id": "p_v3a9_bird_announce_desc",
+    "lang": "当日比赛已经结束，赛场面向公众持续开放，欢迎各位亲临赛道进行体验！记者ONiON持续为您报道现场情况！"
+  },
+  {
+    "id": "p_v3a9_clueview_txt_1",
+    "lang": "新闻评价"
+  },
+  {
+    "id": "p_v3a9_clueview_txt_2",
+    "lang": "线索库"
+  },
+  {
+    "id": "p_v3a9_clueview_txt_3",
+    "lang": "已解锁："
+  },
+  {
+    "id": "p_v3a9_resultview_txt_1",
+    "lang": "确凿度："
+  },
+  {
+    "id": "p_v3a9_resultview_txt_2",
+    "lang": "惊爆度："
+  },
+  {
+    "id": "p_v3a9_resultview_txt_3",
+    "lang": "完成度："
+  },
+  {
+    "id": "p_v3a9_resultview_txt_4",
+    "lang": "总评分："
+  },
+  {
+    "id": "p_v3a9_resultview_txt_5",
+    "lang": "新闻评估结果"
+  },
+  {
+    "id": "p_v3a9_resultview_txt_6",
+    "lang": "#S级新闻提示#"
+  },
+  {
+    "id": "p_v3a9_rolestorygameview_txt_1",
+    "lang": "流行于世界"
+  },
+  {
+    "id": "p_v3a9_rolestorygameview_txt_2",
+    "lang": "线索解读"
+  },
+  {
+    "id": "p_v3a9_rolestoryinteractitem_txt_1",
+    "lang": "获取线索"
+  },
+  {
+    "id": "p_v3a9_rolestoryinteractitem_txt_2",
+    "lang": "已记录"
+  },
+  {
+    "id": "p_v3a9_rolestoryinteractitem_txt_3",
+    "lang": "记录"
+  },
+  {
+    "id": "p_v3a9_stone_pickchoiceview_txt_title_1",
+    "lang": "当前可升级的闪念"
+  },
+  {
+    "id": "p_v3a9_stone_pickchoiceview_txt_title_2",
+    "lang": "不可升级的闪念(角色等级未达洞悉三30级)"
+  },
+  {
+    "id": "p_v3a9_stone_pickchoiceview_txt_title_3",
+    "lang": "未拥有角色的闪念"
+  },
+  {
+    "id": "p_v3a9_stone_pickchoiceview_txt_title_4",
+    "lang": "已唤起并升至MAX的闪念"
+  },
+  {
+    "id": "p_v3a9_rolestoryinteractitem_txt_4",
+    "lang": "点击打开"
+  },
+  {
+    "id": "p_characterbackpacksearchfilterview_destinytitle",
+    "lang": "狂想类型"
+  },
+  {
+    "id": "p_characterbackpacksearchfilterview_destinytitleEn",
+    "lang": "Euphoria"
+  },
+  {
+    "id": "p_characterbackpacksearchfilterview_destinyinfo1",
+    "lang": "狂想"
+  },
+  {
+    "id": "p_characterbackpacksearchfilterview_destinyinfo2",
+    "lang": "流变狂想"
+  },
+  {
+    "id": "p_cloudredemption_detailsview_txt1",
+    "lang": "开始沉睡"
+  },
+  {
+    "id": "p_cloudredemption_detailsview_txt2",
+    "lang": "重新沉睡"
+  },
+  {
+    "id": "p_cloudredemption_detailsview_txt_reset",
+    "lang": "重置队伍"
+  },
+  {
+    "id": "p_return4_signinview_txt1",
+    "lang": "3天可得\n心相自选"
+  },
+  {
+    "id": "p_return4_signinview_txt3",
+    "lang": "7天可得\n糖罐组合"
+  },
+  {
+    "id": "handbookskin_festival_harvest",
+    "lang": "丰收节"
+  },
+  {
+    "id": "p_dungeonelementrecheckview_txt_recheck",
+    "lang": "回望小径"
+  },
+  {
+    "id": "p_dungeonelementrecheckview_txt_recheckEn",
+    "lang": "Paper Trail"
+  },
+  {
+    "id": "p_v3a9_naxisuosigameview_txt_Tips",
+    "lang": "躲开警察，并带上市民走到终点"
+  },
+  {
+    "id": "p_v3a9_flappybirdgameview_txt_1",
+    "lang": "总分"
+  },
+  {
+    "id": "p_v3a9_flappybirdgameview_txt_2",
+    "lang": "越障"
+  },
+  {
+    "id": "p_v3a9_flappybirdmainview_txt_go",
+    "lang": "前往参赛"
+  },
+  {
+    "id": "p_v3a9_flappybirdmainview_txt_scoremax",
+    "lang": "最佳赛绩"
+  },
+  {
+    "id": "p_v3a9_flappybirdmainview_txt_modulemax",
+    "lang": "最高越障"
+  },
+  {
+    "id": "p_v3a9_activityinsightshowview_txt_desc",
+    "lang": "完成相应任务，即可获得\n<color=#D86A36>五星角色洞悉直升</color>及<color=#D86A36>【第一滴雨】十次征集道具奖励</color>"
+  },
+  {
+    "id": "p_v3a9_activityinsightshowview_txt_tips1",
+    "lang": "完成任务即得五星角色洞悉直升+征集道具！"
+  },
+  {
+    "id": "p_return4_rewardview_txt_allcliam",
+    "lang": "所有奖励已被领取"
+  },
+  {
+    "id": "p_v3a9_bduck_linage_tag_txt1",
+    "lang": "联动建筑"
+  },
+  {
+    "id": "p_v3a9_bduck_linage_package_txt1",
+    "lang": "组合售价"
+  },
+  {
+    "id": "p_v3a9_resultview_txt_s",
+    "lang": "爆炸性新闻"
+  },
+  {
+    "id": "p_v3a9_resultview_txt_a",
+    "lang": "今日要闻"
+  },
+  {
+    "id": "p_v3a9_resultview_txt_b",
+    "lang": "奇闻快讯"
+  },
+  {
+    "id": "p_return4_doubleview_txt_desc",
+    "lang": "箱中归客活动期间，铸币美学、尘埃运动及洞悉之门副本可享受固定次数的双倍掉落机会。"
+  },
+  {
+    "id": "p_v3a9_stone_pickchoiceview_txt_title_5",
+    "lang": "角色等级达到洞悉三30级解锁狂想与解构"
+  },
+  {
+    "id": "p_v3a9_stone_pickchoiceview_txt_title_6",
+    "lang": "尚未拥有角色"
+  },
+  {
+    "id": "p_v3a9_bossrush_scoreview_txt_title",
+    "lang": "历史最高分"
+  },
+  {
+    "id": "p_v3a9_bossrush_enterview_txt_Go",
+    "lang": "开始讨伐"
+  },
+  {
+    "id": "p_v3a9_versionsummonnaxisuosihalfview_txt_name",
+    "lang": "纳西索斯"
+  },
+  {
+    "id": "p_return4_doubleview_txt_double",
+    "lang": "双倍掉落"
+  },
+  {
+    "id": "p_v3a9_bossrushmainview_txt_TotalScore",
+    "lang": "当前总分"
+  },
+  {
+    "id": "p_v3a9_bossrushmainview_txt_PastScore",
+    "lang": "历史最高总分"
+  },
+  {
+    "id": "p_v3a9_bossrushmainview_txt_Tab1_1",
+    "lang": "联合报道"
+  },
+  {
+    "id": "p_v3a9_bossrushmainview_txt_Tab1_2",
+    "lang": "常规报道"
+  },
+  {
+    "id": "p_v3a9_bossrushleveldetail_txt_Score",
+    "lang": "当前积分"
+  },
+  {
+    "id": "p_return4_rewardview_txt",
+    "lang": "找回"
+  },
+  {
+    "id": "p_v3a9_stone_pickchoiceview_txt_title_7",
+    "lang": "闪念已升至MAX"
+  },
+  {
+    "id": "p_v3a9_hedonegameview_txt_damages",
+    "lang": "已造成伤害"
+  },
+  {
+    "id": "p_v3a9_hedonegameview_txt_time",
+    "lang": "计时"
+  },
+  {
+    "id": "p_v3a9_hedonegameview_txt_kill",
+    "lang": "已消灭："
+  },
+  {
+    "id": "p_v3a9_gamebottomview_txt",
+    "lang": "局外养成"
+  },
+  {
+    "id": "p_v3a9_racingrecordview_txt_title",
+    "lang": "教练"
+  },
+  {
+    "id": "p_v3a9_gamechangeview_txt",
+    "lang": "信号调整中..."
+  },
+  {
+    "id": "p_v3a9_bossrushherogroup_text",
+    "lang": "当前记录"
+  },
+  {
+    "id": "p_v3a9_bossrushherogroup_TeamLvl",
+    "lang": "调查角色"
+  },
+  {
+    "id": "p_v3a9_bossrushherogroup_txt_TeamLvlS",
+    "lang": "协同角色（仅限出战1次）"
+  },
+  {
+    "id": "p_v3a9_bossrushherogroup_txt_empty",
+    "lang": "暂无合作技能"
+  },
+  {
+    "id": "p_v3a9_racingmainview_txt_tag",
+    "lang": "固定"
+  },
+  {
+    "id": "p_v3a9_racingresultview_txt_task",
+    "lang": "星级目标"
+  },
+  {
+    "id": "p_v3a9_hedonegameview_txt_title",
+    "lang": "选择一项祝福"
+  },
+  {
+    "id": "p_v3a9_dungeonmapview_txt",
+    "lang": "扑通障碍赛"
+  },
+  {
+    "id": "p_v3a9_dungeonmapview_txt_1",
+    "lang": "湍流竞速场"
+  },
+  {
+    "id": "p_return4_rewardview_txt_hasget",
+    "lang": "已找回"
+  },
+  {
+    "id": "p_return4_rewardview_txt_lock",
+    "lang": "待找回"
+  },
+  {
+    "id": "p_v3a9_warmup_txt_Reward",
+    "lang": "漫游后领取"
+  },
+  {
+    "id": "p_v3a9_warmup_txt_WrongChannel",
+    "lang": "在镇中漫游后可查看"
+  },
+  {
+    "id": "p_v3a9_warmup_txt_tips",
+    "lang": "点击即可在镇中漫游"
+  },
+  {
+    "id": "p_return4_rewardview_txt_canget",
+    "lang": "找回奖励"
+  },
+  {
+    "id": "p_cloudredemption_detailsview_txt_readpreset",
+    "lang": "读取预设"
+  },
+  {
+    "id": "p_v3a9_bossrushherogroup_epandbond_tip",
+    "lang": ""
+  },
+  {
+    "id": "p_v3a9_bossrush_help_1_txt_1",
+    "lang": "本期鬓毛邮报联合报道将<#ff906a>汇总3位怪相的积分</color>作为当前总分"
+  },
+  {
+    "id": "p_v3a9_bossrush_help_1_txt_2",
+    "lang": "当获得更高的当前总分时将更新历史最高值"
+  },
+  {
+    "id": "p_v3a9_bossrush_help_2_txt_1",
+    "lang": "本次活动可使用<#ff906a>8位不重复的角色</color>；调查角色可携带<#ff906a>心相</color>进行调查；协同角色则与调查角色一同构成队伍的<#ff906a>合作技能加成</color>"
+  },
+  {
+    "id": "p_v3a9_bossrush_help_2_txt_2",
+    "lang": "协同角色在完成与任意怪相调查后将进入<#ff906a>锁定</color>，可<#ff906a>重置进行解锁</color>,但会<#ff906a>降低记录为0</color>"
+  },
+  {
+    "id": "p_v3a9_bossrush_help_3_txt_1",
+    "lang": "点击合作技能，即可查看具体的合作技能效果和对应提供合作技能的角色"
+  },
+  {
+    "id": "p_v3a9_bossrush_help_3_txt_2",
+    "lang": "本次活动将开放<#ff906a>协助功能</color>，可借用好友的<#ff906a>1</color>名角色进行调查或协同"
+  },
+  {
+    "id": "p_v3a9_racing_mainview_txt_talent_1",
+    "lang": "技巧"
+  },
+  {
+    "id": "p_v3a9_racing_mainview_txt_talent_2",
+    "lang": "参赛选手"
+  },
+  {
+    "id": "p_v3a9_racing_talentpanel_txt_lock",
+    "lang": "激活前置节点后解锁"
+  },
+  {
+    "id": "p_v3a9_racing_rolelistitem_txt_powerspeed_name",
+    "lang": "特技充能速度"
+  },
+  {
+    "id": "p_v3a9_bduck_buy_tips",
+    "lang": "购买"
   }
 ]

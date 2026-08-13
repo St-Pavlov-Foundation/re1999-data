@@ -75,7 +75,7 @@ function ToastItem:appearAnimation()
 	self.startTweenId = csTweenHelper.DOAnchorPosX(self.tr, 0, self._duration, function()
 		self.startTweenId = nil
 
-		local showTime = ToastController:getShowTime(self._toastId) - self._animDuration
+		local showTime = ToastController.instance:getShowTime(self._toastId) - self._animDuration
 
 		TaskDispatcher.runDelay(self._delay, self, showTime)
 	end)

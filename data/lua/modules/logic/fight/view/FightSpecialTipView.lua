@@ -227,6 +227,28 @@ function FightSpecialTipView:onOpen()
 		end
 	end
 
+	local data229 = FightDataHelper.fieldMgr.customData[FightCustomData.CustomDataType.Act229]
+
+	if data229 then
+		local selectSkillIds = data229.selectSkillIds
+
+		if selectSkillIds and #selectSkillIds > 0 then
+			gohelper.setActive(self._go_weekwalkheart, true)
+
+			for i, v in ipairs(selectSkillIds) do
+				local config = lua_activity229_skill.configDict[v]
+
+				if config then
+					self._weekwalkTagText.alignment = TMPro.TextAlignmentOptions.Center
+					self._weekwalkTagText.text = SkillHelper.buildDesc(config.desc, nil, "#5283ca")
+
+					SkillHelper.addHyperLinkClick(self._weekwalkTagText)
+					UISpriteSetMgr.instance:setAbyssSprite(self._weekwalkTagIcon, "jdsh_" .. config.icon, true)
+				end
+			end
+		end
+	end
+
 	if episodeType == DungeonEnum.EpisodeType.Survival then
 		data_list = SurvivalShelterModel.instance:addExRule(data_list)
 	end

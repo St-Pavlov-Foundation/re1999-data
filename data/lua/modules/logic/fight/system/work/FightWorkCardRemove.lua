@@ -3,8 +3,10 @@
 module("modules.logic.fight.system.work.FightWorkCardRemove", package.seeall)
 
 local FightWorkCardRemove = class("FightWorkCardRemove", FightEffectBase)
-local SKILLID = {
-	DEVICE_REMOVE_CARD = 30010701
+local RemoveType = {
+	Default = 0,
+	DeviceRemove = 1,
+	HeDuoNie = 2
 }
 
 function FightWorkCardRemove:onConstructor()
@@ -28,7 +30,7 @@ function FightWorkCardRemove:onStart()
 
 	FightController.instance:dispatchEvent(FightEvent.SetHandCardVisible, true)
 
-	local skillId = self.actEffectData.effectNum
+	local removeType = self.actEffectData.effectNum
 	local removeIndexes = string.splitToNumber(self.actEffectData.reserveStr, "#")
 
 	if #removeIndexes > 0 then
@@ -43,9 +45,12 @@ function FightWorkCardRemove:onStart()
 		local version = FightModel.instance:getVersion()
 
 		if version >= 4 then
-			if skillId == SKILLID.DEVICE_REMOVE_CARD then
+			if removeType == RemoveType.DeviceRemove then
 				FightController.instance:registerCallback(FightEvent.OnDevice_RemoveHandCardDone, self._delayAfterPerformance, self)
 				FightController.instance:dispatchEvent(FightEvent.OnDevice_RemoveHandCard, removeIndexes)
+			elseif removeType == RemoveType.HeDuoNie then
+				FightController.instance:registerCallback(FightEvent.OnHeDuoNieRemoveCardDone, self._delayAfterPerformance, self)
+				FightController.instance:dispatchEvent(FightEvent.OnHeDuoNieRemoveCard, removeIndexes)
 			else
 				local delayTime = FightCardDataHelper.calcRemoveCardTime(cards, removeIndexes)
 
@@ -115,6 +120,7 @@ end
 function FightWorkCardRemove:clearWork()
 	FightController.instance:unregisterCallback(FightEvent.OnCombineCardEnd, self._onCombineDone, self)
 	FightController.instance:unregisterCallback(FightEvent.OnDevice_RemoveHandCardDone, self._delayAfterPerformance, self)
+	FightController.instance:unregisterCallback(FightEvent.OnHeDuoNieRemoveCardDone, self._delayAfterPerformance, self)
 
 	if self._revertVisible then
 		FightController.instance:dispatchEvent(FightEvent.SetHandCardVisible, true, true)

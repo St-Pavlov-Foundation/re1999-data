@@ -37,7 +37,7 @@ function VersionActivityFixedDungeonMapViewContainer:getDungeonMapElementReward(
 end
 
 function VersionActivityFixedDungeonMapViewContainer:buildTabViews(tabContainerId)
-	self.navigateView = NavigateButtonsView.New({
+	self.navigateView = DungeonNavigateButtonsView.New({
 		true,
 		true,
 		false
@@ -45,6 +45,7 @@ function VersionActivityFixedDungeonMapViewContainer:buildTabViews(tabContainerI
 
 	self.navigateView:setOverrideClose(self.onClickClose, self)
 	self.navigateView:setOverrideHome(self.onClickHome, self)
+	self.navigateView:setOpenCallback(self.initChapterRecheck, self)
 
 	return {
 		self.navigateView
@@ -124,6 +125,27 @@ end
 
 function VersionActivityFixedDungeonMapViewContainer:getMapScene()
 	return self.mapScene
+end
+
+function VersionActivityFixedDungeonMapViewContainer:initChapterRecheck()
+	local chapterId = self:_getChapterId()
+
+	if self.navigateView then
+		self.navigateView:initChapterRecheck(chapterId)
+	end
+end
+
+function VersionActivityFixedDungeonMapViewContainer:_getChapterId()
+	self._bigVersion, self._smallVersion = VersionActivityFixedDungeonController.instance:getEnterVerison()
+
+	local dungeonEnum = VersionActivityFixedHelper.getVersionActivityDungeonEnum(self._bigVersion, self._smallVersion)
+	local chapterId = self.viewParam and self.viewParam.chapterId or dungeonEnum.DungeonChapterId.Story
+
+	return chapterId
+end
+
+function VersionActivityFixedDungeonMapViewContainer:getInteractiveItem()
+	return self.interactView
 end
 
 return VersionActivityFixedDungeonMapViewContainer

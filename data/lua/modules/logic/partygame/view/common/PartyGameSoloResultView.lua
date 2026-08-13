@@ -38,7 +38,7 @@ function PartyGameSoloResultView:_btncloseOnClick()
 
 	local partyGame = PartyGameController.instance:getCurPartyGame()
 
-	if partyGame ~= nil and partyGame:getIsLocal() then
+	if partyGame ~= nil and partyGame:getIsLocal() and not partyGame:getIsTrial() then
 		PartyGameController.instance:exitGame()
 	end
 

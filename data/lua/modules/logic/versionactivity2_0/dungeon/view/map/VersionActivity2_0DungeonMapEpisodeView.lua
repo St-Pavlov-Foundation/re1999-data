@@ -44,6 +44,7 @@ function VersionActivity2_0DungeonMapEpisodeView:addEvents()
 	self:addEventCb(Activity161Controller.instance, Activity161Event.CloseGraffitiEnterView, self.showUI, self)
 	self:addEventCb(DungeonController.instance, DungeonEvent.OnUpdateDungeonInfo, self._onUpdateDungeonInfo, self)
 	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self._onCloseViewFinish, self)
+	self:addEventCb(DungeonController.instance, DungeonMapElementEvent.OnRecheckInteractive, self._onRecheckInteractive, self)
 	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, self.dailyRefresh, self)
 	self._btnstorymode:AddClickListener(self.btnStoryModeClick, self)
 	self._btnhardmode:AddClickListener(self.btnHardModeClick, self)
@@ -59,6 +60,7 @@ function VersionActivity2_0DungeonMapEpisodeView:removeEvents()
 	self:removeEventCb(Activity161Controller.instance, Activity161Event.CloseGraffitiEnterView, self.showUI, self)
 	self:removeEventCb(DungeonController.instance, DungeonEvent.OnUpdateDungeonInfo, self._onUpdateDungeonInfo, self)
 	self:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self._onCloseViewFinish, self)
+	self:removeEventCb(DungeonController.instance, DungeonMapElementEvent.OnRecheckInteractive, self._onRecheckInteractive, self)
 	TimeDispatcher.instance:unregisterCallback(TimeDispatcher.OnDailyRefresh, self.dailyRefresh, self)
 	self._btnstorymode:RemoveClickListener()
 	self._btnhardmode:RemoveClickListener()
@@ -198,6 +200,14 @@ end
 
 function VersionActivity2_0DungeonMapEpisodeView:hideUI()
 	self:setLayoutVisible(false)
+end
+
+function VersionActivity2_0DungeonMapEpisodeView:_onRecheckInteractive(isShow)
+	if isShow and not VersionActivity2_0DungeonModel.instance:getOpenGraffitiEntranceState() then
+		self:showUI()
+	else
+		self:hideUI()
+	end
 end
 
 function VersionActivity2_0DungeonMapEpisodeView:setLayoutVisible(isShow)

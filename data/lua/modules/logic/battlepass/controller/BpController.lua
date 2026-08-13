@@ -82,7 +82,14 @@ function BpController:_openBpView()
 end
 
 function BpController:getBpChargeView()
-	return ViewName.BpChargeABTestView
+	local userId = PlayerModel.instance:getMyUserId()
+	local last = tonumber(userId) % 10
+
+	if last == 1 or last == 2 then
+		return ViewName.BpChargeView
+	else
+		return ViewName.BpChargeABTestView
+	end
 end
 
 function BpController:onViewOpen(viewName)
@@ -235,6 +242,17 @@ function BpController:showSpecialBonusMaterialInfo()
 		sceneType = GameSceneMgr.instance:getCurSceneType(),
 		openedViewNameList = JumpController.instance:getCurrentOpenedView()
 	})
+end
+
+function BpController:statItemClick(itemType, itemId, viewName)
+	local config = ItemModel.instance:getItemConfig(itemType, itemId)
+
+	if config and config.subType == ItemEnum.SubType.Portrait then
+		StatController.instance:track(StatEnum.EventName.ButtonClick, {
+			[StatEnum.EventProperties.ViewName] = viewName or "BPChargeView",
+			[StatEnum.EventProperties.ButtonName] = "avatar"
+		})
+	end
 end
 
 BpController.instance = BpController.New()

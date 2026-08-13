@@ -17,6 +17,7 @@ function FightWorkTimelinePreLoadItem:onStart()
 	self.timelineUrl = ResUrl.getSkillTimeline(self.timelineName)
 
 	self:com_loadAsset(path, self.onTimelineLoaded)
+	self:cancelFightWorkSafeTimer()
 end
 
 function FightWorkTimelinePreLoadItem:onTimelineLoaded(success, assetItem)
@@ -26,17 +27,9 @@ function FightWorkTimelinePreLoadItem:onTimelineLoaded(success, assetItem)
 		return
 	end
 
-	local jsonStr = ZProj.SkillTimelineAssetHelper.GeAssetJson(assetItem, self.timelineUrl)
-
-	if string.nilorempty(jsonStr) then
-		self:onDone(true)
-
-		return
-	end
-
 	local loaderMgr = FightGameMgr.timelinePreLoaderMgr
 	local flow = self:com_registFlowParallel()
-	local jsonArr = cjson.decode(jsonStr)
+	local jsonArr = FightTLHelper.getTLJsonData(assetItem, self.timelineUrl)
 
 	for i = 1, #jsonArr, 2 do
 		local tlType = tonumber(jsonArr[i])

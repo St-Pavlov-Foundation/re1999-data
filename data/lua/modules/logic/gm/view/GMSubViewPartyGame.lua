@@ -83,6 +83,8 @@ function GMSubViewPartyGame:initViewContent()
 	self.debugToggle4.isOn = PartyGameEnum.PartyGameConfigData.CloseClientRandom
 	self.debugToggleAI = self:addToggle(self:getLineGroup(), "是否托管", self.onDebugStateChangeAI, self)
 	self.debugToggleAI.isOn = PartyGame_GM.GetIsUseAI()
+	self.debugToggleLm = self:addToggle(self:getLineGroup(), "使用Lightmap", self.onDebugStateChangeLm, self)
+	self.debugToggleLm.isOn = PartyGameModel.instance:isUseLmScene()
 
 	self:addTitleSplitLine("PartyGame游戏【联机版】")
 	self:addLineIndex()
@@ -195,6 +197,7 @@ function GMSubViewPartyGame:initViewContent()
 	self._resVersion = self:addInputText(self:getLineGroup(), PartyGameRoomModel._fakeResVersion or self:_getResVersion(), "指定版本号")
 
 	self:addButton(self:getLineGroup(), "使用版本号", self._useVersion, self)
+	self:addButton(self:getLineGroup(), "进入试玩界面", self._enterTrial, self)
 end
 
 function GMSubViewPartyGame:cardDropWin()
@@ -319,6 +322,9 @@ function GMSubViewPartyGame:matchPartyGame()
 end
 
 function GMSubViewPartyGame:enterLocalGame()
+	PartyGameRpc.instance:setUpKcpRpcCallBack()
+	PartyGameController.instance:setUpLuaCallBack()
+
 	local id = gameIds[self._gameDrop1:GetValue() + 1]
 
 	PartyGameController.instance:enterGame(id, true)
@@ -330,6 +336,10 @@ end
 
 function GMSubViewPartyGame:onDebugStateChangeAI()
 	PartyGame_GM.SetIsUseAI(self.debugToggleAI.isOn)
+end
+
+function GMSubViewPartyGame:onDebugStateChangeLm()
+	PartyGameModel.instance:setUseLmScene(self.debugToggleLm.isOn)
 end
 
 function GMSubViewPartyGame:_onDropValueChange2()
@@ -438,6 +448,10 @@ function GMSubViewPartyGame:onDebugStateChange7()
 	self.debugToggle6.isOn = self.debugToggle7.isOn
 	self.debugToggle5.isOn = self.debugToggle7.isOn
 	self.debugToggle.isOn = self.debugToggle7.isOn
+end
+
+function GMSubViewPartyGame:_enterTrial()
+	ViewMgr.instance:openView(ViewName.PartyGameLobbyTrialView)
 end
 
 function GMSubViewPartyGame:onDebugStateChangeStall()

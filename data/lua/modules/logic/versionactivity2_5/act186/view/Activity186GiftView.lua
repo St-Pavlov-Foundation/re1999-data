@@ -34,6 +34,8 @@ function Activity186GiftView:onClickModalMask()
 end
 
 function Activity186GiftView:onOpen()
+	self.actId = self.viewParam and self.viewParam.actId
+
 	AudioMgr.instance:trigger(AudioEnum.NewYearEve.play_ui_shuori_evegift_popup)
 	self:_refreshUI()
 end
@@ -43,7 +45,7 @@ function Activity186GiftView:_refreshUI()
 end
 
 function Activity186GiftView:onClose()
-	local str = Activity186Config.instance:getConstStr(Activity186Enum.ConstId.AvgReward)
+	local str = Activity186Config.instance:getConstStr(self.actId, Activity186Enum.ConstId.AvgReward)
 	local bonus = GameUtil.splitString2(str, true)
 	local list = {}
 

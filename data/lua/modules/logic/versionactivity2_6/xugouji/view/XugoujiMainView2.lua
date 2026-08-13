@@ -2,7 +2,7 @@
 
 module("modules.logic.versionactivity2_6.xugouji.view.XugoujiMainView2", package.seeall)
 
-local XugoujiMainView = class("XugoujiMainView", BaseView)
+local XugoujiMainView2 = class("XugoujiMainView2", BaseView)
 local actId = VersionActivity2_6Enum.ActivityId.Xugouji
 local pathStageValues = {
 	0.86,
@@ -19,7 +19,7 @@ local stage2ContentRectOffset = -480
 local stage2Idx = 5
 local showEndlessCount = 8
 
-function XugoujiMainView:onInitView()
+function XugoujiMainView2:onInitView()
 	self._btntask = gohelper.findChildButtonWithAudio(self.viewGO, "window/righttop/reward/clickArea", AudioEnum.UI.play_ui_mission_open)
 	self._btnEndless = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_Endless")
 	self._btnReplay = gohelper.findChildButton(self.viewGO, "window/title/#btn_Play")
@@ -37,7 +37,7 @@ function XugoujiMainView:onInitView()
 	self._goEndlessRedDot = gohelper.findChild(self.viewGO, "#btn_Endless/#go_reddot")
 end
 
-function XugoujiMainView:addEvents()
+function XugoujiMainView2:addEvents()
 	self._btntask:AddClickListener(self._btntaskOnClick, self)
 	self._btnEndless:AddClickListener(self._btnEndlessOnClick, self)
 	self._btnReplay:AddClickListener(self._btnReplayOnClick, self)
@@ -48,23 +48,23 @@ function XugoujiMainView:addEvents()
 	RedDotController.instance:addRedDot(self._gored, RedDotEnum.DotNode.LoperaTaksReword)
 end
 
-function XugoujiMainView:removeEvents()
+function XugoujiMainView2:removeEvents()
 	self._btntask:RemoveClickListener()
 	self._btnEndless:RemoveClickListener()
 	self._btnReplay:RemoveClickListener()
 	RedDotController.instance:unregisterCallback(RedDotEvent.UpdateRelateDotInfo, self._refreshTask, self)
 end
 
-function XugoujiMainView:_btntaskOnClick()
+function XugoujiMainView2:_btntaskOnClick()
 	LoperaController.instance:openTaskView()
 end
 
-function XugoujiMainView:_btnEndlessOnClick()
+function XugoujiMainView2:_btnEndlessOnClick()
 	LoperaController.instance:enterEpisode(LoperaEnum.EndlessEpisodeId)
 	GameUtil.playerPrefsSetNumberByUserId(PlayerPrefsKey.Version2_2LoperaEndlessNewFlag .. actId, 1)
 end
 
-function XugoujiMainView:_btnReplayOnClick()
+function XugoujiMainView2:_btnReplayOnClick()
 	local activityMo = ActivityModel.instance:getActMO(actId)
 	local storyId = activityMo and activityMo.config and activityMo.config.storyId
 
@@ -77,7 +77,7 @@ function XugoujiMainView:_btnReplayOnClick()
 	StoryController.instance:playStory(storyId)
 end
 
-function XugoujiMainView:_editableInitView()
+function XugoujiMainView2:_editableInitView()
 	self._viewAnimator = self.viewGO:GetComponent(typeof(UnityEngine.Animator))
 
 	local gopath2 = gohelper.findChild(self.viewGO, "#go_path/#go_scrollcontent/path/path_2")
@@ -87,7 +87,7 @@ function XugoujiMainView:_editableInitView()
 	self._blackAnimator = self._goblack:GetComponent(typeof(UnityEngine.Animator))
 end
 
-function XugoujiMainView:onOpen()
+function XugoujiMainView2:onOpen()
 	self:_initStages()
 	self:_refreshBtnState()
 	self:refreshTime()
@@ -97,17 +97,17 @@ function XugoujiMainView:onOpen()
 	self._viewAnimator:Play(UIAnimationName.Open, 0, 0)
 end
 
-function XugoujiMainView:_onGetEpisodeInfo(cmd, resultCode, msg)
+function XugoujiMainView2:_onGetEpisodeInfo(cmd, resultCode, msg)
 	if resultCode == 0 then
 		ViewMgr.instance:openView(ViewName.LoperaLevelView)
 	end
 end
 
-function XugoujiMainView:onClose()
+function XugoujiMainView2:onClose()
 	return
 end
 
-function XugoujiMainView:_initStages()
+function XugoujiMainView2:_initStages()
 	if self._stageItemList then
 		return
 	end
@@ -147,11 +147,11 @@ function XugoujiMainView:_initStages()
 	self:_setContentOffset(selectIndex)
 end
 
-function XugoujiMainView:_setContentOffset(selectIndex)
+function XugoujiMainView2:_setContentOffset(selectIndex)
 	recthelper.setAnchor(self._goContent.transform, selectIndex < stage2Idx and stage1ContentRectOffset or stage2ContentRectOffset, 0)
 end
 
-function XugoujiMainView:_refreshBtnState()
+function XugoujiMainView2:_refreshBtnState()
 	local finishedCount = Activity168Model.instance:getFinishedCount()
 
 	gohelper.setActive(self._goEndlessRedDot, self._checkEnterEndlessMode())
@@ -162,7 +162,7 @@ function XugoujiMainView:_refreshBtnState()
 	end
 end
 
-function XugoujiMainView:_refreshPathState()
+function XugoujiMainView2:_refreshPathState()
 	local finishedCount = Activity168Model.instance:getFinishedCount()
 
 	self._pathEffectValue = finishedCount > 0 and pathStageValues[finishedCount] or 1
@@ -170,7 +170,7 @@ function XugoujiMainView:_refreshPathState()
 	self:_setPathMatEffectValue(self._pathEffectValue)
 end
 
-function XugoujiMainView:_setPathMatEffectValue(value)
+function XugoujiMainView2:_setPathMatEffectValue(value)
 	if not self._pathMat then
 		local pathGo = gohelper.findChild(self.viewGO, "#go_path/#go_scrollcontent/Content/path/luxian_light")
 		local UIMesh = pathGo:GetComponent(typeof(UIMesh))
@@ -183,11 +183,11 @@ function XugoujiMainView:_setPathMatEffectValue(value)
 	self._pathMat:SetVector("_DissolveControl", vector)
 end
 
-function XugoujiMainView:_onEpisodeFinish(resultData)
+function XugoujiMainView2:_onEpisodeFinish(resultData)
 	self:_refreshTask()
 end
 
-function XugoujiMainView:tryShowFinishUnlockView()
+function XugoujiMainView2:tryShowFinishUnlockView()
 	local finishCount = Activity168Model.instance:getFinishedCount()
 
 	if finishCount < self._curOpenEpisodeCount then
@@ -214,7 +214,7 @@ function XugoujiMainView:tryShowFinishUnlockView()
 	self.unlockAniflow:start()
 end
 
-function XugoujiMainView:_playFinishAni()
+function XugoujiMainView2:_playFinishAni()
 	local finishCount = Activity168Model.instance:getFinishedCount()
 
 	if self._stageItemList[finishCount] then
@@ -224,7 +224,7 @@ function XugoujiMainView:_playFinishAni()
 	AudioMgr.instance:trigger(AudioEnum.VersionActivity2_2Lopera.play_ui_molu_jlbn_level_pass)
 end
 
-function XugoujiMainView:_playNewPathAni()
+function XugoujiMainView2:_playNewPathAni()
 	local finishCount = Activity168Model.instance:getFinishedCount()
 	local targetPathEffectValue = finishCount > 0 and pathStageValues[finishCount] or 1
 
@@ -242,11 +242,11 @@ function XugoujiMainView:_playNewPathAni()
 	self._pathAnimTweenId = ZProj.TweenHelper.DOTweenFloat(oriValue, targetPathEffectValue, duration, self._onPathFrame, nil, self, nil, EaseType.Linear)
 end
 
-function XugoujiMainView:_onPathFrame(t)
+function XugoujiMainView2:_onPathFrame(t)
 	self:_setPathMatEffectValue(t)
 end
 
-function XugoujiMainView:_playUnlockAni()
+function XugoujiMainView2:_playUnlockAni()
 	local finishCount = Activity168Model.instance:getFinishedCount()
 
 	if self._stageItemList[finishCount + 1] then
@@ -255,23 +255,23 @@ function XugoujiMainView:_playUnlockAni()
 	end
 end
 
-function XugoujiMainView:_playChessMoveAni()
+function XugoujiMainView2:_playChessMoveAni()
 	return
 end
 
-function XugoujiMainView:_beforeEneterEpisode()
+function XugoujiMainView2:_beforeEneterEpisode()
 	self._viewAnimator:Play(UIAnimationName.Click, 0, 0)
 end
 
-function XugoujiMainView:_onEpisodeUpdate()
+function XugoujiMainView2:_onEpisodeUpdate()
 	self:_refreshBtnState()
 end
 
-function XugoujiMainView:refreshTime()
+function XugoujiMainView2:refreshTime()
 	self._txtlimittime.text = self.getLimitTimeStr()
 end
 
-function XugoujiMainView.getLimitTimeStr()
+function XugoujiMainView2.getLimitTimeStr()
 	local actInfoMo = ActivityModel.instance:getActMO(VersionActivity2_2Enum.ActivityId.Lopera)
 
 	if not actInfoMo then
@@ -287,13 +287,13 @@ function XugoujiMainView.getLimitTimeStr()
 	return ""
 end
 
-function XugoujiMainView:_checkEnterEndlessMode()
+function XugoujiMainView2:_checkEnterEndlessMode()
 	local endlessNewFlag = GameUtil.playerPrefsGetNumberByUserId(PlayerPrefsKey.Version2_2LoperaEndlessNewFlag .. actId, 0)
 
 	return endlessNewFlag == 0
 end
 
-function XugoujiMainView:_refreshTask()
+function XugoujiMainView2:_refreshTask()
 	local hasRewards = RedDotModel.instance:isDotShow(RedDotEnum.DotNode.LoperaTaksReword, 0)
 
 	if hasRewards then
@@ -303,7 +303,7 @@ function XugoujiMainView:_refreshTask()
 	end
 end
 
-function XugoujiMainView:_destroyFlow()
+function XugoujiMainView2:_destroyFlow()
 	if self.unlockAniflow then
 		self.unlockAniflow:destroy()
 
@@ -311,9 +311,9 @@ function XugoujiMainView:_destroyFlow()
 	end
 end
 
-function XugoujiMainView:onDestroyView()
+function XugoujiMainView2:onDestroyView()
 	TaskDispatcher.cancelTask(self.refreshTime, self)
 	self:_destroyFlow()
 end
 
-return XugoujiMainView
+return XugoujiMainView2

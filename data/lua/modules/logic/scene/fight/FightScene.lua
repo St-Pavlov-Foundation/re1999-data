@@ -59,6 +59,7 @@ function FightScene:onClose()
 	FightCardDissolveEffect.clear()
 	ZProj.GameHelper.ClearFloorReflect()
 	FightStrUtil.instance:dispose()
+	FightTLHelper.clearCache()
 end
 
 return FightScene

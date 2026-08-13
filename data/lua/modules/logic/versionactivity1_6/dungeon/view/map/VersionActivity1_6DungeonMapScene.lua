@@ -44,6 +44,7 @@ function VersionActivity1_6DungeonMapScene:onOpen()
 	self:addEventCb(VersionActivityDungeonBaseController.instance, VersionActivityDungeonEvent.OnActivityDungeonMoChange, self.onActivityDungeonMoChange, self)
 	self:addEventCb(VersionActivity1_6DungeonController.instance, VersionActivity1_6DungeonEvent.OnClickElement, self.onClickElement, self)
 	self:addEventCb(VersionActivity1_6DungeonController.instance, VersionActivity1_6DungeonEvent.FocusElement, self.onFocusElement, self)
+	self:addEventCb(DungeonController.instance, DungeonMapElementEvent.OnRecheckElement, self._onRecheckElement, self)
 	MainCameraMgr.instance:addView(self.viewName, self._initCamera, nil, self)
 	self:refreshMap()
 end
@@ -512,6 +513,22 @@ function VersionActivity1_6DungeonMapScene:onFocusElement(elementId)
 
 		self:focusElementByCo(config)
 	end
+end
+
+function VersionActivity1_6DungeonMapScene:_onRecheckElement(elementId, isGM)
+	local elementCo = lua_chapter_map_element.configDict[elementId]
+	local chapterId = self.viewParam.chapterId or self.viewContainer:_getChapterId()
+
+	if not DungeonController.instance:isNeedRecheckInteractive(elementCo) then
+		DungeonController.instance:onRecheckElement(elementId, chapterId)
+
+		return
+	end
+
+	local item = self.viewContainer:getInteractiveItem()
+	local pos = self._sceneTrans.localPosition
+
+	DungeonController.instance:onRecheckElement(elementId, chapterId, item, pos, isGM)
 end
 
 function VersionActivity1_6DungeonMapScene:focusElementByCo(elementCo)

@@ -133,6 +133,13 @@ function StoryViewDefine.init(module_views)
 		viewType = ViewType.Normal,
 		anim = ViewAnim.Internal
 	}
+	module_views.V3A9StoryScoreCardView = {
+		destroy = 0,
+		container = "V3A9StoryScoreCardViewContainer",
+		mainRes = "ui/viewres/story/v3a9_avgscoreview.prefab",
+		layer = "POPUP",
+		viewType = ViewType.Normal
+	}
 end
 
 return StoryViewDefine

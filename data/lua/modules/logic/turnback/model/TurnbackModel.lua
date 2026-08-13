@@ -35,13 +35,14 @@ function TurnbackModel:reInit()
 	self.curTurnbackId = 0
 	self.lastGetSigninDay = nil
 	self._openpopview = false
+	self._dropInfoList = nil
 end
 
 function TurnbackModel:setTurnbackInfo(info)
 	local config = TurnbackConfig.instance:getTurnbackCo(info.id)
 
 	if config then
-		self.turnbackInfoMo = TurnbackInfoMo.New()
+		self.turnbackInfoMo = self.turnbackInfoMo or TurnbackInfoMo.New()
 
 		self.turnbackInfoMo:init(info)
 		self:setCurTurnbackId(info.id)
@@ -50,8 +51,12 @@ function TurnbackModel:setTurnbackInfo(info)
 		self:initRecommendData()
 		self:getBonusHeroConfigList()
 		self:_calcAllBonus()
-		self:setDropInfoList(info.dropInfos)
+		self:setDropInfoList(info.dropInfos, info.commonDropInfos)
 	end
+end
+
+function TurnbackModel:getTaskInfos()
+	return self.resourceReturn.resourceReturnTasks
 end
 
 function TurnbackModel:setCurTurnbackId(turnbackId)
@@ -72,6 +77,10 @@ end
 
 function TurnbackModel:getLeaveTime()
 	return self.turnbackInfoMo.leaveTime
+end
+
+function TurnbackModel:getLeaveDay()
+	return self.turnbackInfoMo:getLeaveDay()
 end
 
 function TurnbackModel:getCurTurnbackMoWithNilError()
@@ -622,36 +631,69 @@ function TurnbackModel:getUnlockHeroList()
 	return self.unlockHeroList
 end
 
-function TurnbackModel:setDropInfoList(dropInfoList)
-	self._dropInfoList = {}
+function TurnbackModel:setDropInfoList(dropInfoList, commonDropInfos)
+	if not self._dropInfoList then
+		self._dropInfoList = {}
+	end
 
 	local colist = TurnbackConfig.instance:getDropCoList()
+	local infoDict = {}
 
-	if dropInfoList then
-		for _, co in ipairs(colist) do
-			local mo = {}
+	self._totalCouponCount = 0
 
-			mo.co = co
-
-			if #dropInfoList > 0 then
-				for i, dropinfo in ipairs(dropInfoList) do
-					if co.id == dropinfo.type then
-						local progress = dropinfo.currentNum / dropinfo.totalNum
-
-						mo.progress = progress
-					end
-				end
-			else
-				mo.progress = 0
+	if dropInfoList and #dropInfoList > 0 then
+		for i, dropinfo in ipairs(dropInfoList) do
+			if not infoDict[dropinfo.type] then
+				infoDict[dropinfo.type] = {}
 			end
 
-			self._dropInfoList[co.id] = mo
+			local info = {
+				type = dropinfo.type,
+				materialType = MaterialEnum.MaterialType.Currency,
+				materialId = CurrencyEnum.CurrencyType.FreeDiamondCoupon,
+				totalNum = dropinfo.totalNum,
+				currentNum = dropinfo.currentNum
+			}
+
+			table.insert(infoDict[dropinfo.type], info)
+		end
+	end
+
+	if commonDropInfos and #commonDropInfos > 0 then
+		for i, dropinfo in ipairs(commonDropInfos) do
+			if not infoDict[dropinfo.type] then
+				infoDict[dropinfo.type] = {}
+			end
+
+			table.insert(infoDict[dropinfo.type], dropinfo)
+		end
+	end
+
+	if colist then
+		for _, co in ipairs(colist) do
+			local mo = self._dropInfoList[co.id]
+
+			if not mo then
+				mo = TurnbackDropInfoMo.New()
+
+				mo:init(co)
+
+				self._dropInfoList[co.id] = mo
+			end
+
+			mo:refreshInfo(infoDict[co.id])
+
+			self._totalCouponCount = self._totalCouponCount + mo:getCouponCount()
 		end
 	end
 end
 
 function TurnbackModel:getDropInfoByType(type)
 	return self._dropInfoList and self._dropInfoList[type]
+end
+
+function TurnbackModel:getDropInfos()
+	return self._dropInfoList
 end
 
 function TurnbackModel:getDropInfoList()
@@ -683,6 +725,10 @@ function TurnbackModel:getDropInfoList()
 	end
 
 	return level2list, level3list
+end
+
+function TurnbackModel:getTotalCouponCount()
+	return self._totalCouponCount
 end
 
 function TurnbackModel:getContentWidth()
@@ -791,6 +837,17 @@ end
 
 function TurnbackModel:getOpenPopTipView()
 	return self._openpopview
+end
+
+function TurnbackModel:getCurRewardCurrencyNum()
+	local currencyInfo = self.turnbackInfoMo:getCurRewardCurrencyInfo()
+	local quantity = currencyInfo and ItemModel.instance:getItemQuantity(currencyInfo[1], currencyInfo[2])
+
+	return quantity or 0
+end
+
+function TurnbackModel:onGetResourceReturnReward(hasGetReturnRewardIds)
+	self.turnbackInfoMo:onGetResourceReturnReward(hasGetReturnRewardIds)
 end
 
 TurnbackModel.instance = TurnbackModel.New()

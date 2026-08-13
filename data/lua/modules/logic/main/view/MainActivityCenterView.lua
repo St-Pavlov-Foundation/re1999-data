@@ -763,6 +763,7 @@ end
 function MainActivityCenterView:onClose()
 	self._scrollview:RemoveOnValueChanged()
 	self._btnarrow:RemoveClickListener()
+	TaskDispatcher.cancelTask(self._onWaitFefreshActBgWidth, self)
 end
 
 function MainActivityCenterView:onDestroyView()
@@ -815,21 +816,17 @@ end
 local kMaxActBgWidth = 840.4
 
 function MainActivityCenterView:_refreshActBgWidth()
-	local showLogo = ActivityModel.checkIsShowLogoVisible()
-	local num = 0
+	if not self.__hasWaitFefreshActBgWidth_ then
+		self.__hasWaitFefreshActBgWidth_ = true
 
-	if self._sortBtnList then
-		for _, v in pairs(self._sortBtnList) do
-			num = num + 1
-		end
+		TaskDispatcher.runDelay(self._onWaitFefreshActBgWidth, self, 0.03)
 	end
+end
 
-	if self._centerItems then
-		num = num + #self._centerItems
-	end
+function MainActivityCenterView:_onWaitFefreshActBgWidth()
+	self.__hasWaitFefreshActBgWidth_ = false
 
-	local spacing = self._horizontal.spacing
-	local spacingX = (num - 1) * spacing
+	local num = self:_getContentItemNum()
 	local width = num * self._itemSize + self._horizontalLeft
 	local offset = -math.min(0, self._goactbgOffsetX) * 2
 

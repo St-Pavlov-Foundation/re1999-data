@@ -149,8 +149,10 @@ ActivityEnum.Activity = {
 	V2a8_Calendar_Decoration = 12878,
 	SP02_Abyss = 138521,
 	V2a0_Role_SignView_Part1 = 12021,
+	V3a9_NewInsight = 13922,
 	V2a3_Special = 12321,
 	DoubleFestivalSign_1_3 = 11311,
+	V3a9_BDuckLinkage = 13930,
 	NoviceInsight = 10004,
 	V2a5_WarmUp = 12525,
 	V2a7_Labor_Sign = 12710,
@@ -252,41 +254,42 @@ ActivityEnum.ActivityStatus = {
 }
 ActivityEnum.PlaceholderActivityId = 0
 ActivityEnum.VersionActivityIdDict = {
-	Activity1_42 = 11420,
-	Activity1_3 = 11301,
-	Activity1_41 = 11401,
-	Activity3_8 = 13801,
-	Activity2_6 = 12601,
-	Activity1_52 = 11517,
-	Activity2_1 = 12101,
-	Activity_sp02 = 138501,
-	Activity3_0 = 13006,
-	Activity1_9 = 11901,
+	Activity3_7 = 13702,
 	Activity3_1 = 13102,
+	Activity3_0 = 13006,
+	Activity_Assassin_2 = 130506,
+	Activity1_41 = 11401,
+	Activity1_3 = 11301,
+	Activity3_6 = 13603,
+	Activity1_42 = 11420,
 	Activity1_2 = 11201,
-	Activity2_0 = 12002,
-	Activity3_3 = 13305,
+	Activity1_7 = 11701,
 	Activity2_5 = 12501,
-	Activity1_8 = 11803,
-	Activity3_4 = 13401,
-	Activity3_5 = 13501,
 	Activity1_6 = 11601,
 	Activity2_3 = 12301,
 	Activity2_4 = 12401,
-	Activity3_6 = 13603,
 	Activity_Assassin_1 = 130501,
 	Activity1_51 = 11501,
 	Activity1_1 = 11101,
 	Activity2_2 = 12201,
 	Activity2_7 = 12705,
-	Activity3_7 = 13702,
-	Activity1_7 = 11701,
+	Activity3_9 = 13901,
+	Activity2_6 = 12601,
+	Activity3_8 = 13801,
+	Activity1_52 = 11517,
+	Activity2_1 = 12101,
+	Activity_sp02 = 138501,
+	Activity1_9 = 11901,
+	Activity2_0 = 12002,
+	Activity1_8 = 11803,
+	Activity3_5 = 13501,
+	Activity3_3 = 13305,
+	Activity3_4 = 13401,
 	Activity2_8 = 12801,
-	Activity_Assassin_2 = 130506,
 	Activity3_2 = 13222
 }
 ActivityEnum.VersionActivityIdList = {
-	ActivityEnum.VersionActivityIdDict.Activity3_8,
+	ActivityEnum.VersionActivityIdDict.Activity3_9,
 	ActivityEnum.VersionActivityIdDict.Activity_sp02
 }
 ActivityEnum.MainIcon = {
@@ -321,6 +324,7 @@ ActivityEnum.MainIcon = {
 	[ActivityEnum.VersionActivityIdDict.Activity3_6] = "rk_3_6",
 	[ActivityEnum.VersionActivityIdDict.Activity3_7] = "rk_3_7",
 	[ActivityEnum.VersionActivityIdDict.Activity3_8] = "rk_3_8",
+	[ActivityEnum.VersionActivityIdDict.Activity3_9] = "rk_3_9",
 	[ActivityEnum.VersionActivityIdDict.Activity_sp02] = "rk_s02"
 }
 ActivityEnum.ShowVersionActivityEpisode = 10103
@@ -371,7 +375,9 @@ ActivityEnum.Act101RewardState = {
 }
 ActivityEnum.CheckFinishActDic = {
 	[ActivityEnum.Activity.V3a7_SkinGift] = true,
-	[ActivityEnum.Activity.SP02_LinkGift] = true
+	[ActivityEnum.Activity.SP02_LinkGift] = true,
+	[ActivityEnum.Activity.V2a9_Act208] = true,
+	[ActivityEnum.Activity.V3a9_BDuckLinkage] = true
 }
 
 return ActivityEnum

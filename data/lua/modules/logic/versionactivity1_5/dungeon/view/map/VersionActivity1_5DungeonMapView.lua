@@ -76,6 +76,7 @@ function VersionActivity1_5DungeonMapView:_editableInitView()
 	self:addEventCb(DungeonController.instance, DungeonEvent.OnUpdateDungeonInfo, self.refreshBtnVisible, self, LuaEventSystem.Low)
 	self:addEventCb(StoryController.instance, StoryEvent.FinishFromServer, self.refreshBtnVisible, self, LuaEventSystem.Low)
 	self:addEventCb(DialogueController.instance, DialogueEvent.OnDialogueInfoChange, self.onDialogueInfoChange, self)
+	self:addEventCb(DungeonController.instance, DungeonMapElementEvent.OnRecheckInteractive, self._onRecheckInteractive, self)
 	self:addEventCb(VersionActivity1_5DungeonController.instance, VersionActivity1_5DungeonEvent.SetRevivalTaskBtnActive, self.setRevivalTaskBtnActive, self)
 	self:addEventCb(VersionActivity1_5DungeonController.instance, VersionActivity1_5DungeonEvent.SetBuildingBtnActive, self.setBuildingBtnActive, self)
 	gohelper.setActive(self._btnactivitystore.gameObject, false)
@@ -100,6 +101,14 @@ function VersionActivity1_5DungeonMapView:onOpen()
 	NavigateMgr.instance:addEscape(self.viewName, self._onEscBtnClick, self)
 	self:refreshUI()
 	self:closeBgmLeadSinger()
+end
+
+function VersionActivity1_5DungeonMapView:_onRecheckInteractive(isShow)
+	if isShow then
+		self:showBtnUI()
+	else
+		self:hideBtnUI()
+	end
 end
 
 function VersionActivity1_5DungeonMapView:closeBgmLeadSinger()

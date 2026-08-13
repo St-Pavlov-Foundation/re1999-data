@@ -28,10 +28,27 @@ function HeroGroupEditListModel:copyCharacterCardList(init)
 
 	local selectIndex = 1
 	local index = 1
+	local _, assistMo = HeroGroupModel.instance:getAssistMo()
+	local editorAssistMo = HeroGroupModel.instance:getEditorAssistMo()
+	local _assistMo = editorAssistMo or assistMo and assistMo.assistMo
+
+	if _assistMo then
+		table.insert(newMOList, _assistMo.heroMO)
+
+		index = index + 1
+	end
+
+	if assistMo then
+		self._inTeamHeroUids[assistMo.heroUid] = 1
+		repeatHero[assistMo.heroUid] = true
+	end
+
 	local alreadyList = HeroSingleGroupModel.instance:getList()
 
 	for i, heroSingleGroupMO in ipairs(alreadyList) do
-		if heroSingleGroupMO.trial or not heroSingleGroupMO.aid and tonumber(heroSingleGroupMO.heroUid) > 0 and not repeatHero[heroSingleGroupMO.heroUid] then
+		local isAssistPos = assistMo and assistMo.id == i
+
+		if not isAssistPos and (heroSingleGroupMO.trial or not heroSingleGroupMO.aid and tonumber(heroSingleGroupMO.heroUid) > 0 and not repeatHero[heroSingleGroupMO.heroUid]) then
 			if heroSingleGroupMO.trial then
 				table.insert(newMOList, HeroGroupTrialModel.instance:getById(heroSingleGroupMO.heroUid))
 			else
@@ -136,10 +153,8 @@ function HeroGroupEditListModel:copyCharacterCardList(init)
 
 	self:setList(newMOList)
 
-	if init and #newMOList > 0 and selectIndex > 0 and #self._scrollViews > 0 then
-		for _, view in ipairs(self._scrollViews) do
-			view:selectCell(selectIndex, true)
-		end
+	if init and #newMOList > 0 and selectIndex > 0 then
+		self:selectCell(selectIndex, true)
 
 		if newMOList[selectIndex] then
 			return newMOList[selectIndex]
@@ -199,6 +214,16 @@ function HeroGroupEditListModel:cancelAllSelected()
 end
 
 function HeroGroupEditListModel:isInTeamHero(uid)
+	local _, assistMo = HeroGroupModel.instance:getAssistMo()
+
+	if assistMo and assistMo.heroUid ~= uid then
+		local heroMo = HeroModel.instance:getById(uid)
+
+		if heroMo and heroMo.heroId == assistMo.assistMo.heroId then
+			return false
+		end
+	end
+
 	return self._inTeamHeroUids and self._inTeamHeroUids[uid]
 end
 

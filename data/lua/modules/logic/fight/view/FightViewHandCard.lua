@@ -9,8 +9,10 @@ local HandCardWidth = 185
 FightViewHandCard.blockOperate = false
 
 function FightViewHandCard:onInitView()
-	self.skinDownEffectRoot = gohelper.findChild(self.viewGO, "root/handcards/hand_card_skin_down")
+	self.skinDownEffectRoot = gohelper.findChild(self.viewGO, "root/hand_card_skin_down")
+	self.skinDownEffectRoot_s = gohelper.findChild(self.viewGO, "root/hand_card_skin_s_down")
 	self.skinUpEffectRoot = gohelper.findChild(self.viewGO, "root/hand_card_skin_up")
+	self.skinUpEffectRoot_s = gohelper.findChild(self.viewGO, "root/hand_card_skin_s_up")
 	self._handCardContainer = gohelper.findChild(self.viewGO, "root/handcards")
 	self._handCardGO = gohelper.findChild(self.viewGO, "root/handcards/handcards")
 	self._handCardTransform = self._handCardContainer.transform
@@ -187,6 +189,7 @@ function FightViewHandCard:onOpen()
 	self:addEventCb(FightController.instance, FightEvent.SpCardAdd, self._onSpCardAdd, self)
 	self:addEventCb(FightController.instance, FightEvent.AddHandCard, self._onAddHandCard, self)
 	self:addEventCb(FightController.instance, FightEvent.OnDevice_AddHandCard, self._onDeviceAddHandCard, self)
+	self:addEventCb(FightController.instance, FightEvent.OnHeDuoNieAddCard, self._onAddHeDuoNieHandCard, self)
 	self:addEventCb(FightController.instance, FightEvent.TempCardRemove, self._onTempCardRemove, self)
 	self:addEventCb(FightController.instance, FightEvent.ChangeToTempCard, self._onChangeToTempCard, self)
 	self:addEventCb(FightController.instance, FightEvent.CorrectHandCardScale, self._onCorrectHandCardScale, self)
@@ -194,6 +197,7 @@ function FightViewHandCard:onOpen()
 	self:addEventCb(FightController.instance, FightEvent.CardRemove, self._onCardRemove, self)
 	self:addEventCb(FightController.instance, FightEvent.CardRemove2, self._onCardRemove2, self)
 	self:addEventCb(FightController.instance, FightEvent.OnDevice_RemoveHandCard, self._onDeviceSkillRemoveHandCard, self)
+	self:addEventCb(FightController.instance, FightEvent.OnHeDuoNieRemoveCard, self._onHeDuoNieRemoveCard, self)
 	self:addEventCb(FightController.instance, FightEvent.RefreshHandCard, self._updateNow, self)
 	self:addEventCb(FightController.instance, FightEvent.CardsCompose, self._onCardsCompose, self)
 	self:addEventCb(FightController.instance, FightEvent.CardsComposeTimeOut, self._onCardsComposeTimeOut, self)
@@ -762,6 +766,11 @@ function FightViewHandCard:_startDistributeCards(beforeCards, distributeCards, i
 			work:start()
 		elseif cardSkin == 672802 then
 			local work = self:com_registWork(FightWorkEnterDistributeCards672802, self, self.distributeCards)
+
+			work:registFinishCallback(self.onEnterDistributeCardsSkinDone, self)
+			work:start()
+		elseif cardSkin == 672803 then
+			local work = self:com_registWork(FightWorkEnterDistributeCards672803, self, self.distributeCards)
 
 			work:registFinishCallback(self.onEnterDistributeCardsSkinDone, self)
 			work:start()
@@ -1337,6 +1346,40 @@ function FightViewHandCard:_onCardRemove2(indexs)
 	TaskDispatcher.runDelay(self._correctActiveCardObjPos, self, 1 / FightModel.instance:getUISpeed())
 end
 
+function FightViewHandCard:_onHeDuoNieRemoveCard(indexs)
+	self.heDuoNieDisappearCount = 0
+
+	for _, index in ipairs(indexs) do
+		local cardItem = table.remove(self._handCardItemList, index)
+
+		if cardItem and cardItem.go.activeInHierarchy then
+			self.heDuoNieDisappearCount = self.heDuoNieDisappearCount + 1
+
+			cardItem:heDuoNieDisappearCard(self._onHeDuoNieRemoveCardDone, self)
+		end
+	end
+
+	if self.heDuoNieDisappearCount < 1 then
+		FightViewHandCard.refreshCardIndex(self._handCardItemList)
+		self:_correctActiveCardObjPos(self._onHeDuoNieRemoveCardCorrectPosDone, self)
+	end
+end
+
+function FightViewHandCard:_onHeDuoNieRemoveCardDone(handCardItem)
+	self:recycleHandCardItem(handCardItem)
+
+	self.heDuoNieDisappearCount = self.heDuoNieDisappearCount - 1
+
+	if self.heDuoNieDisappearCount < 1 then
+		FightViewHandCard.refreshCardIndex(self._handCardItemList)
+		self:_correctActiveCardObjPos(self._onHeDuoNieRemoveCardCorrectPosDone, self)
+	end
+end
+
+function FightViewHandCard:_onHeDuoNieRemoveCardCorrectPosDone()
+	FightController.instance:dispatchEvent(FightEvent.OnHeDuoNieRemoveCardDone)
+end
+
 function FightViewHandCard:_correctActiveCardObjPos(callback, callbackObj)
 	if self.handCardMoving then
 		logError("hand card moving")
@@ -1404,6 +1447,27 @@ function FightViewHandCard:clearHandCardMoveDone()
 	self.handCardMoveDoneCallback = nil
 	self.handCardMoveDoneCallbackObj = nil
 	self.handCardMovingCount = 0
+end
+
+function FightViewHandCard:_onAddHeDuoNieHandCard()
+	self:_playCorrectHandCardScale(0)
+
+	local cards = FightDataHelper.handCardMgr.handCard
+	local cardCount = #cards
+
+	self:_updateHandCards(cards, cardCount)
+
+	local tarCard = self._handCardItemList[cardCount]
+
+	if tarCard then
+		tarCard:playHeDuoNieAddCard(self._onAddHeDuoNieHandCardDone, self)
+	else
+		self:_onAddHeDuoNieHandCardDone()
+	end
+end
+
+function FightViewHandCard:_onAddHeDuoNieHandCardDone()
+	FightController.instance:dispatchEvent(FightEvent.OnHeDuoNieAddCardDone)
 end
 
 function FightViewHandCard:_onDeviceAddHandCard()

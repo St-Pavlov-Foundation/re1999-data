@@ -28,8 +28,7 @@ end
 
 local activitySubViewDict = {
 	[ActivityEnum.Activity.StoryShow] = ViewName.ActivityStoryShowView,
-	[ActivityEnum.Activity.ClassShow] = ViewName.ActivityClassShowView,
-	[ActivityEnum.Activity.V2a7_NewInsight] = ViewName.ActivityInsightShowView_2_7
+	[ActivityEnum.Activity.ClassShow] = ViewName.ActivityClassShowView
 }
 
 function ActivityWelfareView:onUpdateParam()
@@ -44,6 +43,7 @@ function ActivityWelfareView:onOpen()
 	self:_initActivityNoviceSign()
 	self:_initActivityNewWelfare()
 	self:_initActivitySelfSelectSix()
+	self:_initActivityNewInsight()
 	self:_refreshView()
 end
 
@@ -72,6 +72,11 @@ function ActivityWelfareView:_initActivitySelfSelectSix()
 	if is3_8NewRegister then
 		activitySubViewDict[ActivityEnum.Activity.V3a8_SelfSelectSix] = ViewName.VersionActivity3_8SelfSelectSixView
 	end
+end
+
+function ActivityWelfareView:_initActivityNewInsight()
+	activitySubViewDict[ActivityEnum.Activity.V2a7_NewInsight] = ViewName.ActivityInsightShowView_2_7
+	activitySubViewDict[ActivityEnum.Activity.V3a9_NewInsight] = ViewName.VersionActivity3_9InsightShowView
 end
 
 function ActivityWelfareView:_refreshView()

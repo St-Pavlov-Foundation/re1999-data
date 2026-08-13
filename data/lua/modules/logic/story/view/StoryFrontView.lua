@@ -969,6 +969,10 @@ function StoryFrontView:resetRightBtnPos()
 	end
 end
 
+function StoryFrontView:getFrontItem()
+	return self._frontItem
+end
+
 function StoryFrontView:onDestroyView()
 	StoryModel.instance:setStoryPvPause(false)
 	TaskDispatcher.cancelTask(self._realPause, self)

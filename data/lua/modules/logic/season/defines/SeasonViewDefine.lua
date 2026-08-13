@@ -379,7 +379,7 @@ function SeasonViewDefine.initDefine3_5(module_views)
 		container = "Season123_3_5EntryViewContainer",
 		bgBlur = 4,
 		mainRes = "ui/viewres/seasonver/v3a5_act123/season123mainview.prefab",
-		layer = "POPUP",
+		layer = "POPUP_TOP",
 		viewType = ViewType.Full,
 		tabRes = {
 			{
@@ -415,7 +415,7 @@ function SeasonViewDefine.initDefine3_5(module_views)
 		container = "Season123_3_5RetailViewContainer",
 		bgBlur = 0,
 		mainRes = "ui/viewres/seasonver/v3a5_act123/season123retaillevelinfoview.prefab",
-		layer = "POPUP",
+		layer = "POPUP_TOP",
 		viewType = ViewType.Full,
 		tabRes = {
 			{
@@ -459,7 +459,7 @@ function SeasonViewDefine.initDefine3_5(module_views)
 		container = "Season123_3_5EpisodeListViewContainer",
 		bgBlur = 4,
 		mainRes = "ui/viewres/seasonver/v3a5_act123/season123episodelistview.prefab",
-		layer = "POPUP",
+		layer = "POPUP_TOP",
 		viewType = ViewType.Full,
 		tabRes = {
 			{
@@ -541,7 +541,7 @@ function SeasonViewDefine.initDefine3_5(module_views)
 		container = "Season123_3_5PickHeroEntryViewContainer",
 		bgBlur = 1,
 		mainRes = "ui/viewres/seasonver/v3a5_act123/season123pickheroentryview.prefab",
-		layer = "POPUP",
+		layer = "POPUP_TOP",
 		viewType = ViewType.Normal,
 		otherRes = {
 			[1] = "ui/viewres/seasonver/v3a5_act123/season123celebritycarditem.prefab"
@@ -584,7 +584,7 @@ function SeasonViewDefine.initDefine3_5(module_views)
 		destroy = 0,
 		container = "Season123_3_5ShowHeroViewContainer",
 		mainRes = "ui/viewres/seasonver/v3a5_act123/season123showheroview.prefab",
-		layer = "POPUP",
+		layer = "POPUP_TOP",
 		viewType = ViewType.Normal,
 		otherRes = {
 			[1] = "ui/viewres/seasonver/v3a5_act123/season123celebritycarditem.prefab"

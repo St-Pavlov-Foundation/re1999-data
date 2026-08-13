@@ -23,12 +23,17 @@ function VersionActivity1_8DungeonMapLevelViewContainer:buildTabViews(tabContain
 			})
 		}
 	elseif tabContainerId == 2 then
+		self._navigateButtonView = DungeonNavigateButtonsView.New({
+			true,
+			true,
+			false
+		})
+
+		self._navigateButtonView:setOpenCallback(self.initChapterRecheck, self)
+		self._navigateButtonView:setOverrideClickRecheck(self.closeThis, self)
+
 		return {
-			NavigateButtonsView.New({
-				true,
-				true,
-				false
-			})
+			self._navigateButtonView
 		}
 	end
 end
@@ -60,6 +65,18 @@ end
 
 function VersionActivity1_8DungeonMapLevelViewContainer:stopCloseViewTask()
 	return
+end
+
+function VersionActivity1_8DungeonMapLevelViewContainer:initChapterRecheck()
+	local chapterId = self:_getChapterId()
+
+	if self._navigateButtonView then
+		self._navigateButtonView:initChapterRecheck(chapterId)
+	end
+end
+
+function VersionActivity1_8DungeonMapLevelViewContainer:_getChapterId()
+	return VersionActivity1_8DungeonEnum.DungeonChapterId.Story
 end
 
 return VersionActivity1_8DungeonMapLevelViewContainer

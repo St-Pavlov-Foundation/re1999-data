@@ -1506,6 +1506,40 @@ function FightViewHandCardItem:_onGMForceRefreshNameUIBuff()
 	self:_onRefreshOneHandCard(self.index)
 end
 
+function FightViewHandCardItem:playHeDuoNieAddCard(callback, callbackDone)
+	if not self._heDuoNieAddCardFlow then
+		self._heDuoNieAddCardFlow = FlowSequence.New()
+
+		self._heDuoNieAddCardFlow:registerDoneListener(self.doHeDuoNieAddCardCallback, self)
+		self._heDuoNieAddCardFlow:addWork(FightHeDuoNieAddCardEffect.New())
+	else
+		self:doHeDuoNieAddCardCallback()
+		self._heDuoNieAddCardFlow:stop()
+	end
+
+	self.heDuoNieAddCardCallback = callback
+	self.heDuoNieAddCardCallbackObj = callbackDone
+
+	local context = self:getUserDataTb_()
+
+	context.handCardItem = self
+
+	self._heDuoNieAddCardFlow:start(context)
+	AudioMgr.instance:trigger(390027)
+end
+
+function FightViewHandCardItem:doHeDuoNieAddCardCallback()
+	local callback = self.heDuoNieAddCardCallback
+	local callbackObj = self.heDuoNieAddCardCallbackObj
+
+	self.heDuoNieAddCardCallback = nil
+	self.heDuoNieAddCardCallbackObj = nil
+
+	if callback then
+		callback(callbackObj, self)
+	end
+end
+
 function FightViewHandCardItem:playDeviceAddCard(callback, callbackDone)
 	if not self._deviceAddCardFlow then
 		self._deviceAddCardFlow = FlowSequence.New()
@@ -1544,6 +1578,7 @@ function FightViewHandCardItem:playDistribute()
 		self._distributeFlow = FlowSequence.New()
 
 		self._distributeFlow:addWork(FightWorkViewDistributeHandCardEffect.New())
+		self._distributeFlow:addWork(FightWorkPlayHeDuoNieOpenEffect.New())
 	else
 		self._distributeFlow:stop()
 	end
@@ -1554,8 +1589,22 @@ function FightViewHandCardItem:playDistribute()
 	context.handCardItemList = self._subViewInst._handCardItemList
 	context.preCardCount = #context.cards - 1
 	context.newCardCount = 1
+	context.cardMo = self.cardInfoMO
+	context.handCardItem = self
 
 	self._distributeFlow:start(context)
+end
+
+function FightViewHandCardItem:playHeDuoNieOpenAnim(playCallback, callbackObj)
+	if not self._cardItem then
+		if playCallback then
+			playCallback(callbackObj)
+		end
+
+		return
+	end
+
+	self._cardItem:playHeDuoNieOpenAnim(playCallback, callbackObj)
 end
 
 function FightViewHandCardItem:playMasterAddHandCard()
@@ -1619,6 +1668,32 @@ function FightViewHandCardItem:dissolveEntityCard(entityId, dissolveDoneCallback
 	self:dissolveCard(dissolveDoneCallback, dissolveDoneCallbackObj)
 
 	return true
+end
+
+function FightViewHandCardItem:heDuoNieDisappearCard(disappearDoneCallback, disappearDoneCallbackObj)
+	self.heDuoNieDisappearDoneCallback = disappearDoneCallback
+	self.heDuoNieDisappearDoneCallbackObj = disappearDoneCallbackObj
+
+	if not self.go.activeInHierarchy then
+		self:doHeDuoNieDisappearDoneCallback()
+
+		return
+	end
+
+	self:setASFDActive(false)
+	self._cardItem:heDuoNieDisappearCard(self.doHeDuoNieDisappearDoneCallback, self)
+end
+
+function FightViewHandCardItem:doHeDuoNieDisappearDoneCallback()
+	local callback = self.heDuoNieDisappearDoneCallback
+	local callbackObj = self.heDuoNieDisappearDoneCallbackObj
+
+	self.heDuoNieDisappearDoneCallback = nil
+	self.heDuoNieDisappearDoneCallbackObj = nil
+
+	if callback then
+		callback(callbackObj, self)
+	end
 end
 
 function FightViewHandCardItem:dissolveCard(dissolveDoneCallback, dissolveDoneCallbackObj)

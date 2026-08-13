@@ -227,7 +227,7 @@ function HeroModel:getHeroAllVoice(heroId, targetSkinId)
 				if heroInfo and heroInfo.rank >= 2 then
 					voiceList[audio] = config
 				end
-			elseif self:_cleckCondition(config.unlockCondition, heroId) then
+			elseif self:_cleckCondition(config.unlockCondition, heroId, audio) then
 				voiceList[audio] = config
 			end
 		end
@@ -271,7 +271,7 @@ function HeroModel:_checkSkin(heroMo, config, targetSkinId)
 	return string.find(config.skins, targetSkinId or heroMo and heroMo.skin)
 end
 
-function HeroModel:_cleckCondition(condition, heroId)
+function HeroModel:_cleckCondition(condition, heroId, audio)
 	if string.nilorempty(condition) then
 		return true
 	end
@@ -282,7 +282,15 @@ function HeroModel:_cleckCondition(condition, heroId)
 	local value = string.split(condition, "#")
 
 	if tonumber(value[1]) == 1 then
-		return tonumber(value[2]) <= faithPercent * 100
+		local value2 = tonumber(value[2])
+
+		if value2 then
+			return value2 <= faithPercent * 100
+		else
+			logError(string.format("HeroModel:_cleckCondition error condition:%s heroId:%s audio:%s", condition, heroId, audio))
+
+			return false
+		end
 	end
 
 	return true

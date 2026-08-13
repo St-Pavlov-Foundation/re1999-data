@@ -15,9 +15,9 @@ function FightWorkLoadAsset:onConstructor(url, callback, handle, ...)
 end
 
 function FightWorkLoadAsset:onStart()
-	local loaderComp = self.handle:addComponent(FightLoaderComponent)
+	local comp = self.handle:getComponent(FightLoaderComponent)
 
-	loaderComp:loadAsset(self.url, self.onLoaded, self)
+	comp:loadAsset(self.url, self.onLoaded, self)
 	self:cancelFightWorkSafeTimer()
 end
 

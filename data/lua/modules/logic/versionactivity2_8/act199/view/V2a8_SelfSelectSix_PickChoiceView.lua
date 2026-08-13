@@ -28,7 +28,7 @@ function V2a8_SelfSelectSix_PickChoiceView:removeEvents()
 	self._btnconfirm:RemoveClickListener()
 	self._btncancel:RemoveClickListener()
 	self:removeEventCb(V2a8_SelfSelectSix_PickChoiceController.instance, V2a8_SelfSelectSix_PickChoiceEvent.onCustomPickListChanged, self.refreshUI, self)
-	ViewMgr.instance:registerCallback(ViewEvent.OnCloseView, self._onCloseView, self)
+	ViewMgr.instance:unregisterCallback(ViewEvent.OnCloseView, self._onCloseView, self)
 end
 
 function V2a8_SelfSelectSix_PickChoiceView:_btnconfirmOnClick()

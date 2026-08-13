@@ -5,7 +5,7 @@ module("modules.logic.partygame.view.carddrop.timeline.timelinebehaviour.CardDro
 local CardDropTimelineBehaviourBase = class("CardDropTimelineBehaviourBase", UserDataDispose)
 
 function CardDropTimelineBehaviourBase:init()
-	CardDropTimelineBehaviourBase.super.__onInit(self)
+	self:__onInit()
 
 	self.interface = PartyGameCSDefine.CardDropInterfaceCs
 end
@@ -56,7 +56,7 @@ function CardDropTimelineBehaviourBase:onTimelineEnd()
 end
 
 function CardDropTimelineBehaviourBase:destroy()
-	CardDropTimelineBehaviourBase.super.__onDispose(self)
+	self:__onDispose()
 end
 
 return CardDropTimelineBehaviourBase

@@ -12,7 +12,7 @@ function Rouge2_LossBuffListModel._sortDefault(aItem, bItem)
 		return aSelect
 	end
 
-	return Rouge2_LossBuffListModel.super._sortDefault(aItem, bItem)
+	return Rouge2_LossItemListModelBase._sortDefault(aItem, bItem)
 end
 
 Rouge2_LossBuffListModel.instance = Rouge2_LossBuffListModel.New()

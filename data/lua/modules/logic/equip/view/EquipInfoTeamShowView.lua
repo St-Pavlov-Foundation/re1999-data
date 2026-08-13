@@ -372,6 +372,18 @@ function EquipInfoTeamShowView:_onClickConfirmBtnFromCharacterView()
 	HeroRpc.instance:setHeroDefaultEquipRequest(self.heroMo.heroId, self.selectedEquipMo and self.selectedEquipMo.uid or "0")
 end
 
+function EquipInfoTeamShowView:_onClickConfirmBtnFromV3a9_BossRush_HeroGroupListView()
+	EquipChooseListModel.instance:clearTeamInfo()
+
+	local stage = self.viewParam.stage
+	local index = self.posIndex
+	local equipUid = self.selectedEquipMo and self.selectedEquipMo.uid or "0"
+
+	V3a9_BossRushModel.instance:replaceEquips(stage, equipUid, index)
+	V3a9_BossRushController.instance:dispatchEvent(V3a9_BossRushEvent.OnModifyEquip)
+	self:closeThis()
+end
+
 function EquipInfoTeamShowView:_btnjumpOnClick()
 	if self.selectedEquipMo then
 		self._anim:Play(UIAnimationName.Close)
@@ -483,7 +495,8 @@ function EquipInfoTeamShowView:_editableInitView()
 		[EquipEnum.FromViewEnum.FromOdysseyHeroGroupFightView] = self._onClickConfirmBtnFromHeroGroupFightView,
 		[EquipEnum.FromViewEnum.FromPresetPreviewView] = self._onClickConfirmBtnFromPresetPreviewView,
 		[EquipEnum.FromViewEnum.FromTowerComposeHeroGroupView] = self._onClickConfirmBtnFromTowerComposeHeroGroupView,
-		[EquipEnum.FromViewEnum.FromTwinssychubeEquipInfoView] = self._onClickConfirmBtnFromCharacterView
+		[EquipEnum.FromViewEnum.FromTwinssychubeEquipInfoView] = self._onClickConfirmBtnFromCharacterView,
+		[EquipEnum.FromViewEnum.V3a9_BossRush_HeroGroupListView] = self._onClickConfirmBtnFromV3a9_BossRush_HeroGroupListView
 	}
 	self._btnMaxLevelAnim = self._btnmaxlevel.gameObject:GetComponent(typeof(UnityEngine.Animator))
 end
@@ -553,7 +566,7 @@ function EquipInfoTeamShowView:initOriginEquipMo()
 		self.originEquipMo = self.viewParam.equipMo
 	elseif self.viewParam.fromView == EquipEnum.FromViewEnum.FromCachotHeroGroupFightView then
 		self.originEquipMo = self.viewParam.equipMo
-	elseif self.viewParam.fromView == EquipEnum.FromViewEnum.FromSeason123HeroGroupFightView or self.viewParam.fromView == EquipEnum.FromViewEnum.FromSeason166HeroGroupFightView then
+	elseif self.viewParam.fromView == EquipEnum.FromViewEnum.FromSeason123HeroGroupFightView or self.viewParam.fromView == EquipEnum.FromViewEnum.FromSeason166HeroGroupFightView or self.viewParam.fromView == EquipEnum.FromViewEnum.V3a9_BossRush_HeroGroupListView then
 		self.originEquipMo = self.viewParam.equipMo
 	elseif self.viewParam.fromView == EquipEnum.FromViewEnum.FromOdysseyHeroGroupFightView then
 		self.originEquipMo = self.viewParam.equipMo

@@ -253,9 +253,9 @@ end
 
 function Rouge2_NormalStoreGoodsView:refreshRemain()
 	if self.storeGoodsCo.maxBuyCount == 0 then
-		gohelper.setActive(self._goRemain, false)
+		gohelper.setActive(self._goremain, false)
 	else
-		gohelper.setActive(self._goRemain, true)
+		gohelper.setActive(self._goremain, true)
 
 		self._txtremain.text = string.format("%s:%d", luaLang("store_buylimit"), self.remainBuyCount)
 	end

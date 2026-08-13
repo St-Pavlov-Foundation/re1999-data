@@ -143,7 +143,7 @@ function ClothesStoreView:_onClickBtnArrow()
 end
 
 function ClothesStoreView:_onClickBtnHide()
-	self:hideUI()
+	self:hideUI(false, false)
 
 	if self.skinId then
 		StatController.instance:track(StatEnum.EventName.ButtonClick, {
@@ -154,7 +154,9 @@ function ClothesStoreView:_onClickBtnHide()
 	end
 end
 
-function ClothesStoreView:hideUI(noAnim)
+function ClothesStoreView:hideUI(noAnim, isNotAutoClose)
+	self._isDefaultShowViewAutoClose = isNotAutoClose ~= false
+
 	if noAnim then
 		StoreController.instance:dispatchEvent(StoreEvent.PlayHideStoreAnim)
 		self:_startDefaultShowView()
@@ -292,6 +294,10 @@ function ClothesStoreView:_startDefaultShowView()
 	data.contentBg = self._goBgRoot
 	data.callback = self._showHideCallback
 	data.callbackObj = self
+
+	if self._isDefaultShowViewAutoClose == true then
+		data.viewShowTime = DecorateStoreEnum.DefaultViewShowTime
+	end
 
 	ViewMgr.instance:openView(ViewName.StoreSkinDefaultShowView, data)
 end

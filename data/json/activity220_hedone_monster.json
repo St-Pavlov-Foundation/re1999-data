@@ -1,0 +1,83 @@
+[
+  {
+    "id": 39070,
+    "baseAttr": "2#0#70",
+    "image": "v3a9_hedone_39070",
+    "scale": 0.6,
+    "moveSpeed": 50.0,
+    "exp": 3,
+    "showHp": false
+  },
+  {
+    "id": 39071,
+    "baseAttr": "3#0#55",
+    "image": "v3a9_hedone_39071",
+    "scale": 0.6,
+    "moveSpeed": 65.0,
+    "exp": 3,
+    "showHp": false
+  },
+  {
+    "id": 39072,
+    "baseAttr": "3#0#46",
+    "image": "v3a9_hedone_39072",
+    "scale": 0.6,
+    "moveSpeed": 100.0,
+    "exp": 3,
+    "showHp": false
+  },
+  {
+    "id": 39073,
+    "baseAttr": "24#0#140",
+    "image": "v3a9_hedone_39073",
+    "scale": 0.8,
+    "moveSpeed": 46.0,
+    "exp": 7,
+    "showHp": true
+  },
+  {
+    "id": 39074,
+    "baseAttr": "6#0#250",
+    "image": "v3a9_hedone_39074",
+    "scale": 0.8,
+    "moveSpeed": 56.0,
+    "exp": 12,
+    "showHp": true
+  },
+  {
+    "id": 39075,
+    "baseAttr": "8#0#260",
+    "image": "v3a9_hedone_39075",
+    "scale": 0.8,
+    "moveSpeed": 46.0,
+    "exp": 7,
+    "showHp": true
+  },
+  {
+    "id": 39076,
+    "baseAttr": "8#4#420",
+    "image": "v3a9_hedone_39076",
+    "scale": 1.0,
+    "moveSpeed": 110.0,
+    "exp": 14,
+    "showHp": true
+  },
+  {
+    "id": 39077,
+    "baseAttr": "8#4#880",
+    "image": "v3a9_hedone_39077",
+    "scale": 1.0,
+    "moveSpeed": 65.0,
+    "exp": 18,
+    "showHp": true
+  },
+  {
+    "id": 39078,
+    "baseAttr": "10#6#660",
+    "image": "v3a9_hedone_39078",
+    "scale": 1.0,
+    "moveSpeed": 45.0,
+    "exp": 18,
+    "showHp": true
+  }
+]

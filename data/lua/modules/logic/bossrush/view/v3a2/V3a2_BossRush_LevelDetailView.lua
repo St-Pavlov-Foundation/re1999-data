@@ -102,8 +102,9 @@ function V3a2_BossRush_LevelDetailView:onOpen()
 	self._stage = self.viewParam.stage
 	self._layer = 1
 	self._stageCO = self.viewParam.stageCO
-	self._handBookMo = V3a2_BossRushModel.instance:getHandBookMoByStage(self._stage)
-	self._stageLayerInfos = BossRushModel.instance:getStageLayersInfo(self._stage)
+	self._activityId = self._stageCO.activityId
+	self._handBookMo = V3a2_BossRushModel.instance:getHandBookMoByStage(self._stage, self._activityId)
+	self._stageLayerInfos = BossRushModel.instance:getStageLayersInfo(self._stage, self._activityId)
 	self._layerCO = self._stageLayerInfos[self._layer].layerCO
 
 	self:_refreshMonster()
@@ -122,9 +123,9 @@ function V3a2_BossRush_LevelDetailView:_initAssessIcon()
 end
 
 function V3a2_BossRush_LevelDetailView:_refreshMonster()
-	local skinIdList = BossRushConfig.instance:getMonsterSkinIdList(self._stage)
-	local skinScaleList = BossRushConfig.instance:getMonsterSkinScaleList(self._stage)
-	local skinOffsetXYs = BossRushConfig.instance:getMonsterSkinOffsetXYs(self._stage)
+	local skinIdList = BossRushConfig.instance:getMonsterSkinIdList(self._stage, self._activityId)
+	local skinScaleList = BossRushConfig.instance:getMonsterSkinScaleList(self._stage, self._activityId)
+	local skinOffsetXYs = BossRushConfig.instance:getMonsterSkinOffsetXYs(self._stage, self._activityId)
 	local heartVariantId = self._stageCO.heartVariantId
 
 	self:_initMonsterSpines(#skinIdList)
@@ -146,7 +147,7 @@ function V3a2_BossRush_LevelDetailView:_refreshMonster()
 end
 
 function V3a2_BossRush_LevelDetailView:_refreshStrategy()
-	local strategy = self._handBookMo:getStrategy()
+	local strategy = BossRushConfig.instance:getBossRecommendStrategy(self._stageCO.type) or {}
 	local content = self._scrollstrategy.content
 	local resPath = BossRushEnum.ResPath.v3a2_bossrush_strategyitem
 	local res = self.viewContainer:getRes(resPath)
@@ -184,14 +185,12 @@ end
 function V3a2_BossRush_LevelDetailView:_refreshContent()
 	local layer = self._layerCO.layer
 	local issxIconName = BossRushConfig.instance:getIssxIconName(self._stage, layer)
-	local highestPoint = BossRushModel.instance:getHighestPoint(self._stage)
 	local battleId = BossRushConfig.instance:getDungeonBattleId(self._stage, layer)
 
 	UISpriteSetMgr.instance:setCommonSprite(self._imageIssxIcon, issxIconName)
-	self._simagefull:LoadImage(BossRushConfig.instance:getBossDetailFullPath(self._stage))
-	self._assessIcon:setData(self._stage, highestPoint, false)
+	self._simagefull:LoadImage(BossRushConfig.instance:getBossDetailFullPath(self._stage, self._activityId))
+	self:refreshScore()
 
-	self._txtScoreNum.text = BossRushConfig.instance:getScoreStr(highestPoint)
 	self._txtName.text = self._stageCO.name
 	self._txtEn.text = self._stageCO.name_en
 
@@ -202,9 +201,18 @@ function V3a2_BossRush_LevelDetailView:_refreshContent()
 	self._txtDescr.text = self._layerCO.desc
 
 	ZProj.UGUIHelper.RebuildLayout(self._txtDescr.transform)
-	self._simageTitle:LoadImage(BossRushConfig.instance:getBossDetailTitlePath(self._stage))
+	self._simageTitle:LoadImage(BossRushConfig.instance:getBossDetailTitlePath(self._stage, self._activityId))
 	self:_doUpdateSelectIcon(battleId)
 	self:_refreshLurk()
+end
+
+function V3a2_BossRush_LevelDetailView:refreshScore()
+	local stageMo = V3a9_BossRushModel.instance:getStageMo(self._activityId, self._stage)
+	local highestPoint = stageMo and stageMo.highestPoint or 0
+
+	self._assessIcon:setData(self._stage, highestPoint, false)
+
+	self._txtScoreNum.text = BossRushConfig.instance:getScoreStr(highestPoint)
 end
 
 function V3a2_BossRush_LevelDetailView:_doUpdateSelectIcon(battleId)
@@ -216,7 +224,9 @@ end
 function V3a2_BossRush_LevelDetailView:_refreshLurk()
 	local episodeId = self._layerCO.episodeId
 	local concealCo = BossRushConfig.instance:getConcealCo(episodeId)
-	local isConceal = concealCo and concealCo.maxConceal > 0
+	local bossTypeParam = BossRushConfig.instance:getBossTypeParams(self._stageCO.type)
+	local careerWeak = bossTypeParam and bossTypeParam.careerWeak
+	local isConceal = concealCo and concealCo.maxConceal > 0 and (not careerWeak or not (#careerWeak > 0))
 
 	if isConceal then
 		self._txtresilienceValue.text = concealCo and concealCo.maxConceal or ""
@@ -239,21 +249,24 @@ function V3a2_BossRush_LevelDetailView:_refreshLurk()
 			gohelper.setActive(self._lurkInfoItems[i].go, i <= count)
 		end
 	else
-		local monsterCO = BossRushConfig.instance:getMonsterCO(self._stage, self._layerCO.layer)
-		local count = 0
+		if not careerWeak then
+			local monsterCO = BossRushConfig.instance:getMonsterCO(self._stage, self._layerCO.layer)
 
-		if monsterCO and not string.nilorempty(monsterCO.career_weak) then
-			local weakList = string.splitToNumber(monsterCO.career_weak, "#")
+			if monsterCO and not string.nilorempty(monsterCO.career_weak) then
+				careerWeak = tabletool.copy(string.splitToNumber(monsterCO.career_weak, "#"))
+			end
+		end
 
-			for i, weak in ipairs(weakList) do
+		if careerWeak then
+			for i, weak in ipairs(careerWeak) do
 				local item = self:_getWeekItem(i)
 				local issxIconName = FightFailView.CareerToImageName[weak]
 
 				UISpriteSetMgr.instance:setCommonSprite(item.icon, issxIconName, true)
-
-				count = count + 1
 			end
 		end
+
+		local count = careerWeak and #careerWeak or 0
 
 		for i = 1, #self._weakItems do
 			gohelper.setActive(self._weakItems[i].go, i <= count)

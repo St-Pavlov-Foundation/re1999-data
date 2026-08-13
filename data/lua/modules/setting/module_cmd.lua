@@ -714,6 +714,11 @@ local module_cmd = {
 		"Act128SpFirstHalfSelectItemRequest",
 		"Act128SpFirstHalfSelectItemReply"
 	},
+	[-12945] = {
+		"Activity128",
+		"Act128ChangeActModeRequest",
+		"Act128ChangeActModeReply"
+	},
 	[-18168] = {
 		"Activity128",
 		"GetGalleryInfosRequest",
@@ -728,6 +733,16 @@ local module_cmd = {
 		"Activity128",
 		"Act128GetMilestoneBonusRequest",
 		"Act128GetMilestoneBonusReply"
+	},
+	[31423] = {
+		"Activity128",
+		"SetAct128TeamRequest",
+		"SetAct128TeamReply"
+	},
+	[20854] = {
+		"Activity128",
+		"ResetAct128TeamRequest",
+		"ResetAct128TeamReply"
 	},
 	[10521] = {
 		"Activity129",
@@ -1807,6 +1822,11 @@ local module_cmd = {
 		"FinishAct186TaskRequest",
 		"FinishAct186TaskReply"
 	},
+	[-16127] = {
+		"Activity186",
+		"FinishAllAct186TaskRequest",
+		"FinishAllAct186TaskReply"
+	},
 	[7369] = {
 		"Activity186",
 		"GetAct186MilestoneRewardRequest",
@@ -2553,6 +2573,20 @@ local module_cmd = {
 		"Activity229",
 		"Act229BattleFinishPush"
 	},
+	[8867] = {
+		"Activity229",
+		"Act229ModifyStageSubIdRequest",
+		"Act229ModifyStageSubIdReply"
+	},
+	[-15977] = {
+		"Activity229",
+		"Act229ModifySkillRequest",
+		"Act229ModifySkillReply"
+	},
+	[-7978] = {
+		"Activity229",
+		"Act229StageTeamSubIdPush"
+	},
 	[10606] = {
 		"Activity231",
 		"GetAct231InfoRequest",
@@ -2719,6 +2753,30 @@ local module_cmd = {
 		"Activity241",
 		"Act241GetBonusRequest",
 		"Act241GetBonusReply"
+	},
+	[-20236] = {
+		"Activity243",
+		"GetAct243InfoRequest",
+		"GetAct243InfoReply"
+	},
+	[-3635] = {
+		"Activity243",
+		"Act243ReportEpisodeRequest",
+		"Act243ReportEpisodeReply"
+	},
+	[-10918] = {
+		"Activity243",
+		"Act243UpgradeGiftRequest",
+		"Act243UpgradeGiftReply"
+	},
+	[22017] = {
+		"Activity243",
+		"Act243UnlockRacerRequest",
+		"Act243UnlockRacerReply"
+	},
+	[-3384] = {
+		"Activity243",
+		"Act243InfoPush"
 	},
 	[-14582] = {
 		"Activity",
@@ -4131,6 +4189,11 @@ local module_cmd = {
 		"SetHeroGroupSnapshotRequest",
 		"SetHeroGroupSnapshotReply"
 	},
+	[-24283] = {
+		"HeroGroup",
+		"SetHeroGroupSnapshotBatchRequest",
+		"SetHeroGroupSnapshotBatchReply"
+	},
 	[-8854] = {
 		"HeroGroup",
 		"UpdateHeroGroupPush"
@@ -4826,6 +4889,11 @@ local module_cmd = {
 		"TriggerPartyResultRequest",
 		"TriggerPartyResultReply"
 	},
+	[-16527] = {
+		"PartyMatch",
+		"PartyServerListRequest",
+		"PartyServerListReply"
+	},
 	[-1010] = {
 		"PartyMatch",
 		"PartyMatchHotfix1Request",
@@ -4889,6 +4957,11 @@ local module_cmd = {
 		"PartyRoom",
 		"CreatePartyRoomRequest",
 		"CreatePartyRoomReply"
+	},
+	[29845] = {
+		"PartyRoom",
+		"CheckPartyRoomInfoRequest",
+		"CheckPartyRoomInfoReply"
 	},
 	[-8233] = {
 		"PartyRoom",
@@ -7353,6 +7426,16 @@ local module_cmd = {
 		"Turnback",
 		"AcceptAllTurnbackBonusPointRequest",
 		"AcceptAllTurnbackBonusPointReply"
+	},
+	[13785] = {
+		"Turnback",
+		"TurnbackReturnRewardRequest",
+		"TurnbackReturnRewardReply"
+	},
+	[-2477] = {
+		"Turnback",
+		"AcceptAllTurnbackReturnRewardRequest",
+		"AcceptAllTurnbackReturnRewardReply"
 	},
 	[-23079] = {
 		"Udimo",

@@ -5,6 +5,7 @@ module("modules.logic.bossrush.config.BossRushEnum", package.seeall)
 local BossRushEnum = _M
 local kResPathRoot = "ui/viewres/versionactivity_1_4/v1a4_bossrush/"
 local kV3a2ResPathRoot = "ui/viewres/versionactivity_1_4/v1a4_bossrush/v3a2_bossrush/"
+local kV3a9ResPathRoot = "ui/viewres/versionactivity_1_4/v1a4_bossrush/v3a9_bossrush/"
 
 BossRushEnum.ResPath = {
 	v1a4_bossrush_battle_assessicon = kResPathRoot .. "v1a4_bossrush_battle_assessicon.prefab",
@@ -35,7 +36,11 @@ BossRushEnum.ResPath = {
 	v3a2_bossrush_resultpanel = kV3a2ResPathRoot .. "v3a2_bossrush_resultpanel.prefab",
 	v3a2_bossrush_resultview = kV3a2ResPathRoot .. "v3a2_bossrush_resultview.prefab",
 	v3a2_bossrush_strategyitem = kV3a2ResPathRoot .. "v3a2_bossrush_strategyitem.prefab",
-	v3a2_bossrush_rankbonus = kV3a2ResPathRoot .. "v3a2_bossrush_rankbonus.prefab"
+	v3a2_bossrush_rankbonus = kV3a2ResPathRoot .. "v3a2_bossrush_rankbonus.prefab",
+	v3a9_bossrush_mainswitchmodeview = kV3a9ResPathRoot .. "v3a9_bossrush_mainswitchmodeview.prefab",
+	v3a9_bossrush_mainview = kV3a9ResPathRoot .. "v3a9_bossrush_mainview.prefab",
+	v3a9_bossrush_leveldetail = kV3a9ResPathRoot .. "v3a9_bossrush_leveldetail.prefab",
+	v3a9_bossrush_bondsitem = kV3a9ResPathRoot .. "v3a9_bossrush_bondsitem.prefab"
 }
 BossRushEnum.Color = {
 	POINTVALUE_NORMAL = "#666362",

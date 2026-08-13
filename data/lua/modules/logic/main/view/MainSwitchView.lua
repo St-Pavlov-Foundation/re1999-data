@@ -38,6 +38,7 @@ function MainSwitchView:_editableInitView()
 	self._gridLayout = contentcategory:GetComponent(typeof(UnityEngine.UI.GridLayoutGroup))
 	self._goreddot2 = gohelper.findChild(self._gocategoryitem2, "reddot")
 	self._goreddot3 = gohelper.findChild(self._gocategoryitem3, "reddot")
+	self._goMask = gohelper.findChild(self.viewGO, "Mask")
 end
 
 function MainSwitchView:onUpdateParam()
@@ -45,7 +46,17 @@ function MainSwitchView:onUpdateParam()
 end
 
 function MainSwitchView:onOpen()
-	MainSwitchCategoryListModel.instance:initCategoryList()
+	local category
+
+	if self.viewParam then
+		if self.viewParam.jumpTabs then
+			category = self.viewParam.jumpTabs[1]
+		else
+			category = self.viewParam.defaultTabIds[1]
+		end
+	end
+
+	MainSwitchCategoryListModel.instance:initCategoryList(category)
 
 	self._itemList = self:getUserDataTb_()
 
@@ -68,6 +79,7 @@ function MainSwitchView:onOpen()
 		self._gridLayout.cellSize = Vector2(780, 90)
 	end
 
+	gohelper.setActive(self._goMask, true)
 	self:refreshReddot()
 	self:addEventCb(MainSceneSwitchController.instance, MainSceneSwitchEvent.SwitchCategoryClick, self._itemClick, self)
 	self:addEventCb(MainSceneSwitchController.instance, MainSceneSwitchEvent.SceneSwitchUIVisible, self._onSceneSwitchUIVisible, self)
@@ -95,6 +107,7 @@ function MainSwitchView:_onSceneSwitchUIVisible(visible)
 	self._btnsCanvasGroup.blocksRaycasts = visible
 
 	self._rootAnimator:Play(visible and "open" or "close", 0, 0)
+	gohelper.setActive(self._goMask, visible)
 end
 
 function MainSwitchView:_itemClick(id)

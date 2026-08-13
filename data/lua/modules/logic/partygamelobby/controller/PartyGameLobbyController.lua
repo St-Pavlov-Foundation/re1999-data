@@ -107,13 +107,13 @@ function PartyGameLobbyController:_onDayRefresh()
 end
 
 function PartyGameLobbyController:_checkActivity(actId)
-	if actId and actId ~= VersionActivity3_4Enum.ActivityId.PartyGame then
+	if actId and actId ~= VersionActivity3_9Enum.ActivityId.V3_A9_PartyGame then
 		return
 	end
 
 	TaskDispatcher.cancelTask(self._delayUpdateOpenInfo, self)
 
-	actId = VersionActivity3_4Enum.ActivityId.PartyGame
+	actId = VersionActivity3_9Enum.ActivityId.V3_A9_PartyGame
 
 	if not ActivityModel.instance:isActOnLine(actId) then
 		return
@@ -188,7 +188,7 @@ function PartyGameLobbyController:_getRefreshTime(timeParams, dailyOpenTime)
 end
 
 function PartyGameLobbyController:_delayUpdateOpenInfo()
-	if not ActivityModel.instance:isActOnLine(VersionActivity3_4Enum.ActivityId.PartyGame) then
+	if not ActivityModel.instance:isActOnLine(VersionActivity3_9Enum.ActivityId.V3_A9_PartyGame) then
 		return
 	end
 
@@ -243,7 +243,7 @@ function PartyGameLobbyController:inOpenTime()
 		return false
 	end
 
-	return ActivityModel.instance:isActOnLine(VersionActivity3_4Enum.ActivityId.PartyGame) and OpenModel.instance:isFunctionUnlock(PartyGameLobbyEnum.DailyOpenId)
+	return ActivityModel.instance:isActOnLine(VersionActivity3_9Enum.ActivityId.V3_A9_PartyGame) and OpenModel.instance:isFunctionUnlock(PartyGameLobbyEnum.DailyOpenId)
 end
 
 function PartyGameLobbyController:_onJoinPartyRoom()
@@ -347,7 +347,17 @@ function PartyGameLobbyController:sendInteraction(emojIndex, x, y)
 	end
 end
 
+function PartyGameLobbyController:sendPartyServerListRequest()
+	if PartyGameRoomModel.instance._partyServers == nil or tabletool.len(PartyGameRoomModel.instance._partyServers) > 0 then
+		return
+	end
+
+	PartyMatchRpc.instance:sendPartyServerListRequest()
+end
+
 function PartyGameLobbyController:GetPartyRoomInfo()
+	self:sendPartyServerListRequest()
+
 	if not self._getRoomInfo then
 		self._getRoomInfo = true
 
@@ -412,6 +422,9 @@ function PartyGameLobbyController:enterGameLobbyGuide()
 	if GuideController.instance:isForbidGuides() then
 		return
 	end
+
+	PartyGameRpc.instance:setUpKcpRpcCallBack()
+	PartyGameController.instance:setUpLuaCallBack()
 
 	if not self._guideList then
 		self._guideList = {
@@ -499,17 +512,17 @@ end
 function PartyGameLobbyController:enterStore()
 	local _bigVersion, _smallVersion = VersionActivityFixedDungeonController.instance:getEnterVerison()
 
-	VersionActivityFixedHelper.getVersionActivityDungeonController(_bigVersion, _smallVersion).instance:openStoreView(VersionActivity3_4Enum.ActivityId.PartyGameStore, ViewName.PartyGameLobbyStoreView)
+	VersionActivityFixedHelper.getVersionActivityDungeonController(_bigVersion, _smallVersion).instance:openStoreView(VersionActivity3_9Enum.ActivityId.V3_A9_PartyGameStore, ViewName.PartyGameLobbyStoreView)
 end
 
 function PartyGameLobbyController:_onEnterMainSceneDone()
-	VersionActivity3_4EnterController.instance:directOpenVersionActivityEnterView(VersionActivity3_4Enum.ActivityId.PartyGame)
+	VersionActivity3_9EnterController.instance:directOpenVersionActivityEnterView(VersionActivity3_9Enum.ActivityId.V3_A9_PartyGame)
 end
 
 function PartyGameLobbyController:openActivityEnterView()
 	GameSceneMgr.instance:dispatchEvent(SceneEventName.SetLoadingTypeOnce, GameLoadingState.PartyGameLobbyLoadingView)
 
-	if ActivityModel.instance:isActOnLine(VersionActivity3_4Enum.ActivityId.PartyGame) then
+	if ActivityModel.instance:isActOnLine(VersionActivity3_9Enum.ActivityId.V3_A9_PartyGame) then
 		SceneHelper.instance:waitSceneDone(SceneType.Main, self._onEnterMainSceneDone, self)
 	end
 
@@ -529,8 +542,11 @@ function PartyGameLobbyController:enterGameLobby()
 		return
 	end
 
+	PartyGameRpc.instance:setUpKcpRpcCallBack()
+	PartyGameController.instance:setUpLuaCallBack()
 	GameSceneMgr.instance:dispatchEvent(SceneEventName.SetLoadingTypeOnce, GameLoadingState.PartyGameLobbyLoadingView)
 	GameSceneMgr.instance:startScene(SceneType.PartyGameLobby, 1, 1, true)
+	PartyGameTrialController.instance:clearTrialData()
 end
 
 function PartyGameLobbyController:openPartyGameLobbyAddRoomView(param, isImmediate)
@@ -555,7 +571,7 @@ function PartyGameLobbyController:setSkipGame(type)
 	local function yesFunc()
 		GameSceneMgr.instance:dispatchEvent(SceneEventName.SetLoadingTypeOnce, GameLoadingState.PartyGameLobbyLoadingView)
 
-		if ActivityModel.instance:isActOnLine(VersionActivity3_4Enum.ActivityId.PartyGame) then
+		if ActivityModel.instance:isActOnLine(VersionActivity3_9Enum.ActivityId.V3_A9_PartyGame) then
 			SceneHelper.instance:waitSceneDone(SceneType.Main, self._onEnterMainSceneDone, self)
 		end
 

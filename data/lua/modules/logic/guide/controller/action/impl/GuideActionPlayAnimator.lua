@@ -44,6 +44,12 @@ function GuideActionPlayAnimator:_stopAnimator()
 	end
 end
 
+function GuideActionPlayAnimator:_clearAnimator()
+	if self._animator and self._endAnimTime then
+		TaskDispatcher.runDelay(self._stopAnimator, self, self._endAnimTime)
+	end
+end
+
 function GuideActionPlayAnimator:onDestroy()
 	GuideActionPlayAnimator.super.onDestroy(self)
 
@@ -51,9 +57,7 @@ function GuideActionPlayAnimator:onDestroy()
 		self._animator:Play(self._endAnim)
 	end
 
-	if self._animator and self._endAnimTime then
-		TaskDispatcher.runDelay(self._stopAnimator, self, self._endAnimTime)
-	end
+	self:_clearAnimator()
 
 	if self._loader then
 		self._loader:dispose()

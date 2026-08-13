@@ -32,6 +32,10 @@ function HeroGroupFightViewContainer:getFightRuleView()
 	return HeroGroupFightViewRule.New()
 end
 
+function HeroGroupFightViewContainer:getPresetFightView()
+	return HeroGroupPresetFightView.New()
+end
+
 function HeroGroupFightViewContainer:addCommonViews(views)
 	table.insert(views, self._heroGroupFightView)
 	table.insert(views, HeroGroupAnimView.New())
@@ -40,7 +44,14 @@ function HeroGroupFightViewContainer:addCommonViews(views)
 	table.insert(views, self:getFightRuleView())
 	table.insert(views, HeroGroupInfoScrollView.New())
 	table.insert(views, CheckActivityEndView.New())
-	table.insert(views, HeroGroupPresetFightView.New())
+	table.insert(views, self:getPresetFightView())
+
+	local isAllowAssist = HeroGroupModel.instance:getAssistMo()
+
+	if isAllowAssist then
+		table.insert(views, HeroGroupFightAssistBtn.New())
+	end
+
 	table.insert(views, TabViewGroup.New(1, "#go_container/btnContain/commonBtns"))
 	table.insert(views, TabViewGroup.New(2, "#go_righttop/#go_power"))
 end

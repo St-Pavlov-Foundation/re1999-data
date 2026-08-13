@@ -58,7 +58,7 @@ function VersionActivity3_4PartyGameEnterView:_btnachievementpreviewOnClick()
 end
 
 function VersionActivity3_4PartyGameEnterView:_btnstoreOnClick()
-	PartyGameLobbyController.instance:enterStore()
+	PartyGameLobbyController.instance:enterStore(self:getPartyGameStoreId())
 end
 
 function VersionActivity3_4PartyGameEnterView:_btnenterOnClick()
@@ -91,10 +91,18 @@ function VersionActivity3_4PartyGameEnterView:_btnLockedOnClick()
 	return
 end
 
+function VersionActivity3_4PartyGameEnterView:getStoreActInfoMo()
+	return ActivityModel.instance:getActivityInfo()[self:getPartyGameStoreId()]
+end
+
+function VersionActivity3_4PartyGameEnterView:getPartyGameStoreId()
+	return VersionActivity3_4Enum.ActivityId.PartyGameStore
+end
+
 function VersionActivity3_4PartyGameEnterView:_editableInitView()
 	self.actId = self.viewContainer.activityId
 
-	local storeActInfoMo = ActivityModel.instance:getActivityInfo()[VersionActivity3_4Enum.ActivityId.PartyGameStore]
+	local storeActInfoMo = self:getStoreActInfoMo()
 
 	self._txtshop.text = storeActInfoMo.config.name
 
@@ -133,7 +141,7 @@ function VersionActivity3_4PartyGameEnterView:_getOutSideInfo(cmd, resultCode, m
 end
 
 function VersionActivity3_4PartyGameEnterView:refreshStoreCurrency()
-	local currencyMO = CurrencyModel.instance:getCurrency(CurrencyEnum.CurrencyType.PartyGameStoreCoin)
+	local currencyMO = CurrencyModel.instance:getCurrency(CurrencyEnum.CurrencyType.V3a9PartyGameStoreCoin)
 	local quantity = currencyMO and currencyMO.quantity or 0
 
 	self._txtnum.text = GameUtil.numberDisplay(quantity)

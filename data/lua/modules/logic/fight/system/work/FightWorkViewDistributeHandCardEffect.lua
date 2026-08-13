@@ -20,7 +20,12 @@ function FightWorkViewDistributeHandCardEffect:onStart()
 		self.flow:addWork(FigthCardDistributeEffect.New())
 	end
 
+	self.flow:registFinishCallback(self.onFlowDone, self)
 	self.flow:start(self.context)
+end
+
+function FightWorkViewDistributeHandCardEffect:onFlowDone()
+	return self:onDone(true)
 end
 
 function FightWorkViewDistributeHandCardEffect:clearWork()

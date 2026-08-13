@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "racer": 1,
+    "name": "加速",
+    "effect": "20011|20012|20081",
+    "energy": 200,
+    "energyType": "1",
+    "live2DAnimation": ""
+  },
+  {
+    "id": 2,
+    "racer": 5,
+    "name": "潜航",
+    "effect": "20021|20022|20023|20024|20025",
+    "energy": 200,
+    "energyType": "1",
+    "live2DAnimation": ""
+  },
+  {
+    "id": 3,
+    "racer": 2,
+    "name": "隐身",
+    "effect": "20031|20032|20033|20034",
+    "energy": 200,
+    "energyType": "1",
+    "live2DAnimation": ""
+  },
+  {
+    "id": 4,
+    "racer": 3,
+    "name": "腾跃",
+    "effect": "20041|20042|20043",
+    "energy": 300,
+    "energyType": "2#60#400061,100016,400101",
+    "live2DAnimation": ""
+  },
+  {
+    "id": 5,
+    "racer": 6,
+    "name": "干扰",
+    "effect": "20051|20081",
+    "energy": 100,
+    "energyType": "1",
+    "live2DAnimation": ""
+  },
+  {
+    "id": 6,
+    "racer": 7,
+    "name": "冲刺",
+    "effect": "20061|20062|20081",
+    "energy": 150,
+    "energyType": "1",
+    "live2DAnimation": ""
+  },
+  {
+    "id": 7,
+    "racer": 4,
+    "name": "突进",
+    "effect": "20071|20082",
+    "energy": 150,
+    "energyType": "3#3#50",
+    "live2DAnimation": ""
+  }
+]

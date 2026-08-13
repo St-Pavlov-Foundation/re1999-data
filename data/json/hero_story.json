@@ -862,5 +862,32 @@
     "permanentUnlock": "2#24#1",
     "signature": "3020",
     "preStoryId": 0
+  },
+  {
+    "id": 33,
+    "chapterId": 0,
+    "unlock": "2#24#0",
+    "bonus": "",
+    "heroName": "洋葱头",
+    "photo": "305402",
+    "cgBg": "305401",
+    "order": 33,
+    "name": "流行于世界",
+    "nameEn": "Broadcast to the World",
+    "queryVersion": "3.9",
+    "episodeId": 0,
+    "main_pic": "rolestory_img_33",
+    "monster_pic": "",
+    "challengeBonus": "",
+    "activityId": 13912,
+    "activity_pic": "",
+    "cgUnlockEpisodeId": 0,
+    "cgUnlockStoryId": 305406,
+    "cgPos": "771.6#-18.4",
+    "cgScale": "1",
+    "mainviewName": "洋葱头",
+    "permanentUnlock": "2#24#1",
+    "signature": "3054",
+    "preStoryId": 0
   }
 ]

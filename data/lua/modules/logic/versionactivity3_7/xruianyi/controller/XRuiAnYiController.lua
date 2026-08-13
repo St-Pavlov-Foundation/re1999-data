@@ -161,10 +161,6 @@ function XRuiAnYiController:_onRecInfo(cmd, resultCode, msg)
 	end
 end
 
-function XRuiAnYiController:reInit()
-	return
-end
-
 XRuiAnYiController.instance = XRuiAnYiController.New()
 
 return XRuiAnYiController

@@ -35,6 +35,10 @@ function NecrologistStoryControlMgrComp:playControl(storyConfig, isSkip, fromIte
 	local isEmpty = string.nilorempty(control)
 
 	if isEmpty then
+		if not fromItem then
+			self.storyView:runNextStep(isSkip)
+		end
+
 		return
 	end
 

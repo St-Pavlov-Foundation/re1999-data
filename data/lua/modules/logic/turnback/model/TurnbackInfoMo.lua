@@ -46,6 +46,10 @@ function TurnbackInfoMo:init(info)
 	self.config = TurnbackConfig.instance:getTurnbackCo(self.id)
 	self.dropinfos = info.dropInfos
 	self.dailyBonus = info.getDailyBonus
+	self._leaveDays = Mathf.Floor((ServerTime.now() - self.leaveTime) / TimeUtil.OneDaySecond)
+	self.resourceReturn = info.resourceReturn
+
+	self:refreshResourceReturnInfo()
 end
 
 function TurnbackInfoMo:isStart()
@@ -60,11 +64,19 @@ function TurnbackInfoMo:isInReommendTime()
 	return self.leaveTime > 0 and ServerTime.now() - self.leaveTime >= 0
 end
 
+function TurnbackInfoMo:getLeaveDay()
+	return self._leaveDays
+end
+
 function TurnbackInfoMo:isInOpenTime()
 	local isStart = self:isStart()
 	local isEnd = self:isEnd()
 
-	return isStart and not isEnd
+	if not isStart or isEnd then
+		return false
+	end
+
+	return true
 end
 
 function TurnbackInfoMo:isNewType()
@@ -131,6 +143,102 @@ function TurnbackInfoMo:isClaimedDailyBonus(day)
 	local bits = Bitwise["<<"](1, day)
 
 	return Bitwise.has(self.dailyBonus, bits)
+end
+
+function TurnbackInfoMo:getCurRewardCurrencyInfo()
+	if not self._currencyInfo then
+		local co = self.config
+
+		if co and not string.nilorempty(co.resourceReturnVitality) then
+			self._currencyInfo = string.splitToNumber(co.resourceReturnVitality, "#")
+		end
+	end
+
+	return self._currencyInfo
+end
+
+function TurnbackInfoMo:getReturnRewardInfo()
+	return self.resourceReturn
+end
+
+function TurnbackInfoMo:getReturnLeftTaskIds()
+	return self._leftTaskIds
+end
+
+function TurnbackInfoMo:refreshResourceReturnInfo()
+	self._returnRewardList = {}
+	self._returnRewardDict = {}
+	self._returnTaskIdList = {}
+	self._leftTaskIds = self.resourceReturn.leftTaskIds
+	self._isCanClaimReward = false
+
+	if not self.resourceReturn or not self.resourceReturn.open then
+		return
+	end
+
+	self._lastFinishRandomTaskId = self.resourceReturn.lastFinishRandomTaskId
+
+	if self.resourceReturn.resourceReturnTasks then
+		for _, info in ipairs(self.resourceReturn.resourceReturnTasks) do
+			table.insert(self._returnTaskIdList, info.id)
+		end
+	end
+
+	if self.resourceReturn.rewards then
+		for _, rewardInfo in ipairs(self.resourceReturn.rewards) do
+			local mo = {}
+
+			mo.state = rewardInfo.state
+			mo.rewardId = rewardInfo.rewardId
+			mo.needVitality = rewardInfo.needVitality
+			mo.co = lua_turnback_return_reward.configDict[rewardInfo.rewardId]
+			mo.bonus = GameUtil.splitString2(mo.co.bonus, true, "|", "#")
+
+			table.insert(self._returnRewardList, mo)
+
+			self._returnRewardDict[mo.needVitality] = mo
+
+			if rewardInfo.state == TurnbackEnum.SearchState.CanGet then
+				self._isCanClaimReward = true
+			end
+		end
+	end
+end
+
+function TurnbackInfoMo:onGetResourceReturnReward(hasGetReturnRewardIds)
+	local list = {}
+
+	if hasGetReturnRewardIds then
+		for _, id in ipairs(hasGetReturnRewardIds) do
+			list[id] = true
+		end
+	end
+
+	for _, mo in ipairs(self._returnRewardList) do
+		if list[mo.rewardId] then
+			mo.state = TurnbackEnum.SearchState.HasGet
+		end
+	end
+end
+
+function TurnbackInfoMo:getReturnRewardList()
+	return self._returnRewardList
+end
+
+function TurnbackInfoMo:getReturnRewardMoByNeedVitality(needVitality)
+	return self._returnRewardDict[needVitality]
+end
+
+function TurnbackInfoMo:isCanClaimReward()
+	return self._isCanClaimReward
+end
+
+function TurnbackInfoMo:getReturnTaskIds()
+	return self._returnTaskIdList
+end
+
+function TurnbackInfoMo:getLastFinishRandomTaskId()
+	return self._lastFinishRandomTaskId
 end
 
 return TurnbackInfoMo

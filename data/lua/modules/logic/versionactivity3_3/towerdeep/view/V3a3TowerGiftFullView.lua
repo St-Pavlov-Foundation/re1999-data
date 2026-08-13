@@ -38,10 +38,6 @@ function V3a3TowerGiftFullView:removeEvents()
 	self:removeEventCb(TaskController.instance, TaskEvent.onReceiveFinishReadTaskReply, self._updateItem, self)
 end
 
-function V3a3TowerGiftFullView:_btngotoOnClick()
-	return
-end
-
 function V3a3TowerGiftFullView:_editableInitView()
 	return
 end

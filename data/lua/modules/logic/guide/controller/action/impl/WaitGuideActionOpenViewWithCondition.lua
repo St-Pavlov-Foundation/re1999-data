@@ -509,4 +509,10 @@ function WaitGuideActionOpenViewWithCondition.checkAtomicDungeonUnlock()
 	return AtomicDungeonController.instance:isUnlockDungeon()
 end
 
+function WaitGuideActionOpenViewWithCondition.checkNaxisuoxiGameId(id)
+	local curGameId = NaxisuosiPipeModel.instance:getGameId()
+
+	return curGameId ~= nil and curGameId == tonumber(id)
+end
+
 return WaitGuideActionOpenViewWithCondition

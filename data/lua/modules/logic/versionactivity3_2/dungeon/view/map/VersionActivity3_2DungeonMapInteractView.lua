@@ -39,6 +39,20 @@ function VersionActivity3_2DungeonMapInteractView:_onClickElement(mapElement)
 	self._interactView:showInteractUI(mapElement)
 end
 
+function VersionActivity3_2DungeonMapInteractView:onRecheck(elementCo)
+	if elementCo.type == DungeonEnum.ElementType.V3a2Dialogue then
+		self._interactView = self:_getInteract3View()
+	elseif elementCo.type == DungeonEnum.ElementType.V3a2Option or elementCo.type == DungeonEnum.ElementType.V3a2OptionFinish then
+		self._interactView = self:_getInteract2View()
+	else
+		self._interactView = self:_getInteractView()
+	end
+
+	self._interactView:removeEvents()
+	self._interactView:addEvents()
+	self._interactView:onRecheck(elementCo)
+end
+
 function VersionActivity3_2DungeonMapInteractView:_getInteractView()
 	if not self._interact1View then
 		self._interact1View = self:openSubView(VersionActivity3_2DungeonMapNormalInteractView, self.viewGO)

@@ -151,7 +151,7 @@ function AchievementSelectListModel:setTab(tabType)
 	self._curCategory = tabType
 
 	if self:checkIsNamePlate() then
-		self.isGroup = false
+		self.isGroup = true
 	end
 
 	self:refreshTabData()
@@ -172,12 +172,10 @@ function AchievementSelectListModel:refreshTabData()
 	local moList = targetCache[self._curCategory]
 
 	if not moList then
-		if self.isGroup then
-			moList = self:buildGroupMOList(self._curCategory)
-		elseif self._curCategory == AchievementEnum.Type.NamePlate then
-			self:clearAllSelect()
-
+		if self._curCategory == AchievementEnum.Type.NamePlate then
 			moList = self:buildNamePlateMOList(self._curCategory)
+		elseif self.isGroup then
+			moList = self:buildGroupMOList(self._curCategory)
 		else
 			moList = self:buildSingleMOList(self._curCategory)
 		end
@@ -363,17 +361,7 @@ function AchievementSelectListModel:checkIsSelected(achievementCfg)
 	if self.isGroup and achievementCfg.groupId ~= 0 then
 		return self:isGroupSelected(achievementCfg.groupId)
 	else
-		local taskCfgs = AchievementConfig.instance:getTasksByAchievementId(achievementCfg.id)
-
-		if taskCfgs then
-			for _, v in pairs(taskCfgs) do
-				if self:isSingleSelected(v.id) then
-					return true
-				end
-			end
-		end
-
-		return false
+		return self.singleSet[achievementCfg.id] == true
 	end
 end
 
@@ -382,7 +370,7 @@ function AchievementSelectListModel:getInfoList(scrollGO)
 	local list = self:getList()
 
 	for i, mo in ipairs(list) do
-		local mixCellInfo = SLFramework.UGUI.MixCellInfo.New(i, mo:getLineHeight(), i)
+		local mixCellInfo = SLFramework.UGUI.MixCellInfo.New(1, mo:getLineHeight(), i)
 
 		table.insert(mixCellInfos, mixCellInfo)
 	end
@@ -413,11 +401,15 @@ function AchievementSelectListModel:isGroupSelected(groupId)
 end
 
 function AchievementSelectListModel:getSingleSelectedCount()
-	return tabletool.len(self.singleSet)
+	return tabletool.len(self.singleSet) - self:getNamePlateSelectedCount()
 end
 
 function AchievementSelectListModel:getGroupSelectedCount()
-	return tabletool.len(self.groupSet)
+	return tabletool.len(self.groupSet) + self:getNamePlateSelectedCount()
+end
+
+function AchievementSelectListModel:getNamePlateSelectedCount()
+	return self:getSelectCountByCategory(AchievementEnum.Type.NamePlate)
 end
 
 function AchievementSelectListModel:setSingleSelect(taskId, isSelect)
@@ -458,7 +450,7 @@ function AchievementSelectListModel:getSaveRequestParam()
 	local taskIdList = {}
 	local groupIdResult = 0
 
-	if self.isGroup then
+	if self.isGroup and not self:checkIsNamePlate() then
 		for _, groupId in ipairs(self.groupSelectList) do
 			self:fillGroupTaskIds(taskIdList, groupId)
 
@@ -534,6 +526,22 @@ function AchievementSelectListModel:clearAllSelect()
 	self.selectGroupCategoryMap = {}
 end
 
+function AchievementSelectListModel:clearNamePlateAllSelect()
+	if self.selectSingleCategoryMap then
+		local list = self.selectSingleCategoryMap[AchievementEnum.Type.NamePlate]
+
+		if list then
+			for id in pairs(list) do
+				tabletool.removeValue(self.singleSelectList, id)
+
+				self.singleSet[id] = nil
+			end
+
+			self.selectSingleCategoryMap[AchievementEnum.Type.NamePlate] = nil
+		end
+	end
+end
+
 function AchievementSelectListModel:getSelectCount()
 	if self.isGroup then
 		return self.groupSet and tabletool.len(self.groupSet) or 0
@@ -544,6 +552,11 @@ end
 
 function AchievementSelectListModel:getSelectCountByCategory(category)
 	local selectMap = self.isGroup and self.selectGroupCategoryMap or self.selectSingleCategoryMap
+
+	if category == AchievementEnum.Type.NamePlate then
+		selectMap = self.selectSingleCategoryMap
+	end
+
 	local categoryMap = selectMap and selectMap[category]
 	local categorySelectCount = categoryMap and tabletool.len(categoryMap) or 0
 

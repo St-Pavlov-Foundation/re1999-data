@@ -51,6 +51,16 @@ function FightTempDataMgr:getUnnamedDataMgr()
 	return self.unnamedDataMgr
 end
 
+function FightTempDataMgr:getHeDuoNieDataMgr()
+	if not self.heDuoNieDataMgr then
+		self.heDuoNieDataMgr = FightHeDuoNieDataMgr.New()
+
+		self.heDuoNieDataMgr:init()
+	end
+
+	return self.heDuoNieDataMgr
+end
+
 function FightTempDataMgr:setAutoSelectedCrystal(selected)
 	self.autoSelectedCrystal = true
 end

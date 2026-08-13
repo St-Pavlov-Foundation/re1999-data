@@ -19,6 +19,10 @@ function FightEntityVisibleComp:_onSkillPlayStart(entity, skillId, fightStepData
 		return
 	end
 
+	if fightStepData.isBornTimeline then
+		return
+	end
+
 	local relative = FightHelper.getRelativeEntityIdDict(fightStepData)
 
 	if relative[self.entity.id] then

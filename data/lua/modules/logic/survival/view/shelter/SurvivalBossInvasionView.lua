@@ -148,7 +148,9 @@ function SurvivalBossInvasionView:refresh()
 		gohelper.setActive(self.txt_noIcon.gameObject, false)
 		gohelper.setActive(self.txt_LimitTime.gameObject, true)
 
-		self.txt_LimitTime.text = string.format("%s%s", remain, luaLang("time_day"))
+		self.txt_LimitTime.text = GameUtil.getSubPlaceholderLuaLang(luaLang("day_common"), {
+			remain
+		})
 	end
 end
 

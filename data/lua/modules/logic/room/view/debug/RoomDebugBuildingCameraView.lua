@@ -41,7 +41,7 @@ end
 
 function RoomDebugBuildingCameraView:_btnsaveOnClick()
 	if not self._selectCfg then
-		GameFacade.showToast(94, "选择建筑，后方可输出相机参数。")
+		GameFacade.showToast(ToastEnum.IconId, "选择建筑，后方可输出相机参数。")
 
 		return
 	end
@@ -245,7 +245,7 @@ function RoomDebugBuildingCameraView:_logBuildingCharacterCameraParam()
 	local buildingEntity, characterEntity = self:_getSelectEntity()
 
 	if not buildingEntity then
-		GameFacade.showToast(94, "选择建筑，后方可输出相机参数。")
+		GameFacade.showToast(ToastEnum.IconId, "选择建筑，后方可输出相机参数。")
 
 		return
 	end
@@ -255,7 +255,7 @@ function RoomDebugBuildingCameraView:_logBuildingCharacterCameraParam()
 	if not characterEntity then
 		local heroCo = HeroConfig.instance:getHeroCO(interactionCfg.heroId)
 
-		GameFacade.showToast(94, string.format("当前场景没放置【%s】", heroCo and heroCo.name))
+		GameFacade.showToast(ToastEnum.IconId, string.format("当前场景没放置【%s】", heroCo and heroCo.name))
 
 		return
 	end
@@ -308,7 +308,7 @@ function RoomDebugBuildingCameraView:_getBuildingCameraParam()
 	local buildingEntity = self:_getSelectEntity()
 
 	if not buildingEntity then
-		GameFacade.showToast(94, "选择建筑后，方能得到建筑相机参数。")
+		GameFacade.showToast(ToastEnum.IconId, "选择建筑后，方能得到建筑相机参数。")
 
 		return
 	end
@@ -344,7 +344,7 @@ function RoomDebugBuildingCameraView:_applayBuildingCameraParam(param)
 	local buildingEntity = self:_getSelectEntity()
 
 	if not buildingEntity then
-		GameFacade.showToast(94, "选择建筑后，设置当前相机参数。")
+		GameFacade.showToast(ToastEnum.IconId, "选择建筑后，设置当前相机参数。")
 
 		return
 	end
@@ -404,7 +404,7 @@ function RoomDebugBuildingCameraView:_getRoomScene()
 end
 
 function RoomDebugBuildingCameraView:_applayCameraFinish()
-	GameFacade.showToast(94, "设置建筑相机镜头成功")
+	GameFacade.showToast(ToastEnum.IconId, "设置建筑相机镜头成功")
 end
 
 function RoomDebugBuildingCameraView:_getMOByBuildingId(buildingId)

@@ -2,7 +2,7 @@
 
 module("modules.logic.versionactivity3_7.travelgo.battle.behavior.node.graphic.TravelGoBattleResLoadNode", package.seeall)
 
-local TravelGoBattleResLoadNode = class("TravelGoBattleResLoad", TravelGoBehaviorNode)
+local TravelGoBattleResLoadNode = class("TravelGoBattleResLoadNode", TravelGoBehaviorNode)
 
 function TravelGoBattleResLoadNode:ctor()
 	TravelGoBattleResLoadNode.super.ctor(self)

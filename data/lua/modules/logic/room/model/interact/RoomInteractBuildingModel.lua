@@ -13,7 +13,7 @@ function RoomInteractBuildingModel:reInit()
 end
 
 function RoomInteractBuildingModel:clear()
-	RoomMapBuildingAreaModel.super.clear(self)
+	RoomInteractBuildingModel.super.clear(self)
 
 	self._heroId2BuildingUidDict = {}
 end

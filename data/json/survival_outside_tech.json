@@ -1045,7 +1045,7 @@
     "belongRole": 6,
     "point": "1",
     "icon": "",
-    "desc": "地图探索中只会出现精明的魔精商人（只售卖”有用的“道具）",
+    "desc": "地图探索中只会出现精明的魔精商人（只售卖“有用的”道具）",
     "preNodes": "",
     "addTalentIds": "502410",
     "extendScoreFix": 0,

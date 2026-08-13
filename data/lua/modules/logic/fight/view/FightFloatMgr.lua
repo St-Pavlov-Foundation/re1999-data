@@ -12,6 +12,11 @@ local BuffType = {
 	[FightEnum.FloatType.buff] = true
 }
 
+FightFloatMgr.SkinId = {
+	Default = 0,
+	Duck_3_9 = 682804
+}
+
 function FightFloatMgr:ctor()
 	self._loader = nil
 	self._id2PlayingItem = {}
@@ -44,6 +49,8 @@ function FightFloatMgr:getFloatPrefab()
 	local co = curStyleId and lua_fight_ui_style.configDict[curStyleId]
 
 	if not co then
+		self.skinId = FightFloatMgr.SkinId.Default
+
 		return ResUrl.getSceneUIPrefab("fight", "fightfloat")
 	end
 
@@ -51,12 +58,20 @@ function FightFloatMgr:getFloatPrefab()
 	local floatCo = itemId and lua_fight_float_effect.configDict[itemId]
 
 	if not floatCo then
+		self.skinId = FightFloatMgr.SkinId.Default
+
 		logError(string.format("lua_fight_float_effect 战斗飘字表没找到 道具id : '%s' 对应的配置", itemId))
 
 		return ResUrl.getSceneUIPrefab("fight", "fightfloat")
 	end
 
+	self.skinId = floatCo.id
+
 	return ResUrl.getSceneUIPrefab("fight", floatCo.prefabPath)
+end
+
+function FightFloatMgr:getCurSkinId()
+	return self.skinId
 end
 
 function FightFloatMgr:_onLoadCallback()
@@ -213,7 +228,11 @@ function FightFloatMgr:_initPrefab(type, typePrefab, randomXRange)
 	local floatParent = self._floatParent
 
 	self._type2ItemPool[type] = LuaObjPool.New(20, function()
-		return FightFloatItem.New(type, gohelper.clone(typePrefab, floatParent, "float" .. type), randomXRange)
+		local prefab = gohelper.clone(typePrefab, floatParent, "float" .. type)
+		local skinId = FightFloatMgr.instance:getCurSkinId()
+		local floatItem = FightFloatItem.New(type, prefab, randomXRange, skinId)
+
+		return floatItem
 	end, function(obj)
 		obj:onDestroy()
 	end, function(obj)

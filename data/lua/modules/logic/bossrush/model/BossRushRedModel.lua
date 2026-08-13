@@ -277,7 +277,7 @@ function BossRushRedModel:_refreshReward(refDict, stage)
 	end
 
 	if self:_modifyOrMakeRedDotGroupItem(defineId, uid, value) then
-		refDict[defineId] = true
+		refDict[defineId] = trued
 	end
 end
 
@@ -406,9 +406,35 @@ function BossRushRedModel:_refreshRootInner(refDict)
 		value = value + 1
 	end
 
+	value = value + self:_getV3a9ActValue()
+
 	if self:_modifyOrMakeRedDotGroupItem(defineId, uid, value) then
 		refDict[defineId] = true
 	end
+end
+
+function BossRushRedModel:_getV3a9ActValue()
+	local value = 0
+
+	for actId, info in pairs(V3a9BossRushEnum.ActReddot) do
+		if ActivityHelper.isOpen(actId) then
+			local _stages = BossRushConfig.instance:getStages(actId)
+
+			if _stages then
+				for _, v in pairs(_stages) do
+					if self:isNewUnlockActStage(actId, v.stage) then
+						value = value + 1
+					end
+				end
+			end
+
+			if RedDotModel.instance:isDotShow(RedDotEnum.DotNode.V3a9BossRushAct, 0) then
+				value = value + 1
+			end
+		end
+	end
+
+	return value
 end
 
 function BossRushRedModel:_refreshRoot()
@@ -925,6 +951,46 @@ function BossRushRedModel:_reload()
 
 	RedDotRpc.instance:clientAddRedDotGroupList(redList, true)
 	sMyPrintf("<color=#00FF00>reload BossRushRedModel finished!!</color>")
+end
+
+function BossRushRedModel:setIsV3a9NewUnlockStage(actId, stage, bool)
+	if not V3a9BossRushEnum.ActReddot[actId] then
+		return
+	end
+
+	local mo = V3a9_BossRushModel.instance:getStageMo(actId, stage)
+
+	if not mo then
+		return
+	end
+
+	local list = {}
+
+	mo:setIsNewUnlockStage(bool)
+
+	local defineId = V3a9BossRushEnum.ActReddot[actId].NewBoss
+	local info = {
+		id = defineId,
+		uid = stage,
+		value = bool and 1 or 0
+	}
+
+	table.insert(list, info)
+	RedDotRpc.instance:clientAddRedDotGroupList(list)
+	RedDotController.instance:dispatchEvent(RedDotEvent.UpdateRelateDotInfo, list)
+end
+
+function BossRushRedModel:isNewUnlockActStage(actId, stage)
+	local key = string.format("%s_%s_%s", V3a9BossRushEnum.PlayerPrefKey.NewUnlockStage, actId, stage)
+	local value = GameUtil.playerPrefsGetNumberByUserId(key, 0)
+
+	return value == 0
+end
+
+function BossRushRedModel:setIsNewUnlockActStage(actId, stage, isNew)
+	local key = string.format("%s_%s_%s", V3a9BossRushEnum.PlayerPrefKey.NewUnlockStage, actId, stage)
+
+	GameUtil.playerPrefsSetNumberByUserId(key, isNew and 0 or 1)
 end
 
 BossRushRedModel.instance = BossRushRedModel.New()

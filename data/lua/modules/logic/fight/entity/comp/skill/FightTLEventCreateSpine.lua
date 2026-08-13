@@ -115,18 +115,54 @@ function FightTLEventCreateSpine:onTrackStart(fightStepData, duration, paramsArr
 	for i = 1, count do
 		local defender = defenders[i]
 		local rootPosX, rootPosY, rootPosZ = 0, 0, 0
+		local startPosType = paramsArr[9]
 
-		if paramsArr[9] == "1" then
+		if startPosType == "1" then
 			if hangPointId == 1 then
 				rootPosX, rootPosY, rootPosZ = transformhelper.getLocalPos(self._attacker.go.transform)
 			else
 				rootPosX, rootPosY, rootPosZ = transformhelper.getPos(self._attacker.go.transform)
 			end
-		elseif paramsArr[9] == "2" and defender then
-			if hangPointId == 1 then
-				rootPosX, rootPosY, rootPosZ = transformhelper.getLocalPos(defender.go.transform)
+		elseif startPosType == "2" then
+			if defender then
+				if hangPointId == 1 then
+					rootPosX, rootPosY, rootPosZ = transformhelper.getLocalPos(defender.go.transform)
+				else
+					rootPosX, rootPosY, rootPosZ = transformhelper.getPos(defender.go.transform)
+				end
+			end
+		elseif startPosType == "5" or startPosType == "6" then
+			local side = startPosType == "5" and self._attacker:getSide() or self._attacker:getSide() == FightEnum.EntitySide.MySide and FightEnum.EntitySide.EnemySide or FightEnum.EntitySide.MySide
+			local entityList = {}
+
+			for entityId, entity in pairs(FightGameMgr.entityMgr.entityDic) do
+				if entity:getSide() == side and entity:getTag() ~= SceneTag.UnitNpc then
+					local isSub = FightDataHelper.entityMgr:isSub(entity.id)
+
+					if not isSub then
+						table.insert(entityList, entity)
+					end
+				end
+			end
+
+			table.sort(entityList, FightTLEventAtkFullEffect.sortByEntityX)
+
+			local listCount = #entityList
+
+			if listCount > 0 then
+				local pos1x, pos1y, pos1z = transformhelper.getLocalPos(entityList[1].go.transform)
+				local pos2x, pos2y, pos2z = transformhelper.getLocalPos(entityList[#entityList].go.transform)
+				local posX = (pos1x + pos2x) / 2
+				local posY = (pos1y + pos2y) / 2
+				local posZ = (pos1z + pos2z) / 2
+
+				rootPosX = posX
+				rootPosY = posY
+				rootPosZ = posZ
 			else
-				rootPosX, rootPosY, rootPosZ = transformhelper.getPos(defender.go.transform)
+				rootPosX = 0
+				rootPosY = 0
+				rootPosZ = 0
 			end
 		end
 

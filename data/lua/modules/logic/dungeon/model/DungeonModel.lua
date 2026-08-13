@@ -730,7 +730,8 @@ local BattleEpisodeTypes = {
 	[DungeonEnum.EpisodeType.Abyss] = true,
 	[DungeonEnum.EpisodeType.Sodache] = true,
 	[DungeonEnum.EpisodeType.AtomicDungeon] = true,
-	[DungeonEnum.EpisodeType.SystemFightManual] = true
+	[DungeonEnum.EpisodeType.SystemFightManual] = true,
+	[DungeonEnum.EpisodeType.BossRushActMode] = true
 }
 
 function DungeonModel.isBattleEpisode(config)

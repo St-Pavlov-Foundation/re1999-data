@@ -203,8 +203,9 @@ function HeroGroupSnapshotModel:getSelectIndex(snapshotId)
 	end
 end
 
-function HeroGroupSnapshotModel:getGroupName()
-	local groupId = self:getCurGroupId()
+function HeroGroupSnapshotModel:getGroupName(groupId)
+	groupId = groupId or self:getCurGroupId()
+
 	local info = self:getHeroGroupInfo(self.curSnapshotId, groupId)
 
 	return info and info.name

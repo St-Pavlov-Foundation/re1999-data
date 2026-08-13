@@ -30,14 +30,14 @@ function V3a4DestinyGiftFullView:onInitView()
 end
 
 function V3a4DestinyGiftFullView:addEvents()
-	self.super.addEvents(self)
+	V3a4DestinyGiftFullView.super.addEvents(self)
 	self._btnreward:AddClickListener(self._btnrewardOnClick, self)
 	self:addEventCb(ActivityController.instance, ActivityEvent.RefreshNorSignActivity, self.refreshReward, self)
 	self:addEventCb(PayController.instance, PayEvent.PayFinished, self.refreshGiftInfo, self)
 end
 
 function V3a4DestinyGiftFullView:removeEvents()
-	self.super.removeEvents(self)
+	V3a4DestinyGiftFullView.super.removeEvents(self)
 	self._btnreward:RemoveClickListener()
 	self:addEventCb(ActivityController.instance, ActivityEvent.RefreshNorSignActivity, self.refreshReward, self)
 	self:addEventCb(PayController.instance, PayEvent.PayFinished, self.refreshGiftInfo, self)
@@ -54,7 +54,7 @@ function V3a4DestinyGiftFullView:_btnrewardOnClick()
 end
 
 function V3a4DestinyGiftFullView:_editableInitView()
-	self.super._editableInitView(self)
+	V3a4DestinyGiftFullView.super._editableInitView(self)
 	gohelper.setActive(self._btnreward, true)
 end
 

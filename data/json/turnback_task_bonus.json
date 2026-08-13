@@ -169,5 +169,77 @@
     "character": 0,
     "content": "",
     "needPoint": 550
+  },
+  {
+    "turnbackId": 4,
+    "id": 1,
+    "bonus": "2#2#30",
+    "extraBonus": "10#11#1",
+    "character": 0,
+    "content": "",
+    "needPoint": 10
+  },
+  {
+    "turnbackId": 4,
+    "id": 2,
+    "bonus": "2#2#60",
+    "extraBonus": "1#481006#3",
+    "character": 0,
+    "content": "",
+    "needPoint": 60
+  },
+  {
+    "turnbackId": 4,
+    "id": 3,
+    "bonus": "10#11#1",
+    "extraBonus": "1#481007#1",
+    "character": 0,
+    "content": "",
+    "needPoint": 110
+  },
+  {
+    "turnbackId": 4,
+    "id": 4,
+    "bonus": "1#140001#1",
+    "extraBonus": "1#140001#1",
+    "character": 0,
+    "content": "",
+    "needPoint": 200
+  },
+  {
+    "turnbackId": 4,
+    "id": 5,
+    "bonus": "10#11#1",
+    "extraBonus": "2#2#60",
+    "character": 0,
+    "content": "",
+    "needPoint": 320
+  },
+  {
+    "turnbackId": 4,
+    "id": 6,
+    "bonus": "2#2#90",
+    "extraBonus": "2#2#60",
+    "character": 0,
+    "content": "",
+    "needPoint": 400
+  },
+  {
+    "turnbackId": 4,
+    "id": 7,
+    "bonus": "1#481006#6",
+    "extraBonus": "10#11#1",
+    "character": 0,
+    "content": "",
+    "needPoint": 460
+  },
+  {
+    "turnbackId": 4,
+    "id": 8,
+    "bonus": "2#2#300",
+    "extraBonus": "2#2#60",
+    "character": 0,
+    "content": "",
+    "needPoint": 550
   }
 ]

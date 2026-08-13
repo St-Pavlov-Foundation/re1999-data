@@ -154,6 +154,7 @@ end
 
 function HeroGroupRecommendView:onClose()
 	HeroGroupRecommendGroupListModel.instance:setCurEpisodeId(nil)
+	HeroGroupModel.instance:setAfterUpdateRecommendState(false)
 end
 
 function HeroGroupRecommendView:onDestroyView()

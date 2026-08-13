@@ -22,24 +22,47 @@ function FightDeviceCardDisplayEffect:onStart(context)
 
 	recthelper.setAnchorX(tipsTr, 1100 + tipsWidth)
 
-	local tipsSequence = FlowSequence.New()
-
-	tipsSequence:addWork(TweenWork.New({
-		type = "DOAnchorPosX",
-		tr = tipsTr,
-		to = tipsPosX - 10,
-		t = self._dt * 7
-	}))
-	tipsSequence:addWork(TweenWork.New({
-		type = "DOAnchorPosX",
-		tr = tipsTr,
-		to = tipsPosX,
-		t = self._dt * 3
-	}))
-
 	self._flow = FlowParallel.New()
 
-	self._flow:addWork(tipsSequence)
+	if SettingsModel.instance:getFightCardDetail() then
+		local tipsSequence = FlowSequence.New()
+
+		tipsSequence:addWork(TweenWork.New({
+			type = "DOAnchorPosX",
+			tr = tipsTr,
+			to = tipsPosX - 10,
+			t = self._dt * 7
+		}))
+		tipsSequence:addWork(TweenWork.New({
+			type = "DOAnchorPosX",
+			tr = tipsTr,
+			to = tipsPosX,
+			t = self._dt * 3
+		}))
+		self._flow:addWork(tipsSequence)
+	end
+
+	local itemTr = context.skillItemGO.transform
+	local itemAnchorSequence = FlowSequence.New()
+
+	itemAnchorSequence:addWork(TweenWork.New({
+		type = "DOAnchorPos",
+		tox = -15,
+		toy = 22,
+		tr = itemTr,
+		t = self._dt * 6
+	}))
+	self._flow:addWork(itemAnchorSequence)
+
+	local itemScaleSequence = FlowSequence.New()
+
+	itemScaleSequence:addWork(TweenWork.New({
+		to = 1.2,
+		type = "DOScale",
+		tr = itemTr,
+		t = self._dt * 3
+	}))
+	self._flow:addWork(itemScaleSequence)
 	self._flow:registerDoneListener(self._onWorkDone, self)
 	self._flow:start()
 end

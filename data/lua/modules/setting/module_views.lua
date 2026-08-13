@@ -506,7 +506,7 @@ module_views.FightQuitTipView = {
 	container = "FightQuitTipViewContainer",
 	bgBlur = 1,
 	mainRes = "ui/viewres/fight/fightquittipview.prefab",
-	layer = "POPUP",
+	layer = "POPUP_TOP",
 	viewType = ViewType.Modal,
 	anim = ViewAnim.Default,
 	otherRes = {
@@ -4324,6 +4324,9 @@ module_views.SettingsView = {
 			},
 			{
 				"ui/viewres/settings/settingsgameview.prefab"
+			},
+			{
+				"ui/viewres/settings/settingsfightview.prefab"
 			}
 		}
 	},
@@ -6067,6 +6070,42 @@ module_views.HandbookSkinSuitDetailView3_8_5_1 = {
 	destroy = 0,
 	container = "HandbookSkinSuitDetailView3_8_5_1Container",
 	mainRes = "ui/viewres/skinhandbook/skinsuitdetailview_1_4.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full,
+	anim = ViewAnim.Default,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	},
+	otherRes = {
+		[1] = "ui/viewres/skinhandbook/skinsuitdetailviewbtns.prefab"
+	}
+}
+module_views.HandbookSkinSuitDetailView3_9 = {
+	destroy = 0,
+	container = "HandbookSkinSuitDetailView3_9Container",
+	mainRes = "ui/viewres/skinhandbook/skinsuitdetailview_3_9.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full,
+	anim = ViewAnim.Default,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	},
+	otherRes = {
+		[1] = "ui/viewres/skinhandbook/skinsuitdetailviewbtns.prefab"
+	}
+}
+module_views.HandbookSkinSuitDetailView3_9_1 = {
+	destroy = 0,
+	container = "HandbookSkinSuitDetailView3_9_1Container",
+	mainRes = "ui/viewres/skinhandbook/skinsuitdetailview_3_9_1.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Full,
 	anim = ViewAnim.Default,
@@ -9436,7 +9475,7 @@ module_views.Season123EntryView = {
 	container = "Season123EntryViewContainer",
 	bgBlur = 4,
 	mainRes = "ui/viewres/seasonver/act123/season123mainview.prefab",
-	layer = "POPUP",
+	layer = "POPUP_TOP",
 	viewType = ViewType.Full,
 	tabRes = {
 		{
@@ -9467,7 +9506,7 @@ module_views.Season123RetailView = {
 	container = "Season123RetailViewContainer",
 	bgBlur = 0,
 	mainRes = "ui/viewres/seasonver/act123/season123retaillevelinfoview.prefab",
-	layer = "POPUP",
+	layer = "POPUP_TOP",
 	viewType = ViewType.Full,
 	tabRes = {
 		{
@@ -9511,7 +9550,7 @@ module_views.Season123EpisodeListView = {
 	container = "Season123EpisodeListViewContainer",
 	bgBlur = 4,
 	mainRes = "ui/viewres/seasonver/act123/season123episodelistview.prefab",
-	layer = "POPUP",
+	layer = "POPUP_TOP",
 	viewType = ViewType.Full,
 	tabRes = {
 		{
@@ -9587,7 +9626,7 @@ module_views.Season123PickHeroEntryView = {
 	destroy = 0,
 	container = "Season123PickHeroEntryViewContainer",
 	mainRes = "ui/viewres/seasonver/act123/season123pickheroentryview.prefab",
-	layer = "POPUP",
+	layer = "POPUP_TOP",
 	viewType = ViewType.Normal,
 	otherRes = {
 		[1] = "ui/viewres/seasonver/act123/season123celebritycarditem.prefab"
@@ -9630,7 +9669,7 @@ module_views.Season123ShowHeroView = {
 	destroy = 0,
 	container = "Season123ShowHeroViewContainer",
 	mainRes = "ui/viewres/seasonver/act123/season123showheroview.prefab",
-	layer = "POPUP",
+	layer = "POPUP_TOP",
 	viewType = ViewType.Normal,
 	otherRes = {
 		[1] = "ui/viewres/seasonver/act123/season123celebritycarditem.prefab"
@@ -13334,7 +13373,7 @@ module_views.ReactivityStoreView = {
 	destroy = 0,
 	container = "ReactivityStoreViewContainer",
 	bgBlur = 1,
-	mainRes = "ui/viewres/versionactivity_3_1/v3a1_dungeon/v3a1_storeview.prefab",
+	mainRes = "ui/viewres/versionactivity_3_2/v3a2_dungeon/v3a2_storeview.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Normal,
 	tabRes = {
@@ -14009,7 +14048,7 @@ module_views.Season123_2_3EntryView = {
 	container = "Season123_2_3EntryViewContainer",
 	bgBlur = 4,
 	mainRes = "ui/viewres/seasonver/v2a3_act123/season123mainview.prefab",
-	layer = "POPUP",
+	layer = "POPUP_TOP",
 	viewType = ViewType.Full,
 	tabRes = {
 		{
@@ -14040,7 +14079,7 @@ module_views.Season123_2_3RetailView = {
 	container = "Season123_2_3RetailViewContainer",
 	bgBlur = 0,
 	mainRes = "ui/viewres/seasonver/v2a3_act123/season123retaillevelinfoview.prefab",
-	layer = "POPUP",
+	layer = "POPUP_TOP",
 	viewType = ViewType.Full,
 	tabRes = {
 		{
@@ -14084,7 +14123,7 @@ module_views.Season123_2_3EpisodeListView = {
 	container = "Season123_2_3EpisodeListViewContainer",
 	bgBlur = 4,
 	mainRes = "ui/viewres/seasonver/v2a3_act123/season123episodelistview.prefab",
-	layer = "POPUP",
+	layer = "POPUP_TOP",
 	viewType = ViewType.Full,
 	tabRes = {
 		{
@@ -14161,7 +14200,7 @@ module_views.Season123_2_3PickHeroEntryView = {
 	container = "Season123_2_3PickHeroEntryViewContainer",
 	bgBlur = 1,
 	mainRes = "ui/viewres/seasonver/v2a3_act123/season123pickheroentryview.prefab",
-	layer = "POPUP",
+	layer = "POPUP_TOP",
 	viewType = ViewType.Normal,
 	otherRes = {
 		[1] = "ui/viewres/seasonver/v2a3_act123/season123celebritycarditem.prefab"
@@ -14204,7 +14243,7 @@ module_views.Season123_2_3ShowHeroView = {
 	destroy = 0,
 	container = "Season123_2_3ShowHeroViewContainer",
 	mainRes = "ui/viewres/seasonver/v2a3_act123/season123showheroview.prefab",
-	layer = "POPUP",
+	layer = "POPUP_TOP",
 	viewType = ViewType.Normal,
 	otherRes = {
 		[1] = "ui/viewres/seasonver/v2a3_act123/season123celebritycarditem.prefab"
@@ -14712,6 +14751,23 @@ module_views.RougeBossCollectionDropView = {
 				RougeEnum.ResPath.CollectionDetailBtnItem
 			}
 		}
+	}
+}
+module_views.RougeActivityTaskView = {
+	destroy = 0,
+	container = "RougeActivityTaskViewContainer",
+	mainRes = "ui/viewres/rouge/rougeactivitytaskview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	},
+	otherRes = {
+		"ui/viewres/rouge/rougeactivitytaskitem.prefab"
 	}
 }
 module_views.RougeStoreView = {
@@ -18686,15 +18742,6 @@ module_views.Activity173PanelView = {
 	viewType = ViewType.Normal,
 	anim = ViewAnim.Internal
 }
-module_views.ActivityInsightShowView = {
-	destroy = 0,
-	container = "ActivityInsightShowViewContainer",
-	bgBlur = 0,
-	mainRes = "ui/viewres/activity/show/activityinsightshowview.prefab",
-	layer = "POPUP_TOP",
-	viewType = ViewType.Normal,
-	anim = ViewAnim.Default
-}
 module_views.GiftInsightHeroChoiceView = {
 	destroy = 0,
 	container = "GiftInsightHeroChoiceViewContainer",
@@ -19273,15 +19320,6 @@ module_views.ActDuDuGuTaskView = {
 	otherRes = {
 		[1] = "ui/viewres/versionactivity_2_3/v2a3_roledudugu/v2a3_roledudugu_taskitem.prefab"
 	}
-}
-module_views.ActivityInsightShowView_2_3 = {
-	destroy = 0,
-	container = "ActivityInsightShowView_2_3Container",
-	bgBlur = 0,
-	mainRes = "ui/viewres/versionactivity_2_3/v2a3_newinsight/v2a3_activityinsightshowview.prefab",
-	layer = "POPUP_TOP",
-	viewType = ViewType.Normal,
-	anim = ViewAnim.Default
 }
 module_views.ZhiXinQuanErLevelView = {
 	destroy = 0,
@@ -19942,15 +19980,6 @@ module_views.WuErLiXiTaskView = {
 	otherRes = {
 		"ui/viewres/versionactivity_2_4/v2a4_wuerlixi/v2a4_wuerlixi_taskitem.prefab"
 	}
-}
-module_views.ActivityInsightShowView_2_4 = {
-	destroy = 0,
-	container = "ActivityInsightShowView_2_4Container",
-	bgBlur = 0,
-	mainRes = "ui/viewres/versionactivity_2_4/v2a4_newinsight/v2a4_activityinsightshowview.prefab",
-	layer = "POPUP_TOP",
-	viewType = ViewType.Normal,
-	anim = ViewAnim.Default
 }
 module_views.VersionActivity2_4MusicFreeView = {
 	destroy = 0,
@@ -21130,15 +21159,6 @@ module_views.V2a5_Role_PanelSignView_Part2 = {
 		[1] = "ui/viewres/activity/v2a5_role_signitem.prefab"
 	}
 }
-module_views.ActivityInsightShowView_2_5 = {
-	destroy = 0,
-	container = "ActivityInsightShowView_2_5Container",
-	bgBlur = 0,
-	mainRes = "ui/viewres/versionactivity_2_5/v2a5_newinsight/v2a5_activityinsightshowview.prefab",
-	layer = "POPUP_TOP",
-	viewType = ViewType.Normal,
-	anim = ViewAnim.Default
-}
 module_views.Activity186View = {
 	destroy = 0,
 	container = "Activity186ViewContainer",
@@ -21536,15 +21556,6 @@ module_views.V2a6_WeekwalkHeart_PanelView = {
 	viewType = ViewType.Normal,
 	anim = ViewAnim.Default
 }
-module_views.ActivityInsightShowView_2_6 = {
-	destroy = 0,
-	container = "ActivityInsightShowView_2_6Container",
-	bgBlur = 0,
-	mainRes = "ui/viewres/versionactivity_2_6/v2a6_newinsight/v2a6_activityinsightshowview.prefab",
-	layer = "POPUP_TOP",
-	viewType = ViewType.Normal,
-	anim = ViewAnim.Default
-}
 module_views.V2a6_WarmUp = {
 	destroy = 0,
 	container = "V2a6_WarmUpContainer",
@@ -21738,15 +21749,6 @@ module_views.CooperGarlandResultView = {
 	mainRes = "ui/viewres/versionactivity_2_7/v2a7_coopergarland/v2a7_coopergarland_resultview.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Modal,
-	anim = ViewAnim.Default
-}
-module_views.ActivityInsightShowView_2_7 = {
-	destroy = 0,
-	container = "ActivityInsightShowView_2_7Container",
-	bgBlur = 0,
-	mainRes = "ui/viewres/versionactivity_2_7/v2a7_newinsight/v2a7_activityinsightshowview.prefab",
-	layer = "POPUP_TOP",
-	viewType = ViewType.Normal,
 	anim = ViewAnim.Default
 }
 module_views.V2a7_Labor_FullSignView = {
@@ -22239,23 +22241,6 @@ module_views.TowerGiftPanelView = {
 	layer = "POPUP_TOP",
 	viewType = ViewType.Normal,
 	anim = ViewAnim.Default
-}
-module_views.DestinyStoneGiftPickChoiceView = {
-	bgBlur = 2,
-	container = "DestinyStoneGiftPickChoiceViewContainer",
-	maskAlpha = 0,
-	destroy = 0,
-	mainRes = "ui/viewres/activity/v2a7_tower_pickchoiceview.prefab",
-	layer = "POPUP_TOP",
-	viewType = ViewType.Normal,
-	anim = ViewAnim.Default,
-	tabRes = {
-		{
-			{
-				NavigateButtonsView.prefabPath
-			}
-		}
-	}
 }
 module_views.CharacterDestinyStoneUpView = {
 	destroy = 0,
@@ -24268,6 +24253,7 @@ VersionActivity3_5ViewDefine.init(module_views)
 VersionActivity3_6ViewDefine.init(module_views)
 VersionActivity3_7ViewDefine.init(module_views)
 VersionActivity3_8ViewDefine.init(module_views)
+VersionActivity3_9ViewDefine.init(module_views)
 
 module_views.GMYeShuMeiView = {
 	destroy = 0,
@@ -26188,6 +26174,54 @@ module_views.Turnback3BuyBpTipView = {
 	desampleRate = PostProcessingMgr.DesamplingRate.x8,
 	reduceRate = PostProcessingMgr.DesamplingRate.x8
 }
+module_views.Turnback4BeginnerView = {
+	bgBlur = 1,
+	container = "Turnback4BeginnerViewContainer",
+	destroy = 0,
+	mainRes = "ui/viewres/turnback/turnback3/turnback3_beginnerview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full,
+	anim = ViewAnim.Default,
+	otherRes = {
+		[1] = "ui/viewres/turnback/turnback3/turnback3_categoryitem.prefab"
+	},
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	}
+}
+module_views.Turnback4ProgressView = {
+	destroy = 0,
+	container = "Turnback4ProgressViewContainer",
+	mainRes = "ui/viewres/turnback/turnback3/turnback3_progressview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default
+}
+module_views.Turnback4DoubleView = {
+	destroy = 0,
+	container = "Turnback4DoubleViewContainer",
+	mainRes = "ui/viewres/turnback/return4/return4_doubleview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal
+}
+module_views.Turnback4SignInView = {
+	destroy = 0,
+	container = "Turnback4SignInViewContainer",
+	mainRes = "ui/viewres/turnback/return4/return4_signinview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal
+}
+module_views.Turnback4RewardView = {
+	destroy = 0,
+	container = "Turnback4RewardViewContainer",
+	mainRes = "ui/viewres/turnback/return4/return4_rewardview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal
+}
 module_views.StoreSupplementMonthCardTipView = {
 	bgBlur = 1,
 	container = "StoreSupplementMonthCardTipViewContainer",
@@ -27159,6 +27193,21 @@ module_views.AbyssStageDetailView = {
 		"ui/viewres/cloudredemption/clip/clip_icon_03.prefab"
 	}
 }
+module_views.AbyssStageDetailsView = {
+	destroy = 0,
+	container = "AbyssStageDetailsViewContainer",
+	bgBlur = 4,
+	mainRes = "ui/viewres/cloudredemption/cloudredemption_detailsview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	}
+}
 module_views.AbyssHeroGroupFightView = {
 	bgBlur = 4,
 	container = "AbyssHeroGroupFightViewContainer",
@@ -27709,14 +27758,172 @@ module_views.GoldenMilletPresentFull = {
 	layer = "POPUP_TOP",
 	viewType = ViewType.Normal
 }
+module_views.HedoneLevelView = {
+	destroy = 0,
+	container = "HedoneLevelViewContainer",
+	mainRes = "ui/viewres/versionactivity_3_9/v3a9_hedone/v3a9_hedone_levelview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	},
+	otherRes = {
+		[1] = "ui/viewres/versionactivity_3_9/v3a9_hedone/v3a9_hedone_levelitem.prefab"
+	}
+}
+module_views.HedoneTaskView = {
+	bgBlur = 0,
+	container = "HedoneTaskViewContainer",
+	destroy = 0,
+	mainRes = "ui/viewres/versionactivity_3_9/v3a9_hedone/v3a9_hedone_taskview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	},
+	otherRes = {
+		[1] = "ui/viewres/versionactivity_3_9/v3a9_hedone/v3a9_hedone_taskitem.prefab"
+	}
+}
+module_views.HedoneGameView = {
+	destroy = 0,
+	container = "HedoneGameViewContainer",
+	mainRes = "ui/viewres/versionactivity_3_9/v3a9_hedone/v3a9_hedone_gameview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full,
+	anim = ViewAnim.Default,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	}
+}
+module_views.HedoneResultView = {
+	destroy = 0,
+	container = "HedoneResultViewContainer",
+	mainRes = "ui/viewres/versionactivity_3_9/v3a9_hedone/v3a9_hedone_resultview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal
+}
+module_views.NaxisuosiLevelView = {
+	destroy = 0,
+	container = "NaxisuosiLevelViewContainer",
+	mainRes = "ui/viewres/versionactivity_3_9/v3a9_naxisuosi/v3a9_naxisuosi_levelview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	},
+	otherRes = {
+		[1] = "ui/viewres/versionactivity_3_9/v3a9_naxisuosi/v3a9_naxisuosi_levelitem.prefab"
+	}
+}
+module_views.NaxisuosiTaskView = {
+	bgBlur = 0,
+	container = "NaxisuosiTaskViewContainer",
+	destroy = 0,
+	mainRes = "ui/viewres/versionactivity_3_9/v3a9_naxisuosi/v3a9_naxisuosi_taskview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	},
+	otherRes = {
+		[1] = "ui/viewres/versionactivity_3_9/v3a9_naxisuosi/v3a9_naxisuosi_taskitem.prefab"
+	}
+}
+module_views.NaxisuosiGameView = {
+	destroy = 0,
+	container = "NaxisuosiGameViewContainer",
+	mainRes = "ui/viewres/versionactivity_3_9/v3a9_naxisuosi/v3a9_naxisuosi_gameview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	}
+}
+module_views.V3a9_BDuckLinkageFullView = {
+	destroy = 0,
+	container = "V3a9_BDuckLinkageFullViewContainer",
+	mainRes = "ui/viewres/activity/v3a9_linkgift_fullview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal
+}
+module_views.V3a9_BDuckLinkagePatFaceView = {
+	destroy = 0,
+	container = "V3a9_BDuckLinkagePatFaceViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/activity/v3a9_linkgift_panelview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Modal,
+	anim = ViewAnim.Internal
+}
+module_views.V3a9_WarmUp = {
+	destroy = 0,
+	container = "V3a9_WarmUpContainer",
+	bgBlur = 0,
+	mainRes = "ui/viewres/warmup/warmup1.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default
+}
+module_views.WarmUp1 = module_views.V3a9_WarmUp
+module_views.DungeonRecheckElementsView = {
+	destroy = 0,
+	container = "DungeonRecheckElementsViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/dungeon/dungeonelementrecheckview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Modal
+}
+module_views.StoreDecorateCombinationView = {
+	container = "StoreDecorateCombinationViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/mainsceneswitch/sceneuipackagegoodstipview_2.prefab",
+	destroy = 0,
+	blurIterations = 3,
+	blurFactor = 0.85,
+	layer = "POPUP_TOP",
+	viewType = ViewType.Modal,
+	desampleRate = PostProcessingMgr.DesamplingRate.x8,
+	reduceRate = PostProcessingMgr.DesamplingRate.x8
+}
+module_views.AbyssBuffSelectView = {
+	destroy = 0,
+	container = "AbyssBuffSelectViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/cloudredemption/cloudredemption_choosebuffview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Modal
+}
 
 local ViewName = {}
 
 for k, v in pairs(module_views) do
-	if k ~= "StoryBackgroundView" and k ~= "StoryFullScreenStormView" and v.layer == "POPUP" then
-		v.layer = "POPUP_TOP"
-	end
-
 	ViewName[k] = k
 end
 

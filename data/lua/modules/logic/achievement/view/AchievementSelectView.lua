@@ -72,6 +72,18 @@ function AchievementSelectView:onOpen()
 
 	AchievementSelectController.instance:onOpenView(focusType)
 	self:addEventCb(AchievementSelectController.instance, AchievementEvent.SelectViewUpdated, self.refreshUI, self)
+
+	for index, categoryType in pairs(self._focusTypes) do
+		local categorySelectCount = AchievementSelectListModel.instance:getSelectCountByCategory(categoryType)
+
+		if categorySelectCount > 0 and (not self._selectCategory or categoryType < self._selectCategory) then
+			self._selectCategory = categoryType
+		end
+	end
+
+	local category = self._selectCategory or AchievementEnum.Type.Story
+
+	AchievementSelectController.instance:setCategory(category)
 	self:refreshUI()
 end
 
@@ -98,7 +110,7 @@ function AchievementSelectView:refreshUI()
 
 	if isNamePlate then
 		local tag = {
-			AchievementSelectListModel.instance:getSingleSelectedCount(),
+			AchievementSelectListModel.instance:getGroupSelectedCount(),
 			AchievementEnum.ShowMaxNamePlateCount
 		}
 

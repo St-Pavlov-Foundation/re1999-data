@@ -33,7 +33,14 @@ function VersionResSplitHandler:_initRunWork()
 end
 
 function VersionResSplitHandler:_generateResSplitCfg()
-	local versionResSplitCfgs = lua_version_res_split.configDict
+	local configDict = lua_version_res_split.configDict
+	local versionResSplitCfgs = {}
+
+	for versionId, resSplitCfg in pairs(configDict) do
+		if resSplitCfg.ignore ~= 1 then
+			versionResSplitCfgs[versionId] = resSplitCfg
+		end
+	end
 
 	self._resSplitResult = {}
 	self._versionSplitData = {}

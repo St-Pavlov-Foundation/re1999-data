@@ -87,6 +87,10 @@ function GMMinusModel:_addBtnText(parentGO)
 end
 
 function GMMinusModel:addBtnGM(viewObj)
+	if viewObj._btngm11235 then
+		return viewObj._btngm11235
+	end
+
 	viewObj._btngm11235, viewObj._btntxtgm11235, viewObj._btngogm11235 = self:_addBtnText(viewObj.viewGO)
 
 	gohelper.setActive(viewObj._btngogm11235, GMController.instance:isOpenGM())

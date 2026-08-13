@@ -13,6 +13,7 @@ FightPreloadViewWork.ui_kapaituowei = "ui_kapaituowei"
 FightPreloadViewWork.ui_dazhaoka = "ui_dazhaoka"
 FightPreloadViewWork.ui_effect_dna_c = "ui/viewres/fight/ui_effect_dna_c.prefab"
 FightPreloadViewWork.ui2_effect_dna_c = "ui/viewres/fight/fightskin/0002/cardmerging.prefab"
+FightPreloadViewWork.ui3_effect_dna_c = "ui/viewres/fight/fightskin/0003/cardmerging.prefab"
 FightPreloadViewWork.FightSpriteAssets = "ui/spriteassets/fight.asset"
 
 function FightPreloadViewWork:onStart(context)
@@ -25,11 +26,11 @@ function FightPreloadViewWork:onStart(context)
 	self._loader:addPath(ResUrl.getUIEffect(FightPreloadViewWork.ui_chupai_03))
 	self._loader:addPath(ResUrl.getUIEffect(FightPreloadViewWork.ui_chupai_skin01))
 	self._loader:addPath(ResUrl.getUIEffect(FightPreloadViewWork.ui_chupai_skin03))
-	self._loader:addPath(ResUrl.getUIEffect(FightPreloadViewWork.ui_kapaituowei))
 	self._loader:addPath(ResUrl.getUIEffect(FightPreloadViewWork.ui_dazhaoka))
 	self._loader:addPath(FightPreloadViewWork.FightSpriteAssets)
 	self._loader:addPath(FightPreloadViewWork.ui_effect_dna_c)
 	self._loader:addPath(FightPreloadViewWork.ui2_effect_dna_c)
+	self._loader:addPath(FightPreloadViewWork.ui3_effect_dna_c)
 
 	local fightViewSetting = ViewMgr.instance:getSetting(ViewName.FightView)
 

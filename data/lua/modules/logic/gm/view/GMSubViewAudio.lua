@@ -609,37 +609,33 @@ function GMSubViewAudio:_onLoadTimelineDone()
 	local tlAudioIdDict = {}
 
 	for url, tlAssetItem in pairs(self._timelienLoader:getAssetItemDict()) do
-		local jsonStr = ZProj.SkillTimelineAssetHelper.GeAssetJson(tlAssetItem, url)
+		local jsonArr = FightTLHelper.getTLJsonData(tlAssetItem, url)
 
-		if not string.nilorempty(jsonStr) then
-			local jsonArr = cjson.decode(jsonStr)
+		for i = 1, #jsonArr, 2 do
+			local tlType = tonumber(jsonArr[i])
+			local paramList = jsonArr[i + 1]
 
-			for i = 1, #jsonArr, 2 do
-				local tlType = tonumber(jsonArr[i])
-				local paramList = jsonArr[i + 1]
+			if tlType == 3 then
+				local audioId = tonumber(paramList[5])
 
-				if tlType == 3 then
-					local audioId = tonumber(paramList[5])
+				if audioId then
+					tlAudioIdDict[audioId] = true
+					self._audioId2CallExcel = self._audioId2CallExcel or {}
 
-					if audioId then
-						tlAudioIdDict[audioId] = true
-						self._audioId2CallExcel = self._audioId2CallExcel or {}
+					local timelineName = SLFramework.FileHelper.GetFileName(url, false)
 
-						local timelineName = SLFramework.FileHelper.GetFileName(url, false)
+					self._audioId2CallExcel[audioId] = "Timeline " .. timelineName
+				end
+			elseif tlType == 10 then
+				local audioId = tonumber(paramList[1])
 
-						self._audioId2CallExcel[audioId] = "Timeline " .. timelineName
-					end
-				elseif tlType == 10 then
-					local audioId = tonumber(paramList[1])
+				if audioId then
+					tlAudioIdDict[audioId] = true
+					self._audioId2CallExcel = self._audioId2CallExcel or {}
 
-					if audioId then
-						tlAudioIdDict[audioId] = true
-						self._audioId2CallExcel = self._audioId2CallExcel or {}
+					local timelineName = SLFramework.FileHelper.GetFileName(url, false)
 
-						local timelineName = SLFramework.FileHelper.GetFileName(url, false)
-
-						self._audioId2CallExcel[audioId] = "Timeline " .. timelineName
-					end
+					self._audioId2CallExcel[audioId] = "Timeline " .. timelineName
 				end
 			end
 		end

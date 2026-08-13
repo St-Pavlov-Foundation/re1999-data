@@ -14,6 +14,7 @@ RougeEnum.ResPath = {
 	rougefactionitem = "ui/viewres/rouge/rougefactionitem.prefab",
 	CommonCollectionItem = "ui/viewres/rouge/rougeitemcollection.prefab",
 	CommonHeroGroupItem = "ui/viewres/rouge/rougeitemherogroup.prefab",
+	ActivityTaskEntryItem = "ui/viewres/rouge/rougeactivitytaskentryitem.prefab",
 	CoinView = "ui/viewres/rouge/map/rougemapcoinview.prefab",
 	CollectionDetailBtnItem = "ui/viewres/rouge/map/rougemapdetailview.prefab",
 	CommonCollectionSlotItem = "ui/viewres/rouge/rougecollectionslotitem.prefab"
@@ -75,9 +76,10 @@ RougeEnum.Const = {
 	TalentBigNode = 25
 }
 RougeEnum.OutsideConst = {
+	RewardPointLimit = 4,
+	ActivityTaskId = 9003,
 	RewardCost = 2,
 	SkillPointLimit = 1,
-	RewardPointLimit = 4,
 	StartNode = 101
 }
 RougeEnum.BigRewardType = {

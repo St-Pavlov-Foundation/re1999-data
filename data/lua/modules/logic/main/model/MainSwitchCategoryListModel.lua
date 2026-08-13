@@ -14,8 +14,8 @@ function MainSwitchCategoryListModel:getCategoryId()
 	return self.categoryId
 end
 
-function MainSwitchCategoryListModel:initCategoryList()
-	self.categoryId = MainEnum.SwitchType.Character
+function MainSwitchCategoryListModel:initCategoryList(id)
+	self.categoryId = id or MainEnum.SwitchType.Character
 
 	local list = {
 		{

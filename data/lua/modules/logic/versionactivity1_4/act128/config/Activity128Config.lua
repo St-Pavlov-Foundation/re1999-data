@@ -30,7 +30,9 @@ function Activity128Config:reqConfigNames()
 		"activity128_level",
 		"activity128_tag",
 		"activity128_conceal_desc",
-		"activity128_bosstype"
+		"activity128_bosstype",
+		"activity128_expand_bond",
+		"activity128_boss_type"
 	}
 end
 
@@ -52,6 +54,8 @@ function Activity128Config:onConfigLoaded(configName, configTable)
 		-- block empty
 	elseif configName == "activity128_enhance" then
 		-- block empty
+	elseif configName == "activity128_expand_bond" then
+		self:_initExpandBond()
 	end
 end
 
@@ -197,14 +201,14 @@ function Activity128Config:getTaskCO(id)
 	return lua_activity128_task.configDict[id]
 end
 
-function Activity128Config:getStages()
-	local activityId = self:getActivityId()
+function Activity128Config:getStages(activityId)
+	activityId = activityId or self:getActivityId()
 
 	return getStages(activityId)
 end
 
-function Activity128Config:getStageCO(stage)
-	local activityId = self:getActivityId()
+function Activity128Config:getStageCO(stage, activityId)
+	activityId = activityId or self:getActivityId()
 
 	return getStageCO(activityId, stage)
 end
@@ -216,26 +220,28 @@ function Activity128Config:getStageCOMaxPoints(stage)
 	return maxStageRewardCO.rewardPointNum
 end
 
-function Activity128Config:getEpisodeStages(stage)
-	local activityId = self:getActivityId()
+function Activity128Config:getEpisodeStages(stage, activityId)
+	activityId = activityId or self:getActivityId()
 
 	return getEpisodeStages(activityId, stage)
 end
 
-function Activity128Config:getEpisodeCO(stage, layer)
-	local activityId = self:getActivityId()
+function Activity128Config:getEpisodeCO(stage, layer, activityId)
+	activityId = activityId or self:getActivityId()
 
 	return getEpisodeCO(activityId, stage, layer)
 end
 
-function Activity128Config:getDungeonEpisodeId(stage, layer)
-	return self:getEpisodeCO(stage, layer).episodeId
+function Activity128Config:getDungeonEpisodeId(stage, layer, activityId)
+	local co = self:getEpisodeCO(stage, layer, activityId)
+
+	return co and co.episodeId
 end
 
-function Activity128Config:getDungeonEpisodeCO(stage, layer)
-	local episodeId = self:getDungeonEpisodeId(stage, layer)
+function Activity128Config:getDungeonEpisodeCO(stage, layer, activityId)
+	local episodeId = self:getDungeonEpisodeId(stage, layer, activityId)
 
-	return getDungeonEpisodeCO(episodeId)
+	return getDungeonEpisodeCO(episodeId, activityId)
 end
 
 function Activity128Config:getDungeonBattleId(stage, layer)
@@ -340,7 +346,15 @@ end
 function Activity128Config:tryGetStageAndLayerByEpisodeId(episodeId)
 	for _, v in ipairs(lua_activity128_episode.configList) do
 		if v.episodeId == episodeId then
-			return v.stage, v.layer
+			local episodeCo = lua_episode.configDict[episodeId]
+
+			if episodeCo then
+				local chapterCo = lua_chapter.configDict[episodeCo.chapterId]
+
+				if chapterCo and self:isCurActivityIds(chapterCo.actId) then
+					return v.stage, v.layer, chapterCo.actId
+				end
+			end
 		end
 	end
 end
@@ -418,14 +432,49 @@ function Activity128Config:getRemainTimeStr(endServerTs, eTimeFmtStyle)
 	return self:getRemainTimeStrWithFmt(offsetSecond, eTimeFmtStyle)
 end
 
-function Activity128Config:checkActivityId(activityId)
-	local actId = self:getActivityId()
+function Activity128Config:checkActivityId(activityId, index)
+	local actId = self:getActivityId(index)
+
+	if actId ~= activityId then
+		self._actIds = nil
+		actId = self:getActivityId(index)
+	end
 
 	return actId == activityId
 end
 
-function Activity128Config:getActivityId()
-	return ActivityConfig.instance:getConstAsNum(ActivityEnum.ConstId.BossRushAct, VersionActivity3_7Enum.ActivityId.BossRush)
+function Activity128Config:getActivityIds()
+	if self._actIds then
+		return self._actIds
+	end
+
+	self:refreshCurActivityIds()
+
+	return self._actIds
+end
+
+function Activity128Config:getActivityId(index)
+	index = index or 1
+
+	local actIds = self:getActivityIds()
+
+	return actIds[index]
+end
+
+function Activity128Config:refreshCurActivityIds()
+	self._actIds = ActivityConfig.instance:getConstAsNumList(ActivityEnum.ConstId.BossRushAct)
+end
+
+function Activity128Config:isCurActivityIds(activityId)
+	local actIds = self:getActivityIds()
+
+	for _, actId in ipairs(actIds) do
+		if actId == activityId then
+			return true
+		end
+	end
+
+	return false
 end
 
 function Activity128Config:getActRoleEnhance()
@@ -490,6 +539,70 @@ end
 
 function Activity128Config:getConcealCo(episodeId)
 	return lua_activity128_conceal_desc.configDict[episodeId]
+end
+
+function Activity128Config:_initExpandBond()
+	self._expandBondCoDict = {}
+
+	for _, co in ipairs(lua_activity128_expand_bond.configList) do
+		if not self._expandBondCoDict[co.activityId] then
+			self._expandBondCoDict[co.activityId] = {}
+		end
+
+		table.insert(self._expandBondCoDict[co.activityId], co)
+	end
+end
+
+function Activity128Config:getExpandBondCosByActId(activityId)
+	return self._expandBondCoDict[activityId]
+end
+
+function Activity128Config:getBossTypeConfig(bossType)
+	return lua_activity128_boss_type.configDict[bossType]
+end
+
+function Activity128Config:getBossTypeParams(bossType)
+	if not self._bossTypeParams then
+		self._bossTypeParams = {}
+	end
+
+	if self._bossTypeParams[bossType] then
+		return self._bossTypeParams[bossType]
+	end
+
+	local co = self:getBossTypeConfig(bossType)
+	local params = {}
+
+	if co then
+		if not string.nilorempty(co.recommendStrategy) then
+			params.recommendStrategy = string.splitToNumber(co.recommendStrategy, "#")
+		end
+
+		if not string.nilorempty(co.career_weak) then
+			params.careerWeak = string.splitToNumber(co.career_weak, "#")
+		end
+	end
+
+	self._bossTypeParams[bossType] = params
+
+	return params
+end
+
+function Activity128Config:getBossRecommendStrategy(bossType)
+	local param = self:getBossTypeParams(bossType)
+
+	if param and param.recommendStrategy then
+		return param.recommendStrategy
+	end
+
+	local handbookCo = self:getGalleryBossCo(bossType)
+
+	if handbookCo and not string.nilorempty(handbookCo.recommendStrategy) then
+		param = param or {}
+		param.recommendStrategy = string.splitToNumber(handbookCo.recommendStrategy, "#")
+
+		return param.recommendStrategy
+	end
 end
 
 return Activity128Config

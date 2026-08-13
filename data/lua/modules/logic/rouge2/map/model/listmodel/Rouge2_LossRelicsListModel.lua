@@ -12,7 +12,7 @@ function Rouge2_LossRelicsListModel._sortDefault(aItem, bItem)
 		return aSelect
 	end
 
-	return Rouge2_LossRelicsListModel.super._sortDefault(aItem, bItem)
+	return Rouge2_LossItemListModelBase._sortDefault(aItem, bItem)
 end
 
 Rouge2_LossRelicsListModel.instance = Rouge2_LossRelicsListModel.New()

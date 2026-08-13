@@ -20,6 +20,11 @@ local criticalType = {
 	[FightEnum.EffectType.ADDITIONALDAMAGECRIT] = true
 }
 
+FightHurtInfoData.ImmunityFromType = {
+	Narcissus = 1,
+	None = 0
+}
+
 function FightHurtInfoData:onConstructor(proto)
 	self:initClientField()
 
@@ -47,6 +52,7 @@ function FightHurtInfoData:onConstructor(proto)
 	self.reduceShield = 0
 	self.reduceTeamShareShield = 0
 	self.hurtMergeFlag = proto.hurtMergeFlag
+	self.immunityFromType = proto.immunityFromType
 end
 
 function FightHurtInfoData:initClientField()

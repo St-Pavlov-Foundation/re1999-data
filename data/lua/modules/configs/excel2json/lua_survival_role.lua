@@ -30,6 +30,7 @@ local primaryKey = {
 local mlStringKey = {
 	talentName = 2,
 	name = 1,
+	conditionsDesc = 4,
 	desc = 3
 }
 

@@ -749,6 +749,14 @@ function V3a4BBSView:onClose()
 
 	AudioMgr.instance:trigger(AudioEnum3_4.VersionActivity3_4.stop_ui_bulaochun_typing_loop)
 	AudioMgr.instance:trigger(AudioEnum3_4.VersionActivity3_4.play_ui_bulaochun_forum_close)
+
+	local callback = self.viewParam.callback
+	local callbackTarget = self.viewParam.callbackTarget
+	local callbackParams = self.viewParam.callbackParams or {}
+
+	if callback then
+		callback(callbackTarget, callbackParams, self.isFinishDialogue or self._isDone)
+	end
 end
 
 function V3a4BBSView:onDestroyView()

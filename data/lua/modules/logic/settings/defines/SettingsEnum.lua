@@ -69,6 +69,12 @@ SettingsEnum.CategoryList = {
 			SettingsEnum.ShowType.LimitedRoleEffect,
 			SettingsEnum.ShowType.Udimo
 		}
+	},
+	{
+		id = 8,
+		name = "settings_fight",
+		subname = "FIGHT",
+		openIds = {}
 	}
 }
 SettingsEnum.PushType = {

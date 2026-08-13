@@ -116,16 +116,25 @@ function PartyGameLobbyInRoomPlayerItem:_updateState()
 
 	gohelper.setActive(self._goalready, isReady)
 
+	local str1 = "<color=#407049>%s</color>"
+
 	if self._mo.isRoomOwner then
-		self._txtstate.text = string.format("<color=#407049>%s</color>", luaLang("partygame_owner"))
+		local value = luaLang("partygame_owner")
+
+		self._txtstate.text = string.format(str1, value)
 
 		return
 	end
 
 	if isReady then
-		self._txtstate.text = string.format("<color=#407049>%s</color>", luaLang("partygame_ready"))
+		local value = luaLang("partygame_ready")
+
+		self._txtstate.text = string.format(str1, value)
 	else
-		self._txtstate.text = string.format("<color=#7c6300>%s</color>", luaLang("partygame_notready"))
+		local str2 = "<color=#7c6300>%s</color>"
+		local value = luaLang("partygame_notready")
+
+		self._txtstate.text = string.format(str2, value)
 	end
 end
 

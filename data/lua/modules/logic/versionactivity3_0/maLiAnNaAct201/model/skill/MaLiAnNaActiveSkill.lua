@@ -111,7 +111,7 @@ function MaLiAnNaActiveSkill:getCDPercent()
 	return self._cdTime / self._config.coolDown
 end
 
-function MaLiAnNaPassiveSkill:destroy()
+function MaLiAnNaActiveSkill:destroy()
 	self._config = nil
 end
 

@@ -163,7 +163,7 @@ function OptionalGroupChargeView:createRewardItem(giftItem)
 		rewardItem.simageIcon:LoadImage(rewardItem.iconPath)
 		rewardItem.btnClick:AddClickListener(self._onRewardItemClick, self, rewardItem)
 
-		rewardItem.txtCount.text = string.format("%s%s", luaLang("multiple"), tostring(itemData[3]))
+		rewardItem.txtCount.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("optionalgroupchargeview_rewardItemCount"), luaLang("multiple"), tostring(itemData[3]))
 	end
 end
 

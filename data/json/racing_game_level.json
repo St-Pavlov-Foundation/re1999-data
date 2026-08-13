@@ -1,0 +1,82 @@
+[
+  {
+    "gameId": 13901,
+    "traceId": 101,
+    "name": "见习水道",
+    "desc": "赛道上分布着速通充气门、跃动火种和珊瑚簇。清晰的路线适合参赛选手熟悉加速与闪避。",
+    "video": "v3a9_101Movie",
+    "map": "v3a9_racing_map_2",
+    "starCondition": "1|2#2|3#40",
+    "aiRacer": "111#112#113"
+  },
+  {
+    "gameId": 13902,
+    "traceId": 102,
+    "name": "海风飞桥",
+    "desc": "赛道增设了多条空中捷径。借助腾空蹦蹦床切入其中，可有机会以更近路线与对手拉开距离。",
+    "video": "v3a9_102Movie",
+    "map": "v3a9_racing_map_2",
+    "starCondition": "1|2#2|3#60",
+    "aiRacer": "121#122#123"
+  },
+  {
+    "gameId": 13903,
+    "traceId": 105,
+    "name": "轰隆大瀑布",
+    "desc": "赛道囊括多条可攀升的水流与空中捷径。顺水流攀至空中后起跳，能够更快到达下一段赛道。",
+    "video": "v3a9_103Movie",
+    "map": "v3a9_racing_map_4",
+    "starCondition": "1|2#2|3#110",
+    "aiRacer": "131#132#133"
+  },
+  {
+    "gameId": 13904,
+    "traceId": 106,
+    "name": "飞瀑回旋",
+    "desc": "赛道包含更多飞跃捷径与路线分支。连续的升降和转弯要求参赛选手迅速而精准地作出选择。",
+    "video": "v3a9_104Movie",
+    "map": "v3a9_racing_map_4",
+    "starCondition": "1|2#2|3#100",
+    "aiRacer": "141#142#143"
+  },
+  {
+    "gameId": 13905,
+    "traceId": 103,
+    "name": "滑翔海湾",
+    "desc": "赛道上分布着空中路线、速通充气门和密集珊瑚簇。参赛选手需要在保持速度的同时注意飞行路线。",
+    "video": "v3a9_105Movie",
+    "map": "v3a9_racing_map_3",
+    "starCondition": "1|2#2|3#110",
+    "aiRacer": "151#152#153"
+  },
+  {
+    "gameId": 13906,
+    "traceId": 104,
+    "name": "蹦蹦跳浴场",
+    "desc": "赛道上存在多处触发即可滞空的腾空蹦蹦床，同时分布着连续的速通充气门与珊瑚簇。高速飞行中，每次转向都需要精准判断。",
+    "video": "v3a9_106Movie",
+    "map": "v3a9_racing_map_3",
+    "starCondition": "1|2#2|3#120",
+    "aiRacer": "161#162#163"
+  },
+  {
+    "gameId": 13907,
+    "traceId": 107,
+    "name": "夜间航线",
+    "desc": "赛道高空存在一条持续变换方向的高速航线。参赛选手需要在难以保持直线的倾斜路面上稳住方向。",
+    "video": "v3a9_107Movie",
+    "map": "v3a9_racing_map_1",
+    "starCondition": "1|2#2|3#90",
+    "aiRacer": "171#172#173"
+  },
+  {
+    "gameId": 13908,
+    "traceId": 108,
+    "name": "午夜决赛场",
+    "desc": "赛道上分布着更多飞跃捷径与密集珊瑚簇。参赛选手在高速行进时，路线选择和海豚控制非常关键。",
+    "video": "v3a9_108Movie",
+    "map": "v3a9_racing_map_1",
+    "starCondition": "1|2#2|3#110",
+    "aiRacer": "181#182#183"
+  }
+]

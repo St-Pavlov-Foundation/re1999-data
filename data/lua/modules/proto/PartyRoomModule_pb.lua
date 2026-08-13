@@ -22,8 +22,10 @@ PartyRoomModule_pb.GETINVITELISTREQUESTROOMIDFIELD = protobuf.FieldDescriptor()
 PartyRoomModule_pb.CREATEPARTYROOMREPLY_MSG = protobuf.Descriptor()
 PartyRoomModule_pb.CREATEPARTYROOMREPLYROOMIDFIELD = protobuf.FieldDescriptor()
 PartyRoomModule_pb.CREATEPARTYROOMREPLYVERSIONFIELD = protobuf.FieldDescriptor()
+PartyRoomModule_pb.CREATEPARTYROOMREPLYAREAFIELD = protobuf.FieldDescriptor()
 PartyRoomModule_pb.CREATEPARTYROOMREQUEST_MSG = protobuf.Descriptor()
 PartyRoomModule_pb.CREATEPARTYROOMREQUESTVERSIONFIELD = protobuf.FieldDescriptor()
+PartyRoomModule_pb.CREATEPARTYROOMREQUESTAREAFIELD = protobuf.FieldDescriptor()
 PartyRoomModule_pb.FRIENDINFO_MSG = protobuf.Descriptor()
 PartyRoomModule_pb.FRIENDINFOUSERIDFIELD = protobuf.FieldDescriptor()
 PartyRoomModule_pb.FRIENDINFOSTATEFIELD = protobuf.FieldDescriptor()
@@ -31,6 +33,7 @@ PartyRoomModule_pb.JOINPARTYROOMREPLY_MSG = protobuf.Descriptor()
 PartyRoomModule_pb.JOINPARTYROOMREPLYROOMIDFIELD = protobuf.FieldDescriptor()
 PartyRoomModule_pb.JOINPARTYROOMREPLYPLAYERINFOSFIELD = protobuf.FieldDescriptor()
 PartyRoomModule_pb.JOINPARTYROOMREPLYVERSIONFIELD = protobuf.FieldDescriptor()
+PartyRoomModule_pb.JOINPARTYROOMREPLYAREAFIELD = protobuf.FieldDescriptor()
 PartyRoomModule_pb.INVITEFRIENDREPLY_MSG = protobuf.Descriptor()
 PartyRoomModule_pb.INVITEFRIENDREPLYROOMIDFIELD = protobuf.FieldDescriptor()
 PartyRoomModule_pb.INVITEFRIENDREPLYFRIENDINFOFIELD = protobuf.FieldDescriptor()
@@ -51,12 +54,16 @@ PartyRoomModule_pb.CLEARSUCCESSMATCHINFOREPLYMATCHINFOFIELD = protobuf.FieldDesc
 PartyRoomModule_pb.JOINPARTYROOMREQUEST_MSG = protobuf.Descriptor()
 PartyRoomModule_pb.JOINPARTYROOMREQUESTROOMIDFIELD = protobuf.FieldDescriptor()
 PartyRoomModule_pb.JOINPARTYROOMREQUESTVERSIONFIELD = protobuf.FieldDescriptor()
+PartyRoomModule_pb.JOINPARTYROOMREQUESTAREAFIELD = protobuf.FieldDescriptor()
 PartyRoomModule_pb.PARTYROOMHOTFIX2PUSH_MSG = protobuf.Descriptor()
 PartyRoomModule_pb.PARTYROOMHOTFIX2PUSHDATAFIELD = protobuf.FieldDescriptor()
 PartyRoomModule_pb.PARTYROOMHOTFIX2PUSHINTDATAFIELD = protobuf.FieldDescriptor()
 PartyRoomModule_pb.PARTYROOMHOTFIX2PUSHLONGDATAFIELD = protobuf.FieldDescriptor()
 PartyRoomModule_pb.INTERACTION_MSG = protobuf.Descriptor()
 PartyRoomModule_pb.INTERACTIONEMOJFIELD = protobuf.FieldDescriptor()
+PartyRoomModule_pb.CHECKPARTYROOMINFOREPLY_MSG = protobuf.Descriptor()
+PartyRoomModule_pb.CHECKPARTYROOMINFOREPLYROOMIDFIELD = protobuf.FieldDescriptor()
+PartyRoomModule_pb.CHECKPARTYROOMINFOREPLYAREAFIELD = protobuf.FieldDescriptor()
 PartyRoomModule_pb.GETINTERACTIONPUSH_MSG = protobuf.Descriptor()
 PartyRoomModule_pb.GETINTERACTIONPUSHFROMUSERIDFIELD = protobuf.FieldDescriptor()
 PartyRoomModule_pb.GETINTERACTIONPUSHROOMIDFIELD = protobuf.FieldDescriptor()
@@ -141,6 +148,7 @@ PartyRoomModule_pb.PARTYPLAYERINFOPORTRAITFIELD = protobuf.FieldDescriptor()
 PartyRoomModule_pb.PARTYPLAYERINFOLEVELFIELD = protobuf.FieldDescriptor()
 PartyRoomModule_pb.PARTYPLAYERINFOWEARCLOTHIDSFIELD = protobuf.FieldDescriptor()
 PartyRoomModule_pb.PARTYPLAYERINFOVERSIONFIELD = protobuf.FieldDescriptor()
+PartyRoomModule_pb.PARTYPLAYERINFOAREAFIELD = protobuf.FieldDescriptor()
 PartyRoomModule_pb.RESETPARTYINVITESTATEREPLY_MSG = protobuf.Descriptor()
 PartyRoomModule_pb.RESETPARTYINVITESTATEREPLYSTATEFIELD = protobuf.FieldDescriptor()
 PartyRoomModule_pb.KICKOUTPLAYERREPLY_MSG = protobuf.Descriptor()
@@ -176,6 +184,8 @@ PartyRoomModule_pb.PARTYROOMHOTFIX2REQUEST_MSG = protobuf.Descriptor()
 PartyRoomModule_pb.PARTYROOMHOTFIX2REQUESTDATAFIELD = protobuf.FieldDescriptor()
 PartyRoomModule_pb.PARTYROOMHOTFIX2REQUESTINTDATAFIELD = protobuf.FieldDescriptor()
 PartyRoomModule_pb.PARTYROOMHOTFIX2REQUESTLONGDATAFIELD = protobuf.FieldDescriptor()
+PartyRoomModule_pb.CHECKPARTYROOMINFOREQUEST_MSG = protobuf.Descriptor()
+PartyRoomModule_pb.CHECKPARTYROOMINFOREQUESTROOMIDFIELD = protobuf.FieldDescriptor()
 PartyRoomModule_pb.GETPARTYROOMINFOREPLY_MSG = protobuf.Descriptor()
 PartyRoomModule_pb.GETPARTYROOMINFOREPLYROOMIDFIELD = protobuf.FieldDescriptor()
 PartyRoomModule_pb.GETPARTYROOMINFOREPLYPLAYERINFOSFIELD = protobuf.FieldDescriptor()
@@ -299,13 +309,23 @@ PartyRoomModule_pb.CREATEPARTYROOMREPLYVERSIONFIELD.has_default_value = false
 PartyRoomModule_pb.CREATEPARTYROOMREPLYVERSIONFIELD.default_value = 0
 PartyRoomModule_pb.CREATEPARTYROOMREPLYVERSIONFIELD.type = 5
 PartyRoomModule_pb.CREATEPARTYROOMREPLYVERSIONFIELD.cpp_type = 1
+PartyRoomModule_pb.CREATEPARTYROOMREPLYAREAFIELD.name = "area"
+PartyRoomModule_pb.CREATEPARTYROOMREPLYAREAFIELD.full_name = ".CreatePartyRoomReply.area"
+PartyRoomModule_pb.CREATEPARTYROOMREPLYAREAFIELD.number = 3
+PartyRoomModule_pb.CREATEPARTYROOMREPLYAREAFIELD.index = 2
+PartyRoomModule_pb.CREATEPARTYROOMREPLYAREAFIELD.label = 1
+PartyRoomModule_pb.CREATEPARTYROOMREPLYAREAFIELD.has_default_value = false
+PartyRoomModule_pb.CREATEPARTYROOMREPLYAREAFIELD.default_value = 0
+PartyRoomModule_pb.CREATEPARTYROOMREPLYAREAFIELD.type = 5
+PartyRoomModule_pb.CREATEPARTYROOMREPLYAREAFIELD.cpp_type = 1
 PartyRoomModule_pb.CREATEPARTYROOMREPLY_MSG.name = "CreatePartyRoomReply"
 PartyRoomModule_pb.CREATEPARTYROOMREPLY_MSG.full_name = ".CreatePartyRoomReply"
 PartyRoomModule_pb.CREATEPARTYROOMREPLY_MSG.nested_types = {}
 PartyRoomModule_pb.CREATEPARTYROOMREPLY_MSG.enum_types = {}
 PartyRoomModule_pb.CREATEPARTYROOMREPLY_MSG.fields = {
 	PartyRoomModule_pb.CREATEPARTYROOMREPLYROOMIDFIELD,
-	PartyRoomModule_pb.CREATEPARTYROOMREPLYVERSIONFIELD
+	PartyRoomModule_pb.CREATEPARTYROOMREPLYVERSIONFIELD,
+	PartyRoomModule_pb.CREATEPARTYROOMREPLYAREAFIELD
 }
 PartyRoomModule_pb.CREATEPARTYROOMREPLY_MSG.is_extendable = false
 PartyRoomModule_pb.CREATEPARTYROOMREPLY_MSG.extensions = {}
@@ -318,12 +338,22 @@ PartyRoomModule_pb.CREATEPARTYROOMREQUESTVERSIONFIELD.has_default_value = false
 PartyRoomModule_pb.CREATEPARTYROOMREQUESTVERSIONFIELD.default_value = 0
 PartyRoomModule_pb.CREATEPARTYROOMREQUESTVERSIONFIELD.type = 5
 PartyRoomModule_pb.CREATEPARTYROOMREQUESTVERSIONFIELD.cpp_type = 1
+PartyRoomModule_pb.CREATEPARTYROOMREQUESTAREAFIELD.name = "area"
+PartyRoomModule_pb.CREATEPARTYROOMREQUESTAREAFIELD.full_name = ".CreatePartyRoomRequest.area"
+PartyRoomModule_pb.CREATEPARTYROOMREQUESTAREAFIELD.number = 2
+PartyRoomModule_pb.CREATEPARTYROOMREQUESTAREAFIELD.index = 1
+PartyRoomModule_pb.CREATEPARTYROOMREQUESTAREAFIELD.label = 1
+PartyRoomModule_pb.CREATEPARTYROOMREQUESTAREAFIELD.has_default_value = false
+PartyRoomModule_pb.CREATEPARTYROOMREQUESTAREAFIELD.default_value = 0
+PartyRoomModule_pb.CREATEPARTYROOMREQUESTAREAFIELD.type = 5
+PartyRoomModule_pb.CREATEPARTYROOMREQUESTAREAFIELD.cpp_type = 1
 PartyRoomModule_pb.CREATEPARTYROOMREQUEST_MSG.name = "CreatePartyRoomRequest"
 PartyRoomModule_pb.CREATEPARTYROOMREQUEST_MSG.full_name = ".CreatePartyRoomRequest"
 PartyRoomModule_pb.CREATEPARTYROOMREQUEST_MSG.nested_types = {}
 PartyRoomModule_pb.CREATEPARTYROOMREQUEST_MSG.enum_types = {}
 PartyRoomModule_pb.CREATEPARTYROOMREQUEST_MSG.fields = {
-	PartyRoomModule_pb.CREATEPARTYROOMREQUESTVERSIONFIELD
+	PartyRoomModule_pb.CREATEPARTYROOMREQUESTVERSIONFIELD,
+	PartyRoomModule_pb.CREATEPARTYROOMREQUESTAREAFIELD
 }
 PartyRoomModule_pb.CREATEPARTYROOMREQUEST_MSG.is_extendable = false
 PartyRoomModule_pb.CREATEPARTYROOMREQUEST_MSG.extensions = {}
@@ -383,6 +413,15 @@ PartyRoomModule_pb.JOINPARTYROOMREPLYVERSIONFIELD.has_default_value = false
 PartyRoomModule_pb.JOINPARTYROOMREPLYVERSIONFIELD.default_value = 0
 PartyRoomModule_pb.JOINPARTYROOMREPLYVERSIONFIELD.type = 5
 PartyRoomModule_pb.JOINPARTYROOMREPLYVERSIONFIELD.cpp_type = 1
+PartyRoomModule_pb.JOINPARTYROOMREPLYAREAFIELD.name = "area"
+PartyRoomModule_pb.JOINPARTYROOMREPLYAREAFIELD.full_name = ".JoinPartyRoomReply.area"
+PartyRoomModule_pb.JOINPARTYROOMREPLYAREAFIELD.number = 4
+PartyRoomModule_pb.JOINPARTYROOMREPLYAREAFIELD.index = 3
+PartyRoomModule_pb.JOINPARTYROOMREPLYAREAFIELD.label = 1
+PartyRoomModule_pb.JOINPARTYROOMREPLYAREAFIELD.has_default_value = false
+PartyRoomModule_pb.JOINPARTYROOMREPLYAREAFIELD.default_value = 0
+PartyRoomModule_pb.JOINPARTYROOMREPLYAREAFIELD.type = 5
+PartyRoomModule_pb.JOINPARTYROOMREPLYAREAFIELD.cpp_type = 1
 PartyRoomModule_pb.JOINPARTYROOMREPLY_MSG.name = "JoinPartyRoomReply"
 PartyRoomModule_pb.JOINPARTYROOMREPLY_MSG.full_name = ".JoinPartyRoomReply"
 PartyRoomModule_pb.JOINPARTYROOMREPLY_MSG.nested_types = {}
@@ -390,7 +429,8 @@ PartyRoomModule_pb.JOINPARTYROOMREPLY_MSG.enum_types = {}
 PartyRoomModule_pb.JOINPARTYROOMREPLY_MSG.fields = {
 	PartyRoomModule_pb.JOINPARTYROOMREPLYROOMIDFIELD,
 	PartyRoomModule_pb.JOINPARTYROOMREPLYPLAYERINFOSFIELD,
-	PartyRoomModule_pb.JOINPARTYROOMREPLYVERSIONFIELD
+	PartyRoomModule_pb.JOINPARTYROOMREPLYVERSIONFIELD,
+	PartyRoomModule_pb.JOINPARTYROOMREPLYAREAFIELD
 }
 PartyRoomModule_pb.JOINPARTYROOMREPLY_MSG.is_extendable = false
 PartyRoomModule_pb.JOINPARTYROOMREPLY_MSG.extensions = {}
@@ -571,13 +611,23 @@ PartyRoomModule_pb.JOINPARTYROOMREQUESTVERSIONFIELD.has_default_value = false
 PartyRoomModule_pb.JOINPARTYROOMREQUESTVERSIONFIELD.default_value = 0
 PartyRoomModule_pb.JOINPARTYROOMREQUESTVERSIONFIELD.type = 5
 PartyRoomModule_pb.JOINPARTYROOMREQUESTVERSIONFIELD.cpp_type = 1
+PartyRoomModule_pb.JOINPARTYROOMREQUESTAREAFIELD.name = "area"
+PartyRoomModule_pb.JOINPARTYROOMREQUESTAREAFIELD.full_name = ".JoinPartyRoomRequest.area"
+PartyRoomModule_pb.JOINPARTYROOMREQUESTAREAFIELD.number = 3
+PartyRoomModule_pb.JOINPARTYROOMREQUESTAREAFIELD.index = 2
+PartyRoomModule_pb.JOINPARTYROOMREQUESTAREAFIELD.label = 1
+PartyRoomModule_pb.JOINPARTYROOMREQUESTAREAFIELD.has_default_value = false
+PartyRoomModule_pb.JOINPARTYROOMREQUESTAREAFIELD.default_value = 0
+PartyRoomModule_pb.JOINPARTYROOMREQUESTAREAFIELD.type = 5
+PartyRoomModule_pb.JOINPARTYROOMREQUESTAREAFIELD.cpp_type = 1
 PartyRoomModule_pb.JOINPARTYROOMREQUEST_MSG.name = "JoinPartyRoomRequest"
 PartyRoomModule_pb.JOINPARTYROOMREQUEST_MSG.full_name = ".JoinPartyRoomRequest"
 PartyRoomModule_pb.JOINPARTYROOMREQUEST_MSG.nested_types = {}
 PartyRoomModule_pb.JOINPARTYROOMREQUEST_MSG.enum_types = {}
 PartyRoomModule_pb.JOINPARTYROOMREQUEST_MSG.fields = {
 	PartyRoomModule_pb.JOINPARTYROOMREQUESTROOMIDFIELD,
-	PartyRoomModule_pb.JOINPARTYROOMREQUESTVERSIONFIELD
+	PartyRoomModule_pb.JOINPARTYROOMREQUESTVERSIONFIELD,
+	PartyRoomModule_pb.JOINPARTYROOMREQUESTAREAFIELD
 }
 PartyRoomModule_pb.JOINPARTYROOMREQUEST_MSG.is_extendable = false
 PartyRoomModule_pb.JOINPARTYROOMREQUEST_MSG.extensions = {}
@@ -637,6 +687,34 @@ PartyRoomModule_pb.INTERACTION_MSG.fields = {
 }
 PartyRoomModule_pb.INTERACTION_MSG.is_extendable = false
 PartyRoomModule_pb.INTERACTION_MSG.extensions = {}
+PartyRoomModule_pb.CHECKPARTYROOMINFOREPLYROOMIDFIELD.name = "roomId"
+PartyRoomModule_pb.CHECKPARTYROOMINFOREPLYROOMIDFIELD.full_name = ".CheckPartyRoomInfoReply.roomId"
+PartyRoomModule_pb.CHECKPARTYROOMINFOREPLYROOMIDFIELD.number = 1
+PartyRoomModule_pb.CHECKPARTYROOMINFOREPLYROOMIDFIELD.index = 0
+PartyRoomModule_pb.CHECKPARTYROOMINFOREPLYROOMIDFIELD.label = 1
+PartyRoomModule_pb.CHECKPARTYROOMINFOREPLYROOMIDFIELD.has_default_value = false
+PartyRoomModule_pb.CHECKPARTYROOMINFOREPLYROOMIDFIELD.default_value = 0
+PartyRoomModule_pb.CHECKPARTYROOMINFOREPLYROOMIDFIELD.type = 4
+PartyRoomModule_pb.CHECKPARTYROOMINFOREPLYROOMIDFIELD.cpp_type = 4
+PartyRoomModule_pb.CHECKPARTYROOMINFOREPLYAREAFIELD.name = "area"
+PartyRoomModule_pb.CHECKPARTYROOMINFOREPLYAREAFIELD.full_name = ".CheckPartyRoomInfoReply.area"
+PartyRoomModule_pb.CHECKPARTYROOMINFOREPLYAREAFIELD.number = 2
+PartyRoomModule_pb.CHECKPARTYROOMINFOREPLYAREAFIELD.index = 1
+PartyRoomModule_pb.CHECKPARTYROOMINFOREPLYAREAFIELD.label = 1
+PartyRoomModule_pb.CHECKPARTYROOMINFOREPLYAREAFIELD.has_default_value = false
+PartyRoomModule_pb.CHECKPARTYROOMINFOREPLYAREAFIELD.default_value = 0
+PartyRoomModule_pb.CHECKPARTYROOMINFOREPLYAREAFIELD.type = 5
+PartyRoomModule_pb.CHECKPARTYROOMINFOREPLYAREAFIELD.cpp_type = 1
+PartyRoomModule_pb.CHECKPARTYROOMINFOREPLY_MSG.name = "CheckPartyRoomInfoReply"
+PartyRoomModule_pb.CHECKPARTYROOMINFOREPLY_MSG.full_name = ".CheckPartyRoomInfoReply"
+PartyRoomModule_pb.CHECKPARTYROOMINFOREPLY_MSG.nested_types = {}
+PartyRoomModule_pb.CHECKPARTYROOMINFOREPLY_MSG.enum_types = {}
+PartyRoomModule_pb.CHECKPARTYROOMINFOREPLY_MSG.fields = {
+	PartyRoomModule_pb.CHECKPARTYROOMINFOREPLYROOMIDFIELD,
+	PartyRoomModule_pb.CHECKPARTYROOMINFOREPLYAREAFIELD
+}
+PartyRoomModule_pb.CHECKPARTYROOMINFOREPLY_MSG.is_extendable = false
+PartyRoomModule_pb.CHECKPARTYROOMINFOREPLY_MSG.extensions = {}
 PartyRoomModule_pb.GETINTERACTIONPUSHFROMUSERIDFIELD.name = "fromUserId"
 PartyRoomModule_pb.GETINTERACTIONPUSHFROMUSERIDFIELD.full_name = ".GetInteractionPush.fromUserId"
 PartyRoomModule_pb.GETINTERACTIONPUSHFROMUSERIDFIELD.number = 1
@@ -1421,6 +1499,15 @@ PartyRoomModule_pb.PARTYPLAYERINFOVERSIONFIELD.has_default_value = false
 PartyRoomModule_pb.PARTYPLAYERINFOVERSIONFIELD.default_value = 0
 PartyRoomModule_pb.PARTYPLAYERINFOVERSIONFIELD.type = 5
 PartyRoomModule_pb.PARTYPLAYERINFOVERSIONFIELD.cpp_type = 1
+PartyRoomModule_pb.PARTYPLAYERINFOAREAFIELD.name = "area"
+PartyRoomModule_pb.PARTYPLAYERINFOAREAFIELD.full_name = ".PartyPlayerInfo.area"
+PartyRoomModule_pb.PARTYPLAYERINFOAREAFIELD.number = 9
+PartyRoomModule_pb.PARTYPLAYERINFOAREAFIELD.index = 8
+PartyRoomModule_pb.PARTYPLAYERINFOAREAFIELD.label = 1
+PartyRoomModule_pb.PARTYPLAYERINFOAREAFIELD.has_default_value = false
+PartyRoomModule_pb.PARTYPLAYERINFOAREAFIELD.default_value = 0
+PartyRoomModule_pb.PARTYPLAYERINFOAREAFIELD.type = 5
+PartyRoomModule_pb.PARTYPLAYERINFOAREAFIELD.cpp_type = 1
 PartyRoomModule_pb.PARTYPLAYERINFO_MSG.name = "PartyPlayerInfo"
 PartyRoomModule_pb.PARTYPLAYERINFO_MSG.full_name = ".PartyPlayerInfo"
 PartyRoomModule_pb.PARTYPLAYERINFO_MSG.nested_types = {}
@@ -1433,7 +1520,8 @@ PartyRoomModule_pb.PARTYPLAYERINFO_MSG.fields = {
 	PartyRoomModule_pb.PARTYPLAYERINFOPORTRAITFIELD,
 	PartyRoomModule_pb.PARTYPLAYERINFOLEVELFIELD,
 	PartyRoomModule_pb.PARTYPLAYERINFOWEARCLOTHIDSFIELD,
-	PartyRoomModule_pb.PARTYPLAYERINFOVERSIONFIELD
+	PartyRoomModule_pb.PARTYPLAYERINFOVERSIONFIELD,
+	PartyRoomModule_pb.PARTYPLAYERINFOAREAFIELD
 }
 PartyRoomModule_pb.PARTYPLAYERINFO_MSG.is_extendable = false
 PartyRoomModule_pb.PARTYPLAYERINFO_MSG.extensions = {}
@@ -1764,6 +1852,24 @@ PartyRoomModule_pb.PARTYROOMHOTFIX2REQUEST_MSG.fields = {
 }
 PartyRoomModule_pb.PARTYROOMHOTFIX2REQUEST_MSG.is_extendable = false
 PartyRoomModule_pb.PARTYROOMHOTFIX2REQUEST_MSG.extensions = {}
+PartyRoomModule_pb.CHECKPARTYROOMINFOREQUESTROOMIDFIELD.name = "roomId"
+PartyRoomModule_pb.CHECKPARTYROOMINFOREQUESTROOMIDFIELD.full_name = ".CheckPartyRoomInfoRequest.roomId"
+PartyRoomModule_pb.CHECKPARTYROOMINFOREQUESTROOMIDFIELD.number = 1
+PartyRoomModule_pb.CHECKPARTYROOMINFOREQUESTROOMIDFIELD.index = 0
+PartyRoomModule_pb.CHECKPARTYROOMINFOREQUESTROOMIDFIELD.label = 1
+PartyRoomModule_pb.CHECKPARTYROOMINFOREQUESTROOMIDFIELD.has_default_value = false
+PartyRoomModule_pb.CHECKPARTYROOMINFOREQUESTROOMIDFIELD.default_value = 0
+PartyRoomModule_pb.CHECKPARTYROOMINFOREQUESTROOMIDFIELD.type = 4
+PartyRoomModule_pb.CHECKPARTYROOMINFOREQUESTROOMIDFIELD.cpp_type = 4
+PartyRoomModule_pb.CHECKPARTYROOMINFOREQUEST_MSG.name = "CheckPartyRoomInfoRequest"
+PartyRoomModule_pb.CHECKPARTYROOMINFOREQUEST_MSG.full_name = ".CheckPartyRoomInfoRequest"
+PartyRoomModule_pb.CHECKPARTYROOMINFOREQUEST_MSG.nested_types = {}
+PartyRoomModule_pb.CHECKPARTYROOMINFOREQUEST_MSG.enum_types = {}
+PartyRoomModule_pb.CHECKPARTYROOMINFOREQUEST_MSG.fields = {
+	PartyRoomModule_pb.CHECKPARTYROOMINFOREQUESTROOMIDFIELD
+}
+PartyRoomModule_pb.CHECKPARTYROOMINFOREQUEST_MSG.is_extendable = false
+PartyRoomModule_pb.CHECKPARTYROOMINFOREQUEST_MSG.extensions = {}
 PartyRoomModule_pb.GETPARTYROOMINFOREPLYROOMIDFIELD.name = "roomId"
 PartyRoomModule_pb.GETPARTYROOMINFOREPLYROOMIDFIELD.full_name = ".GetPartyRoomInfoReply.roomId"
 PartyRoomModule_pb.GETPARTYROOMINFOREPLYROOMIDFIELD.number = 1
@@ -1828,6 +1934,8 @@ PartyRoomModule_pb.ChangePartyRoomStatusReply = protobuf.Message(PartyRoomModule
 PartyRoomModule_pb.ChangePartyRoomStatusRequest = protobuf.Message(PartyRoomModule_pb.CHANGEPARTYROOMSTATUSREQUEST_MSG)
 PartyRoomModule_pb.ChangeRoomOwnerReply = protobuf.Message(PartyRoomModule_pb.CHANGEROOMOWNERREPLY_MSG)
 PartyRoomModule_pb.ChangeRoomOwnerRequest = protobuf.Message(PartyRoomModule_pb.CHANGEROOMOWNERREQUEST_MSG)
+PartyRoomModule_pb.CheckPartyRoomInfoReply = protobuf.Message(PartyRoomModule_pb.CHECKPARTYROOMINFOREPLY_MSG)
+PartyRoomModule_pb.CheckPartyRoomInfoRequest = protobuf.Message(PartyRoomModule_pb.CHECKPARTYROOMINFOREQUEST_MSG)
 PartyRoomModule_pb.ClearAndRefreshPartyRoomInfoReply = protobuf.Message(PartyRoomModule_pb.CLEARANDREFRESHPARTYROOMINFOREPLY_MSG)
 PartyRoomModule_pb.ClearAndRefreshPartyRoomInfoRequest = protobuf.Message(PartyRoomModule_pb.CLEARANDREFRESHPARTYROOMINFOREQUEST_MSG)
 PartyRoomModule_pb.ClearSuccessMatchInfoReply = protobuf.Message(PartyRoomModule_pb.CLEARSUCCESSMATCHINFOREPLY_MSG)

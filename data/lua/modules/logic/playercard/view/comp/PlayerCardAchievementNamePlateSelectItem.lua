@@ -26,6 +26,7 @@ end
 
 function PlayerCardAchievementNamePlateSelectItem:_onClickBtn()
 	if self._id then
+		PlayerCardAchievementSelectListModel.instance:clearAllSelect()
 		PlayerCardAchievementSelectController.instance:changeNamePlateSelect(self._id)
 
 		local isSelected = PlayerCardAchievementSelectListModel.instance:isSingleSelected(self._id)

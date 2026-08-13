@@ -67,6 +67,7 @@ function CardDropEndFlowController:onEndFlowDone()
 	self.cardDropEndFlow = nil
 
 	PopupController.instance:setPause(PauseKey, false)
+	PartyGameTrialController.instance:trialToNextGame()
 end
 
 function CardDropEndFlowController:onTransToGamePush()

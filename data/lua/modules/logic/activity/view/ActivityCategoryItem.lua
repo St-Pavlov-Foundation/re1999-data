@@ -41,6 +41,7 @@ function ActivityCategoryItem:_onItemClick()
 	ActivityRpc.instance:sendGetActivityInfosRequest()
 	self:setRedDotData()
 	ActivityModel.instance:setTargetActivityCategoryId(self._mo.id)
+	ActivityController.instance:dispatchEvent(ActivityEvent.RefreshActivitySelectState)
 end
 
 function ActivityCategoryItem:onUpdateMO(mo)

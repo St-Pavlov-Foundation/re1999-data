@@ -337,5 +337,12 @@
     "supportLang": [
       "zh"
     ]
+  },
+  {
+    "name": "3_9_pv",
+    "supportLang": [
+      "en",
+      "zh"
+    ]
   }
 ]

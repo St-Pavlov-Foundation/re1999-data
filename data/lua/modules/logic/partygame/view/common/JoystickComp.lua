@@ -3,6 +3,10 @@
 module("modules.logic.partygame.view.common.JoystickComp", package.seeall)
 
 local JoystickComp = class("JoystickComp", LuaCompBase)
+local PartyGameLengthEnum = {
+	0,
+	0.010000000000000002
+}
 
 function JoystickComp:init(go)
 	self.go = go
@@ -47,7 +51,7 @@ function JoystickComp:_onPointUp()
 	gohelper.setActive(self._goeffecthandle, false)
 end
 
-function JoystickComp:_onValueChange(x, y, index)
+function JoystickComp:_onValueChange(x, y, index, InputX, InputY)
 	gohelper.setActive(self._goeffectdir, index >= 0)
 
 	if index >= 0 then
@@ -56,15 +60,22 @@ function JoystickComp:_onValueChange(x, y, index)
 		transformhelper.setEulerAngles(self._transeffectdir, angleX, angleY, angleZ)
 	end
 
-	self:onValueChange(x, y, index)
+	self:onValueChange(x, y, index, InputX, InputY)
 end
 
-function JoystickComp:onValueChange(x, y, index)
+function JoystickComp:onValueChange(x, y, index, InputX, InputY)
 	if not self._game:isCanControl() then
 		return
 	end
 
-	local lengthIndex = index == -1 and 0 or 1
+	local length = InputX * InputX + InputY * InputY
+	local lengthIndex = 0
+
+	for i = 1, #PartyGameLengthEnum do
+		if length >= PartyGameLengthEnum[i] then
+			lengthIndex = i - 1
+		end
+	end
 
 	index = index == -1 and 0 or index
 

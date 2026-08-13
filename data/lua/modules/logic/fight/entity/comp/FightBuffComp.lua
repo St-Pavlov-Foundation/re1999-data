@@ -857,6 +857,8 @@ function FightBuffComp:registClasses()
 	if lua_fight_ya_mi_hu_ti_effect.configDict[skin] then
 		self:newClass(FightBuffYaMiHuTiEffect, self._entity)
 	end
+
+	self:newClass(FightNarcissusImmunityEffect, self._entity)
 end
 
 return FightBuffComp

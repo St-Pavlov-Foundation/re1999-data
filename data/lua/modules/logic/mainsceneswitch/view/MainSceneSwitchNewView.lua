@@ -32,6 +32,15 @@ function MainSceneSwitchNewView:onOpen()
 	MainSceneSwitchNewView.super.onOpen(self)
 	self:_updateSceneInfo()
 	self._rootAnimator:Play("open", 0, 0)
+
+	if self.viewParam and self.viewParam.jumpTabs and self.viewParam.jumpTabs[1] == MainEnum.SwitchType.Scene then
+		local index = self.viewParam.jumpTabs[2]
+
+		if index then
+			self.viewContainer:switchClassifyTab(index)
+			MainSwitchClassifyListModel.instance:selectCell(index, true)
+		end
+	end
 end
 
 function MainSceneSwitchNewView:onTabSwitchOpen()

@@ -53,6 +53,7 @@ ModuleEnum.HeroGroupType = {
 	Season123Retail = 8,
 	Odyssey = 13,
 	General = 12,
+	BossRushActMode = 16,
 	Season166Teach = 11,
 	Temp = 3
 }
@@ -68,13 +69,15 @@ ModuleEnum.HeroGroupSnapshotType = {
 	Act183Boss = 13,
 	Season123Retail = 7,
 	TowerPermanentAndLimit = 10,
-	Abyss = 19,
+	AbyssPreset = 19,
 	Rouge2 = 20,
 	AtomicDungeon = 21,
+	Abyss = 23,
 	TowerBoss = 11,
 	TowerComposeBoss = 18,
 	Act183Normal = 12,
 	Resources = 3,
+	BossRushActMode = 22,
 	Shelter = 14
 }
 ModuleEnum.FiveHeroEnum = {

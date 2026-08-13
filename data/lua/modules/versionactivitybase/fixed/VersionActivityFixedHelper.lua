@@ -5,7 +5,7 @@ module("modules.versionactivitybase.fixed.VersionActivityFixedHelper", package.s
 local VersionActivityFixedHelper = class("VersionActivityFixedHelper")
 local _version = {
 	big = 3,
-	small = 10
+	small = 9
 }
 local _versionTable
 local foramt1 = "%s_%s"
@@ -62,8 +62,13 @@ function VersionActivityFixedHelper.setDungeonSprite(image, name, setNativeSize,
 	local table = _getVersionTable(big, small)
 	local func = table._DungeonSpriteFunc
 
-	if not func then
-		func = _getVersionFuncForamt("set%sDungeonSprite", foramt2, big, small)
+	func = func or _getVersionFuncForamt("set%sDungeonSprite", foramt2, big, small)
+
+	if not UISpriteSetMgr.instance[func] then
+		func = "setVAFixedDungeonSprite"
+	end
+
+	if func then
 		_versionTable[big][small]._DungeonSpriteFunc = func
 	end
 

@@ -150,7 +150,7 @@ function TowerBossSpEpisodeView:onClickEpisode(layerId)
 	local isOpen = self.towerMo:isSpLayerOpen(layerId)
 
 	if not isOpen then
-		GameFacade.showToast(111)
+		GameFacade.showToast(ToastEnum.NotStart)
 
 		return
 	end

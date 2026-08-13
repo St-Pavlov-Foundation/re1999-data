@@ -375,7 +375,7 @@ end
 
 function HandBookCharacterView:_refreshFilterState()
 	if self:_isAllHeroType() then
-		local isFiltering = self._dmgFilterCount > 0 or self._careerFilterCount > 0 or self._tagsFilterTotalCount > 0
+		local isFiltering = CharacterSearchFilterModel.instance:hasFilter()
 
 		gohelper.setActive(self._goFiltering, isFiltering)
 		gohelper.setActive(self._goFilterno, not isFiltering)
@@ -387,6 +387,8 @@ function HandBookCharacterView:_getConfigHeroList()
 	local cfgList = {}
 	local sortFunc = HandBookCharacterView._sortFuncH2L
 	local allList = HeroConfig.instance:getHeroesList()
+
+	self._selectDestiny = CharacterSearchFilterModel.instance:getSelectDestiny()
 
 	for _, cfg in ipairs(allList) do
 		if self:_checkConfig(cfg) then
@@ -419,10 +421,11 @@ function HandBookCharacterView:_checkConfig(cfg)
 	end
 
 	local isDmg = self._dmgFilterCount == 0 or self._selectDmgs[cfg.dmgType]
+	local destiny = CharacterModel.instance:filterHerobyDestiny(cfg.id, self._selectDestiny)
 	local isCareers = self._careerFilterCount == 0 or CharacterModel.instance:filterHerobyCareer_1(self._selectCareers, cfg.career)
 	local isFilterTag = self._tagsFilterTotalCount == 0 or self._selectTags and CharacterModel.instance:isFilterTagByBattleTags(self._selectTags, cfg.battleTag, cfg.id)
 
-	if isDmg and isCareers and isFilterTag then
+	if isDmg and destiny and isCareers and isFilterTag then
 		return true
 	end
 
@@ -610,7 +613,7 @@ function HandBookCharacterView:onClose()
 	self._simageline:UnLoadImage()
 	self._simagecoverbg2:UnLoadImage()
 	self._simagecoverbg1peper1:UnLoadImage()
-	self._simagecoverbg1peper1:UnLoadImage()
+	self._simagecoverbg1peper2:UnLoadImage()
 	CharacterSearchFilterModel.instance:exitParentView()
 end
 

@@ -8,6 +8,7 @@ function AbyssInfoMo:ctor()
 	self.stageInfoDic = {}
 	self.stageInfoList = {}
 	self.allHeroDic = {}
+	self.useHeroTimeDic = {}
 end
 
 function AbyssInfoMo:init(actId)
@@ -28,6 +29,66 @@ function AbyssInfoMo:updateInfo(actId, stageInfoList)
 			self:updateSingleInfo(stageInfo, index == count)
 		end
 	end
+
+	self:updateHeroUseInfo()
+end
+
+function AbyssInfoMo:updateStageInfo(stageNo)
+	local stageInfo = self:getStageInfo(stageNo.stageId)
+
+	if stageInfo then
+		local time = tonumber(stageNo.lastUpdateTeamTime)
+
+		stageInfo.lastUpdateTime = time ~= nil and time ~= 0 and time or stageInfo.stageId
+	end
+end
+
+function AbyssInfoMo:updateHeroUseInfo()
+	tabletool.clear(self.useHeroTimeDic)
+
+	for _, stageInfo in ipairs(self.stageInfoList) do
+		if not stageInfo:isChallenged() then
+			local snapshotType = ModuleEnum.HeroGroupSnapshotType.Abyss
+			local heroGroupMO = HeroGroupSnapshotModel.instance:getHeroGroupInfo(snapshotType, stageInfo.heroGroupSubId, true)
+
+			if not heroGroupMO or not heroGroupMO.heroList then
+				return
+			end
+
+			for _, heroUid in ipairs(heroGroupMO.heroList) do
+				if heroUid and tonumber(heroUid) > 0 then
+					local heroMo = HeroModel.instance:getById(heroUid)
+					local heroId = heroMo and heroMo.heroId or 0
+
+					if not self.useHeroTimeDic[heroId] then
+						self.useHeroTimeDic[heroId] = stageInfo.lastUpdateTime
+					else
+						self.useHeroTimeDic[heroId] = math.max(self.useHeroTimeDic[heroId], stageInfo.lastUpdateTime)
+					end
+				end
+			end
+		end
+	end
+
+	local index = 0
+
+	for id, stageId in pairs(self.useHeroTimeDic) do
+		local heroConfig = HeroConfig.instance:getHeroCO(id)
+
+		index = index + 1
+
+		logNormal("updateHeroUseInfo index: " .. index .. " id:" .. id .. " name:" .. (heroConfig and heroConfig.name or "") .. " stageId: " .. stageId)
+	end
+end
+
+function AbyssInfoMo:isHeroUsed(heroId, lastUpdateTime)
+	local maxUseTime = self:getHeroLastUpdateTime(heroId)
+
+	return lastUpdateTime < maxUseTime
+end
+
+function AbyssInfoMo:getHeroLastUpdateTime(heroId)
+	return self.useHeroTimeDic[heroId] or 0
 end
 
 function AbyssInfoMo:updateSingleInfo(stageInfo, sort)
@@ -91,6 +152,8 @@ function AbyssInfoMo:resetStage(stageId)
 
 		stageInfoMo:resetInfo()
 	end
+
+	self:updateHeroUseInfo()
 end
 
 function AbyssInfoMo.sortStageList(a, b)

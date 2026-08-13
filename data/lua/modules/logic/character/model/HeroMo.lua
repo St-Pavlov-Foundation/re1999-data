@@ -964,15 +964,7 @@ function HeroMo:getHeroUseStyleCubeId()
 end
 
 function HeroMo:isCanOpenDestinySystem(isShowToast)
-	if not self:isTrial() and not OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.DestinyStone) then
-		local openEpisodeId = lua_open.configDict[OpenEnum.UnlockFunc.DestinyStone].episodeId
-
-		if isShowToast and not DungeonModel.instance:hasPassLevel(openEpisodeId) then
-			local episodeDisplay = DungeonConfig.instance:getEpisodeDisplay(openEpisodeId)
-
-			GameFacade.showToast(ToastEnum.DungeonMapLevel, episodeDisplay)
-		end
-
+	if not self:isTrial() and not CharacterDestinyModel.instance:isOpenDestinySystem(isShowToast) then
 		return false
 	end
 
@@ -980,17 +972,27 @@ function HeroMo:isCanOpenDestinySystem(isShowToast)
 		return false
 	end
 
+	local openLevel = self:getUnlockDestinyLevel()
+
+	if openLevel > self.level then
+		if isShowToast then
+			local showLevel, rank = HeroConfig.instance:getShowLevel(openLevel)
+
+			GameFacade.showToast(ToastEnum.CharacterDestinyUnlockLevel, GameUtil.getNum2Chinese(rank - 1), showLevel)
+		end
+
+		return false
+	end
+
+	return true
+end
+
+function HeroMo:getUnlockDestinyLevel()
 	local rare = self.config.rare or 5
 	local constId = CharacterDestinyEnum.DestinyStoneOpenLevelConstId[rare]
 	local openLevel = CommonConfig.instance:getConstStr(constId)
 
-	if self.level >= tonumber(openLevel) then
-		return true
-	elseif isShowToast then
-		local showLevel, rank = HeroConfig.instance:getShowLevel(tonumber(openLevel))
-
-		GameFacade.showToast(ToastEnum.CharacterDestinyUnlockLevel, GameUtil.getNum2Chinese(rank - 1), showLevel)
-	end
+	return tonumber(openLevel)
 end
 
 function HeroMo:isHasDestinySystem()
@@ -1110,10 +1112,15 @@ function HeroMo:getDeviceMo()
 	if deviceId and deviceId > 0 then
 		self.deviceMo = self.deviceMo or HeroDeviceMO.New(self.heroId)
 
+		self.deviceMo:setHeroMo(self)
 		self.deviceMo:refreshDevice(deviceId)
 
 		return self.deviceMo
 	end
+end
+
+function HeroMo:getCareer()
+	return self.config and self.config.career
 end
 
 return HeroMo

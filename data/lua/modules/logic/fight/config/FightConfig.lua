@@ -153,7 +153,9 @@ function FightConfig:reqConfigNames()
 		"fight_direct_switch_battle_when_end",
 		"fight_dian_ji_shi_buff_effect",
 		"fight_effect_follow_entity_visible",
-		"fight_effect_group"
+		"fight_effect_group",
+		"fight_skin_entity_enter_timeline",
+		"fight_na_xi_suo_si_immunity_effect"
 	}
 
 	if SLFramework.FrameworkSettings.IsEditor then

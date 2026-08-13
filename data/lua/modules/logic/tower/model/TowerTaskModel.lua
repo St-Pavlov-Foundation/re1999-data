@@ -16,7 +16,7 @@ end
 
 function TowerTaskModel:reInit()
 	self.tempTaskModel:clear()
-	TowerTaskModel.super.clear(self)
+	self:clear()
 
 	self.limitTimeTaskMap = {}
 	self.limitTimeTaskList = {}

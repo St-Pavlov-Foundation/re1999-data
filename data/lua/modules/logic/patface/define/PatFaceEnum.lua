@@ -73,6 +73,7 @@ PatFaceEnum.patFace = {
 	V2a2_Role_PanelSignView_Part2 = 20201,
 	DoubleDanPanel = 30300,
 	V2a3_Role_PanelSignView_Part2 = 20302,
+	V3a9_BDuckLinage = 30901,
 	V2a4_Role_PanelSignView_Part2 = 20401,
 	V2a5_Role_PanelSignView_Part2 = 20501,
 	V2a6_Role_PanelSignView_Part2 = 20601,
@@ -204,7 +205,8 @@ PatFaceEnum.patFaceCustomWork = {
 	[PatFaceEnum.patFace.DoubleDanPanel] = ActivityDoubleDanPanelPatWork,
 	[PatFaceEnum.patFace.V3a4_GiftRecommend] = Activity101SignPatFaceWork,
 	[PatFaceEnum.patFace.GoldenMilletPresent] = ActivityGoldenMilletPresentPatWork,
-	[PatFaceEnum.patFace.Sp02_GiftRecommend] = Activity101SignPatFaceWork
+	[PatFaceEnum.patFace.Sp02_GiftRecommend] = Activity101SignPatFaceWork,
+	[PatFaceEnum.patFace.V3a9_BDuckLinage] = Activity101SignPatFaceWork
 }
 
 return PatFaceEnum

@@ -130,7 +130,7 @@ function Activity186SignView:refreshTask()
 
 	self.spBonusStage = stage
 
-	local rewardStr = Activity186Config.instance:getConstStr(Activity186Enum.ConstId.Act101Reward)
+	local rewardStr = Activity186Config.instance:getConstStr(self.actId, Activity186Enum.ConstId.Act101Reward)
 	local rewards = GameUtil.splitString2(rewardStr, true)
 	local itemCo = rewards[1]
 

@@ -79,6 +79,19 @@ function PartyGameModel:reInit()
 	return
 end
 
+local UseLmScenePrefKey = "GM_PartyGame_useLmScene"
+local lmSceneGameIds = {
+	[1] = true
+}
+
+function PartyGameModel:isUseLmScene()
+	return PlayerPrefsHelper.getNumber(UseLmScenePrefKey, 0) == 1
+end
+
+function PartyGameModel:setUseLmScene(value)
+	PlayerPrefsHelper.setNumber(UseLmScenePrefKey, value and 1 or 0)
+end
+
 function PartyGameModel:getCurGameResPath()
 	local curGame = PartyGameController.instance:getCurPartyGame()
 
@@ -100,6 +113,10 @@ function PartyGameModel:getCurGameResPath()
 
 	local co = lua_partygame_asset.configDict[assetId]
 	local path = co and co.filePath or ""
+
+	if self:isUseLmScene() and lmSceneGameIds[curGameId] then
+		return string.format("%s_lm.prefab", path)
+	end
 
 	return string.format("%s.prefab", path)
 end

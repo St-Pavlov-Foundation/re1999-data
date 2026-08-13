@@ -78,7 +78,7 @@ function Activity186View:onClickBtnAvg()
 
 	Activity186Controller.instance:setPlayerPrefs(Activity186Enum.LocalPrefsKey.AvgMark, 1)
 
-	local storyId = Activity186Config.instance:getConstNum(Activity186Enum.ConstId.AvgStoryId)
+	local storyId = Activity186Config.instance:getConstNum(self.actId, Activity186Enum.ConstId.AvgStoryId)
 
 	StoryController.instance:playStory(storyId, nil, self.onStoryEnd, self)
 end
@@ -328,7 +328,9 @@ end
 
 function Activity186View:onStoryEnd()
 	Activity186Rpc.instance:sendGetAct186OnceBonusRequest(self.actId)
-	ViewMgr.instance:openView(ViewName.Activity186GiftView)
+	ViewMgr.instance:openView(ViewName.Activity186GiftView, {
+		actId = self.actId
+	})
 end
 
 function Activity186View:_onRefreshNewYearRed()

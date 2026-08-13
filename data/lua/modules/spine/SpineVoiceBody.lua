@@ -227,7 +227,7 @@ function SpineVoiceBody:_playBodyAction()
 			self._actionLoop = actionParam[3] == "-1"
 			self._mixTime = actionParam[4] and tonumber(actionParam[4])
 
-			local time = tonumber(actionParam[2])
+			local time = tonumber(actionParam[2]) or 0
 			local delayTime = time - self._bodyStart
 
 			self._bodyStartTime = Time.time

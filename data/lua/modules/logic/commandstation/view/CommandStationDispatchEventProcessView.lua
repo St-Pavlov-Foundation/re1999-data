@@ -249,7 +249,9 @@ function CommandStationDispatchEventProcessView:_updateStartedHeroList()
 end
 
 function CommandStationDispatchEventProcessView:_updateCostTime(time)
-	self._txtcosttime2.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("commandstation_dispatch_event_forecast_time"), tostring(time) .. "s")
+	local timeStr = tostring(time) .. "s"
+
+	self._txtcosttime2.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("commandstation_dispatch_event_forecast_time"), timeStr)
 end
 
 function CommandStationDispatchEventProcessView:_formatTime(sec)

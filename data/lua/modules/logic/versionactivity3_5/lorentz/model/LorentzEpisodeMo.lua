@@ -31,7 +31,7 @@ function LorentzEpisodeMo:checkFinishGame()
 end
 
 function LorentzEpisodeMo:isGame()
-	local config = LorentzConfig:getEpisodeCo(self._actId, self.episodeId)
+	local config = LorentzConfig.instance:getEpisodeCo(self._actId, self.episodeId)
 
 	return config and config.gameId ~= 0
 end

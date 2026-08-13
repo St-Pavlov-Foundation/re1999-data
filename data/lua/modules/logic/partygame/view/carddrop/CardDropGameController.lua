@@ -124,7 +124,7 @@ end
 function CardDropGameController:getCardDropTime()
 	local curGame = PartyGameController.instance:getCurPartyGame()
 
-	if curGame and curGame:getIsLocal() then
+	if curGame and curGame:getIsLocal() and not curGame:getIsTrial() then
 		return self.guideTime or 1
 	end
 

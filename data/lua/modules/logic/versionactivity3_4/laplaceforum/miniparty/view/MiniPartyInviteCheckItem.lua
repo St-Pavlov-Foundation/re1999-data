@@ -55,11 +55,11 @@ function MiniPartyInviteCheckItem:_onTargetUserGrouped(userId, isAgree)
 end
 
 function MiniPartyInviteCheckItem:_btnagreeOnClick()
-	Activity223Rpc:sendAct223HandleInviteRequest(self._actId, self._mo.friendInfo.userId, true)
+	Activity223Rpc.instance:sendAct223HandleInviteRequest(self._actId, self._mo.friendInfo.userId, true)
 end
 
 function MiniPartyInviteCheckItem:_btnrejectOnClick()
-	Activity223Rpc:sendAct223HandleInviteRequest(self._actId, self._mo.friendInfo.userId, false)
+	Activity223Rpc.instance:sendAct223HandleInviteRequest(self._actId, self._mo.friendInfo.userId, false)
 end
 
 function MiniPartyInviteCheckItem:showSwitch()

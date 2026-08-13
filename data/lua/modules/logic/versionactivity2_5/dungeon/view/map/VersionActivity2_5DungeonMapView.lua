@@ -48,6 +48,7 @@ function VersionActivity2_5DungeonMapView:addEvents()
 	self:addEventCb(Activity165Controller.instance, Activity165Event.refreshStoryReddot, self._act165RedDot, self)
 	self:addEventCb(DungeonController.instance, DungeonEvent.OnUpdateMapElementState, self._OnUpdateMapElementState, self)
 	self:addEventCb(GameSceneMgr.instance, SceneEventName.LoadingAnimEnd, self.checkLoadingAndRefresh, self)
+	self:addEventCb(DungeonController.instance, DungeonMapElementEvent.OnRecheckInteractive, self._onRecheckInteractive, self)
 	self._btncloseview:AddClickListener(self._btncloseviewOnClick, self)
 	self._btnactivitystore:AddClickListener(self._btnactivitystoreOnClick, self)
 	self._btnactivitytask:AddClickListener(self._btnactivitytaskOnClick, self)
@@ -68,7 +69,8 @@ function VersionActivity2_5DungeonMapView:removeEvents()
 	self:removeEventCb(VersionActivity2_5DungeonController.instance, VersionActivity2_5DungeonEvent.OnHideInteractUI, self.showBtnUI, self)
 	self:removeEventCb(Activity165Controller.instance, Activity165Event.refreshStoryReddot, self._act165RedDot, self)
 	self:removeEventCb(DungeonController.instance, DungeonEvent.OnUpdateMapElementState, self._OnUpdateMapElementState, self)
-	self:addEventCb(GameSceneMgr.instance, SceneEventName.LoadingAnimEnd, self.checkLoadingAndRefresh, self)
+	self:removeEventCb(GameSceneMgr.instance, SceneEventName.LoadingAnimEnd, self.checkLoadingAndRefresh, self)
+	self:removeEventCb(DungeonController.instance, DungeonMapElementEvent.OnRecheckInteractive, self._onRecheckInteractive, self)
 	self._btncloseview:RemoveClickListener()
 	self._btnactivitystore:RemoveClickListener()
 	self._btnactivitytask:RemoveClickListener()
@@ -253,6 +255,18 @@ end
 function VersionActivity2_5DungeonMapView:onClickElement()
 	self:hideBtnUI()
 	self:setNavBtnIsShow(false)
+end
+
+function VersionActivity2_5DungeonMapView:_onRecheckInteractive(isShow)
+	if isShow then
+		self._rectmask2D.padding = RECT_MASK_PADDING
+
+		gohelper.setActive(self._btncloseview, false)
+		self:showBtnUI()
+	else
+		self:hideBtnUI()
+		self:setNavBtnIsShow(false)
+	end
 end
 
 function VersionActivity2_5DungeonMapView:onModeChange()

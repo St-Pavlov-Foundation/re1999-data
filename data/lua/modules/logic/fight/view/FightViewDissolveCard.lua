@@ -110,14 +110,14 @@ end
 
 function FightViewDissolveCard:addPlaySkillEffect(goCardItem)
 	local url = ResUrl.getUIEffect(FightPreloadViewWork.ui_chupai_02)
-	local assetItem = FightHelper.getPreloadAssetItem(url)
+	local assetItem = FightGameMgr.loaderMgr:getAsset(url).assetItem
 
 	return gohelper.clone(assetItem:GetResource(url), goCardItem)
 end
 
 function FightViewDissolveCard:addPlayBigSkillEffect(goCardItem)
 	local url = ResUrl.getUIEffect(FightPreloadViewWork.ui_chupai_03)
-	local assetItem = FightHelper.getPreloadAssetItem(url)
+	local assetItem = FightGameMgr.loaderMgr:getAsset(url).assetItem
 
 	return gohelper.clone(assetItem:GetResource(url), goCardItem)
 end

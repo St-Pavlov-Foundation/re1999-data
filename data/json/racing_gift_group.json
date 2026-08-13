@@ -1,0 +1,20 @@
+[
+  {
+    "group": 101,
+    "icon": "v3a9_racing_talentskill1",
+    "name": "速度提升",
+    "desc": "速度天赋"
+  },
+  {
+    "group": 102,
+    "icon": "v3a9_racing_talentskill3",
+    "name": "道具改良",
+    "desc": "道具天赋"
+  },
+  {
+    "group": 103,
+    "icon": "v3a9_racing_talentskill2",
+    "name": "特别技巧",
+    "desc": "特殊天赋"
+  }
+]

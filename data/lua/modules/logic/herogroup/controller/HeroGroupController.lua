@@ -184,6 +184,12 @@ function HeroGroupController:_getGroupFightViewName(episodeId)
 		self.ChapterIdToHeroGroupView = {
 			[DungeonEnum.ChapterId.BossStory] = ViewName.VersionActivity2_8HeroGroupBossView
 		}
+
+		local bossrushActModeActId = V3a9_BossRushModel.instance:getActModeActId()
+
+		if bossrushActModeActId then
+			self.ActivityIdToHeroGroupView[bossrushActModeActId] = ViewName.V3a9_BossRush_HeroGroupFightView
+		end
 	end
 
 	if DungeonController.checkEpisodeFiveHero(episodeId) then
@@ -284,6 +290,27 @@ function HeroGroupController:onReceiveHeroGroupSnapshot(msg)
 	if snapshotId == ModuleEnum.HeroGroupSnapshotType.Season123 then
 		Season123Model.instance:setSnapshotByHeroGroup(subId, msg)
 	end
+
+	if snapshotId == ModuleEnum.HeroGroupSnapshotType.Abyss then
+		HeroGroupSnapshotModel.instance:updateHeroGroupInfo(snapshotId, subId, groupInfo)
+	end
+end
+
+function HeroGroupController:onReceiveHeroGroupSnapshotBatch(msg)
+	local snapshotId = msg.snapshotId
+	local subs = msg.groupInfos
+
+	for i = 1, #subs do
+		local subInfo = subs[i]
+		local subId = subInfo.snapshotSubId
+		local groupInfo = subInfo.groupInfo
+
+		if snapshotId == ModuleEnum.HeroGroupSnapshotType.Abyss then
+			HeroGroupSnapshotModel.instance:updateHeroGroupInfo(snapshotId, subId, groupInfo)
+		end
+	end
+
+	HeroGroupController.instance:dispatchEvent(HeroGroupEvent.OnSnapshotSaveSucc, snapshotId)
 end
 
 function HeroGroupController:useRecommendGroup(recommendMo, episodeId, hideMessageBox)
@@ -291,10 +318,14 @@ function HeroGroupController:useRecommendGroup(recommendMo, episodeId, hideMessa
 	self._tempEpisodeId = episodeId
 
 	if not hideMessageBox then
-		GameFacade.showOptionMessageBox(MessageBoxIdDefine.AbyssEnterEpisodeTip, MsgBoxEnum.BoxType.Yes_No, MsgBoxEnum.optionType.Daily, self.realUseRecommendGroup, self.clearTempRecommendGroup, nil, self, self, nil)
+		GameFacade.showOptionMessageBox(MessageBoxIdDefine.AbyssEnterEpisodeTip, MsgBoxEnum.BoxType.Yes_No, MsgBoxEnum.optionType.Daily, self.realUseRecommendGroup, self.onCancelUseRecommendGroup, nil, self, self, nil)
 	else
 		self:realUseRecommendGroup()
 	end
+end
+
+function HeroGroupController:onCancelUseRecommendGroup()
+	self:clearTempRecommendGroup()
 end
 
 function HeroGroupController:clearTempRecommendGroup()
@@ -306,12 +337,11 @@ function HeroGroupController:realUseRecommendGroup()
 	local recommendMo = self._tempRecommendMo
 	local episodeId = self._tempEpisodeId
 
-	self:clearTempRecommendGroup()
-
 	if HeroGroupModel.instance:getAfterUpdateRecommendState() then
 		local enterEpisodeParam = {}
 
 		enterEpisodeParam.recommendMo = recommendMo
+		enterEpisodeParam.episodeId = episodeId
 
 		HeroGroupModel.instance:setTempBattleRecommendParam(enterEpisodeParam)
 		HeroGroupModel.instance:setAfterUpdateRecommendState(false)
@@ -410,27 +440,28 @@ function HeroGroupController:realUseRecommendGroup()
 		groupId = heroGroupMO.id,
 		name = heroGroupMO.name,
 		clothId = clothId,
-		heroList = uidList
+		heroList = uidList,
+		episodeId = self._tempEpisodeId
 	}
 
 	if TowerModel.instance:isInTowerBattle() then
 		self:onTowerUse(info, heroGroupMO, recommendMo, configAids, battleConfig.roleNum, battleConfig.playerMax, true, configTrial)
+	elseif AbyssModel.instance:isInAbyssBattle() then
+		local skillIds = string.splitToNumber(recommendMo.extString, "#")
 
-		return
-	end
+		info.skillId = skillIds[1]
 
-	if AbyssModel.instance:isInAbyssBattle() then
 		self:onAbyssUse(info, heroGroupMO, configAids, battleConfig.roleNum, battleConfig.playerMax, true, configTrial)
-
-		return
+	else
+		heroGroupMO:initWithBattle(info, configAids, battleConfig.roleNum, battleConfig.playerMax, true, configTrial)
+		HeroSingleGroupModel.instance:setSingleGroup(heroGroupMO, true)
+		HeroGroupController.instance:dispatchEvent(HeroGroupEvent.OnModifyHeroGroup)
+		HeroGroupModel.instance:saveCurGroupData()
+		ViewMgr.instance:closeView(ViewName.HeroGroupRecommendView)
+		HeroGroupController.instance:dispatchEvent(HeroGroupEvent.OnUseRecommendGroupFinish)
 	end
 
-	heroGroupMO:initWithBattle(info, configAids, battleConfig.roleNum, battleConfig.playerMax, true, configTrial)
-	HeroSingleGroupModel.instance:setSingleGroup(heroGroupMO, true)
-	HeroGroupController.instance:dispatchEvent(HeroGroupEvent.OnModifyHeroGroup)
-	HeroGroupModel.instance:saveCurGroupData()
-	ViewMgr.instance:closeView(ViewName.HeroGroupRecommendView)
-	HeroGroupController.instance:dispatchEvent(HeroGroupEvent.OnUseRecommendGroupFinish)
+	self:clearTempRecommendGroup()
 end
 
 function HeroGroupController:onTowerUse(info, heroGroupMO, recommendMo, ...)
@@ -473,7 +504,23 @@ function HeroGroupController:onTowerUse(info, heroGroupMO, recommendMo, ...)
 end
 
 function HeroGroupController:onAbyssUse(info, heroGroupMO, ...)
-	local stageMo = AbyssModel.instance:getCurStageMo()
+	local activityId = AbyssModel.instance:getCurActId()
+	local curEpisodeId = info.episodeId
+	local stageId
+
+	if not curEpisodeId then
+		stageId = AbyssModel.instance:getCurStageId()
+	else
+		stageId = AbyssConfig.instance:getStageIdByEpisodeId(activityId, curEpisodeId)
+	end
+
+	if stageId == nil or stageId == 0 then
+		logError("HeroGroupController:onAbyssUse stageId is nil or 0")
+
+		return
+	end
+
+	local stageMo = AbyssModel.instance:getStageInfoMo(activityId, stageId)
 
 	if stageMo and stageMo:isChallenged() then
 		GameFacade.showToast(ToastEnum.AbyssHeroGroupCannotEdit)
@@ -486,14 +533,70 @@ function HeroGroupController:onAbyssUse(info, heroGroupMO, ...)
 		local mo = HeroModel.instance:getById(v)
 
 		if mo and AbyssModel.instance:isCurHeroLocked(mo.heroId) then
+			AbyssController.instance:dispatchEvent(AbyssEvent.OnAbyssRecommendHeroRemove, {
+				heroId = mo.heroId,
+				pos = i,
+				stageId = stageId
+			})
+
 			info.heroList[i] = tostring(0)
 		end
 	end
 
-	heroGroupMO:initWithBattle(info, ...)
+	self._tempAbyssUseInfo = info
+	self._tempAbyssUseHeroGroupMO = heroGroupMO
+	self._tempAbyssUseStageMo = stageMo
+	self._tempAbyssUseArgs = {
+		n = select("#", ...),
+		...
+	}
+
+	local skillId = AbyssHelper.getValidSkill(stageId, info.skillId)
+
+	if not skillId or skillId == 0 or skillId == stageMo.skillId then
+		self:_onAbyssUseSkillModified()
+
+		return
+	end
+
+	AbyssRpc.instance:sendAct229ModifySkillRequest(activityId, stageId, {
+		skillId
+	}, self._onAbyssUseSkillModified, self)
+end
+
+function HeroGroupController:clearTempAbyssUse()
+	self._tempAbyssUseInfo = nil
+	self._tempAbyssUseHeroGroupMO = nil
+	self._tempAbyssUseStageMo = nil
+	self._tempAbyssUseArgs = nil
+end
+
+function HeroGroupController:_onAbyssUseSkillModified()
+	local info = self._tempAbyssUseInfo
+	local heroGroupMO = self._tempAbyssUseHeroGroupMO
+	local stageMo = self._tempAbyssUseStageMo
+	local args = self._tempAbyssUseArgs
+
+	self:clearTempAbyssUse()
+
+	if not info or not heroGroupMO then
+		return
+	end
+
+	heroGroupMO:initWithBattle(info, unpack(args, 1, args.n))
+
+	local actId = AbyssModel.instance:getCurActId()
+	local stageConfig = AbyssConfig.instance:getEpisodeConfig(actId, stageMo.stageId)
+	local episodeConfig = DungeonConfig.instance:getEpisodeCO(stageConfig.episodeId)
+
+	HeroGroupModel.instance:setParam(episodeConfig.battleId, episodeConfig.id)
+
+	local groupInfo = HeroGroupSnapshotModel.instance:getById(ModuleEnum.HeroGroupSnapshotType.Abyss)
+
+	groupInfo:setSelectIndex(stageMo.heroGroupSubId or 1)
 	HeroSingleGroupModel.instance:setSingleGroup(heroGroupMO, true)
+	HeroGroupModel.instance:saveCurGroupData(nil, nil, heroGroupMO)
 	HeroGroupController.instance:dispatchEvent(HeroGroupEvent.OnModifyHeroGroup)
-	HeroGroupModel.instance:saveCurGroupData()
 	ViewMgr.instance:closeView(ViewName.HeroGroupRecommendView)
 end
 

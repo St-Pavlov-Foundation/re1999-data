@@ -49,7 +49,7 @@ function V3a2_BossRush_MainView:removeEvents()
 	self:removeEventCb(ActivityController.instance, ActivityEvent.RefreshActivityState, self._refreshStoreTag, self)
 	self:removeEventCb(RedDotController.instance, RedDotEvent.UpdateActTag, self._refreshStoreTag, self)
 	self:removeEventCb(BossRushController.instance, BossRushEvent.OnEnterStoreView, self._refreshStoreTag, self)
-	self:addEventCb(BossRushController.instance, BossRushEvent.onReceiveAct128GetExpReply, self.playRankBtnAnim, self)
+	self:removeEventCb(BossRushController.instance, BossRushEvent.onReceiveAct128GetExpReply, self.playRankBtnAnim, self)
 end
 
 function V3a2_BossRush_MainView:_btnStoreOnClick()
@@ -165,17 +165,20 @@ function V3a2_BossRush_MainView:_initItemList(dataList)
 
 	for i, mo in ipairs(dataList) do
 		local go = gohelper.findChild(self.viewGO, "BOSS" .. i)
-		local item = MonoHelper.addNoUpdateLuaComOnceToGo(go, V3a2_BossRush_MainItem)
+		local item = MonoHelper.addNoUpdateLuaComOnceToGo(go, V3a2_BossRush_MainItem, self.viewContainer)
 
 		item._index = i
 
 		item:setData(mo, i)
+
+		item.viewContainer = self.viewContainer
+
 		table.insert(self._itemList, item)
 	end
 end
 
 function V3a2_BossRush_MainView:_refreshRight()
-	local dataList = V3a2_BossRushModel.instance:getSortStages()
+	local dataList = V3a2_BossRushModel.instance:getSortStages(self.actId)
 
 	self:_initItemList(dataList)
 end

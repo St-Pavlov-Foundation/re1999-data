@@ -16363,5 +16363,270 @@
     "id": 3853066,
     "eventName": "play_ui_langchao_skill_light",
     "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 390001,
+    "eventName": "play_replay_music_theme_3_9",
+    "bankName": "ui_replay_mainmusic3_9"
+  },
+  {
+    "id": 390002,
+    "eventName": "play_ui_common_click",
+    "bankName": "uiclick"
+  },
+  {
+    "id": 390003,
+    "eventName": "play_ui_wulu_paiqian_open",
+    "bankName": "ui_activity_1_5_wulu"
+  },
+  {
+    "id": 390004,
+    "eventName": "play_ui_task_page",
+    "bankName": "main_ui"
+  },
+  {
+    "id": 390005,
+    "eventName": "play_ui_wulu_atticletter_write_loop",
+    "bankName": "ui_activity_1_5_wulu"
+  },
+  {
+    "id": 390006,
+    "eventName": "stop_ui_bus",
+    "bankName": "controlling_behavior"
+  },
+  {
+    "id": 390007,
+    "eventName": "play_ui_yct_yishi_evaluation",
+    "bankName": "ui_yangcongtou_yishi_sfx3_9"
+  },
+  {
+    "id": 390008,
+    "eventName": "play_ui_activity_reward_ending",
+    "bankName": "ui_activity_lvhu"
+  },
+  {
+    "id": 390009,
+    "eventName": "play_ui_activity_hero37_checkpoint_gather",
+    "bankName": "ui_activity_hero37_checkpoint"
+  },
+  {
+    "id": 390010,
+    "eventName": "play_ui_tujianskin_special_unlock",
+    "bankName": "ui_tujianskin_3_9"
+  },
+  {
+    "id": 390011,
+    "eventName": "play_ui_chongran3_9_bduck_bp",
+    "bankName": "ui_activity_3_9_chongran_yunying"
+  },
+  {
+    "id": 390012,
+    "eventName": "play_ui_shuori_qiyuan_down",
+    "bankName": "ui_activity_1_6_shuori"
+  },
+  {
+    "id": 390013,
+    "eventName": "play_ui_heduonie3_9_blessing1",
+    "bankName": "ui_activity_3_9_chongran_heduonie"
+  },
+  {
+    "id": 390014,
+    "eventName": "play_ui_heduonie3_9_blessing2",
+    "bankName": "ui_activity_3_9_chongran_heduonie"
+  },
+  {
+    "id": 390015,
+    "eventName": "play_ui_heduonie3_9_blessing3",
+    "bankName": "ui_activity_3_9_chongran_heduonie"
+  },
+  {
+    "id": 390016,
+    "eventName": "play_ui_heduonie3_9_ballfall",
+    "bankName": "ui_activity_3_9_chongran_heduonie"
+  },
+  {
+    "id": 390017,
+    "eventName": "play_ui_heduonie3_9_ballfly",
+    "bankName": "ui_activity_3_9_chongran_heduonie"
+  },
+  {
+    "id": 390018,
+    "eventName": "play_ui_heduonie3_9_electric",
+    "bankName": "ui_activity_3_9_chongran_heduonie"
+  },
+  {
+    "id": 390019,
+    "eventName": "play_ui_heduonie3_9_acidarrow",
+    "bankName": "ui_activity_3_9_chongran_heduonie"
+  },
+  {
+    "id": 390020,
+    "eventName": "play_ui_heduonie3_9_wind",
+    "bankName": "ui_activity_3_9_chongran_heduonie"
+  },
+  {
+    "id": 390021,
+    "eventName": "play_ui_heduonie3_9_axe",
+    "bankName": "ui_activity_3_9_chongran_heduonie"
+  },
+  {
+    "id": 390022,
+    "eventName": "play_ui_heduonie3_9_fire",
+    "bankName": "ui_activity_3_9_chongran_heduonie"
+  },
+  {
+    "id": 390023,
+    "eventName": "play_ui_heduonie3_9_water",
+    "bankName": "ui_activity_3_9_chongran_heduonie"
+  },
+  {
+    "id": 390024,
+    "eventName": "play_ui_heduonie3_9_complete",
+    "bankName": "ui_activity_3_9_chongran_heduonie"
+  },
+  {
+    "id": 390025,
+    "eventName": "play_ui_heduonie3_9_opennext",
+    "bankName": "ui_activity_3_9_chongran_heduonie"
+  },
+  {
+    "id": 390026,
+    "eventName": "play_ui_fight_3_9ux_jihuo",
+    "bankName": "fight_ui_sfx_heduonie3_9"
+  },
+  {
+    "id": 390027,
+    "eventName": "play_ui_fight_3_9ux_chupai",
+    "bankName": "fight_ui_sfx_heduonie3_9"
+  },
+  {
+    "id": 390028,
+    "eventName": "play_ui_fight_3_9ux_dianshu",
+    "bankName": "fight_ui_sfx_heduonie3_9"
+  },
+  {
+    "id": 390029,
+    "eventName": "play_ui_fight_3_9ux_rongjie",
+    "bankName": "fight_ui_sfx_heduonie3_9"
+  },
+  {
+    "id": 390030,
+    "eventName": "play_ui_chongran_yure_walk_loop",
+    "bankName": "ui_activity_3_9_chongran_yure"
+  },
+  {
+    "id": 390031,
+    "eventName": "stop_ui_chongran_yure_walk_loop",
+    "bankName": "ui_activity_3_9_chongran_yure"
+  },
+  {
+    "id": 390032,
+    "eventName": "play_ui_chongran_yure_bazaar_papers",
+    "bankName": "ui_activity_3_9_chongran_yure"
+  },
+  {
+    "id": 390033,
+    "eventName": "play_ui_chongran_fly_up",
+    "bankName": "ui_activity_3_9_chongran_gameplay"
+  },
+  {
+    "id": 390034,
+    "eventName": "play_ui_chongran_fly_coin",
+    "bankName": "ui_activity_3_9_chongran_gameplay"
+  },
+  {
+    "id": 390035,
+    "eventName": "play_ui_chongran_fly_loop",
+    "bankName": "ui_activity_3_9_chongran_gameplay"
+  },
+  {
+    "id": 390036,
+    "eventName": "stop_ui_chongran_fly_loop",
+    "bankName": "ui_activity_3_9_chongran_gameplay"
+  },
+  {
+    "id": 390037,
+    "eventName": "play_ui_chongran_splash_water",
+    "bankName": "ui_activity_3_9_chongran_gameplay"
+  },
+  {
+    "id": 390038,
+    "eventName": "stop_ui_chongran_splash_water",
+    "bankName": "ui_activity_3_9_chongran_gameplay"
+  },
+  {
+    "id": 390039,
+    "eventName": "play_ui_chongran_flyby",
+    "bankName": "ui_activity_3_9_chongran_gameplay"
+  },
+  {
+    "id": 390040,
+    "eventName": "play_ui_chongran_cast_skillmax",
+    "bankName": "ui_activity_3_9_chongran_gameplay"
+  },
+  {
+    "id": 390041,
+    "eventName": "play_ui_chongran_ripple_amb",
+    "bankName": "ui_activity_3_9_chongran_gameplay"
+  },
+  {
+    "id": 390042,
+    "eventName": "stop_ui_chongran_ripple_amb",
+    "bankName": "ui_activity_3_9_chongran_gameplay"
+  },
+  {
+    "id": 390043,
+    "eventName": "play_activitymusic_theme_3_9",
+    "bankName": "activity3_9_music"
+  },
+  {
+    "id": 390044,
+    "eventName": "play_ui_shiji_route_connect_loop",
+    "bankName": "ui_activity_1_8_shiji"
+  },
+  {
+    "id": 390045,
+    "eventName": "play_ui_diqiu_complete",
+    "bankName": "ui_activity_2_4_diqiu"
+  },
+  {
+    "id": 390046,
+    "eventName": "play_ui_heduonie3_9_complete",
+    "bankName": "ui_activity_3_9_chongran_heduonie"
+  },
+  {
+    "id": 390047,
+    "eventName": "play_activitymusic_hedone_story_3_9",
+    "bankName": "activity3_9_music"
+  },
+  {
+    "id": 390048,
+    "eventName": "play_ui_molu_chapter_switch",
+    "bankName": "ui_activity_molu"
+  },
+  {
+    "id": 390049,
+    "eventName": "play_ui_dungeon3_2_click",
+    "bankName": "ui_dungeon3_2_infield"
+  },
+  {
+    "id": 390050,
+    "eventName": "play_ui_molu_exit_appear",
+    "bankName": "ui_activity_molu"
+  },
+  {
+    "id": 390051,
+    "eventName": "play_ui_shuori_qiyuan_reset",
+    "bankName": "ui_activity_1_6_shuori"
+  },
+  {
+    "id": 390052,
+    "eventName": "play_ui_chongran_seagull",
+    "bankName": "ui_activity_3_9_chongran_gameplay"
+  },
+  {
+    "id": 390053,
+    "eventName": "play_ui_chongran_3_9_open",
+    "bankName": "ui_activity_3_9_chongran"
   }
 ]

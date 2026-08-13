@@ -24,7 +24,8 @@ function StatViewController:init()
 		[ViewName.V1a4_BossRushLevelDetail] = self.handleV1a4_BossRushLevelDetail,
 		[ViewName.OptionalChargeView] = self.handleOptionalChargeView,
 		[ViewName.VersionActivity2_0EnterView] = self.handleVersionActivityEnterView,
-		[ViewName.V3a2_BossRush_LevelDetailView] = self.handleBossRushLevelDetailView
+		[ViewName.V3a2_BossRush_LevelDetailView] = self.handleBossRushLevelDetailView,
+		[ViewName.V3a9_BossRush_LevelDetailView] = self.handleBossRushLevelDetailView
 	}
 	self._viewOpenTimeDict = {}
 end

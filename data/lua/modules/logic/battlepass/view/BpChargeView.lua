@@ -15,9 +15,7 @@ function BpChargeView:onInitView()
 	self._goBuyed2 = gohelper.findChild(self.viewGO, "Root/right/#go_hasBuy")
 	self._goleftitem = gohelper.findChild(self.viewGO, "Root/left/#scroll_new/viewport/content/Normal/Items/#go_Items")
 	self._goleftitemup = gohelper.findChild(self.viewGO, "Root/left/#scroll_new/viewport/content/LvUp/#go_Items")
-	self._gorightitem = gohelper.findChild(self.viewGO, "Root/right/#scroll_new/viewport/content/Normal/Items/#go_Items")
-	self._gorightitemup = gohelper.findChild(self.viewGO, "Root/right/#scroll_new/viewport/content/LvUp/#go_Items")
-	self._gorightitem2 = gohelper.findChild(self.viewGO, "Root/right/#scroll_new/viewport/content/Special/Items/#go_Items")
+	self._gorightgriditem = gohelper.findChild(self.viewGO, "Root/right/layout/#scroll_new/viewport/content/Grid/#go_griditem")
 	self._btnDetail = gohelper.findChildButtonWithAudio(self.viewGO, "Root/center/#txt_centerDesc/#btn_faj", AudioEnum.UI.play_artificial_ui_carddisappear)
 
 	if self._editableInitView then
@@ -70,9 +68,7 @@ function BpChargeView:_editableInitView()
 
 	self:createItems(self._goleftitem, normalCo, 1)
 	self:createItems(self._goleftitemup, upLvCo, nil, noShowNum)
-	self:createItems(self._gorightitem, normalCo, 1)
-	self:createItems(self._gorightitem2, payCo, 2)
-	self:createItems(self._gorightitemup, upLvCo, nil, noShowNum)
+	self:createPay2Items(self._gorightgriditem, payCo, 2)
 end
 
 function BpChargeView:onOpenFinish()
@@ -182,8 +178,83 @@ function BpChargeView:createItems(go, colist, type, noShowNum)
 			end
 
 			itemIcon:setCanShowDeadLine(not isCruise)
+			itemIcon:setOnBeforeClickCallback(self._statItemOnClick, self, arr)
 		end
 	end
+end
+
+function BpChargeView:createPay2Items(go, colist, pType)
+	if not colist then
+		return
+	end
+
+	gohelper.setActive(go, false)
+
+	for i, co in ipairs(colist) do
+		local arrList = GameUtil.splitString2(co.items, true) or {}
+
+		for _, arr in ipairs(arrList) do
+			local cloneGo = gohelper.cloneInPlace(go)
+
+			gohelper.setActive(cloneGo, true)
+			self:_onCreatePay2Item(cloneGo, arr, co, pType)
+		end
+	end
+end
+
+function BpChargeView:_onCreatePay2Item(go, arr, co, pType)
+	local goLimit = gohelper.findChild(go, "#go_Items/#go_Limit")
+	local txtLimit = gohelper.findChildTextMesh(go, "#go_Items/#go_Limit/txt_Limit")
+	local itemGo = gohelper.findChild(go, "#go_Items/#go_item")
+	local goNew = gohelper.findChild(go, "#go_Items/#go_new")
+	local goHasGet = gohelper.findChild(go, "#go_Items/#goHasGet")
+	local txtName = gohelper.findChildTextMesh(go, "image_name/#txt_name")
+	local txtDesc = gohelper.findChildTextMesh(go, "#txt_desc")
+	local itemType, itemId, itemNum = arr[1], arr[2], arr[3]
+	local itemIcon = IconMgr.instance:getCommonPropItemIcon(itemGo)
+
+	itemIcon:setMOValue(itemType, itemId, itemNum, nil, true)
+	itemIcon:isShowEquipAndItemCount(false)
+	gohelper.setActive(goLimit, co.tagType ~= 0)
+
+	txtLimit.text = co.tagTxt
+
+	gohelper.setActive(goNew, arr[5] == 1)
+	itemIcon:setCanShowDeadLine(co.tagType ~= 2)
+
+	local nameStr, descStr = self:_getShowNameAndDesc(itemType, itemId, itemNum, co.iconDesc)
+
+	txtName.text = nameStr
+
+	local isHasDesc = not string.nilorempty(descStr)
+
+	gohelper.setActive(txtDesc, isHasDesc)
+
+	if pType then
+		table.insert(self._itemGetTags[pType], goHasGet)
+	end
+
+	if isHasDesc then
+		txtDesc.text = descStr
+	end
+
+	itemIcon:setOnBeforeClickCallback(self._statItemOnClick, self, arr)
+end
+
+function BpChargeView:_getShowNameAndDesc(itemType, itemId, itemNum, descStr)
+	local itemConfig = ItemModel.instance:getItemConfig(itemType, itemId)
+
+	if itemConfig then
+		if not itemNum or itemNum < 1 then
+			return itemConfig.name, descStr
+		end
+
+		local lang = luaLang("v3a9_bpcharge_pay2item_name_num")
+
+		return GameUtil.getSubPlaceholderLuaLangTwoParam(lang, itemConfig.name, itemNum), descStr
+	end
+
+	return "", descStr
 end
 
 function BpChargeView:onDestroyView()
@@ -245,6 +316,14 @@ function BpChargeView:_onUpdatePayStatus()
 
 	for _, go in pairs(self._itemGetTags[2]) do
 		gohelper.setActive(go, BpModel.instance.payStatus == BpEnum.PayStatus.Pay2)
+	end
+end
+
+function BpChargeView:_statItemOnClick(params)
+	if params then
+		local itemType, itemId = params[1], params[2]
+
+		BpController.instance:statItemClick(itemType, itemId, self.viewName)
 	end
 end
 

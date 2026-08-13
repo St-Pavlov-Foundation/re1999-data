@@ -132,7 +132,7 @@ function TitleAppointmentModel:getTargetGuideBonusId(curRewardId)
 end
 
 function TitleAppointmentModel:isLoopBonus(index)
-	local bonusCo = TitleAppointmentConfig:getMilestoneBonusCo(index)
+	local bonusCo = TitleAppointmentConfig.instance:getMilestoneBonusCo(index)
 
 	return bonusCo and bonusCo.isLoopBonus
 end

@@ -135,6 +135,7 @@ function V1a4_BossRush_HeroGroupItemBase:_refreshHeroByDefault()
 	local careerSpriteName = self:getCareerSpriteName()
 
 	UISpriteSetMgr.instance:setCommonSprite(self._imagecareer, careerSpriteName)
+	gohelper.setActive(self._goTrialTag, not heroMo:isOwnHero())
 end
 
 function V1a4_BossRush_HeroGroupItemBase:onSetData()

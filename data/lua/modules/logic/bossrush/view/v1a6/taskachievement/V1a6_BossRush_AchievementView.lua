@@ -42,6 +42,9 @@ end
 
 function V1a6_BossRush_AchievementView:onOpen()
 	self.stage = self.viewParam.stage
+	self._stageCO = self.viewParam.stageCO
+	self.actId = self._stageCO.activityId
+	self._stageMo = V3a9_BossRushModel.instance:getStageMo(self.actId, self.stage)
 
 	self:_initAssessIcon()
 	gohelper.setActive(self._goRight, true)
@@ -81,7 +84,7 @@ function V1a6_BossRush_AchievementView:_initAssessIcon()
 		self._assessIcon = MonoHelper.addNoUpdateLuaComOnceToGo(go, itemClass)
 	end
 
-	local highestPoint = BossRushModel.instance:getHighestPoint(self.stage)
+	local highestPoint = self._stageMo and self._stageMo.highestPoint or 0
 
 	self._assessIcon:setData(self.stage, highestPoint, false)
 
@@ -93,7 +96,7 @@ function V1a6_BossRush_AchievementView:_refresh()
 end
 
 function V1a6_BossRush_AchievementView:_refreshRight()
-	V1a6_BossRush_BonusModel.instance:selecAchievementTab(self.stage)
+	V1a6_BossRush_BonusModel.instance:selecAchievementTab(self.stage, self.actId)
 end
 
 function V1a6_BossRush_AchievementView:playAnim(name, callback, callbackobj)

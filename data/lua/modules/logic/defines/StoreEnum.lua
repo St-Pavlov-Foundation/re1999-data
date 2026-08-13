@@ -58,6 +58,7 @@ StoreEnum.StoreId = {
 	MonthCardRecommend = 1000,
 	Summon = 130,
 	RoomStore = 170,
+	TwinssychubeEquipStore = 304,
 	TowerStore = 140,
 	VersionPackage = 612,
 	SummonCost = 118,
@@ -149,7 +150,8 @@ StoreEnum.StoreChargeType = {
 	DailyReleasePackage = 4,
 	NationalGift = 9,
 	MonthCard = 2,
-	Optional = 5
+	Optional = 5,
+	FightUIPackage = 22
 }
 StoreEnum.Prefab = {
 	RoomStore = 6,

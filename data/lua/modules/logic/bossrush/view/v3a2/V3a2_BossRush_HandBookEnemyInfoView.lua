@@ -475,7 +475,7 @@ function V3a2_BossRush_HandBookEnemyInfoView:_refreshStrategy()
 
 	gohelper.setActive(self._scrollstrategy.gameObject, true)
 
-	local strategy = self._handBookMo:getStrategy()
+	local strategy = BossRushConfig.instance:getBossRecommendStrategy(self.bossType)
 	local content = self._scrollstrategy.content
 
 	if not self._strategyRes then

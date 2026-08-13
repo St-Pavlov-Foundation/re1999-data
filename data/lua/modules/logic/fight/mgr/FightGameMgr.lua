@@ -16,6 +16,7 @@ function FightGameMgr:onConstructor()
 	self:com_registEvent(ConnectAliveMgr.instance, ConnectEvent.OnReconnectSucc_def, self.onReconnectSucc_def)
 	self:com_registMsg(FightMsgId.RestartGame, self.onRestartGame)
 
+	FightGameMgr.loaderMgr = self:newClass(FightLoaderMgr)
 	FightGameMgr.necessaryAssetLoaderMgr = self:newClass(FightNecessaryAssetLoaderMgr)
 	FightGameMgr.sceneLevelMgr = self:newClass(FightSceneLevelMgr)
 	FightGameMgr.restartMgr = self:newClass(FightRestartMgr)
@@ -28,7 +29,6 @@ function FightGameMgr:onLogicEnter()
 end
 
 function FightGameMgr:registMgr()
-	self.loaderMgr = self:addMgr(FightLoaderMgr)
 	self.timelinePreLoaderMgr = self:addMgr(FightTimelinePreLoaderMgr)
 	self.entityMgr = self:addMgr(FightEntityMgr)
 	self.playMgr = self:addMgr(FightPlayMgr)
@@ -105,7 +105,7 @@ function FightGameMgr:onLostConnect()
 	local playerInfo = PlayerModel.instance:getPlayinfo()
 	local str = "战斗超时断线,玩家uid:%d, 战斗id: %d"
 
-	str = string.format(str, playerInfo.userId, FightDataHelper.fieldMgr.battleId)
+	str = string.format(str, playerInfo.userId, FightDataHelper.fieldMgr.battleId or 0)
 
 	local entityDataDic = FightDataHelper.entityMgr.entityDataDic
 

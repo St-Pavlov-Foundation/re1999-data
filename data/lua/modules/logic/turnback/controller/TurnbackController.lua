@@ -22,6 +22,13 @@ function TurnbackController:reInit()
 	return
 end
 
+function TurnbackController:sendGetTurnbackInfoRequest()
+	TurnbackRpc.instance:sendGetTurnbackInfoRequest()
+	TaskRpc.instance:sendGetTaskInfoRequest({
+		TaskEnum.TaskType.Turnback
+	})
+end
+
 function TurnbackController:_dailyRefresh()
 	if TurnbackModel.instance:isInOpenTime() then
 		TurnbackRpc.instance:sendGetTurnbackInfoRequest()

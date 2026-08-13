@@ -52,10 +52,6 @@ function LorentzGameController:finishGame()
 	ViewMgr.instance:openView(ViewName.LorentzResultView)
 end
 
-function LorentzGameController:reInit()
-	return
-end
-
 LorentzGameController.instance = LorentzGameController.New()
 
 return LorentzGameController

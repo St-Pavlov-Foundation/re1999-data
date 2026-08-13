@@ -35,15 +35,15 @@ function SummonLimitationReplicationSelfSelectSubBaseView:onInitView()
 end
 
 function SummonLimitationReplicationSelfSelectSubBaseView:addEvents()
-	self.super.addEvents(self)
+	SummonLimitationReplicationSelfSelectSubBaseView.super.addEvents(self)
 end
 
 function SummonLimitationReplicationSelfSelectSubBaseView:removeEvents()
-	self.super.removeEvents(self)
+	SummonLimitationReplicationSelfSelectSubBaseView.super.removeEvents(self)
 end
 
 function SummonLimitationReplicationSelfSelectSubBaseView:_editableInitView()
-	self.super._editableInitView(self)
+	SummonLimitationReplicationSelfSelectSubBaseView.super._editableInitView(self)
 end
 
 SummonLimitationReplicationSelfSelectSubBaseView.LimitCount = 1
@@ -95,7 +95,7 @@ function SummonLimitationReplicationSelfSelectSubBaseView:showCharacter()
 end
 
 function SummonLimitationReplicationSelfSelectSubBaseView:onUpdateParam()
-	self.super.onUpdateParam(self)
+	SummonLimitationReplicationSelfSelectSubBaseView.super.onUpdateParam(self)
 end
 
 function SummonLimitationReplicationSelfSelectSubBaseView:onOpen()
@@ -115,11 +115,11 @@ function SummonLimitationReplicationSelfSelectSubBaseView:stopAnimator()
 end
 
 function SummonLimitationReplicationSelfSelectSubBaseView:onClose()
-	self.super.onClose(self)
+	SummonLimitationReplicationSelfSelectSubBaseView.super.onClose(self)
 end
 
 function SummonLimitationReplicationSelfSelectSubBaseView:onDestroyView()
-	self.super.onDestroyView(self)
+	SummonLimitationReplicationSelfSelectSubBaseView.super.onDestroyView(self)
 end
 
 return SummonLimitationReplicationSelfSelectSubBaseView

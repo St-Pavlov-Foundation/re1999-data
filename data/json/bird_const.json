@@ -1,0 +1,44 @@
+[
+  {
+    "activityId": 13921,
+    "id": 1,
+    "value": "1400",
+    "value2": ""
+  },
+  {
+    "activityId": 13921,
+    "id": 2,
+    "value": "-700",
+    "value2": ""
+  },
+  {
+    "activityId": 13921,
+    "id": 3,
+    "value": "800",
+    "value2": ""
+  },
+  {
+    "activityId": 13921,
+    "id": 4,
+    "value": "750",
+    "value2": ""
+  },
+  {
+    "activityId": 13921,
+    "id": 5,
+    "value": "1500",
+    "value2": ""
+  },
+  {
+    "activityId": 13921,
+    "id": 6,
+    "value": "750",
+    "value2": ""
+  },
+  {
+    "activityId": 13921,
+    "id": 7,
+    "value": "",
+    "value2": "15:4#0.01|30:6#-0.01|15:1#0.01|15:2#0.01|15:3#0.01"
+  }
+]

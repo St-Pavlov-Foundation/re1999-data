@@ -127,7 +127,7 @@ function AtomicDungeonSceneElements:realClickElement()
 				AtomicRpc.instance:sendAtomicMapSetCurrElementRequest(clickElemenet.config.id)
 			end
 		else
-			local isKeyElement = AtomicDungeonConfig:checkElementIsKey(clickElemenet.config)
+			local isKeyElement = AtomicDungeonConfig.instance:checkElementIsKey(clickElemenet.config)
 
 			if not isKeyElement then
 				AtomicRpc.instance:sendAtomicMapSetCurrElementRequest(clickElemenet.config.id)

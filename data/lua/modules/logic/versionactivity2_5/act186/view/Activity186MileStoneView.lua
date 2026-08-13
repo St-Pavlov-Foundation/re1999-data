@@ -75,7 +75,7 @@ function Activity186MileStoneView:onCurrencyChange(changeIds)
 		return
 	end
 
-	local currencyId = Activity186Config.instance:getConstNum(Activity186Enum.ConstId.CurrencyId)
+	local currencyId = Activity186Config.instance:getConstNum(self.actId, Activity186Enum.ConstId.CurrencyId)
 
 	if changeIds[currencyId] then
 		self._waitRefresh = true
@@ -120,7 +120,7 @@ end
 
 function Activity186MileStoneView:refreshStone()
 	local hasGetReward = self.actMo.getDailyCollection
-	local str = Activity186Config.instance:getConstStr(Activity186Enum.ConstId.DailyStoneCount)
+	local str = Activity186Config.instance:getConstStr(self.actId, Activity186Enum.ConstId.DailyStoneCount)
 	local list = GameUtil.splitString2(str, true)
 	local count = list[1][3]
 
@@ -188,7 +188,7 @@ end
 
 function Activity186MileStoneView:caleProgressIndex(list)
 	local index = 0
-	local currencyId = Activity186Config.instance:getConstNum(Activity186Enum.ConstId.CurrencyId)
+	local currencyId = Activity186Config.instance:getConstNum(self.actId, Activity186Enum.ConstId.CurrencyId)
 	local hasCurrencyNum = ItemModel.instance:getItemQuantity(MaterialEnum.MaterialType.Currency, currencyId)
 	local lastCoinNum = 0
 

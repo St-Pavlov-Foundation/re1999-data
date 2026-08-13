@@ -27,13 +27,12 @@ function BossRushController:addConstEvents()
 	DungeonController.instance:registerCallback(DungeonEvent.OnEndDungeonPush, self._onEndDungeonPush, self)
 	ActivityController.instance:registerCallback(ActivityEvent.RefreshActivityState, self._refreshActivityState, self)
 	RedDotController.instance:registerCallback(RedDotEvent.UpdateRelateDotInfo, self._updateRelateDotInfo, self)
-	BossRushController.instance:registerCallback(BossRushEvent.onReceiveAct128GetExpReply, self.refreshPlayerRankExp, self)
 end
 
-function BossRushController:enterFightScene(stage, layer)
-	self._model:setBattleStageAndLayer(stage, layer)
+function BossRushController:enterFightScene(stage, layer, actId)
+	self._model:setBattleStageAndLayer(stage, layer, actId)
 
-	local dungeonEpisodeCO = BossRushConfig.instance:getDungeonEpisodeCO(stage, layer)
+	local dungeonEpisodeCO = BossRushConfig.instance:getDungeonEpisodeCO(stage, layer, actId)
 	local episodeId = dungeonEpisodeCO.id
 	local chapterId = dungeonEpisodeCO.chapterId
 	local battleId = dungeonEpisodeCO.battleId
@@ -492,10 +491,6 @@ end
 
 function BossRushController:openV3a2RankView()
 	ViewMgr.instance:openView(ViewName.V3a2_BossRush_RankView)
-end
-
-function BossRushController:refreshPlayerRankExp()
-	V3a2_BossRushModel.instance:refreshRankMos()
 end
 
 BossRushController.instance = BossRushController.New()

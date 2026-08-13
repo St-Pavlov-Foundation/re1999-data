@@ -42,7 +42,10 @@ function Turnback3SignInItem:initItem(id, prefab)
 	self.turnbackId = TurnbackModel.instance:getCurTurnbackId()
 	self.id = id
 	self._isLastDay = self.id == 7
-	self._isSpeical = self.id == 2 or self.id == 7
+
+	local info = TurnbackEnum.SignInSpecialDays[self.turnbackId]
+
+	self._isSpeical = info and info[id]
 	self.config = TurnbackConfig.instance:getTurnbackSignInDayCo(self.turnbackId, self.id)
 	self.state = TurnbackSignInModel.instance:getSignInStateById(self.id)
 	self._txtday.text = "0" .. self.id
@@ -69,28 +72,31 @@ function Turnback3SignInItem:_initRewardList(count, bonusCo)
 
 			rewardItem = self:getUserDataTb_()
 			rewardItem.go = gohelper.findChild(self.go, "reward" .. i)
-			rewardItem.goIcon = gohelper.findChild(rewardItem.go, "#go_itemicon")
-			rewardItem.txtNum = gohelper.findChildText(rewardItem.go, "txt_rewardcount")
-			rewardItem.imgbg = gohelper.findChildImage(rewardItem.go, "image_bg")
 
-			if self._isSpeical then
-				rewardItem.btnClick = gohelper.findChildButton(rewardItem.go, "#btn_click")
+			if rewardItem.go then
+				rewardItem.goIcon = gohelper.findChild(rewardItem.go, "#go_itemicon")
+				rewardItem.txtNum = gohelper.findChildText(rewardItem.go, "txt_rewardcount")
+				rewardItem.imgbg = gohelper.findChildImage(rewardItem.go, "image_bg")
 
-				rewardItem.btnClick:AddClickListener(self._clickItem, self, co)
+				if self._isSpeical then
+					rewardItem.btnClick = gohelper.findChildButton(rewardItem.go, "#btn_click")
+
+					rewardItem.btnClick:AddClickListener(self._clickItem, self, co)
+				end
+
+				if icon then
+					rewardItem.itemIcon = IconMgr.instance:getCommonPropItemIcon(rewardItem.goIcon)
+
+					rewardItem.itemIcon:setMOValue(type, id, num, nil, true)
+					rewardItem.itemIcon:isShowQuality(false)
+					rewardItem.itemIcon:isShowCount(false)
+				end
+
+				rewardItem.txtNum.text = "×" .. num
+
+				UISpriteSetMgr.instance:setUiFBSprite(rewardItem.imgbg, "bg_pinjidi_" .. config.rare)
+				table.insert(self.rewardList, rewardItem)
 			end
-
-			if icon then
-				rewardItem.itemIcon = IconMgr.instance:getCommonPropItemIcon(rewardItem.goIcon)
-
-				rewardItem.itemIcon:setMOValue(type, id, num, nil, true)
-				rewardItem.itemIcon:isShowQuality(false)
-				rewardItem.itemIcon:isShowCount(false)
-			end
-
-			rewardItem.txtNum.text = "×" .. num
-
-			UISpriteSetMgr.instance:setUiFBSprite(rewardItem.imgbg, "bg_pinjidi_" .. config.rare)
-			table.insert(self.rewardList, rewardItem)
 		end
 	end
 end
@@ -111,6 +117,11 @@ end
 
 function Turnback3SignInItem:_refrshNextTag()
 	local showTag = TurnbackSignInModel.instance:checkShowNextTag(self.id)
+	local day, hour, minute = TurnbackModel.instance:getRemainTime()
+
+	if day < 1 then
+		showTag = false
+	end
 
 	gohelper.setActive(self._gonexttag, showTag)
 end

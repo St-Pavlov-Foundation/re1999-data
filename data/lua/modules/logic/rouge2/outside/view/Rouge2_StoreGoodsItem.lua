@@ -22,6 +22,8 @@ function Rouge2_StoreGoodsItem:onInitView(go)
 	self.simageCoin = gohelper.findChildSingleImage(self.go, "txt_cost/simage_coin")
 	self.imageCoin = gohelper.findChildImage(self.go, "txt_cost/simage_coin")
 	self.goSoldout = gohelper.findChild(self.go, "go_soldout")
+	self.go_LevelLimit = gohelper.findChild(self.go, "go_levellimit")
+	self.txt_LevelLimit = gohelper.findChildTextMesh(self.go, "go_levellimit/bg/txt")
 
 	self.goClick:AddClickListener(self.onClick, self)
 end
@@ -32,6 +34,15 @@ function Rouge2_StoreGoodsItem:onClick()
 	local isOpen = Rouge2_StoreModel.instance:isCurStoreOpen(true)
 
 	if not isOpen then
+		return
+	end
+
+	local curStageId = Rouge2_StoreModel.instance:getCurStageId()
+	local isBuyLimit = self.storeGoodsCo.maxBuyCount == 0 and not Rouge2_StoreModel.instance:isStoreAllClaimed(curStageId)
+
+	if isBuyLimit then
+		GameFacade.showToast(ToastEnum.Rouge2_Store_Buy_Limit)
+
 		return
 	end
 
@@ -122,7 +133,17 @@ function Rouge2_StoreGoodsItem:refreshRemainBuyCount()
 		gohelper.setActive(self.goSoldout, false)
 
 		self.remainBuyCount = 9999
+
+		local curStageId = Rouge2_StoreModel.instance:getCurStageId()
+		local isBuyLimit = not Rouge2_StoreModel.instance:isStoreAllClaimed(curStageId)
+
+		gohelper.setActive(self.go_LevelLimit, isBuyLimit)
+
+		if isBuyLimit then
+			self.txt_LevelLimit.text = luaLang("v3a9_rouge2_buy_limit_tip")
+		end
 	else
+		gohelper.setActive(self.go_LevelLimit, false)
 		gohelper.setActive(self.txtLimitBuy.gameObject, true)
 
 		self.remainBuyCount = self.storeGoodsCo.maxBuyCount - Rouge2_StoreModel.instance:getGoodsBuyCount(self.storeGoodsCo.id)

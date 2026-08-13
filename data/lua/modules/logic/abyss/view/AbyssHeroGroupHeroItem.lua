@@ -24,4 +24,19 @@ function AbyssHeroGroupHeroItem:checkAbyss()
 	end
 end
 
+function AbyssHeroGroupHeroItem:checkUsed()
+	local curStageMo = AbyssModel.instance:getCurStageMo()
+	local haveChallenge = curStageMo:isChallenged()
+
+	if haveChallenge then
+		return
+	end
+
+	local actInfoMo = AbyssModel.instance:getCurInfoMo()
+
+	if actInfoMo:isHeroUsed(self._heroMO.config.id, curStageMo.lastUpdateTime) then
+		return self._heroMO.id
+	end
+end
+
 return AbyssHeroGroupHeroItem

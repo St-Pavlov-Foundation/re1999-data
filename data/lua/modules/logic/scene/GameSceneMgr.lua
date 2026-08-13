@@ -45,6 +45,7 @@ function GameSceneMgr:_addScenes()
 	self:_addSceneObj(SceneType.Udimo, UdimoScene)
 	self:_addSceneObj(SceneType.PartyGame, PartyGameScene)
 	self:_addSceneObj(SceneType.PartyGameLobby, PartyGameLobbyScene)
+	self:_addSceneObj(SceneType.RacingCar, V3a9RacingCarScene)
 	self:_addSceneObj(SceneType.ChatRoom, ChatRoomScene)
 end
 
@@ -165,7 +166,7 @@ function GameSceneMgr:startScene(sceneType, sceneId, levelId, forceStarting, for
 	self:showLoading(sceneType)
 	self:closeScene(sceneType, sceneId, levelId)
 
-	if sceneType == SceneType.Main or sceneType == SceneType.Room or sceneType == SceneType.Explore or sceneType == SceneType.SurvivalShelter or sceneType == SceneType.SurvivalSummaryAct or sceneType == SceneType.SurvivalCollectionRoom or sceneType == SceneType.Survival or sceneType == SceneType.Cachot then
+	if sceneType == SceneType.Main or sceneType == SceneType.Room or sceneType == SceneType.Explore or sceneType == SceneType.SurvivalShelter or sceneType == SceneType.SurvivalSummaryAct or sceneType == SceneType.SurvivalCollectionRoom or sceneType == SceneType.Survival or sceneType == SceneType.PartyGameLobby or sceneType == SceneType.Cachot then
 		TaskDispatcher.runDelay(self._onDelayStartScene, self, 1.467)
 	else
 		self._isStarting = true

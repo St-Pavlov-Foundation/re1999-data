@@ -24,6 +24,8 @@ function CharacterDestinyStoneView:onInitView()
 	self._goexchange = gohelper.findChild(self.viewGO, "root/btn/#go_exchange")
 	self._btnexchange = gohelper.findChildButtonWithAudio(self.viewGO, "root/btn/#go_exchange/#btn_exchange")
 	self._gounlocktips = gohelper.findChild(self.viewGO, "root/btn/#go_unlocktips")
+	self._gounlocktips2 = gohelper.findChild(self.viewGO, "root/btn/#go_unlocktips_2")
+	self._txtunlocktips2 = gohelper.findChildText(self.viewGO, "root/btn/#go_unlocktips_2/TipsBG/#txt_tips")
 	self._goreshapeeffect = gohelper.findChild(self.viewGO, "root/#go_reshape/#go_reshapeeffect")
 	self._goreshapeItem = gohelper.findChild(self.viewGO, "root/#go_reshape/#go_reshapeeffect/#scroll_reshape")
 	self._gopoint = gohelper.findChild(self.viewGO, "root/point/#go_point")
@@ -257,6 +259,46 @@ function CharacterDestinyStoneView:onOpen()
 	gohelper.setActive(self._gounlockstone, false)
 
 	self._openUnlockStoneView = false
+
+	local isUnlock, tips = self:_isUnlockDestiny()
+
+	if not isUnlock then
+		self._txtunlocktips2.text = tips
+	end
+
+	gohelper.setActive(self._gounlocktips2, not isUnlock)
+end
+
+function CharacterDestinyStoneView:_isUnlockDestiny()
+	local isOpen = OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.DestinyStone)
+
+	if not isOpen then
+		local desc = OpenModel.instance:getFuncUnlockDesc(OpenEnum.UnlockFunc.DestinyStone)
+
+		if desc == 0 then
+			local openEpisodeId = lua_open.configDict[OpenEnum.UnlockFunc.DestinyStone].episodeId
+
+			if not DungeonModel.instance:hasPassLevel(openEpisodeId) then
+				local episodeDisplay = DungeonConfig.instance:getEpisodeDisplay(openEpisodeId)
+				local tostCo = ToastConfig.instance:getToastCO(ToastEnum.DungeonMapLevel)
+
+				desc = GameUtil.getSubPlaceholderLuaLangOneParam(tostCo.tips, episodeDisplay)
+			end
+		end
+
+		return false, desc
+	end
+
+	local openLevel = self._heroMO:getUnlockDestinyLevel()
+
+	if openLevel > self._heroMO.level then
+		local showLevel, rank = HeroConfig.instance:getShowLevel(openLevel)
+		local tostCo = ToastConfig.instance:getToastCO(ToastEnum.CharacterDestinyUnlockLevel)
+
+		return false, GameUtil.getSubPlaceholderLuaLangTwoParam(tostCo.tips, GameUtil.getNum2Chinese(rank - 1), showLevel)
+	end
+
+	return true
 end
 
 function CharacterDestinyStoneView:_getEffectItem(index)

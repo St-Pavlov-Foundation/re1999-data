@@ -169,6 +169,12 @@ function VersionActivityNewsView:onClose()
 	for _, contentItem in ipairs(self.contentItemList) do
 		contentItem.simageIcon:UnLoadImage()
 	end
+
+	if self.viewParam and self.viewParam.isRecheck then
+		local elementId = self.viewParam.elementId
+
+		DungeonController.instance:onAgainOpenRecheckView(elementId)
+	end
 end
 
 function VersionActivityNewsView:onDestroyView()

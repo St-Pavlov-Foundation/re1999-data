@@ -6,6 +6,7 @@ local lua_activity229_episode = {}
 local fields = {
 	careerPrefer = 4,
 	teamRecommend = 5,
+	optionalSkills = 6,
 	stage = 2,
 	activityId = 1,
 	episodeId = 3

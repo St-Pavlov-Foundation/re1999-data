@@ -127,9 +127,10 @@ function MainUIPartView:_initMainUIPart()
 	local goactivityfight = gohelper.findChild(self.viewGO, "right/go_fight/#go_activityfight/#btn_fight")
 	local gonormaljumpfight = gohelper.findChild(self.viewGO, "right/go_fight/#go_normalfight/#btn_jumpfight")
 	local gonormalfight = gohelper.findChild(self.viewGO, "right/go_fight/#go_normalfight/#btn_fight")
-	local goskinBg = gohelper.findChild(self.viewGO, "#go_skinBg")
+	local goskinBg = gohelper.findChild(self.viewGO, "right/#go_skinBg")
 	local goCaiDan = gohelper.findChild(self.viewGO, "right/#skin_caidan")
 
+	self._goskinBgmask = gohelper.findChild(self.viewGO, "right/#go_skinBg/simage_mask")
 	self._mainUIParts = self:getUserDataTb_()
 	self._animParts = self:getUserDataTb_()
 	self._skinAnimViews = self:getUserDataTb_()
@@ -207,6 +208,8 @@ function MainUIPartView:refreshMainUI(id)
 		self:_initMainUIPart()
 	end
 
+	local isShowSkinbgMask = true
+
 	for _, co in ipairs(lua_scene_ui.configList) do
 		local skinId = co.id
 		local skinTb = self._mainUIParts[skinId]
@@ -218,7 +221,13 @@ function MainUIPartView:refreshMainUI(id)
 				obj = obj or self._mainUIParts[MainUISwitchEnum.Skin.Normal][part]
 
 				if obj then
-					gohelper.setActive(obj, self:_checkShowPartObj(skinId, part))
+					local isShow = self:_checkShowPartObj(skinId, part)
+
+					gohelper.setActive(obj, isShow)
+
+					if part == MainUISwitchEnum.MainUIPart.SkinBG and isShow then
+						isShowSkinbgMask = false
+					end
 				end
 			elseif self._mainUIParts[id] then
 				local skinObj = self._mainUIParts[id][part]
@@ -232,6 +241,7 @@ function MainUIPartView:refreshMainUI(id)
 		end
 	end
 
+	gohelper.setActive(self._goskinBgmask, isShowSkinbgMask)
 	gohelper.setActive(self._goactbottomDec, id == MainUISwitchEnum.Skin.Sp01)
 	TaskDispatcher.cancelTask(self._cutRoleHead, self)
 

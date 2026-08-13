@@ -19,6 +19,7 @@ function HandbookSkinView:onInitView()
 	self._textPlayerName = gohelper.findChildText(self.viewGO, "title/#title_name")
 	self._txtFloorName = gohelper.findChildText(self.viewGO, "Left/#txt_Name")
 	self._goFestivalTitle = gohelper.findChild(self.viewGO, "festival_title")
+	self._goFestivalRedDot = gohelper.findChild(self.viewGO, "festival_title/#go_festivalRedDotRoot")
 	self._txtFloorThemeDescr = gohelper.findChildText(self.viewGO, "Left/#txt_Descr")
 	self._goFloorItemRoot = gohelper.findChild(self.viewGO, "Right/Scroll View/Viewport/Content")
 	self._goFloorItem = gohelper.findChild(self.viewGO, "Right/Scroll View/Viewport/Content/Buttnitem")
@@ -29,7 +30,14 @@ function HandbookSkinView:onInitView()
 	self._itemScrollRect = gohelper.findChildScrollRect(self.viewGO, "Right/Scroll View")
 	self._goContent = gohelper.findChild(self.viewGO, "Right/Scroll View/Viewport/Content")
 	self._goScrollListArrow = gohelper.findChild(self.viewGO, "Right/arrow")
+	self._btnArrow = gohelper.findChildButton(self.viewGO, "Right/arrow/#go_arrowreddot/#btn_arrow")
 	self._goArrowRedDot = gohelper.findChild(self.viewGO, "Right/arrow/#go_arrowreddot")
+	self._arrowNewRedDot = RedDotController.instance:addNotEventRedDot(self._goArrowRedDot)
+
+	self._arrowNewRedDot:setShowType(RedDotEnum.Style.Green)
+	self._arrowNewRedDot:setCheckShowRedDotFunc(self.refreshArrowRedDot, self)
+	self._arrowNewRedDot:refreshRedDot()
+
 	self._arrowAnimator = self._goScrollListArrow:GetComponent(typeof(UnityEngine.Animator))
 	self._scrollHeight = recthelper.getHeight(self._itemScrollRect.transform)
 	self._viewAnimator = self.viewGO:GetComponent(gohelper.Type_Animator)
@@ -47,6 +55,7 @@ function HandbookSkinView:addEvents()
 	self:addEventCb(self.viewContainer, HandbookEvent.OnClickFestivalSkinSuit, self._onEnterFestivalSkinSuit, self)
 	self:addEventCb(self.viewContainer, HandbookEvent.OnExitFestivalSkinSuit, self._onExitFestivalSkinSuit, self)
 	self:addEventCb(HandbookController.instance, HandbookEvent.OnClickSkinSuitFloorItem, self.onClickFloorItem, self)
+	self:addEventCb(HandbookController.instance, HandbookEvent.MarkHandbookSkinSuitRedDot, self.refreshSkinRedDot, self)
 
 	if HandbookController.instance:hasAnyHandBookSkinGroupRedDot() then
 		self._itemScrollRect:AddOnValueChanged(self._onScrollChange, self)
@@ -55,6 +64,7 @@ function HandbookSkinView:addEvents()
 	self._scroll:AddDragBeginListener(self._onScrollDragBegin, self)
 	self._scroll:AddDragEndListener(self._onScrollDragEnd, self)
 	self._scroll:AddDragListener(self._onScrollDragging, self)
+	self._btnArrow:AddClickListener(self._onClickArrow, self)
 end
 
 function HandbookSkinView:removeEvents()
@@ -62,12 +72,15 @@ function HandbookSkinView:removeEvents()
 	self._scroll:RemoveDragBeginListener()
 	self._scroll:RemoveDragEndListener()
 	self._scroll:RemoveDragListener()
+	self._btnArrow:RemoveClickListener()
 	self.dropClick:RemoveClickListener()
 	self._dropFilter:RemoveOnValueChanged()
 
 	if self.dropExtend then
 		self.dropExtend:dispose()
 	end
+
+	self:removeEventCb(HandbookController.instance, HandbookEvent.MarkHandbookSkinSuitRedDot, self.refreshSkinRedDot, self)
 end
 
 function HandbookSkinView:_onScrollChange(value)
@@ -127,12 +140,18 @@ function HandbookSkinView:_editableInitView()
 	self._pointItemTbList = {
 		self:_createPointTB(self._gopointItem)
 	}
+	self._skinSuitFloorCfgList = HandbookConfig.instance:getSkinThemeGroupCfgs(true, true)
+	self._festivalRedDot = RedDotController.instance:addNotEventRedDot(self._goFestivalRedDot)
+
+	self._festivalRedDot:setShowType(RedDotEnum.Style.Green)
+	self._festivalRedDot:setCheckShowRedDotFunc(self.refreshArrowRedDot, self)
+	self._festivalRedDot:refreshRedDot()
 end
 
 function HandbookSkinView:onOpen()
 	local viewParam = self.viewParam
 
-	self._defaultSelectedIdx = viewParam and viewParam.defaultSelectedIdx or 1
+	self._defaultSelectedIdx = viewParam and viewParam.defaultSelectedIdx or HandbookController.instance:getDefaultHandbookSkinGroupId(self._skinSuitFloorCfgList)
 	self._curSelectedIdx = self._defaultSelectedIdx
 
 	self:_createFloorItems()
@@ -147,10 +166,98 @@ function HandbookSkinView:onOpen()
 	self._textPlayerName.text = playerNameContent
 
 	self:initFilterDrop()
+	self:refreshSkinRedDot()
 end
 
 function HandbookSkinView:onOpenFinish()
 	self:refreshTabListArrow()
+	self:_scrollToFirstRedDotFloorItem()
+end
+
+function HandbookSkinView:refreshArrowRedDot()
+	return true
+end
+
+function HandbookSkinView:_onClickArrow()
+	self:_scrollToNextRedDotFloorItem()
+end
+
+function HandbookSkinView:_scrollToNextRedDotFloorItem()
+	if not self._skinSuitFloorItems or not self._itemScrollRect then
+		return
+	end
+
+	local contentTrans = self._goContent.transform
+	local curY = contentTrans.localPosition.y
+	local visibleBottom = -self._scrollHeight - curY
+	local targetItem
+
+	for _, item in ipairs(self._skinSuitFloorItems) do
+		if item and item.hasRedDot and item:hasRedDot() then
+			local itemY = item.viewGO.transform.localPosition.y
+
+			if itemY < visibleBottom - ItemCellHeight / 2 and (not targetItem or itemY > targetItem.viewGO.transform.localPosition.y) then
+				targetItem = item
+			end
+		end
+	end
+
+	if not targetItem then
+		return
+	end
+
+	local contentHeight = recthelper.getHeight(contentTrans)
+	local maxScroll = math.max(0, contentHeight - self._scrollHeight)
+
+	if maxScroll <= 0 then
+		return
+	end
+
+	local itemY = targetItem.viewGO.transform.localPosition.y
+	local targetY = ItemCellHeight - itemY - self._scrollHeight
+
+	targetY = math.max(0, math.min(maxScroll, targetY))
+	self._itemScrollRect.verticalNormalizedPosition = 1 - GameUtil.saturate(targetY / maxScroll)
+
+	self:refreshTabListArrow()
+	self:clickFloorItemAction(targetItem)
+end
+
+function HandbookSkinView:_scrollToFirstRedDotFloorItem()
+	if not self._skinSuitFloorItems or not self._itemScrollRect then
+		return
+	end
+
+	local targetItem
+
+	for _, item in ipairs(self._skinSuitFloorItems) do
+		if item and item.hasRedDot and item:hasRedDot() then
+			targetItem = item
+
+			break
+		end
+	end
+
+	if not targetItem then
+		return
+	end
+
+	local contentTrans = self._goContent.transform
+	local contentHeight = recthelper.getHeight(contentTrans)
+	local maxScroll = math.max(0, contentHeight - self._scrollHeight)
+
+	if maxScroll <= 0 then
+		return
+	end
+
+	local itemY = targetItem.viewGO.transform.localPosition.y
+	local targetY = ItemCellHeight - itemY - self._scrollHeight
+
+	targetY = math.max(0, math.min(maxScroll, targetY))
+	self._itemScrollRect.verticalNormalizedPosition = 1 - GameUtil.saturate(targetY / maxScroll)
+
+	self:refreshTabListArrow()
+	self:clickFloorItemAction(targetItem)
 end
 
 function HandbookSkinView:refreshTabListArrow()
@@ -266,6 +373,20 @@ function HandbookSkinView:onClickFloorItem(index)
 	end
 
 	self._curSelectedIdx = index
+
+	local floorItem = self._skinSuitFloorItems[index]
+
+	self._needSelectRedDotSuit = floorItem and floorItem:hasRedDot() or false
+
+	self:refreshSkinRedDot()
+end
+
+function HandbookSkinView:refreshSkinRedDot()
+	self:refreshTabListArrow()
+
+	local showFestivalRedDot = HandbookController.instance:isHandbookSkinSuitNewRedDotShow(HandbookEnum.SkinSuitLowEnum.Festival)
+
+	gohelper.setActive(self._goFestivalRedDot.gameObject, showFestivalRedDot)
 end
 
 function HandbookSkinView:onClickFloorAniDone()
@@ -416,7 +537,22 @@ function HandbookSkinView:updateFilterDrop()
 
 	self._dropFilter:ClearOptions()
 	self._dropFilter:AddOptions(dropStrList)
-	self._dropFilter:SetValue(#self._suitCfgList - 1)
+
+	local targetIdx = #self._suitCfgList
+
+	if self._needSelectRedDotSuit then
+		for i, cfg in ipairs(self._suitCfgList) do
+			if HandbookController.instance:isHandbookSkinSuitNewRedDotShow(cfg.id) then
+				targetIdx = i - 1
+
+				break
+			end
+		end
+	end
+
+	self._needSelectRedDotSuit = nil
+
+	self._dropFilter:SetValue(targetIdx)
 end
 
 function HandbookSkinView:onDropHide()

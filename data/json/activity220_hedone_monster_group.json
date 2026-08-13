@@ -1,0 +1,247 @@
+[
+  {
+    "id": 39030,
+    "type": 1,
+    "weight": 100,
+    "baseAttrFactor": 1.0,
+    "monsters": "39070#5"
+  },
+  {
+    "id": 39031,
+    "type": 1,
+    "weight": 100,
+    "baseAttrFactor": 1.0,
+    "monsters": "39070#4|39071#1"
+  },
+  {
+    "id": 39032,
+    "type": 2,
+    "weight": 100,
+    "baseAttrFactor": 1.0,
+    "monsters": "39071#4|39072#1"
+  },
+  {
+    "id": 39033,
+    "type": 2,
+    "weight": 100,
+    "baseAttrFactor": 0.95,
+    "monsters": "39072#4|39070#1"
+  },
+  {
+    "id": 39034,
+    "type": 3,
+    "weight": 100,
+    "baseAttrFactor": 1.0,
+    "monsters": "39073#3|39070#2"
+  },
+  {
+    "id": 39035,
+    "type": 3,
+    "weight": 100,
+    "baseAttrFactor": 1.0,
+    "monsters": "39075#1|39073#2|39070#2"
+  },
+  {
+    "id": 39036,
+    "type": 4,
+    "weight": 100,
+    "baseAttrFactor": 1.0,
+    "monsters": "39074#1"
+  },
+  {
+    "id": 39037,
+    "type": 4,
+    "weight": 100,
+    "baseAttrFactor": 1.0,
+    "monsters": "39074#1|39070#2"
+  },
+  {
+    "id": 39038,
+    "type": 5,
+    "weight": 100,
+    "baseAttrFactor": 1.0,
+    "monsters": "39076#1|39071#3"
+  },
+  {
+    "id": 39039,
+    "type": 5,
+    "weight": 100,
+    "baseAttrFactor": 1.0,
+    "monsters": "39077#1|39070#3"
+  },
+  {
+    "id": 39040,
+    "type": 5,
+    "weight": 100,
+    "baseAttrFactor": 1.0,
+    "monsters": "39078#1|39070#3"
+  },
+  {
+    "id": 39041,
+    "type": 6,
+    "weight": 100,
+    "baseAttrFactor": 1.2,
+    "monsters": "39076#1|39072#3"
+  },
+  {
+    "id": 39042,
+    "type": 6,
+    "weight": 100,
+    "baseAttrFactor": 1.2,
+    "monsters": "39077#1|39073#3"
+  },
+  {
+    "id": 39043,
+    "type": 6,
+    "weight": 100,
+    "baseAttrFactor": 1.2,
+    "monsters": "39078#1|39075#1|39070#2"
+  },
+  {
+    "id": 39044,
+    "type": 7,
+    "weight": 100,
+    "baseAttrFactor": 0.9,
+    "monsters": "39070#4|39071#2|39072#1"
+  },
+  {
+    "id": 39045,
+    "type": 7,
+    "weight": 100,
+    "baseAttrFactor": 0.9,
+    "monsters": "39073#3|39070#3"
+  },
+  {
+    "id": 39046,
+    "type": 1,
+    "weight": 100,
+    "baseAttrFactor": 1.0,
+    "monsters": "39070#3"
+  },
+  {
+    "id": 39047,
+    "type": 1,
+    "weight": 100,
+    "baseAttrFactor": 1.0,
+    "monsters": "39070#2"
+  },
+  {
+    "id": 39048,
+    "type": 1,
+    "weight": 100,
+    "baseAttrFactor": 1.0,
+    "monsters": "39070#4"
+  },
+  {
+    "id": 39049,
+    "type": 4,
+    "weight": 100,
+    "baseAttrFactor": 1.0,
+    "monsters": "39070#2|39074#1"
+  },
+  {
+    "id": 39050,
+    "type": 3,
+    "weight": 100,
+    "baseAttrFactor": 1.0,
+    "monsters": "39070#2|39073#1"
+  },
+  {
+    "id": 39051,
+    "type": 4,
+    "weight": 100,
+    "baseAttrFactor": 1.0,
+    "monsters": "39070#1|39074#1|39073#2"
+  },
+  {
+    "id": 39052,
+    "type": 4,
+    "weight": 100,
+    "baseAttrFactor": 1.0,
+    "monsters": "39070#1|39074#2|39073#1"
+  },
+  {
+    "id": 39053,
+    "type": 2,
+    "weight": 100,
+    "baseAttrFactor": 1.0,
+    "monsters": "39071#1|39072#1|39073#1"
+  },
+  {
+    "id": 39054,
+    "type": 4,
+    "weight": 100,
+    "baseAttrFactor": 1.0,
+    "monsters": "39071#1|39070#1|39074#1"
+  },
+  {
+    "id": 39055,
+    "type": 4,
+    "weight": 100,
+    "baseAttrFactor": 1.0,
+    "monsters": "39071#2|39073#1|39074#1"
+  },
+  {
+    "id": 39056,
+    "type": 4,
+    "weight": 100,
+    "baseAttrFactor": 1.0,
+    "monsters": "39071#1|39073#1|39074#1"
+  },
+  {
+    "id": 39057,
+    "type": 4,
+    "weight": 100,
+    "baseAttrFactor": 1.0,
+    "monsters": "39072#1|39073#1|39074#1"
+  },
+  {
+    "id": 39058,
+    "type": 3,
+    "weight": 100,
+    "baseAttrFactor": 1.0,
+    "monsters": "39070#1|39071#1|39073#1"
+  },
+  {
+    "id": 39059,
+    "type": 3,
+    "weight": 100,
+    "baseAttrFactor": 1.0,
+    "monsters": "39070#1|39072#1|39073#1"
+  },
+  {
+    "id": 39060,
+    "type": 4,
+    "weight": 100,
+    "baseAttrFactor": 1.0,
+    "monsters": "39073#2|39074#2"
+  },
+  {
+    "id": 39061,
+    "type": 8,
+    "weight": 100,
+    "baseAttrFactor": 1.1,
+    "monsters": "39076#1|39072#2|39073#1"
+  },
+  {
+    "id": 39062,
+    "type": 8,
+    "weight": 100,
+    "baseAttrFactor": 0.85,
+    "monsters": "39078#1|39077#1|39075#1|39073#1"
+  },
+  {
+    "id": 39063,
+    "type": 8,
+    "weight": 100,
+    "baseAttrFactor": 0.9,
+    "monsters": "39076#1|39078#1|39074#1|39073#1"
+  },
+  {
+    "id": 39064,
+    "type": 8,
+    "weight": 100,
+    "baseAttrFactor": 0.8,
+    "monsters": "39076#1|39077#1|39078#1|39075#1"
+  }
+]

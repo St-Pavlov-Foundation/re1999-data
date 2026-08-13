@@ -301,7 +301,7 @@ end
 
 function V3a6PuzzleView:_checkPlayNextStory()
 	TaskDispatcher.runDelay(self.closeThis, self, 1)
-	V3a5PuzzleController.instance:playNextStory(self.viewName, self.closeThis, self)
+	V3a5PuzzleController.instance:playNextStory(self._storyId, self.viewName, self.closeThis, self)
 end
 
 function V3a6PuzzleView:onUpdateParam()
@@ -310,6 +310,8 @@ end
 
 function V3a6PuzzleView:onOpen()
 	gohelper.setActive(self._gotip, true)
+
+	self._storyId = self.viewParam.storyId
 end
 
 function V3a6PuzzleView:startDialog(groupId)

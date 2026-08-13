@@ -140,9 +140,17 @@ end
 function FightCardPlayEffect:_addTrailEffect(playCardTr)
 	if GMFightShowState.cards then
 		local url = ResUrl.getUIEffect(FightPreloadViewWork.ui_kapaituowei)
-		local assetItem = FightHelper.getPreloadAssetItem(url)
+		local loaderComp = FightGameMgr.playMgr:getComponent(FightLoaderComponent)
 
-		self._tailEffectGO = gohelper.clone(assetItem:GetResource(url), playCardTr.gameObject)
+		loaderComp:loadAsset(url, self.onTrailEffectLoaded, self, playCardTr)
+	end
+end
+
+function FightCardPlayEffect:onTrailEffectLoaded(success, assetItem, playCardTr)
+	if success then
+		local resObj = assetItem:GetResource()
+
+		self._tailEffectGO = gohelper.clone(resObj, playCardTr.gameObject)
 		self._tailEffectGO.name = FightPreloadViewWork.ui_kapaituowei
 	end
 end

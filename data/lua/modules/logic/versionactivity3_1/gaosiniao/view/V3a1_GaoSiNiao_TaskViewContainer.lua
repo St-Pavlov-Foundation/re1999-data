@@ -4,12 +4,6 @@ module("modules.logic.versionactivity3_1.gaosiniao.view.V3a1_GaoSiNiao_TaskViewC
 
 local V3a1_GaoSiNiao_TaskViewContainer = class("V3a1_GaoSiNiao_TaskViewContainer", CorvusTaskViewContainer)
 
-function V3a1_GaoSiNiao_TaskViewContainer:onCreateListScrollParam()
-	local listScrollParam = V3a1_GaoSiNiao_TaskViewContainer.super.onCreateListScrollParam(self)
-
-	return listScrollParam
-end
-
 function V3a1_GaoSiNiao_TaskViewContainer:onCreateMainView()
 	return V3a1_GaoSiNiao_TaskView.New()
 end

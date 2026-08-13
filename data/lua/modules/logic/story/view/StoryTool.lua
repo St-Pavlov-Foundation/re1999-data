@@ -186,4 +186,164 @@ function StoryTool.FilterStrByPatterns(str, patterns)
 	return result
 end
 
+function StoryTool.applyMaterialScheme(mat, schemeId)
+	if not mat then
+		return
+	end
+
+	local scheme = StoryTool.getMaterialMergedScheme(schemeId)
+
+	if not scheme then
+		return
+	end
+
+	for propName, propDef in pairs(scheme.props) do
+		local t = propDef.type
+		local v = propDef.value
+
+		if t == StoryEnum.MaterialPropType.Float then
+			mat:SetFloat(propName, v)
+		elseif t == StoryEnum.MaterialPropType.Color then
+			mat:SetColor(propName, Color(v[1], v[2], v[3], v[4]))
+		elseif t == StoryEnum.MaterialPropType.Vector then
+			mat:SetVector(propName, Vector4.New(v[1], v[2], v[3], v[4]))
+		end
+	end
+end
+
+function StoryTool.getMaterialSchemeInitValues(mat, schemeId)
+	if not mat then
+		return
+	end
+
+	local scheme = StoryTool.getMaterialMergedScheme(schemeId)
+
+	if not scheme then
+		return
+	end
+
+	local result = {}
+
+	for propName, propDef in pairs(scheme.props) do
+		local t = propDef.type
+		local value
+
+		if t == StoryEnum.MaterialPropType.Float then
+			value = mat:GetFloat(propName)
+		elseif t == StoryEnum.MaterialPropType.Color then
+			local c = mat:GetColor(propName)
+
+			value = {
+				c.r,
+				c.g,
+				c.b,
+				c.a
+			}
+		elseif t == StoryEnum.MaterialPropType.Vector then
+			local v = mat:GetVector(propName)
+
+			value = {
+				v.x,
+				v.y,
+				v.z,
+				v.w
+			}
+		end
+
+		result[propName] = {
+			type = t,
+			value = value
+		}
+	end
+
+	return result
+end
+
+function StoryTool.lerpMaterialSchemeValues(mat, fromProps, toProps, t)
+	if not mat or not fromProps or not toProps then
+		return
+	end
+
+	if t < 0 then
+		t = 0
+	end
+
+	if t > 1 then
+		t = 1
+	end
+
+	for propName, toDef in pairs(toProps) do
+		local fromDef = fromProps[propName]
+
+		if fromDef then
+			local propType = toDef.type
+			local fv = fromDef.value
+			local tv = toDef.value
+
+			if propType == StoryEnum.MaterialPropType.Float then
+				mat:SetFloat(propName, fv + (tv - fv) * t)
+			elseif propType == StoryEnum.MaterialPropType.Color then
+				mat:SetColor(propName, Color(fv[1] + (tv[1] - fv[1]) * t, fv[2] + (tv[2] - fv[2]) * t, fv[3] + (tv[3] - fv[3]) * t, fv[4] + (tv[4] - fv[4]) * t))
+			elseif propType == StoryEnum.MaterialPropType.Vector then
+				mat:SetVector(propName, Vector4.New(fv[1] + (tv[1] - fv[1]) * t, fv[2] + (tv[2] - fv[2]) * t, fv[3] + (tv[3] - fv[3]) * t, fv[4] + (tv[4] - fv[4]) * t))
+			end
+		end
+	end
+end
+
+function StoryTool.getMaterialMergedScheme(schemeId)
+	local scheme = StoryConfig.instance:getMaterialConfig(schemeId)
+
+	return scheme
+end
+
+function StoryTool.findPrevVisibleChar(info, startIdx)
+	if not info then
+		return nil, -1
+	end
+
+	local i = startIdx
+
+	if i >= info.characterCount then
+		i = info.characterCount - 1
+	end
+
+	while i >= 0 do
+		local ci = info.characterInfo[i]
+
+		if ci and ci.isVisible then
+			return ci, i
+		end
+
+		i = i - 1
+	end
+
+	return nil, -1
+end
+
+function StoryTool.findNextVisibleChar(info, startIdx)
+	if not info then
+		return nil, -1
+	end
+
+	local n = info.characterCount
+	local i = startIdx
+
+	if i < 0 then
+		i = 0
+	end
+
+	while i < n do
+		local ci = info.characterInfo[i]
+
+		if ci and ci.isVisible then
+			return ci, i
+		end
+
+		i = i + 1
+	end
+
+	return nil, -1
+end
+
 return StoryTool

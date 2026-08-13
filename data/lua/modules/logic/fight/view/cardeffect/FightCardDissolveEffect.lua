@@ -23,9 +23,9 @@ function FightCardDissolveEffect:onStart(context)
 	self._dt = dt / FightModel.instance:getUISpeed()
 	self._cloneItemGOs = {}
 
-	local uiMeshAssetItem = FightHelper.getPreloadAssetItem(FightPreloadOthersWork.ui_mesh)
+	local uiMeshAssetItem = FightGameMgr.loaderMgr:getAsset(FightPreloadOthersWork.ui_mesh).assetItem
 	local uiMeshPrefab = uiMeshAssetItem:GetResource(FightPreloadOthersWork.ui_mesh)
-	local matAssetItem = FightHelper.getPreloadAssetItem(FightPreloadOthersWork.ui_effectsmat)
+	local matAssetItem = FightGameMgr.loaderMgr:getAsset(FightPreloadOthersWork.ui_effectsmat).assetItem
 	local uiEffectMat = matAssetItem:GetResource(FightPreloadOthersWork.ui_effectsmat)
 
 	self._mats = {}

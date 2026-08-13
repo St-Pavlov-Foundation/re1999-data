@@ -533,7 +533,7 @@ function CharacterModel:filterCardListByCareerAndCharType(filterParam, isShowHer
 			self._curCardList[#self._curCardList + 1] = v
 		else
 			local isCareers = allCareerShow or self:_filterHerobyCareer(filterParam.careers, v.config.career)
-			local heroTypePass = allCharTypeShow or LuaUtil.tableContains(filterParam.charTypes, v.config.heroType)
+			local heroTypePass = allCharTypeShow or LuaUtil.tableContains(filterParam.charTypes, v:getHeroType())
 			local heroId = v.heroId
 			local langId, langStr = SettingsRoleVoiceModel.instance:getCharVoiceLangPrefValue(heroId)
 			local charLangTypePass = allCharLangType or filterParam.charLang == 0 or filterParam.charLang == langId
@@ -557,13 +557,64 @@ function CharacterModel:_filterHeroNewFunc(heroList, filterParam)
 		local heroCo = v.config
 		local isDmg = LuaUtil.tableContains(filterParam.dmgs, heroCo.dmgType)
 		local career = heroCo.career
+		local destiny = self:filterHerobyDestiny(v.heroId, filterParam.destiny)
 		local isCareers = self:_filterHerobyCareer(filterParam.careers, career)
 		local isFilterTag = selectTags and self:_isFilterTag(selectTags, v)
 
-		if isDmg and isCareers and isFilterTag and not self:_isHeroInCardList(v.heroId) then
+		if isDmg and destiny and isCareers and isFilterTag and not self:_isHeroInCardList(v.heroId) then
 			table.insert(self._curCardList, v)
 		end
 	end
+end
+
+function CharacterModel:filterHerobyDestiny(heroId, destiny)
+	if not self._filterDestinyHeros then
+		self._filterDestinyHeros = {}
+	end
+
+	if not destiny then
+		return true
+	end
+
+	if not self._filterDestinyHeros[destiny] then
+		self._filterDestinyHeros[destiny] = {}
+	end
+
+	if self._filterDestinyHeros[destiny][heroId] then
+		return self._filterDestinyHeros[destiny][heroId] == 1
+	end
+
+	if not CharacterDestinyConfig.instance:hasDestinyHero(heroId) then
+		self._filterDestinyHeros[destiny][heroId] = 0
+
+		return false
+	end
+
+	if destiny == 1 then
+		table.insert(self._filterDestinyHeros[destiny], heroId)
+
+		self._filterDestinyHeros[destiny][heroId] = 1
+
+		return true
+	elseif destiny == 2 then
+		local ids = CharacterDestinyConfig.instance:getFacetIdsByHeroId(heroId)
+
+		if ids then
+			for _, facetsId in ipairs(ids) do
+				local conusmeCo = CharacterDestinyConfig.instance:getDestinyFacetConsumeCo(facetsId)
+
+				if conusmeCo and conusmeCo.type == CharacterDestinyEnum.StoneType.Reshape then
+					self._filterDestinyHeros[destiny][heroId] = 1
+
+					return true
+				end
+			end
+		end
+	end
+
+	self._filterDestinyHeros[destiny][heroId] = 0
+
+	return false
 end
 
 function CharacterModel:_filterHerobyCareer(list, career)

@@ -24,7 +24,7 @@ function PlayerInfoViewContainer:openInternal(viewParam, isImmediate)
 
 	self._viewSetting.mainRes = playerinfoview
 
-	SocialViewContainer.super.openInternal(self, viewParam, isImmediate)
+	PlayerInfoViewContainer.super.openInternal(self, viewParam, isImmediate)
 end
 
 return PlayerInfoViewContainer

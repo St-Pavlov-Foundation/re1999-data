@@ -4,11 +4,13 @@ module("modules.configs.excel2json.lua_activity186_const", package.seeall)
 
 local lua_activity186_const = {}
 local fields = {
-	value = 2,
-	id = 1,
-	value2 = 3
+	id = 2,
+	value = 3,
+	activityId = 1,
+	value2 = 4
 }
 local primaryKey = {
+	"activityId",
 	"id"
 }
 local mlStringKey = {

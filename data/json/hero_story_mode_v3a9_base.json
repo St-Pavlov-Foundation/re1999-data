@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "办公室中",
+    "preId": 0,
+    "storyId": 305401,
+    "pic": "rolestory_3054_level_9"
+  },
+  {
+    "id": 2,
+    "name": "甲烷阴谋",
+    "preId": 1,
+    "storyId": 305402,
+    "pic": "rolestory_3054_level_4"
+  },
+  {
+    "id": 3,
+    "name": "语言流变如水",
+    "preId": 2,
+    "storyId": 305403,
+    "pic": "rolestory_3054_level_5"
+  },
+  {
+    "id": 4,
+    "name": "实地考察",
+    "preId": 3,
+    "storyId": 305404,
+    "pic": "rolestory_3054_level_6"
+  },
+  {
+    "id": 5,
+    "name": "鱼和鱼饵",
+    "preId": 4,
+    "storyId": 305405,
+    "pic": "rolestory_3054_level_7"
+  },
+  {
+    "id": 6,
+    "name": "新流行的诞生",
+    "preId": 5,
+    "storyId": 305406,
+    "pic": "rolestory_3054_level_8"
+  }
+]

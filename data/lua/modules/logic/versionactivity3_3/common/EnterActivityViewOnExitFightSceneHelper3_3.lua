@@ -43,10 +43,6 @@ function EnterActivityViewOnExitFightSceneHelper.enterActivity13313(forceStartin
 	end)
 end
 
-function EnterActivityViewOnExitFightSceneHelper.enterActivity13223(forceStarting, exitFightGroup)
-	EnterActivityViewOnExitFightSceneHelper.enterVersionActivityDungeonCommon(EnterActivityViewOnExitFightSceneHelper._enterActivity13306, forceStarting, exitFightGroup)
-end
-
 function EnterActivityViewOnExitFightSceneHelper._enterActivity13306(cls, param)
 	local episodeId = param.episodeId
 	local episodeCo = param.episodeCo

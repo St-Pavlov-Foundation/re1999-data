@@ -111,7 +111,7 @@ function EquipLvUpChooseView:_useItemFunc()
 			[2] = 2
 		}
 	})
-	GameFacade.showToast(39)
+	GameFacade.showToast(ToastEnum.EquipStrengthen)
 	self:closeThis()
 end
 

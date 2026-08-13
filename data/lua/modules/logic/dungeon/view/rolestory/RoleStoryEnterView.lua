@@ -150,17 +150,23 @@ function RoleStoryEnterView:refreshRemainTime()
 
 	if offsetSecond > 0 then
 		local day, hour, min, sec = TimeUtil.secondsToDDHHMMSS(offsetSecond)
-		local timeFormat
+		local timeFormat, format1, format2
 
 		if day > 0 then
-			timeFormat = string.format("<color=#BC5E18>%s</color>%s<color=#BC5E18>%s</color>%s", day, luaLang("time_day"), hour, luaLang("time_hour2"))
+			format1 = string.format("<color=#BC5E18>%s</color>", day)
+			format2 = string.format("<color=#BC5E18>%s</color>", hour)
+			timeFormat = luaLang("activity_remain_1")
 		elseif hour > 0 then
-			timeFormat = string.format("<color=#BC5E18>%s</color>%s<color=#BC5E18>%s</color>%s", hour, luaLang("time_hour2"), min, luaLang("time_minute2"))
+			format1 = string.format("<color=#BC5E18>%s</color>", hour)
+			format2 = string.format("<color=#BC5E18>%s</color>", min)
+			timeFormat = luaLang("activity_remain_2")
 		else
-			timeFormat = string.format("<color=#BC5E18>%s</color>%s<color=#BC5E18>%s</color>%s", min, luaLang("time_minute2"), sec, luaLang("time_second"))
+			format1 = string.format("<color=#BC5E18>%s</color>", min)
+			format2 = string.format("<color=#BC5E18>%s</color>", sec)
+			timeFormat = luaLang("activity_remain_3")
 		end
 
-		self._txttime.text = string.format("%s%s", luaLang("activity_remain"), timeFormat)
+		self._txttime.text = GameUtil.getSubPlaceholderLuaLangTwoParam(timeFormat, format1, format2)
 	end
 end
 

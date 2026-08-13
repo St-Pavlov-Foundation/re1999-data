@@ -44,6 +44,7 @@ function HeroGroupRecommendGroupMO:init(info)
 	self.cloth = info.cloth
 	self.rate = info.rate
 	self.assistBossId = info.assistBossId
+	self.extString = info.extString or ""
 end
 
 return HeroGroupRecommendGroupMO

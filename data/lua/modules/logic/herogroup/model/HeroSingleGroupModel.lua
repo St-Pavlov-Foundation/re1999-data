@@ -135,10 +135,17 @@ function HeroSingleGroupModel:swap(id1, id2)
 			return
 		end
 
+		local _, assistMo = HeroGroupModel.instance:getAssistMo()
+		local assistHeroUid = assistMo and assistMo.heroUid
 		local temp = mo1.heroUid
 
-		mo1:setHeroUid(mo2.heroUid)
-		mo2:setHeroUid(temp)
+		if not assistHeroUid or assistHeroUid ~= mo2.heroUid then
+			mo1:setHeroUid(mo2.heroUid)
+		end
+
+		if not assistHeroUid or assistHeroUid ~= temp then
+			mo2:setHeroUid(temp)
+		end
 
 		local tempAid = mo1.aid
 
@@ -151,6 +158,14 @@ function HeroSingleGroupModel:swap(id1, id2)
 
 		mo1:setTrial(mo2.trial, mo2.trialTemplate, mo2.trialPos, true)
 		mo2:setTrial(tempTrialId, tempTrialTemplate, tempTrialPos, true)
+
+		if assistMo then
+			if assistMo.id == id1 then
+				assistMo:swapAssist(assistMo.assistMo, id2)
+			elseif assistMo.id == id2 then
+				assistMo:swapAssist(assistMo.assistMo, id1)
+			end
+		end
 	end
 end
 

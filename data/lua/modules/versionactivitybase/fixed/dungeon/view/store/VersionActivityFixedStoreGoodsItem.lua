@@ -67,9 +67,11 @@ function VersionActivityFixedStoreGoodsItem:updateInfo(storeGoodsCo)
 		self._txtTag2.text = tonumber(storeGoodsCo.offTag) * 100 .. "%"
 	end
 
-	self._txtCost2.text = storeGoodsCo.originalCost
+	if self._txtCost2 then
+		self._txtCost2.text = storeGoodsCo.originalCost
 
-	gohelper.setActive(self._txtCost2.gameObject, storeGoodsCo.originalCost > 0)
+		gohelper.setActive(self._txtCost2.gameObject, storeGoodsCo.originalCost > 0)
+	end
 
 	self.storeGoodsCo = storeGoodsCo
 

@@ -24,7 +24,7 @@ function IgorCampEnemyMO:onInit()
 end
 
 function IgorCampEnemyMO:update(deltaTime)
-	IgorCampBasedMO.super.update(self, deltaTime)
+	IgorCampEnemyMO.super.update(self, deltaTime)
 	self:updateCreateSoldier(deltaTime)
 end
 

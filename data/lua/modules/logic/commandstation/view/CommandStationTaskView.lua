@@ -275,7 +275,7 @@ function CommandStationTaskView:refreshBigBonus()
 	local dict = GameUtil.splitString2(co.bonus, true)
 
 	for _, arr in ipairs(dict) do
-		local itemCo = ItemConfig:getItemConfig(arr[1], arr[2])
+		local itemCo = ItemConfig.instance:getItemConfig(arr[1], arr[2])
 
 		if itemCo then
 			table.insert(itemNames, itemCo.name)

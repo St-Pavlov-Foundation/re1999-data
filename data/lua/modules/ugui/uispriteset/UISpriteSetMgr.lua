@@ -15,6 +15,7 @@ function UISpriteSetMgr:ctor()
 	self._fight = self:newSpriteSetUnit("ui/spriteassets/fight.asset")
 	self._fightSkillCard = self:newSpriteSetUnit("ui/spriteassets/fight_skillcard.asset")
 	self._fightSkillCard2 = self:newSpriteSetUnit("ui/spriteassets/fight_skillcard_2.asset")
+	self._fightSkillCard3 = self:newSpriteSetUnit("ui/spriteassets/fight_skillcard_3.asset")
 	self._fightpassive = self:newSpriteSetUnit("ui/spriteassets/fightpassive.asset")
 	self._explore = self:newSpriteSetUnit("ui/spriteassets/explore.asset")
 	self._weekwalk = self:newSpriteSetUnit("ui/spriteassets/weekwalk.asset")
@@ -185,12 +186,12 @@ function UISpriteSetMgr:ctor()
 	self._udimo_sprite = self:newSpriteSetUnit("ui/spriteassets/udimo_spriteset.asset")
 	self._v3a2_cruise_spriteset = self:newSpriteSetUnit("ui/spriteassets/v3a2_cruise_spriteset.asset")
 	self._v3a2_activitycollect = self:newSpriteSetUnit("ui/spriteassets/v3a2_activitycollect.asset")
-	self._findlovegame = self:newSpriteSetUnit("ui/spriteassets/v3a4_laplace_spriteset.asset")
+	self._findlovegame = self:newSpriteSetUnit("modules/party_game/ui/spriteassets/v3a4_laplace_spriteset.asset")
 	self._partygamecard = self:newSpriteSetUnit("ui/spriteassets/partygame_card.asset")
 	self._v3a3_eliminate_spriteset = self:newSpriteSetUnit("ui/spriteassets/v3a3_eliminate_spriteset.asset")
 	self._v3a3_igor_spriteset = self:newSpriteSetUnit("ui/spriteassets/v3a3_igor_spriteset.asset")
 	self._v3a3_marsha_spriteset = self:newSpriteSetUnit("ui/spriteassets/v3a3_marsha_spriteset.asset")
-	self._v3a4_laplace_spriteset = self:newSpriteSetUnit("ui/spriteassets/v3a4_laplace_spriteset.asset")
+	self._v3a4_laplace_spriteset = self:newSpriteSetUnit("modules/party_game/ui/spriteassets/v3a4_laplace_spriteset.asset")
 	self._v3a4_chg_spriteset = self:newSpriteSetUnit("ui/spriteassets/v3a4_chg_spriteset.asset")
 	self._v3a5_main_activity = self:newSpriteSetUnit("ui/spriteassets/v3a5_mainactivity_spriteset.asset")
 	self._v3a5_dungeon_sprite = self:newSpriteSetUnit("ui/spriteassets/v3a2_dungeon.asset")
@@ -211,10 +212,15 @@ function UISpriteSetMgr:ctor()
 	self._v3a8_dianjishi_spriteset = self:newSpriteSetUnit("ui/spriteassets/v3a8_dianjishi_spriteset.asset")
 	self._v3a8_main_activity = self:newSpriteSetUnit("ui/spriteassets/v3a8_mainactivity_spriteset.asset")
 	self._v3a8_dungeon_sprite = self:newSpriteSetUnit("ui/spriteassets/v3a2_dungeon.asset")
+	self._v3a9_main_activity = self:newSpriteSetUnit("ui/spriteassets/v3a9_mainactivity_spriteset.asset")
+	self._v3a9_hedone_sprite = self:newSpriteSetUnit("ui/spriteassets/v3a9_hedone_spriteset.asset")
+	self._v3a9_racing_sprit = self:newSpriteSetUnit("ui/spriteassets/v3a9_racing_spriteset.asset")
 	self._sp02_atomicdungeonelement = self:newSpriteSetUnit("ui/spriteassets/sp02_atomicdungeonelement.asset")
 	self._sp02_atomicIcon = self:newSpriteSetUnit("ui/spriteassets/sp02_atomicforyou.asset")
 	self._sp02_atomicActivityIcon = self:newSpriteSetUnit("ui/spriteassets/sp02_atomic_activity.asset")
 	self._sp02_paomian = self:newSpriteSetUnit("ui/spriteassets/sp02_paomian.asset")
+	self._abyss = self:newSpriteSetUnit("ui/spriteassets/v3a9_cloudredemption_spriteset.asset")
+	self._v3a9_naxisuosi = self:newSpriteSetUnit("ui/spriteassets/v3a9_naxisuosi_spriteset.asset")
 end
 
 function UISpriteSetMgr:newSpriteSetUnit(path)
@@ -268,6 +274,8 @@ function UISpriteSetMgr:setFightSkillCardSprite(image, name, setNativeSize)
 
 	if cardSkin == 672802 then
 		spriteMgr = self._fightSkillCard2
+	elseif cardSkin == 672803 then
+		spriteMgr = self._fightSkillCard3
 	end
 
 	spriteMgr:setSprite(image, name, setNativeSize)
@@ -1053,8 +1061,24 @@ function UISpriteSetMgr:setV3a8MainActivitySprite(image, name, setNativeSize)
 	self._v3a8_main_activity:setSprite(image, name, setNativeSize)
 end
 
+function UISpriteSetMgr:setV3a9MainActivitySprite(image, name, setNativeSize)
+	self._v3a9_main_activity:setSprite(image, name, setNativeSize)
+end
+
+function UISpriteSetMgr:setV3a9HedoneSprite(image, name, setNativeSize)
+	self._v3a9_hedone_sprite:setSprite(image, name, setNativeSize)
+end
+
+function UISpriteSetMgr:setV3a9RacingSprite(image, name, setNativeSize)
+	self._v3a9_racing_sprit:setSprite(image, name, setNativeSize)
+end
+
 function UISpriteSetMgr:setV3a8DungeonSprite(image, name, setNativeSize)
 	self._v3a8_dungeon_sprite:setSprite(image, name, setNativeSize)
+end
+
+function UISpriteSetMgr:setVAFixedDungeonSprite(image, name, setNativeSize)
+	self._v3a2_dungeon_sprite:setSprite(image, name, setNativeSize)
 end
 
 function UISpriteSetMgr:setV3a8DianJiShiSprite(image, name, setNativeSize)
@@ -1075,6 +1099,14 @@ end
 
 function UISpriteSetMgr:setSp02PaoMianIconSprite(image, name, setNativeSize)
 	self._sp02_paomian:setSprite(image, name, setNativeSize)
+end
+
+function UISpriteSetMgr:setAbyssSprite(image, name, setNativeSize, alpha)
+	self._abyss:setSprite(image, name, setNativeSize, alpha)
+end
+
+function UISpriteSetMgr:setV3a9NaxiSuosiSprite(image, name, setNativeSize, alpha)
+	self._v3a9_naxisuosi:setSprite(image, name, setNativeSize, alpha)
 end
 
 function UISpriteSetMgr:tryDispose()

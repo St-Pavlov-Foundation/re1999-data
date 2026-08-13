@@ -50,6 +50,7 @@ function MainUISwitchInfoView:_btnHideOnClick()
 	gohelper.setActive(self._goleft, self._showUI and self._isCanShowLeft)
 	gohelper.setActive(self._goright, self._showUI)
 	gohelper.setActive(self._btnshow.gameObject, not self._showUI)
+	gohelper.setActive(self._goMask, self._showUI)
 	MainUISwitchController.instance:dispatchEvent(MainUISwitchEvent.PreviewSwitchUIVisible, self._showUI)
 end
 
@@ -94,6 +95,7 @@ function MainUISwitchInfoView:_editableInitView()
 	self._rootAnimator = self.viewGO:GetComponent("Animator")
 	self._goleft = gohelper.findChild(self.viewGO, "left")
 	self._goright = gohelper.findChild(self.viewGO, "right")
+	self._goMask = gohelper.findChild(self.viewGO, "MaskBG")
 end
 
 function MainUISwitchInfoView:onOpen()
@@ -119,6 +121,7 @@ function MainUISwitchInfoView:onOpen()
 	local sceneId = self.viewParam and self.viewParam.sceneId or MainSceneSwitchModel.instance:getCurSceneId()
 
 	gohelper.setActive(self._goleft, self._showUI and self._isCanShowLeft)
+	gohelper.setActive(self._goMask, self._showUI)
 end
 
 function MainUISwitchInfoView:_updateSceneInfo()

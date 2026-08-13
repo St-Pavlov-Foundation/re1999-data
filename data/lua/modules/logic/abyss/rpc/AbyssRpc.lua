@@ -64,6 +64,7 @@ function AbyssRpc:packStartAbyssBattleRequest(req, param)
 	dungeonReq.isBalance = HeroGroupBalanceHelper.getIsBalanceMode()
 	dungeonReq.multiplication = param.multiplication or 1
 	dungeonReq.useRecord = param.useRecord and true or false
+	dungeonReq.params = AbyssController.instance:getFightCustomParam()
 
 	if fightParam then
 		fightParam:setReqFightGroup(dungeonReq)
@@ -95,6 +96,69 @@ function AbyssRpc:onReceiveAct229BattleFinishPush(resultCode, msg)
 	local minRound = msg.lastMinRound
 
 	AbyssModel.instance:onBattleFinishPush(activityId, stageId, round, star, minRound)
+end
+
+function AbyssRpc:sendAct229ModifyStageSubIdRequest(activityId, stageSubIds, callback, callbackObj)
+	local req = Activity229Module_pb.Act229ModifyStageSubIdRequest()
+
+	req.activityId = activityId
+
+	for _, data in ipairs(stageSubIds) do
+		local no = req.stageSubIds:add()
+
+		no.stageId = data.stageId
+		no.heroGroupSubId = data.heroGroupSubId
+	end
+
+	self:sendMsg(req, callback, callbackObj)
+end
+
+function AbyssRpc:onReceiveAct229ModifyStageSubIdReply(resultCode, msg)
+	if resultCode ~= 0 then
+		return
+	end
+
+	local activityId = msg.activityId
+	local stages = msg.stages
+
+	AbyssModel.instance:updateInfo(activityId, stages)
+end
+
+function AbyssRpc:sendAct229ModifySkillRequest(activityId, stageId, skillIds, callback, callbackObj)
+	local req = Activity229Module_pb.Act229ModifySkillRequest()
+
+	req.activityId = activityId
+	req.stageId = stageId
+
+	for _, skillId in ipairs(skillIds) do
+		req.skillIds:append(skillId)
+	end
+
+	self:sendMsg(req, callback, callbackObj)
+end
+
+function AbyssRpc:onReceiveAct229ModifySkillReply(resultCode, msg)
+	if resultCode ~= 0 then
+		return
+	end
+
+	local activityId = msg.activityId
+	local stageId = msg.stageId
+	local skillIds = msg.skillIds
+	local stageMo = AbyssModel.instance:getStageInfoMo(activityId, stageId)
+
+	stageMo.skillId = skillIds[1]
+end
+
+function AbyssRpc:onReceiveAct229StageTeamSubIdPush(resultCode, msg)
+	if resultCode ~= 0 then
+		return
+	end
+
+	local activityId = msg.activityId
+	local stageSubIds = msg.stageSubIds
+
+	AbyssModel.instance:onUpdateTimePush(activityId, stageSubIds)
 end
 
 AbyssRpc.instance = AbyssRpc.New()

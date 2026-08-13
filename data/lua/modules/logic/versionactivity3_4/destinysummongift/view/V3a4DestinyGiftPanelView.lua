@@ -26,13 +26,13 @@ function V3a4DestinyGiftPanelView:onInitView()
 end
 
 function V3a4DestinyGiftPanelView:addEvents()
-	self.super.addEvents(self)
+	V3a4DestinyGiftPanelView.super.addEvents(self)
 	self._btnClose:AddClickListener(self._btnCloseOnClick, self)
 	self:addEventCb(PayController.instance, PayEvent.PayFinished, self.closeThis, self)
 end
 
 function V3a4DestinyGiftPanelView:removeEvents()
-	self.super.removeEvents(self)
+	V3a4DestinyGiftPanelView.super.removeEvents(self)
 	self._btnClose:RemoveClickListener()
 	self:removeEventCb(PayController.instance, PayEvent.PayFinished, self.closeThis, self)
 end

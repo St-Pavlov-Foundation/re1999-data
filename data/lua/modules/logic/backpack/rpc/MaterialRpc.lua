@@ -144,6 +144,10 @@ function MaterialRpc:_onReceiveMaterialChangePush(msg, materialDataMOList, faith
 			return
 		end
 
+		if self:isTurnBackRewardMaterails(materialDataMOList) then
+			return
+		end
+
 		TaskController.instance:getRewardByLine(getApproach, ViewName.CommonPropView, materialDataMOList)
 
 		if #equip_cards > 0 then
@@ -219,6 +223,8 @@ function MaterialRpc:_onReceiveMaterialChangePush_default(msg, materialDataMOLis
 		Season123Model.instance:addCardGetData(season123EquipCards)
 	end
 
+	local materialCount = #materialDataMOList
+
 	if #materialDataMOList == 1 and materialDataMOList[1].materilType == MaterialEnum.MaterialType.HeroSkin then
 		return
 	end
@@ -287,14 +293,16 @@ function MaterialRpc:_onReceiveMaterialChangePush_default(msg, materialDataMOLis
 		end
 	end
 
-	local list = ItemConfig.instance:getItemListBySubType(ItemEnum.SubType.PlayerBg)
+	for _, mo in ipairs(materialDataMOList) do
+		local config = ItemConfig.instance:getItemConfig(mo.materilType, mo.materilId)
 
-	if list and #list > 0 then
-		for _, config in ipairs(list) do
-			if #materialDataMOList == 1 and config.id == materialDataMOList[1].materilId then
+		if config and config.subType == ItemEnum.SubType.PlayerBg then
+			if materialCount == 1 then
 				PlayerCardController.instance:ShowChangeBgSkin(config.id, materialDataMOList)
 
 				return
+			else
+				PlayerCardController.instance:showPropChangeBgSkin(config.id)
 			end
 		end
 	end
@@ -337,6 +345,34 @@ function MaterialRpc:isShowBadgeGetView(materialDataMOList)
 
 		return true
 	end
+end
+
+function MaterialRpc:isTurnBackRewardMaterails(materialDataMOList)
+	if not materialDataMOList or #materialDataMOList ~= 1 then
+		return
+	end
+
+	local turnbackInfoMo = TurnbackModel.instance:getCurTurnbackMo()
+
+	if not turnbackInfoMo then
+		return
+	end
+
+	local resourceReturn = turnbackInfoMo:getReturnRewardInfo()
+
+	if not resourceReturn or not resourceReturn.open then
+		return
+	end
+
+	local currencyInfo = turnbackInfoMo:getCurRewardCurrencyInfo()
+
+	if not currencyInfo then
+		return
+	end
+
+	local material = materialDataMOList[1]
+
+	return material.materilType == currencyInfo[1] and material.materilId == currencyInfo[2]
 end
 
 function MaterialRpc:simpleShowView(materialDataMOList)
