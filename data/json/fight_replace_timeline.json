@@ -4280,38 +4280,6 @@
     "condition": "11#310504#31050131#31050132#31050133#31050134#31050135#31050136"
   },
   {
-    "id": "kakaniya_308001_skill1",
-    "timeline": "kakaniya_308005_skill1",
-    "priority": 2,
-    "target": 1,
-    "simulate": 0,
-    "condition": "5#308005"
-  },
-  {
-    "id": "kakaniya_308001_skill2",
-    "timeline": "kakaniya_308005_skill2",
-    "priority": 2,
-    "target": 1,
-    "simulate": 0,
-    "condition": "5#308005"
-  },
-  {
-    "id": "kakaniya_308001_skill2",
-    "timeline": "kakaniya_308005_skill2_1",
-    "priority": 1,
-    "target": 1,
-    "simulate": 1,
-    "condition": "12#308005#2"
-  },
-  {
-    "id": "kakaniya_308001_unique",
-    "timeline": "kakaniya_308005_unique",
-    "priority": 2,
-    "target": 1,
-    "simulate": 0,
-    "condition": "5#308005"
-  },
-  {
     "id": "molideer_312101_skill1",
     "timeline": "molideer_312104_skill1",
     "priority": 2,

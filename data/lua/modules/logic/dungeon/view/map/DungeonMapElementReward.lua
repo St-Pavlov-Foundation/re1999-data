@@ -128,10 +128,14 @@ function DungeonMapElementReward:_OnRemoveElement(id)
 end
 
 function DungeonMapElementReward:_cacheFinishElements()
-	local chapterId = self.viewContainer:_getChapterId()
-	local elements = DungeonMapModel.instance:getCanRecheckElements(chapterId)
+	if self.viewContainer._getChapterId then
+		local chapterId = self.viewContainer:_getChapterId()
+		local elements = DungeonMapModel.instance:getCanRecheckElements(chapterId)
 
-	self._canElements = elements and tabletool.copy(elements)
+		self._canElements = elements and tabletool.copy(elements) or {}
+	else
+		self._canElements = {}
+	end
 end
 
 function DungeonMapElementReward:_dispatchEvent()

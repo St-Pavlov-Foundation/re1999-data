@@ -171,8 +171,8 @@ function V3a9RacingCarRecordView:onOpenFinish()
 
 	self._oldClaimedStars = self.viewParam.oldClaimedStars
 	self._newClaimedStars = self.viewParam.newClaimedStars
-	self._curScore = self.viewParam.curScore
-	self._totalScore = self.viewParam.totalScore
+	self._curScore = self.viewParam.curScore or 0
+	self._totalScore = self.viewParam.totalScore or self._curScore
 
 	self:_initNewRecordView(self._totalScore)
 

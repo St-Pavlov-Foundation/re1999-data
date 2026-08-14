@@ -33,6 +33,11 @@ function V3a9BirdGameViewContainer:buildTabViews(tabContainerId)
 	end
 end
 
+function V3a9BirdGameViewContainer:onContainerInit()
+	V3a9BirdGameViewContainer.super.onContainerInit(self)
+	V3a9BirdController.instance:onStartGame()
+end
+
 function V3a9BirdGameViewContainer:_overrideClose()
 	self._isPause = true
 

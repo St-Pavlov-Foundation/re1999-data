@@ -65,6 +65,14 @@ function V3a9_BossRushTeamMO:getHeroId(info)
 		else
 			local heroMo = HeroModel.instance:getById(info.uid)
 
+			if not heroMo then
+				local userId = PlayerModel.instance:getMyUserId()
+
+				logError(string.format("不是协助角色 拿不到该角色数据：userId:%s  heroUid:%s", userId, info.uid))
+
+				return
+			end
+
 			return heroMo.heroId
 		end
 	end
@@ -103,7 +111,7 @@ function V3a9_BossRushTeamMO:saveHeroList(uids, assistMo)
 	self._heroList = {}
 
 	if uids then
-		for i, uid in ipairs(uids) do
+		for i, uid in pairs(uids) do
 			local info = {}
 
 			info.uid = uid

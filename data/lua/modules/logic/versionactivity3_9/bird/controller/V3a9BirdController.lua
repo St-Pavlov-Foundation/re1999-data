@@ -69,7 +69,7 @@ function V3a9BirdController:onGameOver()
 	local episodeId = V3a9BirdModel.instance:getEnterGameEpisodeId()
 	local score = V3a9BirdModel.instance:getGameScore()
 	local star = V3a9BirdModel.instance:getPassCount()
-	local timeMs = UnityEngine.Time.realtimeSinceStartup - self._startGameTime
+	local timeMs = self._startGameTime and UnityEngine.Time.realtimeSinceStartup - self._startGameTime or 0
 
 	V3a9BirdRpc.instance:sendGetAct243ReportEpisodeRequest(activityId, episodeId, score, star, timeMs * 1000)
 
@@ -96,7 +96,7 @@ function V3a9BirdController:openPauseView(yesCallback, yesCbobj, closeCallback, 
 end
 
 function V3a9BirdController:sendGameSuccessStat(isOver, timeMs)
-	timeMs = timeMs or UnityEngine.Time.realtimeSinceStartup - self._startGameTime
+	timeMs = timeMs or self._startGameTime and UnityEngine.Time.realtimeSinceStartup - self._startGameTime or 0
 
 	local episodeId = V3a9BirdModel.instance:getEnterGameEpisodeId()
 	local result = isOver and StatEnum.Result2Cn[StatEnum.Result.Success] or StatEnum.Result2Cn[StatEnum.Result.Exit]

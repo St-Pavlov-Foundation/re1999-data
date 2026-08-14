@@ -266,6 +266,23 @@ function V3a9BirdModel:getStoryEpisodeId()
 	return self._storyEpisodeId or 1392102
 end
 
+function V3a9BirdModel:getNormalEpisodeId()
+	if not self._normalEpisodeId then
+		local list = DungeonConfig.instance:getChapterEpisodeCOList(VersionActivity3_9DungeonEnum.DungeonChapterId.Story)
+		local beforeStoryId = self:getBeforeStoryId()
+
+		for _, episodeCo in ipairs(list) do
+			if episodeCo.beforeStory == beforeStoryId then
+				self._normalEpisodeId = episodeCo.id
+
+				break
+			end
+		end
+	end
+
+	return self._normalEpisodeId
+end
+
 function V3a9BirdModel:getGameNeedPassNum()
 	if not self._gameNeedPassNum then
 		local actId = self:getActId()

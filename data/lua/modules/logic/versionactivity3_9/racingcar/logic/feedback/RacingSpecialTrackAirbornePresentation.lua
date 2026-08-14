@@ -268,7 +268,7 @@ function RacingSpecialTrackAirbornePresentation:_resolveContinuousActiveRoll(rol
 	while current > continuous + 0.001 do
 		iterationCount = iterationCount + 1
 
-		if iterationCount > 64 then
+		if iterationCount > 128 then
 			logError(string.format("RacingSpecialTrackAirbornePresentation:_resolveContinuousActiveRoll exceeded iteration limit, rollDeg=%s current=%s continuous=%s", tostring(rollDeg), tostring(current), tostring(continuous)))
 
 			break

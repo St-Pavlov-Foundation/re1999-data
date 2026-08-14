@@ -30,10 +30,8 @@ function Turnback4RewardItem:removeEvents()
 	self:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self._onCloseViewFinish)
 end
 
-function Turnback4RewardItem:_btncangetOnClick(info)
+function Turnback4RewardItem:_btncangetOnClick()
 	if self._mo.state ~= TurnbackEnum.SearchState.CanGet then
-		MaterialTipController.instance:showMaterialInfo(info[1], info[2])
-
 		return
 	end
 
@@ -183,7 +181,7 @@ function Turnback4RewardItem:_refreshRewards()
 			item.iconItem:setCountFontSize(45)
 			item.iconItem:showStackableNum2()
 			item.iconItem:hideEquipLvAndCount()
-			item.iconItem:customOnClickCallback(self._btncangetOnClick, self, v)
+			item.iconItem:customOnClickCallback(self._ItemOnClick, self, v)
 			gohelper.setActive(item.gocanget, false)
 			gohelper.setActive(item.goreceive, isReceive)
 		end
@@ -194,6 +192,16 @@ function Turnback4RewardItem:_refreshRewards()
 	for i, item in ipairs(self._rewardItems) do
 		gohelper.setActive(item.go, i <= count)
 	end
+end
+
+function Turnback4RewardItem:_ItemOnClick(info)
+	if self._mo.state ~= TurnbackEnum.SearchState.CanGet then
+		MaterialTipController.instance:showMaterialInfo(info[1], info[2])
+
+		return
+	end
+
+	self:_btncangetOnClick()
 end
 
 function Turnback4RewardItem:_getRewardItem(index)

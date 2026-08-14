@@ -397,7 +397,7 @@ function V3a9_BossRushModel:_saveTeamHero(callback, callbackobj)
 
 		if heroId then
 			for _stage, mo in pairs(stageMos) do
-				if _stage ~= stage then
+				if _stage ~= stage and not mo:isChallenge() then
 					local _actModeTeam = mo.actModeTeam
 					local backHeroIndex = _actModeTeam:isBackHero(heroId)
 

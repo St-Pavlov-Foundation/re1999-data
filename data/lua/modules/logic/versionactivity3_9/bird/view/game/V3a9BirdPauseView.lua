@@ -56,7 +56,7 @@ function V3a9BirdPauseView:_btncancelOnClick()
 end
 
 function V3a9BirdPauseView:_editableInitView()
-	return
+	NavigateMgr.instance:addEscape(self.viewName, self._btncancelOnClick, self)
 end
 
 function V3a9BirdPauseView:onUpdateParam()

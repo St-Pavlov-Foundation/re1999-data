@@ -786,7 +786,7 @@ function V3a9_BossRush_HeroGroupEditView:onOpen()
 	self._heroMO = V3a9_BossRush_HeroGroupEditListModel.instance:copyCharacterCardList(true)
 
 	V3a9_BossRush_HeroGroupQuickEditListModel.instance:copyQuickEditCardList()
-	V3a9_BossRush_HeroGroupQuickEditListModel.instance:checkIsAllHeroRestrict(true)
+	V3a9_BossRush_HeroGroupQuickEditListModel.instance:checkIsAllHeroRestrict()
 	self:_refreshEditMode()
 	self:_refreshBtnIcon()
 	self:_refreshCharacterInfo()

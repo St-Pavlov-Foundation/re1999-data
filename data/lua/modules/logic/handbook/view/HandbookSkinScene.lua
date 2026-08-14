@@ -1494,12 +1494,8 @@ function HandbookSkinScene:onDestroyView()
 		end
 	end
 
-	if self._tarotCardUnlockAnimEvent and #self._tarotCardUnlockAnimEvent > 0 then
-		for _, animEvent in ipairs(self._tarotCardUnlockAnimEvent) do
-			if animEvent then
-				animEvent:RemoveEventListener("unlock")
-			end
-		end
+	if self._tarotCardUnlockAnimEvent and next(self._tarotCardUnlockAnimEvent) then
+		tabletool.clear(self._tarotCardUnlockAnimEvent)
 	end
 end
 

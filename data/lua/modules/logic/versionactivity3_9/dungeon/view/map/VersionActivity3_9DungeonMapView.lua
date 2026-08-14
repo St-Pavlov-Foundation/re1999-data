@@ -41,7 +41,6 @@ function VersionActivity3_9DungeonMapView:_btnbirdOnClick()
 end
 
 function VersionActivity3_9DungeonMapView:_btncarOnClick()
-	V3a9RacingCarSectionListModel.instance:setSelectedCell(nil)
 	V3a9RacingCarController.instance:onOpenCarMainView(VersionActivity3_9Enum.ActivityId.Racing)
 end
 

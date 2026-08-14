@@ -140,4 +140,10 @@ function VersionActivity2_0DungeonMapViewContainer:_getChapterId()
 	return chapterId
 end
 
+function VersionActivity2_0DungeonMapViewContainer:forceHideRecheck(isHide)
+	if self.navigateView then
+		self.navigateView:forceHideRecheck(isHide)
+	end
+end
+
 return VersionActivity2_0DungeonMapViewContainer

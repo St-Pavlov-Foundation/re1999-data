@@ -88,6 +88,12 @@ function EquipInfoTeamListModel:initInTeamEquipUidToHero()
 		heroUidList = V3a9_BossRushModel.instance:getHeroUIds(self.viewParam.stage)
 	end
 
+	local _, assistMo = HeroGroupModel.instance:getAssistMo()
+
+	if assistMo then
+		heroUidList[assistMo.id] = assistMo.heroUid
+	end
+
 	for index, heroGroupEquipMO in pairs(self.curGroupMO.equips) do
 		if not self.maxHeroNum or index + 1 <= self.maxHeroNum then
 			local uid = heroUidList[index + 1]

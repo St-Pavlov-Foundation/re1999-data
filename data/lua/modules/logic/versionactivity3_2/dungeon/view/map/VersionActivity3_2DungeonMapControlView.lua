@@ -174,6 +174,18 @@ function VersionActivity3_2DungeonMapControlView:_onTouchDown()
 end
 
 function VersionActivity3_2DungeonMapControlView:_onRecheckInteractive(isShow)
+	local isShowTimeline = self.viewContainer:showTimeline()
+
+	if not isShowTimeline then
+		if isShow then
+			self._rootAnimator:Play("open_map")
+		else
+			self._rootAnimator:Play("close")
+		end
+
+		return
+	end
+
 	if isShow then
 		self._rootAnimator:Play("open")
 	else

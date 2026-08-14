@@ -4,6 +4,12 @@ module("modules.logic.versionactivity3_9.racingcar.model.V3a9RacingCarSectionLis
 
 local V3a9RacingCarSectionListModel = class("V3a9RacingCarSectionListModel", ListScrollModel)
 
+function V3a9RacingCarSectionListModel:reInit()
+	V3a9RacingCarSectionListModel.super.reInit(self)
+
+	self._selectedCellIndex = nil
+end
+
 function V3a9RacingCarSectionListModel:initList()
 	local moList = {}
 	local index = 1
@@ -30,6 +36,8 @@ function V3a9RacingCarSectionListModel:setSelectedCell(index)
 	self._selectedCellIndex = index
 
 	if not index then
+		logError("V3a9RacingCarSectionListModel:setSelectedCell index nil")
+
 		return
 	end
 

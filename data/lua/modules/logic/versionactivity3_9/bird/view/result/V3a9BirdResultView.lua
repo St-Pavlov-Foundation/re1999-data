@@ -74,10 +74,10 @@ function V3a9BirdResultView:_btnexitOnClick()
 
 		if max <= count then
 			local storyId = V3a9BirdModel.instance:getAfterStoryId()
-			local isFinishStory = StoryModel.instance:isStoryFinished(storyId)
+			local storyEpisodeId = V3a9BirdModel.instance:getNormalEpisodeId()
 
 			StoryController.instance:playStory(storyId, nil, function()
-				if not isFinishStory then
+				if not DungeonModel.instance:hasPassLevelAndStory(storyEpisodeId) then
 					DungeonRpc.instance:sendEndDungeonRequest(false)
 				end
 			end, self)

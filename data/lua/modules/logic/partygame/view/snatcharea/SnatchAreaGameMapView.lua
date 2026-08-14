@@ -43,6 +43,12 @@ function SnatchAreaGameMapView:onFrameTick()
 			self:refreshMap()
 		end
 	elseif curState == SnatchEnum.GameState.Settlement then
+		local isDirty = self.interface.MapIsDirty()
+
+		if isDirty then
+			self:refreshMap()
+		end
+
 		self:stepDissolveMap()
 	end
 

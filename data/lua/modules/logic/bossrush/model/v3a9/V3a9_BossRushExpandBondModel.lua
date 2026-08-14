@@ -206,21 +206,19 @@ function V3a9_BossRushExpandBondModel:refreshAddBondGroupId()
 		local groupId = mo:getGroupId()
 		local tagType = mo:getTagType()
 
-		if num > 0 and not mo:isOverMaxLevel() then
-			if tagType == V3a9BossRushEnum.TagType.BattleTag then
-				if maxCount < num then
-					maxCount = num
-					list = {
-						groupId
-					}
-				elseif maxCount == num then
-					table.insert(list, groupId)
-				end
+		if num > 0 and not mo:isOverMaxLevel() and tagType == V3a9BossRushEnum.TagType.BattleTag then
+			if maxCount < num then
+				maxCount = num
+				list = {
+					groupId
+				}
+			elseif maxCount == num then
+				table.insert(list, groupId)
 			end
+		end
 
-			if V3a9BossRushEnum.SpecialExpandBondGroupId == groupId then
-				isAdd = true
-			end
+		if V3a9BossRushEnum.SpecialExpandBondGroupId == groupId then
+			isAdd = true
 		end
 	end
 

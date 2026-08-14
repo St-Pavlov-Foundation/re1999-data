@@ -121,7 +121,7 @@ function V3a9RacingCarResultView:_reportCallback(cmd, resultCode, msg)
 end
 
 function V3a9RacingCarResultView:onOpen()
-	self._playerFinishTime = V3a9RacingCarModel.instance:getPlayerFinishTime()
+	self._playerFinishTime = math.floor(V3a9RacingCarModel.instance:getPlayerFinishTime())
 
 	local episodeConfig = V3a9RacingCarModel.instance:getEpisodeConfig()
 

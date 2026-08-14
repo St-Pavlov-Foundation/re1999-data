@@ -52,6 +52,10 @@ function DungeonNavigateButtonsView:setOverrideClickRecheck(overrideClickRecheck
 end
 
 function DungeonNavigateButtonsView:refreshRecheckElement(isForceShow)
+	if not self._btnRecheck then
+		return
+	end
+
 	local elements = DungeonMapModel.instance:getCanRecheckElements(self._chapterId)
 
 	if self._chapterId and elements then
@@ -106,7 +110,17 @@ function DungeonNavigateButtonsView:_checkRecheckElementBtn(id)
 		end
 	end
 
-	self:refreshRecheckElement(isCanRecheck)
+	self:refreshRecheckElement()
+end
+
+function DungeonNavigateButtonsView:forceHideRecheck(isHide)
+	self._forceHideRecheck = isHide
+
+	if isHide then
+		gohelper.setActive(self._btnRecheck.gameObject, false)
+	else
+		self:refreshRecheckElement()
+	end
 end
 
 DungeonNavigateButtonsView.prefabPath = "ui/viewres/common/commonbtnsview.prefab"

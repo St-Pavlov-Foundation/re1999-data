@@ -40,7 +40,11 @@ function FightLoaderList:getAssetItem(url)
 	local item = self.urlDic[url]
 
 	if item then
-		return item.assetItem
+		item = item.item
+
+		if item then
+			return item.assetItem
+		end
 	end
 end
 

@@ -72,6 +72,10 @@ function FightBuffYaMiHuTiEffectItem:onSetYaMiShieldEffectVisible(visible)
 end
 
 function FightBuffYaMiHuTiEffectItem:resetEffectPos()
+	if not self.effectWrap then
+		return
+	end
+
 	self.effectWrap:setLocalPos(self.posX, self.posY, self.posZ)
 end
 

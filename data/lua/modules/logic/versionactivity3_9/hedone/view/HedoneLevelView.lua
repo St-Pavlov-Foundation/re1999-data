@@ -90,6 +90,7 @@ function HedoneLevelView:_playStoryFinishAnim()
 
 				episodeItem:playFinish()
 				episodeItem:playStarAnim()
+				TaskDispatcher.cancelTask(self._unlockLvEnd, self)
 				TaskDispatcher.cancelTask(self._finishStoryEnd, self)
 				TaskDispatcher.runDelay(self._finishStoryEnd, self, 1.5)
 				AudioMgr.instance:trigger(AudioEnum3_9.Hedone.play_ui_heduonie3_9_complete)
@@ -103,6 +104,10 @@ function HedoneLevelView:_playStoryFinishAnim()
 end
 
 function HedoneLevelView:_finishStoryEnd()
+	if not self._finishEpisodeIndex then
+		return
+	end
+
 	if self._finishEpisodeIndex == #self._episodeItems then
 		self._curEpisodeIndex = self._finishEpisodeIndex
 		self._finishEpisodeIndex = nil

@@ -72,6 +72,8 @@ function V3a9BirdGameView:_startGame()
 end
 
 function V3a9BirdGameView:_editableInitView()
+	V3a9BirdController.instance:onStartGame()
+
 	self._frameHandle = UpdateBeat:CreateListener(self._onFrame, self)
 
 	UpdateBeat:AddListener(self._frameHandle)

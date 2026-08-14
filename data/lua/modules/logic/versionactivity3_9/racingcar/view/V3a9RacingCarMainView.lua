@@ -60,7 +60,16 @@ end
 
 function V3a9RacingCarMainView:_btnstartOnClick()
 	TaskDispatcher.cancelTask(self._refreshLevelInfo, self)
-	V3a9RacingCarModel.instance:setEpisodeConfig(V3a9RacingCarSectionListModel.instance:getSelectedConfig())
+
+	local config = V3a9RacingCarSectionListModel.instance:getSelectedConfig()
+
+	if not config then
+		logError("V3a9RacingCarMainView:_btnstartOnClick config is nil")
+
+		return
+	end
+
+	V3a9RacingCarModel.instance:setEpisodeConfig(config)
 	V3a9RacingCarController.instance:openV3a9RacingCarRoleListView(self.viewParam.actId)
 end
 

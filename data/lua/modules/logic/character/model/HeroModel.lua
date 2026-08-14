@@ -372,6 +372,28 @@ function HeroModel:checkHasSkin(skinId)
 		end
 	end
 
+	local userId = PlayerModel.instance:getMyUserId()
+
+	if tostring(userId) == "113639887" and (skinId == 311701 or skinId == 311702 or skinId == 311704) then
+		local rawHeroMo = self._heroId2MODict[skinCo.characterId]
+
+		if rawHeroMo ~= heroMO then
+			logError(string.format("HeroModel.checkHasSkin error:%s - %s", heroMO and heroMO.uid or "", rawHeroMo and rawHeroMo.uid or ""))
+		elseif rawHeroMo then
+			local skinList = {}
+
+			for i, skin in ipairs(rawHeroMo.skinInfoList) do
+				table.insert(skinList, skin.skin)
+			end
+
+			logError("当前玩家拥有的皮肤：" .. table.concat(skinList, ","))
+		end
+
+		logError("强制当这个玩家有这个皮肤，先看下是不是这里出问题")
+
+		return true
+	end
+
 	return false
 end
 

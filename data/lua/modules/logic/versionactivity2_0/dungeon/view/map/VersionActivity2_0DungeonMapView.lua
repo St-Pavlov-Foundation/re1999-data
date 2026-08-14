@@ -127,6 +127,7 @@ function VersionActivity2_0DungeonMapView:enterRestaurant()
 	gohelper.setActive(self._simagenormalmask.gameObject, false)
 	gohelper.setActive(self._simagehardmask.gameObject, false)
 	gohelper.setActive(self._simagerestaurant, true)
+	self.viewContainer:forceHideRecheck(true)
 end
 
 function VersionActivity2_0DungeonMapView:showExcessiveEffect()
@@ -348,6 +349,7 @@ function VersionActivity2_0DungeonMapView:refreshMask()
 	gohelper.setActive(self._simagenormalmask.gameObject, not isHardMode and not self.isEnterRestaurant)
 	gohelper.setActive(self._simagehardmask.gameObject, isHardMode and not self.isEnterRestaurant)
 	gohelper.setActive(self._simagerestaurant, self.isEnterRestaurant)
+	self.viewContainer:forceHideRecheck(self.isEnterRestaurant)
 end
 
 function VersionActivity2_0DungeonMapView:refreshStoreRemainTime()
