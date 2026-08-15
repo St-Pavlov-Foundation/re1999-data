@@ -33,34 +33,11 @@ function PartyGameRoomModel:pingServerList(pingCompletedCb, pingCompletedObj)
 		self._runningPingObjList = {}
 	end
 
-	local isFinish = false
+	if self._pingCompletedCb then
+		callWithCatch(self._pingCompletedCb, self._pingCompletedObj)
 
-	for _, mo in pairs(self._partyServers) do
-		if mo:getIsPing() then
-			isFinish = true
-		end
-	end
-
-	if isFinish then
-		if self._pingCompletedCb then
-			callWithCatch(self._pingCompletedCb, self._pingCompletedObj)
-
-			self._pingCompletedCb = nil
-			self._pingCompletedObj = nil
-		end
-
-		return
-	end
-
-	for _, mo in pairs(self._partyServers) do
-		local pingObj = LuaKcpPingObjV2.New()
-
-		if pingCompletedCb then
-			self._runningPingObjList[mo.outerIp] = true
-		end
-
-		mo:startPing(pingObj)
-		table.insert(self._pingObjList, pingObj)
+		self._pingCompletedCb = nil
+		self._pingCompletedObj = nil
 	end
 end
 
@@ -113,18 +90,16 @@ function PartyGameRoomModel:getFastestPartyServerMO()
 end
 
 function PartyGameRoomModel:getFastestAreaId()
-	local fastestMO = self:getFastestPartyServerMO()
-	local areaId = 0
+	local allIdList = {}
+	local count = tabletool.len(self._partyServers)
 
-	if fastestMO then
-		areaId = fastestMO:areaId()
-	else
-		local _, mo = next(self._partyServers)
-
-		if mo then
-			areaId = mo:areaId()
-		end
+	for i, _ in pairs(self._partyServers) do
+		table.insert(allIdList, i)
 	end
+
+	local areaId = allIdList[math.random(1, count)]
+
+	areaId = math.floor(areaId / 10000)
 
 	return areaId
 end
