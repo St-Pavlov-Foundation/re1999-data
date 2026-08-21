@@ -272,11 +272,7 @@ function PartyGameRoomModel.getResVersion()
 		return version
 	end
 
-	local versionData = SLFramework.GameUpdate.HotUpdateInfoMgr.LocalVersionData
-	local first = versionData.first
-	local second = versionData.second
-	local third = versionData.third
-	local version = PartyGameRoomModel.getVersion(first, second, third)
+	local version = PartyGameRoomModel.getVersion(112, 0, 1353)
 
 	return version
 end

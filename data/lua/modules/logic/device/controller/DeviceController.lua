@@ -29,7 +29,9 @@ function DeviceController:reInit()
 end
 
 function DeviceController:_onFirstEnterMain()
-	if SkillEditorMgr and SkillEditorMgr.instance.inEditMode then
+	local isReview = VersionValidator.instance:isInReviewing()
+
+	if isReview or SkillEditorMgr and SkillEditorMgr.instance.inEditMode then
 		return
 	end
 
@@ -80,6 +82,12 @@ function DeviceController:onNetworkTypeChange(networkType)
 end
 
 function DeviceController:getDeviceLocation()
+	local isReview = VersionValidator.instance:isInReviewing()
+
+	if isReview then
+		return
+	end
+
 	local isEmulator = SDKMgr.instance:isEmulator()
 
 	if isEmulator then
