@@ -56,7 +56,8 @@ end
 function V3a9_BossRush_HeroGroupEditItem:updateLimitStatus()
 	gohelper.setActive(self._gohp, false)
 
-	local isRestrict = V3a9_BossRushModel.instance:isRestrict(self._mo.heroId)
+	local pos = self:getHeroPos()
+	local isRestrict = V3a9_BossRushModel.instance:isRestrict(self._mo.heroId, pos)
 
 	self._heroItem:setRestrict(isRestrict)
 	self._heroItem:setDamage(isRestrict)
@@ -112,9 +113,12 @@ function V3a9_BossRush_HeroGroupEditItem:onSelect(select)
 	self._heroItem:setSelect(select)
 
 	local uid = select and self._mo and self._mo.uid or "0"
-	local list = V3a9_BossRush_HeroGroupEditListModel.instance:getReplaceHeroList(uid)
 
-	V3a9_BossRushModel.instance:setEditorHeroList(list)
+	if uid ~= "0" then
+		local list = V3a9_BossRush_HeroGroupEditListModel.instance:getReplaceHeroList(uid)
+
+		V3a9_BossRushModel.instance:setEditorHeroList(list)
+	end
 
 	if select then
 		HeroGroupController.instance:dispatchEvent(HeroGroupEvent.OnClickHeroEditItem, self._mo)

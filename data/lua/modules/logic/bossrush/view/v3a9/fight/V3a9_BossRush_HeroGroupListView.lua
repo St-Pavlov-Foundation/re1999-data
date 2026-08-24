@@ -358,7 +358,7 @@ function V3a9_BossRush_HeroGroupListView:_btnClickEquip(index)
 		local heroMo, isAssist = V3a9_BossRushModel.instance:getTeamHeroMo(index, self._stage)
 
 		if isAssist then
-			heroMo = nil
+			heroMo = heroMo and heroMo.heroMO
 		end
 
 		local equipItem = self._equipItems[index]

@@ -40,6 +40,7 @@ function V3a9_BossRush_AssistView:_btnconfirmOnClick()
 
 	V3a9_BossRushModel.instance:setAssistMo(selectedMO)
 	V3a9_BossRush_AssistView.super._btnconfirmOnClick(self)
+	V3a9_BossRushController.instance:dispatchEvent(V3a9_BossRushEvent.onUseAssistHero)
 end
 
 function V3a9_BossRush_AssistView:_onRefreshSelectAssistHero()

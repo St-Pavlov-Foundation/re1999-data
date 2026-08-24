@@ -71,13 +71,18 @@ function AbyssHeroGroupPresetView:_onUseHeroGroup(param)
 
 	local stageMo = AbyssModel.instance:getCurStageMo()
 
-	if not stageMo or stageMo:isChallenged() then
+	if stageMo:isChallenged() then
 		return
 	end
 
-	local targetSubId = stageMo.heroGroupSubId or 1
+	local targetSubId = stageMo and stageMo.heroGroupSubId or 1
+	local targetMo = HeroGroupPresetController.instance:copyPresetToOther(param.groupId, param.subId, HeroGroupPresetEnum.HeroGroupType.Abyss, targetSubId, false)
 
-	HeroGroupPresetController.instance:copyPresetToOther(param.groupId, param.subId, HeroGroupPresetEnum.HeroGroupType.Abyss, targetSubId, self._onCopyPresetComplete, self)
+	if targetMo == nil then
+		return
+	end
+
+	AbyssController.instance:saveSnapShot(targetMo, targetSubId, self._onCopyPresetComplete, self)
 end
 
 function AbyssHeroGroupPresetView:_onCopyPresetComplete()

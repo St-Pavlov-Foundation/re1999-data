@@ -16,6 +16,7 @@ function V3a9_BossRush_HeroItem:onInitView()
 	self._imagecareer = gohelper.findChildImage(self.viewGO, "#go_Has/career")
 	self._goexskill = gohelper.findChild(self.viewGO, "#go_Has/#go_exskill")
 	self._imageexskill = gohelper.findChildImage(self.viewGO, "#go_Has/#go_exskill/#image_exskill")
+	self._goAssist = gohelper.findChild(self.viewGO, "#go_Has/#go_assist")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -50,6 +51,8 @@ function V3a9_BossRush_HeroItem:_editableInitView()
 	gohelper.setActive(self._goHas.gameObject, false)
 	gohelper.setActive(self._goequip.gameObject, false)
 	gohelper.setActive(self._goban.gameObject, false)
+
+	self._isAssist = false
 end
 
 function V3a9_BossRush_HeroItem:_editableAddEvents()
@@ -71,7 +74,7 @@ end
 
 function V3a9_BossRush_HeroItem:onUpdateMO(index, stage)
 	self._index = index
-	self._heroMo = V3a9_BossRushModel.instance:getTeamHeroMo(index, stage)
+	self._heroMo, self._isAssist = V3a9_BossRushModel.instance:getTeamHeroMo(index, stage)
 	self._heroId = self._heroMo and self._heroMo.heroId
 	self._isHasHero = self._heroMo ~= nil
 
@@ -111,6 +114,7 @@ function V3a9_BossRush_HeroItem:refreshHero()
 		gohelper.setActive(self._goexskill, self._isShowExSkill and exSkill > 0)
 	end
 
+	gohelper.setActive(self._goAssist, self._isHasHero and self._isAssist)
 	self:_refreshState()
 end
 

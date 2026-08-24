@@ -8,6 +8,8 @@ function V3a9_BossRush_ActMainView:onInitView()
 	self._simagebg = gohelper.findChildSingleImage(self.viewGO, "#simage_bg")
 	self._txtLimitTime = gohelper.findChildText(self.viewGO, "LimitTime/#txt_LimitTime")
 	self._txtTotalScoreNum = gohelper.findChildText(self.viewGO, "Score/TotalScore/#txt_TotalScoreNum")
+	self._imagePastbg = gohelper.findChildImage(self.viewGO, "Score/PastScore/#go_Pastbg")
+	self._txtPastScore = gohelper.findChildText(self.viewGO, "Score/PastScore/txt_PastScore")
 	self._txtPastScoreNum = gohelper.findChildText(self.viewGO, "Score/PastScore/#txt_PastScoreNum")
 	self._btnReward = gohelper.findChildButtonWithAudio(self.viewGO, "Score/#btn_Reward")
 	self._gohandbook = gohelper.findChild(self.viewGO, "#go_handbook")
@@ -79,6 +81,19 @@ function V3a9_BossRush_ActMainView:_refreshLeft()
 
 	self._txtTotalScoreNum.text = BossRushConfig.instance:getScoreStr(totalScore)
 	self._txtPastScoreNum.text = BossRushConfig.instance:getScoreStr(heightScore)
+
+	local effect = V3a9_BossRushModel.instance:getHeightScoreEffect(heightScore)
+	local effectParam = V3a9BossRushEnum.HeightScoreEffect[effect] or V3a9BossRushEnum.HeightScoreEffect[0]
+	local isShowEffectBg = not string.nilorempty(effectParam.bg)
+
+	if isShowEffectBg then
+		UISpriteSetMgr.instance:setV1a4BossRushSprite(self._imagePastbg, effectParam.bg)
+	end
+
+	self._txtPastScoreNum.color = GameUtil.parseColor(effectParam.txtColor)
+	self._txtPastScore.color = isShowEffectBg and GameUtil.parseColor("#130D0E") or GameUtil.parseColor("#CDC1BC")
+
+	gohelper.setActive(self._imagePastbg.gameObject, isShowEffectBg)
 end
 
 function V3a9_BossRush_ActMainView:_refreshRight()

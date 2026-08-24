@@ -9,6 +9,12 @@ function FightLoaderMgr:onConstructor()
 end
 
 function FightLoaderMgr:loadAsset(url, callback, handle, param)
+	local item = self:registLoadAssetItem(url)
+
+	item:startLoad(callback, handle, param)
+end
+
+function FightLoaderMgr:registLoadAssetItem(url)
 	local item = self.url2Item[url]
 
 	if not item then
@@ -17,8 +23,6 @@ function FightLoaderMgr:loadAsset(url, callback, handle, param)
 	end
 
 	item.refCounter = item.refCounter + 1
-
-	item:startLoad(callback, handle, param)
 
 	return item
 end

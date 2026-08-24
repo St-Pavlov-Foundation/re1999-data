@@ -308,7 +308,20 @@ end
 function V3a9_BossRush_HeroGroupEditView:_onEditorHeroItem()
 	V3a9_BossRushExpandBondModel.instance:refreshAddBondGroupId()
 	self._bondGroupGrid:refreshExpandBonds()
-	V3a9_BossRush_HeroGroupQuickEditListModel.instance:checkIsAllHeroRestrict(true)
+
+	if self._isShowQuickEdit then
+		if self._needShowToastRestrict2 then
+			V3a9_BossRush_HeroGroupQuickEditListModel.instance:checkIsAllHeroRestrict(true)
+
+			self._needShowToastRestrict2 = false
+		else
+			local emptyPos = V3a9_BossRush_HeroGroupQuickEditListModel.instance:getEmptyPos()
+
+			if emptyPos and emptyPos < 5 then
+				self._needShowToastRestrict2 = true
+			end
+		end
+	end
 end
 
 function V3a9_BossRush_HeroGroupEditView:_onHeroItemClick(heroMO)
@@ -777,16 +790,17 @@ function V3a9_BossRush_HeroGroupEditView:onOpen()
 	self._equips = self.viewParam.equips
 	self._stage = self.viewParam.stage
 	self._actId = self.viewParam.actId
+	self._needShowToastRestrict2 = false
 
 	V3a9_BossRushModel.instance:resetEditorHeroList()
 	CharacterModel.instance:setCharacterList(false, CharacterEnum.FilterType.HeroGroup)
 	V3a9_BossRush_HeroGroupEditListModel.instance:setParam(self._actId, self._stage, self._originalHeroUid, self._singleGroupMOId)
 	V3a9_BossRush_HeroGroupQuickEditListModel.instance:setParam(self._actId, self._stage)
-
-	self._heroMO = V3a9_BossRush_HeroGroupEditListModel.instance:copyCharacterCardList(true)
-
+	V3a9_BossRush_HeroGroupEditListModel.instance:copyCharacterCardList(true)
 	V3a9_BossRush_HeroGroupQuickEditListModel.instance:copyQuickEditCardList()
-	V3a9_BossRush_HeroGroupQuickEditListModel.instance:checkIsAllHeroRestrict()
+
+	self._heroMO = V3a9_BossRush_HeroGroupQuickEditListModel.instance:getById(self._originalHeroUid)
+
 	self:_refreshEditMode()
 	self:_refreshBtnIcon()
 	self:_refreshCharacterInfo()
@@ -914,7 +928,7 @@ function V3a9_BossRush_HeroGroupEditView:_onFilterList(param)
 end
 
 function V3a9_BossRush_HeroGroupEditView:_refreshAssistBtn()
-	local assistMo = V3a9_BossRushModel.instance:getAssistMo()
+	local assistMo = V3a9_BossRushModel.instance:getEditorAssistMo()
 
 	gohelper.setActive(self._btnassist.gameObject, assistMo == nil)
 	gohelper.setActive(self._btnrelease.gameObject, assistMo ~= nil)

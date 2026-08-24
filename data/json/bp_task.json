@@ -30798,7 +30798,7 @@
     "loopType": 5,
     "minType": "战令赛季",
     "name": "§在当版本轶事中阅读所有章节",
-    "desc": "在洋葱头轶事”流行于世界“中获得8个线索",
+    "desc": "在洋葱头轶事“流行于世界”中获得8个线索",
     "listenerType": "HeroStoryCommonTask",
     "listenerParam": "0#3301",
     "maxProgress": 8,

@@ -15,7 +15,7 @@ function V3a9_BossRush_HeroGroupQuickEditListModel:copyQuickEditCardList()
 	self._originalHeroUidList = {}
 	self._selectUid = nil
 
-	local assistMo = V3a9_BossRushModel.instance:getAssistMo()
+	local assistMo = V3a9_BossRushModel.instance:getEditorAssistMo()
 	local assistHeroUId
 
 	if assistMo then
@@ -111,6 +111,7 @@ function V3a9_BossRush_HeroGroupQuickEditListModel:selectHero(uid)
 		self._inTeamHeroUidList[index] = "0"
 		self._inTeamHeroUidMap[uid] = nil
 
+		V3a9_BossRushModel.instance:setEditorHeroList(self._inTeamHeroUidList)
 		self:onModelUpdate()
 
 		self._selectUid = nil
@@ -200,7 +201,9 @@ function V3a9_BossRush_HeroGroupQuickEditListModel:getHeroUidByPos(pos)
 end
 
 function V3a9_BossRush_HeroGroupQuickEditListModel:getIsDirty()
-	for i, uid in pairs(self._inTeamHeroUidList) do
+	for i = 1, V3a9BossRushEnum.HeroCount do
+		local uid = self._inTeamHeroUidList[i]
+
 		if uid ~= self._originalHeroUidList[i] then
 			return true
 		end
@@ -273,7 +276,13 @@ end
 
 function V3a9_BossRush_HeroGroupQuickEditListModel:getEmptyPos(uid)
 	if self._inTeamHeroUidList then
-		for index, heroUid in pairs(self._inTeamHeroUidList) do
+		for index = 1, V3a9BossRushEnum.HeroCount do
+			local heroUid = self._inTeamHeroUidList[index]
+
+			if not heroUid then
+				return index
+			end
+
 			if heroUid == "0" or uid and heroUid == uid then
 				return index
 			end

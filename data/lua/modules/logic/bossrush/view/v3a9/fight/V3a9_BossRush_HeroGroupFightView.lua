@@ -11,12 +11,14 @@ function V3a9_BossRush_HeroGroupFightView:onInitView()
 	self._btnmodifyname = gohelper.findChildButtonWithAudio(self.viewGO, "container/btnContain/horizontal/#drop_herogroup/#btn_changename")
 	self._dropherogrouparrow = gohelper.findChild(self.viewGO, "container/btnContain/horizontal/#drop_herogroup/arrow").transform
 	self._btnDetail = gohelper.findChildButtonWithAudio(self.viewGO, "herogroupcontain/subTitle/txt_TeamLvlS/#btn_Detail")
-	self._goDetail = gohelper.findChild(self.viewGO, "herogroupcontain/subTitle/txt_TeamLvlS/#go_Detail")
-	self._btnCloseDetail = gohelper.findChildButtonWithAudio(self.viewGO, "herogroupcontain/subTitle/txt_TeamLvlS/#go_Detail/#btn_CloseDetail")
+	self._goDetail = gohelper.findChild(self.viewGO, "herogroupcontain/#go_Detail")
+	self._btnCloseDetail = gohelper.findChildButtonWithAudio(self.viewGO, "herogroupcontain/#go_Detail/#btn_CloseDetail")
 	self._goBonds = gohelper.findChild(self.viewGO, "herogroupcontain/#go_Bonds")
 	self._btncloth = gohelper.findChildButtonWithAudio(self.viewGO, "container/btnContain/btnCloth")
 	self._txtclothname = gohelper.findChildText(self.viewGO, "container/btnContain/btnCloth/#txt_clothName")
 	self._txtclothnameen = gohelper.findChildText(self.viewGO, "container/btnContain/btnCloth/#txt_clothName/#txt_clothNameEn")
+	self._btnassist = gohelper.findChildButtonWithAudio(self.viewGO, "container/btnContain/horizontal/#btn_assist")
+	self._btnrelease = gohelper.findChildButtonWithAudio(self.viewGO, "container/btnContain/horizontal/#btn_release")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -28,11 +30,15 @@ function V3a9_BossRush_HeroGroupFightView:addEvents()
 	self._btncloth:AddClickListener(self._btnclothOnClock, self)
 	self._btnDetail:AddClickListener(self._btnDetailOnClick, self)
 	self._btnCloseDetail:AddClickListener(self._btnCloseDetailOnClick, self)
+	self._btnassist:AddClickListener(self._btnassistOnClick, self)
+	self._btnrelease:AddClickListener(self._btnreleaseOnClick, self)
 	self:addEventCb(HeroGroupController.instance, HeroGroupEvent.OnModifyGroupName, self._initFightGroupDrop, self)
 	self:addEventCb(HeroGroupController.instance, HeroGroupEvent.OnHeroGroupExit, self._onHeroGroupExit, self)
 	self:addEventCb(HeroGroupPresetController.instance, HeroGroupPresetEvent.UpdateGroupName, self._onUpdateGroupName, self)
-	self:addEventCb(HeroGroupController.instance, HeroGroupEvent.OnModifyHeroGroup, self._onModifyHeroGroup, self)
+	self:addEventCb(V3a9_BossRushController.instance, V3a9_BossRushEvent.OnModifyHeroGroup, self._onModifyHeroGroup, self)
 	self:addEventCb(V3a9_BossRushController.instance, V3a9_BossRushEvent.onRefreshExpandBond, self._onRefreshExpandBond, self)
+	self:addEventCb(HeroGroupPresetController.instance, HeroGroupPresetEvent.UseHeroGroup, self._refreshAssistBtn, self, LuaEventSystem.Low)
+	self:addEventCb(V3a9_BossRushController.instance, V3a9_BossRushEvent.onUseAssistHero, self._refreshAssistBtn, self)
 end
 
 function V3a9_BossRush_HeroGroupFightView:removeEvents()
@@ -40,6 +46,59 @@ function V3a9_BossRush_HeroGroupFightView:removeEvents()
 	self._btncloth:RemoveClickListener()
 	self._btnDetail:RemoveClickListener()
 	self._btnCloseDetail:RemoveClickListener()
+	self._btnassist:RemoveClickListener()
+	self._btnrelease:RemoveClickListener()
+end
+
+function V3a9_BossRush_HeroGroupFightView:_btnassistOnClick()
+	if self._stageMo:isChallenge() then
+		GameFacade.showToast(ToastEnum.BossRushHeroGroupCantEdit)
+
+		return
+	end
+
+	PickAssistController.instance:openPickAssistView(PickAssistEnum.Type.BossRushActMode, self._actId, nil, self._pickOverCallBack, self, true)
+end
+
+function V3a9_BossRush_HeroGroupFightView:_btnreleaseOnClick()
+	if self._stageMo:isChallenge() then
+		GameFacade.showToast(ToastEnum.BossRushHeroGroupCantEdit)
+
+		return
+	end
+
+	V3a9_BossRushModel.instance:clearAssistMo()
+	self:_updateHeroList()
+	self:_refreshAssistBtn()
+	GameFacade.showToast(ToastEnum.CancelAssist)
+end
+
+function V3a9_BossRush_HeroGroupFightView:_pickOverCallBack(mo)
+	if not mo or not mo.heroUid then
+		return
+	end
+
+	local emptyPos = V3a9_BossRushModel.instance:checkEmptyPos(mo.heroId)
+
+	if emptyPos then
+		V3a9_BossRushModel.instance:addTeamHero(self._stage, emptyPos, mo.heroUid)
+		self:_updateHeroList()
+	else
+		V3a9_BossRushController.instance:openHeroGroupEditView(self._actId, self._stage, 1, mo.heroUid)
+	end
+
+	self:_refreshAssistBtn()
+end
+
+function V3a9_BossRush_HeroGroupFightView:_updateHeroList()
+	V3a9_BossRushController.instance:dispatchEvent(V3a9_BossRushEvent.OnModifyHeroGroup)
+end
+
+function V3a9_BossRush_HeroGroupFightView:_refreshAssistBtn()
+	local assistMo = V3a9_BossRushModel.instance:getEditorAssistMo()
+
+	gohelper.setActive(self._btnassist.gameObject, assistMo == nil)
+	gohelper.setActive(self._btnrelease.gameObject, assistMo ~= nil)
 end
 
 function V3a9_BossRush_HeroGroupFightView:_btnDetailOnClick()
@@ -123,6 +182,7 @@ end
 
 function V3a9_BossRush_HeroGroupFightView:_onModifyHeroGroup()
 	self:_refreshCloth()
+	self:_refreshAssistBtn()
 end
 
 function V3a9_BossRush_HeroGroupFightView:_initFightGroupDrop()
@@ -139,7 +199,7 @@ function V3a9_BossRush_HeroGroupFightView:_initFightGroupDrop()
 end
 
 function V3a9_BossRush_HeroGroupFightView:_refreshBtns()
-	return
+	self:_refreshAssistBtn()
 end
 
 function V3a9_BossRush_HeroGroupFightView:_onHeroGroupExit()

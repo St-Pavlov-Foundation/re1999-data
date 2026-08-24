@@ -64,6 +64,12 @@ function FightReplayWorkClothSkill:onStart()
 		FightRpc.instance:sendUseClothSkillRequest(self.clothSkillOp.skillId, self.clothSkillOp.fromId, self.clothSkillOp.toId, FightEnum.ClothSkillType.TwinsSelect)
 
 		return
+	elseif self.clothSkillOp.type == FightEnum.ClothSkillType.MeiLeiErExtraRound then
+		FightController.instance:registerCallback(FightEvent.RespUseClothSkillFail, self._failDone, self)
+		FightController.instance:registerCallback(FightEvent.OnClothSkillRoundSequenceFinish, self._onClothSkillDone, self)
+		FightRpc.instance:sendUseClothSkillRequest(0, self.clothSkillOp.fromId, "0", FightEnum.ClothSkillType.MeiLeiErExtraRound)
+
+		return
 	end
 
 	if self.clothSkillOp.skillId == FightEnum.DeviceDiscardSkillId then

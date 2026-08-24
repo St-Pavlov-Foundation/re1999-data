@@ -81,6 +81,8 @@ function V3a9RacingCarSceneGraphicsComp:onSceneClose()
 	PostProcessingMgr.instance:setLayerCullDistance(self.LAYER_INDEX_CullOnLowQuality, 0)
 
 	mainCamera.layerCullSpherical = false
+
+	PostProcessingMgr.instance:clearLayerCullDistance()
 end
 
 return V3a9RacingCarSceneGraphicsComp

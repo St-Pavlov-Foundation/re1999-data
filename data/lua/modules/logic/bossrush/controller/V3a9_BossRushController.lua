@@ -44,27 +44,27 @@ function V3a9_BossRushController:openV3a9MainView(viewParam, isJustOpen)
 		end
 	end
 
-	BossRushRpc.instance:sendGet128InfosRequest(function()
-		local mode = viewParam and viewParam.enterMode
+	local enterMode = viewParam and viewParam.enterMode
 
-		if not mode then
-			local actId = V3a9_BossRushModel.instance:getActModeActId()
+	if not enterMode then
+		local actId = V3a9_BossRushModel.instance:getActModeActId()
 
-			if actId and ActivityHelper.isOpen(actId) then
-				local key = string.format("%s_%s", V3a9BossRushEnum.PlayerPrefKey.FirstOpenAct, actId)
-				local value = GameUtil.playerPrefsGetNumberByUserId(key, 0)
+		if actId and ActivityHelper.isOpen(actId) then
+			local key = string.format("%s_%s", V3a9BossRushEnum.PlayerPrefKey.FirstOpenAct, actId)
+			local value = GameUtil.playerPrefsGetNumberByUserId(key, 0)
 
-				if value == 0 then
-					mode = V3a9BossRushEnum.Mode.Act
+			if value == 0 then
+				enterMode = V3a9BossRushEnum.Mode.Act
 
-					GameUtil.playerPrefsSetNumberByUserId(key, 1)
-				end
+				GameUtil.playerPrefsSetNumberByUserId(key, 1)
 			end
-
-			mode = V3a9_BossRushModel.instance:getMode()
 		end
+	end
 
-		ViewMgr.instance:openTabView(ViewName.V3a9_BossRush_MainSwitchModeView, viewParam, nil, nil, mode)
+	BossRushRpc.instance:sendGet128InfosRequest(function()
+		enterMode = enterMode or V3a9_BossRushModel.instance:getMode()
+
+		ViewMgr.instance:openTabView(ViewName.V3a9_BossRush_MainSwitchModeView, viewParam, nil, nil, enterMode)
 	end)
 end
 
@@ -115,7 +115,7 @@ function V3a9_BossRushController:saveCurGroupData(heroGroupMO, callback, callbac
 
 	local heroList = heroGroupMO:getMainList()
 	local req = HeroGroupModule_pb.SetHeroGroupSnapshotRequest()
-	local assistMo = V3a9_BossRushModel.instance:getAssistMo()
+	local assistMo = V3a9_BossRushModel.instance:getEditorAssistMo()
 
 	if assistMo then
 		for i, uid in ipairs(heroList) do

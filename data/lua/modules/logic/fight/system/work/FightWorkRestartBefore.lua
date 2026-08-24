@@ -55,6 +55,13 @@ function FightWorkRestartBefore:_correctRootState()
 end
 
 function FightWorkRestartBefore:_startLoadLevel()
+	local key = FightParamData.ParamKey.SceneId
+	local param = FightDataHelper.fieldMgr and FightDataHelper.fieldMgr.param
+
+	if param and param:getKey(key) then
+		param[key] = nil
+	end
+
 	self:com_registFightEvent(FightEvent.OnSceneLevelLoaded, self._onLevelLoaded)
 
 	local fightScene = GameSceneMgr.instance:getScene(SceneType.Fight)

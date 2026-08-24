@@ -508,6 +508,9 @@ end
 function HeroGroupListView:_updateHeroList()
 	local groupFightView = self.viewContainer:getHeroGroupFightView()
 	local isReplay = groupFightView:isReplayMode()
+
+	self:_checkAssistHero()
+
 	local _, assistMo = HeroGroupModel.instance:getAssistMo()
 
 	for i, heroItem in ipairs(self._heroItemList) do
@@ -528,6 +531,34 @@ function HeroGroupListView:_updateHeroList()
 				HeroGroupController.instance:dispatchEvent(HeroGroupEvent.OnThirdPosOpen)
 			elseif i == 4 then
 				HeroGroupController.instance:dispatchEvent(HeroGroupEvent.OnFourthPosOpen)
+			end
+		end
+	end
+end
+
+function HeroGroupListView:_checkAssistHero()
+	local _, assistMo = HeroGroupModel.instance:getAssistMo()
+
+	if not assistMo or not assistMo.assistMo then
+		return
+	end
+
+	local assistHeroId = assistMo.assistMo.heroId
+
+	if not assistHeroId then
+		return
+	end
+
+	local heroList = HeroSingleGroupModel.instance:getList()
+
+	if heroList then
+		for _, heroMo in pairs(heroList) do
+			if heroMo.heroUid and heroMo.heroUid ~= "0" and assistMo.heroUid ~= heroMo.heroUid then
+				local _heroMo = HeroModel.instance:getById(heroMo.heroUid)
+
+				if _heroMo and assistHeroId == _heroMo.heroId and heroMo.id ~= assistMo.id then
+					assistMo:swapAssist(assistMo.assistMo, heroMo.id)
+				end
 			end
 		end
 	end

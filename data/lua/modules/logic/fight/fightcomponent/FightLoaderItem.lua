@@ -12,7 +12,9 @@ function FightLoaderItem:onConstructor(url, callback, handle, param)
 end
 
 function FightLoaderItem:startLoad()
-	self.item = FightGameMgr.loaderMgr:loadAsset(self.url, self.onAssetLoaded, self)
+	self.item = FightGameMgr.loaderMgr:registLoadAssetItem(self.url)
+
+	self.item:startLoad(self.onAssetLoaded, self)
 end
 
 function FightLoaderItem:onAssetLoaded(success, assetItem)

@@ -2,7 +2,7 @@
 
 module("modules.logic.bossrush.model.BossRushBossDetailMO", package.seeall)
 
-local BossRushBossDetailMO = pureTable("V3a2BossRushRankMO")
+local BossRushBossDetailMO = pureTable("BossRushBossDetailMO")
 
 function BossRushBossDetailMO:initInfo(actId, info)
 	self.actId = actId

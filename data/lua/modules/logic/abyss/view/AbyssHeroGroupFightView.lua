@@ -88,6 +88,10 @@ function AbyssHeroGroupFightView:onOpen()
 	self:refreshBuff()
 end
 
+function AbyssHeroGroupFightView:_refreshBtns(isCostPower)
+	AbyssHeroGroupFightView.super.onClose(self)
+end
+
 function AbyssHeroGroupFightView:_enterFight()
 	if HeroGroupModel.instance.episodeId then
 		local stageInfo = AbyssModel.instance:getCurStageMo()
@@ -147,7 +151,7 @@ end
 
 function AbyssHeroGroupFightView:_onModifyHeroGroup()
 	AbyssHeroGroupFightView.super._onModifyHeroGroup(self)
-	self:refreshBuff()
+	gohelper.setActive(self._dropherogroup, false)
 end
 
 function AbyssHeroGroupFightView:isShowDropHeroGroup()
@@ -155,7 +159,11 @@ function AbyssHeroGroupFightView:isShowDropHeroGroup()
 end
 
 function AbyssHeroGroupFightView:_initFightGroupDrop()
-	return
+	gohelper.setActive(self._dropherogroup, false)
+end
+
+function AbyssHeroGroupFightView:_checkDropArrow()
+	gohelper.setActive(self._dropherogroup, false)
 end
 
 function AbyssHeroGroupFightView:refreshBuff()

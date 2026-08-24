@@ -238,8 +238,8 @@ end
 
 function V3a9_BossRush_ResultView:_initBoss()
 	if self._curStage then
-		self._simageFullBG:LoadImage(BossRushConfig.instance:getBossDetailFullPath(self._curStage))
-		self._simageTitle:LoadImage(BossRushConfig.instance:getBossDetailTitlePath(self._curStage))
+		self._simageFullBG:LoadImage(BossRushConfig.instance:getBossDetailFullPath(self._curStage, self._actId))
+		self._simageTitle:LoadImage(BossRushConfig.instance:getBossDetailTitlePath(self._curStage, self._actId))
 
 		for i = 1, 3 do
 			local bgGo = gohelper.findChild(self.viewGO, "boss_topbg" .. i)

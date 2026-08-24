@@ -22,7 +22,7 @@ function V3a9_BossRush_HeroGroupEditListModel:copyCharacterCardList(init)
 	self._inTeamHeroUids = {}
 	self._heroPosUids = {}
 
-	local assistMo = V3a9_BossRushModel.instance:getAssistMo()
+	local assistMo = V3a9_BossRushModel.instance:getEditorAssistMo()
 	local assistHeroUId
 
 	if assistMo and assistMo.heroUid and assistMo.heroUid ~= "0" then
@@ -73,16 +73,6 @@ function V3a9_BossRush_HeroGroupEditListModel:copyCharacterCardList(init)
 
 	tabletool.addValues(newMOList, deathList)
 	self:setList(newMOList)
-
-	selectIndex = self.pos or selectIndex
-
-	if init and #newMOList > 0 and selectIndex > 0 then
-		self:selectCell(selectIndex, true)
-
-		if newMOList[selectIndex] then
-			return newMOList[selectIndex]
-		end
-	end
 end
 
 function V3a9_BossRush_HeroGroupEditListModel:isRepeatHero(heroId, uid)

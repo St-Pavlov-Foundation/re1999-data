@@ -187,9 +187,7 @@ function ClothesStorePreviewSkinComp:_tryPlayVoice()
 	local voiceConfig = voiceConfigs[randomKey]
 
 	if self._uiSpine then
-		self._uiSpine:playVoice(voiceConfig, function()
-			self:stopVoice()
-		end)
+		self._uiSpine:playVoice(voiceConfig)
 	end
 end
 

@@ -14,5 +14,6 @@ V3a9_BossRushEvent.onClickBondHeroItem = _get()
 V3a9_BossRushEvent.onRefreshExpandBond = _get()
 V3a9_BossRushEvent.onSwitchHeroExpandBonds = _get()
 V3a9_BossRushEvent.onClickExpandBonds = _get()
+V3a9_BossRushEvent.onUseAssistHero = _get()
 
 return V3a9_BossRushEvent

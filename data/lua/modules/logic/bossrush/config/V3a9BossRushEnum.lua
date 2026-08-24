@@ -27,7 +27,7 @@ V3a9BossRushEnum.ExpandBondsBgRes = {
 	"v3a9_bossrush_bondsbg3",
 	"v3a9_bossrush_bondsbg2",
 	"v3a9_bossrush_bondsbg1",
-	"v3a9_bossrush_bondsbg4"
+	"v3a9_bossrush_bondsbg5"
 }
 V3a9BossRushEnum.PlayerPrefKey = {
 	LastScore = "LastScore",
@@ -63,6 +63,24 @@ V3a9BossRushEnum.ExpandBondsTriggerType = {
 V3a9BossRushEnum.ExpandBondsTriggerAudio = {
 	[V3a9BossRushEnum.ExpandBondsTriggerType.open] = BossRushAudioEnum.Audio.play_ui_dungeon3_2_click,
 	[V3a9BossRushEnum.ExpandBondsTriggerType.switch] = BossRushAudioEnum.Audio.play_ui_molu_exit_appear
+}
+V3a9BossRushEnum.HeightScoreEffectConst = 3901
+V3a9BossRushEnum.HeightScoreEffect = {
+	[0] = {
+		txtColor = "#E99B56"
+	},
+	{
+		txtColor = "#3A2F56",
+		bg = "v3a9_bossrush_btn_scorebg1"
+	},
+	{
+		txtColor = "#5C3710",
+		bg = "v3a9_bossrush_btn_scorebg4"
+	},
+	{
+		txtColor = "#33343A",
+		bg = "v3a9_bossrush_btn_scorebg5"
+	}
 }
 
 return V3a9BossRushEnum

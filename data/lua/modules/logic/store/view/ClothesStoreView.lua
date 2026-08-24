@@ -542,6 +542,12 @@ function ClothesStoreView:onClose()
 	self:removeEventCb(RedDotController.instance, RedDotEvent.RefreshClientCharacterDot, self._onRefreshRedDot, self)
 	BackpackController.instance:unregisterCallback(BackpackEvent.UpdateItemList, self._updateItemList, self)
 	TaskDispatcher.cancelTask(self._delayRefreshPrice, self)
+
+	if self.previewComp then
+		self.previewComp:clearSkin()
+
+		self.previewComp = nil
+	end
 end
 
 function ClothesStoreView:onUpdateParam()

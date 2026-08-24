@@ -15,7 +15,7 @@ function V3a9_BossRushModel:reInit()
 	self._equipUIds = {}
 	self._bossdetailMos = nil
 	self._editorHeroList = nil
-	self._assistMo = nil
+	self._edtiorAssistMo = nil
 	self._stage = nil
 	self._actId = nil
 	self._maxTotalLatestPoint = nil
@@ -348,27 +348,40 @@ function V3a9_BossRushModel:refreshDeathHeros(stage, isIgnoreChallenge)
 		return
 	end
 
-	local assistMo = self:getAssistMo(stage)
-
 	for _stage, uids in pairs(self._heroUIds) do
 		local _stageMo = self:getStageMo(actId, _stage)
 
-		if _stage ~= stage and _stageMo:isChallenge() then
-			for i, uid in pairs(uids) do
-				if tonumber(uid) > 0 and i > 4 then
-					if assistMo and assistMo.heroUid == uid then
-						self._deathHeroDict[assistMo.heroId] = true
-					else
-						local heroMo = HeroModel.instance:getById(uid)
+		if _stage ~= stage and _stageMo then
+			local assistMo = self:getAssistMo(_stage, actId)
 
-						if heroMo then
-							self._deathHeroDict[heroMo.heroId] = true
+			if _stageMo:isChallenge() then
+				for i, uid in pairs(uids) do
+					if tonumber(uid) > 0 and i > 4 then
+						if assistMo and assistMo.heroUid == uid then
+							self._deathHeroDict[assistMo.heroId] = true
+						else
+							local heroMo = HeroModel.instance:getById(uid)
+
+							if heroMo then
+								self._deathHeroDict[heroMo.heroId] = true
+							end
 						end
 					end
 				end
 			end
 		end
 	end
+end
+
+function V3a9_BossRushModel:addTeamHero(stage, index, uid)
+	if not self._heroUIds[stage] then
+		self._heroUIds[stage] = {}
+	end
+
+	self._heroUIds[stage][index] = uid
+
+	V3a9_BossRushExpandBondModel.instance:refreshExpandBondGroup(stage)
+	self:_saveTeamHero()
 end
 
 function V3a9_BossRushModel:exchangeHero(stage, a, b)
@@ -387,7 +400,7 @@ function V3a9_BossRushModel:_saveTeamHero(callback, callbackobj)
 	local stageMos = self:getBossDetailMos(actId)
 	local actModeTeam = self:getActModeTeam(stage)
 
-	actModeTeam:saveHeroList(uids, self._assistMo)
+	actModeTeam:saveHeroList(uids, self._edtiorAssistMo)
 
 	local heroIds = self:getHeroIds(stage)
 	local otherBoss = {}
@@ -419,7 +432,7 @@ function V3a9_BossRushModel:_saveTeamHero(callback, callbackobj)
 		GameFacade.showToast(ToastEnum.BossRushHeroRestrict3)
 	end
 
-	BossRushRpc.instance:sendSetAct128TeamRequest(actId, stage)
+	BossRushRpc.instance:sendSetAct128TeamRequest(actId, stage, callback, callbackobj)
 
 	local heroGroupMO = self:getCurGroupMO()
 
@@ -499,6 +512,7 @@ function V3a9_BossRushModel:onRefreshActModeTeam(msg)
 	local stageMo = self:getStageMo(activityId, bossId)
 
 	stageMo:onRefresh(msg)
+	self:refreshEdtiorAssistMo()
 	V3a9_BossRushController.instance:dispatchEvent(V3a9_BossRushEvent.onRefreshV3a9ModeTeamInfo)
 	V3a9_BossRushController.instance:dispatchEvent(V3a9_BossRushEvent.OnModifyHeroGroup)
 end
@@ -593,7 +607,6 @@ function V3a9_BossRushModel:resetEditorHeroList()
 	local stage = BossRushModel.instance:getBattleStageAndLayer()
 
 	self._editorHeroList = self:getHeroUIds(stage)
-	self._assistMo = nil
 
 	V3a9_BossRushExpandBondModel.instance:refreshExpandBondGroup()
 end
@@ -628,7 +641,8 @@ function V3a9_BossRushModel:getHeroIds(stage, heroList)
 	if heroList then
 		for i, uid in pairs(heroList) do
 			if uid and uid ~= "0" then
-				local assistMo = self:getAssistMo()
+				local actId = self:getActModeActId()
+				local assistMo = self:getAssistMo(stage, actId)
 				local heroId
 
 				if assistMo and assistMo.heroUid == uid then
@@ -659,9 +673,22 @@ function V3a9_BossRushModel:getEmptyPos(heroList)
 	heroList = heroList or self:getHeroUIds(stage)
 
 	for i = 1, V3a9BossRushEnum.HeroCount do
-		local uid = heroList[i]
+		local uid = heroList and heroList[i]
 
 		if not uid or tonumber(uid) == 0 then
+			return i
+		end
+	end
+end
+
+function V3a9_BossRushModel:checkEmptyPos(heroId)
+	local stage = BossRushModel.instance:getBattleStageAndLayer()
+	local heroList = self:getHeroIds(stage)
+
+	for i = 1, V3a9BossRushEnum.HeroCount do
+		local _heroId = heroList and heroList[i]
+
+		if not _heroId or _heroId == heroId then
 			return i
 		end
 	end
@@ -672,9 +699,11 @@ function V3a9_BossRushModel:getEditorAssistPos(heroId)
 		return
 	end
 
+	local stage = BossRushModel.instance:getBattleStageAndLayer()
 	local heroList = self:getEditorHeroList()
+	local heroIdList = self:getHeroIds(stage, heroList)
 
-	for i, id in pairs(heroList) do
+	for i, id in pairs(heroIdList) do
 		if id == heroId then
 			return i
 		end
@@ -692,7 +721,7 @@ function V3a9_BossRushModel:setAssistMo(assistMo)
 		heroList[emptyPos] = assistMo.heroId
 	end
 
-	self._assistMo = assistMo
+	self._edtiorAssistMo = assistMo
 
 	V3a9_BossRushExpandBondModel.instance:refreshHeroList(heroList)
 end
@@ -700,12 +729,12 @@ end
 function V3a9_BossRushModel:clearAssistMo()
 	local stage, actId = V3a9_BossRushModel.instance:getEnterActStage()
 
-	if self._assistMo then
+	if self._edtiorAssistMo then
 		local editorList = self:getEditorHeroList()
 
 		if editorList then
 			for i, uid in pairs(editorList) do
-				if uid == self._assistMo.heroUid then
+				if uid == self._edtiorAssistMo.heroUid then
 					editorList[i] = "0"
 				end
 			end
@@ -721,7 +750,7 @@ function V3a9_BossRushModel:clearAssistMo()
 
 		if uids then
 			for i, uid in ipairs(uids) do
-				if self._assistMo.heroUid == uid then
+				if self._edtiorAssistMo.heroUid == uid then
 					uids[i] = "0"
 
 					break
@@ -732,30 +761,44 @@ function V3a9_BossRushModel:clearAssistMo()
 
 	BossRushRpc.instance:sendSetAct128TeamRequest(actId, stage)
 
-	self._assistMo = nil
+	self._edtiorAssistMo = nil
 end
 
-function V3a9_BossRushModel:getAssistMo(actId, stage)
-	if not self._assistMo then
-		local actModeTeam = self:getActModeTeam()
+function V3a9_BossRushModel:refreshEdtiorAssistMo()
+	local stage, actId = self:getEnterActStage()
+
+	self._edtiorAssistMo = self:getAssistMo(stage, actId)
+end
+
+function V3a9_BossRushModel:getEditorAssistMo(stage, actId)
+	if not self._edtiorAssistMo then
+		local actModeTeam = self:getActModeTeam(stage, actId)
 
 		if actModeTeam then
-			self._assistMo = actModeTeam:getAssistMo()
+			self._edtiorAssistMo = actModeTeam:getAssistMo()
 		end
 	end
 
-	return self._assistMo
+	return self._edtiorAssistMo
+end
+
+function V3a9_BossRushModel:getAssistMo(stage, actId)
+	local actModeTeam = self:getActModeTeam(stage, actId)
+
+	if actModeTeam then
+		return actModeTeam:getAssistMo()
+	end
 end
 
 function V3a9_BossRushModel:getTeamHeroMo(index, stage)
-	local _stage = self:getEnterActStage()
+	local _stage, actId = self:getEnterActStage()
 
 	stage = stage or _stage
 
 	local uid = self._heroUIds[stage] and self._heroUIds[stage][index]
 
 	if uid and uid ~= "0" then
-		local assistMo = self:getAssistMo()
+		local assistMo = self:getAssistMo(stage, actId)
 
 		if assistMo and assistMo.heroUid == uid then
 			return assistMo, true
@@ -844,6 +887,24 @@ function V3a9_BossRushModel:isCanAssist(mo)
 	end
 
 	return true
+end
+
+function V3a9_BossRushModel:getHeightScoreEffect(score)
+	score = score or self:getHeightScore()
+
+	if not self._heightScoreEffect then
+		local _, value = BossRushConfig.instance:getConst(V3a9BossRushEnum.HeightScoreEffectConst)
+
+		self._heightScoreEffect = string.splitToNumber(value, "#")
+	end
+
+	for i = #self._heightScoreEffect, 1, -1 do
+		if score >= self._heightScoreEffect[i] then
+			return i
+		end
+	end
+
+	return 0
 end
 
 V3a9_BossRushModel.instance = V3a9_BossRushModel.New()

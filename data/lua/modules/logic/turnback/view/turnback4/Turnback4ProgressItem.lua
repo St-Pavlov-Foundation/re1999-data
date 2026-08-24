@@ -115,7 +115,7 @@ function Turnback4ProgressItem:_refreshRewards()
 			local materialType = v[1]
 			local materialId = v[2]
 			local count = self.mo:getCount(materialType, materialId, 1)
-			local isReceive = count == 0
+			local isReceive = count <= 0
 
 			item.iconItem:setMOValue(materialType, materialId, count, nil, true)
 			item.iconItem:isShowCount(v[1] ~= MaterialEnum.MaterialType.Hero and not isReceive)
