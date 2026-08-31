@@ -203,11 +203,12 @@ function V3a9_BossRushExpandBondModel:refreshAddBondGroupId()
 
 	for _, mo in pairs(groupMos) do
 		local num = mo:getRealActiveHeroNum()
+		local max = mo:getMaxActiveNum()
 		local groupId = mo:getGroupId()
 		local tagType = mo:getTagType()
 
 		if num > 0 then
-			if tagType == V3a9BossRushEnum.TagType.BattleTag and not mo:isOverMaxLevel() then
+			if tagType == V3a9BossRushEnum.TagType.BattleTag and num < max then
 				if maxCount < num then
 					maxCount = num
 					list = {

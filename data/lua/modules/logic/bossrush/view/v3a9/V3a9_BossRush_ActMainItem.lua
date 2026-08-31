@@ -110,7 +110,7 @@ function V3a9_BossRush_ActMainItem:_refresh()
 	local stageCO = mo.stageCO
 	local stage = stageCO.stage
 	local isOpened = self:_isOpen()
-	local issxIconName = BossRushConfig.instance:getIssxIconName(stage)
+	local issxIconName = BossRushConfig.instance:getIssxIconName(stage, 1, stageCO.activityId)
 	local stageName = stageCO.name
 
 	self._actId = stageCO.activityId

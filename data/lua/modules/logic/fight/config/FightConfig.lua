@@ -990,8 +990,16 @@ function FightConfig:getEntitySkillDesc(entityId, skillConfig, skillId)
 	end
 
 	local entityName = self:getEntityName(entityId)
+	local desc = self:getSkillEffectDesc(entityName, skillConfig)
 
-	return self:getSkillEffectDesc(entityName, skillConfig)
+	if FightHelper.isHeDuoNieSkill(skillConfig.id) then
+		local entityMo = FightDataHelper.entityMgr:getById(entityId)
+		local curCount = entityMo and entityMo:getHeDuoNieBuffData() or 0
+
+		desc = GameUtil.getSubPlaceholderLuaLangOneParam(desc, curCount)
+	end
+
+	return desc
 end
 
 function FightConfig:getEntityName(entityId)

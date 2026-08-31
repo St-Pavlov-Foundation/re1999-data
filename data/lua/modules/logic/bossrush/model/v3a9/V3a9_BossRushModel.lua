@@ -121,7 +121,7 @@ function V3a9_BossRushModel:refreshBoss(actId)
 	local totalScore = 0
 
 	if bossDetailMos then
-		for _, mo in pairs(bossDetailMos) do
+		for i, mo in pairs(bossDetailMos) do
 			table.insert(detailMoList, mo)
 
 			totalScore = totalScore + mo.latestPoint
@@ -178,7 +178,7 @@ end
 function V3a9_BossRushModel:setSelectGroupIndex(index)
 	local heroGroupSnapshotType = self:getHeroGroupSnapshotType()
 
-	HeroGroupSnapshotModel.instance:setSelectIndex(heroGroupSnapshotType, index)
+	HeroGroupSnapshotModel.instance:setSelectIndex(heroGroupSnapshotType, 1)
 end
 
 function V3a9_BossRushModel:getSelectGroupIndex()
@@ -189,7 +189,7 @@ end
 
 function V3a9_BossRushModel:getCurGroupMO()
 	local heroGroupSnapshotType = self:getHeroGroupSnapshotType()
-	local groupIndex = self:getSelectGroupIndex()
+	local groupIndex = 1
 	local heroGroupMO = HeroGroupSnapshotModel.instance:getHeroGroupInfo(heroGroupSnapshotType, groupIndex)
 
 	if not heroGroupMO then
@@ -202,8 +202,6 @@ function V3a9_BossRushModel:getCurGroupMO()
 end
 
 function V3a9_BossRushModel:refreshShowHeroEquips(stage)
-	self:setSelectGroupIndex(stage)
-
 	if not self._heroUIds then
 		self._heroUIds = {}
 	end
@@ -215,12 +213,10 @@ function V3a9_BossRushModel:refreshShowHeroEquips(stage)
 	self._heroUIds[stage] = {}
 	self._equipUIds[stage] = {}
 
-	local heroGroupMO = self:getCurGroupMO()
 	local actModeTeam = self:getActModeTeam(stage)
 
 	for i = 1, V3a9BossRushEnum.HeroCount do
 		local info = actModeTeam and actModeTeam:getHeroInfo(i)
-		local uid = heroGroupMO.heroList[i]
 
 		self._heroUIds[stage][i] = info and info.uid or "0"
 	end
@@ -535,6 +531,14 @@ function V3a9_BossRushModel:setFightHeroGroup(actId)
 		GameFacade.showToast(ToastEnum.FightNoCurGroupMO)
 
 		return false
+	end
+
+	local actModeTeam = self:getActModeTeam()
+
+	for i = 1, 4 do
+		local heroInfo = actModeTeam:getHeroInfo(i)
+
+		curGroupMO.heroList[i] = heroInfo and heroInfo.uid or "0"
 	end
 
 	local main, mainCount = curGroupMO:getMainList()

@@ -8,7 +8,6 @@ function V3a9_BossRush_ActMainView:onInitView()
 	self._simagebg = gohelper.findChildSingleImage(self.viewGO, "#simage_bg")
 	self._txtLimitTime = gohelper.findChildText(self.viewGO, "LimitTime/#txt_LimitTime")
 	self._txtTotalScoreNum = gohelper.findChildText(self.viewGO, "Score/TotalScore/#txt_TotalScoreNum")
-	self._imagePastbg = gohelper.findChildImage(self.viewGO, "Score/PastScore/#go_Pastbg")
 	self._txtPastScore = gohelper.findChildText(self.viewGO, "Score/PastScore/txt_PastScore")
 	self._txtPastScoreNum = gohelper.findChildText(self.viewGO, "Score/PastScore/#txt_PastScoreNum")
 	self._btnReward = gohelper.findChildButtonWithAudio(self.viewGO, "Score/#btn_Reward")
@@ -48,6 +47,15 @@ end
 function V3a9_BossRush_ActMainView:_editableInitView()
 	V3a9_BossRush_ActMainView.super._editableInitView(self)
 	RedDotController.instance:addRedDot(self._gorewardreddot, RedDotEnum.DotNode.V3a9BossRushAct)
+
+	self._vxPastScore = self:getUserDataTb_()
+
+	for _, info in pairs(V3a9BossRushEnum.HeightScoreEffect) do
+		if info.vxnode then
+			self._vxPastScore[info.vxnode] = gohelper.findChild(self.viewGO, "Score/PastScore/" .. info.vxnode)
+		end
+	end
+
 	self:_refreshRewardReddot()
 end
 
@@ -84,16 +92,13 @@ function V3a9_BossRush_ActMainView:_refreshLeft()
 
 	local effect = V3a9_BossRushModel.instance:getHeightScoreEffect(heightScore)
 	local effectParam = V3a9BossRushEnum.HeightScoreEffect[effect] or V3a9BossRushEnum.HeightScoreEffect[0]
-	local isShowEffectBg = not string.nilorempty(effectParam.bg)
 
-	if isShowEffectBg then
-		UISpriteSetMgr.instance:setV1a4BossRushSprite(self._imagePastbg, effectParam.bg)
+	for vxnode, go in pairs(self._vxPastScore) do
+		gohelper.setActive(go, effectParam.vxnode and effectParam.vxnode == vxnode)
 	end
 
 	self._txtPastScoreNum.color = GameUtil.parseColor(effectParam.txtColor)
-	self._txtPastScore.color = isShowEffectBg and GameUtil.parseColor("#130D0E") or GameUtil.parseColor("#CDC1BC")
-
-	gohelper.setActive(self._imagePastbg.gameObject, isShowEffectBg)
+	self._txtPastScore.color = effectParam.vxnode and GameUtil.parseColor("#130D0E") or GameUtil.parseColor("#CDC1BC")
 end
 
 function V3a9_BossRush_ActMainView:_refreshRight()

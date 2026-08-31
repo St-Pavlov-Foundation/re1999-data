@@ -712,12 +712,12 @@
     "tagType": 2,
     "name": "术具",
     "level": 3,
-    "activeNum": 4,
+    "activeNum": 5,
     "desc": "回复48同调值；提升2%术具威力（最多32%）",
     "effects": "",
     "backingIcon": "4",
     "icon": "logo_buff15",
-    "numberIcon": "v3a9_bossrush_result_icon_level_4_1"
+    "numberIcon": "v3a9_bossrush_result_icon_level_5_1"
   },
   {
     "id": 46,

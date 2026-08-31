@@ -195,7 +195,7 @@ function DestinyStoneGiftStoneDetailView:_refreshStoneItem()
 	gohelper.setActive(self._simagestoneName.gameObject, isReshapeStone)
 
 	if isReshapeStone then
-		local resName = self._stoneMo.stoneId
+		local resName = self._stoneId
 
 		self._simagestoneName:LoadImage(ResUrl.getTxtDestinyIcon(resName), function()
 			self._imagestoneName:SetNativeSize()
@@ -252,7 +252,7 @@ function DestinyStoneGiftStoneDetailView:_refreshStoneReshape(isPlayAnim)
 		item.titleTxt.text = GameUtil.getSubPlaceholderLuaLangOneParam(lang, i)
 		item.skillDesc = MonoHelper.addNoUpdateLuaComOnceToGo(item.descTxt.gameObject, SkillDescComp)
 
-		item.skillDesc:updateInfo(item.descTxt, descList[i], self._heroMO.heroId)
+		item.skillDesc:updateInfo(item.descTxt, descList[i], self._heroId)
 		item.skillDesc:setTipParam(0, Vector2(300, 100))
 
 		item.cg.alpha = isUnlock and 1 or 0.43

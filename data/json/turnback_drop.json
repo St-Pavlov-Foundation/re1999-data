@@ -75,7 +75,7 @@
     "name": "第三扇门",
     "type": 1,
     "listenerParam": "Explore",
-    "jumpId": 440001,
+    "jumpId": 440002,
     "picPath": "turnback_new_progress_img3_2",
     "showTxt": "参与可得"
   },

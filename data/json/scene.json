@@ -4801,7 +4801,7 @@
   {
     "id": 38401,
     "name": "海面",
-    "nameen": "On the Sea",
+    "nameen": "At Sea",
     "levels": [
       38401
     ]
@@ -4817,7 +4817,7 @@
   {
     "id": 38601,
     "name": "火山口",
-    "nameen": "The Volcanic Vent",
+    "nameen": "Volcanic Vent",
     "levels": [
       38601
     ]
@@ -4833,7 +4833,7 @@
   {
     "id": 38801,
     "name": "海面",
-    "nameen": "On the Sea",
+    "nameen": "At Sea",
     "levels": [
       38801
     ]

@@ -277,8 +277,16 @@ function JumpController:jumpToDungeonViewWithType(jumpParam)
 		table.insert(self.remainViewNames, ViewName.DungeonView)
 	else
 		if LuaUtil.tableContains(DungeonEnum.ChapterType, jumpChapterType) then
+			local advPlayJumpType
+
+			if jumpChapterType == DungeonEnum.ChapterType.AdvPlay and jumpArray[3] then
+				DungeonModel.instance:setAdvPlayJumpType(jumpArray[3])
+
+				advPlayJumpType = jumpArray[3]
+			end
+
 			DungeonModel.instance:changeCategory(jumpChapterType)
-			DungeonController.instance:enterDungeonView()
+			DungeonController.instance:enterDungeonView(nil, nil, advPlayJumpType)
 
 			return JumpEnum.JumpResult.Success
 		end
