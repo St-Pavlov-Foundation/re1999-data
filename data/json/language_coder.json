@@ -10006,5 +10006,21 @@
   {
     "id": "p_v3a9_bossrushleveldetail_txt_Go_2",
     "lang": "<size=44>重</size>新调<size=44>查</size>"
+  },
+  {
+    "id": "p_v3a9_bossrushleveldetail_txt_comfirm_reset_1",
+    "lang": "完全重置"
+  },
+  {
+    "id": "p_v3a9_bossrushleveldetail_txt_comfirm_reset_2",
+    "lang": "重置"
+  },
+  {
+    "id": "p_v3a9_bossrushleveldetail_txt_comfirm_reseten_1",
+    "lang": "RESET"
+  },
+  {
+    "id": "p_v3a9_bossrushleveldetail_txt_comfirm_resetten_2",
+    "lang": "RESET"
   }
 ]

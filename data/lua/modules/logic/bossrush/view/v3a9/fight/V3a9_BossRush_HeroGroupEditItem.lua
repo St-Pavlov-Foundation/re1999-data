@@ -115,7 +115,7 @@ function V3a9_BossRush_HeroGroupEditItem:onSelect(select)
 	local uid = select and self._mo and self._mo.uid or "0"
 
 	if uid ~= "0" then
-		local list = V3a9_BossRush_HeroGroupEditListModel.instance:getReplaceHeroList(uid)
+		local list = V3a9_BossRush_HeroGroupEditListModel.instance:getReplaceHeroList(self._index, uid)
 
 		V3a9_BossRushModel.instance:setEditorHeroList(list)
 	end

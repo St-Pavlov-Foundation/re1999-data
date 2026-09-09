@@ -10246,5 +10246,29 @@
     "topDay": 0,
     "topType": 0,
     "isShowTurnback": true
+  },
+  {
+    "id": 39012,
+    "name": "§音乐会",
+    "res": "v3a9_concert",
+    "prefab": 0,
+    "nameEn": "",
+    "des": "",
+    "order": 900,
+    "adjustOrder": "",
+    "isOffline": 0,
+    "onlineTime": "2026-09-10 13:00:00",
+    "offlineTime": "2026-09-13 20:00:00",
+    "showOnlineTime": "",
+    "showOfflineTime": "",
+    "relations": "",
+    "country": [],
+    "systemJumpCode": "",
+    "type": 1,
+    "isCustomLoad": 0,
+    "className": "",
+    "topDay": 0,
+    "topType": 0,
+    "isShowTurnback": false
   }
 ]

@@ -680,7 +680,7 @@ function HeroGroupModel:getCurGroupMO()
 	elseif self.heroGroupType == ModuleEnum.HeroGroupType.Odyssey then
 		return OdysseyHeroGroupModel.instance:getCurHeroGroup()
 	elseif self.heroGroupType == ModuleEnum.HeroGroupType.BossRushActMode then
-		-- block empty
+		return V3a9_BossRushModel.instance:getCurGroupMO()
 	else
 		return self:getById(self._curGroupId)
 	end

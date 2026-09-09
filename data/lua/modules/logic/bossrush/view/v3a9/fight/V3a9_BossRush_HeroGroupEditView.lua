@@ -592,6 +592,10 @@ function V3a9_BossRush_HeroGroupEditView:_updateHeroList()
 end
 
 function V3a9_BossRush_HeroGroupEditView:replaceSelectHeroDefaultEquip()
+	if not self._singleGroupMOId or self._singleGroupMOId > 4 then
+		return
+	end
+
 	if self._heroMO and self._heroMO:hasDefaultEquip() then
 		local heroGroupMo = V3a9_BossRushModel.instance:getCurGroupMO()
 		local heroGroupEquipMoList = heroGroupMo.equips

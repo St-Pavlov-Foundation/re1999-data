@@ -176,20 +176,18 @@ function V3a9_BossRushModel:getHeroGroupSnapshotType()
 end
 
 function V3a9_BossRushModel:setSelectGroupIndex(index)
-	local heroGroupSnapshotType = self:getHeroGroupSnapshotType()
-
-	HeroGroupSnapshotModel.instance:setSelectIndex(heroGroupSnapshotType, 1)
+	return
 end
 
 function V3a9_BossRushModel:getSelectGroupIndex()
-	local heroGroupSnapshotType = self:getHeroGroupSnapshotType()
+	local stage = self:getEnterActStage() or 1
 
-	return HeroGroupSnapshotModel.instance:getSelectIndex(heroGroupSnapshotType) or 1
+	return stage
 end
 
-function V3a9_BossRushModel:getCurGroupMO()
+function V3a9_BossRushModel:getCurGroupMO(stage)
 	local heroGroupSnapshotType = self:getHeroGroupSnapshotType()
-	local groupIndex = 1
+	local groupIndex = stage or self:getSelectGroupIndex()
 	local heroGroupMO = HeroGroupSnapshotModel.instance:getHeroGroupInfo(heroGroupSnapshotType, groupIndex)
 
 	if not heroGroupMO then
@@ -227,7 +225,7 @@ function V3a9_BossRushModel:refreshShowHeroEquips(stage)
 end
 
 function V3a9_BossRushModel:refreshShowEquips(stage)
-	local heroGroupMO = self:getCurGroupMO()
+	local heroGroupMO = self:getCurGroupMO(stage)
 	local equips = heroGroupMO.equips
 
 	for i = 0, #equips do
@@ -251,15 +249,17 @@ function V3a9_BossRushModel:modifyHeroGroup(stage, uid, index)
 	self:_saveTeamHero()
 end
 
-function V3a9_BossRushModel:quickModifyHeroGroup(stage, list)
+function V3a9_BossRushModel:quickModifyHeroGroup(stage, list, callback, callbackObj)
 	self._heroUIds[stage] = {}
 
-	for i, uid in pairs(list) do
-		self._heroUIds[stage][i] = uid
+	if list then
+		for i, uid in pairs(list) do
+			self._heroUIds[stage][i] = uid
+		end
 	end
 
 	V3a9_BossRushExpandBondModel.instance:refreshExpandBondGroup(stage)
-	self:_saveTeamHero()
+	self:_saveTeamHero(callback, callbackObj)
 end
 
 function V3a9_BossRushModel:replaceFrontHeroGroup(heroUids, equiplist)
@@ -289,6 +289,7 @@ function V3a9_BossRushModel:replaceFrontHeroGroup(heroUids, equiplist)
 	V3a9_BossRushExpandBondModel.instance:refreshExpandBondGroup(stage)
 	self:quickModifyHeroEquip(stage, heroUids, equiplist)
 	self:_saveTeamHero()
+	V3a9_BossRushExpandBondModel.instance:refreshAddBondGroupId()
 end
 
 function V3a9_BossRushModel:quickModifyHeroEquip(stage, heroUids, equiplist)
@@ -732,6 +733,7 @@ end
 
 function V3a9_BossRushModel:clearAssistMo()
 	local stage, actId = V3a9_BossRushModel.instance:getEnterActStage()
+	local heroGroupMO = self:getCurGroupMO()
 
 	if self._edtiorAssistMo then
 		local editorList = self:getEditorHeroList()
@@ -753,9 +755,19 @@ function V3a9_BossRushModel:clearAssistMo()
 		local uids = self:getHeroUIds(stage)
 
 		if uids then
-			for i, uid in ipairs(uids) do
+			for i, uid in pairs(uids) do
 				if self._edtiorAssistMo.heroUid == uid then
 					uids[i] = "0"
+
+					break
+				end
+			end
+		end
+
+		if heroGroupMO.heroList then
+			for i, uid in pairs(heroGroupMO.heroList) do
+				if self._edtiorAssistMo.heroUid == uid then
+					heroGroupMO.heroList[i] = "0"
 
 					break
 				end
@@ -766,6 +778,8 @@ function V3a9_BossRushModel:clearAssistMo()
 	BossRushRpc.instance:sendSetAct128TeamRequest(actId, stage)
 
 	self._edtiorAssistMo = nil
+
+	V3a9_BossRushController.instance:saveCurGroupData(heroGroupMO)
 end
 
 function V3a9_BossRushModel:refreshEdtiorAssistMo()
@@ -909,6 +923,14 @@ function V3a9_BossRushModel:getHeightScoreEffect(score)
 	end
 
 	return 0
+end
+
+function V3a9_BossRushModel:saveCurGroupData()
+	local heroGroupMO = self:getCurGroupMO()
+
+	V3a9_BossRushController.instance:saveCurGroupData(heroGroupMO, function()
+		V3a9_BossRushController.instance:dispatchEvent(V3a9_BossRushEvent.OnModifyHeroGroup)
+	end, self)
 end
 
 V3a9_BossRushModel.instance = V3a9_BossRushModel.New()

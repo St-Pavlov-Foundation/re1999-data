@@ -38,6 +38,8 @@ function V3a9_BossRush_ActMainItem:addEventListeners()
 	if self._btnLocked then
 		self._btnLocked:AddClickListener(self._btnLockedOnClick, self)
 	end
+
+	self:addEventCb(V3a9_BossRushController.instance, V3a9_BossRushEvent.onRefreshV3a9ModeTeamInfo, self.refreshHero, self)
 end
 
 function V3a9_BossRush_ActMainItem:removeEventListeners()
@@ -46,6 +48,8 @@ function V3a9_BossRush_ActMainItem:removeEventListeners()
 	if self._btnLocked then
 		self._btnLocked:RemoveClickListener()
 	end
+
+	self:removeEventCb(V3a9_BossRushController.instance, V3a9_BossRushEvent.onRefreshV3a9ModeTeamInfo, self.refreshHero, self)
 end
 
 function V3a9_BossRush_ActMainItem:_btnItemBGOnClick()

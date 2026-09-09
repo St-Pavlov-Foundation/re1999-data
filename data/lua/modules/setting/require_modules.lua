@@ -8597,6 +8597,8 @@ setNeedLoadModule("modules.logic.bossrush.view.v3a9.V3a9_BossRush_MainSwitchMode
 setNeedLoadModule("modules.logic.bossrush.view.v3a9.V3a9_BossRush_MainSwitchModeViewContainer", "V3a9_BossRush_MainSwitchModeViewContainer")
 setNeedLoadModule("modules.logic.bossrush.view.v3a9.V3a9_BossRush_NormalEnterView", "V3a9_BossRush_NormalEnterView")
 setNeedLoadModule("modules.logic.bossrush.view.v3a9.V3a9_BossRush_NormalMainView", "V3a9_BossRush_NormalMainView")
+setNeedLoadModule("modules.logic.bossrush.view.v3a9.V3a9_BossRush_ResetView", "V3a9_BossRush_ResetView")
+setNeedLoadModule("modules.logic.bossrush.view.v3a9.V3a9_BossRush_ResetViewContainer", "V3a9_BossRush_ResetViewContainer")
 setNeedLoadModule("modules.logic.bossrush.view.v3a9.V3a9_BossRush_ResultView", "V3a9_BossRush_ResultView")
 setNeedLoadModule("modules.logic.bossrush.view.v3a9.V3a9_BossRush_ResultViewContainer", "V3a9_BossRush_ResultViewContainer")
 setNeedLoadModule("modules.logic.box.equiplvup.controller.EquipLvUpController", "EquipLvUpController")
