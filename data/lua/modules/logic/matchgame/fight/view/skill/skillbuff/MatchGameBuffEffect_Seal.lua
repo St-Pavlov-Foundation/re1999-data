@@ -17,7 +17,7 @@ function MatchGameBuffEffect_Seal:progressBuff_102(buffEffectData, targetInfoLis
 
 		for posXIndex, elementMap in pairs(selectElementMap) do
 			for posYIndex, elementItem in pairs(elementMap) do
-				if elementItem and elementItem.comp and elementItem.comp.itemType == MatchGameFightEnum.ElementItemType.Bead then
+				if elementItem and elementItem.comp and (elementItem.comp.itemType == MatchGameFightEnum.ElementItemType.Bead or elementItem.comp.itemType == MatchGameFightEnum.ElementItemType.Bomb or elementItem.comp.itemType == MatchGameFightEnum.ElementItemType.Cure) then
 					MatchGameSkillBuffHandler.instance:removeTargetBuffByEffectType(elementItem.comp, MatchGameFightEnum.BuffEffectType.Poison, self.viewContent)
 					elementItem.comp:setCurBuffType(MatchGameFightEnum.BuffType.Seal)
 					MatchGameSkillBuffHandler.instance:attachBuffToTarget(elementItem.comp, skillBuffMo)

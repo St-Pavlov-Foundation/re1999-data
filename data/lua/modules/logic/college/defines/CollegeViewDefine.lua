@@ -24,7 +24,8 @@ function CollegeViewDefine.init(module_views)
 			city_low = CollegeEnum.CityLowPrefabPath,
 			map = CollegeEnum.MapPrefabPath,
 			mapbg = CollegeEnum.MapPrefabBgPath,
-			currency = CollegeEnum.PrefabPath.Currency
+			currency = CollegeEnum.PrefabPath.Currency,
+			flyEffect = CollegeEnum.PrefabPath.FlyEffect
 		}
 	}
 	module_views.CollegeToastView = {
@@ -37,6 +38,7 @@ function CollegeViewDefine.init(module_views)
 	module_views.CollegeEnterAnimView = {
 		destroy = 0,
 		container = "CollegeEnterAnimViewContainer",
+		maskAlpha = 0,
 		mainRes = "modules/college/ui/viewres/college_entereffectview.prefab",
 		layer = "TOP",
 		viewType = ViewType.Modal,
@@ -45,6 +47,7 @@ function CollegeViewDefine.init(module_views)
 	module_views.CollegeSwitchSceneAnimView = {
 		destroy = 0,
 		container = "CollegeSwitchSceneAnimViewContainer",
+		maskAlpha = 0,
 		mainRes = "modules/college/ui/viewres/college_switcheffectview.prefab",
 		layer = "POPUP_TOP",
 		viewType = ViewType.Modal
@@ -54,8 +57,7 @@ function CollegeViewDefine.init(module_views)
 		container = "CollegeRoundEndAnimViewContainer",
 		mainRes = "modules/college/ui/viewres/college_switcheffectview_2.prefab",
 		layer = "POPUP_TOP",
-		viewType = ViewType.Modal,
-		anim = ViewAnim.Internal
+		viewType = ViewType.Modal
 	}
 	module_views.CollegeTaskView = {
 		destroy = 0,
@@ -138,18 +140,6 @@ function CollegeViewDefine.init(module_views)
 			}
 		}
 	}
-	module_views.CollegeRoleRecruitSuccView = {
-		destroy = 0,
-		container = "CollegeRoleRecruitSuccViewContainer",
-		bgBlur = 1,
-		mainRes = "modules/college/ui/viewres/college_rolerecruitsuccview.prefab",
-		layer = "POPUP_TOP",
-		viewType = ViewType.Modal,
-		otherRes = {
-			roleItem = CollegeEnum.PrefabPath.RoleItem,
-			rolePanel = CollegeEnum.PrefabPath.RolePanel
-		}
-	}
 	module_views.CollegeRoleGainView = {
 		destroy = 0,
 		container = "CollegeRoleGainViewContainer",
@@ -212,7 +202,10 @@ function CollegeViewDefine.init(module_views)
 		mainRes = "modules/college/ui/viewres/college_storyview.prefab",
 		layer = "POPUP_TOP",
 		viewType = ViewType.Modal,
-		anim = ViewAnim.Internal
+		anim = ViewAnim.Internal,
+		otherRes = {
+			CollegeEnum.MemoryMaskPath
+		}
 	}
 	module_views.CollegeStoryView2 = {
 		destroy = 0,

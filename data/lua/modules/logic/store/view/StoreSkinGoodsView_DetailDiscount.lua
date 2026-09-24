@@ -36,11 +36,11 @@ function StoreSkinGoodsView_DetailDiscount.s_createByListScrollCellExtend(Self, 
 end
 
 function StoreSkinGoodsView_DetailDiscount:_btnclickOnClick()
-	self:setActive_expand(true)
+	self:_setActive_expand(true)
 end
 
 function StoreSkinGoodsView_DetailDiscount:_btncloseOnClick()
-	self:setActive_expand(false)
+	self:_setActive_expand(false)
 end
 
 function StoreSkinGoodsView_DetailDiscount:bCostRMB()
@@ -70,7 +70,18 @@ function StoreSkinGoodsView_DetailDiscount:onClickCoin()
 end
 
 function StoreSkinGoodsView_DetailDiscount:_onSwitchPayMode()
-	if self:bEmpty() then
+	local invalidCnt = 0
+	local totCnt = 0
+
+	for _, costIndex in pairs(StoreSkinGoodsView2.CostIndex) do
+		totCnt = totCnt + 1
+
+		if self:bEmpty(costIndex) then
+			invalidCnt = invalidCnt + 1
+		end
+	end
+
+	if invalidCnt == totCnt then
 		return
 	end
 
@@ -109,7 +120,27 @@ function StoreSkinGoodsView_DetailDiscount:getValidInfoIndexList(optCostIndex)
 end
 
 function StoreSkinGoodsView_DetailDiscount:getValidInfoIndexCount(optCostIndex)
-	return #self:getValidInfoIndexList(optCostIndex)
+	optCostIndex = optCostIndex or self:curCostIndex()
+
+	local validInfoIndexList = self:getValidInfoIndexList(optCostIndex)
+	local specialofferItemIndex = self:_specialofferItemIndex(optCostIndex)
+	local cnt = #validInfoIndexList
+
+	if specialofferItemIndex then
+		local mo = self:_getItemMo(specialofferItemIndex)
+
+		if mo then
+			if optCostIndex == StoreSkinGoodsView2.CostIndex.Coin then
+				if mo.coinReduction then
+					cnt = cnt + 1
+				end
+			elseif optCostIndex == StoreSkinGoodsView2.CostIndex.RMB and mo.rmbReduction then
+				cnt = cnt + 1
+			end
+		end
+	end
+
+	return cnt
 end
 
 function StoreSkinGoodsView_DetailDiscount:bEmpty(optCostIndex)
@@ -118,8 +149,8 @@ function StoreSkinGoodsView_DetailDiscount:bEmpty(optCostIndex)
 	return #validInfoIndexList == 0 and validInfoIndexList[-1] == nil
 end
 
-function StoreSkinGoodsView_DetailDiscount:_specialofferItemIndex()
-	local validInfoIndexList = self:getValidInfoIndexList()
+function StoreSkinGoodsView_DetailDiscount:_specialofferItemIndex(optCostIndex)
+	local validInfoIndexList = self:getValidInfoIndexList(optCostIndex)
 
 	return validInfoIndexList[-1]
 end
@@ -133,6 +164,7 @@ function StoreSkinGoodsView_DetailDiscount:_editableInitView()
 	StoreSkinGoodsView_DetailDiscount.super._editableInitView(self)
 
 	self._animator = self.viewGO:GetComponent(gohelper.Type_Animator)
+	self._fold = gohelper.findChild(self.viewGO, "fold")
 	self._expand = gohelper.findChild(self.viewGO, "expand")
 	self._go_item = gohelper.findChild(self._expand, "panel/go_item")
 
@@ -145,7 +177,7 @@ function StoreSkinGoodsView_DetailDiscount:_playAnim(animName, ...)
 	self._animator:Play(animName, ...)
 end
 
-function StoreSkinGoodsView_DetailDiscount:setActive_expand(bActive)
+function StoreSkinGoodsView_DetailDiscount:_setActive_expand(bActive)
 	self:_playAnim(bActive and "open_expand" or "open_fold", 0, 0)
 	gohelper.setActive(self._expand, bActive)
 end
@@ -180,7 +212,6 @@ end
 function StoreSkinGoodsView_DetailDiscount:setData(mo)
 	StoreSkinGoodsView_DetailDiscount.super.setData(self, mo)
 	self:_internal_setData(mo)
-	self:setActive(not self:bEmpty())
 	self:_resetToSetData()
 
 	return self
@@ -262,6 +293,14 @@ function StoreSkinGoodsView_DetailDiscount:_resetToSetData()
 	self:_refreshItemList()
 	self:_setSelectAll(true, true)
 	self:_onDiscountValueChanged()
+
+	local bActive = not self:bEmpty()
+
+	gohelper.setActive(self._fold, bActive)
+
+	if not bActive then
+		self:_setActive_expand(false)
+	end
 end
 
 function StoreSkinGoodsView_DetailDiscount:_refreshItemList()
@@ -313,7 +352,8 @@ function StoreSkinGoodsView_DetailDiscount:_refreshItemList()
 					bForceSelected = false,
 					itemType = info.itemType,
 					itemId = info.itemId,
-					coinReduction = info.reduction
+					coinReduction = info.reduction,
+					deductionItemInfoIndex = deductionItemInfoIndex
 				}
 			end
 		end
@@ -346,12 +386,17 @@ end
 function StoreSkinGoodsView_DetailDiscount:getDeductionItemIndices()
 	local list = {}
 	local validInfoIndexList = self:getValidInfoIndexList()
+	local specialofferItemIndex = validInfoIndexList[-1]
 
 	self:_foreachValidItemList(function(i, item)
-		if not item:bEmpty() and item:isSelected() then
-			local index = validInfoIndexList[i]
+		if not item:bEmpty() and item:isSelected() and specialofferItemIndex ~= i then
+			local mo = item:mo()
+			local deductionItemInfoIndex = mo.deductionItemInfoIndex
+			local index = validInfoIndexList[deductionItemInfoIndex]
 
-			table.insert(list, index)
+			if index then
+				table.insert(list, index)
+			end
 		end
 	end)
 
@@ -426,13 +471,8 @@ function StoreSkinGoodsView_DetailDiscount:_foreachValidItemList(handler)
 	for i = 1, n do
 		local item = self._itemList[i]
 
-		if item then
-			local index = validInfoIndexList[i]
-			local deductionItemInfo = deductionItemInfoList[index]
-
-			if handler(i, item, deductionItemInfo) then
-				break
-			end
+		if item and handler(i, item) then
+			break
 		end
 	end
 end
@@ -447,13 +487,27 @@ function StoreSkinGoodsView_DetailDiscount:coinsCurPriceNumeric()
 		minusNum = -priceMO.coinsReduction
 	end
 
-	local coinsCostPrice = priceMO.coinsCostPrice
+	local coinsOriPrice = priceMO.coinsCostPrice
 
-	return coinsCostPrice + minusNum
+	if priceMO.specialofferItemId then
+		coinsOriPrice = priceMO.coinsCostPrice + priceMO.specialofferReduction
+	end
+
+	return coinsOriPrice + minusNum
 end
 
 function StoreSkinGoodsView_DetailDiscount:coinsCurPrice()
 	return math.max(0, self:coinsCurPriceNumeric())
+end
+
+function StoreSkinGoodsView_DetailDiscount:_getItemMo(i)
+	local item = self._itemList[i]
+
+	if item then
+		return item:mo()
+	end
+
+	return nil
 end
 
 return StoreSkinGoodsView_DetailDiscount

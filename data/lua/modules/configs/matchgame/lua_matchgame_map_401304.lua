@@ -52,9 +52,9 @@ return {
 		},
 		{
 			posIndex = "2#2",
-			itemType = 0,
+			itemType = 1,
 			id = 9,
-			param = 1
+			param = 3
 		},
 		{
 			posIndex = "2#3",
@@ -136,9 +136,9 @@ return {
 		},
 		{
 			posIndex = "4#2",
-			itemType = 0,
+			itemType = 1,
 			id = 23,
-			param = 1
+			param = 3
 		},
 		{
 			posIndex = "4#3",
@@ -220,9 +220,9 @@ return {
 		},
 		{
 			posIndex = "6#2",
-			itemType = 0,
+			itemType = 1,
 			id = 37,
-			param = 1
+			param = 3
 		},
 		{
 			posIndex = "6#3",

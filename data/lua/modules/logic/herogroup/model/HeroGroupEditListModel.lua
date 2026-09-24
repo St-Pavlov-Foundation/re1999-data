@@ -165,6 +165,14 @@ function HeroGroupEditListModel:copyCharacterCardList(init)
 		tabletool.addValues(newMOList, deathList)
 	end
 
+	for i, heroMo in ipairs(newMOList) do
+		if self.specialHero == heroMo.uid then
+			selectIndex = i
+
+			break
+		end
+	end
+
 	self:setList(newMOList)
 
 	if init and #newMOList > 0 and selectIndex > 0 then

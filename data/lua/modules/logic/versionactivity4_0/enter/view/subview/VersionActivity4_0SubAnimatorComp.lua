@@ -51,6 +51,8 @@ function VersionActivity4_0SubAnimatorComp:playOpenAnim()
 end
 
 function VersionActivity4_0SubAnimatorComp:onPlayVideoDone()
+	TaskDispatcher.cancelTask(self._playOpen1Anim, self)
+	self:removeEventCb(VideoController.instance, VideoEvent.OnVideoStarted, self._delayPlayOpen1Anim, self)
 	self:removeEventCb(VideoController.instance, VideoEvent.OnVideoPlayFinished, self.onPlayVideoDone, self)
 	self:removeEventCb(VideoController.instance, VideoEvent.OnVideoPlayOverTime, self.onPlayVideoDone, self)
 

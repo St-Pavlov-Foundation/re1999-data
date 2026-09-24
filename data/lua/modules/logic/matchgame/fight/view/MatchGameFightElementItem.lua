@@ -71,6 +71,10 @@ function MatchGameFightElementItem:removeEventListeners()
 end
 
 function MatchGameFightElementItem:refreshUI()
+	if gohelper.isNil(self.go) then
+		return
+	end
+
 	for itemType, rootGO in pairs(self.itemRootMap) do
 		gohelper.setActive(rootGO, itemType == self.itemType)
 	end
@@ -105,6 +109,8 @@ function MatchGameFightElementItem:reduceBoxBrokenCount(count, isAllBroken)
 		if dropElementType == MatchGameFightEnum.ElementItemType.Empty then
 			self:playRemoveElementAnim()
 		elseif dropElementType == MatchGameFightEnum.ElementItemType.Cure or dropElementType == MatchGameFightEnum.ElementItemType.Bomb then
+			MatchGameFightModel.instance:setMatchElementNum(self.itemType, self.itemParam)
+
 			local elementId = MatchGameFightConfig.instance:getElementId(dropElementType, 0)
 
 			self:convertToOtherElement(elementId)
@@ -128,12 +134,20 @@ function MatchGameFightElementItem:updatePos(posXIndex, posYIndex)
 	self.posXIndex = posXIndex
 	self.posYIndex = posYIndex
 
+	if gohelper.isNil(self.go) then
+		return
+	end
+
 	self:setAnchorPos()
 
 	self.go.name = "elementItem" .. posXIndex .. "_" .. posYIndex
 end
 
 function MatchGameFightElementItem:setAnchorPos()
+	if gohelper.isNil(self.go) then
+		return
+	end
+
 	local posX, posY = MatchGameFightModel.instance:getPlaneItemAnchorPos(self.posXIndex, self.posYIndex)
 
 	recthelper.setAnchor(self.go.transform, posX, posY)
@@ -152,6 +166,7 @@ function MatchGameFightElementItem:setLockState(state)
 		gohelper.setActive(self.goLock, true)
 		self.lockAnim:Play("open", 0, 0)
 		self.lockAnim:Update(0)
+		AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_sanxiao_seal)
 	end
 
 	self.lockState = state
@@ -174,6 +189,7 @@ function MatchGameFightElementItem:setPoisonState(state)
 		gohelper.setActive(self.goPoison, true)
 		self.poisonAnim:Play("open", 0, 0)
 		self.poisonAnim:Update(0)
+		AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_sanxiao_poison)
 	end
 
 	self.poisonState = state
@@ -228,6 +244,14 @@ function MatchGameFightElementItem:doItemAnchorPosMove(targetPosXIndex, targetPo
 	self.targetPosYIndex = targetPosYIndex
 	self.needArriveAnim = needArriveAnim
 
+	if self.isRemoving or gohelper.isNil(self.go) then
+		if self.sceneView then
+			self.sceneView:onElementMoveStepDone()
+		end
+
+		return
+	end
+
 	if self.targetPosXIndex == self.posXIndex and self.targetPosYIndex == self.posYIndex then
 		if self.sceneView then
 			self.sceneView:onElementMoveStepDone()
@@ -249,12 +273,14 @@ function MatchGameFightElementItem:doItemAnchorPosMoveFinish()
 		self.moveTweenId = nil
 	end
 
-	self:updatePos(self.targetPosXIndex, self.targetPosYIndex)
+	if not gohelper.isNil(self.go) then
+		self:updatePos(self.targetPosXIndex, self.targetPosYIndex)
 
-	if self.needArriveAnim then
-		self.needArriveAnim = nil
+		if self.needArriveAnim then
+			self.needArriveAnim = nil
 
-		self:playAnim("rebound")
+			self:playAnim("rebound")
+		end
 	end
 
 	if self.sceneView then
@@ -275,6 +301,12 @@ function MatchGameFightElementItem:convertToOtherElement(elementId)
 	self.itemType = self.elementConfig.type
 	self.itemParam = tonumber(self.elementConfig.param)
 
+	if self.itemType == MatchGameFightEnum.ElementItemType.Bomb or self.itemType == MatchGameFightEnum.ElementItemType.Cure then
+		local viewContent = self.sceneView:getViewContent()
+
+		MatchGameSkillBuffHandler.instance:removeTargetBuffByEffectType(self, MatchGameFightEnum.BuffEffectType.Poison, viewContent)
+	end
+
 	TaskDispatcher.runDelay(self.refreshUI, self, 0.167)
 end
 
@@ -291,15 +323,41 @@ function MatchGameFightElementItem:getTargetBuffMoByBuffType(buffType)
 end
 
 function MatchGameFightElementItem:playRemoveElementAnim()
+	if self.isRemoving then
+		return
+	end
+
 	MatchGameFightModel.instance:setMatchElementNum(self.itemType, self.itemParam)
 	self:doPlayRemoveElementAnim()
+	AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_xiaochu_ordinary)
 end
 
 function MatchGameFightElementItem:doPlayRemoveElementAnim()
+	if self.isRemoving then
+		return
+	end
+
 	self:setSelectState(false)
+
+	self.isRemoving = true
+
 	self:playAnim("close")
-	self.sceneView:showElementEffect(self.matchEffectType, self.posXIndex, self.posYIndex)
+
+	if self:checkCanShowMatchEffect() then
+		self.sceneView:showElementEffect(self.matchEffectType, self.posXIndex, self.posYIndex)
+	end
+
 	TaskDispatcher.runDelay(self.removeElementItem, self, MatchGameFightEnum.MatchTime)
+end
+
+function MatchGameFightElementItem:checkCanShowMatchEffect()
+	local heroCareerMap = MatchGameFightModel.instance:getHeroCareerMap()
+
+	if self.itemType == MatchGameFightEnum.ElementItemType.Bead and (not heroCareerMap or not heroCareerMap[self.itemParam]) and self.matchEffectType == MatchGameFightEnum.ItemMatchEffect.MatchNormal then
+		return false
+	end
+
+	return true
 end
 
 function MatchGameFightElementItem:checkIsEmpty()
@@ -307,8 +365,10 @@ function MatchGameFightElementItem:checkIsEmpty()
 end
 
 function MatchGameFightElementItem:playAnim(animName)
-	self.anim:Play(animName, 0, 0)
-	self.anim:Update(0)
+	if self.anim then
+		self.anim:Play(animName, 0, 0)
+		self.anim:Update(0)
+	end
 end
 
 function MatchGameFightElementItem:setMatchEffectType(effectType)
@@ -320,6 +380,8 @@ function MatchGameFightElementItem:removeElementItem()
 end
 
 function MatchGameFightElementItem:cancelRemoveElementItem()
+	self.isRemoving = false
+
 	self:playAnim("idle")
 	TaskDispatcher.cancelTask(self.removeElementItem, self)
 end

@@ -4,20 +4,14 @@ module("modules.logic.matchgame.controller.MatchGameController", package.seeall)
 
 local MatchGameController = class("MatchGameController", BaseController)
 
-function MatchGameController:onInit()
-	return
-end
-
-function MatchGameController:onInitFinish()
-	return
-end
-
-function MatchGameController:addConstEvents()
-	return
-end
-
 function MatchGameController:reInit()
-	return
+	self:clearResultFlow()
+
+	if self._openEnterViewId then
+		MatchGameRpc.instance:removeCallbackById(self._openEnterViewId)
+
+		self._openEnterViewId = nil
+	end
 end
 
 function MatchGameController:openMatchGameFightView(params)
@@ -44,6 +38,7 @@ function MatchGameController:openMatchGameFightView(params)
 	}
 
 	ViewMgr.instance:openView(ViewName.MatchGameFightView, dataParam)
+	MatchGameStatHelper.instance:enterGame(episodeId)
 end
 
 function MatchGameController:openMatchGameMemberInfoView(param)
@@ -60,19 +55,31 @@ function MatchGameController:openHeroGroupView(episodeId)
 	})
 end
 
-function MatchGameController:onEpisodeSuccess(episodeId, isSuccess, stars, score, roundCount, maxChain, roundMaxDamage)
+function MatchGameController:onEpisodeSuccess(episodeId, isSuccess, stars, score, exParam, endReason)
 	local activityId = MatchGameModel.instance:getCurActId()
+	local isFirstPass = false
+
+	if isSuccess then
+		local curStatus = MatchGameModel.instance:getEpisodeStatus(episodeId)
+
+		isFirstPass = curStatus and curStatus ~= MatchGameEnum.EpisodeStatus.Finish
+	end
 
 	MatchGameRpc.instance:sendAct244SettleEpisodeRequest(activityId, episodeId, isSuccess, stars, score, function(_, resultCode)
 		if resultCode ~= 0 then
 			return
 		end
 
-		MatchGameController.instance:openGameResultView(episodeId, isSuccess, score, roundCount, maxChain, roundMaxDamage)
+		local starNum = stars and #stars or 0
+		local roundCount = exParam and exParam.roundCount or 0
+		local maxRoundDamage = exParam and exParam.maxRoundDamage or 0
+
+		MatchGameStatHelper.instance:endGame(episodeId, isSuccess, starNum, roundCount, score, maxRoundDamage, endReason)
+		MatchGameController.instance:openGameResultView(episodeId, isSuccess, score, isFirstPass, exParam)
 	end)
 end
 
-function MatchGameController:openGameResultView(episodeId, isSuccess, score, roundCount, maxChain, roundMaxDamage)
+function MatchGameController:openGameResultView(episodeId, isSuccess, score, isFirstPass, exParam)
 	local episodeCo = lua_activity244_episode.configDict[episodeId]
 
 	if not episodeCo then
@@ -82,26 +89,53 @@ function MatchGameController:openGameResultView(episodeId, isSuccess, score, rou
 	local params = {
 		episodeId = episodeId,
 		isSuccess = isSuccess,
-		roundCount = roundCount,
-		maxChain = maxChain,
-		roundMaxDamage = roundMaxDamage,
-		score = score
+		score = score,
+		isFirstPass = isFirstPass,
+		exParam = exParam
 	}
-	local levelType = MatchGameConfig.instance:getEpisodeLevelType(episodeId)
 
-	if levelType == MatchGameEnum.LevelType.Challenge then
-		ViewMgr.instance:openView(ViewName.MatchGameChallengeResultView, params)
-	else
-		ViewMgr.instance:openView(ViewName.MatchGameResultView, params)
+	self:_buildResultFlow(episodeId, params)
+	ViewMgr.instance:closeView(ViewName.MatchGameFightView)
+end
+
+function MatchGameController:_buildResultFlow(episodeId, params)
+	self:clearResultFlow()
+
+	local levelType = MatchGameConfig.instance:getEpisodeLevelType(episodeId)
+	local resultViewName = levelType == MatchGameEnum.LevelType.Challenge and ViewName.MatchGameChallengeResultView or ViewName.MatchGameResultView
+
+	self._resultFlow = FlowSequence.New()
+
+	self._resultFlow:addWork(OpenViewAndWaitCloseWork.New(resultViewName, params))
+
+	local newCharacterList = MatchGameModel.instance.newCharacterList
+
+	if newCharacterList and #newCharacterList > 0 then
+		local copyNewList = {}
+
+		tabletool.addValues(copyNewList, newCharacterList)
+
+		MatchGameModel.instance.newCharacterList = {}
+
+		self._resultFlow:addWork(OpenViewAndWaitCloseWork.New(ViewName.MatchGameCharacterGainView, {
+			characterIdList = copyNewList
+		}))
 	end
 
-	ViewMgr.instance:closeView(ViewName.MatchGameFightView)
+	self._resultFlow:start()
+end
+
+function MatchGameController:clearResultFlow()
+	if self._resultFlow then
+		self._resultFlow:destroy()
+
+		self._resultFlow = nil
+	end
 end
 
 function MatchGameController:onGameFinished(episodeId, isSuccess)
 	ViewMgr.instance:closeView(ViewName.MatchGameResultView)
 	ViewMgr.instance:closeView(ViewName.MatchGameChallengeResultView)
-	self:dispatchEvent(MatchGameEvent.OnBackToLevel)
 
 	if isSuccess then
 		self:tryShowPassMapView(episodeId)
@@ -151,14 +185,22 @@ end
 
 function MatchGameController:openCharacterView(selectTabId)
 	ViewMgr.instance:openView(ViewName.MatchGameCharacterView, {
-		selectTabId = selectTabId
+		defaultTabIds = {
+			[MatchGameCharacterViewContainer.ContainerTabId] = selectTabId
+		}
 	})
 end
 
 function MatchGameController:openEnterView(actId)
-	MatchGameRpc.instance:sendGetAct244InfoRequest(actId, function()
-		ViewMgr.instance:openView(ViewName.MatchGameEnterView)
-	end)
+	self._openEnterViewId = MatchGameRpc.instance:sendGetAct244InfoRequest(actId, self._openEnterViewCallback, self)
+end
+
+function MatchGameController:_openEnterViewCallback(_, resultCode)
+	if resultCode ~= 0 then
+		return
+	end
+
+	ViewMgr.instance:openView(ViewName.MatchGameEnterView)
 end
 
 function MatchGameController:openItemTipView(itemId)
@@ -187,41 +229,17 @@ function MatchGameController:openRewardView(rewardType, param)
 	end
 end
 
-function MatchGameController:initCharacterRedDot()
-	local characterList = MatchGameConfig.instance:getNotTrialCharacterList()
+function MatchGameController:openCareerTipView(screenPos)
+	ViewMgr.instance:openView(ViewName.MatchGameCareerTipView, {
+		screenPos = screenPos
+	})
+end
 
-	if not characterList then
-		return
-	end
-
-	local redDotList = {}
-
-	for _, characterCo in ipairs(characterList) do
-		local characterId = characterCo.characterId
-		local status = MatchGameModel.instance:getCharacterStatus(characterId)
-		local value = 0
-
-		if status == MatchGameEnum.CharacterStatus.Unlock then
-			local unlockCost = MatchGameConfig.instance:getCharacterLevelUpCost(characterId, 0)
-			local isItemEnough = MatchGameModel.instance:isItemEnough(unlockCost)
-
-			if isItemEnough then
-				local key = string.format("%s#%s", PlayerPrefsKey.MatchGameReadCharacterId, characterId)
-
-				if GameUtil.playerPrefsGetNumberByUserId(key, 0) == 0 then
-					value = 1
-				end
-			end
-		end
-
-		table.insert(redDotList, {
-			id = RedDotEnum.DotNode.MatchGameCharacterUnlock,
-			uid = characterId,
-			value = value
-		})
-	end
-
-	RedDotRpc.instance:clientAddRedDotGroupList(redDotList)
+function MatchGameController:openTalentTipView(talentIdList, screenPos)
+	ViewMgr.instance:openView(ViewName.MatchGameTalentTipView, {
+		talentIdList = talentIdList,
+		screenPos = screenPos
+	})
 end
 
 function MatchGameController:initTalentRedDot()
@@ -316,28 +334,6 @@ function MatchGameController:onClickTalentBranchTab(branchId)
 	}
 
 	table.insert(redDotList, branchRedDot)
-	RedDotRpc.instance:clientAddRedDotGroupList(redDotList)
-end
-
-function MatchGameController:onEnterDevelopView()
-	local redDotList = {}
-	local characterList = MatchGameConfig.instance:getNotTrialCharacterList()
-
-	for _, characterCo in ipairs(characterList) do
-		local characterId = characterCo.characterId
-
-		if RedDotModel.instance:isDotShow(RedDotEnum.DotNode.MatchGameCharacterUnlock, characterId) then
-			local key = string.format("%s#%s", PlayerPrefsKey.MatchGameReadCharacterId, characterId)
-
-			GameUtil.playerPrefsSetNumberByUserId(key, 1)
-			table.insert(redDotList, {
-				value = 0,
-				id = RedDotEnum.DotNode.MatchGameCharacterUnlock,
-				uid = characterId
-			})
-		end
-	end
-
 	RedDotRpc.instance:clientAddRedDotGroupList(redDotList)
 end
 

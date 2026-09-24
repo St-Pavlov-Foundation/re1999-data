@@ -4,11 +4,13 @@ module("modules.logic.settings.view.SettingsDelUnusedResListItem", package.seeal
 
 local SettingsDelUnusedResListItem = class("SettingsDelUnusedResListItem", ListScrollCellExtend)
 
-function SettingsDelUnusedResListItem:onInitView()
+function SettingsDelUnusedResListItem:initGO(go)
+	self.viewGO = go
 	self._txtname1 = gohelper.findChildText(self.viewGO, "#go_selected/#txt_name")
 	self._txtname2 = gohelper.findChildText(self.viewGO, "#go_unselected/#txt_name")
 	self._txtsize1 = gohelper.findChildText(self.viewGO, "#go_selected/#txt_size")
 	self._txtsize2 = gohelper.findChildText(self.viewGO, "#go_unselected/#txt_size")
+	self._txttips1 = gohelper.findChildText(self.viewGO, "#txt_descr")
 	self._goselected = gohelper.findChild(self.viewGO, "#go_selected")
 	self._gounselected = gohelper.findChild(self.viewGO, "#go_unselected")
 
@@ -28,18 +30,12 @@ end
 function SettingsDelUnusedResListItem:_editableInitView()
 	self._gotogclick = gohelper.findChild(self.viewGO, "#go_togclick")
 	self._btn = gohelper.getClickWithAudio(self._gotogclick)
-end
 
-function SettingsDelUnusedResListItem:_editableAddEvents()
 	self._btn:AddClickListener(self._onClick, self)
 end
 
-function SettingsDelUnusedResListItem:_editableRemoveEvents()
-	self._btn:RemoveClickListener()
-end
-
 function SettingsDelUnusedResListItem:_onClick()
-	self._view:selectCell(self._index, true)
+	SettingsVoicePackageController.instance:dispatchEvent(SettingsEvent.OnChangeSelecetDelUnusedRes, self._mo.type)
 end
 
 function SettingsDelUnusedResListItem:onUpdateMO(mo)
@@ -48,19 +44,16 @@ function SettingsDelUnusedResListItem:onUpdateMO(mo)
 	self._txtname2.text = mo.txt
 	self._txtsize1.text = mo.sizeStr
 	self._txtsize2.text = mo.sizeStr
+	self._txttips1.text = mo.tips
 end
 
 function SettingsDelUnusedResListItem:onSelect(isSelect)
 	gohelper.setActive(self._goselected, isSelect)
 	gohelper.setActive(self._gounselected, isSelect == false)
-
-	if isSelect then
-		SettingsVoicePackageController.instance:dispatchEvent(SettingsEvent.OnChangeSelecetDelUnusedRes, self._mo.type)
-	end
 end
 
-function SettingsDelUnusedResListItem:onDestroyView()
-	return
+function SettingsDelUnusedResListItem:onClose()
+	self._btn:RemoveClickListener()
 end
 
 return SettingsDelUnusedResListItem

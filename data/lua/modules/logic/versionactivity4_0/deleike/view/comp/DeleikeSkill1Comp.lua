@@ -18,11 +18,14 @@ function DeleikeSkill1Comp:init(go)
 		self.childItems[v] = item
 	end
 
-	self:setLineStatus(DeleikeEnum.LineStatus.CanCut)
+	self.goLight = gohelper.findChild(go, "light")
+	self._releaseLightActive = false
+	self.status = nil
 end
 
 function DeleikeSkill1Comp:onDestroy()
 	TaskDispatcher.cancelTask(self.delayHide, self)
+	TaskDispatcher.cancelTask(self._hideReleaseLight, self)
 end
 
 function DeleikeSkill1Comp:setLineStatus(status)
@@ -30,15 +33,15 @@ function DeleikeSkill1Comp:setLineStatus(status)
 		return
 	end
 
-	self.status = status
-
 	for k, item in pairs(self.childItems) do
 		gohelper.setActive(item.go, k == status)
-
-		if k == status then
-			item.anim:Play("switch_in", 0, 0)
-		end
 	end
+
+	if self.status then
+		self.childItems[status].anim:Play("switch_in", 0, 0)
+	end
+
+	self.status = status
 end
 
 function DeleikeSkill1Comp:onTrigger(leftQuad, rightQuad, centerX, centerY, dirX, dirY, length)
@@ -116,19 +119,66 @@ function DeleikeSkill1Comp:fadeIn()
 	TaskDispatcher.cancelTask(self.delayHide, self)
 	gohelper.setActive(self.go, true)
 
+	if not self.status then
+		return
+	end
+
 	local item = self.childItems[self.status]
 
-	item.anim:Play("open", 0, 0)
+	if item and item.go.activeInHierarchy then
+		item.anim:Play("open", 0, 0)
+	end
 end
 
 function DeleikeSkill1Comp:fadeOut()
-	local item = self.childItems[self.status]
+	if self.status then
+		local item = self.childItems[self.status]
 
-	item.anim:Play("close", 0, 0)
-	TaskDispatcher.runDelay(self.delayHide, self, 0.16)
+		if item and item.go.activeInHierarchy then
+			item.anim:Play("close", 0, 0)
+			TaskDispatcher.runDelay(self.delayHide, self, 0.16)
+		else
+			self:delayHide()
+		end
+	else
+		self:delayHide()
+	end
 end
 
 function DeleikeSkill1Comp:delayHide()
+	gohelper.setActive(self.go, false)
+end
+
+function DeleikeSkill1Comp:isReleaseVisualActive()
+	return self._releaseLightActive
+end
+
+function DeleikeSkill1Comp:showReleaseLight()
+	TaskDispatcher.cancelTask(self._hideReleaseLight, self)
+
+	self._releaseLightActive = true
+
+	gohelper.setActive(self.goLight, true)
+
+	local showGo = self.childItems[DeleikeEnum.LineStatus.CanCut].go
+
+	gohelper.setActive(showGo, false)
+	TaskDispatcher.runDelay(self._hideReleaseLight, self, 1)
+end
+
+function DeleikeSkill1Comp:_hideReleaseLight()
+	self._releaseLightActive = false
+
+	gohelper.setActive(self.goLight, false)
+	gohelper.setActive(self.go, false)
+end
+
+function DeleikeSkill1Comp:cancelReleaseVisual()
+	TaskDispatcher.cancelTask(self._hideReleaseLight, self)
+
+	self._releaseLightActive = false
+
+	gohelper.setActive(self.goLight, false)
 	gohelper.setActive(self.go, false)
 end
 

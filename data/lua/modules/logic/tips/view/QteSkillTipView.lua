@@ -60,8 +60,17 @@ function QteSkillTipView:_showTip(isShow)
 	gohelper.setActive(self._goTip, isShow)
 end
 
+local TipOffset1 = Vector2(270, 170)
+
 function QteSkillTipView:_editableInitView()
-	self._txtTip.text = lua_fight_qte_const.configDict[6].value2
+	local tip = lua_fight_qte_const.configDict[6].value2
+
+	self._tipDesc = MonoHelper.addNoUpdateLuaComOnceToGo(self._txtTip.gameObject, SkillDescComp)
+
+	self._tipDesc:setNumberColor("#C66030")
+	self._tipDesc:setLinkColor("#4e6698")
+	self._tipDesc:setTipParam(0, TipOffset1)
+	self._tipDesc:updateInfo(self._txtTip, tip)
 end
 
 function QteSkillTipView:onClickModalMask()

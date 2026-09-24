@@ -56,8 +56,6 @@ function CollegeChessRouteItem:updateData(all, pool, index, min, max, moveStateC
 	self._index = index
 	self._min = min
 	self._max = max
-	self._moveStateChangeCallback = moveStateChangeCallback
-	self._moveStateChangeCallobj = moveStateChangeCallobj
 	self._isMove = false
 
 	self:beginMove()
@@ -142,10 +140,6 @@ end
 function CollegeChessRouteItem:setIsMove(isMove)
 	if isMove ~= self._isMove then
 		self._isMove = isMove
-
-		if self._moveStateChangeCallback then
-			self._moveStateChangeCallback(self._moveStateChangeCallobj, self._isMove)
-		end
 	end
 end
 

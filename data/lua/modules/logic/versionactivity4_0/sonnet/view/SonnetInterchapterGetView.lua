@@ -100,6 +100,10 @@ function SonnetInterchapterGetView:_showWordsView()
 
 		txt.text = v.words
 
+		local txt2 = gohelper.findChildText(go, "selected/txt")
+
+		txt2.text = v.words
+
 		local unselectGO = gohelper.findChild(go, "unselect")
 		local selectedGO = gohelper.findChild(go, "selected")
 

@@ -135,7 +135,7 @@ end
 
 function AutoChessHelper.getLeaderSkillEffect(skillId)
 	local skillCo = AutoChessConfig.instance:getLeaderSkillCfg(skillId)
-	local skillIndex = skillCo and skillCo.index
+	local skillIndex = skillCo and skillCo.skillIndex
 
 	if skillIndex == 3 then
 		return string.split(skillCo.abilities, "#")

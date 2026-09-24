@@ -4,51 +4,51 @@ return {
 	elementConfig = {
 		{
 			posIndex = "1#1",
-			itemType = 0,
+			itemType = 1,
 			id = 1,
-			param = 1
+			param = 3
 		},
 		{
 			posIndex = "1#2",
-			itemType = 0,
+			itemType = 1,
 			id = 2,
-			param = 1
+			param = 3
 		},
 		{
 			posIndex = "1#3",
-			itemType = 0,
+			itemType = 1,
 			id = 3,
-			param = 1
+			param = 3
 		},
 		{
 			posIndex = "1#4",
-			itemType = 0,
+			itemType = 1,
 			id = 4,
-			param = 1
+			param = 3
 		},
 		{
 			posIndex = "1#5",
-			itemType = 0,
+			itemType = 1,
 			id = 5,
-			param = 1
+			param = 3
 		},
 		{
 			posIndex = "1#6",
-			itemType = 0,
+			itemType = 1,
 			id = 6,
-			param = 1
+			param = 3
 		},
 		{
 			posIndex = "1#7",
-			itemType = 0,
+			itemType = 1,
 			id = 7,
-			param = 1
+			param = 3
 		},
 		{
 			posIndex = "2#1",
-			itemType = 0,
+			itemType = 1,
 			id = 8,
-			param = 1
+			param = 3
 		},
 		{
 			posIndex = "2#2",
@@ -82,15 +82,15 @@ return {
 		},
 		{
 			posIndex = "2#7",
-			itemType = 0,
+			itemType = 1,
 			id = 14,
-			param = 1
+			param = 3
 		},
 		{
 			posIndex = "3#1",
-			itemType = 0,
+			itemType = 1,
 			id = 15,
-			param = 1
+			param = 3
 		},
 		{
 			posIndex = "3#2",
@@ -124,15 +124,15 @@ return {
 		},
 		{
 			posIndex = "3#7",
-			itemType = 0,
+			itemType = 1,
 			id = 21,
-			param = 1
+			param = 3
 		},
 		{
 			posIndex = "4#1",
-			itemType = 0,
+			itemType = 1,
 			id = 22,
-			param = 1
+			param = 3
 		},
 		{
 			posIndex = "4#2",
@@ -150,7 +150,7 @@ return {
 			posIndex = "4#4",
 			itemType = 0,
 			id = 25,
-			param = 1
+			param = 0
 		},
 		{
 			posIndex = "4#5",
@@ -166,15 +166,15 @@ return {
 		},
 		{
 			posIndex = "4#7",
-			itemType = 0,
+			itemType = 1,
 			id = 28,
-			param = 1
+			param = 4
 		},
 		{
 			posIndex = "5#1",
-			itemType = 0,
+			itemType = 1,
 			id = 29,
-			param = 1
+			param = 4
 		},
 		{
 			posIndex = "5#2",
@@ -208,15 +208,15 @@ return {
 		},
 		{
 			posIndex = "5#7",
-			itemType = 0,
+			itemType = 1,
 			id = 35,
-			param = 1
+			param = 4
 		},
 		{
 			posIndex = "6#1",
-			itemType = 0,
+			itemType = 1,
 			id = 36,
-			param = 1
+			param = 4
 		},
 		{
 			posIndex = "6#2",
@@ -250,51 +250,51 @@ return {
 		},
 		{
 			posIndex = "6#7",
-			itemType = 0,
+			itemType = 1,
 			id = 42,
-			param = 1
+			param = 4
 		},
 		{
 			posIndex = "7#1",
-			itemType = 0,
+			itemType = 1,
 			id = 43,
-			param = 1
+			param = 4
 		},
 		{
 			posIndex = "7#2",
-			itemType = 0,
+			itemType = 1,
 			id = 44,
-			param = 1
+			param = 4
 		},
 		{
 			posIndex = "7#3",
-			itemType = 0,
+			itemType = 1,
 			id = 45,
-			param = 1
+			param = 4
 		},
 		{
 			posIndex = "7#4",
-			itemType = 0,
+			itemType = 1,
 			id = 46,
-			param = 1
+			param = 4
 		},
 		{
 			posIndex = "7#5",
-			itemType = 0,
+			itemType = 1,
 			id = 47,
-			param = 1
+			param = 4
 		},
 		{
 			posIndex = "7#6",
-			itemType = 0,
+			itemType = 1,
 			id = 48,
-			param = 1
+			param = 4
 		},
 		{
 			posIndex = "7#7",
-			itemType = 0,
+			itemType = 1,
 			id = 49,
-			param = 1
+			param = 4
 		}
 	}
 }

@@ -1,30 +1,26 @@
 [
   {
     "id": 100002,
-    "groupTitle": "沉思者",
-    "uiPlayerParam": "",
-    "isMask": 0,
-    "rule": 0
+    "groupTitle": "沉思者"
   },
   {
     "id": 100003,
-    "groupTitle": "一千零一夜",
-    "uiPlayerParam": "",
-    "isMask": 0,
-    "rule": 0
+    "groupTitle": "一千零一夜"
   },
   {
     "id": 100004,
-    "groupTitle": "八部半",
-    "uiPlayerParam": "",
-    "isMask": 0,
-    "rule": 0
+    "groupTitle": "八部半"
   },
   {
     "id": 100005,
-    "groupTitle": "三个火枪手",
-    "uiPlayerParam": "",
-    "isMask": 0,
-    "rule": 0
+    "groupTitle": "三个火枪手Ⅰ"
+  },
+  {
+    "id": 100006,
+    "groupTitle": "三个火枪手Ⅱ"
+  },
+  {
+    "id": 100007,
+    "groupTitle": "三个火枪手Ⅲ"
   }
 ]

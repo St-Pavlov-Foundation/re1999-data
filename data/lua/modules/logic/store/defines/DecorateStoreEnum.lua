@@ -39,5 +39,6 @@ DecorateStoreEnum.DiscountItemActId = {
 	[V3a4GiftRecommendEnum.OffItemId] = ActivityEnum.Activity.V3a4_GiftRecommend
 }
 DecorateStoreEnum.DefaultViewShowTime = 1
+DecorateStoreEnum.V4a0SpiritualFluid = 780001
 
 return DecorateStoreEnum

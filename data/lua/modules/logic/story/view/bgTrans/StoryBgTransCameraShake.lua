@@ -25,14 +25,12 @@ function StoryBgTransCameraShake:init(transType)
 end
 
 function StoryBgTransCameraShake:start(callback, callbackObj)
-	if self._bgCo.effDegree == 0 then
-		return
-	end
+	StoryBgTransCameraShake.super.start(self)
 
-	StoryBgTransCameraShake.super.start(self, callback, callbackObj)
-end
+	self._finishedCallback = callback
+	self._finishedCallbackObj = callbackObj
 
-function StoryBgTransCameraShake:onStartEffect()
+	self:loadRes()
 	GameUtil.setActiveUIBlock("bgTrans", true, false)
 end
 

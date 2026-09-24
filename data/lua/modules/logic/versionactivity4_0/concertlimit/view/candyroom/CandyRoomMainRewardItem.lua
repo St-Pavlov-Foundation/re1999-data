@@ -67,7 +67,7 @@ function CandyRoomMainRewardItem:hideNameAndTip(hide)
 	gohelper.setActive(self._simagespname.gameObject, not self._hideTip)
 end
 
-function CandyRoomMainRewardItem:_showSummonRewardAnim(rewardId)
+function CandyRoomMainRewardItem:_showSummonRewardAnim(rewardId, summonType)
 	if rewardId ~= self._rewardId then
 		return
 	end
@@ -77,8 +77,11 @@ function CandyRoomMainRewardItem:_showSummonRewardAnim(rewardId)
 	else
 		self._norAnim:Play("get", 0, 0)
 
-		local hasGetCount = CandyRoomModel.instance:getSummonedCountByRewardId(self._rewardId)
-		local getCount = hasGetCount - 1
+		local getCount = self._getCount or 0
+
+		if summonType and summonType ~= CandyRoomEnum.SummonType.Single then
+			getCount = getCount + 1
+		end
 
 		gohelper.setActive(self._gonormainremainnum, not self._hideTip and self._rewardCo.availableTime > 1 and getCount < self._rewardCo.availableTime)
 
@@ -152,7 +155,9 @@ function CandyRoomMainRewardItem:_refreshSp()
 	gohelper.setActive(self._gosphasget, hasGet and not showUse)
 
 	if self._hasInit and hasGet and not showUse and not self._gosphasget.activeSelf then
-		self._spgetAnim:Play("go_hasget_in", 0, 0)
+		self._spgetAnim:Play("open", 0, 0)
+	else
+		self._spgetAnim:Play("idle", 0, 0)
 	end
 end
 
@@ -193,7 +198,7 @@ function CandyRoomMainRewardItem:_refreshNorMain()
 	gohelper.setActive(self._gonormainhasget, self._getCount >= self._rewardCo.availableTime)
 
 	if self._getCount >= self._rewardCo.availableTime and not self._gonormainhasget.activeSelf then
-		local animName = self._hasInit and "go_hasget_in" or "go_hasget_idle"
+		local animName = self._hasInit and "open" or "idle"
 
 		self._norgetAnim:Play(animName, 0, 0)
 	end

@@ -31,6 +31,14 @@ function MatchGameMapLevelItem:removeEventListeners()
 end
 
 function MatchGameMapLevelItem:_btnClickOnClick()
+	local curSelectId = MatchGameLevelModel.instance:getCurEpisodeId()
+
+	if curSelectId == self._episodeId then
+		return
+	end
+
+	MatchGameStatHelper.instance:statEpisodeClick(ViewName.MatchGameMapView, MatchGameEnum.StatClickType.ClickEpisode, self._episodeId)
+
 	local isUnlock = MatchGameLevelModel.instance:isEpisodeUnlock(self._episodeId)
 
 	if not isUnlock then
@@ -138,10 +146,6 @@ function MatchGameMapLevelItem:playUnlock()
 
 	self._anim:Play("unlock", 0, 0)
 	AudioMgr.instance:trigger(MatchGameAudioEnum.UnlockEpisode)
-end
-
-function MatchGameMapLevelItem:playStarAnim()
-	self:refreshStar()
 end
 
 function MatchGameMapLevelItem:_onClickSelectEpisode()

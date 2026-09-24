@@ -1651,7 +1651,12 @@ function MaterialTipView:_refreshInclude()
 					itemIcon:isShowCount(false)
 
 					if subType == ItemEnum.SubType.NewDestinyStoneUp then
-						itemIcon:customOnClickCallback(self._onNewDestinyPreveiew, self, id)
+						local data = {}
+
+						data.id = id
+						data.itemId = self._config.id
+
+						itemIcon:customOnClickCallback(self._onNewDestinyPreveiew, self, data)
 					end
 				elseif type == MaterialEnum.MaterialType.HeroSkin then
 					itemIcon = IconMgr.instance:getCommonItemIcon(self._goincludeContent)
@@ -1684,8 +1689,9 @@ function MaterialTipView:_refreshInclude()
 	end
 end
 
-function MaterialTipView:_onNewDestinyPreveiew(heroId)
-	local itemId = DestinyStoneGiftPickChoiceEnum.V3a8ItemId
+function MaterialTipView:_onNewDestinyPreveiew(data)
+	local heroId = data.id
+	local itemId = data.itemId or DestinyStoneGiftPickChoiceEnum.V3a8ItemId
 
 	DestinyStoneGiftPickChoiceController.instance:openHeroChoicePreview(heroId, itemId)
 end

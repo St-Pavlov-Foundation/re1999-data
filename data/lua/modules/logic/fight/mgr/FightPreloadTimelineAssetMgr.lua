@@ -38,26 +38,17 @@ function FightPreloadTimelineAssetMgr:onReleasePreloadTimelineAssetByStepId(step
 		classObj:disposeSelf()
 
 		self.preLoadDict[stepId] = nil
-		self.curLoadCount = self.curLoadCount - 1
 
 		local nextIndex = classObj.listIndex + 1
 		local nextClassObj = self.preLoadList[nextIndex]
 
 		if nextClassObj then
-			nextClassObj:startLoad()
+			if nextClassObj:__isActive() then
+				nextClassObj:startLoad()
+			elseif nextClassObj.fightStepData then
+				self:onReleasePreloadTimelineAssetByStepId(nextClassObj.fightStepData.stepUid)
+			end
 		end
-	end
-end
-
-function FightPreloadTimelineAssetMgr:loadNext()
-	self.curIndex = self.curIndex + 1
-
-	local classObj = self.preLoadList[self.curIndex]
-
-	if classObj then
-		self.curLoadCount = self.curLoadCount + 1
-
-		classObj:startLoad()
 	end
 end
 

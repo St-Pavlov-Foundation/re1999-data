@@ -30,6 +30,11 @@ function MatchGameTalentNodeLineItem:refreshStatus()
 	gohelper.setActive(self.viewGO, true)
 end
 
+function MatchGameTalentNodeLineItem:playUnlockEffect()
+	gohelper.setActive(self._goActive, true)
+	gohelper.setActive(self._goUnactive, false)
+end
+
 function MatchGameTalentNodeLineItem:setPosition()
 	if not self._preTalentNodeItem or not self._curTalentNodeItem then
 		return
@@ -47,6 +52,10 @@ function MatchGameTalentNodeLineItem:setPosition()
 	local lineLengthen = math.sqrt((curTalentNodeX - preTalentNodeX)^2 + (curTalentNodeY - preTalentNodeY)^2)
 
 	recthelper.setWidth(self.transform, lineLengthen)
+end
+
+function MatchGameTalentNodeLineItem:onDestroy()
+	return
 end
 
 return MatchGameTalentNodeLineItem

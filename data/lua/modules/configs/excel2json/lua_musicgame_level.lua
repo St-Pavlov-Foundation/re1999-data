@@ -6,6 +6,7 @@ local lua_musicgame_level = {}
 local fields = {
 	score = 2,
 	strValue = 3,
+	audioId = 4,
 	level = 1
 }
 local primaryKey = {

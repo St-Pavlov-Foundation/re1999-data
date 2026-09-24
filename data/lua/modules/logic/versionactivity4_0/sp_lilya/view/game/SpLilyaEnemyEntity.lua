@@ -70,6 +70,9 @@ function SpLilyaEnemyEntity:hide()
 	self._canvasGroup.alpha = 0
 
 	TaskDispatcher.cancelTask(self._tweenBarLift, self)
+	TaskDispatcher.cancelTask(self._updateSpiritDrift, self)
+
+	self._spiritDriftSpeedX = nil
 
 	if self._gobar then
 		gohelper.setActive(self._gobar, false)
@@ -91,6 +94,8 @@ end
 
 function SpLilyaEnemyEntity:show()
 	self._canvasGroup.alpha = 1
+
+	self:_resetSpiritPos()
 
 	if self._gobar then
 		gohelper.setActive(self._gobar, true)
@@ -309,6 +314,54 @@ function SpLilyaEnemyEntity:setState(state)
 	if state == SpLilyaEnum.EnemyState.Hit and self._animatorHit then
 		self._animatorHit:Play(SpLilyaEnum.EntityAnim.BarHit, 0, 0)
 	end
+
+	if state == SpLilyaEnum.EnemyState.Enter then
+		self:_startSpiritDrift()
+	end
+end
+
+function SpLilyaEnemyEntity:_startSpiritDrift()
+	if not self._gospirit or not self.mo then
+		return
+	end
+
+	local speed = self.mo.speed or 0
+
+	if speed <= 0 then
+		return
+	end
+
+	self._spiritDriftSpeedX = SpLilyaEnum.EnemyMoveDirection.Horizontal * speed
+
+	TaskDispatcher.cancelTask(self._updateSpiritDrift, self)
+	TaskDispatcher.runDelay(self._updateSpiritDrift, self, 0)
+end
+
+function SpLilyaEnemyEntity:_updateSpiritDrift()
+	if not self._gospirit or not self._spiritDriftSpeedX then
+		return
+	end
+
+	local deltaTime = Time.deltaTime
+	local curPos = self._gospirit.transform.localPosition
+	local newX = curPos.x + self._spiritDriftSpeedX * deltaTime
+
+	transformhelper.setLocalPosXY(self._gospirit.transform, newX, curPos.y)
+
+	self._spiritDriftOffsetX = newX
+
+	self:_syncBarPos()
+	TaskDispatcher.runDelay(self._updateSpiritDrift, self, 0)
+end
+
+function SpLilyaEnemyEntity:_resetSpiritPos()
+	if not self._gospirit then
+		return
+	end
+
+	transformhelper.setLocalPosXY(self._gospirit.transform, 0, 0)
+
+	self._spiritDriftOffsetX = nil
 end
 
 function SpLilyaEnemyEntity:setBarOffset(radius)
@@ -336,7 +389,9 @@ function SpLilyaEnemyEntity:_syncBarPos()
 		return
 	end
 
-	transformhelper.setLocalPosXY(self._gobar.transform, self._curPosX or 0, (self._curPosY or 0) + self:_getBarOffsetY() + (self._barLiftOffset or 0))
+	local barX = (self._curPosX or 0) + (self._spiritDriftOffsetX or 0)
+
+	transformhelper.setLocalPosXY(self._gobar.transform, barX, (self._curPosY or 0) + self:_getBarOffsetY() + (self._barLiftOffset or 0))
 end
 
 function SpLilyaEnemyEntity:_syncAimPos()
@@ -348,7 +403,9 @@ function SpLilyaEnemyEntity:_syncAimPos()
 end
 
 function SpLilyaEnemyEntity:getBarBasePos()
-	return self._curPosX or 0, (self._curPosY or 0) + self:_getBarOffsetY()
+	local barX = (self._curPosX or 0) + (self._spiritDriftOffsetX or 0)
+
+	return barX, (self._curPosY or 0) + self:_getBarOffsetY()
 end
 
 function SpLilyaEnemyEntity:getBarHalfSize()
@@ -407,6 +464,7 @@ end
 function SpLilyaEnemyEntity:onDestroy()
 	TaskDispatcher.cancelTask(self._delayDetectHeadPos, self)
 	TaskDispatcher.cancelTask(self._tweenBarLift, self)
+	TaskDispatcher.cancelTask(self._updateSpiritDrift, self)
 
 	self._spineGO = nil
 	self._spineRes = nil
@@ -426,6 +484,8 @@ function SpLilyaEnemyEntity:onDestroy()
 	self._barLiftLevel = nil
 	self._barLiftOffset = nil
 	self._barLiftTarget = nil
+	self._spiritDriftSpeedX = nil
+	self._spiritDriftOffsetX = nil
 end
 
 return SpLilyaEnemyEntity

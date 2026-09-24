@@ -85,7 +85,7 @@ SpLilyaEnum.AimState = {
 	Aim = 1,
 	Normal = 0
 }
-SpLilyaEnum.MinHeight = -150
+SpLilyaEnum.MinHeight = -140
 SpLilyaEnum.TipCloseDelay = 2
 SpLilyaEnum.GameResult = {
 	Fail = 1,
@@ -109,6 +109,7 @@ SpLilyaEnum.DefaultGroundHeight = 200
 SpLilyaEnum.DefaultGroundPosX = SpLilyaEnum.SceneDefaultSize.width
 SpLilyaEnum.DefaultGroundPosY = SpLilyaEnum.SceneDefaultSize.height
 SpLilyaEnum.BulletBoundaryMargin = 500
+SpLilyaEnum.GroupXOffset = 100
 SpLilyaEnum.DefaultShotSpeed = 1000
 SpLilyaEnum.NormalBulletSpeed = 1800
 SpLilyaEnum.EnergyBulletSpeed = 2400
@@ -123,7 +124,7 @@ SpLilyaEnum.PlayerMoveSpeed = 300
 SpLilyaEnum.AirPlayerMoveSpeed = 420
 SpLilyaEnum.AirBackgroundScrollSpeed = 120
 SpLilyaEnum.PlayerShotPreviewDistance = 500
-SpLilyaEnum.BulletAimSampleCount = 32
+SpLilyaEnum.BulletAimSampleCount = 64
 SpLilyaEnum.BulletTrackAngularSpeed = 360
 SpLilyaEnum.BulletExplodeDelayTime = 0.5
 SpLilyaEnum.SuccessAnimatorName = {
@@ -216,6 +217,15 @@ SpLilyaEnum.BulletPress = {
 SpLilyaEnum.PowerPress = {
 	0.5,
 	1
+}
+SpLilyaEnum.JoystickSpeed = 180
+SpLilyaEnum.isHPMove = false
+SpLilyaEnum.PowerChargeDelay = 0.1
+SpLilyaEnum.ExplodeReason = {
+	OutOfBounds = "OutOfBounds",
+	CollisionHit = "CollisionHit",
+	DyingExpire = "DyingExpire",
+	GroundExplode = "GroundExplode"
 }
 
 return SpLilyaEnum

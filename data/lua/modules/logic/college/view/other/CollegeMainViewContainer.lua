@@ -17,6 +17,7 @@ function CollegeMainViewContainer:buildViews()
 		CollegeSceneBubbleView.New(),
 		CollegeCurrencyView.New("#go_righttop"),
 		CollegeChessMoveRouteView.New(),
+		CollegeStoryFlyEffectView.New(),
 		TabViewGroup.New(1, "#go_lefttop")
 	}
 end

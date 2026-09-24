@@ -28,7 +28,7 @@ end
 
 function TowerComposeResultHeroGroupHeroItem:showAssistHero(mo)
 	if mo then
-		self._heroMO = mo.heroMo
+		self._heroMO = mo
 
 		local skinConfig = FightConfig.instance:getSkinCO(self._heroMO.skin)
 

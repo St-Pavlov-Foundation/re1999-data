@@ -35,7 +35,7 @@ function FightQteView:onInitView()
 	self.goUniqueBtn = gohelper.findChild(self.goSecond, "uniqueBtn")
 	self.goUniqueClick = gohelper.findChildClick(self.goUniqueBtn, "click")
 	self.goUniquePos = gohelper.findChild(self.goUniqueBtn, "pos")
-	self.uniqueAnimatorPlayer = ZProj.ProjAnimatorPlayer.Get(self.goUniqueBtn)
+	self.uniqueAnimator = self.goUniqueBtn:GetComponent(gohelper.Type_Animator)
 
 	NavigateMgr.instance:addEscape(self.viewName, self.blockEsc)
 
@@ -112,8 +112,14 @@ function FightQteView:onBeforeSendUseSkillRpc()
 		return
 	end
 
+	local uniqueEntityMo = self:getUniqueEntityMo()
+	local animName = uniqueEntityMo and uniqueEntityMo.skin == 315503 and "click_skin1" or "click"
+
 	AudioMgr.instance:trigger(400037)
-	self.uniqueAnimatorPlayer:Play("click")
+
+	self.uniqueAnimator.speed = FightModel.instance:getSpeed()
+
+	self.uniqueAnimator:Play(animName, 0, 0)
 end
 
 function FightQteView:onClickBack()
@@ -491,12 +497,6 @@ function FightQteView:onDestroyView()
 		self.uniqueEntityItem:dispose()
 
 		self.uniqueEntityItem = nil
-	end
-
-	if self.uniqueAnimatorPlayer then
-		self.uniqueAnimatorPlayer:Stop()
-
-		self.uniqueAnimatorPlayer = nil
 	end
 
 	self:killTween()

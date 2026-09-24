@@ -97,6 +97,7 @@ function MatchGameHeroGroupEditView:_updateRefreshContext()
 		self._heroId = self._heroMo.heroId
 		self._levelCost = MatchGameConfig.instance:getCharacterLevelUpCost(self._heroId, self._level + 1)
 		self._isItemEnough = MatchGameModel.instance:isItemEnough(self._levelCost)
+		self._maxLevel = MatchGameConfig.instance:getCharacterMaxLevel(self._heroId)
 	else
 		self._heroMo = nil
 	end
@@ -140,8 +141,22 @@ function MatchGameHeroGroupEditView:_refreshAttributeItem(goAttr, attrCo, index)
 	local txtName = gohelper.findChildText(goAttr, "txt_name")
 	local imageIcon = gohelper.findChildImage(goAttr, "image_icon")
 	local attrValue = self._heroMo and self._heroMo:getTotalAttrValue(attrCo.id)
+	local changeAttrValue = 0
 
-	txtValue.text = tostring(attrValue)
+	if not self._heroMo:isTrial() and self._level < self._maxLevel then
+		local nextAttrValue = MatchGameModel.instance:getCharacterAttrValue(self._heroCo.characterId, self._level + 1, attrCo.id)
+
+		changeAttrValue = nextAttrValue - attrValue
+	end
+
+	if changeAttrValue ~= 0 then
+		local updateAbsValue = math.abs(changeAttrValue)
+		local valueSignal = changeAttrValue > 0 and "+" or "-"
+
+		txtValue.text = GameUtil.getSubPlaceholderLuaLangThreeParam(luaLang("matchgameherogroupeditview_updateattrvalue"), attrValue, valueSignal, updateAbsValue)
+	else
+		txtValue.text = tostring(attrValue)
+	end
 
 	MatchGameHelper.setCharacterAttr(attrCo.id, imageIcon, txtName)
 end
@@ -151,13 +166,11 @@ function MatchGameHeroGroupEditView:_refreshLevelUpPanel()
 		return
 	end
 
-	local maxLevel = MatchGameConfig.instance:getCharacterMaxLevel(self._heroId)
-
-	self._txtLevel.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("matchgameherogroupeditview_level"), self._level, maxLevel)
+	self._txtLevel.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("matchgameherogroupeditview_level"), self._level, self._maxLevel)
 
 	local isTrial = self._heroMo and self._heroMo:isTrial()
 
-	if isTrial or maxLevel <= self._level then
+	if isTrial or self._level >= self._maxLevel then
 		gohelper.setActive(self._btnLevelUp.gameObject, false)
 
 		return
@@ -191,6 +204,9 @@ function MatchGameHeroGroupEditView:_refreshSkillItem(goItem, skillId, index)
 	local txtDesc = gohelper.findChildText(goItem, "txt_Desc")
 	local goTagList = gohelper.findChild(goItem, "go_TagList")
 	local goTagItem = gohelper.findChild(goItem, "go_TagList/go_TagItem")
+
+	SkillHelper.addHyperLinkClick(txtDesc)
+
 	local skillCo = lua_activity244_character_skill.configDict[skillId]
 
 	txtName.text = skillCo and skillCo.name
@@ -236,8 +252,13 @@ function MatchGameHeroGroupEditView:_btnQuickEditOnClick()
 end
 
 function MatchGameHeroGroupEditView:_btnConfirmOnClick()
-	MatchGameHeroGroupController.instance:confirmEdit(self._posIndex)
-	self:closeThis()
+	local isSuccess = MatchGameHeroGroupController.instance:confirmEdit(self._posIndex)
+
+	if not isSuccess then
+		self:closeThis()
+
+		return
+	end
 end
 
 function MatchGameHeroGroupEditView:_btnCancelOnClick()
@@ -258,7 +279,7 @@ function MatchGameHeroGroupEditView:_onItemInfoUpdated(updateItemIdMap)
 end
 
 function MatchGameHeroGroupEditView:_onSaveTeamSuccess()
-	self.viewContainer:getScrollView():refreshScroll()
+	self:closeThis()
 end
 
 return MatchGameHeroGroupEditView

@@ -105,7 +105,7 @@ function UdimoController:exitUdimo()
 end
 
 function UdimoController:getUdimoInfo(cb, cbObj)
-	local lat, lon = DeviceController.instance:getDeviceLocation()
+	local lat, lon
 
 	UdimoRpc.instance:sendGetUdimoInfoRequest(lat, lon, cb, cbObj)
 end
@@ -216,9 +216,8 @@ end
 
 function UdimoController:onGetWeatherInfo(info)
 	local weatherInfo
-	local isOversea = SettingsModel.instance:isOverseas()
 
-	if isOversea then
+	do
 		local curTime = ServerTime.now()
 		local nextChangeWeatherTime = UdimoWeatherModel.instance:getOverseasNextChangeWeatherTime()
 
@@ -239,7 +238,9 @@ function UdimoController:onGetWeatherInfo(info)
 		local weatherInterval = math.random(timeArr[1], timeArr[2])
 
 		UdimoWeatherModel.instance:setOverseasNextChangeWeatherTime(curTime + weatherInterval)
-	else
+	end
+
+	if false then
 		weatherInfo = info and info.weather
 	end
 

@@ -9,7 +9,7 @@ function MusicGameController:onInit()
 end
 
 function MusicGameController:reInit()
-	return
+	self._hasGet = nil
 end
 
 function MusicGameController:onInitFinish()

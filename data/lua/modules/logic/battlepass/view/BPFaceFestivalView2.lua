@@ -78,12 +78,12 @@ function BPFaceFestivalView2:_onClickCard()
 
 		TaskDispatcher.runDelay(self._delayPlayAudio, self, 1.5)
 		self._anim:Play("tarot_click", 0, 0)
-		AudioMgr.instance:trigger(AudioEnum3_4.BP.FaceView_play_ui_pifupailian_fanye)
+		AudioMgr.instance:trigger(AudioEnum4_0.BP.play_ui_yingmen4_0_bp_show)
 	elseif self._statu == Statu.CardAnimIdle then
 		self._statu = Statu.TweenAnim
 
 		self._anim:Play("tarot_click1", 0, 0)
-		AudioMgr.instance:trigger(AudioEnum3_4.BP.FaceView_play_ui_fuleyuan_nuodika_win)
+		AudioMgr.instance:trigger(AudioEnum4_0.BP.play_ui_yingmen4_0_open)
 		TaskDispatcher.runDelay(self._delayFinishAnim, self, 1)
 	end
 end
@@ -122,7 +122,7 @@ function BPFaceFestivalView2:onOpen()
 	self._cbObj = self.viewParam and self.viewParam.cbObj
 	self._statu = Statu.Idle
 
-	AudioMgr.instance:trigger(AudioEnum3_4.BP.FaceView_play_ui_pifupailian_tan)
+	AudioMgr.instance:trigger(AudioEnum4_0.BP.play_ui_yingmen4_0_bp_open)
 
 	local co = BpConfig.instance:getBpCO(BpModel.instance.id)
 
@@ -163,7 +163,7 @@ end
 function BPFaceFestivalView2:onClose()
 	TaskDispatcher.cancelTask(self._delayFinishAnim, self)
 	TaskDispatcher.cancelTask(self._delayPlayAudio, self)
-	AudioMgr.instance:trigger(AudioEnum3_4.BP.FaceView_stop_ui_pifupailian_fanye)
+	AudioMgr.instance:trigger(AudioEnum4_0.BP.stop_ui_yingmen4_0_bp_show)
 
 	if self._nameTbList and #self._nameTbList > 0 then
 		for _, tb in ipairs(self._nameTbList) do

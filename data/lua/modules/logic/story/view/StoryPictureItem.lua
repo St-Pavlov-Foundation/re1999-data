@@ -325,6 +325,7 @@ function StoryPictureItem:_playShake()
 	local shakeTime = self._picCo.effTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()]
 
 	if shakeTime >= 0 then
+		TaskDispatcher.cancelTask(self._shakeStop, self)
 		TaskDispatcher.runDelay(self._shakeStop, self, shakeTime)
 	end
 end

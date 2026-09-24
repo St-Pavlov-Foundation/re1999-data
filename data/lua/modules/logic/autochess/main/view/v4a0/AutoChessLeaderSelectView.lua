@@ -55,6 +55,12 @@ function AutoChessLeaderSelectView:delaySwitch()
 		gohelper.setActive(self._goAdventureTip, true)
 		TaskDispatcher.runDelay(self.delayCloseTip, self, 2)
 	end
+
+	local isFinish = GuideModel.instance:isGuideFinish(40016)
+
+	if not isFinish then
+		AutoChessController.instance:dispatchEvent(AutoChessEvent.ZTrigger40016)
+	end
 end
 
 function AutoChessLeaderSelectView:delayCloseTip()
@@ -102,6 +108,7 @@ function AutoChessLeaderSelectView:_editableInitView()
 end
 
 function AutoChessLeaderSelectView:onOpen()
+	AudioMgr.instance:trigger(AudioEnum.AutoChess.play_ui_yingmen_adventure_get)
 	self:addEventCb(AutoChessController.instance, AutoChessEvent.ClickLeaderSelectItem, self.onClickLeader, self)
 	self:refreshAdventure()
 	self:refreshLeaderSelect()

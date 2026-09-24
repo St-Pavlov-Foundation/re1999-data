@@ -72,11 +72,14 @@ function AbyssStageHeroEmptyItem:setInfo(data)
 		logNormal("AbyssStageHeroEmptyItem:setRecommendRemoveParam" .. "stageId: " .. data.stageId .. " pos: " .. data.pos .. " heroUid: " .. data.heroId)
 
 		heroId = self.recommendRemoveParam.heroId
+
+		local skinId = self.recommendRemoveParam.skinId
+
 		self.recommendRemoveParam = nil
 
 		self._animator:Play("death", 0, 0)
 		gohelper.setActive(self._gohero, true)
-		self:refreshUI(heroId, data.skinId)
+		self:refreshUI(heroId, skinId)
 		TaskDispatcher.runDelay(self._onAnimPlayFinish, self, 1)
 
 		return
@@ -109,6 +112,8 @@ function AbyssStageHeroEmptyItem:setInfo(data)
 		TaskDispatcher.runDelay(self._onAnimPlayFinish, self, 1)
 	elseif self.lastHeroId == nil and heroId ~= 0 and not showHideAnim or self.lastHeroId ~= data.heroId and state == AbyssEnum.HeroState.NoUsed or self.lastHeroId == data.heroId and self.lastUseState == AbyssEnum.HeroState.IsUsed and state == AbyssEnum.HeroState.NoUsed then
 		self._animator:Play("in", 0, 0)
+	else
+		self._animator:Play("idle", 0, 0)
 	end
 
 	self.lastHeroId = heroId

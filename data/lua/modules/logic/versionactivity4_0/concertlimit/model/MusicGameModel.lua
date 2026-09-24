@@ -69,6 +69,12 @@ function MusicGameModel:getMapLineAndRowCount()
 end
 
 function MusicGameModel:getStartMainPos()
+	local isGuideFinished = GuideModel.instance:isGuideFinish(MusicGameEnum.GuideId)
+
+	if not isGuideFinished then
+		return 8, 8
+	end
+
 	local line, row = self:getMapLineAndRowCount()
 	local posX = math.random(1, row)
 	local posY = math.random(1, line)
@@ -636,34 +642,48 @@ function MusicGameModel:backSelectedBlockLines()
 end
 
 function MusicGameModel:addSelectedBlockLines(blockId)
+	local couldConnect = self:isBlockCouldConnect(blockId)
+
+	if not couldConnect then
+		return
+	end
+
 	if not self._selectedBlockLines then
 		self._selectedBlockLines = {}
 	end
 
-	if #self._selectedBlockLines < 1 then
-		table.insert(self._selectedBlockLines, blockId)
+	table.insert(self._selectedBlockLines, blockId)
+end
 
-		return
+function MusicGameModel:isBlockCouldConnect(blockId)
+	if not self._selectedBlockLines or #self._selectedBlockLines < 1 then
+		return true
 	end
 
 	local hasConnect = self:isSelectedBlockLines(blockId)
 
 	if hasConnect then
-		return
+		return false
+	end
+
+	local lastBlockId = self._selectedBlockLines[#self._selectedBlockLines]
+	local lastBlockMo = self:getBlockDataById(lastBlockId)
+
+	if not lastBlockMo then
+		return false
 	end
 
 	local curBlockMo = self:getBlockDataById(blockId)
-	local lastBlockMo = self:getBlockDataById(self._selectedBlockLines[#self._selectedBlockLines])
 
-	if not curBlockMo or not lastBlockMo then
-		return
+	if not curBlockMo then
+		return false
 	end
 
 	if lastBlockMo.noteType > curBlockMo.noteType then
-		return
+		return false
 	end
 
-	table.insert(self._selectedBlockLines, blockId)
+	return true
 end
 
 function MusicGameModel:clearSelectedBlockLines()
@@ -725,6 +745,16 @@ function MusicGameModel:getGameScoreLv(score)
 	return 1
 end
 
+function MusicGameModel:getMaxScore()
+	local lvCos = MusicGameConfig.instance:getBonusCos()
+
+	if not lvCos then
+		return 0
+	end
+
+	return lvCos[#lvCos].coinNum
+end
+
 function MusicGameModel:getCurScore()
 	local score = 0
 	local connectLength = #self._selectedBlockLines
@@ -779,6 +809,46 @@ function MusicGameModel:isRewardCanGet(rewardId)
 	local canGet = GuessGameModel.instance:isRewardCanGet(rewardId, actId)
 
 	return canGet
+end
+
+function MusicGameModel:showScoreTipReddot(actId)
+	actId = actId or VersionActivity4_0Enum.ActivityId.ConcertMusicGame
+
+	local musicGameScoreTip = PlayerPrefsHelper.getString(PlayerModel.instance:getPlayerPrefsKey(PlayerPrefsKey.MusicGameScoreShow), "")
+	local actInfoMo = ActivityModel.instance:getActivityInfo()[actId]
+	local isExpire = actInfoMo:isExpired()
+
+	if isExpire then
+		return false
+	end
+
+	local isUnlock = actInfoMo:isOnline() and actInfoMo:isOpen()
+
+	if not isUnlock then
+		return false
+	end
+
+	local isFirstShow = self:isFirstShow()
+
+	if not isFirstShow then
+		return false
+	end
+
+	local totalScore = self:getTotalScore()
+	local maxScore = self:getMaxScore()
+
+	if maxScore <= totalScore then
+		return false
+	end
+
+	if LuaUtil.isEmptyStr(musicGameScoreTip) then
+		return true
+	end
+
+	local time = tonumber(musicGameScoreTip)
+	local isSameDay = TimeUtil.isSameDay(time - TimeDispatcher.DailyRefreshSecond, ServerTime.now() - TimeDispatcher.DailyRefreshSecond)
+
+	return not isSameDay
 end
 
 MusicGameModel.instance = MusicGameModel.New()

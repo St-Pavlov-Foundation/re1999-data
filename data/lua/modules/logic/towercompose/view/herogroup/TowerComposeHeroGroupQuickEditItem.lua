@@ -126,7 +126,7 @@ function TowerComposeHeroGroupQuickEditItem:_onItemClick()
 		local insetIndex = TowerComposeHeroGroupModel.instance:getQuickSelectOrder()
 		local canSelect, assistPlane = TowerComposeHeroGroupModel.instance:checkCanSelectAssistHero(self._mo.uid, insetIndex, insetIndex)
 
-		if not canSelect then
+		if not canSelect and assistPlane then
 			TowerComposeController.instance:showPlaneAssistToast(assistPlane)
 
 			return

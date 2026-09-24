@@ -5,8 +5,6 @@ module("modules.logic.fight.system.work.FightWorkEntityStatusUpdate389", package
 local FightWorkEntityStatusUpdate389 = class("FightWorkEntityStatusUpdate389", FightEffectBase)
 
 function FightWorkEntityStatusUpdate389:onStart()
-	self:com_sendFightEvent(FightEvent.OnEntityDyingChange, self.actEffectData.targetId)
-
 	local entity = FightHelper.getEntity(self.actEffectData.targetId)
 
 	if not entity then
@@ -15,12 +13,7 @@ function FightWorkEntityStatusUpdate389:onStart()
 
 	local status = self.actEffectData.effectNum
 
-	if status == FightEnum.EntityStatus.Dying then
-		FightHelper.setEntityDying(entity)
-	elseif status == FightEnum.EntityStatus.Normal then
-		entity:resetAnimState()
-		entity:resetSpineMat()
-	end
+	self:com_sendFightEvent(FightEvent.OnEntityDyingChange, self.actEffectData.targetId, status)
 
 	return self:onDone(true)
 end

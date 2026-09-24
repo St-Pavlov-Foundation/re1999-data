@@ -48,6 +48,10 @@ function FightEntityWadingEffect:showEffect()
 		return
 	end
 
+	if entity.isSub then
+		return
+	end
+
 	local foot = entity:getHangPoint(mountbody)
 
 	if not foot then

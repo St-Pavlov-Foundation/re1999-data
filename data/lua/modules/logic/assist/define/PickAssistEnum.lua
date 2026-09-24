@@ -11,6 +11,7 @@ PickAssistEnum.Type = {
 	Tower = 10,
 	Survival = 5,
 	Rouge = 3,
+	TowerCompose2 = 13,
 	TowerComposeSupport1 = 6,
 	Activity123 = 2,
 	Activity229 = 12,

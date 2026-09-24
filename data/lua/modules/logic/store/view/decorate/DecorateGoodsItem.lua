@@ -12,6 +12,7 @@ function DecorateGoodsItem:init(go, mo)
 	self._goselectbuy = gohelper.findChild(self._goroot, "#go_selectbuy")
 	self._goItem = gohelper.findChild(self._goroot, "#go_Item")
 	self._goempty = gohelper.findChild(self._goroot, "#go_Item/#go_empty")
+	self._goempty2 = gohelper.findChild(self._goroot, "#go_Item/#go_empty2")
 	self._gohas = gohelper.findChild(self._goroot, "#go_Item/#go_has")
 	self._simagebanner = gohelper.findChildSingleImage(self._goroot, "#go_Item/#go_has/#simage_banner")
 	self._simagerareicon = gohelper.findChildSingleImage(self._goroot, "#go_Item/#go_has/#simage_icon")
@@ -111,6 +112,12 @@ function DecorateGoodsItem:_btnClickOnClick()
 		return
 	end
 
+	local decorateConfig = DecorateStoreConfig.instance:getDecorateConfig(curGoodId)
+
+	if decorateConfig and decorateConfig.fatherGoods > 0 and decorateConfig.fatherGoods == self._mo.goodsId then
+		return
+	end
+
 	DecorateStoreModel.instance:setGoodRead(self._mo.goodsId)
 	DecorateStoreModel.instance:setCurGood(self._mo.goodsId)
 	StoreController.instance:dispatchEvent(StoreEvent.DecorateGoodItemClick, self._mo.goodsId)
@@ -118,10 +125,34 @@ function DecorateGoodsItem:_btnClickOnClick()
 end
 
 function DecorateGoodsItem:_refreshUI()
+	if not self._mo or self._mo == 0 then
+		self:_showEmpty()
+
+		return
+	end
+
 	self:_refreshDetail()
 	self:_refreshCost()
 	self:_refreshDeadline()
 	self:_refreshReddot()
+end
+
+function DecorateGoodsItem:_showEmpty()
+	gohelper.setActive(self.go, true)
+	gohelper.setActive(self._goclick, false)
+	gohelper.setActive(self._goselect, false)
+	gohelper.setActive(self._goselectbuy, false)
+	gohelper.setActive(self._btnbuy.gameObject, false)
+	gohelper.setActive(self._goitemowned, false)
+	gohelper.setActive(self._gosoldout, false)
+	gohelper.setActive(self._goItem, true)
+	gohelper.setActive(self._goempty, self._isFold)
+	gohelper.setActive(self._goempty2, not self._isFold)
+	gohelper.setActive(self._goreddot, false)
+	gohelper.setActive(self._gohas, false)
+	gohelper.setActive(self._godeadline, false)
+	gohelper.setActive(self._gonewtag, false)
+	gohelper.setActive(self._gotag, false)
 end
 
 function DecorateGoodsItem:_refreshDetail()
@@ -132,8 +163,10 @@ function DecorateGoodsItem:_refreshDetail()
 
 	self._decorateConfig = DecorateStoreConfig.instance:getDecorateConfig(self._mo.goodsId)
 
-	gohelper.setActive(self._goselect, isBundleSubGood or self._mo.goodsId == curGoodId and self._isFold)
-	gohelper.setActive(self._goselectbuy, self._mo.goodsId == curGoodId and not self._isFold)
+	local isSelectGood = isBundleSubGood or self._mo.goodsId == curGoodId
+
+	gohelper.setActive(self._goselect, isSelectGood and self._isFold)
+	gohelper.setActive(self._goselectbuy, isSelectGood and not self._isFold)
 	gohelper.setActive(self._goliandong, self._decorateConfig and self._decorateConfig.linkTag == DecorateStoreEnum.LinkTagType.Show)
 
 	self._txtname.text = isBundleSubGood and curGoodMo.config.name or self._mo.config.name
@@ -152,9 +185,9 @@ function DecorateGoodsItem:_refreshDetail()
 		self._simagebanner:LoadImage(iconImg)
 	end
 
-	local isItemHas = DecorateStoreModel.instance:isDecorateGoodItemHas(self._mo.goodsId)
+	local isItemOwned = DecorateStoreModel.instance:isDecorateGoodItemOwned(self._mo.goodsId)
 
-	if isItemHas then
+	if isItemOwned then
 		gohelper.setActive(self._goitemowned, true)
 		gohelper.setActive(self._gosoldout, false)
 		gohelper.setActive(self._godiscount, false)
@@ -166,6 +199,8 @@ function DecorateGoodsItem:_refreshDetail()
 
 		return
 	end
+
+	gohelper.setActive(self._gotag, true)
 
 	local discount = self._decorateConfig.offTag > 0 and self._decorateConfig.offTag or 100
 	local hasDiscount1 = discount > 0 and discount < 100

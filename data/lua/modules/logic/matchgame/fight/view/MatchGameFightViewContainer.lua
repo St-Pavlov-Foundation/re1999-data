@@ -23,7 +23,7 @@ function MatchGameFightViewContainer:buildTabViews(tabContainerId)
 	if tabContainerId == 1 then
 		self.navigateView = NavigateButtonsView.New({
 			true,
-			true,
+			false,
 			false
 		})
 

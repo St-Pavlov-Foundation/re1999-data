@@ -32,6 +32,8 @@ function VersionActivity4_0EnterView:_editableInitView()
 
 	self.viewAnim = self.viewGO:GetComponent(gohelper.Type_Animator)
 	self.gosubviewCanvasGroup = gohelper.findChildComponent(self.viewGO, "#go_subview", gohelper.Type_CanvasGroup)
+	self.goentranceCanvasGroup = gohelper.findChildComponent(self.viewGO, "entrance", gohelper.Type_CanvasGroup)
+	self.gotopleftCanvasGroup = gohelper.findChildComponent(self.viewGO, "#go_topleft", gohelper.Type_CanvasGroup)
 	self._drag = SLFramework.UGUI.UIDragListener.Get(self._scrolltab.gameObject)
 	self._cellList = {}
 
@@ -100,8 +102,6 @@ function VersionActivity4_0EnterView:onClose()
 	end
 end
 
-local VIDEO_DURATION = 6.5
-
 function VersionActivity4_0EnterView:playVideo()
 	TaskDispatcher.cancelTask(self._playOpen1Anim, self)
 
@@ -118,6 +118,10 @@ function VersionActivity4_0EnterView:playVideo()
 
 		self.viewAnim.speed = 0
 		self.gosubviewCanvasGroup.alpha = 0
+		self.goentranceCanvasGroup.interactable = false
+		self.goentranceCanvasGroup.blocksRaycasts = false
+		self.gotopleftCanvasGroup.interactable = false
+		self.gotopleftCanvasGroup.blocksRaycasts = false
 
 		local isCanSkip = GameUtil.playerPrefsGetNumberByUserId(VersionActivity4_0Enum.EnterVideoFirstKey, 0) ~= 0
 
@@ -125,7 +129,9 @@ function VersionActivity4_0EnterView:playVideo()
 			GameUtil.playerPrefsSetNumberByUserId(VersionActivity4_0Enum.EnterVideoFirstKey, 1)
 		end
 
-		VideoController.instance:openFullScreenVideoView(VersionActivity4_0Enum.EnterAnimVideoName, nil, VIDEO_DURATION, nil, nil, {
+		local timeoutValue = VersionActivity4_0Enum.OpenAnimDelayTime + 2
+
+		VideoController.instance:openFullScreenVideoView(VersionActivity4_0Enum.EnterAnimVideoName, nil, timeoutValue, nil, nil, {
 			couldSkip = isCanSkip
 		})
 		TimeUtil.setDayFirstLoginRed(VersionActivity4_0Enum.EnterVideoDayKey)
@@ -140,6 +146,8 @@ function VersionActivity4_0EnterView:playVideo()
 end
 
 function VersionActivity4_0EnterView:onPlayVideoDone()
+	TaskDispatcher.cancelTask(self._playOpen1Anim, self)
+	self:removeEventCb(VideoController.instance, VideoEvent.OnVideoStarted, self._delayPlayOpen1Anim, self)
 	self:removeEventCb(VideoController.instance, VideoEvent.OnVideoPlayFinished, self.onPlayVideoDone, self)
 	self:removeEventCb(VideoController.instance, VideoEvent.OnVideoPlayOverTime, self.onPlayVideoDone, self)
 
@@ -163,6 +171,10 @@ end
 
 function VersionActivity4_0EnterView:_playOpen1Anim()
 	self.gosubviewCanvasGroup.alpha = 1
+	self.goentranceCanvasGroup.interactable = true
+	self.goentranceCanvasGroup.blocksRaycasts = true
+	self.gotopleftCanvasGroup.interactable = true
+	self.gotopleftCanvasGroup.blocksRaycasts = true
 	self.viewAnim.speed = 1
 
 	self:_playOpenAnim("open1")
@@ -378,7 +390,7 @@ function VersionActivity4_0EnterView:_checkVerticalScroll()
 		if tabItem:isShowRedDot() then
 			local tabAnchorY = recthelper.getAnchorY(tabItem.go.transform.parent) or 0
 
-			if -tabAnchorY > self.viewPortHeight * 0.5 then
+			if -tabAnchorY - 180 > self.viewPortHeight * 0.5 then
 				gohelper.setActive(self.goArrowRedDot, true)
 
 				return

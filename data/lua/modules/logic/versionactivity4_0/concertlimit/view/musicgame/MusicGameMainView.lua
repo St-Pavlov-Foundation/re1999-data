@@ -20,12 +20,16 @@ function MusicGameMainView:onInitView()
 	self._goscores = gohelper.findChild(self.viewGO, "root/#go_right/#go_scores")
 	self._goscore1 = gohelper.findChild(self.viewGO, "root/#go_right/#go_scores/#go_score1")
 	self._txtscore1 = gohelper.findChildText(self.viewGO, "root/#go_right/#go_scores/#go_score1/#txt_score1")
+	self._goscoreeff1 = gohelper.findChild(self.viewGO, "root/#go_right/#go_scores/#go_score1/vx_effect")
 	self._goscore2 = gohelper.findChild(self.viewGO, "root/#go_right/#go_scores/#go_score2")
 	self._txtscore2 = gohelper.findChildText(self.viewGO, "root/#go_right/#go_scores/#go_score2/#txt_score2")
+	self._goscoreeff2 = gohelper.findChild(self.viewGO, "root/#go_right/#go_scores/#go_score2/vx_effect")
 	self._goscore3 = gohelper.findChild(self.viewGO, "root/#go_right/#go_scores/#go_score3")
 	self._txtscore3 = gohelper.findChildText(self.viewGO, "root/#go_right/#go_scores/#go_score3/#txt_score3")
+	self._goscoreeff3 = gohelper.findChild(self.viewGO, "root/#go_right/#go_scores/#go_score3/vx_effect")
 	self._goscore4 = gohelper.findChild(self.viewGO, "root/#go_right/#go_scores/#go_score4")
 	self._txtscore4 = gohelper.findChildText(self.viewGO, "root/#go_right/#go_scores/#go_score4/texture/#txt_score4")
+	self._goscoreeff4 = gohelper.findChild(self.viewGO, "root/#go_right/#go_scores/#go_score4/vx_effect")
 	self._btnfinish = gohelper.findChildButtonWithAudio(self.viewGO, "root/#go_right/#btn_finish")
 	self._gofinishlight = gohelper.findChild(self.viewGO, "root/#go_right/#btn_finish/#go_finishlight")
 	self._gofinishgrey = gohelper.findChild(self.viewGO, "root/#go_right/#btn_finish/#go_finishgrey")
@@ -55,6 +59,7 @@ function MusicGameMainView:_btnshowOnClick()
 end
 
 function MusicGameMainView:_btnbackOnClick()
+	AudioMgr.instance:trigger(AudioEnum4_0.MusicGame.play_ui_yingmen4_0_roll_back)
 	MusicGameModel.instance:backSelectedBlockLines()
 	self:_refresh()
 end
@@ -74,6 +79,11 @@ function MusicGameMainView:_btnfinishOnClick()
 end
 
 function MusicGameMainView:_btnresetOnClick()
+	AudioMgr.instance:trigger(AudioEnum4_0.MusicGame.play_ui_yingmen4_0_reset)
+	GameFacade.showMessageBox(MessageBoxIdDefine.V4a0SelfMusicGameReset, MsgBoxEnum.BoxType.Yes_No, self.onClickYes, nil, nil, self, nil)
+end
+
+function MusicGameMainView:onClickYes()
 	MusicGameModel.instance:clearSelectedBlockLines()
 	self:_refresh()
 end
@@ -114,6 +124,9 @@ function MusicGameMainView:_addSelfEvents()
 	self._drag:AddDragEndListener(self._onDragEnd, self)
 	self:addEventCb(ViewMgr.instance, ViewEvent.ReOpenWhileOpen, self._onReOpenView, self)
 	self:addEventCb(GuessGameController.instance, GuessGameEvent.OnFinishGame, self._onFinishGame, self)
+	self:addEventCb(MusicGameController.instance, MusicGameEvent.CancelGame, self._onCancelGame, self)
+	self:addEventCb(MusicGameController.instance, MusicGameEvent.BlockLongPress, self._onBlockLongPress, self)
+	self:addEventCb(MusicGameController.instance, MusicGameEvent.BlockPressEnd, self._onBlockPressEnd, self)
 end
 
 function MusicGameMainView:_removeSelfEvents()
@@ -131,6 +144,34 @@ function MusicGameMainView:_removeSelfEvents()
 
 	self:removeEventCb(ViewMgr.instance, ViewEvent.ReOpenWhileOpen, self._onReOpenView, self)
 	self:removeEventCb(GuessGameController.instance, GuessGameEvent.OnFinishGame, self._onFinishGame, self)
+	self:removeEventCb(MusicGameController.instance, MusicGameEvent.CancelGame, self._onCancelGame, self)
+	self:removeEventCb(MusicGameController.instance, MusicGameEvent.BlockLongPress, self._onBlockLongPress, self)
+	self:removeEventCb(MusicGameController.instance, MusicGameEvent.BlockPressEnd, self._onBlockPressEnd, self)
+end
+
+function MusicGameMainView:_onBlockLongPress(blockMo)
+	self:_addSelectBlock(blockMo.id)
+	self:_refresh()
+end
+
+function MusicGameMainView:_onBlockPressEnd()
+	local connects = MusicGameModel.instance:getSelectedBlockLines()
+
+	if not connects or #connects > 1 then
+		return
+	end
+
+	MusicGameModel.instance:clearSelectedBlockLines()
+	self:_refresh()
+end
+
+function MusicGameMainView:_onCancelGame()
+	local score = MusicGameModel.instance:getCurScore()
+	local multi = MusicGameModel.instance:getGameScoreMulti()
+
+	self._resultScore = multi * score
+
+	Activity234Rpc.instance:sendAct234FinishGameRequest(self._actId, score, "")
 end
 
 function MusicGameMainView:_onDragBegin(param, pointerEventData)
@@ -226,6 +267,16 @@ function MusicGameMainView:_tryConnectBlock(blockMo)
 end
 
 function MusicGameMainView:_addSelectBlock(id)
+	local couldConnect = MusicGameModel.instance:isBlockCouldConnect(id)
+
+	if not couldConnect then
+		return
+	end
+
+	local blockMo = MusicGameModel.instance:getBlockDataById(id)
+	local audioId = blockMo.config.audioId or 0
+
+	AudioMgr.instance:trigger(audioId)
 	MusicGameModel.instance:addSelectedBlockLines(id)
 	MusicGameController.instance:dispatchEvent(MusicGameEvent.BlockItemConnect, id)
 end
@@ -265,6 +316,7 @@ function MusicGameMainView:_onReOpenView(viewName)
 end
 
 function MusicGameMainView:onOpen()
+	AudioMgr.instance:trigger(AudioEnum4_0.MusicGame.play_ui_yingmen4_0_open_game)
 	self:_refresh()
 end
 
@@ -303,10 +355,26 @@ end
 function MusicGameMainView:_refreshScore()
 	local multi = MusicGameModel.instance:getGameScoreMulti()
 	local curScore = multi * MusicGameModel.instance:getCurScore()
+	local showEff = false
+
+	if self._curScore ~= curScore then
+		showEff = true
+		self._curScore = curScore
+	end
+
 	local scorelv = MusicGameModel.instance:getGameScoreLv(curScore)
 
 	for i = 1, 4 do
 		gohelper.setActive(self["_goscore" .. tostring(i)], i == scorelv)
+
+		if showEff and i == scorelv then
+			gohelper.setActive(self["_goscoreeff" .. tostring(i)], false)
+			gohelper.setActive(self["_goscoreeff" .. tostring(i)], true)
+
+			local lvCo = MusicGameConfig.instance:getLevelCo(scorelv)
+
+			AudioMgr.instance:trigger(lvCo.audioId)
+		end
 
 		if i == scorelv then
 			self["_txtscore" .. tostring(i)].text = curScore

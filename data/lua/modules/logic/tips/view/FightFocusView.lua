@@ -461,6 +461,7 @@ function FightFocusView:sortFightEntityList(entityList)
 end
 
 function FightFocusView:onOpen()
+	FightGameMgr.entityPhysicsWhenCameraShakeMgr:_setSpinePhysicsInheritance(false)
 	FightMsgMgr.sendMsg(FightMsgId.SetYaMiShieldEffectVisible, false)
 
 	self.subEntityList = {}
@@ -835,6 +836,8 @@ function FightFocusView:_refreshCharacterInfo(entityMO)
 	if #entityMO.skillGroup2 > 0 then
 		allSkillIdDict[2] = LuaUtil.deepCopySimple(entityMO.skillGroup2)
 	end
+
+	self._isNotSkill = #allSkillIdDict == 0
 
 	self:_refreshSuper({
 		uniqueSkillId
@@ -1951,6 +1954,7 @@ function FightFocusView:onClose()
 end
 
 function FightFocusView:onDestroyView()
+	FightGameMgr.entityPhysicsWhenCameraShakeMgr:_setSpinePhysicsInheritance(true)
 	FightWorkFocusMonster.setVirtualCameDamping(1, 1, 1)
 	self._simagebg:UnLoadImage()
 
@@ -2624,7 +2628,7 @@ function FightFocusView:_refreshSkillGOs()
 	gohelper.setActive(self._godevice, isDevice)
 	gohelper.setActive(self._goqte, isQte)
 	gohelper.setActive(self._goskills, not isQte and not isDevice)
-	gohelper.setActive(self._noskill, self._isNotSkill)
+	gohelper.setActive(self._noskill, self._isNotSkill and not isQte and not isDevice)
 	gohelper.setActive(self._skill, not self._isNotSkill and not isQte and not isDevice)
 end
 

@@ -66,6 +66,14 @@ function DeleikeTriggerBase:_collect()
 	self.isCollected = true
 end
 
+function DeleikeTriggerBase:revive()
+	self.isCollected = false
+
+	TaskDispatcher.cancelTask(self.onAnimFinish, self)
+	gohelper.setActive(self.go, true)
+	self.anim:Play("idle", 0, 0)
+end
+
 function DeleikeTriggerBase:onSetData()
 	return
 end

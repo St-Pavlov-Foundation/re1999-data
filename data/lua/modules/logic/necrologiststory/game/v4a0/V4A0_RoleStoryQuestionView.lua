@@ -68,6 +68,7 @@ function V4A0_RoleStoryQuestionView:onClickOption(optionItem)
 end
 
 function V4A0_RoleStoryQuestionView:onOpen()
+	AudioMgr.instance:trigger(AudioEnum.NecrologistStory.play_ui_gt_yishi_shua)
 	self:refreshParam()
 	self:refreshView()
 end
@@ -170,17 +171,7 @@ function V4A0_RoleStoryQuestionView:refreshTest()
 end
 
 function V4A0_RoleStoryQuestionView:onClose()
-	if self.heroStoryId then
-		local unlock = RoleStoryModel.instance:isCGUnlock(self.heroStoryId)
-
-		if unlock then
-			local canPlay = RoleStoryModel.instance:canPlayDungeonUnlockAnim(self.heroStoryId)
-
-			if canPlay then
-				NecrologistStoryController.instance:openCgUnlockView(self.heroStoryId)
-			end
-		end
-	end
+	return
 end
 
 function V4A0_RoleStoryQuestionView:onDestroyView()

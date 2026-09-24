@@ -15,14 +15,22 @@ function CollegeRoundEndAnimViewContainer:onContainerOpen()
 
 	UIBlockMgrExtend.instance:resetMaskShow()
 	CollegeHelper.instance:setViewVisible(self.viewName, true)
+
+	self.openDt = os.clock()
+
+	local btn = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_click")
+
+	self:addClickCb(btn, self.onClick, self)
+	TaskDispatcher.runDelay(self.closeThis, self, 3.867)
+	NavigateMgr.instance:addEscape(self.viewName, self.onClick, self)
 end
 
-function CollegeRoundEndAnimViewContainer:onContainerOpenFinish()
-	TaskDispatcher.runDelay(self.closeThis, self, 1.5)
-end
+function CollegeRoundEndAnimViewContainer:onClick()
+	if not self.openDt or os.clock() - self.openDt < 0.5 then
+		return
+	end
 
-function CollegeRoundEndAnimViewContainer:playCloseTransition()
-	self:onPlayCloseTransitionFinish()
+	self:closeThis()
 end
 
 function CollegeRoundEndAnimViewContainer:onContainerClose()

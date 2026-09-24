@@ -533,8 +533,17 @@ function HeroGroupController:onAbyssUse(info, heroGroupMO, ...)
 		local mo = HeroModel.instance:getById(v)
 
 		if mo and AbyssModel.instance:isCurHeroLocked(mo.heroId) then
+			local skinId = stageMo.skinDic[mo.heroId]
+
+			if not skinId then
+				local heroMo = HeroModel.instance:getById(mo.heroId)
+
+				skinId = heroMo.skin
+			end
+
 			AbyssController.instance:dispatchEvent(AbyssEvent.OnAbyssRecommendHeroRemove, {
 				heroId = mo.heroId,
+				skinId = skinId,
 				pos = i,
 				stageId = stageId
 			})
@@ -551,7 +560,7 @@ function HeroGroupController:onAbyssUse(info, heroGroupMO, ...)
 		...
 	}
 
-	local skillId = AbyssHelper.getValidSkill(stageId, info.skillId)
+	local skillId = AbyssHelper.getValidSkill(activityId, stageId, info.skillId)
 
 	if not skillId or skillId == 0 or skillId == stageMo.skillId then
 		self:_onAbyssUseSkillModified()
@@ -595,7 +604,7 @@ function HeroGroupController:_onAbyssUseSkillModified()
 
 	groupInfo:setSelectIndex(stageMo.heroGroupSubId or 1)
 	HeroSingleGroupModel.instance:setSingleGroup(heroGroupMO, true)
-	HeroGroupModel.instance:saveCurGroupData(nil, nil, heroGroupMO)
+	AbyssController.instance:saveSnapShot(heroGroupMO, nil, nil, nil, true)
 	HeroGroupController.instance:dispatchEvent(HeroGroupEvent.OnModifyHeroGroup)
 	ViewMgr.instance:closeView(ViewName.HeroGroupRecommendView)
 end

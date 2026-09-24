@@ -7,7 +7,9 @@ local CollegeSceneView = class("CollegeSceneView", BaseView)
 function CollegeSceneView:onInitView()
 	self._gofullscreen = gohelper.findChild(self.viewGO, "#go_full")
 	self._gofullscreen2 = gohelper.findChild(self.viewGO, "#go_full2")
+	self._buildingUIRoot = gohelper.findChild(self.viewGO, "#go_full/#go_city/#go_sceneui")
 	self._buildingUI = gohelper.findChild(self.viewGO, "#go_full/#go_city/#go_sceneui/#go_building")
+	self._areaUIRoot = gohelper.findChild(self.viewGO, "#go_full/#go_map/#go_sceneui")
 	self._areaUI = gohelper.findChild(self.viewGO, "#go_full/#go_map/#go_sceneui/#go_area")
 	self._buildingElementUI = gohelper.findChild(self.viewGO, "#go_full/#go_city/#go_sceneui/#go_element")
 	self._areaElementUI = gohelper.findChild(self.viewGO, "#go_full/#go_map/#go_sceneui/#go_element")
@@ -162,31 +164,35 @@ function CollegeSceneView:getRoleRoot()
 end
 
 function CollegeSceneView:initBuilding(go)
+	local uiRoot = gohelper.create2d(self._buildingUIRoot, "buildingui")
+
 	for i, v in ipairs(self._sceneMo.buildingBox.buildings) do
 		local building = gohelper.create3d(go, "building" .. v.id)
 		local comp = MonoHelper.addNoUpdateLuaComOnceToGo(building, CollegeSceneBuildingItem)
 
 		transformhelper.setLocalPos(building.transform, v.pos.x, v.pos.y, v.pos.z)
 
-		local ui = gohelper.cloneInPlace(self._buildingUI, "building" .. v.id)
+		local ui = gohelper.clone(self._buildingUI, uiRoot, "building" .. v.id)
 
 		gohelper.setActive(ui, true)
-		comp:setUI(ui)
+		comp:setUI(ui, self._buildingUIRoot)
 		comp:updateData(v)
 	end
 end
 
 function CollegeSceneView:initArea(go)
+	local uiRoot = gohelper.create2d(self._areaUIRoot, "areaui")
+
 	for i, v in ipairs(self._sceneMo.worldMap.areas) do
 		local area = gohelper.create3d(go, "area" .. v.id)
 		local comp = MonoHelper.addNoUpdateLuaComOnceToGo(area, CollegeSceneAreaItem)
 
 		transformhelper.setLocalPos(area.transform, v.pos.x, v.pos.y, v.pos.z)
 
-		local ui = gohelper.cloneInPlace(self._areaUI, "area" .. v.id)
+		local ui = gohelper.clone(self._areaUI, uiRoot, "area" .. v.id)
 
 		gohelper.setActive(ui, true)
-		comp:setUI(ui)
+		comp:setUI(ui, self._areaUIRoot)
 		comp:updateData(v)
 	end
 
@@ -345,6 +351,8 @@ function CollegeSceneView:setShowMap(type, callback, callobj)
 	self._switchSceneCallback = callback
 	self._switchSceneCallbackObj = callobj
 
+	transformhelper.setLocalPos(self._cityElementRoot.transform, 10000, 10000, 0)
+	transformhelper.setLocalPos(self._mapElementRoot.transform, 10000, 10000, 0)
 	ViewMgr.instance:openView(ViewName.CollegeSwitchSceneAnimView)
 end
 
@@ -375,12 +383,20 @@ function CollegeSceneView:_realChangeType(isFirst)
 end
 
 function CollegeSceneView:_onChangeSceneEnd()
-	if self._switchSceneCallback then
-		self._switchSceneCallback(self._switchSceneCallbackObj)
+	if self._curCameraSizeType == CollegeEnum.DungeonMapCameraSizeType.High then
+		transformhelper.setLocalPos(self._cityElementRoot.transform, 0, 0, 0)
+		transformhelper.setLocalPos(self._mapElementRoot.transform, 0, 0, 0)
 	end
+
+	local callback = self._switchSceneCallback
+	local callobj = self._switchSceneCallbackObj
 
 	self._switchSceneCallback = nil
 	self._switchSceneCallbackObj = nil
+
+	if callback then
+		callback(callobj)
+	end
 end
 
 function CollegeSceneView:_onDragBegin(param, pointerEventData)

@@ -549,6 +549,10 @@ function CharacterController:_onGetInfoFinish()
 	CharacterSearchFilterModel.instance:refreshEditorLowTags(value)
 end
 
+function CharacterController:openCharacterNormalSkinView(viewParam)
+	ViewMgr.instance:openView(ViewName.CharacterNormalSkinView, viewParam)
+end
+
 CharacterController.instance = CharacterController.New()
 
 return CharacterController

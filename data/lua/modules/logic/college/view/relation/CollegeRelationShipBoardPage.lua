@@ -108,8 +108,16 @@ end
 function CollegeRelationShipBoardPage:_playFirstOpenChaAnim()
 	for posId, animator in pairs(self._firstOpenCharacter) do
 		gohelper.setActive(animator, true)
-		animator:Play("firstopen", 0, 0)
+		animator:Play("firstopen", self._onChaOpenFinish, self, posId)
 		CollegeController.setOnceActionKey(CollegeEnum.PrefsKey.RelationShipBoardFirstOpenCha, posId)
+	end
+end
+
+function CollegeRelationShipBoardPage:_onChaOpenFinish(posId)
+	local characterGos = self._characterGoMap[posId]
+
+	for i, v in ipairs(characterGos) do
+		gohelper.setActive(v, true)
 	end
 end
 
@@ -251,10 +259,6 @@ function CollegeRelationShipBoardPage:_initCharacterState(stateId, characterId, 
 		return
 	end
 
-	for i, itemGo in ipairs(characterGos) do
-		gohelper.setActive(itemGo, true)
-	end
-
 	local mainCharacter = characterGos.mainCharacter
 
 	if not mainCharacter then
@@ -272,7 +276,11 @@ function CollegeRelationShipBoardPage:_initCharacterState(stateId, characterId, 
 	if animator and (not CollegeController.hasOnceActionKey(CollegeEnum.PrefsKey.RelationShipBoardFirstOpenCha, posId) or self._showAllFirstOpenAnim) then
 		gohelper.setActive(animator, false)
 
-		self._firstOpenCharacter[posId] = animator
+		self._firstOpenCharacter[posId] = ZProj.ProjAnimatorPlayer.Get(animator.gameObject)
+	else
+		for i, itemGo in ipairs(characterGos) do
+			gohelper.setActive(itemGo, true)
+		end
 	end
 
 	local chaConfig = lua_college_character.configDict[characterId]

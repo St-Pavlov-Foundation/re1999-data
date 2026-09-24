@@ -5,7 +5,7 @@ module("modules.logic.settings.view.SettingsDelUnusedResView", package.seeall)
 local SettingsDelUnusedResView = class("SettingsDelUnusedResView", BaseView)
 
 function SettingsDelUnusedResView:onInitView()
-	self._scrollcontent = gohelper.findChildScrollRect(self.viewGO, "view/#scroll_content")
+	self._scrollcontent = gohelper.findChild(self.viewGO, "view/#scroll_content/viewport/content")
 	self._btndelete = gohelper.findChildButtonWithAudio(self.viewGO, "view/btn/#btn_delete")
 	self._btncancel = gohelper.findChildButtonWithAudio(self.viewGO, "view/btn/#btn_cancel")
 	self._simageleftbg = gohelper.findChildSingleImage(self.viewGO, "view/bg/#simage_leftbg")
@@ -75,29 +75,51 @@ function SettingsDelUnusedResView:_editableInitView()
 	}
 	local unusedResSizeArr = SLFramework.ResChecker.Instance:GetUnusedResSize(saveType)
 	local size1 = tonumber(tostring(unusedResSizeArr[0]))
-	local size2 = tonumber(tostring(unusedResSizeArr[1]))
-	local sizeStr1 = HotUpdateMgr.fixSizeStr(size1)
-	local sizeStr2 = HotUpdateMgr.fixSizeStr(size1 + size2)
+	local size2 = tonumber(tostring(unusedResSizeArr[1])) + size1
+	local sizeStr1 = size1 > 0 and HotUpdateMgr.fixSizeStr(size1) or "0KB"
+	local sizeStr2 = size2 > 0 and HotUpdateMgr.fixSizeStr(size2) or "0KB"
 
 	self._listData = {
 		{
 			type = 1,
 			txt = luaLang("SettingsDelUnusedResView_1"),
+			tips = luaLang("SettingsDelUnusedResView_1_tips"),
 			sizeStr = sizeStr1
 		},
 		{
 			type = 2,
 			txt = luaLang("SettingsDelUnusedResView_2"),
+			tips = luaLang("SettingsDelUnusedResView_2_tips"),
 			sizeStr = sizeStr2
 		}
 	}
 
 	self.viewContainer:setListData(self._listData)
-	self.viewContainer:selectCell(1)
+
+	self._cellList = {}
+
+	for i, v in ipairs(self._listData) do
+		local go1 = self:getResInst(self.viewContainer._viewSetting.otherRes[1], self._scrollcontent, "cell_" .. i)
+		local cell = SettingsDelUnusedResListItem.New()
+
+		cell:initGO(go1)
+		cell:onUpdateMO(v)
+		table.insert(self._cellList, cell)
+	end
+
+	self:selectCell(1)
 end
 
-function SettingsDelUnusedResView:selectCell(index)
-	self.viewContainer:selectCell(index)
+function SettingsDelUnusedResView:selectCell(selecetType)
+	for i, cell in ipairs(self._cellList) do
+		local isSelect = cell._mo.type == selecetType
+
+		cell:onSelect(isSelect)
+
+		if isSelect then
+			self._selecetType = selecetType
+		end
+	end
 end
 
 function SettingsDelUnusedResView:onUpdateParam()
@@ -105,15 +127,15 @@ function SettingsDelUnusedResView:onUpdateParam()
 end
 
 function SettingsDelUnusedResView:onOpen()
-	self:addEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnChangeSelecetDelUnusedRes, self._updateSelecet, self)
+	self:addEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnChangeSelecetDelUnusedRes, self.selectCell, self)
 end
 
 function SettingsDelUnusedResView:onClose()
-	self:removeEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnChangeSelecetDelUnusedRes, self._updateSelecet, self)
-end
+	self:removeEventCb(SettingsVoicePackageController.instance, SettingsEvent.OnChangeSelecetDelUnusedRes, self.selectCell, self)
 
-function SettingsDelUnusedResView:_updateSelecet(type)
-	self._selecetType = type
+	for i, cell in ipairs(self._cellList) do
+		cell:onClose()
+	end
 end
 
 function SettingsDelUnusedResView:onDestroyView()

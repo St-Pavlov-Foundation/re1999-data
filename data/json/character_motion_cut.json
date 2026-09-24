@@ -316,5 +316,11 @@
     "skinId": 314503,
     "motion": "youling",
     "onlyStopCut": 1
+  },
+  {
+    "heroId": 3155,
+    "skinId": 315503,
+    "motion": "juntuan",
+    "onlyStopCut": 1
   }
 ]

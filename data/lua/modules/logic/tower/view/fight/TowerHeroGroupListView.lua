@@ -34,45 +34,46 @@ function TowerHeroGroupListView:checkReplaceHeroList()
 		local assistBoss = param.assistBoss
 		local trialHeros = param.trialHeros or {}
 		local heroList = {}
+		local assistSkinIds = param.assistSkinIds or {}
 
 		for i = 1, #heroIds do
-			local heroMo = HeroModel.instance:getByHeroId(heroIds[i] or 0)
+			local assistSkinId = assistSkinIds[i] or 0
+			local heroInfo = {
+				heroUid = "0",
+				equipUid = equipUids[i]
+			}
 
-			if heroMo then
-				local trialId = trialHeros[i]
+			heroList[i] = heroInfo
 
-				if trialId and trialId > 0 then
-					local trialCo = lua_hero_trial.configDict[trialId][0]
-					local heroId = tostring(tonumber(trialCo.id .. "." .. trialCo.trialTemplate) - 1099511627776)
+			if assistSkinId == 0 then
+				local heroMo = HeroModel.instance:getByHeroId(heroIds[i] or 0)
 
-					table.insert(heroList, {
-						heroUid = heroId,
-						equipUid = {
+				if heroMo then
+					local trialId = trialHeros[i]
+
+					if trialId and trialId > 0 then
+						local trialCo = lua_hero_trial.configDict[trialId][0]
+
+						heroInfo.heroUid = tostring(tonumber(trialCo.id .. "." .. trialCo.trialTemplate) - 1099511627776)
+						heroInfo.equipUid = {
 							tostring(trialCo.equipId)
 						}
-					})
+					else
+						heroInfo.heroUid = heroMo.uid
+					end
 				else
-					table.insert(heroList, {
-						heroUid = heroMo.uid,
-						equipUid = equipUids[i]
-					})
-				end
-			else
-				for _, trialHeroId in ipairs(trialHeros) do
-					if trialHeroId > 0 then
-						local trialCo = lua_hero_trial.configDict[trialHeroId][0]
+					for _, trialHeroId in ipairs(trialHeros) do
+						if trialHeroId > 0 then
+							local trialCo = lua_hero_trial.configDict[trialHeroId][0]
 
-						if trialCo and trialCo.heroId == heroIds[i] then
-							local heroId = tostring(tonumber(trialCo.id .. "." .. trialCo.trialTemplate) - 1099511627776)
-
-							table.insert(heroList, {
-								heroUid = heroId,
-								equipUid = {
+							if trialCo and trialCo.heroId == heroIds[i] then
+								heroInfo.heroUid = tostring(tonumber(trialCo.id .. "." .. trialCo.trialTemplate) - 1099511627776)
+								heroInfo.equipUid = {
 									tostring(trialCo.equipId)
 								}
-							})
 
-							break
+								break
+							end
 						end
 					end
 				end
@@ -81,7 +82,7 @@ function TowerHeroGroupListView:checkReplaceHeroList()
 
 		local groupMO = HeroGroupModel.instance:getCurGroupMO()
 
-		groupMO:replaceTowerHeroList(heroList)
+		groupMO:replaceTowerHeroList(heroList, true)
 		groupMO:setAssistBossId(assistBoss)
 		HeroSingleGroupModel.instance:setSingleGroup(groupMO, #heroList > 0)
 	end

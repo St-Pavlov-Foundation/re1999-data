@@ -14,9 +14,8 @@ local fields = {
 	levelTplId = 4,
 	elementId = 3,
 	unlockType = 13,
-	costItemId = 14,
+	isTrial = 14,
 	characterId = 1,
-	isTrial = 15,
 	icon = 10,
 	activeSkillId = 9
 }

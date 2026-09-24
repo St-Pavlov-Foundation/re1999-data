@@ -9,6 +9,7 @@ function CollegeTaskTipsView:onInitView()
 	self._goHasTask = gohelper.findChild(self.viewGO, "Left/TaskContainer/has")
 	self._goTaskItem = gohelper.findChild(self.viewGO, "Left/TaskContainer/has/#go_taskitem")
 	self._goEmptyTask = gohelper.findChild(self.viewGO, "Left/TaskContainer/empty")
+	self._goTaskTitle = gohelper.findChild(self.viewGO, "Left/TaskTitle")
 	self._goUnfold = gohelper.findChild(self.viewGO, "Left/TaskTitle/#go_unfold")
 	self._goFold = gohelper.findChild(self.viewGO, "Left/TaskTitle/#go_fold")
 	self._btnClick = gohelper.findChildButtonWithAudio(self.viewGO, "Left/TaskTitle/#btn_click")
@@ -42,6 +43,9 @@ function CollegeTaskTipsView:_btnOpenTaskOnClick()
 end
 
 function CollegeTaskTipsView:_editableInitView()
+	self._animPlayer = ZProj.ProjAnimatorPlayer.Get(self._goTaskContainer)
+	self._canvasGroup = gohelper.onceAddComponent(self._goTaskContainer, gohelper.Type_CanvasGroup)
+	self._titleCanvasGroup = gohelper.onceAddComponent(self._goTaskTitle, gohelper.Type_CanvasGroup)
 	self._showMaxTaskNum = CollegeConfig.instance:getConstNum(CollegeEnum.ConstId.ShowMaxTaskNum)
 	self._freeTaskItemList = self:getUserDataTb_()
 	self._showingTaskNum = 0
@@ -132,6 +136,20 @@ function CollegeTaskTipsView:setFold(isFold)
 
 	gohelper.setActive(self._goFold, self._isFold)
 	gohelper.setActive(self._goUnfold, not self._isFold)
+	gohelper.setActive(self._goTaskContainer, true)
+
+	self._canvasGroup.blocksRaycasts = false
+	self._titleCanvasGroup.blocksRaycasts = false
+
+	local animName = self._isFold and "close" or "open"
+
+	self._animPlayer:Play(animName, self._onPlayContainerAnimDone, self)
+end
+
+function CollegeTaskTipsView:_onPlayContainerAnimDone()
+	self._titleCanvasGroup.blocksRaycasts = true
+	self._canvasGroup.blocksRaycasts = not self._isFold
+
 	gohelper.setActive(self._goTaskContainer, not self._isFold)
 end
 

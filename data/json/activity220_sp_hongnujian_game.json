@@ -22,7 +22,7 @@
     "lifeShow": 0,
     "winType": 1,
     "winParam": 25,
-    "winDesc": "25次内破坏所有训练靶",
+    "winDesc": "25次内破坏4波训练靶",
     "isEnergy": 0,
     "isGravity": 1,
     "res": "300401_hongnujian/300401_hongnujian"
@@ -36,7 +36,7 @@
     "lifeShow": 1,
     "winType": 2,
     "winParam": 0,
-    "winDesc": "坚守待援，坚持90秒",
+    "winDesc": "坚守待援，坚持1:30",
     "isEnergy": 1,
     "isGravity": 1,
     "res": "300401_hongnujian/300401_hongnujian"
@@ -50,7 +50,7 @@
     "lifeShow": 1,
     "winType": 2,
     "winParam": 0,
-    "winDesc": "坚守待援，坚持90秒",
+    "winDesc": "坚守待援，坚持1:30",
     "isEnergy": 1,
     "isGravity": 0,
     "res": "v4a0_315501_sxnwhnj/315501_sxnwhnj"

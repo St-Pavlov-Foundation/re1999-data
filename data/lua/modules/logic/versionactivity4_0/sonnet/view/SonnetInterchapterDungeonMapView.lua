@@ -212,12 +212,14 @@ end
 
 function SonnetInterchapterDungeonMapView:onOpenView(viewName)
 	if viewName == ViewName.DungeonMapLevelView then
+		gohelper.setActive(self._btntask, false)
 		self:_playAnim("close", 0, 0)
 	end
 end
 
 function SonnetInterchapterDungeonMapView:onCloseViewFinish(viewName)
 	if viewName == ViewName.DungeonMapLevelView then
+		gohelper.setActive(self._btntask, self.chapterId == DungeonEnum.ChapterId.Sonnet)
 		self:_playAnim("open", 0, 0)
 		self:_updateReddot()
 	end
@@ -233,8 +235,10 @@ function SonnetInterchapterDungeonMapView:setEpisodeListVisible(value)
 	if show then
 		self:_playAnim2("open", 0, 0)
 		self:_updateReddot()
+		gohelper.setActive(self._btntask, self.chapterId == DungeonEnum.ChapterId.Sonnet)
 	else
 		self:_playAnim2("close", 0, 0)
+		gohelper.setActive(self._btntask, false)
 	end
 end
 

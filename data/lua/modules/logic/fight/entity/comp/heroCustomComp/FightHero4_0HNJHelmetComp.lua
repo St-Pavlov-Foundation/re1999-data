@@ -15,9 +15,74 @@ function FightHero4_0HNJHelmetComp:init(entity, helmetCo)
 	self.side = self.entityMo.side
 	self.helmetEntityName = "SPECIAL_HNJ_HELMET"
 	self.helmetEntityId = self.entityId .. "_" .. self.helmetEntityName
+	self.started = false
+	self.updateListener = UpdateBeat:CreateListener(self._update, self)
 
 	self:addEventListeners()
 	self:refreshSpine()
+end
+
+function FightHero4_0HNJHelmetComp:startUpdateLister()
+	if self.started then
+		return
+	end
+
+	self.started = true
+
+	UpdateBeat:AddListener(self.updateListener)
+end
+
+function FightHero4_0HNJHelmetComp:stopUpdateLister()
+	if self.started then
+		UpdateBeat:RemoveListener(self.updateListener)
+
+		self.started = false
+	end
+end
+
+function FightHero4_0HNJHelmetComp:_update()
+	if not self.started then
+		return
+	end
+
+	if not self.entity then
+		return
+	end
+
+	if not self.helmetEntity then
+		return
+	end
+
+	local trackEntry = self:getTrackEntry(self.entity)
+
+	if not trackEntry then
+		return
+	end
+
+	local animName = trackEntry:GetCurAnimationName()
+
+	if animName ~= self._lastSyncedAnim then
+		self.helmetEntity.spine:playAnim(animName, trackEntry.Loop, true)
+
+		self.helmetTrackEntry = self:getTrackEntry(self.helmetEntity)
+		self._lastSyncedAnim = animName
+	end
+
+	if self.helmetTrackEntry then
+		self.helmetTrackEntry.TrackTime = trackEntry.TrackTime
+	end
+end
+
+function FightHero4_0HNJHelmetComp:getTrackEntry(entity)
+	if not entity then
+		return
+	end
+
+	local anim = entity.spine:getSkeletonAnim()
+
+	if anim then
+		return anim.state:GetCurrent(0)
+	end
 end
 
 function FightHero4_0HNJHelmetComp:addEventListeners()
@@ -29,21 +94,6 @@ function FightHero4_0HNJHelmetComp:addEventListeners()
 	self:addEventCb(FightController.instance, FightEvent.OnEntityPosChange, self.onEntityPosChange, self)
 	self:addEventCb(FightController.instance, FightEvent.OnEntitySpinePosChange, self.onEntitySpinePosChange, self)
 	self:addEventCb(FightController.instance, FightEvent.SetEntityAlpha, self.onSetEntityAlpha, self)
-	self.entity.spine:addAnimEventCallback(self.onAnimCallback, self)
-end
-
-function FightHero4_0HNJHelmetComp:onAnimCallback(actionName, eventName)
-	if not self.helmetEntity then
-		return
-	end
-
-	if eventName == "Start" then
-		if actionName == "hit" then
-			self.helmetEntity.spine:play(actionName, false)
-		else
-			self.helmetEntity.spine:play(actionName, true)
-		end
-	end
 end
 
 function FightHero4_0HNJHelmetComp:onSetEntityAlpha(entityId, active, duration)
@@ -174,7 +224,7 @@ function FightHero4_0HNJHelmetComp:showHelmetEntity()
 	end
 
 	self.helmetEntity:resetStandPos()
-	self.entity:resetAnimState(true)
+	self:startUpdateLister()
 
 	local effectRes = self.helmetCo.effect
 
@@ -191,18 +241,19 @@ function FightHero4_0HNJHelmetComp:removeSpine()
 		return
 	end
 
+	self:stopUpdateLister()
 	FightGameMgr.entityMgr:delEntity(self.helmetEntityId)
 
 	self.helmetEntity = nil
+	self.helmetTrackEntry = nil
+	self._lastSyncedAnim = nil
 	self.spineLoadedDone = nil
 end
 
 function FightHero4_0HNJHelmetComp:dispose()
 	self:removeSpine()
 
-	if self.entity then
-		self.entity.spine:removeAnimEventCallback(self.onAnimCallback, self)
-	end
+	self.updateListener = nil
 
 	self:__onDispose()
 end

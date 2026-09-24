@@ -23,6 +23,8 @@ function MatchGameFightModel:reInitData()
 	self.skillExcuteMap = {}
 	self.skillElementDropRateMap = {}
 	self.curGameTime = 0
+	self.isGuiding = false
+	self.heroCarrerMap = {}
 end
 
 function MatchGameFightModel:initConfigData(episodeId)
@@ -59,6 +61,7 @@ function MatchGameFightModel:initConfigData(episodeId)
 	self.weakAttackNum = 0
 	self.totalCureNum = 0
 	self.totalSkillUseNum = 0
+	self.totalHeroDamage = 0
 end
 
 function MatchGameFightModel:getGameInfoData()
@@ -390,6 +393,10 @@ function MatchGameFightModel:getSkillElementDropRate(type, param)
 	return self.skillElementDropRateMap[elementId]
 end
 
+function MatchGameFightModel:getSkillElementDropRateMap()
+	return self.skillElementDropRateMap
+end
+
 function MatchGameFightModel:getRandomBeadType(onlyBead)
 	local dropTemplateId = self.gameInfoData and self.gameInfoData.gameConfig and self.gameInfoData.gameConfig.gemTemplateId
 	local dropRateData = dropTemplateId and MatchGameFightConfig.instance:getDropRateConfig(dropTemplateId)
@@ -474,14 +481,21 @@ function MatchGameFightModel:getBoxDropElement()
 	return MatchGameFightEnum.ElementItemType.Empty
 end
 
+function MatchGameFightModel:restartGame(episodeId)
+	local restartEpisodeId = episodeId or self.gameInfoData.episodeId
+
+	self:initConfigData(restartEpisodeId)
+	self:initHeroFightInfo()
+end
+
 function MatchGameFightModel:initHeroFightInfo()
 	local heroGroupMap = MatchGameHeroGroupModel.instance:getCurTeamHeroes(true)
 	local maxRoleNum = MatchGameConfig.instance:getEpisodeRoleNum(self.gameInfoData.episodeId)
 
-	for posIndex, heroSingleGroupMo in ipairs(heroGroupMap) do
+	for posIndex, heroSingleGroupMo in pairs(heroGroupMap) do
 		local heroFightMo = self.heroFightInfoMap[posIndex]
 
-		if not heroFightMo and posIndex <= maxRoleNum then
+		if not heroFightMo and posIndex <= maxRoleNum and heroSingleGroupMo and heroSingleGroupMo.id ~= 0 then
 			heroFightMo = MatchGameHeroFightMo.New()
 
 			heroFightMo:initData({
@@ -507,12 +521,21 @@ function MatchGameFightModel:setMatchElementNum(type, param)
 
 	self.matchElementNunMap[elementId] = self.matchElementNunMap[elementId] or 0
 	self.matchElementNunMap[elementId] = self.matchElementNunMap[elementId] + 1
-	self.skillExcuteMatchElementNumMap[elementId] = self.skillExcuteMatchElementNumMap[elementId] or 0
-	self.skillExcuteMatchElementNumMap[elementId] = self.skillExcuteMatchElementNumMap[elementId] + 1
 end
 
 function MatchGameFightModel:getMatchElementNum(elementId)
 	return self.matchElementNunMap[elementId] or 0
+end
+
+function MatchGameFightModel:setSkillExcuteMatchElementNum(type, param)
+	local elementId = MatchGameFightConfig.instance:getElementId(type, param)
+
+	if not elementId then
+		return
+	end
+
+	self.skillExcuteMatchElementNumMap[elementId] = self.skillExcuteMatchElementNumMap[elementId] or 0
+	self.skillExcuteMatchElementNumMap[elementId] = self.skillExcuteMatchElementNumMap[elementId] + 1
 end
 
 function MatchGameFightModel:getSkillExcuteMatchElementNum(skillElementId)
@@ -535,12 +558,8 @@ function MatchGameFightModel:getSkillExcuteMatchElementNum(skillElementId)
 	return self.skillExcuteMatchElementNumMap[skillElementId] or 0
 end
 
-function MatchGameFightModel:cleanSkillExcuteMatchElementNum(elementId)
-	if elementId == 0 then
-		self.skillExcuteMatchElementNumMap = {}
-	else
-		self.skillExcuteMatchElementNumMap[elementId] = 0
-	end
+function MatchGameFightModel:cleanSkillExcuteMatchElementNum()
+	self.skillExcuteMatchElementNumMap = {}
 end
 
 function MatchGameFightModel:cleanMatchGameData()
@@ -551,10 +570,6 @@ function MatchGameFightModel:cleanMatchGameData()
 	self.skillElementDropRateMap = {}
 	self.heroFightInfoMap = {}
 	self.curGameTime = 0
-	self.maxChainNum = 0
-	self.weakAttackNum = 0
-	self.totalCureNum = 0
-	self.totalSkillUseNum = 0
 end
 
 function MatchGameFightModel:addPendingSkill(skillConfig, skillUserMo)
@@ -599,6 +614,18 @@ function MatchGameFightModel:removeExcutedSkill(skillId)
 end
 
 function MatchGameFightModel:setElementDropRateMap(elementId, dropRate)
+	local elementConfig = MatchGameFightConfig.instance:getElementConfig(elementId)
+
+	if elementConfig.type == MatchGameFightEnum.ElementItemType.Bead then
+		for curElementId, dropRate in pairs(self.skillElementDropRateMap) do
+			local curElementConfig = MatchGameFightConfig.instance:getElementConfig(curElementId)
+
+			if curElementConfig.type == MatchGameFightEnum.ElementItemType.Bead then
+				self.skillElementDropRateMap[curElementId] = nil
+			end
+		end
+	end
+
 	self.skillElementDropRateMap[elementId] = dropRate
 end
 
@@ -664,6 +691,48 @@ end
 
 function MatchGameFightModel:getTotalSkillUseNum()
 	return self.totalSkillUseNum
+end
+
+function MatchGameFightModel:setGuideState(state)
+	self.isGuiding = state
+end
+
+function MatchGameFightModel:getGuideState()
+	return self.isGuiding
+end
+
+function MatchGameFightModel:setFeverElementPath(posXIndex, posYIndex)
+	self.feverElementPath = string.format("UIRoot/POPUP_TOP/MatchGameFightView/root/planeRoot/#go_plane/#go_planeContent/planeItem%d_%d/btn_click", posXIndex, posYIndex)
+end
+
+function MatchGameFightModel:getFeverElementPath()
+	return self.feverElementPath or ""
+end
+
+function MatchGameFightModel:addTotalHeroDamage(addDamage)
+	self.totalHeroDamage = self.totalHeroDamage + addDamage
+end
+
+function MatchGameFightModel:getTotalHeroDamage()
+	return self.totalHeroDamage
+end
+
+function MatchGameFightModel:getHeroCareerMap()
+	if self.heroCarrerMap and next(self.heroCarrerMap) then
+		return self.heroCarrerMap
+	end
+
+	if self.heroFightInfoMap then
+		for _, heroFightMo in pairs(self.heroFightInfoMap) do
+			local career = heroFightMo and heroFightMo.career
+
+			if career and career >= 1 and career <= MatchGameFightEnum.BeadTypeCount then
+				self.heroCarrerMap[career] = true
+			end
+		end
+	end
+
+	return self.heroCarrerMap
 end
 
 MatchGameFightModel.instance = MatchGameFightModel.New()

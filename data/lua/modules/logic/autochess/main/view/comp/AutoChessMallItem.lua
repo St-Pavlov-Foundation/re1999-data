@@ -306,4 +306,14 @@ function AutoChessMallItem:onStepFinish(type)
 	end
 end
 
+function AutoChessMallItem:checkLavaChess()
+	if self.config and self.config.race == AutoChessStrEnum.ChessRace.Lava then
+		local duration = self.effectComp:playEffect(30016)
+
+		return true, duration
+	end
+
+	return false
+end
+
 return AutoChessMallItem

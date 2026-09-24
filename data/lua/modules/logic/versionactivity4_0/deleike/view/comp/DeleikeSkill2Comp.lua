@@ -4,7 +4,6 @@ module("modules.logic.versionactivity4_0.deleike.view.comp.DeleikeSkill2Comp", p
 
 local DeleikeSkill2Comp = class("DeleikeSkill2Comp", LuaCompBase)
 local SIDE_REP_DIST = 100
-local DRAG_ZONE_THRESHOLD = 10
 
 function DeleikeSkill2Comp:init(go)
 	self.skillId = 2
@@ -20,8 +19,7 @@ function DeleikeSkill2Comp:init(go)
 		self.childItems[v] = item
 	end
 
-	self:setLineStatus(DeleikeEnum.LineStatus.CanCut)
-
+	self.status = nil
 	self.dragActive = false
 	self._isDragging = false
 	self._dragPerpX, self._dragPerpY = 0, 1
@@ -29,16 +27,22 @@ function DeleikeSkill2Comp:init(go)
 	self._dragDirX, self._dragDirY = 1, 0
 	self._dragLength = 1
 	self._shiftedUnits = {}
-	self._goDragMask = nil
-	self._dragMaskX, self._dragMaskY = 0, 0
 	self._pressMouseProj = 0
 	self._pressDotProj = 0
 	self._lastShift = 0
+
+	local goSceneRoot = DeleikeGameMgr.instance.sceneRoot
+
+	self._goDragMask = gohelper.findChild(goSceneRoot, "go_SkillMask")
+	self._trsMask = self._goDragMask.transform
+	self._goCanCut = gohelper.findChild(self._goDragMask, "canCut")
+	self._goMaskEffect = gohelper.findChild(self._goDragMask, "Effect")
+	self._dragMaskX, self._dragMaskY = 0, 0
 end
 
 function DeleikeSkill2Comp:onDestroy()
 	TaskDispatcher.cancelTask(self.delayHide, self)
-	TaskDispatcher.cancelTask(self._hideDragMask, self)
+	TaskDispatcher.cancelTask(self._hideMaskEffect, self)
 end
 
 function DeleikeSkill2Comp:resetForReuse()
@@ -46,7 +50,6 @@ function DeleikeSkill2Comp:resetForReuse()
 	self._isDragging = false
 	self._shiftedUnits = {}
 	self._lastShift = 0
-	self._goDragMask = nil
 end
 
 function DeleikeSkill2Comp:setLineStatus(status)
@@ -54,15 +57,15 @@ function DeleikeSkill2Comp:setLineStatus(status)
 		return
 	end
 
-	self.status = status
-
 	for k, item in pairs(self.childItems) do
 		gohelper.setActive(item.go, k == status)
-
-		if k == status then
-			item.anim:Play("switch_in", 0, 0)
-		end
 	end
+
+	if self.status then
+		self.childItems[status].anim:Play("switch_in", 0, 0)
+	end
+
+	self.status = status
 end
 
 function DeleikeSkill2Comp:onTrigger(leftQuad, rightQuad, centerX, centerY, dirX, dirY, length)
@@ -149,6 +152,7 @@ function DeleikeSkill2Comp:processDrag(worldX, worldY, isPressed)
 		self._pressDotProj = self._lastShift
 
 		DeleikeController.instance:dispatchEvent(DeleikeEvent.Skill2FirstDrag)
+		AudioMgr.instance:trigger(AudioEnum4_0.Deleike.skill2_drag_tile)
 
 		return
 	end
@@ -166,12 +170,12 @@ function DeleikeSkill2Comp:processDrag(worldX, worldY, isPressed)
 			self._dragMaskX = self._dragMaskX + self._dragPerpX * deltaShift
 			self._dragMaskY = self._dragMaskY + self._dragPerpY * deltaShift
 
-			recthelper.setAnchor(self._goDragMask.transform, self._dragMaskX, self._dragMaskY)
+			recthelper.setAnchor(self._trsMask, self._dragMaskX, self._dragMaskY)
 		end
 	end
 end
 
-function DeleikeSkill2Comp:cancelDrag()
+function DeleikeSkill2Comp:cancelDrag(isCancle)
 	if not self.dragActive then
 		return
 	end
@@ -182,65 +186,55 @@ function DeleikeSkill2Comp:cancelDrag()
 	self._lastShift = 0
 
 	DeleikeController.instance:dispatchEvent(DeleikeEvent.Skill2DragStateChanged, false)
+	gohelper.setActive(self._goCanCut, false)
 
-	if self._goDragMask then
-		self._goMaskEffect = gohelper.findChild(self._goDragMask, "Effect")
-
+	if not isCancle then
+		AudioMgr.instance:trigger(AudioEnum4_0.Deleike.skill2_drag_confirm)
 		gohelper.setActive(self._goMaskEffect, true)
-		TaskDispatcher.runDelay(self._hideDragMask, self, 1)
+		TaskDispatcher.runDelay(self._hideMaskEffect, self, 1)
 	end
 end
 
 function DeleikeSkill2Comp:_showDragMask(centerX, centerY, perpX, perpY)
-	local goMask = DeleikeGameMgr.instance.goSkillMask
-
-	if not goMask or gohelper.isNil(goMask) then
-		return
-	end
-
-	self._goDragMask = goMask
 	self._dragMaskX, self._dragMaskY = centerX, centerY
 
-	recthelper.setAnchor(goMask.transform, centerX, centerY)
-	transformhelper.setLocalRotation(goMask.transform, 0, 0, math.deg(math.atan2(perpY, perpX)) + 180)
-	gohelper.setActive(goMask, true)
+	recthelper.setAnchor(self._trsMask, centerX, centerY)
+	transformhelper.setLocalRotation(self._trsMask, 0, 0, math.deg(math.atan2(perpY, perpX)) + 180)
+	gohelper.setActive(self._goCanCut, true)
 end
 
-function DeleikeSkill2Comp:_hideDragMask()
+function DeleikeSkill2Comp:_hideMaskEffect()
 	gohelper.setActive(self._goMaskEffect, false)
-	gohelper.setActive(self._goDragMask, false)
-
-	self._goMaskEffect = nil
-	self._goDragMask = nil
-end
-
-function DeleikeSkill2Comp:isPlayerInDragZone(px, py)
-	if not self.dragActive then
-		return false
-	end
-
-	local bx = self._dragOriginX + self._dragDirX * self._dragLength
-	local by = self._dragOriginY + self._dragDirY * self._dragLength
-	local bProj = bx * self._dragDirX + by * self._dragDirY
-	local playerProj = px * self._dragDirX + py * self._dragDirY
-
-	return playerProj - bProj > DRAG_ZONE_THRESHOLD
 end
 
 function DeleikeSkill2Comp:fadeIn()
 	TaskDispatcher.cancelTask(self.delayHide, self)
 	gohelper.setActive(self.go, true)
 
+	if not self.status then
+		return
+	end
+
 	local item = self.childItems[self.status]
 
-	item.anim:Play("open", 0, 0)
+	if item and item.go.activeInHierarchy then
+		item.anim:Play("open", 0, 0)
+	end
 end
 
 function DeleikeSkill2Comp:fadeOut()
-	local item = self.childItems[self.status]
+	if self.status then
+		local item = self.childItems[self.status]
 
-	item.anim:Play("close", 0, 0)
-	TaskDispatcher.runDelay(self.delayHide, self, 0.16)
+		if item and item.go.activeInHierarchy then
+			item.anim:Play("close", 0, 0)
+			TaskDispatcher.runDelay(self.delayHide, self, 0.16)
+		else
+			self:delayHide()
+		end
+	else
+		self:delayHide()
+	end
 end
 
 function DeleikeSkill2Comp:delayHide()

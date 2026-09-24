@@ -5,12 +5,16 @@ module("modules.logic.matchgame.controller.MatchGameHelper", package.seeall)
 local MatchGameHelper = _M
 
 function MatchGameHelper.setCharacterElement(elementId, imageIcon, txtName)
+	local elementCo = lua_activity244_element.configDict[elementId]
+
 	if imageIcon then
-		UISpriteSetMgr.instance:setMatchGameSprite(imageIcon, string.format("icon_career%s", elementId), true)
+		local icon = elementCo and elementCo.icon
+
+		UISpriteSetMgr.instance:setMatchGameSprite(imageIcon, icon, true)
 	end
 
 	if txtName then
-		txtName.text = luaLang("p_herogroupcareertip_career" .. elementId)
+		txtName.text = elementCo and elementCo.name
 	end
 end
 
@@ -108,6 +112,20 @@ function MatchGameHelper.isChapterUnlock(chapterId)
 	return MatchGameHelper.isConditionUnlock(chapterCo.unlock)
 end
 
+function MatchGameHelper.isCharacterUnlock(characterId)
+	local characterCo = lua_activity244_character.configDict[characterId]
+	local unlockEpisodeId = characterCo and tonumber(characterCo.unlockType)
+
+	if unlockEpisodeId and unlockEpisodeId ~= 0 then
+		local unlockEpisodeCo = lua_activity244_episode.configDict[unlockEpisodeId]
+		local isUnlock = MatchGameModel.instance:getEpisodeStatus(unlockEpisodeId) >= MatchGameEnum.EpisodeStatus.Finish
+
+		return isUnlock, ToastEnum.MatchGameNotPassEpisode, unlockEpisodeCo and unlockEpisodeCo.levelName
+	end
+
+	return true
+end
+
 function MatchGameHelper.isConditionUnlock(conditionStr)
 	local unlockList = GameUtil.splitString2(conditionStr)
 
@@ -133,20 +151,65 @@ end
 
 function MatchGameHelper._isConditionPass_StarNum(conditionParam)
 	local starNum = tonumber(conditionParam[2]) or 0
+	local unlock = starNum <= MatchGameModel.instance:getCurRewardScore(MatchGameEnum.RewardType.Normal)
 
-	return starNum <= MatchGameModel.instance:getCurRewardScore(MatchGameEnum.RewardType.Normal)
+	return unlock, ToastEnum.MatchGameNotGetStarNum, starNum
 end
 
 function MatchGameHelper._isConditionPass_PassEpisode(conditionParam)
 	local episodeId = tonumber(conditionParam[2]) or 0
+	local episodeCo = lua_activity244_episode.configDict[episodeId]
 	local status = MatchGameModel.instance:getEpisodeStatus(episodeId)
+	local unlock = status == MatchGameEnum.EpisodeStatus.Finish
 
-	return status == MatchGameEnum.EpisodeStatus.Finish
+	return unlock, ToastEnum.MatchGameNotPassEpisode, episodeCo and episodeCo.levelName
 end
 
 MatchGameHelper.unlockParamFuncMap = {
 	[MatchGameEnum.UnlockType.StarNum] = MatchGameHelper._isConditionPass_StarNum,
 	[MatchGameEnum.UnlockType.PassEpisode] = MatchGameHelper._isConditionPass_PassEpisode
+}
+
+function MatchGameHelper.isTalentTeamConditionActive(singleList, conditionStr)
+	if string.nilorempty(conditionStr) then
+		return
+	end
+
+	local conditionList = GameUtil.splitString2(conditionStr, true)
+
+	for _, conditionParam in ipairs(conditionList) do
+		local conditionType = conditionParam[1]
+		local checkFunc = MatchGameHelper.teamConditionCheckFuncMap[conditionType]
+		local isPass = checkFunc and checkFunc(singleList, conditionParam)
+
+		if not isPass then
+			return
+		end
+	end
+
+	return true
+end
+
+function MatchGameHelper._isTeamConditionActive_ElementNum(singleMap, conditionParam)
+	local curNum = 0
+	local targetNum = conditionParam[2] or 0
+	local elementId = conditionParam[3] or 0
+
+	for _, singleMo in pairs(singleMap) do
+		local heroCo = singleMo.heroMo and singleMo.heroMo.heroCo
+
+		if heroCo and heroCo.elementId == elementId then
+			curNum = curNum + 1
+		end
+
+		if targetNum <= curNum then
+			return true
+		end
+	end
+end
+
+MatchGameHelper.teamConditionCheckFuncMap = {
+	[MatchGameEnum.TalentTeamConditionType.ElementNum] = MatchGameHelper._isTeamConditionActive_ElementNum
 }
 
 return MatchGameHelper

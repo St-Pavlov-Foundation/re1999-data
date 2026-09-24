@@ -143,6 +143,8 @@ function FightNameUIToughnessIconMgr:onPlayNameUIToughnessBrokenRewardEffect(ent
 		return
 	end
 
+	self.animator.speed = FightModel.instance:getSpeed()
+
 	self.animator:Play("boom", 0, 0)
 end
 

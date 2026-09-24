@@ -19,6 +19,8 @@ function AutoChessFightMo:updateMasterSkill(skill)
 end
 
 function AutoChessFightMo:unlockMasterSkill(uid)
+	uid = tonumber(uid)
+
 	if self.mySideMaster.uid == uid then
 		self.mySideMaster.skill.unlock = true
 	elseif self.enemyMaster.uid == uid then
@@ -78,18 +80,20 @@ end
 function AutoChessFightMo:getChessPosition1(uid)
 	uid = tonumber(uid)
 
-	local unWarzone = self:getUnwarZone()
-
-	for _, chessPos in ipairs(unWarzone.positions) do
-		if chessPos.chess.uid == uid then
-			return chessPos, unWarzone.id
-		end
-	end
-
 	for _, warZone in ipairs(self.warZones) do
 		for _, chessPos in ipairs(warZone.positions) do
 			if chessPos.chess.uid == uid then
 				return chessPos, warZone.id
+			end
+		end
+	end
+
+	local unWarzone = self:getUnwarZone()
+
+	if unWarzone then
+		for _, chessPos in ipairs(unWarzone.positions) do
+			if chessPos.chess.uid == uid then
+				return chessPos, unWarzone.id
 			end
 		end
 	end

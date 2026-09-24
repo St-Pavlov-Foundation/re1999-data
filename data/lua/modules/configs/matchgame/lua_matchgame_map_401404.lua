@@ -46,15 +46,15 @@ return {
 		},
 		{
 			posIndex = "2#1",
-			itemType = 0,
+			itemType = 1,
 			id = 8,
-			param = 1
+			param = 2
 		},
 		{
 			posIndex = "2#2",
-			itemType = 0,
+			itemType = 1,
 			id = 9,
-			param = 1
+			param = 2
 		},
 		{
 			posIndex = "2#3",
@@ -76,27 +76,27 @@ return {
 		},
 		{
 			posIndex = "2#6",
-			itemType = 0,
+			itemType = 1,
 			id = 13,
-			param = 1
+			param = 2
 		},
 		{
 			posIndex = "2#7",
-			itemType = 0,
+			itemType = 1,
 			id = 14,
-			param = 1
+			param = 2
 		},
 		{
 			posIndex = "3#1",
-			itemType = 0,
+			itemType = 1,
 			id = 15,
-			param = 1
+			param = 2
 		},
 		{
 			posIndex = "3#2",
-			itemType = 0,
+			itemType = 1,
 			id = 16,
-			param = 1
+			param = 2
 		},
 		{
 			posIndex = "3#3",
@@ -118,15 +118,15 @@ return {
 		},
 		{
 			posIndex = "3#6",
-			itemType = 0,
+			itemType = 1,
 			id = 20,
-			param = 1
+			param = 2
 		},
 		{
 			posIndex = "3#7",
-			itemType = 0,
+			itemType = 1,
 			id = 21,
-			param = 1
+			param = 2
 		},
 		{
 			posIndex = "4#1",
@@ -172,15 +172,15 @@ return {
 		},
 		{
 			posIndex = "5#1",
-			itemType = 0,
+			itemType = 1,
 			id = 29,
-			param = 1
+			param = 2
 		},
 		{
 			posIndex = "5#2",
-			itemType = 0,
+			itemType = 1,
 			id = 30,
-			param = 1
+			param = 2
 		},
 		{
 			posIndex = "5#3",
@@ -202,27 +202,27 @@ return {
 		},
 		{
 			posIndex = "5#6",
-			itemType = 0,
+			itemType = 1,
 			id = 34,
-			param = 1
+			param = 2
 		},
 		{
 			posIndex = "5#7",
-			itemType = 0,
+			itemType = 1,
 			id = 35,
-			param = 1
+			param = 2
 		},
 		{
 			posIndex = "6#1",
-			itemType = 0,
+			itemType = 1,
 			id = 36,
-			param = 1
+			param = 2
 		},
 		{
 			posIndex = "6#2",
-			itemType = 0,
+			itemType = 1,
 			id = 37,
-			param = 1
+			param = 2
 		},
 		{
 			posIndex = "6#3",
@@ -244,15 +244,15 @@ return {
 		},
 		{
 			posIndex = "6#6",
-			itemType = 0,
+			itemType = 1,
 			id = 41,
-			param = 1
+			param = 2
 		},
 		{
 			posIndex = "6#7",
-			itemType = 0,
+			itemType = 1,
 			id = 42,
-			param = 1
+			param = 2
 		},
 		{
 			posIndex = "7#1",

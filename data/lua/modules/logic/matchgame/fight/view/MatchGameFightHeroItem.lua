@@ -13,6 +13,7 @@ function MatchGameFightHeroItem:ctor(param)
 	self.startFlyPos.x = self.startFlyPos.x + 60
 	self.startFlyPos.y = self.startFlyPos.y + 100
 	self.endFlyPos = param.endFlyPos
+	self.roleMaterial = UnityEngine.GameObject.Instantiate(param.roleMaterial)
 end
 
 function MatchGameFightHeroItem:init(go)
@@ -20,6 +21,7 @@ function MatchGameFightHeroItem:init(go)
 
 	self.go = go
 	self.simageHero = gohelper.findChildSingleImage(self.go, "hero/ani/#simage_hero")
+	self.imageHero = gohelper.findChildImage(self.go, "hero/ani/#simage_hero")
 	self.goMesh = gohelper.findChild(self.go, "hero/ani/go_mesh")
 	self.goAttack = gohelper.findChild(self.go, "go_attack")
 	self.txtAttack = gohelper.findChildText(self.go, "go_attack/txt_attack")
@@ -50,23 +52,41 @@ function MatchGameFightHeroItem:removeEventListeners()
 	return
 end
 
-function MatchGameFightHeroItem:refreshUI(heroFightMo)
+function MatchGameFightHeroItem:refreshUI(heroFightMo, isResetRoundData)
 	self.heroFightMo = heroFightMo or self.heroFightMo
 
 	gohelper.setActive(self.go, heroFightMo.id ~= 0)
 
-	self.txtAttack.text = heroFightMo.damage
+	if isResetRoundData then
+		self.lastDamage = heroFightMo.damage
+	end
+
+	self.txtAttack.text = heroFightMo.damage > 0 and heroFightMo.damage or ""
 
 	self:playAttackTxtAnim()
 	gohelper.setActive(self.goAttackBgNormal, heroFightMo.damage < MatchGameFightEnum.HeroHeavyDamage)
 	gohelper.setActive(self.gpAttackBgMax, heroFightMo.damage >= MatchGameFightEnum.HeroHeavyDamage)
 	self.simageHero:LoadImage(self.heroFightMo.config.image, self.setHeroImageSize, self)
 
+	self.imageHero.material = self.roleMaterial
+
 	if not self.heroMeshComp then
 		self.heroMeshComp = MonoHelper.addNoUpdateLuaComOnceToGo(self.goMesh, MatchGameFightRoleMesh)
 	end
 
-	self.heroMeshComp:refreshMesh(self.heroFightMo.config.mesh)
+	self.heroMeshComp:refreshMesh(self.heroFightMo.config)
+end
+
+function MatchGameFightHeroItem:resetHeroItem(heroFightMo)
+	self.heroFightMo = heroFightMo or self.heroFightMo
+
+	gohelper.setActive(self.go, heroFightMo.id ~= 0)
+
+	self.txtAttack.text = heroFightMo.damage > 0 and heroFightMo.damage or ""
+	self.lastDamage = heroFightMo.damage
+
+	gohelper.setActive(self.goAttackBgNormal, heroFightMo.damage < MatchGameFightEnum.HeroHeavyDamage)
+	gohelper.setActive(self.gpAttackBgMax, heroFightMo.damage >= MatchGameFightEnum.HeroHeavyDamage)
 end
 
 function MatchGameFightHeroItem:playAttackTxtAnim()
@@ -104,6 +124,9 @@ function MatchGameFightHeroItem:playEffectFlying(attackNum)
 	self.attackNum = attackNum
 
 	gohelper.setActive(self.goAttack, false)
+
+	self.txtAttack.text = ""
+
 	gohelper.setActive(self.goAttackFlyItem.go, true)
 	gohelper.setActive(self.goAttackFlyItem.flyGO, false)
 	self.goAttackFlyItem.comp:SetOneFlyItemBeginCallback(self.onFlyBegin, self, self.goAttackFlyItem)
@@ -114,6 +137,7 @@ function MatchGameFightHeroItem:playEffectFlying(attackNum)
 
 	gohelper.setActive(self.goAttackFlyItem.compGO, true)
 	self.goAttackFlyItem.comp:StartFlying()
+	AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_skill_fly)
 end
 
 function MatchGameFightHeroItem:onFlyBegin(goAttackFlyItem, flyObjct)
@@ -161,6 +185,10 @@ function MatchGameFightHeroItem:onDestroy()
 	self.simageHero:UnLoadImage()
 	TaskDispatcher.cancelTask(self.hideAttackGO, self)
 	TaskDispatcher.cancelTask(self.hideAttackFlyItem, self)
+
+	if self.roleMaterial then
+		UnityEngine.Object.Destroy(self.roleMaterial)
+	end
 end
 
 return MatchGameFightHeroItem

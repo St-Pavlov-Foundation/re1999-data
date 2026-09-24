@@ -180,6 +180,16 @@ function HeroGroupEditView:_btnconfirmOnClick()
 					end
 				end
 			end
+
+			for index, heroUid in pairs(newHeroUids) do
+				local editAssistMoList = HeroGroupModel.instance:getAssistMoList(true)
+
+				for _, pickAssistHeroMo in ipairs(editAssistMoList) do
+					if pickAssistHeroMo.heroUid == heroUid then
+						HeroSingleGroupModel.instance:removeFrom(index)
+					end
+				end
+			end
 		end
 
 		self:_saveQuickGroupInfo()
@@ -214,6 +224,8 @@ function HeroGroupEditView:_btnconfirmOnClick()
 		end
 
 		if isEditorAssist then
+			HeroSingleGroupModel.instance:removeFrom(self._singleGroupMOId)
+			HeroGroupModel.instance:replaceSingleGroup()
 			self:_saveCurGroupInfo()
 			self:closeThis()
 
@@ -767,7 +779,6 @@ function HeroGroupEditView:_saveCurGroupInfo()
 
 					if heroMO and heroMO.heroId == editorAssistMo.heroId then
 						HeroSingleGroupModel.instance:remove(heroMO.heroUid)
-						HeroGroupModel.instance:saveCurGroupData()
 
 						index = i
 
@@ -776,8 +787,13 @@ function HeroGroupEditView:_saveCurGroupInfo()
 				end
 			end
 
-			HeroGroupModel.instance:setAssistMo(editorAssistMo, index or self._singleGroupMOId, assistParams)
+			local assistPos = index or self._singleGroupMOId
+
+			HeroSingleGroupModel.instance:removeFrom(assistPos)
+			HeroGroupModel.instance:replaceSingleGroup()
+			HeroGroupModel.instance:setAssistMo(editorAssistMo, assistPos, assistParams)
 			HeroGroupController.instance:dispatchEvent(HeroGroupEvent.OnModifyHeroGroup)
+			HeroGroupModel.instance:saveCurGroupData()
 
 			return
 		end
@@ -1133,6 +1149,8 @@ function HeroGroupEditView:onClose()
 	if self._skillContainer then
 		self._skillContainer:onClose()
 	end
+
+	HeroGroupEditListModel.instance:setQuickEditState(false)
 end
 
 function HeroGroupEditView:_onAudioTrigger(audioId)
@@ -1188,10 +1206,6 @@ function HeroGroupEditView:_onFilterList(param)
 	self:_refreshCurScrollBySort()
 	ViewMgr.instance:closeView(ViewName.CharacterLevelUpView)
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_hero_card_property)
-end
-
-function HeroGroupEditView:onClose()
-	HeroGroupEditListModel.instance:setQuickEditState(false)
 end
 
 function HeroGroupEditView:onDestroyView()

@@ -3,8 +3,14 @@
 module("modules.logic.decorate.view.DecoratePackageLeftView", package.seeall)
 
 local DecoratePackageLeftView = class("DecoratePackageLeftView", BaseView)
+local CELL_HEIGHT = 168
+local CELL_SPACE_V = 16
+local START_SPACE = 100
+local END_SPACE = 100
 
 function DecoratePackageLeftView:onInitView()
+	self._goScroll = gohelper.findChild(self.viewGO, "root/Scrollview")
+	self._goContent = gohelper.findChild(self.viewGO, "root/Scrollview/Viewport/Content")
 	self._goTabitem = gohelper.findChild(self.viewGO, "root/Scrollview/Viewport/Content/#go_Tabitem")
 
 	if self._editableInitView then
@@ -39,7 +45,7 @@ end
 function DecoratePackageLeftView:onOpen()
 	self._goodsId = self.viewParam.goodsId
 	self._decorateConfig = DecorateStoreConfig.instance:getDecorateConfig(self._goodsId)
-	self._goodsIds = DecorateStoreModel.instance:getV3a4PackageStoreGoodsIds()
+	self._goodsIds = self.viewParam.goodsIds
 	self._goodsIdConfigs = {}
 	self._selectTabIndex = 1
 
@@ -63,6 +69,10 @@ function DecoratePackageLeftView:_refreshSelectTab(index)
 	for i, item in pairs(self._tabItems) do
 		gohelper.setActive(item.goselect, i == index)
 		gohelper.setActive(item.gounselect, i ~= index)
+
+		local scale = i == index and 1.16 or 1
+
+		transformhelper.setLocalScale(item.go.transform, scale, scale, scale)
 	end
 end
 
@@ -71,7 +81,7 @@ function DecoratePackageLeftView:onRefresh(list)
 		return
 	end
 
-	if list then
+	if list and #list > 1 then
 		for i, co in ipairs(list) do
 			local bundleBuylmg = co.bundleBuylmg
 			local item = self:_getTabItem(i)
@@ -96,11 +106,29 @@ function DecoratePackageLeftView:onRefresh(list)
 		end
 	end
 
-	local count = list and #list or 0
+	local count = list and #list > 1 and #list or 0
+	local startSpace = START_SPACE
 
 	for i, item in pairs(self._tabItems) do
+		if i <= count then
+			local _height = (CELL_HEIGHT + CELL_SPACE_V) * (count - 1)
+			local pageHeight = recthelper.getHeight(self._goScroll.transform)
+
+			if _height < pageHeight then
+				startSpace = (pageHeight - _height) * 0.5
+			end
+
+			local y = -((CELL_HEIGHT + CELL_SPACE_V) * (i - 1) + startSpace)
+
+			recthelper.setAnchorY(item.go.transform, y)
+		end
+
 		gohelper.setActive(item.go, i <= count)
 	end
+
+	local height = (CELL_HEIGHT + CELL_SPACE_V) * (count - 1) + startSpace + END_SPACE
+
+	recthelper.setHeight(self._goContent.transform, height)
 end
 
 function DecoratePackageLeftView:_getTabItem(index)
@@ -114,7 +142,7 @@ function DecoratePackageLeftView:_getTabItem(index)
 		item.gospbg = gohelper.findChild(item.go, "#go_spbg")
 		item.simageicon = gohelper.findChildSingleImage(item.go, "#image_icon")
 		item.gounselect = gohelper.findChild(item.go, "unselect")
-		item.btn = gohelper.getClick(item.go)
+		item.btn = gohelper.getClickWithDefaultAudio(item.go)
 
 		item.btn:AddClickListener(self._onClickTabOnClick, self, index)
 

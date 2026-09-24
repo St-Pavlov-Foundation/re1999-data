@@ -11,6 +11,7 @@ function DeleikeUnitCoord:ctor()
 	self.unitList = {}
 	self.triggerList = {}
 	self._moveTweens = {}
+	self.sceneVersion = 0
 	self._dragActive = false
 	self._dragPerpX, self._dragPerpY = 0, 1
 	self._dragMaxShift = 0
@@ -22,6 +23,14 @@ end
 
 function DeleikeUnitCoord:dispose()
 	UpdateBeat:Remove(self.onUpdate, self)
+end
+
+function DeleikeUnitCoord:bumpSceneVersion()
+	self.sceneVersion = self.sceneVersion + 1
+end
+
+function DeleikeUnitCoord:isTweening()
+	return #self._moveTweens > 0
 end
 
 function DeleikeUnitCoord:registerUnit(comp)
@@ -42,6 +51,8 @@ function DeleikeUnitCoord:registerUnit(comp)
 	if comp.tryPickup then
 		table.insert(self.triggerList, comp)
 	end
+
+	self:bumpSceneVersion()
 end
 
 function DeleikeUnitCoord:unregisterUnit(comp)
@@ -74,6 +85,8 @@ function DeleikeUnitCoord:unregisterUnit(comp)
 			end
 		end
 	end
+
+	self:bumpSceneVersion()
 end
 
 function DeleikeUnitCoord:getAllUnits()
@@ -118,6 +131,7 @@ function DeleikeUnitCoord:moveUnit(comp, dx, dy)
 	local x, y = self:_getUnitPos(comp)
 
 	self:_setUnitPos(comp, x + dx, y + dy)
+	self:bumpSceneVersion()
 end
 
 function DeleikeUnitCoord:dragUnitsByOffset(comps, dx, dy)
@@ -156,6 +170,10 @@ function DeleikeUnitCoord:killTweensOf(comps)
 	end
 end
 
+function DeleikeUnitCoord:clearAllTweens()
+	self._moveTweens = {}
+end
+
 function DeleikeUnitCoord:moveUnitsAnimated(comps, dx, dy)
 	if not comps or #comps == 0 then
 		return
@@ -186,6 +204,7 @@ function DeleikeUnitCoord:moveUnitsAnimated(comps, dx, dy)
 			dx = dx,
 			dy = dy
 		})
+		self:bumpSceneVersion()
 	end
 end
 
@@ -329,6 +348,7 @@ function DeleikeUnitCoord:clearAll()
 	self._moveTweens = {}
 
 	self:dragEnd()
+	self:bumpSceneVersion()
 end
 
 return DeleikeUnitCoord

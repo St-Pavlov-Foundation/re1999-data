@@ -1,58 +1,106 @@
 [
   {
-    "buffId": 117402601,
-    "name": "中毒状态",
+    "buffId": 117407101,
+    "name": "§出现假货",
     "buffType": 1,
     "durationType": "0",
     "buffEffect": "101#50",
     "effect": ""
   },
   {
-    "buffId": 117402602,
-    "name": "封印状态",
+    "buffId": 117407201,
+    "name": "§断货",
     "buffType": 2,
     "durationType": "0",
     "buffEffect": "102",
     "effect": ""
   },
   {
-    "buffId": 117402603,
-    "name": "眩晕状态",
+    "buffId": 117407301,
+    "name": "§封印",
     "buffType": 3,
     "durationType": "1#1",
     "buffEffect": "103",
     "effect": ""
   },
   {
-    "buffId": 117402604,
-    "name": "消除抑制",
+    "buffId": 117407302,
+    "name": "§封印",
+    "buffType": 3,
+    "durationType": "1#2",
+    "buffEffect": "103",
+    "effect": ""
+  },
+  {
+    "buffId": 117407401,
+    "name": "§消除抑制",
     "buffType": 5,
     "durationType": "1#1",
     "buffEffect": "107#-3",
     "effect": ""
   },
   {
-    "buffId": 117402605,
-    "name": "Fever抑制",
+    "buffId": 117407402,
+    "name": "§消除抑制",
+    "buffType": 5,
+    "durationType": "1#2",
+    "buffEffect": "107#-3",
+    "effect": ""
+  },
+  {
+    "buffId": 117407403,
+    "name": "§消除抑制",
+    "buffType": 5,
+    "durationType": "1#2",
+    "buffEffect": "107#-5",
+    "effect": ""
+  },
+  {
+    "buffId": 117407501,
+    "name": "§Fever抑制",
+    "buffType": 7,
+    "durationType": "1#1",
+    "buffEffect": "111#10",
+    "effect": ""
+  },
+  {
+    "buffId": 117407502,
+    "name": "§Fever抑制",
     "buffType": 7,
     "durationType": "1#2",
     "buffEffect": "111#10",
     "effect": ""
   },
   {
-    "buffId": 117402606,
-    "name": "灵感抑制",
-    "buffType": 4,
+    "buffId": 117407503,
+    "name": "§Fever抑制",
+    "buffType": 7,
     "durationType": "1#2",
-    "buffEffect": "105#1#100",
+    "buffEffect": "111#20",
     "effect": ""
   },
   {
-    "buffId": 117402607,
-    "name": "攻击提升",
+    "buffId": 117407601,
+    "name": "§攻击提升",
     "buffType": 8,
     "durationType": "0",
-    "buffEffect": "108#200",
+    "buffEffect": "112#200",
+    "effect": ""
+  },
+  {
+    "buffId": 117407602,
+    "name": "§攻击提升",
+    "buffType": 8,
+    "durationType": "0",
+    "buffEffect": "112#300",
+    "effect": ""
+  },
+  {
+    "buffId": 117407603,
+    "name": "§攻击提升",
+    "buffType": 8,
+    "durationType": "0",
+    "buffEffect": "112#500",
     "effect": ""
   }
 ]

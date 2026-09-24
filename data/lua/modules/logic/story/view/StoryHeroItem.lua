@@ -48,7 +48,9 @@ function StoryHeroItem:init(go)
 		[StoryEnum.HeroEffect.DissolveAndSoft] = self._setHeroDissolveAndSoft,
 		[StoryEnum.HeroEffect.SetAlpha] = self.showDefaultAction,
 		[StoryEnum.HeroEffect.DLKBloom] = self.showDLKBloom,
-		[StoryEnum.HeroEffect.SetMaterial] = self._setHeroMaterialScheme
+		[StoryEnum.HeroEffect.SetMaterial] = self._setHeroMaterialScheme,
+		[StoryEnum.HeroEffect.SetFadeIn] = self._setHeroFadeInParam,
+		[StoryEnum.HeroEffect.SetFadeOut] = self._setHeroFadeOutParam
 	}
 end
 
@@ -193,7 +195,15 @@ function StoryHeroItem:_fadeIn()
 
 	self._targetAlpha = targetAlpha
 
-	local duration = 0.5
+	if self:hasHeroEffect(StoryEnum.HeroEffect.SetFadeIn) then
+		local effs = self._effectCoDict[StoryEnum.HeroEffect.SetFadeIn]
+
+		if effs then
+			self._fadeInTime = tonumber(effs[2])
+		end
+	end
+
+	local duration = self._fadeInTime or 0.5
 	local easeType = EaseType.Linear
 
 	if self:hasHeroEffect(StoryEnum.HeroEffect.DLKBloom) then
@@ -219,6 +229,12 @@ function StoryHeroItem:_fadeUpdate(value)
 		local x, y, z = transformhelper.getLocalPos(self._heroSpineGo.transform)
 
 		transformhelper.setLocalPos(self._heroSpineGo.transform, x, y, 1 - value)
+	end
+
+	local customEffectComp = self._heroSpine:getCustomEffectComp()
+
+	if customEffectComp and customEffectComp.setAlpha then
+		customEffectComp:setAlpha(value)
 	end
 
 	self:_setHeroFadeMat()
@@ -381,7 +397,7 @@ function StoryHeroItem:_fadeOut()
 		return
 	end
 
-	local fadeOutDuration = 0.35
+	local fadeOutDuration = self._fadeOutTime or 0.35
 
 	if self._heroGlowCls then
 		self._heroGlowCls:startFadeOut(fadeOutDuration)
@@ -408,6 +424,12 @@ function StoryHeroItem:_fadeOut()
 	if self:hasHeroEffect(StoryEnum.HeroEffect.DLKBloom) and self._heroDlkBloomCls then
 		self._heroDlkBloomCls:onFadeOut()
 	end
+
+	if not self.fadeOutCls then
+		self.fadeOutCls = StoryHeroEffectFadeOut.New()
+	end
+
+	self.fadeOutCls:fadeOut(self._heroSpine:getSpineGo(), fadeOutDuration)
 end
 
 function StoryHeroItem:_fadeOutFinished()
@@ -722,6 +744,10 @@ function StoryHeroItem:hasHeroEffect(effectName)
 	return self._effectCoDict[effectName] ~= nil
 end
 
+function StoryHeroItem:getHeroEffectParam(effectName)
+	return self._effectCoDict[effectName]
+end
+
 function StoryHeroItem:clearAllHeroEffects()
 	for _, methodFunc in pairs(self._effectClearMethods) do
 		methodFunc(self)
@@ -876,6 +902,14 @@ function StoryHeroItem:_setHeroMaterialScheme(param)
 
 		StoryTool.applyMaterialScheme(mat, schemeId)
 	end
+end
+
+function StoryHeroItem:_setHeroFadeInParam(param)
+	self._fadeInTime = tonumber(param[2]) or 0
+end
+
+function StoryHeroItem:_setHeroFadeOutParam(param)
+	self._fadeOutTime = tonumber(param[2]) or 0
 end
 
 function StoryHeroItem:showDLKBloom(param)
@@ -1203,6 +1237,12 @@ function StoryHeroItem:onDestroy()
 		self._heroSpine:onDestroy()
 
 		self._heroSpine = nil
+	end
+
+	if self.fadeOutCls then
+		self.fadeOutCls:destroy()
+
+		self.fadeOutCls = nil
 	end
 end
 

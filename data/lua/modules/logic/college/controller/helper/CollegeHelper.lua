@@ -27,8 +27,8 @@ function CollegeHelper:focusToPos(pos, callback, callobj)
 end
 
 function CollegeHelper:_focusEnd()
-	self:doCallback()
 	CollegeController.instance:dispatchEvent(CollegeEvent.OnFocusEnd, CollegeModel.instance.curFocusData)
+	self:doCallback()
 end
 
 function CollegeHelper:cancelFocus(callback, callobj)
@@ -42,9 +42,9 @@ function CollegeHelper:cancelFocus(callback, callobj)
 end
 
 function CollegeHelper:_onCancelFocusEnd()
-	self:doCallback()
 	self:setViewVisible("CollegeHelper.FocusBuilding", false)
 	CollegeController.instance:dispatchEvent(CollegeEvent.OnFocusCancelEnd)
+	self:doCallback()
 end
 
 function CollegeHelper:doCallback()

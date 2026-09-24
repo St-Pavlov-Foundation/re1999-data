@@ -1157,8 +1157,8 @@
   {
     "heroResName": "312703_mes",
     "effectCompName": "CommonRoleEffect",
-    "motion": "b_idle|b_zhaoliang|b_qidao|b_shiyan2",
-    "node": "Drawables/bone2/effect-Bone/roleeffect_mes_idle2|Drawables/bone2/effect-Bone/roleeffect_mes_zl2#Drawables/bone/effect-Bone/roleeffect_mes_zl0|Drawables/bone/effect-Bone/roleeffect_mes_qd0|Drawables/bone/effect-Bone/roleeffect_mes_sy0",
+    "motion": "b_zhaoliang|b_qidao|b_shiyan2",
+    "node": "Drawables/bone2/effect-Bone/roleeffect_mes_zl2#Drawables/bone/effect-Bone/roleeffect_mes_zl0|Drawables/bone/effect-Bone/roleeffect_mes_qd0|Drawables/bone/effect-Bone/roleeffect_mes_sy0",
     "everNode": ""
   },
   {

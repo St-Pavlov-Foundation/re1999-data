@@ -59,7 +59,7 @@ function AutoChessGameScene:onOpen()
 	AutoChessEffectMgr.instance:init()
 
 	if self.moduleId == AutoChessEnum.ModuleId.Friend then
-		self:afterBuyFlowDone()
+		AutoChessController.instance:playStep(AutoChessEnum.ActionType.EndBuy)
 	else
 		self:changeScene(AutoChessEnum.ViewType.Player)
 		AutoChessController.instance:playStep(AutoChessEnum.ActionType.StartBuy)
@@ -288,7 +288,7 @@ function AutoChessGameScene:onClickScene()
 			local uid = chessMo and chessMo.uid or 0
 
 			if uid ~= 0 then
-				local entity = AutoChessEntityMgr.instance:getEntity(uid)
+				local chessEntity = AutoChessEntityMgr.instance:getEntity(uid)
 
 				if usingLeaderSkill then
 					local types = AutoChessGameModel.instance.targetTypes
@@ -302,7 +302,9 @@ function AutoChessGameScene:onClickScene()
 					AutoChessRpc.instance:sendAutoChessUseSkillRequest(self.moduleId, uid)
 				else
 					local param = {
-						chessEntity = entity
+						type = AutoChessCard.ShowType.Sell,
+						entity = chessEntity,
+						showSell = self.viewType == AutoChessEnum.ViewType.Player
 					}
 
 					AutoChessController.instance:openCardInfoView(param)

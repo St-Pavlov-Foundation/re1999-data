@@ -93,10 +93,10 @@ function MainSceneSkinMaterialTipViewBanner2:_updateInfoItemUI(tb, itemId, itemT
 		tb._simageinfobg:LoadImage(previewIcon)
 	end
 
-	self:_refreshLogo(tb)
+	self:_refreshLogo(tb, itemId, itemType)
 end
 
-function MainSceneSkinMaterialTipViewBanner2:_refreshLogo(tb)
+function MainSceneSkinMaterialTipViewBanner2:_refreshLogo(tb, itemId, itemType)
 	if not tb then
 		return
 	end
@@ -108,7 +108,8 @@ function MainSceneSkinMaterialTipViewBanner2:_refreshLogo(tb)
 		local title = info.Title
 
 		if not string.nilorempty(title) then
-			local decorateCo, classify = DecorateModel.instance:getItemDecorateCo(self._decorateConfig)
+			local config = ItemModel.instance:getItemConfig(itemType, itemId)
+			local decorateCo, classify = DecorateModel.instance:getItemDecorateCo(config)
 
 			if classify and classify == MainSwitchClassifyEnum.Classify.Click then
 				title = "main_switch_classify_title_3"

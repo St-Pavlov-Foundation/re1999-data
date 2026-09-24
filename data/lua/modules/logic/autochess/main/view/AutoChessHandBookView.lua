@@ -12,7 +12,7 @@ local tabIdx = {
 function AutoChessHandBookView:onInitView()
 	self._goTagContent = gohelper.findChild(self.viewGO, "#scroll_tag/viewport/#go_TagContent")
 	self._goTagItem = gohelper.findChild(self.viewGO, "#scroll_tag/viewport/#go_TagContent/#go_TagItem")
-	self._goContent = gohelper.findChild(self.viewGO, "#scroll_book/viewport/#go_Content")
+	self._scrollbook = gohelper.findChildScrollRect(self.viewGO, "#scroll_book")
 	self._scrollLeader = gohelper.findChildScrollRect(self.viewGO, "#scroll_Leader")
 	self._scrollMutation = gohelper.findChildScrollRect(self.viewGO, "#scroll_Mutation")
 
@@ -58,7 +58,6 @@ function AutoChessHandBookView:_editableInitView()
 	self._curTab = self._defaultTab
 	self._curTagIdx = self._defaultTagIdx
 	self._tagIdMap = {}
-	self._chessItems = self:getUserDataTb_()
 	self.anim = self.viewGO:GetComponent(gohelper.Type_Animator)
 	self.actId = Activity182Model.instance:getCurActId()
 	self.chessCfgRaceListMap = AutoChessConfig.instance:getChessCfgRaceListMap()
@@ -136,33 +135,23 @@ end
 
 function AutoChessHandBookView:refreshHandBookItems()
 	if self._curTab == tabIdx.chess then
+		if not self.chessModel then
+			self:buildChessScrollView()
+		end
+
+		local moList = {}
 		local race = self._tagIdMap[self._curTagIdx]
-		local count = 0
 
 		for _, config in ipairs(self.chessCfgRaceListMap[race]) do
-			count = count + 1
-
-			local item = self._chessItems[count]
-
-			if not item then
-				local go = self:getResInst(AutoChessStrEnum.ResPath.ChessCard, self._goContent)
-
-				item = MonoHelper.addNoUpdateLuaComOnceToGo(go, AutoChessCard)
-				self._chessItems[count] = item
-			end
-
-			local param = {
+			local mo = {
 				type = AutoChessCard.ShowType.HandBook,
 				itemId = config.id
 			}
 
-			item:setData(param)
-			gohelper.setActive(item._go, true)
+			moList[#moList + 1] = mo
 		end
 
-		for i = count + 1, #self._chessItems do
-			gohelper.setActive(self._chessItems[i]._go, false)
-		end
+		self.chessModel:setList(moList)
 	elseif self._curTab == tabIdx.leader then
 		if not self.leaderModel then
 			self:buildLeaderScrollView()
@@ -200,7 +189,7 @@ function AutoChessHandBookView:refreshHandBookItems()
 		self.mutatiomModel:setList(list)
 	end
 
-	gohelper.setActive(self._goContent, self._curTab == tabIdx.chess)
+	gohelper.setActive(self._scrollbook, self._curTab == tabIdx.chess)
 	gohelper.setActive(self._scrollLeader, self._curTab == tabIdx.leader)
 	gohelper.setActive(self._scrollMutation, self._curTab == tabIdx.mutation)
 end
@@ -219,6 +208,28 @@ end
 
 function AutoChessHandBookView:onDestroyView()
 	TaskDispatcher.cancelTask(self._delaySwitch, self)
+end
+
+function AutoChessHandBookView:buildChessScrollView()
+	self.chessModel = ListScrollModel.New()
+
+	local scrollParam = ListScrollParam.New()
+
+	scrollParam.scrollGOPath = "#scroll_book"
+	scrollParam.prefabType = ScrollEnum.ScrollPrefabFromRes
+	scrollParam.prefabUrl = AutoChessStrEnum.ResPath.ChessCard
+	scrollParam.cellClass = AutoChessHandbookChessItem
+	scrollParam.scrollDir = ScrollEnum.ScrollDirV
+	scrollParam.lineCount = 3
+	scrollParam.cellWidth = 520
+	scrollParam.cellHeight = 690
+	scrollParam.cellSpaceH = 40
+	scrollParam.cellSpaceV = 75
+	scrollParam.startSpace = 50
+
+	local view = LuaListScrollView.New(self.chessModel, scrollParam)
+
+	self:addChildView(view)
 end
 
 function AutoChessHandBookView:buildLeaderScrollView()

@@ -192,8 +192,8 @@ function AutoChessMainView:onSettlPush()
 end
 
 function AutoChessMainView:onOpen()
+	self:addEventCb(Activity182Controller.instance, Activity182Event.RandomMasterReply, self.onRandomMasterReply, self)
 	self:addEventCb(Activity182Controller.instance, Activity182Event.UpdateInfo, self.refreshUI, self)
-	self:addEventCb(Activity182Controller.instance, Activity182Event.RefreshBossReply, self.onRefreshBossReply, self)
 	self:addEventCb(AutoChessController.instance, AutoChessEvent.SettlePush, self.onSettlPush, self)
 	self:refreshUI()
 end
@@ -318,6 +318,11 @@ function AutoChessMainView:_checkCultivateReddot()
 			return true
 		end
 	end
+end
+
+function AutoChessMainView:onRandomMasterReply()
+	self:refreshBtnStatus()
+	ViewMgr.instance:openView(ViewName.AutoChessLeaderSelectView)
 end
 
 return AutoChessMainView

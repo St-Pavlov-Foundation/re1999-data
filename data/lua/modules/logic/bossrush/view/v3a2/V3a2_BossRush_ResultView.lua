@@ -205,4 +205,9 @@ function V3a2_BossRush_ResultView:refreshRankUI()
 	self._imageSliderFG.fillAmount = value
 end
 
+function V3a2_BossRush_ResultView:onClose()
+	V3a2_BossRushModel.instance:clearAssist(true)
+	V3a2_BossRush_ResultView.super.onClose(self)
+end
+
 return V3a2_BossRush_ResultView

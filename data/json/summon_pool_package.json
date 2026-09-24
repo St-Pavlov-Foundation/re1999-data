@@ -283,7 +283,47 @@
     "id": 40141,
     "order": 1,
     "packageRecommendSwitch": true,
-    "packageRecommend": "811327#610006#840026#840014#840015#840016#840017#840018#840019#840020#840021#840028#840029#840030",
+    "packageRecommend": "840026#811327#840014#840015#840016#840017#840018#840019#811315#610004#610006#840028#840022#840029#840023#840030",
+    "packageEffect": 2,
+    "showLimit": "",
+    "className": "",
+    "posOffset": "0#0"
+  },
+  {
+    "id": 40151,
+    "order": 1,
+    "packageRecommendSwitch": true,
+    "packageRecommend": "840012#811327#840014#840016#840018#811315#610004#610006#840028#840022#840029#840023#840030",
+    "packageEffect": 2,
+    "showLimit": "",
+    "className": "",
+    "posOffset": "0#0"
+  },
+  {
+    "id": 40161,
+    "order": 1,
+    "packageRecommendSwitch": true,
+    "packageRecommend": "840011#811327#840014#840015#840016#840017#840018#840019#811315#610004#610006#840028#840022#840029#840023#840030",
+    "packageEffect": 1,
+    "showLimit": "1:3155",
+    "className": "",
+    "posOffset": "0#0"
+  },
+  {
+    "id": 40171,
+    "order": 1,
+    "packageRecommendSwitch": true,
+    "packageRecommend": "840011#811327#840015#840017#840019#811315#610004#610006#840022#840023",
+    "packageEffect": 2,
+    "showLimit": "",
+    "className": "",
+    "posOffset": "0#0"
+  },
+  {
+    "id": 40181,
+    "order": 1,
+    "packageRecommendSwitch": true,
+    "packageRecommend": "840013#811327#840015#840017#840019#811315#610004#610006#840022#840023",
     "packageEffect": 2,
     "showLimit": "",
     "className": "",

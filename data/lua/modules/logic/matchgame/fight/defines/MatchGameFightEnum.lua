@@ -14,13 +14,16 @@ MatchGameFightEnum.MinMatchCount = 3
 MatchGameFightEnum.MaxSkillIndex = 4
 MatchGameFightEnum.MinEnergyFillAmount = 0.44
 MatchGameFightEnum.MaxEnergyFillAmount = 0.87
-MatchGameFightEnum.DragAdsorbPower = 1.5
+MatchGameFightEnum.DragAdsorbPower = 4
 MatchGameFightEnum.HeroHeavyDamage = 1000
 MatchGameFightEnum.EnemyHeavyDamage = 500
+MatchGameFightEnum.RoundTimeEndTipTime = 0.3
+MatchGameFightEnum.ForceHideClickMaskTime = 12
 MatchGameFightEnum.ElementMoveTime = 0.02
-MatchGameFightEnum.HurtTxtTime = 0.2
-MatchGameFightEnum.DebuffHurtTime = 0.33
+MatchGameFightEnum.HurtTxtTime = 0.6
+MatchGameFightEnum.DebuffHurtTime = 0.6
 MatchGameFightEnum.HeroAttackToEnemyAttackTime = 0.2
+MatchGameFightEnum.WaitToNextRoundTime = 0.5
 MatchGameFightEnum.MatchMoveFillDoneTime = 0.05
 MatchGameFightEnum.MatchTime = 0.1
 MatchGameFightEnum.ClickToCreateTime = 0.1
@@ -30,16 +33,41 @@ MatchGameFightEnum.PlayNextBombRoundTime = 0.25
 MatchGameFightEnum.GameTimeCountInterval = 0.1
 MatchGameFightEnum.NotMatchConvertTime = 0.2
 MatchGameFightEnum.HideChainNumUITime = 0.167
-MatchGameFightEnum.DoMultiHeroChainAttackTime = 1.167
+MatchGameFightEnum.DoMultiHeroChainAttackTime = 0.34
+MatchGameFightEnum.ShowDamageRateTime = 1.2
+MatchGameFightEnum.HideDamageRateTime = 0.2
+MatchGameFightEnum.ShowGradeTime = 1.167
+MatchGameFightEnum.HideGradeTime = 0.167
 MatchGameFightEnum.WaitHeroAttackTime = 0.3
 MatchGameFightEnum.EachHeroAttackTime = 0.5
 MatchGameFightEnum.HpBarChangeTime = 0.1
-MatchGameFightEnum.SkillDescShowTime = 2
+MatchGameFightEnum.SkillDescShowTime = 1.3
+MatchGameFightEnum.DropSkillDescShowTime = 2
+MatchGameFightEnum.DelayExcuteTalentSkill = 2
+MatchGameFightEnum.ShowNextRoundTimeChangeTipTime = 0.5
+MatchGameFightEnum.SkillFinishCheckNotMatchtTime = 0.3
+MatchGameFightEnum.CloseFeverAnimTime = 1
+MatchGameFightEnum.ElementItemEffectRecycleTime = 1.5
+MatchGameFightEnum.ElementItemRangeEffectRecycleTime = 2
+MatchGameFightEnum.RoleEffectTime = 1.5
+MatchGameFightEnum.RoundTimeBarToFullTime = 0.6
+MatchGameFightEnum.CloseRoundTimeChangeTipTime = 1.6
+MatchGameFightEnum.CloseSkillDescTime = 0.33
+MatchGameFightEnum.RefreshNextWaveTime = 1.5
+MatchGameFightEnum.HeroAttackTime = 0.5
+MatchGameFightEnum.RoleMeshMaterial = {
+	"ui/materials/dynamic/outlinesprite_lw_ui_doubleline_yellow.mat",
+	"ui/materials/dynamic/outlinesprite_lw_ui_doubleline_blue.mat",
+	"ui/materials/dynamic/outlinesprite_lw_ui_doubleline_green.mat",
+	"ui/materials/dynamic/outlinesprite_lw_ui_doubleline_red.mat",
+	"ui/materials/dynamic/outlinesprite_lw_ui_doubleline_purple.mat",
+	"ui/materials/dynamic/outlinesprite_lw_ui_doubleline_orange.mat"
+}
 MatchGameFightEnum.ScoreRate = {
-	MaxChain = 100,
+	MaxChain = 3000,
 	SkillUse = 500,
-	WeakAttack = 500,
-	Cure = 100
+	WeakAttack = 2500,
+	Cure = 3
 }
 MatchGameFightEnum.TestHeroInfoIds = {
 	1001,
@@ -211,6 +239,11 @@ MatchGameFightEnum.BuffEffectType = {
 	MatchTime = "MatchTime",
 	Poison = "Poison"
 }
+MatchGameFightEnum.EnemyNextRoundBuffEffectIdMap = {
+	[107] = true,
+	[111] = true,
+	[109] = true
+}
 MatchGameFightEnum.BuffDurationType = {
 	Round = 1,
 	Second = 3,
@@ -255,6 +288,7 @@ MatchGameFightEnum.SkillAttrType = {
 }
 MatchGameFightEnum.SkillToastType = {
 	SkillDesc = 2,
+	FeverDesc = 3,
 	DropRate = 1
 }
 MatchGameFightEnum.RoleEffectType = {
@@ -266,12 +300,200 @@ MatchGameFightEnum.RoleEffectType = {
 	Poison = "Poison"
 }
 MatchGameFightEnum.ItemMatchEffect = {
-	MatchNormal = "matchNormal",
+	Heal = "heal",
+	Bomb = "bomb",
+	Cleanse = "cleanse",
+	SkillLineH = "skillLineH",
 	MatchLine = "matchLine",
 	MatchAoe = "matchAoe",
-	Cleanse = "cleanse",
-	Bomb = "bomb",
-	Heal = "heal"
+	SkillAoe = "skillAoe",
+	MatchNormal = "matchNormal",
+	SkillLineV = "skillLineV"
+}
+MatchGameFightEnum.SkillEffectRangeType = {
+	LineV = 3,
+	LineH = 2,
+	Circle = 1
+}
+MatchGameFightEnum.GuideDataList = {
+	{
+		episodeId = 14010101,
+		guideId = 40022,
+		guideList = {
+			{
+				id = 1,
+				posIndexList = {
+					{
+						2,
+						3
+					},
+					{
+						2,
+						4
+					},
+					{
+						2,
+						5
+					}
+				}
+			},
+			{
+				id = 2,
+				posIndexList = {
+					{
+						6,
+						2
+					},
+					{
+						5,
+						3
+					},
+					{
+						4,
+						4
+					}
+				}
+			},
+			{
+				id = 3,
+				posIndexList = {
+					{
+						1,
+						6
+					},
+					{
+						2,
+						6
+					},
+					{
+						3,
+						6
+					}
+				}
+			},
+			{
+				id = 4,
+				posIndexList = {
+					{
+						3,
+						3
+					},
+					{
+						3,
+						4
+					},
+					{
+						3,
+						5
+					},
+					{
+						3,
+						6
+					},
+					{
+						3,
+						7
+					}
+				}
+			}
+		}
+	},
+	{
+		episodeId = 14010102,
+		guideId = 40023,
+		guideList = {
+			{
+				id = 1,
+				posIndexList = {
+					{
+						2,
+						1
+					},
+					{
+						2,
+						2
+					},
+					{
+						2,
+						3
+					}
+				}
+			},
+			{
+				id = 2,
+				posIndexList = {
+					{
+						3,
+						3
+					},
+					{
+						4,
+						3
+					},
+					{
+						5,
+						3
+					}
+				}
+			},
+			{
+				id = 3,
+				posIndexList = {
+					{
+						3,
+						3
+					},
+					{
+						4,
+						3
+					},
+					{
+						5,
+						3
+					}
+				}
+			}
+		}
+	},
+	{
+		episodeId = 14010106,
+		guideId = 40024,
+		guideList = {
+			{
+				id = 1,
+				posIndexList = {
+					{
+						1,
+						7
+					},
+					{
+						2,
+						7
+					},
+					{
+						3,
+						7
+					},
+					{
+						4,
+						7
+					},
+					{
+						5,
+						7
+					},
+					{
+						6,
+						7
+					},
+					{
+						7,
+						7
+					}
+				}
+			}
+		}
+	}
 }
 
 return MatchGameFightEnum

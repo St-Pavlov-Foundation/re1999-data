@@ -26,24 +26,19 @@ for k, v in pairs(DeleikeEnum.TileType) do
 end
 
 DeleikeEnum.LineLength = 2048
-DeleikeEnum.LineThick = 160
 DeleikeEnum.BgWidth = 2592
 DeleikeEnum.BgHeight = 1080
-DeleikeEnum.GridTileWidth = 1756
-DeleikeEnum.GridTileHeight = 1080
+DeleikeEnum.GridTileWidth = 1092
+DeleikeEnum.GridTileHeight = 912
 DeleikeEnum.CircleShowTime = 2
+DeleikeEnum.CameraEdgeMargin = 120
 DeleikeEnum.TriggerType = {
-	Skill2 = "技能点2",
-	Door = "通关点",
-	Skill1 = "技能点"
+	Skill2 = "Skill2",
+	Door = "Door",
+	Skill1 = "Skill1"
 }
 DeleikeEnum.SkillWidth = 5000
-DeleikeEnum.Skill1ChargeRate = 240
-DeleikeEnum.Skill1MaxLength = DeleikeEnum.LineThick
-DeleikeEnum.Skill2ChargePhase1Time = 0.9
-DeleikeEnum.Skill2ChargePhase1Max = 2000
-DeleikeEnum.Skill2ChargePhase2Time = 1
-DeleikeEnum.Skill2WidthMax = 5000
+DeleikeEnum.SkilllHeight = 160
 DeleikeEnum.Skill2MaxShift = 225
 DeleikeEnum.PlayerRadius = 43
 DeleikeEnum.JoyStickInnerRadius = 20
@@ -54,5 +49,6 @@ DeleikeEnum.LineStatus = {
 	UnCut = 3,
 	PreCut = 1
 }
+DeleikeEnum.GameScenePath = "ui/viewres/versionactivity_4_0/v4a0_deleike/v4a0_deleike_gamescene.prefab"
 
 return DeleikeEnum

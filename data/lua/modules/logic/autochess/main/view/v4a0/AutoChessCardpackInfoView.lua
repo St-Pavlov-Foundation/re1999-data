@@ -71,38 +71,41 @@ function AutoChessCardpackInfoView:refreshUI()
 		end
 	end
 
-	for race, raceChessCfgs in pairs(chessCfgGroupMap) do
-		local goGroup = gohelper.cloneInPlace(self._goGroupItem)
-		local imageType = gohelper.findChildImage(goGroup, "Tag/image_Type")
-		local txtType = gohelper.findChildText(goGroup, "Tag/txt_Type")
-		local campCo = AutoChessConfig.instance:getCampCfg(race)
+	for _, campCo in ipairs(lua_auto_chess_translate.configList) do
+		local raceChessCfgs = chessCfgGroupMap[campCo.id]
 
-		if campCo then
-			SLFramework.UGUI.GuiHelper.SetColor(imageType, campCo.color)
+		if raceChessCfgs then
+			local goGroup = gohelper.cloneInPlace(self._goGroupItem)
+			local imageType = gohelper.findChildImage(goGroup, "Tag/image_Type")
+			local txtType = gohelper.findChildText(goGroup, "Tag/txt_Type")
 
-			txtType.text = campCo.name
+			if campCo then
+				SLFramework.UGUI.GuiHelper.SetColor(imageType, campCo.color)
+
+				txtType.text = campCo.name
+			end
+
+			local goChess = gohelper.findChild(goGroup, "Chess")
+
+			for _, chessCfg in ipairs(raceChessCfgs) do
+				local go = gohelper.cloneInPlace(goChess)
+				local imageQulity = gohelper.findChildImage(go, "image_Quality")
+				local imageName = AutoChessHelper.getChessQualityBg(chessCfg.type, chessCfg.levelFromMall)
+
+				UISpriteSetMgr.instance:setAutoChessSprite(imageQulity, imageName)
+
+				local goMesh = gohelper.findChild(go, "Mesh")
+				local meshComp = MonoHelper.addNoUpdateLuaComOnceToGo(goMesh, AutoChessMeshComp)
+
+				meshComp:setData(chessCfg.image)
+
+				local btnClick = gohelper.findChildButtonWithAudio(go, "btn_Click")
+
+				self:addClickCb(btnClick, self._onChessItemClick, self, chessCfg.id)
+			end
+
+			gohelper.setActive(goChess, false)
 		end
-
-		local goChess = gohelper.findChild(goGroup, "Chess")
-
-		for _, chessCfg in ipairs(raceChessCfgs) do
-			local go = gohelper.cloneInPlace(goChess)
-			local imageQulity = gohelper.findChildImage(go, "image_Quality")
-			local imageName = AutoChessHelper.getChessQualityBg(chessCfg.type, chessCfg.levelFromMall)
-
-			UISpriteSetMgr.instance:setAutoChessSprite(imageQulity, imageName)
-
-			local goMesh = gohelper.findChild(go, "Mesh")
-			local meshComp = MonoHelper.addNoUpdateLuaComOnceToGo(goMesh, AutoChessMeshComp)
-
-			meshComp:setData(chessCfg.image)
-
-			local btnClick = gohelper.findChildButtonWithAudio(go, "btn_Click")
-
-			self:addClickCb(btnClick, self._onChessItemClick, self, chessCfg.id)
-		end
-
-		gohelper.setActive(goChess, false)
 	end
 
 	gohelper.setActive(self._goGroupItem, false)

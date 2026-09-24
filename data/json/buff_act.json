@@ -4516,5 +4516,14 @@
     "effect": "",
     "effectHangPoint": "",
     "audioId": 0
+  },
+  {
+    "id": 1179,
+    "type": "RealHurtRateByOriginDmg",
+    "effectTime": 203,
+    "effectCondition": 0,
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0
   }
 ]

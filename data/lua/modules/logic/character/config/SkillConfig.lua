@@ -712,26 +712,10 @@ function SkillConfig:getHeroExBaseSkillIdDict(heroId, heroMo, baseSkillIdDict, s
 		exSkillLevel = showAttributeOption == CharacterEnum.showAttributeOption.ShowMin and 0 or heroMo.exSkillLevel
 	end
 
-	if heroMo and heroMo.destinyStoneMo then
-		local co = heroMo.destinyStoneMo:getExpExchangeSkillCo(exSkillLevel)
+	if heroMo and heroMo.destinyStoneMo and heroMo.destinyStoneMo:replaceDestinyStoneExBaseSkillIds(exSkillLevel, baseSkillIdDict) then
+		baseSkillIdDict = self:_checkReplaceSkill(baseSkillIdDict, heroMo)
 
-		if co then
-			if not string.nilorempty(co.skillGroup1) then
-				baseSkillIdDict[1] = string.splitToNumber(co.skillGroup1, "|")[1]
-			end
-
-			if not string.nilorempty(co.skillGroup2) then
-				baseSkillIdDict[2] = string.splitToNumber(co.skillGroup2, "|")[1]
-			end
-
-			if co.skillEx ~= 0 then
-				baseSkillIdDict[3] = co.skillEx
-			end
-
-			baseSkillIdDict = self:_checkReplaceSkill(baseSkillIdDict, heroMo)
-
-			return baseSkillIdDict
-		end
+		return baseSkillIdDict
 	end
 
 	if exSkillLevel < 1 then
@@ -823,28 +807,10 @@ function SkillConfig:getHeroAllSkillIdDictByExSkillLevel(heroId, showAttributeOp
 		exSkillLevel = heroMo.exSkillLevel
 	end
 
-	if heroMo and heroMo.destinyStoneMo then
-		local co = heroMo.destinyStoneMo:getExpExchangeSkillCo(exSkillLevel)
+	if heroMo and heroMo.destinyStoneMo and heroMo.destinyStoneMo:replaceDestinyStoneExSkillIds(exSkillLevel, allSkillIdDict) then
+		allSkillIdDict = self:_checkReplaceSkill(allSkillIdDict, heroMo)
 
-		if co then
-			if not string.nilorempty(co.skillGroup1) then
-				allSkillIdDict[1] = string.splitToNumber(co.skillGroup1, "|")
-			end
-
-			if not string.nilorempty(co.skillGroup2) then
-				allSkillIdDict[2] = string.splitToNumber(co.skillGroup2, "|")
-			end
-
-			if co.skillEx ~= 0 then
-				allSkillIdDict[3] = {
-					co.skillEx
-				}
-			end
-
-			allSkillIdDict = self:_checkReplaceSkill(allSkillIdDict, heroMo)
-
-			return allSkillIdDict
-		end
+		return allSkillIdDict
 	end
 
 	if exSkillLevel < 1 then

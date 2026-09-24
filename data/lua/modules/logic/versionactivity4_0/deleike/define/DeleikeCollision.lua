@@ -4,22 +4,29 @@ module("modules.logic.versionactivity4_0.deleike.define.DeleikeCollision", packa
 
 local DeleikeCollision = class("DeleikeCollision")
 
-function DeleikeCollision.pointInConvexPoly(px, py, poly)
+function DeleikeCollision.pointInConvexPoly(px, py, poly, slack)
 	if not poly or #poly < 3 then
 		return false
 	end
 
 	local n = #poly
 	local sign = false
+	local eps = slack or 0
 
 	for i = 1, n do
 		local a = poly[i]
 		local b = poly[i % n + 1]
-		local cross = (b.x - a.x) * (py - a.y) - (b.y - a.y) * (px - a.x)
+		local ex, ey = b.x - a.x, b.y - a.y
+		local cross = ex * (py - a.y) - ey * (px - a.x)
+		local inside = cross >= 0
+
+		if eps > 0 then
+			inside = inside or cross >= -eps * math.sqrt(ex * ex + ey * ey)
+		end
 
 		if i == 1 then
-			sign = cross >= 0
-		elseif cross >= 0 ~= sign then
+			sign = inside
+		elseif inside ~= sign then
 			return false
 		end
 	end

@@ -619,7 +619,8 @@ function RougeHeroGroupEditView:_refreshAttribute()
 			trialEquipMo = mo.trialEquipMo
 		end
 
-		local attrDict = self._heroMO:getTotalBaseAttrDict(self._equips, nil, nil, RougeHeroGroupBalanceHelper.getIsBalanceMode() and not self._heroMO:isTrial(), trialEquipMo, RougeHeroGroupBalanceHelper.getHeroBalanceInfo)
+		local useBalance = RougeHeroGroupBalanceHelper.getIsBalanceMode() and not self._heroMO:isTrial()
+		local attrDict = self._heroMO:getTotalBaseAttrDict(self._equips, nil, nil, useBalance, trialEquipMo, RougeHeroGroupBalanceHelper.getHeroBalanceInfo)
 
 		for index, attrId in ipairs(CharacterEnum.BaseAttrIdList) do
 			local co = HeroConfig.instance:getHeroAttributeCO(attrId)
@@ -1003,8 +1004,9 @@ function RougeHeroGroupEditView:_initCapacity()
 	self._assistCapacity = self.viewParam.assistCapacity
 	self._assistPos = self.viewParam.assistPos
 	self._assistHeroId = self.viewParam.assistHeroId
+	self._assistHeroMo = self.viewParam.assistHeroMo
 
-	RougeHeroGroupEditListModel.instance:setCapacityInfo(self._selectHeroCapacity, self._curCapacity, self._totalCapacity, self._assistCapacity, self._assistPos, self._assistHeroId)
+	RougeHeroGroupEditListModel.instance:setCapacityInfo(self._selectHeroCapacity, self._curCapacity, self._totalCapacity, self._assistCapacity, self._assistPos, self._assistHeroId, self._assistHeroMo)
 
 	if not self._capacityComp then
 		local volumeGo = gohelper.findChild(self.viewGO, "characterinfo/volumebg/volume")

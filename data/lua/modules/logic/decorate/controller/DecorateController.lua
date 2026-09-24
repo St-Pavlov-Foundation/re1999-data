@@ -43,6 +43,14 @@ function DecorateController:openBuyView(goodsId)
 	ViewMgr.instance:openView(ViewName.DecorateMaterialBuyView, param)
 end
 
+function DecorateController:openBuySkinView(goodsMO)
+	local param = {
+		goodsMO = goodsMO
+	}
+
+	ViewMgr.instance:openView(ViewName.DecorateSkinBuyView, param)
+end
+
 DecorateController.instance = DecorateController.New()
 
 return DecorateController

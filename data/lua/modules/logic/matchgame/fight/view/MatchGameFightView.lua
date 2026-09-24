@@ -15,7 +15,9 @@ function MatchGameFightView:onInitView()
 	self._txtchallengeScore = gohelper.findChildText(self.viewGO, "root/topInfo/#go_challenge/#txt_challengeScore")
 	self._btninfo = gohelper.findChildButtonWithAudio(self.viewGO, "root/topInfo/#btn_info")
 	self._goenemyMesh = gohelper.findChild(self.viewGO, "root/enemy/enemy/ani/#go_enemyMesh")
+	self._goenemyFlyEffectPos = gohelper.findChild(self.viewGO, "root/enemy/enemy/ani/#go_enemyFlyEffectPos")
 	self._simageenemy = gohelper.findChildSingleImage(self.viewGO, "root/enemy/enemy/ani/#simage_enemy")
+	self._imageenemy = gohelper.findChildImage(self.viewGO, "root/enemy/enemy/ani/#simage_enemy")
 	self._imageenemyHp = gohelper.findChildImage(self.viewGO, "root/enemy/info/#image_enemyHp")
 	self._txtenemyHp = gohelper.findChildText(self.viewGO, "root/enemy/info/#txt_enemyHp")
 	self._imageenemyCareer = gohelper.findChildImage(self.viewGO, "root/enemy/info/#image_enemyCareer")
@@ -33,12 +35,17 @@ function MatchGameFightView:onInitView()
 	self._txtheroHurt = gohelper.findChildText(self.viewGO, "root/hero/#go_heroHurt/#txt_heroHurt")
 	self._goheroInfoContent = gohelper.findChild(self.viewGO, "root/#go_heroInfoContent")
 	self._goheroInfoItem = gohelper.findChild(self.viewGO, "root/#go_heroInfoContent/#go_heroInfoItem")
-	self._gograde = gohelper.findChild(self.viewGO, "#go_grade")
-	self._goskillDesc = gohelper.findChild(self.viewGO, "#go_skillDesc")
-	self._txtskillDesc = gohelper.findChildText(self.viewGO, "#go_skillDesc/#txt_skillDesc")
-	self._goskillDropRate = gohelper.findChild(self.viewGO, "#go_skillDropRate")
-	self._imageDropRateItem = gohelper.findChildImage(self.viewGO, "#go_skillDropRate/#image_item")
+	self._gograde = gohelper.findChild(self.viewGO, "root/#go_grade")
+	self._godamageRate = gohelper.findChild(self.viewGO, "root/#go_damageRate")
+	self._txtdamageRate = gohelper.findChildText(self.viewGO, "root/#go_damageRate/#txt_damageRate")
+	self._goskillDesc = gohelper.findChild(self.viewGO, "root/#go_skillDesc")
+	self._txtskillDesc = gohelper.findChildText(self.viewGO, "root/#go_skillDesc/#txt_skillDesc")
+	self._goskillDropRate = gohelper.findChild(self.viewGO, "root/#go_skillDropRate")
+	self._imageDropRateItem = gohelper.findChildImage(self.viewGO, "root/#go_skillDropRate/#image_item")
+	self._goskillFeverDesc = gohelper.findChild(self.viewGO, "root/#go_skillFeverDesc")
+	self._txtskillFeverDesc = gohelper.findChildText(self.viewGO, "root/#go_skillFeverDesc/#txt_skillDesc")
 	self._goclickMask = gohelper.findChild(self.viewGO, "#go_clickMask")
+	self._gorestartAnim = gohelper.findChild(self.viewGO, "#go_restartAnim")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -50,6 +57,7 @@ function MatchGameFightView:addEvents()
 	self:addEventCb(MatchGameController.instance, MatchGameFightEvent.EnemyAttackStart, self.enemyAttackStart, self)
 	self:addEventCb(MatchGameController.instance, MatchGameFightEvent.RefreshTargetGoal, self.refreshTargetGoal, self)
 	self:addEventCb(MatchGameController.instance, MatchGameFightEvent.RefreshChallengeScore, self.refreshChallenge, self)
+	self:addEventCb(MatchGameController.instance, MatchGameFightEvent.RestartGame, self.restartGame, self)
 	self._btninfo:AddClickListener(self.onInfoClick, self)
 end
 
@@ -58,10 +66,15 @@ function MatchGameFightView:removeEvents()
 	self:removeEventCb(MatchGameController.instance, MatchGameFightEvent.EnemyAttackStart, self.enemyAttackStart, self)
 	self:removeEventCb(MatchGameController.instance, MatchGameFightEvent.RefreshTargetGoal, self.refreshTargetGoal, self)
 	self:removeEventCb(MatchGameController.instance, MatchGameFightEvent.RefreshChallengeScore, self.refreshChallenge, self)
+	self:removeEventCb(MatchGameController.instance, MatchGameFightEvent.RestartGame, self.restartGame, self)
 	self._btninfo:RemoveClickListener()
 end
 
 function MatchGameFightView:onInfoClick()
+	if self.isHeroSkillShowing then
+		return
+	end
+
 	local param = {}
 	local sceneView = self.viewContainer:getSceneView()
 	local gameInfoMo = sceneView and sceneView:getGameInfoMo()
@@ -95,15 +108,19 @@ function MatchGameFightView:_editableInitView()
 	gohelper.setActive(self._goheroFightItem, false)
 	gohelper.setActive(self._gochain, false)
 	gohelper.setActive(self._gograde, false)
+	gohelper.setActive(self._godamageRate, false)
 	gohelper.setActive(self._gotargetItem, false)
 	gohelper.setActive(self._goenemyHurt, false)
 	gohelper.setActive(self._goheroHurt, false)
 	gohelper.setActive(self._goskillDesc, false)
 	gohelper.setActive(self._goskillDropRate, false)
+	gohelper.setActive(self._goskillFeverDesc, false)
 
 	for index = 1, 5 do
-		local gradeItem = gohelper.findChild(self._gograde, index)
+		local gradeItem = {}
 
+		gradeItem.go = gohelper.findChild(self._gograde, index)
+		gradeItem.anim = gradeItem.go:GetComponent(typeof(UnityEngine.Animator))
 		self.gradeItemList[index] = gradeItem
 	end
 
@@ -119,6 +136,50 @@ function MatchGameFightView:_editableInitView()
 	self._goattackFlyItem = gohelper.findChild(self.viewGO, "root/#go_attackFlyItemContent/#go_attackFlyItem")
 	self._goItemEffectContent = gohelper.findChild(self.viewGO, "root/planeRoot/#go_plane/#go_itemEffectContent")
 	self._chainAnim = self._gochain:GetComponent(typeof(UnityEngine.Animator))
+	self._skillDescAnim = self._goskillDesc:GetComponent(typeof(UnityEngine.Animator))
+	self._skillDropRateAnim = self._goskillDropRate:GetComponent(typeof(UnityEngine.Animator))
+	self._skillFeverDescAnim = self._goskillFeverDesc:GetComponent(typeof(UnityEngine.Animator))
+	self._damageRateAnim = self._godamageRate:GetComponent(typeof(UnityEngine.Animator))
+end
+
+function MatchGameFightView:restartGame()
+	gohelper.setActive(self._gorestartAnim, false)
+	gohelper.setActive(self._gorestartAnim, true)
+	TaskDispatcher.cancelTask(self.doRestartGame, self)
+	TaskDispatcher.cancelTask(self.hideRestartAnim, self)
+	TaskDispatcher.runDelay(self.doRestartGame, self, 0.5)
+	TaskDispatcher.runDelay(self.hideRestartAnim, self, 1)
+end
+
+function MatchGameFightView:doRestartGame()
+	local sceneView = self.viewContainer:getSceneView()
+	local skillView = self.viewContainer:getSkillView()
+
+	self:cleanRestartRuntime()
+
+	if sceneView then
+		sceneView:cleanRestartRuntime()
+	end
+
+	if skillView then
+		skillView:restartGame()
+	end
+
+	self:clearHeroItems()
+	MatchGameFightModel.instance:restartGame(self.viewParam.episodeId)
+	self:initData()
+
+	if sceneView then
+		sceneView:restartGame()
+	end
+
+	self:refreshUI()
+	self:initHeroStartBattleSkill()
+	self:dispatchBattleStartCondition()
+end
+
+function MatchGameFightView:hideRestartAnim()
+	gohelper.setActive(self._gorestartAnim, false)
 end
 
 function MatchGameFightView:onUpdateParam()
@@ -132,6 +193,8 @@ end
 function MatchGameFightView:onOpenFinish()
 	self:refreshUI()
 	self:initHeroStartBattleSkill()
+	TaskDispatcher.cancelTask(self.dispatchBattleStartCondition, self)
+	TaskDispatcher.runDelay(self.dispatchBattleStartCondition, self, MatchGameFightEnum.DelayExcuteTalentSkill)
 end
 
 function MatchGameFightView:initData()
@@ -143,7 +206,18 @@ function MatchGameFightView:initData()
 	self.totalWaveCount = #self.gameInfoData.enemyCoDataList
 	self.curWaveCount = 1
 	self.heroFightInfoMap = MatchGameFightModel.instance:getHeroFightInfoMap()
+	self.heroFightInfoList = {}
+
+	for posIndex, heroFightMo in pairs(self.heroFightInfoMap) do
+		table.insert(self.heroFightInfoList, heroFightMo)
+	end
+
+	table.sort(self.heroFightInfoList, function(a, b)
+		return a.posIndex < b.posIndex
+	end)
+
 	self.curHeroTotalHp = nil
+	self.enemyFightMoList = self:getUserDataTb_()
 
 	for waveCount, enemyCoData in ipairs(self.gameInfoData.enemyCoDataList) do
 		local enemyFightMo = MatchGameEnemyFightMo.New()
@@ -155,6 +229,14 @@ function MatchGameFightView:initData()
 	self.isChallenge = self.viewParam and self.viewParam.isChallenge
 	self.curChallengeScore = 0
 	self.maxRoundDamage = 0
+	self.roleMaterial = self.viewContainer:getRes(self.viewContainer:getSetting().otherRes[2])
+
+	if not self.enemyMat then
+		self.enemyMat = UnityEngine.GameObject.Instantiate(self.roleMaterial)
+	end
+
+	self.isHeroSkillShowing = false
+	self.useSkillInfo = nil
 end
 
 function MatchGameFightView:initCurEnemyCoData()
@@ -189,18 +271,12 @@ function MatchGameFightView:initEnemyStartBattleSkill()
 
 		MatchGameFightModel.instance:addPendingSkill(skillConfig, self.enemyInfoMo)
 	end
-
-	local params = {
-		conditionId = MatchGameFightEnum.SkillConditionType.OnBattleStart
-	}
-
-	MatchGameController.instance:dispatchEvent(MatchGameFightEvent.OnBattleStartCondition, params)
 end
 
 function MatchGameFightView:initHeroStartBattleSkill()
 	self.firstHeroFightMo = nil
 
-	for posIndex, heroFightMo in ipairs(self.heroFightInfoMap) do
+	for posIndex, heroFightMo in pairs(self.heroFightInfoMap) do
 		if heroFightMo.id ~= 0 and heroFightMo.config then
 			local skillId = not string.nilorempty(heroFightMo.config.activeSkillId) and tonumber(heroFightMo.config.activeSkillId) or 0
 			local isContainCondition = MatchGameFightConfig.instance:checkSkillContainCondition(skillId, MatchGameFightEnum.SkillUserType.Hero, MatchGameFightEnum.SkillConditionType.OnBattleStart)
@@ -226,9 +302,12 @@ function MatchGameFightView:initHeroStartBattleSkill()
 			MatchGameFightModel.instance:addPendingSkill(skillConfig, self.firstHeroFightMo)
 		end
 	end
+end
 
+function MatchGameFightView:dispatchBattleStartCondition(skillUserMo)
 	local params = {
-		conditionId = MatchGameFightEnum.SkillConditionType.OnBattleStart
+		conditionId = MatchGameFightEnum.SkillConditionType.OnBattleStart,
+		skillUserMo = skillUserMo
 	}
 
 	MatchGameController.instance:dispatchEvent(MatchGameFightEvent.OnBattleStartCondition, params)
@@ -240,7 +319,7 @@ function MatchGameFightView:checkTeamCondition(skillId)
 	if teamConditionDataList and next(teamConditionDataList) then
 		local heroCareerMap = {}
 
-		for posIndex, heroFightMo in ipairs(self.heroFightInfoMap) do
+		for posIndex, heroFightMo in pairs(self.heroFightInfoMap) do
 			if heroFightMo.id ~= 0 and heroFightMo.config then
 				heroCareerMap[heroFightMo.career] = heroCareerMap[heroFightMo.career] or 0
 				heroCareerMap[heroFightMo.career] = heroCareerMap[heroFightMo.career] + 1
@@ -267,12 +346,12 @@ end
 function MatchGameFightView:refreshUI()
 	gohelper.setActive(self._gochallenge, self.isChallenge)
 	gohelper.setActive(self._gotargetContent, not self.isChallenge)
+	self:refreshHeroFight()
+	self:refreshHeroInfo()
 	self:refreshWaveUI()
 	self:refreshChallenge()
 	self:refreshTargetGoal()
 	self:refreshRoundInfo()
-	self:refreshHeroInfo()
-	self:refreshHeroFight()
 end
 
 function MatchGameFightView:refreshTargetGoal()
@@ -317,7 +396,9 @@ function MatchGameFightView:refreshTargetGoal()
 
 				UISpriteSetMgr.instance:setMatchGameSprite(goalTargetItem.imageElement, elementConfig.icon)
 
-				goalTargetItem.txtTarget.text = goalInfo[3]
+				local elementNum = MatchGameFightModel.instance:getMatchElementNum(goalTargetItem.goalInfo[2])
+
+				goalTargetItem.txtTarget.text = Mathf.Max(0, goalInfo[3] - elementNum)
 			elseif goalTargetItem.type == MatchGameFightEnum.FightTargetType.KillAll then
 				goalTargetItem.txtTarget.text = luaLang("matchgame_fight_goal_killAll")
 			elseif goalTargetItem.type == MatchGameFightEnum.FightTargetType.RoundNum then
@@ -349,6 +430,17 @@ function MatchGameFightView:checkIsGetTargetGoal(goalTargetItem)
 
 		goalTargetItem.isGet = elementNum >= goalTargetItem.goalInfo[3]
 	end
+end
+
+function MatchGameFightView:getTargetGoalData()
+	local goalData = {}
+
+	goalData.enemyHp = self.enemyInfoMo.hp
+	goalData.curWaveCount = self.curWaveCount
+	goalData.totalWaveCount = self.totalWaveCount
+	goalData.curRoundCount = self.curRoundCount
+
+	return goalData
 end
 
 function MatchGameFightView:getTargetGoalFinishIndexList()
@@ -434,7 +526,9 @@ function MatchGameFightView:refreshEnemyInfo()
 		self.enemyMeshComp = MonoHelper.addNoUpdateLuaComOnceToGo(self._goenemyMesh, MatchGameFightRoleMesh)
 	end
 
-	self.enemyMeshComp:refreshMesh(self.enemyInfoMo.enemyCoData.config.mesh, true)
+	self.enemyMeshComp:refreshMesh(self.enemyInfoMo.enemyCoData.config, true)
+
+	self._imageenemy.material = self.enemyMat
 
 	local paramData = {
 		fightView = self,
@@ -456,31 +550,35 @@ function MatchGameFightView:setEnemyImageSize()
 end
 
 function MatchGameFightView:refreshHeroInfo()
-	for posIndex, heroFightMo in ipairs(self.heroFightInfoMap) do
-		local heroInfoItem = self.heroInfoItemMap[posIndex]
+	for index, heroFightMo in ipairs(self.heroFightInfoList) do
+		local heroInfoItem = self.heroInfoItemMap[index]
 
 		if not heroInfoItem then
 			heroInfoItem = {
-				go = gohelper.clone(self._goheroInfoItem, self._goheroInfoContent, "heroInfoItem" .. posIndex),
+				go = gohelper.clone(self._goheroInfoItem, self._goheroInfoContent, "heroInfoItem" .. heroFightMo.posIndex),
 				heroFightMo = heroFightMo,
-				posIndex = posIndex
+				posIndex = heroFightMo.posIndex
 			}
 			heroInfoItem.comp = MonoHelper.addNoUpdateLuaComOnceToGo(heroInfoItem.go, MatchGameFightHeroInfoItem, {
-				posIndex = posIndex,
+				posIndex = heroFightMo.posIndex,
 				fightView = self
 			})
-			self.heroInfoItemMap[posIndex] = heroInfoItem
+			self.heroInfoItemMap[index] = heroInfoItem
 		end
+
+		heroInfoItem.heroFightMo = heroFightMo
 
 		heroInfoItem.comp:refreshUI(heroFightMo)
 	end
 end
 
-function MatchGameFightView:refreshHeroFight()
+function MatchGameFightView:refreshHeroFight(isResetRoundData)
+	local needInitHeroTotalHp = self.curHeroTotalHp == nil
+
 	self.maxHeroTotalHp = 0
 	self.curHeroTotalHp = self.curHeroTotalHp or 0
 
-	for posIndex, heroFightMo in ipairs(self.heroFightInfoMap) do
+	for posIndex, heroFightMo in pairs(self.heroFightInfoMap) do
 		self.maxHeroTotalHp = self.maxHeroTotalHp + heroFightMo.maxHp
 
 		local heroFightItem = self.heroFightItemMap[posIndex]
@@ -495,21 +593,27 @@ function MatchGameFightView:refreshHeroFight()
 			heroFightItem.goAttackFlyItem = self:createAttackFlyItem()
 
 			local startFlyPos = recthelper.rectToRelativeAnchorPos(heroFightItem.pos.transform.position, self._goattackFlyItemContent.transform)
-			local endFlyPos = recthelper.rectToRelativeAnchorPos(self._goenemyMesh.transform.position, self._goattackFlyItemContent.transform)
+			local endFlyPos = recthelper.rectToRelativeAnchorPos(self._goenemyFlyEffectPos.transform.position, self._goattackFlyItemContent.transform)
 			local paramData = {
 				posIndex = posIndex,
 				fightView = self,
 				goAttackFlyItem = heroFightItem.goAttackFlyItem,
 				startFlyPos = startFlyPos,
-				endFlyPos = endFlyPos
+				endFlyPos = endFlyPos,
+				roleMaterial = self.roleMaterial
 			}
 
 			heroFightItem.comp = MonoHelper.addNoUpdateLuaComOnceToGo(heroFightItem.go, MatchGameFightHeroItem, paramData)
 			self.heroFightItemMap[posIndex] = heroFightItem
+		end
+
+		heroFightItem.heroFightMo = heroFightMo
+
+		if needInitHeroTotalHp then
 			self.curHeroTotalHp = self.curHeroTotalHp + heroFightMo.hp
 		end
 
-		heroFightItem.comp:refreshUI(heroFightMo)
+		heroFightItem.comp:refreshUI(heroFightMo, isResetRoundData)
 	end
 
 	self._imageheroHp.fillAmount = Mathf.Min(self.curHeroTotalHp, self.maxHeroTotalHp) / self.maxHeroTotalHp
@@ -572,8 +676,9 @@ end
 function MatchGameFightView:resetRoundData()
 	gohelper.setActive(self._gochain, false)
 	gohelper.setActive(self._gograde, false)
+	gohelper.setActive(self._godamageRate, false)
 
-	for posIndex, heroFightMo in ipairs(self.heroFightInfoMap) do
+	for posIndex, heroFightMo in pairs(self.heroFightInfoMap) do
 		if heroFightMo.id ~= 0 then
 			heroFightMo:updateFightInfo({
 				damage = 0
@@ -581,7 +686,7 @@ function MatchGameFightView:resetRoundData()
 		end
 	end
 
-	self:refreshHeroFight()
+	self:refreshHeroFight(true)
 end
 
 function MatchGameFightView:heroAttackStart()
@@ -595,26 +700,45 @@ function MatchGameFightView:heroAttackStart()
 
 	gohelper.setActive(self._goattackFlyItemContent, true)
 
-	if chainRate > 0 then
-		self.heroAttackSequence:addWork(FunctionWork.New(MatchGameFightView.doMultiHeroChainAttack, {
-			self,
-			chainIndex
+	local originTotalDamage = self:setOriginHeroDamage()
+
+	if chainRate >= 1 and originTotalDamage > 0 then
+		self:showDamageRate()
+
+		for index = 1, chainIndex do
+			self.heroAttackSequence:addWork(FunctionWork.New(MatchGameFightView.doMultiHeroChainAttack, {
+				self,
+				index
+			}))
+			self.heroAttackSequence:addWork(TimerWork.New(MatchGameFightEnum.DoMultiHeroChainAttackTime))
+		end
+
+		self.heroAttackSequence:addWork(TimerWork.New(Mathf.Max(MatchGameFightEnum.ShowDamageRateTime - chainIndex * MatchGameFightEnum.DoMultiHeroChainAttackTime, 0)))
+		self.heroAttackSequence:addWork(FunctionWork.New(MatchGameFightView.doCloseDamageRateAnim, {
+			self
 		}))
-		self.heroAttackSequence:addWork(TimerWork.New(MatchGameFightEnum.DoMultiHeroChainAttackTime))
-	else
-		self.heroAttackSequence:addWork(FunctionWork.New(MatchGameFightView.doMultiHeroChainAttack, {
-			self,
-			1
+		self.heroAttackSequence:addWork(TimerWork.New(MatchGameFightEnum.HideDamageRateTime))
+		self.heroAttackSequence:addWork(FunctionWork.New(MatchGameFightView.hideDamageRate, {
+			self
 		}))
-		self.heroAttackSequence:addWork(TimerWork.New(MatchGameFightEnum.DoMultiHeroChainAttackTime))
 	end
 
-	self.heroAttackSequence:addWork(FunctionWork.New(MatchGameFightView.hideDamageRate, {
+	self.heroAttackSequence:addWork(FunctionWork.New(MatchGameFightView.showGrade, {
+		self,
+		chainIndex
+	}))
+	self.heroAttackSequence:addWork(TimerWork.New(MatchGameFightEnum.ShowGradeTime))
+	self.heroAttackSequence:addWork(FunctionWork.New(MatchGameFightView.doCloseGradeAnim, {
+		self,
+		chainIndex
+	}))
+	self.heroAttackSequence:addWork(TimerWork.New(MatchGameFightEnum.HideGradeTime))
+	self.heroAttackSequence:addWork(FunctionWork.New(MatchGameFightView.hideGrade, {
 		self
 	}))
 	self.heroAttackSequence:addWork(TimerWork.New(MatchGameFightEnum.WaitHeroAttackTime))
 
-	for posIndex, heroFightMo in ipairs(self.heroFightInfoMap) do
+	for posIndex, heroFightMo in ipairs(self.heroFightInfoList) do
 		if heroFightMo.id ~= 0 and heroFightMo.damage > 0 and not heroFightMo.giddyState then
 			self.heroAttackSequence:addWork(FunctionWork.New(MatchGameFightView.doHeroAttack, {
 				self,
@@ -628,28 +752,62 @@ function MatchGameFightView:heroAttackStart()
 	self.heroAttackSequence:start()
 end
 
-function MatchGameFightView.doMultiHeroChainAttack(params)
+function MatchGameFightView:setOriginHeroDamage()
+	local totalDamage = 0
+
+	for posIndex, heroFightItem in pairs(self.heroFightItemMap) do
+		if heroFightItem.heroFightMo.id ~= 0 then
+			heroFightItem.originDamage = heroFightItem.heroFightMo.damage
+			totalDamage = totalDamage + heroFightItem.originDamage
+		end
+	end
+
+	return totalDamage
+end
+
+function MatchGameFightView:showDamageRate()
+	gohelper.setActive(self._godamageRate, true)
+end
+
+function MatchGameFightView.doCloseDamageRateAnim(params)
+	local self = params[1]
+
+	self._damageRateAnim:Play("close", 0, 0)
+	self._damageRateAnim:Update(0)
+end
+
+function MatchGameFightView.hideDamageRate(params)
+	local self = params[1]
+
+	gohelper.setActive(self._godamageRate, false)
+end
+
+function MatchGameFightView.showGrade(params)
 	local self, chainIndex = params[1], params[2]
 
 	gohelper.setActive(self._gograde, true)
 
-	local chainRateDataList = MatchGameFightConfig.instance:getChainRateDataList()
-	local chainRate = 1
-	local startIndex = chainIndex > 1 and 2 or 1
-
-	for index = startIndex, chainIndex do
-		chainRate = chainRate * chainRateDataList[index].rate
-	end
-
 	for index, gradeItem in pairs(self.gradeItemList) do
-		gohelper.setActive(gradeItem, index == chainIndex)
+		gohelper.setActive(gradeItem.go, index == chainIndex)
 	end
 
+	AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_sanxiao_comment)
+end
+
+function MatchGameFightView.doMultiHeroChainAttack(params)
+	local self, chainIndex = params[1], params[2]
+	local chainRateDataList = MatchGameFightConfig.instance:getChainRateDataList()
+	local chainRate = chainRateDataList[chainIndex] and chainRateDataList[chainIndex].rate or 0
 	local totalHeroDamage = 0
+
+	self._txtdamageRate.text = chainRate
+
+	self._damageRateAnim:Play("add", 0, 0)
+	self._damageRateAnim:Update(0)
 
 	for posIndex, heroFightItem in pairs(self.heroFightItemMap) do
 		if heroFightItem.heroFightMo.id ~= 0 then
-			local damage = heroFightItem.heroFightMo.damage * chainRate
+			local damage = heroFightItem.originDamage * chainRate
 
 			damage = self:getTargetDamage(damage)
 
@@ -664,12 +822,25 @@ function MatchGameFightView.doMultiHeroChainAttack(params)
 	self.maxRoundDamage = Mathf.Max(self.maxRoundDamage, totalHeroDamage)
 
 	self:refreshHeroFight()
+	AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_sanxiao_comment)
 end
 
-function MatchGameFightView.hideDamageRate(params)
+function MatchGameFightView.doCloseGradeAnim(params)
+	local self, chainIndex = params[1], params[2]
+	local gradeItem = self.gradeItemList[chainIndex]
+
+	gradeItem.anim:Play("close", 0, 0)
+	gradeItem.anim:Update(0)
+end
+
+function MatchGameFightView.hideGrade(params)
 	local self = params[1]
 
 	gohelper.setActive(self._gograde, false)
+
+	for index, gradeItem in pairs(self.gradeItemList) do
+		gohelper.setActive(gradeItem.go, false)
+	end
 end
 
 function MatchGameFightView:getMatchBeadItemNumMap(elementItemMap, needCheckLock)
@@ -710,6 +881,24 @@ function MatchGameFightView:updateHeroEnergy(elementItemMap)
 	end
 end
 
+function MatchGameFightView:getCurDragMatchDamage(elementItemMap)
+	local totalDamage = 0
+	local matchBeadItemNumMap = self:getMatchBeadItemNumMap(elementItemMap, true)
+
+	for itemCareer, matchItemNum in pairs(matchBeadItemNumMap) do
+		for posIndex, heroFightItem in pairs(self.heroFightItemMap) do
+			if heroFightItem.heroFightMo.id ~= 0 and heroFightItem.heroFightMo.career == itemCareer then
+				local damage = self:calculateHeroDamage(heroFightItem.heroFightMo, matchItemNum)
+
+				damage = self:getTargetDamage(damage)
+				totalDamage = totalDamage + damage
+			end
+		end
+	end
+
+	return totalDamage
+end
+
 function MatchGameFightView:updateHeroDamage(elementItemMap)
 	local matchBeadItemNumMap = self:getMatchBeadItemNumMap(elementItemMap, true)
 
@@ -733,7 +922,7 @@ end
 function MatchGameFightView:calculateHeroDamage(heroFightMo, matchItemNum)
 	local matchRate = 1 + 0.1 * (matchItemNum - 1)
 	local counterRate = MatchGameFightConfig.instance:getCounterRate(heroFightMo.career, self.enemyInfoMo.career)
-	local damage = (heroFightMo.attack * heroFightMo.attackRate - self.enemyInfoMo.def) * counterRate * matchRate
+	local damage = Mathf.Max(1, heroFightMo.attack * (heroFightMo.attackRate + heroFightMo.skillAttackRate) - self.enemyInfoMo.def) * counterRate * matchRate
 
 	damage = self:getTargetDamage(damage)
 
@@ -768,6 +957,7 @@ function MatchGameFightView.doHeroAttack(params)
 	local heroFightItem = self.heroFightItemMap[heroFightMo.posIndex]
 
 	heroFightItem.comp:playEffectFlying(attack)
+	MatchGameFightModel.instance:addTotalHeroDamage(attack)
 end
 
 function MatchGameFightView:doEnemyRealHurt(attack)
@@ -777,10 +967,16 @@ function MatchGameFightView:doEnemyRealHurt(attack)
 
 	self:playRoleAnim(enemyHurtAnimName, self.enemyInfoMo.id, true)
 
+	if attack >= MatchGameFightEnum.HeroHeavyDamage then
+		AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_hit_critical)
+	else
+		AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_hit_ordinary)
+	end
+
 	local lastEnemyHp = self.enemyInfoMo.hp
 
 	self.enemyInfoMo.hp = Mathf.Max(0, self.enemyInfoMo.hp - attack)
-	self._txtenemyHurt.text = self.enemyInfoMo.hp - lastEnemyHp
+	self._txtenemyHurt.text = -attack
 
 	self:showEnemyHurt()
 
@@ -806,6 +1002,7 @@ end
 
 function MatchGameFightView:showEnemyHurt()
 	TaskDispatcher.cancelTask(self.hideEnemyHurt, self)
+	gohelper.setActive(self._goenemyHurt, false)
 	gohelper.setActive(self._goenemyHurt, true)
 	TaskDispatcher.runDelay(self.hideEnemyHurt, self, MatchGameFightEnum.HurtTxtTime)
 end
@@ -816,44 +1013,85 @@ end
 
 function MatchGameFightView:showSkillDesc(skillConfig)
 	TaskDispatcher.cancelTask(self.hideSkillDesc, self)
+	TaskDispatcher.cancelTask(self.playSkillDescCloseAnim, self)
 
 	if skillConfig.skillTextType == MatchGameFightEnum.SkillToastType.SkillDesc then
 		gohelper.setActive(self._goskillDesc, true)
 		gohelper.setActive(self._goskillDropRate, false)
+		gohelper.setActive(self._goskillFeverDesc, false)
 
 		self._txtskillDesc.text = skillConfig.skillText
 	elseif skillConfig.skillTextType == MatchGameFightEnum.SkillToastType.DropRate then
 		gohelper.setActive(self._goskillDesc, false)
+		gohelper.setActive(self._goskillFeverDesc, false)
 		gohelper.setActive(self._goskillDropRate, true)
 		UISpriteSetMgr.instance:setMatchGameSprite(self._imageDropRateItem, "icon_career" .. skillConfig.skillText)
+	elseif skillConfig.skillTextType == MatchGameFightEnum.SkillToastType.FeverDesc then
+		gohelper.setActive(self._goskillDesc, false)
+		gohelper.setActive(self._goskillDropRate, false)
+		gohelper.setActive(self._goskillFeverDesc, true)
+
+		self._txtskillFeverDesc.text = skillConfig.skillText
 	else
 		gohelper.setActive(self._goskillDesc, false)
 		gohelper.setActive(self._goskillDropRate, false)
+		gohelper.setActive(self._goskillFeverDesc, false)
 	end
 
-	TaskDispatcher.runDelay(self.hideSkillDesc, self, MatchGameFightEnum.SkillDescShowTime)
+	local descShowTime = skillConfig.skillTextType == MatchGameFightEnum.SkillToastType.SkillDesc and MatchGameFightEnum.SkillDescShowTime or MatchGameFightEnum.DropSkillDescShowTime
+
+	TaskDispatcher.runDelay(self.playSkillDescCloseAnim, self, descShowTime - MatchGameFightEnum.CloseSkillDescTime)
+	TaskDispatcher.runDelay(self.hideSkillDesc, self, descShowTime)
 
 	local sceneView = self.viewContainer:getSceneView()
 
 	sceneView:pauseGame()
+	AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_sanxiao_bonus)
+
+	self.isHeroSkillShowing = true
+end
+
+function MatchGameFightView:playSkillDescCloseAnim()
+	if self._goskillDesc.activeSelf then
+		self._skillDescAnim:Play("close", 0, 0)
+		self._skillDescAnim:Update(0)
+	end
+
+	if self._goskillDropRate.activeSelf then
+		self._skillDropRateAnim:Play("close", 0, 0)
+		self._skillDropRateAnim:Update(0)
+	end
+
+	if self._goskillFeverDesc.activeSelf then
+		self._skillFeverDescAnim:Play("close", 0, 0)
+		self._skillFeverDescAnim:Update(0)
+	end
 end
 
 function MatchGameFightView:hideSkillDesc()
 	gohelper.setActive(self._goskillDesc, false)
 	gohelper.setActive(self._goskillDropRate, false)
+	gohelper.setActive(self._goskillFeverDesc, false)
 
 	local sceneView = self.viewContainer:getSceneView()
 
 	sceneView:continueGame()
+
+	self.isHeroSkillShowing = false
+end
+
+function MatchGameFightView:getHeroSkillShowingState()
+	return self.isHeroSkillShowing
 end
 
 function MatchGameFightView:enemyAttackStart()
 	if self.enemyInfoMo.hp <= 0 then
 		self:playRoleAnim("die", self.enemyInfoMo.id, true)
+		AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_sanxiao_death)
 
 		self.curWaveCount = self.curWaveCount + 1
 
-		TaskDispatcher.runDelay(self.finishCurEnemyWave, self, 0.267)
+		TaskDispatcher.runDelay(self.finishCurEnemyWave, self, MatchGameFightEnum.RefreshNextWaveTime)
 
 		return
 	end
@@ -869,8 +1107,10 @@ function MatchGameFightView:enemyAttackStart()
 
 		if not string.nilorempty(skillConfig.skillText) then
 			self:showSkillDesc(skillConfig)
+			self:playRoleAnim("hit_skill", self.enemyInfoMo.id, true)
 			TaskDispatcher.runDelay(self.doEnemySkillAttack, self, MatchGameFightEnum.SkillDescShowTime)
 		else
+			self:playRoleAnim("hit_skill", self.enemyInfoMo.id, true)
 			self:doEnemySkillAttack()
 		end
 	else
@@ -885,6 +1125,7 @@ function MatchGameFightView:finishCurEnemyWave()
 		sceneView:setGameFightResult(MatchGameFightEnum.FightResult.Succ)
 	else
 		self:refreshWaveUI()
+		self:dispatchBattleStartCondition(self.enemyInfoMo)
 	end
 
 	self:doEnemyAttackFinish()
@@ -902,8 +1143,6 @@ function MatchGameFightView:doEnemySkillAttack()
 	if not hasAttackEffect then
 		self:doEnemyAttackFinish()
 	end
-
-	self:playRoleAnim("hit_skill", self.enemyInfoMo.id, true)
 end
 
 function MatchGameFightView:checkSkillHasAttackEffect(skillConfig)
@@ -967,7 +1206,7 @@ function MatchGameFightView:onSkillAttackHero(needAttackHeroList, attackRate)
 end
 
 function MatchGameFightView:getEnemyDamage(averHeroDef)
-	local enemyDamage = self.enemyInfoMo.attack * self.enemyInfoMo.attackRate - averHeroDef
+	local enemyDamage = self.enemyInfoMo.attack * (self.enemyInfoMo.attackRate + self.enemyInfoMo.skillAttackRate) - averHeroDef
 
 	return self:getTargetDamage(enemyDamage)
 end
@@ -1005,6 +1244,12 @@ function MatchGameFightView:doEnemyHurtHero(enemyDamage)
 	local heroHurtAnimName = enemyDamage >= MatchGameFightEnum.EnemyHeavyDamage and "damage_heavy" or "damage_light"
 	local enemyHurtEffectName = enemyDamage >= MatchGameFightEnum.EnemyHeavyDamage and MatchGameFightEnum.RoleEffectType.HeavyDamage or MatchGameFightEnum.RoleEffectType.NormalDamage
 
+	if enemyDamage >= MatchGameFightEnum.EnemyHeavyDamage then
+		AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_hit_critical)
+	else
+		AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_hit_ordinary)
+	end
+
 	for posIndex, heroFightItem in pairs(self.heroFightItemMap) do
 		heroFightItem.comp.roleEffectComp:playRoleAnim(heroHurtAnimName)
 		heroFightItem.comp.roleEffectComp:showRoleStateEffect(enemyHurtEffectName)
@@ -1036,7 +1281,8 @@ function MatchGameFightView:doSetHeroHpAnimFinish()
 		local sceneView = self.viewContainer:getSceneView()
 
 		sceneView:setGameFightResult(MatchGameFightEnum.FightResult.Fail)
-		TaskDispatcher.runDelay(self.doEnemyAttackFinish, self, 0.3)
+		TaskDispatcher.runDelay(self.doEnemyAttackFinish, self, MatchGameFightEnum.HeroAttackTime)
+		AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_sanxiao_death)
 	else
 		self:doEnemyAttackFinish()
 	end
@@ -1044,10 +1290,19 @@ end
 
 function MatchGameFightView:doEnemyAttackFinish()
 	MatchGameController.instance:dispatchEvent(MatchGameFightEvent.EnemyAttackFinish)
+	TaskDispatcher.cancelTask(self.checkNotMatchConvertElement, self)
+	TaskDispatcher.runDelay(self.checkNotMatchConvertElement, self, MatchGameFightEnum.SkillFinishCheckNotMatchtTime)
+end
+
+function MatchGameFightView:checkNotMatchConvertElement()
+	local sceneView = self.viewContainer:getSceneView()
+
+	sceneView:checkNotMatchConvertElement(true)
 end
 
 function MatchGameFightView:showHeroHurt()
 	TaskDispatcher.cancelTask(self.hideHeroHurt, self)
+	gohelper.setActive(self._goheroHurt, false)
 	gohelper.setActive(self._goheroHurt, true)
 	TaskDispatcher.runDelay(self.hideHeroHurt, self, MatchGameFightEnum.HurtTxtTime)
 end
@@ -1143,6 +1398,8 @@ function MatchGameFightView:onSkillCureHero(needCureHeroList, cureRate)
 
 		heroFightItem.comp.roleEffectComp:showRoleStateEffect(MatchGameFightEnum.RoleEffectType.Heal)
 	end
+
+	AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_sanxiao_treat)
 end
 
 function MatchGameFightView:onCureElementCureHero()
@@ -1150,7 +1407,7 @@ function MatchGameFightView:onCureElementCureHero()
 
 	local totalHeal = 0
 
-	for posIndex, heroFightMo in ipairs(self.heroFightInfoMap) do
+	for posIndex, heroFightMo in pairs(self.heroFightInfoMap) do
 		totalHeal = totalHeal + heroFightMo.heal
 	end
 
@@ -1186,6 +1443,8 @@ function MatchGameFightView:doCureEnemy(enemyInfoMo, cureRate)
 
 	self.enemyInfoMo.hp = Mathf.Min(self.enemyInfoMo.maxHp, self.enemyInfoMo.hp + healHp)
 	self.enemyHpBarTweenId = ZProj.TweenHelper.DOTweenFloat(lastEnemyHp, self.enemyInfoMo.hp, MatchGameFightEnum.HpBarChangeTime, self.setEnemyHpAnim, self.doSetEnemyHpAnimFinish, self, nil, EaseType.Linear)
+
+	AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_sanxiao_treat)
 end
 
 function MatchGameFightView:showRoleEffect(effectName, roleId, isEnemy)
@@ -1287,7 +1546,7 @@ function MatchGameFightView:createEffectItem()
 	return effectItem
 end
 
-function MatchGameFightView:showElementEffect(effectType, posXIndex, posYIndex)
+function MatchGameFightView:showElementEffect(effectType, posXIndex, posYIndex, scale)
 	local effectItem = self:getEffectItem()
 
 	gohelper.setActive(effectItem.go, true)
@@ -1300,11 +1559,34 @@ function MatchGameFightView:showElementEffect(effectType, posXIndex, posYIndex)
 		gohelper.setActive(effectGO, canShow)
 	end
 
+	if effectType == MatchGameFightEnum.ItemMatchEffect.Heal then
+		AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_sanxiao_treat)
+	elseif effectType == MatchGameFightEnum.ItemMatchEffect.Cleanse then
+		AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_sanxiao_purify)
+	elseif effectType == MatchGameFightEnum.ItemMatchEffect.Bomb then
+		AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_sanxiao_explode)
+	elseif effectType == MatchGameFightEnum.ItemMatchEffect.MatchAoe then
+		AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_xiaochu_bubble)
+	elseif effectType == MatchGameFightEnum.ItemMatchEffect.MatchLine then
+		AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_xiaochu_ribbon)
+	end
+
 	local posX, posY = MatchGameFightModel.instance:getPlaneItemAnchorPos(posXIndex, posYIndex)
 
 	recthelper.setAnchor(effectItem.go.transform, posX, posY)
+
+	local effectScale = scale or 1
+
+	transformhelper.setLocalScale(effectItem.go.transform, effectScale, effectScale, effectScale)
 	TaskDispatcher.cancelTask(effectItem.recycleCb, effectItem)
-	TaskDispatcher.runDelay(effectItem.recycleCb, effectItem, 0.5)
+
+	local recycleEffectTime = MatchGameFightEnum.ElementItemEffectRecycleTime
+
+	if effectType == MatchGameFightEnum.ItemMatchEffect.SkillAoe or effectType == MatchGameFightEnum.ItemMatchEffect.SkillLineH or effectType == MatchGameFightEnum.ItemMatchEffect.SkillLineV then
+		recycleEffectTime = MatchGameFightEnum.ElementItemRangeEffectRecycleTime
+	end
+
+	TaskDispatcher.runDelay(effectItem.recycleCb, effectItem, recycleEffectTime)
 
 	return effectItem
 end
@@ -1335,6 +1617,12 @@ function MatchGameFightView:skillAddCurHeroTotalHp(value)
 	self.curHeroTotalHp = self.curHeroTotalHp + value
 end
 
+function MatchGameFightView:getIsRoundEnding()
+	local sceneView = self.viewContainer:getSceneView()
+
+	return sceneView:getIsRoundEnding()
+end
+
 function MatchGameFightView:cleanEnemyHpBarTween()
 	if self.enemyHpBarTweenId then
 		ZProj.TweenHelper.KillById(self.enemyHpBarTweenId)
@@ -1362,14 +1650,14 @@ end
 
 function MatchGameFightView:cleanHeroDebuffHurtSequence()
 	if self.heroDebuffHurtSequence then
-		self.heroDebuffHurtSequence:unregisterDoneListener(self.doHeroAttackFinish, self)
+		self.heroDebuffHurtSequence:unregisterDoneListener(self.doHeroDebuffHurtFinish, self)
 		self.heroDebuffHurtSequence:destroy()
 
 		self.heroDebuffHurtSequence = nil
 	end
 end
 
-function MatchGameFightView:onClose()
+function MatchGameFightView:cleanRestartRuntime()
 	self:cleanHeroAttackSequence()
 	self:cleanEnemyHpBarTween()
 	self:cleanHeroHpBarTween()
@@ -1381,13 +1669,60 @@ function MatchGameFightView:onClose()
 	TaskDispatcher.cancelTask(self.doEnemySkillAttack, self)
 	TaskDispatcher.cancelTask(self.doEnemyAttackFinish, self)
 	TaskDispatcher.cancelTask(self.finishCurEnemyWave, self)
+	TaskDispatcher.cancelTask(self.playSkillDescCloseAnim, self)
+	TaskDispatcher.cancelTask(self.dispatchBattleStartCondition, self)
+	TaskDispatcher.cancelTask(self.doRestartGame, self)
+	TaskDispatcher.cancelTask(self.hideRestartAnim, self)
+	TaskDispatcher.cancelTask(self.checkNotMatchConvertElement, self)
 	self:recycleAllEffectItem()
-	self:resetRoundData()
+	gohelper.setActive(self._goattackFlyItemContent, false)
+	gohelper.setActive(self._gochain, false)
+	gohelper.setActive(self._gograde, false)
+	gohelper.setActive(self._godamageRate, false)
+	gohelper.setActive(self._goenemyHurt, false)
+	gohelper.setActive(self._goheroHurt, false)
+	gohelper.setActive(self._goskillDesc, false)
+	gohelper.setActive(self._goskillDropRate, false)
+	gohelper.setActive(self._goclickMask, false)
+
+	self.lastChainState = nil
+	self.useSkillInfo = nil
+	self.firstHeroFightMo = nil
+	self.isHeroSkillShowing = false
+end
+
+function MatchGameFightView:clearHeroItems()
+	for _, heroInfoItem in pairs(self.heroInfoItemMap) do
+		if heroInfoItem.go then
+			gohelper.destroy(heroInfoItem.go)
+		end
+	end
+
+	for _, heroFightItem in pairs(self.heroFightItemMap) do
+		if heroFightItem.goAttackFlyItem and heroFightItem.goAttackFlyItem.go then
+			gohelper.destroy(heroFightItem.goAttackFlyItem.go)
+		end
+
+		if heroFightItem.go then
+			gohelper.destroy(heroFightItem.go)
+		end
+	end
+
+	self.heroInfoItemMap = self:getUserDataTb_()
+	self.heroFightItemMap = self:getUserDataTb_()
+end
+
+function MatchGameFightView:onClose()
+	self:cleanRestartRuntime()
 	self._simageenemy:UnLoadImage()
 end
 
 function MatchGameFightView:onDestroyView()
 	self:recycleAllEffectItem()
+
+	if self.enemyMat then
+		UnityEngine.Object.Destroy(self.enemyMat)
+	end
 end
 
 return MatchGameFightView

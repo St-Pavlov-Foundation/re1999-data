@@ -36,8 +36,12 @@ function DecorateModel:getItemIcon(itemConfig, goodsId)
 	itemDecorateCo = DecorateStoreConfig.instance:getDecorateConfig(goodsId)
 
 	if itemDecorateCo then
-		return ResUrl.getDecorateStoreImg(itemDecorateCo.biglmg)
+		return ResUrl.getDecorateStoreImg(itemDecorateCo.buylmg)
 	end
+end
+
+function DecorateModel:getGoodsBuyIcon(itemConfig, goodsId)
+	return self:getItemIcon(itemConfig, goodsId)
 end
 
 function DecorateModel:getItemDecorateCo(itemConfig)
@@ -199,10 +203,150 @@ function DecorateModel:collectSource(itemId)
 	return sourceTables
 end
 
-function DecorateModel:getGoodsItemType(storeId)
-	if storeId == StoreEnum.StoreId.RoomStore or storeId == StoreEnum.StoreId.NewRoomStore or storeId == StoreEnum.StoreId.OldRoomStore then
+function DecorateModel:hasSceneGoods(goodsId)
+	local goodConfig = StoreConfig.instance:getGoodsConfig(goodsId)
+	local productsList = GameUtil.splitString2(goodConfig.product, true, "|", "#")
+
+	for _, v in ipairs(productsList) do
+		local itemConfig = ItemModel.instance:getItemConfig(v[1], v[2])
+
+		if itemConfig.subType == ItemEnum.SubType.MainSceneSkin then
+			return true
+		end
+	end
+
+	return false
+end
+
+function DecorateModel:getPackageGoodsIds(goodsId)
+	local goodsIds = self:getPackageAllGoodsIds(goodsId)
+	local ids = {}
+
+	if goodsIds then
+		for _, id in ipairs(goodsIds) do
+			if self:isCanBuyGoods(id) then
+				table.insert(ids, id)
+			end
+		end
+	end
+
+	return ids
+end
+
+function DecorateModel:getPackageAllGoodsIds(goodsId)
+	if not self._packageGoodsIds then
+		self._packageGoodsIds = {}
+	end
+
+	if not self._packageGoodsIds[goodsId] then
+		local decorateConfig = DecorateStoreConfig.instance:getDecorateConfig(goodsId)
+
+		if decorateConfig.bundleType == 2 then
+			self._packageGoodsIds[goodsId] = self:_getCanBuyPackageGoods(goodsId)
+		elseif decorateConfig.fatherGoods > 0 then
+			local fatherConfig = DecorateStoreConfig.instance:getDecorateConfig(decorateConfig.fatherGoods)
+
+			if fatherConfig.bundleType == 2 then
+				self._packageGoodsIds[goodsId] = self:_getCanBuyPackageGoods(decorateConfig.fatherGoods)
+			end
+		end
+	end
+
+	return self._packageGoodsIds[goodsId]
+end
+
+function DecorateModel:_getCanBuyPackageGoods(goodsId)
+	local goodsIds = {}
+	local goodConfig = StoreConfig.instance:getGoodsConfig(goodsId)
+	local productsList = GameUtil.splitString2(goodConfig.product, true, "|", "#")
+
+	table.insert(goodsIds, goodsId)
+
+	for _, v in ipairs(productsList) do
+		local _goodsId = self:_getSingleGoodsIdByMaterialId(v[2])
+
+		if _goodsId and not LuaUtil.tableContains(goodsIds, _goodsId) then
+			table.insert(goodsIds, _goodsId)
+		end
+	end
+
+	table.sort(goodsIds, DecorateModel._sortGoods)
+
+	return goodsIds
+end
+
+function DecorateModel._sortGoods(a, b)
+	local a_config = StoreConfig.instance:getGoodsConfig(a)
+	local b_config = StoreConfig.instance:getGoodsConfig(b)
+
+	if a_config.order ~= b_config.order then
+		return a_config.order < b_config.order
+	end
+
+	return a < b
+end
+
+function DecorateModel:_getSingleGoodsIdByMaterialId(materialId)
+	for _, config in ipairs(lua_store_goods.configList) do
+		local product = GameUtil.splitString2(config.product, true, "|", "#")
+
+		if #product == 1 and product[1][2] == materialId then
+			return config.id
+		end
+	end
+end
+
+function DecorateModel:_isMaterialInGoods(goodConfig, materialType, materialId)
+	if not goodConfig or string.nilorempty(goodConfig.product) then
 		return
 	end
+
+	local product = GameUtil.splitString2(goodConfig.product, true, "|", "#")
+
+	for _, v in ipairs(product) do
+		if v[1] == materialType and v[2] == materialId then
+			return true
+		end
+	end
+end
+
+function DecorateModel:isCanOpenPreviewView(subType)
+	if not self._canOpenPreviewView then
+		self._canOpenPreviewView = {
+			[ItemEnum.SubType.PlayerBg] = true,
+			[ItemEnum.SubType.MainSceneSkin] = true,
+			[ItemEnum.SubType.MainUISkin] = true,
+			[ItemEnum.SubType.FightCard] = true,
+			[ItemEnum.SubType.FightFloatType] = true
+		}
+	end
+
+	return self._canOpenPreviewView[subType]
+end
+
+function DecorateModel:isCanBuyGoods(goodsId)
+	if not goodsId then
+		return false
+	end
+
+	local goodsMo = StoreModel.instance:getGoodsMO(goodsId)
+
+	if not goodsMo or goodsMo:isSoldOut() then
+		return false
+	end
+
+	local storeCo = StoreConfig.instance:getGoodsConfig(goodsId)
+	local productsList = GameUtil.splitString2(storeCo.product, true, "|", "#")
+
+	for i, product in ipairs(productsList) do
+		local count = ItemModel.instance:getItemQuantity(product[1], product[2])
+
+		if count > 0 then
+			return false
+		end
+	end
+
+	return true
 end
 
 DecorateModel.instance = DecorateModel.New()

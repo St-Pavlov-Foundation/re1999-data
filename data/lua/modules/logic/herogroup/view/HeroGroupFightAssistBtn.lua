@@ -26,6 +26,7 @@ function HeroGroupFightAssistBtn:addEvents()
 	self:addEventCb(HeroGroupController.instance, HeroGroupEvent.OnModifyGroupSelectIndex, self._onModifyGroupSelectIndex, self)
 	self:addEventCb(TowerController.instance, TowerEvent.OnTowerResetSubEpisode, self._refresh, self)
 	self:addEventCb(AbyssController.instance, AbyssEvent.OnResetStage, self._refresh, self)
+	self:addEventCb(AbyssController.instance, AbyssEvent.OnCurStageChange, self._refresh, self)
 end
 
 function HeroGroupFightAssistBtn:removeEvents()
@@ -40,6 +41,7 @@ function HeroGroupFightAssistBtn:removeEvents()
 	self:removeEventCb(HeroGroupController.instance, HeroGroupEvent.OnModifyHeroGroup, self._refresh, self)
 	self:removeEventCb(HeroGroupController.instance, HeroGroupEvent.OnModifyGroupSelectIndex, self._onModifyGroupSelectIndex, self)
 	self:removeEventCb(TowerController.instance, TowerEvent.OnTowerResetSubEpisode, self._refresh, self)
+	self:removeEventCb(AbyssController.instance, AbyssEvent.OnCurStageChange, self._refresh, self)
 end
 
 function HeroGroupFightAssistBtn:ctor(param)
@@ -61,9 +63,25 @@ function HeroGroupFightAssistBtn:_btnassistOnClick()
 		return
 	end
 
+	local episodeId = self:_getEpisodeId()
+
 	PickAssistController.instance:openPickAssistView(assistType, self._episdoeActId, nil, self._pickOverCallBack, self, true, nil, nil, {
-		episodeId = DungeonModel.instance.curSendEpisodeId
+		episodeId = episodeId
 	})
+end
+
+function HeroGroupFightAssistBtn:_getEpisodeId()
+	local episodeId = DungeonModel.instance.curSendEpisodeId
+
+	if episodeId ~= nil then
+		logNormal("HeroGroupFightAssistBtn use curSendEpisodeId curId: " .. tostring(episodeId) .. " episodeID: " .. tostring(HeroGroupModel.instance.episodeId))
+
+		return episodeId
+	end
+
+	logNormal("HeroGroupFightAssistBtn use HeroGroupModelId curId: " .. tostring(episodeId) .. " episodeID: " .. tostring(HeroGroupModel.instance.episodeId))
+
+	return HeroGroupModel.instance.episodeId
 end
 
 function HeroGroupFightAssistBtn:_pickOverCallBack(mo)
@@ -87,7 +105,6 @@ function HeroGroupFightAssistBtn:_pickOverCallBack(mo)
 
 			if heroMo and heroMo.heroId == mo.heroId then
 				HeroSingleGroupModel.instance:remove(_mo.heroUid)
-				HeroGroupModel.instance:saveCurGroupData()
 
 				index = i
 			end
@@ -96,6 +113,7 @@ function HeroGroupFightAssistBtn:_pickOverCallBack(mo)
 
 	if index then
 		self:_setAssistMo(mo, index)
+		HeroGroupHandler.replaceSingleGroup(DungeonModel.instance.curSendEpisodeId)
 	else
 		HeroGroupModel.instance:setEditorAssistMo(mo)
 

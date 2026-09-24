@@ -162,11 +162,13 @@ function FightParam.initFightGroup(fightGroup, clothId, heroList, subHeroList, e
 			else
 				local assistuid
 
-				for _, assistMo in ipairs(assistMoList) do
-					if assistMo.id == i then
-						assistuid = assistMo.heroUid
+				for index, heroId in ipairs(heroList) do
+					for _, assistMo in ipairs(assistMoList) do
+						if index == i and heroId == assistMo.heroUid then
+							assistuid = assistMo.heroUid
 
-						break
+							break
+						end
 					end
 				end
 

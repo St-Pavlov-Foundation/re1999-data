@@ -9,13 +9,14 @@ function FightWorkTimelineAssetItem:onConstructor(loaderComp, entityData, timeli
 	self.entityData = entityData
 	self.skinId = entityData and entityData.skin
 	self.timelineName = timelineName
+	self.timelineUrl = ResUrl.getSkillTimeline(self.timelineName)
 	self.fightStepData = fightStepData
 end
 
 function FightWorkTimelineAssetItem:onStart()
-	self.timelineUrl = FightWorkTimelineItem.getTimelineAssetUrl(self.timelineName)
+	self.assetUrl = FightWorkTimelineItem.getTimelineAssetUrl(self.timelineName)
 
-	self.loaderComp:loadAsset(self.timelineUrl, self.onTimelineLoaded, self)
+	self.loaderComp:loadAsset(self.assetUrl, self.onTimelineLoaded, self)
 	self:cancelFightWorkSafeTimer()
 end
 

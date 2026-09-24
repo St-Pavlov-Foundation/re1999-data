@@ -44,12 +44,32 @@ function HeroGroupEditFightAssistBtn:_btnassistOnClick()
 		return
 	end
 
+	local episodeId = self:_getEpisodeId()
+
 	PickAssistController.instance:openPickAssistView(assistType, self._episdoeActId, nil, self._pickOverCallBack, self, true, nil, nil, {
-		episodeId = DungeonModel.instance.curSendEpisodeId
+		episodeId = episodeId
 	})
 end
 
+function HeroGroupEditFightAssistBtn:_getEpisodeId()
+	local episodeId = DungeonModel.instance.curSendEpisodeId
+
+	if episodeId ~= nil then
+		logNormal("HeroGroupEditFightAssistBtn use curSendEpisodeId curId: " .. tostring(episodeId) .. " episodeID: " .. tostring(HeroGroupModel.instance.episodeId))
+
+		return episodeId
+	end
+
+	logNormal("HeroGroupEditFightAssistBtn use HeroGroupModelId curId: " .. tostring(episodeId) .. " episodeID: " .. tostring(HeroGroupModel.instance.episodeId))
+
+	return HeroGroupModel.instance.episodeId
+end
+
 function HeroGroupEditFightAssistBtn:_pickOverCallBack(mo)
+	if not mo then
+		return
+	end
+
 	self:_setAssistMo(mo)
 	self:_refreshAssistBtn()
 

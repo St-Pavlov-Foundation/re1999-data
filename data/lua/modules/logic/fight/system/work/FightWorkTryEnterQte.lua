@@ -44,7 +44,6 @@ function FightWorkTryEnterQte:onStart()
 		flow:addWork(timelineWork)
 	end
 
-	flow:addWork(FunctionWork.New(self.tryChangeEntityMat, self))
 	flow:addWork(FunctionWork.New(FightWorkEnterQTE.hideEntityEffect))
 	flow:registFinishCallback(self.onEnterQteDone, self)
 	self:playWorkAndDone(flow, {})
@@ -52,23 +51,6 @@ end
 
 function FightWorkTryEnterQte:enterFightQteState()
 	FightDataHelper.stageMgr:enterFightState(FightStageMgr.FightStateType.QTE)
-end
-
-function FightWorkTryEnterQte:tryChangeEntityMat()
-	local entityMgr = FightGameMgr.entityMgr
-	local entityDict = entityMgr and entityMgr:getAllEntity()
-
-	if not entityDict then
-		return
-	end
-
-	for _, entity in pairs(entityDict) do
-		local entityMo = entity:getMO()
-
-		if entityMo and entityMo:checkIsDying() then
-			FightHelper.setEntityDying(entity)
-		end
-	end
 end
 
 function FightWorkTryEnterQte:onEnterQteDone()

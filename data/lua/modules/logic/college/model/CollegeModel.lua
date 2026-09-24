@@ -161,6 +161,12 @@ function CollegeModel:updatePush(msg)
 		return
 	end
 
+	if not ViewMgr.instance:isOpen(ViewName.CollegeMainView) then
+		logError("没有打开学院主界面，竟然收到数据更新？？如果是GM操作的，请忽略")
+
+		return
+	end
+
 	CollegeMsgHelper.instance:setMsg(msg)
 
 	local typeName = CollegeEnum.MsgPushTypeToName[msg.type] or ""

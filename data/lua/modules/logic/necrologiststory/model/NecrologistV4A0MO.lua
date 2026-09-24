@@ -47,6 +47,10 @@ function NecrologistV4A0MO:setLastShowResult(result)
 	self:setDataDirty()
 end
 
+function NecrologistV4A0MO:hasResult()
+	return self.lastShowResult and self.lastShowResult ~= 0
+end
+
 function NecrologistV4A0MO:isSameResult(resultConfig)
 	return self.lastShowResult == resultConfig.id
 end
@@ -58,8 +62,12 @@ function NecrologistV4A0MO:onStoryStateChange(storyId, state)
 end
 
 function NecrologistV4A0MO:setQuestionOption(questionId, option)
-	if not self.questionDict[questionId] then
+	if not self.questionDict[questionId] and not self:hasResult() then
 		HeroStoryRpc.instance:sendHeroStoryCommonTaskRequest(NecrologistStoryEnum.TaskParam.V4A0EpisodeFinishCount, 1)
+	end
+
+	if self:isLevelListComplete() then
+		self.questionDict = {}
 	end
 
 	self.questionDict[questionId] = option
@@ -89,7 +97,23 @@ function NecrologistV4A0MO:isBaseFinished(baseId)
 	return true
 end
 
+function NecrologistV4A0MO:isLevelListComplete()
+	local baseList = NecrologistStoryV4A0Config.instance:getBaseList()
+
+	for _, baseConfig in ipairs(baseList) do
+		if not self:isBaseFinished(baseConfig.id) then
+			return false
+		end
+	end
+
+	return true
+end
+
 function NecrologistV4A0MO:isComplete()
+	if self:hasResult() then
+		return true
+	end
+
 	local baseList = NecrologistStoryV4A0Config.instance:getBaseList()
 
 	for _, baseConfig in ipairs(baseList) do

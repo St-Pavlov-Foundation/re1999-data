@@ -19,7 +19,7 @@ function MatchGameCharacterMo:initByLocal(heroId, level)
 end
 
 function MatchGameCharacterMo:isTrial()
-	return self.id < 0
+	return self.heroCo and self.heroCo.isTrial == 1
 end
 
 function MatchGameCharacterMo:getAttrValue(attrType)

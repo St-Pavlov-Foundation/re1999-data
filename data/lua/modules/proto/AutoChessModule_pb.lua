@@ -133,6 +133,7 @@ AutoChessModule_pb.AUTOCHESSSCENEROUNDFIELD = protobuf.FieldDescriptor()
 AutoChessModule_pb.AUTOCHESSSCENEFIGHTFIELD = protobuf.FieldDescriptor()
 AutoChessModule_pb.AUTOCHESSSCENEMALLFIELD = protobuf.FieldDescriptor()
 AutoChessModule_pb.AUTOCHESSSCENEBASEINFOFIELD = protobuf.FieldDescriptor()
+AutoChessModule_pb.AUTOCHESSSCENEEXTINFOFIELD = protobuf.FieldDescriptor()
 AutoChessModule_pb.AUTOCHESSBUFF_MSG = protobuf.Descriptor()
 AutoChessModule_pb.AUTOCHESSBUFFUIDFIELD = protobuf.FieldDescriptor()
 AutoChessModule_pb.AUTOCHESSBUFFIDFIELD = protobuf.FieldDescriptor()
@@ -1476,7 +1477,7 @@ AutoChessModule_pb.AUTOCHESSSCENEMALLFIELD.type = 11
 AutoChessModule_pb.AUTOCHESSSCENEMALLFIELD.cpp_type = 10
 AutoChessModule_pb.AUTOCHESSSCENEBASEINFOFIELD.name = "baseInfo"
 AutoChessModule_pb.AUTOCHESSSCENEBASEINFOFIELD.full_name = ".AutoChessScene.baseInfo"
-AutoChessModule_pb.AUTOCHESSSCENEBASEINFOFIELD.number = 6
+AutoChessModule_pb.AUTOCHESSSCENEBASEINFOFIELD.number = 4
 AutoChessModule_pb.AUTOCHESSSCENEBASEINFOFIELD.index = 3
 AutoChessModule_pb.AUTOCHESSSCENEBASEINFOFIELD.label = 1
 AutoChessModule_pb.AUTOCHESSSCENEBASEINFOFIELD.has_default_value = false
@@ -1484,6 +1485,15 @@ AutoChessModule_pb.AUTOCHESSSCENEBASEINFOFIELD.default_value = nil
 AutoChessModule_pb.AUTOCHESSSCENEBASEINFOFIELD.message_type = AutoChessModule_pb.AUTOCHESSBASEINFO_MSG
 AutoChessModule_pb.AUTOCHESSSCENEBASEINFOFIELD.type = 11
 AutoChessModule_pb.AUTOCHESSSCENEBASEINFOFIELD.cpp_type = 10
+AutoChessModule_pb.AUTOCHESSSCENEEXTINFOFIELD.name = "extInfo"
+AutoChessModule_pb.AUTOCHESSSCENEEXTINFOFIELD.full_name = ".AutoChessScene.extInfo"
+AutoChessModule_pb.AUTOCHESSSCENEEXTINFOFIELD.number = 5
+AutoChessModule_pb.AUTOCHESSSCENEEXTINFOFIELD.index = 4
+AutoChessModule_pb.AUTOCHESSSCENEEXTINFOFIELD.label = 1
+AutoChessModule_pb.AUTOCHESSSCENEEXTINFOFIELD.has_default_value = false
+AutoChessModule_pb.AUTOCHESSSCENEEXTINFOFIELD.default_value = ""
+AutoChessModule_pb.AUTOCHESSSCENEEXTINFOFIELD.type = 9
+AutoChessModule_pb.AUTOCHESSSCENEEXTINFOFIELD.cpp_type = 9
 AutoChessModule_pb.AUTOCHESSSCENE_MSG.name = "AutoChessScene"
 AutoChessModule_pb.AUTOCHESSSCENE_MSG.full_name = ".AutoChessScene"
 AutoChessModule_pb.AUTOCHESSSCENE_MSG.nested_types = {}
@@ -1492,7 +1502,8 @@ AutoChessModule_pb.AUTOCHESSSCENE_MSG.fields = {
 	AutoChessModule_pb.AUTOCHESSSCENEROUNDFIELD,
 	AutoChessModule_pb.AUTOCHESSSCENEFIGHTFIELD,
 	AutoChessModule_pb.AUTOCHESSSCENEMALLFIELD,
-	AutoChessModule_pb.AUTOCHESSSCENEBASEINFOFIELD
+	AutoChessModule_pb.AUTOCHESSSCENEBASEINFOFIELD,
+	AutoChessModule_pb.AUTOCHESSSCENEEXTINFOFIELD
 }
 AutoChessModule_pb.AUTOCHESSSCENE_MSG.is_extendable = false
 AutoChessModule_pb.AUTOCHESSSCENE_MSG.extensions = {}

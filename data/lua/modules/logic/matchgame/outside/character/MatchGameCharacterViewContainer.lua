@@ -20,6 +20,11 @@ end
 
 function MatchGameCharacterViewContainer:onContainerInit()
 	self:addEventCb(self, ViewEvent.ToSwitchTab, self._toSwitchTab, self)
+
+	local defaultTabIds = self.viewParam and self.viewParam.defaultTabIds
+	local contentTabId = defaultTabIds and defaultTabIds[MatchGameCharacterViewContainer.ContainerTabId]
+
+	self:refreshCurrency(contentTabId)
 end
 
 function MatchGameCharacterViewContainer:buildTabViews(tabContainerId)
@@ -54,6 +59,10 @@ function MatchGameCharacterViewContainer:_toSwitchTab(tabContainerId, tabId)
 		return
 	end
 
+	self:refreshCurrency(tabId)
+end
+
+function MatchGameCharacterViewContainer:refreshCurrency(tabId)
 	local constId = MatchGameEnum.ConstId.Currency
 
 	if tabId == MatchGameEnum.CharacterTabType.Talent then

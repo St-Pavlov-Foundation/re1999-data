@@ -28,14 +28,19 @@ function CollegeSceneBaseItem:updateData(data)
 	self.data = data
 end
 
-function CollegeSceneBaseItem:setUI(ui)
+function CollegeSceneBaseItem:setUI(ui, arrowRoot)
 	self.ui = ui
 	self.root = gohelper.findChild(self.ui, "root")
 	self.arrow = gohelper.findChild(self.ui, "arrow")
 	self.btnArrow = gohelper.findChildButtonWithAudio(self.ui, "arrow/#btn_click")
 
-	self:initFollow()
 	self:onInitView()
+
+	if self.arrow and arrowRoot then
+		gohelper.setParent(self.arrow, arrowRoot)
+	end
+
+	self:initFollow()
 
 	if self.btnArrow then
 		self:addClickCb(self.btnArrow, self._onArrowClick, self)

@@ -10,20 +10,21 @@ function DeleikeGameMgr:startGame(gameId)
 	self.gameCfg, self.mapCfg = DeleikeConfig.instance:getGameConfig(self.gameId)
 
 	if not self.gameCfg or not self.mapCfg then
-		return
+		return false
 	end
 
 	self.bgResPath = ResUrl.getDeleikeSingleBg(self.gameCfg.mapBg)
 	self.skillMgr = DeleikeSkillMgr.New()
 	self.unitCoord = DeleikeUnitCoord.New()
 	self.inputLocked = false
+	self._undoStack = {}
 
-	ViewMgr.instance:openView(ViewName.DeleikeGameView)
+	return true
 end
 
 function DeleikeGameMgr:endGame()
 	DeleikeController.instance:onGameFinish()
-	ViewMgr.instance:closeView(ViewName.DeleikeGameView)
+	DeleikeController.instance:closeGameView()
 end
 
 function DeleikeGameMgr:setInputLocked(locked)
@@ -47,11 +48,6 @@ function DeleikeGameMgr:initScene(sceneRoot)
 	self.goSkillLine1 = gohelper.findChild(sceneRoot, "go_SkillLine1")
 	self.goSkillLine2 = gohelper.findChild(sceneRoot, "go_SkillLine2")
 	self.goPlayer = gohelper.findChild(sceneRoot, "Player")
-	self.goSkillMask = gohelper.findChild(sceneRoot, "go_SkillMask")
-
-	if self.goSkillMask then
-		gohelper.setActive(self.goSkillMask, false)
-	end
 
 	self.skillMgr:init(self.goSkillLine1, self.goSkillLine2)
 end
@@ -87,8 +83,8 @@ function DeleikeGameMgr:addBgTile(x, y, worldPos)
 	local comp = self:addPolygonTile(DeleikeEnum.TileType.Bg, x, y, worldPos)
 
 	if self.goGridTile then
-		local hw = DeleikeEnum.GridColumn * DeleikeEnum.GridUnit * 0.5
-		local hh = DeleikeEnum.GridRow * DeleikeEnum.GridUnit * 0.5
+		local hw = DeleikeEnum.GridTileWidth * 0.5
+		local hh = DeleikeEnum.GridTileHeight * 0.5
 
 		self:addPolygonTile(DeleikeEnum.TileType.Grid, x, y, worldPos, 0, {
 			{
@@ -107,7 +103,12 @@ function DeleikeGameMgr:addBgTile(x, y, worldPos)
 				x = -hw,
 				y = hh
 			}
-		}, comp.go.name .. "_Grid")
+		}, comp.go.name .. "_Grid", {
+			cx = 0,
+			cy = 0,
+			w = DeleikeEnum.GridTileWidth,
+			h = DeleikeEnum.GridTileHeight
+		})
 	end
 end
 
@@ -117,6 +118,174 @@ function DeleikeGameMgr:addLineTile(centerX, centerY, dirX, dirY)
 	local name = string.format("Line_%d", math.random(1000, 9999))
 
 	self:addPolygonTile(DeleikeEnum.TileType.Line, 0, 0, Vector2(centerX, centerY), perpAngle, nil, name)
+end
+
+function DeleikeGameMgr:snapshotForUndo()
+	local unitCoord = self.unitCoord
+
+	if not unitCoord then
+		return
+	end
+
+	local tiles = {}
+	local unitList = unitCoord.unitList
+
+	for i = 1, #unitList do
+		local comp = unitList[i]
+		local mo = comp.mo
+
+		if mo and comp.go and not gohelper.isNil(comp.go) then
+			local polygon = {}
+
+			for j = 1, #mo.polygon do
+				polygon[j] = {
+					x = mo.polygon[j].x,
+					y = mo.polygon[j].y
+				}
+			end
+
+			local r = mo.rect
+
+			tiles[#tiles + 1] = {
+				tileType = mo.tileType,
+				x = mo.x,
+				y = mo.y,
+				pos = {
+					x = mo.pos.x,
+					y = mo.pos.y
+				},
+				rotation = mo.rotation,
+				polygon = polygon,
+				rect = r and {
+					w = r.w,
+					h = r.h,
+					cx = r.cx,
+					cy = r.cy
+				} or nil,
+				name = comp.go.name
+			}
+		end
+	end
+
+	local triggers = {}
+	local triggerList = unitCoord.triggerList
+
+	for i = 1, #triggerList do
+		local comp = triggerList[i]
+
+		if not gohelper.isNil(comp.go) then
+			local x, y = comp:getLogicPos()
+
+			triggers[#triggers + 1] = {
+				comp = comp,
+				collected = comp.isCollected,
+				x = x,
+				y = y
+			}
+		end
+	end
+
+	local playerX, playerY, skillCounts
+
+	if self.player then
+		playerX, playerY = self.player:getLogicPos()
+		skillCounts = {
+			self.player:getSkillCount(1),
+			self.player:getSkillCount(2)
+		}
+	end
+
+	local camX, camY
+
+	if self.sceneRootRt then
+		local camPos = self.sceneRootRt.anchoredPosition
+
+		camX, camY = camPos.x, camPos.y
+	end
+
+	table.insert(self._undoStack, {
+		tiles = tiles,
+		triggers = triggers,
+		playerX = playerX,
+		playerY = playerY,
+		skillCounts = skillCounts,
+		camX = camX,
+		camY = camY
+	})
+	DeleikeController.instance:dispatchEvent(DeleikeEvent.UndoStateChanged, true)
+end
+
+function DeleikeGameMgr:undoLastCut()
+	local stack = self._undoStack
+
+	if not stack or #stack == 0 then
+		return
+	end
+
+	local snapshot = stack[#stack]
+
+	if self.skillMgr then
+		self.skillMgr:cancelDrag(true)
+	end
+
+	local unitCoord = self.unitCoord
+
+	if unitCoord then
+		unitCoord:clearAllTweens()
+
+		local unitList = unitCoord.unitList
+
+		for i = #unitList, 1, -1 do
+			local comp = unitList[i]
+
+			if comp.mo and comp.go and not gohelper.isNil(comp.go) then
+				gohelper.destroy(comp.go)
+				unitCoord:unregisterUnit(comp)
+			end
+		end
+	end
+
+	local tiles = snapshot.tiles
+
+	for i = 1, #tiles do
+		local t = tiles[i]
+
+		self:addPolygonTile(t.tileType, t.x, t.y, t.pos, t.rotation, t.polygon, t.name, t.rect)
+	end
+
+	local triggers = snapshot.triggers
+
+	for i = 1, #triggers do
+		local t = triggers[i]
+		local comp = t.comp
+
+		if not gohelper.isNil(comp.go) then
+			comp:setLogicPos(t.x, t.y)
+
+			if not t.collected and comp.isCollected then
+				comp:revive()
+			end
+		end
+	end
+
+	unitCoord:bumpSceneVersion()
+
+	if self.player and snapshot.skillCounts then
+		self.player:setPos(snapshot.playerX, snapshot.playerY)
+		self.player:setSkillCount(1, snapshot.skillCounts[1])
+		self.player:setSkillCount(2, snapshot.skillCounts[2])
+	end
+
+	if self.sceneRootRt and snapshot.camX ~= nil then
+		recthelper.setAnchor(self.sceneRootRt, snapshot.camX, snapshot.camY)
+	end
+
+	table.remove(stack)
+	DeleikeController.instance:dispatchEvent(DeleikeEvent.UndoStateChanged, #stack > 0)
+end
+
+function DeleikeGameMgr:canUndo()
+	return self._undoStack ~= nil and #self._undoStack > 0
 end
 
 function DeleikeGameMgr:addTriggerPoint(type, x, y, worldPos)
@@ -139,7 +308,7 @@ function DeleikeGameMgr:createPlayer(spawnPos, goJoystick)
 
 	self.player = MonoHelper.addNoUpdateLuaComOnceToGo(self.goPlayer, DeleikePlayerComp, goJoystick)
 
-	self.player:setPos(spawnPos.x, spawnPos.y)
+	self.player:initData(spawnPos)
 
 	if self.skillMgr then
 		self.skillMgr.player = self.player
@@ -152,6 +321,8 @@ function DeleikeGameMgr:onTriggerPicked(triggerType)
 	if not self.player then
 		return
 	end
+
+	AudioMgr.instance:trigger(AudioEnum4_0.Deleike.get_skill)
 
 	if triggerType == DeleikeEnum.TriggerType.Skill1 then
 		local count = self.player:getSkillCount(1)
@@ -187,13 +358,17 @@ function DeleikeGameMgr:clearScene()
 		self.skillMgr.player = nil
 	end
 
+	self._undoStack = {}
+
+	DeleikeController.instance:dispatchEvent(DeleikeEvent.UndoStateChanged, false)
+
 	self.inputLocked = false
 
-	if self.player then
-		self.player:resetState()
-
-		self.player = nil
+	if self.sceneRootRt then
+		recthelper.setAnchor(self.sceneRootRt, 0, 0)
 	end
+
+	self.player = nil
 end
 
 function DeleikeGameMgr:dispose()
@@ -207,8 +382,8 @@ function DeleikeGameMgr:dispose()
 	self.goSkillPoint, self.goDoor = nil
 	self.goLineTile = nil
 	self.goSkillLine1, self.goSkillLine2 = nil
-	self.goSkillMask = nil
 	self.goPlayer = nil
+	self.goJoystick = nil
 
 	if self.unitCoord then
 		self.unitCoord:dispose()

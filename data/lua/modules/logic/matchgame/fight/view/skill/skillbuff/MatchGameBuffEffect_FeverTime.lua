@@ -17,21 +17,8 @@ function MatchGameBuffEffect_FeverTime:progressBuff_108(buffEffectData, targetIn
 		return
 	end
 
-	local offsetTime = buffEffectData[2] or 0
-
-	gameInfoMo.maxFeverTime = Mathf.Max(0, gameInfoMo.maxFeverTime + offsetTime)
-
 	MatchGameSkillBuffHandler.instance:attachBuffToTarget(gameInfoMo, skillBuffMo)
-	self.sceneView:refreshFeverUI()
-end
-
-function MatchGameBuffEffect_FeverTime:removeBuff_108(buffEffectData, targetObj)
-	local gameInfoMo = self.sceneView:getGameInfoMo()
-	local gameInfoData = MatchGameFightModel.instance:getGameInfoData()
-
-	gameInfoMo.maxFeverTime = gameInfoData.gameConfig.feverTime
-
-	self.sceneView:refreshFeverUI()
+	self:refreshFeverTime(gameInfoMo)
 end
 
 function MatchGameBuffEffect_FeverTime:progressBuff_109(buffEffectData, targetInfoList, skillData, skillBuffMo)
@@ -41,21 +28,34 @@ function MatchGameBuffEffect_FeverTime:progressBuff_109(buffEffectData, targetIn
 		return
 	end
 
-	local offsetTime = buffEffectData[2] or 0
-
-	gameInfoMo.maxFeverTime = Mathf.Max(0, gameInfoMo.maxFeverTime + offsetTime)
-
 	MatchGameSkillBuffHandler.instance:attachBuffToTarget(gameInfoMo, skillBuffMo)
+	self:refreshFeverTime(gameInfoMo)
+end
+
+function MatchGameBuffEffect_FeverTime:refreshFeverTime(targetObj, removeSkillBuffMo)
+	local removeBuffUid = removeSkillBuffMo and removeSkillBuffMo:getBuffUid()
+	local gameInfoData = MatchGameFightModel.instance:getGameInfoData()
+	local maxFeverTime = gameInfoData.gameConfig.feverTime
+
+	for buffUid, skillBuffMo in pairs(targetObj.skillBuffMoMap or {}) do
+		if buffUid ~= removeBuffUid and (skillBuffMo.buffEffectId == 108 or skillBuffMo.buffEffectId == 109) then
+			local buffEffectData = string.splitToNumber(skillBuffMo.buffConfig.buffEffect, "#")
+
+			maxFeverTime = maxFeverTime + (buffEffectData[2] or 0)
+		end
+	end
+
+	targetObj.maxFeverTime = Mathf.Max(0, maxFeverTime)
+
 	self.sceneView:refreshFeverUI()
 end
 
-function MatchGameBuffEffect_FeverTime:removeBuff_109(buffEffectData, targetObj)
-	local gameInfoMo = self.sceneView:getGameInfoMo()
-	local gameInfoData = MatchGameFightModel.instance:getGameInfoData()
+function MatchGameBuffEffect_FeverTime:removeBuff_108(buffEffectData, targetObj, skillBuffMo)
+	self:refreshFeverTime(targetObj, skillBuffMo)
+end
 
-	gameInfoMo.maxFeverTime = gameInfoData.gameConfig.feverTime
-
-	self.sceneView:refreshFeverUI()
+function MatchGameBuffEffect_FeverTime:removeBuff_109(buffEffectData, targetObj, skillBuffMo)
+	self:refreshFeverTime(targetObj, skillBuffMo)
 end
 
 return MatchGameBuffEffect_FeverTime

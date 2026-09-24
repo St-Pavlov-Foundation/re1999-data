@@ -177,16 +177,17 @@ function TowerComposeResultHeroGroupListView:_updateHeroList()
 		end
 	else
 		local fightParam = FightModel.instance:getFightParam()
-		local heroEquipList = fightParam:getHeroEquipAndTrialMoList(true)
+		local heroEquipList = fightParam:getHeroEquipAndTrialMoList(false)
 
 		for index, heroItem in ipairs(self._heroItemList) do
 			local mo = HeroSingleGroupModel.instance:getById(index)
 
 			heroItem:onUpdateMO(mo)
 
-			local heroMo = heroEquipList[index]
+			local heroData = heroEquipList[index]
+			local heroMo = heroData and heroData.heroMo
 
-			if mo.heroUid == "0" and heroMo then
+			if mo.heroUid == "0" and heroMo and heroMo.skin then
 				heroItem:showAssistHero(heroMo)
 			end
 		end

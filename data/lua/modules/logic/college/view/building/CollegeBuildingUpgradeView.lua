@@ -45,7 +45,8 @@ function CollegeBuildingUpgradeView:_onUpgradeDoneCallback(_, resultCode)
 
 	self:getParentView():onCloseClick()
 	CollegeHelper.instance:setViewVisible("BuildingUpgradeAnim", true)
-	UIBlockHelper.instance:startBlock("BuildingUpgradeAnim", 2)
+	UIBlockHelper.instance:startBlock("BuildingUpgradeAnim", 1.91)
+	UIBlockMgrExtend.instance:resetMaskShow()
 	CollegeController.instance:dispatchEvent(CollegeEvent.ChangeCameraSizeType, CollegeEnum.DungeonMapCameraSizeType.Low, 0.2, self._playUpgradeAnim, self)
 end
 

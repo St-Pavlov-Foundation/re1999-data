@@ -27,5 +27,8 @@ SpLilyaEvent.PlayerAimState = _get()
 SpLilyaEvent.DamageNumUpdate = _get()
 SpLilyaEvent.GameEnd = _get()
 SpLilyaEvent.GameReset = _get()
+SpLilyaEvent.GameStart = _get()
+SpLilyaEvent.GamePause = _get()
+SpLilyaEvent.GameResume = _get()
 
 return SpLilyaEvent

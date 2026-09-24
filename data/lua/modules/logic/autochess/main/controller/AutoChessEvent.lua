@@ -6,7 +6,6 @@ local AutoChessEvent = _M
 local _get = GameUtil.getUniqueTb()
 
 AutoChessEvent.OneClickClaimReward = _get()
-AutoChessEvent.UpdateMallData = _get()
 AutoChessEvent.BuildReply = _get()
 AutoChessEvent.BuyChessReply = _get()
 AutoChessEvent.SettlePush = _get()
@@ -27,6 +26,7 @@ AutoChessEvent.UsingLeaderSkill = _get()
 AutoChessEvent.BossDrop = _get()
 AutoChessEvent.UpdateCultivateReddot = _get()
 AutoChessEvent.ClickLeaderSelectItem = _get()
+AutoChessEvent.UpdateExtInfo = _get()
 AutoChessEvent.FinishStepList = _get()
 AutoChessEvent.ZBuyChess = _get()
 AutoChessEvent.ZDrayChessToPos = _get()
@@ -38,5 +38,6 @@ AutoChessEvent.ZClickPreviewEnemy = _get()
 AutoChessEvent.ZClickBackSelf = _get()
 AutoChessEvent.ZTrigger28302 = _get()
 AutoChessEvent.ZTrigger32012 = _get()
+AutoChessEvent.ZTrigger40016 = _get()
 
 return AutoChessEvent

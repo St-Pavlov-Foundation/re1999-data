@@ -42,6 +42,7 @@ function CandyRoomRewardDetailView:_editableInitView()
 end
 
 function CandyRoomRewardDetailView:onOpen()
+	AudioMgr.instance:trigger(AudioEnum4_0.CandyRoom.play_ui_langchao_page_open)
 	self:_refresh()
 end
 

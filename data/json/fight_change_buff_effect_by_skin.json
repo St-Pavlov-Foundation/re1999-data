@@ -473,7 +473,16 @@
     "skinId": 309103,
     "changedPath": "v4a0_lorelei/lorelei_innate1",
     "duration": 0.0,
-    "effectHangPoint": "mountmiddle",
+    "effectHangPoint": "mountroot",
+    "audio": 430910101
+  },
+  {
+    "effectPath": "v1a9_lorelei/lorelei_innate1",
+    "target": 2,
+    "skinId": 309103,
+    "changedPath": "v4a0_lorelei/lorelei_innate1",
+    "duration": 0.0,
+    "effectHangPoint": "mountroot",
     "audio": 430910101
   },
   {
@@ -482,16 +491,25 @@
     "skinId": 309103,
     "changedPath": "v4a0_lorelei/lorelei_innate2",
     "duration": 0.0,
-    "effectHangPoint": "mountmiddle",
+    "effectHangPoint": "mountroot",
+    "audio": 430910101
+  },
+  {
+    "effectPath": "v1a9_lorelei/lorelei_innate2",
+    "target": 2,
+    "skinId": 309103,
+    "changedPath": "v4a0_lorelei/lorelei_innate2",
+    "duration": 0.0,
+    "effectHangPoint": "mountroot",
     "audio": 430910101
   },
   {
     "effectPath": "v1a9_lorelei/lorelei_innate3",
-    "target": 1,
+    "target": 2,
     "skinId": 309103,
     "changedPath": "v4a0_lorelei/lorelei_innate3",
     "duration": 0.0,
-    "effectHangPoint": "mountmiddle",
+    "effectHangPoint": "mountroot",
     "audio": 430910101
   },
   {
@@ -555,6 +573,6 @@
     "changedPath": "v4a0_tlzchnj/tlzchnj_innate1",
     "duration": 0.0,
     "effectHangPoint": "mountroot",
-    "audio": 0
+    "audio": 431550351
   }
 ]

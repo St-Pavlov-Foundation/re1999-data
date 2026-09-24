@@ -2035,7 +2035,6 @@ function FightCalculateDataMgr:playEffect282(actEffectData)
 		return
 	end
 
-	entityMO:setHp(entityMO.currentHp - actEffectData.effectNum)
 	self:processHurtInfo(actEffectData)
 end
 
@@ -2667,8 +2666,8 @@ function FightCalculateDataMgr:playEffect369(actEffectData)
 
 	local arr = string.splitToNumber(actEffectData.reserveStr, ",")
 
-	entityMO.toughnessPoint = entityMO.toughnessPoint + arr[1]
-	entityMO.toughnessValue = entityMO.toughnessValue + arr[2]
+	entityMO.toughnessPoint = arr[1]
+	entityMO.toughnessValue = arr[2]
 	entityMO.isBroken = false
 end
 

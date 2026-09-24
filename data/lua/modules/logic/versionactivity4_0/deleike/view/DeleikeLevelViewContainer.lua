@@ -28,7 +28,7 @@ function DeleikeLevelViewContainer:buildTabViews(tabContainerId)
 end
 
 function DeleikeLevelViewContainer:onContainerInit()
-	local actId = DeleikeController.instance.actId
+	local actId = VersionActivity4_0Enum.ActivityId.Deleike
 
 	ActivityEnterMgr.instance:enterActivity(actId)
 	ActivityRpc.instance:sendActivityNewStageReadRequest({

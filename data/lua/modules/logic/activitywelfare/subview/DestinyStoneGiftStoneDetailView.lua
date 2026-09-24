@@ -63,6 +63,9 @@ function DestinyStoneGiftStoneDetailView:_editableInitView()
 	end
 
 	self:_initReshapeItem()
+
+	self._simagestoneName1 = gohelper.findChildSingleImage(self.viewGO, "root/#simage_reshapeTitle/#glow")
+	self._imagestoneName1 = gohelper.findChildImage(self.viewGO, "root/#simage_reshapeTitle/#glow")
 end
 
 function DestinyStoneGiftStoneDetailView:_getEffectItem(index)
@@ -199,6 +202,9 @@ function DestinyStoneGiftStoneDetailView:_refreshStoneItem()
 
 		self._simagestoneName:LoadImage(ResUrl.getTxtDestinyIcon(resName), function()
 			self._imagestoneName:SetNativeSize()
+		end)
+		self._simagestoneName1:LoadImage(ResUrl.getTxtDestinyIcon(resName), function()
+			self._imagestoneName1:SetNativeSize()
 		end)
 	end
 

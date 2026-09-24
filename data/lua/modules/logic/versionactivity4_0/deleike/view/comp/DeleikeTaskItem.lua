@@ -188,6 +188,9 @@ function DeleikeTaskItem:onDestroyView()
 
 		self._rankDiffMoveId = nil
 	end
+
+	TaskDispatcher.cancelTask(self._delayFinish, self)
+	TaskDispatcher.cancelTask(self._delayFinishAll, self)
 end
 
 return DeleikeTaskItem

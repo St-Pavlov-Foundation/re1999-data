@@ -5,8 +5,8 @@
     "levelName": "L1-A",
     "preEpisode": 0,
     "matchLevelId": 117401010,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#5",
+    "firstBonus": "410002#5",
+    "bonus": "410003#10",
     "episodeImage": "v4a0_matchgame_episodeimage_01",
     "recCareer": 3,
     "isHard": 0
@@ -17,10 +17,10 @@
     "levelName": "L1-B",
     "preEpisode": 14010101,
     "matchLevelId": 117401020,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#5",
+    "firstBonus": "410002#5",
+    "bonus": "410003#10",
     "episodeImage": "v4a0_matchgame_episodeimage_01",
-    "recCareer": 4,
+    "recCareer": 2,
     "isHard": 0
   },
   {
@@ -29,10 +29,10 @@
     "levelName": "L1-C",
     "preEpisode": 14010102,
     "matchLevelId": 117401030,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#5",
+    "firstBonus": "410002#5",
+    "bonus": "410003#10",
     "episodeImage": "v4a0_matchgame_episodeimage_01",
-    "recCareer": 2,
+    "recCareer": 4,
     "isHard": 0
   },
   {
@@ -41,8 +41,8 @@
     "levelName": "L1-D",
     "preEpisode": 14010103,
     "matchLevelId": 117401040,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#5",
+    "firstBonus": "410002#5",
+    "bonus": "410003#20",
     "episodeImage": "v4a0_matchgame_episodeimage_01",
     "recCareer": 4,
     "isHard": 0
@@ -53,8 +53,8 @@
     "levelName": "L1-E",
     "preEpisode": 14010104,
     "matchLevelId": 117401050,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#5",
+    "firstBonus": "410002#5",
+    "bonus": "410003#20",
     "episodeImage": "v4a0_matchgame_episodeimage_01",
     "recCareer": 4,
     "isHard": 0
@@ -65,8 +65,8 @@
     "levelName": "L1-F",
     "preEpisode": 14010105,
     "matchLevelId": 117401060,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#5",
+    "firstBonus": "410002#5",
+    "bonus": "410003#20",
     "episodeImage": "v4a0_matchgame_episodeimage_01",
     "recCareer": 4,
     "isHard": 0
@@ -77,8 +77,8 @@
     "levelName": "L1-G",
     "preEpisode": 14010106,
     "matchLevelId": 117401070,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#5",
+    "firstBonus": "410002#5",
+    "bonus": "410003#20",
     "episodeImage": "v4a0_matchgame_episodeimage_01",
     "recCareer": 4,
     "isHard": 0
@@ -89,8 +89,8 @@
     "levelName": "L1-H",
     "preEpisode": 14010107,
     "matchLevelId": 117401080,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#5",
+    "firstBonus": "410002#5",
+    "bonus": "410003#20",
     "episodeImage": "v4a0_matchgame_episodeimage_01",
     "recCareer": 4,
     "isHard": 0
@@ -101,8 +101,8 @@
     "levelName": "L1-I",
     "preEpisode": 14010108,
     "matchLevelId": 117401090,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#5",
+    "firstBonus": "410002#5",
+    "bonus": "410003#20",
     "episodeImage": "v4a0_matchgame_episodeimage_01",
     "recCareer": 4,
     "isHard": 0
@@ -113,8 +113,8 @@
     "levelName": "L1-Ø",
     "preEpisode": 14010109,
     "matchLevelId": 117401100,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#5",
+    "firstBonus": "410002#5|410003#100",
+    "bonus": "410003#80",
     "episodeImage": "v4a0_matchgame_episodeimage_01",
     "recCareer": 4,
     "isHard": 1
@@ -125,10 +125,10 @@
     "levelName": "L2-A",
     "preEpisode": 0,
     "matchLevelId": 117402010,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#10",
+    "firstBonus": "410002#10",
+    "bonus": "410003#50",
     "episodeImage": "v4a0_matchgame_episodeimage_02",
-    "recCareer": 3,
+    "recCareer": 4,
     "isHard": 0
   },
   {
@@ -137,10 +137,10 @@
     "levelName": "L2-B",
     "preEpisode": 14010201,
     "matchLevelId": 117402020,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#10",
+    "firstBonus": "410002#10",
+    "bonus": "410003#50",
     "episodeImage": "v4a0_matchgame_episodeimage_02",
-    "recCareer": 3,
+    "recCareer": 4,
     "isHard": 0
   },
   {
@@ -149,10 +149,10 @@
     "levelName": "L2-C",
     "preEpisode": 14010202,
     "matchLevelId": 117402030,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#10",
+    "firstBonus": "410002#10",
+    "bonus": "410003#50",
     "episodeImage": "v4a0_matchgame_episodeimage_02",
-    "recCareer": 3,
+    "recCareer": 4,
     "isHard": 0
   },
   {
@@ -161,10 +161,10 @@
     "levelName": "L2-D",
     "preEpisode": 14010203,
     "matchLevelId": 117402040,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#10",
+    "firstBonus": "410002#10",
+    "bonus": "410003#50",
     "episodeImage": "v4a0_matchgame_episodeimage_02",
-    "recCareer": 3,
+    "recCareer": 4,
     "isHard": 0
   },
   {
@@ -173,10 +173,10 @@
     "levelName": "L2-E",
     "preEpisode": 14010204,
     "matchLevelId": 117402050,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#10",
+    "firstBonus": "410002#10|410003#50",
+    "bonus": "410003#60",
     "episodeImage": "v4a0_matchgame_episodeimage_02",
-    "recCareer": 3,
+    "recCareer": 5,
     "isHard": 0
   },
   {
@@ -185,10 +185,10 @@
     "levelName": "L2-F",
     "preEpisode": 14010205,
     "matchLevelId": 117402060,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#10",
+    "firstBonus": "410002#10",
+    "bonus": "410003#60",
     "episodeImage": "v4a0_matchgame_episodeimage_02",
-    "recCareer": 3,
+    "recCareer": 4,
     "isHard": 0
   },
   {
@@ -197,10 +197,10 @@
     "levelName": "L2-G",
     "preEpisode": 14010206,
     "matchLevelId": 117402070,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#10",
+    "firstBonus": "410002#10",
+    "bonus": "410003#60",
     "episodeImage": "v4a0_matchgame_episodeimage_02",
-    "recCareer": 3,
+    "recCareer": 4,
     "isHard": 0
   },
   {
@@ -209,10 +209,10 @@
     "levelName": "L2-H",
     "preEpisode": 14010207,
     "matchLevelId": 117402080,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#10",
+    "firstBonus": "410002#10",
+    "bonus": "410003#60",
     "episodeImage": "v4a0_matchgame_episodeimage_02",
-    "recCareer": 3,
+    "recCareer": 4,
     "isHard": 0
   },
   {
@@ -221,10 +221,10 @@
     "levelName": "L2-I",
     "preEpisode": 14010208,
     "matchLevelId": 117402090,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#10",
+    "firstBonus": "410002#10",
+    "bonus": "410003#60",
     "episodeImage": "v4a0_matchgame_episodeimage_02",
-    "recCareer": 3,
+    "recCareer": 4,
     "isHard": 0
   },
   {
@@ -233,10 +233,10 @@
     "levelName": "L2-Ø",
     "preEpisode": 14010209,
     "matchLevelId": 117402100,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#10",
+    "firstBonus": "410002#10|410003#100",
+    "bonus": "410003#100",
     "episodeImage": "v4a0_matchgame_episodeimage_02",
-    "recCareer": 3,
+    "recCareer": 4,
     "isHard": 1
   },
   {
@@ -245,10 +245,10 @@
     "levelName": "L3-A",
     "preEpisode": 0,
     "matchLevelId": 117403010,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#15",
+    "firstBonus": "410002#10",
+    "bonus": "410003#120",
     "episodeImage": "v4a0_matchgame_episodeimage_03",
-    "recCareer": 2,
+    "recCareer": 3,
     "isHard": 0
   },
   {
@@ -257,10 +257,10 @@
     "levelName": "L3-B",
     "preEpisode": 14010301,
     "matchLevelId": 117403020,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#15",
+    "firstBonus": "410002#10",
+    "bonus": "410003#120",
     "episodeImage": "v4a0_matchgame_episodeimage_03",
-    "recCareer": 2,
+    "recCareer": 3,
     "isHard": 0
   },
   {
@@ -269,10 +269,10 @@
     "levelName": "L3-C",
     "preEpisode": 14010302,
     "matchLevelId": 117403030,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#15",
+    "firstBonus": "410002#10",
+    "bonus": "410003#120",
     "episodeImage": "v4a0_matchgame_episodeimage_03",
-    "recCareer": 2,
+    "recCareer": 3,
     "isHard": 0
   },
   {
@@ -281,10 +281,10 @@
     "levelName": "L3-D",
     "preEpisode": 14010303,
     "matchLevelId": 117403040,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#15",
+    "firstBonus": "410002#10",
+    "bonus": "410003#120",
     "episodeImage": "v4a0_matchgame_episodeimage_03",
-    "recCareer": 2,
+    "recCareer": 3,
     "isHard": 0
   },
   {
@@ -293,10 +293,10 @@
     "levelName": "L3-E",
     "preEpisode": 14010304,
     "matchLevelId": 117403050,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#15",
+    "firstBonus": "410002#10",
+    "bonus": "410003#120",
     "episodeImage": "v4a0_matchgame_episodeimage_03",
-    "recCareer": 2,
+    "recCareer": 3,
     "isHard": 0
   },
   {
@@ -305,10 +305,10 @@
     "levelName": "L3-F",
     "preEpisode": 14010305,
     "matchLevelId": 117403060,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#15",
+    "firstBonus": "410002#10",
+    "bonus": "410003#140",
     "episodeImage": "v4a0_matchgame_episodeimage_03",
-    "recCareer": 2,
+    "recCareer": 3,
     "isHard": 0
   },
   {
@@ -317,10 +317,10 @@
     "levelName": "L3-G",
     "preEpisode": 14010306,
     "matchLevelId": 117403070,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#15",
+    "firstBonus": "410002#10",
+    "bonus": "410003#140",
     "episodeImage": "v4a0_matchgame_episodeimage_03",
-    "recCareer": 2,
+    "recCareer": 3,
     "isHard": 0
   },
   {
@@ -329,10 +329,10 @@
     "levelName": "L3-H",
     "preEpisode": 14010307,
     "matchLevelId": 117403080,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#15",
+    "firstBonus": "410002#10",
+    "bonus": "410003#140",
     "episodeImage": "v4a0_matchgame_episodeimage_03",
-    "recCareer": 2,
+    "recCareer": 3,
     "isHard": 0
   },
   {
@@ -341,10 +341,10 @@
     "levelName": "L3-I",
     "preEpisode": 14010308,
     "matchLevelId": 117403090,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#15",
+    "firstBonus": "410002#10",
+    "bonus": "410003#140",
     "episodeImage": "v4a0_matchgame_episodeimage_03",
-    "recCareer": 2,
+    "recCareer": 3,
     "isHard": 0
   },
   {
@@ -353,10 +353,10 @@
     "levelName": "L3-Ø",
     "preEpisode": 14010309,
     "matchLevelId": 117403100,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#15",
+    "firstBonus": "410002#10|410003#100",
+    "bonus": "410003#160",
     "episodeImage": "v4a0_matchgame_episodeimage_03",
-    "recCareer": 2,
+    "recCareer": 3,
     "isHard": 1
   },
   {
@@ -365,10 +365,10 @@
     "levelName": "L4-A",
     "preEpisode": 0,
     "matchLevelId": 117404010,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#20",
+    "firstBonus": "410002#15",
+    "bonus": "410003#180",
     "episodeImage": "v4a0_matchgame_episodeimage_04",
-    "recCareer": 4,
+    "recCareer": 2,
     "isHard": 0
   },
   {
@@ -377,10 +377,10 @@
     "levelName": "L4-B",
     "preEpisode": 14010401,
     "matchLevelId": 117404020,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#20",
+    "firstBonus": "410002#15",
+    "bonus": "410003#180",
     "episodeImage": "v4a0_matchgame_episodeimage_04",
-    "recCareer": 4,
+    "recCareer": 2,
     "isHard": 0
   },
   {
@@ -389,10 +389,10 @@
     "levelName": "L4-C",
     "preEpisode": 14010402,
     "matchLevelId": 117404030,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#20",
+    "firstBonus": "410002#15|410003#100",
+    "bonus": "410003#180",
     "episodeImage": "v4a0_matchgame_episodeimage_04",
-    "recCareer": 4,
+    "recCareer": 5,
     "isHard": 0
   },
   {
@@ -401,10 +401,10 @@
     "levelName": "L4-D",
     "preEpisode": 14010403,
     "matchLevelId": 117404040,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#20",
+    "firstBonus": "410002#15",
+    "bonus": "410003#180",
     "episodeImage": "v4a0_matchgame_episodeimage_04",
-    "recCareer": 4,
+    "recCareer": 2,
     "isHard": 0
   },
   {
@@ -413,10 +413,10 @@
     "levelName": "L4-E",
     "preEpisode": 14010404,
     "matchLevelId": 117404050,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#20",
+    "firstBonus": "410002#15",
+    "bonus": "410003#180",
     "episodeImage": "v4a0_matchgame_episodeimage_04",
-    "recCareer": 4,
+    "recCareer": 2,
     "isHard": 0
   },
   {
@@ -425,10 +425,10 @@
     "levelName": "L4-F",
     "preEpisode": 14010405,
     "matchLevelId": 117404060,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#20",
+    "firstBonus": "410002#15",
+    "bonus": "410003#200",
     "episodeImage": "v4a0_matchgame_episodeimage_04",
-    "recCareer": 4,
+    "recCareer": 2,
     "isHard": 0
   },
   {
@@ -437,10 +437,10 @@
     "levelName": "L4-G",
     "preEpisode": 14010406,
     "matchLevelId": 117404070,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#20",
+    "firstBonus": "410002#15",
+    "bonus": "410003#200",
     "episodeImage": "v4a0_matchgame_episodeimage_04",
-    "recCareer": 4,
+    "recCareer": 2,
     "isHard": 0
   },
   {
@@ -449,10 +449,10 @@
     "levelName": "L4-H",
     "preEpisode": 14010407,
     "matchLevelId": 117404080,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#20",
+    "firstBonus": "410002#15",
+    "bonus": "410003#200",
     "episodeImage": "v4a0_matchgame_episodeimage_04",
-    "recCareer": 4,
+    "recCareer": 2,
     "isHard": 0
   },
   {
@@ -461,10 +461,10 @@
     "levelName": "L4-I",
     "preEpisode": 14010408,
     "matchLevelId": 117404090,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#20",
+    "firstBonus": "410002#15",
+    "bonus": "410003#200",
     "episodeImage": "v4a0_matchgame_episodeimage_04",
-    "recCareer": 4,
+    "recCareer": 2,
     "isHard": 0
   },
   {
@@ -473,10 +473,10 @@
     "levelName": "L4-Ø",
     "preEpisode": 14010409,
     "matchLevelId": 117404100,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#20",
+    "firstBonus": "410002#15|410003#200",
+    "bonus": "410003#220",
     "episodeImage": "v4a0_matchgame_episodeimage_04",
-    "recCareer": 4,
+    "recCareer": 2,
     "isHard": 1
   },
   {
@@ -485,10 +485,10 @@
     "levelName": "L5-A",
     "preEpisode": 0,
     "matchLevelId": 117405010,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#25",
+    "firstBonus": "410003#100",
+    "bonus": "410003#220",
     "episodeImage": "v4a0_matchgame_episodeimage_04",
-    "recCareer": 3,
+    "recCareer": 4,
     "isHard": 0
   },
   {
@@ -497,10 +497,10 @@
     "levelName": "L5-B",
     "preEpisode": 14010501,
     "matchLevelId": 117405020,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#25",
+    "firstBonus": "410003#100",
+    "bonus": "410003#220",
     "episodeImage": "v4a0_matchgame_episodeimage_04",
-    "recCareer": 3,
+    "recCareer": 2,
     "isHard": 0
   },
   {
@@ -509,10 +509,10 @@
     "levelName": "L5-C",
     "preEpisode": 14010502,
     "matchLevelId": 117405030,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#25",
+    "firstBonus": "410003#100",
+    "bonus": "410003#220",
     "episodeImage": "v4a0_matchgame_episodeimage_04",
-    "recCareer": 3,
+    "recCareer": 2,
     "isHard": 0
   },
   {
@@ -521,8 +521,8 @@
     "levelName": "L5-D",
     "preEpisode": 14010503,
     "matchLevelId": 117405040,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#25",
+    "firstBonus": "410003#100",
+    "bonus": "410003#220",
     "episodeImage": "v4a0_matchgame_episodeimage_04",
     "recCareer": 3,
     "isHard": 0
@@ -533,8 +533,8 @@
     "levelName": "L5-E",
     "preEpisode": 14010504,
     "matchLevelId": 117405050,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#25",
+    "firstBonus": "410003#100",
+    "bonus": "410003#220",
     "episodeImage": "v4a0_matchgame_episodeimage_04",
     "recCareer": 3,
     "isHard": 0
@@ -545,10 +545,10 @@
     "levelName": "L5-F",
     "preEpisode": 14010505,
     "matchLevelId": 117405060,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#25",
+    "firstBonus": "410003#100",
+    "bonus": "410003#240",
     "episodeImage": "v4a0_matchgame_episodeimage_04",
-    "recCareer": 3,
+    "recCareer": 4,
     "isHard": 0
   },
   {
@@ -557,8 +557,8 @@
     "levelName": "L5-G",
     "preEpisode": 14010506,
     "matchLevelId": 117405070,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#25",
+    "firstBonus": "410003#100",
+    "bonus": "410003#240",
     "episodeImage": "v4a0_matchgame_episodeimage_04",
     "recCareer": 3,
     "isHard": 0
@@ -569,10 +569,10 @@
     "levelName": "L5-H",
     "preEpisode": 14010507,
     "matchLevelId": 117405080,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#25",
+    "firstBonus": "410003#100",
+    "bonus": "410003#240",
     "episodeImage": "v4a0_matchgame_episodeimage_04",
-    "recCareer": 3,
+    "recCareer": 2,
     "isHard": 0
   },
   {
@@ -581,10 +581,10 @@
     "levelName": "L5-I",
     "preEpisode": 14010508,
     "matchLevelId": 117405090,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#25",
+    "firstBonus": "410003#200",
+    "bonus": "410003#240",
     "episodeImage": "v4a0_matchgame_episodeimage_04",
-    "recCareer": 3,
+    "recCareer": 5,
     "isHard": 0
   },
   {
@@ -593,10 +593,10 @@
     "levelName": "L5-Ø",
     "preEpisode": 14010509,
     "matchLevelId": 117405100,
-    "firstBonus": "410001#1|410002#1",
-    "bonus": "410003#25",
+    "firstBonus": "410003#300",
+    "bonus": "410003#320",
     "episodeImage": "v4a0_matchgame_episodeimage_04",
-    "recCareer": 3,
+    "recCareer": 5,
     "isHard": 1
   },
   {

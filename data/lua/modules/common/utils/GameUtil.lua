@@ -338,6 +338,20 @@ function GameUtil.numberDisplay(number)
 	end
 end
 
+function GameUtil.numberDisplayCustom(number, kCount, mCount)
+	local num = tonumber(number)
+	local kStart = 10^kCount - 1
+	local mStart = 10^mCount - 1
+
+	if num <= kStart then
+		return num
+	elseif num <= mStart and kStart < num then
+		return math.floor(num / 1000) .. "K"
+	else
+		return math.floor(num / 1000000) .. "M"
+	end
+end
+
 local romanNums = {
 	"I",
 	"II",

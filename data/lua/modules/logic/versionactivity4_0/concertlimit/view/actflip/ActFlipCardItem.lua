@@ -331,6 +331,12 @@ function ActFlipCardItem:_refreshBig()
 	self._bigItem:isShowQuality(false)
 	self._bigItem:isShowCount(false)
 
+	if not LuaUtil.isEmptyStr(rewardCo.rewardicon) then
+		local resPath = ResUrl.getPropItemIcon(rewardCo.rewardicon)
+
+		self._bigItem:setSpecificIcon(resPath)
+	end
+
 	self._txtbigitemnum.text = itemCos[3]
 end
 

@@ -1,0 +1,526 @@
+[
+  {
+    "id": 1,
+    "propertyValue": "副本选择界面-故事"
+  },
+  {
+    "id": 2,
+    "propertyValue": "副本选择界面-资源"
+  },
+  {
+    "id": 3,
+    "propertyValue": "副本地图-意志解析"
+  },
+  {
+    "id": 4,
+    "propertyValue": "迷途鉴定"
+  },
+  {
+    "id": 5,
+    "propertyValue": "体力购买界面"
+  },
+  {
+    "id": 6,
+    "propertyValue": "副本地图-尘埃运动"
+  },
+  {
+    "id": 7,
+    "propertyValue": "副本地图-铸币美学"
+  },
+  {
+    "id": 8,
+    "propertyValue": "副本选择界面-人工梦游"
+  },
+  {
+    "id": 9,
+    "propertyValue": "卡池-第一滴雨"
+  },
+  {
+    "id": 10,
+    "propertyValue": "副本选择界面-洞悉"
+  },
+  {
+    "id": 11,
+    "propertyValue": "副本选择界面-映像"
+  },
+  {
+    "id": 12,
+    "propertyValue": "碎片叙事"
+  },
+  {
+    "id": 13,
+    "propertyValue": "卡池-于湖中央"
+  },
+  {
+    "id": 14,
+    "propertyValue": "副本选择界面-轶事"
+  },
+  {
+    "id": 15,
+    "propertyValue": "副本地图-他者的悲哀"
+  },
+  {
+    "id": 16,
+    "propertyValue": "副本地图-群山之声"
+  },
+  {
+    "id": 17,
+    "propertyValue": "醒梦域关卡"
+  },
+  {
+    "id": 18,
+    "propertyValue": "荒原构想"
+  },
+  {
+    "id": 19,
+    "propertyValue": "副本地图-星陨之所"
+  },
+  {
+    "id": 20,
+    "propertyValue": "副本地图-荒兽之野"
+  },
+  {
+    "id": 21,
+    "propertyValue": "副本地图-深林之形"
+  },
+  {
+    "id": 22,
+    "propertyValue": "副本地图-丰收时令"
+  },
+  {
+    "id": 23,
+    "propertyValue": "副本地图-行于漫漫长路上"
+  },
+  {
+    "id": 24,
+    "propertyValue": "副本地图-远征记"
+  },
+  {
+    "id": 25,
+    "propertyValue": "副本地图-复乐园"
+  },
+  {
+    "id": 26,
+    "propertyValue": "副本地图-忧郁的热带"
+  },
+  {
+    "id": 27,
+    "propertyValue": "副本地图-疯癫与文明"
+  },
+  {
+    "id": 28,
+    "propertyValue": "副本地图-飞驰！明日之城"
+  },
+  {
+    "id": 29,
+    "propertyValue": "副本地图-唐人街影话"
+  },
+  {
+    "id": 30,
+    "propertyValue": "副本地图-圣火纪行：东区黎明"
+  },
+  {
+    "id": 31,
+    "propertyValue": "副本地图-《77号公路》"
+  },
+  {
+    "id": 32,
+    "propertyValue": "副本地图-地球上最后的夜晚"
+  },
+  {
+    "id": 33,
+    "propertyValue": "副本地图-1987宇宙组曲"
+  },
+  {
+    "id": 34,
+    "propertyValue": "副本地图-长夜鸣笛"
+  },
+  {
+    "id": 35,
+    "propertyValue": "迷途鑒定"
+  },
+  {
+    "id": 36,
+    "propertyValue": "副本地图-塵埃運動"
+  },
+  {
+    "id": 37,
+    "propertyValue": "副本地图-鑄幣美學"
+  },
+  {
+    "id": 38,
+    "propertyValue": "卡池-第一滴雨"
+  },
+  {
+    "id": 39,
+    "propertyValue": "碎片敘事"
+  },
+  {
+    "id": 40,
+    "propertyValue": "卡池-於湖中央"
+  },
+  {
+    "id": 41,
+    "propertyValue": "副本地图-他者的悲哀"
+  },
+  {
+    "id": 42,
+    "propertyValue": "副本地图-群山之聲"
+  },
+  {
+    "id": 43,
+    "propertyValue": "荒原構想"
+  },
+  {
+    "id": 44,
+    "propertyValue": "副本地图-星隕之所"
+  },
+  {
+    "id": 45,
+    "propertyValue": "副本地图-荒獸之野"
+  },
+  {
+    "id": 46,
+    "propertyValue": "副本地图-深林之形"
+  },
+  {
+    "id": 47,
+    "propertyValue": "副本地图-豐收時令"
+  },
+  {
+    "id": 48,
+    "propertyValue": "副本地图-行於漫漫長路上"
+  },
+  {
+    "id": 49,
+    "propertyValue": "副本地图-遠征記"
+  },
+  {
+    "id": 50,
+    "propertyValue": "副本地图-復樂園"
+  },
+  {
+    "id": 51,
+    "propertyValue": "副本地图-憂鬱的熱帶"
+  },
+  {
+    "id": 52,
+    "propertyValue": "副本地图-瘋癲與文明"
+  },
+  {
+    "id": 53,
+    "propertyValue": "副本地图-飛馳！明日之城"
+  },
+  {
+    "id": 54,
+    "propertyValue": "副本地图-唐人街影話"
+  },
+  {
+    "id": 55,
+    "propertyValue": "副本地图-聖火紀行:東區黎明"
+  },
+  {
+    "id": 56,
+    "propertyValue": "副本地图-地球上最後的夜晚"
+  },
+  {
+    "id": 57,
+    "propertyValue": "副本地图-1987宇宙組曲"
+  },
+  {
+    "id": 58,
+    "propertyValue": "副本地图-長夜鳴笛"
+  },
+  {
+    "id": 59,
+    "propertyValue": "副本地图-Pneuma Analysis"
+  },
+  {
+    "id": 60,
+    "propertyValue": "ボイスショップ"
+  },
+  {
+    "id": 61,
+    "propertyValue": "副本地图-埃の軌道"
+  },
+  {
+    "id": 62,
+    "propertyValue": "副本地图-造幣美学"
+  },
+  {
+    "id": 63,
+    "propertyValue": "卡池-最初の一滴"
+  },
+  {
+    "id": 64,
+    "propertyValue": "断片叙事"
+  },
+  {
+    "id": 65,
+    "propertyValue": "卡池-湖の中央"
+  },
+  {
+    "id": 66,
+    "propertyValue": "副本地图-他者の哀しみ"
+  },
+  {
+    "id": 67,
+    "propertyValue": "副本地图-山脈の声"
+  },
+  {
+    "id": 68,
+    "propertyValue": "ウィルダネス構想"
+  },
+  {
+    "id": 69,
+    "propertyValue": "副本地图-流星の丘"
+  },
+  {
+    "id": 70,
+    "propertyValue": "副本地图-野獣の地"
+  },
+  {
+    "id": 71,
+    "propertyValue": "副本地图-森林の姿"
+  },
+  {
+    "id": 72,
+    "propertyValue": "副本地图-豊作の候"
+  },
+  {
+    "id": 73,
+    "propertyValue": "副本地图-果てなき道を進みて"
+  },
+  {
+    "id": 74,
+    "propertyValue": "副本地图-遠征譚"
+  },
+  {
+    "id": 75,
+    "propertyValue": "副本地图-復楽園"
+  },
+  {
+    "id": 76,
+    "propertyValue": "副本地图-悲しき熱帯"
+  },
+  {
+    "id": 77,
+    "propertyValue": "副本地图-狂気と非理性"
+  },
+  {
+    "id": 78,
+    "propertyValue": "副本地图-疾走れ！ゴールデンシティへ"
+  },
+  {
+    "id": 79,
+    "propertyValue": "副本地图-チャイナタウン秘話"
+  },
+  {
+    "id": 80,
+    "propertyValue": "副本地图-聖火紀行：イーストエンドの曙"
+  },
+  {
+    "id": 81,
+    "propertyValue": "副本地图-地球最後の夜"
+  },
+  {
+    "id": 82,
+    "propertyValue": "副本地图-長き夜に汽笛は鳴る"
+  },
+  {
+    "id": 83,
+    "propertyValue": "Pawnshop"
+  },
+  {
+    "id": 84,
+    "propertyValue": "副本地图-The Poussiere"
+  },
+  {
+    "id": 85,
+    "propertyValue": "副本地图-Mintage Aesthetics"
+  },
+  {
+    "id": 86,
+    "propertyValue": "卡池-The First Drop of Rain"
+  },
+  {
+    "id": 87,
+    "propertyValue": "Fragment Shop"
+  },
+  {
+    "id": 88,
+    "propertyValue": "卡池-Amongst the Lake"
+  },
+  {
+    "id": 89,
+    "propertyValue": "副本地图-On Another's Sorrow"
+  },
+  {
+    "id": 90,
+    "propertyValue": "副本地图-Mountain Echoes"
+  },
+  {
+    "id": 91,
+    "propertyValue": "Wilderness Shop"
+  },
+  {
+    "id": 92,
+    "propertyValue": "副本地图-Starfall Locale"
+  },
+  {
+    "id": 93,
+    "propertyValue": "副本地图-Brutes Wilds"
+  },
+  {
+    "id": 94,
+    "propertyValue": "副本地图-Sylvanus Shape"
+  },
+  {
+    "id": 95,
+    "propertyValue": "副本地图-Harvest Prime"
+  },
+  {
+    "id": 96,
+    "propertyValue": "副本地图-A Long Long Way"
+  },
+  {
+    "id": 97,
+    "propertyValue": "副本地图-The Campaign's Tale"
+  },
+  {
+    "id": 98,
+    "propertyValue": "副本地图-Paradise Regained"
+  },
+  {
+    "id": 99,
+    "propertyValue": "副本地图-Tristes Tropiques"
+  },
+  {
+    "id": 100,
+    "propertyValue": "副本地图-Folie et Déraison"
+  },
+  {
+    "id": 101,
+    "propertyValue": "副本地图-Floor it! To the Golden City"
+  },
+  {
+    "id": 102,
+    "propertyValue": "副本地图-Showdown in Chinatown"
+  },
+  {
+    "id": 103,
+    "propertyValue": "副本地图-Chronicles of Uluru: London Dawning"
+  },
+  {
+    "id": 104,
+    "propertyValue": "副本地图-Last Evenings on Earth"
+  },
+  {
+    "id": 105,
+    "propertyValue": "副本地图-1987 Cosmic Overture"
+  },
+  {
+    "id": 106,
+    "propertyValue": "副本地图-The Midnight Whistle"
+  },
+  {
+    "id": 107,
+    "propertyValue": "副本地图-의지 분석"
+  },
+  {
+    "id": 108,
+    "propertyValue": "보이스 상점"
+  },
+  {
+    "id": 109,
+    "propertyValue": "副本地图-먼지 소탕"
+  },
+  {
+    "id": 110,
+    "propertyValue": "副本地图-동전의 미학"
+  },
+  {
+    "id": 111,
+    "propertyValue": "卡池-첫 번째 빗방울"
+  },
+  {
+    "id": 112,
+    "propertyValue": "조각 상점"
+  },
+  {
+    "id": 113,
+    "propertyValue": "卡池-호수의 중앙"
+  },
+  {
+    "id": 114,
+    "propertyValue": "副本地图-타인의 슬픔"
+  },
+  {
+    "id": 115,
+    "propertyValue": "副本地图-산울림"
+  },
+  {
+    "id": 116,
+    "propertyValue": "황무지 상점"
+  },
+  {
+    "id": 117,
+    "propertyValue": "副本地图-별들의 거처"
+  },
+  {
+    "id": 118,
+    "propertyValue": "副本地图-짐승의 야성"
+  },
+  {
+    "id": 119,
+    "propertyValue": "副本地图-숲의 모양"
+  },
+  {
+    "id": 120,
+    "propertyValue": "副本地图-풍작의 계절"
+  },
+  {
+    "id": 121,
+    "propertyValue": "副本地图-머나먼 길"
+  },
+  {
+    "id": 122,
+    "propertyValue": "副本地图-원정기"
+  },
+  {
+    "id": 123,
+    "propertyValue": "副本地图-복낙원"
+  },
+  {
+    "id": 124,
+    "propertyValue": "副本地图-슬픈 열대"
+  },
+  {
+    "id": 125,
+    "propertyValue": "副本地图-광기의 역사"
+  },
+  {
+    "id": 126,
+    "propertyValue": "副本地图-질주! 골든 시티로"
+  },
+  {
+    "id": 127,
+    "propertyValue": "副本地图-차이나타운 무비"
+  },
+  {
+    "id": 128,
+    "propertyValue": "副本地图-울루루 연대기: 런던의 여명"
+  },
+  {
+    "id": 129,
+    "propertyValue": "副本地图-지구에서의 마지막 밤"
+  },
+  {
+    "id": 130,
+    "propertyValue": "副本地图-1987 우주의 서곡"
+  },
+  {
+    "id": 131,
+    "propertyValue": "副本地图-한밤의 기적소리"
+  }
+]

@@ -400,7 +400,7 @@ function RoleStoryModel:setPlayDungeonUnlockAnimFlag(storyId)
 	PlayerPrefsHelper.setNumber(key, 1)
 end
 
-function RoleStoryModel:isCGUnlock(storyId)
+function RoleStoryModel:isCGUnlock(storyId, inStoryView)
 	local storyCo = RoleStoryConfig.instance:getStoryById(storyId)
 	local unlockEpisodeId = storyCo.cgUnlockEpisodeId
 	local cgUnlockStoryId = storyCo.cgUnlockStoryId
@@ -414,9 +414,17 @@ function RoleStoryModel:isCGUnlock(storyId)
 		return DungeonModel.instance:hasPassLevel(unlockEpisodeId)
 	end
 
-	local gameMo = NecrologistStoryModel.instance:getGameMO(storyId)
+	local gameMo = NecrologistStoryModel.instance:getById(storyId)
+
+	if not gameMo then
+		return false
+	end
 
 	if cgUnlockGameComplete ~= 0 then
+		if inStoryView then
+			return false
+		end
+
 		if gameMo.isComplete == nil then
 			logError("RoleStoryModel:isCGUnlock gameMo isComplete is nil")
 

@@ -5,13 +5,16 @@ module("modules.logic.matchgame.outside.character.MatchGameTalentView", package.
 local MatchGameTalentView = class("MatchGameTalentView", BaseView)
 local PercentColor = "#897519"
 local BracketColor = "#897519"
+local DelayPlayUnlockEffect = 1.5
+local UnlockEffectDuration = 0.46
 
 function MatchGameTalentView:onInitView()
 	self._scrollBranch = gohelper.findChildScrollRect(self.viewGO, "#scroll_Branch")
-	self._goBranchItem = gohelper.findChild(self.viewGO, "#scroll_Branch/#go_BranchItem")
+	self._goBranchItem = gohelper.findChild(self.viewGO, "#scroll_Branch/Viewport/Content/#go_BranchItem")
 	self._scrollNode = gohelper.findChildScrollRect(self.viewGO, "#scroll_Node")
-	self._goNodeItem = gohelper.findChild(self.viewGO, "#scroll_Node/#go_NodeItem")
+	self._goNodeItem = gohelper.findChild(self.viewGO, "#scroll_Node/Viewport/Content/#go_NodeItem")
 	self._goNodeDetail = gohelper.findChild(self.viewGO, "#go_descArea")
+	self._txtNodeName = gohelper.findChildText(self.viewGO, "#go_descArea/#txt_NodeName")
 	self._txtNodeDesc = gohelper.findChildText(self.viewGO, "#go_descArea/#txt_NodeDesc")
 	self._goNodeCost = gohelper.findChild(self.viewGO, "#go_descArea/#btn_Active/#go_NodeCost")
 	self._btnActive = gohelper.findChildButtonWithAudio(self.viewGO, "#go_descArea/#btn_Active")
@@ -55,7 +58,61 @@ function MatchGameTalentView:_btnActiveOnClick()
 		return
 	end
 
-	MatchGameRpc.instance:sendAct244ActiveTalentRequest(self._actId, self._selectNodeId)
+	self._lockUpdate = true
+	self._rpcCallback = MatchGameRpc.instance:sendAct244ActiveTalentRequest(self._actId, self._selectNodeId, self._buildActiveTalentFlow, self)
+end
+
+function MatchGameTalentView:_buildActiveTalentFlow(_, resultCode)
+	self._lockUpdate = false
+
+	if resultCode ~= 0 then
+		return
+	end
+
+	GameUtil.setActiveUIBlock(self.viewName, true, false)
+
+	self._flow = FlowSequence.New()
+
+	self._flow:addWork(FunctionWork.New(self._playActiveTalentEffect, self))
+	self._flow:addWork(WorkWaitSeconds.New(DelayPlayUnlockEffect))
+	self._flow:addWork(FunctionWork.New(self._playUnlockTalentEffect, self))
+	self._flow:addWork(WorkWaitSeconds.New(UnlockEffectDuration))
+	self._flow:addWork(FunctionWork.New(self._onPlayActiveFlowDone, self))
+	self._flow:start()
+end
+
+function MatchGameTalentView:_playActiveTalentEffect()
+	local activeItem = self._nodeScroll:getItemByIndex(self._selectNodeIndex)
+
+	if activeItem then
+		activeItem:playActiveEffect()
+		gohelper.setActive(self._btnActive.gameObject, false)
+	end
+end
+
+function MatchGameTalentView:_playUnlockTalentEffect()
+	local activeNodeIndex = self._selectNodeIndex
+	local unlockNodeIndex = activeNodeIndex + 1
+	local unlockItem = self._nodeScroll:getItemByIndex(unlockNodeIndex)
+
+	if unlockItem then
+		unlockItem:playUnlockEffect()
+	end
+
+	local unlockLine = self._lineItemList[activeNodeIndex]
+
+	if unlockLine then
+		unlockLine:playUnlockEffect()
+	end
+end
+
+function MatchGameTalentView:_onPlayActiveFlowDone()
+	GameUtil.setActiveUIBlock(self.viewName, false, true)
+	self:refreshBranchTree()
+
+	if self._selectNodeIndex + 1 <= #self._nodeScroll.datas then
+		self._nodeScroll:setSelect(self._selectNodeIndex + 1)
+	end
 end
 
 function MatchGameTalentView:_btnResetOnClick()
@@ -71,10 +128,13 @@ function MatchGameTalentView:_btnResetOnClick()
 		return
 	end
 
+	self._nodeScroll:setSelect(1)
 	MatchGameRpc.instance:sendAct244ResetTalentRequest(self._actId, branchId)
 end
 
 function MatchGameTalentView:_editableInitView()
+	SkillHelper.addHyperLinkClick(self._txtNodeDesc)
+
 	self._animator = gohelper.onceAddComponent(self.viewGO, gohelper.Type_Animator)
 	self._lineItemList = self:getUserDataTb_()
 
@@ -91,6 +151,7 @@ function MatchGameTalentView:onOpen()
 
 	self._animator:Play("open", 0, 0)
 	self:refreshUI()
+	MatchGameController.instance:dispatchEvent(MatchGameEvent.OnGuideOpenCharacterView, MatchGameEnum.CharacterTabType.Talent)
 end
 
 function MatchGameTalentView:refreshUI()
@@ -127,8 +188,8 @@ function MatchGameTalentView:findSelectBranchAndNodeIndex()
 			for j, nodeCo in ipairs(branchMo.nodeList) do
 				local status = MatchGameModel.instance:getTalentNodeStatus(nodeCo.nodeId)
 
-				if status == MatchGameEnum.TalentNodeStatus.Lock then
-					return selectBranchIndex, selectNodeIndex
+				if status ~= MatchGameEnum.TalentNodeStatus.Active then
+					return i, j
 				end
 
 				selectBranchIndex = i
@@ -335,8 +396,9 @@ function MatchGameTalentView:refreshNodeDetail(nodeCo)
 		return
 	end
 
-	self._selectNodeCost = MatchGameConfig.instance:getTalentNodeCost(self._selectNodeId)
 	self._isItemEnough = true
+	self._selectNodeCost = MatchGameConfig.instance:getTalentNodeCost(self._selectNodeId)
+	self._txtNodeName.text = self._selectNodeCo.name
 	self._txtNodeDesc.text = SkillHelper.buildDesc(self._selectNodeCo.desc, PercentColor, BracketColor)
 
 	local status = MatchGameModel.instance:getTalentNodeStatus(self._selectNodeId)
@@ -355,12 +417,28 @@ function MatchGameTalentView:refreshNodeDetail(nodeCo)
 end
 
 function MatchGameTalentView:_onUpdateTalentInfo()
-	self:refreshUI()
+	if self._lockUpdate then
+		return
+	end
+
+	self:refreshBranchTree()
 end
 
 function MatchGameTalentView:onClose()
-	UIBlockHelper.instance:endBlock(self.viewName)
+	GameUtil.setActiveUIBlock(self.viewName, false, true)
 	TaskDispatcher.cancelTask(self.refreshBranchTree, self)
+
+	if self._rpcCallback then
+		MatchGameRpc.instance:removeCallbackById(self._rpcCallback)
+
+		self._rpcCallback = nil
+	end
+
+	if self._flow then
+		self._flow:destroy()
+
+		self._flow = nil
+	end
 end
 
 function MatchGameTalentView:onDestroyView()

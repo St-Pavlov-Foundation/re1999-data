@@ -82,6 +82,8 @@ local function _doCalc_goodsConfig(self, goodsConfig, optDeductionItemIndices)
 		local coinsReduction = 0
 
 		if hasDeductionItem then
+			self.coinsOriginalPrice = self.coinsCostPrice
+
 			for index, info in ipairs(deductionItemInfoList) do
 				local reduction = info.reduction
 
@@ -131,10 +133,14 @@ local function _doCalc_goodsConfig(self, goodsConfig, optDeductionItemIndices)
 			self.rmbCurPrice = PayModel.instance:getProductPrice(rmbChargeGoodsIdNoSpecialItem)
 		end
 
-		self.rmbDiffAbsPrice = PayModel.instance:getProductPrice(rmbChargeGoodsDiffSpecialItem)
+		local chargeGoodsConfig = StoreConfig.instance:getChargeGoodsConfig(rmbChargeGoodsDiffSpecialItem, true)
 
-		if self.hasDeductionItem then
-			self.coinsReduction = self.coinsReduction + reduction
+		if chargeGoodsConfig then
+			self.rmbDiffAbsPrice = PayModel.instance:getProductPrice(rmbChargeGoodsDiffSpecialItem)
+		elseif SettingsModel.instance:isNatives() then
+			local symbol = PayModel.instance:getProductOriginPriceSymbol()
+
+			self.rmbDiffAbsPrice = symbol .. tostring(rmbChargeGoodsDiffSpecialItem)
 		end
 
 		if self.hasDeductionItem then
@@ -143,6 +149,10 @@ local function _doCalc_goodsConfig(self, goodsConfig, optDeductionItemIndices)
 		else
 			self.coinsOriginalPrice = hasSpecialOfferItem and coinsNoSpecialItem or 0
 			self.coinsCurPrice = hasSpecialOfferItem and coinsYsSpecialItem or coinsNoSpecialItem
+		end
+
+		if hasSpecialOfferItem then
+			self.coinsReduction = self.coinsReduction + reduction
 		end
 
 		self.specialofferItemType = itemType

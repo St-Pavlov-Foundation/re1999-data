@@ -48,6 +48,16 @@ function TowerComposeHeroGroupEditView:_btnconfirmOnClick()
 					end
 				end
 			end
+
+			for index, heroUid in pairs(newHeroUids) do
+				local editAssistMoList = HeroGroupModel.instance:getAssistMoList(true)
+
+				for _, pickAssistHeroMo in ipairs(editAssistMoList) do
+					if pickAssistHeroMo.heroUid == heroUid then
+						HeroSingleGroupModel.instance:removeFrom(index)
+					end
+				end
+			end
 		end
 
 		self:_saveQuickGroupInfo()
@@ -95,6 +105,14 @@ function TowerComposeHeroGroupEditView:_btnconfirmOnClick()
 		end
 
 		if isEditorAssist then
+			local isInSupport = TowerComposeHeroGroupModel.instance:checkEquipedSupportHero(self._heroMO.heroId)
+
+			if isInSupport then
+				GameFacade.showToast(ToastEnum.TrialIsJoin)
+
+				return
+			end
+
 			local recordFightParam = TowerComposeModel.instance:getRecordFightParam()
 
 			if recordFightParam.plane == TowerComposeEnum.PlaneType.Twice then
@@ -344,11 +362,7 @@ end
 
 function TowerComposeHeroGroupEditView:_saveQuickGroupAssistPos(assistPos, assistParams)
 	if assistPos then
-		local singleGroupMO = HeroSingleGroupModel.instance:getByIndex(assistPos)
-
-		if singleGroupMO and singleGroupMO.heroUid ~= "0" and HeroSingleGroupModel.instance:hasHeroUids(singleGroupMO.heroUid, assistPos) then
-			HeroSingleGroupModel.instance:removeFrom(assistPos)
-		end
+		HeroSingleGroupModel.instance:removeFrom(assistPos)
 	else
 		HeroGroupModel.instance:clearCurAssist(false, assistParams)
 	end

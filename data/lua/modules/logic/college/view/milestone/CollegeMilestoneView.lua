@@ -250,6 +250,12 @@ function CollegeMilestoneView:_tweenSelectItemsInBetween()
 
 	nearItem:setScale01(nearFactor)
 	farItem:setScale01(farFactor)
+
+	for i, v in ipairs(self._itemList) do
+		if i ~= nearIndex and i ~= farIndex then
+			v:setScale01(0)
+		end
+	end
 end
 
 function CollegeMilestoneView:_killTween()

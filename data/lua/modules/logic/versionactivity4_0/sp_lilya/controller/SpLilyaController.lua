@@ -16,14 +16,17 @@ function SpLilyaController:addConstEvents()
 	self:addEventCb(DungeonController.instance, DungeonEvent.OnEndDungeonPush, self.onEndDungeonPush, self)
 end
 
-function SpLilyaController:onEndDungeonPush(msg)
-	if self._curEpisodeCo and msg.episodeId == self._curEpisodeCo.fightEpisodeId then
-		self:finishEpisodeLevel(self._curEpisodeCo.episodeId)
-	end
+function SpLilyaController:getActId()
+	return SpLilyaModel.instance:getActId()
 end
 
-function SpLilyaController:reInit()
-	self._curEpisodeCo = nil
+function SpLilyaController:onEndDungeonPush(msg)
+	local actId = self:getActId()
+	local characterCo = DungeonConfig.instance:getChapterCO(msg.chapterId)
+
+	if characterCo and msg.star > 0 and characterCo.actId == actId then
+		self.recordEpisodeId = Activity220Config.instance:get220EpisodeIdByFightEpisodeId(actId, msg.episodeId)
+	end
 end
 
 function SpLilyaController:getAct220SpLilyaInfo(cb, cbObj)
@@ -119,25 +122,8 @@ function SpLilyaController:_afterPlayLevelBeforeStory(param)
 	local episodeId220 = cfg.episodeId
 
 	if cfg.fightEpisodeId ~= 0 then
-		self._curEpisodeCo = cfg
-
-		local episodeConfig = DungeonConfig.instance:getEpisodeCO(cfg.fightEpisodeId)
-
-		if not episodeConfig then
-			logError("副本表_关卡表不存在关卡配置" .. cfg.fightEpisodeId)
-
-			return
-		end
-
-		local chapterId = episodeConfig.chapterId
-		local battleId = episodeConfig.battleId
-
-		if chapterId and episodeConfig.id and battleId > 0 then
-			DungeonFightController.instance:enterFightByBattleId(chapterId, episodeConfig.id, battleId)
-		end
+		Activity220Controller.instance:enterFight(cfg.activityId, cfg.episodeId)
 	elseif cfg.gameId ~= 0 then
-		self._curEpisodeCo = cfg
-
 		local actId = SpLilyaModel.instance:getActId()
 
 		SpLilyaGameController.instance:enterGame(actId, cfg.episodeId)
@@ -154,6 +140,14 @@ function SpLilyaController:finishEpisodeLevel(episodeId)
 	local actId = SpLilyaModel.instance:getActId()
 
 	Activity220Controller.instance:onGameFinished(actId, episodeId)
+end
+
+function SpLilyaController:checkLastFight()
+	if self.recordEpisodeId then
+		self:finishEpisodeLevel(self.recordEpisodeId)
+
+		self.recordEpisodeId = nil
+	end
 end
 
 SpLilyaController.instance = SpLilyaController.New()

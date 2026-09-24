@@ -1190,8 +1190,8 @@
   {
     "dialogueId": 4001,
     "id": 2,
-    "res": "dialogue_youth_left",
-    "pos": "-165#0"
+    "res": "dialogue_youth_right",
+    "pos": "165#0"
   },
   {
     "dialogueId": 4001,

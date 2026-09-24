@@ -70,7 +70,7 @@ function AbyssStageMo:updateInfo(stageInfo, actId)
 	local skillId = stageInfo.skillIds and stageInfo.skillIds[1]
 
 	skillId = skillId or 0
-	self.skillId = AbyssHelper.getValidSkill(self.stageId, skillId)
+	self.skillId = AbyssHelper.getValidSkill(actId, self.stageId, skillId)
 
 	local time = tonumber(stageInfo.lastUpdateTeamTime)
 
@@ -108,6 +108,12 @@ end
 
 function AbyssStageMo:isPosAssist(pos)
 	return self.assistPosDic[pos] ~= nil
+end
+
+function AbyssStageMo:getPosAssistHeroId(pos)
+	local data = self.assistPosDic[pos]
+
+	return data and data.heroId
 end
 
 function AbyssStageMo:addAssistHero(heroId, skinId, index)

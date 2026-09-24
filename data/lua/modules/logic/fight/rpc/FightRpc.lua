@@ -366,6 +366,8 @@ function FightRpc:onReceiveEndFightReply(resultCode, msg)
 end
 
 function FightRpc:onReceiveEndFightPush(resultCode, msg)
+	FightDataHelper.fieldMgr:clearSceneIdOfParam()
+
 	if FightDataHelper.stageMgr:inFightState(FightStageMgr.FightStateType.DouQuQu) then
 		return
 	end

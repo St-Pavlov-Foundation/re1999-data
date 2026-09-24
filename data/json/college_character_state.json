@@ -10,7 +10,9 @@
     "relationshipCha": [],
     "relationshipTxt": [],
     "relationshipType": [],
-    "chaTxt": []
+    "chaTxt": [
+      80019
+    ]
   },
   {
     "stateId": 10001,
@@ -29,7 +31,9 @@
     "relationshipType": [
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80019
+    ]
   },
   {
     "stateId": 10002,
@@ -54,7 +58,9 @@
       1,
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80019
+    ]
   },
   {
     "stateId": 10003,
@@ -85,7 +91,9 @@
       1,
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80019
+    ]
   },
   {
     "stateId": 10004,
@@ -98,7 +106,9 @@
     "relationshipCha": [],
     "relationshipTxt": [],
     "relationshipType": [],
-    "chaTxt": []
+    "chaTxt": [
+      80022
+    ]
   },
   {
     "stateId": 10005,
@@ -117,7 +127,9 @@
     "relationshipType": [
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80022
+    ]
   },
   {
     "stateId": 10006,
@@ -139,7 +151,9 @@
       1,
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80022
+    ]
   },
   {
     "stateId": 10007,
@@ -164,7 +178,9 @@
       1,
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80022
+    ]
   },
   {
     "stateId": 10008,
@@ -183,7 +199,9 @@
     "relationshipType": [
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80016
+    ]
   },
   {
     "stateId": 10009,
@@ -205,7 +223,9 @@
       1,
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80016
+    ]
   },
   {
     "stateId": 10010,
@@ -230,7 +250,9 @@
       1,
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80016
+    ]
   },
   {
     "stateId": 10011,
@@ -258,7 +280,9 @@
       1,
       2
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80016
+    ]
   },
   {
     "stateId": 10012,
@@ -277,7 +301,9 @@
     "relationshipType": [
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80017
+    ]
   },
   {
     "stateId": 10013,
@@ -302,7 +328,9 @@
       1,
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80017
+    ]
   },
   {
     "stateId": 10014,
@@ -321,7 +349,9 @@
     "relationshipType": [
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80021
+    ]
   },
   {
     "stateId": 10015,
@@ -346,7 +376,9 @@
       1,
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80014
+    ]
   },
   {
     "stateId": 10016,
@@ -371,7 +403,9 @@
       1,
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80015
+    ]
   },
   {
     "stateId": 10017,
@@ -399,42 +433,12 @@
       1,
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80015
+    ]
   },
   {
     "stateId": 10018,
-    "chaId": 8,
-    "otherId": 0,
-    "positionId": 11,
-    "state": 1,
-    "isClick": 0,
-    "chaChange": [],
-    "relationshipCha": [],
-    "relationshipTxt": [],
-    "relationshipType": [],
-    "chaTxt": []
-  },
-  {
-    "stateId": 10019,
-    "chaId": 8,
-    "otherId": 0,
-    "positionId": 11,
-    "state": 1,
-    "isClick": 0,
-    "chaChange": [],
-    "relationshipCha": [
-      11
-    ],
-    "relationshipTxt": [
-      109
-    ],
-    "relationshipType": [
-      1
-    ],
-    "chaTxt": []
-  },
-  {
-    "stateId": 10020,
     "chaId": 9,
     "otherId": 0,
     "positionId": 8,
@@ -450,10 +454,12 @@
     "relationshipType": [
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80020
+    ]
   },
   {
-    "stateId": 10021,
+    "stateId": 10019,
     "chaId": 9,
     "otherId": 0,
     "positionId": 8,
@@ -472,10 +478,12 @@
       1,
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80020
+    ]
   },
   {
-    "stateId": 10022,
+    "stateId": 10020,
     "chaId": 9,
     "otherId": 0,
     "positionId": 8,
@@ -497,10 +505,12 @@
       1,
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80020
+    ]
   },
   {
-    "stateId": 10023,
+    "stateId": 10021,
     "chaId": 10,
     "otherId": 0,
     "positionId": 9,
@@ -522,10 +532,12 @@
       1,
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80018
+    ]
   },
   {
-    "stateId": 10024,
+    "stateId": 10022,
     "chaId": 11,
     "otherId": 0,
     "positionId": 10,
@@ -534,45 +546,22 @@
     "chaChange": [],
     "relationshipCha": [
       3,
-      8,
-      9,
-      12
+      9
     ],
     "relationshipTxt": [
       110,
-      109,
-      110,
-      100
+      110
     ],
     "relationshipType": [
       1,
-      1,
-      1,
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80026
+    ]
   },
   {
-    "stateId": 10025,
-    "chaId": 12,
-    "otherId": 0,
-    "positionId": 12,
-    "state": 1,
-    "isClick": 0,
-    "chaChange": [],
-    "relationshipCha": [
-      11
-    ],
-    "relationshipTxt": [
-      100
-    ],
-    "relationshipType": [
-      1
-    ],
-    "chaTxt": []
-  },
-  {
-    "stateId": 10026,
+    "stateId": 10023,
     "chaId": 13,
     "otherId": 0,
     "positionId": 14,
@@ -588,10 +577,12 @@
     "relationshipType": [
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80024
+    ]
   },
   {
-    "stateId": 10027,
+    "stateId": 10024,
     "chaId": 14,
     "otherId": 0,
     "positionId": 13,
@@ -607,10 +598,12 @@
     "relationshipType": [
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80025
+    ]
   },
   {
-    "stateId": 10028,
+    "stateId": 10025,
     "chaId": 15,
     "otherId": 0,
     "positionId": 15,
@@ -626,48 +619,30 @@
     "relationshipType": [
       2
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80023
+    ]
   },
   {
     "stateId": 20000,
-    "chaId": 3,
-    "otherId": 0,
+    "chaId": 26,
+    "otherId": 4,
     "positionId": 1,
     "state": 1,
     "isClick": 0,
     "chaChange": [],
     "relationshipCha": [
-      4,
       16
     ],
     "relationshipTxt": [
-      102,
       100
     ],
     "relationshipType": [
-      1,
       1
     ],
-    "chaTxt": []
-  },
-  {
-    "stateId": 20001,
-    "chaId": 4,
-    "otherId": 0,
-    "positionId": 2,
-    "state": 1,
-    "isClick": 0,
-    "chaChange": [],
-    "relationshipCha": [
-      3
-    ],
-    "relationshipTxt": [
-      102
-    ],
-    "relationshipType": [
-      1
-    ],
-    "chaTxt": []
+    "chaTxt": [
+      80011
+    ]
   },
   {
     "stateId": 20002,
@@ -686,7 +661,9 @@
     "relationshipType": [
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80012
+    ]
   },
   {
     "stateId": 20003,
@@ -705,7 +682,9 @@
     "relationshipType": [
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80004
+    ]
   },
   {
     "stateId": 20004,
@@ -724,7 +703,9 @@
     "relationshipType": [
       2
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80013
+    ]
   },
   {
     "stateId": 20005,
@@ -735,7 +716,7 @@
     "isClick": 0,
     "chaChange": [],
     "relationshipCha": [
-      3,
+      26,
       8,
       12,
       17,
@@ -755,7 +736,9 @@
       1,
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80010
+    ]
   },
   {
     "stateId": 20006,
@@ -777,7 +760,9 @@
       1,
       3
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80000
+    ]
   },
   {
     "stateId": 20007,
@@ -805,7 +790,9 @@
       1,
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80000
+    ]
   },
   {
     "stateId": 20008,
@@ -824,7 +811,9 @@
     "relationshipType": [
       3
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80001
+    ]
   },
   {
     "stateId": 20009,
@@ -852,7 +841,9 @@
       1,
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80002
+    ]
   },
   {
     "stateId": 20010,
@@ -874,7 +865,9 @@
       1,
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80003
+    ]
   },
   {
     "stateId": 20011,
@@ -896,7 +889,9 @@
       1,
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80005
+    ]
   },
   {
     "stateId": 20012,
@@ -915,7 +910,9 @@
     "relationshipType": [
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80009
+    ]
   },
   {
     "stateId": 20013,
@@ -937,7 +934,9 @@
       1,
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80007
+    ]
   },
   {
     "stateId": 20014,
@@ -965,7 +964,9 @@
       1,
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80006
+    ]
   },
   {
     "stateId": 20015,
@@ -984,6 +985,23 @@
     "relationshipType": [
       1
     ],
-    "chaTxt": []
+    "chaTxt": [
+      80008
+    ]
+  },
+  {
+    "stateId": 20001,
+    "chaId": 4,
+    "otherId": 0,
+    "positionId": 2,
+    "state": 1,
+    "isClick": 1,
+    "chaChange": [],
+    "relationshipCha": [],
+    "relationshipTxt": [],
+    "relationshipType": [],
+    "chaTxt": [
+      80011
+    ]
   }
 ]

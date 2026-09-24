@@ -3,39 +3,30 @@
 module("modules.logic.versionactivity4_0.deleike.view.DeleikeGameScene", package.seeall)
 
 local DeleikeGameScene = class("DeleikeGameScene", BaseView)
-local Vector2 = UnityEngine.Vector2
 
 function DeleikeGameScene:onInitView()
-	self.goScene = gohelper.findChild(self.viewGO, "Scene")
-	self._goJoyStick = gohelper.findChild(self.viewGO, "go_Joystick")
+	self._goJoystick = gohelper.findChild(self.viewGO, "#go_Joystick")
 
-	if self._editableInitView then
-		self:_editableInitView()
-	end
-end
+	local go = ViewMgr.instance:getUILayer("POPUP_SECOND")
 
-function DeleikeGameScene:addEvents()
-	self:addEventCb(DeleikeController.instance, DeleikeEvent.ResetGame, self._onResetGame, self)
-end
-
-function DeleikeGameScene:removeEvents()
-	return
+	self.goSceneRoot = self:getResInst(DeleikeEnum.GameScenePath, go, "DeleikeGameScene")
+	self.anim = gohelper.findComponentAnim(self.goSceneRoot)
+	self.goScene = gohelper.findChild(self.goSceneRoot, "#go_Scene")
 end
 
 function DeleikeGameScene:_onResetGame()
+	self.anim:Play("open", 0, 0)
 	self:buildMap()
 end
 
-function DeleikeGameScene:_editableInitView()
-	return
-end
-
 function DeleikeGameScene:onOpen()
+	self:addEventCb(DeleikeController.instance, DeleikeEvent.ResetGame, self._onResetGame, self)
 	DeleikeGameMgr.instance:initScene(self.goScene)
 	self:buildMap()
 end
 
 function DeleikeGameScene:buildMap()
+	AudioMgr.instance:trigger(AudioEnum4_0.Deleike.game_start)
 	DeleikeGameMgr.instance:clearScene()
 
 	local mapCfg = DeleikeGameMgr.instance.mapCfg
@@ -60,11 +51,12 @@ function DeleikeGameScene:buildMap()
 
 	local spawnPos = DeleikeHelper.GridToWorld(mapCfg.spawn.x, mapCfg.spawn.y)
 
-	DeleikeGameMgr.instance:createPlayer(spawnPos, self._goJoyStick)
+	DeleikeGameMgr.instance:createPlayer(spawnPos, self._goJoystick)
 end
 
 function DeleikeGameScene:onDestroyView()
 	DeleikeGameMgr.instance:dispose()
+	gohelper.destroy(self.goSceneRoot)
 end
 
 return DeleikeGameScene

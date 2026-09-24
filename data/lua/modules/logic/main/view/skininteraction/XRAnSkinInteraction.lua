@@ -251,6 +251,7 @@ end
 
 function XRAnSkinInteraction:_showCloseAnim()
 	self:_clearBlur()
+	GameGCMgr.instance:dispatchEvent(GameGCEvent.SetBanGc, "XRAnSkinInteraction", true)
 
 	self._showFeatherStoryGo = true
 
@@ -268,6 +269,7 @@ function XRAnSkinInteraction:_delayHideFeatherStoryGo()
 
 	gohelper.setActive(self._featherStoryGo, false)
 	gohelper.setActive(self._featherGo, false)
+	GameGCMgr.instance:dispatchEvent(GameGCEvent.SetBanGc, "XRAnSkinInteraction", false)
 end
 
 function XRAnSkinInteraction:_onDestroy()
@@ -302,6 +304,7 @@ function XRAnSkinInteraction:_onDestroy()
 	StoryController.instance:unregisterCallback(StoryEvent.RefreshStep, self._onStep, self)
 	StoryController.instance:unregisterCallback(StoryEvent.FrontItemFadeOut, self._onFrontItemFadeOut, self)
 	self:_resetCameraPos(self._animationControllerName)
+	GameGCMgr.instance:dispatchEvent(GameGCEvent.SetBanGc, "XRAnSkinInteraction", false)
 end
 
 return XRAnSkinInteraction

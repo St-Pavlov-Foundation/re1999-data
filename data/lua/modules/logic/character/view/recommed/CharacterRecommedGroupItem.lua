@@ -52,10 +52,16 @@ function CharacterRecommedGroupItem:_btnuseOnClick()
 	local replaceTeamList = {}
 
 	for i = 1, CharacterRecommedEnum.TeamMaxHero do
-		local heroInfo = self._showMainHeroMap[i]
-		local heroId = heroInfo and heroInfo:getHeroId()
-		local heroMo = heroId and HeroModel.instance:getByHeroId(heroId)
-		local uid = heroMo and heroMo.uid
+		local uid
+
+		if HeroGroupModel.instance:isPositionOpen(i) then
+			local heroInfo = self._showMainHeroMap[i]
+			local heroId = heroInfo and heroInfo:getHeroId()
+			local heroMo = heroId and HeroModel.instance:getByHeroId(heroId)
+
+			uid = heroMo and heroMo.uid
+		end
+
 		local groupPresetMO = HeroSingleGroupPresetMO.New()
 
 		groupPresetMO:init(i, uid)

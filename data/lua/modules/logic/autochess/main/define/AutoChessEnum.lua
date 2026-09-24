@@ -38,18 +38,18 @@ for k, v in pairs(AutoChessEnum.ActionType) do
 end
 
 AutoChessEnum.EffectType = {
-	UdimoSkill = 24,
+	Remove = 7,
 	NextFightStep = 1,
 	Cd = 26,
 	RepleaceSkill = 28,
 	DelBuff = 10,
 	BattleChange = 16,
-	Remove = 7,
 	BossDrop = 25,
+	FightUpdate = 20,
 	ExpChange = 13,
 	LeaderHpFloat = 3,
-	FightUpdate = 20,
 	LeaderChange = 23,
+	UpdateExtInfo = 29,
 	LeaderHp = 2,
 	UpdateBuff = 9,
 	Summon = 15,
@@ -227,6 +227,9 @@ AutoChessEnum.EffectPlayTarget = {
 	TagOwner = 0,
 	To = 2,
 	From = 1
+}
+AutoChessEnum.MutationId = {
+	Fire = 40009
 }
 
 return AutoChessEnum

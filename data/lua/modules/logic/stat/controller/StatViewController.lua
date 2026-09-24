@@ -302,6 +302,12 @@ function StatViewController:trackExit(viewName, useTime)
 end
 
 function StatViewController:track(viewName, startView, materialName)
+	if StatModel.instance:isEnterViewIgnore(viewName) then
+		logNormal(string.format("已屏蔽：%s %s", StatEnum.EventName.EnterView, viewName))
+
+		return
+	end
+
 	StatController.instance:track(StatEnum.EventName.EnterView, {
 		[StatEnum.EventProperties.ViewName] = viewName,
 		[StatEnum.EventProperties.StartViewName] = startView,

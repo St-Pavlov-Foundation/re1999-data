@@ -62,7 +62,9 @@ function MusicGameEnterRewardItem:refresh(co)
 
 	local rewards = string.splitToNumber(self._config.bonus, "#")
 
-	self._itemIcon = IconMgr.instance:getCommonItemIcon(self._goitem)
+	if not self._itemIcon then
+		self._itemIcon = IconMgr.instance:getCommonItemIcon(self._goitem)
+	end
 
 	self._itemIcon:setMOValue(rewards[1], rewards[2], rewards[3])
 	self._itemIcon:isShowQuality(false)

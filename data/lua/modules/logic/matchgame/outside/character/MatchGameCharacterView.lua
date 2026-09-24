@@ -53,10 +53,6 @@ function MatchGameCharacterView:_editableInitView()
 end
 
 function MatchGameCharacterView:onOpen()
-	self._defaultSelectTabId = self.viewParam and self.viewParam.selectTabId
-	self._defaultSelectTabId = self._defaultSelectTabId or MatchGameEnum.CharacterTabType.Develop
-
-	self.viewContainer:dispatchEvent(ViewEvent.ToSwitchTab, MatchGameCharacterViewContainer.ContainerTabId, self._defaultSelectTabId)
 	self:refreshTabBtn()
 end
 

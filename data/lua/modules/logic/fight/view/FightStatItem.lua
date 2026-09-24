@@ -227,8 +227,6 @@ function FightStatItem:_refreshInfoUI(argsStatType)
 
 	gohelper.setActive(self._godata, statType == FightEnum.FightStatType.DataView)
 	gohelper.setActive(self._goskill, statType == FightEnum.FightStatType.SkillView)
-	gohelper.setActive(self._goscrolluseskill, GameUtil.getTabLen(self._mo.cards) > 0)
-	gohelper.setActive(self._goskillempty, GameUtil.getTabLen(self._mo.cards) == 0)
 
 	local cardLen = #self._mo.cards
 	local useCount = 0
@@ -248,7 +246,7 @@ function FightStatItem:_refreshInfoUI(argsStatType)
 		end
 	end
 
-	if statType == FightEnum.FightStatType.SkillView and self.entityMO:isQteEntity() then
+	if statType == FightEnum.FightStatType.SkillView and self.entityMO:isQteEntity() and self._mo.qteSkillUseCount > 0 then
 		useCount = useCount + 1
 
 		local skillItem = self._skillItems[useCount]
@@ -287,6 +285,9 @@ function FightStatItem:_refreshInfoUI(argsStatType)
 			gohelper.setActive(skillItem.go, false)
 		end
 	end
+
+	gohelper.setActive(self._goscrolluseskill, useCount > 0)
+	gohelper.setActive(self._goskillempty, useCount < 1)
 end
 
 function FightStatItem:createSkillItem(index)

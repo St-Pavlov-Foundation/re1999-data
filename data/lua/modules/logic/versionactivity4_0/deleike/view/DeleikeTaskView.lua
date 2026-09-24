@@ -41,7 +41,7 @@ function DeleikeTaskView:onUpdateParam()
 end
 
 function DeleikeTaskView:onOpen()
-	self._actId = self.viewParam.actId
+	self._actId = DeleikeController.instance:getActId()
 
 	AudioMgr.instance:trigger(AudioEnum.UI.Act1_6DungeonEnterTaskView)
 	Activity220TaskListModel.instance:clear()

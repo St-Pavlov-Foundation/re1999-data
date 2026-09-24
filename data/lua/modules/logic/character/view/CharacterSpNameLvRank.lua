@@ -103,7 +103,7 @@ function CharacterSpNameLvRank:bindRank0(optObjCharacterRank)
 	return self
 end
 
-function CharacterSpNameLvRank:bindRank1(objCharacterRank)
+function CharacterSpNameLvRank:bindRank1(optObjCharacterRank)
 	self:_bindObjImpl(CharacterRank, "_rank1", optObjCharacterRank)
 
 	return self

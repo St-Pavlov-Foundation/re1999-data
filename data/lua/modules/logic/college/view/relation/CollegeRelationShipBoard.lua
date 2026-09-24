@@ -119,6 +119,7 @@ end
 
 function CollegeRelationShipBoard:onOpen()
 	self:_initPageInfo()
+	AudioMgr.instance:trigger(AudioEnum3_3.CommandStationMap.play_ui_yuanzheng_zhb_open)
 
 	if self.viewParam and self.viewParam.fromMapView then
 		return

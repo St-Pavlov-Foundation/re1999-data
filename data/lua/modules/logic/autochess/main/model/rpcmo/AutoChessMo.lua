@@ -29,6 +29,10 @@ function AutoChessMo:updateCd(value)
 	self.cd = tonumber(value)
 end
 
+function AutoChessMo:updateChessIds(effectString)
+	self.replaceSkillChessIds = string.splitToNumber(effectString, "#")
+end
+
 function AutoChessMo:initEmpty()
 	self.uid = 0
 	self.id = 0

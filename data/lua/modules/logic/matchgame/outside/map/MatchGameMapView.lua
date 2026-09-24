@@ -22,6 +22,7 @@ end
 function MatchGameMapView:addEvents()
 	self._btnReward:AddClickListener(self._btnRewardOnClick, self)
 	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, self._onCloseView, self)
+	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self._onCloseViewFinish, self, LuaEventSystem.Low)
 	self:addEventCb(MatchGameController.instance, MatchGameEvent.OnClickSelectMap, self._onClickSelectMap, self)
 	self:addEventCb(MatchGameController.instance, MatchGameEvent.OnUpdateEpisodeInfo, self._onUpdateEpisodeInfo, self)
 	self:addEventCb(MatchGameController.instance, MatchGameEvent.PlaySwitchMapAnim, self._onPlaySwitchMapAnim, self)
@@ -42,6 +43,13 @@ function MatchGameMapView:_editableInitView()
 	self._animReward = gohelper.onceAddComponent(self._btnReward.gameObject, gohelper.Type_Animation)
 
 	RedDotController.instance:addRedDot(self._goRewardRedDot, RedDotEnum.DotNode.MatchGameNormalReward)
+
+	self._ignoreViewList = {
+		ViewName.GuideView,
+		ViewName.GuideView2,
+		ViewName.ToastView,
+		ViewName.GuideStepEditor
+	}
 end
 
 function MatchGameMapView:onOpen()
@@ -116,8 +124,31 @@ function MatchGameMapView:_onCloseView(viewName)
 	end
 end
 
+function MatchGameMapView:_onCloseViewFinish(viewName)
+	if viewName ~= self.viewName then
+		self:checkStartSwitch()
+	end
+end
+
 function MatchGameMapView:_onPlaySwitchMapAnim(chapterId)
-	self._chapterId = chapterId
+	self._isNeedSwitch = true
+	self._nextChapterId = chapterId
+
+	self:checkStartSwitch()
+end
+
+function MatchGameMapView:checkStartSwitch()
+	if not self._isNeedSwitch or not self._nextChapterId then
+		return
+	end
+
+	if not ViewHelper.instance:checkViewOnTheTop(self.viewName, self._ignoreViewList) then
+		return
+	end
+
+	self._chapterId = self._nextChapterId
+	self._isNeedSwitch = false
+	self._nextChapterId = nil
 
 	self._viewAnimator:Play("switch", 0, 0)
 	AudioMgr.instance:trigger(MatchGameAudioEnum.SwitchMap)
@@ -127,6 +158,8 @@ function MatchGameMapView:_onPlaySwitchMapAnim(chapterId)
 end
 
 function MatchGameMapView:_reallyStartSwitchChapter()
+	self._isNeedSwitch = false
+
 	UIBlockHelper.instance:endBlock(self.viewName)
 	MatchGameLevelModel.instance:switchChapter(self._chapterId)
 end

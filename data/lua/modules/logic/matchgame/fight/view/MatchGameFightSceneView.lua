@@ -15,8 +15,9 @@ function MatchGameFightSceneView:onInitView()
 	self._goplaneItem = gohelper.findChild(self.viewGO, "root/planeRoot/#go_plane/#go_planeItem")
 	self._goelementItem = gohelper.findChild(self.viewGO, "root/planeRoot/#go_plane/#go_elementItem")
 	self._goclickMask = gohelper.findChild(self.viewGO, "#go_clickMask")
+	self._btnclickMask = gohelper.findChildButtonWithAudio(self.viewGO, "#go_clickMask")
 	self._gotopleft = gohelper.findChild(self.viewGO, "#go_topleft")
-	self._goroundTimeBar = gohelper.findChild(self.viewGO, "root/planeRoot/#go_roundTimeBar")
+	self._goroundTimeBar = gohelper.findChild(self.viewGO, "root/topInfo/#go_roundTimeBar")
 	self._imageroundTimeBar = gohelper.findChildImage(self.viewGO, "root/topInfo/#go_roundTimeBar/#image_roundTimeBar")
 	self._txtroundTime = gohelper.findChildText(self.viewGO, "root/topInfo/#go_roundTimeBar/#txt_roundTime")
 	self._gofeverNormal = gohelper.findChild(self.viewGO, "root/planeRoot/feverTimeBar/#go_feverNormal")
@@ -35,11 +36,39 @@ end
 function MatchGameFightSceneView:addEvents()
 	self:addEventCb(MatchGameController.instance, MatchGameFightEvent.ContinueGame, self.continueGame, self)
 	self:addEventCb(MatchGameController.instance, MatchGameFightEvent.QuitGame, self.quitGame, self)
+	self:addEventCb(MatchGameController.instance, MatchGameFightEvent.BeginGameStartRoundTime, self.beginGameStartRoundTime, self)
+	self:addEventCb(MatchGameController.instance, MatchGameFightEvent.OnStartDragElementGuide, self.startDragElementGuide, self)
+	self:addEventCb(GuideController.instance, GuideEvent.FinishGuideLastStep, self.onGuideFinish, self)
+	self:addEventCb(MatchGameController.instance, MatchGameFightEvent.OnGuideRoundTimeEnd, self.onRoundTimeEnd, self)
+	self:addEventCb(MatchGameController.instance, MatchGameFightEvent.OnGuideOpenCareerTipView, self.onGuideOpenCareerTipView, self)
+	self:addEventCb(MatchGameController.instance, MatchGameFightEvent.OnGuideCloseCareerTipView, self.onGuideCloseCareerTipView, self)
+	self:addEventCb(GameStateMgr.instance, GameStateEvent.OnTouchScreenUp, self.onTouchUp, self)
+	self._btnclickMask:AddClickListener(self.onMaskClick, self)
 end
 
 function MatchGameFightSceneView:removeEvents()
 	self:removeEventCb(MatchGameController.instance, MatchGameFightEvent.ContinueGame, self.continueGame, self)
 	self:removeEventCb(MatchGameController.instance, MatchGameFightEvent.QuitGame, self.quitGame, self)
+	self:removeEventCb(MatchGameController.instance, MatchGameFightEvent.BeginGameStartRoundTime, self.beginGameStartRoundTime, self)
+	self:removeEventCb(MatchGameController.instance, MatchGameFightEvent.OnStartDragElementGuide, self.startDragElementGuide, self)
+	self:removeEventCb(GuideController.instance, GuideEvent.FinishGuideLastStep, self.onGuideFinish, self)
+	self:removeEventCb(MatchGameController.instance, MatchGameFightEvent.OnGuideRoundTimeEnd, self.onRoundTimeEnd, self)
+	self:removeEventCb(MatchGameController.instance, MatchGameFightEvent.OnGuideOpenCareerTipView, self.onGuideOpenCareerTipView, self)
+	self:removeEventCb(MatchGameController.instance, MatchGameFightEvent.OnGuideCloseCareerTipView, self.onGuideCloseCareerTipView, self)
+	self:removeEventCb(GameStateMgr.instance, GameStateEvent.OnTouchScreenUp, self.onTouchUp, self)
+	self._btnclickMask:RemoveClickListener()
+end
+
+function MatchGameFightSceneView:onMaskClick()
+	local curTime = UnityEngine.Time.realtimeSinceStartup
+
+	if self.curClickMaskTime == 0 then
+		self.curClickMaskTime = curTime
+	end
+
+	if curTime - self.curClickMaskTime >= MatchGameFightEnum.ForceHideClickMaskTime then
+		self:hideClickMask()
+	end
 end
 
 function MatchGameFightSceneView:_editableInitView()
@@ -49,6 +78,10 @@ function MatchGameFightSceneView:_editableInitView()
 	self.curSelectItemMap = self:getUserDataTb_()
 	self.curSelectItemList = self:getUserDataTb_()
 	self.pendingMoveItemList = self:getUserDataTb_()
+	self.roundTimeChangeTipList = self:getUserDataTb_()
+	self.isRoundTimeChangeTipShowing = false
+	self.pendingSkillMatchData = nil
+	self.isSkillMatchSequenceRunning = false
 	self.lastMatchSelectPos = {}
 	self.actId = MatchGameModel.instance:getCurActId()
 	self.planeWidthNum = tonumber(MatchGameConfig.instance:getConstValue(self.actId, MatchGameFightEnum.ConstId.PlaneWidthNum))
@@ -58,7 +91,7 @@ function MatchGameFightSceneView:_editableInitView()
 	recthelper.setSize(self._goplane.transform, self.planeSizeWidth, self.planeSizeWidth)
 	gohelper.setActive(self._goplaneItem, false)
 	gohelper.setActive(self._goelementItem, false)
-	gohelper.setActive(self._goclickMask, false)
+	self:hideClickMask()
 
 	self.UILineComp = self._golineContent:GetComponent(typeof(ZProj.UILine))
 	self.isGameRunning = false
@@ -68,6 +101,8 @@ function MatchGameFightSceneView:_editableInitView()
 	self.isDragging = false
 	self.maxChainNum = 0
 	self.isRoundEnding = false
+	self.isMoveFillRunning = false
+	self.needResumeRoundTimeAfterMoveFill = false
 
 	gohelper.setActive(self._gofeverPlane, false)
 	gohelper.setActive(self._gofever, false)
@@ -75,6 +110,19 @@ function MatchGameFightSceneView:_editableInitView()
 	self.feverPlaneAnim = self._gofeverPlane:GetComponent(typeof(UnityEngine.Animator))
 	self.feverAnim = self._gofever:GetComponent(typeof(UnityEngine.Animator))
 	self.feverFullAnim = self._gofeverFull:GetComponent(typeof(UnityEngine.Animator))
+	self.roundTimeBarAnim = self._goroundTimeBar:GetComponent(typeof(UnityEngine.Animator))
+	self.roundTimeBarWidth = recthelper.getWidth(self._imageroundTimeBar.transform)
+	self._goroundTimeVX = gohelper.findChild(self.viewGO, "root/topInfo/#go_roundTimeBar/#image_roundTimeBar/originPos/TimeVX")
+
+	recthelper.setAnchorX(self._goroundTimeVX.transform, 0)
+
+	self._goRoundTimeAddTip = gohelper.findChild(self.viewGO, "root/topInfo/#go_roundTimeBar/#float_add")
+	self._txtRoundTimeAdd = gohelper.findChildText(self.viewGO, "root/topInfo/#go_roundTimeBar/#float_add/#txt_roundTime")
+	self._goRoundTimeLoseTip = gohelper.findChild(self.viewGO, "root/topInfo/#go_roundTimeBar/#float_lose")
+	self._txtRoundTimeLose = gohelper.findChildText(self.viewGO, "root/topInfo/#go_roundTimeBar/#float_lose/#txt_roundTime")
+
+	gohelper.setActive(self._goRoundTimeAddTip, false)
+	gohelper.setActive(self._goRoundTimeLoseTip, false)
 end
 
 function MatchGameFightSceneView:onUpdateParam()
@@ -87,6 +135,99 @@ function MatchGameFightSceneView:onOpen()
 	self:setCloseOverrideFunc()
 end
 
+function MatchGameFightSceneView:cleanSequence(sequenceName, doneCallback)
+	local sequence = self[sequenceName]
+
+	if sequence then
+		sequence:unregisterDoneListener(doneCallback, self)
+		sequence:destroy()
+
+		self[sequenceName] = nil
+	end
+end
+
+function MatchGameFightSceneView:cleanRestartRuntime()
+	self:cleanSequence("matchMoveFillSequence", self.onMatchMoveFillDone)
+	self:cleanSequence("bombMatchSequence", self.onMatchMoveFillDone)
+	self:cleanSequence("cureMatchSequence", self.onMatchMoveFillDone)
+	self:cleanSequence("roundEndSequence", self.roundEndSequenceDone)
+	TaskDispatcher.cancelTask(self.playNextBombRound, self)
+	TaskDispatcher.cancelTask(self.executePendingSkillMatchAnim, self)
+	TaskDispatcher.cancelTask(self.startRoundTime, self)
+	TaskDispatcher.cancelTask(self.checkNotMatchConvertElementFinish, self)
+	TaskDispatcher.cancelTask(self.hideFeverPlane, self)
+	TaskDispatcher.cancelTask(self.hideFeverFull, self)
+	TaskDispatcher.cancelTask(self.hideClickMask, self)
+	self:cleanRoundTimeChangeTip()
+	self:stopGameTimeCount()
+	self:cleanRoundTimeTween()
+	self:cleanFeverTimeTween()
+	self.UILineComp:SetPointCount(0)
+
+	for _, elementItem in ipairs(self.curSelectItemList) do
+		if elementItem.comp then
+			elementItem.comp:setSelectState(false)
+		end
+	end
+
+	self.fillRounds = nil
+	self.curRoundIndex = 0
+	self.pendingMoveCount = nil
+	self.pendingMoveItemList = self:getUserDataTb_()
+	self.pendingBombList = nil
+	self.hasBombElementItemMap = self:getUserDataTb_()
+	self.skillRemovingElementItemMap = nil
+	self.pendingSkillMatchData = nil
+	self.isSkillMatchSequenceRunning = false
+	self.curSelectItemMap = self:getUserDataTb_()
+	self.curSelectItemList = self:getUserDataTb_()
+	self.lastMatchSelectPos = nil
+	self.curGuideDragPosIndexList = nil
+	self.isGameRunning = false
+	self.isRoundEnding = false
+	self.isMoveFillRunning = false
+	self.needResumeRoundTimeAfterMoveFill = false
+	self.isDragging = false
+	self.isFeverState = false
+	self.isPlayingTimeEndTip = false
+	self.gameTimePauseCount = 0
+	self.curChainNum = 0
+	self.maxChainNum = 0
+	self.lastFeverState = false
+	self.fightResult = MatchGameFightEnum.FightResult.None
+
+	self:hideClickMask()
+	MatchGameFightModel.instance:setFeverState(false)
+	gohelper.setActive(self._gofeverPlane, false)
+	gohelper.setActive(self._gofever, false)
+	gohelper.setActive(self._gofeverFull, false)
+	gohelper.setActive(self._gofeverNormal, true)
+	gohelper.setActive(self._goroundTimeVX, false)
+	AudioMgr.instance:trigger(MatchGameAudioEnum.stop_ui_yingmen_sanxiao_countdown)
+	AudioMgr.instance:trigger(MatchGameAudioEnum.stop_ui_yingmen_sanxiao_reward_loop)
+end
+
+function MatchGameFightSceneView:clearElementItems()
+	for _, elementMap in pairs(self.elementItemMap) do
+		for _, elementItem in pairs(elementMap) do
+			if elementItem.go then
+				gohelper.destroy(elementItem.go)
+			end
+		end
+	end
+
+	self.elementItemMap = self:getUserDataTb_()
+end
+
+function MatchGameFightSceneView:restartGame()
+	self:clearElementItems()
+
+	self.bombRangeOffsetList = nil
+
+	self:initConfigData()
+	self:refreshUI()
+end
+
 function MatchGameFightSceneView:initConfigData()
 	self.episodeId = self.viewParam.episodeId
 	self.gameInfoData = MatchGameFightModel.instance:getGameInfoData()
@@ -95,7 +236,6 @@ function MatchGameFightSceneView:initConfigData()
 	self.gameInfoMo.curFeverTime = self.gameInfoMo.maxFeverTime
 	self.gameInfoMo.maxFeverNum = self.gameInfoData.gameConfig.feverCost
 	self.gameInfoMo.curFeverNum = 0
-	self.gameInfoMo.addRoundTime = 5
 	self.gameInfoMo.maxRoundTime = self.gameInfoData.gameConfig.matchTime
 	self.gameInfoMo.curRoundTime = self.gameInfoMo.maxRoundTime
 	self.gameInfoMo.skillBuffMoMap = {}
@@ -105,6 +245,12 @@ function MatchGameFightSceneView:initConfigData()
 
 	self._simagebg:LoadImage(ResUrl.getMatchGameSingleBg(episodeCo.episodeImage, "fight"))
 	gohelper.setActive(self._gohardBg, episodeCo.isHard == 1)
+
+	self.isPlayingTimeEndTip = false
+	self.curGuideData = self:getCurCheckGuideData()
+	self.lastRoundTimeSecond = self.gameInfoMo.maxRoundTime
+	self.curFeverClickNum = 0
+	self.curFeverAllMatchNum = 0
 end
 
 function MatchGameFightSceneView:getViewContent()
@@ -120,6 +266,101 @@ end
 
 function MatchGameFightSceneView:getGameInfoMo()
 	return self.gameInfoMo
+end
+
+function MatchGameFightSceneView:getIsRoundEnding()
+	return self.isRoundEnding
+end
+
+function MatchGameFightSceneView:getCurCheckGuideData()
+	MatchGameFightModel.instance:setGuideState(false)
+
+	for index, guideData in ipairs(MatchGameFightEnum.GuideDataList) do
+		if guideData.episodeId == self.gameInfoData.episodeId and not GuideModel.instance:isGuideFinish(guideData.guideId) then
+			MatchGameFightModel.instance:setGuideState(true)
+
+			return guideData
+		end
+	end
+end
+
+function MatchGameFightSceneView:startDragElementGuide(checkId)
+	if not self.curGuideData then
+		return
+	end
+
+	self.curGuideDragPosIndexList = {}
+
+	for index, guideData in ipairs(self.curGuideData.guideList) do
+		if guideData.id == tonumber(checkId) then
+			self.curGuideDragPosIndexList = tabletool.copy(guideData.posIndexList)
+		end
+	end
+end
+
+function MatchGameFightSceneView:haveGuideDragPosIndexList()
+	return self.curGuideDragPosIndexList and #self.curGuideDragPosIndexList > 0
+end
+
+function MatchGameFightSceneView:checkGuideDragPos(posXIndex, posYIndex, selectIndex)
+	if not self:haveGuideDragPosIndexList() then
+		return true
+	end
+
+	local guidePosIndex = self.curGuideDragPosIndexList[selectIndex]
+
+	return guidePosIndex and guidePosIndex[1] == posXIndex and guidePosIndex[2] == posYIndex
+end
+
+function MatchGameFightSceneView:checkGuideDragFinish()
+	if not self:haveGuideDragPosIndexList() or #self.curSelectItemList ~= #self.curGuideDragPosIndexList then
+		return false
+	end
+
+	for index, elementItem in ipairs(self.curSelectItemList) do
+		local guidePosIndex = self.curGuideDragPosIndexList[index]
+
+		if elementItem.posXIndex ~= guidePosIndex[1] or elementItem.posYIndex ~= guidePosIndex[2] then
+			return false
+		end
+	end
+
+	return true
+end
+
+function MatchGameFightSceneView:checkCanMatchSelectedItems()
+	if self:haveGuideDragPosIndexList() then
+		return self:checkGuideDragFinish()
+	end
+
+	return #self.curSelectItemList >= MatchGameFightEnum.MinMatchCount
+end
+
+function MatchGameFightSceneView:onGuideFinish(guideId)
+	if self.curGuideData and guideId == self.curGuideData.guideId then
+		MatchGameFightModel.instance:setGuideState(false)
+
+		if self.gameInfoMo.curFeverNum >= self.gameInfoMo.maxFeverNum then
+			self:cleanFeverTimeTween()
+
+			self.feverBarTweenId = ZProj.TweenHelper.DOTweenFloat(self.gameInfoMo.curFeverTime, 0, self.gameInfoMo.curFeverTime, self.refreshFeverUI, self.onFeverTimeEnd, self, nil, EaseType.Linear)
+		end
+
+		if not self.isGameRunning then
+			self:startRoundTime()
+		end
+	end
+end
+
+function MatchGameFightSceneView:onGuideOpenCareerTipView()
+	local screenWidth = UnityEngine.Screen.width
+	local screenHeight = UnityEngine.Screen.height
+
+	MatchGameController.instance:openCareerTipView(Vector2(screenWidth / 2, screenHeight / 2 + 200))
+end
+
+function MatchGameFightSceneView:onGuideCloseCareerTipView()
+	ViewMgr.instance:closeView(ViewName.MatchGameCareerTipView)
 end
 
 function MatchGameFightSceneView:refreshUI()
@@ -201,6 +442,8 @@ function MatchGameFightSceneView:createAndRefreshElementItem()
 		elementItem.comp:updatePos(posXIndex, posYIndex)
 		elementItem.comp:playAnim("open")
 	end
+
+	self:checkNotMatchConvertElement()
 end
 
 function MatchGameFightSceneView:_btnPlaneItemOnClick(planeItem)
@@ -210,7 +453,7 @@ function MatchGameFightSceneView:_btnPlaneItemOnClick(planeItem)
 	local clickPosYIndex = planeItem.posYIndex
 	local elementItem = self.elementItemMap[clickPosXIndex] and self.elementItemMap[clickPosXIndex][clickPosYIndex]
 
-	if elementItem and elementItem.comp.lockState then
+	if elementItem and elementItem.comp.lockState or self.isRoundEnding then
 		return
 	end
 
@@ -222,6 +465,7 @@ function MatchGameFightSceneView:_btnPlaneItemOnClick(planeItem)
 		end
 
 		self:doBombMatchAnim(elementItem)
+		AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_sanxiao_connect)
 	elseif elementItem and elementItem.comp.itemType == MatchGameFightEnum.ElementItemType.Cure then
 		elementItem.comp:setMatchEffectType(MatchGameFightEnum.ItemMatchEffect.Heal)
 		self:doElementCureHeroAnim(elementItem, true)
@@ -235,18 +479,35 @@ function MatchGameFightSceneView:_btnPlaneItemOnClick(planeItem)
 		if not self.isGameRunning then
 			self:startRoundTime()
 		end
+
+		AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_sanxiao_connect)
 	elseif elementItem and elementItem.comp.itemType == MatchGameFightEnum.ElementItemType.Bead and self.isFeverState then
 		self:doFeverBeadMatch(elementItem)
+		AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_sanxiao_connect)
+	end
+end
+
+function MatchGameFightSceneView:beginGameStartRoundTime()
+	if not self.isGameRunning then
+		self:startRoundTime()
 	end
 end
 
 function MatchGameFightSceneView:onItemDragBegin(planeItem, pointerEventData)
 	self:setLastMatchSelectPos(nil)
 
-	self.isDragging = true
+	self.isDragging = false
 	self.lastDragAnchorX, self.lastDragAnchorY = self:getMouseAnchorPos(pointerEventData.pressPosition)
+
+	if self:haveGuideDragPosIndexList() then
+		self.lastDragAnchorX, self.lastDragAnchorY = self:getMouseAnchorPos(pointerEventData.position)
+	end
+
 	self.lastDragPosXIndex, self.lastDragPosYIndex = self:getMousePosIndex(self.lastDragAnchorX, self.lastDragAnchorY)
-	self.curSelectItemMap[self.lastDragPosXIndex] = self.curSelectItemMap[self.lastDragPosXIndex] or {}
+
+	if not self:checkGuideDragPos(self.lastDragPosXIndex, self.lastDragPosYIndex, 1) then
+		return
+	end
 
 	local elementItem = self.elementItemMap[self.lastDragPosXIndex][self.lastDragPosYIndex]
 
@@ -254,9 +515,13 @@ function MatchGameFightSceneView:onItemDragBegin(planeItem, pointerEventData)
 		return
 	end
 
+	self.isDragging = true
+	self.curSelectItemMap[self.lastDragPosXIndex] = self.curSelectItemMap[self.lastDragPosXIndex] or {}
+
 	if not self.curSelectItemMap[self.lastDragPosXIndex][self.lastDragPosYIndex] then
 		table.insert(self.curSelectItemList, elementItem)
 		elementItem.comp:setSelectState(true)
+		AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_sanxiao_connect)
 	end
 
 	self.curSelectItemMap[self.lastDragPosXIndex][self.lastDragPosYIndex] = elementItem
@@ -269,6 +534,10 @@ function MatchGameFightSceneView:onItemDragBegin(planeItem, pointerEventData)
 end
 
 function MatchGameFightSceneView:onItemDrag(planeItem, pointerEventData)
+	if not self.isDragging then
+		return
+	end
+
 	local lastElementItem = self.elementItemMap[self.lastDragPosXIndex][self.lastDragPosYIndex]
 
 	if not self:checkCanDrag(lastElementItem) then
@@ -297,7 +566,7 @@ function MatchGameFightSceneView:onRealDrag(pointerEventDataPos)
 	self.curDragAnchorX, self.curDragAnchorY = self:getMouseAnchorPos(pointerEventDataPos)
 	self.curDragPosXIndex, self.curDragPosYIndex = self:getMousePosIndex(self.curDragAnchorX, self.curDragAnchorY)
 
-	if self:checkCanBeSelected() and self:checkIsInSelectDistance() then
+	if self:checkGuideDragPos(self.curDragPosXIndex, self.curDragPosYIndex, #self.curSelectItemList + 1) and self:checkCanBeSelected() and self:checkIsInSelectDistance() then
 		local curElementItem = self.elementItemMap[self.curDragPosXIndex][self.curDragPosYIndex]
 		local alreadySelected = false
 
@@ -325,7 +594,8 @@ function MatchGameFightSceneView:onRealDrag(pointerEventDataPos)
 			self.lastDragPosYIndex = self.curDragPosYIndex
 
 			curElementItem.comp:setSelectState(true)
-		elseif #self.curSelectItemList > 1 then
+			AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_sanxiao_connect)
+		elseif not self:haveGuideDragPosIndexList() and #self.curSelectItemList > 1 then
 			local removedItem = self.curSelectItemList[#self.curSelectItemList]
 			local removedLastItem = self.curSelectItemList[#self.curSelectItemList - 1]
 
@@ -409,16 +679,27 @@ end
 
 function MatchGameFightSceneView:onItemDragEnd(planeItem, pointerEventData)
 	self.UILineComp:SetPointCount(0)
+	self:statRecordDragAction()
 
-	if #self.curSelectItemList >= MatchGameFightEnum.MinMatchCount then
+	if self:checkCanMatchSelectedItems() then
 		for _, elementItem in ipairs(self.curSelectItemList) do
 			elementItem.comp:setMatchEffectType(MatchGameFightEnum.ItemMatchEffect.MatchNormal)
+			MatchGameFightModel.instance:setSkillExcuteMatchElementNum(elementItem.comp.itemType, elementItem.comp.itemParam)
 		end
 
 		self:setLastMatchSelectPos({
 			posXIndex = self.curSelectItemList[#self.curSelectItemList].posXIndex,
 			posYIndex = self.curSelectItemList[#self.curSelectItemList].posYIndex
 		})
+
+		local isGuideDragFinish = self:checkGuideDragFinish()
+
+		if isGuideDragFinish then
+			self.curGuideDragPosIndexList = nil
+
+			MatchGameController.instance:dispatchEvent(MatchGameFightEvent.OnDragElementGuideFinish)
+		end
+
 		self:doMatchAnim()
 
 		if not self.isGameRunning then
@@ -436,6 +717,7 @@ function MatchGameFightSceneView:onItemDragEnd(planeItem, pointerEventData)
 		}
 
 		MatchGameController.instance:dispatchEvent(MatchGameFightEvent.OnMatchCountMoreThanCondition, params)
+		MatchGameFightModel.instance:cleanSkillExcuteMatchElementNum()
 	else
 		for _, elementItem in ipairs(self.curSelectItemList) do
 			elementItem.comp:setSelectState(false)
@@ -447,6 +729,10 @@ function MatchGameFightSceneView:onItemDragEnd(planeItem, pointerEventData)
 	self.isDragging = false
 end
 
+function MatchGameFightSceneView:onTouchUp()
+	CommonDragHelper.instance:stopCurDrag(true)
+end
+
 function MatchGameFightSceneView:setLastMatchSelectPos(posData)
 	self.lastMatchSelectPos = posData
 end
@@ -455,18 +741,102 @@ function MatchGameFightSceneView:getLastMatchSelectPos()
 	return self.lastMatchSelectPos
 end
 
-function MatchGameFightSceneView:doSkillMatchAnim(skillMatchMap, canAddFever, canAddEnergy, onlyRemove)
-	gohelper.setActive(self._goclickMask, true)
+function MatchGameFightSceneView:pauseRoundTimeForMoveFill()
+	if self.isMoveFillRunning then
+		return
+	end
 
+	self.isMoveFillRunning = true
+	self.needResumeRoundTimeAfterMoveFill = self.isGameRunning
+
+	self:cleanRoundTimeTween()
+end
+
+function MatchGameFightSceneView:resumeRoundTimeForMoveFill()
+	self.isMoveFillRunning = false
+
+	local needResume = self.needResumeRoundTimeAfterMoveFill
+
+	self.needResumeRoundTimeAfterMoveFill = false
+
+	if needResume and not self.isRoundEnding and self.gameInfoMo.curRoundTime > 0 then
+		self:startRoundTime()
+	end
+end
+
+function MatchGameFightSceneView:doSkillMatchAnim(skillMatchMap, canAddFever, canAddEnergy, onlyRemove, skillData)
+	if not self.pendingSkillMatchData then
+		self.pendingSkillMatchData = {
+			canAddFever = false,
+			canAddEnergy = false,
+			onlyRemove = true,
+			skillMatchMap = {},
+			skillData = skillData
+		}
+
+		self:pauseRoundTimeForMoveFill()
+		self:showClickMask()
+	end
+
+	local pendingData = self.pendingSkillMatchData
+
+	for posXIndex, elementMap in pairs(skillMatchMap) do
+		pendingData.skillMatchMap[posXIndex] = pendingData.skillMatchMap[posXIndex] or {}
+
+		for posYIndex, elementItem in pairs(elementMap) do
+			pendingData.skillMatchMap[posXIndex][posYIndex] = elementItem
+		end
+	end
+
+	pendingData.canAddFever = pendingData.canAddFever or canAddFever
+	pendingData.canAddEnergy = pendingData.canAddEnergy or canAddEnergy
+	pendingData.onlyRemove = pendingData.onlyRemove and onlyRemove
+	pendingData.skillData = pendingData.skillData or skillData
+
+	TaskDispatcher.cancelTask(self.executePendingSkillMatchAnim, self)
+	TaskDispatcher.runDelay(self.executePendingSkillMatchAnim, self, 0)
+end
+
+function MatchGameFightSceneView:executePendingSkillMatchAnim()
+	TaskDispatcher.cancelTask(self.executePendingSkillMatchAnim, self)
+
+	if self.isSkillMatchSequenceRunning or not self.pendingSkillMatchData then
+		return
+	end
+
+	local hasRunningMoveFillSequence = self.matchMoveFillSequence and self.matchMoveFillSequence.status == WorkStatus.Running or self.bombMatchSequence and self.bombMatchSequence.status == WorkStatus.Running or self.cureMatchSequence and self.cureMatchSequence.status == WorkStatus.Running
+
+	if hasRunningMoveFillSequence then
+		return
+	end
+
+	local pendingData = self.pendingSkillMatchData
+
+	self.pendingSkillMatchData = nil
+	self.isSkillMatchSequenceRunning = true
 	self.matchMoveFillSequence = FlowSequence.New()
 
-	self.matchMoveFillSequence:addWork(FunctionWork.New(MatchGameFightSceneView.skillMatchSelectItem, {
+	local skillMatchWork = FunctionWork.New(MatchGameFightSceneView.skillMatchSelectItem, {
 		self,
-		skillMatchMap,
-		canAddFever,
-		canAddEnergy,
-		onlyRemove
-	}))
+		pendingData.skillMatchMap,
+		pendingData.canAddFever,
+		pendingData.canAddEnergy,
+		pendingData.onlyRemove,
+		pendingData.skillData
+	})
+	local skillData = pendingData.skillData
+	local isHeroSkill = skillData and skillData.skillUserMo and skillData.skillUserMo.skillUserType == MatchGameFightEnum.SkillUserType.Hero
+
+	if isHeroSkill and not pendingData.onlyRemove then
+		local skillMatchParallel = FlowParallel.New()
+
+		skillMatchParallel:addWork(MatchGameElementBombWork.New())
+		skillMatchParallel:addWork(skillMatchWork)
+		self.matchMoveFillSequence:addWork(skillMatchParallel)
+	else
+		self.matchMoveFillSequence:addWork(skillMatchWork)
+	end
+
 	self.matchMoveFillSequence:addWork(TimerWork.New(MatchGameFightEnum.MatchSelectItemToCreateTime))
 	self.matchMoveFillSequence:addWork(FunctionWork.New(MatchGameFightSceneView.createElementItem, {
 		self
@@ -479,9 +849,18 @@ end
 
 function MatchGameFightSceneView.skillMatchSelectItem(params)
 	local self = params[1]
-	local skillMatchElementMap, canAddFever, canAddEnergy, onlyRemove = params[2], params[3], params[4], params[5]
-	local skillMatchElementCount = tabletool.len(skillMatchElementMap)
+	local skillMatchElementMap, canAddFever, canAddEnergy, onlyRemove, skillData = params[2], params[3], params[4], params[5], params[6]
 	local matchEffectType = MatchGameFightEnum.ItemMatchEffect.MatchNormal
+	local isHeroSkill = skillData and skillData.skillUserMo and skillData.skillUserMo.skillUserType == MatchGameFightEnum.SkillUserType.Hero
+	local triggerBombItemList = {}
+
+	if isHeroSkill then
+		matchEffectType = MatchGameFightEnum.ItemMatchEffect.MatchAoe
+
+		self:showSkillRangeEffect(skillData.config)
+	elseif skillData and skillData.skillUserMo and skillData.skillUserMo.skillUserType == MatchGameFightEnum.SkillUserType.Enemy then
+		matchEffectType = MatchGameFightEnum.ItemMatchEffect.MatchLine
+	end
 
 	for posXIndex, elementMap in pairs(skillMatchElementMap) do
 		for posYIndex, elementItem in pairs(elementMap) do
@@ -491,7 +870,22 @@ function MatchGameFightSceneView.skillMatchSelectItem(params)
 	end
 
 	for _, elementItem in ipairs(self.curSelectItemList) do
-		elementItem.comp:doPlayRemoveElementAnim()
+		if not elementItem.comp.isRemoving then
+			local canTriggerBomb = isHeroSkill and not onlyRemove and elementItem.comp.itemType == MatchGameFightEnum.ElementItemType.Bomb and not elementItem.comp.lockState
+
+			if canTriggerBomb then
+				table.insert(triggerBombItemList, elementItem)
+			elseif isHeroSkill then
+				if elementItem.comp.itemType == MatchGameFightEnum.ElementItemType.Cure and not elementItem.comp.lockState then
+					elementItem.comp:setMatchEffectType(MatchGameFightEnum.ItemMatchEffect.Heal)
+					self:OnCureElementCureHero()
+				end
+
+				elementItem.comp:playRemoveElementAnim()
+			else
+				elementItem.comp:doPlayRemoveElementAnim()
+			end
+		end
 	end
 
 	if not onlyRemove then
@@ -527,10 +921,51 @@ function MatchGameFightSceneView.skillMatchSelectItem(params)
 
 	self.curSelectItemMap = {}
 	self.curSelectItemList = {}
+
+	if isHeroSkill and not onlyRemove then
+		if #triggerBombItemList > 0 then
+			self.hasBombElementItemMap = {}
+			self.pendingBombList = {}
+			self.skillRemovingElementItemMap = skillMatchElementMap
+
+			self:pauseGame()
+
+			for _, bombItem in ipairs(triggerBombItemList) do
+				self:addWaitingBomb(bombItem)
+			end
+
+			self:playNextBombRound()
+		else
+			MatchGameController.instance:dispatchEvent(MatchGameFightEvent.BombElementItemFinish)
+		end
+	end
+end
+
+function MatchGameFightSceneView:showSkillRangeEffect(skillConfig)
+	if string.nilorempty(skillConfig.effectPos) then
+		return
+	end
+
+	local effectPosList = GameUtil.splitString2(skillConfig.effectPos, true)
+
+	for index, effectPosData in ipairs(effectPosList) do
+		local posXIndex, posYIndex = effectPosData[1], effectPosData[2]
+
+		if skillConfig.rangeType == MatchGameFightEnum.SkillEffectRangeType.Circle then
+			local rangeSize = skillConfig.rangesize > 0 and skillConfig.rangesize or 1
+
+			self:showElementEffect(MatchGameFightEnum.ItemMatchEffect.SkillAoe, posXIndex, posYIndex, rangeSize)
+		elseif skillConfig.rangeType == MatchGameFightEnum.SkillEffectRangeType.LineH then
+			self:showElementEffect(MatchGameFightEnum.ItemMatchEffect.SkillLineH, posXIndex, posYIndex)
+		elseif skillConfig.rangeType == MatchGameFightEnum.SkillEffectRangeType.LineV then
+			self:showElementEffect(MatchGameFightEnum.ItemMatchEffect.SkillLineV, posXIndex, posYIndex)
+		end
+	end
 end
 
 function MatchGameFightSceneView:doMatchAnim()
-	gohelper.setActive(self._goclickMask, true)
+	self:pauseRoundTimeForMoveFill()
+	self:showClickMask()
 
 	self.matchMoveFillSequence = FlowSequence.New()
 
@@ -666,6 +1101,7 @@ function MatchGameFightSceneView.createElementItem(params)
 	self.curRoundIndex = 0
 
 	self:playNextFillRound()
+	AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_bead_fall)
 end
 
 function MatchGameFightSceneView:markFinalArriveMove()
@@ -746,12 +1182,16 @@ function MatchGameFightSceneView:playNextFillRound()
 		local elementItem = data.item
 		local move = data.move
 
-		self.elementItemMap[move.toX] = self.elementItemMap[move.toX] or {}
-		self.elementItemMap[move.toX][move.toY] = elementItem
-		elementItem.posXIndex = move.toX
-		elementItem.posYIndex = move.toY
+		if elementItem.comp.isRemoving or gohelper.isNil(elementItem.go) then
+			self:onElementMoveStepDone()
+		else
+			self.elementItemMap[move.toX] = self.elementItemMap[move.toX] or {}
+			self.elementItemMap[move.toX][move.toY] = elementItem
+			elementItem.posXIndex = move.toX
+			elementItem.posYIndex = move.toY
 
-		elementItem.comp:doItemAnchorPosMove(move.toX, move.toY, move.isFinalArrive)
+			elementItem.comp:doItemAnchorPosMove(move.toX, move.toY, move.isFinalArrive)
+		end
 	end
 
 	self.pendingMoveItemList = {}
@@ -818,7 +1258,15 @@ function MatchGameFightSceneView:onAllMovesFinished()
 end
 
 function MatchGameFightSceneView:onMatchMoveFillDone()
-	gohelper.setActive(self._goclickMask, false)
+	self.isSkillMatchSequenceRunning = false
+
+	if self.pendingSkillMatchData then
+		TaskDispatcher.runDelay(self.executePendingSkillMatchAnim, self, 0)
+
+		return
+	end
+
+	self:hideClickMask()
 	self:setLastMatchSelectPos(nil)
 
 	if self.isFeverState then
@@ -828,15 +1276,20 @@ function MatchGameFightSceneView:onMatchMoveFillDone()
 		self:refreshFeverStateElementUI()
 	end
 
+	self:resumeRoundTimeForMoveFill()
 	self:checkNotMatchConvertElement()
+
+	if self.gameInfoMo.curRoundTime <= 0 and not self.isRoundEnding and not self.isFeverState then
+		self:doRoundEndSequence()
+	end
 end
 
-function MatchGameFightSceneView:checkNotMatchConvertElement()
+function MatchGameFightSceneView:checkNotMatchConvertElement(notPause)
 	TaskDispatcher.cancelTask(self.checkNotMatchConvertElementFinish, self)
 
 	local nearSameBeadList = self:getNearSameBeadList()
 
-	if #nearSameBeadList > 0 then
+	if #nearSameBeadList > 0 or self.fightResult ~= MatchGameFightEnum.FightResult.None then
 		return
 	end
 
@@ -852,7 +1305,16 @@ function MatchGameFightSceneView:checkNotMatchConvertElement()
 	end
 
 	self:makeMatchableBeadGroup()
-	self:pauseGame()
+
+	if #self:getNearSameBeadList() == 0 then
+		self:removeAllElementSealBuff()
+		self:makeMatchableBeadGroup()
+	end
+
+	if not notPause then
+		self:pauseGame()
+	end
+
 	TaskDispatcher.runDelay(self.checkNotMatchConvertElementFinish, self, MatchGameFightEnum.NotMatchConvertTime)
 end
 
@@ -861,6 +1323,26 @@ function MatchGameFightSceneView:checkNotMatchConvertElementFinish()
 
 	if self.gameInfoMo.curFeverNum >= self.gameInfoMo.maxFeverNum then
 		self:refreshFeverStateElementUI()
+	end
+end
+
+function MatchGameFightSceneView:removeAllElementSealBuff()
+	local sealedElementCompList = {}
+
+	for posXIndex = 1, self.planeWidthNum do
+		for posYIndex = 1, self.planeHeightNum do
+			local elementItem = self.elementItemMap[posXIndex] and self.elementItemMap[posXIndex][posYIndex]
+
+			if elementItem and elementItem.comp and elementItem.comp.lockState then
+				table.insert(sealedElementCompList, elementItem.comp)
+			end
+		end
+	end
+
+	local viewContent = self:getViewContent()
+
+	for _, elementComp in ipairs(sealedElementCompList) do
+		MatchGameSkillBuffHandler.instance:removeTargetBuffByEffectType(elementComp, MatchGameFightEnum.BuffEffectType.Seal, viewContent)
 	end
 end
 
@@ -961,16 +1443,13 @@ function MatchGameFightSceneView:checkFeverAndAddRoundTime()
 		gohelper.setActive(self._gofeverPlane, true)
 		gohelper.setActive(self._gofever, false)
 		gohelper.setActive(self._gofever, true)
-
-		self.gameInfoMo.curRoundTime = self.gameInfoMo.curRoundTime + self.gameInfoMo.addRoundTime
-		self.gameInfoMo.maxRoundTime = Mathf.Max(self.gameInfoMo.maxRoundTime, self.gameInfoMo.curRoundTime)
-
-		self:startRoundTime()
+		self:cleanRoundTimeTween()
 	end
 end
 
 function MatchGameFightSceneView:doBombMatchAnim(elementItem)
-	gohelper.setActive(self._goclickMask, true)
+	self:pauseRoundTimeForMoveFill()
+	self:showClickMask()
 	self:pauseGame()
 
 	self.bombMatchSequence = FlowSequence.New()
@@ -1003,6 +1482,10 @@ end
 
 function MatchGameFightSceneView:addWaitingBomb(bombItem)
 	if not bombItem then
+		return
+	end
+
+	if bombItem.comp.isRemoving then
 		return
 	end
 
@@ -1047,6 +1530,7 @@ function MatchGameFightSceneView:playNextBombRound()
 
 		self.hasBombElementItemMap = {}
 		self.pendingBombList = nil
+		self.skillRemovingElementItemMap = nil
 
 		MatchGameController.instance:dispatchEvent(MatchGameFightEvent.RefreshTargetGoal)
 
@@ -1085,9 +1569,10 @@ function MatchGameFightSceneView:removeBombItem(bombItem)
 		if posXIndex >= 1 and posXIndex <= self.planeWidthNum and posYIndex >= 1 and posYIndex <= self.planeHeightNum then
 			local elementItem = self.elementItemMap[posXIndex] and self.elementItemMap[posXIndex][posYIndex]
 			local isItemHasBomb = self.hasBombElementItemMap[posXIndex] and self.hasBombElementItemMap[posXIndex][posYIndex]
+			local isSkillRemovingItem = self.skillRemovingElementItemMap and self.skillRemovingElementItemMap[posXIndex] and self.skillRemovingElementItemMap[posXIndex][posYIndex] == elementItem
 
-			if elementItem and not isItemHasBomb then
-				if elementItem.comp.itemType == MatchGameFightEnum.ElementItemType.Bomb then
+			if elementItem and not isItemHasBomb and not isSkillRemovingItem then
+				if elementItem.comp.itemType == MatchGameFightEnum.ElementItemType.Bomb and not elementItem.comp.lockState then
 					self:addWaitingBomb(elementItem)
 				elseif elementItem.comp.itemType == MatchGameFightEnum.ElementItemType.Box then
 					self:showElementEffect(MatchGameFightEnum.ItemMatchEffect.Bomb, posXIndex, posYIndex)
@@ -1098,7 +1583,7 @@ function MatchGameFightSceneView:removeBombItem(bombItem)
 						self.hasBombElementItemMap[posXIndex] = self.hasBombElementItemMap[posXIndex] or {}
 						self.hasBombElementItemMap[posXIndex][posYIndex] = elementItem
 					end
-				elseif elementItem.comp.itemType == MatchGameFightEnum.ElementItemType.Cure then
+				elseif elementItem.comp.itemType == MatchGameFightEnum.ElementItemType.Cure and not elementItem.comp.lockState then
 					elementItem.comp:setMatchEffectType(MatchGameFightEnum.ItemMatchEffect.Heal)
 					self:doElementCureHeroAnim(elementItem, false)
 
@@ -1126,7 +1611,8 @@ end
 
 function MatchGameFightSceneView:doElementCureHeroAnim(elementItem, needCreateElement)
 	if needCreateElement then
-		gohelper.setActive(self._goclickMask, true)
+		self:pauseRoundTimeForMoveFill()
+		self:showClickMask()
 
 		self.cureMatchSequence = FlowSequence.New()
 
@@ -1170,6 +1656,8 @@ function MatchGameFightSceneView.doCureHero(params)
 			MatchGameSkillBuffHandler.instance:removeTargetBuffByEffectType(elementItem.comp, MatchGameFightEnum.BuffEffectType.Seal, self:getViewContent())
 		end
 	end
+
+	MatchGameController.instance:dispatchEvent(MatchGameFightEvent.RefreshTargetGoal)
 
 	self.curSelectItemList = {}
 end
@@ -1231,6 +1719,21 @@ function MatchGameFightSceneView:startFeverState()
 	}
 
 	MatchGameController.instance:dispatchEvent(MatchGameFightEvent.OnFeverEnterCondition, params)
+	AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_sanxiao_reward)
+	AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_sanxiao_reward_loop)
+
+	if self.curGuideData and MatchGameFightModel.instance:getGuideState() then
+		local nearSameBeadList = self:getNearSameBeadList()
+
+		if nearSameBeadList and #nearSameBeadList > 0 then
+			local elementItem = nearSameBeadList[1][1]
+
+			MatchGameFightModel.instance:setFeverElementPath(elementItem.posXIndex, elementItem.posYIndex)
+			MatchGameController.instance:dispatchEvent(MatchGameFightEvent.OnEnterFeverStateGuide)
+		end
+
+		self:cleanFeverTimeTween()
+	end
 end
 
 function MatchGameFightSceneView:refreshFeverUI(value)
@@ -1248,7 +1751,7 @@ function MatchGameFightSceneView:refreshFeverUI(value)
 		self.feverFullAnim:Play("close", 0, 0)
 		self.feverFullAnim:Update(0)
 		TaskDispatcher.cancelTask(self.hideFeverFull, self)
-		TaskDispatcher.runDelay(self.hideFeverFull, self, 0.233)
+		TaskDispatcher.runDelay(self.hideFeverFull, self, MatchGameFightEnum.CloseFeverAnimTime)
 	elseif not self.lastFeverState and self.isFeverState then
 		gohelper.setActive(self._gofeverFull, false)
 		gohelper.setActive(self._gofeverFull, true)
@@ -1260,7 +1763,7 @@ function MatchGameFightSceneView:refreshFeverUI(value)
 
 	gohelper.setActive(self._gofeverNormal, not self.isFeverState)
 
-	self._txtaddTime.text = string.format("+%ds", self.gameInfoMo.addRoundTime)
+	self._txtaddTime.text = string.format("+%ds", self.gameInfoMo.maxFeverTime)
 
 	if self.isFeverState then
 		self._imagefeverBar.fillAmount = feverNum / self.gameInfoMo.maxFeverTime
@@ -1281,21 +1784,33 @@ end
 
 function MatchGameFightSceneView:onFeverTimeEnd()
 	self.gameInfoMo.curFeverNum = 0
-	self.gameInfoMo.maxFeverTime = self.gameInfoData.gameConfig.feverTime
 
 	MatchGameFightModel.instance:setFeverState(false)
+	AudioMgr.instance:trigger(MatchGameAudioEnum.stop_ui_yingmen_sanxiao_reward_loop)
 	self.feverPlaneAnim:Play("close", 0, 0)
 	self.feverPlaneAnim:Update(0)
 	self.feverAnim:Play("close", 0, 0)
 	self.feverAnim:Update(0)
 	TaskDispatcher.cancelTask(self.hideFeverPlane, self)
-	TaskDispatcher.runDelay(self.hideFeverPlane, self, 0.33)
+	TaskDispatcher.runDelay(self.hideFeverPlane, self, MatchGameFightEnum.CloseFeverAnimTime)
 
 	self.isFeverState = false
 
 	self:cleanFeverTimeTween()
 	self:refreshFeverStateElementUI()
 	self:refreshFeverUI()
+	self:recordFever()
+
+	self.curFeverClickNum = 0
+	self.curFeverAllMatchNum = 0
+
+	if not self.isRoundEnding and self.gameInfoMo.curRoundTime > 0 then
+		self:startRoundTime()
+	end
+
+	if self.gameInfoMo.curRoundTime <= 0 and not self.isRoundEnding and not self.isFeverState then
+		self:doRoundEndSequence()
+	end
 end
 
 function MatchGameFightSceneView:hideFeverPlane()
@@ -1318,7 +1833,7 @@ function MatchGameFightSceneView:doFeverBeadMatch(clickedElementItem)
 	end
 
 	if feverGroupIndex > 0 then
-		gohelper.setActive(self._goclickMask, true)
+		self:showClickMask()
 
 		local matchGroup = nearSameBeadList[feverGroupIndex]
 
@@ -1329,6 +1844,9 @@ function MatchGameFightSceneView:doFeverBeadMatch(clickedElementItem)
 			elementItem.comp:setMatchEffectType(MatchGameFightEnum.ItemMatchEffect.MatchNormal)
 			table.insert(self.curSelectItemList, elementItem)
 		end
+
+		self.curFeverClickNum = self.curFeverClickNum + 1
+		self.curFeverAllMatchNum = self.curFeverAllMatchNum + #self.curSelectItemList
 
 		self:doMatchAnim()
 
@@ -1397,6 +1915,16 @@ function MatchGameFightSceneView:startRoundTime()
 	TaskDispatcher.cancelTask(self.startRoundTime, self)
 	self:cleanRoundTimeTween()
 
+	if self.isMoveFillRunning then
+		self.needResumeRoundTimeAfterMoveFill = true
+
+		return
+	end
+
+	if MatchGameFightModel.instance:getGuideState() or self.isFeverState then
+		return
+	end
+
 	if not self.isGameRunning then
 		local params = {
 			conditionId = MatchGameFightEnum.SkillConditionType.OnTurnStart
@@ -1415,18 +1943,110 @@ function MatchGameFightSceneView:startRoundTime()
 	self:startGameTimeCount()
 end
 
+local countdownHash = UnityEngine.Animator.StringToHash("countdown")
+
 function MatchGameFightSceneView:refreshRoundTime(value)
 	self.gameInfoMo.curRoundTime = value or self.gameInfoMo.maxRoundTime
-	self._txtroundTime.text = string.format("%ds", Mathf.Ceil(self.gameInfoMo.curRoundTime))
+
+	local roundTimeSecond = Mathf.Ceil(self.gameInfoMo.curRoundTime)
+
+	if self.curRoundTime ~= roundTimeSecond then
+		self.curRoundTime = roundTimeSecond
+		self._txtroundTime.text = string.format("%ds", roundTimeSecond)
+	end
+
 	self._imageroundTimeBar.fillAmount = self.gameInfoMo.curRoundTime / self.gameInfoMo.maxRoundTime
+
+	gohelper.setActive(self._goroundTimeVX, self.isGameRunning and self._imageroundTimeBar.fillAmount <= MatchGameFightEnum.RoundTimeEndTipTime)
+	recthelper.setAnchorX(self._goroundTimeVX.transform, -(1 - self._imageroundTimeBar.fillAmount) * self.roundTimeBarWidth)
+
+	if self.isGameRunning and self._imageroundTimeBar.fillAmount <= MatchGameFightEnum.RoundTimeEndTipTime then
+		self.isPlayingTimeEndTip = true
+
+		if self.lastRoundTimeSecond and roundTimeSecond < self.lastRoundTimeSecond then
+			self.roundTimeBarAnim:Play(countdownHash, 0, 0)
+			self.roundTimeBarAnim:Update(0)
+			AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_sanxiao_countdown)
+		end
+	else
+		if self.isPlayingTimeEndTip then
+			AudioMgr.instance:trigger(MatchGameAudioEnum.stop_ui_yingmen_sanxiao_countdown)
+		end
+
+		self.isPlayingTimeEndTip = false
+	end
+
+	self.lastRoundTimeSecond = roundTimeSecond
 end
 
-function MatchGameFightSceneView:skillChangeRoundTime(value)
+function MatchGameFightSceneView:skillChangeRoundTime(value, changeTime)
+	self:showRoundTimeChangeTip(changeTime)
+
 	if not self.isGameRunning then
 		self:refreshRoundTime(value)
 	else
 		self:startRoundTime()
 	end
+end
+
+function MatchGameFightSceneView:showRoundTimeChangeTip(changeValue)
+	if not changeValue or changeValue == 0 then
+		return
+	end
+
+	table.insert(self.roundTimeChangeTipList, changeValue)
+
+	if not self.isRoundTimeChangeTipShowing then
+		self:showNextRoundTimeChangeTip()
+	end
+end
+
+function MatchGameFightSceneView:showNextRoundTimeChangeTip()
+	TaskDispatcher.cancelTask(self.showNextRoundTimeChangeTip, self)
+
+	local changeValue = table.remove(self.roundTimeChangeTipList, 1)
+
+	if not changeValue then
+		self.isRoundTimeChangeTipShowing = false
+
+		return
+	end
+
+	self.isRoundTimeChangeTipShowing = true
+
+	TaskDispatcher.cancelTask(self.hideRoundTimeChangeTip, self)
+	gohelper.setActive(self._goRoundTimeAddTip, false)
+	gohelper.setActive(self._goRoundTimeLoseTip, false)
+
+	local changeTime = Mathf.Abs(changeValue)
+
+	if changeValue > 0 then
+		self._txtRoundTimeAdd.text = string.format("+%ds", changeTime)
+
+		gohelper.setActive(self._goRoundTimeAddTip, true)
+	else
+		self._txtRoundTimeLose.text = string.format("-%ds", changeTime)
+
+		gohelper.setActive(self._goRoundTimeLoseTip, true)
+	end
+
+	TaskDispatcher.runDelay(self.hideRoundTimeChangeTip, self, MatchGameFightEnum.CloseRoundTimeChangeTipTime)
+	TaskDispatcher.runDelay(self.showNextRoundTimeChangeTip, self, MatchGameFightEnum.ShowNextRoundTimeChangeTipTime)
+end
+
+function MatchGameFightSceneView:hideRoundTimeChangeTip()
+	gohelper.setActive(self._goRoundTimeAddTip, false)
+	gohelper.setActive(self._goRoundTimeLoseTip, false)
+end
+
+function MatchGameFightSceneView:cleanRoundTimeChangeTip()
+	TaskDispatcher.cancelTask(self.showNextRoundTimeChangeTip, self)
+	TaskDispatcher.cancelTask(self.hideRoundTimeChangeTip, self)
+
+	self.roundTimeChangeTipList = self:getUserDataTb_()
+	self.isRoundTimeChangeTipShowing = false
+
+	self:hideRoundTimeChangeTip()
 end
 
 function MatchGameFightSceneView:onRoundTimeEnd()
@@ -1437,6 +2057,14 @@ function MatchGameFightSceneView:onRoundTimeEnd()
 		self:onFeverTimeEnd()
 	end
 
+	if self:checkCanMatchSelectedItems() then
+		self:onItemDragEnd()
+	else
+		self:doRoundEndSequence()
+	end
+end
+
+function MatchGameFightSceneView:doRoundEndSequence()
 	self.gameInfoMo.curRoundTime = self.gameInfoMo.maxRoundTime
 
 	self.UILineComp:SetPointCount(0)
@@ -1445,6 +2073,10 @@ function MatchGameFightSceneView:onRoundTimeEnd()
 		elementItem.comp:setSelectState(false)
 	end
 
+	AudioMgr.instance:trigger(MatchGameAudioEnum.stop_ui_yingmen_sanxiao_countdown)
+	gohelper.setActive(self._goroundTimeVX, false)
+
+	self.isPlayingTimeEndTip = false
 	self.curSelectItemMap = {}
 	self.curSelectItemList = {}
 	self.isDragging = false
@@ -1454,9 +2086,10 @@ function MatchGameFightSceneView:onRoundTimeEnd()
 	self.roundEndSequence:addWork(MatchGameHeroAttackWork.New())
 	self.roundEndSequence:addWork(TimerWork.New(MatchGameFightEnum.HeroAttackToEnemyAttackTime))
 	self.roundEndSequence:addWork(MatchGameEnemyAttackWork.New())
+	self.roundEndSequence:addWork(TimerWork.New(MatchGameFightEnum.WaitToNextRoundTime))
 	self.roundEndSequence:registerDoneListener(self.roundEndSequenceDone, self)
 	self.roundEndSequence:start()
-	gohelper.setActive(self._goclickMask, true)
+	self:showClickMask()
 
 	self.isRoundEnding = true
 end
@@ -1477,25 +2110,44 @@ function MatchGameFightSceneView:roundEndSequenceDone()
 	MatchGameController.instance:dispatchEvent(MatchGameFightEvent.RefreshTargetGoal)
 
 	if self.fightResult == MatchGameFightEnum.FightResult.None then
-		self:refreshRoundTime()
+		self:cleanRoundTimeTween()
+		TaskDispatcher.cancelTask(self.hideClickMask, self)
+
+		self.roundTimeTweenId = ZProj.TweenHelper.DOTweenFloat(0, self.gameInfoMo.maxRoundTime, MatchGameFightEnum.RoundTimeBarToFullTime, self.refreshRoundTime, nil, self, nil, EaseType.Linear)
+
+		TaskDispatcher.runDelay(self.hideClickMask, self, MatchGameFightEnum.RoundTimeBarToFullTime)
+		self.roundTimeBarAnim:Play("recharge", 0, 0)
+		self.roundTimeBarAnim:Update(0)
 	else
 		self:checkAndOpenResultView()
+		self:hideClickMask()
 	end
 
 	self.curChainNum = 0
 
 	self:updateChainNumUI(false)
 	self:resetRoundData()
-	gohelper.setActive(self._goclickMask, false)
 
 	self.isRoundEnding = false
 end
 
+function MatchGameFightSceneView:hideClickMask()
+	gohelper.setActive(self._goclickMask, false)
+
+	self.curClickMaskTime = 0
+end
+
+function MatchGameFightSceneView:showClickMask()
+	gohelper.setActive(self._goclickMask, true)
+
+	self.curClickMaskTime = UnityEngine.Time.realtimeSinceStartup
+end
+
 function MatchGameFightSceneView:checkAndOpenResultView()
 	if self.fightResult == MatchGameFightEnum.FightResult.Succ then
-		self:sendGameResultData(true)
+		self:sendGameResultData(true, MatchGameEnum.StatFightEndReason.Settlement)
 	elseif self.fightResult == MatchGameFightEnum.FightResult.Fail then
-		self:sendGameResultData(false)
+		self:sendGameResultData(false, MatchGameEnum.StatFightEndReason.Settlement)
 	end
 
 	self.isGameRunning = false
@@ -1505,14 +2157,18 @@ function MatchGameFightSceneView:checkAndOpenResultView()
 	TaskDispatcher.cancelTask(self.startRoundTime, self)
 end
 
-function MatchGameFightSceneView:sendGameResultData(isPass)
+function MatchGameFightSceneView:sendGameResultData(isPass, endReason)
 	local fightView = self.viewContainer:getFightView()
 	local stars = fightView:getTargetGoalFinishIndexList()
 	local score = fightView.curChallengeScore
 	local roundCount = fightView.curRoundCount
 	local maxRoundDamage = fightView.maxRoundDamage
+	local exParam = {
+		roundCount = roundCount,
+		maxRoundDamage = maxRoundDamage
+	}
 
-	MatchGameController.instance:onEpisodeSuccess(self.episodeId, isPass, stars, score, roundCount, self.maxChainNum, maxRoundDamage)
+	MatchGameController.instance:onEpisodeSuccess(self.episodeId, isPass, stars, score, exParam, endReason)
 end
 
 function MatchGameFightSceneView:resetRoundData()
@@ -1551,12 +2207,21 @@ function MatchGameFightSceneView:pauseGame()
 end
 
 function MatchGameFightSceneView:openFightQuitTipView()
-	if self._goclickMask.activeSelf or self.isDragging or self.isRoundEnding then
+	local fightView = self.viewContainer:getFightView()
+	local isHeroSkillShowing = fightView:getHeroSkillShowingState()
+
+	if self._goclickMask.activeSelf or self.isDragging or self.isRoundEnding or isHeroSkillShowing then
 		return
 	end
 
 	self:pauseGame()
-	MatchGameController.instance:openMatchGameFightQuitTipView()
+
+	local targetGoalData = fightView:getTargetGoalData()
+	local param = {
+		targetGoalData = targetGoalData
+	}
+
+	MatchGameController.instance:openMatchGameFightQuitTipView(param)
 end
 
 function MatchGameFightSceneView:continueGame()
@@ -1635,6 +2300,19 @@ function MatchGameFightSceneView:getCurChainNum()
 	return self.curChainNum
 end
 
+function MatchGameFightSceneView:statRecordDragAction()
+	local fightView = self.viewContainer:getFightView()
+	local curDragDamage = fightView:getCurDragMatchDamage(self.curSelectItemMap)
+
+	MatchGameStatHelper.instance:recordDragAction(self.curChainNum, self.curSelectItemList, self.gameInfoMo, curDragDamage, fightView.curRoundCount, fightView.curWaveCount)
+end
+
+function MatchGameFightSceneView:recordFever()
+	local fightView = self.viewContainer:getFightView()
+
+	MatchGameStatHelper.instance:recordFever(fightView.curRoundCount, fightView.curWaveCount, self.curFeverClickNum, self.curFeverAllMatchNum)
+end
+
 function MatchGameFightSceneView:updateHeroDamage(elementItemMap)
 	local fightView = self.viewContainer:getFightView()
 
@@ -1678,6 +2356,10 @@ function MatchGameFightSceneView:addAndUpdateRoundInfo()
 		if curRoundCount > fightView.totalRoundCount then
 			self.fightResult = MatchGameFightEnum.FightResult.Fail
 		else
+			if self.fightResult ~= MatchGameFightEnum.FightResult.None then
+				curRoundCount = curRoundCount - 1
+			end
+
 			fightView:setCurRoundCount(curRoundCount)
 		end
 	end
@@ -1698,14 +2380,14 @@ function MatchGameFightSceneView:getElementItemMap()
 end
 
 function MatchGameFightSceneView:quitGame()
-	self:sendGameResultData(false)
+	self:sendGameResultData(false, MatchGameEnum.StatFightEndReason.Abort)
 end
 
-function MatchGameFightSceneView:showElementEffect(effectType, posXIndex, posYIndex)
+function MatchGameFightSceneView:showElementEffect(effectType, posXIndex, posYIndex, scale)
 	local fightView = self.viewContainer:getFightView()
 
 	if fightView then
-		fightView:showElementEffect(effectType, posXIndex, posYIndex)
+		fightView:showElementEffect(effectType, posXIndex, posYIndex, scale)
 	end
 end
 
@@ -1728,12 +2410,19 @@ function MatchGameFightSceneView:onClose()
 	self.curSelectItemMap = {}
 	self.curSelectItemList = {}
 	self.isGameRunning = false
+	self.isMoveFillRunning = false
+	self.needResumeRoundTimeAfterMoveFill = false
+	self.pendingSkillMatchData = nil
+	self.isSkillMatchSequenceRunning = false
 
 	TaskDispatcher.cancelTask(self.playNextBombRound, self)
+	TaskDispatcher.cancelTask(self.executePendingSkillMatchAnim, self)
 	TaskDispatcher.cancelTask(self.startRoundTime, self)
 	TaskDispatcher.cancelTask(self.checkNotMatchConvertElementFinish, self)
 	TaskDispatcher.cancelTask(self.hideFeverPlane, self)
 	TaskDispatcher.cancelTask(self.hideFeverFull, self)
+	TaskDispatcher.cancelTask(self.hideClickMask, self)
+	self:cleanRoundTimeChangeTip()
 	self:stopGameTimeCount()
 
 	self.gameTimePauseCount = 0
@@ -1743,7 +2432,8 @@ function MatchGameFightSceneView:onClose()
 	MatchGameFightModel.instance:setFeverState(false)
 	gohelper.setActive(self._gofeverPlane, false)
 	gohelper.setActive(self._gofever, false)
-	MatchGameFightModel.instance:cleanMatchGameData()
+	AudioMgr.instance:trigger(MatchGameAudioEnum.stop_ui_yingmen_sanxiao_countdown)
+	AudioMgr.instance:trigger(MatchGameAudioEnum.stop_ui_yingmen_sanxiao_reward_loop)
 end
 
 function MatchGameFightSceneView:onDestroyView()
@@ -1777,6 +2467,8 @@ function MatchGameFightSceneView:onDestroyView()
 
 	MatchGameFightModel.instance:setCurGameTime(0)
 	self._simagebg:UnLoadImage()
+	MatchGameFightModel.instance:cleanMatchGameData()
+	MatchGameFightModel.instance:setGuideState(false)
 end
 
 return MatchGameFightSceneView

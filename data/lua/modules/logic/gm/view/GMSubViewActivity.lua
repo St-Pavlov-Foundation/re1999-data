@@ -444,6 +444,11 @@ function GMSubViewActivity:_resetVersionActivityKVOpenVideo()
 	local key = string.format("%s_%s_%s", userId, PlayerPrefsKey.FirstLoginTodayRed, enum.EnterVideoDayKey)
 
 	PlayerPrefsHelper.setString(key, "")
+
+	enum = VersionActivityMainFixedHelper.getVersionActivityEnum()
+	key = string.format("%s_%s_%s", userId, PlayerPrefsKey.FirstLoginTodayRed, enum.EnterVideoDayKey)
+
+	PlayerPrefsHelper.setString(key, "")
 end
 
 return GMSubViewActivity

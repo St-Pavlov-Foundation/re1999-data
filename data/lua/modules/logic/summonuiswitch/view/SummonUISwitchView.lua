@@ -144,7 +144,7 @@ function SummonUISwitchView:onTabSwitchOpen()
 end
 
 function SummonUISwitchView:onTabSwitchClose()
-	MainHeroView.setPostProcessBlur()
+	return
 end
 
 function SummonUISwitchView:_refreshInfo(skinId)

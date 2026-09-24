@@ -333,6 +333,18 @@ function BossRushDefine.initV3a9(module_views)
 		viewType = ViewType.Normal,
 		anim = ViewAnim.Default
 	}
+	module_views.V3a9_BossRush_ResetView = {
+		destroy = 0,
+		container = "V3a9_BossRush_ResetViewContainer",
+		bgBlur = 1,
+		mainRes = "ui/viewres/versionactivity_1_4/v1a4_bossrush/v3a9_bossrush/v3a9_bossrush_resetview.prefab",
+		layer = "MESSAGE",
+		viewType = ViewType.Modal,
+		anim = ViewAnim.Default,
+		customAnimBg = {
+			"#simage_tipbg"
+		}
+	}
 end
 
 return BossRushDefine

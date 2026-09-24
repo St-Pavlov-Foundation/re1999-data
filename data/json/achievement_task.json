@@ -8794,7 +8794,7 @@
     "extraDesc": "一次无伤大雅的失误，抑或为某种即兴发挥。",
     "listenerType": "ChapterAllStarAdvence",
     "listenerParam": "114",
-    "maxProgress": 3,
+    "maxProgress": 1,
     "sortId": 2,
     "level": 2,
     "icon": "41360102",
@@ -8842,7 +8842,7 @@
   {
     "id": 41360301,
     "achievementId": 413603,
-    "desc": "观看第十四章特别篇“船喻”故事",
+    "desc": "观看第十四章特别篇“船喻”故事。",
     "extraDesc": "足够崭新、足够沉稳，足以确保他们航向既定的远方。",
     "listenerType": "EpisodeFinish",
     "listenerParam": "31306",
@@ -8907,7 +8907,7 @@
   {
     "id": 41360701,
     "achievementId": 413607,
-    "desc": "通关魔精星期五“首批特卖”L1-Ø关卡",
+    "desc": "通关魔精星期五“首批特卖”L1-Ø关卡。",
     "extraDesc": "商场即战场。",
     "listenerType": "Act244Episode",
     "listenerParam": "14012#14010110",
@@ -8920,7 +8920,7 @@
   {
     "id": 41360702,
     "achievementId": 413607,
-    "desc": "通关魔精星期五“首批特卖”L2-Ø关卡",
+    "desc": "通关魔精星期五“首批特卖”L2-Ø关卡。",
     "extraDesc": "抓紧些，我们得占领货架高地！",
     "listenerType": "Act244Episode",
     "listenerParam": "14012#14010210",
@@ -8933,7 +8933,7 @@
   {
     "id": 41360703,
     "achievementId": 413607,
-    "desc": "通关魔精星期五“首批特卖”L3-Ø关卡",
+    "desc": "通关魔精星期五“首批特卖”L3-Ø关卡。",
     "extraDesc": "至于战利品分配的问题，我想可以稍后再议。",
     "listenerType": "Act244Episode",
     "listenerParam": "14012#14010310",
@@ -8946,11 +8946,11 @@
   {
     "id": 41360801,
     "achievementId": 413608,
-    "desc": "观看贝丽尔全部轶事剧情",
+    "desc": "观看贝丽尔全部轶事剧情。",
     "extraDesc": "你虽预见涟漪的去向，却仍需亲身蹚过这条河流。",
     "listenerType": "HeroStoryPlotFinishMultiple",
     "listenerParam": "313402#313403#313404#313405#313406#313410",
-    "maxProgress": 1,
+    "maxProgress": 6,
     "sortId": 1,
     "level": 1,
     "icon": "41360801",
@@ -8959,7 +8959,7 @@
   {
     "id": 41360901,
     "achievementId": 413609,
-    "desc": "完成古典叙事，祝酒之必要，争流者说，无门的王厅，洄游的心，金鬃的荣耀，碰碰客实验，睡而复睡，真相显现法的Ⅰ级成就。",
+    "desc": "完成“本色出演”，名誉决胜局，伟大舵手，飓风眼，荆棘清理法，群星图鉴，消费主义战争，此刻的预见的Ⅰ级成就。",
     "extraDesc": "为更伟大的功绩与品格，特留一席。",
     "listenerType": "AchievementTaskFinish",
     "listenerParam": "41360101#41360201#41360301#41360401#41360501#41360601#41360701#41360801",

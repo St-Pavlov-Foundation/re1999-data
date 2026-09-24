@@ -15,6 +15,10 @@ function MatchGameHeroGroupModel:reInit()
 	self._editHeroUid = nil
 end
 
+function MatchGameHeroGroupModel:initEpisodeId(episodeId)
+	self._episodeId = episodeId
+end
+
 function MatchGameHeroGroupModel:initTeamList()
 	if self._isInitDone then
 		return
@@ -33,7 +37,7 @@ end
 function MatchGameHeroGroupModel:checkTeachTeam()
 	self._curTeamId = MatchGameModel.instance:getCurTeamIndex()
 
-	local curEpisodeId = MatchGameLevelModel.instance:getCurEpisodeId()
+	local curEpisodeId = self._episodeId
 	local isTeachEpisode = MatchGameConfig.instance:isTeachEpisode(curEpisodeId)
 
 	if not isTeachEpisode then
@@ -71,7 +75,7 @@ end
 function MatchGameHeroGroupModel:_initTeamHeroCache()
 	self._curTeamHeroCache = {}
 
-	local curEpisodeId = MatchGameLevelModel.instance:getCurEpisodeId()
+	local curEpisodeId = self._episodeId
 	local maxRoleNum = MatchGameConfig.instance:getEpisodeRoleNum(curEpisodeId)
 	local heroMap = self:getCurTeamHeroes(true)
 
@@ -120,7 +124,7 @@ function MatchGameHeroGroupModel:getCurTeamTotalHp()
 
 	if teamHeroes then
 		for _, singleMo in pairs(teamHeroes) do
-			local hp = singleMo:getAttrValue(MatchGameEnum.CharacterAttrType.Hp)
+			local hp = singleMo:getTotalAttrValue(MatchGameEnum.CharacterAttrType.Hp)
 
 			totalHp = totalHp + hp
 		end
@@ -131,8 +135,17 @@ end
 
 function MatchGameHeroGroupModel:getCurTeamCharacterCount()
 	local teamHeroes = self:getCurTeamHeroes()
+	local heroCount = 0
 
-	return tabletool.len(teamHeroes)
+	if teamHeroes then
+		for _, heroMo in pairs(teamHeroes) do
+			if heroMo:hasHero() then
+				heroCount = heroCount + 1
+			end
+		end
+	end
+
+	return heroCount
 end
 
 function MatchGameHeroGroupModel:_initTeamHeroMap(teamId)
@@ -152,12 +165,6 @@ function MatchGameHeroGroupModel:_initTeamHeroMap(teamId)
 end
 
 function MatchGameHeroGroupModel:_updateSingleGroupMo(teamId, posIndex, heroId)
-	if not heroId or heroId == 0 then
-		self._teamHeroMap[teamId][posIndex] = nil
-
-		return
-	end
-
 	local singleMo = self._teamHeroMap[teamId][posIndex]
 
 	if not singleMo then
@@ -165,7 +172,7 @@ function MatchGameHeroGroupModel:_updateSingleGroupMo(teamId, posIndex, heroId)
 		self._teamHeroMap[teamId][posIndex] = singleMo
 	end
 
-	local heroMo = MatchGameModel.instance:getCharacterMo(heroId)
+	local heroMo = heroId and MatchGameModel.instance:getCharacterMo(heroId)
 
 	singleMo:initData(posIndex, heroId, heroMo)
 end

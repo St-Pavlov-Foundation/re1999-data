@@ -64,6 +64,7 @@ local fields = {
 	characterTitleViewStaticOffset = 54,
 	skinReplaceIcon = 65,
 	verticalDrawing = 18,
+	isPast = 98,
 	characterGetViewOffset = 51,
 	frameStencilValue = 13,
 	retangleIcon = 27,

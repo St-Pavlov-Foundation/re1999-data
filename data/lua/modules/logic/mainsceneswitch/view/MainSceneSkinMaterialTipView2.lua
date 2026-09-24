@@ -290,7 +290,7 @@ function MainSceneSkinMaterialTipView2:_getCostIcon(cost)
 	if string.len(cost[2]) == 1 then
 		id = cost[1] .. "0" .. cost[2]
 	else
-		id = cost[1] .. cost[1]
+		id = cost[1] .. cost[2]
 	end
 
 	local str = string.format("%s_1", id)

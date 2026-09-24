@@ -452,6 +452,14 @@ function SummonHeroDetailView:_initViewParam()
 	self._tempHeroMO, self._replaceHeroMOParams = self:_getReplaceSkillHeroMO(self._heroId, self._skinId)
 end
 
+local function _replace_hero_newindex(t, key, value)
+	local target = rawget(t, 1)
+
+	if target then
+		target[key] = value
+	end
+end
+
 function SummonHeroDetailView:_getReplaceSkillHeroMO(heroId, skinId)
 	local rank = CharacterModel.instance:getReplaceSkillRankBySkinId(skinId)
 
@@ -476,8 +484,12 @@ function SummonHeroDetailView:_getReplaceSkillHeroMO(heroId, skinId)
 			rank = rank,
 			replaceSkillRank = rank
 		}
+		local mergHeroMO = RoomHelper.mergeCfg(heroMO, mergeInfo)
+		local metatable = getmetatable(mergHeroMO)
 
-		return RoomHelper.mergeCfg(heroMO, mergeInfo), mergeInfo
+		metatable.__newindex = _replace_hero_newindex
+
+		return mergHeroMO, mergeInfo
 	end
 end
 

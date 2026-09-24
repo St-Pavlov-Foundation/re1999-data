@@ -113,12 +113,12 @@ function AutoChessRpc:onReceiveAutoChessBuildReply(resultCode, msg)
 	AutoChessController.instance:dispatchEvent(AutoChessEvent.BuildReply)
 end
 
-function AutoChessRpc:sendAutoChessRefreshMallRequest(moduleId)
+function AutoChessRpc:sendAutoChessRefreshMallRequest(moduleId, callback, callbackObj)
 	local req = AutoChessModule_pb.AutoChessRefreshMallRequest()
 
 	req.moduleId = moduleId
 
-	self:sendMsg(req)
+	self:sendMsg(req, callback, callbackObj)
 end
 
 function AutoChessRpc:onReceiveAutoChessRefreshMallReply(resultCode, msg)
@@ -128,7 +128,7 @@ function AutoChessRpc:onReceiveAutoChessRefreshMallReply(resultCode, msg)
 
 	local mo = AutoChessModel.instance:getSceneMo()
 
-	mo:updateSvrMall(msg.mall, true)
+	mo:updateSvrMall(msg.mall)
 	mo:updateSvrTurn(msg.turn)
 end
 

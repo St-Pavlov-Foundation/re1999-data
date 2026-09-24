@@ -82,6 +82,8 @@ function CandyRoomMainView:_btnskipOnClick()
 		self._summonflow = nil
 	end
 
+	CandyRoomModel.instance:clearWaitShowRewards()
+
 	self._flow = FlowSequence.New()
 
 	self._flow:addWork(FunctionWork.New(self._summonRewardGet, self))
@@ -215,6 +217,11 @@ function CandyRoomMainView:_getRewardList()
 end
 
 function CandyRoomMainView:_summonRewardGet()
+	if self._summonType ~= CandyRoomEnum.SummonType.Single then
+		AudioMgr.instance:trigger(AudioEnum4_0.CandyRoom.stop_ui_yingmen_tanguowu_rotate)
+	end
+
+	gohelper.setActive(self._gotopleft, true)
 	gohelper.setActive(self._gomask, false)
 	gohelper.setActive(self._btnskip.gameObject, false)
 
@@ -263,6 +270,7 @@ function CandyRoomMainView:_showSummonTips()
 	gohelper.setActive(self._gotitle, false)
 	gohelper.setActive(self._goskin, false)
 	gohelper.setActive(self._goeffect, true)
+	gohelper.setActive(self._gotopleft, false)
 	gohelper.setActive(self._gosummontips, true)
 
 	local targetRewardId = self._targetRewards[#self._targetRewards - self._summonCount + 1]
@@ -281,11 +289,13 @@ function CandyRoomMainView:_showSummonTips()
 	if self._summonType == CandyRoomEnum.SummonType.Single then
 		self._viewAnim:Play("lottery_once", 0, 0)
 		self._contentAnim:Play("lottery_once", 0, 0)
+		AudioMgr.instance:trigger(AudioEnum4_0.CandyRoom.play_ui_yingmen_tanguowu_rotate_single)
 		TaskDispatcher.runDelay(self._resetRewwards, self, 1.9)
 		TaskDispatcher.runDelay(self._showSummonSelectingAnimFinished, self, 3.84)
 	else
 		self._viewAnim:Play("lottery_many", 0, 0)
 		self._contentAnim:Play("lottery_many", 0, 0)
+		AudioMgr.instance:trigger(AudioEnum4_0.CandyRoom.play_ui_yingmen_tanguowu_rotate)
 		TaskDispatcher.runDelay(self._resetRewwards, self, 1.12)
 		TaskDispatcher.runDelay(self._showSummonSelectingAnimFinished, self, 2.34)
 	end
@@ -317,6 +327,7 @@ function CandyRoomMainView:_showSummonRewardAnim()
 	self:_hideRewardsNameAndTip(false)
 	gohelper.setActive(self._gomask, true)
 	self._maskAnim:Play("close", 0, 0)
+	AudioMgr.instance:trigger(AudioEnum4_0.CandyRoom.play_ui_yingmen_tanguowu_prize)
 
 	if self._summonType == CandyRoomEnum.SummonType.Single then
 		self._viewAnim:Play("get", 0, 0)
@@ -329,7 +340,7 @@ function CandyRoomMainView:_showSummonRewardAnim()
 
 	local rewardId = self._targetRewards[#self._targetRewards - self._summonCount + 1]
 
-	CandyRoomController.instance:dispatchEvent(CandyRoomEvent.OnShowSummonSelectFinished, rewardId)
+	CandyRoomController.instance:dispatchEvent(CandyRoomEvent.OnShowSummonSelectFinished, rewardId, self._summonType)
 end
 
 function CandyRoomMainView:_showSummonFinished()
@@ -405,10 +416,6 @@ function CandyRoomMainView:_initView()
 
 	self:_initRewards()
 
-	local skinActId = CandyRoomModel.instance:getLoginActivityId(self._actId)
-
-	RedDotController.instance:addRedDot(self._goskinreddot, RedDotEnum.DotNode.V4a0ConcertCandyRoomSkinReward, skinActId)
-
 	if SLFramework.FrameworkSettings.IsEditor then
 		TaskDispatcher.runRepeat(self._onFrame, self, 0.01)
 	end
@@ -465,6 +472,15 @@ function CandyRoomMainView:_onDragBegin(param, pointerEventData)
 	if self._forbidDrag then
 		return
 	end
+
+	self._dragValue = 1
+	self._lastDragPosX = pointerEventData.position.x
+
+	if self._slideTweenId then
+		ZProj.TweenHelper.KillById(self._slideTweenId)
+
+		self._slideTweenId = nil
+	end
 end
 
 function CandyRoomMainView:_onDrag(param, pointerEventData)
@@ -473,11 +489,6 @@ function CandyRoomMainView:_onDrag(param, pointerEventData)
 	end
 
 	local curPosX = pointerEventData.position.x
-
-	if not self._lastDragPosX then
-		self._lastDragPosX = curPosX
-	end
-
 	local deltaX = self._lastDragPosX - curPosX
 
 	self._lastDragPosX = curPosX
@@ -497,19 +508,11 @@ end
 
 function CandyRoomMainView:_dragUpdate(value)
 	if not self._dragValue then
-		self._dragValue = 0
+		self._dragValue = 1
 	end
 
 	self._dragValue = self._dragValue + value
-
-	if self._dragValue > 1 then
-		self._dragValue = self._dragValue - 1
-	end
-
-	if self._dragValue < 0 then
-		self._dragValue = self._dragValue + 1
-	end
-
+	self._dragValue = self._dragValue > 0 and self._dragValue - math.floor(self._dragValue) or self._dragValue + math.ceil(math.abs(self._dragValue))
 	self._contentAnim.speed = 0
 
 	self._contentAnim:Play("loop", 0, self._dragValue)
@@ -521,10 +524,8 @@ function CandyRoomMainView:_moveToReward()
 	local rewardIndex = rightValue < leftValue and math.ceil(24 * self._dragValue) or math.floor(24 * self._dragValue)
 	local endValue = rewardIndex / 24
 
-	if not self._rewardItems[rewardIndex + 1] then
-		self:_refreshRewards(self._targetRewardId, self._targetRewardId)
-
-		return
+	if rewardIndex >= 24 or rewardIndex <= 0 then
+		rewardIndex = 0
 	end
 
 	self._targetRewardId = self._rewardItems[rewardIndex + 1]:getRewardId()
@@ -535,11 +536,9 @@ function CandyRoomMainView:_moveToReward()
 end
 
 function CandyRoomMainView:_slideUpdate(value)
-	local slideValue = value
-
 	self._contentAnim.speed = 0
 
-	self._contentAnim:Play("loop", 0, slideValue)
+	self._contentAnim:Play("loop", 0, value)
 end
 
 function CandyRoomMainView:_slideFinished()
@@ -576,7 +575,7 @@ function CandyRoomMainView:_refreshTime()
 	local remainTimeSec = startTime / 1000 - ServerTime.now()
 
 	if remainTimeSec > 0 then
-		self._txtskinlocktime.text = ActivityHelper.getActivityRemainTimeStr(skinActId)
+		self._txtskinlocktime.text = TimeUtil.SecondToActivityTimeFormat(remainTimeSec)
 	end
 end
 
@@ -585,6 +584,7 @@ function CandyRoomMainView:_refreshItems()
 end
 
 function CandyRoomMainView:onOpen()
+	AudioMgr.instance:trigger(AudioEnum4_0.CandyRoom.play_ui_yingmen_tanguowu_entry)
 	self:_checkShowCandyPanelView()
 	self:_playOpenRewardsAnim()
 end
@@ -630,7 +630,7 @@ function CandyRoomMainView:_refreshSkin()
 	local couldGet = ActivityType101Model.instance:isType101RewardCouldGet(skinActId, 1)
 
 	gohelper.setActive(self._goskinhasget, rewardGet)
-	gohelper.setActive(self._goskincanget, false)
+	gohelper.setActive(self._goskinreddot, couldGet)
 	gohelper.setActive(self._goskinlock, not rewardGet and not couldGet)
 end
 
@@ -642,6 +642,7 @@ function CandyRoomMainView:_refreshUI()
 	self._txtlimit.text = hasCount
 
 	gohelper.setActive(self._btnsummonMuti.gameObject, not isAllRewardGet and limitCount <= hasCount)
+	gohelper.setActive(self._gosummontimetips, not isAllRewardGet)
 	gohelper.setActive(self._btnsummon.gameObject, not isAllRewardGet)
 	gohelper.setActive(self._gosummonable, hasCount > 0)
 	gohelper.setActive(self._gosummongray, hasCount <= 0)
@@ -671,6 +672,12 @@ function CandyRoomMainView:onClose()
 end
 
 function CandyRoomMainView:onDestroyView()
+	if self._slideTweenId then
+		ZProj.TweenHelper.KillById(self._slideTweenId)
+
+		self._slideTweenId = nil
+	end
+
 	TaskDispatcher.cancelTask(self._onFrame, self)
 	TaskDispatcher.cancelTask(self._refreshTime, self)
 	TaskDispatcher.cancelTask(self._showOpenFinished, self)

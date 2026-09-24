@@ -449,16 +449,7 @@ end
 function FightController:_onStartSequenceFinish()
 	self:_recordFreeTicket()
 	self:beginWave()
-
-	if FightModel.instance:isFinish() then
-		logNormal("回合结束，战斗结束")
-
-		if FightDataHelper.fieldMgr:isDouQuQu() then
-			return
-		end
-
-		FightRpc.instance:sendEndFightRequest(false)
-	end
+	self:trySendEndFightRequest()
 end
 
 function FightController:beginWave()
@@ -466,18 +457,14 @@ function FightController:beginWave()
 end
 
 function FightController:_onRoundSequenceFinish()
-	if FightModel.instance:isFinish() then
-		logNormal("回合结束，战斗结束")
-
-		if FightDataHelper.fieldMgr:isDouQuQu() then
-			return
-		end
-
-		FightRpc.instance:sendEndFightRequest(false)
-	end
+	self:trySendEndFightRequest()
 end
 
 function FightController:onClothSkillRoundSequenceFinish()
+	self:trySendEndFightRequest()
+end
+
+function FightController:trySendEndFightRequest()
 	if FightModel.instance:isFinish() then
 		logNormal("回合结束，战斗结束")
 

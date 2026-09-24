@@ -2,48 +2,25 @@
 
 module("modules.logic.store.view.decorate.DecorateStoreBundleCompType1Item", package.seeall)
 
-local DecorateStoreBundleCompType1Item = class("DecorateStoreBundleCompType1Item", LuaCompBase)
+local DecorateStoreBundleCompType1Item = class("DecorateStoreBundleCompType1Item", SimpleListItem)
 
-function DecorateStoreBundleCompType1Item.Get(go)
-	return MonoHelper.addNoUpdateLuaComOnceToGo(go, DecorateStoreBundleCompType1Item)
-end
+function DecorateStoreBundleCompType1Item:onInit(viewGO)
+	local rectTransform = self.transform
 
-function DecorateStoreBundleCompType1Item:init(go)
-	self.go = go
-	self._simagehero = gohelper.findChildSingleImage(self.go, "#simage_heroskin")
-	self._goselect = gohelper.findChild(self.go, "#go_select")
-	self._goowned = gohelper.findChild(self.go, "#go_owned")
-	self._btnClick = SLFramework.UGUI.ButtonWrap.Get(self.go)
+	rectTransform.anchorMin = Vector2.zero
+	rectTransform.anchorMax = Vector2.one
+	rectTransform.offsetMin = Vector2.zero
+	rectTransform.offsetMax = Vector2.zero
+	self._simagehero = gohelper.findChildSingleImage(viewGO, "#simage_heroskin")
+	self._goselect = gohelper.findChild(viewGO, "#go_select")
+	self._goowned = gohelper.findChild(viewGO, "#go_owned")
 
-	self:_initItem()
-	self:_addEvents()
-end
-
-function DecorateStoreBundleCompType1Item:_initItem()
 	gohelper.setActive(self._goselect, false)
 	gohelper.setActive(self._goowned, false)
 end
 
-function DecorateStoreBundleCompType1Item:_addEvents()
-	self._btnClick:AddClickListener(self._onItemClick, self)
-end
-
-function DecorateStoreBundleCompType1Item:_removeEvents()
-	self._btnClick:RemoveClickListener()
-end
-
-function DecorateStoreBundleCompType1Item:selectGood()
-	self:_onItemClick()
-end
-
-function DecorateStoreBundleCompType1Item:_onItemClick()
-	DecorateStoreModel.instance:setCurGood(self._goodId)
-	StoreController.instance:dispatchEvent(StoreEvent.DecorateGoodItemClick, self._goodId)
-end
-
-function DecorateStoreBundleCompType1Item:refresh(goodId, storeId)
-	self._goodId = goodId
-	self._storeId = storeId
+function DecorateStoreBundleCompType1Item:onItemShow(data)
+	self._goodId = data.id
 	self._decorateConfig = DecorateStoreConfig.instance:getDecorateConfig(self._goodId)
 	self._goodCo = StoreConfig.instance:getGoodsConfig(self._goodId)
 
@@ -52,10 +29,6 @@ function DecorateStoreBundleCompType1Item:refresh(goodId, storeId)
 
 		return
 	end
-
-	local curGoodId = DecorateStoreModel.instance:getCurGood(self._storeId)
-
-	gohelper.setActive(self._goselect, curGoodId == self._goodId)
 
 	local isOwn = DecorateStoreModel.instance:isDecorateGoodItemHas(self._goodId)
 
@@ -67,8 +40,8 @@ function DecorateStoreBundleCompType1Item:refresh(goodId, storeId)
 	self._simagehero:LoadImage(itemIcon)
 end
 
-function DecorateStoreBundleCompType1Item:destroy()
-	self:_removeEvents()
+function DecorateStoreBundleCompType1Item:onSelectChange(isSelect)
+	gohelper.setActive(self._goselect, isSelect)
 end
 
 return DecorateStoreBundleCompType1Item

@@ -14,6 +14,8 @@ function FightClueEffectMgr:onConstructor()
 	self:com_registFightEvent(FightEvent.OnClueAdd, self._onClueAdd)
 	self:com_registFightEvent(FightEvent.OnClueDel, self._onClueDel)
 	self:com_registFightEvent(FightEvent.OnFightReconnectLastWork, self._onFightReconnectLastWork)
+	self:com_registFightEvent(FightEvent.QTE_BeforeEnterQte, self.onBeforeEnterQte)
+	self:com_registFightEvent(FightEvent.QTE_AfterExitQte, self.onAfterExitQte)
 
 	self.focusViewOpen = false
 
@@ -25,6 +27,18 @@ end
 
 function FightClueEffectMgr:_getEffectKey(teamType, position)
 	return teamType .. "_" .. position
+end
+
+function FightClueEffectMgr:onBeforeEnterQte()
+	for _, effectWrap in pairs(self.effectDic) do
+		effectWrap:setActive(false, FightWorkEnterQTE.ActiveKey)
+	end
+end
+
+function FightClueEffectMgr:onAfterExitQte()
+	for _, effectWrap in pairs(self.effectDic) do
+		effectWrap:setActive(true, FightWorkEnterQTE.ActiveKey)
+	end
 end
 
 function FightClueEffectMgr:_getPositionStandPos(teamType, position)
@@ -58,6 +72,12 @@ function FightClueEffectMgr:_addEffect(effectName, posX, posY, posZ)
 
 	if self.focusViewOpen then
 		effectWrap:setActive(false, "FightClueEffectMgrFightFocusView")
+	end
+
+	if effectName == FightClueEffectMgr.ConsumeEffect then
+		AudioMgr.instance:trigger(411000046)
+	elseif effectName == FightClueEffectMgr.ExistEffect then
+		AudioMgr.instance:trigger(411000045)
 	end
 
 	return effectWrap

@@ -217,7 +217,7 @@ function DecorateMaterialTipViewBanner:_refreshInfoItem(tbIndex, page)
 
 	if tb then
 		gohelper.setActive(tb._go, data and true or false)
-		self:_refreshLogo(tb)
+		self:_refreshLogo(tb, data.itemId, data.itemType)
 	end
 end
 
@@ -292,7 +292,7 @@ function DecorateMaterialTipViewBanner:_updateInfoItemUI(itemUserDataTb, itemId,
 	end
 end
 
-function DecorateMaterialTipViewBanner:_refreshLogo(tb)
+function DecorateMaterialTipViewBanner:_refreshLogo(tb, itemId, itemType)
 	if not tb then
 		return
 	end
@@ -304,7 +304,8 @@ function DecorateMaterialTipViewBanner:_refreshLogo(tb)
 		local title = info.Title
 
 		if not string.nilorempty(title) then
-			local decorateCo, classify = DecorateModel.instance:getItemDecorateCo(self._config)
+			local config = ItemModel.instance:getItemConfig(itemType, itemId)
+			local decorateCo, classify = DecorateModel.instance:getItemDecorateCo(config)
 
 			if classify and classify == MainSwitchClassifyEnum.Classify.Click then
 				title = "main_switch_classify_title_3"

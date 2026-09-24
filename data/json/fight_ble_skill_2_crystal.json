@@ -178,5 +178,77 @@
   {
     "skillId": 313431692,
     "crystal": 3
+  },
+  {
+    "skillId": 313441614,
+    "crystal": 1
+  },
+  {
+    "skillId": 313441624,
+    "crystal": 1
+  },
+  {
+    "skillId": 313441634,
+    "crystal": 1
+  },
+  {
+    "skillId": 313441644,
+    "crystal": 2
+  },
+  {
+    "skillId": 313441654,
+    "crystal": 2
+  },
+  {
+    "skillId": 313441664,
+    "crystal": 2
+  },
+  {
+    "skillId": 313441674,
+    "crystal": 3
+  },
+  {
+    "skillId": 313441684,
+    "crystal": 3
+  },
+  {
+    "skillId": 313441694,
+    "crystal": 3
+  },
+  {
+    "skillId": 313441612,
+    "crystal": 1
+  },
+  {
+    "skillId": 313441622,
+    "crystal": 1
+  },
+  {
+    "skillId": 313441632,
+    "crystal": 1
+  },
+  {
+    "skillId": 313441642,
+    "crystal": 2
+  },
+  {
+    "skillId": 313441652,
+    "crystal": 2
+  },
+  {
+    "skillId": 313441662,
+    "crystal": 2
+  },
+  {
+    "skillId": 313441672,
+    "crystal": 3
+  },
+  {
+    "skillId": 313441682,
+    "crystal": 3
+  },
+  {
+    "skillId": 313441692,
+    "crystal": 3
   }
 ]

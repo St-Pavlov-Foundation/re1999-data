@@ -4,7 +4,7 @@ module("modules.logic.matchgame.fight.view.skill.skilltarget.MatchGameSkillTarge
 
 local MatchGameSkillTargetHandler = class("MatchGameSkillTargetHandler")
 
-function MatchGameSkillTargetHandler:handleSkillTarget(targetCoData, skillData, viewContent)
+function MatchGameSkillTargetHandler:handleSkillTarget(targetCoData, skillData, viewContent, skillIndex)
 	self.fightView = viewContent.fightView
 	self.sceneView = viewContent.sceneView
 	self.skillView = viewContent.skillView
@@ -15,7 +15,7 @@ function MatchGameSkillTargetHandler:handleSkillTarget(targetCoData, skillData, 
 	local func = self[string.format("processTarget_%s_%s", targetType, targetId)]
 
 	if func then
-		return func(self, targetId, targetCoData, skillData)
+		return func(self, targetId, targetCoData, skillData, skillIndex)
 	end
 end
 
@@ -62,9 +62,34 @@ function MatchGameSkillTargetHandler:processTarget_GemType_102(targetId, targetC
 	return targetId, selectElementMap
 end
 
-function MatchGameSkillTargetHandler:processTarget_RandomColor_103(targetId, targetCoData)
+function MatchGameSkillTargetHandler:processTarget_RandomColor_103(targetId, targetCoData, skillData, skillIndex)
 	local randomNum = tonumber(targetCoData[2])
-	local beadTypePool = MatchGameFightModel.instance:getBeadTypePool()
+	local curElementItemMap = self.sceneView:getElementItemMap()
+	local beadTypePool = {}
+	local elementCareerMap = {}
+
+	for posXIndex, DataMap in ipairs(curElementItemMap) do
+		for posYIndex, elementItem in ipairs(DataMap) do
+			if elementItem and elementItem.comp.itemType == MatchGameFightEnum.ElementItemType.Bead and not elementCareerMap[elementItem.comp.itemParam] then
+				table.insert(beadTypePool, elementItem.comp.itemParam)
+
+				elementCareerMap[elementItem.comp.itemParam] = true
+			end
+		end
+	end
+
+	local skillEffectData = skillData.skillEffectList[skillIndex]
+
+	if skillEffectData then
+		for _, effectCoData in ipairs(skillEffectData.effectCoDataList) do
+			if effectCoData[1] == MatchGameFightEnum.SkillEffectType.Convert then
+				local ignoreCareer = effectCoData[2]
+
+				tabletool.removeValue(beadTypePool, ignoreCareer)
+			end
+		end
+	end
+
 	local selectCareerList = {}
 
 	if not beadTypePool or #beadTypePool == 0 or not randomNum or randomNum <= 0 then
@@ -131,7 +156,7 @@ function MatchGameSkillTargetHandler:processTarget_RandomCount_106(targetId, tar
 	local curElementItemMap = self.sceneView:getElementItemMap()
 
 	for posXIndex, DataMap in ipairs(curElementItemMap) do
-		for posYIndex, elementItem in ipairs(DataMap) do
+		for posYIndex, elementItem in pairs(DataMap) do
 			if elementItem and elementItem.comp.itemType == MatchGameFightEnum.ElementItemType.Bead then
 				table.insert(allBeadElementList, elementItem)
 			end

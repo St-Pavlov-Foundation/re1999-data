@@ -23,7 +23,7 @@ function GuideActionSetNextStepGOPath:onStart(context)
 	local isStaticFunc
 
 	if not func and not string.nilorempty(self._funcName) then
-		local arr = string.split(self._funcName, "_")
+		local arr = string.split(self._funcName, "-")
 		local cls = _G[arr[1]]
 
 		func = cls and cls[arr[2]]
@@ -568,6 +568,16 @@ function GuideActionSetNextStepGOPath:getAtomicDungeonEmergencyElementPath()
 	end
 
 	return string.format("UIRoot/POPUP_TOP/AtomicDungeonMainView/root/#go_elementClickRoot/%s/btn_click", elementCo.id)
+end
+
+function GuideActionSetNextStepGOPath:getMatchGameFeverElementPath()
+	local feverElementPath = MatchGameFightModel.instance:getFeverElementPath()
+
+	if string.nilorempty(feverElementPath) then
+		return string.format("UIRoot/POPUP_TOP/MatchGameFightView/root/planeRoot/#go_plane/#go_planeContent/planeItem%d_%d/btn_click", 1, 1)
+	end
+
+	return feverElementPath
 end
 
 return GuideActionSetNextStepGOPath

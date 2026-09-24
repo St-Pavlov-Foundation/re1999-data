@@ -775,6 +775,15 @@ function MainView:showStoreDeadline(needShow)
 	deadlineItem.needShow = needShow or deadlineItem.needShow
 
 	if deadlineItem.needShow then
+		local itemDeadline = ItemExpireModel.instance:getSpecialExpireItemEarliestExpireTime(StoreEnum.SupplementMonthCardItemId)
+
+		if itemDeadline and itemDeadline > 0 then
+			gohelper.setActive(deadlineItem.godeadline, false)
+			gohelper.setActive(deadlineItem.txttime.gameObject, false)
+
+			return
+		end
+
 		local deadlineHasDay = false
 		local storeEntranceCfg = StoreConfig.instance:getTabConfig(StoreEnum.StoreId.LimitStore)
 		local deadlineTimeSec = 0

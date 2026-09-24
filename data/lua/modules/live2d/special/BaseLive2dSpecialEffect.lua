@@ -2,7 +2,7 @@
 
 module("modules.live2d.special.BaseLive2dSpecialEffect", package.seeall)
 
-local BaseLive2dSpecialEffect = class("BaseLive2dSpecialEffect", LuaCompBase)
+local BaseLive2dSpecialEffect = class("BaseLive2dSpecialEffect", BaseCommonSpecialEffect)
 
 function BaseLive2dSpecialEffect:ctor(live2d)
 	self:setLive2d(live2d)

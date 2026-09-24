@@ -19,6 +19,11 @@ function CollegeMilestoneThemeStoryItem:onInit()
 	self._costComp:setIconAndTxt(self._imageItemIcon, self._txtItemNum)
 
 	self._animatorPlayer = ZProj.ProjAnimatorPlayer.Get(self.viewGO)
+	self._animator = gohelper.findComponentAnim(self.viewGO)
+
+	local comp = gohelper.onceAddComponent(self.viewGO, typeof(ZProj.MaterialPropsCtrl))
+
+	comp.enabled = true
 end
 
 function CollegeMilestoneThemeStoryItem:onAddListeners()
@@ -55,6 +60,7 @@ function CollegeMilestoneThemeStoryItem:onItemShow(storyCo)
 
 	self:initRedDot()
 	self:refreshUI()
+	self._animator:Play("idle", 0, 0)
 end
 
 function CollegeMilestoneThemeStoryItem:initRedDot()

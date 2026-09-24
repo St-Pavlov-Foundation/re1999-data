@@ -67,14 +67,15 @@ function PickAssistItem:_editableInitView()
 	self._badgeTblList = {}
 
 	for i = 1, 3 do
-		local badgeTbl = self:getUserDataTb_()
 		local goBadge = gohelper.findChild(self.viewGO, "badge/layout/badge" .. tostring(i))
 
 		if goBadge then
-			badgeTbl.simageIcon = gohelper.findChildSingleImage(goBadge, "simage_badge")
-		end
+			local badgeTbl = self:getUserDataTb_()
 
-		self._badgeTblList[i] = badgeTbl
+			badgeTbl.goEmpty = gohelper.findChild(goBadge, "empty")
+			badgeTbl.simageIcon = gohelper.findChildSingleImage(goBadge, "simage_badge")
+			self._badgeTblList[i] = badgeTbl
+		end
 	end
 end
 
@@ -128,20 +129,18 @@ function PickAssistItem:onUpdateMO(mo)
 
 	self:setSelected(isSelect)
 
-	local recordMo = AssistRecordModel.instance:getRecordInfo()
-
 	for k, v in ipairs(self._badgeTblList) do
-		local wearMo = recordMo and recordMo:getWearMo(k)
-		local badgeId = wearMo and wearMo.badgeId or 0
+		local badgeId = mo.roleBadgeIds[k] or 0
 
 		if badgeId ~= 0 then
-			local badgeMo = recordMo:getBadgeMo(badgeId)
+			local config = RoleBadgeConfig.instance:getBadgeCo(badgeId)
 
-			if badgeMo and badgeMo.config then
-				v.simageIcon:LoadImage(ResUrl.getRoleBadgeSingleBg(badgeMo.config.icon))
+			if config then
+				v.simageIcon:LoadImage(ResUrl.getRoleBadgeSingleBg(config.icon))
 			end
 		end
 
+		gohelper.setActive(v.goEmpty, badgeId == 0)
 		gohelper.setActive(v.simageIcon, badgeId ~= 0)
 	end
 end

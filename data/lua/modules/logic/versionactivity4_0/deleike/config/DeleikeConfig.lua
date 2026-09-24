@@ -39,25 +39,25 @@ function DeleikeConfig:getGameConfig(gameId)
 end
 
 function DeleikeConfig:getEpisodeConfig(episodeId)
-	local actId = DeleikeController.instance.actId
+	local actId = DeleikeController.instance:getActId()
 
 	return Activity220Config.instance:getEpisodeConfig(actId, episodeId)
 end
 
 function DeleikeConfig:getEpisodeConfigList()
-	local actId = DeleikeController.instance.actId
+	local actId = DeleikeController.instance:getActId()
 
 	return Activity220Config.instance:getEpisodeConfigList(actId)
 end
 
 function DeleikeConfig:getEpisodeIndex(episodeId)
-	local actId = DeleikeController.instance.actId
+	local actId = DeleikeController.instance:getActId()
 
 	return Activity220Config.instance:getEpisodeIndex(actId, episodeId)
 end
 
 function DeleikeConfig:getEpisodeIdByGameId(gameId)
-	local actId = DeleikeController.instance.actId
+	local actId = DeleikeController.instance:getActId()
 	local configList = Activity220Config.instance:getEpisodeConfigList(actId)
 
 	for _, v in ipairs(configList) do

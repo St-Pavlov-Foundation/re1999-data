@@ -16,7 +16,7 @@ function AutoChessCard:init(go)
 	self._imageBg = gohelper.findChildImage(go, "critters/image_bg")
 	self._goMesh = gohelper.findChild(go, "critters/Mesh")
 	self._txtName = gohelper.findChildText(go, "critters/#txt_Name")
-	self._goRaceItem = gohelper.findChild(go, "critters/TypeList/#go_RaceItem")
+	self._goRaceItem = gohelper.findChild(go, "layout/TypeList/#go_RaceItem")
 	self._goHp = gohelper.findChild(go, "#go_Hp")
 	self._txtHp = gohelper.findChildText(go, "#go_Hp/#txt_Hp")
 	self._goAttack = gohelper.findChild(go, "#go_Attack")
@@ -32,7 +32,7 @@ function AutoChessCard:init(go)
 	self._goStar3 = gohelper.findChild(go, "#go_Level/#go_Star/#go_Star3")
 	self._goLight3 = gohelper.findChildImage(go, "#go_Level/#go_Star/#go_Star3/#go_Light3")
 	self._goArrow = gohelper.findChild(go, "#go_arrow")
-	self._txtSkillDesc = gohelper.findChildText(go, "scroll_desc/viewport/#txt_SkillDesc")
+	self._txtSkillDesc = gohelper.findChildText(go, "layout/scroll_desc/viewport/#txt_SkillDesc")
 	self._imageTag = gohelper.findChildImage(go, "#image_Tag")
 	self._btnSell = gohelper.findChildButtonWithAudio(go, "#btn_Sell")
 	self._txtSellCoin = gohelper.findChildText(go, "#btn_Sell/#txt_SellCoin")
@@ -133,6 +133,8 @@ function AutoChessCard:_btnCheckOnClick()
 end
 
 function AutoChessCard:_editableInitView()
+	gohelper.setActive(self._goRaceItem, false)
+
 	self.meshComp = MonoHelper.addNoUpdateLuaComOnceToGo(self._goMesh, AutoChessMeshComp)
 
 	SkillHelper.addHyperLinkClick(self._txtSkillDesc, self.clcikHyperLink, self)
@@ -181,7 +183,7 @@ function AutoChessCard:refreshSell()
 
 	self:refreshConfigAttr(chessMo)
 	self:refreshLevelStar(chessMo.star, chessMo.exp, chessMo.maxExpLimit)
-	gohelper.setActive(self._btnSell, self.param.entity.teamType == AutoChessEnum.TeamType.Player)
+	gohelper.setActive(self._btnSell, self.param.showSell)
 end
 
 function AutoChessCard:refreshBuy()
@@ -264,7 +266,11 @@ end
 function AutoChessCard:refreshHandbook()
 	local star = self.param.star
 
-	self.config = AutoChessConfig.instance:getChessCfgAnyway(self.param.itemId)
+	if star then
+		self.config = AutoChessConfig.instance:getChessCfg(self.param.itemId, star)
+	else
+		self.config = AutoChessConfig.instance:getChessCfgAnyway(self.param.itemId)
+	end
 
 	self.meshComp:setData(self.config.image)
 
@@ -308,15 +314,21 @@ function AutoChessCard:refreshConfigAttr(mo)
 
 			local skillDesc = ""
 			local txt = luaLang("autochess_copyskill_multi")
+			local recordMap = {}
 
-			for skillId, count in pairs(skillId2CntMap) do
-				local config = AutoChessConfig.instance:getChessCfgBySkillId(skillId)
+			for _, skillId in ipairs(mo.replaceSkillChessIds) do
+				if not recordMap[skillId] then
+					recordMap[skillId] = true
 
-				if config then
-					if count == 1 then
-						skillDesc = string.format("%s%s<br>", skillDesc, config.skillDesc)
-					else
-						skillDesc = string.format("%s%s%s<br>", skillDesc, config.skillDesc, GameUtil.getSubPlaceholderLuaLangOneParam(txt, count))
+					local count = skillId2CntMap[skillId]
+					local config = AutoChessConfig.instance:getChessCfgBySkillId(skillId)
+
+					if config then
+						if count == 1 then
+							skillDesc = string.format("%s%s<br>", skillDesc, config.skillDesc)
+						else
+							skillDesc = string.format("%s%s%s<br>", skillDesc, config.skillDesc, GameUtil.getSubPlaceholderLuaLangOneParam(txt, count))
+						end
 					end
 				end
 			end

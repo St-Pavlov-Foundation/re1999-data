@@ -561,9 +561,7 @@ function WarmUp:_tweenDescEndCb(maskDurationTime, cb, cbObj)
 end
 
 function WarmUp:_resetTaskContentPos()
-	self._txtTaskContent.maxVisibleCharacters = 0
-	self._charCount = -1
-	self._charIndex = 0
+	recthelper.setAnchorY(self._txtTaskContentTran, 0)
 end
 
 function WarmUp:episode2Index(episodeId)
@@ -583,7 +581,13 @@ function WarmUp:index2EpisodeId(index)
 end
 
 function WarmUp:_setMaskPaddingBottom(bottom)
-	return
+	local bBlock = bottom > 0
+
+	self._taskDescMask.padding = Vector4(0, bottom, 0, 0)
+
+	if not bBlock then
+		self._txtTaskContent.maxVisibleCharacters = 199999999
+	end
 end
 
 function WarmUp:_autoSelectTab()
@@ -622,6 +626,7 @@ end
 function WarmUp:_resetTweenDescPos()
 	GameUtil.onDestroyViewMember_TweenId(self, "_movetweenId")
 	GameUtil.onDestroyViewMember_TweenId(self, "_tweenId")
+	TaskDispatcher.cancelTask(self._openDesc2OnTick, self)
 	self:_resetTaskContentPos()
 end
 
@@ -1016,6 +1021,12 @@ function WarmUp:_openDesc2(cb, cbObj)
 	self._openDesc2DoneCbObj = cbObj
 
 	self:_resetTweenDescPos()
+
+	self._txtTaskContent.maxVisibleCharacters = 0
+	self._charCount = -1
+	self._charIndex = 0
+	self._taskDescMask.padding = Vector4(0, 0, 0, 0)
+
 	self:_refreshTextInfo()
 
 	local co = self.viewContainer:getEpisodeConfigCur()
@@ -1025,7 +1036,6 @@ function WarmUp:_openDesc2(cb, cbObj)
 	gohelper.setActive(self._goWrongChannel, false)
 	gohelper.setActive(self._scroll_TaskDescGo, true)
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_wulu_atticletter_write_loop)
-	TaskDispatcher.cancelTask(self._openDesc2OnTick, self)
 	TaskDispatcher.runRepeat(self._openDesc2OnTick, self, tickInterval)
 end
 

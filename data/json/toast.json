@@ -12072,6 +12072,14 @@
     "notShow": 0
   },
   {
+    "id": 401016,
+    "tips": "请选择协助角色",
+    "icon": 11,
+    "audioId": 11,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
     "id": 402001,
     "tips": "请先激活前置节点",
     "icon": 11,
@@ -12097,7 +12105,7 @@
   },
   {
     "id": 402004,
-    "tips": "夜间狂潮模式未解锁",
+    "tips": "星数达到▩1%s解锁",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,
@@ -12130,6 +12138,22 @@
   {
     "id": 402008,
     "tips": "无法重置",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 402009,
+    "tips": "夜间狂潮模式未解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 402010,
+    "tips": "队伍已调整",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,
@@ -12242,6 +12266,38 @@
   {
     "id": 406003,
     "tips": "当前无法使用【洞知眼】！",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 407001,
+    "tips": "队伍已替换，无法重复替换",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 407011,
+    "tips": "尚未解锁，无法佩戴",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 408001,
+    "tips": "灵性显影液数量不足，无法购买",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 408002,
+    "tips": "需要点亮所有水晶才可解锁",
     "icon": 11,
     "audioId": 1,
     "notMerge": 0,

@@ -2,9 +2,9 @@
   {
     "id": 4001001,
     "name": "“余光”",
-    "desc": "每消耗<#FFEA73>30</color>点细胞活性\n获得<sprite=3><#FFEA73>“余光”</color>×1\n每日最多获得<sprite=3><#FFEA73>“余光”</color>×<#FFEA73>10</color>\n推进回合消耗<sprite=3><#FFEA73>“余光”</color>×<#FFEA73>1</color>",
+    "desc": "-副本关卡每消耗<#FFEA73>30</color><sprite=19>细胞活性\n获得<sprite=3><#FFEA73>“余光”</color>×1\n-最多可积累<sprite=3><#FFEA73>“余光”</color>×<#FFEA73>25</color>\n-推进回合消耗<sprite=3><#FFEA73>“余光”</color>×<#FFEA73>1</color>",
     "icon": "college_currencyicon_4",
-    "max": 20,
+    "max": 25,
     "type": 1
   },
   {

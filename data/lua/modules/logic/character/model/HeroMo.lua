@@ -1140,15 +1140,22 @@ end
 
 function HeroMo:getQTEGroupId()
 	if self.destinyStoneMo then
+		for i = self.exSkillLevel, 1, -1 do
+			local exSkillCo = self.destinyStoneMo:getExpExchangeSkillCo(i)
+
+			if exSkillCo and exSkillCo.qteid > 0 then
+				return exSkillCo.qteid
+			end
+		end
+
 		local stoneCo = self.destinyStoneMo:getCurUseStoneCo()
 
-		if stoneCo then
+		if stoneCo and stoneCo.qteAdd > 0 then
 			return stoneCo.qteAdd
 		end
 	end
 
 	local exSkillCos = SkillConfig.instance:getheroexskillco(self.heroId)
-	local exSkillCo = exSkillCos and exSkillCos[self.exSkillLevel]
 
 	if exSkillCos then
 		for i = self.exSkillLevel, 1, -1 do

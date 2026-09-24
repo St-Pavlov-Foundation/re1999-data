@@ -159,6 +159,7 @@ function AudioBgmInfo:_initBgmDatas()
 	self:_addBgmData(AudioBgmEnum.Layer.V3a9Bird, AudioEnum.Bgm.play_lianji_playcards_music, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	self:_addBgmData(AudioBgmEnum.Layer.VersionActivity4_0Main, 0, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	self:_addBgmData(AudioBgmEnum.Layer.College, CollegeAudioEnum.BGM, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
+	self:_addBgmData(AudioBgmEnum.Layer.V4A0_SpLilya, AudioEnum4_0.SpLilya.play_battle_shiji_1_8_normalfight, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 end
 
 function AudioBgmInfo:_initBgmUsage()
@@ -929,6 +930,11 @@ function AudioBgmInfo:_initBgmUsage()
 		AudioBgmEnum.Layer.College
 	}, AudioBgmEnum.UsageType.View, {
 		ViewName.CollegeMainView
+	}, nil, nil, true)
+	self:_addBgmUsage({
+		AudioBgmEnum.Layer.V4A0_SpLilya
+	}, AudioBgmEnum.UsageType.View, {
+		ViewName.SpLilyaGameView
 	}, nil, nil, true)
 end
 

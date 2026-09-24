@@ -32,13 +32,11 @@ function MusicGameMainViewContainer:buildTabViews(tabContainerId)
 end
 
 function MusicGameMainViewContainer:closeCallback()
-	GameFacade.showMessageBox(MessageBoxIdDefine.CruiseGameCloseTip, MsgBoxEnum.BoxType.Yes_No, self.onClickYes, nil, nil, self, nil)
-
-	return false
+	GameFacade.showMessageBox(MessageBoxIdDefine.MusicGameCloseTip, MsgBoxEnum.BoxType.Yes_No, self.onClickYes, nil, nil, self, nil)
 end
 
 function MusicGameMainViewContainer:onClickYes()
-	MusicGameController.instance:exitGame()
+	MusicGameController.instance:dispatchEvent(MusicGameEvent.CancelGame)
 end
 
 return MusicGameMainViewContainer

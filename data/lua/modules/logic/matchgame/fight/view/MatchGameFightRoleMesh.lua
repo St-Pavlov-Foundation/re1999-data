@@ -6,22 +6,30 @@ local MatchGameFightRoleMesh = class("MatchGameFightRoleMesh", LuaCompBase)
 
 function MatchGameFightRoleMesh:init(go)
 	self.go = go
-	self._uiMesh = gohelper.onceAddComponent(self.go, typeof(UIMesh))
-end
+	self.uiMesh = gohelper.onceAddComponent(self.go, typeof(UIMesh))
 
-function MatchGameFightRoleMesh:setIndependentMaterial()
+	if self.uiMesh then
+		self.worldPosToMatComp = gohelper.onceAddComponent(self.go, typeof(ZProj.RectWorldPosToMat))
+	end
+
 	self.independent = true
 end
 
-function MatchGameFightRoleMesh:refreshMesh(meshUrl, isEnemy, params)
-	if self._meshUrl == meshUrl then
+function MatchGameFightRoleMesh:setIndependentMaterial(state)
+	self.independent = state
+end
+
+function MatchGameFightRoleMesh:refreshMesh(roleConfig, isEnemy, params)
+	if self.meshUrl == roleConfig.mesh then
 		return
 	end
 
-	self._meshUrl = meshUrl
-	self.isEnemy = isEnemy
+	self.meshUrl = roleConfig.mesh
+	self.image = roleConfig.image
+	self.career = isEnemy and roleConfig.career or roleConfig.elementId
 	self.params = params
-	self._materialUrl = AutoChessHelper.getMaterialUrl(isEnemy)
+	self.materialUrl = MatchGameFightEnum.RoleMeshMaterial[self.career]
+	self.imageUrl = roleConfig.image
 
 	self:loadMesh()
 end
@@ -35,42 +43,52 @@ function MatchGameFightRoleMesh:loadMesh()
 
 	self.loader = MultiAbLoader.New()
 
-	self.loader:addPath(self._meshUrl)
-	self.loader:addPath(self._materialUrl)
+	self.loader:addPath(self.meshUrl)
+	self.loader:addPath(self.materialUrl)
+	self.loader:addPath(self.imageUrl)
 	self.loader:startLoad(self.loadResFinish, self)
 end
 
 function MatchGameFightRoleMesh:loadResFinish()
-	local assetItem = self.loader:getAssetItem(self._meshUrl)
+	local assetItem = self.loader:getAssetItem(self.meshUrl)
 
 	if assetItem then
-		local meshAsset = assetItem:GetResource(self._meshUrl)
+		local meshAsset = assetItem:GetResource(self.meshUrl)
 
-		self._uiMesh.mesh = meshAsset
+		self.uiMesh.mesh = meshAsset
 
-		self._uiMesh:SetVerticesDirty()
+		self.uiMesh:SetVerticesDirty()
 	else
-		gohelper.setActive(self._uiMesh, false)
+		gohelper.setActive(self.uiMesh, false)
 
 		return
 	end
 
-	assetItem = self.loader:getAssetItem(self._materialUrl)
+	assetItem = self.loader:getAssetItem(self.materialUrl)
 
 	if assetItem then
-		local mat = assetItem:GetResource(self._materialUrl)
+		local mat = assetItem:GetResource(self.materialUrl)
 
 		if self.independent then
 			self.matInst = UnityEngine.Object.Instantiate(mat)
-			self._uiMesh.material = self.matInst
+			self.uiMesh.material = self.matInst
 		else
-			self._uiMesh.material = mat
+			self.uiMesh.material = mat
 		end
 
-		self._uiMesh:SetMaterialDirty()
+		self.uiMesh:SetMaterialDirty()
 	end
 
-	gohelper.setActive(self._uiMesh, true)
+	local assetItem = self.loader:getAssetItem(self.imageUrl)
+
+	if assetItem then
+		local roleTexture = assetItem:GetResource(self.imageUrl)
+
+		recthelper.setSize(self.go.transform, roleTexture.width, roleTexture.height)
+	end
+
+	gohelper.setActive(self.uiMesh, false)
+	gohelper.setActive(self.uiMesh, true)
 end
 
 function MatchGameFightRoleMesh:onDestroy()

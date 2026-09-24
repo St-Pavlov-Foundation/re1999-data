@@ -253,10 +253,13 @@ function FightHero4_0HNJComp:loadDieAnim()
 		return
 	end
 
-	self.dieAnimRes = FightHelper.getEntityAniPath(self.spineCo.dieAnim)
+	local dieAnim = self.spineCo.dieAnim
+
+	self.dieAnimAbPath = FightHelper.getEntityAniPath(dieAnim)
+	self.dieAnimRes = ResUrl.getEntityAnim(dieAnim)
 	self.dieLoader = MultiAbLoader.New()
 
-	self.dieLoader:addPath(self.dieAnimRes)
+	self.dieLoader:addPath(self.dieAnimAbPath)
 	self.dieLoader:startLoad(self.onLoadDieAnimDone, self)
 end
 
@@ -366,10 +369,13 @@ function FightHero4_0HNJComp:loadBornAnim()
 		return
 	end
 
-	self.bornAnimRes = FightHelper.getEntityAniPath(self.spineCo.bornAnim)
+	local bornAnim = self.spineCo.bornAnim
+
+	self.bornAnimAbRes = FightHelper.getEntityAniPath(bornAnim)
+	self.bornAnimRes = ResUrl.getEntityAnim(bornAnim)
 	self.bornLoader = MultiAbLoader.New()
 
-	self.bornLoader:addPath(self.bornAnimRes)
+	self.bornLoader:addPath(self.bornAnimAbRes)
 	self.bornLoader:startLoad(self.onLoadBornAnimDone, self)
 end
 
@@ -428,6 +434,10 @@ end
 
 function FightHero4_0HNJComp:playSpineAnim(animClip, duration)
 	if not self.specialEntity then
+		return
+	end
+
+	if gohelper.isNil(animClip) then
 		return
 	end
 
@@ -501,7 +511,9 @@ function FightHero4_0HNJComp:disposeAnimLoader()
 	self.dieEffectWrap = nil
 	self.bornAnim = nil
 	self.dieAnim = nil
+	self.bornAnimAbRes = nil
 	self.bornAnimRes = nil
+	self.dieAnimAbPath = nil
 	self.dieAnimRes = nil
 end
 

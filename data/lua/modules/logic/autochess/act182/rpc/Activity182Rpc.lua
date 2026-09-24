@@ -46,7 +46,7 @@ function Activity182Rpc:onReceiveGetAct182RandomMasterReply(resultCode, msg)
 
 	gameMo:updateMasterIdBox(msg)
 	gameMo:updateMutationId(msg.mutationId)
-	ViewMgr.instance:openView(ViewName.AutoChessLeaderSelectView)
+	Activity182Controller.instance:dispatchEvent(Activity182Event.RandomMasterReply)
 end
 
 function Activity182Rpc:sendAct182RefreshMasterRequest(activityId, callback, callbackObj)

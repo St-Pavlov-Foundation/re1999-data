@@ -1117,6 +1117,12 @@ function MainHeroView:_playAnim(name, layer, time)
 	else
 		self._animator:Play(name)
 	end
+
+	local currencyView = self.viewContainer:getCurrencyView()
+
+	if currencyView then
+		currencyView:setVisible(name == "mainview_in")
+	end
 end
 
 function MainHeroView:_initVoiceEffects(config)

@@ -19,6 +19,9 @@ function MainUISwitchInfoView:onInitView()
 	self._txtSceneDescr = gohelper.findChildText(self.viewGO, "left/#txt_SceneDescr")
 	self._btnshow = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_show")
 	self._goSceneLogo4 = gohelper.findChild(self.viewGO, "left/#go_SceneLogo4")
+	self._goSceneLogo = gohelper.findChild(self.viewGO, "left/#go_SceneLogo")
+	self._txtSceneLogo = gohelper.findChildText(self.viewGO, "left/#go_SceneLogo/titlebg/#txt_SceneLogo")
+	self._weatherRoot = gohelper.findChild(self.viewGO, "left/#go_weatherRoot")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -57,10 +60,10 @@ function MainUISwitchInfoView:_btnHideOnClick()
 
 	if self._showUI then
 		self:_playSwitchAnim()
-		TaskDispatcher.runDelay(self._onPreviewSwitchUIVisible, self, 0.5)
-	else
-		self:_onPreviewSwitchUIVisible()
+		self._blurmaskAnimator:Play("open", 0, 0)
 	end
+
+	self:_onPreviewSwitchUIVisible()
 end
 
 function MainUISwitchInfoView:_onPreviewSwitchUIVisible()
@@ -159,9 +162,8 @@ function MainUISwitchInfoView:onOpen()
 
 	if not self._goblurmask then
 		self._goblurmask = self:getResInst(self.viewContainer:getSetting().otherRes[2], self._gomiddle)
+		self._blurmaskAnimator = self._goblurmask:GetComponent(typeof(UnityEngine.Animator))
 	end
-
-	local sceneId = self.viewParam and self.viewParam.sceneId or MainSceneSwitchModel.instance:getCurSceneId()
 
 	gohelper.setActive(self._goleft, self._showUI and self._isCanShowLeft)
 	gohelper.setActive(self._goMask, self._showUI)
@@ -177,40 +179,75 @@ function MainUISwitchInfoView:onOpenFinish()
 end
 
 function MainUISwitchInfoView:_updateSceneInfo()
-	local config = lua_scene_ui.configDict[self._selectSkinId]
+	local sceneId = self.viewParam and self.viewParam.sceneId or MainSceneSwitchModel.instance:getCurSceneId()
 
-	if not config then
-		return
-	end
+	MainSceneSwitchController.instance:dispatchEvent(MainSceneSwitchEvent.ShowPreviewSceneInfo, sceneId)
 
-	MainSceneSwitchController.instance:dispatchEvent(MainSceneSwitchEvent.ShowPreviewSceneInfo, MainSceneSwitchModel.instance:getCurSceneId())
+	local goodsId = self.viewParam and self.viewParam.goodsId
+	local name, desc, timeStr = "", "", ""
 
-	local itemId = config.itemId
-	local itemConfig = lua_item.configDict[itemId]
+	if goodsId then
+		local decorateConfig = DecorateStoreConfig.instance:getDecorateConfig(goodsId)
+		local goodsCo = StoreConfig.instance:getGoodsConfig(goodsId)
 
-	if not itemConfig then
-		return
-	end
+		if decorateConfig then
+			local title = decorateConfig.typeName
 
-	self._txtSceneName.text = itemConfig.name
-	self._txtSceneDescr.text = itemConfig.desc
-
-	if config.defaultUnlock == 1 then
-		local info = PlayerModel.instance:getPlayinfo()
-		local time = TimeUtil.timestampToString5(ServerTime.timeInLocal(info.registerTime / 1000))
-
-		self._txtTime.text = string.format(luaLang("receive_time"), time)
-	else
-		local itemMo = ItemModel.instance:getById(itemId)
-
-		if itemMo and itemMo.quantity > 0 and itemMo.lastUpdateTime then
-			local time = TimeUtil.timestampToString5(ServerTime.timeInLocal(itemMo.lastUpdateTime / 1000))
-
-			self._txtTime.text = string.format(luaLang("receive_time"), time)
-		else
-			self._txtTime.text = ""
+			self._txtSceneLogo.text = title
+			desc = decorateConfig.desc
 		end
+
+		if goodsCo then
+			name = goodsCo.name
+		end
+
+		local hasSceneGoods = DecorateModel.instance:hasSceneGoods(goodsId)
+
+		if hasSceneGoods then
+			self._weatherSwitchControlComp = self._weatherSwitchControlComp or MonoHelper.addNoUpdateLuaComOnceToGo(self._weatherRoot, WeatherSwitchControlComp)
+
+			self._weatherSwitchControlComp:updateScene(sceneId, MainSceneSwitchCameraDisplayController.instance)
+		end
+
+		gohelper.setActive(self._goSceneLogo4, false)
+		gohelper.setActive(self._goSceneLogo, true)
+		gohelper.setActive(self._weatherRoot, hasSceneGoods)
+	else
+		local config = lua_scene_ui.configDict[self._selectSkinId]
+
+		if config then
+			local itemId = config.itemId
+			local itemConfig = lua_item.configDict[itemId]
+
+			if itemConfig then
+				name = itemConfig.name
+				desc = itemConfig.desc
+
+				if config.defaultUnlock == 1 then
+					local info = PlayerModel.instance:getPlayinfo()
+					local time = TimeUtil.timestampToString5(ServerTime.timeInLocal(info.registerTime / 1000))
+
+					timeStr = string.format(luaLang("receive_time"), time)
+				else
+					local itemMo = ItemModel.instance:getById(itemId)
+
+					if itemMo and itemMo.quantity > 0 and itemMo.lastUpdateTime then
+						local time = TimeUtil.timestampToString5(ServerTime.timeInLocal(itemMo.lastUpdateTime / 1000))
+
+						timeStr = string.format(luaLang("receive_time"), time)
+					end
+				end
+			end
+		end
+
+		gohelper.setActive(self._goSceneLogo4, true)
+		gohelper.setActive(self._goSceneLogo, false)
+		gohelper.setActive(self._weatherRoot, false)
 	end
+
+	self._txtSceneName.text = name
+	self._txtSceneDescr.text = desc
+	self._txtTime.text = timeStr
 end
 
 function MainUISwitchInfoView:onClose()

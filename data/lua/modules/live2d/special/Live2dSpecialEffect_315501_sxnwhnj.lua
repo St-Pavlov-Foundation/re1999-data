@@ -35,6 +35,24 @@ local showGhostTime = 60
 local hideGhostTime = 30
 local initShowGhostRate = 0.7
 
+function Live2dSpecialEffect_315501_sxnwhnj:_onOpenView(name)
+	if name == ViewName.SummonView then
+		gohelper.setActive(self._ghostJHEffectGo, false)
+		gohelper.setActive(self._inEffectGo, false)
+		gohelper.setActive(self._outEffectGo, false)
+		gohelper.setActive(self._nj1EffectGo, false)
+		gohelper.setActive(self._nj2EffectGo, false)
+	end
+end
+
+function Live2dSpecialEffect_315501_sxnwhnj:addEventListeners()
+	self:addEventCb(ViewMgr.instance, ViewEvent.OnOpenView, self._onOpenView, self)
+end
+
+function Live2dSpecialEffect_315501_sxnwhnj:removeEventListeners()
+	self:removeEventCb(ViewMgr.instance, ViewEvent.OnOpenView, self._onOpenView, self)
+end
+
 local function restartEffect(go)
 	if go then
 		gohelper.setActive(go, false)
@@ -70,10 +88,20 @@ function Live2dSpecialEffect_315501_sxnwhnj:showInScene(value)
 	if not value and self._showGhost then
 		self._showGhost = false
 
-		self._animator:Play(anim_yc)
+		if self._animator then
+			self._animator:Play(anim_yc)
+		end
 	end
 
 	self._changeGhostTime = Time.time
+
+	if not value then
+		gohelper.setActive(self._ghostJHEffectGo, false)
+		gohelper.setActive(self._inEffectGo, false)
+		gohelper.setActive(self._outEffectGo, false)
+		gohelper.setActive(self._nj1EffectGo, false)
+		gohelper.setActive(self._nj2EffectGo, false)
+	end
 end
 
 function Live2dSpecialEffect_315501_sxnwhnj:_isShowInScene()
@@ -143,7 +171,13 @@ function Live2dSpecialEffect_315501_sxnwhnj:setLive2d(live2d)
 
 	self._spineGo = self._live2d:getSpineGo()
 	self._animator = gohelper.findChildComponent(self._spineGo, "Drawables/roleeffect_anim", typeof(UnityEngine.Animator))
-	self._animator.keepAnimatorStateOnDisable = true
+
+	if self._animator then
+		self._animator.keepAnimatorStateOnDisable = true
+	else
+		logError("Live2dSpecialEffect_315501_sxnwhnj animator not found")
+	end
+
 	self._showGhost = math.random() <= initShowGhostRate
 	self._isInStoryView = ViewMgr.instance:isOpen(ViewName.StoryView)
 
@@ -193,6 +227,8 @@ function Live2dSpecialEffect_315501_sxnwhnj:_onBodyChange(prevBodyName, curBodyN
 
 	if curBodyName == b_jiaohu01 then
 		if self._showGhost then
+			self._showGhost = false
+
 			self._animator:Play(anim_jh01, 0, 0)
 			restartEffect(self._ghostJHEffectGo)
 			AudioMgr.instance:trigger(audio_jh01)

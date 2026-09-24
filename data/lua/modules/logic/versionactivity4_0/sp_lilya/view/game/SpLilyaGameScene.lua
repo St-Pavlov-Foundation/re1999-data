@@ -79,8 +79,6 @@ function SpLilyaGameScene:_onEnemyMove(moList)
 			item:setPos(mo.posX, mo.posY)
 		end
 	end
-
-	self:_resolveBarOverlaps()
 end
 
 function SpLilyaGameScene:_onEnemyStateChange(moList)
@@ -146,7 +144,7 @@ function SpLilyaGameScene:_onBulletExplode(moList)
 
 	for _, mo in ipairs(moList) do
 		local item = self:_findBulletItem(mo)
-		local boomType = mo.explodeReason == "碰撞命中" and 2 or 1
+		local boomType = mo.explodeReason == SpLilyaEnum.ExplodeReason.CollisionHit and 2 or 1
 		local boomItem = self:_getBoomFromPool(boomType)
 
 		if boomItem then
@@ -270,7 +268,6 @@ function SpLilyaGameScene:_addEnemyItem(mo)
 	self._useEnemyItemDic[mo.uid] = item
 
 	self:_setEnemySpine(item, mo.res)
-	self:_resolveBarOverlaps()
 end
 
 function SpLilyaGameScene:_createEnemy()
@@ -409,6 +406,10 @@ function SpLilyaGameScene:_recycleItemSpine(item)
 end
 
 function SpLilyaGameScene:_resolveBarOverlaps()
+	if not SpLilyaEnum.isHPMove then
+		return
+	end
+
 	if not self._useEnemyItemDic then
 		return
 	end
@@ -598,7 +599,7 @@ function SpLilyaGameScene:_recycleBoom(boomItem)
 	end
 end
 
-function SpLilyaGameScene:_onDamageNum(damage, posX, posY, isPlayer)
+function SpLilyaGameScene:_onDamageNum(damage, posX, posY, isPlayer, enemyUid)
 	if not damage or damage <= 0 then
 		return
 	end
@@ -622,19 +623,12 @@ function SpLilyaGameScene:_onDamageNum(damage, posX, posY, isPlayer)
 	if isPlayer then
 		displayY = posY + SpLilyaEnum.PlayerDamageNumOffsetY
 	else
-		for _, enemyItem in pairs(self._useEnemyItemDic) do
-			if enemyItem then
-				local ex = enemyItem._curPosX or 0
-				local ey = enemyItem._curPosY or 0
+		local enemyItem = self._useEnemyItemDic[enemyUid]
 
-				if math.abs(ex - posX) < 5 and math.abs(ey - posY) < 5 then
-					local headOffsetY = enemyItem:_getBarOffsetY()
+		if enemyItem then
+			local headOffsetY = enemyItem:_getBarOffsetY()
 
-					displayY = posY + headOffsetY
-
-					break
-				end
-			end
+			displayY = posY + headOffsetY
 		end
 	end
 
@@ -799,8 +793,15 @@ function SpLilyaGameScene:_editableInitView()
 	self._gosceneRootHeight = recthelper.getHeight(self._gosceneRoot.transform)
 
 	SpLilyaGameController.instance:setSceneSize(self._gosceneRootWidth, self._gosceneRootHeight)
-	TaskDispatcher.cancelTask(self._barOverlapTick, self)
-	TaskDispatcher.runDelay(self._barOverlapTick, self, 0.2)
+
+	local sceneMo = SpLilyaGameModel.instance:getGameMO() and SpLilyaGameModel.instance:getGameMO().sceneMo
+
+	logWarn(string.format("[SpLilya] setSceneSize: width=%s, height=%s, halfWidth=%s, groundPosX=%s, enemyEndPosX=%s", tostring(self._gosceneRootWidth), tostring(self._gosceneRootHeight), tostring(sceneMo and sceneMo:getHalfWidth()), tostring(sceneMo and sceneMo.groundPosX), tostring(SpLilyaGameModel.instance:getGameMO() and SpLilyaGameModel.instance:getGameMO().enemyEndPosX)))
+
+	if SpLilyaEnum.isHPMove then
+		TaskDispatcher.cancelTask(self._barOverlapTick, self)
+		TaskDispatcher.runDelay(self._barOverlapTick, self, 0.2)
+	end
 
 	if self._loader then
 		self._loader:releaseSelf()

@@ -58,6 +58,7 @@ function FightEntityObject:initComponents()
 	self.uniqueEffect = self:addEntityComponent(FightUniqueEffectComp)
 	self.skinCustomComp = self:addEntityComponent(FightSkinCustomComp)
 	self.spineScaleComp = self:addEntityComponent(FightSpineScaleComp)
+	self.statusComp = self:addEntityComponent(FightEntityStatusComp)
 
 	local mo = self.entityData
 

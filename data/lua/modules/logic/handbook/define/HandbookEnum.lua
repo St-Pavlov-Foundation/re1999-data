@@ -115,8 +115,9 @@ HandbookEnum.Color = {
 	Unlock = "#FFFFFF"
 }
 HandbookEnum.Audio = {
+	play_ui_activity_hero37_checkpoint_gather = 390009,
 	play_ui_tujianskin_special_unlock = 390010,
-	play_ui_activity_hero37_checkpoint_gather = 390009
+	ui_tujianskin_qimeide_open = 400175
 }
 HandbookEnum.CharacterType = {
 	MixedBlood = 4,

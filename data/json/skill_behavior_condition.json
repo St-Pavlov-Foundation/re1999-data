@@ -30072,6 +30072,14 @@
     "type": "ActiveUseSkillId"
   },
   {
+    "id": 595021,
+    "type": "TargetIncludeHero"
+  },
+  {
+    "id": 537305,
+    "type": "HasTypeIdBuffTotalCountMoreThan"
+  },
+  {
     "id": 810,
     "type": "ActiveUseSkillAndFromBuffId"
   },
@@ -30446,6 +30454,10 @@
   {
     "id": 30321,
     "type": "None"
+  },
+  {
+    "id": 30322,
+    "type": "HasBuffId"
   },
   {
     "id": 813000,

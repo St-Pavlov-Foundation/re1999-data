@@ -19151,7 +19151,7 @@
   },
   {
     "id": 40500075,
-    "eventName": "",
+    "eventName": "play_chap14_fengbaoyan2",
     "bankName": "prologuechapter_14_part03"
   },
   {
@@ -19960,6 +19960,441 @@
     "bankName": "prologuechapter_14_part06"
   },
   {
+    "id": 40500237,
+    "eventName": "play_chap14_hammer_hit_one",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500238,
+    "eventName": "play_chap14_dragon_appear_lp",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500239,
+    "eventName": "play_chap14_dragon_breath_one",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500240,
+    "eventName": "play_chap14_jump1",
+    "bankName": "prologuechapter_14_fuyong"
+  },
+  {
+    "id": 40500241,
+    "eventName": "play_chap14_mouse_squeaked",
+    "bankName": "prologuechapter_14_fuyong"
+  },
+  {
+    "id": 40500242,
+    "eventName": "play_chap14_eagle_leap",
+    "bankName": "prologuechapter_14_fuyong"
+  },
+  {
+    "id": 40500243,
+    "eventName": "play_chap14_kuijia1",
+    "bankName": "prologuechapter_14_fuyong"
+  },
+  {
+    "id": 40500244,
+    "eventName": "play_chap14_overwall_fuyong",
+    "bankName": "prologuechapter_14_fuyong"
+  },
+  {
+    "id": 40500245,
+    "eventName": "play_chap14_walk_sit_down",
+    "bankName": "prologuechapter_14_fuyong"
+  },
+  {
+    "id": 40500246,
+    "eventName": "play_chap14_vortex_continue_01",
+    "bankName": "prologuechapter_14_fuyong"
+  },
+  {
+    "id": 40500247,
+    "eventName": "play_chap14_vortex_continue_02",
+    "bankName": "prologuechapter_14_fuyong"
+  },
+  {
+    "id": 40500248,
+    "eventName": "play_chap14_vortex_dissipate",
+    "bankName": "prologuechapter_14_fuyong"
+  },
+  {
+    "id": 40500249,
+    "eventName": "play_chap14_fault_1_lp",
+    "bankName": "prologuechapter_14_fuyong"
+  },
+  {
+    "id": 40500250,
+    "eventName": "play_chap14_fault_2_lp",
+    "bankName": "prologuechapter_14_fuyong"
+  },
+  {
+    "id": 40500251,
+    "eventName": "play_chap14_wind_lp",
+    "bankName": "prologuechapter_14_fuyong"
+  },
+  {
+    "id": 40500252,
+    "eventName": "play_chap14_echo_stones_hum",
+    "bankName": "prologuechapter_14_fuyong"
+  },
+  {
+    "id": 40500253,
+    "eventName": "play_chap14_echo_stone_noise",
+    "bankName": "prologuechapter_14_fuyong"
+  },
+  {
+    "id": 40500254,
+    "eventName": "play_chap14_dao2",
+    "bankName": "prologuechapter_14_fuyong"
+  },
+  {
+    "id": 40500255,
+    "eventName": "play_chap14_knife_sword_01",
+    "bankName": "prologuechapter_14_fuyong"
+  },
+  {
+    "id": 40500256,
+    "eventName": "play_chap14_knife_sword_02",
+    "bankName": "prologuechapter_14_fuyong"
+  },
+  {
+    "id": 40500257,
+    "eventName": "play_chap14_back_off",
+    "bankName": "prologuechapter_14_fuyong"
+  },
+  {
+    "id": 40500258,
+    "eventName": "play_chap14_sword_knife_fighting",
+    "bankName": "prologuechapter_14_fuyong"
+  },
+  {
+    "id": 40500259,
+    "eventName": "play_chap14_throwing_sword",
+    "bankName": "prologuechapter_14_fuyong"
+  },
+  {
+    "id": 40500260,
+    "eventName": "play_chap14_ftsp3_lp",
+    "bankName": "prologuechapter_14_fuyong"
+  },
+  {
+    "id": 40500261,
+    "eventName": "play_chap14_gun_neat",
+    "bankName": "prologuechapter_14_fuyong"
+  },
+  {
+    "id": 40500262,
+    "eventName": "play_chap14_cutting_03",
+    "bankName": "prologuechapter_14_fuyong"
+  },
+  {
+    "id": 40500263,
+    "eventName": "play_chap14_horse6",
+    "bankName": "prologuechapter_14_fuyong"
+  },
+  {
+    "id": 40500264,
+    "eventName": "play_chap14_horse7_lp",
+    "bankName": "prologuechapter_14_fuyong"
+  },
+  {
+    "id": 40500265,
+    "eventName": "play_chap14_use_eraser",
+    "bankName": "prologuechapter_14_fuyong"
+  },
+  {
+    "id": 40500266,
+    "eventName": "play_chuanyu14_duoren_near",
+    "bankName": "prologue_chuanyu_14_fuyong"
+  },
+  {
+    "id": 40500267,
+    "eventName": "play_chuanyu14_careful_open_wooddoor",
+    "bankName": "prologue_chuanyu_14_fuyong"
+  },
+  {
+    "id": 40500268,
+    "eventName": "play_chuanyu14_energy_loop",
+    "bankName": "prologue_chuanyu_14_fuyong"
+  },
+  {
+    "id": 40500269,
+    "eventName": "play_chuanyu14_fleeing_double",
+    "bankName": "prologue_chuanyu_14_fuyong"
+  },
+  {
+    "id": 40500270,
+    "eventName": "play_chuanyu14_stack_documents",
+    "bankName": "prologue_chuanyu_14_fuyong"
+  },
+  {
+    "id": 40500271,
+    "eventName": "play_chuanyu14_jump2",
+    "bankName": "prologue_chuanyu_14_fuyong"
+  },
+  {
+    "id": 40500272,
+    "eventName": "play_chuanyu14_tend_grass",
+    "bankName": "prologue_chuanyu_14_fuyong"
+  },
+  {
+    "id": 40500273,
+    "eventName": "play_chuanyu14_struggle_loop",
+    "bankName": "prologue_chuanyu_14_fuyong"
+  },
+  {
+    "id": 40500274,
+    "eventName": "play_chuanyu14_grass_run",
+    "bankName": "prologue_chuanyu_14_fuyong"
+  },
+  {
+    "id": 40500275,
+    "eventName": "play_chuanyu14_jilt_hook",
+    "bankName": "prologue_chuanyu_14_fuyong"
+  },
+  {
+    "id": 40500276,
+    "eventName": "play_chuanyu14_pick_lock",
+    "bankName": "prologue_chuanyu_14_fuyong"
+  },
+  {
+    "id": 40500277,
+    "eventName": "play_chuanyu14_excited",
+    "bankName": "prologue_chuanyu_14_fuyong"
+  },
+  {
+    "id": 40500278,
+    "eventName": "play_activitystory_lilya_sp_ftstep2_lp",
+    "bankName": "activitystory_yingmen4_0_lilya_sp_fuyong"
+  },
+  {
+    "id": 40500279,
+    "eventName": "play_activitystory_lilya_sp_qishi1_lp",
+    "bankName": "activitystory_yingmen4_0_lilya_sp_fuyong"
+  },
+  {
+    "id": 40500280,
+    "eventName": "play_activitystory_lilya_sp_boots_approach",
+    "bankName": "activitystory_yingmen4_0_lilya_sp_fuyong"
+  },
+  {
+    "id": 40500281,
+    "eventName": "play_activitystory_lilya_sp_cicada_loop",
+    "bankName": "activitystory_yingmen4_0_lilya_sp_fuyong"
+  },
+  {
+    "id": 40500282,
+    "eventName": "play_activitystory_lilya_sp_mess_boots",
+    "bankName": "activitystory_yingmen4_0_lilya_sp_fuyong"
+  },
+  {
+    "id": 40500283,
+    "eventName": "play_activitystory_lilya_sp_multiple_monsters",
+    "bankName": "activitystory_yingmen4_0_lilya_sp_fuyong"
+  },
+  {
+    "id": 40500284,
+    "eventName": "play_activitystory_lilya_sp_boots_far",
+    "bankName": "activitystory_yingmen4_0_lilya_sp_fuyong"
+  },
+  {
+    "id": 40500285,
+    "eventName": "play_activitystory_lilya_sp_pat_shoulder",
+    "bankName": "activitystory_yingmen4_0_lilya_sp_fuyong"
+  },
+  {
+    "id": 40500286,
+    "eventName": "play_activitystory_lilya_sp_whispering",
+    "bankName": "activitystory_yingmen4_0_lilya_sp_fuyong"
+  },
+  {
+    "id": 40500287,
+    "eventName": "play_activitystory_lilya_sp_stone_water",
+    "bankName": "activitystory_yingmen4_0_lilya_sp_fuyong"
+  },
+  {
+    "id": 40500288,
+    "eventName": "play_activitystory_lilya_sp_push_door",
+    "bankName": "activitystory_yingmen4_0_lilya_sp_fuyong"
+  },
+  {
+    "id": 40500289,
+    "eventName": "play_activitystory_lilya_sp_adjusting",
+    "bankName": "activitystory_yingmen4_0_lilya_sp_fuyong"
+  },
+  {
+    "id": 40500290,
+    "eventName": "play_activitystory_lilya_sp_shatte_sky",
+    "bankName": "activitystory_yingmen4_0_lilya_sp_fuyong"
+  },
+  {
+    "id": 40500291,
+    "eventName": "play_activitystory_lilya_sp_lead_music",
+    "bankName": "activitystory_yingmen4_0_lilya_sp_fuyong"
+  },
+  {
+    "id": 40500292,
+    "eventName": "play_activitystory_deleike_chop",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx_fuyong"
+  },
+  {
+    "id": 40500293,
+    "eventName": "play_activitystory_deleike_knife_sword_02",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx_fuyong"
+  },
+  {
+    "id": 40500294,
+    "eventName": "play_activitystory_deleike_sword_knock_down",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx_fuyong"
+  },
+  {
+    "id": 40500295,
+    "eventName": "play_activitystory_deleike_ftsp4",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx_fuyong"
+  },
+  {
+    "id": 40500296,
+    "eventName": "play_activitystory_deleike_blood_shake",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx_fuyong"
+  },
+  {
+    "id": 40500297,
+    "eventName": "play_activitystory_deleike_kuijia1",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx_fuyong"
+  },
+  {
+    "id": 40500298,
+    "eventName": "play_activitystory_deleike_hand_cut",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx_fuyong"
+  },
+  {
+    "id": 40500299,
+    "eventName": "play_activitystory_deleike_paintbrush_fall",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx_fuyong"
+  },
+  {
+    "id": 40500300,
+    "eventName": "play_activitystory_deleike_dao4",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx_fuyong"
+  },
+  {
+    "id": 40500301,
+    "eventName": "play_activitystory_deleike_boat_fell_apart",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx_fuyong"
+  },
+  {
+    "id": 40500302,
+    "eventName": "play_activitystory_deleike_yuanzheng_he_lp",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx_fuyong"
+  },
+  {
+    "id": 40500303,
+    "eventName": "play_activitystory_deleike_grass_run",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx_fuyong"
+  },
+  {
+    "id": 40500304,
+    "eventName": "play_activitystory_deleike_sea_light",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx_fuyong"
+  },
+  {
+    "id": 40500305,
+    "eventName": "play_activitystory_deleike_child_light_loop",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx_fuyong"
+  },
+  {
+    "id": 40500306,
+    "eventName": "play_activitystory_deleike_echo_song",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx_fuyong"
+  },
+  {
+    "id": 40500307,
+    "eventName": "play_activitystory_deleike_wood_cracking_loud",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx_fuyong"
+  },
+  {
+    "id": 40500308,
+    "eventName": "play_activitystory_deleike_staff_drop",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx_fuyong"
+  },
+  {
+    "id": 40500309,
+    "eventName": "play_activitystory_deleike_junjian1",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx_fuyong"
+  },
+  {
+    "id": 40500310,
+    "eventName": "play_activitystory_deleike_eagle_roar_4",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx_fuyong"
+  },
+  {
+    "id": 40500311,
+    "eventName": "play_activitystory_deleike_wing_flap",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx_fuyong"
+  },
+  {
+    "id": 40500312,
+    "eventName": "play_activitystory_deleike_eagle_roar_1",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx_fuyong"
+  },
+  {
+    "id": 40500313,
+    "eventName": "play_activitystory_deleike_eagle_roar_3",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx_fuyong"
+  },
+  {
+    "id": 40500314,
+    "eventName": "play_activitystory_deleike_ftsp2",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx_fuyong"
+  },
+  {
+    "id": 40500315,
+    "eventName": "play_activitystory_deleike_ftsp1",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx_fuyong"
+  },
+  {
+    "id": 40500316,
+    "eventName": "play_activitystory_deleike_ftsp3_lp",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx_fuyong"
+  },
+  {
+    "id": 40500317,
+    "eventName": "play_activitystory_4_0avg_sfx_hug_own",
+    "bankName": "activitystory_yingmen4_0_activity_avg"
+  },
+  {
+    "id": 40500318,
+    "eventName": "play_activitystory_4_0avg_sfx_bag_turn",
+    "bankName": "activitystory_yingmen4_0_activity_avg"
+  },
+  {
+    "id": 40500319,
+    "eventName": "play_activitystory_4_0avg_sfx_hero3048fightingvoc_24",
+    "bankName": "activitystory_yingmen4_0_activity_avg"
+  },
+  {
+    "id": 40500320,
+    "eventName": "play_ui_beiai_avgqte_loop",
+    "bankName": "ui_activity_3_7_beiai_avgqte"
+  },
+  {
+    "id": 40500321,
+    "eventName": "stop_ui_beiai_avgqte_loop",
+    "bankName": "ui_activity_3_7_beiai_avgqte"
+  },
+  {
+    "id": 40500322,
+    "eventName": "play_ui_beiai_avgqte_loopend",
+    "bankName": "ui_activity_3_7_beiai_avgqte"
+  },
+  {
+    "id": 40500323,
+    "eventName": "play_chap14_fengbaoyan1",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
     "id": 530053,
     "eventName": "play_activitymusic_thememusic_full_2_0",
     "bankName": "activity2_0_music"
@@ -20598,6 +21033,11 @@
     "id": 40530012,
     "eventName": "play_activitymusic_lullaby_4_0",
     "bankName": "activity4_0_music"
+  },
+  {
+    "id": 40530013,
+    "eventName": "play_login_interface_music_4_0",
+    "bankName": "ui_login_music_4_0"
   },
   {
     "id": 520105,
@@ -21435,6 +21875,31 @@
     "bankName": "prologuechapter_14_cutscene"
   },
   {
+    "id": 40520002,
+    "eventName": "play_plotpvsfx_split_table_chap14",
+    "bankName": "prologuechapter_14_cutscene"
+  },
+  {
+    "id": 40520003,
+    "eventName": "play_plotpvsfx_hongnujian_transform_chap14",
+    "bankName": "prologuechapter_14_cutscene"
+  },
+  {
+    "id": 40520004,
+    "eventName": "play_plotpvsfx_munv_chongju_chap14",
+    "bankName": "prologuechapter_14_cutscene"
+  },
+  {
+    "id": 40520005,
+    "eventName": "play_ui_checkpoint_4_0yingmen_open",
+    "bankName": "ui_checkpoint_chap14_4_0yingmen"
+  },
+  {
+    "id": 40520006,
+    "eventName": "play_yingmen4_0_pv_sfx_vo_music",
+    "bankName": "yingmen4_0_cutscene_sfx_vo"
+  },
+  {
     "id": 20530011,
     "eventName": "play_battle_leimi_1_1_normalfight",
     "bankName": "activtiy_leimi_combataudio"
@@ -21503,5 +21968,10 @@
     "id": 20530040,
     "eventName": "play_battle_yingmen_4_0_normalfight",
     "bankName": "activity_yingmen_4_0_combataudio"
+  },
+  {
+    "id": 20530033,
+    "eventName": "play_battle_yuanzheng_3_3_normalfight",
+    "bankName": "activity_yuanzheng_combataudio"
   }
 ]

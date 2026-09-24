@@ -135,6 +135,28 @@ function CurrencyView._onClick(param)
 	end
 end
 
+function CurrencyView:setVisible(isVisible)
+	self._isVisible = isVisible
+
+	if not self.viewGO then
+		return
+	end
+
+	if not self._canvasGroup then
+		self._canvasGroup = gohelper.onceAddComponent(self.viewGO, typeof(UnityEngine.CanvasGroup))
+	end
+
+	if isVisible then
+		self._canvasGroup.alpha = 1
+		self._canvasGroup.interactable = true
+		self._canvasGroup.blocksRaycasts = true
+	else
+		self._canvasGroup.alpha = 0
+		self._canvasGroup.interactable = false
+		self._canvasGroup.blocksRaycasts = false
+	end
+end
+
 local currencyType = CurrencyEnum.CurrencyType
 
 function CurrencyView:_editableInitView()

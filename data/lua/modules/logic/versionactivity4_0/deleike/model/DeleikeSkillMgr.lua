@@ -7,6 +7,7 @@ local Input = UnityEngine.Input
 local Time = UnityEngine.Time
 local SKILL2_THICK = 10
 local SIDE_EXTENT = DeleikeEnum.SkillWidth
+local SKILL1_RELEASE_SHRINK_TIME = 0.3
 
 function DeleikeSkillMgr:init(goLine1, goLine2)
 	self.skill1 = MonoHelper.addNoUpdateLuaComOnceToGo(goLine1, DeleikeSkill1Comp)
@@ -15,21 +16,26 @@ function DeleikeSkillMgr:init(goLine1, goLine2)
 	self.skill2:resetForReuse()
 
 	self.curSkill = nil
-	self._isVisible = false
 	self._sideLeft = nil
 	self._sideRight = nil
 
 	gohelper.setActive(self.skill1.go, false)
 	gohelper.setActive(self.skill2.go, false)
+	self.skill1:cancelReleaseVisual()
 
 	self.isCharging = false
 	self.activeSkillId = 1
 	self._chargeCenterX, self._chargeCenterY = 0, 0
 	self._chargeDirX, self._chargeDirY = 1, 0
-	self._chargeLength = 0
+	self._chargeHeight = 0
 	self._chargeWidth = 0
 	self._chargeStartTime = 0
 	self._dragPressed = false
+	self._relShrinkActive = false
+	self._relShrinkCenterX, self._relShrinkCenterY = 0, 0
+	self._relShrinkDirX, self._relShrinkDirY = 1, 0
+	self._relShrinkHeight = 0
+	self._relShrinkStartTime = 0
 
 	UpdateBeat:Add(self.onUpdate, self)
 end
@@ -41,6 +47,8 @@ function DeleikeSkillMgr:dispose()
 	if self.player then
 		self.player:setCharging(false)
 	end
+
+	TaskDispatcher.cancelTask(self._showSkillLine, self)
 end
 
 function DeleikeSkillMgr:onUpdate()
@@ -50,8 +58,8 @@ function DeleikeSkillMgr:onUpdate()
 	end
 
 	self:updateChargeVisual()
-	self:_updateDragAutoCancel()
 	self:_updateScreenDrag()
+	self:_updateSkill1ReleaseAnim()
 end
 
 function DeleikeSkillMgr:_updateScreenDrag()
@@ -75,20 +83,6 @@ function DeleikeSkillMgr:_updateScreenDrag()
 		self._dragPressed = true
 	elseif self._dragPressed then
 		skill2:processDrag(0, 0, false)
-
-		self._dragPressed = false
-	end
-end
-
-function DeleikeSkillMgr:_updateDragAutoCancel()
-	if not self.skill2 or not self.skill2.dragActive or not self.player then
-		return
-	end
-
-	local px, py = self.player:getLogicPos()
-
-	if self.skill2:isPlayerInDragZone(px, py) then
-		self.skill2:cancelDrag()
 
 		self._dragPressed = false
 	end
@@ -141,6 +135,7 @@ function DeleikeSkillMgr:onSkillBtnDragEnd(cancelled)
 
 	if cancelled then
 		self:cancelCharge()
+		AudioMgr.instance:trigger(AudioEnum4_0.Deleike.skill_cancel)
 	else
 		self:releaseSkill()
 	end
@@ -157,16 +152,17 @@ function DeleikeSkillMgr:cancelCharge()
 	self:_hideSkillLine()
 end
 
-function DeleikeSkillMgr:cancelDrag()
+function DeleikeSkillMgr:cancelDrag(isCancle)
 	self._dragPressed = false
 
 	if self.skill2 and self.skill2.dragActive then
-		self.skill2:cancelDrag()
+		self.skill2:cancelDrag(isCancle)
 	end
 end
 
 function DeleikeSkillMgr:resetState()
-	self:cancelDrag()
+	self:_cancelSkill1ReleaseAnim()
+	self:cancelDrag(true)
 
 	if self.isCharging then
 		self:cancelCharge()
@@ -201,14 +197,33 @@ function DeleikeSkillMgr:_refreshChargeDir(dirX, dirY)
 end
 
 function DeleikeSkillMgr:startCharge()
+	self:_cancelSkill1ReleaseAnim()
+
 	self.isCharging = true
 	self._chargeStartTime = Time.time
-	self._chargeLength = 0
+	self._chargeHeight = 0
 	self._chargeWidth = 0
 
-	self:_switchSkill(self.activeSkillId)
+	local target, audioId
+
+	if self.activeSkillId == 1 then
+		target = self.skill1
+		audioId = AudioEnum4_0.Deleike.skill1_start_charge
+	else
+		target = self.skill2
+		audioId = AudioEnum4_0.Deleike.skill2_start_charge
+	end
+
+	AudioMgr.instance:trigger(audioId)
+
+	if self.curSkill ~= target then
+		self.curSkill = target
+	end
+
 	self:_refreshChargeDir(1, 0)
 	self.player:setCharging(true)
+	AudioMgr.instance:trigger(AudioEnum4_0.Deleike.skill_charging)
+	TaskDispatcher.runDelay(self._showSkillLine, self, 0.05)
 end
 
 function DeleikeSkillMgr:_buildBlockQuad()
@@ -219,7 +234,7 @@ function DeleikeSkillMgr:_buildBlockQuad()
 
 	if self.activeSkillId == 1 then
 		hw = DeleikeEnum.SkillWidth * 0.5
-		len = self._chargeLength
+		len = self._chargeHeight
 	else
 		hw = self._chargeWidth * 0.5
 		len = SKILL2_THICK
@@ -335,9 +350,23 @@ function DeleikeSkillMgr:clearUncutMarks()
 end
 
 function DeleikeSkillMgr:getLineStatus()
-	if self:refreshUncutMarks() then
+	local blocked = self:refreshUncutMarks()
+
+	if blocked then
 		return DeleikeEnum.LineStatus.UnCut
+	end
+
+	if self.activeSkillId == 1 then
+		if self._chargeHeight >= DeleikeEnum.SkilllHeight then
+			return DeleikeEnum.LineStatus.CanCut
+		end
+
+		return DeleikeEnum.LineStatus.PreCut
 	else
+		if self.isCharging then
+			return DeleikeEnum.LineStatus.PreCut
+		end
+
 		return DeleikeEnum.LineStatus.CanCut
 	end
 end
@@ -346,18 +375,10 @@ function DeleikeSkillMgr:updateCharge()
 	local elapsed = Time.time - self._chargeStartTime
 
 	if self.activeSkillId == 1 then
-		self._chargeLength = math.min(elapsed * DeleikeEnum.Skill1ChargeRate, DeleikeEnum.Skill1MaxLength)
+		self._chargeHeight = math.min(elapsed * DeleikeEnum.SkilllHeight, DeleikeEnum.SkilllHeight)
 	else
-		local w
-
-		if elapsed <= DeleikeEnum.Skill2ChargePhase1Time then
-			w = DeleikeEnum.Skill2ChargePhase1Max * (elapsed / DeleikeEnum.Skill2ChargePhase1Time)
-		else
-			w = DeleikeEnum.Skill2ChargePhase1Max + (DeleikeEnum.Skill2WidthMax - DeleikeEnum.Skill2ChargePhase1Max) * ((elapsed - DeleikeEnum.Skill2ChargePhase1Time) / (DeleikeEnum.Skill2ChargePhase2Time - DeleikeEnum.Skill2ChargePhase1Time))
-		end
-
-		self._chargeWidth = math.min(w, DeleikeEnum.Skill2WidthMax)
-		self._chargeLength = 1
+		self._chargeWidth = math.min(elapsed * DeleikeEnum.SkillWidth, DeleikeEnum.SkillWidth)
+		self._chargeHeight = 1
 	end
 end
 
@@ -375,9 +396,9 @@ function DeleikeSkillMgr:updateChargeVisual()
 	end
 
 	if self.activeSkillId == 2 then
-		self:_updateVisual(self._chargeCenterX, self._chargeCenterY, self._chargeDirX, self._chargeDirY, self._chargeLength, self._chargeWidth * 0.5)
+		self:_updateVisual(self._chargeCenterX, self._chargeCenterY, self._chargeDirX, self._chargeDirY, self._chargeHeight, self._chargeWidth * 0.5)
 	else
-		self:_updateVisual(self._chargeCenterX, self._chargeCenterY, self._chargeDirX, self._chargeDirY, self._chargeLength)
+		self:_updateVisual(self._chargeCenterX, self._chargeCenterY, self._chargeDirX, self._chargeDirY, self._chargeHeight)
 	end
 end
 
@@ -394,46 +415,77 @@ function DeleikeSkillMgr:releaseSkill()
 	local skillCount = self.player:getSkillCount(self.activeSkillId)
 
 	if self.activeSkillId == 1 then
-		if self._chargeLength < DeleikeEnum.Skill1MaxLength or blocked or skillCount <= 0 then
-			self:_hideSkillLine()
+		if self._chargeHeight >= DeleikeEnum.SkilllHeight and not blocked and skillCount > 0 then
+			DeleikeGameMgr.instance:snapshotForUndo()
+			self.player:setSkillCount(self.activeSkillId, skillCount - 1)
+			self:_updateVisual(self._chargeCenterX, self._chargeCenterY, self._chargeDirX, self._chargeDirY, self._chargeHeight)
+			self.skill1:onTrigger(self._sideLeft, self._sideRight, self._chargeCenterX, self._chargeCenterY, self._chargeDirX, self._chargeDirY, self._chargeHeight)
+			AudioMgr.instance:trigger(AudioEnum4_0.Deleike.skill1_use)
+			self:_startSkill1ReleaseAnim()
 
 			return
+		else
+			AudioMgr.instance:trigger(AudioEnum4_0.Deleike.skill_cancel)
 		end
-
+	elseif self._chargeWidth >= DeleikeEnum.SkillWidth and not blocked and skillCount > 0 then
+		DeleikeGameMgr.instance:snapshotForUndo()
 		self.player:setSkillCount(self.activeSkillId, skillCount - 1)
-		self:_updateVisual(self._chargeCenterX, self._chargeCenterY, self._chargeDirX, self._chargeDirY, self._chargeLength)
-		self.skill1:onTrigger(self._sideLeft, self._sideRight, self._chargeCenterX, self._chargeCenterY, self._chargeDirX, self._chargeDirY, self._chargeLength)
-		self:_hideSkillLine()
+		self:_updateVisual(self._chargeCenterX, self._chargeCenterY, self._chargeDirX, self._chargeDirY, self._chargeHeight, self._chargeWidth * 0.5)
+		self.skill2:onTrigger(self._sideLeft, self._sideRight, self._chargeCenterX, self._chargeCenterY, self._chargeDirX, self._chargeDirY, self._chargeHeight)
+		AudioMgr.instance:trigger(AudioEnum4_0.Deleike.skill2_use)
 	else
-		if self._chargeWidth < DeleikeEnum.Skill2WidthMax or blocked or skillCount <= 0 then
-			self:_hideSkillLine()
-
-			return
-		end
-
-		self.player:setSkillCount(self.activeSkillId, skillCount - 1)
-		self:_updateVisual(self._chargeCenterX, self._chargeCenterY, self._chargeDirX, self._chargeDirY, self._chargeLength, self._chargeWidth * 0.5)
-		self.skill2:onTrigger(self._sideLeft, self._sideRight, self._chargeCenterX, self._chargeCenterY, self._chargeDirX, self._chargeDirY, self._chargeLength)
-		self:_hideSkillLine()
+		AudioMgr.instance:trigger(AudioEnum4_0.Deleike.skill_cancel)
 	end
+
+	self:_hideSkillLine()
 end
 
-function DeleikeSkillMgr:_switchSkill(skillId)
-	local target = skillId == 1 and self.skill1 or self.skill2
+function DeleikeSkillMgr:_startSkill1ReleaseAnim()
+	self:clearUncutMarks()
 
-	if self.curSkill == target then
+	self._sideLeft = nil
+	self._sideRight = nil
+	self._relShrinkActive = true
+	self._relShrinkCenterX = self._chargeCenterX
+	self._relShrinkCenterY = self._chargeCenterY
+	self._relShrinkDirX, self._relShrinkDirY = self._chargeDirX, self._chargeDirY
+	self._relShrinkHeight = self._chargeHeight
+	self._relShrinkStartTime = Time.time
+end
+
+function DeleikeSkillMgr:_updateSkill1ReleaseAnim()
+	if not self._relShrinkActive then
 		return
 	end
 
-	if self.curSkill then
-		gohelper.setActive(self.curSkill.go, false)
+	local t = (Time.time - self._relShrinkStartTime) / SKILL1_RELEASE_SHRINK_TIME
+
+	if t > 1 then
+		t = 1
 	end
 
-	self.curSkill = target
+	local eased = t * t * (3 - 2 * t)
+	local height = self._relShrinkHeight * (1 - eased)
+	local dirX, dirY = self._relShrinkDirX, self._relShrinkDirY
 
-	if self._isVisible then
-		gohelper.setActive(self.curSkill.go, true)
+	self:_updateLine(self.skill1.transform, self._relShrinkCenterX + dirX * height * 0.5, self._relShrinkCenterY + dirY * height * 0.5, -dirY, dirX, DeleikeEnum.SkillWidth, height)
+
+	if t >= 1 then
+		self._relShrinkActive = false
+		self.skill1.status = nil
+
+		self.skill1:showReleaseLight()
 	end
+end
+
+function DeleikeSkillMgr:_cancelSkill1ReleaseAnim()
+	if not self._relShrinkActive and not self.skill1:isReleaseVisualActive() then
+		return
+	end
+
+	self._relShrinkActive = false
+
+	self.skill1:cancelReleaseVisual()
 end
 
 function DeleikeSkillMgr:_updateVisual(centerX, centerY, dirX, dirY, length, halfWidth)
@@ -497,8 +549,6 @@ function DeleikeSkillMgr:_updateVisual(centerX, centerY, dirX, dirY, length, hal
 
 		self:_updateLine(self.skill2.transform, midX, midY, perpX, perpY, hw * 2, SKILL2_THICK)
 	end
-
-	self:_showSkillLine()
 end
 
 function DeleikeSkillMgr:_updateLine(transform, px, py, perpX, perpY, width, height)
@@ -511,11 +561,9 @@ function DeleikeSkillMgr:_updateLine(transform, px, py, perpX, perpY, width, hei
 end
 
 function DeleikeSkillMgr:_showSkillLine()
-	if self._isVisible then
+	if not self.isCharging then
 		return
 	end
-
-	self._isVisible = true
 
 	if self.curSkill then
 		self.curSkill:fadeIn()
@@ -523,14 +571,13 @@ function DeleikeSkillMgr:_showSkillLine()
 end
 
 function DeleikeSkillMgr:_hideSkillLine()
-	if not self._isVisible then
-		return
-	end
-
-	self._isVisible = false
+	TaskDispatcher.cancelTask(self._showSkillLine, self)
+	self:_cancelSkill1ReleaseAnim()
 
 	if self.curSkill then
 		self.curSkill:fadeOut()
+
+		self.curSkill.status = nil
 	end
 
 	self:clearUncutMarks()

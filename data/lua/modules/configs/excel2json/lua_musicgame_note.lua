@@ -6,7 +6,8 @@ local lua_musicgame_note = {}
 local fields = {
 	id = 1,
 	name = 2,
-	icon = 3
+	icon = 3,
+	audioId = 4
 }
 local primaryKey = {
 	"id"

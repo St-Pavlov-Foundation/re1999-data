@@ -9,6 +9,7 @@ function AbyssHeroGroupHeroItem:init(go)
 
 	self.goAssistLock = gohelper.findChild(go, "heroitemani/hero/#assist_lock")
 	self.simageAssistLock = gohelper.findChildSingleImage(go, "heroitemani/hero/#assist_lock/character")
+	self.imageAssistCareer = gohelper.findChildImage(go, "heroitemani/hero/#assist_lock/career")
 end
 
 function AbyssHeroGroupHeroItem:checkAbyss()
@@ -42,6 +43,7 @@ function AbyssHeroGroupHeroItem:checkAssist()
 
 	if not haveChallenge then
 		gohelper.setActive(self.goAssistLock, false)
+		gohelper.setActive(self._charactericon, true)
 
 		return
 	end
@@ -52,18 +54,21 @@ function AbyssHeroGroupHeroItem:checkAssist()
 
 	gohelper.setActive(self._trialTagGO, isAssist)
 	gohelper.setActive(self.goAssistLock, isAssist)
+	gohelper.setActive(self._charactericon, not isAssist)
 
 	if not isAssist then
 		return
 	end
 
 	local skinId = curStageMo.skinDic[heroId]
+	local heroConfig = HeroConfig.instance:getHeroCO(heroId)
 	local skinConfig = FightConfig.instance:getSkinCO(skinId)
 
 	gohelper.setActive(self._noneGO, not isAssist)
 	gohelper.setActive(self._heroGO, isAssist)
 	self.simageAssistLock:LoadImage(ResUrl.getHeadIconMiddle(skinConfig.retangleIcon))
 	gohelper.setActive(self._lvnum, not isAssist)
+	UISpriteSetMgr.instance:setCommonSprite(self.imageAssistCareer, "lssx_" .. tostring(heroConfig.career))
 end
 
 function AbyssHeroGroupHeroItem:checkUsed()

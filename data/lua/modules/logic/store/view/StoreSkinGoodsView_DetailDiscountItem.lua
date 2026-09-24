@@ -91,6 +91,15 @@ end
 function StoreSkinGoodsView_DetailDiscountItem:_setAsSelected(isSelect)
 	self:setSelectedSlient(isSelect)
 	self:_setActive_selecticon(isSelect)
+
+	local bLockSelectState = self:bLockSelectState()
+	local bForceSelected = self:bForceSelected()
+
+	if bForceSelected and bLockSelectState then
+		-- block empty
+	else
+		gohelper.setActive(self._selecticon, isSelect)
+	end
 end
 
 function StoreSkinGoodsView_DetailDiscountItem:setData(mo)
@@ -126,12 +135,16 @@ function StoreSkinGoodsView_DetailDiscountItem:setData(mo)
 			self:_setDiscount1Str("-" .. tostring(mo.rmbReduction))
 
 			bShowGang = bShowGang + 1
+		else
+			self:_setDiscount1Str("")
 		end
 
 		if mo.coinReduction then
 			self:_setDiscount2Str(tostring(-mo.coinReduction))
 
 			bShowGang = bShowGang + 1
+		else
+			self:_setDiscount2Str("")
 		end
 
 		self:_setActive_gang(bShowGang == 2)
@@ -148,7 +161,6 @@ function StoreSkinGoodsView_DetailDiscountItem:_setActive_empty(bEmpty)
 end
 
 function StoreSkinGoodsView_DetailDiscountItem:_setActive_selecticon(bActive)
-	gohelper.setActive(self._selecticon, bActive)
 	gohelper.setActive(self._bg, bActive)
 end
 
@@ -161,10 +173,26 @@ function StoreSkinGoodsView_DetailDiscountItem:_setActive_gang(bActive)
 end
 
 function StoreSkinGoodsView_DetailDiscountItem:_setDiscount2Str(str)
+	if str == "" then
+		gohelper.setActive(self._txtdiscount2, false)
+
+		return
+	end
+
+	gohelper.setActive(self._txtdiscount2, true)
+
 	self._txtdiscount2.text = str
 end
 
 function StoreSkinGoodsView_DetailDiscountItem:_setDiscount1Str(str)
+	if str == "" then
+		gohelper.setActive(self._txtdiscount1, false)
+
+		return
+	end
+
+	gohelper.setActive(self._txtdiscount1, true)
+
 	self._txtdiscount1.text = str
 end
 

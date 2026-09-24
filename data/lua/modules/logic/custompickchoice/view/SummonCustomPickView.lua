@@ -53,14 +53,14 @@ function SummonCustomPickView:onOpen()
 end
 
 function SummonCustomPickView:refreshUI()
-	local selectCount = SummonCustomPickModel.instance:getSelectCount()
-	local maxCount = SummonCustomPickModel.instance:getMaxSelectCount()
+	local selectCount = SummonCustomPickHeroModel.instance:getSelectCount()
+	local maxCount = SummonCustomPickHeroModel.instance:getMaxSelectCount()
 
 	ZProj.UGUIHelper.SetGrayscale(self._btnconfirm.gameObject, selectCount ~= maxCount)
 end
 
 function SummonCustomPickView:onClose()
-	SummonCustomPickModel.instance:clearSelectIds()
+	SummonCustomPickHeroModel.instance:clearSelectIds()
 end
 
 function SummonCustomPickView:_onPickFinished()

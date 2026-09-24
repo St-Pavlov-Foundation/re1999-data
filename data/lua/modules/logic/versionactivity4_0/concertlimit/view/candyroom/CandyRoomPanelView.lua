@@ -109,7 +109,7 @@ function CandyRoomPanelView:_refreshTime()
 end
 
 function CandyRoomPanelView:onOpen()
-	return
+	AudioMgr.instance:trigger(AudioEnum4_0.CandyRoom.play_ui_langchao_role_open)
 end
 
 function CandyRoomPanelView:onClose()

@@ -10,7 +10,6 @@ function AssistRoleBadgeItem:init(go)
 	self.txtName = gohelper.findChildText(go, "txt_Name")
 	self.txtTarget = gohelper.findChildText(go, "txt_Target")
 	self.goWear = gohelper.findChild(go, "go_Wear")
-	self.goLock = gohelper.findChild(go, "go_Lock")
 	self.goNew = gohelper.findChild(go, "go_New")
 	self.btnClick = gohelper.findChildButtonWithAudio(go, "btn_Click")
 	self.isUnlock = false
@@ -22,9 +21,22 @@ function AssistRoleBadgeItem:addEventListeners()
 end
 
 function AssistRoleBadgeItem:onClick()
+	if not self.isUnlock then
+		GameFacade.showToast(ToastEnum.RoleBadgeNotUnlock)
+
+		return
+	end
+
+	if self.goNew.activeInHierarchy then
+		gohelper.setActive(self.goNew, false)
+		RoleBadgeModel.instance:setRoleBadgeOld(self.heroUid, {
+			self.config.id
+		})
+	end
+
 	if self.wearIndex then
 		RoleBadgeRpc.instance:sendRoleBadgeWearRequest(self.heroUid, self.wearIndex, 0)
-	elseif self.wearCount < AssistEnum.MaxWearCount and self.isUnlock then
+	elseif self.wearCount < AssistEnum.MaxWearCount then
 		local emptyPos = self.recordMo:getFirstEmptyWearPos()
 
 		RoleBadgeRpc.instance:sendRoleBadgeWearRequest(self.heroUid, emptyPos, self.config.id)
@@ -37,20 +49,36 @@ function AssistRoleBadgeItem:setData(heroUid, groupId)
 	local roleBadgeInfoMo = RoleBadgeModel.instance:getBadgeInfo()
 
 	self.recordMo = roleBadgeInfoMo and roleBadgeInfoMo:getRecordMo(self.heroUid)
-	self.config = self.recordMo and self.recordMo:getActiveBadgeCfg(groupId)
-	self.isUnlock = self.config ~= nil
+	self.badgeMo = self.recordMo and self.recordMo:getShowBadgeMo(groupId)
 
-	if not self.config then
+	local progress = 0
+
+	if self.badgeMo then
+		self.config = self.badgeMo.config
+		self.isUnlock = self.badgeMo.status == AssistEnum.BadgeStatus.Finish
+		progress = self.badgeMo.progress
+	else
 		self.config = RoleBadgeConfig.instance:getBadgeCoByLevel(groupId, 1)
+		self.isUnlock = false
 	end
 
-	gohelper.setActive(self.goLock, not self.isUnlock)
+	UIColorHelper.setGray(self.simageBadge.gameObject, not self.isUnlock)
 
 	self.txtName.text = self.config.badgeTitle
-	self.txtTarget.text = self.config.desc
+	self.txtTarget.text = GameUtil.getSubPlaceholderLuaLangOneParam(self.config.desc, progress)
 
 	self.simageBadge:LoadImage(ResUrl.getRoleBadgeSingleBg(self.config.icon))
 	self:refreshWearStatus(heroUid)
+
+	if self.isUnlock then
+		local isNew = RoleBadgeModel.instance:isRoleBadgeNew(self.heroUid, {
+			self.config.id
+		})
+
+		gohelper.setActive(self.goNew, isNew)
+	else
+		gohelper.setActive(self.goNew, false)
+	end
 end
 
 function AssistRoleBadgeItem:refreshWearStatus(heroUid)

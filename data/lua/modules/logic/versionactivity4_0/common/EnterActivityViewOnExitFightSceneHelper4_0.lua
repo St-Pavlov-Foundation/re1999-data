@@ -12,7 +12,7 @@ function EnterActivityViewOnExitFightSceneHelper.enterActivity14013(forceStartin
 	local episodeId = DungeonModel.instance.curSendEpisodeId
 	local episodeConfig = DungeonConfig.instance:getEpisodeCO(episodeId)
 	local isOpenLevelView = episodeConfig.type ~= DungeonEnum.EpisodeType.TrialHero
-	local openCb = isOpenLevelView and SpLilyaController.openEpisodeLevelView or nil
+	local openCb = isOpenLevelView and SpLilyaController.enterEpisodeLevelView or nil
 	local openCbObj = isOpenLevelView and SpLilyaController.instance or nil
 
 	DungeonModel.instance:resetSendChapterEpisodeId()
@@ -23,10 +23,16 @@ function EnterActivityViewOnExitFightSceneHelper.enterActivity14013(forceStartin
 end
 
 function EnterActivityViewOnExitFightSceneHelper.enterActivity14014(forceStarting, exitFightGroup)
+	local episodeId = DungeonModel.instance.curSendEpisodeId
+	local episodeConfig = DungeonConfig.instance:getEpisodeCO(episodeId)
+	local isOpenLevelView = episodeConfig.type ~= DungeonEnum.EpisodeType.TrialHero
+	local openCb = isOpenLevelView and DeleikeController.enterEpisodeLevelView or nil
+	local openCbObj = isOpenLevelView and DeleikeController.instance or nil
+
 	DungeonModel.instance:resetSendChapterEpisodeId()
 	MainController.instance:enterMainScene(forceStarting)
 	SceneHelper.instance:waitSceneDone(SceneType.Main, function()
-		VersionActivityMainFixedEnterController.instance:openVersionActivityEnterViewIfNotOpened(DeleikeController.openEpisodeLevelView, DeleikeController.instance, VersionActivity4_0Enum.ActivityId.Deleike, true)
+		VersionActivityMainFixedEnterController.instance:openVersionActivityEnterViewIfNotOpened(openCb, openCbObj, VersionActivity4_0Enum.ActivityId.Deleike, true)
 	end)
 end
 

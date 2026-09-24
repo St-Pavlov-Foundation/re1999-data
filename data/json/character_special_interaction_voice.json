@@ -217,11 +217,11 @@
   },
   {
     "id": 1315536,
-    "time": 5.0,
+    "time": 5.5,
     "waitVoice": 1315537,
     "waitVoiceParams": "",
     "timeoutVoice": 1315538,
-    "protectionTime": 3,
+    "protectionTime": 6,
     "statusParams": ""
   },
   {
@@ -235,11 +235,11 @@
   },
   {
     "id": 1313485,
-    "time": 3.0,
+    "time": 7.0,
     "waitVoice": 1313486,
     "waitVoiceParams": "",
     "timeoutVoice": 1313487,
-    "protectionTime": 3,
+    "protectionTime": 6,
     "statusParams": ""
   }
 ]

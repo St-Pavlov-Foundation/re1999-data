@@ -6,8 +6,9 @@ local lua_activity246_reward = {}
 local fields = {
 	reward = 2,
 	type = 4,
-	area = 3,
-	rewardId = 1
+	rewardId = 1,
+	rewardicon = 5,
+	area = 3
 }
 local primaryKey = {
 	"rewardId"

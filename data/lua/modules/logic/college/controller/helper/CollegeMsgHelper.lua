@@ -121,15 +121,21 @@ function CollegeMsgHelper:process_MilestoneUpdate()
 	end
 
 	if newActiveId then
-		CollegeStoryHelper.instance:playStory(newActiveId, false, self._showStoryToast, self)
+		CollegeStoryHelper.instance:playStory(newActiveId, false, self._onStoryFinished, self)
 		self:getSceneMo().prop.clientDataMo:updateNeedPlayFirstStory()
 	end
 
 	CollegeController.instance:dispatchEvent(CollegeEvent.MilestoneUpdate)
 end
 
-function CollegeMsgHelper:_showStoryToast()
+function CollegeMsgHelper:_onStoryFinished(storyId)
 	CollegeController.instance:showToast(luaLang("college_toast_finishstory"))
+
+	local storyCo = lua_college_story_node.configDict[storyId]
+
+	if storyCo and storyCo.type ~= CollegeEnum.StoryNodeType.Milestone then
+		CollegeController.instance:dispatchEvent(CollegeEvent.OnFlyStoryEffect, storyId)
+	end
 end
 
 function CollegeMsgHelper:process_PlayerInfoUpdate()

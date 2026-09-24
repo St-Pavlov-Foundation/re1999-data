@@ -6137,7 +6137,7 @@
   {
     "id": 924000012,
     "eventName": "play_level_chap14_npc537702_14",
-    "bankName": ""
+    "bankName": "npc537702_level_yingmen4_0"
   },
   {
     "id": 924000013,
@@ -6288,5 +6288,315 @@
     "id": 924000042,
     "eventName": "play_battle_chap14_npcnoname376_19",
     "bankName": "npcnoname376_level_yingmen4_0"
+  },
+  {
+    "id": 924000101,
+    "eventName": "play_guide507801_systemvoc_1647",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000102,
+    "eventName": "play_guide507801_systemvoc_1648",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000103,
+    "eventName": "play_guide507801_systemvoc_1650",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000104,
+    "eventName": "play_guide507801_systemvoc_1651",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000105,
+    "eventName": "play_guide507801_systemvoc_1652",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000106,
+    "eventName": "play_guide507801_systemvoc_1653",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000107,
+    "eventName": "play_guide507801_systemvoc_1655",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000108,
+    "eventName": "play_guide507801_systemvoc_1656",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000109,
+    "eventName": "play_guide507801_systemvoc_1657",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000110,
+    "eventName": "play_guide507801_systemvoc_1658",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000111,
+    "eventName": "play_guide507801_systemvoc_1659",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000112,
+    "eventName": "play_guide507801_systemvoc_1660",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000113,
+    "eventName": "play_guide507801_systemvoc_1661",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000114,
+    "eventName": "play_guide507801_systemvoc_1663",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000115,
+    "eventName": "play_guide507801_systemvoc_1664",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000116,
+    "eventName": "play_guide507801_systemvoc_1665",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000117,
+    "eventName": "play_guide507801_systemvoc_1666",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000118,
+    "eventName": "play_guide507801_systemvoc_1667",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000119,
+    "eventName": "play_guide507801_systemvoc_1668",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000120,
+    "eventName": "play_guide507801_systemvoc_1670",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000121,
+    "eventName": "play_guide507801_systemvoc_1671",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000122,
+    "eventName": "play_guide507801_systemvoc_1672",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000123,
+    "eventName": "play_guide507801_systemvoc_1674",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000124,
+    "eventName": "play_guide507801_systemvoc_1675",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000125,
+    "eventName": "play_guide507801_systemvoc_1676",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000126,
+    "eventName": "play_guide507801_systemvoc_1677",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000127,
+    "eventName": "play_guide507801_systemvoc_1678",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000128,
+    "eventName": "play_guide507801_systemvoc_1679",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000129,
+    "eventName": "play_guide507801_systemvoc_1680",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000130,
+    "eventName": "play_guide507801_systemvoc_1681",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000131,
+    "eventName": "play_guide507801_systemvoc_1682",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000132,
+    "eventName": "play_guide507801_systemvoc_1683",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000133,
+    "eventName": "play_guide507801_systemvoc_1684",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000134,
+    "eventName": "play_guide507801_systemvoc_1685",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000135,
+    "eventName": "play_guide507801_systemvoc_1687",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000136,
+    "eventName": "play_guide507801_systemvoc_1688",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000137,
+    "eventName": "play_guide507801_systemvoc_1690",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000138,
+    "eventName": "play_guide507801_systemvoc_1691",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000139,
+    "eventName": "play_guide507801_systemvoc_1692",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000140,
+    "eventName": "play_guide507801_systemvoc_1693",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000141,
+    "eventName": "play_guide507801_systemvoc_1694",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000142,
+    "eventName": "play_guide507801_systemvoc_1695",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000143,
+    "eventName": "play_guide507801_systemvoc_1696",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000144,
+    "eventName": "play_guide507801_systemvoc_1697",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000145,
+    "eventName": "play_guide507801_systemvoc_1698",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000146,
+    "eventName": "play_guide507801_systemvoc_1699",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000147,
+    "eventName": "play_guide507801_systemvoc_1700",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000148,
+    "eventName": "play_guide507801_systemvoc_1701",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000149,
+    "eventName": "play_guide507801_systemvoc_1702",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000150,
+    "eventName": "play_guide507801_systemvoc_1703",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000151,
+    "eventName": "play_guide507801_systemvoc_1704",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000152,
+    "eventName": "play_guide507801_systemvoc_1706",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000153,
+    "eventName": "play_guide507801_systemvoc_1707",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000154,
+    "eventName": "play_guide507801_systemvoc_1708",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000155,
+    "eventName": "play_guide507801_systemvoc_1709",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000156,
+    "eventName": "play_guide507801_systemvoc_1711",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000157,
+    "eventName": "play_guide507801_systemvoc_1712",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000158,
+    "eventName": "play_guide507801_systemvoc_1713",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000159,
+    "eventName": "play_guide507801_systemvoc_1714",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000160,
+    "eventName": "play_guide507801_systemvoc_1715",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000161,
+    "eventName": "play_guide507801_systemvoc_1716",
+    "bankName": "guide507801_systemvoc_part32"
+  },
+  {
+    "id": 924000162,
+    "eventName": "play_guide507801_systemvoc_1717",
+    "bankName": "guide507801_systemvoc_part32"
   }
 ]

@@ -4,19 +4,14 @@ module("modules.configs.excel2json.lua_activity244_monster_skill_template", pack
 
 local lua_activity244_monster_skill_template = {}
 local fields = {
-	passiveSkill = 5,
-	name = 2,
 	id = 1,
-	activeSkill = 4,
-	des = 3
+	activeSkill = 2,
+	passiveSkill = 3
 }
 local primaryKey = {
 	"id"
 }
-local mlStringKey = {
-	des = 2,
-	name = 1
-}
+local mlStringKey = {}
 
 function lua_activity244_monster_skill_template.onLoad(json)
 	lua_activity244_monster_skill_template.configList, lua_activity244_monster_skill_template.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)

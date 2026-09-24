@@ -127,6 +127,7 @@ function VersionActivityMainFixedDungeonEnterView:_btnFinishedOnClick()
 end
 
 function VersionActivityMainFixedDungeonEnterView:_editableInitView()
+	self._animator = self.viewGO:GetComponent("Animator")
 	self._txtstorename = gohelper.findChildText(self.viewGO, "entrance/#btn_store/normal/txt_shop")
 	self._chapterId = DungeonConfig.instance:getLastEarlyAccessChapterId()
 	self.animComp = VersionActivityMainFixedHelper.getVersionActivitySubAnimatorComp().get(self.viewGO, self)
@@ -190,11 +191,28 @@ function VersionActivityMainFixedDungeonEnterView:onOpenFinish()
 		if container and container:isOpen() and container.viewGO then
 			self._fullviewParent = container.viewGO.transform.parent
 
-			gohelper.addChildPosStay(self._gobg, container.viewGO)
+			gohelper.addChildPosStay(self.viewGO, container.viewGO)
 		end
 	else
+		if SDKMgr.instance:isEmulator() and self._animator then
+			TaskDispatcher.cancelTask(self._onVideoStart, self)
+			TaskDispatcher.runDelay(self._onVideoStart, self, 2)
+			self._animator:Play(UIAnimationName.Open, 0, 0)
+
+			self._animator.speed = 0
+
+			self._videoComp:setStartCallback(self._onVideoStart, self)
+		end
+
 		self._videoComp:play(self._videoPath, true)
 	end
+end
+
+function VersionActivityMainFixedDungeonEnterView:_onVideoStart()
+	TaskDispatcher.cancelTask(self._onVideoStart, self)
+	self._videoComp:setStartCallback()
+
+	self._animator.speed = 1
 end
 
 function VersionActivityMainFixedDungeonEnterView:onPlayVideoDone()
@@ -298,6 +316,8 @@ function VersionActivityMainFixedDungeonEnterView:onDestroyView()
 	if container and container:isOpen() and container.viewGO and self._fullviewParent then
 		gohelper.addChildPosStay(self._fullviewParent, container.viewGO)
 	end
+
+	TaskDispatcher.cancelTask(self._onVideoStart, self)
 end
 
 return VersionActivityMainFixedDungeonEnterView

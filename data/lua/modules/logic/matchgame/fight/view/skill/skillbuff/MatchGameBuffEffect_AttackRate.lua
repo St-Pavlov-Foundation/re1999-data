@@ -17,9 +17,9 @@ function MatchGameBuffEffect_AttackRate:progressBuff_112(buffEffectData, targetI
 		local selectFightMoMap = targetInfo.targetData
 
 		for _, fightMo in pairs(selectFightMoMap) do
-			if fightMo and fightMo.attackRate then
+			if fightMo and fightMo.skillAttackRate then
 				fightMo:updateFightInfo({
-					attackRate = fightMo.attackRate + offsetRate
+					skillAttackRate = fightMo.skillAttackRate + offsetRate
 				})
 				MatchGameSkillBuffHandler.instance:attachBuffToTarget(fightMo, skillBuffMo)
 			end
@@ -31,7 +31,7 @@ function MatchGameBuffEffect_AttackRate:removeBuff_112(buffEffectData, targetObj
 	local offsetRate = (buffEffectData[2] or 0) / 1000
 
 	targetObj:updateFightInfo({
-		attackRate = targetObj.attackRate - offsetRate
+		skillAttackRate = targetObj.skillAttackRate - offsetRate
 	})
 end
 

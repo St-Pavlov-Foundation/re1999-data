@@ -41,10 +41,12 @@ function AbyssHeroGroupListView:onResetStage()
 end
 
 function AbyssHeroGroupListView:onReadPreset()
-	HeroSingleGroupModel.instance:setSingleGroup(HeroGroupModel.instance:getCurGroupMO(), true)
+	local snapshotType = ModuleEnum.HeroGroupSnapshotType.Abyss
+	local curStageInfo = AbyssModel.instance:getCurStageMo()
+	local heroGroupMO = HeroGroupSnapshotModel.instance:getHeroGroupInfo(snapshotType, curStageInfo.heroGroupSubId, true)
+
+	HeroSingleGroupModel.instance:setSingleGroup(heroGroupMO, true)
 	self:checkReplaceHeroList()
-	self:_updateHeroList()
-	self:_checkRestrictHero()
 end
 
 function AbyssHeroGroupListView:onReleaseAssist()

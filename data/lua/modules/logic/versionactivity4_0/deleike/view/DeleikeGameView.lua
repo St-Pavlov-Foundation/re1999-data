@@ -3,9 +3,9 @@
 module("modules.logic.versionactivity4_0.deleike.view.DeleikeGameView", package.seeall)
 
 local DeleikeGameView = class("DeleikeGameView", BaseView)
-local Time = UnityEngine.Time
 
 function DeleikeGameView:onInitView()
+	self._goJoystick = gohelper.findChild(self.viewGO, "#go_Joystick")
 	self._goTarget = gohelper.findChild(self.viewGO, "#go_Target")
 	self._txtTarget = gohelper.findChildText(self.viewGO, "#go_Target/#txt_Target")
 	self._goCancle = gohelper.findChild(self.viewGO, "#go_Cancle")
@@ -27,10 +27,6 @@ function DeleikeGameView:addEvents()
 	self._btnTips:AddClickListener(self._btnTipsOnClick, self)
 	self._btnReset:AddClickListener(self._btnResetOnClick, self)
 	self._btnConfirm:AddClickListener(self._btnConfirmOnClick, self)
-	self:addEventCb(DeleikeController.instance, DeleikeEvent.Skill2DragStateChanged, self._onDragStateChanged, self)
-	self:addEventCb(DeleikeController.instance, DeleikeEvent.SkillCntChange, self.refreshSkillCnt, self)
-	self:addEventCb(DeleikeController.instance, DeleikeEvent.RestartGame, self._btnResetOnClick, self)
-	self:addEventCb(DeleikeController.instance, DeleikeEvent.Skill2FirstDrag, self._onFirstDrag, self)
 end
 
 function DeleikeGameView:removeEvents()
@@ -41,7 +37,8 @@ function DeleikeGameView:removeEvents()
 end
 
 function DeleikeGameView:_btnBackOnClick()
-	return
+	DeleikeGameMgr.instance:undoLastCut()
+	DeleikeController.instance:onGameRevert()
 end
 
 function DeleikeGameView:_btnTipsOnClick()
@@ -59,11 +56,13 @@ end
 function DeleikeGameView:_btnResetOnClick()
 	self.anim:Play("open", 0, 0)
 
+	self.isDraging = false
 	self.skillDraging = false
 
 	DeleikeController.instance:dispatchEvent(DeleikeEvent.ResetGame)
 	self:refreshSkillCnt(1)
 	self:refreshSkillCnt(2)
+	DeleikeController.instance:onGameReset()
 end
 
 function DeleikeGameView:_editableInitView()
@@ -93,16 +92,41 @@ function DeleikeGameView:_editableInitView()
 		skillItem.transform = goSkill.transform
 		self.skillItems[i] = skillItem
 	end
+
+	self.isDraging = false
+	self.skillDraging = false
+
+	gohelper.setActive(self._btnBack, false)
 end
 
 function DeleikeGameView:onOpen()
+	self:addEventCb(DeleikeController.instance, DeleikeEvent.Skill2DragStateChanged, self._onDragStateChanged, self)
+	self:addEventCb(DeleikeController.instance, DeleikeEvent.UndoStateChanged, self._onUndoStateChanged, self)
+	self:addEventCb(DeleikeController.instance, DeleikeEvent.SkillCntChange, self.refreshSkillCnt, self)
+	self:addEventCb(DeleikeController.instance, DeleikeEvent.Skill2FirstDrag, self._onFirstDrag, self)
+
 	for i = 1, 2 do
-		CommonDragHelper.instance:registerDragObj(self.skillItems[i].go, self._beginDrag, self._onDrag, self._endDrag, self._checkDrag, self, i, true)
+		local skillItem = self.skillItems[i]
+
+		CommonDragHelper.instance:registerDragObj(skillItem.go, nil, self._onDrag, nil, self._checkDrag, self, i, true)
+
+		skillItem.click = SLFramework.UGUI.UIClickListener.Get(skillItem.go)
+		skillItem.click.canMultTouch = true
+
+		skillItem.click:AddClickDownListener(self._onSkillBtnDown, self, i)
+		skillItem.click:AddClickUpListener(self._onSkillBtnUp, self, i)
 	end
 
 	local gameCfg = DeleikeGameMgr.instance.gameCfg
 
 	self._txtTarget.text = gameCfg.targetDesc
+
+	TaskDispatcher.cancelTask(self._openPostProcess, self)
+	TaskDispatcher.runRepeat(self._openPostProcess, self, 0)
+end
+
+function DeleikeGameView:_openPostProcess()
+	PostProcessingMgr.instance:setUIActive(true)
 end
 
 function DeleikeGameView:onOpenFinish()
@@ -110,14 +134,49 @@ function DeleikeGameView:onOpenFinish()
 
 	self:refreshSkillCnt(1)
 	self:refreshSkillCnt(2)
+	PostProcessingMgr:setIgnoreUIBlur(true)
+
+	self.ppvalue = {
+		localMaskActive = true,
+		bloomActive = true
+	}
+	self.cachePPValue = {}
+
+	for key, value in pairs(self.ppvalue) do
+		local curValue = PostProcessingMgr.instance:getUIPPValue(key)
+
+		if curValue ~= value then
+			self.cachePPValue[key] = curValue
+
+			PostProcessingMgr.instance:setUIPPValue(key, value)
+		end
+	end
+end
+
+function DeleikeGameView:onCloseFinish()
+	for key, value in pairs(self.cachePPValue) do
+		PostProcessingMgr.instance:setUIPPValue(key, value)
+	end
+
+	PostProcessingMgr:setIgnoreUIBlur(false)
 end
 
 function DeleikeGameView:onDestroyView()
 	for i = 1, 2 do
-		CommonDragHelper.instance:unregisterDragObj(self.skillItems[i].go)
+		local skillItem = self.skillItems[i]
+
+		CommonDragHelper.instance:unregisterDragObj(skillItem.go)
+
+		if skillItem.click then
+			skillItem.click:RemoveClickDownListener()
+			skillItem.click:RemoveClickUpListener()
+
+			skillItem.click = nil
+		end
 	end
 
 	TaskDispatcher.cancelTask(self.delayHideCancle, self)
+	TaskDispatcher.cancelTask(self._openPostProcess, self)
 end
 
 function DeleikeGameView:refreshSkillCnt(skillId, isAdd)
@@ -145,9 +204,20 @@ function DeleikeGameView:_onDragStateChanged(active)
 
 	gohelper.setActive(self._goDragTip2, active)
 
-	if not active then
-		gohelper.setActive(self._btnConfirm, active)
+	if active then
+		gohelper.setActive(self._btnBack, false)
+	else
+		gohelper.setActive(self._btnConfirm, false)
+		self:_refreshBackBtn()
 	end
+end
+
+function DeleikeGameView:_onUndoStateChanged(active)
+	gohelper.setActive(self._btnBack, active)
+end
+
+function DeleikeGameView:_refreshBackBtn()
+	gohelper.setActive(self._btnBack, DeleikeGameMgr.instance:canUndo())
 end
 
 function DeleikeGameView:_onFirstDrag()
@@ -175,8 +245,11 @@ function DeleikeGameView:_checkDrag(index)
 end
 
 function DeleikeGameView:_beginDrag(index, pointerEventData)
+	self.isDraging = true
+
 	gohelper.setActive(self._goDragTip1, true)
 	gohelper.setActive(self._btnReset, false)
+	gohelper.setActive(self._btnBack, false)
 	TaskDispatcher.cancelTask(self.delayHideCancle, self)
 	gohelper.setActive(self._goCancle, true)
 	self.animCancle:Play("unhand_open", 0, 0)
@@ -197,50 +270,17 @@ function DeleikeGameView:_beginDrag(index, pointerEventData)
 end
 
 function DeleikeGameView:_onDrag(index, pointerEventData)
-	self:_setDragInCancle(self:_isPointerInCancle(pointerEventData))
-
-	local skillItem = self.skillItems[index]
-	local localPoint = recthelper.screenPosToAnchorPos(pointerEventData.position, skillItem.transform)
-	local dx = localPoint.x
-	local dy = localPoint.y
-	local innerRadius = DeleikeEnum.JoyStickInnerRadius
-	local outerRadius = DeleikeEnum.JoyStickOuterRadius
-	local dist = math.sqrt(dx * dx + dy * dy)
-
-	if outerRadius < dist then
-		local scale = outerRadius / dist
-
-		dx = dx * scale
-		dy = dy * scale
-	end
-
-	transformhelper.setLocalPosXY(skillItem.goHandle.transform, dx, dy)
-
-	if dist < innerRadius then
-		return
-	end
-
-	local targetAngle = math.atan2(dy, dx)
-	local curAngle = self._skillAngles[index] or 0
-	local diff = targetAngle - curAngle
-
-	diff = (diff + math.pi) % (2 * math.pi) - math.pi
-
-	local t = 1 - math.exp(-DeleikeEnum.JoyStickSmoothSpeed * Time.deltaTime)
-
-	curAngle = curAngle + diff * t
-	self._skillAngles[index] = curAngle
-
-	local dirX = math.cos(curAngle)
-	local dirY = math.sin(curAngle)
-	local skillMgr = DeleikeGameMgr.instance.skillMgr
-
-	if skillMgr then
-		skillMgr:onSkillBtnDragMove(dirX, dirY)
+	if self.isDraging then
+		self:_setDragInCancle(self:_isPointerInCancle(pointerEventData))
+		self:_updateSkillPointer(index, pointerEventData.position)
 	end
 end
 
 function DeleikeGameView:_endDrag(index, pointerEventData)
+	if not self.isDraging then
+		return
+	end
+
 	gohelper.setActive(self._goDragTip1, false)
 	gohelper.setActive(self._btnReset, true)
 
@@ -257,12 +297,76 @@ function DeleikeGameView:_endDrag(index, pointerEventData)
 		skillMgr:onSkillBtnDragEnd(cancelled)
 	end
 
+	self:_refreshBackBtn()
+
 	if self._goCancle.activeInHierarchy then
 		local animName = self.isDragInCancle and "hand_close" or "unhand_close"
 
 		self.animCancle:Play(animName, 0, 0)
 		TaskDispatcher.runDelay(self.delayHideCancle, self, 0.16)
 	end
+
+	self.isDraging = false
+end
+
+function DeleikeGameView:_updateSkillPointer(index, screenPos)
+	local skillItem = self.skillItems[index]
+	local localPoint = recthelper.screenPosToAnchorPos(screenPos, skillItem.transform)
+
+	transformhelper.setLocalPosXY(skillItem.goHandle.transform, localPoint.x, localPoint.y)
+
+	local mgr = DeleikeGameMgr.instance
+	local player = mgr.player
+	local skillMgr = mgr.skillMgr
+
+	if not player or not skillMgr or not mgr.sceneRootRt then
+		return
+	end
+
+	local px, py = player:getLogicPos()
+	local scenePoint = recthelper.screenPosToAnchorPos(screenPos, mgr.sceneRootRt)
+	local dx = scenePoint.x - px
+	local dy = scenePoint.y - py
+	local distSq = dx * dx + dy * dy
+
+	if distSq < 0.0001 then
+		return
+	end
+
+	local targetAngle = math.atan2(dy, dx)
+	local smoothRadius = DeleikeEnum.JoyStickInnerRadius
+
+	if distSq < smoothRadius * smoothRadius then
+		local curAngle = self._skillAngles[index] or targetAngle
+		local diff = targetAngle - curAngle
+
+		diff = (diff + math.pi) % (2 * math.pi) - math.pi
+
+		local t = 1 - math.exp(-DeleikeEnum.JoyStickSmoothSpeed * Time.deltaTime)
+
+		curAngle = curAngle + diff * t
+		self._skillAngles[index] = curAngle
+		targetAngle = curAngle
+	else
+		self._skillAngles[index] = targetAngle
+	end
+
+	skillMgr:onSkillBtnDragMove(math.cos(targetAngle), math.sin(targetAngle))
+end
+
+function DeleikeGameView:_onSkillBtnDown(index, position)
+	if self:_checkDrag(index) then
+		return
+	end
+
+	self:_beginDrag(index)
+	self:_updateSkillPointer(index, position)
+end
+
+function DeleikeGameView:_onSkillBtnUp(index, position)
+	self:_endDrag(index, {
+		position = position
+	})
 end
 
 function DeleikeGameView:delayHideCancle()

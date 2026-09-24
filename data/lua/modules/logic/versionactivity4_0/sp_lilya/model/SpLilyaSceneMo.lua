@@ -86,7 +86,7 @@ function SpLilyaSceneMo:_refreshGroundPos()
 	local halfHeight = self:getHalfHeight()
 
 	self.groundHeight = select(2, SpLilyaHelper.ConvertOriginPos(0, SpLilyaEnum.DefaultGroundHeight, halfWidth, halfHeight))
-	self.groundPosX = SpLilyaHelper.ConvertOriginPos(SpLilyaEnum.DefaultGroundPosX, 0, halfWidth, halfHeight)
+	self.groundPosX = halfWidth
 	self.groundPosY = select(2, SpLilyaHelper.ConvertOriginPos(0, SpLilyaEnum.DefaultGroundPosY, halfWidth, halfHeight))
 
 	local margin = SpLilyaEnum.BulletBoundaryMargin or 0
@@ -144,7 +144,7 @@ function SpLilyaSceneMo:addBullet(posX, posY, dirX, dirY, trajectorySpeed, damag
 	self._bulletUid = self._bulletUid + 1
 
 	mo:init(posX, posY, dirX, dirY, trajectorySpeed, damage, energy, radius, explodeRadius, type, self._bulletUid, moveSpeed)
-	logWarn(string.format("[SpLilya] 发射子弹 uid=%d 类型=%d 方向=(%.2f,%.2f) 弹道速度=%.2f 飞行速度=%.2f 伤害=%.2f 碰撞半径=%.2f 爆炸半径=%.2f", mo.uid, type, dirX, dirY, trajectorySpeed, mo.speed, damage, radius, explodeRadius))
+	logNormal(string.format("[SpLilya] 发射子弹 uid=%d 类型=%d 方向=(%.2f,%.2f) 弹道速度=%.2f 飞行速度=%.2f 伤害=%.2f 碰撞半径=%.2f 爆炸半径=%.2f", mo.uid, type, dirX, dirY, trajectorySpeed, mo.speed, damage, radius, explodeRadius))
 
 	self.useBulletMoDic[mo.uid] = mo
 

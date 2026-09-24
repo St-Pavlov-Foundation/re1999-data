@@ -128,6 +128,8 @@ function CollegeCurrencyTipsView:_refreshProduceItem(goItem, produceInfo, index)
 end
 
 function CollegeCurrencyTipsView:_onTouchScreen()
+	AudioMgr.instance:trigger(AudioEnum.UI.UI_Common_Click)
+
 	local mousePosition = GamepadController.instance:getMousePosition()
 	local currencyItemList = self._clickParentView and self._clickParentView:getCurrencyItemList()
 

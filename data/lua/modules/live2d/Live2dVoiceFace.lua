@@ -33,9 +33,11 @@ end
 
 function Live2dVoiceFace:_doSetFaceAnimation(name, loop)
 	if name ~= self._spine:getCurFace() then
-		local isCut = self._initCut and UnityEngine.Time.frameCount == self._curFrameCount
+		local isCut = self._initCut
 
 		self._spine:setFaceAnimation(name, loop, self._mixTime or 0.5, isCut)
+
+		self._initCut = false
 	end
 end
 
@@ -44,7 +46,6 @@ function Live2dVoiceFace:init(spineVoice, voiceConfig, spine)
 	self._inStory = self._spineVoice:getInStory()
 	self._voiceConfig = voiceConfig
 	self._initCut = self._voiceConfig.initCut
-	self._curFrameCount = UnityEngine.Time.frameCount
 	self._spine = spine
 
 	local face = self:getFace(voiceConfig)
@@ -65,10 +66,10 @@ end
 function Live2dVoiceFace:_configValidity(list, spine)
 	for i = #list, 1, -1 do
 		local action = list[i]
-		local actionParam = string.split(action, "#")
+		local actionParam = action.actionParam
 		local invalid = true
 
-		if #actionParam >= 3 then
+		if actionParam then
 			local str = "e_" .. actionParam[1]
 
 			if spine:hasExpression(str) then
@@ -77,7 +78,7 @@ function Live2dVoiceFace:_configValidity(list, spine)
 		end
 
 		if invalid then
-			logError(string.format("id：%s 语音 face 无效的配置：%s face:%s", self._voiceConfig.audio, action, self:getFace(self._voiceConfig)))
+			logError(string.format("id：%s 语音 face 无效的配置：%s face:%s", self._voiceConfig.audio, action.raw, self:getFace(self._voiceConfig)))
 			table.remove(list, i)
 		end
 	end
@@ -88,7 +89,18 @@ function Live2dVoiceFace:playFaceActionList(face)
 	self._time = Time.time
 
 	if not string.nilorempty(face) then
-		self._faceList = string.split(face, "|")
+		local faceActions = string.split(face, "|")
+
+		self._faceList = {}
+
+		for i, action in ipairs(faceActions) do
+			local actionParam = string.split(action, "#")
+
+			self._faceList[i] = {
+				raw = action,
+				actionParam = #actionParam >= 3 and actionParam or nil
+			}
+		end
 
 		self:_configValidity(self._faceList, self._spine)
 	else
@@ -112,9 +124,9 @@ function Live2dVoiceFace:_check()
 	local action = self._faceList[1]
 
 	if action then
-		local actionParam = string.split(action, "#")
+		local actionParam = action.actionParam
 
-		if #actionParam >= 3 then
+		if actionParam then
 			local faceActionName = "e_" .. actionParam[1]
 			local startTime = tonumber(actionParam[2])
 			local endTime = tonumber(actionParam[3])
@@ -150,9 +162,9 @@ function Live2dVoiceFace:_playFaceAction(setTransition)
 
 	if #self._faceList > 0 then
 		local action = table.remove(self._faceList, 1)
-		local actionParam = string.split(action, "#")
+		local actionParam = action.actionParam
 
-		if #actionParam >= 3 then
+		if actionParam then
 			self._faceActionName = "e_" .. actionParam[1]
 
 			local startTime = tonumber(actionParam[2])

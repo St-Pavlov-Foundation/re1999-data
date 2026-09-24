@@ -165,6 +165,16 @@ end
 function ClothesStoreView:hideUI(noAnim, isNotAutoClose)
 	self._isDefaultShowViewAutoClose = isNotAutoClose ~= false
 
+	local goodsMo = StoreClothesGoodsItemListModel.instance:getSelectGoods()
+
+	if goodsMo then
+		local goodsConfig = goodsMo.config
+
+		if goodsConfig.skinLevel == 2 and self:checkSkinVideoNotPlayed(self.skinId) then
+			self._isDefaultShowViewAutoClose = false
+		end
+	end
+
 	if noAnim then
 		StoreController.instance:dispatchEvent(StoreEvent.PlayHideStoreAnim)
 		self:_startDefaultShowView()
@@ -177,7 +187,10 @@ function ClothesStoreView:hideUI(noAnim, isNotAutoClose)
 end
 
 function ClothesStoreView:_onClickBtnPlay()
-	self:playVideo()
+	local goodsMo = StoreClothesGoodsItemListModel.instance:getSelectGoods()
+
+	StoreController.instance:dispatchEvent(StoreEvent.OnPlaySkinVideo, goodsMo)
+	self:hideUI(false, false)
 
 	if self.skinId then
 		StatController.instance:track(StatEnum.EventName.ButtonClick, {
@@ -611,12 +624,8 @@ function ClothesStoreView:refreshSkinInfo()
 	end
 
 	if isShowVideoBtn and self:checkSkinVideoNotPlayed(skinId) then
-		self:setSkinVideoPlayed(skinId)
 		self:playVideo()
-	elseif self:checkSkinVideoNotPlayed(0) then
-		self:setSkinVideoPlayed(0)
-		self:hideUI()
-		self:_playSkinVideoStoreByMo(goodsMo, skinViewCfg)
+		self:setSkinVideoPlayed(skinId)
 	else
 		self:_playSkinVideoStoreByMo(goodsMo, skinViewCfg)
 	end

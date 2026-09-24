@@ -19,6 +19,7 @@ function StoryHeroEffsDlkBloom:showDLKBloom(bloomVal)
 	StoryTool.enablePostProcess(true)
 	PostProcessingMgr.instance:setUIPPValue("localBloomActive", true)
 	TaskDispatcher.runDelay(self.fadeIn, self, 0.2)
+	self:_setViewTop(true)
 end
 
 function StoryHeroEffsDlkBloom:fadeIn()
@@ -74,8 +75,9 @@ function StoryHeroEffsDlkBloom:setBloomGVal(value)
 
 	self.curBloomG = tonumber(value)
 
-	cubctrl.InstancedMaterials[0]:SetFloat("_QuickBloomG", value)
-	cubctrl.InstancedMaterials[1]:SetFloat("_QuickBloomG", value)
+	for i = 0, cubctrl.InstancedMaterials.Length - 1 do
+		cubctrl.InstancedMaterials[i]:SetFloat("_QuickBloomG", value)
+	end
 end
 
 function StoryHeroEffsDlkBloom:_fadeInFinished()
@@ -86,7 +88,19 @@ function StoryHeroEffsDlkBloom:_fadeOutFinished()
 	self:setBloomGVal(0)
 end
 
+function StoryHeroEffsDlkBloom:_setViewTop(set)
+	if set then
+		StoryViewMgr.instance:setStoryViewLayer(UnityLayer.UITop)
+		StoryViewMgr.instance:setStoryLeadRoleSpineViewLayer(UnityLayer.UITop)
+	else
+		StoryViewMgr.instance:setStoryViewLayer(UnityLayer.UISecond)
+		StoryViewMgr.instance:setStoryLeadRoleSpineViewLayer(UnityLayer.UIThird)
+	end
+end
+
 function StoryHeroEffsDlkBloom:destroy()
+	self:_setViewTop(false)
+
 	if self._fadeTweenId then
 		ZProj.TweenHelper.KillById(self._fadeTweenId)
 

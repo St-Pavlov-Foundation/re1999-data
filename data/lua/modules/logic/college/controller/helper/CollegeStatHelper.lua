@@ -30,6 +30,13 @@ function CollegeStatHelper:statViewClose(name, beginTime)
 	})
 end
 
+function CollegeStatHelper:statElementTime(id, time)
+	StatController.instance:track(StatEnum.EventName.College_MapElement, {
+		[StatEnum.EventProperties.College_ElementId] = id,
+		[StatEnum.EventProperties.College_Time] = tostring(time)
+	})
+end
+
 function CollegeStatHelper:statExit()
 	if not self.beginDt then
 		return

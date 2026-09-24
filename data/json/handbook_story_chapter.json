@@ -398,5 +398,21 @@
     "name": "天真的预言",
     "nameEn": "Auguries of Innocence",
     "year": ""
+  },
+  {
+    "id": 16,
+    "type": 1,
+    "order": 0,
+    "name": "应门者",
+    "nameEn": "Pa gur yv y porthaur?",
+    "year": "1935"
+  },
+  {
+    "id": 17,
+    "type": 1,
+    "order": 0,
+    "name": "船喻",
+    "nameEn": "Ship of State",
+    "year": "1935"
   }
 ]

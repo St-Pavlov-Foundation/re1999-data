@@ -44,6 +44,13 @@ function MatchGameFightHeroInfoItem:_btnHeroItemClick()
 		return
 	end
 
+	local isRoundEnding = self.fightView:getIsRoundEnding()
+	local isHeroSkillShowing = self.fightView:getHeroSkillShowingState()
+
+	if isRoundEnding or isHeroSkillShowing then
+		return
+	end
+
 	if self.heroFightMo.energy >= self.heroFightMo.maxEnergy then
 		self.heroFightMo:updateFightInfo({
 			energy = 0
@@ -57,21 +64,35 @@ function MatchGameFightHeroInfoItem:_btnHeroItemClick()
 
 		if not string.nilorempty(skillConfig.skillText) then
 			self.fightView:showSkillDesc(skillConfig)
-			TaskDispatcher.runDelay(self.doHeroSkill, self, MatchGameFightEnum.SkillDescShowTime)
+			self.fightView:playRoleAnim("hit_skill", self.heroFightMo.id, false)
+
+			local descShowTime = skillConfig.skillTextType == MatchGameFightEnum.SkillToastType.DropRate and MatchGameFightEnum.DropSkillDescShowTime or MatchGameFightEnum.SkillDescShowTime
+
+			TaskDispatcher.runDelay(self.doHeroSkill, self, descShowTime)
 		else
+			self.fightView:playRoleAnim("hit_skill", self.heroFightMo.id, false)
 			self:doHeroSkill()
 		end
+
+		AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_skill_release)
 	end
 end
 
 function MatchGameFightHeroInfoItem:doHeroSkill()
+	local params = {
+		conditionId = MatchGameFightEnum.SkillConditionType.None,
+		heroFightMo = self.heroFightMo
+	}
+
+	MatchGameController.instance:dispatchEvent(MatchGameFightEvent.OnSkillNoneCondition, params)
+
 	local params = {
 		conditionId = MatchGameFightEnum.SkillConditionType.OnSkillCast,
 		heroFightMo = self.heroFightMo
 	}
 
 	MatchGameController.instance:dispatchEvent(MatchGameFightEvent.OnSkillCastCondition, params)
-	self.fightView:playRoleAnim("hit_skill", self.heroFightMo.id, false)
+	MatchGameController.instance:dispatchEvent(MatchGameFightEvent.BeginGameStartRoundTime)
 end
 
 function MatchGameFightHeroInfoItem:refreshUI(heroFightMo)
@@ -174,6 +195,7 @@ function MatchGameFightHeroInfoItem:playSkillFullAnim()
 	gohelper.setActive(self.goSkillFull, true)
 	self.skillFullAnim:Play("open", 0, 0)
 	self.skillFullAnim:Update(0)
+	AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_skill_fullof)
 end
 
 function MatchGameFightHeroInfoItem:closeSkillFullAnim()

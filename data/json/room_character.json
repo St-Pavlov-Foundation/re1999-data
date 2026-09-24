@@ -6137,9 +6137,9 @@
   {
     "skinId": 315501,
     "specialIdle": 1,
-    "specialRate": 1000,
+    "specialRate": 100,
     "moveInterval": 15,
-    "moveRate": 0,
+    "moveRate": 400,
     "moveSpeed": 0.48,
     "zeroMix": false,
     "shadow": "shadow",
@@ -6147,14 +6147,14 @@
     "effectPath": "",
     "waterDistance": 0,
     "roleVoice": "6215505|6215506|6215508|6215510",
-    "hideFootprint": 0
+    "hideFootprint": 1
   },
   {
     "skinId": 315502,
     "specialIdle": 1,
-    "specialRate": 1000,
+    "specialRate": 100,
     "moveInterval": 15,
-    "moveRate": 0,
+    "moveRate": 400,
     "moveSpeed": 0.48,
     "zeroMix": false,
     "shadow": "shadow",
@@ -6162,7 +6162,7 @@
     "effectPath": "",
     "waterDistance": 0,
     "roleVoice": "6215505|6215506|6215508|6215510",
-    "hideFootprint": 0
+    "hideFootprint": 1
   },
   {
     "skinId": 315801,
@@ -6227,9 +6227,9 @@
   {
     "skinId": 315503,
     "specialIdle": 1,
-    "specialRate": 1000,
+    "specialRate": 100,
     "moveInterval": 15,
-    "moveRate": 0,
+    "moveRate": 400,
     "moveSpeed": 0.48,
     "zeroMix": false,
     "shadow": "shadow",
@@ -6237,7 +6237,7 @@
     "effectPath": "",
     "waterDistance": 0,
     "roleVoice": "6215505|6215506|6215508|6215510",
-    "hideFootprint": 0
+    "hideFootprint": 1
   },
   {
     "skinId": 313403,

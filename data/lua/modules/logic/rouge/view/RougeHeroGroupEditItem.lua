@@ -177,8 +177,10 @@ end
 
 function RougeHeroGroupEditItem:updateTrialTag()
 	local txt
+	local assistMo = self._heroGroupEditListModel:getAssistHeroMo()
+	local isTrial = self._mo:isTrial() or assistMo == self._mo
 
-	if self._mo:isTrial() then
+	if isTrial then
 		txt = luaLang("herogroup_trial_tag0")
 	end
 

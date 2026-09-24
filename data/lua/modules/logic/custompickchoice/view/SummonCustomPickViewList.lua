@@ -28,7 +28,7 @@ function SummonCustomPickViewList:refreshUI()
 end
 
 function SummonCustomPickViewList:refreshList()
-	local ownList = SummonCustomPickModel.instance:getOwnList()
+	local ownList = SummonCustomPickHeroModel.instance:getOwnList()
 
 	self:refreshItems(ownList, self._ownHeroes, self._gocontent)
 	ZProj.UGUIHelper.RebuildLayout(self._tfcontent)
@@ -70,7 +70,7 @@ function SummonCustomPickViewList:getOrCreateItem(index, items, goRoot)
 end
 
 function SummonCustomPickViewList:_onSetSelect(heroId)
-	SummonCustomPickModel.instance:setSelectId(heroId)
+	SummonCustomPickHeroModel.instance:setSelectId(heroId)
 	SummonCustomPickController.instance:dispatchEvent(SummonCustomPickEvent.OnCustomPickListChanged)
 end
 

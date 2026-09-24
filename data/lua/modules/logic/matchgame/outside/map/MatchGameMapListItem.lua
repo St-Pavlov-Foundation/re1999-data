@@ -6,6 +6,7 @@ local MatchGameMapListItem = class("MatchGameMapListItem", SimpleListItem)
 
 function MatchGameMapListItem:onInit()
 	self._txtIndex = gohelper.findChildText(self.viewGO, "image_bg/#txt_index")
+	self._txtIndex2 = gohelper.findChildText(self.viewGO, "#go_lock/#txt_lockindex")
 	self._goLock = gohelper.findChild(self.viewGO, "#go_lock")
 	self._goUnlock = gohelper.findChild(self.viewGO, "#go_unlock")
 	self._goSelect = gohelper.findChild(self.viewGO, "#go_select")
@@ -39,6 +40,7 @@ end
 
 function MatchGameMapListItem:refreshUI()
 	self._txtIndex.text = self._mapCo and self._mapCo.chapterName
+	self._txtIndex2.text = self._mapCo and self._mapCo.chapterName
 
 	gohelper.setActive(self._goLock, self._status == MatchGameEnum.MapStatus.Lock)
 	gohelper.setActive(self._goUnlock, self._status == MatchGameEnum.MapStatus.Unlock)

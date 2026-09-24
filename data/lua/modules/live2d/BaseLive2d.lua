@@ -66,11 +66,9 @@ function BaseLive2d:doClear()
 end
 
 function BaseLive2d:_clear()
-	if self.customEffectComp then
-		MonoHelper.removeLuaComFromGo(self._gameObj, BaseLive2dSpecialEffect)
+	MonoHelper.removeLuaComFromGo(self._gameObj, BaseCommonSpecialEffect)
 
-		self.customEffectComp = nil
-	end
+	self.customEffectComp = nil
 
 	if self._resLoader then
 		self._resLoader:dispose()

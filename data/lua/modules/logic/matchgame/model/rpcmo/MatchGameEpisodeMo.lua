@@ -7,7 +7,12 @@ local MatchGameEpisodeMo = class("MatchGameEpisodeMo")
 function MatchGameEpisodeMo:init(info)
 	self.episodeId = info.episodeId
 	self.episodeCo = lua_activity244_episode.configDict[self.episodeId]
-	self.matchLevelId = self.episodeCo.matchLevelId
+
+	if not self.episodeCo then
+		logError(string.format("三消关卡配置不存在 episodeId = %s", self.episodeId))
+	end
+
+	self.matchLevelId = self.episodeCo and self.episodeCo.matchLevelId
 	self.levelCo = lua_activity244_episode_level.configDict[self.matchLevelId]
 	self.isPass = info.isPass
 

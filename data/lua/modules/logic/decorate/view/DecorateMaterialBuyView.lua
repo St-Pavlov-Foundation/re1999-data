@@ -28,6 +28,8 @@ function DecorateMaterialBuyView:onInitView()
 	self._btnclose = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_close")
 	self._gotips = gohelper.findChild(self.viewGO, "right/#go_buyContent/#go_tips")
 	self._txtdiscounttips = gohelper.findChildText(self.viewGO, "right/#go_buyContent/#go_tips/#txt_discount")
+	self._godiscount = gohelper.findChild(self.viewGO, "right/#go_buyContent/buy/#btn_insight/#go_discount")
+	self._txtdiscount = gohelper.findChildText(self.viewGO, "right/#go_buyContent/buy/#btn_insight/#go_discount/#txt_discount")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -58,7 +60,7 @@ function DecorateMaterialBuyView:_btninsightOnClick()
 	if has and items and isCanBuySceneUIPackage then
 		local co = ItemModel.instance:getItemConfig(items[1], items[2])
 
-		GameFacade.showMessageBox(MessageBoxIdDefine.DecorateDiscountTip2, MsgBoxEnum.BoxType.Yes_No, self._checkDiscounnt, self.closeThis, nil, self, self, nil, co and co.name or "", self._goodConfig.name)
+		GameFacade.showMessageBox(MessageBoxIdDefine.DecorateDiscountTip2, MsgBoxEnum.BoxType.Yes_No, self._checkDiscounnt, self._closeFunc, nil, self, self, nil, co and co.name or "", self._goodConfig.name)
 	else
 		self:_checkDiscounnt()
 	end
@@ -96,11 +98,11 @@ function DecorateMaterialBuyView:_readyBuy()
 	local costParam = self._currencyParam[curIndex]
 
 	if costParam[1] == MaterialEnum.MaterialType.Currency and costParam[2] == CurrencyEnum.CurrencyType.FreeDiamondCoupon then
-		if CurrencyController.instance:checkFreeDiamondEnough(costParam[3], CurrencyEnum.PayDiamondExchangeSource.Store, nil, self._exchangeFinished, self, self.closeThis, self) then
+		if CurrencyController.instance:checkFreeDiamondEnough(costParam[3], CurrencyEnum.PayDiamondExchangeSource.Store, nil, self._exchangeFinished, self, self._closeFunc, self) then
 			self:_buyGood(curIndex)
 		end
 	elseif costParam[1] == MaterialEnum.MaterialType.Currency and costParam[2] == CurrencyEnum.CurrencyType.Diamond then
-		if CurrencyController.instance:checkDiamondEnough(costParam[3], self.closeThis, self) then
+		if CurrencyController.instance:checkDiamondEnough(costParam[3], self._closeFunc, self) then
 			self:_buyGood(curIndex)
 		end
 	elseif costParam[1] == MaterialEnum.MaterialType.Currency and costParam[2] == CurrencyEnum.CurrencyType.OldTravelTicket then
@@ -138,7 +140,7 @@ end
 
 function DecorateMaterialBuyView:_buyCallback(cmd, resultCode, msg)
 	if resultCode == 0 then
-		self:closeThis()
+		self:_closeFunc()
 	end
 end
 
@@ -147,7 +149,11 @@ function DecorateMaterialBuyView:_btnClickUseTicket()
 end
 
 function DecorateMaterialBuyView:_btncloseOnClick()
-	self:closeThis()
+	self:_closeFunc()
+end
+
+function DecorateMaterialBuyView:_closeFunc()
+	self._animatorPlayer:Play("close", self.closeThis, self)
 end
 
 function DecorateMaterialBuyView:_editableInitView()
@@ -175,6 +181,8 @@ function DecorateMaterialBuyView:_editableInitView()
 	self._simagebg2:LoadImage(ResUrl.getCommonIcon("bg_2"))
 	gohelper.removeUIClickAudio(self._btnclose.gameObject)
 	gohelper.addUIClickAudio(self._btninsight.gameObject, AudioEnum.HeroGroupUI.Play_UI_Action_Mainstart)
+
+	self._animatorPlayer = SLFramework.AnimatorPlayer.Get(self.viewGO)
 end
 
 function DecorateMaterialBuyView:onOpen()
@@ -250,12 +258,18 @@ function DecorateMaterialBuyView:_refreshUI()
 	gohelper.setActive(self._gotips, has)
 
 	if self._simageinfobg then
-		local icon = DecorateModel.instance:getItemIcon(self._itemCo, self._goodsId)
+		local icon = DecorateModel.instance:getGoodsBuyIcon(self._itemCo, self._goodsId)
 
 		self._simageinfobg:LoadImage(icon, function()
 			self._imageinfobg:SetNativeSize()
 		end, self)
 	end
+
+	if self._decorateConfig.offTag > 0 then
+		self._txtdiscount.text = string.format("-%s%%", self._decorateConfig.offTag)
+	end
+
+	gohelper.setActive(self._godiscount, self._decorateConfig.offTag > 0)
 end
 
 function DecorateMaterialBuyView:_createPayItemUserDataTb_(goItem, index)
@@ -334,20 +348,26 @@ function DecorateMaterialBuyView:_onSelectPayItemUI(item, isSelect)
 end
 
 function DecorateMaterialBuyView:_refreshIcon()
-	local curIndex = DecorateStoreModel.instance:getCurCostIndex()
+	if self._currencyParam and #self._currencyParam > 1 then
+		local curIndex = DecorateStoreModel.instance:getCurCostIndex()
 
-	for index, currency in ipairs(self._currencyParam) do
-		local item = self._payItemTbList[index]
+		for index, currency in ipairs(self._currencyParam) do
+			local item = self._payItemTbList[index]
 
-		if not item then
-			local goItem = gohelper.cloneInPlace(self._gopayitem, "go_payitem" .. index)
+			if not item then
+				local goItem = gohelper.cloneInPlace(self._gopayitem, "go_payitem" .. index)
 
-			item = self:_createPayItemUserDataTb_(goItem, index)
+				item = self:_createPayItemUserDataTb_(goItem, index)
+			end
+
+			self:_onSelectPayItemUI(item, item._index == curIndex)
+			gohelper.setActive(item._go, true)
+			self:_refreshPayItemUI(item, index, currency[1], currency[2])
 		end
-
-		self:_onSelectPayItemUI(item, item._index == curIndex)
-		gohelper.setActive(item._go, true)
-		self:_refreshPayItemUI(item, index, currency[1], currency[2])
+	else
+		for _, item in ipairs(self._payItemTbList) do
+			gohelper.setActive(item._go, false)
+		end
 	end
 end
 
@@ -442,7 +462,7 @@ function DecorateMaterialBuyView:_refreshLogo()
 end
 
 function DecorateMaterialBuyView:onClickModalMask()
-	self:closeThis()
+	self:_closeFunc()
 end
 
 function DecorateMaterialBuyView:onClose()

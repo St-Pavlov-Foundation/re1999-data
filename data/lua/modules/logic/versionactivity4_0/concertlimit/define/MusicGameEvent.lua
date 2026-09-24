@@ -6,5 +6,8 @@ local MusicGameEvent = _M
 local _get = GameUtil.getUniqueTb()
 
 MusicGameEvent.BlockItemConnect = _get()
+MusicGameEvent.CancelGame = _get()
+MusicGameEvent.BlockLongPress = _get()
+MusicGameEvent.BlockPressEnd = _get()
 
 return MusicGameEvent

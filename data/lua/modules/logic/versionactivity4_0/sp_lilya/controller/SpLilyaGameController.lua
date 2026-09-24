@@ -18,6 +18,7 @@ end
 
 function SpLilyaGameController:reInit()
 	self._isRunning = false
+	self._isPaused = false
 	self._timeUpdateElapsed = 0
 	self._isGameOver = false
 	self._isPower = false
@@ -81,6 +82,7 @@ function SpLilyaGameController:startPower()
 	end
 
 	self._isPower = true
+	self._powerHoldTime = 0
 
 	local playerMo = self:_getPlayerMo()
 
@@ -95,6 +97,7 @@ function SpLilyaGameController:stopPower()
 	end
 
 	self._isPower = false
+	self._powerHoldTime = 0
 
 	self:_doFire()
 
@@ -147,6 +150,8 @@ function SpLilyaGameController:setSceneSize(width, height)
 
 	if sceneMo then
 		sceneMo:setSceneSize(width, height)
+
+		gameMO.enemyEndPosX = -sceneMo.groundPosX
 	end
 end
 
@@ -188,6 +193,14 @@ function SpLilyaGameController:_updatePower(deltaTime)
 	local playerMo = self:_getPlayerMo()
 
 	if not playerMo then
+		return
+	end
+
+	self._powerHoldTime = (self._powerHoldTime or 0) + deltaTime
+
+	local chargeDelay = SpLilyaEnum.PowerChargeDelay or 0
+
+	if chargeDelay > self._powerHoldTime then
 		return
 	end
 
@@ -354,6 +367,7 @@ function SpLilyaGameController:fireEnergy()
 	playerMo.curEnergy = 0
 
 	self:dispatchEvent(SpLilyaEvent.EnergyUpdate, playerMo.curEnergy, energyMax)
+	logNormal("Energy fired : cur " .. tostring(playerMo.curEnergy) .. " / " .. tostring(energyMax))
 
 	local damage = playerMo.energyBulletDamage or 0
 	local posX = playerMo.bulletPosX or playerMo.posX
@@ -580,9 +594,19 @@ function SpLilyaGameController:startGame()
 		return
 	end
 
-	FixedUpdateBeat:Add(self._onUpdate, self)
+	self._updateHandle = FixedUpdateBeat:CreateListener(self._onUpdate, self)
+
+	FixedUpdateBeat:AddListener(self._updateHandle)
 
 	self._isRunning = true
+
+	self:addEventCb(self, SpLilyaEvent.GamePause, self._onGamePause, self)
+	self:addEventCb(self, SpLilyaEvent.GameResume, self._onGameResume, self)
+
+	local gameId = SpLilyaGameModel.instance:getCurGameId()
+
+	logWarn(string.format("[SpLilya][%.3f] GameStart gameId=%s", Time.realtimeSinceStartup, tostring(gameId)))
+	self:dispatchEvent(SpLilyaEvent.GameStart, gameId)
 end
 
 function SpLilyaGameController:stopGame()
@@ -592,12 +616,44 @@ function SpLilyaGameController:stopGame()
 		return
 	end
 
-	FixedUpdateBeat:Remove(self._onUpdate, self)
+	if self._updateHandle then
+		FixedUpdateBeat:RemoveListener(self._updateHandle)
+
+		self._updateHandle = nil
+	end
+
+	self:removeEventCb(self, SpLilyaEvent.GamePause, self._onGamePause, self)
+	self:removeEventCb(self, SpLilyaEvent.GameResume, self._onGameResume, self)
 
 	self._isRunning = false
+	self._isPaused = false
+end
+
+function SpLilyaGameController:_onGamePause()
+	if self._isPaused then
+		return
+	end
+
+	self._isPaused = true
+
+	logWarn(string.format("[SpLilya][%.3f] GamePause", Time.realtimeSinceStartup))
+end
+
+function SpLilyaGameController:_onGameResume()
+	if not self._isPaused then
+		return
+	end
+
+	self._isPaused = false
+
+	logWarn(string.format("[SpLilya][%.3f] GameResume", Time.realtimeSinceStartup))
 end
 
 function SpLilyaGameController:_onUpdate()
+	if self._isPaused then
+		return
+	end
+
 	local deltaTime = Time.deltaTime
 
 	self:_updateEnergyLaunch(deltaTime)

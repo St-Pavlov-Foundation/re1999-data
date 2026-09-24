@@ -12,6 +12,7 @@ function HandbookSkinViewContainer:buildViews()
 
 	self:buildSubScenes()
 	self._scene:setSevenSubScene(self:getSubScene(HandbookEnum.SkinSuitSceneType.Seven))
+	self._scene:setTarotSubScene(self:getSubScene(HandbookEnum.SkinSuitSceneType.Tarot))
 	table.insert(views, HandbookSkinView.New())
 	table.insert(views, self._scene)
 	table.insert(views, TabViewGroup.New(1, "#go_topleft"))
@@ -22,6 +23,7 @@ end
 function HandbookSkinViewContainer:buildSubScenes()
 	self._subScene = {}
 	self._subScene[HandbookEnum.SkinSuitSceneType.Seven] = HandbookScene_Seven.New()
+	self._subScene[HandbookEnum.SkinSuitSceneType.Tarot] = HandbookScene_Tarot.New()
 end
 
 function HandbookSkinViewContainer:getSubScene(sceneType)

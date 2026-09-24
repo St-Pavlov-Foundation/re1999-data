@@ -8503,5 +8503,12 @@
     "point": "special6",
     "effectRes": "v4a0_tlzchnj/tlzchnj_interact6",
     "animName": "interact"
+  },
+  {
+    "skinId": 315503,
+    "id": 140315513,
+    "point": "special2",
+    "effectRes": "v4a0_tlzchnj/tlzchnj_idleroom2",
+    "animName": "idle_room"
   }
 ]

@@ -916,7 +916,7 @@
     "id": 7104,
     "condition": "",
     "triggerPoint": 11,
-    "effect": "TemporaryBuffToPermanent#7005#7004#500",
+    "effect": "TemporaryBuffToPermanent#7005#7004#1000",
     "type": 7104,
     "cover": "SameRoundStackingDifferentRoundNewBuff",
     "durationDeduction": 0,
@@ -964,14 +964,14 @@
     "type": 7108,
     "cover": "SameRoundStackingDifferentRoundNewBuff",
     "durationDeduction": 0,
-    "buffeffectID": 0,
+    "buffeffectID": 40006,
     "downline": false
   },
   {
     "id": 7109,
     "condition": "",
     "triggerPoint": 13,
-    "effect": "RefundConsumed#7003#1000",
+    "effect": "RefundConsumed#7003#1500",
     "type": 7109,
     "cover": "SameRoundStackingDifferentRoundNewBuff",
     "durationDeduction": 0,
@@ -1081,11 +1081,11 @@
     "id": 7119,
     "condition": "",
     "triggerPoint": 231,
-    "effect": "LethalDamageGuard#1#1",
+    "effect": "LethalDamageGuard#3#1",
     "type": 7119,
     "cover": "SameRoundStackingDifferentRoundNewBuff",
     "durationDeduction": 0,
-    "buffeffectID": 0,
+    "buffeffectID": 40007,
     "downline": false
   },
   {
@@ -1119,6 +1119,50 @@
     "cover": "SameRoundStackingDifferentRoundNewBuff",
     "durationDeduction": 0,
     "buffeffectID": 0,
+    "downline": false
+  },
+  {
+    "id": 7123,
+    "condition": "",
+    "triggerPoint": 0,
+    "effect": "StatureHalo#101#Ocean#None#-1#Attack:1&Hp:1",
+    "type": 4001,
+    "cover": "SameRoundStackingDifferentRoundNewBuff",
+    "durationDeduction": 0,
+    "buffeffectID": 40003,
+    "downline": false
+  },
+  {
+    "id": 7124,
+    "condition": "",
+    "triggerPoint": 0,
+    "effect": "GrantSkill#40111",
+    "type": 7124,
+    "cover": "SameRoundStackingDifferentRoundNewBuff",
+    "durationDeduction": 0,
+    "buffeffectID": 0,
+    "downline": false
+  },
+  {
+    "id": 7125,
+    "condition": "",
+    "triggerPoint": 0,
+    "effect": "StatureHalo#101#None#None#-1#Hp:1",
+    "type": 7125,
+    "cover": "SameRoundStackingDifferentRoundNewBuff",
+    "durationDeduction": 0,
+    "buffeffectID": 40003,
+    "downline": false
+  },
+  {
+    "id": 7126,
+    "condition": "",
+    "triggerPoint": 0,
+    "effect": "StatureHalo#101#None#None#-1#Attack:1",
+    "type": 7126,
+    "cover": "SameRoundStackingDifferentRoundNewBuff",
+    "durationDeduction": 0,
+    "buffeffectID": 40003,
     "downline": false
   }
 ]

@@ -11,6 +11,7 @@ function AbyssHeroGroupFightView:_editableInitView()
 	MaxMultiplication = CommonConfig.instance:getConstNum(ConstEnum.MaxMultiplication) or MaxMultiplication
 	self._multiplication = 1
 	self._goherogroupcontain = gohelper.findChild(self.viewGO, "herogroupcontain")
+	self._gobuff = gohelper.findChild(self.viewGO, "herogroupcontain/hero/bg5")
 	self._imagebufficon = gohelper.findChildImage(self.viewGO, "herogroupcontain/hero/bg5/#img_icon")
 	self._goAddBuff = gohelper.findChild(self.viewGO, "herogroupcontain/hero/bg5/#go_jiahao")
 	self._btnbuff = gohelper.findChildButton(self.viewGO, "herogroupcontain/hero/bg5/#btn_click")
@@ -96,15 +97,14 @@ function AbyssHeroGroupFightView:onClose()
 	AbyssHeroGroupFightView.super.onClose(self)
 end
 
-function AbyssHeroGroupFightView:_refreshBtns(isCostPower)
-	AbyssHeroGroupFightView.super.onClose(self)
-end
-
 function AbyssHeroGroupFightView:_enterFight()
 	if HeroGroupModel.instance.episodeId then
 		local stageInfo = AbyssModel.instance:getCurStageMo()
+		local actId = AbyssModel.instance:getCurActId()
+		local stageId = AbyssModel.instance:getCurStageId()
+		local hasSkillOptions = AbyssConfig.instance:getStageSkillId(actId, stageId)
 
-		if stageInfo.skillId == nil or stageInfo.skillId == 0 then
+		if hasSkillOptions and (stageInfo.skillId == nil or stageInfo.skillId == 0) then
 			GameFacade.showToast(ToastEnum.V3a9_Abyss_Skill_Tips)
 
 			return
@@ -192,10 +192,6 @@ function AbyssHeroGroupFightView:_onModifyHeroGroup()
 	gohelper.setActive(self._dropherogroup, false)
 end
 
-function AbyssHeroGroupFightView:isShowDropHeroGroup()
-	return false
-end
-
 function AbyssHeroGroupFightView:_initFightGroupDrop()
 	gohelper.setActive(self._dropherogroup, false)
 end
@@ -208,6 +204,18 @@ function AbyssHeroGroupFightView:refreshBuff()
 	if not self._imagebufficon then
 		return
 	end
+
+	local actId = AbyssModel.instance:getCurActId()
+	local stageId = AbyssModel.instance:getCurStageId()
+	local hasSkillOptions = AbyssConfig.instance:getStageSkillId(actId, stageId)
+
+	if not hasSkillOptions then
+		gohelper.setActive(self._gobuff.gameObject, false)
+
+		return
+	end
+
+	gohelper.setActive(self._gobuff.gameObject, true)
 
 	local stageMo = AbyssModel.instance:getCurStageMo()
 
@@ -270,9 +278,7 @@ function AbyssHeroGroupFightView:onDestroyView()
 end
 
 function AbyssHeroGroupFightView:isShowDropHeroGroup()
-	local curStageMo = AbyssModel.instance:getCurStageMo()
-
-	return not curStageMo:isChallenged()
+	return false
 end
 
 function AbyssHeroGroupFightView:onDailyRefreshCheck()

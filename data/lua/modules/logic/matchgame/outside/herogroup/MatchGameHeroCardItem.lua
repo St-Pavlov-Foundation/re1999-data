@@ -24,6 +24,8 @@ function MatchGameHeroCardItem:init(go)
 	self._defaultLocalX, self._defaultLocalY = recthelper.getAnchor(self.transform)
 	self._goPos = self.transform.parent.gameObject
 	self._animator = gohelper.onceAddComponent(self._goContainer, gohelper.Type_Animator)
+	self._isFirstEnter = true
+	self._isNeedPlaySwitch = false
 end
 
 function MatchGameHeroCardItem:addEventListeners()
@@ -58,12 +60,15 @@ function MatchGameHeroCardItem:onUpdateMO(singleMo)
 end
 
 function MatchGameHeroCardItem:updateData(singleMo)
-	self._preSingleId = self._singleId
+	local preSingleId = self._singleId
 
 	self:updateState(singleMo)
 
 	self._singleMo = singleMo
 	self._singleId = self._singleMo and self._singleMo.id
+	self._preSingleId = self._isFirstEnter and self._singleId or preSingleId
+	self._isNeedPlaySwitch = self._singleId ~= self._preSingleId
+	self._isFirstEnter = false
 
 	local heroMo = self._singleMo and self._singleMo.heroMo
 
@@ -182,8 +187,10 @@ end
 function MatchGameHeroCardItem:_onCloseView(viewName)
 	if viewName == ViewName.MatchGameHeroGroupView then
 		self._animator:Play("close", 0, 0)
-	elseif viewName == ViewName.MatchGameHeroGroupEditView and self._singleMo and self._preSingleId ~= self._singleId then
+	elseif viewName == ViewName.MatchGameHeroGroupEditView and self._isNeedPlaySwitch then
 		self._animator:Play("swicth", 0, 0)
+
+		self._isNeedPlaySwitch = false
 	end
 end
 

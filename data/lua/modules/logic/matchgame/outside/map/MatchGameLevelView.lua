@@ -5,6 +5,7 @@ module("modules.logic.matchgame.outside.map.MatchGameLevelView", package.seeall)
 local MatchGameLevelView = class("MatchGameLevelView", BaseView)
 
 function MatchGameLevelView:onInitView()
+	self._simageBg = gohelper.findChildSingleImage(self.viewGO, "#simage_fullbg")
 	self._goMapContent = gohelper.findChild(self.viewGO, "#go_MapContent")
 	self._goLineRoot = gohelper.findChild(self.viewGO, "#go_MapContent/#go_LineRoot")
 	self._goEpisodeRoot = gohelper.findChild(self.viewGO, "#go_MapContent/#go_EpisodeRoot")
@@ -17,9 +18,10 @@ function MatchGameLevelView:onInitView()
 end
 
 function MatchGameLevelView:addEvents()
-	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self._onCloseViewFinish, self)
-	self:addEventCb(MatchGameController.instance, MatchGameEvent.OnBackToLevel, self._onBackToLevel, self)
+	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, self._onCloseView, self, LuaEventSystem.Low)
+	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseViewFinish, self._onCloseViewFinish, self, LuaEventSystem.Low)
 	self:addEventCb(MatchGameController.instance, MatchGameEvent.OnClickSelectMap, self._onClickSelectMap, self)
+	self:addEventCb(MatchGameController.instance, MatchGameEvent.OnUpdateEpisodeInfo, self._onUpdateEpisodeInfo, self)
 end
 
 function MatchGameLevelView:removeEvents()
@@ -47,7 +49,13 @@ function MatchGameLevelView:onOpen()
 end
 
 function MatchGameLevelView:_initLevelItems()
+	TaskDispatcher.cancelTask(self._playStoryFinishAnim, self)
+	TaskDispatcher.cancelTask(self._finishStoryEnd, self)
+	TaskDispatcher.cancelTask(self._unlockLvEnd, self)
+	TaskDispatcher.cancelTask(self._unlockStory, self)
+
 	self._chapterId = MatchGameLevelModel.instance:getCurChapterId()
+	self._chapterCo = lua_activity244_chapter.configDict[self._chapterId]
 
 	local episodeCos = MatchGameLevelModel.instance:getCurEpisodeCos()
 
@@ -72,6 +80,10 @@ function MatchGameLevelView:_initLevelItems()
 
 		gohelper.setActive(episodeItem.viewGO, false)
 	end
+
+	local bgName = self._chapterCo and self._chapterCo.chapterImage
+
+	self._simageBg:LoadImage(ResUrl.getMatchGameSingleBg(bgName))
 end
 
 function MatchGameLevelView:_initPathItems()
@@ -162,24 +174,31 @@ function MatchGameLevelView:_onClickSelectMap()
 	self:_initLevelItems()
 end
 
-function MatchGameLevelView:_onBackToLevel()
-	local newEpisode = MatchGameLevelModel.instance:getNewFinishEpisode()
-
-	if newEpisode and newEpisode ~= 0 then
-		self._curEpisodeIndex = MatchGameLevelModel.instance:getEpisodeIndex(newEpisode)
-
-		MatchGameLevelModel.instance:setCurEpisode(self._curEpisodeIndex, newEpisode)
-	end
-end
-
-function MatchGameLevelView:_onCloseViewFinish(viewName)
+function MatchGameLevelView:_onCloseView(viewName)
 	if viewName == self.viewName then
+		self._needPlayNewFinishAnim = false
+
 		return
 	end
 
 	local newEpisode = MatchGameLevelModel.instance:getNewFinishEpisode()
+	local newEpisodeCo = newEpisode and lua_activity244_episode.configDict[newEpisode]
 
-	if not newEpisode or newEpisode == 0 then
+	if not newEpisodeCo or newEpisodeCo.chapterId ~= self._chapterId then
+		self._needPlayNewFinishAnim = false
+
+		MatchGameLevelModel.instance:clearFinishEpisode()
+
+		return
+	end
+
+	self:_initFinishEpisodeState()
+
+	self._needPlayNewFinishAnim = true
+end
+
+function MatchGameLevelView:_onCloseViewFinish(viewName)
+	if not self._needPlayNewFinishAnim then
 		return
 	end
 
@@ -187,36 +206,41 @@ function MatchGameLevelView:_onCloseViewFinish(viewName)
 		return
 	end
 
+	self._needPlayNewFinishAnim = false
+
 	GameUtil.setActiveUIBlock(self.viewName, true, false)
 	TaskDispatcher.runDelay(self._playStoryFinishAnim, self, 1)
+end
+
+function MatchGameLevelView:_initFinishEpisodeState()
+	local newEpisode = MatchGameLevelModel.instance:getNewFinishEpisode()
+
+	for k, episodeItem in ipairs(self._episodeItems) do
+		if episodeItem:getEpisodeId() == newEpisode then
+			self._finishEpisodeIndex = k
+
+			break
+		else
+			episodeItem:refreshUI()
+			self:_playPathAnim(k, "idle2")
+		end
+	end
 end
 
 function MatchGameLevelView:_playStoryFinishAnim()
 	GameUtil.setActiveUIBlock(self.viewName, false, true)
 	TaskDispatcher.cancelTask(self._playStoryFinishAnim, self)
 
-	local newEpisode = MatchGameLevelModel.instance:getNewFinishEpisode()
+	local newFinishItem = self._finishEpisodeIndex and self._episodeItems[self._finishEpisodeIndex]
 
-	if newEpisode then
-		for k, episodeItem in ipairs(self._episodeItems) do
-			if episodeItem:getEpisodeId() == newEpisode then
-				self._finishEpisodeIndex = k
-
-				episodeItem:refreshUI()
-				episodeItem:playFinish()
-				episodeItem:playStarAnim()
-				GameUtil.setActiveUIBlock(self.viewName, true, false)
-				TaskDispatcher.runDelay(self._finishStoryEnd, self, 1.5)
-
-				break
-			else
-				episodeItem:refreshUI()
-				self:_playPathAnim(k, "idle2")
-			end
-		end
-
-		MatchGameLevelModel.instance:clearFinishEpisode()
+	if newFinishItem then
+		newFinishItem:refreshUI()
+		newFinishItem:playFinish()
+		GameUtil.setActiveUIBlock(self.viewName, true, false)
+		TaskDispatcher.runDelay(self._finishStoryEnd, self, 1.5)
 	end
+
+	MatchGameLevelModel.instance:clearFinishEpisode()
 end
 
 function MatchGameLevelView:_finishStoryEnd()
@@ -295,6 +319,16 @@ function MatchGameLevelView:_unlockLvEnd()
 	self._finishEpisodeIndex = nil
 end
 
+function MatchGameLevelView:_onUpdateEpisodeInfo()
+	local newEpisode = MatchGameLevelModel.instance:getNewFinishEpisode()
+
+	if newEpisode and newEpisode ~= 0 then
+		return
+	end
+
+	self:_initLevelItems()
+end
+
 function MatchGameLevelView:onClose()
 	TaskDispatcher.cancelTask(self._playStoryFinishAnim, self)
 	TaskDispatcher.cancelTask(self._finishStoryEnd, self)
@@ -305,6 +339,8 @@ end
 
 function MatchGameLevelView:onDestroyView()
 	self._episodeItems = nil
+
+	self._simageBg:UnLoadImage()
 end
 
 return MatchGameLevelView

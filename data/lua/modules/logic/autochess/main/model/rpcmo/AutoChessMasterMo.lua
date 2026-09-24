@@ -36,7 +36,7 @@ function AutoChessMasterMo:getMutationId()
 	return self.mutationIds and self.mutationIds[1]
 end
 
-function AutoChessMasterMo:isFreshShopLock()
+function AutoChessMasterMo:isLockFreshMall()
 	local buffs = self.buffContainer.buffs
 
 	for i = #buffs, 1, -1 do

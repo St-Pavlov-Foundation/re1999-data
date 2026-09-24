@@ -5454,5 +5454,85 @@
     "invokeType": 8,
     "param": "640408_change",
     "switch": "Fightboos_Second"
+  },
+  {
+    "id": 1421,
+    "battleId": 119404120,
+    "monster": 0,
+    "invokeType": 4,
+    "param": "0",
+    "switch": "Fightboos_First"
+  },
+  {
+    "id": 1421,
+    "battleId": 119404120,
+    "monster": 119404130,
+    "invokeType": 8,
+    "param": "630413_change",
+    "switch": "Fightboos_Second"
+  },
+  {
+    "id": 11421,
+    "battleId": 119404120,
+    "monster": 0,
+    "invokeType": 4,
+    "param": "0",
+    "switch": "Fightboos_First"
+  },
+  {
+    "id": 11421,
+    "battleId": 119404120,
+    "monster": 119404130,
+    "invokeType": 8,
+    "param": "630413_change",
+    "switch": "Fightboos_Second"
+  },
+  {
+    "id": 1421,
+    "battleId": 119401120,
+    "monster": 0,
+    "invokeType": 4,
+    "param": "0",
+    "switch": "Fightboos_First"
+  },
+  {
+    "id": 1421,
+    "battleId": 119401120,
+    "monster": 119401130,
+    "invokeType": 8,
+    "param": "630413_change",
+    "switch": "Fightboos_Second"
+  },
+  {
+    "id": 11421,
+    "battleId": 119402120,
+    "monster": 0,
+    "invokeType": 4,
+    "param": "0",
+    "switch": "Fightboos_First"
+  },
+  {
+    "id": 11421,
+    "battleId": 119402120,
+    "monster": 119402130,
+    "invokeType": 8,
+    "param": "630413_change",
+    "switch": "Fightboos_Second"
+  },
+  {
+    "id": 21421,
+    "battleId": 119403120,
+    "monster": 0,
+    "invokeType": 4,
+    "param": "0",
+    "switch": "Fightboos_First"
+  },
+  {
+    "id": 21421,
+    "battleId": 119403120,
+    "monster": 119403130,
+    "invokeType": 8,
+    "param": "630413_change",
+    "switch": "Fightboos_Second"
   }
 ]

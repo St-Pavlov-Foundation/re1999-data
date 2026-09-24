@@ -957,60 +957,71 @@ function HeroGroupMO:setAssistBossId(bossId)
 	self.assistBossId = bossId
 end
 
-function HeroGroupMO:replaceTowerHeroList(heroList)
-	local dict = {}
-	local list = {}
+function HeroGroupMO:replaceTowerHeroList(heroList, keepPosition)
 	local emptyUid = tostring(0)
-	local heroCount = heroList and #heroList or 0
-
-	for i = 1, heroCount do
-		local hero = heroList[i].heroUid
-
-		dict[hero] = heroList[i].equipUid
-
-		if hero ~= emptyUid then
-			table.insert(list, hero)
-		end
-	end
 
 	if not self.heroList then
 		self.heroList = {}
 	end
 
-	local emptyPosDict = {}
+	local dict = {}
 
-	for i = 1, ModuleEnum.MaxHeroCountInGroup do
-		local hero = self.heroList[i] or emptyUid
+	if keepPosition then
+		for i = 1, ModuleEnum.MaxHeroCountInGroup do
+			local heroInfo = heroList and heroList[i]
 
-		if dict[hero] then
-			tabletool.removeValue(list, hero)
-		else
-			self.heroList[i] = emptyUid
-			emptyPosDict[i] = 1
+			self.heroList[i] = heroInfo and heroInfo.heroUid or emptyUid
 		end
-	end
+	else
+		local list = {}
+		local heroCount = heroList and #heroList or 0
 
-	local posList = {}
+		for i = 1, heroCount do
+			local hero = heroList[i].heroUid
 
-	for k, v in pairs(emptyPosDict) do
-		table.insert(posList, k)
-	end
+			dict[hero] = heroList[i].equipUid
 
-	if #posList > 1 then
-		table.sort(posList)
-	end
+			if hero ~= emptyUid then
+				table.insert(list, hero)
+			end
+		end
 
-	for i, v in ipairs(list) do
-		local pos = posList[i]
+		local emptyPosDict = {}
 
-		self.heroList[pos] = v
+		for i = 1, ModuleEnum.MaxHeroCountInGroup do
+			local hero = self.heroList[i] or emptyUid
+
+			if dict[hero] then
+				tabletool.removeValue(list, hero)
+			else
+				self.heroList[i] = emptyUid
+				emptyPosDict[i] = 1
+			end
+		end
+
+		local posList = {}
+
+		for k, v in pairs(emptyPosDict) do
+			table.insert(posList, k)
+		end
+
+		if #posList > 1 then
+			table.sort(posList)
+		end
+
+		for i, v in ipairs(list) do
+			local pos = posList[i]
+
+			self.heroList[pos] = v
+		end
 	end
 
 	self.equips = {}
 
 	for i = 1, ModuleEnum.MaxHeroCountInGroup do
 		local hero = self.heroList[i] or emptyUid
-		local equipUid = dict[hero]
+		local heroInfo = keepPosition and heroList and heroList[i]
+		local equipUid = keepPosition and heroInfo and heroInfo.equipUid or dict[hero]
 
 		if equipUid then
 			local index = i - 1

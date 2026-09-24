@@ -155,6 +155,14 @@ function SpLilyaBulletMO:updateMove(deltaTime)
 
 		if target then
 			self:_trackMove(target, deltaTime)
+
+			local gameMO = SpLilyaGameModel.instance:getGameMO()
+			local sceneMo = gameMO and gameMO.sceneMo
+			local landY = sceneMo and sceneMo.groundHeight or 0
+
+			if landY >= self.posY then
+				self:setPos(self.posX, landY)
+			end
 		else
 			local g = SpLilyaEnum.DefaultGravity
 			local trajectoryY = self._trajectorySpeedY - g * self._trajectoryElapsed

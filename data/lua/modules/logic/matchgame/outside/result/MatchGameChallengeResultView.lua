@@ -15,13 +15,6 @@ function MatchGameChallengeResultView:onInitView()
 	self._goRewardItem = gohelper.findChild(self.viewGO, "Right/#go_reward/#go_rewardlist/#go_rewarditem")
 	self._btnBack = gohelper.findChildButtonWithAudio(self.viewGO, "Right/Btn/#btn_return")
 	self._btnAgain = gohelper.findChildButtonWithAudio(self.viewGO, "Right/Btn/#btn_again")
-	self._goRound = gohelper.findChild(self.viewGO, "Left/go_achievement/#go_listitem/#go_round")
-	self._txtRound = gohelper.findChildText(self.viewGO, "Left/go_achievement/#go_listitem/#go_round/txt_round/#txt_round")
-	self._goMaxDamage = gohelper.findChild(self.viewGO, "Left/go_achievement/#go_listitem/#go_maxdamage")
-	self._txtMaxDamage = gohelper.findChildText(self.viewGO, "Left/go_achievement/#go_listitem/#go_maxdamage/txt_maxdamage/#txt_maxdamage")
-	self._goMaxChain = gohelper.findChild(self.viewGO, "Left/go_achievement/#go_listitem/#go_maxchain")
-	self._txtMaxChain = gohelper.findChildText(self.viewGO, "Left/go_achievement/#go_listitem/#go_maxchain/txt_maxchain/#txt_maxchain")
-	self._txtTotalScore = gohelper.findChildText(self.viewGO, "Left/go_achievement/#go_listitem/#go_totalscore/txt_totalscore/#txt_totalscore")
 	self._btnReward = gohelper.findChildButtonWithAudio(self.viewGO, "Right/Btn/#btn_reward")
 	self._goRewardRedDot = gohelper.findChild(self.viewGO, "Right/Btn/#btn_reward/#go_rewardreddot")
 
@@ -44,21 +37,18 @@ end
 
 function MatchGameChallengeResultView:_btnBackOnClick()
 	MatchGameController.instance:onGameFinished(self._episodeId, true)
+	MatchGameStatHelper.instance:statResultClick(self.viewName, MatchGameEnum.StatClickType.Back, self._episodeId, true)
 end
 
 function MatchGameChallengeResultView:_btnAgainOnClick()
-	local status = MatchGameModel.instance:getEpisodeStatus(self._episodeId)
+	local isOpen = MatchGameModel.instance:checkEpisodeOpen(self._episodeId, true)
 
-	if status == MatchGameEnum.EpisodeStatus.Lock then
-		local nextRoundTime = self._episodeMo and self._episodeMo.nextRoundTime or 0
-		local remainTime = TimeUtil.SecondToActivityTimeFormat(nextRoundTime / 1000 - ServerTime.now())
-
-		GameFacade.showToast(ToastEnum.MatchGameChallengeEpisodeTime, remainTime)
-
+	if not isOpen then
 		return
 	end
 
 	MatchGameController.instance:openHeroGroupView(self._episodeId)
+	MatchGameStatHelper.instance:statResultClick(self.viewName, MatchGameEnum.StatClickType.Again, self._episodeId, true)
 	self:closeThis()
 end
 
@@ -67,14 +57,12 @@ function MatchGameChallengeResultView:_btnRewardOnClick()
 end
 
 function MatchGameChallengeResultView:_editableInitView()
+	NavigateMgr.instance:addEscape(self.viewName, self._btnBackOnClick, self)
 	RedDotController.instance:addRedDot(self._goRewardRedDot, RedDotEnum.DotNode.MatchGameChallengeReward)
 end
 
 function MatchGameChallengeResultView:onOpen()
 	self._episodeId = self.viewParam and self.viewParam.episodeId
-	self._maxChain = self.viewParam and self.viewParam.maxChain or 0
-	self._roundMaxDamage = self.viewParam and self.viewParam.roundMaxDamage or 0
-	self._roundCount = self.viewParam and self.viewParam.roundCount or 0
 	self._episodeMo = MatchGameModel.instance:getEpisodeInfoById(self._episodeId)
 	self._episodeCo = self._episodeMo and self._episodeMo.episodeCo
 	self._totalScore = MatchGameModel.instance:getCurRewardScore(MatchGameEnum.LevelType.Challenge)
@@ -91,19 +79,42 @@ function MatchGameChallengeResultView:refreshUI()
 	end
 
 	self._txtScore.text = self._curScore or 0
-	self._txtTotalScore.text = self._totalScore or 0
 
 	self:refreshAchievementList()
 	self:refreshRewardList()
 end
 
 function MatchGameChallengeResultView:refreshAchievementList()
-	gohelper.setActive(self._goMaxDamage, true)
-	gohelper.setActive(self._goMaxChain, true)
+	local achievementList = {
+		{
+			type = MatchGameEnum.AchievementType.MaxChain,
+			value = MatchGameFightModel.instance:getMaxChainNum()
+		},
+		{
+			type = MatchGameEnum.AchievementType.WeakAttack,
+			value = MatchGameFightModel.instance:getWeakAttackNum()
+		},
+		{
+			type = MatchGameEnum.AchievementType.Cure,
+			value = MatchGameFightModel.instance:getTotalCureNum()
+		},
+		{
+			type = MatchGameEnum.AchievementType.SkillUse,
+			value = MatchGameFightModel.instance:getTotalSkillUseNum()
+		}
+	}
 
-	self._txtRound.text = self._roundCount or 0
-	self._txtMaxDamage.text = self._roundMaxDamage or 0
-	self._txtMaxChain.text = self._maxChain or 0
+	gohelper.CreateObjList(self, self._refreshAchievementItem, achievementList, self._goAchievementList, self._goAchievementItem)
+end
+
+function MatchGameChallengeResultView:_refreshAchievementItem(goAchievement, achievementInfo, index)
+	local txtName = gohelper.findChildText(goAchievement, "txt_name")
+
+	txtName.text = luaLang("matchgameachievement_" .. achievementInfo.type)
+
+	local txtValue = gohelper.findChildText(goAchievement, "txt_name/txt_value")
+
+	txtValue.text = achievementInfo.value
 end
 
 function MatchGameChallengeResultView:refreshRewardList()

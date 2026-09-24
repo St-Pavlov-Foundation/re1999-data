@@ -11,12 +11,17 @@ GuideEnum.uiTypeDragCard = 4
 GuideEnum.uiTypeArrow = 5
 GuideEnum.uiTypePressArrow = 6
 GuideEnum.uiTypeDragCard2 = 7
-GuideEnum.uiTypeMaxCount = 7
+GuideEnum.uiTypeDrag = 8
+GuideEnum.uiTypeMaxCount = 8
 GuideEnum.ArrowRotation = {
 	160,
 	0,
 	-110,
 	70
+}
+GuideEnum.ArrowDragSize = {
+	600,
+	52
 }
 GuideEnum.GuideIconWithCn = {
 	true,

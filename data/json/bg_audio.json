@@ -2831,12 +2831,12 @@
   },
   {
     "id": 3400002,
-    "eventName": "play_ui_checkpoint_noise_hall",
+    "eventName": "play_ui_checkpoint_noise_halls",
     "bankName": "activity_yingmen_4_0_combataudio_noise"
   },
   {
     "id": 3400003,
-    "eventName": "play_ui_checkpoint_noise_hall",
+    "eventName": "play_ui_checkpoint_noise_halls",
     "bankName": "activity_yingmen_4_0_combataudio_noise"
   },
   {
@@ -2873,5 +2873,10 @@
     "id": 3400010,
     "eventName": "play_battle_yingmen_4_0_bossfight",
     "bankName": "activity_yingmen_4_0_combataudio"
+  },
+  {
+    "id": 3400011,
+    "eventName": "play_activitymusic_ruqin_3_7",
+    "bankName": "activity3_7_music"
   }
 ]

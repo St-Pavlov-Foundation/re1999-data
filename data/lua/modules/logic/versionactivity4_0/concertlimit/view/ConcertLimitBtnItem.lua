@@ -27,6 +27,7 @@ function ConcertLimitBtnItem:onAddEvent()
 	ActivityController.instance:registerCallback(ActivityEvent.ChangeActivityStage, self.refreshDot, self)
 	ActivityController.instance:registerCallback(ActivityEvent.RefreshNorSignActivity, self.refreshDot, self)
 	MainUISwitchController.instance:registerCallback(MainUISwitchEvent.UseMainUI, self.refreshDot, self)
+	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, self.refreshDot, self)
 end
 
 function ConcertLimitBtnItem:onRemoveEvent()
@@ -36,6 +37,7 @@ function ConcertLimitBtnItem:onRemoveEvent()
 	ActivityController.instance:unregisterCallback(ActivityEvent.ChangeActivityStage, self.refreshDot, self)
 	ActivityController.instance:unregisterCallback(ActivityEvent.RefreshNorSignActivity, self.refreshDot, self)
 	MainUISwitchController.instance:unregisterCallback(MainUISwitchEvent.UseMainUI, self.refreshDot, self)
+	TimeDispatcher.instance:unregisterCallback(TimeDispatcher.OnDailyRefresh, self.refreshDot, self)
 end
 
 function ConcertLimitBtnItem:onClick()
@@ -48,6 +50,12 @@ function ConcertLimitBtnItem:_checkRed()
 	self:_checkRedotShowType(reddotId)
 
 	if RedDotModel.instance:isDotShow(reddotId, 0) then
+		return true
+	end
+
+	local showGameReddot = MusicGameModel.instance:showScoreTipReddot(VersionActivity4_0Enum.ActivityId.ConcertMusicGame)
+
+	if showGameReddot then
 		return true
 	end
 

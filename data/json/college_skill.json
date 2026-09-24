@@ -56,13 +56,13 @@
   {
     "id": 400110,
     "name": "",
-    "desc": "委托到教室时，重置<#FFEA73>专长</color>时出现<#FFEA73>高级专长</color>的概率提升<#FFEA73>2%</color>",
+    "desc": "委托到学院主楼时，重置<#FFEA73>专长</color>时出现<#FFEA73>高级专长</color>的概率提升<#FFEA73>2%</color>",
     "icon": ""
   },
   {
     "id": 400111,
     "name": "",
-    "desc": "委托到教室时，重置<#FFEA73>专长</color>消耗降低5%",
+    "desc": "委托到学院主楼时，重置<#FFEA73>专长</color>消耗降低5%",
     "icon": ""
   },
   {
@@ -122,13 +122,13 @@
   {
     "id": 400210,
     "name": "",
-    "desc": "委托到教室时，重置<#FFEA73>专长</color>出现<#FFEA73>高级专长</color>的概率提升<#FFEA73>3%</color>",
+    "desc": "委托到学院主楼时，重置<#FFEA73>专长</color>出现<#FFEA73>高级专长</color>的概率提升<#FFEA73>3%</color>",
     "icon": ""
   },
   {
     "id": 400211,
     "name": "",
-    "desc": "委托到教室时，重置<#FFEA73>专长</color>消耗降低8%",
+    "desc": "委托到学院主楼时，重置<#FFEA73>专长</color>消耗降低8%",
     "icon": ""
   },
   {
@@ -188,13 +188,13 @@
   {
     "id": 400310,
     "name": "",
-    "desc": "委托到教室时，重置<#FFEA73>专长</color>出现<#FFEA73>高级专长</color>的概率提升<#FFEA73>5%</color>",
+    "desc": "委托到学院主楼时，重置<#FFEA73>专长</color>出现<#FFEA73>高级专长</color>的概率提升<#FFEA73>5%</color>",
     "icon": ""
   },
   {
     "id": 400311,
     "name": "",
-    "desc": "委托到教室时，重置<#FFEA73>专长</color>消耗降低10%",
+    "desc": "委托到学院主楼时，重置<#FFEA73>专长</color>消耗降低10%",
     "icon": ""
   },
   {

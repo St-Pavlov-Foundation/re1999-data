@@ -35,6 +35,12 @@ CollegeEnum.DialogDir = {
 	Left = 1,
 	Right = 2
 }
+CollegeEnum.DialogEffectType = {
+	Distress = 15,
+	MemoryMask = 1,
+	None = 0
+}
+CollegeEnum.MemoryMaskPath = "effects/prefabs/story/2_1_huiyimask_01.prefab"
 CollegeEnum.ConstId = {
 	ShowMaxTaskNum = 15,
 	OutdoorChessDialogInterval = 20,
@@ -88,6 +94,7 @@ CollegeEnum.PrefabPath = {
 	RolePanel = "modules/college/ui/viewres/college_rolepanelitem.prefab",
 	RoleItem = "modules/college/ui/viewres/college_roleitem.prefab",
 	MilestoneThemeItem = "modules/college/ui/viewres/college_milestonethemeitem.prefab",
+	FlyEffect = "modules/college/ui/viewres/college_flyeffect.prefab",
 	Currency = "modules/college/ui/viewres/college_currencybar.prefab"
 }
 CollegeEnum.ItemType = {
@@ -207,6 +214,11 @@ CollegeEnum.RewardStatus = {
 CollegeEnum.CharacterClickState = {
 	Default = 0,
 	NoClick = 1
+}
+CollegeEnum.StoryNodeType = {
+	Milestone = 2,
+	Instant = 3,
+	MapElement = 1
 }
 CollegeEnum.ThemeScaleOffset = 200
 CollegeEnum.ThemeCenterScale = 2

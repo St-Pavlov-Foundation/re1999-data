@@ -7,6 +7,19 @@ local AutoChessHandbookLeaderItem = class("AutoChessHandbookLeaderItem", ListScr
 function AutoChessHandbookLeaderItem:init(go)
 	self.go = go
 	self.leaderCard = MonoHelper.addNoUpdateLuaComOnceToGo(go, AutoChessLeaderCard)
+
+	local anim = gohelper.findComponentAnim(go)
+
+	anim.enabled = false
+end
+
+function AutoChessHandbookLeaderItem:initInternal(go, view)
+	AutoChessHandbookLeaderItem.super.initInternal(self, go, view)
+
+	local scroll = gohelper.findChildComponent(go, "#go_Scroll", gohelper.Type_LimitedScrollRect)
+	local goLeaderRoot = gohelper.findChild(self._view.viewGO, "#scroll_Leader")
+
+	scroll.parentGameObject = goLeaderRoot
 end
 
 function AutoChessHandbookLeaderItem:onUpdateMO(mo)

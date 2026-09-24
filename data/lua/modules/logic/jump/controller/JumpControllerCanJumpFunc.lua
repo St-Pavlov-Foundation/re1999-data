@@ -394,6 +394,16 @@ function JumpController.activateCanJumpFuncController()
 	return
 end
 
+function JumpController:canJumpToCandyRoom(jumpParam)
+	local status, toastId, toastParamList = ActivityHelper.getActivityStatusAndToast(VersionActivity4_0Enum.ActivityId.ConcertCandyRoom)
+
+	if status ~= ActivityEnum.ActivityStatus.Normal then
+		return false, toastId, toastParamList
+	end
+
+	return self:defaultCanJump(jumpParam)
+end
+
 function JumpController:canJumpToBossRush(jumpParam)
 	local jumpData = string.splitToNumber(jumpParam, "#")
 	local stage = jumpData[2]
@@ -953,7 +963,8 @@ JumpController.JumpViewToCanJumpFunc = {
 	[JumpEnum.JumpView.TeachingMain] = JumpController.canJumpToTeachingMainiew,
 	[JumpEnum.JumpView.Udimo] = JumpController.canJumpToUdimoView,
 	[JumpEnum.JumpView.MainSwitchView] = JumpController.canJumpToMainSwitchView,
-	[JumpEnum.JumpView.V3a9BossRush] = JumpController.canJumpToBossRush
+	[JumpEnum.JumpView.V3a9BossRush] = JumpController.canJumpToBossRush,
+	[JumpEnum.JumpView.V4a0CandyRoom] = JumpController.canJumpToCandyRoom
 }
 JumpController.CanJumpActFunc = {
 	[JumpEnum.ActIdEnum.Act113] = JumpController.canJump2Activity1_1Dungeon,

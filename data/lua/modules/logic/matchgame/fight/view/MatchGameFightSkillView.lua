@@ -47,9 +47,18 @@ function MatchGameFightSkillView:_btnSkillTestClick1()
 	local textStr = self._inputSkill:GetText() or ""
 	local skillId = tonumber(textStr)
 	local skillConfig = MatchGameConfig.instance:getHeroSkillConfig(skillId)
-	local heroFightMo = MatchGameFightModel.instance:getHeroFightInfoMap()[1]
+	local heroFightInfoMap = MatchGameFightModel.instance:getHeroFightInfoMap()
+	local curHeroFightMo
 
-	MatchGameFightModel.instance:addPendingSkill(skillConfig, heroFightMo)
+	for posIndex, heroFightMo in pairs(heroFightInfoMap) do
+		if heroFightMo then
+			curHeroFightMo = heroFightMo
+
+			break
+		end
+	end
+
+	MatchGameFightModel.instance:addPendingSkill(skillConfig, curHeroFightMo)
 
 	local skillExcuteMap = MatchGameFightModel.instance:getSkillExcuteMap()
 	local hasExcuteSkillMap = {}
@@ -57,7 +66,6 @@ function MatchGameFightSkillView:_btnSkillTestClick1()
 	for skillId, skillData in pairs(skillExcuteMap) do
 		for _, skillEffectData in ipairs(skillData.skillEffectList) do
 			self:executeSkillEffect(skillEffectData, skillData)
-			logError("执行技能" .. skillId .. "效果：" .. skillData.config.desc)
 
 			if skillData.config.skillType == MatchGameFightEnum.SkillActiveType.Active then
 				hasExcuteSkillMap[skillId] = true
@@ -102,6 +110,7 @@ end
 
 function MatchGameFightSkillView:_editableInitView()
 	self.skillBuffMap = self:getUserDataTb_()
+	self.pendingEnemyNextRoundBuffList = self:getUserDataTb_()
 
 	gohelper.setActive(self._goTest, false)
 end
@@ -130,6 +139,7 @@ end
 function MatchGameFightSkillView:onTurnEndCondition(params)
 	self:checkBuffDurationData(MatchGameFightEnum.BuffDurationType.Round)
 	self:removeSecondDurationBuff()
+	self:executePendingEnemyNextRoundBuff()
 	self:checkAndExecuteSkill(params)
 end
 
@@ -147,7 +157,9 @@ end
 
 function MatchGameFightSkillView:checkBuffDurationData(durationType)
 	for buffUid, skillBuffMo in pairs(self.skillBuffMap) do
-		skillBuffMo:setBuffDurationData(durationType)
+		local removeEnemyRoundBuffAtZero = durationType == MatchGameFightEnum.BuffDurationType.Round and MatchGameFightEnum.EnemyNextRoundBuffEffectIdMap[skillBuffMo.buffEffectId]
+
+		skillBuffMo:setBuffDurationData(durationType, removeEnemyRoundBuffAtZero)
 	end
 end
 
@@ -156,10 +168,13 @@ function MatchGameFightSkillView:checkAndExecuteSkill(params)
 	local skillExcuteMap = MatchGameFightModel.instance:getSkillExcuteMap()
 
 	for skillId, skillData in pairs(skillExcuteMap) do
-		for index, skillEffectData in ipairs(skillData.skillEffectList) do
-			if self:checkSkillCondition(skillEffectData.conditionCoDataList, params) then
-				self:executeSkillEffect(skillEffectData, skillData)
-				logError("执行技能" .. skillId .. "效果：" .. skillData.config.desc .. "，效果索引：" .. index)
+		for skillIndex, skillEffectData in ipairs(skillData.skillEffectList) do
+			local isTargetSkillUser = not params.skillUserMo or params.skillUserMo == skillData.skillUserMo
+
+			if isTargetSkillUser and self:checkSkillCondition(skillEffectData.conditionCoDataList, params) then
+				local isUseActiveSkill = params.conditionId == MatchGameFightEnum.SkillConditionType.None
+
+				self:executeSkillEffect(skillEffectData, skillData, skillIndex, isUseActiveSkill)
 
 				if skillData.config.skillType == MatchGameFightEnum.SkillActiveType.Active then
 					hasExcuteSkillMap[skillId] = true
@@ -195,27 +210,68 @@ function MatchGameFightSkillView:checkSkillCondition(conditionCoDataList, params
 	return canExecute
 end
 
-function MatchGameFightSkillView:getSkillTargetList(targetCoDataList, skillData)
+function MatchGameFightSkillView:getSkillTargetList(targetCoDataList, skillData, skillIndex)
 	local targetInfoList = {}
 
 	for index, targetCoData in ipairs(targetCoDataList) do
 		local targetInfo = targetInfoList[index] or {}
 
 		targetInfo.index = index
-		targetInfo.targetId, targetInfo.targetData = MatchGameSkillTargetHandler.instance:handleSkillTarget(targetCoData, skillData, self.viewContent)
+		targetInfo.targetId, targetInfo.targetData = MatchGameSkillTargetHandler.instance:handleSkillTarget(targetCoData, skillData, self.viewContent, skillIndex)
 		targetInfoList[index] = targetInfo
 	end
 
 	return targetInfoList
 end
 
-function MatchGameFightSkillView:executeSkillEffect(skillEffectData, skillData)
+function MatchGameFightSkillView:executeSkillEffect(skillEffectData, skillData, skillIndex, isUseActiveSkill)
 	for index, effectCoData in ipairs(skillEffectData.effectCoDataList) do
-		local targetInfoList = self:getSkillTargetList(skillEffectData.targetCoDataList, skillData)
+		if isUseActiveSkill and self:isEnemyNextRoundBuffEffect(effectCoData, skillData) then
+			local skillEffectParam = {
+				effectCoData = effectCoData,
+				targetCoDataList = skillEffectData.targetCoDataList,
+				skillData = skillData,
+				skillIndex = skillIndex
+			}
 
-		if targetInfoList and #targetInfoList > 0 then
-			MatchGameSkillEffectHandler.instance:handleSkillEffect(effectCoData, targetInfoList, skillData, self.viewContent)
+			self.pendingEnemyNextRoundBuffList[#self.pendingEnemyNextRoundBuffList + 1] = skillEffectParam
+		else
+			self:executeSingleSkillEffect(effectCoData, skillEffectData.targetCoDataList, skillData, skillIndex)
 		end
+	end
+end
+
+function MatchGameFightSkillView:isEnemyNextRoundBuffEffect(effectCoData, skillData)
+	if effectCoData[1] ~= MatchGameFightEnum.SkillEffectType.AddBuff or skillData.skillUserMo.skillUserType ~= MatchGameFightEnum.SkillUserType.Enemy then
+		return false
+	end
+
+	local buffConfig = MatchGameFightConfig.instance:getMonsterBuffConfig(effectCoData[2])
+
+	if not buffConfig then
+		return false
+	end
+
+	local buffEffectId = string.splitToNumber(buffConfig.buffEffect, "#")[1]
+
+	return MatchGameFightEnum.EnemyNextRoundBuffEffectIdMap[buffEffectId]
+end
+
+function MatchGameFightSkillView:executeSingleSkillEffect(effectCoData, targetCoDataList, skillData, skillIndex)
+	local targetInfoList = self:getSkillTargetList(targetCoDataList, skillData, skillIndex)
+
+	if targetInfoList and #targetInfoList > 0 then
+		MatchGameSkillEffectHandler.instance:handleSkillEffect(effectCoData, targetInfoList, skillData, self.viewContent)
+	end
+end
+
+function MatchGameFightSkillView:executePendingEnemyNextRoundBuff()
+	local pendingBuffList = self.pendingEnemyNextRoundBuffList
+
+	self.pendingEnemyNextRoundBuffList = self:getUserDataTb_()
+
+	for _, skillEffectParam in ipairs(pendingBuffList) do
+		self:executeSingleSkillEffect(skillEffectParam.effectCoData, skillEffectParam.targetCoDataList, skillEffectParam.skillData, skillEffectParam.skillIndex)
 	end
 end
 
@@ -251,12 +307,20 @@ function MatchGameFightSkillView:removeSkillBuff(param)
 end
 
 function MatchGameFightSkillView:removeAllSkillBuff()
-	for buffUid, skillBuffMo in pairs(self.skillBuffMap) do
+	local skillBuffMap = self.skillBuffMap
+
+	self.skillBuffMap = self:getUserDataTb_()
+
+	for buffUid, skillBuffMo in pairs(skillBuffMap) do
 		MatchGameSkillBuffHandler.instance:revertBuffEffect(skillBuffMo, self.viewContent)
 		skillBuffMo:onDestroy()
 	end
+end
 
-	self.skillBuffMap = {}
+function MatchGameFightSkillView:restartGame()
+	self:removeAllSkillBuff()
+
+	self.pendingEnemyNextRoundBuffList = self:getUserDataTb_()
 end
 
 function MatchGameFightSkillView:onClose()

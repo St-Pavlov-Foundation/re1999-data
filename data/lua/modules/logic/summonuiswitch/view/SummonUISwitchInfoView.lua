@@ -54,10 +54,6 @@ function SummonUISwitchInfoView:_btnequipOnClick()
 	TaskDispatcher.cancelTask(self.forceEndBlock, self)
 	TaskDispatcher.runDelay(self.forceEndBlock, self, SummonUISwitchInfoView.UIBlockTime)
 	UIBlockMgr.instance:startBlock(SummonUISwitchInfoView.UIBlockKey)
-	self._equipBtnAnimatorPlayer:Play("click", self._equipCb, self)
-end
-
-function SummonUISwitchInfoView:_equipCb()
 	SummonUISwitchController.instance:setCurSummonUIStyle(self._selectSceneSkinId)
 end
 
@@ -77,7 +73,7 @@ function SummonUISwitchInfoView:_editableInitView()
 	self._goright = gohelper.findChild(self.viewGO, "right")
 	self._goLeft = gohelper.findChild(self.viewGO, "left")
 	self._rootAnimator = self.viewGO:GetComponent("Animator")
-	self._equipAnimator = gohelper.findChildAnim(self.viewGO, "right/#btn_equip")
+	self._equipBtnAnimatorPlayer = SLFramework.AnimatorPlayer.Get(self._btnequip.gameObject)
 
 	gohelper.setActive(self._btnchange, false)
 	gohelper.setActive(self._btnget, false)
@@ -103,13 +99,10 @@ function SummonUISwitchInfoView:onUseScene()
 end
 
 function SummonUISwitchInfoView:_playEquipAnim()
-	TaskDispatcher.cancelTask(self._onEquipAnimPlayEnd, self)
-	self._equipAnimator:Play("click", 0, 0)
-	TaskDispatcher.runDelay(self._onEquipAnimPlayEnd, self, SummonUISwitchInfoView.EquipAnimTime)
+	self._equipBtnAnimatorPlayer:Play("click", self._onEquipAnimPlayEnd, self)
 end
 
 function SummonUISwitchInfoView:_onEquipAnimPlayEnd()
-	TaskDispatcher.cancelTask(self._onEquipAnimPlayEnd, self)
 	self:_updateBtnStatus()
 	self:_showTip()
 end
@@ -162,7 +155,6 @@ function SummonUISwitchInfoView:onClose()
 		PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.CommonPropView, self._materialDataMOList)
 	end
 
-	TaskDispatcher.cancelTask(self._onEquipAnimPlayEnd, self)
 	self:removeEventCb(SummonUISwitchController.instance, SummonUISwitchEvent.UseSceneUI, self.onUseScene, self)
 end
 

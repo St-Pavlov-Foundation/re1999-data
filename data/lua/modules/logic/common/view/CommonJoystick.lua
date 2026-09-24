@@ -23,6 +23,7 @@ function CommonJoystick:init(go)
 	self._goeffecthandle = gohelper.findChild(go, "handle/vx_handle_light")
 	self._inputX = 0
 	self._inputY = 0
+	self._inGuide = false
 
 	gohelper.setActive(self._goeffectdir, false)
 	gohelper.setActive(self._goeffecthandle, false)
@@ -49,12 +50,24 @@ function CommonJoystick:removeEventListeners()
 end
 
 function CommonJoystick:onUpdate()
+	local inGuide = GuideController.instance:isAnyGuideRunning()
+
+	if inGuide and not self._inGuide and self._joystickWrapCs.IsDraging then
+		self:reset()
+	end
+
+	self._inGuide = inGuide
+
 	if self._noKeyboard or self._joystickWrapCs.IsDraging then
 		return
 	end
 
 	local inputX = UnityEngine.Input.GetAxisRaw("Horizontal")
 	local inputY = UnityEngine.Input.GetAxisRaw("Vertical")
+
+	if inGuide then
+		inputX, inputY = 0, 0
+	end
 
 	if self._inputX ~= inputX or self._inputY ~= inputY then
 		local radius = self._joystickWrapCs.maxRadius
@@ -110,6 +123,22 @@ end
 
 function CommonJoystick:getInput()
 	return self._inputX, self._inputY
+end
+
+function CommonJoystick:reset()
+	if self._joystickWrapCs and not gohelper.isNil(self._joystickWrapCs) then
+		self._joystickWrapCs:RestJoystick()
+	end
+
+	self:_onPointUp()
+
+	if self._inputX ~= 0 or self._inputY ~= 0 then
+		self._inputX, self._inputY = 0, 0
+
+		if self._valueChangeCallback then
+			self._valueChangeCallback(self._callbackObj, 0, 0)
+		end
+	end
 end
 
 CommonJoystick.prefabPath = "modules/party_game/ui/viewres/common/common_joystick.prefab"

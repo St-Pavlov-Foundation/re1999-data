@@ -24,6 +24,8 @@ function ConcertLimitMainView:onInitView()
 	self._gocandyroomtip = gohelper.findChild(self.viewGO, "entrance/#go_candyroom/tips/#go_candyroomtip")
 	self._gocandyroomtime = gohelper.findChild(self.viewGO, "entrance/#go_candyroom/tips/#go_candyroomtime")
 	self._txtcandyroomtime = gohelper.findChildText(self.viewGO, "entrance/#go_candyroom/tips/#go_candyroomtime/#txt_candyroomtime")
+	self._gocandyroomtime1 = gohelper.findChild(self.viewGO, "entrance/#go_candyroom/tips/#go_candyroomtime1")
+	self._txtcandyroomtime1 = gohelper.findChildText(self.viewGO, "entrance/#go_candyroom/tips/#go_candyroomtime1/#txt_candyroomtime")
 	self._gocandyroomsummon = gohelper.findChild(self.viewGO, "entrance/#go_candyroom/#go_candyroomsummon")
 	self._gocandyroomsummontip = gohelper.findChild(self.viewGO, "entrance/#go_candyroom/#go_candyroomsummon/#go_candysummonTip")
 	self._gocandyroomgettip = gohelper.findChild(self.viewGO, "entrance/#go_candyroom/#go_candyroomsummon/#go_candygettip")
@@ -140,6 +142,8 @@ function ConcertLimitMainView:_btngameOnClick()
 		return
 	end
 
+	PlayerPrefsHelper.setString(PlayerModel.instance:getPlayerPrefsKey(PlayerPrefsKey.MusicGameScoreShow), ServerTime.now())
+	self:_refreshRedDot()
 	ConcertLimitController.instance:openMusicNoteGameView()
 end
 
@@ -151,12 +155,18 @@ function ConcertLimitMainView:_addSelfEvents()
 	self:addEventCb(ActivityController.instance, ActivityEvent.RefreshActivityState, self._onCheckActState, self)
 	self:addEventCb(CandyRoomController.instance, CandyRoomEvent.OnAct245Summon, self._refreshCandyRoomBtn, self)
 	self:addEventCb(ActivityController.instance, ActivityEvent.RefreshNorSignActivity, self._refreshCandyRoomBtn, self)
+	self:addEventCb(RedDotController.instance, RedDotEvent.UpdateRelateDotInfo, self._refreshRedDot, self)
+	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, self._refreshRedDot, self)
+	RedDotController.instance:registerCallback(RedDotEvent.UpdateRelateDotInfo, self._refreshRedDot, self)
 end
 
 function ConcertLimitMainView:_removeSelfEvents()
 	self:removeEventCb(ActivityController.instance, ActivityEvent.RefreshActivityState, self._onCheckActState, self)
 	self:removeEventCb(CandyRoomController.instance, CandyRoomEvent.OnAct245Summon, self._refreshCandyRoomBtn, self)
 	self:removeEventCb(ActivityController.instance, ActivityEvent.RefreshNorSignActivity, self._refreshCandyRoomBtn, self)
+	self:removeEventCb(RedDotController.instance, RedDotEvent.UpdateRelateDotInfo, self._refreshRedDot, self)
+	TimeDispatcher.instance:unregisterCallback(TimeDispatcher.OnDailyRefresh, self._refreshRedDot, self)
+	RedDotController.instance:unregisterCallback(RedDotEvent.UpdateRelateDotInfo, self._refreshRedDot, self)
 end
 
 function ConcertLimitMainView:_onCheckActState()
@@ -187,14 +197,46 @@ end
 function ConcertLimitMainView:_initReddot()
 	RedDotController.instance:addRedDot(self._goacttaskreddot, RedDotEnum.DotNode.V4a0ConcertActFlip)
 	RedDotController.instance:addRedDot(self._gocandyroomreddot, RedDotEnum.DotNode.V4a0ConcertCandyRoom)
-	RedDotController.instance:addRedDot(self._gogamereddot, RedDotEnum.DotNode.V4a0ConcertMusicGame)
+
+	self._gameReddot = RedDotController.instance:addNotEventRedDot(self._gogamereddot, self._isShowGameReddot, self)
+
 	RedDotController.instance:addRedDot(self._goselfselectreddot, RedDotEnum.DotNode.V4a0ConcertSelfSelect, VersionActivity4_0Enum.ActivityId.ConcertSelfSelect)
+end
+
+function ConcertLimitMainView:_refreshRedDot()
+	self._gameReddot:refreshRedDot()
+end
+
+function ConcertLimitMainView:_isShowGameReddot()
+	local reddotId = RedDotEnum.DotNode.V4a0ConcertMusicGame
+
+	if RedDotModel.instance:isDotShow(reddotId, 0) then
+		return true
+	end
+
+	local showGameReddot = MusicGameModel.instance:showScoreTipReddot(VersionActivity4_0Enum.ActivityId.ConcertMusicGame)
+
+	if showGameReddot then
+		return true
+	end
+
+	return false
 end
 
 function ConcertLimitMainView:_refreshTime()
 	self._txtremaintime.text = ActivityModel.getRemainTimeStr(self._actId)
 
-	self:_refreshActTime(VersionActivity4_0Enum.ActivityId.ConcertCandyRoom, self._gocandyroomtime, self._txtcandyroomtime, self._gocandyroomlock)
+	local skinActId = CandyRoomModel.instance:getLoginActivityId(VersionActivity4_0Enum.ActivityId.ConcertCandyRoom)
+	local rewardGet = ActivityType101Model.instance:isType101RewardGet(skinActId, 1)
+
+	gohelper.setActive(self._gocandyroomtip, not rewardGet)
+
+	local goCandyTime = rewardGet and self._gocandyroomtime1 or self._gocandyroomtime
+	local txtCandyTime = rewardGet and self._txtcandyroomtime1 or self._txtcandyroomtime
+
+	gohelper.setActive(self._gocandyroomtime, not rewardGet)
+	gohelper.setActive(self._gocandyroomtime1, rewardGet)
+	self:_refreshActTime(VersionActivity4_0Enum.ActivityId.ConcertCandyRoom, goCandyTime, txtCandyTime, self._gocandyroomlock)
 	self:_refreshActTime(VersionActivity4_0Enum.ActivityId.ConcertSelfSelect, self._goselfselecttimetimeContainer, self._txtselfselecttimetime, self._goselfselectlock)
 	self:_refreshActTime(VersionActivity4_0Enum.ActivityId.ConcertActFlip, self._goacttasktime, self._txtacttasktime, self._goacttasklock)
 	self:_refreshActTime(VersionActivity4_0Enum.ActivityId.ConcertMusicGame, self._gogametime, self._txtgametime, self._gogamelock)
@@ -250,9 +292,15 @@ function ConcertLimitMainView:_refreshCandyRoomBtn()
 	if isExpire then
 		gohelper.setActive(self._gocandyroomsummon, false)
 		gohelper.setActive(self._gocandyroomreddot, false)
+		gohelper.setActive(self._gocandyroomtip, false)
 
 		return
 	end
+
+	local skinActId = CandyRoomModel.instance:getLoginActivityId(VersionActivity4_0Enum.ActivityId.ConcertCandyRoom)
+	local rewardGet = ActivityType101Model.instance:isType101RewardGet(skinActId, 1)
+
+	gohelper.setActive(self._gocandyroomtip, not rewardGet)
 
 	local couldSummon = CandyRoomModel.instance:getLimitTimeCount(actId)
 	local skinActId = CandyRoomModel.instance:getLoginActivityId(actId)

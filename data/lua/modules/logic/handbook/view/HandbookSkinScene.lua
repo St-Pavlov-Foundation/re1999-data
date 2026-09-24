@@ -9,20 +9,7 @@ local oriSceneDownAni = "sence1down"
 local oriSceneUpAni = "sence1up"
 local newSceneDownAni = "sence2down"
 local newSceneUpAni = "sence2up"
-local centerCardIdx = 3
-local cardCount = 5
-local dragRate = 0.00075
 local dragSuitRate = 0.0003
-local maxDragProgressPerFrame = 0.15
-local cardDefaultPosMap = {
-	0.8333,
-	0.6667,
-	0.5,
-	0.3333,
-	0.1667
-}
-local resetPosDuration = 0.25
-local openDetailDuration = 0.1
 
 HandbookSkinScene.SkinSuitId2SuitView = {
 	[20007] = ViewName.HandbookSkinSuitDetailView1_7,
@@ -171,60 +158,8 @@ function HandbookSkinScene:onDragging(offsetX, offsetY)
 		end
 	elseif self._inSevenGroup and self._sevenSubScene then
 		self._sevenSubScene:onDragging(offsetX)
-	else
-		if self._enteringTarotMode or not self._tarotMode then
-			return
-		end
-
-		self._dragging = true
-
-		if self._moveToOtherSuitAni then
-			return
-		end
-
-		if self._dragResetPosTweens and #self._dragResetPosTweens > 0 then
-			for i = 1, #self._dragResetPosTweens do
-				ZProj.TweenHelper.KillById(self._dragResetPosTweens[i])
-			end
-
-			self._dragResetPosTweens = {}
-		end
-
-		local progressDiff = dragRate * offsetX
-
-		progressDiff = Mathf.Clamp(progressDiff, -maxDragProgressPerFrame, maxDragProgressPerFrame)
-
-		local changeSprite = false
-
-		for i, cardAnimator in ipairs(self._tarotCardAnimators) do
-			local curProgress = self._tarotCardAniProgress[i]
-			local dragAnimationName = "slide"
-			local newProgress = curProgress - progressDiff
-
-			if newProgress >= self._maxProgress then
-				self._tarotCardAniProgress[i] = self._minProgress + newProgress - self._maxProgress
-				self._curLeftIdx = self._curLeftIdx >= HandbookEnum.TarotSkinCount and 1 or self._curLeftIdx + 1
-				self._curRightIdx = self._curRightIdx >= HandbookEnum.TarotSkinCount and 1 or self._curRightIdx + 1
-
-				self:setCardSprite(i, self._curRightIdx)
-
-				self._tarotCardIdx2SkinIdx[i] = self._curRightIdx
-				changeSprite = true
-			elseif newProgress <= self._minProgress then
-				self._tarotCardAniProgress[i] = self._maxProgress + newProgress - self._minProgress
-				self._curLeftIdx = self._curLeftIdx <= 1 and HandbookEnum.TarotSkinCount or self._curLeftIdx - 1
-				self._curRightIdx = self._curRightIdx <= 1 and HandbookEnum.TarotSkinCount or self._curRightIdx - 1
-
-				self:setCardSprite(i, self._curLeftIdx)
-
-				self._tarotCardIdx2SkinIdx[i] = self._curLeftIdx
-				changeSprite = true
-			else
-				self._tarotCardAniProgress[i] = newProgress
-			end
-
-			self:UpdateAnimProgress(cardAnimator, dragAnimationName, self._tarotCardAniProgress[i])
-		end
+	elseif self._tarotSubScene then
+		self._tarotSubScene:onDragging(offsetX)
 	end
 end
 
@@ -239,8 +174,8 @@ function HandbookSkinScene:onDragBegin()
 
 	if not self._tarotMode then
 		return
-	else
-		self:doTarotCardDragBegin()
+	elseif self._tarotSubScene then
+		self._tarotSubScene:doCardDragBegin()
 	end
 end
 
@@ -260,7 +195,9 @@ function HandbookSkinScene:onDragEnd()
 	else
 		self._dragging = false
 
-		self:doTarotCardPosResetTween()
+		if self._tarotSubScene then
+			self._tarotSubScene:doCardPosResetTween()
+		end
 	end
 end
 
@@ -486,6 +423,14 @@ function HandbookSkinScene:setSevenSubScene(subScene)
 	end
 end
 
+function HandbookSkinScene:setTarotSubScene(subScene)
+	self._tarotSubScene = subScene
+
+	if subScene then
+		subScene:setScene(self)
+	end
+end
+
 function HandbookSkinScene:_createSuitItems()
 	if self._suitItemLoaderList and #self._suitItemLoaderList > 0 then
 		for _, loader in ipairs(self._suitItemLoaderList) do
@@ -508,8 +453,11 @@ function HandbookSkinScene:_createSuitItems()
 			self:addBoxColliderListener(iconGo, skinSuitCfg.id, 0.5)
 
 			local parentGo = gohelper.findChild(self._curSceneGo, "sence/skin_reddot_root")
+			local redDotComp = self:addNewRedDot(parentGo, skinSuitCfg.id, 0, 0)
 
-			self._tarotRedDotComp = self:addNewRedDot(parentGo, skinSuitCfg.id, 0, 0)
+			if self._tarotSubScene then
+				self._tarotSubScene:setupRedDot(redDotComp)
+			end
 		end
 	elseif HandbookEnum.SkinSuitId2SceneType[skinGroupId] == HandbookEnum.SkinSuitSceneType.Festival then
 		local skinSuitCfg = self._suitCfgList[1]
@@ -735,7 +683,9 @@ function HandbookSkinScene:onIconClick(suitId)
 	self._suitId = suitId
 
 	if HandbookEnum.SkinSuitId2SceneType[skinGroupId] == HandbookEnum.SkinSuitSceneType.Tarot then
-		self:enterTarotScene()
+		if self._tarotSubScene then
+			self._tarotSubScene:enterScene()
+		end
 	elseif HandbookEnum.SkinSuitId2SceneType[skinGroupId] == HandbookEnum.SkinSuitSceneType.Festival then
 		self:enterFestivalSkinScene()
 	elseif HandbookEnum.SkinSuitId2SceneType[skinGroupId] == HandbookEnum.SkinSuitSceneType.Seven then
@@ -765,232 +715,6 @@ function HandbookSkinScene:onIconClick(suitId)
 		end
 
 		self:_refreshPoint()
-	end
-end
-
-function HandbookSkinScene:enterTarotScene()
-	if self._tarotMode then
-		return
-	end
-
-	self._tarotCardAniProgress = {}
-
-	self._sceneAnimatorPlayer:Play(UIAnimationName.Click, nil, nil)
-	self.viewContainer:dispatchEvent(HandbookEvent.OnClickTarotSkinSuit)
-
-	self._tarotCardDatas = {}
-	self._skinSuitCfg = HandbookConfig.instance:getSkinSuitCfg(self._suitId)
-
-	local skinIdStr = self._skinSuitCfg.skinContain
-	local skinImageNameStr = self._skinSuitCfg.tarotCardPath
-
-	self._skinIdList = string.splitToNumber(skinIdStr, "|")
-	self._skinCardNameList = string.split(skinImageNameStr, "|")
-
-	for i = 1, HandbookEnum.TarotSkinCount do
-		self._tarotCardDatas[i] = {}
-
-		if i <= #self._skinIdList then
-			local skinId = self._skinIdList[i]
-
-			if skinId == 310003 then
-				self._tarotCardDatas[i].path = string.format("%s/%s.png", HandbookEnum.TarotSkinCardDir, self._skinCardNameList[i])
-				self._tarotCardDatas[i].extraCardIcon1 = string.format("%s/%s_l.png", HandbookEnum.TarotSkinCardDir, self._skinCardNameList[i])
-				self._tarotCardDatas[i].extraCardIcon2 = string.format("%s/%s_r.png", HandbookEnum.TarotSkinCardDir, self._skinCardNameList[i])
-			else
-				self._tarotCardDatas[i].path = string.format("%s/%s.png", HandbookEnum.TarotSkinCardDir, self._skinCardNameList[i])
-			end
-
-			self._tarotCardDatas[i].skinId = self._skinIdList[i]
-		else
-			self._tarotCardDatas[i].path = HandbookEnum.TarotSkinDefaultCardPath
-		end
-	end
-
-	self._curLeftIdx = 1
-	self._curRightIdx = 5
-
-	if HandbookController.instance:isHandbookSkinSuitNewRedDotShow(self._suitId) then
-		local tarotSkinCount = HandbookEnum.TarotSkinCount
-
-		for i = 1, tarotSkinCount do
-			local skinId = self._skinIdList[i]
-
-			if skinId and HandbookController.instance:isHandbookSkinUnlockRedDotShow(skinId) then
-				local leftIdx = i - 2
-
-				while leftIdx < 1 do
-					leftIdx = leftIdx + tarotSkinCount
-				end
-
-				self._curLeftIdx = leftIdx
-
-				local rightIdx = i + 2
-
-				while tarotSkinCount < rightIdx do
-					rightIdx = rightIdx - tarotSkinCount
-				end
-
-				self._curRightIdx = rightIdx
-
-				break
-			end
-		end
-	end
-
-	if self._tarotRedDotComp then
-		self._tarotRedDotComp:forceHide()
-	end
-
-	if HandbookController.instance:isHandbookSkinSuitNewRedDotShow(self._suitId) then
-		HandbookController.instance:markHandbookSkinNewRedDotShow(self._suitId)
-	end
-
-	self._tarotCardGos = self:getUserDataTb_()
-	self._tarotCardSpriteRender = self:getUserDataTb_()
-	self._tarotCardGlowSpriteRender = self:getUserDataTb_()
-	self._tarotCardBackSpriteRender = self:getUserDataTb_()
-	self._tarotCardLeftSpriteRenders = self:getUserDataTb_()
-	self._tarotCardRightSpriteRenders = self:getUserDataTb_()
-	self._tarotCardAnimators = self:getUserDataTb_()
-	self._tarotCardUnlockVxs = self:getUserDataTb_()
-	self._tarotCardUnlockAnimEvent = self:getUserDataTb_()
-	self._tarotCardUnlockAnimator = self:getUserDataTb_()
-	self._tarotCardIdx2SkinIdx = {}
-
-	local unlockVxPrefab = self.viewContainer._abLoader:getAssetItem(HandbookEnum.SkinUnlockVxPath.Tarot):GetResource()
-
-	for i = 1, cardCount do
-		local cardRootGo = gohelper.findChild(self._curSceneGo, string.format("#Card/card0%d", i))
-
-		self._tarotCardGos[i] = gohelper.findChild(cardRootGo, "card")
-
-		self:addTarotCardBoxColliderListener(self._tarotCardGos[i], i)
-
-		self._tarotCardAnimators[i] = cardRootGo:GetComponent(gohelper.Type_Animator)
-
-		local tarotCardSpriteRenderGo = cardRootGo.transform:Find("card/sprite").gameObject
-
-		self._tarotCardSpriteRender[i] = tarotCardSpriteRenderGo:GetComponent(typeof(UnityEngine.SpriteRenderer))
-
-		local goSpriteGlowEffect = gohelper.findChild(cardRootGo, "card/sprite/spriteglow")
-
-		self._tarotCardGlowSpriteRender[i] = goSpriteGlowEffect:GetComponent(typeof(UnityEngine.SpriteRenderer))
-
-		local goSpriteCardBack = gohelper.findChild(cardRootGo, "card/back")
-
-		self._tarotCardBackSpriteRender[i] = goSpriteCardBack:GetComponent(typeof(UnityEngine.SpriteRenderer))
-
-		local goSpriteLeft = gohelper.findChild(cardRootGo, "card/card_sp/card_left/sprite")
-
-		self._tarotCardLeftSpriteRenders[i] = goSpriteLeft and goSpriteLeft:GetComponent(typeof(UnityEngine.SpriteRenderer))
-
-		local goSpriteRight = gohelper.findChild(cardRootGo, "card/card_sp/card_right/sprite")
-
-		self._tarotCardRightSpriteRenders[i] = goSpriteRight and goSpriteRight:GetComponent(typeof(UnityEngine.SpriteRenderer))
-		self._tarotCardIdx2SkinIdx[i] = (self._curLeftIdx - 1 + i - 1) % HandbookEnum.TarotSkinCount + 1
-
-		local uxName = "tarotUnlockVx_" .. tostring(i)
-		local unlockVxGo = gohelper.findChild(self._tarotCardGos[i], uxName)
-
-		unlockVxGo = unlockVxGo or gohelper.clone(unlockVxPrefab, self._tarotCardGos[i], uxName)
-
-		gohelper.setActive(unlockVxGo, false)
-		gohelper.setAsLastSibling(unlockVxGo)
-
-		self._tarotCardUnlockVxs[i] = unlockVxGo
-
-		local animEvent = unlockVxGo:GetComponent(gohelper.Type_AnimationEventWrap)
-
-		self._tarotCardUnlockAnimEvent[i] = animEvent
-
-		local param = {
-			self,
-			i
-		}
-
-		animEvent:AddEventListener("unlock", self.onUnlockAnimPlayFinish, param)
-
-		self._tarotCardUnlockAnimator[i] = gohelper.findChildComponent(unlockVxGo, "", gohelper.Type_Animator)
-	end
-
-	for i = 1, cardCount do
-		self:setCardSprite(i, self._tarotCardIdx2SkinIdx[i])
-	end
-
-	self:_setCardBackSprite()
-
-	self._enteringTarotMode = true
-
-	AudioMgr.instance:trigger(AudioEnum.Handbook.play_ui_tujianskin_group_special)
-	TaskDispatcher.runDelay(self.onTarotEnterAniDone, self, 2)
-end
-
-function HandbookSkinScene.onUnlockAnimPlayFinish(param)
-	local target = param[1]
-	local cardIdx = param[2]
-end
-
-function HandbookSkinScene:exitTarotScene()
-	if not self._tarotMode then
-		return
-	end
-
-	self._tarotMode = false
-	self._tarotEnterAniDone = false
-	self._tarotCardAniProgress = {}
-
-	self._sceneAnimatorPlayer:Play(UIAnimationName.Back, nil, nil)
-	self.viewContainer:dispatchEvent(HandbookEvent.OnExitTarotSkinSuit)
-	TaskDispatcher.runDelay(self.onTarotExitAniDone, self, 2)
-end
-
-function HandbookSkinScene:onTarotExitAniDone()
-	if self._tarotRedDotComp then
-		self._tarotRedDotComp:resetForceHide()
-	end
-end
-
-function HandbookSkinScene:onTarotEnterAniDone()
-	self._enteringTarotMode = false
-	self._tarotMode = true
-	self._tarotEnterAniDone = true
-	self._maxProgress = 0.916
-	self._minProgress = 0.083
-	self._tarotCardAniProgress[1] = cardDefaultPosMap[1]
-	self._tarotCardAniProgress[2] = cardDefaultPosMap[2]
-	self._tarotCardAniProgress[3] = cardDefaultPosMap[3]
-	self._tarotCardAniProgress[4] = cardDefaultPosMap[4]
-	self._tarotCardAniProgress[5] = cardDefaultPosMap[5]
-
-	for i = 1, cardCount do
-		local aniName = "slide"
-
-		self:UpdateAnimProgress(self._tarotCardAnimators[i], aniName, self._tarotCardAniProgress[i])
-		self:playSpCardOpenAni(i)
-		self:_refreshCardUnlockUx(i, self._tarotCardIdx2SkinIdx[i])
-	end
-end
-
-function HandbookSkinScene:_refreshCardUnlockUx(cardGoIdx, SkinIdx)
-	local animator = self._tarotCardUnlockAnimator[cardGoIdx]
-	local skinId = self._skinIdList[SkinIdx]
-	local haveSkin = skinId and HeroModel.instance:checkHasSkin(skinId)
-
-	gohelper.setActive(self._tarotCardUnlockVxs[cardGoIdx], haveSkin)
-
-	if haveSkin then
-		local showUnlockAnim = HandbookController.instance:isHandbookSkinUnlockRedDotShow(skinId)
-		local animName = showUnlockAnim and "open" or "idle"
-		local unlockVxGo = self._tarotCardUnlockVxs[cardGoIdx]
-
-		gohelper.setAsLastSibling(unlockVxGo)
-		animator:Play(animName, 0, 0)
-
-		local audioId = self.isUniqueSkin and HandbookEnum.Audio.play_ui_tujianskin_special_unlock or HandbookEnum.Audio.play_ui_activity_hero37_checkpoint_gather
-
-		AudioMgr.instance:trigger(audioId)
-		HandbookController.instance:delaySendUnlockSkinRedDotInfo(skinId)
 	end
 end
 
@@ -1075,59 +799,11 @@ function HandbookSkinScene:_onLoadSpriteDone(loader)
 		rightSpriteRender.color = color
 	end
 
-	if self._tarotEnterAniDone then
-		self:_refreshCardUnlockUx(cardGoIdx, changeCardIdx)
+	if self._tarotSubScene and self._tarotEnterAniDone then
+		self._tarotSubScene:_refreshCardUnlockUx(cardGoIdx, changeCardIdx)
 	elseif self._sevenMode and self._sevenSubScene and self._sevenSubScene._enterAniDone then
 		self._sevenSubScene:_refreshCardUnlockUx(cardGoIdx, changeCardIdx)
 	end
-end
-
-function HandbookSkinScene:_setCardBackSprite()
-	local spritePath = HandbookEnum.TarotSkinDefaultCardPath
-
-	if not string.nilorempty(spritePath) then
-		if self._cardbackLoader then
-			self._cardbackLoader:dispose()
-		end
-
-		local loader = MultiAbLoader.New()
-
-		self._cardbackLoader = loader
-
-		loader:addPath(spritePath)
-		loader:startLoad(self._onCardBackLoadDone, self)
-	end
-end
-
-function HandbookSkinScene:_onCardBackLoadDone(loader)
-	local spritePath = HandbookEnum.TarotSkinDefaultCardPath
-	local assetItem = loader:getAssetItem(spritePath)
-	local texture = assetItem:GetResource(spritePath)
-	local sprite = UnityEngine.Sprite.Create(texture, UnityEngine.Rect.New(0, 0, texture.width, texture.height), Vector2.New(0.5, 0.5), 100, 0)
-
-	for _, cardBackSpriteRender in ipairs(self._tarotCardBackSpriteRender) do
-		cardBackSpriteRender.sprite = sprite
-	end
-end
-
-function HandbookSkinScene:addTarotCardBoxColliderListener(go, cardIdx)
-	local clickListener = HandbookSkinScene.getOrAddBoxCollider2D(go)
-
-	clickListener:AddMouseUpListener(self.onTarotItemClickUp, self, cardIdx)
-end
-
-function HandbookSkinScene:onTarotItemClickUp(cardId)
-	if self._dragging or not self._tarotMode then
-		return
-	end
-
-	if not self.sceneVisible then
-		return
-	end
-
-	local skinIdx = self._tarotCardIdx2SkinIdx[cardId]
-
-	self:doTarotCardPosToMiddle(skinIdx)
 end
 
 function HandbookSkinScene:openSkinDetailView(skinId)
@@ -1149,288 +825,18 @@ function HandbookSkinScene:openSkinDetailView(skinId)
 	CharacterController.instance:openCharacterSkinView(skinViewParams)
 end
 
-function HandbookSkinScene:doTarotCardDragBegin()
-	for i = 1, cardCount do
-		local curProgress = self._tarotCardAniProgress[i]
-		local cardPoxIdx = self:_checkCardPosIdx(curProgress)
-
-		if cardPoxIdx == centerCardIdx then
-			local cardAnimator = self._tarotCardAnimators[i]
-			local skinIdx = self._tarotCardIdx2SkinIdx[i]
-			local skinId = self._tarotCardDatas[skinIdx].skinId
-			local skinCfg = SkinConfig.instance:getSkinCo(skinId)
-
-			if not skinCfg then
-				return
-			end
-
-			local curProgress = self._tarotCardAniProgress[i]
-			local cardPosIdx = self:_checkCardPosIdx(curProgress)
-
-			if cardPosIdx == centerCardIdx and HandbookEnum.SkinSpAnimEnum[skinId] then
-				local spCardGo = cardAnimator.transform:Find("card/card_sp").gameObject
-				local spCardAnimator = spCardGo:GetComponent(gohelper.Type_Animator)
-
-				spCardAnimator:Play(UIAnimationName.Close)
-			elseif cardPosIdx == centerCardIdx and HandbookEnum.SkinSp2AnimEnum[skinId] then
-				local spCardGo = cardAnimator.transform:Find("card/card_sp2").gameObject
-				local spCardAnimator = spCardGo:GetComponent(gohelper.Type_Animator)
-
-				spCardAnimator:Play(UIAnimationName.Close)
-			end
-		end
-	end
-end
-
-local middleProgressIdx = 3
-
-function HandbookSkinScene:getTarotMiddleSkinIdx()
-	local offset = (HandbookEnum.TarotCardCount - 1) / 2
-	local targetMiddleIdx = (self._curLeftIdx - 1 + offset) % HandbookEnum.TarotSkinCount + 1
-
-	return targetMiddleIdx
-end
-
-function HandbookSkinScene:doTarotCardPosToMiddle(skinIdx)
-	local skinId = self._tarotCardDatas[skinIdx].skinId
-
-	if self:getTarotMiddleSkinIdx() == skinIdx then
-		if skinId then
-			self:openSkinDetailView(skinId)
-		end
-
-		return
-	end
-
-	self:doTarotCardDragToMiddleBegin()
-
-	self._dragResetPosTweens = {}
-	self._dragging = true
-	self._tempSkinId = skinId
-
-	local removeProgressOffset, idxAdd = self:_checkFirstCardPosIdxByMiddleSkinIdx(skinIdx)
-
-	self._curProgressOffset = 0
-
-	local changeNum = math.abs(idxAdd)
-
-	self._leftChangeNum = changeNum
-	self._rightChangeNum = changeNum
-
-	if self._tweenCardPosTweenId then
-		ZProj.TweenHelper.KillById(self._tweenCardPosTweenId)
-
-		self._tweenCardPosTweenId = nil
-	end
-
-	local duration = resetPosDuration
-
-	TaskDispatcher.runDelay(self.onDoTarotCardPosToMiddleEnd, self, duration + openDetailDuration)
-
-	local tweenCardPosTweenId = ZProj.TweenHelper.DOTweenFloat(0, removeProgressOffset, duration, self.cardPosToMiddleTweenFrameCallback, self.cardPosToMiddleTweenEndCallback, self)
-
-	self._tweenCardPosTweenId = tweenCardPosTweenId
-end
-
-function HandbookSkinScene:doTarotCardDragToMiddleBegin()
-	for i = 1, cardCount do
-		local curProgress = self._tarotCardAniProgress[i]
-		local cardPoxIdx = self:_checkCardPosIdx(curProgress)
-
-		if cardPoxIdx == centerCardIdx then
-			local cardAnimator = self._tarotCardAnimators[i]
-			local skinIdx = self._tarotCardIdx2SkinIdx[i]
-			local skinId = self._tarotCardDatas[skinIdx].skinId
-			local skinCfg = SkinConfig.instance:getSkinCo(skinId)
-
-			if not skinCfg then
-				return
-			end
-
-			local curProgress = self._tarotCardAniProgress[i]
-			local cardPosIdx = self:_checkCardPosIdx(curProgress)
-
-			if cardPosIdx == centerCardIdx and HandbookEnum.SkinSpAnimEnum[skinId] then
-				local spCardGo = cardAnimator.transform:Find("card/card_sp").gameObject
-				local spCardAnimator = spCardGo:GetComponent(gohelper.Type_Animator)
-
-				spCardAnimator:Play(UIAnimationName.Close)
-			elseif cardPosIdx == centerCardIdx and HandbookEnum.SkinSp2AnimEnum[skinId] then
-				local spCardGo = cardAnimator.transform:Find("card/card_sp2").gameObject
-				local spCardAnimator = spCardGo:GetComponent(gohelper.Type_Animator)
-
-				spCardAnimator:Play(UIAnimationName.Close)
-			end
-		end
-	end
-end
-
-function HandbookSkinScene:onDoTarotCardPosToMiddleEnd()
-	self._dragging = false
-
-	self:openSkinDetailView(self._tempSkinId)
-	TaskDispatcher.cancelTask(self.onDoTarotCardPosToMiddleEnd, self)
-
-	self._tempSkinId = nil
-end
-
-function HandbookSkinScene:cardPosToMiddleTweenFrameCallback(value)
-	local difference = value - self._curProgressOffset
-
-	self._curProgressOffset = value
-
-	for i, cardAnimator in ipairs(self._tarotCardAnimators) do
-		local curProgress = self._tarotCardAniProgress[i]
-		local dragAnimationName = "slide"
-		local newProgress = curProgress + difference
-		local changeSprite = false
-
-		if newProgress >= self._maxProgress then
-			self._tarotCardAniProgress[i] = self._minProgress + newProgress - self._maxProgress
-
-			if self._rightChangeNum > 0 then
-				self._curLeftIdx = self._curLeftIdx >= HandbookEnum.TarotSkinCount and 1 or self._curLeftIdx + 1
-				self._curRightIdx = self._curRightIdx >= HandbookEnum.TarotSkinCount and 1 or self._curRightIdx + 1
-
-				self:setCardSprite(i, self._curRightIdx)
-
-				self._tarotCardIdx2SkinIdx[i] = self._curRightIdx
-				changeSprite = true
-				self._rightChangeNum = self._rightChangeNum - 1
-			end
-		elseif newProgress <= self._minProgress then
-			self._tarotCardAniProgress[i] = self._maxProgress + newProgress - self._minProgress
-
-			if self._leftChangeNum > 0 then
-				self._curLeftIdx = self._curLeftIdx <= 1 and HandbookEnum.TarotSkinCount or self._curLeftIdx - 1
-				self._curRightIdx = self._curRightIdx <= 1 and HandbookEnum.TarotSkinCount or self._curRightIdx - 1
-
-				self:setCardSprite(i, self._curLeftIdx)
-
-				self._tarotCardIdx2SkinIdx[i] = self._curLeftIdx
-				changeSprite = true
-				self._leftChangeNum = self._leftChangeNum - 1
-			end
-		else
-			self._tarotCardAniProgress[i] = newProgress
-		end
-
-		self:UpdateAnimProgress(cardAnimator, dragAnimationName, self._tarotCardAniProgress[i])
-	end
-end
-
-function HandbookSkinScene:cardPosToMiddleTweenEndCallback()
-	for i = 1, cardCount do
-		self:playSpCardOpenAni(i)
-	end
-end
-
-function HandbookSkinScene:_checkFirstCardPosIdxByMiddleSkinIdx(skinIdx)
-	local middleSkinMoveOffset = 0
-	local idxAdd = 0
-	local targetProgress = cardDefaultPosMap[middleProgressIdx]
-
-	for i = 1, cardCount do
-		if skinIdx == self._tarotCardIdx2SkinIdx[i] then
-			local curProgress = self._tarotCardAniProgress[i]
-
-			middleSkinMoveOffset = targetProgress - curProgress
-
-			local curIndex = self:_checkCardPosIdx(curProgress)
-
-			idxAdd = curIndex - middleProgressIdx
-
-			break
-		end
-	end
-
-	return middleSkinMoveOffset, idxAdd
-end
-
-function HandbookSkinScene:doTarotCardPosResetTween()
-	self._dragResetPosTweens = {}
-
-	local firstCardResetToIdx = 0
-
-	for i = 1, cardCount do
-		local curProgress = self._tarotCardAniProgress[i]
-
-		if i == 1 then
-			firstCardResetToIdx = self:_checkCardPosIdx(curProgress)
-		end
-
-		local resetIdx = firstCardResetToIdx + (i - 1)
-
-		resetIdx = resetIdx > cardCount and resetIdx - cardCount or resetIdx
-
-		local resetProgress = cardDefaultPosMap[resetIdx]
-		local resetCardPosTweenId = ZProj.TweenHelper.DOTweenFloat(curProgress, resetProgress, resetPosDuration, self.cardPosResetTweenFrameCallback, self.cardPosResetTweenEndCallback, self, i)
-
-		self._dragResetPosTweens[i] = resetCardPosTweenId
-
-		self:playSpCardOpenAni(i)
-	end
-end
-
-function HandbookSkinScene:cardPosResetTweenFrameCallback(value, idx)
-	local dragAnimationName = "slide"
-	local cardAnimator = self._tarotCardAnimators[idx]
-
-	self._tarotCardAniProgress[idx] = value
-
-	self:UpdateAnimProgress(cardAnimator, dragAnimationName, value)
-end
-
-function HandbookSkinScene:cardPosResetTweenEndCallback(idx)
-	return
-end
-
-function HandbookSkinScene:playSpCardOpenAni(i)
-	local cardAnimator = self._tarotCardAnimators[i]
-	local skinIdx = self._tarotCardIdx2SkinIdx[i]
-	local skinId = self._tarotCardDatas[skinIdx].skinId
-	local skinCfg = SkinConfig.instance:getSkinCo(skinId)
-
-	if not skinCfg then
-		return
-	end
-
-	local curProgress = self._tarotCardAniProgress[i]
-	local cardPosIdx = self:_checkCardPosIdx(curProgress)
-
-	if cardPosIdx == centerCardIdx and HandbookEnum.SkinSpAnimEnum[skinId] then
-		local spCardGo = cardAnimator.transform:Find("card/card_sp").gameObject
-		local spCardAnimator = spCardGo:GetComponent(gohelper.Type_Animator)
-
-		gohelper.setActive(spCardGo, true)
-		spCardAnimator:Play(UIAnimationName.Open)
-	elseif cardPosIdx == centerCardIdx and HandbookEnum.SkinSp2AnimEnum[skinId] then
-		local spCardGo = cardAnimator.transform:Find("card/card_sp2").gameObject
-		local spCardAnimator = spCardGo:GetComponent(gohelper.Type_Animator)
-
-		gohelper.setActive(spCardGo, true)
-		spCardAnimator:Play(UIAnimationName.Open)
-	end
-end
-
-function HandbookSkinScene:_checkCardPosIdx(curProgress)
-	local minDiff = math.huge
-	local minIdx = 1
-
-	for i, pos in ipairs(cardDefaultPosMap) do
-		local diff = math.abs(curProgress - pos)
-
-		if diff < minDiff then
-			minDiff = diff
-			minIdx = i
-		end
-	end
-
-	return minIdx
-end
-
 function HandbookSkinScene:isInTarotMode()
-	return self._tarotMode or self._enteringTarotMode
+	if self._tarotSubScene then
+		return self._tarotSubScene:isInMode()
+	end
+
+	return false
+end
+
+function HandbookSkinScene:exitTarotScene()
+	if self._tarotSubScene then
+		self._tarotSubScene:exitScene()
+	end
 end
 
 function HandbookSkinScene:_calcFovInternal()
@@ -1512,8 +918,6 @@ function HandbookSkinScene:playCloseAni()
 end
 
 function HandbookSkinScene:onClose()
-	TaskDispatcher.cancelTask(self.onTarotEnterAniDone, self)
-	TaskDispatcher.cancelTask(self.onTarotExitAniDone, self)
 	TaskDispatcher.cancelTask(self.openFestivalSkinView, self)
 
 	if self._dragResetPosTweens and #self._dragResetPosTweens > 0 then
@@ -1523,8 +927,6 @@ function HandbookSkinScene:onClose()
 
 		self._dragResetPosTweens = {}
 	end
-
-	TaskDispatcher.cancelTask(self.onDoTarotCardPosToMiddleEnd, self)
 
 	if self._cameraRootAnimator then
 		self._cameraRootAnimator:Rebind()
@@ -1540,6 +942,10 @@ function HandbookSkinScene:onClose()
 
 	if self._sevenSubScene then
 		self._sevenSubScene:onClose()
+	end
+
+	if self._tarotSubScene then
+		self._tarotSubScene:onClose()
 	end
 end
 

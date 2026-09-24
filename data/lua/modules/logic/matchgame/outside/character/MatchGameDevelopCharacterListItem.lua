@@ -22,18 +22,9 @@ function MatchGameDevelopCharacterListItem:onItemShow(data)
 end
 
 function MatchGameDevelopCharacterListItem:refreshUI()
-	local isCanActive = false
 	local status = MatchGameModel.instance:getCharacterStatus(self._characterId)
-	local isLock = status <= MatchGameEnum.CharacterStatus.Unlock
+	local isLock = status <= MatchGameEnum.CharacterStatus.Lock
 
-	if isLock then
-		local level = self._characterMo and self._characterMo.level or 1
-		local costItemList = MatchGameConfig.instance:getCharacterLevelUpCost(self._characterId, level)
-
-		isCanActive = MatchGameModel.instance:isItemEnough(costItemList)
-	end
-
-	gohelper.setActive(self._goActiveEffect, isCanActive)
 	gohelper.setActive(self._goLock, isLock)
 	MatchGameHelper.setCharacterElement(self._characterCo.elementId, self._imageCareer)
 

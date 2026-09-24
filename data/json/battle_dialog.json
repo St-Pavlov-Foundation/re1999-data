@@ -29526,7 +29526,7 @@
     "type": 0
   },
   {
-    "code": 119401020,
+    "code": 119402020,
     "id": 940010001,
     "param": "4#1",
     "canRepeat": true,
@@ -29540,7 +29540,7 @@
     "type": 0
   },
   {
-    "code": 119401020,
+    "code": 119402020,
     "id": 940010002,
     "param": "4#1",
     "canRepeat": true,
@@ -29554,7 +29554,7 @@
     "type": 0
   },
   {
-    "code": 119401020,
+    "code": 119402020,
     "id": 940010003,
     "param": "4#1",
     "canRepeat": true,
@@ -29568,9 +29568,9 @@
     "type": 0
   },
   {
-    "code": 119401020,
+    "code": 119402020,
     "id": 940010004,
-    "param": "36#119401020",
+    "param": "36#119402020",
     "canRepeat": true,
     "insideRepeat": false,
     "random": "",
@@ -29582,9 +29582,9 @@
     "type": 0
   },
   {
-    "code": 119401020,
+    "code": 119402020,
     "id": 940010005,
-    "param": "36#119401020",
+    "param": "36#119402020",
     "canRepeat": true,
     "insideRepeat": false,
     "random": "",
@@ -29596,7 +29596,7 @@
     "type": 0
   },
   {
-    "code": 119401030,
+    "code": 119402030,
     "id": 940010006,
     "param": "4#1",
     "canRepeat": true,
@@ -29610,7 +29610,7 @@
     "type": 0
   },
   {
-    "code": 119401030,
+    "code": 119402030,
     "id": 940010007,
     "param": "4#1",
     "canRepeat": true,
@@ -29624,7 +29624,7 @@
     "type": 0
   },
   {
-    "code": 119401030,
+    "code": 119402030,
     "id": 940010008,
     "param": "4#1",
     "canRepeat": true,
@@ -29638,7 +29638,7 @@
     "type": 0
   },
   {
-    "code": 119401030,
+    "code": 119402030,
     "id": 940010009,
     "param": "4#1",
     "canRepeat": true,
@@ -29652,7 +29652,7 @@
     "type": 0
   },
   {
-    "code": 119401070,
+    "code": 119402070,
     "id": 940010010,
     "param": "4#1",
     "canRepeat": true,
@@ -29666,7 +29666,7 @@
     "type": 0
   },
   {
-    "code": 119401070,
+    "code": 119402070,
     "id": 940010011,
     "param": "4#1",
     "canRepeat": true,
@@ -29680,21 +29680,21 @@
     "type": 0
   },
   {
-    "code": 119401070,
+    "code": 119402070,
     "id": 940010012,
     "param": "4#1",
     "canRepeat": true,
     "insideRepeat": false,
     "random": "",
     "icon": "537712",
-    "audioId": 0,
+    "audioId": 924000012,
     "text": "……拦住她！",
     "tipsDir": 1,
     "delay": 0.3,
     "type": 0
   },
   {
-    "code": 119401090,
+    "code": 119402090,
     "id": 940010013,
     "param": "4#1",
     "canRepeat": true,
@@ -29708,7 +29708,7 @@
     "type": 0
   },
   {
-    "code": 119401090,
+    "code": 119402090,
     "id": 940010014,
     "param": "4#1",
     "canRepeat": true,
@@ -29722,7 +29722,7 @@
     "type": 0
   },
   {
-    "code": 119401090,
+    "code": 119402090,
     "id": 940010015,
     "param": "4#1",
     "canRepeat": true,
@@ -29736,9 +29736,9 @@
     "type": 0
   },
   {
-    "code": 119401090,
+    "code": 119402090,
     "id": 940010016,
-    "param": "36#119401090",
+    "param": "36#119402090",
     "canRepeat": true,
     "insideRepeat": false,
     "random": "",
@@ -29750,9 +29750,9 @@
     "type": 0
   },
   {
-    "code": 119401090,
+    "code": 119402090,
     "id": 940010017,
-    "param": "36#119401090",
+    "param": "36#119402090",
     "canRepeat": true,
     "insideRepeat": false,
     "random": "",
@@ -29764,9 +29764,9 @@
     "type": 0
   },
   {
-    "code": 119401090,
+    "code": 119402090,
     "id": 940010018,
-    "param": "36#119401090",
+    "param": "36#119402090",
     "canRepeat": true,
     "insideRepeat": false,
     "random": "",
@@ -29778,7 +29778,7 @@
     "type": 0
   },
   {
-    "code": 119401100,
+    "code": 119402100,
     "id": 940010019,
     "param": "4#1",
     "canRepeat": true,
@@ -29792,7 +29792,7 @@
     "type": 0
   },
   {
-    "code": 119401100,
+    "code": 119402100,
     "id": 940010020,
     "param": "4#1",
     "canRepeat": true,
@@ -29806,7 +29806,7 @@
     "type": 0
   },
   {
-    "code": 119401100,
+    "code": 119402100,
     "id": 940010021,
     "param": "4#1",
     "canRepeat": true,
@@ -29820,7 +29820,7 @@
     "type": 0
   },
   {
-    "code": 119401100,
+    "code": 119402100,
     "id": 940010022,
     "param": "4#1",
     "canRepeat": true,
@@ -29834,7 +29834,7 @@
     "type": 0
   },
   {
-    "code": 119401100,
+    "code": 119402100,
     "id": 940010023,
     "param": "4#1",
     "canRepeat": true,
@@ -29848,7 +29848,7 @@
     "type": 0
   },
   {
-    "code": 119401120,
+    "code": 119402120,
     "id": 940010024,
     "param": "4#1",
     "canRepeat": true,
@@ -29862,7 +29862,7 @@
     "type": 0
   },
   {
-    "code": 119401120,
+    "code": 119402120,
     "id": 940010025,
     "param": "4#1",
     "canRepeat": true,
@@ -29876,7 +29876,7 @@
     "type": 0
   },
   {
-    "code": 119401120,
+    "code": 119402120,
     "id": 940010026,
     "param": "4#1",
     "canRepeat": true,
@@ -29890,7 +29890,7 @@
     "type": 0
   },
   {
-    "code": 119401120,
+    "code": 119402120,
     "id": 940010027,
     "param": "4#1",
     "canRepeat": true,
@@ -29904,7 +29904,7 @@
     "type": 0
   },
   {
-    "code": 119401120,
+    "code": 119402120,
     "id": 940010028,
     "param": "4#1",
     "canRepeat": true,
@@ -29918,7 +29918,7 @@
     "type": 0
   },
   {
-    "code": 119401120,
+    "code": 119402120,
     "id": 940010029,
     "param": "4#1",
     "canRepeat": true,
@@ -29932,7 +29932,7 @@
     "type": 0
   },
   {
-    "code": 119401120,
+    "code": 119402120,
     "id": 940010030,
     "param": "4#1",
     "canRepeat": true,
@@ -29946,7 +29946,7 @@
     "type": 0
   },
   {
-    "code": 119401120,
+    "code": 119402120,
     "id": 940010031,
     "param": "4#1",
     "canRepeat": true,
@@ -29960,7 +29960,7 @@
     "type": 0
   },
   {
-    "code": 119401120,
+    "code": 119402120,
     "id": 940010032,
     "param": "4#1",
     "canRepeat": true,
@@ -29974,9 +29974,9 @@
     "type": 0
   },
   {
-    "code": 119401120,
+    "code": 119402120,
     "id": 940010033,
-    "param": "9#119401120",
+    "param": "9#119402130",
     "canRepeat": true,
     "insideRepeat": false,
     "random": "",
@@ -29988,9 +29988,9 @@
     "type": 0
   },
   {
-    "code": 119401120,
+    "code": 119402120,
     "id": 940010034,
-    "param": "9#119401120",
+    "param": "9#119402130",
     "canRepeat": true,
     "insideRepeat": false,
     "random": "",
@@ -30002,9 +30002,9 @@
     "type": 0
   },
   {
-    "code": 119401120,
+    "code": 119402120,
     "id": 940010035,
-    "param": "9#119401120",
+    "param": "9#119402130",
     "canRepeat": true,
     "insideRepeat": false,
     "random": "",
@@ -30016,9 +30016,9 @@
     "type": 0
   },
   {
-    "code": 119401120,
+    "code": 119402120,
     "id": 940010036,
-    "param": "9#119401120",
+    "param": "9#119402130",
     "canRepeat": true,
     "insideRepeat": false,
     "random": "",
@@ -30030,9 +30030,9 @@
     "type": 0
   },
   {
-    "code": 119401120,
+    "code": 119402120,
     "id": 940010037,
-    "param": "9#119401120",
+    "param": "9#119402130",
     "canRepeat": true,
     "insideRepeat": false,
     "random": "",
@@ -30044,9 +30044,9 @@
     "type": 0
   },
   {
-    "code": 119401120,
+    "code": 119402120,
     "id": 940010038,
-    "param": "9#119401120",
+    "param": "9#119402130",
     "canRepeat": true,
     "insideRepeat": false,
     "random": "",
@@ -30058,9 +30058,9 @@
     "type": 0
   },
   {
-    "code": 119401120,
+    "code": 119402120,
     "id": 940010039,
-    "param": "9#119401120",
+    "param": "9#119402130",
     "canRepeat": true,
     "insideRepeat": false,
     "random": "",
@@ -30072,9 +30072,9 @@
     "type": 0
   },
   {
-    "code": 119401120,
+    "code": 119402120,
     "id": 940010040,
-    "param": "36#119401120",
+    "param": "36#119402120",
     "canRepeat": true,
     "insideRepeat": false,
     "random": "",
@@ -30086,9 +30086,9 @@
     "type": 0
   },
   {
-    "code": 119401120,
+    "code": 119402120,
     "id": 940010041,
-    "param": "36#119401120",
+    "param": "36#119402120",
     "canRepeat": true,
     "insideRepeat": false,
     "random": "",
@@ -30100,9 +30100,9 @@
     "type": 0
   },
   {
-    "code": 119401120,
+    "code": 119402120,
     "id": 940010042,
-    "param": "36#119401120",
+    "param": "36#119402120",
     "canRepeat": true,
     "insideRepeat": false,
     "random": "",
@@ -30242,7 +30242,7 @@
   {
     "code": 119404120,
     "id": 940010052,
-    "param": "9#119404120",
+    "param": "9#119404130",
     "canRepeat": true,
     "insideRepeat": false,
     "random": "",
@@ -30256,7 +30256,7 @@
   {
     "code": 119404120,
     "id": 940010053,
-    "param": "9#119404120",
+    "param": "9#119404130",
     "canRepeat": true,
     "insideRepeat": false,
     "random": "",
@@ -30270,7 +30270,7 @@
   {
     "code": 119404120,
     "id": 940010054,
-    "param": "9#119404120",
+    "param": "9#119404130",
     "canRepeat": true,
     "insideRepeat": false,
     "random": "",
@@ -30284,7 +30284,7 @@
   {
     "code": 119404120,
     "id": 940010055,
-    "param": "9#119404120",
+    "param": "9#119404130",
     "canRepeat": true,
     "insideRepeat": false,
     "random": "",
@@ -30298,7 +30298,7 @@
   {
     "code": 119404120,
     "id": 940010056,
-    "param": "9#119404120",
+    "param": "9#119404130",
     "canRepeat": true,
     "insideRepeat": false,
     "random": "",
@@ -30312,7 +30312,7 @@
   {
     "code": 119404120,
     "id": 940010057,
-    "param": "9#119404120",
+    "param": "9#119404130",
     "canRepeat": true,
     "insideRepeat": false,
     "random": "",
@@ -30326,7 +30326,7 @@
   {
     "code": 119404120,
     "id": 940010058,
-    "param": "9#119404120",
+    "param": "9#119404130",
     "canRepeat": true,
     "insideRepeat": false,
     "random": "",
@@ -30386,7 +30386,7 @@
     "canRepeat": true,
     "insideRepeat": false,
     "random": "",
-    "icon": "537122",
+    "icon": "537115",
     "audioId": 0,
     "text": "德雷克！不可离开城堡！",
     "tipsDir": 1,
@@ -30400,7 +30400,7 @@
     "canRepeat": true,
     "insideRepeat": false,
     "random": "",
-    "icon": "315801",
+    "icon": "315821",
     "audioId": 0,
     "text": "你还是赶到了，兰斯洛特。这很好。",
     "tipsDir": 2,
@@ -30414,7 +30414,7 @@
     "canRepeat": true,
     "insideRepeat": false,
     "random": "",
-    "icon": "315801",
+    "icon": "315821",
     "audioId": 0,
     "text": "拿好你的剑，湖上骑士！我们的决斗还远未结束！",
     "tipsDir": 2,

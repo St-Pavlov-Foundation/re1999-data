@@ -66,16 +66,7 @@ function CharacterSkillContainer:_onLoadFinish()
 end
 
 function CharacterSkillContainer:_playOpenAni()
-	if not self._isPlayedOpenDeviceAnim and self._godevice and self._godevice.activeInHierarchy then
-		local deviceViewParam = CharacterEnum.DeviceViewParam[self._viewType]
-		local aniName = deviceViewParam and deviceViewParam.OpenAniName
-
-		if aniName then
-			self:playDeviceAnim(aniName)
-		end
-
-		self._isPlayedOpenDeviceAnim = true
-	end
+	self._deviceView:playOpenAni(self._viewType, not self._isInitView)
 end
 
 function CharacterSkillContainer:_refreshUI()
@@ -280,12 +271,6 @@ function CharacterSkillContainer:checkShowReplaceBeforeSkillUI()
 		self:_showSkillReddot(isCanShow)
 	else
 		self:_showSkillReddot(false)
-	end
-end
-
-function CharacterSkillContainer:playDeviceAnim(animName)
-	if self._deviceView then
-		self._deviceView:playAnim(animName)
 	end
 end
 

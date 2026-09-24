@@ -21276,12 +21276,12 @@
   },
   {
     "id": 1314938,
-    "eventName": "play_hero3149_fightingvoc_33",
+    "eventName": "play_hero3149_fightingvoc_34",
     "bankName": "hero3149_vo"
   },
   {
     "id": 1314939,
-    "eventName": "play_hero3149_fightingvoc_34",
+    "eventName": "play_hero3149_fightingvoc_33",
     "bankName": "hero3149_vo"
   },
   {
@@ -21301,7 +21301,7 @@
   },
   {
     "id": 1314943,
-    "eventName": "play_hero3149_fightingvoc_33",
+    "eventName": "play_hero3149_fightingvoc_34",
     "bankName": "hero3149_vo"
   },
   {
@@ -21376,7 +21376,7 @@
   },
   {
     "id": 1314958,
-    "eventName": "play_hero3149_fightingvoc_33",
+    "eventName": "play_hero3149_fightingvoc_34",
     "bankName": "hero3149_vo"
   },
   {
@@ -22726,22 +22726,22 @@
   },
   {
     "id": 1315574,
-    "eventName": "play_hero315503_mainvoc_93",
+    "eventName": "play_hero315503_mainvoc_96",
     "bankName": "hero315503_mainvoc"
   },
   {
     "id": 1315575,
-    "eventName": "play_hero315503_mainvoc_94",
+    "eventName": "play_hero315503_mainvoc_93",
     "bankName": "hero315503_mainvoc"
   },
   {
     "id": 1315576,
-    "eventName": "play_hero315503_mainvoc_95",
+    "eventName": "play_hero315503_mainvoc_94",
     "bankName": "hero315503_mainvoc"
   },
   {
     "id": 1315577,
-    "eventName": "play_hero315503_mainvoc_96",
+    "eventName": "play_hero315503_mainvoc_95",
     "bankName": "hero315503_mainvoc"
   },
   {
@@ -22853,6 +22853,21 @@
     "id": 1315599,
     "eventName": "play_hero315503_mainsfx_adm_l2d",
     "bankName": "hero315503_mainsfx"
+  },
+  {
+    "id": 13155100,
+    "eventName": "play_hero3155_mainsfx_feixingqi",
+    "bankName": "hero3155_mainsfx"
+  },
+  {
+    "id": 13155101,
+    "eventName": "play_hero3155_mainvoc_3",
+    "bankName": "hero3155_mainvoc"
+  },
+  {
+    "id": 13155102,
+    "eventName": "play_hero3155_mainvoc_7",
+    "bankName": "hero3155_mainvoc"
   },
   {
     "id": 1315801,
@@ -23077,7 +23092,7 @@
   {
     "id": 1315845,
     "eventName": "play_hero3158_fightingvoc_34",
-    "bankName": "hero3158_mainvoc"
+    "bankName": "hero3158_vo"
   },
   {
     "id": 1316301,
@@ -23248,6 +23263,36 @@
     "id": 1316334,
     "eventName": "play_hero3163_fightingvoc_34",
     "bankName": "hero3163_vo"
+  },
+  {
+    "id": 1316335,
+    "eventName": "play_hero3163_mainsfx_chibang",
+    "bankName": "hero3163_mainsfx"
+  },
+  {
+    "id": 1316336,
+    "eventName": "play_hero3163_mainsfx_yincang",
+    "bankName": "hero3163_mainsfx"
+  },
+  {
+    "id": 1316337,
+    "eventName": "play_hero3163_mainvoc_5",
+    "bankName": "hero3163_mainvoc"
+  },
+  {
+    "id": 1316338,
+    "eventName": "play_hero3163_fightingvoc_32",
+    "bankName": "hero3163_vo"
+  },
+  {
+    "id": 1316339,
+    "eventName": "play_hero3163_fightingvoc_33",
+    "bankName": "hero3163_vo"
+  },
+  {
+    "id": 1316340,
+    "eventName": "play_hero3163_mainvoc_11",
+    "bankName": "hero3163_mainvoc"
   },
   {
     "id": 1313451,
@@ -23515,6 +23560,11 @@
     "bankName": "npc510901_mainvoc"
   },
   {
+    "id": 1510906,
+    "eventName": "play_hero3066_mainsfx_fabian",
+    "bankName": "hero3066_mainsfx_4_0"
+  },
+  {
     "id": 1623901,
     "eventName": "play_npc623901_mainvoc_1",
     "bankName": "npc623901_mainvoc"
@@ -23538,6 +23588,11 @@
     "id": 1623905,
     "eventName": "play_npc623901_mainvoc_5",
     "bankName": "npc623901_mainvoc"
+  },
+  {
+    "id": 1623906,
+    "eventName": "play_hero3088_mainsfx_fanshu",
+    "bankName": "hero3088_mainsfx_4_0"
   },
   {
     "id": 1314543,
@@ -23955,6 +24010,11 @@
     "bankName": "hero304805_mainsfx"
   },
   {
+    "id": 1304867,
+    "eventName": "play_mianvoc_hero3048_10",
+    "bankName": "mianvoc_hero3048"
+  },
+  {
     "id": 1309138,
     "eventName": "play_hero3091_mainvoc_1",
     "bankName": "hero3091_mainvoc"
@@ -24107,6 +24167,11 @@
   {
     "id": 13025107,
     "eventName": "play_mianvoc_hero3025_11",
+    "bankName": "mianvoc_hero3025"
+  },
+  {
+    "id": 13025108,
+    "eventName": "play_mianvoc_hero3025_05",
     "bankName": "mianvoc_hero3025"
   },
   {

@@ -109,7 +109,7 @@ function V3a2_BossRush_LevelDetailView:onOpen()
 	self._activityId = self._stageCO.activityId
 	self._handBookMo = V3a2_BossRushModel.instance:getHandBookMoByStage(self._stage, self._activityId)
 	self._stageLayerInfos = BossRushModel.instance:getStageLayersInfo(self._stage, self._activityId)
-	self._layerCO = self._stageLayerInfos[self._layer].layerCO
+	self._layerCO = BossRushConfig.instance:getEpisodeCO(self._stage, self._layer, self._activityId)
 
 	self:_refreshMonster()
 	self:_refreshRedDot()

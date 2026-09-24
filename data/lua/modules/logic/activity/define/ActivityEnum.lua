@@ -24,7 +24,7 @@ ActivityEnum.Activity = {
 	V2a5_DecaLogPresent = 12524,
 	V2a8_DragonBoat = 12868,
 	NoviceSign = 10002,
-	V2a4_Role_SignView_Part2 = 12433,
+	V4a0_SkinGift = 14038,
 	V2a3_Role_SignView_Part1 = 12308,
 	V2a6_WarmUp = 12621,
 	V2a2_Role_SignView_Part1 = 12230,
@@ -156,6 +156,7 @@ ActivityEnum.Activity = {
 	V4a0_MatchGame = 14012,
 	V4a0_StoneGift = 14030,
 	NoviceInsight = 10004,
+	V2a4_Role_SignView_Part2 = 12433,
 	V2a5_WarmUp = 12525,
 	V2a7_Labor_Sign = 12710,
 	WeekWalkHeartShow = 10015,
@@ -382,7 +383,8 @@ ActivityEnum.CheckFinishActDic = {
 	[ActivityEnum.Activity.V3a7_SkinGift] = true,
 	[ActivityEnum.Activity.SP02_LinkGift] = true,
 	[ActivityEnum.Activity.V2a9_Act208] = true,
-	[ActivityEnum.Activity.V3a9_BDuckLinkage] = true
+	[ActivityEnum.Activity.V3a9_BDuckLinkage] = true,
+	[ActivityEnum.Activity.V4a0_SkinGift] = true
 }
 
 return ActivityEnum

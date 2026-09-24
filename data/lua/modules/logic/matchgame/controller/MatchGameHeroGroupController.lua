@@ -28,10 +28,6 @@ function MatchGameHeroGroupController:replaceSlot(posIndex, characterId)
 	self:saveToServer(teamId, characterIds)
 end
 
-function MatchGameHeroGroupController:clearSlot(posIndex)
-	self:replaceSlot(posIndex, 0)
-end
-
 function MatchGameHeroGroupController:swapSlots(teamId, posA, posB)
 	local characterIds = {}
 	local teamHeroes = MatchGameHeroGroupModel.instance:getCurTeamHeroes()
@@ -72,6 +68,12 @@ function MatchGameHeroGroupController:saveToServer(teamId, characterIds)
 end
 
 function MatchGameHeroGroupController:enterBattle(episodeId)
+	local isOpen = MatchGameModel.instance:checkEpisodeOpen(episodeId, true)
+
+	if not isOpen then
+		return
+	end
+
 	local characterCount = MatchGameHeroGroupModel.instance:getCurTeamCharacterCount()
 
 	if characterCount <= 0 then
@@ -99,6 +101,12 @@ function MatchGameHeroGroupController:confirmEdit(posIndex)
 		return
 	end
 
+	local modify = self:checkHeroGroupModify(posIndex)
+
+	if not modify then
+		return
+	end
+
 	if heroListModel:isQuickEditMode() then
 		local batchHeroList = heroListModel:getBatchSelectedList() or {}
 		local characterIds = tabletool.copy(batchHeroList)
@@ -108,8 +116,38 @@ function MatchGameHeroGroupController:confirmEdit(posIndex)
 	else
 		local selectedId = heroListModel:getSelectedCharacterId()
 
-		if posIndex > 0 then
-			self:replaceSlot(posIndex, selectedId)
+		self:replaceSlot(posIndex, selectedId)
+	end
+
+	return true
+end
+
+function MatchGameHeroGroupController:checkHeroGroupModify(posIndex)
+	if not posIndex or posIndex > MatchGameEnum.HeroGroupMaxHeroCount then
+		return
+	end
+
+	local teamHeroMap = MatchGameHeroGroupModel.instance:getCurTeamHeroes()
+	local heroListModel = MatchGameHeroGroupEditListModel.instance
+
+	if heroListModel:isQuickEditMode() then
+		local batchHeroList = heroListModel:getBatchSelectedList() or {}
+
+		for i, heroId in ipairs(batchHeroList) do
+			local curHeroMo = teamHeroMap and teamHeroMap[i]
+			local curHeroId = curHeroMo and curHeroMo.id or 0
+
+			if curHeroId ~= heroId then
+				return true
+			end
+		end
+	else
+		local selectedId = heroListModel:getSelectedCharacterId()
+		local curHeroMo = teamHeroMap and teamHeroMap[posIndex]
+		local curHeroId = curHeroMo and curHeroMo.id or 0
+
+		if curHeroId ~= selectedId then
+			return true
 		end
 	end
 end

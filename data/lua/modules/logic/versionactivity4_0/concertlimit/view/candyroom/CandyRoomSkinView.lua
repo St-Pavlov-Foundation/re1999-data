@@ -66,6 +66,7 @@ function CandyRoomSkinView:_removeSelfEvents()
 end
 
 function CandyRoomSkinView:onOpen()
+	AudioMgr.instance:trigger(AudioEnum4_0.CandyRoom.play_ui_fuleyuan_tansuo_bag_open)
 	self:_refresh()
 	self:_refreshRewards()
 	self:_refreshTime()

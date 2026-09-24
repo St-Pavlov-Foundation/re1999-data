@@ -4,11 +4,8 @@ module("modules.configs.excel2json.lua_role_badge_group", package.seeall)
 
 local lua_role_badge_group = {}
 local fields = {
-	uiPlayerParam = 3,
-	groupTitle = 2,
-	rule = 5,
 	id = 1,
-	isMask = 4
+	groupTitle = 2
 }
 local primaryKey = {
 	"id"

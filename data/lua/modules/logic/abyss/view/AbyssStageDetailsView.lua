@@ -91,18 +91,31 @@ function AbyssStageDetailsView:_onUseHeroGroup(param)
 
 	local stageMo = self.infoMo and self.infoMo:getStageInfo(self.curStageId)
 
-	if stageMo:isChallenged() then
+	if not stageMo or stageMo:isChallenged() then
 		return
 	end
 
-	local targetSubId = stageMo and stageMo.heroGroupSubId or 1
+	local targetSubId = stageMo.heroGroupSubId or 1
 	local targetMo = HeroGroupPresetController.instance:copyPresetToOther(param.groupId, param.subId, HeroGroupPresetEnum.HeroGroupType.Abyss, targetSubId, false)
 
 	if targetMo == nil then
 		return
 	end
 
-	AbyssController.instance:saveSnapShot(targetMo, targetSubId)
+	if AbyssModel.instance:getAssistMO() and stageMo:haveAssist() then
+		HeroGroupModel.instance:clearCurAssist(true)
+		HeroGroupController.instance:dispatchEvent(HeroGroupEvent.OnModifyHeroGroup)
+	end
+
+	AbyssController.instance:saveSnapShot(targetMo, targetSubId, self._onSnapShotSaveSucc, self, true)
+end
+
+function AbyssStageDetailsView:_onSnapShotSaveSucc(code, msg)
+	local snapshotType = ModuleEnum.HeroGroupSnapshotType.Abyss
+	local curStageInfo = AbyssModel.instance:getCurStageMo()
+	local heroGroupMO = HeroGroupSnapshotModel.instance:getHeroGroupInfo(snapshotType, curStageInfo.heroGroupSubId, true)
+
+	HeroSingleGroupModel.instance:setSingleGroup(heroGroupMO)
 end
 
 function AbyssStageDetailsView:_onSnapshotSaveSucc(snapshotId, snapshotSubId)
@@ -144,6 +157,8 @@ function AbyssStageDetailsView:_btnReadPresetOnClick()
 			heroGroupType
 		}
 	})
+
+	HeroGroupModel.instance.episodeId = self.episodeConfig.id
 end
 
 function AbyssStageDetailsView:_btnchangeteamOnClick()
@@ -379,6 +394,12 @@ function AbyssStageDetailsView:switchStage(stageId)
 	self.curStageId = stageId
 
 	AbyssModel.instance:setCurStageId(stageId)
+
+	local snapshotType = ModuleEnum.HeroGroupSnapshotType.Abyss
+	local curStageInfo = AbyssModel.instance:getCurStageMo()
+	local heroGroupMO = HeroGroupSnapshotModel.instance:getHeroGroupInfo(snapshotType, curStageInfo.heroGroupSubId, true)
+
+	HeroSingleGroupModel.instance:setSingleGroup(heroGroupMO)
 	self:refreshTargetList()
 	self:refreshRecommendInfo()
 	self:refreshStageSelectState()
@@ -513,6 +534,7 @@ function AbyssStageDetailsView:_onStageInfoChanged(actId, stageId)
 	end
 
 	self:refreshTargetList()
+	self:refreshAssistInfo()
 end
 
 function AbyssStageDetailsView:_refreshStageItemHeroInfo(item)

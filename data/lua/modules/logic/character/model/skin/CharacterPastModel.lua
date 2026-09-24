@@ -19,9 +19,9 @@ function CharacterPastModel:getHeroPastSkins(heroId)
 end
 
 function CharacterPastModel:isPastSkin(heroId, skinId)
-	local all = self:getHeroAllPastSkins(heroId)
+	local skinCo = SkinConfig.instance:getSkinCo(skinId)
 
-	if all and LuaUtil.tableContains(all, skinId) then
+	if skinCo and skinCo.isPast == 1 then
 		return true
 	end
 end
@@ -184,7 +184,7 @@ function CharacterPastModel:checkPopupCharacterPastSkinGainView(materialDataMOLi
 						materialDataMOList = materialDataMOList
 					}
 
-					PopupController.instance:addPopupView(PopupEnum.PriorityType.GainSkinView, ViewName.CharacterPastSkinGainView, param)
+					PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropConvertView, ViewName.CharacterPastSkinGainView, param)
 
 					hasPast = true
 				end
@@ -197,9 +197,21 @@ end
 
 function CharacterPastModel:getHeroAllPastSkins(heroId)
 	if not self._heroPastSkins then
-		local items = ItemConfig.instance:getItemListBySubType(ItemEnum.SubType.CharacterPast)
+		self._heroPastSkins = {}
+	end
 
-		self._heroPastSkins = self:hadPastSkinsByItems(items)
+	if not self._heroPastSkins[heroId] then
+		self._heroPastSkins[heroId] = {}
+
+		local cos = SkinConfig.instance:getCharacterSkinCoList(heroId)
+
+		if cos then
+			for _, co in ipairs(cos) do
+				if co.isPast == 1 then
+					table.insert(self._heroPastSkins[heroId], co.id)
+				end
+			end
+		end
 	end
 
 	return self._heroPastSkins[heroId]

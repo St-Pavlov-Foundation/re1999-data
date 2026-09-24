@@ -43,7 +43,7 @@ function HongNJSkinInteraction:_loadEffectFinished(effectLoader)
 end
 
 function HongNJSkinInteraction:_onHeroShowInScene(showInScene)
-	if showInScene or self._showFeatherStoryGo then
+	if showInScene then
 		return
 	end
 
@@ -79,9 +79,9 @@ function HongNJSkinInteraction:_onHeroShowInScene(showInScene)
 
 	self._clickMaskableGraphic.raycastTarget = true
 
-	self._featherAnimator:Play("open")
 	gohelper.setActive(self._featherGo, true)
 	gohelper.setActive(self._clickFeatherGo, true)
+	self._featherAnimator:Play("open")
 	TaskDispatcher.cancelTask(self._hideFeather, self)
 	TaskDispatcher.runDelay(self._hideFeather, self, featherHideTime)
 	AudioMgr.instance:trigger(FeatherSoundId.startId)
@@ -112,7 +112,8 @@ function HongNJSkinInteraction:_onFeatherClick()
 
 	self._featherAnimator:Play("click")
 	self:_playCameraAnim("315503_tlzchnj_jt_jh00")
-	CharacterVoiceController.instance:dispatchEvent(CharacterVoiceEvent.XRAnInteractionStart)
+	CharacterVoiceController.instance:dispatchEvent(CharacterVoiceEvent.HongNJSkinInteractionStart)
+	CharacterVoiceController.instance:dispatchEvent(CharacterVoiceEvent.PlayMainViewAnim, "mainview_out")
 	AudioMgr.instance:trigger(FeatherSoundId.clickId)
 	TaskDispatcher.runDelay(self._clickHandler, self, time)
 end
@@ -147,23 +148,9 @@ function HongNJSkinInteraction:_playCameraAnim(animName)
 	end
 end
 
-function HongNJSkinInteraction:_delayResetCamera()
-	UIBlockMgrExtend.setNeedCircleMv(true)
-	gohelper.setActive(self._clickFeatherGo, false)
-end
-
-function HongNJSkinInteraction:_delayHideFeatherStoryGo()
-	self._showFeatherStoryGo = false
-
-	gohelper.setActive(self._featherStoryGo, false)
-	gohelper.setActive(self._featherGo, false)
-end
-
 function HongNJSkinInteraction:_onDestroy()
 	HongNJSkinInteraction.super._onDestroy(self)
-	TaskDispatcher.cancelTask(self._delayResetCamera, self)
 	TaskDispatcher.cancelTask(self._hideFeather, self)
-	TaskDispatcher.cancelTask(self._delayHideFeatherStoryGo, self)
 	TaskDispatcher.cancelTask(self._clickHandler, self)
 
 	if self._click then

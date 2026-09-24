@@ -176,10 +176,6 @@ function VersionActivity3_2DungeonMapNormalInteractView:hide()
 	gohelper.setActive(self._gointeractroot, false)
 	TaskDispatcher.cancelTask(self.everySecondCall, self)
 	VersionActivityFixedDungeonController.instance:dispatchEvent(VersionActivityFixedDungeonEvent.OnHideInteractUI)
-
-	if self._isRecheck and not self.isFinish then
-		DungeonController.instance:onAgainOpenRecheckView(self._config.id)
-	end
 end
 
 function VersionActivity3_2DungeonMapNormalInteractView:refreshUI()

@@ -12,6 +12,7 @@ function AssistRecordView:onInitView()
 	self._goGatherTip = gohelper.findChild(self.viewGO, "root/Left/#go_GatherTip")
 	self._btnCloseGatherTip = gohelper.findChildButtonWithAudio(self.viewGO, "root/Left/#go_GatherTip/#btn_CloseGatherTip")
 	self._txtTip = gohelper.findChildText(self.viewGO, "root/Left/#go_GatherTip/Tip/#txt_Tip")
+	self._goEmpty = gohelper.findChild(self.viewGO, "root/Right/#go_Empty")
 	self._goHeroNodes = gohelper.findChild(self.viewGO, "root/Right/#go_HeroNodes")
 	self._gotopleft = gohelper.findChild(self.viewGO, "root/#go_topleft")
 
@@ -44,8 +45,9 @@ end
 
 function AssistRecordView:onOpen()
 	local recordInfoMo = AssistRecordModel.instance:getRecordInfo()
+	local likeCount = recordInfoMo:getAllLikeCount()
 
-	self._txtLikeCnt.text = recordInfoMo:getAllLikeCount()
+	self._txtLikeCnt.text = GameUtil.numberDisplayCustom(likeCount, 4, 6)
 
 	local hasReceived = PlayerModel.instance:getHasReceiveAssistBonus()
 	local maxReceived = PlayerModel.instance:getMaxAssistRewardCount()
@@ -65,7 +67,7 @@ function AssistRecordView:onOpen()
 			local dungeonStatMo = recordInfoMo:getDungeonStatByType(v)
 			local count = dungeonStatMo and dungeonStatMo.count or 0
 
-			txtNum.text = count
+			txtNum.text = GameUtil.numberDisplayCustom(count, 4, 6)
 		end
 	end
 
@@ -86,6 +88,9 @@ function AssistRecordView:onOpen()
 			item:onUpdateMO(mo)
 		end
 	end
+
+	gohelper.setActive(self._goHeroNodes, #top3StatMos ~= 0)
+	gohelper.setActive(self._goEmpty, #top3StatMos == 0)
 end
 
 return AssistRecordView

@@ -30,6 +30,9 @@ end
 
 function SpLilyaBulletEntity:hide()
 	self._canvasGroup.alpha = 0
+	self._isExploded = false
+
+	gohelper.setActive(self.imageBullet, false)
 end
 
 function SpLilyaBulletEntity:setPos(x, y)
@@ -55,12 +58,18 @@ function SpLilyaBulletEntity:setExplodeRadius(explodeRadius)
 end
 
 function SpLilyaBulletEntity:setExplodeState(value)
-	gohelper.setActive(self.imageBullet, not value)
-	gohelper.setActive(self.goDamage, value)
+	self._isExploded = value == true
+
+	gohelper.setActive(self.imageBullet, not self._isExploded)
+	gohelper.setActive(self.goDamage, self._isExploded)
 end
 
 function SpLilyaBulletEntity:show()
 	self._canvasGroup.alpha = 1
+
+	if not self._isExploded then
+		gohelper.setActive(self.imageBullet, true)
+	end
 end
 
 function SpLilyaBulletEntity:onDestroy()

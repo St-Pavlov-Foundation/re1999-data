@@ -52,11 +52,16 @@ end
 function CollegeBuildingRefinedPropView:refreshEntryList()
 	local entryInfoList = self:_buildEntryInfoList()
 	local hasEntry = entryInfoList and #entryInfoList > 0
+	local showEntry = hasEntry
 
-	gohelper.setActive(self._goScroll, hasEntry)
-	gohelper.setActive(self._goEmpty, not hasEntry)
+	if self._sceneType == CollegeEnum.SceneType.Map then
+		showEntry = showEntry and self._data.isFinish
+	end
 
-	if not hasEntry then
+	gohelper.setActive(self._goScroll, showEntry)
+	gohelper.setActive(self._goEmpty, not showEntry)
+
+	if not showEntry then
 		return
 	end
 

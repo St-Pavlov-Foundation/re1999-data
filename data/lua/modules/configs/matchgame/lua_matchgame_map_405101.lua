@@ -54,7 +54,7 @@ return {
 			posIndex = "2#2",
 			itemType = 1,
 			id = 9,
-			param = 4
+			param = 3
 		},
 		{
 			posIndex = "2#3",
@@ -132,7 +132,7 @@ return {
 			posIndex = "4#1",
 			itemType = 1,
 			id = 22,
-			param = 4
+			param = 3
 		},
 		{
 			posIndex = "4#2",
@@ -180,7 +180,7 @@ return {
 			posIndex = "5#2",
 			itemType = 1,
 			id = 30,
-			param = 2
+			param = 4
 		},
 		{
 			posIndex = "5#3",
@@ -204,13 +204,13 @@ return {
 			posIndex = "5#6",
 			itemType = 1,
 			id = 34,
-			param = 2
+			param = 3
 		},
 		{
 			posIndex = "5#7",
 			itemType = 1,
 			id = 35,
-			param = 2
+			param = 3
 		},
 		{
 			posIndex = "6#1",
@@ -228,19 +228,19 @@ return {
 			posIndex = "6#3",
 			itemType = 1,
 			id = 38,
-			param = 4
+			param = 2
 		},
 		{
 			posIndex = "6#4",
 			itemType = 1,
 			id = 39,
-			param = 2
+			param = 4
 		},
 		{
 			posIndex = "6#5",
 			itemType = 1,
 			id = 40,
-			param = 4
+			param = 3
 		},
 		{
 			posIndex = "6#6",
@@ -252,7 +252,7 @@ return {
 			posIndex = "6#7",
 			itemType = 1,
 			id = 42,
-			param = 2
+			param = 3
 		},
 		{
 			posIndex = "7#1",
@@ -264,7 +264,7 @@ return {
 			posIndex = "7#2",
 			itemType = 1,
 			id = 44,
-			param = 4
+			param = 2
 		},
 		{
 			posIndex = "7#3",
@@ -276,25 +276,25 @@ return {
 			posIndex = "7#4",
 			itemType = 1,
 			id = 46,
-			param = 2
+			param = 4
 		},
 		{
 			posIndex = "7#5",
 			itemType = 1,
 			id = 47,
-			param = 2
+			param = 3
 		},
 		{
 			posIndex = "7#6",
 			itemType = 1,
 			id = 48,
-			param = 4
+			param = 3
 		},
 		{
 			posIndex = "7#7",
 			itemType = 1,
 			id = 49,
-			param = 4
+			param = 3
 		}
 	}
 }

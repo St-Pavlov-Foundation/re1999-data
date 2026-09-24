@@ -85,6 +85,8 @@ function CharacterRecommedGroupView:_refreshHero(heroId)
 	self.heroId = heroId
 	self._heroRecommendMO = CharacterRecommedModel.instance:getHeroRecommendMo(heroId)
 
+	CharacterRecommedModel.instance:checkHeroMainTeam(self.heroId)
+
 	local isShowTeam = self._heroRecommendMO:isShowTeam()
 	local isShowEquip = self._heroRecommendMO:isShowEquip()
 
@@ -109,7 +111,7 @@ function CharacterRecommedGroupView:_onHeightChange(groupItem, expand)
 		self._expandGroupItem = groupItem
 
 		TaskDispatcher.cancelTask(self._tryMoveGroupItemCenter, self)
-		TaskDispatcher.runDelay(self._tryMoveGroupItemCenter, self, 0.02)
+		TaskDispatcher.runDelay(self._tryMoveGroupItemCenter, self, 0.1)
 	end
 end
 
@@ -143,8 +145,6 @@ function CharacterRecommedGroupView:_refreshGroup()
 	if not self._heroRecommendMO then
 		return
 	end
-
-	CharacterRecommedModel.instance:checkHeroMainTeam(self.heroId)
 
 	local moList = self._heroRecommendMO.teamRec
 

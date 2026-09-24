@@ -52,6 +52,7 @@ end
 
 function AutoChessEntity:addEventListeners()
 	self:addEventCb(AutoChessController.instance, AutoChessEvent.UsingLeaderSkill, self.onUsingLeaderSkill, self)
+	self:addEventCb(AutoChessController.instance, AutoChessEvent.UpdateExtInfo, self.onUpdateExtInfo, self)
 end
 
 function AutoChessEntity:onUsingLeaderSkill(using)
@@ -202,6 +203,8 @@ function AutoChessEntity:initBuffEffect()
 
 		self:playEffect(effectId)
 	end
+
+	self:onUpdateExtInfo()
 end
 
 function AutoChessEntity:addBuff(buff)
@@ -487,8 +490,35 @@ function AutoChessEntity:playEffect(effectId, param)
 	return effectCo and effectCo.duration or 0
 end
 
-function AutoChessEntity:playBuffEffect(effectId)
-	return
+function AutoChessEntity:onUpdateExtInfo()
+	local sceneMo = AutoChessModel.instance:getSceneMo()
+	local extInfo = sceneMo and sceneMo.extInfo
+
+	if extInfo then
+		local isBuyChess = self.mo.uid == extInfo.lastBuyChessUid
+
+		if self.lastBuy and not isBuyChess then
+			self.effectComp:removeEffect(40008)
+
+			self.lastBuy = false
+		elseif not self.lastBuy and isBuyChess then
+			self:playEffect(40008)
+
+			self.lastBuy = true
+		end
+
+		local isDamageExtra = tabletool.indexOf(extInfo.damageExtraTargetChessUids, self.mo.uid)
+
+		if self.damageExtra and not isDamageExtra then
+			self.effectComp:removeEffect(40006)
+
+			self.damageExtra = false
+		elseif not self.damageExtra and isDamageExtra then
+			self:playEffect(40006)
+
+			self.damageExtra = true
+		end
+	end
 end
 
 return AutoChessEntity

@@ -43,6 +43,7 @@ function AutoChessViewDefine.init(module_views)
 		mainRes = "ui/viewres/versionactivity_2_5/autochess/autochessleadernextview.prefab",
 		layer = "POPUP_TOP",
 		viewType = ViewType.Modal,
+		anim = ViewAnim.Default,
 		otherRes = {
 			AutoChessStrEnum.ResPath.LeaderItem
 		}

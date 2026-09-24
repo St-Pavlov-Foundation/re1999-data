@@ -359,9 +359,10 @@ PlayerPrefsKey.CollegeBubbleGroupPlayedTime = "CollegeBubbleGroupPlayedTime"
 PlayerPrefsKey.CollegeSceneBubbleGroupPlayed = "CollegeSceneBubbleGroupPlayed"
 PlayerPrefsKey.CollegeSceneBubbleGroupPlayedTime = "CollegeSceneBubbleGroupPlayedTime"
 PlayerPrefsKey.MatchGameShowPassMapView = "MatchGameShowPassMapView"
-PlayerPrefsKey.MatchGameReadCharacterId = "MatchGameReadCharacterId"
 PlayerPrefsKey.MatchGameReadTalentId = "MatchGameReadTalentId"
 PlayerPrefsKey.CharacterRecommedTeam = "CharacterRecommedTeam"
 PlayerPrefsKey.CandyRoomPanelShow = "CandyRoomPanelShow"
+PlayerPrefsKey.MusicGameScoreShow = "MusicGameScoreShow"
+PlayerPrefsKey.ActFlipCardIndex = "ActFlipCardIndex"
 
 return PlayerPrefsKey

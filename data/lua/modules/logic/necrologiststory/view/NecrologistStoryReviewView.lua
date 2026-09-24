@@ -11,6 +11,7 @@ function NecrologistStoryReviewView:onInitView()
 	self._goUnlockedBg = gohelper.findChild(self._goBgCg, "unlocked")
 	self._unlocksimagecgbg = gohelper.findChildSingleImage(self._goUnlockedBg, "#simage_cgbg")
 	self._unlockimagecgbg = gohelper.findChildImage(self._goUnlockedBg, "#simage_cgbg")
+	self._unlockmask = gohelper.findChild(self._goUnlockedBg, "#simage_cgbgmask")
 	self._goLockedBg = gohelper.findChild(self._goBgCg, "locked")
 	self._locksimagecgbg = gohelper.findChildSingleImage(self._goLockedBg, "bgmask/#simage_cgbg")
 	self._lockimagecgbg = gohelper.findChildImage(self._goLockedBg, "bgmask/#simage_cgbg")
@@ -77,11 +78,13 @@ end
 function NecrologistStoryReviewView:refreshStoryList()
 	if self.cgUnlock then
 		gohelper.setActive(self.goScroll, false)
+		gohelper.setActive(self._unlockmask, false)
 
 		return
 	end
 
 	gohelper.setActive(self.goScroll, true)
+	gohelper.setActive(self._unlockmask, true)
 
 	local plotList = NecrologistStoryConfig.instance:getPlotListByStoryId(self.storyId)
 
@@ -157,7 +160,12 @@ function NecrologistStoryReviewView:refreshItem(item, plotCo)
 
 	local txtItem = isSelect and item.selectItem or item.normalItem
 
-	txtItem.txtIndex.text = string.format("%02d", item.index)
+	if plotCo.storyId == NecrologistStoryEnum.RoleStoryId.V4A0 then
+		txtItem.txtIndex.text = ""
+	else
+		txtItem.txtIndex.text = string.format("%02d", item.index)
+	end
+
 	txtItem.txtTitle.text = plotCo.storyName
 	txtItem.txtTitleEn.text = plotCo.storyNameEn
 

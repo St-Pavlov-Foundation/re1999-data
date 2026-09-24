@@ -31,18 +31,16 @@ function DeleikeLevelView:addEvents()
 	self:addEventCb(Activity220Controller.instance, Activity220Event.EpisodeFinished, self._onEpisodeFinished, self)
 	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, self._onCloseView, self)
 	self:addEventCb(GameGlobalMgr.instance, GameStateEvent.OnScreenResize, self._onScreenSizeChange, self)
+	self:addEventCb(ViewMgr.instance, ViewEvent.OnOpenFullView, self._onOpenFullView, self)
 end
 
 function DeleikeLevelView:removeEvents()
 	self._btntask:RemoveClickListener()
 	self._scrollstory:RemoveOnValueChanged()
-	self:removeEventCb(Activity220Controller.instance, Activity220Event.EpisodeFinished, self._onEpisodeFinished, self)
-	self:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseView, self._onCloseView, self)
-	self:removeEventCb(GameGlobalMgr.instance, GameStateEvent.OnScreenResize, self._onScreenSizeChange, self)
 end
 
 function DeleikeLevelView:_btntaskOnClick()
-	DeleikeController.instance:openTaskView()
+	ViewMgr.instance:openView(ViewName.DeleikeTaskView)
 end
 
 function DeleikeLevelView:onValueChanged()
@@ -61,7 +59,7 @@ function DeleikeLevelView:_onEpisodeFinished()
 
 	local newEpisode = mo:getNewFinishEpisode()
 
-	if newEpisode then
+	if newEpisode and newEpisode ~= 0 then
 		TaskDispatcher.runDelay(self._playStoryFinishAnim, self, 1)
 
 		local maxUnlockEpisode = Activity220Model.instance:getMaxUnlockEpisodeId(self.actId)
@@ -69,9 +67,8 @@ function DeleikeLevelView:_onEpisodeFinished()
 		self._curEpisodeIndex = DeleikeConfig.instance:getEpisodeIndex(maxUnlockEpisode)
 
 		Activity220Model.instance:setCurEpisode(self.actId, self._curEpisodeIndex, maxUnlockEpisode)
+		self:_refreshTask()
 	end
-
-	self:_refreshTask()
 end
 
 function DeleikeLevelView:_playStoryFinishAnim()
@@ -156,7 +153,7 @@ end
 function DeleikeLevelView:_editableInitView()
 	self:_initViewInfo()
 
-	self.actId = DeleikeController.instance.actId
+	self.actId = DeleikeController.instance:getActId()
 	self._viewAnimator = self.viewGO:GetComponent(typeof(UnityEngine.Animator))
 
 	RedDotController.instance:addRedDot(self._goreddotreward, RedDotEnum.DotNode.Activity220Task, self.actId)
@@ -187,6 +184,13 @@ function DeleikeLevelView:onOpen()
 	TaskDispatcher.cancelTask(self._refreshLeftTime, self)
 	TaskDispatcher.runRepeat(self._refreshLeftTime, self, TimeUtil.OneMinuteSecond)
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_leimi_theft_open)
+	DeleikeController.instance:checkLastFight()
+end
+
+function DeleikeLevelView:_onOpenFullView(viewName)
+	if viewName == ViewName.DeleikeGameView then
+		self.viewContainer:_setVisible(false)
+	end
 end
 
 function DeleikeLevelView:_initLevelItems()

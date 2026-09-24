@@ -12,22 +12,21 @@ function RoleBadgeRecordMo:init(data)
 	self.badges, self.badgesMap = GameUtil.rpcInfosToListAndMap(data.badges, RoleBadgeMo, "id", self.badgesMap)
 
 	table.sort(self.badges, function(a, b)
-		if a.config.groupId == b.config.groupId then
-			return a.config.level < b.config.level
-		else
-			return a.config.groupId < b.config.groupId
-		end
+		return a.config.sortId > b.config.sortId
 	end)
 end
 
 function RoleBadgeRecordMo:updateBadge(data)
 	if not self.heroUid then
 		self.heroUid = data.heroUid
+		self.badges = {}
+		self.badgesMap = {}
 
 		self:updateWears(data.wears)
 	end
 
-	local newGroupMap = {}
+	local heroMo = HeroModel.instance:getById(self.heroUid)
+	local toastList = {}
 	local finish = AssistEnum.BadgeStatus.Finish
 
 	for _, badge in ipairs(data.badges) do
@@ -44,17 +43,18 @@ function RoleBadgeRecordMo:updateBadge(data)
 		badgeMo:init(badge)
 
 		if badgeMo.status == finish and oldStatus ~= finish then
-			newGroupMap[badgeMo.config.groupId] = true
+			local groupCfg = RoleBadgeConfig.instance:getBadgeGroupCo(badgeMo.config.groupId)
+			local param = {
+				icon = badgeMo.config.icon,
+				name = heroMo and heroMo.config.name,
+				title = groupCfg and groupCfg.groupTitle
+			}
+
+			toastList[#toastList + 1] = param
 		end
 	end
 
-	local heroMo = HeroModel.instance:getById(self.heroUid)
-
-	for groupId in pairs(newGroupMap) do
-		local groupCfg = RoleBadgeConfig.instance:getBadgeGroupCo(groupId)
-
-		ToastController.instance:showToastWithIcon(ToastEnum.AssistRoleBadgeGet, nil, heroMo.heroName, groupCfg.groupTitle)
-	end
+	RoleBadgeModel.instance:addTostList(toastList)
 end
 
 function RoleBadgeRecordMo:updateWears(data)
@@ -89,27 +89,53 @@ function RoleBadgeRecordMo:getWearCnt()
 	return wearCount
 end
 
-function RoleBadgeRecordMo:getActiveBadgeCfg(groupId)
+function RoleBadgeRecordMo:getShowBadgeMo(groupId)
 	for i = #self.badges, 1, -1 do
 		local badgeMo = self.badges[i]
 		local config = badgeMo.config
 
-		if config.groupId == groupId and badgeMo.status == AssistEnum.BadgeStatus.Finish then
-			return config
+		if config.groupId == groupId then
+			return badgeMo
 		end
 	end
 end
 
 function RoleBadgeRecordMo:getFirstEmptyWearPos()
-	if #self.wears == 0 then
-		return 1
-	end
-
 	for i, wearMo in ipairs(self.wears) do
 		if wearMo.badgeId == 0 then
 			return i
 		end
 	end
+
+	return #self.wears + 1
+end
+
+function RoleBadgeRecordMo:hasNewTag()
+	local idList = {}
+
+	for _, badgeMo in ipairs(self.badges) do
+		if badgeMo.status == AssistEnum.BadgeStatus.Finish then
+			idList[#idList + 1] = badgeMo.id
+		end
+	end
+
+	if #idList == 0 then
+		return false
+	end
+
+	return RoleBadgeModel.instance:isRoleBadgeNew(self.heroUid, idList)
+end
+
+function RoleBadgeRecordMo:clearNewTag()
+	local idList = {}
+
+	for _, badgeMo in ipairs(self.badges) do
+		if badgeMo.status == AssistEnum.BadgeStatus.Finish then
+			idList[#idList + 1] = badgeMo.id
+		end
+	end
+
+	RoleBadgeModel.instance:setRoleBadgeOld(self.heroUid, idList)
 end
 
 return RoleBadgeRecordMo

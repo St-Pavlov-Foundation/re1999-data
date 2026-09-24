@@ -85,11 +85,9 @@ function BaseSpine:_clear()
 	self._renderer = nil
 	self._curBodyName = nil
 
-	if self.customEffectComp then
-		MonoHelper.removeLuaComFromGo(self._gameObj, BaseSpineSpecialEffect)
+	MonoHelper.removeLuaComFromGo(self._gameObj, BaseCommonSpecialEffect)
 
-		self.customEffectComp = nil
-	end
+	self.customEffectComp = nil
 end
 
 function BaseSpine:setInMainView()

@@ -32,6 +32,7 @@ end
 
 function MatchGameConfig:process_activity244_talent(configTable)
 	self._branchList = {}
+	self._teamTalentList = {}
 	self._talentNodeCostMap = {}
 
 	for _, v in ipairs(configTable.configList) do
@@ -42,19 +43,25 @@ function MatchGameConfig:process_activity244_talent(configTable)
 		table.insert(self._branchList[branch], v)
 
 		self._talentNodeCostMap[v.nodeId] = GameUtil.splitString2(v.costItemId, true)
+
+		if not string.nilorempty(v.teamCondition) then
+			table.insert(self._teamTalentList, v)
+		end
 	end
 
 	for _, nodeList in pairs(self._branchList) do
-		table.sort(nodeList, function(aNodeCo, bNodeCo)
-			if aNodeCo.nodeIndex ~= bNodeCo.nodeIndex then
-				return aNodeCo.nodeIndex < bNodeCo.nodeIndex
-			else
-				return aNodeCo.nodeId < bNodeCo.nodeId
-			end
-		end)
+		table.sort(nodeList, self._sortTalentNode)
 	end
 
 	self:buildTalentTeamCondition(configTable)
+end
+
+function MatchGameConfig._sortTalentNode(aNodeCo, bNodeCo)
+	if aNodeCo.nodeIndex ~= bNodeCo.nodeIndex then
+		return aNodeCo.nodeIndex < bNodeCo.nodeIndex
+	else
+		return aNodeCo.nodeId < bNodeCo.nodeId
+	end
 end
 
 function MatchGameConfig:process_activity244_character(configTable)
@@ -143,18 +150,20 @@ function MatchGameConfig:process_activity244_episode(configTable)
 	}
 
 	for _, chapterList in pairs(self._chapterList) do
-		table.sort(chapterList, function(aChapterMo, bChapterMo)
-			local aSortIndex = aChapterMo.chapterCo and aChapterMo.chapterCo.sortIndex
-			local bSortIndex = bChapterMo.chapterCo and bChapterMo.chapterCo.sortIndex
-
-			if aSortIndex ~= bSortIndex then
-				return aSortIndex < bSortIndex
-			end
-
-			return aChapterMo.chapterId < bChapterMo.chapterId
-		end)
+		table.sort(chapterList, self._chapterMoSortFunc)
 		SortUtil.tableKeyLower(chapterList, sortKeyTab)
 	end
+end
+
+function MatchGameConfig._chapterMoSortFunc(aChapterMo, bChapterMo)
+	local aSortIndex = aChapterMo.chapterCo and aChapterMo.chapterCo.sortIndex
+	local bSortIndex = bChapterMo.chapterCo and bChapterMo.chapterCo.sortIndex
+
+	if aSortIndex ~= bSortIndex then
+		return aSortIndex < bSortIndex
+	end
+
+	return aChapterMo.chapterId < bChapterMo.chapterId
 end
 
 function MatchGameConfig:_getOrCreateChapterMo(chapterId)
@@ -209,18 +218,22 @@ end
 
 function MatchGameConfig:process_activity244_star_reward(configTable)
 	for _, rewardList in pairs(configTable.configDict) do
-		table.sort(rewardList, function(aRewardCo, bRewardCo)
-			return aRewardCo.star < bRewardCo.star
-		end)
+		table.sort(rewardList, self._starRewardSortFunc)
 	end
+end
+
+function MatchGameConfig._starRewardSortFunc(aRewardCo, bRewardCo)
+	return aRewardCo.star < bRewardCo.star
 end
 
 function MatchGameConfig:process_activity244_challenge_reward(configTable)
 	for _, rewardList in pairs(configTable.configDict) do
-		table.sort(rewardList, function(aRewardCo, bRewardCo)
-			return aRewardCo.score < bRewardCo.score
-		end)
+		table.sort(rewardList, self._challengeRewardSortFunc)
 	end
+end
+
+function MatchGameConfig._challengeRewardSortFunc(aRewardCo, bRewardCo)
+	return aRewardCo.score < bRewardCo.score
 end
 
 function MatchGameConfig:getChapterListByLevelType(levelType)
@@ -412,16 +425,9 @@ function MatchGameConfig:getCharacterLevelUpCost(characterId, level)
 		self._cacheCharacterLvUpCost = self._cacheCharacterLvUpCost or {}
 		self._cacheCharacterLvUpCost[characterId] = costItemMap
 
-		local characterCo = lua_activity244_character.configDict[characterId]
+		local levelUpTpl = self:getCharacterLevelTpl(characterId, level)
 
-		if level <= 1 then
-			costItemList = GameUtil.splitString2(characterCo.costItemId, true)
-		else
-			local levelUpTpl = self:getCharacterLevelTpl(characterId, level)
-
-			costItemList = levelUpTpl and GameUtil.splitString2(levelUpTpl.needItem, true)
-		end
-
+		costItemList = levelUpTpl and GameUtil.splitString2(levelUpTpl.needItem, true)
 		costItemMap[level] = costItemList
 	end
 
@@ -500,6 +506,10 @@ end
 
 function MatchGameConfig:getTeamConditionData(skillId)
 	return self.talentTeamConditionMap[skillId]
+end
+
+function MatchGameConfig:getAllTeamTalentList()
+	return self._teamTalentList
 end
 
 MatchGameConfig.instance = MatchGameConfig.New()

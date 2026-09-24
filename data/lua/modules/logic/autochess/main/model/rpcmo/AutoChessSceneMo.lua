@@ -11,6 +11,10 @@ function AutoChessSceneMo:init(data)
 	self:updateSvrFight(data.fight)
 	self:updateSvrMall(data.mall)
 	self:updateSvrBaseInfo(data.baseInfo)
+
+	self.extInfo = AutoChessSceneExtMo.New()
+
+	self.extInfo:init(data.extInfo)
 end
 
 function AutoChessSceneMo:updateSvrFight(fight)
@@ -21,7 +25,7 @@ function AutoChessSceneMo:updateSvrBaseInfo(baseInfo)
 	self.baseInfo = GameUtil.rpcInfoToMo(baseInfo, AutoChessBaseInfoMo)
 end
 
-function AutoChessSceneMo:updateSvrMall(data, event)
+function AutoChessSceneMo:updateSvrMall(data)
 	local oldMallId
 
 	if self.mall then
@@ -29,16 +33,12 @@ function AutoChessSceneMo:updateSvrMall(data, event)
 		self.lastRewardProgress = self.mall.rewardProgress
 	end
 
-	self.mall = GameUtil.rpcInfoToMo(data, AutoChessMallMo)
+	self.mall = GameUtil.rpcInfoToMo(data, AutoChessMallMo, self.mall)
 
 	local newMallId = self.mall:getNormalRegion().mallId
 
 	if oldMallId and oldMallId ~= newMallId then
 		self.mallUpgrade = true
-	end
-
-	if event then
-		AutoChessController.instance:dispatchEvent(AutoChessEvent.UpdateMallData)
 	end
 end
 

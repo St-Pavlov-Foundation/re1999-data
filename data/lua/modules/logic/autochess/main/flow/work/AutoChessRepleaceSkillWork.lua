@@ -8,12 +8,10 @@ function AutoChessRepleaceSkillWork:onStart()
 	local sceneMo = AutoChessModel.instance:getSceneMo()
 
 	if sceneMo then
-		local chessPos = sceneMo.fight:getChessPosition1(self.effect.fromId)
+		local chessPos = self.context:getChessPosition1(self.effect.fromId)
 
 		if chessPos then
-			local chessIds = string.splitToNumber(self.effect.effectString, "#")
-
-			chessPos.chess.replaceSkillChessIds = chessIds
+			chessPos.chess:updateChessIds(self.effect.effectString)
 		end
 	end
 

@@ -7665,7 +7665,7 @@
   },
   {
     "id": "versionsummon_txt_tips1",
-    "lang": "活动期间，登录游戏即可领取\n十全调·【故事的新啼】"
+    "lang": "活动期间，登录游戏即可领取\n十全调·不渝者的领航"
   },
   {
     "id": "versionsummon_txt_tips2",
@@ -10008,6 +10008,22 @@
     "lang": "<size=44>重</size>新调<size=44>查</size>"
   },
   {
+    "id": "p_v3a9_bossrushleveldetail_txt_comfirm_reset_1",
+    "lang": "完全重置"
+  },
+  {
+    "id": "p_v3a9_bossrushleveldetail_txt_comfirm_reset_2",
+    "lang": "重置"
+  },
+  {
+    "id": "p_v3a9_bossrushleveldetail_txt_comfirm_reseten_1",
+    "lang": "RESET"
+  },
+  {
+    "id": "p_v3a9_bossrushleveldetail_txt_comfirm_resetten_2",
+    "lang": "RESET"
+  },
+  {
     "id": "college_toast_building_lvup",
     "lang": "▩1%s升级完成"
   },
@@ -10053,7 +10069,7 @@
   },
   {
     "id": "college_toast_finishstory",
-    "lang": "阅读剧情积累了新的行迹点"
+    "lang": "阅读剧情在白岸夜读会中积累了奖励进度"
   },
   {
     "id": "college_building_refinedpropdesc",
@@ -10089,7 +10105,7 @@
   },
   {
     "id": "college_bottominfoview_arearule",
-    "lang": "花费▩1%s回合完成一次解锁，每个角色提供▩2%s%探索进度，探索完成后解锁地点功能"
+    "lang": "花费▩1%s回合推进一次探索进度，每个角色提供▩2%s%探索进度，探索完成后解锁地点功能"
   },
   {
     "id": "college_rolerefined_tips",
@@ -10126,6 +10142,10 @@
   {
     "id": "college_bubble",
     "lang": "<#FFEA73>▩1%s</color><br>▩2%s"
+  },
+  {
+    "id": "college_rolerefinedview_refresh",
+    "lang": "再次刷新"
   },
   {
     "id": "matchgame_fight_wave",
@@ -10197,7 +10217,7 @@
   },
   {
     "id": "matchgameresultview_failtips",
-    "lang": "敌方灵感百货为▩1%s，建议使用合适的角色进行挑战"
+    "lang": "使用克制灵感的角色进行挑战更容易成功"
   },
   {
     "id": "matchgamechallengeresultview_allget",
@@ -10212,6 +10232,38 @@
     "lang": "已结束"
   },
   {
+    "id": "matchgameachievement_1",
+    "lang": "最高Great Deal数"
+  },
+  {
+    "id": "matchgameachievement_2",
+    "lang": "属性克制攻击次数"
+  },
+  {
+    "id": "matchgameachievement_3",
+    "lang": "总恢复量"
+  },
+  {
+    "id": "matchgameachievement_4",
+    "lang": "神秘术使用次数"
+  },
+  {
+    "id": "matchgameachievement_5",
+    "lang": "消耗回合数"
+  },
+  {
+    "id": "matchgameachievement_6",
+    "lang": "单回合最高伤害"
+  },
+  {
+    "id": "matchgameherogroupeditview_updateattrvalue",
+    "lang": "▩1%s <#AC5320>(▩2%s▩3%s)</color>"
+  },
+  {
+    "id": "matchgametalenttipview_index",
+    "lang": "▩1%s 、▩2%s"
+  },
+  {
     "id": "sonnet_task_progress",
     "lang": "完成▩1%s/▩2%s任务可获得"
   },
@@ -10221,7 +10273,7 @@
   },
   {
     "id": "autochess_losingstreak_tip",
-    "lang": "连败▩1%s次后，每轮可以获得▩2%s缪斯币补偿"
+    "lang": "连续损失斗志▩1%s轮后，每轮可以获得▩2%s缪斯币补偿"
   },
   {
     "id": "musicgame_dailymutiple_tip",
@@ -10252,6 +10304,10 @@
     "lang": "第▩1%s波"
   },
   {
+    "id": "v4a0_sp_lilya_wave_wait_tip",
+    "lang": "击退成功，▩1%s秒后刷新"
+  },
+  {
     "id": "v4a0_sp_lilya_episode_title",
     "lang": "关卡目标"
   },
@@ -10273,7 +10329,7 @@
   },
   {
     "id": "v4a0_actflip_tasktime_tip",
-    "lang": "▩1%s结束"
+    "lang": "▩1%s后结束"
   },
   {
     "id": "autochessadventureview_mine",
@@ -10293,14 +10349,26 @@
   },
   {
     "id": "SettingsDelUnusedResView_1",
-    "lang": "清理缓存文件（该操作不会删除映像中的剧情、语音等下载 过的资源）"
+    "lang": "清理缓存资源"
   },
   {
     "id": "SettingsDelUnusedResView_2",
-    "lang": "清理所有非版本文件（该操作会删除映像中的剧情、语音等资源，请慎重）"
+    "lang": "清理所有非版本资源"
+  },
+  {
+    "id": "SettingsDelUnusedResView_1_tips",
+    "lang": "该选项仅删除冗余资源"
+  },
+  {
+    "id": "SettingsDelUnusedResView_2_tips",
+    "lang": "该选项将删除映像中的剧情语音资源；第三扇门和其他所有可选资源；若需再次体验，可点击对应功能入口后重新下载，请谨慎选择"
   },
   {
     "id": "fight_common_double_param",
     "lang": "▩1%s▩2%s"
+  },
+  {
+    "id": "v4a0_rolestorygameview_txt_result",
+    "lang": "命运折射角"
   }
 ]

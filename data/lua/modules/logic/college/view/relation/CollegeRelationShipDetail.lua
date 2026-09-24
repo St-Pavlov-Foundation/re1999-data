@@ -80,6 +80,8 @@ function CollegeRelationShipDetail:_initGos()
 			self._spCharIcon = gohelper.findChildSingleImage(child.gameObject, "#go_character/image_head")
 
 			gohelper.setActive(self._spChar, false)
+		elseif name == "#go_select" then
+			-- block empty
 		else
 			logError("child name is not match pattern:", name)
 		end
@@ -162,6 +164,8 @@ function CollegeRelationShipDetail:_showAll()
 	if self._characterId == self.viewParam.characterId then
 		return
 	end
+
+	AudioMgr.instance:trigger(AudioEnum3_3.CommandStationMap.play_ui_yuanzheng_zhb_zhanshi)
 
 	self._characterId = self.viewParam.characterId
 	self._descList = self.viewParam.descList

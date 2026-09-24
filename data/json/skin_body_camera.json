@@ -67,15 +67,18 @@
     "res": "313403_ble",
     "body": [
       "b_jiaohu01",
+      "b_jiaohu02",
       "b_jiaohu03",
       "b_jiaohu04"
     ],
     "camera": [
       "313403_ble_jh01",
+      "313403_ble_jh01",
       "313403_ble_jh03",
       "313403_ble_jh04"
     ],
     "camera_revert": [
+      "313403_ble_jh05",
       "313403_ble_jh05",
       "313403_ble_jh05",
       "313403_ble_jh05"

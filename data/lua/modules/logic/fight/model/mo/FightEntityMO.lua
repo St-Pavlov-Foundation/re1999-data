@@ -1251,7 +1251,6 @@ function FightEntityMO:getEquipMo()
 			refineLv = self.equipRecord.refineLv,
 			breakLv = self.equipRecord.breakLv
 		})
-		self.equipMo:setBreakLvByLevel()
 	end
 
 	return self.equipMo

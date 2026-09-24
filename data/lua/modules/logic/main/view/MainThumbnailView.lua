@@ -156,6 +156,10 @@ function MainThumbnailView:onOpen()
 	end
 end
 
+function MainThumbnailView:onOpenFinish()
+	MainController.instance:waitOpenMainThumbnailView()
+end
+
 function MainThumbnailView:_justSwithView()
 	local player = SLFramework.AnimatorPlayer.Get(self.viewGO)
 

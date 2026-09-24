@@ -200,6 +200,8 @@ function PlayerView:_editableInitView()
 		local btnClick = gohelper.findChildButtonWithAudio(go, "btn_Click", AudioEnum.UI.play_ui_hero_card_click)
 
 		self:addClickCb(btnClick, self._showHeroClick, self, i)
+
+		self.showCharacterItems[i] = item
 	end
 
 	gohelper.addUIClickAudio(self._btnsignature.gameObject, AudioEnum.UI.play_ui_hero_sign)
@@ -463,7 +465,7 @@ function PlayerView:_refreshShowHero(showHeros)
 	for k, item in ipairs(self.showCharacterItems) do
 		local info = showHeros[k]
 
-		if info and info ~= 0 and info.heroId and info.heroId ~= "0" and info.heroId ~= 0 then
+		if info and info ~= 0 and info.heroId and tonumber(info.heroId) ~= 0 then
 			if self._playerSelf then
 				info = HeroModel.instance:getByHeroId(info.heroId)
 			end
@@ -496,8 +498,7 @@ function PlayerView:_refreshShowHero(showHeros)
 end
 
 function PlayerView:_showCharacterRankInfo(info, item)
-	local heroConfig = HeroConfig.instance:getHeroCO(info.heroId)
-	local rankObj = gohelper.findChild(item, "goCard/rankobj")
+	local rankObj = gohelper.findChild(item.go, "goCard/rankobj")
 	local rankGOs = {}
 
 	for i = 1, 3 do

@@ -7,20 +7,14 @@ local CollegeChessMoveRouteView = class("CollegeChessMoveRouteView", BaseView)
 function CollegeChessMoveRouteView:addEvents()
 	CollegeController.instance:registerCallback(CollegeEvent.OnFocusBegin, self.onFocusBegin, self)
 	CollegeController.instance:registerCallback(CollegeEvent.OnFocusCancel, self.onFocusCancel, self)
-	ViewMgr.instance:registerCallback(ViewEvent.OnOpenView, self._refreshIsTop, self)
-	ViewMgr.instance:registerCallback(ViewEvent.OnCloseView, self._refreshIsTop, self)
 end
 
 function CollegeChessMoveRouteView:removeEvents()
 	CollegeController.instance:unregisterCallback(CollegeEvent.OnFocusBegin, self.onFocusBegin, self)
 	CollegeController.instance:unregisterCallback(CollegeEvent.OnFocusCancel, self.onFocusCancel, self)
-	ViewMgr.instance:unregisterCallback(ViewEvent.OnOpenView, self._refreshIsTop, self)
-	ViewMgr.instance:unregisterCallback(ViewEvent.OnCloseView, self._refreshIsTop, self)
 end
 
 function CollegeChessMoveRouteView:onOpen()
-	self._moveCount = 0
-
 	local str = CollegeConfig.instance:getConstVal(CollegeEnum.ConstId.ChessMoveRouteInterval)
 	local min, max
 
@@ -72,48 +66,6 @@ function CollegeChessMoveRouteView:onOpen()
 				table.insert(self.pathComps, comp)
 			end
 		end
-	end
-
-	self._isTop = false
-
-	self:_refreshIsTop()
-end
-
-function CollegeChessMoveRouteView:_refreshIsTop()
-	local isTop = ViewHelper.instance:checkViewOnTheTop(ViewName.CollegeMainView, {
-		ViewName.CollegeToastView,
-		ViewName.ToastView,
-		ViewName.GuideView,
-		ViewName.GuideView2,
-		ViewName.GuideStepEditor
-	})
-
-	if self._isTop ~= isTop then
-		self._isTop = isTop
-
-		if self._isTop and self._moveCount > 0 then
-			CollegeAudioHelper.instance:playAudio(CollegeAudioEnum.ChessMove)
-		elseif not self._isTop then
-			CollegeAudioHelper.instance:playAudio(CollegeAudioEnum.ChessMoveStop)
-		end
-	end
-end
-
-function CollegeChessMoveRouteView:onChessMoveStateChange(isMove)
-	if not self._moveCount then
-		return
-	end
-
-	self._moveCount = self._moveCount + (isMove and 1 or -1)
-
-	if not self._isTop then
-		return
-	end
-
-	if not isMove and self._moveCount == 0 then
-		CollegeAudioHelper.instance:playAudio(CollegeAudioEnum.ChessMoveStop)
-	elseif isMove and self._moveCount == 1 then
-		CollegeAudioHelper.instance:playAudio(CollegeAudioEnum.ChessMove)
 	end
 end
 

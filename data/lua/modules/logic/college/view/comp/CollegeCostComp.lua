@@ -63,16 +63,14 @@ function CollegeCostComp:_refreshCost()
 
 	local costStr = ""
 
-	if self._isShowCurNum then
-		if color then
-			costStr = string.format("<color=#%s>%d</color>", color, itemCount)
-		else
-			costStr = itemCount
-		end
-	elseif color then
+	if color then
 		costStr = string.format("<color=#%s>%d</color>", color, self.needNum)
 	else
 		costStr = self.needNum
+	end
+
+	if self._isShowCurNum then
+		costStr = string.format("%s/%s", itemCount, costStr)
 	end
 
 	self._txt.text = costStr

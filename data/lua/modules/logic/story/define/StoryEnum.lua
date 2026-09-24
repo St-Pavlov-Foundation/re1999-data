@@ -51,6 +51,7 @@ StoryEnum.HeroEffect = {
 	ShowNode = "showNode",
 	SetAlpha = "setAlpha",
 	BlackFog = "blackFog",
+	SetFadeIn = "setFadeIn",
 	DissolveAndSoft = "dissolveAndSoft",
 	WaterWave = "waterWave",
 	DLKBloom = "dlkBloom",
@@ -59,6 +60,7 @@ StoryEnum.HeroEffect = {
 	Glow = "glow",
 	StyDissolve = "stydissolve",
 	SetDissolve = "setDissolve",
+	SetFadeOut = "setFadeOut",
 	Erase = "erase",
 	HideNode = "hideNode",
 	SetMaterial = "setMaterial",
@@ -123,7 +125,7 @@ StoryEnum.BgEffectType = {
 	LineLight = 24,
 	FishEye = 2,
 	CustomBlur = 23,
-	Starburst = 18,
+	MonitorFilter = 38,
 	EagleEye = 13,
 	FullBlur = 4,
 	Malfunction = 29,
@@ -133,6 +135,7 @@ StoryEnum.BgEffectType = {
 	CrtFilter = 36,
 	BgDistress = 20,
 	ScreenHalo2 = 35,
+	Starburst = 18,
 	BlindFilter = 10,
 	Penetration = 22,
 	RgbSplit = 12,
@@ -383,6 +386,12 @@ StoryEnum.TextAnchor = {
 	topleft = "UpperLeft",
 	bottom = "LowerCenter",
 	right = "MiddleRight"
+}
+StoryEnum.VideoEffectType = {
+	FadeOut = 2,
+	FadeIn = 1,
+	LoopFade = 3,
+	None = 0
 }
 
 return StoryEnum

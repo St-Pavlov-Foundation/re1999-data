@@ -8,8 +8,11 @@ function FightTLEventRevertScene:onTrackStart(fightStepData, duration, paramsArr
 	local fightParam = FightModel.instance:getFightParam()
 
 	if fightParam and fightParam.sceneId then
+		local waveId = FightModel.instance:getCurWaveId()
+		local levelId = fightParam:getSceneLevel(waveId)
+
 		self:com_registFightEvent(FightEvent.OnSceneLevelLoaded, self._onLevelLoaded)
-		FightGameMgr.sceneLevelMgr:loadScene(fightParam.sceneId, fightParam.levelId)
+		FightGameMgr.sceneLevelMgr:loadScene(fightParam.sceneId, levelId)
 	end
 end
 

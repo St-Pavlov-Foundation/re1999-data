@@ -59,7 +59,7 @@ function VersionActivity4_0DeleikeEnterView:_btnEnterOnClick()
 end
 
 function VersionActivity4_0DeleikeEnterView:_enterLevelView()
-	DeleikeController.instance:enterEpisodeLevelView(self.actId)
+	DeleikeController.instance:enterEpisodeLevelView()
 end
 
 function VersionActivity4_0DeleikeEnterView:_btnLockOnClick()

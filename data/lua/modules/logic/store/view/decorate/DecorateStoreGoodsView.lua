@@ -5,10 +5,20 @@ module("modules.logic.store.view.decorate.DecorateStoreGoodsView", package.seeal
 local DecorateStoreGoodsView = class("DecorateStoreGoodsView", BaseView)
 
 function DecorateStoreGoodsView:onInitView()
+	self._goview = gohelper.findChild(self.viewGO, "view")
 	self._simageblur = gohelper.findChildSingleImage(self.viewGO, "view/#simage_blur")
 	self._simagerightbg = gohelper.findChildSingleImage(self.viewGO, "view/bg/#simage_rightbg")
 	self._simageleftbg = gohelper.findChildSingleImage(self.viewGO, "view/bg/#simage_leftbg")
 	self._txtgoodsNameCn = gohelper.findChildText(self.viewGO, "view/common/title/#txt_goodsNameCn")
+	self._gobuynormal = gohelper.findChild(self.viewGO, "view/common/#go_buynormal")
+	self._inputvalue = gohelper.findChildTextMeshInputField(self.viewGO, "view/common/#go_buynormal/valuebg/#input_value")
+	self._btnmin = gohelper.findChildButtonWithAudio(self.viewGO, "view/common/#go_buynormal/#btn_min")
+	self._btnsub = gohelper.findChildButtonWithAudio(self.viewGO, "view/common/#go_buynormal/#btn_sub")
+	self._btnadd = gohelper.findChildButtonWithAudio(self.viewGO, "view/common/#go_buynormal/#btn_add")
+	self._btnmax = gohelper.findChildButtonWithAudio(self.viewGO, "view/common/#go_buynormal/#btn_max")
+	self._imagecosticon = gohelper.findChildImage(self.viewGO, "view/common/#go_buynormal/cost/#simage_costicon")
+	self._txtoriginalCost = gohelper.findChildText(self.viewGO, "view/common/#go_buynormal/cost/#txt_originalCost")
+	self._txtsalePrice = gohelper.findChildText(self.viewGO, "view/common/#go_buynormal/cost/#txt_originalCost/#txt_salePrice")
 	self._btnbuy = gohelper.findChildButtonWithAudio(self.viewGO, "view/common/#btn_buy")
 	self._godiscount = gohelper.findChild(self.viewGO, "view/common/#btn_buy/#go_discount")
 	self._txtdiscount = gohelper.findChildText(self.viewGO, "view/common/#btn_buy/#go_discount/#txt_discount")
@@ -61,6 +71,8 @@ function DecorateStoreGoodsView:onInitView()
 	self._simagetype3 = gohelper.findChildSingleImage(self.viewGO, "view/right/type3/#simage_icon")
 	self._gohadnumber = gohelper.findChild(self.viewGO, "view/right/type3/#go_hadnumber")
 	self._txttype3num = gohelper.findChildText(self.viewGO, "view/right/type3/#go_hadnumber/#txt_hadnumber")
+	self._goType4 = gohelper.findChild(self.viewGO, "view/right/type4")
+	self._txttype4lv = gohelper.findChildText(self.viewGO, "view/right/type4/#txt_lv")
 	self._btnicon = gohelper.findChildButtonWithAudio(self.viewGO, "view/right/#btn_click")
 	self.btnSelfSelect = gohelper.findChildButtonWithAudio(self.viewGO, "view/tag/#go_selfselect")
 	self._gotab = gohelper.findChild(self.viewGO, "view/#go_tab")
@@ -72,6 +84,11 @@ function DecorateStoreGoodsView:onInitView()
 end
 
 function DecorateStoreGoodsView:addEvents()
+	self._btnmin:AddClickListener(self._btnminOnClick, self)
+	self._btnsub:AddClickListener(self._btnsubOnClick, self)
+	self._btnadd:AddClickListener(self._btnaddOnClick, self)
+	self._btnmax:AddClickListener(self._btnmaxOnClick, self)
+	self._inputvalue:AddOnEndEdit(self._onEndEdit, self)
 	self._btnbuy:AddClickListener(self._btnbuyOnClick, self)
 	self._btncost1:AddClickListener(self._btncost1OnClick, self)
 	self._btncost2:AddClickListener(self._btncost2OnClick, self)
@@ -81,12 +98,141 @@ function DecorateStoreGoodsView:addEvents()
 end
 
 function DecorateStoreGoodsView:removeEvents()
+	self._btnmin:RemoveClickListener()
+	self._btnsub:RemoveClickListener()
+	self._btnadd:RemoveClickListener()
+	self._btnmax:RemoveClickListener()
+	self._inputvalue:RemoveOnEndEdit()
 	self._btnbuy:RemoveClickListener()
 	self._btncost1:RemoveClickListener()
 	self._btncost2:RemoveClickListener()
 	self._btnclose:RemoveClickListener()
 	self._btnicon:RemoveClickListener()
 	self.btnSelfSelect:RemoveClickListener()
+end
+
+function DecorateStoreGoodsView:_btnaddOnClick()
+	self._value = tonumber(self._inputvalue:GetText())
+
+	local maxBuyCount = self:_getMaxBuyCount()
+
+	if maxBuyCount < 1 then
+		self:_buyCountAddToast()
+
+		return
+	end
+
+	if self._value >= self:_getMaxValue() then
+		self._value = self:_getMaxValue()
+
+		self:_refreshValue()
+		self:_buyCountAddToast()
+
+		return
+	end
+
+	self._value = self._value + 1
+
+	self:_refreshValue()
+end
+
+function DecorateStoreGoodsView:_refreshValue()
+	self._inputvalue:SetText(tostring(self._value))
+	self:_refreshCost()
+end
+
+function DecorateStoreGoodsView:_onEndEdit(inputStr)
+	self._value = tonumber(inputStr)
+
+	if self._value > self:_getMaxValue() then
+		self._value = self:_getMaxValue()
+
+		self:_refreshValue()
+		self:_buyCountAddToast()
+
+		return
+	end
+
+	if self._value < 1 then
+		self._value = 1
+
+		self:_refreshValue()
+		GameFacade.showToast(ToastEnum.MaterialTipBtnSub)
+	end
+end
+
+function DecorateStoreGoodsView:_getMaxValue()
+	local maxValue = self._goodConfig.maxBuyCount == 0 and 999 or self._goodConfig.maxBuyCount
+	local couldBuyCount = self:_getMaxBuyCount()
+
+	if couldBuyCount < 1 then
+		return 1
+	end
+
+	return math.min(maxValue, couldBuyCount)
+end
+
+function DecorateStoreGoodsView:_getMaxBuyCount()
+	local costs = string.splitToNumber(self._goodConfig.cost, "#")
+	local quantity = ItemModel.instance:getItemQuantity(costs[1], costs[2])
+	local couldBuyCount = math.floor(quantity / costs[3])
+
+	return couldBuyCount
+end
+
+function DecorateStoreGoodsView:_btnsubOnClick()
+	local maxBuyCount = self:_getMaxBuyCount()
+
+	if maxBuyCount < 1 then
+		return
+	end
+
+	self._value = tonumber(self._inputvalue:GetText())
+
+	if self._value <= 1 then
+		self._value = 1
+
+		self:_refreshValue()
+
+		return
+	end
+
+	self._value = self._value - 1
+
+	self:_refreshValue()
+end
+
+function DecorateStoreGoodsView:_btnmaxOnClick()
+	local maxBuyCount = self:_getMaxBuyCount()
+
+	if maxBuyCount < 1 then
+		self:_buyCountAddToast()
+
+		return
+	end
+
+	self._value = self:_getMaxValue()
+
+	self:_refreshValue()
+end
+
+function DecorateStoreGoodsView:_buyCountAddToast()
+	local costs = string.splitToNumber(self._goodConfig.cost, "#")
+	local itemConfig, icon = ItemModel.instance:getItemConfigAndIcon(costs[1], costs[2])
+
+	GameFacade.showToastWithIcon(ToastEnum.NotEnoughId, icon, itemConfig.name)
+end
+
+function DecorateStoreGoodsView:_btnminOnClick()
+	local maxBuyCount = self:_getMaxBuyCount()
+
+	if maxBuyCount < 1 then
+		return
+	end
+
+	self._value = 1
+
+	self:_refreshValue()
 end
 
 function DecorateStoreGoodsView:_btncloseOnClick()
@@ -141,7 +287,30 @@ function DecorateStoreGoodsView:_btnbuyOnClick()
 
 		GameFacade.showMessageBox(MessageBoxIdDefine.DecorateDiscountTip2, MsgBoxEnum.BoxType.Yes_No, self._checkDiscounnt, self.closeThis, nil, self, self, nil, co and co.name or "", self._mo.config.name)
 	else
-		self:_checkDiscounnt()
+		local products = string.splitToNumber(self._goodConfig.product, "#")
+		local showMaxSkillExLevel = false
+
+		if products[1] == MaterialEnum.MaterialType.Hero then
+			showMaxSkillExLevel = CharacterModel.instance:isHeroFullDuplicateCount(products[2])
+		end
+
+		if showMaxSkillExLevel then
+			local heroConfig = HeroConfig.instance:getHeroCO(products[2])
+			local duplicateItem2 = heroConfig.duplicateItem2
+			local arr = GameUtil.splitString2(duplicateItem2, true)
+			local itemConfig = ItemConfig.instance:getItemConfig(arr[1][1], arr[1][2])
+			local isSixRole = CharacterEnum.Star[heroConfig.rare] == 6
+
+			if isSixRole and arr[2] then
+				local costCo = ItemModel.instance:getItemConfig(arr[2][1], arr[2][2])
+
+				MessageBoxController.instance:showMsgBox(MessageBoxIdDefine.SixHeroFullDuplicateCount, MsgBoxEnum.BoxType.Yes_No, self._checkDiscounnt, nil, nil, self, nil, nil, itemConfig.name, costCo.name)
+			else
+				MessageBoxController.instance:showMsgBox(MessageBoxIdDefine.HeroFullDuplicateCount, MsgBoxEnum.BoxType.Yes_No, self._checkDiscounnt, nil, nil, self, nil, nil, itemConfig.name)
+			end
+		else
+			self:_checkDiscounnt()
+		end
 	end
 end
 
@@ -225,6 +394,12 @@ function DecorateStoreGoodsView:_readyBuy()
 	elseif ItemModel.instance:goodsIsEnough(self._costType, self._costId, self._costQuantity) then
 		self:_buyGood(curIndex)
 	else
+		if self._costId == DecorateStoreEnum.V4a0SpiritualFluid then
+			GameFacade.showToast(ToastEnum.DecorateStoreSpiritualFluidItemNotEnough)
+
+			return
+		end
+
 		GameFacade.showMessageBox(MessageBoxIdDefine.DecorateStoreCurrencyNotEnough, MsgBoxEnum.BoxType.Yes_No, self._storeCurrencyNotEnoughCallback, nil, nil, self, nil)
 	end
 end
@@ -240,7 +415,7 @@ function DecorateStoreGoodsView:_exchangeFinished()
 end
 
 function DecorateStoreGoodsView:_buyGood(index)
-	StoreController.instance:buyGoods(self._mo, 1, self._buyCallback, self, index)
+	StoreController.instance:buyGoods(self._mo, self._value or 1, self._buyCallback, self, index)
 end
 
 function DecorateStoreGoodsView:_buyCallback(cmd, resultCode, msg)
@@ -252,6 +427,10 @@ end
 function DecorateStoreGoodsView:_editableInitView()
 	gohelper.addUIClickAudio(self._btnbuy.gameObject, AudioEnum.UI.Store_Good_Click)
 	DecorateStoreModel.instance:setCurCostIndex(1)
+
+	self._value = 1
+	self._initTopRightPosX = recthelper.getAnchorX(self._gotopright.transform)
+
 	self:_addSelfEvents()
 end
 
@@ -277,12 +456,52 @@ end
 
 function DecorateStoreGoodsView:_refreshUI()
 	self._goodConfig = StoreConfig.instance:getGoodsConfig(self._mo.goodsId)
-	self._curItemType = DecorateStoreModel.getItemType(tonumber(self._goodConfig.storeId))
+	self._storeId = tonumber(self._goodConfig.storeId)
+	self._curItemType = DecorateStoreModel.getItemType(self._storeId)
 
 	self:_refreshIcon()
 	self:_refreshGoodDetail()
 	self:_refreshCost()
 	self:_refreshTab()
+	self:_setTopRight()
+	self:_refreshPos()
+end
+
+local offsetPos = {
+	0,
+	80
+}
+
+function DecorateStoreGoodsView:_refreshPos()
+	local isShowTab = self._tabComp and self._tabComp:getShowGoods() and #self._tabComp:getShowGoods() > 1
+
+	if isShowTab then
+		transformhelper.setLocalPos(self.viewGO.transform, offsetPos[2], 0, 0)
+		recthelper.setAnchorX(self._gotopright.transform, self._initTopRightPosX - offsetPos[2])
+	else
+		transformhelper.setLocalPos(self.viewGO.transform, offsetPos[1], 0, 0)
+	end
+end
+
+function DecorateStoreGoodsView:_setTopRight()
+	if self._itemView then
+		return
+	end
+
+	local costs = string.splitToNumber(self._mo.config.cost, "#")
+
+	if costs[2] and costs[2] == DecorateStoreEnum.V4a0SpiritualFluid then
+		self._itemView = DecorateStoreItemView.Get(self._gotopright)
+
+		local data = {}
+		local item = {}
+
+		item.materialType = MaterialEnum.MaterialType.Item
+		item.materialId = DecorateStoreEnum.V4a0SpiritualFluid
+
+		table.insert(data, item)
+		self._itemView:refresh(data)
+	end
 end
 
 function DecorateStoreGoodsView:_refreshTab()
@@ -309,7 +528,7 @@ function DecorateStoreGoodsView:_refreshTab()
 	if not self._tabComp then
 		local go = self:getResInst(self.viewContainer:getSetting().otherRes[1], self._gotab)
 
-		self._tabComp = DecorateStoreGoodTabComp.Get(go)
+		self._tabComp = DecorateStoreGoodTabComp.Get(go, self.viewContainer)
 	end
 
 	self._tabComp:hide(false)
@@ -339,10 +558,28 @@ function DecorateStoreGoodsView:_refreshIcon()
 		local itemCount = ItemModel.instance:getItemQuantity(products[1], products[2])
 
 		gohelper.setActive(self._goType3, true)
-		gohelper.setActive(self._gohadnumber, decorateCo.maxbuycountType == DecorateStoreEnum.MaxBuyTipType.SoldOut)
+
+		local heroMo = HeroModel.instance:getByHeroId(products[2])
+		local lv = 0
+
+		if heroMo then
+			lv = heroMo.duplicateCount < CharacterEnum.MaxSkillExLevel and heroMo.duplicateCount or CharacterEnum.MaxSkillExLevel
+		end
+
+		local showType4 = self._curItemType == DecorateStoreEnum.DecorateItemType.Hero and lv > 0
+
+		gohelper.setActive(self._goType4, showType4)
+
+		if showType4 then
+			self._txttype4lv.text = string.format("Lv.%s", lv)
+		end
+
+		local showNum = self._curItemType == DecorateStoreEnum.DecorateItemType.Hero or decorateCo.maxbuycountType == DecorateStoreEnum.MaxBuyTipType.SoldOut
+
+		gohelper.setActive(self._gohadnumber, showNum)
 		self._simagetype3:LoadImage(icon)
 
-		if decorateCo.maxbuycountType == DecorateStoreEnum.MaxBuyTipType.SoldOut then
+		if showNum then
 			self._txttype3num.text = itemCount
 		end
 	end
@@ -387,6 +624,31 @@ function DecorateStoreGoodsView:_refreshGoodDetail()
 
 		self._txtgoodsUseDesc.text = string.format(CommonConfig.instance:getConstStr(ConstEnum.StoreSkinGood), heroname)
 		self._txtgoodsDesc.text = skinCo.skinDescription
+	elseif self._curItemType == DecorateStoreEnum.DecorateItemType.Hero then
+		local offlineTime = self._mo:getOfflineTime()
+
+		if offlineTime > 0 then
+			local limitSec = math.floor(offlineTime - ServerTime.now())
+
+			gohelper.setActive(self._godetailrightbg, true)
+
+			self._txtdetailrightremain.text = string.format("%s%s", TimeUtil.secondToRoughTime(limitSec))
+		else
+			gohelper.setActive(self._godetailrightbg, false)
+		end
+
+		if self._goodConfig.maxBuyCount and self._goodConfig.maxBuyCount > 0 then
+			gohelper.setActive(self._godetailleftbg, true)
+
+			self._txtdetailleftremain.text = GameUtil.getSubPlaceholderLuaLang(luaLang("store_buylimit_count"), {
+				self._goodConfig.maxBuyCount
+			})
+		else
+			gohelper.setActive(self._godetailleftbg, false)
+		end
+
+		self._txtnormaldetailUseDesc.text = itemConfig.useDesc
+		self._txtnormaldetaildesc.text = itemConfig.desc2
 	else
 		local offlineTime = self._mo:getOfflineTime()
 
@@ -420,6 +682,33 @@ function DecorateStoreGoodsView:_refreshGoodDetail()
 end
 
 function DecorateStoreGoodsView:_refreshCost()
+	local costs = string.splitToNumber(self._goodConfig.cost, "#")
+	local costCo = ItemModel.instance:getItemConfig(costs[1], costs[2])
+	local showBuyNormal = self._goodConfig.maxBuyCount and self._goodConfig.maxBuyCount ~= 1 and self._storeId == StoreEnum.StoreId.SpiritualityDecorateStore
+
+	gohelper.setActive(self._gobuynormal, showBuyNormal)
+
+	if showBuyNormal then
+		gohelper.setActive(self._gocost, false)
+		gohelper.setActive(self._gocostsingle, false)
+
+		local needValue = self._value * costs[3]
+
+		self._txtsalePrice.text = needValue
+
+		UISpriteSetMgr.instance:setCurrencyItemSprite(self._imagecosticon, costCo.icon .. "_1", true)
+
+		local hadQuantity = ItemModel.instance:getItemQuantity(costs[1], costs[2])
+
+		if needValue <= hadQuantity then
+			SLFramework.UGUI.GuiHelper.SetColor(self._txtsalePrice, "#393939")
+		else
+			SLFramework.UGUI.GuiHelper.SetColor(self._txtsalePrice, "#bf2e11")
+		end
+
+		return
+	end
+
 	gohelper.setActive(self._btncost1, not string.nilorempty(self._goodConfig.cost))
 	gohelper.setActive(self._btncost2, not string.nilorempty(self._goodConfig.cost2))
 
@@ -464,14 +753,9 @@ function DecorateStoreGoodsView:_refreshCost()
 
 	discount2 = discount2 == 0 and 100 or discount2
 
-	local costs = string.splitToNumber(self._goodConfig.cost, "#")
-
 	if string.nilorempty(self._mo.config.cost2) then
 		gohelper.setActive(self._gocost, false)
 		gohelper.setActive(self._gocostsingle, true)
-
-		local costCo, _ = ItemModel.instance:getItemConfigAndIcon(costs[1], costs[2])
-
 		UISpriteSetMgr.instance:setCurrencyItemSprite(self._imageiconsingle, costCo.icon .. "_1", true)
 
 		local hadQuantity = ItemModel.instance:getItemQuantity(costs[1], costs[2])
@@ -484,7 +768,7 @@ function DecorateStoreGoodsView:_refreshCost()
 
 		self._txtcurpricesingle.text = 0.01 * discount2 * costs[3]
 
-		if decorateCo.originalCost1 > 0 then
+		if decorateCo.originalCost1 > 0 and discount2 < 100 then
 			gohelper.setActive(self._txtoriginalpricesingle.gameObject, true)
 
 			self._txtoriginalpricesingle.text = decorateCo.originalCost1
@@ -494,8 +778,6 @@ function DecorateStoreGoodsView:_refreshCost()
 	else
 		gohelper.setActive(self._gocost, true)
 		gohelper.setActive(self._gocostsingle, false)
-
-		local costCo, _ = ItemModel.instance:getItemConfigAndIcon(costs[1], costs[2])
 
 		self._txtcurpriceunselect1.text = 0.01 * discount2 * costs[3]
 		self._txtcurpriceselect1.text = 0.01 * discount2 * costs[3]
@@ -572,6 +854,7 @@ function DecorateStoreGoodsView:onOpen()
 
 	self:_setCurrency()
 	self:_refreshUI()
+	self:_refreshValue()
 	AudioMgr.instance:trigger(AudioEnum.TeachNote.play_ui_mail_open)
 	StoreController.instance:statOpenChargeGoods(self._mo.belongStoreId, self._mo.config)
 end
@@ -582,13 +865,17 @@ function DecorateStoreGoodsView:_setCurrency()
 	if self._mo.config.cost ~= "" then
 		local costs = string.splitToNumber(self._mo.config.cost, "#")
 
-		table.insert(currencyParam, costs[2])
+		if costs[1] and costs[1] == MaterialEnum.MaterialType.Currency then
+			table.insert(currencyParam, costs[2])
+		end
 	end
 
 	if self._mo.config.cost2 ~= "" then
 		local cost2s = string.splitToNumber(self._mo.config.cost2, "#")
 
-		table.insert(currencyParam, cost2s[2])
+		if cost2s[1] and cost2s[1] == MaterialEnum.MaterialType.Currency then
+			table.insert(currencyParam, cost2s[2])
+		end
 	end
 
 	for _, v in pairs(currencyParam) do
@@ -614,6 +901,12 @@ end
 
 function DecorateStoreGoodsView:onDestroyView()
 	self:_removeSelfEvents()
+
+	if self._itemView then
+		self._itemView:destroy()
+
+		self._itemView = nil
+	end
 
 	if self._tabComp then
 		self._tabComp:destroy()

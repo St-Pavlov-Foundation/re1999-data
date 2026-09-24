@@ -242,7 +242,7 @@
       -0.2,
       0.4
     ],
-    "sources": "",
+    "sources": "10014100",
     "suit": 1
   },
   {
@@ -260,7 +260,7 @@
     "model": "scenes/m_s07_xiaowu/prefab/building/4_0/building_14015.prefab",
     "equipEffSize": 0.6,
     "equipEffPos": [],
-    "sources": "",
+    "sources": "10014100",
     "suit": 1
   },
   {
@@ -278,7 +278,7 @@
     "model": "scenes/m_s07_xiaowu/prefab/building/4_0/building_14016.prefab",
     "equipEffSize": 0.5,
     "equipEffPos": [],
-    "sources": "",
+    "sources": "10014100",
     "suit": 1
   },
   {
@@ -296,7 +296,7 @@
     "model": "scenes/m_s07_xiaowu/prefab/building/4_0/building_14017.prefab",
     "equipEffSize": 0.4,
     "equipEffPos": [],
-    "sources": "",
+    "sources": "10014100",
     "suit": 1
   }
 ]

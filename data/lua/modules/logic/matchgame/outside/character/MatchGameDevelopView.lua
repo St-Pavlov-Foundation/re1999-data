@@ -11,7 +11,6 @@ function MatchGameDevelopView:onInitView()
 	self._goCharacterItem = gohelper.findChild(self.viewGO, "#scroll_Character/Viewport/Content/#go_CharacterItem")
 	self._goCharacterMesh = gohelper.findChild(self.viewGO, "#go_CharacterMesh")
 	self._goCharacterLock = gohelper.findChild(self.viewGO, "#go_CharacterMesh/#image_CharacterIcon/#go_LockCharacter")
-	self._goActiveEffect = gohelper.findChild(self.viewGO, "#go_CharacterMesh/#image_CharacterIcon/#go_LockCharacter/mask/unlockable_eff")
 	self._goDetailArea = gohelper.findChild(self.viewGO, "#go_DetailArea")
 	self._txtName = gohelper.findChildText(self.viewGO, "#go_DetailArea/#txt_Name")
 	self._imageCareerIcon = gohelper.findChildImage(self.viewGO, "#go_DetailArea/#image_CareerIcon")
@@ -22,8 +21,6 @@ function MatchGameDevelopView:onInitView()
 	self._btnLvUp = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_LvUp")
 	self._goLvUpCost = gohelper.findChild(self.viewGO, "#btn_LvUp/#go_LvUpCost")
 	self._goLvUpEffect = gohelper.findChild(self.viewGO, "#btn_LvUp/upgradeable_eff")
-	self._btnActive = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_Active")
-	self._goActiveCost = gohelper.findChild(self.viewGO, "#btn_Active/#go_ActiveCost")
 	self._goSkillContent = gohelper.findChild(self.viewGO, "#scroll_Skill/Viewport/Content")
 	self._goSkillItem = gohelper.findChild(self.viewGO, "#scroll_Skill/Viewport/Content/#go_SkillItem")
 	self._goLevelUpEffect = gohelper.findChild(self.viewGO, "UIEff_Upgrade")
@@ -35,23 +32,25 @@ end
 
 function MatchGameDevelopView:addEvents()
 	self._btnLvUp:AddClickListener(self._btnLvUpOnClick, self)
-	self._btnActive:AddClickListener(self._btnActiveOnClick, self)
 	self:addEventCb(MatchGameController.instance, MatchGameEvent.OnUpdateCharacter, self._onUpdateCharacter, self)
 end
 
 function MatchGameDevelopView:removeEvents()
 	self._btnLvUp:RemoveClickListener()
-	self._btnActive:RemoveClickListener()
 end
 
 function MatchGameDevelopView:_btnLvUpOnClick()
-	if not self._isItemEnough then
-		GameFacade.showToast(ToastEnum.MatchGameItemNotEnough)
+	if not self._isCanUnlock then
+		if self._unlockToastId then
+			GameFacade.showToast(self._unlockToastId, self._unlockToastParam)
+		end
 
 		return
 	end
 
-	if not self._isCanUnlock then
+	if not self._isItemEnough then
+		GameFacade.showToast(ToastEnum.MatchGameItemNotEnough)
+
 		return
 	end
 
@@ -61,37 +60,14 @@ function MatchGameDevelopView:_btnLvUpOnClick()
 	MatchGameRpc.instance:sendAct244UpgradeHeroRequest(self._actId, self._selectCharacterId)
 end
 
-function MatchGameDevelopView:_btnActiveOnClick()
-	if not self._isItemEnough then
-		GameFacade.showToast(ToastEnum.MatchGameItemNotEnough)
-
-		return
-	end
-
-	if not self._isCanUnlock then
-		local episodeCo = lua_activity244_episode.configDict[self._unlockType]
-		local episodeName = episodeCo and episodeCo.levelName
-
-		GameFacade.showToast(ToastEnum.MatchGameNotPassEpisode, episodeName)
-
-		return
-	end
-
-	AudioMgr.instance:trigger(MatchGameAudioEnum.UnlockCharacter)
-	MatchGameRpc.instance:sendAct244BuyHeroRequest(self._actId, self._selectCharacterId)
-end
-
 function MatchGameDevelopView:_editableInitView()
 	self._actId = MatchGameModel.instance:getCurActId()
 	self._iconComp = MatchGameCharacterIconComp.Get(self._goCharacterMesh)
 	self._iconAnimator = gohelper.findChildAnim(self.viewGO, "#go_CharacterMesh/#image_CharacterIcon")
-	self._activeCostComp = MatchGameCostComp.Get(self._goActiveCost)
 	self._lvUpCostComp = MatchGameCostComp.Get(self._goLvUpCost)
 
-	MatchGameController.instance:onEnterDevelopView()
 	gohelper.setActive(self._goLevelUpEffect, false)
 	gohelper.setActive(self._goLvUpEffect, false)
-	gohelper.setActive(self._goActiveEffect, false)
 
 	self._animator = gohelper.onceAddComponent(self.viewGO, gohelper.Type_Animator)
 
@@ -104,6 +80,7 @@ function MatchGameDevelopView:onOpen()
 	self._isFirstEnter = true
 
 	self:refreshUI()
+	MatchGameController.instance:dispatchEvent(MatchGameEvent.OnGuideOpenCharacterView, MatchGameEnum.CharacterTabType.Develop)
 end
 
 function MatchGameDevelopView:refreshUI()
@@ -181,7 +158,7 @@ function MatchGameDevelopView:refreshCharacterDetail()
 	self._selectShowLv = math.max(self._selectCharacterLv, 1)
 	self._status = MatchGameModel.instance:getCharacterStatus(self._selectCharacterId)
 
-	gohelper.setActive(self._goCharacterLock, self._status <= MatchGameEnum.CharacterStatus.Unlock)
+	gohelper.setActive(self._goCharacterLock, self._status <= MatchGameEnum.CharacterStatus.Lock)
 	self._iconComp:setData(self._selectCharacterId)
 
 	self._txtName.text = self._selectCharacterCo.name
@@ -209,30 +186,24 @@ function MatchGameDevelopView:refreshCost()
 
 	self._isItemEnough = MatchGameModel.instance:isItemEnough(costItemList)
 
-	self._activeCostComp:onUpdateMO(costItemList)
 	self._lvUpCostComp:onUpdateMO(costItemList)
 end
 
 function MatchGameDevelopView:refreshBtn()
-	local showActiveBtn = self._status <= MatchGameEnum.CharacterStatus.Unlock
-	local showLvBtn = self._status == MatchGameEnum.CharacterStatus.Active and not self._isMaxLv
+	local showLvBtn = not self._isMaxLv
 
-	gohelper.setActive(self._btnActive.gameObject, showActiveBtn)
 	gohelper.setActive(self._btnLvUp.gameObject, showLvBtn)
 
 	self._isCanUnlock = true
-	self._unlockType = tonumber(self._selectCharacterCo.unlockType)
 
-	if self._unlockType and self._unlockType ~= 0 then
-		self._isCanUnlock = MatchGameModel.instance:getEpisodeStatus(self._unlockType) >= MatchGameEnum.EpisodeStatus.Finish
+	if self._status <= MatchGameEnum.CharacterStatus.Lock then
+		self._isCanUnlock, self._unlockToastId, self._unlockToastParam = MatchGameHelper.isCharacterUnlock(self._selectCharacterId)
 	end
 
-	local isCanActive = self._isCanUnlock and self._isItemEnough
+	local isCanLevelUp = self._status >= MatchGameEnum.CharacterStatus.Unlock and self._isItemEnough
 
-	ZProj.UGUIHelper.SetGrayscale(self._btnActive.gameObject, not isCanActive)
-	ZProj.UGUIHelper.SetGrayscale(self._btnLvUp.gameObject, not isCanActive)
-	gohelper.setActive(self._goLvUpEffect, isCanActive)
-	gohelper.setActive(self._goActiveEffect, isCanActive)
+	ZProj.UGUIHelper.SetGrayscale(self._btnLvUp.gameObject, not isCanLevelUp)
+	gohelper.setActive(self._goLvUpEffect, isCanLevelUp)
 end
 
 function MatchGameDevelopView:refreshAttrList()
@@ -249,9 +220,23 @@ function MatchGameDevelopView:_refreshAttrItem(goItem, attrCo, index)
 
 	MatchGameHelper.setCharacterAttr(attrType, imageIcon, txtName)
 
+	local changeAttrValue = 0
 	local attrValue = MatchGameModel.instance:getCharacterAttrValue(self._selectCharacterId, self._selectShowLv, attrType)
 
-	txtValue.text = attrValue
+	if not self._isMaxLv then
+		local nextAttrValue = MatchGameModel.instance:getCharacterAttrValue(self._selectCharacterId, self._selectShowLv + 1, attrCo.id)
+
+		changeAttrValue = nextAttrValue - attrValue
+	end
+
+	if changeAttrValue ~= 0 then
+		local updateAbsValue = math.abs(changeAttrValue)
+		local valueSignal = changeAttrValue > 0 and "+" or "-"
+
+		txtValue.text = GameUtil.getSubPlaceholderLuaLangThreeParam(luaLang("matchgameherogroupeditview_updateattrvalue"), attrValue, valueSignal, updateAbsValue)
+	else
+		txtValue.text = attrValue
+	end
 end
 
 function MatchGameDevelopView:refreshSkillList()
@@ -270,6 +255,8 @@ function MatchGameDevelopView:_refreshSkillItem(goItem, skillId, index)
 	txtName.text = skillCo and skillCo.name
 	txtDesc.text = SkillHelper.buildDesc(skillCo and skillCo.desc or "", PercentColor, BracketColor)
 
+	SkillHelper.addHyperLinkClick(txtDesc)
+
 	local tagList = string.split(skillCo.skillTag, "|") or {}
 
 	gohelper.CreateObjList(self, self._refreshSkillTag, tagList, goTagList, goTagItem)
@@ -282,13 +269,13 @@ function MatchGameDevelopView:_refreshSkillTag(goItem, tag, index)
 end
 
 function MatchGameDevelopView:playIconAnim()
-	if self._preSelectCharacterId == self._selectCharacterId and self._preSelectCharacterStatus ~= self._status and self._status == MatchGameEnum.CharacterStatus.Active then
+	if self._preSelectCharacterId == self._selectCharacterId and self._preSelectCharacterStatus ~= self._status and self._status == MatchGameEnum.CharacterStatus.Unlock then
 		self._iconAnimator:Play("unlock")
 
 		return
 	end
 
-	local isUnlock = self._status == MatchGameEnum.CharacterStatus.Active
+	local isUnlock = self._status == MatchGameEnum.CharacterStatus.Unlock
 
 	self._iconAnimator:Play(isUnlock and "unlocked" or "locked")
 end

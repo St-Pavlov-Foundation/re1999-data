@@ -651,7 +651,7 @@
     "activityId": 14011,
     "round": 10,
     "previewCost": 0,
-    "maxdamage": 40,
+    "maxdamage": 20,
     "assess": "1#5#10",
     "starReward": "1#2#3"
   },
@@ -659,7 +659,7 @@
     "activityId": 14011,
     "round": 11,
     "previewCost": 0,
-    "maxdamage": 40,
+    "maxdamage": 20,
     "assess": "1#5#10",
     "starReward": "1#2#3"
   },

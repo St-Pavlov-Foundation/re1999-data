@@ -11,20 +11,10 @@ function MatchGameBuffEffect_GemProbability:init(viewContent)
 end
 
 function MatchGameBuffEffect_GemProbability:progressBuff_104(buffEffectData, targetInfoList, skillData, skillBuffMo)
-	local elementId = buffEffectData[2]
-	local dropRate = buffEffectData[3]
-
-	MatchGameFightModel.instance:setElementDropRateMap(elementId, dropRate)
-
 	local gameInfoMo = self.sceneView:getGameInfoMo()
 
 	MatchGameSkillBuffHandler.instance:attachBuffToTarget(gameInfoMo, skillBuffMo)
-end
-
-function MatchGameBuffEffect_GemProbability:removeBuff_104(buffEffectData, targetObj)
-	local elementId = buffEffectData[2]
-
-	MatchGameFightModel.instance:setElementDropRateMap(elementId, nil)
+	self:refreshElementDropRate(gameInfoMo)
 end
 
 function MatchGameBuffEffect_GemProbability:getCurRandomElementIdList(careerNum)
@@ -55,30 +45,55 @@ function MatchGameBuffEffect_GemProbability:getCurRandomElementIdList(careerNum)
 end
 
 function MatchGameBuffEffect_GemProbability:progressBuff_105(buffEffectData, targetInfoList, skillData, skillBuffMo)
-	local dropRate = buffEffectData[3]
 	local elementIdList = self:getCurRandomElementIdList(buffEffectData[2])
-
-	for _, elementId in ipairs(elementIdList) do
-		MatchGameFightModel.instance:setElementDropRateMap(elementId, dropRate)
-	end
 
 	skillBuffMo.effectData.elementIdList = elementIdList
 
 	local gameInfoMo = self.sceneView:getGameInfoMo()
 
 	MatchGameSkillBuffHandler.instance:attachBuffToTarget(gameInfoMo, skillBuffMo)
+	self:refreshElementDropRate(gameInfoMo)
+end
+
+function MatchGameBuffEffect_GemProbability:refreshElementDropRate(targetObj, removeSkillBuffMo)
+	local removeBuffUid = removeSkillBuffMo and removeSkillBuffMo:getBuffUid()
+	local skillBuffMoList = {}
+
+	for buffUid, skillBuffMo in pairs(targetObj.skillBuffMoMap or {}) do
+		if buffUid ~= removeBuffUid and (skillBuffMo.buffEffectId == 104 or skillBuffMo.buffEffectId == 105) then
+			table.insert(skillBuffMoList, skillBuffMo)
+		end
+	end
+
+	table.sort(skillBuffMoList, function(a, b)
+		return a.buffUidSeq < b.buffUidSeq
+	end)
+
+	local elementDropRateMap = MatchGameFightModel.instance:getSkillElementDropRateMap()
+
+	for elementId in pairs(elementDropRateMap) do
+		elementDropRateMap[elementId] = nil
+	end
+
+	for _, skillBuffMo in ipairs(skillBuffMoList) do
+		local buffEffectData = string.splitToNumber(skillBuffMo.buffConfig.buffEffect, "#")
+
+		if skillBuffMo.buffEffectId == 104 then
+			MatchGameFightModel.instance:setElementDropRateMap(buffEffectData[2], buffEffectData[3])
+		else
+			for _, elementId in ipairs(skillBuffMo.effectData.elementIdList or {}) do
+				MatchGameFightModel.instance:setElementDropRateMap(elementId, buffEffectData[3])
+			end
+		end
+	end
+end
+
+function MatchGameBuffEffect_GemProbability:removeBuff_104(buffEffectData, targetObj, skillBuffMo)
+	self:refreshElementDropRate(targetObj, skillBuffMo)
 end
 
 function MatchGameBuffEffect_GemProbability:removeBuff_105(buffEffectData, targetObj, skillBuffMo)
-	local elementIdList = skillBuffMo and skillBuffMo.effectData and skillBuffMo.effectData.elementIdList
-
-	if elementIdList then
-		for _, elementId in ipairs(elementIdList) do
-			MatchGameFightModel.instance:setElementDropRateMap(elementId, nil)
-		end
-
-		skillBuffMo.effectData.elementIdList = nil
-	end
+	self:refreshElementDropRate(targetObj, skillBuffMo)
 end
 
 return MatchGameBuffEffect_GemProbability

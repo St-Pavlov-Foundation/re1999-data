@@ -241,8 +241,7 @@ function V4a0_CasualSkinGiftImpl:onPresentBtnClick(item)
 	local mo = item._mo
 	local skinId = mo[1]
 
-	CharacterController.instance:openCharacterSkinTipView({
-		isShowHomeBtn = false,
+	CharacterController.instance:openCharacterNormalSkinView({
 		skinId = skinId
 	})
 end

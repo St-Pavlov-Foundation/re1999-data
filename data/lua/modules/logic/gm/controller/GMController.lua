@@ -175,7 +175,7 @@ function GMController:_onFrame()
 				1,
 				2,
 				3
-			}, 1, 21, 54, 2)
+			}, 1)
 		end
 
 		return

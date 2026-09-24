@@ -17048,5 +17048,450 @@
     "id": 400087,
     "eventName": "play_ui_yingmen4_0_open",
     "bankName": "ui_activity_4_0_yingmen_yunying"
+  },
+  {
+    "id": 400088,
+    "eventName": "play_ui_yingmen4_0_xingjian_open",
+    "bankName": "ui_activity_4_0_yingmen_yunying"
+  },
+  {
+    "id": 400089,
+    "eventName": "play_ui_resonate_unlock_02",
+    "bankName": "ui_resonate_2_0"
+  },
+  {
+    "id": 400090,
+    "eventName": "play_ui_resonate_fm",
+    "bankName": "ui_resonate_2_0"
+  },
+  {
+    "id": 400091,
+    "eventName": "stop_ui_yingmen4_0_bp_show",
+    "bankName": "ui_activity_4_0_yingmen_yunying"
+  },
+  {
+    "id": 400092,
+    "eventName": "play_ui_yuanzheng_mrs_pause",
+    "bankName": "ui_activity_3_3_yuanzheng_marsha"
+  },
+  {
+    "id": 400093,
+    "eventName": "play_ui_yuanzheng_mrs_win",
+    "bankName": "ui_activity_3_3_yuanzheng_marsha"
+  },
+  {
+    "id": 400094,
+    "eventName": "play_ui_yuanzheng_mrs_fail",
+    "bankName": "ui_activity_3_3_yuanzheng_marsha"
+  },
+  {
+    "id": 400095,
+    "eventName": "play_ui_shiji3_8_djs_level",
+    "bankName": "ui_activity_3_8_shiji_dianjishi"
+  },
+  {
+    "id": 400096,
+    "eventName": "play_ui_yingmen_hnj_fashe",
+    "bankName": "ui_activity_4_0_yingmen_hnj"
+  },
+  {
+    "id": 400097,
+    "eventName": "play_ui_yingmen_hnj_boom",
+    "bankName": "ui_activity_4_0_yingmen_hnj"
+  },
+  {
+    "id": 400098,
+    "eventName": "play_ui_yingmen_hnj_level",
+    "bankName": "ui_activity_4_0_yingmen_hnj"
+  },
+  {
+    "id": 400099,
+    "eventName": "play_ui_yingmen_xiaochu_ordinary",
+    "bankName": "ui_activity_4_0_yingmen_sxfight"
+  },
+  {
+    "id": 400100,
+    "eventName": "play_ui_yingmen_xiaochu_bubble",
+    "bankName": "ui_activity_4_0_yingmen_sxfight"
+  },
+  {
+    "id": 400101,
+    "eventName": "play_ui_yingmen_xiaochu_ribbon",
+    "bankName": "ui_activity_4_0_yingmen_sxfight"
+  },
+  {
+    "id": 400102,
+    "eventName": "play_ui_yingmen_sanxiao_treat",
+    "bankName": "ui_activity_4_0_yingmen_sxfight"
+  },
+  {
+    "id": 400103,
+    "eventName": "play_ui_yingmen_sanxiao_purify",
+    "bankName": "ui_activity_4_0_yingmen_sxfight"
+  },
+  {
+    "id": 400104,
+    "eventName": "play_ui_yingmen_sanxiao_explode",
+    "bankName": "ui_activity_4_0_yingmen_sxfight"
+  },
+  {
+    "id": 400105,
+    "eventName": "play_ui_yingmen_sanxiao_poison",
+    "bankName": "ui_activity_4_0_yingmen_sxfight"
+  },
+  {
+    "id": 400106,
+    "eventName": "play_ui_yingmen_sanxiao_seal",
+    "bankName": "ui_activity_4_0_yingmen_sxfight"
+  },
+  {
+    "id": 400107,
+    "eventName": "play_ui_yingmen_sanxiao_connect",
+    "bankName": "ui_activity_4_0_yingmen_sxfight"
+  },
+  {
+    "id": 400108,
+    "eventName": "play_ui_yingmen_sanxiao_reward",
+    "bankName": "ui_activity_4_0_yingmen_sxfight"
+  },
+  {
+    "id": 400109,
+    "eventName": "play_ui_yingmen_sanxiao_reward_loop",
+    "bankName": "ui_activity_4_0_yingmen_sxfight"
+  },
+  {
+    "id": 400110,
+    "eventName": "stop_ui_yingmen_sanxiao_reward_loop",
+    "bankName": "ui_activity_4_0_yingmen_sxfight"
+  },
+  {
+    "id": 400111,
+    "eventName": "play_ui_yingmen_sanxiao_comment",
+    "bankName": "ui_activity_4_0_yingmen_sxfight"
+  },
+  {
+    "id": 400112,
+    "eventName": "play_ui_yingmen_sanxiao_bonus",
+    "bankName": "ui_activity_4_0_yingmen_sxfight"
+  },
+  {
+    "id": 400113,
+    "eventName": "play_ui_yingmen_skill_fly",
+    "bankName": "ui_activity_4_0_yingmen_sxfight"
+  },
+  {
+    "id": 400114,
+    "eventName": "play_ui_yingmen_hit_critical",
+    "bankName": "ui_activity_4_0_yingmen_sxfight"
+  },
+  {
+    "id": 400115,
+    "eventName": "play_ui_yingmen_hit_ordinary",
+    "bankName": "ui_activity_4_0_yingmen_sxfight"
+  },
+  {
+    "id": 400116,
+    "eventName": "play_ui_yingmen_sanxiao_death",
+    "bankName": "ui_activity_4_0_yingmen_sxfight"
+  },
+  {
+    "id": 400117,
+    "eventName": "play_ui_yingmen_bead_fall",
+    "bankName": "ui_activity_4_0_yingmen_sxfight"
+  },
+  {
+    "id": 400118,
+    "eventName": "play_ui_yingmen_skill_fullof",
+    "bankName": "ui_activity_4_0_yingmen_sxfight"
+  },
+  {
+    "id": 400119,
+    "eventName": "play_ui_yingmen_skill_release",
+    "bankName": "ui_activity_4_0_yingmen_sxfight"
+  },
+  {
+    "id": 400120,
+    "eventName": "play_ui_yingmen_role_poisoning",
+    "bankName": "ui_activity_4_0_yingmen_sxfight"
+  },
+  {
+    "id": 400121,
+    "eventName": "play_ui_yingmen_sanxiao_countdown",
+    "bankName": "ui_activity_4_0_yingmen_sxfight"
+  },
+  {
+    "id": 400122,
+    "eventName": "stop_ui_yingmen_sanxiao_countdown",
+    "bankName": "ui_activity_4_0_yingmen_sxfight"
+  },
+  {
+    "id": 400123,
+    "eventName": "play_ui_gt_yishi_shua",
+    "bankName": "ui_getian_yishi_sfx3_4"
+  },
+  {
+    "id": 400124,
+    "eventName": "play_ui_activity_jump",
+    "bankName": "ui_activity"
+  },
+  {
+    "id": 400125,
+    "eventName": "play_ui_molu_fire_hurt",
+    "bankName": "ui_activity_molu"
+  },
+  {
+    "id": 400126,
+    "eventName": "play_ui_molu_jlbn_move",
+    "bankName": "ui_activity_molu"
+  },
+  {
+    "id": 400127,
+    "eventName": "play_ui_yuzhou_ball_fall",
+    "bankName": "ui_activity_2_7_yuzhou_kubohuahuan"
+  },
+  {
+    "id": 400128,
+    "eventName": "play_ui_deleike4_0_candle_burning_lp",
+    "bankName": "ui_activity_4_0_yingmen_deleike"
+  },
+  {
+    "id": 400129,
+    "eventName": "play_ui_yuzhou_trap_dispel",
+    "bankName": "ui_activity_2_7_yuzhou_kubohuahuan"
+  },
+  {
+    "id": 400130,
+    "eventName": "play_ui_pkls_enemy_move",
+    "bankName": "ui_activity"
+  },
+  {
+    "id": 400131,
+    "eventName": "play_ui_leimi_souvenir_open",
+    "bankName": "ui_activity"
+  },
+  {
+    "id": 400132,
+    "eventName": "play_ui_molu_fire_spread",
+    "bankName": "ui_activity_molu"
+  },
+  {
+    "id": 400133,
+    "eventName": "play_ui_deleike4_0_destroy",
+    "bankName": "ui_activity_4_0_yingmen_deleike"
+  },
+  {
+    "id": 400134,
+    "eventName": "play_ui_deleike4_0_cut",
+    "bankName": "ui_activity_4_0_yingmen_deleike"
+  },
+  {
+    "id": 400135,
+    "eventName": "play_ui_qiutu_list_maintain",
+    "bankName": "ui_activity_1_4_qiutu"
+  },
+  {
+    "id": 400136,
+    "eventName": "play_ui_langchao_decrypt_success",
+    "bankName": "ui_activity_s02_langchao"
+  },
+  {
+    "id": 400137,
+    "eventName": "play_ui_yingmen4_0_open_music",
+    "bankName": "ui_activity_4_0_yingmen_yunying"
+  },
+  {
+    "id": 400138,
+    "eventName": "stop_ui_yingmen4_0_open_music",
+    "bankName": "ui_activity_4_0_yingmen_yunying"
+  },
+  {
+    "id": 400139,
+    "eventName": "play_ui_yingmen4_0_open_game",
+    "bankName": "ui_activity_4_0_yingmen_yunying"
+  },
+  {
+    "id": 400140,
+    "eventName": "play_ui_yingmen4_0_do",
+    "bankName": "ui_activity_4_0_yingmen_yunying"
+  },
+  {
+    "id": 400141,
+    "eventName": "play_ui_yingmen4_0_re",
+    "bankName": "ui_activity_4_0_yingmen_yunying"
+  },
+  {
+    "id": 400142,
+    "eventName": "play_ui_yingmen4_0_mi",
+    "bankName": "ui_activity_4_0_yingmen_yunying"
+  },
+  {
+    "id": 400143,
+    "eventName": "play_ui_yingmen4_0_fa",
+    "bankName": "ui_activity_4_0_yingmen_yunying"
+  },
+  {
+    "id": 400144,
+    "eventName": "play_ui_yingmen4_0_sol",
+    "bankName": "ui_activity_4_0_yingmen_yunying"
+  },
+  {
+    "id": 400145,
+    "eventName": "play_ui_yingmen4_0_la",
+    "bankName": "ui_activity_4_0_yingmen_yunying"
+  },
+  {
+    "id": 400146,
+    "eventName": "play_ui_yingmen4_0_si",
+    "bankName": "ui_activity_4_0_yingmen_yunying"
+  },
+  {
+    "id": 400147,
+    "eventName": "play_ui_yingmen4_0_do_high",
+    "bankName": "ui_activity_4_0_yingmen_yunying"
+  },
+  {
+    "id": 400148,
+    "eventName": "play_ui_yingmen4_0_one_stage",
+    "bankName": "ui_activity_4_0_yingmen_yunying"
+  },
+  {
+    "id": 400149,
+    "eventName": "play_ui_yingmen4_0_two_stage",
+    "bankName": "ui_activity_4_0_yingmen_yunying"
+  },
+  {
+    "id": 400150,
+    "eventName": "play_ui_yingmen4_0_three_stage",
+    "bankName": "ui_activity_4_0_yingmen_yunying"
+  },
+  {
+    "id": 400151,
+    "eventName": "play_ui_yingmen4_0_roll_back",
+    "bankName": "ui_activity_4_0_yingmen_yunying"
+  },
+  {
+    "id": 400152,
+    "eventName": "play_ui_yingmen4_0_reset",
+    "bankName": "ui_activity_4_0_yingmen_yunying"
+  },
+  {
+    "id": 400153,
+    "eventName": "play_ui_yingmen4_0_short_music",
+    "bankName": "ui_activity_4_0_yingmen_yunying"
+  },
+  {
+    "id": 400154,
+    "eventName": "stop_ui_yingmen4_0_short_music",
+    "bankName": "ui_activity_4_0_yingmen_yunying"
+  },
+  {
+    "id": 400155,
+    "eventName": "play_ui_yingmen4_0_open",
+    "bankName": "ui_activity_4_0_yingmen_yunying"
+  },
+  {
+    "id": 400156,
+    "eventName": "play_ui_yingmen4_0_click",
+    "bankName": "ui_activity_4_0_yingmen_yunying"
+  },
+  {
+    "id": 400157,
+    "eventName": "play_ui_yingmen4_0_grand_prize",
+    "bankName": "ui_activity_4_0_yingmen_yunying"
+  },
+  {
+    "id": 400158,
+    "eventName": "play_ui_yingmen4_0_general_prize",
+    "bankName": "ui_activity_4_0_yingmen_yunying"
+  },
+  {
+    "id": 400159,
+    "eventName": "play_ui_yingmen4_0_switch",
+    "bankName": "ui_activity_4_0_yingmen_yunying"
+  },
+  {
+    "id": 400160,
+    "eventName": "play_ui_yingmen_hnj_fu",
+    "bankName": "ui_activity_4_0_yingmen_hnj"
+  },
+  {
+    "id": 400161,
+    "eventName": "play_ui_yingmen_hnj_xuli2",
+    "bankName": "ui_activity_4_0_yingmen_hnj"
+  },
+  {
+    "id": 400162,
+    "eventName": "play_ui_yingmen_hnj_xuli3",
+    "bankName": "ui_activity_4_0_yingmen_hnj"
+  },
+  {
+    "id": 400163,
+    "eventName": "play_ui_yingmen_hnj_xuliall",
+    "bankName": "ui_activity_4_0_yingmen_hnj"
+  },
+  {
+    "id": 400164,
+    "eventName": "play_ui_yingmen_tanguowu_entry",
+    "bankName": "ui_activity_4_0_yingmen_tanguowu"
+  },
+  {
+    "id": 400165,
+    "eventName": "play_ui_langchao_role_open",
+    "bankName": "ui_activity_s02_langchao_kachi"
+  },
+  {
+    "id": 400166,
+    "eventName": "play_ui_langchao_page_open",
+    "bankName": "ui_activity_s02_langchao_kachi"
+  },
+  {
+    "id": 400167,
+    "eventName": "play_ui_fuleyuan_tansuo_bag_open",
+    "bankName": "ui_activity_2_8_fuleyuan_tansuo"
+  },
+  {
+    "id": 400168,
+    "eventName": "play_ui_yingmen_tanguowu_rotate",
+    "bankName": "ui_activity_4_0_yingmen_tanguowu"
+  },
+  {
+    "id": 400169,
+    "eventName": "stop_ui_yingmen_tanguowu_rotate",
+    "bankName": "ui_activity_4_0_yingmen_tanguowu"
+  },
+  {
+    "id": 400170,
+    "eventName": "play_ui_yingmen_tanguowu_prize",
+    "bankName": "ui_activity_4_0_yingmen_tanguowu"
+  },
+  {
+    "id": 400171,
+    "eventName": "play_hero313403_skin_store",
+    "bankName": "hero313403_skin_store4_0"
+  },
+  {
+    "id": 400172,
+    "eventName": "play_hero315503_skin_store",
+    "bankName": "hero315503_skin_store4_0"
+  },
+  {
+    "id": 400173,
+    "eventName": "play_hero305305_skin_store",
+    "bankName": "hero305305_skin_store4_0"
+  },
+  {
+    "id": 400174,
+    "eventName": "play_hero311003_skin_store",
+    "bankName": "hero311003_skin_store4_0"
+  },
+  {
+    "id": 400175,
+    "eventName": "play_ui_tujianskin_qimeide_open",
+    "bankName": "ui_tujianskin_4_0"
+  },
+  {
+    "id": 400176,
+    "eventName": "play_ui_yingmen_tanguowu_rotate_single",
+    "bankName": "ui_activity_4_0_yingmen_tanguowu"
   }
 ]

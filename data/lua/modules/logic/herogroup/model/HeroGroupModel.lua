@@ -298,7 +298,7 @@ function HeroGroupModel:setParam(battleId, episodeId, adventure, isReConnect, ep
 
 		local curStage = AbyssModel.instance:getCurStageMo()
 
-		self._curGroupId = curStage.heroGroupSubId or 1
+		self._curGroupId = curStage and curStage.heroGroupSubId or 1
 	elseif self._episodeType == DungeonEnum.EpisodeType.BossRushActMode then
 		self.heroGroupType = ModuleEnum.HeroGroupType.BossRushActMode
 
@@ -401,7 +401,7 @@ function HeroGroupModel:_convertToPreset()
 
 				return
 			elseif episdoeConfig.type == DungeonEnum.EpisodeType.Abyss then
-				self._presetHeroGroupType = HeroGroupPresetEnum.HeroGroupType.Abyss
+				self._presetHeroGroupType = HeroGroupPresetEnum.HeroGroupType.AbyssPreset
 			elseif episdoeConfig.type == DungeonEnum.EpisodeType.AtomicDungeon then
 				self._presetHeroGroupType = HeroGroupPresetEnum.HeroGroupType.AtomicDungeon
 			end
@@ -676,7 +676,7 @@ function HeroGroupModel:getCurGroupMO()
 	elseif self.heroGroupType == ModuleEnum.HeroGroupType.Odyssey then
 		return OdysseyHeroGroupModel.instance:getCurHeroGroup()
 	elseif self.heroGroupType == ModuleEnum.HeroGroupType.BossRushActMode then
-		-- block empty
+		return V3a9_BossRushModel.instance:getCurGroupMO()
 	else
 		return self:getById(self._curGroupId)
 	end
@@ -765,6 +765,18 @@ function HeroGroupModel:getMainGroupMo()
 	end
 end
 
+function HeroGroupModel:_checkAssistHero(heroGroupMO)
+	local assistHeroMoMap = HeroGroupModel.instance:getAssistMoMap()
+
+	if assistHeroMoMap and next(assistHeroMoMap) then
+		for i, heroUid in pairs(heroGroupMO.heroList) do
+			if assistHeroMoMap[heroUid] then
+				heroGroupMO.heroList[i] = "0"
+			end
+		end
+	end
+end
+
 function HeroGroupModel:saveCurGroupData(callback, callbackObj, heroGroupMO)
 	local episodeConfig = lua_episode.configDict[self.episodeId]
 
@@ -787,6 +799,7 @@ function HeroGroupModel:saveCurGroupData(callback, callbackObj, heroGroupMO)
 	end
 
 	heroGroupMO:checkAndPutOffEquip()
+	self:_checkAssistHero(heroGroupMO)
 
 	if self.heroGroupType == ModuleEnum.HeroGroupType.Trial then
 		heroGroupMO:saveData()
@@ -826,13 +839,13 @@ function HeroGroupModel:saveCurGroupData(callback, callbackObj, heroGroupMO)
 		return
 	end
 
+	local lastSelectGroupIndex = self.curGroupSelectIndex
+
 	if episodeConfig.type == DungeonEnum.EpisodeType.Abyss then
-		AbyssController.instance:saveSnapShot(heroGroupMO, lastSelectGroupIndex, callback, callbackObj)
+		AbyssController.instance:saveSnapShot(heroGroupMO, nil, callback, callbackObj)
 
 		return
 	end
-
-	local lastSelectGroupIndex = self.curGroupSelectIndex
 
 	if lastSelectGroupIndex == 0 then
 		logError("HeroGroupModel:saveCurGroupData: lastSelectGroupIndex 异常,值不能为0")
@@ -1309,6 +1322,32 @@ function HeroGroupModel:getAssistMoList(isEditor)
 	end
 
 	return list
+end
+
+function HeroGroupModel:getAssistMoMap(isEditor)
+	local assistMo, assistMoMap
+
+	if isEditor then
+		assistMo, assistMoMap = self:getEditorAssistMo()
+	else
+		local _
+
+		_, assistMo, _, _, assistMoMap = self:getAssistMo()
+	end
+
+	local map
+
+	if assistMoMap and next(assistMoMap) then
+		return assistMoMap
+	end
+
+	if assistMo then
+		map = {
+			[assistMo.heroUid] = assistMo
+		}
+	end
+
+	return map
 end
 
 function HeroGroupModel:clearCurAssist(isClearEditor, params)

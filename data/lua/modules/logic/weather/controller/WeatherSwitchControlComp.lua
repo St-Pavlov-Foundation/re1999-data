@@ -42,6 +42,8 @@ function WeatherSwitchControlComp:_btnupOnClick()
 
 	if self._weatherAnim then
 		self._weatherAnim:Play("refresh", 0, 0)
+	else
+		self:_delayUpdateStatus()
 	end
 
 	self._switchComp:switchPrevLightMode()
@@ -110,6 +112,8 @@ function WeatherSwitchControlComp:_btnclickOnClick(index)
 
 	if self._weatherAnim then
 		self._weatherAnim:Play("refresh", 0, 0)
+	else
+		self:_delayUpdateStatus()
 	end
 
 	self._switchComp:switchReport(index)
@@ -120,6 +124,8 @@ function WeatherSwitchControlComp:_btndownOnClick()
 
 	if self._weatherAnim then
 		self._weatherAnim:Play("refresh", 0, 0)
+	else
+		self:_delayUpdateStatus()
 	end
 
 	self._switchComp:switchNextLightMode()

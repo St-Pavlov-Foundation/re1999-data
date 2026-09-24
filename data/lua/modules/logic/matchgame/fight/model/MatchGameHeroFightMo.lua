@@ -44,10 +44,12 @@ function MatchGameHeroFightMo:initData(data)
 		local skillConfig = MatchGameConfig.instance:getHeroSkillConfig(self.skillId)
 
 		self.maxEnergy = skillConfig.energyCost
+		self.energy = skillConfig.initialEnergy or 0
 	end
 
 	self.giddyState = false
 	self.attackRate = 1
+	self.skillAttackRate = 0
 	self.damage = 0
 end
 
@@ -63,6 +65,7 @@ function MatchGameHeroFightMo:updateFightInfo(info)
 	self.heal = info.heal or self.heal
 	self.energy = Mathf.Min(info.energy or self.energy, self.maxEnergy)
 	self.attackRate = info.attackRate or self.attackRate
+	self.skillAttackRate = info.skillAttackRate or self.skillAttackRate
 	self.damage = info.damage or self.damage
 end
 

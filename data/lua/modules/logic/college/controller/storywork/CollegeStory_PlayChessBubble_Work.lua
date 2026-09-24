@@ -52,12 +52,12 @@ function CollegeStory_PlayChessBubble_Work:loadAllChess()
 
 			local role = MonoHelper.addNoUpdateLuaComOnceToGo(go, CollegeRoleItem)
 
+			role:setScaleX(v.chessPosition)
 			role:setActorId(v.actorId)
 
 			local ui = gohelper.cloneInPlace(self._gobubble)
 
 			role:setUI(ui)
-			role:setScaleX(v.chessPosition)
 
 			self._chessList[v.actorId] = role
 		end

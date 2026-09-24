@@ -234,32 +234,19 @@ function AutoChessLeaderEntity:refreshCollection()
 		return
 	end
 
-	local collectionIds = self.mo.collectionIds
-	local count = #collectionIds
+	local mutationId = self.mo and self.mo:getMutationId()
 
-	if count ~= 0 then
-		for k, id in ipairs(collectionIds) do
-			local item = self.collectionTbl[k]
-
-			if not item then
-				item = self:getUserDataTb_()
-				item.go = gohelper.cloneInPlace(self.goCollectionItem)
-				item.simageIcon = gohelper.findChildSingleImage(item.go, "simage_icon")
-				self.collectionTbl[k] = item
-			end
-
-			local config = AutoChessConfig.instance:getCollectionCfg(id)
-
-			item.simageIcon:LoadImage(ResUrl.getAutoChessIcon(config.image, "collection"))
-			gohelper.setActive(item.go, true)
+	if mutationId then
+		if not self.simageMutation then
+			self.simageMutation = gohelper.findChildSingleImage(self.goCollectionItem, "simage_icon")
 		end
 
-		for i = count + 1, #self.collectionTbl do
-			gohelper.setActive(self.collectionTbl[i].go, false)
-		end
+		local mutationCfg = AutoChessConfig.instance:getMutationCfg(mutationId)
+
+		self.simageMutation:LoadImage(ResUrl.getAutoChessIcon(mutationCfg.icon, "adventure"))
 	end
 
-	gohelper.setActive(self.goCollection, count ~= 0)
+	gohelper.setActive(self.goCollectionItem, mutationId)
 end
 
 return AutoChessLeaderEntity

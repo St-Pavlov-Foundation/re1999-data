@@ -78,7 +78,7 @@ function MatchGameFightRoleEffect:showHeavyDamageEffect()
 	TaskDispatcher.cancelTask(self.hideHeavyDamageEffect, self)
 	gohelper.setActive(self.heavyDamageEffect, false)
 	gohelper.setActive(self.heavyDamageEffect, true)
-	TaskDispatcher.runDelay(self.hideHeavyDamageEffect, self, 1)
+	TaskDispatcher.runDelay(self.hideHeavyDamageEffect, self, MatchGameFightEnum.RoleEffectTime)
 end
 
 function MatchGameFightRoleEffect:hideHeavyDamageEffect()
@@ -89,7 +89,7 @@ function MatchGameFightRoleEffect:showNormalDamageEffect()
 	TaskDispatcher.cancelTask(self.hideNormalDamageEffect, self)
 	gohelper.setActive(self.normalDamageEffect, false)
 	gohelper.setActive(self.normalDamageEffect, true)
-	TaskDispatcher.runDelay(self.hideNormalDamageEffect, self, 1)
+	TaskDispatcher.runDelay(self.hideNormalDamageEffect, self, MatchGameFightEnum.RoleEffectTime)
 end
 
 function MatchGameFightRoleEffect:hideNormalDamageEffect()
@@ -101,6 +101,7 @@ function MatchGameFightRoleEffect:showCleanEffect()
 	gohelper.setActive(self.cleanEffect, false)
 	gohelper.setActive(self.cleanEffect, true)
 	TaskDispatcher.runDelay(self.hideCleanEffect, self, 1)
+	AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_sanxiao_purify)
 end
 
 function MatchGameFightRoleEffect:hideCleanEffect()
@@ -111,7 +112,7 @@ function MatchGameFightRoleEffect:showHealEffect()
 	TaskDispatcher.cancelTask(self.hideHealEffect, self)
 	gohelper.setActive(self.healEffect, false)
 	gohelper.setActive(self.healEffect, true)
-	TaskDispatcher.runDelay(self.hideHealEffect, self, 1)
+	TaskDispatcher.runDelay(self.hideHealEffect, self, MatchGameFightEnum.RoleEffectTime)
 end
 
 function MatchGameFightRoleEffect:hideHealEffect()
@@ -122,12 +123,13 @@ function MatchGameFightRoleEffect:showLockEffect()
 	TaskDispatcher.cancelTask(self.hideLockEffect, self)
 	gohelper.setActive(self.lockEffect, false)
 	gohelper.setActive(self.lockEffect, true)
+	AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_sanxiao_seal)
 end
 
 function MatchGameFightRoleEffect:closeLockEffect()
 	self.lockEffectAnim:Play("close", 0, 0)
 	self.lockEffectAnim:Update(0)
-	TaskDispatcher.runDelay(self.hideLockEffect, self, 1)
+	TaskDispatcher.runDelay(self.hideLockEffect, self, MatchGameFightEnum.RoleEffectTime)
 end
 
 function MatchGameFightRoleEffect:hideLockEffect()
@@ -138,7 +140,8 @@ function MatchGameFightRoleEffect:showPoisonEffect()
 	TaskDispatcher.cancelTask(self.hidePoisonEffect, self)
 	gohelper.setActive(self.poisonEffect, false)
 	gohelper.setActive(self.poisonEffect, true)
-	TaskDispatcher.runDelay(self.hidePoisonEffect, self, 1)
+	TaskDispatcher.runDelay(self.hidePoisonEffect, self, MatchGameFightEnum.RoleEffectTime)
+	AudioMgr.instance:trigger(MatchGameAudioEnum.play_ui_yingmen_role_poisoning)
 end
 
 function MatchGameFightRoleEffect:hidePoisonEffect()

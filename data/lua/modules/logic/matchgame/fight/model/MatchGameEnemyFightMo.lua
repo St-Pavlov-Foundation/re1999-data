@@ -42,11 +42,12 @@ function MatchGameEnemyFightMo:initFightInfo(data)
 		self.enemySkillInfoList[index] = enemySkillInfo
 	end
 
-	self.name = data.skillTemplateConfig.name
+	self.name = data.config.name
 	self.maxHp = data.attrConfig.hp
 	self.hp = self.maxHp
 	self.attack = data.attrConfig.attack
 	self.attackRate = 1
+	self.skillAttackRate = 0
 	self.def = data.attrConfig.defense
 	self.career = data.config.career
 	self.level = data.config.level
@@ -64,6 +65,7 @@ function MatchGameEnemyFightMo:updateFightInfo(info)
 	self.attack = info.attack or self.attack
 	self.heal = info.heal or self.heal
 	self.attackRate = info.attackRate or self.attackRate
+	self.skillAttackRate = info.skillAttackRate or self.skillAttackRate
 end
 
 function MatchGameEnemyFightMo:setGiddyState(state)

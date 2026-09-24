@@ -115,6 +115,6 @@ VersionActivity4_0Enum.EnterLoopVideoName = "v4a0_kv_loop"
 VersionActivity4_0Enum.EnterAnimVideoName = "v4a0_kv_open"
 VersionActivity4_0Enum.EnterVideoDayKey = "v4a0_EnterVideoDayKey"
 VersionActivity4_0Enum.EnterVideoFirstKey = "v4a0_EnterVideoFirstKey"
-VersionActivity4_0Enum.OpenAnimDelayTime = 5.2
+VersionActivity4_0Enum.OpenAnimDelayTime = 7.2
 
 return VersionActivity4_0Enum

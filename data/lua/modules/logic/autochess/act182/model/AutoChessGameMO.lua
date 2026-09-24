@@ -19,6 +19,7 @@ function AutoChessGameMO:init(info)
 end
 
 function AutoChessGameMO:updateMasterIdBox(msg, refresh)
+	self.start = true
 	self.masterIdBox = msg.masterIds
 	self.cardpackIds = msg.cardpackIds
 	self.refreshed = refresh

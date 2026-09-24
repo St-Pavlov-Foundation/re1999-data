@@ -682,15 +682,6 @@ function CharacterModel:isFilterTagByBattleTags(selectTags, battleTag, heroId)
 
 	local count1 = 0
 	local battleTags = string.split(battleTag, "#")
-	local mappingTags = CharacterSearchFilterModel.instance:getNeedFilterMappingTags()
-
-	if mappingTags then
-		for tagId in pairs(mappingTags) do
-			if LuaUtil.tableContains(battleTags, tagId) then
-				count1 = count1 + 1
-			end
-		end
-	end
 
 	for type, list in pairs(selectTags) do
 		local count2 = 0

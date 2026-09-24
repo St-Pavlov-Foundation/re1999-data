@@ -190,7 +190,6 @@ function FightTLEventSetSign:onTrackStart(fightStepData, duration, paramsArr)
 
 		if entity then
 			entity.spine.animatorPlayer.animator:Play("hit_effect", 1, 0)
-			FightMsgMgr.sendMsg(FightMsgId.PlayNameUIToughnessBrokenRewardEffect, entity.id)
 		end
 	elseif param6 == "toughness_broken_reward_normal" then
 		FightMsgMgr.sendMsg(FightMsgId.PlayNameUIToughnessBrokenRewardEffect, fightStepData.fromId)

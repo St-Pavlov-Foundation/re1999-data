@@ -5,46 +5,46 @@
     "levelType": 1,
     "sortIndex": 1,
     "unlock": "",
-    "chapterImage": ""
+    "chapterImage": "matchgame_map_fullbg3"
   },
   {
     "id": 140102,
     "chapterName": "L2",
     "levelType": 1,
     "sortIndex": 2,
-    "unlock": "star#20|episode#14010110",
-    "chapterImage": ""
+    "unlock": "star#25|episode#14010110",
+    "chapterImage": "matchgame_map_fullbg3"
   },
   {
     "id": 140103,
     "chapterName": "L3",
     "levelType": 1,
     "sortIndex": 3,
-    "unlock": "star#40|episode#14010210",
-    "chapterImage": ""
+    "unlock": "star#50|episode#14010210",
+    "chapterImage": "matchgame_map_fullbg1"
   },
   {
     "id": 140104,
     "chapterName": "L4",
     "levelType": 1,
     "sortIndex": 4,
-    "unlock": "star#60|episode#14010310",
-    "chapterImage": ""
+    "unlock": "star#80|episode#14010310",
+    "chapterImage": "matchgame_map_fullbg1"
   },
   {
     "id": 140105,
     "chapterName": "L5",
     "levelType": 1,
     "sortIndex": 5,
-    "unlock": "star#100|episode#14010410",
-    "chapterImage": ""
+    "unlock": "star#110|episode#14010410",
+    "chapterImage": "matchgame_map_fullbg4"
   },
   {
     "id": 140201,
     "chapterName": "L??",
     "levelType": 2,
     "sortIndex": 6,
-    "unlock": "episode#14010101",
-    "chapterImage": ""
+    "unlock": "episode#14010410",
+    "chapterImage": "matchgame_map_fullbg2"
   }
 ]

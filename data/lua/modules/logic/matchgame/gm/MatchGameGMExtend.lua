@@ -63,7 +63,7 @@ function MatchGameGMExtend:_setEpisodeLevel()
 	MatchGameController.instance:openMatchGameFightView(params)
 end
 
-function MatchGameGMExtend:getInput_act244addItems_1(inputData, lastInput)
+function MatchGameGMExtend:getInput_addItems_1(inputData, lastInput)
 	local obj = self.obj
 	local allItems = {}
 	local itemNames = {}
@@ -100,13 +100,13 @@ function MatchGameGMExtend:getInput_act244addItems_1(inputData, lastInput)
 	return inputData
 end
 
-function MatchGameGMExtend:getText_act244addItems_1(inputData)
+function MatchGameGMExtend:getText_addItems_1(inputData)
 	local index = inputData.dropDown:GetValue() + 1
 
 	return tostring(inputData.items[index].itemId) .. "#" .. (tonumber(inputData.input2:GetText()) or 1)
 end
 
-function MatchGameGMExtend:getDefaultVal_act244addItems_1()
+function MatchGameGMExtend:getDefaultVal_addItems_1()
 	local itemCo = lua_activity244_item.configList[1]
 
 	if not itemCo then
@@ -114,6 +114,100 @@ function MatchGameGMExtend:getDefaultVal_act244addItems_1()
 	end
 
 	return string.format("%s#%s", itemCo.itemId, 1)
+end
+
+function MatchGameGMExtend:getInput_unlockEpisode_1(inputData, lastInput)
+	local obj = self.obj
+	local episodeList = {}
+	local episodeNames = {}
+	local selectVal = 0
+	local lastEpisodeId
+
+	if not string.nilorempty(lastInput) then
+		lastEpisodeId = tonumber(lastInput)
+	end
+
+	local all = {
+		id = 0,
+		levelName = "全部"
+	}
+
+	table.insert(episodeList, all)
+	table.insert(episodeNames, all.levelName)
+
+	for i, v in ipairs(lua_activity244_episode.configList) do
+		table.insert(episodeList, v)
+		table.insert(episodeNames, v.levelName)
+
+		if lastEpisodeId == v.id then
+			selectVal = i
+		end
+	end
+
+	inputData.dropDown = obj:addDropDown(obj:getLineGroup(), "", episodeNames)
+
+	recthelper.setWidth(inputData.dropDown.transform, 300)
+
+	inputData.items = episodeList
+
+	inputData.dropDown:SetValue(selectVal)
+
+	return inputData
+end
+
+function MatchGameGMExtend:getText_unlockEpisode_1(inputData)
+	local index = inputData.dropDown:GetValue() + 1
+
+	return tostring(inputData.items[index].id)
+end
+
+function MatchGameGMExtend:getInput_finishEpisode_1(inputData, lastInput)
+	local obj = self.obj
+	local episodeList = {}
+	local episodeNames = {}
+	local selectVal = 0
+	local lastEpisodeId
+
+	if not string.nilorempty(lastInput) then
+		lastEpisodeId = tonumber(lastInput)
+	end
+
+	local all = {
+		id = 0,
+		levelName = "全部"
+	}
+
+	table.insert(episodeList, all)
+	table.insert(episodeNames, all.levelName)
+
+	for i, v in ipairs(lua_activity244_episode.configList) do
+		table.insert(episodeList, v)
+		table.insert(episodeNames, v.levelName)
+
+		if lastEpisodeId == v.id then
+			selectVal = i
+		end
+	end
+
+	inputData.dropDown = obj:addDropDown(obj:getLineGroup(), "", episodeNames)
+
+	recthelper.setWidth(inputData.dropDown.transform, 300)
+
+	inputData.items = episodeList
+
+	inputData.dropDown:SetValue(selectVal)
+
+	return inputData
+end
+
+function MatchGameGMExtend:getText_finishEpisode_1(inputData)
+	local index = inputData.dropDown:GetValue() + 1
+
+	return tostring(inputData.items[index].id)
+end
+
+function MatchGameGMExtend:getDefaultVal_unlockEpisode_1()
+	return "0"
 end
 
 return MatchGameGMExtend

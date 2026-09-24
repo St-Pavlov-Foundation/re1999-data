@@ -17,14 +17,32 @@ function DecorateStoreBundleComp:init(go)
 end
 
 function DecorateStoreBundleComp:_addEvents()
-	return
+	StoreController.instance:registerCallback(StoreEvent.DecorateGoodItemClick, self._onGoodItemClick, self)
 end
 
 function DecorateStoreBundleComp:_removeEvents()
-	return
+	StoreController.instance:unregisterCallback(StoreEvent.DecorateGoodItemClick, self._onGoodItemClick, self)
 end
 
-function DecorateStoreBundleComp:refresh(goodId, storeId)
+function DecorateStoreBundleComp:_onGoodItemClick(goodId)
+	if not self._buddleTypeItems then
+		return
+	end
+
+	local decorateConfig = DecorateStoreConfig.instance:getDecorateConfig(goodId)
+
+	if decorateConfig.fatherGoods > 0 and decorateConfig.fatherGoods ~= self._goodId then
+		return
+	end
+
+	if decorateConfig.fatherGoods <= 0 then
+		return
+	end
+
+	self:refresh(goodId)
+end
+
+function DecorateStoreBundleComp:refresh(goodId)
 	if self._goodId == goodId then
 		self:refreshUI()
 
@@ -34,12 +52,14 @@ function DecorateStoreBundleComp:refresh(goodId, storeId)
 	self._goodId = goodId
 
 	local decorateConfig = DecorateStoreConfig.instance:getDecorateConfig(goodId)
+	local goodCo = StoreConfig.instance:getGoodsConfig(goodId)
+
+	self._storeId = tonumber(goodCo.storeId)
 
 	if decorateConfig and decorateConfig.fatherGoods > 0 then
 		self._goodId = decorateConfig.fatherGoods
 	end
 
-	self._storeId = storeId
 	self._decorateCo = DecorateStoreConfig.instance:getDecorateConfig(self._goodId)
 	self._type = self._decorateCo.bundleType or 1
 
@@ -77,12 +97,23 @@ function DecorateStoreBundleComp:refreshUI()
 	end
 
 	if self._buddleTypeItems[self._type] then
-		self._buddleTypeItems[self._type].comp:refresh(self._goodId, self._storeId)
+		self._buddleTypeItems[self._type].comp:refresh(self._goodId)
+	end
+end
+
+function DecorateStoreBundleComp:hideAll()
+	if not self._buddleTypeItems then
+		return
+	end
+
+	for type, com in pairs(self._buddleTypeItems) do
+		gohelper.setActive(com.go, false)
 	end
 end
 
 function DecorateStoreBundleComp:destroy()
 	MonoHelper.removeLuaComFromGo(self.go, DecorateStoreBundleComp)
+	self:_removeEvents()
 	UIBlockMgr.instance:endBlock("waitloadbundle")
 
 	if self._prefabLoader then
@@ -98,8 +129,6 @@ function DecorateStoreBundleComp:destroy()
 
 		self._buddleTypeItems = nil
 	end
-
-	self:_removeEvents()
 end
 
 return DecorateStoreBundleComp

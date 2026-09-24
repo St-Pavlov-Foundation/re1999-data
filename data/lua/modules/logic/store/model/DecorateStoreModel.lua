@@ -43,6 +43,12 @@ function DecorateStoreModel:getCurGood(storeId)
 		end
 	end
 
+	local decorateConfig = DecorateStoreConfig.instance:getDecorateConfig(self._curGoodId)
+
+	if decorateConfig and decorateConfig.bundleType == 1 then
+		self._curGoodId = self:getBundleSubGoods(self._curGoodId)[1].id
+	end
+
 	return self._curGoodId
 end
 
@@ -63,17 +69,17 @@ function DecorateStoreModel:getDecorateGoodList(storeId)
 	end
 
 	table.sort(allGoods, function(a, b)
-		local isAItemHas = self:isDecorateGoodItemHas(a.goodsId)
-		local isBItemHas = self:isDecorateGoodItemHas(b.goodsId)
+		local isAItemOwned = self:isDecorateGoodItemOwned(a.goodsId)
+		local isBItemOwned = self:isDecorateGoodItemOwned(b.goodsId)
 		local aSoldOut = a.config.maxBuyCount > 0 and a.buyCount >= a.config.maxBuyCount and 1 or 0
 
-		if isAItemHas then
+		if isAItemOwned then
 			aSoldOut = 1
 		end
 
 		local bSoldOut = b.config.maxBuyCount > 0 and b.buyCount >= b.config.maxBuyCount and 1 or 0
 
-		if isBItemHas then
+		if isBItemOwned then
 			bSoldOut = 1
 		end
 
@@ -107,6 +113,17 @@ end
 
 function DecorateStoreModel:getBundleSubGoods(goodId)
 	local goodList = DecorateStoreConfig.instance:getBundleGoodsIdList(goodId)
+
+	table.sort(goodList, function(a, b)
+		local aGoodConfig = StoreConfig.instance:getGoodsConfig(a.id)
+		local bGoodConfig = StoreConfig.instance:getGoodsConfig(b.id)
+
+		if aGoodConfig.order ~= bGoodConfig.order then
+			return aGoodConfig.order < bGoodConfig.order
+		else
+			return a.id < b.id
+		end
+	end)
 
 	return goodList
 end
@@ -279,8 +296,37 @@ function DecorateStoreModel:getGoodItemLimitTime(goodsId)
 	return 0
 end
 
+function DecorateStoreModel:isDecorateGoodItemOwned(goodId)
+	local itemHas = self:isDecorateGoodItemHas(goodId)
+
+	if itemHas then
+		local decorateConfig = DecorateStoreConfig.instance:getDecorateConfig(goodId)
+		local isBundleGood = decorateConfig.bundleType > 0
+
+		if isBundleGood then
+			local subGoods = DecorateStoreModel.instance:getBundleSubGoods(goodId)
+
+			if subGoods then
+				for _, subGood in ipairs(subGoods) do
+					local subHas = DecorateStoreModel.instance:isDecorateGoodItemHas(subGood.id)
+
+					if not subHas then
+						return false
+					end
+				end
+			end
+
+			return true
+		else
+			return true
+		end
+	else
+		return false
+	end
+end
+
 function DecorateStoreModel:isDecorateGoodItemHas(goodId)
-	local v3a4PackageGoodsIds = DecorateStoreModel.instance:getV3a4PackageStoreGoodsIds()
+	local v3a4PackageGoodsIds = self:getV3a4PackageStoreGoodsIds()
 
 	if v3a4PackageGoodsIds and goodId == v3a4PackageGoodsIds[1] then
 		local isCanBuy = self:isCanBuySceneUIPackage()
@@ -308,6 +354,24 @@ function DecorateStoreModel:isDecorateGoodItemHas(goodId)
 		end
 
 		return true
+	end
+
+	if goodsCo.bundleType > 0 then
+		return not DecorateModel.instance:isCanBuyGoods(goodId)
+	end
+
+	if goodsCo.fatherGoods > 0 then
+		local curItemType = DecorateStoreModel.getItemTypeByGoodId(goodsCo.id)
+
+		if curItemType == DecorateStoreEnum.DecorateItemType.Hero then
+			return false
+		end
+
+		local fatherGoodsCo = DecorateStoreConfig.instance:getDecorateConfig(goodsCo.fatherGoods)
+
+		if fatherGoodsCo.bundleType > 0 then
+			return not DecorateModel.instance:isCanBuyGoods(goodId)
+		end
 	end
 
 	return self:_isDecorateGoodItemHas(goodId)

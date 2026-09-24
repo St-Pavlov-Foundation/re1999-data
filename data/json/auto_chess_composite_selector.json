@@ -17,7 +17,7 @@
   },
   {
     "id": 20004,
-    "param": "BaseSelectorId#20011|RaceTag#Forest|ExcludeSelf#1|Nearest"
+    "param": "BaseSelectorId#20011|RaceTag#Forest|ExcludeSelf#1|All"
   },
   {
     "id": 20008,
@@ -29,7 +29,7 @@
   },
   {
     "id": 20010,
-    "param": "RandomBranch#20008#20009"
+    "param": "RandomBranch#20008#20015#20016#20019#20020"
   },
   {
     "id": 20002,
@@ -46,5 +46,33 @@
   {
     "id": 20014,
     "param": "BaseSelectorId#103|RaceTag#Forest|All"
+  },
+  {
+    "id": 20015,
+    "param": "BaseSelectorId#20011|RaceTag#Machine|ExcludeSelf#1|Nearest"
+  },
+  {
+    "id": 20016,
+    "param": "BaseSelectorId#20011|RaceTag#Machine|ExcludeSelf#1|Nearest"
+  },
+  {
+    "id": 20017,
+    "param": "BaseSelectorId#20013|RaceTag#Machine|ExcludeSelf#1|All"
+  },
+  {
+    "id": 20018,
+    "param": "BaseSelectorId#20013|RaceTag#Machine|ExcludeSelf#1|All"
+  },
+  {
+    "id": 20019,
+    "param": "BaseSelectorId#103|ExcludeSelf#1|All"
+  },
+  {
+    "id": 20020,
+    "param": "BaseSelectorId#103|ExcludeSelf#1|All"
+  },
+  {
+    "id": 20021,
+    "param": "RandomBranch#20009#20017#20018#20019#20020"
   }
 ]

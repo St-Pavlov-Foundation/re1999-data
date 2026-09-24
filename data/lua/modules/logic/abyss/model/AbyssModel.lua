@@ -35,6 +35,8 @@ end
 
 function AbyssModel:setCurStageId(stageId)
 	self._curStage = stageId
+
+	AbyssController.instance:dispatchEvent(AbyssEvent.OnCurStageChange)
 end
 
 function AbyssModel:getCurStageId()
@@ -105,7 +107,9 @@ function AbyssModel:getStageInfoMo(actId, stageId)
 end
 
 function AbyssModel:getIsAbyssAllow()
-	return true
+	local stageInfo = AbyssModel.instance:getCurStageMo()
+
+	return not stageInfo:isChallenged()
 end
 
 function AbyssModel:setIsAbyssAllow(value)
@@ -213,7 +217,9 @@ function AbyssModel:cleanAssistMO()
 
 	if infoMo then
 		for _, stageMo in ipairs(infoMo.stageInfoList) do
-			stageMo:clearAssistHero()
+			if not stageMo:isChallenged() then
+				stageMo:clearAssistHero()
+			end
 		end
 	end
 

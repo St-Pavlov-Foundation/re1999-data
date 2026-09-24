@@ -22,7 +22,7 @@
   },
   {
     "id": 4,
-    "name": "回复",
+    "name": "恢复力",
     "icon": "icon_att_212",
     "baseFieldName": "baseHeal",
     "addFieldName": "healAdd"

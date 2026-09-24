@@ -209,7 +209,9 @@ function HeroGroupHandler.getTowerPermanentTrialHeros(episodeId)
 end
 
 function HeroGroupHandler.getTowerBossTrialHeros(episodeId)
-	return ""
+	local bossHeroTrialStr = TowerConfig.instance:getTowerConstConfig(TowerEnum.ConstId.BossHeroTrialList)
+
+	return bossHeroTrialStr or ""
 end
 
 function HeroGroupHandler.getTowerDeepTrialHeros(episodeId)
@@ -516,7 +518,7 @@ function HeroGroupHandler.getAbyssAssistMo(episodeId, isEditor)
 
 	if isEditor then
 		assistMo = AbyssModel.instance:getEditorAssistMO()
-	elseif stageMo:haveAssist() then
+	elseif stageMo and stageMo:haveAssist() then
 		assistMo = AbyssModel.instance:getAssistMO()
 	end
 
@@ -562,9 +564,9 @@ end
 function HeroGroupHandler.setTowerDeepAssistMo(episodeId, assistMo, index, isEditor)
 	if isEditor then
 		TowerPermanentDeepModel.instance:setEditorAssistMo(assistMo)
+	else
+		TowerPermanentDeepModel.instance:setAssistMo(assistMo, index)
 	end
-
-	TowerPermanentDeepModel.instance:setAssistMo(assistMo, index)
 end
 
 function HeroGroupHandler.setTowerComposeAssistMo(episodeId, assistMo, index, isEditor, params)
@@ -578,9 +580,9 @@ function HeroGroupHandler.setTowerComposeAssistMo(episodeId, assistMo, index, is
 
 	if isEditor then
 		TowerComposeModel.instance:setEditorAssistMo(assistMo, params)
+	else
+		TowerComposeModel.instance:setAssistMo(assistMo, index, params)
 	end
-
-	TowerComposeModel.instance:setAssistMo(assistMo, index, params)
 end
 
 function HeroGroupHandler.setAbyssAssistMo(episodeId, assistMo, index, isEditor)
@@ -819,6 +821,31 @@ function HeroGroupHandler.setFightParamAssist(episodeId, paramData)
 	if func then
 		return func(episodeId, paramData)
 	end
+end
+
+HeroGroupHandler.replaceSingleGroupAssistFunc = {}
+
+function HeroGroupHandler.replaceSingleGroup(episodeId, paramData)
+	if not episodeId then
+		return
+	end
+
+	local episodeConfig = DungeonConfig.instance:getEpisodeCO(episodeId)
+
+	if not episodeConfig then
+		return
+	end
+
+	local episodeType = episodeConfig.type
+	local func = HeroGroupHandler.setFightParamAssistFunc[episodeType]
+
+	if func then
+		func(episodeId, paramData)
+	else
+		HeroGroupModel.instance:replaceSingleGroup()
+	end
+
+	HeroGroupModel.instance:saveCurGroupData()
 end
 
 return HeroGroupHandler

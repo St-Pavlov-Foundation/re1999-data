@@ -24,7 +24,9 @@ end
 
 function VersionActivity4_0EnterBgmView:initActHandle()
 	if not self.actHandleDict then
-		self.actHandleDict = {}
+		self.actHandleDict = {
+			[VersionActivity4_0Enum.ActivityId.AutoChess] = self._autochessBgmHandle
+		}
 	end
 end
 
@@ -103,6 +105,19 @@ end
 
 function VersionActivity4_0EnterBgmView:onClose()
 	TaskDispatcher.cancelTask(self._doModifyBgm, self)
+end
+
+function VersionActivity4_0EnterBgmView:_autochessBgmHandle(actId)
+	self.playingActId = actId
+
+	local bgmId = ActivityConfig.instance:getActivityEnterViewBgm(actId)
+
+	self.bgmId = bgmId
+
+	local bgmLayer = VersionActivityFixedHelper.getVersionActivityAudioBgmLayer()
+
+	AudioBgmManager.instance:setSwitchData(bgmLayer, "autochess", "prepare")
+	AudioBgmManager.instance:modifyBgmAudioId(bgmLayer, bgmId)
 end
 
 return VersionActivity4_0EnterBgmView

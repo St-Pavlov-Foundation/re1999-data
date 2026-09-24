@@ -14,11 +14,24 @@ function MatchGameSkillEffect_Destory:progressEffect_1001(effectCoData, targetIn
 	local canAddEnergy = effectCoData[2] and effectCoData[2] == 1
 	local canAddFever = effectCoData[3] and effectCoData[3] == 1
 
+	self.elementItemMap = {}
+
 	for index, targetInfo in ipairs(targetInfoList) do
 		local targetElementItemMap = targetInfo.targetData
 
-		self.sceneView:doSkillMatchAnim(targetElementItemMap, canAddFever, canAddEnergy, false)
+		for posXIndex, elementMap in pairs(targetElementItemMap) do
+			if type(elementMap) == "table" then
+				for posYIndex, elementItem in pairs(elementMap) do
+					if elementItem and elementItem.comp then
+						self.elementItemMap[posXIndex] = self.elementItemMap[posXIndex] or {}
+						self.elementItemMap[posXIndex][posYIndex] = elementItem
+					end
+				end
+			end
+		end
 	end
+
+	self.sceneView:doSkillMatchAnim(self.elementItemMap, canAddFever, canAddEnergy, false, skillData)
 end
 
 return MatchGameSkillEffect_Destory

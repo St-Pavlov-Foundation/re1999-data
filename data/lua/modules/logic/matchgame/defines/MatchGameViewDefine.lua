@@ -21,6 +21,7 @@ function MatchGameViewDefine.init(module_views)
 		},
 		otherRes = {
 			"modules/matchgame/ui/viewres/matchgame/skill/matchgame_item_effect.prefab",
+			"ui/materials/dynamic/outlinesprite_lw_ui_doubleline_inside.mat",
 			Clean = "modules/matchgame/ui/viewres/matchgame/skill/matchgame_hero_cleanse.prefab",
 			NormalDamage = "modules/matchgame/ui/viewres/matchgame/skill/matchgame_hero_bomb_light.prefab",
 			HeavyDamage = "modules/matchgame/ui/viewres/matchgame/skill/matchgame_hero_bomb_heavy.prefab",
@@ -32,6 +33,7 @@ function MatchGameViewDefine.init(module_views)
 	module_views.MatchGameFightQuitTipView = {
 		destroy = 0,
 		container = "MatchGameFightQuitTipViewContainer",
+		bgBlur = 1,
 		mainRes = "modules/matchgame/ui/viewres/matchgame/matchgamefightquittipview.prefab",
 		layer = "POPUP_TOP",
 		viewType = ViewType.Normal,
@@ -170,7 +172,10 @@ function MatchGameViewDefine.init(module_views)
 		mainRes = "modules/matchgame/ui/viewres/matchgame/matchgamememberinfoview.prefab",
 		layer = "POPUP_TOP",
 		viewType = ViewType.Normal,
-		anim = ViewAnim.Default
+		anim = ViewAnim.Default,
+		otherRes = {
+			[1] = "ui/materials/dynamic/outlinesprite_lw_ui_doubleline_inside.mat"
+		}
 	}
 	module_views.MatchGameHeroGroupView = {
 		destroy = 0,
@@ -214,7 +219,34 @@ function MatchGameViewDefine.init(module_views)
 		bgBlur = 1,
 		mainRes = "modules/matchgame/ui/viewres/matchgame/matchgameitemtipview.prefab",
 		layer = "POPUP_TOP",
-		viewType = ViewType.Modal
+		viewType = ViewType.Modal,
+		anim = ViewAnim.Default
+	}
+	module_views.MatchGameCareerTipView = {
+		destroy = 0,
+		container = "MatchGameCareerTipViewContainer",
+		bgBlur = 2,
+		mainRes = "modules/matchgame/ui/viewres/matchgame/matchgamecareertipview.prefab",
+		layer = "POPUP_TOP",
+		viewType = ViewType.Normal,
+		anim = ViewAnim.Default
+	}
+	module_views.MatchGameTalentTipView = {
+		destroy = 0,
+		container = "MatchGameTalentTipViewContainer",
+		mainRes = "modules/matchgame/ui/viewres/matchgame/matchgametalenttipview.prefab",
+		layer = "POPUP_TOP",
+		viewType = ViewType.Normal,
+		anim = ViewAnim.Default
+	}
+	module_views.MatchGameCharacterGainView = {
+		destroy = 0,
+		container = "MatchGameCharacterGainViewContainer",
+		bgBlur = 1,
+		mainRes = "modules/matchgame/ui/viewres/matchgame/matchgamecharactergainview.prefab",
+		layer = "POPUP_TOP",
+		viewType = ViewType.Modal,
+		anim = ViewAnim.Default
 	}
 end
 

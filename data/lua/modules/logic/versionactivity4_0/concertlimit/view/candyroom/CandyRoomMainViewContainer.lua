@@ -18,13 +18,21 @@ function CandyRoomMainViewContainer:buildTabViews(tabContainerId)
 		self._navigateButtonView = NavigateButtonsView.New({
 			true,
 			true,
-			false
+			true
 		})
+
+		self._navigateButtonView:setOverrideHelp(self._onHelpClick, self)
 
 		return {
 			self._navigateButtonView
 		}
 	end
+end
+
+function CandyRoomMainViewContainer:_onHelpClick()
+	local desc = CommonConfig.instance:getConstStr(ConstEnum.ConstEnum.V4a0_CandyRoomTipDesc)
+
+	HelpController.instance:openStoreTipView(desc)
 end
 
 return CandyRoomMainViewContainer

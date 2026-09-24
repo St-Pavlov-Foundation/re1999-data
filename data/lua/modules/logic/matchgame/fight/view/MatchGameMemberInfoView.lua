@@ -10,11 +10,13 @@ function MatchGameMemberInfoView:onInitView()
 	self._gohero = gohelper.findChild(self.viewGO, "fightinfocontainer/#go_chess/#go_hero")
 	self._goheroMesh = gohelper.findChild(self.viewGO, "fightinfocontainer/#go_chess/#go_hero/go_hero/#go_heroMesh")
 	self._simagehero = gohelper.findChildSingleImage(self.viewGO, "fightinfocontainer/#go_chess/#go_hero/go_hero/#simage_hero")
+	self._imagehero = gohelper.findChildImage(self.viewGO, "fightinfocontainer/#go_chess/#go_hero/go_hero/#simage_hero")
 	self._txtheroHp = gohelper.findChildText(self.viewGO, "fightinfocontainer/#go_chess/#go_hero/go_hp/#txt_heroHp")
 	self._imagehp = gohelper.findChildImage(self.viewGO, "fightinfocontainer/#go_chess/#go_hero/go_hp/#image_hp")
 	self._goenemy = gohelper.findChild(self.viewGO, "fightinfocontainer/#go_chess/#go_enemy")
 	self._goenemyMesh = gohelper.findChild(self.viewGO, "fightinfocontainer/#go_chess/#go_enemy/go_enemy/#go_enemyMesh")
 	self._simageenemy = gohelper.findChildSingleImage(self.viewGO, "fightinfocontainer/#go_chess/#go_enemy/go_enemy/#simage_enemy")
+	self._imageenemy = gohelper.findChildImage(self.viewGO, "fightinfocontainer/#go_chess/#go_enemy/go_enemy/#simage_enemy")
 	self._txtenemyHp = gohelper.findChildText(self.viewGO, "fightinfocontainer/#go_chess/#go_enemy/go_hp/#txt_enemyHp")
 	self._imageenemyHp = gohelper.findChildImage(self.viewGO, "fightinfocontainer/#go_chess/#go_enemy/go_hp/#image_enemyHp")
 	self._imageenemyCareer = gohelper.findChildImage(self.viewGO, "fightinfocontainer/#go_chess/#go_enemy/go_hp/#image_enemyCareer")
@@ -119,6 +121,11 @@ function MatchGameMemberInfoView:onOpen()
 	self.curMemberIndex = self.viewParam and self.viewParam.curMemberIndex or 1
 	self.matchLevelConfig = MatchGameConfig.instance:getLevelConfig(self.matchLevelId)
 
+	local roleMaterial = self.viewContainer:getRes(self.viewContainer:getSetting().otherRes[1])
+
+	self.heroMat = UnityEngine.GameObject.Instantiate(roleMaterial)
+	self.enemyMat = UnityEngine.GameObject.Instantiate(roleMaterial)
+
 	self:refreshMemberList()
 	self:refreshUI()
 	gohelper.setActive(self._goswitch, self.isInFight)
@@ -165,7 +172,7 @@ function MatchGameMemberInfoView:refreshEnemyMemberList()
 		local careerBgColor = MatchGameFightEnum.CareerColor[monsterConfig.career]
 
 		SLFramework.UGUI.GuiHelper.SetColor(memberItem.enemyItemUI.imageCareerBg, careerBgColor)
-		memberItem.enemyItemUI.simageIcon:LoadImage(ResUrl.getHeadIconSmall(monsterConfig.icon))
+		memberItem.enemyItemUI.simageIcon:LoadImage(ResUrl.monsterHeadIcon(monsterConfig.icon))
 	end
 
 	for index = #monsterIdList + 1, #self.memberItemList do
@@ -276,7 +283,10 @@ function MatchGameMemberInfoView:refreshMemberInfo()
 			self._imageenemyHp.fillAmount = self.fightData.enemyInfoMo.hp / self.fightData.enemyInfoMo.maxHp
 
 			self._simageenemy:LoadImage(self.fightData.enemyInfoMo.enemyCoData.config.image, self.setEnemyImageSize, self)
-			self.enemyMeshComp:refreshMesh(self.fightData.enemyInfoMo.enemyCoData.config.mesh, true)
+
+			self._imageenemy.material = self.enemyMat
+
+			self.enemyMeshComp:refreshMesh(self.fightData.enemyInfoMo.enemyCoData.config, true)
 
 			self._txtname.text = self.fightData.enemyInfoMo.name
 
@@ -293,11 +303,12 @@ function MatchGameMemberInfoView:refreshMemberInfo()
 			end
 
 			self._simageenemy:LoadImage(memberItem.monterConfig.image, self.setEnemyImageSize, self)
-			self.enemyMeshComp:refreshMesh(memberItem.monterConfig.mesh, true)
 
-			local skillTemplateConfig = MatchGameFightConfig.instance:getMonsterSkillTemplateConfig(memberItem.monterConfig.skillTemplate)
+			self._imageenemy.material = self.enemyMat
 
-			self._txtname.text = skillTemplateConfig.name
+			self.enemyMeshComp:refreshMesh(memberItem.monterConfig, true)
+
+			self._txtname.text = memberItem.monterConfig.name
 
 			UISpriteSetMgr.instance:setMatchGameSprite(self._imagecareer, "icon_career" .. memberItem.monterConfig.career)
 			UISpriteSetMgr.instance:setMatchGameSprite(self._imageenemyCareer, "icon_career" .. memberItem.monterConfig.career)
@@ -317,7 +328,10 @@ function MatchGameMemberInfoView:refreshMemberInfo()
 		self._txtname.text = heroFightMo.config.name
 
 		self._simagehero:LoadImage(heroFightMo.config.image, self.setHeroImageSize, self)
-		self.heroMeshComp:refreshMesh(heroFightMo.config.mesh, false)
+
+		self._imagehero.material = self.heroMat
+
+		self.heroMeshComp:refreshMesh(heroFightMo.config, false)
 		UISpriteSetMgr.instance:setMatchGameSprite(self._imagecareer, "icon_career" .. heroFightMo.career)
 
 		self._txtfeverNum.text = string.format("%s/%s", self.fightData.curFeverNum, self.fightData.maxFeverNum)
@@ -412,13 +426,16 @@ function MatchGameMemberInfoView:refreshSkillInfoUI(skillDataList)
 			skillItem.goTagList = gohelper.findChild(skillItem.go, "go_TagList")
 			skillItem.goTagItem = gohelper.findChild(skillItem.go, "go_TagList/go_TagItem")
 			skillItem.txtDesc = gohelper.findChildText(skillItem.go, "txt_Desc")
+
+			SkillHelper.addHyperLinkClick(skillItem.txtDesc)
+
 			self.skillItemList[index] = skillItem
 		end
 
 		gohelper.setActive(skillItem.go, true)
 
 		skillItem.txtName.text = skillData.skillConfig.name
-		skillItem.txtDesc.text = skillData.skillConfig.desc
+		skillItem.txtDesc.text = SkillHelper.buildDesc(skillData.skillConfig.desc)
 
 		if self.curMemberTag == MatchGameFightEnum.MemberInfoTag.Enemy then
 			gohelper.setActive(skillItem.goTagList, false)
@@ -466,6 +483,14 @@ function MatchGameMemberInfoView:onDestroyView()
 
 	self._simageenemy:UnLoadImage()
 	self._simagehero:UnLoadImage()
+
+	if self.heroMat then
+		UnityEngine.Object.Destroy(self.heroMat)
+	end
+
+	if self.enemyMat then
+		UnityEngine.Object.Destroy(self.enemyMat)
+	end
 end
 
 return MatchGameMemberInfoView

@@ -8,5 +8,6 @@ local _get = GameUtil.getUniqueTb()
 AssistEvent.UpdateBadgeInfo = _get()
 AssistEvent.UpdateWearBadges = _get()
 AssistEvent.CloseAddFriendView = _get()
+AssistEvent.UpdateNewTag = _get()
 
 return AssistEvent

@@ -10,6 +10,7 @@ end
 
 function ActFlipModel:reInit()
 	self._cardInfos = {}
+	self._curCardIndex = nil
 end
 
 function ActFlipModel:setCardInfos(infos)
@@ -202,21 +203,17 @@ end
 
 function ActFlipModel:setCurCardIndex(page)
 	self._curCardIndex = page
+
+	PlayerPrefsHelper.setNumber(PlayerModel.instance:getPlayerPrefsKey(PlayerPrefsKey.ActFlipCardIndex), self._curCardIndex)
 end
 
 function ActFlipModel:getCurCardIndex()
+	local actCos = ActFlipConfig.instance:getActCos()
+
 	if not self._curCardIndex then
-		local actCos = ActFlipConfig.instance:getActCos()
+		self._curCardIndex = PlayerPrefsHelper.getNumber(PlayerModel.instance:getPlayerPrefsKey(PlayerPrefsKey.ActFlipCardIndex), 1)
 
-		for _, actCo in ipairs(actCos) do
-			if not self:isCardRewardAllGet(actCo.cardId) then
-				self._curCardIndex = actCo.cardId
-
-				return self._curCardIndex
-			end
-		end
-
-		return actCos[#actCos].cardId
+		return self._curCardIndex
 	end
 
 	return self._curCardIndex

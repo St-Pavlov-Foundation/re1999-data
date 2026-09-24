@@ -68,6 +68,13 @@ end
 function PickAssistView:_btnconfirmOnClick()
 	local episodeId = self.viewParam and self.viewParam.episodeId
 	local selectedMO = PickAssistListModel.instance:getSelectedMO()
+
+	if not selectedMO then
+		GameFacade.showToast(ToastEnum.AssistNeedSelect)
+
+		return
+	end
+
 	local isBan, toastId = HeroGroupHandler.checkAssistIsBan(episodeId, selectedMO.heroId)
 
 	if isBan then

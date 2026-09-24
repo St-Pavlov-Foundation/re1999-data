@@ -17,21 +17,8 @@ function MatchGameBuffEffect_FeverCost:progressBuff_110(buffEffectData, targetIn
 		return
 	end
 
-	local offsetTime = buffEffectData[2] or 0
-
-	gameInfoMo.maxFeverNum = Mathf.Max(0, gameInfoMo.maxFeverNum + offsetTime)
-
 	MatchGameSkillBuffHandler.instance:attachBuffToTarget(gameInfoMo, skillBuffMo)
-	self.sceneView:refreshFeverUI()
-end
-
-function MatchGameBuffEffect_FeverCost:removeBuff_110(buffEffectData, targetObj)
-	local gameInfoMo = self.sceneView:getGameInfoMo()
-	local gameInfoData = MatchGameFightModel.instance:getGameInfoData()
-
-	gameInfoMo.maxFeverNum = gameInfoData.gameConfig.feverCost
-
-	self.sceneView:refreshFeverUI()
+	self:refreshFeverCost(gameInfoMo)
 end
 
 function MatchGameBuffEffect_FeverCost:progressBuff_111(buffEffectData, targetInfoList, skillData, skillBuffMo)
@@ -41,21 +28,34 @@ function MatchGameBuffEffect_FeverCost:progressBuff_111(buffEffectData, targetIn
 		return
 	end
 
-	local offsetTime = buffEffectData[2] or 0
-
-	gameInfoMo.maxFeverNum = Mathf.Max(0, gameInfoMo.maxFeverNum + offsetTime)
-
 	MatchGameSkillBuffHandler.instance:attachBuffToTarget(gameInfoMo, skillBuffMo)
+	self:refreshFeverCost(gameInfoMo)
+end
+
+function MatchGameBuffEffect_FeverCost:refreshFeverCost(targetObj, removeSkillBuffMo)
+	local removeBuffUid = removeSkillBuffMo and removeSkillBuffMo:getBuffUid()
+	local gameInfoData = MatchGameFightModel.instance:getGameInfoData()
+	local maxFeverNum = gameInfoData.gameConfig.feverCost
+
+	for buffUid, skillBuffMo in pairs(targetObj.skillBuffMoMap or {}) do
+		if buffUid ~= removeBuffUid and (skillBuffMo.buffEffectId == 110 or skillBuffMo.buffEffectId == 111) then
+			local buffEffectData = string.splitToNumber(skillBuffMo.buffConfig.buffEffect, "#")
+
+			maxFeverNum = maxFeverNum + (buffEffectData[2] or 0)
+		end
+	end
+
+	targetObj.maxFeverNum = Mathf.Max(0, maxFeverNum)
+
 	self.sceneView:refreshFeverUI()
 end
 
-function MatchGameBuffEffect_FeverCost:removeBuff_111(buffEffectData, targetObj)
-	local gameInfoMo = self.sceneView:getGameInfoMo()
-	local gameInfoData = MatchGameFightModel.instance:getGameInfoData()
+function MatchGameBuffEffect_FeverCost:removeBuff_110(buffEffectData, targetObj, skillBuffMo)
+	self:refreshFeverCost(targetObj, skillBuffMo)
+end
 
-	gameInfoMo.maxFeverNum = gameInfoData.gameConfig.feverCost
-
-	self.sceneView:refreshFeverUI()
+function MatchGameBuffEffect_FeverCost:removeBuff_111(buffEffectData, targetObj, skillBuffMo)
+	self:refreshFeverCost(targetObj, skillBuffMo)
 end
 
 return MatchGameBuffEffect_FeverCost

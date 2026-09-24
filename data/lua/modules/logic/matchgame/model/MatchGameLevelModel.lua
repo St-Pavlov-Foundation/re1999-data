@@ -76,9 +76,8 @@ end
 
 function MatchGameLevelModel:_initEpisodeInfoList()
 	local maxUnlockEpisode = self:getMaxUnlockEpisodeId()
-	local maxUnlockEpisodeIndex = self:getEpisodeIndex(maxUnlockEpisode)
 
-	self:setCurEpisode(maxUnlockEpisodeIndex, maxUnlockEpisode)
+	self:setCurEpisode(maxUnlockEpisode)
 end
 
 function MatchGameLevelModel:switchChapter(chapterId, showToast)
@@ -95,9 +94,11 @@ function MatchGameLevelModel:isCanSwitchChapter(chapterId, showToast)
 		return
 	end
 
-	if not MatchGameHelper.isChapterUnlock(chapterId) then
-		if showToast then
-			GameFacade.showToast(ToastEnum.DungeonIsLockNormal)
+	local unlock, toastId, toastParam = MatchGameHelper.isChapterUnlock(chapterId)
+
+	if not unlock then
+		if showToast and toastId then
+			GameFacade.showToast(toastId, toastParam)
 		end
 
 		return
@@ -111,13 +112,11 @@ function MatchGameLevelModel:switchEpisode(episodeId)
 		return
 	end
 
-	local index = self:getEpisodeIndex(episodeId)
-
-	self:setCurEpisode(index, episodeId)
+	self:setCurEpisode(episodeId)
 end
 
-function MatchGameLevelModel:setCurEpisode(index, episodeId)
-	self._curEpisodeIndex = index
+function MatchGameLevelModel:setCurEpisode(episodeId)
+	self._curEpisodeIndex = self:getEpisodeIndex(episodeId)
 	self._curEpisodeId = episodeId or self._curEpisodeId
 
 	MatchGameController.instance:dispatchEvent(MatchGameEvent.OnClickSelectEpisode, self._curEpisodeId)

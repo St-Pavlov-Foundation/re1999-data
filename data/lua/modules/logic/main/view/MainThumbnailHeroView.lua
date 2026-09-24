@@ -368,6 +368,12 @@ function MainThumbnailHeroView:_playGreetingVoices()
 	end
 
 	if not config then
+		local isPastSkin = CharacterPastModel.instance:isPastSkin(self._heroId, self._skinId)
+
+		if isPastSkin then
+			return
+		end
+
 		logError("no greeting voice")
 
 		return

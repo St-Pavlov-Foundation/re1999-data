@@ -61,7 +61,7 @@ function SpLilyaLevelView:_onEpisodeFinished()
 
 	local newEpisode = mo:getNewFinishEpisode()
 
-	if newEpisode then
+	if newEpisode and newEpisode ~= 0 then
 		TaskDispatcher.runDelay(self._playStoryFinishAnim, self, 1)
 
 		local maxUnlockEpisode = Activity220Model.instance:getMaxUnlockEpisodeId(self.actId)
@@ -126,6 +126,7 @@ function SpLilyaLevelView:_unlockStory()
 
 	item:refreshUI()
 	item:playUnlock()
+	AudioMgr.instance:trigger(AudioEnum4_0.SpLilya.play_ui_yingmen_hnj_level)
 	self:_focusStoryItem(self._finishEpisodeIndex + 1, true)
 	TaskDispatcher.cancelTask(self._unlockLvEnd, self)
 	TaskDispatcher.runDelay(self._unlockLvEnd, self, 1.5)
@@ -187,6 +188,7 @@ function SpLilyaLevelView:onOpen()
 	TaskDispatcher.cancelTask(self._refreshLeftTime, self)
 	TaskDispatcher.runRepeat(self._refreshLeftTime, self, TimeUtil.OneMinuteSecond)
 	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_leimi_theft_open)
+	SpLilyaController.instance:checkLastFight()
 end
 
 function SpLilyaLevelView:_initLevelItems()

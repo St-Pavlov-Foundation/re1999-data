@@ -2783,11 +2783,6 @@ local module_cmd = {
 		"GetAct244InfoRequest",
 		"GetAct244InfoReply"
 	},
-	[31528] = {
-		"Activity244",
-		"Act244BuyHeroRequest",
-		"Act244BuyHeroReply"
-	},
 	[32608] = {
 		"Activity244",
 		"Act244UpgradeHeroRequest",

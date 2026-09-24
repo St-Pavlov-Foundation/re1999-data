@@ -27,6 +27,7 @@ function SpLilyaGameResultView:addEvents()
 	self._btnclose:AddClickListener(self._btncloseOnClick, self)
 	self._btnquitgame:AddClickListener(self._btnquitgameOnClick, self)
 	self._btnrestart:AddClickListener(self._btnrestartOnClick, self)
+	NavigateMgr.instance:addEscape(ViewName.SpLilyaGameResultView, self._btncloseOnClick, self)
 end
 
 function SpLilyaGameResultView:removeEvents()
@@ -46,7 +47,7 @@ function SpLilyaGameResultView:_btncloseOnClick()
 		GameSceneMgr.instance:dispatchEvent(SceneEventName.SetLoadingTypeOnce, GameLoadingState.LoadingBlackView2)
 		GameSceneMgr.instance:dispatchEvent(SceneEventName.OpenLoading, SceneType.Main)
 		SpLilyaController.instance:finishEpisodeLevel(episodeId)
-		GameSceneMgr.instance:dispatchEvent(SceneEventName.WaitViewOpenCloseLoading, OnOpenViewFinish)
+		GameSceneMgr.instance:dispatchEvent(SceneEventName.WaitViewOpenCloseLoading, ViewName.StoryFrontView)
 		self:addEventCb(ViewMgr.instance, ViewEvent.OnOpenViewFinish, self._onOpenViewFinish, self)
 	else
 		self:closeThis()
@@ -90,6 +91,11 @@ function SpLilyaGameResultView:onOpen()
 	self._animator:Play("open", 0, 0)
 	self:onUpdateParam()
 	self:refreshUI()
+
+	local gameMo = SpLilyaGameModel.instance:getGameMO()
+	local isSucc = gameMo and gameMo.gameResult == SpLilyaEnum.GameResult.Success
+
+	AudioMgr.instance:trigger(isSucc and AudioEnum4_0.SpLilya.play_ui_yuanzheng_mrs_win or AudioEnum4_0.SpLilya.play_ui_yuanzheng_mrs_fail)
 end
 
 function SpLilyaGameResultView:refreshUI()

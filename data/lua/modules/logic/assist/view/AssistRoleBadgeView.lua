@@ -32,6 +32,7 @@ function AssistRoleBadgeView:_btnLeftOnClick()
 		self.curIndex = self.curIndex - 1
 
 		self.anim:Play("switch", 0, 0)
+		ShaderKeyWordMgr.enableKeyWordAutoDisable(ShaderKeyWordMgr.CLIPALPHA, 0.5)
 		TaskDispatcher.runDelay(self.delaySwitch, self, 0.16)
 	end
 end
@@ -41,11 +42,14 @@ function AssistRoleBadgeView:_btnRightOnClick()
 		self.curIndex = self.curIndex + 1
 
 		self.anim:Play("switch", 0, 0)
+		ShaderKeyWordMgr.enableKeyWordAutoDisable(ShaderKeyWordMgr.CLIPALPHA, 0.5)
 		TaskDispatcher.runDelay(self.delaySwitch, self, 0.16)
 	end
 end
 
 function AssistRoleBadgeView:delaySwitch()
+	self:clearNewTag()
+
 	self.curMo = CharacterBackpackCardListModel.instance:getByIndex(self.curIndex)
 
 	self:refreshBntStatus()
@@ -66,10 +70,12 @@ function AssistRoleBadgeView:_editableInitView()
 	self.showComp = MonoHelper.addNoUpdateLuaComOnceToGo(goHero, ShowCharacterCardItem)
 
 	self.showComp:setShowParam(true, true)
+	self.showComp:setActiveAnimator(false)
 end
 
 function AssistRoleBadgeView:onOpen()
 	self:addEventCb(AssistController.instance, AssistEvent.UpdateBadgeInfo, self.onBadgeInfoUpdate, self)
+	self:addEventCb(AssistController.instance, AssistEvent.UpdateWearBadges, self.refreshWear, self)
 
 	self.curMo = self.viewParam
 	self.curIndex = CharacterBackpackCardListModel.instance:getIndex(self.curMo)
@@ -80,6 +86,7 @@ end
 
 function AssistRoleBadgeView:onDestroyView()
 	TaskDispatcher.cancelTask(self.delaySwitch, self)
+	self:clearNewTag()
 end
 
 function AssistRoleBadgeView:refreshBntStatus()
@@ -108,20 +115,27 @@ function AssistRoleBadgeView:refreshInfo()
 		gohelper.setActive(self.badgeItemList[i].go, false)
 	end
 
-	local wearCnt = 0
 	local roleBadgeInfoMo = RoleBadgeModel.instance:getBadgeInfo()
 
-	if roleBadgeInfoMo then
-		local recordMo = roleBadgeInfoMo:getRecordMo(self.curMo.uid)
+	self.recordMo = roleBadgeInfoMo and roleBadgeInfoMo:getRecordMo(self.curMo.uid)
 
-		wearCnt = recordMo and recordMo:getWearCnt() or 0
-	end
+	self:refreshWear()
+end
+
+function AssistRoleBadgeView:refreshWear()
+	local wearCnt = self.recordMo and self.recordMo:getWearCnt() or 0
 
 	self._txtWearCnt.text = wearCnt
 end
 
 function AssistRoleBadgeView:onBadgeInfoUpdate()
 	self:refreshInfo()
+end
+
+function AssistRoleBadgeView:clearNewTag()
+	if self.recordMo then
+		self.recordMo:clearNewTag()
+	end
 end
 
 return AssistRoleBadgeView

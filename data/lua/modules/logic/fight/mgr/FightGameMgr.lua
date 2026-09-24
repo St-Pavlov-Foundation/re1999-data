@@ -147,7 +147,7 @@ function FightGameMgr:onReconnectSucc_def()
 end
 
 function FightGameMgr:onDestructor()
-	return
+	FightDataHelper.fieldMgr:clearSceneIdOfParam()
 end
 
 return FightGameMgr

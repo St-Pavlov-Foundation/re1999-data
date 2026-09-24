@@ -2,7 +2,7 @@
 
 module("modules.spine.special.BaseSpineSpecialEffect", package.seeall)
 
-local BaseSpineSpecialEffect = class("BaseSpineSpecialEffect", LuaCompBase)
+local BaseSpineSpecialEffect = class("BaseSpineSpecialEffect", BaseCommonSpecialEffect)
 
 function BaseSpineSpecialEffect:ctor(spine)
 	self:setSpine(spine)

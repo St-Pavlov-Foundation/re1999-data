@@ -10,9 +10,6 @@ local Activity244Module_pb = {}
 Activity244Module_pb.ACT244UPGRADEHEROREPLY_MSG = protobuf.Descriptor()
 Activity244Module_pb.ACT244UPGRADEHEROREPLYACTIVITYIDFIELD = protobuf.FieldDescriptor()
 Activity244Module_pb.ACT244UPGRADEHEROREPLYHEROFIELD = protobuf.FieldDescriptor()
-Activity244Module_pb.ACT244BUYHEROREQUEST_MSG = protobuf.Descriptor()
-Activity244Module_pb.ACT244BUYHEROREQUESTACTIVITYIDFIELD = protobuf.FieldDescriptor()
-Activity244Module_pb.ACT244BUYHEROREQUESTHEROIDFIELD = protobuf.FieldDescriptor()
 Activity244Module_pb.ACT244ACTIVETALENTREQUEST_MSG = protobuf.Descriptor()
 Activity244Module_pb.ACT244ACTIVETALENTREQUESTACTIVITYIDFIELD = protobuf.FieldDescriptor()
 Activity244Module_pb.ACT244ACTIVETALENTREQUESTTALENTIDFIELD = protobuf.FieldDescriptor()
@@ -35,9 +32,6 @@ Activity244Module_pb.ACT244EPISODENO_MSG = protobuf.Descriptor()
 Activity244Module_pb.ACT244EPISODENOEPISODEIDFIELD = protobuf.FieldDescriptor()
 Activity244Module_pb.ACT244EPISODENOSTARSFIELD = protobuf.FieldDescriptor()
 Activity244Module_pb.ACT244EPISODENOISPASSFIELD = protobuf.FieldDescriptor()
-Activity244Module_pb.ACT244BUYHEROREPLY_MSG = protobuf.Descriptor()
-Activity244Module_pb.ACT244BUYHEROREPLYACTIVITYIDFIELD = protobuf.FieldDescriptor()
-Activity244Module_pb.ACT244BUYHEROREPLYHEROFIELD = protobuf.FieldDescriptor()
 Activity244Module_pb.ACT244ACTIVETALENTREPLY_MSG = protobuf.Descriptor()
 Activity244Module_pb.ACT244ACTIVETALENTREPLYACTIVITYIDFIELD = protobuf.FieldDescriptor()
 Activity244Module_pb.ACT244ACTIVETALENTREPLYTALENTFIELD = protobuf.FieldDescriptor()
@@ -100,6 +94,7 @@ Activity244Module_pb.ACT244EPISODEPUSH_MSG = protobuf.Descriptor()
 Activity244Module_pb.ACT244EPISODEPUSHACTIVITYIDFIELD = protobuf.FieldDescriptor()
 Activity244Module_pb.ACT244EPISODEPUSHUPDATEEPISODESFIELD = protobuf.FieldDescriptor()
 Activity244Module_pb.ACT244EPISODEPUSHUPDATECHALLENGEFIELD = protobuf.FieldDescriptor()
+Activity244Module_pb.ACT244EPISODEPUSHUPDATEHEROSFIELD = protobuf.FieldDescriptor()
 Activity244Module_pb.ACT244CHALLENGEEPISODENO_MSG = protobuf.Descriptor()
 Activity244Module_pb.ACT244CHALLENGEEPISODENOEPISODEIDFIELD = protobuf.FieldDescriptor()
 Activity244Module_pb.ACT244CHALLENGEEPISODENOMAXSCOREFIELD = protobuf.FieldDescriptor()
@@ -144,34 +139,6 @@ Activity244Module_pb.ACT244UPGRADEHEROREPLY_MSG.fields = {
 }
 Activity244Module_pb.ACT244UPGRADEHEROREPLY_MSG.is_extendable = false
 Activity244Module_pb.ACT244UPGRADEHEROREPLY_MSG.extensions = {}
-Activity244Module_pb.ACT244BUYHEROREQUESTACTIVITYIDFIELD.name = "activityId"
-Activity244Module_pb.ACT244BUYHEROREQUESTACTIVITYIDFIELD.full_name = ".Act244BuyHeroRequest.activityId"
-Activity244Module_pb.ACT244BUYHEROREQUESTACTIVITYIDFIELD.number = 1
-Activity244Module_pb.ACT244BUYHEROREQUESTACTIVITYIDFIELD.index = 0
-Activity244Module_pb.ACT244BUYHEROREQUESTACTIVITYIDFIELD.label = 1
-Activity244Module_pb.ACT244BUYHEROREQUESTACTIVITYIDFIELD.has_default_value = false
-Activity244Module_pb.ACT244BUYHEROREQUESTACTIVITYIDFIELD.default_value = 0
-Activity244Module_pb.ACT244BUYHEROREQUESTACTIVITYIDFIELD.type = 5
-Activity244Module_pb.ACT244BUYHEROREQUESTACTIVITYIDFIELD.cpp_type = 1
-Activity244Module_pb.ACT244BUYHEROREQUESTHEROIDFIELD.name = "heroId"
-Activity244Module_pb.ACT244BUYHEROREQUESTHEROIDFIELD.full_name = ".Act244BuyHeroRequest.heroId"
-Activity244Module_pb.ACT244BUYHEROREQUESTHEROIDFIELD.number = 2
-Activity244Module_pb.ACT244BUYHEROREQUESTHEROIDFIELD.index = 1
-Activity244Module_pb.ACT244BUYHEROREQUESTHEROIDFIELD.label = 1
-Activity244Module_pb.ACT244BUYHEROREQUESTHEROIDFIELD.has_default_value = false
-Activity244Module_pb.ACT244BUYHEROREQUESTHEROIDFIELD.default_value = 0
-Activity244Module_pb.ACT244BUYHEROREQUESTHEROIDFIELD.type = 5
-Activity244Module_pb.ACT244BUYHEROREQUESTHEROIDFIELD.cpp_type = 1
-Activity244Module_pb.ACT244BUYHEROREQUEST_MSG.name = "Act244BuyHeroRequest"
-Activity244Module_pb.ACT244BUYHEROREQUEST_MSG.full_name = ".Act244BuyHeroRequest"
-Activity244Module_pb.ACT244BUYHEROREQUEST_MSG.nested_types = {}
-Activity244Module_pb.ACT244BUYHEROREQUEST_MSG.enum_types = {}
-Activity244Module_pb.ACT244BUYHEROREQUEST_MSG.fields = {
-	Activity244Module_pb.ACT244BUYHEROREQUESTACTIVITYIDFIELD,
-	Activity244Module_pb.ACT244BUYHEROREQUESTHEROIDFIELD
-}
-Activity244Module_pb.ACT244BUYHEROREQUEST_MSG.is_extendable = false
-Activity244Module_pb.ACT244BUYHEROREQUEST_MSG.extensions = {}
 Activity244Module_pb.ACT244ACTIVETALENTREQUESTACTIVITYIDFIELD.name = "activityId"
 Activity244Module_pb.ACT244ACTIVETALENTREQUESTACTIVITYIDFIELD.full_name = ".Act244ActiveTalentRequest.activityId"
 Activity244Module_pb.ACT244ACTIVETALENTREQUESTACTIVITYIDFIELD.number = 1
@@ -376,35 +343,6 @@ Activity244Module_pb.ACT244EPISODENO_MSG.fields = {
 }
 Activity244Module_pb.ACT244EPISODENO_MSG.is_extendable = false
 Activity244Module_pb.ACT244EPISODENO_MSG.extensions = {}
-Activity244Module_pb.ACT244BUYHEROREPLYACTIVITYIDFIELD.name = "activityId"
-Activity244Module_pb.ACT244BUYHEROREPLYACTIVITYIDFIELD.full_name = ".Act244BuyHeroReply.activityId"
-Activity244Module_pb.ACT244BUYHEROREPLYACTIVITYIDFIELD.number = 1
-Activity244Module_pb.ACT244BUYHEROREPLYACTIVITYIDFIELD.index = 0
-Activity244Module_pb.ACT244BUYHEROREPLYACTIVITYIDFIELD.label = 1
-Activity244Module_pb.ACT244BUYHEROREPLYACTIVITYIDFIELD.has_default_value = false
-Activity244Module_pb.ACT244BUYHEROREPLYACTIVITYIDFIELD.default_value = 0
-Activity244Module_pb.ACT244BUYHEROREPLYACTIVITYIDFIELD.type = 5
-Activity244Module_pb.ACT244BUYHEROREPLYACTIVITYIDFIELD.cpp_type = 1
-Activity244Module_pb.ACT244BUYHEROREPLYHEROFIELD.name = "hero"
-Activity244Module_pb.ACT244BUYHEROREPLYHEROFIELD.full_name = ".Act244BuyHeroReply.hero"
-Activity244Module_pb.ACT244BUYHEROREPLYHEROFIELD.number = 2
-Activity244Module_pb.ACT244BUYHEROREPLYHEROFIELD.index = 1
-Activity244Module_pb.ACT244BUYHEROREPLYHEROFIELD.label = 1
-Activity244Module_pb.ACT244BUYHEROREPLYHEROFIELD.has_default_value = false
-Activity244Module_pb.ACT244BUYHEROREPLYHEROFIELD.default_value = nil
-Activity244Module_pb.ACT244BUYHEROREPLYHEROFIELD.message_type = Activity244Module_pb.ACT244HERONO_MSG
-Activity244Module_pb.ACT244BUYHEROREPLYHEROFIELD.type = 11
-Activity244Module_pb.ACT244BUYHEROREPLYHEROFIELD.cpp_type = 10
-Activity244Module_pb.ACT244BUYHEROREPLY_MSG.name = "Act244BuyHeroReply"
-Activity244Module_pb.ACT244BUYHEROREPLY_MSG.full_name = ".Act244BuyHeroReply"
-Activity244Module_pb.ACT244BUYHEROREPLY_MSG.nested_types = {}
-Activity244Module_pb.ACT244BUYHEROREPLY_MSG.enum_types = {}
-Activity244Module_pb.ACT244BUYHEROREPLY_MSG.fields = {
-	Activity244Module_pb.ACT244BUYHEROREPLYACTIVITYIDFIELD,
-	Activity244Module_pb.ACT244BUYHEROREPLYHEROFIELD
-}
-Activity244Module_pb.ACT244BUYHEROREPLY_MSG.is_extendable = false
-Activity244Module_pb.ACT244BUYHEROREPLY_MSG.extensions = {}
 Activity244Module_pb.ACT244ACTIVETALENTREPLYACTIVITYIDFIELD.name = "activityId"
 Activity244Module_pb.ACT244ACTIVETALENTREPLYACTIVITYIDFIELD.full_name = ".Act244ActiveTalentReply.activityId"
 Activity244Module_pb.ACT244ACTIVETALENTREPLYACTIVITYIDFIELD.number = 1
@@ -995,6 +933,16 @@ Activity244Module_pb.ACT244EPISODEPUSHUPDATECHALLENGEFIELD.default_value = nil
 Activity244Module_pb.ACT244EPISODEPUSHUPDATECHALLENGEFIELD.message_type = Activity244Module_pb.ACT244CHALLENGENO_MSG
 Activity244Module_pb.ACT244EPISODEPUSHUPDATECHALLENGEFIELD.type = 11
 Activity244Module_pb.ACT244EPISODEPUSHUPDATECHALLENGEFIELD.cpp_type = 10
+Activity244Module_pb.ACT244EPISODEPUSHUPDATEHEROSFIELD.name = "updateHeros"
+Activity244Module_pb.ACT244EPISODEPUSHUPDATEHEROSFIELD.full_name = ".Act244EpisodePush.updateHeros"
+Activity244Module_pb.ACT244EPISODEPUSHUPDATEHEROSFIELD.number = 4
+Activity244Module_pb.ACT244EPISODEPUSHUPDATEHEROSFIELD.index = 3
+Activity244Module_pb.ACT244EPISODEPUSHUPDATEHEROSFIELD.label = 3
+Activity244Module_pb.ACT244EPISODEPUSHUPDATEHEROSFIELD.has_default_value = false
+Activity244Module_pb.ACT244EPISODEPUSHUPDATEHEROSFIELD.default_value = {}
+Activity244Module_pb.ACT244EPISODEPUSHUPDATEHEROSFIELD.message_type = Activity244Module_pb.ACT244HERONO_MSG
+Activity244Module_pb.ACT244EPISODEPUSHUPDATEHEROSFIELD.type = 11
+Activity244Module_pb.ACT244EPISODEPUSHUPDATEHEROSFIELD.cpp_type = 10
 Activity244Module_pb.ACT244EPISODEPUSH_MSG.name = "Act244EpisodePush"
 Activity244Module_pb.ACT244EPISODEPUSH_MSG.full_name = ".Act244EpisodePush"
 Activity244Module_pb.ACT244EPISODEPUSH_MSG.nested_types = {}
@@ -1002,7 +950,8 @@ Activity244Module_pb.ACT244EPISODEPUSH_MSG.enum_types = {}
 Activity244Module_pb.ACT244EPISODEPUSH_MSG.fields = {
 	Activity244Module_pb.ACT244EPISODEPUSHACTIVITYIDFIELD,
 	Activity244Module_pb.ACT244EPISODEPUSHUPDATEEPISODESFIELD,
-	Activity244Module_pb.ACT244EPISODEPUSHUPDATECHALLENGEFIELD
+	Activity244Module_pb.ACT244EPISODEPUSHUPDATECHALLENGEFIELD,
+	Activity244Module_pb.ACT244EPISODEPUSHUPDATEHEROSFIELD
 }
 Activity244Module_pb.ACT244EPISODEPUSH_MSG.is_extendable = false
 Activity244Module_pb.ACT244EPISODEPUSH_MSG.extensions = {}
@@ -1150,8 +1099,6 @@ Activity244Module_pb.ACT244RECEIVECHALLENGEBONUSREPLY_MSG.is_extendable = false
 Activity244Module_pb.ACT244RECEIVECHALLENGEBONUSREPLY_MSG.extensions = {}
 Activity244Module_pb.Act244ActiveTalentReply = protobuf.Message(Activity244Module_pb.ACT244ACTIVETALENTREPLY_MSG)
 Activity244Module_pb.Act244ActiveTalentRequest = protobuf.Message(Activity244Module_pb.ACT244ACTIVETALENTREQUEST_MSG)
-Activity244Module_pb.Act244BuyHeroReply = protobuf.Message(Activity244Module_pb.ACT244BUYHEROREPLY_MSG)
-Activity244Module_pb.Act244BuyHeroRequest = protobuf.Message(Activity244Module_pb.ACT244BUYHEROREQUEST_MSG)
 Activity244Module_pb.Act244ChallengeEpisodeNO = protobuf.Message(Activity244Module_pb.ACT244CHALLENGEEPISODENO_MSG)
 Activity244Module_pb.Act244ChallengeNO = protobuf.Message(Activity244Module_pb.ACT244CHALLENGENO_MSG)
 Activity244Module_pb.Act244EpisodeNO = protobuf.Message(Activity244Module_pb.ACT244EPISODENO_MSG)

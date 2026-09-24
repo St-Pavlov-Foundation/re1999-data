@@ -79,10 +79,10 @@ function SpLilyaGameSceneMgr:update(deltaTime)
 
 	sceneMo.elapsedTime = sceneMo.elapsedTime + deltaTime
 
+	self:updateMove(deltaTime)
 	self:updateDestroy()
 	self:updateBulletDestroy()
 	self:updateBulletDying(deltaTime)
-	self:updateMove(deltaTime)
 	self:updateBulletAim()
 	self:updateBulletMove(deltaTime)
 	self:updateBulletHit()
@@ -253,7 +253,7 @@ function SpLilyaGameSceneMgr:updateSpawn()
 	end
 
 	if gameMO and gameMO.curWave ~= oldWave then
-		self._controller:dispatchEvent(SpLilyaEvent.WaveUpdate, gameMO.curWave)
+		self._controller:dispatchEvent(SpLilyaEvent.WaveUpdate, gameMO.curWave + 1)
 	end
 end
 
@@ -348,7 +348,12 @@ function SpLilyaGameSceneMgr:_gainEnergy(energy)
 	end
 
 	local gameMO = SpLilyaGameModel.instance:getGameMO()
-	local playerMo = gameMO and gameMO.playerMo
+
+	if not gameMO or gameMO.isEnergy ~= SpLilyaEnum.UseEnergy.Use then
+		return
+	end
+
+	local playerMo = gameMO.playerMo
 
 	if not playerMo then
 		return
@@ -357,6 +362,7 @@ function SpLilyaGameSceneMgr:_gainEnergy(energy)
 	playerMo.curEnergy = math.min((playerMo.curEnergy or 0) + energy, playerMo.energyMax or math.huge)
 
 	self._controller:dispatchEvent(SpLilyaEvent.EnergyUpdate, playerMo.curEnergy, playerMo.energyMax)
+	logNormal("Energy fired : cur " .. tostring(playerMo.curEnergy) .. " / " .. tostring(energyMax))
 end
 
 function SpLilyaGameSceneMgr:destroyEnemy(mo)
@@ -401,11 +407,15 @@ function SpLilyaGameSceneMgr:updateBulletDestroy()
 
 	for _, mo in pairs(sceneMo.useBulletMoDic) do
 		if mo and not mo.dying then
-			if mo:isGrounded() then
+			if mo.type == SpLilyaEnum.BulletType.NoGravity then
+				if mo:isConsume() then
+					self:destroyBullet(mo, SpLilyaEnum.ExplodeReason.OutOfBounds)
+				end
+			elseif mo:isGrounded() then
 				self:_damageArea(mo, mo.posX, mo.posY, mo.explodeRadius, deadEnemyList)
-				self:explodeBullet(mo, "落地爆炸")
+				self:explodeBullet(mo, SpLilyaEnum.ExplodeReason.GroundExplode)
 			elseif mo:isConsume() then
-				self:destroyBullet(mo, "出界销毁")
+				self:destroyBullet(mo, SpLilyaEnum.ExplodeReason.OutOfBounds)
 			end
 		end
 	end
@@ -437,7 +447,7 @@ function SpLilyaGameSceneMgr:updateBulletDying(deltaTime)
 	end
 
 	for _, bulletMo in ipairs(expireList or {}) do
-		self:destroyBullet(bulletMo, "爆炸延迟到期")
+		self:destroyBullet(bulletMo, SpLilyaEnum.ExplodeReason.DyingExpire)
 	end
 end
 
@@ -456,17 +466,19 @@ function SpLilyaGameSceneMgr:_updatePendingAim(sceneMo)
 	local addedList, removedList
 	local checkInAim = self:_getPendingAimChecker()
 
-	for uid, enemyMo in pairs(aimMoDic) do
-		local valid = sceneMo.useMoDic[uid] ~= nil and enemyMo:isHittable()
+	if next(aimMoDic) ~= nil then
+		for uid, enemyMo in pairs(aimMoDic) do
+			local valid = sceneMo.useMoDic[uid] ~= nil and enemyMo:isHittable()
 
-		valid = valid and checkInAim ~= nil and checkInAim(enemyMo)
+			valid = valid and checkInAim ~= nil and checkInAim(enemyMo)
 
-		if not valid then
-			sceneMo:removeAimEnemy(enemyMo)
+			if not valid then
+				sceneMo:removeAimEnemy(enemyMo)
 
-			removedList = removedList or {}
+				removedList = removedList or {}
 
-			table.insert(removedList, enemyMo)
+				table.insert(removedList, enemyMo)
+			end
 		end
 	end
 
@@ -505,9 +517,44 @@ function SpLilyaGameSceneMgr:_getPendingAimChecker()
 		end
 
 		local radius = playerMo.bulletRadius or 0
+		local explodeRadius = SpLilyaGameController.instance:getShotExplodeRadius()
+		local firstCollisionPoint
 
-		return function(enemyMo)
-			return self:_isInParabolaAimRange(enemyMo, samples, radius)
+		for _, sample in ipairs(samples) do
+			for _, otherMo in pairs(self._sceneMo.useMoDic) do
+				if otherMo:isHittable() and self:_isCircleIntersectEnemy(otherMo, sample.x, sample.y, radius) then
+					firstCollisionPoint = sample
+
+					break
+				end
+			end
+
+			if firstCollisionPoint then
+				break
+			end
+		end
+
+		if firstCollisionPoint then
+			local colX, colY = firstCollisionPoint.x, firstCollisionPoint.y
+			local damageRadius = explodeRadius > 0 and explodeRadius or radius
+
+			return function(enemyMo)
+				return self:_isCircleIntersectEnemy(enemyMo, colX, colY, damageRadius)
+			end
+		else
+			local landX, landY = self:_getPendingLandPos(playerMo)
+
+			return function(enemyMo)
+				if self:_isInParabolaAimRange(enemyMo, samples, radius) then
+					return true
+				end
+
+				if explodeRadius > 0 and landX then
+					return self:_isCircleIntersectEnemy(enemyMo, landX, landY, explodeRadius)
+				end
+
+				return false
+			end
 		end
 	end
 
@@ -564,13 +611,14 @@ function SpLilyaGameSceneMgr:_updateBulletTrack(sceneMo)
 			local target = bulletMo.targetUid and sceneMo.useMoDic[bulletMo.targetUid]
 
 			if not target or not target:isHittable() then
-				local landX, landY = bulletMo:getLandPos()
+				local samples = self:_getBulletTrajectorySamples(bulletMo)
+				local radius = bulletMo.radius or 0
 				local nearestMo, nearestDistSq
 
 				for _, enemyMo in pairs(sceneMo.useMoDic) do
-					if enemyMo and enemyMo:isHittable() and self:_isInAimRange(enemyMo, landX, landY, bulletMo.explodeRadius) then
-						local dx = enemyMo.posX - landX
-						local dy = enemyMo.posY - landY
+					if enemyMo and enemyMo:isHittable() and self:_isInParabolaAimRange(enemyMo, samples, radius) then
+						local dx = enemyMo.posX - bulletMo.posX
+						local dy = enemyMo.posY - bulletMo.posY
 						local distSq = dx * dx + dy * dy
 
 						if not nearestDistSq or distSq < nearestDistSq then
@@ -584,6 +632,24 @@ function SpLilyaGameSceneMgr:_updateBulletTrack(sceneMo)
 			end
 		end
 	end
+end
+
+function SpLilyaGameSceneMgr:_getPendingLandPos(playerMo)
+	if not playerMo then
+		return nil, 0
+	end
+
+	local rad = math.rad(playerMo.rotation or 0)
+	local speed = SpLilyaGameController.instance:getShotSpeed()
+	local vy = math.sin(rad) * speed
+	local g = SpLilyaEnum.DefaultGravity
+	local landY = self._sceneMo and self._sceneMo.groundHeight or 0
+	local posX = playerMo.bulletPosX or playerMo.posX or 0
+	local posY = playerMo.bulletPosY or playerMo.posY or 0
+	local vx = math.cos(rad) * speed
+	local t = (vy + math.sqrt(math.max(vy * vy + 2 * g * (posY - landY), 0))) / g
+
+	return posX + vx * t, landY
 end
 
 function SpLilyaGameSceneMgr:_getPendingParabolaSamples(playerMo)
@@ -615,8 +681,37 @@ function SpLilyaGameSceneMgr:_getPendingParabolaSamples(playerMo)
 	return samples
 end
 
-function SpLilyaGameSceneMgr:_isInAimRange(enemyMo, landX, landY, explodeRadius)
-	return self:_isCircleIntersectEnemy(enemyMo, landX, landY, explodeRadius)
+function SpLilyaGameSceneMgr:_getBulletTrajectorySamples(bulletMo)
+	local g = SpLilyaEnum.DefaultGravity
+	local vx = bulletMo._trajectorySpeedX or 0
+	local vy = bulletMo._trajectorySpeedY or 0
+	local originX = bulletMo._originX or 0
+	local originY = bulletMo._originY or 0
+	local gameMO = SpLilyaGameModel.instance:getGameMO()
+	local sceneMo = gameMO and gameMO.sceneMo
+	local landY = sceneMo and sceneMo.groundHeight or 0
+	local totalTime = (vy + math.sqrt(math.max(vy * vy + 2 * g * (originY - landY), 0))) / g
+	local elapsed = bulletMo._trajectoryElapsed or 0
+	local remainingTime = math.max(totalTime - elapsed, 0)
+	local samples = {}
+
+	samples[#samples + 1] = {
+		x = bulletMo.posX,
+		y = bulletMo.posY
+	}
+
+	local count = SpLilyaEnum.BulletAimSampleCount
+
+	for i = 1, count do
+		local t = elapsed + remainingTime * i / count
+
+		samples[#samples + 1] = {
+			x = originX + vx * t,
+			y = originY + vy * t - 0.5 * g * t * t
+		}
+	end
+
+	return samples
 end
 
 function SpLilyaGameSceneMgr:updateBulletMove(deltaTime)
@@ -667,7 +762,7 @@ function SpLilyaGameSceneMgr:_damageArea(bulletMo, posX, posY, radius, deadEnemy
 			end
 
 			table.insert(self._sceneMo.enemyHurtList, enemyMo)
-			self._controller:dispatchEvent(SpLilyaEvent.DamageNumUpdate, damage, enemyMo.posX, enemyMo.posY, false)
+			self._controller:dispatchEvent(SpLilyaEvent.DamageNumUpdate, damage, enemyMo.posX, enemyMo.posY, false, enemyMo.uid)
 
 			isHit = true
 		end
@@ -691,16 +786,39 @@ function SpLilyaGameSceneMgr:updateBulletHit()
 	local deadEnemyList = {}
 
 	for _, bulletMo in pairs(sceneMo.useBulletMoDic) do
-		if bulletMo and not bulletMo.dying and self:_findHitEnemy(bulletMo) then
-			local damageRadius = bulletMo.explodeRadius > 0 and bulletMo.explodeRadius or bulletMo.radius
+		if bulletMo and not bulletMo.dying then
+			if bulletMo.type == SpLilyaEnum.BulletType.NoGravity and (bulletMo.explodeRadius or 0) <= 0 then
+				local bulletRadius = bulletMo.radius or 0
+				local hitCount = 0
 
-			self:_damageArea(bulletMo, bulletMo.posX, bulletMo.posY, damageRadius, deadEnemyList)
-			table.insert(hitBulletList, bulletMo)
+				for _, enemyMo in pairs(sceneMo.useMoDic) do
+					if enemyMo:isHittable() and self:_isCircleIntersectEnemy(enemyMo, bulletMo.posX, bulletMo.posY, bulletRadius) then
+						if not enemyMo:changeLife(bulletMo.damage) then
+							table.insert(deadEnemyList, enemyMo)
+						end
+
+						table.insert(sceneMo.enemyHurtList, enemyMo)
+						self._controller:dispatchEvent(SpLilyaEvent.DamageNumUpdate, bulletMo.damage, enemyMo.posX, enemyMo.posY, false, enemyMo.uid)
+
+						hitCount = hitCount + 1
+					end
+				end
+
+				if hitCount > 0 then
+					table.insert(hitBulletList, bulletMo)
+					self:_gainEnergy(bulletMo.energy)
+				end
+			elseif self:_findHitEnemy(bulletMo) then
+				local damageRadius = bulletMo.explodeRadius > 0 and bulletMo.explodeRadius or bulletMo.radius
+
+				self:_damageArea(bulletMo, bulletMo.posX, bulletMo.posY, damageRadius, deadEnemyList)
+				table.insert(hitBulletList, bulletMo)
+			end
 		end
 	end
 
 	for _, bulletMo in ipairs(hitBulletList) do
-		self:explodeBullet(bulletMo, "碰撞命中")
+		self:explodeBullet(bulletMo, SpLilyaEnum.ExplodeReason.CollisionHit)
 	end
 
 	for _, enemyMo in ipairs(deadEnemyList) do
@@ -756,7 +874,7 @@ function SpLilyaGameSceneMgr:explodeBullet(mo, reason)
 	local dirX = speed > 0 and speedX / speed or 0
 	local dirY = speed > 0 and speedY / speed or 0
 
-	logWarn(string.format("[SpLilya] 爆炸子弹 uid=%d 原因=%s 方向=(%.2f,%.2f) 速度=%.2f 伤害=%.2f 碰撞半径=%.2f 爆炸半径=%.2f", mo.uid, tostring(reason), dirX, dirY, speed, mo.damage or 0, mo.radius or 0, mo.explodeRadius or 0))
+	logNormal(string.format("[SpLilya] 爆炸子弹 uid=%d 原因=%s 方向=(%.2f,%.2f) 速度=%.2f 伤害=%.2f 碰撞半径=%.2f 爆炸半径=%.2f", mo.uid, tostring(reason), dirX, dirY, speed, mo.damage or 0, mo.radius or 0, mo.explodeRadius or 0))
 
 	mo.explodeReason = reason
 	mo.dying = true
@@ -782,7 +900,7 @@ function SpLilyaGameSceneMgr:destroyBullet(mo, reason)
 	local dirX = speed > 0 and speedX / speed or 0
 	local dirY = speed > 0 and speedY / speed or 0
 
-	logWarn(string.format("[SpLilya] 销毁子弹 uid=%d 原因=%s 方向=(%.2f,%.2f) 速度=%.2f 伤害=%.2f 碰撞半径=%.2f 爆炸半径=%.2f", mo.uid, tostring(reason), dirX, dirY, speed, mo.damage or 0, mo.radius or 0, mo.explodeRadius or 0))
+	logNormal(string.format("[SpLilya] 销毁子弹 uid=%d 原因=%s 方向=(%.2f,%.2f) 速度=%.2f 伤害=%.2f 碰撞半径=%.2f 爆炸半径=%.2f", mo.uid, tostring(reason), dirX, dirY, speed, mo.damage or 0, mo.radius or 0, mo.explodeRadius or 0))
 
 	sceneMo.useBulletMoDic[mo.uid] = nil
 

@@ -341,6 +341,10 @@ function NecrologistStoryHelper.getStoryGroupIndex(storyGroup)
 	local config = NecrologistStoryConfig.instance:getPlotGroupCo(storyGroup)
 
 	if config then
+		if config.storyId == NecrologistStoryEnum.RoleStoryId.V4A0 then
+			return nil
+		end
+
 		local plotList = NecrologistStoryConfig.instance:getPlotListByStoryId(config.storyId)
 
 		if plotList then

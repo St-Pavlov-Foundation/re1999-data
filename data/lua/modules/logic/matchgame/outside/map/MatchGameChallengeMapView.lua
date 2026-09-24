@@ -5,6 +5,7 @@ module("modules.logic.matchgame.outside.map.MatchGameChallengeMapView", package.
 local MatchGameChallengeMapView = class("MatchGameChallengeMapView", BaseView)
 
 function MatchGameChallengeMapView:onInitView()
+	self._simageBg = gohelper.findChildSingleImage(self.viewGO, "#simage_fullbg")
 	self._txtFloor = gohelper.findChildText(self.viewGO, "#go_title/#txt_Floor")
 	self._txtMapName = gohelper.findChildText(self.viewGO, "#go_title/#txt_MapName")
 	self._btnReward = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_reward")
@@ -43,14 +44,9 @@ function MatchGameChallengeMapView:_btnRewardOnClick()
 end
 
 function MatchGameChallengeMapView:_btnEnterOnClick()
-	local status = MatchGameModel.instance:getEpisodeStatus(self._curEpisodeId)
+	local isOpen = MatchGameModel.instance:checkEpisodeOpen(self._curEpisodeId, true)
 
-	if status == MatchGameEnum.EpisodeStatus.Lock then
-		local nextRoundTime = self._challengeMo and self._challengeMo.nextRoundTime or 0
-		local remainTime = TimeUtil.SecondToActivityTimeFormat(nextRoundTime / 1000 - ServerTime.now())
-
-		GameFacade.showToast(ToastEnum.MatchGameChallengeEpisodeTime, remainTime)
-
+	if not isOpen then
 		return
 	end
 
@@ -71,9 +67,18 @@ function MatchGameChallengeMapView:onOpen()
 end
 
 function MatchGameChallengeMapView:refreshUI()
+	self:refreshChapterBg()
 	self:refreshRewardEntry()
 	self:refreshBossItemList()
 	self:tickUpdateBossInfo()
+end
+
+function MatchGameChallengeMapView:refreshChapterBg()
+	local curChapterId = MatchGameLevelModel.instance:getCurChapterId()
+	local curChapterCo = lua_activity244_chapter.configDict[curChapterId]
+	local bgName = curChapterCo and curChapterCo.chapterImage
+
+	self._simageBg:LoadImage(ResUrl.getMatchGameSingleBg(bgName))
 end
 
 function MatchGameChallengeMapView:refreshRewardEntry()
@@ -110,12 +115,6 @@ function MatchGameChallengeMapView:refreshBossItemList()
 end
 
 function MatchGameChallengeMapView:_calcSelectIndex(episodeCoList)
-	local originSelect = self._mapListComp:getSelect()
-
-	if originSelect then
-		return originSelect
-	end
-
 	if episodeCoList then
 		for i, episodeCo in ipairs(episodeCoList) do
 			if self._challengeMo:isEpisodeOpen(episodeCo.id) then
@@ -131,7 +130,7 @@ function MatchGameChallengeMapView:_onSelectBossItem(bossItem, selectIndex)
 	self._curEpisodeCo = bossItem.data
 	self._curEpisodeId = self._curEpisodeCo and self._curEpisodeCo.id
 
-	MatchGameLevelModel.instance:setCurEpisode(selectIndex, self._curEpisodeId)
+	MatchGameLevelModel.instance:setCurEpisode(self._curEpisodeId)
 	self:refreshBossDetail()
 end
 
@@ -223,6 +222,7 @@ function MatchGameChallengeMapView:onClose()
 end
 
 function MatchGameChallengeMapView:onDestroyView()
+	self._simageBg:UnLoadImage()
 	TaskDispatcher.cancelTask(self._sendRpc2UpdateBossInfo, self)
 end
 

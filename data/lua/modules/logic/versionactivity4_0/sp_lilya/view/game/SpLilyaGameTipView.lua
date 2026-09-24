@@ -36,6 +36,7 @@ end
 
 function SpLilyaGameTipView:onOpen()
 	self:refreshUI()
+	AudioMgr.instance:trigger(AudioEnum4_0.SpLilya.play_ui_yuanzheng_mrs_pause)
 	TaskDispatcher.runDelay(self.closeThis, self, SpLilyaEnum.TipCloseDelay)
 end
 

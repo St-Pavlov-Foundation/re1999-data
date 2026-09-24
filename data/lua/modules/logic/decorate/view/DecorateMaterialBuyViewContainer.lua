@@ -7,7 +7,8 @@ local DecorateMaterialBuyViewContainer = class("DecorateMaterialBuyViewContainer
 function DecorateMaterialBuyViewContainer:buildViews()
 	local views = {}
 
-	table.insert(views, DecorateMaterialBuyView.New())
+	table.insert(views, self:getBuyView())
+	table.insert(views, TabViewGroup.New(1, "#go_topright"))
 
 	return views
 end
@@ -15,6 +16,7 @@ end
 function DecorateMaterialBuyViewContainer:buildTabViews(tabContainerId)
 	if tabContainerId == 1 then
 		self._currencyView = CurrencyView.New({})
+		self._currencyView.foreHideBtn = true
 
 		return {
 			self._currencyView
@@ -28,12 +30,12 @@ function DecorateMaterialBuyViewContainer:setCurrencyType(currencyTypeParam)
 	end
 end
 
-function DecorateMaterialBuyViewContainer:getMaterialTipViewBanner()
-	if not self._materialTipViewBanner then
-		self._materialTipViewBanner = DecorateMaterialTipViewBanner.New()
+function DecorateMaterialBuyViewContainer:getBuyView()
+	if not self._buyView then
+		self._buyView = DecorateMaterialBuyView.New()
 	end
 
-	return self._materialTipViewBanner
+	return self._buyView
 end
 
 return DecorateMaterialBuyViewContainer

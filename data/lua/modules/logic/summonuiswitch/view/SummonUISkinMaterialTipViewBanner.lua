@@ -7,12 +7,9 @@ local SummonUISkinMaterialTipViewBanner = class("SummonUISkinMaterialTipViewBann
 function SummonUISkinMaterialTipViewBanner:onInitView()
 	SummonUISkinMaterialTipViewBanner.super.onInitView(self)
 
-	self._goSceneLogo = gohelper.findChild(self.viewGO, "left/banner/#go_bannerContent/#go_roominfoItem/image_frame/#go_SceneLogo")
-	self._goSceneLogo2 = gohelper.findChild(self.viewGO, "left/banner/#go_bannerContent/#go_roominfoItem/image_frame/#go_SceneLogo2")
-	self._goSceneLogo3 = gohelper.findChild(self.viewGO, "left/banner/#go_bannerContent/#go_roominfoItem/image_frame/#go_SceneLogo3")
-	self._goSceneLogo4 = gohelper.findChild(self.viewGO, "left/banner/#go_bannerContent/#go_roominfoItem/image_frame/#go_SceneLogo4")
-	self._goSceneLogo5 = gohelper.findChild(self.viewGO, "left/banner/#go_bannerContent/#go_roominfoItem/image_frame/#go_SceneLogo5")
-	self._simageSceneLogo5 = gohelper.findChildSingleImage(self.viewGO, "left/banner/#go_bannerContent/#go_roominfoItem/image_frame/#go_SceneLogo5")
+	self._simageSceneLogo = gohelper.findChildSingleImage(self.viewGO, "left/banner/#go_bannerContent/#go_roominfoItem/image_frame/#go_SceneLogo")
+	self._imageSceneLogo = gohelper.findChildImage(self.viewGO, "left/banner/#go_bannerContent/#go_roominfoItem/image_frame/#go_SceneLogo")
+	self._txtSceneLogo = gohelper.findChildText(self.viewGO, "left/banner/#go_bannerContent/#go_roominfoItem/image_frame/#go_SceneLogo/titlebg/#txt_SceneLogo")
 end
 
 function SummonUISkinMaterialTipViewBanner:_createInfoItemUserDataTb_(goItem)
@@ -63,13 +60,12 @@ function SummonUISkinMaterialTipViewBanner:onOpen()
 	tabletool.addValues(self._infoItemDataList, self:_getItemDataList())
 	self:_refreshUI()
 	self:_startAutoSwitch()
-	gohelper.setActive(self._goSceneLogo, false)
-	gohelper.setActive(self._goSceneLogo2, false)
-	gohelper.setActive(self._goSceneLogo3, false)
-	gohelper.setActive(self._goSceneLogo4, false)
-	gohelper.setActive(self._goSceneLogo5, true)
+end
 
-	self._simageSceneLogo5.enabled = true
+function SummonUISkinMaterialTipViewBanner:_refreshUI()
+	SummonUISkinMaterialTipViewBanner.super._refreshUI(self)
+
+	self._txtSceneLogo.text = luaLang("main_switch_classify_title_4")
 end
 
 function SummonUISkinMaterialTipViewBanner:_addClickSceneUI(btn, itemId)

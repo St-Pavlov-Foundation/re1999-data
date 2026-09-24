@@ -205,7 +205,7 @@ function CollegeBuildingBubbleView:_randomBubble()
 		return
 	end
 
-	count = math.random(count)
+	count = 1
 
 	local select = {}
 	local select_custom = {}

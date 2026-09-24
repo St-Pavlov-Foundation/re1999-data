@@ -97,15 +97,9 @@ function AutoChessMallInfoView:refreshChessUI()
 	gohelper.setActive(self._btnRight, false)
 	gohelper.setActive(self._txtPage, false)
 
-	local entity = self.viewParam.chessEntity
+	local param = self.viewParam
 
-	gohelper.setActive(self._goTopRight, entity.teamType == AutoChessEnum.TeamType.Player)
-
-	local param = {
-		type = AutoChessCard.ShowType.Sell,
-		entity = entity
-	}
-
+	gohelper.setActive(self._goTopRight, param.showSell)
 	self.card:setData(param)
 end
 

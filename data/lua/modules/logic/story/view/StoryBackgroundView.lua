@@ -111,6 +111,9 @@ local BG_EFFECT_CONFIG = {
 	},
 	[StoryEnum.BgEffectType.CameraEffect] = {
 		cls = StoryBgEffsCameraEffect
+	},
+	[StoryEnum.BgEffectType.MonitorFilter] = {
+		cls = StoryBgEffsMonitorFilter
 	}
 }
 
@@ -156,6 +159,7 @@ function StoryBackgroundView:_editableInitView()
 	self._imgOldFitHeight = self._imagebgold.gameObject:GetComponent(typeof(ZProj.UIBgFitHeightAdapter))
 	self._bgAnimator = self._gofront.gameObject:GetComponent(typeof(UnityEngine.Animator))
 	self._bgBlur = self._simagebgimg.gameObject:GetComponent(typeof(UrpCustom.UIGaussianEffect))
+	self._bgBlur.enabled = false
 	self._borderCanvas = self._goblack:GetComponent(typeof(UnityEngine.CanvasGroup))
 	self._blitEff = self._gobliteff:GetComponent(typeof(UrpCustom.UIBlitEffect))
 	self._blitEffSecond = self._gobliteffsecond:GetComponent(typeof(UrpCustom.UIBlitEffect))
@@ -344,7 +348,6 @@ function StoryBackgroundView:_resetData()
 
 	self._imgFitHeight.enabled = false
 	self._imgOldFitHeight.enabled = false
-	self._bgBlur.enabled = self._bgCo.effType == StoryEnum.BgEffectType.BgBlur
 	self._cimagebgimg.vecInSide = Vector4.zero
 	self._cimagebgold.vecInSide = Vector4.zero
 	self._bgBlur.zoneImage = nil

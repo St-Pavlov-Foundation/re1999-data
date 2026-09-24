@@ -42,6 +42,7 @@ function SpLilyaPlayerEntity:addEventListeners()
 	self:addEventCb(SpLilyaGameController.instance, SpLilyaEvent.PlayerStateChange, self._onPlayerStateChange, self)
 	self:addEventCb(SpLilyaGameController.instance, SpLilyaEvent.GameReset, self._onGameReset, self)
 	self:addEventCb(SpLilyaGameController.instance, SpLilyaEvent.PlayerAimState, self._onAimStateChange, self)
+	self:addEventCb(GameGlobalMgr.instance, GameStateEvent.OnScreenResize, self._onScreenResize, self)
 end
 
 function SpLilyaPlayerEntity:removeEventListeners()
@@ -50,6 +51,7 @@ function SpLilyaPlayerEntity:removeEventListeners()
 	self:removeEventCb(SpLilyaGameController.instance, SpLilyaEvent.PlayerStateChange, self._onPlayerStateChange, self)
 	self:removeEventCb(SpLilyaGameController.instance, SpLilyaEvent.GameReset, self._onGameReset, self)
 	self:removeEventCb(SpLilyaGameController.instance, SpLilyaEvent.PlayerAimState, self._onAimStateChange, self)
+	self:removeEventCb(GameGlobalMgr.instance, GameStateEvent.OnScreenResize, self._onScreenResize, self)
 end
 
 function SpLilyaPlayerEntity:_editableInitView()
@@ -133,7 +135,7 @@ function SpLilyaPlayerEntity:_onPlayerSpineLoaded(assetItem)
 	local prefab = assetItem:GetResource(resPath)
 
 	if not prefab then
-		logError(string.format("SpLilyaGameScene:_onEnemySpineLoaded error, res:%s prefab is nil", tostring(res)))
+		logError(string.format("SpLilyaPlayerEntity:_onPlayerSpineLoaded error, res:%s prefab is nil", tostring(resPath)))
 
 		return
 	end
@@ -184,6 +186,16 @@ function SpLilyaPlayerEntity:setPos(x, y)
 	transformhelper.setLocalPos(self.go.transform, x, y, 0)
 end
 
+function SpLilyaPlayerEntity:getSpineWorldPos()
+	local spineGO = self._spineGO
+
+	if spineGO and not gohelper.isNil(spineGO) then
+		return spineGO.transform.position
+	end
+
+	return self._goRole and self._goRole.transform.position or nil
+end
+
 function SpLilyaPlayerEntity:setRotation(rotZ, speed)
 	self._curRotation = rotZ
 
@@ -192,6 +204,13 @@ function SpLilyaPlayerEntity:setRotation(rotZ, speed)
 	local roleRotZ = math.max(SpLilyaEnum.PlayerRotateLimit.Min, math.min(SpLilyaEnum.PlayerRotateLimit.Max, rotZ))
 
 	transformhelper.setLocalRotation(self._goRole.transform, 0, 0, roleRotZ)
+
+	if self._goBulletOrigin and self.sceneRoot then
+		local originPos = self.sceneRoot.transform:InverseTransformPoint(self._goBulletOrigin.transform.position)
+
+		SpLilyaGameController.instance:setBulletOriginPos(originPos.x, originPos.y)
+	end
+
 	self:setCurvePos(rotZ, speed)
 end
 
@@ -199,8 +218,15 @@ function SpLilyaPlayerEntity:refreshLinePos()
 	self:setCurvePos(self._curRotation or 0, self._curSpeed or SpLilyaEnum.DefaultShotSpeed)
 end
 
+function SpLilyaPlayerEntity:_onScreenResize()
+	if self.sceneRoot then
+		self:refreshLinePos()
+	end
+end
+
 function SpLilyaPlayerEntity:getLineStartAndEnd(rotZ, speed, g)
-	local startPos = self.sceneRoot.transform:InverseTransformPoint(self._goArrow.transform.position)
+	local originNode = self._goBulletOrigin or self._goArrow
+	local startPos = self.sceneRoot.transform:InverseTransformPoint(originNode.transform.position)
 	local x1 = startPos.x
 	local y1 = startPos.y
 	local rad = math.rad(rotZ)
@@ -224,6 +250,14 @@ function SpLilyaPlayerEntity:getLineStartAndEnd(rotZ, speed, g)
 	return x1, y1, x2, y2, maxHeight
 end
 
+function SpLilyaPlayerEntity:_getShaderLineFactor()
+	local screenWidth = UnityEngine.Screen.width
+	local aspect = screenWidth / UnityEngine.Screen.height
+	local innerFactor = aspect > 1.7777777777777777 and screenWidth / 2592 or 0.5208333333333334 * aspect
+
+	return 0.01 * innerFactor
+end
+
 function SpLilyaPlayerEntity:setCurvePos(rotZ, speed)
 	speed = speed or SpLilyaEnum.DefaultShotSpeed
 	self._curSpeed = speed
@@ -239,24 +273,32 @@ function SpLilyaPlayerEntity:setCurvePos(rotZ, speed)
 	if gameMO.isGravity == SpLilyaEnum.UseGravity.Use then
 		x1, y1, x2, y2, maxHeight = self:getLineStartAndEnd(rotZ, speed, SpLilyaEnum.DefaultGravity)
 	else
-		local startPos = self.sceneRoot.transform:InverseTransformPoint(self._goArrow.transform.position)
+		local originNode = self._goBulletOrigin or self._goArrow
+		local startPos = self.sceneRoot.transform:InverseTransformPoint(originNode.transform.position)
 
 		x1, y1 = startPos.x, startPos.y
 		x2, y2 = x1 + SpLilyaEnum.PlayerShotPreviewDistance, y1
 	end
 
-	self._tempVector4Start.x = x1
-	self._tempVector4Start.y = y1
+	local factor = self:_getShaderLineFactor()
+	local startWorldPos = self.sceneRoot.transform:TransformPoint(x1, y1, 0)
+
+	self._tempVector4Start.x = startWorldPos.x / factor
+	self._tempVector4Start.y = startWorldPos.y / factor
 
 	self._curMaterial:SetVector("_StartVec", self._tempVector4Start)
 
-	self._tempVector4End.x = x2
-	self._tempVector4End.y = y2
+	local endWorldPos = self.sceneRoot.transform:TransformPoint(x2, y2, 0)
+
+	self._tempVector4End.x = endWorldPos.x / factor
+	self._tempVector4End.y = endWorldPos.y / factor
 
 	self._curMaterial:SetVector("_EndVec", self._tempVector4End)
 
 	if maxHeight then
-		self._curMaterial:SetFloat("_ParabolaHeight", maxHeight)
+		local peakWorldPos = self.sceneRoot.transform:TransformPoint(0, maxHeight, 0)
+
+		self._curMaterial:SetFloat("_ParabolaHeight", peakWorldPos.y / factor)
 	else
 		self._curMaterial:SetFloat("_ParabolaHeight", 0)
 	end
@@ -299,8 +341,12 @@ end
 function SpLilyaPlayerEntity:_onPlayerStateChange(state)
 	self:setDamageState(state == SpLilyaEnum.PlayerState.Hit)
 
-	if state == SpLilyaEnum.PlayerState.Hit and self._animatorHit then
-		self._animatorHit:Play(SpLilyaEnum.EntityAnim.BarHit, 0, 0)
+	if state == SpLilyaEnum.PlayerState.Hit then
+		if self._animatorHit then
+			self._animatorHit:Play(SpLilyaEnum.EntityAnim.BarHit, 0, 0)
+		end
+
+		AudioMgr.instance:trigger(AudioEnum4_0.SpLilya.play_ui_yingmen_hnj_fu)
 	end
 end
 

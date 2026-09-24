@@ -13841,7 +13841,7 @@
   },
   {
     "id": "p_rougelimiterbuffview_txt_equip",
-    "lang": "装配"
+    "lang": "装扮"
   },
   {
     "id": "p_rougelimiterbuffview_txt_speedup",
@@ -27973,7 +27973,7 @@
   },
   {
     "id": "p_v3a7_goldenmilletpresentfull_txt_desc",
-    "lang": "限时赠送<#BD6438>【不夜乌托邦】套组</color>专属衣着抵扣券，可与其他衣着抵扣券叠加使用"
+    "lang": "  限时赠送<#BD6438>【不夜乌托邦】套组</color>专属衣着抵扣券\n                 可与其他衣着抵扣券叠加使用"
   },
   {
     "id": "p_v3a7_cumulativerecharge_maintxt1",
@@ -29673,7 +29673,7 @@
   },
   {
     "id": "p_v3a9_activityinsightshowview_txt_item1",
-    "lang": "独一调·【第一滴雨】"
+    "lang": "独一调·第一滴雨"
   },
   {
     "id": "p_v3a9_activityinsightshowview_txt_item2",
@@ -30381,7 +30381,7 @@
   },
   {
     "id": "p_college_mainview_Text (TMP)",
-    "lang": "解谜"
+    "lang": "解锁"
   },
   {
     "id": "p_college_bottominfoview_txt_BuildingLevelLabel",
@@ -30493,11 +30493,11 @@
   },
   {
     "id": "p_matchgameenterview_txt_name1",
-    "lang": "好价路线"
+    "lang": "主顾甄选"
   },
   {
     "id": "p_matchgameenterview_txt_name2",
-    "lang": "魔精服务区"
+    "lang": "特价集合"
   },
   {
     "id": "p_matchgameenterview_txt_allsocre",
@@ -30530,10 +30530,6 @@
   {
     "id": "p_v4a0_sixstargift_fullview_txt_tag3",
     "lang": "金纺轮×1"
-  },
-  {
-    "id": "p_v4a0_rolestorygameview_txt_result",
-    "lang": "结果"
   },
   {
     "id": "p_matchgamemapview_txt_1",
@@ -30641,7 +30637,7 @@
   },
   {
     "id": "p_v4a0_sixstargift_fullview_txt_desc",
-    "lang": "3次十连模拟，选择<#ff943d>1次结果</color>\n每抽取必出<#ff943d>1个6星，概率出双6星</color>\n每次模拟，6星角色组合不重复"
+    "lang": "3次十连模拟，选择<#ffc556>1次结果</color>\n每次十连必出<#ffc556>1个6星，概率出双6星</color>\n每次模拟产生的6星角色组合不重复"
   },
   {
     "id": "p_mainsceneswitchnewview_txt",
@@ -30753,7 +30749,7 @@
   },
   {
     "id": "p_autochessleaderselectview_losestreak_tip",
-    "lang": "[临时文本]连败奇遇生效提示"
+    "lang": "获得新手奇遇"
   },
   {
     "id": "p_autochessadventureview_txt_Title_1",
@@ -30793,23 +30789,11 @@
   },
   {
     "id": "p_matchgameresultview_txt_talent",
-    "lang": "天赋强化"
+    "lang": "能力提升"
   },
   {
     "id": "p_matchgameresultview_txt_herogroup",
-    "lang": "调整队伍"
-  },
-  {
-    "id": "p_matchgameresultview_txt_round",
-    "lang": "通关回合"
-  },
-  {
-    "id": "p_matchgameresultview_txt_maxdamage",
-    "lang": "单回合最高伤害"
-  },
-  {
-    "id": "p_matchgameresultview_txt_maxchain",
-    "lang": "最高连击"
+    "lang": "编队调整"
   },
   {
     "id": "p_v4a0_hongnujianlevelview_txt_desc",
@@ -30857,7 +30841,7 @@
   },
   {
     "id": "handbookskin_festival_Halloween",
-    "lang": "万圣节"
+    "lang": "万圣夜"
   },
   {
     "id": "p_matchgamechallengemapview_txt_open",
@@ -30865,7 +30849,7 @@
   },
   {
     "id": "p_matchgamechallengemapview_txt_enter",
-    "lang": "进入超市"
+    "lang": "进入商场"
   },
   {
     "id": "p_matchgamechallengemapview_txt_spreward",
@@ -30938,5 +30922,229 @@
   {
     "id": "p_v4a0_concert_cocoonofmyths_desc",
     "lang": "适用范围"
+  },
+  {
+    "id": "p_matchgamerewardview_txt_skin",
+    "lang": "<size=90>礁</size>骨回响"
+  },
+  {
+    "id": "p_matchgamerewardview_txt_name",
+    "lang": "——罗蕾莱"
+  },
+  {
+    "id": "p_bpface_skinfestivalview2_txt_click",
+    "lang": "点击进行转动"
+  },
+  {
+    "id": "p_decoratestoregoodsview_txt_title",
+    "lang": "当前塑造："
+  },
+  {
+    "id": "p_matchgameherogroupview_talenttips",
+    "lang": "特价集合已激活"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp1_Text",
+    "lang": "灵感百货:通过连线消除"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp1_Text (3)",
+    "lang": "从左到右边依次为<#9C3807>星系百货、兽系百货、智系百货、木系百货、灵系百货、岩系百货</color>。"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp1_Text (1)",
+    "lang": "状态与障碍"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp1_Text (2)",
+    "lang": "特殊百货:通过点击消除"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp1_Text (6)",
+    "lang": "断货状态"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp1_Text (5)",
+    "lang": "无法消除，通过消除\n附近百货解除状态"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp1_Text (7)",
+    "lang": "假货状态"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp1_Text (4)",
+    "lang": "消除后扣除生命值"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp1_Text (8)",
+    "lang": "轰趴百货"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp1_Text (11)",
+    "lang": "消除周围百货"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp1_Text (9)",
+    "lang": "贴心百货"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp1_Text (12)",
+    "lang": "消除后回复血量"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp1_Text (10)",
+    "lang": "惊喜百货"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp1_Text (13)",
+    "lang": "周围发生3次有效消除后打开，可以获得\n特殊灵感百货"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp2_Text (1)",
+    "lang": "消除与战斗"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp2_Text (2)",
+    "lang": "八方向连接同色灵感百货，结算伤害击败敌人"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp2_Text (3)",
+    "lang": "连接至少3个以上相邻的同色百\n货即可消除"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp2_Text (4)",
+    "lang": "每次有效消除会累计<#9C3807>促销值</color>\n<#9C3807>促销值</color>越高，回合结束时加成\n伤害倍"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp2_Text (5)",
+    "lang": "击败全部敌人即可胜利;\n我方共享血量归零则战斗失败"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp2_Text (6)",
+    "lang": "按住拖动连接3个以上百货，松手消除。\n从而累计对应灵感角色的伤害"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp2_Text (7)",
+    "lang": "敌人血量"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp2_Text (8)",
+    "lang": "每个关卡队有相应的敌人数量"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp2_Text (9)",
+    "lang": "根据消除灵感百货结果，\n回合结束对敌人造成伤害"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp2_Text (10)",
+    "lang": "全员共享血量"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp3_Text (2)",
+    "lang": "消除同色百货"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp3_Text (3)",
+    "lang": "消除与角色灵感相同的百货\n为对应角色积累能量"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp3_Text (4)",
+    "lang": "点击满灵感角色"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp3_Text (5)",
+    "lang": "充满能量后，点击发光的角色头像\n释放技能"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp3_Text (6)",
+    "lang": "释放角色能力"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp3_Text (7)",
+    "lang": "释放技能后能量清零"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp4_Text (1)",
+    "lang": "血拼狂热!"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp4_Text (2)",
+    "lang": "点击高亮区域消除灵感百货"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp4_Text (3)",
+    "lang": "普通状态下消除灵感百货，可\n以累计血拼值，满槽自动进入\n血拼狂热!状态"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp4_Text (4)",
+    "lang": "点击高亮百货，即可消除与之\n相连的所有同灵感百货。"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp4_Text (5)",
+    "lang": "在血拼狂热!状态下消除,仍然会\n累计促销值。但此时不会继续累\n计血拼值,直至退出状态。"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp4_Text (6)",
+    "lang": "点击高亮区域消除"
+  },
+  {
+    "id": "p_v4a0_matchgamehelp4_Text (7)",
+    "lang": "累计进度条进入血拼狂热!\n并持续一段时间。"
+  },
+  {
+    "id": "p_matchgamecharactergainview_title",
+    "lang": "解锁新角色"
+  },
+  {
+    "id": "p_v4a0_concertgameview_txt",
+    "lang": "高音DO"
+  },
+  {
+    "id": "p_v4a0_deleikehelp1_Text",
+    "lang": "按下技能图标时，可开始蓄力<#FF906A>诘问/焚毁</color>技能"
+  },
+  {
+    "id": "p_v4a0_deleikehelp2_Text",
+    "lang": "移动到右上角取消处时，可取消本次蓄力"
+  },
+  {
+    "id": "p_v4a0_deleikehelp3_Text",
+    "lang": "按下期间，可围绕棋子位置，调整技能方向，\n松开后释放技能"
+  },
+  {
+    "id": "p_v4a0_deleikehelp4_Text",
+    "lang": "使用<#FF906A>诘问</color>技能，可选择想要裁剪的空间"
+  },
+  {
+    "id": "p_v4a0_deleikehelp4_Text (1)",
+    "lang": "<#FF906A>诘问</color>技能裁剪后，可在一定范围内移动\n空间，到达原本被阻挡的位置"
+  },
+  {
+    "id": "p_v4a0_deleikehelp5_Text (1)",
+    "lang": "使用<#FF906A>焚毁</color>技能，可消灭被覆盖的空间和\n获取其中的技能点"
+  },
+  {
+    "id": "p_v4a0_deleikehelp5_Text (2)",
+    "lang": "<#FF906A>诘问</color>技能释放后，被消灭空间后方的空间\n将会靠近棋子"
+  },
+  {
+    "id": "p_matchgamefightview_txt_info",
+    "lang": "战斗详情"
+  },
+  {
+    "id": "p_matchgamefightview_txt_start",
+    "lang": "战斗开始"
+  },
+  {
+    "id": "p_matchgamecharactergainview_txt_title",
+    "lang": "解锁新角色"
+  },
+  {
+    "id": "p_matchgamecareertipview_desc2",
+    "lang": "灵感克制时造成创伤提升50%\n灵感被克制时造成创伤降低50%"
+  },
+  {
+    "id": "p_characterview_txt_spxiaochunque",
+    "lang": "银装"
   }
 ]

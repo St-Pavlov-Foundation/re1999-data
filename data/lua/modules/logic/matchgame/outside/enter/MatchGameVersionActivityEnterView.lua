@@ -26,13 +26,7 @@ end
 
 function MatchGameVersionActivityEnterView:_btnNormalOnClick()
 	if self:checkIsActOpen() then
-		self._rpcCallback = MatchGameRpc.instance:sendGetAct244InfoRequest(self._actId, function(_, resultCode)
-			if resultCode ~= 0 then
-				return
-			end
-
-			ViewMgr.instance:openView(ViewName.MatchGameEnterView)
-		end)
+		MatchGameController.instance:openEnterView(self._actId)
 	end
 end
 
@@ -89,12 +83,6 @@ end
 
 function MatchGameVersionActivityEnterView:onDestroyView()
 	TaskDispatcher.cancelTask(self.refreshRemainTime, self)
-
-	if self._rpcCallback then
-		MatchGameRpc.instance:removeCallbackById(self._rpcCallback)
-
-		self._rpcCallback = nil
-	end
 end
 
 return MatchGameVersionActivityEnterView

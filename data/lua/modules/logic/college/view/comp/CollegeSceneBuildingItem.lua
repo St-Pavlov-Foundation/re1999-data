@@ -5,11 +5,11 @@ module("modules.logic.college.view.comp.CollegeSceneBuildingItem", package.seeal
 local CollegeSceneBuildingItem = class("CollegeSceneBuildingItem", CollegeSceneBaseItem)
 local clickPos = {
 	[4010004] = {
-		width = 457.2,
-		height = 574.3,
+		width = 500.7,
+		height = 639,
 		y = -312.3,
-		x = 46.7,
-		rotation = Vector3(61.41, -3, 11.3)
+		x = 59.6,
+		rotation = Vector3(55.3, -3, 11.3)
 	},
 	[4010005] = {
 		width = 567.43,

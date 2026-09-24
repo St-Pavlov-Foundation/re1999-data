@@ -12,8 +12,8 @@ end
 
 function DeleikeHelper.GetSquarePoly(type)
 	if type == DeleikeEnum.TileType.Line then
-		local w = DeleikeEnum.LineLength * 0.5
-		local h = DeleikeEnum.LineThick * 0.5
+		local w = DeleikeEnum.SkillWidth * 0.5
+		local h = DeleikeEnum.SkilllHeight * 0.5
 
 		return {
 			Vector2.New(-w, -h),

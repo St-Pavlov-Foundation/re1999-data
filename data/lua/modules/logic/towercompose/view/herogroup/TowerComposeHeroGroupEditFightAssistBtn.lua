@@ -12,10 +12,14 @@ function TowerComposeHeroGroupEditFightAssistBtn:onInitView()
 	self._goassist1 = gohelper.findChild(self.viewGO, "#go_ops/#go_assistContent/#btn_assist1/#go_assist1")
 	self._gorelease1 = gohelper.findChild(self.viewGO, "#go_ops/#go_assistContent/#btn_assist1/#go_release1")
 	self._golock1 = gohelper.findChild(self.viewGO, "#go_ops/#go_assistContent/#btn_assist1/#go_lock1")
+	self._goassistCD1 = gohelper.findChild(self.viewGO, "#go_ops/#go_assistContent/#btn_assist1/#go_assistCD1")
+	self._imageAssistCD1 = gohelper.findChildImage(self.viewGO, "#go_ops/#go_assistContent/#btn_assist1/#go_assistCD1")
 	self._btnassist2 = gohelper.findChildButtonWithAudio(self.viewGO, "#go_ops/#go_assistContent/#btn_assist2")
 	self._goassist2 = gohelper.findChild(self.viewGO, "#go_ops/#go_assistContent/#btn_assist2/#go_assist2")
 	self._gorelease2 = gohelper.findChild(self.viewGO, "#go_ops/#go_assistContent/#btn_assist2/#go_release2")
 	self._golock2 = gohelper.findChild(self.viewGO, "#go_ops/#go_assistContent/#btn_assist2/#go_lock2")
+	self._goassistCD2 = gohelper.findChild(self.viewGO, "#go_ops/#go_assistContent/#btn_assist2/#go_assistCD2")
+	self._imageAssistCD2 = gohelper.findChildImage(self.viewGO, "#go_ops/#go_assistContent/#btn_assist2/#go_assistCD2")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -62,6 +66,10 @@ function TowerComposeHeroGroupEditFightAssistBtn:_btnassistOnClick()
 end
 
 function TowerComposeHeroGroupEditFightAssistBtn:_pickOverCallBack(mo)
+	if not mo then
+		return
+	end
+
 	self:setAssistMo(mo, {
 		planeId = self:getAssistPlaneId()
 	})
@@ -106,6 +114,12 @@ function TowerComposeHeroGroupEditFightAssistBtn:_btnassistOnClick1()
 		return
 	end
 
+	if self.isInCD then
+		GameFacade.showToast(ToastEnum.Season123RefreshAssistInCD)
+
+		return
+	end
+
 	local assistType = PickAssistEnum.EpisdoeTypeAssistType[self._episdoeType]
 
 	if not assistType then
@@ -118,6 +132,10 @@ function TowerComposeHeroGroupEditFightAssistBtn:_btnassistOnClick1()
 end
 
 function TowerComposeHeroGroupEditFightAssistBtn:_pickOverCallBack1(mo)
+	if not mo then
+		return
+	end
+
 	self:setAssistMo(mo, {
 		planeId = 1
 	})
@@ -164,11 +182,13 @@ function TowerComposeHeroGroupEditFightAssistBtn:_btnassistOnClick2()
 		return
 	end
 
-	local assistType = PickAssistEnum.EpisdoeTypeAssistType[self._episdoeType]
+	if self.isInCD then
+		GameFacade.showToast(ToastEnum.Season123RefreshAssistInCD)
 
-	if not assistType then
 		return
 	end
+
+	local assistType = PickAssistEnum.Type.TowerCompose2
 
 	PickAssistController.instance:openPickAssistView(assistType, self._episdoeActId, nil, self._pickOverCallBack2, self, true, nil, nil, {
 		episodeId = DungeonModel.instance.curSendEpisodeId
@@ -176,6 +196,10 @@ function TowerComposeHeroGroupEditFightAssistBtn:_btnassistOnClick2()
 end
 
 function TowerComposeHeroGroupEditFightAssistBtn:_pickOverCallBack2(mo)
+	if not mo then
+		return
+	end
+
 	self:setAssistMo(mo, {
 		planeId = 2
 	})
@@ -209,12 +233,6 @@ function TowerComposeHeroGroupEditFightAssistBtn:setAssistMo(mo, params)
 
 	local planeId = self:getAssistPlaneId(params)
 	local startIndex, endIndex = 1, #heroList
-
-	if self.fightParam.plane == TowerComposeEnum.PlaneType.Twice then
-		startIndex = planeId == 2 and 5 or 1
-		endIndex = planeId == 2 and 8 or 4
-	end
-
 	local index
 
 	for i = startIndex, endIndex do
@@ -239,12 +257,9 @@ function TowerComposeHeroGroupEditFightAssistBtn:setAssistMo(mo, params)
 		end
 	end
 
-	if index then
-		TowerComposeModel.instance:setEditorAssistMo(mo, {
-			planeId = planeId
-		})
-	end
-
+	TowerComposeModel.instance:setEditorAssistMo(mo, {
+		planeId = planeId
+	})
 	self:refreshAssistBtn()
 end
 
@@ -271,7 +286,8 @@ function TowerComposeHeroGroupEditFightAssistBtn:onReleaseAssist(params)
 end
 
 function TowerComposeHeroGroupEditFightAssistBtn:_editableInitView()
-	return
+	TaskDispatcher.cancelTask(self.refreshCD, self)
+	TaskDispatcher.runRepeat(self.refreshCD, self, 0.01)
 end
 
 function TowerComposeHeroGroupEditFightAssistBtn:onUpdateParam()
@@ -366,12 +382,23 @@ function TowerComposeHeroGroupEditFightAssistBtn:checkPlaneLock(planeId)
 	return false
 end
 
+function TowerComposeHeroGroupEditFightAssistBtn:refreshCD()
+	local cdRate = PickAssistController.instance:getRefreshCDRate()
+
+	self.isInCD = cdRate > 0
+	self._imageAssistCD1.fillAmount = cdRate
+	self._imageAssistCD2.fillAmount = cdRate
+
+	gohelper.setActive(self._goassistCD1, self.isInCD)
+	gohelper.setActive(self._goassistCD2, self.isInCD)
+end
+
 function TowerComposeHeroGroupEditFightAssistBtn:onClose()
 	return
 end
 
 function TowerComposeHeroGroupEditFightAssistBtn:onDestroyView()
-	return
+	TaskDispatcher.cancelTask(self.refreshCD, self)
 end
 
 return TowerComposeHeroGroupEditFightAssistBtn

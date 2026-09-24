@@ -40,6 +40,7 @@ function MusicGameEnterView:removeEvents()
 end
 
 function MusicGameEnterView:_btnstartOnClick()
+	AudioMgr.instance:trigger(AudioEnum4_0.MusicGame.stop_ui_yingmen4_0_open_music)
 	MusicGameController.instance:openMusicGameMainView()
 end
 
@@ -85,7 +86,7 @@ function MusicGameEnterView:_onCheckActState()
 end
 
 function MusicGameEnterView:onOpen()
-	AudioMgr.instance:trigger(AudioEnum3_2.play_ui_shengyan_box_songjin_open)
+	AudioMgr.instance:trigger(AudioEnum4_0.MusicGame.play_ui_yingmen4_0_open_music)
 	self:_refresh()
 	self:_refreshTime()
 	TaskDispatcher.runRepeat(self._refreshTime, self, 1)
@@ -126,7 +127,7 @@ function MusicGameEnterView:_refreshUI()
 	self._score = curScore
 end
 
-local maxAnchorX = -1480
+local maxAnchorX = -1824
 local minScore = 1000
 
 function MusicGameEnterView:_focusScore(score)
@@ -149,7 +150,7 @@ function MusicGameEnterView:_progressUpadate(value)
 	local rewardCos = MusicGameConfig.instance:getBonusCos()
 	local totalScore = rewardCos and rewardCos[#rewardCos].coinNum or 0
 
-	self._imagefill.fillAmount = totalScore > 0 and value / totalScore or 0
+	self._imagefill.fillAmount = totalScore > 0 and 0.965 * value / totalScore or 0
 end
 
 function MusicGameEnterView:_progressFinished()
@@ -199,7 +200,7 @@ local startLv = 4
 
 function MusicGameEnterView:_refreshSpRewards()
 	local keyLvs = MusicGameConfig.instance:getBonusLvs()
-	local keyLv = keyLvs[#keyLvs]
+	local keyLv = #keyLvs
 	local bonusCos = MusicGameConfig.instance:getBonusCos(self._actId)
 	local endLv = #bonusCos
 	local curPosX, _, _ = transformhelper.getLocalPos(self._gocontent.transform)
@@ -213,8 +214,14 @@ function MusicGameEnterView:_refreshSpRewards()
 		end
 	end
 
-	if keyLv == self._keyLv then
-		return
+	if keyLv <= 0 then
+		for i = curLvIndex, 1, -1 do
+			if bonusCos[i] and bonusCos[i].isBigReward and bonusCos[i].isBigReward >= 1 then
+				keyLv = i
+
+				break
+			end
+		end
 	end
 
 	self._keyLv = keyLv
@@ -231,7 +238,6 @@ function MusicGameEnterView:_refreshSpRewards()
 		self._keyBonusItem:init(self._gosprewarditem)
 	end
 
-	self._keyBonusItem:hideRewardState(true)
 	self._keyBonusItem:refresh(co)
 end
 
@@ -240,7 +246,7 @@ function MusicGameEnterView:_refreshTime()
 end
 
 function MusicGameEnterView:onClose()
-	return
+	AudioMgr.instance:trigger(AudioEnum4_0.MusicGame.stop_ui_yingmen4_0_open_music)
 end
 
 function MusicGameEnterView:onDestroyView()

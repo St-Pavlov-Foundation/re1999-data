@@ -19,7 +19,9 @@ function ActFlipView:onInitView()
 	self._golock = gohelper.findChild(self.viewGO, "root/left/#go_lock")
 	self._gorewards = gohelper.findChild(self.viewGO, "root/left/#go_rewards")
 	self._goreward1 = gohelper.findChild(self.viewGO, "root/left/#go_rewards/#go_reward1")
+	self._btnreward1 = gohelper.findChildButtonWithAudio(self.viewGO, "root/left/#go_rewards/#go_reward1/btn_click")
 	self._goreward2 = gohelper.findChild(self.viewGO, "root/left/#go_rewards/#go_reward2")
+	self._btnreward2 = gohelper.findChildButtonWithAudio(self.viewGO, "root/left/#go_rewards/#go_reward2/btn_click")
 	self._txtreward = gohelper.findChildText(self.viewGO, "root/left/#go_rewards/txtbg/#txt_reward")
 	self._btnrewardtip = gohelper.findChildButtonWithAudio(self.viewGO, "root/left/#go_rewards/#btn_rewardtip")
 	self._goprops = gohelper.findChild(self.viewGO, "root/left/#go_props")
@@ -40,20 +42,27 @@ end
 function ActFlipView:addEvents()
 	self._btnleft:AddClickListener(self._btnleftOnClick, self)
 	self._btnright:AddClickListener(self._btnrightOnClick, self)
+	self._btnreward1:AddClickListener(self._btnleftOnClick, self)
+	self._btnreward2:AddClickListener(self._btnrightOnClick, self)
 	self._btnrewardtip:AddClickListener(self._btnrewardtipOnClick, self)
 end
 
 function ActFlipView:removeEvents()
 	self._btnleft:RemoveClickListener()
 	self._btnright:RemoveClickListener()
+	self._btnreward1:RemoveClickListener()
+	self._btnreward2:RemoveClickListener()
 	self._btnrewardtip:RemoveClickListener()
 end
 
 function ActFlipView:_btnleftOnClick()
-	AudioMgr.instance:trigger(AudioEnum4_0.ConcertLimit.play_ui_activity_reward_ending)
-
 	local curCardIndex = ActFlipModel.instance:getCurCardIndex()
 
+	if curCardIndex <= 1 then
+		return
+	end
+
+	AudioMgr.instance:trigger(AudioEnum4_0.ConcertLimit.play_ui_activity_reward_ending)
 	self._changeAnim:Play("switch_right", 0, 0)
 	ActFlipModel.instance:setCurCardIndex(curCardIndex - 1)
 	self:_refreshInfo()
@@ -69,15 +78,6 @@ function ActFlipView:_btnrightOnClick()
 	end
 
 	AudioMgr.instance:trigger(AudioEnum4_0.ConcertLimit.play_ui_activity_reward_ending)
-
-	local isCardUnlock = ActFlipModel.instance:isCardUnlock(curCardIndex + 1)
-
-	if not isCardUnlock then
-		GameFacade.showToast(ToastEnum.ActFlipCardNotUnlock)
-
-		return
-	end
-
 	self._changeAnim:Play("switch_left", 0, 0)
 	ActFlipModel.instance:setCurCardIndex(curCardIndex + 1)
 	self:_refreshInfo()
@@ -96,8 +96,6 @@ function ActFlipView:_editableInitView()
 end
 
 function ActFlipView:_initView()
-	ActFlipModel.instance:setCurCardIndex()
-
 	self._cardItems = self:getUserDataTb_()
 	self._taskItems = self:getUserDataTb_()
 	self._changeAnim = self._goleft:GetComponent(typeof(UnityEngine.Animator))
@@ -128,6 +126,17 @@ function ActFlipView:onOpen()
 	TaskDispatcher.runRepeat(self._refreshTime, self, 1)
 
 	local curCardIndex = ActFlipModel.instance:getCurCardIndex()
+	local isAllRewardGet = ActFlipModel.instance:isCardRewardAllGet(curCardIndex)
+	local isNextRewardGet = ActFlipModel.instance:isCardRewardAllGet(3 - curCardIndex)
+	local isNextCardUnlock = ActFlipModel.instance:isCardUnlock(2)
+
+	if not isNextCardUnlock then
+		curCardIndex = 1
+	elseif isAllRewardGet and not isNextRewardGet then
+		curCardIndex = 3 - curCardIndex
+	end
+
+	ActFlipModel.instance:setCurCardIndex(curCardIndex)
 
 	if curCardIndex > 1 then
 		self._changeAnim:Play("switch_left", 0, 1)
@@ -243,7 +252,6 @@ function ActFlipView:_refreshTasks()
 end
 
 function ActFlipView:onClose()
-	ActFlipModel.instance:setCurCardIndex(nil)
 	TaskDispatcher.cancelTask(self._refreshTime, self)
 end
 

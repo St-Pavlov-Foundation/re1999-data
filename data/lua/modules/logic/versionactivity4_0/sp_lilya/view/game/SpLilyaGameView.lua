@@ -64,10 +64,6 @@ function SpLilyaGameView:_onDragBegin(param, pointerEventData)
 		return
 	end
 
-	if pointerEventData.pressPosition.x > UnityEngine.Screen.width * 0.5 then
-		return
-	end
-
 	local uiCamera = CameraMgr.instance:getUICamera()
 	local localPos = Vector2.zero
 	local isRect, localPos = UnityEngine.RectTransformUtility.ScreenPointToLocalPointInRectangle(self._godragOperate.transform, pointerEventData.pressPosition, uiCamera, localPos)
@@ -77,8 +73,21 @@ function SpLilyaGameView:_onDragBegin(param, pointerEventData)
 	end
 
 	self._activePointerId = pointerEventData.pointerId
-	self._joystickCenterX = localPos.x
-	self._joystickCenterY = localPos.y
+
+	local gameInfo = self.gameInfo
+	local isGround = gameInfo and gameInfo.isGravity ~= SpLilyaEnum.UseGravity.Unuse
+
+	self._groundJoystickUseControlCenter = isGround and UnityEngine.RectTransformUtility.RectangleContainsScreenPoint(self._godragOperate.transform, pointerEventData.pressPosition, uiCamera)
+
+	if self._groundJoystickUseControlCenter then
+		local operateCenter = self._godragOperate.transform.rect.center
+
+		self._joystickCenterX = operateCenter.x
+		self._joystickCenterY = operateCenter.y
+	else
+		self._joystickCenterX = localPos.x
+		self._joystickCenterY = localPos.y
+	end
 
 	transformhelper.setLocalPos(self._imagedragOperate.transform, 0, 0, 0)
 	self:_updateJoystick(pointerEventData)
@@ -103,11 +112,27 @@ end
 
 function SpLilyaGameView:_resetJoystick()
 	self._activePointerId = nil
+	self._groundJoystickUseControlCenter = nil
 
-	transformhelper.setLocalPos(self._imagedragOperate.transform, 0, 0, 0)
+	local gameInfo = self.gameInfo
+	local isGround = gameInfo and gameInfo.isGravity ~= SpLilyaEnum.UseGravity.Unuse
+
+	if isGround then
+		self:_setGroundJoystickHandleOnEdge()
+	else
+		transformhelper.setLocalPos(self._imagedragOperate.transform, 0, 0, 0)
+	end
+
 	transformhelper.setLocalPos(self._godragOperate.transform, self._joystickDefaultX, self._joystickDefaultY, self._joystickDefaultZ)
 	transformhelper.setLocalPos(self._gooperate2.transform, self._joystickDefaultX, self._joystickDefaultY, self._joystickDefaultZ)
 	self:_hideOperation2Arrows()
+end
+
+function SpLilyaGameView:_setGroundJoystickHandleOnEdge()
+	local angle = self._curJoystickAngle or 0
+	local rad = math.rad(angle)
+
+	transformhelper.setLocalPos(self._imagedragOperate.transform, math.cos(rad) * self._joystickRadius, math.sin(rad) * self._joystickRadius, 0)
 end
 
 function SpLilyaGameView:_onShootPressDown()
@@ -164,7 +189,39 @@ function SpLilyaGameView:_onKeyboardUpdate()
 	end
 
 	if Input.GetKeyDown(KeyCode.R) then
+		if not GuideModel.instance:isStepFinish(40020, 3) then
+			return
+		end
+
 		self:_onEnergy()
+	end
+
+	if self._activePointerId ~= nil then
+		return
+	end
+
+	local wsadX, wsadY = 0, 0
+
+	if Input.GetKey(KeyCode.W) then
+		wsadY = 1
+	end
+
+	if Input.GetKey(KeyCode.S) then
+		wsadY = -1
+	end
+
+	if Input.GetKey(KeyCode.A) then
+		wsadX = -1
+	end
+
+	if Input.GetKey(KeyCode.D) then
+		wsadX = 1
+	end
+
+	if wsadX ~= 0 or wsadY ~= 0 then
+		self:_updateKeyboardJoystick(wsadX, wsadY)
+	elseif self._keyboardJoystickActive then
+		self:_resetKeyboardJoystick()
 	end
 end
 
@@ -172,6 +229,10 @@ function SpLilyaGameView:_onEnergy()
 	local gameMO = SpLilyaGameModel.instance:getGameMO()
 
 	if not gameMO then
+		return
+	end
+
+	if gameMO.isEnergy ~= SpLilyaEnum.UseEnergy.Use then
 		return
 	end
 
@@ -227,6 +288,7 @@ function SpLilyaGameView:addEvents()
 	self:addEventCb(SpLilyaGameController.instance, SpLilyaEvent.WaveWaitUpdate, self._onWaveWaitUpdate, self)
 	self:addEventCb(SpLilyaGameController.instance, SpLilyaEvent.TimeUpdate, self.refreshTimeInfo, self)
 	self:addEventCb(SpLilyaGameController.instance, SpLilyaEvent.BulletCreate, self.refreshBulletInfo, self)
+	self:addEventCb(SpLilyaGameController.instance, SpLilyaEvent.BulletExplode, self._onBulletExplode, self)
 	self:addEventCb(SpLilyaGameController.instance, SpLilyaEvent.PowerUpdate, self.refreshShootBtnPowerState, self)
 	self:addEventCb(SpLilyaGameController.instance, SpLilyaEvent.EnergyUpdate, self._onEnergyUpdate, self)
 	self:addEventCb(SpLilyaGameController.instance, SpLilyaEvent.GameReset, self._onGameReset, self)
@@ -245,6 +307,7 @@ function SpLilyaGameView:removeEvents()
 	self:removeEventCb(SpLilyaGameController.instance, SpLilyaEvent.WaveWaitUpdate, self._onWaveWaitUpdate, self)
 	self:removeEventCb(SpLilyaGameController.instance, SpLilyaEvent.TimeUpdate, self.refreshTimeInfo, self)
 	self:removeEventCb(SpLilyaGameController.instance, SpLilyaEvent.BulletCreate, self.refreshBulletInfo, self)
+	self:removeEventCb(SpLilyaGameController.instance, SpLilyaEvent.BulletExplode, self._onBulletExplode, self)
 	self:removeEventCb(SpLilyaGameController.instance, SpLilyaEvent.PowerUpdate, self.refreshShootBtnPowerState, self)
 	self:removeEventCb(SpLilyaGameController.instance, SpLilyaEvent.EnergyUpdate, self._onEnergyUpdate, self)
 	self:removeEventCb(SpLilyaGameController.instance, SpLilyaEvent.GameReset, self._onGameReset, self)
@@ -256,8 +319,10 @@ function SpLilyaGameView:_editableInitView()
 	self._joystickRadius = (recthelper.getWidth(self._godragOperate.transform) - recthelper.getWidth(self._imagedragOperate.transform)) / 2
 	self._joystickDefaultX, self._joystickDefaultY, self._joystickDefaultZ = transformhelper.getLocalPos(self._godragOperate.transform)
 	self._activePointerId = nil
+	self._curJoystickAngle = nil
 	self._useTipList = self:getUserDataTb_()
 	self._keyboardInputEnabled = false
+	self._keyboardJoystickActive = false
 	self._airBackgroundScrolling = false
 
 	self:_resetPowerInputState()
@@ -290,9 +355,20 @@ function SpLilyaGameView:_editableInitView()
 	for i = 1, 4 do
 		self._operation2ArrowList[i] = gohelper.findChild(self.viewGO, string.format("root/#go_drag/#go_operate2/#go_arrow%d/#arrow_light", i))
 	end
+
+	self._operation2ArrowCenters = {
+		180,
+		90,
+		0,
+		-90
+	}
 end
 
 function SpLilyaGameView:_initOperationKeyTips()
+	if GameUtil.isMobilePlayerAndNotEmulator() then
+		return
+	end
+
 	local keyTipResPath = self.viewContainer._viewSetting.otherRes[10]
 
 	self._goShootKeyTip = self:getResInst(keyTipResPath, self._goshoot, "#go_operation_key_tip")
@@ -329,7 +405,7 @@ function SpLilyaGameView:_onWaveWaitUpdate(remainSecond)
 	gohelper.setActive(self._goWaveWaitTip, isWaiting)
 
 	if isWaiting then
-		self._txtWaveWaitTip.text = string.format("%d秒后刷新下一波怪物", remainSecond)
+		self._txtWaveWaitTip.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("v4a0_sp_lilya_wave_wait_tip"), remainSecond)
 	end
 end
 
@@ -342,25 +418,51 @@ function SpLilyaGameView:_updateJoystick(pointerEventData)
 		return
 	end
 
-	local dirX = localPos.x - (self._joystickCenterX or 0)
-	local dirY = localPos.y - (self._joystickCenterY or 0)
+	local gameInfo = self.gameInfo
+	local centerX = self._joystickCenterX or 0
+	local centerY = self._joystickCenterY or 0
+	local isGround = gameInfo and gameInfo.isGravity ~= SpLilyaEnum.UseGravity.Unuse
+
+	if isGround and not self._groundJoystickUseControlCenter then
+		centerX, centerY = self:_getGroundJoystickCenter(uiCamera, centerX, centerY)
+	end
+
+	local dirX = localPos.x - centerX
+	local dirY = localPos.y - centerY
 	local dist = math.sqrt(dirX * dirX + dirY * dirY)
 
 	if dist > 0 then
-		local clampedDist = math.min(dist, self._joystickRadius)
-		local scale = clampedDist / dist
+		local clampedDist = isGround and self._joystickRadius or math.min(dist, self._joystickRadius)
+		local angle = math.deg(math.atan2(dirY, dirX))
 
-		transformhelper.setLocalPos(self._imagedragOperate.transform, dirX * scale, dirY * scale, 0)
+		angle = math.max(SpLilyaEnum.RotateLimit.Min, math.min(SpLilyaEnum.RotateLimit.Max, angle))
 
-		local gameInfo = self.gameInfo
+		local rad = math.rad(angle)
+		local handleX = math.cos(rad) * clampedDist
+		local handleY = math.sin(rad) * clampedDist
+
+		transformhelper.setLocalPos(self._imagedragOperate.transform, handleX, handleY, 0)
 
 		if gameInfo and gameInfo.isGravity == SpLilyaEnum.UseGravity.Unuse then
 			self:_updateOperation2Arrows(dirX, dirY)
 			SpLilyaGameController.instance:setPlayerMoveDir(dirX / dist, dirY / dist)
 		else
-			local angle = math.deg(math.atan2(dirY, dirX))
+			if not self._curJoystickAngle then
+				self._curJoystickAngle = angle
+			else
+				local deltaAngle = angle - self._curJoystickAngle
+				local maxDelta = SpLilyaEnum.JoystickSpeed * UnityEngine.Time.deltaTime
 
-			angle = math.max(SpLilyaEnum.RotateLimit.Min, math.min(SpLilyaEnum.RotateLimit.Max, angle))
+				if maxDelta < deltaAngle then
+					deltaAngle = maxDelta
+				elseif deltaAngle < -maxDelta then
+					deltaAngle = -maxDelta
+				end
+
+				self._curJoystickAngle = self._curJoystickAngle + deltaAngle
+			end
+
+			angle = self._curJoystickAngle
 
 			if self._playerEntity then
 				local shotSpeed = SpLilyaGameController.instance:getShotSpeed()
@@ -372,14 +474,40 @@ function SpLilyaGameView:_updateJoystick(pointerEventData)
 	end
 end
 
+function SpLilyaGameView:_getGroundJoystickCenter(uiCamera, fallbackX, fallbackY)
+	if not self._playerEntity then
+		return fallbackX, fallbackY
+	end
+
+	local spineWorldPos = self._playerEntity:getSpineWorldPos()
+
+	if not spineWorldPos or not uiCamera then
+		return fallbackX, fallbackY
+	end
+
+	local screenPos = uiCamera:WorldToScreenPoint(spineWorldPos)
+	local localCenter = Vector2.zero
+	local isRect, localCenter = UnityEngine.RectTransformUtility.ScreenPointToLocalPointInRectangle(self._godragOperate.transform, screenPos, uiCamera, localCenter)
+
+	if not isRect then
+		return fallbackX, fallbackY
+	end
+
+	return localCenter.x, localCenter.y
+end
+
 function SpLilyaGameView:_updateOperation2Arrows(dirX, dirY)
 	local angle = math.deg(math.atan2(dirY, dirX))
-	local activeIndex
-
-	activeIndex = angle >= 45 and angle < 135 and 1 or angle >= -45 and angle < 45 and 2 or angle >= -135 and angle < -45 and 3 or 4
+	local centers = self._operation2ArrowCenters
 
 	for i = 1, 4 do
-		gohelper.setActive(self._operation2ArrowList[i], i == activeIndex)
+		local diff = math.abs(angle - centers[i])
+
+		if diff > 180 then
+			diff = 360 - diff
+		end
+
+		gohelper.setActive(self._operation2ArrowList[i], diff <= 67.5)
 	end
 end
 
@@ -389,6 +517,73 @@ function SpLilyaGameView:_hideOperation2Arrows()
 	end
 end
 
+function SpLilyaGameView:_updateKeyboardJoystick(dirX, dirY)
+	self._keyboardJoystickActive = true
+
+	local dist = math.sqrt(dirX * dirX + dirY * dirY)
+
+	if dist <= 0 then
+		return
+	end
+
+	local angle = math.deg(math.atan2(dirY, dirX))
+
+	angle = math.max(SpLilyaEnum.RotateLimit.Min, math.min(SpLilyaEnum.RotateLimit.Max, angle))
+
+	local rad = math.rad(angle)
+	local handleX = math.cos(rad) * self._joystickRadius
+	local handleY = math.sin(rad) * self._joystickRadius
+
+	transformhelper.setLocalPos(self._imagedragOperate.transform, handleX, handleY, 0)
+
+	local gameInfo = self.gameInfo
+
+	if gameInfo and gameInfo.isGravity == SpLilyaEnum.UseGravity.Unuse then
+		self:_updateOperation2Arrows(dirX, dirY)
+		SpLilyaGameController.instance:setPlayerMoveDir(dirX / dist, dirY / dist)
+	else
+		if not self._curJoystickAngle then
+			self._curJoystickAngle = angle
+		else
+			local deltaAngle = angle - self._curJoystickAngle
+			local maxDelta = SpLilyaEnum.JoystickSpeed * UnityEngine.Time.deltaTime
+
+			if maxDelta < deltaAngle then
+				deltaAngle = maxDelta
+			elseif deltaAngle < -maxDelta then
+				deltaAngle = -maxDelta
+			end
+
+			self._curJoystickAngle = self._curJoystickAngle + deltaAngle
+		end
+
+		angle = self._curJoystickAngle
+
+		if self._playerEntity then
+			local shotSpeed = SpLilyaGameController.instance:getShotSpeed()
+
+			self._playerEntity:setRotation(angle, shotSpeed)
+			SpLilyaGameController.instance:setPlayerRotation(angle)
+		end
+	end
+end
+
+function SpLilyaGameView:_resetKeyboardJoystick()
+	self._keyboardJoystickActive = false
+
+	local gameInfo = self.gameInfo
+	local isGround = gameInfo and gameInfo.isGravity ~= SpLilyaEnum.UseGravity.Unuse
+
+	if isGround then
+		self:_setGroundJoystickHandleOnEdge()
+	else
+		transformhelper.setLocalPos(self._imagedragOperate.transform, 0, 0, 0)
+	end
+
+	SpLilyaGameController.instance:setPlayerMoveDir(nil, nil)
+	self:_hideOperation2Arrows()
+end
+
 function SpLilyaGameView:onUpdateParam()
 	return
 end
@@ -396,10 +591,17 @@ end
 function SpLilyaGameView:onOpen()
 	self:checkParam()
 	self:refreshUI()
+	self:setSwitch()
 
 	self._keyboardInputEnabled = true
+	self._keyboardUpdateListener = UpdateBeat:CreateListener(self._onKeyboardUpdate, self)
 
-	UpdateBeat:Add(self._onKeyboardUpdate, self)
+	UpdateBeat:AddListener(self._keyboardUpdateListener)
+end
+
+function SpLilyaGameView:setSwitch()
+	AudioBgmManager.instance:setSwitchData(AudioBgmEnum.Layer.V4A0_SpLilya, FightEnum.AudioSwitchGroup, FightEnum.AudioSwitch.Fightnormal)
+	AudioBgmManager.instance:modifyBgmAudioId(AudioBgmEnum.Layer.V4A0_SpLilya, AudioEnum4_0.SpLilya.play_battle_shiji_1_8_normalfight)
 end
 
 function SpLilyaGameView:checkParam()
@@ -434,6 +636,10 @@ function SpLilyaGameView:initPlayerEntity()
 
 		self._playerEntity:initEntity(self._gosceneRoot)
 		self._playerEntity:setCurveType(self.gameConfig.isGravity)
+
+		if self.gameInfo and self.gameInfo.isGravity ~= SpLilyaEnum.UseGravity.Unuse then
+			self:_setGroundJoystickHandleOnEdge()
+		end
 	end
 end
 
@@ -445,6 +651,9 @@ function SpLilyaGameView:initBtn()
 	self:_hideOperation2Arrows()
 	gohelper.setActive(self._goshoot, not isAutoFire)
 	gohelper.setActive(self._gobullet, self.gameConfig.isEnergy == SpLilyaEnum.UseEnergy.Use)
+
+	self._lastPowerProgress = 0
+
 	self:refreshShootBtnPowerState(0)
 
 	local playerMo = self.gameInfo and self.gameInfo.playerMo
@@ -471,6 +680,22 @@ function SpLilyaGameView:refreshShootBtnPowerState(powerTime)
 	gohelper.setActive(self._goSubState1, isPower and progress >= thresholds[1])
 	gohelper.setActive(self._goSubState2, isPower and progress >= thresholds[2])
 	gohelper.setActive(self._goSubState3, isPower and progress >= thresholds[3])
+
+	local lastProgress = self._lastPowerProgress or 0
+
+	if progress >= 0.33 and lastProgress < 0.33 then
+		AudioMgr.instance:trigger(AudioEnum4_0.SpLilya.play_ui_yingmen_hnj_xuli2)
+	end
+
+	if progress > 0.667 and lastProgress <= 0.667 then
+		AudioMgr.instance:trigger(AudioEnum4_0.SpLilya.play_ui_yingmen_hnj_xuli3)
+	end
+
+	if progress >= 1 and lastProgress < 1 then
+		AudioMgr.instance:trigger(AudioEnum4_0.SpLilya.play_ui_yingmen_hnj_xuliall)
+	end
+
+	self._lastPowerProgress = progress
 end
 
 function SpLilyaGameView:_onPlayerMove(posX, posY)
@@ -486,12 +711,19 @@ function SpLilyaGameView:_onEnergyUpdate(curEnergy, energyMax)
 	self:refreshEnergy(curEnergy, energyMax)
 end
 
+function SpLilyaGameView:_onBulletExplode()
+	AudioMgr.instance:trigger(AudioEnum4_0.SpLilya.play_ui_yingmen_hnj_boom)
+end
+
 function SpLilyaGameView:_onGameReset()
 	self._keyboardInputEnabled = true
 	self._airBackgroundScrolling = self.gameConfig.isGravity == SpLilyaEnum.UseGravity.Unuse
 
 	self:_resetPowerInputState()
-	self:_hideOperation2Arrows()
+
+	self._lastPowerProgress = 0
+
+	self:_resetKeyboardJoystick()
 
 	local playerMo = self.gameInfo and self.gameInfo.playerMo
 
@@ -503,6 +735,8 @@ function SpLilyaGameView:_onGameReset()
 	self._energyClickAnimator:Play(SpLilyaEnum.EnergyClickAnimatorName.Idle, 0, 0)
 	gohelper.setActive(self._goWaveWaitTip, false)
 	self:refreshWaveInfo()
+	self:refreshBulletInfo()
+	self:refreshTimeInfo()
 end
 
 function SpLilyaGameView:refreshEnergy(curEnergy, energyMax)
@@ -550,6 +784,8 @@ function SpLilyaGameView:refreshBulletInfo(noPlayAnim)
 
 		self._txtnum.text = desc
 	end
+
+	AudioMgr.instance:trigger(AudioEnum4_0.SpLilya.play_ui_yingmen_hnj_fashe)
 end
 
 function SpLilyaGameView:refreshWaveInfo()
@@ -560,6 +796,7 @@ function SpLilyaGameView:refreshWaveInfo()
 	self._txtdesc.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("v4a0_sp_lilya_wave_tip"), self.gameInfo.curWave + 1)
 
 	self._waveAnimator:Play(SpLilyaEnum.WaveAnimatorName.Update, 0, 0)
+	AudioMgr.instance:trigger(AudioEnum4_0.SpLilya.play_ui_shiji3_8_djs_level)
 end
 
 function SpLilyaGameView:_onWaveAnimPlayFinish()
@@ -663,6 +900,7 @@ function SpLilyaGameView:_onGameEnd()
 	self._airBackgroundScrolling = false
 
 	self:_resetPowerInputState()
+	self:_resetKeyboardJoystick()
 	gohelper.setActive(self._goWaveWaitTip, false)
 
 	local gameInfo = self.gameInfo
@@ -678,12 +916,15 @@ function SpLilyaGameView:_onGameEnd()
 end
 
 function SpLilyaGameView:onClose()
-	UpdateBeat:Remove(self._onKeyboardUpdate, self)
+	AudioBgmManager.instance:stopBgm(AudioBgmEnum.Layer.V4A0_SpLilya)
+	UpdateBeat:RemoveListener(self._keyboardUpdateListener)
 
+	self._keyboardUpdateListener = nil
 	self._keyboardInputEnabled = false
 	self._airBackgroundScrolling = false
 
 	self:_resetPowerInputState()
+	self:_resetKeyboardJoystick()
 	TaskDispatcher.cancelTask(self._onWaveAnimPlayFinish, self)
 end
 

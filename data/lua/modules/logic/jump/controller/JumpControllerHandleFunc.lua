@@ -180,6 +180,7 @@ function JumpController:jumpToDungeonViewWithEpisode(jumpParam)
 	table.insert(self.closeViewNames, ViewName.DungeonPuzzleChangeColorView)
 	table.insert(self.closeViewNames, ViewName.InvestigateOpinionView)
 	table.insert(self.closeViewNames, ViewName.InvestigateView)
+	table.insert(self.closeViewNames, ViewName.SonnetInterchapterTaskView)
 
 	for viewName in pairs(ActivityHelper.getJumpNeedCloseViewDict()) do
 		table.insert(self.closeViewNames, viewName)
@@ -330,6 +331,18 @@ end
 
 function JumpController:jumpToHeroGroupPreView(jumpParam)
 	HeroGroupPresetController.instance:openHeroGroupPresetTeamView()
+
+	return JumpEnum.JumpResult.Success
+end
+
+function JumpController:jumpToCollege(jumpParam)
+	if not OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.College) then
+		GameFacade.showToast(OpenModel.instance:getFuncUnlockDesc(OpenEnum.UnlockFunc.College))
+
+		return JumpEnum.JumpResult.Fail
+	end
+
+	CollegeController.instance:enterCollegeCity()
 
 	return JumpEnum.JumpResult.Success
 end
@@ -1279,6 +1292,12 @@ function JumpController:jumpToV3a9BossRush(jumpParam)
 	return JumpEnum.JumpResult.Success
 end
 
+function JumpController:jumpToCandyRoom(jumpParam)
+	ConcertLimitController.instance:openCandyRoomView()
+
+	return JumpEnum.JumpResult.Success
+end
+
 function JumpController:jumpToAct1_5EnterView(jumpParam, paramList)
 	table.insert(self.waitOpenViewNames, ViewName.VersionActivity1_5EnterView)
 	VersionActivity1_5EnterController.instance:openVersionActivityEnterView()
@@ -1526,7 +1545,7 @@ end
 function JumpController:jumpToVersionEnterView(jumpParam)
 	local paramsList = string.splitToNumber(jumpParam, "#")
 	local actId = paramsList[2]
-	local versionActId
+	local versionActId = actId
 
 	if not actId then
 		for i = #ActivityEnum.VersionActivityIdList, 1, -1 do
@@ -2086,7 +2105,9 @@ JumpController.JumpViewToHandleFunc = {
 	[JumpEnum.JumpView.Udimo] = JumpController.jumpToUdimoView,
 	[JumpEnum.JumpView.MainSwitchView] = JumpController.jumpToMainSwitchView,
 	[JumpEnum.JumpView.V3a9BossRush] = JumpController.jumpToV3a9BossRush,
-	[JumpEnum.JumpView.HeroGroupPreView] = JumpController.jumpToHeroGroupPreView
+	[JumpEnum.JumpView.HeroGroupPreView] = JumpController.jumpToHeroGroupPreView,
+	[JumpEnum.JumpView.College] = JumpController.jumpToCollege,
+	[JumpEnum.JumpView.V4a0CandyRoom] = JumpController.jumpToCandyRoom
 }
 JumpController.JumpActViewToHandleFunc = {
 	[JumpEnum.ActIdEnum.Act117] = JumpController.jumpToAct117,

@@ -45,8 +45,6 @@ function MatchGameSkillConditionHandler:checkCondition_OnMatchCountMoreThan(cond
 	local curMatchNum = MatchGameFightModel.instance:getSkillExcuteMatchElementNum(elementId)
 
 	if needMatchNum <= curMatchNum then
-		MatchGameFightModel.instance:cleanSkillExcuteMatchElementNum(elementId)
-
 		return true
 	end
 

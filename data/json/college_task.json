@@ -50,7 +50,7 @@
   {
     "id": 4031007,
     "stageId": 4030004,
-    "description": "<#FFEA73>引光室</color>到达2级",
+    "description": "<#FFEA73>引光室</color>到达2级（解锁<#FFEA73>白鹿沼泽</color>）",
     "maxProgress": 2,
     "reward": "4003001:2&4002001:1500",
     "jumpId": "Building#4010002#401008"
@@ -60,7 +60,7 @@
     "stageId": 4030004,
     "description": "<sprite=1><#FFEA73>无眠烛台</color>产量达到200/回合",
     "maxProgress": 200,
-    "reward": "4003001:2",
+    "reward": "4003001:1",
     "jumpId": "Building#4010002#401008"
   },
   {
@@ -82,7 +82,7 @@
   {
     "id": 4031011,
     "stageId": 4030005,
-    "description": "<#FFEA73>宿舍</color>到达2级",
+    "description": "<#FFEA73>宿舍</color>到达2级（解锁<#FFEA73>布罗肯高地</color>）",
     "maxProgress": 2,
     "reward": "4003001:1",
     "jumpId": "Building#4010004#401008"
@@ -114,7 +114,7 @@
   {
     "id": 4031015,
     "stageId": 4030006,
-    "description": "<#FFEA73>常春温室</color>到达2级",
+    "description": "<#FFEA73>常春温室</color>到达2级（解锁<#FFEA73>安温石环</color>）",
     "maxProgress": 2,
     "reward": "4003001:1",
     "jumpId": "Building#4010003#401008"
@@ -146,7 +146,7 @@
   {
     "id": 4031019,
     "stageId": 4030007,
-    "description": "<#FFEA73>学院主楼</color>到达2级",
+    "description": "<#FFEA73>学院主楼</color>到达2级（解锁<#FFEA73>格拉斯顿伯里突岩</color>）",
     "maxProgress": 2,
     "reward": "4002001:3000&4002003:300",
     "jumpId": "Building#4010005#401008"

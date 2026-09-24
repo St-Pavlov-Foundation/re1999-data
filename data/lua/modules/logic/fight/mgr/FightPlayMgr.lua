@@ -71,6 +71,7 @@ function FightPlayMgr:playUseQteSkill()
 	local flow = self.workComp:registWork(FightWorkFlowSequence)
 
 	flow:registWork(FightWorkUseQteSkill)
+	flow:addWork(FunctionWork.New(FightController.trySendEndFightRequest, FightController.instance))
 	flow:registWork(FightWorkPlay2QteOperate)
 	flow:start()
 end

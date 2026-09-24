@@ -13,6 +13,11 @@ function DeleikeTileMo:init(type, x, y, pos, rotation, polygon, rect)
 		y = pos.y
 	}
 	self.rotation = rotation or 0
+
+	local rad = math.rad(self.rotation)
+
+	self.cosR = math.cos(rad)
+	self.sinR = math.sin(rad)
 	self.polygon = polygon or DeleikeHelper.GetSquarePoly(type)
 
 	if rect then

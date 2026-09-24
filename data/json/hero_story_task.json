@@ -1114,7 +1114,7 @@
     "desc": "完成所有章节关卡",
     "listenerType": "HeroStoryCommonTask",
     "listenerParam": "0#3401",
-    "maxProgress": 11,
+    "maxProgress": 10,
     "activityId": 0,
     "jumpId": 0,
     "bonus": "40004008"

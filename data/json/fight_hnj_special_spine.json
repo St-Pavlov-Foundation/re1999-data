@@ -57,7 +57,7 @@
     "bornAnimDuration": 1,
     "bornEffect": "buff/born/sxnwhnj_skill1_born",
     "bornPoint": "mountroot",
-    "bornAudio": 431550151,
+    "bornAudio": 431550352,
     "bornDuration": 2,
     "effect": "v4a0_tlzchnj/tlzchnj_innate2",
     "hangPoint": "mountroot",
@@ -65,7 +65,7 @@
     "dieAnimDuration": 1,
     "dieEffect": "v4a0_sxnwhnj/sxnwhnj_skill1_03_05",
     "diePoint": "mountroot",
-    "dieAudio": 431550152,
+    "dieAudio": 431550353,
     "dieDuration": 2
   }
 ]

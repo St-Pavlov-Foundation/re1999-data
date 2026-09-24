@@ -215,6 +215,30 @@ module_views.MainSceneSkinMaterialTipView2 = {
 		}
 	}
 }
+module_views.DecoratePackageBuyView = {
+	container = "DecoratePackageBuyViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/mainsceneswitch/mainsceneskinmaterialtipview2.prefab",
+	destroy = 0,
+	blurIterations = 3,
+	blurFactor = 0.85,
+	layer = "POPUP_TOP",
+	viewType = ViewType.Modal,
+	desampleRate = PostProcessingMgr.DesamplingRate.x8,
+	reduceRate = PostProcessingMgr.DesamplingRate.x8,
+	tabRes = {
+		{
+			{
+				"ui/viewres/store/decoratestorelefttabview.prefab"
+			}
+		},
+		{
+			{
+				CurrencyView.prefabPath
+			}
+		}
+	}
+}
 module_views.SceneUIPackageGoodsTipView = {
 	container = "SceneUIPackageGoodsTipViewContainer",
 	bgBlur = 1,
@@ -277,34 +301,44 @@ module_views.FightUISwitchSceneView = {
 	reduceRate = PostProcessingMgr.DesamplingRate.x8
 }
 module_views.FightUISwitchEquipView = {
-	bgBlur = 1,
 	container = "FightUISwitchEquipViewContainer",
+	bgBlur = 1,
 	mainRes = "ui/viewres/mainsceneswitch/fightuiswitchequipview.prefab",
 	destroy = 0,
 	blurIterations = 3,
 	blurFactor = 0.85,
 	layer = "POPUP_TOP",
 	viewType = ViewType.Modal,
-	anim = ViewAnim.Default,
 	desampleRate = PostProcessingMgr.DesamplingRate.x8,
 	reduceRate = PostProcessingMgr.DesamplingRate.x8
 }
 module_views.DecorateMaterialTipView = {
+	destroy = 0,
 	container = "DecorateMaterialTipViewContainer",
 	bgBlur = 1,
 	mainRes = "ui/viewres/mainsceneswitch/mainsceneskinmaterialtipview.prefab",
-	destroy = 0,
-	blurIterations = 3,
-	blurFactor = 0.85,
 	layer = "POPUP_TOP",
-	viewType = ViewType.Modal,
-	desampleRate = PostProcessingMgr.DesamplingRate.x8,
-	reduceRate = PostProcessingMgr.DesamplingRate.x8
+	viewType = ViewType.Modal
 }
 module_views.DecorateMaterialBuyView = {
-	bgBlur = 1,
+	destroy = 0,
 	container = "DecorateMaterialBuyViewContainer",
+	bgBlur = 1,
 	mainRes = "ui/viewres/mainsceneswitch/mainsceneskinmaterialtipview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Modal,
+	tabRes = {
+		{
+			{
+				CurrencyView.prefabPath
+			}
+		}
+	}
+}
+module_views.DecorateSkinBuyView = {
+	bgBlur = 1,
+	container = "DecorateSkinBuyViewContainer",
+	mainRes = "ui/viewres/store/storeskingoodsview2.prefab",
 	destroy = 0,
 	blurIterations = 3,
 	blurFactor = 0.85,
@@ -312,7 +346,17 @@ module_views.DecorateMaterialBuyView = {
 	viewType = ViewType.Modal,
 	anim = ViewAnim.Default,
 	desampleRate = PostProcessingMgr.DesamplingRate.x8,
-	reduceRate = PostProcessingMgr.DesamplingRate.x8
+	reduceRate = PostProcessingMgr.DesamplingRate.x8,
+	tabRes = {
+		{
+			{
+				CurrencyView.prefabPath
+			}
+		}
+	},
+	otherRes = {
+		[1] = "ui/viewres/store/decoratestorelefttabview.prefab"
+	}
 }
 module_views.MainSwitchView = {
 	destroy = 0,
@@ -4878,7 +4922,7 @@ module_views.RoomMaterialTipView = {
 	blurFactor = 0.85,
 	layer = "POPUP_TOP",
 	viewType = ViewType.Modal,
-	anim = ViewAnim.Default,
+	anim = ViewAnim.Internal,
 	desampleRate = PostProcessingMgr.DesamplingRate.x8,
 	reduceRate = PostProcessingMgr.DesamplingRate.x8
 }
@@ -23114,7 +23158,7 @@ module_views.SonnetInterchapterTaskView = {
 	container = "SonnetInterchapterTaskViewContainer",
 	mainRes = "ui/viewres/dungeon/v4a0_dungeontaskview.prefab",
 	layer = "POPUP_TOP",
-	viewType = ViewType.Full,
+	viewType = ViewType.Normal,
 	anim = ViewAnim.Internal,
 	tabRes = {
 		{
@@ -27114,6 +27158,21 @@ module_views.SettingsCurrencyView = {
 	layer = "POPUP_TOP",
 	viewType = ViewType.Modal,
 	anim = ViewAnim.Default
+}
+module_views.CharacterNormalSkinView = {
+	destroy = 0,
+	container = "CharacterNormalSkinViewContainer",
+	mainRes = "ui/viewres/character/characternormalskinview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full,
+	anim = ViewAnim.Internal,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	}
 }
 
 local ViewName = {}

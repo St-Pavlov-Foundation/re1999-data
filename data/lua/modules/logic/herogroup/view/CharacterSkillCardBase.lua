@@ -78,7 +78,15 @@ function CharacterSkillCardBase:_refreshCardUI()
 		self:_copyCardItems()
 	end
 
-	if not self._heroId then
+	if not self._heroId or not HeroConfig.instance:getHeroCO(self._heroId) then
+		for i, v in ipairs(self._cardItems) do
+			local item = v.cardItem
+
+			if item then
+				gohelper.setActive(item.go.gameObject, false)
+			end
+		end
+
 		return
 	end
 
@@ -92,7 +100,7 @@ function CharacterSkillCardBase:_refreshCardUI()
 		item.icon:UnLoadImage()
 		item.tag:UnLoadImage()
 
-		if skillId then
+		if skillId and skillId ~= 0 then
 			local skillCO = lua_skill.configDict[skillId]
 
 			if not skillCO then
@@ -167,12 +175,14 @@ function CharacterSkillCardBase:_onSkillCardClick(index)
 end
 
 function CharacterSkillCardBase:onDestroy()
-	for i, v in ipairs(self._cardItems) do
-		local item = v.cardItem
+	if self._cardItems then
+		for i, v in ipairs(self._cardItems) do
+			local item = v.cardItem
 
-		item.btn:RemoveClickListener()
-		item.icon:UnLoadImage()
-		item.tag:UnLoadImage()
+			item.btn:RemoveClickListener()
+			item.icon:UnLoadImage()
+			item.tag:UnLoadImage()
+		end
 	end
 end
 

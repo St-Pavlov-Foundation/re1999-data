@@ -314,16 +314,19 @@ function TowerComposeHeroGroupListView:_checkRestrictHero()
 
 		local planeId = Mathf.Ceil(i / 4)
 		local planeMo = curBossMo:getPlaneMo(planeId)
-		local teamInfoData = planeMo:getTeamInfoData()
-		local dataPos = i > 4 and i - 4 or i
-		local heroData = teamInfoData.heros[dataPos]
 
-		if heroData and heroData.heroId > 0 and heroData.assistMo and not self:checkHeroItemInLockPlane(i) then
-			needRemoveHeroUidDict[heroData.assistMo.heroUid] = true
+		if planeMo then
+			local teamInfoData = planeMo:getTeamInfoData()
+			local dataPos = i > 4 and i - 4 or i
+			local heroData = teamInfoData.heros[dataPos]
 
-			TowerComposeModel.instance:clearAssist(true, {
-				planeId = planeId
-			})
+			if heroData and heroData.heroId > 0 and heroData.assistMo and not self:checkHeroItemInLockPlane(i) then
+				needRemoveHeroUidDict[heroData.assistMo.heroUid] = true
+
+				TowerComposeModel.instance:clearAssist(true, {
+					planeId = planeId
+				})
+			end
 		end
 	end
 

@@ -48,7 +48,6 @@ function StoryFrontItem:showFullScreenText(show, txt)
 		self._fadeOutCallback = nil
 		self._fadeOutCallbackObj = nil
 
-		self:_killTextTween()
 		self:_killFloatTween()
 		ZProj.TweenHelper.KillByObj(self._copyText)
 
@@ -772,16 +771,18 @@ function StoryFrontItem:playGostMagic(co, callback, callbackobj)
 		rt.anchoredPosition = Vector2(0, 0)
 	end
 
-	self._savedUIPPValues = {
-		localBloomActive = PostProcessingMgr.instance:getUIPPValue("localBloomActive"),
-		bloomDiffusion = PostProcessingMgr.instance:getUIPPValue("bloomDiffusion"),
-		bloomThreshold = PostProcessingMgr.instance:getUIPPValue("bloomThreshold"),
-		bloomPercent = PostProcessingMgr.instance:getUIPPValue("bloomPercent"),
-		localBloomFactor = PostProcessingMgr.instance:getUIPPValue("localBloomFactor"),
-		bloomIntensity = PostProcessingMgr.instance:getUIPPValue("bloomIntensity"),
-		bloomRTDownTimes = PostProcessingMgr.instance:getUIPPValue("bloomRTDownTimes"),
-		localBloomColor = PostProcessingMgr.instance:getUIPPValue("localBloomColor")
-	}
+	if not self._savedUIPPValues then
+		self._savedUIPPValues = {
+			localBloomActive = PostProcessingMgr.instance:getUIPPValue("localBloomActive"),
+			bloomDiffusion = PostProcessingMgr.instance:getUIPPValue("bloomDiffusion"),
+			bloomThreshold = PostProcessingMgr.instance:getUIPPValue("bloomThreshold"),
+			bloomPercent = PostProcessingMgr.instance:getUIPPValue("bloomPercent"),
+			localBloomFactor = PostProcessingMgr.instance:getUIPPValue("localBloomFactor"),
+			bloomIntensity = PostProcessingMgr.instance:getUIPPValue("bloomIntensity"),
+			bloomRTDownTimes = PostProcessingMgr.instance:getUIPPValue("bloomRTDownTimes"),
+			localBloomColor = PostProcessingMgr.instance:getUIPPValue("localBloomColor")
+		}
+	end
 
 	PostProcessingMgr.instance:setUIPPValue("localBloomActive", true)
 	PostProcessingMgr.instance:setUIPPValue("bloomDiffusion", 6.45)

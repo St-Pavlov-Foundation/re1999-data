@@ -18,6 +18,7 @@ function V3a7_SkinGiftFullView:onInitView()
 	self._txtnum = gohelper.findChildText(self.viewGO, "Root/right/go_reward/txtbg/#txt_num")
 	self._goclaim = gohelper.findChild(self.viewGO, "Root/right/go_reward/#go_claim")
 	self._btnclaim = gohelper.findChildButtonWithAudio(self.viewGO, "Root/right/go_reward/#go_claim/#btn_claim")
+	self._btnclick = gohelper.findChildButtonWithAudio(self.viewGO, "Root/right/go_reward/#btn_click")
 	self._gohasget = gohelper.findChild(self.viewGO, "Root/right/go_reward/#go_hasget")
 	self._btnbuy = gohelper.findChildButtonWithAudio(self.viewGO, "Root/right/Btn/#btn_buy")
 	self._txtget = gohelper.findChildText(self.viewGO, "Root/right/Btn/#btn_buy/#txt_get")
@@ -35,6 +36,7 @@ function V3a7_SkinGiftFullView:addEvents()
 	self._btntitle01:AddClickListener(self._btntitle01OnClick, self)
 	self._btntitle02:AddClickListener(self._btntitle02OnClick, self)
 	self._btnclaim:AddClickListener(self._btnclaimOnClick, self)
+	self._btnclick:AddClickListener(self._btnclickOnClick, self)
 	self._btnbuy:AddClickListener(self._btnbuyOnClick, self)
 end
 
@@ -45,6 +47,7 @@ function V3a7_SkinGiftFullView:removeEvents()
 	self._btntitle01:RemoveClickListener()
 	self._btntitle02:RemoveClickListener()
 	self._btnclaim:RemoveClickListener()
+	self._btnclick:RemoveClickListener()
 	self._btnbuy:RemoveClickListener()
 end
 
@@ -91,6 +94,21 @@ function V3a7_SkinGiftFullView:_btnclaimOnClick()
 	end
 
 	Activity101Rpc.instance:sendGet101BonusRequest(self.actId, V3a7_SkinGiftEnum.RewardIndex)
+end
+
+function V3a7_SkinGiftFullView:_btnclickOnClick()
+	local state = ActivityType101Model.instance:getType101InfoState(self.actId, V3a7_SkinGiftEnum.RewardIndex)
+	local canGet = state == ActivityEnum.Act101RewardState.Available
+
+	if canGet then
+		return
+	end
+
+	local config = ActivityType101Config.instance:getDayCO(self.actId, V3a7_SkinGiftEnum.RewardIndex)
+	local bonusParamStr = string.split(config.bonus, "|")[1]
+	local bonusParam = string.split(bonusParamStr, "#")
+
+	MaterialTipController.instance:showMaterialInfo(bonusParam[1], bonusParam[2])
 end
 
 function V3a7_SkinGiftFullView:_btnbuyOnClick()
@@ -229,6 +247,7 @@ function V3a7_SkinGiftFullView:refreshRewardState()
 	local canGet = state == ActivityEnum.Act101RewardState.Available
 
 	gohelper.setActive(self._gohasget, isGet)
+	gohelper.setActive(self._btnclick, isGet)
 	gohelper.setActive(self._goclaim, canGet)
 end
 

@@ -100,7 +100,7 @@
   {
     "id": 400,
     "name": "三消玩法",
-    "icon": "singlebg_lang/txt_v3a7_sodache_singlebg/v3a7_sodache_banner.png",
+    "icon": "modules\\matchgame\\singlebg_lang\\matchgame\\v4a0_matchgame_banner.png",
     "sortId": 1,
     "show": 1
   }

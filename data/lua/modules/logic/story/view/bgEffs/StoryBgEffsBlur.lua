@@ -42,17 +42,30 @@ function StoryBgEffsBlur:onLoadFinished()
 	local bgBlur = StoryViewMgr.instance:getStoryBgBlurComp()
 
 	if bgBlur then
-		bgBlur.enabled = true
+		if not bgBlur.enabled then
+			bgBlur.enabled = true
+			bgBlur.blurWeight = 0
+		end
 
 		local values = {
 			0,
 			0.8,
 			0.9,
-			1
+			1,
+			0.6
 		}
-		local targetValue = values[self._bgCo.effDegree + 1] or 0
+		local index = self._bgCo.effDegree + 1
+		local targetValue = values[index] or 0
 
-		bgBlur.blurFactor = 0
+		if index == 5 then
+			bgBlur.blurFactor = 1
+			bgBlur.blurIterations = 2
+			bgBlur.reduteRate = 2
+		elseif targetValue > 0 then
+			bgBlur.blurFactor = 0
+			bgBlur.blurIterations = 3
+			bgBlur.reduteRate = 8
+		end
 
 		local transTime = self._bgCo.effTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()]
 

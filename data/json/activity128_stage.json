@@ -1655,8 +1655,8 @@
     "resultViewNameSImage": "v3a2_bossrush_leveldetail_boss2titlebg",
     "skinIds": "690402",
     "heartVariantId": 0,
-    "skinScales": "1",
-    "skinOffsetXYs": "-241#-373"
+    "skinScales": "0.65",
+    "skinOffsetXYs": "-241#-66.4"
   },
   {
     "activityId": 14009,

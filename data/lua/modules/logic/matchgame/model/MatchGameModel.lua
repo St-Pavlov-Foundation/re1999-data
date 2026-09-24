@@ -16,6 +16,7 @@ function MatchGameModel:reInit()
 	self.receivedBonusId = 0
 	self.episodeMap = nil
 	self.challengeMo = nil
+	self.newCharacterList = {}
 end
 
 function MatchGameModel:onUpdateInfo(msg)
@@ -31,7 +32,6 @@ function MatchGameModel:onUpdateInfo(msg)
 
 	self:updateNormalScore()
 	self:updateTalentAttrChangeMap()
-	MatchGameController.instance:initCharacterRedDot()
 	MatchGameController.instance:initTalentRedDot()
 end
 
@@ -50,7 +50,6 @@ function MatchGameModel:onUpdateCharacterInfo(characterInfo)
 	characterMo = GameUtil.rpcInfoToMo(characterInfo, MatchGameCharacterMo, characterMo)
 	self.heroMap[heroId] = characterMo
 
-	MatchGameController.instance:initCharacterRedDot()
 	MatchGameController.instance:dispatchEvent(MatchGameEvent.OnUpdateCharacter, heroId)
 end
 
@@ -77,10 +76,9 @@ function MatchGameModel:onResetTalent(branchId)
 		local nodeId = nodeCo.nodeId
 
 		self.talentMap[nodeId] = nil
-
-		MatchGameController.instance:dispatchEvent(MatchGameEvent.OnUpdateTalentInfo, nodeId)
 	end
 
+	MatchGameController.instance:dispatchEvent(MatchGameEvent.OnUpdateTalentInfo)
 	self:updateTalentAttrChangeMap()
 	MatchGameController.instance:initTalentRedDot()
 end
@@ -97,7 +95,6 @@ function MatchGameModel:onUpdateItemInfoList(itemInfoList)
 		updateItemIdMap[itemId] = true
 	end
 
-	MatchGameController.instance:initCharacterRedDot()
 	MatchGameController.instance:initTalentRedDot()
 	MatchGameController.instance:dispatchEvent(MatchGameEvent.OnUpdateItemInfo, updateItemIdMap)
 end
@@ -116,6 +113,18 @@ function MatchGameModel:onUpdateEpisodeInfo(msg)
 		hasUpdateEpisode = true
 	end
 
+	for _, characterInfo in ipairs(msg.updateHeros) do
+		local heroId = characterInfo.heroId
+		local characterMo = self.heroMap[heroId]
+
+		if not characterMo then
+			table.insert(self.newCharacterList, heroId)
+		end
+
+		characterMo = GameUtil.rpcInfoToMo(characterInfo, MatchGameCharacterMo, characterMo)
+		self.heroMap[heroId] = characterMo
+	end
+
 	if hasUpdateEpisode then
 		self:updateNormalScore()
 	end
@@ -124,7 +133,7 @@ function MatchGameModel:onUpdateEpisodeInfo(msg)
 		self.challengeMo = GameUtil.rpcInfoToMo(msg.updateChallenge, MatchGameChallengeMo, self.challengeMo)
 	end
 
-	MatchGameController.instance:initCharacterRedDot()
+	MatchGameController.instance:dispatchEvent(MatchGameEvent.OnUpdateCharacter)
 	MatchGameController.instance:dispatchEvent(MatchGameEvent.OnUpdateEpisodeInfo)
 end
 
@@ -181,26 +190,9 @@ function MatchGameModel:getAllCharacterMo()
 end
 
 function MatchGameModel:getCharacterStatus(characterId)
-	local status = MatchGameEnum.CharacterStatus.Lock
 	local characterMo = self:getCharacterMo(characterId)
 
-	if characterMo then
-		status = MatchGameEnum.CharacterStatus.Active
-	else
-		local characterCo = lua_activity244_character.configDict[characterId]
-		local unlockType = characterCo and tonumber(characterCo.unlockType)
-
-		if unlockType and unlockType ~= 0 then
-			local episodeStatus = self:getEpisodeStatus(unlockType)
-			local isUnlock = episodeStatus >= MatchGameEnum.EpisodeStatus.Finish
-
-			status = isUnlock and MatchGameEnum.CharacterStatus.Unlock or MatchGameEnum.CharacterStatus.Lock
-		else
-			status = MatchGameEnum.CharacterStatus.Unlock
-		end
-	end
-
-	return status
+	return characterMo and MatchGameEnum.CharacterStatus.Unlock or MatchGameEnum.CharacterStatus.Lock
 end
 
 function MatchGameModel:getEpisodeInfoById(episodeId)
@@ -236,6 +228,29 @@ function MatchGameModel:getEpisodeStatus(episodeId)
 	end
 
 	return status
+end
+
+function MatchGameModel:checkEpisodeOpen(episodeId, showToast)
+	local status = self:getEpisodeStatus(episodeId)
+
+	if status >= MatchGameEnum.EpisodeStatus.Unlock then
+		return true
+	end
+
+	local episodeType = MatchGameConfig.instance:getEpisodeLevelType(episodeId)
+
+	if episodeType == MatchGameEnum.LevelType.Challenge and showToast then
+		local episodeMo = self:getEpisodeInfoById(episodeId)
+		local nextRoundTime = episodeMo and episodeMo.nextRoundTime or 0
+
+		if nextRoundTime > 0 then
+			local remainTime = TimeUtil.SecondToActivityTimeFormat(nextRoundTime / 1000 - ServerTime.now())
+
+			GameFacade.showToast(ToastEnum.MatchGameChallengeEpisodeTime, remainTime)
+		else
+			GameFacade.showToastString(luaLang("matchgamebossitem_end"))
+		end
+	end
 end
 
 function MatchGameModel:getCurRewardScore(rewardType)
@@ -279,7 +294,25 @@ function MatchGameModel:getRewardStatus(rewardType, rewardCo)
 end
 
 function MatchGameModel:isChallengeUnlock()
-	return self.challengeMo and self.challengeMo:isUnlock()
+	local chapterList = MatchGameConfig.instance:getChapterListByLevelType(MatchGameEnum.LevelType.Challenge)
+
+	if chapterList then
+		for _, chapterMo in ipairs(chapterList or {}) do
+			local unlock, toastId, toastParam = MatchGameHelper.isChapterUnlock(chapterMo.chapterId)
+
+			if not unlock then
+				return unlock, toastId, toastParam
+			end
+		end
+	end
+
+	local unlock = self.challengeMo and self.challengeMo:isUnlock()
+
+	if not unlock then
+		return unlock, ToastEnum.MatchGameLockChallenge
+	end
+
+	return true
 end
 
 function MatchGameModel:getTeamMo(teamIndex)

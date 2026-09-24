@@ -33,8 +33,57 @@ function FightEntitySummonedEntityItem:onConstructor(entity, data, config)
 	end
 
 	self:com_registFightEvent(FightEvent.SummonedDelete, self.onSummonedDelete)
+	self:com_registFightEvent(FightEvent.SetEntityAlpha, self._onSetEntityAlpha)
+	self:com_registFightEvent(FightEvent.BeforeDeadEffect, self._onBeforeDeadEffect)
+	self:com_registFightEvent(FightEvent.SetSpinePosByTimeline, self._onSetSpinePosByTimeline)
 	self:com_registMsg(FightMsgId.GetSummonedEntity, self.onGetSummonedEntity)
 	self:showSpine()
+end
+
+function FightEntitySummonedEntityItem:_onBeforeDeadEffect(entityId)
+	if entityId ~= self.entity.id then
+		return
+	end
+
+	if not self.summonedEntity or not self.summonedEntity.spine then
+		return
+	end
+
+	self.summonedEntity.spine:play(SpineAnimState.die, false, false, true)
+end
+
+function FightEntitySummonedEntityItem:_onSetSpinePosByTimeline(entityId, posX, posY, posZ)
+	if entityId ~= self.entity.id then
+		return
+	end
+
+	if not self.summonedEntity or not self.summonedEntity.spine then
+		return
+	end
+
+	local obj = self.summonedEntity.spine:getSpineGO()
+
+	if obj then
+		transformhelper.setLocalPos(obj.transform, posX, posY, posZ)
+	end
+end
+
+function FightEntitySummonedEntityItem:_onSetEntityAlpha(entityId, isShow, duration)
+	if entityId ~= self.entity.id then
+		return
+	end
+
+	if not self.summonedEntity then
+		return
+	end
+
+	local alpha = self.entity.marked_alpha
+
+	if alpha == nil then
+		alpha = isShow and 1 or 0
+	end
+
+	self.summonedEntity:setAlpha(alpha, duration or 0)
 end
 
 function FightEntitySummonedEntityItem:onGetSummonedEntity(entityId)
@@ -74,10 +123,49 @@ function FightEntitySummonedEntityItem:setSpinePos()
 	end
 
 	self.summonedEntity:setAlpha(0, 0)
-	self.summonedEntity:setAlpha(1, 1)
+
+	local parentAlpha = self.entity.marked_alpha or 1
+
+	self.summonedEntity:setAlpha(parentAlpha, 1)
 end
 
 function FightEntitySummonedEntityItem:onSummonedDelete()
+	if self._isDyingForDelete then
+		return
+	end
+
+	local spine = self.summonedEntity and self.summonedEntity.spine
+
+	if not spine or not spine:hasAnimation(SpineAnimState.die) then
+		self:disposeSelf()
+
+		return
+	end
+
+	self._isDyingForDelete = true
+
+	spine:addAnimEventCallback(self._onDieAnimEventForDelete, self)
+	spine:play(SpineAnimState.die, false, true, true)
+	self:com_registTimer(self._disposeAfterDieAnim, 3)
+end
+
+function FightEntitySummonedEntityItem:_onDieAnimEventForDelete(actionName, eventName, eventArgs)
+	if actionName == SpineAnimState.die and eventName == SpineAnimEvent.ActionComplete then
+		self:_disposeAfterDieAnim()
+	end
+end
+
+function FightEntitySummonedEntityItem:_disposeAfterDieAnim()
+	if not self._isDyingForDelete then
+		return
+	end
+
+	self._isDyingForDelete = false
+
+	if self.summonedEntity and self.summonedEntity.spine then
+		self.summonedEntity.spine:removeAnimEventCallback(self._onDieAnimEventForDelete, self)
+	end
+
 	self:disposeSelf()
 end
 

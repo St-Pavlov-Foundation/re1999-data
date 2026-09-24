@@ -132,31 +132,30 @@ function StoreController:openDecorateStoreGoodsView(decorateGoodsMO)
 	if #productsList == 1 then
 		local products = productsList[1]
 		local itemCo = ItemModel.instance:getItemConfig(products[1], products[2])
+		local goodsIds = DecorateModel.instance:getPackageGoodsIds(decorateGoodsMO.goodsId)
 
-		if SceneUIPackageModel.instance:isInSceneUIPackage(products[2]) then
-			ViewMgr.instance:openView(ViewName.MainSceneSkinMaterialTipView2, {
+		if goodsIds and #goodsIds > 0 then
+			ViewMgr.instance:openView(ViewName.DecoratePackageBuyView, {
 				canJump = true,
 				isShowTop = true,
-				goodsId = decorateGoodsMO.goodsId
+				goodsId = decorateGoodsMO.goodsId,
+				goodsIds = goodsIds
 			})
 		elseif products[1] == MaterialEnum.MaterialType.Building or DecorateEnum.DecorateUIParams[itemCo.subType] then
 			DecorateController.instance:openBuyView(decorateGoodsMO.config.id)
 		elseif products[1] == MaterialEnum.MaterialType.HeroSkin then
-			ViewMgr.instance:openView(ViewName.StoreSkinGoodsView2, {
-				goodsMO = decorateGoodsMO
-			})
+			DecorateController.instance:openBuySkinView(decorateGoodsMO)
 		else
 			ViewMgr.instance:openView(ViewName.DecorateStoreGoodsView, decorateGoodsMO)
 		end
 	elseif #productsList > 1 then
-		local goodsId = decorateGoodsMO.goodsId
-		local isPackage = SceneUIPackageModel.instance:isPackage(goodsId)
+		local goodsIds = DecorateModel.instance:getPackageGoodsIds(decorateGoodsMO.goodsId)
 
-		if isPackage then
-			ViewMgr.instance:openView(ViewName.MainSceneSkinMaterialTipView2, {
+		if goodsIds and #goodsIds > 0 then
+			ViewMgr.instance:openView(ViewName.DecoratePackageBuyView, {
 				canJump = true,
-				isShowTop = false,
-				goodsId = decorateGoodsMO.goodsId
+				goodsId = decorateGoodsMO.goodsId,
+				goodsIds = goodsIds
 			})
 		end
 	end

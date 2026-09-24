@@ -3,6 +3,11 @@
 module("modules.logic.store.view.decorate.DecorateStoreBundleCompType1", package.seeall)
 
 local DecorateStoreBundleCompType1 = class("DecorateStoreBundleCompType1", LuaCompBase)
+local LINE_COUNT = 3
+local CELL_WIDTH = 128
+local CELL_HEIGHT = 130
+local START_SPACE = 10
+local END_SPACE = 10
 
 function DecorateStoreBundleCompType1.Get(go)
 	return MonoHelper.addNoUpdateLuaComOnceToGo(go, DecorateStoreBundleCompType1)
@@ -11,40 +16,40 @@ end
 function DecorateStoreBundleCompType1:init(go)
 	self.go = go
 	self._txtdesc = gohelper.findChildText(go, "txt_desc")
+	self._goscrollview = gohelper.findChild(go, "scroll_products")
+	self._gocontent = gohelper.findChild(go, "scroll_products/viewport/content")
 	self._goitem = gohelper.findChild(go, "scroll_products/viewport/content/#go_item")
 
-	self:_initItem()
-	self:_addEvents()
+	self:_initList()
 end
 
-function DecorateStoreBundleCompType1:_initItem()
-	self._subGoodsItem = {}
+function DecorateStoreBundleCompType1:_initList()
+	local param = SimpleListParam.New()
 
-	gohelper.setActive(self._goitem, false)
+	param.cellClass = DecorateStoreBundleCompType1Item
+	param.lineCount = LINE_COUNT
+	param.cellWidth = CELL_WIDTH
+	param.cellHeight = CELL_HEIGHT
+	param.startSpace = START_SPACE
+	param.endSpace = END_SPACE
+	self._listComp = GameFacade.createSimpleListComp(self._goscrollview, param, self._goitem)
+
+	self._listComp:setData({})
+	self._listComp:setOnClickItem(self._onClickItem, self)
 end
 
-function DecorateStoreBundleCompType1:_addEvents()
-	StoreController.instance:registerCallback(StoreEvent.DecorateGoodItemClick, self._onGoodItemClick, self)
-end
-
-function DecorateStoreBundleCompType1:_removeEvents()
-	StoreController.instance:unregisterCallback(StoreEvent.DecorateGoodItemClick, self._onGoodItemClick, self)
-end
-
-function DecorateStoreBundleCompType1:_onGoodItemClick()
-	self:_refreshItems()
-end
-
-function DecorateStoreBundleCompType1:refresh(goodId, storeId)
+function DecorateStoreBundleCompType1:refresh(goodId)
 	self._goodId = goodId
+
+	local goodCo = StoreConfig.instance:getGoodsConfig(goodId)
+
+	self._storeId = tonumber(goodCo.storeId)
 
 	local decorateConfig = DecorateStoreConfig.instance:getDecorateConfig(goodId)
 
 	if decorateConfig and decorateConfig.fatherGoods > 0 then
 		self._goodId = decorateConfig.fatherGoods
 	end
-
-	self._storeId = storeId
 
 	self:_refreshType()
 	self:_refreshItems()
@@ -54,6 +59,16 @@ function DecorateStoreBundleCompType1:_refreshType()
 	self._txtdesc.text = ""
 end
 
+function DecorateStoreBundleCompType1:_getCurGoodIndex()
+	local curGoodId = DecorateStoreModel.instance:getCurGood(self._storeId)
+
+	for index, good in ipairs(self._goods) do
+		if good.id == curGoodId then
+			return index
+		end
+	end
+end
+
 function DecorateStoreBundleCompType1:_refreshItems()
 	local goods = DecorateStoreModel.instance:getBundleSubGoods(self._goodId)
 
@@ -61,35 +76,35 @@ function DecorateStoreBundleCompType1:_refreshItems()
 		return
 	end
 
-	local curGoodId = DecorateStoreModel.instance:getCurGood(self._storeId)
+	local isBundleChange = self._lastGoodId ~= self._goodId
 
-	for index, goodCo in ipairs(goods) do
-		if not self._subGoodsItem[index] then
-			local go = gohelper.cloneInPlace(self._goitem, goodCo.id)
+	self._lastGoodId = self._goodId
+	self._goods = goods
 
-			gohelper.setActive(go, true)
+	self._listComp:setData(goods)
 
-			self._subGoodsItem[index] = DecorateStoreBundleCompType1Item.Get(go)
-		end
-
-		self._subGoodsItem[index]:refresh(goodCo.id, self._storeId)
-
-		if curGoodId == self._goodId and index == 1 then
-			self._subGoodsItem[index]:selectGood()
-		end
+	if isBundleChange then
+		self._listComp:moveTo(1)
 	end
+
+	self._listComp:setSelect(self:_getCurGoodIndex())
+end
+
+function DecorateStoreBundleCompType1:_onClickItem(item)
+	local goodId = item.data and item.data.id
+
+	if not goodId then
+		return
+	end
+
+	DecorateStoreModel.instance:setCurGood(goodId)
+	StoreController.instance:dispatchEvent(StoreEvent.DecorateGoodItemClick, goodId, true)
 end
 
 function DecorateStoreBundleCompType1:destroy()
-	if self._subGoodsItem then
-		for _, item in pairs(self._subGoodsItem) do
-			item:destroy()
-		end
-
-		self._subGoodsItem = nil
+	if self.go then
+		gohelper.destroy(self.go)
 	end
-
-	self:_removeEvents()
 end
 
 return DecorateStoreBundleCompType1

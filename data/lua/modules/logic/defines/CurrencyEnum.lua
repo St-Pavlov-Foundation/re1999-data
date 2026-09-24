@@ -30,7 +30,6 @@ CurrencyEnum.CurrencyType = {
 	BulbCurrency = 2881,
 	V3a10Dungeon = 38502,
 	V4a0Dungeon = 4001,
-	V4a0SpiritualFluid = 780001,
 	V1a9Dungeon = 1901,
 	Act134Clue = 1414,
 	V2a9Dungeon = 30501,

@@ -27,6 +27,8 @@ function StoryBranchOptionSpLongClickSelectItem:_removeEvents()
 end
 
 function StoryBranchOptionSpLongClickSelectItem:_onSelectOption(param)
+	AudioMgr.instance:trigger(AudioEnum.Story.play_ui_beiai_avgqte_loopend)
+
 	if param and param.index and param.index == self._param.index then
 		self:_setOptionSelect()
 
@@ -47,32 +49,36 @@ function StoryBranchOptionSpLongClickSelectItem:_onLongClick()
 		local curTime = ServerTime.now()
 
 		if curTime - self._startTime > guideFillTime then
-			if self._btnselect then
-				self._btnselect:RemoveLongPressListener()
-			end
-
-			if self._btnUp then
-				self._btnUp:RemoveClickListener()
-			end
-
-			if self._tweenId then
-				ZProj.TweenHelper.KillById(self._tweenId)
-
-				self._tweenId = nil
-			end
-
-			StoryController.instance:dispatchEvent(StoryEvent.OnOptionSelected, self._param)
-			TaskDispatcher.runDelay(self._onSelectOptionFinished, self, 1.33)
+			self:onFillFinish()
 		end
 	end
 end
 
+function StoryBranchOptionSpLongClickSelectItem:onFillFinish()
+	if self._btnselect then
+		self._btnselect:RemoveLongPressListener()
+	end
+
+	if self._btnUp then
+		self._btnUp:RemoveClickListener()
+	end
+
+	if self._tweenId then
+		ZProj.TweenHelper.KillById(self._tweenId)
+
+		self._tweenId = nil
+	end
+
+	StoryController.instance:dispatchEvent(StoryEvent.OnOptionSelected, self._param)
+	TaskDispatcher.runDelay(self._onSelectOptionFinished, self, 0.33)
+end
+
 function StoryBranchOptionSpLongClickSelectItem:_startFill()
 	self._anim:Play("click")
+	AudioMgr.instance:trigger(AudioEnum.Story.play_ui_beiai_avgqte_loop)
 	gohelper.setActive(self._goguide, false)
-	gohelper.setActive(self._goeff, false)
 
-	self._tweenId = ZProj.TweenHelper.DOTweenFloat(0, 1, guideFillTime, self._updateFill, nil, self)
+	self._tweenId = ZProj.TweenHelper.DOTweenFloat(0, 1, guideFillTime, self._updateFill, self.onFillFinish, self)
 end
 
 function StoryBranchOptionSpLongClickSelectItem:_updateFill(value)
@@ -173,6 +179,8 @@ function StoryBranchOptionSpLongClickSelectItem:_onBtnUpClick()
 end
 
 function StoryBranchOptionSpLongClickSelectItem:_startLoop()
+	AudioMgr.instance:trigger(AudioEnum.Story.stop_ui_beiai_avgqte_loop)
+
 	if self._tweenId then
 		ZProj.TweenHelper.KillById(self._tweenId)
 
@@ -188,6 +196,7 @@ function StoryBranchOptionSpLongClickSelectItem:_startLoop()
 end
 
 function StoryBranchOptionSpLongClickSelectItem:destroy()
+	AudioMgr.instance:trigger(AudioEnum.Story.stop_ui_beiai_avgqte_loop)
 	TaskDispatcher.cancelTask(self._onSelectOptionFinished, self)
 	TaskDispatcher.cancelTask(self._onShowLongFinished, self)
 	self:_removeEvents()

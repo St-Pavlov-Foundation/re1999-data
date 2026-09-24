@@ -328,6 +328,10 @@ end
 function V3a2_BossRushModel:getEditorAssistMo()
 	local stage, _, actId = BossRushModel.instance:getBattleStageAndLayer()
 
+	if not stage or not actId then
+		return
+	end
+
 	if not self._editorAssistMos then
 		self._editorAssistMos = {}
 	end
@@ -341,6 +345,10 @@ end
 
 function V3a2_BossRushModel:clearAssist(isClearEditor)
 	local stage, _, actId = BossRushModel.instance:getBattleStageAndLayer()
+
+	if not stage or not actId then
+		return
+	end
 
 	if self._assistMos and self._assistMos[actId] and self._assistMos[actId][stage] then
 		self._assistMos[actId][stage] = nil

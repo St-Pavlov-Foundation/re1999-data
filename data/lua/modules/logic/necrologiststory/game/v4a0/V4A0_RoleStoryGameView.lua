@@ -17,14 +17,17 @@ function V4A0_RoleStoryGameView:onInitView()
 	self.goLineRoot = gohelper.findChild(self.viewGO, "#go_level/ScrollView/Viewport/Content/lineRoot")
 	self.goLevelRoot = gohelper.findChild(self.viewGO, "#go_level/ScrollView/Viewport/Content/levelRoot")
 	self.btnResult = gohelper.findChildButtonWithAudio(self.viewGO, "#go_topright/#btn_result")
+	self.txtResult = gohelper.findChildTextMesh(self.viewGO, "#go_topright/#btn_result/txt_result")
 	self.goResult = gohelper.findChild(self.viewGO, "#go_result")
 	self.simageResult = gohelper.findChildSingleImage(self.viewGO, "#go_result/#simage_mask01")
+	self.simageResult2 = gohelper.findChildSingleImage(self.viewGO, "#go_result/#simage_mask01/#simage_mask01_add")
 	self.txtResultTitle = gohelper.findChildTextMesh(self.viewGO, "#go_result/#txt_title")
 	self.txtResultDesc1 = gohelper.findChildTextMesh(self.viewGO, "#go_result/#txt_desc_1")
 	self.txtResultDesc2 = gohelper.findChildTextMesh(self.viewGO, "#go_result/#txt_desc_2")
 	self.goEnd = gohelper.findChild(self.viewGO, "#go_end")
 	self.btnEndEnter = gohelper.findChildButtonWithAudio(self.viewGO, "#go_end/#btn_enter")
 	self.goTopRight = gohelper.findChild(self.viewGO, "#go_topright")
+	self.scroll = gohelper.findChildComponent(self.viewGO, "#go_level/ScrollView", typeof(ZProj.LimitedScrollRect))
 
 	self:initLine()
 	self:initLevel()
@@ -87,8 +90,10 @@ function V4A0_RoleStoryGameView:trySwitchEnter()
 end
 
 function V4A0_RoleStoryGameView:onClickResult()
-	if self.gameBaseMO:isComplete() then
+	if self.gameBaseMO:isLevelListComplete() then
 		self:showResult()
+	else
+		GameFacade.showToast(ToastEnum.NecrologistStoryV4A0Tips)
 	end
 end
 
@@ -250,11 +255,15 @@ function V4A0_RoleStoryGameView:_onCloseViewFinish(viewName)
 end
 
 function V4A0_RoleStoryGameView:onOpen()
+	self.isFirstOpen = true
+
 	self:refreshParam()
 
 	self.viewState = self:getViewState()
 
 	self:refreshView()
+
+	self.isFirstOpen = false
 end
 
 function V4A0_RoleStoryGameView:onUpdateParam()
@@ -312,21 +321,35 @@ function V4A0_RoleStoryGameView:refreshViewState()
 	end
 
 	if curState == ViewState.Enter then
+		AudioMgr.instance:trigger(AudioEnum.NecrologistStory.play_ui_gt_yishi_jiemian)
+
 		if lastState == ViewState.Level then
 			self.anim:Play("switch_enter")
 		else
 			self.anim:Play("open_enter")
 		end
 	elseif curState == ViewState.Level then
-		self.anim:Play("switch_level")
+		AudioMgr.instance:trigger(AudioEnum.NecrologistStory.play_ui_resonate_unlock_01)
+
+		if lastState == ViewState.End then
+			self.anim:Play("end_switch_level")
+		else
+			self.anim:Play("switch_level")
+		end
 	elseif curState == ViewState.End then
 		local isExist = NecrologistStoryPlayerPrefs.instance:isExist(NecrologistStoryEnum.PrefsKey.V4A0PlayFnishedAnim, true)
 
 		if isExist then
-			self.anim:Play("open_end")
+			if lastState == ViewState.Level then
+				self.anim:Play("level_switch_end")
+			else
+				AudioMgr.instance:trigger(AudioEnum.NecrologistStory.play_ui_gt_yishi_jiemian)
+				self.anim:Play("open_end")
+			end
 		else
 			NecrologistStoryPlayerPrefs.instance:setExist(NecrologistStoryEnum.PrefsKey.V4A0PlayFnishedAnim, true)
 			self.anim:Play("open_end_first")
+			AudioMgr.instance:trigger(AudioEnum.NecrologistStory.play_ui_tangren_pen2)
 		end
 	end
 end
@@ -356,6 +379,7 @@ function V4A0_RoleStoryGameView:refreshLevelItem(item)
 		if isFinished then
 			if item.isFinished == false then
 				item.anim:Play("open_finished")
+				AudioMgr.instance:trigger(AudioEnum.NecrologistStory.play_ui_resonate_fm)
 			else
 				item.anim:Play("idel_finished")
 			end
@@ -415,9 +439,35 @@ function V4A0_RoleStoryGameView:refreshResultBtn()
 		return
 	end
 
-	local isComplete = self.gameBaseMO:isComplete()
+	local isComplete = self.gameBaseMO:isLevelListComplete()
+	local hasResult = self.gameBaseMO:hasResult()
+	local showBtn = isComplete or hasResult
 
-	gohelper.setActive(self.btnResult, isComplete)
+	gohelper.setActive(self.btnResult, showBtn)
+
+	if not showBtn then
+		return
+	end
+
+	if isComplete then
+		self.txtResult.text = luaLang("v4a0_rolestorygameview_txt_result")
+	else
+		local questionCount = 0
+		local finishCount = 0
+		local baseList = NecrologistStoryV4A0Config.instance:getBaseList()
+
+		for _, baseConfig in ipairs(baseList) do
+			if baseConfig.questionId ~= 0 then
+				questionCount = questionCount + 1
+
+				if self.gameBaseMO:getQuestionOption(baseConfig.questionId) ~= nil then
+					finishCount = finishCount + 1
+				end
+			end
+		end
+
+		self.txtResult.text = string.format("%s/%s", finishCount, questionCount)
+	end
 
 	if not isComplete then
 		return
@@ -452,6 +502,16 @@ function V4A0_RoleStoryGameView:setResultVisible(visible)
 	gohelper.setActive(self.goTopRight, not visible)
 
 	if not visible then
+		local unlock = RoleStoryModel.instance:isCGUnlock(self.heroStoryId)
+
+		if unlock then
+			local canPlay = RoleStoryModel.instance:canPlayDungeonUnlockAnim(self.heroStoryId)
+
+			if canPlay then
+				NecrologistStoryController.instance:openCgUnlockView(self.heroStoryId)
+			end
+		end
+
 		return
 	end
 
@@ -464,10 +524,13 @@ function V4A0_RoleStoryGameView:setResultVisible(visible)
 	local path = ResUrl.getRoleStoryIcon(string.format("3134/rolestory_3134_fullmask_%s", config.id))
 
 	self.simageResult:LoadImage(path)
+	self.simageResult2:LoadImage(path)
 
 	self.txtResultTitle.text = config.title
 	self.txtResultDesc1.text = config.desc1
 	self.txtResultDesc2.text = config.desc2
+
+	AudioMgr.instance:trigger(AudioEnum.NecrologistStory.play_ui_gt_yishi_jiemian)
 end
 
 function V4A0_RoleStoryGameView:getResultVisible()
@@ -480,6 +543,115 @@ function V4A0_RoleStoryGameView:onDestroyView()
 	end
 
 	self.simageResult:UnLoadImage()
+	self.simageResult2:UnLoadImage()
+
+	if self.tweenId then
+		ZProj.TweenHelper.KillById(self.tweenId)
+
+		self.tweenId = nil
+	end
+end
+
+function V4A0_RoleStoryGameView:getBaseItemPath(baseId)
+	local item = self.levelItemList[baseId]
+
+	if not item then
+		return
+	end
+
+	self.viewState = ViewState.Level
+
+	self:refreshView()
+
+	local go = item.btnClick.gameObject
+
+	self:moveToLevelItem(baseId)
+
+	return SLFramework.GameObjectHelper.GetPath(go)
+end
+
+function V4A0_RoleStoryGameView:moveToLevelItem(baseId)
+	local item = self.levelItemList[baseId]
+
+	if not item then
+		return
+	end
+
+	local contentRect = self.scroll.content
+	local viewportRect = self.scroll.viewport
+	local contentHeight = recthelper.getHeight(contentRect)
+	local viewportHeight = recthelper.getHeight(viewportRect)
+
+	if viewportHeight < contentHeight then
+		local childRect = item.go.transform
+		local childPosY = recthelper.getAnchorY(childRect)
+		local heightOffset = contentHeight - viewportHeight
+		local contentPos = math.min(heightOffset, math.abs(childPosY))
+
+		if self.tweenId then
+			ZProj.TweenHelper.KillById(self.tweenId)
+
+			self.tweenId = nil
+		end
+
+		self.tweenId = ZProj.TweenHelper.DOAnchorPosY(contentRect, contentPos, 0.2)
+	end
+end
+
+function V4A0_RoleStoryGameView.checkGuide()
+	local baseList = NecrologistStoryV4A0Config.instance:getBaseList()
+	local gameMo = NecrologistStoryModel.instance:getGameMO(NecrologistStoryEnum.RoleStoryId.V4A0)
+	local finishCount = 0
+
+	for _, baseConfig in ipairs(baseList) do
+		if gameMo:isBaseFinished(baseConfig.id) then
+			finishCount = finishCount + 1
+		end
+	end
+
+	return finishCount == 1
+end
+
+function V4A0_RoleStoryGameView.getFinishGO()
+	local baseList = NecrologistStoryV4A0Config.instance:getBaseList()
+	local gameMo = NecrologistStoryModel.instance:getGameMO(NecrologistStoryEnum.RoleStoryId.V4A0)
+	local baseId
+
+	for _, baseConfig in ipairs(baseList) do
+		if gameMo:isBaseFinished(baseConfig.id) then
+			baseId = baseConfig.id
+
+			break
+		end
+	end
+
+	if not baseId then
+		return
+	end
+
+	local viewContainer = ViewMgr.instance:getContainer(ViewName.V4A0_RoleStoryGameView)
+
+	if not viewContainer then
+		return
+	end
+
+	return viewContainer.gameView:getBaseItemPath(baseId)
+end
+
+function V4A0_RoleStoryGameView.getUnFinishGO()
+	local baseList = NecrologistStoryV4A0Config.instance:getBaseList()
+	local gameMo = NecrologistStoryModel.instance:getGameMO(NecrologistStoryEnum.RoleStoryId.V4A0)
+	local baseId
+
+	baseId = gameMo:isBaseFinished(2) and 2 or 3
+
+	local viewContainer = ViewMgr.instance:getContainer(ViewName.V4A0_RoleStoryGameView)
+
+	if not viewContainer then
+		return
+	end
+
+	return viewContainer.gameView:getBaseItemPath(baseId)
 end
 
 return V4A0_RoleStoryGameView

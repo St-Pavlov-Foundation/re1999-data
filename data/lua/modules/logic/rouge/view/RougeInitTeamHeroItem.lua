@@ -113,10 +113,6 @@ function RougeInitTeamHeroItem:getCapacity()
 end
 
 function RougeInitTeamHeroItem:_onClickThis()
-	if self._isTrial then
-		return
-	end
-
 	local curCapacity, totalCapacity = self._teamView:getCapacityProgress()
 
 	if totalCapacity <= curCapacity and not self._heroMO then
@@ -129,7 +125,7 @@ function RougeInitTeamHeroItem:_onClickThis()
 end
 
 function RougeInitTeamHeroItem:_openRougeHeroGroupEditView(id)
-	local curCapacity, totalCapacity = self._teamView:getNoneAssistCapacityProgress()
+	local curCapacity, totalCapacity = self._teamView:getCapacityProgress()
 	local param = {}
 
 	param.singleGroupMOId = id
@@ -144,6 +140,7 @@ function RougeInitTeamHeroItem:_openRougeHeroGroupEditView(id)
 	param.assistCapacity = self._teamView:getAssistCapacity()
 	param.assistPos = self._teamView:getAssistPos()
 	param.assistHeroId = self._teamView:getAssistHeroId()
+	param.assistHeroMo = self._teamView:getAssistHeroMo()
 
 	ViewMgr.instance:openView(ViewName.RougeHeroGroupEditView, param)
 end

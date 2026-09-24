@@ -223,7 +223,7 @@ function TowerPermanentInfoView:showHeroGroupItem(obj, data, index)
 
 		if not heroMO then
 			local heroCo = HeroConfig.instance:getHeroCO(data.id)
-			local skinId = data.skinId or heroCo.skinId
+			local skinId = data.skinId and data.skinId > 0 and data.skinId or heroCo.skinId
 
 			skinConfig = SkinConfig.instance:getSkinCo(skinId)
 		else

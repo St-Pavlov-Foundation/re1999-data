@@ -32,6 +32,9 @@ function AutoChessLeaderCard:init(go)
 	self._limitScroll = self._goScroll:GetComponent(gohelper.Type_LimitedScrollRect)
 	self.goChess = gohelper.findChild(go, "Chess")
 	self.txtChessSkill = gohelper.findChildText(self.goChess, "scroll_desc/viewport/content/txt_ChessSkill")
+
+	SkillHelper.addHyperLinkClick(self.txtChessSkill, self.clcikHyperLink, self)
+
 	self.imageChessBg = gohelper.findChildImage(self.goChess, "chess/image_ChessBg")
 	self.goChessMesh = gohelper.findChild(self.goChess, "chess/Mesh")
 	self.txtChessName = gohelper.findChildText(self.goChess, "chess/txt_ChessName")
@@ -125,7 +128,7 @@ function AutoChessLeaderCard:refreshCommon(isEnemy)
 			end
 
 			self.txtChessName.text = chessCfg.name
-			self.txtChessSkill.text = chessCfg.skillDesc
+			self.txtChessSkill.text = AutoChessHelper.buildSkillDesc(chessCfg.skillDesc)
 
 			local imageName = AutoChessHelper.getChessQualityBg(chessCfg.type, chessCfg.levelFromMall)
 

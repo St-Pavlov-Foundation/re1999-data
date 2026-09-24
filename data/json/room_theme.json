@@ -44,7 +44,7 @@
     "building": "11301|11302|11303|11304|11305|11306",
     "packages": "1301|1302|1303|1304|1305|1306|1307|1308",
     "collectionBonus": "11#11304#1",
-    "extraShowBuilding": "",
+    "extraShowBuilding": "11311|11312",
     "sourcesType": ""
   },
   {
@@ -68,7 +68,7 @@
     "building": "11501|11502|11503|11504|11505|11509",
     "packages": "1501|1502|1503|1504|1505|1506|1507|1508",
     "collectionBonus": "11#11503#1",
-    "extraShowBuilding": "",
+    "extraShowBuilding": "11506|11507|11508",
     "sourcesType": ""
   },
   {
@@ -80,7 +80,7 @@
     "building": "11601|11602|11603|11604|11605|11606|11607|11609",
     "packages": "1601|1602|1603|1604|1605|1606|1607|1608",
     "collectionBonus": "11#11606#1",
-    "extraShowBuilding": "11608",
+    "extraShowBuilding": "11608|11611|11612",
     "sourcesType": ""
   },
   {
@@ -92,7 +92,7 @@
     "building": "11701|11702|11703|11704|11705|11706|11707",
     "packages": "1701|1702|1703|1704|1705|1706|1707|1708",
     "collectionBonus": "11#11705#1",
-    "extraShowBuilding": "",
+    "extraShowBuilding": "11711|11712",
     "sourcesType": ""
   },
   {
@@ -104,7 +104,7 @@
     "building": "11801|11802|11803|11804|11805|11806",
     "packages": "1801|1802|1803|1804|1805|1806|1807",
     "collectionBonus": "11#11806#1",
-    "extraShowBuilding": "11831",
+    "extraShowBuilding": "11831|11811|11812",
     "sourcesType": ""
   },
   {
@@ -116,7 +116,7 @@
     "building": "11901|11902|11903|11904|11905|11906|11907|11908",
     "packages": "1901|1902|1903|1904|1905|1906|1907",
     "collectionBonus": "11#11907#1",
-    "extraShowBuilding": "",
+    "extraShowBuilding": "11911|11912|11921",
     "sourcesType": ""
   },
   {
@@ -128,7 +128,7 @@
     "building": "12001|12002|12003|12004|12005|12006",
     "packages": "2001|2002|2003|2004|2005|2006",
     "collectionBonus": "11#12005#1",
-    "extraShowBuilding": "12021",
+    "extraShowBuilding": "12021|12011|12012",
     "sourcesType": ""
   },
   {
@@ -140,7 +140,7 @@
     "building": "12101|12102|12103|12104|12105|12106",
     "packages": "2101|2102|2103|2104|2105|2106",
     "collectionBonus": "11#12106#1",
-    "extraShowBuilding": "",
+    "extraShowBuilding": "12111|12112",
     "sourcesType": ""
   },
   {
@@ -152,7 +152,7 @@
     "building": "12201|12202|12203|12204|12205|12206",
     "packages": "2201|2202|2203|2204|2205|2206",
     "collectionBonus": "11#12205#1",
-    "extraShowBuilding": "",
+    "extraShowBuilding": "12211|12212",
     "sourcesType": ""
   },
   {
@@ -164,7 +164,7 @@
     "building": "12301|12302|12303|12304|12305|12306",
     "packages": "2301|2302|2303|2304|2305|2306",
     "collectionBonus": "11#12305#1",
-    "extraShowBuilding": "",
+    "extraShowBuilding": "12321|12322",
     "sourcesType": ""
   },
   {
@@ -176,7 +176,7 @@
     "building": "12401|12402|12403|12404|12405|12406",
     "packages": "2401|2402|2403|2404|2405|2406",
     "collectionBonus": "11#12405#1",
-    "extraShowBuilding": "",
+    "extraShowBuilding": "12411|12412",
     "sourcesType": ""
   },
   {
@@ -188,7 +188,7 @@
     "building": "12501|12502|12503|12504|12505|12506|12507",
     "packages": "2501|2502|2503|2504|2505|2506",
     "collectionBonus": "11#12505#1",
-    "extraShowBuilding": "",
+    "extraShowBuilding": "12511|12512|12513|12514",
     "sourcesType": ""
   },
   {
@@ -212,7 +212,7 @@
     "building": "12701|12702|12703|12704|12705|12706",
     "packages": "2701|2702|2703|2704|2705|2706",
     "collectionBonus": "11#12705#1",
-    "extraShowBuilding": "",
+    "extraShowBuilding": "12721|12722|12723|12724",
     "sourcesType": ""
   },
   {
@@ -224,7 +224,7 @@
     "building": "12801|12802|12803",
     "packages": "2801|2802|2803|2804",
     "collectionBonus": "11#12803#1",
-    "extraShowBuilding": "",
+    "extraShowBuilding": "12811|12812",
     "sourcesType": ""
   },
   {
@@ -236,7 +236,7 @@
     "building": "13001|13002|13003",
     "packages": "3001|3002|3003|3004",
     "collectionBonus": "11#13003#1",
-    "extraShowBuilding": "",
+    "extraShowBuilding": "13011|13012",
     "sourcesType": ""
   },
   {
@@ -260,7 +260,7 @@
     "building": "13101|13102|13103",
     "packages": "3101|3102|3103|3104",
     "collectionBonus": "11#13103#1",
-    "extraShowBuilding": "",
+    "extraShowBuilding": "13111|13112",
     "sourcesType": ""
   },
   {
@@ -272,7 +272,7 @@
     "building": "13201|13202|13203",
     "packages": "3201|3202|3203|3204",
     "collectionBonus": "11#13203#1",
-    "extraShowBuilding": "",
+    "extraShowBuilding": "13204",
     "sourcesType": ""
   },
   {
@@ -284,7 +284,7 @@
     "building": "13301|13302|13303",
     "packages": "3301|3302|3303|3304",
     "collectionBonus": "11#13303#1",
-    "extraShowBuilding": "",
+    "extraShowBuilding": "13311|13312",
     "sourcesType": ""
   },
   {
@@ -296,7 +296,7 @@
     "building": "13401|13402|13403",
     "packages": "3401|3402|3403|3404",
     "collectionBonus": "11#13403#1",
-    "extraShowBuilding": "",
+    "extraShowBuilding": "13411|13412|13413|13414",
     "sourcesType": ""
   },
   {
@@ -320,7 +320,7 @@
     "building": "13601|13602|13603",
     "packages": "3601|3602|3603|3604",
     "collectionBonus": "11#13603#1",
-    "extraShowBuilding": "",
+    "extraShowBuilding": "13604",
     "sourcesType": ""
   },
   {
@@ -332,7 +332,7 @@
     "building": "13701|13702|13703",
     "packages": "3701|3702|3703|3704",
     "collectionBonus": "11#13703#1",
-    "extraShowBuilding": "",
+    "extraShowBuilding": "13711|13712",
     "sourcesType": ""
   },
   {
@@ -368,7 +368,7 @@
     "building": "13901|13902|13903",
     "packages": "3901|3902|3903|3904",
     "collectionBonus": "11#13903#1",
-    "extraShowBuilding": "",
+    "extraShowBuilding": "13911|13912",
     "sourcesType": ""
   },
   {
@@ -380,7 +380,7 @@
     "building": "14001|14002|14003",
     "packages": "4001|4002|4003|4004",
     "collectionBonus": "11#14003#1",
-    "extraShowBuilding": "",
+    "extraShowBuilding": "14011|14012|14013",
     "sourcesType": ""
   }
 ]

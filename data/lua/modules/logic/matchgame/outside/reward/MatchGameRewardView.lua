@@ -107,7 +107,7 @@ function MatchGameRewardView:refreshProgress()
 	for i, mo in ipairs(moList) do
 		local status = MatchGameModel.instance:getRewardStatus(self.rewardType, mo)
 
-		if curShowIndex == nil and status ~= MatchGameEnum.RewardItemStatus.Gained then
+		if curShowIndex == nil and status == MatchGameEnum.RewardItemStatus.CanGet or status == MatchGameEnum.RewardItemStatus.Gained then
 			curShowIndex = i
 		end
 

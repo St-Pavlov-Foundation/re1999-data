@@ -136,7 +136,7 @@ function DeleikeClipHelper.Perimeter(poly)
 end
 
 local FRAGMENT_AREA_RATIO = 0.05
-local FRAGMENT_SLENDERNESS = 0.05
+local FRAGMENT_SLENDERNESS = 0.025
 
 function DeleikeClipHelper.FilterFragments(polys)
 	if not polys or #polys == 0 then
@@ -180,8 +180,7 @@ function DeleikeClipHelper.ClipTile(comp, leftClipQuad, rightClipQuad, useFilter
 	local mo = comp.mo
 	local worldPos = mo.pos
 	local worldPoly = comp:getWorldPolygon()
-	local rad = math.rad(mo.rotation or 0)
-	local cosR, sinR = math.cos(rad), math.sin(rad)
+	local cosR, sinR = mo.cosR, mo.sinR
 	local allLocalPolys = {}
 	local clipQuads = {
 		leftClipQuad,

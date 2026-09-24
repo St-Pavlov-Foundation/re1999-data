@@ -36,34 +36,28 @@
     "description": "委托到<#FFEA73>据点</color>中时，<sprite=2><#FFEA73>银枝的新芽</color>产出提升<#FFEA73>20%</color>"
   },
   {
-    "id": 4023107,
-    "quality": 1,
-    "tags": "",
-    "description": "<#FFEA73>学员</color>升级所需资源降低10%"
-  },
-  {
     "id": 4023108,
     "quality": 1,
     "tags": "dorm",
-    "description": "委托到宿舍时，出现<#FFEA73>高级学员</color>的概率提升<#FFEA73>2%</color>"
+    "description": "委托到宿舍时，出现<#FFEA73>高级同伴</color>的概率提升<#FFEA73>2%</color>"
   },
   {
     "id": 4023109,
     "quality": 1,
     "tags": "dorm",
-    "description": "委托到宿舍时，结识<#FFEA73>学员</color>的消耗降低5%"
+    "description": "委托到宿舍时，结识<#FFEA73>同伴</color>的消耗降低5%"
   },
   {
     "id": 4023110,
     "quality": 1,
     "tags": "refresh",
-    "description": "委托到教室时，重置<#FFEA73>专长</color>时出现<#FFEA73>高级专长</color>的概率提升<#FFEA73>2%</color>"
+    "description": "委托到学院主楼时，重置<#FFEA73>专长</color>时出现<#FFEA73>高级专长</color>的概率提升<#FFEA73>2%</color>"
   },
   {
     "id": 4023111,
     "quality": 1,
     "tags": "refresh",
-    "description": "委托到教室时，重置<#FFEA73>专长</color>消耗降低5%"
+    "description": "委托到学院主楼时，重置<#FFEA73>专长</color>消耗降低5%"
   },
   {
     "id": 4023201,
@@ -102,34 +96,28 @@
     "description": "委托到<#FFEA73>据点</color>中时，<sprite=2><#FFEA73>银枝的新芽</color>产出提升<#FFEA73>40%</color>"
   },
   {
-    "id": 4023207,
-    "quality": 2,
-    "tags": "",
-    "description": "<#FFEA73>学员</color>升级所需资源降低20%"
-  },
-  {
     "id": 4023208,
     "quality": 2,
     "tags": "dorm",
-    "description": "委托到宿舍时，出现<#FFEA73>高级学员</color>的概率提升<#FFEA73>3%</color>"
+    "description": "委托到宿舍时，出现<#FFEA73>高级同伴</color>的概率提升<#FFEA73>3%</color>"
   },
   {
     "id": 4023209,
     "quality": 2,
     "tags": "dorm",
-    "description": "委托到宿舍时，结识<#FFEA73>学员</color>消耗降低8%"
+    "description": "委托到宿舍时，结识<#FFEA73>同伴</color>消耗降低8%"
   },
   {
     "id": 4023210,
     "quality": 2,
     "tags": "refresh",
-    "description": "委托到教室时，重置<#FFEA73>专长</color>出现<#FFEA73>高级专长</color>的概率提升<#FFEA73>3%</color>"
+    "description": "委托到学院主楼时，重置<#FFEA73>专长</color>出现<#FFEA73>高级专长</color>的概率提升<#FFEA73>3%</color>"
   },
   {
     "id": 4023211,
     "quality": 2,
     "tags": "refresh",
-    "description": "委托到教室时，重置<#FFEA73>专长</color>消耗降低8%"
+    "description": "委托到学院主楼时，重置<#FFEA73>专长</color>消耗降低8%"
   },
   {
     "id": 4023301,
@@ -168,33 +156,27 @@
     "description": "委托到<#FFEA73>据点</color>中时，<sprite=2><#FFEA73>银枝的新芽</color>产出提升<#FFEA73>50%</color>"
   },
   {
-    "id": 4023307,
-    "quality": 3,
-    "tags": "",
-    "description": "<#FFEA73>学员</color>升级所需资源降低30%"
-  },
-  {
     "id": 4023308,
     "quality": 3,
     "tags": "dorm",
-    "description": "委托到宿舍时，出现<#FFEA73>高级学员</color>的概率提升<#FFEA73>5%</color>"
+    "description": "委托到宿舍时，出现<#FFEA73>高级同伴</color>的概率提升<#FFEA73>5%</color>"
   },
   {
     "id": 4023309,
     "quality": 3,
     "tags": "dorm",
-    "description": "委托到宿舍时，结识<#FFEA73>学员</color>的消耗降低10%"
+    "description": "委托到宿舍时，结识<#FFEA73>同伴</color>的消耗降低10%"
   },
   {
     "id": 4023310,
     "quality": 3,
     "tags": "refresh",
-    "description": "委托到教室时，重置<#FFEA73>专长</color>出现<#FFEA73>高级专长</color>的概率提升<#FFEA73>5%</color>"
+    "description": "委托到学院主楼时，重置<#FFEA73>专长</color>出现<#FFEA73>高级专长</color>的概率提升<#FFEA73>5%</color>"
   },
   {
     "id": 4023311,
     "quality": 3,
     "tags": "refresh",
-    "description": "委托到教室时，重置<#FFEA73>专长</color>消耗降低10%"
+    "description": "委托到学院主楼时，重置<#FFEA73>专长</color>消耗降低10%"
   }
 ]

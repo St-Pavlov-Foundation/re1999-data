@@ -23,21 +23,21 @@ function CharacterQTEView:_editableInitView()
 
 	self._qtebtn:AddClickListener(self._onQteCardClick, self)
 
-	self._animator = self.viewGO:GetComponent(typeof(UnityEngine.Animator))
+	self._animatorPlayer = SLFramework.AnimatorPlayer.Get(self.viewGO)
 end
 
 function CharacterQTEView:_refreshUI()
-	CharacterQTEView.super._refreshUI(self)
-	self:_refreshQte()
-end
-
-function CharacterQTEView:_refreshQte()
 	self._qteMo = SkillConfig.instance:getHeroQteMO(self._heroId, self._heroMo)
 
 	if not self._qteMo then
 		return
 	end
 
+	CharacterQTEView.super._refreshUI(self)
+	self:_refreshQte()
+end
+
+function CharacterQTEView:_refreshQte()
 	local skillId = self._qteMo:getActiveId()
 	local skillCO = lua_skill.configDict[skillId]
 
@@ -46,15 +46,21 @@ function CharacterQTEView:_refreshQte()
 end
 
 function CharacterQTEView:playOpenAni(viewType, forcePlayAnim)
-	if (not self._isPlayedOpenAnim or forcePlayAnim) and self.viewGO and self.viewGO.activeInHierarchy then
+	if self.viewGO and self.viewGO.activeInHierarchy then
 		local deviceViewParam = CharacterEnum.DeviceViewParam[viewType]
 		local aniName = deviceViewParam and deviceViewParam.OpenAniName
 
-		if aniName then
-			self:playAnim(aniName)
+		if self._playingAni == aniName then
+			self._isPlayedOpenAnim = false
 		end
 
-		self._isPlayedOpenAnim = true
+		if not self._isPlayedOpenAnim or forcePlayAnim then
+			if aniName then
+				self:playAnim(aniName)
+			end
+
+			self._isPlayedOpenAnim = true
+		end
 	end
 end
 
@@ -63,11 +69,17 @@ function CharacterQTEView:_onQteCardClick()
 end
 
 function CharacterQTEView:playAnim(animName)
-	if not self._animator then
+	if not self._animatorPlayer then
 		return
 	end
 
-	self._animator:Play(animName, 0, 0)
+	self._playingAni = animName
+
+	self._animatorPlayer:Play(animName, self._playFinishAnim, self)
+end
+
+function CharacterQTEView:_playFinishAnim()
+	self._playingAni = nil
 end
 
 function CharacterQTEView:onDestroy()

@@ -18,7 +18,7 @@ function WaitGuideActionOpenViewInFirstWithCondition:onStart(context)
 	self._conditionCheckFun = self[funcName]
 
 	if not self._conditionCheckFun and not string.nilorempty(funcName) then
-		local arr = string.split(funcName, "_")
+		local arr = string.split(funcName, "-")
 		local cls = _G[arr[1]]
 
 		self._conditionCheckFun = cls and cls[arr[2]]

@@ -134,7 +134,7 @@
   {
     "chaId": 23,
     "chaPicture": "headicon_small_26",
-    "chaName": "张之之",
+    "chaName": "Z",
     "chaCamp": 1
   },
   {
@@ -148,5 +148,11 @@
     "chaPicture": "headicon_small_28",
     "chaName": "小梅斯梅尔",
     "chaCamp": 5
+  },
+  {
+    "chaId": 26,
+    "chaPicture": "headicon_small_1",
+    "chaName": "“接引人”",
+    "chaCamp": 4
   }
 ]

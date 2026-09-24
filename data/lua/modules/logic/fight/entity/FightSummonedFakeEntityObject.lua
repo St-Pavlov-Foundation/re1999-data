@@ -4,6 +4,8 @@ module("modules.logic.fight.entity.FightSummonedFakeEntityObject", package.seeal
 
 local FightSummonedFakeEntityObject = class("FightSummonedFakeEntityObject", FightEntityObject)
 
+FightSummonedFakeEntityObject.isFightSummonedFakeEntityObject = true
+
 function FightSummonedFakeEntityObject:getTag()
 	return SceneTag.UnitNpc
 end

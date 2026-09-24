@@ -13,6 +13,12 @@ function DecorateStoreBundleCompType2:init(go)
 	self._txtdesc = gohelper.findChildText(go, "txt_desc")
 	self._simagepackage = gohelper.findChildSingleImage(go, "scroll_products/viewport/content/#simage_package")
 	self._gopackageselect = gohelper.findChild(go, "scroll_products/viewport/content/#simage_package/#go_select")
+	self._goowned = gohelper.findChild(go, "scroll_products/viewport/content/#simage_package/#go_owned")
+	self._godiscountroot = gohelper.findChild(go, "scroll_products/viewport/content/#simage_package/discount")
+	self._godiscount2 = gohelper.findChild(self._godiscountroot, "#go_discount2")
+	self._txtdiscount2 = gohelper.findChildText(self._godiscountroot, "#go_discount2/#txt_discount")
+	self._godiscount1 = gohelper.findChild(self._godiscountroot, "#go_discount")
+	self._txtdiscount1 = gohelper.findChildText(self._godiscountroot, "#go_discount/#txt_discount")
 	self._btnpackageclick = gohelper.findChildButtonWithAudio(go, "scroll_products/viewport/content/#simage_package/#btn_click")
 	self._goitem = gohelper.findChild(go, "scroll_products/viewport/content/grid/#go_item")
 
@@ -27,26 +33,26 @@ function DecorateStoreBundleCompType2:_initItem()
 end
 
 function DecorateStoreBundleCompType2:_onClickPackage()
-	DecorateStoreModel.instance:setCurGood(self._packageGoodId)
-	StoreController.instance:dispatchEvent(StoreEvent.DecorateGoodItemClick, self._packageGoodId)
-	self:_refreshType()
-end
+	local curGoodsId = DecorateStoreModel.instance:getCurGood(self._storeId)
 
-function DecorateStoreBundleCompType2:_onGoodItemClick()
+	if curGoodsId == self._packageGoodId then
+		return
+	end
+
+	DecorateStoreModel.instance:setCurGood(self._packageGoodId)
+	StoreController.instance:dispatchEvent(StoreEvent.DecorateGoodItemClick, self._packageGoodId, true)
 	self:_refreshType()
 end
 
 function DecorateStoreBundleCompType2:_addEvents()
 	self._btnpackageclick:AddClickListener(self._onClickPackage, self)
-	StoreController.instance:registerCallback(StoreEvent.DecorateGoodItemClick, self._onGoodItemClick, self)
 end
 
 function DecorateStoreBundleCompType2:_removeEvents()
 	self._btnpackageclick:RemoveClickListener()
-	StoreController.instance:unregisterCallback(StoreEvent.DecorateGoodItemClick, self._onGoodItemClick, self)
 end
 
-function DecorateStoreBundleCompType2:refresh(goodId, storeId)
+function DecorateStoreBundleCompType2:refresh(goodId)
 	self._packageGoodId = goodId
 
 	local decorateConfig = DecorateStoreConfig.instance:getDecorateConfig(goodId)
@@ -55,11 +61,37 @@ function DecorateStoreBundleCompType2:refresh(goodId, storeId)
 		self._packageGoodId = decorateConfig.fatherGoods
 	end
 
-	self._storeId = storeId
+	local goodCo = StoreConfig.instance:getGoodsConfig(goodId)
+
+	self._storeId = tonumber(goodCo.storeId)
 	self._decorateConfig = DecorateStoreConfig.instance:getDecorateConfig(self._packageGoodId)
 	self._goodConfig = StoreConfig.instance:getGoodsConfig(self._packageGoodId)
 
+	self:_refreshDiscount()
 	self:_refreshType()
+end
+
+function DecorateStoreBundleCompType2:_refreshDiscount()
+	local discount = self._decorateConfig.offTag > 0 and self._decorateConfig.offTag or 100
+	local hasDiscount1 = discount > 0 and discount < 100
+
+	if hasDiscount1 then
+		self._txtdiscount1.text = string.format("-%s%%", discount)
+	end
+
+	local offsetSecond = DecorateStoreModel.instance:getGoodItemLimitTime(self._packageGoodId)
+	local discount2 = offsetSecond > 0 and DecorateStoreModel.instance:getGoodDiscount(self._packageGoodId) or 100
+
+	discount2 = discount2 == 0 and 100 or discount2
+
+	local hasDiscount = discount2 > 0 and discount2 < 100
+
+	if hasDiscount then
+		self._txtdiscount2.text = string.format("-%s%%", discount2)
+	end
+
+	gohelper.setActive(self._godiscount1, hasDiscount1)
+	gohelper.setActive(self._godiscount2, hasDiscount)
 end
 
 function DecorateStoreBundleCompType2:_refreshType()
@@ -75,20 +107,33 @@ function DecorateStoreBundleCompType2:_refreshPackage()
 	local curGoodId = DecorateStoreModel.instance:getCurGood(self._storeId)
 
 	gohelper.setActive(self._gopackageselect, curGoodId == self._packageGoodId)
+
+	local isOwn = DecorateStoreModel.instance:isDecorateGoodItemHas(self._packageGoodId)
+
+	gohelper.setActive(self._goowned, isOwn)
 end
 
 function DecorateStoreBundleCompType2:_refreshItems()
 	local goods = DecorateStoreModel.instance:getBundleSubGoods(self._packageGoodId)
 
+	if not goods then
+		return
+	end
+
+	if #self._subGoodsItem > #goods then
+		for i = #goods + 1, #self._subGoodsItem do
+			gohelper.setActive(self._subGoodsItem[i].go, false)
+		end
+	end
+
 	for index, goodCo in pairs(goods) do
 		if not self._subGoodsItem[index] then
 			local go = gohelper.cloneInPlace(self._goitem, goodCo.id)
 
-			gohelper.setActive(go, true)
-
 			self._subGoodsItem[index] = DecorateStoreBundleCompType2Item.Get(go)
 		end
 
+		gohelper.setActive(self._subGoodsItem[index].go, true)
 		self._subGoodsItem[index]:refresh(goodCo.id, self._storeId)
 	end
 end
@@ -103,6 +148,10 @@ function DecorateStoreBundleCompType2:destroy()
 		end
 
 		self._subGoodsItem = nil
+	end
+
+	if self.go then
+		gohelper.destroy(self.go)
 	end
 end
 

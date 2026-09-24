@@ -194,16 +194,16 @@
   {
     "id": 4022001,
     "name": "烛语研究者",
-    "type": "npc",
-    "rarity": 3,
+    "type": "unique",
+    "rarity": 1,
     "avatar": "headicon_small_16",
     "pieceAsset": "v4a0_m_s08_hddt_qz_xt_man"
   },
   {
     "id": 4022002,
     "name": "美食爱好者",
-    "type": "npc",
-    "rarity": 3,
+    "type": "unique",
+    "rarity": 1,
     "avatar": "headicon_small_14",
     "pieceAsset": "v4a0_m_s08_hddt_qz_xt_woman"
   }

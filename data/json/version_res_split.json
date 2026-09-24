@@ -503,7 +503,9 @@
       307901
     ],
     "folderPath": [],
-    "videoPath": [],
+    "videoPath": [
+      "1_4_pv"
+    ],
     "path": [],
     "uiFolder": [
       "ui/viewres/versionactivity_1_4/v1a4_6role",
@@ -610,7 +612,8 @@
       308305,
       308306,
       308307,
-      308308
+      308308,
+      100700
     ],
     "folderPath": [],
     "videoPath": [
@@ -770,7 +773,9 @@
       1960308
     ],
     "folderPath": [],
-    "videoPath": [],
+    "videoPath": [
+      "1_9_pv"
+    ],
     "path": [],
     "uiFolder": [
       "ui/viewres/versionactivity_1_9/v1a9_dungeon",
@@ -1017,7 +1022,8 @@
       310007,
       310008,
       310009,
-      310010
+      310010,
+      102200
     ],
     "folderPath": [],
     "videoPath": [
@@ -1374,7 +1380,8 @@
       311406,
       311407,
       311408,
-      311409
+      311409,
+      102600
     ],
     "folderPath": [],
     "videoPath": [
@@ -1510,7 +1517,8 @@
       312008,
       312009,
       312010,
-      312011
+      312011,
+      102800
     ],
     "folderPath": [],
     "videoPath": [
@@ -1555,11 +1563,13 @@
       312608,
       312609,
       312610,
-      312611
+      312611,
+      103000
     ],
     "folderPath": [],
     "videoPath": [
-      "3_0_pv"
+      "3_0_pv",
+      "3_0_loop"
     ],
     "path": [],
     "uiFolder": [
@@ -1638,7 +1648,8 @@
     ],
     "folderPath": [],
     "videoPath": [
-      "3_1_pv"
+      "3_1_pv",
+      "v3a1_kv_loop"
     ],
     "path": [],
     "uiFolder": [
@@ -1687,11 +1698,13 @@
       313505,
       313506,
       313507,
-      313508
+      313508,
+      203200
     ],
     "folderPath": [],
     "videoPath": [
-      "3_2_pv"
+      "3_2_pv",
+      "v3a2_kv_loop"
     ],
     "path": [],
     "uiFolder": [
@@ -1700,6 +1713,31 @@
     ],
     "uiPath": [],
     "packName": "opveract",
+    "ignore": 0
+  },
+  {
+    "id": 999,
+    "audio": [],
+    "chapter": [],
+    "guide": [],
+    "story": [],
+    "folderPath": [],
+    "videoPath": [
+      "v3a8_kv_loop",
+      "v3a8_kv_open",
+      "v3a9_101Movie",
+      "V3a9_102Movie",
+      "V3a9_103Movie",
+      "V3a9_104Movie",
+      "V3a9_105Movie",
+      "V3a9_106Movie",
+      "V3a9_107Movie",
+      "V3a9_108Movie"
+    ],
+    "path": [],
+    "uiFolder": [],
+    "uiPath": [],
+    "packName": "opvideos",
     "ignore": 0
   }
 ]

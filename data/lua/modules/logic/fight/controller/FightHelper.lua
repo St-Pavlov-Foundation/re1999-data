@@ -934,6 +934,11 @@ end
 
 function FightHelper.detectAttributeCounter()
 	local fight_param = FightModel.instance:getFightParam()
+
+	if fight_param == nil then
+		return {}, {}
+	end
+
 	local sodacheRecommended, sodacheCounter = SodacheMapUtil.getBossCareerRecommend()
 
 	if sodacheRecommended then
@@ -987,6 +992,10 @@ function FightHelper.detectAttributeCounter()
 end
 
 function FightHelper.checkIsMultiCareer(monsterGroupIds)
+	if not monsterGroupIds or next(monsterGroupIds) == nil then
+		return false
+	end
+
 	for i, v in ipairs(monsterGroupIds) do
 		local ids = FightStrUtil.instance:getSplitToNumberCache(lua_monster_group.configDict[v].monster, "#")
 
@@ -1083,6 +1092,7 @@ function FightHelper.getAttributeCounter(monsterGroupIds, isSpScene)
 	local is_boss
 	local enemy_career_tab = {}
 	local isTowerDeepEpisode = FightHelper.checkIsTowerDeepEpisode()
+	local haveMonsterGroup = monsterGroupIds and next(monsterGroupIds) ~= nil
 
 	if isTowerDeepEpisode then
 		local monsterId = TowerPermanentDeepModel.instance:getCurDeepMonsterId()
@@ -1093,7 +1103,7 @@ function FightHelper.getAttributeCounter(monsterGroupIds, isSpScene)
 		end
 	elseif FightHelper.checkIsMultiCareer(monsterGroupIds) then
 		return FightHelper.getMultiAttributeCounter(monsterGroupIds)
-	else
+	elseif haveMonsterGroup then
 		for i, v in ipairs(monsterGroupIds) do
 			if not string.nilorempty(lua_monster_group.configDict[v].bossId) then
 				is_boss = lua_monster_group.configDict[v].bossId
@@ -1122,7 +1132,7 @@ function FightHelper.getAttributeCounter(monsterGroupIds, isSpScene)
 	local recommended = {}
 	local counter = {}
 
-	if isSpScene then
+	if isSpScene or not haveMonsterGroup then
 		return recommended, counter
 	end
 
@@ -3652,6 +3662,8 @@ function FightHelper.getEmptyFightEntityMO(heroUid, heroId, level, skin)
 	local heroCO = lua_character.configDict[heroId]
 	local fightEntityMO = FightEntityMO.New()
 
+	fightEntityMO:init(FightDef_pb.FightEntityInfo())
+
 	fightEntityMO.id = tostring(heroUid)
 	fightEntityMO.uid = fightEntityMO.id
 	fightEntityMO.modelId = heroId or 0
@@ -3685,6 +3697,8 @@ end
 function FightHelper.buildHeroEntityMOList(side, heroIds, skinIds, subHeroIds, subHeroSkinIds)
 	local function buildEntityMOFunc(heroId, heroCO, skin)
 		local fightEntityMO = FightEntityMO.New()
+
+		fightEntityMO:init(FightDef_pb.FightEntityInfo())
 
 		fightEntityMO.id = tostring(mySideIdCounter)
 		fightEntityMO.uid = fightEntityMO.id
@@ -3800,6 +3814,8 @@ function FightHelper.buildMonsterEntityMOList(side, monsterIds, subMonsterIds)
 
 			if monsterCO then
 				local fightEntityMO = FightEntityMO.New()
+
+				fightEntityMO:init(FightDef_pb.FightEntityInfo())
 
 				fightEntityMO.id = tostring(enemySideIdCounter)
 				fightEntityMO.uid = fightEntityMO.id
@@ -4989,36 +5005,6 @@ function FightHelper.getQTESkillCost(skillCo)
 	local cost = array[2] or 0
 
 	return costType, cost
-end
-
-local StoneParam = {
-	"_TempOffset3",
-	"Vector4",
-	"1,0,0,0",
-	"-2,0,0,0"
-}
-
-function FightHelper.setEntityDying(entity)
-	if not entity then
-		return
-	end
-
-	entity:resetAnimState()
-	entity:resetSpineMat()
-
-	local replaceMat = entity.spineRenderer:getReplaceMat()
-
-	if not replaceMat then
-		return
-	end
-
-	local matParam = StoneParam
-	local propName = matParam[1]
-	local propType = matParam[2]
-	local startValue = MaterialUtil.getPropValueFromStr(propType, matParam[3])
-	local endValue = MaterialUtil.getPropValueFromStr(propType, matParam[4])
-
-	MaterialUtil.setPropValue(replaceMat, propName, propType, endValue)
 end
 
 function FightHelper.hasQteEntity()

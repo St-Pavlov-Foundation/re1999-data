@@ -47,5 +47,6 @@ MusicGameEnum.ResultType = {
 	Sing = 1,
 	Score = 2
 }
+MusicGameEnum.GuideId = 40014
 
 return MusicGameEnum

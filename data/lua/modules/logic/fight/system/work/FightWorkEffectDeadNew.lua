@@ -165,7 +165,7 @@ function FightWorkEffectDeadNew:_playDeadWork()
 		self._deadEntity.nameUI:playDeadEffect()
 	end
 
-	FightAudioMgr.instance:playHeroVoiceRandom(self._deadEntity:getMO().modelId, CharacterEnum.VoiceType.FightDie)
+	FightAudioMgr.instance:playHeroVoiceRandom(self._deadEntity:getMO().modelId, CharacterEnum.VoiceType.FightDie, self._deadEntity.entityId)
 end
 
 function FightWorkEffectDeadNew:_getDieActName(entityMO)

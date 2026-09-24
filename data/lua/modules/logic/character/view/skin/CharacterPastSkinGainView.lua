@@ -58,6 +58,7 @@ function CharacterPastSkinGainView:_btnswitchOnClick()
 		}
 	}
 
+	MainController.instance:waitOpenMainThumbnailView(true)
 	NavigateButtonsView.homeClick()
 	MainController.instance:openMainThumbnailView(param, true)
 end
@@ -68,6 +69,13 @@ function CharacterPastSkinGainView:_onBgClick()
 	end
 
 	self:closeThis()
+end
+
+function CharacterPastSkinGainView:_showSwitchBtn()
+	local popupList = PopupController.instance._popupList._dataList
+	local count = popupList and #popupList or 0
+
+	gohelper.setActive(self._btnswitch.gameObject, count == 0)
 end
 
 function CharacterPastSkinGainView:_editableInitView()
@@ -135,6 +143,7 @@ function CharacterPastSkinGainView:onOpen()
 	self:_refreshView()
 	self:_playSkinAnimation()
 	gohelper.setActive(self._txtname.gameObject, false)
+	self:_showSwitchBtn()
 end
 
 function CharacterPastSkinGainView:_refreshView()

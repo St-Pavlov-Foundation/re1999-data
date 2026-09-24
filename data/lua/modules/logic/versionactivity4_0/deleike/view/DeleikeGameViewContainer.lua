@@ -7,8 +7,8 @@ local DeleikeGameViewContainer = class("DeleikeGameViewContainer", BaseViewConta
 function DeleikeGameViewContainer:buildViews()
 	local views = {}
 
-	table.insert(views, DeleikeGameView.New())
 	table.insert(views, DeleikeGameScene.New())
+	table.insert(views, DeleikeGameView.New())
 	table.insert(views, TabViewGroup.New(1, "#go_topleft"))
 
 	return views
@@ -19,13 +19,28 @@ function DeleikeGameViewContainer:buildTabViews(tabContainerId)
 		self.navigateView = NavigateButtonsView.New({
 			true,
 			false,
-			false
-		})
+			true
+		}, 4001001)
+
+		self.navigateView:setOverrideClose(self.overrideCloseFunc, self)
 
 		return {
 			self.navigateView
 		}
 	end
+end
+
+function DeleikeGameViewContainer:overrideCloseFunc()
+	DeleikeGameMgr.instance:setInputLocked(true)
+	GameFacade.showMessageBox(MessageBoxIdDefine.Activity130PuzzleExit, MsgBoxEnum.BoxType.Yes_No, self.closeFunc, self.cancelFunc, nil, self, self)
+end
+
+function DeleikeGameViewContainer:closeFunc()
+	DeleikeController.instance:closeGameView(true)
+end
+
+function DeleikeGameViewContainer:cancelFunc()
+	DeleikeGameMgr.instance:setInputLocked(false)
 end
 
 return DeleikeGameViewContainer

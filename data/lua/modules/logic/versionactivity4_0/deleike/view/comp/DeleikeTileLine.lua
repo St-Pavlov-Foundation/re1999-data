@@ -39,16 +39,14 @@ function DeleikeTileLine:setLogicPos(x, y)
 	self.mo.pos.y = y
 
 	local rect = self.mo.rect
-	local rad = math.rad(self.mo.rotation or 0)
-	local cosR, sinR = math.cos(rad), math.sin(rad)
+	local cosR, sinR = self.mo.cosR, self.mo.sinR
 
 	recthelper.setAnchor(self.transform, x + rect.cx * cosR - rect.cy * sinR, y + rect.cx * sinR + rect.cy * cosR)
 end
 
 function DeleikeTileLine:getWorldPolygon()
 	local result = {}
-	local rad = math.rad(self.mo.rotation or 0)
-	local cosR, sinR = math.cos(rad), math.sin(rad)
+	local cosR, sinR = self.mo.cosR, self.mo.sinR
 	local px, py = self.mo.pos.x, self.mo.pos.y
 
 	for i = 1, #self.mo.polygon do

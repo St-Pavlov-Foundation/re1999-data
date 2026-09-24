@@ -824,7 +824,7 @@ local module_mvc = {
 	CustomPickChoice = {
 		model = {
 			"CustomPickChoiceListModel",
-			"SummonCustomPickModel"
+			"SummonCustomPickHeroModel"
 		},
 		controller = {
 			"CustomPickChoiceController",
@@ -1911,6 +1911,9 @@ local module_mvc = {
 		},
 		rpc = {
 			"StatRpc"
+		},
+		config = {
+			"StatConfig"
 		}
 	},
 	room = {

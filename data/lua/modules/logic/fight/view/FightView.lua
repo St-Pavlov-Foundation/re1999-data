@@ -464,6 +464,8 @@ function FightView:onSetBtnListVisibleWhenHidingFightView(state, showBtnNames)
 
 				gohelper.setActive(child.gameObject, tabletool.indexOf(showBtnNames, child.name))
 			end
+
+			gohelper.setActiveCanvasGroup(self._topRightBtnRoot, true)
 		else
 			for i = 0, transform.childCount - 1 do
 				local child = transform:GetChild(i)

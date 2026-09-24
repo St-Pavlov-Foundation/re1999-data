@@ -28,6 +28,9 @@ function CollegeRoleRefinedView:onInitView()
 	self._goButtons = gohelper.findChild(self.viewGO, "root/#go_Select/Buttons")
 	self._goCostRow = gohelper.findChild(self.viewGO, "root/#go_Select/Buttons/#go_CostRow")
 	self._costComp = CollegeResCostComp.Get(self._goCostRow)
+	self._btnRefresh = gohelper.findChildButtonWithAudio(self.viewGO, "root/#go_Compare/#go_NewRoleRoot/#btn_Refresh")
+	self._goRefreshCostRow = gohelper.findChild(self.viewGO, "root/#go_Compare/#go_NewRoleRoot/#btn_Refresh/#go_RefreshCostRow")
+	self._refreshCostComp = CollegeResCostComp.Get(self._goRefreshCostRow)
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -40,6 +43,7 @@ function CollegeRoleRefinedView:addEvents()
 	self._btnSelectOld:AddClickListener(self._btnSelectOldOnClick, self)
 	self._btnSelectNew:AddClickListener(self._btnSelectNewOnClick, self)
 	self._btnClose:AddClickListener(self._btnCloseOnClick, self)
+	self._btnRefresh:AddClickListener(self._btnRefreshOnClick, self)
 	self:addEventCb(CollegeController.instance, CollegeEvent.OnSelectRefined, self._onSelectRefined, self)
 	self:addEventCb(CollegeController.instance, CollegeEvent.OnServerMsgUpdate, self.refreshUI, self)
 end
@@ -50,6 +54,7 @@ function CollegeRoleRefinedView:removeEvents()
 	self._btnSelectOld:RemoveClickListener()
 	self._btnSelectNew:RemoveClickListener()
 	self._btnClose:RemoveClickListener()
+	self._btnRefresh:RemoveClickListener()
 end
 
 function CollegeRoleRefinedView:_btnStartOnClick()
@@ -72,12 +77,14 @@ end
 function CollegeRoleRefinedView:_btnSelectOldOnClick()
 	self._newCharacterMo = nil
 	self._isSelectLeft = true
+	self._isRefresh = false
 
 	CollegeRpc.instance:sendCollegeBuildingConfirmEntry(1)
 end
 
 function CollegeRoleRefinedView:_btnSelectNewOnClick()
 	self._isSelectLeft = false
+	self._isRefresh = false
 
 	CollegeStoryHelper.instance:setLockPlayStory(true)
 	CollegeRpc.instance:sendCollegeBuildingConfirmEntry(2)
@@ -90,6 +97,19 @@ function CollegeRoleRefinedView:_btnCloseOnClick()
 	self:refreshUI()
 end
 
+function CollegeRoleRefinedView:_btnRefreshOnClick()
+	if not self._isEnough then
+		GameFacade.showToast(ToastEnum.CollegeItemNotEnough)
+
+		return
+	end
+
+	self._isRefresh = true
+
+	CollegeAudioHelper.instance:playAudio(CollegeAudioEnum.RoleRefreshEntry)
+	CollegeRpc.instance:sendCollegeBuildingRefined(self._newCharacterMo.uid)
+end
+
 function CollegeRoleRefinedView:_defaultPlayAnimDone()
 	return
 end
@@ -97,6 +117,7 @@ end
 function CollegeRoleRefinedView:_editableInitView()
 	self._goBtnReplace = self._btnReplace.gameObject
 	self._goBtnStart = self._btnStart.gameObject
+	self._goBtnRefresh = self._btnRefresh.gameObject
 	self._goRolePanel = self:getResInst(CollegeEnum.PrefabPath.RolePanel, self._goRoleRoot)
 	self._selectRolePanel = MonoHelper.addNoUpdateLuaComOnceToGo(self._goRolePanel, CollegeRoleRefinedPanelItem, self)
 	self._characterBox = CollegeModel.instance:getSceneMo().characterBox
@@ -191,10 +212,28 @@ function CollegeRoleRefinedView:refreshCompareStateUI()
 	gohelper.setActive(self._goCompare, true)
 	self:checkCompareCharacterInitDone()
 	self:createNewCharacterMo()
+	self:updateRefreshBtn()
 	self._oldCharacterItem:onUpdateMO(self._selectMo)
 	self._newCharacterItem:onUpdateMO(self._newCharacterMo, self._newEntryIndexMap)
-	UIBlockHelper.instance:startBlock(self.viewName, 0.33, self.viewName)
-	self._animatorPlayer:Play("compare", self._onPlayCompareAnimDone, self)
+
+	if not self._isRefresh then
+		UIBlockHelper.instance:startBlock(self.viewName, 0.33, self.viewName)
+		self._animatorPlayer:Play("compare", self._onPlayCompareAnimDone, self)
+	else
+		self:_onPlayCompareAnimDone()
+	end
+end
+
+function CollegeRoleRefinedView:updateRefreshBtn()
+	local costTb, rate = CollegeAttrHelper.getRefineCostAndRate(self._newCharacterMo:getLockEntriesNum())
+
+	self._refreshCostComp:onUpdateMO(costTb, {
+		rate
+	})
+
+	self._isEnough = CollegeModel.instance:isEnoughItemsTb(costTb, rate)
+
+	ZProj.UGUIHelper.SetGrayscale(self._goBtnRefresh, not self._isEnough)
 end
 
 function CollegeRoleRefinedView:_onPlayCompareAnimDone()
@@ -222,28 +261,38 @@ function CollegeRoleRefinedView:checkCompareCharacterInitDone()
 end
 
 function CollegeRoleRefinedView:createNewCharacterMo()
-	self._newCharacterMo = tabletool.copy(self._selectMo)
-	self._newCharacterMo.entries = {}
-
 	local buildingMo = CollegeModel.instance:getBuildingMoByType(CollegeEnum.BuildingType.TrainCharacter)
 	local newEntryIds = buildingMo and buildingMo.refinedProp.newEntryId
+	local newEntryInfoList = {}
 
 	self._newEntryIndexMap = {}
 
 	for i, newEntryId in ipairs(newEntryIds) do
-		local entryMo = CollegeEntryMo.New()
-
-		entryMo:init({
-			id = newEntryId
-		})
-		table.insert(self._newCharacterMo.entries, entryMo)
-
 		local oldEntryMo = self._selectMo.entries[i]
 
 		if not oldEntryMo or not oldEntryMo.locked then
 			self._newEntryIndexMap[i] = true
 		end
+
+		local locked = oldEntryMo and oldEntryMo.locked
+
+		table.insert(newEntryInfoList, {
+			id = newEntryId,
+			locked = locked
+		})
 	end
+
+	self._newCharacterMo = CollegeCharacterMo.New()
+
+	self._newCharacterMo:init({
+		uid = self._selectMo.uid,
+		id = self._selectMo.id,
+		level = self._selectMo.level,
+		entries = newEntryInfoList,
+		attributeContainer = {
+			attributes = {}
+		}
+	})
 end
 
 function CollegeRoleRefinedView:refreshSuccessStateUI()

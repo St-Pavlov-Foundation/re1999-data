@@ -4,12 +4,16 @@ module("modules.logic.matchgame.rpc.MatchGameRpc", package.seeall)
 
 local MatchGameRpc = class("MatchGameRpc", BaseRpc)
 
+function MatchGameRpc:reInit()
+	self._lastSendCharacterTime = nil
+end
+
 function MatchGameRpc:sendGetAct244InfoRequest(activityId, callback, callbackObj)
 	local req = Activity244Module_pb.GetAct244InfoRequest()
 
 	req.activityId = activityId
 
-	self:sendMsg(req, callback, callbackObj)
+	return self:sendMsg(req, callback, callbackObj)
 end
 
 function MatchGameRpc:onReceiveGetAct244InfoReply(resultCode, msg)
@@ -20,30 +24,21 @@ function MatchGameRpc:onReceiveGetAct244InfoReply(resultCode, msg)
 	MatchGameModel.instance:onUpdateInfo(msg)
 end
 
-function MatchGameRpc:sendAct244BuyHeroRequest(activityId, heroId, callback, callbackObj)
-	local req = Activity244Module_pb.Act244BuyHeroRequest()
+function MatchGameRpc:sendAct244UpgradeHeroRequest(activityId, heroId, callback, callbackObj)
+	local curTime = UnityEngine.Time.realtimeSinceStartup
 
-	req.activityId = activityId
-	req.heroId = heroId
-
-	self:sendMsg(req, callback, callbackObj)
-end
-
-function MatchGameRpc:onReceiveAct244BuyHeroReply(resultCode, msg)
-	if resultCode ~= 0 then
+	if self._lastSendCharacterTime and curTime - self._lastSendCharacterTime < MatchGameEnum.CharacterLvUpCoolDown then
 		return
 	end
 
-	MatchGameModel.instance:onUpdateCharacterInfo(msg.hero)
-end
+	self._lastSendCharacterTime = curTime
 
-function MatchGameRpc:sendAct244UpgradeHeroRequest(activityId, heroId, callback, callbackObj)
 	local req = Activity244Module_pb.Act244UpgradeHeroRequest()
 
 	req.activityId = activityId
 	req.heroId = heroId
 
-	self:sendMsg(req, callback, callbackObj)
+	return self:sendMsg(req, callback, callbackObj)
 end
 
 function MatchGameRpc:onReceiveAct244UpgradeHeroReply(resultCode, msg)
@@ -51,7 +46,12 @@ function MatchGameRpc:onReceiveAct244UpgradeHeroReply(resultCode, msg)
 		return
 	end
 
-	MatchGameModel.instance:onUpdateCharacterInfo(msg.hero)
+	local heroInfo = msg.hero
+	local heroId = heroInfo.heroId
+	local level = heroInfo.level
+
+	MatchGameModel.instance:onUpdateCharacterInfo(heroInfo)
+	MatchGameStatHelper.instance:raising(MatchGameEnum.StatOpType.LvUpCharacter, heroId, level)
 end
 
 function MatchGameRpc:sendAct244ActiveTalentRequest(activityId, talentId, callback, callbackObj)
@@ -60,7 +60,7 @@ function MatchGameRpc:sendAct244ActiveTalentRequest(activityId, talentId, callba
 	req.activityId = activityId
 	req.talentId = talentId
 
-	self:sendMsg(req, callback, callbackObj)
+	return self:sendMsg(req, callback, callbackObj)
 end
 
 function MatchGameRpc:onReceiveAct244ActiveTalentReply(resultCode, msg)
@@ -68,7 +68,11 @@ function MatchGameRpc:onReceiveAct244ActiveTalentReply(resultCode, msg)
 		return
 	end
 
-	MatchGameModel.instance:onUpdateTalentInfo(msg.talent)
+	local talentInfo = msg.talent
+	local talentId = talentInfo.talentId
+
+	MatchGameModel.instance:onUpdateTalentInfo(talentInfo)
+	MatchGameStatHelper.instance:raising(MatchGameEnum.StatOpType.ActiveTalent, talentId)
 end
 
 function MatchGameRpc:sendAct244ResetTalentRequest(activityId, talentBranch, callback, callbackObj)
@@ -77,7 +81,7 @@ function MatchGameRpc:sendAct244ResetTalentRequest(activityId, talentBranch, cal
 	req.activityId = activityId
 	req.talentBranch = talentBranch
 
-	self:sendMsg(req, callback, callbackObj)
+	return self:sendMsg(req, callback, callbackObj)
 end
 
 function MatchGameRpc:onReceiveAct244ResetTalentReply(resultCode, msg)
@@ -100,7 +104,7 @@ function MatchGameRpc:sendAct244ModifyTeamRequest(activityId, teamIndex, heroIds
 		end
 	end
 
-	self:sendMsg(req, callback, callbackObj)
+	return self:sendMsg(req, callback, callbackObj)
 end
 
 function MatchGameRpc:onReceiveAct244ModifyTeamReply(resultCode, msg)
@@ -120,7 +124,7 @@ function MatchGameRpc:sendAct244ModifyTeamIndexRequest(activityId, teamIndex, ca
 	req.activityId = activityId
 	req.teamIndex = teamIndex
 
-	self:sendMsg(req, callback, callbackObj)
+	return self:sendMsg(req, callback, callbackObj)
 end
 
 function MatchGameRpc:onReceiveAct244ModifyTeamIndexReply(resultCode, msg)
@@ -138,7 +142,7 @@ function MatchGameRpc:sendAct244StartEpisodeRequest(activityId, episodeId, callb
 	req.activityId = activityId
 	req.episodeId = episodeId
 
-	self:sendMsg(req, callback, callbackObj)
+	return self:sendMsg(req, callback, callbackObj)
 end
 
 function MatchGameRpc:onReceiveAct244StartEpisodeReply(resultCode, msg)
@@ -175,7 +179,7 @@ function MatchGameRpc:sendAct244SettleEpisodeRequest(activityId, episodeId, isPa
 		MatchGameLevelModel.instance:clearFinishEpisode()
 	end
 
-	self:sendMsg(req, callback, callbackObj)
+	return self:sendMsg(req, callback, callbackObj)
 end
 
 function MatchGameRpc:onReceiveAct244SettleEpisodeReply(resultCode, msg)
@@ -187,7 +191,7 @@ function MatchGameRpc:sendAct244ReceiveStarBonusRequest(activityId, callback, ca
 
 	req.activityId = activityId
 
-	self:sendMsg(req, callback, callbackObj)
+	return self:sendMsg(req, callback, callbackObj)
 end
 
 function MatchGameRpc:onReceiveAct244ReceiveStarBonusReply(resultCode, msg)
@@ -205,7 +209,7 @@ function MatchGameRpc:sendAct244ReceiveChallengeBonusRequest(activityId, callbac
 
 	req.activityId = activityId
 
-	self:sendMsg(req, callback, callbackObj)
+	return self:sendMsg(req, callback, callbackObj)
 end
 
 function MatchGameRpc:onReceiveAct244ReceiveChallengeBonusReply(resultCode, msg)

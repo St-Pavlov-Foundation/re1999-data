@@ -122,7 +122,7 @@ function SummonCustomPickItem:refreshExSkill()
 end
 
 function SummonCustomPickItem:refreshSelect()
-	local isSelect = SummonCustomPickModel.instance:isHeroIdSelected(self._mo.id)
+	local isSelect = SummonCustomPickHeroModel.instance:isHeroIdSelected(self._mo.id)
 
 	gohelper.setActive(self._goSelected, isSelect)
 end

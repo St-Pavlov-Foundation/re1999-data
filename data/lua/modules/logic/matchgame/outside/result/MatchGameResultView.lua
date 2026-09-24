@@ -27,12 +27,6 @@ function MatchGameResultView:onInitView()
 	self._btnTalent = gohelper.findChildButtonWithAudio(self.viewGO, "Right/#go_failure/#btn_talent")
 	self._goTalentRedDot = gohelper.findChild(self.viewGO, "Right/#go_failure/#btn_talent/#go_reddot")
 	self._btnHeroGroup = gohelper.findChildButtonWithAudio(self.viewGO, "Right/#go_failure/#btn_herogroup")
-	self._goRound = gohelper.findChild(self.viewGO, "Left/go_achievement/#go_listitem/#go_round")
-	self._txtRound = gohelper.findChildText(self.viewGO, "Left/go_achievement/#go_listitem/#go_round/txt_round/#txt_round")
-	self._goMaxDamage = gohelper.findChild(self.viewGO, "Left/go_achievement/#go_listitem/#go_maxdamage")
-	self._txtMaxDamage = gohelper.findChildText(self.viewGO, "Left/go_achievement/#go_listitem/#go_maxdamage/txt_maxdamage/#txt_maxdamage")
-	self._goMaxChain = gohelper.findChild(self.viewGO, "Left/go_achievement/#go_listitem/#go_maxchain")
-	self._txtMaxChain = gohelper.findChildText(self.viewGO, "Left/go_achievement/#go_listitem/#go_maxchain/txt_maxchain/#txt_maxchain")
 	self._imageTarget = gohelper.findChildImage(self.viewGO, "Left/go_target/tagbg")
 	self._imageAchievement = gohelper.findChildImage(self.viewGO, "Left/go_achievement/tagbg")
 
@@ -63,20 +57,24 @@ end
 
 function MatchGameResultView:_btnBackOnClick()
 	MatchGameController.instance:onGameFinished(self._episodeId, self._isSuccess)
+	MatchGameStatHelper.instance:statResultClick(self.viewName, MatchGameEnum.StatClickType.Back, self._episodeId, self._isSuccess)
 end
 
 function MatchGameResultView:_btnAgainOnClick()
 	MatchGameController.instance:openHeroGroupView(self._episodeId)
+	MatchGameStatHelper.instance:statResultClick(self.viewName, MatchGameEnum.StatClickType.Again, self._episodeId, self._isSuccess)
 	self:closeThis()
 end
 
 function MatchGameResultView:_btnNextLevelOnClick()
 	MatchGameController.instance:switchToTargetEpisode(self._nextEpisodeId)
+	MatchGameStatHelper.instance:statResultClick(self.viewName, MatchGameEnum.StatClickType.NextLevel, self._episodeId, self._isSuccess)
 	self:closeThis()
 end
 
 function MatchGameResultView:_btnNextMapOnClick()
 	MatchGameController.instance:switchToTargetEpisode(self._nextEpisodeId)
+	MatchGameStatHelper.instance:statResultClick(self.viewName, MatchGameEnum.StatClickType.NextMap, self._episodeId, self._isSuccess)
 	self:closeThis()
 end
 
@@ -89,7 +87,9 @@ function MatchGameResultView:_btnTalentOnClick()
 end
 
 function MatchGameResultView:_btnHeroGroupOnClick()
-	ViewMgr.instance:openView(ViewName.MatchGameHeroGroupEditView)
+	ViewMgr.instance:openView(ViewName.MatchGameHeroGroupEditView, {
+		posIndex = 1
+	})
 end
 
 function MatchGameResultView:_editableInitView()
@@ -103,19 +103,21 @@ end
 function MatchGameResultView:onOpen()
 	self._episodeId = self.viewParam and self.viewParam.episodeId
 	self._isSuccess = self.viewParam and self.viewParam.isSuccess
-	self._maxChain = self.viewParam and self.viewParam.maxChain or 0
-	self._roundMaxDamage = self.viewParam and self.viewParam.roundMaxDamage or 0
-	self._roundCount = self.viewParam and self.viewParam.roundCount or 0
 	self._episodeMo = MatchGameModel.instance:getEpisodeInfoById(self._episodeId)
 	self._episodeCo = self._episodeMo and self._episodeMo.episodeCo
 	self._recCareer = self._episodeCo and self._episodeCo.recCareer
 	self._nextEpisodeCo = MatchGameConfig.instance:getNextEpisodeConfig(self._episodeId)
 	self._nextEpisodeId = self._nextEpisodeCo and self._nextEpisodeCo.id
+	self._exParam = self.viewParam and self.viewParam.exParam
+	self._roundCount = self._exParam and self._exParam.roundCount or 0
+	self._maxRoundDamage = self._exParam and self._exParam.maxRoundDamage or 0
+	self._isFirstPass = self.viewParam and self.viewParam.isFirstPass
 
 	local audioId = self._isSuccess and MatchGameAudioEnum.EnterSuccessView or MatchGameAudioEnum.EnterFailView
 
 	AudioMgr.instance:trigger(audioId)
 	self:refreshUI()
+	self:ListenTeamEvent()
 end
 
 function MatchGameResultView:refreshUI()
@@ -164,13 +166,36 @@ function MatchGameResultView:_refreshConditionItem(goCondition, condition, index
 end
 
 function MatchGameResultView:refreshAchievementList()
-	gohelper.setActive(self._goRound, self._isSuccess)
-	gohelper.setActive(self._goMaxDamage, true)
-	gohelper.setActive(self._goMaxChain, true)
+	local achievementList = {
+		{
+			type = MatchGameEnum.AchievementType.RoundCount,
+			value = self._roundCount
+		},
+		{
+			type = MatchGameEnum.AchievementType.MaxRoundDamage,
+			value = self._maxRoundDamage
+		},
+		{
+			type = MatchGameEnum.AchievementType.MaxChain,
+			value = MatchGameFightModel.instance:getMaxChainNum()
+		},
+		{
+			type = MatchGameEnum.AchievementType.SkillUse,
+			value = MatchGameFightModel.instance:getTotalSkillUseNum()
+		}
+	}
 
-	self._txtRound.text = self._roundCount or 0
-	self._txtMaxDamage.text = self._roundMaxDamage or 0
-	self._txtMaxChain.text = self._maxChain or 0
+	gohelper.CreateObjList(self, self._refreshAchievementItem, achievementList, self._goAchievementList, self._goAchievementItem)
+end
+
+function MatchGameResultView:_refreshAchievementItem(goAchievement, achievementInfo, index)
+	local txtName = gohelper.findChildText(goAchievement, "txt_name")
+
+	txtName.text = luaLang("matchgameachievement_" .. achievementInfo.type)
+
+	local txtValue = gohelper.findChildText(goAchievement, "txt_name/txt_value")
+
+	txtValue.text = achievementInfo.value
 end
 
 function MatchGameResultView:refreshRewardList()
@@ -178,15 +203,21 @@ function MatchGameResultView:refreshRewardList()
 		return
 	end
 
-	local firstBonus = GameUtil.splitString2(self._episodeCo.firstBonus, true)
-	local otherBonus = GameUtil.splitString2(self._episodeCo.bonus, true)
 	local allBonus = {}
+	local firstBonus
 
-	tabletool.addValues(allBonus, firstBonus)
+	if self._isFirstPass then
+		firstBonus = GameUtil.splitString2(self._episodeCo.firstBonus, true)
+
+		tabletool.addValues(allBonus, firstBonus)
+	end
+
+	local otherBonus = GameUtil.splitString2(self._episodeCo.bonus, true)
+
 	tabletool.addValues(allBonus, otherBonus)
 
-	self._firstBonusStartIndex = 1
-	self._firstBonusEndIndex = #firstBonus
+	self._firstBonusEndIndex = firstBonus and #firstBonus or 0
+	self._firstBonusStartIndex = self._firstBonusEndIndex > 0 and 1 or 0
 
 	gohelper.CreateObjList(self, self._refreshRewardItem, allBonus, self._goRewardList, self._goRewardItem, MatchGameMapRewardItem)
 end
@@ -203,6 +234,18 @@ function MatchGameResultView:refreshBtnList()
 
 	gohelper.setActive(self._btnNextLevel.gameObject, isNextEpisodeUnlock and isSameChapter)
 	gohelper.setActive(self._btnNextMap.gameObject, isNextEpisodeUnlock and not isSameChapter)
+end
+
+function MatchGameResultView:ListenTeamEvent()
+	if self._isSuccess then
+		return
+	end
+
+	self:addEventCb(MatchGameController.instance, MatchGameEvent.OnSaveTeamSuccess, self._onSaveTeamSuccess, self)
+end
+
+function MatchGameResultView:_onSaveTeamSuccess()
+	GameFacade.showToast(ToastEnum.MatchGameModifyHeroGroup)
 end
 
 function MatchGameResultView:onClose()

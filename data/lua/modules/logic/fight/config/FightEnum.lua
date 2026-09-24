@@ -1378,6 +1378,7 @@ FightEnum.ProgressId = {
 	Progress_6 = 6,
 	Progress_10 = 10,
 	Progress_5 = 5,
+	Progress_12 = 12,
 	Progress_8 = 8,
 	Progress_11 = 11
 }

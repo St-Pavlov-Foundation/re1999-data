@@ -31,6 +31,7 @@ function MatchGameSkillBuffMo:init(initData)
 	self.isRemoving = false
 	self.effectData = {}
 	buffUidSeq = buffUidSeq + 1
+	self.buffUidSeq = buffUidSeq
 	self.buffUid = string.format("%s_%s_%s", self.skillId, self.buffId, buffUidSeq)
 end
 
@@ -50,7 +51,7 @@ function MatchGameSkillBuffMo:getBuffUid()
 	return self.buffUid
 end
 
-function MatchGameSkillBuffMo:setBuffDurationData(durationType)
+function MatchGameSkillBuffMo:setBuffDurationData(durationType, removeEnemyRoundBuffAtZero)
 	if durationType ~= self.durationType then
 		return
 	end
@@ -76,7 +77,7 @@ function MatchGameSkillBuffMo:setBuffDurationData(durationType)
 		self.durationParam = self.durationParam - 1
 	end
 
-	if self.durationType == MatchGameFightEnum.BuffDurationType.Round then
+	if self.durationType == MatchGameFightEnum.BuffDurationType.Round and self.skillUserType == MatchGameFightEnum.SkillUserType.Enemy and not removeEnemyRoundBuffAtZero then
 		if self.durationParam < 0 then
 			self:removeBuff()
 		end

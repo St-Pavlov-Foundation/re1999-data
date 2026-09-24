@@ -14,7 +14,7 @@ function DecorateStoreBundleCompType2Item:init(go)
 	self._simageicon = gohelper.findChildSingleImage(self.go, "#simage_icon")
 	self._goselect = gohelper.findChild(self.go, "#go_select")
 	self._goowned = gohelper.findChild(self.go, "#go_owned")
-	self._btnClick = SLFramework.UGUI.ButtonWrap.Get(self.go)
+	self._btnClick = gohelper.getClickWithDefaultAudio(self.go)
 
 	self:_initItem()
 	self:_addEvents()
@@ -35,14 +35,14 @@ end
 
 function DecorateStoreBundleCompType2Item:_onItemClick()
 	DecorateStoreModel.instance:setCurGood(self._goodId)
-	StoreController.instance:dispatchEvent(StoreEvent.DecorateGoodItemClick, self._goodId)
+	StoreController.instance:dispatchEvent(StoreEvent.DecorateGoodItemClick, self._goodId, true)
 end
 
-function DecorateStoreBundleCompType2Item:refresh(goodId, storeId)
+function DecorateStoreBundleCompType2Item:refresh(goodId)
 	self._goodId = goodId
-	self._storeId = storeId
 	self._decorateConfig = DecorateStoreConfig.instance:getDecorateConfig(self._goodId)
 	self._goodCo = StoreConfig.instance:getGoodsConfig(self._goodId)
+	self._storeId = tonumber(self._goodCo.storeId)
 
 	if self._decorateConfig and not self._goodCo then
 		logError("please check store_decorate goodId:" .. self._goodId .. " not found in store_goods!")

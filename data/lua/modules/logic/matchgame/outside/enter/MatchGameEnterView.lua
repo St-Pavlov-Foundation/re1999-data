@@ -43,30 +43,38 @@ end
 function MatchGameEnterView:_btnDevelopOnClick()
 	if self:checkIsActOpen() then
 		MatchGameController.instance:openCharacterView(MatchGameEnum.CharacterTabType.Develop)
+		MatchGameStatHelper.instance:statEntryClick(self.viewName, MatchGameEnum.StatClickType.Develop)
 	end
 end
 
 function MatchGameEnterView:_btnTalentOnClick()
 	if self:checkIsActOpen() then
 		MatchGameController.instance:openCharacterView(MatchGameEnum.CharacterTabType.Talent)
+		MatchGameStatHelper.instance:statEntryClick(self.viewName, MatchGameEnum.StatClickType.Talent)
 	end
 end
 
 function MatchGameEnterView:_btnNormalOnClick()
 	if self:checkIsActOpen() then
 		MatchGameController.instance:enterMap(MatchGameEnum.LevelType.Normal)
+		MatchGameStatHelper.instance:statEntryClick(self.viewName, MatchGameEnum.StatClickType.Normal)
 	end
 end
 
 function MatchGameEnterView:_btnChallengeOnClick()
 	if self:checkIsActOpen() then
-		if not MatchGameModel.instance:isChallengeUnlock() then
-			GameFacade.showToast(ToastEnum.MatchGameChallengeLock)
+		local unlock, toastId, toastParam = MatchGameModel.instance:isChallengeUnlock()
+
+		if not unlock then
+			if toastId then
+				GameFacade.showToast(toastId, toastParam)
+			end
 
 			return
 		end
 
 		MatchGameController.instance:enterMap(MatchGameEnum.LevelType.Challenge)
+		MatchGameStatHelper.instance:statEntryClick(self.viewName, MatchGameEnum.StatClickType.Challenge)
 	end
 end
 
@@ -147,6 +155,10 @@ end
 
 function MatchGameEnterView:_onUpdateEpisodeInfo()
 	self:refreshUI()
+end
+
+function MatchGameEnterView:onClose()
+	MatchGameController.instance:clearResultFlow()
 end
 
 function MatchGameEnterView:onDestroyView()

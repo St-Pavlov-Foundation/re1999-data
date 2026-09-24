@@ -49,14 +49,14 @@ function AutoChessAdventureView:_btnLeftOnClick()
 	self.isSub = false
 
 	self.anim:Play("switch", 0, 0)
-	TaskDispatcher.runDelay(self.delaySwitch, self, 0.16)
+	TaskDispatcher.runDelay(self.delaySwitch, self, 0.1)
 end
 
 function AutoChessAdventureView:_btnRightOnClick()
 	self.isSub = true
 
 	self.anim:Play("switch", 0, 0)
-	TaskDispatcher.runDelay(self.delaySwitch, self, 0.16)
+	TaskDispatcher.runDelay(self.delaySwitch, self, 0.1)
 end
 
 function AutoChessAdventureView:_btnCloseOnClick()
@@ -91,7 +91,7 @@ function AutoChessAdventureView:onOpen()
 		if sceneMo then
 			mutationId = sceneMo.fight.enemyMaster:getMutationId()
 		end
-	elseif curRank < invalidLvl then
+	else
 		local curLoseStreak = 0
 
 		if sceneMo then
@@ -105,37 +105,39 @@ function AutoChessAdventureView:onOpen()
 			mutationId = gameMo.mutationId
 		end
 
-		local loseLvl = AutoChessConfig.instance:getLoseStreakLvl(curLoseStreak)
-		local actId = Activity182Model.instance:getCurActId()
-		local cfgs = lua_auto_chess_lose_streak_reward.configDict[actId]
+		if curRank < invalidLvl then
+			local loseLvl = AutoChessConfig.instance:getLoseStreakLvl(curLoseStreak)
+			local actId = Activity182Model.instance:getCurActId()
+			local cfgs = lua_auto_chess_lose_streak_reward.configDict[actId]
 
-		for i = 1, #cfgs do
-			local config = cfgs[i]
-			local go = gohelper.cloneInPlace(self._goDescItem)
-			local goLight = gohelper.findChild(go, "go_Light")
+			for i = 1, #cfgs do
+				local config = cfgs[i]
+				local go = gohelper.cloneInPlace(self._goDescItem)
+				local goLight = gohelper.findChild(go, "go_Light")
 
-			gohelper.setActive(goLight, loseLvl == i)
+				gohelper.setActive(goLight, loseLvl == i)
 
-			local txtLevel = gohelper.findChildText(go, "txt_Level")
+				local txtLevel = gohelper.findChildText(go, "txt_Level")
 
-			txtLevel.text = "Lv." .. config.levelId
+				txtLevel.text = "Lv." .. config.levelId
 
-			local txtDesc = gohelper.findChildText(go, "txt_Desc")
+				local txtDesc = gohelper.findChildText(go, "txt_Desc")
 
-			txtDesc.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("autochess_losingstreak_tip"), config.loseStreak, config.bonusCoin)
+				txtDesc.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("autochess_losingstreak_tip"), config.loseStreak, config.bonusCoin)
+			end
+
+			gohelper.setActive(self._goDescItem, false)
+			gohelper.setActive(self._goDisable, loseLvl == 0)
+			gohelper.setActive(self._goEnable, loseLvl ~= 0)
+			ZProj.UGUIHelper.SetGrayscale(self._goLoseStreak, sceneMo and loseLvl == 0)
+			ZProj.UGUIHelper.SetGrayscale(self._goSubBg, sceneMo and loseLvl == 0)
+
+			self._txtLevel.text = "Lv." .. loseLvl
+		else
+			gohelper.setActive(self._btnLeft, false)
+			gohelper.setActive(self._btnRight, false)
+			gohelper.setActive(self._goPoints, false)
 		end
-
-		gohelper.setActive(self._goDescItem, false)
-		gohelper.setActive(self._goDisable, loseLvl == 0)
-		gohelper.setActive(self._goEnable, loseLvl ~= 0)
-		ZProj.UGUIHelper.SetGrayscale(self._goLoseStreak, sceneMo and loseLvl == 0)
-		ZProj.UGUIHelper.SetGrayscale(self._goSubBg, sceneMo and loseLvl == 0)
-
-		self._txtLevel.text = "Lv." .. loseLvl
-	else
-		gohelper.setActive(self._btnLeft, false)
-		gohelper.setActive(self._btnRight, false)
-		gohelper.setActive(self._goPoints, false)
 	end
 
 	if mutationId then

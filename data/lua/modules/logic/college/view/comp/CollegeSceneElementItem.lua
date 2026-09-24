@@ -11,6 +11,8 @@ function CollegeSceneElementItem:onInitView()
 end
 
 function CollegeSceneElementItem:onClick()
+	self._beginTime = UnityEngine.Time.realtimeSinceStartup
+
 	CollegeRpc.instance:sendCollegeMilestoneActiveNode(self.data.co.id)
 end
 
@@ -63,6 +65,10 @@ function CollegeSceneElementItem:destroy()
 end
 
 function CollegeSceneElementItem:_playDestoryAnim()
+	if self._beginTime then
+		CollegeStatHelper.instance:statElementTime(self.data.co.id, UnityEngine.Time.realtimeSinceStartup - self._beginTime)
+	end
+
 	CollegeController.instance:unregisterCallback(CollegeEvent.OnStoryPlayEnd, self._playDestoryAnim, self)
 
 	local len = self:_checkPlayDestoryAnim()
@@ -98,6 +104,7 @@ function CollegeSceneElementItem:_checkPlayDestoryAnim()
 
 	anim:Play("finish", 0, 0)
 	anim:Update(0)
+	AudioMgr.instance:trigger(AudioEnum.UI.play_ui_checkpoint_elementdisappear)
 
 	return anim:GetCurrentAnimatorStateInfo(0).length
 end

@@ -16,6 +16,14 @@ function MusicGameMainBlockItem:init(go)
 	self._golinked = gohelper.findChild(self.go, "go_linked")
 	self._gogrey = gohelper.findChild(self.go, "go_grey")
 	self._goconnectitem = gohelper.findChild(self.go, "go_connectitem")
+	self._longPress = SLFramework.UGUI.UILongPressListener.Get(self.go)
+
+	self._longPress:SetLongPressTime({
+		0.5,
+		99999
+	})
+
+	self._btnclickitem = gohelper.getClick(self.go)
 
 	self:_initItem()
 end
@@ -41,11 +49,40 @@ function MusicGameMainBlockItem:_onBlockItemConnect(id)
 	self._itemAnim:Play("get", 0, 0)
 end
 
+function MusicGameMainBlockItem:_onLongPress()
+	local connects = MusicGameModel.instance:getSelectedBlockLines()
+
+	if connects and #connects > 0 then
+		return
+	end
+
+	local blockMo = MusicGameModel.instance:getBlockDataById(self._blockMo.id)
+
+	MusicGameModel.instance:addSelectedBlockLines(self._blockMo.id)
+
+	local audioId = blockMo.config.audioId or 0
+
+	AudioMgr.instance:trigger(audioId)
+	MusicGameController.instance:dispatchEvent(MusicGameEvent.BlockLongPress, self._blockMo)
+end
+
+function MusicGameMainBlockItem:_onClickThisUp()
+	local connects = MusicGameModel.instance:getSelectedBlockLines()
+
+	if connects and #connects == 1 then
+		MusicGameController.instance:dispatchEvent(MusicGameEvent.BlockPressEnd)
+	end
+end
+
 function MusicGameMainBlockItem:_addEvents()
+	self._longPress:AddLongPressListener(self._onLongPress, self)
+	self._btnclickitem:AddClickUpListener(self._onClickThisUp, self)
 	MusicGameController.instance:registerCallback(MusicGameEvent.BlockItemConnect, self._onBlockItemConnect, self)
 end
 
 function MusicGameMainBlockItem:_removeEvents()
+	self._longPress:RemoveLongPressListener()
+	self._btnclickitem:RemoveClickUpListener()
 	MusicGameController.instance:unregisterCallback(MusicGameEvent.BlockItemConnect, self._onBlockItemConnect, self)
 end
 

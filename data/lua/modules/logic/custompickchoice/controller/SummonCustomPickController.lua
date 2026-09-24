@@ -11,9 +11,9 @@ function SummonCustomPickController:openSummonCustomPickView(bePickChoiceHeroIdL
 	self._showMsgBoxFuncObj = showMsgBoxFuncObj
 	maxSelectCount = maxSelectCount or 1
 
-	SummonCustomPickModel.instance:initData(bePickChoiceHeroIdList, maxSelectCount)
+	SummonCustomPickHeroModel.instance:initData(bePickChoiceHeroIdList, maxSelectCount)
 
-	local haveAllRole = SummonCustomPickModel.instance:haveAllRole()
+	local haveAllRole = SummonCustomPickHeroModel.instance:haveAllRole()
 
 	self._itemData = viewParam
 
@@ -27,7 +27,7 @@ end
 function SummonCustomPickController:trySendChoice(viewParam)
 	self._itemData = viewParam or self._itemData
 
-	local selectList = SummonCustomPickModel.instance:getSelectIds()
+	local selectList = SummonCustomPickHeroModel.instance:getSelectIds()
 
 	if not selectList then
 		GameFacade.showToast(ToastEnum.SummonCustomPickOneMoreSelect)
@@ -35,7 +35,7 @@ function SummonCustomPickController:trySendChoice(viewParam)
 		return false
 	end
 
-	local maxSelectCount = SummonCustomPickModel.instance:getMaxSelectCount()
+	local maxSelectCount = SummonCustomPickHeroModel.instance:getMaxSelectCount()
 
 	if maxSelectCount > #selectList then
 		if maxSelectCount == 1 then
@@ -51,7 +51,7 @@ function SummonCustomPickController:trySendChoice(viewParam)
 end
 
 function SummonCustomPickController:realSendChoice()
-	local selectList = SummonCustomPickModel.instance:getSelectIds()
+	local selectList = SummonCustomPickHeroModel.instance:getSelectIds()
 	local heroId = selectList[1]
 	local data = {}
 	local o = {}
@@ -64,7 +64,7 @@ function SummonCustomPickController:realSendChoice()
 end
 
 function SummonCustomPickController:trySendSummon()
-	GameFacade.showMessageBox(MessageBoxIdDefine.Act167SummonNeTip, MsgBoxEnum.BoxType.Yes_No, self.realSendSummon, nil, nil, self, nil, nil, viewParam)
+	GameFacade.showMessageBox(MessageBoxIdDefine.Act167SummonNeTip, MsgBoxEnum.BoxType.Yes_No, self.realSendSummon, nil, nil, self)
 end
 
 function SummonCustomPickController:realSendSummon()
@@ -82,18 +82,22 @@ function SummonCustomPickController:realSendSummon()
 end
 
 function SummonCustomPickController:onSummonCustomGet(heroId)
-	if not SummonCustomPickModel.instance:haveAllRole() then
-		self:enterSummon({
-			tonumber(heroId)
-		})
+	if not SummonCustomPickHeroModel.instance:haveAllRole() then
+		self:enterSummon(tonumber(heroId))
 	end
 
 	self:unregisterCallback(SummonCustomPickEvent.OnSummonCustomGet, self.onSummonCustomGet, self)
 end
 
-function SummonCustomPickController:enterSummon(heroList)
-	ViewMgr.instancee:closeAllPopupViews()
-	SummonController.instance:simpleEnterSummonScene(heroList, self._onBackSummon, self)
+function SummonCustomPickController:enterSummon(heroId)
+	ViewMgr.instance:closeAllPopupViews()
+
+	self._heroId = heroId
+
+	ViewMgr.instance:registerCallback(ViewEvent.OnCloseView, self._onCloseView, self)
+	SummonController.instance:simpleEnterSummonScene({
+		heroId
+	}, self._onBackSummon, self)
 end
 
 function SummonCustomPickController:_onBackSummon()
@@ -102,6 +106,29 @@ function SummonCustomPickController:_onBackSummon()
 	end
 
 	VirtualSummonScene.instance:close(true)
+end
+
+function SummonCustomPickController:_onCloseView(viewName)
+	if viewName ~= ViewName.CharacterGetView then
+		return
+	end
+
+	ViewMgr.instance:unregisterCallback(ViewEvent.OnCloseView, self._onCloseView, self)
+
+	if not self._heroId then
+		return
+	end
+
+	local mo = MaterialDataMO.New()
+
+	mo:initValue(MaterialEnum.MaterialType.Hero, self._heroId, 1)
+
+	local materialDataMOList = {
+		mo
+	}
+
+	PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.CommonPropView, materialDataMOList)
+	CharacterModel.instance:setGainHeroViewShowState(false)
 end
 
 function SummonCustomPickController:getSelectHeroNameStr(selectList)
@@ -121,14 +148,14 @@ function SummonCustomPickController:getSelectHeroNameStr(selectList)
 end
 
 function SummonCustomPickController:setSelect(heroId)
-	local selectList = SummonCustomPickModel.instance:getSelectIds()
-	local maxSelectCount = SummonCustomPickModel.instance:getMaxSelectCount()
+	local selectList = SummonCustomPickHeroModel.instance:getSelectIds()
+	local maxSelectCount = SummonCustomPickHeroModel.instance:getMaxSelectCount()
 
-	if not SummonCustomPickModel.instance:isHeroIdSelected(heroId) and maxSelectCount <= #selectList and maxSelectCount == 1 then
-		SummonCustomPickModel.instance:clearSelectIds()
+	if not SummonCustomPickHeroModel.instance:isHeroIdSelected(heroId) and maxSelectCount <= #selectList and maxSelectCount == 1 then
+		SummonCustomPickHeroModel.instance:clearSelectIds()
 	end
 
-	SummonCustomPickModel.instance:setSelectId(heroId)
+	SummonCustomPickHeroModel.instance:setSelectId(heroId)
 	self:dispatchEvent(SummonCustomPickEvent.OnCustomPickListChanged)
 end
 
