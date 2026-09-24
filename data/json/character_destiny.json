@@ -52,7 +52,7 @@
   {
     "heroId": 3041,
     "slotsId": 3041,
-    "facetsId": "304101"
+    "facetsId": "304101#304102"
   },
   {
     "heroId": 3063,
@@ -102,7 +102,7 @@
   {
     "heroId": 3032,
     "slotsId": 3032,
-    "facetsId": "303201"
+    "facetsId": "303201#303202"
   },
   {
     "heroId": 3084,
@@ -218,5 +218,15 @@
     "heroId": 3121,
     "slotsId": 3121,
     "facetsId": "312101"
+  },
+  {
+    "heroId": 3066,
+    "slotsId": 3066,
+    "facetsId": "306601"
+  },
+  {
+    "heroId": 3134,
+    "slotsId": 3134,
+    "facetsId": "313401"
   }
 ]

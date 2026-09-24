@@ -121,6 +121,8 @@ function AbyssMainView:onOpen()
 	else
 		self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, self._onCloseView, self, LuaEventSystem.Low)
 	end
+
+	AbyssModel.instance:setIsAbyssAllow(true)
 end
 
 function AbyssMainView:_onCloseView(viewName)
@@ -235,7 +237,7 @@ function AbyssMainView:onOutTimePlayEnd()
 end
 
 function AbyssMainView:onClose()
-	return
+	AbyssModel.instance:setIsAbyssAllow(false)
 end
 
 function AbyssMainView:onDestroyView()

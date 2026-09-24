@@ -1,0 +1,29 @@
+[
+  {
+    "itemId": 410001,
+    "name": "咬痕优惠券",
+    "itemType": "1",
+    "maxNum": 999,
+    "quality": 3,
+    "icon": "410002",
+    "desc": "购买角色"
+  },
+  {
+    "itemId": 410002,
+    "name": "“血拼邀约”",
+    "itemType": "2",
+    "maxNum": 999,
+    "quality": 4,
+    "icon": "410001",
+    "desc": "点亮天赋"
+  },
+  {
+    "itemId": 410003,
+    "name": "老主顾礼包",
+    "itemType": "3",
+    "maxNum": 999,
+    "quality": 3,
+    "icon": "410003",
+    "desc": "角色升级经验道具"
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "id": 4010001,
+    "name": "反射工坊",
+    "assetPath": "v4a0_m_s08_hddt_gongfang_b",
+    "pos": "49.6#-13.1",
+    "posOffset": "42.3#175",
+    "rotation": "-20.46#36.04#-15.66",
+    "buildingType": "produceResource",
+    "param": "",
+    "tags": "b_mat1",
+    "chessPos": "50.77#-13.41|50.1#-13.53|49.41#-13.47"
+  },
+  {
+    "id": 4010002,
+    "name": "引光室",
+    "assetPath": "v4a0_m_s08_hddt_gongfang_a",
+    "pos": "43.5#-8",
+    "posOffset": "56.9#211.1",
+    "rotation": "-20.46#36.04#-15.66",
+    "buildingType": "produceResource",
+    "param": "",
+    "tags": "b_mat2",
+    "chessPos": "45#-8.24|42.36#-8.16|43.79#-6.32"
+  },
+  {
+    "id": 4010003,
+    "name": "常春温室",
+    "assetPath": "v4a0_m_s08_hddt_wenshi",
+    "pos": "70#-9.2",
+    "posOffset": "36.2#224.2",
+    "rotation": "-23.54#21.72#-10.27",
+    "buildingType": "produceResource",
+    "param": "",
+    "tags": "b_mat3",
+    "chessPos": "69.05#-10.89|70.32#-10.97|70.71#-10.32"
+  },
+  {
+    "id": 4010004,
+    "name": "宿舍",
+    "assetPath": "v4a0_m_s08_hddt_sushe",
+    "pos": "22#-22",
+    "posOffset": "-34.8#241.5",
+    "rotation": "-22.57#-32.35#12.33",
+    "buildingType": "recruitCharacter",
+    "param": "550#350#100",
+    "tags": "dorm",
+    "chessPos": "18.39#-22.57|20.45#-22.17|18.54#-21.32"
+  },
+  {
+    "id": 4010005,
+    "name": "学院主楼",
+    "assetPath": "v4a0_m_s08_hddt_jiaoxuequ",
+    "pos": "34.1#-21.5",
+    "posOffset": "-120.2#284.2",
+    "rotation": "-22.57#-32.35#12.33",
+    "buildingType": "trainCharacter",
+    "param": "4024001:550#350#100",
+    "tags": "refresh",
+    "chessPos": "39.45#-22.73|37.9#-21.46|38.50#-22.35"
+  },
+  {
+    "id": 4010006,
+    "name": "书库",
+    "assetPath": "v4a0_m_s08_hddt_lachi",
+    "pos": "53.2#-24",
+    "posOffset": "77.9#154.1",
+    "rotation": "",
+    "buildingType": "openReward",
+    "param": "",
+    "tags": "",
+    "chessPos": ""
+  }
+]

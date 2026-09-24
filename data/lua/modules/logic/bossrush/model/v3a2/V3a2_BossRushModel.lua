@@ -253,12 +253,23 @@ function V3a2_BossRushModel:setScore(extra)
 
 	self._score = {
 		baseScore = baseScore,
-		ruleScore = ruleScore
+		ruleScore = ruleScore,
+		totalScore = baseScore + ruleScore
 	}
 end
 
 function V3a2_BossRushModel:getScore()
 	return self._score or {}
+end
+
+function V3a2_BossRushModel:getTotalScore()
+	local score = self:getScore()
+
+	return score and score.totalScore or 0
+end
+
+function V3a2_BossRushModel:checkIsNewHighestPointRecord(stage)
+	return self:getTotalScore() > BossRushModel.instance:getHighestPoint(stage)
 end
 
 function V3a2_BossRushModel:setAssistMo(assistMo, index)

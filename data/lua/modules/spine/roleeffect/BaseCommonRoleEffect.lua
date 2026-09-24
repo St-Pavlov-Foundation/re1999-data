@@ -58,6 +58,8 @@ function BaseCommonRoleEffect:_initState(spineGo, config)
 
 	animator:Play(config.defaultState)
 
+	animator.keepAnimatorStateOnDisable = true
+
 	local stateList = GameUtil.splitString2(config.stateList, false, "|", "#")
 
 	for i, t in ipairs(stateList) do
@@ -94,6 +96,12 @@ function BaseCommonRoleEffect:showBodyEffect(bodyName, callback, callbackTarget)
 		local stateName = v[bodyName] or v.defaultStateName
 
 		if v.curStateName ~= stateName then
+			if v.config.delay == 0 and bodyName == "b_idle" then
+				self:_delayChangeState()
+
+				return
+			end
+
 			TaskDispatcher.runDelay(self._delayChangeState, self, v.config.delay)
 
 			break

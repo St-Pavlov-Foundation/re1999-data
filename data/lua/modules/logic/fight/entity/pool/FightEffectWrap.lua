@@ -46,6 +46,7 @@ function FightEffectWrap:play()
 			end
 
 			effectShakeComp:Play(CameraMgr.instance:getCameraShake(), speed, magnitudePercent)
+			FightGameMgr.entityPhysicsWhenCameraShakeMgr:startShake()
 		end
 	end
 end

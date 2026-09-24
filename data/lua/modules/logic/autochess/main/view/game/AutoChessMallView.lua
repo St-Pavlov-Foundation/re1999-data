@@ -44,12 +44,17 @@ function AutoChessMallView:onInitView()
 	self._goCheckSell = gohelper.findChild(self.viewGO, "#go_ViewSelf/#go_CheckSell")
 	self._txtSellPrice = gohelper.findChildText(self.viewGO, "#go_ViewSelf/#go_CheckSell/cost/#txt_SellPrice")
 	self._goChessAvatar = gohelper.findChild(self.viewGO, "#go_ViewSelf/#go_ChessAvatar")
+	self._btnMutationP = gohelper.findChildButtonWithAudio(self.viewGO, "#go_ViewSelf/TopRight/#btn_MutationP")
+	self._simageMutationP = gohelper.findChildSingleImage(self.viewGO, "#go_ViewSelf/TopRight/#btn_MutationP/#simage_MutationP")
+	self._btnLoseStreakP = gohelper.findChildButtonWithAudio(self.viewGO, "#go_ViewSelf/TopRight/#btn_LoseStreakP")
 	self._goViewEnemy = gohelper.findChild(self.viewGO, "#go_ViewEnemy")
 	self._btnBack = gohelper.findChildButtonWithAudio(self.viewGO, "#go_ViewEnemy/#btn_Back")
 	self._goEnemyBuff = gohelper.findChild(self.viewGO, "#go_ViewEnemy/#go_EnemyBuff")
 	self._txtEnergyE = gohelper.findChildText(self.viewGO, "#go_ViewEnemy/#go_EnemyBuff/#txt_EnergyE")
 	self._txtFireE = gohelper.findChildText(self.viewGO, "#go_ViewEnemy/#go_EnemyBuff/#txt_FireE")
 	self._txtDebrisE = gohelper.findChildText(self.viewGO, "#go_ViewEnemy/#go_EnemyBuff/#txt_DebrisE")
+	self._btnMutationE = gohelper.findChildButtonWithAudio(self.viewGO, "#go_ViewEnemy/#btn_MutationE")
+	self._simageMutationE = gohelper.findChildSingleImage(self.viewGO, "#go_ViewEnemy/#btn_MutationE/#simage_MutationE")
 	self._goCollection = gohelper.findChild(self.viewGO, "#go_Collection")
 	self._btnCollection = gohelper.findChildButtonWithAudio(self.viewGO, "#go_Collection/Viewport/#btn_Collection")
 	self._goCollectionItem = gohelper.findChild(self.viewGO, "#go_Collection/Viewport/#btn_Collection/#go_CollectionItem")
@@ -72,7 +77,10 @@ function AutoChessMallView:addEvents()
 	self._btnFresh:AddClickListener(self._btnFreshOnClick, self)
 	self._btnLock:AddClickListener(self._btnLockOnClick, self)
 	self._btnUnlock:AddClickListener(self._btnUnlockOnClick, self)
+	self._btnMutationP:AddClickListener(self._btnMutationPOnClick, self)
+	self._btnLoseStreakP:AddClickListener(self._btnLoseStreakPOnClick, self)
 	self._btnBack:AddClickListener(self._btnBackOnClick, self)
+	self._btnMutationE:AddClickListener(self._btnMutationEOnClick, self)
 	self._btnCollection:AddClickListener(self._btnCollectionOnClick, self)
 	self._btnBackPick:AddClickListener(self._btnBackPickOnClick, self)
 end
@@ -86,18 +94,33 @@ function AutoChessMallView:removeEvents()
 	self._btnFresh:RemoveClickListener()
 	self._btnLock:RemoveClickListener()
 	self._btnUnlock:RemoveClickListener()
+	self._btnMutationP:RemoveClickListener()
+	self._btnLoseStreakP:RemoveClickListener()
 	self._btnBack:RemoveClickListener()
+	self._btnMutationE:RemoveClickListener()
 	self._btnCollection:RemoveClickListener()
 	self._btnBackPick:RemoveClickListener()
+end
+
+function AutoChessMallView:_btnMutationPOnClick()
+	AutoChessController.instance:openAdventureView()
+end
+
+function AutoChessMallView:_btnLoseStreakPOnClick()
+	AutoChessController.instance:openAdventureView(false, true)
+end
+
+function AutoChessMallView:_btnMutationEOnClick()
+	AutoChessController.instance:openAdventureView(true)
 end
 
 function AutoChessMallView:_btnCollectionOnClick()
 	local collectionIds
 
 	if self.checkingEnemy then
-		collectionIds = self.chessMo.svrFight.enemyMaster.collectionIds
+		collectionIds = self.sceneMo.fight.enemyMaster.collectionIds
 	else
-		collectionIds = self.chessMo.svrFight.mySideMaster.collectionIds
+		collectionIds = self.sceneMo.fight.mySideMaster.collectionIds
 	end
 
 	ViewMgr.instance:openView(ViewName.AutoChessCollectionView, collectionIds)
@@ -112,8 +135,8 @@ function AutoChessMallView:_btnPlayerBuffOnClick()
 		return
 	end
 
-	local svrFight = self.chessMo.svrFight
-	local buffs = svrFight.mySideMaster.buffContainer.buffs
+	local fight = self.sceneMo.fight
+	local buffs = fight.mySideMaster.buffContainer.buffs
 	local energy = AutoChessHelper.getBuffCnt(buffs, AutoChessEnum.EnergyBuffIds)
 	local fire = AutoChessHelper.getBuffCnt(buffs, AutoChessEnum.FireBuffIds)
 	local debris = AutoChessHelper.getBuffCnt(buffs, AutoChessEnum.DebrisIds)
@@ -147,7 +170,7 @@ function AutoChessMallView:_btnBackPickOnClick()
 end
 
 function AutoChessMallView:_btnCheckEnemyOnClick()
-	if self.chessMo.preview then
+	if self.sceneMo.baseInfo.preview then
 		self:previewCallback(0, 0)
 	elseif self.previewCostEnough then
 		AutoChessRpc.instance:sendAutoChessPreviewFightRequest(self.moduleId, self.previewCallback, self)
@@ -174,7 +197,7 @@ function AutoChessMallView:_btnLederSkillOnClick()
 
 		self.animBtnSkill:Play("click", 0, 0)
 
-		local master = self.chessMo.svrFight.mySideMaster
+		local master = self.sceneMo.fight.mySideMaster
 
 		AutoChessRpc.instance:sendAutoChessUseMasterSkillRequest(self.moduleId, master.skill.id)
 	else
@@ -216,7 +239,11 @@ function AutoChessMallView:delaySwitch()
 end
 
 function AutoChessMallView:_btnFreshOnClick()
-	if tonumber(self.chessMo.svrMall.coin) >= self.freshCost then
+	if self.master:isFreshShopLock() then
+		return
+	end
+
+	if tonumber(self.sceneMo.mall.coin) >= self.freshCost then
 		AutoChessHelper.lockScreen("AutoChessMallViewFreshStore", true)
 		AudioMgr.instance:trigger(AudioEnum.AutoChess.play_ui_mln_details_open)
 		gohelper.addChildPosStay(self._goChargeRoot, self.freeItem.go)
@@ -248,7 +275,7 @@ function AutoChessMallView:_btnUnlockOnClick()
 end
 
 function AutoChessMallView:_btnStartFightOnClick()
-	local freeMallRegion = AutoChessHelper.getMallRegionByType(self.chessMo.svrMall.regions, AutoChessEnum.MallType.Free)
+	local freeMallRegion = self.sceneMo.mall:getFreeRegion()
 
 	if #freeMallRegion.items ~= 0 then
 		GameFacade.showOptionMessageBox(MessageBoxIdDefine.AutoChessFreeChessClean, MsgBoxEnum.BoxType.Yes_No, MsgBoxEnum.optionType.Daily, self._fightYesCallback, nil, nil, self)
@@ -287,8 +314,8 @@ function AutoChessMallView:_editableInitView()
 	self.actMo = Activity182Model.instance:getActMo()
 	self.actId = AutoChessModel.instance.actId
 	self.moduleId = AutoChessModel.instance.moduleId
-	self.chessMo = AutoChessModel.instance:getChessMo()
-	self.roundType = self.chessMo.svrFight.roundType
+	self.sceneMo = AutoChessModel.instance:getSceneMo()
+	self.roundType = self.sceneMo.fight.roundType
 
 	if self.roundType == AutoChessEnum.RoundType.BOSS then
 		self.bossRound = true
@@ -298,12 +325,20 @@ function AutoChessMallView:_editableInitView()
 	end
 
 	self.collectionTbl = {}
+	self.animLoseStreak = gohelper.findComponentAnim(self._btnLoseStreakP.gameObject)
+
+	local invalidlvl = AutoChessConfig.instance:getLoseStreakInvalidLvl()
+
+	if invalidlvl > self.actMo.rank then
+		self.showLoseStreak = true
+	end
+
+	gohelper.setActive(self._btnLoseStreakP, self.showLoseStreak)
 end
 
 function AutoChessMallView:onOpen()
 	AutoChessGameModel.instance:setChessAvatar(self._goChessAvatar)
 	AudioMgr.instance:trigger(AudioEnum.AutoChess.play_ui_tangren_shopping_enter)
-	self:addEventCb(AutoChessController.instance, AutoChessEvent.StartFight, self.closeThis, self)
 	self:addEventCb(AutoChessController.instance, AutoChessEvent.UpdateMallData, self.refreshUI, self)
 	self:addEventCb(AutoChessController.instance, AutoChessEvent.DragChessEntity, self.onDragChess, self)
 	self:addEventCb(AutoChessController.instance, AutoChessEvent.DragChessEntityEnd, self.onDragChessEnd, self)
@@ -313,12 +348,12 @@ function AutoChessMallView:onOpen()
 	self:addEventCb(AutoChessController.instance, AutoChessEvent.UpdateMallRegion, self.onMallRegionChange, self)
 	self:addEventCb(AutoChessController.instance, AutoChessEvent.UpdateMasterSkill, self.refreshLeaderSkillRelative, self)
 	self:addEventCb(AutoChessController.instance, AutoChessEvent.UpdateLeaderBuff, self.refreshLeaderBuff, self)
-	self:addEventCb(AutoChessController.instance, AutoChessEvent.DrageMallItem, self.onDragMallItem, self)
-	self:addEventCb(AutoChessController.instance, AutoChessEvent.DrageMallItemEnd, self.onDragMallItemEnd, self)
+	self:addEventCb(AutoChessController.instance, AutoChessEvent.DragMallItem, self.onDragMallItem, self)
+	self:addEventCb(AutoChessController.instance, AutoChessEvent.DragMallItemEnd, self.onDragMallItemEnd, self)
 	self:addEventCb(AutoChessController.instance, AutoChessEvent.BuyChessReply, self.onBuyReply, self)
 	self:addEventCb(AutoChessController.instance, AutoChessEvent.BuildReply, self.onBuildReply, self)
-	self:addEventCb(AutoChessController.instance, AutoChessEvent.StartBuyStepFinih, self.onStartBuyFinish, self)
 	self:addEventCb(AutoChessController.instance, AutoChessEvent.UsingLeaderSkill, self.onUsingLeaderSkill, self)
+	self:addEventCb(AutoChessController.instance, AutoChessEvent.FinishStepList, self.onStepListFinish, self)
 	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, self.onCloseView, self)
 
 	local bossId = self.actMo:getGameMo(self.actId, self.moduleId).bossId
@@ -327,11 +362,6 @@ function AutoChessMallView:onOpen()
 	UISpriteSetMgr.instance:setAutoChessSprite(self._imageStartIcon, icon)
 	UISpriteSetMgr.instance:setAutoChessSprite(self._imageStartBg, bg)
 	self:refreshUI()
-
-	if self.viewParam then
-		self.startBuyEnd = true
-	end
-
 	self:checkPopUp()
 	self:refreshCollection()
 end
@@ -351,6 +381,7 @@ function AutoChessMallView:onDestroyView()
 	TaskDispatcher.cancelTask(self.checkForcePick, self)
 	TaskDispatcher.cancelTask(self.recordItemPos, self)
 	TaskDispatcher.cancelTask(self.delaySwitch, self)
+	TaskDispatcher.cancelTask(self.delayRefreshStore, self)
 end
 
 function AutoChessMallView:initMallItemList()
@@ -395,38 +426,34 @@ function AutoChessMallView:recordItemPos()
 end
 
 function AutoChessMallView:refreshUI()
-	local sellKey = AutoChessEnum.ConstKey.ChessSellPrice
-
-	self._txtSellPrice.text = lua_auto_chess_const.configDict[sellKey].value
-
 	self:refreshMall()
 	self:refreshLeaderSkillRelative()
 	self:refreshLeaderBuff()
+	self:refreshLeaderMutation()
 	self:refreshCoinRelative()
 	self:refreshRoundRelative()
 	self:refreshMallLock()
 end
 
 function AutoChessMallView:refreshMall()
-	local svrMallData = self.chessMo.svrMall
+	local mallMo = self.sceneMo.mall
 
-	self:refreshMallItem(svrMallData)
+	self:refreshMallItem(mallMo)
 
-	local normalRegion = AutoChessHelper.getMallRegionByType(svrMallData.regions, AutoChessEnum.MallType.Normal)
-	local mallCo = lua_auto_chess_mall.configDict[normalRegion.mallId]
-	local mallLvl = mallCo and mallCo.showLevel or 0
+	local regionMo = mallMo:getNormalRegion()
+	local mallLvl = regionMo and regionMo.config.showLevel or 1
 
 	UISpriteSetMgr.instance:setAutoChessSprite(self._imageLevel, "v2a5_autochess_quality3_" .. mallLvl)
 
 	self._txtMallLvl.text = "Lv." .. mallLvl
 
-	gohelper.setActive(self._goCheckCost, not self.chessMo.preview)
+	gohelper.setActive(self._goCheckCost, not self.sceneMo.baseInfo.preview)
 end
 
 function AutoChessMallView:refreshRoundRelative()
-	local curRound = self.chessMo.sceneRound
+	local curRound = self.sceneMo.baseInfo.sceneRound
 
-	self.freshCost = self.chessMo.svrMall.refreshCost
+	self.freshCost = self.sceneMo.mall.refreshCost
 	self._txtFreshCost.text = self.freshCost
 
 	if not self.bossRound then
@@ -445,11 +472,10 @@ function AutoChessMallView:refreshMallLock()
 end
 
 function AutoChessMallView:refreshLeaderSkillRelative()
-	self.master = self.chessMo.svrFight.mySideMaster
-	self.masterCo = lua_auto_chess_master.configDict[self.master.id]
-	self.masterSkillCo = lua_auto_chess_master_skill.configDict[self.master.skill.id]
+	self.master = self.sceneMo.fight.mySideMaster
+	self.masterSkillCo = self.master.skill.config
 
-	self._simageSkill:LoadImage(ResUrl.getAutoChessIcon(self.masterCo.skillIcon, "skillicon"))
+	self._simageSkill:LoadImage(ResUrl.getAutoChessIcon(self.master.config.skillIcon, "skillicon"))
 
 	if not string.nilorempty(self.masterSkillCo.cost) then
 		local costParams = string.split(self.masterSkillCo.cost, "#")
@@ -462,7 +488,7 @@ function AutoChessMallView:refreshLeaderSkillRelative()
 		self._txtSkillCost.text = luaLang("autochess_mallview_nocost")
 	end
 
-	gohelper.setActive(self._goSkillLock, not self.chessMo.svrFight.mySideMaster.skill.unlock)
+	gohelper.setActive(self._goSkillLock, not self.sceneMo.fight.mySideMaster.skill.unlock)
 	self:refreshLeaderSkillStatus()
 end
 
@@ -474,8 +500,8 @@ function AutoChessMallView:refreshLeaderSkillStatus()
 end
 
 function AutoChessMallView:refreshLeaderBuff()
-	local svrFight = self.chessMo.svrFight
-	local buffs = svrFight.mySideMaster.buffContainer.buffs
+	local fight = self.sceneMo.fight
+	local buffs = fight.mySideMaster.buffContainer.buffs
 	local energy = AutoChessHelper.getBuffCnt(buffs, AutoChessEnum.EnergyBuffIds)
 
 	self._txtEnergyP.text = energy
@@ -495,7 +521,7 @@ function AutoChessMallView:refreshLeaderBuff()
 	gohelper.setActive(self._txtDebrisP, debris ~= 0)
 
 	if not self.bossRound then
-		buffs = svrFight.enemyMaster.buffContainer.buffs
+		buffs = fight.enemyMaster.buffContainer.buffs
 		energy = AutoChessHelper.getBuffCnt(buffs, AutoChessEnum.EnergyBuffIds)
 		self._txtEnergyE.text = energy
 
@@ -507,19 +533,20 @@ function AutoChessMallView:refreshLeaderBuff()
 		gohelper.setActive(self._txtFireE, fire ~= 0)
 
 		debris = AutoChessHelper.getBuffCnt(buffs, AutoChessEnum.DebrisIds)
+		self._txtDebrisE.text = debris
 
 		gohelper.setActive(self._txtDebrisE, debris ~= 0)
 	end
 end
 
 function AutoChessMallView:refreshCoinRelative()
-	local svrMallData = self.chessMo.svrMall
+	local svrMallData = self.sceneMo.mall
 
 	self._txtCoin.text = svrMallData.coin
 
-	local cost = self.chessMo.previewCoin
+	local cost = self.sceneMo.baseInfo.previewCoin
 
-	self.previewCostEnough = self.chessMo:checkCostEnough(AutoChessStrEnum.CostType.Coin, cost)
+	self.previewCostEnough = self.sceneMo:checkCostEnough(AutoChessStrEnum.CostType.Coin, cost)
 
 	local costStr = self.previewCostEnough and cost or string.format("<color=#BD2C2C>%s</color>", cost)
 
@@ -528,36 +555,25 @@ function AutoChessMallView:refreshCoinRelative()
 	gohelper.setActive(self._goStartLight, svrMallData.coin == 0)
 end
 
-function AutoChessMallView:refreshMallItem(svrMallData)
-	for _, mallRegion in ipairs(svrMallData.regions) do
-		local mallCo = lua_auto_chess_mall.configDict[mallRegion.mallId]
-
-		if mallCo.type == AutoChessEnum.MallType.Normal then
-			self.chargeMall = mallRegion
-
-			table.sort(mallRegion.items, function(a, b)
-				local itemCoA = lua_auto_chess_mall_item.configDict[a.id]
-				local itemCoB = lua_auto_chess_mall_item.configDict[b.id]
-
-				return itemCoA.order < itemCoB.order
-			end)
+function AutoChessMallView:refreshMallItem(mallMo)
+	for _, regionMo in ipairs(mallMo.regions) do
+		if regionMo.config.type == AutoChessEnum.MallType.Normal then
+			self.chargeMall = regionMo
 
 			for i = 1, 7 do
-				self.chargeItemList[i]:setData(mallRegion.mallId, mallRegion.items[i])
-				gohelper.setActive(self.chargeFrameList[i].gameObject, i <= mallCo.capacity)
+				self.chargeItemList[i]:setData(regionMo.mallId, regionMo.items[i])
+				gohelper.setActive(self.chargeFrameList[i].gameObject, i <= regionMo.config.capacity)
 			end
 		else
-			self.freeMall = mallRegion
+			self.freeMall = regionMo
 
-			self.freeItem:setData(mallRegion.mallId, mallRegion.items[1], true)
+			self.freeItem:setData(regionMo.mallId, regionMo.items[1], true)
 		end
 	end
 end
 
 function AutoChessMallView:onStartBuyFinish()
-	self.startBuyEnd = true
-
-	self:checkPopUp()
+	return
 end
 
 function AutoChessMallView:onUsingLeaderSkill(using)
@@ -574,14 +590,14 @@ function AutoChessMallView:onUsingLeaderSkill(using)
 end
 
 function AutoChessMallView:checkPopUp()
-	if not self.startBuyEnd then
+	if not self.startBuyFinish then
 		return
 	end
 
-	if self.chessMo.mallUpgrade then
+	if self.sceneMo.mallUpgrade then
 		ViewMgr.instance:openView(ViewName.AutoChessMallLevelUpView)
 
-		self.chessMo.mallUpgrade = false
+		self.sceneMo.mallUpgrade = false
 	else
 		self:checkForcePick()
 	end
@@ -595,7 +611,9 @@ function AutoChessMallView:checkForcePick()
 	end
 end
 
-function AutoChessMallView:onDragChess()
+function AutoChessMallView:onDragChess(config)
+	self._txtSellPrice.text = AutoChessHelper.getSellPrice(config.race)
+
 	gohelper.setActive(self._goCheckSell, true)
 	gohelper.setActive(self._goChargeRoot, false)
 end
@@ -631,7 +649,7 @@ end
 function AutoChessMallView:onForcePickReply(giveUp)
 	if not giveUp then
 		self.animFreeFrame:Play("open", 0, 0)
-		self:refreshMallItem(self.chessMo.svrMall)
+		self:refreshMallItem(self.sceneMo.mall)
 		self:checkForcePick()
 	end
 end
@@ -643,14 +661,14 @@ end
 
 function AutoChessMallView:onDragMallItem(_, cost)
 	if cost ~= 0 then
-		self._txtCoin.text = string.format("%d(-%d)", self.chessMo.svrMall.coin, cost)
+		self._txtCoin.text = string.format("%d(-%d)", self.sceneMo.mall.coin, cost)
 
 		self.animCoin:Play("loop", 0, 0)
 	end
 end
 
 function AutoChessMallView:onDragMallItemEnd()
-	self._txtCoin.text = self.chessMo.svrMall.coin
+	self._txtCoin.text = self.sceneMo.mall.coin
 
 	self.animCoin:Play("idle", 0, 0)
 end
@@ -702,14 +720,14 @@ function AutoChessMallView:checkCanUseLeaderSkill()
 			return false, ToastEnum.AutoChessMasterSkill2
 		end
 
-		local limitCnt = self.masterCo.roundTriggerCountLimit
+		local limitCnt = self.master.config.roundTriggerCountLimit
 
 		if limitCnt ~= 0 then
-			local useCnts = self.chessMo.svrFight.mySideMaster.skill.roundUseCounts
+			local useCnts = self.sceneMo.fight.mySideMaster.skill.roundUseCounts
 			local roundUseCnt = 0
 
 			for _, useCnt in ipairs(useCnts) do
-				if useCnt.round == self.chessMo.sceneRound then
+				if useCnt.round == self.sceneMo.baseInfo.sceneRound then
 					roundUseCnt = useCnt.count
 
 					break
@@ -721,10 +739,10 @@ function AutoChessMallView:checkCanUseLeaderSkill()
 			end
 		end
 
-		limitCnt = self.masterCo.totalTriggerCountLimit
+		limitCnt = self.master.config.totalTriggerCountLimit
 
 		if limitCnt ~= 0 then
-			local useCnts = self.chessMo.svrFight.mySideMaster.skill.roundUseCounts
+			local useCnts = self.sceneMo.fight.mySideMaster.skill.roundUseCounts
 			local allUseCnt = 0
 
 			for _, useCnt in ipairs(useCnts) do
@@ -738,7 +756,7 @@ function AutoChessMallView:checkCanUseLeaderSkill()
 
 		local costParams = string.split(self.masterSkillCo.cost, "#")
 
-		return self.chessMo:checkCostEnough(costParams[1], tonumber(costParams[2]))
+		return self.sceneMo:checkCostEnough(costParams[1], tonumber(costParams[2]))
 	end
 
 	return true
@@ -748,9 +766,9 @@ function AutoChessMallView:refreshCollection()
 	local collectionIds
 
 	if self.checkingEnemy then
-		collectionIds = self.chessMo.svrFight.enemyMaster.collectionIds
+		collectionIds = self.sceneMo.fight.enemyMaster.collectionIds
 	else
-		collectionIds = self.chessMo.svrFight.mySideMaster.collectionIds
+		collectionIds = self.sceneMo.fight.mySideMaster.collectionIds
 	end
 
 	local count = #collectionIds
@@ -780,6 +798,43 @@ function AutoChessMallView:refreshCollection()
 	self.collectionCnt = count
 
 	gohelper.setActive(self._goCollection, self.collectionCnt ~= 0)
+end
+
+function AutoChessMallView:onStepListFinish(type)
+	if type == AutoChessEnum.ActionType.StartBuy then
+		self.startBuyFinish = true
+
+		self:checkPopUp()
+	elseif type == AutoChessEnum.ActionType.EndBuy then
+		self:closeThis()
+	end
+end
+
+function AutoChessMallView:refreshLeaderMutation()
+	local masterMo = self.sceneMo.fight.mySideMaster
+
+	if self.showLoseStreak then
+		local loseLvl = AutoChessConfig.instance:getLoseStreakLvl(masterMo.loseStreak)
+		local animName = loseLvl == 0 and "idle" or "take"
+
+		self.animLoseStreak:Play(animName, 0, 0)
+	end
+
+	local mutationId = masterMo:getMutationId()
+
+	if mutationId then
+		local config = AutoChessConfig.instance:getMutationCfg(mutationId)
+
+		self._simageMutationP:LoadImage(ResUrl.getAutoChessIcon(config.icon, "adventure"))
+	end
+
+	mutationId = self.sceneMo.fight.enemyMaster:getMutationId()
+
+	if mutationId then
+		local config = AutoChessConfig.instance:getMutationCfg(mutationId)
+
+		self._simageMutationE:LoadImage(ResUrl.getAutoChessIcon(config.icon, "adventure"))
+	end
 end
 
 return AutoChessMallView

@@ -50,6 +50,8 @@ function FightTeamDataMgr:refreshTeamDataByProto(teamData, sideData)
 
 	sideData.itemSkillInfos = FightDataUtil.coverData(teamData.itemSkillInfos, sideData.itemSkillInfos)
 	sideData.deviceArea = FightDataUtil.coverData(teamData.deviceArea, sideData.deviceArea)
+	sideData.qteInfo = FightDataUtil.coverData(teamData.qteInfo, sideData.qteInfo)
+	sideData.clueArea = FightDataUtil.coverData(teamData.clueArea, sideData.clueArea)
 end
 
 function FightTeamDataMgr:checkBloodPoolExist(side)
@@ -96,6 +98,66 @@ function FightTeamDataMgr:setDeviceArea(deviceArea, side)
 	end
 
 	sideData.deviceArea = FightDataUtil.coverData(deviceArea, sideData.deviceArea)
+end
+
+function FightTeamDataMgr:updateQteInfo(side, qteInfo)
+	side = side or FightEnum.TeamType.MySide
+
+	local sideData = self[side]
+
+	if not sideData then
+		return
+	end
+
+	if not qteInfo then
+		sideData.qteInfo = nil
+
+		return
+	end
+
+	sideData.qteInfo = FightDataUtil.coverData(qteInfo, sideData.qteInfo)
+end
+
+function FightTeamDataMgr:getClueArea(side)
+	side = side or FightEnum.TeamType.MySide
+
+	local sideData = self[side]
+
+	return sideData and sideData.clueArea
+end
+
+function FightTeamDataMgr:getOrCreateClueArea(side)
+	side = side or FightEnum.TeamType.MySide
+
+	local sideData = self[side]
+
+	if not sideData then
+		return
+	end
+
+	if not sideData.clueArea then
+		sideData.clueArea = FightClueAreaInfoData.New()
+	end
+
+	return sideData.clueArea
+end
+
+function FightTeamDataMgr:updateCluePosition(cluePosition, side, isAdd)
+	if not cluePosition then
+		return
+	end
+
+	local clueArea = self:getOrCreateClueArea(side)
+
+	if not clueArea then
+		return
+	end
+
+	if isAdd then
+		clueArea:addClues(cluePosition)
+	else
+		clueArea:removeClues(cluePosition)
+	end
 end
 
 return FightTeamDataMgr

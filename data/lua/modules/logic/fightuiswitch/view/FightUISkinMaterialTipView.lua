@@ -2,6 +2,6 @@
 
 module("modules.logic.fightuiswitch.view.FightUISkinMaterialTipView", package.seeall)
 
-local FightUISkinMaterialTipView = class("FightUISkinMaterialTipView", MainSceneSkinMaterialTipView)
+local FightUISkinMaterialTipView = class("FightUISkinMaterialTipView", DecorateMaterialTipView)
 
 return FightUISkinMaterialTipView

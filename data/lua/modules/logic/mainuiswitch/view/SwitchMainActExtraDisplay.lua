@@ -80,8 +80,14 @@ function SwitchMainActExtraDisplay:_initActs()
 end
 
 function SwitchMainActExtraDisplay:_initDefaultHandler()
-	for _, id in pairs(ActivityEnum.MainViewActivityState) do
-		if id >= ActivityEnum.MainViewActivityState.PartyGame then
+	local tActivityConfig = ActivityConfig.instance
+	local displayCfgList = tActivityConfig:getMainActExtraDisplayList()
+
+	for _, cfg in pairs(displayCfgList) do
+		local id = cfg.id
+		local actCfg = tActivityConfig:getActivityByExtraDisplayId(id)
+
+		if actCfg and id >= ActivityEnum.MainViewActivityState.PartyGame then
 			if not self._actHandler[id] then
 				self._actHandler[id] = self._getCommonActStatus
 			end
@@ -97,6 +103,8 @@ function SwitchMainActExtraDisplay:_initDefaultHandler()
 			if not self._actRefreshBtnHandler[id] then
 				self._actRefreshBtnHandler[id] = self._refreshCommonActBtn
 			end
+		elseif not actCfg then
+			logError(string.format("【H活动表 export_主界面活动外显】id:%s ,在【H活动表 export_活动】索引不到extraDisplayId为%s的活动", id, id))
 		end
 	end
 end

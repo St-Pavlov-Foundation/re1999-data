@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "elementId": 3130501,
+    "words": "<size=70>树</size>蛙",
+    "dialogId": 40001,
+    "coordinates": "-738.9#349.2",
+    "noteCoordinates": "-636.2#396.9"
+  },
+  {
+    "id": 2,
+    "elementId": 3130501,
+    "words": "想<size=55>象</size>",
+    "dialogId": 40002,
+    "coordinates": "-405.4#-91.9",
+    "noteCoordinates": "752.4#350.3"
+  },
+  {
+    "id": 3,
+    "elementId": 3130501,
+    "words": "童年",
+    "dialogId": 40003,
+    "coordinates": "483.3#322.7",
+    "noteCoordinates": "-525.6#-243.8"
+  },
+  {
+    "id": 4,
+    "elementId": 3130502,
+    "words": "<size=45>复归</size>",
+    "dialogId": 40004,
+    "coordinates": "670.8#-181",
+    "noteCoordinates": "499.9#140.4"
+  },
+  {
+    "id": 5,
+    "elementId": 3130502,
+    "words": "保<size=70>护</size>",
+    "dialogId": 40005,
+    "coordinates": "-479.3#-291",
+    "noteCoordinates": "-764.8#56.8"
+  },
+  {
+    "id": 6,
+    "elementId": 3130502,
+    "words": "<size=70>过</size>往",
+    "dialogId": 40006,
+    "coordinates": "320.1#328.6",
+    "noteCoordinates": "639#-133.5"
+  }
+]

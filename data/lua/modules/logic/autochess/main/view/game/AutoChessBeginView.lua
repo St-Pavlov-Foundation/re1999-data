@@ -159,7 +159,7 @@ function AutoChessBeginView:refreshBossPart()
 	self:setBtnNextGray(false)
 
 	local bossId = self.gameInfo.bossId
-	local config = AutoChessConfig.instance:getChessCfg(bossId)
+	local config = AutoChessConfig.instance:getChessCfgAnyway(bossId)
 
 	if config then
 		self.meshCompB:setData(config.image, true)
@@ -232,8 +232,6 @@ function AutoChessBeginView:onCheckCardpackItem(cardpackId)
 		index = checkIndex,
 		configs = self.unlockCardpackCfgs
 	}
-
-	ViewMgr.instance:openView(ViewName.AutoChessCardpackInfoView, param)
 end
 
 function AutoChessBeginView:refreshLeaderPart()

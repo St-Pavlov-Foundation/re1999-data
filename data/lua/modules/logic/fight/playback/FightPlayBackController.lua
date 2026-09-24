@@ -157,7 +157,7 @@ function FightPlayBackController:playPlayback(filename)
 	end
 
 	if self.playbackItem then
-		ToastController:showToastWithString("已经存在一个回放了")
+		ToastController.instance:showToastWithString("已经存在一个回放了")
 
 		return
 	end
@@ -165,7 +165,7 @@ function FightPlayBackController:playPlayback(filename)
 	local sceneType = GameSceneMgr.instance:getCurSceneType()
 
 	if sceneType == SceneType.Fight then
-		ToastController:showToastWithString("正在战斗中")
+		ToastController.instance:showToastWithString("正在战斗中")
 
 		return
 	end

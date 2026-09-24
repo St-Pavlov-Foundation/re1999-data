@@ -4280,38 +4280,6 @@
     "condition": "11#310504#31050131#31050132#31050133#31050134#31050135#31050136"
   },
   {
-    "id": "kakaniya_308001_skill1",
-    "timeline": "kakaniya_308005_skill1",
-    "priority": 2,
-    "target": 1,
-    "simulate": 0,
-    "condition": "5#308005"
-  },
-  {
-    "id": "kakaniya_308001_skill2",
-    "timeline": "kakaniya_308005_skill2",
-    "priority": 2,
-    "target": 1,
-    "simulate": 0,
-    "condition": "5#308005"
-  },
-  {
-    "id": "kakaniya_308001_skill2",
-    "timeline": "kakaniya_308005_skill2_1",
-    "priority": 1,
-    "target": 1,
-    "simulate": 1,
-    "condition": "12#308005#2"
-  },
-  {
-    "id": "kakaniya_308001_unique",
-    "timeline": "kakaniya_308005_unique",
-    "priority": 2,
-    "target": 1,
-    "simulate": 0,
-    "condition": "5#308005"
-  },
-  {
     "id": "molideer_312101_skill1",
     "timeline": "molideer_312104_skill1",
     "priority": 2,
@@ -4502,5 +4470,421 @@
     "target": 1,
     "simulate": 0,
     "condition": "5#314704"
+  },
+  {
+    "id": "yuanlv_304801_innate",
+    "timeline": "yuanlv_304805_innate",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#304805"
+  },
+  {
+    "id": "yuanlv_304801_skill1",
+    "timeline": "yuanlv_304805_skill1",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#304805"
+  },
+  {
+    "id": "yuanlv_304801_skill2",
+    "timeline": "yuanlv_304805_skill2",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#304805"
+  },
+  {
+    "id": "yuanlv_304801_unique",
+    "timeline": "yuanlv_304805_unique",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#304805"
+  },
+  {
+    "id": "luoleilai_309101_skill1",
+    "timeline": "luoleilai_309103_skill1",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#309103"
+  },
+  {
+    "id": "luoleilai_309101_skill2",
+    "timeline": "luoleilai_309103_skill2",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#309103"
+  },
+  {
+    "id": "luoleilai_309101_unique",
+    "timeline": "luoleilai_309103_unique",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#309103"
+  },
+  {
+    "id": "kubohuahuan_311701_skill1",
+    "timeline": "kubohuahuan_311705_skill1",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#311705"
+  },
+  {
+    "id": "kubohuahuan_311701_skill2",
+    "timeline": "kubohuahuan_311705_skill2",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#311705"
+  },
+  {
+    "id": "kubohuahuan_311701_unique",
+    "timeline": "kubohuahuan_311705_unique",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#311705"
+  },
+  {
+    "id": "37_306601_qte",
+    "timeline": "37_306603_qte",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#306603"
+  },
+  {
+    "id": "37_306601_qte",
+    "timeline": "37_306604_qte",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#306604"
+  },
+  {
+    "id": "37_306601_qte",
+    "timeline": "37_306605_qte",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#306605"
+  },
+  {
+    "id": "xingti2hao_302501_skill1",
+    "timeline": "xingti2hao_302507_skill1",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#302507"
+  },
+  {
+    "id": "xingti2hao_302501_skill2",
+    "timeline": "xingti2hao_302507_skill2",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#302507"
+  },
+  {
+    "id": "xingti2hao_302501_unique",
+    "timeline": "xingti2hao_302507_unique",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#302507"
+  },
+  {
+    "id": "huishengyao_314501_skill1",
+    "timeline": "huishengyao_314503_skill1",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#314503"
+  },
+  {
+    "id": "huishengyao_314501_skill2",
+    "timeline": "huishengyao_314503_skill2",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#314503"
+  },
+  {
+    "id": "huishengyao_314501_unique",
+    "timeline": "huishengyao_314503_unique",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#314503"
+  },
+  {
+    "id": "sxnwhnj_315501_qte_2",
+    "timeline": "sxnwhnj_315503_qte_2",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#315503"
+  },
+  {
+    "id": "sxnwhnj_315501_qte_3",
+    "timeline": "sxnwhnj_315503_qte_3",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#315503"
+  },
+  {
+    "id": "sxnwhnj_315501_skill1_1",
+    "timeline": "sxnwhnj_315503_skill1_1",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#315503"
+  },
+  {
+    "id": "sxnwhnj_315501_skill1_1",
+    "timeline": "sxnwhnj_315503_skill1_2",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#315503|4#31550012"
+  },
+  {
+    "id": "sxnwhnj_315501_skill1_1",
+    "timeline": "sxnwhnj_315503_skill1_3",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#315503|4#31550013"
+  },
+  {
+    "id": "sxnwhnj_315501_skill2",
+    "timeline": "sxnwhnj_315503_skill2",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#315503"
+  },
+  {
+    "id": "sxnwhnj_315501_unique",
+    "timeline": "sxnwhnj_315503_unique",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#315503"
+  },
+  {
+    "id": "sxnwhnj_315501_unique_1",
+    "timeline": "sxnwhnj_315503_unique",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#315503"
+  },
+  {
+    "id": "sxnwhnj_315501_qte_1_1",
+    "timeline": "sxnwhnj_315503_qte_1_1",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "9#315503"
+  },
+  {
+    "id": "sxnwhnj_315501_qte_1_1",
+    "timeline": "sxnwhnj_315503_qte_1_2",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "9#315503"
+  },
+  {
+    "id": "sxnwhnj_315501_qte_1_1",
+    "timeline": "sxnwhnj_315503_qte_1_3",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "9#315503"
+  },
+  {
+    "id": "sxnwhnj_315501_qte_1_1",
+    "timeline": "sxnwhnj_315501_qte_1_1",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "9#315501"
+  },
+  {
+    "id": "sxnwhnj_315501_qte_1_1",
+    "timeline": "sxnwhnj_315501_qte_1_2",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "9#315501"
+  },
+  {
+    "id": "sxnwhnj_315501_qte_1_1",
+    "timeline": "sxnwhnj_315501_qte_1_3",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "9#315501"
+  },
+  {
+    "id": "sxnwhnj_315501_qte_1_1",
+    "timeline": "sxnwhnj_315502_qte_1_1",
+    "priority": 3,
+    "target": 1,
+    "simulate": 0,
+    "condition": "9#315502"
+  },
+  {
+    "id": "sxnwhnj_315501_qte_1_1",
+    "timeline": "sxnwhnj_315502_qte_1_2",
+    "priority": 3,
+    "target": 1,
+    "simulate": 0,
+    "condition": "9#315502"
+  },
+  {
+    "id": "sxnwhnj_315501_qte_1_1",
+    "timeline": "sxnwhnj_315502_qte_1_3",
+    "priority": 3,
+    "target": 1,
+    "simulate": 0,
+    "condition": "9#315502"
+  },
+  {
+    "id": "sxnwhnj_315501_skill1_1",
+    "timeline": "sxnwhnj_315501_skill1_2",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "4#31550012"
+  },
+  {
+    "id": "sxnwhnj_315501_skill1_1",
+    "timeline": "sxnwhnj_315501_skill1_3",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "4#31550013"
+  },
+  {
+    "id": "sxnwhnj_315501_unique",
+    "timeline": "sxnwhnj_315501_unique_1",
+    "priority": 2,
+    "target": 1,
+    "simulate": 0,
+    "condition": "18"
+  },
+  {
+    "id": "deleike_315801_skill2",
+    "timeline": "deleike_315801_skill2_ex",
+    "priority": 10,
+    "target": 1,
+    "simulate": 0,
+    "condition": "4#31580132#31580134#31580136#31580138#31580140"
+  },
+  {
+    "id": "beilier_313401_skill1",
+    "timeline": "beilier_313403_skill1",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#313403"
+  },
+  {
+    "id": "beilier_313401_skill2",
+    "timeline": "beilier_313403_skill2",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#313403"
+  },
+  {
+    "id": "beilier_313401_skill3_r",
+    "timeline": "beilier_313403_skill3_r",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#313403"
+  },
+  {
+    "id": "beilier_313401_skill3_g",
+    "timeline": "beilier_313403_skill3_g",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#313403"
+  },
+  {
+    "id": "beilier_313401_skill3_b",
+    "timeline": "beilier_313403_skill3_b",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#313403"
+  },
+  {
+    "id": "beilier_313401_skill4",
+    "timeline": "beilier_313403_skill4",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#313403"
+  },
+  {
+    "id": "beilier_313401_unique",
+    "timeline": "beilier_313403_unique",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#313403"
+  },
+  {
+    "id": "dianjishi_314001_counter",
+    "timeline": "dianjishi_314003_counter",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#314003"
+  },
+  {
+    "id": "dianjishi_314001_skill1",
+    "timeline": "dianjishi_314003_skill1",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#314003"
+  },
+  {
+    "id": "dianjishi_314001_skill2",
+    "timeline": "dianjishi_314003_skill2",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#314003"
+  },
+  {
+    "id": "dianjishi_314001_unique",
+    "timeline": "dianjishi_314003_unique",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#314003"
+  },
+  {
+    "id": "dianjishi_314001_unique_counter",
+    "timeline": "dianjishi_314003_unique_counter",
+    "priority": 1,
+    "target": 1,
+    "simulate": 0,
+    "condition": "5#314003"
   }
 ]

@@ -21,6 +21,10 @@ function DecorateStoreModel:setCurGood(goodId)
 end
 
 function DecorateStoreModel:getCurGood(storeId)
+	if not self._curGoodId then
+		self._curGoodId = 0
+	end
+
 	if self._curGoodId > 0 then
 		local goodMo = StoreModel.instance:getGoodsMO(self._curGoodId)
 
@@ -50,7 +54,9 @@ function DecorateStoreModel:getDecorateGoodList(storeId)
 		local goodsList = storeMO:getGoodsList()
 
 		for _, mo in pairs(goodsList) do
-			if self:_isCanShowGoods(mo.goodsId) then
+			local isBundleSubGood = self:isBundleSubGood(mo.goodsId)
+
+			if not isBundleSubGood then
 				table.insert(allGoods, mo)
 			end
 		end
@@ -79,6 +85,30 @@ function DecorateStoreModel:getDecorateGoodList(storeId)
 	end)
 
 	return allGoods
+end
+
+function DecorateStoreModel:isBundleSubGood(goodsId)
+	local goodsCo = DecorateStoreConfig.instance:getDecorateConfig(goodsId)
+
+	if not goodsCo then
+		return false
+	end
+
+	if not goodsCo.fatherGoods then
+		return false
+	end
+
+	if goodsCo.fatherGoods <= 0 then
+		return false
+	end
+
+	return true
+end
+
+function DecorateStoreModel:getBundleSubGoods(goodId)
+	local goodList = DecorateStoreConfig.instance:getBundleGoodsIdList(goodId)
+
+	return goodList
 end
 
 function DecorateStoreModel:getDecorateGoodIndex(storeId, goodId)
@@ -142,8 +172,7 @@ function DecorateStoreModel:setGoodRead(goodId)
 	PlayerPrefsHelper.setString(PlayerModel.instance:getPlayerPrefsKey(PlayerPrefsKey.DecorateStoreReadGoods), str)
 end
 
-function DecorateStoreModel.getItemType(storeId)
-	local goodId = DecorateStoreModel.instance:getCurGood(storeId)
+function DecorateStoreModel.getItemTypeByGoodId(goodId)
 	local decorateConfig = DecorateStoreConfig.instance:getDecorateConfig(goodId)
 
 	if decorateConfig.productType == MaterialEnum.MaterialType.Item then
@@ -159,16 +188,23 @@ function DecorateStoreModel.getItemType(storeId)
 			return DecorateStoreEnum.DecorateItemType.SceneUIPackage
 		elseif decorateConfig.subType == ItemEnum.SubType.MainUISkin then
 			return DecorateStoreEnum.DecorateItemType.MainUISkin
-		elseif decorateConfig.subType == ItemEnum.SubType.DecorateBundle then
-			return DecorateStoreEnum.DecorateItemType.DecorateBundle
 		end
+	elseif decorateConfig.productType == MaterialEnum.MaterialType.Hero then
+		return DecorateStoreEnum.DecorateItemType.Hero
 	elseif decorateConfig.productType == MaterialEnum.MaterialType.HeroSkin then
 		return DecorateStoreEnum.DecorateItemType.Skin
-	elseif decorateConfig.productType == MaterialEnum.MaterialType.Building and decorateConfig.subType == 7 then
+	elseif decorateConfig.productType == MaterialEnum.MaterialType.Building and decorateConfig.subType == RoomBuildingEnum.BuildingType.Interact then
 		return DecorateStoreEnum.DecorateItemType.BuildingVideo
 	end
 
 	return DecorateStoreEnum.DecorateItemType.Default
+end
+
+function DecorateStoreModel.getItemType(storeId)
+	local goodId = DecorateStoreModel.instance:getCurGood(storeId)
+	local type = DecorateStoreModel.getItemTypeByGoodId(goodId)
+
+	return type
 end
 
 function DecorateStoreModel:setCurCostIndex(index)
@@ -261,10 +297,10 @@ function DecorateStoreModel:isDecorateGoodItemHas(goodId)
 	local subType = goodsCo.subType
 
 	if subType == ItemEnum.SubType.DecorateBundle then
-		local sonGoodsIdList = DecorateStoreConfig.instance:getSonGoodsIdList(goodId)
+		local bundleGoodsIdList = DecorateStoreConfig.instance:getBundleGoodsIdList(goodId)
 
-		if sonGoodsIdList then
-			for _, sonGoodsId in ipairs(sonGoodsIdList) do
+		if bundleGoodsIdList then
+			for _, sonGoodsId in ipairs(bundleGoodsIdList) do
 				if not self:isDecorateGoodItemHas(sonGoodsId) then
 					return
 				end
@@ -292,21 +328,19 @@ function DecorateStoreModel:_isDecorateGoodItemHas(goodId)
 		local effect = config and config.effect or ""
 		local param = GameUtil.splitString2(effect, true)
 
-		if param == nil then
-			logError("11")
-
+		if not param then
 			return false
-		else
-			local skinList = param[1]
-
-			for i, v in ipairs(skinList) do
-				if not HeroModel.instance:checkHasSkin(v) then
-					return false
-				end
-			end
-
-			return true
 		end
+
+		local skinList = param[1]
+
+		for i, v in ipairs(skinList) do
+			if not HeroModel.instance:checkHasSkin(v) then
+				return false
+			end
+		end
+
+		return true
 	end
 
 	local itemCount = ItemModel.instance:getItemQuantity(items[1], items[2])
@@ -424,10 +458,10 @@ function DecorateStoreModel:isCanBuyGoods(goodsId)
 	local subType = goodsCo.subType
 
 	if not isHas and subType == ItemEnum.SubType.DecorateBundle then
-		local sonGoodsIdList = DecorateStoreConfig.instance:getSonGoodsIdList(goodsId)
+		local bundleGoodsIdList = DecorateStoreConfig.instance:getBundleGoodsIdList(goodsId)
 
-		if sonGoodsIdList then
-			for _, sonGoodsId in ipairs(sonGoodsIdList) do
+		if bundleGoodsIdList then
+			for _, sonGoodsId in ipairs(bundleGoodsIdList) do
 				if self:isDecorateGoodItemHas(sonGoodsId) then
 					return
 				end
@@ -438,22 +472,6 @@ function DecorateStoreModel:isCanBuyGoods(goodsId)
 	end
 
 	return not isHas
-end
-
-function DecorateStoreModel:_isCanShowGoods(goodsId)
-	local goodsCo = DecorateStoreConfig.instance:getDecorateConfig(goodsId)
-
-	if not goodsCo then
-		return
-	end
-
-	local subType = goodsCo.subType
-
-	if subType == ItemEnum.SubType.DecorateBundle then
-		return self:isDecorateGoodItemHas(goodsId) or self:isCanBuyGoods(goodsId)
-	end
-
-	return true
 end
 
 DecorateStoreModel.instance = DecorateStoreModel.New()

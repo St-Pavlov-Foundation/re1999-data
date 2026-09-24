@@ -153,4 +153,8 @@ function FightHeatScaleView_BLE:getCrystalDesc(crystal, count)
 	return desc
 end
 
+function FightHeatScaleView_BLE:getBreakAudio()
+	return 400006
+end
+
 return FightHeatScaleView_BLE

@@ -37,29 +37,11 @@ function V3a9_BossRushExpandBondModel:_initExpandBondGroup(actId)
 			end
 		end
 
-		self:refreshExpandBondHeroList()
-	end
-end
-
-function V3a9_BossRushExpandBondModel:refreshExpandBondHeroList()
-	local actId = BossRushConfig.instance:getActivityId(V3a9BossRushEnum.Mode.Act)
-
-	if not self._expandBondGroupMos or not self._expandBondGroupMos[actId] then
-		self:_initExpandBondGroup(actId)
-
-		return
-	end
-
-	local mos = self._expandBondGroupMos[actId]
-
-	if not mos then
-		return
-	end
-
-	for _, co in ipairs(lua_character.configList) do
-		if co.isOnline == "1" then
-			for _, mo in pairs(mos) do
-				mo:refreshHero(co.id)
+		for _, co in ipairs(lua_character.configList) do
+			if co.isOnline == "1" then
+				for _, mo in pairs(self._expandBondGroupMos[actId]) do
+					mo:refreshHero(co.id)
+				end
 			end
 		end
 	end

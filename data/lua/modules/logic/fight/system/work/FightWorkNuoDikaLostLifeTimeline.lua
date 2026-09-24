@@ -39,6 +39,10 @@ function FightWorkNuoDikaLostLifeTimeline:onStart()
 
 			FightController.instance:dispatchEvent(FightEvent.OnHpChange, entity, -effectNum)
 		end
+	else
+		self:onDone(true)
+
+		return
 	end
 
 	local toId = targetId

@@ -28,17 +28,31 @@ function HeroGroupEditListModel:copyCharacterCardList(init)
 
 	local selectIndex = 1
 	local index = 1
-	local _, assistMo = HeroGroupModel.instance:getAssistMo()
-	local editorAssistMo = HeroGroupModel.instance:getEditorAssistMo()
-	local _assistMo = editorAssistMo or assistMo and assistMo.assistMo
 
-	if _assistMo then
+	self:setQuickEditState(false)
+
+	local assistMoList = HeroGroupModel.instance:getAssistMoList()
+	local editorAssistMoList = HeroGroupModel.instance:getAssistMoList(true)
+	local showAssistMoList = editorAssistMoList
+
+	if #showAssistMoList <= 0 then
+		for _, assistMo in ipairs(assistMoList) do
+			if assistMo.assistMo then
+				table.insert(showAssistMoList, assistMo.assistMo)
+			end
+		end
+	end
+
+	for _, _assistMo in ipairs(showAssistMoList) do
 		table.insert(newMOList, _assistMo.heroMO)
 
 		index = index + 1
 	end
 
-	if assistMo then
+	local isAssistPosMap = {}
+
+	for _, assistMo in ipairs(assistMoList) do
+		isAssistPosMap[assistMo.id] = true
 		self._inTeamHeroUids[assistMo.heroUid] = 1
 		repeatHero[assistMo.heroUid] = true
 	end
@@ -46,7 +60,7 @@ function HeroGroupEditListModel:copyCharacterCardList(init)
 	local alreadyList = HeroSingleGroupModel.instance:getList()
 
 	for i, heroSingleGroupMO in ipairs(alreadyList) do
-		local isAssistPos = assistMo and assistMo.id == i
+		local isAssistPos = isAssistPosMap[i]
 
 		if not isAssistPos and (heroSingleGroupMO.trial or not heroSingleGroupMO.aid and tonumber(heroSingleGroupMO.heroUid) > 0 and not repeatHero[heroSingleGroupMO.heroUid]) then
 			if heroSingleGroupMO.trial then
@@ -214,13 +228,13 @@ function HeroGroupEditListModel:cancelAllSelected()
 end
 
 function HeroGroupEditListModel:isInTeamHero(uid)
-	local _, assistMo = HeroGroupModel.instance:getAssistMo()
+	local heroMo = HeroModel.instance:getById(uid)
 
-	if assistMo and assistMo.heroUid ~= uid then
-		local heroMo = HeroModel.instance:getById(uid)
-
-		if heroMo and heroMo.heroId == assistMo.assistMo.heroId then
-			return false
+	if heroMo then
+		for _, assistMo in ipairs(HeroGroupModel.instance:getAssistMoList()) do
+			if assistMo.heroUid ~= uid and assistMo.assistMo and heroMo.heroId == assistMo.assistMo.heroId then
+				return false
+			end
 		end
 	end
 
@@ -234,6 +248,77 @@ function HeroGroupEditListModel:setParam(heroUid, adventure, isTowerBattle, grou
 	self._groupType = groupType
 	self.isWeekWalk_2 = groupType == HeroGroupEnum.GroupType.WeekWalk_2
 	self.isAbyss = groupType == HeroGroupEnum.GroupType.Abyss
+end
+
+function HeroGroupEditListModel:setQuickEditState(state)
+	self.quickEditState = state
+end
+
+function HeroGroupEditListModel:getQuickEditState()
+	return self.quickEditState
+end
+
+function HeroGroupEditListModel:getSelectAssistHeroIndex(pickAssistMo)
+	if not pickAssistMo then
+		return
+	end
+
+	local assistMoList = HeroGroupModel.instance:getAssistMoList(true)
+
+	if #assistMoList <= 0 then
+		assistMoList = HeroGroupModel.instance:getAssistMoList()
+	end
+
+	for _, assistMo in ipairs(assistMoList) do
+		local targetAssistMo = assistMo.assistMo or assistMo
+		local isSameAssist = targetAssistMo == pickAssistMo
+
+		if not isSameAssist and targetAssistMo.heroUid and pickAssistMo.heroUid then
+			isSameAssist = targetAssistMo.heroUid == pickAssistMo.heroUid
+		end
+
+		if isSameAssist then
+			local index = self:getIndex(targetAssistMo.heroMO)
+
+			return index
+		end
+	end
+end
+
+function HeroGroupEditListModel:isCurSelectAssistHero()
+	if not self._scrollViews then
+		return false
+	end
+
+	local assistMoList = HeroGroupModel.instance:getAssistMoList(true)
+
+	if #assistMoList <= 0 then
+		assistMoList = HeroGroupModel.instance:getAssistMoList()
+	end
+
+	if #assistMoList <= 0 then
+		return false
+	end
+
+	for _, view in ipairs(self._scrollViews) do
+		local selectMO = view:getFirstSelect()
+
+		if selectMO then
+			for _, assistMo in ipairs(assistMoList) do
+				local targetAssistMo = assistMo.assistMo or assistMo
+
+				if targetAssistMo.heroMO == selectMO then
+					return true
+				end
+
+				if targetAssistMo.heroUid and selectMO.uid and targetAssistMo.heroUid == selectMO.uid then
+					return true
+				end
+			end
+		end
+	end
+
+	return false
 end
 
 HeroGroupEditListModel.instance = HeroGroupEditListModel.New()

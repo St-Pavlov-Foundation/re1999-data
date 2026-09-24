@@ -6,6 +6,7 @@ local FightWorkPlay3DSpineAnim = class("FightWorkPlay3DSpineAnim", FightWorkItem
 
 function FightWorkPlay3DSpineAnim:onConstructor(entity, animName, reStart, donotProcess)
 	self.entity = entity
+	self.entityData = entity.entityData
 	self.animName = animName
 	self.donotProcess = donotProcess
 	self.reStart = reStart
@@ -45,6 +46,7 @@ function FightWorkPlay3DSpineAnim:onStart()
 
 	animatorPlayer:Play(replaceAnimName)
 	spine:invokeAnimEventCallback(SpineAnimEvent.ActionStart)
+	self:playBrokenHitEffect()
 end
 
 function FightWorkPlay3DSpineAnim:onAnimEnd(entityId, animState)
@@ -53,6 +55,12 @@ function FightWorkPlay3DSpineAnim:onAnimEnd(entityId, animState)
 	end
 
 	self:onDone(true)
+end
+
+function FightWorkPlay3DSpineAnim:playBrokenHitEffect()
+	if string.find(self.animName, "hit") then
+		-- block empty
+	end
 end
 
 return FightWorkPlay3DSpineAnim

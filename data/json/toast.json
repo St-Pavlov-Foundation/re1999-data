@@ -11950,5 +11950,301 @@
     "audioId": 0,
     "notMerge": 0,
     "notShow": 0
+  },
+  {
+    "id": 401001,
+    "tips": "建筑▩1%s可解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 401002,
+    "tips": "地点▩1%s可探索",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 1,
+    "notShow": 0
+  },
+  {
+    "id": 401003,
+    "tips": "资源不足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 401004,
+    "tips": "同伴已达数量上限，与现有同伴分别后可继续结识同伴",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 401005,
+    "tips": "新阶段任务已解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 401006,
+    "tips": "建筑等级达到▩1%s时解锁槽位",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 401007,
+    "tips": "同伴需要选择刷新后的专长才可升级",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 401008,
+    "tips": "建筑或地点未解锁",
+    "icon": 11,
+    "audioId": 11,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 401009,
+    "tips": "专长锁定已经达到上限",
+    "icon": 11,
+    "audioId": 11,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 401010,
+    "tips": "请于1ST-07焦树林 小径① 咒语升阶解锁",
+    "icon": 11,
+    "audioId": 11,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 401011,
+    "tips": "请于1ST-08槲寄生 小径② 缴械技艺解锁",
+    "icon": 11,
+    "audioId": 11,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 401012,
+    "tips": "请于1ST-12餐前甜点 小径① 仪式蕴蓄解锁",
+    "icon": 11,
+    "audioId": 11,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 401013,
+    "tips": "派遣角色数量已达上限",
+    "icon": 11,
+    "audioId": 11,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 401014,
+    "tips": "请于1ST-14暴雨眼 小径① 律动·其一解锁",
+    "icon": 11,
+    "audioId": 11,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 401015,
+    "tips": "请于1ST-06玫瑰特派 小径① 灵感克制解锁",
+    "icon": 11,
+    "audioId": 11,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 402001,
+    "tips": "请先激活前置节点",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 402002,
+    "tips": "所需货币不足",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 402003,
+    "tips": "通关▩1%s后解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 402004,
+    "tips": "夜间狂潮模式未解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 402005,
+    "tips": "队伍位置未解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 402006,
+    "tips": "关卡将在▩1%s后解锁",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 402007,
+    "tips": "角色暂时无法行动",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 402008,
+    "tips": "无法重置",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 403001,
+    "tips": "§替换失败",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 404001,
+    "tips": "仅可选择一队进行助战",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 404002,
+    "tips": "协助角色已失效,需要重置编队才可挑战",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 404010,
+    "tips": "协助角色已失效,需要重置编队才可挑战",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 404011,
+    "tips": "该角色已锁定，请重新选择",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 404012,
+    "tips": "▩1%s助战角色已达上限",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 404013,
+    "tips": "▩1%s助战角色仅能在▩2%s上阵",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 404014,
+    "tips": "协助角色已失效，无法使用该存档进行挑战",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 405001,
+    "tips": "▩1%s获得了▩2%s新勋章",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 1,
+    "notShow": 0
+  },
+  {
+    "id": 405002,
+    "tips": "暂无可折射次数",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 405003,
+    "tips": "尚未解锁多格光影幕布Ⅱ",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 406001,
+    "tips": "【洞知点】不足！",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 406002,
+    "tips": "使用咒语后，不可再使用【洞知眼】，请使用回退操作！",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
+  },
+  {
+    "id": 406003,
+    "tips": "当前无法使用【洞知眼】！",
+    "icon": 11,
+    "audioId": 1,
+    "notMerge": 0,
+    "notShow": 0
   }
 ]

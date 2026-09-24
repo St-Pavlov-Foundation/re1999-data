@@ -13,7 +13,7 @@ function VersionActivityFixedDungeonMapInteractView1:onInitView(go)
 end
 
 function VersionActivityFixedDungeonMapInteractView1:addEvents()
-	self:addEventCb(VersionActivityFixedHelper.getVersionActivityDungeonController().instance, VersionActivityFixedDungeonEvent.OnClickElement, self._onClickElement, self)
+	self:addEventCb(VersionActivityFixedDungeonController.instance, VersionActivityFixedDungeonEvent.OnClickElement, self._onClickElement, self)
 	self:addEventCb(VersionActivityFixedDungeonController.instance, VersionActivityFixedDungeonEvent.OnHideInteractUI, self.onHideInteractUI, self)
 end
 

@@ -765,5 +765,70 @@
     "skillIndex": 0,
     "needTarget": false,
     "targetType": ""
+  },
+  {
+    "id": 3005901,
+    "cost": "",
+    "type": "passive",
+    "passiveChessSkills": "3005901",
+    "activeChessSkill": "",
+    "abilities": "",
+    "skillaction": "jump",
+    "useeffect": 0,
+    "skillIndex": 1,
+    "needTarget": false,
+    "targetType": ""
+  },
+  {
+    "id": 3006001,
+    "cost": "",
+    "type": "passive",
+    "passiveChessSkills": "3006001",
+    "activeChessSkill": "",
+    "abilities": "",
+    "skillaction": "jump",
+    "useeffect": 0,
+    "skillIndex": 1,
+    "needTarget": false,
+    "targetType": ""
+  },
+  {
+    "id": 3006101,
+    "cost": "",
+    "type": "passive",
+    "passiveChessSkills": "3006101",
+    "activeChessSkill": "",
+    "abilities": "",
+    "skillaction": "jump",
+    "useeffect": 0,
+    "skillIndex": 1,
+    "needTarget": false,
+    "targetType": ""
+  },
+  {
+    "id": 3006201,
+    "cost": "",
+    "type": "passive",
+    "passiveChessSkills": "3006201",
+    "activeChessSkill": "",
+    "abilities": "",
+    "skillaction": "jump",
+    "useeffect": 0,
+    "skillIndex": 1,
+    "needTarget": false,
+    "targetType": ""
+  },
+  {
+    "id": 3006301,
+    "cost": "",
+    "type": "passive",
+    "passiveChessSkills": "3006301",
+    "activeChessSkill": "",
+    "abilities": "",
+    "skillaction": "jump",
+    "useeffect": 0,
+    "skillIndex": 1,
+    "needTarget": false,
+    "targetType": ""
   }
 ]

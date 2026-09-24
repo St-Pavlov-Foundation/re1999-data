@@ -32,7 +32,8 @@ end
 function AutoChessLeaderNextView:onClose()
 	local actId = self.viewParam.actId or Activity182Model.instance:getCurActId()
 
-	AutoChessRpc.instance:sendAutoChessEnterSceneRequest(actId, self.viewParam.moduleId, self.viewParam.episodeId, self.viewParam.leaderId, true)
+	AutoChessRpc.instance:sendAutoChessEnterSceneRequest(actId, self.viewParam.moduleId, self.viewParam.episodeId, self.viewParam.leaderId)
+	TaskDispatcher.cancelTask(self.closeThis, self)
 end
 
 return AutoChessLeaderNextView

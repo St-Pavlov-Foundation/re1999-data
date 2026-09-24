@@ -80,6 +80,7 @@ function TowerDeepResultView:onOpen()
 	self.curDepth = self.curDeepGroupMo.curDeep
 
 	self:refreshUI()
+	AssistRecordRpc.instance:sendAssistRecordGetDungeonRecordRequest()
 end
 
 function TowerDeepResultView:refreshUI()
@@ -214,6 +215,9 @@ function TowerDeepResultView:onClose()
 
 		self.scrollTweenId = nil
 	end
+
+	TowerPermanentDeepModel.instance:clearAssist(true)
+	AssistController.instance:dispatchEvent(AssistEvent.CloseAddFriendView)
 end
 
 function TowerDeepResultView:onDestroyView()

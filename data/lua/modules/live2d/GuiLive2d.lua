@@ -124,6 +124,12 @@ end
 function GuiLive2d:hideModel()
 	self:_setCameraVisible(false)
 	gohelper.setActive(self._spineGo, false)
+
+	local effect = self:getCustomEffectComp()
+
+	if effect then
+		effect:hideModel()
+	end
 end
 
 function GuiLive2d:showModel()
@@ -138,6 +144,12 @@ function GuiLive2d:showModel()
 
 	if not self._uiEffectGos then
 		self:_addDelayProcessEffect()
+	end
+
+	local effect = self:getCustomEffectComp()
+
+	if effect then
+		effect:showModel()
 	end
 end
 
@@ -534,6 +546,10 @@ function GuiLive2d:setShareRT(value, viewName)
 end
 
 function GuiLive2d:getRTViewName()
+	return self._rtViewName
+end
+
+function GuiLive2d:getViewName()
 	return self._rtViewName
 end
 

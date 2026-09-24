@@ -238,5 +238,20 @@
     "storyId": 800008,
     "iconArea": 0,
     "effect": "v1a9_caidai"
+  },
+  {
+    "id": 401002,
+    "name": "“闪烁之夜”万花筒",
+    "nameen": "\"The Glittering Night\" Kaleidoscope",
+    "icon": "v4a0_antique_icon_1",
+    "gifticon": "v4a0_antique_icon_1",
+    "sign": "501214",
+    "title": "“闪烁之夜”万花筒",
+    "titleen": "\"The Glittering Night\" Kaleidoscope",
+    "desc": "为庆典拉开序幕的神秘学装置。该装置加装了投影功能，在巡游结束后，可与伙伴们一同回顾这场光怪陆离、变幻无穷的梦境。\n水晶能够折射出世界的千万个影像，你也曾漫步在其中之一。",
+    "sources": "",
+    "storyId": 800009,
+    "iconArea": 0,
+    "effect": "v1a9_caidai"
   }
 ]

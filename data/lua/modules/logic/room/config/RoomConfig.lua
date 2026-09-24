@@ -1470,6 +1470,17 @@ function RoomConfig:getRoomSkinSources(skinId)
 	return result
 end
 
+function RoomConfig:getRoomSkinSuit(skinId)
+	local result
+	local cfg = getRoomSkinCfg(skinId, true)
+
+	if cfg then
+		result = cfg.suit
+	end
+
+	return result
+end
+
 RoomConfig.instance = RoomConfig.New()
 
 return RoomConfig

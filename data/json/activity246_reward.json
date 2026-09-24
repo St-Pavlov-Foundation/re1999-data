@@ -1,0 +1,182 @@
+[
+  {
+    "rewardId": 1001,
+    "reward": "11#14012#1",
+    "area": 4,
+    "type": 2
+  },
+  {
+    "rewardId": 1002,
+    "reward": "1#111003#1",
+    "area": 1,
+    "type": 1
+  },
+  {
+    "rewardId": 1003,
+    "reward": "1#110604#1",
+    "area": 1,
+    "type": 1
+  },
+  {
+    "rewardId": 1004,
+    "reward": "1#110804#1",
+    "area": 1,
+    "type": 1
+  },
+  {
+    "rewardId": 1005,
+    "reward": "9#1005#1",
+    "area": 1,
+    "type": 0
+  },
+  {
+    "rewardId": 1006,
+    "reward": "1#110503#1",
+    "area": 1,
+    "type": 0
+  },
+  {
+    "rewardId": 1007,
+    "reward": "1#110403#1",
+    "area": 1,
+    "type": 0
+  },
+  {
+    "rewardId": 1008,
+    "reward": "1#110103#1",
+    "area": 1,
+    "type": 0
+  },
+  {
+    "rewardId": 1009,
+    "reward": "1#111012#1",
+    "area": 1,
+    "type": 0
+  },
+  {
+    "rewardId": 1010,
+    "reward": "2#5#20000",
+    "area": 1,
+    "type": 0
+  },
+  {
+    "rewardId": 1011,
+    "reward": "2#3#20000",
+    "area": 1,
+    "type": 0
+  },
+  {
+    "rewardId": 1012,
+    "reward": "1#110402#1",
+    "area": 1,
+    "type": 0
+  },
+  {
+    "rewardId": 1013,
+    "reward": "1#110302#1",
+    "area": 1,
+    "type": 0
+  },
+  {
+    "rewardId": 1014,
+    "reward": "1#110202#1",
+    "area": 1,
+    "type": 0
+  },
+  {
+    "rewardId": 1015,
+    "reward": "1#110602#1",
+    "area": 1,
+    "type": 0
+  },
+  {
+    "rewardId": 2001,
+    "reward": "18#401002#1",
+    "area": 4,
+    "type": 2
+  },
+  {
+    "rewardId": 2002,
+    "reward": "1#111013#1",
+    "area": 1,
+    "type": 1
+  },
+  {
+    "rewardId": 2003,
+    "reward": "1#111104#1",
+    "area": 1,
+    "type": 1
+  },
+  {
+    "rewardId": 2004,
+    "reward": "1#110904#1",
+    "area": 1,
+    "type": 1
+  },
+  {
+    "rewardId": 2005,
+    "reward": "9#1005#1",
+    "area": 1,
+    "type": 0
+  },
+  {
+    "rewardId": 2006,
+    "reward": "1#111002#1",
+    "area": 1,
+    "type": 0
+  },
+  {
+    "rewardId": 2007,
+    "reward": "1#111012#1",
+    "area": 1,
+    "type": 0
+  },
+  {
+    "rewardId": 2008,
+    "reward": "1#111103#1",
+    "area": 1,
+    "type": 0
+  },
+  {
+    "rewardId": 2009,
+    "reward": "1#110803#1",
+    "area": 1,
+    "type": 0
+  },
+  {
+    "rewardId": 2010,
+    "reward": "2#5#20000",
+    "area": 1,
+    "type": 0
+  },
+  {
+    "rewardId": 2011,
+    "reward": "2#3#20000",
+    "area": 1,
+    "type": 0
+  },
+  {
+    "rewardId": 2012,
+    "reward": "1#110102#1",
+    "area": 1,
+    "type": 0
+  },
+  {
+    "rewardId": 2013,
+    "reward": "1#110702#1",
+    "area": 1,
+    "type": 0
+  },
+  {
+    "rewardId": 2014,
+    "reward": "1#111001#1",
+    "area": 1,
+    "type": 0
+  },
+  {
+    "rewardId": 2015,
+    "reward": "1#111102#1",
+    "area": 1,
+    "type": 0
+  }
+]

@@ -24,7 +24,8 @@
     "mainviewName": "",
     "permanentUnlock": "2#24#1",
     "signature": "",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 2,
@@ -51,7 +52,8 @@
     "mainviewName": "",
     "permanentUnlock": "2#24#1",
     "signature": "",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 3,
@@ -78,7 +80,8 @@
     "mainviewName": "",
     "permanentUnlock": "2#24#1",
     "signature": "",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 4,
@@ -105,7 +108,8 @@
     "mainviewName": "",
     "permanentUnlock": "2#24#1",
     "signature": "",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 5,
@@ -132,7 +136,8 @@
     "mainviewName": "",
     "permanentUnlock": "2#24#1",
     "signature": "",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 6,
@@ -159,7 +164,8 @@
     "mainviewName": "",
     "permanentUnlock": "2#24#1",
     "signature": "",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 7,
@@ -186,7 +192,8 @@
     "mainviewName": "",
     "permanentUnlock": "2#24#1",
     "signature": "",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 8,
@@ -213,7 +220,8 @@
     "mainviewName": "",
     "permanentUnlock": "2#24#1",
     "signature": "",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 9,
@@ -240,7 +248,8 @@
     "mainviewName": "",
     "permanentUnlock": "2#24#1",
     "signature": "",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 10,
@@ -267,7 +276,8 @@
     "mainviewName": "",
     "permanentUnlock": "2#24#1",
     "signature": "",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 11,
@@ -294,7 +304,8 @@
     "mainviewName": "字母的研究",
     "permanentUnlock": "2#24#1",
     "signature": "",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 12,
@@ -321,7 +332,8 @@
     "mainviewName": "第三种苏醒",
     "permanentUnlock": "2#24#1",
     "signature": "",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 13,
@@ -348,7 +360,8 @@
     "mainviewName": "淑女的守则",
     "permanentUnlock": "2#24#1",
     "signature": "",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 14,
@@ -375,7 +388,8 @@
     "mainviewName": "只有泉水知道",
     "permanentUnlock": "2#24#1",
     "signature": "",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 15,
@@ -402,7 +416,8 @@
     "mainviewName": "起<size=34>火点</size>",
     "permanentUnlock": "2#24#1",
     "signature": "",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 16,
@@ -429,7 +444,8 @@
     "mainviewName": "当<size=34>和平盛放</size>",
     "permanentUnlock": "2#24#1",
     "signature": "",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 17,
@@ -456,7 +472,8 @@
     "mainviewName": "乘<size=34>法轴上的一天</size>",
     "permanentUnlock": "2#24#1",
     "signature": "",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 18,
@@ -483,7 +500,8 @@
     "mainviewName": "长<size=34>夜未逝</size>",
     "permanentUnlock": "2#24#1",
     "signature": "",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 19,
@@ -510,7 +528,8 @@
     "mainviewName": "黄金<size=34>与悲喜剧</size>",
     "permanentUnlock": "2#24#1",
     "signature": "",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 20,
@@ -537,7 +556,8 @@
     "mainviewName": "最佳<size=34>乐队</size>",
     "permanentUnlock": "2#24#1",
     "signature": "",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 21,
@@ -564,7 +584,8 @@
     "mainviewName": "鬼马<size=34>探灵记</size>",
     "permanentUnlock": "2#24#1",
     "signature": "",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 22,
@@ -591,7 +612,8 @@
     "mainviewName": "最后的<size=34>电影</size>",
     "permanentUnlock": "2#24#1",
     "signature": "",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 23,
@@ -618,7 +640,8 @@
     "mainviewName": "海风<size=34>的往事</size>",
     "permanentUnlock": "2#24#1",
     "signature": "",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 24,
@@ -645,7 +668,8 @@
     "mainviewName": "在<size=34>路上</size>",
     "permanentUnlock": "2#24#1",
     "signature": "",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 25,
@@ -672,7 +696,8 @@
     "mainviewName": "钻石<size=34>游戏</size>",
     "permanentUnlock": "2#24#1",
     "signature": "",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 26,
@@ -699,7 +724,8 @@
     "mainviewName": "墓碑<size=34>博物馆</size>",
     "permanentUnlock": "2#24#1",
     "signature": "3037",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 27,
@@ -726,7 +752,8 @@
     "mainviewName": "交接日",
     "permanentUnlock": "2#24#1",
     "signature": "3041",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 28,
@@ -753,7 +780,8 @@
     "mainviewName": "在高山下",
     "permanentUnlock": "2#24#1",
     "signature": "3121",
-    "preStoryId": 305101
+    "preStoryId": 305101,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 29,
@@ -780,7 +808,8 @@
     "mainviewName": "有琴歌",
     "permanentUnlock": "2#24#1",
     "signature": "3084",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 30,
@@ -807,7 +836,8 @@
     "mainviewName": "世界筹码",
     "permanentUnlock": "2#24#1",
     "signature": "3032",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 31,
@@ -834,7 +864,8 @@
     "mainviewName": "风暴里，雏鹰振翅",
     "permanentUnlock": "2#24#1",
     "signature": "3154",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 32,
@@ -861,7 +892,8 @@
     "mainviewName": "柏林以东",
     "permanentUnlock": "2#24#1",
     "signature": "3020",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   },
   {
     "id": 33,
@@ -888,6 +920,35 @@
     "mainviewName": "洋葱头",
     "permanentUnlock": "2#24#1",
     "signature": "3054",
-    "preStoryId": 0
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
+  },
+  {
+    "id": 34,
+    "chapterId": 0,
+    "unlock": "2#24#0",
+    "bonus": "",
+    "heroName": "贝丽尔",
+    "photo": "313402",
+    "cgBg": "313401",
+    "order": 34,
+    "name": "天真的预言",
+    "nameEn": "Auguries of Innocence",
+    "queryVersion": "4.0",
+    "episodeId": 0,
+    "main_pic": "rolestory_img_34",
+    "monster_pic": "",
+    "challengeBonus": "",
+    "activityId": 14028,
+    "activity_pic": "",
+    "cgUnlockEpisodeId": 0,
+    "cgUnlockStoryId": 0,
+    "cgPos": "771.6#-18.4",
+    "cgScale": "1",
+    "mainviewName": "天真的预言",
+    "permanentUnlock": "2#24#1",
+    "signature": "3134",
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 1
   }
 ]

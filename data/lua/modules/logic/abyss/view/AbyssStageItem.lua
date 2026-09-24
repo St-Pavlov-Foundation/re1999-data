@@ -101,7 +101,7 @@ function AbyssStageItem:refreshUI()
 	if haveChallenge then
 		self._txtstarMaxtxt.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("v3a6_abyss_stage_round_desc"), stageInfo.round)
 
-		self:refreshHeroState(stageInfo.heroList)
+		self:refreshHeroState(stageInfo.heroSkinList)
 	else
 		self:refreshRecommendInfo()
 	end
@@ -209,8 +209,8 @@ function AbyssStageItem:playAnim()
 	end
 end
 
-function AbyssStageItem:onHeroItemCreate(item, heroId, index)
-	item:setInfo(heroId)
+function AbyssStageItem:onHeroItemCreate(item, heroData, index)
+	item:setInfo(heroData)
 end
 
 function AbyssStageItem:onDestroy()

@@ -33,8 +33,10 @@ function CharacterRecommedViewContainer:buildTabViews(tabContainerId)
 	end
 
 	if tabContainerId == 2 then
+		self._groupView = CharacterRecommedGroupView.New()
+
 		local views = {
-			CharacterRecommedGroupView.New(),
+			self._groupView,
 			CharacterDevelopGoalsView.New()
 		}
 
@@ -118,6 +120,10 @@ function CharacterRecommedViewContainer:getEquipIconRes()
 	local resPath = self._viewSetting.otherRes[4]
 
 	return self:getRes(resPath)
+end
+
+function CharacterRecommedViewContainer:getGroupView()
+	return self._groupView
 end
 
 return CharacterRecommedViewContainer

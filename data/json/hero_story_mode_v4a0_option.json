@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "content": "狗",
+    "result": "忠诚是自我的救赎",
+    "type": 1
+  },
+  {
+    "id": 2,
+    "content": "狐狸",
+    "result": "行与藏是生存的法则",
+    "type": 2
+  },
+  {
+    "id": 3,
+    "content": "猫",
+    "result": "坚持自己的步调",
+    "type": 3
+  },
+  {
+    "id": 4,
+    "content": "狮子",
+    "result": "勇气是直视的热望",
+    "type": 4
+  },
+  {
+    "id": 5,
+    "content": "红色的",
+    "result": "真相敲碎谎言的糖壳",
+    "type": 1
+  },
+  {
+    "id": 6,
+    "content": "黑色的",
+    "result": "黑夜托起流星的尾迹",
+    "type": 2
+  },
+  {
+    "id": 7,
+    "content": "金色的",
+    "result": "努力是幸运儿的胜券",
+    "type": 3
+  },
+  {
+    "id": 8,
+    "content": "白色的",
+    "result": "一盎司新泉所灌溉的春天",
+    "type": 4
+  },
+  {
+    "id": 9,
+    "content": "像月亮",
+    "result": "警惕魔鬼的耳语",
+    "type": 1
+  },
+  {
+    "id": 10,
+    "content": "像星星",
+    "result": "焦躁谋杀着希望",
+    "type": 2
+  },
+  {
+    "id": 11,
+    "content": "像爱心",
+    "result": "冷漠亦是温柔的底色",
+    "type": 3
+  },
+  {
+    "id": 12,
+    "content": "像螺旋",
+    "result": "游移不定等同怯懦",
+    "type": 4
+  },
+  {
+    "id": 13,
+    "content": "居中直立的纸签",
+    "result": "引领群星的使命",
+    "type": 1
+  },
+  {
+    "id": 14,
+    "content": "斜靠角落的纸签",
+    "result": "独特亦可流行",
+    "type": 2
+  },
+  {
+    "id": 15,
+    "content": "松松垮垮的纸签",
+    "result": "变透明，变安静",
+    "type": 3
+  },
+  {
+    "id": 16,
+    "content": "紧密折叠的纸签",
+    "result": "宇宙藏在生活的褶皱里",
+    "type": 4
+  }
+]

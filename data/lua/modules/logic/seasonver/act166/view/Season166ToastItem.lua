@@ -50,7 +50,6 @@ function Season166ToastItem:refreshUI()
 	local icon = self._toastParams.icon or 2
 
 	UISpriteSetMgr.instance:setSeason166Sprite(self._imageIcon, string.format("season166_result_tipsicon%s", icon))
-	self._toastItem:setToastType(ToastItem.ToastType.Season166)
 end
 
 function Season166ToastItem:dispose()

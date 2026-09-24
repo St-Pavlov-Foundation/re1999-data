@@ -172,8 +172,7 @@ function NecrologistStoryReviewView:refreshRoleStoryBg()
 	gohelper.setActive(self._goBgCg, true)
 
 	local storyCo = RoleStoryConfig.instance:getStoryById(self.storyId)
-	local cgUnlockStoryId = storyCo.cgUnlockStoryId
-	local unlock = cgUnlockStoryId == 0 or self.gameMo:isStoryFinish(cgUnlockStoryId)
+	local unlock = RoleStoryModel.instance:isCGUnlock(self.storyId)
 
 	if unlock and (self.cgUnlock or RoleStoryModel.instance:canPlayDungeonUnlockAnim(self.storyId)) then
 		if ViewMgr.instance:isOpen(ViewName.NecrologistStoryView) then

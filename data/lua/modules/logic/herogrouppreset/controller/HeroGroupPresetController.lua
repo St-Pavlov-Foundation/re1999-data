@@ -245,10 +245,6 @@ function HeroGroupPresetController:revertCurHeroGroup()
 		return
 	end
 
-	if heroGroupType == ModuleEnum.HeroGroupType.BossRushActMode then
-		return
-	end
-
 	local curHeroGroup = HeroGroupModel.instance:getCurGroupMO()
 
 	if not curHeroGroup or not curHeroGroup.groupId then

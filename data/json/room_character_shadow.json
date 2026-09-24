@@ -618,5 +618,60 @@
     "skinId": 315602,
     "animName": "interact",
     "shadow": 1
+  },
+  {
+    "skinId": 315501,
+    "animName": "interact",
+    "shadow": 1
+  },
+  {
+    "skinId": 315502,
+    "animName": "interact",
+    "shadow": 1
+  },
+  {
+    "skinId": 315801,
+    "animName": "interact",
+    "shadow": 1
+  },
+  {
+    "skinId": 315802,
+    "animName": "interact",
+    "shadow": 1
+  },
+  {
+    "skinId": 302507,
+    "animName": "interact",
+    "shadow": 1
+  },
+  {
+    "skinId": 304805,
+    "animName": "interact",
+    "shadow": 1
+  },
+  {
+    "skinId": 311705,
+    "animName": "interact",
+    "shadow": 1
+  },
+  {
+    "skinId": 313403,
+    "animName": "interact",
+    "shadow": 1
+  },
+  {
+    "skinId": 314003,
+    "animName": "interact",
+    "shadow": 1
+  },
+  {
+    "skinId": 314503,
+    "animName": "interact",
+    "shadow": 1
+  },
+  {
+    "skinId": 315503,
+    "animName": "interact",
+    "shadow": 1
   }
 ]

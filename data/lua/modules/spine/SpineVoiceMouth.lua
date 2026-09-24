@@ -49,6 +49,8 @@ function SpineVoiceMouth:init(spineVoice, voiceConfig, spine)
 	self._hasAudio = AudioConfig.instance:getAudioCOById(voiceConfig.audio)
 	self._setComponentStop = false
 	self._playLastOne = nil
+	self._initCut = self._voiceConfig.initCut
+	self._curFrameCount = UnityEngine.Time.frameCount
 
 	local mouth = self:getMouth(voiceConfig)
 
@@ -244,7 +246,13 @@ function SpineVoiceMouth:_addMouth(lastOne, mouthAction, mouthStart, mouthEnd)
 			self._curMouth = "t_" .. mouthAction
 			self._curMouthEnd = nil
 
-			self._spine:setMouthAnimation(self._curMouth, true, 0)
+			local mixTime = 0
+
+			if self._initCut and self._curFrameCount and UnityEngine.Time.frameCount - self._curFrameCount < 2 then
+				mixTime = -1
+			end
+
+			self._spine:setMouthAnimation(self._curMouth, true, mixTime)
 		end
 	end
 

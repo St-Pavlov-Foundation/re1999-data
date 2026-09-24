@@ -153,6 +153,8 @@ ActivityEnum.Activity = {
 	V2a3_Special = 12321,
 	DoubleFestivalSign_1_3 = 11311,
 	V3a9_BDuckLinkage = 13930,
+	V4a0_MatchGame = 14012,
+	V4a0_StoneGift = 14030,
 	NoviceInsight = 10004,
 	V2a5_WarmUp = 12525,
 	V2a7_Labor_Sign = 12710,
@@ -161,6 +163,7 @@ ActivityEnum.Activity = {
 	FurnaceTreasure = 11619,
 	V2a9_FreeMonthCard = 130513,
 	V2a8_WuErLiXiGift = 12869,
+	V4a0_SP_Lilya = 14013,
 	V3a1_NewCultivationDestiny = 13116,
 	SP02_PaoMianActivityMain = 138508,
 	V2a4_Blind_Box_Draw = 12434,
@@ -262,6 +265,7 @@ ActivityEnum.VersionActivityIdDict = {
 	Activity1_3 = 11301,
 	Activity3_6 = 13603,
 	Activity1_42 = 11420,
+	Activity4_0 = 14001,
 	Activity1_2 = 11201,
 	Activity1_7 = 11701,
 	Activity2_5 = 12501,
@@ -289,8 +293,7 @@ ActivityEnum.VersionActivityIdDict = {
 	Activity3_2 = 13222
 }
 ActivityEnum.VersionActivityIdList = {
-	ActivityEnum.VersionActivityIdDict.Activity3_9,
-	ActivityEnum.VersionActivityIdDict.Activity_sp02
+	ActivityEnum.VersionActivityIdDict.Activity4_0
 }
 ActivityEnum.MainIcon = {
 	[ActivityEnum.VersionActivityIdDict.Activity1_1] = "rk1111",
@@ -325,7 +328,8 @@ ActivityEnum.MainIcon = {
 	[ActivityEnum.VersionActivityIdDict.Activity3_7] = "rk_3_7",
 	[ActivityEnum.VersionActivityIdDict.Activity3_8] = "rk_3_8",
 	[ActivityEnum.VersionActivityIdDict.Activity3_9] = "rk_3_9",
-	[ActivityEnum.VersionActivityIdDict.Activity_sp02] = "rk_s02"
+	[ActivityEnum.VersionActivityIdDict.Activity_sp02] = "rk_s02",
+	[ActivityEnum.VersionActivityIdDict.Activity4_0] = "rk_4_0"
 }
 ActivityEnum.ShowVersionActivityEpisode = 10103
 ActivityEnum.MainViewActivityState = {
@@ -358,10 +362,11 @@ ActivityEnum.ActBtnPrefix = {
 	mainView = "act_"
 }
 ActivityEnum.ConstId = {
-	Gifg6StarCharacter = 30702,
-	SelfSelectCharacterExp = 30703,
 	Gifg5StarCharacter = 30701,
+	SelfSelectCharacterExp = 30703,
+	RandomSkinGift = 40002,
 	BpOperAct = 12,
+	Gifg6StarCharacter = 30702,
 	HeroExpBoxAct = 14,
 	SceneUIPackageAct = 15,
 	ActivityCollect = 13,

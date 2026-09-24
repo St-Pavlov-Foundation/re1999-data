@@ -633,7 +633,7 @@ function FightController:setFightHeroSingleGroup()
 		return false
 	end
 
-	local _, assistMo = HeroGroupModel.instance:getAssistMo()
+	local assistMoList = HeroGroupModel.instance:getAssistMoList()
 	local curGroupMO = HeroGroupModel.instance:getCurGroupMO()
 
 	if not curGroupMO then
@@ -671,23 +671,40 @@ function FightController:setFightHeroSingleGroup()
 		end
 	end
 
-	if assistMo then
-		for i, info in ipairs(equips) do
-			local heroUid = info.heroUid
-			local heroMo = HeroModel.instance:getById(heroUid)
+	local paramData = {
+		assistMoList = assistMoList,
+		equips = equips,
+		main = main,
+		fightParam = fightParam,
+		mainCount = mainCount
+	}
+	local result, resultParamData = HeroGroupHandler.setFightParamAssist(fightParam.episodeId, paramData)
 
-			if heroMo and assistMo.assistMo.heroId == heroMo.heroId then
-				info.heroUid = assistMo.heroUid
+	if result then
+		assistMoList = resultParamData.assistMoList
+		equips = resultParamData.equips
+		main = resultParamData.main
+		fightParam = resultParamData.fightParam
+		mainCount = resultParamData.mainCount
+	else
+		for _, assistMo in ipairs(assistMoList) do
+			for i, info in ipairs(equips) do
+				local heroUid = info.heroUid
+				local heroMo = HeroModel.instance:getById(heroUid)
 
-				break
+				if heroMo and assistMo.assistMo.heroId == heroMo.heroId then
+					info.heroUid = assistMo.heroUid
+
+					break
+				end
 			end
+
+			main[assistMo.id] = assistMo.assistMo.heroUid
+
+			fightParam:setAssistHeroInfo(assistMo.assistMo.heroUid, assistMo.assistMo.userId)
+
+			mainCount = mainCount + 1
 		end
-
-		main[assistMo.id] = assistMo.assistMo.heroUid
-
-		fightParam:setAssistHeroInfo(assistMo.assistMo.heroUid, assistMo.assistMo.userId)
-
-		mainCount = mainCount + 1
 	end
 
 	if (not curGroupMO.aidDict or #curGroupMO.aidDict <= 0) and mainCount + subCount == 0 then

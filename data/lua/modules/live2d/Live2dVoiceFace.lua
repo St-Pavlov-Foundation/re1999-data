@@ -33,7 +33,9 @@ end
 
 function Live2dVoiceFace:_doSetFaceAnimation(name, loop)
 	if name ~= self._spine:getCurFace() then
-		self._spine:setFaceAnimation(name, loop, self._mixTime or 0.5)
+		local isCut = self._initCut and UnityEngine.Time.frameCount == self._curFrameCount
+
+		self._spine:setFaceAnimation(name, loop, self._mixTime or 0.5, isCut)
 	end
 end
 
@@ -41,6 +43,8 @@ function Live2dVoiceFace:init(spineVoice, voiceConfig, spine)
 	self._spineVoice = spineVoice
 	self._inStory = self._spineVoice:getInStory()
 	self._voiceConfig = voiceConfig
+	self._initCut = self._voiceConfig.initCut
+	self._curFrameCount = UnityEngine.Time.frameCount
 	self._spine = spine
 
 	local face = self:getFace(voiceConfig)
@@ -92,7 +96,8 @@ function Live2dVoiceFace:playFaceActionList(face)
 	end
 
 	self:removeTaskActions()
-	TaskDispatcher.runRepeat(self._check, self, 0.1)
+	TaskDispatcher.runRepeat(self._check, self, 0)
+	self:_check()
 
 	if self._inStory then
 		TaskDispatcher.cancelTask(self._voiceStopPlayNormal, self)

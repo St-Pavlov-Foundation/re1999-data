@@ -830,5 +830,31 @@
     "showcolor": 0,
     "icon": "",
     "sortId": 0
+  },
+  {
+    "id": 234,
+    "attrType": "qteSkillDmgAdd",
+    "type": 3,
+    "name": "洞知创伤加成",
+    "desc": "洞知创伤加成",
+    "isShowTips": 0,
+    "isShow": 0,
+    "showType": 1,
+    "showcolor": 0,
+    "icon": "",
+    "sortId": 0
+  },
+  {
+    "id": 235,
+    "attrType": "qteSkillDmgReduce",
+    "type": 3,
+    "name": "洞知受创减免",
+    "desc": "洞知受创减免",
+    "isShowTips": 0,
+    "isShow": 0,
+    "showType": 1,
+    "showcolor": 0,
+    "icon": "",
+    "sortId": 0
   }
 ]

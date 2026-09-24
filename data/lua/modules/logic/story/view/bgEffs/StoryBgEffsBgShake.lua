@@ -18,12 +18,11 @@ function StoryBgEffsBgShake:init(bgCo)
 end
 
 function StoryBgEffsBgShake:start(callback, callbackObj)
-	StoryBgEffsBgShake.super.start(self)
+	if self._bgCo.effDegree == 0 then
+		return
+	end
 
-	self._finishedCallback = callback
-	self._finishedCallbackObj = callbackObj
-
-	self:loadRes()
+	StoryBgEffsBgShake.super.start(self, callback, callbackObj)
 end
 
 function StoryBgEffsBgShake:onLoadFinished()
@@ -83,13 +82,7 @@ end
 
 function StoryBgEffsBgShake:_onShakeFinished()
 	UIBlockMgr.instance:endBlock("shakeEnding")
-
-	if self._finishedCallback then
-		self._finishedCallback(self._finishedCallbackObj)
-
-		self._finishedCallback = nil
-		self._finishedCallbackObj = nil
-	end
+	self:callFinished()
 end
 
 function StoryBgEffsBgShake:reset(bgCo)
@@ -135,9 +128,6 @@ function StoryBgEffsBgShake:destroy()
 	if self._bgAnimator then
 		self._bgAnimator.runtimeAnimatorController = nil
 	end
-
-	self._finishedCallback = nil
-	self._finishedCallbackObj = nil
 
 	TaskDispatcher.cancelTask(self._startShake, self)
 	TaskDispatcher.cancelTask(self._shakeStop, self)

@@ -16,6 +16,23 @@ function ShowCharacterCardItem:init(go)
 	self._shownum = 0
 
 	self:_initObj()
+
+	self._badgeTblList = {}
+
+	for i = 1, 3 do
+		local badgeTbl = self:getUserDataTb_()
+		local goBadge = gohelper.findChild(go, "badge/layout/badge" .. tostring(i))
+
+		if goBadge then
+			badgeTbl.simageIcon = gohelper.findChildSingleImage(goBadge, "simage_badge")
+		end
+
+		self._badgeTblList[i] = badgeTbl
+	end
+
+	self._goCount = gohelper.findChild(go, "go_Count")
+	self._txtCount = gohelper.findChildText(go, "go_Count/txt_Count")
+	self._btnBadge = gohelper.findChildButtonWithAudio(go, "btn_Badge")
 end
 
 function ShowCharacterCardItem:_initObj()
@@ -23,11 +40,8 @@ function ShowCharacterCardItem:_initObj()
 end
 
 function ShowCharacterCardItem:addEventListeners()
-	return
-end
-
-function ShowCharacterCardItem:removeEventListeners()
-	return
+	self:addClickCb(self._btnBadge, self._btnBadgeOnClick, self)
+	self:addEventCb(AssistController.instance, AssistEvent.UpdateWearBadges, self.onWearBadgesUpdate, self)
 end
 
 function ShowCharacterCardItem:onUpdateMO(mo)
@@ -36,6 +50,8 @@ function ShowCharacterCardItem:onUpdateMO(mo)
 	self._heroItem:onUpdateMO(mo)
 	self._heroItem:setNewShow(false)
 	self:_initShowHeroList()
+	self:refreshLikeCount()
+	self:refreshBadge()
 end
 
 function ShowCharacterCardItem:_initShowHeroList()
@@ -48,6 +64,10 @@ function ShowCharacterCardItem:_initShowHeroList()
 end
 
 function ShowCharacterCardItem:_onItemClick()
+	if self.noClick then
+		return
+	end
+
 	local heros = PlayerModel.instance:getShowHeros()
 
 	if self._shownum ~= 0 then
@@ -92,7 +112,7 @@ end
 function ShowCharacterCardItem:_initnum(num)
 	if num == 0 then
 		self._heroItem:setChoose(nil)
-	else
+	elseif not self.noChoose then
 		self._heroItem:setChoose(num)
 	end
 
@@ -103,8 +123,69 @@ function ShowCharacterCardItem:getAnimator()
 	return self._animator
 end
 
-function ShowCharacterCardItem:onDestroy()
-	return
+function ShowCharacterCardItem:_btnBadgeOnClick()
+	if self.noClick then
+		return
+	end
+
+	ViewMgr.instance:openView(ViewName.AssistRoleBadgeView, self._mo)
 end
+
+function ShowCharacterCardItem:onWearBadgesUpdate(uid)
+	if self._mo.uid == uid then
+		self:refreshBadge()
+	end
+end
+
+function ShowCharacterCardItem:refreshLikeCount()
+	local aRecordInfoMo = AssistRecordModel.instance:getRecordInfo()
+
+	if aRecordInfoMo then
+		local statMo = aRecordInfoMo:getHeroStatMo(self._mo.uid)
+		local count = statMo and statMo.count or 0
+
+		self._txtCount.text = count
+
+		gohelper.setActive(self._goCount, count ~= 0)
+	else
+		gohelper.setActive(self._goCount, false)
+	end
+end
+
+function ShowCharacterCardItem:refreshBadge()
+	local bInfoMo = RoleBadgeModel.instance:getBadgeInfo()
+
+	if not bInfoMo then
+		for _, v in ipairs(self._badgeTblList) do
+			gohelper.setActive(v.simageIcon, false)
+		end
+
+		return
+	end
+
+	local recordMo = bInfoMo:getRecordMo(self._mo.uid)
+
+	for k, v in ipairs(self._badgeTblList) do
+		local wearMo = recordMo and recordMo:getWearMo(k)
+		local badgeId = wearMo and wearMo.badgeId or 0
+
+		if badgeId ~= 0 then
+			local badgeMo = recordMo:getBadgeMo(badgeId)
+
+			if badgeMo and badgeMo.config then
+				v.simageIcon:LoadImage(ResUrl.getRoleBadgeSingleBg(badgeMo.config.icon))
+			end
+		end
+
+		gohelper.setActive(v.simageIcon, badgeId ~= 0)
+	end
+end
+
+function ShowCharacterCardItem:setShowParam(noClick, noChoose)
+	self.noClick = noClick
+	self.noChoose = noChoose
+end
+
+ShowCharacterCardItem.prefabPath = "ui/viewres/player/showcharactercarditem.prefab"
 
 return ShowCharacterCardItem

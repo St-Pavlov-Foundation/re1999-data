@@ -1123,4 +1123,44 @@ function HeroMo:getCareer()
 	return self.config and self.config.career
 end
 
+function HeroMo:getQTEMO()
+	local qteGroupId = self:getQTEGroupId()
+
+	if qteGroupId and qteGroupId > 0 then
+		self.qteMo = self.qteMo or HeroQTEMO.New()
+
+		self.qteMo:setHero(self.heroId, self)
+		self.qteMo:onRefresh(qteGroupId)
+
+		return self.qteMo
+	else
+		self.qteMo = nil
+	end
+end
+
+function HeroMo:getQTEGroupId()
+	if self.destinyStoneMo then
+		local stoneCo = self.destinyStoneMo:getCurUseStoneCo()
+
+		if stoneCo then
+			return stoneCo.qteAdd
+		end
+	end
+
+	local exSkillCos = SkillConfig.instance:getheroexskillco(self.heroId)
+	local exSkillCo = exSkillCos and exSkillCos[self.exSkillLevel]
+
+	if exSkillCos then
+		for i = self.exSkillLevel, 1, -1 do
+			local exSkillCo = exSkillCos[i]
+
+			if exSkillCo and exSkillCo.qteGoupId > 0 then
+				return exSkillCo.qteGoupId
+			end
+		end
+	end
+
+	return self.config.qteGroupId
+end
+
 return HeroMo

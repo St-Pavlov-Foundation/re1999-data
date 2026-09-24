@@ -127,31 +127,23 @@ function StoreController:openPackageStoreGoodsView(packageGoodsMO)
 end
 
 function StoreController:openDecorateStoreGoodsView(decorateGoodsMO)
-	if DecorateStoreConfig.instance:isFatherOrSonGoods(decorateGoodsMO.config.id) then
-		ViewMgr.instance:openView(ViewName.DecorateMultiGoodsTipsView, {
-			goodsId = decorateGoodsMO.config.id
-		})
-
-		return
-	end
-
 	local productsList = GameUtil.splitString2(decorateGoodsMO.config.product, true, "|", "#")
 
 	if #productsList == 1 then
 		local products = productsList[1]
 		local itemCo = ItemModel.instance:getItemConfig(products[1], products[2])
 
-		if itemCo.subType == ItemEnum.SubType.PlayerBg then
-			local param = {
-				goodsMo = decorateGoodsMO
-			}
-
-			ViewMgr.instance:openView(ViewName.DecorateStoreGoodsBuyView, param)
-		elseif SceneUIPackageModel.instance:isInSceneUIPackage(products[2]) then
+		if SceneUIPackageModel.instance:isInSceneUIPackage(products[2]) then
 			ViewMgr.instance:openView(ViewName.MainSceneSkinMaterialTipView2, {
 				canJump = true,
 				isShowTop = true,
 				goodsId = decorateGoodsMO.goodsId
+			})
+		elseif products[1] == MaterialEnum.MaterialType.Building or DecorateEnum.DecorateUIParams[itemCo.subType] then
+			DecorateController.instance:openBuyView(decorateGoodsMO.config.id)
+		elseif products[1] == MaterialEnum.MaterialType.HeroSkin then
+			ViewMgr.instance:openView(ViewName.StoreSkinGoodsView2, {
+				goodsMO = decorateGoodsMO
 			})
 		else
 			ViewMgr.instance:openView(ViewName.DecorateStoreGoodsView, decorateGoodsMO)
@@ -178,8 +170,8 @@ function StoreController:openSummonStoreGoodsView(goodsMO)
 	end
 end
 
-function StoreController:buyGoods(storeGoodsMO, quantity, callback, callbackObj, selectCost)
-	StoreRpc.instance:sendBuyGoodsRequest(storeGoodsMO.belongStoreId, storeGoodsMO.goodsId, quantity, callback, callbackObj, selectCost)
+function StoreController:buyGoods(storeGoodsMO, quantity, callback, callbackObj, selectCost, deductionItemIndices)
+	StoreRpc.instance:sendBuyGoodsRequest(storeGoodsMO.belongStoreId, storeGoodsMO.goodsId, quantity, callback, callbackObj, selectCost, deductionItemIndices)
 end
 
 function StoreController:forceReadTab(jumpTab)

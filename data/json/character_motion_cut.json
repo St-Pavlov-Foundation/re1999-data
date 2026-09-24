@@ -310,5 +310,11 @@
     "skinId": 314303,
     "motion": "dishui",
     "onlyStopCut": 1
+  },
+  {
+    "heroId": 3145,
+    "skinId": 314503,
+    "motion": "youling",
+    "onlyStopCut": 1
   }
 ]

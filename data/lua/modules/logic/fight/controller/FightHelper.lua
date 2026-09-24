@@ -78,6 +78,16 @@ function FightHelper.getEntityStandPos(fightEntityMO, waveId)
 		return 0, 0, 0, 1
 	end
 
+	if fightEntityMO.IS_SUMMONED_ENTITY then
+		local entityData = FightDataHelper.entityMgr:getById(fightEntityMO.SUMMONED_ENTITY_FROM_ID)
+
+		if entityData then
+			return FightHelper.getEntityStandPos(entityData, waveId)
+		end
+
+		return 0, 0, 0, 1
+	end
+
 	if fightEntityMO:isAssistBoss() then
 		if FightDataHelper.paTaMgr:checkIsAssistRole() then
 			return FightHelper.getAssistRoleStandPos(fightEntityMO, waveId)
@@ -2585,6 +2595,12 @@ function FightHelper.processTimelineReplaceCondition(condition, config, entityDa
 		return FightHelper.getSSWLNormalTimeline(timelineName, fightStepData)
 	elseif sign == "17" then
 		return FightHelper.getSSWLXingNormalTimeline(timelineName, fightStepData)
+	elseif sign == "18" and FightModel.instance:getSpeed() > 1 then
+		if PlayerPrefsHelper.getNumber(PlayerPrefsKey.FightHNJUniqueSkillPlayed, 0) == 1 then
+			return config.timeline
+		else
+			PlayerPrefsHelper.setNumber(PlayerPrefsKey.FightHNJUniqueSkillPlayed, 1)
+		end
 	end
 end
 
@@ -2795,7 +2811,7 @@ function FightHelper.getBLETimeLine(timelineName, fightStepData)
 		crystal = maxCrystalList[math.random(1, #maxCrystalList)]
 	end
 
-	local co = FightHeroSpEffectConfig.instance:getBLECrystalCo(crystal)
+	local co = FightHeroSpEffectConfig.instance:getBLECrystalCo(crystal, entityMo.skin)
 
 	return co.skill3Timeline
 end
@@ -2987,13 +3003,13 @@ function FightHelper.isEnemyCardSkill(fightStepData)
 	return entityMO.teamType == FightEnum.TeamType.EnemySide
 end
 
-function FightHelper.buildMonsterA2B(entity, oldEntityMO, fightFlow, work)
+function FightHelper.buildMonsterA2B(entity, oldEntityMO, fightFlow, work, fightStepData)
 	local config = lua_fight_boss_evolution_client.configDict[oldEntityMO.skin]
 
 	fightFlow:addWork(Work2FightWork.New(FightWorkNormalDialog, FightViewDialog.Type.BeforeMonsterA2B, oldEntityMO.modelId))
 
 	if config then
-		fightFlow:registWork(FightWorkPlayTimeline, entity, config.timeline)
+		fightFlow:registWork(FightWorkPlayMonsterChangeTimeline, entity, config.timeline, fightStepData)
 
 		if config.nextSkinId ~= 0 then
 			fightFlow:registWork(FightWorkFunction, FightHelper.setBossEvolution, FightHelper, entity, config)
@@ -4248,6 +4264,7 @@ function FightHelper.getAssitHeroInfoByUid(heroUid, isSub)
 		local heroCfg = HeroConfig.instance:getHeroCO(entityMo.modelId)
 
 		return {
+			belongOtherPlayer = true,
 			skin = entityMo.skin,
 			level = entityMo.level,
 			config = heroCfg
@@ -4267,6 +4284,10 @@ function FightHelper.canSelectEnemyEntity(entityId)
 	end
 
 	if entityMo.side == FightEnum.EntitySide.MySide then
+		return false
+	end
+
+	if not entityMo:isStatusNormal() then
 		return false
 	end
 
@@ -4917,6 +4938,133 @@ function FightHelper.isHeDuoNieSkill(skillId)
 			end
 		end
 	end
+end
+
+function FightHelper.checkHas4_0HNJChannelBuff(entityMo)
+	if not entityMo then
+		return
+	end
+
+	local had, buffMo = entityMo:hasBuffActId(FightEnum.BuffActId.ChantAddBuffAndReplace)
+
+	if had then
+		return true
+	end
+
+	had, buffMo = entityMo:hasBuffActId(FightEnum.BuffActId.ChantClearBuffOnRemove)
+
+	return had
+end
+
+function FightHelper.get4_0HNJChannelCount(entityMo)
+	local buffTypeId = FightEnum.BuffTypeId_HNJEnergy
+	local buffDict = entityMo:getBuffDic()
+
+	for _, buffMo in pairs(buffDict) do
+		if buffMo.typeId == buffTypeId then
+			return buffMo.layer
+		end
+	end
+
+	return 0
+end
+
+function FightHelper.get4_0HNJChannelMax()
+	return 10
+end
+
+function FightHelper.getQTESkillCost(skillCo)
+	if not skillCo then
+		return 0, 0
+	end
+
+	local costStr = skillCo.qtePowerCost
+
+	if string.nilorempty(costStr) then
+		return 0, 0
+	end
+
+	local array = FightStrUtil.instance:getSplitToNumberCache(costStr, "#")
+	local costType = array[1] or 0
+	local cost = array[2] or 0
+
+	return costType, cost
+end
+
+local StoneParam = {
+	"_TempOffset3",
+	"Vector4",
+	"1,0,0,0",
+	"-2,0,0,0"
+}
+
+function FightHelper.setEntityDying(entity)
+	if not entity then
+		return
+	end
+
+	entity:resetAnimState()
+	entity:resetSpineMat()
+
+	local replaceMat = entity.spineRenderer:getReplaceMat()
+
+	if not replaceMat then
+		return
+	end
+
+	local matParam = StoneParam
+	local propName = matParam[1]
+	local propType = matParam[2]
+	local startValue = MaterialUtil.getPropValueFromStr(propType, matParam[3])
+	local endValue = MaterialUtil.getPropValueFromStr(propType, matParam[4])
+
+	MaterialUtil.setPropValue(replaceMat, propName, propType, endValue)
+end
+
+function FightHelper.hasQteEntity()
+	local entityMoList = FightHelper.tempEntityMoList
+
+	tabletool.clear(entityMoList)
+
+	entityMoList = FightDataHelper.entityMgr:getMyNormalList(entityMoList)
+
+	if not entityMoList then
+		return false
+	end
+
+	for _, entityMo in ipairs(entityMoList) do
+		if entityMo:isQteEntity() then
+			tabletool.clear(entityMoList)
+
+			return true
+		end
+	end
+
+	tabletool.clear(entityMoList)
+
+	return false
+end
+
+function FightHelper.hasLiveEnemyEntity()
+	local entityMoList = FightHelper.tempEntityMoList
+
+	tabletool.clear(entityMoList)
+
+	entityMoList = FightDataHelper.entityMgr:getEnemyNormalList(entityMoList)
+
+	if not entityMoList then
+		return false
+	end
+
+	for _, _ in ipairs(entityMoList) do
+		tabletool.clear(entityMoList)
+
+		return true
+	end
+
+	tabletool.clear(entityMoList)
+
+	return false
 end
 
 return FightHelper

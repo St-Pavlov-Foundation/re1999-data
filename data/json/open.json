@@ -2078,5 +2078,37 @@
     "bindActivityId": 0,
     "roomLevel": 0,
     "dailyOpenTime": ""
+  },
+  {
+    "id": 400001,
+    "name": "隙中仙境",
+    "isOnline": 1,
+    "playerLv": 1,
+    "episodeId": 10115,
+    "elementId": 0,
+    "verifingEpisodeId": 10115,
+    "isAlwaysShowBtn": 1,
+    "showInEpisode": 0,
+    "dec": 0,
+    "verifingHide": 1,
+    "bindActivityId": 0,
+    "roomLevel": 0,
+    "dailyOpenTime": ""
+  },
+  {
+    "id": 400002,
+    "name": "隙中仙境",
+    "isOnline": 1,
+    "playerLv": 1,
+    "episodeId": 11425,
+    "elementId": 0,
+    "verifingEpisodeId": 11425,
+    "isAlwaysShowBtn": 1,
+    "showInEpisode": 0,
+    "dec": 0,
+    "verifingHide": 1,
+    "bindActivityId": 0,
+    "roomLevel": 0,
+    "dailyOpenTime": ""
   }
 ]

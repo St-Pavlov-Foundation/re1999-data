@@ -1,0 +1,24 @@
+[
+  {
+    "skinId": 315501,
+    "resPath": "v4a0_315501_sxnwhnj_z1/315501_sxnwhnj_z1_fight",
+    "pos": [
+      0,
+      -0.05,
+      0
+    ],
+    "effect": "",
+    "hangPoint": ""
+  },
+  {
+    "skinId": 315502,
+    "resPath": "v4a0_315502_sxnwhnj_z1/315502_sxnwhnj_z1_fight",
+    "pos": [
+      0,
+      -0.06,
+      0
+    ],
+    "effect": "",
+    "hangPoint": ""
+  }
+]

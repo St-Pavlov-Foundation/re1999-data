@@ -2846,4 +2846,84 @@ function FightCalculateDataMgr:playEffect383(actEffectData)
 	end
 end
 
+function FightCalculateDataMgr:updateQteInfo(actEffectData)
+	local qteDataMgr = self.dataMgr.qteDataMgr
+
+	if not qteDataMgr then
+		return
+	end
+
+	local teamType = actEffectData.teamType
+
+	teamType = teamType ~= 0 and teamType or FightEnum.TeamType.MySide
+
+	qteDataMgr:updateQteInfo(actEffectData.qteInfo, teamType)
+
+	local curStatus = actEffectData.qteInfo and actEffectData.qteInfo:getStatus()
+
+	if curStatus == FightEnum.QTEStage.QTE_SECOND then
+		qteDataMgr:setEnteredSecondStage()
+	elseif curStatus == FightEnum.QTEStage.QTE_FIRST then
+		qteDataMgr:clearEnteredSecondStage()
+	end
+end
+
+function FightCalculateDataMgr:playEffect384(actEffectData)
+	self:updateQteInfo(actEffectData)
+end
+
+function FightCalculateDataMgr:playEffect385(actEffectData)
+	self:updateQteInfo(actEffectData)
+end
+
+function FightCalculateDataMgr:playEffect386(actEffectData)
+	self:updateQteInfo(actEffectData)
+end
+
+function FightCalculateDataMgr:playEffect387(actEffectData)
+	self:updateQteInfo(actEffectData)
+end
+
+function FightCalculateDataMgr:playEffect388(actEffectData)
+	return
+end
+
+function FightCalculateDataMgr:playEffect389(actEffectData)
+	local entityMo = self:getTarEntityMO(actEffectData)
+
+	if not entityMo then
+		return
+	end
+
+	entityMo:setStatus(actEffectData.effectNum)
+end
+
+function FightCalculateDataMgr:updateClueInfo(actEffectData, isAdd)
+	local teamDataMgr = self.dataMgr.teamDataMgr
+
+	if not teamDataMgr then
+		return
+	end
+
+	local cluePosition = actEffectData.cluePosition
+
+	if not cluePosition then
+		return
+	end
+
+	local teamType = actEffectData.teamType
+
+	teamType = teamType ~= 0 and teamType or FightEnum.TeamType.MySide
+
+	teamDataMgr:updateCluePosition(cluePosition, teamType, isAdd)
+end
+
+function FightCalculateDataMgr:playEffect390(actEffectData)
+	self:updateClueInfo(actEffectData, true)
+end
+
+function FightCalculateDataMgr:playEffect391(actEffectData)
+	self:updateClueInfo(actEffectData, false)
+end
+
 return FightCalculateDataMgr

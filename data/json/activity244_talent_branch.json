@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "全系百货",
+    "icon": "matchgame_talent_tabicon_7",
+    "nodeBg": "matchgame_talentbg_01"
+  },
+  {
+    "id": 2,
+    "name": "兽系百货",
+    "icon": "matchgame_talent_tabicon_4",
+    "nodeBg": "matchgame_talentbg_04"
+  },
+  {
+    "id": 3,
+    "name": "星系百货",
+    "icon": "matchgame_talent_tabicon_2",
+    "nodeBg": "matchgame_talentbg_03"
+  },
+  {
+    "id": 4,
+    "name": "木系百货",
+    "icon": "matchgame_talent_tabicon_3",
+    "nodeBg": "matchgame_talentbg_05"
+  }
+]

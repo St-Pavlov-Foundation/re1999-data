@@ -1,0 +1,58 @@
+[
+  {
+    "activityId": 14013,
+    "id": 1,
+    "time": 0,
+    "monsterTeam": 1,
+    "life": 300,
+    "lifeShow": 0,
+    "winType": 0,
+    "winParam": 0,
+    "winDesc": "摧毁敌方所有目标",
+    "isEnergy": 0,
+    "isGravity": 1,
+    "res": "v4a0_315501_sxnwhnj/315501_sxnwhnj"
+  },
+  {
+    "activityId": 14013,
+    "id": 2,
+    "time": 0,
+    "monsterTeam": 2,
+    "life": 300,
+    "lifeShow": 0,
+    "winType": 1,
+    "winParam": 25,
+    "winDesc": "25次内破坏所有训练靶",
+    "isEnergy": 0,
+    "isGravity": 1,
+    "res": "300401_hongnujian/300401_hongnujian"
+  },
+  {
+    "activityId": 14013,
+    "id": 3,
+    "time": 90,
+    "monsterTeam": 3,
+    "life": 300,
+    "lifeShow": 1,
+    "winType": 2,
+    "winParam": 0,
+    "winDesc": "坚守待援，坚持90秒",
+    "isEnergy": 1,
+    "isGravity": 1,
+    "res": "300401_hongnujian/300401_hongnujian"
+  },
+  {
+    "activityId": 14013,
+    "id": 4,
+    "time": 90,
+    "monsterTeam": 4,
+    "life": 300,
+    "lifeShow": 1,
+    "winType": 2,
+    "winParam": 0,
+    "winDesc": "坚守待援，坚持90秒",
+    "isEnergy": 1,
+    "isGravity": 0,
+    "res": "v4a0_315501_sxnwhnj/315501_sxnwhnj"
+  }
+]

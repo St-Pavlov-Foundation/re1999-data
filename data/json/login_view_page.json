@@ -28,5 +28,15 @@
     "audioId": 3309052,
     "stopAudioId": 3309055,
     "episodeId": 11025
+  },
+  {
+    "id": 401,
+    "name": "未选择的路",
+    "prefab": "loginbgvideo",
+    "bgimage": "bg_denglubeijing_b03",
+    "video": "4.0login3k",
+    "audioId": 400070,
+    "stopAudioId": 400071,
+    "episodeId": 11425
   }
 ]

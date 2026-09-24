@@ -7,11 +7,13 @@ local TowerHeroGroupListView = class("TowerHeroGroupListView", HeroGroupListView
 function TowerHeroGroupListView:addEvents()
 	TowerHeroGroupListView.super.addEvents(self)
 	self:addEventCb(TowerController.instance, TowerEvent.OnLoadTeamSuccess, self._checkRestrictHero, self)
+	self:addEventCb(TowerController.instance, TowerEvent.OnTowerResetSubEpisode, self._updateHeroList, self)
 end
 
 function TowerHeroGroupListView:removeEvents()
 	TowerHeroGroupListView.super.removeEvents(self)
 	self:removeEventCb(TowerController.instance, TowerEvent.OnLoadTeamSuccess, self._checkRestrictHero, self)
+	self:removeEventCb(TowerController.instance, TowerEvent.OnTowerResetSubEpisode, self._updateHeroList, self)
 end
 
 function TowerHeroGroupListView:_getHeroItemCls()

@@ -58,17 +58,34 @@ function MainHeroView:onOpen()
 	self:addEventCb(PlayerCardController.instance, PlayerCardEvent.RefreshMainHeroSkin, self._onRefreshMainHeroSkin, self)
 	self:addEventCb(CharacterController.instance, CharacterEvent.MainHeroGmPlayVoice, self._onMainHeroGmPlayVoice, self)
 	self:addEventCb(CharacterVoiceController.instance, CharacterVoiceEvent.XRAnInteractionStart, self._onXRAnInteractionStart, self)
+	self:addEventCb(CharacterVoiceController.instance, CharacterVoiceEvent.PlayMainViewAnim, self._onPlayMainViewAnim, self)
 
 	local canvasGroup = gohelper.onceAddComponent(self.viewGO, typeof(UnityEngine.CanvasGroup))
 
 	self._canvasGroupForVoice = canvasGroup
 end
 
+function MainHeroView:_onPlayMainViewAnim(name)
+	self:_playAnim(name)
+end
+
 function MainHeroView:_onXRAnInteractionStart()
-	self._animator:Play("mainview_out", 0, 0)
+	self:_playAnim("mainview_out")
 end
 
 function MainHeroView:_onMainHeroGmPlayVoice(voiceId)
+	local isPastSkin = CharacterPastModel.instance:isPastSkin(self._curHeroId, self._curSkinId)
+
+	if isPastSkin then
+		local config = CharacterDataConfig.instance:getCharacterPostCO(self._curHeroId, voiceId)
+
+		if config then
+			self:clickPlayVoice(config)
+		end
+
+		return
+	end
+
 	local config = lua_character_voice.configDict[self._curHeroId][voiceId]
 
 	if not config then
@@ -144,7 +161,7 @@ function MainHeroView:_onLoadingCloseView(viewName)
 			self._canvasGroup = nil
 
 			if not isOpenMainThumbnailView then
-				self._animator:Play("mainview_in", 0, 0)
+				self:_playAnim("mainview_in", 0, 0)
 				MainController.instance:dispatchEvent(MainEvent.PlayOpenAnim)
 			end
 		end
@@ -1029,6 +1046,10 @@ function MainHeroView:addFaith()
 		return
 	end
 
+	if not HeroModel.instance:getByHeroId(self._heroId) then
+		return
+	end
+
 	HeroRpc.instance:sendTouchHeadRequest(self._heroId)
 end
 
@@ -1077,9 +1098,9 @@ function MainHeroView:_doClickPlayVoice(config, showFaithToast)
 end
 
 function MainHeroView:clickPlayVoice(config)
-	self._clickPlayConfig = config
-
 	self:playVoice(config)
+
+	self._clickPlayConfig = config
 end
 
 function MainHeroView:_onStopVoice()
@@ -1087,6 +1108,14 @@ function MainHeroView:_onStopVoice()
 
 	if self._skinInteraction then
 		self._skinInteraction:onStopVoice()
+	end
+end
+
+function MainHeroView:_playAnim(name, layer, time)
+	if layer and time then
+		self._animator:Play(name, layer, time)
+	else
+		self._animator:Play(name)
 	end
 end
 
@@ -1121,7 +1150,7 @@ function MainHeroView:_initVoiceEffects(config)
 			}
 
 			if effectType == CharacterVoiceEnum.EffectsType.HideMainView then
-				self._animator:Play("mainview_out", 0, 0)
+				self:_playAnim("mainview_out")
 			elseif effectType == CharacterVoiceEnum.EffectsType.RestrictedInteraction then
 				self._canvasGroupForVoice.blocksRaycasts = false
 			end
@@ -1144,7 +1173,7 @@ function MainHeroView:_frameCheckVoiceEffect()
 	for k, v in pairs(self._voiceEffects) do
 		if Time.time >= v.endTime then
 			if k == CharacterVoiceEnum.EffectsType.HideMainView then
-				self._animator:Play("mainview_in", 0, 0)
+				self:_playAnim("mainview_in")
 			elseif k == CharacterVoiceEnum.EffectsType.RestrictedInteraction then
 				self._canvasGroupForVoice.blocksRaycasts = true
 			end
@@ -1164,7 +1193,7 @@ function MainHeroView:_resetVoiceEffects()
 	end
 
 	if self._voiceEffects[CharacterVoiceEnum.EffectsType.HideMainView] then
-		self._animator:Play("mainview_in", 0, 0)
+		self:_playAnim("mainview_in")
 	end
 
 	if self._voiceEffects[CharacterVoiceEnum.EffectsType.RestrictedInteraction] then
@@ -1175,6 +1204,8 @@ function MainHeroView:_resetVoiceEffects()
 end
 
 function MainHeroView:playVoice(config)
+	self._clickPlayConfig = nil
+
 	if not self._lightSpine then
 		return
 	end
@@ -1491,7 +1522,7 @@ function MainHeroView:_onOpenView(viewName)
 	end
 
 	if viewName == ViewName.MainThumbnailView then
-		self._animator:Play("mainview_out", 0, 0)
+		self:_playAnim("mainview_out", 0, 0)
 		TaskDispatcher.runDelay(self._hide, self, 0.4)
 
 		if self._tweenId then
@@ -1574,7 +1605,7 @@ function MainHeroView:_onCloseViewFinish(viewName)
 	if viewName == ViewName.MainThumbnailView then
 		TaskDispatcher.cancelTask(self._hide, self)
 		self.viewContainer:_setVisible(true)
-		self._animator:Play("mainview_in", 0, 0)
+		self:_playAnim("mainview_in", 0, 0)
 
 		if self._tweenId then
 			ZProj.TweenHelper.KillById(self._tweenId)

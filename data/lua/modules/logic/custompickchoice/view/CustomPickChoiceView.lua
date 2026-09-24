@@ -51,7 +51,6 @@ function CustomPickChoiceView:_editableInitView()
 end
 
 function CustomPickChoiceView:onOpen()
-	logNormal("CustomPickChoiceView onOpen")
 	CustomPickChoiceController.instance:onOpenView()
 
 	local styleId = self.viewParam and self.viewParam.styleId

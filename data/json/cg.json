@@ -3778,5 +3778,17 @@
     "image": "story_atcg/3_9/3_9_at_ys_yangcongtou.jpg",
     "preCgId": 0,
     "herostoryId": 33
+  },
+  {
+    "id": 103401,
+    "order": 0,
+    "storyChapterId": 1034,
+    "name": "命运漾起涟漪时",
+    "nameEn": "When Fate Ripples",
+    "desc": "蜻蜓之翼，宿命之脉，于未来的过去，于过去的未来，拾缀不息的漪澜。",
+    "episodeId": 0,
+    "image": "story_atcg/4_0/4_0_at_ys_beilier.jpg",
+    "preCgId": 0,
+    "herostoryId": 34
   }
 ]

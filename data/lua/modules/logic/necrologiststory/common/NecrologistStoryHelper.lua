@@ -338,6 +338,20 @@ function NecrologistStoryHelper.stringTotimeData(str)
 end
 
 function NecrologistStoryHelper.getStoryGroupIndex(storyGroup)
+	local config = NecrologistStoryConfig.instance:getPlotGroupCo(storyGroup)
+
+	if config then
+		local plotList = NecrologistStoryConfig.instance:getPlotListByStoryId(config.storyId)
+
+		if plotList then
+			for index, plot in ipairs(plotList) do
+				if plot.id == storyGroup then
+					return index
+				end
+			end
+		end
+	end
+
 	return storyGroup % 100
 end
 

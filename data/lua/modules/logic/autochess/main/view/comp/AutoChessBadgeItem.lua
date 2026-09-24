@@ -42,28 +42,24 @@ function AutoChessBadgeItem:setData(rankId, score, showType)
 	self.curScore = score
 	self.rankId = rankId
 	self.showType = showType
-	self.config = lua_auto_chess_rank.configDict[self.actId][rankId]
+	self.config = AutoChessConfig.instance:getRankCfg(rankId)
 
-	if not self.config then
-		logError(string.format("段位ID: %s 配置不存在", rankId))
+	if self.config then
+		local lastCo = AutoChessConfig.instance:getRankCfg(self.rankId - 1, true)
 
-		return
+		self.needScore = lastCo and lastCo.score or 0
+
+		if showType == AutoChessBadgeItem.ShowType.BadgeView then
+			self:showReward()
+		elseif showType == AutoChessBadgeItem.ShowType.MainView then
+			self:showProgress()
+			self:addClick()
+		elseif showType == AutoChessBadgeItem.ShowType.PvpSettleView then
+			self:showProgress()
+		end
+
+		self:refreshNormal()
 	end
-
-	local lastCo = lua_auto_chess_rank.configDict[self.actId][self.rankId - 1]
-
-	self.needScore = lastCo and lastCo.score or 0
-
-	if showType == AutoChessBadgeItem.ShowType.BadgeView then
-		self:showReward()
-	elseif showType == AutoChessBadgeItem.ShowType.MainView then
-		self:showProgress()
-		self:addClick()
-	elseif showType == AutoChessBadgeItem.ShowType.PvpSettleView then
-		self:showProgress()
-	end
-
-	self:refreshNormal()
 end
 
 function AutoChessBadgeItem:addClick()

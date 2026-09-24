@@ -1,0 +1,30 @@
+[
+  {
+    "id": 0,
+    "condition": "None"
+  },
+  {
+    "id": 1,
+    "condition": "OnSkillCast"
+  },
+  {
+    "id": 2,
+    "condition": "OnMatchCountMoreThan"
+  },
+  {
+    "id": 3,
+    "condition": "OnFeverEnter"
+  },
+  {
+    "id": 4,
+    "condition": "OnBattleStart"
+  },
+  {
+    "id": 5,
+    "condition": "OnTurnStart"
+  },
+  {
+    "id": 6,
+    "condition": "OnTurnEnd"
+  }
+]

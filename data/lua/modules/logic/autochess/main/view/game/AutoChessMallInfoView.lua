@@ -58,9 +58,9 @@ function AutoChessMallInfoView:onOpen()
 		return
 	end
 
-	local chessMo = AutoChessModel.instance:getChessMo()
+	local sceneMo = AutoChessModel.instance:getSceneMo()
 
-	self._txtCoin.text = chessMo.svrMall.coin
+	self._txtCoin.text = sceneMo.mall.coin
 
 	if self.viewParam.mall then
 		self.mall = self.viewParam.mall

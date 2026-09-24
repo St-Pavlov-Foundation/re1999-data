@@ -16,7 +16,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 15001,
@@ -35,7 +36,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 15001,
@@ -54,7 +56,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 15001,
@@ -73,7 +76,8 @@
     "enterTime": 0,
     "closeTime": 700,
     "enterAudio": 0,
-    "closeAudio": 4307402
+    "closeAudio": 4307402,
+    "keyForEntiySummon": 0
   },
   {
     "id": 15002,
@@ -92,7 +96,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 15002,
@@ -111,7 +116,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 15002,
@@ -130,7 +136,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 15002,
@@ -149,7 +156,8 @@
     "enterTime": 0,
     "closeTime": 700,
     "enterAudio": 0,
-    "closeAudio": 4307402
+    "closeAudio": 4307402,
+    "keyForEntiySummon": 0
   },
   {
     "id": 15003,
@@ -168,7 +176,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 15003,
@@ -187,7 +196,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 15003,
@@ -206,7 +216,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 15003,
@@ -225,7 +236,8 @@
     "enterTime": 0,
     "closeTime": 700,
     "enterAudio": 0,
-    "closeAudio": 4307402
+    "closeAudio": 4307402,
+    "keyForEntiySummon": 0
   },
   {
     "id": 15004,
@@ -244,7 +256,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 15004,
@@ -263,7 +276,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 15004,
@@ -282,7 +296,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 15004,
@@ -301,7 +316,8 @@
     "enterTime": 0,
     "closeTime": 700,
     "enterAudio": 0,
-    "closeAudio": 4307402
+    "closeAudio": 4307402,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150011,
@@ -320,7 +336,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150011,
@@ -339,7 +356,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150011,
@@ -358,7 +376,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150011,
@@ -377,7 +396,8 @@
     "enterTime": 0,
     "closeTime": 700,
     "enterAudio": 0,
-    "closeAudio": 4307402
+    "closeAudio": 4307402,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150021,
@@ -396,7 +416,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150021,
@@ -415,7 +436,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150021,
@@ -434,7 +456,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150021,
@@ -453,7 +476,8 @@
     "enterTime": 0,
     "closeTime": 700,
     "enterAudio": 0,
-    "closeAudio": 4307402
+    "closeAudio": 4307402,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150031,
@@ -472,7 +496,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150031,
@@ -491,7 +516,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150031,
@@ -510,7 +536,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150031,
@@ -529,7 +556,8 @@
     "enterTime": 0,
     "closeTime": 700,
     "enterAudio": 0,
-    "closeAudio": 4307402
+    "closeAudio": 4307402,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150051,
@@ -548,7 +576,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150051,
@@ -567,7 +596,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150051,
@@ -586,7 +616,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150051,
@@ -605,7 +636,8 @@
     "enterTime": 0,
     "closeTime": 700,
     "enterAudio": 0,
-    "closeAudio": 4307402
+    "closeAudio": 4307402,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150061,
@@ -624,7 +656,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150061,
@@ -643,7 +676,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150061,
@@ -662,7 +696,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150061,
@@ -681,7 +716,8 @@
     "enterTime": 0,
     "closeTime": 700,
     "enterAudio": 0,
-    "closeAudio": 4307402
+    "closeAudio": 4307402,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150041,
@@ -700,7 +736,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150041,
@@ -719,7 +756,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150041,
@@ -738,7 +776,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150041,
@@ -757,7 +796,8 @@
     "enterTime": 0,
     "closeTime": 700,
     "enterAudio": 0,
-    "closeAudio": 4307402
+    "closeAudio": 4307402,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150013,
@@ -776,7 +816,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150013,
@@ -795,7 +836,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150013,
@@ -814,7 +856,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150013,
@@ -833,7 +876,8 @@
     "enterTime": 0,
     "closeTime": 700,
     "enterAudio": 0,
-    "closeAudio": 4307402
+    "closeAudio": 4307402,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150023,
@@ -852,7 +896,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150023,
@@ -871,7 +916,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150023,
@@ -890,7 +936,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150023,
@@ -909,7 +956,8 @@
     "enterTime": 0,
     "closeTime": 700,
     "enterAudio": 0,
-    "closeAudio": 4307402
+    "closeAudio": 4307402,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150033,
@@ -928,7 +976,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150033,
@@ -947,7 +996,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150033,
@@ -966,7 +1016,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150033,
@@ -985,7 +1036,8 @@
     "enterTime": 0,
     "closeTime": 700,
     "enterAudio": 0,
-    "closeAudio": 4307402
+    "closeAudio": 4307402,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150043,
@@ -1004,7 +1056,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150043,
@@ -1023,7 +1076,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150043,
@@ -1042,7 +1096,8 @@
     "enterTime": 550,
     "closeTime": 550,
     "enterAudio": 4307401,
-    "closeAudio": 0
+    "closeAudio": 0,
+    "keyForEntiySummon": 0
   },
   {
     "id": 150043,
@@ -1061,6 +1116,27 @@
     "enterTime": 0,
     "closeTime": 700,
     "enterAudio": 0,
-    "closeAudio": 4307402
+    "closeAudio": 4307402,
+    "keyForEntiySummon": 0
+  },
+  {
+    "id": 316301311,
+    "level": 1,
+    "maxLevel": 1,
+    "group": 316301311,
+    "includeTypes": "1#1",
+    "skills": "",
+    "uniqueSkills": "",
+    "additionRule": "",
+    "stanceId": 316301311,
+    "aniEffect": "",
+    "enterEffect": "",
+    "loopEffect": "",
+    "closeEffect": "",
+    "enterTime": 0,
+    "closeTime": 0,
+    "enterAudio": 4307401,
+    "closeAudio": 0,
+    "keyForEntiySummon": 316301
   }
 ]

@@ -1,0 +1,682 @@
+[
+  {
+    "id": 117409001,
+    "template": 117409001,
+    "skillTemplate": 117409001,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_10001_boss_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_10001_boss_06l_flg.asset",
+    "career": 2,
+    "level": 1
+  },
+  {
+    "id": 117409002,
+    "template": 117409002,
+    "skillTemplate": 117409002,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11003_zl_02s_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11003_zl_02s_flg.asset",
+    "career": 1,
+    "level": 1
+  },
+  {
+    "id": 117401010,
+    "template": 117401010,
+    "skillTemplate": 117401001,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11003_zl_02s_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11003_zl_02s_flg.asset",
+    "career": 1,
+    "level": 1
+  },
+  {
+    "id": 117401030,
+    "template": 117401030,
+    "skillTemplate": 117401004,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11009_zl_05l_sup.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11009_zl_05l_sup.asset",
+    "career": 1,
+    "level": 1
+  },
+  {
+    "id": 117401020,
+    "template": 117401020,
+    "skillTemplate": 117401007,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11003_zl_02s_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11003_zl_02s_flg.asset",
+    "career": 1,
+    "level": 1
+  },
+  {
+    "id": 117401031,
+    "template": 117401031,
+    "skillTemplate": 117401005,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11005_zl_03m_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11005_zl_03m_flg.asset",
+    "career": 1,
+    "level": 1
+  },
+  {
+    "id": 117401032,
+    "template": 117401032,
+    "skillTemplate": 117401006,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11011_zl_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11011_zl_06l_flg.asset",
+    "career": 1,
+    "level": 1
+  },
+  {
+    "id": 117401040,
+    "template": 117401040,
+    "skillTemplate": 117401007,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11011_zl_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11011_zl_06l_flg.asset",
+    "career": 1,
+    "level": 1
+  },
+  {
+    "id": 117401050,
+    "template": 117401050,
+    "skillTemplate": 117401007,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11017_zl_04.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11017_zl_04.asset",
+    "career": 1,
+    "level": 1
+  },
+  {
+    "id": 117401060,
+    "template": 117401060,
+    "skillTemplate": 117401003,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11003_zl_02s_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11003_zl_02s_flg.asset",
+    "career": 1,
+    "level": 1
+  },
+  {
+    "id": 117401070,
+    "template": 117401070,
+    "skillTemplate": 117401004,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11005_zl_03m_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11005_zl_03m_flg.asset",
+    "career": 1,
+    "level": 1
+  },
+  {
+    "id": 117401080,
+    "template": 117401080,
+    "skillTemplate": 117401007,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11009_zl_05l_sup.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11009_zl_05l_sup.asset",
+    "career": 1,
+    "level": 1
+  },
+  {
+    "id": 117401090,
+    "template": 117401090,
+    "skillTemplate": 117401006,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11011_zl_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11011_zl_06l_flg.asset",
+    "career": 1,
+    "level": 1
+  },
+  {
+    "id": 117401100,
+    "template": 117401100,
+    "skillTemplate": 117401005,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11011_zl_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11011_zl_06l_flg.asset",
+    "career": 1,
+    "level": 1
+  },
+  {
+    "id": 117401101,
+    "template": 117401101,
+    "skillTemplate": 117401006,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_10001_boss_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_10001_boss_06l_flg.asset",
+    "career": 1,
+    "level": 3
+  },
+  {
+    "id": 117402010,
+    "template": 117402010,
+    "skillTemplate": 117401001,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11005_zl_03m_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11005_zl_03m_flg.asset",
+    "career": 2,
+    "level": 2
+  },
+  {
+    "id": 117402020,
+    "template": 117402020,
+    "skillTemplate": 117401008,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11003_zl_02s_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11003_zl_02s_flg.asset",
+    "career": 2,
+    "level": 2
+  },
+  {
+    "id": 117402030,
+    "template": 117402030,
+    "skillTemplate": 117401009,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11011_zl_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11011_zl_06l_flg.asset",
+    "career": 2,
+    "level": 2
+  },
+  {
+    "id": 117402031,
+    "template": 117402031,
+    "skillTemplate": 117401009,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11011_zl_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11011_zl_06l_flg.asset",
+    "career": 2,
+    "level": 2
+  },
+  {
+    "id": 117402040,
+    "template": 117402040,
+    "skillTemplate": 117401010,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11017_zl_04.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11017_zl_04.asset",
+    "career": 2,
+    "level": 2
+  },
+  {
+    "id": 117402050,
+    "template": 117402050,
+    "skillTemplate": 117401005,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11003_zl_02s_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11003_zl_02s_flg.asset",
+    "career": 2,
+    "level": 2
+  },
+  {
+    "id": 117402060,
+    "template": 117402060,
+    "skillTemplate": 117401008,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11005_zl_03m_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11005_zl_03m_flg.asset",
+    "career": 2,
+    "level": 2
+  },
+  {
+    "id": 117402070,
+    "template": 117402070,
+    "skillTemplate": 117401001,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11009_zl_05l_sup.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11009_zl_05l_sup.asset",
+    "career": 2,
+    "level": 2
+  },
+  {
+    "id": 117402080,
+    "template": 117402080,
+    "skillTemplate": 117401011,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11011_zl_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11011_zl_06l_flg.asset",
+    "career": 2,
+    "level": 2
+  },
+  {
+    "id": 117402081,
+    "template": 117402081,
+    "skillTemplate": 117401011,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11011_zl_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11011_zl_06l_flg.asset",
+    "career": 2,
+    "level": 2
+  },
+  {
+    "id": 117402090,
+    "template": 117402090,
+    "skillTemplate": 117401003,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11011_zl_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11011_zl_06l_flg.asset",
+    "career": 2,
+    "level": 2
+  },
+  {
+    "id": 117402100,
+    "template": 117402100,
+    "skillTemplate": 117401009,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_10001_boss_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_10001_boss_06l_flg.asset",
+    "career": 2,
+    "level": 3
+  },
+  {
+    "id": 117402101,
+    "template": 117402101,
+    "skillTemplate": 117401012,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_10001_boss_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_10001_boss_06l_flg.asset",
+    "career": 2,
+    "level": 3
+  },
+  {
+    "id": 117403010,
+    "template": 117403010,
+    "skillTemplate": 117401013,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11005_zl_03m_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11005_zl_03m_flg.asset",
+    "career": 3,
+    "level": 3
+  },
+  {
+    "id": 117403020,
+    "template": 117403020,
+    "skillTemplate": 117401002,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11003_zl_02s_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11003_zl_02s_flg.asset",
+    "career": 3,
+    "level": 3
+  },
+  {
+    "id": 117403030,
+    "template": 117403030,
+    "skillTemplate": 117401003,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11011_zl_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11011_zl_06l_flg.asset",
+    "career": 3,
+    "level": 3
+  },
+  {
+    "id": 117403040,
+    "template": 117403040,
+    "skillTemplate": 117401013,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11017_zl_04.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11017_zl_04.asset",
+    "career": 3,
+    "level": 3
+  },
+  {
+    "id": 117403041,
+    "template": 117403041,
+    "skillTemplate": 117401013,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11017_zl_04.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11017_zl_04.asset",
+    "career": 3,
+    "level": 3
+  },
+  {
+    "id": 117403050,
+    "template": 117403050,
+    "skillTemplate": 117401005,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11003_zl_02s_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11003_zl_02s_flg.asset",
+    "career": 3,
+    "level": 4
+  },
+  {
+    "id": 117403060,
+    "template": 117403060,
+    "skillTemplate": 117401006,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11005_zl_03m_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11005_zl_03m_flg.asset",
+    "career": 3,
+    "level": 4
+  },
+  {
+    "id": 117403070,
+    "template": 117403070,
+    "skillTemplate": 117401001,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11009_zl_05l_sup.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11009_zl_05l_sup.asset",
+    "career": 3,
+    "level": 4
+  },
+  {
+    "id": 117403080,
+    "template": 117403080,
+    "skillTemplate": 117401014,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11011_zl_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11011_zl_06l_flg.asset",
+    "career": 3,
+    "level": 4
+  },
+  {
+    "id": 117403081,
+    "template": 117403081,
+    "skillTemplate": 117401014,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11011_zl_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11011_zl_06l_flg.asset",
+    "career": 3,
+    "level": 4
+  },
+  {
+    "id": 117403090,
+    "template": 117403090,
+    "skillTemplate": 117401003,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11011_zl_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11011_zl_06l_flg.asset",
+    "career": 3,
+    "level": 4
+  },
+  {
+    "id": 117403100,
+    "template": 117403100,
+    "skillTemplate": 117401004,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_10001_boss_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_10001_boss_06l_flg.asset",
+    "career": 3,
+    "level": 4
+  },
+  {
+    "id": 117404010,
+    "template": 117404010,
+    "skillTemplate": 117401001,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11005_zl_03m_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11005_zl_03m_flg.asset",
+    "career": 4,
+    "level": 4
+  },
+  {
+    "id": 117404020,
+    "template": 117404020,
+    "skillTemplate": 117401021,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11003_zl_02s_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11003_zl_02s_flg.asset",
+    "career": 4,
+    "level": 4
+  },
+  {
+    "id": 117404030,
+    "template": 117404030,
+    "skillTemplate": 117401022,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11011_zl_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11011_zl_06l_flg.asset",
+    "career": 4,
+    "level": 4
+  },
+  {
+    "id": 117404040,
+    "template": 117404040,
+    "skillTemplate": 117401023,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11017_zl_04.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11017_zl_04.asset",
+    "career": 4,
+    "level": 4
+  },
+  {
+    "id": 117404041,
+    "template": 117404041,
+    "skillTemplate": 117401023,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11017_zl_04.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11017_zl_04.asset",
+    "career": 4,
+    "level": 4
+  },
+  {
+    "id": 117404050,
+    "template": 117404050,
+    "skillTemplate": 117401005,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11003_zl_02s_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11003_zl_02s_flg.asset",
+    "career": 4,
+    "level": 4
+  },
+  {
+    "id": 117404060,
+    "template": 117404060,
+    "skillTemplate": 117401006,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11005_zl_03m_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11005_zl_03m_flg.asset",
+    "career": 4,
+    "level": 5
+  },
+  {
+    "id": 117404070,
+    "template": 117404070,
+    "skillTemplate": 117401001,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11009_zl_05l_sup.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11009_zl_05l_sup.asset",
+    "career": 4,
+    "level": 5
+  },
+  {
+    "id": 117404080,
+    "template": 117404080,
+    "skillTemplate": 117401002,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11011_zl_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11011_zl_06l_flg.asset",
+    "career": 4,
+    "level": 5
+  },
+  {
+    "id": 117404090,
+    "template": 117404090,
+    "skillTemplate": 117401003,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11011_zl_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11011_zl_06l_flg.asset",
+    "career": 4,
+    "level": 5
+  },
+  {
+    "id": 117404100,
+    "template": 117404100,
+    "skillTemplate": 117401024,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_10001_boss_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_10001_boss_06l_flg.asset",
+    "career": 4,
+    "level": 5
+  },
+  {
+    "id": 117404101,
+    "template": 117404101,
+    "skillTemplate": 117401025,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_10001_boss_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_10001_boss_06l_flg.asset",
+    "career": 4,
+    "level": 5
+  },
+  {
+    "id": 117405010,
+    "template": 117405010,
+    "skillTemplate": 117401001,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11005_zl_03m_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11005_zl_03m_flg.asset",
+    "career": 5,
+    "level": 6
+  },
+  {
+    "id": 117405020,
+    "template": 117405020,
+    "skillTemplate": 117401002,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11003_zl_02s_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11003_zl_02s_flg.asset",
+    "career": 5,
+    "level": 6
+  },
+  {
+    "id": 117405030,
+    "template": 117405030,
+    "skillTemplate": 117401015,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11011_zl_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11011_zl_06l_flg.asset",
+    "career": 5,
+    "level": 6
+  },
+  {
+    "id": 117405031,
+    "template": 117405031,
+    "skillTemplate": 117401016,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11011_zl_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11011_zl_06l_flg.asset",
+    "career": 5,
+    "level": 6
+  },
+  {
+    "id": 117405040,
+    "template": 117405040,
+    "skillTemplate": 117401017,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11017_zl_04.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11017_zl_04.asset",
+    "career": 5,
+    "level": 6
+  },
+  {
+    "id": 117405041,
+    "template": 117405041,
+    "skillTemplate": 117401018,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11017_zl_04.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11017_zl_04.asset",
+    "career": 5,
+    "level": 6
+  },
+  {
+    "id": 117405050,
+    "template": 117405050,
+    "skillTemplate": 117401019,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11003_zl_02s_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11003_zl_02s_flg.asset",
+    "career": 5,
+    "level": 6
+  },
+  {
+    "id": 117405051,
+    "template": 117405051,
+    "skillTemplate": 117401020,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11003_zl_02s_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11003_zl_02s_flg.asset",
+    "career": 5,
+    "level": 6
+  },
+  {
+    "id": 117405060,
+    "template": 117405060,
+    "skillTemplate": 117401006,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11005_zl_03m_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11005_zl_03m_flg.asset",
+    "career": 5,
+    "level": 7
+  },
+  {
+    "id": 117405070,
+    "template": 117405070,
+    "skillTemplate": 117401001,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11009_zl_05l_sup.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11009_zl_05l_sup.asset",
+    "career": 5,
+    "level": 7
+  },
+  {
+    "id": 117405080,
+    "template": 117405080,
+    "skillTemplate": 117401002,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11011_zl_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11011_zl_06l_flg.asset",
+    "career": 5,
+    "level": 7
+  },
+  {
+    "id": 117405090,
+    "template": 117405090,
+    "skillTemplate": 117401003,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_11011_zl_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_11011_zl_06l_flg.asset",
+    "career": 5,
+    "level": 7
+  },
+  {
+    "id": 117405100,
+    "template": 117405100,
+    "skillTemplate": 117401004,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_10001_boss_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_10001_boss_06l_flg.asset",
+    "career": 5,
+    "level": 7
+  },
+  {
+    "id": 117406010,
+    "template": 117406010,
+    "skillTemplate": 117402001,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_16011_zs_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_16011_zs_06l_flg.asset",
+    "career": 3,
+    "level": 10
+  },
+  {
+    "id": 117406020,
+    "template": 117406020,
+    "skillTemplate": 117402002,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_16011_zs_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_16011_zs_06l_flg.asset",
+    "career": 2,
+    "level": 10
+  },
+  {
+    "id": 117406030,
+    "template": 117406030,
+    "skillTemplate": 117402003,
+    "icon": "300101",
+    "image": "singlebg/v2a5_autochess_singlebg/mjdz_16011_zs_06l_flg.png",
+    "mesh": "ui/assets/versionactivity_2_5_autochess/mjdz_16011_zs_06l_flg.asset",
+    "career": 1,
+    "level": 10
+  }
+]

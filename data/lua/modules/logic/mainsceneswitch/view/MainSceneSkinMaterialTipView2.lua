@@ -2,7 +2,7 @@
 
 module("modules.logic.mainsceneswitch.view.MainSceneSkinMaterialTipView2", package.seeall)
 
-local MainSceneSkinMaterialTipView2 = class("MainSceneSkinMaterialTipView2", MainSceneSkinMaterialTipView)
+local MainSceneSkinMaterialTipView2 = class("MainSceneSkinMaterialTipView2", DecorateMaterialTipView)
 
 function MainSceneSkinMaterialTipView2:onInitView()
 	self._gotop = gohelper.findChild(self.viewGO, "left/top")
@@ -24,6 +24,7 @@ function MainSceneSkinMaterialTipView2:onInitView()
 	self._txtdiscount2 = gohelper.findChildText(self.viewGO, "right/#go_buyContent/buy/#go_discount/#txt_discount")
 	self._simageSceneLogo = gohelper.findChildSingleImage(self.viewGO, "left/banner/#go_bannerContent/#go_roominfoItem/image_frame/#go_SceneLogo")
 	self._imageSceneLogo = gohelper.findChildImage(self.viewGO, "left/banner/#go_bannerContent/#go_roominfoItem/image_frame/#go_SceneLogo")
+	self._txtSceneLogo = gohelper.findChildText(self.viewGO, "left/banner/#go_bannerContent/#go_roominfoItem/image_frame/#go_SceneLogo/titlebg/#txt_SceneLogo")
 	self._txtcostnum = gohelper.findChildText(self.viewGO, "right/#go_buyContent/buy/#txt_costnum")
 	self._imagecosticon = gohelper.findChildImage(self.viewGO, "right/#go_buyContent/buy/#txt_costnum/#simage_costicon")
 	self._txtoriginalprice = gohelper.findChildText(self.viewGO, "right/#go_buyContent/buy/#txt_costnum/#txt_original_price")
@@ -36,8 +37,6 @@ end
 
 function MainSceneSkinMaterialTipView2:addEvents()
 	MainSceneSkinMaterialTipView2.super.addEvents(self)
-	self._btntab1:AddClickListener(self._btntab1OnClick, self)
-	self._btntab2:AddClickListener(self._btntab2OnClick, self)
 	self:addEventCb(CurrencyController.instance, CurrencyEvent.CurrencyChange, self._refreshSelectCost, self)
 	self:addEventCb(BackpackController.instance, BackpackEvent.UpdateItemList, self._refreshSelectCost, self)
 	self:addEventCb(ActivityController.instance, ActivityEvent.RefreshNorSignActivity, self._refreshUI, self)
@@ -45,35 +44,15 @@ end
 
 function MainSceneSkinMaterialTipView2:removeEvents()
 	MainSceneSkinMaterialTipView2.super.removeEvents(self)
-	self._btntab1:RemoveClickListener()
-	self._btntab2:RemoveClickListener()
 	self:removeEventCb(CurrencyController.instance, CurrencyEvent.CurrencyChange, self._refreshSelectCost, self)
 	self:removeEventCb(BackpackController.instance, BackpackEvent.UpdateItemList, self._refreshSelectCost, self)
 	self:removeEventCb(ActivityController.instance, ActivityEvent.RefreshNorSignActivity, self._refreshUI, self)
 end
 
-function MainSceneSkinMaterialTipView2:_btntab1OnClick()
-	if self._selectTabIndex == 1 then
-		return
-	end
-
-	self._selectTabIndex = 1
-	self._goodsId = self._goodsIds[1]
+function MainSceneSkinMaterialTipView2:setGoodsTab(goodsId)
+	self._goodsId = goodsId
 
 	self:_refreshGoods()
-	self.viewContainer:setGoodsTab(self._selectTabIndex)
-end
-
-function MainSceneSkinMaterialTipView2:_btntab2OnClick()
-	if self._selectTabIndex == 2 then
-		return
-	end
-
-	self._selectTabIndex = 2
-	self._goodsId = self.viewParam.goodsId
-
-	self:_refreshGoods()
-	self.viewContainer:setGoodsTab(self._selectTabIndex)
 end
 
 function MainSceneSkinMaterialTipView2:_btninsightOnClick()
@@ -204,8 +183,13 @@ function MainSceneSkinMaterialTipView2:_editableInitView()
 	gohelper.setActive(self._gosource, false)
 	gohelper.setActive(self._gobuyContent, true)
 	gohelper.setActive(self._goblockInfoItem, false)
+	gohelper.setActive(self._gotop, false)
 
 	self._goodsIds = DecorateStoreModel.instance:getV3a4PackageStoreGoodsIds()
+end
+
+function MainSceneSkinMaterialTipView2:onOpen()
+	self:_refreshUI()
 end
 
 function MainSceneSkinMaterialTipView2:_refreshUI()
@@ -215,53 +199,7 @@ function MainSceneSkinMaterialTipView2:_refreshUI()
 	self._isSceneUIPackage = self._decorateConfig.subType == ItemEnum.SubType.SceneUIPackage
 	self._selectTabIndex = self._isSceneUIPackage and 1 or 2
 
-	local isShowTop = self:_showTopTab()
-
-	if isShowTop then
-		local packageConfig = DecorateStoreConfig.instance:getDecorateConfig(self._goodsIds[1])
-
-		self._txttab1.text = packageConfig.typeName
-		self._txttab2.text = self._decorateConfig.typeName
-		self._txttab1_1.text = packageConfig.typeName
-		self._txttab2_1.text = self._decorateConfig.typeName
-
-		if packageConfig.offTag > 0 then
-			self._txtdiscount.text = string.format("-%s%%", packageConfig.offTag)
-		end
-
-		gohelper.setActive(self._godiscount, packageConfig.offTag > 0)
-	end
-
 	self:_refreshGoods()
-end
-
-function MainSceneSkinMaterialTipView2:_showTopTab()
-	local isShowTop = false
-
-	if self._isSceneUIPackage then
-		isShowTop = false
-	elseif self.viewParam.isShowTop then
-		if self._decorateConfig.subType == ItemEnum.SubType.MainSceneSkin then
-			isShowTop = not DecorateStoreModel.instance:isDecorateGoodItemHas(self._goodsIds[3])
-		elseif self._decorateConfig.subType == ItemEnum.SubType.MainUISkin then
-			isShowTop = not DecorateStoreModel.instance:isDecorateGoodItemHas(self._goodsIds[2])
-		else
-			isShowTop = true
-		end
-	end
-
-	gohelper.setActive(self._gotop, isShowTop)
-
-	return isShowTop
-end
-
-function MainSceneSkinMaterialTipView2:_refreshLogo()
-	local info = MainSwitchClassifyEnum.ItemInfo[self._decorateConfig.subType]
-
-	self._simageSceneLogo:LoadImage(ResUrl.getMainSceneSwitchLangIcon(info.Logo), function()
-		self._imageSceneLogo:SetNativeSize()
-		recthelper.setAnchor(self._imageSceneLogo.transform, info.LogoAnchor.x, info.LogoAnchor.y)
-	end)
 end
 
 function MainSceneSkinMaterialTipView2:_refreshGoods()
@@ -287,7 +225,6 @@ function MainSceneSkinMaterialTipView2:_refreshGoods()
 	self:_refreshBuyUI()
 	self:_refreshSelectTab()
 	self:_refreshSelectCost()
-	self:_refreshLogo()
 end
 
 function MainSceneSkinMaterialTipView2:_refreshBuyUI()
@@ -386,7 +323,6 @@ function MainSceneSkinMaterialTipView2:_refreshSelectCost()
 	local str = self:_getCostIcon(item.cost)
 
 	UISpriteSetMgr.instance:setCurrencyItemSprite(self._imagecosticon, str)
-	self:_showTopTab()
 
 	local has, _, discount = DecorateStoreModel.instance:hasDiscountItem(self._goodsId)
 	local isSceneUIPackage = self._decorateConfig.subType == ItemEnum.SubType.SceneUIPackage

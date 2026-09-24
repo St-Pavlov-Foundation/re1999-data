@@ -1,0 +1,163 @@
+[
+  {
+    "id": 1,
+    "pos": "-33.6#20.1",
+    "type": 1,
+    "dailyPlayOnce": 0,
+    "weight": 0
+  },
+  {
+    "id": 2,
+    "pos": "-66.74#9.9",
+    "type": 1,
+    "dailyPlayOnce": 0,
+    "weight": 0
+  },
+  {
+    "id": 3,
+    "pos": "-52.9#22.6",
+    "type": 1,
+    "dailyPlayOnce": 0,
+    "weight": 0
+  },
+  {
+    "id": 4,
+    "pos": "-52.9#22.6",
+    "type": 1,
+    "dailyPlayOnce": 0,
+    "weight": 0
+  },
+  {
+    "id": 5,
+    "pos": "",
+    "type": 3,
+    "dailyPlayOnce": 0,
+    "weight": 100
+  },
+  {
+    "id": 6,
+    "pos": "",
+    "type": 3,
+    "dailyPlayOnce": 0,
+    "weight": 100
+  },
+  {
+    "id": 7,
+    "pos": "",
+    "type": 2,
+    "dailyPlayOnce": 1,
+    "weight": 100
+  },
+  {
+    "id": 8,
+    "pos": "",
+    "type": 2,
+    "dailyPlayOnce": 1,
+    "weight": 100
+  },
+  {
+    "id": 9,
+    "pos": "",
+    "type": 2,
+    "dailyPlayOnce": 1,
+    "weight": 100
+  },
+  {
+    "id": 10,
+    "pos": "",
+    "type": 2,
+    "dailyPlayOnce": 1,
+    "weight": 100
+  },
+  {
+    "id": 11,
+    "pos": "",
+    "type": 2,
+    "dailyPlayOnce": 0,
+    "weight": 100
+  },
+  {
+    "id": 12,
+    "pos": "",
+    "type": 2,
+    "dailyPlayOnce": 0,
+    "weight": 100
+  },
+  {
+    "id": 13,
+    "pos": "",
+    "type": 2,
+    "dailyPlayOnce": 0,
+    "weight": 100
+  },
+  {
+    "id": 14,
+    "pos": "",
+    "type": 2,
+    "dailyPlayOnce": 0,
+    "weight": 100
+  },
+  {
+    "id": 15,
+    "pos": "",
+    "type": 2,
+    "dailyPlayOnce": 0,
+    "weight": 100
+  },
+  {
+    "id": 16,
+    "pos": "",
+    "type": 2,
+    "dailyPlayOnce": 0,
+    "weight": 100
+  },
+  {
+    "id": 17,
+    "pos": "",
+    "type": 2,
+    "dailyPlayOnce": 0,
+    "weight": 100
+  },
+  {
+    "id": 18,
+    "pos": "",
+    "type": 2,
+    "dailyPlayOnce": 0,
+    "weight": 100
+  },
+  {
+    "id": 19,
+    "pos": "",
+    "type": 2,
+    "dailyPlayOnce": 0,
+    "weight": 100
+  },
+  {
+    "id": 20,
+    "pos": "",
+    "type": 2,
+    "dailyPlayOnce": 0,
+    "weight": 100
+  },
+  {
+    "id": 21,
+    "pos": "",
+    "type": 2,
+    "dailyPlayOnce": 0,
+    "weight": 100
+  },
+  {
+    "id": 22,
+    "pos": "",
+    "type": 2,
+    "dailyPlayOnce": 0,
+    "weight": 100
+  },
+  {
+    "id": 23,
+    "pos": "",
+    "type": 2,
+    "dailyPlayOnce": 0,
+    "weight": 100
+  }
+]

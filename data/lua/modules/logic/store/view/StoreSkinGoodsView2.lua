@@ -104,16 +104,35 @@ function StoreSkinGoodsView2:removeEvents()
 	self:removeEventCb(PayController.instance, PayEvent.PayFinished, self._payFinished, self)
 end
 
-function StoreSkinGoodsView2:_payFinished()
-	self:closeThis()
+StoreSkinGoodsView2.CostIndex = {
+	Coin = 2,
+	RMB = 1
+}
+
+function StoreSkinGoodsView2:ctor(...)
+	StoreSkinGoodsView2.super.ctor(self, ...)
+
+	self._curCostIndex = StoreSkinGoodsView2.CostIndex.RMB
 end
 
 function StoreSkinGoodsView2:setCurCostIndex(index)
 	self._curCostIndex = index
 end
 
-function StoreSkinGoodsView2:getCurCostIndex()
-	return self._curCostIndex or 1
+function StoreSkinGoodsView2:curCostIndex()
+	return self._curCostIndex
+end
+
+function StoreSkinGoodsView2:bCostRMB()
+	return self._curCostIndex == StoreSkinGoodsView2.CostIndex.RMB
+end
+
+function StoreSkinGoodsView2:bCostCoin()
+	return self._curCostIndex == StoreSkinGoodsView2.CostIndex.Coin
+end
+
+function StoreSkinGoodsView2:_payFinished()
+	self:closeThis()
 end
 
 function StoreSkinGoodsView2:_btnSkinTipsOnClick()
@@ -140,25 +159,23 @@ function StoreSkinGoodsView2:_btnSkinTipsOnClick()
 end
 
 function StoreSkinGoodsView2:_btncost1OnClick()
-	local curIndex = self:getCurCostIndex()
-
-	if curIndex == 1 then
+	if self:bCostRMB() then
 		return
 	end
 
-	self:setCurCostIndex(1)
-	self:refreshCost()
+	self:setCurCostIndex(StoreSkinGoodsView2.CostIndex.RMB)
+	self:_refreshCost()
+	self._detail:onClickRMB()
 end
 
 function StoreSkinGoodsView2:_btncost2OnClick()
-	local curIndex = self:getCurCostIndex()
-
-	if curIndex == 2 then
+	if self:bCostCoin() then
 		return
 	end
 
-	self:setCurCostIndex(2)
-	self:refreshCost()
+	self:setCurCostIndex(StoreSkinGoodsView2.CostIndex.Coin)
+	self:_refreshCost()
+	self._detail:onClickCoin()
 end
 
 function StoreSkinGoodsView2:_btnbuyOnClick()
@@ -166,19 +183,18 @@ function StoreSkinGoodsView2:_btnbuyOnClick()
 		return
 	end
 
-	local curIndex = self:getCurCostIndex()
 	local goodsConfig = self._mo.config
 	local product = goodsConfig.product
 	local productInfo = string.splitToNumber(product, "#")
 	local skinId = productInfo[2]
 	local skinCo = SkinConfig.instance:getSkinCo(skinId)
-	local info = self._goodsPriceInfo or StoreHelper.getSkinGoodsPriceInfo(goodsConfig, skinId)
-	local coinsCurPrice = info.coinsCurPrice
-	local deductionItemType = info.deductionItemType
+	local info = self._detail:getPriceMO()
+	local coinsCurPrice = self._detail:coinsCurPrice()
+	local coinsCurPriceNumeric = self._detail:coinsCurPriceNumeric()
+	local deductionItemInfoList = info.deductionItemInfoList
 	local deductionItemId = info.deductionItemId
 	local coinsItemType = info.coinsItemType
 	local coinsItemId = info.coinsItemId
-	local overuseCoinsReductionDt = info.overuseCoinsReductionDt
 	local specialofferItemType = info.specialofferItemType
 	local specialofferItemId = info.specialofferItemId
 	local hasSpecialOfferItem = info.hasSpecialOfferItem
@@ -208,7 +224,7 @@ function StoreSkinGoodsView2:_btnbuyOnClick()
 		return
 	end
 
-	if curIndex == 1 then
+	if self:bCostRMB() then
 		local goodsId = StoreConfig.instance:getSkinChargeGoodsId(skinId)
 
 		if goodsId then
@@ -221,12 +237,23 @@ function StoreSkinGoodsView2:_btnbuyOnClick()
 		return
 	end
 
-	if overuseCoinsReductionDt < 0 then
-		local deductionConfig = ItemModel.instance:getItemConfig(deductionItemType, deductionItemId)
+	if coinsCurPriceNumeric < 0 then
+		local param1Tbl = {}
+		local selectedDeductionItemInfoList = self._detail:getSelectedDeductionItemInfoList()
+
+		for i, info in ipairs(selectedDeductionItemInfoList) do
+			local deductionItemType = info.itemType
+			local deductionItemId = info.itemId
+			local deductionConfig = ItemModel.instance:getItemConfig(deductionItemType, deductionItemId)
+			local itemName = deductionConfig.name
+
+			table.insert(param1Tbl, itemName)
+		end
+
 		local costConfig = ItemModel.instance:getItemConfig(coinsItemType, coinsItemId)
-		local param1 = deductionConfig.name
+		local param1 = table.concat(param1Tbl, luaLang("concat_separator"))
 		local param2 = goodsConfig.name
-		local param3 = math.abs(overuseCoinsReductionDt)
+		local param3 = math.abs(coinsCurPriceNumeric)
 		local param4 = costConfig.name
 
 		GameFacade.showMessageBox(MessageBoxIdDefine.SkinStoreDeductionUseTips, MsgBoxEnum.BoxType.Yes_No, function()
@@ -246,7 +273,10 @@ function StoreSkinGoodsView2:_checkAndBuyGoods(priceNum)
 end
 
 function StoreSkinGoodsView2:_buyGoods()
-	StoreController.instance:buyGoods(self._mo, 1, self._buyCallback, self)
+	local deductionItemIndices = self._detail:getDeductionItemIndices()
+	local selectCost
+
+	StoreController.instance:buyGoods(self._mo, 1, self._buyCallback, self, selectCost, deductionItemIndices)
 end
 
 function StoreSkinGoodsView2:jumpCallBack()
@@ -270,6 +300,10 @@ function StoreSkinGoodsView2:_editableInitView()
 
 	self._godiscount2 = gohelper.findChild(self.viewGO, "view/common/#btn_buy/#go_discount2")
 	self._txtdiscount2 = gohelper.findChildText(self._godiscount2, "#txt_cost_price")
+	self._godeduction3IconGo = gohelper.findChildTextMesh(self.viewGO, "view/common/cost/#btn_cost2/#go_discount3/icon")
+	self._detail = StoreSkinGoodsView_DetailDiscount.s_createByView(self, gohelper.findChild(self.viewGO, "view/common/go_detail"))
+	self._discountRmb = StoreSkinGoodsView_DiscountRmb.s_createByView(self, gohelper.findChild(self._gocost, "#go_discount_1"))
+	self._discountCoin = StoreSkinGoodsView_DiscountCoin.s_createByView(self, gohelper.findChild(self._gocost, "#go_discount_2"))
 end
 
 function StoreSkinGoodsView2:onUpdateParam()
@@ -277,7 +311,7 @@ function StoreSkinGoodsView2:onUpdateParam()
 end
 
 function StoreSkinGoodsView2:onOpen()
-	self:setCurCostIndex(self.viewParam and self.viewParam.index or 1)
+	self:setCurCostIndex(self.viewParam and self.viewParam.index or StoreSkinGoodsView2.CostIndex.RMB)
 	self:_updateSkinStore()
 
 	local heroname = lua_character.configDict[self.skinCo.characterId].name
@@ -323,7 +357,7 @@ function StoreSkinGoodsView2:_updateSkinStore()
 	end
 
 	self:_refreshSkinDesc(skinStoreCfg, self.skinCo)
-	self:refreshCost(skinStoreCfg)
+	self:refreshCost()
 	self:_refreshSkinIcon(skinStoreCfg)
 	self:refreshStoreSkinTips()
 	self:_refreshSpecial()
@@ -537,7 +571,6 @@ function StoreSkinGoodsView2:refreshStoreSkinTips()
 end
 
 function StoreSkinGoodsView2:refreshCost()
-	local showCurrency = {}
 	local goodsConfig = self._mo.config
 
 	if string.nilorempty(goodsConfig.cost) then
@@ -548,40 +581,44 @@ function StoreSkinGoodsView2:refreshCost()
 
 	gohelper.setActive(self._gocost, true)
 
-	local curIndex = self:getCurCostIndex()
 	local productInfo = string.splitToNumber(goodsConfig.product, "#")
 	local skinId = productInfo[2]
 	local skinCo = SkinConfig.instance:getSkinCo(skinId)
-	local info = StoreHelper.getSkinGoodsPriceInfo(goodsConfig, skinId)
 
-	self._goodsPriceInfo = info
+	self._detail:onUpdateMO({
+		lua_store_goods_id = goodsConfig.id,
+		skinId = skinId
+	})
+	self:_refreshCost()
+	self:_refreshCurrency()
+end
 
+function StoreSkinGoodsView2:_refreshCurrency()
+	local info = self._detail:getPriceMO()
+	local bDetailEmpty = self._detail:bEmpty()
+	local coinsCurPrice = self._detail:coinsCurPrice()
 	local rmbCurPrice = info.rmbCurPrice
-	local rmbOriginalPrice = info.rmbOriginalPrice
-	local coinsItemType = info.coinsItemType
 	local coinsItemId = info.coinsItemId
-	local coinsCurPrice = info.coinsCurPrice
-	local coinsOriginalPrice = info.coinsOriginalPrice
 	local coinsReduction = info.coinsReduction
 	local hasDeductionItem = info.hasDeductionItem
-	local deductionItemType = info.deductionItemType
-	local deductionItemId = info.deductionItemId
-	local bCoinsEnough = info.bCoinsEnough
+	local deductionItemInfoList = info.deductionItemInfoList
 	local hasSpecialOfferItem = info.hasSpecialOfferItem
 	local specialofferItemType = info.specialofferItemType
 	local specialofferItemId = info.specialofferItemId
-	local isShowCoinsOriginalPrice = hasDeductionItem and coinsCurPrice and coinsCurPrice < coinsOriginalPrice
-	local coinsItemCO = ItemModel.instance:getItemConfig(coinsItemType, coinsItemId)
-	local imageiconsingleSpriteName = string.format("%s_1", coinsItemCO.icon)
+	local showCurrency = {}
 
 	table.insert(showCurrency, coinsItemId)
 
 	if hasDeductionItem then
-		table.insert(showCurrency, {
-			isCurrencySprite = true,
-			type = deductionItemType,
-			id = deductionItemId
-		})
+		for _, info in ipairs(deductionItemInfoList) do
+			if info.has then
+				table.insert(showCurrency, {
+					isCurrencySprite = true,
+					type = info.itemType,
+					id = info.itemId
+				})
+			end
+		end
 
 		local disCntStr = tostring(-coinsReduction)
 
@@ -597,14 +634,36 @@ function StoreSkinGoodsView2:refreshCost()
 		})
 	end
 
-	gohelper.setActive(self.goDiscount3, hasDeductionItem)
-	gohelper.setActive(self._godiscount2, hasDeductionItem and not rmbCurPrice)
 	self.viewContainer:setCurrencyType(showCurrency)
+end
+
+function StoreSkinGoodsView2:_refreshCost()
+	local info = self._detail:getPriceMO()
+	local bDetailEmpty = self._detail:bEmpty()
+	local coinsCurPrice = self._detail:coinsCurPrice()
+	local rmbCurPrice = info.rmbCurPrice
+	local rmbOriginalPrice = info.rmbOriginalPrice
+	local coinsItemType = info.coinsItemType
+	local coinsItemId = info.coinsItemId
+	local coinsOriginalPrice = info.coinsOriginalPrice
+	local coinsReduction = info.coinsReduction
+	local hasDeductionItem = info.hasDeductionItem
+	local deductionItemId = info.deductionItemId
+	local bCoinsEnough = info.bCoinsEnough
+	local hasSpecialOfferItem = info.hasSpecialOfferItem
+	local specialofferItemType = info.specialofferItemType
+	local specialofferItemId = info.specialofferItemId
+	local isShowCoinsOriginalPrice = hasDeductionItem and coinsCurPrice and coinsCurPrice < coinsOriginalPrice
+	local coinsItemCO = ItemModel.instance:getItemConfig(coinsItemType, coinsItemId)
+	local imageiconsingleSpriteName = string.format("%s_1", coinsItemCO.icon)
+
+	gohelper.setActive(self.goDiscount3, hasDeductionItem and bDetailEmpty)
+	gohelper.setActive(self._godiscount2, hasDeductionItem and not rmbCurPrice)
 
 	local isShowOffTag = false
 
 	if isShowOffTag then
-		local offDiscount = math.ceil(coinsCurPrice / coinsOriginalPrice * 100)
+		local offDiscount = coinsOriginalPrice > 0 and math.ceil(coinsCurPrice / coinsOriginalPrice * 100) or 100
 
 		isShowOffTag = offDiscount < 100 and offDiscount > 0
 		self._txtdiscount.text = string.format("-%d%%", 100 - offDiscount)
@@ -625,8 +684,8 @@ function StoreSkinGoodsView2:refreshCost()
 	gohelper.setActive(self._gocostsingle, not rmbCurPrice)
 
 	if not rmbCurPrice then
-		if curIndex == 1 then
-			self:setCurCostIndex(2)
+		if self:bCostRMB() then
+			self:setCurCostIndex(StoreSkinGoodsView2.CostIndex.Coin)
 		end
 
 		UISpriteSetMgr.instance:setCurrencyItemSprite(self._imageiconsingle, imageiconsingleSpriteName, true)
@@ -635,10 +694,8 @@ function StoreSkinGoodsView2:refreshCost()
 		return
 	end
 
-	local priceStr = string.format("%s%s", StoreModel.instance:getCostStr(rmbCurPrice))
-
-	self._txtcurpriceunselect1.text = priceStr
-	self._txtcurpriceselect1.text = priceStr
+	self._txtcurpriceunselect1.text = rmbCurPrice
+	self._txtcurpriceselect1.text = rmbCurPrice
 
 	SLFramework.UGUI.GuiHelper.SetColor(self._txtcurpriceunselect1, "#393939")
 	SLFramework.UGUI.GuiHelper.SetColor(self._txtcurpriceselect1, "#ffffff")
@@ -650,8 +707,10 @@ function StoreSkinGoodsView2:refreshCost()
 		self._txtoriginalpriceunselect1.text = rmbOriginalPrice
 	end
 
-	gohelper.setActive(self._goselect1, curIndex == 1)
-	gohelper.setActive(self._gounselect1, curIndex ~= 1)
+	local bShowSelect1 = self:bCostRMB()
+
+	gohelper.setActive(self._goselect1, bShowSelect1)
+	gohelper.setActive(self._gounselect1, not bShowSelect1)
 
 	self._txtcurpriceunselect2.text = coinsCurPrice
 	self._txtcurpriceselect2.text = coinsCurPrice
@@ -668,8 +727,11 @@ function StoreSkinGoodsView2:refreshCost()
 
 	UISpriteSetMgr.instance:setCurrencyItemSprite(self._imageiconselect2, imageiconsingleSpriteName, true)
 	UISpriteSetMgr.instance:setCurrencyItemSprite(self._imageiconunselect2, imageiconsingleSpriteName, true)
-	gohelper.setActive(self._goselect2, curIndex == 2)
-	gohelper.setActive(self._gounselect2, curIndex ~= 2)
+
+	local bShowSelect2 = self:bCostCoin()
+
+	gohelper.setActive(self._goselect2, bShowSelect2)
+	gohelper.setActive(self._gounselect2, not bShowSelect2)
 end
 
 function StoreSkinGoodsView2:_buyCallback(cmd, resultCode, msg)
@@ -709,20 +771,91 @@ function StoreSkinGoodsView2:onDestroyView()
 	end
 
 	self.simageStoreSkinTips:UnLoadImage()
+	GameUtil.onDestroyViewMember(self, "_detail")
+	GameUtil.onDestroyViewMember(self, "_discountRmb")
+	GameUtil.onDestroyViewMember(self, "_discountCoin")
 end
 
 function StoreSkinGoodsView2:_refreshSpecial()
-	local info = self._goodsPriceInfo
+	local info = self._detail:getPriceMO()
 	local hasSpecialOfferItem = info.hasSpecialOfferItem
 
 	gohelper.setActive(self._gospecial, hasSpecialOfferItem)
-	gohelper.setActive(self._gospecialDescGo, hasSpecialOfferItem)
+	gohelper.setActive(self._gospecialDescGo, false)
 	self:_setActive_redOrOrange(hasSpecialOfferItem)
 end
 
 function StoreSkinGoodsView2:_setActive_redOrOrange(bRed)
 	gohelper.setActive(self._goimg_orange, not bRed)
 	gohelper.setActive(self._goimg_red, bRed)
+end
+
+function StoreSkinGoodsView2:onDiscountValueChanged()
+	local selectedCount = self._detail:selectedCount()
+	local bDetailEmpty = self._detail:bEmpty()
+
+	if self:bCostRMB() then
+		if selectedCount <= 0 then
+			self._discountRmb:setActive(false)
+		else
+			local rmbTotalReductionStr = self._detail:getRmbTotalReductionStr()
+
+			if rmbTotalReductionStr and not bDetailEmpty then
+				self._discountRmb:setDiscountStr(rmbTotalReductionStr)
+				self._discountRmb:setActive(true)
+			else
+				self._discountRmb:setActive(false)
+			end
+		end
+
+		local kCostIndex = StoreSkinGoodsView2.CostIndex.Coin
+
+		if not self._detail:bEmpty(kCostIndex) then
+			local coinPriceMO = self._detail:getPriceMO(kCostIndex)
+			local coinsTotalReductionStr = -coinPriceMO.coinsReduction
+			local validCount = self._detail:getValidInfoIndexCount(kCostIndex)
+
+			if validCount > 1 then
+				self._discountCoin:setDiscountStr(string.format(luaLang("StoreSkinGoodsView2_total_discount"), coinsTotalReductionStr))
+				self._discountCoin:setActive_icon1(false)
+			else
+				self._discountCoin:setActive_icon1(true)
+				self._discountCoin:setDiscountStr(coinsTotalReductionStr)
+			end
+		end
+	end
+
+	if self:bCostCoin() then
+		if selectedCount <= 0 then
+			self._discountCoin:setActive(false)
+		else
+			self._discountCoin:setActive(not bDetailEmpty)
+
+			if not bDetailEmpty then
+				local coinsTotalReductionStr = self._detail:getCoinsTotalReductionStr()
+
+				if selectedCount > 1 then
+					self._discountCoin:setDiscountStr(string.format(luaLang("StoreSkinGoodsView2_total_discount"), coinsTotalReductionStr))
+					self._discountCoin:setActive_icon1(false)
+				else
+					self._discountCoin:setActive_icon1(true)
+					self._discountCoin:setDiscountStr(coinsTotalReductionStr)
+				end
+			end
+		end
+
+		local kCostIndex = StoreSkinGoodsView2.CostIndex.RMB
+		local rmbTotalReductionStr = self._detail:getRmbTotalReductionStr(kCostIndex)
+
+		if rmbTotalReductionStr and not self._detail:bEmpty(kCostIndex) then
+			self._discountRmb:setDiscountStr(rmbTotalReductionStr)
+			self._discountRmb:setActive(true)
+		else
+			self._discountRmb:setActive(false)
+		end
+	end
+
+	self:_refreshCost()
 end
 
 return StoreSkinGoodsView2

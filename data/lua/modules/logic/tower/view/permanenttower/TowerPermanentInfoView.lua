@@ -179,8 +179,11 @@ function TowerPermanentInfoView:refreshUI()
 		end
 
 		for index, heroId in ipairs(subEpisodeMo.heroIds) do
+			local skinId = subEpisodeMo.skinIds[index]
+
 			table.insert(heroGroupDataList, {
-				id = heroId
+				id = heroId,
+				skinId = skinId
 			})
 		end
 
@@ -220,8 +223,9 @@ function TowerPermanentInfoView:showHeroGroupItem(obj, data, index)
 
 		if not heroMO then
 			local heroCo = HeroConfig.instance:getHeroCO(data.id)
+			local skinId = data.skinId or heroCo.skinId
 
-			skinConfig = SkinConfig.instance:getSkinCo(heroCo.skinId)
+			skinConfig = SkinConfig.instance:getSkinCo(skinId)
 		else
 			skinConfig = FightConfig.instance:getSkinCO(heroMO.skin)
 		end

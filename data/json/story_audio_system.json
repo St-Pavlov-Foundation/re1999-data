@@ -6078,5 +6078,215 @@
     "id": 923900019,
     "eventName": "play_battle_plot39_npc670414_wailing",
     "bankName": "npc670414_level_chongran3_9"
+  },
+  {
+    "id": 924000001,
+    "eventName": "play_level_chap14_hero3158_1",
+    "bankName": "hero3158_level_yingmen4_0"
+  },
+  {
+    "id": 924000002,
+    "eventName": "play_level_chap14_hero3004_2",
+    "bankName": "hero3004_level_yingmen4_0"
+  },
+  {
+    "id": 924000003,
+    "eventName": "play_level_chap14_hero3158_3",
+    "bankName": "hero3158_level_yingmen4_0"
+  },
+  {
+    "id": 924000004,
+    "eventName": "play_level_chap14_hero3158_4",
+    "bankName": "hero3158_level_yingmen4_0"
+  },
+  {
+    "id": 924000005,
+    "eventName": "play_level_chap14_hero3004_5",
+    "bankName": "hero3004_level_yingmen4_0"
+  },
+  {
+    "id": 924000006,
+    "eventName": "play_level_chap14_npc536903_7",
+    "bankName": "npc536903_level_yingmen4_0"
+  },
+  {
+    "id": 924000007,
+    "eventName": "play_level_chap14_npc536903_8",
+    "bankName": "npc536903_level_yingmen4_0"
+  },
+  {
+    "id": 924000008,
+    "eventName": "play_level_chap14_npc536903_9",
+    "bankName": "npc536903_level_yingmen4_0"
+  },
+  {
+    "id": 924000009,
+    "eventName": "play_level_chap14_hero3004_10",
+    "bankName": "hero3004_level_yingmen4_0"
+  },
+  {
+    "id": 924000010,
+    "eventName": "play_level_chap14_hero3004_12",
+    "bankName": "hero3004_level_yingmen4_0"
+  },
+  {
+    "id": 924000011,
+    "eventName": "play_level_chap14_hero3004_13",
+    "bankName": "hero3004_level_yingmen4_0"
+  },
+  {
+    "id": 924000012,
+    "eventName": "play_level_chap14_npc537702_14",
+    "bankName": ""
+  },
+  {
+    "id": 924000013,
+    "eventName": "play_level_chap14_hero3155_16",
+    "bankName": "hero3155_level_yingmen4_0"
+  },
+  {
+    "id": 924000014,
+    "eventName": "play_level_chap14_hero3155_17",
+    "bankName": "hero3155_level_yingmen4_0"
+  },
+  {
+    "id": 924000015,
+    "eventName": "play_level_chap14_hero3155_18",
+    "bankName": "hero3155_level_yingmen4_0"
+  },
+  {
+    "id": 924000016,
+    "eventName": "play_level_chap14_npc538203_19",
+    "bankName": "npc538203_level_yingmen4_0"
+  },
+  {
+    "id": 924000017,
+    "eventName": "play_level_chap14_npc538203_20",
+    "bankName": "npc538203_level_yingmen4_0"
+  },
+  {
+    "id": 924000018,
+    "eventName": "play_level_chap14_npc538203_21",
+    "bankName": "npc538203_level_yingmen4_0"
+  },
+  {
+    "id": 924000019,
+    "eventName": "play_level_chap14_hero3158_23",
+    "bankName": "hero3158_level_yingmen4_0"
+  },
+  {
+    "id": 924000020,
+    "eventName": "play_level_chap14_hero3158_24",
+    "bankName": "hero3158_level_yingmen4_0"
+  },
+  {
+    "id": 924000021,
+    "eventName": "play_level_chap14_npc537102_25",
+    "bankName": "npc537102_level_yingmen4_0"
+  },
+  {
+    "id": 924000022,
+    "eventName": "play_level_chap14_npc537102_26",
+    "bankName": "npc537102_level_yingmen4_0"
+  },
+  {
+    "id": 924000023,
+    "eventName": "play_level_chap14_npc537102_27",
+    "bankName": "npc537102_level_yingmen4_0"
+  },
+  {
+    "id": 924000024,
+    "eventName": "play_battle_chap14_npcnoname376_1",
+    "bankName": "npcnoname376_level_yingmen4_0"
+  },
+  {
+    "id": 924000025,
+    "eventName": "play_battle_chap14_npcnoname376_2",
+    "bankName": "npcnoname376_level_yingmen4_0"
+  },
+  {
+    "id": 924000026,
+    "eventName": "play_battle_chap14_npcnoname376_3",
+    "bankName": "npcnoname376_level_yingmen4_0"
+  },
+  {
+    "id": 924000027,
+    "eventName": "play_battle_chap14_npcnoname376_4",
+    "bankName": "npcnoname376_level_yingmen4_0"
+  },
+  {
+    "id": 924000028,
+    "eventName": "play_battle_chap14_hero3155_5",
+    "bankName": "hero3155_level_yingmen4_0"
+  },
+  {
+    "id": 924000029,
+    "eventName": "play_battle_chap14_hero3155_6",
+    "bankName": "hero3155_level_yingmen4_0"
+  },
+  {
+    "id": 924000030,
+    "eventName": "play_battle_chap14_hero3155_7",
+    "bankName": "hero3155_level_yingmen4_0"
+  },
+  {
+    "id": 924000031,
+    "eventName": "play_battle_chap14_hero3155_8",
+    "bankName": "hero3155_level_yingmen4_0"
+  },
+  {
+    "id": 924000032,
+    "eventName": "play_battle_chap14_npcnoname376_9",
+    "bankName": "npcnoname376_level_yingmen4_0"
+  },
+  {
+    "id": 924000033,
+    "eventName": "play_battle_chap14_hero3155_10",
+    "bankName": "hero3155_level_yingmen4_0"
+  },
+  {
+    "id": 924000034,
+    "eventName": "play_battle_chap14_hero3155_11",
+    "bankName": "hero3155_level_yingmen4_0"
+  },
+  {
+    "id": 924000035,
+    "eventName": "play_battle_chap14_hero3155_12",
+    "bankName": "hero3155_level_yingmen4_0"
+  },
+  {
+    "id": 924000036,
+    "eventName": "play_battle_chap14_hero3155_13",
+    "bankName": "hero3155_level_yingmen4_0"
+  },
+  {
+    "id": 924000037,
+    "eventName": "play_battle_chap14_npcnoname376_14",
+    "bankName": "npcnoname376_level_yingmen4_0"
+  },
+  {
+    "id": 924000038,
+    "eventName": "play_battle_chap14_npcnoname376_15",
+    "bankName": "npcnoname376_level_yingmen4_0"
+  },
+  {
+    "id": 924000039,
+    "eventName": "play_battle_chap14_npcnoname376_16",
+    "bankName": "npcnoname376_level_yingmen4_0"
+  },
+  {
+    "id": 924000040,
+    "eventName": "play_battle_chap14_hero3155_17",
+    "bankName": "hero3155_level_yingmen4_0"
+  },
+  {
+    "id": 924000041,
+    "eventName": "play_battle_chap14_npcnoname376_18",
+    "bankName": "npcnoname376_level_yingmen4_0"
+  },
+  {
+    "id": 924000042,
+    "eventName": "play_battle_chap14_npcnoname376_19",
+    "bankName": "npcnoname376_level_yingmen4_0"
   }
 ]

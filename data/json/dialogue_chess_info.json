@@ -1180,5 +1180,119 @@
     "id": 2,
     "res": "dialogue_hepingwulu_right",
     "pos": "165#0"
+  },
+  {
+    "dialogueId": 4001,
+    "id": 1,
+    "res": "dialogue_citizen_left",
+    "pos": "-165#0"
+  },
+  {
+    "dialogueId": 4001,
+    "id": 2,
+    "res": "dialogue_youth_left",
+    "pos": "-165#0"
+  },
+  {
+    "dialogueId": 4001,
+    "id": 3,
+    "res": "dialogue_deleike_right",
+    "pos": "165#0"
+  },
+  {
+    "dialogueId": 4002,
+    "id": 1,
+    "res": "dialogue_weiluonika_left",
+    "pos": "-165#0"
+  },
+  {
+    "dialogueId": 4002,
+    "id": 2,
+    "res": "dialogue_hongnujian_right",
+    "pos": "165#0"
+  },
+  {
+    "dialogueId": 4003,
+    "id": 1,
+    "res": "dialogue_keleiwusi_left",
+    "pos": "-165#0"
+  },
+  {
+    "dialogueId": 4003,
+    "id": 2,
+    "res": "dialogue_maersha_right",
+    "pos": "165#0"
+  },
+  {
+    "dialogueId": 4004,
+    "id": 1,
+    "res": "dialogue_boen_left",
+    "pos": "-165#0"
+  },
+  {
+    "dialogueId": 4004,
+    "id": 2,
+    "res": "dialogue_deleike_right",
+    "pos": "165#0"
+  },
+  {
+    "dialogueId": 4005,
+    "id": 1,
+    "res": "dialogue_helilian_left",
+    "pos": "-165#0"
+  },
+  {
+    "dialogueId": 4005,
+    "id": 2,
+    "res": "dialogue_nanxuetu_right",
+    "pos": "165#0"
+  },
+  {
+    "dialogueId": 4005,
+    "id": 3,
+    "res": "dialogue_aisilin_right",
+    "pos": "420#0"
+  },
+  {
+    "dialogueId": 4006,
+    "id": 1,
+    "res": "dialogue_bozedi_left",
+    "pos": "-165#0"
+  },
+  {
+    "dialogueId": 4006,
+    "id": 2,
+    "res": "dialogue_falangyan_right",
+    "pos": "165#0"
+  },
+  {
+    "dialogueId": 4007,
+    "id": 1,
+    "res": "dialogue_nanxuetu_left",
+    "pos": "-165#0"
+  },
+  {
+    "dialogueId": 4007,
+    "id": 2,
+    "res": "dialogue_nvxuetu_right",
+    "pos": "165#0"
+  },
+  {
+    "dialogueId": 4008,
+    "id": 1,
+    "res": "dialogue_falangyan_left",
+    "pos": "-165#0"
+  },
+  {
+    "dialogueId": 4008,
+    "id": 2,
+    "res": "dialogue_nanxuetu_right",
+    "pos": "165#0"
+  },
+  {
+    "dialogueId": 4008,
+    "id": 3,
+    "res": "dialogue_bozedi_right",
+    "pos": "420#0"
   }
 ]

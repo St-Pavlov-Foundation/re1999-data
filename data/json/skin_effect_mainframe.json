@@ -30,5 +30,13 @@
   {
     "id": 313503,
     "effect": "Drawables/bone4/effect-Bone/roleeffect_hdl_idle4"
+  },
+  {
+    "id": 315801,
+    "effect": "Drawables/bone/effect-Bone/roleeffect_dlk_idle0|Drawables/bone2/effect-Bone/roleeffect_dlk_idle2|Drawables/bone10/effect-Bone/roleeffect_dlk_idle10|Drawables/bone11/effect-Bone/roleeffect_dlk_idle11|Drawables/bone13/effect-Bone/roleeffect_dlk_idle13|Drawables/bone14/effect-Bone/roleeffect_dlk_idle14"
+  },
+  {
+    "id": 315802,
+    "effect": "Drawables/bone/effect-Bone/roleeffect_dlk_idle0|Drawables/bone2/effect-Bone/roleeffect_dlk_idle2|Drawables/bone10/effect-Bone/roleeffect_dlk_idle10|Drawables/bone11/effect-Bone/roleeffect_dlk_idle11|Drawables/bone13/effect-Bone/roleeffect_dlk_idle13|Drawables/bone14/effect-Bone/roleeffect_dlk_idle14"
   }
 ]

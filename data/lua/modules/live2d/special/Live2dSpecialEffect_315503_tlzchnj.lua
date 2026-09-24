@@ -1,0 +1,212 @@
+﻿-- chunkname: @modules/live2d/special/Live2dSpecialEffect_315503_tlzchnj.lua
+
+module("modules.live2d.special.Live2dSpecialEffect_315503_tlzchnj", package.seeall)
+
+local Live2dSpecialEffect_315503_tlzchnj = class("Live2dSpecialEffect_315503_tlzchnj", BaseLive2dSpecialEffect)
+local b_idle = "b_idle"
+local b_jiaohu01 = "b_jiaohu_01"
+local b_jiaohu03 = "b_jiaohu_03"
+local b_jiaohu04 = "b_jiaohu_04"
+local b_tanshou = "b_tanshou"
+local b_juntuan = "b_juntuan"
+local b_feixingqi = "b_feixingqi"
+local b_ruchang = "b_ruchang"
+local hideGhostBody = {
+	[b_tanshou] = true,
+	[b_juntuan] = true,
+	[b_feixingqi] = true
+}
+local anim_in = "315503_tlzchnj_in"
+local anim_out = "315503_tlzchnj_out"
+local anim_xs = "315503_tlzchnj_xs"
+local anim_yc = "315503_tlzchnj_yc"
+local anim_jh01 = "315503_tlzchnj_jh01"
+local anim_jh03 = "315503_tlzchnj_jh03"
+local anim_jh04 = "315503_tlzchnj_jh04"
+local audio_in = 1315590
+local audio_out = 1315591
+local showGhostTime = 60
+local hideGhostTime = 30
+local initShowGhostRate = 0.7
+
+function Live2dSpecialEffect_315503_tlzchnj:_onInit()
+	self._isInStoryView = ViewMgr.instance:isOpen(ViewName.StoryView)
+	self._changeGhostTime = Time.time
+
+	if not self._isInStoryView then
+		TaskDispatcher.runRepeat(self._updateByFrame, self, 0)
+	end
+end
+
+function Live2dSpecialEffect_315503_tlzchnj:showModel()
+	self._isHideModel = false
+end
+
+function Live2dSpecialEffect_315503_tlzchnj:hideModel()
+	gohelper.setActive(self._fadeInEffect, false)
+	gohelper.setActive(self._fadeOutEffect, false)
+
+	self._isHideModel = true
+end
+
+function Live2dSpecialEffect_315503_tlzchnj:showInScene(value)
+	self._showInScene = value
+
+	if not value and self._showGhost then
+		self._showGhost = false
+
+		self._animator:Play(anim_yc)
+	end
+
+	self._changeGhostTime = Time.time
+end
+
+function Live2dSpecialEffect_315503_tlzchnj:_isShowInScene()
+	return self._showInScene ~= false
+end
+
+function Live2dSpecialEffect_315503_tlzchnj:_viewOnTop()
+	local viewName = self._live2d and self._live2d:getViewName()
+
+	if viewName then
+		return ViewHelper.instance:checkViewOnTheTop(viewName)
+	end
+
+	return true
+end
+
+function Live2dSpecialEffect_315503_tlzchnj:_updateByFrame()
+	if self._curBodyHideGhost or self._isHideModel or not self:_isShowInScene() then
+		return
+	end
+
+	if not self:_viewOnTop() then
+		return
+	end
+
+	local changeGhostTime = Time.time - self._changeGhostTime
+	local canChange = self._showGhost and changeGhostTime >= showGhostTime or not self._showGhost and changeGhostTime >= hideGhostTime
+
+	if canChange then
+		self._changeGhostTime = Time.time
+		self._showGhost = not self._showGhost
+
+		if self._animator then
+			if self._showGhost then
+				self._animator:Play(anim_in)
+				gohelper.setActive(self._fadeInEffect, true)
+				gohelper.setActive(self._fadeOutEffect, false)
+				AudioMgr.instance:trigger(audio_in)
+			else
+				self._animator:Play(anim_out)
+				gohelper.setActive(self._fadeOutEffect, true)
+				gohelper.setActive(self._fadeInEffect, false)
+				AudioMgr.instance:trigger(audio_out)
+			end
+
+			self._showEffectTime = Time.time
+		end
+	end
+
+	if self._showEffectTime and Time.time - self._showEffectTime >= 3.5 then
+		self._showEffectTime = nil
+
+		gohelper.setActive(self._fadeOutEffect, false)
+		gohelper.setActive(self._fadeInEffect, false)
+	end
+end
+
+function Live2dSpecialEffect_315503_tlzchnj:setLive2d(live2d)
+	Live2dSpecialEffect_315503_tlzchnj.super.setLive2d(self, live2d)
+
+	self._spineGo = self._live2d:getSpineGo()
+	self._animator = gohelper.findChildComponent(self._spineGo, "Drawables/roleeffect_anim", typeof(UnityEngine.Animator))
+	self._animator.keepAnimatorStateOnDisable = true
+	self._showGhost = math.random() <= initShowGhostRate
+
+	if self._animator then
+		if self._showGhost then
+			self._animator:Play(anim_xs)
+		else
+			self._animator:Play(anim_yc)
+		end
+	end
+
+	self._fadeInEffect = gohelper.findChild(self._spineGo, "Drawables/bone6/effect-Bone/roleeffect_nws_in6")
+	self._fadeOutEffect = gohelper.findChild(self._spineGo, "Drawables/bone6/effect-Bone/roleeffect_nws_out6")
+end
+
+function Live2dSpecialEffect_315503_tlzchnj:_onBodyChange(prevBodyName, curBodyName)
+	if not self._animator or self._isInStoryView or not self:_isShowInScene() then
+		return
+	end
+
+	if curBodyName == b_jiaohu01 then
+		self._animator:Play(anim_jh01)
+
+		self._musicValue = SettingsModel.instance:getMusicValue()
+
+		SettingsModel.instance:setMusicValue(0)
+
+		self._effectValue = SettingsModel.instance:getEffectValue()
+
+		SettingsModel.instance:setEffectValue(0)
+	elseif curBodyName == b_jiaohu03 then
+		self._animator:Play(anim_jh03)
+	elseif curBodyName == b_jiaohu04 then
+		self._animator:Play(anim_jh04)
+	elseif curBodyName == b_ruchang then
+		if self._showGhost then
+			self._animator:Play(anim_yc)
+
+			self._showGhost = false
+		end
+
+		self._changeGhostTime = Time.time
+	end
+
+	local oldStatus = self._curBodyHideGhost
+
+	self._curBodyHideGhost = hideGhostBody[curBodyName]
+
+	if self._curBodyHideGhost and self._showGhost then
+		self._showGhost = false
+
+		self._animator:Play(anim_out)
+	end
+
+	if oldStatus ~= self._curBodyHideGhost then
+		self._changeGhostTime = Time.time
+	end
+
+	if prevBodyName == b_jiaohu03 or prevBodyName == b_jiaohu04 then
+		CharacterVoiceController.instance:dispatchEvent(CharacterVoiceEvent.PlayMainViewAnim, "mainview_in")
+		self:_resetMusicValue()
+	end
+end
+
+function Live2dSpecialEffect_315503_tlzchnj:_resetMusicValue()
+	if self._musicValue then
+		if SettingsModel.instance:getMusicValue() == 0 then
+			SettingsModel.instance:setMusicValue(self._musicValue)
+		end
+
+		self._musicValue = nil
+	end
+
+	if self._effectValue then
+		if SettingsModel.instance:getEffectValue() == 0 then
+			SettingsModel.instance:setEffectValue(self._effectValue)
+		end
+
+		self._effectValue = nil
+	end
+end
+
+function Live2dSpecialEffect_315503_tlzchnj:onDestroy()
+	Live2dSpecialEffect_315503_tlzchnj.super.onDestroy(self)
+	self:_resetMusicValue()
+	TaskDispatcher.cancelTask(self._updateByFrame, self)
+end
+
+return Live2dSpecialEffect_315503_tlzchnj

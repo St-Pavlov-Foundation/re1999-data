@@ -1,0 +1,74 @@
+[
+  {
+    "id": 10000201,
+    "groupId": 100002,
+    "badgeTitle": "沉思者",
+    "desc": "参与迷思海无底涡流深度达到1000米",
+    "listenerType": "DungeonResult",
+    "listenerParam": "2",
+    "maxProgress": 1000,
+    "sortId": 1,
+    "level": 1,
+    "icon": "10000201"
+  },
+  {
+    "id": 10000301,
+    "groupId": 100003,
+    "badgeTitle": "一千零一夜",
+    "desc": "参与臆想潮达到4000映射值",
+    "listenerType": "DungeonResult",
+    "listenerParam": "1",
+    "maxProgress": 4000,
+    "sortId": 1,
+    "level": 1,
+    "icon": "10000301"
+  },
+  {
+    "id": 10000401,
+    "groupId": 100004,
+    "badgeTitle": "八部半",
+    "desc": "参与当期焦点闪回所有战斗达到12星",
+    "listenerType": "DungeonResult",
+    "listenerParam": "4",
+    "maxProgress": 12,
+    "sortId": 1,
+    "level": 1,
+    "icon": "10000401"
+  },
+  {
+    "id": 10000501,
+    "groupId": 100005,
+    "badgeTitle": "三个火枪手Ⅰ",
+    "desc": "助战其他玩家5次",
+    "listenerType": "AssistCount",
+    "listenerParam": "",
+    "maxProgress": 1,
+    "sortId": 1,
+    "level": 1,
+    "icon": "10000501"
+  },
+  {
+    "id": 10000502,
+    "groupId": 100005,
+    "badgeTitle": "三个火枪手Ⅱ",
+    "desc": "助战其他玩家15次",
+    "listenerType": "AssistCount",
+    "listenerParam": "",
+    "maxProgress": 3,
+    "sortId": 2,
+    "level": 2,
+    "icon": "10000502"
+  },
+  {
+    "id": 10000503,
+    "groupId": 100005,
+    "badgeTitle": "三个火枪手Ⅲ",
+    "desc": "助战其他玩家30次",
+    "listenerType": "AssistCount",
+    "listenerParam": "",
+    "maxProgress": 5,
+    "sortId": 3,
+    "level": 3,
+    "icon": "10000503"
+  }
+]

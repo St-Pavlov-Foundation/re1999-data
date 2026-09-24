@@ -145,16 +145,10 @@ function Activity128Rpc:sendSetAct128TeamRequest(activityId, bossId, callback, c
 		local info = infos[i]
 		local uid = info and info.uid or "0"
 		local friendUserId = info and info.friendUserId or "0"
-		local isFriend = info and info.isFriend or friendUserId ~= "0"
-
-		if uid ~= "0" and not isFriend and not HeroModel.instance:getById(uid) then
-			uid = "0"
-		end
-
 		local no = i > 4 and req.backHeroSlots:add() or req.frontHeroSlots:add()
 
 		no.uid = uid
-		no.isFriend = isFriend
+		no.isFriend = friendUserId ~= "0"
 		no.friendUserId = friendUserId
 	end
 

@@ -85,7 +85,8 @@ function SummonMainController:trySetDefaultPoolId(param)
 	local jumpPoolId
 
 	if param == nil or param.defaultTabIds == nil then
-		local defaultPool = SummonMainModel.instance:getFirstValidPool()
+		local caMO = SummonMainCategoryListModel.instance:getByIndex(1)
+		local defaultPool = caMO and caMO.originConf or SummonMainModel.instance:getFirstValidPool()
 
 		if defaultPool then
 			jumpPoolId = defaultPool.id

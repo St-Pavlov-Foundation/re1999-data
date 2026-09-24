@@ -1,0 +1,26 @@
+[
+  {
+    "effectId": 500101,
+    "effectGroupId": 5001,
+    "effectType": "clear_range",
+    "targetType": "board",
+    "rangeType": "square",
+    "param1": "3",
+    "param2": "3",
+    "countChain": 1,
+    "countFever": 1,
+    "desc": "主动技能范围消除"
+  },
+  {
+    "effectId": 500201,
+    "effectGroupId": 5002,
+    "effectType": "damage_buff",
+    "targetType": "self",
+    "rangeType": "none",
+    "param1": "clearCount>=10",
+    "param2": "damage+8%",
+    "countChain": 0,
+    "countFever": 0,
+    "desc": "被动增伤"
+  }
+]

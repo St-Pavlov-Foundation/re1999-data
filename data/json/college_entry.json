@@ -1,0 +1,200 @@
+[
+  {
+    "id": 4023101,
+    "quality": 1,
+    "tags": "b_mat1",
+    "description": "委托到<#FFEA73>建筑</color>中时，<sprite=0><#FFEA73>观象镜</color>产出提升<#FFEA73>20%</color>"
+  },
+  {
+    "id": 4023102,
+    "quality": 1,
+    "tags": "b_mat2",
+    "description": "委托到<#FFEA73>建筑</color>中时，<sprite=1><#FFEA73>无眠烛台</color>产出提升<#FFEA73>20%</color>"
+  },
+  {
+    "id": 4023103,
+    "quality": 1,
+    "tags": "b_mat3",
+    "description": "委托到<#FFEA73>建筑</color>中时，<sprite=2><#FFEA73>银枝的新芽</color>产出提升<#FFEA73>20%</color>"
+  },
+  {
+    "id": 4023104,
+    "quality": 1,
+    "tags": "l_mat1",
+    "description": "委托到<#FFEA73>据点</color>中时，<sprite=0><#FFEA73>观象镜</color>产出提升<#FFEA73>20%</color>"
+  },
+  {
+    "id": 4023105,
+    "quality": 1,
+    "tags": "l_mat2",
+    "description": "委托到<#FFEA73>据点</color>中时，<sprite=1><#FFEA73>无眠烛台</color>产出提升<#FFEA73>20%</color>"
+  },
+  {
+    "id": 4023106,
+    "quality": 1,
+    "tags": "l_mat3",
+    "description": "委托到<#FFEA73>据点</color>中时，<sprite=2><#FFEA73>银枝的新芽</color>产出提升<#FFEA73>20%</color>"
+  },
+  {
+    "id": 4023107,
+    "quality": 1,
+    "tags": "",
+    "description": "<#FFEA73>学员</color>升级所需资源降低10%"
+  },
+  {
+    "id": 4023108,
+    "quality": 1,
+    "tags": "dorm",
+    "description": "委托到宿舍时，出现<#FFEA73>高级学员</color>的概率提升<#FFEA73>2%</color>"
+  },
+  {
+    "id": 4023109,
+    "quality": 1,
+    "tags": "dorm",
+    "description": "委托到宿舍时，结识<#FFEA73>学员</color>的消耗降低5%"
+  },
+  {
+    "id": 4023110,
+    "quality": 1,
+    "tags": "refresh",
+    "description": "委托到教室时，重置<#FFEA73>专长</color>时出现<#FFEA73>高级专长</color>的概率提升<#FFEA73>2%</color>"
+  },
+  {
+    "id": 4023111,
+    "quality": 1,
+    "tags": "refresh",
+    "description": "委托到教室时，重置<#FFEA73>专长</color>消耗降低5%"
+  },
+  {
+    "id": 4023201,
+    "quality": 2,
+    "tags": "b_mat1",
+    "description": "委托到<#FFEA73>建筑</color>中时，<sprite=0><#FFEA73>观象镜</color>产出提升<#FFEA73>40%</color>"
+  },
+  {
+    "id": 4023202,
+    "quality": 2,
+    "tags": "b_mat2",
+    "description": "委托到<#FFEA73>建筑</color>中时，<sprite=1><#FFEA73>无眠烛台</color>产出提升<#FFEA73>40%</color>"
+  },
+  {
+    "id": 4023203,
+    "quality": 2,
+    "tags": "b_mat3",
+    "description": "委托到<#FFEA73>建筑</color>中时，<sprite=2><#FFEA73>银枝的新芽</color>产出提升<#FFEA73>40%</color>"
+  },
+  {
+    "id": 4023204,
+    "quality": 2,
+    "tags": "l_mat1",
+    "description": "委托到<#FFEA73>据点</color>中时，<sprite=0><#FFEA73>观象镜</color>产出提升<#FFEA73>40%</color>"
+  },
+  {
+    "id": 4023205,
+    "quality": 2,
+    "tags": "l_mat2",
+    "description": "委托到<#FFEA73>据点</color>中时，<sprite=1><#FFEA73>无眠烛台</color>产出提升<#FFEA73>40%</color>"
+  },
+  {
+    "id": 4023206,
+    "quality": 2,
+    "tags": "l_mat3",
+    "description": "委托到<#FFEA73>据点</color>中时，<sprite=2><#FFEA73>银枝的新芽</color>产出提升<#FFEA73>40%</color>"
+  },
+  {
+    "id": 4023207,
+    "quality": 2,
+    "tags": "",
+    "description": "<#FFEA73>学员</color>升级所需资源降低20%"
+  },
+  {
+    "id": 4023208,
+    "quality": 2,
+    "tags": "dorm",
+    "description": "委托到宿舍时，出现<#FFEA73>高级学员</color>的概率提升<#FFEA73>3%</color>"
+  },
+  {
+    "id": 4023209,
+    "quality": 2,
+    "tags": "dorm",
+    "description": "委托到宿舍时，结识<#FFEA73>学员</color>消耗降低8%"
+  },
+  {
+    "id": 4023210,
+    "quality": 2,
+    "tags": "refresh",
+    "description": "委托到教室时，重置<#FFEA73>专长</color>出现<#FFEA73>高级专长</color>的概率提升<#FFEA73>3%</color>"
+  },
+  {
+    "id": 4023211,
+    "quality": 2,
+    "tags": "refresh",
+    "description": "委托到教室时，重置<#FFEA73>专长</color>消耗降低8%"
+  },
+  {
+    "id": 4023301,
+    "quality": 3,
+    "tags": "b_mat1",
+    "description": "委托到<#FFEA73>建筑</color>中时，<sprite=0><#FFEA73>观象镜</color>产出提升<#FFEA73>50%</color>"
+  },
+  {
+    "id": 4023302,
+    "quality": 3,
+    "tags": "b_mat2",
+    "description": "委托到<#FFEA73>建筑</color>中时，<sprite=1><#FFEA73>无眠烛台</color>产出提升<#FFEA73>50%</color>"
+  },
+  {
+    "id": 4023303,
+    "quality": 3,
+    "tags": "b_mat3",
+    "description": "委托到<#FFEA73>建筑</color>中时，<sprite=2><#FFEA73>银枝的新芽</color>产出提升<#FFEA73>50%</color>"
+  },
+  {
+    "id": 4023304,
+    "quality": 3,
+    "tags": "l_mat1",
+    "description": "委托到<#FFEA73>据点</color>中时，<sprite=0><#FFEA73>观象镜</color>产出提升<#FFEA73>50%</color>"
+  },
+  {
+    "id": 4023305,
+    "quality": 3,
+    "tags": "l_mat2",
+    "description": "委托到<#FFEA73>据点</color>中时，<sprite=1><#FFEA73>无眠烛台</color>产出提升<#FFEA73>50%</color>"
+  },
+  {
+    "id": 4023306,
+    "quality": 3,
+    "tags": "l_mat3",
+    "description": "委托到<#FFEA73>据点</color>中时，<sprite=2><#FFEA73>银枝的新芽</color>产出提升<#FFEA73>50%</color>"
+  },
+  {
+    "id": 4023307,
+    "quality": 3,
+    "tags": "",
+    "description": "<#FFEA73>学员</color>升级所需资源降低30%"
+  },
+  {
+    "id": 4023308,
+    "quality": 3,
+    "tags": "dorm",
+    "description": "委托到宿舍时，出现<#FFEA73>高级学员</color>的概率提升<#FFEA73>5%</color>"
+  },
+  {
+    "id": 4023309,
+    "quality": 3,
+    "tags": "dorm",
+    "description": "委托到宿舍时，结识<#FFEA73>学员</color>的消耗降低10%"
+  },
+  {
+    "id": 4023310,
+    "quality": 3,
+    "tags": "refresh",
+    "description": "委托到教室时，重置<#FFEA73>专长</color>出现<#FFEA73>高级专长</color>的概率提升<#FFEA73>5%</color>"
+  },
+  {
+    "id": 4023311,
+    "quality": 3,
+    "tags": "refresh",
+    "description": "委托到教室时，重置<#FFEA73>专长</color>消耗降低10%"
+  }
+]

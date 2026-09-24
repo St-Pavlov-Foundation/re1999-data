@@ -163,5 +163,12 @@ module_views.GM_V3a1_GaoSiNiao_GameView = {
 	layer = "TOP",
 	viewType = ViewType.Modal
 }
+module_views.GM_SettingsAccountView = {
+	destroy = 0,
+	container = "GM_SettingsAccountViewContainer",
+	mainRes = "ui/viewres/gm/gm_settingsaccountview.prefab",
+	layer = "TOP",
+	viewType = ViewType.Modal
+}
 
 return module_views

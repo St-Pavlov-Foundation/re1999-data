@@ -83,7 +83,7 @@ function BpMainBtnItem:_initReddotitem()
 	do
 		local rGo = gohelper.findChild(go, "go_activityreddot")
 
-		self._redDot = RedDotController.instance:addRedDot(rGo, RedDotEnum.DotNode.BattlePass)
+		self._redDot = RedDotController.instance:addRedDot(rGo, RedDotEnum.DotNode.BattlePass2)
 
 		return
 	end
@@ -100,7 +100,7 @@ function BpMainBtnItem:_initReddotitem()
 
 	local redGo = gohelper.findChild(redGos, "#go_bp_red")
 
-	self._redDot = RedDotController.instance:addRedDotTag(redGo, RedDotEnum.DotNode.BattlePass, false, self._onRefreshDot, self)
+	self._redDot = RedDotController.instance:addRedDotTag(redGo, RedDotEnum.DotNode.BattlePass2, false, self._onRefreshDot, self)
 	self._btnitem2 = gohelper.getClickWithAudio(redGo, AudioEnum2_6.BP.MainBtn)
 end
 

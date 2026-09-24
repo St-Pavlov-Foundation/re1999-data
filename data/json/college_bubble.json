@@ -1,0 +1,122 @@
+[
+  {
+    "id": 4070001,
+    "buildingId": 4010001,
+    "actorId": 0,
+    "text": "§反射工坊对话文本1",
+    "weight": 100,
+    "dailyPlayOnce": 1
+  },
+  {
+    "id": 4070002,
+    "buildingId": 4010001,
+    "actorId": 4020001,
+    "text": "§反射工坊维尔汀对话文本1",
+    "weight": 100,
+    "dailyPlayOnce": 1
+  },
+  {
+    "id": 4070003,
+    "buildingId": 4010001,
+    "actorId": 0,
+    "text": "§反射工坊对话文本2",
+    "weight": 100,
+    "dailyPlayOnce": 0
+  },
+  {
+    "id": 4070004,
+    "buildingId": 4010002,
+    "actorId": 0,
+    "text": "§引光室对话文本1",
+    "weight": 100,
+    "dailyPlayOnce": 0
+  },
+  {
+    "id": 4070005,
+    "buildingId": 4010002,
+    "actorId": 4020001,
+    "text": "§引光室维尔汀对话文本1",
+    "weight": 100,
+    "dailyPlayOnce": 0
+  },
+  {
+    "id": 4070006,
+    "buildingId": 4010002,
+    "actorId": 0,
+    "text": "§引光室对话文本2",
+    "weight": 100,
+    "dailyPlayOnce": 0
+  },
+  {
+    "id": 4070007,
+    "buildingId": 4010003,
+    "actorId": 0,
+    "text": "§常春温室对话文本1",
+    "weight": 100,
+    "dailyPlayOnce": 0
+  },
+  {
+    "id": 4070008,
+    "buildingId": 4010003,
+    "actorId": 4020001,
+    "text": "§常春温室维尔汀对话文本1",
+    "weight": 100,
+    "dailyPlayOnce": 2
+  },
+  {
+    "id": 4070009,
+    "buildingId": 4010003,
+    "actorId": 0,
+    "text": "§常春温室对话文本2",
+    "weight": 100,
+    "dailyPlayOnce": 2
+  },
+  {
+    "id": 4070010,
+    "buildingId": 4010004,
+    "actorId": 0,
+    "text": "§宿舍对话文本1",
+    "weight": 100,
+    "dailyPlayOnce": 0
+  },
+  {
+    "id": 4070011,
+    "buildingId": 4010004,
+    "actorId": 4020001,
+    "text": "§宿舍维尔汀对话文本1",
+    "weight": 100,
+    "dailyPlayOnce": 0
+  },
+  {
+    "id": 4070012,
+    "buildingId": 4010004,
+    "actorId": 0,
+    "text": "§宿舍对话文本2",
+    "weight": 100,
+    "dailyPlayOnce": 0
+  },
+  {
+    "id": 4070013,
+    "buildingId": 4010005,
+    "actorId": 0,
+    "text": "§学院主楼对话文本1",
+    "weight": 100,
+    "dailyPlayOnce": 0
+  },
+  {
+    "id": 4070014,
+    "buildingId": 4010005,
+    "actorId": 4020001,
+    "text": "§学院主楼维尔汀对话文本1",
+    "weight": 100,
+    "dailyPlayOnce": 0
+  },
+  {
+    "id": 4070015,
+    "buildingId": 4010005,
+    "actorId": 0,
+    "text": "§学院主楼对话文本2",
+    "weight": 100,
+    "dailyPlayOnce": 0
+  }
+]

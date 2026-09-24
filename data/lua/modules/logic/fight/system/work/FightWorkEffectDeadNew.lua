@@ -21,6 +21,11 @@ function FightWorkEffectDeadNew:onStart()
 
 	self._deadEntity = FightHelper.getEntity(self.actEffectData.targetId)
 
+	if self._deadEntity then
+		self._deadEntity:resetSpineMat()
+		self._deadEntity:resetAnimState()
+	end
+
 	if self._deadEntity and not self._deadEntity.isDead then
 		self._deadEntity.isDead = true
 

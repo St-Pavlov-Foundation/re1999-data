@@ -1,0 +1,782 @@
+[
+  {
+    "groupId": 1,
+    "step": 1,
+    "name": "",
+    "text": "§在某些传说中，月见草是月亮女神赠予世人的礼物。",
+    "actorId": 4020006,
+    "pos": "32.22#-21.03",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 1,
+    "step": 2,
+    "name": "",
+    "text": "§这种花只在夜间绽放，种子还能榨油，常用于调理身体和治疗淤伤。",
+    "actorId": 4020006,
+    "pos": "32.22#-21.03",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 1,
+    "step": 3,
+    "name": "好学的学徒",
+    "text": "§原来如此……",
+    "actorId": 4021001,
+    "pos": "33.28#-20.69",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 1,
+    "step": 4,
+    "name": "",
+    "text": "§它的花瓣能适应夜间环境，还会吸引夜行昆虫传粉，从某种角度来说，这也是它的生存智慧。",
+    "actorId": 4020006,
+    "pos": "32.22#-21.03",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 1,
+    "step": 5,
+    "name": "好学的学徒",
+    "text": "§生存智慧……植物也会思考吗？",
+    "actorId": 4021001,
+    "pos": "33.28#-20.69",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 1,
+    "step": 6,
+    "name": "",
+    "text": "§好问题！虽然目前并没有证据表明，植物会像动物一样思考……",
+    "actorId": 4020006,
+    "pos": "32.22#-21.03",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 1,
+    "step": 7,
+    "name": "",
+    "text": "§但我正在研究再生学和交流学的学科合作，或许之后我们就能破译植物的思维方式——",
+    "actorId": 4020006,
+    "pos": "32.22#-21.03",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 1,
+    "step": 8,
+    "name": "",
+    "text": "§甚至可能发现魔精和植物也会对存在主义提出自己的见解！",
+    "actorId": 4020006,
+    "pos": "32.22#-21.03",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 1,
+    "step": 9,
+    "name": "",
+    "text": "§你们在讨论什么？",
+    "actorId": 4020002,
+    "pos": "32.96#-21.52",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 1,
+    "step": 10,
+    "name": "好学的学徒",
+    "text": "§安琪蕾特老师正在给我讲月见草的相关知识！",
+    "actorId": 4021001,
+    "pos": "33.28#-20.69",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 1,
+    "step": 11,
+    "name": "",
+    "text": "§互相交流是件好事，不过安琪蕾特，你是不是忘了自己还有一门课要上？",
+    "actorId": 4020002,
+    "pos": "32.96#-21.52",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 1,
+    "step": 12,
+    "name": "",
+    "text": "§……糟糕！我好像已经迟到了三十分钟！老师，我先走了！",
+    "actorId": 4020006,
+    "pos": "32.22#-21.03",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 1,
+    "step": 13,
+    "name": "好学的学徒",
+    "text": "§……等等。安琪蕾特……老师，你也要去上课？",
+    "actorId": 4021001,
+    "pos": "33.28#-20.69",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 2,
+    "step": 1,
+    "name": "",
+    "text": "§咦？这里……怎么有一块空白的石板？",
+    "actorId": 4020005,
+    "pos": "66.47#-11.87",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 2,
+    "step": 2,
+    "name": "",
+    "text": "§没有刻字，也没有使用过的痕迹。",
+    "actorId": 4020005,
+    "pos": "66.47#-11.87",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 2,
+    "step": 3,
+    "name": "",
+    "text": "§你发现了你的礼物，波泽蒂！",
+    "actorId": 4020004,
+    "pos": "67.71#-11.88",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 2,
+    "step": 4,
+    "name": "",
+    "text": "§礼物？",
+    "actorId": 4020005,
+    "pos": "66.47#-11.87",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 2,
+    "step": 5,
+    "name": "",
+    "text": "§波泽蒂每天要帮学会记录很多东西，却没有一块自己的石板！",
+    "actorId": 4020004,
+    "pos": "67.71#-11.88",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 2,
+    "step": 6,
+    "name": "",
+    "text": "§谢谢你，但是……我要用石板做什么呢？",
+    "actorId": 4020005,
+    "pos": "66.47#-11.87",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 2,
+    "step": 7,
+    "name": "",
+    "text": "§当然是用来让波泽蒂记录波泽蒂。",
+    "actorId": 4020004,
+    "pos": "67.71#-11.88",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 2,
+    "step": 8,
+    "name": "",
+    "text": "§比如今天大家一起吃了苹果派，还有波泽蒂在草坪上被渡渡鸟蛋绊倒了三次。",
+    "actorId": 4020004,
+    "pos": "67.71#-11.88",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 2,
+    "step": 9,
+    "name": "",
+    "text": "§……绊倒的那个，就、就不用记录了吧。",
+    "actorId": 4020005,
+    "pos": "66.47#-11.87",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 2,
+    "step": 10,
+    "name": "",
+    "text": "§为什么？因为字太多了不好刻吗？",
+    "actorId": 4020004,
+    "pos": "67.71#-11.88",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 2,
+    "step": 11,
+    "name": "",
+    "text": "§没关系，如果波泽蒂累了，我还有凿不累的左手帮你！",
+    "actorId": 4020004,
+    "pos": "67.71#-11.88",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 2,
+    "step": 12,
+    "name": "",
+    "text": "§……我不是……算了，珐琅眼，谢谢你的礼物。",
+    "actorId": 4020005,
+    "pos": "66.47#-11.87",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 3,
+    "step": 1,
+    "name": "困惑的学徒",
+    "text": "§你今天为什么不去上课？",
+    "actorId": 4021001,
+    "pos": "51.4#-24.4",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 3,
+    "step": 2,
+    "name": "没课上的学徒",
+    "text": "§哈哈，因为无课可上。",
+    "actorId": 4021002,
+    "pos": "52.1#-23.9",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 3,
+    "step": 3,
+    "name": "困惑的学徒",
+    "text": "§哈，常见情况之一。很难说哪一种更糟——我到现在都没弄明白导师想教我什么。",
+    "actorId": 4021001,
+    "pos": "51.4#-24.4",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 3,
+    "step": 4,
+    "name": "没课上的学徒",
+    "text": "§至少你的导师还会出现。我的导师每天都让我思考一个问题。",
+    "actorId": 4021002,
+    "pos": "52.1#-23.9",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 3,
+    "step": 5,
+    "name": "困惑的学徒",
+    "text": "§梦境究竟是现实的投影，抑或现实本身就是一场梦。",
+    "actorId": 4021001,
+    "pos": "51.4#-24.4",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 3,
+    "step": 6,
+    "name": "没课上的学徒",
+    "text": "§……完全听不懂。",
+    "actorId": 4021002,
+    "pos": "52.1#-23.9",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 3,
+    "step": 7,
+    "name": "困惑的学徒",
+    "text": "§我也是。而且他讲到一半，自己就先睡着了。",
+    "actorId": 4021001,
+    "pos": "51.4#-24.4",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 3,
+    "step": 8,
+    "name": "没课上的学徒",
+    "text": "§所以，你就来书库自学了？",
+    "actorId": 4021002,
+    "pos": "52.1#-23.9",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 3,
+    "step": 9,
+    "name": "困惑的学徒",
+    "text": "§挺好的，而且书库里还有靠垫，累了就睡，醒了还能继续学习。",
+    "actorId": 4021001,
+    "pos": "51.4#-24.4",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 3,
+    "step": 10,
+    "name": "没课上的学徒",
+    "text": "§你不介意旁边凿石板的声音？",
+    "actorId": 4021002,
+    "pos": "52.1#-23.9",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 3,
+    "step": 11,
+    "name": "困惑的学徒",
+    "text": "§不介意。听久了以后，我觉得那种声音分明就代表着“思考”。",
+    "actorId": 4021001,
+    "pos": "51.4#-24.4",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 4,
+    "step": 1,
+    "name": "",
+    "text": "§你们是来帮忙凿石板的吗？",
+    "actorId": 4020004,
+    "pos": "53.05#-24.2",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 4,
+    "step": 2,
+    "name": "困惑的学徒",
+    "text": "§不……我还没弄清我该刻点什么。",
+    "actorId": 4021001,
+    "pos": "51.4#-24.4",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 4,
+    "step": 3,
+    "name": "困惑的学徒",
+    "text": "§我的导师让我来书库研究“灵性的孔隙”装置。",
+    "actorId": 4021001,
+    "pos": "51.4#-24.4",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 4,
+    "step": 4,
+    "name": "困惑的学徒",
+    "text": "§你们见过那玩意吗？",
+    "actorId": 4021001,
+    "pos": "51.4#-24.4",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 4,
+    "step": 5,
+    "name": "",
+    "text": "§“孔隙”？你是指……那个用蜡烛、小孔和石板组成的装置吗？",
+    "actorId": 4020005,
+    "pos": "52.1#-23.9",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 4,
+    "step": 6,
+    "name": "",
+    "text": "§是那个怪怪的，不太稳当的大东西吗？",
+    "actorId": 4020004,
+    "pos": "53.05#-24.2",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 4,
+    "step": 7,
+    "name": "",
+    "text": "§而你要研究……一个大东西上的小孔？那是做什么的？",
+    "actorId": 4020004,
+    "pos": "53.05#-24.2",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 4,
+    "step": 8,
+    "name": "",
+    "text": "§它能让蜡烛的光在石板上留下倒影。",
+    "actorId": 4020005,
+    "pos": "52.1#-23.9",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 4,
+    "step": 9,
+    "name": "",
+    "text": "§听说灵智学的老师们认为，这个小孔能够连接仙境和某个……流动的“意识之海”？",
+    "actorId": 4020005,
+    "pos": "52.1#-23.9",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 4,
+    "step": 10,
+    "name": "困惑的学徒",
+    "text": "§噢！我的导师也说过类似的话，我记得是类似于“幻象和现实，也许会在同一条河流中交汇。”这种不知所云的说法。",
+    "actorId": 4021001,
+    "pos": "51.4#-24.4",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 4,
+    "step": 11,
+    "name": "",
+    "text": "§我听不懂。你要凿石板的话，就告诉我们。",
+    "actorId": 4020004,
+    "pos": "53.05#-24.2",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 4,
+    "step": 12,
+    "name": "困惑的学徒",
+    "text": "§麻烦祝我早点搞明白自己要凿刻些什么！",
+    "actorId": 4021001,
+    "pos": "51.4#-24.4",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 5,
+    "step": 1,
+    "name": "波泽蒂",
+    "text": "没关系，我可以撑住的……我可以……！",
+    "actorId": -1,
+    "pos": "70.88#-10.5",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 5,
+    "step": 2,
+    "name": "珐琅眼",
+    "text": "唔……我是椅子腿，椅子腿不会弯曲！",
+    "actorId": -1,
+    "pos": "70.88#-10.5",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 5,
+    "step": 3,
+    "name": "安琪蕾特",
+    "text": "撑住啊两位，这次我们一定能够到树顶……哇啊！",
+    "actorId": -1,
+    "pos": "70.88#-10.5",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 6,
+    "step": 1,
+    "name": "",
+    "text": "最近总听说有人因为爬树而摔倒，放几个脚凳在这里吧……树上到底有什么？",
+    "actorId": 4020007,
+    "pos": "69.33#-10.91",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 7,
+    "step": 1,
+    "name": "",
+    "text": "飞鸟一样的蛋壳纹路，以及交叠的……薯条？这是什么意思？",
+    "actorId": 4022002,
+    "pos": "40.84#-15.18",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 7,
+    "step": 2,
+    "name": "",
+    "text": "明亮而稳定的火焰，没有灰烟，也没有倒灌的烛泪。近期运势平稳，再好不过。",
+    "actorId": 4021012,
+    "pos": "42.62#-14.58",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 8,
+    "step": 1,
+    "name": "",
+    "text": "烛火飘忽不定，但没有烛泪，看来最近要多加小心……",
+    "actorId": 4022002,
+    "pos": "40.84#-15.18",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 8,
+    "step": 2,
+    "name": "",
+    "text": "今日运势：蜂蜜与苦艾酒，轻盈完满。唔，虽然是好话，但与前几天的占星结果不太一致……",
+    "actorId": 4021012,
+    "pos": "42.62#-14.58",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 9,
+    "step": 1,
+    "name": "",
+    "text": "碎玻璃一样的蛋壳纹路……昨晚还梦见了蛇，这下好了……",
+    "actorId": 4022002,
+    "pos": "40.84#-15.18",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 9,
+    "step": 2,
+    "name": "",
+    "text": "蛋壳上的纹路像是……跳过围栏的羊群？是我最近睡得太少了吗？",
+    "actorId": 4021012,
+    "pos": "42.62#-14.58",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 10,
+    "step": 1,
+    "name": "",
+    "text": "究竟是仙境渡渡的蛋占卜结果更准确，还是占星结果更准确呢？……或许我要做个研究了。",
+    "actorId": 4021010,
+    "pos": "42.62#-14.58",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 11,
+    "step": 1,
+    "name": "",
+    "text": "听人说故意刻坏石板的学生会被泥浆吞噬……应该不是真的吧？",
+    "actorId": 4021016,
+    "pos": "40.84#-15.18",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 11,
+    "step": 2,
+    "name": "",
+    "text": "大家真的不知道“阁楼上的亡灵一家”的传言真相是几只魔精在偷微尘吗？",
+    "actorId": 4021004,
+    "pos": "42.62#-14.58",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 12,
+    "step": 1,
+    "name": "",
+    "text": "昨天我做了个诡异的梦，梦里总觉得有无数只眼睛在看我……像戒律学导师被一直复制复制复制……",
+    "actorId": 4021001,
+    "pos": "40.84#-15.18",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 12,
+    "step": 2,
+    "name": "",
+    "text": "无人触碰的小刀，刀刃突然流出鲜血……听起来还没有创造学老师的奇思妙想吓人。",
+    "actorId": 4021008,
+    "pos": "42.62#-14.58",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 13,
+    "step": 1,
+    "name": "",
+    "text": "大家都在传森林里出现了八翼仙境渡渡的事情……",
+    "actorId": 4021003,
+    "pos": "40.84#-15.18",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 13,
+    "step": 2,
+    "name": "",
+    "text": "今天看完这本书，我就奖励自己周末去调查“蜡池中的女人”这个传言……",
+    "actorId": 4021015,
+    "pos": "42.62#-14.58",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 14,
+    "step": 1,
+    "name": "",
+    "text": "只要我足够认真、足够虔诚地向塔楼许愿，这次的愿望就一定可以实现。",
+    "actorId": 4021006,
+    "pos": "57.39#-18.21",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 14,
+    "step": 2,
+    "name": "",
+    "text": "拜托了，我的光盐循环曼德拉草培养法一定要成功呀！",
+    "actorId": 4021002,
+    "pos": "58.91#-17.75",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 15,
+    "step": 1,
+    "name": "",
+    "text": "好想让知识直接进入我的脑子啊。",
+    "actorId": 4021015,
+    "pos": "57.39#-18.21",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 15,
+    "step": 2,
+    "name": "",
+    "text": "可以让我的竞技学同伴快些痊愈吗？我还有一堆技巧没练……",
+    "actorId": 4021004,
+    "pos": "58.91#-17.75",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 16,
+    "step": 1,
+    "name": "",
+    "text": "塔楼啊，可以让我的导师不要再考验我了吗？",
+    "actorId": 4021013,
+    "pos": "57.39#-18.21",
+    "position": 1,
+    "chessPosition": -1
+  },
+  {
+    "groupId": 16,
+    "step": 2,
+    "name": "",
+    "text": "真希望一天有48小时，我想多睡会儿觉……",
+    "actorId": 4021015,
+    "pos": "58.91#-17.75",
+    "position": 2,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 17,
+    "step": 1,
+    "name": "",
+    "text": "我会先软化岩板表面，并控制湿度……然后，凿刻就像书写一样容易了。",
+    "actorId": 4020005,
+    "pos": "51.61#-24.32",
+    "position": 1,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 18,
+    "step": 1,
+    "name": "",
+    "text": "凿啊凿，右手累了换左手……左手怎么还不累？",
+    "actorId": 4020004,
+    "pos": "51.61#-24.32",
+    "position": 1,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 19,
+    "step": 1,
+    "name": "",
+    "text": "稍微休息一会儿吧……呼……",
+    "actorId": 4020005,
+    "pos": "51.61#-24.32",
+    "position": 1,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 20,
+    "step": 1,
+    "name": "",
+    "text": "好困……字符爬出石板了……",
+    "actorId": 4020004,
+    "pos": "51.61#-24.32",
+    "position": 1,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 21,
+    "step": 1,
+    "name": "",
+    "text": "呼……呼……",
+    "actorId": 4020005,
+    "pos": "51.61#-24.32",
+    "position": 1,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 22,
+    "step": 1,
+    "name": "",
+    "text": "苦蜜井大人用这里的花做出了新香水，苦苦的……送给老骨头好了！",
+    "actorId": 4020004,
+    "pos": "65.25#-11.57",
+    "position": 1,
+    "chessPosition": 1
+  },
+  {
+    "groupId": 23,
+    "step": 1,
+    "name": "",
+    "text": "苦蜜井大人用这里的花做出了新香水，甜甜的……我要藏好了，不让老骨头找到！",
+    "actorId": 4020004,
+    "pos": "65.25#-11.57",
+    "position": 1,
+    "chessPosition": 1
+  }
+]

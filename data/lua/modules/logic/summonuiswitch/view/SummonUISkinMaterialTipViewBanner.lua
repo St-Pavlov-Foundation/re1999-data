@@ -12,6 +12,7 @@ function SummonUISkinMaterialTipViewBanner:onInitView()
 	self._goSceneLogo3 = gohelper.findChild(self.viewGO, "left/banner/#go_bannerContent/#go_roominfoItem/image_frame/#go_SceneLogo3")
 	self._goSceneLogo4 = gohelper.findChild(self.viewGO, "left/banner/#go_bannerContent/#go_roominfoItem/image_frame/#go_SceneLogo4")
 	self._goSceneLogo5 = gohelper.findChild(self.viewGO, "left/banner/#go_bannerContent/#go_roominfoItem/image_frame/#go_SceneLogo5")
+	self._simageSceneLogo5 = gohelper.findChildSingleImage(self.viewGO, "left/banner/#go_bannerContent/#go_roominfoItem/image_frame/#go_SceneLogo5")
 end
 
 function SummonUISkinMaterialTipViewBanner:_createInfoItemUserDataTb_(goItem)
@@ -39,9 +40,9 @@ function SummonUISkinMaterialTipViewBanner:_updateInfoItemUI(itemUserDataTb, ite
 	tb._txtdesc.text = config.desc
 	tb._txtname.text = config.name
 
-	gohelper.setActive(tb._gotag, false)
+	gohelper.setActive(tb._gotag, true)
 	gohelper.setActive(tb._gotag2, false)
-	gohelper.setActive(tb._gotag3, true)
+	gohelper.setActive(tb._gotag3, false)
 	self:_addClickSceneUI(tb._btn, itemId)
 
 	local summonSwitchConfig = SummonUISwitchConfig.instance:getSummonSwitchConfigByItemId(itemId)
@@ -67,6 +68,8 @@ function SummonUISkinMaterialTipViewBanner:onOpen()
 	gohelper.setActive(self._goSceneLogo3, false)
 	gohelper.setActive(self._goSceneLogo4, false)
 	gohelper.setActive(self._goSceneLogo5, true)
+
+	self._simageSceneLogo5.enabled = true
 end
 
 function SummonUISkinMaterialTipViewBanner:_addClickSceneUI(btn, itemId)

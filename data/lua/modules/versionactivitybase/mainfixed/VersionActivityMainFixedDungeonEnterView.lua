@@ -33,7 +33,11 @@ function VersionActivityMainFixedDungeonEnterView:addEvents()
 	RedDotController.instance:registerCallback(RedDotEvent.UpdateRelateDotInfo, self.refreshDot, self)
 	ActivityController.instance:registerCallback(ActivityEvent.ChangeActivityStage, self.refreshDot, self)
 	BackpackController.instance:registerCallback(BackpackEvent.UpdateItemList, self.refreshPaperCount, self)
-	self._btnboard:AddClickListener(self._btnboardOnClick, self)
+
+	if self._btnboard then
+		self._btnboard:AddClickListener(self._btnboardOnClick, self)
+	end
+
 	self._btnstore:AddClickListener(self._btnstoreOnClick, self)
 	self._btnenter:AddClickListener(self._btnenterOnClick, self)
 	self._btnFinished:AddClickListener(self._btnFinishedOnClick, self)
@@ -47,7 +51,11 @@ function VersionActivityMainFixedDungeonEnterView:removeEvents()
 	RedDotController.instance:unregisterCallback(RedDotEvent.UpdateRelateDotInfo, self.refreshDot, self)
 	ActivityController.instance:unregisterCallback(ActivityEvent.ChangeActivityStage, self.refreshDot, self)
 	BackpackController.instance:unregisterCallback(BackpackEvent.UpdateItemList, self.refreshPaperCount, self)
-	self._btnboard:RemoveClickListener()
+
+	if self._btnboard then
+		self._btnboard:RemoveClickListener()
+	end
+
 	self._btnstore:RemoveClickListener()
 	self._btnenter:RemoveClickListener()
 	self._btnFinished:RemoveClickListener()

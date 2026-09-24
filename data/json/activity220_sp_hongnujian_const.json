@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "damageMin",
+    "value": "25#2#50"
+  },
+  {
+    "id": 2,
+    "name": "powerTime",
+    "value": "1500"
+  },
+  {
+    "id": 3,
+    "name": "powerMax",
+    "value": "300#30#256"
+  },
+  {
+    "id": 4,
+    "name": "speedMin",
+    "value": "480"
+  },
+  {
+    "id": 5,
+    "name": "speedMax",
+    "value": "1450"
+  },
+  {
+    "id": 6,
+    "name": "energySkill",
+    "value": "100#30#100"
+  },
+  {
+    "id": 7,
+    "name": "shotLimit",
+    "value": "200"
+  },
+  {
+    "id": 8,
+    "name": "waveTime",
+    "value": "5000"
+  },
+  {
+    "id": 9,
+    "name": "bulletRadius",
+    "value": "50"
+  }
+]

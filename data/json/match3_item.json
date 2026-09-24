@@ -1,0 +1,29 @@
+[
+  {
+    "itemId": 410001,
+    "name": "三消代币",
+    "itemType": "1",
+    "maxNum": 999,
+    "quality": 3,
+    "icon": "item_match3_coin",
+    "desc": "购买角色"
+  },
+  {
+    "itemId": 410002,
+    "name": "三消宝石",
+    "itemType": "2",
+    "maxNum": 999,
+    "quality": 4,
+    "icon": "item_match3_gem",
+    "desc": "点亮天赋"
+  },
+  {
+    "itemId": 410003,
+    "name": "经验书",
+    "itemType": "3",
+    "maxNum": 999,
+    "quality": 3,
+    "icon": "item_match3_expbook",
+    "desc": "角色升级经验道具"
+  }
+]

@@ -1330,5 +1330,23 @@
     "fromAct": "idle",
     "endAct": "unique3",
     "transitionAct": "0"
+  },
+  {
+    "id": 315801,
+    "fromAct": "channel_idle",
+    "endAct": "idle",
+    "transitionAct": "trans"
+  },
+  {
+    "id": 315802,
+    "fromAct": "channel_idle",
+    "endAct": "idle",
+    "transitionAct": "trans"
+  },
+  {
+    "id": 630234,
+    "fromAct": "idle",
+    "endAct": "channel_idle",
+    "transitionAct": "0"
   }
 ]

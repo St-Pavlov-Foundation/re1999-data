@@ -18780,6 +18780,1186 @@
     "bankName": "activity_chongran3_9_sfx_fuyong"
   },
   {
+    "id": 40500001,
+    "eventName": "play_chap14_aircraft_engine_lilya",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500002,
+    "eventName": "play_chap14_aircraft_engine_chongsu",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500003,
+    "eventName": "play_chap14_lever_pull",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500004,
+    "eventName": "play_chap14_aircraft_dive_lilya",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500005,
+    "eventName": "play_chap14_aircraft_hovering_lilya",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500006,
+    "eventName": "play_chap14_curtain_pull",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500007,
+    "eventName": "play_chap14_bark_touch",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500008,
+    "eventName": "play_chap14_engine_increase_lilya",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500009,
+    "eventName": "play_chap14_aircraft_shake_lilya",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500010,
+    "eventName": "play_chap14_child_woodsword",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500011,
+    "eventName": "play_chap14_cane_tap",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500012,
+    "eventName": "play_chap14_aircraft_descent_lilya",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500013,
+    "eventName": "play_chap14_kettle_throw",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500014,
+    "eventName": "play_chap14_glass_wipe_lp",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500015,
+    "eventName": "play_chap14_bird_pecking",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500016,
+    "eventName": "play_chap14_falconry_whistle",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500017,
+    "eventName": "play_chap14_eagle_lands",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500018,
+    "eventName": "play_chap14_eagle_talon_hair",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500019,
+    "eventName": "play_chap14_castle_amb_lp",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500020,
+    "eventName": "play_chap14_knights_steps",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500021,
+    "eventName": "play_chap14_woodsword_snatch",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500022,
+    "eventName": "play_chap14_woodsword_throw",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500023,
+    "eventName": "play_chap14_aircraft_approach_chongsu",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500024,
+    "eventName": "play_chap14_aircraft_hover_chongsu",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500025,
+    "eventName": "play_chap14_engine_start_chongsu",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500026,
+    "eventName": "play_chap14_bird_strike_glass",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500027,
+    "eventName": "play_chap14_castle_lake_amb_lp",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500028,
+    "eventName": "play_chap14_cloth_blow_lp",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500029,
+    "eventName": "play_chap14_aircraft_failure_lilya_lp",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500030,
+    "eventName": "play_chap14_aircraft_attack",
+    "bankName": "prologuechapter_14_part01"
+  },
+  {
+    "id": 40500031,
+    "eventName": "play_chap14_transform",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500032,
+    "eventName": "play_chap14_bird_preen",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500033,
+    "eventName": "play_chap14_twiset_powder",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500034,
+    "eventName": "play_chap14_warning_bell",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500035,
+    "eventName": "play_chap14_escape_withdraw",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500036,
+    "eventName": "play_chap14_axe_strking",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500037,
+    "eventName": "play_chap14_axe_raise",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500038,
+    "eventName": "play_chap14_spell_release",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500039,
+    "eventName": "play_chap14_horse_go_stop",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500040,
+    "eventName": "play_chap14_sword_take",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500041,
+    "eventName": "play_chap14_aircraft_fly_lilya_lp",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500042,
+    "eventName": "play_chap14_aircraft_bird_descent",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500043,
+    "eventName": "play_chap14_reef_stagger",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500044,
+    "eventName": "play_chap14_knight_salute",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500045,
+    "eventName": "play_chap14_barefoot_wade",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500046,
+    "eventName": "play_chap14_seabird_surf",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500047,
+    "eventName": "play_chap14_water_bottle_throw",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500048,
+    "eventName": "play_chap14_sea_boat_float_lp",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500049,
+    "eventName": "play_chap14_flame_extinguish",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500050,
+    "eventName": "play_chap14_giant_bird_fly",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500051,
+    "eventName": "play_chap14_aircraft_bird_fly_lp",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500052,
+    "eventName": "play_chap14_knight_stagger_standup",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500053,
+    "eventName": "play_chap14_hammer_hitting",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500054,
+    "eventName": "play_chap14_mysterious_amb_lp",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500055,
+    "eventName": "play_chap14_apple_pick",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500056,
+    "eventName": "play_chap14_boat_night_drifting_lp",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500057,
+    "eventName": "play_chap14_stone_sword_lp",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500058,
+    "eventName": "play_chap14_air_amb_lp",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500059,
+    "eventName": "play_chap14_storm_amb_lp",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500060,
+    "eventName": "play_chap14_tavern_amb_lp",
+    "bankName": "prologuechapter_14_part02"
+  },
+  {
+    "id": 40500061,
+    "eventName": "play_chap14_town_morning_amb_lp",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500062,
+    "eventName": "play_chap14_high_speed_lilya_lp",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500063,
+    "eventName": "play_chap14_engine_roar_lilya_lp",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500064,
+    "eventName": "play_chap14_buzz_amb_lp",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500065,
+    "eventName": "play_chap14_flight_air_lilyaplus_lp",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500066,
+    "eventName": "play_chap14_flight_air_lilyaplus_fx_lp",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500067,
+    "eventName": "play_chap14_hit_wall_lilyaplus",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500068,
+    "eventName": "play_chap14_shell_fall_lilyaplus",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500069,
+    "eventName": "play_chap14_hand_claw",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500070,
+    "eventName": "play_chap14_holygrail_amb_lp",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500071,
+    "eventName": "play_chap14_holygrail_steps_lp",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500072,
+    "eventName": "play_chap14_holygrail_step_single_lp",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500073,
+    "eventName": "play_chap14_soul_appear",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500074,
+    "eventName": "play_chap14_falcon_cry",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500075,
+    "eventName": "",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500076,
+    "eventName": "play_chap14_aircraft_fly_lilya_sp_lp",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500077,
+    "eventName": "play_chap14_seaside_cave_lp",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500078,
+    "eventName": "play_chap14_bird_hit_glass_lp",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500079,
+    "eventName": "play_chap14_bird_hit_glass_1",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500080,
+    "eventName": "play_chap14_bird_hit_glass_2",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500081,
+    "eventName": "play_chap14_aircraft_takeoff_lilya_sp",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500082,
+    "eventName": "play_chap14_aircraft_land_fly_lilya_sp",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500083,
+    "eventName": "play_chap14_arm_cut",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500084,
+    "eventName": "play_chap14_sword_fight",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500085,
+    "eventName": "play_chap14_sword_draw",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500086,
+    "eventName": "play_chap14_aircraft_hovering_lilya_sp",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500087,
+    "eventName": "play_chap14_aircraft_dive_lilya_sp",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500088,
+    "eventName": "play_chap14_knight_stamp_foot",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500089,
+    "eventName": "play_chap14_stick_wave",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500090,
+    "eventName": "play_chap14_bird_attack_knight_lp",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500091,
+    "eventName": "play_chap14_sword_hit",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500092,
+    "eventName": "play_chap14_knight_fight_lp",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500093,
+    "eventName": "play_chap14_knight_stagger",
+    "bankName": "prologuechapter_14_part03"
+  },
+  {
+    "id": 40500094,
+    "eventName": "play_chap14_breath_painful_lp",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500095,
+    "eventName": "play_chap14_defeat",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500096,
+    "eventName": "play_chap14_sword_knock_down",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500097,
+    "eventName": "play_chap14_dragon_appear",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500098,
+    "eventName": "play_chap14_dragon_flap",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500099,
+    "eventName": "play_chap14_kettle_shake",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500100,
+    "eventName": "play_chap14_fight_continue_lp",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500101,
+    "eventName": "play_chap14_big_bird_fly",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500102,
+    "eventName": "play_chap14_helmet_roll_down",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500103,
+    "eventName": "play_chap14_helmet_sword_take",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500104,
+    "eventName": "play_chap14_soldier_pour_out_lp",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500105,
+    "eventName": "play_chap14_helmet_throw_out",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500106,
+    "eventName": "play_chap14_armor_take",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500107,
+    "eventName": "play_chap14_castle_lake_vibes_lp",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500108,
+    "eventName": "play_chap14_castle_outside_fight_lp",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500109,
+    "eventName": "play_chap14_big_bird_sweep",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500110,
+    "eventName": "play_chap14_soldier_rebuild_lp",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500111,
+    "eventName": "play_chap14_shoot_table",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500112,
+    "eventName": "play_chap14_backpack_put",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500113,
+    "eventName": "play_chap14_sword_unsheath_start",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500114,
+    "eventName": "play_chap14_sword_unsheath_lp",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500115,
+    "eventName": "play_chap14_sword_hold",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500116,
+    "eventName": "play_chap14_dragon_breath_fire",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500117,
+    "eventName": "play_chap14_dragon_roar",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500118,
+    "eventName": "play_chap14_dragon_breath_lp",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500119,
+    "eventName": "play_chap14_dragon_fall",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500120,
+    "eventName": "play_chap14_engine_chongsu_distance",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500121,
+    "eventName": "play_chap14_outdoor_banquet",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500122,
+    "eventName": "play_chap14_knight_run_lp",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500123,
+    "eventName": "play_chap14_knight_run_stop",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500124,
+    "eventName": "play_chap14_comfire_dance_lp",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500125,
+    "eventName": "play_chap14_comfire_lp",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500126,
+    "eventName": "play_chap14_people_moving",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500127,
+    "eventName": "play_chap14_sleep_embrace",
+    "bankName": "prologuechapter_14_part04"
+  },
+  {
+    "id": 40500128,
+    "eventName": "play_activitystory_hongnujian_sp_pull_spear",
+    "bankName": "activitystory_yingmen4_0_hongnujian_sp_sfx"
+  },
+  {
+    "id": 40500129,
+    "eventName": "play_activitystory_hongnujian_sp_throw_spear",
+    "bankName": "activitystory_yingmen4_0_hongnujian_sp_sfx"
+  },
+  {
+    "id": 40500130,
+    "eventName": "play_activitystory_hongnujian_sp_encamp",
+    "bankName": "activitystory_yingmen4_0_hongnujian_sp_sfx"
+  },
+  {
+    "id": 40500131,
+    "eventName": "play_activitystory_hongnujian_sp_attention",
+    "bankName": "activitystory_yingmen4_0_hongnujian_sp_sfx"
+  },
+  {
+    "id": 40500132,
+    "eventName": "play_activitystory_hongnujian_sp_tent",
+    "bankName": "activitystory_yingmen4_0_hongnujian_sp_sfx"
+  },
+  {
+    "id": 40500133,
+    "eventName": "play_activitystory_hongnujian_sp_face",
+    "bankName": "activitystory_yingmen4_0_hongnujian_sp_sfx"
+  },
+  {
+    "id": 40500134,
+    "eventName": "play_activitystory_hongnujian_sp_jug",
+    "bankName": "activitystory_yingmen4_0_hongnujian_sp_sfx"
+  },
+  {
+    "id": 40500135,
+    "eventName": "play_activitystory_hongnujian_sp_stone_water",
+    "bankName": "activitystory_yingmen4_0_hongnujian_sp_sfx"
+  },
+  {
+    "id": 40500136,
+    "eventName": "play_activitystory_hongnujian_sp_grab_jug",
+    "bankName": "activitystory_yingmen4_0_hongnujian_sp_sfx"
+  },
+  {
+    "id": 40500137,
+    "eventName": "play_activitystory_hongnujian_sp_drink",
+    "bankName": "activitystory_yingmen4_0_hongnujian_sp_sfx"
+  },
+  {
+    "id": 40500138,
+    "eventName": "play_activitystory_hongnujian_sp_bucket_walk",
+    "bankName": "activitystory_yingmen4_0_hongnujian_sp_sfx"
+  },
+  {
+    "id": 40500139,
+    "eventName": "play_activitystory_hongnujian_sp_digging_ice_cream",
+    "bankName": "activitystory_yingmen4_0_hongnujian_sp_sfx"
+  },
+  {
+    "id": 40500140,
+    "eventName": "play_activitystory_hongnujian_sp_throw_spoon",
+    "bankName": "activitystory_yingmen4_0_hongnujian_sp_sfx"
+  },
+  {
+    "id": 40500141,
+    "eventName": "play_activitystory_hongnujian_sp_wine_bottle",
+    "bankName": "activitystory_yingmen4_0_hongnujian_sp_sfx"
+  },
+  {
+    "id": 40500142,
+    "eventName": "play_activitystory_hongnujian_sp_repair_workshop",
+    "bankName": "activitystory_yingmen4_0_hongnujian_sp_sfx"
+  },
+  {
+    "id": 40500143,
+    "eventName": "play_activitystory_hongnujian_sp_slap_plane",
+    "bankName": "activitystory_yingmen4_0_hongnujian_sp_sfx"
+  },
+  {
+    "id": 40500144,
+    "eventName": "play_activitystory_hongnujian_sp_scratch_wings",
+    "bankName": "activitystory_yingmen4_0_hongnujian_sp_sfx"
+  },
+  {
+    "id": 40500145,
+    "eventName": "play_activitystory_hongnujian_sp_test_aircraft",
+    "bankName": "activitystory_yingmen4_0_hongnujian_sp_sfx"
+  },
+  {
+    "id": 40500146,
+    "eventName": "play_activitystory_hongnujian_sp_start_aircraft",
+    "bankName": "activitystory_yingmen4_0_hongnujian_sp_sfx"
+  },
+  {
+    "id": 40500147,
+    "eventName": "play_activitystory_hongnujian_sp_flight_01",
+    "bankName": "activitystory_yingmen4_0_hongnujian_sp_sfx"
+  },
+  {
+    "id": 40500148,
+    "eventName": "play_activitystory_hongnujian_sp_flight_02",
+    "bankName": "activitystory_yingmen4_0_hongnujian_sp_sfx"
+  },
+  {
+    "id": 40500149,
+    "eventName": "play_activitystory_hongnujian_sp_flight_03",
+    "bankName": "activitystory_yingmen4_0_hongnujian_sp_sfx"
+  },
+  {
+    "id": 40500150,
+    "eventName": "play_activitystory_hongnujian_sp_low_flight",
+    "bankName": "activitystory_yingmen4_0_hongnujian_sp_sfx"
+  },
+  {
+    "id": 40500151,
+    "eventName": "play_activitystory_hongnujian_sp_fly_past",
+    "bankName": "activitystory_yingmen4_0_hongnujian_sp_sfx"
+  },
+  {
+    "id": 40500152,
+    "eventName": "play_activitystory_deleike_sword_raise",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx"
+  },
+  {
+    "id": 40500153,
+    "eventName": "play_activitystory_deleike_sword_swing",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx"
+  },
+  {
+    "id": 40500154,
+    "eventName": "play_activitystory_deleike_step_table",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx"
+  },
+  {
+    "id": 40500155,
+    "eventName": "play_activitystory_deleike_armor_walk_lp",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx"
+  },
+  {
+    "id": 40500156,
+    "eventName": "play_activitystory_deleike_armor_walk_slow_lp",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx"
+  },
+  {
+    "id": 40500157,
+    "eventName": "play_activitystory_deleike_armor_run_stagger_lp",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx"
+  },
+  {
+    "id": 40500158,
+    "eventName": "play_activitystory_deleike_carve",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx"
+  },
+  {
+    "id": 40500159,
+    "eventName": "play_activitystory_deleike_armor_lp",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx"
+  },
+  {
+    "id": 40500160,
+    "eventName": "play_activitystory_deleike_armor_battle",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx"
+  },
+  {
+    "id": 40500161,
+    "eventName": "play_activitystory_deleike_sword_hum_lp",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx"
+  },
+  {
+    "id": 40500162,
+    "eventName": "play_activitystory_deleike_sword_armor_clash",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx"
+  },
+  {
+    "id": 40500163,
+    "eventName": "play_activitystory_deleike_step_heavy_lp",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx"
+  },
+  {
+    "id": 40500164,
+    "eventName": "play_activitystory_deleike_sword_strike_head",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx"
+  },
+  {
+    "id": 40500165,
+    "eventName": "play_activitystory_deleike_thorn_grow_lp",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx"
+  },
+  {
+    "id": 40500166,
+    "eventName": "play_activitystory_deleike_thorn_tear_lp",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx"
+  },
+  {
+    "id": 40500167,
+    "eventName": "play_activitystory_deleike_ominous_sfx",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx"
+  },
+  {
+    "id": 40500168,
+    "eventName": "play_activitystory_deleike_sword_armor_strike",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx"
+  },
+  {
+    "id": 40500169,
+    "eventName": "play_activitystory_deleike_armor_fall_down",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx"
+  },
+  {
+    "id": 40500170,
+    "eventName": "play_activitystory_deleike_cut_branch",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx"
+  },
+  {
+    "id": 40500171,
+    "eventName": "play_activitystory_deleike_armor_kneel_down",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx"
+  },
+  {
+    "id": 40500172,
+    "eventName": "play_activitystory_deleike_armor_back",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx"
+  },
+  {
+    "id": 40500173,
+    "eventName": "play_activitystory_deleike_chongsu_pursuer_lp",
+    "bankName": "activitystory_yingmen4_0_deleike_sfx"
+  },
+  {
+    "id": 40500174,
+    "eventName": "play_chuanyu14_women_cross",
+    "bankName": "prologue_chuanyu_14"
+  },
+  {
+    "id": 40500175,
+    "eventName": "play_chuanyu14_many_people_cross",
+    "bankName": "prologue_chuanyu_14"
+  },
+  {
+    "id": 40500176,
+    "eventName": "play_chuanyu14_stand",
+    "bankName": "prologue_chuanyu_14"
+  },
+  {
+    "id": 40500177,
+    "eventName": "play_chuanyu14_crowded_queue",
+    "bankName": "prologue_chuanyu_14"
+  },
+  {
+    "id": 40500178,
+    "eventName": "play_chuanyu14_crowded_silence",
+    "bankName": "prologue_chuanyu_14"
+  },
+  {
+    "id": 40500179,
+    "eventName": "play_chuanyu14_children_fighting",
+    "bankName": "prologue_chuanyu_14"
+  },
+  {
+    "id": 40500180,
+    "eventName": "play_chuanyu14_catch_fish",
+    "bankName": "prologue_chuanyu_14"
+  },
+  {
+    "id": 40500181,
+    "eventName": "play_chuanyu14_hold_dagger",
+    "bankName": "prologue_chuanyu_14"
+  },
+  {
+    "id": 40500182,
+    "eventName": "play_chuanyu14_high_heeled_sprint",
+    "bankName": "prologue_chuanyu_14"
+  },
+  {
+    "id": 40500183,
+    "eventName": "play_chuanyu14_plaster_fallen",
+    "bankName": "prologue_chuanyu_14"
+  },
+  {
+    "id": 40500184,
+    "eventName": "play_chuanyu14_communication_key",
+    "bankName": "prologue_chuanyu_14"
+  },
+  {
+    "id": 40500185,
+    "eventName": "play_chuanyu14_dial_telephone",
+    "bankName": "prologue_chuanyu_14"
+  },
+  {
+    "id": 40500186,
+    "eventName": "play_chuanyu14_sonnet_spell",
+    "bankName": "prologue_chuanyu_14"
+  },
+  {
+    "id": 40500187,
+    "eventName": "play_chuanyu14_sonnet_enchantment",
+    "bankName": "prologue_chuanyu_14"
+  },
+  {
+    "id": 40500188,
+    "eventName": "play_chuanyu14_blade_light",
+    "bankName": "prologue_chuanyu_14"
+  },
+  {
+    "id": 40500189,
+    "eventName": "play_activitystory_yingmen_hay_burn",
+    "bankName": "activitystory_yingmen4_0_yishi_beryl_sfx"
+  },
+  {
+    "id": 40500190,
+    "eventName": "play_activitystory_yingmen_pour_two_cups",
+    "bankName": "activitystory_yingmen4_0_yishi_beryl_sfx"
+  },
+  {
+    "id": 40500191,
+    "eventName": "play_activitystory_yingmen_pour_cup",
+    "bankName": "activitystory_yingmen4_0_yishi_beryl_sfx"
+  },
+  {
+    "id": 40500192,
+    "eventName": "play_activitystory_xueyuan_shell_shake",
+    "bankName": "activitystory_yingmen4_0_xueyuan_sfx"
+  },
+  {
+    "id": 40500193,
+    "eventName": "play_activitystory_xueyuan_shell_crack",
+    "bankName": "activitystory_yingmen4_0_xueyuan_sfx"
+  },
+  {
+    "id": 40500194,
+    "eventName": "play_chap14_aircraft_fire_lilya",
+    "bankName": "prologuechapter_14_part05"
+  },
+  {
+    "id": 40500195,
+    "eventName": "play_chap14_aircraft_fire_chongsu",
+    "bankName": "prologuechapter_14_part05"
+  },
+  {
+    "id": 40500196,
+    "eventName": "play_chap14_eagle_grab_hair_lp",
+    "bankName": "prologuechapter_14_part05"
+  },
+  {
+    "id": 40500197,
+    "eventName": "play_chap14_magic_character_lp",
+    "bankName": "prologuechapter_14_part05"
+  },
+  {
+    "id": 40500198,
+    "eventName": "play_chap14_magic_water_xran",
+    "bankName": "prologuechapter_14_part05"
+  },
+  {
+    "id": 40500199,
+    "eventName": "play_chap14_magic_castle_lake_lp",
+    "bankName": "prologuechapter_14_part05"
+  },
+  {
+    "id": 40500200,
+    "eventName": "play_chap14_candle_burning_lp",
+    "bankName": "prologuechapter_14_part05"
+  },
+  {
+    "id": 40500201,
+    "eventName": "play_chap14_candles_effect_lp",
+    "bankName": "prologuechapter_14_part05"
+  },
+  {
+    "id": 40500202,
+    "eventName": "play_chap14_jinxian_transition_1",
+    "bankName": "prologuechapter_14_part05"
+  },
+  {
+    "id": 40500203,
+    "eventName": "play_chap14_jinxian_transition_2",
+    "bankName": "prologuechapter_14_part05"
+  },
+  {
+    "id": 40500204,
+    "eventName": "play_chap14_msdm1_lp",
+    "bankName": "prologuechapter_14_part05"
+  },
+  {
+    "id": 40500205,
+    "eventName": "play_chap14_msdm2_lp",
+    "bankName": "prologuechapter_14_part05"
+  },
+  {
+    "id": 40500206,
+    "eventName": "play_chap14_msdm3_lp",
+    "bankName": "prologuechapter_14_part05"
+  },
+  {
+    "id": 40500207,
+    "eventName": "play_chap14_msdm4_lp",
+    "bankName": "prologuechapter_14_part05"
+  },
+  {
+    "id": 40500208,
+    "eventName": "play_chap14_birds_flying_lp",
+    "bankName": "prologuechapter_14_part05"
+  },
+  {
+    "id": 40500209,
+    "eventName": "play_chap14_bird_cloud",
+    "bankName": "prologuechapter_14_part05"
+  },
+  {
+    "id": 40500210,
+    "eventName": "play_chap14_bird_fiying_lp",
+    "bankName": "prologuechapter_14_part05"
+  },
+  {
+    "id": 40500211,
+    "eventName": "play_chap14_ps1_lp",
+    "bankName": "prologuechapter_14_part05"
+  },
+  {
+    "id": 40500212,
+    "eventName": "play_chap14_ps2_lp",
+    "bankName": "prologuechapter_14_part05"
+  },
+  {
+    "id": 40500213,
+    "eventName": "play_chap14_ps3_lp",
+    "bankName": "prologuechapter_14_part05"
+  },
+  {
+    "id": 40500214,
+    "eventName": "play_chap14_ps4",
+    "bankName": "prologuechapter_14_part05"
+  },
+  {
+    "id": 40500215,
+    "eventName": "play_chap14_holygrail_shine_lp",
+    "bankName": "prologuechapter_14_part05"
+  },
+  {
+    "id": 40500216,
+    "eventName": "play_chap14_magic_xsz1",
+    "bankName": "prologuechapter_14_part06"
+  },
+  {
+    "id": 40500217,
+    "eventName": "play_chap14_magic_xsz2",
+    "bankName": "prologuechapter_14_part06"
+  },
+  {
+    "id": 40500218,
+    "eventName": "play_chap14_magic_light_lp",
+    "bankName": "prologuechapter_14_part06"
+  },
+  {
+    "id": 40500219,
+    "eventName": "play_chap14_magic_light_one",
+    "bankName": "prologuechapter_14_part06"
+  },
+  {
+    "id": 40500220,
+    "eventName": "play_chap14_falcon_start",
+    "bankName": "prologuechapter_14_part06"
+  },
+  {
+    "id": 40500221,
+    "eventName": "play_chap14_falcon_flying_lp",
+    "bankName": "prologuechapter_14_part06"
+  },
+  {
+    "id": 40500222,
+    "eventName": "play_chap14_falcon_hit_wall",
+    "bankName": "prologuechapter_14_part06"
+  },
+  {
+    "id": 40500223,
+    "eventName": "play_chap14_falcon_fly_amb_lp",
+    "bankName": "prologuechapter_14_part06"
+  },
+  {
+    "id": 40500224,
+    "eventName": "play_chap14_ground_crack_lp",
+    "bankName": "prologuechapter_14_part06"
+  },
+  {
+    "id": 40500225,
+    "eventName": "play_chap14_ground_crack_one",
+    "bankName": "prologuechapter_14_part06"
+  },
+  {
+    "id": 40500226,
+    "eventName": "play_chap14_fireworks_lp",
+    "bankName": "prologuechapter_14_part06"
+  },
+  {
+    "id": 40500227,
+    "eventName": "play_chap14_black_fog_appear",
+    "bankName": "prologuechapter_14_part06"
+  },
+  {
+    "id": 40500228,
+    "eventName": "play_chap14_black_fog_disappear",
+    "bankName": "prologuechapter_14_part06"
+  },
+  {
+    "id": 40500229,
+    "eventName": "play_chap14_black_fog_continue_lp",
+    "bankName": "prologuechapter_14_part06"
+  },
+  {
+    "id": 40500230,
+    "eventName": "play_chap14_flame_arrow_lp",
+    "bankName": "prologuechapter_14_part06"
+  },
+  {
+    "id": 40500231,
+    "eventName": "play_chap14_boomerang",
+    "bankName": "prologuechapter_14_part06"
+  },
+  {
+    "id": 40500232,
+    "eventName": "play_chap14_sea_amb_lp",
+    "bankName": "prologuechapter_14_part06"
+  },
+  {
+    "id": 40500233,
+    "eventName": "play_chap14_boat_crack_lp",
+    "bankName": "prologuechapter_14_part06"
+  },
+  {
+    "id": 40500234,
+    "eventName": "play_chap14_sea_enter",
+    "bankName": "prologuechapter_14_part06"
+  },
+  {
+    "id": 40500235,
+    "eventName": "play_chap14_sea_diving_lp",
+    "bankName": "prologuechapter_14_part06"
+  },
+  {
+    "id": 40500236,
+    "eventName": "play_chap14_boat_fall_lp",
+    "bankName": "prologuechapter_14_part06"
+  },
+  {
     "id": 530053,
     "eventName": "play_activitymusic_thememusic_full_2_0",
     "bankName": "activity2_0_music"
@@ -19358,6 +20538,66 @@
     "id": 39553006,
     "eventName": "play_activitymusic_pv_3_9",
     "bankName": "activity3_9_music"
+  },
+  {
+    "id": 40530001,
+    "eventName": "play_activitymusic_theme_4_0",
+    "bankName": "activity4_0_music"
+  },
+  {
+    "id": 40530002,
+    "eventName": "play_activitymusic_xiantan_4_0",
+    "bankName": "activity4_0_music"
+  },
+  {
+    "id": 40530003,
+    "eventName": "play_activitymusic_gubaozhan_4_0",
+    "bankName": "activity4_0_music"
+  },
+  {
+    "id": 40530004,
+    "eventName": "play_activitymusic_yanhui_4_0",
+    "bankName": "activity4_0_music"
+  },
+  {
+    "id": 40530005,
+    "eventName": "play_activitymusic_chongsu_ritual_4_0",
+    "bankName": "activity4_0_music"
+  },
+  {
+    "id": 40530006,
+    "eventName": "play_activitymusic_theme_p0_4_0",
+    "bankName": "activity4_0_music"
+  },
+  {
+    "id": 40530007,
+    "eventName": "play_activitymusic_theme_p1_4_0",
+    "bankName": "activity4_0_music"
+  },
+  {
+    "id": 40530008,
+    "eventName": "play_activitymusic_theme_p2_4_0",
+    "bankName": "activity4_0_music"
+  },
+  {
+    "id": 40530009,
+    "eventName": "play_activitymusic_themesong_p1_4_0",
+    "bankName": "activity4_0_music"
+  },
+  {
+    "id": 40530010,
+    "eventName": "play_activitymusic_themesong_p2_4_0",
+    "bankName": "activity4_0_music"
+  },
+  {
+    "id": 40530011,
+    "eventName": "play_activitymusic_themesong_p3_4_0",
+    "bankName": "activity4_0_music"
+  },
+  {
+    "id": 40530012,
+    "eventName": "play_activitymusic_lullaby_4_0",
+    "bankName": "activity4_0_music"
   },
   {
     "id": 520105,
@@ -20190,6 +21430,11 @@
     "bankName": "activity_chongran3_9_sfx"
   },
   {
+    "id": 40520001,
+    "eventName": "play_plotpvsfx_3_0_plot_editing_chap14",
+    "bankName": "prologuechapter_14_cutscene"
+  },
+  {
     "id": 20530011,
     "eventName": "play_battle_leimi_1_1_normalfight",
     "bankName": "activtiy_leimi_combataudio"
@@ -20253,5 +21498,10 @@
     "id": 20530037,
     "eventName": "play_battle_beiai_3_7_merelbattle",
     "bankName": "activity_beiai_combataudio"
+  },
+  {
+    "id": 20530040,
+    "eventName": "play_battle_yingmen_4_0_normalfight",
+    "bankName": "activity_yingmen_4_0_combataudio"
   }
 ]

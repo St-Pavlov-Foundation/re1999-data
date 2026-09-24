@@ -466,5 +466,95 @@
     "duration": 0.0,
     "effectHangPoint": "mountroot",
     "audio": 0
+  },
+  {
+    "effectPath": "v1a9_lorelei/lorelei_innate1",
+    "target": 1,
+    "skinId": 309103,
+    "changedPath": "v4a0_lorelei/lorelei_innate1",
+    "duration": 0.0,
+    "effectHangPoint": "mountmiddle",
+    "audio": 430910101
+  },
+  {
+    "effectPath": "v1a9_lorelei/lorelei_innate2",
+    "target": 1,
+    "skinId": 309103,
+    "changedPath": "v4a0_lorelei/lorelei_innate2",
+    "duration": 0.0,
+    "effectHangPoint": "mountmiddle",
+    "audio": 430910101
+  },
+  {
+    "effectPath": "v1a9_lorelei/lorelei_innate3",
+    "target": 1,
+    "skinId": 309103,
+    "changedPath": "v4a0_lorelei/lorelei_innate3",
+    "duration": 0.0,
+    "effectHangPoint": "mountmiddle",
+    "audio": 430910101
+  },
+  {
+    "effectPath": "v2a7_kphh/kphh_debuff3",
+    "target": 2,
+    "skinId": 311705,
+    "changedPath": "v4a0_kphh/kphh_debuff3",
+    "duration": 0.0,
+    "effectHangPoint": "mountroot",
+    "audio": 431170446
+  },
+  {
+    "effectPath": "v3a8_hsy/hsy_innate2",
+    "target": 2,
+    "skinId": 314503,
+    "changedPath": "v4a0_hsy/hsy_innate2",
+    "duration": 0.0,
+    "effectHangPoint": "mountroot",
+    "audio": 431450342
+  },
+  {
+    "effectPath": "xingti_innate01",
+    "target": 1,
+    "skinId": 302507,
+    "changedPath": "pre_v4a0_xt2h_innate01",
+    "duration": 0.0,
+    "effectHangPoint": "mountbottom",
+    "audio": 430250401
+  },
+  {
+    "effectPath": "buff/djs_innate3",
+    "target": 1,
+    "skinId": 314003,
+    "changedPath": "buff/v4a0_djs_innate3",
+    "duration": 0.0,
+    "effectHangPoint": "",
+    "audio": 0
+  },
+  {
+    "effectPath": "v3a2_ble/ble_innate2",
+    "target": 1,
+    "skinId": 313403,
+    "changedPath": "v4a0_ble/ble_innate2",
+    "duration": 0.0,
+    "effectHangPoint": "mountroot",
+    "audio": 431340352
+  },
+  {
+    "effectPath": "v3a2_ble/ble_skill1_04",
+    "target": 1,
+    "skinId": 313403,
+    "changedPath": "v3a2_ble/ble_skill1_04",
+    "duration": 0.0,
+    "effectHangPoint": "mountroot",
+    "audio": 431340353
+  },
+  {
+    "effectPath": "v4a0_sxnwhnj/sxnwhnj_innate1_01",
+    "target": 1,
+    "skinId": 315503,
+    "changedPath": "v4a0_tlzchnj/tlzchnj_innate1",
+    "duration": 0.0,
+    "effectHangPoint": "mountroot",
+    "audio": 0
   }
 ]

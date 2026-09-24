@@ -1,0 +1,42 @@
+[
+  {
+    "statusId": 1,
+    "statusKey": "poison",
+    "targetType": "bead",
+    "durationType": "until_clear",
+    "defaultDuration": 0,
+    "stackRule": "replace",
+    "removeRule": "clear",
+    "desc": "毒株，消除时扣共享 HP"
+  },
+  {
+    "statusId": 2,
+    "statusKey": "seal",
+    "targetType": "bead",
+    "durationType": "until_remove",
+    "defaultDuration": 0,
+    "stackRule": "replace",
+    "removeRule": "adjacent_clear",
+    "desc": "封印珠不可连线"
+  },
+  {
+    "statusId": 3,
+    "statusKey": "lock",
+    "targetType": "bead",
+    "durationType": "turn",
+    "defaultDuration": 2,
+    "stackRule": "replace",
+    "removeRule": "adjacent_clear_or_timeout",
+    "desc": "锁定珠"
+  },
+  {
+    "statusId": 4,
+    "statusKey": "silence",
+    "targetType": "character",
+    "durationType": "seconds",
+    "defaultDuration": 5,
+    "stackRule": "refresh",
+    "removeRule": "timeout",
+    "desc": "角色封技"
+  }
+]

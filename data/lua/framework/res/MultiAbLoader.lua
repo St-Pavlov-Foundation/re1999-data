@@ -62,6 +62,8 @@ function MultiAbLoader:getAssetItemDict()
 end
 
 function MultiAbLoader:getAssetItem(path)
+	path = getAssetCanonicalPath(path)
+
 	return self._resDict[path]
 end
 

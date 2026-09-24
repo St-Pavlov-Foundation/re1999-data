@@ -1204,5 +1204,32 @@
     "equipDisplay": 1,
     "lvRec": "2#40|3#50|4#60",
     "resonanceRec": "5|10|13|15"
+  },
+  {
+    "id": 3155,
+    "teamRec": "3003#3003#3003#3003|3003#3003#3003#3003",
+    "teamDisplay": 0,
+    "equipRec": "1501",
+    "equipDisplay": 0,
+    "lvRec": "2#40|3#50|4#60",
+    "resonanceRec": "5|10|13|15"
+  },
+  {
+    "id": 3158,
+    "teamRec": "3003#3003#3003#3003|3003#3003#3003#3003",
+    "teamDisplay": 0,
+    "equipRec": "1501",
+    "equipDisplay": 0,
+    "lvRec": "2#40|3#50|4#60",
+    "resonanceRec": "5|10|13|15"
+  },
+  {
+    "id": 3163,
+    "teamRec": "3163#3146#3128#3143",
+    "teamDisplay": 1,
+    "equipRec": "1447",
+    "equipDisplay": 1,
+    "lvRec": "2#40|3#50|4#60",
+    "resonanceRec": "5|10|13|15"
   }
 ]

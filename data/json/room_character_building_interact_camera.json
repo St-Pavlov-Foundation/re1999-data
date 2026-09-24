@@ -1393,5 +1393,95 @@
     "focusXYZ": "0.097#0#0.339",
     "nodesXYZ": "1.308#0.11#-1.611",
     "nextCameraParams": ""
+  },
+  {
+    "id": 4001,
+    "angle": "55#55",
+    "distance": "2.5#2.5",
+    "rotate": "68.9",
+    "focusXYZ": "0.361#0#-0.608",
+    "nodesXYZ": "-0.544#0.11#-0.292",
+    "nextCameraParams": ""
+  },
+  {
+    "id": 4002,
+    "angle": "55#55",
+    "distance": "2.5#2.5",
+    "rotate": "64.9",
+    "focusXYZ": "0.431#0#-0.694",
+    "nodesXYZ": "0.052#0.11#-1.520",
+    "nextCameraParams": ""
+  },
+  {
+    "id": 4011,
+    "angle": "7#7",
+    "distance": "2#2",
+    "rotate": "338.3",
+    "focusXYZ": "0.849#0.1#-0.214",
+    "nodesXYZ": "0.793#0.11#-1.997",
+    "nextCameraParams": ""
+  },
+  {
+    "id": 4012,
+    "angle": "7#7",
+    "distance": "2#2",
+    "rotate": "341.3",
+    "focusXYZ": "0.935#0.1#-0.210",
+    "nodesXYZ": "2.191#0.11#-1.329",
+    "nextCameraParams": ""
+  },
+  {
+    "id": 4021,
+    "angle": "9#9",
+    "distance": "3.2#3.2",
+    "rotate": "269.3",
+    "focusXYZ": "-2.050#-0.2#-0.450",
+    "nodesXYZ": "1.338#0.11#-0.843",
+    "nextCameraParams": ""
+  },
+  {
+    "id": 4022,
+    "angle": "9#9",
+    "distance": "3.2#3.2",
+    "rotate": "270.5",
+    "focusXYZ": "-2.054#-0.2#-0.421",
+    "nodesXYZ": "1.312#0.11#0.043",
+    "nextCameraParams": ""
+  },
+  {
+    "id": 4031,
+    "angle": "9#9",
+    "distance": "3.22#3.22",
+    "rotate": "269.3",
+    "focusXYZ": "-2.076#-0.2#-0.450",
+    "nodesXYZ": "1.344#0.11#0.014",
+    "nextCameraParams": ""
+  },
+  {
+    "id": 4032,
+    "angle": "9#9",
+    "distance": "3.2#3.2",
+    "rotate": "268.7",
+    "focusXYZ": "-2.037#-0.2#-0.470",
+    "nodesXYZ": "1.291#0.11#-0.854",
+    "nextCameraParams": ""
+  },
+  {
+    "id": 4041,
+    "angle": "9#9",
+    "distance": "3.2#3.2",
+    "rotate": "269",
+    "focusXYZ": "-2.053#-0.2#-0.460",
+    "nodesXYZ": "1.292#0.11#0.010",
+    "nextCameraParams": ""
+  },
+  {
+    "id": 4042,
+    "angle": "9#9",
+    "distance": "3.2#3.2",
+    "rotate": "269.7",
+    "focusXYZ": "-2.029#-0.2#-0.435",
+    "nodesXYZ": "1.381#0.11#-0.800",
+    "nextCameraParams": ""
   }
 ]

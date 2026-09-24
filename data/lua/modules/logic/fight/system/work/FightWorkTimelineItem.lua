@@ -11,19 +11,37 @@ function FightWorkTimelineItem:onConstructor(entity, timelineName, fightStepData
 	self.timelineUrl = ResUrl.getSkillTimeline(self.timelineName)
 	self.skillId = self.fightStepData.actId
 
-	FightMsgMgr.sendMsg(FightMsgId.BeforePlayTimeline, self.entity.id, self.skillId, self.fightStepData, self.timelineName)
+	FightMsgMgr.sendMsg(FightMsgId.OnTimelineWorkCreated, self.entity.id, self.skillId, self.fightStepData, self.timelineName)
+end
+
+function FightWorkTimelineItem.getTimelineAssetUrl(timelineName)
+	local path
+
+	path = not GameResMgr.IsFromEditorDir and "rolestimeline" or ResUrl.getSkillTimeline(timelineName)
+
+	return path
 end
 
 function FightWorkTimelineItem:onStart()
 	local entityMo = self.entity and self.entity:getMO()
 	local skin = entityMo and entityMo.skin
 	local flow = self:com_registFlowSequence()
-	local work = FightPreloadOneTimelineRefWork.New(self.timelineName, skin, self)
+	local loaderComp = self:addComponent(FightLoaderComponent)
 
-	flow:addWork(work)
+	flow:registWork(FightWorkTimelineAssetItem, loaderComp, entityMo, self.timelineName, self.fightStepData)
+	flow:registWork(FightWorkFunction, self.setTimelineAsset, self)
 	flow:registFinishCallback(self.onLoadTimelineDone, self)
-	flow:onStart()
+	flow:start()
 	self:cancelFightWorkSafeTimer()
+end
+
+function FightWorkTimelineItem:setTimelineAsset()
+	local url = FightWorkTimelineItem.getTimelineAssetUrl(self.timelineName)
+	local fightAssetItem = FightGameMgr.loaderMgr:getAsset(url)
+
+	if fightAssetItem then
+		self:setTimelineAssetItem(fightAssetItem.assetItem)
+	end
 end
 
 function FightWorkTimelineItem:onLoadTimelineDone()
@@ -280,6 +298,7 @@ end
 
 function FightWorkTimelineItem:onDestructor()
 	FightMsgMgr.sendMsg(FightMsgId.OnTimelineWorkDestroyed, self.entity.id, self.skillId, self.fightStepData, self.timelineName)
+	FightMsgMgr.sendMsg(FightMsgId.ReleasePreloadTimelineAssetByStepId, self.fightStepData.stepUid)
 
 	if FightScene.isLowMemory then
 		FightHelper.clearNoUseEffect()

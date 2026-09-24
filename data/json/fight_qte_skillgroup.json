@@ -1,0 +1,51 @@
+[
+  {
+    "qteGoupId": 315500,
+    "activeId": 31550151,
+    "passiveId1": 31550154,
+    "passiveId2": 31550155,
+    "endId": 31550153
+  },
+  {
+    "qteGoupId": 315501,
+    "activeId": 31551151,
+    "passiveId1": 31551154,
+    "passiveId2": 31551155,
+    "endId": 31551153
+  },
+  {
+    "qteGoupId": 315503,
+    "activeId": 31553151,
+    "passiveId1": 31553154,
+    "passiveId2": 31553155,
+    "endId": 31553153
+  },
+  {
+    "qteGoupId": 315505,
+    "activeId": 31555151,
+    "passiveId1": 31555154,
+    "passiveId2": 31555155,
+    "endId": 31555153
+  },
+  {
+    "qteGoupId": 306600,
+    "activeId": 306601511,
+    "passiveId1": 306601521,
+    "passiveId2": 306601531,
+    "endId": 0
+  },
+  {
+    "qteGoupId": 306602,
+    "activeId": 306621511,
+    "passiveId1": 306621521,
+    "passiveId2": 306601531,
+    "endId": 0
+  },
+  {
+    "qteGoupId": 306605,
+    "activeId": 306651511,
+    "passiveId1": 306651521,
+    "passiveId2": 306601531,
+    "endId": 0
+  }
+]

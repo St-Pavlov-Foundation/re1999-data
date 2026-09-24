@@ -407,10 +407,6 @@ function HeroGroupModel:_convertToPreset()
 			end
 		end
 	end
-
-	if self.heroGroupType == ModuleEnum.HeroGroupType.BossRushActMode then
-		self._presetHeroGroupType = HeroGroupPresetEnum.HeroGroupType.Common
-	end
 end
 
 function HeroGroupModel:_getCommonBySelectIndex()
@@ -680,7 +676,7 @@ function HeroGroupModel:getCurGroupMO()
 	elseif self.heroGroupType == ModuleEnum.HeroGroupType.Odyssey then
 		return OdysseyHeroGroupModel.instance:getCurHeroGroup()
 	elseif self.heroGroupType == ModuleEnum.HeroGroupType.BossRushActMode then
-		return V3a9_BossRushModel.instance:getCurGroupMO()
+		-- block empty
 	else
 		return self:getById(self._curGroupId)
 	end
@@ -831,7 +827,7 @@ function HeroGroupModel:saveCurGroupData(callback, callbackObj, heroGroupMO)
 	end
 
 	if episodeConfig.type == DungeonEnum.EpisodeType.Abyss then
-		AbyssController.instance:saveSnapShot(heroGroupMO, nil, callback, callbackObj)
+		AbyssController.instance:saveSnapShot(heroGroupMO, lastSelectGroupIndex, callback, callbackObj)
 
 		return
 	end
@@ -1211,8 +1207,8 @@ function HeroGroupModel:getTempBattleRecommendParam()
 	return self.tempRecommendUseParam
 end
 
-function HeroGroupModel:setAssistMo(mo, i)
-	local episodeId = DungeonModel.instance.curSendEpisodeId
+function HeroGroupModel:setAssistMo(mo, i, params)
+	local episodeId = HeroGroupModel.instance.episodeId
 	local episodeConfig = DungeonConfig.instance:getEpisodeCO(episodeId)
 
 	if not episodeConfig then
@@ -1224,10 +1220,12 @@ function HeroGroupModel:setAssistMo(mo, i)
 	if episdoeType == DungeonEnum.EpisodeType.V3_2ZongMao then
 		V3a2_BossRushModel.instance:setAssistMo(mo, i)
 	end
+
+	HeroGroupHandler.setAssistMo(episodeId, mo, i, false, params)
 end
 
-function HeroGroupModel:getAssistMo()
-	local episodeId = DungeonModel.instance.curSendEpisodeId
+function HeroGroupModel:getAssistMo(params)
+	local episodeId = HeroGroupModel.instance.episodeId
 	local episodeConfig = DungeonConfig.instance:getEpisodeCO(episodeId)
 
 	if not episodeConfig then
@@ -1243,10 +1241,14 @@ function HeroGroupModel:getAssistMo()
 
 		return true, assistMO, episdoeType, episdoeActId
 	end
+
+	local canShow, assistMo, assistMoMap = HeroGroupHandler.getAssistMo(episodeId, false, params)
+
+	return canShow, assistMo, episdoeType, episdoeActId, assistMoMap
 end
 
-function HeroGroupModel:setEditorAssistMo(mo)
-	local episodeId = DungeonModel.instance.curSendEpisodeId
+function HeroGroupModel:setEditorAssistMo(mo, params)
+	local episodeId = HeroGroupModel.instance.episodeId
 	local episodeConfig = DungeonConfig.instance:getEpisodeCO(episodeId)
 
 	if not episodeConfig then
@@ -1258,10 +1260,12 @@ function HeroGroupModel:setEditorAssistMo(mo)
 	if episdoeType == DungeonEnum.EpisodeType.V3_2ZongMao then
 		V3a2_BossRushModel.instance:setEditorAssistMo(mo)
 	end
+
+	HeroGroupHandler.setAssistMo(episodeId, mo, 1, true, params)
 end
 
-function HeroGroupModel:getEditorAssistMo()
-	local episodeId = DungeonModel.instance.curSendEpisodeId
+function HeroGroupModel:getEditorAssistMo(params)
+	local episodeId = HeroGroupModel.instance.episodeId
 	local episodeConfig = DungeonConfig.instance:getEpisodeCO(episodeId)
 
 	if not episodeConfig then
@@ -1275,10 +1279,40 @@ function HeroGroupModel:getEditorAssistMo()
 
 		return assistMO
 	end
+
+	local canShow, assistMO, assistMoMap = HeroGroupHandler.getAssistMo(episodeId, true, params)
+
+	if canShow then
+		return assistMO, assistMoMap
+	end
 end
 
-function HeroGroupModel:clearCurAssist(isClearEditor)
-	local episodeId = DungeonModel.instance.curSendEpisodeId
+function HeroGroupModel:getAssistMoList(isEditor)
+	local assistMo, assistMoMap
+
+	if isEditor then
+		assistMo, assistMoMap = self:getEditorAssistMo()
+	else
+		local _
+
+		_, assistMo, _, _, assistMoMap = self:getAssistMo()
+	end
+
+	local list = {}
+
+	if assistMoMap and next(assistMoMap) then
+		for _, mo in pairs(assistMoMap) do
+			table.insert(list, mo)
+		end
+	elseif assistMo then
+		table.insert(list, assistMo)
+	end
+
+	return list
+end
+
+function HeroGroupModel:clearCurAssist(isClearEditor, params)
+	local episodeId = HeroGroupModel.instance.episodeId
 	local episodeConfig = DungeonConfig.instance:getEpisodeCO(episodeId)
 
 	if not episodeConfig then
@@ -1290,10 +1324,13 @@ function HeroGroupModel:clearCurAssist(isClearEditor)
 	if episdoeType == DungeonEnum.EpisodeType.V3_2ZongMao then
 		V3a2_BossRushModel.instance:clearAssist(isClearEditor)
 	end
+
+	HeroGroupHandler.clearAssist(episodeId, isClearEditor, params)
 end
 
 function HeroGroupModel:clearAllAssist()
 	V3a2_BossRushModel.instance:clearAllAssist()
+	TowerPermanentModel.instance:clearAllAssist()
 end
 
 HeroGroupModel.instance = HeroGroupModel.New()

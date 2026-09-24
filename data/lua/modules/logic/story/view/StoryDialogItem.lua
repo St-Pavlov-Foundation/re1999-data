@@ -135,6 +135,10 @@ function StoryDialogItem:hideDialog()
 	self._txtcontentcn.text = ""
 	self._txtsoftlight.text = ""
 
+	if self._conMark then
+		self._conMark:SetMarksTop({})
+	end
+
 	if self._conMat then
 		self._conMat:DisableKeyword("_GRADUAL_ON")
 	end
@@ -754,6 +758,10 @@ function StoryDialogItem:_delayShow()
 
 	self._dotMat:SetFloat(self._LineMinYId, height)
 	self._dotMat:SetFloat(self._LineMaxYId, height)
+
+	if self._stepCo.conversation.type ~= StoryEnum.ConversationType.ScreenDialog then
+		self._conMark:SetMarksTop(self._markTopList)
+	end
 
 	self._textInfo = self._targetTxt:GetTextInfo(self._subemtext)
 	self._lineInfoList = {}

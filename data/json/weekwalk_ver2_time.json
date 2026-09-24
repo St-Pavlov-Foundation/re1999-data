@@ -150,5 +150,21 @@
     "ruleIcon": "shen_guize_18",
     "ruleFront": "1#120390034",
     "ruleRear": "1#120390035"
+  },
+  {
+    "timeId": 20,
+    "issueId": 20,
+    "optionalSkills": "2006#2032#2017#2031#2022#2001",
+    "ruleIcon": "shen_guize_21",
+    "ruleFront": "1#120400024",
+    "ruleRear": "1#120400025"
+  },
+  {
+    "timeId": 21,
+    "issueId": 21,
+    "optionalSkills": "2006#2039#2033#2001#2015#2032",
+    "ruleIcon": "shen_guize_18",
+    "ruleFront": "1#120400034",
+    "ruleRear": "1#120400035"
   }
 ]

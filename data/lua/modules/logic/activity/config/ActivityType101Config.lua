@@ -291,6 +291,18 @@ function ActivityType101Config:getDoubleDanActId()
 	return ActivityConfig.instance:getConstAsNum(8, 13311)
 end
 
+function ActivityType101Config:getSixStarGiftActId()
+	local actIds = ActivityConfig.instance:getConstAsNumList(40000, "#", {})
+	local actId1 = actIds[1] or 14032
+	local actId2 = actIds[2]
+
+	return actId1, actId2
+end
+
+function ActivityType101Config:getCasualSkinGiftActId()
+	return ActivityConfig.instance:getConstAsNum(40001, 14034)
+end
+
 ActivityType101Config.instance = ActivityType101Config.New()
 
 return ActivityType101Config

@@ -130,5 +130,16 @@
     "scenePath": "scenes/v3a3_m_s17_pftj/prefab/sence_13001.prefab",
     "nameRes": "",
     "iconRes": ""
+  },
+  {
+    "id": 14001,
+    "name": "行与思七则",
+    "nameEn": "The Seven Precepts",
+    "show": true,
+    "order": 103,
+    "des": "",
+    "scenePath": "scenes/v4a0_m_s17_pftj/prefab/sence_14001.prefab",
+    "nameRes": "",
+    "iconRes": ""
   }
 ]

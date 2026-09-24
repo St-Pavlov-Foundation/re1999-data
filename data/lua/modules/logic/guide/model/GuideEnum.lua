@@ -43,18 +43,22 @@ GuideEnum.GuideRoom = {
 	TaskGuideID = 401
 }
 GuideEnum.GuideId = {
-	RoomCritterTrain = 415,
-	Act157FactoryUnlock = 18103,
-	RoomDailyOrder = 418,
 	NecrologistStoryLinkText = 31308,
+	RoomDailyOrder = 418,
 	NecrologistStoryMagic = 31303,
+	RoomCritterTrain = 415,
+	AssistAbyss = 40012,
+	PlayerViewAssist = 40011,
+	Act157FactoryUnlock = 18103,
 	WeekWalkDeep = 506,
 	V3A5NecrologistStoryGame = 35011
 }
 GuideEnum.EventTrigger = {
-	Act178FoodNotEnough = 2,
+	AssistAbyss = 5,
 	MusicFreeView = 1,
-	FightItemPlayerSkillGroup = 3
+	FightItemPlayerSkillGroup = 3,
+	Act178FoodNotEnough = 2,
+	PlayerViewAssist = 4
 }
 
 return GuideEnum

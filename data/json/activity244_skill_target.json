@@ -1,0 +1,62 @@
+[
+  {
+    "targetId": 100,
+    "targetType": "Board"
+  },
+  {
+    "targetId": 101,
+    "targetType": "Range"
+  },
+  {
+    "targetId": 102,
+    "targetType": "GemType"
+  },
+  {
+    "targetId": 103,
+    "targetType": "RandomColor"
+  },
+  {
+    "targetId": 105,
+    "targetType": "BuffType"
+  },
+  {
+    "targetId": 106,
+    "targetType": "RandomCount"
+  },
+  {
+    "targetId": 107,
+    "targetType": "Neighbor4"
+  },
+  {
+    "targetId": 108,
+    "targetType": "Neighbor8"
+  },
+  {
+    "targetId": 109,
+    "targetType": "LastClear"
+  },
+  {
+    "targetId": 110,
+    "targetType": "DropRate"
+  },
+  {
+    "targetId": 111,
+    "targetType": "RoundTime"
+  },
+  {
+    "targetId": 112,
+    "targetType": "FeverCost"
+  },
+  {
+    "targetId": 201,
+    "targetType": "CharacterSingle"
+  },
+  {
+    "targetId": 202,
+    "targetType": "CharacterAll"
+  },
+  {
+    "targetId": 301,
+    "targetType": "MonsterSingle"
+  }
+]

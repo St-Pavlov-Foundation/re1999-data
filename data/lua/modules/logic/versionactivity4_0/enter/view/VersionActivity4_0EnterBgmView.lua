@@ -1,0 +1,108 @@
+﻿-- chunkname: @modules/logic/versionactivity4_0/enter/view/VersionActivity4_0EnterBgmView.lua
+
+module("modules.logic.versionactivity4_0.enter.view.VersionActivity4_0EnterBgmView", package.seeall)
+
+local VersionActivity4_0EnterBgmView = class("VersionActivity4_0EnterBgmView", BaseView)
+
+function VersionActivity4_0EnterBgmView:onInitView()
+	if self._editableInitView then
+		self:_editableInitView()
+	end
+end
+
+function VersionActivity4_0EnterBgmView:addEvents()
+	self:addEventCb(VersionActivityBaseController.instance, VersionActivityEnterViewEvent.SelectActId, self.onSelectActId, self, LuaEventSystem.Low)
+end
+
+function VersionActivity4_0EnterBgmView:removeEvents()
+	self:removeEventCb(VersionActivityBaseController.instance, VersionActivityEnterViewEvent.SelectActId, self.onSelectActId, self, LuaEventSystem.Low)
+end
+
+function VersionActivity4_0EnterBgmView:_editableInitView()
+	self:initActHandle()
+end
+
+function VersionActivity4_0EnterBgmView:initActHandle()
+	if not self.actHandleDict then
+		self.actHandleDict = {}
+	end
+end
+
+function VersionActivity4_0EnterBgmView:onOpen()
+	local activitySettingList = self.viewParam.activitySettingList or {}
+	local defaultIndex = VersionActivityEnterHelper.getTabIndex(activitySettingList, self.viewParam.jumpActId)
+	local actSetting = activitySettingList[defaultIndex]
+	local actId = VersionActivityEnterHelper.getActId(actSetting)
+
+	self._isFirstOpenMainAct = actId == VersionActivity4_0Enum.ActivityId.Dungeon
+
+	self:modifyBgm(actId)
+
+	self._isFirstOpenMainAct = false
+end
+
+function VersionActivity4_0EnterBgmView:onSelectActId(actId)
+	self:modifyBgm(actId)
+end
+
+function VersionActivity4_0EnterBgmView:modifyBgm(actId)
+	self._isMainAct = actId == VersionActivity4_0Enum.ActivityId.Dungeon
+
+	local delayTime = 0
+
+	if self._isMainAct then
+		AudioBgmManager.instance:modifyAndPlay(AudioBgmEnum.Layer.VersionActivity4_0Main, 0, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
+
+		self.playingActId = nil
+		self.bgmId = nil
+
+		if self._isFirstOpenMainAct then
+			self._isFirstOpenMainAct = false
+			delayTime = 3.5
+		else
+			delayTime = 1
+		end
+	end
+
+	self._actId = actId
+
+	TaskDispatcher.cancelTask(self._doModifyBgm, self)
+	TaskDispatcher.runDelay(self._doModifyBgm, self, delayTime)
+end
+
+function VersionActivity4_0EnterBgmView:_doModifyBgm()
+	local modifyFunc = self.actHandleDict[self._actId] or self.defaultBgmHandle
+
+	modifyFunc(self, self._actId)
+end
+
+function VersionActivity4_0EnterBgmView:defaultBgmHandle(actId)
+	if self.playingActId == actId then
+		return
+	end
+
+	self.playingActId = actId
+
+	local bgmId = ActivityConfig.instance:getActivityEnterViewBgm(actId)
+
+	if bgmId == 0 then
+		logError("actId : " .. tostring(actId) .. " 没有配置背景音乐")
+
+		bgmId = AudioEnum.Bgm.Act2_0DungeonBgm
+	end
+
+	if not self._isMainAct and bgmId == self.bgmId then
+		return
+	end
+
+	self.bgmId = bgmId
+
+	AudioBgmManager.instance:setSwitchData(AudioBgmEnum.Layer.VersionActivity4_0Main)
+	AudioBgmManager.instance:modifyBgmAudioId(AudioBgmEnum.Layer.VersionActivity4_0Main, bgmId)
+end
+
+function VersionActivity4_0EnterBgmView:onClose()
+	TaskDispatcher.cancelTask(self._doModifyBgm, self)
+end
+
+return VersionActivity4_0EnterBgmView

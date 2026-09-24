@@ -1,0 +1,152 @@
+[
+  {
+    "chaId": 1,
+    "chaPicture": "headicon_small_3",
+    "chaName": "波泽蒂",
+    "chaCamp": 4
+  },
+  {
+    "chaId": 2,
+    "chaPicture": "headicon_small_7",
+    "chaName": "老骨头",
+    "chaCamp": 4
+  },
+  {
+    "chaId": 3,
+    "chaPicture": "headicon_small_1",
+    "chaName": "爱丝琳",
+    "chaCamp": 4
+  },
+  {
+    "chaId": 4,
+    "chaPicture": "headicon_small_2",
+    "chaName": "西缪斯",
+    "chaCamp": 4
+  },
+  {
+    "chaId": 5,
+    "chaPicture": "headicon_small_5",
+    "chaName": "阿里安",
+    "chaCamp": 4
+  },
+  {
+    "chaId": 6,
+    "chaPicture": "headicon_small_4",
+    "chaName": "安琪蕾特",
+    "chaCamp": 4
+  },
+  {
+    "chaId": 7,
+    "chaPicture": "headicon_small_12",
+    "chaName": "珐琅眼",
+    "chaCamp": 4
+  },
+  {
+    "chaId": 8,
+    "chaPicture": "headicon_small_13",
+    "chaName": "小瑞安侬",
+    "chaCamp": 0
+  },
+  {
+    "chaId": 9,
+    "chaPicture": "headicon_small_8",
+    "chaName": "院长",
+    "chaCamp": 4
+  },
+  {
+    "chaId": 10,
+    "chaPicture": "headicon_small_6",
+    "chaName": "苦蜜井",
+    "chaCamp": 4
+  },
+  {
+    "chaId": 11,
+    "chaPicture": "headicon_small_11",
+    "chaName": "维尔汀",
+    "chaCamp": 2
+  },
+  {
+    "chaId": 12,
+    "chaPicture": "headicon_small_18",
+    "chaName": "埃洛温",
+    "chaCamp": 0
+  },
+  {
+    "chaId": 13,
+    "chaPicture": "headicon_small_9",
+    "chaName": "阿尔菲",
+    "chaCamp": 6
+  },
+  {
+    "chaId": 14,
+    "chaPicture": "headicon_small_10",
+    "chaName": "伊莉",
+    "chaCamp": 6
+  },
+  {
+    "chaId": 15,
+    "chaPicture": "headicon_small_19",
+    "chaName": "兰斯洛特",
+    "chaCamp": 0
+  },
+  {
+    "chaId": 16,
+    "chaPicture": "headicon_small_11",
+    "chaName": "维尔汀",
+    "chaCamp": 3
+  },
+  {
+    "chaId": 17,
+    "chaPicture": "headicon_small_20",
+    "chaName": "红弩箭",
+    "chaCamp": 3
+  },
+  {
+    "chaId": 18,
+    "chaPicture": "headicon_small_21",
+    "chaName": "贝特茜",
+    "chaCamp": 7
+  },
+  {
+    "chaId": 19,
+    "chaPicture": "headicon_small_22",
+    "chaName": "德雷克",
+    "chaCamp": 1
+  },
+  {
+    "chaId": 20,
+    "chaPicture": "headicon_small_23",
+    "chaName": "玛尔纱",
+    "chaCamp": 1
+  },
+  {
+    "chaId": 21,
+    "chaPicture": "headicon_small_24",
+    "chaName": "刻雷乌斯",
+    "chaCamp": 1
+  },
+  {
+    "chaId": 22,
+    "chaPicture": "headicon_small_25",
+    "chaName": "玛蒂尔达",
+    "chaCamp": 1
+  },
+  {
+    "chaId": 23,
+    "chaPicture": "headicon_small_26",
+    "chaName": "张之之",
+    "chaCamp": 1
+  },
+  {
+    "chaId": 24,
+    "chaPicture": "headicon_small_27",
+    "chaName": "十四行诗",
+    "chaCamp": 3
+  },
+  {
+    "chaId": 25,
+    "chaPicture": "headicon_small_28",
+    "chaName": "小梅斯梅尔",
+    "chaCamp": 5
+  }
+]

@@ -6,6 +6,7 @@ local FightEntityObject = class("FightEntityObject", FightBaseClass)
 
 function FightEntityObject:onConstructor(gameObjectName, entityData)
 	self.go = gohelper.create3d(self.PARENT_ROOT_OBJECT._containerGO, gameObjectName)
+	self.goTransform = self.go.transform
 	self.go.tag = self:getTag()
 	self._compList = {}
 	self.id = entityData.id
@@ -69,16 +70,6 @@ function FightEntityObject:initComponents()
 	else
 		self.nameUI = self:addEntityComponent(FightNameUI)
 	end
-
-	if self.entityData.modelId == 3092 then
-		local skin = self.entityData.skin
-
-		FightGameMgr.timelinePreLoaderMgr:preLoadTimeline("yigeer_309201_unique", self.entityData)
-
-		if skin == 309203 then
-			FightGameMgr.timelinePreLoaderMgr:preLoadTimeline("yigeer_309203_unique", self.entityData)
-		end
-	end
 end
 
 function FightEntityObject:getSpineRendererClass()
@@ -139,6 +130,8 @@ function FightEntityObject:setRenderOrder(order)
 	if self.spine then
 		self.spine:setRenderOrder(order)
 	end
+
+	FightController.instance:dispatchEvent(FightEvent.OnSetEntityRenderOrder, self.entityId, order)
 end
 
 function FightEntityObject:registLoadSpineWork(customUrl)
@@ -174,21 +167,41 @@ function FightEntityObject:_onSpineLoaded()
 	FightMsgMgr.sendMsg(FightMsgId.SpineLoadFinish, unitSpine)
 	FightController.instance:dispatchEvent(FightEvent.OnSpineLoaded, unitSpine)
 	FightController.instance:dispatchEvent(FightEvent.OnSpineMaterialChange, entity.id, mat)
-	self:setupLookAtCamera()
-end
 
-function FightEntityObject:setupLookAtCamera()
-	if FightDataHelper.entityExMgr:getById(self.id).needLookCamera then
-		local transformListener = ZProj.TransformListener.Get(self.go)
+	self.transformListener = ZProj.TransformListener.Get(self.go)
 
-		transformListener:AddPositionCallback(self._onTransformChange, self)
+	self.transformListener:AddPositionCallback(self._onTransformChange, self)
+
+	local exEntityData = FightDataHelper.entityExMgr:getById(self.id)
+
+	if exEntityData.needDispatchPositionChangeEvent then
+		self.spineTransformListener = ZProj.TransformListener.Get(self.spine:getSpineGO())
+
+		self.spineTransformListener:AddPositionCallback(self._onSpineTransformChange, self)
 	end
 end
 
 function FightEntityObject:_onTransformChange()
-	local entityMgr = FightGameMgr.entityMgr
+	local exEntityData = FightDataHelper.entityExMgr:getById(self.id)
 
-	entityMgr:adjustSpineLookRotation(self)
+	if exEntityData.needLookCamera then
+		local entityMgr = FightGameMgr.entityMgr
+
+		entityMgr:adjustSpineLookRotation(self)
+	end
+
+	if exEntityData.needDispatchPositionChangeEvent then
+		local posX, posY, posZ = transformhelper.getPos(self.goTransform)
+
+		FightController.instance:dispatchEvent(FightEvent.OnEntityPosChange, self.entityId, posX, posY, posZ)
+	end
+end
+
+function FightEntityObject:_onSpineTransformChange()
+	local tr = self.spine:getSpineTr()
+	local posX, posY, posZ = transformhelper.getLocalPos(tr)
+
+	FightController.instance:dispatchEvent(FightEvent.OnEntitySpinePosChange, self.entityId, posX, posY, posZ)
 end
 
 function FightEntityObject:setActive(isActive, isForce)
@@ -246,7 +259,7 @@ function FightEntityObject:setAlpha(alpha, duration)
 		end
 	end
 
-	FightController.instance:dispatchEvent(FightEvent.SetEntityAlpha, self.id, alpha ~= 0)
+	FightController.instance:dispatchEvent(FightEvent.SetEntityAlpha, self.id, alpha ~= 0, duration)
 end
 
 function FightEntityObject:resetEntity()
@@ -296,7 +309,7 @@ function FightEntityObject:resetEntity()
 	self:setScale(scale)
 end
 
-function FightEntityObject:resetAnimState()
+function FightEntityObject:resetAnimState(restart)
 	if self.isDead then
 		return
 	end
@@ -312,7 +325,7 @@ function FightEntityObject:resetAnimState()
 			self.spine:addAnimEventCallback(self._onChange2AnimEvent, self)
 			self.spine:play(change2, false, true)
 		elseif self.spine:hasAnimation(animName) then
-			self.spine:play(animName, true, false)
+			self.spine:play(animName, true, restart and true or false)
 		else
 			self.spine:play(SpineAnimState.idle1, true, true)
 		end
@@ -405,6 +418,12 @@ function FightEntityObject:setSpeed(speed)
 end
 
 function FightEntityObject:getDefaultAnim()
+	local entityMo = self:getMO()
+
+	if entityMo and entityMo:checkIsDying() then
+		return "freeze"
+	end
+
 	local buffAnim = self:getBuffAnim()
 
 	if buffAnim then
@@ -429,6 +448,12 @@ function FightEntityObject:getBuffAnim()
 end
 
 function FightEntityObject:getDefaultMatName()
+	local entityMo = self:getMO()
+
+	if entityMo and entityMo:checkIsDying() then
+		return "buff_stone"
+	end
+
 	if self.buff then
 		return self.buff:getBuffMatName()
 	end
@@ -448,10 +473,16 @@ function FightEntityObject:onLogicExit()
 	FightRenderOrderMgr.instance:unregister(self.id)
 	FightGameMgr.bloomMgr:removeEntity(self)
 
-	if not gohelper.isNil(self.go) then
-		local transformListener = ZProj.TransformListener.Get(self.go)
+	if self.transformListener then
+		self.transformListener:RemovePositionCallback()
 
-		transformListener:RemovePositionCallback()
+		self.transformListener = nil
+	end
+
+	if self.spineTransformListener then
+		self.spineTransformListener:RemovePositionCallback()
+
+		self.spineTransformListener = nil
 	end
 
 	FightController.instance:dispatchEvent(FightEvent.BeforeEntityDestroy, self)
@@ -526,6 +557,10 @@ function FightEntityObject:registClasses()
 
 	self:newClass(FightEntitySummonedComp, self)
 	self:newClass(FightEntityBuffSpecialPrecessComp, self)
+end
+
+function FightEntityObject:canActiveDynamicShadow()
+	return true
 end
 
 function FightEntityObject:onDestructor()

@@ -30066,5 +30066,657 @@
   {
     "id": 537104,
     "type": "HasTypeIdBuffTotalCountMoreThan"
+  },
+  {
+    "id": 662,
+    "type": "ActiveUseSkillId"
+  },
+  {
+    "id": 810,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810002,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810004,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810005,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810100,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810101,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810102,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810103,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810104,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810105,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810106,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810201,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810202,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810203,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810204,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810205,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810206,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810207,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810208,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810209,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810210,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810211,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810212,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810213,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810301,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810302,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810303,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810304,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810305,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810306,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810307,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810401,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 810402,
+    "type": "ActiveUseSkillAndFromBuffId"
+  },
+  {
+    "id": 535500,
+    "type": "TypeIdBuffCountMoreThan"
+  },
+  {
+    "id": 500000,
+    "type": "None"
+  },
+  {
+    "id": 501000,
+    "type": "None"
+  },
+  {
+    "id": 502000,
+    "type": "None"
+  },
+  {
+    "id": 811,
+    "type": "ActiveUseQTESkill"
+  },
+  {
+    "id": 811201,
+    "type": "ActiveUseQTESkill"
+  },
+  {
+    "id": 811202,
+    "type": "ActiveUseQTESkill"
+  },
+  {
+    "id": 811203,
+    "type": "ActiveUseQTESkill"
+  },
+  {
+    "id": 811204,
+    "type": "ActiveUseQTESkill"
+  },
+  {
+    "id": 811205,
+    "type": "ActiveUseQTESkill"
+  },
+  {
+    "id": 811206,
+    "type": "ActiveUseQTESkill"
+  },
+  {
+    "id": 811207,
+    "type": "ActiveUseQTESkill"
+  },
+  {
+    "id": 811208,
+    "type": "ActiveUseQTESkill"
+  },
+  {
+    "id": 811209,
+    "type": "ActiveUseQTESkill"
+  },
+  {
+    "id": 811210,
+    "type": "ActiveUseQTESkill"
+  },
+  {
+    "id": 811211,
+    "type": "ActiveUseQTESkill"
+  },
+  {
+    "id": 811212,
+    "type": "ActiveUseQTESkill"
+  },
+  {
+    "id": 811213,
+    "type": "ActiveUseQTESkill"
+  },
+  {
+    "id": 812000,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812002,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812004,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812100,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812101,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812102,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812103,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812104,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812105,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812106,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812201,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812202,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812203,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812204,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812205,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812206,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812207,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812208,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812209,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812210,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812211,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812212,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812213,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812301,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812302,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812303,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812304,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812305,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812306,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812307,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812401,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812402,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 812500,
+    "type": "RandomFailCompensate"
+  },
+  {
+    "id": 701501,
+    "type": "HasMasterHalo"
+  },
+  {
+    "id": 1010209,
+    "type": "ProgressValue"
+  },
+  {
+    "id": 1010302,
+    "type": "ProgressValue"
+  },
+  {
+    "id": 7912082,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 7912092,
+    "type": "ToBrokenEnemy"
+  },
+  {
+    "id": 10212082,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 10212092,
+    "type": "BattleTagCheck"
+  },
+  {
+    "id": 192082,
+    "type": "HasBuffId"
+  },
+  {
+    "id": 192092,
+    "type": "HasBuffId"
+  },
+  {
+    "id": 30321,
+    "type": "None"
+  },
+  {
+    "id": 813000,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813002,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813004,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813030,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813100,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813101,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813102,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813103,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813104,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813105,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813106,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813201,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813202,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813203,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813204,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813205,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813206,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813207,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813208,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813209,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813210,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813211,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813212,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813213,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813301,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813302,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813303,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813304,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813305,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813306,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813307,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813401,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813402,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 813500,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 814000,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814002,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814004,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814100,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814101,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814102,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814103,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814104,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814105,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814106,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814201,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814202,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814203,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814204,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814205,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814206,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814207,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814208,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814209,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814210,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814211,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814212,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814213,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814301,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814302,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814303,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814304,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814305,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814306,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814307,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814401,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814402,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 814500,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 1010307,
+    "type": "ProgressValue"
   }
 ]

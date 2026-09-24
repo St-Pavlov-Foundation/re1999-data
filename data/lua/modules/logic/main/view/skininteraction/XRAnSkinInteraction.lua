@@ -241,7 +241,7 @@ end
 
 function XRAnSkinInteraction:_delayResetCamera()
 	UIBlockMgrExtend.setNeedCircleMv(true)
-	self:_resetCameraPos()
+	self:_resetCameraPos(self._animationControllerName)
 	gohelper.setActive(self._clickFeatherGo, false)
 end
 
@@ -268,26 +268,6 @@ function XRAnSkinInteraction:_delayHideFeatherStoryGo()
 
 	gohelper.setActive(self._featherStoryGo, false)
 	gohelper.setActive(self._featherGo, false)
-end
-
-function XRAnSkinInteraction:_resetCameraPos()
-	local animator = CameraMgr.instance:getCameraRootAnimator()
-	local animatorInst = animator.runtimeAnimatorController
-
-	if not animatorInst or animatorInst.name ~= self._animationControllerName then
-		return
-	end
-
-	animator.runtimeAnimatorController = nil
-	self._mainRootGo = CameraMgr.instance:getCameraTraceGO()
-
-	transformhelper.setLocalRotation(self._mainRootGo.transform, 0, 0, 0)
-
-	local trace = CameraMgr.instance:getCameraTrace()
-
-	trace.EnableTrace = true
-	trace.EnableTrace = false
-	trace.enabled = false
 end
 
 function XRAnSkinInteraction:_onDestroy()
@@ -321,7 +301,7 @@ function XRAnSkinInteraction:_onDestroy()
 	ViewMgr.instance:unregisterCallback(ViewEvent.OnOpenView, self._onOpenView, self)
 	StoryController.instance:unregisterCallback(StoryEvent.RefreshStep, self._onStep, self)
 	StoryController.instance:unregisterCallback(StoryEvent.FrontItemFadeOut, self._onFrontItemFadeOut, self)
-	self:_resetCameraPos()
+	self:_resetCameraPos(self._animationControllerName)
 end
 
 return XRAnSkinInteraction

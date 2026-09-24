@@ -14,5 +14,7 @@ AbyssEvent.OnAbyssTaskUpdate = _get()
 AbyssEvent.OnAbyssMainViewClose = _get()
 AbyssEvent.OnAbyssLastUpdateTimeChange = _get()
 AbyssEvent.OnAbyssRecommendHeroRemove = _get()
+AbyssEvent.OnSelectPickAssist = _get()
+AbyssEvent.OnReleasePickAssist = _get()
 
 return AbyssEvent

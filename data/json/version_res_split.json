@@ -1426,7 +1426,7 @@
     "uiFolder": [],
     "uiPath": [],
     "packName": "oppartygame",
-    "ignore": 1
+    "ignore": 0
   },
   {
     "id": 30,
@@ -1644,6 +1644,59 @@
     "uiFolder": [
       "ui/viewres/versionactivity_3_1/v3a1_dungeon",
       "ui/viewres/versionactivity_3_1/v3a1_enter"
+    ],
+    "uiPath": [],
+    "packName": "opveract",
+    "ignore": 0
+  },
+  {
+    "id": 35,
+    "audio": [
+      3320001,
+      3320002,
+      3320003
+    ],
+    "chapter": [
+      32101,
+      32201,
+      32301,
+      32401,
+      32601,
+      32501
+    ],
+    "guide": [],
+    "story": [
+      313401,
+      313402,
+      313403,
+      313404,
+      313405,
+      313406,
+      313411,
+      313407,
+      313408,
+      313409,
+      313410,
+      313501,
+      313509,
+      313502,
+      313510,
+      313503,
+      313504,
+      313511,
+      313505,
+      313506,
+      313507,
+      313508
+    ],
+    "folderPath": [],
+    "videoPath": [
+      "3_2_pv"
+    ],
+    "path": [],
+    "uiFolder": [
+      "ui/viewres/versionactivity_3_2/v3a2_dungeon",
+      "ui/viewres/versionactivity_3_2/v3a2_enter"
     ],
     "uiPath": [],
     "packName": "opveract",

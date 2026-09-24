@@ -190,5 +190,11 @@
     "name": "心相提升道具",
     "useType": 2,
     "use_max": 1
+  },
+  {
+    "id": 401,
+    "name": "必new6星道具",
+    "useType": 2,
+    "use_max": 1
   }
 ]

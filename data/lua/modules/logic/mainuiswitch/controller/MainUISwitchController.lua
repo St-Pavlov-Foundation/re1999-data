@@ -24,13 +24,14 @@ function MainUISwitchController:_onGetInfoFinish()
 	MainUISwitchModel.instance:initMainUI()
 end
 
-function MainUISwitchController:openMainUISwitchInfoView(skinId, noInfoEffect, isPreview, isCloseMoHideScene, hideExtraDisPlay)
+function MainUISwitchController:openMainUISwitchInfoView(skinId, noInfoEffect, isPreview, isCloseMoHideScene, hideExtraDisPlay, isAmplify)
 	ViewMgr.instance:openView(ViewName.MainUISwitchInfoBlurMaskView, {
 		SkinId = skinId,
 		noInfoEffect = noInfoEffect,
 		isPreview = isPreview,
 		hideExtraDisPlay = hideExtraDisPlay,
-		isCloseMoHideScene = isCloseMoHideScene
+		isCloseMoHideScene = isCloseMoHideScene,
+		isAmplify = isAmplify
 	})
 end
 

@@ -35,6 +35,7 @@ function AbyssStageDetailsView:onInitView()
 	self._gotopleft = gohelper.findChild(self.viewGO, "#go_topleft")
 	self._btn_enemy = gohelper.findChildButton(self.viewGO, "Right/Title/#btn_enemy")
 	self._btnReadPreset = gohelper.findChildButton(self.viewGO, "Left/#btn_readpreset")
+	self._txtAssistCount = gohelper.findChildTextMesh(self.viewGO, "#go_assistTimes/#txt_assistTimes")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -54,6 +55,8 @@ function AbyssStageDetailsView:addEvents()
 	self:addEventCb(HeroGroupController.instance, HeroGroupEvent.OnSnapshotSaveSucc, self._onSnapshotSaveSucc, self)
 	self:addEventCb(HeroGroupController.instance, AbyssEvent.OnAbyssLastUpdateTimeChange, self._onStageInfoChanged, self)
 	self:addEventCb(HeroGroupPresetController.instance, HeroGroupPresetEvent.UseHeroGroup, self._onUseHeroGroup, self)
+	self:addEventCb(AbyssController.instance, AbyssEvent.OnSelectPickAssist, self.onAssistChange, self)
+	self:addEventCb(AbyssController.instance, AbyssEvent.OnReleasePickAssist, self.refreshAssistInfo, self)
 end
 
 function AbyssStageDetailsView:removeEvents()
@@ -69,10 +72,16 @@ function AbyssStageDetailsView:removeEvents()
 	self:removeEventCb(HeroGroupController.instance, HeroGroupEvent.OnSnapshotSaveSucc, self._onSnapshotSaveSucc, self)
 	self:removeEventCb(HeroGroupController.instance, AbyssEvent.OnAbyssLastUpdateTimeChange, self._onStageInfoChanged, self)
 	self:removeEventCb(HeroGroupPresetController.instance, HeroGroupPresetEvent.UseHeroGroup, self._onUseHeroGroup, self)
+	self:addEventCb(AbyssController.instance, AbyssEvent.OnSelectPickAssist, self.onAssistChange, self)
+	self:addEventCb(AbyssController.instance, AbyssEvent.OnReleasePickAssist, self.refreshAssistInfo, self)
 end
 
 function AbyssStageDetailsView:_onModifyHeroGroup()
-	return
+	logNormal("_onModifyHeroGroup")
+
+	for _, item in ipairs(self._stageItemList) do
+		self:_refreshStageItemHeroInfo(item)
+	end
 end
 
 function AbyssStageDetailsView:_onUseHeroGroup(param)
@@ -288,6 +297,15 @@ function AbyssStageDetailsView:onOpen()
 	AudioMgr.instance:trigger(AudioEnum3_6.Abyss.play_ui_stage_open)
 	self:checkParam()
 	self:refreshUI()
+	self:checkGuide()
+end
+
+function AbyssStageDetailsView:checkGuide()
+	local isFinish = GuideModel.instance:isGuideFinish(GuideEnum.GuideId.AssistAbyss)
+
+	if not isFinish and OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.Friend) then
+		GuideController.instance:dispatchEvent(GuideEvent.TriggerActive, GuideEnum.EventTrigger.AssistAbyss)
+	end
 end
 
 function AbyssStageDetailsView:checkParam()
@@ -330,6 +348,27 @@ function AbyssStageDetailsView:refreshUI()
 	self:refreshTargetList()
 	self:refreshStageList()
 	self:refreshRecommendInfo()
+	self:refreshAssistInfo()
+end
+
+function AbyssStageDetailsView:onAssistChange()
+	AbyssController.instance:onUseAssist()
+	self:refreshAssistInfo()
+end
+
+function AbyssStageDetailsView:refreshAssistInfo()
+	local count = 0
+	local actInfo = AbyssModel.instance:getCurInfoMo()
+
+	for _, stageInfoMo in ipairs(actInfo.stageInfoList) do
+		if stageInfoMo:haveAssist() then
+			count = count + 1
+		end
+	end
+
+	local maxCount = 1
+
+	self._txtAssistCount.text = GameUtil.getSubPlaceholderLuaLangTwoParam(luaLang("v4a0_abyss_assist_count_tip"), count, maxCount)
 end
 
 function AbyssStageDetailsView:switchStage(stageId)
@@ -491,7 +530,20 @@ function AbyssStageDetailsView:_refreshStageItemHeroInfo(item)
 		local heroId
 		local data = {}
 
-		heroId = self:_getPresetHeroId(stageMo, i)
+		if haveChallenge then
+			heroId = stageMo.heroList[i] and stageMo.heroList[i] or 0
+		elseif stageMo:isPosAssist(i) then
+			local assistData = stageMo.assistPosDic[i]
+
+			heroId = assistData and assistData.heroId or 0
+		else
+			heroId = self:_getPresetHeroId(stageMo, i)
+
+			local isLock = AbyssModel.instance:isCurHeroLocked(heroId)
+
+			heroId = isLock and 0 or heroId
+		end
+
 		data.heroId = heroId
 
 		local actInfo = AbyssModel.instance:getCurInfoMo()
@@ -506,9 +558,28 @@ function AbyssStageDetailsView:_refreshStageItemHeroInfo(item)
 		data.isLock = isLock
 		data.haveChallenge = haveChallenge
 
-		local heroConfig = HeroConfig.instance:getHeroCO(data.heroId)
+		if heroId ~= nil and heroId ~= 0 then
+			local isAssist = stageMo:isHeroAssist(heroId)
+			local heroConfig = HeroConfig.instance:getHeroCO(heroId)
+			local skinId
 
-		logNormal("_refreshStageItemHeroInfo index: " .. i .. " id:" .. data.heroId .. " name:" .. (heroConfig and heroConfig.name or "") .. " stageId: " .. stageId .. " isUsed: " .. tostring(data.isUsed))
+			if isAssist then
+				skinId = stageMo.skinDic[heroId]
+			else
+				local heroMo = HeroModel.instance:getByHeroId(heroId)
+
+				if heroMo then
+					skinId = heroMo.skin
+				else
+					skinId = heroConfig.skinId
+				end
+			end
+
+			data.skinId = skinId
+			data.isAssist = isAssist
+
+			logNormal("_refreshStageItemHeroInfo index: " .. i .. " id:" .. data.heroId .. " name:" .. (heroConfig and heroConfig.name or "") .. " stageId: " .. stageId .. " isUsed: " .. tostring(data.isUsed))
+		end
 
 		tempList[i] = data
 	end

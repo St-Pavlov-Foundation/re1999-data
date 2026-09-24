@@ -1,0 +1,122 @@
+[
+  {
+    "buffId": 117401501,
+    "name": "红色概率up1",
+    "buffType": 4,
+    "durationType": "1#1",
+    "buffEffect": "104#4#500",
+    "effect": ""
+  },
+  {
+    "buffId": 117401502,
+    "name": "红色概率up2",
+    "buffType": 4,
+    "durationType": "2#3",
+    "buffEffect": "104#4#700",
+    "effect": ""
+  },
+  {
+    "buffId": 117401503,
+    "name": "蓝色概率up1",
+    "buffType": 4,
+    "durationType": "1#1",
+    "buffEffect": "104#2#500",
+    "effect": ""
+  },
+  {
+    "buffId": 117401504,
+    "name": "蓝色概率up2",
+    "buffType": 4,
+    "durationType": "3#3",
+    "buffEffect": "104#2#700",
+    "effect": ""
+  },
+  {
+    "buffId": 117401505,
+    "name": "绿色概率up1",
+    "buffType": 4,
+    "durationType": "1#1",
+    "buffEffect": "104#3#500",
+    "effect": ""
+  },
+  {
+    "buffId": 117401506,
+    "name": "消除时间延长1",
+    "buffType": 5,
+    "durationType": "1#1",
+    "buffEffect": "106#5",
+    "effect": ""
+  },
+  {
+    "buffId": 117401507,
+    "name": "消除时间延长2",
+    "buffType": 5,
+    "durationType": "1#1",
+    "buffEffect": "106#3",
+    "effect": ""
+  },
+  {
+    "buffId": 117400205,
+    "name": "兽系百货提升",
+    "buffType": 4,
+    "durationType": "0",
+    "buffEffect": "104#4#300",
+    "effect": ""
+  },
+  {
+    "buffId": 117400305,
+    "name": "星系百货提升",
+    "buffType": 4,
+    "durationType": "0",
+    "buffEffect": "104#2#300",
+    "effect": ""
+  },
+  {
+    "buffId": 117400405,
+    "name": "木系百货提升",
+    "buffType": 4,
+    "durationType": "0",
+    "buffEffect": "104#3#300",
+    "effect": ""
+  },
+  {
+    "buffId": 117400202,
+    "name": "攻击倍率提升",
+    "buffType": 8,
+    "durationType": "1#1",
+    "buffEffect": "112#50",
+    "effect": ""
+  },
+  {
+    "buffId": 117400301,
+    "name": "狂热时间提升",
+    "buffType": 6,
+    "durationType": "0",
+    "buffEffect": "108#1",
+    "effect": ""
+  },
+  {
+    "buffId": 117400302,
+    "name": "消除时间提升",
+    "buffType": 5,
+    "durationType": "0",
+    "buffEffect": "106#1",
+    "effect": ""
+  },
+  {
+    "buffId": 117400303,
+    "name": "消除时间提升",
+    "buffType": 5,
+    "durationType": "0",
+    "buffEffect": "106#0.5",
+    "effect": ""
+  },
+  {
+    "buffId": 117400304,
+    "name": "消除时间提升",
+    "buffType": 5,
+    "durationType": "0",
+    "buffEffect": "106#1",
+    "effect": ""
+  }
+]

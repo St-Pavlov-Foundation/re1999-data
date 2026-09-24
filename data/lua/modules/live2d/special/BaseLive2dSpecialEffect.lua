@@ -4,6 +4,10 @@ module("modules.live2d.special.BaseLive2dSpecialEffect", package.seeall)
 
 local BaseLive2dSpecialEffect = class("BaseLive2dSpecialEffect", LuaCompBase)
 
+function BaseLive2dSpecialEffect:ctor(live2d)
+	self:setLive2d(live2d)
+end
+
 function BaseLive2dSpecialEffect:init(go)
 	self._go = go
 
@@ -57,6 +61,18 @@ function BaseLive2dSpecialEffect:_onBodyChange(prevBodyName, curBodyName)
 end
 
 function BaseLive2dSpecialEffect:onDestroy()
+	return
+end
+
+function BaseLive2dSpecialEffect:showInScene(value)
+	return
+end
+
+function BaseLive2dSpecialEffect:showModel()
+	return
+end
+
+function BaseLive2dSpecialEffect:hideModel()
 	return
 end
 

@@ -61,8 +61,6 @@ function StoryBranchOptionSpLongClickSelectItem:_onLongClick()
 				self._tweenId = nil
 			end
 
-			self._anim.enabled = true
-
 			StoryController.instance:dispatchEvent(StoryEvent.OnOptionSelected, self._param)
 			TaskDispatcher.runDelay(self._onSelectOptionFinished, self, 1.33)
 		end
@@ -70,8 +68,7 @@ function StoryBranchOptionSpLongClickSelectItem:_onLongClick()
 end
 
 function StoryBranchOptionSpLongClickSelectItem:_startFill()
-	self._anim.enabled = false
-
+	self._anim:Play("click")
 	gohelper.setActive(self._goguide, false)
 	gohelper.setActive(self._goeff, false)
 
@@ -79,7 +76,7 @@ function StoryBranchOptionSpLongClickSelectItem:_startFill()
 end
 
 function StoryBranchOptionSpLongClickSelectItem:_updateFill(value)
-	self._imagetop.fillAmount = value
+	transformhelper.setLocalRotation(self._goRound.transform, 0, 0, value * 360)
 end
 
 function StoryBranchOptionSpLongClickSelectItem:setAutoClick()
@@ -87,7 +84,7 @@ function StoryBranchOptionSpLongClickSelectItem:setAutoClick()
 end
 
 function StoryBranchOptionSpLongClickSelectItem:_setOptionSelect()
-	self._anim:Play("click", 0, 0)
+	self._anim:Play("close", 0, 0)
 end
 
 function StoryBranchOptionSpLongClickSelectItem:_onSelectOptionFinished()
@@ -95,9 +92,7 @@ function StoryBranchOptionSpLongClickSelectItem:_onSelectOptionFinished()
 end
 
 function StoryBranchOptionSpLongClickSelectItem:_setOptionUnselect()
-	if self._anim then
-		self._anim:SetBool("isUnselect", true)
-	end
+	self._anim:Play("close", 0, 0)
 end
 
 function StoryBranchOptionSpLongClickSelectItem:showItem(show)
@@ -145,6 +140,7 @@ function StoryBranchOptionSpLongClickSelectItem:_onSelectItemLoaded()
 	end
 
 	self._anim = self.go:GetComponent(typeof(UnityEngine.Animator))
+	self._goRound = gohelper.findChild(self.go, "round")
 	self._imagebottom = gohelper.findChildImage(self.go, "image_bottom")
 	self._imagetop = gohelper.findChildImage(self.go, "image_top")
 	self._goeff = gohelper.findChild(self.go, "go_eff")
@@ -184,12 +180,8 @@ function StoryBranchOptionSpLongClickSelectItem:_startLoop()
 	end
 
 	self._startTime = nil
-	self._imagetop.fillAmount = 0
 
 	TaskDispatcher.cancelTask(self._onShowLongFinished, self)
-
-	self._anim.enabled = true
-
 	gohelper.setActive(self._goguide, true)
 	gohelper.setActive(self._goeff, true)
 	self._anim:Play("loop", 0, 0)

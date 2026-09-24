@@ -111,7 +111,7 @@
     "id": 20002,
     "type": "AddExPoint",
     "effect": "buff/buff_nuqizengjia",
-    "effectHangPoint": "",
+    "effectHangPoint": "mountroot",
     "audioId": 410000022,
     "dec_Type": 0,
     "dec": ""
@@ -3683,8 +3683,8 @@
   {
     "id": 60310,
     "type": "LostLife",
-    "effect": "buff/buff_podun_2",
-    "effectHangPoint": "mountmiddle",
+    "effect": "",
+    "effectHangPoint": "",
     "audioId": 0,
     "dec_Type": 0,
     "dec": ""
@@ -4016,6 +4016,114 @@
   {
     "id": 60337,
     "type": "SkillRateAttrByTargetBuffType",
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0,
+    "dec_Type": 0,
+    "dec": ""
+  },
+  {
+    "id": 60340,
+    "type": "CreateQTEEnergy",
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0,
+    "dec_Type": 0,
+    "dec": ""
+  },
+  {
+    "id": 60341,
+    "type": "DescendRitualAddProgress",
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0,
+    "dec_Type": 0,
+    "dec": ""
+  },
+  {
+    "id": 60342,
+    "type": "ConsumeBuffLayerAddHeatScale",
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0,
+    "dec_Type": 0,
+    "dec": ""
+  },
+  {
+    "id": 60343,
+    "type": "ReplaceQTESkill",
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0,
+    "dec_Type": 0,
+    "dec": ""
+  },
+  {
+    "id": 60344,
+    "type": "SkillRateUpByQTEActionCount",
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0,
+    "dec_Type": 0,
+    "dec": ""
+  },
+  {
+    "id": 60345,
+    "type": "LostLife",
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0,
+    "dec_Type": 0,
+    "dec": ""
+  },
+  {
+    "id": 60346,
+    "type": "AddClue",
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0,
+    "dec_Type": 0,
+    "dec": ""
+  },
+  {
+    "id": 60347,
+    "type": "ClueToPower",
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0,
+    "dec_Type": 0,
+    "dec": ""
+  },
+  {
+    "id": 60348,
+    "type": "AddClueExPoint",
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0,
+    "dec_Type": 0,
+    "dec": ""
+  },
+  {
+    "id": 60349,
+    "type": "DelClueExPoint",
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0,
+    "dec_Type": 0,
+    "dec": ""
+  },
+  {
+    "id": 60350,
+    "type": "MoveTowardTarget",
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0,
+    "dec_Type": 0,
+    "dec": ""
+  },
+  {
+    "id": 60351,
+    "type": "ShieldOriginDamage",
     "effect": "",
     "effectHangPoint": "",
     "audioId": 0,

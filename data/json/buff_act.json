@@ -4426,5 +4426,95 @@
     "effect": "",
     "effectHangPoint": "",
     "audioId": 0
+  },
+  {
+    "id": 1163,
+    "type": "RadianceSettleCountAddBuff",
+    "effectTime": 305,
+    "effectCondition": 0,
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0
+  },
+  {
+    "id": 1170,
+    "type": "QTETag",
+    "effectTime": 0,
+    "effectCondition": 0,
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0
+  },
+  {
+    "id": 1171,
+    "type": "DescendRitual",
+    "effectTime": 104,
+    "effectCondition": 0,
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0
+  },
+  {
+    "id": 1172,
+    "type": "HeatScaleMultiUseSkill",
+    "effectTime": 212,
+    "effectCondition": 0,
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0
+  },
+  {
+    "id": 1173,
+    "type": "ImmunityDispersePurify",
+    "effectTime": 0,
+    "effectCondition": 0,
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0
+  },
+  {
+    "id": 1174,
+    "type": "ChantAddBuffAndReplace",
+    "effectTime": 104,
+    "effectCondition": 0,
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0
+  },
+  {
+    "id": 1175,
+    "type": "ChantClearBuffOnRemove",
+    "effectTime": 0,
+    "effectCondition": 0,
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0
+  },
+  {
+    "id": 1176,
+    "type": "QTECostModify",
+    "effectTime": 0,
+    "effectCondition": 0,
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0
+  },
+  {
+    "id": 1177,
+    "type": "QTEOriginDamage",
+    "effectTime": 210,
+    "effectCondition": 0,
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0
+  },
+  {
+    "id": 1178,
+    "type": "QTEAllyAddBuff",
+    "effectTime": 210,
+    "effectCondition": 0,
+    "effect": "",
+    "effectHangPoint": "",
+    "audioId": 0
   }
 ]

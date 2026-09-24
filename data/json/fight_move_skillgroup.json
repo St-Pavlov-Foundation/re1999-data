@@ -1,0 +1,177 @@
+[
+  {
+    "id": 1,
+    "slot": 1,
+    "level": 1,
+    "effect": "",
+    "skillgroup": "303211411"
+  },
+  {
+    "id": 2,
+    "slot": 1,
+    "level": 2,
+    "effect": "",
+    "skillgroup": "303211411"
+  },
+  {
+    "id": 3,
+    "slot": 1,
+    "level": 3,
+    "effect": "",
+    "skillgroup": "303211411"
+  },
+  {
+    "id": 4,
+    "slot": 1,
+    "level": 4,
+    "effect": "",
+    "skillgroup": "303211411"
+  },
+  {
+    "id": 5,
+    "slot": 1,
+    "level": 5,
+    "effect": "",
+    "skillgroup": "303211411"
+  },
+  {
+    "id": 6,
+    "slot": 2,
+    "level": 1,
+    "effect": "",
+    "skillgroup": "303221411"
+  },
+  {
+    "id": 7,
+    "slot": 2,
+    "level": 2,
+    "effect": "",
+    "skillgroup": "303221411"
+  },
+  {
+    "id": 8,
+    "slot": 2,
+    "level": 3,
+    "effect": "",
+    "skillgroup": "303221411"
+  },
+  {
+    "id": 9,
+    "slot": 2,
+    "level": 4,
+    "effect": "",
+    "skillgroup": "303221411"
+  },
+  {
+    "id": 10,
+    "slot": 2,
+    "level": 5,
+    "effect": "",
+    "skillgroup": "303221411"
+  },
+  {
+    "id": 11,
+    "slot": 3,
+    "level": 1,
+    "effect": "",
+    "skillgroup": "303231411"
+  },
+  {
+    "id": 12,
+    "slot": 3,
+    "level": 2,
+    "effect": "",
+    "skillgroup": "303231411"
+  },
+  {
+    "id": 13,
+    "slot": 3,
+    "level": 3,
+    "effect": "",
+    "skillgroup": "303231411"
+  },
+  {
+    "id": 14,
+    "slot": 3,
+    "level": 4,
+    "effect": "",
+    "skillgroup": "303231411"
+  },
+  {
+    "id": 15,
+    "slot": 3,
+    "level": 5,
+    "effect": "",
+    "skillgroup": "303231411"
+  },
+  {
+    "id": 16,
+    "slot": 4,
+    "level": 1,
+    "effect": "",
+    "skillgroup": "303241411"
+  },
+  {
+    "id": 17,
+    "slot": 4,
+    "level": 2,
+    "effect": "",
+    "skillgroup": "303241411"
+  },
+  {
+    "id": 18,
+    "slot": 4,
+    "level": 3,
+    "effect": "",
+    "skillgroup": "303241411"
+  },
+  {
+    "id": 19,
+    "slot": 4,
+    "level": 4,
+    "effect": "",
+    "skillgroup": "303241411"
+  },
+  {
+    "id": 20,
+    "slot": 4,
+    "level": 5,
+    "effect": "",
+    "skillgroup": "303241411"
+  },
+  {
+    "id": 21,
+    "slot": 5,
+    "level": 1,
+    "effect": "",
+    "skillgroup": "303251411"
+  },
+  {
+    "id": 22,
+    "slot": 5,
+    "level": 2,
+    "effect": "",
+    "skillgroup": "303251411"
+  },
+  {
+    "id": 23,
+    "slot": 5,
+    "level": 3,
+    "effect": "",
+    "skillgroup": "303251411"
+  },
+  {
+    "id": 24,
+    "slot": 5,
+    "level": 4,
+    "effect": "",
+    "skillgroup": "303251411"
+  },
+  {
+    "id": 25,
+    "slot": 5,
+    "level": 5,
+    "effect": "",
+    "skillgroup": "303251411"
+  }
+]

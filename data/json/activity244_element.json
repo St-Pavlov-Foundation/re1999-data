@@ -1,0 +1,79 @@
+[
+  {
+    "elementId": 1,
+    "type": 1,
+    "param": "1",
+    "name": "岩灵感",
+    "icon": "icon_career1"
+  },
+  {
+    "elementId": 2,
+    "type": 1,
+    "param": "2",
+    "name": "星灵感",
+    "icon": "icon_career2"
+  },
+  {
+    "elementId": 3,
+    "type": 1,
+    "param": "3",
+    "name": "木灵感",
+    "icon": "icon_career3"
+  },
+  {
+    "elementId": 4,
+    "type": 1,
+    "param": "4",
+    "name": "兽灵感",
+    "icon": "icon_career4"
+  },
+  {
+    "elementId": 5,
+    "type": 1,
+    "param": "5",
+    "name": "灵灵感",
+    "icon": "icon_career5"
+  },
+  {
+    "elementId": 6,
+    "type": 1,
+    "param": "6",
+    "name": "智灵感",
+    "icon": "icon_career6"
+  },
+  {
+    "elementId": 7,
+    "type": 2,
+    "param": "0",
+    "name": "炸弹",
+    "icon": "icon_changpian"
+  },
+  {
+    "elementId": 8,
+    "type": 3,
+    "param": "0",
+    "name": "治疗药剂",
+    "icon": "icon_chuangketie"
+  },
+  {
+    "elementId": 9,
+    "type": 4,
+    "param": "1",
+    "name": "一级箱子",
+    "icon": "icon_liwuhe_1"
+  },
+  {
+    "elementId": 10,
+    "type": 4,
+    "param": "2",
+    "name": "二级箱子",
+    "icon": "icon_liwuhe_2"
+  },
+  {
+    "elementId": 11,
+    "type": 4,
+    "param": "3",
+    "name": "三级箱子",
+    "icon": "icon_liwuhe_3"
+  }
+]

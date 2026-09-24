@@ -390,5 +390,13 @@
     "name": "流行于世界",
     "nameEn": "Broadcast to the World",
     "year": ""
+  },
+  {
+    "id": 1034,
+    "type": 2,
+    "order": 0,
+    "name": "天真的预言",
+    "nameEn": "Auguries of Innocence",
+    "year": ""
   }
 ]

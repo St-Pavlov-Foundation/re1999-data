@@ -46,6 +46,7 @@ local primaryKey = {
 local mlStringKey = {
 	desc = 3,
 	name = 1,
+	slogan = 4,
 	nameEn = 2
 }
 

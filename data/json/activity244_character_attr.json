@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "攻击",
+    "icon": "icon_att_102",
+    "baseFieldName": "baseAtk",
+    "addFieldName": "atkAdd"
+  },
+  {
+    "id": 2,
+    "name": "防御",
+    "icon": "icon_att_103",
+    "baseFieldName": "baseDef",
+    "addFieldName": "defAdd"
+  },
+  {
+    "id": 3,
+    "name": "生命",
+    "icon": "icon_att_101",
+    "baseFieldName": "baseHp",
+    "addFieldName": "hpAdd"
+  },
+  {
+    "id": 4,
+    "name": "回复",
+    "icon": "icon_att_212",
+    "baseFieldName": "baseHeal",
+    "addFieldName": "healAdd"
+  }
+]

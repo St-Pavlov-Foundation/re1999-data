@@ -30,6 +30,7 @@ function SettingsGameView:onInitView()
 	self._udimoDrop = gohelper.findChildDropdown(self.viewGO, "scroll/Viewport/Content/#go_udimoenter/#go_saving/dropudimo")
 	self._udimodropclick = gohelper.getClickWithAudio(self._godropudimo, AudioEnum.UI.play_ui_set_click)
 	self._udimoTemplate = gohelper.findChild(self._godropudimo, "Template")
+	self._btndeleteres = gohelper.findChildButtonWithAudio(self.viewGO, "scroll/Viewport/Content/#go_deleteres/#btn_go")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -48,6 +49,7 @@ function SettingsGameView:addEvents()
 	self._btnudimoenterclick:AddClickListener(self._btnudimoenterOnClick, self)
 	self._udimoDrop:AddOnValueChanged(self._onUdimoSettingValueChanged, self)
 	self._udimodropclick:AddClickListener(self.udimoDropOnClick, self)
+	self._btndeleteres:AddClickListener(self._btndeleteresOnClick, self)
 end
 
 function SettingsGameView:removeEvents()
@@ -62,6 +64,7 @@ function SettingsGameView:removeEvents()
 	self._btnudimoenterclick:RemoveClickListener()
 	self._udimoDrop:RemoveOnValueChanged()
 	self._udimodropclick:RemoveClickListener()
+	self._btndeleteres:RemoveClickListener()
 end
 
 function SettingsGameView:_editableInitView()
@@ -248,6 +251,75 @@ function SettingsGameView:_saveSetting()
 	if SDKMgr.instance:isEmulator() then
 		PlayerPrefsHelper.save()
 	end
+end
+
+function SettingsGameView:_btndeleteresOnClick()
+	ViewMgr.instance:openView(ViewName.SettingsDelUnusedResView)
+end
+
+function SettingsGameView:_onLoadResInfo(assetItem)
+	local jsonString = GameResMgr.IsFromEditorDir and assetItem.TextAsset or SLFramework.GameUpdate.UnityZipUtil.UnzipStr(assetItem.DataAsset)
+	local remoteJson = cjson.decode(jsonString)
+	local remoteDic = {}
+
+	for i, v in pairs(remoteJson) do
+		for dlcType, infoList in pairs(v) do
+			for key, value in pairs(infoList) do
+				remoteDic[key] = value.md5
+			end
+		end
+	end
+
+	GameFacade.showMessageBox(MessageBoxIdDefine.DeleteUnusedResConfirm, MsgBoxEnum.BoxType.Yes_No, function()
+		self:_deleteRes(remoteDic)
+	end)
+end
+
+function SettingsGameView:_deleteRes(remoteDic)
+	local needDelList = {}
+	local needDelSize = 0
+	local persistentResRootDir = SLFramework.FileHelper.GetUnityPath(SLFramework.FrameworkSettings.PersistentResRootDir)
+	local allFiles = SLFramework.FileHelper.GetDirFilePaths(persistentResRootDir, true)
+	local persistentRoot = SLFramework.FrameworkSettings.PersistentResRootDir
+	local insert = table.insert
+	local find = string.find
+	local sub = string.sub
+	local gsub = string.gsub
+	local fmt = string.format
+	local fileCount = allFiles.Length
+
+	for i = 0, fileCount - 1 do
+		local path = gsub(allFiles[i], "\\", "/")
+		local startIndex, endIndex = find(path, persistentResRootDir, 1, true)
+		local key = startIndex and sub(path, endIndex + 2) or path
+
+		if find(key, "/", 1, true) and key ~= "configs/resinfo.dat" and not remoteDic[key] then
+			insert(needDelList, fmt("%s/%s", persistentRoot, key))
+		end
+	end
+
+	logNormal("多余资源数量：" .. #needDelList)
+
+	for i, v in ipairs(needDelList) do
+		SLFramework.FileHelper.DeleteFile(v)
+	end
+
+	PlayerPrefsHelper.setNumber(PlayerPrefsKey.Manual_FixRes, 1)
+	SLFramework.FileHelper.DeleteFile(SLFramework.ResChecker.OutVersionPath)
+	ResCheckMgr.instance:DeleteOutVersion()
+	GameFacade.showMessageBox(MessageBoxIdDefine.DeleteUnusedResDone, MsgBoxEnum.BoxType.Yes, function()
+		PlayerPrefsHelper.save()
+
+		if BootNativeUtil.isAndroid() then
+			if SDKMgr.restartGame ~= nil then
+				SDKMgr.instance:restartGame()
+			else
+				ProjBooter.instance:quitGame()
+			end
+		else
+			ProjBooter.instance:quitGame()
+		end
+	end)
 end
 
 return SettingsGameView

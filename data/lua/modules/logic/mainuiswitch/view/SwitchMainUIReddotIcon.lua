@@ -74,11 +74,15 @@ function SwitchMainUIReddotIcon:defaultRefreshDot()
 
 				self._txtCount.text = count
 
-				local type = RedDotConfig.instance:getRedDotCO(info.id).style
-				local switchReddotCo = MainUISwitchConfig.instance:getUIReddotStyle(self._curMainUIId, info.id)
+				local reddotCo = RedDotConfig.instance:getRedDotCO(info.id)
+				local type = reddotCo.style
 
-				if switchReddotCo then
-					type = switchReddotCo.style
+				if reddotCo.isChangeUi == 1 then
+					local switchReddotCo = MainUISwitchConfig.instance:getUIReddotNewStyleCO(self._curMainUIId)
+
+					if switchReddotCo then
+						type = switchReddotCo.style
+					end
 				end
 
 				self:showRedDot(type)
@@ -104,9 +108,12 @@ end
 function SwitchMainUIReddotIcon:showCurUIRedDot(uiId)
 	uiId = uiId or self._curMainUIId
 
-	local style = MainUISwitchModel.instance:getUIReddotType(uiId)
+	local style = RedDotEnum.Style.Normal
+	local switchReddotCo = MainUISwitchConfig.instance:getUIReddotNewStyleCO(uiId)
 
-	style = style or RedDotEnum.Style.Normal
+	if switchReddotCo then
+		style = switchReddotCo.style
+	end
 
 	self:showRedDot(style)
 end

@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "activityId": 14012,
+    "score": 10000,
+    "rewardId": 9001
+  },
+  {
+    "id": 2,
+    "activityId": 14012,
+    "score": 30000,
+    "rewardId": 9201
+  },
+  {
+    "id": 3,
+    "activityId": 14012,
+    "score": 60000,
+    "rewardId": 9401
+  },
+  {
+    "id": 4,
+    "activityId": 14012,
+    "score": 90000,
+    "rewardId": 9601
+  },
+  {
+    "id": 5,
+    "activityId": 14012,
+    "score": 120000,
+    "rewardId": 9801
+  },
+  {
+    "id": 6,
+    "activityId": 14012,
+    "score": 150000,
+    "rewardId": 10001
+  },
+  {
+    "id": 7,
+    "activityId": 14012,
+    "score": 180000,
+    "rewardId": 10201
+  }
+]

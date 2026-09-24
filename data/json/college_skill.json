@@ -1,0 +1,446 @@
+[
+  {
+    "id": 400101,
+    "name": "",
+    "desc": "委托到<#FFEA73>建筑</color>中时，<sprite=0><#FFEA73>观象镜</color>产出提升<#FFEA73>20%</color>",
+    "icon": ""
+  },
+  {
+    "id": 400102,
+    "name": "",
+    "desc": "委托到<#FFEA73>建筑</color>中时，<sprite=1><#FFEA73>无眠烛台</color>产出提升<#FFEA73>20%</color>",
+    "icon": ""
+  },
+  {
+    "id": 400103,
+    "name": "",
+    "desc": "委托到<#FFEA73>建筑</color>中时，<sprite=2><#FFEA73>银枝的新芽</color>产出提升<#FFEA73>20%</color>",
+    "icon": ""
+  },
+  {
+    "id": 400104,
+    "name": "",
+    "desc": "委托到<#FFEA73>据点</color>中时，<sprite=0><#FFEA73>观象镜</color>产出提升<#FFEA73>20%</color>",
+    "icon": ""
+  },
+  {
+    "id": 400105,
+    "name": "",
+    "desc": "委托到<#FFEA73>据点</color>中时，<sprite=1><#FFEA73>无眠烛台</color>产出提升<#FFEA73>20%</color>",
+    "icon": ""
+  },
+  {
+    "id": 400106,
+    "name": "",
+    "desc": "委托到<#FFEA73>据点</color>中时，<sprite=2><#FFEA73>银枝的新芽</color>产出提升<#FFEA73>20%</color>",
+    "icon": ""
+  },
+  {
+    "id": 400107,
+    "name": "",
+    "desc": "<#FFEA73>同伴</color>升级所需资源降低10%",
+    "icon": ""
+  },
+  {
+    "id": 400108,
+    "name": "",
+    "desc": "委托到宿舍时，出现<#FFEA73>高级同伴</color>的概率提升<#FFEA73>2%</color>",
+    "icon": ""
+  },
+  {
+    "id": 400109,
+    "name": "",
+    "desc": "委托到宿舍时，结识<#FFEA73>同伴</color>的消耗降低5%",
+    "icon": ""
+  },
+  {
+    "id": 400110,
+    "name": "",
+    "desc": "委托到教室时，重置<#FFEA73>专长</color>时出现<#FFEA73>高级专长</color>的概率提升<#FFEA73>2%</color>",
+    "icon": ""
+  },
+  {
+    "id": 400111,
+    "name": "",
+    "desc": "委托到教室时，重置<#FFEA73>专长</color>消耗降低5%",
+    "icon": ""
+  },
+  {
+    "id": 400201,
+    "name": "",
+    "desc": "委托到<#FFEA73>建筑</color>中时，<sprite=0><#FFEA73>观象镜</color>产出提升<#FFEA73>40%</color>",
+    "icon": ""
+  },
+  {
+    "id": 400202,
+    "name": "",
+    "desc": "委托到<#FFEA73>建筑</color>中时，<sprite=1><#FFEA73>无眠烛台</color>产出提升<#FFEA73>40%</color>",
+    "icon": ""
+  },
+  {
+    "id": 400203,
+    "name": "",
+    "desc": "委托到<#FFEA73>建筑</color>中时，<sprite=2><#FFEA73>银枝的新芽</color>产出提升<#FFEA73>40%</color>",
+    "icon": ""
+  },
+  {
+    "id": 400204,
+    "name": "",
+    "desc": "委托到<#FFEA73>据点</color>中时，<sprite=0><#FFEA73>观象镜</color>产出提升<#FFEA73>40%</color>",
+    "icon": ""
+  },
+  {
+    "id": 400205,
+    "name": "",
+    "desc": "委托到<#FFEA73>据点</color>中时，<sprite=1><#FFEA73>无眠烛台</color>产出提升<#FFEA73>40%</color>",
+    "icon": ""
+  },
+  {
+    "id": 400206,
+    "name": "",
+    "desc": "委托到<#FFEA73>据点</color>中时，<sprite=2><#FFEA73>银枝的新芽</color>产出提升<#FFEA73>40%</color>",
+    "icon": ""
+  },
+  {
+    "id": 400207,
+    "name": "",
+    "desc": "<#FFEA73>同伴</color>升级所需资源降低20%",
+    "icon": ""
+  },
+  {
+    "id": 400208,
+    "name": "",
+    "desc": "委托到宿舍时，出现<#FFEA73>高级同伴</color>的概率提升<#FFEA73>3%</color>",
+    "icon": ""
+  },
+  {
+    "id": 400209,
+    "name": "",
+    "desc": "委托到宿舍时，结识<#FFEA73>同伴</color>消耗降低8%",
+    "icon": ""
+  },
+  {
+    "id": 400210,
+    "name": "",
+    "desc": "委托到教室时，重置<#FFEA73>专长</color>出现<#FFEA73>高级专长</color>的概率提升<#FFEA73>3%</color>",
+    "icon": ""
+  },
+  {
+    "id": 400211,
+    "name": "",
+    "desc": "委托到教室时，重置<#FFEA73>专长</color>消耗降低8%",
+    "icon": ""
+  },
+  {
+    "id": 400301,
+    "name": "",
+    "desc": "委托到<#FFEA73>建筑</color>中时，<sprite=0><#FFEA73>观象镜</color>产出提升<#FFEA73>50%</color>",
+    "icon": ""
+  },
+  {
+    "id": 400302,
+    "name": "",
+    "desc": "委托到<#FFEA73>建筑</color>中时，<sprite=1><#FFEA73>无眠烛台</color>产出提升<#FFEA73>50%</color>",
+    "icon": ""
+  },
+  {
+    "id": 400303,
+    "name": "",
+    "desc": "委托到<#FFEA73>建筑</color>中时，<sprite=2><#FFEA73>银枝的新芽</color>产出提升<#FFEA73>50%</color>",
+    "icon": ""
+  },
+  {
+    "id": 400304,
+    "name": "",
+    "desc": "委托到<#FFEA73>据点</color>中时，<sprite=0><#FFEA73>观象镜</color>产出提升<#FFEA73>50%</color>",
+    "icon": ""
+  },
+  {
+    "id": 400305,
+    "name": "",
+    "desc": "委托到<#FFEA73>据点</color>中时，<sprite=1><#FFEA73>无眠烛台</color>产出提升<#FFEA73>50%</color>",
+    "icon": ""
+  },
+  {
+    "id": 400306,
+    "name": "",
+    "desc": "委托到<#FFEA73>据点</color>中时，<sprite=2><#FFEA73>银枝的新芽</color>产出提升<#FFEA73>50%</color>",
+    "icon": ""
+  },
+  {
+    "id": 400307,
+    "name": "",
+    "desc": "<#FFEA73>同伴</color>升级所需资源降低30%",
+    "icon": ""
+  },
+  {
+    "id": 400308,
+    "name": "",
+    "desc": "委托到宿舍时，出现<#FFEA73>高级同伴</color>的概率提升<#FFEA73>5%</color>",
+    "icon": ""
+  },
+  {
+    "id": 400309,
+    "name": "",
+    "desc": "委托到宿舍时，结识<#FFEA73>同伴</color>的消耗降低10%",
+    "icon": ""
+  },
+  {
+    "id": 400310,
+    "name": "",
+    "desc": "委托到教室时，重置<#FFEA73>专长</color>出现<#FFEA73>高级专长</color>的概率提升<#FFEA73>5%</color>",
+    "icon": ""
+  },
+  {
+    "id": 400311,
+    "name": "",
+    "desc": "委托到教室时，重置<#FFEA73>专长</color>消耗降低10%",
+    "icon": ""
+  },
+  {
+    "id": 401001,
+    "name": "",
+    "desc": "每委托一个<#FFEA73>同伴</color>，<sprite=0><#FFEA73>观象镜</color>基础产量+<#FFEA73>20</color>",
+    "icon": ""
+  },
+  {
+    "id": 401002,
+    "name": "",
+    "desc": "每委托一个<#FFEA73>同伴</color>，<sprite=0><#FFEA73>观象镜</color>基础产量+<#FFEA73>40</color>",
+    "icon": ""
+  },
+  {
+    "id": 401003,
+    "name": "",
+    "desc": "每委托一个<#FFEA73>同伴</color>，<sprite=0><#FFEA73>观象镜</color>基础产量+<#FFEA73>100</color>",
+    "icon": ""
+  },
+  {
+    "id": 401004,
+    "name": "",
+    "desc": "每委托一个<#FFEA73>同伴</color>，<sprite=1><#FFEA73>无眠烛台</color>基础产量+<#FFEA73>10</color>",
+    "icon": ""
+  },
+  {
+    "id": 401005,
+    "name": "",
+    "desc": "每委托一个<#FFEA73>同伴</color>，<sprite=1><#FFEA73>无眠烛台</color>基础产量+<#FFEA73>20</color>",
+    "icon": ""
+  },
+  {
+    "id": 401006,
+    "name": "",
+    "desc": "每委托一个<#FFEA73>同伴</color>，<sprite=1><#FFEA73>无眠烛台</color>基础产量+<#FFEA73>50</color>",
+    "icon": ""
+  },
+  {
+    "id": 401007,
+    "name": "",
+    "desc": "每委托一个<#FFEA73>同伴</color>，<sprite=2><#FFEA73>银枝的新芽</color>基础产量+<#FFEA73>1</color>",
+    "icon": ""
+  },
+  {
+    "id": 401008,
+    "name": "",
+    "desc": "每委托一个<#FFEA73>同伴</color>，<sprite=2><#FFEA73>银枝的新芽</color>基础产量+<#FFEA73>2</color>",
+    "icon": ""
+  },
+  {
+    "id": 401009,
+    "name": "",
+    "desc": "每委托一个<#FFEA73>同伴</color>，<sprite=2><#FFEA73>银枝的新芽</color>基础产量+<#FFEA73>5</color>",
+    "icon": ""
+  },
+  {
+    "id": 401101,
+    "name": "",
+    "desc": "每回合生产<sprite=0><#FFEA73>观象镜</color>×140",
+    "icon": ""
+  },
+  {
+    "id": 401102,
+    "name": "",
+    "desc": "每回合生产<sprite=0><#FFEA73>观象镜</color>×280",
+    "icon": ""
+  },
+  {
+    "id": 401103,
+    "name": "",
+    "desc": "每回合生产<sprite=0><#FFEA73>观象镜</color>×700",
+    "icon": ""
+  },
+  {
+    "id": 401104,
+    "name": "",
+    "desc": "每回合生产<sprite=1><#FFEA73>无眠烛台</color>×70",
+    "icon": ""
+  },
+  {
+    "id": 401105,
+    "name": "",
+    "desc": "每回合生产<sprite=1><#FFEA73>无眠烛台</color>×140",
+    "icon": ""
+  },
+  {
+    "id": 401106,
+    "name": "",
+    "desc": "每回合生产<sprite=1><#FFEA73>无眠烛台</color>×350",
+    "icon": ""
+  },
+  {
+    "id": 401107,
+    "name": "",
+    "desc": "每回合生产<sprite=2><#FFEA73>银枝的新芽</color>×7",
+    "icon": ""
+  },
+  {
+    "id": 401108,
+    "name": "",
+    "desc": "每回合生产<sprite=2><#FFEA73>银枝的新芽</color>×14",
+    "icon": ""
+  },
+  {
+    "id": 401109,
+    "name": "",
+    "desc": "每回合生产<sprite=2><#FFEA73>银枝的新芽</color>×35",
+    "icon": ""
+  },
+  {
+    "id": 402001,
+    "name": "",
+    "desc": "每委托一个<#FFEA73>同伴</color>，<sprite=0><#FFEA73>观象镜</color>基础产量+<#FFEA73>20</color>",
+    "icon": ""
+  },
+  {
+    "id": 402002,
+    "name": "",
+    "desc": "每委托一个<#FFEA73>同伴</color>，<sprite=0><#FFEA73>观象镜</color>基础产量+<#FFEA73>32</color>",
+    "icon": ""
+  },
+  {
+    "id": 402003,
+    "name": "",
+    "desc": "每委托一个<#FFEA73>同伴</color>，<sprite=0><#FFEA73>观象镜</color>基础产量+<#FFEA73>60</color>",
+    "icon": ""
+  },
+  {
+    "id": 402004,
+    "name": "",
+    "desc": "每委托一个<#FFEA73>同伴</color>，<sprite=1><#FFEA73>无眠烛台</color>基础产量+<#FFEA73>10</color>",
+    "icon": ""
+  },
+  {
+    "id": 402005,
+    "name": "",
+    "desc": "每委托一个<#FFEA73>同伴</color>，<sprite=1><#FFEA73>无眠烛台</color>基础产量+<#FFEA73>16</color>",
+    "icon": ""
+  },
+  {
+    "id": 402006,
+    "name": "",
+    "desc": "每委托一个<#FFEA73>同伴</color>，<sprite=1><#FFEA73>无眠烛台</color>基础产量+<#FFEA73>30</color>",
+    "icon": ""
+  },
+  {
+    "id": 402007,
+    "name": "",
+    "desc": "每委托一个<#FFEA73>同伴</color>，<sprite=2><#FFEA73>银枝的新芽</color>基础产量+<#FFEA73>1</color>",
+    "icon": ""
+  },
+  {
+    "id": 402008,
+    "name": "",
+    "desc": "每委托一个<#FFEA73>同伴</color>，<sprite=2><#FFEA73>银枝的新芽</color>基础产量+<#FFEA73>2</color>",
+    "icon": ""
+  },
+  {
+    "id": 402009,
+    "name": "",
+    "desc": "每委托一个<#FFEA73>同伴</color>，<sprite=2><#FFEA73>银枝的新芽</color>基础产量+<#FFEA73>3</color>",
+    "icon": ""
+  },
+  {
+    "id": 402101,
+    "name": "",
+    "desc": "每回合生产<sprite=0><#FFEA73>观象镜</color>×140",
+    "icon": ""
+  },
+  {
+    "id": 402102,
+    "name": "",
+    "desc": "每回合生产<sprite=0><#FFEA73>观象镜</color>×224",
+    "icon": ""
+  },
+  {
+    "id": 402103,
+    "name": "",
+    "desc": "每回合生产<sprite=0><#FFEA73>观象镜</color>×420",
+    "icon": ""
+  },
+  {
+    "id": 402104,
+    "name": "",
+    "desc": "每回合生产<sprite=1><#FFEA73>无眠烛台</color>×70",
+    "icon": ""
+  },
+  {
+    "id": 402105,
+    "name": "",
+    "desc": "每回合生产<sprite=1><#FFEA73>无眠烛台</color>×112",
+    "icon": ""
+  },
+  {
+    "id": 402106,
+    "name": "",
+    "desc": "每回合生产<sprite=1><#FFEA73>无眠烛台</color>×210",
+    "icon": ""
+  },
+  {
+    "id": 402107,
+    "name": "",
+    "desc": "每回合生产<sprite=2><#FFEA73>银枝的新芽</color>×7",
+    "icon": ""
+  },
+  {
+    "id": 402108,
+    "name": "",
+    "desc": "每回合生产<sprite=2><#FFEA73>银枝的新芽</color>×10",
+    "icon": ""
+  },
+  {
+    "id": 402109,
+    "name": "",
+    "desc": "每回合生产<sprite=2><#FFEA73>银枝的新芽</color>×21",
+    "icon": ""
+  },
+  {
+    "id": 403001,
+    "name": "<#FFEA73>观象镜</color>产量提升",
+    "desc": "<sprite=0><#FFEA73>观象镜</color>产量提升<#FFEA73>50%</color>",
+    "icon": "7001"
+  },
+  {
+    "id": 403002,
+    "name": "<#FFEA73>无眠烛台</color>产量提升",
+    "desc": "<sprite=1><#FFEA73>无眠烛台</color>产量提升<#FFEA73>50%</color>",
+    "icon": "7001"
+  },
+  {
+    "id": 403003,
+    "name": "<#FFEA73>银枝的新芽</color>产量提升",
+    "desc": "<sprite=2><#FFEA73>银枝的新芽</color>产量提升<#FFEA73>50%</color>",
+    "icon": "7001"
+  },
+  {
+    "id": 403004,
+    "name": "结识<#FFEA73>同伴</color>消耗降低",
+    "desc": "结识<#FFEA73>同伴</color>的消耗降低10%",
+    "icon": "5012"
+  },
+  {
+    "id": 403005,
+    "name": "重置<#FFEA73>专长</color>消耗降低",
+    "desc": "重置<#FFEA73>专长</color>消耗降低10%",
+    "icon": "5012"
+  }
+]

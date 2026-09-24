@@ -50,7 +50,8 @@ HandbookSkinScene.SkinSuitId2SuitView = {
 	[22004] = ViewName.HandbookSkinSuitDetailView3_8_5,
 	[20004] = ViewName.HandbookSkinSuitDetailView3_8_5_1,
 	[22001] = ViewName.HandbookSkinSuitDetailView3_9,
-	[20027] = ViewName.HandbookSkinSuitDetailView3_9_1
+	[20027] = ViewName.HandbookSkinSuitDetailView3_9_1,
+	[20028] = ViewName.HandbookSkinSuitDetailView4_0
 }
 
 function HandbookSkinScene:onInitView()
@@ -79,6 +80,8 @@ end
 
 function HandbookSkinScene:onClickFloorItem(index)
 	self._tarotMode = false
+	self._sevenMode = false
+	self._enteringSevenMode = false
 
 	if self._curSelectedIdx == index then
 		return
@@ -153,7 +156,7 @@ function HandbookSkinScene:onSlideByClick(idx)
 end
 
 function HandbookSkinScene:onDragging(offsetX, offsetY)
-	if not self._inTarotGroup then
+	if not self._inTarotGroup and not self._inSevenGroup then
 		if offsetX ~= 0 or offsetY ~= 0 then
 			local maxOffset = math.abs(offsetX) > math.abs(offsetY) and offsetX or offsetY
 
@@ -166,6 +169,8 @@ function HandbookSkinScene:onDragging(offsetX, offsetY)
 
 			self._moveToOtherSuitAni = true
 		end
+	elseif self._inSevenGroup and self._sevenSubScene then
+		self._sevenSubScene:onDragging(offsetX)
 	else
 		if self._enteringTarotMode or not self._tarotMode then
 			return
@@ -224,6 +229,14 @@ function HandbookSkinScene:onDragging(offsetX, offsetY)
 end
 
 function HandbookSkinScene:onDragBegin()
+	if self._sevenMode then
+		if self._sevenSubScene then
+			self._sevenSubScene:doCardDragBegin()
+		end
+
+		return
+	end
+
 	if not self._tarotMode then
 		return
 	else
@@ -232,6 +245,14 @@ function HandbookSkinScene:onDragBegin()
 end
 
 function HandbookSkinScene:onDragEnd()
+	if self._sevenMode then
+		self._dragging = false
+
+		self._sevenSubScene:doCardPosResetTween()
+
+		return
+	end
+
 	if not self._tarotMode then
 		self._moveToOtherSuitAni = false
 
@@ -316,6 +337,8 @@ function HandbookSkinScene:_onReturnToSkinGroupScene()
 
 	if HandbookEnum.SkinSuitId2SceneType[skinGroupId] == HandbookEnum.SkinSuitSceneType.Festival then
 		self:_exitFestivalSkinScene()
+	elseif HandbookEnum.SkinSuitId2SceneType[skinGroupId] == HandbookEnum.SkinSuitSceneType.Seven and self._sevenSubScene then
+		self._sevenSubScene:_exitScene()
 	end
 end
 
@@ -437,8 +460,15 @@ function HandbookSkinScene:_refreshScene(skinGroupId)
 
 	self._sceneAnimator = self._curSceneGo:GetComponent(gohelper.Type_Animator)
 	self._sceneAnimatorPlayer = ZProj.ProjAnimatorPlayer.Get(self._curSceneGo)
+	self._inTarotGroup = HandbookEnum.SkinSuitId2SceneType[skinGroupId] == HandbookEnum.SkinSuitSceneType.Tarot
+	self._inSevenGroup = HandbookEnum.SkinSuitId2SceneType[skinGroupId] == HandbookEnum.SkinSuitSceneType.Seven
 
 	local goCvure = gohelper.findChild(go, "cvure")
+
+	if gohelper.isNil(goCvure) then
+		return
+	end
+
 	local splineFollowComp = goCvure:GetComponent(typeof(ZProj.SplineFollow))
 
 	if splineFollowComp == nil then
@@ -446,8 +476,14 @@ function HandbookSkinScene:_refreshScene(skinGroupId)
 	end
 
 	splineFollowComp:Add(cameraRoot.transform, 0)
+end
 
-	self._inTarotGroup = HandbookEnum.SkinSuitId2SceneType[skinGroupId] == HandbookEnum.SkinSuitSceneType.Tarot
+function HandbookSkinScene:setSevenSubScene(subScene)
+	self._sevenSubScene = subScene
+
+	if subScene then
+		subScene:setScene(self)
+	end
 end
 
 function HandbookSkinScene:_createSuitItems()
@@ -481,6 +517,21 @@ function HandbookSkinScene:_createSuitItems()
 
 		if iconGo then
 			self:addBoxColliderListener(iconGo, skinSuitCfg.id, 5)
+		end
+	elseif HandbookEnum.SkinSuitId2SceneType[skinGroupId] == HandbookEnum.SkinSuitSceneType.Seven then
+		local skinSuitCfg = self._suitCfgList[1]
+		local iconGo = gohelper.findChild(self._curSceneGo, "sence/book/Dummy003")
+
+		if iconGo then
+			gohelper.setLayer(iconGo, UnityLayer.Scene, true)
+			self:addBoxColliderListener(iconGo, skinSuitCfg.id, 5)
+
+			local parentGo = gohelper.findChild(self._curSceneGo, "sence/skin_reddot_root")
+			local redDotComp = self:addNewRedDot(parentGo, skinSuitCfg.id, 0, 0)
+
+			if self._sevenSubScene then
+				self._sevenSubScene:setupRedDot(redDotComp)
+			end
 		end
 	else
 		self._suitItemLoaderList = {}
@@ -687,6 +738,10 @@ function HandbookSkinScene:onIconClick(suitId)
 		self:enterTarotScene()
 	elseif HandbookEnum.SkinSuitId2SceneType[skinGroupId] == HandbookEnum.SkinSuitSceneType.Festival then
 		self:enterFestivalSkinScene()
+	elseif HandbookEnum.SkinSuitId2SceneType[skinGroupId] == HandbookEnum.SkinSuitSceneType.Seven then
+		if self._sevenSubScene then
+			self._sevenSubScene:enterScene()
+		end
 	else
 		local suitIdx = self._suitId2IdxMap[suitId]
 
@@ -1022,6 +1077,8 @@ function HandbookSkinScene:_onLoadSpriteDone(loader)
 
 	if self._tarotEnterAniDone then
 		self:_refreshCardUnlockUx(cardGoIdx, changeCardIdx)
+	elseif self._sevenMode and self._sevenSubScene and self._sevenSubScene._enterAniDone then
+		self._sevenSubScene:_refreshCardUnlockUx(cardGoIdx, changeCardIdx)
 	end
 end
 
@@ -1110,8 +1167,13 @@ function HandbookSkinScene:doTarotCardDragBegin()
 			local curProgress = self._tarotCardAniProgress[i]
 			local cardPosIdx = self:_checkCardPosIdx(curProgress)
 
-			if cardPosIdx == centerCardIdx and skinId == 310003 then
+			if cardPosIdx == centerCardIdx and HandbookEnum.SkinSpAnimEnum[skinId] then
 				local spCardGo = cardAnimator.transform:Find("card/card_sp").gameObject
+				local spCardAnimator = spCardGo:GetComponent(gohelper.Type_Animator)
+
+				spCardAnimator:Play(UIAnimationName.Close)
+			elseif cardPosIdx == centerCardIdx and HandbookEnum.SkinSp2AnimEnum[skinId] then
+				local spCardGo = cardAnimator.transform:Find("card/card_sp2").gameObject
 				local spCardAnimator = spCardGo:GetComponent(gohelper.Type_Animator)
 
 				spCardAnimator:Play(UIAnimationName.Close)
@@ -1188,8 +1250,13 @@ function HandbookSkinScene:doTarotCardDragToMiddleBegin()
 			local curProgress = self._tarotCardAniProgress[i]
 			local cardPosIdx = self:_checkCardPosIdx(curProgress)
 
-			if cardPosIdx == centerCardIdx and skinId == 310003 then
+			if cardPosIdx == centerCardIdx and HandbookEnum.SkinSpAnimEnum[skinId] then
 				local spCardGo = cardAnimator.transform:Find("card/card_sp").gameObject
+				local spCardAnimator = spCardGo:GetComponent(gohelper.Type_Animator)
+
+				spCardAnimator:Play(UIAnimationName.Close)
+			elseif cardPosIdx == centerCardIdx and HandbookEnum.SkinSp2AnimEnum[skinId] then
+				local spCardGo = cardAnimator.transform:Find("card/card_sp2").gameObject
 				local spCardAnimator = spCardGo:GetComponent(gohelper.Type_Animator)
 
 				spCardAnimator:Play(UIAnimationName.Close)
@@ -1331,8 +1398,14 @@ function HandbookSkinScene:playSpCardOpenAni(i)
 	local curProgress = self._tarotCardAniProgress[i]
 	local cardPosIdx = self:_checkCardPosIdx(curProgress)
 
-	if cardPosIdx == centerCardIdx and skinId == 310003 then
+	if cardPosIdx == centerCardIdx and HandbookEnum.SkinSpAnimEnum[skinId] then
 		local spCardGo = cardAnimator.transform:Find("card/card_sp").gameObject
+		local spCardAnimator = spCardGo:GetComponent(gohelper.Type_Animator)
+
+		gohelper.setActive(spCardGo, true)
+		spCardAnimator:Play(UIAnimationName.Open)
+	elseif cardPosIdx == centerCardIdx and HandbookEnum.SkinSp2AnimEnum[skinId] then
+		local spCardGo = cardAnimator.transform:Find("card/card_sp2").gameObject
 		local spCardAnimator = spCardGo:GetComponent(gohelper.Type_Animator)
 
 		gohelper.setActive(spCardGo, true)
@@ -1413,6 +1486,20 @@ function HandbookSkinScene:openFestivalSkinView()
 	HandbookController.instance:statSkinSuitDetail(self._suitId)
 end
 
+function HandbookSkinScene:isInSevenMode()
+	if self._sevenSubScene then
+		return self._sevenSubScene:isInMode()
+	end
+
+	return false
+end
+
+function HandbookSkinScene:exitSevenScene()
+	if self._sevenSubScene then
+		self._sevenSubScene:exitScene()
+	end
+end
+
 function HandbookSkinScene:playCloseAni()
 	local virtualCameraGo = CameraMgr.instance:getVirtualCameraGO()
 
@@ -1449,6 +1536,10 @@ function HandbookSkinScene:onClose()
 		ZProj.TweenHelper.KillById(self._tweenCardPosTweenId)
 
 		self._tweenCardPosTweenId = nil
+	end
+
+	if self._sevenSubScene then
+		self._sevenSubScene:onClose()
 	end
 end
 

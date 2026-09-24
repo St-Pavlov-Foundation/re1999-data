@@ -165,8 +165,8 @@ function V3a7_SkinGiftFullView:checkParam()
 	end
 
 	self.actId = self.viewParam.actId
-	self.packageId = V3a7_SkinGiftEnum.PackageId
-	self.itemId = V3a7_SkinGiftEnum.ItemId
+	self.packageId = V3a7_SkinGiftConfig.instance:getSkinPackageId(self.actId)
+	self.itemId = V3a7_SkinGiftConfig.instance:getSkinItemId(self.actId)
 end
 
 function V3a7_SkinGiftFullView:refreshUI()
@@ -220,7 +220,7 @@ function V3a7_SkinGiftFullView:refreshReward()
 
 	self._simageicon:LoadImage(icon)
 
-	self._txtnum.text = string.format("x%s", tostring(num))
+	self._txtnum.text = string.format("×%s", tostring(num))
 end
 
 function V3a7_SkinGiftFullView:refreshRewardState()
@@ -251,7 +251,7 @@ function V3a7_SkinGiftFullView:refreshPackageInfo()
 	gohelper.setActive(self._gohasbuy, isSoldOut)
 	gohelper.setActive(self._btnbuy, not isSoldOut)
 
-	self._txtget.text = PayModel.instance:getProductPriceScaledSymbol(packageConfig.id, 31)
+	self._txtget.text = PayModel.instance:getProductPrice(packageConfig.id)
 end
 
 function V3a7_SkinGiftFullView:onClose()

@@ -1029,6 +1029,34 @@ function SkillConfig:getHeroDeviceMO(heroId, heroMo)
 	return mo
 end
 
+function SkillConfig:getHeroQteMO(heroId, heroMo)
+	if heroMo and heroMo.getQTEMO then
+		return heroMo:getQTEMO()
+	end
+
+	if not self._heroQteMO then
+		self._heroQteMO = {}
+	end
+
+	local mo = self._heroQteMO[heroId]
+
+	if not mo then
+		local heroCo = HeroConfig.instance:getHeroCO(heroId)
+		local qteGroupId = heroCo and heroCo.qteGroupId
+
+		if qteGroupId and qteGroupId > 0 then
+			mo = HeroQTEMO.New(heroId)
+
+			mo:setHero(heroId)
+			mo:onRefresh(qteGroupId)
+
+			self._heroQteMO[heroId] = mo
+		end
+	end
+
+	return mo
+end
+
 SkillConfig.instance = SkillConfig.New()
 
 return SkillConfig

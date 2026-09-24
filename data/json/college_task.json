@@ -1,0 +1,186 @@
+[
+  {
+    "id": 4031001,
+    "stageId": 4030001,
+    "description": "解锁<#FFEA73>反射工坊</color>",
+    "maxProgress": 1,
+    "reward": "4003001:1&4002001:1000",
+    "jumpId": "Building#4010001#401008"
+  },
+  {
+    "id": 4031002,
+    "stageId": 4030001,
+    "description": "解锁<#FFEA73>宿舍</color>",
+    "maxProgress": 1,
+    "reward": "4002001:1500&4002002:300",
+    "jumpId": "Building#4010004#401008"
+  },
+  {
+    "id": 4031003,
+    "stageId": 4030002,
+    "description": "结识6个<#FFEA73>同伴</color>",
+    "maxProgress": 6,
+    "reward": "4003001:1&4002001:1000",
+    "jumpId": "Building#4010004#401008"
+  },
+  {
+    "id": 4031004,
+    "stageId": 4030002,
+    "description": "解锁<#FFEA73>引光室</color>",
+    "maxProgress": 1,
+    "reward": "4003001:1",
+    "jumpId": "Building#4010002#401008"
+  },
+  {
+    "id": 4031005,
+    "stageId": 4030003,
+    "description": "将<#FFEA73>赫恩树林</color>探索到100%",
+    "maxProgress": 1,
+    "reward": "4003001:2&4002001:2000",
+    "jumpId": "Building#4011001#401008"
+  },
+  {
+    "id": 4031006,
+    "stageId": 4030003,
+    "description": "<#FFEA73>反射工坊</color>到达2级",
+    "maxProgress": 2,
+    "reward": "4003001:1",
+    "jumpId": "Building#4010001#401008"
+  },
+  {
+    "id": 4031007,
+    "stageId": 4030004,
+    "description": "<#FFEA73>引光室</color>到达2级",
+    "maxProgress": 2,
+    "reward": "4003001:2&4002001:1500",
+    "jumpId": "Building#4010002#401008"
+  },
+  {
+    "id": 4031008,
+    "stageId": 4030004,
+    "description": "<sprite=1><#FFEA73>无眠烛台</color>产量达到200/回合",
+    "maxProgress": 200,
+    "reward": "4003001:2",
+    "jumpId": "Building#4010002#401008"
+  },
+  {
+    "id": 4031009,
+    "stageId": 4030004,
+    "description": "将<#FFEA73>白鹿沼泽</color>探索到100%",
+    "maxProgress": 1,
+    "reward": "4002001:4000&4002002:1000",
+    "jumpId": "Building#4011002#401008"
+  },
+  {
+    "id": 4031010,
+    "stageId": 4030004,
+    "description": "解锁<#FFEA73>常春温室</color>",
+    "maxProgress": 1,
+    "reward": "4003001:1&4002002:1000",
+    "jumpId": "Building#4010003#401008"
+  },
+  {
+    "id": 4031011,
+    "stageId": 4030005,
+    "description": "<#FFEA73>宿舍</color>到达2级",
+    "maxProgress": 2,
+    "reward": "4003001:1",
+    "jumpId": "Building#4010004#401008"
+  },
+  {
+    "id": 4031012,
+    "stageId": 4030005,
+    "description": "结识15个<#FFEA73>同伴</color>",
+    "maxProgress": 15,
+    "reward": "4003001:1",
+    "jumpId": "Building#4010004#401008"
+  },
+  {
+    "id": 4031013,
+    "stageId": 4030005,
+    "description": "将<#FFEA73>布罗肯高地</color>探索到100%",
+    "maxProgress": 1,
+    "reward": "4002001:5000&4002002:2000",
+    "jumpId": "Building#4011003#401008"
+  },
+  {
+    "id": 4031014,
+    "stageId": 4030005,
+    "description": "解锁<#FFEA73>学院主楼</color>",
+    "maxProgress": 1,
+    "reward": "4002001:1000&4002003:100",
+    "jumpId": "Building#4010005#401008"
+  },
+  {
+    "id": 4031015,
+    "stageId": 4030006,
+    "description": "<#FFEA73>常春温室</color>到达2级",
+    "maxProgress": 2,
+    "reward": "4003001:1",
+    "jumpId": "Building#4010003#401008"
+  },
+  {
+    "id": 4031016,
+    "stageId": 4030006,
+    "description": "将<#FFEA73>安温石环</color>探索到100%",
+    "maxProgress": 1,
+    "reward": "4003001:1",
+    "jumpId": "Building#4011004#401008"
+  },
+  {
+    "id": 4031017,
+    "stageId": 4030006,
+    "description": "结识25个<#FFEA73>同伴</color>",
+    "maxProgress": 25,
+    "reward": "4003001:1",
+    "jumpId": "Building#4010004#401008"
+  },
+  {
+    "id": 4031018,
+    "stageId": 4030006,
+    "description": "<#FFEA73>反射工坊</color>到达3级",
+    "maxProgress": 3,
+    "reward": "4003001:1",
+    "jumpId": "Building#4010001#401008"
+  },
+  {
+    "id": 4031019,
+    "stageId": 4030007,
+    "description": "<#FFEA73>学院主楼</color>到达2级",
+    "maxProgress": 2,
+    "reward": "4002001:3000&4002003:300",
+    "jumpId": "Building#4010005#401008"
+  },
+  {
+    "id": 4031020,
+    "stageId": 4030007,
+    "description": "将<#FFEA73>格拉斯顿伯里突岩</color>探索到100%",
+    "maxProgress": 1,
+    "reward": "4003001:1",
+    "jumpId": "Building#4011005#401008"
+  },
+  {
+    "id": 4031021,
+    "stageId": 4030007,
+    "description": "<sprite=0><#FFEA73>观象镜</color>产量达到2000/回合",
+    "maxProgress": 2000,
+    "reward": "4003001:1",
+    "jumpId": "Building#4010001#401008"
+  },
+  {
+    "id": 4031022,
+    "stageId": 4030007,
+    "description": "<sprite=1><#FFEA73>无眠烛台</color>产量达到1000/回合",
+    "maxProgress": 1000,
+    "reward": "4003001:1",
+    "jumpId": "Building#4010002#401008"
+  },
+  {
+    "id": 4031023,
+    "stageId": 4030007,
+    "description": "<sprite=2><#FFEA73>银枝的新芽</color>产量达到100/回合",
+    "maxProgress": 100,
+    "reward": "4003001:1",
+    "jumpId": "Building#4010003#401008"
+  }
+]

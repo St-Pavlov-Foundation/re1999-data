@@ -26,6 +26,7 @@ function TowerDeepResultHeroItem:init(go)
 	self._goEmpty = gohelper.findChild(go, "empty")
 	self._emptyEquipGo = gohelper.findChild(go, "heroitemani/emptyequip")
 	self._goFakeEquip = gohelper.findChild(go, "heroitemani/hero/vertical/fakeequip")
+	self._gotrialTag = gohelper.findChild(go, "heroitemani/hero/trialtag")
 end
 
 function TowerDeepResultHeroItem:setData(heroMo, equipMo)
@@ -56,6 +57,7 @@ function TowerDeepResultHeroItem:_refreshHero()
 	local careerSpriteName = "lssx_" .. tostring(heroMo.config.career)
 
 	UISpriteSetMgr.instance:setCommonSprite(self._imagecareer, careerSpriteName)
+	gohelper.setActive(self._gotrialTag, heroMo.belongOtherPlayer)
 
 	local level = heroMo.level or 0
 	local showLevel, _ = HeroConfig.instance:getShowLevel(level)

@@ -26,14 +26,10 @@ function FightUISwitchConfig:onConfigLoaded(configName, configTable)
 end
 
 function FightUISwitchConfig:_initFightUIStyleConfig()
-	self._itemStyleCoList = {}
+	self._itemStyleCos = {}
 
 	for _, config in ipairs(self._fight_ui_style.configList) do
-		if not self._itemStyleCoList[config.itemId] then
-			self._itemStyleCoList[config.itemId] = {}
-		end
-
-		table.insert(self._itemStyleCoList[config.itemId], config)
+		self._itemStyleCos[config.itemId] = config
 	end
 end
 
@@ -49,8 +45,23 @@ function FightUISwitchConfig:getFightUIEffectConfigById(id)
 	return self._fight_ui_effect.configDict[id]
 end
 
-function FightUISwitchConfig:getStyleCosByItemId(itemId)
-	return self._itemStyleCoList[itemId]
+function FightUISwitchConfig:getStyleCoByItemId(itemId)
+	return self._itemStyleCos[itemId]
+end
+
+function FightUISwitchConfig:getItemSource(itemId)
+	if not self._itemSource then
+		self._itemSource = {}
+	end
+
+	local t = self._itemSource[itemId]
+
+	if not t then
+		t = DecorateModel.instance:collectSource(itemId)
+		self._itemSource[itemId] = t
+	end
+
+	return t
 end
 
 FightUISwitchConfig.instance = FightUISwitchConfig.New()

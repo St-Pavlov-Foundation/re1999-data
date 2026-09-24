@@ -1,0 +1,30 @@
+[
+  {
+    "id": 2,
+    "constKey": "board_height",
+    "value": "7",
+    "value2": "",
+    "desc": "棋盘高度"
+  },
+  {
+    "id": 3,
+    "constKey": "turn_timer_seconds",
+    "value": "10",
+    "value2": "",
+    "desc": "普通操作阶段倒计时"
+  },
+  {
+    "id": 4,
+    "constKey": "fever_max",
+    "value": "60",
+    "value2": "",
+    "desc": "Fever 槽上限"
+  },
+  {
+    "id": 5,
+    "constKey": "fever_timer_restore",
+    "value": "6",
+    "value2": "",
+    "desc": "进入 Fever 时回复倒计时"
+  }
+]

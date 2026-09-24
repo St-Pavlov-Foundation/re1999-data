@@ -1,0 +1,50 @@
+[
+  {
+    "id": 20001,
+    "param": "BaseSelectorId#101|MaxValue#FinalStatSum"
+  },
+  {
+    "id": 20003,
+    "param": "BaseSelectorId#132|RaceTag#Forest|ExcludeSelf#1|MaxValue#FinalStatSum"
+  },
+  {
+    "id": 20005,
+    "param": "BaseSelectorId#132|RaceTag#Ocean|ExcludeSelf#1|MaxValue#FinalStatSum"
+  },
+  {
+    "id": 20007,
+    "param": "BaseSelectorId#101|RaceTag#RareBeast|EachRowMaxValue#BuffCount(1003)"
+  },
+  {
+    "id": 20004,
+    "param": "BaseSelectorId#20011|RaceTag#Forest|ExcludeSelf#1|Nearest"
+  },
+  {
+    "id": 20008,
+    "param": "BaseSelectorId#20011|RaceTag#Machine|ExcludeSelf#1|Nearest"
+  },
+  {
+    "id": 20009,
+    "param": "BaseSelectorId#20013|RaceTag#Machine|ExcludeSelf#1|All"
+  },
+  {
+    "id": 20010,
+    "param": "RandomBranch#20008#20009"
+  },
+  {
+    "id": 20002,
+    "param": "BaseSelectorId#20011|RaceTag#Ocean|ExcludeSelf#1|All"
+  },
+  {
+    "id": 20006,
+    "param": "BaseSelectorId#20011|ExcludeSelf#1|Nearest"
+  },
+  {
+    "id": 20012,
+    "param": "BaseSelectorId#232|Nearest"
+  },
+  {
+    "id": 20014,
+    "param": "BaseSelectorId#103|RaceTag#Forest|All"
+  }
+]

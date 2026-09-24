@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "camp": "基金会",
+    "location": 1,
+    "textId": 0,
+    "text": "",
+    "unlockId": 0
+  },
+  {
+    "id": 2,
+    "camp": "司辰",
+    "location": 2,
+    "textId": 0,
+    "text": "",
+    "unlockId": 0
+  },
+  {
+    "id": 3,
+    "camp": "司辰小队",
+    "location": 3,
+    "textId": 0,
+    "text": "",
+    "unlockId": 0
+  },
+  {
+    "id": 4,
+    "camp": "白岸学会",
+    "location": 4,
+    "textId": 0,
+    "text": "",
+    "unlockId": 0
+  },
+  {
+    "id": 5,
+    "camp": "拉普拉斯",
+    "location": 5,
+    "textId": 0,
+    "text": "",
+    "unlockId": 0
+  },
+  {
+    "id": 6,
+    "camp": "渡渡鸟探险协会",
+    "location": 6,
+    "textId": 0,
+    "text": "",
+    "unlockId": 0
+  },
+  {
+    "id": 7,
+    "camp": "重塑之手",
+    "location": 7,
+    "textId": 0,
+    "text": "",
+    "unlockId": 0
+  }
+]

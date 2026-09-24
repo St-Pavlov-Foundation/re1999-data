@@ -13,6 +13,7 @@ function AbyssStageHeroEmptyItem:init(go)
 	self._imageheroicon = gohelper.findChildImage(self.viewGO, "#go_hero/#simage_heroicon")
 	self._imagecareer = gohelper.findChildImage(self.viewGO, "#go_hero/#image_career")
 	self.btn_modify = gohelper.findChildButton(self.viewGO, "")
+	self._goAssist = gohelper.findChild(self.viewGO, "#go_hero/#go_assist")
 	self._uiEffectComp = ZProj.UIEffectsCollection.Get(self.viewGO)
 
 	self._uiEffectComp:SetGray(false)
@@ -75,7 +76,7 @@ function AbyssStageHeroEmptyItem:setInfo(data)
 
 		self._animator:Play("death", 0, 0)
 		gohelper.setActive(self._gohero, true)
-		self:refreshUI(heroId)
+		self:refreshUI(heroId, data.skinId)
 		TaskDispatcher.runDelay(self._onAnimPlayFinish, self, 1)
 
 		return
@@ -117,27 +118,23 @@ function AbyssStageHeroEmptyItem:setInfo(data)
 		return
 	end
 
-	self:refreshUI(heroId)
+	self:refreshUI(heroId, data.skinId)
 end
 
-function AbyssStageHeroEmptyItem:refreshUI(heroId)
+function AbyssStageHeroEmptyItem:refreshUI(heroId, skinId)
 	local careerId
-	local heroMo = HeroModel.instance:getByHeroId(heroId)
+	local heroConfig = HeroConfig.instance:getHeroCO(heroId)
 
-	if heroMo then
-		local skinConfig = SkinConfig.instance:getSkinCo(heroMo.skin)
+	careerId = heroConfig.career
 
-		self._simageheroicon:LoadImage(ResUrl.getHeadIconSmall(skinConfig.headIcon))
+	local skinConfig = SkinConfig.instance:getSkinCo(skinId)
 
-		careerId = heroMo.config.career
-	else
-		local heroConfig = HeroConfig.instance:getHeroCO(heroId)
+	skinConfig = skinConfig or SkinConfig.instance:getSkinCo(heroConfig.skinId)
 
-		self._simageheroicon:LoadImage(ResUrl.getHeadIconSmall(heroConfig.skinId))
+	local isAssist = self.data.isAssist
 
-		careerId = heroConfig.career
-	end
-
+	gohelper.setActive(self._goAssist, isAssist)
+	self._simageheroicon:LoadImage(ResUrl.getHeadIconSmall(skinConfig.headIcon))
 	UISpriteSetMgr.instance:setCommonSprite(self._imagecareer, "lssx_" .. tostring(careerId), nil)
 end
 

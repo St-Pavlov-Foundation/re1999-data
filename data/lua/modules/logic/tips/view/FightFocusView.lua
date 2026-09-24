@@ -126,6 +126,23 @@ function FightFocusView:onInitView()
 	self.txtDevicePower = gohelper.findChildText(self.goDevicePower, "#txt_hp")
 	self.imageDevicePowerProgress = gohelper.findChildImage(self.goDevicePower, "#image_device")
 	self.imageStoreDevicePowerProgress = gohelper.findChildImage(self.goDevicePower, "#image_store_device")
+	self.goSpHNJPower = gohelper.findChild(self.viewGO, "fightinfocontainer/#go_infoView/content/info/hp/layout/go_sphongnujian")
+	self.txtSpHNJPower = gohelper.findChildText(self.goSpHNJPower, "#txt_hp")
+
+	local goSpHNJPowerProgress = gohelper.findChild(self.goSpHNJPower, "#image_progres")
+
+	self.spHNJProgressList = self:getUserDataTb_()
+
+	for i = 1, FightEnum.SP_HNJ_MAX do
+		local go = gohelper.findChild(goSpHNJPowerProgress, i)
+
+		gohelper.setActive(go, false)
+		table.insert(self.spHNJProgressList, go)
+	end
+
+	self.deLeiKeSliderGO = gohelper.findChild(self.viewGO, "fightinfocontainer/#go_infoView/content/info/hp/layout/go_deleike")
+	self.textDeLeiKe = gohelper.findChildText(self.viewGO, "fightinfocontainer/#go_infoView/content/info/hp/layout/go_deleike/#txt_hp")
+	self.deLeiKeSlider = gohelper.findChildImage(self.viewGO, "fightinfocontainer/#go_infoView/content/info/hp/layout/go_deleike/#image_progress2")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -321,6 +338,7 @@ function FightFocusView:_editableInitView()
 	self.resistanceComp:onInitView()
 
 	self._godevice = gohelper.findChild(self.viewGO, "fightinfocontainer/#go_infoView/content/#go_device")
+	self._goqte = gohelper.findChild(self.viewGO, "fightinfocontainer/#go_infoView/content/#go_breakthrough")
 end
 
 function FightFocusView:createSuperItem()
@@ -562,6 +580,7 @@ function FightFocusView:_refreshUI()
 	self:showOdysseyEquipSuit()
 	self:showAiJiAoExPointSlider()
 	self:showAlert()
+	self:showDeLeiKeSlider()
 end
 
 function FightFocusView:setAssistBossStatus(active, force)
@@ -623,14 +642,14 @@ function FightFocusView:_refreshInfo(monsterConfig)
 	local skillIds = {}
 	local isNotSmallSkill = string.nilorempty(monsterConfig.activeSkill)
 	local isNotUniqueSkill = #monsterConfig.uniqueSkill < 1
-	local IsNotSkill = isNotSmallSkill and isNotUniqueSkill
+
+	self._isNotSkill = isNotSmallSkill and isNotUniqueSkill
 
 	if not isNotSmallSkill then
 		skillIds = string.split(monsterConfig.activeSkill, "|")
 	end
 
-	gohelper.setActive(self._noskill, IsNotSkill)
-	gohelper.setActive(self._skill, not IsNotSkill)
+	self:_refreshSkillGOs()
 
 	local skillDict = {}
 	local tempSkillIds, key
@@ -878,10 +897,12 @@ function FightFocusView:_refreshHeroEquipInfo(entityMO)
 			end
 		end
 
-		local _, assistMo = HeroGroupModel.instance:getAssistMo()
+		for _, assistMo in ipairs(HeroGroupModel.instance:getAssistMoList()) do
+			if assistMo.heroUid == heroUid then
+				equipUid = self._group.equips[assistMo.id - 1].equipUid[1]
 
-		if assistMo and assistMo.heroUid == heroUid then
-			equipUid = self._group.equips[assistMo.id - 1].equipUid[1]
+				break
+			end
 		end
 
 		if tonumber(equipUid) and tonumber(equipUid) < 0 then
@@ -1255,6 +1276,7 @@ function FightFocusView:_refreshSkill(skillIdDict)
 	end
 
 	self:_checkDevice()
+	self:_refreshQTE()
 end
 
 function FightFocusView:_refreshSuper(uniqueSkillList)
@@ -1317,6 +1339,7 @@ function FightFocusView:_refreshMO(entityMO)
 	self:refreshYaMiShield(entityMO)
 	self:refreshMeiLeiEr(entityMO)
 	self:refreshDevicePower(entityMO)
+	self:refresh4_0HNJChannel(entityMO)
 end
 
 function FightFocusView:_refreshEnemyPassiveSkill(monsterCO)
@@ -2296,6 +2319,34 @@ function FightFocusView:showAlert()
 	end
 end
 
+function FightFocusView:showDeLeiKeSlider()
+	local hasBuffId = self._entityMO:hasBuffId(31580002)
+
+	if hasBuffId then
+		gohelper.setActive(self.deLeiKeSliderGO, true)
+
+		local curValue = 0
+		local hasAct, buffData = self._entityMO:hasBuffActId(1171)
+
+		if hasAct then
+			local actInfo = buffData.actInfo
+
+			for i, v in ipairs(actInfo) do
+				if v.actId == 1171 then
+					curValue = v.param[1] or 0
+
+					break
+				end
+			end
+		end
+
+		self.textDeLeiKe.text = math.floor(curValue / 100000 * 100) .. "/" .. 100
+		self.deLeiKeSlider.fillAmount = curValue / 100000
+	else
+		gohelper.setActive(self.deLeiKeSliderGO, false)
+	end
+end
+
 FightFocusView.HealthInterval = -50
 
 function FightFocusView:onClickHealth()
@@ -2566,6 +2617,17 @@ function FightFocusView:_checkDevice()
 	end
 end
 
+function FightFocusView:_refreshSkillGOs()
+	local isDevice = self._deviceMo ~= nil
+	local isQte = self._qteMo ~= nil
+
+	gohelper.setActive(self._godevice, isDevice)
+	gohelper.setActive(self._goqte, isQte)
+	gohelper.setActive(self._goskills, not isQte and not isDevice)
+	gohelper.setActive(self._noskill, self._isNotSkill)
+	gohelper.setActive(self._skill, not self._isNotSkill and not isQte and not isDevice)
+end
+
 function FightFocusView:_refreshDevice()
 	if not self._deviceView then
 		return
@@ -2575,10 +2637,7 @@ function FightFocusView:_refreshDevice()
 
 	self._deviceMo = SkillConfig.instance:getHeroDeviceMO(self._entityMO.modelId, self._entityMO)
 
-	local isDevice = self._deviceMo ~= nil
-
-	gohelper.setActive(self._godevice, isDevice)
-	gohelper.setActive(self._skill, not isDevice)
+	self:_refreshSkillGOs()
 end
 
 function FightFocusView:_onLoadFinish()
@@ -2673,6 +2732,70 @@ function FightFocusView:refreshDevicePower(entityMo)
 	local storePoint = entityMo:getStoredDeviceExPoint()
 
 	self.imageStoreDevicePowerProgress.fillAmount = maxPower > 0 and storePoint / maxPower or 1
+end
+
+function FightFocusView:refresh4_0HNJChannel(entityMo)
+	if not entityMo then
+		gohelper.setActive(self.goSpHNJPower, false)
+
+		return
+	end
+
+	local hasChannel = FightHelper.checkHas4_0HNJChannelBuff(entityMo)
+
+	if not hasChannel then
+		gohelper.setActive(self.goSpHNJPower, false)
+
+		return
+	end
+
+	gohelper.setActive(self.goSpHNJPower, true)
+
+	local count = FightHelper.get4_0HNJChannelCount(entityMo)
+	local max = FightHelper.get4_0HNJChannelMax()
+
+	self.txtSpHNJPower.text = string.format("%s/%s", count, max)
+
+	for i = 1, max do
+		gohelper.setActive(self.spHNJProgressList[i], i <= count)
+	end
+
+	for i = max + 1, FightEnum.SP_HNJ_MAX do
+		gohelper.setActive(self.spHNJProgressList[i], false)
+	end
+end
+
+function FightFocusView:_refreshQTE()
+	if self._entityMO:isEnemySide() then
+		self._qteMo = nil
+
+		self:_refreshSkillGOs()
+
+		return
+	end
+
+	if not self.viewContainer then
+		return
+	end
+
+	if not self._qteView then
+		local QTEResPath = self.viewContainer:getSetting().otherRes.QTERes
+
+		if string.nilorempty(QTEResPath) then
+			return
+		end
+
+		local childGO = self.viewContainer:getResInst(QTEResPath, self._goqte.gameObject)
+
+		self._qteView = MonoHelper.addNoUpdateLuaComOnceToGo(childGO, FightQTESkillCard)
+		self._qteView.viewContainer = self.viewContainer
+	end
+
+	self._qteView:onUpdateMO(self._entityMO.modelId, self._entityMO)
+
+	self._qteMo = SkillConfig.instance:getHeroQteMO(self._entityMO.modelId, self._entityMO)
+
+	self:_refreshSkillGOs()
 end
 
 return FightFocusView

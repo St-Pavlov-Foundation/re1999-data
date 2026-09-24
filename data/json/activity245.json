@@ -1,0 +1,11 @@
+[
+  {
+    "activityId": 14021,
+    "ticketId": 4002,
+    "firstTicket": 5,
+    "dailyTicket": 1,
+    "ticketLimit": 16,
+    "cost": 1,
+    "loginActivityId": 14025
+  }
+]

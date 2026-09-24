@@ -1,0 +1,210 @@
+[
+  {
+    "id": 4020001,
+    "name": "维尔汀",
+    "type": "unique",
+    "rarity": 3,
+    "avatar": "headicon_small_11",
+    "pieceAsset": "v4a0_m_s08_hddt_qz_wrt"
+  },
+  {
+    "id": 4020002,
+    "name": "爱丝琳",
+    "type": "unique",
+    "rarity": 3,
+    "avatar": "headicon_small_1",
+    "pieceAsset": "v4a0_m_s08_hddt_qz_aisilin"
+  },
+  {
+    "id": 4020003,
+    "name": "西缪斯",
+    "type": "unique",
+    "rarity": 3,
+    "avatar": "headicon_small_2",
+    "pieceAsset": "v4a0_m_s08_hddt_qz_ximiusi"
+  },
+  {
+    "id": 4020004,
+    "name": "珐琅眼",
+    "type": "unique",
+    "rarity": 3,
+    "avatar": "headicon_small_12",
+    "pieceAsset": "v4a0_m_s08_hddt_qz_falangyan"
+  },
+  {
+    "id": 4020005,
+    "name": "波泽蒂",
+    "type": "unique",
+    "rarity": 3,
+    "avatar": "headicon_small_3",
+    "pieceAsset": "v4a0_m_s08_hddt_qz_bozedi"
+  },
+  {
+    "id": 4020006,
+    "name": "安琪蕾特",
+    "type": "unique",
+    "rarity": 3,
+    "avatar": "headicon_small_4",
+    "pieceAsset": "v4a0_m_s08_hddt_qz_helilian"
+  },
+  {
+    "id": 4020007,
+    "name": "阿里安",
+    "type": "unique",
+    "rarity": 3,
+    "avatar": "headicon_small_5",
+    "pieceAsset": "v4a0_m_s08_hddt_qz_alian"
+  },
+  {
+    "id": 4020008,
+    "name": "小瑞安侬",
+    "type": "unique",
+    "rarity": 3,
+    "avatar": "headicon_small_13",
+    "pieceAsset": "v4a0_m_s08_hddt_qz_xranong"
+  },
+  {
+    "id": 4021001,
+    "name": "戒律学学徒",
+    "type": "npc",
+    "rarity": 1,
+    "avatar": "headicon_small_15",
+    "pieceAsset": "v4a0_m_s08_hddt_qz_xt_man"
+  },
+  {
+    "id": 4021002,
+    "name": "再生学学徒",
+    "type": "npc",
+    "rarity": 1,
+    "avatar": "headicon_small_17",
+    "pieceAsset": "v4a0_m_s08_hddt_qz_xt_woman"
+  },
+  {
+    "id": 4021003,
+    "name": "观察学学徒",
+    "type": "npc",
+    "rarity": 1,
+    "avatar": "headicon_small_16",
+    "pieceAsset": "v4a0_m_s08_hddt_qz_xt_man"
+  },
+  {
+    "id": 4021004,
+    "name": "竞技学学徒",
+    "type": "npc",
+    "rarity": 1,
+    "avatar": "headicon_small_14",
+    "pieceAsset": "v4a0_m_s08_hddt_qz_xt_woman"
+  },
+  {
+    "id": 4021005,
+    "name": "静滞学学徒",
+    "type": "npc",
+    "rarity": 1,
+    "avatar": "headicon_small_14",
+    "pieceAsset": "v4a0_m_s08_hddt_qz_xt_woman"
+  },
+  {
+    "id": 4021006,
+    "name": "变化学学徒",
+    "type": "npc",
+    "rarity": 2,
+    "avatar": "headicon_small_16",
+    "pieceAsset": "v4a0_m_s08_hddt_qz_xt_man"
+  },
+  {
+    "id": 4021007,
+    "name": "升华学学徒",
+    "type": "npc",
+    "rarity": 2,
+    "avatar": "headicon_small_14",
+    "pieceAsset": "v4a0_m_s08_hddt_qz_xt_woman"
+  },
+  {
+    "id": 4021008,
+    "name": "创造学学徒",
+    "type": "npc",
+    "rarity": 2,
+    "avatar": "headicon_small_16",
+    "pieceAsset": "v4a0_m_s08_hddt_qz_xt_man"
+  },
+  {
+    "id": 4021009,
+    "name": "灵智学学徒",
+    "type": "npc",
+    "rarity": 2,
+    "avatar": "headicon_small_17",
+    "pieceAsset": "v4a0_m_s08_hddt_qz_xt_woman"
+  },
+  {
+    "id": 4021010,
+    "name": "辩论学学徒",
+    "type": "npc",
+    "rarity": 2,
+    "avatar": "headicon_small_15",
+    "pieceAsset": "v4a0_m_s08_hddt_qz_xt_man"
+  },
+  {
+    "id": 4021011,
+    "name": "交流学学徒",
+    "type": "npc",
+    "rarity": 2,
+    "avatar": "headicon_small_17",
+    "pieceAsset": "v4a0_m_s08_hddt_qz_xt_woman"
+  },
+  {
+    "id": 4021012,
+    "name": "烛语学学徒",
+    "type": "npc",
+    "rarity": 3,
+    "avatar": "headicon_small_16",
+    "pieceAsset": "v4a0_m_s08_hddt_qz_xt_man"
+  },
+  {
+    "id": 4021013,
+    "name": "恐惧未来之人",
+    "type": "npc",
+    "rarity": 3,
+    "avatar": "headicon_small_17",
+    "pieceAsset": "v4a0_m_s08_hddt_qz_xt_woman"
+  },
+  {
+    "id": 4021014,
+    "name": "放弃思考之人",
+    "type": "npc",
+    "rarity": 3,
+    "avatar": "headicon_small_15",
+    "pieceAsset": "v4a0_m_s08_hddt_qz_xt_man"
+  },
+  {
+    "id": 4021015,
+    "name": "正在翘课之人",
+    "type": "npc",
+    "rarity": 3,
+    "avatar": "headicon_small_14",
+    "pieceAsset": "v4a0_m_s08_hddt_qz_xt_woman"
+  },
+  {
+    "id": 4021016,
+    "name": "失去理智之人",
+    "type": "npc",
+    "rarity": 3,
+    "avatar": "headicon_small_15",
+    "pieceAsset": "v4a0_m_s08_hddt_qz_xt_man"
+  },
+  {
+    "id": 4022001,
+    "name": "烛语研究者",
+    "type": "npc",
+    "rarity": 3,
+    "avatar": "headicon_small_16",
+    "pieceAsset": "v4a0_m_s08_hddt_qz_xt_man"
+  },
+  {
+    "id": 4022002,
+    "name": "美食爱好者",
+    "type": "npc",
+    "rarity": 3,
+    "avatar": "headicon_small_14",
+    "pieceAsset": "v4a0_m_s08_hddt_qz_xt_woman"
+  }
+]

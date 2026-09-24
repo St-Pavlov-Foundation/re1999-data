@@ -111,6 +111,11 @@ function Activity220Controller:finishEpisode(param)
 	end
 
 	self:dispatchEvent(Activity220Event.EpisodeFinished)
+	FightSuccView.onStoryEnd()
+end
+
+function Activity220Controller:finishAllTask(activityId, callback, callbackObj)
+	TaskRpc.instance:sendFinishAllTaskRequest(TaskEnum.TaskType.Activity220, nil, nil, callback, callbackObj, activityId)
 end
 
 Activity220Controller.instance = Activity220Controller.New()

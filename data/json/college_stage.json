@@ -1,0 +1,37 @@
+[
+  {
+    "id": 4030001,
+    "title": "阶段1",
+    "nextStageId": 4030002
+  },
+  {
+    "id": 4030002,
+    "title": "阶段2",
+    "nextStageId": 4030003
+  },
+  {
+    "id": 4030003,
+    "title": "阶段3",
+    "nextStageId": 4030004
+  },
+  {
+    "id": 4030004,
+    "title": "阶段4",
+    "nextStageId": 4030005
+  },
+  {
+    "id": 4030005,
+    "title": "阶段5",
+    "nextStageId": 4030006
+  },
+  {
+    "id": 4030006,
+    "title": "阶段6",
+    "nextStageId": 4030007
+  },
+  {
+    "id": 4030007,
+    "title": "阶段7",
+    "nextStageId": 0
+  }
+]

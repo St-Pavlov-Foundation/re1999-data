@@ -50,7 +50,7 @@ function JumpController:jumpToStoreView(jumpParam)
 			table.insert(self.remainViewNames, ViewName.PackageStoreGoodsView)
 		end
 
-		if jumpTab == StoreEnum.StoreId.NewDecorateStore or jumpTab == StoreEnum.StoreId.OldDecorateStore then
+		if jumpTab == StoreEnum.StoreId.NewDecorateStore or jumpTab == StoreEnum.StoreId.OldDecorateStore or jumpTab == StoreEnum.StoreId.SpiritualityDecorateStore then
 			if jumpGoodsId then
 				table.insert(self.remainViewNames, ViewName.DecorateStoreGoodsView)
 			end
@@ -1526,23 +1526,39 @@ end
 function JumpController:jumpToVersionEnterView(jumpParam)
 	local paramsList = string.splitToNumber(jumpParam, "#")
 	local actId = paramsList[2]
+	local versionActId
 
 	if not actId then
-		local controller = VersionActivityFixedHelper.getVersionActivityEnterController()
-
-		controller.instance:openVersionActivityEnterView()
-
-		return JumpEnum.JumpResult.Success
+		for i = #ActivityEnum.VersionActivityIdList, 1, -1 do
+			versionActId = ActivityEnum.VersionActivityIdList[i]
+		end
 	end
 
-	local version = ActivityHelper.getActivityVersion(actId)
+	if not versionActId then
+		return JumpEnum.JumpResult.Fail
+	end
+
+	local version = ActivityHelper.getActivityVersion(versionActId)
+	local controllerName = string.format("VersionActivity%sEnterController", version)
+	local controller = _G[controllerName]
 
 	if not version then
 		return JumpEnum.JumpResult.Fail
 	end
 
-	local controllerName = string.format("VersionActivity%sEnterController", version)
-	local controller = _G[controllerName] or VersionActivityFixedEnterController
+	if not controller then
+		local enum = VersionActivityFixedHelper.getVersionActivityEnum()
+
+		if enum and enum.ActivityId.EnterView == versionActId then
+			controller = VersionActivityFixedEnterController
+		else
+			local mainVersionEnum = VersionActivityMainFixedHelper.getVersionActivityEnum()
+
+			if mainVersionEnum and mainVersionEnum.ActivityId.EnterView == versionActId then
+				controller = VersionActivityMainFixedEnterController
+			end
+		end
+	end
 
 	if controller then
 		controller.instance:openVersionActivityEnterView(nil, nil, actId)
@@ -1984,6 +2000,13 @@ function JumpController:jumpToMainSwitchView(jumpParam)
 		isSwitch = true,
 		jumpTabs = jumpTabs
 	}
+
+	if jumpArray[2] == MainEnum.SwitchType.Character then
+		local heroId = jumpArray[3]
+		local skinId = jumpArray[4]
+
+		CharacterSwitchListModel.instance:setJumpShowHeroSkin(heroId, skinId)
+	end
 
 	NavigateButtonsView.homeClick()
 	MainController.instance:openMainThumbnailView(param, true)

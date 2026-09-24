@@ -12,10 +12,10 @@ function MainUISwitchInfoView:onInitView()
 	self._goLocked = gohelper.findChild(self.viewGO, "right/start/#go_Locked")
 	self._btnclose = gohelper.findChildButtonWithAudio(self.viewGO, "right/start/#btn_close")
 	self._scrollcard = gohelper.findChildScrollRect(self.viewGO, "right/mask/#scroll_card")
-	self._goSceneName = gohelper.findChild(self.viewGO, "left/LayoutGroup/#go_SceneName")
-	self._txtSceneName = gohelper.findChildText(self.viewGO, "left/LayoutGroup/#go_SceneName/#txt_SceneName")
-	self._txtTime = gohelper.findChildText(self.viewGO, "left/LayoutGroup/#go_SceneName/#txt_SceneName/#txt_Time")
-	self._btnnamecheck = gohelper.findChildButtonWithAudio(self.viewGO, "left/LayoutGroup/#go_SceneName/#btn_namecheck")
+	self._goSceneName = gohelper.findChild(self.viewGO, "left/LayoutGroup/layout/#go_SceneName")
+	self._txtSceneName = gohelper.findChildText(self.viewGO, "left/LayoutGroup/layout/#go_SceneName/#txt_SceneName")
+	self._txtTime = gohelper.findChildText(self.viewGO, "left/LayoutGroup/layout/#go_Time/#txt_Time")
+	self._btnnamecheck = gohelper.findChildButtonWithAudio(self.viewGO, "left/LayoutGroup/#go_HideBtn/#btn_Hide")
 	self._txtSceneDescr = gohelper.findChildText(self.viewGO, "left/#txt_SceneDescr")
 	self._btnshow = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_show")
 	self._goSceneLogo4 = gohelper.findChild(self.viewGO, "left/#go_SceneLogo4")
@@ -30,6 +30,7 @@ function MainUISwitchInfoView:addEvents()
 	self._btnclose:AddClickListener(self._btncloseOnClick, self)
 	self._btnnamecheck:AddClickListener(self._btnHideOnClick, self)
 	self._btnshow:AddClickListener(self._btnshowOnClick, self)
+	self:addEventCb(MainUISwitchController.instance, MainUISwitchEvent.MaskHeroMoveFinish, self._onMaskHeroMoveFinish, self)
 end
 
 function MainUISwitchInfoView:removeEvents()
@@ -37,6 +38,7 @@ function MainUISwitchInfoView:removeEvents()
 	self._btnclose:RemoveClickListener()
 	self._btnnamecheck:RemoveClickListener()
 	self._btnshow:RemoveClickListener()
+	self:removeEventCb(MainUISwitchController.instance, MainUISwitchEvent.MaskHeroMoveFinish, self._onMaskHeroMoveFinish, self)
 end
 
 function MainUISwitchInfoView:_btnHideOnClick()
@@ -51,7 +53,33 @@ function MainUISwitchInfoView:_btnHideOnClick()
 	gohelper.setActive(self._goright, self._showUI)
 	gohelper.setActive(self._btnshow.gameObject, not self._showUI)
 	gohelper.setActive(self._goMask, self._showUI)
+	TaskDispatcher.cancelTask(self._onPreviewSwitchUIVisible, self)
+
+	if self._showUI then
+		self:_playSwitchAnim()
+		TaskDispatcher.runDelay(self._onPreviewSwitchUIVisible, self, 0.5)
+	else
+		self:_onPreviewSwitchUIVisible()
+	end
+end
+
+function MainUISwitchInfoView:_onPreviewSwitchUIVisible()
 	MainUISwitchController.instance:dispatchEvent(MainUISwitchEvent.PreviewSwitchUIVisible, self._showUI)
+end
+
+function MainUISwitchInfoView:_playSwitchAnim()
+	gohelper.setActive(self.viewGO, false)
+	gohelper.setActive(self.viewGO, true)
+
+	local animName = self._showUI and "switch1" or "switch2"
+
+	self._rootAnimator:Play(animName, 0, 0)
+end
+
+function MainUISwitchInfoView:_onMaskHeroMoveFinish(visible)
+	if not visible then
+		self:_playSwitchAnim()
+	end
 end
 
 function MainUISwitchInfoView:_btnshowOnClick()
@@ -73,29 +101,44 @@ function MainUISwitchInfoView:_btnshowOnClick()
 end
 
 function MainUISwitchInfoView:_btnequipOnClick()
+	self._equipBtnAnimatorPlayer:Play("click", self._equipCb, self)
+end
+
+function MainUISwitchInfoView:_equipCb()
 	MainUISwitchController.instance:setCurMainUIStyle(self._selectSkinId, self._showSceneStatus, self)
 end
 
 function MainUISwitchInfoView:_showSceneStatus()
 	local sceneStatus = MainUISwitchModel.getUIStatus(self._selectSkinId)
+	local isShow = self.viewParam.isAmplify == nil
 	local isUnlock = sceneStatus == MainSceneSwitchEnum.SceneStutas.Unlock
 	local isEquip = self._selectSkinId == MainUISwitchModel.instance:getCurUseUI()
 
-	gohelper.setActive(self._btnequip, isUnlock and not isEquip)
-	gohelper.setActive(self._goshowing, isUnlock and isEquip)
-	gohelper.setActive(self._goLocked, not isUnlock)
+	gohelper.setActive(self._btnequip, isShow and isUnlock and not isEquip)
+	gohelper.setActive(self._goshowing, isShow and isUnlock and isEquip)
+	gohelper.setActive(self._goLocked, isShow and not isUnlock)
 	self:_updateSceneInfo()
 end
 
 function MainUISwitchInfoView:_btncloseOnClick()
-	self:closeThis()
+	if self._isClosing then
+		return
+	end
+
+	self._rootAnimator:Play("close", 0, 0)
+	TaskDispatcher.runDelay(self.closeThis, self, 0.334)
+
+	self._isClosing = true
 end
 
 function MainUISwitchInfoView:_editableInitView()
 	self._rootAnimator = self.viewGO:GetComponent("Animator")
+	self._equipBtnAnimatorPlayer = SLFramework.AnimatorPlayer.Get(self._btnequip.gameObject)
 	self._goleft = gohelper.findChild(self.viewGO, "left")
 	self._goright = gohelper.findChild(self.viewGO, "right")
 	self._goMask = gohelper.findChild(self.viewGO, "MaskBG")
+
+	NavigateMgr.instance:addEscape(self.viewName, self._btncloseOnClick, self)
 end
 
 function MainUISwitchInfoView:onOpen()
@@ -122,6 +165,15 @@ function MainUISwitchInfoView:onOpen()
 
 	gohelper.setActive(self._goleft, self._showUI and self._isCanShowLeft)
 	gohelper.setActive(self._goMask, self._showUI)
+end
+
+function MainUISwitchInfoView:onOpenFinish()
+	gohelper.setActive(self.viewGO, false)
+	gohelper.setActive(self.viewGO, true)
+
+	local openAni = self.viewParam and self.viewParam.isAmplify and "open2" or "open1"
+
+	self._rootAnimator:Play(openAni, 0, 0)
 end
 
 function MainUISwitchInfoView:_updateSceneInfo()
@@ -162,7 +214,8 @@ function MainUISwitchInfoView:_updateSceneInfo()
 end
 
 function MainUISwitchInfoView:onClose()
-	return
+	TaskDispatcher.cancelTask(self.closeThis, self)
+	TaskDispatcher.cancelTask(self._onPreviewSwitchUIVisible, self)
 end
 
 return MainUISwitchInfoView

@@ -82,7 +82,7 @@ end
 
 function V3a2_BossRush_ResultView:onOpen()
 	self._curStage, self._curLayer, self._actId = BossRushModel.instance:getBattleStageAndLayer()
-	self.fightScore = BossRushModel.instance:getFightScore() or 0
+	self.fightScore = V3a2_BossRushModel.instance:getTotalScore() or 0
 	self._txtScore.text = BossRushConfig.instance:getScoreStr(self.fightScore)
 	self._isSpecialLayer = BossRushModel.instance:isSpecialLayer(self._curLayer)
 
@@ -92,13 +92,14 @@ function V3a2_BossRush_ResultView:onOpen()
 	self:initEvaluate()
 	gohelper.setActive(self._simageFullBG1.gameObject, not self._isSpecialLayer)
 
-	local isNew = BossRushModel.instance:checkIsNewHighestPointRecord(self._curStage)
+	local isNew = V3a2_BossRushModel.instance:checkIsNewHighestPointRecord(self._curStage)
 
 	gohelper.setActive(self._goNewRecord, isNew)
 	self:refreshRankUI()
 	self:_showScoreTip(false)
 	self:_refreshScore()
 	AudioMgr.instance:trigger(AudioEnum.ui_settleaccounts.play_ui_settleaccounts_resources_rare)
+	AssistRecordRpc.instance:sendAssistRecordGetDungeonRecordRequest()
 end
 
 function V3a2_BossRush_ResultView:_showScoreTip(show)

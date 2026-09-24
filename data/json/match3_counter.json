@@ -1,0 +1,23 @@
+[
+  {
+    "id": 2,
+    "attackerElementId": 3,
+    "defenderElementId": 2,
+    "multiplier": 1,
+    "desc": "木克岩示例"
+  },
+  {
+    "id": 3,
+    "attackerElementId": 2,
+    "defenderElementId": 1,
+    "multiplier": 1,
+    "desc": "岩克兽示例"
+  },
+  {
+    "id": 4,
+    "attackerElementId": 1,
+    "defenderElementId": 1,
+    "multiplier": 1,
+    "desc": "同灵感默认倍率"
+  }
+]

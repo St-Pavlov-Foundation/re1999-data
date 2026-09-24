@@ -68,5 +68,10 @@
     "type": 114,
     "recommendStrategy": "3#9",
     "career_weak": "6#5"
+  },
+  {
+    "type": 115,
+    "recommendStrategy": "4#9",
+    "career_weak": ""
   }
 ]

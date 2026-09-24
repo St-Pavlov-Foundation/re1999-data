@@ -1,0 +1,122 @@
+[
+  {
+    "id": 4041001,
+    "label": "发表成果",
+    "description": "立即获得<sprite=0><#FFEA73>观象镜</color>×1500",
+    "optionType": 2
+  },
+  {
+    "id": 4041002,
+    "label": "继续研究",
+    "description": "<sprite=0><#FFEA73>观象镜</color>产量提升<#FFEA73>50%</color>，持续<#FFEA73>4回合</color>",
+    "optionType": 2
+  },
+  {
+    "id": 4041003,
+    "label": "采用方案A",
+    "description": "立即获得<sprite=1><#FFEA73>无眠烛台</color>×1000",
+    "optionType": 2
+  },
+  {
+    "id": 4041004,
+    "label": "采用方案B",
+    "description": "<sprite=1><#FFEA73>无眠烛台</color>产量提升<#FFEA73>50%</color>，持续<#FFEA73>4回合</color>",
+    "optionType": 2
+  },
+  {
+    "id": 4041005,
+    "label": "激活银枝生长潜力",
+    "description": "立即获得<sprite=2><#FFEA73>银枝的新芽</color>×50",
+    "optionType": 2
+  },
+  {
+    "id": 4041006,
+    "label": "延长银枝生长期",
+    "description": "<sprite=2><#FFEA73>银枝的新芽</color>产量提升<#FFEA73>50%</color>，持续<#FFEA73>4回合</color>",
+    "optionType": 2
+  },
+  {
+    "id": 4041007,
+    "label": "认识乐队成员",
+    "description": "在宿舍结识<#FFEA73>同伴</color>时，消耗降低10%，持续<#FFEA73>4回合</color>",
+    "optionType": 2
+  },
+  {
+    "id": 4041008,
+    "label": "了解摇滚历史",
+    "description": "在教学主楼重置<#FFEA73>同伴专长</color>时，消耗降低10%，持续<#FFEA73>4回合</color>",
+    "optionType": 2
+  },
+  {
+    "id": 4041009,
+    "label": "考证传闻真伪",
+    "description": "<sprite=0><#FFEA73>观象镜</color>产量提升<#FFEA73>50%</color>，持续<#FFEA73>4回合</color>",
+    "optionType": 2
+  },
+  {
+    "id": 4041010,
+    "label": "提出新的传说构想",
+    "description": "<sprite=2><#FFEA73>银枝的新芽</color>产量提升<#FFEA73>50%</color>，持续<#FFEA73>4回合</color>",
+    "optionType": 2
+  },
+  {
+    "id": 4041011,
+    "label": "尝试理解这份报告",
+    "description": "在宿舍结识<#FFEA73>同伴</color>时，消耗降低10%，持续<#FFEA73>4回合</color>",
+    "optionType": 2
+  },
+  {
+    "id": 4041012,
+    "label": "请其他导师协助解读",
+    "description": "获得<#FFEA73>高级同伴</color>*3",
+    "optionType": 2
+  },
+  {
+    "id": 4041013,
+    "label": "独自寻找",
+    "description": "<sprite=1><#FFEA73>无眠烛台</color>产量提升<#FFEA73>50%</color>，持续<#FFEA73>4回合</color>",
+    "optionType": 2
+  },
+  {
+    "id": 4041014,
+    "label": "邀请珐琅眼一起寻找",
+    "description": "<sprite=2><#FFEA73>银枝的新芽</color>产量提升<#FFEA73>50%</color>，持续<#FFEA73>4回合</color>",
+    "optionType": 2
+  },
+  {
+    "id": 4041015,
+    "label": "请其他学徒协助调查",
+    "description": "在教学主楼重置<#FFEA73>同伴专长</color>时，消耗降低10%，持续<#FFEA73>4回合</color>",
+    "optionType": 2
+  },
+  {
+    "id": 4041016,
+    "label": "向导师们提交报告",
+    "description": "获得<#FFEA73>高级同伴</color>*3",
+    "optionType": 2
+  },
+  {
+    "id": 4041017,
+    "label": "分一些给安琪蕾特",
+    "description": "立即获得<sprite=2><#FFEA73>银枝的新芽</color>×200",
+    "optionType": 2
+  },
+  {
+    "id": 4041018,
+    "label": "分一些给波泽蒂",
+    "description": "立即获得<sprite=0><#FFEA73>观象镜</color>×5000，获得<sprite=1><#FFEA73>无眠烛台</color>×2500",
+    "optionType": 2
+  },
+  {
+    "id": 4041019,
+    "label": "邀请朋友一起学习",
+    "description": "在宿舍结识<#FFEA73>同伴</color>时，消耗降低10%，持续<#FFEA73>4回合</color>",
+    "optionType": 2
+  },
+  {
+    "id": 4041020,
+    "label": "认真完成课程学习",
+    "description": "在教学主楼重置<#FFEA73>同伴专长</color>时，消耗降低10%，持续<#FFEA73>4回合</color>",
+    "optionType": 2
+  }
+]

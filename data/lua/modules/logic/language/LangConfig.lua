@@ -79,6 +79,34 @@ function LangConfig:getLangTxtFromeKey(shortcut, key)
 	return ret
 end
 
+local CSFileHelper = SLFramework.FileHelper
+
+function LangConfig:onReplaceOV(configName, configText, bExcel2json)
+	local ovconfigsDir = UnityEngine.Application.dataPath .. "/../../_ovconfigs"
+
+	if GameResMgr.IsFromEditorDir and SettingsModel.instance:isNatives() and LangSettings.instance:supportLang(LangSettings.en) and CSFileHelper.IsDirExists(ovconfigsDir) then
+		local filePath
+
+		if bExcel2json then
+			filePath = ovconfigsDir .. "/excel2json/json_" .. configName .. ".json"
+		else
+			filePath = ovconfigsDir .. "/language/json_" .. configName .. ".json"
+		end
+
+		local jsonString = CSFileHelper.ReadText(filePath)
+
+		if not string.nilorempty(jsonString) then
+			local jsonTbl = ConfigMgr.instance:_decodeJsonStr(jsonString)
+
+			if jsonTbl then
+				return jsonTbl[2]
+			end
+		end
+	end
+
+	return configText
+end
+
 LangConfig.instance = LangConfig.New()
 
 return LangConfig

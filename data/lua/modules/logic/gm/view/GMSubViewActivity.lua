@@ -153,7 +153,8 @@ function GMSubViewActivity:_resetRoleStory()
 	local rolestoryId = tonumber(self._rolestoryId:GetText())
 
 	NecrologistStoryRpc.instance:_sendUpdateNecrologistStoryRequest(tonumber(rolestoryId))
-	NecrologistStoryPlayerPrefs.instance:deletePrefsData()
+	NecrologistStoryPlayerPrefs.instance:deletePrefsData(rolestoryId)
+	GMRpc.instance:sendGMRequest("delete taskType 65")
 	self:closeThis()
 end
 

@@ -748,5 +748,30 @@
     "activityId": 13911,
     "specialBonus": 457,
     "specialPropDesc": "解锁即赠十连/电池2选1"
+  },
+  {
+    "bpId": 30,
+    "chargeId1": 710001,
+    "chargeId2": 710002,
+    "chargeId1to2": 710003,
+    "payStatus1Bonus": "1#824001#1|1#481010#1",
+    "payStatus2Bonus": "1#174005#1|2#2#400|1#770001#1|10#21#3|1#120013#5",
+    "name": "",
+    "payStatus2AddLevel": 10,
+    "expLevelUp": 1000,
+    "bpSkinDesc": "牧于晚星",
+    "bpSkinNametxt": "——库珀花环",
+    "bpSkinEnNametxt": "Star Shepherdess",
+    "bpviewicon": "",
+    "bpviewpos": "",
+    "showBonus": "",
+    "showBonusDate": "2026-10-15 05:00:00",
+    "isSp": true,
+    "weekLimitTimes": 0,
+    "expUpShow": false,
+    "promptDays": 7,
+    "activityId": 14035,
+    "specialBonus": 477,
+    "specialPropDesc": "解锁即赠十连/电池2选1"
   }
 ]

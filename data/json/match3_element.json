@@ -1,0 +1,37 @@
+[
+  {
+    "elementId": 2,
+    "elementKey": "mineral",
+    "name": "岩",
+    "beadColor": "blue",
+    "icon": "match3_element_mineral"
+  },
+  {
+    "elementId": 3,
+    "elementKey": "plant",
+    "name": "木",
+    "beadColor": "green",
+    "icon": "match3_element_plant"
+  },
+  {
+    "elementId": 4,
+    "elementKey": "star",
+    "name": "星",
+    "beadColor": "yellow",
+    "icon": "match3_element_star"
+  },
+  {
+    "elementId": 5,
+    "elementKey": "spirit",
+    "name": "灵",
+    "beadColor": "purple",
+    "icon": "match3_element_spirit"
+  },
+  {
+    "elementId": 6,
+    "elementKey": "intellect",
+    "name": "智",
+    "beadColor": "cyan",
+    "icon": "match3_element_intellect"
+  }
+]

@@ -20385,7 +20385,7 @@
   },
   {
     "id": "p_bpfaceview2_txt_dec1",
-    "lang": "《恶之果》他们将要审判一枚果实，因着他们自己的罪。"
+    "lang": "《虹色冠冕》胜利女神也无法轻言永远的胜利，但心脏雀跃着说:我能。"
   },
   {
     "id": "p_bpfaceview2_txt_dec2",
@@ -24233,7 +24233,7 @@
   },
   {
     "id": "p_activity_giftbuypanelview2_txt_title",
-    "lang": "<size=75>精</size>品礼包推荐"
+    "lang": "精品<size=60><voffset=28>礼包推荐</voffset></size>"
   },
   {
     "id": "p_activity_giftbuypanelview2_txt_title2",
@@ -25265,7 +25265,7 @@
   },
   {
     "id": "p_bpface_skinfestivalview_txt_title2",
-    "lang": "《岁月的书签》新的一页：将床单与芬芳一同折起，于褶皱里保留一点夏天。"
+    "lang": "《行与思七则》之一：小小的牧人啊，你前行时，我们皆是星群。"
   },
   {
     "id": "p_bpface_skinfestivalview_txt_title3",
@@ -27097,7 +27097,7 @@
   },
   {
     "id": "p_warmup_txt_title",
-    "lang": "非纪实传说"
+    "lang": "泰晤士剪影"
   },
   {
     "id": "p_warmup_txt_reward",
@@ -27973,7 +27973,7 @@
   },
   {
     "id": "p_v3a7_goldenmilletpresentfull_txt_desc",
-    "lang": "限时赠送<#BD6438>390粹雨滴</color>衣着抵扣券+<#BD6438>泥鯭的士</color>衣着特惠"
+    "lang": "限时赠送<#BD6438>【不夜乌托邦】套组</color>专属衣着抵扣券，可与其他衣着抵扣券叠加使用"
   },
   {
     "id": "p_v3a7_cumulativerecharge_maintxt1",
@@ -28149,7 +28149,7 @@
   },
   {
     "id": "p_bpfaceview_txt_desc",
-    "lang": "《称量罪与理》焚毁罪孽而冶炼公理。"
+    "lang": "《虹色冠冕》胜利女神也无法轻言永远的胜利，但心脏雀跃着说:我能。"
   },
   {
     "id": "p_bpfaceview_txt_title",
@@ -30162,5 +30162,781 @@
   {
     "id": "p_v3a9_bduck_buy_tips",
     "lang": "购买"
+  },
+  {
+    "id": "p_v4a0_dungeontaskview_txt_desc",
+    "lang": "<#E4692D>十四行诗动态头像</color>"
+  },
+  {
+    "id": "p_v4a0_concert_mainview_txt_name1",
+    "lang": "星间的虹光"
+  },
+  {
+    "id": "p_v4a0_concert_mainview_txt_name2",
+    "lang": "光影栖息处"
+  },
+  {
+    "id": "p_v4a0_concert_mainview_txt_name3",
+    "lang": "迭奏之夜"
+  },
+  {
+    "id": "p_v4a0_concert_mainview_txt_name4",
+    "lang": "众声的谱成 "
+  },
+  {
+    "id": "p_v4a0_concert_mainview_txt_desc",
+    "lang": "10月3日可领星锑音乐会衣着"
+  },
+  {
+    "id": "p_matchgameresultview_txt_tag1",
+    "lang": "目标完成"
+  },
+  {
+    "id": "p_matchgameresultview_txt_return",
+    "lang": "返回地图"
+  },
+  {
+    "id": "p_matchgameresultview_txt_next",
+    "lang": "下一关"
+  },
+  {
+    "id": "p_matchgameresultview_txt_nextMap",
+    "lang": "进入新区域"
+  },
+  {
+    "id": "p_a21_reappear_mainactivity_enterview_txt_EntranceRole1",
+    "lang": "<size=53>无</size>烧"
+  },
+  {
+    "id": "p_a21_reappear_mainactivity_enterview_txt_EntranceRole2",
+    "lang": "<size=53>命</size>运的雨季"
+  },
+  {
+    "id": "p_v4a0_dungeonenterview_txt_Board",
+    "lang": "隙中仙境"
+  },
+  {
+    "id": "p_v4a0_dungeonenterview_txt_BoardEn",
+    "lang": ""
+  },
+  {
+    "id": "p_college_rolerecruitview_txt1",
+    "lang": "结识同伴"
+  },
+  {
+    "id": "p_college_rolerecruitsuccview_txt1",
+    "lang": "继续结识同伴"
+  },
+  {
+    "id": "p_college_rolerecruitsuccview_txt2",
+    "lang": "结识成功"
+  },
+  {
+    "id": "p_college_rolerecruitsuccview_txt3",
+    "lang": "刷新专长"
+  },
+  {
+    "id": "p_college_roleview_txt1",
+    "lang": "结识同伴"
+  },
+  {
+    "id": "p_college_milestoneview_txt1",
+    "lang": "解锁"
+  },
+  {
+    "id": "p_college_milestoneview_txt2",
+    "lang": "群像分析"
+  },
+  {
+    "id": "p_v4a0_observerboxview_txt",
+    "lang": "可折射次数"
+  },
+  {
+    "id": "p_v4a0_observerboxview_txt_Descr",
+    "lang": "完成任务，兑换<color=#9491ff>“折射下的具象”</color>以获取奖励。"
+  },
+  {
+    "id": "p_v4a0_observerboxview_txt_LockedTips",
+    "lang": "在多格光影幕布Ⅰ中获得大奖后解锁"
+  },
+  {
+    "id": "p_v4a0_observerboxrewardview_txt_title",
+    "lang": "多格光影幕布Ⅰ奖励预览"
+  },
+  {
+    "id": "p_v4a0_observerboxrewardview_txt_Descr",
+    "lang": "通过折射观测到大奖的任意一角即可获得大奖，获得大奖后解锁多格光影幕布Ⅱ"
+  },
+  {
+    "id": "p_v4a0_concert_enterview_txt_desc",
+    "lang": "每日首次谱曲获取三倍完成度!"
+  },
+  {
+    "id": "p_college_taskview_txt_tile",
+    "lang": "阶段目标"
+  },
+  {
+    "id": "p_v4a0_concert_enterview_txt_title",
+    "lang": "总乐谱完成度"
+  },
+  {
+    "id": "p_college_relationshipboardpage_team1",
+    "lang": "白岸学会"
+  },
+  {
+    "id": "p_college_relationshipboardpage_team2",
+    "lang": "司辰"
+  },
+  {
+    "id": "p_college_relationshipboardpage_team3",
+    "lang": "渡渡鸟探险协会"
+  },
+  {
+    "id": "p_v4a0_concert_gameresultview_txt_tip",
+    "lang": "乐曲播放中"
+  },
+  {
+    "id": "p_v4a0_concert_gameresultview_txt_tip2",
+    "lang": "点击跳过"
+  },
+  {
+    "id": "p_v4a0_concert_gameresultview_txt_title",
+    "lang": "谱曲完成"
+  },
+  {
+    "id": "p_v4a0_concert_gameresultview_txt_desc2",
+    "lang": "本局乐谱完成度"
+  },
+  {
+    "id": "p_v4a0_concert_gameresultview_txt_quitgame",
+    "lang": "关闭乐盒"
+  },
+  {
+    "id": "p_v4a0_concert_gameresultview_txt_continue",
+    "lang": "重新创作"
+  },
+  {
+    "id": "p_v4a0_candy_rewardspanelview_txt_title",
+    "lang": "礼物总览"
+  },
+  {
+    "id": "p_v4a0_versionsummonbeilierhalfview_txt_name",
+    "lang": "贝丽尔"
+  },
+  {
+    "id": "p_v4a0_versionsummonhongnujianhalfview_txt_name",
+    "lang": "红弩箭"
+  },
+  {
+    "id": "p_v4a0_versionsummonhongnujianhalfview_txt_namesp",
+    "lang": "狩勋女巫"
+  },
+  {
+    "id": "p_v4a0_concertgameview_txt_Rules",
+    "lang": "<color=#ACDDF2>长按滑动</color>连接更多的音符，获得更高的乐谱完成度"
+  },
+  {
+    "id": "p_v4a0_concertgameview_txt_finish",
+    "lang": "完成创作"
+  },
+  {
+    "id": "p_v4a0_concertgameview_#txt_RulesDesc",
+    "lang": "将遗落的音符从<color=#ACDDF2>低音到高音连接</color>，谱成一曲乐曲"
+  },
+  {
+    "id": "p_v4a0_concertgameview_#txt_first",
+    "lang": "三倍完成度加成中"
+  },
+  {
+    "id": "p_v4a0_concertgameview_#txt_score",
+    "lang": "本局乐谱完成度"
+  },
+  {
+    "id": "p_college_mainview_txt",
+    "lang": "刷新专长"
+  },
+  {
+    "id": "p_v4a0_observerboxrewardview_txt_title_02",
+    "lang": "多格光影幕布Ⅱ奖励预览"
+  },
+  {
+    "id": "p_college_mainview_txt_goto",
+    "lang": "探索"
+  },
+  {
+    "id": "p_college_mainview_txt_backcity",
+    "lang": "返回"
+  },
+  {
+    "id": "p_college_mainview_txt_end",
+    "lang": "推进"
+  },
+  {
+    "id": "p_college_mainview_txt_empty",
+    "lang": "无任务"
+  },
+  {
+    "id": "p_college_mainview_txt_progress",
+    "lang": "白岸夜读会"
+  },
+  {
+    "id": "p_college_mainview_Text (TMP)",
+    "lang": "解谜"
+  },
+  {
+    "id": "p_college_bottominfoview_txt_BuildingLevelLabel",
+    "lang": "建筑等级："
+  },
+  {
+    "id": "p_college_bottominfoview_txt_DispatchLabel",
+    "lang": "已委托的同伴："
+  },
+  {
+    "id": "p_college_bottominfoview_txt_Refresh",
+    "lang": "刷新专长"
+  },
+  {
+    "id": "p_college_bottominfoview_txt_Recruit",
+    "lang": "结识同伴"
+  },
+  {
+    "id": "p_v4a0_splevelview_txt_desc",
+    "lang": "有所求的你来到了布翁尼水晶工房"
+  },
+  {
+    "id": "p_v4a0_splevelview_txt_tag",
+    "lang": "上次选择"
+  },
+  {
+    "id": "p_college_currencytipsview_round",
+    "lang": "预计本回合可生产"
+  },
+  {
+    "id": "p_v4a0_candymainview_txt_cn",
+    "lang": "抽奖"
+  },
+  {
+    "id": "p_v4a0_candymainview_txt_cn_1",
+    "lang": "连续抽取"
+  },
+  {
+    "id": "p_v4a0_candyoncepanelview_txt_name",
+    "lang": "最强音"
+  },
+  {
+    "id": "p_v4a0_candyoncepanelview_txt_reward5_1",
+    "lang": "音乐会"
+  },
+  {
+    "id": "p_v4a0_candyoncepanelview_txt_reward5_2",
+    "lang": "专属建筑"
+  },
+  {
+    "id": "p_v4a0_candyoncepanelview_txt_reward8_1",
+    "lang": "角色养成材料"
+  },
+  {
+    "id": "p_v4a0_candyoncepanelview_txt_reward8_2",
+    "lang": "共鸣晶匣"
+  },
+  {
+    "id": "p_v4a0_candyoncepanelview_title",
+    "lang": "<color=#FFFFFF><size=62>音乐会</size></color>衣着赠送"
+  },
+  {
+    "id": "p_v4a0_candyrewarditem_txt_use",
+    "lang": "立刻使用"
+  },
+  {
+    "id": "p_v4a0_hongnujianfightview_txt_name",
+    "lang": "怪物波次"
+  },
+  {
+    "id": "p_assistrecordview_detail",
+    "lang": "协助详情"
+  },
+  {
+    "id": "p_assistrecordview_totalcount",
+    "lang": "获赞总次数"
+  },
+  {
+    "id": "p_assistrecordview_reward",
+    "lang": "协助奖励"
+  },
+  {
+    "id": "p_assistrecordview_type",
+    "lang": "玩法"
+  },
+  {
+    "id": "p_assistrecordview_type_1",
+    "lang": "臆想潮"
+  },
+  {
+    "id": "p_assistrecordview_type_2",
+    "lang": "迷思海"
+  },
+  {
+    "id": "p_assistrecordview_type_3",
+    "lang": "鬃毛邮报"
+  },
+  {
+    "id": "p_assistrecordview_type_4",
+    "lang": "焦点闪回"
+  },
+  {
+    "id": "p_assistrecordview_count",
+    "lang": "协助次数"
+  },
+  {
+    "id": "p_assistrecordview_top3",
+    "lang": "被借次数最多的角色"
+  },
+  {
+    "id": "p_matchgameenterview_txt_name1",
+    "lang": "好价路线"
+  },
+  {
+    "id": "p_matchgameenterview_txt_name2",
+    "lang": "魔精服务区"
+  },
+  {
+    "id": "p_matchgameenterview_txt_allsocre",
+    "lang": "乱斗战绩"
+  },
+  {
+    "id": "p_v4a0_hongnujianfightview_txt_tips_1",
+    "lang": "能量不足"
+  },
+  {
+    "id": "p_v4a0_hongnujianfightview_txt_tips_2",
+    "lang": "蓄力发射"
+  },
+  {
+    "id": "p_v4a0_concert_giftview_txt_desc",
+    "lang": "登录即领<#ad94fc>37专属迷思之茧</color> 和 <#ad94fc>37专属心相</color>!"
+  },
+  {
+    "id": "p_v4a0_concert_giftview_txt_desc2",
+    "lang": "角色等级达到洞悉三30级可解锁角色狂想"
+  },
+  {
+    "id": "p_v4a0_sixstargift_fullview_txt_tag1",
+    "lang": "概率6"
+  },
+  {
+    "id": "p_v4a0_sixstargift_fullview_txt_tag2",
+    "lang": "必出6"
+  },
+  {
+    "id": "p_v4a0_sixstargift_fullview_txt_tag3",
+    "lang": "金纺轮×1"
+  },
+  {
+    "id": "p_v4a0_rolestorygameview_txt_result",
+    "lang": "结果"
+  },
+  {
+    "id": "p_matchgamemapview_txt_1",
+    "lang": "最高战绩:"
+  },
+  {
+    "id": "p_matchgamemapview_txt_2",
+    "lang": "乱斗奖励"
+  },
+  {
+    "id": "p_matchgamemapview_txt_3",
+    "lang": "进入商场"
+  },
+  {
+    "id": "p_autochessbookview_txt_tab3",
+    "lang": "奇遇"
+  },
+  {
+    "id": "p_autochessadventureview_tip",
+    "lang": "本次对战失败后，下一回合生效，根据失败次数生效相应的效果"
+  },
+  {
+    "id": "p_matchgamerewardview_txt_title",
+    "lang": "魔精服务区"
+  },
+  {
+    "id": "p_matchgamerewardview_txt_allscore",
+    "lang": "乱斗战绩"
+  },
+  {
+    "id": "p_matchgamechallengerewardview_txt_title",
+    "lang": "夜间狂潮"
+  },
+  {
+    "id": "p_matchgametalentview_reset",
+    "lang": "重置"
+  },
+  {
+    "id": "p_skinsuitdetailview_4_0_1_txt_tagname",
+    "lang": "希望"
+  },
+  {
+    "id": "p_versionsummonpanel_txt_tip",
+    "lang": "活动期间，登录即可\n领取十全调·【不渝者的领航】"
+  },
+  {
+    "id": "p_college_bottominfoview_txt_GoUpgrade",
+    "lang": "升级"
+  },
+  {
+    "id": "p_college_bottominfoview_txt_GoBuild",
+    "lang": "解锁"
+  },
+  {
+    "id": "p_v4a0_versionsummondeleikehalfview_txt_name",
+    "lang": "德雷克"
+  },
+  {
+    "id": "p_v4a0_deleikegameview_name",
+    "lang": "焚毁"
+  },
+  {
+    "id": "p_v4a0_deleikegameview_name_1",
+    "lang": "诘问"
+  },
+  {
+    "id": "p_v4a0_deleikegameview_txt_Confirm",
+    "lang": "确认移动"
+  },
+  {
+    "id": "p_v4a0_deleikegameview_txt_DragTip1",
+    "lang": "松手确认裁切(可拖动调整方向)"
+  },
+  {
+    "id": "p_v4a0_deleikegameview_txt_DragTip2",
+    "lang": "已裁切空间，可移动空间到合适位置"
+  },
+  {
+    "id": "p_v4a0_dungeonentrance_txt_name",
+    "lang": "诗的点滴"
+  },
+  {
+    "id": "p_v4a0_dungeonbookview_txt_empty",
+    "lang": "......日前还没有很好的想法，等再多经历一些再来试试"
+  },
+  {
+    "id": "character_type_unknownspecies",
+    "lang": "未知种"
+  },
+  {
+    "id": "character_type_mysteriouscreature",
+    "lang": "神秘生物"
+  },
+  {
+    "id": "p_v4a0_concertfliprewardview_txt_bigreward",
+    "lang": "大奖"
+  },
+  {
+    "id": "p_v4a0_versionsummonnuodikahalfview_txt_tip",
+    "lang": "本征集UP角色共享保底机制"
+  },
+  {
+    "id": "p_v4a0_versionsummonnuodikahalfview_txt_name",
+    "lang": "诺谛卡"
+  },
+  {
+    "id": "p_v4a0_sixstargift_fullview_txt_desc",
+    "lang": "3次十连模拟，选择<#ff943d>1次结果</color>\n每抽取必出<#ff943d>1个6星，概率出双6星</color>\n每次模拟，6星角色组合不重复"
+  },
+  {
+    "id": "p_mainsceneswitchnewview_txt",
+    "lang": "限时获取"
+  },
+  {
+    "id": "p_v4a0_casualskingift_fullview_txt_desc",
+    "lang": "登录即领 <size=38>往日写照</size>\n       可在主界面更换幕前角色形象。"
+  },
+  {
+    "id": "p_v4a0_concertenterview_txt_desc",
+    "lang": "遗落的音符从箱中涌现"
+  },
+  {
+    "id": "p_v4a0_concertenterview_txt_desc1",
+    "lang": "整饬和弦，厘清琶音"
+  },
+  {
+    "id": "p_v4a0_concertenterview_txt_desc2",
+    "lang": "命运开始上行"
+  },
+  {
+    "id": "p_v4a0_candyoncepanelview_txt_desc",
+    "lang": "盛会即将开始，丰厚的礼物就在帷幕之后\n—— 备好掌声，一同欢庆吧！"
+  },
+  {
+    "id": "p_matchgamechallengeresultview_title",
+    "lang": "夜间狂潮"
+  },
+  {
+    "id": "p_v4a0_candyoncepanelview_txt_reward4",
+    "lang": "纯雨滴×500"
+  },
+  {
+    "id": "p_v4a0_candyoncepanelview_txt_reward6",
+    "lang": "专属独一调5+5"
+  },
+  {
+    "id": "p_matchgamechallengeresultview_allreward",
+    "lang": "所有奖励已获得"
+  },
+  {
+    "id": "p_matchgamechallengeresultview_txt_score",
+    "lang": "本次战绩"
+  },
+  {
+    "id": "p_v4a0_candy_skinpanelview_txt_desc",
+    "lang": "庆典正式拉开帷幕，登录即可领取<#d9a06f>星锑音乐会专属衣着</color>以及<#d9a06f>音乐会专属建筑</color>"
+  },
+  {
+    "id": "p_v4a0_candy_skinpanelview_txt_name",
+    "lang": "最强音"
+  },
+  {
+    "id": "p_v4a0_candy_skinpanelview_txt_name2",
+    "lang": "星锑"
+  },
+  {
+    "id": "p_fightbreakthroughqteview_txt_title",
+    "lang": "总伤害"
+  },
+  {
+    "id": "p_fightbreakthroughtipsview_txt_title",
+    "lang": "洞知咒语"
+  },
+  {
+    "id": "p_fightbreakthroughtipsview_txt_title_1",
+    "lang": "洞知能力"
+  },
+  {
+    "id": "p_decoratebundletype2_txt_desc",
+    "lang": "包含道具"
+  },
+  {
+    "id": "p_decoratebundletype1_txt_desc",
+    "lang": "可选道具"
+  },
+  {
+    "id": "p_v4a0_37stonegift_panelview_txt_claim",
+    "lang": "领取"
+  },
+  {
+    "id": "p_v4a0_37stonegift_panelview_txt_use",
+    "lang": "使用"
+  },
+  {
+    "id": "p_v4a0_rolestorygameview_txt_review",
+    "lang": "点击进入关卡"
+  },
+  {
+    "id": "p_assistrolebadgeview_txt_Title",
+    "lang": "勋章列表"
+  },
+  {
+    "id": "p_autochessleaderselectview_title1",
+    "lang": "本次奇遇"
+  },
+  {
+    "id": "p_autochessleaderselectview_title2",
+    "lang": "选择领队"
+  },
+  {
+    "id": "p_autochessleaderselectview_txt_tips",
+    "lang": "点击领队进行选择"
+  },
+  {
+    "id": "p_autochessleaderselectview_txt_start",
+    "lang": "进入战斗"
+  },
+  {
+    "id": "p_autochessleaderselectview_losestreak_tip",
+    "lang": "[临时文本]连败奇遇生效提示"
+  },
+  {
+    "id": "p_autochessadventureview_txt_Title_1",
+    "lang": "新手奇遇"
+  },
+  {
+    "id": "p_autochessadventureview_Level",
+    "lang": "当前等级："
+  },
+  {
+    "id": "p_autochessadventureview_txt_effect",
+    "lang": "本回合生效"
+  },
+  {
+    "id": "p_autochessadventureview_txt_unEffect",
+    "lang": "本回合失效"
+  },
+  {
+    "id": "p_v4a0_candyoncepanelview_txt_reward7",
+    "lang": "五星角色自选"
+  },
+  {
+    "id": "p_matchgameherogroupview_txt_recommend",
+    "lang": "推荐灵感百货"
+  },
+  {
+    "id": "p_matchgameherogroupview_txt_teamhp",
+    "lang": "团队生命"
+  },
+  {
+    "id": "p_matchgameherogroupview_Text",
+    "lang": "好价路线"
+  },
+  {
+    "id": "p_matchgameresultview_txt_role",
+    "lang": "角色升级"
+  },
+  {
+    "id": "p_matchgameresultview_txt_talent",
+    "lang": "天赋强化"
+  },
+  {
+    "id": "p_matchgameresultview_txt_herogroup",
+    "lang": "调整队伍"
+  },
+  {
+    "id": "p_matchgameresultview_txt_round",
+    "lang": "通关回合"
+  },
+  {
+    "id": "p_matchgameresultview_txt_maxdamage",
+    "lang": "单回合最高伤害"
+  },
+  {
+    "id": "p_matchgameresultview_txt_maxchain",
+    "lang": "最高连击"
+  },
+  {
+    "id": "p_v4a0_hongnujianlevelview_txt_desc",
+    "lang": "长夜将尽伴随着轰鸣而显现的是猎手的长矛"
+  },
+  {
+    "id": "p_settingscurrencyview_txt_title",
+    "lang": "所持中の純雨の雫"
+  },
+  {
+    "id": "p_settingscurrencyview_txt_title_1",
+    "lang": "有料："
+  },
+  {
+    "id": "p_settingscurrencyview_txt_title_2",
+    "lang": "無料："
+  },
+  {
+    "id": "p_settingscurrencyview_txt_title_3",
+    "lang": "合計："
+  },
+  {
+    "id": "p_settingscurrencyview_txt_tips",
+    "lang": "※有料分の純雨の雫が優先的に消費されます。"
+  },
+  {
+    "id": "p_storeskingoodsview2_txt_total",
+    "lang": "合计"
+  },
+  {
+    "id": "p_storeskingoodsview2_txt_desc",
+    "lang": "抵扣详情"
+  },
+  {
+    "id": "p_settingsaccountview_name2",
+    "lang": "純雨の雫の数量詳細"
+  },
+  {
+    "id": "p_settingsaccountview_name2_enter",
+    "lang": "確認"
+  },
+  {
+    "id": "p_characterswitchview_txt_desc",
+    "lang": "当前未获得角色，无法获得信任度与记录幕前互动次数"
+  },
+  {
+    "id": "handbookskin_festival_Halloween",
+    "lang": "万圣节"
+  },
+  {
+    "id": "p_matchgamechallengemapview_txt_open",
+    "lang": "开放中"
+  },
+  {
+    "id": "p_matchgamechallengemapview_txt_enter",
+    "lang": "进入超市"
+  },
+  {
+    "id": "p_matchgamechallengemapview_txt_spreward",
+    "lang": "特殊奖励"
+  },
+  {
+    "id": "p_matchgamecharacterview_txt_develop",
+    "lang": "主顾甄选"
+  },
+  {
+    "id": "p_matchgamecharacterview_txt_talent",
+    "lang": "特价集合"
+  },
+  {
+    "id": "p_matchgamefightview_txt",
+    "lang": "本局分数"
+  },
+  {
+    "id": "p_v4a0_dungeonbookview_txt_book",
+    "lang": "《诗歌集名称》"
+  },
+  {
+    "id": "p_v4a0_dungeonbookview_txt_name",
+    "lang": "——十四行诗"
+  },
+  {
+    "id": "p_settingsdelunusedresview_txt",
+    "lang": "冗余资源删除"
+  },
+  {
+    "id": "p_v4a0_candymainview_#go_summontips",
+    "lang": "抽奖中，请稍后"
+  },
+  {
+    "id": "p_v4a0_candymainview_txt_title",
+    "lang": "已获得全部奖励"
+  },
+  {
+    "id": "p_v4a0_candymainview_txt_desc",
+    "lang": "音乐会的帷幕即将拉开，为庆祝音乐会到来，我们准备了丰厚的奖励，共同欢庆！"
+  },
+  {
+    "id": "p_college_rolerecruitview_txt_Title",
+    "lang": "结识成功"
+  },
+  {
+    "id": "p_college_rolegainview_txt_Title",
+    "lang": "获得角色"
+  },
+  {
+    "id": "p_college_currencytipsview_txt_Desc",
+    "lang": "预计本回合"
+  },
+  {
+    "id": "p_characterskingainview_cn",
+    "lang": "忆至幕前"
+  },
+  {
+    "id": "p_mainsceneskinmaterialtipview_txt_empty",
+    "lang": "暂无获取途径"
+  },
+  {
+    "id": "p_decoratestoreitem_txt_empty",
+    "lang": "敬请期待"
+  },
+  {
+    "id": "p_autochessmallview_txt_event",
+    "lang": "敌方奇遇"
+  },
+  {
+    "id": "p_v4a0_concert_cocoonofmyths_desc",
+    "lang": "适用范围"
   }
 ]

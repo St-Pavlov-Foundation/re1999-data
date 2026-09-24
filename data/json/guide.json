@@ -9997,5 +9997,148 @@
     "priority": 0,
     "parallel": 1,
     "restart": 0
+  },
+  {
+    "id": 40001,
+    "desc": "学院玩法开场指引",
+    "isOnline": 1,
+    "trigger": "OpenView#CollegeMainView",
+    "invalid": "",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 40002,
+    "desc": "学院资源与建筑解锁指引",
+    "isOnline": 1,
+    "trigger": "FinishGuide#40001",
+    "invalid": "",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 40003,
+    "desc": "学院建筑派遣指引",
+    "isOnline": 1,
+    "trigger": "OpenView#CollegeMainView",
+    "invalid": "",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 40004,
+    "desc": "学院任务指引",
+    "isOnline": 1,
+    "trigger": "FinishGuide#40003",
+    "invalid": "",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 40005,
+    "desc": "学院里程碑指引",
+    "isOnline": 1,
+    "trigger": "FinishGuide#40004",
+    "invalid": "",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 40006,
+    "desc": "学院宿舍和招募角色指引",
+    "isOnline": 1,
+    "trigger": "OpenView#CollegeMainView",
+    "invalid": "",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 40007,
+    "desc": "学院角色指引",
+    "isOnline": 1,
+    "trigger": "FinishGuide#40006",
+    "invalid": "",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 40008,
+    "desc": "学院地点指引",
+    "isOnline": 1,
+    "trigger": "OpenView#CollegeMainView",
+    "invalid": "",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 40009,
+    "desc": "学院教室和刷新词条指引",
+    "isOnline": 1,
+    "trigger": "OpenView#CollegeMainView",
+    "invalid": "",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 40010,
+    "desc": "4.0十四行诗-外围玩法元件",
+    "isOnline": 1,
+    "trigger": "ElementFinish#3130501",
+    "invalid": "",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 40011,
+    "desc": "4.0个人空间助战",
+    "isOnline": 1,
+    "trigger": "GuideEvent#PlayerViewAssist",
+    "invalid": "",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 40012,
+    "desc": "4.0焦点闪回助战",
+    "isOnline": 1,
+    "trigger": "OpenView#AbyssStageDetailsView",
+    "invalid": "",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
+  },
+  {
+    "id": 40013,
+    "desc": "4.0臆想潮助战",
+    "isOnline": 1,
+    "trigger": "OpenViewCondition#TowerComposeHeroGroupEditView_checkTowerComposeMaxPlane",
+    "invalid": "",
+    "interruptFinish": 1,
+    "priority": 0,
+    "parallel": 1,
+    "restart": 0
   }
 ]

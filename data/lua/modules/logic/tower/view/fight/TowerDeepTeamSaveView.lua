@@ -164,6 +164,7 @@ function TowerDeepTeamSaveView:createHeroItem(teamItem)
 				go = gohelper.clone(teamItem.goHeroItem, teamItem.goHeroContent, "heroItem" .. index)
 			}
 			heroItem.simageRole = gohelper.findChildSingleImage(heroItem.go, "simage_role")
+			heroItem.goTrialTag = gohelper.findChild(heroItem.go, "trialtag")
 			teamItem.heroItemList[index] = heroItem
 		end
 
@@ -179,7 +180,13 @@ function TowerDeepTeamSaveView:createHeroItem(teamItem)
 			local heroConfig = HeroConfig.instance:getHeroCO(heroData.heroId)
 
 			skinId = heroConfig.skinId
+
+			if heroData.skinId > 0 then
+				skinId = heroData.skinId
+			end
 		end
+
+		gohelper.setActive(heroItem.goTrialTag, heroData.heroId and heroData.heroId > 0 and heroData.skinId and heroData.skinId > 0)
 
 		local skinConfig = SkinConfig.instance:getSkinCo(skinId)
 

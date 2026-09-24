@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "attackerCareer": 4,
+    "defenderCareer": 3,
+    "multiplier": "1.5",
+    "desc": "攻击方兽克木"
+  },
+  {
+    "id": 2,
+    "attackerCareer": 3,
+    "defenderCareer": 2,
+    "multiplier": "1.5",
+    "desc": "攻击方木克星"
+  },
+  {
+    "id": 3,
+    "attackerCareer": 2,
+    "defenderCareer": 1,
+    "multiplier": "1.5",
+    "desc": "攻击方星克岩"
+  },
+  {
+    "id": 4,
+    "attackerCareer": 1,
+    "defenderCareer": 4,
+    "multiplier": "1.5",
+    "desc": "攻击方岩克兽"
+  },
+  {
+    "id": 5,
+    "attackerCareer": 5,
+    "defenderCareer": 6,
+    "multiplier": "1.1",
+    "desc": "攻击方灵对智相互克制"
+  },
+  {
+    "id": 6,
+    "attackerCareer": 6,
+    "defenderCareer": 5,
+    "multiplier": "1.1",
+    "desc": "攻击方智对灵相互克制"
+  },
+  {
+    "id": 7,
+    "attackerCareer": 4,
+    "defenderCareer": 3,
+    "multiplier": "0.5",
+    "desc": "攻击方兽被岩克制"
+  },
+  {
+    "id": 8,
+    "attackerCareer": 3,
+    "defenderCareer": 5,
+    "multiplier": "0.5",
+    "desc": "攻击方木被兽克制"
+  },
+  {
+    "id": 9,
+    "attackerCareer": 2,
+    "defenderCareer": 1,
+    "multiplier": "0.5",
+    "desc": "攻击方星被木克制"
+  },
+  {
+    "id": 10,
+    "attackerCareer": 1,
+    "defenderCareer": 4,
+    "multiplier": "0.5",
+    "desc": "攻击方岩被星克制"
+  }
+]

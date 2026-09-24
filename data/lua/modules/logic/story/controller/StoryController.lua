@@ -486,6 +486,7 @@ function StoryController:finished(isSkip)
 		self:statFinishStory()
 	end
 
+	StoryModel.instance:setStoryClickPrefabName()
 	StoryModel.instance:resetStepClickTime()
 
 	local skipStoryIds = {

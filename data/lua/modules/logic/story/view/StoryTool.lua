@@ -34,6 +34,23 @@ function StoryTool.getTxtAlignment(txt, type)
 	return align
 end
 
+function StoryTool.getFilterFullAlignTxt(txt)
+	local cleaned = string.gsub(txt, "</?align%s*=?%s*\"?[^\">]*\"?>", "")
+
+	return cleaned
+end
+
+function StoryTool.getTxtFullAlignment(txt, type)
+	local value = string.match(txt, "<align%s*=%s*\"?([^\">]+)\"?>")
+	local align = type == gohelper.Type_TextMesh and StoryEnum.TextAlignmentOptions[value] or StoryEnum.TextAnchor[value]
+
+	if align then
+		return type == gohelper.Type_TextMesh and TMPro.TextAlignmentOptions[align] or UnityEngine.TextAnchor[align]
+	end
+
+	return nil
+end
+
 function StoryTool.filterMarkTop(txt)
 	local result = ""
 	local tops = string.split(txt, "</marktop>")
@@ -197,7 +214,19 @@ function StoryTool.applyMaterialScheme(mat, schemeId)
 		return
 	end
 
-	for propName, propDef in pairs(scheme.props) do
+	StoryTool.applyMaterialBySchemeValues(mat, scheme.props)
+end
+
+function StoryTool.applyMaterialBySchemeValues(mat, values)
+	if not mat then
+		return
+	end
+
+	if not values then
+		return
+	end
+
+	for propName, propDef in pairs(values) do
 		local t = propDef.type
 		local v = propDef.value
 
@@ -207,6 +236,12 @@ function StoryTool.applyMaterialScheme(mat, schemeId)
 			mat:SetColor(propName, Color(v[1], v[2], v[3], v[4]))
 		elseif t == StoryEnum.MaterialPropType.Vector then
 			mat:SetVector(propName, Vector4.New(v[1], v[2], v[3], v[4]))
+		elseif t == StoryEnum.MaterialPropType.Keyword then
+			if v then
+				mat:EnableKeyword(propName)
+			else
+				mat:DisableKeyword(propName)
+			end
 		end
 	end
 end
@@ -248,6 +283,8 @@ function StoryTool.getMaterialSchemeInitValues(mat, schemeId)
 				v.z,
 				v.w
 			}
+		elseif t == StoryEnum.MaterialPropType.Keyword then
+			value = mat:IsKeywordEnabled(propName)
 		end
 
 		result[propName] = {

@@ -23,6 +23,33 @@ function StoryHeroItem:init(go)
 
 	StoryController.instance:registerCallback(StoryEvent.OnFollowPicture, self._playFollowPicture, self)
 	StoryController.instance:registerCallback(StoryEvent.OnFollowPictureEnd, self._endFollowPicture, self)
+
+	self._effectClearMethods = {
+		[StoryEnum.HeroEffect.SetFlash] = self._clearHeroFlash,
+		[StoryEnum.HeroEffect.SetDissolve] = self._clearHeroDissolve,
+		[StoryEnum.HeroEffect.DissolveAndSoft] = self._clearHeroDissolveAndSoft,
+		[StoryEnum.HeroEffect.WaterWave] = self._clearHeroWaterWave,
+		[StoryEnum.HeroEffect.Erase] = self._clearHeroErase,
+		[StoryEnum.HeroEffect.Glow] = self._clearHeroGlow,
+		[StoryEnum.HeroEffect.BlackFog] = self._clearHeroBlackFog,
+		[StoryEnum.HeroEffect.SetMaterial] = self._clearHeroMaterialScheme,
+		[StoryEnum.HeroEffect.DLKBloom] = self._clearHeroDLKBloom
+	}
+	self._effectHandlers = {
+		[StoryEnum.HeroEffect.Gray] = self.showGray,
+		[StoryEnum.HeroEffect.StyDissolve] = self.showStyDissolve,
+		[StoryEnum.HeroEffect.KeepAction] = self.showDefaultAction,
+		[StoryEnum.HeroEffect.SetFlash] = self._setHeroFlash,
+		[StoryEnum.HeroEffect.SetDissolve] = self._setHeroDissolve,
+		[StoryEnum.HeroEffect.WaterWave] = self._setHeroWaterWave,
+		[StoryEnum.HeroEffect.Erase] = self._setHeroErase,
+		[StoryEnum.HeroEffect.Glow] = self._setHeroGlow,
+		[StoryEnum.HeroEffect.BlackFog] = self._setHeroBlackFog,
+		[StoryEnum.HeroEffect.DissolveAndSoft] = self._setHeroDissolveAndSoft,
+		[StoryEnum.HeroEffect.SetAlpha] = self.showDefaultAction,
+		[StoryEnum.HeroEffect.DLKBloom] = self.showDLKBloom,
+		[StoryEnum.HeroEffect.SetMaterial] = self._setHeroMaterialScheme
+	}
 end
 
 function StoryHeroItem:_playFollowPicture(picGo, heroId)
@@ -62,6 +89,12 @@ function StoryHeroItem:hideHero()
 end
 
 function StoryHeroItem:resetHero(v, mat, hasBottomEffect, conAudioId)
+	local lastHeroCo = self._heroCo
+
+	self._heroCo = v
+
+	self:initEffsCo()
+
 	local replacePath = StoryModel.instance:getReplaceHeroPath(v.heroIndex)
 
 	if replacePath then
@@ -78,15 +111,14 @@ function StoryHeroItem:resetHero(v, mat, hasBottomEffect, conAudioId)
 	self._conAudioId = conAudioId
 
 	if self._heroGo.activeSelf then
-		local typeIndex = GameLanguageMgr.instance:getVoiceTypeStoryIndex()
-		local effCo = v.effs[typeIndex]
+		self._noChangeBody = self._heroSpineGo and self:hasHeroEffect(StoryEnum.HeroEffect.KeepAction)
 
-		self._noChangeBody = self._heroSpineGo and effCo and string.split(effCo, "#")[1] and string.split(effCo, "#")[1] == StoryEnum.HeroEffect.KeepAction
+		local typeIndex = GameLanguageMgr.instance:getVoiceTypeStoryIndex()
 
 		if v.anims[typeIndex] ~= "" or v.expressions[typeIndex] ~= "" or v.mouses[typeIndex] ~= "" then
 			local isAuto = string.find(v.mouses[typeIndex], "_auto")
 
-			if not isAuto and v.anims[typeIndex] == self._heroCo.anims[typeIndex] and v.expressions[typeIndex] == self._heroCo.expressions[typeIndex] and v.mouses[typeIndex] == self._heroCo.mouses[typeIndex] then
+			if not isAuto and v.anims[typeIndex] == lastHeroCo.anims[typeIndex] and v.expressions[typeIndex] == lastHeroCo.expressions[typeIndex] and v.mouses[typeIndex] == lastHeroCo.mouses[typeIndex] then
 				if not self._isLightSpine then
 					self:_setHeroMat(mat)
 				end
@@ -101,8 +133,6 @@ function StoryHeroItem:resetHero(v, mat, hasBottomEffect, conAudioId)
 	ZProj.TweenHelper.KillByObj(self._heroGo.transform)
 
 	if not self._isLightSpine then
-		self._heroCo = v
-
 		self:_setHeroMat(mat)
 
 		if self._heroGo.activeSelf then
@@ -143,13 +173,12 @@ function StoryHeroItem:_fadeIn()
 		self._fadeInTweenId = nil
 	end
 
-	local effCo = self._heroCo.effs[GameLanguageMgr.instance:getVoiceTypeStoryIndex()]
 	local targetAlpha = 1
 
-	if effCo and not LuaUtil.isEmptyStr(effCo) then
-		local effs = string.split(effCo, "#")
+	if self:hasHeroEffect(StoryEnum.HeroEffect.SetAlpha) then
+		local effs = self._effectCoDict[StoryEnum.HeroEffect.SetAlpha]
 
-		if effs[1] == StoryEnum.HeroEffect.SetAlpha then
+		if effs then
 			targetAlpha = tonumber(effs[2])
 		end
 	end
@@ -163,7 +192,16 @@ function StoryHeroItem:_fadeIn()
 	local startAlpha = self._targetAlpha or 0
 
 	self._targetAlpha = targetAlpha
-	self._fadeInTweenId = ZProj.TweenHelper.DOTweenFloat(startAlpha, self._targetAlpha, 0.5, self._fadeUpdate, self._fadeInFinished, self, nil, EaseType.Linear)
+
+	local duration = 0.5
+	local easeType = EaseType.Linear
+
+	if self:hasHeroEffect(StoryEnum.HeroEffect.DLKBloom) then
+		duration = 1
+		easeType = EaseType.InBounce
+	end
+
+	self._fadeInTweenId = ZProj.TweenHelper.DOTweenFloat(startAlpha, self._targetAlpha, duration, self._fadeUpdate, self._fadeInFinished, self, nil, easeType)
 end
 
 function StoryHeroItem:_fadeUpdate(value)
@@ -223,12 +261,10 @@ function StoryHeroItem:_fadeInFinished()
 end
 
 function StoryHeroItem:_isSpMat()
-	local effCo = self._heroCo.effs[GameLanguageMgr.instance:getVoiceTypeStoryIndex()]
+	if self:hasHeroEffect(StoryEnum.HeroEffect.Erase) then
+		local effs = self._effectCoDict[StoryEnum.HeroEffect.Erase]
 
-	if not LuaUtil.isEmptyStr(effCo) then
-		local effs = string.split(effCo, "#")
-
-		if #effs >= 2 and effs[1] == StoryEnum.HeroEffect.Erase and tonumber(effs[2]) == 0 then
+		if tonumber(effs[2]) == 0 then
 			return true
 		end
 	end
@@ -361,8 +397,17 @@ function StoryHeroItem:_fadeOut()
 	end
 
 	local startAlpha = self._targetAlpha or 1
+	local easeType = EaseType.Linear
 
-	self._fadeOutTweenId = ZProj.TweenHelper.DOTweenFloat(startAlpha, 0, fadeOutDuration, self._fadeUpdate, self._fadeOutFinished, self, nil, EaseType.Linear)
+	if self:hasHeroEffect(StoryEnum.HeroEffect.DLKBloom) then
+		fadeOutDuration = 0.7
+	end
+
+	self._fadeOutTweenId = ZProj.TweenHelper.DOTweenFloat(startAlpha, 0, fadeOutDuration, self._fadeUpdate, self._fadeOutFinished, self, nil, easeType)
+
+	if self:hasHeroEffect(StoryEnum.HeroEffect.DLKBloom) and self._heroDlkBloomCls then
+		self._heroDlkBloomCls:onFadeOut()
+	end
 end
 
 function StoryHeroItem:_fadeOutFinished()
@@ -389,6 +434,9 @@ function StoryHeroItem:buildHero(v, mat, hasBottomEffect, callback, callbackObj,
 	self._noChangeBody = false
 	self._conAudioId = conAudioId
 	self._heroCo = v
+
+	self:initEffsCo()
+
 	self._heroGo = gohelper.create2d(self.viewGO, "rolespine")
 
 	local canvas = gohelper.onceAddComponent(self._heroGo, typeof(UnityEngine.Canvas))
@@ -623,6 +671,7 @@ function StoryHeroItem:_waitHeroSpineLoaded()
 	co.storyAudioId = self._conAudioId
 	co.storyHeroIndex = self._heroCo.heroIndex
 	co.noChangeBody = self._noChangeBody
+	co.initCut = self:hasHeroEffect("flag_initcut")
 
 	local spineVoice = self._heroSpine:getSpineVoice()
 
@@ -630,6 +679,53 @@ function StoryHeroItem:_waitHeroSpineLoaded()
 	spineVoice:setInStory()
 	self._heroSpine:playVoice(co)
 	self:_checkAndPlayHeroEffect()
+	TaskDispatcher.cancelTask(self._delayHide, self)
+
+	if co.initCut then
+		if self._fadeInTweenId then
+			self:_fadeUpdate(0)
+		end
+
+		self._frameIndex = 0
+
+		TaskDispatcher.runRepeat(self._delayHide, self, 0)
+	end
+end
+
+function StoryHeroItem:_delayHide()
+	self._frameIndex = self._frameIndex + 1
+
+	if self._frameIndex >= 6 then
+		TaskDispatcher.cancelTask(self._delayHide, self)
+	end
+
+	if self._fadeInTweenId then
+		self:_fadeUpdate(0)
+	end
+end
+
+function StoryHeroItem:initEffsCo()
+	local effCo = self._heroCo.effs[GameLanguageMgr.instance:getVoiceTypeStoryIndex()]
+
+	self._effCo = effCo
+	self._effectCos = GameUtil.splitString2(effCo, false, "|", "#")
+	self._effectCoDict = {}
+
+	if self._effectCos then
+		for _, effs in ipairs(self._effectCos) do
+			self._effectCoDict[effs[1]] = effs
+		end
+	end
+end
+
+function StoryHeroItem:hasHeroEffect(effectName)
+	return self._effectCoDict[effectName] ~= nil
+end
+
+function StoryHeroItem:clearAllHeroEffects()
+	for _, methodFunc in pairs(self._effectClearMethods) do
+		methodFunc(self)
+	end
 end
 
 function StoryHeroItem:_checkAndPlayHeroEffect()
@@ -639,138 +735,177 @@ function StoryHeroItem:_checkAndPlayHeroEffect()
 		self._grayTweenId = nil
 	end
 
-	local effCo = self._heroCo.effs[GameLanguageMgr.instance:getVoiceTypeStoryIndex()]
+	local effCo = self._effCo
 
-	if not effCo or effCo == "" then
-		self:_clearHeroFlash()
-		self:_clearHeroDissolve()
-		self:_clearHeroDissolveAndSoft()
-		self:_clearHeroWaterWave()
-		self:_clearHeroErase()
-		self:_clearHeroGlow()
-		self:_clearHeroBlackFog()
+	if string.nilorempty(effCo) then
+		self:clearAllHeroEffects()
 
 		return
 	end
 
-	local effs = string.split(effCo, "#")
+	local effectCos = self._effectCos
 
-	if not effs[1] or effs[1] ~= StoryEnum.HeroEffect.SetFlash then
-		self:_clearHeroFlash()
+	if not effectCos or #effectCos < 1 then
+		return
 	end
 
-	if not effs[1] or effs[1] ~= StoryEnum.HeroEffect.SetDissolve then
-		self:_clearHeroDissolve()
-	end
+	local activeEffects = {}
 
-	if not effs[1] or effs[1] ~= StoryEnum.HeroEffect.WaterWave then
-		self:_clearHeroWaterWave()
-	end
-
-	if not effs[1] or effs[1] ~= StoryEnum.HeroEffect.Erase then
-		self:_clearHeroErase()
-	end
-
-	if not effs[1] or effs[1] ~= StoryEnum.HeroEffect.Glow then
-		self:_clearHeroGlow()
-	end
-
-	if not effs[1] or effs[1] ~= StoryEnum.HeroEffect.BlackFog then
-		self:_clearHeroBlackFog()
-	end
-
-	if effs[1] ~= StoryEnum.HeroEffect.DissolveAndSoft then
-		self:_clearHeroDissolveAndSoft()
-	end
-
-	if effs[1] == StoryEnum.HeroEffect.Gray then
-		if tonumber(effs[2]) and tonumber(effs[2]) > 0.1 then
-			self._grayTweenId = ZProj.TweenHelper.DOTweenFloat(0, 1, tonumber(effs[2]), self._grayUpdate, self._grayFinished, self, nil, EaseType.Linear)
-		else
-			self:_grayUpdate(1)
+	for _, group in ipairs(effectCos) do
+		if group[1] then
+			activeEffects[group[1]] = true
 		end
-	elseif effs[1] == StoryEnum.HeroEffect.StyDissolve then
-		self._heroLoader = MultiAbLoader.New()
+	end
 
-		local styMatPath = "ui/materials/dynamic/spine_ui_stydissolve.mat"
-		local styPrefabPath = "ui/viewres/story/v1a9_role_stydissolve.prefab"
-
-		self._heroLoader:addPath(styMatPath)
-		self._heroLoader:addPath(styPrefabPath)
-		self._heroLoader:startLoad(function()
-			self._styDissolveMat = self._heroLoader:getAssetItem(styMatPath):GetResource(styMatPath)
-			self._styDissolvePrefab = self._heroLoader:getAssetItem(styPrefabPath):GetResource(styPrefabPath)
-
-			if tonumber(effs[2]) and tonumber(effs[2]) > 0.1 then
-				TaskDispatcher.runDelay(self._setStyDissolve, self, tonumber(effs[2]))
-			else
-				self:_setStyDissolve()
-			end
-		end)
-	elseif effs[1] == StoryEnum.HeroEffect.KeepAction then
-		-- block empty
-	elseif effs[1] == StoryEnum.HeroEffect.SetFlash then
-		self:_setHeroFlash(effs[2])
-	elseif effs[1] == StoryEnum.HeroEffect.SetDissolve then
-		self:_setHeroDissolve(effs[2])
-	elseif effs[1] == StoryEnum.HeroEffect.WaterWave then
-		self:_setHeroWaterWave()
-	elseif effs[1] == StoryEnum.HeroEffect.Erase then
-		self:_setHeroErase(tonumber(effs[2]))
-	elseif effs[1] == StoryEnum.HeroEffect.Glow then
-		self:_setHeroGlow()
-	elseif effs[1] == StoryEnum.HeroEffect.BlackFog then
-		self:_setHeroBlackFog()
-	elseif effs[1] == StoryEnum.HeroEffect.DissolveAndSoft then
-		self:_setHeroDissolveAndSoft(effs[2])
-	elseif effs[1] == StoryEnum.HeroEffect.SetAlpha then
-		-- block empty
-	else
-		if not self._heroSpineGo then
-			return
+	for effectName, methodFunc in pairs(self._effectClearMethods) do
+		if not activeEffects[effectName] then
+			methodFunc(self)
 		end
+	end
 
-		local effectCos = GameUtil.splitString2(effCo, false, "|", "#")
+	local customEffectList = {}
 
-		if self._heroLoader then
-			self._heroLoader:dispose()
+	for _, effs in ipairs(effectCos) do
+		if self:_applySingleEffect(effs) then
+			table.insert(customEffectList, effs)
 		end
+	end
 
-		if not effectCos or #effectCos < 1 then
-			return
-		end
-
-		self._heroLoader = MultiAbLoader.New()
-
-		for _, v in ipairs(effectCos) do
-			if not v or #v < 2 or string.find(v[2], "roomcritteremoji") then
-				return
-			end
-
-			self._heroLoader:addPath(string.format("effects/prefabs/story/%s.prefab", v[2]))
-		end
-
-		self._heroLoader:startLoad(function()
-			for _, v in ipairs(effectCos) do
-				local path = string.format("effects/prefabs/story/%s.prefab", v[2])
-				local prefab = self._heroLoader:getAssetItem(path):GetResource(path)
-				local go = gohelper.findChild(self._heroSpineGo, string.format("root/%s", v[1]))
-				local effGo = gohelper.clone(prefab, go)
-				local scale = transformhelper.getLocalScale(effGo.transform)
-
-				transformhelper.setLocalPos(effGo.transform, tonumber(v[3]), tonumber(v[4]), 0)
-				transformhelper.setLocalScale(effGo.transform, scale * tonumber(v[5]), scale * tonumber(v[5]), 1)
-			end
-		end)
+	if customEffectList then
+		self:_playGenericHeroEffect(customEffectList)
 	end
 end
 
-function StoryHeroItem:_setHeroFlash(prefname)
+function StoryHeroItem:_applySingleEffect(effs)
+	local handler = self._effectHandlers[effs[1]]
+
+	if handler then
+		handler(self, effs)
+	else
+		return true
+	end
+end
+
+function StoryHeroItem:_playGenericHeroEffect(effectCos)
+	if not self._heroSpineGo then
+		return
+	end
+
+	if self._heroLoader then
+		self._heroLoader:dispose()
+	end
+
+	if not effectCos or #effectCos < 1 then
+		return
+	end
+
+	self._heroLoader = MultiAbLoader.New()
+
+	for _, v in ipairs(effectCos) do
+		if not v or #v < 2 or string.find(v[2], "roomcritteremoji") then
+			return
+		end
+
+		self._heroLoader:addPath(string.format("effects/prefabs/story/%s.prefab", v[2]))
+	end
+
+	self._heroLoader:startLoad(function()
+		for _, v in ipairs(effectCos) do
+			local path = string.format("effects/prefabs/story/%s.prefab", v[2])
+			local prefab = self._heroLoader:getAssetItem(path):GetResource(path)
+			local go = gohelper.findChild(self._heroSpineGo, string.format("root/%s", v[1]))
+			local effGo = gohelper.clone(prefab, go)
+			local scale = transformhelper.getLocalScale(effGo.transform)
+
+			transformhelper.setLocalPos(effGo.transform, tonumber(v[3]), tonumber(v[4]), 0)
+			transformhelper.setLocalScale(effGo.transform, scale * tonumber(v[5]), scale * tonumber(v[5]), 1)
+		end
+	end)
+end
+
+function StoryHeroItem:showDefaultAction()
+	return
+end
+
+function StoryHeroItem:showGray(params)
+	local grayTime = tonumber(params[2])
+
+	if grayTime and grayTime > 0.1 then
+		self._grayTweenId = ZProj.TweenHelper.DOTweenFloat(0, 1, grayTime, self._grayUpdate, self._grayFinished, self, nil, EaseType.Linear)
+	else
+		self:_grayUpdate(1)
+	end
+end
+
+function StoryHeroItem:showStyDissolve(params)
+	self._heroLoader = MultiAbLoader.New()
+
+	local styMatPath = "ui/materials/dynamic/spine_ui_stydissolve.mat"
+	local styPrefabPath = "ui/viewres/story/v1a9_role_stydissolve.prefab"
+
+	self._heroLoader:addPath(styMatPath)
+	self._heroLoader:addPath(styPrefabPath)
+	self._heroLoader:startLoad(function()
+		self._styDissolveMat = self._heroLoader:getAssetItem(styMatPath):GetResource(styMatPath)
+		self._styDissolvePrefab = self._heroLoader:getAssetItem(styPrefabPath):GetResource(styPrefabPath)
+
+		local dissolveTime = tonumber(params[2])
+
+		if dissolveTime and dissolveTime > 0.1 then
+			TaskDispatcher.runDelay(self._setStyDissolve, self, dissolveTime)
+		else
+			self:_setStyDissolve()
+		end
+	end)
+end
+
+function StoryHeroItem:_clearHeroMaterialScheme()
+	if self._heroMaterialInitValues and self._heroSkeletonGraphic then
+		local mat = self._heroSkeletonGraphic.material
+
+		StoryTool.applyMaterialBySchemeValues(mat, self._heroMaterialInitValues)
+	end
+end
+
+function StoryHeroItem:_setHeroMaterialScheme(param)
+	if self._heroSkeletonGraphic then
+		local schemeId = tonumber(param[2])
+		local mat = self._heroSkeletonGraphic.material
+
+		self._heroMaterialInitValues = StoryTool.getMaterialSchemeInitValues(mat, schemeId)
+
+		StoryTool.applyMaterialScheme(mat, schemeId)
+	end
+end
+
+function StoryHeroItem:showDLKBloom(param)
+	if self._isLive2D and self._heroSpine then
+		if not self._heroDlkBloomCls then
+			self._heroDlkBloomCls = StoryHeroEffsDlkBloom.New()
+		end
+
+		self._heroDlkBloomCls:init(self._heroSpine)
+
+		local bloom = tonumber(param[2])
+
+		self._heroDlkBloomCls:showDLKBloom(bloom)
+	end
+end
+
+function StoryHeroItem:_clearHeroDLKBloom()
+	if self._heroDlkBloomCls then
+		self._heroDlkBloomCls:destroy()
+
+		self._heroDlkBloomCls = nil
+	end
+end
+
+function StoryHeroItem:_setHeroFlash(param)
 	if not self._heroFlashCls then
 		self._heroFlashCls = StoryHeroEffsFlash.New()
 	end
 
-	self._heroFlashCls:init(self._heroSpineGo, prefname)
+	self._heroFlashCls:init(self._heroSpineGo, param[2])
 	self._heroFlashCls:start()
 end
 
@@ -782,13 +917,13 @@ function StoryHeroItem:_clearHeroFlash()
 	end
 end
 
-function StoryHeroItem:_setHeroDissolve(inTime)
+function StoryHeroItem:_setHeroDissolve(param)
 	if not self._heroDissolveCls then
 		self._heroDissolveCls = StoryHeroEffsDissolve.New()
 	end
 
 	self._heroDissolveCls:init(self._heroSpineGo)
-	self._heroDissolveCls:start(inTime)
+	self._heroDissolveCls:start(param[2])
 end
 
 function StoryHeroItem:_clearHeroDissolve()
@@ -799,13 +934,13 @@ function StoryHeroItem:_clearHeroDissolve()
 	end
 end
 
-function StoryHeroItem:_setHeroDissolveAndSoft(inTime)
+function StoryHeroItem:_setHeroDissolveAndSoft(param)
 	if not self._heroDissolveAndSoftCls then
 		self._heroDissolveAndSoftCls = StoryHeroEffsDissolveAndSoft.New()
 	end
 
 	self._heroDissolveAndSoftCls:init(self._heroSpineGo)
-	self._heroDissolveAndSoftCls:start(inTime)
+	self._heroDissolveAndSoftCls:start(param[2])
 end
 
 function StoryHeroItem:_clearHeroDissolveAndSoft()
@@ -833,7 +968,9 @@ function StoryHeroItem:_clearHeroWaterWave()
 	end
 end
 
-function StoryHeroItem:_setHeroErase(eraseparam)
+function StoryHeroItem:_setHeroErase(param)
+	local eraseparam = tonumber(param[2])
+
 	if not self._heroEraseCls then
 		if eraseparam == 1 then
 			return
@@ -1015,15 +1152,10 @@ function StoryHeroItem:onDestroy()
 	StoryController.instance:unregisterCallback(StoryEvent.OnFollowPicture, self._playFollowPicture, self)
 	StoryController.instance:unregisterCallback(StoryEvent.OnFollowPictureEnd, self._endFollowPicture, self)
 	TaskDispatcher.cancelTask(self._followPicture, self)
-	self:_clearHeroFlash()
-	self:_clearHeroDissolve()
-	self:_clearHeroDissolveAndSoft()
-	self:_clearHeroWaterWave()
-	self:_clearHeroErase()
-	self:_clearHeroGlow()
-	self:_clearHeroBlackFog()
+	self:clearAllHeroEffects()
 	self:revertScreenSplitStencil()
 	TaskDispatcher.cancelTask(self._onDelay, self)
+	TaskDispatcher.cancelTask(self._delayHide, self)
 	self:_grayUpdate(0)
 
 	if self._fadeInTweenId then

@@ -2823,5 +2823,55 @@
     "id": 3390010,
     "eventName": "play_activitymusic_sailing_2_4",
     "bankName": "activity2_4_music"
+  },
+  {
+    "id": 3400001,
+    "eventName": "play_ui_checkpoint_noise_caves",
+    "bankName": "activity_yingmen_4_0_combataudio_noise"
+  },
+  {
+    "id": 3400002,
+    "eventName": "play_ui_checkpoint_noise_hall",
+    "bankName": "activity_yingmen_4_0_combataudio_noise"
+  },
+  {
+    "id": 3400003,
+    "eventName": "play_ui_checkpoint_noise_hall",
+    "bankName": "activity_yingmen_4_0_combataudio_noise"
+  },
+  {
+    "id": 3400004,
+    "eventName": "play_ui_checkpoint_noise_cliff",
+    "bankName": "activity_yingmen_4_0_combataudio_noise"
+  },
+  {
+    "id": 3400005,
+    "eventName": "play_ui_checkpoint_noise_gateway",
+    "bankName": "activity_yingmen_4_0_combataudio_noise"
+  },
+  {
+    "id": 3400006,
+    "eventName": "play_ui_checkpoint_noise_midair_01",
+    "bankName": "activity_yingmen_4_0_combataudio_noise"
+  },
+  {
+    "id": 3400007,
+    "eventName": "play_ui_checkpoint_noise_ruins_square",
+    "bankName": "activity_yingmen_4_0_combataudio_noise"
+  },
+  {
+    "id": 3400008,
+    "eventName": "play_ui_checkpoint_noise_midair_02",
+    "bankName": "activity_yingmen_4_0_combataudio_noise"
+  },
+  {
+    "id": 3400009,
+    "eventName": "play_battle_yingmen_4_0_normalfight",
+    "bankName": "activity_yingmen_4_0_combataudio"
+  },
+  {
+    "id": 3400010,
+    "eventName": "play_battle_yingmen_4_0_bossfight",
+    "bankName": "activity_yingmen_4_0_combataudio"
   }
 ]

@@ -4,6 +4,13 @@ module("modules.logic.abyss.view.AbyssHeroGroupHeroItem", package.seeall)
 
 local AbyssHeroGroupHeroItem = class("AbyssHeroGroupHeroItem", HeroGroupHeroItem)
 
+function AbyssHeroGroupHeroItem:init(go)
+	AbyssHeroGroupHeroItem.super.init(self, go)
+
+	self.goAssistLock = gohelper.findChild(go, "heroitemani/hero/#assist_lock")
+	self.simageAssistLock = gohelper.findChildSingleImage(go, "heroitemani/hero/#assist_lock/character")
+end
+
 function AbyssHeroGroupHeroItem:checkAbyss()
 	if HeroGroupModel.instance.heroGroupType ~= ModuleEnum.HeroGroupType.General then
 		return
@@ -22,6 +29,41 @@ function AbyssHeroGroupHeroItem:checkAbyss()
 			self._commonHeroCard:setGrayScale(false)
 		end
 	end
+end
+
+function AbyssHeroGroupHeroItem:onUpdateMO(mo)
+	AbyssHeroGroupHeroItem.super.onUpdateMO(self, mo)
+	self:checkAssist()
+end
+
+function AbyssHeroGroupHeroItem:checkAssist()
+	local curStageMo = AbyssModel.instance:getCurStageMo()
+	local haveChallenge = curStageMo:isChallenged()
+
+	if not haveChallenge then
+		gohelper.setActive(self.goAssistLock, false)
+
+		return
+	end
+
+	local heroIds = curStageMo.heroList
+	local heroId = heroIds[self._index]
+	local isAssist = curStageMo:isHeroAssist(heroId)
+
+	gohelper.setActive(self._trialTagGO, isAssist)
+	gohelper.setActive(self.goAssistLock, isAssist)
+
+	if not isAssist then
+		return
+	end
+
+	local skinId = curStageMo.skinDic[heroId]
+	local skinConfig = FightConfig.instance:getSkinCO(skinId)
+
+	gohelper.setActive(self._noneGO, not isAssist)
+	gohelper.setActive(self._heroGO, isAssist)
+	self.simageAssistLock:LoadImage(ResUrl.getHeadIconMiddle(skinConfig.retangleIcon))
+	gohelper.setActive(self._lvnum, not isAssist)
 end
 
 function AbyssHeroGroupHeroItem:checkUsed()

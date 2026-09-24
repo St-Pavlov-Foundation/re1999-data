@@ -12,6 +12,7 @@ function TowerSubEpisodeMo:updateInfo(info)
 	self.heroIds = {}
 	self.equipUids = {}
 	self.trialHeroIds = {}
+	self.skinIds = {}
 
 	if self.heros then
 		for i = 1, #self.heros do
@@ -19,6 +20,7 @@ function TowerSubEpisodeMo:updateInfo(info)
 
 			self.heroIds[i] = hero and hero.heroId or 0
 			self.trialHeroIds[i] = hero and hero.trialId or 0
+			self.skinIds[i] = hero and hero.skinId or 0
 
 			if hero and hero.equipUid and #hero.equipUid > 0 then
 				self.equipUids[i] = {}
@@ -53,6 +55,16 @@ function TowerSubEpisodeMo:getTrialHeros(dict)
 			local trialHeroId = self.trialHeroIds[i]
 
 			dict[trialHeroId] = 1
+		end
+	end
+end
+
+function TowerSubEpisodeMo:getSkinIds(dict)
+	if self.status == 1 and self.skinIds then
+		for i = 1, #self.skinIds do
+			local skinId = self.skinIds[i]
+
+			dict[skinId] = 1
 		end
 	end
 end

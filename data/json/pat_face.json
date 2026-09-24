@@ -211,7 +211,7 @@
   },
   {
     "id": 20203,
-    "patFaceActivityId": 13204,
+    "patFaceActivityId": 0,
     "patFaceViewName": "BPSPFaceView",
     "patFaceStoryId": 0,
     "patFaceOrder": 85000
@@ -575,7 +575,7 @@
   },
   {
     "id": 30200,
-    "patFaceActivityId": 13734,
+    "patFaceActivityId": 14031,
     "patFaceViewName": "versionsummonpanel",
     "patFaceStoryId": 0,
     "patFaceOrder": 30200
@@ -656,5 +656,19 @@
     "patFaceViewName": "V3a9_BDuckLinkagePatFaceView",
     "patFaceStoryId": 0,
     "patFaceOrder": 50000
+  },
+  {
+    "id": 40001,
+    "patFaceActivityId": 0,
+    "patFaceViewName": "",
+    "patFaceStoryId": 0,
+    "patFaceOrder": 30300
+  },
+  {
+    "id": 40003,
+    "patFaceActivityId": 14030,
+    "patFaceViewName": "VersionActivity4_0StoneGiftPanelView",
+    "patFaceStoryId": 0,
+    "patFaceOrder": 0
   }
 ]

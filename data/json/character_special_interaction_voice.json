@@ -214,5 +214,32 @@
     "timeoutVoice": 1315644,
     "protectionTime": 4,
     "statusParams": ""
+  },
+  {
+    "id": 1315536,
+    "time": 5.0,
+    "waitVoice": 1315537,
+    "waitVoiceParams": "",
+    "timeoutVoice": 1315538,
+    "protectionTime": 3,
+    "statusParams": ""
+  },
+  {
+    "id": 1315575,
+    "time": 5.0,
+    "waitVoice": 1315576,
+    "waitVoiceParams": "",
+    "timeoutVoice": 1315577,
+    "protectionTime": 3,
+    "statusParams": ""
+  },
+  {
+    "id": 1313485,
+    "time": 3.0,
+    "waitVoice": 1313486,
+    "waitVoiceParams": "",
+    "timeoutVoice": 1313487,
+    "protectionTime": 3,
+    "statusParams": ""
   }
 ]

@@ -30,16 +30,24 @@ function AutoChessGameModel:initTileNodes(sceneType)
 
 			self.tileNodes[i][j] = Vector2(x, startPos.y)
 		end
+
+		if sceneType == AutoChessEnum.ViewType.Player then
+			if not self.tileNodes[4] then
+				self.tileNodes[4] = {}
+			end
+
+			local x = startPos.x - (tileSize.x + offsetX)
+
+			self.tileNodes[4][i] = Vector2(x, startPos.y)
+		end
 	end
 end
 
 function AutoChessGameModel:getNearestTileXY(posX, posY)
 	for row, posTbl in ipairs(self.tileNodes) do
-		local tileSize
-
-		tileSize = AutoChessEnum.TileSize[self.viewType][row]
-
 		for column, pos in ipairs(posTbl) do
+			local index = row ~= 4 and row or column
+			local tileSize = AutoChessEnum.TileSize[self.viewType][index]
 			local xDis = math.abs(posX - pos.x)
 			local yDis = math.abs(posY - pos.y)
 
@@ -67,22 +75,37 @@ function AutoChessGameModel:getChessLocation(x, y, isBoss)
 	end
 end
 
-function AutoChessGameModel:getNearestLeader(pos)
+function AutoChessGameModel:getNearestMaster(pos)
+	local location1 = self:getLeaderLocation(AutoChessEnum.TeamType.Player)
+	local location2 = self:getLeaderLocation(AutoChessEnum.TeamType.Enemy)
+
 	if self.viewType == AutoChessEnum.ViewType.Player then
-		local location = self:getLeaderLocation(AutoChessEnum.TeamType.Player)
-		local xDis = math.abs(pos.x - location.x)
-		local yDis = math.abs(pos.y - location.y)
+		local xDis = math.abs(pos.x - location1.x)
+		local yDis = math.abs(pos.y - location1.y)
 
 		if xDis < 55 and yDis < 145 then
-			return AutoChessModel.instance:getChessMo().svrFight.mySideMaster
+			return AutoChessModel.instance:getSceneMo().fight.mySideMaster
 		end
 	elseif self.viewType == AutoChessEnum.ViewType.Enemy then
-		local location = self:getLeaderLocation(AutoChessEnum.TeamType.Enemy)
-		local xDis = math.abs(pos.x - location.x)
-		local yDis = math.abs(pos.y - location.y)
+		local xDis = math.abs(pos.x - location2.x)
+		local yDis = math.abs(pos.y - location2.y)
 
 		if xDis < 55 and yDis < 145 then
-			return AutoChessModel.instance:getChessMo().svrFight.enemyMaster
+			return AutoChessModel.instance:getSceneMo().fight.enemyMaster
+		end
+	elseif self.viewType == AutoChessEnum.ViewType.All then
+		local xDis = math.abs(pos.x - location1.x)
+		local yDis = math.abs(pos.y - location1.y)
+
+		if xDis < 65 and yDis < 135 then
+			return AutoChessModel.instance:getSceneMo().lastFight.mySideMaster
+		end
+
+		xDis = math.abs(pos.x - location2.x)
+		yDis = math.abs(pos.y - location2.y)
+
+		if xDis < 65 and yDis < 135 then
+			return AutoChessModel.instance:getSceneMo().lastFight.enemyMaster
 		end
 	end
 end

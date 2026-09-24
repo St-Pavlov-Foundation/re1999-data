@@ -13,6 +13,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -39,7 +40,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3004,
@@ -55,6 +58,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -81,7 +85,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3005,
@@ -97,6 +103,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -123,7 +130,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3006,
@@ -139,6 +148,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -165,7 +175,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3007,
@@ -181,6 +193,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -207,7 +220,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3009,
@@ -223,6 +238,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -249,7 +265,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3010,
@@ -265,6 +283,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -291,7 +310,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3011,
@@ -307,6 +328,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -333,7 +355,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3012,
@@ -349,6 +373,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -375,7 +400,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3013,
@@ -391,6 +418,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -417,7 +445,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3014,
@@ -433,6 +463,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -459,7 +490,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3015,
@@ -475,6 +508,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -501,7 +535,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3016,
@@ -517,6 +553,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -543,7 +580,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3017,
@@ -559,6 +598,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -585,7 +625,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3018,
@@ -601,6 +643,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -627,7 +670,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3020,
@@ -643,6 +688,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -669,7 +715,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3022,
@@ -685,6 +733,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -711,7 +760,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3023,
@@ -727,6 +778,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -753,7 +805,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3024,
@@ -769,6 +823,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -795,7 +850,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3025,
@@ -811,6 +868,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -837,7 +895,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3026,
@@ -853,6 +913,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -879,7 +940,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3027,
@@ -895,6 +958,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -921,7 +985,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3028,
@@ -937,6 +1003,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -963,7 +1030,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3029,
@@ -979,6 +1048,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -1005,7 +1075,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3030,
@@ -1021,6 +1093,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -1047,7 +1120,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3031,
@@ -1063,6 +1138,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -1089,7 +1165,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3032,
@@ -1105,6 +1183,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -1131,7 +1210,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3033,
@@ -1147,6 +1228,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -1173,7 +1255,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3034,
@@ -1189,6 +1273,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -1215,7 +1300,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3035,
@@ -1231,6 +1318,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -1257,7 +1345,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3036,
@@ -1273,6 +1363,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -1299,7 +1390,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3037,
@@ -1315,6 +1408,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -1341,7 +1435,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3038,
@@ -1357,6 +1453,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -1383,7 +1480,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3039,
@@ -1399,6 +1498,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -1425,7 +1525,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3040,
@@ -1441,6 +1543,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -1467,7 +1570,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3041,
@@ -1479,10 +1584,11 @@
     "dmgType": 2,
     "gender": 2,
     "battleTag": "101#117",
-    "equipRec": "1444",
+    "equipRec": "1451#1444",
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -1509,7 +1615,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3042,
@@ -1525,6 +1633,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -1551,7 +1660,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3043,
@@ -1567,6 +1678,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -1593,7 +1705,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3044,
@@ -1609,6 +1723,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -1635,7 +1750,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3045,
@@ -1651,6 +1768,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -1677,7 +1795,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3046,
@@ -1693,6 +1813,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -1719,7 +1840,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3047,
@@ -1735,6 +1858,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -1761,7 +1885,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3048,
@@ -1777,6 +1903,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -1803,7 +1930,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3049,
@@ -1819,6 +1948,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -1845,7 +1975,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3050,
@@ -1861,6 +1993,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -1887,7 +2020,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3051,
@@ -1903,6 +2038,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -1929,7 +2065,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3052,
@@ -1945,6 +2083,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -1971,7 +2110,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3053,
@@ -1987,6 +2128,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -2013,7 +2155,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3054,
@@ -2029,6 +2173,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -2055,7 +2200,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3055,
@@ -2071,6 +2218,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -2097,7 +2245,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3056,
@@ -2113,6 +2263,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -2139,7 +2290,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3057,
@@ -2155,6 +2308,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -2181,7 +2335,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3058,
@@ -2197,6 +2353,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -2223,7 +2380,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3059,
@@ -2239,6 +2398,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -2265,7 +2425,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3060,
@@ -2281,6 +2443,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -2307,7 +2470,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3061,
@@ -2323,6 +2488,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -2349,7 +2515,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3062,
@@ -2365,6 +2533,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -2391,7 +2560,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3063,
@@ -2407,6 +2578,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -2433,7 +2605,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3064,
@@ -2449,6 +2623,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -2475,7 +2650,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 9998,
@@ -2491,6 +2668,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "2#11#1",
@@ -2517,7 +2695,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3070,
@@ -2533,6 +2713,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -2559,7 +2740,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3071,
@@ -2575,6 +2758,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -2601,7 +2785,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3072,
@@ -2617,6 +2803,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -2643,7 +2830,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3066,
@@ -2655,10 +2844,11 @@
     "dmgType": 2,
     "gender": 2,
     "battleTag": "101#110#117#119#128",
-    "equipRec": "1513#1434",
+    "equipRec": "1579#1513#1434",
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "1#5",
     "ai": 5,
     "firstItem": "",
@@ -2685,7 +2875,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3079,
@@ -2701,6 +2893,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "1#5",
     "ai": 5,
     "firstItem": "",
@@ -2727,7 +2920,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3073,
@@ -2743,6 +2938,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -2769,7 +2965,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3074,
@@ -2785,6 +2983,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "1#5",
     "ai": 5,
     "firstItem": "",
@@ -2811,7 +3010,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3075,
@@ -2827,6 +3028,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -2853,7 +3055,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3076,
@@ -2869,6 +3073,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -2895,7 +3100,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3082,
@@ -2911,6 +3118,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -2937,7 +3145,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3083,
@@ -2953,6 +3163,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -2979,7 +3190,9 @@
     "mvskinId": 308302,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3084,
@@ -2995,6 +3208,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "1#5",
     "ai": 5,
     "firstItem": "",
@@ -3021,7 +3235,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3065,
@@ -3037,6 +3253,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "1#5",
     "ai": 5,
     "firstItem": "",
@@ -3063,7 +3280,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3081,
@@ -3079,6 +3298,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -3105,7 +3325,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3077,
@@ -3121,6 +3343,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "1#5",
     "ai": 5,
     "firstItem": "",
@@ -3147,7 +3370,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3078,
@@ -3163,6 +3388,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -3189,7 +3415,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3087,
@@ -3205,6 +3433,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -3231,7 +3460,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3086,
@@ -3247,6 +3478,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -3273,7 +3505,9 @@
     "mvskinId": 308602,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3088,
@@ -3289,6 +3523,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -3315,7 +3550,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3080,
@@ -3331,6 +3568,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -3357,7 +3595,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3091,
@@ -3373,6 +3613,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -3399,7 +3640,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3094,
@@ -3415,6 +3658,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -3441,7 +3685,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3095,
@@ -3457,6 +3703,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -3483,7 +3730,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3096,
@@ -3499,6 +3748,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -3525,7 +3775,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3097,
@@ -3541,6 +3793,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -3567,7 +3820,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3098,
@@ -3583,6 +3838,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -3609,7 +3865,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3099,
@@ -3625,6 +3883,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -3651,7 +3910,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3100,
@@ -3667,6 +3928,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -3693,7 +3955,9 @@
     "mvskinId": 310002,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3101,
@@ -3709,6 +3973,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -3735,7 +4000,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3102,
@@ -3751,6 +4018,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -3777,7 +4045,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3103,
@@ -3793,6 +4063,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -3819,7 +4090,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3104,
@@ -3835,6 +4108,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -3861,7 +4135,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3105,
@@ -3877,6 +4153,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "1#6",
     "ai": 5,
     "firstItem": "",
@@ -3903,7 +4180,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3106,
@@ -3919,6 +4198,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -3945,7 +4225,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3108,
@@ -3961,6 +4243,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "1#5",
     "ai": 5,
     "firstItem": "",
@@ -3987,7 +4270,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3109,
@@ -4003,6 +4288,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -4029,7 +4315,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3110,
@@ -4045,6 +4333,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -4071,7 +4360,9 @@
     "mvskinId": 311002,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3111,
@@ -4087,6 +4378,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -4113,7 +4405,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3112,
@@ -4129,6 +4423,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -4155,7 +4450,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3114,
@@ -4171,6 +4468,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -4197,7 +4495,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3113,
@@ -4213,6 +4513,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "1#5",
     "ai": 5,
     "firstItem": "",
@@ -4239,7 +4540,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3116,
@@ -4255,6 +4558,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -4281,7 +4585,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3117,
@@ -4297,6 +4603,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "1#5",
     "ai": 5,
     "firstItem": "",
@@ -4323,7 +4630,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3118,
@@ -4339,6 +4648,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -4365,7 +4675,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3107,
@@ -4381,6 +4693,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -4407,7 +4720,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3115,
@@ -4423,6 +4738,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -4449,7 +4765,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3120,
@@ -4465,6 +4783,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -4491,7 +4810,9 @@
     "mvskinId": 312002,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3121,
@@ -4507,6 +4828,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -4533,7 +4855,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3126,
@@ -4549,6 +4873,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -4575,7 +4900,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3128,
@@ -4591,6 +4918,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -4617,7 +4945,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3122,
@@ -4633,6 +4963,7 @@
     "rank": 1,
     "uniqueSkill_point": "3#8",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -4659,7 +4990,9 @@
     "mvskinId": 0,
     "stat": 1,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3123,
@@ -4675,6 +5008,7 @@
     "rank": 1,
     "uniqueSkill_point": "2#100",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -4701,7 +5035,9 @@
     "mvskinId": 0,
     "stat": 1,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3124,
@@ -4717,6 +5053,7 @@
     "rank": 1,
     "uniqueSkill_point": "3#10",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -4743,7 +5080,9 @@
     "mvskinId": 0,
     "stat": 1,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3125,
@@ -4759,6 +5098,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -4785,7 +5125,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3132,
@@ -4801,6 +5143,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -4827,7 +5170,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3134,
@@ -4843,6 +5188,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -4869,7 +5215,9 @@
     "mvskinId": 313402,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3135,
@@ -4885,6 +5233,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -4911,7 +5260,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3127,
@@ -4927,6 +5278,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -4953,7 +5305,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3092,
@@ -4969,6 +5323,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -4995,7 +5350,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3141,
@@ -5011,6 +5368,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "1#5",
     "ai": 5,
     "firstItem": "",
@@ -5037,7 +5395,9 @@
     "mvskinId": 314102,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3137,
@@ -5053,6 +5413,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -5079,7 +5440,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3138,
@@ -5095,6 +5458,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -5121,7 +5485,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3139,
@@ -5137,6 +5503,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -5163,7 +5530,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3142,
@@ -5179,6 +5548,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -5205,7 +5575,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3136,
@@ -5221,6 +5593,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -5247,7 +5620,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3143,
@@ -5263,6 +5638,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -5289,7 +5665,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3146,
@@ -5305,6 +5683,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -5331,7 +5710,9 @@
     "mvskinId": 314602,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3147,
@@ -5347,6 +5728,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -5373,7 +5755,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3154,
@@ -5389,6 +5773,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -5415,7 +5800,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 3006,
-    "isSP": true
+    "isSP": true,
+    "spName": "银装",
+    "oriHeroId": 3006
   },
   {
     "id": 3144,
@@ -5431,6 +5818,7 @@
     "rank": 1,
     "uniqueSkill_point": "4#100",
     "deviceId": 31440001,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -5457,7 +5845,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3145,
@@ -5473,6 +5863,7 @@
     "rank": 1,
     "uniqueSkill_point": "4#100",
     "deviceId": 31450001,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -5499,7 +5890,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3140,
@@ -5515,6 +5908,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -5541,7 +5935,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3149,
@@ -5557,6 +5953,7 @@
     "rank": 1,
     "uniqueSkill_point": "4#100",
     "deviceId": 31490001,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -5583,7 +5980,9 @@
     "mvskinId": 0,
     "stat": 1,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3151,
@@ -5599,6 +5998,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -5625,7 +6025,9 @@
     "mvskinId": 0,
     "stat": 1,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3156,
@@ -5641,6 +6043,7 @@
     "rank": 1,
     "uniqueSkill_point": "4#100",
     "deviceId": 31560001,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -5667,7 +6070,9 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   },
   {
     "id": 3157,
@@ -5683,6 +6088,7 @@
     "rank": 1,
     "uniqueSkill_point": "0#5",
     "deviceId": 0,
+    "qteGroupId": 0,
     "powerMax": "",
     "ai": 5,
     "firstItem": "",
@@ -5709,6 +6115,143 @@
     "mvskinId": 0,
     "stat": 0,
     "statShare": 0,
-    "isSP": false
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
+  },
+  {
+    "id": 3155,
+    "name": "狩勋女巫红弩箭",
+    "initials": "H",
+    "skinId": 315501,
+    "career": 2,
+    "rare": 5,
+    "dmgType": 1,
+    "gender": 2,
+    "battleTag": "101",
+    "equipRec": "1577",
+    "rank": 1,
+    "uniqueSkill_point": "0#5",
+    "deviceId": 0,
+    "qteGroupId": 0,
+    "powerMax": "",
+    "ai": 5,
+    "firstItem": "",
+    "duplicateItem": "1#133155#1",
+    "duplicateItemSpecial": "2#11#12",
+    "duplicateItem2": "2#11#28|1#780001#10",
+    "skill": "1#31550111#31550112#31550113|2#31550121#31550122#31550123",
+    "exSkill": 31550131,
+    "resistance": 0,
+    "school": 0,
+    "characterTag": "",
+    "nameEng": "Huntsworn Lilya",
+    "signature": "3155",
+    "photoFrameBg": 0,
+    "isOnline": "0",
+    "heroType": 1,
+    "actor": "——",
+    "roleBirthday": "11/14",
+    "trust": 0,
+    "birthdayBonus": "",
+    "desc": "在小瑞安侬和尘酿鹰们的起哄下，红弩箭勉强接受了众人为她举办英式生日仪式的点子——除了浇上一大勺酸奶油的胡萝卜蛋糕。|一如既往地，红弩箭在吵闹的这一日为自己留下一些独处的时间，并为自己和好搭档拿出惯例的醇酒和机油。|当意识到连箱中最胆小的吵闹鬼都不会再在她表演“落叶飘”的时候失声尖叫出来后，红弩箭临时决定将今天的表演节目升级为“眼镜蛇机动”。",
+    "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
+    "desc2": "或许伏特加不总有，但她仍是永远的胜利女神，你最可以托付的朋友之一。",
+    "mvskinId": 315502,
+    "stat": 0,
+    "statShare": 3004,
+    "isSP": true,
+    "spName": "狩勋女巫",
+    "oriHeroId": 3004
+  },
+  {
+    "id": 3158,
+    "name": "德雷克",
+    "initials": "D",
+    "skinId": 315801,
+    "career": 4,
+    "rare": 5,
+    "dmgType": 2,
+    "gender": 1,
+    "battleTag": "101",
+    "equipRec": "1578",
+    "rank": 1,
+    "uniqueSkill_point": "0#5",
+    "deviceId": 0,
+    "qteGroupId": 0,
+    "powerMax": "",
+    "ai": 5,
+    "firstItem": "",
+    "duplicateItem": "1#133158#1",
+    "duplicateItemSpecial": "2#11#12",
+    "duplicateItem2": "2#11#28|1#780001#10",
+    "skill": "1#31580111#31580112#31580113|2#31580121#31580122#31580123",
+    "exSkill": 31580131,
+    "resistance": 0,
+    "school": 0,
+    "characterTag": "",
+    "nameEng": "Drake",
+    "signature": "3158",
+    "photoFrameBg": 0,
+    "isOnline": "0",
+    "heroType": 1,
+    "actor": "——",
+    "roleBirthday": "4/18",
+    "trust": 0,
+    "birthdayBonus": "14#94124#1;14#94124#1;14#94124#1",
+    "desc": "德雷克，抑或“莫德雷德”，并不知晓第一次“出生”的具体日期，史书和传奇亦无记载。偶尔，当他试图忆起那张模糊的面容时，便会来到河边，久久凝望着顺流而下的水流，直至晨曦的露珠悄悄爬上他的裤脚。|第二次被迫“出生”时，他苏醒在一座崭新的古堡中。身旁所有人对他的祝语都是：“你便是莫德雷德。”但他依旧心有犹疑，并打翻了那瓶用来庆祝他苏醒的蜂蜜酒。|经过考量，德雷克决定将走出城堡那天定为他真正的“生日”。他坦然地告知了箱中伙伴们，并饶有兴趣地看着他们手忙脚乱地准备礼物。最后，他和小瑞安侬一道，用神秘术火焰烤出一块焦黑的蛋糕。",
+    "useDesc": "承载了珍贵记忆的彩色相片，可用于邀请此神秘学家。",
+    "desc2": "兀然苏醒的“古老”骑士，自我意志的坚守者，你最具反叛精神的朋友之一。",
+    "mvskinId": 0,
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
+  },
+  {
+    "id": 3163,
+    "name": "格林杜尔",
+    "initials": "D",
+    "skinId": 316301,
+    "career": 4,
+    "rare": 3,
+    "dmgType": 1,
+    "gender": 1,
+    "battleTag": "101#116#110#119",
+    "equipRec": "1447",
+    "rank": 1,
+    "uniqueSkill_point": "0#5",
+    "deviceId": 0,
+    "qteGroupId": 0,
+    "powerMax": "",
+    "ai": 5,
+    "firstItem": "",
+    "duplicateItem": "1#133163#1",
+    "duplicateItemSpecial": "2#10#8",
+    "duplicateItem2": "2#10#12",
+    "skill": "1#31630111#31630112#31630113|2#31630121#31630122#31630123",
+    "exSkill": 31630131,
+    "resistance": 0,
+    "school": 0,
+    "characterTag": "",
+    "nameEng": "Glyndŵr",
+    "signature": "3163",
+    "photoFrameBg": 0,
+    "isOnline": "1",
+    "heroType": 8,
+    "actor": "——",
+    "roleBirthday": "9/19",
+    "trust": 0,
+    "birthdayBonus": "14#94125#1;14#94125#1;14#94125#1",
+    "desc": "每年的生日，阿德琳都会为格林杜尔种下一棵树苗。今年，他们一起将树栽在了荒原的水边。|格林杜尔摘下了一根尾羽作为回礼，赠给了送来一筐坚果的松鼠神秘学家。|格林杜尔这一年的生日，以一场飞行竞赛的胜利收尾。第二名的诺谛卡小姐兴奋地为它戴上了象征第一名的橄榄冠。",
+    "useDesc": "",
+    "desc2": "",
+    "mvskinId": 0,
+    "stat": 0,
+    "statShare": 0,
+    "isSP": false,
+    "spName": "",
+    "oriHeroId": 0
   }
 ]

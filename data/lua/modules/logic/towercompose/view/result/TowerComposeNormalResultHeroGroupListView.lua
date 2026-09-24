@@ -112,10 +112,19 @@ function TowerComposeNormalResultHeroGroupListView:setHeroItemPos(heroItem, inde
 end
 
 function TowerComposeNormalResultHeroGroupListView:_updateHeroList()
+	local fightParam = FightModel.instance:getFightParam()
+	local heroEquipList = fightParam:getHeroEquipAndTrialMoList(true)
+
 	for index, heroItem in ipairs(self._heroItemList) do
 		local mo = HeroSingleGroupModel.instance:getById(index)
 
 		heroItem:onUpdateMO(mo)
+
+		local heroMo = heroEquipList[index]
+
+		if mo.heroUid == "0" and heroMo then
+			heroItem:showAssistHero(heroMo)
+		end
 	end
 end
 

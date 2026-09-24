@@ -1,0 +1,58 @@
+[
+  {
+    "buffId": 117402601,
+    "name": "中毒状态",
+    "buffType": 1,
+    "durationType": "0",
+    "buffEffect": "101#50",
+    "effect": ""
+  },
+  {
+    "buffId": 117402602,
+    "name": "封印状态",
+    "buffType": 2,
+    "durationType": "0",
+    "buffEffect": "102",
+    "effect": ""
+  },
+  {
+    "buffId": 117402603,
+    "name": "眩晕状态",
+    "buffType": 3,
+    "durationType": "1#1",
+    "buffEffect": "103",
+    "effect": ""
+  },
+  {
+    "buffId": 117402604,
+    "name": "消除抑制",
+    "buffType": 5,
+    "durationType": "1#1",
+    "buffEffect": "107#-3",
+    "effect": ""
+  },
+  {
+    "buffId": 117402605,
+    "name": "Fever抑制",
+    "buffType": 7,
+    "durationType": "1#2",
+    "buffEffect": "111#10",
+    "effect": ""
+  },
+  {
+    "buffId": 117402606,
+    "name": "灵感抑制",
+    "buffType": 4,
+    "durationType": "1#2",
+    "buffEffect": "105#1#100",
+    "effect": ""
+  },
+  {
+    "buffId": 117402607,
+    "name": "攻击提升",
+    "buffType": 8,
+    "durationType": "0",
+    "buffEffect": "108#200",
+    "effect": ""
+  }
+]

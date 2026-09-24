@@ -92,10 +92,12 @@ function PackageStoreGoodsView:_btnbuyOnClick()
 		StoreModel.instance:setCurBuyPackageId(self._mo.id)
 	end
 
-	if self._mo.id == StoreEnum.MonthCardGoodsId then
+	local monthCardId = StoreConfig.instance:getMonthCardStoreChargeId()
+
+	if self._mo.id == monthCardId then
 		local storeMonthCardInfo = StoreModel.instance:getMonthCardInfo()
 
-		if storeMonthCardInfo and storeMonthCardInfo:getRemainDay() >= StoreConfig.instance:getMonthCardConfig(StoreEnum.MonthCardGoodsId).maxDaysLimit - 1 then
+		if storeMonthCardInfo and storeMonthCardInfo:getRemainDay() >= StoreConfig.instance:getMonthCardConfig(monthCardId).maxDaysLimit - 1 then
 			GameFacade.showToast(ToastEnum.PackageStoreGoods)
 
 			return
@@ -218,8 +220,8 @@ function PackageStoreGoodsView:onOpen()
 	self:_refreshPriceArea()
 	self:_refreshTagArea()
 
-	local isMonthCard = self._mo.goodsId == StoreEnum.MonthCardGoodsId
-	local isSeasonCard = self._mo.goodsId == StoreEnum.SeasonCardGoodsId
+	local isMonthCard = self._mo.goodsId == StoreConfig.instance:getMonthCardStoreChargeId()
+	local isSeasonCard = self._mo.goodsId == StoreConfig.instance:getSeasonCardStoreChargeId()
 	local isLittleMonthCard = self._mo.goodsId == StoreEnum.LittleMonthCardGoodsId
 	local isDailyReleasePackage = self._mo.config.type == StoreEnum.StoreEnum.StoreChargeType.DailyReleasePackage
 	local isNewbiePackage = self._mo.id == StoreEnum.NewbiePackId
@@ -471,7 +473,8 @@ function PackageStoreGoodsView:_updateMonthCard()
 	gohelper.setActive(self._btnbuy.gameObject, true)
 	gohelper.setActive(self._gotips, false)
 
-	local monthCardCo = StoreConfig.instance:getMonthCardConfig(StoreEnum.MonthCardGoodsId)
+	local monthCardId = StoreConfig.instance:getMonthCardStoreChargeId()
+	local monthCardCo = StoreConfig.instance:getMonthCardConfig(monthCardId)
 	local onceBonus = string.split(monthCardCo.onceBonus, "|")[1]
 	local temp = string.splitToNumber(onceBonus, "#")
 	local type = temp[1]
@@ -524,7 +527,8 @@ function PackageStoreGoodsView:_updateLittleMonthCard()
 	gohelper.setActive(self._golittlemonthcardicon2new, false)
 
 	local littleMonthCardCo = StoreConfig.instance:getMonthCardAddConfig(StoreEnum.LittleMonthCardGoodsId)
-	local monthCardCo = StoreConfig.instance:getMonthCardConfig(StoreEnum.MonthCardGoodsId)
+	local monthCardId = StoreConfig.instance:getMonthCardStoreChargeId()
+	local monthCardCo = StoreConfig.instance:getMonthCardConfig(monthCardId)
 	local onceBonus = string.split(littleMonthCardCo.onceBonus, "|")[1]
 	local temp = string.splitToNumber(onceBonus, "#")
 	local type = temp[1]
@@ -573,7 +577,8 @@ function PackageStoreGoodsView:_updateSeasonCard()
 	gohelper.setActive(self._btnbuy.gameObject, true)
 	gohelper.setActive(self._gotips, false)
 
-	local monthCardCo = StoreConfig.instance:getMonthCardConfig(StoreEnum.MonthCardGoodsId)
+	local monthCardId = StoreConfig.instance:getMonthCardStoreChargeId()
+	local monthCardCo = StoreConfig.instance:getMonthCardConfig(monthCardId)
 	local onceBonus = string.split(monthCardCo.onceBonus, "|")[1]
 	local temp = string.splitToNumber(onceBonus, "#")
 	local type = temp[1]

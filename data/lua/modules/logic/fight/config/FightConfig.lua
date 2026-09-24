@@ -155,7 +155,12 @@ function FightConfig:reqConfigNames()
 		"fight_effect_follow_entity_visible",
 		"fight_effect_group",
 		"fight_skin_entity_enter_timeline",
-		"fight_na_xi_suo_si_immunity_effect"
+		"fight_na_xi_suo_si_immunity_effect",
+		"fight_entity_summoned_replace_by_skin",
+		"fight_qte_skillgroup",
+		"fight_qte_const",
+		"fight_toughness_broken_reward",
+		"fight_de_lei_ke_slider_up"
 	}
 
 	if SLFramework.FrameworkSettings.IsEditor then
@@ -1085,6 +1090,15 @@ end
 
 function FightConfig:getJGZDesc()
 	return lua_fight_jgz_const.configDict[6].value2
+end
+
+function FightConfig:getJGZMax()
+	local max = lua_fight_jgz_const.configDict[1].value
+
+	max = tonumber(max)
+	max = max / 1000
+
+	return max
 end
 
 function FightConfig:getRouge2MusicCo(musicType)

@@ -1,0 +1,50 @@
+[
+  {
+    "id": 140101,
+    "chapterName": "L1",
+    "levelType": 1,
+    "sortIndex": 1,
+    "unlock": "",
+    "chapterImage": ""
+  },
+  {
+    "id": 140102,
+    "chapterName": "L2",
+    "levelType": 1,
+    "sortIndex": 2,
+    "unlock": "star#20|episode#14010110",
+    "chapterImage": ""
+  },
+  {
+    "id": 140103,
+    "chapterName": "L3",
+    "levelType": 1,
+    "sortIndex": 3,
+    "unlock": "star#40|episode#14010210",
+    "chapterImage": ""
+  },
+  {
+    "id": 140104,
+    "chapterName": "L4",
+    "levelType": 1,
+    "sortIndex": 4,
+    "unlock": "star#60|episode#14010310",
+    "chapterImage": ""
+  },
+  {
+    "id": 140105,
+    "chapterName": "L5",
+    "levelType": 1,
+    "sortIndex": 5,
+    "unlock": "star#100|episode#14010410",
+    "chapterImage": ""
+  },
+  {
+    "id": 140201,
+    "chapterName": "L??",
+    "levelType": 2,
+    "sortIndex": 6,
+    "unlock": "episode#14010101",
+    "chapterImage": ""
+  }
+]

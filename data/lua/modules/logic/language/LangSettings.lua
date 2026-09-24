@@ -129,6 +129,10 @@ function LangSettings:_onConfigAbCallback(assetItem)
 	local configName = json[1]
 	local configText = json[2]
 
+	if GameResMgr.IsFromEditorDir then
+		configText = LangConfig.instance:onReplaceOV(configName, configText)
+	end
+
 	LangConfig.instance:updateLanguage(configText)
 
 	if self._onLoadedCallback then

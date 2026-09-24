@@ -55,6 +55,26 @@ function FightPlayMgr:playShow()
 	flow:start()
 end
 
+function FightPlayMgr:playQte()
+	FightDataHelper.stageMgr:setStage(FightStageMgr.StageType.Play)
+
+	local flow = self.workComp:registWork(FightWorkFlowSequence)
+
+	flow:registWork(FightWorkEnterQTE)
+	flow:registWork(FightWorkPlay2QteOperate)
+	flow:start()
+end
+
+function FightPlayMgr:playUseQteSkill()
+	FightDataHelper.stageMgr:setStage(FightStageMgr.StageType.Play)
+
+	local flow = self.workComp:registWork(FightWorkFlowSequence)
+
+	flow:registWork(FightWorkUseQteSkill)
+	flow:registWork(FightWorkPlay2QteOperate)
+	flow:start()
+end
+
 function FightPlayMgr:playCloth()
 	if FightDataHelper.tempMgr.is3_7BossQtePre then
 		FightDataHelper.tempMgr.is3_7BossQtePre = nil
@@ -159,6 +179,7 @@ function FightPlayMgr:playReconnect()
 		local flow = self.workComp:registWork(FightWorkFlowSequence)
 
 		flow:registWork(FightWorkPlayReconnect)
+		flow:registWork(FightWorkTryEnterQte)
 		flow:registWork(FightWorkPlay2Operate, true)
 		flow:start()
 	end

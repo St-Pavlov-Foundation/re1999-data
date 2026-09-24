@@ -183,6 +183,9 @@ function CharacterSkinLeftView:_editableInitView()
 
 	self._simagebg:LoadImage(ResUrl.getCharacterSkinIcon("full/pifubeijing_012"))
 	self._simagebgmask:LoadImage(ResUrl.getCharacterSkinIcon("mask"))
+
+	self._sp = CharacterSpName.s_createByView(self, gohelper.findChild(self.viewGO, "desc/sp")):bindName0(self._txtcharacterName)
+
 	self:addEventCb(CharacterController.instance, CharacterEvent.OnSwitchSkin, self.switchSkin, self)
 	self:addEventCb(CharacterController.instance, CharacterEvent.OnSwitchSkinVertical, self.switchSkinVertical, self)
 	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, self._onCloseView, self)
@@ -281,7 +284,10 @@ function CharacterSkinLeftView:_refreshSkinInfo()
 
 	local heroCo = HeroConfig.instance:getHeroCO(self.skinCo.characterId)
 
-	self._txtcharacterName.text = heroCo.name
+	self._sp:onUpdateMO({
+		heroId = heroCo.id
+	}):setAsML_SpAndName0()
+
 	self._txtdesc.text = self.skinCo.skinDescription
 
 	self:_refreshVideoBtnState(true)
@@ -432,6 +438,7 @@ function CharacterSkinLeftView:onDestroyView()
 
 	self._simagebg:UnLoadImage()
 	self._simagebgmask:UnLoadImage()
+	GameUtil.onDestroyViewMember(self, "_sp")
 end
 
 return CharacterSkinLeftView

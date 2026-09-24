@@ -1,0 +1,20 @@
+[
+  {
+    "skillId": 2001,
+    "skillType": "active",
+    "name": "灵感爆破",
+    "energyCost": 100,
+    "triggerType": "manual",
+    "effectGroupId": 5001,
+    "desc": "范围消除 3x3"
+  },
+  {
+    "skillId": 3001,
+    "skillType": "passive",
+    "name": "同调余响",
+    "energyCost": 0,
+    "triggerType": "clear_count",
+    "effectGroupId": 5002,
+    "desc": "同灵感消除达到指定数量后增伤"
+  }
+]

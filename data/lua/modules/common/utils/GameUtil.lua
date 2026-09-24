@@ -1319,6 +1319,27 @@ function GameUtil.setTbValue(t, k, ...)
 	return GameUtil.setTbValue(tb, ...)
 end
 
+function GameUtil.listToDict(list, dictKey, usePairs)
+	if type(list) ~= "table" then
+		return nil
+	end
+
+	local func = usePairs and pairs or ipairs
+	local dict = {}
+
+	for k, v in func(list) do
+		if not dictKey or dictKey and type(v) == "table" then
+			local key = dictKey and v[dictKey] or v
+
+			if key ~= nil then
+				dict[key] = k
+			end
+		end
+	end
+
+	return dict
+end
+
 function GameUtil.rpcInfoToMo(info, cls, oldMo)
 	local mo = oldMo or cls.New()
 

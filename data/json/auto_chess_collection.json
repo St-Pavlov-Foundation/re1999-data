@@ -320,7 +320,7 @@
     "tag": "",
     "weight": 10,
     "image": "40026",
-    "isSp": true,
+    "isSp": false,
     "quality": 1
   },
   {
@@ -344,7 +344,7 @@
     "tag": "",
     "weight": 10,
     "image": "40029",
-    "isSp": true,
+    "isSp": false,
     "quality": 1
   },
   {
@@ -368,7 +368,7 @@
     "tag": "",
     "weight": 10,
     "image": "40030",
-    "isSp": true,
+    "isSp": false,
     "quality": 1
   },
   {
@@ -452,7 +452,7 @@
     "tag": "",
     "weight": 10,
     "image": "40037",
-    "isSp": true,
+    "isSp": false,
     "quality": 2
   },
   {
@@ -476,7 +476,7 @@
     "tag": "",
     "weight": 10,
     "image": "40039",
-    "isSp": true,
+    "isSp": false,
     "quality": 2
   },
   {

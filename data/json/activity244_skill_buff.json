@@ -1,0 +1,50 @@
+[
+  {
+    "id": 101,
+    "buffEffectType": "Poison"
+  },
+  {
+    "id": 102,
+    "buffEffectType": "Seal"
+  },
+  {
+    "id": 103,
+    "buffEffectType": "Giddy"
+  },
+  {
+    "id": 104,
+    "buffEffectType": "GemProbability"
+  },
+  {
+    "id": 105,
+    "buffEffectType": "GemProbability"
+  },
+  {
+    "id": 106,
+    "buffEffectType": "MatchTime"
+  },
+  {
+    "id": 107,
+    "buffEffectType": "MatchTime"
+  },
+  {
+    "id": 108,
+    "buffEffectType": "FeverTime"
+  },
+  {
+    "id": 109,
+    "buffEffectType": "FeverTime"
+  },
+  {
+    "id": 110,
+    "buffEffectType": "FeverCost"
+  },
+  {
+    "id": 111,
+    "buffEffectType": "FeverCost"
+  },
+  {
+    "id": 112,
+    "buffEffectType": "AttackRate"
+  }
+]

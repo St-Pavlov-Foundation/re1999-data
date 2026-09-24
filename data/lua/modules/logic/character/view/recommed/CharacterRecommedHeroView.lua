@@ -73,7 +73,7 @@ function CharacterRecommedHeroView:_showSpine(isShow)
 
 			local motion = self._uiSpine._curModel._curBodyName or "b_" .. SpineAnimState.idle1
 
-			self._uiSpine:playSpecialMotion(motion)
+			self._uiSpine:playSpecialMotion(motion, true)
 		else
 			if not self._rootParent then
 				return

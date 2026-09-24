@@ -42,29 +42,29 @@ function AutoChessLeaderEntity:init(go)
 end
 
 function AutoChessLeaderEntity:_btnCollectionOnClick()
-	local collectionIds = self.data.collectionIds
+	local collectionIds = self.mo.collectionIds
 
 	ViewMgr.instance:openView(ViewName.AutoChessCollectionView, collectionIds)
 end
 
-function AutoChessLeaderEntity:setData(data)
-	self.data = data
-	self.data.hp = tonumber(data.hp)
-	self.config = AutoChessConfig.instance:getLeaderCfg(self.data.id)
+function AutoChessLeaderEntity:setData(mo)
+	self.mo = mo
 
-	local dir = self.data.teamType == AutoChessEnum.TeamType.Enemy and 1 or -1
+	local dir = self.mo.teamType == AutoChessEnum.TeamType.Enemy and 1 or -1
 
 	transformhelper.setLocalScale(self.dirTrs, dir, 1, 1)
 
-	self.isEnemey = self.data.teamType == AutoChessEnum.TeamType.Enemy
+	self.isEnemey = self.mo.teamType == AutoChessEnum.TeamType.Enemy
 
 	if self.isEnemey then
 		recthelper.setAnchorX(self.goHp.transform, 130)
 		recthelper.setAnchorX(self.goCollection.transform, -480)
 	end
 
-	self.meshComp:setData(self.config.image, self.isEnemey, true)
-	self:updateHp(0)
+	self.meshComp:setData(self.mo.config.image, self.isEnemey, true)
+
+	self.txtHp.text = self.mo.hp
+
 	self:show()
 end
 
@@ -92,9 +92,9 @@ function AutoChessLeaderEntity:ranged(targetPos, effectId)
 end
 
 function AutoChessLeaderEntity:updateHp(value)
-	value = tonumber(value)
-	self.data.hp = self.data.hp + value
-	self.txtHp.text = self.data.hp
+	self.mo:addHp(value)
+
+	self.txtHp.text = self.mo.hp
 end
 
 function AutoChessLeaderEntity:floatHp(value)
@@ -113,13 +113,13 @@ function AutoChessLeaderEntity:floatHp(value)
 end
 
 function AutoChessLeaderEntity:addBuff(buff)
-	table.insert(self.data.buffContainer.buffs, buff)
+	table.insert(self.mo.buffContainer.buffs, buff)
 	AutoChessController.instance:dispatchEvent(AutoChessEvent.UpdateLeaderBuff)
 	self:refreshBuff()
 end
 
 function AutoChessLeaderEntity:updateBuff(buff)
-	local buffs = self.data.buffContainer.buffs
+	local buffs = self.mo.buffContainer.buffs
 
 	for k, buff1 in ipairs(buffs) do
 		if buff1.uid == buff.uid then
@@ -134,7 +134,7 @@ function AutoChessLeaderEntity:updateBuff(buff)
 end
 
 function AutoChessLeaderEntity:delBuff(buffUid)
-	local buffs = self.data.buffContainer.buffs
+	local buffs = self.mo.buffContainer.buffs
 	local index
 
 	for k, buff in ipairs(buffs) do
@@ -148,7 +148,7 @@ function AutoChessLeaderEntity:delBuff(buffUid)
 	if index then
 		table.remove(buffs, index)
 	else
-		logError(string.format("异常:移除了不存在的棋子UID%s", buffUid))
+		logError(string.format("异常:移除了不存在的Buff: %s", buffUid))
 	end
 
 	AutoChessController.instance:dispatchEvent(AutoChessEvent.UpdateLeaderBuff)
@@ -160,7 +160,7 @@ function AutoChessLeaderEntity:hide()
 end
 
 function AutoChessLeaderEntity:show()
-	self.pos = AutoChessGameModel.instance:getLeaderLocation(self.data.teamType)
+	self.pos = AutoChessGameModel.instance:getLeaderLocation(self.mo.teamType)
 
 	if self.pos then
 		recthelper.setAnchor(self.transform, self.pos.x, self.pos.y)
@@ -180,7 +180,7 @@ function AutoChessLeaderEntity:refreshBuff()
 		return
 	end
 
-	local buffs = self.data.buffContainer.buffs
+	local buffs = self.mo.buffContainer.buffs
 	local energy = AutoChessHelper.getBuffCnt(buffs, AutoChessEnum.EnergyBuffIds)
 	local fire = AutoChessHelper.getBuffCnt(buffs, AutoChessEnum.FireBuffIds)
 	local debris = AutoChessHelper.getBuffCnt(buffs, AutoChessEnum.DebrisIds)
@@ -220,11 +220,13 @@ function AutoChessLeaderEntity:playEffect(effectId, param)
 		gohelper.setAsLastSibling(self.go)
 	end
 
-	local effectCo = lua_auto_chess_effect.configDict[effectId]
+	local effectCo = AutoChessConfig.instance:getEffectCfg(effectId)
 
-	self.effectComp:playEffect(effectCo, param)
+	if effectCo then
+		self.effectComp:playEffect(effectCo, param)
+	end
 
-	return effectCo.duration
+	return effectCo and effectCo.duration or 0
 end
 
 function AutoChessLeaderEntity:refreshCollection()
@@ -232,7 +234,7 @@ function AutoChessLeaderEntity:refreshCollection()
 		return
 	end
 
-	local collectionIds = self.data.collectionIds
+	local collectionIds = self.mo.collectionIds
 	local count = #collectionIds
 
 	if count ~= 0 then

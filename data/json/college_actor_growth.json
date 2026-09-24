@@ -1,0 +1,408 @@
+[
+  {
+    "id": 4020001,
+    "level": 1,
+    "cost": "",
+    "dismissReward": "",
+    "entryPool": 4024004
+  },
+  {
+    "id": 4020001,
+    "level": 2,
+    "cost": "4002001:100&4002002:100",
+    "dismissReward": "",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4020001,
+    "level": 3,
+    "cost": "4002001:500&4002002:500",
+    "dismissReward": "",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4020002,
+    "level": 1,
+    "cost": "",
+    "dismissReward": "",
+    "entryPool": 4024004
+  },
+  {
+    "id": 4020002,
+    "level": 2,
+    "cost": "4002001:100&4002002:100",
+    "dismissReward": "",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4020002,
+    "level": 3,
+    "cost": "4002001:500&4002002:500",
+    "dismissReward": "",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4020003,
+    "level": 1,
+    "cost": "",
+    "dismissReward": "",
+    "entryPool": 4024004
+  },
+  {
+    "id": 4020003,
+    "level": 2,
+    "cost": "4002001:100&4002002:100",
+    "dismissReward": "",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4020003,
+    "level": 3,
+    "cost": "4002001:500&4002002:500",
+    "dismissReward": "",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4020004,
+    "level": 1,
+    "cost": "",
+    "dismissReward": "",
+    "entryPool": 4024004
+  },
+  {
+    "id": 4020004,
+    "level": 2,
+    "cost": "4002001:100&4002002:100",
+    "dismissReward": "",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4020004,
+    "level": 3,
+    "cost": "4002001:500&4002002:500",
+    "dismissReward": "",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4020005,
+    "level": 1,
+    "cost": "",
+    "dismissReward": "",
+    "entryPool": 4024005
+  },
+  {
+    "id": 4020005,
+    "level": 2,
+    "cost": "4002001:100&4002002:100",
+    "dismissReward": "",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4020005,
+    "level": 3,
+    "cost": "4002001:500&4002002:500",
+    "dismissReward": "",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4020006,
+    "level": 1,
+    "cost": "",
+    "dismissReward": "",
+    "entryPool": 4024004
+  },
+  {
+    "id": 4020006,
+    "level": 2,
+    "cost": "4002001:100&4002002:100",
+    "dismissReward": "",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4020006,
+    "level": 3,
+    "cost": "4002001:500&4002002:500",
+    "dismissReward": "",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4020007,
+    "level": 1,
+    "cost": "",
+    "dismissReward": "",
+    "entryPool": 4024004
+  },
+  {
+    "id": 4020007,
+    "level": 2,
+    "cost": "4002001:100&4002002:100",
+    "dismissReward": "",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4020007,
+    "level": 3,
+    "cost": "4002001:500&4002002:500",
+    "dismissReward": "",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4020008,
+    "level": 1,
+    "cost": "",
+    "dismissReward": "",
+    "entryPool": 4024004
+  },
+  {
+    "id": 4020008,
+    "level": 2,
+    "cost": "4002001:100&4002002:100",
+    "dismissReward": "",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4020008,
+    "level": 3,
+    "cost": "4002001:500&4002002:500",
+    "dismissReward": "",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4021001,
+    "level": 1,
+    "cost": "",
+    "dismissReward": "4002001:250&4002002:50",
+    "entryPool": 4024003
+  },
+  {
+    "id": 4021002,
+    "level": 1,
+    "cost": "",
+    "dismissReward": "4002001:250&4002002:50",
+    "entryPool": 4024003
+  },
+  {
+    "id": 4021003,
+    "level": 1,
+    "cost": "",
+    "dismissReward": "4002001:250&4002002:50",
+    "entryPool": 4024003
+  },
+  {
+    "id": 4021004,
+    "level": 1,
+    "cost": "",
+    "dismissReward": "4002001:250&4002002:50",
+    "entryPool": 4024003
+  },
+  {
+    "id": 4021005,
+    "level": 1,
+    "cost": "",
+    "dismissReward": "4002001:250&4002002:50",
+    "entryPool": 4024003
+  },
+  {
+    "id": 4021006,
+    "level": 1,
+    "cost": "",
+    "dismissReward": "4002001:300&4002002:60",
+    "entryPool": 4024003
+  },
+  {
+    "id": 4021006,
+    "level": 2,
+    "cost": "4002001:100&4002002:100",
+    "dismissReward": "4002001:400&4002002:160",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4021007,
+    "level": 1,
+    "cost": "",
+    "dismissReward": "4002001:300&4002002:60",
+    "entryPool": 4024003
+  },
+  {
+    "id": 4021007,
+    "level": 2,
+    "cost": "4002001:100&4002002:100",
+    "dismissReward": "4002001:400&4002002:160",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4021008,
+    "level": 1,
+    "cost": "",
+    "dismissReward": "4002001:300&4002002:60",
+    "entryPool": 4024003
+  },
+  {
+    "id": 4021008,
+    "level": 2,
+    "cost": "4002001:100&4002002:100",
+    "dismissReward": "4002001:400&4002002:160",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4021009,
+    "level": 1,
+    "cost": "",
+    "dismissReward": "4002001:300&4002002:60",
+    "entryPool": 4024003
+  },
+  {
+    "id": 4021009,
+    "level": 2,
+    "cost": "4002001:100&4002002:100",
+    "dismissReward": "4002001:400&4002002:160",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4021010,
+    "level": 1,
+    "cost": "",
+    "dismissReward": "4002001:300&4002002:60",
+    "entryPool": 4024003
+  },
+  {
+    "id": 4021010,
+    "level": 2,
+    "cost": "4002001:100&4002002:100",
+    "dismissReward": "4002001:400&4002002:160",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4021011,
+    "level": 1,
+    "cost": "",
+    "dismissReward": "4002001:300&4002002:60",
+    "entryPool": 4024003
+  },
+  {
+    "id": 4021011,
+    "level": 2,
+    "cost": "4002001:100&4002002:100",
+    "dismissReward": "4002001:400&4002002:160",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4021012,
+    "level": 1,
+    "cost": "",
+    "dismissReward": "4002001:400&4002002:80",
+    "entryPool": 4024004
+  },
+  {
+    "id": 4021012,
+    "level": 2,
+    "cost": "4002001:100&4002002:100",
+    "dismissReward": "4002001:500&4002002:180",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4021012,
+    "level": 3,
+    "cost": "4002001:500&4002002:500",
+    "dismissReward": "4002001:900&4002002:580",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4021013,
+    "level": 1,
+    "cost": "",
+    "dismissReward": "4002001:400&4002002:80",
+    "entryPool": 4024004
+  },
+  {
+    "id": 4021013,
+    "level": 2,
+    "cost": "4002001:100&4002002:100",
+    "dismissReward": "4002001:500&4002002:180",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4021013,
+    "level": 3,
+    "cost": "4002001:500&4002002:500",
+    "dismissReward": "4002001:900&4002002:580",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4021014,
+    "level": 1,
+    "cost": "",
+    "dismissReward": "4002001:400&4002002:80",
+    "entryPool": 4024004
+  },
+  {
+    "id": 4021014,
+    "level": 2,
+    "cost": "4002001:100&4002002:100",
+    "dismissReward": "4002001:500&4002002:180",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4021014,
+    "level": 3,
+    "cost": "4002001:500&4002002:500",
+    "dismissReward": "4002001:900&4002002:580",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4021015,
+    "level": 1,
+    "cost": "",
+    "dismissReward": "4002001:400&4002002:80",
+    "entryPool": 4024004
+  },
+  {
+    "id": 4021015,
+    "level": 2,
+    "cost": "4002001:100&4002002:100",
+    "dismissReward": "4002001:500&4002002:180",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4021015,
+    "level": 3,
+    "cost": "4002001:500&4002002:500",
+    "dismissReward": "4002001:900&4002002:580",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4021016,
+    "level": 1,
+    "cost": "",
+    "dismissReward": "4002001:400&4002002:80",
+    "entryPool": 4024004
+  },
+  {
+    "id": 4021016,
+    "level": 2,
+    "cost": "4002001:100&4002002:100",
+    "dismissReward": "4002001:500&4002002:180",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4021016,
+    "level": 3,
+    "cost": "4002001:500&4002002:500",
+    "dismissReward": "4002001:900&4002002:580",
+    "entryPool": 4024001
+  },
+  {
+    "id": 4022001,
+    "level": 1,
+    "cost": "",
+    "dismissReward": "4002001:250&4002002:50",
+    "entryPool": 4024006
+  },
+  {
+    "id": 4022002,
+    "level": 1,
+    "cost": "",
+    "dismissReward": "4002001:250&4002002:50",
+    "entryPool": 4024007
+  }
+]

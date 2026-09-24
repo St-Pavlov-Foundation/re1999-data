@@ -14,7 +14,8 @@
     "model": "scenes/m_s07_xiaowu/prefab/building/1_9/v1a9_mainbuilding_weichen_01.prefab",
     "equipEffSize": 0.6,
     "equipEffPos": [],
-    "sources": "10011922"
+    "sources": "10011922",
+    "suit": 0
   },
   {
     "id": 23190102,
@@ -35,7 +36,8 @@
       -0.2,
       0.4
     ],
-    "sources": "10011922"
+    "sources": "10011922",
+    "suit": 0
   },
   {
     "id": 23190103,
@@ -52,7 +54,8 @@
     "model": "scenes/m_s07_xiaowu/prefab/building/1_9/v1a9_mainbuilding_lichizi_01.prefab",
     "equipEffSize": 0.5,
     "equipEffPos": [],
-    "sources": "10011922"
+    "sources": "10011922",
+    "suit": 0
   },
   {
     "id": 23190104,
@@ -69,7 +72,8 @@
     "model": "scenes/m_s07_xiaowu/prefab/building/1_9/v1a9_mainbuilding_penshuiquan_01.prefab",
     "equipEffSize": 0.4,
     "equipEffPos": [],
-    "sources": "10011922"
+    "sources": "10011922",
+    "suit": 0
   },
   {
     "id": 23100101,
@@ -86,7 +90,8 @@
     "model": "scenes/m_s07_xiaowu/prefab/jianzhu/a_rukou/part1_1.prefab",
     "equipEffSize": 0.0,
     "equipEffPos": [],
-    "sources": ""
+    "sources": "",
+    "suit": 0
   },
   {
     "id": 23100102,
@@ -103,7 +108,8 @@
     "model": "scenes/m_s07_xiaowu/prefab/jianzhu/a_rukou/rukou.prefab",
     "equipEffSize": 0.0,
     "equipEffPos": [],
-    "sources": ""
+    "sources": "",
+    "suit": 0
   },
   {
     "id": 23100103,
@@ -120,7 +126,8 @@
     "model": "scenes/m_s07_xiaowu/prefab/jianzhu/a_rukou/part2_1.prefab",
     "equipEffSize": 0.0,
     "equipEffPos": [],
-    "sources": ""
+    "sources": "",
+    "suit": 0
   },
   {
     "id": 23100104,
@@ -137,7 +144,8 @@
     "model": "scenes/m_s07_xiaowu/prefab/jianzhu/a_rukou/part3_2.prefab",
     "equipEffSize": 0.0,
     "equipEffPos": [],
-    "sources": ""
+    "sources": "",
+    "suit": 0
   },
   {
     "id": 37190101,
@@ -158,7 +166,8 @@
       -0.2,
       0.4
     ],
-    "sources": "10013710"
+    "sources": "10013710",
+    "suit": 0
   },
   {
     "id": 37190102,
@@ -175,7 +184,8 @@
     "model": "scenes/m_s07_xiaowu/prefab/building/3_7/building_13714.prefab",
     "equipEffSize": 0.4,
     "equipEffPos": [],
-    "sources": "10013710"
+    "sources": "10013710",
+    "suit": 0
   },
   {
     "id": 37190103,
@@ -192,7 +202,8 @@
     "model": "scenes/m_s07_xiaowu/prefab/building/3_7/building_13715.prefab",
     "equipEffSize": 0.6,
     "equipEffPos": [],
-    "sources": "10013710"
+    "sources": "10013710",
+    "suit": 0
   },
   {
     "id": 37190104,
@@ -209,6 +220,83 @@
     "model": "scenes/m_s07_xiaowu/prefab/building/3_7/building_13716.prefab",
     "equipEffSize": 0.5,
     "equipEffPos": [],
-    "sources": "10013710"
+    "sources": "10013710",
+    "suit": 0
+  },
+  {
+    "id": 40190101,
+    "type": 0,
+    "buildId": 0,
+    "itemId": 401902,
+    "name": "风化的平等",
+    "activity": 0,
+    "icon": "14014",
+    "bannerIcon": "14014",
+    "desc": "时间非常平等地带走了这象征平等的黑桌，却又意味深长地留下了这平等的火种。",
+    "rare": "5",
+    "priority": "",
+    "model": "scenes/m_s07_xiaowu/prefab/building/4_0/building_14014.prefab",
+    "equipEffSize": 0.9,
+    "equipEffPos": [
+      0.3,
+      -0.2,
+      0.4
+    ],
+    "sources": "",
+    "suit": 1
+  },
+  {
+    "id": 40190102,
+    "type": 1,
+    "buildId": 0,
+    "itemId": 401903,
+    "name": "宣告之音",
+    "activity": 0,
+    "icon": "14015",
+    "bannerIcon": "14015",
+    "desc": "日落的阳光穿过短廊，窥见纯洁之地的门扉。",
+    "rare": "5",
+    "priority": "",
+    "model": "scenes/m_s07_xiaowu/prefab/building/4_0/building_14015.prefab",
+    "equipEffSize": 0.6,
+    "equipEffPos": [],
+    "sources": "",
+    "suit": 1
+  },
+  {
+    "id": 40190103,
+    "type": 2,
+    "buildId": 0,
+    "itemId": 401904,
+    "name": "沸腾金色",
+    "activity": 0,
+    "icon": "14016",
+    "bannerIcon": "14016",
+    "desc": "这是一种无微不至的守护，这是一种无所不用的囚禁。",
+    "rare": "5",
+    "priority": "",
+    "model": "scenes/m_s07_xiaowu/prefab/building/4_0/building_14016.prefab",
+    "equipEffSize": 0.5,
+    "equipEffPos": [],
+    "sources": "",
+    "suit": 1
+  },
+  {
+    "id": 40190104,
+    "type": 3,
+    "buildId": 0,
+    "itemId": 401905,
+    "name": "不曾枯竭的湖",
+    "activity": 0,
+    "icon": "14017",
+    "bannerIcon": "14017",
+    "desc": "金子做的剑被举在湖中央，想来湖中仙女应当臂力过人。",
+    "rare": "5",
+    "priority": "",
+    "model": "scenes/m_s07_xiaowu/prefab/building/4_0/building_14017.prefab",
+    "equipEffSize": 0.4,
+    "equipEffPos": [],
+    "sources": "",
+    "suit": 1
   }
 ]

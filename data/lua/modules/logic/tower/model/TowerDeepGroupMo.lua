@@ -52,6 +52,7 @@ function TowerDeepGroupMo:updateTeamsInfo(info)
 
 			heroMo.heroId = heroInfo.heroId
 			heroMo.trialId = heroInfo.trialId
+			heroMo.skinId = heroInfo.skinId
 
 			table.insert(teamMo.heroList, heroMo)
 		end

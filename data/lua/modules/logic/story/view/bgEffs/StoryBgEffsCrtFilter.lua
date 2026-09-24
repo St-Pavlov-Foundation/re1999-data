@@ -18,11 +18,6 @@ function StoryBgEffsCrtFilter:init(bgCo)
 	self._effLoaded = false
 end
 
-function StoryBgEffsCrtFilter:start()
-	StoryBgEffsCrtFilter.super.start(self)
-	self:loadRes()
-end
-
 function StoryBgEffsCrtFilter:onLoadFinished()
 	StoryBgEffsCrtFilter.super.onLoadFinished(self)
 

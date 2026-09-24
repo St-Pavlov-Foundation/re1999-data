@@ -311,6 +311,12 @@ function FightTLEventMove._getMoveEntitys(fightStepData, selectEntityType)
 		if defender then
 			table.insert(entitys, defender)
 		end
+	elseif selectEntityType == "7" then
+		local tempEntity = FightMsgMgr.sendMsg(FightMsgId.GetSummonedEntity, fightStepData.fromId)
+
+		if tempEntity then
+			table.insert(entitys, tempEntity)
+		end
 	else
 		local entityMgr = FightGameMgr.entityMgr
 		local entityId = fightStepData.stepUid .. "_" .. selectEntityType

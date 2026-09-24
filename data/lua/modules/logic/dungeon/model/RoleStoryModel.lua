@@ -383,15 +383,19 @@ function RoleStoryModel:isHeroDispatching(heroId, storyId)
 	return mo and mo:isHeroDispatching(heroId)
 end
 
+function RoleStoryModel:getRoleStoryDungeonUnlockAnimKey(storyId)
+	return string.format("%s_%s_%s", PlayerModel.instance:getMyUserId(), PlayerPrefsKey.RoleStoryDungeonUnlockAnim, storyId)
+end
+
 function RoleStoryModel:canPlayDungeonUnlockAnim(storyId)
-	local key = string.format("%s_%s_%s", PlayerModel.instance:getMyUserId(), PlayerPrefsKey.RoleStoryDungeonUnlockAnim, storyId)
+	local key = self:getRoleStoryDungeonUnlockAnimKey(storyId)
 	local flag = PlayerPrefsHelper.getNumber(key, 0)
 
 	return flag == 0
 end
 
 function RoleStoryModel:setPlayDungeonUnlockAnimFlag(storyId)
-	local key = string.format("%s_%s_%s", PlayerModel.instance:getMyUserId(), PlayerPrefsKey.RoleStoryDungeonUnlockAnim, storyId)
+	local key = self:getRoleStoryDungeonUnlockAnimKey(storyId)
 
 	PlayerPrefsHelper.setNumber(key, 1)
 end
@@ -400,8 +404,9 @@ function RoleStoryModel:isCGUnlock(storyId)
 	local storyCo = RoleStoryConfig.instance:getStoryById(storyId)
 	local unlockEpisodeId = storyCo.cgUnlockEpisodeId
 	local cgUnlockStoryId = storyCo.cgUnlockStoryId
+	local cgUnlockGameComplete = storyCo.cgUnlockGameComplete
 
-	if unlockEpisodeId == 0 and cgUnlockStoryId == 0 then
+	if unlockEpisodeId == 0 and cgUnlockStoryId == 0 and cgUnlockGameComplete == 0 then
 		return true
 	end
 
@@ -410,6 +415,16 @@ function RoleStoryModel:isCGUnlock(storyId)
 	end
 
 	local gameMo = NecrologistStoryModel.instance:getGameMO(storyId)
+
+	if cgUnlockGameComplete ~= 0 then
+		if gameMo.isComplete == nil then
+			logError("RoleStoryModel:isCGUnlock gameMo isComplete is nil")
+
+			return false
+		else
+			return gameMo:isComplete()
+		end
+	end
 
 	return gameMo:isStoryFinish(cgUnlockStoryId)
 end

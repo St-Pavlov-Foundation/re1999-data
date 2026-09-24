@@ -60,5 +60,94 @@
     "camera_revert": [
       "310504_zxqe_jh04"
     ]
+  },
+  {
+    "id": 313403,
+    "behavior": "CameraBehaviorContinue",
+    "res": "313403_ble",
+    "body": [
+      "b_jiaohu01",
+      "b_jiaohu03",
+      "b_jiaohu04"
+    ],
+    "camera": [
+      "313403_ble_jh01",
+      "313403_ble_jh03",
+      "313403_ble_jh04"
+    ],
+    "camera_revert": [
+      "313403_ble_jh05",
+      "313403_ble_jh05",
+      "313403_ble_jh05"
+    ]
+  },
+  {
+    "id": 315501,
+    "behavior": "CameraBehaviorContinue",
+    "res": "315501_sxnwhnj_jt",
+    "body": [
+      "b_jiaohu01",
+      "b_jiaohu02",
+      "b_jiaohu03",
+      "b_jiaohu04"
+    ],
+    "camera": [
+      "315501_sxnwhnj_jt_jh01",
+      "315501_sxnwhnj_jt_jh01",
+      "315501_sxnwhnj_jt_jh03",
+      "315501_sxnwhnj_jt_jh04"
+    ],
+    "camera_revert": [
+      "315501_sxnwhnj_jt_jh05",
+      "315501_sxnwhnj_jt_jh05",
+      "315501_sxnwhnj_jt_jh05",
+      "315501_sxnwhnj_jt_jh05"
+    ]
+  },
+  {
+    "id": 315502,
+    "behavior": "CameraBehaviorContinue",
+    "res": "315501_sxnwhnj_jt",
+    "body": [
+      "b_jiaohu01",
+      "b_jiaohu02",
+      "b_jiaohu03",
+      "b_jiaohu04"
+    ],
+    "camera": [
+      "315501_sxnwhnj_jt_jh01",
+      "315501_sxnwhnj_jt_jh01",
+      "315501_sxnwhnj_jt_jh03",
+      "315501_sxnwhnj_jt_jh04"
+    ],
+    "camera_revert": [
+      "315501_sxnwhnj_jt_jh05",
+      "315501_sxnwhnj_jt_jh05",
+      "315501_sxnwhnj_jt_jh05",
+      "315501_sxnwhnj_jt_jh05"
+    ]
+  },
+  {
+    "id": 315503,
+    "behavior": "CameraBehaviorContinue",
+    "res": "315503_tlzchnj_jt",
+    "body": [
+      "b_jiaohu_01",
+      "b_jiaohu_02",
+      "b_jiaohu_03",
+      "b_jiaohu_04"
+    ],
+    "camera": [
+      "315503_tlzchnj_jt_jh01",
+      "315503_tlzchnj_jt_jh01",
+      "315503_tlzchnj_jt_jh03",
+      "315503_tlzchnj_jt_jh04"
+    ],
+    "camera_revert": [
+      "315503_tlzchnj_jt_jh05",
+      "315503_tlzchnj_jt_jh05",
+      "315503_tlzchnj_jt_jh05",
+      "315503_tlzchnj_jt_jh05"
+    ]
   }
 ]

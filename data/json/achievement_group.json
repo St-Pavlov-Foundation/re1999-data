@@ -318,5 +318,15 @@
     "uiListParam": "{\"groupNormalBgUrl\":\"singlebg_lang/txt_achievement/list/135.png\",\"groupUpgradeBgUrl\":\"singlebg_lang/txt_achievement/list/135_1.png\",\"id\":[1,2,3,4,5,6,7,8,9,10],\"pX\":[-536.4,-362.5,410.3,-562.9,-374.7,-182.4,25.0,233.3,441.7,587.0],\"pY\":[103.2,60.3,76.0,-67.6,-106.9,-58.1,-34.9,-69.6,-103.1,6.0],\"sX\":[0.8,0.8,0.93,0.95,0.95,1.1,1.0,1.1,0.95,0.8],\"sY\":[0.8,0.8,0.93,0.95,0.95,1.1,1.0,1.1,0.95,0.8]}",
     "uiPlayerParam": "{\"groupNormalBgUrl\":\"singlebg_lang/txt_achievement/player/135.png\",\"groupUpgradeBgUrl\":\"singlebg_lang/txt_achievement/player/135_1.png\",\"groupTitleColor\":\"#E2DACAFF\",\"id\":[1,2,3,4,5,6,7,8,9,10],\"pX\":[-212.5,-142.7,167.1,-223.0,-147.4,-70.6,13.2,95.3,178.8,237.0],\"pY\":[24.1,6.8,12.6,-44.2,-61.8,-39.9,-38.0,-45.8,-58.7,-15.0],\"sX\":[0.32,0.32,0.38,0.38,0.4,0.44,0.4,0.45,0.38,0.32],\"sY\":[0.32,0.32,0.38,0.38,0.4,0.44,0.4,0.45,0.38,0.32]}",
     "unLockAchievement": 41351001
+  },
+  {
+    "id": 136,
+    "category": 4,
+    "order": 967,
+    "name": "传说谢幕式",
+    "desc": "",
+    "uiListParam": "{\"groupNormalBgUrl\":\"singlebg_lang/txt_achievement/list/136.png\",\"groupUpgradeBgUrl\":\"singlebg_lang/txt_achievement/list/136_1.png\",\"id\":[1,2,3,4,5,6,7,8,9],\"pX\":[-502.3,-347.9,386.8,555.8,-405.4,-198.7,19.0,236.1,429.8],\"pY\":[32.1,82.5,99.3,49.3,-97.1,-21.2,-67.1,-16.4,-103.1],\"sX\":[0.75,0.87,0.75,0.87,0.73,1.05,1.05,1.05,0.7],\"sY\":[0.75,0.87,0.75,0.87,0.73,1.05,1.05,1.05,0.7]}",
+    "uiPlayerParam": "{\"groupNormalBgUrl\":\"singlebg_lang/txt_achievement/player/136.png\",\"groupUpgradeBgUrl\":\"singlebg_lang/txt_achievement/player/136_1.png\",\"groupTitleColor\":\"#E2DACAFF\",\"id\":[1,2,3,4,5,6,7,8,9],\"pX\":[-220.2,-160.8,176.1,240.2,-169.0,-73.1,11.7,97.2,192.9],\"pY\":[-24.8,6.8,6.6,-17.3,-63.3,-40.7,-64.4,-41.4,-62.6],\"sX\":[0.27,0.31,0.27,0.31,0.27,0.38,0.38,0.38,0.25],\"sY\":[0.27,0.31,0.27,0.31,0.27,0.38,0.38,0.38,0.25]}",
+    "unLockAchievement": 41360901
   }
 ]

@@ -36,6 +36,7 @@ function FightBuffInfoData:onConstructor(proto, entityId)
 	end
 
 	self.name = config and config.name or ""
+	self.typeId = config and config.typeId or 0
 	self.clientNum = 0
 end
 

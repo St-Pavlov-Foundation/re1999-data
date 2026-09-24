@@ -1,0 +1,47 @@
+[
+  {
+    "characterId": 1001,
+    "name": "角色 A",
+    "elementId": 1,
+    "levelTplId": 1,
+    "baseAtk": 420,
+    "baseHp": 3180,
+    "baseDef": 186,
+    "baseHeal": 42,
+    "activeSkillId": "2001|2002",
+    "icon": "match3_role_a",
+    "image": "",
+    "unlockType": "",
+    "costItemId": "0"
+  },
+  {
+    "characterId": 1002,
+    "name": "角色 B",
+    "elementId": 2,
+    "levelTplId": 1,
+    "baseAtk": 390,
+    "baseHp": 3600,
+    "baseDef": 220,
+    "baseHeal": 36,
+    "activeSkillId": "2001|2002",
+    "icon": "match3_role_b",
+    "image": "",
+    "unlockType": "",
+    "costItemId": "410001|10"
+  },
+  {
+    "characterId": 1003,
+    "name": "角色 C",
+    "elementId": 3,
+    "levelTplId": 1,
+    "baseAtk": 360,
+    "baseHp": 3000,
+    "baseDef": 170,
+    "baseHeal": 60,
+    "activeSkillId": "2001|2002",
+    "icon": "match3_role_c",
+    "image": "",
+    "unlockType": "",
+    "costItemId": "410001|20"
+  }
+]

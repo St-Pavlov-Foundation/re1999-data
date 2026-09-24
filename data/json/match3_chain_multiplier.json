@@ -1,0 +1,30 @@
+[
+  {
+    "id": 2,
+    "chainMin": 1,
+    "chainMax": 3,
+    "multiplier": 1,
+    "desc": "基础输出"
+  },
+  {
+    "id": 3,
+    "chainMin": 4,
+    "chainMax": 7,
+    "multiplier": 1,
+    "desc": "连续操作奖励"
+  },
+  {
+    "id": 4,
+    "chainMin": 8,
+    "chainMax": 11,
+    "multiplier": 1,
+    "desc": "高 Chain 奖励"
+  },
+  {
+    "id": 5,
+    "chainMin": 12,
+    "chainMax": 99999,
+    "multiplier": 1,
+    "desc": "极高 Chain 奖励"
+  }
+]

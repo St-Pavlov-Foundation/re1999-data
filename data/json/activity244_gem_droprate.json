@@ -1,0 +1,62 @@
+[
+  {
+    "gemTemplateId": 100,
+    "healDropRate": 0,
+    "bombDropRate": 0,
+    "boxDropRate": "0"
+  },
+  {
+    "gemTemplateId": 101,
+    "healDropRate": 0,
+    "bombDropRate": 0,
+    "boxDropRate": "2#500"
+  },
+  {
+    "gemTemplateId": 102,
+    "healDropRate": 0,
+    "bombDropRate": 0,
+    "boxDropRate": "3#500"
+  },
+  {
+    "gemTemplateId": 103,
+    "healDropRate": 20,
+    "bombDropRate": 0,
+    "boxDropRate": "0"
+  },
+  {
+    "gemTemplateId": 104,
+    "healDropRate": 0,
+    "bombDropRate": 0,
+    "boxDropRate": "3#1000"
+  },
+  {
+    "gemTemplateId": 105,
+    "healDropRate": 100,
+    "bombDropRate": 0,
+    "boxDropRate": "3#600"
+  },
+  {
+    "gemTemplateId": 106,
+    "healDropRate": 0,
+    "bombDropRate": 0,
+    "boxDropRate": "3#400"
+  },
+  {
+    "gemTemplateId": 107,
+    "healDropRate": 0,
+    "bombDropRate": 10,
+    "boxDropRate": "3#300"
+  },
+  {
+    "gemTemplateId": 108,
+    "healDropRate": 20,
+    "bombDropRate": 10,
+    "boxDropRate": "3#500"
+  },
+  {
+    "gemTemplateId": 109,
+    "healDropRate": 20,
+    "bombDropRate": 10,
+    "boxDropRate": "3#300"
+  }
+]

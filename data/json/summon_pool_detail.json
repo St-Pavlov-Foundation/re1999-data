@@ -277,5 +277,14 @@
     "historyShowType": 0,
     "order": 2,
     "openId": 11
+  },
+  {
+    "id": 29,
+    "desc": "",
+    "info": "84001",
+    "name": "巡游限定征集【不渝者的领航】",
+    "historyShowType": 0,
+    "order": 1,
+    "openId": 11
   }
 ]

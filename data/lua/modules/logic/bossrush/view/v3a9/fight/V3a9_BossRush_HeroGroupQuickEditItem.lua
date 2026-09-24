@@ -67,10 +67,7 @@ end
 function V3a9_BossRush_HeroGroupQuickEditItem:_show_goorderbg()
 	gohelper.setActive(self._goorderbg, true)
 	gohelper.setActive(self._goframe, true)
-
-	if self._team_pos_index > 0 and self._team_pos_index < 9 then
-		UISpriteSetMgr.instance:setHeroGroupSprite(self._imageorder, "biandui_shuzi_" .. self._team_pos_index)
-	end
+	UISpriteSetMgr.instance:setHeroGroupSprite(self._imageorder, "biandui_shuzi_" .. self._team_pos_index)
 end
 
 function V3a9_BossRush_HeroGroupQuickEditItem:_onItemClick()

@@ -24,6 +24,8 @@ end
 function TowerPermanentDeepModel:initData()
 	self.isInDeepLayerState = false
 	self.isSelectDeepLayerCategory = false
+	self.heroAssistMo = nil
+	self.heroEditorAssistMo = nil
 end
 
 function TowerPermanentDeepModel:onReceiveTowerDeepGetInfoReply(info)
@@ -179,6 +181,41 @@ function TowerPermanentDeepModel:getCurDeepMonsterId()
 	local curDeepHigh = self:getCurDeepHigh()
 
 	return TowerDeepConfig.instance:getDeepMonsterId(curDeepHigh)
+end
+
+function TowerPermanentDeepModel:setAssistMo(assistMo, index)
+	if not self.heroAssistMo then
+		self.heroAssistMo = HeroSingleGroupMO.New()
+	end
+
+	self.heroAssistMo:init(index, assistMo.heroUid)
+	self.heroAssistMo:setAssist(assistMo)
+	self:setEditorAssistMo(assistMo)
+end
+
+function TowerPermanentDeepModel:getAssistMo()
+	return self.heroAssistMo
+end
+
+function TowerPermanentDeepModel:setEditorAssistMo(assistMo)
+	self.heroEditorAssistMo = assistMo
+end
+
+function TowerPermanentDeepModel:getEditorAssistMo()
+	return self.heroEditorAssistMo
+end
+
+function TowerPermanentDeepModel:clearAssist(isClearEditor)
+	self.heroAssistMo = nil
+
+	if isClearEditor then
+		self.heroEditorAssistMo = nil
+	end
+end
+
+function TowerPermanentDeepModel:clearAllAssist()
+	self.heroAssistMo = nil
+	self.heroEditorAssistMo = nil
 end
 
 TowerPermanentDeepModel.instance = TowerPermanentDeepModel.New()

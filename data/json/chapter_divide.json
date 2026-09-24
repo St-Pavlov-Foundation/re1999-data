@@ -42,6 +42,18 @@
       112,
       113
     ],
+    "storyId": 300000
+  },
+  {
+    "sectionId": 4,
+    "name": "未选择的路",
+    "nameEn": "THE ROAD NOT TAKEN",
+    "resPage": "singlebg/dungeon/pic_section_4.png",
+    "resPageClosed": "",
+    "chapterId": [
+      114,
+      313
+    ],
     "storyId": 0
   }
 ]

@@ -370,5 +370,17 @@
     "collectionBonus": "11#13903#1",
     "extraShowBuilding": "",
     "sourcesType": ""
+  },
+  {
+    "id": 4001,
+    "name": "典雅之名",
+    "nameEn": "For Grace and Glory",
+    "desc": "迷雾散去，未遭侵蚀的，从岁月中递来利剑。",
+    "rewardIcon": "1703000",
+    "building": "14001|14002|14003",
+    "packages": "4001|4002|4003|4004",
+    "collectionBonus": "11#14003#1",
+    "extraShowBuilding": "",
+    "sourcesType": ""
   }
 ]

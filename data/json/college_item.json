@@ -1,0 +1,42 @@
+[
+  {
+    "id": 4001001,
+    "name": "“余光”",
+    "desc": "每消耗<#FFEA73>30</color>点细胞活性\n获得<sprite=3><#FFEA73>“余光”</color>×1\n每日最多获得<sprite=3><#FFEA73>“余光”</color>×<#FFEA73>10</color>\n推进回合消耗<sprite=3><#FFEA73>“余光”</color>×<#FFEA73>1</color>",
+    "icon": "college_currencyicon_4",
+    "max": 20,
+    "type": 1
+  },
+  {
+    "id": 4002001,
+    "name": "观象镜",
+    "desc": "由<#FFEA73>反射工坊</color>生产\n用于强化建筑与同伴",
+    "icon": "college_currencyicon_1",
+    "max": 50000,
+    "type": 2
+  },
+  {
+    "id": 4002002,
+    "name": "无眠烛台",
+    "desc": "由<#FFEA73>引光室</color>生产\n用于强化建筑与同伴",
+    "icon": "college_currencyicon_2",
+    "max": 25000,
+    "type": 2
+  },
+  {
+    "id": 4002003,
+    "name": "银枝的新芽",
+    "desc": "由<#FFEA73>常春温室</color>生产\n用于强化建筑与同伴",
+    "icon": "college_currencyicon_3",
+    "max": 5000,
+    "type": 2
+  },
+  {
+    "id": 4003001,
+    "name": "观察者之眼",
+    "desc": "通过<#FFEA73>任务奖励</color>获取\n在白岸夜读会中消耗以解锁信息",
+    "icon": "college_currencyicon_5",
+    "max": 999,
+    "type": 3
+  }
+]

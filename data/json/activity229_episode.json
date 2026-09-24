@@ -118,5 +118,29 @@
     "careerPrefer": "6#5",
     "teamRecommend": "112#111",
     "optionalSkills": "1001#1004#1006"
+  },
+  {
+    "activityId": 14010,
+    "stage": 1,
+    "episodeId": 2290118,
+    "careerPrefer": "2#4",
+    "teamRecommend": "132#110",
+    "optionalSkills": "1010#1009#1201"
+  },
+  {
+    "activityId": 14010,
+    "stage": 2,
+    "episodeId": 2290119,
+    "careerPrefer": "6#4",
+    "teamRecommend": "114#108",
+    "optionalSkills": "1012#1011#1201"
+  },
+  {
+    "activityId": 14010,
+    "stage": 3,
+    "episodeId": 2290120,
+    "careerPrefer": "2#1",
+    "teamRecommend": "131#108",
+    "optionalSkills": "1006#1008#1201"
   }
 ]

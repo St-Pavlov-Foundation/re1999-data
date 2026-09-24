@@ -8,5 +8,15 @@
     "constId": 83212,
     "heroExtraDesc": "5#summonsimulation_probability_extra_desc",
     "doubleSixRate": 13
+  },
+  {
+    "activityId": 14040,
+    "itemId": 540003,
+    "initWeight": "4#850|3#4000|2#4500|1#500",
+    "summonTimes": 3,
+    "poolId": 40191,
+    "constId": 84003,
+    "heroExtraDesc": "5#summonsimulation_probability_extra_desc",
+    "doubleSixRate": 13
   }
 ]

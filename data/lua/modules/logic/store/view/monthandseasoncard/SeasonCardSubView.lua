@@ -13,7 +13,7 @@ function SeasonCardSubView:_btnbuyOnClick()
 		[StatEnum.EventProperties.RecommendPageRank] = self:getTabIndex()
 	})
 
-	local goodId = StoreEnum.SeasonCardGoodsId
+	local goodId = StoreConfig.instance:getSeasonCardStoreChargeId()
 	local packageMo = StoreModel.instance:getGoodsMO(goodId)
 
 	if not packageMo or packageMo:isSoldOut() then

@@ -10008,19 +10008,299 @@
     "lang": "<size=44>重</size>新调<size=44>查</size>"
   },
   {
-    "id": "p_v3a9_bossrushleveldetail_txt_comfirm_reset_1",
-    "lang": "完全重置"
+    "id": "college_toast_building_lvup",
+    "lang": "▩1%s升级完成"
   },
   {
-    "id": "p_v3a9_bossrushleveldetail_txt_comfirm_reset_2",
-    "lang": "重置"
+    "id": "college_toast_character_add",
+    "lang": "▩1%s加入了队伍"
   },
   {
-    "id": "p_v3a9_bossrushleveldetail_txt_comfirm_reseten_1",
-    "lang": "RESET"
+    "id": "college_toast_character_remove",
+    "lang": "▩1%s离开了队伍"
   },
   {
-    "id": "p_v3a9_bossrushleveldetail_txt_comfirm_resetten_2",
-    "lang": "RESET"
+    "id": "college_toast_area_begin",
+    "lang": "已开始探索▩1%s"
+  },
+  {
+    "id": "college_toast_area_addstep",
+    "lang": "▩1%s完成了一轮探索，进度增加▩2%s"
+  },
+  {
+    "id": "college_toast_area_finish",
+    "lang": "▩1%s探索完成"
+  },
+  {
+    "id": "college_toast_status_add",
+    "lang": "获得▩1%s状态"
+  },
+  {
+    "id": "college_toast_status_remove",
+    "lang": "失去▩1%s状态"
+  },
+  {
+    "id": "college_toast_powerchange",
+    "lang": "通过消耗细胞活性获取了▩1%s个“余光”"
+  },
+  {
+    "id": "college_toast_area_pause",
+    "lang": "▩1%s已停止探索"
+  },
+  {
+    "id": "college_toast_taskfinish",
+    "lang": "完成任务“▩1%s”,获得资源奖励"
+  },
+  {
+    "id": "college_toast_finishstory",
+    "lang": "阅读剧情积累了新的行迹点"
+  },
+  {
+    "id": "college_building_refinedpropdesc",
+    "lang": "▩1%s：▩2%s"
+  },
+  {
+    "id": "college_buildinginfoview_buildtitle",
+    "lang": "建造▩1%s"
+  },
+  {
+    "id": "college_buildinginfoview_upgradetitle",
+    "lang": "升级▩1%s"
+  },
+  {
+    "id": "college_producedesc_building",
+    "lang": "建筑加成"
+  },
+  {
+    "id": "college_producedesc_area",
+    "lang": "地点加成"
+  },
+  {
+    "id": "college_producedesc_other",
+    "lang": "其他加成"
+  },
+  {
+    "id": "college_roledispatch_tips",
+    "lang": "已委托至<#F7E370>【▩1%s】</color>"
+  },
+  {
+    "id": "college_roleentryitem_locked",
+    "lang": "Lv.▩1%s解锁随机专长"
+  },
+  {
+    "id": "college_bottominfoview_arearule",
+    "lang": "花费▩1%s回合完成一次解锁，每个角色提供▩2%s%探索进度，探索完成后解锁地点功能"
+  },
+  {
+    "id": "college_rolerefined_tips",
+    "lang": "可选择<#F7E370>▩1%s/▩2%s</color>词条进行锁定，锁定数量越多，资源消耗越多"
+  },
+  {
+    "id": "college_task_stage",
+    "lang": "阶段▩1%s"
+  },
+  {
+    "id": "college_task_stagelocktips",
+    "lang": "阶段▩1%s(完成阶段▩2%s后解锁)"
+  },
+  {
+    "id": "college_moredetail",
+    "lang": "<i>线索待记录</i>"
+  },
+  {
+    "id": "college_roledispatchview_tips",
+    "lang": "选择委托角色：▩1%s/▩2%s"
+  },
+  {
+    "id": "college_explore_unexplore",
+    "lang": "未探索"
+  },
+  {
+    "id": "college_res_produce",
+    "lang": "<#FFEA73>+▩1%s</color>/回合"
+  },
+  {
+    "id": "college_tasktipsview_progress",
+    "lang": "▩1%s<nobr>（▩2%s/▩3%s）</nobr>"
+  },
+  {
+    "id": "college_bubble",
+    "lang": "<#FFEA73>▩1%s</color><br>▩2%s"
+  },
+  {
+    "id": "matchgame_fight_wave",
+    "lang": "第▩1%s波"
+  },
+  {
+    "id": "matchgame_fight_chain",
+    "lang": "连击×▩1%s"
+  },
+  {
+    "id": "matchgame_fight_damageChain",
+    "lang": "▩1%s连击"
+  },
+  {
+    "id": "matchgame_fight_damageRate",
+    "lang": "伤害×▩1%s"
+  },
+  {
+    "id": "matchgame_fight_goal_killAll",
+    "lang": "消灭所有敌人"
+  },
+  {
+    "id": "matchgame_fight_goal_roundNum",
+    "lang": "▩1%s回合内通关"
+  },
+  {
+    "id": "matchgame_fight_goal_match",
+    "lang": "消除▩1%s个▩2%s"
+  },
+  {
+    "id": "matchgame_skill_active",
+    "lang": "主动"
+  },
+  {
+    "id": "matchgame_skill_passive",
+    "lang": "被动"
+  },
+  {
+    "id": "matchgamedevelopview_level",
+    "lang": "Lv.▩1%s<#88806C><size=32>/▩2%s</size></color>"
+  },
+  {
+    "id": "matchgamechallengemapview_rewarddesc",
+    "lang": "乱斗战绩达到▩1%s可得"
+  },
+  {
+    "id": "matchgamechallengemapview_rewardname",
+    "lang": "▩1%s奖励"
+  },
+  {
+    "id": "settingsgameview_deleteunuseres",
+    "lang": "删除冗余资源"
+  },
+  {
+    "id": "settingsgameview_deleteunuseres_desc",
+    "lang": "删除冗余资源以减少游戏包体大小"
+  },
+  {
+    "id": "matchgamechallengemapview_maxscore",
+    "lang": "最高战绩：▩1%s"
+  },
+  {
+    "id": "matchgameherogroupeditview_level",
+    "lang": "Lv.▩1%s<#88806C><size=36>/▩2%s</size></color>"
+  },
+  {
+    "id": "matchgamechallengeresultview_nextscore",
+    "lang": "距离下个奖励还差▩1%s点战绩"
+  },
+  {
+    "id": "matchgameresultview_failtips",
+    "lang": "敌方灵感百货为▩1%s，建议使用合适的角色进行挑战"
+  },
+  {
+    "id": "matchgamechallengeresultview_allget",
+    "lang": "可领取所有奖励"
+  },
+  {
+    "id": "matchgamemapview_lastepisodeindex",
+    "lang": "Ø"
+  },
+  {
+    "id": "matchgamebossitem_end",
+    "lang": "已结束"
+  },
+  {
+    "id": "sonnet_task_progress",
+    "lang": "完成▩1%s/▩2%s任务可获得"
+  },
+  {
+    "id": "sonnet_book_progress",
+    "lang": "灵感%s%%"
+  },
+  {
+    "id": "autochess_losingstreak_tip",
+    "lang": "连败▩1%s次后，每轮可以获得▩2%s缪斯币补偿"
+  },
+  {
+    "id": "musicgame_dailymutiple_tip",
+    "lang": "每日首次游玩可获得<#B93900>▩1%s</color>倍乐谱完成度"
+  },
+  {
+    "id": "candyroom_limitgetcount",
+    "lang": "剩余▩1%s份"
+  },
+  {
+    "id": "main_switch_classify_title_5",
+    "lang": "旅劵集"
+  },
+  {
+    "id": "main_switch_classify_title_6",
+    "lang": "荒原建筑"
+  },
+  {
+    "id": "main_switch_classify_title_7",
+    "lang": "头像"
+  },
+  {
+    "id": "v4a0_sp_lilya_bullet_limit_tip",
+    "lang": "已发射▩1%s次"
+  },
+  {
+    "id": "v4a0_sp_lilya_wave_tip",
+    "lang": "第▩1%s波"
+  },
+  {
+    "id": "v4a0_sp_lilya_episode_title",
+    "lang": "关卡目标"
+  },
+  {
+    "id": "StoreSkinGoodsView2_total_discount",
+    "lang": "合计%s"
+  },
+  {
+    "id": "concat_separator",
+    "lang": "，"
+  },
+  {
+    "id": "v4a0_abyss_assist_count_tip",
+    "lang": "协助次数：▩1%s/▩2%s"
+  },
+  {
+    "id": "v4a0_actflip_rewardtip_title",
+    "lang": "多格光影幕布▩1%s奖励预览"
+  },
+  {
+    "id": "v4a0_actflip_tasktime_tip",
+    "lang": "▩1%s结束"
+  },
+  {
+    "id": "autochessadventureview_mine",
+    "lang": "奇遇"
+  },
+  {
+    "id": "autochessadventureview_enemy",
+    "lang": "对手奇遇"
+  },
+  {
+    "id": "concertlimit_mainview_actend",
+    "lang": "▩1%s后结束"
+  },
+  {
+    "id": "concertlimit_mainview_actstart",
+    "lang": "▩1%s后开启"
+  },
+  {
+    "id": "SettingsDelUnusedResView_1",
+    "lang": "清理缓存文件（该操作不会删除映像中的剧情、语音等下载 过的资源）"
+  },
+  {
+    "id": "SettingsDelUnusedResView_2",
+    "lang": "清理所有非版本文件（该操作会删除映像中的剧情、语音等资源，请慎重）"
+  },
+  {
+    "id": "fight_common_double_param",
+    "lang": "▩1%s▩2%s"
   }
 ]

@@ -56,19 +56,15 @@
     "roomTheme": [
       1
     ],
-    "heroStoryIds": []
+    "heroStoryIds": [],
+    "heroSkinIds": []
   },
   {
     "id": 2,
     "character": [
-      3054,
-      3080,
-      3121,
-      3135,
-      3143,
-      3147,
-      3156,
-      3157
+      3155,
+      3158,
+      3163
     ],
     "chapter": [],
     "story": [],
@@ -78,6 +74,14 @@
     "path": [],
     "maxWeekWalk": 0,
     "roomTheme": [],
-    "heroStoryIds": []
+    "heroStoryIds": [],
+    "heroSkinIds": [
+      314503,
+      314003,
+      315503,
+      313403,
+      304805,
+      312803
+    ]
   }
 ]

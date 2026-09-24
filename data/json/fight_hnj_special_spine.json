@@ -1,0 +1,71 @@
+[
+  {
+    "skinId": 315501,
+    "resPath": "v4a0_315501_sxnwhnj_z/315501_sxnwhnj_z_fight",
+    "pos": [
+      -0.86,
+      0,
+      0
+    ],
+    "bornAnim": "v4a0_sxnwhnj_z_born",
+    "bornAnimDuration": 1,
+    "bornEffect": "buff/born/sxnwhnj_skill1_born",
+    "bornPoint": "mountroot",
+    "bornAudio": 431550151,
+    "bornDuration": 2,
+    "effect": "v4a0_sxnwhnj/sxnwhnj_innate2",
+    "hangPoint": "mountroot",
+    "dieAnim": "v4a0_sxnwhnj_z_die",
+    "dieAnimDuration": 1,
+    "dieEffect": "v4a0_sxnwhnj/sxnwhnj_skill1_03_05",
+    "diePoint": "mountroot",
+    "dieAudio": 431550152,
+    "dieDuration": 2
+  },
+  {
+    "skinId": 315502,
+    "resPath": "v4a0_315501_sxnwhnj_z/315501_sxnwhnj_z_fight",
+    "pos": [
+      -0.86,
+      0,
+      0
+    ],
+    "bornAnim": "v4a0_sxnwhnj_z_born",
+    "bornAnimDuration": 1,
+    "bornEffect": "buff/born/sxnwhnj_skill1_born",
+    "bornPoint": "mountroot",
+    "bornAudio": 431550151,
+    "bornDuration": 2,
+    "effect": "v4a0_sxnwhnj/sxnwhnj_innate2",
+    "hangPoint": "mountroot",
+    "dieAnim": "v4a0_sxnwhnj_z_die",
+    "dieAnimDuration": 1,
+    "dieEffect": "v4a0_sxnwhnj/sxnwhnj_skill1_03_05",
+    "diePoint": "mountroot",
+    "dieAudio": 431550152,
+    "dieDuration": 2
+  },
+  {
+    "skinId": 315503,
+    "resPath": "v4a0_315503_tlzchnj_z/315503_tlzchnj_z_fight",
+    "pos": [
+      -0.86,
+      0,
+      0
+    ],
+    "bornAnim": "v4a0_sxnwhnj_z_born",
+    "bornAnimDuration": 1,
+    "bornEffect": "buff/born/sxnwhnj_skill1_born",
+    "bornPoint": "mountroot",
+    "bornAudio": 431550151,
+    "bornDuration": 2,
+    "effect": "v4a0_tlzchnj/tlzchnj_innate2",
+    "hangPoint": "mountroot",
+    "dieAnim": "v4a0_sxnwhnj_z_die",
+    "dieAnimDuration": 1,
+    "dieEffect": "v4a0_sxnwhnj/sxnwhnj_skill1_03_05",
+    "diePoint": "mountroot",
+    "dieAudio": 431550152,
+    "dieDuration": 2
+  }
+]

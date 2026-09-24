@@ -1,0 +1,46 @@
+[
+  {
+    "effectId": 1001,
+    "type": "Destory"
+  },
+  {
+    "effectId": 1002,
+    "type": "Convert"
+  },
+  {
+    "effectId": 1003,
+    "type": "Heal"
+  },
+  {
+    "effectId": 1004,
+    "type": "AddBuff"
+  },
+  {
+    "effectId": 1005,
+    "type": "RemoveBuff"
+  },
+  {
+    "effectId": 1006,
+    "type": "RemoveBuffType"
+  },
+  {
+    "effectId": 1007,
+    "type": "Attack"
+  },
+  {
+    "effectId": 1008,
+    "type": "Attr"
+  },
+  {
+    "effectId": 1009,
+    "type": "Generate"
+  },
+  {
+    "effectId": 1010,
+    "type": "BombSkillRange"
+  },
+  {
+    "effectId": 1011,
+    "type": "Remove"
+  }
+]

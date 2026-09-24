@@ -4853,5 +4853,77 @@
     "levels": [
       18903
     ]
+  },
+  {
+    "id": 39001,
+    "name": "城堡·大厅",
+    "nameen": "Main Hall, Camelot",
+    "levels": [
+      39001
+    ]
+  },
+  {
+    "id": 39101,
+    "name": "城堡·走廊",
+    "nameen": "Hallway, Camelot",
+    "levels": [
+      39101
+    ]
+  },
+  {
+    "id": 39201,
+    "name": "海边悬崖",
+    "nameen": "Seaside Cliff",
+    "levels": [
+      39201
+    ]
+  },
+  {
+    "id": 39301,
+    "name": "城堡·大门",
+    "nameen": "Gate, Camelot",
+    "levels": [
+      39301
+    ]
+  },
+  {
+    "id": 39401,
+    "name": "城堡·上空",
+    "nameen": "Above the Castle",
+    "levels": [
+      39401
+    ]
+  },
+  {
+    "id": 39501,
+    "name": "城堡·广场",
+    "nameen": "Courtyard, Camelot",
+    "levels": [
+      39501
+    ]
+  },
+  {
+    "id": 39601,
+    "name": "天空",
+    "nameen": "Sky",
+    "levels": [
+      39601
+    ]
+  },
+  {
+    "id": 39701,
+    "name": "洞知场景",
+    "nameen": "",
+    "levels": [
+      39701
+    ]
+  },
+  {
+    "id": 24902,
+    "name": "迷雾森林",
+    "nameen": "Misty Forest",
+    "levels": [
+      24901
+    ]
   }
 ]

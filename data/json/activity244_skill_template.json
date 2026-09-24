@@ -1,0 +1,16 @@
+[
+  {
+    "id": 4010101,
+    "name": "卡邦克鲁",
+    "des": "",
+    "activeSkill": "100001#100002",
+    "passiveSkill": ""
+  },
+  {
+    "id": 4010102,
+    "name": "卡邦克鲁群",
+    "des": "",
+    "activeSkill": "100001",
+    "passiveSkill": "100003"
+  }
+]

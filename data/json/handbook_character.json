@@ -40,5 +40,11 @@
     "name": "待考种",
     "nameEng": "UNCLASSIFIED",
     "icon": 7
+  },
+  {
+    "id": 8,
+    "name": "神秘生物",
+    "nameEng": "MYTHICAL CREATURES",
+    "icon": 8
   }
 ]

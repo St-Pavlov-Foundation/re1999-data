@@ -511,7 +511,7 @@
     "specialInsightDesc": "",
     "specialLive2d": "",
     "characterVoice": 0,
-    "storeMv": "",
+    "storeMv": "v4a0_yx_show",
     "storeMvAudio": 0,
     "storeMvStopAudio": 0
   },
@@ -538,7 +538,7 @@
     "specialInsightDesc": "",
     "specialLive2d": "",
     "characterVoice": 0,
-    "storeMv": "",
+    "storeMv": "v4a0_ly_show",
     "storeMvAudio": 0,
     "storeMvStopAudio": 0
   },
@@ -672,5 +672,109 @@
     "storeMv": "s02_zxqe_show",
     "storeMvAudio": 3853062,
     "storeMvStopAudio": 3853065
+  },
+  {
+    "id": 315501,
+    "spine": "v4a0_315501_sxnwhnjxx/315501_sxnwhnjxx",
+    "spineParam": [
+      0,
+      0,
+      1
+    ],
+    "entranceMv": "",
+    "mvtime": 0,
+    "voice": [],
+    "actionTime": [],
+    "entranceEffect": "",
+    "effectDuration": 0,
+    "audio": 0,
+    "stopAudio": 0,
+    "specialInsightDesc": "",
+    "specialLive2d": "",
+    "characterVoice": 0,
+    "storeMv": "",
+    "storeMvAudio": 0,
+    "storeMvStopAudio": 0
+  },
+  {
+    "id": 315502,
+    "spine": "v4a0_315502_sxnwhnjxx/315502_sxnwhnjxx",
+    "spineParam": [
+      0,
+      0,
+      1
+    ],
+    "entranceMv": "v4a0_sxnwhnj_open",
+    "mvtime": 11,
+    "voice": [
+      1315535
+    ],
+    "actionTime": [
+      9.4
+    ],
+    "entranceEffect": "",
+    "effectDuration": 0,
+    "audio": 400038,
+    "stopAudio": 400039,
+    "specialInsightDesc": "",
+    "specialLive2d": "",
+    "characterVoice": 0,
+    "storeMv": "",
+    "storeMvAudio": 0,
+    "storeMvStopAudio": 0
+  },
+  {
+    "id": 315503,
+    "spine": "v4a0_315503_tlzchnjxx/315503_tlzchnjxx",
+    "spineParam": [
+      0,
+      0,
+      1
+    ],
+    "entranceMv": "v4a0_tlzchnj_open",
+    "mvtime": 17,
+    "voice": [
+      1315574
+    ],
+    "actionTime": [
+      6.7
+    ],
+    "entranceEffect": "",
+    "effectDuration": 0,
+    "audio": 400072,
+    "stopAudio": 400073,
+    "specialInsightDesc": "",
+    "specialLive2d": "",
+    "characterVoice": 0,
+    "storeMv": "v4a0_sphnj_show",
+    "storeMvAudio": 0,
+    "storeMvStopAudio": 0
+  },
+  {
+    "id": 313403,
+    "spine": "v4a0_313403_blexx/313403_blexx",
+    "spineParam": [
+      0,
+      0,
+      1
+    ],
+    "entranceMv": "v4a0_ble_open",
+    "mvtime": 12,
+    "voice": [
+      1313488
+    ],
+    "actionTime": [
+      9
+    ],
+    "entranceEffect": "",
+    "effectDuration": 0,
+    "audio": 400010,
+    "stopAudio": 400011,
+    "specialInsightDesc": "",
+    "specialLive2d": "",
+    "characterVoice": 0,
+    "storeMv": "v4a0_ble_show",
+    "storeMvAudio": 0,
+    "storeMvStopAudio": 0
   }
 ]
