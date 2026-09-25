@@ -74,6 +74,8 @@ function HandbookSkinScene:onClickFloorItem(index)
 		return
 	end
 
+	self._switchingFloorAni = true
+
 	if index > self._curSelectedIdx then
 		self._isUp = true
 		self._curSelectedIdx = index
@@ -90,6 +92,8 @@ function HandbookSkinScene:onClickFloorItem(index)
 end
 
 function HandbookSkinScene:onOriSceneAniDone()
+	self._switchingFloorAni = false
+
 	self:updateSuitGroupData(self._curSelectedIdx)
 	self:_refreshScene(self._skinSuitGroupCfgList[self._curSelectedIdx].id)
 	self:_createSuitItems()
@@ -285,6 +289,7 @@ function HandbookSkinScene:onOpen()
 	local viewParam = self.viewParam
 
 	self.sceneVisible = true
+	self._switchingFloorAni = false
 	self._skinSuitGroupCfgList = HandbookConfig.instance:getSkinThemeGroupCfgs(true, true)
 	self._defaultSelectedIdx = viewParam and viewParam.defaultSelectedIdx or HandbookController.instance:getDefaultHandbookSkinGroupId(self._skinSuitGroupCfgList)
 
@@ -674,6 +679,10 @@ function HandbookSkinScene:onIconClick(suitId)
 		return
 	end
 
+	if self._switchingFloorAni then
+		return
+	end
+
 	if not self.sceneVisible then
 		return
 	end
@@ -693,7 +702,11 @@ function HandbookSkinScene:onIconClick(suitId)
 			self._sevenSubScene:enterScene()
 		end
 	else
-		local suitIdx = self._suitId2IdxMap[suitId]
+		local suitIdx = self._suitId2IdxMap and self._suitId2IdxMap[suitId]
+
+		if not suitIdx then
+			return
+		end
 
 		if self._suitIdx ~= suitIdx then
 			self:slideToSuitIdx(suitIdx)

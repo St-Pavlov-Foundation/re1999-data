@@ -200,6 +200,7 @@ end
 function MatchGameFightView:initData()
 	self.actId = MatchGameModel.instance:getCurActId()
 	self.cureElementCureRate = tonumber(MatchGameConfig.instance:getConstValue(self.actId, MatchGameFightEnum.ConstId.CureElementCureRate))
+	self.maxChallengeScore = tonumber(MatchGameConfig.instance:getConstValue(self.actId, MatchGameFightEnum.ConstId.MaxChallengeScore))
 	self.gameInfoData = MatchGameFightModel.instance:getGameInfoData()
 	self.totalRoundCount = self.gameInfoData.gameConfig.maxRound
 	self.curRoundCount = 1
@@ -472,6 +473,7 @@ function MatchGameFightView:refreshChallenge()
 	local totalSkillUseNum = MatchGameFightModel.instance:getTotalSkillUseNum()
 
 	self.curChallengeScore = maxChain * MatchGameFightEnum.ScoreRate.MaxChain + weakAttackNum * MatchGameFightEnum.ScoreRate.WeakAttack + totalCureNum * MatchGameFightEnum.ScoreRate.Cure + totalSkillUseNum * MatchGameFightEnum.ScoreRate.SkillUse
+	self.curChallengeScore = Mathf.Min(self.curChallengeScore, self.maxChallengeScore)
 	self._txtchallengeScore.text = self.curChallengeScore
 end
 

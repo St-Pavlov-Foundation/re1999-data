@@ -24,12 +24,7 @@ function ClothesStorePreviewSkinComp:init(go)
 	self._txtskinName = gohelper.findChildText(self.viewGO, "#txt_skinName")
 	self._txtskinNameEn = gohelper.findChildText(self.viewGO, "#txt_skinNameEn")
 	self.special2dBgScale = {
-		[305305] = 2,
-		[310504] = 0.954,
-		[312003] = 2,
-		[311003] = 2,
-		[308303] = 2,
-		[314403] = 1.5
+		[310504] = 0.954
 	}
 	self._sp = CharacterSpName.s_createByListScrollCellExtend(self, gohelper.findChild(self.viewGO, "#txt_characterName/sp")):bindName0(self._txtcharacterName):simpleBindSpNameWithBg()
 end

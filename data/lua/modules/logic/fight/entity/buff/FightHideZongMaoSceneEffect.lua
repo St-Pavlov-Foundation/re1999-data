@@ -5,6 +5,10 @@ module("modules.logic.fight.entity.buff.FightHideZongMaoSceneEffect", package.se
 local FightHideZongMaoSceneEffect = class("FightHideZongMaoSceneEffect", FightBaseClass)
 
 function FightHideZongMaoSceneEffect:onConstructor(sceneEffect)
+	if gohelper.isNil(sceneEffect) then
+		return
+	end
+
 	self.tweenComp = self:addComponent(FightTweenComponent)
 	self.sceneEffect = sceneEffect
 	self.sceneEffectMat = self.sceneEffect:GetComponent(typeof(UnityEngine.MeshRenderer)).material

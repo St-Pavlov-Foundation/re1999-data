@@ -171,14 +171,18 @@ function FightEntityObject:_onSpineLoaded()
 
 	self.transformListener = ZProj.TransformListener.Get(self.go)
 
-	self.transformListener:AddPositionCallback(self._onTransformChange, self)
+	if not gohelper.isNil(self.transformListener) then
+		self.transformListener:AddPositionCallback(self._onTransformChange, self)
+	end
 
 	local exEntityData = FightDataHelper.entityExMgr:getById(self.id)
 
 	if exEntityData.needDispatchPositionChangeEvent then
 		self.spineTransformListener = ZProj.TransformListener.Get(self.spine:getSpineGO())
 
-		self.spineTransformListener:AddPositionCallback(self._onSpineTransformChange, self)
+		if not gohelper.isNil(self.spineTransformListener) then
+			self.spineTransformListener:AddPositionCallback(self._onSpineTransformChange, self)
+		end
 	end
 end
 

@@ -27,6 +27,8 @@ function RougePickAssistItem:onUpdateMO(mo)
 		self._heroItem:setBalanceLv(lv)
 	end
 
+	self._heroItem:setStyle_RougePickAssist()
+
 	local capacity = RougeConfig1.instance:getRoleCapacity(mo.heroMO.config.rare)
 
 	self._capacity = capacity

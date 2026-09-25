@@ -106,7 +106,6 @@ function PickAssistItem:onUpdateMO(mo)
 	local heroMO = self._mo.heroMO
 
 	self._heroItem:onUpdateMO(heroMO)
-	self._heroItem:setStyle_RougePickAssist()
 	self._heroItem:setNewShow(false)
 
 	local balanceLv

@@ -94,6 +94,7 @@ MatchGameFightEnum.ConstId = {
 	CureElementCureRate = 6,
 	HeroGroupUnlockCondition = 4,
 	PlaneWidthNum = 1,
+	MaxChallengeScore = 11,
 	PlaneHeightNum = 2,
 	ChainRate = 5,
 	SnapShotSize = 3

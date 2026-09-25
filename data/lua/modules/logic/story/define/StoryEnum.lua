@@ -163,8 +163,9 @@ StoryEnum.BgEffectType = {
 StoryEnum.BgRgbSplitType = {
 	Once = 1,
 	LoopStrong = 3,
-	LoopWeak = 2,
-	Trans = 0
+	RadialBlur = 4,
+	Trans = 0,
+	LoopWeak = 2
 }
 StoryEnum.AudioOrderType = {
 	Destroy = 2,

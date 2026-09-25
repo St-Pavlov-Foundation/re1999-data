@@ -156,7 +156,9 @@ function PowerMakerPatFaceView:onClose()
 end
 
 function PowerMakerPatFaceView:onDestroyView()
-	return
+	if self._ofMakerFlyGroup then
+		self._ofMakerFlyGroup:onDestroy()
+	end
 end
 
 return PowerMakerPatFaceView

@@ -296,8 +296,6 @@ function Live2dSpecialEffect_315503_tlzchnj:_resetMusicValue()
 
 	if self._mainOut then
 		CharacterVoiceController.instance:dispatchEvent(CharacterVoiceEvent.PlayMainViewAnim, "mainview_in")
-
-		self._mainOut = nil
 	end
 end
 

@@ -93,8 +93,8 @@ function MatchGameHeroGroupEditView:_updateRefreshContext()
 	if self._selectedId ~= 0 then
 		self._heroMo = MatchGameHeroGroupEditListModel.instance:getById(self._selectedId)
 		self._level = self._heroMo and self._heroMo.level or 1
-		self._heroCo = self._heroMo.heroCo
-		self._heroId = self._heroMo.heroId
+		self._heroCo = self._heroMo and self._heroMo.heroCo
+		self._heroId = self._heroMo and self._heroMo.heroId or 0
 		self._levelCost = MatchGameConfig.instance:getCharacterLevelUpCost(self._heroId, self._level + 1)
 		self._isItemEnough = MatchGameModel.instance:isItemEnough(self._levelCost)
 		self._maxLevel = MatchGameConfig.instance:getCharacterMaxLevel(self._heroId)

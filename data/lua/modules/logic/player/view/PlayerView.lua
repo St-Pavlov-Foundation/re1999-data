@@ -498,7 +498,7 @@ function PlayerView:_refreshShowHero(showHeros)
 end
 
 function PlayerView:_showCharacterRankInfo(info, item)
-	local rankObj = gohelper.findChild(item.go, "goCard/rankobj")
+	local rankObj = gohelper.findChild(item.goCard, "rankobj")
 	local rankGOs = {}
 
 	for i = 1, 3 do

@@ -230,7 +230,10 @@ function MatchGameHeroGroupEditListModel:_setSelectedCharacterId(heroId)
 end
 
 function MatchGameHeroGroupEditListModel:getSelectedCharacterId()
-	return self._selectedCharacterId or 0
+	local characterId = self._selectedCharacterId or 0
+	local characterMo = self:getById(characterId)
+
+	return characterMo and characterId or 0
 end
 
 function MatchGameHeroGroupEditListModel:handleQuickEditToggle()

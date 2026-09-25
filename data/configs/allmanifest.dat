@@ -85524,6 +85524,13 @@
     ]
   },
   {
+    "abName": "live2d/live2d_roles_share_46",
+    "assets": [
+      "effects/animation/roleeffect_dlk_idle14_5.anim"
+    ],
+    "directDependencies": []
+  },
+  {
     "abName": "live2d/live2d_roles_share_8",
     "assets": [
       "effects/textures/fire/fire_002_zn.png",
@@ -91290,6 +91297,7 @@
       "live2d/live2d_roles_share.dat",
       "live2d/live2d_roles_share_12.dat",
       "live2d/live2d_roles_share_43.dat",
+      "live2d/live2d_roles_share_46.dat",
       "shaders.dat"
     ]
   },
@@ -91325,6 +91333,7 @@
       "live2d/live2d_roles_share.dat",
       "live2d/live2d_roles_share_12.dat",
       "live2d/live2d_roles_share_43.dat",
+      "live2d/live2d_roles_share_46.dat",
       "scenes/scenes_share.dat",
       "scenes/scenes_share_33.dat",
       "shaders.dat",
@@ -203662,6 +203671,7 @@
       "ui/viewres/story/bg/storybg_energy_imbalance.prefab",
       "ui/viewres/story/bg/storybg_melt.prefab",
       "ui/viewres/story/bg/storybg_oil_painting.prefab",
+      "ui/viewres/story/bg/storybg_radialblur.prefab",
       "ui/viewres/story/bg/storybg_rgbsplit_changebg.prefab",
       "ui/viewres/story/bg/storybg_rgbsplit_changebg_doublerole.prefab",
       "ui/viewres/story/bg/storybg_rgbsplit_changebg_doublerole2.prefab",

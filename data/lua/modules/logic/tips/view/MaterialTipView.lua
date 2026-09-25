@@ -772,8 +772,20 @@ function MaterialTipView:_btnuseOnClick()
 			CustomPickChoiceController.instance:openCustomPickChoiceView(effectArr, MaterialTipController.onUseOptionalHeroGift, MaterialTipController, viewParam)
 		end
 	elseif self._config.subType == ItemEnum.SubType.SkinTicket then
+		if not self._canJump then
+			GameFacade.showToast(ToastEnum.MaterialTipViewCantUse)
+
+			return
+		end
+
 		StoreController.instance:openStoreView(500)
 	elseif self._config.subType == ItemEnum.SubType.DecorateDiscountTicket then
+		if not self._canJump then
+			GameFacade.showToast(ToastEnum.MaterialTipViewCantUse)
+
+			return
+		end
+
 		StoreController.instance:openStoreView(801)
 	elseif self._config.subType == ItemEnum.SubType.RoomTicket then
 		GameFacade.showMessageBox(MessageBoxIdDefine.GoToUseRoomTicket, MsgBoxEnum.BoxType.Yes_No, self._useRoomTicket, nil, nil, self, nil, nil)

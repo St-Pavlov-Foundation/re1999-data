@@ -73,7 +73,7 @@
     "heroResName": "304805_yl",
     "effectNode": "Drawables/roleeffect_yl_idle",
     "defaultState": "roleeffect_304805_yl_idle_1",
-    "stateList": "roleeffect_304805_yl_idle_2#b_xianliao1#b_xianliao2#b_xianliao3#b_fuxiong#b_shou#b_wanshang#b_xihao#b_beishou#b_zhanshi#b_sajiao#b_zaochen|roleeffect_304805_yl_idle_3#b_qinmizaochen|roleeffect_304805_yl_idle_5#b_huode|roleeffect_304805_yl_idle_07#b_shenti",
+    "stateList": "roleeffect_304805_yl_idle_2#b_xianliao1#b_xianliao2#b_xianliao3#b_weilaicaixiang#b_fuxiong#b_shou#b_wanshang#b_xihao#b_beishou#b_zhanshi#b_sajiao#b_zaochen|roleeffect_304805_yl_idle_3#b_qinmizaochen|roleeffect_304805_yl_idle_5#b_huode|roleeffect_304805_yl_idle_07#b_shenti",
     "delay": 0.0
   },
   {
@@ -164,14 +164,14 @@
     "heroResName": "315801_dlk",
     "effectNode": "Drawables/bone14/effect-Bone/roleeffect_dlk_idle14",
     "defaultState": "roleeffect_dlk_idle14_0",
-    "stateList": "roleeffect_dlk_idle14_1#b_jujian1|roleeffect_dlk_idle14_3#b_jujian3|roleeffect_dlk_idle14_once#b_jujian",
+    "stateList": "roleeffect_dlk_idle14_1#b_jujian1|roleeffect_dlk_idle14_3#b_jujian3|roleeffect_dlk_idle14_once#b_jujian|roleeffect_dlk_idle14_5#b_tanshou",
     "delay": 0.0
   },
   {
     "heroResName": "315802_dlk",
     "effectNode": "Drawables/bone14/effect-Bone/roleeffect_dlk_idle14",
     "defaultState": "roleeffect_dlk_idle14_0",
-    "stateList": "roleeffect_dlk_idle14_1#b_jujian1|roleeffect_dlk_idle14_3#b_jujian3|roleeffect_dlk_idle14_once#b_jujian|roleeffect_dlk_idle14_4#b_jingji",
+    "stateList": "roleeffect_dlk_idle14_1#b_jujian1|roleeffect_dlk_idle14_3#b_jujian3|roleeffect_dlk_idle14_once#b_jujian|roleeffect_dlk_idle14_4#b_jingji|roleeffect_dlk_idle14_5#b_tanshou",
     "delay": 0.0
   },
   {

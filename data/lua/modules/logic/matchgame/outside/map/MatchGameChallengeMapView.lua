@@ -30,6 +30,7 @@ function MatchGameChallengeMapView:addEvents()
 	self._btnReward:AddClickListener(self._btnRewardOnClick, self)
 	self._btnEnter:AddClickListener(self._btnEnterOnClick, self)
 	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, self._onCloseView, self)
+	self:addEventCb(TimeDispatcher.instance, TimeDispatcher.OnDailyRefresh, self._onDailyRefresh, self)
 	self:addEventCb(MatchGameController.instance, MatchGameEvent.OnUpdateEpisodeInfo, self._onUpdateEpisodeInfo, self)
 	self:addEventCb(MatchGameController.instance, MatchGameEvent.OnClickSelectMap, self._onClickSelectMap, self)
 end
@@ -70,7 +71,6 @@ function MatchGameChallengeMapView:refreshUI()
 	self:refreshChapterBg()
 	self:refreshRewardEntry()
 	self:refreshBossItemList()
-	self:tickUpdateBossInfo()
 end
 
 function MatchGameChallengeMapView:refreshChapterBg()
@@ -186,19 +186,7 @@ function MatchGameChallengeMapView:_onClickSelectMap()
 	self:refreshUI()
 end
 
-function MatchGameChallengeMapView:tickUpdateBossInfo()
-	TaskDispatcher.cancelTask(self._sendRpc2UpdateBossInfo, self)
-
-	local nextBossUpdateTime = self._challengeMo and self._challengeMo.nextRoundTime
-
-	if nextBossUpdateTime and nextBossUpdateTime > ServerTime.now() then
-		local delaySeconds = math.ceil(nextBossUpdateTime / 1000 - ServerTime.now())
-
-		TaskDispatcher.runDelay(self._sendRpc2UpdateBossInfo, self, delaySeconds)
-	end
-end
-
-function MatchGameChallengeMapView:_sendRpc2UpdateBossInfo()
+function MatchGameChallengeMapView:_onDailyRefresh()
 	self._callbackId = MatchGameRpc.instance:sendGetAct244InfoRequest(self._actId, self.refreshUI, self)
 end
 
@@ -223,7 +211,6 @@ end
 
 function MatchGameChallengeMapView:onDestroyView()
 	self._simageBg:UnLoadImage()
-	TaskDispatcher.cancelTask(self._sendRpc2UpdateBossInfo, self)
 end
 
 return MatchGameChallengeMapView

@@ -27,6 +27,8 @@ function StoryBgEffsRgbSplit:_apply()
 		self:_showLoopWeak()
 	elseif self._bgCo.effDegree == StoryEnum.BgRgbSplitType.LoopStrong then
 		self:_showLoopStrong()
+	elseif self._bgCo.effDegree == StoryEnum.BgRgbSplitType.RadialBlur then
+		self:_showRadialBlur()
 	end
 end
 
@@ -209,6 +211,40 @@ function StoryBgEffsRgbSplit:_onLoopStrongLoaded()
 	end
 end
 
+function StoryBgEffsRgbSplit:_showRadialBlur()
+	self._prefabPath = "ui/viewres/story/bg/storybg_radialblur.prefab"
+
+	table.insert(self._resList, self._prefabPath)
+	self:loadRes()
+end
+
+function StoryBgEffsRgbSplit:_onRadialBlurLoaded()
+	local prefAssetItem = self._loader:getAssetItem(self._prefabPath)
+
+	if not prefAssetItem then
+		return
+	end
+
+	local heroGo = StoryViewMgr.instance:getStoryHeroView()
+
+	self._effGo = gohelper.clone(prefAssetItem:GetResource(), heroGo)
+
+	StoryTool.enablePostProcess(true)
+	gohelper.setAsFirstSibling(self._effGo)
+
+	self._img = self._effGo:GetComponent(typeof(UnityEngine.UI.Image))
+
+	if self._img then
+		gohelper.setActive(self._img.gameObject, true)
+
+		local blitEff = StoryViewMgr.instance:getStoryBlitEff()
+
+		if blitEff then
+			self._img.material:SetTexture("_MainTex", blitEff.capturedTexture)
+		end
+	end
+end
+
 function StoryBgEffsRgbSplit:onLoadFinished()
 	StoryBgEffsRgbSplit.super.onLoadFinished(self)
 
@@ -220,6 +256,8 @@ function StoryBgEffsRgbSplit:onLoadFinished()
 		self:_onLoopWeakLoaded()
 	elseif self._bgCo.effDegree == StoryEnum.BgRgbSplitType.LoopStrong then
 		self:_onLoopStrongLoaded()
+	elseif self._bgCo.effDegree == StoryEnum.BgRgbSplitType.RadialBlur then
+		self:_onRadialBlurLoaded()
 	end
 end
 
