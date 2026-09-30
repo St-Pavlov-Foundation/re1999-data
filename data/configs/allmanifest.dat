@@ -174238,6 +174238,16 @@
     "directDependencies": []
   },
   {
+    "abName": "singlebg/store_55_basics",
+    "assets": [
+      "singlebg/store/package/v4a0_linkpack_1sum.png",
+      "singlebg/store/package/v4a0_linkpack_2sum.png",
+      "singlebg/store/package/v4a0_linkpack_3sum.png",
+      "singlebg/store/package/v4a0_linkpack_4sum.png"
+    ],
+    "directDependencies": []
+  },
+  {
     "abName": "singlebg/store_5_basics",
     "assets": [
       "singlebg/store/decorate/store_decorate_type5_1002.png",

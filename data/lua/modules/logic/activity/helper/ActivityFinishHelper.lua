@@ -117,4 +117,6 @@ function ActivityFinishHelper.CheckActivity13930Finish(actId)
 	return true
 end
 
+ActivityFinishHelper.CheckActivity14043Finish = ActivityFinishHelper.CheckActivity138517Finish
+
 return ActivityFinishHelper

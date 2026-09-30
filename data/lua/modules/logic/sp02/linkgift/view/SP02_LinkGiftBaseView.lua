@@ -61,7 +61,7 @@ function SP02_LinkGiftBaseView:_editableInitView()
 	self.animator = gohelper.findChildComponent(self.viewGO, "", gohelper.Type_Animator)
 end
 
-local maxRewardIndex = 3
+local maxRewardIndex = 4
 local itemType = {
 	Free = 1,
 	LinkGift = 3,

@@ -141,6 +141,7 @@ function MainView:addEvents()
 	self:addEventCb(TaskController.instance, TaskEvent.UpdateTaskList, self.showStoreRedDot, self)
 	self:addEventCb(TaskController.instance, TaskEvent.SetTaskList, self.showStoreRedDot, self)
 	self:addEventCb(TaskController.instance, TaskEvent.OnFinishTask, self.showStoreRedDot, self)
+	self:addEventCb(MainUISwitchController.instance, MainUISwitchEvent.UseMainUI, self.showStoreRedDot, self)
 end
 
 function MainView:removeEvents()
@@ -178,6 +179,7 @@ function MainView:removeEvents()
 	self:removeEventCb(TaskController.instance, TaskEvent.UpdateTaskList, self.showStoreRedDot, self)
 	self:removeEventCb(TaskController.instance, TaskEvent.SetTaskList, self.showStoreRedDot, self)
 	self:removeEventCb(TaskController.instance, TaskEvent.OnFinishTask, self.showStoreRedDot, self)
+	self:removeEventCb(MainUISwitchController.instance, MainUISwitchEvent.UseMainUI, self.showStoreRedDot, self)
 	FightController.instance:unregisterCallback(FightEvent.HideKolStdStageEnterBtn, self.onHideKolStdStageEnterBtn, self)
 end
 
@@ -673,7 +675,6 @@ end
 function MainView:showStoreRedDot()
 	self._redBank.show = false
 
-	self._redBank:showRedDot(RedDotEnum.Style.Normal)
 	self:storeRedDotRefreshFunc(self._redBank)
 end
 
@@ -685,7 +686,9 @@ function MainView:storeRedDotRefreshFunc(redDotIcon)
 	if not redDotIcon.show and StoreModel.instance:isHasTaskGoodsReward() then
 		redDotIcon.show = true
 
-		redDotIcon:showRedDot(RedDotEnum.Style.Normal)
+		local style = MainUISwitchModel.instance:getCurUseRedDotNewStyle() or RedDotEnum.Style.Normal
+
+		redDotIcon:showRedDot(style)
 		self:showStoreDeadline(false)
 		self:registStoreDeadlineCall(false)
 

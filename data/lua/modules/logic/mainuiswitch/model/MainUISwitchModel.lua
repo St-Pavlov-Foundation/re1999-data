@@ -28,6 +28,14 @@ function MainUISwitchModel:getCurUseUI()
 	return self._curUseUI or self:_getUseUIDefaultId()
 end
 
+function MainUISwitchModel:getCurUseRedDotNewStyle()
+	local switchReddotCo = MainUISwitchConfig.instance:getUIReddotNewStyleCO(self:getCurUseUI())
+
+	if switchReddotCo then
+		return switchReddotCo.style
+	end
+end
+
 function MainUISwitchModel:_getUseUIDefaultId()
 	for _, co in ipairs(lua_scene_ui.configList) do
 		if co.defaultUnlock == 1 then

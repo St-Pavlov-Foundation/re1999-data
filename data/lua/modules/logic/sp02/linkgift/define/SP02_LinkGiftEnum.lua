@@ -33,6 +33,13 @@ SP02_LinkGiftEnum.LineProgress = {
 		0.26,
 		0.15,
 		0
+	},
+	{
+		0.76,
+		0.53,
+		0.28,
+		0.25,
+		0
 	}
 }
 SP02_LinkGiftEnum.PopPauseKey = "SP02_LinkGiftView_PopPause"
