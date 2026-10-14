@@ -90,13 +90,16 @@ function PlayerCardAchievementNamePlateSelectItem:refreshUI()
 		titlebgName = temp[2]
 	end
 
-	local function callback()
-		local go = item._bgLoader:getInstGO()
+	if not item._bgLoader then
+		local function callback()
+			local go = item._bgLoader:getInstGO()
+		end
+
+		item._bgLoader = PrefabInstantiate.Create(item.gobg)
+
+		item._bgLoader:startLoad(AchievementUtils.getBgPrefabUrl(bgName), callback, self)
 	end
 
-	item._bgLoader = PrefabInstantiate.Create(item.gobg)
-
-	item._bgLoader:startLoad(AchievementUtils.getBgPrefabUrl(bgName), callback, self)
 	item.simagetitle:LoadImage(ResUrl.getAchievementLangIcon(titlebgName))
 
 	local listenerType = self._co.listenerType

@@ -358,21 +358,18 @@ function AutoChessFriendBattleView:refreshPlayerInfoView()
 	end
 end
 
-function AutoChessFriendBattleView:refreshMonsterInfoView(warZones, masterMo, isMySelf)
+function AutoChessFriendBattleView:refreshMonsterInfoView(warZones, masterData, isMySelf)
 	local chessDatas = {}
 
 	for _, zone in ipairs(warZones) do
-		local id = zone.id
 		local positions = zone.positions
 
 		for _, positionData in ipairs(positions) do
-			local idx = positionData.index
-			local chessId = positionData.chess.id
 			local chessData = {}
 
-			chessData.zoneId = id
-			chessData.chessId = chessId
-			chessData.idx = idx
+			chessData.zoneId = zone.id
+			chessData.chessId = positionData.chess.id
+			chessData.idx = positionData.index
 			chessDatas[#chessDatas + 1] = chessData
 		end
 	end
@@ -424,16 +421,15 @@ function AutoChessFriendBattleView:refreshMonsterInfoView(warZones, masterMo, is
 		transformhelper.setLocalScale(go.transform, x, y, z)
 	end
 
-	if not masterMo then
-		return
-	end
+	if masterData and masterData.id ~= 0 then
+		local snapLeaderGo = isMySelf and self._goPlayerLeaderMesh or self._goEnemyLeaderMesh
+		local leaderCfg = AutoChessConfig.instance:getLeaderCfg(masterData.id)
 
-	local snapLeaderGo = isMySelf and self._goPlayerLeaderMesh or self._goEnemyLeaderMesh
+		if leaderCfg then
+			local comp = MonoHelper.addNoUpdateLuaComOnceToGo(snapLeaderGo, AutoChessMeshComp)
 
-	if masterMo.config then
-		local comp = MonoHelper.addNoUpdateLuaComOnceToGo(snapLeaderGo, AutoChessMeshComp)
-
-		comp:setData(masterMo.config.image, false, true)
+			comp:setData(leaderCfg.image, false, true)
+		end
 	end
 end
 
@@ -455,14 +451,7 @@ function AutoChessFriendBattleView:refreshBtnState()
 	SLFramework.UGUI.GuiHelper.SetColor(self._imageBattleStart, canStart and "#FFFFFF" or "#B0B0B0")
 
 	local friendFightRecords = self._actMo:getFriendFightRecords()
-	local hasFightRecord = false
-
-	if friendFightRecords then
-		for _, record in ipairs(friendFightRecords) do
-			hasFightRecord = true
-		end
-	end
-
+	local hasFightRecord = friendFightRecords and #friendFightRecords > 0
 	local recordBtnGray = not hasFightRecord
 
 	gohelper.setActive(self._goRecord, not recordBtnGray)

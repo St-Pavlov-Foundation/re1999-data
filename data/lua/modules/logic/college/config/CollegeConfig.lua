@@ -407,6 +407,21 @@ function CollegeConfig:getBubbleByBuildingId(buildingId)
 	return self._bubbleDict[buildingId] or {}
 end
 
+function CollegeConfig:getMilestoneThemeUIPos(themeId)
+	local posList = self._themeUIPosMap and self._themeUIPosMap[themeId]
+
+	if not posList then
+		local themeCo = lua_college_story_theme.configDict[themeId]
+		local posStr = themeCo and themeCo.uiPos or ""
+
+		posList = GameUtil.splitString2(posStr, true)
+		self._themeUIPosMap = self._themeUIPosMap or {}
+		self._themeUIPosMap[themeId] = posList
+	end
+
+	return posList
+end
+
 CollegeConfig.instance = CollegeConfig.New()
 
 return CollegeConfig

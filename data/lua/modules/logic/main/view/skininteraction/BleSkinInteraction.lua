@@ -34,7 +34,6 @@ function BleSkinInteraction:_onInit()
 
 	self._targetPos = Vector2(31.78, -78.47)
 	self._lightSpine = self._view._lightSpine
-	self._spineGo = self._lightSpine:getSpineGo()
 	self._boneDragOffsetPos = {}
 end
 
@@ -255,9 +254,6 @@ function BleSkinInteraction:beforeBeginDrag(view, config, skinConfig)
 	self._live2d = self._lightSpine:_getLive2d()
 
 	local spineGo = self._lightSpine:getSpineGo()
-
-	self._spineGo = spineGo
-
 	local pos = recthelper.screenPosToAnchorPos(GamepadController.instance:getMousePosition(), self._mainHeroView._golightspinecontrol.transform)
 	local posX = pos.x
 	local posY = pos.y
@@ -364,17 +360,19 @@ end
 
 function BleSkinInteraction:_initCrystalLightOutEffect()
 	if not self._lightCrystalOutEffectGoList then
+		local spineGo = self._lightSpine:getSpineGo()
+
 		self._lightCrystalOutEffectGoList = {}
 
 		for i, v in ipairs(areaList) do
 			local effectIndex = v[5]
 			local lightCrystalOutEffectPath = string.format("Drawables/bone%s/effect-Bone/roleeffect_ble_jhout_%s", effectIndex, effectIndex)
-			local go = gohelper.findChild(self._spineGo, lightCrystalOutEffectPath)
+			local go = gohelper.findChild(spineGo, lightCrystalOutEffectPath)
 
 			self._lightCrystalOutEffectGoList[i] = go
 
 			if not go then
-				logError(string.format("BleSkinInteraction no lightCrystalOutEffectPath go:%s path %s ", self._spineGo, lightCrystalOutEffectPath))
+				logError(string.format("BleSkinInteraction no lightCrystalOutEffectPath go:%s path %s ", spineGo, lightCrystalOutEffectPath))
 			end
 		end
 	end
@@ -390,17 +388,19 @@ end
 
 function BleSkinInteraction:_initCrystalLightEffect()
 	if not self._lightCrystalEffectGoList then
+		local spineGo = self._lightSpine:getSpineGo()
+
 		self._lightCrystalEffectGoList = {}
 
 		for i, v in ipairs(areaList) do
 			local effectIndex = v[5]
 			local lightCrystalEffectPath = string.format("Drawables/bone%s/effect-Bone/roleeffect_ble_jh03_%s", effectIndex, effectIndex)
-			local go = gohelper.findChild(self._spineGo, lightCrystalEffectPath)
+			local go = gohelper.findChild(spineGo, lightCrystalEffectPath)
 
 			self._lightCrystalEffectGoList[i] = go
 
 			if not go then
-				logError(string.format("BleSkinInteraction no lightCrystalEffectPath go:%s path %s ", self._spineGo, lightCrystalEffectPath))
+				logError(string.format("BleSkinInteraction no lightCrystalEffectPath go:%s path %s ", spineGo, lightCrystalEffectPath))
 			end
 		end
 	end
@@ -415,8 +415,10 @@ function BleSkinInteraction:_setAllCrystalLightEffectVisible(isVisible)
 end
 
 function BleSkinInteraction:_initMats()
+	local spineGo = self._lightSpine:getSpineGo()
+
 	if gohelper.isNil(self._mat) then
-		local meshGo = gohelper.findChild(self._spineGo, "Drawables/ArtMesh10")
+		local meshGo = gohelper.findChild(spineGo, "Drawables/ArtMesh10")
 		local render = meshGo and meshGo:GetComponent(typeof(UnityEngine.Renderer))
 
 		self._mat = render and render.sharedMaterial
@@ -427,7 +429,7 @@ function BleSkinInteraction:_initMats()
 	end
 
 	if gohelper.isNil(self._mat2) then
-		local meshGo = gohelper.findChild(self._spineGo, "Drawables/ArtMesh9")
+		local meshGo = gohelper.findChild(spineGo, "Drawables/ArtMesh9")
 		local render = meshGo and meshGo:GetComponent(typeof(UnityEngine.Renderer))
 
 		self._mat2 = render and render.sharedMaterial
@@ -599,14 +601,15 @@ end
 function BleSkinInteraction:_showFinishEffect()
 	self:_playCameraAnim("313402_ble_jh04")
 
+	local spineGo = self._lightSpine:getSpineGo()
 	local finishEffectIndex = math.random(1, #dragFinishEffect)
 	local finishEffect = dragFinishEffect[finishEffectIndex]
-	local finishEffectGo = gohelper.findChild(self._spineGo, finishEffect)
+	local finishEffectGo = gohelper.findChild(spineGo, finishEffect)
 
 	self._finshEffectGo = finishEffectGo
 
 	if not finishEffectGo then
-		logError(string.format("BleSkinInteraction no finish effect go:%s path %s ", self._spineGo, finishEffect))
+		logError(string.format("BleSkinInteraction no finish effect go:%s path %s ", spineGo, finishEffect))
 	else
 		gohelper.setActive(finishEffectGo, false)
 		gohelper.setActive(finishEffectGo, true)

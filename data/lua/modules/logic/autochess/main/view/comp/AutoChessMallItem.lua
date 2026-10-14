@@ -269,7 +269,7 @@ function AutoChessMallItem:initBuffEffect()
 		if buffeffectID ~= 0 then
 			local effectCo = AutoChessConfig.instance:getEffectCfg(buffeffectID)
 
-			if effectCo.loop == 1 then
+			if effectCo and effectCo.loop == 1 then
 				self.effectComp:playEffect(effectCo)
 			end
 		end

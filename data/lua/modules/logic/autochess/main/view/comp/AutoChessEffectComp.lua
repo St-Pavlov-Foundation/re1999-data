@@ -10,6 +10,7 @@ function AutoChessEffectComp:init(go)
 	self.goEffPointD = gohelper.findChild(go, "eff_down")
 	self.effectTblMap = self:getUserDataTb_()
 	self.cacheEffectTblMap = self:getUserDataTb_()
+	self._delayCacheTasks = self:getUserDataTb_()
 end
 
 function AutoChessEffectComp:playEffect(effectCo, param)
@@ -117,17 +118,52 @@ function AutoChessEffectComp:cacheEffect(effectName, time)
 	local cacheTbl = self:getCacheEffectTbl(effectName)
 
 	if time == 0 then
-		local effectGo = table.remove(tbl, 1)
+		local effectGo = table.remove(tbl, #tbl)
 
-		table.insert(cacheTbl, effectGo)
-		gohelper.setActive(effectGo, false)
-	else
-		TaskDispatcher.runDelay(function()
-			local effectGo = table.remove(tbl, 1)
-
+		if effectGo then
 			table.insert(cacheTbl, effectGo)
 			gohelper.setActive(effectGo, false)
-		end, self, time)
+		end
+	else
+		local effectGo = tbl[#tbl]
+
+		if not effectGo then
+			return
+		end
+
+		local function callback()
+			self._delayCacheTasks[effectGo] = nil
+
+			local index = self:_getEffectIndex(tbl, effectGo)
+
+			if index then
+				table.remove(tbl, index)
+				table.insert(cacheTbl, effectGo)
+				gohelper.setActive(effectGo, false)
+			end
+		end
+
+		self._delayCacheTasks[effectGo] = callback
+
+		TaskDispatcher.runDelay(callback, self, time)
+	end
+end
+
+function AutoChessEffectComp:_getEffectIndex(effectTbl, effectGo)
+	for i, go in ipairs(effectTbl) do
+		if go == effectGo then
+			return i
+		end
+	end
+end
+
+function AutoChessEffectComp:_cancelDelayCacheTask(effectGo)
+	local callback = self._delayCacheTasks[effectGo]
+
+	if callback then
+		TaskDispatcher.cancelTask(callback, self)
+
+		self._delayCacheTasks[effectGo] = nil
 	end
 end
 
@@ -139,6 +175,7 @@ function AutoChessEffectComp:removeEffect(effectId)
 			local cacheTbl = self:getCacheEffectTbl(name)
 
 			for i = #effectTbl, 1, -1 do
+				self:_cancelDelayCacheTask(effectTbl[i])
 				gohelper.setActive(effectTbl[i], false)
 				table.insert(cacheTbl, effectTbl[i])
 
@@ -169,11 +206,18 @@ function AutoChessEffectComp:hideAll()
 		local cacheTbl = self:getCacheEffectTbl(name)
 
 		for i = #effectTbl, 1, -1 do
+			self:_cancelDelayCacheTask(effectTbl[i])
 			gohelper.setActive(effectTbl[i], false)
 			table.insert(cacheTbl, effectTbl[i])
 
 			effectTbl[i] = nil
 		end
+	end
+end
+
+function AutoChessEffectComp:onDestroy()
+	for _, callback in pairs(self._delayCacheTasks) do
+		TaskDispatcher.cancelTask(callback, self)
 	end
 end
 

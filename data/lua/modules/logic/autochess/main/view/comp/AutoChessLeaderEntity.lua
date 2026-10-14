@@ -247,6 +247,7 @@ function AutoChessLeaderEntity:refreshCollection()
 	end
 
 	gohelper.setActive(self.goCollectionItem, mutationId)
+	gohelper.setActive(self.goCollection, mutationId)
 end
 
 return AutoChessLeaderEntity

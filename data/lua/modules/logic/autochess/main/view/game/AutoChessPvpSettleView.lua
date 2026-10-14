@@ -83,11 +83,11 @@ function AutoChessPvpSettleView:onOpen()
 
 		gohelper.setActive(self._goWin, self.settleData.round == maxRound)
 		gohelper.setActive(self._goLose, self.settleData.round ~= maxRound)
+		self:_createSnapshotMap()
 	end
 
 	gohelper.setActive(self._goSnapChess, false)
 	gohelper.setActive(self._goSnapLeaderMesh, false)
-	self:_createSnapshotMap()
 end
 
 function AutoChessPvpSettleView:onClose()
@@ -104,8 +104,6 @@ function AutoChessPvpSettleView:onSaveSnapshotResponse(_, resultCode)
 end
 
 function AutoChessPvpSettleView:_createSnapshotMap()
-	self.settleData = AutoChessModel.instance.settleData
-
 	local leaderCo = AutoChessConfig.instance:getLeaderCfg(self.settleData.masterId)
 
 	if leaderCo then
@@ -161,8 +159,12 @@ function AutoChessPvpSettleView:refreshMonsterInfoView(warZones)
 
 			comp1:setData(config.image)
 
-			local chessPosX = chessPlayerLinesPosX[chessData.zoneId] + chessData.idx * chessLinesPosOffsetX[chessData.zoneId]
-			local chessPosY = chessPlayerLinesPosY[chessData.zoneId]
+			local chessPosX = chessPlayerLinesPosX[chessData.zoneId] or 0
+			local offsetX = chessLinesPosOffsetX[chessData.zoneId] or 0
+
+			chessPosX = chessPosX + chessData.idx * offsetX
+
+			local chessPosY = chessPlayerLinesPosY[chessData.zoneId] or 0
 
 			recthelper.setAnchor(go.transform, chessPosX, chessPosY)
 

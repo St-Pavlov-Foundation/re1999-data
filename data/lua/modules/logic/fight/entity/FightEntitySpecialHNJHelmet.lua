@@ -102,4 +102,12 @@ function FightEntitySpecialHNJHelmet:resetAnimState()
 	return
 end
 
+function FightEntitySpecialHNJHelmet:setScale(scale)
+	if gohelper.isNil(self.goTransform) then
+		return
+	end
+
+	transformhelper.setLocalScale(self.goTransform, scale, scale, scale)
+end
+
 return FightEntitySpecialHNJHelmet

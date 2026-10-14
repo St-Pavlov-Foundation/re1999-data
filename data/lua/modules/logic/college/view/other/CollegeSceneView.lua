@@ -270,11 +270,11 @@ function CollegeSceneView:_calcSceneSize(cameraSize)
 	self._mapMinX, self._mapMaxX, self._mapMinY, self._mapMaxY = self:_calcSize(cameraSize, self._curMapInst)
 
 	if CollegeModel.instance.curSceneType == CollegeEnum.SceneType.Map then
-		self._mapBgMinX, self._mapBgMaxX, self._mapBgMinY, self._mapBgMaxY = self:_calcSize(cameraSize, self._mapBgInst)
+		self._mapBgMinX, self._mapBgMaxX, self._mapBgMinY, self._mapBgMaxY = self:_calcSize(cameraSize, self._mapBgInst, true)
 	end
 end
 
-function CollegeSceneView:_calcSize(cameraSize, root)
+function CollegeSceneView:_calcSize(cameraSize, root, useLocalScale)
 	if not root then
 		return
 	end
@@ -290,7 +290,7 @@ function CollegeSceneView:_calcSize(cameraSize, root)
 	local box = sizeGo:GetComponentInChildren(typeof(UnityEngine.BoxCollider))
 	local mapSize = box.size
 	local center = box.center
-	local lossyScale = sizeGo.transform.lossyScale
+	local lossyScale = useLocalScale and sizeGo.transform.localScale or sizeGo.transform.lossyScale
 
 	mapSize.x = mapSize.x * lossyScale.x
 	mapSize.y = mapSize.y * lossyScale.y

@@ -30,6 +30,12 @@ function TowerSkillTipView:removeEvents()
 	return
 end
 
+TowerSkillTipView.skillTypeColor = {
+	"#405874",
+	"#8c4e31",
+	"#9b7039"
+}
+
 function TowerSkillTipView:_editableInitView()
 	gohelper.setActive(self._goBuffContainer, false)
 	self._scrollskilltipScrollview:AddOnValueChanged(self._refreshArrow, self)

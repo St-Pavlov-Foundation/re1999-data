@@ -19,6 +19,7 @@ function AutoChessRemoveWork:onStart()
 
 	if chessEntity then
 		if self.skillEffectId then
+			gohelper.setActive(chessEntity.go, true)
 			chessEntity:playEffect(self.skillEffectId)
 		end
 

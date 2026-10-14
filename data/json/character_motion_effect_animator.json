@@ -164,7 +164,7 @@
     "heroResName": "315801_dlk",
     "effectNode": "Drawables/bone14/effect-Bone/roleeffect_dlk_idle14",
     "defaultState": "roleeffect_dlk_idle14_0",
-    "stateList": "roleeffect_dlk_idle14_1#b_jujian1|roleeffect_dlk_idle14_3#b_jujian3|roleeffect_dlk_idle14_once#b_jujian|roleeffect_dlk_idle14_5#b_tanshou",
+    "stateList": "roleeffect_dlk_idle14_1#b_jujian1|roleeffect_dlk_idle14_3#b_jujian3|roleeffect_dlk_idle14_once#b_jujian|roleeffect_dlk_idle14_5#b_tanshou#b_tanshouyuyin",
     "delay": 0.0
   },
   {

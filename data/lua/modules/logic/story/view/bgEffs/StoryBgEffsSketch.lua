@@ -111,8 +111,6 @@ function StoryBgEffsSketch:reset(bgCo)
 
 	if self._effGo then
 		self:_applyEffect()
-	else
-		self:loadRes()
 	end
 end
 

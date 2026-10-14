@@ -613,6 +613,10 @@ function FightNameUI:_updateFollow(unitSpine)
 			self._uiFollower:Set(unitCamera, uiCamera, plane, self.entity.go.transform, 0 + worldOffsetX - 5, 0, 0, uiOffsetX, uiOffsetY + 15)
 		else
 			self._uiFollower:Set(unitCamera, uiCamera, plane, hangPointGO.transform, 0 + worldOffsetX, boxHeight + spineY - middleY + worldOffsetY * scaleY, 0, uiOffsetX, uiOffsetY + 15)
+
+			if self.entity and self.entity.entityData and self.entity.entityData.skin == 630414 then
+				self._uiFollower:Set(unitCamera, uiCamera, plane, hangPointGO.transform, 0 + worldOffsetX, 1.5102339267731, 0, uiOffsetX, uiOffsetY + 15)
+			end
 		end
 	end
 

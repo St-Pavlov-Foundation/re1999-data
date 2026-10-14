@@ -18,8 +18,8 @@ function AutoChessMainViewContainer:buildTabViews(tabContainerId)
 		self.navigateView = NavigateButtonsView.New({
 			true,
 			true,
-			true
-		}, 3207003)
+			false
+		})
 
 		return {
 			self.navigateView

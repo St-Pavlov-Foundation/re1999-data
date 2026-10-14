@@ -221,7 +221,7 @@
     "name": "鱼案暗香",
     "skillTextType": 2,
     "skillText": "消除范围内百货",
-    "desc": "消除上中间三行的百货",
+    "desc": "消除中间三行的百货",
     "rangeType": 2,
     "rangesize": 0,
     "effectPos": "4#3|4#4|4#5",

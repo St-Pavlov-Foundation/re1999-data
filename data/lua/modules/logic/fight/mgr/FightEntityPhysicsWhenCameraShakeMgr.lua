@@ -31,18 +31,24 @@ function FightEntityPhysicsWhenCameraShakeMgr:onUpdate(deltaTime)
 		if not self.isSet then
 			self:_setSpinePhysicsInheritance(false)
 		end
-	elseif self.isSet then
-		self.gapTimer = self.gapTimer + deltaTime
-
-		if self.gapTimer >= SHAKE_GAP_TOLERANCE then
-			self:_setSpinePhysicsInheritance(true)
-			self:_resetState()
-		end
 	else
-		self.waitTimer = self.waitTimer + deltaTime
+		self.cameraShake:StopShake()
 
-		if self.waitTimer >= WAIT_SHAKE_TIMEOUT then
-			self:_resetState()
+		self.cameraShake.transform.localPosition = Vector3.zero
+
+		if self.isSet then
+			self.gapTimer = self.gapTimer + deltaTime
+
+			if self.gapTimer >= SHAKE_GAP_TOLERANCE then
+				self:_setSpinePhysicsInheritance(true)
+				self:_resetState()
+			end
+		else
+			self.waitTimer = self.waitTimer + deltaTime
+
+			if self.waitTimer >= WAIT_SHAKE_TIMEOUT then
+				self:_resetState()
+			end
 		end
 	end
 end
@@ -84,7 +90,9 @@ function FightEntityPhysicsWhenCameraShakeMgr:_resetState()
 end
 
 function FightEntityPhysicsWhenCameraShakeMgr:onDestructor()
-	return
+	self.cameraShake:StopShake()
+
+	self.cameraShake.transform.localPosition = Vector3.zero
 end
 
 return FightEntityPhysicsWhenCameraShakeMgr

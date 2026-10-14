@@ -1591,7 +1591,7 @@
   },
   {
     "id": 40001,
-    "masterId": 30043,
+    "masterId": 30010,
     "cardpackId": 4000102,
     "weight": 1
   },
@@ -1777,18 +1777,6 @@
   },
   {
     "id": 40007,
-    "masterId": 30029,
-    "cardpackId": 4000701,
-    "weight": 1
-  },
-  {
-    "id": 40007,
-    "masterId": 30030,
-    "cardpackId": 4000701,
-    "weight": 1
-  },
-  {
-    "id": 40007,
     "masterId": 30031,
     "cardpackId": 4000701,
     "weight": 1
@@ -1809,18 +1797,6 @@
     "id": 40007,
     "masterId": 30035,
     "cardpackId": 4000702,
-    "weight": 1
-  },
-  {
-    "id": 40008,
-    "masterId": 30029,
-    "cardpackId": 4000801,
-    "weight": 1
-  },
-  {
-    "id": 40008,
-    "masterId": 30030,
-    "cardpackId": 4000801,
     "weight": 1
   },
   {
@@ -1855,26 +1831,8 @@
   },
   {
     "id": 40009,
-    "masterId": 30017,
-    "cardpackId": 4000901,
-    "weight": 1
-  },
-  {
-    "id": 40009,
     "masterId": 30023,
     "cardpackId": 4000901,
-    "weight": 1
-  },
-  {
-    "id": 40009,
-    "masterId": 30029,
-    "cardpackId": 4000902,
-    "weight": 1
-  },
-  {
-    "id": 40009,
-    "masterId": 30030,
-    "cardpackId": 4000902,
     "weight": 1
   },
   {
@@ -2022,12 +1980,6 @@
     "weight": 1
   },
   {
-    "id": 40013,
-    "masterId": 30028,
-    "cardpackId": 4001302,
-    "weight": 1
-  },
-  {
     "id": 40014,
     "masterId": 30005,
     "cardpackId": 4001401,
@@ -2042,12 +1994,6 @@
   {
     "id": 40014,
     "masterId": 30027,
-    "cardpackId": 4001401,
-    "weight": 1
-  },
-  {
-    "id": 40014,
-    "masterId": 30028,
     "cardpackId": 4001401,
     "weight": 1
   },
@@ -2083,7 +2029,7 @@
   },
   {
     "id": 40017,
-    "masterId": 30012,
+    "masterId": 30016,
     "cardpackId": 4001701,
     "weight": 1
   },
@@ -2173,7 +2119,7 @@
   },
   {
     "id": 40019,
-    "masterId": 30043,
+    "masterId": 30010,
     "cardpackId": 4001902,
     "weight": 1
   },
@@ -2209,12 +2155,6 @@
   },
   {
     "id": 40021,
-    "masterId": 30017,
-    "cardpackId": 4002101,
-    "weight": 1
-  },
-  {
-    "id": 40021,
     "masterId": 30023,
     "cardpackId": 4002101,
     "weight": 1
@@ -2241,12 +2181,6 @@
     "id": 40021,
     "masterId": 30037,
     "cardpackId": 4002102,
-    "weight": 1
-  },
-  {
-    "id": 40022,
-    "masterId": 30017,
-    "cardpackId": 4002201,
     "weight": 1
   },
   {
@@ -2287,7 +2221,7 @@
   },
   {
     "id": 40023,
-    "masterId": 30043,
+    "masterId": 30010,
     "cardpackId": 4002301,
     "weight": 1
   },
@@ -2319,12 +2253,6 @@
     "id": 40024,
     "masterId": 30038,
     "cardpackId": 4002401,
-    "weight": 1
-  },
-  {
-    "id": 40024,
-    "masterId": 30017,
-    "cardpackId": 4002402,
     "weight": 1
   },
   {
@@ -2539,7 +2467,7 @@
   },
   {
     "id": 40031,
-    "masterId": 30043,
+    "masterId": 30010,
     "cardpackId": 4003101,
     "weight": 1
   }

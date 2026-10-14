@@ -54,6 +54,43 @@ function HeroGroupPresetQuickEditItem:onUpdateMO(mo)
 	self._open_ani_finish = true
 end
 
+function HeroGroupPresetQuickEditItem:updateLimitStatus()
+	if HeroGroupPresetEditListModel.instance.adventure then
+		gohelper.setActive(self._gohp, false)
+
+		local cd = WeekWalkModel.instance:getCurMapHeroCd(self._mo.config.id)
+
+		self._heroItem:setInjury(cd > 0)
+	elseif HeroGroupPresetEditListModel.instance.isWeekWalk_2 then
+		gohelper.setActive(self._gohp, false)
+
+		local cd = WeekWalk_2Model.instance:getCurMapHeroCd(self._mo.config.id)
+
+		self._heroItem:setInjury(cd > 0)
+	elseif HeroGroupPresetEditListModel.instance.isTowerBattle then
+		gohelper.setActive(self._gohp, false)
+
+		local isLock = TowerModel.instance:isHeroBan(self._mo.config.id)
+
+		self._heroItem:setLost(isLock)
+	elseif HeroGroupPresetEditListModel.instance.isAbyss then
+		gohelper.setActive(self._gohp, false)
+
+		local isLock = AbyssModel.instance:isCurHeroLocked(self._mo.config.id)
+
+		self._heroItem:setInjury(isLock)
+		self._heroItem:setInjuryText(luaLang("v3a6_abyss_lock_desc_cn"), "")
+	else
+		gohelper.setActive(self._gohp, false)
+
+		if HeroGroupModel.instance:isRestrict(self._mo.uid) then
+			self._heroItem:setRestrict(true)
+		else
+			self._heroItem:setRestrict(false)
+		end
+	end
+end
+
 function HeroGroupPresetQuickEditItem:updateTrialRepeat(mo)
 	if mo and (mo.heroId ~= self._mo.heroId or mo == self._mo) then
 		return

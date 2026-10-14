@@ -39,7 +39,11 @@ function Rouge2_SceneMap:onLoadCallback()
 	self:destroyOldMapGo()
 
 	local sceneGO = self:getCurScene():getSceneContainerGO()
-	local assetItem = self.loader:getAssetItem(self.resPath)
+	local assetItem
+
+	if not string.nilorempty(self.resPath) then
+		assetItem = self.loader:getAssetItem(self.resPath)
+	end
 
 	if assetItem then
 		self.mapGo = gohelper.clone(assetItem:GetResource(), sceneGO)

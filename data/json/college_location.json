@@ -11,7 +11,7 @@
     "skillIds": "402001#402101",
     "slots": 3,
     "tags": "l_mat1",
-    "description": "委托<#FFEA73>同伴</color>探索地点\n探索完成后，解锁地点功能"
+    "description": ""
   },
   {
     "id": 4011002,
@@ -25,7 +25,7 @@
     "skillIds": "402004#402104",
     "slots": 3,
     "tags": "l_mat2",
-    "description": "委托<#FFEA73>同伴</color>探索地点\n探索完成后，解锁地点功能"
+    "description": ""
   },
   {
     "id": 4011003,
@@ -39,7 +39,7 @@
     "skillIds": "402007#402107",
     "slots": 3,
     "tags": "l_mat3",
-    "description": "委托<#FFEA73>同伴</color>探索地点\n探索完成后，解锁地点功能"
+    "description": ""
   },
   {
     "id": 4011004,
@@ -53,7 +53,7 @@
     "skillIds": "402002#402102",
     "slots": 3,
     "tags": "l_mat1",
-    "description": "委托<#FFEA73>同伴</color>探索地点\n探索完成后，解锁地点功能"
+    "description": ""
   },
   {
     "id": 4011005,
@@ -67,7 +67,7 @@
     "skillIds": "402005#402105",
     "slots": 3,
     "tags": "l_mat2",
-    "description": "委托<#FFEA73>同伴</color>探索地点\n探索完成后，解锁地点功能"
+    "description": ""
   },
   {
     "id": 4011006,
@@ -81,6 +81,6 @@
     "skillIds": "402008#402108",
     "slots": 3,
     "tags": "l_mat3",
-    "description": "委托<#FFEA73>同伴</color>探索地点\n探索完成后，解锁地点功能"
+    "description": ""
   }
 ]

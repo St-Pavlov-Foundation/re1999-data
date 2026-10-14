@@ -364,6 +364,7 @@ function AbyssStageDetailsView:refreshUI()
 	self:refreshStageList()
 	self:refreshRecommendInfo()
 	self:refreshAssistInfo()
+	self:refreshStageInfo()
 end
 
 function AbyssStageDetailsView:onAssistChange()
@@ -535,6 +536,7 @@ function AbyssStageDetailsView:_onStageInfoChanged(actId, stageId)
 
 	self:refreshTargetList()
 	self:refreshAssistInfo()
+	self:refreshStageInfo()
 end
 
 function AbyssStageDetailsView:_refreshStageItemHeroInfo(item)

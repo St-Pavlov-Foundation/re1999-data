@@ -95,6 +95,7 @@ function HeroResonaceModel:canUseLayoutShareCode(heroMo, code)
 
 	local x_y = string.splitToNumber(HeroResonanceConfig.instance:getTalentAllShape(heroMo.heroId, heroMo.talent), ",")
 	local sameCubeIdList = {}
+	local fillCubeLocation = {}
 
 	for _, data in ipairs(shareDataList) do
 		local shapeCo = HeroResonanceConfig.instance:getCubeConfigNotError(data.cubeId)
@@ -115,8 +116,33 @@ function HeroResonaceModel:canUseLayoutShareCode(heroMo, code)
 
 			local _rotationMatrix = self:rotationMatrix(_shape, data.direction)
 
-			if self:_isOverCell(_rotationMatrix, x_y, data) then
-				return
+			if _rotationMatrix then
+				for i = 0, GameUtil.getTabLen(_rotationMatrix) - 1 do
+					local _m = _rotationMatrix[i]
+
+					for j = 0, GameUtil.getTabLen(_m) - 1 do
+						if _m[j] == 1 then
+							local x = data.posX + j + 1
+							local y = data.posY + i + 1
+
+							if x > x_y[1] or y > x_y[2] then
+								return false
+							end
+
+							if not fillCubeLocation[x] then
+								fillCubeLocation[x] = {}
+							end
+
+							if fillCubeLocation[x][y] then
+								SLFramework.SLLogger.Log(string.format("HeroResonaceModel:canUseLayoutShareCode 共鸣块%s和%s位置有重叠", fillCubeLocation[x][y], data.cubeId))
+
+								return false, ToastEnum.CharacterTalentCopyCodeError
+							else
+								fillCubeLocation[x][y] = data.cubeId
+							end
+						end
+					end
+				end
 			end
 
 			if not sameCubeIdList[data.cubeId] then

@@ -51,7 +51,7 @@ function AutoChessLeaderCard:addEventListeners()
 end
 
 function AutoChessLeaderCard:_btnCloseTipOnClick()
-	gohelper.setActive(self._goTip, false)
+	self:hideSkillTip()
 end
 
 function AutoChessLeaderCard:_btnCheckOnClick()
@@ -228,8 +228,8 @@ end
 function AutoChessLeaderCard:setActive(active)
 	gohelper.setActive(self.go, active)
 
-	if not active and self._goTip.activeInHierarchy then
-		gohelper.setActive(self._goTip, false)
+	if not active then
+		self:hideSkillTip()
 	end
 end
 
@@ -250,6 +250,12 @@ end
 function AutoChessLeaderCard:refreshHandbook()
 	gohelper.setActive(self._btnCheck.gameObject, true)
 	gohelper.setActive(self.goChess, false)
+end
+
+function AutoChessLeaderCard:hideSkillTip()
+	if self._goTip.activeInHierarchy then
+		gohelper.setActive(self._goTip, false)
+	end
 end
 
 return AutoChessLeaderCard

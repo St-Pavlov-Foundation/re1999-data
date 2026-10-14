@@ -7090,5 +7090,23 @@
     "image": "",
     "senderType": 2,
     "locked": 0
+  },
+  {
+    "id": 40022,
+    "type": 1,
+    "sender": "LEee·bUPd电台",
+    "title": "异常问题补偿邮件",
+    "content": "    我们注意到了目前出现的一些因“暴雨”而产生的异常问题。\n    祝，旅途无恙。",
+    "attachment": "",
+    "needShowToast": 1,
+    "addressee": "",
+    "copy": "",
+    "icon": "",
+    "specialTag": 0,
+    "jumpTitle": "",
+    "jump": "",
+    "image": "",
+    "senderType": 2,
+    "locked": 0
   }
 ]

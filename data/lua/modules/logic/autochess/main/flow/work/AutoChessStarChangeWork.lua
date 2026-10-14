@@ -20,11 +20,12 @@ function AutoChessStarChangeWork:onStart()
 			local delayTime = entity:updateStar(chessMo)
 
 			self:delayCall(self.finishWork, delayTime)
+
+			return
 		end
-	else
-		self:finishWork()
-		logError("棋子升级的Effect中找不到棋子数据")
 	end
+
+	self:finishWork()
 end
 
 return AutoChessStarChangeWork

@@ -95,12 +95,22 @@ function AutoChessController:startGame(actId, moduleId, episodeCo)
 		if gameMo.episodeId == episodeId then
 			AutoChessRpc.instance:sendAutoChessEnterSceneRequest(actId, moduleId, episodeId, gameMo.selectMasterId)
 		else
-			self.tempEpisodeId = episodeId
+			local param = {
+				moduleId = moduleId,
+				episodeId = episodeId,
+				leaderId = episodeCo and episodeCo.masterId
+			}
 
 			if gameMo.episodeId == 0 then
-				self:startPveGame(0, 0)
+				self:openLeaderNextView(param)
 			else
-				GameFacade.showOptionMessageBox(MessageBoxIdDefine.AutoChessChangeEpisode, MsgBoxEnum.BoxType.Yes_No, MsgBoxEnum.optionType.Daily, self._yesCallback, nil, nil, self)
+				GameFacade.showOptionMessageBox(MessageBoxIdDefine.AutoChessChangeEpisode, MsgBoxEnum.BoxType.Yes_No, MsgBoxEnum.optionType.Daily, function()
+					AutoChessRpc.instance:sendAutoChessGiveUpRequest(AutoChessEnum.ModuleId.PVE, function(_, resultCode)
+						if resultCode == 0 then
+							self:openLeaderNextView(param)
+						end
+					end)
+				end)
 			end
 		end
 	elseif moduleId == AutoChessEnum.ModuleId.PVP2 then
@@ -125,24 +135,6 @@ function AutoChessController:startGame(actId, moduleId, episodeCo)
 	else
 		AutoChessRpc.instance:sendAutoChessEnterSceneRequest(actId, moduleId, episodeId, gameMo.selectMasterId)
 	end
-end
-
-function AutoChessController:_yesCallback()
-	AutoChessRpc.instance:sendAutoChessGiveUpRequest(AutoChessEnum.ModuleId.PVE, self.startPveGame, self)
-end
-
-function AutoChessController:startPveGame(cmd, resultCode)
-	if resultCode == 0 then
-		local param = {
-			moduleId = AutoChessEnum.ModuleId.PVE,
-			episodeId = self.tempEpisodeId,
-			leaderId = AutoChessConfig.instance:getEpisodeCO(self.tempEpisodeId).masterId
-		}
-
-		self:openLeaderNextView(param)
-	end
-
-	self.tempEpisodeId = nil
 end
 
 function AutoChessController:enterGame(episodeId)
@@ -441,12 +433,12 @@ function AutoChessController:popupRewardView()
 end
 
 function AutoChessController:playStep(type)
-	self:setPlayStatus(true)
-
 	local sceneMo = AutoChessModel.instance:getSceneMo()
 	local effectMoList = sceneMo.stepEffectsMap[type]
 
 	if effectMoList then
+		self:setPlayStatus(true)
+
 		local flowSequence = AutoChessHelper.buildFlowSequence(effectMoList)
 
 		self.stepFlowMap[type] = flowSequence
@@ -489,7 +481,10 @@ function AutoChessController:onFlowDone(type)
 
 	sceneMo:delStepEffects(type)
 	self:dispatchEvent(AutoChessEvent.FinishStepList, type)
-	self:setPlayStatus(false)
+
+	if self.isPlaying then
+		self:setPlayStatus(false)
+	end
 end
 
 function AutoChessController:onFlowDone9()
@@ -562,6 +557,10 @@ function AutoChessController:clearAllFlow()
 	end
 
 	self.stepFlowMap = {}
+
+	if self.isPlaying then
+		self:setPlayStatus(false)
+	end
 end
 
 function AutoChessController:setPlayStatus(bool)

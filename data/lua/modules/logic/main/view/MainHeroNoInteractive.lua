@@ -187,6 +187,10 @@ function MainHeroNoInteractive:_checkMainViewNoInteraction()
 		return
 	end
 
+	if not self._heroView:isShowInScene() then
+		return
+	end
+
 	local lightSpine = self._heroView:getLightSpine()
 	local voiceStartTime = lightSpine and lightSpine:getPlayVoiceStartTime()
 

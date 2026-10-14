@@ -26,20 +26,14 @@ function AutoChessSceneMo:updateSvrBaseInfo(baseInfo)
 end
 
 function AutoChessSceneMo:updateSvrMall(data)
-	local oldMallId
+	local oldRegion = self.mall and self.mall:getNormalRegion()
 
-	if self.mall then
-		oldMallId = self.mall:getNormalRegion().mallId
-		self.lastRewardProgress = self.mall.rewardProgress
-	end
-
+	self.lastRewardProgress = self.mall and self.mall.rewardProgress
 	self.mall = GameUtil.rpcInfoToMo(data, AutoChessMallMo, self.mall)
 
-	local newMallId = self.mall:getNormalRegion().mallId
+	local newRegion = self.mall:getNormalRegion()
 
-	if oldMallId and oldMallId ~= newMallId then
-		self.mallUpgrade = true
-	end
+	self.mallUpgrade = oldRegion and newRegion and oldRegion.mallId ~= newRegion.mallId
 end
 
 function AutoChessSceneMo:updateSvrTurn(data)

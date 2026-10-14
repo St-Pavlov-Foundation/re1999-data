@@ -151,6 +151,10 @@ function WeatherComp:playWeatherVoice(force)
 		return
 	end
 
+	if not ViewHelper.instance:checkViewOnTheTop(ViewName.MainView) then
+		return
+	end
+
 	local prevWeatherVoice = false
 	local curWeatherVoice = false
 	local heroId = self._heroId

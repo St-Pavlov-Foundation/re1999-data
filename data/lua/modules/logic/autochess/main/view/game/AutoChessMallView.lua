@@ -169,6 +169,10 @@ function AutoChessMallView:_btnBackPickOnClick()
 end
 
 function AutoChessMallView:_btnCheckEnemyOnClick()
+	if AutoChessController.instance.isPlaying then
+		return
+	end
+
 	if self.sceneMo.baseInfo.preview then
 		self:previewCallback(0, 0)
 	elseif self.previewCostEnough then
@@ -179,6 +183,10 @@ function AutoChessMallView:_btnCheckEnemyOnClick()
 end
 
 function AutoChessMallView:_btnLederSkillOnClick()
+	if AutoChessController.instance.isPlaying then
+		return
+	end
+
 	local canUse, toastId = self:checkCanUseLeaderSkill()
 
 	if canUse then
@@ -238,6 +246,10 @@ function AutoChessMallView:delaySwitch()
 end
 
 function AutoChessMallView:_btnFreshOnClick()
+	if AutoChessController.instance.isPlaying then
+		return
+	end
+
 	if self.lockFreshMall then
 		return
 	end
@@ -301,9 +313,13 @@ function AutoChessMallView:_btnUnlockOnClick()
 end
 
 function AutoChessMallView:_btnStartFightOnClick()
+	if AutoChessController.instance.isPlaying then
+		return
+	end
+
 	local freeMallRegion = self.sceneMo.mall:getFreeRegion()
 
-	if #freeMallRegion.items ~= 0 then
+	if freeMallRegion and #freeMallRegion.items ~= 0 then
 		GameFacade.showOptionMessageBox(MessageBoxIdDefine.AutoChessFreeChessClean, MsgBoxEnum.BoxType.Yes_No, MsgBoxEnum.optionType.Daily, self._fightYesCallback, nil, nil, self)
 	else
 		self:_fightYesCallback()
@@ -784,9 +800,13 @@ function AutoChessMallView:checkCanUseLeaderSkill()
 			end
 		end
 
-		local costParams = string.split(self.masterSkillCo.cost, "#")
+		local costStr = self.masterSkillCo.cost
 
-		return self.sceneMo:checkCostEnough(costParams[1], tonumber(costParams[2]))
+		if not string.nilorempty(costStr) then
+			local costParams = string.split(costStr, "#")
+
+			return self.sceneMo:checkCostEnough(costParams[1], tonumber(costParams[2]))
+		end
 	end
 
 	return true

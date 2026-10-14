@@ -219,6 +219,10 @@ function FightQteView:onClickUniqueBtn()
 		return
 	end
 
+	if FightDataHelper.lockOperateMgr:isLock() then
+		return
+	end
+
 	local status = self.qteInfo:getStatus()
 
 	if status ~= FightEnum.QTEStage.QTE_SECOND then

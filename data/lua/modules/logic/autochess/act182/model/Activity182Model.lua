@@ -4,6 +4,14 @@ module("modules.logic.autochess.act182.model.Activity182Model", package.seeall)
 
 local Activity182Model = class("Activity182Model", BaseModel)
 
+function Activity182Model:onInit()
+	self.act182Mo = nil
+end
+
+function Activity182Model:reInit()
+	self:onInit()
+end
+
 function Activity182Model:setActInfo(info)
 	if self.act182Mo then
 		self.act182Mo:update(info)

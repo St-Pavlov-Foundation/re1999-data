@@ -20,8 +20,8 @@ function AutoChessMallViewContainer:buildTabViews(tabContainerId)
 		self.navigateView = NavigateButtonsView.New({
 			true,
 			false,
-			true
-		}, 3207003)
+			false
+		})
 
 		self.navigateView:setOverrideClose(self.mallView._overrideClose, self.mallView)
 

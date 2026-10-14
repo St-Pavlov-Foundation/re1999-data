@@ -104,10 +104,15 @@ function AutoChessGameView:refreshUI()
 	if self.sceneMo.fight.roundType == AutoChessEnum.RoundType.BOSS then
 		self._txtDamageTip.text = luaLang("autochess_gameview_bosslimit")
 	else
-		local roundCo = lua_auto_chess_round.configDict[self.actId][self.sceneMo.baseInfo.sceneRound]
-		local txt1 = luaLang("autochess_gameview_damagelimit")
+		local roundCoMap = lua_auto_chess_round.configDict[self.actId]
+		local sceneRound = self.sceneMo.baseInfo.sceneRound
+		local roundCo = roundCoMap and roundCoMap[sceneRound]
 
-		self._txtDamageTip.text = GameUtil.getSubPlaceholderLuaLangOneParam(txt1, roundCo.maxdamage)
+		if roundCo then
+			local txt1 = luaLang("autochess_gameview_damagelimit")
+
+			self._txtDamageTip.text = GameUtil.getSubPlaceholderLuaLangOneParam(txt1, roundCo.maxdamage)
+		end
 	end
 end
 

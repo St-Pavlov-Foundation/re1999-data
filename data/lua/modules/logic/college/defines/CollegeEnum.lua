@@ -220,6 +220,11 @@ CollegeEnum.StoryNodeType = {
 	Instant = 3,
 	MapElement = 1
 }
+CollegeEnum.MilestoneThemeUIPath = {
+	"#go_Root/#go_Unselect/#simage_panebgmask",
+	"#go_Root/Image_numbg",
+	"#go_Root/titlebg"
+}
 CollegeEnum.ThemeScaleOffset = 200
 CollegeEnum.ThemeCenterScale = 2
 

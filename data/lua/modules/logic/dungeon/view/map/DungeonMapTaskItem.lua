@@ -80,7 +80,9 @@ function DungeonMapTaskItem:addEventListeners()
 end
 
 function DungeonMapTaskItem:removeEventListeners()
-	self._btnclick:RemoveClickListener()
+	if self._btnclick then
+		self._btnclick:RemoveClickListener()
+	end
 end
 
 function DungeonMapTaskItem:_btnclickOnClick()

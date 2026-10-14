@@ -35,6 +35,8 @@ function HeroDeviceMO:refreshDevice(deviceId)
 		self._skills[2][1] = temp
 	end
 
+	self._specialPowerSkill = nil
+
 	self:_checkSpecialPowerSkills()
 end
 

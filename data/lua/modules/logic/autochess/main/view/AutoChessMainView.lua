@@ -87,7 +87,7 @@ function AutoChessMainView:_btnGiveUpPOnClick()
 	local roundScores = string.splitToNumber(rankCfg.round2Score, "|")
 	local gameMo = self.actMo:getGameMo(self.actId, moduleId)
 	local curRound = gameMo.currRound ~= 0 and gameMo.currRound or gameMo.currRound + 1
-	local scoreChange = roundScores[curRound]
+	local scoreChange = roundScores[curRound] or 0
 
 	if scoreChange < 0 and rankCfg.protection then
 		local laseCfg = AutoChessConfig.instance:getRankCfg(self.actMo.rank - 1)

@@ -603,34 +603,6 @@ function CommonHeroItem:setStyle_SeasonPickAssist()
 	self:_setTxtPos("_goexskill", 1.7, -170)
 end
 
-function CommonHeroItem:setStyle_RougePickAssist()
-	if not self._sp:mo() then
-		self._sp:regSetStyleAfterSetData(self.setStyle_RougePickAssist, self)
-
-		return
-	end
-
-	self._sp:setWidthNameCn(205)
-	self._sp:setScaleHeroName(1, 1)
-	self._sp:setScaleLv(1, 1)
-	self._sp:setScaleRank(0.2, 0.2)
-
-	local bOldPattern = self._sp:bOldPattern()
-	local ox, oy = self._sp:getOriginalPosXY()
-
-	if bOldPattern then
-		self._sp:setPosLv(1.7, 165)
-		self._sp:setPosRank(2, -37)
-		self._sp:setPosNameCn(0.55, 153.4)
-		self._sp:setPosNameEn(0.55, 124.3)
-		self._sp:setAPos(ox, oy)
-	else
-		self._sp:setAPos(ox, -158)
-	end
-
-	self:_setTxtPos("_goexskill", 1.7, -170)
-end
-
 function CommonHeroItem:setStyle_CharacterBackpack()
 	if not self._sp:mo() then
 		self._sp:regSetStyleAfterSetData(self.setStyle_CharacterBackpack, self)

@@ -25,6 +25,7 @@ function CollegeMilestoneThemeItem:onInit(viewGO)
 
 	gohelper.setActive(self._goUnselect, true)
 	gohelper.setActive(self._goUnlock, false)
+	self:initUIPosTab()
 
 	self._imageThemeMask = self._simageThemeMask:GetComponent(gohelper.Type_Image)
 
@@ -91,6 +92,7 @@ function CollegeMilestoneThemeItem:refreshUI()
 
 	self._simageThemeIcon:LoadImage(ResUrl.getCollegeSingleBg(iconName, "milestone"))
 	self._simageThemeMask:LoadImage(ResUrl.getCollegeSingleBg(maskIconName, "milestone"))
+	self:updateUIPos()
 end
 
 function CollegeMilestoneThemeItem:onSelect(isSelect)
@@ -133,6 +135,34 @@ end
 
 function CollegeMilestoneThemeItem:getPos()
 	return recthelper.getAnchor(self.tran)
+end
+
+function CollegeMilestoneThemeItem:initUIPosTab()
+	self._uiPosTab = self:getUserDataTb_()
+
+	for index, uiPath in pairs(CollegeEnum.MilestoneThemeUIPath) do
+		local goUI = gohelper.findChild(self.viewGO, uiPath)
+
+		if not gohelper.isNil(goUI) then
+			self._uiPosTab[index] = goUI.transform
+		end
+	end
+end
+
+function CollegeMilestoneThemeItem:updateUIPos()
+	local uiPosList = CollegeConfig.instance:getMilestoneThemeUIPos(self._themeId)
+
+	if not uiPosList then
+		return
+	end
+
+	for i, uiPos in ipairs(uiPosList) do
+		local tranUI = self._uiPosTab[i]
+
+		if not gohelper.isNil(tranUI) then
+			recthelper.setAnchor(tranUI, uiPos[1] or 0, uiPos[2] or 0, 0)
+		end
+	end
 end
 
 function CollegeMilestoneThemeItem:onDestroy()

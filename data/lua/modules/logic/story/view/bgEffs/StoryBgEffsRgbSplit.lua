@@ -36,7 +36,6 @@ function StoryBgEffsRgbSplit:_showTrans()
 	self._prefabPath = ResUrl.getStoryBgEffect("storybg_rgbsplit_changebg_doublerole")
 
 	table.insert(self._resList, self._prefabPath)
-	self:loadRes()
 end
 
 function StoryBgEffsRgbSplit:_onTransLoaded()
@@ -101,7 +100,6 @@ function StoryBgEffsRgbSplit:_showOnce()
 	self._prefabPath = ResUrl.getStoryBgEffect("storybg_rgbsplit_once")
 
 	table.insert(self._resList, self._prefabPath)
-	self:loadRes()
 end
 
 function StoryBgEffsRgbSplit:_onOnceLoaded()
@@ -143,7 +141,6 @@ function StoryBgEffsRgbSplit:_showLoopWeak()
 	self._prefabPath = ResUrl.getStoryBgEffect("storybg_rgbsplit_loop")
 
 	table.insert(self._resList, self._prefabPath)
-	self:loadRes()
 end
 
 function StoryBgEffsRgbSplit:_onLoopWeakLoaded()
@@ -181,7 +178,6 @@ function StoryBgEffsRgbSplit:_showLoopStrong()
 	self._prefabPath = ResUrl.getStoryBgEffect("storybg_rgbsplit_loop_strong")
 
 	table.insert(self._resList, self._prefabPath)
-	self:loadRes()
 end
 
 function StoryBgEffsRgbSplit:_onLoopStrongLoaded()
@@ -215,7 +211,6 @@ function StoryBgEffsRgbSplit:_showRadialBlur()
 	self._prefabPath = "ui/viewres/story/bg/storybg_radialblur.prefab"
 
 	table.insert(self._resList, self._prefabPath)
-	self:loadRes()
 end
 
 function StoryBgEffsRgbSplit:_onRadialBlurLoaded()

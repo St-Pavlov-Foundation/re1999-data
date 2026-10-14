@@ -47,6 +47,7 @@ function AbyssHeroGroupListView:onReadPreset()
 
 	HeroSingleGroupModel.instance:setSingleGroup(heroGroupMO, true)
 	self:checkReplaceHeroList()
+	HeroGroupModel.instance:replaceSingleGroup()
 end
 
 function AbyssHeroGroupListView:onReleaseAssist()

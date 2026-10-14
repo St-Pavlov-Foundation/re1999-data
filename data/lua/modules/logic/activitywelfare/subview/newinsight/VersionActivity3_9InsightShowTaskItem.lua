@@ -95,8 +95,17 @@ function VersionActivity3_9InsightShowTaskItem:_refreshBtns()
 
 	if self._taskMO.finishCount >= 1 then
 		local hasUse = ActivityType172Model.instance:isTaskHasUsed(self._actId, self._taskId)
+		local showUse = not hasUse and self._config.itemId ~= 0
 
-		if not hasUse and self._config.itemId ~= 0 then
+		if self._config.itemId > 0 then
+			local count = ItemInsightModel.instance:getInsightItemCountById(self._config.itemId)
+
+			if count <= 0 then
+				showUse = false
+			end
+		end
+
+		if showUse then
 			gohelper.setActive(self._gonotget, true)
 			gohelper.setActive(self._btnuse.gameObject, true)
 		else

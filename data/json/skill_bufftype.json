@@ -72818,7 +72818,7 @@
     "excludeTypes": "",
     "takeStage": 103,
     "takeAct": "",
-    "cannotRemove": false,
+    "cannotRemove": true,
     "dontShowFloat": 0,
     "removeNum": 0,
     "skipDelay": 0,
@@ -93722,7 +93722,7 @@
   },
   {
     "id": 31160242,
-    "type": 5,
+    "type": 9,
     "group": 0,
     "includeTypes": "1",
     "excludeTypes": "",

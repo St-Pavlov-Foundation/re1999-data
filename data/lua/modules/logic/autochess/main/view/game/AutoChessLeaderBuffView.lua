@@ -45,7 +45,7 @@ function AutoChessLeaderBuffView:onOpen()
 	if energy == 0 then
 		gohelper.setActive(self._goEnergy, false)
 	else
-		self._txtEnergy.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("autochess_leaderbuffview_energy"), 1)
+		self._txtEnergy.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("autochess_leaderbuffview_energy"), energy)
 
 		local cfg = AutoChessConfig.instance:getSkillEffectDesc(2)
 
@@ -59,7 +59,7 @@ function AutoChessLeaderBuffView:onOpen()
 	if fire == 0 then
 		gohelper.setActive(self._goFire, false)
 	else
-		self._txtFire.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("autochess_leaderbuffview_fire"), 1)
+		self._txtFire.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("autochess_leaderbuffview_fire"), fire)
 
 		local cfg = AutoChessConfig.instance:getSkillEffectDesc(16)
 
@@ -73,7 +73,7 @@ function AutoChessLeaderBuffView:onOpen()
 	if debris == 0 then
 		gohelper.setActive(self._goDebris, false)
 	else
-		self._txtDebris.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("autochess_leaderbuffview_debris"), 1)
+		self._txtDebris.text = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("autochess_leaderbuffview_debris"), debris)
 
 		local cfg = AutoChessConfig.instance:getSkillEffectDesc(22)
 
@@ -97,9 +97,11 @@ function AutoChessLeaderBuffView:delaySet()
 
 	recthelper.setHeight(self._goBg.transform, height)
 
-	local pos = self.viewParam.position
+	local pos = self.viewParam and self.viewParam.position
 
-	recthelper.setAnchor(self.viewGO.transform, pos.x + 180, pos.y + height - 80)
+	if pos then
+		recthelper.setAnchor(self.viewGO.transform, pos.x + 180, pos.y + height - 80)
+	end
 end
 
 function AutoChessLeaderBuffView:clickHyperLink(effId, _)

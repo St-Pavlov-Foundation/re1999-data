@@ -6,7 +6,8 @@ local lua_college_story_theme = {}
 local fields = {
 	id = 1,
 	title = 2,
-	pic = 3
+	pic = 3,
+	uiPos = 4
 }
 local primaryKey = {
 	"id"

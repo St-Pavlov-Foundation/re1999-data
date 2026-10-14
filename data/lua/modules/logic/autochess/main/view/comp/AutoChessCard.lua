@@ -121,7 +121,7 @@ function AutoChessCard:_btnSelectOnClick()
 end
 
 function AutoChessCard:_btnCloseTipOnClick()
-	gohelper.setActive(self._goSkillTip, false)
+	self:hideSkillTip()
 end
 
 function AutoChessCard:_btnCheckOnClick()
@@ -312,7 +312,14 @@ function AutoChessCard:refreshConfigAttr(mo)
 				end
 			end
 
-			local skillDesc = ""
+			local skillDesc
+
+			if string.nilorempty(mo.config.skillIds) then
+				skillDesc = mo.config.skillDesc .. "<br>"
+			else
+				skillDesc = ""
+			end
+
 			local txt = luaLang("autochess_copyskill_multi")
 			local recordMap = {}
 
@@ -430,6 +437,12 @@ function AutoChessCard:clcikHyperLink(effId, _)
 		self._txtSkillTip.text = descCo.desc
 
 		gohelper.setActive(self._goSkillTip, true)
+	end
+end
+
+function AutoChessCard:hideSkillTip()
+	if self._goSkillTip.activeInHierarchy then
+		gohelper.setActive(self._goSkillTip, false)
 	end
 end
 

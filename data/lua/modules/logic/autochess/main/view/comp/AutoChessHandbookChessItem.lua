@@ -23,6 +23,7 @@ function AutoChessHandbookChessItem:initInternal(go, view)
 end
 
 function AutoChessHandbookChessItem:onUpdateMO(mo)
+	self.chessCard:hideSkillTip()
 	self.chessCard:setData(mo)
 end
 

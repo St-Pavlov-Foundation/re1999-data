@@ -51,6 +51,10 @@ function FightVariantCrayonComp:_needChange()
 	local levelId = GameSceneMgr.instance:getCurScene():getCurLevelId()
 	local sceneLevelCO = lua_scene_level.configDict[levelId]
 
+	if not sceneLevelCO then
+		return false
+	end
+
 	return SceneNames[sceneLevelCO.resName] ~= nil
 end
 

@@ -340,30 +340,32 @@ function AutoChessHelper.getChessExtraRaceList(race)
 		local masterMo = sceneMo.fight.mySideMaster
 		local buffMos = masterMo and masterMo.buffContainer.buffs
 
-		for i = #buffMos, 1, -1 do
-			local mo = buffMos[i]
-			local effect = mo.config and mo.config.effect
-			local effects = string.split(effect, "#")
+		if buffMos then
+			for i = #buffMos, 1, -1 do
+				local mo = buffMos[i]
+				local effect = mo.config and mo.config.effect
+				local effects = string.split(effect, "#")
 
-			if effects[1] == AutoChessStrEnum.BuffEffect.RaceTagAlias then
-				local raceFilter = effects[2]
+				if effects[1] == AutoChessStrEnum.BuffEffect.RaceTagAlias then
+					local raceFilter = effects[2]
 
-				if effects[3] ~= AutoChessStrEnum.ChessRace.None and (raceFilter == AutoChessStrEnum.ChessRace.All or tabletool.indexOf(string.split(effects[2], ","), race)) then
-					local addRaces
+					if effects[3] ~= AutoChessStrEnum.ChessRace.None and (raceFilter == AutoChessStrEnum.ChessRace.All or tabletool.indexOf(string.split(effects[2], ","), race)) then
+						local addRaces
 
-					if effects[3] == AutoChessStrEnum.ChessRace.All then
-						addRaces = AutoChessConfig.instance:getAllRaceList()
-					else
-						addRaces = string.split(effects[3], ",")
-					end
-
-					for _, v in ipairs(addRaces) do
-						if v ~= race then
-							raceList[#raceList + 1] = v
+						if effects[3] == AutoChessStrEnum.ChessRace.All then
+							addRaces = AutoChessConfig.instance:getAllRaceList()
+						else
+							addRaces = string.split(effects[3], ",")
 						end
-					end
 
-					break
+						for _, v in ipairs(addRaces) do
+							if v ~= race then
+								raceList[#raceList + 1] = v
+							end
+						end
+
+						break
+					end
 				end
 			end
 		end
@@ -373,34 +375,36 @@ function AutoChessHelper.getChessExtraRaceList(race)
 end
 
 function AutoChessHelper.getSellPrice(race)
-	local sellPrice = AutoChessConfig.instance:getConstValue(AutoChessEnum.ConstKey.ChessSellPrice)
+	local sellPrice = AutoChessConfig.instance:getConstValue(AutoChessEnum.ConstKey.ChessSellPrice, true)
 	local sceneMo = AutoChessModel.instance:getSceneMo()
 
 	if sceneMo then
 		local masterMo = sceneMo.fight.mySideMaster
 		local buffMos = masterMo and masterMo.buffContainer.buffs
 
-		for i = #buffMos, 1, -1 do
-			local mo = buffMos[i]
-			local effect = mo.config and mo.config.effect
-			local effects = string.split(effect, "#")
+		if buffMos then
+			for i = #buffMos, 1, -1 do
+				local mo = buffMos[i]
+				local effect = mo.config and mo.config.effect
+				local effects = string.split(effect, "#")
 
-			if effects[1] == AutoChessStrEnum.BuffEffect.SellIncomeFix then
-				local raceFilter = effects[2]
+				if effects[1] == AutoChessStrEnum.BuffEffect.SellIncomeFix then
+					local raceFilter = effects[2]
 
-				if raceFilter == AutoChessStrEnum.ChessRace.All or tabletool.indexOf(string.split(effects[2], ","), race) then
-					local fixValue = tonumber(effects[4])
-					local minValue = tonumber(effects[5])
+					if raceFilter == AutoChessStrEnum.ChessRace.All or tabletool.indexOf(string.split(effects[2], ","), race) then
+						local fixValue = tonumber(effects[4])
+						local minValue = tonumber(effects[5])
 
-					if effects[3] == AutoChessStrEnum.BuffFixType.Add then
-						sellPrice = sellPrice + fixValue
-					elseif effects[3] == AutoChessStrEnum.BuffFixType.Override then
-						sellPrice = fixValue
+						if effects[3] == AutoChessStrEnum.BuffFixType.Add then
+							sellPrice = sellPrice + fixValue
+						elseif effects[3] == AutoChessStrEnum.BuffFixType.Override then
+							sellPrice = fixValue
+						end
+
+						sellPrice = minValue < sellPrice and sellPrice or minValue
+
+						break
 					end
-
-					sellPrice = minValue < sellPrice and sellPrice or minValue
-
-					break
 				end
 			end
 		end

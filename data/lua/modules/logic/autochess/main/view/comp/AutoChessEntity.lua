@@ -3,6 +3,8 @@
 module("modules.logic.autochess.main.view.comp.AutoChessEntity", package.seeall)
 
 local AutoChessEntity = class("AutoChessEntity", LuaCompBase)
+local undeadBuffId = 7119
+local dieTag = "Die"
 
 function AutoChessEntity:init(go)
 	self.go = go
@@ -70,10 +72,14 @@ function AutoChessEntity:onUsingLeaderSkill(using)
 end
 
 function AutoChessEntity:onDragChess(config)
+	if not self.go.activeInHierarchy then
+		return
+	end
+
 	if self.mo.id == config.id and self.mo.maxExpLimit ~= 0 then
 		self.lightIndex = self.mo.exp + 1
 
-		gohelper.setActive(self["imageLight" .. self.lightIndex].gameObject, true)
+		gohelper.setActive(self["imageLight" .. self.lightIndex], true)
 		self["animStar" .. self.lightIndex]:Play("loop", 0, 0)
 	end
 end
@@ -81,7 +87,7 @@ end
 function AutoChessEntity:onDragChessEnd()
 	if self.lightIndex then
 		self["animStar" .. self.lightIndex]:Play("idle", 0, 0)
-		gohelper.setActive(self["imageLight" .. self.lightIndex].gameObject, false)
+		gohelper.setActive(self["imageLight" .. self.lightIndex], false)
 
 		self.lightIndex = nil
 	end
@@ -182,12 +188,29 @@ function AutoChessEntity:resetPos()
 end
 
 function AutoChessEntity:initBuffEffect()
+	local config = self.mo.config
+
 	self.effectComp:hideAll()
 
+	self.lastBuy = false
+	self.damageExtra = false
+
+	local undead = false
+
 	for _, buff in ipairs(self.mo.buffContainer.buffs) do
+		local skipThis = false
+
+		if buff.id == undeadBuffId then
+			if config.type == AutoChessStrEnum.ChessType.Attack then
+				undead = true
+			else
+				skipThis = true
+			end
+		end
+
 		local buffeffectID = buff.config.buffeffectID
 
-		if buffeffectID ~= 0 then
+		if not skipThis and buffeffectID ~= 0 then
 			local effectCo = AutoChessConfig.instance:getEffectCfg(buffeffectID)
 
 			if effectCo and effectCo.loop == 1 then
@@ -196,25 +219,35 @@ function AutoChessEntity:initBuffEffect()
 		end
 	end
 
-	local effectTag = self.mo.config.tag
+	local effectTag = config.tag
 
-	if not string.nilorempty(effectTag) then
+	self.hasDieTag = config.tag == dieTag
+
+	if not string.nilorempty(effectTag) and (not undead or not self.hasDieTag) then
 		local effectId = AutoChessEnum.Tag2EffectId[effectTag]
 
-		self:playEffect(effectId)
+		self.effectComp:playEffect(effectId)
 	end
 
 	self:onUpdateExtInfo()
 end
 
 function AutoChessEntity:addBuff(buff)
+	self.mo.buffContainer:addBuff(buff)
+
+	if buff.id == undeadBuffId then
+		if self.mo.config.type ~= AutoChessStrEnum.ChessType.Attack then
+			return
+		elseif self.hasDieTag then
+			self.effectComp:removeEffect(AutoChessEnum.Tag2EffectId[dieTag])
+		end
+	end
+
 	local buffeffectID = buff.config.buffeffectID
 
 	if buffeffectID ~= 0 then
 		self:playEffect(buffeffectID)
 	end
-
-	self.mo.buffContainer:addBuff(buff)
 end
 
 function AutoChessEntity:updateBuff(buff)
@@ -251,13 +284,22 @@ function AutoChessEntity:delBuff(buffUid)
 
 	if index then
 		local buff = buffs[index]
+
+		table.remove(buffs, index)
+
+		if buff.id == undeadBuffId then
+			if self.mo.config.type ~= AutoChessStrEnum.ChessType.Attack then
+				return
+			elseif self.hasDieTag then
+				self.effectComp:playEffect(AutoChessEnum.Tag2EffectId[dieTag])
+			end
+		end
+
 		local buffeffectID = buff.config.buffeffectID
 
 		if buffeffectID ~= 0 then
 			self.effectComp:removeEffect(buffeffectID)
 		end
-
-		table.remove(buffs, index)
 	else
 		logError(string.format("异常:未找到buffUid%s", buffUid))
 	end
@@ -497,11 +539,11 @@ function AutoChessEntity:onUpdateExtInfo()
 	if extInfo then
 		local isBuyChess = self.mo.uid == extInfo.lastBuyChessUid
 
-		if self.lastBuy and not isBuyChess then
+		if self.lastBuy and (not isBuyChess or self.mo.maxExpLimit == 0) then
 			self.effectComp:removeEffect(40008)
 
 			self.lastBuy = false
-		elseif not self.lastBuy and isBuyChess then
+		elseif not self.lastBuy and isBuyChess and self.mo.maxExpLimit ~= 0 then
 			self:playEffect(40008)
 
 			self.lastBuy = true

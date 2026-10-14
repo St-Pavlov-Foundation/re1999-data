@@ -31,7 +31,7 @@ function AutoChessFightMo:unlockMasterSkill(uid)
 end
 
 function AutoChessFightMo:updateMaster(master)
-	self.mySideMaster = GameUtil.rpcInfoToMo(master, AutoChessMasterMo)
+	self.mySideMaster = master
 
 	AutoChessController.instance:dispatchEvent(AutoChessEvent.UpdateMasterSkill)
 end

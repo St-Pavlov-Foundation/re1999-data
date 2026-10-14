@@ -94,6 +94,19 @@ function FightHero4_0HNJHelmetComp:addEventListeners()
 	self:addEventCb(FightController.instance, FightEvent.OnEntityPosChange, self.onEntityPosChange, self)
 	self:addEventCb(FightController.instance, FightEvent.OnEntitySpinePosChange, self.onEntitySpinePosChange, self)
 	self:addEventCb(FightController.instance, FightEvent.SetEntityAlpha, self.onSetEntityAlpha, self)
+	self:addEventCb(FightController.instance, FightEvent.OnEntityScaleChange, self.onEntityScaleChange, self)
+end
+
+function FightHero4_0HNJHelmetComp:onEntityScaleChange(entityId, scale)
+	if entityId ~= self.entityId then
+		return
+	end
+
+	if not self.helmetEntity then
+		return
+	end
+
+	self.helmetEntity:setScale(scale)
 end
 
 function FightHero4_0HNJHelmetComp:onSetEntityAlpha(entityId, active, duration)

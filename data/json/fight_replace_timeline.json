@@ -4658,7 +4658,7 @@
   {
     "id": "sxnwhnj_315501_qte_2",
     "timeline": "sxnwhnj_315503_qte_2",
-    "priority": 2,
+    "priority": 1,
     "target": 1,
     "simulate": 0,
     "condition": "5#315503"
@@ -4666,7 +4666,7 @@
   {
     "id": "sxnwhnj_315501_qte_3",
     "timeline": "sxnwhnj_315503_qte_3",
-    "priority": 2,
+    "priority": 1,
     "target": 1,
     "simulate": 0,
     "condition": "5#315503"
@@ -4674,7 +4674,7 @@
   {
     "id": "sxnwhnj_315501_skill1_1",
     "timeline": "sxnwhnj_315503_skill1_1",
-    "priority": 2,
+    "priority": 1,
     "target": 1,
     "simulate": 0,
     "condition": "5#315503"
@@ -4698,7 +4698,7 @@
   {
     "id": "sxnwhnj_315501_skill2",
     "timeline": "sxnwhnj_315503_skill2",
-    "priority": 2,
+    "priority": 1,
     "target": 1,
     "simulate": 0,
     "condition": "5#315503"
@@ -4746,7 +4746,7 @@
   {
     "id": "sxnwhnj_315501_qte_1_1",
     "timeline": "sxnwhnj_315501_qte_1_1",
-    "priority": 2,
+    "priority": 3,
     "target": 1,
     "simulate": 0,
     "condition": "9#315501"
@@ -4754,7 +4754,7 @@
   {
     "id": "sxnwhnj_315501_qte_1_1",
     "timeline": "sxnwhnj_315501_qte_1_2",
-    "priority": 2,
+    "priority": 3,
     "target": 1,
     "simulate": 0,
     "condition": "9#315501"
@@ -4762,7 +4762,7 @@
   {
     "id": "sxnwhnj_315501_qte_1_1",
     "timeline": "sxnwhnj_315501_qte_1_3",
-    "priority": 2,
+    "priority": 3,
     "target": 1,
     "simulate": 0,
     "condition": "9#315501"
@@ -4770,7 +4770,7 @@
   {
     "id": "sxnwhnj_315501_qte_1_1",
     "timeline": "sxnwhnj_315502_qte_1_1",
-    "priority": 3,
+    "priority": 2,
     "target": 1,
     "simulate": 0,
     "condition": "9#315502"
@@ -4778,7 +4778,7 @@
   {
     "id": "sxnwhnj_315501_qte_1_1",
     "timeline": "sxnwhnj_315502_qte_1_2",
-    "priority": 3,
+    "priority": 2,
     "target": 1,
     "simulate": 0,
     "condition": "9#315502"
@@ -4786,7 +4786,7 @@
   {
     "id": "sxnwhnj_315501_qte_1_1",
     "timeline": "sxnwhnj_315502_qte_1_3",
-    "priority": 3,
+    "priority": 2,
     "target": 1,
     "simulate": 0,
     "condition": "9#315502"
@@ -4794,7 +4794,7 @@
   {
     "id": "sxnwhnj_315501_skill1_1",
     "timeline": "sxnwhnj_315501_skill1_2",
-    "priority": 1,
+    "priority": 3,
     "target": 1,
     "simulate": 0,
     "condition": "4#31550012"
@@ -4802,7 +4802,7 @@
   {
     "id": "sxnwhnj_315501_skill1_1",
     "timeline": "sxnwhnj_315501_skill1_3",
-    "priority": 1,
+    "priority": 3,
     "target": 1,
     "simulate": 0,
     "condition": "4#31550013"
@@ -4810,7 +4810,7 @@
   {
     "id": "sxnwhnj_315501_unique",
     "timeline": "sxnwhnj_315501_unique_1",
-    "priority": 2,
+    "priority": 3,
     "target": 1,
     "simulate": 0,
     "condition": "18"

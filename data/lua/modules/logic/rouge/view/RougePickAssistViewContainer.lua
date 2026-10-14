@@ -25,7 +25,8 @@ function RougePickAssistViewContainer:instantiateListScrollView()
 	scrollParam.scrollDir = ScrollEnum.ScrollDirV
 	scrollParam.lineCount = 6
 	scrollParam.cellWidth = 296
-	scrollParam.cellHeight = 636
+	scrollParam.cellHeight = 780
+	scrollParam.endSpace = 50
 
 	local animationDelayTimes = {}
 

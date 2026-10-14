@@ -32,7 +32,7 @@ function AutoChessMallLevelUpView:onOpen()
 
 	local sceneMo = AutoChessModel.instance:getSceneMo()
 	local region = sceneMo.mall:getNormalRegion()
-	local nowLevel = region.config and region.config.showLevel or 2
+	local nowLevel = region and region.config and region.config.showLevel or 2
 	local lastLevel = nowLevel - 1
 
 	UISpriteSetMgr.instance:setAutoChessSprite(self._imageLevel1, "v2a5_autochess_quality3_" .. lastLevel)

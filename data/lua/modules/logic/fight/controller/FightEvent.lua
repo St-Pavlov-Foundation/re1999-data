@@ -569,5 +569,6 @@ FightEvent.FightTestEvent = GameUtil.getEventId()
 FightEvent.OnReturnFightViewTopRight = GameUtil.getEventId()
 FightEvent.OnEntityPosChange = GameUtil.getEventId()
 FightEvent.OnEntitySpinePosChange = GameUtil.getEventId()
+FightEvent.OnEntityScaleChange = GameUtil.getEventId()
 
 return FightEvent

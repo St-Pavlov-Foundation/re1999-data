@@ -397,11 +397,12 @@ function FightEntityObject:getScale()
 end
 
 function FightEntityObject:setScale(scale)
-	if gohelper.isNil(self.go) then
+	if gohelper.isNil(self.goTransform) then
 		return
 	end
 
-	transformhelper.setLocalScale(self.go.transform, scale, scale, scale)
+	transformhelper.setLocalScale(self.goTransform, scale, scale, scale)
+	FightController.instance:dispatchEvent(FightEvent.OnEntityScaleChange, self.id, scale)
 end
 
 function FightEntityObject:setSpeed(speed)

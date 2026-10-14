@@ -103,7 +103,7 @@ function AutoChessConfig:getChessCfgRaceListMap()
 	local result = {}
 
 	for _, config in pairs(lua_auto_chess.configList) do
-		if config.star == 1 and config.illustrationShow then
+		if config.star == 1 and config.illustrationShow == 1 then
 			if not result[config.race] then
 				result[config.race] = {}
 			end

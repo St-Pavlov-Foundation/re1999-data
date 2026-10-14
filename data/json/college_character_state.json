@@ -213,13 +213,16 @@
     "chaChange": [],
     "relationshipCha": [
       4,
-      9
+      9,
+      6
     ],
     "relationshipTxt": [
       102,
-      105
+      105,
+      101
     ],
     "relationshipType": [
+      1,
       1,
       1
     ],
@@ -238,14 +241,17 @@
     "relationshipCha": [
       4,
       9,
-      11
+      11,
+      6
     ],
     "relationshipTxt": [
       102,
       105,
-      100
+      100,
+      101
     ],
     "relationshipType": [
+      1,
       1,
       1,
       1
@@ -266,19 +272,22 @@
       4,
       9,
       11,
-      15
+      15,
+      6
     ],
     "relationshipTxt": [
       102,
       105,
       100,
-      100
+      100,
+      101
     ],
     "relationshipType": [
       1,
       1,
       1,
-      2
+      2,
+      1
     ],
     "chaTxt": [
       80016
@@ -315,16 +324,13 @@
     "chaChange": [],
     "relationshipCha": [
       3,
-      5,
-      6
+      5
     ],
     "relationshipTxt": [
       102,
-      101,
       101
     ],
     "relationshipType": [
-      1,
       1,
       1
     ],
@@ -363,7 +369,7 @@
     "chaChange": [],
     "relationshipCha": [
       1,
-      4,
+      3,
       7
     ],
     "relationshipTxt": [
@@ -1002,6 +1008,30 @@
     "relationshipType": [],
     "chaTxt": [
       80011
+    ]
+  },
+  {
+    "stateId": 10026,
+    "chaId": 3,
+    "otherId": 0,
+    "positionId": 3,
+    "state": 1,
+    "isClick": 0,
+    "chaChange": [],
+    "relationshipCha": [
+      4,
+      6
+    ],
+    "relationshipTxt": [
+      102,
+      101
+    ],
+    "relationshipType": [
+      1,
+      1
+    ],
+    "chaTxt": [
+      80016
     ]
   }
 ]

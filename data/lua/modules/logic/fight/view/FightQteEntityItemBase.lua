@@ -274,6 +274,10 @@ function FightQteEntityItemBase:onClickThis()
 		return
 	end
 
+	if FightDataHelper.lockOperateMgr:isLock() then
+		return
+	end
+
 	if not FightDataHelper.stageMgr:inFightState(FightStageMgr.FightStateType.QTE) then
 		return
 	end

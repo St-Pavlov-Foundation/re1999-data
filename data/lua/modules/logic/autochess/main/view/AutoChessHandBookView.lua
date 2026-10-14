@@ -62,7 +62,9 @@ function AutoChessHandBookView:_editableInitView()
 	self.actId = Activity182Model.instance:getCurActId()
 	self.chessCfgRaceListMap = AutoChessConfig.instance:getChessCfgRaceListMap()
 
-	table.sort(self.chessCfgRaceListMap, self.chessCfgSortFunc)
+	for _, v in pairs(self.chessCfgRaceListMap) do
+		table.sort(v, self.chessCfgSortFunc)
+	end
 end
 
 function AutoChessHandBookView:onOpen()

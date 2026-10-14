@@ -23,6 +23,7 @@ function AutoChessHandbookLeaderItem:initInternal(go, view)
 end
 
 function AutoChessHandbookLeaderItem:onUpdateMO(mo)
+	self.leaderCard:hideSkillTip()
 	self.leaderCard:setData(mo)
 end
 

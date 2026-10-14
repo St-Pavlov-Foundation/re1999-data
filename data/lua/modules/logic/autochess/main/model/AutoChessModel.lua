@@ -40,6 +40,8 @@ function AutoChessModel:clearData()
 	self.moduleId = nil
 	self.episodeId = nil
 	self.sceneMo = nil
+	self.resultData = nil
+	self.settleData = nil
 end
 
 AutoChessModel.instance = AutoChessModel.New()

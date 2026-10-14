@@ -18,8 +18,6 @@ function AutoChessMallMo:getNormalRegion()
 			return region
 		end
 	end
-
-	logError("找不到普通商店数据")
 end
 
 function AutoChessMallMo:getFreeRegion()

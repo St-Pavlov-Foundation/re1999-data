@@ -837,7 +837,7 @@ function HeroGroupHandler.replaceSingleGroup(episodeId, paramData)
 	end
 
 	local episodeType = episodeConfig.type
-	local func = HeroGroupHandler.setFightParamAssistFunc[episodeType]
+	local func = HeroGroupHandler.replaceSingleGroupAssistFunc[episodeType]
 
 	if func then
 		func(episodeId, paramData)

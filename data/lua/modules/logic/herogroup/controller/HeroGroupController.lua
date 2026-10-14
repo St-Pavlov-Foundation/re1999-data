@@ -538,7 +538,13 @@ function HeroGroupController:onAbyssUse(info, heroGroupMO, ...)
 			if not skinId then
 				local heroMo = HeroModel.instance:getById(mo.heroId)
 
-				skinId = heroMo.skin
+				if heroMo then
+					skinId = heroMo.skin
+				else
+					local heroConfig = HeroConfig.instance:getHeroCO(mo.heroId)
+
+					skinId = heroConfig.skinId
+				end
 			end
 
 			AbyssController.instance:dispatchEvent(AbyssEvent.OnAbyssRecommendHeroRemove, {

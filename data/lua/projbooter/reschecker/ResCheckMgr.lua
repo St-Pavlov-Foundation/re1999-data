@@ -97,28 +97,7 @@ function ResCheckMgr:onCheckFinish(allPass, allSize)
 	allSize = tonumber(tostring(allSize))
 
 	logNormal("ResCheckMgr:onCheckFinish:allPass = " .. tostring(allPass) .. " #allSize = " .. allSize .. " #cost time: " .. SLFramework.TimeWatch.Instance:Watch() .. " s")
-
-	if allPass then
-		self:doCallBack(true)
-	elseif UnityEngine.Application.internetReachability == UnityEngine.NetworkReachability.ReachableViaLocalAreaNetwork then
-		self:doCallBack()
-	else
-		local args = {}
-
-		args.title = booterLang("hotupdate")
-
-		local msg = booterLang("hotupdate_info")
-
-		args.content = string.format(msg, HotUpdateMgr.instance:_fixSizeStr(allSize))
-		args.leftMsg = booterLang("exit")
-		args.leftCb = self._quitGame
-		args.leftCbObj = self
-		args.rightMsg = booterLang("download")
-		args.rightCb = self.doCallBack
-		args.rightCbObj = self
-
-		BootMsgBox.instance:show(args)
-	end
+	self:doCallBack(allPass)
 end
 
 function ResCheckMgr:doCallBack(allPass, diffList, skipCheck)

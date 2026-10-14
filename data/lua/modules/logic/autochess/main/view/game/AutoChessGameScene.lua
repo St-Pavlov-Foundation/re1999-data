@@ -143,7 +143,9 @@ function AutoChessGameScene:initEntity()
 	local fightMo = self.sceneMo.fight
 
 	if self.viewType == AutoChessEnum.ViewType.Player then
-		AutoChessEntityMgr.instance:addLeaderEntity(fightMo.mySideMaster)
+		if fightMo.mySideMaster.id ~= 0 then
+			AutoChessEntityMgr.instance:addLeaderEntity(fightMo.mySideMaster)
+		end
 
 		local unwarZone = fightMo:getUnwarZone()
 
@@ -339,9 +341,9 @@ function AutoChessGameScene:_beginDrag(_, pointerEventData)
 
 	if tileX then
 		local chessPos = fightMo:getChessPosition(tileX, tileY)
-		local chessMo = chessPos.chess
+		local chessMo = chessPos and chessPos.chess
 
-		if chessMo.uid ~= 0 then
+		if chessMo and chessMo.uid ~= 0 then
 			local entity = AutoChessEntityMgr.instance:getEntity(chessMo.uid)
 
 			if entity.teamType == AutoChessEnum.TeamType.Player then
@@ -406,7 +408,8 @@ function AutoChessGameScene:_endDrag(_, pointerEventData)
 						self.selectChess:show()
 					else
 						local targetChessPos = fightMo:getChessPosition(tileX, tileY)
-						local targetEntity = AutoChessEntityMgr.instance:tryGetEntity(targetChessPos.chess.uid)
+						local chessUid = targetChessPos and targetChessPos.chess.uid or 0
+						local targetEntity = AutoChessEntityMgr.instance:tryGetEntity(chessUid)
 
 						if targetEntity then
 							self.selectChess:show()
@@ -423,7 +426,8 @@ function AutoChessGameScene:_endDrag(_, pointerEventData)
 				self.selectChess:show()
 			else
 				local targetChessPos = fightMo:getChessPosition(tileX, tileY)
-				local targetEntity = AutoChessEntityMgr.instance:tryGetEntity(targetChessPos.chess.uid)
+				local chessUid = targetChessPos and targetChessPos.chess.uid or 0
+				local targetEntity = AutoChessEntityMgr.instance:tryGetEntity(chessUid)
 
 				if targetEntity then
 					if AutoChessHelper.sameWarZoneType(fromWarZone, tileX) or AutoChessHelper.canMix(targetChessPos.chess, self.selectChess.mo) then
