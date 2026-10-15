@@ -222,7 +222,6 @@ function DeleikeSkillMgr:startCharge()
 
 	self:_refreshChargeDir(1, 0)
 	self.player:setCharging(true)
-	AudioMgr.instance:trigger(AudioEnum4_0.Deleike.skill_charging)
 	TaskDispatcher.runDelay(self._showSkillLine, self, 0.05)
 end
 

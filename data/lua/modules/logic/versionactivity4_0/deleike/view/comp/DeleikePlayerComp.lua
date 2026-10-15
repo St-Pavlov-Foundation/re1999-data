@@ -96,6 +96,10 @@ end
 
 function DeleikePlayerComp:setCharging(bool)
 	self.isCharging = bool
+
+	local audioId = bool and AudioEnum4_0.Deleike.skill_charging or AudioEnum.UI.Stop_UI_Bus
+
+	AudioMgr.instance:trigger(audioId)
 end
 
 function DeleikePlayerComp:onFixedUpdate()
