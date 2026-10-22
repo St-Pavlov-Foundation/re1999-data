@@ -218,6 +218,9 @@ CharacterVoiceEnum.NormalBloomView = {
 	FightSuccView = CharacterVoiceEnum.NormalBloomViewType.Capture,
 	V3a8EchoSongGameView = CharacterVoiceEnum.NormalBloomViewType.Normal
 }
+CharacterVoiceEnum.ViewType = {
+	StoryView = 1
+}
 CharacterVoiceEnum.RTShareType = {
 	BloomClose = 2,
 	BloomOpen = 3,

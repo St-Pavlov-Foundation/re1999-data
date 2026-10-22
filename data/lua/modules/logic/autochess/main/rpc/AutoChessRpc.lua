@@ -55,7 +55,7 @@ function AutoChessRpc:onReceiveAutoChessEnterFightReply(resultCode, msg)
 
 	mo:cacheSvrFight()
 	mo:updateSvrTurn(msg.turn)
-	mo:updateSvrMall(msg.mall)
+	mo:cacheNextMall(msg.mall)
 	mo:updateSvrBaseInfo(msg.baseInfo)
 	AutoChessController.instance:playStep(AutoChessEnum.ActionType.EndBuy)
 end

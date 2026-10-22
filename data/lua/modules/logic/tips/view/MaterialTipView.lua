@@ -890,6 +890,8 @@ function MaterialTipView:_btnuseOnClick()
 		local itemId = self._config.id
 
 		EquipLvUpController.instance:checkOpenEquipLvUpChooseView(itemId)
+	elseif self._config.subType == ItemEnum.SubType.DeleteRole then
+		MaterialHeroRecoveryController.instance:openHeroRecoveryTipView(materialId)
 	else
 		ItemRpc.instance:simpleSendUseItemRequest(materialId, quantity)
 	end

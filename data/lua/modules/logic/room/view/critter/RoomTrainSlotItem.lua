@@ -112,8 +112,7 @@ function RoomTrainSlotItem:_refreshCritterUI()
 
 		self.critterIcon:setMOValue(critterMO:getId(), critterMO:getDefineId())
 
-		local heroMO = HeroModel.instance:getByHeroId(critterMO.trainInfo.heroId)
-		local skinConfig = heroMO and SkinConfig.instance:getSkinCo(heroMO.skin)
+		local skinConfig = CritterHelper.getSkinCfgByHeroId(critterMO.trainInfo.heroId)
 
 		if skinConfig then
 			self._simageheroIcon:LoadImage(ResUrl.getRoomHeadIcon(skinConfig.headIcon))

@@ -55,6 +55,8 @@ function SurvivalMapModel:getCurMapId()
 end
 
 function SurvivalMapModel:setSceneData(scene)
+	SurvivalMapHelper.instance._moveErrorReasons = nil
+	SurvivalMapHelper.instance._moveErrorCount = 0
 	self.showToastList = {}
 	self._targetPos = nil
 	self._showTargetPos = nil

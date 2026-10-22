@@ -987,6 +987,7 @@ local ToastEnum = {
 	SeasonEquipAutoSelectFail = 300001,
 	RoomNoTradeBuilding = 220110,
 	MaterialTipViewCantUse = 409000,
+	MaterialTipHeroRecoveryReadDesc = 409100,
 	CollegeUnlockArea = 401002,
 	SodacheToastId373010 = 373010,
 	V1a6CachotToast15 = 60115,

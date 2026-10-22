@@ -15827,6 +15827,25 @@
     "special": ""
   },
   {
+    "id": 115499999,
+    "trialTemplate": 0,
+    "heroId": 3999,
+    "skin": 0,
+    "trialType": 1,
+    "level": 1,
+    "exSkillLv": 0,
+    "talent": 1,
+    "equipId": 1202,
+    "equipLv": 1,
+    "equipRefine": 0,
+    "act104EquipId1": 0,
+    "act104EquipId2": 0,
+    "attrId": 0,
+    "facetsId": 0,
+    "facetslevel": 0,
+    "special": ""
+  },
+  {
     "id": 119405010,
     "trialTemplate": 0,
     "heroId": 3155,

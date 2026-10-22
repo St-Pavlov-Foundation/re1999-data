@@ -439,7 +439,7 @@ function HeroGroupHeroItem:onUpdateMO(mo)
 
 	if self._heroMO then
 		local heroSkin = self.assistMo or HeroModel.instance:getByHeroId(self._heroMO.heroId)
-		local skinConfig = FightConfig.instance:getSkinCO(replay_data and replay_data.skin or heroSkin.skin)
+		local skinConfig = FightConfig.instance:getSkinCO(replay_data and replay_data.skin or heroSkin and heroSkin.skin or self._heroMO.skin)
 
 		self._commonHeroCard:onUpdateMO(skinConfig)
 

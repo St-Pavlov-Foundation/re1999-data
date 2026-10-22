@@ -18,6 +18,10 @@ function BaseLive2dSpecialEffect:setLive2d(live2d)
 	self._live2d = live2d
 end
 
+function BaseLive2dSpecialEffect:getViewType()
+	return self._live2d and self._live2d:getViewType()
+end
+
 function BaseLive2dSpecialEffect:getCubismController()
 	return self._live2d and self._live2d._cubismController
 end

@@ -18,6 +18,7 @@ function HeroModel:reInit()
 	self._touchHeadNumber = 0
 	self._hookGetHeroId = {}
 	self._hookGetHeroUid = {}
+	self._deleteHeroUidDict = nil
 end
 
 function HeroModel:setTouchHeadNumber(count)
@@ -53,7 +54,7 @@ function HeroModel:removeGuideHero(heroId)
 	end
 end
 
-function HeroModel:onGetHeroList(serco)
+function HeroModel:onGetHeroList(serco, delUids)
 	local moList = {}
 
 	self._heroId2MODict = {}
@@ -71,6 +72,7 @@ function HeroModel:onGetHeroList(serco)
 	end
 
 	self:setList(moList)
+	self:_deleteHeroUids(delUids)
 end
 
 function HeroModel:onGetSkinList(allHeroSkin)
@@ -107,7 +109,11 @@ function HeroModel:setHeroRank(heroId, rank)
 	heroMO.rank = rank
 end
 
-function HeroModel:onSetHeroChange(serco)
+function HeroModel:onSetHeroChange(serco, delUids)
+	local oldDic = self._deleteHeroUidDict
+
+	self._deleteHeroUidDict = nil
+
 	if serco then
 		local moList
 
@@ -133,6 +139,41 @@ function HeroModel:onSetHeroChange(serco)
 		if moList then
 			self:addList(moList)
 		end
+	end
+
+	self:_deleteHeroUids(delUids, oldDic)
+end
+
+function HeroModel:_deleteHeroUids(delUids, oldDic)
+	self._deleteHeroUidDict = nil
+
+	if delUids then
+		local delDict = {}
+
+		for _, uid in ipairs(delUids) do
+			local placeHeroMo = oldDic and oldDic[uid]
+
+			if not placeHeroMo then
+				placeHeroMo = HeroMo.New()
+
+				placeHeroMo:initFromTrial(CharacterEnum.PlaceholderHeroDelTrialId)
+
+				placeHeroMo.id = uid
+				placeHeroMo.uid = uid
+			end
+
+			delDict[uid] = placeHeroMo
+
+			local heroMo = self:getById(uid)
+
+			if heroMo then
+				self._heroId2MODict[heroMo.heroId] = nil
+
+				self:remove(heroMo)
+			end
+		end
+
+		self._deleteHeroUidDict = delDict
 	end
 end
 
@@ -327,7 +368,13 @@ function HeroModel:getById(id)
 		end
 	end
 
-	return HeroModel.super.getById(self, id)
+	local heroMo = HeroModel.super.getById(self, id)
+
+	if not heroMo and self._deleteHeroUidDict then
+		heroMo = self._deleteHeroUidDict[id]
+	end
+
+	return heroMo
 end
 
 function HeroModel:getByHeroId(heroId)

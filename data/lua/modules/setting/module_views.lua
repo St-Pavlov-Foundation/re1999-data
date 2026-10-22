@@ -27174,6 +27174,42 @@ module_views.CharacterNormalSkinView = {
 		}
 	}
 }
+module_views.MaterialHeroRecoveryTipView = {
+	bgBlur = 1,
+	container = "MaterialHeroRecoveryTipViewContainer",
+	mainRes = "ui/viewres/tips/herorecoverytipsview.prefab",
+	destroy = 0,
+	blurIterations = 3,
+	blurFactor = 0.85,
+	layer = "POPUP_TOP",
+	viewType = ViewType.Modal,
+	anim = ViewAnim.Default,
+	desampleRate = PostProcessingMgr.DesamplingRate.x8,
+	reduceRate = PostProcessingMgr.DesamplingRate.x8,
+	otherRes = {
+		IconMgrConfig.UrlItemIcon
+	},
+	tabRes = {
+		{
+			{
+				CurrencyView.prefabPath
+			}
+		}
+	}
+}
+module_views.HeroRecoveryWindowView = {
+	bgBlur = 1,
+	container = "HeroRecoveryWindowViewContainer",
+	mainRes = "ui/viewres/tips/herorecoverywindowview.prefab",
+	destroy = 0,
+	blurIterations = 3,
+	blurFactor = 0.85,
+	layer = "POPUP_TOP",
+	viewType = ViewType.Modal,
+	anim = ViewAnim.Default,
+	desampleRate = PostProcessingMgr.DesamplingRate.x8,
+	reduceRate = PostProcessingMgr.DesamplingRate.x8
+}
 
 local ViewName = {}
 

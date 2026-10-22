@@ -196,5 +196,11 @@
     "name": "必new6星道具",
     "useType": 2,
     "use_max": 1
+  },
+  {
+    "id": 402,
+    "name": "角色回收道具",
+    "useType": 2,
+    "use_max": 1
   }
 ]

@@ -416,4 +416,17 @@ function CritterHelper.getPatienceChangeValue(buildingType)
 	return 0
 end
 
+function CritterHelper.getSkinCfgByHeroId(heroId)
+	local heroMO = HeroModel.instance:getByHeroId(heroId)
+	local skinId = heroMO and heroMO.skin
+
+	if skilId == nil then
+		local heroCfg = HeroConfig.instance:getHeroCO(heroId)
+
+		skinId = heroCfg and heroCfg.skinId
+	end
+
+	return SkinConfig.instance:getSkinCo(skinId)
+end
+
 return CritterHelper

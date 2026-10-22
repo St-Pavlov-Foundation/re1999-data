@@ -43,14 +43,23 @@ function RoleStoryChapterOpen:onUpdateView()
 	self:_playTextAnim()
 
 	self._txtEpisode.text = chapterCo.navigateChapterEn
+
+	TaskDispatcher.runRepeat(self.onFrameUpdate, self, 0)
+end
+
+function RoleStoryChapterOpen:onFrameUpdate()
+	gohelper.setActive(self._txtTitle, false)
+	gohelper.setActive(self._txtTitle, true)
 end
 
 function RoleStoryChapterOpen:onHide()
 	FrameTimerController.onDestroyViewMember(self, "_txtFrameTimer")
+	TaskDispatcher.cancelTask(self.onFrameUpdate, self)
 end
 
 function RoleStoryChapterOpen:onDestory()
 	FrameTimerController.onDestroyViewMember(self, "_txtFrameTimer")
+	TaskDispatcher.cancelTask(self.onFrameUpdate, self)
 	RoleStoryChapterOpen.super.onDestory(self)
 end
 

@@ -28,7 +28,8 @@ function HeroConfig:reqConfigNames()
 		"character_rank_replace",
 		"fight_device",
 		"device_power",
-		"heduonie_specialcard_client"
+		"heduonie_specialcard_client",
+		"recycle_conversion"
 	}
 end
 
@@ -65,6 +66,8 @@ function HeroConfig:onConfigLoaded(configName, configTable)
 		self.heroTrialConfig = configTable.configDict
 	elseif configName == "character_rank_replace" then
 		self.heroRankReplaceConfig = configTable.configDict
+	elseif configName == "recycle_conversion" then
+		self.heroRecyleConversion = configTable
 	end
 end
 
@@ -479,6 +482,16 @@ function HeroConfig:getHeroSpecialcardCos(heroId)
 	local cos = lua_heduonie_specialcard_client.configDict[heroId]
 
 	return cos
+end
+
+function HeroConfig:getRecyleConversionCo(itemId, itemType)
+	if self.heroRecyleConversion then
+		local cfg = self.heroRecyleConversion.configDict[itemId]
+
+		if cfg and cfg.recycleType == itemType then
+			return cfg
+		end
+	end
 end
 
 HeroConfig.instance = HeroConfig.New()

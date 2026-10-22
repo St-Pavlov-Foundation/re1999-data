@@ -54,6 +54,10 @@ function SurvivalContinueMoveWork:onStart(context)
 
 				local walkables = SurvivalMapModel.instance:getCurMapCo().walkables
 
+				if not nextPos then
+					SurvivalMapHelper.instance:logMoveError("continue_path_invalid", targetPos, "pathLength=" .. tostring(targetPath and #targetPath or 0))
+				end
+
 				if nextPos and SurvivalHelper.instance:getValueFromDict(walkables, nextPos) then
 					self._nextPos = nextPos
 

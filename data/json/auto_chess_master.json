@@ -170,7 +170,7 @@
   {
     "id": 30009,
     "name": "X",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "isSelf": true,
     "isSpMaster": false,
     "hp": 33,
@@ -296,7 +296,7 @@
   {
     "id": 30015,
     "name": "卡卡尼亚",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "isSelf": true,
     "isSpMaster": false,
     "hp": 35,
@@ -590,7 +590,7 @@
   {
     "id": 30029,
     "name": "可燃点",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "isSelf": false,
     "isSpMaster": false,
     "hp": 35,

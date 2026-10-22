@@ -2861,5 +2861,19 @@
     "skillPassive": 31630142,
     "uiFilterSkill": "",
     "skillGroup": 2
+  },
+  {
+    "heroId": 3999,
+    "skillLevel": 1,
+    "skillPassive": 30280141,
+    "uiFilterSkill": "",
+    "skillGroup": 1
+  },
+  {
+    "heroId": 3999,
+    "skillLevel": 2,
+    "skillPassive": 30280142,
+    "uiFilterSkill": "",
+    "skillGroup": 2
   }
 ]

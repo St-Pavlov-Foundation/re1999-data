@@ -259,5 +259,14 @@
     "desc": "是否立即前往使用【▩1%s】",
     "descParam": "1",
     "checkParam": ""
+  },
+  {
+    "id": 401002,
+    "priority": 1,
+    "type": 1,
+    "jumpId": 54,
+    "desc": "是否立即前往使用【▩1%s】",
+    "descParam": "1",
+    "checkParam": ""
   }
 ]

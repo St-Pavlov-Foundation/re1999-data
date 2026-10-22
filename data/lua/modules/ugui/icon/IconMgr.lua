@@ -74,6 +74,14 @@ function IconMgr:getCommonHeroIconNew(parentGO)
 	end
 end
 
+function IconMgr:getCommonHeroLeveIcon(parentGO)
+	local heroIconGO = self:_getIconInstance(IconMgrConfig.UrlHeroLeveIcon, parentGO)
+
+	if heroIconGO then
+		return MonoHelper.addNoUpdateLuaComOnceToGo(heroIconGO, CommonHeroLevelIcon)
+	end
+end
+
 function IconMgr:getCommonHeroItem(parentGO)
 	local heroItemGO = self:_getIconInstance(IconMgrConfig.UrlHeroItemNew, parentGO)
 

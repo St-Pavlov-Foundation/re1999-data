@@ -535,6 +535,7 @@ function StoryHeroItem:buildHero(v, mat, hasBottomEffect, callback, callbackObj,
 		self._isLive2D = true
 		self._heroSpine = GuiLive2d.Create(self._heroGo, true)
 
+		self._heroSpine:setViewType(CharacterVoiceEnum.ViewType.StoryView)
 		self._heroSpine:cancelCamera()
 		self._heroSpine:setResPath(path, function()
 			if not self._heroSpine then

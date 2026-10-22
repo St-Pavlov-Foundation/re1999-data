@@ -20,7 +20,7 @@ end
 
 function HeroRpc:onReceiveHeroInfoListReply(resultCode, msg)
 	if resultCode == 0 then
-		HeroModel.instance:onGetHeroList(msg.heros)
+		HeroModel.instance:onGetHeroList(msg.heros, msg.hideHeroUids)
 		HeroModel.instance:onGetSkinList(msg.allHeroSkin)
 		HeroModel.instance:setTouchHeadNumber(msg.touchCountLeft)
 		SignInModel.instance:setHeroBirthdayInfos(msg.birthdayInfos)
@@ -228,7 +228,7 @@ end
 
 function HeroRpc:onReceiveHeroUpdatePush(resultCode, msg)
 	if resultCode == 0 then
-		HeroModel.instance:onSetHeroChange(msg.heroUpdates)
+		HeroModel.instance:onSetHeroChange(msg.heroUpdates, msg.hideHeroUids)
 		CharacterController.instance:dispatchEvent(CharacterEvent.HeroUpdatePush)
 		RedDotController.instance:dispatchEvent(RedDotEvent.RefreshClientCharacterDot)
 		CharacterController.instance:dispatchEvent(CharacterEvent.HeroUpdatePushData, msg.heroUpdates)

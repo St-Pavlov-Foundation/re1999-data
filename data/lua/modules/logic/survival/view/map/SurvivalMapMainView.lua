@@ -256,6 +256,10 @@ function SurvivalMapMainView:onClickScene(worldpos, hexPos)
 	end
 
 	if SurvivalMapModel.instance:isInFog2(hexPos) then
+		if not SurvivalMapModel.instance:isInFog(hexPos) then
+			SurvivalMapHelper.instance:logMoveError("explored_but_in_fog2", hexPos)
+		end
+
 		SurvivalMapModel.instance:setMoveToTarget()
 		SurvivalMapModel.instance:setShowTarget()
 
@@ -289,6 +293,13 @@ function SurvivalMapMainView:onClickScene(worldpos, hexPos)
 			end
 		end
 	else
+		local startWalkable = SurvivalHelper.instance:isHaveNode(walkables, playerPos)
+		local targetWalkable = SurvivalHelper.instance:isHaveNode(walkables, hexPos)
+
+		if not startWalkable or targetWalkable and SurvivalHelper.instance:getDistance(playerPos, hexPos) == 1 then
+			SurvivalMapHelper.instance:logMoveError("path_not_found", hexPos, "startWalkable=" .. tostring(startWalkable) .. " targetWalkable=" .. tostring(targetWalkable))
+		end
+
 		SurvivalMapModel.instance:setMoveToTarget()
 		SurvivalMapModel.instance:setShowTarget()
 	end

@@ -21466,6 +21466,10 @@
       "atlassrc/ui_modules/tips/tip/shuxingdi_002.png",
       "atlassrc/ui_modules/tips/tip/tiaozhuan_007.png",
       "atlassrc/ui_modules/tips/tip/tips_di2.png",
+      "atlassrc/ui_modules/tips/tip/tips_role_arrow.png",
+      "atlassrc/ui_modules/tips/tip/tips_role_frame.png",
+      "atlassrc/ui_modules/tips/tip/tips_role_gouxuan.png",
+      "atlassrc/ui_modules/tips/tip/tips_role_titlebg.png",
       "atlassrc/ui_modules/tips/tip/x_tips.png",
       "atlassrc/ui_modules/tips/tip/xinxiang_zhezhao_xiao_007.png",
       "atlassrc/ui_modules/tips/tip/zd_4_016.png",
@@ -124648,10 +124652,10 @@
     ]
   },
   {
-    "abName": "rolesstory/rolesprefab/v4a0_30660001",
+    "abName": "rolesstory/rolesprefab/v4a0_30660001_37_p",
     "assets": [
-      "rolesstory/rolesprefab/v4a0_30660001/30660001.prefab",
-      "rolesstory/rolesprefab/v4a0_30660001/30660001_light.prefab"
+      "rolesstory/rolesprefab/v4a0_30660001_37_p/30660001_37_p.prefab",
+      "rolesstory/rolesprefab/v4a0_30660001_37_p/30660001_37_p_light.prefab"
     ],
     "directDependencies": [
       "shaders.dat",
@@ -124659,10 +124663,10 @@
     ]
   },
   {
-    "abName": "rolesstory/rolesprefab/v4a0_30880001",
+    "abName": "rolesstory/rolesprefab/v4a0_30880001_smews_p",
     "assets": [
-      "rolesstory/rolesprefab/v4a0_30880001/30880001.prefab",
-      "rolesstory/rolesprefab/v4a0_30880001/30880001_light.prefab"
+      "rolesstory/rolesprefab/v4a0_30880001_smews_p/30880001_smews_p.prefab",
+      "rolesstory/rolesprefab/v4a0_30880001_smews_p/30880001_smews_p_light.prefab"
     ],
     "directDependencies": [
       "shaders.dat",
@@ -164271,6 +164275,14 @@
     "directDependencies": []
   },
   {
+    "abName": "singlebg/headicon_small_50",
+    "assets": [
+      "singlebg/headicon_small/399901.png",
+      "singlebg/headicon_small/400001.png"
+    ],
+    "directDependencies": []
+  },
+  {
     "abName": "singlebg/headicon_small_8",
     "assets": [
       "singlebg/headicon_small/301021.png",
@@ -198530,6 +198542,7 @@
       "ui/viewres/common/item/commonheroicon.prefab",
       "ui/viewres/common/item/commonheroiconnew.prefab",
       "ui/viewres/common/item/commonheroitemnew.prefab",
+      "ui/viewres/common/item/commonherolevelicon.prefab",
       "ui/viewres/common/item/commonicontag.prefab",
       "ui/viewres/common/item/commonitemicon.prefab",
       "ui/viewres/common/item/commonplayericon.prefab",
@@ -198546,6 +198559,7 @@
       "atlas/ui_roomfunction.spriteatlas.dat",
       "atlas/ui_signin.spriteatlas.dat",
       "atlas/ui_store_2.spriteatlas.dat",
+      "atlas/ui_summon_2.spriteatlas.dat",
       "font/meshpro.dat",
       "font/tmp.dat",
       "shaders.dat",
@@ -198554,6 +198568,7 @@
       "ui/ui_share_4.dat",
       "ui/ui_share_5.dat",
       "ui/ui_share_6.dat",
+      "ui/ui_share_7.dat",
       "ui/ui_share_8.dat",
       "ui/ui_share_9.dat"
     ]
@@ -205662,6 +205677,8 @@
   {
     "abName": "ui/viewres/tips",
     "assets": [
+      "ui/viewres/tips/herorecoverytipsview.prefab",
+      "ui/viewres/tips/herorecoverywindowview.prefab",
       "ui/viewres/tips/informplayertipview.prefab",
       "ui/viewres/tips/loadheadsetview.prefab",
       "ui/viewres/tips/materialtipview.prefab",
@@ -205669,6 +205686,7 @@
       "ui/viewres/tips/skilltipview.prefab"
     ],
     "directDependencies": [
+      "atlas/sp_common.spriteatlas.dat",
       "atlas/sp_fight.spriteatlas.dat",
       "atlas/ui_characterexskill.spriteatlas.dat",
       "atlas/ui_common.spriteatlas.dat",
@@ -205676,12 +205694,15 @@
       "atlas/ui_common_bg.spriteatlas.dat",
       "atlas/ui_fight_2.spriteatlas.dat",
       "atlas/ui_store.spriteatlas.dat",
+      "atlas/ui_summon_2.spriteatlas.dat",
+      "atlas/ui_summon_3.spriteatlas.dat",
       "atlas/ui_tips.spriteatlas.dat",
       "atlas/ui_v2a3_destiny.spriteatlas.dat",
       "common.dat",
       "font/meshpro.dat",
       "shaders.dat",
       "ui/ui_share_12.dat",
+      "ui/ui_share_3.dat",
       "ui/ui_share_6.dat",
       "ui/ui_share_7.dat",
       "ui/ui_share_8.dat",

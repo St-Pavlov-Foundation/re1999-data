@@ -60,6 +60,7 @@ ItemEnum.SubType = {
 	DecorateBundle = 83,
 	RoomManufactureItem = 25,
 	RandomNewItemBox = 87,
+	DeleteRole = 402,
 	RoomBlockGiftNew = 69,
 	CritterFood = 27,
 	RoomBlockColorGift = 70,

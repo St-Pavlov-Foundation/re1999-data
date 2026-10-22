@@ -102,6 +102,14 @@ function BaseLive2d:_clear()
 	self._curBodyName = nil
 end
 
+function BaseLive2d:setViewType(viewType)
+	self._viewType = viewType
+end
+
+function BaseLive2d:getViewType()
+	return self._viewType
+end
+
 function BaseLive2d:setInMainView()
 	self._isInMainView = true
 end

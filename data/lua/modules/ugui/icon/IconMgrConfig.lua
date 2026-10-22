@@ -18,6 +18,7 @@ IconMgrConfig.UrlCommonTextDotBottom = "ui/viewres/common/item/commontextdotbott
 IconMgrConfig.UrlHeadIcon = "ui/viewres/common/item/commonheadicon.prefab"
 IconMgrConfig.UrlCritterIcon = "ui/viewres/common/item/commoncrittericon.prefab"
 IconMgrConfig.UrlIconTag = "ui/viewres/common/item/commonicontag.prefab"
+IconMgrConfig.UrlHeroLeveIcon = "ui/viewres/common/item/commonherolevelicon.prefab"
 
 function IconMgrConfig.getPreloadList()
 	return {
@@ -33,7 +34,8 @@ function IconMgrConfig.getPreloadList()
 		IconMgrConfig.UrlCommonTextDotBottom,
 		IconMgrConfig.UrlHeadIcon,
 		IconMgrConfig.UrlCritterIcon,
-		IconMgrConfig.UrlIconTag
+		IconMgrConfig.UrlIconTag,
+		IconMgrConfig.UrlHeroLeveIcon
 	}
 end
 

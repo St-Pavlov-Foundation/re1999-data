@@ -179,7 +179,7 @@ function Live2dSpecialEffect_315501_sxnwhnj:setLive2d(live2d)
 	end
 
 	self._showGhost = math.random() <= initShowGhostRate
-	self._isInStoryView = ViewMgr.instance:isOpen(ViewName.StoryView)
+	self._isInStoryView = self:getViewType() == CharacterVoiceEnum.ViewType.StoryView
 
 	if self._isInStoryView then
 		self._showGhost = false

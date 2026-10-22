@@ -485,6 +485,10 @@ function AutoChessController:onFlowDone(type)
 	if self.isPlaying then
 		self:setPlayStatus(false)
 	end
+
+	if type == AutoChessEnum.ActionType.RoundStart then
+		sceneMo:syncMall()
+	end
 end
 
 function AutoChessController:onFlowDone9()

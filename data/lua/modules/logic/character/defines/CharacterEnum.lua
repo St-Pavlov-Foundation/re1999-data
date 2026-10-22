@@ -240,5 +240,6 @@ CharacterEnum.TwinssychubeEquip = {
 	1572
 }
 CharacterEnum.TwinssychubeHeroId = 3149
+CharacterEnum.PlaceholderHeroDelTrialId = 115499999
 
 return CharacterEnum

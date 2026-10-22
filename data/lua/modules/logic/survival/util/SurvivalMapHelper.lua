@@ -10,6 +10,23 @@ function SurvivalMapHelper:ctor()
 	self._steps = nil
 end
 
+function SurvivalMapHelper:logMoveError(reason, hexPos, detail)
+	self._moveErrorReasons = self._moveErrorReasons or {}
+
+	if self._moveErrorReasons[reason] or (self._moveErrorCount or 0) >= 3 then
+		return
+	end
+
+	self._moveErrorReasons[reason] = true
+	self._moveErrorCount = (self._moveErrorCount or 0) + 1
+
+	local model = SurvivalMapModel.instance
+	local sceneMo = model:getSceneMo()
+	local beginDt = self.flow and self.flow.context and self.flow.context.beginDt
+
+	logError(string.format("[SurvivalMoveDiag] reason=%s map=%s player=%s hex=%s target=%s preview=%s panel=%s flowAge=%s pendingSteps=%d %s", reason, tostring(sceneMo and sceneMo.mapId), tostring(sceneMo and sceneMo.player and sceneMo.player.pos), tostring(hexPos), tostring(model._targetPos), tostring(model._showTargetPos), tostring(sceneMo and sceneMo.panel and sceneMo.panel.type), tostring(beginDt and ServerTime.now() - beginDt), self._steps and #self._steps or 0, detail or ""))
+end
+
 function SurvivalMapHelper:cacheSteps(steps)
 	self._steps = self._steps or {}
 

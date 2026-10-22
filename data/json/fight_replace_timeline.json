@@ -4674,7 +4674,7 @@
   {
     "id": "sxnwhnj_315501_skill1_1",
     "timeline": "sxnwhnj_315503_skill1_1",
-    "priority": 1,
+    "priority": 2,
     "target": 1,
     "simulate": 0,
     "condition": "5#315503"

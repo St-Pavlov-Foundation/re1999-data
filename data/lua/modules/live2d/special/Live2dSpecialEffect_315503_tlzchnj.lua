@@ -81,7 +81,7 @@ function Live2dSpecialEffect_315503_tlzchnj:_fadeOutCompleteHandler()
 end
 
 function Live2dSpecialEffect_315503_tlzchnj:_onInit()
-	self._isInStoryView = ViewMgr.instance:isOpen(ViewName.StoryView)
+	self._isInStoryView = self:getViewType() == CharacterVoiceEnum.ViewType.StoryView
 	self._changeGhostTime = Time.time
 
 	if not self._isInStoryView then
@@ -296,6 +296,8 @@ function Live2dSpecialEffect_315503_tlzchnj:_resetMusicValue()
 
 	if self._mainOut then
 		CharacterVoiceController.instance:dispatchEvent(CharacterVoiceEvent.PlayMainViewAnim, "mainview_in")
+
+		self._mainOut = nil
 	end
 end
 

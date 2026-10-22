@@ -102,4 +102,16 @@ function AutoChessSceneMo:previewChange()
 	end
 end
 
+function AutoChessSceneMo:cacheNextMall(mall)
+	self.nextMall = mall
+end
+
+function AutoChessSceneMo:syncMall()
+	if self.nextMall then
+		self:updateSvrMall(self.nextMall)
+
+		self.nextMall = nil
+	end
+end
+
 return AutoChessSceneMo

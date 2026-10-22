@@ -305,9 +305,10 @@ function RoomCritterTrainReportView:_getLevelIconName(value)
 end
 
 function RoomCritterTrainReportView:_refreshHeroUI()
-	if self._heroMO then
-		local heroCfg = self._heroMO.config
-		local skinCfg = SkinConfig.instance:getSkinCo(self._heroMO.skin)
+	local heroCfg = self._heroMO and self._heroMO.config or HeroConfig.instance:getHeroCO(self._heroId)
+
+	if heroCfg then
+		local skinCfg = CritterHelper.getSkinCfgByHeroId(heroCfg.id)
 
 		self._simageheroicon:LoadImage(ResUrl.getRoomHeadIcon(skinCfg.headIcon))
 

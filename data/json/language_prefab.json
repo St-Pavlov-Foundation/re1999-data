@@ -14161,7 +14161,7 @@
   },
   {
     "id": "p_v2a2_selfselectcharacterchoiceview_txt_tips",
-    "lang": "现在就邀请嘉宾现身吗？（重复获得将会转化为对应角色的造像或者大量迷途之声）"
+    "lang": "现在就邀请嘉宾现身吗？（重复获得将会转化为对应角色的造像或者大容量迷途之声）"
   },
   {
     "id": "p_v2a2_selfselectcharacterchoiceview_txt_confirm",
@@ -31125,7 +31125,7 @@
   },
   {
     "id": "p_v4a0_deleikehelp5_Text (2)",
-    "lang": "<#FF906A>诘问</color>技能释放后，被消灭空间后方的空间\n将会靠近棋子"
+    "lang": "<#FF906A>焚毁</color>技能释放后，被消灭空间后方的空间\n将会靠近棋子"
   },
   {
     "id": "p_matchgamefightview_txt_info",
@@ -31146,5 +31146,29 @@
   {
     "id": "p_characterview_txt_spxiaochunque",
     "lang": "银装"
+  },
+  {
+    "id": "p_herorecoverytipsview_txt_title",
+    "lang": "回退内容"
+  },
+  {
+    "id": "p_herorecoverytipsview_txt_title_1",
+    "lang": "获得内容"
+  },
+  {
+    "id": "p_herorecoverytipsview_txt_Title",
+    "lang": "角色调换"
+  },
+  {
+    "id": "p_herorecoverytipsview_txt_Tips",
+    "lang": "我已阅读并同意《角色调换规则说明》"
+  },
+  {
+    "id": "p_herorecoverywindowview_txt_Tips",
+    "lang": "规则说明列表滚动至底部方可完成阅读"
+  },
+  {
+    "id": "p_herorecoverywindowview_txt_Title",
+    "lang": "角色调换规则说明"
   }
 ]
