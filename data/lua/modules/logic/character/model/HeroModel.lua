@@ -455,6 +455,10 @@ function HeroModel:getAllHeroGroup()
 end
 
 function HeroModel:checkGetRewards(heroId, id)
+	if not self._heroId2MODict[heroId] then
+		return false
+	end
+
 	local unlockItem = self._heroId2MODict[heroId].itemUnlock
 
 	for i = 1, #unlockItem do
@@ -477,7 +481,14 @@ function HeroModel:getCurrentSkinConfig(heroId)
 end
 
 function HeroModel:getCurrentSkinId(heroId)
-	local skinId = self._heroId2MODict[heroId].skin
+	local heroMo = self._heroId2MODict[heroId]
+	local skinId = heroMo and heroMo.skin
+
+	if not skinId then
+		local heroCfg = HeroConfig.instance:getHeroCO(heroId)
+
+		skinId = heroCfg.skinId
+	end
 
 	if not skinId then
 		logError("获取当前角色的皮肤Id失败， heroId : " .. tonumber(heroId))

@@ -107,7 +107,7 @@
   {
     "id": 30006,
     "name": "新巴别塔",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "isSelf": true,
     "isSpMaster": false,
     "hp": 25,
@@ -863,7 +863,7 @@
   {
     "id": 30043,
     "name": "嚼嚼松果",
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "isSelf": false,
     "isSpMaster": false,
     "hp": 40,

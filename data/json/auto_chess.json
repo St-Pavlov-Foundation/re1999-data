@@ -1037,7 +1037,7 @@
   {
     "id": 11016,
     "star": 1,
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "type": "Attack",
     "levelFromMall": 2,
     "name": "绅士卡邦克鲁",
@@ -1060,7 +1060,7 @@
   {
     "id": 11016,
     "star": 2,
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "type": "Attack",
     "levelFromMall": 2,
     "name": "绅士卡邦克鲁",
@@ -1083,7 +1083,7 @@
   {
     "id": 11016,
     "star": 3,
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "type": "Attack",
     "levelFromMall": 2,
     "name": "绅士卡邦克鲁",
@@ -1175,7 +1175,7 @@
   {
     "id": 11018,
     "star": 1,
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "type": "Support",
     "levelFromMall": 4,
     "name": "黑豆国王",
@@ -1198,7 +1198,7 @@
   {
     "id": 11018,
     "star": 2,
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "type": "Support",
     "levelFromMall": 4,
     "name": "黑豆国王",
@@ -1221,7 +1221,7 @@
   {
     "id": 11018,
     "star": 3,
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "type": "Support",
     "levelFromMall": 4,
     "name": "黑豆国王",
@@ -8558,7 +8558,7 @@
   {
     "id": 21007,
     "star": 1,
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "type": "Attack",
     "levelFromMall": 1,
     "name": "杰克老弟",
@@ -8581,7 +8581,7 @@
   {
     "id": 21008,
     "star": 1,
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "type": "Attack",
     "levelFromMall": 1,
     "name": "红色泰坦",
@@ -8604,7 +8604,7 @@
   {
     "id": 21009,
     "star": 1,
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "type": "Attack",
     "levelFromMall": 1,
     "name": "绒毛公爵",
@@ -18885,7 +18885,7 @@
   {
     "id": 32522,
     "star": 1,
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "type": "Support",
     "levelFromMall": 1,
     "name": "绅士卡邦克鲁",
@@ -18908,7 +18908,7 @@
   {
     "id": 32522,
     "star": 2,
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "type": "Support",
     "levelFromMall": 1,
     "name": "绅士卡邦克鲁",
@@ -18931,7 +18931,7 @@
   {
     "id": 32522,
     "star": 3,
-    "illustrationShow": 1,
+    "illustrationShow": 0,
     "type": "Support",
     "levelFromMall": 1,
     "name": "绅士卡邦克鲁",

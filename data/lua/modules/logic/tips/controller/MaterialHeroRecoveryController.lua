@@ -64,7 +64,7 @@ function MaterialHeroRecoveryController:_heroRecoverLogic(heroId)
 		CharacterRecommedModel.instance:setTracedHeroDevelopGoalsMO(nil)
 	end
 
-	if CharacterSwitchListModel.instance:getMainHero() == heroId and not CharacterPastModel.instance:hasPastSkinsByHeroId(heroId) then
+	if CharacterSwitchListModel.instance:getMainHero() == heroId then
 		local switchHeroId = 3028
 		local isRandom = true
 		local heroMo = HeroModel.instance:getByHeroId(heroId)

@@ -709,7 +709,7 @@ function SkillConfig:getHeroExBaseSkillIdDict(heroId, heroMo, baseSkillIdDict, s
 	if showAttributeOption == CharacterEnum.showAttributeOption.ShowMax then
 		exSkillLevel = CharacterModel.instance:getMaxexskill(heroId)
 	else
-		exSkillLevel = showAttributeOption == CharacterEnum.showAttributeOption.ShowMin and 0 or heroMo.exSkillLevel
+		exSkillLevel = showAttributeOption == CharacterEnum.showAttributeOption.ShowMin and 0 or heroMo and heroMo.exSkillLevel or 0
 	end
 
 	if heroMo and heroMo.destinyStoneMo and heroMo.destinyStoneMo:replaceDestinyStoneExBaseSkillIds(exSkillLevel, baseSkillIdDict) then

@@ -158607,6 +158607,13 @@
     "directDependencies": []
   },
   {
+    "abName": "singlebg/headicon_middle_51",
+    "assets": [
+      "singlebg/headicon_middle/399901.png"
+    ],
+    "directDependencies": []
+  },
+  {
     "abName": "singlebg/headicon_middle_basics",
     "assets": [
       "singlebg/headicon_middle/300301.png",
@@ -160249,7 +160256,8 @@
       "singlebg/headicon_room/315801.png",
       "singlebg/headicon_room/315802.png",
       "singlebg/headicon_room/316301.png",
-      "singlebg/headicon_room/316302.png"
+      "singlebg/headicon_room/316302.png",
+      "singlebg/headicon_room/399901.png"
     ],
     "directDependencies": []
   },
@@ -169734,6 +169742,13 @@
       "singlebg/room/blockpackage/3502.png",
       "singlebg/room/blockpackage/3503.png",
       "singlebg/room/blockpackage/3504.png"
+    ],
+    "directDependencies": []
+  },
+  {
+    "abName": "singlebg/room_54",
+    "assets": [
+      "singlebg/room/headicon/399901.png"
     ],
     "directDependencies": []
   },
@@ -184617,6 +184632,18 @@
     "assets": [
       "singlebg/v3a4_giftrecommand_singlebg/v3a4_giftrecommand_caidai.png",
       "singlebg/v3a4_giftrecommand_singlebg/v3a4_giftrecommand_rewardbg.png"
+    ],
+    "directDependencies": []
+  },
+  {
+    "abName": "singlebg/v3a5_warmup_singlebg",
+    "assets": [
+      "singlebg/v3a5_warmup_singlebg/v3a5_warmup_panel.png",
+      "singlebg/v3a5_warmup_singlebg/v3a5_warmup_panel_left.png",
+      "singlebg/v3a5_warmup_singlebg/v3a5_warmup_panel_right.png",
+      "singlebg/v3a5_warmup_singlebg/v3a5_warmup_panel2.png",
+      "singlebg/v3a5_warmup_singlebg/v3a5_warmup_pic1.png",
+      "singlebg/v3a5_warmup_singlebg/v3a5_warmup_pic2.png"
     ],
     "directDependencies": []
   },
