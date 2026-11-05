@@ -68,9 +68,7 @@ function NormalStoreView:_editableInitView()
 end
 
 function NormalStoreView:_refreshTabs(selectTabId, openUpdate)
-	if selectTabId ~= StoreEnum.StoreId.HighSummon then
-		StoreController.instance:readTab(selectTabId)
-	end
+	StoreController.instance:readTab(selectTabId)
 
 	local preSelectSecondTabId = self._selectSecondTabId
 	local preSelectThirdTabId = self._selectThirdTabId

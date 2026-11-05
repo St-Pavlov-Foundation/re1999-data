@@ -19,7 +19,7 @@ local TimelineEventOppositeSide = {
 }
 
 function FightRoundPreloadEffectWork:onStart(context)
-	if FightEffectPool.isForbidEffect then
+	if FightEffectMgr.isForbidEffect then
 		self:onDone(true)
 
 		return
@@ -70,7 +70,7 @@ function FightRoundPreloadEffectWork:onStart(context)
 end
 
 function FightRoundPreloadEffectWork:_addPreloadEffect(path, side)
-	if FightEffectPool.hasLoaded(path) then
+	if FightGameMgr.effectMgr:hasLoaded(path) then
 		return
 	end
 
@@ -103,10 +103,10 @@ function FightRoundPreloadEffectWork:_startPreload()
 		for i = 1, self._loadingCount do
 			local last = table.remove(self._needPreloadList, #self._needPreloadList)
 
-			if FightEffectPool.hasLoaded(last.path) or FightEffectPool.isLoading(last.path) then
+			if FightGameMgr.effectMgr:hasLoaded(last.path) or FightGameMgr.effectMgr:isLoading(last.path) then
 				self:_detectAfterLoaded()
 			else
-				local effect = FightEffectPool.getEffect(last.path, last.side, self._onPreloadOneFinish, self, nil, true)
+				local effect = FightGameMgr.effectMgr:getEffect(last.path, last.side, self._onPreloadOneFinish, self, nil, true)
 
 				effect:setLocalPos(50000, 50000, 50000)
 				table.insert(self._effectWrapList, effect)
@@ -142,7 +142,7 @@ function FightRoundPreloadEffectWork:clearWork()
 
 	if self._effectWrapList then
 		for _, effectWrap in ipairs(self._effectWrapList) do
-			FightEffectPool.returnEffect(effectWrap)
+			FightGameMgr.effectMgr:returnEffect(effectWrap)
 			effectWrap:setCallback(nil, nil)
 		end
 	end

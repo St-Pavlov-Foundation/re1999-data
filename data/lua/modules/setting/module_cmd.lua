@@ -734,6 +734,11 @@ local module_cmd = {
 		"Act128GetMilestoneBonusRequest",
 		"Act128GetMilestoneBonusReply"
 	},
+	[22127] = {
+		"Activity128",
+		"Act128UnlockMonsterRequest",
+		"Act128UnlockMonsterReply"
+	},
 	[31423] = {
 		"Activity128",
 		"SetAct128TeamRequest",
@@ -2856,6 +2861,35 @@ local module_cmd = {
 		"Act246ScratchRequest",
 		"Act246ScratchReply"
 	},
+	[2046] = {
+		"Activity248",
+		"Act248GetInfoRequest",
+		"Act248GetInfoReply"
+	},
+	[-16158] = {
+		"Activity248",
+		"Act248FillClueRequest",
+		"Act248FillClueReply"
+	},
+	[-21625] = {
+		"Activity248",
+		"Act248UnlockClueRequest",
+		"Act248UnlockClueReply"
+	},
+	[12633] = {
+		"Activity248",
+		"Act248GenerateReportRequest",
+		"Act248GenerateReportReply"
+	},
+	[-5105] = {
+		"Activity248",
+		"Act248FinishReportRequest",
+		"Act248FinishReportReply"
+	},
+	[-7566] = {
+		"Activity248",
+		"Act248InfoPush"
+	},
 	[-14582] = {
 		"Activity",
 		"GetActivityInfosRequest",
@@ -2951,6 +2985,55 @@ local module_cmd = {
 		"ArcadeOutSide",
 		"ArcadeCloseRewardPanelRequest",
 		"ArcadeCloseRewardPanelReply"
+	},
+	[1417] = {
+		"ArcadeSurvivor",
+		"ArcadeSurvivorGetOutsideInfoRequest",
+		"ArcadeSurvivorGetOutsideInfoReply"
+	},
+	[-22022] = {
+		"ArcadeSurvivor",
+		"ArcadeSurvivorRoleMoveRequest",
+		"ArcadeSurvivorRoleMoveReply"
+	},
+	[17648] = {
+		"ArcadeSurvivor",
+		"ArcadeSurvivorSwitchCharacterRequest",
+		"ArcadeSurvivorSwitchCharacterReply"
+	},
+	[-25983] = {
+		"ArcadeSurvivor",
+		"ArcadeSurvivorTalentUpgradeRequest",
+		"ArcadeSurvivorTalentUpgradeReply"
+	},
+	[-21835] = {
+		"ArcadeSurvivor",
+		"ArcadeSurvivorGainRewardRequest",
+		"ArcadeSurvivorGainRewardReply"
+	},
+	[-12147] = {
+		"ArcadeSurvivor",
+		"ArcadeSurvivorClearNewBookRequest",
+		"ArcadeSurvivorClearNewBookReply"
+	},
+	[-12222] = {
+		"ArcadeSurvivor",
+		"ArcadeSurvivorCurrencyChangePush"
+	},
+	[-4967] = {
+		"ArcadeSurvivor",
+		"ArcadeSurvivorGetInsideInfoRequest",
+		"ArcadeSurvivorGetInsideInfoReply"
+	},
+	[15258] = {
+		"ArcadeSurvivor",
+		"ArcadeSurvivorSaveGameRequest",
+		"ArcadeSurvivorSaveGameReply"
+	},
+	[-25604] = {
+		"ArcadeSurvivor",
+		"ArcadeSurvivorSettleGameRequest",
+		"ArcadeSurvivorSettleGameReply"
 	},
 	[-415] = {
 		"AssassinOutSide",

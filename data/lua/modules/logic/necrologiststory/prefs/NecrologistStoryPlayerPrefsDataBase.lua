@@ -33,25 +33,25 @@ function NecrologistStoryPlayerPrefsDataBase:initData()
 	end
 end
 
-function NecrologistStoryPlayerPrefsDataBase:isExist(id, value)
+function NecrologistStoryPlayerPrefsDataBase:isExist(value)
 	local keyType = self:getKeyType()
 
 	if keyType == NecrologistStoryEnum.PrefsKeyType.NumberList then
-		return self.dict[id]
+		return self.dict[value]
 	else
 		return self.value == value
 	end
 end
 
-function NecrologistStoryPlayerPrefsDataBase:setExist(id, value)
-	if self:isExist(id, value) then
+function NecrologistStoryPlayerPrefsDataBase:setExist(value)
+	if self:isExist(value) then
 		return
 	end
 
 	local keyType = self:getKeyType()
 
 	if keyType == NecrologistStoryEnum.PrefsKeyType.NumberList then
-		self.dict[id] = true
+		self.dict[value] = true
 	else
 		self.value = value
 	end
@@ -71,12 +71,22 @@ function NecrologistStoryPlayerPrefsDataBase:saveData()
 		end
 
 		saveVal = table.concat(list, "#")
+	elseif keyType == NecrologistStoryEnum.PrefsKeyType.Bool then
+		saveVal = self.value and 1 or 0
+	elseif keyType == NecrologistStoryEnum.PrefsKeyType.Number then
+		saveVal = self.value
 	else
 		saveVal = tostring(self.value)
 	end
 
 	if saveVal then
-		GameUtil.playerPrefsSetStringByUserId(self.prefsKey, saveVal)
+		local isNumber = type(saveVal) == "number"
+
+		if isNumber then
+			GameUtil.playerPrefsSetNumberByUserId(self.prefsKey, saveVal)
+		else
+			GameUtil.playerPrefsSetStringByUserId(self.prefsKey, saveVal)
+		end
 	end
 end
 

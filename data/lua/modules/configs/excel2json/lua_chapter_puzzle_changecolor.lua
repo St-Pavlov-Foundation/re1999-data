@@ -19,9 +19,36 @@ local mlStringKey = {
 	initColors = 2,
 	name = 1
 }
+local _configList, _configDict
+local configPath = "configs.chapter_puzzle_changecolor_config"
 
-function lua_chapter_puzzle_changecolor.onLoad(json)
-	lua_chapter_puzzle_changecolor.configList, lua_chapter_puzzle_changecolor.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_chapter_puzzle_changecolor, "configList", _configList)
+	rawset(lua_chapter_puzzle_changecolor, "configDict", _configDict)
+end
+
+setmetatable(lua_chapter_puzzle_changecolor, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_chapter_puzzle_changecolor.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_chapter_puzzle_changecolor, "configList", nil)
+	rawset(lua_chapter_puzzle_changecolor, "configDict", nil)
 end
 
 return lua_chapter_puzzle_changecolor

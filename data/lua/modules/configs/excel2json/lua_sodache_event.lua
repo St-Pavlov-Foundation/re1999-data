@@ -23,9 +23,36 @@ local mlStringKey = {
 	desc = 2,
 	name = 1
 }
+local _configList, _configDict
+local configPath = "configs.sodache_event_config"
 
-function lua_sodache_event.onLoad(json)
-	lua_sodache_event.configList, lua_sodache_event.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_sodache_event, "configList", _configList)
+	rawset(lua_sodache_event, "configDict", _configDict)
+end
+
+setmetatable(lua_sodache_event, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_sodache_event.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_sodache_event, "configList", nil)
+	rawset(lua_sodache_event, "configDict", nil)
 end
 
 return lua_sodache_event

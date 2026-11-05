@@ -171,6 +171,11 @@ function FightViewCardItem:init(go)
 
 	self.goLorentzVx = gohelper.findChild(self.go, "#go_lorentz_vx")
 	self.goLaMoNaVx = gohelper.findChild(self.go, "#go_lamona_vx")
+	self.goYiFuLinVx = gohelper.findChild(self.go, "#go_yifulin_vx")
+
+	gohelper.setActive(self.goYiFuLinVx, false)
+
+	self.goV4a1WuRanRoot = gohelper.findChild(self.go, "#go_mitizhiwang")
 
 	self:initSuperimposeNode()
 
@@ -226,6 +231,7 @@ function FightViewCardItem:init(go)
 	self.goTowerAssistSmallSkillIcon = gohelper.findChild(self.goTowerAssistRole, "eff")
 	self.goTowerAssistBigSkillIcon = gohelper.findChild(self.goTowerAssistRole, "eff2")
 	self.go3_7Rouge2FuMo = gohelper.findChild(go, "3_7rouge2fumo")
+	self.moveArrowEffectRoot = gohelper.findChild(go, "moveArrowEffectRoot")
 	self.xingtiTxt = gohelper.findChildText(go, "txt_xingti")
 	self.xingtiGo = self.xingtiTxt.gameObject
 	self.goHeDuoNieRoot = gohelper.findChild(self.go, "go_heduonie")
@@ -300,6 +306,12 @@ function FightViewCardItem:init(go)
 	end
 
 	self.playedHideCardOpenAnim = false
+
+	self:addEventCb(FightController.instance, FightEvent.OnFirstActFreeAttrChange, self.onFirstActFreeAttrChange, self)
+end
+
+function FightViewCardItem:setV4A1ZhiZhengRoot(zhiZhengRoot)
+	self.goV4a1ZhiZhengRoot = zhiZhengRoot
 end
 
 function FightViewCardItem:initLyRedAndBlue()
@@ -381,6 +393,18 @@ function FightViewCardItem:addEventListeners()
 	if self.handCardType == FightEnum.CardShowType.HandCard or self.handCardType == FightEnum.CardShowType.Operation or self.handCardType == FightEnum.CardShowType.PlayCard then
 		self:addEventCb(FightController.instance, FightEvent.OnHeDuoNieBuffDataUpdate, self.onHeDuoNieBuffDataUpdate, self)
 	end
+
+	if self.handCardType == FightEnum.CardShowType.HandCard then
+		self:addEventCb(FightController.instance, FightEvent.GmChangeCardEnchantVisible, self.refreshEnchantText, self)
+	end
+end
+
+function FightViewCardItem:onFirstActFreeAttrChange(uid)
+	if uid ~= self.entityId then
+		return
+	end
+
+	self:showNoCostTips()
 end
 
 function FightViewCardItem:onHeDuoNieBuffDataUpdate(entityId)
@@ -567,6 +591,7 @@ function FightViewCardItem:updateItem(entityId, skillId, cardInfoMO, updateFromT
 	self:refreshUnnamedUi(updateFromType)
 	self:refreshRefrigeratorEffect()
 	self:refreshHeDuoNieUI()
+	self:showMoveArrow()
 	self:refreshEnchantText()
 end
 
@@ -1020,6 +1045,8 @@ function FightViewCardItem:showNoCostTips()
 		noCost = noCost or entityData:hasBuffFeature(FightEnum.BuffType_BigSkillNoUseActPoint)
 	end
 
+	noCost = noCost or entityData:checkFirstActFree()
+
 	gohelper.setActive(self.noCostTips, noCost)
 end
 
@@ -1028,7 +1055,9 @@ function FightViewCardItem:refreshEnchantText()
 
 	gohelper.setActive(text.gameObject, false)
 
-	do return end
+	if not GMController.instance:getShowEnchantToggle() then
+		return
+	end
 
 	if not SLFramework.FrameworkSettings.IsEditor then
 		return
@@ -1149,17 +1178,20 @@ end
 FightViewCardItem.attributePrefix = {
 	[672802] = "v3a7_skin/attribute_",
 	[672801] = "v2a8_skin/attribute_",
-	[672803] = "v3a9_skin/attribute_"
+	[672803] = "v3a9_skin/attribute_",
+	[672804] = "v4a1_skin/attribute_"
 }
 FightViewCardItem.cardTagWidth = {
 	[672802] = 180,
 	[672801] = 180,
-	[672803] = 180
+	[672803] = 180,
+	[672804] = 180
 }
 FightViewCardItem.cardTagHeight = {
 	[672802] = 64,
 	[672801] = 64,
-	[672803] = 64
+	[672803] = 64,
+	[672804] = 64
 }
 
 function FightViewCardItem:refreshTag()
@@ -1445,7 +1477,10 @@ function FightViewCardItem:_showEnchantsEffect()
 	gohelper.setActive(self._precision, false)
 	gohelper.setActive(self._precisionEffect, false)
 	gohelper.setActive(self.goLorentzVx, false)
+	gohelper.setActive(self.goYiFuLinVx, false)
 	gohelper.setActive(self.go3_7Rouge2FuMo, false)
+	gohelper.setActive(self.goV4a1WuRanRoot, false)
+	gohelper.setActive(self.goV4a1ZhiZhengRoot, false)
 
 	if not self._cardInfoMO then
 		return
@@ -1484,8 +1519,16 @@ function FightViewCardItem:_showEnchantsEffect()
 			elseif v.enchantId == FightEnum.EnchantedType.Lorenz then
 				gohelper.setActive(self.goLorentzVx, true)
 				self:tryLoadLorentzEnchantVxPrefab()
+			elseif v.enchantId == FightEnum.EnchantedType.YiFuLin or v.enchantId == FightEnum.EnchantedType.YiFuLinNoPreDel then
+				gohelper.setActive(self.goYiFuLinVx, true)
+				self:tryLoadYiFuLinEnchantVxPrefab()
 			elseif v.enchantId == FightEnum.EnchantedType.Degradation then
 				gohelper.setActive(self.go3_7Rouge2FuMo, true)
+			elseif v.enchantId == FightEnum.EnchantedType.V4A1_WuRan then
+				gohelper.setActive(self.goV4a1WuRanRoot, true)
+				self:tryLoadV4a1WuRanPrefab()
+			elseif v.enchantId == FightEnum.EnchantedType.V4A1_ZhiZheng then
+				gohelper.setActive(self.goV4a1ZhiZhengRoot, true)
 			end
 		end
 	end
@@ -1546,6 +1589,16 @@ function FightViewCardItem:playLaMoNaAnim(animName)
 	end
 end
 
+function FightViewCardItem:tryLoadV4a1WuRanPrefab()
+	if self.v4a1WuRanLoader then
+		return
+	end
+
+	self.v4a1WuRanLoader = PrefabInstantiate.Create(self.goV4a1WuRanRoot)
+
+	self.v4a1WuRanLoader:startLoad("ui/viewres/fight/fightcardmitizhiwangview.prefab")
+end
+
 function FightViewCardItem:tryLoadLorentzEnchantVxPrefab()
 	if self.lorentzEnchantVxLoader then
 		return
@@ -1554,6 +1607,16 @@ function FightViewCardItem:tryLoadLorentzEnchantVxPrefab()
 	self.lorentzEnchantVxLoader = PrefabInstantiate.Create(self.goLorentzVx)
 
 	self.lorentzEnchantVxLoader:startLoad("ui/viewres/fight/card_lorentz_fumo.prefab")
+end
+
+function FightViewCardItem:tryLoadYiFuLinEnchantVxPrefab()
+	if self.yiFuLinEnchantVxLoader then
+		return
+	end
+
+	self.yiFuLinEnchantVxLoader = PrefabInstantiate.Create(self.goYiFuLinVx)
+
+	self.yiFuLinEnchantVxLoader:startLoad("ui/viewres/fight/card_yifulin_fumo.prefab")
 end
 
 function FightViewCardItem:setRouge2TreasureRoot(go)
@@ -2071,6 +2134,80 @@ function FightViewCardItem:playUsedCardFinish(tipsGO, waitingAreaGO, param)
 	self._cardDisplayEndFlow:start(context)
 end
 
+local cardLevelChange4_1Path = "ui/viewres/fight/card_boss_skill_kingofpuzzles.prefab"
+
+FightViewCardItem.WaitCardLevelEffect4_1Duration = 0.6
+
+function FightViewCardItem:playCardLevelChange4_1(cardData, oldSkillId, failType)
+	self._cardInfoMO = cardData or self._cardInfoMO
+
+	if not self._cardInfoMO then
+		return
+	end
+
+	if not self.go.activeInHierarchy then
+		return
+	end
+
+	self.showCardLevelChangeEffecting = true
+
+	TaskDispatcher.cancelTask(self.stopCardLevelChangeEffect, self)
+	TaskDispatcher.cancelTask(self.onCardLevelChange4_1RefreshCard, self)
+	TaskDispatcher.runDelay(self.stopCardLevelChangeEffect, self, FightEnum.PerformanceTime.CardLevelChange / FightModel.instance:getUISpeed())
+	TaskDispatcher.runDelay(self.onCardLevelChange4_1RefreshCard, self, FightViewCardItem.WaitCardLevelEffect4_1Duration / FightModel.instance:getUISpeed())
+
+	if self.goCardLevelChange4_1Effect then
+		return self:_playCardLevelChange4_1()
+	end
+
+	if self.cardLevelChange4_1Loader then
+		return
+	end
+
+	self.cardLevelChange4_1Loader = MultiAbLoader.New()
+
+	self.cardLevelChange4_1Loader:addPath(cardLevelChange4_1Path)
+	self.cardLevelChange4_1Loader:startLoad(self.onCardLevelChange4_1LoadDone, self)
+end
+
+function FightViewCardItem:stopCardLevelChangeEffect()
+	self.showCardLevelChangeEffecting = nil
+
+	if self.goCardLevelChange4_1Effect then
+		gohelper.setActive(self.goCardLevelChange4_1Effect, false)
+	end
+end
+
+function FightViewCardItem:onCardLevelChange4_1LoadDone()
+	local assetItem = self.cardLevelChange4_1Loader:getFirstAssetItem()
+	local prefab = assetItem:GetResource()
+
+	self.goCardLevelChange4_1Effect = gohelper.clone(prefab, self.go)
+
+	gohelper.setActive(self.goCardLevelChange4_1Effect, false)
+
+	self.goCardLevelChange4_1EffectNormal = gohelper.findChild(self.goCardLevelChange4_1Effect, "nomal_skill")
+	self.goCardLevelChange4_1EffectUnique = gohelper.findChild(self.goCardLevelChange4_1Effect, "ultimate_skill")
+
+	self:_playCardLevelChange4_1()
+end
+
+function FightViewCardItem:_playCardLevelChange4_1()
+	if self.goCardLevelChange4_1Effect and self._cardInfoMO then
+		local isBigSkill = FightCardDataHelper.isBigSkill(self._cardInfoMO.skillId)
+
+		gohelper.setActive(self.goCardLevelChange4_1EffectNormal, not isBigSkill)
+		gohelper.setActive(self.goCardLevelChange4_1EffectUnique, isBigSkill)
+		gohelper.setActive(self.goCardLevelChange4_1Effect, self.showCardLevelChangeEffecting)
+	end
+end
+
+function FightViewCardItem:onCardLevelChange4_1RefreshCard()
+	if self._cardInfoMO then
+		self:updateItem(self._cardInfoMO.uid, self._cardInfoMO.skillId, self._cardInfoMO)
+	end
+end
+
 function FightViewCardItem:playCardLevelChange(cardData, oldSkillId, failType)
 	if not self._cardInfoMO then
 		return
@@ -2488,6 +2625,21 @@ function FightViewCardItem:onDestroy()
 		self.lorentzEnchantVxLoader:dispose()
 
 		self.lorentzEnchantVxLoader = nil
+	end
+
+	if self.yiFuLinEnchantVxLoader then
+		self.yiFuLinEnchantVxLoader:dispose()
+
+		self.yiFuLinEnchantVxLoader = nil
+	end
+
+	TaskDispatcher.cancelTask(self.stopCardLevelChangeEffect, self)
+	TaskDispatcher.cancelTask(self.onCardLevelChange4_1RefreshCard, self)
+
+	if self.cardLevelChange4_1Loader then
+		self.cardLevelChange4_1Loader:dispose()
+
+		self.cardLevelChange4_1Loader = nil
 	end
 
 	if self.unnamedUiLoader then
@@ -2912,6 +3064,12 @@ function FightViewCardItem:getCurDeviceAddCareer()
 	end
 
 	return CharacterEnum.CareerType.Xing
+end
+
+function FightViewCardItem:showMoveArrow()
+	self.moveArrowEffectClass = self.moveArrowEffectClass or self.classComp:newClass(FightViewCardMoveArrowEffect, self)
+
+	self.moveArrowEffectClass:refresh(self.skillId)
 end
 
 return FightViewCardItem

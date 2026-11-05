@@ -55,7 +55,7 @@ function FightWorkMoveFront:onStart()
 					ease = EaseType.InOutQuad
 				}))
 				parallelFlow:addWork(TweenWork.New({
-					type = "DOMove",
+					type = "DOLocalMove",
 					tr = entity.go.transform,
 					tox = endX,
 					toy = endY,
@@ -107,7 +107,7 @@ function FightWorkMoveFront:onStart()
 						ease = EaseType.InOutQuad
 					}))
 					parallelFlow:addWork(TweenWork.New({
-						type = "DOMove",
+						type = "DOLocalMove",
 						tr = entity.go.transform,
 						tox = endX,
 						toy = endY,
@@ -152,15 +152,16 @@ function FightWorkMoveFront:_playEffect(entity)
 		end
 	end
 
-	local effectWrap = entity.effect:addHangEffect("buff/buff_qianjin_jiantou", "mountbody", nil, self._performanceTime)
+	local effectWrap = entity.effect:addHangEffect("buff/buff_qianjin_jiantou_jinse", "mountmiddle", nil, self._performanceTime)
 
 	FightRenderOrderMgr.instance:onAddEffectWrap(entity.id, effectWrap)
 	effectWrap:setLocalPos(0, 0, 0)
 
-	effectWrap = entity.effect:addHangEffect("buff/buff_qianjin_tuowei", "mountbody", nil, self._performanceTime)
+	effectWrap = entity.effect:addHangEffect("buff/buff_qianjin_tuowei_jinse", "mountmiddle", nil, self._performanceTime)
 
 	FightRenderOrderMgr.instance:onAddEffectWrap(entity.id, effectWrap)
 	effectWrap:setLocalPos(0, 0, 0)
+	AudioMgr.instance:trigger(410000150)
 end
 
 function FightWorkMoveFront:_onFloat(num, entity)

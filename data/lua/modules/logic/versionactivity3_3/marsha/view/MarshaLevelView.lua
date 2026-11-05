@@ -14,6 +14,7 @@ function MarshaLevelView:onInitView()
 	self._btnTask = gohelper.findChildButtonWithAudio(self.viewGO, "#btn_Task")
 	self._goReddot = gohelper.findChild(self.viewGO, "#btn_Task/#go_Reddot")
 	self._gotopleft = gohelper.findChild(self.viewGO, "#go_topleft")
+	self._btnTrial = gohelper.findChildButtonWithAudio(self.viewGO, "#go_Try/#btn_Trial")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -22,10 +23,38 @@ end
 
 function MarshaLevelView:addEvents()
 	self._btnTask:AddClickListener(self._btnTaskOnClick, self)
+	self._btnTrial:AddClickListener(self._btnTrialOnClick, self)
 end
 
 function MarshaLevelView:removeEvents()
 	self._btnTask:RemoveClickListener()
+	self._btnTrial:RemoveClickListener()
+end
+
+function MarshaLevelView:_btnTrialOnClick()
+	if ActivityHelper.isOpen(self.actId) then
+		local episodeId = self.config.tryoutEpisode
+
+		if episodeId <= 0 then
+			logError("没有配置对应的试用关卡")
+
+			return
+		end
+
+		local config = DungeonConfig.instance:getEpisodeCO(episodeId)
+
+		DungeonFightController.instance:enterFight(config.chapterId, episodeId)
+	else
+		self:_clickLock()
+	end
+end
+
+function MarshaLevelView:_clickLock()
+	local toastId, toastParamList = OpenHelper.getToastIdAndParam(self.config.openId)
+
+	if toastId and toastId ~= 0 then
+		GameFacade.showToastWithTableParam(toastId, toastParamList)
+	end
 end
 
 function MarshaLevelView:_btnTaskOnClick()
@@ -34,6 +63,7 @@ end
 
 function MarshaLevelView:_editableInitView()
 	self.actId = VersionActivity3_3Enum.ActivityId.Marsha
+	self.config = ActivityConfig.instance:getActivityCo(self.actId)
 	self._viewAnimator = self.viewGO:GetComponent(typeof(UnityEngine.Animator))
 	self._transBg = self._simageFullBG.gameObject.transform
 	self._scrollRect = self._scrollStory.gameObject:GetComponent(gohelper.Type_ScrollRect)
@@ -47,7 +77,7 @@ function MarshaLevelView:_editableInitView()
 	self._canMoveBgWidth = self._halfbg - self._offsetX
 	self.minContentAnchorX = -self._width + width
 
-	RedDotController.instance:addRedDot(self._goReddot, RedDotEnum.DotNode.Activity220Task, self.actId)
+	RedDotController.instance:addRedDot(self._goReddot, RedDotEnum.DotNode.PermanentActivity220Task, self.actId)
 
 	self.goLines = {}
 	self.animLines = {}
@@ -132,7 +162,7 @@ function MarshaLevelView:_focusStoryItem(index, needPlay)
 end
 
 function MarshaLevelView:_refreshTaskAnim()
-	if RedDotModel.instance:isDotShow(RedDotEnum.DotNode.Activity220Task, self.actId) then
+	if RedDotModel.instance:isDotShow(RedDotEnum.DotNode.PermanentActivity220Task, self.actId) then
 		self._animTask:Play("loop")
 	else
 		self._animTask:Play("idle")

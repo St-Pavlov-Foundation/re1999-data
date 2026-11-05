@@ -7,7 +7,9 @@ local Sp02_GuessMeConfig = class("Sp02_GuessMeConfig", BaseConfig)
 function Sp02_GuessMeConfig:reqConfigNames()
 	return {
 		"activity238",
-		"activity238_hero"
+		"activity238_hero",
+		"activity238_const",
+		"activity238_bubble_desc"
 	}
 end
 
@@ -90,6 +92,28 @@ function Sp02_GuessMeConfig:getActHeroList(actId)
 	local actHeroList = self._actHeroMap and self._actHeroMap[actId]
 
 	return actHeroList
+end
+
+function Sp02_GuessMeConfig:getInvestigation_GuessViewActId()
+	return ActivityConfig.instance:getConstAsNum(410001, 14112)
+end
+
+function Sp02_GuessMeConfig:getBubbleDescCO(bubbleId)
+	return lua_activity238_bubble_desc.configDict[bubbleId]
+end
+
+function Sp02_GuessMeConfig:getConstAsNum(id, fallback)
+	local CO = lua_activity238_const.configDict[id]
+
+	if not CO then
+		return fallback
+	end
+
+	return tonumber(CO.strValue) or fallback
+end
+
+function Sp02_GuessMeConfig:getBubbleTipsEndCD()
+	return self:getConstAsNum(1, 5)
 end
 
 Sp02_GuessMeConfig.instance = Sp02_GuessMeConfig.New()

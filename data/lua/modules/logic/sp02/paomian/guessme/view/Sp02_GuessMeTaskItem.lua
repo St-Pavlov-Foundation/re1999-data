@@ -2,31 +2,10 @@
 
 module("modules.logic.sp02.paomian.guessme.view.Sp02_GuessMeTaskItem", package.seeall)
 
-local Sp02_GuessMeTaskItem = class("Sp02_GuessMeTaskItem", LuaCompBase)
-
-function Sp02_GuessMeTaskItem:init(go)
-	self.go = go
-	self._goSelect = gohelper.findChild(self.go, "#go_Selected")
-	self._goUnselect = gohelper.findChild(self.go, "#go_UnSelected")
-	self._goLock = gohelper.findChild(self.go, "image_Locked")
-	self._txtSelectDay = gohelper.findChildText(self.go, "#go_Selected/txt_DateSelected")
-	self._txtUnselectDay = gohelper.findChildText(self.go, "#go_UnSelected/txt_DateUnSelected")
-	self._txtLockedDay = gohelper.findChildText(self.go, "image_Locked/txt_DateLocked")
-	self._goReddot = gohelper.findChild(self.go, "#go_reddot")
-	self._btnClick = gohelper.findChildButtonWithAudio(self.go, "btn_click")
-	self._animator = gohelper.onceAddComponent(self.go, gohelper.Type_Animator)
-end
-
-function Sp02_GuessMeTaskItem:addEventListeners()
-	self._btnClick:AddClickListener(self._btnClickOnClick, self)
-end
-
-function Sp02_GuessMeTaskItem:removeEventListeners()
-	self._btnClick:RemoveClickListener()
-end
+local Sp02_GuessMeTaskItem = class("Sp02_GuessMeTaskItem", RougeSimpleItemBase)
 
 function Sp02_GuessMeTaskItem:_btnClickOnClick()
-	if self._isSelect then
+	if self:isSelected() then
 		return
 	end
 
@@ -37,53 +16,116 @@ function Sp02_GuessMeTaskItem:_btnClickOnClick()
 	end
 
 	AudioMgr.instance:trigger(AudioEnum3_10.PaoMian.GuessMeSwitchDay)
-	Sp02_PaoMianController.instance:dispatchEvent(Sp02_GuessMeEvent.OnSelectGuessMeDay, self._index)
+	Sp02_PaoMianController.instance:dispatchEvent(Sp02_GuessMeEvent.OnSelectGuessMeDay, self:index())
 end
 
-function Sp02_GuessMeTaskItem:onUpdateMO(index, config, isSelect)
-	self._index = index
-	self._config = config
-	self._activityId = config and config.activityId
-	self._id = config and config.id
-	self._preIsSelect = self._isSelect
-	self._isSelect = isSelect
-	self._signMo = Sp02_GuessMeModel.instance:getSignInfo(self._activityId, self._id)
-	self._preStatus = self._status
-	self._status = self._signMo and self._signMo:getStatus() or Sp02_GuessMeEnum.TaskStatus.Lock
-	self._activityCo = ActivityConfig.instance:getActivityCo(self._activityId)
-	self._redDotId = self._activityCo and self._activityCo.redDotId
+local kRed = 38506
 
-	self:refreshUI()
-	self:playSelectAnim()
-end
+function Sp02_GuessMeTaskItem:onUpdateMO(mo)
+	Sp02_GuessMeTaskItem.super.onUpdateMO(self, mo)
 
-function Sp02_GuessMeTaskItem:refreshUI()
-	RedDotController.instance:addRedDot(self._goReddot, self._redDotId, self._id)
+	local dayStr = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("sp02_guessmeview_day"), self:index())
+	local activityId = mo and mo.activityId
+	local id = mo and mo.id
+	local activityCo = self:_getActivityCo()
 
-	local dayStr = GameUtil.getSubPlaceholderLuaLangOneParam(luaLang("sp02_guessmeview_day"), self._index)
+	self._status = self:_getTaskStatusStatus()
+
+	gohelper.setActive(self._goLock, self:_isLocked())
+
+	if self._preStatus == Sp02_GuessMeEnum.TaskStatus.Lock and self._status ~= Sp02_GuessMeEnum.TaskStatus.Lock then
+		gohelper.setActive(self._goLock, true)
+		self._animator:Play(UIAnimationName.Unlock, 0, 0)
+	end
 
 	self._txtSelectDay.text = dayStr
 	self._txtUnselectDay.text = dayStr
 	self._txtLockedDay.text = dayStr
 
-	gohelper.setActive(self._goSelect, self._isSelect)
-	gohelper.setActive(self._goUnselect, not self._isSelect and self._status ~= Sp02_GuessMeEnum.TaskStatus.Lock)
-	gohelper.setActive(self._goLock, self._status == Sp02_GuessMeEnum.TaskStatus.Lock)
+	RedDotController.instance:addRedDot(self._goReddot, kRed, id)
 
-	if self._preStatus == Sp02_GuessMeEnum.TaskStatus.Lock and self._status ~= Sp02_GuessMeEnum.TaskStatus.Lock then
-		gohelper.setActive(self._goLock, true)
-		self._animator:Play("unlock", 0, 0)
-	end
+	self._preStatus = self._status
 end
 
-function Sp02_GuessMeTaskItem:playSelectAnim()
-	if self._preIsSelect == self._isSelect then
-		return
-	end
+function Sp02_GuessMeTaskItem:_id()
+	return self._mo and self._mo.id or 0
+end
 
-	if self._isSelect then
-		self._animator:Play("select", 0, 0)
-	end
+function Sp02_GuessMeTaskItem:_actId()
+	return self._mo and self._mo.activityId or 0
+end
+
+function Sp02_GuessMeTaskItem:_getActivityCo()
+	return ActivityConfig.instance:getActivityCo(self:_actId())
+end
+
+function Sp02_GuessMeTaskItem:_getSignInfo()
+	return Sp02_GuessMeModel.instance:getSignInfo(self:_actId(), self:_id())
+end
+
+function Sp02_GuessMeTaskItem:_getTaskStatusStatus()
+	local info = self:_getSignInfo()
+
+	return info and info:getStatus() or Sp02_GuessMeEnum.TaskStatus.Lock
+end
+
+function Sp02_GuessMeTaskItem:_isLocked()
+	return self._status == Sp02_GuessMeEnum.TaskStatus.Lock
+end
+
+function Sp02_GuessMeTaskItem:_isClaimable()
+	return self._status == Sp02_GuessMeEnum.TaskStatus.CanGet
+end
+
+function Sp02_GuessMeTaskItem:_isClaimed()
+	return self._status == Sp02_GuessMeEnum.TaskStatus.Finish
+end
+
+function Sp02_GuessMeTaskItem:ctor(...)
+	Sp02_GuessMeTaskItem.super.ctor(self, ...)
+
+	self._status = Sp02_GuessMeEnum.TaskStatus.Lock
+end
+
+function Sp02_GuessMeTaskItem:_editableInitView()
+	Sp02_GuessMeTaskItem.super._editableInitView(self)
+
+	self._goSelect = gohelper.findChild(self.viewGO, "#go_Selected")
+	self._goUnselect = gohelper.findChild(self.viewGO, "#go_UnSelected")
+	self._goLock = gohelper.findChild(self.viewGO, "image_Locked")
+	self._txtSelectDay = gohelper.findChildText(self.viewGO, "#go_Selected/txt_DateSelected")
+	self._txtUnselectDay = gohelper.findChildText(self.viewGO, "#go_UnSelected/txt_DateUnSelected")
+	self._txtLockedDay = gohelper.findChildText(self.viewGO, "image_Locked/txt_DateLocked")
+	self._goReddot = gohelper.findChild(self.viewGO, "#go_reddot")
+	self._btnClick = gohelper.findChildButtonWithAudio(self.viewGO, "btn_click")
+	self._animator = self.viewGO:GetComponent(gohelper.Type_Animator)
+
+	gohelper.setActive(self._goSelect, false)
+	gohelper.setActive(self._goUnselect, false)
+	gohelper.setActive(self._goLock, false)
+
+	self._txtSelectDay.text = ""
+	self._txtUnselectDay.text = ""
+	self._txtLockedDay.text = ""
+end
+
+function Sp02_GuessMeTaskItem:_editableAddEvents()
+	self._btnClick:AddClickListener(self._btnClickOnClick, self)
+end
+
+function Sp02_GuessMeTaskItem:_editableRemoveEvents()
+	self._btnClick:RemoveClickListener()
+end
+
+function Sp02_GuessMeTaskItem:onSelect(isSelect)
+	Sp02_GuessMeTaskItem.super.onSelect(self, isSelect)
+	gohelper.setActive(self._goSelect, isSelect)
+	gohelper.setActive(self._goUnselect, not isSelect and self._status ~= Sp02_GuessMeEnum.TaskStatus.Lock)
+	self._animator:Play(UIAnimationName.Select, 0, 0)
+end
+
+function Sp02_GuessMeTaskItem:onDestroyView()
+	Sp02_GuessMeTaskItem.super.onDestroyView(self)
 end
 
 return Sp02_GuessMeTaskItem

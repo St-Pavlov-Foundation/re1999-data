@@ -285,4 +285,8 @@ function AvProPlayer:setSkipOnDrop(skipOnDrop)
 	return
 end
 
+function AvProPlayer:isAvproVideo()
+	return true
+end
+
 return AvProPlayer

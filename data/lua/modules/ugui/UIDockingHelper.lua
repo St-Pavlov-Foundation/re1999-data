@@ -3,6 +3,8 @@
 module("modules.ugui.UIDockingHelper", package.seeall)
 
 local CSRectTrHelper = SLFramework.UGUI.RectTrHelper
+local CSRectTransformUtility = UnityEngine.RectTransformUtility
+local math_huge = math.huge
 local UIDockingHelper = {}
 
 function UIDockingHelper.__calcOfsV2FromCenterPivot(rectTransform)
@@ -184,6 +186,109 @@ function UIDockingHelper.setDock(eDock, curRectTrans, targetRectTrans, offsetX, 
 	local v2 = UIDockingHelper.calcDockLocalPosV2(eDock, curRectTrans, targetRectTrans, isKeepPivot)
 
 	transformhelper.setLocalPos(curRectTrans, v2.x + (offsetX or 0), v2.y + (offsetY or 0), 0)
+end
+
+function UIDockingHelper.calcClampToScreenWPos(rt, padding)
+	if isDebugBuild then
+		assert(rt, "[UIDockingHelper - calcClampToScreenWPos] rt is nil")
+	end
+
+	padding = padding or 10
+
+	if type(padding) == "number" then
+		padding = {
+			left = padding,
+			right = padding,
+			top = padding,
+			bottom = padding
+		}
+	end
+
+	local aMin, aMax = rt.anchorMin, rt.anchorMax
+
+	if aMin.x ~= aMax.x or aMin.y ~= aMax.y then
+		return
+	end
+
+	ZProj.UGUIHelper.RebuildLayout(rt)
+
+	local uiCamera = CameraMgr.instance:getUICamera()
+	local corners = rt:GetWorldCorners()
+	local minX, maxX = math_huge, -math_huge
+	local minY, maxY = math_huge, -math_huge
+
+	for i = 0, 3 do
+		local s = CSRectTransformUtility.WorldToScreenPoint(uiCamera, corners[i])
+
+		if minX > s.x then
+			minX = s.x
+		end
+
+		if maxX < s.x then
+			maxX = s.x
+		end
+
+		if minY > s.y then
+			minY = s.y
+		end
+
+		if maxY < s.y then
+			maxY = s.y
+		end
+	end
+
+	local sw = UnityEngine.Screen.width
+	local sh = UnityEngine.Screen.height
+	local dx, dy = 0, 0
+
+	if minX < padding.left then
+		dx = padding.left - minX
+	end
+
+	if maxX > sw - padding.right then
+		dx = sw - padding.right - maxX
+	end
+
+	if minY < padding.bottom then
+		dy = padding.bottom - minY
+	end
+
+	if maxY > sh - padding.top then
+		dy = sh - padding.top - maxY
+	end
+
+	if dx ~= 0 or dy ~= 0 then
+		local pivotScreen = CSRectTransformUtility.WorldToScreenPoint(uiCamera, rt.position)
+		local targetScreen = Vector2(pivotScreen.x + dx, pivotScreen.y + dy)
+		local worldPosOut = Vector3.New()
+		local ok, worldPosOut = CSRectTransformUtility.ScreenPointToWorldPointInRectangle(rt, targetScreen, uiCamera, worldPosOut)
+
+		if ok then
+			return true, worldPosOut
+		end
+	end
+
+	return false, rt.position
+end
+
+function UIDockingHelper.calcClampToScreenAPos(rt, padding)
+	local ok, wPos = UIDockingHelper.calcClampToScreenWPos(rt, padding)
+
+	if ok then
+		local anchorX, anchorY = recthelper.worldPosToAnchorPos2(wPos, rt.parent)
+
+		return anchorX, anchorY
+	end
+
+	return recthelper.getAnchorX(rt)
+end
+
+function UIDockingHelper.setClampToScreen(rt, padding)
+	local ok, wPos = UIDockingHelper.calcClampToScreenWPos(rt, padding)
+
+	if ok then
+		rt.position = wPos
+	end
 end
 
 return UIDockingHelper

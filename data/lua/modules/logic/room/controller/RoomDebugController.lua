@@ -710,6 +710,69 @@ function RoomDebugController:resetInitJson()
 	end)
 end
 
+function RoomDebugController:_tableToLuaStr(value, indent)
+	indent = indent or ""
+
+	local valueType = type(value)
+
+	if valueType == "table" then
+		local nextIndent = indent .. "    "
+		local parts = {}
+		local arrayCount = #value
+
+		for i = 1, arrayCount do
+			parts[#parts + 1] = nextIndent .. self:_tableToLuaStr(value[i], nextIndent) .. ","
+		end
+
+		local keys = {}
+
+		for k in pairs(value) do
+			if type(k) ~= "number" or k < 1 or math.floor(k) ~= k or arrayCount < k then
+				keys[#keys + 1] = k
+			end
+		end
+
+		table.sort(keys, function(a, b)
+			local aIsNumber = type(a) == "number"
+			local bIsNumber = type(b) == "number"
+
+			if aIsNumber and bIsNumber then
+				return a < b
+			end
+
+			if aIsNumber ~= bIsNumber then
+				return aIsNumber
+			end
+
+			return tostring(a) < tostring(b)
+		end)
+
+		for _, k in ipairs(keys) do
+			local keyStr = "[" .. self:_tableToLuaStr(k) .. "]"
+
+			if type(k) == "string" and k:match("^[_%a][_%w]*$") then
+				keyStr = k
+			end
+
+			parts[#parts + 1] = nextIndent .. keyStr .. " = " .. self:_tableToLuaStr(value[k], nextIndent) .. ","
+		end
+
+		if #parts == 0 then
+			return "{}"
+		end
+
+		return "{\n" .. table.concat(parts, "\n") .. "\n" .. indent .. "}"
+	elseif valueType == "string" then
+		return string.format("%q", value)
+	elseif valueType == "number" or valueType == "boolean" or valueType == "nil" then
+		return tostring(value)
+	end
+
+	logError("_tableToLuaStr不支持的类型 " .. valueType)
+
+	return "nil"
+end
+
 function RoomDebugController:saveInitMapParam(init, temp)
 	self._tempInitConfig = init
 
@@ -718,18 +781,17 @@ function RoomDebugController:saveInitMapParam(init, temp)
 	end
 
 	local initParam = cjson.encode(init)
-	local initClientParam = self:_wrapClientConfigParam(init, "block_init")
+	local initClientParam = "return " .. self:_tableToLuaStr(init)
 
 	if not SLFramework.FrameworkSettings.IsEditor then
 		return
 	end
 
 	local pathEditor = System.IO.Path.Combine(SLFramework.FrameworkSettings.AssetRootDir, RoomEnum.InitMapConfigPathEditor)
-	local pathClient = System.IO.Path.Combine(SLFramework.FrameworkSettings.AssetRootDir, RoomEnum.InitMapConfigPath)
 	local pathServer = System.IO.Path.Combine(UnityEngine.Application.dataPath, "../../../projm-server/projM-server-config/resources/T_block_init.json")
 
 	SLFramework.FileHelper.WriteTextToPath(pathEditor, initParam)
-	SLFramework.FileHelper.WriteTextToPath(pathClient, initClientParam)
+	SLFramework.FileHelper.WriteTextToPath(RoomEnum.InitMapConfigPath, initClientParam)
 	SLFramework.FileHelper.WriteTextToPath(pathServer, initParam)
 	self:assetDatabaseRefresh()
 	logNormal("导出完成 记得提交前后端配置文件")
@@ -1230,36 +1292,32 @@ function RoomDebugController:savePackageDataParam(package)
 
 	local serverParam = self:_jsonEncode(packageDatas)
 	local clientParam = self:_wrapClientConfigParam(packageDatas, "block_package_data")
+	local clientParamLua = "return " .. self:_tableToLuaStr(packageDatas)
 	local pathServer = System.IO.Path.Combine(UnityEngine.Application.dataPath, "../../../projm-server/projM-server-config/resources/T_block_package_data.json")
 	local pathClient = System.IO.Path.Combine(SLFramework.FrameworkSettings.AssetRootDir, RoomEnum.BlockPackageDataPath)
 
 	SLFramework.FileHelper.WriteTextToPath(pathServer, serverParam)
 	SLFramework.FileHelper.WriteTextToPath(pathClient, clientParam)
+	SLFramework.FileHelper.WriteTextToPath(RoomEnum.BlockPackageDataLuaPath, clientParamLua)
 
 	local sceneType = GameSceneMgr.instance:getCurSceneType()
 
 	if sceneType == SceneType.Room then
 		local scene = GameSceneMgr.instance:getCurScene()
 		local blockDefinePathServer = System.IO.Path.Combine(UnityEngine.Application.dataPath, "../../../projm-server/projM-server-config/resources/T_block.json")
+		local blockConfig = require("configs.block_config")
+		local serverBlockList = {}
 
-		loadAbAsset(RoomEnum.BlockPath, false, function(assetItem)
-			if assetItem.IsLoadSuccess then
-				local textAsset = assetItem:GetResource(RoomEnum.BlockPath)
-				local defineBlockList = cjson.decode(textAsset.text)[2]
-				local serverBlockList = {}
+		for k, info in ipairs(blockConfig) do
+			table.insert(serverBlockList, {
+				defineId = info.defineId,
+				resourceIds = info.resourceIds,
+				category = info.category,
+				prefabPath = info.prefabPath
+			})
+		end
 
-				for k, info in ipairs(defineBlockList) do
-					table.insert(serverBlockList, {
-						defineId = info.defineId,
-						resourceIds = info.resourceIds,
-						category = info.category,
-						prefabPath = info.prefabPath
-					})
-				end
-
-				SLFramework.FileHelper.WriteTextToPath(blockDefinePathServer, self:_jsonEncode(serverBlockList))
-			end
-		end)
+		SLFramework.FileHelper.WriteTextToPath(blockDefinePathServer, self:_jsonEncode(serverBlockList))
 	end
 
 	self:_saveBlockPrefabExcelData(packageDatas)
@@ -1342,23 +1400,13 @@ function RoomDebugController:outputFishing()
 				y = blockMO.hexPoint.y,
 				rotate = blockMO.rotate
 			}
-			local infoStr = self:_jsonEncodeOrdered(info, {
-				"mapId",
-				"fishingBlockId",
-				"defineId",
-				"mainRes",
-				"x",
-				"y",
-				"rotate"
-			})
 
-			table.insert(blockInfos, infoStr)
+			table.insert(blockInfos, info)
 		end
 	end
 
-	local allBlockInfoStr = table.concat(blockInfos, ",\n")
-	local mapBlockContent = "[\"fishing_map_block\",[\n" .. allBlockInfoStr .. "\n]]"
-	local pathClient = System.IO.Path.Combine(SLFramework.FrameworkSettings.AssetRootDir, RoomEnum.FishingMapBlockPath)
+	local mapBlockContent = "return " .. self:_tableToLuaStr(blockInfos)
+	local pathClient = System.IO.Path.Combine(RoomEnum.FishingMapBlockPath)
 
 	SLFramework.FileHelper.WriteTextToPath(pathClient, mapBlockContent)
 
@@ -1377,25 +1425,14 @@ function RoomDebugController:outputFishing()
 				rotate = buildingMO.rotate,
 				resAreaDirection = buildingMO.resAreaDirection
 			}
-			local infoStr = self:_jsonEncodeOrdered(info, {
-				"mapId",
-				"uid",
-				"defineId",
-				"use",
-				"x",
-				"y",
-				"rotate",
-				"resAreaDirection"
-			})
 
-			table.insert(buildingInfos, infoStr)
+			table.insert(buildingInfos, info)
 		end
 	end
 
-	local allBuildingInfoStr = table.concat(buildingInfos, ",\n")
-	local mapBuildingContent = "[\"fishing_map_building\",[\n" .. allBuildingInfoStr .. "\n]]"
+	local mapBuildingContent = "return " .. self:_tableToLuaStr(buildingInfos)
 
-	pathClient = System.IO.Path.Combine(SLFramework.FrameworkSettings.AssetRootDir, RoomEnum.FishingMapBuildingPath)
+	pathClient = System.IO.Path.Combine(RoomEnum.FishingMapBuildingPath)
 
 	SLFramework.FileHelper.WriteTextToPath(pathClient, mapBuildingContent)
 	self:output()
@@ -1405,7 +1442,11 @@ function RoomDebugController:_wrapClientConfigParam(config, name)
 	local wrap = {}
 
 	JsonUtil.markAsArray(wrap)
-	table.insert(wrap, name)
+
+	if name ~= nil then
+		table.insert(wrap, name)
+	end
+
 	table.insert(wrap, config)
 
 	return self:_jsonEncode(wrap)

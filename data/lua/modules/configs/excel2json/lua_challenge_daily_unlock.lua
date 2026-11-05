@@ -11,9 +11,36 @@ local primaryKey = {
 	"groupId"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.challenge_daily_unlock_config"
 
-function lua_challenge_daily_unlock.onLoad(json)
-	lua_challenge_daily_unlock.configList, lua_challenge_daily_unlock.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_challenge_daily_unlock, "configList", _configList)
+	rawset(lua_challenge_daily_unlock, "configDict", _configDict)
+end
+
+setmetatable(lua_challenge_daily_unlock, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_challenge_daily_unlock.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_challenge_daily_unlock, "configList", nil)
+	rawset(lua_challenge_daily_unlock, "configDict", nil)
 end
 
 return lua_challenge_daily_unlock

@@ -11,6 +11,17 @@ function V3a2_BossRush_HandBookMO:initMO(co)
 	self.acceptExp = 0
 	self.saveExp = 0
 
+	if not string.nilorempty(co.resource) then
+		local resource = string.splitToNumber(co.resource, "_")
+
+		self.actId = resource[1]
+		self.stage = resource[2]
+		self.stageCo = BossRushConfig.instance:getStageCO(self.stage, self.actId)
+		self.season = self.stageCo.version < 1 and 1 or self.stageCo.version
+	else
+		self.season = V4a1_BossRushModel.instance:getCurSeason()
+	end
+
 	self:_initPointBonus()
 end
 
@@ -32,6 +43,10 @@ function V3a2_BossRush_HandBookMO:_initPointBonus()
 
 		self.maxBonusExp = math.max(self.maxBonusExp, point)
 	end
+end
+
+function V3a2_BossRush_HandBookMO:onUnlock()
+	self.haveFight = true
 end
 
 function V3a2_BossRush_HandBookMO:setInfo(info)
@@ -129,6 +144,19 @@ end
 
 function V3a2_BossRush_HandBookMO:getBossName()
 	return self.config.typeName
+end
+
+function V3a2_BossRush_HandBookMO:getMonsterSkinIdList()
+	if not self._monsterSkinIds then
+		local monsterId = self:getBossId()
+		local monsterCo = lua_monster.configDict[monsterId]
+
+		self._monsterSkinIds = {
+			monsterCo.skinId
+		}
+	end
+
+	return self._monsterSkinIds
 end
 
 return V3a2_BossRush_HandBookMO

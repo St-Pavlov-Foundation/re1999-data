@@ -299,6 +299,20 @@ function PermanentDefine.init(module_views)
 			}
 		}
 	}
+	module_views.Permanent3_3EnterView = {
+		destroy = 0,
+		container = "Permanent3_3EnterViewContainer",
+		mainRes = "ui/viewres/dungeon/reappear/v3a3_reappear_mainactivity_enterview.prefab",
+		layer = "POPUP_TOP",
+		viewType = ViewType.Full,
+		tabRes = {
+			{
+				{
+					NavigateButtonsView.prefabPath
+				}
+			}
+		}
+	}
 end
 
 return PermanentDefine

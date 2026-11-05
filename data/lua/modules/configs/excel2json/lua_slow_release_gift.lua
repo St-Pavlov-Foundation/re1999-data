@@ -18,9 +18,36 @@ local mlStringKey = {
 	desc2 = 2,
 	desc1 = 1
 }
+local _configList, _configDict
+local configPath = "configs.slow_release_gift_config"
 
-function lua_slow_release_gift.onLoad(json)
-	lua_slow_release_gift.configList, lua_slow_release_gift.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_slow_release_gift, "configList", _configList)
+	rawset(lua_slow_release_gift, "configDict", _configDict)
+end
+
+setmetatable(lua_slow_release_gift, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_slow_release_gift.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_slow_release_gift, "configList", nil)
+	rawset(lua_slow_release_gift, "configDict", nil)
 end
 
 return lua_slow_release_gift

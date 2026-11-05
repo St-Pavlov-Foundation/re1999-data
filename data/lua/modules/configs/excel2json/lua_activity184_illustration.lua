@@ -15,9 +15,36 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.activity184_illustration_config"
 
-function lua_activity184_illustration.onLoad(json)
-	lua_activity184_illustration.configList, lua_activity184_illustration.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_activity184_illustration, "configList", _configList)
+	rawset(lua_activity184_illustration, "configDict", _configDict)
+end
+
+setmetatable(lua_activity184_illustration, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_activity184_illustration.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_activity184_illustration, "configList", nil)
+	rawset(lua_activity184_illustration, "configDict", nil)
 end
 
 return lua_activity184_illustration

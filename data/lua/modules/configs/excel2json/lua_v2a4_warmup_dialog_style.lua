@@ -12,9 +12,36 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.v2a4_warmup_dialog_style_config"
 
-function lua_v2a4_warmup_dialog_style.onLoad(json)
-	lua_v2a4_warmup_dialog_style.configList, lua_v2a4_warmup_dialog_style.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_v2a4_warmup_dialog_style, "configList", _configList)
+	rawset(lua_v2a4_warmup_dialog_style, "configDict", _configDict)
+end
+
+setmetatable(lua_v2a4_warmup_dialog_style, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_v2a4_warmup_dialog_style.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_v2a4_warmup_dialog_style, "configList", nil)
+	rawset(lua_v2a4_warmup_dialog_style, "configDict", nil)
 end
 
 return lua_v2a4_warmup_dialog_style

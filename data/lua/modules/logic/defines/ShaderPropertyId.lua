@@ -16,5 +16,8 @@ ShaderPropertyId.FrontSceneAlpha = Shader.PropertyToID("_FrontSceneAlpha")
 ShaderPropertyId.MainTex = Shader.PropertyToID("_MainTex")
 ShaderPropertyId.MainTexSecond = Shader.PropertyToID("_MainTexSecond")
 ShaderPropertyId.LightMap = Shader.PropertyToID("_LightMap")
+ShaderPropertyId.ColorFactor = Shader.PropertyToID("_ColorFactor")
+ShaderPropertyId.Alpha = Shader.PropertyToID("_Alpha")
+ShaderPropertyId.Color = Shader.PropertyToID("_Color")
 
 return ShaderPropertyId

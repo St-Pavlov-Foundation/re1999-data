@@ -174,6 +174,10 @@ function FightCardDataHelper.canCombineCard(cardInfo1, cardInfo2, entityDataMgr)
 		return false
 	end
 
+	if cardInfo1:checkHasExtraInfo(FightCardExtraInfoData.ExtraKey.NotCompose) or cardInfo2:checkHasExtraInfo(FightCardExtraInfoData.ExtraKey.NotCompose) then
+		return false
+	end
+
 	local skillId1 = cardInfo1.skillId
 	local skillId2 = cardInfo2.skillId
 
@@ -251,6 +255,14 @@ function FightCardDataHelper.canCombineWithUniversal(universal_card_info, target
 	end
 
 	if FightCardDataHelper.isSpecialCard(target_card_info) then
+		return false
+	end
+
+	if universal_card_info:checkHasExtraInfo(FightCardExtraInfoData.ExtraKey.NotCompose) or target_card_info:checkHasExtraInfo(FightCardExtraInfoData.ExtraKey.NotCompose) then
+		return false
+	end
+
+	if target_card_info:checkHasExtraInfo(FightCardExtraInfoData.ExtraKey.NOT_COMPOSE_UNIVERSAL) then
 		return false
 	end
 
@@ -566,12 +578,6 @@ function FightCardDataHelper.playActCost(cardData)
 		return costPoint
 	end
 
-	if cardData:checkHasExtraInfo(FightCardExtraInfoData.ExtraKey.NotUseActPoint) then
-		costPoint = 0
-
-		return costPoint
-	end
-
 	if FightCardDataHelper.isSkill3(cardData) then
 		costPoint = 0
 
@@ -584,8 +590,16 @@ function FightCardDataHelper.playActCost(cardData)
 		return costPoint
 	end
 
+	if cardData:checkHasExtraInfo(FightCardExtraInfoData.ExtraKey.NotUseActPoint) then
+		costPoint = 0
+
+		return costPoint
+	end
+
 	if entityData and entityData:hasBuffFeature(FightEnum.BuffFeature.SkillNoUseActPoint) then
 		costPoint = 0
+
+		return costPoint
 	end
 
 	local skillCo = lua_skill.configDict[skillId]
@@ -594,9 +608,21 @@ function FightCardDataHelper.playActCost(cardData)
 	if isBigSkill then
 		if not FightCardDataHelper.checkIsBigSkillCostActPoint(uid, skillId) then
 			costPoint = 0
+
+			return costPoint
 		end
 	elseif not FightCardDataHelper.checkIsSmallSkillCostActPoint(uid, skillId) then
 		costPoint = 0
+
+		return costPoint
+	end
+
+	if entityData and entityData:checkFirstActFree() then
+		entityData:setFirstActFree(false)
+
+		costPoint = 0
+
+		return costPoint
 	end
 
 	return costPoint

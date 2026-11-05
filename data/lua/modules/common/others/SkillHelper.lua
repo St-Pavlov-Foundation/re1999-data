@@ -166,14 +166,14 @@ function SkillHelper._replaceDescTagFunc1(skillName)
 	skillName = SkillHelper.removeRichTag(skillName)
 
 	if not co then
-		return string.format("[%s]", skillName)
+		return string.format("<nobr>[%s]</nobr>", skillName)
 	end
 
 	if not co.notAddLink or co.notAddLink == 0 then
-		return string.format("[<u><link=%s>%s</link></u>]", co.id, skillName)
+		return string.format("<nobr>[<u><link=%s>%s</link></u>]</nobr>", co.id, skillName)
 	end
 
-	return string.format("[%s]", skillName)
+	return string.format("<nobr>[%s]</nobr>", skillName)
 end
 
 function SkillHelper._replaceDescTagFunc2(skillName)
@@ -182,14 +182,14 @@ function SkillHelper._replaceDescTagFunc2(skillName)
 	skillName = SkillHelper.removeRichTag(skillName)
 
 	if not co then
-		return string.format("【%s】", skillName)
+		return string.format("<nobr>【%s】</nobr>", skillName)
 	end
 
 	if not co.notAddLink or co.notAddLink == 0 then
-		return string.format("【<u><link=%s>%s</link></u>】", co.id, skillName)
+		return string.format("<nobr>【<u><link=%s>%s</link></u>】</nobr>", co.id, skillName)
 	end
 
-	return string.format("【%s】", skillName)
+	return string.format("<nobr>【%s】</nobr>", skillName)
 end
 
 function SkillHelper.removeRichTag(name)

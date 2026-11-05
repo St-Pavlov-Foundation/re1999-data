@@ -351,6 +351,10 @@ function BaseLive2d:setBodyAnimation(bodyName, loop, mixTime)
 
 	self._curBodyName = bodyName
 
+	if self.customEffectComp and self.customEffectComp.onBeforeBodyChange then
+		self.customEffectComp:onBeforeBodyChange(oldBodyName, bodyName)
+	end
+
 	self:_setBodyAnimation(BaseLive2d.BodyTrackIndex, bodyName, loop, mixTime)
 	self:_showBodyEffect(bodyName)
 
@@ -401,11 +405,30 @@ function BaseLive2d:setSortingOrder(value)
 end
 
 function BaseLive2d:setAlpha(alpha)
-	if gohelper.isNil(self._cubismController) then
+	local renderController = self:getRenderController()
+
+	if not renderController then
 		return
 	end
 
-	self._cubismController:SetAlpha(alpha)
+	local count = renderController:GetMaterialInstanceCount()
+	local materialEntriesName = self:getMaterialEntriesName()
+
+	for i = 0, count - 1 do
+		local entryName = materialEntriesName[i]
+		local isUnlitMultiply = entryName and string.find(entryName, "unlitmultiply")
+		local mat = renderController:GetMaterialInstance(i)
+
+		if isUnlitMultiply then
+			local color = mat:GetColor(ShaderPropertyId.Color)
+
+			color.a = alpha
+
+			mat:SetColor(ShaderPropertyId.Color, color)
+		else
+			mat:SetFloat(ShaderPropertyId.Alpha, alpha)
+		end
+	end
 end
 
 function BaseLive2d:setSceneTexture(texture)
@@ -441,19 +464,11 @@ function BaseLive2d:disableSceneAlpha()
 end
 
 function BaseLive2d:SetDark()
-	if gohelper.isNil(self._cubismController) then
-		return
-	end
-
-	self._cubismController:SetColorFactor(0.6)
+	self:setColorFactor(0.6)
 end
 
 function BaseLive2d:SetBright()
-	if gohelper.isNil(self._cubismController) then
-		return
-	end
-
-	self._cubismController:SetColorFactor(1)
+	self:setColorFactor(1)
 end
 
 function BaseLive2d:setMouthAnimation(mouthName, loop, mixTime)
@@ -591,6 +606,61 @@ function BaseLive2d:removeParameter(name)
 	end
 
 	self._cubismParameterModifider:RemoveParameter(name)
+end
+
+function BaseLive2d:getRenderController()
+	if not self._renderController and not gohelper.isNil(self._spineGo) then
+		self._renderController = self._spineGo:GetComponent(typeof(Live2D.Cubism.Rendering.CubismRenderController))
+	end
+
+	return self._renderController
+end
+
+function BaseLive2d:setColorFactor(factor)
+	local renderController = self:getRenderController()
+
+	if not renderController then
+		return
+	end
+
+	local count = renderController:GetMaterialInstanceCount()
+	local materialEntriesName = self:getMaterialEntriesName()
+
+	for i = 0, count - 1 do
+		local entryName = materialEntriesName[i]
+		local isUnlitMultiply = entryName and string.find(entryName, "unlitmultiply")
+
+		if not isUnlitMultiply then
+			local mat = renderController:GetMaterialInstance(i)
+
+			mat:SetFloat(ShaderPropertyId.ColorFactor, factor)
+		end
+	end
+end
+
+function BaseLive2d:getMaterialEntriesName()
+	if self._materialEntriesName then
+		return self._materialEntriesName
+	end
+
+	local renderController = self:getRenderController()
+
+	if not renderController then
+		return
+	end
+
+	self._materialEntriesName = {}
+
+	local entryList = renderController._materialEntries
+	local count = entryList.Length
+
+	for i = 0, count - 1 do
+		local entry = entryList[i]
+
+		self._materialEntriesName[i] = entry.templateMaterial.name
+	end
+
+	return self._materialEntriesName
 end
 
 function BaseLive2d:onDestroy()

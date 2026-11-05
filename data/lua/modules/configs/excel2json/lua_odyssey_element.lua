@@ -25,9 +25,36 @@ local primaryKey = {
 local mlStringKey = {
 	taskDesc = 1
 }
+local _configList, _configDict
+local configPath = "configs.odyssey_element_config"
 
-function lua_odyssey_element.onLoad(json)
-	lua_odyssey_element.configList, lua_odyssey_element.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_odyssey_element, "configList", _configList)
+	rawset(lua_odyssey_element, "configDict", _configDict)
+end
+
+setmetatable(lua_odyssey_element, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_odyssey_element.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_odyssey_element, "configList", nil)
+	rawset(lua_odyssey_element, "configDict", nil)
 end
 
 return lua_odyssey_element

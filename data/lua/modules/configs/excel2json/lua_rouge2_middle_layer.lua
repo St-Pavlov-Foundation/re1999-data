@@ -25,9 +25,36 @@ local mlStringKey = {
 	nameWeather = 2,
 	name = 1
 }
+local _configList, _configDict
+local configPath = "configs.rouge2_middle_layer_config"
 
-function lua_rouge2_middle_layer.onLoad(json)
-	lua_rouge2_middle_layer.configList, lua_rouge2_middle_layer.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_rouge2_middle_layer, "configList", _configList)
+	rawset(lua_rouge2_middle_layer, "configDict", _configDict)
+end
+
+setmetatable(lua_rouge2_middle_layer, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_rouge2_middle_layer.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_rouge2_middle_layer, "configList", nil)
+	rawset(lua_rouge2_middle_layer, "configDict", nil)
 end
 
 return lua_rouge2_middle_layer

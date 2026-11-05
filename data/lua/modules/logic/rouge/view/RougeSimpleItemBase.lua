@@ -1,5 +1,12 @@
 ﻿-- chunkname: @modules/logic/rouge/view/RougeSimpleItemBase.lua
 
+local ti = table.insert
+local kZeroV2 = Vector2.zero
+local kZeroV3 = Vector3.zero
+local kOneV3 = Vector3.one
+local kOneV2 = Vector2.one
+local k0505V2 = Vector2(0.5, 0.5)
+
 module("modules.logic.rouge.view.RougeSimpleItemBase", package.seeall)
 
 local RougeSimpleItemBase = class("RougeSimpleItemBase", ListScrollCellExtend)
@@ -246,15 +253,25 @@ function RougeSimpleItemBase:setSiblingIndex(index)
 	return self
 end
 
-function RougeSimpleItemBase:setParent(newParentTrans, worldPositionStays)
-	self._trans:SetParent(newParentTrans, worldPositionStays and true or false)
+function RougeSimpleItemBase:setParent(targetParentTrans, optWorldPositionStays, optInjectedChildTrans)
+	optInjectedChildTrans = optInjectedChildTrans or self._trans
+
+	optInjectedChildTrans:SetParent(targetParentTrans, optWorldPositionStays and true or false)
 
 	return self
 end
 
-function RougeSimpleItemBase:setParentAndResetPosZero(newParentTrans)
-	self:setParent(newParentTrans)
+function RougeSimpleItemBase:setParentAndResetPosZero(targetParentTrans, optInjectedChildTrans)
+	self:setParent(targetParentTrans, false, optInjectedChildTrans)
 	self:zeroPos()
+
+	return self
+end
+
+function RougeSimpleItemBase:addChildToSlot(targetChildTrans, optWorldPositionStays, optInjectedParentTrans)
+	optInjectedParentTrans = optInjectedParentTrans or self._trans
+
+	self:setParent(optInjectedParentTrans, optWorldPositionStays, targetChildTrans)
 
 	return self
 end
@@ -406,6 +423,55 @@ end
 
 function RougeSimpleItemBase:childCount()
 	return self._trans and self._trans.childCount or 0
+end
+
+function RougeSimpleItemBase:saveRectTransfromData(optTrans)
+	optTrans = optTrans or self:transform()
+
+	local infoDataList = self:getUserDataTb_()
+
+	ti(infoDataList, optTrans.anchorMin)
+	ti(infoDataList, optTrans.anchorMax)
+	ti(infoDataList, optTrans.pivot)
+	ti(infoDataList, optTrans.anchoredPosition)
+	ti(infoDataList, optTrans.sizeDelta)
+	ti(infoDataList, optTrans.localScale)
+
+	return infoDataList
+end
+
+function RougeSimpleItemBase:loadRectTransfromData(infoDataList, optTrans)
+	optTrans = optTrans or self:transform()
+	optTrans.anchorMin = infoDataList[1]
+	optTrans.anchorMax = infoDataList[2]
+	optTrans.pivot = infoDataList[3]
+	optTrans.anchoredPosition = infoDataList[4]
+	optTrans.sizeDelta = infoDataList[5]
+	optTrans.localScale = infoDataList[6]
+
+	return self
+end
+
+function RougeSimpleItemBase:setFullscreenStretch(optTrans)
+	optTrans = optTrans or self:transform()
+	optTrans.anchorMin = kZeroV2
+	optTrans.anchorMax = kOneV2
+	optTrans.pivot = k0505V2
+	optTrans.anchoredPosition = kZeroV2
+	optTrans.sizeDelta = kZeroV2
+	optTrans.localScale = kOneV3
+end
+
+function RougeSimpleItemBase:resetTransform(optTrans)
+	optTrans = optTrans or self:transform()
+	optTrans.pivot = k0505V2
+	optTrans.anchorMin = k0505V2
+	optTrans.anchorMax = k0505V2
+	optTrans.offsetMin = kZeroV2
+	optTrans.offsetMax = kZeroV2
+	optTrans.localScale = kOneV3
+	optTrans.localRotation = Quaternion.New(0, 0, 0, 1)
+	optTrans.anchoredPosition3D = kZeroV3
 end
 
 function RougeSimpleItemBase:_editableInitView()

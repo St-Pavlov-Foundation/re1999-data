@@ -76,9 +76,11 @@ end
 
 function RougeActivityTaskEntryView:_onActivityOnline()
 	if not self._entryItem then
-		self._loader = PrefabInstantiate.Create(self._goRoot)
+		if not self._loader then
+			self._loader = PrefabInstantiate.Create(self._goRoot)
 
-		self._loader:startLoad(RougeEnum.ResPath.ActivityTaskEntryItem, self._onLoadEntryItemDone, self)
+			self._loader:startLoad(RougeEnum.ResPath.ActivityTaskEntryItem, self._onLoadEntryItemDone, self)
+		end
 
 		return
 	end
@@ -98,7 +100,13 @@ function RougeActivityTaskEntryView:_onLoadEntryItemDone(loader)
 	self._entryItem:onActivityOnline(self._taskActId)
 end
 
-function RougeActivityTaskEntryView:onClose()
+function RougeActivityTaskEntryView:onDestroyView()
+	if self._loader then
+		self._loader:dispose()
+
+		self._loader = nil
+	end
+
 	self._entryItem = nil
 end
 

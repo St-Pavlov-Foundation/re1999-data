@@ -120,6 +120,23 @@ function PackageStoreGoodsItem:_onClick()
 		return
 	end
 
+	local storeViewContainer = ViewMgr.instance:getContainer(ViewName.StoreView)
+
+	if storeViewContainer then
+		local pageIndex = storeViewContainer:getLinkGiftPageIndexByStoreChargeGoodsId(self._mo.goodsId)
+
+		if pageIndex > 0 then
+			local actId = ActivityType101Config.instance:getLinkGiftActId()
+
+			ViewMgr.instance:openView(ViewName.LinkGift_PanelView, {
+				actId = actId,
+				selectPageIndex = pageIndex
+			})
+
+			return
+		end
+	end
+
 	if self._cfgType == StoreEnum.StoreChargeType.LinkGiftGoods then
 		local chargeConditionalConfig = StoreConfig.instance:getChargeConditionalConfig(self._mo.config.taskid)
 

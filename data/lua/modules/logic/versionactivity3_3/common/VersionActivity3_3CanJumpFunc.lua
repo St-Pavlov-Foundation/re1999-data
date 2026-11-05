@@ -55,4 +55,62 @@ function VersionActivity3_3CanJumpFunc:canJumpTo13309(jumpParamArray)
 	return true, JumpController.DefaultToastId, JumpController.DefaultToastParam
 end
 
+function VersionActivity3_3CanJumpFunc:canJumpTo13310(paramsList)
+	local enterViewId = VersionActivity3_3Enum.ActivityId.EnterView
+	local status, toastId, toastParamList = ActivityHelper.getActivityStatusAndToast(enterViewId)
+
+	if status ~= ActivityEnum.ActivityStatus.Normal then
+		return false, toastId, toastParamList
+	end
+
+	local actId = VersionActivity3_3Enum.ActivityId.Marsha
+	local actStatus, actToastId, actToastParamList = ActivityHelper.getActivityStatusAndToast(actId)
+
+	if actStatus ~= ActivityEnum.ActivityStatus.Normal then
+		return false, actToastId, actToastParamList
+	end
+
+	local episodeId = paramsList and paramsList[3]
+
+	if episodeId then
+		local isUnlock = MarshaModel.instance:isEpisodeUnlock(episodeId)
+
+		if not isUnlock then
+			return false, ToastEnum.WarmUpGotoOrder, JumpController.DefaultToastParam
+		end
+	end
+
+	return true, JumpController.DefaultToastId, JumpController.DefaultToastParam
+end
+
+function VersionActivity3_3CanJumpFunc:canJumpTo13313(paramsList)
+	local enterViewId = VersionActivity3_3Enum.ActivityId.EnterView
+	local status, toastId, toastParamList = ActivityHelper.getActivityStatusAndToast(enterViewId)
+
+	if status ~= ActivityEnum.ActivityStatus.Normal then
+		return false, toastId, toastParamList
+	end
+
+	local actId = VersionActivity3_3Enum.ActivityId.Igor
+	local actStatus, actToastId, actToastParamList = ActivityHelper.getActivityStatusAndToast(actId)
+
+	if actStatus ~= ActivityEnum.ActivityStatus.Normal then
+		return false, actToastId, actToastParamList
+	end
+
+	local episodeId = paramsList and paramsList[3]
+
+	if episodeId then
+		local mo = Activity220Model.instance:getById(actId)
+
+		isUnlock = mo and mo:isEpisodeUnlock(episodeId)
+
+		if not isUnlock then
+			return false, ToastEnum.WarmUpGotoOrder, JumpController.DefaultToastParam
+		end
+	end
+
+	return true, JumpController.DefaultToastId, JumpController.DefaultToastParam
+end
+
 return VersionActivity3_3CanJumpFunc

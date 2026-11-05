@@ -95,9 +95,7 @@ function ArcadeStatHelper:buildArcadeGameBaseObj(cassetteCount, isWin, argsRoomI
 		total_score = ArcadeOutSizeModel.instance:getScore()
 	}
 
-	return {
-		gameBaseObj
-	}
+	return gameBaseObj
 end
 
 function ArcadeStatHelper:buildRoomEndObj(selectedPortalId)

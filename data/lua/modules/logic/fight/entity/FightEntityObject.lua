@@ -13,6 +13,8 @@ function FightEntityObject:onConstructor(gameObjectName, entityData)
 	self.entityId = entityData.id
 	self.entityData = entityData
 	self._isActive = true
+	self.visibleByPos = true
+	self.marked_alpha = 1
 	self.isDead = false
 	self.deadBySkillId = nil
 	self.createStage = FightEnum.EntityCreateStage.None
@@ -59,6 +61,7 @@ function FightEntityObject:initComponents()
 	self.skinCustomComp = self:addEntityComponent(FightSkinCustomComp)
 	self.spineScaleComp = self:addEntityComponent(FightSpineScaleComp)
 	self.statusComp = self:addEntityComponent(FightEntityStatusComp)
+	self.updateEntityMoComp = self:addEntityComponent(FightUpdateEntityMoComp)
 
 	local mo = self.entityData
 
@@ -234,11 +237,29 @@ function FightEntityObject:setVisibleByPos(isVisible)
 		return
 	end
 
+	self.visibleByPos = isVisible
+
 	if isVisible then
 		self:resetStandPos()
 	else
 		transformhelper.setLocalPos(self.go.transform, 9999, 9999, 9999)
 	end
+end
+
+function FightEntityObject:checkIsVisible()
+	if not self._isActive then
+		return false
+	end
+
+	if not self.visibleByPos then
+		return false
+	end
+
+	if self.marked_alpha <= 0 then
+		return false
+	end
+
+	return true
 end
 
 function FightEntityObject:setAlpha(alpha, duration)

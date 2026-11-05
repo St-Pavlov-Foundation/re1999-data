@@ -40,9 +40,9 @@ function V3a2_BossRush_RankBonus:_editableRemoveEvents()
 	return
 end
 
-function V3a2_BossRush_RankBonus:onUpdateMO(mo, view)
+function V3a2_BossRush_RankBonus:onUpdateMO(mo)
 	self._mo = mo
-	self._view = view
+	self._season = mo.season
 
 	if self._mo.isNoraml then
 		self:_refreshLine()
@@ -54,7 +54,7 @@ end
 
 function V3a2_BossRush_RankBonus:_refreshLine()
 	local level = self._mo.config.playerLevel
-	local curRank = V3a2_BossRushModel.instance:getRank()
+	local curRank = V3a2_BossRushModel.instance:getRank(self._season)
 	local preRank = self._mo.preRank
 	local progress = 0
 	local midRank = level - preRank
@@ -181,7 +181,7 @@ function V3a2_BossRush_RankBonus:_getBonusItem(index)
 end
 
 function V3a2_BossRush_RankBonus:_btnClaimOnClick()
-	self._view:claimRankBonus()
+	BossRushController.instance:dispatchEvent(BossRushEvent.onClaimRankBonus)
 end
 
 function V3a2_BossRush_RankBonus:_btnItemOnClick(index)

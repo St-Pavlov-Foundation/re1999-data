@@ -39,6 +39,12 @@ function FightLoaderMgr:getAsset(url)
 	end
 end
 
+function FightLoaderMgr:isLoading(url)
+	local fightAssetItem = self.url2Item[url]
+
+	return fightAssetItem ~= nil and fightAssetItem.loading == true and fightAssetItem.assetItem == nil
+end
+
 function FightLoaderMgr:unloadAsset(url)
 	local item = self.url2Item[url]
 

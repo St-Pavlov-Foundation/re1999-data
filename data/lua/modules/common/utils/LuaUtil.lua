@@ -529,4 +529,95 @@ function LuaUtil.class(classname, superCls, overseasImplCls, nativesImplCls)
 	end
 end
 
+local gConfigLoadStats = {}
+local gConfigTimeStats = {}
+local gConfigTimestampStats = {}
+local startTime = 0
+
+function LuaUtil.requireConfig(configPath)
+	if isDebugBuild then
+		startTime = os.clock()
+	end
+
+	local configDef = require(configPath)
+
+	if isDebugBuild and configPath then
+		gConfigLoadStats[configPath] = (gConfigLoadStats[configPath] or 0) + 1
+		gConfigTimeStats[configPath] = (gConfigTimeStats[configPath] or 0) + (os.clock() - startTime) * 1000
+
+		if not gConfigTimestampStats[configPath] then
+			gConfigTimestampStats[configPath] = os.time()
+		end
+	end
+
+	return configDef
+end
+
+function LuaUtil.dumpConfigStats(filePath)
+	local defaultDir = UnityEngine.Application.persistentDataPath .. "/config_stats"
+	local timestamp = os.date("%Y%m%d_%H%M%S")
+	local savePath = filePath or defaultDir .. string.format("/config_stats_%s.csv", timestamp)
+	local paths = {}
+
+	for path in pairs(gConfigLoadStats) do
+		table.insert(paths, path)
+	end
+
+	table.sort(paths)
+
+	local totalLoad = 0
+	local totalTime = 0
+
+	for _, path in ipairs(paths) do
+		totalLoad = totalLoad + (gConfigLoadStats[path] or 0)
+		totalTime = totalTime + (gConfigTimeStats[path] or 0)
+	end
+
+	local byTime = {}
+
+	for _, path in ipairs(paths) do
+		table.insert(byTime, path)
+	end
+
+	table.sort(byTime, function(a, b)
+		return (gConfigTimestampStats[a] or 0) < (gConfigTimestampStats[b] or 0)
+	end)
+
+	local lines = {}
+
+	table.insert(lines, "path,loads,time_ms,timestamp")
+
+	for _, path in ipairs(byTime) do
+		local ts = gConfigTimestampStats[path] or 0
+		local tsStr = ts > 0 and os.date("%Y/%m/%d %H:%M:%S", ts) or ""
+
+		table.insert(lines, string.format("%s,%d,%.2f,%s", path, gConfigLoadStats[path] or 0, gConfigTimeStats[path] or 0, tsStr))
+	end
+
+	table.insert(lines, "")
+	table.insert(lines, string.format("# total unique configs,%d,", #paths))
+	table.insert(lines, string.format("# total load times,%d,", totalLoad))
+	table.insert(lines, string.format("# total load time,,%.2f", totalTime))
+
+	local content = table.concat(lines, "\n") .. "\n"
+
+	logNormal("Config stats saved to " .. savePath)
+	SLFramework.FileHelper.WriteTextToPath(savePath, content)
+
+	return savePath
+end
+
+function LuaUtil.clearConfigStats()
+	gConfigLoadStats = {}
+	gConfigTimeStats = {}
+	gConfigTimestampStats = {}
+end
+
+function LuaUtil.clearTable(filePath)
+	package.loaded[filePath] = nil
+	package.preload[filePath] = nil
+
+	setGlobal(filePath, nil)
+end
+
 return LuaUtil

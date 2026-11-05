@@ -13,6 +13,10 @@ function HandbookModel:onInit()
 	self._skinRedDotDict = {}
 	self._skinRedDotUnlockReadDict = {}
 	self._skinRedDotUnlockDict = {}
+	self._skinUnitCameraFov = nil
+	self._skinUnitCameraActive = nil
+	self._skinUnitCameraDofFactor = nil
+	self._skinUnitCameraLocalPos = nil
 end
 
 function HandbookModel:reInit()
@@ -24,6 +28,10 @@ function HandbookModel:reInit()
 	self._skinRedDotDict = {}
 	self._skinRedDotUnlockReadDict = {}
 	self._skinRedDotUnlockDict = {}
+	self._skinUnitCameraFov = nil
+	self._skinUnitCameraActive = nil
+	self._skinUnitCameraDofFactor = nil
+	self._skinUnitCameraLocalPos = nil
 end
 
 function HandbookModel:setReadInfos(infos)
@@ -502,6 +510,45 @@ end
 
 function HandbookModel:getSkinUnlockRedDotReadInfo()
 	return self._skinRedDotUnlockReadDict
+end
+
+function HandbookModel:cacheUnitCameraParam(fov, active)
+	self._skinUnitCameraFov = fov
+	self._skinUnitCameraActive = active
+end
+
+function HandbookModel:getUnitCameraCachedFov()
+	return self._skinUnitCameraFov
+end
+
+function HandbookModel:getUnitCameraCachedActive()
+	return self._skinUnitCameraActive
+end
+
+function HandbookModel:cacheUnitCameraDofFactor(dofFactor)
+	self._skinUnitCameraDofFactor = dofFactor
+end
+
+function HandbookModel:getUnitCameraCachedDofFactor()
+	return self._skinUnitCameraDofFactor
+end
+
+function HandbookModel:cacheUnitCameraLocalPos(localPos)
+	self._skinUnitCameraLocalPos = localPos
+end
+
+function HandbookModel:getUnitCameraCachedLocalPos()
+	return self._skinUnitCameraLocalPos
+end
+
+function HandbookModel:clearUnitCameraLocalPos()
+	self._skinUnitCameraLocalPos = nil
+end
+
+function HandbookModel:clearUnitCameraParam()
+	self._skinUnitCameraFov = nil
+	self._skinUnitCameraActive = nil
+	self._skinUnitCameraDofFactor = nil
 end
 
 HandbookModel.instance = HandbookModel.New()

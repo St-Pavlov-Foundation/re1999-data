@@ -1,0 +1,22 @@
+﻿-- chunkname: @configs/activity174_bot_level_config.lua
+
+return {
+	{
+		1,
+		"1#2",
+		3,
+		0
+	},
+	{
+		2,
+		"3#4",
+		3,
+		1
+	},
+	{
+		3,
+		"5#6",
+		3,
+		1
+	}
+}

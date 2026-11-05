@@ -100,12 +100,12 @@ function NecrologistStoryView:onChangePlace(place)
 	self.txtPlace.text = place
 end
 
-function NecrologistStoryView:onSelectSection(sectionId, isSkip)
+function NecrologistStoryView:onSelectSection(sectionId, isSkip, index)
 	if not self._storyGroupMo then
 		return
 	end
 
-	self._storyGroupMo:setSection(sectionId)
+	self._storyGroupMo:setSection(sectionId, index)
 	self:runNextStep(isSkip)
 end
 
@@ -279,7 +279,7 @@ function NecrologistStoryView:startStoryGroup(storyGroupId)
 
 	NecrologistStoryStatController.instance:startStoryStat()
 
-	self._storyGroupMo = self:getStoryMo(storyGroupId)
+	self._storyGroupMo = NecrologistStoryModel.instance:getStoryMO(storyGroupId)
 
 	self._storyGroupMo:initData()
 
@@ -420,10 +420,14 @@ function NecrologistStoryView:_refreshLeftPic()
 	AudioMgr.instance:trigger(AudioEnum.NecrologistStory.play_ui_mln_day_night)
 
 	if string.nilorempty(self._curPicRes) then
-		self.simageSectionpic:LoadImage(ResUrl.getNecrologistStoryPicBg("rolestory_pic_01"))
+		self.simageSectionpic:LoadImage(ResUrl.getNecrologistStoryPicBg("rolestory_pic_01"), self.onLoadLeftPic, self)
 	else
-		self.simageSectionpic:LoadImage(ResUrl.getNecrologistStoryPicBg(self._curPicRes))
+		self.simageSectionpic:LoadImage(ResUrl.getNecrologistStoryPicBg(self._curPicRes), self.onLoadLeftPic, self)
 	end
+end
+
+function NecrologistStoryView:onLoadLeftPic()
+	ZProj.UGUIHelper.SetImageSize(self.simageSectionpic.gameObject)
 end
 
 function NecrologistStoryView:isStoryFinish()
@@ -675,12 +679,6 @@ end
 function NecrologistStoryView:setIsEnd(isEnd)
 	gohelper.setActive(self.goEnd, isEnd)
 	gohelper.setActive(self.goArrow, not isEnd)
-end
-
-function NecrologistStoryView:getStoryMo(id)
-	local mo = NecrologistStoryModel.instance:getStoryMO(id)
-
-	return mo
 end
 
 function NecrologistStoryView:getLastItem()
@@ -957,6 +955,10 @@ end
 
 function NecrologistStoryView:getStoryPlayView()
 	return self.viewContainer:getStoryPlayView()
+end
+
+function NecrologistStoryView:getStoryMo()
+	return self._storyGroupMo
 end
 
 function NecrologistStoryView:onDestroyView()

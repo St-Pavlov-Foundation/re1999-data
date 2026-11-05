@@ -8,7 +8,7 @@ function ResSplitSaveHelper.init()
 	return
 end
 
-function ResSplitSaveHelper.createExcludeConfig()
+function ResSplitSaveHelper.createExcludeConfig(saveJsonCb)
 	local dic = ResSplitConfig.instance:getAppIncludeConfig()
 	local characterIdDic = {}
 	local chapterIdDic = {}
@@ -67,7 +67,12 @@ function ResSplitSaveHelper.createExcludeConfig()
 	flow:addWork(ResSplitSaveSkillWork.New())
 	flow:addWork(ResSplitSaveAudioWemWork.New())
 	flow:addWork(ResSplitSaveExportWork.New())
-	flow:start()
+
+	local context = {}
+
+	context.saveJsonCb = saveJsonCb
+
+	flow:start(context)
 end
 
 function ResSplitSaveHelper.checkConfigEmpty(mainKey, configKey, config)

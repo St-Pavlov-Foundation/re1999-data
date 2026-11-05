@@ -23,9 +23,36 @@ local mlStringKey = {
 	desc = 2,
 	name = 1
 }
+local _configList, _configDict
+local configPath = "configs.survival_outside_tech_config"
 
-function lua_survival_outside_tech.onLoad(json)
-	lua_survival_outside_tech.configList, lua_survival_outside_tech.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_survival_outside_tech, "configList", _configList)
+	rawset(lua_survival_outside_tech, "configDict", _configDict)
+end
+
+setmetatable(lua_survival_outside_tech, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_survival_outside_tech.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_survival_outside_tech, "configList", nil)
+	rawset(lua_survival_outside_tech, "configDict", nil)
 end
 
 return lua_survival_outside_tech

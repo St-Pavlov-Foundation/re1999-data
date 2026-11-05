@@ -1,0 +1,16 @@
+﻿-- chunkname: @configs/activity142_interact_effect_config.lua
+
+return {
+	{
+		1,
+		1,
+		"center",
+		"scenes/v1a5_m_s12_dfw_krd/perefab/vx_icon_hero"
+	},
+	{
+		4,
+		4,
+		"center",
+		"scenes/v1a5_m_s12_dfw_krd/perefab/vx_icon_monster"
+	}
+}

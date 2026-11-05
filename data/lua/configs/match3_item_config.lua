@@ -1,0 +1,31 @@
+﻿-- chunkname: @configs/match3_item_config.lua
+
+return {
+	{
+		410001,
+		"三消代币",
+		"1",
+		999,
+		3,
+		"item_match3_coin",
+		"购买角色"
+	},
+	{
+		410002,
+		"三消宝石",
+		"2",
+		999,
+		4,
+		"item_match3_gem",
+		"点亮天赋"
+	},
+	{
+		410003,
+		"经验书",
+		"3",
+		999,
+		3,
+		"item_match3_expbook",
+		"角色升级经验道具"
+	}
+}

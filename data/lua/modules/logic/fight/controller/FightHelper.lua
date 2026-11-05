@@ -4319,12 +4319,7 @@ function FightHelper.canSelectEnemyEntity(entityId)
 end
 
 function FightHelper.clearNoUseEffect()
-	local releasePathSet = FightEffectPool.releaseUnuseEffect()
-
-	for path, _ in pairs(releasePathSet) do
-		FightPreloadController.instance:releaseAsset(path)
-	end
-
+	FightGameMgr.effectMgr:releaseUnuseEffect()
 	GameGCMgr.instance:dispatchEvent(GameGCEvent.FullGC)
 end
 

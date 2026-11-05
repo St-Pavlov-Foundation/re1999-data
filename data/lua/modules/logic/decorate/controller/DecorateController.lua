@@ -12,11 +12,13 @@ function DecorateController:openPreviewView(itemConfig)
 	local itemDecorateCo, classify = DecorateModel.instance:getItemDecorateCo(itemConfig)
 
 	if itemConfig.subType == ItemEnum.SubType.PlayerBg then
-		ViewMgr.instance:openView(ViewName.PlayerCardGetView, {
+		local viewParam = {
 			isHideEquipBtn = true,
 			preview = true,
 			id = itemConfig.id
-		})
+		}
+
+		PlayerCardController.instance:simpleShowPlayerCardGetView(viewParam)
 	elseif itemConfig.subType == ItemEnum.SubType.MainSceneSkin then
 		ViewMgr.instance:openView(ViewName.MainSceneSwitchInfoView, {
 			isAmplify = true,

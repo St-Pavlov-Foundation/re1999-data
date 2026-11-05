@@ -131,6 +131,7 @@ function V3a2_BossRush_ResultPanel:setAssessIcon()
 			self._assessItem:setData(self._curStage, self.fightScore, self._isSpecialLayer)
 		end
 
+		self._resultAssessItem:setActivity(self._actId)
 		self._resultAssessItem:playAnim(self.fightScore)
 	end
 end

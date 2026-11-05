@@ -30,9 +30,36 @@ local mlStringKey = {
 	mainTitle_en = 2,
 	mainTitle_cn = 1
 }
+local _configList, _configDict
+local configPath = "configs.fight_technique_config"
 
-function lua_fight_technique.onLoad(json)
-	lua_fight_technique.configList, lua_fight_technique.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_fight_technique, "configList", _configList)
+	rawset(lua_fight_technique, "configDict", _configDict)
+end
+
+setmetatable(lua_fight_technique, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_fight_technique.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_fight_technique, "configList", nil)
+	rawset(lua_fight_technique, "configDict", nil)
 end
 
 return lua_fight_technique

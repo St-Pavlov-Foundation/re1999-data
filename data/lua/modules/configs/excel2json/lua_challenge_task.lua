@@ -30,9 +30,36 @@ local mlStringKey = {
 	minType = 1,
 	desc = 3
 }
+local _configList, _configDict
+local configPath = "configs.challenge_task_config"
 
-function lua_challenge_task.onLoad(json)
-	lua_challenge_task.configList, lua_challenge_task.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_challenge_task, "configList", _configList)
+	rawset(lua_challenge_task, "configDict", _configDict)
+end
+
+setmetatable(lua_challenge_task, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_challenge_task.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_challenge_task, "configList", nil)
+	rawset(lua_challenge_task, "configDict", nil)
 end
 
 return lua_challenge_task

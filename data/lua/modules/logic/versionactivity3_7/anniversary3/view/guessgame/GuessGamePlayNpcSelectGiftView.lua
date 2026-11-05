@@ -101,7 +101,7 @@ function GuessGamePlayNpcSelectGiftView:_onStartNpcSelectingGifts()
 		for index, npcItem in pairs(self._npcItems) do
 			npcItem:showGifts(true)
 			npcItem:showNpc(index == self._round)
-			npcItem:showNpcSelect(index == self._round)
+			npcItem:showRoleSelect(index == self._round)
 		end
 	end
 end
@@ -119,7 +119,7 @@ function GuessGamePlayNpcSelectGiftView:_onShowNpcSelectGifts(giftIndexs)
 		for index, npcItem in pairs(self._npcItems) do
 			npcItem:showGifts(true)
 			npcItem:showNpc(index == self._round)
-			npcItem:showNpcSelect(false)
+			npcItem:showRoleSelect(false)
 		end
 	end
 end

@@ -1,0 +1,16937 @@
+﻿-- chunkname: @configs/block_package_data_config.lua
+
+return {
+	{
+		id = 6,
+		infos = {
+			{
+				defineId = 10,
+				blockId = 9006,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 58,
+				blockId = 9054,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50,
+				blockId = 9046,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 75,
+				blockId = 9071,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 65,
+				blockId = 9061,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 42,
+				blockId = 9038,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 66,
+				blockId = 9062,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 77,
+				blockId = 9073,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 110,
+				blockId = 9106,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 101,
+				blockId = 9097,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 102,
+				blockId = 9098,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 103,
+				blockId = 9099,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 17,
+				blockId = 9013,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 52,
+				blockId = 9048,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 51,
+				blockId = 9047,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 170,
+				blockId = 9150,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 76,
+				blockId = 9072,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 9,
+				blockId = 9005,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 87,
+				blockId = 9083,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 86,
+				blockId = 9082,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 56,
+				blockId = 9052,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 79,
+				blockId = 9075,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 28,
+				blockId = 9024,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 47,
+				blockId = 9043,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 48,
+				blockId = 9044,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 49,
+				blockId = 9045,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 29,
+				blockId = 9025,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 9,
+		infos = {
+			{
+				defineId = 12,
+				blockId = 9008,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 41,
+				blockId = 9037,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 23,
+				blockId = 9019,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 63,
+				blockId = 9059,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 22,
+				blockId = 9018,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 92,
+				blockId = 9088,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 40,
+				blockId = 9036,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 127,
+				blockId = 9123,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 178,
+				blockId = 10010,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 105,
+				blockId = 9101,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 128,
+				blockId = 9124,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 93,
+				blockId = 9089,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 179,
+				blockId = 10011,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 106,
+				blockId = 9102,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 12,
+		infos = {
+			{
+				defineId = 70,
+				blockId = 9066,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 46,
+				blockId = 9042,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 71,
+				blockId = 9067,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 72,
+				blockId = 9068,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 98,
+				blockId = 9094,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 99,
+				blockId = 9095,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 69,
+				blockId = 9065,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 68,
+				blockId = 9064,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 100,
+				blockId = 9096,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 27,
+				blockId = 9023,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 45,
+				blockId = 9041,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 14,
+				blockId = 9010,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 104,
+				blockId = 9100,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 44,
+				blockId = 9040,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 14,
+		infos = {
+			{
+				defineId = 39,
+				blockId = 9035,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 85,
+				blockId = 9081,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 130,
+				blockId = 9126,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 16,
+				blockId = 9012,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 31,
+				blockId = 9027,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30,
+				blockId = 9026,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 131,
+				blockId = 9127,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 95,
+				blockId = 9091,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 96,
+				blockId = 9092,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 170,
+				blockId = 9157,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 173,
+				blockId = 9156,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 171,
+				blockId = 9155,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80,
+				blockId = 9076,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 112,
+				blockId = 9108,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 7,
+		infos = {
+			{
+				defineId = 33,
+				blockId = 9029,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 34,
+				blockId = 9030,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 55,
+				blockId = 9051,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 81,
+				blockId = 9077,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 53,
+				blockId = 9049,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 18,
+				blockId = 9014,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 114,
+				blockId = 9110,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 170,
+				blockId = 9152,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 32,
+				blockId = 9028,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 113,
+				blockId = 9109,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 181,
+				blockId = 10013,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 180,
+				blockId = 10012,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 54,
+				blockId = 9050,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 115,
+				blockId = 9111,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 8,
+		infos = {
+			{
+				defineId = 109,
+				blockId = 9105,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 21,
+				blockId = 9017,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 38,
+				blockId = 9034,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 119,
+				blockId = 9115,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 117,
+				blockId = 9113,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 59,
+				blockId = 9055,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 35,
+				blockId = 9031,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 37,
+				blockId = 9033,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 36,
+				blockId = 9032,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 20,
+				blockId = 9016,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 25,
+				blockId = 9021,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 26,
+				blockId = 9022,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 118,
+				blockId = 9114,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 19,
+				blockId = 9015,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 15,
+		infos = {
+			{
+				defineId = 170,
+				blockId = 9145,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 175,
+				blockId = 10007,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 176,
+				blockId = 10008,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 67,
+				blockId = 9063,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 43,
+				blockId = 9039,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 111,
+				blockId = 9107,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 177,
+				blockId = 10009,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 173,
+				blockId = 9143,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 94,
+				blockId = 9090,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 64,
+				blockId = 9060,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 174,
+				blockId = 9142,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 171,
+				blockId = 9144,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 173,
+				blockId = 9146,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 174,
+				blockId = 9147,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 97,
+				blockId = 9093,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 13,
+		infos = {
+			{
+				defineId = 145,
+				blockId = 9140,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 140,
+				blockId = 9137,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 138,
+				blockId = 9133,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 57,
+				blockId = 9053,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 84,
+				blockId = 9080,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 174,
+				blockId = 9153,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 107,
+				blockId = 9103,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 108,
+				blockId = 9104,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 78,
+				blockId = 9074,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 83,
+				blockId = 9079,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 116,
+				blockId = 9112,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 82,
+				blockId = 9078,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 144,
+				blockId = 9139,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 139,
+				blockId = 9138,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 10,
+		infos = {
+			{
+				defineId = 134,
+				blockId = 9129,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 132,
+				blockId = 9141,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 133,
+				blockId = 9128,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 122,
+				blockId = 9118,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 88,
+				blockId = 9084,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 121,
+				blockId = 9117,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 182,
+				blockId = 10016,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 183,
+				blockId = 10017,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 74,
+				blockId = 9070,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 73,
+				blockId = 9069,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 135,
+				blockId = 9130,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 173,
+				blockId = 9149,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 171,
+				blockId = 9148,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 120,
+				blockId = 9116,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 11,
+		infos = {
+			{
+				defineId = 124,
+				blockId = 9120,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 123,
+				blockId = 9119,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90,
+				blockId = 9086,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 184,
+				blockId = 10018,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 136,
+				blockId = 9131,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 141,
+				blockId = 9134,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 125,
+				blockId = 9121,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 91,
+				blockId = 9087,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 126,
+				blockId = 9122,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 185,
+				blockId = 10019,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 137,
+				blockId = 9132,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 142,
+				blockId = 9135,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 143,
+				blockId = 9136,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 89,
+				blockId = 9085,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 16,
+		infos = {
+			{
+				defineId = 186,
+				blockId = 10027,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 335001,
+				blockId = 72073,
+				mainRes = 0,
+				ownType = 1
+			},
+			{
+				defineId = 225002,
+				blockId = 42386,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 335002,
+				blockId = 72075,
+				mainRes = 0,
+				ownType = 1
+			},
+			{
+				defineId = 65003,
+				blockId = 31177,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 3955001,
+				blockId = 89127,
+				mainRes = 0,
+				ownType = 1
+			},
+			{
+				defineId = 65002,
+				blockId = 31176,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 3955002,
+				blockId = 89128,
+				mainRes = 0,
+				ownType = 1
+			},
+			{
+				defineId = 65001,
+				blockId = 31175,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 187,
+				blockId = 10028,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 188,
+				blockId = 10029,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 189,
+				blockId = 10030,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 190,
+				blockId = 10031,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 191,
+				blockId = 10032,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 192,
+				blockId = 10033,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 193,
+				blockId = 10034,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 194,
+				blockId = 10035,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 195,
+				blockId = 10036,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 196,
+				blockId = 10037,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 197,
+				blockId = 10038,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 198,
+				blockId = 10039,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 199,
+				blockId = 10040,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 200,
+				blockId = 10041,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 201,
+				blockId = 10042,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 202,
+				blockId = 10043,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 203,
+				blockId = 10044,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 204,
+				blockId = 10045,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 206,
+				blockId = 10047,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 207,
+				blockId = 10048,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 208,
+				blockId = 10049,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 209,
+				blockId = 10050,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 210,
+				blockId = 10051,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 211,
+				blockId = 10052,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 212,
+				blockId = 10053,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 213,
+				blockId = 10054,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 214,
+				blockId = 10055,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 215,
+				blockId = 10056,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 216,
+				blockId = 10057,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 217,
+				blockId = 10058,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 218,
+				blockId = 10059,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 219,
+				blockId = 10060,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 220,
+				blockId = 10061,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 221,
+				blockId = 10062,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 222,
+				blockId = 10063,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 223,
+				blockId = 10064,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 224,
+				blockId = 10065,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 226,
+				blockId = 10067,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 227,
+				blockId = 10068,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 228,
+				blockId = 10069,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 229,
+				blockId = 10070,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 230,
+				blockId = 10071,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 231,
+				blockId = 10072,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 233,
+				blockId = 10074,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 234,
+				blockId = 10075,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 235,
+				blockId = 10076,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 236,
+				blockId = 10077,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 237,
+				blockId = 10078,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 238,
+				blockId = 10079,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 239,
+				blockId = 10080,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 240,
+				blockId = 10081,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 241,
+				blockId = 10082,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 242,
+				blockId = 10083,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 244,
+				blockId = 10084,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 245,
+				blockId = 10085,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 246,
+				blockId = 10086,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 247,
+				blockId = 10087,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 248,
+				blockId = 10088,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 249,
+				blockId = 10089,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 243,
+				blockId = 10090,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 290,
+				blockId = 11226,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 45001,
+				blockId = 17212,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 45002,
+				blockId = 17213,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 75002,
+				blockId = 31716,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 75001,
+				blockId = 31715,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 55001,
+				blockId = 31060,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 55002,
+				blockId = 31061,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 55003,
+				blockId = 31062,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 55004,
+				blockId = 31063,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 85001,
+				blockId = 31965,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 85002,
+				blockId = 31966,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 85003,
+				blockId = 31967,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 95001,
+				blockId = 33688,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 95002,
+				blockId = 33689,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 95003,
+				blockId = 33690,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 95004,
+				blockId = 33691,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 205001,
+				blockId = 34406,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 205002,
+				blockId = 34405,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 205003,
+				blockId = 34404,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 215003,
+				blockId = 36069,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 215002,
+				blockId = 36068,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 215001,
+				blockId = 36067,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 225001,
+				blockId = 42385,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 225003,
+				blockId = 42387,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 225004,
+				blockId = 42388,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 235001,
+				blockId = 43253,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 235002,
+				blockId = 43252,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 235003,
+				blockId = 43251,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 245002,
+				blockId = 44535,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 245001,
+				blockId = 44534,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 255001,
+				blockId = 46436,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 255002,
+				blockId = 46437,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 255003,
+				blockId = 46438,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 265002,
+				blockId = 52215,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 265001,
+				blockId = 52216,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 275001,
+				blockId = 53949,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 275002,
+				blockId = 53950,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 275003,
+				blockId = 53951,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 285001,
+				blockId = 55009,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 285002,
+				blockId = 55010,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 285003,
+				blockId = 55011,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 285004,
+				blockId = 55012,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 305002,
+				blockId = 57149,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 305001,
+				blockId = 57148,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 3055001,
+				blockId = 65128,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 3055002,
+				blockId = 65129,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 3055003,
+				blockId = 65130,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 315001,
+				blockId = 68108,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 315002,
+				blockId = 68109,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 325001,
+				blockId = 70111,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 325002,
+				blockId = 70112,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 345001,
+				blockId = 74120,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 345002,
+				blockId = 74121,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 345003,
+				blockId = 74122,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 355001,
+				blockId = 76137,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 355002,
+				blockId = 76138,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 355003,
+				blockId = 76141,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 365001,
+				blockId = 81127,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 385001,
+				blockId = 85051,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 385002,
+				blockId = 85052,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 395001,
+				blockId = 91002,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 395002,
+				blockId = 91003,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 375003,
+				blockId = 83123,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 375004,
+				blockId = 83124,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 375001,
+				blockId = 83121,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 375002,
+				blockId = 83122,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 405001,
+				blockId = 94124,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 405002,
+				blockId = 94125,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 199,
+				blockId = 94126,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 415001,
+				blockId = 96119,
+				mainRes = 5,
+				ownType = 1
+			},
+			{
+				defineId = 415002,
+				blockId = 96120,
+				mainRes = 5,
+				ownType = 1
+			}
+		}
+	},
+	{
+		id = 18,
+		infos = {
+			{
+				defineId = 269,
+				blockId = 11161,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 258,
+				blockId = 12222,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250,
+				blockId = 11142,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 284,
+				blockId = 11176,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 264,
+				blockId = 11156,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 269,
+				blockId = 12237,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 255,
+				blockId = 11147,
+				mainRes = 1,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 22,
+		infos = {
+			{
+				defineId = 251,
+				blockId = 11143,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 258,
+				blockId = 11150,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 256,
+				blockId = 11148,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 257,
+				blockId = 11149,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 262,
+				blockId = 11154,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 274,
+				blockId = 12236,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 263,
+				blockId = 11155,
+				mainRes = 4,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 24,
+		infos = {
+			{
+				defineId = 252,
+				blockId = 11144,
+				mainRes = 6,
+				ownType = 0
+			},
+			{
+				defineId = 284,
+				blockId = 12235,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 264,
+				blockId = 12240,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 282,
+				blockId = 12232,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250,
+				blockId = 12239,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 279,
+				blockId = 12241,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 275,
+				blockId = 12234,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 20,
+		infos = {
+			{
+				defineId = 279,
+				blockId = 11171,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 287,
+				blockId = 11179,
+				mainRes = 6,
+				ownType = 0
+			},
+			{
+				defineId = 253,
+				blockId = 11145,
+				mainRes = 6,
+				ownType = 0
+			},
+			{
+				defineId = 265,
+				blockId = 11157,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 266,
+				blockId = 11158,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 275,
+				blockId = 11167,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 266,
+				blockId = 12230,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 17,
+		infos = {
+			{
+				defineId = 283,
+				blockId = 11175,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 288,
+				blockId = 11180,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 281,
+				blockId = 11173,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 282,
+				blockId = 11174,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 279,
+				blockId = 12227,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 254,
+				blockId = 11146,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 19,
+		infos = {
+			{
+				defineId = 273,
+				blockId = 11165,
+				mainRes = 6,
+				ownType = 0
+			},
+			{
+				defineId = 277,
+				blockId = 11169,
+				mainRes = 6,
+				ownType = 0
+			},
+			{
+				defineId = 276,
+				blockId = 11168,
+				mainRes = 6,
+				ownType = 0
+			},
+			{
+				defineId = 259,
+				blockId = 11151,
+				mainRes = 6,
+				ownType = 0
+			},
+			{
+				defineId = 260,
+				blockId = 11152,
+				mainRes = 6,
+				ownType = 0
+			},
+			{
+				defineId = 261,
+				blockId = 11153,
+				mainRes = 6,
+				ownType = 0
+			},
+			{
+				defineId = 278,
+				blockId = 11170,
+				mainRes = 6,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 21,
+		infos = {
+			{
+				defineId = 270,
+				blockId = 11162,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 271,
+				blockId = 11163,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 272,
+				blockId = 11164,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 267,
+				blockId = 11159,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 268,
+				blockId = 11160,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 274,
+				blockId = 11166,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 256,
+				blockId = 12231,
+				mainRes = 4,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 23,
+		infos = {
+			{
+				defineId = 273,
+				blockId = 12229,
+				mainRes = 6,
+				ownType = 0
+			},
+			{
+				defineId = 278,
+				blockId = 12228,
+				mainRes = 6,
+				ownType = 0
+			},
+			{
+				defineId = 276,
+				blockId = 12233,
+				mainRes = 6,
+				ownType = 0
+			},
+			{
+				defineId = 289,
+				blockId = 11181,
+				mainRes = 6,
+				ownType = 0
+			},
+			{
+				defineId = 280,
+				blockId = 11172,
+				mainRes = 6,
+				ownType = 0
+			},
+			{
+				defineId = 285,
+				blockId = 11177,
+				mainRes = 6,
+				ownType = 0
+			},
+			{
+				defineId = 286,
+				blockId = 11178,
+				mainRes = 6,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 32,
+		infos = {
+			{
+				defineId = 20003,
+				blockId = 12180,
+				mainRes = 7,
+				ownType = 0
+			},
+			{
+				defineId = 20026,
+				blockId = 13343,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 20012,
+				blockId = 13375,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 20008,
+				blockId = 12185,
+				mainRes = 7,
+				ownType = 0
+			},
+			{
+				defineId = 20009,
+				blockId = 12186,
+				mainRes = 7,
+				ownType = 0
+			},
+			{
+				defineId = 20007,
+				blockId = 13391,
+				mainRes = 7,
+				ownType = 0
+			},
+			{
+				defineId = 20021,
+				blockId = 13390,
+				mainRes = 7,
+				ownType = 0
+			},
+			{
+				defineId = 20008,
+				blockId = 13389,
+				mainRes = 7,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 30,
+		infos = {
+			{
+				defineId = 20015,
+				blockId = 12192,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 20046,
+				blockId = 16118,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 20004,
+				blockId = 12181,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 20024,
+				blockId = 16183,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 20018,
+				blockId = 12195,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 20025,
+				blockId = 16184,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 20038,
+				blockId = 13393,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 20037,
+				blockId = 13394,
+				mainRes = 4,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 25,
+		infos = {
+			{
+				defineId = 20006,
+				blockId = 12183,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 20030,
+				blockId = 16110,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 20005,
+				blockId = 12182,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 20013,
+				blockId = 12190,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 20028,
+				blockId = 12205,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 20043,
+				blockId = 12220,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 20021,
+				blockId = 13355,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 20039,
+				blockId = 16112,
+				mainRes = 1,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 31,
+		infos = {
+			{
+				defineId = 20020,
+				blockId = 12197,
+				mainRes = 7,
+				ownType = 0
+			},
+			{
+				defineId = 20035,
+				blockId = 13358,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 20016,
+				blockId = 13374,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 20021,
+				blockId = 12198,
+				mainRes = 7,
+				ownType = 0
+			},
+			{
+				defineId = 20014,
+				blockId = 12191,
+				mainRes = 7,
+				ownType = 0
+			},
+			{
+				defineId = 20007,
+				blockId = 12184,
+				mainRes = 7,
+				ownType = 0
+			},
+			{
+				defineId = 20003,
+				blockId = 13388,
+				mainRes = 7,
+				ownType = 0
+			},
+			{
+				defineId = 20009,
+				blockId = 13387,
+				mainRes = 7,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 28,
+		infos = {
+			{
+				defineId = 20033,
+				blockId = 12210,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 20025,
+				blockId = 12202,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 20024,
+				blockId = 12201,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 20017,
+				blockId = 12194,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 20026,
+				blockId = 12203,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 20023,
+				blockId = 12200,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 20016,
+				blockId = 16111,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 20039,
+				blockId = 12216,
+				mainRes = 4,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 29,
+		infos = {
+			{
+				defineId = 20037,
+				blockId = 12214,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 20038,
+				blockId = 12215,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 20030,
+				blockId = 12207,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 20031,
+				blockId = 12208,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 20022,
+				blockId = 12199,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 20048,
+				blockId = 16117,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 20042,
+				blockId = 12219,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 20031,
+				blockId = 13392,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 26,
+		infos = {
+			{
+				defineId = 20029,
+				blockId = 12206,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 20013,
+				blockId = 13385,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 20004,
+				blockId = 13386,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 20034,
+				blockId = 13357,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 20036,
+				blockId = 13382,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 20043,
+				blockId = 13359,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 20036,
+				blockId = 12213,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 20035,
+				blockId = 12212,
+				mainRes = 1,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 27,
+		infos = {
+			{
+				defineId = 20017,
+				blockId = 13338,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 20017,
+				blockId = 13384,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 20017,
+				blockId = 13361,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 20017,
+				blockId = 13340,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 20017,
+				blockId = 13380,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 20017,
+				blockId = 13383,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 20047,
+				blockId = 16116,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 20045,
+				blockId = 16113,
+				mainRes = 4,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1308,
+		infos = {
+			{
+				defineId = 30048,
+				blockId = 16172,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30049,
+				blockId = 16173,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30050,
+				blockId = 16174,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30003,
+				blockId = 16127,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30006,
+				blockId = 16130,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30062,
+				blockId = 16477,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30063,
+				blockId = 16478,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30056,
+				blockId = 16180,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1301,
+		infos = {
+			{
+				defineId = 30047,
+				blockId = 16171,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30016,
+				blockId = 16140,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30060,
+				blockId = 16464,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30039,
+				blockId = 16466,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30059,
+				blockId = 16465,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30061,
+				blockId = 16463,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30054,
+				blockId = 16178,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30010,
+				blockId = 16132,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1302,
+		infos = {
+			{
+				defineId = 30019,
+				blockId = 16143,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30018,
+				blockId = 16142,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30017,
+				blockId = 16141,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30009,
+				blockId = 16133,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30012,
+				blockId = 16136,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30011,
+				blockId = 16135,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30035,
+				blockId = 16462,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30014,
+				blockId = 16138,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1305,
+		infos = {
+			{
+				defineId = 30039,
+				blockId = 16163,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 30040,
+				blockId = 16164,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 30032,
+				blockId = 16156,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 30031,
+				blockId = 16155,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 30020,
+				blockId = 16144,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 30036,
+				blockId = 16160,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 30029,
+				blockId = 16153,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 30028,
+				blockId = 16152,
+				mainRes = 4,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1306,
+		infos = {
+			{
+				defineId = 30024,
+				blockId = 16148,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 30023,
+				blockId = 16147,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 30025,
+				blockId = 16149,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 30033,
+				blockId = 16157,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 30026,
+				blockId = 16150,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 30027,
+				blockId = 16151,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 30035,
+				blockId = 16159,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 30043,
+				blockId = 16167,
+				mainRes = 4,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1303,
+		infos = {
+			{
+				defineId = 30038,
+				blockId = 16162,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30046,
+				blockId = 16170,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30045,
+				blockId = 16169,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30052,
+				blockId = 16176,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30044,
+				blockId = 16168,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30065,
+				blockId = 16485,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30030,
+				blockId = 16154,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30057,
+				blockId = 16181,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1307,
+		infos = {
+			{
+				defineId = 30041,
+				blockId = 16165,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 30042,
+				blockId = 16166,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 30034,
+				blockId = 16158,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 30067,
+				blockId = 16482,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 30068,
+				blockId = 16483,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 30069,
+				blockId = 16484,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 30043,
+				blockId = 16476,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 30027,
+				blockId = 16475,
+				mainRes = 4,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1304,
+		infos = {
+			{
+				defineId = 30053,
+				blockId = 16177,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30037,
+				blockId = 16161,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30051,
+				blockId = 16175,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30058,
+				blockId = 16472,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30052,
+				blockId = 16473,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30044,
+				blockId = 16470,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30045,
+				blockId = 16469,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 30066,
+				blockId = 16486,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 38,
+		infos = {
+			{
+				defineId = 40032,
+				blockId = 17165,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 40031,
+				blockId = 17164,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 40026,
+				blockId = 17159,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 40017,
+				blockId = 17150,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 40025,
+				blockId = 17158,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 40024,
+				blockId = 17157,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 40001,
+				blockId = 17134,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 36,
+		infos = {
+			{
+				defineId = 40004,
+				blockId = 17137,
+				mainRes = 3,
+				ownType = 0
+			},
+			{
+				defineId = 40036,
+				blockId = 17169,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 40008,
+				blockId = 17141,
+				mainRes = 3,
+				ownType = 0
+			},
+			{
+				defineId = 40012,
+				blockId = 17145,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 40007,
+				blockId = 17140,
+				mainRes = 3,
+				ownType = 0
+			},
+			{
+				defineId = 40003,
+				blockId = 17136,
+				mainRes = 3,
+				ownType = 0
+			},
+			{
+				defineId = 40002,
+				blockId = 17135,
+				mainRes = 3,
+				ownType = 0
+			},
+			{
+				defineId = 40009,
+				blockId = 17142,
+				mainRes = 3,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 40,
+		infos = {
+			{
+				defineId = 40005,
+				blockId = 17138,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 40054,
+				blockId = 17198,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 40040,
+				blockId = 17193,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 40030,
+				blockId = 17191,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 40005,
+				blockId = 17190,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 40010,
+				blockId = 17143,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 40016,
+				blockId = 17149,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 40023,
+				blockId = 17156,
+				mainRes = 4,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 34,
+		infos = {
+			{
+				defineId = 40006,
+				blockId = 17139,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 40019,
+				blockId = 17152,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 40011,
+				blockId = 17144,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 40020,
+				blockId = 17153,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 40014,
+				blockId = 17147,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 40018,
+				blockId = 17151,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 40027,
+				blockId = 17160,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 33,
+		infos = {
+			{
+				defineId = 40035,
+				blockId = 17168,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 40043,
+				blockId = 17176,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 40021,
+				blockId = 17154,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 40042,
+				blockId = 17175,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 40013,
+				blockId = 17146,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 40034,
+				blockId = 17167,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 40028,
+				blockId = 17161,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 35,
+		infos = {
+			{
+				defineId = 40022,
+				blockId = 17194,
+				mainRes = 3,
+				ownType = 0
+			},
+			{
+				defineId = 40036,
+				blockId = 17197,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 40008,
+				blockId = 17196,
+				mainRes = 3,
+				ownType = 0
+			},
+			{
+				defineId = 40004,
+				blockId = 17195,
+				mainRes = 3,
+				ownType = 0
+			},
+			{
+				defineId = 40009,
+				blockId = 17199,
+				mainRes = 3,
+				ownType = 0
+			},
+			{
+				defineId = 40029,
+				blockId = 17162,
+				mainRes = 3,
+				ownType = 0
+			},
+			{
+				defineId = 40022,
+				blockId = 17155,
+				mainRes = 3,
+				ownType = 0
+			},
+			{
+				defineId = 40015,
+				blockId = 17148,
+				mainRes = 3,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 39,
+		infos = {
+			{
+				defineId = 40030,
+				blockId = 17163,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 40046,
+				blockId = 17179,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 40037,
+				blockId = 17170,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 40038,
+				blockId = 17171,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 40039,
+				blockId = 17172,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 40040,
+				blockId = 17173,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 40047,
+				blockId = 17180,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 40054,
+				blockId = 17187,
+				mainRes = 4,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 37,
+		infos = {
+			{
+				defineId = 40050,
+				blockId = 17183,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 40056,
+				blockId = 17189,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 40055,
+				blockId = 17188,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 40049,
+				blockId = 17182,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 40048,
+				blockId = 17181,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 40041,
+				blockId = 17174,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 40033,
+				blockId = 17166,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 42,
+		infos = {
+			{
+				defineId = 40058,
+				blockId = 17202,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 40058,
+				blockId = 17201,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 40057,
+				blockId = 17209,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 40057,
+				blockId = 17208,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 40057,
+				blockId = 17207,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 40044,
+				blockId = 17177,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 40051,
+				blockId = 17184,
+				mainRes = 4,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 41,
+		infos = {
+			{
+				defineId = 40053,
+				blockId = 17186,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 40052,
+				blockId = 17185,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 40045,
+				blockId = 17178,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 40059,
+				blockId = 17204,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 40059,
+				blockId = 17205,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 40059,
+				blockId = 17206,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 40058,
+				blockId = 17203,
+				mainRes = 4,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1501,
+		infos = {
+			{
+				defineId = 50001,
+				blockId = 23169,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50078,
+				blockId = 23253,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50008,
+				blockId = 23250,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50078,
+				blockId = 23249,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50013,
+				blockId = 23181,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50077,
+				blockId = 23248,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50007,
+				blockId = 23175,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50008,
+				blockId = 23176,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50002,
+				blockId = 23170,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50003,
+				blockId = 23171,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1505,
+		infos = {
+			{
+				defineId = 50004,
+				blockId = 23172,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 50015,
+				blockId = 23183,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 50016,
+				blockId = 23184,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 50010,
+				blockId = 23178,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 50018,
+				blockId = 23186,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 50012,
+				blockId = 23180,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 50017,
+				blockId = 23185,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 50011,
+				blockId = 23179,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 50006,
+				blockId = 23174,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 50005,
+				blockId = 23173,
+				mainRes = 1,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1504,
+		infos = {
+			{
+				defineId = 50009,
+				blockId = 23177,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50020,
+				blockId = 23189,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50031,
+				blockId = 23199,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50030,
+				blockId = 23198,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50041,
+				blockId = 23209,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50033,
+				blockId = 23201,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50040,
+				blockId = 23208,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50024,
+				blockId = 23192,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50014,
+				blockId = 23182,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50023,
+				blockId = 23191,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1506,
+		infos = {
+			{
+				defineId = 50019,
+				blockId = 23187,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 50026,
+				blockId = 23246,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50074,
+				blockId = 23242,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 50075,
+				blockId = 23243,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 50076,
+				blockId = 23244,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 50037,
+				blockId = 23245,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 50028,
+				blockId = 23196,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 50027,
+				blockId = 23195,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 50037,
+				blockId = 23205,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 50026,
+				blockId = 23194,
+				mainRes = 1,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1502,
+		infos = {
+			{
+				defineId = 50021,
+				blockId = 23188,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50049,
+				blockId = 23257,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50050,
+				blockId = 23256,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50044,
+				blockId = 23255,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50049,
+				blockId = 23254,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50049,
+				blockId = 23217,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50050,
+				blockId = 23218,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50022,
+				blockId = 23190,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50032,
+				blockId = 23200,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50042,
+				blockId = 23210,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50043,
+				blockId = 23211,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50044,
+				blockId = 23212,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50045,
+				blockId = 23213,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50055,
+				blockId = 23223,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50054,
+				blockId = 23222,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1503,
+		infos = {
+			{
+				defineId = 50025,
+				blockId = 23193,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50029,
+				blockId = 23197,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50039,
+				blockId = 23207,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50034,
+				blockId = 23202,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50035,
+				blockId = 23203,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50036,
+				blockId = 23204,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50038,
+				blockId = 23206,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50046,
+				blockId = 23214,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50047,
+				blockId = 23215,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 50048,
+				blockId = 23216,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1507,
+		infos = {
+			{
+				defineId = 50056,
+				blockId = 23224,
+				mainRes = 8,
+				ownType = 0
+			},
+			{
+				defineId = 50068,
+				blockId = 23236,
+				mainRes = 8,
+				ownType = 0
+			},
+			{
+				defineId = 50058,
+				blockId = 23226,
+				mainRes = 8,
+				ownType = 0
+			},
+			{
+				defineId = 50051,
+				blockId = 23219,
+				mainRes = 8,
+				ownType = 0
+			},
+			{
+				defineId = 50057,
+				blockId = 23225,
+				mainRes = 8,
+				ownType = 0
+			},
+			{
+				defineId = 50052,
+				blockId = 23220,
+				mainRes = 8,
+				ownType = 0
+			},
+			{
+				defineId = 50073,
+				blockId = 23241,
+				mainRes = 8,
+				ownType = 0
+			},
+			{
+				defineId = 50064,
+				blockId = 23232,
+				mainRes = 8,
+				ownType = 0
+			},
+			{
+				defineId = 50065,
+				blockId = 23233,
+				mainRes = 8,
+				ownType = 0
+			},
+			{
+				defineId = 50070,
+				blockId = 23238,
+				mainRes = 8,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1508,
+		infos = {
+			{
+				defineId = 50063,
+				blockId = 23231,
+				mainRes = 8,
+				ownType = 0
+			},
+			{
+				defineId = 50062,
+				blockId = 23230,
+				mainRes = 8,
+				ownType = 0
+			},
+			{
+				defineId = 50067,
+				blockId = 23235,
+				mainRes = 8,
+				ownType = 0
+			},
+			{
+				defineId = 50061,
+				blockId = 23229,
+				mainRes = 8,
+				ownType = 0
+			},
+			{
+				defineId = 50072,
+				blockId = 23240,
+				mainRes = 8,
+				ownType = 0
+			},
+			{
+				defineId = 50069,
+				blockId = 23237,
+				mainRes = 8,
+				ownType = 0
+			},
+			{
+				defineId = 50060,
+				blockId = 23228,
+				mainRes = 8,
+				ownType = 0
+			},
+			{
+				defineId = 50066,
+				blockId = 23234,
+				mainRes = 8,
+				ownType = 0
+			},
+			{
+				defineId = 50059,
+				blockId = 23227,
+				mainRes = 8,
+				ownType = 0
+			},
+			{
+				defineId = 50053,
+				blockId = 23221,
+				mainRes = 8,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1608,
+		infos = {
+			{
+				defineId = 60001,
+				blockId = 31072,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60004,
+				blockId = 31075,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60002,
+				blockId = 31073,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60003,
+				blockId = 31074,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60005,
+				blockId = 31076,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60010,
+				blockId = 31081,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60011,
+				blockId = 31082,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60006,
+				blockId = 31077,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60007,
+				blockId = 31078,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60008,
+				blockId = 31079,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60012,
+				blockId = 31083,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60013,
+				blockId = 31084,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60020,
+				blockId = 31091,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60014,
+				blockId = 31085,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60021,
+				blockId = 31092,
+				mainRes = 1,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1605,
+		infos = {
+			{
+				defineId = 60027,
+				blockId = 31098,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60035,
+				blockId = 31106,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60034,
+				blockId = 31105,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60036,
+				blockId = 31107,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60024,
+				blockId = 31095,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60037,
+				blockId = 31108,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60016,
+				blockId = 31087,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60025,
+				blockId = 31096,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60009,
+				blockId = 31080,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60046,
+				blockId = 31117,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60018,
+				blockId = 31089,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60047,
+				blockId = 31118,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60017,
+				blockId = 31088,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60101,
+				blockId = 31640,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60026,
+				blockId = 31097,
+				mainRes = 1,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1606,
+		infos = {
+			{
+				defineId = 60015,
+				blockId = 31086,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 60100,
+				blockId = 31173,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 60060,
+				blockId = 31174,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 60096,
+				blockId = 31167,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 60100,
+				blockId = 31178,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 60093,
+				blockId = 31164,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 60103,
+				blockId = 31190,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 60088,
+				blockId = 31159,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 60081,
+				blockId = 31152,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 60070,
+				blockId = 31141,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 60022,
+				blockId = 31093,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 60030,
+				blockId = 31101,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 60060,
+				blockId = 31131,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 60061,
+				blockId = 31132,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 60041,
+				blockId = 31112,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 60051,
+				blockId = 31122,
+				mainRes = 4,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1607,
+		infos = {
+			{
+				defineId = 60023,
+				blockId = 31094,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60035,
+				blockId = 31189,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60029,
+				blockId = 31100,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60035,
+				blockId = 31188,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60019,
+				blockId = 31090,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60035,
+				blockId = 31183,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60074,
+				blockId = 31145,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60073,
+				blockId = 31144,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60033,
+				blockId = 31104,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60043,
+				blockId = 31114,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60063,
+				blockId = 31134,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60031,
+				blockId = 31102,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60053,
+				blockId = 31124,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60042,
+				blockId = 31113,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60032,
+				blockId = 31103,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1603,
+		infos = {
+			{
+				defineId = 60028,
+				blockId = 31099,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60045,
+				blockId = 31116,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60050,
+				blockId = 31121,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60069,
+				blockId = 31140,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60039,
+				blockId = 31110,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60049,
+				blockId = 31120,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60057,
+				blockId = 31128,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60082,
+				blockId = 31153,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60040,
+				blockId = 31111,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60071,
+				blockId = 31142,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60052,
+				blockId = 31123,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60059,
+				blockId = 31130,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60062,
+				blockId = 31133,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60072,
+				blockId = 31143,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60083,
+				blockId = 31154,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60039,
+				blockId = 31604,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1601,
+		infos = {
+			{
+				defineId = 60038,
+				blockId = 31109,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60086,
+				blockId = 31157,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60048,
+				blockId = 31119,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60079,
+				blockId = 31150,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60058,
+				blockId = 31129,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60038,
+				blockId = 31182,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60068,
+				blockId = 31139,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60110,
+				blockId = 31637,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60107,
+				blockId = 31635,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60109,
+				blockId = 31636,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60104,
+				blockId = 31633,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60106,
+				blockId = 31634,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60105,
+				blockId = 31632,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60111,
+				blockId = 31639,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60108,
+				blockId = 31630,
+				mainRes = 1,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1604,
+		infos = {
+			{
+				defineId = 60065,
+				blockId = 31136,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60028,
+				blockId = 31179,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60076,
+				blockId = 31147,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60077,
+				blockId = 31148,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60064,
+				blockId = 31135,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60055,
+				blockId = 31126,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60066,
+				blockId = 31137,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60084,
+				blockId = 31155,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60067,
+				blockId = 31138,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60078,
+				blockId = 31149,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60085,
+				blockId = 31156,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60054,
+				blockId = 31125,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60044,
+				blockId = 31115,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60056,
+				blockId = 31127,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60075,
+				blockId = 31146,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1602,
+		infos = {
+			{
+				defineId = 60080,
+				blockId = 31151,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60097,
+				blockId = 31168,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60094,
+				blockId = 31165,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60035,
+				blockId = 31180,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60089,
+				blockId = 31160,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60035,
+				blockId = 31185,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60087,
+				blockId = 31158,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60021,
+				blockId = 31628,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60035,
+				blockId = 31181,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60112,
+				blockId = 31641,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 60091,
+				blockId = 31162,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60092,
+				blockId = 31163,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60098,
+				blockId = 31169,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60095,
+				blockId = 31166,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60090,
+				blockId = 31161,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 60099,
+				blockId = 31170,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1703,
+		infos = {
+			{
+				defineId = 70049,
+				blockId = 31690,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70040,
+				blockId = 31681,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70031,
+				blockId = 31672,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70023,
+				blockId = 31664,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70016,
+				blockId = 31657,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70050,
+				blockId = 31691,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70051,
+				blockId = 31692,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70055,
+				blockId = 31696,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70002,
+				blockId = 31643,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70007,
+				blockId = 31648,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70054,
+				blockId = 31695,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70053,
+				blockId = 31694,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70031,
+				blockId = 31726,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70023,
+				blockId = 31725,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70056,
+				blockId = 31697,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1704,
+		infos = {
+			{
+				defineId = 70047,
+				blockId = 31688,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70038,
+				blockId = 31679,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70029,
+				blockId = 31670,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70021,
+				blockId = 31662,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70014,
+				blockId = 31655,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70008,
+				blockId = 31649,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70003,
+				blockId = 31644,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70046,
+				blockId = 31687,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70016,
+				blockId = 31724,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70010,
+				blockId = 31723,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70005,
+				blockId = 31722,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70050,
+				blockId = 31727,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70051,
+				blockId = 31728,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70005,
+				blockId = 31646,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70010,
+				blockId = 31651,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1705,
+		infos = {
+			{
+				defineId = 70004,
+				blockId = 31645,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 70009,
+				blockId = 31650,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 70015,
+				blockId = 31656,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 70030,
+				blockId = 31671,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 70022,
+				blockId = 31663,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 70048,
+				blockId = 31689,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 70039,
+				blockId = 31680,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 70075,
+				blockId = 31749,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 70074,
+				blockId = 31748,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 70073,
+				blockId = 31747,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 70075,
+				blockId = 31750,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 70074,
+				blockId = 31766,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 70048,
+				blockId = 31737,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 70004,
+				blockId = 31738,
+				mainRes = 4,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1702,
+		infos = {
+			{
+				defineId = 70034,
+				blockId = 31786,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70018,
+				blockId = 31659,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70044,
+				blockId = 31685,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70042,
+				blockId = 31683,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70041,
+				blockId = 31682,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70011,
+				blockId = 31652,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70006,
+				blockId = 31647,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70019,
+				blockId = 31660,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70012,
+				blockId = 31653,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70013,
+				blockId = 31654,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70036,
+				blockId = 31677,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70045,
+				blockId = 31686,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70081,
+				blockId = 31757,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70080,
+				blockId = 31759,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70043,
+				blockId = 31787,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1701,
+		infos = {
+			{
+				defineId = 70024,
+				blockId = 31665,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70043,
+				blockId = 31684,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70032,
+				blockId = 31673,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70034,
+				blockId = 31675,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70025,
+				blockId = 31666,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70033,
+				blockId = 31674,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70017,
+				blockId = 31658,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70026,
+				blockId = 31667,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70035,
+				blockId = 31676,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70020,
+				blockId = 31661,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70027,
+				blockId = 31668,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70028,
+				blockId = 31669,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70082,
+				blockId = 31758,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70080,
+				blockId = 31756,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 70052,
+				blockId = 31693,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1707,
+		infos = {
+			{
+				defineId = 70057,
+				blockId = 31698,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 70064,
+				blockId = 31705,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 70059,
+				blockId = 31700,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 70065,
+				blockId = 31706,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 70066,
+				blockId = 31707,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 70058,
+				blockId = 31699,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 70057,
+				blockId = 31729,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 70065,
+				blockId = 31732,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 70058,
+				blockId = 31730,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 70064,
+				blockId = 31731,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 70071,
+				blockId = 31745,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 70070,
+				blockId = 31744,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 70072,
+				blockId = 31746,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 70065,
+				blockId = 31784,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 70058,
+				blockId = 31783,
+				mainRes = 1,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1708,
+		infos = {
+			{
+				defineId = 70068,
+				blockId = 31709,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 70069,
+				blockId = 31710,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 70062,
+				blockId = 31703,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 70063,
+				blockId = 31704,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 70061,
+				blockId = 31702,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 70067,
+				blockId = 31708,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 70060,
+				blockId = 31701,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 70068,
+				blockId = 31740,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 70068,
+				blockId = 31741,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 70079,
+				blockId = 31755,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 70078,
+				blockId = 31753,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 70077,
+				blockId = 31752,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 70083,
+				blockId = 31765,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 70079,
+				blockId = 31754,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 70068,
+				blockId = 31778,
+				mainRes = 1,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1706,
+		infos = {
+			{
+				defineId = 70001,
+				blockId = 31764,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 70086,
+				blockId = 31774,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 70026,
+				blockId = 31769,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 70084,
+				blockId = 31772,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 70084,
+				blockId = 31767,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 70085,
+				blockId = 31768,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 70004,
+				blockId = 31739,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 70039,
+				blockId = 31736,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 70075,
+				blockId = 31773,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 70009,
+				blockId = 31734,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 70085,
+				blockId = 31771,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 70022,
+				blockId = 31735,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 70086,
+				blockId = 31775,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 70086,
+				blockId = 31776,
+				mainRes = 4,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1804,
+		infos = {
+			{
+				defineId = 80013,
+				blockId = 31905,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80018,
+				blockId = 31910,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80002,
+				blockId = 31894,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80001,
+				blockId = 31893,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80031,
+				blockId = 31923,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80032,
+				blockId = 31924,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80047,
+				blockId = 31939,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80020,
+				blockId = 31912,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80002,
+				blockId = 31981,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80002,
+				blockId = 31973,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80009,
+				blockId = 32481,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80026,
+				blockId = 32483,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80030,
+				blockId = 31922,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80033,
+				blockId = 31925,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1802,
+		infos = {
+			{
+				defineId = 80026,
+				blockId = 31918,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80037,
+				blockId = 31929,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80043,
+				blockId = 31935,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80036,
+				blockId = 31928,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80007,
+				blockId = 31899,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80009,
+				blockId = 31900,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80010,
+				blockId = 31902,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80003,
+				blockId = 31895,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80002,
+				blockId = 31974,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80002,
+				blockId = 31982,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80002,
+				blockId = 31970,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80010,
+				blockId = 32482,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80002,
+				blockId = 31979,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80015,
+				blockId = 31907,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1801,
+		infos = {
+			{
+				defineId = 80046,
+				blockId = 31938,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80050,
+				blockId = 31942,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80057,
+				blockId = 31949,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80002,
+				blockId = 31978,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80063,
+				blockId = 31955,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80022,
+				blockId = 31914,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80025,
+				blockId = 31917,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80022,
+				blockId = 32484,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80044,
+				blockId = 31936,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80035,
+				blockId = 31927,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80016,
+				blockId = 31908,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80004,
+				blockId = 31896,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80017,
+				blockId = 31909,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80002,
+				blockId = 31980,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1803,
+		infos = {
+			{
+				defineId = 80039,
+				blockId = 31931,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80041,
+				blockId = 31933,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80054,
+				blockId = 31946,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80023,
+				blockId = 31915,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80008,
+				blockId = 31901,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80006,
+				blockId = 31898,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80005,
+				blockId = 31897,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80011,
+				blockId = 31903,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80021,
+				blockId = 31913,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80058,
+				blockId = 31950,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80014,
+				blockId = 31906,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80049,
+				blockId = 31941,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80066,
+				blockId = 32477,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80002,
+				blockId = 31977,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1805,
+		infos = {
+			{
+				defineId = 80038,
+				blockId = 31930,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80042,
+				blockId = 31934,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80053,
+				blockId = 31945,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80052,
+				blockId = 31944,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80051,
+				blockId = 31943,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80045,
+				blockId = 31937,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80034,
+				blockId = 31926,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80029,
+				blockId = 31921,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80019,
+				blockId = 31911,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80012,
+				blockId = 31904,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80067,
+				blockId = 32478,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80019,
+				blockId = 32485,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80038,
+				blockId = 32486,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80002,
+				blockId = 31971,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1807,
+		infos = {
+			{
+				defineId = 80024,
+				blockId = 31916,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80040,
+				blockId = 31932,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80056,
+				blockId = 31948,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80055,
+				blockId = 31947,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80027,
+				blockId = 31919,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80028,
+				blockId = 31920,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80059,
+				blockId = 31951,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80060,
+				blockId = 31952,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80061,
+				blockId = 31953,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80062,
+				blockId = 31954,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80002,
+				blockId = 31976,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80002,
+				blockId = 31975,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80048,
+				blockId = 31940,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80002,
+				blockId = 31969,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1806,
+		infos = {
+			{
+				defineId = 80052,
+				blockId = 31964,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80065,
+				blockId = 31962,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80064,
+				blockId = 31963,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80052,
+				blockId = 31961,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80065,
+				blockId = 31958,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80064,
+				blockId = 31957,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80053,
+				blockId = 31959,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80053,
+				blockId = 31960,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80064,
+				blockId = 31968,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80069,
+				blockId = 32480,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80049,
+				blockId = 32487,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80068,
+				blockId = 32479,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80002,
+				blockId = 31972,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 80064,
+				blockId = 31956,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1902,
+		infos = {
+			{
+				defineId = 90054,
+				blockId = 32548,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90046,
+				blockId = 32540,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90045,
+				blockId = 32539,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90035,
+				blockId = 32529,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90025,
+				blockId = 32519,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90036,
+				blockId = 32530,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90037,
+				blockId = 32531,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90026,
+				blockId = 32520,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90017,
+				blockId = 32511,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90016,
+				blockId = 32510,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90008,
+				blockId = 32502,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90009,
+				blockId = 32503,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90033,
+				blockId = 32571,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90009,
+				blockId = 32494,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90081,
+				blockId = 33697,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1907,
+		infos = {
+			{
+				defineId = 90074,
+				blockId = 33683,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90075,
+				blockId = 33682,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90073,
+				blockId = 32567,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90074,
+				blockId = 33681,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90074,
+				blockId = 33680,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90074,
+				blockId = 33679,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90074,
+				blockId = 33678,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90075,
+				blockId = 33677,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90027,
+				blockId = 32521,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90074,
+				blockId = 33676,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90074,
+				blockId = 33675,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90075,
+				blockId = 32570,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90074,
+				blockId = 32568,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90074,
+				blockId = 32569,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90001,
+				blockId = 32495,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1905,
+		infos = {
+			{
+				defineId = 90012,
+				blockId = 32506,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90004,
+				blockId = 32499,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90013,
+				blockId = 32507,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90005,
+				blockId = 32498,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90014,
+				blockId = 32508,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90006,
+				blockId = 32497,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90015,
+				blockId = 32509,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90007,
+				blockId = 32496,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90069,
+				blockId = 32563,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90063,
+				blockId = 32557,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90064,
+				blockId = 32558,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90057,
+				blockId = 32551,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90079,
+				blockId = 33699,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90077,
+				blockId = 33701,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90078,
+				blockId = 33700,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1904,
+		infos = {
+			{
+				defineId = 90056,
+				blockId = 32550,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90049,
+				blockId = 32543,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90048,
+				blockId = 32542,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90040,
+				blockId = 32534,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90039,
+				blockId = 32533,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90030,
+				blockId = 32524,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90029,
+				blockId = 32523,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90019,
+				blockId = 32513,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90011,
+				blockId = 32505,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90010,
+				blockId = 32504,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90003,
+				blockId = 32500,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90018,
+				blockId = 32512,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90080,
+				blockId = 33698,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90082,
+				blockId = 33696,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90083,
+				blockId = 33695,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1906,
+		infos = {
+			{
+				defineId = 90062,
+				blockId = 32556,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90074,
+				blockId = 32549,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90074,
+				blockId = 32541,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90038,
+				blockId = 32532,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90074,
+				blockId = 32522,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90075,
+				blockId = 32825,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90074,
+				blockId = 32826,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90002,
+				blockId = 32501,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90075,
+				blockId = 32827,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90074,
+				blockId = 32831,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90074,
+				blockId = 32832,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90074,
+				blockId = 32833,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90075,
+				blockId = 33686,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90074,
+				blockId = 33685,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90074,
+				blockId = 33684,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1901,
+		infos = {
+			{
+				defineId = 90058,
+				blockId = 32552,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90050,
+				blockId = 32544,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90041,
+				blockId = 32535,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90031,
+				blockId = 32525,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90020,
+				blockId = 32514,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90021,
+				blockId = 32515,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90022,
+				blockId = 32516,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90023,
+				blockId = 32517,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90024,
+				blockId = 32518,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90034,
+				blockId = 32528,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90043,
+				blockId = 32537,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90051,
+				blockId = 32545,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90042,
+				blockId = 32536,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90032,
+				blockId = 32526,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90033,
+				blockId = 32527,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 1903,
+		infos = {
+			{
+				defineId = 90070,
+				blockId = 32564,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90065,
+				blockId = 32559,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90059,
+				blockId = 32553,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90052,
+				blockId = 32546,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90044,
+				blockId = 32538,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90053,
+				blockId = 32547,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90060,
+				blockId = 32554,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90066,
+				blockId = 32560,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90071,
+				blockId = 32565,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90072,
+				blockId = 32566,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90067,
+				blockId = 32561,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90061,
+				blockId = 32555,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90086,
+				blockId = 33692,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90084,
+				blockId = 33694,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 90085,
+				blockId = 33693,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2004,
+		infos = {
+			{
+				defineId = 200008,
+				blockId = 34311,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200009,
+				blockId = 34312,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200010,
+				blockId = 34313,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200013,
+				blockId = 34316,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200026,
+				blockId = 34329,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200027,
+				blockId = 34330,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200012,
+				blockId = 34315,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200011,
+				blockId = 34314,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200002,
+				blockId = 34305,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200001,
+				blockId = 34304,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200003,
+				blockId = 34306,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200004,
+				blockId = 34307,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200022,
+				blockId = 35106,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2003,
+		infos = {
+			{
+				defineId = 200052,
+				blockId = 34355,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200039,
+				blockId = 34343,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200037,
+				blockId = 34341,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200035,
+				blockId = 34338,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200036,
+				blockId = 34339,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200019,
+				blockId = 34322,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200020,
+				blockId = 34323,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200021,
+				blockId = 34324,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200017,
+				blockId = 34320,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200018,
+				blockId = 34321,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200005,
+				blockId = 34308,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200006,
+				blockId = 34309,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2005,
+		infos = {
+			{
+				defineId = 200007,
+				blockId = 34310,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200016,
+				blockId = 34319,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200034,
+				blockId = 34337,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200029,
+				blockId = 34325,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200015,
+				blockId = 34318,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200014,
+				blockId = 34317,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200024,
+				blockId = 34327,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200023,
+				blockId = 34326,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200033,
+				blockId = 34336,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200040,
+				blockId = 34344,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200032,
+				blockId = 34335,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200031,
+				blockId = 34333,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200031,
+				blockId = 34382,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200025,
+				blockId = 34328,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200029,
+				blockId = 34381,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2006,
+		infos = {
+			{
+				defineId = 200054,
+				blockId = 35100,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200016,
+				blockId = 34383,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200029,
+				blockId = 34332,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200028,
+				blockId = 34331,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200042,
+				blockId = 34345,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200050,
+				blockId = 34353,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200059,
+				blockId = 34362,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200015,
+				blockId = 34384,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200051,
+				blockId = 34354,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200053,
+				blockId = 34356,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200054,
+				blockId = 34357,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200055,
+				blockId = 34358,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2001,
+		infos = {
+			{
+				defineId = 200048,
+				blockId = 34351,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200060,
+				blockId = 34363,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200064,
+				blockId = 34367,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200061,
+				blockId = 34364,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200047,
+				blockId = 34350,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200045,
+				blockId = 34348,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200046,
+				blockId = 34349,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200062,
+				blockId = 34365,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200048,
+				blockId = 35104,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200047,
+				blockId = 35105,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200032,
+				blockId = 35101,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200043,
+				blockId = 34346,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2002,
+		infos = {
+			{
+				defineId = 200057,
+				blockId = 34369,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200069,
+				blockId = 34374,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200068,
+				blockId = 34373,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200067,
+				blockId = 34372,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200073,
+				blockId = 34378,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200070,
+				blockId = 34375,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200071,
+				blockId = 34376,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200072,
+				blockId = 34377,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200067,
+				blockId = 35099,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200058,
+				blockId = 34380,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200072,
+				blockId = 35107,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 200066,
+				blockId = 34379,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2105,
+		infos = {
+			{
+				defineId = 210058,
+				blockId = 36060,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210057,
+				blockId = 36059,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210050,
+				blockId = 36052,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210040,
+				blockId = 36042,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210039,
+				blockId = 36041,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210008,
+				blockId = 36009,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210001,
+				blockId = 36002,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210013,
+				blockId = 36013,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210052,
+				blockId = 36054,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210038,
+				blockId = 36040,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210063,
+				blockId = 36081,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210064,
+				blockId = 36082,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210070,
+				blockId = 36096,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210071,
+				blockId = 36097,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2103,
+		infos = {
+			{
+				defineId = 210055,
+				blockId = 36057,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210035,
+				blockId = 36037,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210051,
+				blockId = 36053,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210007,
+				blockId = 36014,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210017,
+				blockId = 36018,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210006,
+				blockId = 36007,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210002,
+				blockId = 36003,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210005,
+				blockId = 36005,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210004,
+				blockId = 36006,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210060,
+				blockId = 36075,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210062,
+				blockId = 36080,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210061,
+				blockId = 36076,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210049,
+				blockId = 36051,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210004,
+				blockId = 36103,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2104,
+		infos = {
+			{
+				defineId = 210011,
+				blockId = 36012,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210007,
+				blockId = 36008,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210003,
+				blockId = 36004,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210024,
+				blockId = 36026,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210046,
+				blockId = 36048,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210010,
+				blockId = 36011,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210056,
+				blockId = 36058,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210053,
+				blockId = 36055,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210054,
+				blockId = 36056,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210048,
+				blockId = 36078,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210033,
+				blockId = 36079,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210062,
+				blockId = 36077,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210054,
+				blockId = 36100,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210053,
+				blockId = 36101,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2106,
+		infos = {
+			{
+				defineId = 210009,
+				blockId = 36010,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210014,
+				blockId = 36015,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210015,
+				blockId = 36016,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210026,
+				blockId = 36028,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210025,
+				blockId = 36027,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210036,
+				blockId = 36038,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210037,
+				blockId = 36039,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210047,
+				blockId = 36049,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210048,
+				blockId = 36050,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210027,
+				blockId = 36029,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210028,
+				blockId = 36030,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210066,
+				blockId = 36092,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210066,
+				blockId = 36102,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210030,
+				blockId = 36109,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2101,
+		infos = {
+			{
+				defineId = 210034,
+				blockId = 36036,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210045,
+				blockId = 36047,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210022,
+				blockId = 36046,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210033,
+				blockId = 36035,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210019,
+				blockId = 36066,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210032,
+				blockId = 36034,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210021,
+				blockId = 36022,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210043,
+				blockId = 36045,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210021,
+				blockId = 36024,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210016,
+				blockId = 36017,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210067,
+				blockId = 36093,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210068,
+				blockId = 36094,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210059,
+				blockId = 36071,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210012,
+				blockId = 36070,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2102,
+		infos = {
+			{
+				defineId = 210031,
+				blockId = 36033,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210030,
+				blockId = 36032,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210029,
+				blockId = 36031,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210018,
+				blockId = 36019,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210019,
+				blockId = 36020,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210023,
+				blockId = 36065,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210021,
+				blockId = 36064,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210020,
+				blockId = 36062,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210041,
+				blockId = 36063,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210021,
+				blockId = 36023,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210029,
+				blockId = 36074,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210069,
+				blockId = 36095,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210022,
+				blockId = 36072,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 210028,
+				blockId = 36073,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2206,
+		infos = {
+			{
+				defineId = 220003,
+				blockId = 42321,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 220007,
+				blockId = 42325,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 220010,
+				blockId = 42328,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 220017,
+				blockId = 42334,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 220020,
+				blockId = 42337,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 220001,
+				blockId = 42319,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 220002,
+				blockId = 42320,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 220048,
+				blockId = 42422,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 220049,
+				blockId = 42423,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 220049,
+				blockId = 42425,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 220048,
+				blockId = 42424,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 220022,
+				blockId = 42419,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 220016,
+				blockId = 42418,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 220012,
+				blockId = 42416,
+				mainRes = 1,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2205,
+		infos = {
+			{
+				defineId = 220009,
+				blockId = 42394,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 220005,
+				blockId = 42323,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 220008,
+				blockId = 42329,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 220009,
+				blockId = 42327,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 220016,
+				blockId = 42333,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 220019,
+				blockId = 42336,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 220012,
+				blockId = 42330,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 220006,
+				blockId = 42324,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 220009,
+				blockId = 42395,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 220004,
+				blockId = 42322,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 220008,
+				blockId = 42326,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 220021,
+				blockId = 42413,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 220006,
+				blockId = 42414,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 220015,
+				blockId = 42415,
+				mainRes = 1,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2203,
+		infos = {
+			{
+				defineId = 220022,
+				blockId = 42412,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 220029,
+				blockId = 42411,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 220033,
+				blockId = 42410,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 220027,
+				blockId = 42373,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 220028,
+				blockId = 42372,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 220034,
+				blockId = 42366,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 220026,
+				blockId = 42341,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 220025,
+				blockId = 42340,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 220031,
+				blockId = 42363,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 220024,
+				blockId = 42339,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 220013,
+				blockId = 42331,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 220023,
+				blockId = 42338,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 220014,
+				blockId = 42350,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 220014,
+				blockId = 42332,
+				mainRes = 4,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2204,
+		infos = {
+			{
+				defineId = 220014,
+				blockId = 42348,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 220014,
+				blockId = 42349,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 220018,
+				blockId = 42335,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 220014,
+				blockId = 42352,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 220032,
+				blockId = 42362,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 220023,
+				blockId = 42371,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 220025,
+				blockId = 42365,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 220028,
+				blockId = 42368,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 220034,
+				blockId = 42364,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 220034,
+				blockId = 42367,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 220023,
+				blockId = 42370,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 220030,
+				blockId = 42369,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 220050,
+				blockId = 42420,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 220051,
+				blockId = 42421,
+				mainRes = 4,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2201,
+		infos = {
+			{
+				defineId = 220041,
+				blockId = 42357,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 220042,
+				blockId = 42358,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 220041,
+				blockId = 42383,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 220044,
+				blockId = 42393,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 220044,
+				blockId = 42391,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 220044,
+				blockId = 42390,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 220040,
+				blockId = 42359,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 220039,
+				blockId = 42361,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 220053,
+				blockId = 42384,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 220042,
+				blockId = 42382,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 220043,
+				blockId = 42396,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 220037,
+				blockId = 42402,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 220052,
+				blockId = 42401,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 220046,
+				blockId = 42400,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2202,
+		infos = {
+			{
+				defineId = 220044,
+				blockId = 42392,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 220046,
+				blockId = 42375,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 220044,
+				blockId = 42389,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 220044,
+				blockId = 42360,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 220042,
+				blockId = 42374,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 220042,
+				blockId = 42381,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 220047,
+				blockId = 42377,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 220052,
+				blockId = 42376,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 220039,
+				blockId = 42378,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 220038,
+				blockId = 42403,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 220052,
+				blockId = 42406,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 220040,
+				blockId = 42405,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 220037,
+				blockId = 42409,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 220045,
+				blockId = 42408,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2303,
+		infos = {
+			{
+				defineId = 230035,
+				blockId = 43205,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230039,
+				blockId = 43209,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230036,
+				blockId = 43206,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230035,
+				blockId = 43210,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230037,
+				blockId = 43207,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230041,
+				blockId = 43211,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230038,
+				blockId = 43208,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230058,
+				blockId = 43224,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230058,
+				blockId = 43226,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230025,
+				blockId = 43197,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230028,
+				blockId = 43196,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230001,
+				blockId = 43173,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230001,
+				blockId = 43170,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230058,
+				blockId = 43225,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2301,
+		infos = {
+			{
+				defineId = 230001,
+				blockId = 43183,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230014,
+				blockId = 43184,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230014,
+				blockId = 43185,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230014,
+				blockId = 43186,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230017,
+				blockId = 43187,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230001,
+				blockId = 43182,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230001,
+				blockId = 43181,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230010,
+				blockId = 43254,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230009,
+				blockId = 43179,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230006,
+				blockId = 43176,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230007,
+				blockId = 43178,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230005,
+				blockId = 43177,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230005,
+				blockId = 43175,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230001,
+				blockId = 43174,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230001,
+				blockId = 43171,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2302,
+		infos = {
+			{
+				defineId = 230018,
+				blockId = 43188,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230020,
+				blockId = 43190,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230022,
+				blockId = 43192,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230021,
+				blockId = 43191,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230019,
+				blockId = 43189,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230023,
+				blockId = 43193,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230025,
+				blockId = 43200,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230031,
+				blockId = 43201,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230032,
+				blockId = 43202,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230029,
+				blockId = 43199,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230024,
+				blockId = 43194,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230025,
+				blockId = 43195,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230025,
+				blockId = 43203,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230028,
+				blockId = 43198,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230025,
+				blockId = 43204,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2306,
+		infos = {
+			{
+				defineId = 230042,
+				blockId = 43212,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230043,
+				blockId = 43213,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230044,
+				blockId = 43214,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230043,
+				blockId = 43215,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230043,
+				blockId = 43216,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230047,
+				blockId = 43217,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230056,
+				blockId = 43227,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230058,
+				blockId = 43229,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230058,
+				blockId = 43230,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230058,
+				blockId = 43236,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230066,
+				blockId = 43237,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230059,
+				blockId = 43235,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230067,
+				blockId = 43238,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230048,
+				blockId = 43461,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230047,
+				blockId = 43460,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2305,
+		infos = {
+			{
+				defineId = 230046,
+				blockId = 43223,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230052,
+				blockId = 43222,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230043,
+				blockId = 43221,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230050,
+				blockId = 43220,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230057,
+				blockId = 43228,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230042,
+				blockId = 43250,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230043,
+				blockId = 43249,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230048,
+				blockId = 43218,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230044,
+				blockId = 43219,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230058,
+				blockId = 43232,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230060,
+				blockId = 43231,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230058,
+				blockId = 43234,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230060,
+				blockId = 43233,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230070,
+				blockId = 43458,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230043,
+				blockId = 43459,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2304,
+		infos = {
+			{
+				defineId = 230068,
+				blockId = 43239,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230075,
+				blockId = 43925,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230073,
+				blockId = 43244,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230074,
+				blockId = 43245,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230069,
+				blockId = 43240,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230074,
+				blockId = 43246,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230070,
+				blockId = 43241,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230074,
+				blockId = 43247,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230070,
+				blockId = 43242,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230072,
+				blockId = 43243,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230059,
+				blockId = 43248,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230074,
+				blockId = 43923,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230058,
+				blockId = 43456,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230058,
+				blockId = 43457,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 230068,
+				blockId = 43455,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2403,
+		infos = {
+			{
+				defineId = 240001,
+				blockId = 44461,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 240007,
+				blockId = 44472,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 240049,
+				blockId = 44517,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 240022,
+				blockId = 44488,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 240014,
+				blockId = 44479,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 240015,
+				blockId = 44480,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 240006,
+				blockId = 44470,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 240002,
+				blockId = 44462,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 240006,
+				blockId = 44471,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 240002,
+				blockId = 44463,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 240018,
+				blockId = 44484,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 240004,
+				blockId = 44464,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 240026,
+				blockId = 44493,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 240017,
+				blockId = 44483,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 240003,
+				blockId = 44537,
+				mainRes = 4,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2404,
+		infos = {
+			{
+				defineId = 240025,
+				blockId = 44492,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 240024,
+				blockId = 44491,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 240023,
+				blockId = 44490,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 240010,
+				blockId = 44481,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 240011,
+				blockId = 44476,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 240009,
+				blockId = 44474,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 240012,
+				blockId = 44477,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 240008,
+				blockId = 44473,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 240013,
+				blockId = 44478,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 240006,
+				blockId = 44469,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 240002,
+				blockId = 44465,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 240006,
+				blockId = 44468,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 240006,
+				blockId = 44467,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 240010,
+				blockId = 44475,
+				mainRes = 4,
+				ownType = 0
+			},
+			{
+				defineId = 240006,
+				blockId = 44466,
+				mainRes = 4,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2405,
+		infos = {
+			{
+				defineId = 240039,
+				blockId = 44533,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 240039,
+				blockId = 44505,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 240045,
+				blockId = 44513,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 240046,
+				blockId = 44514,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 240047,
+				blockId = 44515,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 240016,
+				blockId = 44482,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 240035,
+				blockId = 44501,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 240019,
+				blockId = 44485,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 240033,
+				blockId = 44499,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 240032,
+				blockId = 44498,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 240034,
+				blockId = 44500,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 240043,
+				blockId = 44511,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 240044,
+				blockId = 44512,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 240036,
+				blockId = 44503,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2406,
+		infos = {
+			{
+				defineId = 240020,
+				blockId = 44486,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 240021,
+				blockId = 44487,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 240029,
+				blockId = 44495,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 240048,
+				blockId = 44516,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 240028,
+				blockId = 44489,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 240031,
+				blockId = 44497,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 240030,
+				blockId = 44496,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 240050,
+				blockId = 44518,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 240027,
+				blockId = 44494,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 240037,
+				blockId = 44510,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 240041,
+				blockId = 44509,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 240038,
+				blockId = 44504,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 240037,
+				blockId = 44502,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 240005,
+				blockId = 44538,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2402,
+		infos = {
+			{
+				defineId = 240060,
+				blockId = 44531,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 240050,
+				blockId = 44529,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 240059,
+				blockId = 44528,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 240052,
+				blockId = 44520,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 240051,
+				blockId = 44519,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 240053,
+				blockId = 44521,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 240055,
+				blockId = 44532,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 240058,
+				blockId = 44526,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 240058,
+				blockId = 44550,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 240058,
+				blockId = 44552,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 240053,
+				blockId = 44545,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 240053,
+				blockId = 44544,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 240058,
+				blockId = 44549,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 240058,
+				blockId = 44554,
+				mainRes = 1,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2401,
+		infos = {
+			{
+				defineId = 240062,
+				blockId = 44530,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 240063,
+				blockId = 44527,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 240056,
+				blockId = 44524,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 240054,
+				blockId = 44522,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 240055,
+				blockId = 44523,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 240058,
+				blockId = 44551,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 240057,
+				blockId = 44525,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 240058,
+				blockId = 44555,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 240053,
+				blockId = 44546,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 240058,
+				blockId = 44547,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 240058,
+				blockId = 44548,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 240058,
+				blockId = 44553,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 240053,
+				blockId = 44570,
+				mainRes = 1,
+				ownType = 0
+			},
+			{
+				defineId = 240055,
+				blockId = 44573,
+				mainRes = 1,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2506,
+		infos = {
+			{
+				defineId = 250006,
+				blockId = 45183,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250005,
+				blockId = 45182,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250004,
+				blockId = 45181,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250008,
+				blockId = 45257,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250009,
+				blockId = 45256,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250006,
+				blockId = 45255,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250006,
+				blockId = 45280,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250007,
+				blockId = 45281,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250008,
+				blockId = 45282,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250008,
+				blockId = 45227,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250010,
+				blockId = 45228,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250004,
+				blockId = 45226,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250001,
+				blockId = 45179,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250001,
+				blockId = 45178,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250001,
+				blockId = 46129,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250001,
+				blockId = 45283,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2503,
+		infos = {
+			{
+				defineId = 250022,
+				blockId = 45196,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250021,
+				blockId = 45195,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250019,
+				blockId = 45193,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250023,
+				blockId = 45184,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250020,
+				blockId = 45194,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250014,
+				blockId = 45188,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250011,
+				blockId = 45180,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250015,
+				blockId = 45189,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250012,
+				blockId = 45187,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250016,
+				blockId = 45190,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250017,
+				blockId = 45191,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250018,
+				blockId = 45192,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250081,
+				blockId = 46434,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250080,
+				blockId = 46433,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250013,
+				blockId = 46435,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2501,
+		infos = {
+			{
+				defineId = 250038,
+				blockId = 45271,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250070,
+				blockId = 45248,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250037,
+				blockId = 45275,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250036,
+				blockId = 45212,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250035,
+				blockId = 45211,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250032,
+				blockId = 45208,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250034,
+				blockId = 45210,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250031,
+				blockId = 45207,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250033,
+				blockId = 45209,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250030,
+				blockId = 45206,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250029,
+				blockId = 45205,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250026,
+				blockId = 45202,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250027,
+				blockId = 45203,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250028,
+				blockId = 45204,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250065,
+				blockId = 45200,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250065,
+				blockId = 45242,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250025,
+				blockId = 45201,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250024,
+				blockId = 45199,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2504,
+		infos = {
+			{
+				defineId = 250052,
+				blockId = 45229,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250053,
+				blockId = 45230,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250056,
+				blockId = 45232,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250062,
+				blockId = 45239,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250055,
+				blockId = 45284,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250063,
+				blockId = 45240,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250061,
+				blockId = 45238,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250060,
+				blockId = 45237,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250057,
+				blockId = 45234,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250059,
+				blockId = 45236,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250058,
+				blockId = 45235,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250054,
+				blockId = 45231,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250055,
+				blockId = 45233,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250055,
+				blockId = 45295,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250055,
+				blockId = 45296,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250055,
+				blockId = 45297,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2505,
+		infos = {
+			{
+				defineId = 250064,
+				blockId = 45247,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250068,
+				blockId = 45246,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250072,
+				blockId = 45250,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250075,
+				blockId = 45253,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250069,
+				blockId = 45254,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250074,
+				blockId = 45252,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250076,
+				blockId = 45276,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250077,
+				blockId = 45277,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250078,
+				blockId = 45278,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250079,
+				blockId = 45279,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250067,
+				blockId = 45273,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250073,
+				blockId = 45274,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250066,
+				blockId = 45272,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250071,
+				blockId = 45249,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250066,
+				blockId = 45243,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250067,
+				blockId = 45245,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2502,
+		infos = {
+			{
+				defineId = 250050,
+				blockId = 45269,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250047,
+				blockId = 45266,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250042,
+				blockId = 45261,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250043,
+				blockId = 45262,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250041,
+				blockId = 45260,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250040,
+				blockId = 45259,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250039,
+				blockId = 45258,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250044,
+				blockId = 45263,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250048,
+				blockId = 45267,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250049,
+				blockId = 45268,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250045,
+				blockId = 45264,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250046,
+				blockId = 45265,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250045,
+				blockId = 45292,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250045,
+				blockId = 45293,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250045,
+				blockId = 45289,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 250051,
+				blockId = 45270,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2601,
+		infos = {
+			{
+				defineId = 260028,
+				blockId = 52155,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260015,
+				blockId = 52142,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260013,
+				blockId = 52140,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260029,
+				blockId = 52158,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260012,
+				blockId = 52139,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260039,
+				blockId = 52172,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260040,
+				blockId = 52173,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260002,
+				blockId = 52129,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260026,
+				blockId = 52223,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260026,
+				blockId = 52217,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260026,
+				blockId = 52222,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260027,
+				blockId = 52224,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260027,
+				blockId = 52218,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260027,
+				blockId = 52219,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260014,
+				blockId = 52141,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2602,
+		infos = {
+			{
+				defineId = 260051,
+				blockId = 52185,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260050,
+				blockId = 52184,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260003,
+				blockId = 52130,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260010,
+				blockId = 52154,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260016,
+				blockId = 52143,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260011,
+				blockId = 52138,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260017,
+				blockId = 52144,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260010,
+				blockId = 52153,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260018,
+				blockId = 52145,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260060,
+				blockId = 52206,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260008,
+				blockId = 52135,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260020,
+				blockId = 52147,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260023,
+				blockId = 52150,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260004,
+				blockId = 52131,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2606,
+		infos = {
+			{
+				defineId = 260005,
+				blockId = 52132,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260006,
+				blockId = 52133,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260007,
+				blockId = 52134,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260021,
+				blockId = 52148,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260022,
+				blockId = 52149,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260059,
+				blockId = 52205,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260059,
+				blockId = 52210,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260059,
+				blockId = 52214,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260059,
+				blockId = 52213,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260059,
+				blockId = 52161,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260059,
+				blockId = 52159,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260059,
+				blockId = 52160,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260010,
+				blockId = 52196,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260038,
+				blockId = 52169,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2603,
+		infos = {
+			{
+				defineId = 260044,
+				blockId = 52178,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260034,
+				blockId = 52167,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260033,
+				blockId = 52165,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260060,
+				blockId = 52207,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260045,
+				blockId = 52179,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260035,
+				blockId = 52168,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260032,
+				blockId = 52164,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260024,
+				blockId = 52151,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260009,
+				blockId = 52136,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260018,
+				blockId = 52195,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260010,
+				blockId = 52194,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260010,
+				blockId = 52199,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260010,
+				blockId = 52198,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260018,
+				blockId = 52201,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2605,
+		infos = {
+			{
+				defineId = 260041,
+				blockId = 52174,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260037,
+				blockId = 52171,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260030,
+				blockId = 52162,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260025,
+				blockId = 52152,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260036,
+				blockId = 52170,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260042,
+				blockId = 52175,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260046,
+				blockId = 52180,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260047,
+				blockId = 52181,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260043,
+				blockId = 52177,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260031,
+				blockId = 52163,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260048,
+				blockId = 52182,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260038,
+				blockId = 52176,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260019,
+				blockId = 52146,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260010,
+				blockId = 52137,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2604,
+		infos = {
+			{
+				defineId = 260054,
+				blockId = 52183,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260052,
+				blockId = 52186,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260058,
+				blockId = 52191,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260053,
+				blockId = 52187,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260057,
+				blockId = 52192,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260056,
+				blockId = 52190,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260054,
+				blockId = 52188,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260054,
+				blockId = 52189,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260049,
+				blockId = 52221,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260055,
+				blockId = 52220,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260016,
+				blockId = 52197,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260043,
+				blockId = 52203,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260009,
+				blockId = 52202,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 260010,
+				blockId = 52193,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2701,
+		infos = {
+			{
+				defineId = 270014,
+				blockId = 53217,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270010,
+				blockId = 53213,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270005,
+				blockId = 53208,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270004,
+				blockId = 53207,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270017,
+				blockId = 53219,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270013,
+				blockId = 53216,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270003,
+				blockId = 53206,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270012,
+				blockId = 53215,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270016,
+				blockId = 53218,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270002,
+				blockId = 53205,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270001,
+				blockId = 53204,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270007,
+				blockId = 53210,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270006,
+				blockId = 53209,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270011,
+				blockId = 53214,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2703,
+		infos = {
+			{
+				defineId = 270007,
+				blockId = 53973,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270010,
+				blockId = 53968,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270025,
+				blockId = 53931,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270033,
+				blockId = 53919,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270032,
+				blockId = 53920,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270026,
+				blockId = 53990,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270017,
+				blockId = 53993,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270017,
+				blockId = 53991,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270031,
+				blockId = 53921,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270028,
+				blockId = 53922,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270017,
+				blockId = 53992,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270010,
+				blockId = 53971,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270017,
+				blockId = 53994,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270017,
+				blockId = 53995,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2704,
+		infos = {
+			{
+				defineId = 270017,
+				blockId = 53996,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270020,
+				blockId = 53962,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270027,
+				blockId = 53923,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270026,
+				blockId = 53924,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270017,
+				blockId = 53997,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270017,
+				blockId = 53998,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270021,
+				blockId = 53928,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270024,
+				blockId = 53925,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270023,
+				blockId = 53926,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270020,
+				blockId = 53929,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270022,
+				blockId = 53927,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270018,
+				blockId = 53963,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270019,
+				blockId = 53930,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270017,
+				blockId = 53961,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2702,
+		infos = {
+			{
+				defineId = 270017,
+				blockId = 53982,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270017,
+				blockId = 53983,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270036,
+				blockId = 53979,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270029,
+				blockId = 53933,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270030,
+				blockId = 53932,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270035,
+				blockId = 53980,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270017,
+				blockId = 53984,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270035,
+				blockId = 53981,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270034,
+				blockId = 53977,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270034,
+				blockId = 53978,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270017,
+				blockId = 53986,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270017,
+				blockId = 53985,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270029,
+				blockId = 53988,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270017,
+				blockId = 53987,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2706,
+		infos = {
+			{
+				defineId = 270008,
+				blockId = 54248,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270024,
+				blockId = 54244,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270020,
+				blockId = 54240,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270019,
+				blockId = 54241,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270016,
+				blockId = 54245,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270008,
+				blockId = 54249,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270008,
+				blockId = 54250,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270010,
+				blockId = 54246,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270022,
+				blockId = 54242,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270027,
+				blockId = 54247,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270015,
+				blockId = 54243,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270020,
+				blockId = 54252,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270008,
+				blockId = 54251,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2705,
+		infos = {
+			{
+				defineId = 270017,
+				blockId = 54264,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270017,
+				blockId = 54265,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270022,
+				blockId = 54256,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270017,
+				blockId = 54260,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270017,
+				blockId = 54263,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270033,
+				blockId = 54255,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270017,
+				blockId = 54259,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270025,
+				blockId = 54254,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270031,
+				blockId = 54253,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270020,
+				blockId = 54257,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270024,
+				blockId = 54258,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270017,
+				blockId = 54261,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 270017,
+				blockId = 54262,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2801,
+		infos = {
+			{
+				defineId = 280004,
+				blockId = 54932,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280033,
+				blockId = 54977,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280033,
+				blockId = 54978,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280005,
+				blockId = 54933,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280006,
+				blockId = 54934,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280002,
+				blockId = 54930,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280005,
+				blockId = 54979,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280003,
+				blockId = 54931,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280001,
+				blockId = 54929,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280033,
+				blockId = 54980,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280034,
+				blockId = 54982,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280034,
+				blockId = 54983,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280033,
+				blockId = 54981,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280006,
+				blockId = 55004,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280004,
+				blockId = 55000,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2802,
+		infos = {
+			{
+				defineId = 280016,
+				blockId = 54944,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280019,
+				blockId = 54939,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280014,
+				blockId = 54942,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280007,
+				blockId = 54935,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280008,
+				blockId = 54936,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280018,
+				blockId = 54940,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280017,
+				blockId = 54943,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280015,
+				blockId = 54945,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280012,
+				blockId = 54946,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280011,
+				blockId = 54947,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280013,
+				blockId = 54941,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280010,
+				blockId = 54938,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280009,
+				blockId = 54937,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280012,
+				blockId = 55003,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280017,
+				blockId = 55002,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2803,
+		infos = {
+			{
+				defineId = 280025,
+				blockId = 54958,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280025,
+				blockId = 54960,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280022,
+				blockId = 54962,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280027,
+				blockId = 54956,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280020,
+				blockId = 54953,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280026,
+				blockId = 54955,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280023,
+				blockId = 54950,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280025,
+				blockId = 54959,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280025,
+				blockId = 54954,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280024,
+				blockId = 54949,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280025,
+				blockId = 54963,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280025,
+				blockId = 54961,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280028,
+				blockId = 54957,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280025,
+				blockId = 55005,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280025,
+				blockId = 55006,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 2804,
+		infos = {
+			{
+				defineId = 280032,
+				blockId = 54974,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280032,
+				blockId = 54976,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280032,
+				blockId = 54975,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280032,
+				blockId = 54970,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280032,
+				blockId = 54971,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280030,
+				blockId = 54972,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280029,
+				blockId = 54964,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280031,
+				blockId = 54966,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280032,
+				blockId = 54967,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280030,
+				blockId = 54965,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280032,
+				blockId = 54968,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280031,
+				blockId = 54973,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280032,
+				blockId = 54969,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280032,
+				blockId = 55008,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 280030,
+				blockId = 55007,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3001,
+		infos = {
+			{
+				defineId = 300026,
+				blockId = 57194,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300025,
+				blockId = 57191,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300015,
+				blockId = 57188,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300020,
+				blockId = 57186,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300024,
+				blockId = 57182,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300022,
+				blockId = 57193,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300021,
+				blockId = 57192,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300027,
+				blockId = 57196,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300016,
+				blockId = 57195,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300028,
+				blockId = 57197,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300029,
+				blockId = 57181,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300018,
+				blockId = 57190,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300017,
+				blockId = 57185,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300023,
+				blockId = 57179,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300019,
+				blockId = 57187,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3002,
+		infos = {
+			{
+				defineId = 300030,
+				blockId = 57250,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300032,
+				blockId = 57199,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300033,
+				blockId = 57205,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300034,
+				blockId = 57203,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300035,
+				blockId = 57206,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300031,
+				blockId = 57204,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300037,
+				blockId = 57211,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300040,
+				blockId = 57202,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300038,
+				blockId = 57209,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300043,
+				blockId = 57214,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300039,
+				blockId = 57212,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300042,
+				blockId = 57213,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300036,
+				blockId = 57216,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300041,
+				blockId = 57217,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300044,
+				blockId = 57218,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3003,
+		infos = {
+			{
+				defineId = 300007,
+				blockId = 57231,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300011,
+				blockId = 57230,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300007,
+				blockId = 57229,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300007,
+				blockId = 57232,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300007,
+				blockId = 57233,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300013,
+				blockId = 57228,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300002,
+				blockId = 57227,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300014,
+				blockId = 57222,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300012,
+				blockId = 57224,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300007,
+				blockId = 57226,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300007,
+				blockId = 57225,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300007,
+				blockId = 57249,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300008,
+				blockId = 57221,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300006,
+				blockId = 57220,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300001,
+				blockId = 57219,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3004,
+		infos = {
+			{
+				defineId = 300007,
+				blockId = 57248,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300007,
+				blockId = 57243,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300007,
+				blockId = 57244,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300008,
+				blockId = 57242,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300007,
+				blockId = 57241,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300011,
+				blockId = 57234,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300009,
+				blockId = 57235,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300007,
+				blockId = 57247,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300004,
+				blockId = 57245,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300003,
+				blockId = 57236,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300005,
+				blockId = 57240,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300007,
+				blockId = 57239,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300010,
+				blockId = 57238,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300002,
+				blockId = 57237,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 300007,
+				blockId = 57246,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 30501,
+		infos = {
+			{
+				defineId = 3050015,
+				blockId = 65077,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050005,
+				blockId = 65068,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050004,
+				blockId = 65067,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050008,
+				blockId = 65070,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050006,
+				blockId = 65078,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050014,
+				blockId = 65076,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050007,
+				blockId = 65069,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050003,
+				blockId = 65066,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050013,
+				blockId = 65075,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050002,
+				blockId = 65065,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050011,
+				blockId = 65073,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050010,
+				blockId = 65071,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050001,
+				blockId = 65064,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050009,
+				blockId = 65074,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050012,
+				blockId = 65072,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 30502,
+		infos = {
+			{
+				defineId = 3050016,
+				blockId = 65092,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050027,
+				blockId = 65088,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050017,
+				blockId = 65089,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050020,
+				blockId = 65091,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050020,
+				blockId = 65090,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050026,
+				blockId = 65084,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050018,
+				blockId = 65079,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050029,
+				blockId = 65086,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050028,
+				blockId = 65087,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050021,
+				blockId = 65083,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050022,
+				blockId = 65082,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050023,
+				blockId = 65081,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050025,
+				blockId = 65093,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050024,
+				blockId = 65080,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050030,
+				blockId = 65085,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 30503,
+		infos = {
+			{
+				defineId = 3050036,
+				blockId = 65101,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050036,
+				blockId = 65105,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050031,
+				blockId = 65108,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050038,
+				blockId = 65094,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050039,
+				blockId = 65098,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050036,
+				blockId = 65102,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050041,
+				blockId = 65103,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050032,
+				blockId = 65099,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050033,
+				blockId = 65095,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050034,
+				blockId = 65096,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050036,
+				blockId = 65100,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050035,
+				blockId = 65097,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050036,
+				blockId = 65107,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050037,
+				blockId = 65106,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050038,
+				blockId = 65104,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 30504,
+		infos = {
+			{
+				defineId = 3050036,
+				blockId = 65117,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050047,
+				blockId = 65121,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050042,
+				blockId = 65116,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050045,
+				blockId = 65109,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050043,
+				blockId = 65113,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050035,
+				blockId = 65112,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050041,
+				blockId = 65115,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050044,
+				blockId = 65110,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050045,
+				blockId = 65120,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050043,
+				blockId = 65119,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050046,
+				blockId = 65111,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050040,
+				blockId = 65122,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050045,
+				blockId = 65123,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050047,
+				blockId = 65118,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3050045,
+				blockId = 65114,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3101,
+		infos = {
+			{
+				defineId = 310007,
+				blockId = 68051,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310006,
+				blockId = 68050,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310003,
+				blockId = 68048,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310002,
+				blockId = 68046,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310003,
+				blockId = 68047,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310001,
+				blockId = 68094,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310004,
+				blockId = 68100,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310003,
+				blockId = 68099,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310006,
+				blockId = 68052,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310005,
+				blockId = 68095,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310001,
+				blockId = 68045,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310005,
+				blockId = 68049,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310003,
+				blockId = 68096,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310002,
+				blockId = 68097,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310003,
+				blockId = 68098,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3102,
+		infos = {
+			{
+				defineId = 310018,
+				blockId = 68063,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310017,
+				blockId = 68062,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310016,
+				blockId = 68061,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310035,
+				blockId = 68102,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310011,
+				blockId = 68056,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310010,
+				blockId = 68055,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310014,
+				blockId = 68059,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310009,
+				blockId = 68101,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310015,
+				blockId = 68060,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310012,
+				blockId = 68057,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310008,
+				blockId = 68053,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310009,
+				blockId = 68054,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310013,
+				blockId = 68058,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310009,
+				blockId = 68103,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310015,
+				blockId = 68104,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3103,
+		infos = {
+			{
+				defineId = 310034,
+				blockId = 68093,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310034,
+				blockId = 68079,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310030,
+				blockId = 68075,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310029,
+				blockId = 68074,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310033,
+				blockId = 68078,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310022,
+				blockId = 68067,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310020,
+				blockId = 68065,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310021,
+				blockId = 68066,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310032,
+				blockId = 68077,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310034,
+				blockId = 68091,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310031,
+				blockId = 68076,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310019,
+				blockId = 68064,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310034,
+				blockId = 68089,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310034,
+				blockId = 68090,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310034,
+				blockId = 68092,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3104,
+		infos = {
+			{
+				defineId = 310025,
+				blockId = 68070,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310033,
+				blockId = 68081,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310034,
+				blockId = 68087,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310034,
+				blockId = 68086,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310034,
+				blockId = 68088,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310034,
+				blockId = 68085,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310030,
+				blockId = 68080,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310033,
+				blockId = 68082,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310034,
+				blockId = 68083,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310028,
+				blockId = 68073,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310027,
+				blockId = 68072,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310034,
+				blockId = 68084,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310026,
+				blockId = 68071,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310024,
+				blockId = 68068,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 310023,
+				blockId = 68069,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3201,
+		infos = {
+			{
+				defineId = 320014,
+				blockId = 70064,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320003,
+				blockId = 70057,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320005,
+				blockId = 70053,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320010,
+				blockId = 70060,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320004,
+				blockId = 70052,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320011,
+				blockId = 70061,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320013,
+				blockId = 70058,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320012,
+				blockId = 70059,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320015,
+				blockId = 70062,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320006,
+				blockId = 70056,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320002,
+				blockId = 70054,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320008,
+				blockId = 70055,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320001,
+				blockId = 70063,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320009,
+				blockId = 70065,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320007,
+				blockId = 70051,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3202,
+		infos = {
+			{
+				defineId = 320028,
+				blockId = 70077,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320027,
+				blockId = 70071,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320017,
+				blockId = 70066,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320018,
+				blockId = 70068,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320030,
+				blockId = 70080,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320021,
+				blockId = 70078,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320029,
+				blockId = 70079,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320022,
+				blockId = 70072,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320020,
+				blockId = 70070,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320016,
+				blockId = 70067,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320019,
+				blockId = 70069,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320026,
+				blockId = 70076,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320023,
+				blockId = 70075,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320025,
+				blockId = 70073,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320024,
+				blockId = 70074,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3204,
+		infos = {
+			{
+				defineId = 320037,
+				blockId = 70090,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320034,
+				blockId = 70093,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320038,
+				blockId = 70091,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320039,
+				blockId = 70092,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320034,
+				blockId = 70084,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320035,
+				blockId = 70087,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320038,
+				blockId = 70089,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320038,
+				blockId = 70086,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320033,
+				blockId = 70083,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320032,
+				blockId = 70082,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320031,
+				blockId = 70081,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320035,
+				blockId = 70085,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320034,
+				blockId = 70095,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320034,
+				blockId = 70094,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320033,
+				blockId = 70088,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3203,
+		infos = {
+			{
+				defineId = 320031,
+				blockId = 70098,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320032,
+				blockId = 70109,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320031,
+				blockId = 70110,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320033,
+				blockId = 70108,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320034,
+				blockId = 70107,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320035,
+				blockId = 70106,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320037,
+				blockId = 70105,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320039,
+				blockId = 70100,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320035,
+				blockId = 70104,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320037,
+				blockId = 70102,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320036,
+				blockId = 70103,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320036,
+				blockId = 70096,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320034,
+				blockId = 70099,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320039,
+				blockId = 70101,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 320032,
+				blockId = 70097,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3302,
+		infos = {
+			{
+				defineId = 330040,
+				blockId = 72077,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330043,
+				blockId = 72045,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330034,
+				blockId = 72106,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330035,
+				blockId = 72071,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330037,
+				blockId = 72069,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330028,
+				blockId = 72035,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330044,
+				blockId = 72107,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330038,
+				blockId = 72063,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330029,
+				blockId = 72064,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330030,
+				blockId = 72065,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330031,
+				blockId = 72066,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330036,
+				blockId = 72070,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330045,
+				blockId = 72044,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330032,
+				blockId = 72067,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330039,
+				blockId = 72046,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3301,
+		infos = {
+			{
+				defineId = 330026,
+				blockId = 72105,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330025,
+				blockId = 72060,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330021,
+				blockId = 72056,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330020,
+				blockId = 72055,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330016,
+				blockId = 72051,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330026,
+				blockId = 72061,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330022,
+				blockId = 72057,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330017,
+				blockId = 72052,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330018,
+				blockId = 72053,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330019,
+				blockId = 72054,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330023,
+				blockId = 72058,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330027,
+				blockId = 72062,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330022,
+				blockId = 72103,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330024,
+				blockId = 72059,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330023,
+				blockId = 72104,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3303,
+		infos = {
+			{
+				defineId = 330009,
+				blockId = 72116,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330014,
+				blockId = 72122,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330013,
+				blockId = 72118,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330007,
+				blockId = 72115,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330010,
+				blockId = 72117,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330014,
+				blockId = 72119,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330003,
+				blockId = 72110,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330002,
+				blockId = 72111,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330001,
+				blockId = 72112,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330007,
+				blockId = 72113,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330014,
+				blockId = 72120,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330001,
+				blockId = 72123,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330005,
+				blockId = 72114,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330003,
+				blockId = 72121,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330006,
+				blockId = 72124,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3304,
+		infos = {
+			{
+				defineId = 330014,
+				blockId = 72139,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330004,
+				blockId = 72130,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330014,
+				blockId = 72137,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330008,
+				blockId = 72125,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330002,
+				blockId = 72135,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330010,
+				blockId = 72134,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330011,
+				blockId = 72126,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330015,
+				blockId = 72128,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330015,
+				blockId = 72129,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330012,
+				blockId = 72127,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330009,
+				blockId = 72132,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330011,
+				blockId = 72133,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330012,
+				blockId = 72136,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330004,
+				blockId = 72131,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 330014,
+				blockId = 72138,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3401,
+		infos = {
+			{
+				defineId = 340010,
+				blockId = 74067,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340006,
+				blockId = 74063,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340009,
+				blockId = 74066,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340008,
+				blockId = 74065,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340005,
+				blockId = 74062,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340004,
+				blockId = 74061,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340007,
+				blockId = 74064,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340013,
+				blockId = 74070,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340002,
+				blockId = 74057,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340002,
+				blockId = 74059,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340003,
+				blockId = 74060,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340012,
+				blockId = 74069,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340014,
+				blockId = 74071,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340011,
+				blockId = 74068,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340001,
+				blockId = 74072,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3402,
+		infos = {
+			{
+				defineId = 340032,
+				blockId = 74076,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340033,
+				blockId = 74077,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340030,
+				blockId = 74074,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340031,
+				blockId = 74075,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340037,
+				blockId = 74081,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340038,
+				blockId = 74082,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340039,
+				blockId = 74083,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340029,
+				blockId = 74073,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340034,
+				blockId = 74078,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340040,
+				blockId = 74084,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340041,
+				blockId = 74085,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340043,
+				blockId = 74087,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340036,
+				blockId = 74080,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340042,
+				blockId = 74086,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340035,
+				blockId = 74079,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3403,
+		infos = {
+			{
+				defineId = 340024,
+				blockId = 74102,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340023,
+				blockId = 74101,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340026,
+				blockId = 74118,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340027,
+				blockId = 74095,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340027,
+				blockId = 74096,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340018,
+				blockId = 74097,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340021,
+				blockId = 74091,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340026,
+				blockId = 74094,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340016,
+				blockId = 74092,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340026,
+				blockId = 74088,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340026,
+				blockId = 74093,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340022,
+				blockId = 74098,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340025,
+				blockId = 74099,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340019,
+				blockId = 74090,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340028,
+				blockId = 74089,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3404,
+		infos = {
+			{
+				defineId = 340027,
+				blockId = 74109,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340019,
+				blockId = 74110,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340027,
+				blockId = 74100,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340017,
+				blockId = 74111,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340016,
+				blockId = 74106,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340027,
+				blockId = 74115,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340027,
+				blockId = 74103,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340017,
+				blockId = 74116,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340025,
+				blockId = 74105,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340020,
+				blockId = 74117,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340044,
+				blockId = 74114,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340044,
+				blockId = 74113,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340023,
+				blockId = 74104,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340024,
+				blockId = 74108,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 340025,
+				blockId = 74107,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3501,
+		infos = {
+			{
+				defineId = 350015,
+				blockId = 76092,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350014,
+				blockId = 76091,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350011,
+				blockId = 76088,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350012,
+				blockId = 76089,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350013,
+				blockId = 76090,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350003,
+				blockId = 76080,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350008,
+				blockId = 76085,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350004,
+				blockId = 76081,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350005,
+				blockId = 76082,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350009,
+				blockId = 76086,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350007,
+				blockId = 76084,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350006,
+				blockId = 76083,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350001,
+				blockId = 76078,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350002,
+				blockId = 76079,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350010,
+				blockId = 76087,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3502,
+		infos = {
+			{
+				defineId = 350026,
+				blockId = 76102,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350021,
+				blockId = 76097,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350020,
+				blockId = 76096,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350025,
+				blockId = 76101,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350028,
+				blockId = 76106,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350024,
+				blockId = 76100,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350019,
+				blockId = 76095,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350018,
+				blockId = 76094,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350028,
+				blockId = 76099,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350029,
+				blockId = 76105,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350027,
+				blockId = 76104,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350017,
+				blockId = 76103,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350022,
+				blockId = 76098,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350016,
+				blockId = 76093,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3503,
+		infos = {
+			{
+				defineId = 350042,
+				blockId = 76127,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350049,
+				blockId = 76128,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350034,
+				blockId = 76118,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350050,
+				blockId = 76130,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350037,
+				blockId = 76120,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350033,
+				blockId = 76109,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350041,
+				blockId = 76117,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350035,
+				blockId = 76119,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350039,
+				blockId = 76115,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350040,
+				blockId = 76116,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350050,
+				blockId = 76129,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350031,
+				blockId = 76107,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350032,
+				blockId = 76108,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350048,
+				blockId = 76126,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350038,
+				blockId = 76121,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3504,
+		infos = {
+			{
+				defineId = 350046,
+				blockId = 76124,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350038,
+				blockId = 76114,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350034,
+				blockId = 76110,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350035,
+				blockId = 76111,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350048,
+				blockId = 76125,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350051,
+				blockId = 76134,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350042,
+				blockId = 76122,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350050,
+				blockId = 76135,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350050,
+				blockId = 76136,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350040,
+				blockId = 76131,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350031,
+				blockId = 76132,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350039,
+				blockId = 76133,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350045,
+				blockId = 76113,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350046,
+				blockId = 76123,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 350036,
+				blockId = 76112,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3601,
+		infos = {
+			{
+				defineId = 360005,
+				blockId = 81081,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360009,
+				blockId = 81080,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360001,
+				blockId = 81075,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360001,
+				blockId = 81076,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360006,
+				blockId = 81077,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360007,
+				blockId = 81078,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360004,
+				blockId = 81074,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360008,
+				blockId = 81079,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360004,
+				blockId = 81073,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360010,
+				blockId = 81070,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360010,
+				blockId = 81069,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360003,
+				blockId = 81072,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360002,
+				blockId = 81068,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360002,
+				blockId = 81067,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360003,
+				blockId = 81071,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3602,
+		infos = {
+			{
+				defineId = 360036,
+				blockId = 81090,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360037,
+				blockId = 81091,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360037,
+				blockId = 81092,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360036,
+				blockId = 81095,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360036,
+				blockId = 81093,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360037,
+				blockId = 81096,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360036,
+				blockId = 81089,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360037,
+				blockId = 81094,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360042,
+				blockId = 81086,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360040,
+				blockId = 81084,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360044,
+				blockId = 81088,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360039,
+				blockId = 81083,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360043,
+				blockId = 81087,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360038,
+				blockId = 81082,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360041,
+				blockId = 81085,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3603,
+		infos = {
+			{
+				defineId = 360029,
+				blockId = 81118,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360018,
+				blockId = 81121,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360024,
+				blockId = 81102,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360021,
+				blockId = 81097,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360022,
+				blockId = 81098,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360024,
+				blockId = 81103,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360026,
+				blockId = 81112,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360022,
+				blockId = 81099,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360016,
+				blockId = 81109,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360032,
+				blockId = 81120,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360031,
+				blockId = 81105,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360023,
+				blockId = 81100,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360018,
+				blockId = 81126,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360023,
+				blockId = 81101,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360025,
+				blockId = 81114,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3604,
+		infos = {
+			{
+				defineId = 360017,
+				blockId = 81110,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360029,
+				blockId = 81117,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360034,
+				blockId = 81108,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360034,
+				blockId = 81107,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360018,
+				blockId = 81111,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360036,
+				blockId = 81122,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360025,
+				blockId = 81113,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360035,
+				blockId = 81106,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360037,
+				blockId = 81124,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360036,
+				blockId = 81123,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360031,
+				blockId = 81104,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360030,
+				blockId = 81119,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360037,
+				blockId = 81125,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360027,
+				blockId = 81115,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 360028,
+				blockId = 81116,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3701,
+		infos = {
+			{
+				defineId = 370005,
+				blockId = 83074,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370004,
+				blockId = 83062,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370001,
+				blockId = 83060,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370003,
+				blockId = 83061,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370007,
+				blockId = 83071,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370009,
+				blockId = 83068,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370008,
+				blockId = 83067,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370005,
+				blockId = 83064,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370005,
+				blockId = 83063,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370002,
+				blockId = 83073,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370002,
+				blockId = 83072,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370006,
+				blockId = 83065,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370009,
+				blockId = 83069,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370007,
+				blockId = 83066,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370007,
+				blockId = 83070,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3702,
+		infos = {
+			{
+				defineId = 370030,
+				blockId = 83087,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370022,
+				blockId = 83084,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370029,
+				blockId = 83082,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370028,
+				blockId = 83080,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370027,
+				blockId = 83077,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370026,
+				blockId = 83078,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370031,
+				blockId = 83075,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370028,
+				blockId = 83085,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370023,
+				blockId = 83079,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370025,
+				blockId = 83076,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370024,
+				blockId = 83081,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370030,
+				blockId = 83083,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370030,
+				blockId = 83088,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370024,
+				blockId = 83086,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370031,
+				blockId = 83089,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3703,
+		infos = {
+			{
+				defineId = 370020,
+				blockId = 83120,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370017,
+				blockId = 83119,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370013,
+				blockId = 83098,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370011,
+				blockId = 83100,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370012,
+				blockId = 83099,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370014,
+				blockId = 83097,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370015,
+				blockId = 83096,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370021,
+				blockId = 83090,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370018,
+				blockId = 83092,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370019,
+				blockId = 83091,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370010,
+				blockId = 83094,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370018,
+				blockId = 83095,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370019,
+				blockId = 83093,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370019,
+				blockId = 83117,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370020,
+				blockId = 83118,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3704,
+		infos = {
+			{
+				defineId = 370014,
+				blockId = 83107,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370010,
+				blockId = 83109,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370011,
+				blockId = 83101,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370012,
+				blockId = 83102,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370032,
+				blockId = 83103,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370011,
+				blockId = 83106,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370011,
+				blockId = 83104,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370016,
+				blockId = 83108,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370015,
+				blockId = 83110,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370014,
+				blockId = 83112,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370021,
+				blockId = 83113,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370014,
+				blockId = 83105,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370018,
+				blockId = 83111,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370019,
+				blockId = 83114,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 370014,
+				blockId = 83115,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3801,
+		infos = {
+			{
+				defineId = 380001,
+				blockId = 85057,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380006,
+				blockId = 85063,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380031,
+				blockId = 85069,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380008,
+				blockId = 85068,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380002,
+				blockId = 85070,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380001,
+				blockId = 85071,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380003,
+				blockId = 85066,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380007,
+				blockId = 85064,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380003,
+				blockId = 85059,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380002,
+				blockId = 85058,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380004,
+				blockId = 85060,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380005,
+				blockId = 85062,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380009,
+				blockId = 85065,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380004,
+				blockId = 85067,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380008,
+				blockId = 85061,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3802,
+		infos = {
+			{
+				defineId = 380019,
+				blockId = 85085,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380018,
+				blockId = 85084,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380010,
+				blockId = 85072,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380017,
+				blockId = 85080,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380011,
+				blockId = 85073,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380013,
+				blockId = 85075,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380012,
+				blockId = 85074,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380018,
+				blockId = 85081,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380015,
+				blockId = 85078,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380010,
+				blockId = 85086,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380020,
+				blockId = 85082,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380016,
+				blockId = 85079,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380014,
+				blockId = 85076,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380014,
+				blockId = 85077,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380019,
+				blockId = 85083,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3803,
+		infos = {
+			{
+				defineId = 380024,
+				blockId = 85096,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380023,
+				blockId = 85089,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380022,
+				blockId = 85088,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380021,
+				blockId = 85087,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380026,
+				blockId = 85106,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380033,
+				blockId = 85104,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380027,
+				blockId = 85105,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380031,
+				blockId = 85107,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380027,
+				blockId = 85094,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380026,
+				blockId = 85092,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380025,
+				blockId = 85097,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380031,
+				blockId = 85109,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380025,
+				blockId = 85093,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380031,
+				blockId = 85108,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380031,
+				blockId = 85110,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3804,
+		infos = {
+			{
+				defineId = 380030,
+				blockId = 85098,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380030,
+				blockId = 85090,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380029,
+				blockId = 85091,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380028,
+				blockId = 85095,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380032,
+				blockId = 85099,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380026,
+				blockId = 85112,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380031,
+				blockId = 85101,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380026,
+				blockId = 85113,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380033,
+				blockId = 85100,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380027,
+				blockId = 85102,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380031,
+				blockId = 85111,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380031,
+				blockId = 85103,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380027,
+				blockId = 85114,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380028,
+				blockId = 85115,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 380029,
+				blockId = 85116,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 38501,
+		infos = {
+			{
+				defineId = 3950001,
+				blockId = 89053,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950006,
+				blockId = 89058,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950002,
+				blockId = 89054,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950004,
+				blockId = 89056,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950003,
+				blockId = 89055,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950006,
+				blockId = 89111,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950005,
+				blockId = 89057,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950010,
+				blockId = 89062,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950008,
+				blockId = 89060,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950049,
+				blockId = 89110,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950007,
+				blockId = 89059,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950011,
+				blockId = 89063,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950012,
+				blockId = 89064,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950001,
+				blockId = 89126,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950009,
+				blockId = 89061,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 38502,
+		infos = {
+			{
+				defineId = 3950013,
+				blockId = 89065,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950014,
+				blockId = 89073,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950015,
+				blockId = 89077,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950016,
+				blockId = 89066,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950018,
+				blockId = 89068,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950020,
+				blockId = 89072,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950017,
+				blockId = 89067,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950019,
+				blockId = 89069,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950051,
+				blockId = 89122,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950022,
+				blockId = 89123,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950023,
+				blockId = 89071,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950021,
+				blockId = 89070,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950050,
+				blockId = 89074,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950052,
+				blockId = 89079,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950024,
+				blockId = 89078,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 38503,
+		infos = {
+			{
+				defineId = 3950046,
+				blockId = 89094,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950030,
+				blockId = 89093,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950029,
+				blockId = 89090,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950039,
+				blockId = 89089,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950034,
+				blockId = 89087,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950028,
+				blockId = 89082,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950028,
+				blockId = 89088,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950033,
+				blockId = 89086,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950027,
+				blockId = 89081,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950030,
+				blockId = 89083,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950026,
+				blockId = 89080,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950032,
+				blockId = 89085,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950031,
+				blockId = 89084,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950047,
+				blockId = 89091,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950031,
+				blockId = 89092,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 38504,
+		infos = {
+			{
+				defineId = 3950042,
+				blockId = 89101,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950044,
+				blockId = 89108,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950036,
+				blockId = 89095,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950041,
+				blockId = 89100,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950048,
+				blockId = 89106,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950047,
+				blockId = 89107,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950044,
+				blockId = 89105,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950037,
+				blockId = 89096,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950040,
+				blockId = 89099,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950039,
+				blockId = 89098,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950045,
+				blockId = 89104,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950044,
+				blockId = 89103,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950043,
+				blockId = 89109,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950043,
+				blockId = 89102,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 3950038,
+				blockId = 89097,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3901,
+		infos = {
+			{
+				defineId = 390020,
+				blockId = 91090,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390036,
+				blockId = 91087,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390036,
+				blockId = 91086,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390029,
+				blockId = 91084,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390020,
+				blockId = 91083,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390013,
+				blockId = 91059,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390014,
+				blockId = 91062,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390006,
+				blockId = 91089,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390011,
+				blockId = 91057,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390009,
+				blockId = 91054,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390012,
+				blockId = 91058,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390019,
+				blockId = 91081,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390030,
+				blockId = 91085,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390018,
+				blockId = 91082,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390013,
+				blockId = 91088,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3902,
+		infos = {
+			{
+				defineId = 390026,
+				blockId = 91097,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390021,
+				blockId = 91094,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390022,
+				blockId = 91093,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390016,
+				blockId = 91091,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390017,
+				blockId = 91092,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390024,
+				blockId = 91096,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390023,
+				blockId = 91095,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390023,
+				blockId = 91103,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390023,
+				blockId = 91102,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390027,
+				blockId = 91098,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390035,
+				blockId = 91101,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390032,
+				blockId = 91105,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390034,
+				blockId = 91100,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390023,
+				blockId = 91104,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390033,
+				blockId = 91099,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3903,
+		infos = {
+			{
+				defineId = 390001,
+				blockId = 91118,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390001,
+				blockId = 91117,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390004,
+				blockId = 91116,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390037,
+				blockId = 91106,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390008,
+				blockId = 91113,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390001,
+				blockId = 91107,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390002,
+				blockId = 91111,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390003,
+				blockId = 91109,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390001,
+				blockId = 91108,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390005,
+				blockId = 91110,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390007,
+				blockId = 91112,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390010,
+				blockId = 91114,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390005,
+				blockId = 91115,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390005,
+				blockId = 91119,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390037,
+				blockId = 91120,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390037,
+				blockId = 91121,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 3904,
+		infos = {
+			{
+				defineId = 390001,
+				blockId = 91133,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390001,
+				blockId = 91134,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390037,
+				blockId = 91135,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390001,
+				blockId = 91132,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390003,
+				blockId = 91130,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390037,
+				blockId = 91131,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390008,
+				blockId = 91127,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390031,
+				blockId = 91125,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390007,
+				blockId = 91128,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390005,
+				blockId = 91129,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390028,
+				blockId = 91122,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390025,
+				blockId = 91123,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390031,
+				blockId = 91124,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390008,
+				blockId = 91136,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 390028,
+				blockId = 91126,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 4002,
+		infos = {
+			{
+				defineId = 400026,
+				blockId = 94088,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400018,
+				blockId = 94083,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400016,
+				blockId = 94030,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400018,
+				blockId = 94081,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400023,
+				blockId = 94085,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400024,
+				blockId = 94086,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400025,
+				blockId = 94087,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400028,
+				blockId = 94090,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400031,
+				blockId = 94093,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400019,
+				blockId = 94094,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400019,
+				blockId = 94089,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400029,
+				blockId = 94091,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400022,
+				blockId = 94084,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400018,
+				blockId = 94080,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400020,
+				blockId = 94082,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400017,
+				blockId = 94079,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 4001,
+		infos = {
+			{
+				defineId = 400002,
+				blockId = 94064,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400007,
+				blockId = 94069,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400011,
+				blockId = 94073,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400008,
+				blockId = 94070,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400005,
+				blockId = 94067,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400015,
+				blockId = 94076,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400003,
+				blockId = 94077,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400011,
+				blockId = 94075,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400030,
+				blockId = 94078,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400004,
+				blockId = 94068,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400009,
+				blockId = 94071,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400008,
+				blockId = 94065,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400006,
+				blockId = 94066,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400014,
+				blockId = 94072,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400012,
+				blockId = 94074,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 4003,
+		infos = {
+			{
+				defineId = 400035,
+				blockId = 94097,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400036,
+				blockId = 94101,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400036,
+				blockId = 94100,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400035,
+				blockId = 94096,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400033,
+				blockId = 94102,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400038,
+				blockId = 94106,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400037,
+				blockId = 94107,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400044,
+				blockId = 94103,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400043,
+				blockId = 94099,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400034,
+				blockId = 94095,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400035,
+				blockId = 94092,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400042,
+				blockId = 94098,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400034,
+				blockId = 94105,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400042,
+				blockId = 94104,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400032,
+				blockId = 94108,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 4004,
+		infos = {
+			{
+				defineId = 400036,
+				blockId = 94117,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400044,
+				blockId = 94121,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400035,
+				blockId = 94111,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400036,
+				blockId = 94113,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400033,
+				blockId = 94118,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400044,
+				blockId = 94122,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400033,
+				blockId = 94123,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400037,
+				blockId = 94119,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400038,
+				blockId = 94120,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400046,
+				blockId = 94116,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400045,
+				blockId = 94115,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400045,
+				blockId = 94114,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400033,
+				blockId = 94112,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400046,
+				blockId = 94110,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 400034,
+				blockId = 94109,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 4102,
+		infos = {
+			{
+				defineId = 410014,
+				blockId = 96072,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410013,
+				blockId = 96071,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410011,
+				blockId = 96069,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410007,
+				blockId = 96065,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410006,
+				blockId = 96064,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410012,
+				blockId = 96070,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410005,
+				blockId = 96063,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410003,
+				blockId = 96062,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410008,
+				blockId = 96066,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410010,
+				blockId = 96068,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410015,
+				blockId = 96073,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410009,
+				blockId = 96067,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410002,
+				blockId = 96061,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410001,
+				blockId = 96060,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 4101,
+		infos = {
+			{
+				defineId = 410016,
+				blockId = 96074,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410022,
+				blockId = 96080,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410018,
+				blockId = 96077,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410020,
+				blockId = 96079,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410018,
+				blockId = 96076,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410017,
+				blockId = 96075,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410021,
+				blockId = 96081,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410022,
+				blockId = 96082,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410021,
+				blockId = 96083,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410021,
+				blockId = 96084,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410019,
+				blockId = 96078,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410023,
+				blockId = 96087,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410023,
+				blockId = 96086,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410023,
+				blockId = 96085,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410028,
+				blockId = 96088,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 4103,
+		infos = {
+			{
+				defineId = 410041,
+				blockId = 96092,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410041,
+				blockId = 96090,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410041,
+				blockId = 96091,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410044,
+				blockId = 96116,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410042,
+				blockId = 96097,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410041,
+				blockId = 96089,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410043,
+				blockId = 96098,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410044,
+				blockId = 96099,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410038,
+				blockId = 96100,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410036,
+				blockId = 96101,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410033,
+				blockId = 96107,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410044,
+				blockId = 96118,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410043,
+				blockId = 96117,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410035,
+				blockId = 96105,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410025,
+				blockId = 96112,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	},
+	{
+		id = 4104,
+		infos = {
+			{
+				defineId = 410040,
+				blockId = 96104,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410034,
+				blockId = 96109,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410039,
+				blockId = 96103,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410035,
+				blockId = 96106,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410033,
+				blockId = 96108,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410037,
+				blockId = 96102,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410041,
+				blockId = 96094,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410041,
+				blockId = 96093,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410041,
+				blockId = 96095,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410041,
+				blockId = 96096,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410032,
+				blockId = 96110,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410024,
+				blockId = 96113,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410024,
+				blockId = 96114,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410031,
+				blockId = 96111,
+				mainRes = 0,
+				ownType = 0
+			},
+			{
+				defineId = 410040,
+				blockId = 96115,
+				mainRes = 0,
+				ownType = 0
+			}
+		}
+	}
+}

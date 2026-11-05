@@ -24,6 +24,7 @@ function BossRushRedModel:reInit()
 	self._delayNeedUpdateDictList = {}
 	self._delayUpdateRedValueList = {}
 	self._flushDataFrameTimer = nil
+	self._isGetActInfo = nil
 end
 
 function BossRushRedModel:_getConfig()
@@ -338,6 +339,41 @@ function BossRushRedModel:_refreshOpen(refDict)
 	end
 end
 
+function BossRushRedModel:refreshSeason(refDict)
+	local defineId = EDotNode.BossRushHankBookBoss
+	local mos = V3a2_BossRushModel.instance:getHandBookMos()
+	local reddotList = {}
+	local isShowReddot = false
+
+	if mos then
+		for _, mo in pairs(mos) do
+			local uid = mo:getBossType()
+			local isShow1 = RedDotModel.instance:isDotShow(defineId, uid)
+			local isShow2 = V4a1_BossRushModel.instance:isShowHandBookRedddot(mo)
+
+			if isShow1 ~= isShow2 then
+				table.insert(reddotList, {
+					id = defineId,
+					uid = uid,
+					value = isShow2 and 1 or 0
+				})
+			end
+
+			if isShow2 then
+				isShowReddot = true
+			end
+		end
+	end
+
+	if #reddotList > 0 then
+		RedDotRpc.instance:clientAddRedDotGroupList(reddotList)
+
+		if refDict then
+			refDict[defineId] = isShowReddot
+		end
+	end
+end
+
 function BossRushRedModel:_refreshBoss(refDict, stage)
 	local defineId, uid = self:_getDUByDSL(EDotNode.BossRushBoss, stage)
 	local config = self:_getConfig()
@@ -406,8 +442,6 @@ function BossRushRedModel:_refreshRootInner(refDict)
 		value = value + 1
 	end
 
-	value = value + self:_getV3a9ActValue()
-
 	if self:_modifyOrMakeRedDotGroupItem(defineId, uid, value) then
 		refDict[defineId] = true
 	end
@@ -464,6 +498,7 @@ function BossRushRedModel:_refreshRoot()
 	end
 
 	self:_refreshOpen(dict)
+	self:refreshSeason(dict)
 	self:_refreshRootInner(dict)
 
 	return dict
@@ -657,6 +692,12 @@ function BossRushRedModel:refreshClientCharacterDot()
 
 	if not self:_isWarmUp() then
 		return
+	end
+
+	if not self._isGetActInfo then
+		V4a1_BossRushController.instance:sendRequestActInfos()
+
+		self._isGetActInfo = true
 	end
 
 	local list = {}

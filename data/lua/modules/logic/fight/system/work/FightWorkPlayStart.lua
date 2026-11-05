@@ -25,6 +25,10 @@ function FightWorkPlayStart:onStart()
 	else
 		flow:registWork(FightWorkFunction, ViewMgr.instance.openView, ViewMgr.instance, ViewName.FightSkillSelectView)
 		flow:registWork(FightWorkFunction, ViewMgr.instance.openView, ViewMgr.instance, ViewName.FightView)
+
+		if FightRealTimeDamageStatModel.instance:isEnabled() then
+			flow:registWork(FightWorkFunction, ViewMgr.instance.openView, ViewMgr.instance, ViewName.GM_FightDataShowView)
+		end
 	end
 
 	flow:registWork(FightWorkSendEvent, FightEvent.OnStartSequenceStart)

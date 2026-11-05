@@ -18,9 +18,36 @@ local primaryKey = {
 local mlStringKey = {
 	title = 1
 }
+local _configList, _configDict
+local configPath = "configs.story_activity_open_config"
 
-function lua_story_activity_open.onLoad(json)
-	lua_story_activity_open.configList, lua_story_activity_open.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_story_activity_open, "configList", _configList)
+	rawset(lua_story_activity_open, "configDict", _configDict)
+end
+
+setmetatable(lua_story_activity_open, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_story_activity_open.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_story_activity_open, "configList", nil)
+	rawset(lua_story_activity_open, "configDict", nil)
 end
 
 return lua_story_activity_open

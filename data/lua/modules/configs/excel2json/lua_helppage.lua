@@ -19,9 +19,36 @@ local primaryKey = {
 local mlStringKey = {
 	title = 1
 }
+local _configList, _configDict
+local configPath = "configs.helppage_config"
 
-function lua_helppage.onLoad(json)
-	lua_helppage.configList, lua_helppage.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_helppage, "configList", _configList)
+	rawset(lua_helppage, "configDict", _configDict)
+end
+
+setmetatable(lua_helppage, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_helppage.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_helppage, "configList", nil)
+	rawset(lua_helppage, "configDict", nil)
 end
 
 return lua_helppage

@@ -111,10 +111,10 @@ function SignInController:openSignInView(param)
 	ViewMgr.instance:openView(ViewName.SignInView, param)
 end
 
-function SignInController:openSignInDetailView(param)
+function SignInController:openSignInDetailView(param, forceOpen)
 	local date = SignInModel.instance:getCurDate()
 
-	if SignInModel.instance:isSignDayRewardGet(date.day) then
+	if not forceOpen and SignInModel.instance:isSignDayRewardGet(date.day) then
 		self:openSignInView(param)
 
 		return
@@ -122,9 +122,10 @@ function SignInController:openSignInDetailView(param)
 
 	local data = {}
 
-	data.isBirthday = param.isBirthday
-	data.callback = param.callback
-	data.callbackObj = param.callbackObj
+	data.isBirthday = param and param.isBirthday
+	data.callback = param and param.callback
+	data.callbackObj = param and param.callbackObj
+	data.dateTxt = param and param.dateTxt
 
 	SignInModel.instance:setTargetDate(tonumber(date.year), tonumber(date.month), tonumber(date.day), date.wday)
 	ViewMgr.instance:openView(ViewName.SignInDetailView, data)

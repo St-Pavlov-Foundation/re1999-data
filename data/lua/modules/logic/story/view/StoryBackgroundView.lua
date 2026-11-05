@@ -502,24 +502,7 @@ function StoryBackgroundView:_refreshBg()
 		self:_showBgTop(true)
 		gohelper.setActive(self._upbgspine, false)
 		self:_loadTopBg()
-
-		if self._bgScaleId then
-			ZProj.TweenHelper.KillById(self._bgScaleId)
-
-			self._bgScaleId = nil
-		end
-
-		if self._bgPosId then
-			ZProj.TweenHelper.KillById(self._bgPosId)
-
-			self._bgPosId = nil
-		end
-
-		if self._bgRotateId then
-			ZProj.TweenHelper.KillById(self._bgRotateId)
-
-			self._bgRotateId = nil
-		end
+		self:_killMoveTween()
 	else
 		self:_showBgTop(false)
 
@@ -581,6 +564,7 @@ function StoryBackgroundView:_onNewBgImgLoaded()
 	end
 
 	self._imagebg:SetNativeSize()
+	self:_resetBgState()
 	self:_checkPlayEffect()
 end
 
@@ -813,6 +797,8 @@ function StoryBackgroundView:_resetBgState()
 		return
 	end
 
+	self:_killMoveTween()
+
 	local transTimes = self._bgCo.transTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()]
 
 	if transTimes < 0.05 then
@@ -824,7 +810,31 @@ function StoryBackgroundView:_resetBgState()
 
 		self._bgPosId = ZProj.TweenHelper.DOAnchorPos(self._simagebgimg.gameObject.transform, self._bgCo.offset[1], self._bgCo.offset[2], transTimes, nil, nil, nil, easyType)
 		self._bgRotateId = ZProj.TweenHelper.DOLocalRotate(self._simagebgimg.gameObject.transform, 0, 0, self._bgCo.angle, transTimes, nil, nil, nil, EaseType.InSine)
-		self._bgScaleId = ZProj.TweenHelper.DOScale(self._gofront.gameObject.transform, self._bgCo.scale, self._bgCo.scale, 1, transTimes, nil, nil, nil, EaseType.InQuad)
+		self._bgScaleId = ZProj.TweenHelper.DOScale(self._gofront.gameObject.transform, self._bgCo.scale, self._bgCo.scale, 1, transTimes, self._onMoveFinished, self, nil, EaseType.InQuad)
+	end
+end
+
+function StoryBackgroundView:_onMoveFinished()
+	self:_killMoveTween()
+end
+
+function StoryBackgroundView:_killMoveTween()
+	if self._bgScaleId then
+		ZProj.TweenHelper.KillById(self._bgScaleId)
+
+		self._bgScaleId = nil
+	end
+
+	if self._bgPosId then
+		ZProj.TweenHelper.KillById(self._bgPosId)
+
+		self._bgPosId = nil
+	end
+
+	if self._bgRotateId then
+		ZProj.TweenHelper.KillById(self._bgRotateId)
+
+		self._bgRotateId = nil
 	end
 end
 
@@ -841,7 +851,6 @@ function StoryBackgroundView:_fadeTrans()
 		self._imagebg.color = Color.white
 
 		self:_showBgTop(true)
-		self:_resetBgState()
 
 		if self._bgFadeId then
 			ZProj.TweenHelper.KillById(self._bgFadeId)
@@ -897,6 +906,7 @@ function StoryBackgroundView:_fadeTransLoadOldBg()
 
 			self:_onOldBgImgLoaded()
 			self:_refreshBg()
+			self:_resetBgState()
 		end)
 	end
 end
@@ -1367,24 +1377,7 @@ function StoryBackgroundView:_clearBg()
 		self._blurId = nil
 	end
 
-	if self._bgScaleId then
-		ZProj.TweenHelper.KillById(self._bgScaleId)
-
-		self._bgScaleId = nil
-	end
-
-	if self._bgPosId then
-		ZProj.TweenHelper.KillById(self._bgPosId)
-
-		self._bgPosId = nil
-	end
-
-	if self._bgRotateId then
-		ZProj.TweenHelper.KillById(self._bgRotateId)
-
-		self._bgRotateId = nil
-	end
-
+	self:_killMoveTween()
 	TaskDispatcher.cancelTask(self._onTurnPageFinished, self)
 	TaskDispatcher.cancelTask(self._changeRightDark, self)
 	TaskDispatcher.cancelTask(self._enterChange, self)

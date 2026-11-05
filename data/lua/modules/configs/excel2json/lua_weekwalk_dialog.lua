@@ -21,9 +21,36 @@ local mlStringKey = {
 	speaker = 1,
 	content = 2
 }
+local _configList, _configDict
+local configPath = "configs.weekwalk_dialog_config"
 
-function lua_weekwalk_dialog.onLoad(json)
-	lua_weekwalk_dialog.configList, lua_weekwalk_dialog.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_weekwalk_dialog, "configList", _configList)
+	rawset(lua_weekwalk_dialog, "configDict", _configDict)
+end
+
+setmetatable(lua_weekwalk_dialog, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_weekwalk_dialog.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_weekwalk_dialog, "configList", nil)
+	rawset(lua_weekwalk_dialog, "configDict", nil)
 end
 
 return lua_weekwalk_dialog

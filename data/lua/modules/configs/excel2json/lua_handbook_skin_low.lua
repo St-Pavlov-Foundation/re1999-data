@@ -24,9 +24,36 @@ local mlStringKey = {
 	des = 2,
 	name = 1
 }
+local _configList, _configDict
+local configPath = "configs.handbook_skin_low_config"
 
-function lua_handbook_skin_low.onLoad(json)
-	lua_handbook_skin_low.configList, lua_handbook_skin_low.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_handbook_skin_low, "configList", _configList)
+	rawset(lua_handbook_skin_low, "configDict", _configDict)
+end
+
+setmetatable(lua_handbook_skin_low, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_handbook_skin_low.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_handbook_skin_low, "configList", nil)
+	rawset(lua_handbook_skin_low, "configDict", nil)
 end
 
 return lua_handbook_skin_low

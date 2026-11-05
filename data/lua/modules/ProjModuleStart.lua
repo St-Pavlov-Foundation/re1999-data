@@ -68,8 +68,12 @@ function ProjModuleStart:_onModuleIniFinish()
 	ViewMgr.instance:init(moduleViews)
 	FullScreenViewLimitMgr.instance:init()
 	SLFramework.TimeWatch.Instance:Start()
-	ConfigMgr.instance:init("configs/excel2json/json_", "modules.configs.excel2json.lua_", "configs/datacfg_")
-	ConfigMgr.instance:loadConfigs(self._onAllConfigLoaded, self)
+
+	if isDebugBuild then
+		LuaProfilerController.instance:luaMemoryCalBegin()
+	end
+
+	ConfigMgr.instance:loadConfigs(self._onAllConfigLoaded, self, false)
 end
 
 function ProjModuleStart:_onAllConfigLoaded()

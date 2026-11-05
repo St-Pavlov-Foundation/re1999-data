@@ -21,9 +21,36 @@ local mlStringKey = {
 	title = 1,
 	desc = 2
 }
+local _configList, _configDict
+local configPath = "configs.battle_selection_config"
 
-function lua_battle_selection.onLoad(json)
-	lua_battle_selection.configList, lua_battle_selection.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_battle_selection, "configList", _configList)
+	rawset(lua_battle_selection, "configDict", _configDict)
+end
+
+setmetatable(lua_battle_selection, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_battle_selection.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_battle_selection, "configList", nil)
+	rawset(lua_battle_selection, "configDict", nil)
 end
 
 return lua_battle_selection

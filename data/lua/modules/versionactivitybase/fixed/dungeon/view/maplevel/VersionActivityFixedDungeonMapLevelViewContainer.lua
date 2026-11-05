@@ -7,7 +7,10 @@ local TIME_OUT = 2
 
 function VersionActivityFixedDungeonMapLevelViewContainer:buildViews()
 	self._bigVersion, self._smallVersion = VersionActivityFixedDungeonController.instance:getEnterVerison()
-	self.mapLevelView = VersionActivityFixedHelper.getVersionActivityDungeonMapLevelView(self._bigVersion, self._smallVersion).New()
+
+	local scriptSuffix = VersionActivityFixedHelper.getVersionActivityScriptSuffix(self._bigVersion, self._smallVersion)
+
+	self.mapLevelView = VersionActivityFixedHelper.getVersionActivityDungeonMapLevelView(self._bigVersion, self._smallVersion, scriptSuffix).New()
 
 	return {
 		self.mapLevelView,

@@ -17,9 +17,36 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.fight_assembled_monster_config"
 
-function lua_fight_assembled_monster.onLoad(json)
-	lua_fight_assembled_monster.configList, lua_fight_assembled_monster.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_fight_assembled_monster, "configList", _configList)
+	rawset(lua_fight_assembled_monster, "configDict", _configDict)
+end
+
+setmetatable(lua_fight_assembled_monster, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_fight_assembled_monster.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_fight_assembled_monster, "configList", nil)
+	rawset(lua_fight_assembled_monster, "configDict", nil)
 end
 
 return lua_fight_assembled_monster

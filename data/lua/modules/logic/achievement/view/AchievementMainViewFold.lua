@@ -244,7 +244,7 @@ function AchievementMainViewFold:getCurRenderCellCountWhileFoldOut(groupId, moLi
 	local renderCellCount = 0
 
 	for cell, _ in pairs(cellDict) do
-		local cellGroupId = cell._mo.groupId
+		local cellGroupId = cell._mo and cell._mo.groupId
 
 		if cellGroupId == groupId then
 			renderCellMap[cell._mo.id] = cell

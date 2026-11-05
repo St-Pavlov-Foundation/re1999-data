@@ -82,7 +82,6 @@ function StoryView:_btnnextOnClick()
 	if StoryModel.instance:isNormalStep() then
 		if StoryModel.instance:isTextShowing() then
 			self._dialogItem:conFinished()
-			self:_conFinished()
 		else
 			self:_enterNextStep()
 		end
@@ -222,33 +221,68 @@ end
 
 function StoryView:_onOpenView(viewName)
 	if viewName == ViewName.V3a4BBSView then
-		TaskDispatcher.cancelTask(self._enterNextStep, self)
+		self:_onPausePlayStory()
 
 		self._orignEff4 = self._goeff4 and self._goeff4.activeInHierarchy
 
 		gohelper.setActive(self._goeff4, false)
+	elseif viewName == ViewName.Act248ClueMainView then
+		self:_onPausePlayStory()
 	end
 end
 
 function StoryView:_onCloseView(viewName)
 	if viewName == ViewName.V3a4BBSView then
-		self:_enterNextStep()
+		self:_onResumePlayStory()
 		gohelper.setActive(self._goeff4, self._orignEff4)
+	elseif viewName == ViewName.Act248ClueMainView then
+		self:_onResumePlayStory()
+	end
+end
+
+function StoryView:_onPausePlayStory()
+	self._cacheConAlpha = self._conCanvasGroup.alpha
+	self._conCanvasGroup.alpha = 0
+
+	TaskDispatcher.cancelTask(self._enterNextStep, self)
+end
+
+function StoryView:_onResumePlayStory()
+	self:_onEnableClick()
+
+	if self:_isUnInteractType() then
+		TaskDispatcher.runDelay(self._enterNextStep, self, 0.5)
+	elseif StoryModel.instance:isNormalStep() then
+		self._dialogItem:conFinished()
+	else
+		self:_enterNextStep()
+	end
+
+	if self._cacheConAlpha then
+		self._conCanvasGroup.alpha = self._cacheConAlpha
+		self._cacheConAlpha = nil
 	end
 end
 
 function StoryView:_isOpenOtherView()
-	if not self._openOtherView then
-		self._openOtherView = {
-			ViewName.V3a4BBSView
-		}
-	end
+	local otherView = self:_getOtherView()
 
-	for _, viewName in ipairs(self._openOtherView) do
+	for _, viewName in ipairs(otherView) do
 		if ViewMgr.instance:isOpen(viewName) then
 			return true
 		end
 	end
+end
+
+function StoryView:_getOtherView()
+	if not self._openOtherView then
+		self._openOtherView = {
+			ViewName.V3a4BBSView,
+			ViewName.Act248ClueMainView
+		}
+	end
+
+	return self._openOtherView
 end
 
 function StoryView:_btnPvPauseOnClick()
@@ -319,7 +353,6 @@ function StoryView:_hideDialog()
 	if self._dialogItem then
 		if StoryModel.instance:isTextShowing() then
 			self._dialogItem:conFinished()
-			self:_conFinished()
 		end
 
 		gohelper.setActive(self._gocontentroot, false)
@@ -1285,10 +1318,7 @@ function StoryView:_updateEffectList(param)
 		end
 	end
 
-	for _, v in pairs(self._effects) do
-		StoryTool.enablePostProcess(true)
-	end
-
+	StoryTool.enablePostProcess(true)
 	StoryModel.instance:setHasBottomEffect(hasboteff)
 end
 
@@ -1468,6 +1498,10 @@ function StoryView:_checkFloatBgShow()
 end
 
 function StoryView:_buildPicture(name, pic, isSkip)
+	if string.nilorempty(name) then
+		return
+	end
+
 	local imgGo
 
 	if pic.layer < 4 then
@@ -1496,6 +1530,10 @@ function StoryView:_buildPicture(name, pic, isSkip)
 end
 
 function StoryView:_destroyPicture(name, v, isSkip)
+	if string.nilorempty(name) then
+		return
+	end
+
 	if not self._pictures[name] then
 		if isSkip then
 			if v.orderType == StoryEnum.PictureOrderType.Produce then

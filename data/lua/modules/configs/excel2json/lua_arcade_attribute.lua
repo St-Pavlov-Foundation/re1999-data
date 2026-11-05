@@ -17,9 +17,36 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.arcade_attribute_config"
 
-function lua_arcade_attribute.onLoad(json)
-	lua_arcade_attribute.configList, lua_arcade_attribute.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_arcade_attribute, "configList", _configList)
+	rawset(lua_arcade_attribute, "configDict", _configDict)
+end
+
+setmetatable(lua_arcade_attribute, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_arcade_attribute.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_arcade_attribute, "configList", nil)
+	rawset(lua_arcade_attribute, "configDict", nil)
 end
 
 return lua_arcade_attribute

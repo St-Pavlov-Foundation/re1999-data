@@ -75,18 +75,23 @@ function StoryLogListModel:clearData()
 	self._infos = nil
 end
 
-function StoryLogListModel:setPlayingLogAudio(audioId)
+function StoryLogListModel:setPlayingLogAudio(audioId, logId)
 	self._playingId = audioId
+	self._playingLogId = logId or 0
 end
 
 function StoryLogListModel:setPlayingLogAudioFinished(audioId)
 	if self._playingId == audioId then
-		self._playingId = 0
+		self:setPlayingLogAudio(0, 0)
 	end
 end
 
 function StoryLogListModel:getPlayingLogAudioId()
-	return self._playingId
+	return self._playingId, self._playingLogId
+end
+
+function StoryLogListModel:isLogPlaying(logId)
+	return self._playingLogId == logId
 end
 
 StoryLogListModel.instance = StoryLogListModel.New()

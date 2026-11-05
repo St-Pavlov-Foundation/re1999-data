@@ -68,7 +68,6 @@ function V3a5_Season123EnterView:_btnStoreOnClick()
 end
 
 function V3a5_Season123EnterView:_editableInitView()
-	self.animComp = VersionActivitySubAnimatorComp.get(self.viewGO, self)
 	self.descTab = self:getUserDataTb_()
 
 	for i = 1, 4 do
@@ -83,8 +82,6 @@ function V3a5_Season123EnterView:onUpdateParam()
 end
 
 function V3a5_Season123EnterView:onOpen()
-	self.animComp:playOpenAnim()
-
 	self.actId = self.viewContainer.activityId
 
 	RedDotController.instance:addRedDot(self._goreddot, RedDotEnum.DotNode.Season123Enter)
@@ -204,7 +201,7 @@ function V3a5_Season123EnterView:onClose()
 end
 
 function V3a5_Season123EnterView:onDestroyView()
-	self.animComp:destroy()
+	return
 end
 
 return V3a5_Season123EnterView

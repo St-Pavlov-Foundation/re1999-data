@@ -1,0 +1,34 @@
+﻿-- chunkname: @configs/fight_sp_effect_kkny_heal_config.lua
+
+return {
+	{
+		308003,
+		"v2a4_kkny/kkny_innate2_s1",
+		"special1",
+		430800302
+	},
+	{
+		308001,
+		"v1a9_kkny/kkny_innate2_s1",
+		"special1",
+		430800102
+	},
+	{
+		308002,
+		"v1a9_kkny/kkny_innate2_s1",
+		"special1",
+		430800102
+	},
+	{
+		308004,
+		"v3a2_kkny/kkny_innate2_s1",
+		"special1",
+		430800102
+	},
+	{
+		308005,
+		"v3a9_kkny/kkny_innate2",
+		"special1",
+		430800102
+	}
+}

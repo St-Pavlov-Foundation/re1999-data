@@ -14,7 +14,8 @@ function NecrologistStoryConfig:ctor()
 		NecrologistStoryV3A5Config,
 		NecrologistStoryV3A7Config,
 		NecrologistStoryV3A9Config,
-		NecrologistStoryV4A0Config
+		NecrologistStoryV4A0Config,
+		NecrologistStoryV4A1Config
 	}
 end
 
@@ -116,9 +117,12 @@ function NecrologistStoryConfig:_formatPlotOptionData(config, dataDict)
 		dataDict[config.storygroup] = data
 	end
 
+	local optionType = {
+		mulOption = true
+	}
 	local list = data.optionList
 
-	if string.find(config.type, "options") then
+	if optionType[config.type] or string.find(config.type, "options") then
 		local sections = GameUtil.splitString2(config.param, true, "#", ",")
 		local optionList = {}
 

@@ -27,6 +27,7 @@ function MainActivityCenterView:_editableInitView()
 	gohelper.setActive(self._itemGo, false)
 
 	self._centerItems = self:getUserDataTb_()
+	self._centerItemMap = {}
 	self._turnbackItems = self:getUserDataTb_()
 	self._sortBtnList = self:getUserDataTb_()
 	self._checkBtnList = self:getUserDataTb_()
@@ -225,6 +226,7 @@ function MainActivityCenterView:_freshBtns()
 	self:_checkAct236Btn()
 	self:_checkActSP02_PaoMianBtn()
 	self:_checkConcertLimitBtn()
+	self:_checkLibraryBtn()
 	self:_sortBtns()
 end
 
@@ -361,11 +363,8 @@ function MainActivityCenterView:_refreshActCenter()
 		return
 	end
 
-	GameUtil.onDestroyViewMemberList(self, "_centerItems")
-
 	local centerCo = ActivityModel.instance:getActivityCenter()
-
-	self._centerItems = self:getUserDataTb_()
+	local showTypes = {}
 
 	for k, actIds in pairs(centerCo) do
 		if k == ActivityEnum.ActivityType.Beginner then
@@ -378,11 +377,38 @@ function MainActivityCenterView:_refreshActCenter()
 		end
 
 		if GameUtil.getTabLen(actIds) ~= 0 then
-			local item = ActivityMainBtnItem.New()
+			showTypes[k] = true
+		end
+	end
+
+	self._centerItemMap = self._centerItemMap or {}
+
+	for k, item in pairs(self._centerItemMap) do
+		if not showTypes[k] then
+			item:onDestroyView()
+
+			self._centerItemMap[k] = nil
+		end
+	end
+
+	for k, _ in pairs(showTypes) do
+		local item = self._centerItemMap[k]
+
+		if item then
+			item:_refreshItem()
+		else
+			item = ActivityMainBtnItem.New()
 
 			item:init(k, self._itemGo)
-			table.insert(self._centerItems, item)
+
+			self._centerItemMap[k] = item
 		end
+	end
+
+	self._centerItems = self:getUserDataTb_()
+
+	for _, item in pairs(self._centerItemMap) do
+		table.insert(self._centerItems, item)
 	end
 
 	table.sort(self._centerItems, function(a, b)
@@ -790,6 +816,9 @@ end
 
 function MainActivityCenterView:onDestroyView()
 	GameUtil.onDestroyViewMemberList(self, "_centerItems")
+
+	self._centerItemMap = nil
+
 	GameUtil.onDestroyViewMember(self, "_bpItem")
 	GameUtil.onDestroyViewMember(self, "_bpSpItem")
 	GameUtil.onDestroyViewMember(self, "_testTaskItem")
@@ -807,6 +836,7 @@ function MainActivityCenterView:onDestroyView()
 	GameUtil.onDestroyViewMember(self, "_actAtomicOperationActivityBtnItem")
 	GameUtil.onDestroyViewMember(self, "_sp02PaoMianItem")
 	GameUtil.onDestroyViewMember(self, "_actConcertLimitItem")
+	GameUtil.onDestroyViewMember(self, "_libraryMainViewBtn")
 	self:removeEventCb(MainController.instance, MainEvent.OnFuncUnlockRefresh, self._freshBtns, self)
 	self:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseFullView, self._onCloseFullView, self)
 	self:removeEventCb(ActivityController.instance, ActivityEvent.RefreshActivityState, self._freshBtns, self)
@@ -857,6 +887,38 @@ function MainActivityCenterView:_onWaitFefreshActBgWidth()
 
 	recthelper.setWidth(self._goactbgTrans, GameUtil.clamp(width, 0, kMaxActBgWidth))
 	gohelper.setActive(self._goActbgImage, num > 0)
+end
+
+function MainActivityCenterView:_checkLibraryBtn()
+	local actId = V4a1_LibraryController.instance:actId()
+	local viewName = ViewName.V4a1_Library_MainView
+	local isOpen = ActivityType101Model.instance:isOpen(actId)
+
+	if not isOpen then
+		GameUtil.onDestroyViewMember(self, "_libraryMainViewBtn")
+
+		return
+	end
+
+	local data = {
+		viewName = viewName,
+		viewParam = {
+			actId = actId
+		}
+	}
+
+	if self._libraryMainViewBtn then
+		self._libraryMainViewBtn:setCustomData(data)
+		self._libraryMainViewBtn:refresh()
+
+		return
+	end
+
+	self._libraryMainViewBtn = self:_createActCenterItem(V4a1_LibraryMainBtnItem)
+
+	self._libraryMainViewBtn:setCustomData(data)
+	self._libraryMainViewBtn:refresh()
+	self:_addSortBtn(actId, self._libraryMainViewBtn)
 end
 
 return MainActivityCenterView

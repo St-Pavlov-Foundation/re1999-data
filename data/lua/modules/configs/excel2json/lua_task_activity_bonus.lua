@@ -18,9 +18,36 @@ local primaryKey = {
 local mlStringKey = {
 	desc = 1
 }
+local _configList, _configDict
+local configPath = "configs.task_activity_bonus_config"
 
-function lua_task_activity_bonus.onLoad(json)
-	lua_task_activity_bonus.configList, lua_task_activity_bonus.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_task_activity_bonus, "configList", _configList)
+	rawset(lua_task_activity_bonus, "configDict", _configDict)
+end
+
+setmetatable(lua_task_activity_bonus, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_task_activity_bonus.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_task_activity_bonus, "configList", nil)
+	rawset(lua_task_activity_bonus, "configDict", nil)
 end
 
 return lua_task_activity_bonus

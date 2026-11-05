@@ -25,9 +25,36 @@ local primaryKey = {
 local mlStringKey = {
 	name = 1
 }
+local _configList, _configDict
+local configPath = "configs.open_config"
 
-function lua_open.onLoad(json)
-	lua_open.configList, lua_open.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_open, "configList", _configList)
+	rawset(lua_open, "configDict", _configDict)
+end
+
+setmetatable(lua_open, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_open.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_open, "configList", nil)
+	rawset(lua_open, "configDict", nil)
 end
 
 return lua_open

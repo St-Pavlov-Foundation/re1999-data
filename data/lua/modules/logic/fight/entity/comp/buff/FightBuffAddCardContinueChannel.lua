@@ -17,7 +17,7 @@ function FightBuffAddCardContinueChannel:onBuffStart(entity, buffMo)
 
 	FightController.instance:registerCallback(FightEvent.ALF_AddRecordCardUI, self.onUpdateRecordCard, self)
 
-	self.effectRes, self.recordCount = self:getEffectRes(buffMo)
+	self.effectRes, self.recordCount, self.audio = self:getEffectRes(buffMo)
 	self.loader = MultiAbLoader.New()
 
 	self.loader:addPath(FightHelper.getEffectUrlWithLod(self.effectRes))
@@ -45,7 +45,7 @@ function FightBuffAddCardContinueChannel:getEffectRes(buffMo)
 
 	local effectRes = co[FightBuffAddCardContinueChannel.Count2BuffEffectName[count]]
 
-	return effectRes, count
+	return effectRes, count, co.audio
 end
 
 function FightBuffAddCardContinueChannel:createEffect(loader)
@@ -54,6 +54,11 @@ function FightBuffAddCardContinueChannel:createEffect(loader)
 	self.effectWrap:setLocalPos(0, 0, 0)
 	FightRenderOrderMgr.instance:onAddEffectWrap(self.entity.id, self.effectWrap)
 	self.entity.buff:addLoopBuff(self.effectWrap)
+
+	if self.audio and self.audio > 0 then
+		AudioMgr.instance:trigger(self.audio)
+	end
+
 	self:refreshEffect()
 end
 

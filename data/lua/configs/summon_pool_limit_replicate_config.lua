@@ -1,0 +1,29 @@
+﻿-- chunkname: @configs/summon_pool_limit_replicate_config.lua
+
+return {
+	{
+		3083,
+		"ui/viewres/summon/version_2_5/v2a5_versionsummonqunianghalfview.prefab",
+		""
+	},
+	{
+		3086,
+		"ui/viewres/summon/version_2_8/v2a8_versionsummonlucyhalfview.prefab",
+		""
+	},
+	{
+		3100,
+		"ui/viewres/summon/version_3_2/v3a2_versionsummontianshinanahalfview.prefab",
+		""
+	},
+	{
+		3110,
+		"ui/viewres/summon/version_3_7/v3a7_versionsummonliangyuehalfview.prefab",
+		""
+	},
+	{
+		3120,
+		"ui/viewres/summon/version_4_0/v4a0_versionsummonnuodikahalfview.prefab",
+		""
+	}
+}

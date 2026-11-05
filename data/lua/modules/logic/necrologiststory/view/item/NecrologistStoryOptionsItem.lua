@@ -21,19 +21,37 @@ function NecrologistStoryOptionsItem:onClickOption(item)
 
 	self.selectSection = item.section
 
-	self:refreshOptionList()
-
 	local storyConfig = self:getStoryConfig()
 	local optionId, optionIds = NecrologistStoryConfig.instance:getOptionIdByConfigAndIndex(storyConfig, item.index)
 
 	if optionId then
-		local mo = NecrologistStoryModel.instance:getCurStoryMO()
+		local mo = self:getStoryMo()
 
 		if mo then
 			mo:onSelectOption(optionId, optionIds)
+
+			if NecrologistStoryHelper.isMulOption(storyConfig) then
+				mo:markMulOptionSelected(optionId)
+
+				local sections = GameUtil.splitString2(storyConfig.param, true, "#", ",")
+				local allIds = {}
+
+				for i = 1, #sections do
+					local oid, _ = NecrologistStoryConfig.instance:getOptionIdByConfigAndIndex(storyConfig, i)
+
+					if oid then
+						table.insert(allIds, oid)
+					end
+				end
+
+				if not mo:isAllMulOptionSelected(allIds) then
+					mo:setMulOptionReplay()
+				end
+			end
 		end
 	end
 
+	self:refreshOptionList()
 	NecrologistStoryController.instance:dispatchEvent(NecrologistStoryEvent.OnSelectSection, self.selectSection)
 end
 
@@ -73,25 +91,41 @@ function NecrologistStoryOptionsItem:updateOptionItem(item, data, optionDesc)
 	gohelper.setActive(item.go, true)
 
 	local hasSelect = self.selectSection ~= nil
+	local storyConfig = self:getStoryConfig()
+	local isMulOption = NecrologistStoryHelper.isMulOption(storyConfig)
+	local canClick = not hasSelect
 
-	if hasSelect then
-		gohelper.setActive(item.goCanClick, false)
+	if isMulOption then
+		local mo = self:getStoryMo()
+		local optionId, _ = NecrologistStoryConfig.instance:getOptionIdByConfigAndIndex(storyConfig, item.index)
+		local isSelect = mo and optionId and mo:isMulOptionSelected(optionId) or false
 
+		if hasSelect then
+			gohelper.setActive(item.goSelect, isSelect)
+			gohelper.setActive(item.goUnSelect, not isSelect)
+		else
+			canClick = not isSelect
+
+			gohelper.setActive(item.goSelect, isSelect)
+			gohelper.setActive(item.goUnSelect, false)
+		end
+	elseif hasSelect then
 		local isSelect = self.selectSection == section
 
 		gohelper.setActive(item.goSelect, isSelect)
 		gohelper.setActive(item.goUnSelect, not isSelect)
 	else
-		gohelper.setActive(item.goCanClick, true)
 		gohelper.setActive(item.goSelect, false)
 		gohelper.setActive(item.goUnSelect, false)
 	end
 
-	item.txtContent.text = optionDesc
-	item.btn.button.interactable = not hasSelect
+	gohelper.setActive(item.goCanClick, canClick)
 
-	gohelper.setActive(item.goRaycast, not hasSelect)
-	gohelper.setActive(item.goLoop, not hasSelect and item.buttonType == 1)
+	item.txtContent.text = optionDesc
+	item.btn.button.interactable = canClick
+
+	gohelper.setActive(item.goRaycast, canClick)
+	gohelper.setActive(item.goLoop, canClick and item.buttonType == 1)
 end
 
 function NecrologistStoryOptionsItem:getOptionItem(index)

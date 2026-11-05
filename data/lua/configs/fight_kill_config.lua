@@ -1,0 +1,28 @@
+﻿-- chunkname: @configs/fight_kill_config.lua
+
+return {
+	{
+		312801,
+		"v3a0_kr/kr_innate_01",
+		"mountroot",
+		431280151,
+		1.3,
+		0.333
+	},
+	{
+		312802,
+		"v3a0_kr/kr_innate_01",
+		"mountroot",
+		431280151,
+		1.3,
+		0.333
+	},
+	{
+		312803,
+		"v3a7_kr/kr_innate_01",
+		"mountroot",
+		431280151,
+		1.3,
+		0.333
+	}
+}

@@ -118,6 +118,10 @@ function NecrologistStoryBaseItem:getItemType()
 	return self._storyConfig.type
 end
 
+function NecrologistStoryBaseItem:getStoryMo()
+	return self.storyView:getStoryMo()
+end
+
 function NecrologistStoryBaseItem:getStoryConfig()
 	return self._storyConfig
 end

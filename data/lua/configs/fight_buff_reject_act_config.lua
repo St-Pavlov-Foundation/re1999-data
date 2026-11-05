@@ -1,0 +1,28 @@
+﻿-- chunkname: @configs/fight_buff_reject_act_config.lua
+
+return {
+	{
+		30830131,
+		"hit"
+	},
+	{
+		31130131,
+		"hit"
+	},
+	{
+		31130135,
+		"hit"
+	},
+	{
+		31130136,
+		"hit"
+	},
+	{
+		31130137,
+		"hit"
+	},
+	{
+		229102,
+		"hit"
+	}
+}

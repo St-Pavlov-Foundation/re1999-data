@@ -1425,7 +1425,7 @@ function RoomProductionHelper.formatItemNum(num)
 	return num > 99 and "99+" or tostring(num)
 end
 
-function RoomProductionHelper.openRoomFormulaMsgBoxView(costItemAndFormulaIdList, produceDataList, lineId, cb, cbObj, combineCb, combineCbObj)
+function RoomProductionHelper.openRoomFormulaMsgBoxView(costItemAndFormulaIdList, produceDataList, lineId, cb, cbObj, combineCb, combineCbObj, lackTalentItemList, source, sourceParam)
 	local param = {}
 
 	param.costItemAndFormulaIdList = costItemAndFormulaIdList
@@ -1435,6 +1435,9 @@ function RoomProductionHelper.openRoomFormulaMsgBoxView(costItemAndFormulaIdList
 	param.callbackObj = cbObj
 	param.combineCb = combineCb
 	param.combineCbObj = combineCbObj
+	param.lackTalentItemList = lackTalentItemList
+	param.source = source
+	param.sourceParam = sourceParam
 
 	ViewMgr.instance:openView(ViewName.RoomFormulaMsgBoxView, param)
 end

@@ -1,0 +1,26 @@
+﻿-- chunkname: @configs/task_activity_show_config.lua
+
+return {
+	{
+		160002,
+		1,
+		"展示页任务",
+		"完成人工梦游关卡",
+		"完成浅眠域ORD-3【浮游公园α】可得 <color=#FAB77D>十四行诗的造像×1</color>",
+		"WeekwalkLayerId",
+		"103",
+		1,
+		1,
+		0,
+		1,
+		"",
+		"",
+		0,
+		"",
+		"",
+		0,
+		"1#133023#1",
+		51,
+		10011
+	}
+}

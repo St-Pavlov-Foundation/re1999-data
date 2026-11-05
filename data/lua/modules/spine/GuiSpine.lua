@@ -5,6 +5,14 @@ module("modules.spine.GuiSpine", package.seeall)
 local GuiSpine = class("GuiSpine", BaseSpine)
 local imgMatPath = "spine/spine_ui_image.mat"
 local rtSrcMatPath = "spine/spine_ui_rt_source.mat"
+local screenCenterResList = {
+	"301702_xiali_p",
+	"303301_ttt_p",
+	"303302_ttt_p",
+	"303303_ttt_p",
+	"305901_door_p",
+	"305903_m_p"
+}
 
 GuiSpine.TypeSkeletonGraphic = typeof(Spine.Unity.SkeletonGraphic)
 GuiSpine.TypeUISpineAnimationEvent = typeof(ZProj.UISpineAnimationEvent)
@@ -61,7 +69,13 @@ function GuiSpine:_clear()
 end
 
 function GuiSpine:_useScreenCenter(resPath)
-	return string.find(resPath, "301702_xiali_p") or string.find(resPath, "303301_ttt_p") or string.find(resPath, "303302_ttt_p") or string.find(resPath, "303303_ttt_p") or string.find(resPath, "305901_door_p")
+	for _, v in ipairs(screenCenterResList) do
+		if string.find(resPath, v) then
+			return true
+		end
+	end
+
+	return false
 end
 
 function GuiSpine:_onResLoaded()

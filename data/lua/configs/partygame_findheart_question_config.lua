@@ -1,0 +1,16 @@
+﻿-- chunkname: @configs/partygame_findheart_question_config.lua
+
+return {
+	{
+		1,
+		"选<color=#ff3535>绿色</color>的<sprite=0>"
+	},
+	{
+		2,
+		"选<color=#3fd7f6>蓝色</color>的<sprite=0>"
+	},
+	{
+		3,
+		"选<color=#33ff33>红色</color>的<sprite=0>"
+	}
+}

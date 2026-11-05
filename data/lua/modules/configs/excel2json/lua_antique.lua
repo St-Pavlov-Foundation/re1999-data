@@ -26,9 +26,36 @@ local mlStringKey = {
 	name = 1,
 	desc = 3
 }
+local _configList, _configDict
+local configPath = "configs.antique_config"
 
-function lua_antique.onLoad(json)
-	lua_antique.configList, lua_antique.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_antique, "configList", _configList)
+	rawset(lua_antique, "configDict", _configDict)
+end
+
+setmetatable(lua_antique, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_antique.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_antique, "configList", nil)
+	rawset(lua_antique, "configDict", nil)
 end
 
 return lua_antique

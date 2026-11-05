@@ -1,0 +1,12 @@
+﻿-- chunkname: @configs/dice_config.lua
+
+return {
+	{
+		1,
+		"1#1#1#2#2#4"
+	},
+	{
+		2,
+		"8#8#8#8#8#8"
+	}
+}

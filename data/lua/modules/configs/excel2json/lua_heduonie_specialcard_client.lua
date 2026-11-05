@@ -13,9 +13,36 @@ local primaryKey = {
 	"skillLevel"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.heduonie_specialcard_client_config"
 
-function lua_heduonie_specialcard_client.onLoad(json)
-	lua_heduonie_specialcard_client.configList, lua_heduonie_specialcard_client.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_heduonie_specialcard_client, "configList", _configList)
+	rawset(lua_heduonie_specialcard_client, "configDict", _configDict)
+end
+
+setmetatable(lua_heduonie_specialcard_client, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_heduonie_specialcard_client.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_heduonie_specialcard_client, "configList", nil)
+	rawset(lua_heduonie_specialcard_client, "configDict", nil)
 end
 
 return lua_heduonie_specialcard_client

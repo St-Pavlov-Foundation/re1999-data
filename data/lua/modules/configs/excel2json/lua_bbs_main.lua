@@ -30,9 +30,36 @@ local mlStringKey = {
 	bbsName = 4,
 	decs = 3
 }
+local _configList, _configDict
+local configPath = "configs.bbs_main_config"
 
-function lua_bbs_main.onLoad(json)
-	lua_bbs_main.configList, lua_bbs_main.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_bbs_main, "configList", _configList)
+	rawset(lua_bbs_main, "configDict", _configDict)
+end
+
+setmetatable(lua_bbs_main, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_bbs_main.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_bbs_main, "configList", nil)
+	rawset(lua_bbs_main, "configDict", nil)
 end
 
 return lua_bbs_main

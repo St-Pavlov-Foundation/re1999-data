@@ -13,10 +13,36 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.room_block_color_param_config"
 
-function lua_room_block_color_param.onLoad(json)
-	lua_room_block_color_param.confgData = json
-	lua_room_block_color_param.configList, lua_room_block_color_param.configDict = lua_room_block_color_param.json_parse(json)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = lua_room_block_color_param.json_parse(config)
+
+	rawset(lua_room_block_color_param, "configList", _configList)
+	rawset(lua_room_block_color_param, "configDict", _configDict)
+end
+
+setmetatable(lua_room_block_color_param, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_room_block_color_param.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_room_block_color_param, "configList", nil)
+	rawset(lua_room_block_color_param, "configDict", nil)
 end
 
 function lua_room_block_color_param.json_parse(json)

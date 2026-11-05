@@ -32,7 +32,10 @@ end
 
 function NecrologistStoryCommonView:addEvents()
 	self:addClickCb(self.btnReward, self.onClickBtnReward, self)
-	self:addClickCb(self.btnReview, self.onClickBtnReview, self)
+
+	if self.btnReview then
+		self:addClickCb(self.btnReview, self.onClickBtnReview, self)
+	end
 
 	if self.btnBranch then
 		self:addClickCb(self.btnBranch, self.onClickBtnBranch, self)
@@ -43,7 +46,10 @@ end
 
 function NecrologistStoryCommonView:removeEvents()
 	self:removeClickCb(self.btnReward)
-	self:removeClickCb(self.btnReview)
+
+	if self.btnReview then
+		self:removeClickCb(self.btnReview)
+	end
 
 	if self.btnBranch then
 		self:removeClickCb(self.btnBranch)

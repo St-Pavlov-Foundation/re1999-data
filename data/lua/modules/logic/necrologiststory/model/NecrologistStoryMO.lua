@@ -24,6 +24,8 @@ function NecrologistStoryMO:initData()
 	self._storyGroup = storyGroup
 	self._stepIndexDict = {}
 	self._skipNum = 0
+	self._pendingMulOptionReplay = false
+	self._mulOptionSelectedDict = {}
 
 	if not storyGroup then
 		return
@@ -32,11 +34,17 @@ function NecrologistStoryMO:initData()
 	self:setSection(self.mainSection)
 end
 
-function NecrologistStoryMO:setSection(sectionId)
+function NecrologistStoryMO:setSection(sectionId, index)
 	self._sectionId = sectionId
 	self._storyList = self._storyGroup[self._sectionId] or {}
 	self._stepCount = #self._storyList
-	self._stepIndex = self._stepIndexDict[self._sectionId] or 0
+
+	if index then
+		self._stepIndex = index
+	else
+		self._stepIndex = self._stepIndexDict[self._sectionId] or 0
+	end
+
 	self._stepIndexDict[self._sectionId] = self._stepIndex
 end
 
@@ -99,6 +107,10 @@ function NecrologistStoryMO:getNextStepConfig()
 		storyList = self._storyGroup[sectionId] or {}
 		stepCount = #storyList
 		stepIndex = self._stepIndexDict[sectionId] or 0
+
+		if self._pendingMulOptionReplay then
+			return storyList and storyList[stepIndex]
+		end
 	end
 
 	stepIndex = stepIndex + 1
@@ -110,6 +122,12 @@ function NecrologistStoryMO:runNextStep()
 	if self._stepIndex >= self._stepCount then
 		NecrologistStoryController.instance:dispatchEvent(NecrologistStoryEvent.OnSectionEnd, self._sectionId)
 		self:setSection(self.mainSection)
+
+		if self._pendingMulOptionReplay then
+			self._pendingMulOptionReplay = false
+
+			return
+		end
 	end
 
 	self._stepIndex = self._stepIndex + 1
@@ -280,6 +298,28 @@ function NecrologistStoryMO:setWeather(weather)
 	end
 
 	NecrologistStoryController.instance:dispatchEvent(NecrologistStoryEvent.OnChangeWeather, weather)
+end
+
+function NecrologistStoryMO:isMulOptionSelected(optionId)
+	return self._mulOptionSelectedDict[optionId] or false
+end
+
+function NecrologistStoryMO:markMulOptionSelected(optionId)
+	self._mulOptionSelectedDict[optionId] = true
+end
+
+function NecrologistStoryMO:setMulOptionReplay()
+	self._pendingMulOptionReplay = true
+end
+
+function NecrologistStoryMO:isAllMulOptionSelected(optionIds)
+	for _, optionId in ipairs(optionIds) do
+		if not self._mulOptionSelectedDict[optionId] then
+			return false
+		end
+	end
+
+	return true
 end
 
 return NecrologistStoryMO

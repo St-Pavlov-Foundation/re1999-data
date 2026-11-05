@@ -27,9 +27,36 @@ local mlStringKey = {
 	levelDesc = 3,
 	desc = 2
 }
+local _configList, _configDict
+local configPath = "configs.activity191_relation_config"
 
-function lua_activity191_relation.onLoad(json)
-	lua_activity191_relation.configList, lua_activity191_relation.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_activity191_relation, "configList", _configList)
+	rawset(lua_activity191_relation, "configDict", _configDict)
+end
+
+setmetatable(lua_activity191_relation, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_activity191_relation.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_activity191_relation, "configList", nil)
+	rawset(lua_activity191_relation, "configDict", nil)
 end
 
 return lua_activity191_relation

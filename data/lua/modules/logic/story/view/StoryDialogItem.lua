@@ -147,17 +147,16 @@ function StoryDialogItem:hideDialog()
 		self._markTopMat:DisableKeyword("_GRADUAL_ON")
 	end
 
-	if self._subMeshs then
-		for _, v in pairs(self._subMeshs) do
-			if v.materialForRendering then
-				v.materialForRendering:DisableKeyword("_GRADUAL_ON")
-			end
+	local _subMeshs = self:getSubMesh()
+
+	for _, v in pairs(_subMeshs) do
+		if v.materialForRendering then
+			v.materialForRendering:DisableKeyword("_GRADUAL_ON")
 		end
 	end
 
-	UIBlockMgr.instance:endBlock("delayShow")
-	TaskDispatcher.cancelTask(self._delayShow, self)
 	self:_showMagicItem(false)
+	self:_hideClue()
 
 	self._finishCallback = nil
 	self._finishCallbackObj = nil
@@ -190,6 +189,7 @@ function StoryDialogItem:playDialog(diaTxt, stepCo, callback, callbackobj)
 	end
 
 	self:_showMagicItem(false)
+	self:_hideClue()
 	self:playNormalText(diatxt, callback, callbackobj)
 end
 
@@ -245,9 +245,7 @@ function StoryDialogItem:_magicConFinished()
 		return
 	end
 
-	if self._finishCallback then
-		self._finishCallback(self._finishCallbackObj)
-	end
+	self:onAllFinished()
 end
 
 function StoryDialogItem:clearSlideDialog()
@@ -312,7 +310,6 @@ function StoryDialogItem:playNormalText(txt, callback, callbackobj)
 	self._playingAudioId = 0
 	self._finishCallback = callback
 	self._finishCallbackObj = callbackobj
-	self._markIndexs = StoryTool.getMarkTextIndexs(self._txt)
 	self._subemtext = StoryTool.filterSpTag(self._txt)
 	self._markTopList = StoryTool.getMarkTopTextList(self._subemtext)
 	self._subemtext = StoryTool.filterMarkTop(self._subemtext)
@@ -341,6 +338,9 @@ function StoryDialogItem:playNormalText(txt, callback, callbackobj)
 		end
 	end
 
+	self:_parseSegments()
+
+	self._subemtext = StoryTool.stripSegmentTags(self._subemtext)
 	self._isSoftLight = self._stepCo and self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.SoftLight
 
 	gohelper.setActive(self._gosoftlightcontent, self._isSoftLight)
@@ -676,53 +676,11 @@ end
 function StoryDialogItem:playHardIn()
 	self:_showMagicItem(false)
 	gohelper.setActive(self._gonormalcontent, true)
-	UIBlockMgr.instance:endBlock("delayShow")
-	TaskDispatcher.cancelTask(self._delayShow, self)
 	self:conFinished()
 end
 
 function StoryDialogItem:playGradualIn()
-	local height = UnityEngine.Screen.height
-
-	if self._conMat then
-		self._conMat:EnableKeyword("_GRADUAL_ON")
-		self._conMat:DisableKeyword("_DISSOLVE_ON")
-		self._conMat:SetFloat(self._LineMinYId, height)
-		self._conMat:SetFloat(self._LineMaxYId, height)
-	end
-
-	if self._markTopMat then
-		self._markTopMat:EnableKeyword("_GRADUAL_ON")
-		self._markTopMat:DisableKeyword("_DISSOLVE_ON")
-		self._markTopMat:SetFloat(self._LineMinYId, height)
-		self._markTopMat:SetFloat(self._LineMaxYId, height)
-	end
-
-	self._subMeshs = {}
-
-	local subMeshs = self._targetTxt.gameObject:GetComponentsInChildren(typeof(TMPro.TMP_SubMeshUI), true)
-
-	if subMeshs then
-		local iter = subMeshs:GetEnumerator()
-
-		while iter:MoveNext() do
-			local subMesh = iter.Current.gameObject:GetComponent(typeof(TMPro.TMP_SubMeshUI))
-
-			table.insert(self._subMeshs, subMesh)
-		end
-	end
-
-	for _, v in pairs(self._subMeshs) do
-		if v.materialForRendering then
-			v.materialForRendering:EnableKeyword("_GRADUAL_ON")
-			v.materialForRendering:DisableKeyword("_DISSOLVE_ON")
-			v.materialForRendering:SetFloat(self._LineMinYId, height)
-			v.materialForRendering:SetFloat(self._LineMaxYId, height)
-		end
-	end
-
-	self._dotMat:SetFloat(self._LineMinYId, height)
-	self._dotMat:SetFloat(self._LineMaxYId, height)
+	self:enableGradual()
 	self:_showMagicItem(false)
 	gohelper.setActive(self._gonormalcontent, true)
 
@@ -736,55 +694,12 @@ function StoryDialogItem:playGradualIn()
 		self._conTweenId = nil
 	end
 
-	UIBlockMgr.instance:startBlock("delayShow")
-	TaskDispatcher.cancelTask(self._delayShow, self)
-	TaskDispatcher.runDelay(self._delayShow, self, 0.05)
+	self:_delayShow()
 end
 
 function StoryDialogItem:_delayShow()
-	UIBlockMgr.instance:endBlock("delayShow")
-
-	local height = UnityEngine.Screen.height
-
-	self._dotMat:SetFloat(self._LineMinYId, height)
-	self._dotMat:SetFloat(self._LineMaxYId, height)
-
 	if self._stepCo.conversation.type ~= StoryEnum.ConversationType.ScreenDialog then
 		self._conMark:SetMarksTop(self._markTopList)
-	end
-
-	self._textInfo = self._targetTxt:GetTextInfo(self._subemtext)
-	self._lineInfoList = {}
-
-	local totalVisibleCharacterCount = 0
-
-	for i = 1, self._textInfo.lineCount do
-		local lineInfo = self._textInfo.lineInfo[i - 1]
-		local prevLineTotalCount = totalVisibleCharacterCount + 1
-
-		totalVisibleCharacterCount = totalVisibleCharacterCount + lineInfo.visibleCharacterCount
-
-		table.insert(self._lineInfoList, {
-			lineInfo,
-			prevLineTotalCount,
-			totalVisibleCharacterCount
-		})
-	end
-
-	self._contentX, self._contentY, _ = transformhelper.getLocalPos(self._targetTxt.transform)
-	self._curLine = nil
-
-	local delay = self:_getDelayTime(totalVisibleCharacterCount)
-	local curLangType = GameLanguageMgr.instance:getLanguageTypeStoryIndex()
-
-	if curLangType == LangSettings.en then
-		delay = delay * 0.67
-	end
-
-	if self._conTweenId then
-		ZProj.TweenHelper.KillById(self._conTweenId)
-
-		self._conTweenId = nil
 	end
 
 	local disableAudio = self._stepCo.conversation.disableAudio[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] or false
@@ -802,17 +717,13 @@ function StoryDialogItem:_delayShow()
 	self._lastBottomLeft = 0
 	self._lineSpace = 0
 	self._hasUnderline = string.find(self._subemtext, "<u>") and string.find(self._subemtext, "</u>")
-	self._conTweenId = ZProj.TweenHelper.DOTweenFloat(1, totalVisibleCharacterCount, delay, self._conUpdate, self._onTextFinished, self, nil, EaseType.Linear)
+	self._currentSegmentIndex = 0
+
+	self:_playNextSegment()
 end
 
-function StoryDialogItem:_getDelayTime(characterCount)
-	local speed = 1
-
-	if self._txt and string.find(self._txt, "<speed=%d[%d.]*>") then
-		local speedTxt = string.sub(self._txt, string.find(self._txt, "<speed=%d[%d.]*>"))
-
-		speed = speedTxt and tonumber(string.match(speedTxt, "%d[%d.]*")) or 1
-	end
+function StoryDialogItem:_getDelayTime(characterCount, speed)
+	speed = speed or 1
 
 	local time = 0.08 * characterCount
 	local curStoryIndex = GameLanguageMgr.instance:getLanguageTypeStoryIndex()
@@ -824,6 +735,144 @@ function StoryDialogItem:_getDelayTime(characterCount)
 	time = time / speed
 
 	return time
+end
+
+function StoryDialogItem:_parseSegments()
+	self._playSegments = {}
+
+	local accumLen = 0
+	local accumText = ""
+	local firstDelay = 0.05
+	local segs, clueRegions = StoryTool.parseTagSegments(self._subemtext)
+
+	self._clueList = clueRegions or {}
+
+	for _, seg in ipairs(segs) do
+		if seg.text and #seg.text > 0 then
+			accumText = accumText .. seg.text
+
+			local regions = {}
+			local baseLen = accumLen
+
+			for _, sr in ipairs(seg.speedRegions) do
+				local len = GameUtil.utf8len(sr.text)
+
+				table.insert(regions, {
+					speed = sr.speed,
+					startChar = baseLen,
+					endChar = baseLen + len - 1
+				})
+
+				baseLen = baseLen + len
+			end
+
+			accumLen = baseLen
+
+			table.insert(self._playSegments, {
+				wait = seg.wait + firstDelay,
+				text = accumText,
+				speedRegions = regions
+			})
+
+			firstDelay = 0
+		end
+	end
+end
+
+function StoryDialogItem:_playNextSegment()
+	self._currentSegmentIndex = self._currentSegmentIndex + 1
+
+	local seg = self._playSegments[self._currentSegmentIndex]
+
+	if not seg then
+		self:_onTextFinished()
+
+		return
+	end
+
+	self._currentSeg = seg
+	self._currentRegionIndex = 0
+
+	if seg.wait > 0 then
+		TaskDispatcher.runDelay(self._startSegmentTween, self, seg.wait)
+	else
+		self:_startSegmentTween()
+	end
+end
+
+function StoryDialogItem:_startSegmentTween()
+	local seg = self._currentSeg
+
+	if not seg then
+		return
+	end
+
+	local region = seg.speedRegions[self._currentRegionIndex + 1]
+
+	if not region then
+		self._currentSeg = nil
+
+		self:_onSegmentFinished()
+
+		return
+	end
+
+	self._currentRegionIndex = self._currentRegionIndex + 1
+
+	if self._currentRegionIndex == 1 then
+		self:changeGradualWidth(40, self:_getDelayTime(1, region.speed))
+
+		local metaText = self._playSegments[#self._playSegments].text
+
+		self._targetTxt.text = metaText
+		self._contentX, self._contentY, _ = transformhelper.getLocalPos(self._targetTxt.transform)
+		self._textInfo = self._targetTxt:GetTextInfo(metaText)
+		self._lineInfoList = {}
+
+		local totalCharacterCount = 0
+
+		for i = 1, self._textInfo.lineCount do
+			local lineInfo = self._textInfo.lineInfo[i - 1]
+			local prevLineTotalCount = totalCharacterCount
+
+			totalCharacterCount = totalCharacterCount + lineInfo.characterCount
+
+			table.insert(self._lineInfoList, {
+				lineInfo,
+				prevLineTotalCount,
+				totalCharacterCount - 1
+			})
+		end
+
+		self._totalCharCount = totalCharacterCount
+	end
+
+	if self._conTweenId then
+		ZProj.TweenHelper.KillById(self._conTweenId)
+
+		self._conTweenId = nil
+	end
+
+	local startChar = region.startChar
+	local endChar = region.endChar + 1
+	local charCount = endChar - startChar
+	local delay = self:_getDelayTime(charCount, region.speed)
+
+	self._conTweenId = ZProj.TweenHelper.DOTweenFloat(startChar, endChar, delay, self._conUpdate, self._onRegionFinished, self, nil, EaseType.Linear)
+end
+
+function StoryDialogItem:_onRegionFinished()
+	if self._conTweenId then
+		ZProj.TweenHelper.KillById(self._conTweenId)
+
+		self._conTweenId = nil
+	end
+
+	self:_startSegmentTween()
+end
+
+function StoryDialogItem:_onSegmentFinished()
+	self:_playNextSegment()
 end
 
 function StoryDialogItem:_playConAudio()
@@ -884,43 +933,7 @@ end
 
 function StoryDialogItem:_onTextFinished()
 	self:_showMagicItem(false)
-
-	if self._conTweenId then
-		ZProj.TweenHelper.KillById(self._conTweenId)
-
-		self._conTweenId = nil
-	end
-
-	local x, y, z = transformhelper.getLocalPos(self._targetTxt.transform)
-
-	transformhelper.setLocalPos(self._targetTxt.transform, x, y, 0)
-	self._conMat:DisableKeyword("_GRADUAL_ON")
-	self._conMat:SetFloat(self._LineMinYId, 0)
-	self._conMat:SetFloat(self._LineMaxYId, 0)
-
-	self._subMeshs = {}
-
-	local subMeshs = self._targetTxt.gameObject:GetComponentsInChildren(typeof(TMPro.TMP_SubMeshUI), true)
-
-	if subMeshs then
-		local iter = subMeshs:GetEnumerator()
-
-		while iter:MoveNext() do
-			local subMesh = iter.Current.gameObject:GetComponent(typeof(TMPro.TMP_SubMeshUI))
-
-			table.insert(self._subMeshs, subMesh)
-		end
-	end
-
-	for _, v in pairs(self._subMeshs) do
-		if v.sharedMaterial then
-			v.sharedMaterial = self._fontNormalMat
-
-			v.sharedMaterial:DisableKeyword("_GRADUAL_ON")
-		end
-	end
-
-	self._textShowFinished = true
+	self:clearGradual()
 
 	local isAuto = StoryModel.instance:isStoryAuto()
 	local isLimitNoInteractLock = StoryModel.instance:isLimitNoInteractLock(self._stepCo)
@@ -931,6 +944,8 @@ function StoryDialogItem:_onTextFinished()
 
 	if not isAuto or self._playingAudioId == 0 then
 		self:conFinished()
+	else
+		self:_showClue(self.onAllFinished, self)
 	end
 end
 
@@ -968,18 +983,17 @@ function StoryDialogItem:_conUpdate(value)
 	local screenWidth = UnityEngine.Screen.width
 	local contentTransform = self._targetTxt.transform
 	local uiCamera = CameraMgr.instance:getUICamera()
+	local characterInfo = self._textInfo.characterInfo
+	local charIndex = math.floor(value)
+	local _subMeshs = self:getSubMesh()
 
-	self._subMeshs = {}
+	for _, mesh in pairs(_subMeshs) do
+		if mesh.sharedMaterial then
+			if self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.SoftLight then
+				break
+			end
 
-	local subMeshs = self._targetTxt.gameObject:GetComponentsInChildren(typeof(TMPro.TMP_SubMeshUI), true)
-
-	if subMeshs then
-		local iter = subMeshs:GetEnumerator()
-
-		while iter:MoveNext() do
-			local subMesh = iter.Current.gameObject:GetComponent(typeof(TMPro.TMP_SubMeshUI))
-
-			table.insert(self._subMeshs, subMesh)
+			mesh.sharedMaterial = self._fontNormalMat
 		end
 	end
 
@@ -988,8 +1002,7 @@ function StoryDialogItem:_conUpdate(value)
 		local startCount = v[2]
 		local endCount = v[3]
 
-		if startCount <= value and value <= endCount then
-			local characterInfo = self._textInfo.characterInfo
+		if startCount <= charIndex and charIndex <= endCount then
 			local firstChar = characterInfo[lineInfo.firstVisibleCharacterIndex]
 			local lastChar = characterInfo[lineInfo.lastVisibleCharacterIndex]
 			local firstBL = uiCamera:WorldToScreenPoint(contentTransform:TransformPoint(firstChar.bottomLeft))
@@ -1022,18 +1035,6 @@ function StoryDialogItem:_conUpdate(value)
 
 			maxTL.y = maxtly
 
-			local lastBR = uiCamera:WorldToScreenPoint(contentTransform:TransformPoint(lastChar.bottomRight))
-
-			for _, mesh in pairs(self._subMeshs) do
-				if mesh.sharedMaterial then
-					if self._stepCo.conversation.effType == StoryEnum.ConversationEffectType.SoftLight then
-						break
-					end
-
-					mesh.sharedMaterial = self._fontNormalMat
-				end
-			end
-
 			if i == 1 then
 				if self._hasUnderline then
 					self._conMat:SetFloat(self._LineMinYId, maxBL.y - 4)
@@ -1055,23 +1056,11 @@ function StoryDialogItem:_conUpdate(value)
 
 			self._lastBottomLeft = maxBL.y
 
-			local go = self._targetTxt.gameObject
-
-			gohelper.setActive(go, false)
-			gohelper.setActive(go, true)
-
-			local rate = startCount == endCount and 1 or (value - startCount) / (endCount - startCount)
-			local screenPosX = Mathf.Lerp(maxBL.x - 10, lastBR.x + 10, rate)
-			local isSoftLight = self:_isSoftLightStep()
-			local posZ = isSoftLight and 0 or 1 - screenPosX / screenWidth
-
-			transformhelper.setLocalPos(self._txtcontentcn.transform, self._contentX, self._contentY, posZ)
-
-			if isSoftLight then
+			if self:_isSoftLightStep() then
 				self._conMat:SetFloat(self._LineMinYId, 0)
 				self._conMat:SetFloat(self._LineMaxYId, 0)
 
-				for _, mesh in pairs(self._subMeshs) do
+				for _, mesh in pairs(_subMeshs) do
 					if mesh.materialForRendering then
 						mesh.materialForRendering:SetFloat(self._LineMinYId, 0)
 						mesh.materialForRendering:SetFloat(self._LineMaxYId, 0)
@@ -1080,11 +1069,67 @@ function StoryDialogItem:_conUpdate(value)
 			end
 		end
 	end
+
+	local screenPosX
+
+	if charIndex >= self._totalCharCount then
+		local lastCi = characterInfo[self._totalCharCount - 1]
+
+		if lastCi then
+			local br = uiCamera:WorldToScreenPoint(contentTransform:TransformPoint(lastCi.bottomRight))
+
+			screenPosX = br.x
+		end
+	elseif charIndex >= 0 then
+		local ci = characterInfo[charIndex]
+
+		if ci then
+			local bl = uiCamera:WorldToScreenPoint(contentTransform:TransformPoint(ci.bottomLeft))
+			local br = uiCamera:WorldToScreenPoint(contentTransform:TransformPoint(ci.bottomRight))
+
+			screenPosX = Mathf.Lerp(bl.x, br.x, value - charIndex)
+		end
+	end
+
+	if screenPosX then
+		local go = self._targetTxt.gameObject
+
+		gohelper.setActive(go, false)
+		gohelper.setActive(go, true)
+
+		local posZ = self:_isSoftLightStep() and 0 or 1 - screenPosX / screenWidth
+
+		transformhelper.setLocalPos(self._targetTxt.transform, self._contentX, self._contentY, posZ)
+	end
+
+	local seg = self._currentSeg
+
+	if seg then
+		local curRegionIndex = self._currentRegionIndex
+		local region = seg.speedRegions[curRegionIndex + 1]
+
+		if not region then
+			local nextSeg = self._playSegments[self._currentSegmentIndex + 1]
+
+			if nextSeg and nextSeg.wait > 0 then
+				local curRegion = seg.speedRegions[curRegionIndex]
+				local lastCi = characterInfo[curRegion.endChar]
+				local curCi = charIndex <= self._totalCharCount and characterInfo[charIndex] or lastCi
+
+				if lastCi and curCi and lastCi.lineNumber == curCi.lineNumber then
+					local endX = uiCamera:WorldToScreenPoint(contentTransform:TransformPoint(lastCi.bottomRight)).x
+					local offset = math.max(0, endX - screenPosX)
+
+					if offset < 40 then
+						self:changeGradualWidth(offset)
+					end
+				end
+			end
+		end
+	end
 end
 
 function StoryDialogItem:conFinished()
-	self._textShowFinished = true
-
 	if self._dialogTextShowFinishedCallback then
 		self._dialogTextShowFinishedCallback(self._dialogTextShowFinishedCallbackObj)
 
@@ -1093,10 +1138,147 @@ function StoryDialogItem:conFinished()
 	end
 
 	if self._stepCo and (self._stepCo.conversation.type == StoryEnum.ConversationType.NoInteract or self._stepCo.conversation.type == StoryEnum.ConversationType.None) then
+		self:_showClue()
+
 		return
 	end
 
+	TaskDispatcher.cancelTask(self._startSegmentTween, self)
+
+	self._currentSeg = nil
+
 	self:_destoryMagic()
+	self:clearGradual()
+	self:_showMagicItem(false)
+	self:_showClue(self.onAllFinished, self)
+end
+
+function StoryDialogItem:onAllFinished()
+	self._textShowFinished = true
+
+	if self._finishCallback then
+		self._finishCallback(self._finishCallbackObj)
+	end
+end
+
+function StoryDialogItem:changeGradualWidth(width, time)
+	if self._gradualWidthTween then
+		ZProj.TweenHelper.KillById(self._gradualWidthTween)
+
+		self._gradualWidthTween = nil
+	end
+
+	if time and time > 0 then
+		local startWidth = self._gradualWidth or 0
+
+		self._gradualWidthTween = ZProj.TweenHelper.DOTweenFloat(startWidth, width, time, self.updateGradualWidth, nil, self, nil, EaseType.Linear)
+	else
+		self:updateGradualWidth(width)
+	end
+end
+
+function StoryDialogItem:updateGradualWidth(width)
+	if not self._isEnableGradual then
+		return
+	end
+
+	self._gradualWidth = width
+
+	local propKey = "_DissolveOffset"
+
+	if not self.offsetVector then
+		self.offsetVector = Vector4.New(1, 0, 0, 0)
+	end
+
+	self.offsetVector.y = width
+
+	if self._conMat then
+		self._conMat:SetVector(propKey, self.offsetVector)
+	end
+
+	if self._markTopMat then
+		self._markTopMat:SetVector(propKey, self.offsetVector)
+	end
+
+	local _subMeshs = self:getSubMesh()
+
+	for _, v in pairs(_subMeshs) do
+		if v.materialForRendering then
+			v.materialForRendering:SetVector(propKey, self.offsetVector)
+		end
+	end
+
+	if self._dotMat then
+		self._dotMat:SetVector(propKey, self.offsetVector)
+	end
+end
+
+function StoryDialogItem:enableGradual()
+	if self._isEnableGradual then
+		return
+	end
+
+	self._isEnableGradual = true
+
+	local height = UnityEngine.Screen.height
+
+	if self._conMat then
+		self._conMat:EnableKeyword("_GRADUAL_ON")
+		self._conMat:DisableKeyword("_DISSOLVE_ON")
+		self._conMat:SetFloat(self._LineMinYId, height)
+		self._conMat:SetFloat(self._LineMaxYId, height)
+	end
+
+	if self._markTopMat then
+		self._markTopMat:EnableKeyword("_GRADUAL_ON")
+		self._markTopMat:DisableKeyword("_DISSOLVE_ON")
+		self._markTopMat:SetFloat(self._LineMinYId, height)
+		self._markTopMat:SetFloat(self._LineMaxYId, height)
+	end
+
+	local _subMeshs = self:getSubMesh()
+
+	for _, v in pairs(_subMeshs) do
+		if v.materialForRendering then
+			v.materialForRendering:EnableKeyword("_GRADUAL_ON")
+			v.materialForRendering:DisableKeyword("_DISSOLVE_ON")
+			v.materialForRendering:SetFloat(self._LineMinYId, height)
+			v.materialForRendering:SetFloat(self._LineMaxYId, height)
+		end
+	end
+
+	self._dotMat:SetFloat(self._LineMinYId, height)
+	self._dotMat:SetFloat(self._LineMaxYId, height)
+end
+
+function StoryDialogItem:getSubMesh()
+	local _subMeshs = {}
+
+	if not self._targetTxt then
+		return _subMeshs
+	end
+
+	local subMeshs = self._targetTxt.gameObject:GetComponentsInChildren(typeof(TMPro.TMP_SubMeshUI), true)
+
+	if subMeshs then
+		local iter = subMeshs:GetEnumerator()
+
+		while iter:MoveNext() do
+			local subMesh = iter.Current.gameObject:GetComponent(typeof(TMPro.TMP_SubMeshUI))
+
+			table.insert(_subMeshs, subMesh)
+		end
+	end
+
+	return _subMeshs
+end
+
+function StoryDialogItem:clearGradual()
+	if not self._isEnableGradual then
+		return
+	end
+
+	self._isEnableGradual = false
 
 	if self._conTweenId then
 		ZProj.TweenHelper.KillById(self._conTweenId)
@@ -1107,38 +1289,17 @@ function StoryDialogItem:conFinished()
 	if self._conMat then
 		self._conMat:SetFloat(self._LineMinYId, 0)
 		self._conMat:SetFloat(self._LineMaxYId, 0)
+		self._conMat:DisableKeyword("_GRADUAL_ON")
 	end
 
-	if self._targetTxt then
-		local x, y, z = transformhelper.getLocalPos(self._targetTxt.transform)
+	local _subMeshs = self:getSubMesh()
 
-		transformhelper.setLocalPos(self._targetTxt.transform, x, y, 0)
-
-		self._subMeshs = {}
-
-		local subMeshs = self._targetTxt.gameObject:GetComponentsInChildren(typeof(TMPro.TMP_SubMeshUI), true)
-
-		if subMeshs then
-			local iter = subMeshs:GetEnumerator()
-
-			while iter:MoveNext() do
-				local subMesh = iter.Current.gameObject:GetComponent(typeof(TMPro.TMP_SubMeshUI))
-
-				table.insert(self._subMeshs, subMesh)
-			end
+	for _, v in pairs(_subMeshs) do
+		if v.materialForRendering then
+			v.materialForRendering:SetFloat(self._LineMinYId, 0)
+			v.materialForRendering:SetFloat(self._LineMaxYId, 0)
+			v.materialForRendering:DisableKeyword("_GRADUAL_ON")
 		end
-
-		for _, v in pairs(self._subMeshs) do
-			if v.sharedMaterial then
-				v.sharedMaterial:DisableKeyword("_GRADUAL_ON")
-			end
-		end
-	end
-
-	self:_showMagicItem(false)
-
-	if self._finishCallback then
-		self._finishCallback(self._finishCallbackObj)
 	end
 end
 
@@ -1158,6 +1319,24 @@ function StoryDialogItem:playWordByWord(callback, callbackobj)
 			callback(callbackobj)
 		end
 	end)
+end
+
+function StoryDialogItem:_showClue(callback, callbackobj)
+	if not self._clueEff then
+		self._clueEff = StoryDialogEffsClue.New()
+	end
+
+	if self._clueEff:isCluePlaying() then
+		self._clueEff:directShow()
+	else
+		self._clueEff:start(self._targetTxt, self._clueList, callback, callbackobj)
+	end
+end
+
+function StoryDialogItem:_hideClue()
+	if self._clueEff then
+		self._clueEff:clear()
+	end
 end
 
 function StoryDialogItem:startAutoEnterNext()
@@ -1213,8 +1392,6 @@ function StoryDialogItem:_destoryMagic()
 end
 
 function StoryDialogItem:destroy()
-	UIBlockMgr.instance:endBlock("delayShow")
-
 	if self._targetTxt then
 		self._targetTxt.fontSharedMaterial = self._fontNormalMat
 		self._targetTxt = nil
@@ -1224,6 +1401,7 @@ function StoryDialogItem:destroy()
 	TaskDispatcher.cancelTask(self._playConAudio, self)
 	TaskDispatcher.cancelTask(self._onSecond, self)
 	TaskDispatcher.cancelTask(self._waitSecondFinished, self)
+	TaskDispatcher.cancelTask(self._startSegmentTween, self)
 	self:stopConAudio()
 	self:_destoryMagic()
 
@@ -1245,8 +1423,6 @@ function StoryDialogItem:destroy()
 		self._effLoader = nil
 	end
 
-	TaskDispatcher.cancelTask(self._delayShow, self)
-
 	self._finishCallback = nil
 	self._finishCallbackObj = nil
 
@@ -1258,11 +1434,11 @@ function StoryDialogItem:destroy()
 		self._markTopMat:DisableKeyword("_GRADUAL_ON")
 	end
 
-	if self._subMeshs then
-		for _, v in pairs(self._subMeshs) do
-			if v.materialForRendering then
-				v.materialForRendering:DisableKeyword("_GRADUAL_ON")
-			end
+	local _subMeshs = self:getSubMesh()
+
+	for _, v in pairs(_subMeshs) do
+		if v.materialForRendering then
+			v.materialForRendering:DisableKeyword("_GRADUAL_ON")
 		end
 	end
 
@@ -1272,6 +1448,18 @@ function StoryDialogItem:destroy()
 		self._matLoader:dispose()
 
 		self._matLoader = nil
+	end
+
+	if self._gradualWidthTween then
+		ZProj.TweenHelper.KillById(self._gradualWidthTween)
+
+		self._gradualWidthTween = nil
+	end
+
+	if self._clueEff then
+		self._clueEff:destroy()
+
+		self._clueEff = nil
 	end
 end
 

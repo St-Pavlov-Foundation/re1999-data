@@ -13,8 +13,9 @@ AvProMgrConfig.UrlStoryVideoCompatible = "ui/viewres/story/view/storyviewvideoco
 AvProMgrConfig.UrlNicknameVideo = "ui/viewres/login/nicknamevideo.prefab"
 AvProMgrConfig.UrlNicknameVideoCompatible = "ui/viewres/login/nicknamevideocompatible.prefab"
 AvProMgrConfig.URLRolesprefabDict = {
-	["rolesstory/rolesprefab/305901_door_p/305901_door_p_light.prefab"] = "rolesstory/rolesprefab/305901_door_p/305901_door_p_light_compatible.prefab",
-	["rolesstory/rolesprefab/305901_door_p/305901_door_p.prefab"] = "rolesstory/rolesprefab/305901_door_p/305901_door_p_compatible.prefab"
+	["rolesstory/rolesprefab/v4a1_305903_m_p/305903_m_p_light.prefab"] = "rolesstory/rolesprefab/v4a1_305903_m_p/305903_m_p_light_compatible.prefab",
+	["rolesstory/rolesprefab/305901_door_p/305901_door_p.prefab"] = "rolesstory/rolesprefab/305901_door_p/305901_door_p_compatible.prefab",
+	["rolesstory/rolesprefab/305901_door_p/305901_door_p_light.prefab"] = "rolesstory/rolesprefab/305901_door_p/305901_door_p_light_compatible.prefab"
 }
 AvProMgrConfig.VideoMat = "ui/materials/dynamic/fight_video_brightness.mat"
 AvProMgrConfig.MatUberBrightnessId = UnityEngine.Shader.PropertyToID("_UberBrightness")

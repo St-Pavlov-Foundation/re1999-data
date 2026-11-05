@@ -102,7 +102,7 @@ function FightWorkEnterDistributeCards672803:showEffect()
 
 	animator.speed = FightModel.instance:getUISpeed()
 
-	animator:Play("fightskin_02_chupai1", 0, 0)
+	animator:Play("chupai1", 0, 0)
 	gohelper.setActive(self.effectList[2], true)
 	self:com_registTimer(function()
 		AudioMgr.instance:trigger(20300021)

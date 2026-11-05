@@ -45,7 +45,7 @@ function VersionActivity3_3IgorEnterView:onOpen()
 	self.actCo = ActivityConfig.instance:getActivityCo(self.actId)
 	self._txtDescr.text = self.actCo.actDesc
 
-	RedDotController.instance:addRedDot(self._goEnterRedDot, RedDotEnum.DotNode.Activity220Task, self.actId)
+	RedDotController.instance:addRedDot(self._goEnterRedDot, RedDotEnum.DotNode.PermanentActivity220Task, self.actId)
 	self:_refreshTime()
 	TaskDispatcher.runRepeat(self._refreshTime, self, TimeUtil.OneMinuteSecond)
 	self._animator:Play("open", 0, 0)

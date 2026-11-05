@@ -72,7 +72,7 @@ end
 function FightEffectComp:addHangEffect(effectName, hangPoint, side, release_time, cache_local_position, noProcess)
 	local effectFullPath = FightHelper.getEffectUrlWithLod(effectName)
 	local hangPointGO = self.entity:getHangPoint(hangPoint, noProcess)
-	local effectWrap = FightEffectPool.getEffect(effectFullPath, side or self.entity:getSide(), self._onEffectLoaded, self, hangPointGO)
+	local effectWrap = FightGameMgr.effectMgr:getEffect(effectFullPath, side or self.entity:getSide(), self._onEffectLoaded, self, hangPointGO)
 
 	self._playingEffectDict[effectWrap.uniqueId] = effectWrap
 
@@ -106,11 +106,11 @@ end
 
 function FightEffectComp:addGlobalEffect(effectName, side, release_time)
 	local effectFullPath = FightHelper.getEffectUrlWithLod(effectName)
-	local effectWrap = FightEffectPool.getEffect(effectFullPath, side or self.entity:getSide(), self._onEffectLoaded, self)
+	local effectWrap = FightGameMgr.effectMgr:getEffect(effectFullPath, side or self.entity:getSide(), self._onEffectLoaded, self)
 
 	self._playingEffectDict[effectWrap.uniqueId] = effectWrap
 
-	FightEffectPool.returnEffectToPoolContainer(effectWrap)
+	FightGameMgr.effectMgr:returnEffectToPoolContainer(effectWrap)
 
 	local audioId = AudioEffectMgr.instance:playAudioByEffectPath(effectFullPath)
 
@@ -243,8 +243,8 @@ function FightEffectComp:removeEffect(effectWrap)
 		self._playingEffectDict[uniqueId] = nil
 	end
 
-	FightEffectPool.returnEffectToPoolContainer(effectWrap)
-	FightEffectPool.returnEffect(effectWrap)
+	effectWrap:setActive(false)
+	effectWrap:disposeSelf()
 
 	if self.cache_effect then
 		self.cache_effect[uniqueId] = nil
@@ -423,7 +423,7 @@ end
 
 function FightEffectComp:_dealTimeEffect()
 	local tab = self._release_by_time
-	local containerGO = FightEffectPool.getPoolContainerGO()
+	local containerGO = FightGameMgr.effectMgr:getPoolContainerGO()
 	local transform = containerGO and containerGO.transform
 
 	if transform then

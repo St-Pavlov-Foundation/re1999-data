@@ -59,15 +59,7 @@ function FightRoundData:onConstructor(proto)
 
 	if proto:HasField("fightStepBytes") then
 		local fightStepBytes = UnzipBuffer(proto.fightStepBytes)
-		local charList = {}
-		local charIndex = 1
-
-		for i = 0, fightStepBytes.Length - 1 do
-			charList[charIndex] = stringChar(fightStepBytes[i])
-			charIndex = charIndex + 1
-		end
-
-		local list = decodeStep(tableConcat(charList, ""))
+		local list = decodeStep(tolua.tolstring(fightStepBytes))
 
 		self.fightStep = self:buildFightStep(list)
 		proto.fightStepBytes = ""

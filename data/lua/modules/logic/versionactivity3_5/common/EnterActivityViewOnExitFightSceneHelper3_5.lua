@@ -101,7 +101,7 @@ function EnterActivityViewOnExitFightSceneHelper.enterActivity13510(forceStartin
 	end)
 end
 
-function EnterActivityViewOnExitFightSceneHelper.enterActivity13513(forceStarting, exitFightGroup)
+function EnterActivityViewOnExitFightSceneHelper.enterActivitySeason123(forceStarting, exitFightGroup)
 	EnterActivityViewOnExitFightSceneHelper.enterVersionActivityDungeonCommon(EnterActivityViewOnExitFightSceneHelper._enterActivityDungeonAterFightSeason123, forceStarting, exitFightGroup)
 end
 

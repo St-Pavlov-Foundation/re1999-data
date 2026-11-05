@@ -1,0 +1,20 @@
+﻿-- chunkname: @configs/fight_luxi_skin_effect_config.lua
+
+return {
+	{
+		308603,
+		"born",
+		"buff/born/pre_v2a8_luxi_born#buff/born/pre_roleeffect_born_308603_lx",
+		2,
+		"mountroot#mountroot",
+		430860391
+	},
+	{
+		308603,
+		"die",
+		"v2a8_luxi/luxi_die#roleeffects/roleeffect_death_308603_lx",
+		2,
+		"mountroot#mountroot",
+		430860392
+	}
+}

@@ -128,7 +128,7 @@ function AudioBgmInfo:_initBgmDatas()
 	self:_addBgmData(AudioBgmEnum.Layer.Udimo, 0, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	self:_addBgmData(AudioBgmEnum.Layer.HuiDiaoLan, AudioEnum3_2.PermanentBgm.HuiDiaoLan, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	self:_addBgmData(AudioBgmEnum.Layer.BeiLiEr, AudioEnum3_2.PermanentBgm.BeiLiEr, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
-	self:_addBgmData(AudioBgmEnum.Layer.VersionActivity3_3Main, 0, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
+	self:_addBgmData(AudioBgmEnum.Layer.VersionActivity3_3Main, AudioEnum3_3.bgm.EnterView, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	self:_addBgmData(AudioBgmEnum.Layer.ArcadeOutSide, AudioEnum3_3.bgm.play_8bit_music_explore, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	self:_addBgmData(AudioBgmEnum.Layer.Igor, AudioEnum3_3.bgm.play_activitymusic_zuozhan_3_3, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	self:_addBgmData(AudioBgmEnum.Layer.ArcadeInSide, AudioEnum3_3.bgm.play_8bit_music_combat, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
@@ -160,13 +160,17 @@ function AudioBgmInfo:_initBgmDatas()
 	self:_addBgmData(AudioBgmEnum.Layer.VersionActivity4_0Main, 0, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	self:_addBgmData(AudioBgmEnum.Layer.College, CollegeAudioEnum.BGM, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 	self:_addBgmData(AudioBgmEnum.Layer.V4A0_SpLilya, AudioEnum4_0.SpLilya.play_battle_shiji_1_8_normalfight, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
+	self:_addBgmData(AudioBgmEnum.Layer.VersionActivity4_1Main, 0, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
+	self:_addBgmData(AudioBgmEnum.Layer.ArcadeSurvivorOutSide, AudioEnum3_3.bgm.play_8bit_music_explore, AudioEnum4_1.ArcadeSurvivorBgm.stop_ui_8bit_music)
+	self:_addBgmData(AudioBgmEnum.Layer.ArcadeSurvivorInSide, AudioEnum3_3.bgm.play_8bit_music_combat, AudioEnum4_1.ArcadeSurvivorBgm.stop_ui_8bit_music)
 end
 
 function AudioBgmInfo:_initBgmUsage()
 	self:_addBgmUsage({
 		AudioBgmEnum.Layer.Main
 	}, AudioBgmEnum.UsageType.Scene, {
-		SceneType.Main
+		SceneType.Main,
+		SceneType.Library
 	})
 	self:_addBgmUsage({
 		AudioBgmEnum.Layer.Explore
@@ -776,7 +780,8 @@ function AudioBgmInfo:_initBgmUsage()
 	self:_addBgmUsage({
 		AudioBgmEnum.Layer.VersionActivity3_3Main
 	}, AudioBgmEnum.UsageType.View, {
-		ViewName.VersionActivity3_3EnterView
+		ViewName.VersionActivity3_3EnterView,
+		ViewName.Permanent3_3EnterView
 	}, nil, nil, true)
 	self:_addBgmUsage({
 		AudioBgmEnum.Layer.ArcadeOutSide
@@ -935,6 +940,21 @@ function AudioBgmInfo:_initBgmUsage()
 		AudioBgmEnum.Layer.V4A0_SpLilya
 	}, AudioBgmEnum.UsageType.View, {
 		ViewName.SpLilyaGameView
+	}, nil, nil, true)
+	self:_addBgmUsage({
+		AudioBgmEnum.Layer.VersionActivity4_1Main
+	}, AudioBgmEnum.UsageType.View, {
+		ViewName.VersionActivity4_1EnterView
+	}, nil, nil, true)
+	self:_addBgmUsage({
+		AudioBgmEnum.Layer.ArcadeSurvivorOutSide
+	}, AudioBgmEnum.UsageType.View, {
+		ViewName.ArcadeSurvivorHallView
+	}, nil, nil, true)
+	self:_addBgmUsage({
+		AudioBgmEnum.Layer.ArcadeSurvivorInSide
+	}, AudioBgmEnum.UsageType.View, {
+		ViewName.ArcadeSurvivorGameView
 	}, nil, nil, true)
 end
 

@@ -21,9 +21,36 @@ local primaryKey = {
 	"actionName"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.skin_spine_action_config"
 
-function lua_skin_spine_action.onLoad(json)
-	lua_skin_spine_action.configList, lua_skin_spine_action.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_skin_spine_action, "configList", _configList)
+	rawset(lua_skin_spine_action, "configDict", _configDict)
+end
+
+setmetatable(lua_skin_spine_action, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_skin_spine_action.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_skin_spine_action, "configList", nil)
+	rawset(lua_skin_spine_action, "configDict", nil)
 end
 
 return lua_skin_spine_action

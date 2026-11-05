@@ -1,0 +1,44 @@
+﻿-- chunkname: @configs/room_building_occupy_config.lua
+
+return {
+	{
+		1,
+		"xiaowuliubianxing_0",
+		1
+	},
+	{
+		2,
+		"xiaowuliubianxing_0",
+		2
+	},
+	{
+		3,
+		"xiaowuliubianxing_0",
+		3
+	},
+	{
+		4,
+		"xiaowuliubianxing_0",
+		4
+	},
+	{
+		5,
+		"xiaowuliubianxing_0",
+		5
+	},
+	{
+		6,
+		"xiaowuliubianxing_0",
+		6
+	},
+	{
+		7,
+		"xiaowuliubianxing_0",
+		7
+	},
+	{
+		8,
+		"xiaowuliubianxing_0",
+		8
+	}
+}

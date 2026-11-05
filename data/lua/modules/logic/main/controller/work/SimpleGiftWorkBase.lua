@@ -139,6 +139,10 @@ function SimpleGiftWorkBase:_isBlock()
 	return UIBlockMgr.instance:isBlock() and true or false
 end
 
+function SimpleGiftWorkBase:getActivityCo(optActId)
+	return ActivityConfig.instance:getActivityCo(optActId or self._actId, true)
+end
+
 function SimpleGiftWorkBase:onGetViewNames()
 	assert(false, "please override this function, and return a table")
 end

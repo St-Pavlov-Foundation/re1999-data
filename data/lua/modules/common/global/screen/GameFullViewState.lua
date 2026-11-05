@@ -13,6 +13,7 @@ function GameFullViewState:ctor()
 	self._ignoreViewNames[ViewName.GMPostProcessView] = true
 	self._ignoreViewNames[ViewName.StoryBackgroundView] = true
 	self._ignoreViewNames[ViewName.V1a6_CachotCollectionSelectView] = true
+	self._ignoreViewNames[ViewName.HandbookSkinView] = true
 	self._ignoreSceneTypes = {}
 	self._ignoreSceneTypes[SceneType.Summon] = true
 	self._ignoreSceneTypes[SceneType.Explore] = true

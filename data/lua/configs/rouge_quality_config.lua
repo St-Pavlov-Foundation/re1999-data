@@ -1,0 +1,24 @@
+﻿-- chunkname: @configs/rouge_quality_config.lua
+
+return {
+	{
+		1,
+		"寻常",
+		"587FA1"
+	},
+	{
+		2,
+		"精巧",
+		"8D6993"
+	},
+	{
+		3,
+		"妙想",
+		"C8A25A"
+	},
+	{
+		4,
+		"珍奇",
+		"D07D45"
+	}
+}

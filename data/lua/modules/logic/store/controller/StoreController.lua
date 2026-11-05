@@ -191,6 +191,10 @@ function StoreController:readTab(jumpTab)
 end
 
 function StoreController:_readTab(storeId)
+	if storeId == StoreEnum.StoreId.HighSummon or storeId == StoreEnum.StoreId.LowSummon then
+		return
+	end
+
 	local dotInfo = RedDotModel.instance:getRedDotInfo(RedDotEnum.DotNode.StoreGoodsRead)
 
 	if dotInfo then

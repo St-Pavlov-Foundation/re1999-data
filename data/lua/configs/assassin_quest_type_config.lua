@@ -1,0 +1,19 @@
+﻿-- chunkname: @configs/assassin_quest_type_config.lua
+
+return {
+	{
+		1,
+		"一场冲突",
+		"assassin2_mapicon_2"
+	},
+	{
+		2,
+		"时代印象",
+		"assassin2_mapicon_1"
+	},
+	{
+		3,
+		"影的痕迹",
+		"assassin2_mapicon_3"
+	}
+}

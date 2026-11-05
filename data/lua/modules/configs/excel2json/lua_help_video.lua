@@ -16,9 +16,36 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.help_video_config"
 
-function lua_help_video.onLoad(json)
-	lua_help_video.configList, lua_help_video.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_help_video, "configList", _configList)
+	rawset(lua_help_video, "configDict", _configDict)
+end
+
+setmetatable(lua_help_video, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_help_video.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_help_video, "configList", nil)
+	rawset(lua_help_video, "configDict", nil)
 end
 
 return lua_help_video

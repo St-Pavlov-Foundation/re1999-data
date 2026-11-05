@@ -47,6 +47,7 @@ function GameSceneMgr:_addScenes()
 	self:_addSceneObj(SceneType.PartyGameLobby, PartyGameLobbyScene)
 	self:_addSceneObj(SceneType.RacingCar, V3a9RacingCarScene)
 	self:_addSceneObj(SceneType.ChatRoom, ChatRoomScene)
+	self:_addSceneObj(SceneType.Library, V4a1_LibraryScene)
 end
 
 function GameSceneMgr:_addSceneObj(sceneType, sceneDefine)

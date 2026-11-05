@@ -70,7 +70,10 @@ function GMToolViewContainer:buildViews()
 		GMYeShuMeiBtnView.New(),
 		GMSubViewPartyGame.New(),
 		GMSubViewArcade.New(),
-		GMSubViewDungeon.New()
+		GMSubViewArcadeSurvivor.New(),
+		GMSubViewDungeon.New(),
+		GMSubViewBossRush.New(),
+		GMSubViewPeriphery.New()
 	}
 end
 

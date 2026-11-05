@@ -618,6 +618,10 @@ function StoreModel:isTabFirstRedDotShow(tabid)
 						return true
 					end
 
+					if tabid == StoreEnum.StoreId.LowSummon and goodsMo.belongStoreId == tabid and v.value > 0 then
+						return true
+					end
+
 					local secondtab = StoreConfig.instance:getTabConfig(goodsMo.belongStoreId).belongSecondTab
 
 					if v.value > 0 and tabid == secondtab then
@@ -1396,6 +1400,28 @@ end
 
 function StoreModel:getMarkedPackageGoodsNewRedDot()
 	return self.cachePackageGoodsDic
+end
+
+function StoreModel:isAllSoldOut(lua_store_charge_goods_idList)
+	if not lua_store_charge_goods_idList then
+		return false
+	end
+
+	local soldOutCnt = 0
+
+	for _, lua_store_charge_goods_id in ipairs(lua_store_charge_goods_idList) do
+		local storeGoodsMo = self:getGoodsMO(lua_store_charge_goods_id)
+
+		if storeGoodsMo then
+			local isSoldOut = storeGoodsMo:isSoldOut()
+
+			if isSoldOut then
+				soldOutCnt = soldOutCnt + 1
+			end
+		end
+	end
+
+	return soldOutCnt == #lua_store_charge_goods_idList
 end
 
 StoreModel.instance = StoreModel.New()

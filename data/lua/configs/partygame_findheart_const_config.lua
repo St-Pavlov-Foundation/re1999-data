@@ -1,0 +1,12 @@
+﻿-- chunkname: @configs/partygame_findheart_const_config.lua
+
+return {
+	{
+		1,
+		"1#1#1|2#2#2|3#3#3|4#4#4|5#4#4|6#4#4|7#4#4|8#4#4|9#4#4"
+	},
+	{
+		2,
+		"3"
+	}
+}

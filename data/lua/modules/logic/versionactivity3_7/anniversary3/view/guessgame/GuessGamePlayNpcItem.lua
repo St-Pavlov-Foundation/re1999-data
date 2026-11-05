@@ -131,7 +131,7 @@ function GuessGamePlayNpcItem:showSelectByIndexs(indexList)
 	end
 end
 
-function GuessGamePlayNpcItem:showNpcSelect(show)
+function GuessGamePlayNpcItem:showRoleSelect(show)
 	local animName = show and "select" or "normal"
 
 	if show then

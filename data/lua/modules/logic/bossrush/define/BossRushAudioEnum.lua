@@ -5,9 +5,11 @@ module("modules.logic.bossrush.define.BossRushAudioEnum", package.seeall)
 local BossRushAudioEnum = _M
 
 BossRushAudioEnum.Audio = {
+	play_ui_settleaccounts_resources = 20005003,
 	play_ui_molu_exit_appear = 390050,
-	play_ui_shuori_qiyuan_reset = 390051,
 	play_ui_dungeon3_2_click = 390049,
+	play_ui_atlantis_zm_light = 410108,
+	play_ui_shuori_qiyuan_reset = 390051,
 	play_ui_molu_chapter_switch = 390048
 }
 

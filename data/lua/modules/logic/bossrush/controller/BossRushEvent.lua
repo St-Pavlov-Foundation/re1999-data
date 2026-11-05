@@ -27,5 +27,8 @@ BossRushEvent.V3a2_BossRush_ResultAssess_AnimFinish = 3201
 BossRushEvent.V3a2_BossRush_HandBook_SelectMonster = 3202
 BossRushEvent.V3a2_BossRush_HandBook_SelectMonsterCB = 3203
 BossRushEvent.onReceiveAct128GetExpReply = 3204
+BossRushEvent.onClaimRankBonus = 4101
+BossRushEvent.onSelectHandBookSeason = 4102
+BossRushEvent.onReceiveAct128UnlockMonsterReply = 4103
 
 return BossRushEvent

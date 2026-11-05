@@ -18,7 +18,7 @@ function FightWorkSkinDownEffectExit672802:onStart()
 
 		animator.speed = speed
 
-		animator:Play("fightskin_02_out", 0, 0)
+		animator:Play("out", 0, 0)
 		flow:registWork(FightWorkDelayTimer, 0.5 / speed)
 		flow:registWork(FightWorkFunction, gohelper.setActive, floorEffect, false)
 	end

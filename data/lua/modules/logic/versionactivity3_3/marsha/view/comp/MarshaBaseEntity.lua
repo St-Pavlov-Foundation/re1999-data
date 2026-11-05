@@ -21,6 +21,12 @@ function MarshaBaseEntity:init(go)
 	self.go = go
 	self.trans = go.transform
 	self.image = gohelper.findChildImage(go, "image")
+	self._icons = self:getUserDataTb_()
+
+	for i = 5, 7 do
+		self._icons[i] = gohelper.findChild(go, "image/image" .. i)
+	end
+
 	self.anim = go:GetComponent(gohelper.Type_Animator)
 end
 

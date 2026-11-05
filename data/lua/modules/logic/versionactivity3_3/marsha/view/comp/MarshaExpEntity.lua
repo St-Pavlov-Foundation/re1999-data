@@ -20,7 +20,13 @@ end
 function MarshaExpEntity:setImage()
 	local index = math.random(5, 7)
 
-	UISpriteSetMgr.instance:setV3a3MarshaSprite(self.image, "icon_" .. index)
+	if self._icons then
+		for i, go in pairs(self._icons) do
+			gohelper.setActive(go, i == index)
+		end
+	end
+
+	self.image.enabled = false
 end
 
 return MarshaExpEntity

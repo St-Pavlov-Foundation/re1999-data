@@ -21,10 +21,19 @@ function ResSplitSaveExportWork:onStart(context)
 
 	resultJson = string.gsub(resultJson, "\\/", "/")
 
-	local file = io.open(ResSplitEnum.ExportSaveConfigPath, "w")
+	if context and context.saveJsonCb then
+		local ok, err = pcall(function()
+			context.saveJsonCb:DynamicInvoke(resultJson, ResSplitEnum.ExportSaveConfigPath)
+		end)
 
-	file:write(tostring(resultJson))
-	file:close()
+		if not ok then
+			logError("ResSplitSaveExportWork callback error:", err)
+			self:onDone(false)
+
+			return
+		end
+	end
+
 	self:onDone(true)
 	logNormal("ResSplit Done!")
 end

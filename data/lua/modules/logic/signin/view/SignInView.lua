@@ -137,7 +137,8 @@ function SignInView:onInitView()
 	self._simagebirthdaybg2 = gohelper.findChildSingleImage(self._gorewarditem, "#go_birthdayrewarditem/#simage_birthdaybg2")
 	self._gobirthday = gohelper.findChild(self._gorewarditem, "#go_birthdayrewarditem/#go_birthday")
 	self._gobirthdayHeroContent = gohelper.findChild(self._gorewarditem, "#go_birthdayrewarditem/#go_birthday/scroll_icon/Viewport/Content")
-	self._gobirthdayHeroIcon = gohelper.findChild(self._gorewarditem, "#go_birthdayrewarditem/#go_birthday/scroll_icon/Viewport/Content/#go_icon")
+	self._gobirthdayHeroIcon1 = gohelper.findChild(self._gorewarditem, "#go_birthdayrewarditem/#go_birthday/scroll_icon/Viewport/Content/#go_icon1")
+	self._gobirthdayHeroIcon2 = gohelper.findChild(self._gorewarditem, "#go_birthdayrewarditem/#go_birthday/scroll_icon/Viewport/Content/#go_icon2")
 	self._btngift = gohelper.findChildButtonWithAudio(self._gorewarditem, "#go_birthdayrewarditem/#go_birthday/#btn_gift")
 	self._gogiftget = gohelper.findChild(self._gorewarditem, "#go_birthdayrewarditem/#go_birthday/#btn_gift/#go_get")
 	self._gogiftnoget = gohelper.findChild(self._gorewarditem, "#go_birthdayrewarditem/#go_birthday/#btn_gift/#go_noget")
@@ -167,7 +168,8 @@ function SignInView:onInitView()
 		self._inputdate = gohelper.findChildTextMeshInputField(guideGMNode, "#go_changedate/#input_date")
 		self._btnchangedateright = gohelper.findChildButtonWithAudio(guideGMNode, "#go_changedate/#btn_changedateright")
 		self._btnchangedateleft = gohelper.findChildButtonWithAudio(guideGMNode, "#go_changedate/#btn_changedateleft")
-		self._btnswitchdecorate = gohelper.findChildButtonWithAudio(guideGMNode, "#go_gmhelp/#_btns_switchdecorate")
+		self._btnsign = gohelper.findChildButtonWithAudio(guideGMNode, "#go_changedate/#btn_sign")
+		self._btnswitchdecorate = gohelper.findChildButtonWithAudio(guideGMNode, "#go_gmhelp/#btn_switchdecorate")
 	end
 
 	self._gomonth = gohelper.findChild(self.viewGO, "#go_month")
@@ -224,7 +226,7 @@ function SignInView:addEvents()
 	end
 
 	if self._inputdate then
-		self._inputheros:AddOnValueChanged(self._onInputDateChange, self)
+		self._inputdate:AddOnValueChanged(self._onInputDateChange, self)
 	end
 
 	if self._btnchangedateleft then
@@ -237,6 +239,10 @@ function SignInView:addEvents()
 
 	if self._btnswitchdecorate then
 		self._btnswitchdecorate:AddClickListener(self._onBtnChangeDecorate, self)
+	end
+
+	if self._btnsign then
+		self._btnsign:AddClickListener(self._onBtnSign, self)
 	end
 
 	self._btnchange:AddClickListener(self._btnchangeOnClick, self)
@@ -272,6 +278,10 @@ function SignInView:removeEvents()
 
 	if self._btnswitchdecorate then
 		self._btnswitchdecorate:RemoveClickListener()
+	end
+
+	if self._btnsign then
+		self._btnsign:RemoveClickListener()
 	end
 
 	self._btnchange:RemoveClickListener()
@@ -326,6 +336,14 @@ end
 
 function SignInView:_onBtnChangeDateRightClick()
 	self:_refreshGMDateContent(-1)
+end
+
+function SignInView:_onBtnSign()
+	self:closeThis()
+	SignInController.instance:openSignInDetailView({
+		isBirthday = false,
+		dateTxt = self._inputdate:GetText()
+	}, true)
 end
 
 function SignInView:_onBtnChangeDecorate()
@@ -1135,11 +1153,7 @@ function SignInView:_setBirthdayInfo()
 
 	local heroId = birthdayHeros[self._index]
 
-	self._birthdayHeroIconList = {}
-
-	local heroIdWithSPList = HeroConfig.instance:getSPHeroIdList(heroId, true)
-
-	gohelper.CreateObjList(self, self._onCreateBirthdayHeroIcon, heroIdWithSPList, self._gobirthdayHeroContent, self._gobirthdayHeroIcon)
+	self:_refreshHeroIcon(heroId)
 
 	local birthdayCount = SignInModel.instance:getHeroBirthdayCount(heroId)
 	local index = birthdayCount
@@ -1181,16 +1195,41 @@ function SignInView:_setBirthdayInfo()
 	gohelper.setActive(self._gogiftget, giftGet)
 end
 
-function SignInView:_onCreateBirthdayHeroIcon(obj, data, index)
-	local iconItem = self:getUserDataTb_()
+function SignInView:_refreshHeroIcon(heroId)
+	if not self._birthdayHeroIconList then
+		self._birthdayHeroIconList = {}
+	end
 
-	iconItem.go = obj
-	iconItem.icon = gohelper.findChildSingleImage(obj, "#simage_icon")
+	local heroIdWithSPList = HeroConfig.instance:getSPHeroIdList(heroId, true)
 
-	local heroMo = HeroModel.instance:getByHeroId(data)
-	local skin = heroMo and heroMo.skin or HeroConfig.instance:getHeroCO(data).skinId
+	if not heroIdWithSPList then
+		gohelper.setActive(self._gobirthdayHeroIcon1, false)
+		gohelper.setActive(self._gobirthdayHeroIcon2, false)
 
-	iconItem.icon:LoadImage(ResUrl.getHeadIconSmall(skin))
+		return
+	end
+
+	gohelper.setActive(self._gobirthdayHeroIcon1, #heroIdWithSPList >= 1)
+	gohelper.setActive(self._gobirthdayHeroIcon2, #heroIdWithSPList >= 2)
+
+	for i = 1, #heroIdWithSPList do
+		local heroId = heroIdWithSPList[i]
+
+		self:_setBirthdayHeroIcon(self["_gobirthdayHeroIcon" .. i], heroId, i)
+	end
+end
+
+function SignInView:_setBirthdayHeroIcon(go, heroId, index)
+	if not self._birthdayHeroIconList[index] then
+		self._birthdayHeroIconList[index] = {}
+	end
+
+	self._birthdayHeroIconList[index].icon = gohelper.findChildSingleImage(go, "#simage_icon")
+
+	local heroMo = HeroModel.instance:getByHeroId(heroId)
+	local skin = heroMo and heroMo.skin or HeroConfig.instance:getHeroCO(heroId).skinId
+
+	self._birthdayHeroIconList[index].icon:LoadImage(ResUrl.getHeadIconSmall(skin))
 end
 
 function SignInView:_setMonthViewRewardTips()
@@ -1611,8 +1650,8 @@ function SignInView:_refreshFestivalDecoration()
 	gohelper.setActive(self._gochange, not haveFestival)
 	gohelper.setActive(self._txtday, not haveFestival)
 	gohelper.setActive(self._txtdayfestival, haveFestival)
-	self:_setFestivalColor(self._txtmonth, "#3B3128")
-	self:_setFestivalColor(self._imgbias, "#3B3128")
+	self:_setFestivalColor(self._txtmonth, "#161616")
+	self:_setFestivalColor(self._imgbias, "#161616")
 	self:_setFestivalColor(self._txtday)
 	self:_setFestivalColor(self._txtdate)
 	self._simagebg:LoadImage(ResUrl.getSignInBg(haveFestival and "act_bg_white2" or "bg_white2"))

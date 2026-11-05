@@ -329,6 +329,16 @@ function DungeonModel:chapterIsLock(chapterId)
 			if DungeonMainStoryModel.instance:isPreviewChapter(chapterId) then
 				return false
 			else
+				local episodeList = DungeonConfig.instance:getChapterEpisodeCOList(chapterId)
+
+				if episodeList and #episodeList > 0 then
+					for i, v in ipairs(episodeList) do
+						if self:isUnlock(v) then
+							return false
+						end
+					end
+				end
+
 				return true, -1, 114
 			end
 		end

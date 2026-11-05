@@ -7,7 +7,8 @@ local FightHeroCustomComp = class("FightHeroCustomComp", FightBaseClass)
 FightHeroCustomComp.HeroId2CustomComp = {
 	[3113] = FightHeroALFComp,
 	[3145] = FightHeroHSYComp,
-	[3155] = FightHero4_0HNJComp
+	[3155] = FightHero4_0HNJComp,
+	[3159] = FightHero4_1PSTComp
 }
 
 function FightHeroCustomComp:onConstructor(entity)

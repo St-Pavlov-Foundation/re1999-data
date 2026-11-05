@@ -19,9 +19,36 @@ local primaryKey = {
 local mlStringKey = {
 	diskText = 1
 }
+local _configList, _configDict
+local configPath = "configs.copost_password_paper_config"
 
-function lua_copost_password_paper.onLoad(json)
-	lua_copost_password_paper.configList, lua_copost_password_paper.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_copost_password_paper, "configList", _configList)
+	rawset(lua_copost_password_paper, "configDict", _configDict)
+end
+
+setmetatable(lua_copost_password_paper, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_copost_password_paper.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_copost_password_paper, "configList", nil)
+	rawset(lua_copost_password_paper, "configDict", nil)
 end
 
 return lua_copost_password_paper

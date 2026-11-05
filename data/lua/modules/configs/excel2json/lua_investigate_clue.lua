@@ -21,9 +21,36 @@ local mlStringKey = {
 	detailedDesc = 1,
 	relatedDesc = 2
 }
+local _configList, _configDict
+local configPath = "configs.investigate_clue_config"
 
-function lua_investigate_clue.onLoad(json)
-	lua_investigate_clue.configList, lua_investigate_clue.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_investigate_clue, "configList", _configList)
+	rawset(lua_investigate_clue, "configDict", _configDict)
+end
+
+setmetatable(lua_investigate_clue, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_investigate_clue.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_investigate_clue, "configList", nil)
+	rawset(lua_investigate_clue, "configDict", nil)
 end
 
 return lua_investigate_clue

@@ -94,7 +94,7 @@ function MainHeroView:_onMainHeroGmPlayVoice(voiceId)
 		return
 	end
 
-	if not string.find(config.skins, self._curSkinId) then
+	if not string.nilorempty(config.skins) and not string.find(config.skins, self._curSkinId) then
 		logError(string.format("MainHeroView:_onMainHeroGmPlayVoice heroId:%s voiceId:%s skinId:%s 皮肤不匹配", self._curHeroId, voiceId, self._curSkinId))
 
 		return
@@ -269,6 +269,10 @@ function MainHeroView:_setViewRootVisible(value)
 	if not value and self._lightSpine then
 		self:_onStopVoice()
 	end
+
+	if value then
+		self._lightSpine:updateIdle()
+	end
 end
 
 function MainHeroView:_updateMainColor()
@@ -404,6 +408,7 @@ function MainHeroView:showInScene()
 	weatherController:setRoleMaskEnabled(true)
 	weatherController:setStateByString("Photo_album", "no")
 	self:_updateMainColor()
+	self._lightSpine:updateIdle()
 end
 
 function MainHeroView:showInFrame()
@@ -1220,7 +1225,7 @@ function MainHeroView:playVoice(config)
 		self._skinInteraction:beforePlayVoice(config)
 	end
 
-	self._lightSpine:setSkipBodyEffect(true)
+	self._lightSpine:setSkipBodyEffect(CharacterVoiceEnum.ChangeVoiceSkipBodyEffect[config.audio])
 	self:_onStopVoice()
 	self._lightSpine:setSkipBodyEffect(false)
 

@@ -58,6 +58,7 @@ function GMSubViewNewFightView:initViewContent()
 	self.btnSimulateBattle = self:addButton(self:getLineGroup(), "战场模拟", self.onClickSimulateBattle, self)
 	self.btnSkillEditor = self:addButton(self:getLineGroup(), "技能编辑器", self.onClickSkillEditor, self)
 	self.stdStageBattle = self:addButton(self:getLineGroup(), "标准战斗", self.onClickStdStageBattle, self)
+	self.btnEnterFight = self:addButton(self:getLineGroup(), "焦点闪回", self.onClickEnterFight, self)
 
 	self:addLineIndex()
 	self:initFightFloatCo()
@@ -110,6 +111,10 @@ function GMSubViewNewFightView:initViewContent()
 
 	self:addButton(self:getLineGroup(), "我方牌库", self.onClickMyCardDeck, self)
 	self:addButton(self:getLineGroup(), "敌方牌库", self.onClickEnemyCardDeck, self)
+
+	self.showEnchantToggle = self:addToggle(self:getLineGroup(), "显示手牌附魔id", self.onShowEnchantToggleChange, self)
+	self.showEnchantToggle.isOn = GMController.instance:getShowEnchantToggle()
+
 	self:getEntityNameList()
 	self:getMountList()
 	self:addLineIndex()
@@ -350,6 +355,14 @@ function GMSubViewNewFightView:onClickEnemyCardDeck()
 	FightRpc.instance:sendGetFightCardDeckDetailInfoRequest(FightRpc.DeckInfoRequestType.EnemySide)
 end
 
+function GMSubViewNewFightView:onShowEnchantToggleChange()
+	if not self._inited then
+		return
+	end
+
+	GMController.instance:setShowEnchantToggle(self.showEnchantToggle.isOn)
+end
+
 function GMSubViewNewFightView:onClickSendBtn()
 	local text = self.gmInput:GetText()
 
@@ -462,6 +475,11 @@ end
 function GMSubViewNewFightView:onClickSimulateBattle()
 	self:closeThis()
 	ViewMgr.instance:openView(ViewName.GMFightSimulateView)
+end
+
+function GMSubViewNewFightView:onClickEnterFight()
+	self:closeThis()
+	ViewMgr.instance:openView(ViewName.GMFightEnterView)
 end
 
 function GMSubViewNewFightView:onClickStdStageBattle()

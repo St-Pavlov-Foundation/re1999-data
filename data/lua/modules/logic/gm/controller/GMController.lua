@@ -317,6 +317,16 @@ function GMController:refreshSkillEditorView()
 	gohelper.setActive(self.goSubHero, self.isShowEditorFightUI)
 	gohelper.setActive(self.goIDPopup, self.isShowEditorFightUI)
 	gohelper.setActive(self.goFloat, self.isShowEditorFightUI)
+
+	for entityId, entity in pairs(FightGameMgr.entityMgr.entityDic) do
+		if entity.isSub then
+			if self.isShowEditorFightUI then
+				entity:setAlpha(1, 0)
+			else
+				entity:setAlpha(0, 0)
+			end
+		end
+	end
 end
 
 function GMController:getIsShowEditorFightUI()
@@ -840,6 +850,16 @@ function GMController:getHeroMaxLevel(heroId)
 	self.cacheHeroMaxLevelDict[heroId] = level
 
 	return level
+end
+
+function GMController:setShowEnchantToggle(isOn)
+	self.showEnchantToggle = isOn
+
+	FightController.instance:dispatchEvent(FightEvent.GmChangeCardEnchantVisible)
+end
+
+function GMController:getShowEnchantToggle()
+	return self.showEnchantToggle
 end
 
 GMController.instance = GMController.New()

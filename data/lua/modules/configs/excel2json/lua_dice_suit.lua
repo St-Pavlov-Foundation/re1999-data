@@ -13,9 +13,36 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.dice_suit_config"
 
-function lua_dice_suit.onLoad(json)
-	lua_dice_suit.configList, lua_dice_suit.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_dice_suit, "configList", _configList)
+	rawset(lua_dice_suit, "configDict", _configDict)
+end
+
+setmetatable(lua_dice_suit, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_dice_suit.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_dice_suit, "configList", nil)
+	rawset(lua_dice_suit, "configDict", nil)
 end
 
 return lua_dice_suit

@@ -153,9 +153,29 @@ function CharacterSkinLeftView:_btnStoryReturnOnClick()
 	self:refreshSkinStoryMode(false)
 end
 
+function CharacterSkinLeftView:_setModelVisible(value)
+	if not self.bigSpine then
+		gohelper.setActive(self.goBigDynamicContainer, value)
+
+		return
+	end
+
+	if value then
+		gohelper.setActive(self.goBigDynamicContainer, value)
+		self.bigSpine:setLayer(UnityLayer.SceneEffect)
+		self.bigSpine:setModelVisible(value)
+		self.bigSpine:showModelEffect()
+	else
+		self.bigSpine:setLayer(UnityLayer.Water)
+		self.bigSpine:hideModelEffect()
+		self.bigSpine:setModelVisible(false)
+		gohelper.setActive(self.goBigDynamicContainer, value)
+	end
+end
+
 function CharacterSkinLeftView:_onOpenView(viewName)
 	if self.showDynamicVertical and viewName == ViewName.CharacterSkinFullScreenView then
-		gohelper.setActive(self.goBigDynamicContainer, false)
+		self:_setModelVisible(false)
 	end
 end
 
@@ -167,7 +187,7 @@ end
 
 function CharacterSkinLeftView:_onCloseView(viewName)
 	if self.showDynamicVertical and viewName == ViewName.CharacterSkinFullScreenView then
-		gohelper.setActive(self.goBigDynamicContainer, true)
+		self:_setModelVisible(true)
 	end
 
 	if viewName == ViewName.CharacterSkinTagView then
@@ -252,7 +272,7 @@ function CharacterSkinLeftView:resetRes()
 end
 
 function CharacterSkinLeftView:refreshBigVertical()
-	gohelper.setActive(self.goBigDynamicContainer, self.showDynamicVertical)
+	self:_setModelVisible(self.showDynamicVertical)
 	gohelper.setActive(self._simageskin.gameObject, not self.showDynamicVertical)
 
 	if self.showDynamicVertical then

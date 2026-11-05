@@ -1,0 +1,46 @@
+﻿-- chunkname: @configs/activity220_peishita_unit_config.lua
+
+return {
+	{
+		101,
+		1,
+		"v4a1_peishita_game_item_role1",
+		""
+	},
+	{
+		201,
+		2,
+		"v4a1_peishita_game_item_role3",
+		""
+	},
+	{
+		301,
+		3,
+		"v4a1_peishita_game_wall",
+		""
+	},
+	{
+		401,
+		4,
+		"v4a1_peishita_game_item_weapon2",
+		"v4a1_peishita_game_skill1"
+	},
+	{
+		402,
+		4,
+		"v4a1_peishita_game_item_weapon1",
+		"v4a1_peishita_game_skill2"
+	},
+	{
+		501,
+		5,
+		"v4a1_peishita_game_item_role2",
+		""
+	},
+	{
+		601,
+		6,
+		"v4a1_peishita_game_item_end",
+		""
+	}
+}

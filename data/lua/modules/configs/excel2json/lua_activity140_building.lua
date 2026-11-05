@@ -26,9 +26,36 @@ local mlStringKey = {
 	skilldesc = 1,
 	desc = 3
 }
+local _configList, _configDict
+local configPath = "configs.activity140_building_config"
 
-function lua_activity140_building.onLoad(json)
-	lua_activity140_building.configList, lua_activity140_building.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_activity140_building, "configList", _configList)
+	rawset(lua_activity140_building, "configDict", _configDict)
+end
+
+setmetatable(lua_activity140_building, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_activity140_building.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_activity140_building, "configList", nil)
+	rawset(lua_activity140_building, "configDict", nil)
 end
 
 return lua_activity140_building

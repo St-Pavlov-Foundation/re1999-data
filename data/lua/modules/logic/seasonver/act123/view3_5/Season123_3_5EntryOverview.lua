@@ -94,7 +94,7 @@ end
 function Season123_3_5EntryOverview:refreshItem(item, stageCO, stageMO)
 	local actId = Season123EntryOverviewModel.instance:getActId()
 
-	gohelper.setActive(item.gofighting, false)
+	gohelper.setActive(item.gofighting, stageMO and Season123ProgressUtils.stageInChallenge(actId, stageMO.stage))
 	gohelper.setActive(item.gofinish, stageMO and stageMO:alreadyPass())
 
 	if stageMO and stageMO:alreadyPass() then

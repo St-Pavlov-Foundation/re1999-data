@@ -18,9 +18,36 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.fairyland_puzzle_config"
 
-function lua_fairyland_puzzle.onLoad(json)
-	lua_fairyland_puzzle.configList, lua_fairyland_puzzle.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_fairyland_puzzle, "configList", _configList)
+	rawset(lua_fairyland_puzzle, "configDict", _configDict)
+end
+
+setmetatable(lua_fairyland_puzzle, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_fairyland_puzzle.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_fairyland_puzzle, "configList", nil)
+	rawset(lua_fairyland_puzzle, "configDict", nil)
 end
 
 return lua_fairyland_puzzle

@@ -1,0 +1,20 @@
+﻿-- chunkname: @configs/fight_jia_la_bo_na_line_config.lua
+
+return {
+	{
+		307001,
+		"v1a3_jialabona/jianabona_bd_x_01"
+	},
+	{
+		307002,
+		"v1a3_jialabona/jianabona_bd_x_01"
+	},
+	{
+		307003,
+		"v2a0_jialabona/jialabona_bd_x_01"
+	},
+	{
+		307004,
+		"v3a2_jialabona/jianabona_bd_x_01"
+	}
+}

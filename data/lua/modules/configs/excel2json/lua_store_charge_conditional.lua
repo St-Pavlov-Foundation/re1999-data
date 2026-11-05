@@ -25,9 +25,36 @@ local primaryKey = {
 local mlStringKey = {
 	conDesc = 1
 }
+local _configList, _configDict
+local configPath = "configs.store_charge_conditional_config"
 
-function lua_store_charge_conditional.onLoad(json)
-	lua_store_charge_conditional.configList, lua_store_charge_conditional.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_store_charge_conditional, "configList", _configList)
+	rawset(lua_store_charge_conditional, "configDict", _configDict)
+end
+
+setmetatable(lua_store_charge_conditional, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_store_charge_conditional.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_store_charge_conditional, "configList", nil)
+	rawset(lua_store_charge_conditional, "configDict", nil)
 end
 
 return lua_store_charge_conditional

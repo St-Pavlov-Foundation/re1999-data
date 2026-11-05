@@ -267,6 +267,10 @@ function IgorGameView:onClose()
 
 		self.noiseAudioPlayingId = nil
 	end
+
+	if ViewMgr.instance:isOpen(ViewName.IgorTipsView) then
+		ViewMgr.instance:closeView(ViewName.IgorTipsView)
+	end
 end
 
 return IgorGameView

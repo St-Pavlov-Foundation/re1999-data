@@ -53,6 +53,7 @@ function StoryStepHeroMo:ctor()
 		"",
 		""
 	}
+	self.layerParam = ""
 end
 
 function StoryStepHeroMo:init(info)
@@ -87,6 +88,7 @@ function StoryStepHeroMo:init(info)
 	self.anims = info[5]
 	self.expressions = info[6]
 	self.effs = info[7]
+	self.layerParam = info[8] or ""
 end
 
 return StoryStepHeroMo

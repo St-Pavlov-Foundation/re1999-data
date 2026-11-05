@@ -19,6 +19,7 @@ function V3a9_BossRushModel:reInit()
 	self._stage = nil
 	self._actId = nil
 	self._maxTotalLatestPoint = nil
+	self._seasonIdActIds = nil
 end
 
 function V3a9_BossRushModel:isActOnLine()
@@ -31,25 +32,96 @@ function V3a9_BossRushModel:isActOnLine()
 	end
 end
 
-function V3a9_BossRushModel:refreshBossDetailMos(msg)
+function V3a9_BossRushModel:_initBossRushDetailMos()
+	self._bossdetailMos = {}
+	self._seasonIdActIds = {}
+	self._seasonIdActIds = {}
+
+	for _, co in ipairs(lua_activity128_stage.configList) do
+		local mo = BossRushBossDetailMO.New()
+
+		mo:onInit(co)
+
+		local actId = co.activityId
+		local stage = co.stage
+
+		if not self._bossdetailMos[actId] then
+			self._bossdetailMos[actId] = {}
+		end
+
+		self._bossdetailMos[actId][stage] = mo
+
+		if not self._seasonIdActIds[mo.season] then
+			self._seasonIdActIds[mo.season] = {}
+		end
+
+		if not LuaUtil.tableContains(self._seasonIdActIds[mo.season], mo.actId) then
+			table.insert(self._seasonIdActIds[mo.season], mo.actId)
+		end
+	end
+
+	for _, list in ipairs(self._seasonIdActIds) do
+		table.sort(list, function(a, b)
+			local a_str = tostring(math.abs(a))
+			local b_str = tostring(math.abs(b))
+			local a_num = tonumber(string.sub(a_str, 2, 3))
+			local b_num = tonumber(string.sub(b_str, 2, 3))
+
+			return a_num < b_num
+		end)
+	end
+end
+
+function V3a9_BossRushModel:getActIdBySeason(season)
+	if not self._seasonIdActIds then
+		self:_initBossRushDetailMos()
+	end
+
+	local list = self._seasonIdActIds[season]
+
+	return list[#list]
+end
+
+function V3a9_BossRushModel:getAllBossDetailMos()
 	if not self._bossdetailMos then
-		self._bossdetailMos = {}
+		self:_initBossRushDetailMos()
 	end
 
+	return self._bossdetailMos
+end
+
+function V3a9_BossRushModel:getBossDetailMos(activityId)
+	if not self._bossdetailMos then
+		self:_initBossRushDetailMos()
+	end
+
+	return self._bossdetailMos[activityId]
+end
+
+function V3a9_BossRushModel:getStageMo(actId, stage)
+	if not actId or not stage then
+		return
+	end
+
+	if not self._bossdetailMos then
+		self:_initBossRushDetailMos()
+	end
+
+	local mos = self._bossdetailMos[actId]
+
+	if mos then
+		return mos[stage]
+	end
+
+	logError(string.format("not stageMo actId:%s  stage:%s", actId, stage))
+end
+
+function V3a9_BossRushModel:refreshBossDetailMos(msg)
 	local activityId = msg.activityId
-
-	if not self._bossdetailMos[activityId] then
-		self._bossdetailMos[activityId] = {}
-	end
 
 	for _, v in ipairs(msg.bossDetail) do
 		local stage = v.bossId
-		local mo = self._bossdetailMos[activityId][stage]
-
-		if not mo then
-			mo = BossRushBossDetailMO.New()
-			self._bossdetailMos[activityId][stage] = mo
-		end
+		local mo = self:getStageMo(activityId, stage)
 
 		mo:initInfo(activityId, v)
 	end
@@ -61,20 +133,6 @@ function V3a9_BossRushModel:refreshBossDetailMos(msg)
 	end
 
 	self._maxTotalLatestPoint[activityId] = msg.maxTotalLatestPoint
-end
-
-function V3a9_BossRushModel:getBossDetailMos(activityId)
-	if not self._bossdetailMos then
-		return
-	end
-
-	return self._bossdetailMos[activityId]
-end
-
-function V3a9_BossRushModel:getStageMo(actId, stage)
-	local bossDetailMos = self:getBossDetailMos(actId)
-
-	return bossDetailMos and bossDetailMos[stage]
 end
 
 function V3a9_BossRushModel:onRefresh128InfosReply(msg)
@@ -226,6 +284,11 @@ end
 
 function V3a9_BossRushModel:refreshShowEquips(stage)
 	local heroGroupMO = self:getCurGroupMO(stage)
+
+	if not heroGroupMO then
+		return
+	end
+
 	local equips = heroGroupMO.equips
 
 	for i = 0, #equips do
@@ -498,9 +561,11 @@ function V3a9_BossRushModel:getActModeTeam(stage, actId)
 	stage = stage or _stage
 	actId = actId or _actId or self:getActModeActId()
 
-	local stageMo = self:getStageMo(actId, stage)
+	if actId then
+		local stageMo = self:getStageMo(actId, stage)
 
-	return stageMo and stageMo.actModeTeam
+		return stageMo and stageMo.actModeTeam
+	end
 end
 
 function V3a9_BossRushModel:onRefreshActModeTeam(msg)

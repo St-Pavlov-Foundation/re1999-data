@@ -75,7 +75,7 @@ function ResSplitSkillWork:_dealSkillTimeLine()
 					else
 						local fileName = SLFramework.FileHelper.GetFileName(effectUrl, true)
 
-						url = string.gsub(effectUrl, "/" .. fileName, "")
+						url = string.gsub(effectUrl, "/" .. fileName, "/")
 					end
 
 					if self.includeTimeLineDic[tlAssetItem.ResPath] then

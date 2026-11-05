@@ -4,23 +4,45 @@ module("modules.logic.bossrush.model.BossRushBossDetailMO", package.seeall)
 
 local BossRushBossDetailMO = pureTable("BossRushBossDetailMO")
 
+function BossRushBossDetailMO:onInit(co)
+	self.actId = co.activityId
+	self.stage = co.stage
+	self.highestPoint = 0
+	self.doubleNum = 0
+	self.layer4TotalPoint = 0
+	self.layer4HighestPoint = 0
+	self.spHighestPoint = 0
+	self.spItemTypeIds = 0
+	self.latestPoint = 0
+	self.actModeTeam = V3a9_BossRushTeamMO.New()
+	self.stageCO = co
+
+	local episodeCOs = BossRushConfig.instance:getEpisodeStages(self.stage, self.actId)
+
+	self.episodeCO = episodeCOs and episodeCOs[1]
+	self.season = co.version < 1 and 1 or co.version
+	self.hasGetBonusIds = {}
+end
+
 function BossRushBossDetailMO:initInfo(actId, info)
 	self.actId = actId
-	self.stage = info.bossId
-	self.totalPoint = info.totalPoint
-	self.highestPoint = info.highestPoint
-	self.doubleNum = info.doubleNum
-	self.layer4TotalPoint = info.layer4TotalPoint
-	self.layer4HighestPoint = info.layer4HighestPoint
-	self.spHighestPoint = info.spHighestPoint
-	self.spItemTypeIds = info.spItemTypeIds
-	self.latestPoint = info.latestPoint
+	self.stage = info and info.bossId
+	self.totalPoint = info and info.totalPoint or 0
+	self.highestPoint = info and info.highestPoint or 0
+	self.doubleNum = info and info.doubleNum or 0
+	self.layer4TotalPoint = info and info.layer4TotalPoint or 0
+	self.layer4HighestPoint = info and info.layer4HighestPoint or 0
+	self.spHighestPoint = info and info.spHighestPoint or 0
+	self.spItemTypeIds = info and info.spItemTypeIds or 0
+	self.latestPoint = info and info.latestPoint or 0
 
 	if not self.actModeTeam then
 		self.actModeTeam = V3a9_BossRushTeamMO.New()
 	end
 
-	self.actModeTeam:initInfo(self.actId, self.stage, info.actModeTeam)
+	if info and info.actModeTeam then
+		self.actModeTeam:initInfo(self.actId, self.stage, info.actModeTeam)
+	end
 
 	self.stageCO = BossRushConfig.instance:getStageCO(self.stage, actId)
 
@@ -29,7 +51,7 @@ function BossRushBossDetailMO:initInfo(actId, info)
 	self.episodeCO = episodeCOs and episodeCOs[1]
 	self.hasGetBonusIds = {}
 
-	if info.hasGetBonusIds then
+	if info and info.hasGetBonusIds then
 		for _, v in ipairs(info.hasGetBonusIds) do
 			self.hasGetBonusIds[v] = true
 		end

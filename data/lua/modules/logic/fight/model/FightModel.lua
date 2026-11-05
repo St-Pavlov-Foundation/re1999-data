@@ -292,6 +292,10 @@ function FightModel:getSpeed()
 
 	self:initSpeedConfig()
 
+	if FightDataHelper.fieldMgr:isStandardFight() then
+		return self._shelterSpeed[self._userSpeed] or 1
+	end
+
 	if FightDataHelper.fieldMgr:isSouDaChe() then
 		return self._sdcSpeed[self._userSpeed] or 1
 	end
@@ -365,6 +369,10 @@ function FightModel:addSpeed()
 end
 
 function FightModel:getMaxSpeed()
+	if FightDataHelper.fieldMgr:isStandardFight() then
+		return 3
+	end
+
 	if FightDataHelper.fieldMgr:isRouge2() then
 		return 3
 	end
@@ -398,6 +406,10 @@ end
 
 function FightModel:getUISpeed()
 	self:initSpeedConfig()
+
+	if FightDataHelper.fieldMgr:isStandardFight() then
+		return self._shelterUISpeed[self._userSpeed] or 1
+	end
 
 	if FightDataHelper.fieldMgr:isSouDaChe() then
 		return self._sdcUISpeed[self._userSpeed] or 1

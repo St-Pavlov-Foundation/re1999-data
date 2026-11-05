@@ -19,9 +19,36 @@ local mlStringKey = {
 	levelupDes = 2,
 	name = 1
 }
+local _configList, _configDict
+local configPath = "configs.trade_level_unlock_config"
 
-function lua_trade_level_unlock.onLoad(json)
-	lua_trade_level_unlock.configList, lua_trade_level_unlock.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_trade_level_unlock, "configList", _configList)
+	rawset(lua_trade_level_unlock, "configDict", _configDict)
+end
+
+setmetatable(lua_trade_level_unlock, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_trade_level_unlock.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_trade_level_unlock, "configList", nil)
+	rawset(lua_trade_level_unlock, "configDict", nil)
 end
 
 return lua_trade_level_unlock

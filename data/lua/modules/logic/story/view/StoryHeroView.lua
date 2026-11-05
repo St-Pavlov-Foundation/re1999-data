@@ -107,24 +107,6 @@ function StoryHeroView:_onResLoaded()
 	else
 		logError("Resource is not found at path : " .. screenSplitRolesPrefabPath)
 	end
-
-	self:_resetHeroMat()
-end
-
-function StoryHeroView:_resetHeroMat()
-	if not self._heroCo then
-		return
-	end
-
-	for k, v in pairs(self._heroCo) do
-		local mat = self:_isHeroDark(k) and self._darkMat or self._normalMat
-
-		if self._heros[v.heroIndex] then
-			local hasBottomEffect = StoryModel.instance:hasBottomEffect()
-
-			self._heros[v.heroIndex]:setHeroMat(mat, hasBottomEffect)
-		end
-	end
 end
 
 function StoryHeroView:_isHeroDark(key)
@@ -552,7 +534,7 @@ function StoryHeroView:_playShowHero()
 	local conAudioId = self._stepCo.conversation.audios[1] or 0
 
 	for k, v in pairs(self._heroCo) do
-		local mat = self:_isHeroDark(k) and self._darkMat or self._normalMat
+		local isDark = self:_isHeroDark(k)
 		local hasBottomEffect = StoryModel.instance:hasBottomEffect()
 
 		if not self._heros[v.heroIndex] then
@@ -563,9 +545,9 @@ function StoryHeroView:_playShowHero()
 			self._heros[v.heroIndex] = heroItem
 
 			heroItem:init(self._goroles, v)
-			heroItem:buildHero(v, mat, hasBottomEffect, self._onHeroBuildFinished, self, conAudioId)
+			heroItem:buildHero(v, isDark, hasBottomEffect, self._onHeroBuildFinished, self, conAudioId)
 		else
-			self._heros[v.heroIndex]:resetHero(v, mat, hasBottomEffect, conAudioId)
+			self._heros[v.heroIndex]:resetHero(v, isDark, hasBottomEffect, conAudioId)
 		end
 	end
 

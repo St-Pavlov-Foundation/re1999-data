@@ -310,23 +310,29 @@ function PlayerCardController:getHeadName()
 	return config.name
 end
 
-function PlayerCardController:ShowChangeBgSkin(id, materialDataMOList, isHideEquipBtn)
-	ViewMgr.instance:openView(ViewName.PlayerCardGetView, {
-		id = id,
-		isHideEquipBtn = isHideEquipBtn
-	})
-
+function PlayerCardController:ShowChangeBgSkin(id, materialDataMOList, isHideEquipBtn, preview)
 	self._cacheMaterialDataMOList = materialDataMOList
 
-	self:setBgSkinRed(id, true)
-	PlayerCardModel.instance:setShowRed()
+	local viewParam = {
+		id = id,
+		isHideEquipBtn = isHideEquipBtn,
+		preview = preview
+	}
+
+	self:simpleShowPlayerCardGetView(viewParam, true)
 end
 
-function PlayerCardController:showPropChangeBgSkin(id, isHideEquipBtn)
-	PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.PlayerCardGetView, {
-		id = id,
-		isHideEquipBtn = isHideEquipBtn
-	})
+function PlayerCardController:showPropChangeBgSkin(id, isHideEquipBtn, preview)
+	if self:isFunctionUnlock() then
+		local viewParam = {
+			id = id,
+			isHideEquipBtn = isHideEquipBtn,
+			preview = preview
+		}
+
+		PopupController.instance:addPopupView(PopupEnum.PriorityType.CommonPropView, ViewName.PlayerCardGetView, viewParam)
+	end
+
 	self:setBgSkinRed(id, true)
 	PlayerCardModel.instance:setShowRed()
 end
@@ -459,6 +465,23 @@ function PlayerCardController:stopCardSpecialBgm()
 	end
 
 	AudioMgr.instance:trigger(AudioEnum.UI.Resume_MainMusic)
+end
+
+function PlayerCardController:isFunctionUnlock()
+	return OpenModel.instance:isFunctionUnlock(OpenEnum.UnlockFunc.PlayerCard)
+end
+
+function PlayerCardController:simpleShowPlayerCardGetView(viewParam, bNotShowToast)
+	if self:isFunctionUnlock() then
+		ViewMgr.instance:openView(ViewName.PlayerCardGetView, viewParam)
+	elseif not bNotShowToast then
+		GameFacade.showToast(OpenModel.instance:getFuncUnlockDesc(OpenEnum.UnlockFunc.PlayerCard))
+	end
+
+	if viewParam and viewParam.id then
+		self:setBgSkinRed(viewParam.id, true)
+		PlayerCardModel.instance:setShowRed()
+	end
 end
 
 PlayerCardController.instance = PlayerCardController.New()

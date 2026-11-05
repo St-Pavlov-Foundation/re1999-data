@@ -1,0 +1,36 @@
+﻿-- chunkname: @configs/arcade_talent_icon_config.lua
+
+return {
+	{
+		100,
+		"v3a3_eliminate_skillicon_5_1"
+	},
+	{
+		101,
+		"v3a3_eliminate_skillicon_4_1"
+	},
+	{
+		102,
+		"v3a3_eliminate_skillicon_5_1"
+	},
+	{
+		103,
+		"v3a3_eliminate_skillicon_1_1"
+	},
+	{
+		104,
+		"v3a3_eliminate_skillicon_3_1"
+	},
+	{
+		105,
+		"v3a3_eliminate_skillicon_2_1"
+	},
+	{
+		106,
+		"v3a3_eliminate_skillicon_2_1"
+	},
+	{
+		107,
+		"v3a3_eliminate_skillicon_2_1"
+	}
+}

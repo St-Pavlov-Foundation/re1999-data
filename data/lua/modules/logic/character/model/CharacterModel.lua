@@ -1344,6 +1344,16 @@ function CharacterModel:isHeroCouldRankUp(heroid)
 	return could
 end
 
+function CharacterModel:getHeroMaxSkillExLevelNeedCount(heroid)
+	local heroData = HeroModel.instance:getByHeroId(heroid)
+
+	if heroData then
+		return math.max(CharacterEnum.MaxSkillExLevel - heroData.duplicateCount, 0)
+	end
+
+	return CharacterEnum.MaxSkillExLevel + 1
+end
+
 function CharacterModel:isHeroFullDuplicateCount(heroid)
 	local heroData = HeroModel.instance:getByHeroId(heroid)
 

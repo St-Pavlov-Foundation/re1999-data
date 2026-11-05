@@ -12,22 +12,6 @@ local RD = require("modules.logic.gm.gaosiniao.reverse_define")
 local ChgTesting = require("modules.logic.gm.chg.ChgTesting")
 local ser = require("modules.logic.gm.gaosiniao.ser")
 
-local function _readAllText(filename)
-	local fh = io.open(filename, "r")
-
-	if not fh then
-		logError("[_readAllText] file open failed: " .. filename)
-
-		return ""
-	end
-
-	local res = fh:read("*a")
-
-	fh:close()
-
-	return res or ""
-end
-
 local function _isFileExists(assetPath)
 	return SLFramework.FileHelper.IsFileExists(assetPath)
 end
@@ -36,52 +20,19 @@ local function _writeTextToPath(filePath, content)
 	SLFramework.FileHelper.WriteTextToPath(filePath, content)
 end
 
-local function _loadGameRawJson(assetPath)
-	if not _isFileExists(assetPath) then
-		return {}, ""
-	end
-
-	local jsonStr = _readAllText(assetPath)
-
-	if string.nilorempty(jsonStr) then
-		return {}, ""
-	end
-
-	local json = cjson.decode(jsonStr)
-	local configName = json[1]
-	local configList = json[2]
-
-	return configList, configName
-end
-
 local function _loadPieceJson()
-	local lua_activity220_wmz_map_piece = rawget(_G, "lua_activity220_wmz_map_piece")
-
-	if lua_activity220_wmz_map_piece and lua_activity220_wmz_map_piece.configList then
-		return
-	end
-
-	local jsonName = "json_activity220_wmz_map_piece.json"
 	local luaName = "lua_activity220_wmz_map_piece"
-	local jsonAssetPath = "Assets/ZResourcesLib/configs/excel2json/" .. jsonName
-	local configText, configName = _loadGameRawJson(jsonAssetPath)
+	local luaConfig = rawget(_G, luaName)
 
-	if string.nilorempty(configName) then
-		logError("invalid jsonAssetPath! jsonName=" .. tostring(jsonName))
-
-		return
-	end
-
-	local modulePath = "modules/configs/excel2json/" .. luaName
-	local luaConfig = addGlobalModule(modulePath, luaName)
+	luaConfig = luaConfig or addGlobalModule("modules/configs/excel2json/" .. luaName, luaName)
 
 	if not luaConfig then
-		logError("invalid luaConfig! luaName=" .. tostring(luaName))
+		logError("config lua head not exist: <" .. luaName .. ">")
 
 		return
 	end
 
-	luaConfig.onLoad(configText)
+	local _ = luaConfig.configList
 end
 
 local s_getMapPieceCOList = {}
@@ -115,27 +66,18 @@ local function _genJson(mapCO)
 		return
 	end
 
-	local jsonName = sf("json_activity220_wmz_map_%s.json", mapId)
 	local luaName = sf("lua_activity220_wmz_map_%s", mapId)
-	local jsonAssetPath = "Assets/ZResourcesLib/configs/excel2json/" .. jsonName
-	local configText, configName = _loadGameRawJson(jsonAssetPath)
-
-	if string.nilorempty(configName) then
-		logError("invalid jsonAssetPath! jsonName=" .. tostring(jsonName))
-
-		return
-	end
-
 	local modulePath = "modules/configs/excel2json/" .. luaName
-	local luaConfig = addGlobalModule(modulePath, luaName)
+	local configDataPath = "Assets/ZProj/Scripts/Lua/configs/activity220_wmz_map_" .. mapId .. "_config.lua"
+	local luaConfig = rawget(_G, luaName)
+
+	luaConfig = luaConfig or addGlobalModule(modulePath, luaName)
 
 	if not luaConfig then
-		logError("invalid luaConfig! luaName=" .. tostring(luaName))
+		logError("config lua head not exist: <" .. luaName .. ">")
 
 		return
 	end
-
-	luaConfig.onLoad(configText)
 
 	local configList = luaConfig.configList
 	local configDict = luaConfig.configDict
@@ -337,7 +279,7 @@ local function _genJson(mapCO)
 
 	ti(tbl, "--start please save to " .. savePath)
 	ti(tbl, "--auto gen by WmzTesting.lua")
-	ti(tbl, "--json:" .. jsonAssetPath)
+	ti(tbl, "--data:" .. configDataPath)
 	ti(tbl, "--lua:" .. modulePath)
 	ti(tbl, jsonStr)
 

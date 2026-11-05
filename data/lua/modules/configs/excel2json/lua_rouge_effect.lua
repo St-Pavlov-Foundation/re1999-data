@@ -16,9 +16,36 @@ local primaryKey = {
 local mlStringKey = {
 	tips = 1
 }
+local _configList, _configDict
+local configPath = "configs.rouge_effect_config"
 
-function lua_rouge_effect.onLoad(json)
-	lua_rouge_effect.configList, lua_rouge_effect.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_rouge_effect, "configList", _configList)
+	rawset(lua_rouge_effect, "configDict", _configDict)
+end
+
+setmetatable(lua_rouge_effect, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_rouge_effect.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_rouge_effect, "configList", nil)
+	rawset(lua_rouge_effect, "configDict", nil)
 end
 
 return lua_rouge_effect

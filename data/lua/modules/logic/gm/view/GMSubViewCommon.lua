@@ -43,6 +43,7 @@ function GMSubViewCommon:initViewContent()
 	self._langDrop = self:addDropDown("L1", "UI多语言", nil, self._onLangDropChange, self)
 
 	self:addButton("L1.2", "多语言文本查找", self._onClickLangTxtSearch, self)
+	self:addButton("L1.2", "多发协议", self._onClickCheckRepeatRpcConfig, self)
 	self:addTitleSplitLine("BGM")
 	self:addButton("L2", "显示BGM播放进度", self._onClickBGMProgress, self)
 	self:addButton("L2", "视频资源列表", self._onClickVideoList, self)
@@ -387,6 +388,12 @@ end
 
 function GMSubViewCommon:_onClickLangTxtSearch(index)
 	ViewMgr.instance:openView(ViewName.GMLangTxtView)
+end
+
+function GMSubViewCommon:_onClickCheckRepeatRpcConfig()
+	for i = 1, 200 do
+		RedDotRpc.instance:sendShowRedDotRequest(3504, true, nil, nil, true)
+	end
 end
 
 function GMSubViewCommon:_onLangDropChange(index)

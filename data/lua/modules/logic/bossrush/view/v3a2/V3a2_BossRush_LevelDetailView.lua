@@ -211,12 +211,18 @@ function V3a2_BossRush_LevelDetailView:_refreshContent()
 end
 
 function V3a2_BossRush_LevelDetailView:refreshScore()
-	local stageMo = V3a9_BossRushModel.instance:getStageMo(self._activityId, self._stage)
-	local highestPoint = stageMo and stageMo.highestPoint or 0
+	local highestPoint = self:getHeightScore()
 
 	self._assessIcon:setData(self._stage, highestPoint, false)
 
 	self._txtScoreNum.text = BossRushConfig.instance:getScoreStr(highestPoint)
+end
+
+function V3a2_BossRush_LevelDetailView:getHeightScore()
+	local stageMo = V3a9_BossRushModel.instance:getStageMo(self._activityId, self._stage)
+	local highestPoint = stageMo and stageMo.highestPoint or 0
+
+	return highestPoint
 end
 
 function V3a2_BossRush_LevelDetailView:_doUpdateSelectIcon(battleId)
@@ -257,7 +263,7 @@ function V3a2_BossRush_LevelDetailView:_refreshLurk()
 			local monsterCO = BossRushConfig.instance:getMonsterCO(self._stage, self._layerCO.layer)
 
 			if monsterCO and not string.nilorempty(monsterCO.career_weak) then
-				careerWeak = tabletool.copy(string.splitToNumber(monsterCO.career_weak, "#"))
+				careerWeak = string.splitToNumber(monsterCO.career_weak, "#")
 			end
 		end
 

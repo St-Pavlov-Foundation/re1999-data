@@ -54,11 +54,16 @@ function FightWorkEffectCardLevelChange:_startChangeCardEffect()
 
 	FightController.instance:dispatchEvent(FightEvent.SetHandCardVisible, true)
 
-	local version = FightModel.instance:getVersion()
+	local configEffect = self.actEffectData.configEffect
 
 	if version >= 4 then
-		FightController.instance:dispatchEvent(FightEvent.CardLevelChange, self.cardIndex, self.oldSkillId)
-		self:com_registTimer(self._delayDone, FightEnum.PerformanceTime.CardLevelChange / FightModel.instance:getUISpeed())
+		if configEffect == 60407 then
+			FightController.instance:dispatchEvent(FightEvent.CardLevelChange4_1, self.cardIndex, self.oldSkillId)
+			self:com_registTimer(self._delayDone, FightEnum.PerformanceTime.CardLevelChange / FightModel.instance:getUISpeed())
+		else
+			FightController.instance:dispatchEvent(FightEvent.CardLevelChange, self.cardIndex, self.oldSkillId)
+			self:com_registTimer(self._delayDone, FightEnum.PerformanceTime.CardLevelChange / FightModel.instance:getUISpeed())
+		end
 	else
 		FightController.instance:dispatchEvent(FightEvent.RefreshHandCard)
 		self:onDone(true)

@@ -26,9 +26,36 @@ local mlStringKey = {
 	minType = 1,
 	desc = 3
 }
+local _configList, _configDict
+local configPath = "configs.sonnet_task_config"
 
-function lua_sonnet_task.onLoad(json)
-	lua_sonnet_task.configList, lua_sonnet_task.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_sonnet_task, "configList", _configList)
+	rawset(lua_sonnet_task, "configDict", _configDict)
+end
+
+setmetatable(lua_sonnet_task, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_sonnet_task.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_sonnet_task, "configList", nil)
+	rawset(lua_sonnet_task, "configDict", nil)
 end
 
 return lua_sonnet_task

@@ -39,7 +39,7 @@ function StoryBgEffsSketch:onLoadFinished()
 		return
 	end
 
-	local frontGo = ViewMgr.instance:getContainer(ViewName.StoryFrontView).viewGO
+	local frontGo = ViewMgr.instance:getContainer(ViewName.StoryHeroView).viewGO
 
 	self._effGo = gohelper.clone(prefAssetItem:GetResource(), frontGo)
 
@@ -73,14 +73,7 @@ function StoryBgEffsSketch:_applyEffect()
 		self._tweenId = ZProj.TweenHelper.DOTweenFloat(fromValue, targetValue, self._bgCo.effTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()], self._tweenUpdate, self._tweenFinished, self)
 	end
 
-	StoryViewMgr.instance:setStoryViewLayer(UnityLayer.UITop)
-	StoryViewMgr.instance:setStoryLeadRoleSpineViewLayer(UnityLayer.UITop)
-
-	local blitGo = StoryViewMgr.instance:getStoryBlitEff()
-
-	if blitGo then
-		gohelper.setLayer(blitGo.gameObject, UnityLayer.UISecond, true)
-	end
+	StoryViewMgr.instance:setStoryHeroViewLayer(UnityLayer.UI)
 end
 
 function StoryBgEffsSketch:_tweenUpdate(value)
@@ -125,15 +118,7 @@ function StoryBgEffsSketch:destroy()
 
 	self._imgSketch = nil
 
-	StoryViewMgr.instance:setStoryViewLayer(UnityLayer.UISecond)
-	StoryViewMgr.instance:setStoryLeadRoleSpineViewLayer(UnityLayer.UIThird)
-
-	local blitGo = StoryViewMgr.instance:getStoryBlitEff()
-
-	if blitGo then
-		gohelper.setLayer(blitGo.gameObject, UnityLayer.UI, true)
-	end
-
+	StoryViewMgr.instance:setStoryHeroViewLayer(UnityLayer.UISecond)
 	StoryBgEffsSketch.super.destroy(self)
 end
 

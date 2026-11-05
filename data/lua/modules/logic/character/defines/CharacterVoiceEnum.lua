@@ -190,6 +190,9 @@ CharacterVoiceEnum.SkinInteraction = {
 	[314602] = "XRAnSkinInteraction",
 	[315503] = "HongNJSkinInteraction"
 }
+CharacterVoiceEnum.ChangeVoiceSkipBodyEffect = {
+	[1315643] = true
+}
 CharacterVoiceEnum.RankUpResultShowMask = {
 	[3120] = true
 }

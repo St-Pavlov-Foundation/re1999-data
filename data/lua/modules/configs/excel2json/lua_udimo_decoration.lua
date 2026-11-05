@@ -19,9 +19,36 @@ local primaryKey = {
 local mlStringKey = {
 	name = 1
 }
+local _configList, _configDict
+local configPath = "configs.udimo_decoration_config"
 
-function lua_udimo_decoration.onLoad(json)
-	lua_udimo_decoration.configList, lua_udimo_decoration.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_udimo_decoration, "configList", _configList)
+	rawset(lua_udimo_decoration, "configDict", _configDict)
+end
+
+setmetatable(lua_udimo_decoration, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_udimo_decoration.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_udimo_decoration, "configList", nil)
+	rawset(lua_udimo_decoration, "configDict", nil)
 end
 
 return lua_udimo_decoration

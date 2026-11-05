@@ -4,14 +4,17 @@ module("modules.logic.bossrush.model.v3a2.V3a2_BossRush_RankListModel", package.
 
 local V3a2_BossRush_RankListModel = class("V3a2_BossRush_RankListModel", ListScrollModel)
 
-function V3a2_BossRush_RankListModel:setMoList()
+function V3a2_BossRush_RankListModel:setMoList(season)
 	self._firstCanGetBouns = 0
 
 	local moList = {}
+	local mos = V3a2_BossRushModel.instance:getRankMos(season)
 
-	for _, mo in pairs(V3a2_BossRushModel.instance:getRankMos()) do
-		if not string.nilorempty(mo.config.bonus) then
-			table.insert(moList, mo)
+	if mos then
+		for _, mo in pairs(mos) do
+			if not string.nilorempty(mo.config.bonus) then
+				table.insert(moList, mo)
+			end
 		end
 	end
 
@@ -27,11 +30,13 @@ function V3a2_BossRush_RankListModel:setMoList()
 		end
 	end
 
-	for i = 1, V3a2BossRushEnum.BossRankLockCount do
-		local mo = self:getLockMo(i)
+	if season > 1 then
+		for i = 1, V3a2BossRushEnum.BossRankLockCount do
+			local mo = self:getLockMo(i)
 
-		mo:setLock(i == V3a2BossRushEnum.BossRankLockCount, i)
-		table.insert(moList, mo)
+			mo:setLock(i == V3a2BossRushEnum.BossRankLockCount, i, season)
+			table.insert(moList, mo)
+		end
 	end
 
 	self:setList(moList)

@@ -19,9 +19,36 @@ local primaryKey = {
 	"behavior"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.eliminate_battle_enemybehavior_config"
 
-function lua_eliminate_battle_enemybehavior.onLoad(json)
-	lua_eliminate_battle_enemybehavior.configList, lua_eliminate_battle_enemybehavior.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_eliminate_battle_enemybehavior, "configList", _configList)
+	rawset(lua_eliminate_battle_enemybehavior, "configDict", _configDict)
+end
+
+setmetatable(lua_eliminate_battle_enemybehavior, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_eliminate_battle_enemybehavior.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_eliminate_battle_enemybehavior, "configList", nil)
+	rawset(lua_eliminate_battle_enemybehavior, "configDict", nil)
 end
 
 return lua_eliminate_battle_enemybehavior

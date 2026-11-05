@@ -59,9 +59,36 @@ local mlStringKey = {
 	spName = 6,
 	desc = 3
 }
+local _configList, _configDict
+local configPath = "configs.character_config"
 
-function lua_character.onLoad(json)
-	lua_character.configList, lua_character.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_character, "configList", _configList)
+	rawset(lua_character, "configDict", _configDict)
+end
+
+setmetatable(lua_character, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_character.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_character, "configList", nil)
+	rawset(lua_character, "configDict", nil)
 end
 
 return lua_character

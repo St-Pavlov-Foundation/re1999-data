@@ -12,7 +12,8 @@ function FightEntityBuffObject:onConstructor(buffData)
 end
 
 local buffId2EffectClass = {
-	[104342520] = FightBuffIdEffect104342520
+	[104342520] = FightBuffIdEffect104342520,
+	[109410302] = FightBuffIdEffect104342520
 }
 local buffActId2Class = {
 	[1125] = FightBuffActIdEffect1125,

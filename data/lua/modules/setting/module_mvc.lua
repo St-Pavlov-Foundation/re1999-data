@@ -14,6 +14,20 @@ local module_mvc = {
 			"DeleikeConfig"
 		}
 	},
+	Activity248 = {
+		model = {
+			"Act248Model"
+		},
+		controller = {
+			"Act248Controller"
+		},
+		rpc = {
+			"Act248Rpc"
+		},
+		config = {
+			"Act248Config"
+		}
+	},
 	SpLilya = {
 		controller = {
 			"SpLilyaController",
@@ -25,6 +39,17 @@ local module_mvc = {
 		},
 		config = {
 			"SpLilyaConfig"
+		}
+	},
+	Evelyn = {
+		controller = {
+			"EvelynController"
+		},
+		model = {
+			"EvelynModel"
+		},
+		config = {
+			"EvelynConfig"
 		}
 	},
 	Activity243 = {
@@ -339,6 +364,28 @@ local module_mvc = {
 		},
 		config = {
 			"ArcadeConfig"
+		}
+	},
+	ArcadeSurvivor = {
+		model = {
+			"ArcadeSurvivorModel",
+			"ArcadeSurvivorOutSideModel",
+			"ArcadeSurvivorGameModel",
+			"ArcadeSurvivorHallModel",
+			"ArcadeSurvivorHandBookModel",
+			"ArcadeSurvivorHeroModel"
+		},
+		controller = {
+			"ArcadeSurvivorController",
+			"ArcadeSurvivorGameController",
+			"ArcadeSurvivorGameSkillController",
+			"ArcadeSurvivorGameTriggerController"
+		},
+		rpc = {
+			"ArcadeSurvivorRpc"
+		},
+		config = {
+			"ArcadeSurvivorConfig"
 		}
 	},
 	ClickUI = {
@@ -1475,8 +1522,7 @@ local module_mvc = {
 			"FightController",
 			"FightPreloadController",
 			"FightReplayController",
-			"FightFailRecommendController",
-			"FightRoundPreloadController"
+			"FightFailRecommendController"
 		}
 	},
 	Dungeon = {
@@ -2364,11 +2410,13 @@ local module_mvc = {
 			"V1a6_BossRush_StoreModel",
 			"V2a9BossRushModel",
 			"V2a9BossRushSkillBackpackListModel",
-			"V3a2_BossRushModel"
+			"V3a2_BossRushModel",
+			"V4a1_BossRushModel"
 		},
 		controller = {
 			"BossRushController",
-			"BossRushController_Test"
+			"BossRushController_Test",
+			"V4a1_BossRushController"
 		},
 		rpc = {
 			"BossRushRpc"
@@ -4107,6 +4155,42 @@ local module_mvc = {
 		rpc = {
 			"Activity245Rpc",
 			"Activity246Rpc"
+		}
+	},
+	GuessGameNew = {
+		model = {
+			"GuessGameNewModel"
+		},
+		config = {
+			"GuessGameNewConfig"
+		},
+		controller = {
+			"GuessGameNewController"
+		}
+	},
+	PeiShiTa = {
+		model = {
+			"PeiShiTaGameModel"
+		},
+		config = {
+			"PeiShiTaConfig",
+			"PeiShiTaGameConfig"
+		},
+		controller = {
+			"PeiShiTaController",
+			"PeiShiTaGameController"
+		}
+	},
+	V4a1_Library = {
+		model = {
+			"V4a1_LibrarySysModel",
+			"V4a1_LibrarySceneModel"
+		},
+		config = {
+			"V4a1_LibraryConfig"
+		},
+		controller = {
+			"V4a1_LibraryController"
 		}
 	}
 }

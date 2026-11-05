@@ -41,6 +41,23 @@ function BossRushRpc:sendGet128InfosRequest(callback, cbObj)
 	end
 end
 
+function BossRushRpc:sendGet128ActIdsInfosRequest(actIds, callback, cbObj)
+	local waitActInfos = {}
+
+	for _, actId in ipairs(actIds) do
+		waitActInfos[actId] = true
+
+		self:sendAct128InfosRequest(actId, function(cmd, resultCode, msg)
+			waitActInfos[actId] = nil
+
+			if (not waitActInfos or tabletool.len(waitActInfos) == 0) and callback then
+				callback(cbObj, cmd, resultCode, msg)
+			end
+		end)
+		self:sendGetGalleryInfosRequest(actId)
+	end
+end
+
 function BossRushRpc:sendAct128InfosRequest(actId, callback, cbObj)
 	Activity128Rpc.sendGet128InfosRequest(self, actId, function(cmd, resultCode, msg)
 		if callback then
@@ -68,13 +85,14 @@ function BossRushRpc:sendAct128GetTotalSingleRewardRequest(bossId, index)
 end
 
 function BossRushRpc:_onReceiveGet128InfosReply(resultCode, msg)
+	V3a2_BossRushModel.instance:onRefresh128InfosReply(msg)
+
 	if not _isValid(resultCode, msg) then
 		return
 	end
 
 	BossRushModel.instance:onReceiveGet128InfosReply(msg)
 	V2a9BossRushModel.instance:onRefresh128InfosReply(msg)
-	V3a2_BossRushModel.instance:onRefresh128InfosReply(msg)
 	V3a9_BossRushModel.instance:onRefresh128InfosReply(msg)
 end
 
@@ -123,20 +141,12 @@ function BossRushRpc:_onReceiveAct128SpFirstHalfSelectItemReply(resultCode, msg)
 end
 
 function BossRushRpc:_onReceiveAct128GetExpReply(resultCode, msg)
-	if not _isValid(resultCode, msg) then
-		return
-	end
-
 	V3a2_BossRushModel.instance:onReceiveAct128GetExpReply(msg)
-	V3a2_BossRushModel.instance:refreshRankMos()
+	V3a2_BossRushModel.instance:refreshRankMos(msg.activityId)
 	BossRushController.instance:dispatchEvent(BossRushEvent.onReceiveAct128GetExpReply)
 end
 
 function BossRushRpc:_onReceiveAct128GetMilestoneBonusReply(resultCode, msg)
-	if not _isValid(resultCode, msg) then
-		return
-	end
-
 	V3a2_BossRushModel.instance:_onReceiveAct128GetMilestoneBonusReply(msg)
 end
 
@@ -146,6 +156,7 @@ function BossRushRpc:_onReceiveGetGalleryInfosReply(resultCode, msg)
 	end
 
 	V3a2_BossRushModel.instance:onRefreshHandBookInfo(msg)
+	V4a1_BossRushModel.instance:refreshSeasonUnlockCount(msg.unlockCount)
 end
 
 function BossRushRpc:sendAct128ChangeActModeRequest(isActivityModeOpen, callback, callbackobj)
@@ -186,6 +197,20 @@ function BossRushRpc:_onReceiveResetAct128TeamReply(resultCode, msg)
 
 	V3a9_BossRushModel.instance:onResetActModeTeam(msg)
 	V3a9_BossRushController.instance:dispatchEvent(V3a9_BossRushEvent.OnResetStage)
+end
+
+function BossRushRpc:_onReceiveAct128UnlockMonsterReply(resultCode, msg)
+	if not _isValid(resultCode, msg) then
+		return
+	end
+
+	V4a1_BossRushModel.instance:onUnlockBoss(msg)
+	BossRushController.instance:dispatchEvent(BossRushEvent.onReceiveAct128UnlockMonsterReply, msg)
+
+	local newDict = {}
+
+	BossRushRedModel.instance:refreshSeason(newDict)
+	RedDotController.instance:dispatchEvent(RedDotEvent.UpdateRelateDotInfo, newDict)
 end
 
 BossRushRpc.instance = BossRushRpc.New()

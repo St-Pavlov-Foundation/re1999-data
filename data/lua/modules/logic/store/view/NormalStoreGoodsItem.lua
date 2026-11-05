@@ -55,10 +55,12 @@ function NormalStoreGoodsItem:onInitView()
 end
 
 function NormalStoreGoodsItem:addEvents()
+	self:addEventCb(RedDotController.instance, RedDotEvent.UpdateRelateDotInfo, self._refreshNewTag, self)
 	self:addEventCb(StoreController.instance, StoreEvent.jumpClickRoomChildGoods, self._onJumpClick, self)
 end
 
 function NormalStoreGoodsItem:removeEvents()
+	self:removeEventCb(RedDotController.instance, RedDotEvent.UpdateRelateDotInfo, self._refreshNewTag, self)
 	self:removeEventCb(StoreController.instance, StoreEvent.jumpClickRoomChildGoods, self._onJumpClick, self)
 end
 
@@ -106,6 +108,12 @@ function NormalStoreGoodsItem:_onClickPath()
 end
 
 function NormalStoreGoodsItem:_onClick()
+	if self._itemType == MaterialEnum.MaterialType.Hero and self._mo and StoreEnum.HeroLimitStoreDic[self._mo:getBelongStoreId()] and CharacterModel.instance:isHeroFullDuplicateCount(self._itemId) then
+		GameFacade.showToast(ToastEnum.StoreHeroMaxSkillExLevel)
+
+		return
+	end
+
 	local isActGoods = self._mo:getIsActGoods()
 
 	if isActGoods then
@@ -423,16 +431,7 @@ function NormalStoreGoodsItem:refreshNormalGoods()
 	self._soldout = mo:isSoldOut()
 
 	self:refreshNextRefreshTime(goodsConfig)
-	gohelper.setActive(self._gonewtag, false)
-
-	if mo:needShowRead() then
-		local isRoomBlockPackage = self._itemType == MaterialEnum.MaterialType.BlockPackage
-		local isRoomBuilding = self._itemType == MaterialEnum.MaterialType.Building
-
-		if not isRoomBlockPackage and not isRoomBuilding then
-			gohelper.setActive(self._gonewtag, mo:needShowRead())
-		end
-	end
+	self:_refreshNewTag()
 
 	local maxBuyCount = goodsConfig.maxBuyCount
 	local remain = maxBuyCount - mo.buyCount
@@ -465,6 +464,21 @@ function NormalStoreGoodsItem:refreshNormalGoods()
 
 	self:refreshGoUnique()
 	self:refreshLimitHas()
+end
+
+function NormalStoreGoodsItem:_refreshNewTag()
+	gohelper.setActive(self._gonewtag, false)
+
+	local needShowRead = self._mo:needShowRead()
+
+	if needShowRead then
+		local isRoomBlockPackage = self._itemType == MaterialEnum.MaterialType.BlockPackage
+		local isRoomBuilding = self._itemType == MaterialEnum.MaterialType.Building
+
+		if not isRoomBlockPackage and not isRoomBuilding then
+			gohelper.setActive(self._gonewtag, needShowRead)
+		end
+	end
 end
 
 function NormalStoreGoodsItem:updateGoodsItemAttribute(goodsConfig)

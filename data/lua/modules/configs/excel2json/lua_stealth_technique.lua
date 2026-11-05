@@ -21,9 +21,36 @@ local mlStringKey = {
 	mainTitle = 1,
 	subTitle = 2
 }
+local _configList, _configDict
+local configPath = "configs.stealth_technique_config"
 
-function lua_stealth_technique.onLoad(json)
-	lua_stealth_technique.configList, lua_stealth_technique.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_stealth_technique, "configList", _configList)
+	rawset(lua_stealth_technique, "configDict", _configDict)
+end
+
+setmetatable(lua_stealth_technique, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_stealth_technique.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_stealth_technique, "configList", nil)
+	rawset(lua_stealth_technique, "configDict", nil)
 end
 
 return lua_stealth_technique

@@ -23,9 +23,36 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.activity245_turntable_config"
 
-function lua_activity245_turntable.onLoad(json)
-	lua_activity245_turntable.configList, lua_activity245_turntable.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_activity245_turntable, "configList", _configList)
+	rawset(lua_activity245_turntable, "configDict", _configDict)
+end
+
+setmetatable(lua_activity245_turntable, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_activity245_turntable.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_activity245_turntable, "configList", nil)
+	rawset(lua_activity245_turntable, "configDict", nil)
 end
 
 return lua_activity245_turntable

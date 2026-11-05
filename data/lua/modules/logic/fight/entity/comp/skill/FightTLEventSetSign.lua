@@ -90,8 +90,8 @@ function FightTLEventSetSign:onTrackStart(fightStepData, duration, paramsArr)
 
 			for k, effectWrap in pairs(effectDic) do
 				if effectWrap.containerGO.name == "smxjdz1_c_hudun02.prefab" then
-					entity.effect:removeEffect(effectWrap)
 					effectWrap:setActive(false)
+					entity.effect:removeEffect(effectWrap)
 
 					local buffeffectDic = entity.buff._buffEffectDict
 

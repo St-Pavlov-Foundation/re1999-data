@@ -38,9 +38,36 @@ local mlStringKey = {
 	name = 1,
 	desc1 = 2
 }
+local _configList, _configDict
+local configPath = "configs.survival_item_config"
 
-function lua_survival_item.onLoad(json)
-	lua_survival_item.configList, lua_survival_item.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_survival_item, "configList", _configList)
+	rawset(lua_survival_item, "configDict", _configDict)
+end
+
+setmetatable(lua_survival_item, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_survival_item.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_survival_item, "configList", nil)
+	rawset(lua_survival_item, "configDict", nil)
 end
 
 return lua_survival_item

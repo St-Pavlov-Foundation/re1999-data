@@ -33,9 +33,36 @@ local mlStringKey = {
 	conditionsDesc = 4,
 	desc = 3
 }
+local _configList, _configDict
+local configPath = "configs.survival_role_config"
 
-function lua_survival_role.onLoad(json)
-	lua_survival_role.configList, lua_survival_role.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_survival_role, "configList", _configList)
+	rawset(lua_survival_role, "configDict", _configDict)
+end
+
+setmetatable(lua_survival_role, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_survival_role.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_survival_role, "configList", nil)
+	rawset(lua_survival_role, "configDict", nil)
 end
 
 return lua_survival_role

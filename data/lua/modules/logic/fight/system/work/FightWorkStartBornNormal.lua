@@ -25,7 +25,7 @@ function FightWorkStartBornNormal:onStart(context)
 		fightStepData.fromId = entityData.id
 		fightStepData.toId = entityData.id
 		fightStepData.isBornTimeline = true
-		fightStepData.stepUid = -10
+		fightStepData.stepUid = FightTLEventEntityVisible.latestStepUid or 0
 
 		self.entity:setAlpha(0)
 

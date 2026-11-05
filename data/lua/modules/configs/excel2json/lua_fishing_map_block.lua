@@ -3,9 +3,36 @@
 module("modules.configs.excel2json.lua_fishing_map_block", package.seeall)
 
 local lua_fishing_map_block = {}
+local _configList, _configDict
+local configPath = "configs.fishing_map_block_config"
 
-function lua_fishing_map_block.onLoad(json)
-	lua_fishing_map_block.configList, lua_fishing_map_block.configDict = lua_fishing_map_block.json_parse(json)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = lua_fishing_map_block.json_parse(config)
+
+	rawset(lua_fishing_map_block, "configList", _configList)
+	rawset(lua_fishing_map_block, "configDict", _configDict)
+end
+
+setmetatable(lua_fishing_map_block, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_fishing_map_block.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_fishing_map_block, "configList", nil)
+	rawset(lua_fishing_map_block, "configDict", nil)
 end
 
 function lua_fishing_map_block.json_parse(json)

@@ -4,12 +4,16 @@ module("modules.logic.bossrush.model.v3a2.V3a2_BossRush_RankMO", package.seeall)
 
 local V3a2_BossRush_RankMO = pureTable("V3a2_BossRush_RankMO")
 
-function V3a2_BossRush_RankMO:initMO(config, preExp, needExp)
+function V3a2_BossRush_RankMO:initMO(config)
 	self.config = config
 	self.isNoraml = true
 	self.playerLevel = config.playerLevel
-	self.totalNeedExp = needExp
+	self.season = config.season
+end
+
+function V3a2_BossRush_RankMO:initExp(preExp, needExp)
 	self.preExp = preExp
+	self.totalNeedExp = needExp
 end
 
 function V3a2_BossRush_RankMO:setInfo(playerLevel, gainMilestoneLevel)
@@ -21,10 +25,11 @@ function V3a2_BossRush_RankMO:onClaim(isFinish)
 	self.finishClaim = isFinish
 end
 
-function V3a2_BossRush_RankMO:setLock(isShowNextLine, level)
+function V3a2_BossRush_RankMO:setLock(isShowNextLine, level, season)
 	self.isNoraml = false
 	self.isShowNextLine = isShowNextLine
 	self.playerLevel = level
+	self.season = season
 end
 
 function V3a2_BossRush_RankMO:setPreRank(rank)

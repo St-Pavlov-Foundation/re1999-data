@@ -549,4 +549,8 @@ function NecrologistStoryHelper.wrapChar(ch, tagStack)
 	return table.concat(sb)
 end
 
+function NecrologistStoryHelper.isMulOption(storyConfig)
+	return storyConfig.type == "mulOption"
+end
+
 return NecrologistStoryHelper

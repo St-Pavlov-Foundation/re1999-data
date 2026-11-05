@@ -36,9 +36,36 @@ local mlStringKey = {
 	desc = 3,
 	desc1 = 2
 }
+local _configList, _configDict
+local configPath = "configs.racing_racer_config"
 
-function lua_racing_racer.onLoad(json)
-	lua_racing_racer.configList, lua_racing_racer.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_racing_racer, "configList", _configList)
+	rawset(lua_racing_racer, "configDict", _configDict)
+end
+
+setmetatable(lua_racing_racer, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_racing_racer.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_racing_racer, "configList", nil)
+	rawset(lua_racing_racer, "configDict", nil)
 end
 
 return lua_racing_racer

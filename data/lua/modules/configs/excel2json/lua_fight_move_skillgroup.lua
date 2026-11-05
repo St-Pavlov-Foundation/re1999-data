@@ -14,9 +14,36 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.fight_move_skillgroup_config"
 
-function lua_fight_move_skillgroup.onLoad(json)
-	lua_fight_move_skillgroup.configList, lua_fight_move_skillgroup.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_fight_move_skillgroup, "configList", _configList)
+	rawset(lua_fight_move_skillgroup, "configDict", _configDict)
+end
+
+setmetatable(lua_fight_move_skillgroup, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_fight_move_skillgroup.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_fight_move_skillgroup, "configList", nil)
+	rawset(lua_fight_move_skillgroup, "configDict", nil)
 end
 
 return lua_fight_move_skillgroup

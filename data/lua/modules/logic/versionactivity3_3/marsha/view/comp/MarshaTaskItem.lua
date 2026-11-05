@@ -37,8 +37,7 @@ function MarshaTaskItem:removeEvents()
 end
 
 function MarshaTaskItem:_btnnotfinishbgOnClick()
-	if self._taskMo.config.jumpId > 0 then
-		GameFacade.jump(self._taskMo.config.jumpId)
+	if self._taskMo.config.jumpId > 0 and GameFacade.jump(self._taskMo.config.jumpId) then
 		ViewMgr.instance:closeView(ViewName.MarshaTaskView)
 	end
 end
@@ -78,7 +77,7 @@ function MarshaTaskItem:_editableRemoveEvents()
 end
 
 function MarshaTaskItem:_onOneClickClaimReward(actId)
-	if self._taskMo and self._taskMo.activityId == actId and self.taskMo:alreadyGotReward() then
+	if self._taskMo and self._taskMo.activityId == actId and self._taskMo:alreadyGotReward() then
 		self._playFinishAnin = true
 
 		self._animator:Play("finish", 0, 0)

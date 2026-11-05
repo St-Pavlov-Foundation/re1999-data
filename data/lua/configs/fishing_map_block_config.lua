@@ -1,0 +1,1345 @@
+﻿-- chunkname: @configs/fishing_map_block_config.lua
+
+return {
+	{
+		mainRes = -1,
+		mapId = 1,
+		x = 8,
+		y = -7,
+		rotate = 1,
+		defineId = 40051,
+		fishingBlockId = 69001
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 0,
+		y = -2,
+		rotate = 0,
+		defineId = 40018,
+		fishingBlockId = 69002
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 1,
+		y = -2,
+		rotate = 1,
+		defineId = 40043,
+		fishingBlockId = 69003
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -2,
+		y = -1,
+		rotate = 0,
+		defineId = 40025,
+		fishingBlockId = 69004
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -1,
+		y = -4,
+		rotate = 2,
+		defineId = 40037,
+		fishingBlockId = 69005
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -2,
+		y = -2,
+		rotate = 1,
+		defineId = 40031,
+		fishingBlockId = 69006
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -2,
+		y = -3,
+		rotate = 1,
+		defineId = 40039,
+		fishingBlockId = 69007
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -3,
+		y = -2,
+		rotate = 1,
+		defineId = 40038,
+		fishingBlockId = 69008
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -3,
+		y = -1,
+		rotate = 0,
+		defineId = 40025,
+		fishingBlockId = 69009
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -3,
+		y = 0,
+		rotate = 0,
+		defineId = 40025,
+		fishingBlockId = 69010
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -2,
+		y = 0,
+		rotate = 1,
+		defineId = 40056,
+		fishingBlockId = 69011
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 0,
+		y = -1,
+		rotate = 0,
+		defineId = 40028,
+		fishingBlockId = 69012
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -1,
+		y = -1,
+		rotate = 0,
+		defineId = 40018,
+		fishingBlockId = 69013
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -1,
+		y = 0,
+		rotate = 5,
+		defineId = 40011,
+		fishingBlockId = 69014
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 1,
+		y = -1,
+		rotate = 3,
+		defineId = 40028,
+		fishingBlockId = 69015
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 2,
+		y = -2,
+		rotate = 1,
+		defineId = 40021,
+		fishingBlockId = 69016
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 2,
+		y = -4,
+		rotate = 2,
+		defineId = 40037,
+		fishingBlockId = 69017
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 1,
+		y = -4,
+		rotate = 4,
+		defineId = 3150006,
+		fishingBlockId = 69018
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 0,
+		y = -3,
+		rotate = 3,
+		defineId = 3150012,
+		fishingBlockId = 69019
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -1,
+		y = -2,
+		rotate = 2,
+		defineId = 40013,
+		fishingBlockId = 69020
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 0,
+		y = -4,
+		rotate = 3,
+		defineId = 40037,
+		fishingBlockId = 69021
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 2,
+		y = -5,
+		rotate = 1,
+		defineId = 40046,
+		fishingBlockId = 69022
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 2,
+		y = -3,
+		rotate = 2,
+		defineId = 40049,
+		fishingBlockId = 69023
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 1,
+		y = -3,
+		rotate = 3,
+		defineId = 40005,
+		fishingBlockId = 69024
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -1,
+		y = -3,
+		rotate = 1,
+		defineId = 40025,
+		fishingBlockId = 69025
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 1,
+		y = -5,
+		rotate = 1,
+		defineId = 40046,
+		fishingBlockId = 69026
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 0,
+		y = -5,
+		rotate = 1,
+		defineId = 40045,
+		fishingBlockId = 69027
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 2,
+		y = -6,
+		rotate = 0,
+		defineId = 40046,
+		fishingBlockId = 69028
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 3,
+		y = -5,
+		rotate = 0,
+		defineId = 40046,
+		fishingBlockId = 69029
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 3,
+		y = -6,
+		rotate = 0,
+		defineId = 40046,
+		fishingBlockId = 69030
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 4,
+		y = -6,
+		rotate = 1,
+		defineId = 3150003,
+		fishingBlockId = 69031
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 4,
+		y = -5,
+		rotate = 3,
+		defineId = 40023,
+		fishingBlockId = 69032
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 4,
+		y = -3,
+		rotate = 4,
+		defineId = 40049,
+		fishingBlockId = 69033
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 4,
+		y = -4,
+		rotate = 2,
+		defineId = 40024,
+		fishingBlockId = 69034
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 4,
+		y = -2,
+		rotate = 5,
+		defineId = 40025,
+		fishingBlockId = 69035
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 3,
+		y = -1,
+		rotate = 2,
+		defineId = 40024,
+		fishingBlockId = 69036
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 2,
+		y = -1,
+		rotate = 2,
+		defineId = 40014,
+		fishingBlockId = 69037
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 1,
+		y = 0,
+		rotate = 2,
+		defineId = 40028,
+		fishingBlockId = 69038
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 0,
+		y = 0,
+		rotate = 4,
+		defineId = 40014,
+		fishingBlockId = 69039
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -1,
+		y = 1,
+		rotate = 0,
+		defineId = 40032,
+		fishingBlockId = 69040
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -2,
+		y = 2,
+		rotate = 1,
+		defineId = 40005,
+		fishingBlockId = 69041
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -3,
+		y = 1,
+		rotate = 0,
+		defineId = 3150012,
+		fishingBlockId = 69042
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -2,
+		y = 1,
+		rotate = 1,
+		defineId = 40025,
+		fishingBlockId = 69043
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -3,
+		y = 2,
+		rotate = 1,
+		defineId = 40023,
+		fishingBlockId = 69044
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 0,
+		y = 1,
+		rotate = 5,
+		defineId = 40033,
+		fishingBlockId = 69045
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -1,
+		y = 3,
+		rotate = 0,
+		defineId = 40023,
+		fishingBlockId = 69046
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 4,
+		y = -1,
+		rotate = 0,
+		defineId = 40024,
+		fishingBlockId = 69047
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 3,
+		y = -3,
+		rotate = 3,
+		defineId = 40025,
+		fishingBlockId = 69048
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 3,
+		y = -4,
+		rotate = 2,
+		defineId = 40040,
+		fishingBlockId = 69049
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 3,
+		y = -2,
+		rotate = 0,
+		defineId = 40019,
+		fishingBlockId = 69050
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -2,
+		y = -4,
+		rotate = 0,
+		defineId = 40046,
+		fishingBlockId = 69051
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -4,
+		y = 1,
+		rotate = 0,
+		defineId = 40037,
+		fishingBlockId = 69052
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 4,
+		y = -7,
+		rotate = 2,
+		defineId = 3150007,
+		fishingBlockId = 69053
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 5,
+		y = -6,
+		rotate = 0,
+		defineId = 40046,
+		fishingBlockId = 69054
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 5,
+		y = -4,
+		rotate = 3,
+		defineId = 3150012,
+		fishingBlockId = 69055
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 5,
+		y = -5,
+		rotate = 4,
+		defineId = 40023,
+		fishingBlockId = 69056
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 5,
+		y = -3,
+		rotate = 5,
+		defineId = 40025,
+		fishingBlockId = 69057
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -4,
+		y = 2,
+		rotate = 0,
+		defineId = 40044,
+		fishingBlockId = 69058
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -3,
+		y = 3,
+		rotate = 1,
+		defineId = 40045,
+		fishingBlockId = 69059
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -4,
+		y = 3,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69060
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -2,
+		y = 3,
+		rotate = 1,
+		defineId = 40023,
+		fishingBlockId = 69061
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -1,
+		y = 2,
+		rotate = 3,
+		defineId = 40025,
+		fishingBlockId = 69062
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 0,
+		y = 2,
+		rotate = 5,
+		defineId = 3150012,
+		fishingBlockId = 69063
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 1,
+		y = 1,
+		rotate = 0,
+		defineId = 40025,
+		fishingBlockId = 69064
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 3,
+		y = 0,
+		rotate = 5,
+		defineId = 40040,
+		fishingBlockId = 69065
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 4,
+		y = 0,
+		rotate = 0,
+		defineId = 40023,
+		fishingBlockId = 69066
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 3,
+		y = 1,
+		rotate = 2,
+		defineId = 3150006,
+		fishingBlockId = 69067
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 2,
+		y = 1,
+		rotate = 4,
+		defineId = 40038,
+		fishingBlockId = 69068
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 1,
+		y = 2,
+		rotate = 0,
+		defineId = 40023,
+		fishingBlockId = 69069
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 5,
+		y = -1,
+		rotate = 4,
+		defineId = 40037,
+		fishingBlockId = 69070
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 6,
+		y = -3,
+		rotate = 5,
+		defineId = 40023,
+		fishingBlockId = 69071
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 5,
+		y = -2,
+		rotate = 4,
+		defineId = 40040,
+		fishingBlockId = 69072
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 6,
+		y = -2,
+		rotate = 0,
+		defineId = 40046,
+		fishingBlockId = 69073
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 6,
+		y = -4,
+		rotate = 4,
+		defineId = 40023,
+		fishingBlockId = 69074
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 6,
+		y = -5,
+		rotate = 0,
+		defineId = 40044,
+		fishingBlockId = 69075
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 6,
+		y = -6,
+		rotate = 0,
+		defineId = 40044,
+		fishingBlockId = 69076
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 6,
+		y = -7,
+		rotate = 0,
+		defineId = 40044,
+		fishingBlockId = 69077
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 5,
+		y = -7,
+		rotate = 0,
+		defineId = 40044,
+		fishingBlockId = 69078
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 3,
+		y = -7,
+		rotate = 1,
+		defineId = 3150004,
+		fishingBlockId = 69079
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 1,
+		y = -6,
+		rotate = 0,
+		defineId = 40044,
+		fishingBlockId = 69080
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 0,
+		y = -6,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69081
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -1,
+		y = -5,
+		rotate = 0,
+		defineId = 40044,
+		fishingBlockId = 69082
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -3,
+		y = -3,
+		rotate = 0,
+		defineId = 40044,
+		fishingBlockId = 69083
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -4,
+		y = 0,
+		rotate = 1,
+		defineId = 40030,
+		fishingBlockId = 69084
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -4,
+		y = -2,
+		rotate = 0,
+		defineId = 40044,
+		fishingBlockId = 69085
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 8,
+		y = -6,
+		rotate = 0,
+		defineId = 40044,
+		fishingBlockId = 69086
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -4,
+		y = -1,
+		rotate = 2,
+		defineId = 40023,
+		fishingBlockId = 69087
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 7,
+		y = -6,
+		rotate = 0,
+		defineId = 40044,
+		fishingBlockId = 69088
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 7,
+		y = -5,
+		rotate = 0,
+		defineId = 40044,
+		fishingBlockId = 69089
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 8,
+		y = -5,
+		rotate = 0,
+		defineId = 40044,
+		fishingBlockId = 69090
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 7,
+		y = -4,
+		rotate = 0,
+		defineId = 40044,
+		fishingBlockId = 69091
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 7,
+		y = -3,
+		rotate = 5,
+		defineId = 3150002,
+		fishingBlockId = 69092
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 5,
+		y = -8,
+		rotate = 0,
+		defineId = 3150005,
+		fishingBlockId = 69093
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 2,
+		y = 0,
+		rotate = 3,
+		defineId = 40050,
+		fishingBlockId = 69094
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 2,
+		y = -7,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69095
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -5,
+		y = -1,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69096
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -5,
+		y = 0,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69097
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -5,
+		y = 1,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69098
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -5,
+		y = 2,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69099
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -5,
+		y = 3,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69100
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -5,
+		y = 4,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69101
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -4,
+		y = 4,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69102
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -3,
+		y = 4,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69103
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -2,
+		y = 4,
+		rotate = 1,
+		defineId = 40045,
+		fishingBlockId = 69104
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 0,
+		y = 3,
+		rotate = 1,
+		defineId = 40045,
+		fishingBlockId = 69105
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 2,
+		y = 2,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69106
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 4,
+		y = 1,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69107
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 5,
+		y = 0,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69108
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 6,
+		y = -1,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69109
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 7,
+		y = -2,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69110
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 8,
+		y = -4,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69111
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 8,
+		y = -3,
+		rotate = 0,
+		defineId = 3150001,
+		fishingBlockId = 69112
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 7,
+		y = -7,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69113
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 6,
+		y = -8,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69114
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 7,
+		y = -8,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69115
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 8,
+		y = -8,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69116
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 9,
+		y = -8,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69117
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 9,
+		y = -6,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69118
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 9,
+		y = -7,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69119
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 9,
+		y = -5,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69120
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 9,
+		y = -4,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69121
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -6,
+		y = 4,
+		rotate = 0,
+		defineId = 3150011,
+		fishingBlockId = 69122
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -6,
+		y = 3,
+		rotate = 2,
+		defineId = 3150008,
+		fishingBlockId = 69123
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -6,
+		y = 2,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69124
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -6,
+		y = 1,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69125
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -6,
+		y = 0,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69126
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -1,
+		y = 4,
+		rotate = 1,
+		defineId = 40045,
+		fishingBlockId = 69127
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 1,
+		y = 3,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69128
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 3,
+		y = 2,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69129
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -7,
+		y = 4,
+		rotate = 2,
+		defineId = 3150010,
+		fishingBlockId = 69130
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -7,
+		y = 3,
+		rotate = 3,
+		defineId = 3150009,
+		fishingBlockId = 69131
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -7,
+		y = 2,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69132
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -7,
+		y = 1,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69133
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -2,
+		y = -5,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69134
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -4,
+		y = -3,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69135
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -3,
+		y = -4,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69136
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -7,
+		y = 0,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69137
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -6,
+		y = -1,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69138
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -5,
+		y = -2,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69139
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 0,
+		y = 4,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69140
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 2,
+		y = 3,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69141
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 1,
+		y = 4,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69142
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = -1,
+		y = -6,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69143
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 1,
+		y = -7,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69144
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 0,
+		y = -7,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69145
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 4,
+		y = -8,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69146
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 3,
+		y = -8,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69147
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 1,
+		y = -8,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69148
+	},
+	{
+		mainRes = 0,
+		mapId = 1,
+		x = 2,
+		y = -8,
+		rotate = 0,
+		defineId = 40045,
+		fishingBlockId = 69149
+	}
+}

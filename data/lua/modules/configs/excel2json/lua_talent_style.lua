@@ -20,9 +20,36 @@ local primaryKey = {
 local mlStringKey = {
 	name = 1
 }
+local _configList, _configDict
+local configPath = "configs.talent_style_config"
 
-function lua_talent_style.onLoad(json)
-	lua_talent_style.configList, lua_talent_style.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_talent_style, "configList", _configList)
+	rawset(lua_talent_style, "configDict", _configDict)
+end
+
+setmetatable(lua_talent_style, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_talent_style.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_talent_style, "configList", nil)
+	rawset(lua_talent_style, "configDict", nil)
 end
 
 return lua_talent_style

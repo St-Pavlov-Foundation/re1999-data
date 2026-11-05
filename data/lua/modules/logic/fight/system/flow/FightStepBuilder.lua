@@ -222,7 +222,10 @@ FightStepBuilder.ActEffectWorkCls = {
 	[FightEnum.EffectType.QTETOTALDAMAGEUPDATE] = FightWorkQTETotalDamageUpdate388,
 	[FightEnum.EffectType.ENTITYSTATUSUPDATE] = FightWorkEntityStatusUpdate389,
 	[FightEnum.EffectType.CLUEADD] = FightWorkClueAdd390,
-	[FightEnum.EffectType.CLUEDEL] = FightWorkClueDel391
+	[FightEnum.EffectType.CLUEDEL] = FightWorkClueDel391,
+	[FightEnum.EffectType.CLUEMAXADD] = FightWorkClueMaxAdd392,
+	[FightEnum.EffectType.SETLIFENOEFFECT] = FightWorkCurrentHpChange,
+	[FightEnum.EffectType.YIFULINMOVE] = FightWorkYiFuLinMove394
 }
 FightStepBuilder.EffectType2FlowOrWork = {
 	[FightEnum.EffectType.ADDSPHANDCARD] = FightWorkAddSpHandCard320Container,

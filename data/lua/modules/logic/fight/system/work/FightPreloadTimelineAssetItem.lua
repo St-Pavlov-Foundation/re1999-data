@@ -22,6 +22,10 @@ function FightPreloadTimelineAssetItem:startLoad()
 	local work = self:com_registWork(FightWorkTimelineAssetItem, loaderComp, entityData, self.timelineName, self.fightStepData)
 
 	work:start()
+
+	work = self:com_registWork(FightWorkPreloadTimelineEffect, loaderComp, entityData, self.timelineName, self.fightStepData)
+
+	work:start()
 end
 
 return FightPreloadTimelineAssetItem

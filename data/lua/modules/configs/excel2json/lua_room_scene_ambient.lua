@@ -8,10 +8,36 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.room_scene_ambient_config"
 
-function lua_room_scene_ambient.onLoad(json)
-	lua_room_scene_ambient.confgData = json
-	lua_room_scene_ambient.configList, lua_room_scene_ambient.configDict = lua_room_scene_ambient.json_parse(json)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = lua_room_scene_ambient.json_parse(config)
+
+	rawset(lua_room_scene_ambient, "configList", _configList)
+	rawset(lua_room_scene_ambient, "configDict", _configDict)
+end
+
+setmetatable(lua_room_scene_ambient, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_room_scene_ambient.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_room_scene_ambient, "configList", nil)
+	rawset(lua_room_scene_ambient, "configDict", nil)
 end
 
 function lua_room_scene_ambient.json_parse(json)

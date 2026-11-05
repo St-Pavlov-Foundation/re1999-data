@@ -16,8 +16,10 @@ function StoryEffectItem:init(go, path, effCo, order, callback, callbackObj)
 	self._fadeHelper = nil
 	self._effOrder = order
 
-	if effCo.delayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()] > 0 then
-		TaskDispatcher.runDelay(self._buildNormalEffect, self, effCo.delayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()])
+	local delayTime = effCo.delayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()]
+
+	if delayTime > 0 then
+		TaskDispatcher.runDelay(self._buildNormalEffect, self, delayTime)
 	else
 		self:_buildNormalEffect()
 	end
@@ -45,6 +47,8 @@ function StoryEffectItem:reset(go, effCo, order)
 	elseif self._setStencil and self._effectCo.layer ~= 11 and self._effectCo.layer ~= 12 and self._effectCo.layer ~= 13 and self._effectCo.layer ~= 14 then
 		self:_resetParticleStencil()
 	end
+
+	self:setAnimState(self._effectCo.stateName)
 end
 
 function StoryEffectItem:_buildNormalEffect()
@@ -118,6 +122,7 @@ function StoryEffectItem:_onNormalEffectLoaded()
 	self._effectOrderContainer = gohelper.onceAddComponent(self._effectGo, typeof(ZProj.EffectOrderContainer))
 
 	self._effectOrderContainer:SetBaseOrder(self._effOrder)
+	self:setAnimState(self._effectCo.stateName)
 end
 
 function StoryEffectItem:_setParticleStencil(stencilValue, stencilComp, stencilOp)
@@ -210,7 +215,7 @@ end
 
 function StoryEffectItem:_followBg()
 	local bgGo = StoryViewMgr.instance:getStoryFrontBgGo()
-	local scaleX, scaleY = transformhelper.getLocalScale(bgGo.transform)
+	local _, scaleY = transformhelper.getLocalScale(bgGo.transform)
 	local frontTransX, frontTransY = transformhelper.getPos(self._bgFrontGo.transform)
 	local posX = self._deltaPos[1] + frontTransX - self._initFrontPos[1]
 	local posY = self._deltaPos[2] + frontTransY - self._initFrontPos[2]
@@ -323,6 +328,16 @@ function StoryEffectItem:_effFinished()
 	self:onDestroy()
 end
 
+function StoryEffectItem:setAnimState(stateName)
+	if string.nilorempty(stateName) then
+		return
+	end
+
+	if self._effectAnim then
+		self._effectAnim:Play(stateName, 0, 0)
+	end
+end
+
 function StoryEffectItem:destroyEffect(effCo, param)
 	if effCo then
 		self._effectCo = effCo
@@ -332,6 +347,16 @@ function StoryEffectItem:destroyEffect(effCo, param)
 
 	TaskDispatcher.cancelTask(self._buildNormalEffect, self)
 
+	local delayTime = self._effectCo.delayTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()]
+
+	if delayTime > 0 then
+		TaskDispatcher.runDelay(self._startDestroy, self, delayTime)
+	else
+		self:_startDestroy()
+	end
+end
+
+function StoryEffectItem:_startDestroy()
 	if self._effectCo.outType == StoryEnum.EffectOutType.Hard then
 		self:onDestroy()
 	else
@@ -352,6 +377,7 @@ function StoryEffectItem:onDestroy()
 		self._followDialogEff = nil
 	end
 
+	TaskDispatcher.cancelTask(self._startDestroy, self)
 	TaskDispatcher.cancelTask(self._effFinished, self)
 
 	if self._destroyParam then

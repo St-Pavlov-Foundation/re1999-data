@@ -1,0 +1,24 @@
+﻿-- chunkname: @configs/activity220_lsj_game_config.lua
+
+return {
+	{
+		1000,
+		"10002",
+		"v3a4_lusijian_game_cutting3"
+	},
+	{
+		1001,
+		"10001",
+		"v3a4_lusijian_game_cutting4"
+	},
+	{
+		1002,
+		"10000",
+		"v3a4_lusijian_game_cutting1"
+	},
+	{
+		1003,
+		"10003",
+		"v3a4_lusijian_game_cutting2"
+	}
+}

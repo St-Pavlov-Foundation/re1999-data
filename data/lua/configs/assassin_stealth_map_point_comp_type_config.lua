@@ -1,0 +1,22 @@
+﻿-- chunkname: @configs/assassin_stealth_map_point_comp_type_config.lua
+
+return {
+	{
+		1,
+		"干草堆",
+		"assassin2_stealth_game_haystack",
+		""
+	},
+	{
+		2,
+		"屋顶花园",
+		"assassin2_stealth_game_garden",
+		""
+	},
+	{
+		3,
+		"高塔",
+		"assassin2_stealth_game_tower",
+		"assassinstealthoverview_legend_tower"
+	}
+}

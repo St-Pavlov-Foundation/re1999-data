@@ -36,6 +36,8 @@ function V3a2_BossRush_MainItem:addEventListeners()
 	if self._btnLocked then
 		self._btnLocked:AddClickListener(self._btnLockedOnClick, self)
 	end
+
+	self:addEventCb(BossRushController.instance, BossRushEvent.OnReceiveGet128InfosReply, self._refresh, self)
 end
 
 function V3a2_BossRush_MainItem:removeEventListeners()
@@ -44,6 +46,8 @@ function V3a2_BossRush_MainItem:removeEventListeners()
 	if self._btnLocked then
 		self._btnLocked:RemoveClickListener()
 	end
+
+	self:removeEventCb(BossRushController.instance, BossRushEvent.OnReceiveGet128InfosReply, self._refresh, self)
 end
 
 function V3a2_BossRush_MainItem:_btnItemBGOnClick()
@@ -155,16 +159,6 @@ function V3a2_BossRush_MainItem:_refresh()
 
 	if self._simageBoss2 then
 		self._simageBoss2:LoadImage(bossIcon)
-	end
-
-	local bgName = string.format("%s_bg%s", stageCO.bossRushMainBg, self._index)
-
-	if self._simageBG1 then
-		self._simageBG1:LoadImage(ResUrl.getBossRushBossBGPath(bgName))
-	end
-
-	if self._simageBG2 then
-		self._simageBG2:LoadImage(ResUrl.getBossRushBossBGPath(bgName))
 	end
 
 	self:_refreshStatus()

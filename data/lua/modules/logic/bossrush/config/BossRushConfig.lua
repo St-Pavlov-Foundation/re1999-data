@@ -163,6 +163,12 @@ function BossRushConfig:getBossDetailTitlePath(stage, activityId)
 	return ResUrl.getBossRushDetailPath(resName)
 end
 
+function BossRushConfig:getResultViewBossSImage(stage, activityId)
+	local resName = self:getStageCO(stage, activityId).resultViewBossSImage
+
+	return ResUrl.getV1a4BossRushSinglebg(resName)
+end
+
 function BossRushConfig:getBossDetailFullPath(stage, activityId)
 	local resName = self:getStageCO(stage, activityId).bossRushLevelDetailFullBgSimage
 

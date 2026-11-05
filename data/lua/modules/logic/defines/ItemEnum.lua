@@ -99,6 +99,13 @@ ItemEnum.RoomBackpackPropSubType = {
 }
 ItemEnum.NewbiePackGiftId = 520010
 ItemEnum.NoExpiredNum = 70128
+ItemEnum.TalentBoxItemId = 481010
+ItemEnum.TalentItemIdMap = {
+	[120004] = true,
+	[120003] = true,
+	[120002] = true,
+	[120001] = true
+}
 ItemEnum.Tag = {
 	GoldenMilletPresentSkin = 3,
 	SummonSkin = 1,

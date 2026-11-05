@@ -16,6 +16,7 @@ function UISpriteSetMgr:ctor()
 	self._fightSkillCard = self:newSpriteSetUnit("ui/spriteassets/fight_skillcard.asset")
 	self._fightSkillCard2 = self:newSpriteSetUnit("ui/spriteassets/fight_skillcard_2.asset")
 	self._fightSkillCard3 = self:newSpriteSetUnit("ui/spriteassets/fight_skillcard_3.asset")
+	self._fightSkillCard4 = self:newSpriteSetUnit("ui/spriteassets/fight_skillcard_4.asset")
 	self._fightpassive = self:newSpriteSetUnit("ui/spriteassets/fightpassive.asset")
 	self._explore = self:newSpriteSetUnit("ui/spriteassets/explore.asset")
 	self._weekwalk = self:newSpriteSetUnit("ui/spriteassets/weekwalk.asset")
@@ -189,6 +190,7 @@ function UISpriteSetMgr:ctor()
 	self._findlovegame = self:newSpriteSetUnit("modules/party_game/ui/spriteassets/v3a4_laplace_spriteset.asset")
 	self._partygamecard = self:newSpriteSetUnit("ui/spriteassets/partygame_card.asset")
 	self._v3a3_eliminate_spriteset = self:newSpriteSetUnit("ui/spriteassets/v3a3_eliminate_spriteset.asset")
+	self._arcade_survivor_spriteset = self:newSpriteSetUnit("modules/arcade_survivor/ui/spriteassets/v4a1_eliminate_spriteset.asset")
 	self._v3a3_igor_spriteset = self:newSpriteSetUnit("ui/spriteassets/v3a3_igor_spriteset.asset")
 	self._v3a3_marsha_spriteset = self:newSpriteSetUnit("ui/spriteassets/v3a3_marsha_spriteset.asset")
 	self._v3a4_laplace_spriteset = self:newSpriteSetUnit("modules/party_game/ui/spriteassets/v3a4_laplace_spriteset.asset")
@@ -225,6 +227,11 @@ function UISpriteSetMgr:ctor()
 	self._matchgame = self:newSpriteSetUnit("modules/matchgame/ui/spriteassets/matchgame.asset")
 	self._college = self:newSpriteSetUnit("modules/college/ui/spriteassets/college_1.asset")
 	self._v4a0concert = self:newSpriteSetUnit("ui/spriteassets/v4a0_concert_spriteset.asset")
+	self._v4a1_main_activity = self:newSpriteSetUnit("ui/spriteassets/v4a1_mainactivity_spriteset.asset")
+	self._v4a1_yifulin = self:newSpriteSetUnit("ui/spriteassets/v4a1_yifulin_spriteset.asset")
+	self._v4a1_peishita = self:newSpriteSetUnit("ui/spriteassets/v4a1_peishita_spriteset.asset")
+	self._v4a1_investigation = self:newSpriteSetUnit("ui/spriteassets/v4a1_investigation.asset")
+	self._v4a1_bossrush = self:newSpriteSetUnit("ui/spriteassets/v4a1_bossrush_spriteset.asset")
 end
 
 function UISpriteSetMgr:newSpriteSetUnit(path)
@@ -280,6 +287,8 @@ function UISpriteSetMgr:setFightSkillCardSprite(image, name, setNativeSize)
 		spriteMgr = self._fightSkillCard2
 	elseif cardSkin == 672803 then
 		spriteMgr = self._fightSkillCard3
+	elseif cardSkin == 672804 then
+		spriteMgr = self._fightSkillCard4
 	end
 
 	spriteMgr:setSprite(image, name, setNativeSize)
@@ -491,6 +500,10 @@ end
 
 function UISpriteSetMgr:setV1a4BossRushSprite(image, name, setNativeSize)
 	self._v1a4_bossrush:setSprite(image, name, setNativeSize)
+end
+
+function UISpriteSetMgr:setV4a1BossRushSprite(image, name, setNativeSize)
+	self._v4a1_bossrush:setSprite(image, name, setNativeSize)
 end
 
 function UISpriteSetMgr:setV1a4SeasonSumSprite(image, name, setNativeSize)
@@ -973,6 +986,16 @@ function UISpriteSetMgr:setV3a3EliminateSprite(image, name, setNativeSize)
 	self._v3a3_eliminate_spriteset:setSprite(image, name, setNativeSize)
 end
 
+function UISpriteSetMgr:setArcadeSurvivorSprite(image, name, setNativeSize, folder)
+	local path = name
+
+	if not string.nilorempty(folder) then
+		path = string.format("%s/%s", folder, name)
+	end
+
+	self._arcade_survivor_spriteset:setSprite(image, path, setNativeSize)
+end
+
 function UISpriteSetMgr:setV3a3IgorSprite(image, name, setNativeSize)
 	self._v3a3_igor_spriteset:setSprite(image, name, setNativeSize)
 end
@@ -1127,6 +1150,22 @@ end
 
 function UISpriteSetMgr:setV4a0ConcertSprite(image, name, setNativeSize)
 	self._v4a0concert:setSprite(image, name, setNativeSize)
+end
+
+function UISpriteSetMgr:setV4a1MainActivitySprite(image, name, setNativeSize)
+	self._v4a1_main_activity:setSprite(image, name, setNativeSize)
+end
+
+function UISpriteSetMgr:setV4a1YifulinSprite(image, name, setNativeSize)
+	self._v4a1_yifulin:setSprite(image, name, setNativeSize)
+end
+
+function UISpriteSetMgr:setAct248Sprite(image, name, setNativeSize)
+	self._v4a1_investigation:setSprite(image, name, setNativeSize)
+end
+
+function UISpriteSetMgr:setV4a1PeiShiTaSprite(image, name, setNativeSize)
+	self._v4a1_peishita:setSprite(image, name, setNativeSize)
 end
 
 function UISpriteSetMgr:tryDispose()

@@ -91,6 +91,12 @@ function FightFieldDataMgr:isDungeonType(type)
 	return self.episodeCo and self.episodeCo.type == type
 end
 
+function FightFieldDataMgr:isStandardFight()
+	local chapterCo = self.episodeCo and DungeonConfig.instance:getChapterCO(self.episodeCo.chapterId)
+
+	return chapterCo and chapterCo.type == DungeonEnum.ChapterType.StandardFight or false
+end
+
 function FightFieldDataMgr:isPaTa()
 	return self:isDungeonType(DungeonEnum.EpisodeType.TowerBoss) or self:isDungeonType(DungeonEnum.EpisodeType.TowerLimited) or self:isDungeonType(DungeonEnum.EpisodeType.TowerPermanent) or self:isDungeonType(DungeonEnum.EpisodeType.TowerBossTeach)
 end

@@ -1,0 +1,13 @@
+﻿-- chunkname: @configs/sodache_item_config.lua
+
+return {
+	{
+		10000000,
+		"回报",
+		7,
+		"v3a7_sodache_icon_currency_2",
+		0,
+		1,
+		100
+	}
+}

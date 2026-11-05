@@ -18,12 +18,12 @@ function GameMsgTooOftenCheck:ctor()
 end
 
 function GameMsgTooOftenCheck:addConstEvents()
-	if isDebugBuild then
-		LuaSocketMgr.instance:registerPreSender(self)
-	end
+	self._isOpenCheckSameMsg = isDebugBuild
+
+	LuaSocketMgr.instance:registerPreSender(self)
 end
 
-function GameMsgTooOftenCheck:blockSendProto(cmd, proto, socketId)
+function GameMsgTooOftenCheck:blockSendProto(cmd, proto, socketId, isGM)
 	if not proto then
 		return
 	end
@@ -43,28 +43,36 @@ function GameMsgTooOftenCheck:blockSendProto(cmd, proto, socketId)
 	local sameProtoCount = 0
 	local protoStr
 
-	for _, protoToSend in ipairs(self._toSendProtoList) do
-		if proto.__cname == protoToSend.__cname then
-			protoStr = protoStr or tostring(proto)
+	if self._isOpenCheckSameMsg then
+		for _, protoToSend in ipairs(self._toSendProtoList) do
+			if proto.__cname == protoToSend.__cname then
+				protoStr = protoStr or tostring(proto)
 
-			if protoStr == tostring(protoToSend) then
-				sameProtoCount = sameProtoCount + 1
+				if protoStr == tostring(protoToSend) then
+					sameProtoCount = sameProtoCount + 1
 
-				if sameProtoCount > TooOftenSameThreshold then
-					local msg = proto.__cname .. "{\n" .. protoStr .. "}"
+					if sameProtoCount > TooOftenSameThreshold then
+						local msg = proto.__cname .. "{\n" .. protoStr .. "}"
 
-					logError(string.format("发完全相同的包过于频繁，%d秒%d个\n%s", StatDuration, sameProtoCount, msg))
+						logError(string.format("发完全相同的包过于频繁，%d秒%d个\n%s", StatDuration, sameProtoCount, msg))
 
-					break
+						break
+					end
 				end
 			end
 		end
 	end
 
 	if #self._sendProtoList > TooOftenThreshold then
+		protoStr = protoStr or tostring(proto)
+
 		local msg = proto.__cname .. "{\n" .. protoStr .. "}"
 
 		logError(string.format("发包过于频繁，%d秒%d个，请求已被拦截\n%s", StatDuration, #self._toSendProtoList, msg))
+
+		if isGM then
+			return false
+		end
 
 		return true
 	end

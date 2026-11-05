@@ -91,6 +91,10 @@ end
 function FightWorkPlayEnd:_addCloseFightView(flow)
 	flow:addWork(FunctionWork.New(function()
 		ViewMgr.instance:closeView(ViewName.FightView)
+
+		if isDebugBuild then
+			ViewMgr.instance:closeView(ViewName.GM_FightDataShowView)
+		end
 	end))
 end
 

@@ -1,0 +1,22 @@
+﻿-- chunkname: @configs/milestone_config.lua
+
+return {
+	{
+		385501,
+		138507,
+		1,
+		false
+	},
+	{
+		390001,
+		13920,
+		2,
+		false
+	},
+	{
+		390002,
+		13919,
+		3,
+		false
+	}
+}

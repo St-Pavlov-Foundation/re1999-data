@@ -25,9 +25,36 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.rogue_event_fight_config"
 
-function lua_rogue_event_fight.onLoad(json)
-	lua_rogue_event_fight.configList, lua_rogue_event_fight.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_rogue_event_fight, "configList", _configList)
+	rawset(lua_rogue_event_fight, "configDict", _configDict)
+end
+
+setmetatable(lua_rogue_event_fight, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_rogue_event_fight.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_rogue_event_fight, "configList", nil)
+	rawset(lua_rogue_event_fight, "configDict", nil)
 end
 
 return lua_rogue_event_fight

@@ -63,7 +63,7 @@ function EnemyInfoController:openSeason123EnemyInfoViewWithNoTab(activityId, bat
 end
 
 function EnemyInfoController:openBossRushEnemyInfoView(activityId, stage, layer)
-	ViewMgr.instance:openView(ViewName.BaseEnemyInfoView, {
+	ViewMgr.instance:openView(ViewName.BossRushEnemyInfoView, {
 		activityId = activityId,
 		stage = stage,
 		layer = layer,

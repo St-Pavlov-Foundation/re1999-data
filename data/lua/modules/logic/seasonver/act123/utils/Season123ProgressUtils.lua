@@ -135,14 +135,33 @@ function Season123ProgressUtils.getMaxLayer(actId, stage)
 	return maxLayer
 end
 
+function Season123ProgressUtils.getMaxStage(actId)
+	local stageCfgs = Season123Config.instance:getStageCos(actId)
+
+	if not stageCfgs then
+		return 0
+	end
+
+	local maxStage = 0
+
+	for _, co in ipairs(stageCfgs) do
+		if maxStage < co.stage then
+			maxStage = co.stage
+		end
+	end
+
+	return maxStage
+end
+
 function Season123ProgressUtils.getEmptyLayerName(index, actId)
 	return string.format("v1a7_season_img_pic_empty_%s", index)
 end
 
-function Season123ProgressUtils.getResultBg(pic, actId)
-	local url = "singlebg/%s_season_singlebg/level/%s.png"
+function Season123ProgressUtils.getResultBg(pic)
+	local folder = Season123Model.instance:getSingleBgFolder()
+	local urlStr = ResUrl.getSeason123LayerDetailBg(folder, pic)
 
-	return Season123ViewHelper.getIconUrl(url, pic, actId)
+	return urlStr
 end
 
 function Season123ProgressUtils.isEpisodeUnlock(actId, stage, layer)

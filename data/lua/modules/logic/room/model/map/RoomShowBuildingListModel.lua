@@ -154,7 +154,7 @@ function RoomShowBuildingListModel:_checkInfoShow(buildingId, isUse)
 
 	local config = RoomConfig.instance:getBuildingConfig(buildingId)
 
-	if not config or config.buildingType == RoomBuildingEnum.BuildingType.Transport then
+	if not config or RoomBuildingEnum.BuildingListHideType[config.buildingType] then
 		return false
 	end
 

@@ -13,9 +13,36 @@ local primaryKey = {
 local mlStringKey = {
 	typename = 1
 }
+local _configList, _configDict
+local configPath = "configs.bgm_type_config"
 
-function lua_bgm_type.onLoad(json)
-	lua_bgm_type.configList, lua_bgm_type.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_bgm_type, "configList", _configList)
+	rawset(lua_bgm_type, "configDict", _configDict)
+end
+
+setmetatable(lua_bgm_type, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_bgm_type.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_bgm_type, "configList", nil)
+	rawset(lua_bgm_type, "configDict", nil)
 end
 
 return lua_bgm_type

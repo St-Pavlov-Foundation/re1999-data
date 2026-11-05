@@ -1,0 +1,24 @@
+﻿-- chunkname: @configs/survival_shop_type_config.lua
+
+return {
+	{
+		1,
+		"载具",
+		"survival_shoptab_4"
+	},
+	{
+		2,
+		"漫游行装",
+		"survival_shoptab_3"
+	},
+	{
+		3,
+		"强化",
+		"survival_shoptab_2"
+	},
+	{
+		4,
+		"快捷道具",
+		"survival_shoptab_1"
+	}
+}

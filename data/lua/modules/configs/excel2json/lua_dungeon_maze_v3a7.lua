@@ -17,9 +17,36 @@ local primaryKey = {
 local mlStringKey = {
 	dialogid = 1
 }
+local _configList, _configDict
+local configPath = "configs.dungeon_maze_v3a7_config"
 
-function lua_dungeon_maze_v3a7.onLoad(json)
-	lua_dungeon_maze_v3a7.configList, lua_dungeon_maze_v3a7.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_dungeon_maze_v3a7, "configList", _configList)
+	rawset(lua_dungeon_maze_v3a7, "configDict", _configDict)
+end
+
+setmetatable(lua_dungeon_maze_v3a7, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_dungeon_maze_v3a7.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_dungeon_maze_v3a7, "configList", nil)
+	rawset(lua_dungeon_maze_v3a7, "configDict", nil)
 end
 
 return lua_dungeon_maze_v3a7

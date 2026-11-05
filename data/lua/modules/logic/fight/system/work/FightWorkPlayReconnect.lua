@@ -18,6 +18,11 @@ function FightWorkPlayReconnect:onStart()
 	flow:addWork(FightGameMgr.entityMgr:registNewAllEntityWork())
 	flow:registWork(FightWorkFunction, ViewMgr.instance.openView, ViewMgr.instance, ViewName.FightSkillSelectView)
 	flow:registWork(FightWorkFunction, ViewMgr.instance.openView, ViewMgr.instance, ViewName.FightView)
+
+	if FightRealTimeDamageStatModel.instance:isEnabled() then
+		flow:registWork(FightWorkFunction, ViewMgr.instance.openView, ViewMgr.instance, ViewName.GM_FightDataShowView)
+	end
+
 	flow:addWork(FunctionWork.New(function()
 		FightRpc.instance:dealCardInfoPushData()
 	end))

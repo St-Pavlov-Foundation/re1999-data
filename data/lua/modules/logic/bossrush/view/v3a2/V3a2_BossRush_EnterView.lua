@@ -50,7 +50,7 @@ function V3a2_BossRush_EnterView:removeEvents()
 end
 
 function V3a2_BossRush_EnterView:_btnUnOpenOnClick()
-	self:_enterActivity()
+	return
 end
 
 function V3a2_BossRush_EnterView:_btnStoreOnClick()
@@ -67,7 +67,13 @@ function V3a2_BossRush_EnterView:_enterActivity()
 	end
 end
 
+function V3a2_BossRush_EnterView:refreshSeason()
+	self._season = 1
+end
+
 function V3a2_BossRush_EnterView:_editableInitView()
+	self:refreshSeason()
+
 	self._goStoreTip = gohelper.findChild(self.viewGO, "Right/Store/image_Tips")
 	self._txtStore = gohelper.findChildText(self.viewGO, "Right/Store/#btn_Store/txt_Store")
 	self._txtActDesc = gohelper.findChildText(self.viewGO, "Left/txtDescr")
@@ -106,12 +112,9 @@ function V3a2_BossRush_EnterView:_editableInitView()
 		end
 	end
 
-	local activityId = BossRushConfig.instance:getActivityId()
+	self._isInfo = false
 
-	if ActivityHelper.isOpen(activityId) then
-		BossRushRpc.instance:sendGet128InfosRequest()
-	end
-
+	V4a1_BossRushController.instance:sendRequestActInfos()
 	self:_initRank()
 end
 
@@ -124,20 +127,29 @@ function V3a2_BossRush_EnterView:_initRank()
 
 	self.loader = MultiAbLoader.New()
 
-	self.loader:addPath(BossRushEnum.ResPath.v3a2_bossrush_rankbtn)
+	local path = self:_getRankBtnPath()
+
+	self.loader:addPath(path)
 	self.loader:startLoad(self.loadResFinish, self)
 end
 
 function V3a2_BossRush_EnterView:loadResFinish()
-	local assetItem = self.loader:getAssetItem(BossRushEnum.ResPath.v3a2_bossrush_rankbtn)
-	local res = assetItem:GetResource(BossRushEnum.ResPath.v3a2_bossrush_rankbtn)
+	local path = self:_getRankBtnPath()
+	local assetItem = self.loader:getAssetItem(path)
+	local res = assetItem:GetResource(path)
 	local go = gohelper.clone(res, self._gorank)
 
-	self._rankBtn = MonoHelper.addNoUpdateLuaComOnceToGo(go, V3a2_BossRush_RankBtn)
+	self._rankBtn = MonoHelper.addNoUpdateLuaComOnceToGo(go, V3a2_BossRush_RankBtn, self._season)
 
 	if self._isInfo then
 		self._rankBtn:refreshUI()
 	end
+end
+
+function V3a2_BossRush_EnterView:_getRankBtnPath()
+	local seasonParam = V4a1BossRushEnum.SeasonParam[self._season]
+
+	return seasonParam.RankBtnPath
 end
 
 function V3a2_BossRush_EnterView:onOpen()
@@ -157,10 +169,6 @@ function V3a2_BossRush_EnterView:onOpen()
 	local defineId = RedDotEnum.DotNode.BossRushEnter
 
 	RedDotController.instance:addRedDot(goreddot, defineId)
-
-	self._isInfo = false
-
-	BossRushRpc.instance:sendGet128InfosRequest()
 
 	if not actInfoMo then
 		self._txtLimitTime.text = ""

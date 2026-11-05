@@ -321,7 +321,10 @@ end
 
 function SkillEditorToolsAutoPlaySkillView:_onItemClick(data)
 	GameGlobalMgr.instance:getScreenState():setLocalQuality(data)
-	FightEffectPool.dispose()
+
+	if FightGameMgr.effectMgr then
+		FightGameMgr.effectMgr:dispose()
+	end
 end
 
 function SkillEditorToolsAutoPlaySkillView:_stopFlow()

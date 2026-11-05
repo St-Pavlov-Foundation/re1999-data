@@ -9,6 +9,12 @@ local HandCardWidth = 185
 FightViewHandCard.blockOperate = false
 
 function FightViewHandCard:onInitView()
+	if FightCardDataHelper.getCardSkin() == 672804 then
+		HandCardWidth = 195
+	else
+		HandCardWidth = 185
+	end
+
 	self.skinDownEffectRoot = gohelper.findChild(self.viewGO, "root/hand_card_skin_down")
 	self.skinDownEffectRoot_s = gohelper.findChild(self.viewGO, "root/hand_card_skin_s_down")
 	self.skinUpEffectRoot = gohelper.findChild(self.viewGO, "root/hand_card_skin_up")
@@ -202,6 +208,7 @@ function FightViewHandCard:onOpen()
 	self:addEventCb(FightController.instance, FightEvent.CardsCompose, self._onCardsCompose, self)
 	self:addEventCb(FightController.instance, FightEvent.CardsComposeTimeOut, self._onCardsComposeTimeOut, self)
 	self:addEventCb(FightController.instance, FightEvent.CardLevelChange, self._onCardLevelChange, self)
+	self:addEventCb(FightController.instance, FightEvent.CardLevelChange4_1, self._onCardLevelChange4_1, self)
 	self:addEventCb(FightController.instance, FightEvent.AfterForceUpdatePerformanceData, self._onAfterForceUpdatePerformanceData, self)
 	self:addEventCb(FightController.instance, FightEvent.OnRoundSequenceFinish, self._onRoundSequenceFinish, self)
 	self:addEventCb(FightController.instance, FightEvent.OnClothSkillRoundSequenceFinish, self._onClothSkillRoundSequenceFinish, self)
@@ -774,6 +781,11 @@ function FightViewHandCard:_startDistributeCards(beforeCards, distributeCards, i
 
 			work:registFinishCallback(self.onEnterDistributeCardsSkinDone, self)
 			work:start()
+		elseif cardSkin == 672804 then
+			local work = self:com_registWork(FightWorkEnterDistributeCards672804, self, self.distributeCards)
+
+			work:registFinishCallback(self.onEnterDistributeCardsSkinDone, self)
+			work:start()
 		else
 			self:_nextDistributeCards()
 		end
@@ -1284,6 +1296,14 @@ function FightViewHandCard:_onCardLevelChange(index, oldSkillId, canCombine)
 	if canCombine then
 		TaskDispatcher.cancelTask(self._combineAfterCardLevelChange, self)
 		TaskDispatcher.runDelay(self._combineAfterCardLevelChange, self, FightEnum.PerformanceTime.CardLevelChange / FightModel.instance:getUISpeed())
+	end
+end
+
+function FightViewHandCard:_onCardLevelChange4_1(index, oldSkillId, canCombine)
+	local cardItem = self._handCardItemList[index]
+
+	if cardItem then
+		cardItem:playCardLevelChange4_1(oldSkillId)
 	end
 end
 

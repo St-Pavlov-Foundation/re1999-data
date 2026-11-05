@@ -108,7 +108,7 @@ function VersionActivity3_2HuiDiaoLanEnterView:onUpdateParam()
 end
 
 function VersionActivity3_2HuiDiaoLanEnterView:onOpen()
-	RedDotController.instance:addRedDot(self._goreddot, RedDotEnum.DotNode.Activity220Task, self.actId)
+	RedDotController.instance:addRedDot(self._goreddot, RedDotEnum.DotNode.PermanentActivity220Task, self.actId)
 	self:_refreshTime()
 	TaskDispatcher.runRepeat(self._refreshTime, self, TimeUtil.OneMinuteSecond)
 	self._animator:Play("open", 0, 0)

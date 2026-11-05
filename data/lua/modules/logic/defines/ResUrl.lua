@@ -1044,6 +1044,22 @@ function ResUrl.getArcadeSceneRes(resName)
 	return string.format("scenes/v3a3_m_s12_bf/prefab/%s.prefab", resName)
 end
 
+function ResUrl.getArcadeSurvivorScenePrefabRes(folder, resName)
+	return string.format("%s/%s/%s.prefab", ArcadeSurvivorEnum.ResDir.SceneRes, folder, resName)
+end
+
+function ResUrl.getArcadeSurvivorEffectRes(resName)
+	return ResUrl.getArcadeSurvivorScenePrefabRes(ArcadeSurvivorEnum.ResDir.VX, resName)
+end
+
+function ResUrl.getArcadeSurvivorIcon(resName, folder)
+	if string.nilorempty(folder) then
+		return string.format("modules/arcade_survivor/ui/singlebg/%s.png", resName)
+	else
+		return string.format("modules/arcade_survivor/ui/singlebg/%s/%s.png", folder, resName)
+	end
+end
+
 function ResUrl.getPushBoxResultIcon(resName)
 	return string.format("singlebg_lang/txt_versionactivitypushbox/%s.png", resName)
 end
@@ -1341,7 +1357,7 @@ function ResUrl.getSeason123Scene(folder, resName)
 end
 
 function ResUrl.getSeason123LayerDetailBg(folder, pic)
-	return string.format("singlebg/%s/level/%s.png", folder, pic)
+	return string.format("singlebg/%s/icon/%s.png", folder, pic)
 end
 
 function ResUrl.getV1a8SignSingleBg(resName)
@@ -1964,6 +1980,34 @@ end
 
 function ResUrl.getRoleBadgeSingleBg(resName)
 	return string.format("singlebg/assist_singlebg/%s.png", resName)
+end
+
+function ResUrl.getV4a1InvestigationSingleBg(resName)
+	return string.format("singlebg/v4a1_investigation_singlebg/%s.png", resName)
+end
+
+function ResUrl.getAct248ClueSingleBg(resName)
+	return string.format("singlebg/v4a1_investigation_singlebg/clue/%s.png", resName)
+end
+
+function ResUrl.getV4a1LibrarySceneRes(resName)
+	return string.format("scenes/v4a1_m_s22_dytsg/%s.prefab", resName)
+end
+
+function ResUrl.getV4a1InvestigationGuessSingleBg(resName)
+	return string.format("singlebg/v4a1_investigation_singlebg/photo/%s.png", resName)
+end
+
+function ResUrl.getV4a1GuessGameNewLangSingleBg(resName)
+	return string.format("singlebg_lang/txt_v4a1_guessgamenew_singlebg/%s.png", resName)
+end
+
+function ResUrl.getV4a1GuessGameNewSingleBg(resName)
+	return string.format("singlebg/v4a1_guessgamenew_singlebg/%s.png", resName)
+end
+
+function ResUrl.getV4a1LinkGiftSingleBg(resName)
+	return string.format("singlebg/v4a1_linkgift_singlebg/%s.png", resName)
 end
 
 return ResUrl

@@ -16,9 +16,36 @@ local primaryKey = {
 local mlStringKey = {
 	txt = 1
 }
+local _configList, _configDict
+local configPath = "configs.bp_update_popup_config"
 
-function lua_bp_update_popup.onLoad(json)
-	lua_bp_update_popup.configList, lua_bp_update_popup.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_bp_update_popup, "configList", _configList)
+	rawset(lua_bp_update_popup, "configDict", _configDict)
+end
+
+setmetatable(lua_bp_update_popup, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_bp_update_popup.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_bp_update_popup, "configList", nil)
+	rawset(lua_bp_update_popup, "configDict", nil)
 end
 
 return lua_bp_update_popup

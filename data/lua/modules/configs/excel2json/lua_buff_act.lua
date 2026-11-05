@@ -16,9 +16,36 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.buff_act_config"
 
-function lua_buff_act.onLoad(json)
-	lua_buff_act.configList, lua_buff_act.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_buff_act, "configList", _configList)
+	rawset(lua_buff_act, "configDict", _configDict)
+end
+
+setmetatable(lua_buff_act, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_buff_act.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_buff_act, "configList", nil)
+	rawset(lua_buff_act, "configDict", nil)
 end
 
 return lua_buff_act

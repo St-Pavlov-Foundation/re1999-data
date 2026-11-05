@@ -18,9 +18,36 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.production_line_level_config"
 
-function lua_production_line_level.onLoad(json)
-	lua_production_line_level.configList, lua_production_line_level.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_production_line_level, "configList", _configList)
+	rawset(lua_production_line_level, "configDict", _configDict)
+end
+
+setmetatable(lua_production_line_level, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_production_line_level.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_production_line_level, "configList", nil)
+	rawset(lua_production_line_level, "configDict", nil)
 end
 
 return lua_production_line_level

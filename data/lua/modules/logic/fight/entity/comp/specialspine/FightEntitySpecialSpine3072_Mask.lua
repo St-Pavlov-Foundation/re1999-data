@@ -3,7 +3,10 @@
 module("modules.logic.fight.entity.comp.specialspine.FightEntitySpecialSpine3072_Mask", package.seeall)
 
 local FightEntitySpecialSpine3072_Mask = class("FightEntitySpecialSpine3072_Mask", UserDataDispose)
-local maskBuffId = 30720101
+local maskBuffIds = {
+	[307201011] = true,
+	[30720101] = true
+}
 
 function FightEntitySpecialSpine3072_Mask:ctor(entity)
 	self:__onInit()
@@ -25,7 +28,7 @@ function FightEntitySpecialSpine3072_Mask:_onBuffUpdate(targetId, effectType, bu
 		return
 	end
 
-	if buffId ~= maskBuffId then
+	if not maskBuffIds[buffId] then
 		return
 	end
 
@@ -40,7 +43,7 @@ function FightEntitySpecialSpine3072_Mask:_detectMaskBuff()
 		local buffDic = entityMO:getBuffDic()
 
 		for i, v in pairs(buffDic) do
-			if v.buffId == maskBuffId then
+			if maskBuffIds[v.buffId] then
 				showMask = true
 
 				break
@@ -230,7 +233,7 @@ function FightEntitySpecialSpine3072_Mask:_onTimelinePlayEntityAni(entityId, sta
 end
 
 function FightEntitySpecialSpine3072_Mask:_onFightReconnectLastWork()
-	self:_onBuffUpdate(self._entity.id, nil, maskBuffId)
+	self:_detectMaskBuff()
 end
 
 function FightEntitySpecialSpine3072_Mask:releaseSelf()

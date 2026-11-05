@@ -915,7 +915,9 @@ FightLogHelper.EffectTypeNameDict = {
 	[FightEnum.EffectType.EZIOBIGSKILLEXIT] = "EZIO大招意外退出",
 	[FightEnum.EffectType.TWINSPOWERUPCOUNT] = "TwinsPower双生计数",
 	[FightEnum.EffectType.TWINSUPCOUNTER] = "TwinsUpByCounter双生提升",
-	[FightEnum.EffectType.ENTITYSTATUSUPDATE] = "实体状态更新"
+	[FightEnum.EffectType.ENTITYSTATUSUPDATE] = "实体状态更新",
+	[FightEnum.EffectType.CLUEMAXADD] = "添加最大线索",
+	[FightEnum.EffectType.SETLIFENOEFFECT] = "设置血量"
 }
 
 function FightLogHelper.getEffectTypeName(effectType)

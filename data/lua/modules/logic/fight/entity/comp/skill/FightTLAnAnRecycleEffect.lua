@@ -172,10 +172,10 @@ function FightTLAnAnRecycleEffect:clearFunc()
 	end
 
 	for entity, effectWrap in pairs(self.entity2EffectDict) do
-		entity.effect:removeEffect(effectWrap)
 		FightRenderOrderMgr.instance:onRemoveEffectWrap(entity.id, effectWrap)
 		MonoHelper.removeLuaComFromGo(effectWrap.containerGO, UnitMoverHandler)
 		MonoHelper.removeLuaComFromGo(effectWrap.containerGO, UnitMoverParabola)
+		entity.effect:removeEffect(effectWrap)
 	end
 end
 

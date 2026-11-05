@@ -1,0 +1,19 @@
+﻿-- chunkname: @configs/sign_in_addup_bonus_config.lua
+
+return {
+	{
+		1,
+		"2#2#30",
+		7
+	},
+	{
+		2,
+		"2#2#60",
+		15
+	},
+	{
+		3,
+		"2#2#90",
+		25
+	}
+}

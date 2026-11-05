@@ -67,6 +67,8 @@ function HandbookSkinView:addEvents()
 	self._scroll:AddDragEndListener(self._onScrollDragEnd, self)
 	self._scroll:AddDragListener(self._onScrollDragging, self)
 	self._btnArrow:AddClickListener(self._onClickArrow, self)
+	ViewMgr.instance:registerCallback(ViewEvent.OnOpenFullView, self._onOtherFullViewOpen, self)
+	ViewMgr.instance:registerCallback(ViewEvent.OnCloseFullView, self._onOtherFullViewClose, self)
 end
 
 function HandbookSkinView:removeEvents()
@@ -83,6 +85,8 @@ function HandbookSkinView:removeEvents()
 	end
 
 	self:removeEventCb(HandbookController.instance, HandbookEvent.MarkHandbookSkinSuitRedDot, self.refreshSkinRedDot, self)
+	ViewMgr.instance:unregisterCallback(ViewEvent.OnOpenFullView, self._onOtherFullViewOpen, self)
+	ViewMgr.instance:unregisterCallback(ViewEvent.OnCloseFullView, self._onOtherFullViewClose, self)
 end
 
 function HandbookSkinView:_onScrollChange(value)
@@ -156,6 +160,10 @@ function HandbookSkinView:_editableInitView()
 end
 
 function HandbookSkinView:onOpen()
+	self:_cacheUnitCameraTransform()
+	CameraMgr.instance:setUnitCameraCombine()
+	self:_setupUnitCamera()
+
 	local viewParam = self.viewParam
 
 	self._defaultSelectedIdx = viewParam and viewParam.defaultSelectedIdx or HandbookController.instance:getDefaultHandbookSkinGroupId(self._skinSuitFloorCfgList)
@@ -174,6 +182,142 @@ function HandbookSkinView:onOpen()
 
 	self:initFilterDrop()
 	self:refreshSkinRedDot()
+end
+
+function HandbookSkinView:_cacheUnitCameraTransform()
+	local unitCameraGO = CameraMgr.instance:getUnitCameraGO()
+
+	if not unitCameraGO then
+		return
+	end
+
+	HandbookModel.instance:cacheUnitCameraLocalPos(unitCameraGO.transform.localPosition)
+end
+
+function HandbookSkinView:_restoreUnitCameraTransform()
+	local localPos = HandbookModel.instance:getUnitCameraCachedLocalPos()
+
+	if not localPos then
+		return
+	end
+
+	local unitCameraGO = CameraMgr.instance:getUnitCameraGO()
+
+	if unitCameraGO then
+		unitCameraGO.transform.localPosition = localPos
+
+		HandbookModel.instance:clearUnitCameraLocalPos()
+	end
+end
+
+function HandbookSkinView:_setupUnitCamera()
+	local unitCameraGO = CameraMgr.instance:getUnitCameraGO()
+	local unitCamera = CameraMgr.instance:getUnitCamera()
+	local mainCameraGO = CameraMgr.instance:getMainCameraGO()
+
+	if not unitCameraGO or not unitCamera or not mainCameraGO then
+		return
+	end
+
+	HandbookModel.instance:cacheUnitCameraParam(unitCamera.fieldOfView, unitCameraGO.activeSelf)
+
+	unitCamera.fieldOfView = HandbookEnum.SkinUnitCameraFOV
+
+	gohelper.setActive(unitCameraGO, true)
+
+	self._unitPPVolume = gohelper.findChildComponent(unitCameraGO, "PPVolume", PostProcessingMgr.PPVolumeWrapType)
+
+	local dofFactor = self._unitPPVolume and self._unitPPVolume.DofFactor or nil
+
+	HandbookModel.instance:cacheUnitCameraDofFactor(dofFactor)
+	self:setUnitPPValue("dofFactor", 0)
+	self:setUnitPPValue("DofFactor", 0)
+end
+
+function HandbookSkinView:setUnitPPValue(key, value)
+	if self._unitPPVolume then
+		self._unitPPVolume.refresh = true
+		self._unitPPVolume[key] = value
+	end
+end
+
+function HandbookSkinView:_restoreUnitCamera(ignoreVisible)
+	local fov = HandbookModel.instance:getUnitCameraCachedFov()
+	local active = HandbookModel.instance:getUnitCameraCachedActive()
+
+	if fov then
+		local unitCamera = CameraMgr.instance:getUnitCamera()
+
+		if unitCamera then
+			unitCamera.fieldOfView = fov
+		end
+	end
+
+	if not ignoreVisible and active ~= nil then
+		local unitCameraGO = CameraMgr.instance:getUnitCameraGO()
+
+		if unitCameraGO then
+			gohelper.setActive(unitCameraGO, active)
+		end
+	end
+
+	local dofFactor = HandbookModel.instance:getUnitCameraCachedDofFactor()
+
+	if dofFactor then
+		self:setUnitPPValue("dofFactor", dofFactor)
+		self:setUnitPPValue("DofFactor", dofFactor)
+	end
+
+	self._unitPPVolume = nil
+
+	HandbookModel.instance:clearUnitCameraParam()
+end
+
+function HandbookSkinView:_onOtherFullViewOpen(viewName)
+	if viewName == ViewName.HandbookSkinView or not ViewMgr.instance:isOpen(ViewName.HandbookSkinView) then
+		return
+	end
+
+	self:_restoreUnitCamera(true)
+end
+
+function HandbookSkinView:_onOtherFullViewClose(viewName)
+	if viewName == ViewName.HandbookSkinView or not ViewMgr.instance:isOpen(ViewName.HandbookSkinView) then
+		return
+	end
+
+	if not self:_hasFullViewOnTop() then
+		self:_setupUnitCamera()
+
+		if not self:_hasNonIgnoredFullView() then
+			GameGlobalMgr.instance:getFullViewState():forceSceneCameraActive(true)
+		end
+	end
+end
+
+function HandbookSkinView:_hasFullViewOnTop()
+	local openViewNameList = ViewMgr.instance:getOpenViewNameList()
+	local selfIndex = tabletool.indexOf(openViewNameList, ViewName.HandbookSkinView) or 0
+
+	for i = selfIndex + 1, #openViewNameList do
+		local viewName = openViewNameList[i]
+
+		if ViewMgr.instance:isFull(viewName) then
+			local viewContainer = ViewMgr.instance:getContainer(viewName)
+
+			if viewContainer and viewContainer:isOpenFinish() then
+				return true
+			end
+		end
+	end
+
+	return false
+end
+
+function HandbookSkinView:_hasNonIgnoredFullView()
+	local openFullViewNames = GameGlobalMgr.instance:getFullViewState():getOpenFullViewNames()
+
+	return openFullViewNames ~= nil and openFullViewNames ~= ""
 end
 
 function HandbookSkinView:onOpenFinish()
@@ -418,7 +562,7 @@ function HandbookSkinView:onSwitchFloorDone()
 	HandbookController.instance:dispatchEvent(HandbookEvent.SwitchSkinSuitFloorDone)
 end
 
-function HandbookSkinView:_refresPoint(idx, num)
+function HandbookSkinView:_refresPoint(idx, num, rawIdx)
 	idx = idx or 1
 	num = num or 0
 
@@ -437,7 +581,7 @@ function HandbookSkinView:_refresPoint(idx, num)
 	end
 
 	if self._dropFilter then
-		self._dropFilter:SetValue(#self._suitCfgList - idx)
+		self._dropFilter:SetValue((self._suitDisplayCount or num) - (rawIdx or idx))
 	end
 end
 
@@ -488,6 +632,41 @@ function HandbookSkinView:_onExitSevenMode()
 	self._viewAnimatorPlayer:Play(UIAnimationName.Back)
 end
 
+function HandbookSkinView:_getDropDisplayCfgList()
+	self._suitCfgList = HandbookConfig.instance:getSkinSuitCfgListInGroup(self._curSuitGroupId)
+
+	local showCfgList = {}
+	local hiddenMaxIdCfg
+
+	for _, cfg in ipairs(self._suitCfgList) do
+		if cfg.show == 0 then
+			if not hiddenMaxIdCfg or cfg.id > hiddenMaxIdCfg.id then
+				hiddenMaxIdCfg = cfg
+			end
+		else
+			table.insert(showCfgList, cfg)
+		end
+	end
+
+	table.sort(showCfgList, function(a, b)
+		return a.id < b.id
+	end)
+
+	self._suitDisplayCount = #showCfgList + (hiddenMaxIdCfg and 1 or 0)
+
+	local dropCfgList = {}
+
+	if hiddenMaxIdCfg then
+		table.insert(dropCfgList, hiddenMaxIdCfg)
+	end
+
+	for _, cfg in ipairs(showCfgList) do
+		table.insert(dropCfgList, cfg)
+	end
+
+	return dropCfgList
+end
+
 function HandbookSkinView:initFilterDrop()
 	if not self._dropFilter then
 		self._dropFilter = gohelper.findChildDropdown(self.viewGO, "Left/#drop_filter")
@@ -504,52 +683,33 @@ function HandbookSkinView:initFilterDrop()
 
 	self._curskinSuitGroupCfg = self._skinSuitFloorCfgList[self._curSelectedIdx]
 	self._curSuitGroupId = self._curskinSuitGroupCfg.id
-	self._suitCfgList = HandbookConfig.instance:getSkinSuitCfgListInGroup(self._curskinSuitGroupCfg.id)
-
-	table.sort(self._suitCfgList, function(a, b)
-		if a.show == 1 and b.show == 0 then
-			return false
-		elseif a.show == 0 and b.show == 1 then
-			return true
-		else
-			return a.id < b.id
-		end
-	end)
 
 	local dropStrList = {}
 
-	for i, cfg in ipairs(self._suitCfgList) do
-		local suitName = cfg.show == 1 and self._suitCfgList[i].name or luaLang("skinhandbook_lock_suit")
+	for _, cfg in ipairs(self:_getDropDisplayCfgList()) do
+		local suitName = cfg.show == 1 and cfg.name or luaLang("skinhandbook_lock_suit")
 
 		table.insert(dropStrList, suitName)
 	end
 
 	self._dropFilter:ClearOptions()
 	self._dropFilter:AddOptions(dropStrList)
-	self._dropFilter:SetValue(#self._suitCfgList - 1)
+	self._dropFilter:SetValue(0)
 	self._dropFilter:AddOnValueChanged(self.onDropValueChanged, self)
 end
 
 function HandbookSkinView:updateFilterDrop()
 	self._curskinSuitGroupCfg = self._skinSuitFloorCfgList[self._curSelectedIdx]
 	self._curSuitGroupId = self._curskinSuitGroupCfg.id
-	self._suitCfgList = HandbookConfig.instance:getSkinSuitCfgListInGroup(self._curskinSuitGroupCfg.id)
 
-	table.sort(self._suitCfgList, function(a, b)
-		if a.show == 1 and b.show == 0 then
-			return false
-		elseif a.show == 0 and b.show == 1 then
-			return true
-		else
-			return a.id < b.id
-		end
-	end)
-	gohelper.setActive(self._goDrop, #self._suitCfgList > 1)
+	local dropCfgList = self:_getDropDisplayCfgList()
+
+	gohelper.setActive(self._goDrop, #dropCfgList > 1)
 
 	local dropStrList = {}
 
-	for i, cfg in ipairs(self._suitCfgList) do
-		local suitName = cfg.show == 1 and self._suitCfgList[i].name or luaLang("skinhandbook_lock_suit")
+	for _, cfg in ipairs(dropCfgList) do
+		local suitName = cfg.show == 1 and cfg.name or luaLang("skinhandbook_lock_suit")
 
 		table.insert(dropStrList, suitName)
 	end
@@ -557,10 +717,10 @@ function HandbookSkinView:updateFilterDrop()
 	self._dropFilter:ClearOptions()
 	self._dropFilter:AddOptions(dropStrList)
 
-	local targetIdx = #self._suitCfgList
+	local targetIdx = 0
 
 	if self._needSelectRedDotSuit then
-		for i, cfg in ipairs(self._suitCfgList) do
+		for i, cfg in ipairs(dropCfgList) do
 			if HandbookController.instance:isHandbookSkinSuitNewRedDotShow(cfg.id) then
 				targetIdx = i - 1
 
@@ -583,13 +743,13 @@ function HandbookSkinView:onDropShow()
 end
 
 function HandbookSkinView:onDropValueChanged(index)
-	index = #self._suitCfgList - index
-
-	HandbookController.instance:dispatchEvent(HandbookEvent.SkinBookSlideByClick, index)
+	HandbookController.instance:dispatchEvent(HandbookEvent.SkinBookSlideByClick, self._suitDisplayCount - index)
 end
 
 function HandbookSkinView:onClose()
-	return
+	CameraMgr.instance:setUnitCameraSeparate()
+	self:_restoreUnitCameraTransform()
+	self:_restoreUnitCamera()
 end
 
 function HandbookSkinView:onDestroyView()

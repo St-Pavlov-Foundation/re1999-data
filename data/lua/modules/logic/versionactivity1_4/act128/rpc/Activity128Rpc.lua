@@ -91,6 +91,9 @@ end
 
 function Activity128Rpc:onReceiveGetGalleryInfosReply(resultCode, msg)
 	self:_onReceiveGetGalleryInfosReply(resultCode, msg)
+	RedDotRpc.instance:sendGetRedDotInfosRequest({
+		RedDotEnum.DotNode.BossRushHankBookBossMainView
+	})
 end
 
 function Activity128Rpc:sendAct128GetExpRequest(activityId, type, callback, callbackobj)
@@ -176,6 +179,20 @@ end
 
 function Activity128Rpc:onReceiveResetAct128TeamReply(resultCode, msg)
 	self:_onReceiveResetAct128TeamReply(resultCode, msg)
+end
+
+function Activity128Rpc:sendAct128UnlockMonsterRequest(activityId, targetActivityId, bossId, callback, callbackobj)
+	local req = Activity128Module_pb.Act128UnlockMonsterRequest()
+
+	req.activityId = activityId
+	req.targetActivityId = targetActivityId
+	req.bossId = bossId
+
+	return self:sendMsg(req, callback, callbackobj)
+end
+
+function Activity128Rpc:onReceiveAct128UnlockMonsterReply(resultCode, msg)
+	self:_onReceiveAct128UnlockMonsterReply(resultCode, msg)
 end
 
 return Activity128Rpc

@@ -19,9 +19,36 @@ local primaryKey = {
 local mlStringKey = {
 	taskDesc = 1
 }
+local _configList, _configDict
+local configPath = "configs.atomic_polygon_element_config"
 
-function lua_atomic_polygon_element.onLoad(json)
-	lua_atomic_polygon_element.configList, lua_atomic_polygon_element.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_atomic_polygon_element, "configList", _configList)
+	rawset(lua_atomic_polygon_element, "configDict", _configDict)
+end
+
+setmetatable(lua_atomic_polygon_element, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_atomic_polygon_element.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_atomic_polygon_element, "configList", nil)
+	rawset(lua_atomic_polygon_element, "configDict", nil)
 end
 
 return lua_atomic_polygon_element

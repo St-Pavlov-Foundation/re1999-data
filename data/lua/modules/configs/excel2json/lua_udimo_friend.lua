@@ -15,9 +15,36 @@ local primaryKey = {
 	"friendId"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.udimo_friend_config"
 
-function lua_udimo_friend.onLoad(json)
-	lua_udimo_friend.configList, lua_udimo_friend.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_udimo_friend, "configList", _configList)
+	rawset(lua_udimo_friend, "configDict", _configDict)
+end
+
+setmetatable(lua_udimo_friend, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_udimo_friend.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_udimo_friend, "configList", nil)
+	rawset(lua_udimo_friend, "configDict", nil)
 end
 
 return lua_udimo_friend

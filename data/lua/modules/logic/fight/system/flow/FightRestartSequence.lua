@@ -33,7 +33,8 @@ FightRestartSequence.RestartType2Type = {
 	[135] = 131,
 	[134] = 131,
 	[133] = 131,
-	[132] = 131
+	[132] = 131,
+	[DungeonEnum.ChapterType.StandardFight] = DungeonEnum.ChapterType.Normal
 }
 
 function FightRestartSequence:onStart()

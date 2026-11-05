@@ -97,7 +97,7 @@ function StoryLogItem:_onItemAudioFinished()
 		return
 	end
 
-	if self._audioId == StoryLogListModel.instance:getPlayingLogAudioId() then
+	if StoryLogListModel.instance:isLogPlaying(self._mo.id) then
 		gohelper.setActive(self._gostopicon, false)
 		gohelper.setActive(self._goplayicon, true)
 		gohelper.setActive(self._btnplay.gameObject, true)
@@ -167,15 +167,9 @@ function StoryLogItem:_onPlayClick()
 		return
 	end
 
-	local playLogAudioId = StoryLogListModel.instance:getPlayingLogAudioId()
+	local playLogAudioId, playLogId = StoryLogListModel.instance:getPlayingLogAudioId()
 
-	if playLogAudioId == self._audioId then
-		return
-	end
-
-	local isPlaying = AudioEffectMgr.instance:isPlaying(self._audioId)
-
-	if isPlaying then
+	if playLogId == self._mo.id then
 		return
 	end
 
@@ -191,7 +185,7 @@ function StoryLogItem:_onPlayClick()
 	param.callbackTarget = self
 
 	AudioEffectMgr.instance:playAudio(self._audioId, param)
-	StoryLogListModel.instance:setPlayingLogAudio(self._audioId)
+	StoryLogListModel.instance:setPlayingLogAudio(self._audioId, self._mo.id)
 	StoryController.instance:dispatchEvent(StoryEvent.LogSelected, self._audioId)
 
 	local co = StoryStepModel.instance:getStepListById(self._mo.info).conversation
@@ -316,7 +310,8 @@ function StoryLogItem:onUpdateMO(mo, mixType)
 			txt = string.gsub(txt, "</glitch>", "</i></b>")
 		end
 
-		self._txtcontent.text = StoryTool.filterSpTag(txt)
+		txt = StoryTool.filterSpTag(txt)
+		self._txtcontent.text = StoryTool.stripSegmentTags(txt)
 
 		TaskDispatcher.runDelay(function()
 			if self._conMark then
@@ -338,7 +333,7 @@ function StoryLogItem:onUpdateMO(mo, mixType)
 			end
 
 			if self._audioId ~= 0 then
-				local isPlaying = self._audioId == StoryLogListModel.instance:getPlayingLogAudioId()
+				local isPlaying = StoryLogListModel.instance:isLogPlaying(self._mo.id)
 
 				gohelper.setActive(self._gostopicon, isPlaying)
 				gohelper.setActive(self._goplayicon, not isPlaying)
@@ -359,7 +354,7 @@ function StoryLogItem:onUpdateMO(mo, mixType)
 			gohelper.setActive(self._goname, false)
 
 			if self._audioId ~= 0 then
-				local isPlaying = self._audioId == StoryLogListModel.instance:getPlayingLogAudioId()
+				local isPlaying = StoryLogListModel.instance:isLogPlaying(self._mo.id)
 
 				gohelper.setActive(self._gostopicon, isPlaying)
 				gohelper.setActive(self._goplayicon, not isPlaying)

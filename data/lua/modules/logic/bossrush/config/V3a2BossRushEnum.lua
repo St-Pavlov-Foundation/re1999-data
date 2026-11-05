@@ -22,10 +22,11 @@ V3a2BossRushEnum.ResultRecord = {
 	New = "v1a4_bossrush_resultview_txt_newrecord"
 }
 V3a2BossRushEnum.AnimName = {
+	Idle = "idle",
 	Switch = "switch",
 	Lingqu = "lingqu",
 	Unlock = "unlock",
-	Idle = "idle"
+	Open = "open"
 }
 V3a2BossRushEnum.AnimEventName = {
 	PlayAudio_Appraise = "PlayAudio_Appraise",

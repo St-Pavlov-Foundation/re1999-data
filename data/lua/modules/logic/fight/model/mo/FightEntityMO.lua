@@ -158,6 +158,7 @@ function FightEntityMO:_buildBuffs(buffs)
 	end
 
 	self:_dealBuffFeature()
+	self:onBuffChange()
 end
 
 function FightEntityMO:_buildSkills(entityInfo)
@@ -347,6 +348,7 @@ function FightEntityMO:addBuff(buff)
 		self.buffDic[buff.uid] = buffMO
 
 		self:_dealBuffFeature()
+		self:onBuffChange()
 
 		return true
 	end
@@ -357,12 +359,15 @@ function FightEntityMO:delBuff(uid)
 		self.buffDic[uid] = nil
 
 		self:_dealBuffFeature()
+		self:onBuffChange()
 	end
 end
 
 function FightEntityMO:updateBuff(buff)
 	if self.buffDic[buff.uid] then
 		FightDataUtil.coverData(buff, self.buffDic[buff.uid])
+		self:_dealBuffFeature()
+		self:onBuffChange()
 	end
 end
 
@@ -510,7 +515,7 @@ end
 function FightEntityMO:changeExpointMaxAdd(num)
 	self.expointMaxAdd = self.expointMaxAdd or 0
 
-	if self.exPointType ~= FightEnum.ExPointType.Common then
+	if self.exPointType ~= FightEnum.ExPointType.Common and self.exPointType ~= FightEnum.ExPointType.Clue then
 		return
 	end
 
@@ -746,6 +751,7 @@ end
 function FightEntityMO:onChangeHero()
 	tabletool.clear(self.buffDic)
 	self:_dealBuffFeature()
+	self:onBuffChange()
 	self:setShield(0)
 end
 
@@ -1395,6 +1401,36 @@ function FightEntityMO:getHeDuoNieBuffData()
 	end
 end
 
+function FightEntityMO:onBuffChange()
+	return
+end
+
+function FightEntityMO:getBurnLayerOffset()
+	local offset = 0
+	local targetBuffActId = 794
+
+	for _, buffMo in pairs(self.buffDic) do
+		local featureList = self:getFeaturesSplitInfoByBuffId(buffMo.buffId)
+
+		if featureList then
+			for _, feature in ipairs(featureList) do
+				if feature[1] == targetBuffActId then
+					offset = offset + (feature[2] or 0)
+				end
+			end
+		end
+	end
+
+	return offset
+end
+
+function FightEntityMO:getBurnMax()
+	local max = FightEnum.DefaultBurnMax
+	local offset = self:getBurnLayerOffset()
+
+	return max + offset
+end
+
 function FightEntityMO:isQteEntity()
 	return self.qteSkillGroup and self.qteSkillGroup ~= 0
 end
@@ -1434,6 +1470,22 @@ end
 
 function FightEntityMO:checkIsDying()
 	return self.status == FightEnum.EntityStatus.Dying
+end
+
+function FightEntityMO:checkFirstActFree()
+	return self.canFirstActFree
+end
+
+function FightEntityMO:setFirstActFree(isFree)
+	self.canFirstActFree = isFree
+
+	FightController.instance:dispatchEvent(FightEvent.OnFirstActFreeAttrChange, self.uid)
+end
+
+function FightEntityMO:updateHasFirstActFreeBuff()
+	self.canFirstActFree = self:hasBuffFeature(FightEnum.BuffFeature.FirstActFree)
+
+	FightController.instance:dispatchEvent(FightEvent.OnFirstActFreeAttrChange, self.uid)
 end
 
 function FightEntityMO:setStatus(status)

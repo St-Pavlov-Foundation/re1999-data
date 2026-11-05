@@ -77,8 +77,8 @@ function ActCenterItemBase:isShowRedDot()
 	return self._redDot and self._redDot.isShowRedDot
 end
 
-function ActCenterItemBase:_setMainSprite(spriteName)
-	UISpriteSetMgr.instance:setMainSprite(self._imgitem, spriteName)
+function ActCenterItemBase:_setMainSprite(spriteName, setNativeSize)
+	UISpriteSetMgr.instance:setMainSprite(self._imgitem, spriteName, setNativeSize)
 end
 
 function ActCenterItemBase:setSiblingIndex(index)

@@ -24,9 +24,36 @@ local primaryKey = {
 	"talentMould"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.talent_mould_config"
 
-function lua_talent_mould.onLoad(json)
-	lua_talent_mould.configList, lua_talent_mould.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_talent_mould, "configList", _configList)
+	rawset(lua_talent_mould, "configDict", _configDict)
+end
+
+setmetatable(lua_talent_mould, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_talent_mould.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_talent_mould, "configList", nil)
+	rawset(lua_talent_mould, "configDict", nil)
 end
 
 return lua_talent_mould

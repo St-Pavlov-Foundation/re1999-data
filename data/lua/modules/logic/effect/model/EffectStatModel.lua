@@ -44,7 +44,6 @@ function EffectStatModel:statistic()
 	local oldListIndex = 1
 	local effectPrefabList = {}
 	local moList = {}
-	local usingDict = FightEffectPool.getId2UsingWrapDict()
 	local cameraRoot = gohelper.find("cameraroot")
 
 	table.insert(effectPrefabList, cameraRoot)

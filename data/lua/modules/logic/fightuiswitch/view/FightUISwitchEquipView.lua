@@ -67,7 +67,9 @@ end
 
 function FightUISwitchEquipView:_btnequipOnClick()
 	FightUISwitchModel.instance:useStyleId(self._mo.classify, self._mo.id)
-	self._equipBtnAnimatorPlayer:Play("click", self._refreshBtn, self)
+	TaskDispatcher.cancelTask(self._refreshBtn, self)
+	TaskDispatcher.runDelay(self._refreshBtn, self, 0.667)
+	self._equipBtnAnimator:Play("click", 0, 0)
 end
 
 function FightUISwitchEquipView:_btncloseOnClick()
@@ -76,7 +78,7 @@ end
 
 function FightUISwitchEquipView:_editableInitView()
 	self._rootAnimator = self.viewGO:GetComponent("Animator")
-	self._equipBtnAnimatorPlayer = SLFramework.AnimatorPlayer.Get(self._btnequip.gameObject)
+	self._equipBtnAnimator = self._btnequip.gameObject:GetComponent("Animator")
 end
 
 function FightUISwitchEquipView:_onCloseView(viewName)
@@ -135,6 +137,9 @@ function FightUISwitchEquipView:refreshStyle()
 end
 
 function FightUISwitchEquipView:_refreshBtn()
+	TaskDispatcher.cancelTask(self._refreshBtn, self)
+	self._equipBtnAnimator:Play("idle", 0, 0)
+
 	local isEquip = self._mo:isUse()
 	local isUnlock = self._mo:isUnlock()
 
@@ -144,6 +149,7 @@ end
 
 function FightUISwitchEquipView:onClose()
 	self._effectComp:onClose()
+	TaskDispatcher.cancelTask(self._refreshBtn, self)
 end
 
 function FightUISwitchEquipView:onDestroyView()

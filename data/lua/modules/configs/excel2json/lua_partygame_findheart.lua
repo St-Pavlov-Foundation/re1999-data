@@ -13,9 +13,36 @@ local primaryKey = {
 	"difficulty"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.partygame_findheart_config"
 
-function lua_partygame_findheart.onLoad(json)
-	lua_partygame_findheart.configList, lua_partygame_findheart.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_partygame_findheart, "configList", _configList)
+	rawset(lua_partygame_findheart, "configDict", _configDict)
+end
+
+setmetatable(lua_partygame_findheart, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_partygame_findheart.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_partygame_findheart, "configList", nil)
+	rawset(lua_partygame_findheart, "configDict", nil)
 end
 
 return lua_partygame_findheart

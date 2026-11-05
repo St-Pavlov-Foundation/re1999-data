@@ -23,9 +23,36 @@ local mlStringKey = {
 	name = 2,
 	des = 1
 }
+local _configList, _configDict
+local configPath = "configs.activity206_reward_direction_config"
 
-function lua_activity206_reward_direction.onLoad(json)
-	lua_activity206_reward_direction.configList, lua_activity206_reward_direction.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_activity206_reward_direction, "configList", _configList)
+	rawset(lua_activity206_reward_direction, "configDict", _configDict)
+end
+
+setmetatable(lua_activity206_reward_direction, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_activity206_reward_direction.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_activity206_reward_direction, "configList", nil)
+	rawset(lua_activity206_reward_direction, "configDict", nil)
 end
 
 return lua_activity206_reward_direction

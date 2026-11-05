@@ -169,7 +169,6 @@ function ActivityBeginnerView:onOpen()
 	self:addEventCb(SummonController.instance, SummonEvent.summonMainCloseImmediately, self.closeThis, self)
 	self:_initRole_FullSignView()
 	self:_initSpecial_FullSignView()
-	self:_initLinkageActivity_FullView()
 	self:_initWarmUp()
 	self:_initWarmUpH5()
 	self:_initSelfSelectCharacter()
@@ -185,6 +184,7 @@ function ActivityBeginnerView:onOpen()
 	self:_initSceneUIPackageAct()
 	self:_initSixStarGift()
 	self:_initCasualSkinGift()
+	self:_initLinkGift_FullView()
 
 	self._needSetSortInfos = true
 
@@ -413,21 +413,6 @@ function ActivityBeginnerView:_initSpecial_FullSignView()
 
 	local key = GameBranchMgr.instance:Vxax_ActId("Special", ActivityEnum.Activity.V2a3_Special)
 	local val = GameBranchMgr.instance:Vxax_ViewName("Special_FullSignView", ViewName.V2a3_Special_FullSignView)
-
-	activitySubViewDict[key] = val
-end
-
-local s_LinkageActivity_FullView = false
-
-function ActivityBeginnerView:_initLinkageActivity_FullView()
-	if s_LinkageActivity_FullView then
-		return
-	end
-
-	s_LinkageActivity_FullView = true
-
-	local key = GameBranchMgr.instance:Vxax_ActId("LinkageActivity", ActivityEnum.Activity.LinkageActivity_FullView)
-	local val = GameBranchMgr.instance:Vxax_ViewName("LinkageActivity_FullView", ViewName.LinkageActivity_FullView)
 
 	activitySubViewDict[key] = val
 end
@@ -743,6 +728,24 @@ function ActivityBeginnerView:_initCasualSkinGift()
 	local actId = ActivityType101Config.instance:getCasualSkinGiftActId()
 	local key = GameBranchMgr.instance:Vxax_ActId("CasualSkinGift", actId)
 	local val = GameBranchMgr.instance:Vxax_ViewName("CasualSkinGift_FullView", ViewName.CasualSkinGift_FullView)
+
+	if not activitySubViewDict[key] then
+		activitySubViewDict[key] = val
+	end
+end
+
+local s_LinkGift_FullView = false
+
+function ActivityBeginnerView:_initLinkGift_FullView()
+	if s_LinkGift_FullView then
+		return
+	end
+
+	s_LinkGift_FullView = true
+
+	local actId = ActivityType101Config.instance:getLinkGiftActId()
+	local key = GameBranchMgr.instance:Vxax_ActId("LinkGift", actId)
+	local val = GameBranchMgr.instance:Vxax_ViewName("LinkGift_FullView", ViewName.LinkGift_FullView)
 
 	if not activitySubViewDict[key] then
 		activitySubViewDict[key] = val

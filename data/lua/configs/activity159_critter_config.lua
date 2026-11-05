@@ -1,0 +1,25 @@
+﻿-- chunkname: @configs/activity159_critter_config.lua
+
+return {
+	{
+		"critter1",
+		"roles/v1a9_room_mojingjump/room_mojingjump_room.prefab",
+		"idle_room",
+		"0.5#0.1#-0.1",
+		"0.075"
+	},
+	{
+		"critter2",
+		"roles/v1a9_room_mojingjump/room_mojingjump_room.prefab",
+		"idle_room",
+		"0.7#0.1#0.28",
+		"0.075"
+	},
+	{
+		"critter3",
+		"roles/v1a9_room_mojingjump/room_mojingjump_room.prefab",
+		"idle_room",
+		"0.1#0.1#-0.21",
+		"0.075"
+	}
+}

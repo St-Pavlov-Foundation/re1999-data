@@ -1,0 +1,100 @@
+﻿-- chunkname: @configs/room_block_color_param_config.lua
+
+return {
+	{
+		id = 1,
+		saturation = -0.18,
+		brightness = 0.08,
+		hue = -0.53
+	},
+	{
+		id = 2,
+		saturation = -0.3,
+		brightness = 0.08,
+		hue = -0.66
+	},
+	{
+		id = 3,
+		saturation = -0.33,
+		brightness = 0.08,
+		hue = 0.18
+	},
+	{
+		id = 4,
+		saturation = -0.35,
+		brightness = 0.08,
+		hue = 0.6
+	},
+	{
+		id = 5,
+		saturation = -0.2,
+		brightness = 0.08,
+		hue = 0.74
+	},
+	{
+		id = 6,
+		saturation = -0.33,
+		brightness = 0.12,
+		hue = 0.82
+	},
+	{
+		id = 7,
+		saturation = -0.2,
+		brightness = 0.2,
+		hue = 0.02
+	},
+	{
+		id = 8,
+		saturation = -0.45,
+		brightness = 0.11,
+		hue = 0
+	},
+	{
+		id = 9,
+		saturation = -0.3,
+		brightness = 0.08,
+		hue = 0.1
+	},
+	{
+		id = 10,
+		saturation = -0.3,
+		brightness = 0.08,
+		hue = 0.4
+	},
+	{
+		id = 11,
+		saturation = -0.3,
+		brightness = 0.08,
+		hue = 0.5
+	},
+	{
+		id = 12,
+		saturation = -0.3,
+		brightness = 0.08,
+		hue = 0.9
+	},
+	{
+		id = 13,
+		saturation = -0.6,
+		brightness = 0.08,
+		hue = 0.1
+	},
+	{
+		id = 14,
+		saturation = 0,
+		brightness = 0.08,
+		hue = 0.9
+	},
+	{
+		id = 15,
+		saturation = 0,
+		brightness = 0.08,
+		hue = 0.74
+	},
+	{
+		id = 16,
+		saturation = -0.6,
+		brightness = 0.08,
+		hue = -0.66
+	}
+}

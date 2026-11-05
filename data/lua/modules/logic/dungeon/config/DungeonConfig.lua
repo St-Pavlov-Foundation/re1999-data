@@ -987,10 +987,10 @@ function DungeonConfig:_rebuildEpisodeConfigs()
 		preEpisode2 = "preEpisode",
 		normalEpisodeId = "id"
 	}
-	local storyKeys = {
-		"beforeStory",
-		"story",
-		"afterStory"
+	local storyKeySet = {
+		beforeStory = true,
+		afterStory = true,
+		story = true
 	}
 	local chainEpisodeDict = {}
 	local backwardChainDict = {}
@@ -1014,11 +1014,12 @@ function DungeonConfig:_rebuildEpisodeConfigs()
 			return chainEpisodeDict[value] or value
 		end
 
-		if tabletool.indexOf(storyKeys, key) then
+		if storyKeySet[key] then
 			local id = episodeMetatable.__index(t, "chainEpisode")
+			local config = id > 0 and lua_episode.configDict[id]
 
-			if id > 0 and lua_episode.configDict[id] then
-				return lua_episode.configDict[id][key]
+			if config then
+				return config[key]
 			end
 		end
 
@@ -1176,7 +1177,9 @@ function DungeonConfig:_initVersionActivityEpisodeList()
 		VersionActivity3_9DungeonEnum.DungeonChapterId.Story2,
 		VersionActivity3_9DungeonEnum.DungeonChapterId.Story3,
 		VersionActivity3_10DungeonEnum.DungeonChapterId.Story2,
-		VersionActivity3_10DungeonEnum.DungeonChapterId.Story3
+		VersionActivity3_10DungeonEnum.DungeonChapterId.Story3,
+		VersionActivity4_1DungeonEnum.DungeonChapterId.Story2,
+		VersionActivity4_1DungeonEnum.DungeonChapterId.Story3
 	}
 	local chapterEpisodeList
 

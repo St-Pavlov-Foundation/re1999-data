@@ -13,9 +13,36 @@ local primaryKey = {
 local mlStringKey = {
 	desc = 1
 }
+local _configList, _configDict
+local configPath = "configs.fight_card_footnote_config"
 
-function lua_fight_card_footnote.onLoad(json)
-	lua_fight_card_footnote.configList, lua_fight_card_footnote.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_fight_card_footnote, "configList", _configList)
+	rawset(lua_fight_card_footnote, "configDict", _configDict)
+end
+
+setmetatable(lua_fight_card_footnote, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_fight_card_footnote.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_fight_card_footnote, "configList", nil)
+	rawset(lua_fight_card_footnote, "configDict", nil)
 end
 
 return lua_fight_card_footnote

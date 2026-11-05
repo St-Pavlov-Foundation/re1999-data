@@ -82,6 +82,7 @@ end
 
 function V3a2_BossRush_ResultView:onOpen()
 	self._curStage, self._curLayer, self._actId = BossRushModel.instance:getBattleStageAndLayer()
+	self._season = V4a1_BossRushModel.instance:getSeasonByActId(self._actId)
 	self.fightScore = V3a2_BossRushModel.instance:getTotalScore() or 0
 	self._txtScore.text = BossRushConfig.instance:getScoreStr(self.fightScore)
 	self._isSpecialLayer = BossRushModel.instance:isSpecialLayer(self._curLayer)
@@ -193,13 +194,21 @@ function V3a2_BossRush_ResultView:setAssessIcon()
 end
 
 function V3a2_BossRush_ResultView:refreshRankUI()
-	local rank = V3a2_BossRushModel.instance:getRank()
+	local rank = V3a2_BossRushModel.instance:getRank(self._season)
 
 	self._txtrank.text = rank
 
-	UISpriteSetMgr.instance:setV1a4BossRushSprite(self._imagerankIcon, V3a2_BossRushModel.instance:getRankLevelBg(rank))
+	local bgIcon = V3a2_BossRushModel.instance:getRankLevelBg(self._season, rank)
 
-	local exp, needExp = V3a2_BossRushModel.instance:getRankExpProgress()
+	if bgIcon then
+		if self._season == 1 then
+			UISpriteSetMgr.instance:setV1a4BossRushSprite(self._imagerankIcon, bgIcon)
+		else
+			UISpriteSetMgr.instance:setV4a1BossRushSprite(self._imagerankIcon, bgIcon)
+		end
+	end
+
+	local exp, needExp = V3a2_BossRushModel.instance:getRankExpProgress(self._season)
 	local value = Mathf.Clamp01(exp / needExp)
 
 	self._imageSliderFG.fillAmount = value

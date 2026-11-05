@@ -37,7 +37,7 @@ function SkillEffectStatModel:statistic()
 	local oldListIndex = 1
 	local effectPrefabList = {}
 	local moList = {}
-	local usingDict = FightEffectPool.getId2UsingWrapDict()
+	local usingDict = FightGameMgr.effectMgr and FightGameMgr.effectMgr:getId2UsingWrapDict() or {}
 
 	for _, wrap in pairs(usingDict) do
 		if not gohelper.isNil(wrap.effectGO) then

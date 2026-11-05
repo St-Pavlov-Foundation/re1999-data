@@ -21,9 +21,36 @@ local mlStringKey = {
 	name = 1,
 	tagName = 2
 }
+local _configList, _configDict
+local configPath = "configs.teaching_config"
 
-function lua_teaching.onLoad(json)
-	lua_teaching.configList, lua_teaching.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_teaching, "configList", _configList)
+	rawset(lua_teaching, "configDict", _configDict)
+end
+
+setmetatable(lua_teaching, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_teaching.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_teaching, "configList", nil)
+	rawset(lua_teaching, "configDict", nil)
 end
 
 return lua_teaching

@@ -9,20 +9,28 @@ function Season123_3_5EpisodeDetailView:onInitView()
 	self._simagestageicon = gohelper.findChildSingleImage(self.viewGO, "#go_info/left/#simage_stageicon")
 	self._animatorRight = gohelper.findChildComponent(self.viewGO, "#go_info/right", typeof(UnityEngine.Animator))
 	self._txtlevelnamecn = gohelper.findChildText(self.viewGO, "#go_info/left/#txt_levelnamecn")
+	self._txtlevelnameen = gohelper.findChildText(self.viewGO, "#go_info/left/#txt_levelnamecn/#txt_levelnameen")
+	self._gostageinfoitem1 = gohelper.findChild(self.viewGO, "#go_info/left/#txt_levelnamecn/stage/#go_stageinfoitem1")
+	self._gostageinfoitem2 = gohelper.findChild(self.viewGO, "#go_info/left/#txt_levelnamecn/stage/#go_stageinfoitem2")
+	self._gostageinfoitem3 = gohelper.findChild(self.viewGO, "#go_info/left/#txt_levelnamecn/stage/#go_stageinfoitem3")
+	self._gostageinfoitem4 = gohelper.findChild(self.viewGO, "#go_info/left/#txt_levelnamecn/stage/#go_stageinfoitem4")
+	self._gostageinfoitem5 = gohelper.findChild(self.viewGO, "#go_info/left/#txt_levelnamecn/stage/#go_stageinfoitem5")
+	self._gostageinfoitem6 = gohelper.findChild(self.viewGO, "#go_info/left/#txt_levelnamecn/stage/#go_stageinfoitem6")
+	self._gostageinfoitem7 = gohelper.findChild(self.viewGO, "#go_info/left/#txt_levelnamecn/stage/#go_stageinfoitem7")
 	self._descScroll = gohelper.findChild(self.viewGO, "#go_info/left/Scroll View")
 	self._animScroll = self._descScroll:GetComponent(typeof(UnityEngine.Animator))
-	self._descContent = gohelper.findChild(self.viewGO, "#go_info/left/Scroll View/Viewport/Content")
-	self._goDescItem = gohelper.findChild(self.viewGO, "#go_info/left/Scroll View/Viewport/Content/#go_descitem")
+	self._txtDesc = gohelper.findChildTextMesh(self.viewGO, "#go_info/left/Scroll View/Viewport/Content/#go_descitem/txt_desc")
 	self._txtcurindex = gohelper.findChildText(self.viewGO, "#go_info/right/position/center/#txt_curindex")
 	self._txtmaxindex = gohelper.findChildText(self.viewGO, "#go_info/right/position/center/#txt_maxindex")
 	self._btnlast = gohelper.findChildButtonWithAudio(self.viewGO, "#go_info/right/position/#btn_last")
 	self._btnnext = gohelper.findChildButtonWithAudio(self.viewGO, "#go_info/right/position/#btn_next")
+	self._imagelast = gohelper.findChildImage(self.viewGO, "#go_info/right/position/#btn_last")
+	self._imagenext = gohelper.findChildImage(self.viewGO, "#go_info/right/position/#btn_next")
 	self._btnstart = gohelper.findChildButtonWithAudio(self.viewGO, "#go_info/right/btns/#btn_start")
 	self._btnreset = gohelper.findChildButtonWithAudio(self.viewGO, "#go_info/right/btns/#btn_reset")
 	self._btnReplay = gohelper.findChildButtonWithAudio(self.viewGO, "#go_info/right/btns/#btn_storyreplay")
 	self._godecorate = gohelper.findChild(self.viewGO, "#go_info/right/decorate")
 	self._gocenter = gohelper.findChild(self.viewGO, "#go_info/right/position/center")
-	self._goleftscrolltopmask = gohelper.findChild(self.viewGO, "#go_info/left/Scroll View/mask2")
 	self.goTaskItem = gohelper.findChild(self.viewGO, "#go_info/right/condition/#go_taskitem")
 
 	gohelper.setActive(self.goTaskItem, false)
@@ -52,7 +60,7 @@ function Season123_3_5EpisodeDetailView:removeEvents()
 end
 
 function Season123_3_5EpisodeDetailView:_editableInitView()
-	self._txtseasondesc = gohelper.findChildText(self.viewGO, "#go_info/left/Scroll View/Viewport/Content/#go_descitem/txt_desc")
+	return
 end
 
 function Season123_3_5EpisodeDetailView:onDestroyView()
@@ -152,7 +160,8 @@ function Season123_3_5EpisodeDetailView:_setInfo()
 	gohelper.setActive(self._btnReplay, afterStory and episodeCo.afterStoryId and episodeCo.afterStoryId ~= 0 or false)
 
 	self._txtlevelnamecn.text = episodeCo.layerName
-	self._txtseasondesc.text = episodeCo.desc
+	self._txtlevelnameen.text = ""
+	self._txtDesc.text = episodeCo.desc
 	self._txtcurindex.text = string.format("%02d", layer)
 
 	local maxLayer = Season123ProgressUtils.getMaxLayer(actId, stage)
@@ -174,11 +183,37 @@ function Season123_3_5EpisodeDetailView:_setInfo()
 		self._simagestageicon:LoadImage(urlStr)
 	end
 
-	self._btnlast.button.interactable = layer > 1
-	self._btnnext.button.interactable = layer < Season123EpisodeDetailModel.instance:getCurrentChallengeLayer()
-
+	ZProj.UGUIHelper.SetColorAlpha(self._imagelast, layer > 1 and 1 or 0.5)
+	ZProj.UGUIHelper.SetColorAlpha(self._imagenext, layer < Season123EpisodeDetailModel.instance:getCurrentChallengeLayer() and 1 or 0.5)
 	self:refreshTask(episodeCo.episodeId)
 	self:_recommendCareer()
+end
+
+function Season123_3_5EpisodeDetailView:refreshLeftStage(stageGO, show, isLight)
+	if gohelper.isNil(stageGO) then
+		return
+	end
+
+	if not show then
+		gohelper.setActive(stageGO, false)
+
+		return
+	end
+
+	gohelper.setActive(stageGO, true)
+
+	local lightGO = gohelper.findChild(stageGO, "light")
+	local darkGO = gohelper.findChild(stageGO, "dark")
+
+	gohelper.setActive(lightGO, isLight)
+	gohelper.setActive(darkGO, not isLight)
+
+	if isLight then
+		local color = "#3E3E3D"
+		local lightImage = gohelper.findChildImage(stageGO, "light")
+
+		SLFramework.UGUI.GuiHelper.SetColor(lightImage, color)
+	end
 end
 
 function Season123_3_5EpisodeDetailView:refreshTask(episodeId)
@@ -229,6 +264,12 @@ function Season123_3_5EpisodeDetailView:refreshTask(episodeId)
 			gohelper.setActive(taskItem.go, false)
 		end
 	end
+
+	local taskCount = #taskList
+
+	for i = 1, 7 do
+		self:refreshLeftStage(self["_gostageinfoitem" .. i], i <= taskCount, i <= curStar)
+	end
 end
 
 function Season123_3_5EpisodeDetailView:_recommendCareer()
@@ -257,14 +298,22 @@ function Season123_3_5EpisodeDetailView:_onRecommendCareerItemShow(obj, data, in
 end
 
 function Season123_3_5EpisodeDetailView:_btnlastOnClick()
-	if Season123EpisodeDetailController.instance:canSwitchLayer(false) then
+	local canSwitch, toastId = Season123EpisodeDetailController.instance:canSwitchLayer(false)
+
+	if canSwitch then
 		Season123EpisodeDetailController.instance:switchLayer(false)
+	elseif toastId then
+		GameFacade.showToast(toastId)
 	end
 end
 
 function Season123_3_5EpisodeDetailView:_btnnextOnClick()
-	if Season123EpisodeDetailController.instance:canSwitchLayer(true) then
+	local canSwitch, toastId = Season123EpisodeDetailController.instance:canSwitchLayer(true)
+
+	if canSwitch then
 		Season123EpisodeDetailController.instance:switchLayer(true)
+	elseif toastId then
+		GameFacade.showToast(toastId)
 	end
 end
 

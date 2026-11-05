@@ -11,7 +11,7 @@ function FightPreloadRoleEffectWork:onStart(context)
 		return
 	end
 
-	if FightEffectPool.isForbidEffect then
+	if FightEffectMgr.isForbidEffect then
 		self:onDone(true)
 
 		return
@@ -45,9 +45,9 @@ function FightPreloadRoleEffectWork:_onPreloadOneFinish(loader, assetItem)
 
 	if effectUrlList then
 		for _, effectUrl in ipairs(effectUrlList) do
-			local effectWrap = FightEffectPool.getEffect(effectUrl, FightEnum.EntitySide.MySide, nil, nil, nil, true)
+			local effectWrap = FightGameMgr.effectMgr:getEffect(effectUrl, FightEnum.EntitySide.MySide, nil, nil, nil, true)
 
-			FightEffectPool.returnEffect(effectWrap)
+			FightGameMgr.effectMgr:returnEffect(effectWrap)
 		end
 	end
 end

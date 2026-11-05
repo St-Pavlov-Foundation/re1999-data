@@ -997,6 +997,18 @@ function GameUtil.tabletool_checkDictTable(refDict, key)
 	return table
 end
 
+function GameUtil.handleCallbackFunc(cb, cbObj, cbParam)
+	if not cb then
+		return
+	end
+
+	if cbObj then
+		cb(cbObj, cbParam)
+	else
+		cb(cbParam)
+	end
+end
+
 function GameUtil.checkPointInRectangle(point, a, b, c, d)
 	local ab = b - a
 	local ap = point - a
@@ -1665,6 +1677,106 @@ end
 
 function GameUtil.isApproxZero(num, eps)
 	return GameUtil.approximately(num, 0, eps)
+end
+
+function GameUtil.setInterface(dst, src)
+	if not dst or not src then
+		return
+	end
+
+	for k, v in pairs(src) do
+		if type(v) == "function" then
+			dst[k] = v
+		end
+	end
+end
+
+function GameUtil.LoadAS()
+	require("tolua.reflection")
+
+	if SettingsModel.instance:isOverseas() then
+		tolua.loadassembly("Assembly-CSharp")
+	else
+		tolua.loadassembly("SL_AS")
+	end
+end
+
+function GameUtil.shuffleArray(readOnlyArr)
+	local list = GameUtil.copyArray(readOnlyArr or {})
+
+	return GameUtil.randomTable(list)
+end
+
+function GameUtil.beforeDestroy(luaObj)
+	if luaObj then
+		luaObj:beforeDestroy()
+	end
+end
+
+function GameUtil.beforeDestroyList(luaObjList)
+	if luaObjList then
+		for _, luaObj in ipairs(luaObjList) do
+			GameUtil.beforeDestroy(luaObj)
+		end
+	end
+end
+
+function GameUtil.beforeDestroyMember(Self, memberName)
+	GameUtil.beforeDestroy(Self[memberName])
+
+	Self[memberName] = nil
+end
+
+function GameUtil.beforeDestroyMemberList(Self, memberName)
+	GameUtil.beforeDestroyList(Self[memberName])
+
+	Self[memberName] = nil
+end
+
+function GameUtil.isValid(obj)
+	if obj == nil then
+		return false
+	end
+
+	if isDebugBuild and (type(obj) == "number" or type(obj) == "string" or type(obj) == "boolean" or type(obj) == "function" or type(obj) == "thread") then
+		assert(false, "obj must be a table or userdata")
+	end
+
+	if type(obj) == "userdata" then
+		return obj:Equals(nil)
+	elseif obj.isValid ~= nil then
+		if type(obj.isValid) == "function" then
+			return obj:isValid()
+		end
+
+		return obj.isValid
+	end
+
+	return true
+end
+
+function GameUtil.jsonDecode(jsonStr)
+	local ok, tbl = pcall(cjson.decode, jsonStr)
+
+	if not ok then
+		logError("JSON(str->table) parsing failed: " .. tostring(tbl))
+
+		return
+	end
+
+	return tbl
+end
+
+function GameUtil.jsonEncode(tbl)
+	local ok, jsonStr = pcall(cjson.encode, tbl)
+
+	if not ok then
+		logError("JSON(table->str) encoding failed: " .. tostring(jsonStr))
+
+		return
+	end
+
+	return jsonStr
 end
 
 return GameUtil

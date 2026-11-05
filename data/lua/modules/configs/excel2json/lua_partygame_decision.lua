@@ -17,9 +17,36 @@ local primaryKey = {
 	"group"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.partygame_decision_config"
 
-function lua_partygame_decision.onLoad(json)
-	lua_partygame_decision.configList, lua_partygame_decision.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_partygame_decision, "configList", _configList)
+	rawset(lua_partygame_decision, "configDict", _configDict)
+end
+
+setmetatable(lua_partygame_decision, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_partygame_decision.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_partygame_decision, "configList", nil)
+	rawset(lua_partygame_decision, "configDict", nil)
 end
 
 return lua_partygame_decision

@@ -22,9 +22,36 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.turnback_recommend_config"
 
-function lua_turnback_recommend.onLoad(json)
-	lua_turnback_recommend.configList, lua_turnback_recommend.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_turnback_recommend, "configList", _configList)
+	rawset(lua_turnback_recommend, "configDict", _configDict)
+end
+
+setmetatable(lua_turnback_recommend, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_turnback_recommend.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_turnback_recommend, "configList", nil)
+	rawset(lua_turnback_recommend, "configDict", nil)
 end
 
 return lua_turnback_recommend

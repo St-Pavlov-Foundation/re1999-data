@@ -47,7 +47,12 @@ function DecorateStoreGoodsTipView:removeEvents()
 end
 
 function DecorateStoreGoodsTipView:_btnoverviewOnClick()
-	PlayerCardController.instance:ShowChangeBgSkin(self._config.id, nil, true)
+	local viewParam = {
+		isHideEquipBtn = true,
+		id = self._config.id
+	}
+
+	PlayerCardController.instance:simpleShowPlayerCardGetView(viewParam)
 end
 
 function DecorateStoreGoodsTipView:_btnrightOnClick()

@@ -371,7 +371,7 @@ function BossRushController:openBossRushStoreView(actId)
 end
 
 function BossRushController:openResultPanel(param)
-	ViewMgr.instance:openView(ViewName.V3a2_BossRush_ResultPanel, param)
+	ViewMgr.instance:openView(ViewName.V4a1_BossRush_ResultPanel, param)
 end
 
 function BossRushController:openBossRushOfferRoleView()

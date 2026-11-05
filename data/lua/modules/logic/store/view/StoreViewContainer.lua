@@ -457,4 +457,28 @@ function StoreViewContainer:doFlowFromGoldenMilletPresent()
 	end
 end
 
+function StoreViewContainer:_getLinkGiftGoodsId2PageIndex()
+	if not self._linkGiftGoodsId2PageIndex then
+		self._linkGiftGoodsId2PageIndex = {}
+
+		local actId = ActivityType101Config.instance:getLinkGiftActId()
+
+		if ActivityType101Model.instance:isOpen(actId) then
+			local lua_store_charge_goods_ids = ActivityConfig.instance:splitParamToNumber(actId, "#")
+
+			for pageIndex, lua_store_charge_goods_id in ipairs(lua_store_charge_goods_ids) do
+				self._linkGiftGoodsId2PageIndex[lua_store_charge_goods_id] = pageIndex
+			end
+		end
+	end
+
+	return self._linkGiftGoodsId2PageIndex
+end
+
+function StoreViewContainer:getLinkGiftPageIndexByStoreChargeGoodsId(lua_store_charge_goods_id)
+	local dict = self:_getLinkGiftGoodsId2PageIndex()
+
+	return dict[lua_store_charge_goods_id] or -1
+end
+
 return StoreViewContainer

@@ -47,10 +47,9 @@ function VersionActivity3_3JumpHandleFunc:jumpTo13310(paramsList)
 	local actId = paramsList[2]
 	local episodeId = paramsList[3]
 
-	table.insert(self.waitOpenViewNames, VersionActivityFixedHelper.getVersionActivityEnterViewName())
-	VersionActivity3_3EnterController.instance:openVersionActivityEnterViewIfNotOpened(function()
-		MarshaController.instance:enterLevelView(episodeId)
-	end, nil, actId, true)
+	table.insert(self.waitOpenViewNames, RoleActivityEnum.LevelView[actId])
+	PermanentController.instance:jump2Activity(VersionActivity3_3Enum.ActivityId.EnterView)
+	MarshaController.instance:enterLevelView(episodeId)
 
 	return JumpEnum.JumpResult.Success
 end
@@ -59,10 +58,9 @@ function VersionActivity3_3JumpHandleFunc:jumpTo13313(paramsList)
 	local actId = paramsList[2]
 	local episodeId = paramsList[3]
 
-	table.insert(self.waitOpenViewNames, VersionActivityFixedHelper.getVersionActivityEnterViewName())
-	VersionActivity3_3EnterController.instance:openVersionActivityEnterViewIfNotOpened(function()
-		IgorController.instance:enterEpisodeLevelView(actId, episodeId)
-	end, nil, actId, true)
+	table.insert(self.waitOpenViewNames, RoleActivityEnum.LevelView[actId])
+	PermanentController.instance:jump2Activity(VersionActivity3_3Enum.ActivityId.EnterView)
+	IgorController.instance:enterEpisodeLevelView(actId, episodeId)
 
 	return JumpEnum.JumpResult.Success
 end

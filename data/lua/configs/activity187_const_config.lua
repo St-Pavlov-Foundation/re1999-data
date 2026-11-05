@@ -1,0 +1,24 @@
+﻿-- chunkname: @configs/activity187_const_config.lua
+
+return {
+	{
+		1,
+		"7",
+		""
+	},
+	{
+		2,
+		"1",
+		""
+	},
+	{
+		3,
+		"25551001",
+		""
+	},
+	{
+		4,
+		"7",
+		""
+	}
+}

@@ -17,9 +17,36 @@ local primaryKey = {
 	"segmentId"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.track_path_segment_config"
 
-function lua_track_path_segment.onLoad(json)
-	lua_track_path_segment.configList, lua_track_path_segment.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_track_path_segment, "configList", _configList)
+	rawset(lua_track_path_segment, "configDict", _configDict)
+end
+
+setmetatable(lua_track_path_segment, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_track_path_segment.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_track_path_segment, "configList", nil)
+	rawset(lua_track_path_segment, "configDict", nil)
 end
 
 return lua_track_path_segment

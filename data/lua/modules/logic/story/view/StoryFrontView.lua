@@ -625,8 +625,6 @@ function StoryFrontView:_onFullTextShowFinished()
 end
 
 function StoryFrontView:_onUpdateUI(param)
-	self:_killBlurId()
-
 	local normalstep = param.stepType == StoryEnum.StepType.Normal
 	local color1 = normalstep and "#FFFFFF" or "#292218"
 	local color2 = normalstep and "#FFFFFF" or "#333333"
@@ -717,6 +715,45 @@ end
 function StoryFrontView:_startStory()
 	StoryController.instance:startStory()
 	TaskDispatcher.runDelay(self._viewFadeIn, self, 0.05)
+	self:_checkPuzzleBtn()
+end
+
+function StoryFrontView:_checkPuzzleBtn()
+	local puzzleBBtn = V3a5PuzzleController.instance:getStoryExtraBtnInfo(StoryModel.instance:getCurStoryId())
+
+	if puzzleBBtn then
+		if not self._puzzleBtn then
+			self._puzzleBtn = self:getUserDataTb_()
+			self._puzzleBtn.btn = gohelper.findChildButtonWithAudio(self._gobtnright, "#btn_puzzle")
+			self._puzzleBtn.text = gohelper.findChildText(self._puzzleBtn.btn.gameObject, "txt")
+			self._puzzleBtn.icon = gohelper.findChildImage(self._puzzleBtn.btn.gameObject, "icon")
+		end
+
+		if not string.nilorempty(puzzleBBtn.btnText) then
+			self._puzzleBtn.text.text = luaLang(puzzleBBtn.btnText)
+		end
+
+		if not string.nilorempty(puzzleBBtn.btnIcon) then
+			UISpriteSetMgr.instance:setCommonSprite(self._puzzleBtn.icon, puzzleBBtn.btnIcon, true)
+		end
+
+		self._puzzleBtn.btn:RemoveClickListener()
+		self._puzzleBtn.btn:AddClickListener(self._btnPuzzleBtnOnClick, self, puzzleBBtn)
+
+		if puzzleBBtn.sibling then
+			gohelper.setSibling(self._puzzleBtn.btn.gameObject, puzzleBBtn.sibling)
+		end
+	end
+
+	if self._puzzleBtn then
+		gohelper.setActive(self._puzzleBtn.btn.gameObject, puzzleBBtn ~= nil)
+	end
+end
+
+function StoryFrontView:_btnPuzzleBtnOnClick(puzzleBBtn)
+	if puzzleBBtn and puzzleBBtn.btnClickFunc then
+		puzzleBBtn.btnClickFunc()
+	end
 end
 
 function StoryFrontView:_viewFadeIn()
@@ -853,11 +890,7 @@ function StoryFrontView:_setBtnsVisible(viewName)
 end
 
 function StoryFrontView:_isForceHideTopBtn()
-	if not self._ForceHideTopView then
-		self._ForceHideTopView = {
-			ViewName.V3a4BBSView
-		}
-	end
+	local topView = self:_getForceHideTopView()
 
 	for _, viewName in ipairs(self._ForceHideTopView) do
 		if ViewMgr.instance:isOpen(viewName) then
@@ -866,8 +899,29 @@ function StoryFrontView:_isForceHideTopBtn()
 	end
 end
 
+function StoryFrontView:_getForceHideTopView()
+	if not self._ForceHideTopView then
+		self._ForceHideTopView = {
+			ViewName.V3a4BBSView,
+			ViewName.Act248ClueMainView
+		}
+	end
+
+	return self._ForceHideTopView
+end
+
+function StoryFrontView:_isForceHideTopView(viewName)
+	local topView = self:_getForceHideTopView()
+
+	for _, v in ipairs(topView) do
+		if viewName == v then
+			return true
+		end
+	end
+end
+
 function StoryFrontView:_onOpenView(viewName)
-	if viewName == ViewName.V3a4BBSView then
+	if self:_isForceHideTopView(viewName) then
 		self:setBtnVisible(false)
 
 		if self._exitBtn then
@@ -877,12 +931,14 @@ function StoryFrontView:_onOpenView(viewName)
 end
 
 function StoryFrontView:_onCloseView(viewName)
-	if viewName == ViewName.V3a4BBSView then
+	if self:_isForceHideTopView(viewName) then
 		self:setBtnVisible(true)
 
 		if self._exitBtn then
 			self._exitBtn:refresh(true)
 		end
+
+		StoryModel.instance:enableClick(true)
 	end
 end
 
@@ -1025,6 +1081,12 @@ function StoryFrontView:onDestroyView()
 		self._gmView:destroy()
 
 		self._gmView = nil
+	end
+
+	if self._puzzleBtn then
+		self._puzzleBtn.btn:RemoveClickListener()
+
+		self._puzzleBtn = nil
 	end
 end
 

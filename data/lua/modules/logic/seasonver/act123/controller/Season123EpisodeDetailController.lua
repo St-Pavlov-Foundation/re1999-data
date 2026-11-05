@@ -27,18 +27,20 @@ end
 
 function Season123EpisodeDetailController:canSwitchLayer(isNext)
 	local curLayer = Season123EpisodeDetailModel.instance.layer
+	local nextLayer = isNext and curLayer + 1 or curLayer - 1
+	local actId = Season123EpisodeDetailModel.instance.activityId
+	local stage = Season123EpisodeDetailModel.instance.stage
+	local config = Season123Config.instance:getSeasonEpisodeCo(actId, stage, nextLayer)
 
-	if isNext then
-		local nextLayer = curLayer + 1
-
-		if not Season123EpisodeDetailModel.instance:isEpisodeUnlock(nextLayer) then
-			return false
-		end
-	elseif curLayer < 2 then
+	if not config then
 		return false
 	end
 
-	return true
+	if Season123EpisodeDetailModel.instance:isEpisodeUnlock(nextLayer) then
+		return true
+	end
+
+	return false, ToastEnum.SeasonEpisodeIsLock
 end
 
 function Season123EpisodeDetailController:switchLayer(isNext)

@@ -34,9 +34,17 @@ function StoryTextLightComp:playTextEffect(textComp, effectType, picTxtCo, txt)
 	elseif effectType == StoryEnum.PictureInType.GostMagic then
 		self:showGostMagic(true)
 	elseif effectType == StoryEnum.PictureInType.WordByWord then
-		self:showWordByWord(true)
+		local time = self._picCo.inTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()]
+
+		self:showWordByWord(true, time)
 	elseif effectType == StoryEnum.PictureInType.FadeIn or effectType == StoryEnum.PictureInType.TxtFadeIn then
 		self:showFadeIn()
+	elseif effectType == StoryEnum.PictureInType.Hard then
+		local txtCo = string.splitToNumber(self._picCo.picture, "#")
+		local speed = txtCo[2] or 0
+		local time = 0.1 * LuaUtil.getStrLen(self._metaTxt) * speed
+
+		self:showWordByWord(true, time)
 	else
 		self._picGoRoot:GetComponent(typeof(UnityEngine.CanvasGroup)).alpha = 1
 	end
@@ -49,7 +57,7 @@ function StoryTextLightComp:hideTextEffect()
 		self:showSoftLight(false)
 	elseif self.curEffectType == StoryEnum.PictureInType.GostMagic then
 		self:showGostMagic(false)
-	elseif self.curEffectType == StoryEnum.PictureInType.WordByWord then
+	elseif self.curEffectType == StoryEnum.PictureInType.WordByWord or self.curEffectType == StoryEnum.PictureInType.Hard then
 		self:showWordByWord(false)
 	end
 end
@@ -185,7 +193,9 @@ function StoryTextLightComp:_setGostGlitch()
 		local lineInfo = textInfo.lineInfo[i]
 		local scaleX = transformhelper.getLossyScale(self.textTransform)
 		local lineWidth = lineInfo.length * scaleX
-		local lineY = lineInfo.baseline
+		local lineY = (lineInfo.ascender + lineInfo.descender) * 0.5
+		local firstChar = textInfo.characterInfo[lineInfo.firstVisibleCharacterIndex]
+		local lineX = firstChar.origin + lineInfo.length * 0.5
 		local lineGo
 
 		if i == 0 then
@@ -199,9 +209,9 @@ function StoryTextLightComp:_setGostGlitch()
 		local rt = lineGo:GetComponent(typeof(UnityEngine.RectTransform))
 
 		if rt then
-			recthelper.setAnchor(rt, 0, lineY)
+			recthelper.setAnchor(rt, lineX, lineY)
 		else
-			transformhelper.setLocalPosXY(lineGo.transform, 0, lineY)
+			transformhelper.setLocalPosXY(lineGo.transform, lineX, lineY)
 		end
 
 		local ps = lineGo:GetComponent(typeof(UnityEngine.ParticleSystem))
@@ -209,8 +219,11 @@ function StoryTextLightComp:_setGostGlitch()
 		if ps then
 			local shapeModule = ps.shape
 			local s = shapeModule.scale
+			local shapeY = s.y * firstChar.pointSize / self.textComp.fontSize
 
-			shapeModule.scale = Vector3(lineWidth, s.y, s.z)
+			shapeModule.scale = Vector3(lineWidth, shapeY, s.z)
+
+			ZProj.ParticleSystemHelper.SetMaxParticles(ps, math.max(6, math.min(30, math.floor(lineInfo.length / firstChar.pointSize))))
 		end
 	end
 end
@@ -274,9 +287,9 @@ function StoryTextLightComp:_startGlitchAmountAnim()
 
 	self._conMat.renderQueue = 4995
 
-	self:_glitchAmountUpdate(3.5)
+	self:_glitchAmountUpdate(10)
 
-	self._glitchAmountTweenId = ZProj.TweenHelper.DOTweenFloat(3.5, 1.8, 1.5, self._glitchAmountUpdate, self._glitchAmountEnd, self, nil, EaseType.Linear)
+	self._glitchAmountTweenId = ZProj.TweenHelper.DOTweenFloat(10, 1.8, 1.2, self._glitchAmountUpdate, self._glitchAmountEnd, self, nil, EaseType.OutQuart)
 end
 
 function StoryTextLightComp:_glitchAmountUpdate(value)
@@ -356,9 +369,13 @@ function StoryTextLightComp:_glitchEffLoaded(loader)
 	self:showGlitch(self._isVisible)
 end
 
-function StoryTextLightComp:showWordByWord(show)
+function StoryTextLightComp:showWordByWord(show, time)
 	self:_clearTextTween()
 	self:setVisible(show)
+
+	if not show then
+		return
+	end
 
 	if not self.isTmpText then
 		return
@@ -372,7 +389,6 @@ function StoryTextLightComp:showWordByWord(show)
 
 	tmpComp.maxVisibleCharacters = 0
 
-	local time = self._picCo.inTimes[GameLanguageMgr.instance:getVoiceTypeStoryIndex()]
 	local cur = 0
 
 	self._textTweenId = ZProj.TweenHelper.DOTweenFloat(cur, total, time, self.onWordFameCallback, self.onWordPlayFinishCallback, self, nil, EaseType.Linear)

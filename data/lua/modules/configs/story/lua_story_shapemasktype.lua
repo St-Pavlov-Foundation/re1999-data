@@ -135,5 +135,35 @@ return {
 		0.9,
 		0,
 		22
+	},
+	{
+		9,
+		"圆形4秒标准立绘头部",
+		4,
+		"ui/viewres/story/v3a6/v3a6_shapemask_circle.prefab",
+		-20,
+		9,
+		0,
+		2,
+		0,
+		0,
+		2,
+		0,
+		22
+	},
+	{
+		10,
+		"圆形6",
+		0,
+		"ui/viewres/story/v3a6/v3a6_shapemask_circle.prefab",
+		-45,
+		3,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		1
 	}
 }

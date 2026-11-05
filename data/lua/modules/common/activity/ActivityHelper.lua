@@ -48,7 +48,7 @@ function ActivityHelper.getActivityStatusAndToast(actId, noError)
 			logError(string.format("not found ActivityId : %s activity", actId))
 		end
 
-		return ActivityEnum.ActivityStatus.None
+		return ActivityEnum.ActivityStatus.None, ToastEnum.ActivityNone
 	end
 
 	if not actInfoMo:isOpen() then
@@ -86,6 +86,17 @@ function ActivityHelper.getActivityRemainTimeStr(activityId, useEn)
 	end
 
 	return ""
+end
+
+function ActivityHelper.isOpen2(actId, isToast, noError)
+	local status, toastId, toastParam = ActivityHelper.getActivityStatusAndToast(actId, noError)
+	local isOpen = status == ActivityEnum.ActivityStatus.Normal
+
+	if isToast and toastId then
+		GameFacade.showToast(toastId, toastParam)
+	end
+
+	return isOpen
 end
 
 local _activityIdToVersionDict, _jumpNeedCloseViewDict

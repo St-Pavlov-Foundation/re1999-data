@@ -32,11 +32,13 @@ end
 
 FightViewBossHpMgr.BossHpType = {
 	ScrollHp_Survival = 1,
-	ScrollHp_500M = 2
+	ScrollHp_500M = 2,
+	ZongMaoScoreView = 3
 }
 FightViewBossHpMgr.BossHpType2Cls = {
 	[FightViewBossHpMgr.BossHpType.ScrollHp_Survival] = FightViewSurvivalBossHp,
-	[FightViewBossHpMgr.BossHpType.ScrollHp_500M] = FightViewScrollBossHp_500M
+	[FightViewBossHpMgr.BossHpType.ScrollHp_500M] = FightViewScrollBossHp_500M,
+	[FightViewBossHpMgr.BossHpType.ZongMaoScoreView] = FightBossRushScoreHpView
 }
 
 function FightViewBossHpMgr:_onBeforeEnterStepBehaviour()
@@ -60,7 +62,11 @@ function FightViewBossHpMgr:_onBeforeEnterStepBehaviour()
 	end
 
 	if BossRushController.instance:isInBossRushInfiniteFight(true) then
-		self:com_openSubView(BossRushFightViewBossHp, self._hpItem)
+		if lua_activity128_score_skill.configDict[FightDataHelper.fieldMgr.episodeId] then
+			self:com_openSubView(FightBossRushScoreHpView, self._hpItem)
+		else
+			self:com_openSubView(BossRushFightViewBossHp, self._hpItem)
+		end
 
 		return
 	end

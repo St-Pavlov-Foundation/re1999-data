@@ -16,9 +16,36 @@ local primaryKey = {
 local mlStringKey = {
 	desc = 1
 }
+local _configList, _configDict
+local configPath = "configs.room_trade_barrage_config"
 
-function lua_room_trade_barrage.onLoad(json)
-	lua_room_trade_barrage.configList, lua_room_trade_barrage.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_room_trade_barrage, "configList", _configList)
+	rawset(lua_room_trade_barrage, "configDict", _configDict)
+end
+
+setmetatable(lua_room_trade_barrage, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_room_trade_barrage.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_room_trade_barrage, "configList", nil)
+	rawset(lua_room_trade_barrage, "configDict", nil)
 end
 
 return lua_room_trade_barrage

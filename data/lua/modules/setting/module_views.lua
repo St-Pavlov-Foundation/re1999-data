@@ -174,7 +174,10 @@ module_views.FightQteView = {
 	container = "FightQteViewContainer",
 	mainRes = "ui/viewres/fight/fightbreakthroughqteview.prefab",
 	layer = "POPUP_TOP",
-	viewType = ViewType.Normal
+	viewType = ViewType.Normal,
+	otherRes = {
+		[1] = "ui/viewres/fight/fightbreakthroughheroitem_3_fly.prefab"
+	}
 }
 module_views.FightQteTipView = {
 	destroy = 0,
@@ -1041,6 +1044,15 @@ module_views.FightWeekWalkEnemyTipsView = {
 	viewType = ViewType.Normal,
 	anim = ViewAnim.Default
 }
+module_views.FightBossRushScoreLevelBarTipsView = {
+	destroy = 0,
+	container = "FightBossRushScoreLevelBarTipsViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/versionactivity_1_4/v1a4_bossrush/v4a1_bossrush/v4a1_bossrush_dangertips.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	anim = ViewAnim.Default
+}
 module_views.FightGMDouQuQuTest = {
 	destroy = 0,
 	container = "FightGMDouQuQuTestContainer",
@@ -1170,6 +1182,19 @@ module_views.FightS02SSWLSelectCardView = {
 	anim = ViewAnim.Default,
 	otherRes = {
 		[1] = "ui/viewres/fight/fightcarditem.prefab"
+	}
+}
+module_views.FightYiFuLinMoveView = {
+	destroy = 0,
+	container = "FightYiFuLinMoveViewContainer",
+	bgBlur = 3,
+	mainRes = "ui/viewres/fight/fight_yifulin_swapview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Modal,
+	anim = ViewAnim.Default,
+	otherRes = {
+		[1] = "ui/viewres/fight/fight_yifulin_swapitem.prefab",
+		[2] = "ui/viewres/fight/fight_specialpassionpoint.prefab"
 	}
 }
 module_views.FightSupportEventView = {
@@ -1320,8 +1345,10 @@ module_views.FightFocusView = {
 	otherRes = {
 		FightEntityResistanceComp.FightResistancePath,
 		NormalCard = "ui/viewres/character/characterbreakthrough_normalcard.prefab",
+		QTERes = "ui/viewres/character/characterbreakthroughview_1.prefab",
 		UniqueCard = "ui/viewres/character/characterbreakthrough_uniquecard.prefab",
-		QTERes = "ui/viewres/character/characterbreakthroughview_1.prefab"
+		dangerPanel = BossRushEnum.ResPath.v4a1_bossrush_dangerrankview,
+		dangerItem = BossRushEnum.ResPath.v4a1_bossrush_danger
 	}
 }
 module_views.FightActionBarPopView = {
@@ -3430,6 +3457,13 @@ module_views.GMFightSimulateView = {
 	layer = "POPUP_TOP",
 	viewType = ViewType.Normal
 }
+module_views.GMFightEnterView = {
+	destroy = 0,
+	container = "GMFightEnterViewContainer",
+	mainRes = "ui/viewres/gm/gmfightsimulateview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal
+}
 module_views.GMFightStandardEpisodeForTestServerView = {
 	destroy = 0,
 	container = "GMFightStandardEpisodeForTestServerViewContainer",
@@ -3441,6 +3475,13 @@ module_views.GMGuideStatusView = {
 	destroy = 0,
 	container = "GMGuideStatusViewContainer",
 	mainRes = "ui/viewres/gm/gmguidestatusview.prefab",
+	layer = "TOP",
+	viewType = ViewType.Normal
+}
+module_views.GMActivityStatusView = {
+	destroy = 0,
+	container = "GMActivityStatusViewContainer",
+	mainRes = "ui/viewres/gm/gmactivitystatusview.prefab",
 	layer = "TOP",
 	viewType = ViewType.Normal
 }
@@ -5974,6 +6015,42 @@ module_views.HandbookSkinSuitDetailView4_0_1 = {
 	destroy = 0,
 	container = "HandbookSkinSuitDetailView4_0_1Container",
 	mainRes = "ui/viewres/skinhandbook/skinsuitdetailview_4_0_1.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full,
+	anim = ViewAnim.Default,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	},
+	otherRes = {
+		[1] = "ui/viewres/skinhandbook/skinsuitdetailviewbtns.prefab"
+	}
+}
+module_views.HandbookSkinSuitDetailView4_1 = {
+	destroy = 0,
+	container = "HandbookSkinSuitDetailView4_1Container",
+	mainRes = "ui/viewres/skinhandbook/skinsuitdetailview_4_1.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Full,
+	anim = ViewAnim.Default,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	},
+	otherRes = {
+		[1] = "ui/viewres/skinhandbook/skinsuitdetailviewbtns.prefab"
+	}
+}
+module_views.HandbookSkinSuitDetailView4_1_1 = {
+	destroy = 0,
+	container = "HandbookSkinSuitDetailView4_1_1Container",
+	mainRes = "ui/viewres/skinhandbook/skinsuitdetailview_4_1_1.prefab",
 	layer = "POPUP_TOP",
 	viewType = ViewType.Full,
 	anim = ViewAnim.Default,
@@ -23461,6 +23538,7 @@ VersionActivity3_7ViewDefine.init(module_views)
 VersionActivity3_8ViewDefine.init(module_views)
 VersionActivity3_9ViewDefine.init(module_views)
 VersionActivity4_0ViewDefine.init(module_views)
+VersionActivity4_1ViewDefine.init(module_views)
 
 module_views.GMYeShuMeiView = {
 	destroy = 0,
@@ -25659,6 +25737,9 @@ module_views.ArcadeQuitTipView = {
 	layer = "POPUP_TOP",
 	viewType = ViewType.Modal
 }
+
+ArcadeSurvivorViewDefine.init(module_views)
+
 module_views.MarshaGameView = {
 	destroy = 0,
 	container = "MarshaGameViewContainer",
@@ -27088,6 +27169,7 @@ module_views.AbyssBuffSelectView = {
 
 MatchGameViewDefine.init(module_views)
 ConcertLimitViewDefine.init(module_views)
+Act248ViewDefine.init(module_views)
 
 module_views.V4a0_SixStarGift_FullView = {
 	destroy = 0,
@@ -27209,6 +27291,75 @@ module_views.HeroRecoveryWindowView = {
 	anim = ViewAnim.Default,
 	desampleRate = PostProcessingMgr.DesamplingRate.x8,
 	reduceRate = PostProcessingMgr.DesamplingRate.x8
+}
+
+GuessGameNewViewDefine.init(module_views)
+
+module_views.V4a1_Library_MainView = {
+	destroy = 0,
+	container = "V4a1_Library_MainViewContainer",
+	mainRes = "ui/viewres/versionactivity_4_1/v4a1_library/v4a1_library_mainview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	}
+}
+module_views.V4a1_Investigation_GuessView = {
+	destroy = 0,
+	container = "V4a1_Investigation_GuessViewContainer",
+	mainRes = "ui/viewres/versionactivity_4_1/v4a1_investigation/v4a1_investigation_guessview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	tabRes = {
+		{
+			{
+				NavigateButtonsView.prefabPath
+			}
+		}
+	},
+	preloader = module_views_preloader
+}
+module_views.GM_FightDataShowView = {
+	destroy = 0,
+	container = "FightDataShowPanelContainer",
+	mainRes = "ui/viewres/gm/fight/gm_fightdatapanel.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal,
+	otherRes = {
+		[1] = "ui/viewres/fight/fightcarditem.prefab"
+	}
+}
+module_views.Investigation_GuessView = module_views.V4a1_Investigation_GuessView
+module_views.V4a1_LinkGift_FullView = {
+	destroy = 0,
+	container = "V4a1_LinkGift_FullViewContainer",
+	mainRes = "ui/viewres/activity/v3a9_linkgift_fullview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Normal
+}
+module_views.LinkGift_FullView = module_views.V4a1_LinkGift_FullView
+module_views.V4a1_LinkGift_PanelView = {
+	destroy = 0,
+	container = "V4a1_LinkGift_PanelViewContainer",
+	bgBlur = 1,
+	mainRes = "ui/viewres/activity/v3a9_linkgift_panelview.prefab",
+	layer = "POPUP_TOP",
+	viewType = ViewType.Modal,
+	anim = ViewAnim.Default,
+	preloader = module_views_preloader
+}
+module_views.LinkGift_PanelView = module_views.V4a1_LinkGift_PanelView
+module_views.V4a1_Library_Loading = {
+	destroy = 0,
+	container = "V4a1_Library_LoadingContainer",
+	mainRes = "ui/viewres/versionactivity_4_1/v4a1_library/v4a1_library_loading.prefab",
+	layer = "TOP",
+	viewType = ViewType.Normal
 }
 
 local ViewName = {}

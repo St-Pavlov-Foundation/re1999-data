@@ -32,9 +32,36 @@ local mlStringKey = {
 	sender = 1,
 	addressee = 4
 }
+local _configList, _configDict
+local configPath = "configs.mail_config"
 
-function lua_mail.onLoad(json)
-	lua_mail.configList, lua_mail.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_mail, "configList", _configList)
+	rawset(lua_mail, "configDict", _configDict)
+end
+
+setmetatable(lua_mail, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_mail.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_mail, "configList", nil)
+	rawset(lua_mail, "configDict", nil)
 end
 
 return lua_mail

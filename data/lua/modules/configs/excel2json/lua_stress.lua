@@ -17,9 +17,36 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.stress_config"
 
-function lua_stress.onLoad(json)
-	lua_stress.configList, lua_stress.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_stress, "configList", _configList)
+	rawset(lua_stress, "configDict", _configDict)
+end
+
+setmetatable(lua_stress, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_stress.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_stress, "configList", nil)
+	rawset(lua_stress, "configDict", nil)
 end
 
 return lua_stress

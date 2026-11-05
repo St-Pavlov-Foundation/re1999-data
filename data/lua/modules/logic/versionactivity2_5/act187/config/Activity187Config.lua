@@ -156,6 +156,10 @@ function Activity187Config:getBlessing(actId, rewardId)
 	return result
 end
 
+function Activity187Config:getDeepDiveActId()
+	return ActivityConfig.instance:getConstAsNum(41003, 14036)
+end
+
 Activity187Config.instance = Activity187Config.New()
 
 return Activity187Config

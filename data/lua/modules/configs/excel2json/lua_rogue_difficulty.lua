@@ -33,9 +33,36 @@ local mlStringKey = {
 	effectDesc3 = 4,
 	effectDesc2 = 3
 }
+local _configList, _configDict
+local configPath = "configs.rogue_difficulty_config"
 
-function lua_rogue_difficulty.onLoad(json)
-	lua_rogue_difficulty.configList, lua_rogue_difficulty.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_rogue_difficulty, "configList", _configList)
+	rawset(lua_rogue_difficulty, "configDict", _configDict)
+end
+
+setmetatable(lua_rogue_difficulty, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_rogue_difficulty.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_rogue_difficulty, "configList", nil)
+	rawset(lua_rogue_difficulty, "configDict", nil)
 end
 
 return lua_rogue_difficulty

@@ -8,6 +8,11 @@ function GMSubViewActivity:ctor()
 	self.tabName = "活动"
 end
 
+function GMSubViewActivity:_onClickActivityStatusList()
+	self:closeThis()
+	ViewMgr.instance:openView(ViewName.GMActivityStatusView)
+end
+
 function GMSubViewActivity:initViewContent()
 	if self._inited then
 		return
@@ -24,6 +29,7 @@ function GMSubViewActivity:initViewContent()
 
 	self:addButton("L-1", "查询", self._printRoleStoryFlagKey, self)
 	self:addTitleSplitLine("活动状态")
+	self:addButton("L1", "活动状态列表", self._onClickActivityStatusList, self)
 
 	self._dropActivity = self:addDropDown("L1", "活动ID：", nil, self._onActivityDropValueChange, self)
 	self._dropActivityStatus = self:addDropDown("L1", "活动状态：", nil, self._onActivityStatusDropValueChange, self)

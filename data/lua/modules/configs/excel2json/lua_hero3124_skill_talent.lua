@@ -78,9 +78,36 @@ local mlStringKey = {
 	fieldDesc4 = 20,
 	desc3 = 15
 }
+local _configList, _configDict
+local configPath = "configs.hero3124_skill_talent_config"
 
-function lua_hero3124_skill_talent.onLoad(json)
-	lua_hero3124_skill_talent.configList, lua_hero3124_skill_talent.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_hero3124_skill_talent, "configList", _configList)
+	rawset(lua_hero3124_skill_talent, "configDict", _configDict)
+end
+
+setmetatable(lua_hero3124_skill_talent, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_hero3124_skill_talent.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_hero3124_skill_talent, "configList", nil)
+	rawset(lua_hero3124_skill_talent, "configDict", nil)
 end
 
 return lua_hero3124_skill_talent

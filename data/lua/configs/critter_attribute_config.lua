@@ -1,0 +1,19 @@
+﻿-- chunkname: @configs/critter_attribute_config.lua
+
+return {
+	{
+		1,
+		"效率",
+		"critter_manufacture_attricon_1"
+	},
+	{
+		2,
+		"耐性",
+		"critter_manufacture_attricon_2"
+	},
+	{
+		3,
+		"专长",
+		"critter_manufacture_attricon_3"
+	}
+}

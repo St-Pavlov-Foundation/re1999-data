@@ -1,0 +1,10 @@
+﻿-- chunkname: @configs/activity_decoration_config.lua
+
+return {
+	{
+		138516,
+		"sceneuipackage_giftrecommand_1_1|sceneuipackage_giftrecommand_2_1",
+		3000,
+		"mainsceneswitch_ui_05_1|mainsceneswitch_ui_05_1"
+	}
+}

@@ -1,0 +1,24 @@
+﻿-- chunkname: @configs/fight_sswl_skill1_effect_config.lua
+
+return {
+	{
+		0,
+		0,
+		"shuangshengwuling_314901_skill2_2_1|shuangshengwuling_314901_skill2_3_1"
+	},
+	{
+		0,
+		31490009,
+		"shuangshengwuling_314901_skill2_2_2|shuangshengwuling_314901_skill2_3_2"
+	},
+	{
+		314903,
+		0,
+		"shuangshengwuling_314903_skill2_2_1|shuangshengwuling_314903_skill2_3_1"
+	},
+	{
+		314903,
+		31490009,
+		"shuangshengwuling_314903_skill2_2_2|shuangshengwuling_314903_skill2_3_2"
+	}
+}

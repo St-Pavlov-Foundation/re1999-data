@@ -175,11 +175,11 @@ function NormalStoreGoodsView:_onEndEdit(inputStr)
 		GameFacade.showToast(ToastEnum.VersionActivityNormalStoreNoGoods)
 	end
 
+	self._buyCount = math.max(math.min(buyCount, self._maxBuyCount), 1)
+
 	if buyCount > self._maxBuyCount then
 		self:_buyCountAddToast()
 	end
-
-	self._buyCount = math.max(math.min(buyCount, self._maxBuyCount), 1)
 
 	self:_refreshBuyCount()
 	self:_refreshGoods(self.goodsConfig)
@@ -557,6 +557,12 @@ function NormalStoreGoodsView:_refreshLimitTag()
 end
 
 function NormalStoreGoodsView:_buyCountAddToast()
+	if self:_isHeroLimitStore() and self._buyCount + 1 > CharacterModel.instance:getHeroMaxSkillExLevelNeedCount(self._itemId) then
+		GameFacade.showToast(ToastEnum.StoreHeroMaxSkillExLevel)
+
+		return
+	end
+
 	local maxBuyCount, limitType
 
 	if self._buyCost2Index == 2 then
@@ -586,6 +592,8 @@ function NormalStoreGoodsView:_refreshMaxBuyCount()
 	if storeMaxBuyCount < self._maxBuyCount or self._maxBuyCount == -1 then
 		self._maxBuyCount = storeMaxBuyCount
 	end
+
+	self:_refreshCheckMaxBuyCount()
 end
 
 function NormalStoreGoodsView:_refreshMaxBuyCountByCost2()
@@ -596,16 +604,34 @@ function NormalStoreGoodsView:_refreshMaxBuyCountByCost2()
 	if storeMaxBuyCount < self._maxBuyCount or self._maxBuyCount == -1 then
 		self._maxBuyCount = storeMaxBuyCount
 	end
+
+	self:_refreshCheckMaxBuyCount()
+end
+
+function NormalStoreGoodsView:_refreshCheckMaxBuyCount()
+	if self:_isHeroLimitStore() then
+		local maxBuyCount = CharacterModel.instance:getHeroMaxSkillExLevelNeedCount(self._itemId)
+
+		if maxBuyCount < self._maxBuyCount then
+			self._maxBuyCount = maxBuyCount
+		end
+	end
+end
+
+function NormalStoreGoodsView:_isHeroLimitStore()
+	if self._itemType == MaterialEnum.MaterialType.Hero and self._mo and StoreEnum.HeroLimitStoreDic[self._mo:getBelongStoreId()] then
+		return true
+	end
 end
 
 function NormalStoreGoodsView:onOpen()
 	self._mo = self.viewParam
 
-	self:_refreshMaxBuyCount()
-	self:_refreshUI()
-
 	local goodsConfig = StoreConfig.instance:getGoodsConfig(self._mo.goodsId)
 
+	self:_refreshGoods(goodsConfig)
+	self:_refreshMaxBuyCount()
+	self:_refreshUI()
 	StoreController.instance:statOpenGoods(self._mo.belongStoreId, goodsConfig)
 
 	local isCost2 = self:_isBuyCost2()
@@ -718,6 +744,9 @@ end
 function NormalStoreGoodsView:onUpdateParam()
 	self._mo = self.viewParam
 
+	local goodsConfig = StoreConfig.instance:getGoodsConfig(self._mo.goodsId)
+
+	self:_refreshGoods(goodsConfig)
 	self:_refreshMaxBuyCount()
 	self:_refreshUI()
 end

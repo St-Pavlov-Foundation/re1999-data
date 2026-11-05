@@ -16,9 +16,36 @@ local mlStringKey = {
 	desc = 2,
 	name = 1
 }
+local _configList, _configDict
+local configPath = "configs.rouge2_team_feature_config"
 
-function lua_rouge2_team_feature.onLoad(json)
-	lua_rouge2_team_feature.configList, lua_rouge2_team_feature.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_rouge2_team_feature, "configList", _configList)
+	rawset(lua_rouge2_team_feature, "configDict", _configDict)
+end
+
+setmetatable(lua_rouge2_team_feature, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_rouge2_team_feature.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_rouge2_team_feature, "configList", nil)
+	rawset(lua_rouge2_team_feature, "configDict", nil)
 end
 
 return lua_rouge2_team_feature

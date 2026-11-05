@@ -1,0 +1,25 @@
+﻿-- chunkname: @configs/fight_sp_effect_bkle_config.lua
+
+return {
+	{
+		310801,
+		31080132,
+		"v2a4_bkle/bkle_xiezou_01|v2a4_bkle/bkle_xiezou_02|v2a4_bkle/bkle_xiezou_03|v2a4_bkle/bkle_xiezou_04",
+		"mountroot",
+		431080141
+	},
+	{
+		310802,
+		31080132,
+		"v2a4_bkle/bkle_xiezou_01|v2a4_bkle/bkle_xiezou_02|v2a4_bkle/bkle_xiezou_03|v2a4_bkle/bkle_xiezou_04",
+		"mountroot",
+		431080141
+	},
+	{
+		310803,
+		31080132,
+		"v2a7_bkle/bkle_xiezou_01|v2a7_bkle/bkle_xiezou_02|v2a7_bkle/bkle_xiezou_03|v2a7_bkle/bkle_xiezou_04",
+		"mountroot",
+		431080341
+	}
+}

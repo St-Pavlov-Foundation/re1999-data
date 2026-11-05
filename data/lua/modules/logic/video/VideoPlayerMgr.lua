@@ -89,26 +89,28 @@ function VideoPlayerMgr:_onPreloadCallback()
 	self._callbackObj = nil
 end
 
+local stateCodeMap
+
 function VideoPlayerMgr:getStateCode(status)
-	if status == AvProEnum.PlayerStatus.MetaDataReady then
-		status = VideoEnum.PlayerStatus.MetaDataReady
-	elseif status == AvProEnum.PlayerStatus.FinishedPlaying then
-		status = VideoEnum.PlayerStatus.FinishedPlaying
-	elseif status == AvProEnum.PlayerStatus.Error then
-		status = VideoEnum.PlayerStatus.Error
-	elseif status == AvProEnum.PlayerStatus.ReadyToPlay then
-		status = VideoEnum.PlayerStatus.ReadyToPlay
-	elseif status == AvProEnum.PlayerStatus.Closing then
-		status = VideoEnum.PlayerStatus.Closing
-	elseif status == AvProEnum.PlayerStatus.Started then
-		status = VideoEnum.PlayerStatus.Started
-	elseif status == AvProEnum.PlayerStatus.FirstFrameReady then
-		status = VideoEnum.PlayerStatus.FirstFrameReady
-	else
-		logWarn("VideoPlayerMgr:_callback status not found : " .. status)
+	if not stateCodeMap then
+		stateCodeMap = {
+			[AvProEnum.PlayerStatus.MetaDataReady] = VideoEnum.PlayerStatus.MetaDataReady,
+			[AvProEnum.PlayerStatus.FinishedPlaying] = VideoEnum.PlayerStatus.FinishedPlaying,
+			[AvProEnum.PlayerStatus.Error] = VideoEnum.PlayerStatus.Error,
+			[AvProEnum.PlayerStatus.ReadyToPlay] = VideoEnum.PlayerStatus.ReadyToPlay,
+			[AvProEnum.PlayerStatus.Closing] = VideoEnum.PlayerStatus.Closing,
+			[AvProEnum.PlayerStatus.Started] = VideoEnum.PlayerStatus.Started,
+			[AvProEnum.PlayerStatus.FirstFrameReady] = VideoEnum.PlayerStatus.FirstFrameReady
+		}
 	end
 
-	return status
+	local stateCode = stateCodeMap[status]
+
+	if stateCode == nil then
+		return status
+	end
+
+	return stateCode
 end
 
 function VideoPlayerMgr:swicthVideoUrl(url, urlCompatible)

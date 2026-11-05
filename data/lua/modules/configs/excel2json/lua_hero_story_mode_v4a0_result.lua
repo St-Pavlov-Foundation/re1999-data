@@ -18,9 +18,36 @@ local mlStringKey = {
 	title = 1,
 	desc1 = 2
 }
+local _configList, _configDict
+local configPath = "configs.hero_story_mode_v4a0_result_config"
 
-function lua_hero_story_mode_v4a0_result.onLoad(json)
-	lua_hero_story_mode_v4a0_result.configList, lua_hero_story_mode_v4a0_result.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_hero_story_mode_v4a0_result, "configList", _configList)
+	rawset(lua_hero_story_mode_v4a0_result, "configDict", _configDict)
+end
+
+setmetatable(lua_hero_story_mode_v4a0_result, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_hero_story_mode_v4a0_result.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_hero_story_mode_v4a0_result, "configList", nil)
+	rawset(lua_hero_story_mode_v4a0_result, "configDict", nil)
 end
 
 return lua_hero_story_mode_v4a0_result

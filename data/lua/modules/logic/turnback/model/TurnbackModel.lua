@@ -683,7 +683,9 @@ function TurnbackModel:setDropInfoList(dropInfoList, commonDropInfos)
 
 			mo:refreshInfo(infoDict[co.id])
 
-			self._totalCouponCount = self._totalCouponCount + mo:getCouponCount()
+			if mo:getCouponCount() > 0 then
+				self._totalCouponCount = self._totalCouponCount + mo:getCouponCount()
+			end
 		end
 	end
 end

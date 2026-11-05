@@ -55,6 +55,12 @@ end
 function VideoPlayer:setSize(width, height)
 	self._width = width
 	self._height = height
+
+	self:onSetSize()
+end
+
+function VideoPlayer:onSetSize()
+	return
 end
 
 function VideoPlayer:ondestroy()
@@ -83,6 +89,24 @@ end
 
 function VideoPlayer:resetEyeModeMat()
 	return
+end
+
+function VideoPlayer:isAvproVideo()
+	return false
+end
+
+function VideoPlayer:setPlayOnAwake(bPlayOnAwake)
+	self._bPlayOnAwake = bPlayOnAwake
+
+	self:onSetPlayOnAwake()
+end
+
+function VideoPlayer:onSetPlayOnAwake()
+	return
+end
+
+function VideoPlayer:bPlayOnAwake()
+	return self._bPlayOnAwake and true or false
 end
 
 return VideoPlayer

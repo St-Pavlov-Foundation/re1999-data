@@ -59,6 +59,9 @@ function DungeonRecheckElementsView:_editableInitView()
 	gohelper.setActive(self._goitem, false)
 
 	self._items = self:getUserDataTb_()
+	self._serialNumFunc = {
+		[DungeonEnum.RecheckShowType.RomanNum] = GameUtil.getRomanNums
+	}
 end
 
 function DungeonRecheckElementsView:onUpdateParam()
@@ -93,6 +96,14 @@ function DungeonRecheckElementsView:onOpen()
 		table.sort(self._canRecheckElements, function(a, b)
 			local aco = lua_chapter_map_element.configDict[a]
 			local bco = lua_chapter_map_element.configDict[b]
+			local a_recheckCo = lua_paper_trail.configDict[aco.type]
+			local b_recheckCo = lua_paper_trail.configDict[bco.type]
+			local a_serialNum = a_recheckCo and a_recheckCo.serial or 0
+			local b_serialNum = b_recheckCo and b_recheckCo.serial or 0
+
+			if a_serialNum ~= b_serialNum then
+				return a_serialNum < b_serialNum
+			end
 
 			if aco.mapId == bco.mapId then
 				return a < b
@@ -100,6 +111,8 @@ function DungeonRecheckElementsView:onOpen()
 
 			return aco.mapId < bco.mapId
 		end)
+
+		local recheckTypeDic = {}
 
 		for i, elementId in ipairs(self._canRecheckElements) do
 			local item = self:_getItem(i)
@@ -110,6 +123,26 @@ function DungeonRecheckElementsView:onOpen()
 
 			if co then
 				item.txtinfo.text = co.title
+
+				local recheckCo = lua_paper_trail.configDict[co.type]
+				local txtColor = Color.black
+				local serialType = recheckCo and recheckCo.serial or DungeonEnum.RecheckShowType.Normal
+
+				if not recheckTypeDic[serialType] then
+					recheckTypeDic[serialType] = {}
+				end
+
+				table.insert(recheckTypeDic[serialType], elementId)
+
+				if recheckCo and not string.nilorempty(recheckCo.color) then
+					txtColor = GameUtil.parseColor(recheckCo.color)
+				end
+
+				local index = recheckTypeDic[serialType] and #recheckTypeDic[serialType] or i
+
+				item.txtindex.text = self._serialNumFunc[serialType] and self._serialNumFunc[serialType](index) or index
+				item.txtindex.color = txtColor
+				item.txtinfo.color = txtColor
 			end
 		end
 	end
@@ -127,10 +160,7 @@ function DungeonRecheckElementsView:_getItem(index)
 	if not item then
 		item = self:getUserDataTb_()
 		item.go = gohelper.cloneInPlace(self._goitem, index)
-
-		local txtindex = gohelper.findChildText(item.go, "index")
-
-		txtindex.text = index
+		item.txtindex = gohelper.findChildText(item.go, "index")
 		item.txtinfo = gohelper.findChildText(item.go, "info")
 		item.btngoto = gohelper.findChildButtonWithAudio(item.go, "#btn_goto")
 		self._items[index] = item

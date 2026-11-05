@@ -1,0 +1,14 @@
+﻿-- chunkname: @configs/fight_entity_summoned_replace_by_skin_config.lua
+
+return {
+	{
+		316301,
+		316301,
+		630230
+	},
+	{
+		316301,
+		316302,
+		630230
+	}
+}

@@ -58,7 +58,7 @@ function BGMSwitchController:_onEnterScene(curSceneType, curSceneId)
 end
 
 function BGMSwitchController:_onExistScene(curSceneType, curSceneId, nextSceneType)
-	if curSceneType == SceneType.Main then
+	if curSceneType == SceneType.Main and nextSceneType ~= SceneType.Library then
 		AudioMgr.instance:trigger(AudioEnum.UI.Pause_MainMusic)
 		AudioMgr.instance:trigger(AudioEnum.UI.Stop_Replay_Noise_Daytime)
 

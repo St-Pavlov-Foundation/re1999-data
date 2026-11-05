@@ -114,7 +114,7 @@ function BeiLiErLevelView:_onGameFinished()
 end
 
 function BeiLiErLevelView:_refreshTask()
-	if RedDotModel.instance:isDotShow(RedDotEnum.DotNode.Activity220Task, self.actId) then
+	if RedDotModel.instance:isDotShow(RedDotEnum.DotNode.PermanentActivity220Task, self.actId) then
 		self._animTask:Play("loop")
 	else
 		self._animTask:Play("idle")
@@ -136,7 +136,7 @@ function BeiLiErLevelView:_editableInitView()
 	self.config = ActivityConfig.instance:getActivityCo(self.actId)
 	self._viewAnimator = self.viewGO:GetComponent(typeof(UnityEngine.Animator))
 
-	RedDotController.instance:addRedDot(self._goreddotreward, RedDotEnum.DotNode.Activity220Task, self.actId)
+	RedDotController.instance:addRedDot(self._goreddotreward, RedDotEnum.DotNode.PermanentActivity220Task, self.actId)
 end
 
 function BeiLiErLevelView:_initViewInfo()

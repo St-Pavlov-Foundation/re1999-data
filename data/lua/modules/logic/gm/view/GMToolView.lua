@@ -574,28 +574,44 @@ end
 function GMToolView:_onClickBtnQualityLow()
 	PlayerPrefsHelper.setNumber(PlayerPrefsKey.GMToolViewQuality, ModuleEnum.Performance.Low)
 	GameGlobalMgr.instance:getScreenState():setLocalQuality(ModuleEnum.Performance.Low)
-	FightEffectPool.dispose()
+
+	if FightGameMgr.effectMgr then
+		FightGameMgr.effectMgr:dispose()
+	end
+
 	self:_updateQualityBtn()
 end
 
 function GMToolView:_onClickBtnQualityMid()
 	PlayerPrefsHelper.setNumber(PlayerPrefsKey.GMToolViewQuality, ModuleEnum.Performance.Middle)
 	GameGlobalMgr.instance:getScreenState():setLocalQuality(ModuleEnum.Performance.Middle)
-	FightEffectPool.dispose()
+
+	if FightGameMgr.effectMgr then
+		FightGameMgr.effectMgr:dispose()
+	end
+
 	self:_updateQualityBtn()
 end
 
 function GMToolView:_onClickBtnQualityHigh()
 	PlayerPrefsHelper.setNumber(PlayerPrefsKey.GMToolViewQuality, ModuleEnum.Performance.High)
 	GameGlobalMgr.instance:getScreenState():setLocalQuality(ModuleEnum.Performance.High)
-	FightEffectPool.dispose()
+
+	if FightGameMgr.effectMgr then
+		FightGameMgr.effectMgr:dispose()
+	end
+
 	self:_updateQualityBtn()
 end
 
 function GMToolView:_onClickBtnQualityNo()
 	PlayerPrefsHelper.setNumber(PlayerPrefsKey.GMToolViewQuality, ModuleEnum.Performance.Undefine)
 	GameGlobalMgr.instance:getScreenState():setLocalQuality(ModuleEnum.Performance.Undefine)
-	FightEffectPool.dispose()
+
+	if FightGameMgr.effectMgr then
+		FightGameMgr.effectMgr:dispose()
+	end
+
 	self:_updateQualityBtn()
 end
 

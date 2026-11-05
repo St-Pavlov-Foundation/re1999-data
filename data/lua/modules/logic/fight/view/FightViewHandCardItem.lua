@@ -31,6 +31,11 @@ function FightViewHandCardItem:init(go)
 	gohelper.setActive(self.goRouge2Treasure, false)
 	self._cardItem:setRouge2TreasureRoot(self.goRouge2Treasure)
 
+	self.goV4a1ZhiZhengRoot = gohelper.findChild(self._forAnimGO, "node_search")
+
+	gohelper.setActive(self.goV4a1ZhiZhengRoot, false)
+	self._cardItem:setV4A1ZhiZhengRoot(self.goV4a1ZhiZhengRoot)
+
 	self._foranim = self._forAnimGO:GetComponent(typeof(UnityEngine.Animator))
 	self._itemWidth = recthelper.getWidth(self.tr)
 	self._oldParentX = -999999
@@ -1782,6 +1787,19 @@ function FightViewHandCardItem:moveSelfPos(index, delayCount, callback, callback
 
 	self._moveCardFlow:addWork(oneCardFlow)
 	self._moveCardFlow:start()
+end
+
+function FightViewHandCardItem:playCardLevelChange4_1(oldSkillId)
+	if not self.cardInfoMO then
+		return
+	end
+
+	if not self.go.activeInHierarchy then
+		return
+	end
+
+	gohelper.setActive(self._lockGO, false)
+	self._cardItem:playCardLevelChange4_1(self.cardInfoMO, oldSkillId)
 end
 
 function FightViewHandCardItem:playCardLevelChange(oldSkillId)

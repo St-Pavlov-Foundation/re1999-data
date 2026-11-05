@@ -33,6 +33,7 @@ function FightEntityDataMgr:onConstructor()
 
 	self.deadUids = {}
 	self.heroId2SkinId = {}
+	self.heroId2EntityMo = {}
 end
 
 local TempMoList = {}
@@ -319,6 +320,9 @@ function FightEntityDataMgr:removeEntity(uid)
 		end
 	end
 
+	self.heroId2EntityMo[entityMo.modelId] = nil
+	self.heroId2SkinId[entityMo.modelId] = nil
+
 	return entityMo
 end
 
@@ -375,6 +379,7 @@ function FightEntityDataMgr:refreshEntityByEntityMO(entityMO)
 	end
 
 	self.heroId2SkinId[entityData.modelId] = entityData.skin
+	self.heroId2EntityMo[entityData.modelId] = entityData
 
 	return entityData
 end
@@ -478,7 +483,11 @@ function FightEntityDataMgr:clientSetSubEntityList(side, list)
 end
 
 function FightEntityDataMgr:getHeroSkin(heroId)
-	return self.heroId2SkinId[heroId]
+	return heroId and self.heroId2SkinId[heroId]
+end
+
+function FightEntityDataMgr:getEntityMoByModelId(modelId)
+	return modelId and self.heroId2EntityMo[modelId]
 end
 
 function FightEntityDataMgr:getEntityMoByPos(posId)

@@ -1,0 +1,28 @@
+﻿-- chunkname: @configs/fight_rouge2_level_config.lua
+
+return {
+	{
+		"C",
+		"rouge2_levelrare_4",
+		"rouge2_level_4_3",
+		"rouge2_level_4_2"
+	},
+	{
+		"B",
+		"rouge2_levelrare_3",
+		"rouge2_level_3_3",
+		"rouge2_level_3_2"
+	},
+	{
+		"A",
+		"rouge2_levelrare_2",
+		"rouge2_level_2_3",
+		"rouge2_level_2_2"
+	},
+	{
+		"S",
+		"rouge2_levelrare_1",
+		"rouge2_level_1_3",
+		"rouge2_level_1_2"
+	}
+}

@@ -21,9 +21,36 @@ local primaryKey = {
 local mlStringKey = {
 	desc = 1
 }
+local _configList, _configDict
+local configPath = "configs.character_destiny_facets_config"
 
-function lua_character_destiny_facets.onLoad(json)
-	lua_character_destiny_facets.configList, lua_character_destiny_facets.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_character_destiny_facets, "configList", _configList)
+	rawset(lua_character_destiny_facets, "configDict", _configDict)
+end
+
+setmetatable(lua_character_destiny_facets, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_character_destiny_facets.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_character_destiny_facets, "configList", nil)
+	rawset(lua_character_destiny_facets, "configDict", nil)
 end
 
 return lua_character_destiny_facets

@@ -126,8 +126,38 @@ function Sp02_PaoMianController:getWeekEndTime()
 	return math.floor(weekEndTime / TimeUtil.OneHourSecond)
 end
 
-Sp02_PaoMianController.instance = Sp02_PaoMianController.New()
+function Sp02_PaoMianController:openInvestigation_GuessView(actId)
+	local status, toastId = ActivityHelper.getActivityStatusAndToast(actId)
 
-LuaEventSystem.addEventMechanism(Sp02_PaoMianController.instance)
+	if status ~= ActivityEnum.ActivityStatus.Normal then
+		if toastId and toastId ~= 0 then
+			GameFacade.showToast(toastId)
+		end
+
+		return
+	end
+
+	Activity238Rpc.instance:sendGetAct238InfoRequest(actId, self._onSendGetAct238InfoRequestCb, self)
+end
+
+function Sp02_PaoMianController:_onSendGetAct238InfoRequestCb(_, resultCode, msg)
+	if resultCode ~= 0 then
+		logError("openInvestigation_GuessView resultCode=" .. tostring(resultCode))
+
+		return
+	end
+
+	local viewParam = {
+		actId = msg.activityId
+	}
+
+	ViewMgr.instance:openView(ViewName.Investigation_GuessView, viewParam)
+end
+
+function Sp02_PaoMianController:closeInvestigation_GuessView(actId)
+	ViewMgr.instance:closeView(ViewName.Investigation_GuessView, viewParam)
+end
+
+Sp02_PaoMianController.instance = Sp02_PaoMianController.New()
 
 return Sp02_PaoMianController

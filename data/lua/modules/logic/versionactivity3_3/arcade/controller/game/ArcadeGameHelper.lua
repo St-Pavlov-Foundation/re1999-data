@@ -408,9 +408,8 @@ function ArcadeGameHelper.checkInGuiding()
 
 	local isDoingClickGuide = GuideModel.instance:isDoingClickGuide()
 	local isAnyGuideRunning = GuideController.instance:isAnyGuideRunning()
-	local isGuiding = GuideController.instance:isGuiding()
 
-	if isDoingClickGuide or isAnyGuideRunning or isGuiding then
+	if isDoingClickGuide or isAnyGuideRunning then
 		return true
 	end
 end

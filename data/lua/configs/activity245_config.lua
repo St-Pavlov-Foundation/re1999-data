@@ -1,0 +1,13 @@
+﻿-- chunkname: @configs/activity245_config.lua
+
+return {
+	{
+		14021,
+		4002,
+		5,
+		1,
+		16,
+		1,
+		14025
+	}
+}

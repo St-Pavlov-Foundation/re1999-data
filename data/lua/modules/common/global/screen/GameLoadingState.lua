@@ -18,6 +18,7 @@ GameLoadingState.Rouge2_MapLoadingView = 11
 GameLoadingState.PartyGameLobbyLoadingView = 12
 GameLoadingState.PartyGameCardDropLoadingView = 13
 GameLoadingState.V3a9RacingCarLoadingView = 14
+GameLoadingState.V4a1_Library_Loading = 15
 
 local ViewNames = {
 	[GameLoadingState.LoadingView] = ViewName.LoadingView,
@@ -33,7 +34,8 @@ local ViewNames = {
 	[GameLoadingState.Rouge2_MapLoadingView] = ViewName.Rouge2_MapLoadingView,
 	[GameLoadingState.PartyGameLobbyLoadingView] = ViewName.PartyGameLobbyLoadingView,
 	[GameLoadingState.PartyGameCardDropLoadingView] = ViewName.CardDropLoadingView,
-	[GameLoadingState.V3a9RacingCarLoadingView] = ViewName.V3a9RacingCarLoadingView
+	[GameLoadingState.V3a9RacingCarLoadingView] = ViewName.V3a9RacingCarLoadingView,
+	[GameLoadingState.V4a1_Library_Loading] = ViewName.V4a1_Library_Loading
 }
 local ViewNameDict = {
 	[ViewName.LoadingView] = GameLoadingState.LoadingView,
@@ -49,7 +51,8 @@ local ViewNameDict = {
 	[ViewName.Rouge2_MapLoadingView] = GameLoadingState.Rouge2_MapLoadingView,
 	[ViewName.PartyGameLobbyLoadingView] = GameLoadingState.PartyGameLobbyLoadingView,
 	[ViewName.CardDropLoadingView] = GameLoadingState.PartyGameCardDropLoadingView,
-	[ViewName.V3a9RacingCarLoadingView] = GameLoadingState.V3a9RacingCarLoadingView
+	[ViewName.V3a9RacingCarLoadingView] = GameLoadingState.V3a9RacingCarLoadingView,
+	[ViewName.V4a1_Library_Loading] = GameLoadingState.V4a1_Library_Loading
 }
 
 function GameLoadingState:ctor()
@@ -125,14 +128,8 @@ function GameLoadingState:_closeLoading()
 		return
 	end
 
-	if self._showLoadingView == ViewName.LoadingView then
-		if ViewMgr.instance:isOpen(ViewName.LoadingView) then
-			GameSceneMgr.instance:dispatchEvent(SceneEventName.DelayCloseLoading)
-		elseif ViewMgr.instance:isOpening(self._showLoadingView) then
-			ViewMgr.instance:closeView(self._showLoadingView)
-		else
-			self._showLoadingView = nil
-		end
+	if self._showLoadingView == ViewName.LoadingView or self._showLoadingView == ViewName.V4a1_Library_Loading then
+		self:_defaultCloseLoadingImpl()
 	elseif self._showLoadingView == ViewName.LoadingHeadsetView then
 		-- block empty
 	elseif self._showLoadingView == ViewName.V1a6_CachotLoadingView then
@@ -150,6 +147,18 @@ function GameLoadingState:_closeLoading()
 	else
 		ViewMgr.instance:closeView(self._showLoadingView)
 
+		self._showLoadingView = nil
+	end
+end
+
+function GameLoadingState:_defaultCloseLoadingImpl()
+	local viewName = self._showLoadingView
+
+	if ViewMgr.instance:isOpen(viewName) then
+		GameSceneMgr.instance:dispatchEvent(SceneEventName.DelayCloseLoading)
+	elseif ViewMgr.instance:isOpening(viewName) then
+		ViewMgr.instance:closeView(viewName)
+	else
 		self._showLoadingView = nil
 	end
 end

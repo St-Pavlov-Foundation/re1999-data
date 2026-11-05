@@ -20,6 +20,7 @@ function IgorEpisodeLevelView:onInitView()
 	self._gopath = gohelper.findChild(self.viewGO, "#go_storyPath/#go_storyScroll/path")
 	self._animPath = self._gopath:GetComponent(typeof(UnityEngine.Animator))
 	self._animTask = self._gotaskani:GetComponent(typeof(UnityEngine.Animator))
+	self._btnTrial = gohelper.findChildButtonWithAudio(self.viewGO, "#go_Try/#btn_Trial")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -32,6 +33,7 @@ function IgorEpisodeLevelView:addEvents()
 	self:addEventCb(ViewMgr.instance, ViewEvent.OnCloseView, self._onCloseView, self)
 	self:addEventCb(GameGlobalMgr.instance, GameStateEvent.OnScreenResize, self._onScreenSizeChange, self)
 	self._scrollstory:AddOnValueChanged(self.onValueChanged, self)
+	self._btnTrial:AddClickListener(self._btnTrialOnClick, self)
 end
 
 function IgorEpisodeLevelView:removeEvents()
@@ -40,6 +42,33 @@ function IgorEpisodeLevelView:removeEvents()
 	self:removeEventCb(ViewMgr.instance, ViewEvent.OnCloseView, self._onCloseView, self)
 	self:removeEventCb(GameGlobalMgr.instance, GameStateEvent.OnScreenResize, self._onScreenSizeChange, self)
 	self._scrollstory:RemoveOnValueChanged()
+	self._btnTrial:RemoveClickListener()
+end
+
+function IgorEpisodeLevelView:_btnTrialOnClick()
+	if ActivityHelper.isOpen(self.actId) then
+		local episodeId = self.config.tryoutEpisode
+
+		if episodeId <= 0 then
+			logError("没有配置对应的试用关卡")
+
+			return
+		end
+
+		local config = DungeonConfig.instance:getEpisodeCO(episodeId)
+
+		DungeonFightController.instance:enterFight(config.chapterId, episodeId)
+	else
+		self:_clickLock()
+	end
+end
+
+function IgorEpisodeLevelView:_clickLock()
+	local toastId, toastParamList = OpenHelper.getToastIdAndParam(self.config.openId)
+
+	if toastId and toastId ~= 0 then
+		GameFacade.showToastWithTableParam(toastId, toastParamList)
+	end
 end
 
 function IgorEpisodeLevelView:_btntaskOnClick()
@@ -55,7 +84,7 @@ function IgorEpisodeLevelView:_onGameFinished()
 end
 
 function IgorEpisodeLevelView:_refreshTask()
-	if RedDotModel.instance:isDotShow(RedDotEnum.DotNode.Activity220Task, self.actId) then
+	if RedDotModel.instance:isDotShow(RedDotEnum.DotNode.PermanentActivity220Task, self.actId) then
 		self._animTask:Play("loop")
 	else
 		self._animTask:Play("idle")
@@ -123,8 +152,9 @@ end
 
 function IgorEpisodeLevelView:onOpen()
 	self.actId = self.viewParam.activityId
+	self.config = ActivityConfig.instance:getActivityCo(self.actId)
 
-	RedDotController.instance:addRedDot(self._goreddotreward, RedDotEnum.DotNode.Activity220Task, self.actId)
+	RedDotController.instance:addRedDot(self._goreddotreward, RedDotEnum.DotNode.PermanentActivity220Task, self.actId)
 	self:_initLevelItems()
 	self:_refreshLeftTime()
 	self:_refreshTask()

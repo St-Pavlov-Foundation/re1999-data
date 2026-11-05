@@ -18,9 +18,36 @@ local primaryKey = {
 local mlStringKey = {
 	instructionDesc = 1
 }
+local _configList, _configDict
+local configPath = "configs.siege_battle_config"
 
-function lua_siege_battle.onLoad(json)
-	lua_siege_battle.configList, lua_siege_battle.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_siege_battle, "configList", _configList)
+	rawset(lua_siege_battle, "configDict", _configDict)
+end
+
+setmetatable(lua_siege_battle, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_siege_battle.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_siege_battle, "configList", nil)
+	rawset(lua_siege_battle, "configDict", nil)
 end
 
 return lua_siege_battle

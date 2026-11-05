@@ -33,9 +33,36 @@ local mlStringKey = {
 	minType = 1,
 	desc = 3
 }
+local _configList, _configDict
+local configPath = "configs.activity128_task_config"
 
-function lua_activity128_task.onLoad(json)
-	lua_activity128_task.configList, lua_activity128_task.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_activity128_task, "configList", _configList)
+	rawset(lua_activity128_task, "configDict", _configDict)
+end
+
+setmetatable(lua_activity128_task, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_activity128_task.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_activity128_task, "configList", nil)
+	rawset(lua_activity128_task, "configDict", nil)
 end
 
 return lua_activity128_task

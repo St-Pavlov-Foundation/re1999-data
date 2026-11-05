@@ -18,11 +18,42 @@ local propertyNames = {
 	"blockType",
 	"waterType"
 }
+local _configList, _configDict, _propertyList, _propertyDict
+local configPath = "configs.block_config"
 
-function lua_block.onLoad(json)
-	lua_block.confgData = json
-	lua_block.configList, lua_block.configDict = lua_block.json_parse(json)
-	lua_block.propertyList, lua_block.propertyDict = lua_block.json_property(json, propertyNames)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = lua_block.json_parse(config)
+	_propertyList, _propertyDict = lua_block.json_property(config, propertyNames)
+
+	rawset(lua_block, "configList", _configList)
+	rawset(lua_block, "configDict", _configDict)
+	rawset(lua_block, "propertyList", _propertyList)
+	rawset(lua_block, "propertyDict", _propertyDict)
+end
+
+setmetatable(lua_block, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_block.clearConfig()
+	_configList, _configDict = nil
+	_propertyList, _propertyDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_block, "configList", nil)
+	rawset(lua_block, "configDict", nil)
+	rawset(lua_block, "propertyList", nil)
+	rawset(lua_block, "propertyDict", nil)
 end
 
 function lua_block.json_parse(json)

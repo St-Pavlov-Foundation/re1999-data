@@ -675,6 +675,7 @@ end
 function MainView:showStoreRedDot()
 	self._redBank.show = false
 
+	self._redBank:showRedDot(RedDotEnum.Style.Normal)
 	self:storeRedDotRefreshFunc(self._redBank)
 end
 

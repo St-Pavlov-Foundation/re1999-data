@@ -305,7 +305,7 @@ function MaterialRpc:_onReceiveMaterialChangePush_default(msg, materialDataMOLis
 		local config = ItemConfig.instance:getItemConfig(mo.materilType, mo.materilId)
 
 		if config and config.subType == ItemEnum.SubType.PlayerBg then
-			if materialCount == 1 then
+			if materialCount == 1 and PlayerCardController.instance:isFunctionUnlock() then
 				PlayerCardController.instance:ShowChangeBgSkin(config.id, materialDataMOList)
 
 				return

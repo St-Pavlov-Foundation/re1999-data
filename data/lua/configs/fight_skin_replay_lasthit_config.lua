@@ -1,0 +1,25 @@
+﻿-- chunkname: @configs/fight_skin_replay_lasthit_config.lua
+
+return {
+	{
+		610212
+	},
+	{
+		610213
+	},
+	{
+		610211
+	},
+	{
+		306601
+	},
+	{
+		307901
+	},
+	{
+		630201
+	},
+	{
+		630202
+	}
+}

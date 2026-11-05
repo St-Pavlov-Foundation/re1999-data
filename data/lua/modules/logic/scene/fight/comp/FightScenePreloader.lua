@@ -51,8 +51,6 @@ function FightScenePreloader:startPreload(second)
 	else
 		FightPreloadController.instance:preloadFirst(battleId, myModelIds, mySkinIds, enemyModelIds, enemySkinIds, subSkinIds)
 	end
-
-	FightRoundPreloadController.instance:registStageEvent()
 end
 
 function FightScenePreloader:_onPreloadFinish()
@@ -62,7 +60,6 @@ end
 
 function FightScenePreloader:onSceneClose()
 	FightPreloadController.instance:dispose()
-	FightRoundPreloadController.instance:dispose()
 	FightController.instance:unregisterCallback(FightEvent.OnPreloadFinish, self._onPreloadFinish, self)
 end
 

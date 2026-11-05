@@ -15,6 +15,16 @@ function SummonCharacterProbUpPreloadConfig.getCharacterItemCountByName(name)
 	return SummonCharacterProbUpPreloadConfig.characterItemCounts[name] or 1
 end
 
+SummonCharacterProbUpPreloadConfig.preloadLists.SummonCharacterProbUpVer411 = {
+	"singlebg/summon/heroversion_4_1/v4a1_peishita/v4a1_peishita_light_2.png",
+	"singlebg/summon/heroversion_4_1/v4a1_peishita/v4a1_peishita_light_1.png",
+	"singlebg/summon/heroversion_4_1/v4a1_peishita/v4a1_peishita_rolebg.png",
+	"singlebg/summon/heroversion_4_1/v4a1_peishita/v4a1_peishita_fullbg.png"
+}
+SummonCharacterProbUpPreloadConfig.preloadLists.SummonCharacterProbUpVer412 = {
+	"singlebg/summon/heroversion_4_1/v4a1_yifulin/v4a1_yifulin_role.png",
+	"singlebg/summon/heroversion_4_1/v4a1_yifulin/v4a1_yifulin_fullbg.png"
+}
 SummonCharacterProbUpPreloadConfig.preloadLists.SummonCharacterProbUpVer381 = {
 	"singlebg/summon/heroversion_3_8/v3a8_dianjishi/v3a8_dianjishi_role.png",
 	"singlebg/summon/heroversion_3_8/v3a8_dianjishi/v3a8_dianjishi_fullbg.png"

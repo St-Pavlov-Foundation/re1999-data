@@ -39,10 +39,48 @@ function FightWorkEffectHeal:onStart()
 		if configEffect == FightEnum.BehaviourId.FakeHpToHeal then
 			FightController.instance:dispatchEvent(FightEvent.OnTrigger_HSY_FakeHPEffect, self.actEffectData.targetId)
 		end
+
+		self:_playNarcissusHealEffect(entity)
 	end
 
 	FightGameMgr.triggerBuffMgr:triggerBuffEffect(self.actEffectData)
 	self:onDone(true)
+end
+
+function FightWorkEffectHeal:_playNarcissusHealEffect(entity)
+	local healInfo = self.actEffectData.healInfo
+
+	if not healInfo or healInfo.buffActId ~= FightEnum.BuffActId.NarcissusHeal then
+		return
+	end
+
+	if not entity.effect then
+		return
+	end
+
+	local config
+	local buffMo = FightDataHelper.calMgr:getBuffMo(tostring(healInfo.buffUid))
+
+	if buffMo then
+		local fromEntity = FightDataHelper.entityMgr:getById(buffMo.fromUid)
+
+		config = fromEntity and lua_fight_na_xi_suo_si_heal_effect.configDict[fromEntity.skin]
+	end
+
+	config = config or lua_fight_na_xi_suo_si_heal_effect.configDict[0]
+
+	if not config then
+		return
+	end
+
+	local effectWrap = entity.effect:addHangEffect(config.effect, config.effectHang, nil, config.duration)
+
+	effectWrap:setLocalPos(0, 0, 0)
+	FightRenderOrderMgr.instance:onAddEffectWrap(entity.id, effectWrap)
+
+	if config.audio ~= 0 then
+		AudioMgr.instance:trigger(config.audio)
+	end
 end
 
 return FightWorkEffectHeal

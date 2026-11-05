@@ -202,8 +202,8 @@ end
 
 function FightEntitySpecialEffectBossRush:_dealHangPointEffect(bossStage, hasBreakBuff)
 	for _, effectWrap in ipairs(self._stageEffectList) do
-		FightEffectPool.returnEffect(effectWrap)
-		FightEffectPool.returnEffectToPoolContainer(effectWrap)
+		FightGameMgr.effectMgr:returnEffect(effectWrap)
+		FightGameMgr.effectMgr:returnEffectToPoolContainer(effectWrap)
 		FightRenderOrderMgr.instance:onRemoveEffectWrap(self._entity.id, effectWrap)
 	end
 
@@ -229,7 +229,7 @@ function FightEntitySpecialEffectBossRush:_dealHangPointEffect(bossStage, hasBre
 					local hangPoint = hangPoints[i] or ModuleEnum.SpineHangPointRoot
 					local hangPointGO = self._entity:getHangPoint(hangPoint)
 					local effectFullPath = FightHelper.getEffectUrlWithLod(path)
-					local effectWrap = FightEffectPool.getEffect(effectFullPath, side, nil, nil, hangPointGO)
+					local effectWrap = FightGameMgr.effectMgr:getEffect(effectFullPath, side, nil, nil, hangPointGO)
 
 					FightRenderOrderMgr.instance:onAddEffectWrap(self._entity.id, effectWrap)
 					effectWrap:setLocalPos(0, 0, 0)
@@ -281,8 +281,8 @@ end
 function FightEntitySpecialEffectBossRush:onDestructor()
 	if self._stageEffectList then
 		for _, effectWrap in ipairs(self._stageEffectList) do
-			FightEffectPool.returnEffect(effectWrap)
-			FightEffectPool.returnEffectToPoolContainer(effectWrap)
+			FightGameMgr.effectMgr:returnEffect(effectWrap)
+			FightGameMgr.effectMgr:returnEffectToPoolContainer(effectWrap)
 			FightRenderOrderMgr.instance:onRemoveEffectWrap(self._entity.id, effectWrap)
 		end
 	end

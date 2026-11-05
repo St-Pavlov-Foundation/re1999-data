@@ -21,6 +21,7 @@ function FightGameMgr:onConstructor()
 	FightGameMgr.sceneLevelMgr = self:newClass(FightSceneLevelMgr)
 	FightGameMgr.restartMgr = self:newClass(FightRestartMgr)
 	FightGameMgr.switchPlaneMgr = self:newClass(FightSwitchPlaneMgr)
+	FightGameMgr.effectMgr = self:newClass(FightEffectMgr)
 end
 
 function FightGameMgr:onLogicEnter()

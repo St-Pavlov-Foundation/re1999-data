@@ -902,8 +902,8 @@ function StoryFrontItem:_startGlitchAmountAnim()
 
 	local glitchAmountId = UnityEngine.Shader.PropertyToID("_GlitchAmount")
 
-	self._distortMat:SetFloat(glitchAmountId, 3.5)
-	ZProj.TweenHelper.DOTweenFloat(3.5, 1.8, 1.5, self._glitchAmountUpdate, self._glitchAmountEnd, self, nil, EaseType.Linear)
+	self._distortMat:SetFloat(glitchAmountId, 10)
+	ZProj.TweenHelper.DOTweenFloat(10, 1.8, 1.2, self._glitchAmountUpdate, self._glitchAmountEnd, self, nil, EaseType.OutQuart)
 end
 
 function StoryFrontItem:_glitchAmountUpdate(value)

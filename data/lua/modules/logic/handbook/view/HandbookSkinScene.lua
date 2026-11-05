@@ -38,7 +38,9 @@ HandbookSkinScene.SkinSuitId2SuitView = {
 	[20004] = ViewName.HandbookSkinSuitDetailView3_8_5_1,
 	[22001] = ViewName.HandbookSkinSuitDetailView3_9,
 	[20027] = ViewName.HandbookSkinSuitDetailView3_9_1,
-	[20028] = ViewName.HandbookSkinSuitDetailView4_0
+	[20028] = ViewName.HandbookSkinSuitDetailView4_0,
+	[24002] = ViewName.HandbookSkinSuitDetailView4_1,
+	[22005] = ViewName.HandbookSkinSuitDetailView4_1_1
 }
 
 function HandbookSkinScene:onInitView()
@@ -127,7 +129,7 @@ function HandbookSkinScene:onSlideToNext()
 		return
 	end
 
-	if self._suitIdx < self._suitCount then
+	if self._suitIdx < (self._suitDisplayCount or self._suitCount) then
 		self:slideToSuitIdx(self._suitIdx + 1)
 	end
 end
@@ -154,7 +156,10 @@ function HandbookSkinScene:onDragging(offsetX, offsetY)
 			self._sceneAnimator:SetFloat("Speed", 0)
 
 			self._suitCurveProgresss = self._suitCurveProgresss or 0
-			self._suitCurveProgresss = Mathf.Clamp(self._suitCurveProgresss + maxOffset * dragSuitRate * 4 / self._suitCount, 0, 1)
+
+			local clampMax = self:_getSlideClampMaxProgress()
+
+			self._suitCurveProgresss = Mathf.Clamp(self._suitCurveProgresss + maxOffset * dragSuitRate * 4 / self._suitCount, 0, clampMax)
 
 			self:UpdateAnimProgress(self._sceneAnimator, "path_last", self._suitCurveProgresss)
 
@@ -206,6 +211,8 @@ function HandbookSkinScene:onDragEnd()
 end
 
 function HandbookSkinScene:slideToSuitIdx(idx)
+	idx = math.min(idx, self._suitDisplayCount or self._suitCount)
+
 	if self._suitIdx ~= idx then
 		self._sceneAnimator:SetFloat("Speed", 0)
 
@@ -240,7 +247,9 @@ function HandbookSkinScene:slideToClosestSuit()
 		self._suitCurveProgresss = 0
 	end
 
-	for idx = 0, self._suitCount - 1 do
+	local maxIdx = self._suitDisplayCount or self._suitCount
+
+	for idx = 0, maxIdx - 1 do
 		local suitProgress = idx / (self._suitCount - 1)
 		local diff = math.abs(suitProgress - self._suitCurveProgresss)
 
@@ -302,9 +311,7 @@ end
 function HandbookSkinScene:_selectDefaultIcon()
 	local defaultIndex = HandbookController.instance:getDefaultHandbookSkinSuitId(self._suitCfgList)
 
-	if defaultIndex ~= self._suitIdx then
-		self:slideToSuitIdx(defaultIndex)
-	end
+	self:slideToSuitIdx(defaultIndex)
 end
 
 function HandbookSkinScene:setSceneActive(isActive)
@@ -344,13 +351,42 @@ function HandbookSkinScene:updateSuitGroupData(index)
 
 	table.sort(self._suitCfgList, self._suitCfgSort)
 
+	self._suitDisplayCount = self:_getSuitDisplayCount()
 	self._suitIdx = 1
 
 	self:_refreshPoint()
 end
 
 function HandbookSkinScene:_refreshPoint()
-	self.viewContainer:dispatchEvent(HandbookEvent.SkinPointChanged, self._suitIdx, self._suitCount)
+	local displayCount = self._suitDisplayCount or self:_getSuitDisplayCount()
+	local pointIdx = math.min(self._suitIdx, displayCount)
+
+	self.viewContainer:dispatchEvent(HandbookEvent.SkinPointChanged, pointIdx, displayCount, self._suitIdx)
+end
+
+function HandbookSkinScene:_getSuitDisplayCount()
+	local showCount = 0
+	local hiddenCount = 0
+
+	for _, skinSuitCfg in ipairs(self._suitCfgList) do
+		if skinSuitCfg.show == 0 then
+			hiddenCount = hiddenCount + 1
+		else
+			showCount = showCount + 1
+		end
+	end
+
+	return showCount + math.min(hiddenCount, 1)
+end
+
+function HandbookSkinScene:_getSlideClampMaxProgress()
+	if self._suitCount <= 1 then
+		return 1
+	end
+
+	local displayCount = self._suitDisplayCount or self:_getSuitDisplayCount()
+
+	return displayCount / self._suitCount
 end
 
 function HandbookSkinScene._suitCfgSort(cfg1, cfg2)
@@ -490,6 +526,8 @@ function HandbookSkinScene:_createSuitItems()
 		self._suitItemLoaderList = {}
 		self._suitId2IdxMap = {}
 
+		local hiddenSuitDisplayed = false
+
 		for i = 1, #self._suitCfgList do
 			local skinSuitCfg = self._suitCfgList[i]
 
@@ -498,45 +536,53 @@ function HandbookSkinScene:_createSuitItems()
 			local iconGo = gohelper.findChild(self._curSceneGo, "sence/Icon/icon0" .. i)
 
 			if iconGo then
-				gohelper.setLayer(iconGo, UnityLayer.Scene, true)
-
-				self._suitIconRootDict[skinSuitCfg.id] = iconGo
-
-				if skinSuitCfg.highId == self._curSuitGroupId then
-					local assetId = skinSuitCfg.show and skinSuitCfg.id or 10000
-					local skinSuitAssetPath = string.format("scenes/v2a8_m_s17_pftj/prefab/icon_e/%d.prefab", assetId)
-					local loader = PrefabInstantiate.Create(iconGo)
-
-					self._suitItemLoaderList[#self._suitItemLoaderList + 1] = loader
-
-					loader:startLoad(skinSuitAssetPath, function(loader)
-						local suitItemGo = loader:getInstGO()
-
-						if not gohelper.isNil(suitItemGo) then
-							local suitItemComp = MonoHelper.addLuaComOnceToGo(suitItemGo, HandbookSkinSuitComp, {
-								skinSuitCfg.id
-							})
-
-							if skinSuitCfg.show ~= nil and skinSuitCfg.show ~= 0 then
-								local textGo = gohelper.findChild(suitItemGo, "root/loop/scence/zh_text")
-
-								if textGo == nil then
-									logError("皮肤图鉴红点: 不存在路径 root/loop/scence/zh_text 请检查 id: " .. tostring(skinSuitCfg.id))
-								end
-
-								self:addNewRedDot(textGo, skinSuitCfg.id, 0.2, 0.025, true)
-							end
-						end
-					end)
-
-					local oriChild = gohelper.findChild(iconGo, "root")
-
-					if oriChild then
-						gohelper.setActive(oriChild, false)
+				if skinSuitCfg.show == 0 and hiddenSuitDisplayed then
+					gohelper.setActive(iconGo, false)
+				else
+					if skinSuitCfg.show == 0 then
+						hiddenSuitDisplayed = true
 					end
-				end
 
-				self:addBoxColliderListener(iconGo, skinSuitCfg.id, 4)
+					gohelper.setLayer(iconGo, UnityLayer.Scene, true)
+
+					self._suitIconRootDict[skinSuitCfg.id] = iconGo
+
+					if skinSuitCfg.highId == self._curSuitGroupId then
+						local assetId = skinSuitCfg.show and skinSuitCfg.id or 10000
+						local skinSuitAssetPath = string.format("scenes/v2a8_m_s17_pftj/prefab/icon_e/%d.prefab", assetId)
+						local loader = PrefabInstantiate.Create(iconGo)
+
+						self._suitItemLoaderList[#self._suitItemLoaderList + 1] = loader
+
+						loader:startLoad(skinSuitAssetPath, function(loader)
+							local suitItemGo = loader:getInstGO()
+
+							if not gohelper.isNil(suitItemGo) then
+								local suitItemComp = MonoHelper.addLuaComOnceToGo(suitItemGo, HandbookSkinSuitComp, {
+									skinSuitCfg.id
+								})
+
+								if skinSuitCfg.show ~= nil and skinSuitCfg.show ~= 0 then
+									local textGo = gohelper.findChild(suitItemGo, "root/loop/scence/zh_text")
+
+									if textGo == nil then
+										logError("皮肤图鉴红点: 不存在路径 root/loop/scence/zh_text 请检查 id: " .. tostring(skinSuitCfg.id))
+									end
+
+									self:addNewRedDot(textGo, skinSuitCfg.id, 0.2, 0.025, true)
+								end
+							end
+						end)
+
+						local oriChild = gohelper.findChild(iconGo, "root")
+
+						if oriChild then
+							gohelper.setActive(oriChild, false)
+						end
+					end
+
+					self:addBoxColliderListener(iconGo, skinSuitCfg.id, 4)
+				end
 			end
 		end
 	end
@@ -972,6 +1018,9 @@ function HandbookSkinScene:delayRemoveAnimator()
 end
 
 function HandbookSkinScene:UpdateAnimProgress(animator, aniName, normalizedTime)
+	local ctrlName = animator and animator.runtimeAnimatorController and animator.runtimeAnimatorController.name or "nil"
+
+	logWarn(string.format("[HandbookSkinScene] UpdateAnimProgress ctrl:%s clip:%s normalizedTime:%s", tostring(ctrlName), tostring(aniName), tostring(normalizedTime)))
 	animator:Play(aniName, 0, normalizedTime)
 end
 

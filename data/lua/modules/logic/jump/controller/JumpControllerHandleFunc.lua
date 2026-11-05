@@ -1275,7 +1275,7 @@ function JumpController:jumpToBossRush(jumpParam)
 		}
 	end
 
-	BossRushController.instance:openV3a2MainView(viewParam)
+	V4a1_BossRushController.instance:openMainView(viewParam)
 
 	return JumpEnum.JumpResult.Success
 end

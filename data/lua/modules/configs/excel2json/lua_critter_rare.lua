@@ -13,9 +13,36 @@ local primaryKey = {
 	"rare"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.critter_rare_config"
 
-function lua_critter_rare.onLoad(json)
-	lua_critter_rare.configList, lua_critter_rare.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_critter_rare, "configList", _configList)
+	rawset(lua_critter_rare, "configDict", _configDict)
+end
+
+setmetatable(lua_critter_rare, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_critter_rare.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_critter_rare, "configList", nil)
+	rawset(lua_critter_rare, "configDict", nil)
 end
 
 return lua_critter_rare

@@ -176,7 +176,7 @@ function FightTLEventAddEffectByBuffActId:removeEffect()
 				entity.effect:removeEffect(effectWrap)
 			end
 
-			FightRenderOrderMgr.instance:onRemoveEffectWrap(entity.id, effectWrap)
+			FightRenderOrderMgr.instance:onRemoveEffectWrap(entityId, effectWrap)
 		end
 	end
 

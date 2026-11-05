@@ -78,9 +78,12 @@ function FightCardLongPressEffect:_updateDragHandCards()
 	for i = 1, cardCount do
 		local item = handCardItemList[i]
 		local curPosX = recthelper.getAnchorX(item.tr)
-		local targetPosX = FightViewHandCard.calcCardPosXDraging(i, cardCount, dragIndex, dragScale)
 
-		recthelper.setAnchorX(item.tr, targetPosX)
+		if not gohelper.isNil(item.go) then
+			local targetPosX = FightViewHandCard.calcCardPosXDraging(i, cardCount, dragIndex, dragScale)
+
+			recthelper.setAnchorX(item.tr, targetPosX)
+		end
 	end
 end
 

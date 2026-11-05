@@ -240,8 +240,10 @@ function FightTLEventCatapult:removeEffectMover()
 		return
 	end
 
-	MonoHelper.removeLuaComFromGo(effect.containerGO, UnitMoverBezier)
-	MonoHelper.removeLuaComFromGo(effect.containerGO, UnitMoverHandler)
+	if not gohelper.isNil(effect.containerGO) then
+		MonoHelper.removeLuaComFromGo(effect.containerGO, UnitMoverBezier)
+		MonoHelper.removeLuaComFromGo(effect.containerGO, UnitMoverHandler)
+	end
 
 	self.effectWrap = nil
 end

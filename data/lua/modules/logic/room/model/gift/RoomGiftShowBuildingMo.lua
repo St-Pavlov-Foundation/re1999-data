@@ -8,6 +8,7 @@ function RoomGiftShowBuildingMo:init(co)
 	self.id = co.id
 	self.config = co
 	self.rare = self.config.rare or 0
+	self.buildingId = co.id
 	self.subTypeIndex = 2
 	self.subType = RoomBlockGiftEnum.SubType[self.subTypeIndex]
 	self.itemCofig = ItemModel.instance:getItemConfig(self.subType, co.id)

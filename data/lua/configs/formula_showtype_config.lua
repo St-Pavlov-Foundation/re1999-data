@@ -1,0 +1,32 @@
+﻿-- chunkname: @configs/formula_showtype_config.lua
+
+return {
+	{
+		301,
+		3,
+		"洞悉",
+		"INSIGHT MATERIALS",
+		"201"
+	},
+	{
+		302,
+		3,
+		"荒原",
+		"WILDERNESS MATERIALS",
+		"203"
+	},
+	{
+		303,
+		3,
+		"共鸣",
+		"RESONATE MATERIALS",
+		"202"
+	},
+	{
+		304,
+		3,
+		"心相",
+		"PSYCHUBE MATERIALS",
+		"204"
+	}
+}

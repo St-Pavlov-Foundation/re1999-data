@@ -75,6 +75,7 @@ end
 function RougeActivityView:refreshLock()
 	local isUnlock = RougeOutsideModel.instance:isUnlock()
 
+	gohelper.setActive(self._btnEnter.gameObject, isUnlock)
 	gohelper.setActive(self._btnlock, not isUnlock)
 	gohelper.setActive(self._btnReward.gameObject, isUnlock)
 

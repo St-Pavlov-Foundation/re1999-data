@@ -39,9 +39,36 @@ local mlStringKey = {
 	tipsTalker = 1,
 	tipsContent = 2
 }
+local _configList, _configDict
+local configPath = "configs.guide_step_addition_config"
 
-function lua_guide_step_addition.onLoad(json)
-	lua_guide_step_addition.configList, lua_guide_step_addition.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_guide_step_addition, "configList", _configList)
+	rawset(lua_guide_step_addition, "configDict", _configDict)
+end
+
+setmetatable(lua_guide_step_addition, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_guide_step_addition.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_guide_step_addition, "configList", nil)
+	rawset(lua_guide_step_addition, "configDict", nil)
 end
 
 return lua_guide_step_addition

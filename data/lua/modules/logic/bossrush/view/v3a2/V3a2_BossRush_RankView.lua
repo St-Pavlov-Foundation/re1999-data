@@ -14,6 +14,7 @@ function V3a2_BossRush_RankView:onInitView()
 	self._txtrank = gohelper.findChildText(self.viewGO, "Lv/#txt_rank")
 	self._goTips = gohelper.findChild(self.viewGO, "Lv/#go_Tips")
 	self._txtTips = gohelper.findChildText(self.viewGO, "Lv/#go_Tips/#txt_Tips")
+	self._txtname = gohelper.findChildText(self.viewGO, "#go_info/txt_Title")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -22,10 +23,12 @@ end
 
 function V3a2_BossRush_RankView:addEvents()
 	self._btnLv:AddClickListener(self._btnLVOnClick, self)
+	self:addEventCb(BossRushController.instance, BossRushEvent.onClaimRankBonus, self.claimRankBonus, self)
 end
 
 function V3a2_BossRush_RankView:removeEvents()
 	self._btnLv:RemoveClickListener()
+	self:removeEventCb(BossRushController.instance, BossRushEvent.onClaimRankBonus, self.claimRankBonus, self)
 end
 
 function V3a2_BossRush_RankView:_btnLVOnClick()
@@ -42,10 +45,16 @@ function V3a2_BossRush_RankView:_editableInitView()
 		item.go = go
 		item.simgLv = gohelper.findChildSingleImage(go, "Lv")
 		self._levels[i] = item
+	end
+end
 
-		local icon = "v3a2_bossrush_rank_lvbg" .. i
+function V3a2_BossRush_RankView:_getRankBGPath(rank)
+	local levelBg = V3a2_BossRushModel.instance:getRankLevelBg(self._season, rank)
 
-		item.simgLv:LoadImage(ResUrl.getBossRushRankSinglebg(icon))
+	if not string.nilorempty(levelBg) then
+		local icon = string.gsub(levelBg, "main_scorebg_lv", "rank_lvbg")
+
+		return ResUrl.getBossRushRankSinglebg(icon)
 	end
 end
 
@@ -54,14 +63,21 @@ function V3a2_BossRush_RankView:onUpdateParam()
 end
 
 function V3a2_BossRush_RankView:onOpen()
-	V3a2_BossRush_RankListModel.instance:setMoList()
+	self._season = self.viewParam and self.viewParam.season or 1
+
+	V3a2_BossRush_RankListModel.instance:setMoList(self._season)
+
+	local seasonMo = V4a1_BossRushModel.instance:getSeasonMo(self._season)
+
 	self:refreshUI()
 
-	local exp, needExp = V3a2_BossRushModel.instance:getRankExpProgress()
+	local exp, needExp = V3a2_BossRushModel.instance:getRankExpProgress(self._season)
 
 	self._txtTips.text = string.format("%s/%s", exp, needExp)
 
 	self:_showLvTxt(false)
+
+	self._txtname.text = seasonMo.co.nameLevel
 end
 
 function V3a2_BossRush_RankView:_showLvTxt(isShow)
@@ -74,14 +90,15 @@ V3a2_BossRush_RankView.UI_CLICK_BLOCK_KEY = "V3a2_BossRush_RankView_UI_CLICK_BLO
 
 function V3a2_BossRush_RankView:_claimBonusCb()
 	self:refreshUI()
+	V3a2_BossRush_RankListModel.instance:onModelUpdate()
 	UIBlockMgr.instance:endBlock(V3a2_BossRush_RankView.UI_CLICK_BLOCK_KEY)
 end
 
 function V3a2_BossRush_RankView:claimRankBonus()
-	if V3a2_BossRushModel.instance:isCanClaimRankBonus() then
+	if V3a2_BossRushModel.instance:isCanClaimRankBonus(self._season) then
 		UIBlockMgr.instance:startBlock(V3a2_BossRush_RankView.UI_CLICK_BLOCK_KEY)
 
-		local actId = BossRushConfig.instance:getActivityId()
+		local actId = V3a9_BossRushModel.instance:getActIdBySeason(self._season)
 
 		BossRushRpc.instance:sendAct128GetMilestoneBonusRequest(actId, self._claimBonusCb, self)
 	end
@@ -89,28 +106,22 @@ end
 
 function V3a2_BossRush_RankView:refreshUI()
 	local moList = V3a2_BossRush_RankListModel.instance:getList()
-	local content = self._scrollprogress.content
-
-	if not self._res then
-		local resPath = self.viewContainer:getSetting().otherRes[1]
-
-		self._res = self.viewContainer:getRes(resPath)
-	end
-
-	gohelper.CreateObjList(self, self._createItemCB, moList, content.gameObject, self._res, V3a2_BossRush_RankBonus)
-
-	local rank = V3a2_BossRushModel.instance:getRank()
+	local rank = V3a2_BossRushModel.instance:getRank(self._season)
 
 	self._txtrank.text = rank
 
-	local exp, needExp = V3a2_BossRushModel.instance:getRankExpProgress()
+	local exp, needExp = V3a2_BossRushModel.instance:getRankExpProgress(self._season)
 	local value = Mathf.Clamp01(exp / needExp)
 
 	self._imageSliderFG.fillAmount = value
 
-	local spLevelBg = V3a2_BossRushModel.instance:getRankSpLevelBg(rank)
+	local spLevelBg = V3a2_BossRushModel.instance:getRankSpLevelBg(self._season, rank)
 
 	for i, item in pairs(self._levels) do
+		if i == spLevelBg then
+			item.simgLv:LoadImage(self:_getRankBGPath(rank))
+		end
+
 		gohelper.setActive(item.go, i == spLevelBg)
 	end
 

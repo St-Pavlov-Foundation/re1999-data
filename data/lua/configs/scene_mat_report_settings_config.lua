@@ -1,0 +1,10 @@
+﻿-- chunkname: @configs/scene_mat_report_settings_config.lua
+
+return {
+	{
+		3,
+		1,
+		"v2a5_m_s01_obj_b",
+		"19#scenes/dynamic/v2a5_m_s01_zjm_a/lightmaps/v2a5_m_s01_obj_b_day_light.png|20#scenes/dynamic/v2a5_m_s01_zjm_a/lightmaps/v2a5_m_s01_obj_b_night_light.png"
+	}
+}

@@ -160,7 +160,10 @@ function FightConfig:reqConfigNames()
 		"fight_qte_skillgroup",
 		"fight_qte_const",
 		"fight_toughness_broken_reward",
-		"fight_de_lei_ke_slider_up"
+		"fight_de_lei_ke_slider_up",
+		"fight_move_clue",
+		"fight_move_const",
+		"fight_na_xi_suo_si_heal_effect"
 	}
 
 	if SLFramework.FrameworkSettings.IsEditor then

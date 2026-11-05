@@ -1,0 +1,39 @@
+﻿-- chunkname: @configs/chapter_puzzle_changecolor_color_config.lua
+
+return {
+	{
+		1,
+		"蓝",
+		"#0077FF"
+	},
+	{
+		2,
+		"橙",
+		"#FF8300"
+	},
+	{
+		3,
+		"红",
+		"#fb0000"
+	},
+	{
+		4,
+		"绿",
+		"#00720c"
+	},
+	{
+		5,
+		"白",
+		"#ffffff"
+	},
+	{
+		6,
+		"黄",
+		"#FFF600"
+	},
+	{
+		7,
+		"紫",
+		"#FA00FF"
+	}
+}

@@ -16,9 +16,36 @@ local primaryKey = {
 	"priority"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.fight_next_round_get_card_config"
 
-function lua_fight_next_round_get_card.onLoad(json)
-	lua_fight_next_round_get_card.configList, lua_fight_next_round_get_card.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_fight_next_round_get_card, "configList", _configList)
+	rawset(lua_fight_next_round_get_card, "configDict", _configDict)
+end
+
+setmetatable(lua_fight_next_round_get_card, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_fight_next_round_get_card.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_fight_next_round_get_card, "configList", nil)
+	rawset(lua_fight_next_round_get_card, "configDict", nil)
 end
 
 return lua_fight_next_round_get_card

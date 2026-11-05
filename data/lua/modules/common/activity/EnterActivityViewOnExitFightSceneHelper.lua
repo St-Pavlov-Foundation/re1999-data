@@ -16,11 +16,25 @@ function EnterActivityViewOnExitFightSceneHelper.checkIsActivityFight(chapterId)
 	local chapterCo = DungeonConfig.instance:getChapterCO(chapterId)
 	local actId = chapterCo and chapterCo.actId or 0
 
-	if actId ~= 0 and AbyssConfig.instance:getActivityId() == actId then
+	if BossRushController.instance:isInBossRushFight() then
+		return true
+	end
+
+	local activityConfig = ActivityConfig.instance:getActivityCo(actId, true)
+
+	if not activityConfig then
+		return
+	end
+
+	if activityConfig.typeId == ActivityEnum.ActivityTypeID.Season123 then
+		return true
+	end
+
+	if AbyssConfig.instance:getActivityId() == actId then
 		return EnterActivityViewOnExitFightSceneHelper.enterAbyss()
 	end
 
-	return actId ~= 0 and EnterActivityViewOnExitFightSceneHelper["enterActivity" .. actId]
+	return EnterActivityViewOnExitFightSceneHelper["enterActivity" .. actId]
 end
 
 function EnterActivityViewOnExitFightSceneHelper.enterCurrentActivity(forceStarting, exitFightGroup)
@@ -32,6 +46,12 @@ function EnterActivityViewOnExitFightSceneHelper.enterCurrentActivity(forceStart
 end
 
 function EnterActivityViewOnExitFightSceneHelper.enterActivity(actId, forceStarting, exitFightGroup)
+	if BossRushController.instance:isInBossRushFight() then
+		EnterActivityViewOnExitFightSceneHelper.enterActivityBossRush(forceStarting, exitFightGroup)
+
+		return
+	end
+
 	local status = ActivityHelper.getActivityStatus(actId)
 
 	if status ~= ActivityEnum.ActivityStatus.Normal then
@@ -46,10 +66,25 @@ function EnterActivityViewOnExitFightSceneHelper.enterActivity(actId, forceStart
 		return
 	end
 
+	local activityConfig = ActivityConfig.instance:getActivityCo(actId)
+
+	if not activityConfig then
+		return
+	end
+
+	local typeId = activityConfig.typeId
 	local enterFunc = EnterActivityViewOnExitFightSceneHelper["enterActivity" .. actId]
+
+	if not enterFunc and typeId == ActivityEnum.ActivityTypeID.Season123 then
+		enterFunc = EnterActivityViewOnExitFightSceneHelper.enterActivitySeason123
+	end
 
 	if not exitFightGroup then
 		local checkFunc = EnterActivityViewOnExitFightSceneHelper["checkFightAfterStory" .. actId]
+
+		if not checkFunc and typeId == ActivityEnum.ActivityTypeID.Season123 then
+			checkFunc = EnterActivityViewOnExitFightSceneHelper.checkFightAfterStorySeason123
+		end
 
 		if checkFunc and checkFunc(enterFunc, forceStarting, exitFightGroup) then
 			return
@@ -76,14 +111,21 @@ function EnterActivityViewOnExitFightSceneHelper.enterVersionActivityDungeonComm
 		return
 	end
 
-	if not exitFightGroup and isReplay then
-		if EnterActivityViewOnExitFightSceneHelper["enterFightAgain" .. actId] then
-			if EnterActivityViewOnExitFightSceneHelper["enterFightAgain" .. actId]() then
-				return
-			end
-		else
-			EnterActivityViewOnExitFightSceneHelper.enterFightAgain()
+	local activityConfig = ActivityConfig.instance:getActivityCo(actId)
+	local typeId = activityConfig.typeId
 
+	if not exitFightGroup and isReplay then
+		local enterFunc = EnterActivityViewOnExitFightSceneHelper["enterFightAgain" .. actId]
+
+		if not enterFunc then
+			if typeId == ActivityEnum.ActivityTypeID.Season123 then
+				enterFunc = EnterActivityViewOnExitFightSceneHelper.enterFightAgainSeason123
+			else
+				enterFunc = EnterActivityViewOnExitFightSceneHelper.enterFightAgain
+			end
+		end
+
+		if enterFunc and enterFunc() then
 			return
 		end
 	end
@@ -130,21 +172,48 @@ function EnterActivityViewOnExitFightSceneHelper.activeExtend()
 end
 
 function EnterActivityViewOnExitFightSceneHelper.enterActivityBossRush(forceStarting, exitFightGroup)
-	local episodeId = DungeonModel.instance.curSendEpisodeId
-	local stage, layer = BossRushConfig.instance:tryGetStageAndLayerByEpisodeId(episodeId)
+	local stage, layer, actId = BossRushModel.instance:getBattleStageAndLayer()
 
 	DungeonModel.instance.curSendEpisodeId = nil
 
 	MainController.instance:enterMainScene(forceStarting)
 	SceneHelper.instance:waitSceneDone(SceneType.Main, function()
-		GameSceneMgr.instance:dispatchEvent(SceneEventName.WaitViewOpenCloseLoading, ViewName.V3a2_BossRush_LevelDetailView)
-		VersionActivityFixedHelper.getVersionActivityEnterController().instance:openVersionActivityEnterViewIfNotOpened(function()
-			BossRushController.instance:openV3a2MainView({
+		local isCurSeason = V4a1_BossRushModel.instance:isCurSeason(actId)
+
+		if isCurSeason then
+			local param = {
 				isOpenLevelDetail = true,
 				stage = stage,
-				layer = layer
-			})
-		end, nil, BossRushConfig.instance:getActivityId())
+				layer = layer,
+				actId = actId
+			}
+
+			GameSceneMgr.instance:dispatchEvent(SceneEventName.WaitViewOpenCloseLoading, ViewName.V4a1_BossRush_LevelDetailView)
+
+			local function cb()
+				V4a1_BossRushController.instance:openMainView(param)
+			end
+
+			VersionActivityFixedEnterController.instance:openVersionActivityEnterViewIfNotOpened(cb, nil, BossRushConfig.instance:getActivityId())
+		else
+			local handbookMo = V4a1_BossRushModel.instance:getHandBookMoByActStage(actId, stage)
+			local param = {
+				handbookMo = handbookMo,
+				stage = stage,
+				layer = layer,
+				actId = actId
+			}
+
+			if handbookMo then
+				GameSceneMgr.instance:dispatchEvent(SceneEventName.WaitViewOpenCloseLoading, ViewName.V4a1_BossRush_LevelReviewView)
+
+				local function cb()
+					V4a1_BossRushController.instance:openMainView(param)
+				end
+
+				VersionActivityFixedEnterController.instance:openVersionActivityEnterViewIfNotOpened(cb, nil, BossRushConfig.instance:getActivityId())
+			end
+		end
 	end)
 end
 

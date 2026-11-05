@@ -16,9 +16,36 @@ local primaryKey = {
 	"node"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.character_destiny_slots_config"
 
-function lua_character_destiny_slots.onLoad(json)
-	lua_character_destiny_slots.configList, lua_character_destiny_slots.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_character_destiny_slots, "configList", _configList)
+	rawset(lua_character_destiny_slots, "configDict", _configDict)
+end
+
+setmetatable(lua_character_destiny_slots, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_character_destiny_slots.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_character_destiny_slots, "configList", nil)
+	rawset(lua_character_destiny_slots, "configDict", nil)
 end
 
 return lua_character_destiny_slots

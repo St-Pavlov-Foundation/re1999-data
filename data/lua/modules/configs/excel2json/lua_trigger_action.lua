@@ -26,9 +26,36 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.trigger_action_config"
 
-function lua_trigger_action.onLoad(json)
-	lua_trigger_action.configList, lua_trigger_action.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_trigger_action, "configList", _configList)
+	rawset(lua_trigger_action, "configDict", _configDict)
+end
+
+setmetatable(lua_trigger_action, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_trigger_action.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_trigger_action, "configList", nil)
+	rawset(lua_trigger_action, "configDict", nil)
 end
 
 return lua_trigger_action

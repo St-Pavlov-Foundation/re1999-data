@@ -72,6 +72,8 @@ function NecrologistStoryView_Item:_createStoryItemGo(go, resList, cls, storyCon
 		item:playStory(storyConfig, isSkip, storyView.onItemPlayFinish, storyView)
 	end
 
+	NecrologistStoryController.instance:dispatchEvent(NecrologistStoryEvent.OnPlayStoryItem, storyConfig.type)
+
 	local flag = storyView:_canContinueSkip()
 
 	if flag then

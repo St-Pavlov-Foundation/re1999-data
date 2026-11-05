@@ -34,6 +34,7 @@ function V3a5_BossRush_HandBookGroupItem:_editableRemoveEvents()
 end
 
 function V3a5_BossRush_HandBookGroupItem:onUpdateMO(mo)
+	self._mo = mo
 	self._txttitle.text = mo.config.name
 
 	if not self._itemRes then
@@ -43,9 +44,15 @@ function V3a5_BossRush_HandBookGroupItem:onUpdateMO(mo)
 	end
 
 	if mo.bossGroup then
-		local claimIndex = self:_getClaimBouns(mo.bossGroup)
-
 		gohelper.CreateObjList(self, self._createItem, mo.bossGroup, self._gobossroot, self._itemRes, V3a2_BossRush_HandBookItem)
+	end
+end
+
+function V3a5_BossRush_HandBookGroupItem:checkUnlock(targetActivityId, bossId)
+	if self._items then
+		for _, item in ipairs(self._items) do
+			item:checkUnlock(targetActivityId, bossId)
+		end
 	end
 end
 

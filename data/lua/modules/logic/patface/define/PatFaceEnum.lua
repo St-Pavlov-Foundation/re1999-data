@@ -79,6 +79,7 @@ PatFaceEnum.patFace = {
 	V2a5_Role_PanelSignView_Part2 = 20501,
 	VersionSummonStory = 30700,
 	V2a6_Role_PanelSignView_Part2 = 20601,
+	LinkGiftPanel = 40100,
 	V2a7_Role_PanelSignView_Part2 = 20701,
 	LinkageActivity_Panelview = 20303,
 	v3a2_Role_SummonNewCustom = 30202,
@@ -212,7 +213,8 @@ PatFaceEnum.patFaceCustomWork = {
 	[PatFaceEnum.patFace.V3a9_BDuckLinage] = Activity101SignPatFaceWork,
 	[PatFaceEnum.patFace.CasualSkinGiftPanel] = CasualSkinGiftPatWork,
 	[PatFaceEnum.patFace.V4a0_StoneGift] = Activity101SignPatFaceWork,
-	[PatFaceEnum.patFace.VersionSummonStory] = VersionSummonStoryPatFaceWork
+	[PatFaceEnum.patFace.VersionSummonStory] = VersionSummonStoryPatFaceWork,
+	[PatFaceEnum.patFace.LinkGiftPanel] = LinkGiftPanelPatWork
 }
 
 return PatFaceEnum

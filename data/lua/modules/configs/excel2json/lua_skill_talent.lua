@@ -28,9 +28,36 @@ local primaryKey = {
 local mlStringKey = {
 	desc = 1
 }
+local _configList, _configDict
+local configPath = "configs.skill_talent_config"
 
-function lua_skill_talent.onLoad(json)
-	lua_skill_talent.configList, lua_skill_talent.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_skill_talent, "configList", _configList)
+	rawset(lua_skill_talent, "configDict", _configDict)
+end
+
+setmetatable(lua_skill_talent, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_skill_talent.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_skill_talent, "configList", nil)
+	rawset(lua_skill_talent, "configDict", nil)
 end
 
 return lua_skill_talent

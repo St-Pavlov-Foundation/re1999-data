@@ -212,6 +212,7 @@ function FightView:onAfterExitQte()
 end
 
 function FightView:onClose()
+	FightTLDeviceCardTriggerPowerEffect.clearFlyNode()
 	FightModel.instance:setUserSpeed(1)
 	TaskDispatcher.cancelTask(self._showBtnSpeedAni, self, 0.001)
 end

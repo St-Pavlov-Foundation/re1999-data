@@ -88,7 +88,7 @@ function HuiDiaoLanEpisodeLevelView:_editableInitView()
 	self.activityId = VersionActivity3_2Enum.ActivityId.HuiDiaoLan
 	self.config = ActivityConfig.instance:getActivityCo(self.activityId)
 
-	RedDotController.instance:addRedDot(self._goreddot, RedDotEnum.DotNode.Activity220Task, self.activityId, self.refreshReddot, self)
+	RedDotController.instance:addRedDot(self._goreddot, RedDotEnum.DotNode.PermanentActivity220Task, self.activityId, self.refreshReddot, self)
 	self:initEpisodeItem()
 
 	local width = recthelper.getWidth(ViewMgr.instance:getUIRoot().transform)

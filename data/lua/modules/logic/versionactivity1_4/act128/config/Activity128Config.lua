@@ -32,7 +32,9 @@ function Activity128Config:reqConfigNames()
 		"activity128_conceal_desc",
 		"activity128_bosstype",
 		"activity128_expand_bond",
-		"activity128_boss_type"
+		"activity128_boss_type",
+		"activity128_season",
+		"activity128_score_skill"
 	}
 end
 
@@ -603,6 +605,10 @@ function Activity128Config:getBossRecommendStrategy(bossType)
 
 		return param.recommendStrategy
 	end
+end
+
+function Activity128Config:getScoreSkillCos(episodeId)
+	return lua_activity128_score_skill.configDict[episodeId]
 end
 
 return Activity128Config

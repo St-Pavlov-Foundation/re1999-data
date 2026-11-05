@@ -20,6 +20,7 @@ function FightQteView:onInitView()
 	self.txtTotalAdd = gohelper.findChildText(self.goTotal, "#txt_total_add")
 	self.goFirst = gohelper.findChild(self.viewGO, "root/first_stage")
 
+	self:initPST()
 	self:initEntityPos()
 	self:initPointList()
 
@@ -41,6 +42,19 @@ function FightQteView:onInitView()
 
 	self.preEnergy = 0
 	self.preTotal = 0
+end
+
+function FightQteView:initPST()
+	self.goPST = gohelper.findChild(self.goFirst, "#go_peishita")
+
+	gohelper.setActive(self.goPST, false)
+
+	self.txtPSTNum = gohelper.findChildText(self.goPST, "txt_dec/#txt_num")
+	self.pstAnimator = self.goPST:GetComponent(gohelper.Type_Animator)
+	self.lastPSTNum = 0
+	self.pstEntityMo = FightDataHelper.entityMgr:getEntityMoByModelId(FightEnum.HeroId.PST)
+	self.pstEntityId = self.pstEntityMo and self.pstEntityMo.uid
+	self.pstBuffActId = FightEnum.BuffActId.QTEAllyAttr
 end
 
 function FightQteView:initEntityPos()
@@ -103,6 +117,36 @@ function FightQteView:addEvents()
 	self:addEventCb(FightController.instance, FightEvent.SetIsShowUI, self.onSetIsShowUI, self)
 	self:addEventCb(FightController.instance, FightEvent.OnHideQteTotal, self.onHideQteTotal, self)
 	self:addEventCb(FightController.instance, FightEvent.QTE_BeforeSendUseSkillRpc, self.onBeforeSendUseSkillRpc, self)
+	self:addEventCb(FightController.instance, FightEvent.OnSetPSTFlyStartGo, self.onSetPSTFlyStartGo, self)
+	self:addEventCb(FightController.instance, FightEvent.OnBuffUpdate, self.onBuffUpdate, self)
+end
+
+function FightQteView:onBuffUpdate(entityId, effectType, buffId)
+	if entityId ~= self.pstEntityId then
+		return
+	end
+
+	if not self.pstEntityMo then
+		return
+	end
+
+	local featureList = self.pstEntityMo:getFeaturesSplitInfoByBuffId(buffId)
+
+	if featureList then
+		for _, oneFeature in ipairs(featureList) do
+			if oneFeature[1] == self.pstBuffActId then
+				self:refreshPST()
+
+				return
+			end
+		end
+	end
+end
+
+function FightQteView:onSetPSTFlyStartGo(startGo)
+	self.pstStartGo = startGo
+
+	self:refreshPST()
 end
 
 function FightQteView:onBeforeSendUseSkillRpc()
@@ -279,6 +323,7 @@ function FightQteView:refreshUI()
 	if curStatus == FightEnum.QTEStage.QTE_FIRST then
 		self:refreshEnergy()
 		self:refreshEntity()
+		self:refreshPST()
 	elseif curStatus == FightEnum.QTEStage.QTE_SECOND then
 		self:refreshUniqueBtn()
 	end
@@ -468,6 +513,86 @@ function FightQteView:getUniqueEntityMo()
 			end
 		end
 	end
+end
+
+function FightQteView:refreshPST()
+	if not self.pstStartGo then
+		return
+	end
+
+	local entityMo = FightDataHelper.entityMgr:getEntityMoByModelId(FightEnum.HeroId.PST)
+
+	if not entityMo then
+		gohelper.setActive(self.goPST, false)
+
+		return
+	end
+
+	if not entityMo:isStatusNormal() then
+		gohelper.setActive(self.goPST, false)
+
+		return
+	end
+
+	gohelper.setActive(self.goPST, true)
+
+	local layer = FightQteEntityItemHelper.getBuffActIdLayer(self.pstBuffActId, entityMo)
+
+	layer = math.max(layer, 0)
+	self.txtPSTNum.text = layer
+
+	if layer > self.lastPSTNum then
+		local anim = self.lastPSTNum > 0 and "add" or "open"
+
+		self.pstAnimator:Play(anim, 0, 0)
+		self:playFlyItem()
+	end
+
+	if layer <= 0 then
+		self.pstAnimator:Play("close")
+	end
+
+	self.lastPSTNum = layer
+end
+
+function FightQteView:playFlyItem()
+	if not self.flyItem then
+		self.flyItem = self:getUserDataTb_()
+
+		local resPath = self.viewContainer:getSetting().otherRes[1]
+		local itemPrefab = self.viewContainer:getRes(resPath)
+
+		gohelper.setActive(itemPrefab, false)
+
+		self.flyItem.go = gohelper.clone(itemPrefab, self.viewGO)
+		self.flyItem.flyObj = gohelper.findChild(self.flyItem.go, "node_fly")
+
+		gohelper.setActive(self.flyItem.flyObj, false)
+
+		self.flyScript = self.flyItem.go:GetComponent(typeof(UnityEngine.UI.UIFlying))
+
+		self.flyScript:SetFlyItemObj(self.flyItem.flyObj)
+
+		self.flyScript.startPosition = self:getStartPos()
+		self.flyScript.endPosition = self:getEndPos()
+	end
+
+	AudioMgr.instance:trigger(410084)
+	FightController.instance:dispatchEvent(FightEvent.OnPlayPSTFlyItem)
+	gohelper.setActive(self.flyItem.go, false)
+	gohelper.setActive(self.flyItem.go, true)
+end
+
+function FightQteView:getStartPos()
+	if not self.pstStartGo then
+		return Vector2.zero
+	end
+
+	return recthelper.rectToRelativeAnchorPos(self.pstStartGo.transform.position, self.viewGO.transform)
+end
+
+function FightQteView:getEndPos()
+	return recthelper.rectToRelativeAnchorPos(self.goPST.transform.position, self.viewGO.transform)
 end
 
 function FightQteView:onClose()

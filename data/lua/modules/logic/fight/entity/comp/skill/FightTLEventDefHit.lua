@@ -860,6 +860,10 @@ function FightTLEventDefHit:_statisticAndFloat()
 
 				FightFloatMgr.instance:float(targetId, floatType, num, param, isAssassinate, floatData)
 				FightController.instance:dispatchEvent(FightEvent.OnDamageTotal, self.fightStepData, oneDefender, num, self._isLastHit)
+
+				if FightRealTimeDamageStatModel.instance:isEnabled() then
+					FightController.instance:dispatchEvent(FightEvent.OnGMDamageChange, self.fightStepData, oneDefender, num, self._isLastHit, targetId)
+				end
 			end
 		end
 	end

@@ -33,6 +33,7 @@ end
 
 function V3a2_BossRush_HandBookItem:_editableInitView()
 	self._imageBG = gohelper.findChildImage(self.viewGO, "bg")
+	self._animator = self.viewGO:GetComponent(typeof(UnityEngine.Animator))
 end
 
 function V3a2_BossRush_HandBookItem:onUpdateMO(mo)
@@ -44,14 +45,30 @@ function V3a2_BossRush_HandBookItem:onUpdateMO(mo)
 
 	self._txtName.text = mo:getBossName()
 
-	ZProj.UGUIHelper.SetGrayscale(self._simageboss.gameObject, not mo.haveFight)
-	ZProj.UGUIHelper.SetGrayscale(self._imageBG.gameObject, not mo.haveFight)
+	self:_refreshUnlock()
 
-	self._imageBG.color = mo.haveFight and Color.white or GameUtil.parseColor("#969696")
+	self._reddot = RedDotController.instance:addRedDot(self._goreddot, RedDotEnum.DotNode.BossRushHankBookBoss, mo:getBossType())
 
-	gohelper.setActive(self._goLocked, not mo.haveFight)
-	RedDotController.instance:addRedDot(self._goreddot, RedDotEnum.DotNode.BossRushHankBookBoss, mo:getBossType())
 	self:refreshSelect()
+end
+
+function V3a2_BossRush_HandBookItem:checkUnlock(targetActivityId, bossId)
+	if self.mo.actId == targetActivityId and self.mo.stage == bossId then
+		gohelper.setActive(self._goLocked, true)
+		TaskDispatcher.cancelTask(self._refreshUnlock, self)
+		TaskDispatcher.runDelay(self._refreshUnlock, self, 0.5)
+		self._animator:Play(V3a2BossRushEnum.AnimName.Unlock, 0, 0)
+	end
+end
+
+function V3a2_BossRush_HandBookItem:_refreshUnlock()
+	gohelper.setActive(self._goLocked, not self.mo.haveFight)
+	ZProj.UGUIHelper.SetGrayscale(self._simageboss.gameObject, not self.mo.haveFight)
+	ZProj.UGUIHelper.SetGrayscale(self._imageBG.gameObject, not self.mo.haveFight)
+
+	self._imageBG.color = self.mo.haveFight and Color.white or GameUtil.parseColor("#969696")
+
+	gohelper.setActive(self._goLocked, not self.mo.haveFight)
 end
 
 function V3a2_BossRush_HandBookItem:onSelect(isSelect)
@@ -75,7 +92,7 @@ function V3a2_BossRush_HandBookItem:_isSelect()
 end
 
 function V3a2_BossRush_HandBookItem:onDestroyView()
-	return
+	TaskDispatcher.cancelTask(self._refreshUnlock, self)
 end
 
 return V3a2_BossRush_HandBookItem

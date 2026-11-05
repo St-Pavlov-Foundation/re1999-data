@@ -57,7 +57,30 @@ function FightEffectBase:beforeStart()
 end
 
 function FightEffectBase:playEffectData()
+	local wasDone = self.actEffectData and self.actEffectData:isDone()
+
 	FightDataHelper.playEffectData(self.actEffectData)
+
+	if not wasDone then
+		self:_dispatchRealTimeDamageStat()
+	end
+end
+
+function FightEffectBase:_dispatchRealTimeDamageStat()
+	if not FightRealTimeDamageStatModel.instance:isEnabled() then
+		return
+	end
+
+	local actEffectData = self.actEffectData
+	local fightStepData = self.fightStepData
+	local hurtInfo = actEffectData.hurtInfo
+	local damage = hurtInfo and hurtInfo.damage
+
+	if not fightStepData or not fightStepData.fromId or not damage or damage <= 0 then
+		return
+	end
+
+	FightController.instance:dispatchEvent(FightEvent.OnGMDamageChange, fightStepData, FightHelper.getEntity(actEffectData.targetId), damage, true, actEffectData.targetId)
 end
 
 function FightEffectBase:beforePlayEffectData()

@@ -15,9 +15,36 @@ local primaryKey = {
 local mlStringKey = {
 	desc = 1
 }
+local _configList, _configDict
+local configPath = "configs.v3a2_chapter_report_config"
 
-function lua_v3a2_chapter_report.onLoad(json)
-	lua_v3a2_chapter_report.configList, lua_v3a2_chapter_report.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_v3a2_chapter_report, "configList", _configList)
+	rawset(lua_v3a2_chapter_report, "configDict", _configDict)
+end
+
+setmetatable(lua_v3a2_chapter_report, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_v3a2_chapter_report.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_v3a2_chapter_report, "configList", nil)
+	rawset(lua_v3a2_chapter_report, "configDict", nil)
 end
 
 return lua_v3a2_chapter_report

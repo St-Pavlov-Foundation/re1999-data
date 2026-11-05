@@ -92,9 +92,36 @@ local mlStringKey = {
 	name = 1,
 	desc = 3
 }
+local _configList, _configDict
+local configPath = "configs.rouge2_relics_config"
 
-function lua_rouge2_relics.onLoad(json)
-	lua_rouge2_relics.configList, lua_rouge2_relics.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_rouge2_relics, "configList", _configList)
+	rawset(lua_rouge2_relics, "configDict", _configDict)
+end
+
+setmetatable(lua_rouge2_relics, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_rouge2_relics.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_rouge2_relics, "configList", nil)
+	rawset(lua_rouge2_relics, "configDict", nil)
 end
 
 return lua_rouge2_relics

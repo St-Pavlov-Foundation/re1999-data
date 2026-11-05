@@ -3,6 +3,7 @@
 module("modules.logic.gm.view.GMSubViewRoom", package.seeall)
 
 local GMSubViewRoom = class("GMSubViewRoom", GMSubViewBase)
+local IgnorePositionPrefsKey = "GM_GMSubViewRoom_IgnorePosition"
 
 function GMSubViewRoom:ctor()
 	self.tabName = "荒原"
@@ -199,6 +200,10 @@ function GMSubViewRoom:_initL4()
 		total_w = 650,
 		drop_w = 415
 	})
+
+	self._ignorePositionToggle = self:addToggle(LStr, "忽略角色位置", self._onIgnorePositionToggleChanged, self)
+	self._ignorePositionToggle.isOn = PlayerPrefsHelper.getString(IgnorePositionPrefsKey, "") == "1"
+
 	self:addButton(LStr, "确定", self._onClickRoomInteractionOk, self)
 
 	interStr = {
@@ -209,10 +214,18 @@ function GMSubViewRoom:_initL4()
 		table.insert(interStr, i .. "时")
 	end
 
-	self:addDropDown(LStr, "小屋时钟触发", interStr, self._onRoomClockSelectChanged, self, {
+	self:addDropDown("L4b", "小屋时钟触发", interStr, self._onRoomClockSelectChanged, self, {
 		total_w = 600,
 		tempH = 450
 	})
+end
+
+function GMSubViewRoom:_onIgnorePositionToggleChanged()
+	if not self._ignorePositionToggle then
+		return
+	end
+
+	PlayerPrefsHelper.setString(IgnorePositionPrefsKey, self._ignorePositionToggle.isOn and "1" or "0")
 end
 
 function GMSubViewRoom:_onRoomInteractionSelectChanged(index)
@@ -267,16 +280,147 @@ function GMSubViewRoom:_onClickRoomInteractionOk()
 			return
 		end
 
-		local isSuccess = RoomInteractionController.instance:showTimeByInteractionMO(interctionMO)
+		local isIgnorePosition = self._ignorePositionToggle and self._ignorePositionToggle.isOn
 
-		if not isSuccess then
-			GameFacade.showToast(ToastEnum.IconId, string.format("GM【%s】不在【%s】交互点范围内", roomCharacterMO.heroConfig.name, builingName))
+		if isIgnorePosition and not self:_forceStartBuildingInteraction(self.selectCharacterInteractionCfg, interctionMO) then
+			GameFacade.showToast(ToastEnum.IconId, string.format("GM【%s】找不到【%s】可用的交互点", roomCharacterMO.heroConfig.name, builingName))
 
 			return
 		end
 
+		local isSuccess = RoomInteractionController.instance:showTimeByInteractionMO(interctionMO)
+
+		if not isSuccess then
+			if isIgnorePosition then
+				self:_restoreCharacterPosition(roomCharacterMO)
+				GameFacade.showToast(ToastEnum.IconId, string.format("GM【%s】【%s】忽略位置交互失败，检查角色与场景状态", roomCharacterMO.heroConfig.name, builingName))
+			else
+				GameFacade.showToast(ToastEnum.IconId, string.format("GM【%s】不在【%s】交互点范围内", roomCharacterMO.heroConfig.name, builingName))
+			end
+
+			return
+		end
+
+		if isIgnorePosition then
+			local showtime = self.selectCharacterInteractionCfg.showtime and self.selectCharacterInteractionCfg.showtime ~= 0 and self.selectCharacterInteractionCfg.showtime * 0.001 or 8
+
+			TaskDispatcher.runDelay(function()
+				self:_restoreCharacterPosition(roomCharacterMO)
+			end, nil, showtime + 0.5)
+		end
+
 		self:closeThis()
-		logNormal(string.format("GM【%s】【%s】触发角色建筑交互", roomCharacterMO.heroConfig.name, builingName))
+		logNormal(string.format("GM【%s】【%s】触发角色建筑交互 ignorePosition:%s", roomCharacterMO.heroConfig.name, builingName, isIgnorePosition))
+	end
+end
+
+function GMSubViewRoom:_forceStartBuildingInteraction(cfg, interactionMO)
+	local roomCharacterMO = RoomCharacterModel.instance:getCharacterMOById(cfg.heroId)
+
+	if not roomCharacterMO or roomCharacterMO.characterState ~= RoomCharacterEnum.CharacterState.Map then
+		return false
+	end
+
+	local scene = GameSceneMgr.instance:getCurScene()
+
+	if not scene or not scene.buildingmgr then
+		return false
+	end
+
+	local buildingUids = interactionMO:getBuildingUids()
+	local cameraIdList = interactionMO:getBuildingCameraIds()
+
+	for _, buildingUid in ipairs(buildingUids) do
+		local buildingEntity = scene.buildingmgr:getBuildingEntity(buildingUid, SceneTag.RoomBuilding)
+
+		if buildingEntity then
+			for _, cameraId in ipairs(cameraIdList) do
+				local nodeList = interactionMO:buildingNodesByCId(cameraId)
+				local node = nodeList and nodeList[1]
+
+				if node then
+					local targetPos = self:_getForceInteractionPoint(roomCharacterMO, buildingEntity, node)
+
+					if targetPos then
+						self:_saveCharacterPosition(roomCharacterMO)
+						self:_moveCharacterToPoint(roomCharacterMO, targetPos)
+						logNormal(string.format("GM 忽略角色位置，已把角色瞬移到交互点 buildingUid:%s cameraId:%s", buildingUid, cameraId))
+
+						return true
+					end
+				end
+			end
+		end
+	end
+
+	return false
+end
+
+function GMSubViewRoom:_getForceInteractionPoint(roomCharacterMO, buildingEntity, node)
+	local targetPos = buildingEntity:transformPoint(node[1], 0, node[3])
+
+	if not targetPos then
+		return nil
+	end
+
+	local bestParam = RoomCharacterHelper.getRecommendHexPoint(roomCharacterMO.heroId, roomCharacterMO.skinId, Vector2.New(targetPos.x, targetPos.z))
+
+	if bestParam and bestParam.position then
+		targetPos.y = bestParam.position.y
+	end
+
+	return targetPos
+end
+
+function GMSubViewRoom:_saveCharacterPosition(roomCharacterMO)
+	local pos = roomCharacterMO.currentPosition
+
+	self._forceInteractionResetPos = {
+		x = pos.x,
+		y = pos.y,
+		z = pos.z
+	}
+end
+
+function GMSubViewRoom:_restoreCharacterPosition(roomCharacterMO)
+	local pos = self._forceInteractionResetPos
+
+	self._forceInteractionResetPos = nil
+
+	if not pos or not roomCharacterMO then
+		return
+	end
+
+	roomCharacterMO:setIsFreeze(false)
+	roomCharacterMO:setPositionXYZ(pos.x, pos.y, pos.z)
+
+	local scene = GameSceneMgr.instance:getCurScene()
+	local entity = scene and scene.charactermgr:getCharacterEntity(roomCharacterMO.id, SceneTag.RoomCharacter)
+
+	if entity then
+		entity.charactermove:clearForcePositionAndLookDir()
+		entity:setLocalPos(pos.x, pos.y, pos.z)
+	end
+
+	logNormal(string.format("GM 忽略角色位置，角色已放回原位(%s,%s,%s)", pos.x, pos.y, pos.z))
+end
+
+function GMSubViewRoom:_moveCharacterToPoint(roomCharacterMO, position)
+	local currentInteractionId = roomCharacterMO:getCurrentInteractionId()
+
+	if currentInteractionId and currentInteractionId ~= 0 then
+		roomCharacterMO:setCurrentInteractionId(nil)
+	end
+
+	roomCharacterMO:endMove(true)
+	roomCharacterMO:setPositionXYZ(position.x, position.y, position.z)
+
+	local scene = GameSceneMgr.instance:getCurScene()
+	local entity = scene and scene.charactermgr:getCharacterEntity(roomCharacterMO.id, SceneTag.RoomCharacter)
+
+	if entity then
+		entity.charactermove:clearForcePositionAndLookDir()
+		entity:setLocalPos(position.x, position.y, position.z)
 	end
 end
 

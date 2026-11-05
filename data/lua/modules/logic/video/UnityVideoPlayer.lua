@@ -47,10 +47,22 @@ function UnityVideoPlayer:init(go)
 
 	self._videoGo = go
 
+	if self._width == nil or self._height == nil then
+		local rectTran = self._videoGo:GetComponent(gohelper.Type_RectTransform)
+
+		if rectTran ~= nil then
+			self._width = recthelper.getWidth(rectTran)
+			self._height = recthelper.getHeight(rectTran)
+		else
+			self._width = VideoPlayerMgr.DEFAULT_HEIGHT
+			self._height = VideoPlayerMgr.DEFAULT_WIDTH
+		end
+	end
+
 	self:_removeAvproPlayer(go)
 
 	self._videoPlayer = gohelper.onceAddComponent(go, typeof(UnityEngine.Video.VideoPlayer))
-	self._videoPlayer.playOnAwake = false
+	self._videoPlayer.playOnAwake = self:bPlayOnAwake()
 	self._videoPlayer.timeUpdateMode = UnityEngine.Video.VideoTimeUpdateMode.GameTime
 
 	if self._needRawImage == true then
@@ -448,6 +460,18 @@ function UnityVideoPlayer:getTimeRange()
 	local curTime = self._videoPlayer.time
 
 	return startTime, duration, curTime
+end
+
+function UnityVideoPlayer:onSetPlayOnAwake()
+	if self._videoPlayer then
+		self._videoPlayer.playOnAwake = self._bPlayOnAwake and true or false
+	end
+end
+
+function UnityVideoPlayer:onSetSize()
+	if self._rawImage then
+		self._rawImage.rectTransform.sizeDelta = Vector2(self._width, self._height)
+	end
 end
 
 return UnityVideoPlayer

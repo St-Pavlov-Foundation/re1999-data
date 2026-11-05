@@ -6,8 +6,6 @@ local V3a2_BossRushModel = class("V3a2_BossRushModel", BaseModel)
 
 function V3a2_BossRushModel:init()
 	self._config = BossRushConfig.instance
-	self._gainMilestoneLevel = 0
-	self._rank = 0
 end
 
 function V3a2_BossRushModel:onRefresh128InfosReply(msg)
@@ -21,13 +19,19 @@ function V3a2_BossRushModel:onReceiveAct128GetExpReply(msg)
 		mo:setAcceptExp(msg.acceptExpPoint)
 	end
 
-	self._rank = msg.playerLevel
+	local seasonMo = V4a1_BossRushModel.instance:getSeasonMoByActId(msg.activityId)
+
+	seasonMo:refreshLevel(msg.playerLevel)
 end
 
 function V3a2_BossRushModel:_onReceiveAct128GetMilestoneBonusReply(msg)
-	self._gainMilestoneLevel = msg.gainMilestoneLevel
+	local seasonMo = V4a1_BossRushModel.instance:getSeasonMoByActId(msg.activityId)
 
-	self:_refreshGainMilestoneLevel()
+	if seasonMo then
+		seasonMo:refreshClaimLevel(msg.gainMilestoneLevel)
+	end
+
+	self:_refreshGainMilestoneLevel(msg.activityId)
 end
 
 function V3a2_BossRushModel:getSortStages(actId)
@@ -66,113 +70,132 @@ function V3a2_BossRushModel:getSortStages(actId)
 	return _infoList
 end
 
-function V3a2_BossRushModel:getRank()
-	return self._rank
+function V3a2_BossRushModel:getRank(season)
+	local seasonMo = V4a1_BossRushModel.instance:getSeasonMo(season)
+
+	if seasonMo then
+		return seasonMo.level
+	end
 end
 
 function V3a2_BossRushModel:initRankInfo(info)
-	self._rank = info.playerLevel or 0
-	self._gainMilestoneLevel = info.gainMilestoneLevel
+	local seasonMo = V4a1_BossRushModel.instance:getSeasonMoByActId(info.activityId)
 
-	self:_refreshGainMilestoneLevel()
-end
-
-function V3a2_BossRushModel:_refreshGainMilestoneLevel()
-	local mos = self:getRankMos()
-
-	for _, mo in pairs(mos) do
-		mo:setInfo(self._rank, self._gainMilestoneLevel)
+	if seasonMo then
+		seasonMo:refreshLevel(info.playerLevel)
+		seasonMo:refreshClaimLevel(info.gainMilestoneLevel)
 	end
+
+	self:_refreshGainMilestoneLevel(info.activityId)
 end
 
-function V3a2_BossRushModel:getRankExpCurrency()
-	return self._expCurrency
+function V3a2_BossRushModel:refreshRankMos(activityId)
+	self:_refreshGainMilestoneLevel(activityId)
 end
 
-function V3a2_BossRushModel:getRankExp()
-	if not self._expCurrency then
-		local _, value = self._config:getConst(V3a2BossRushEnum.BossRankExpCurrencyConst)
+function V3a2_BossRushModel:_refreshGainMilestoneLevel(activityId)
+	local seasonMo = V4a1_BossRushModel.instance:getSeasonMoByActId(activityId)
 
-		if string.nilorempty(value) then
-			return 0
+	if seasonMo then
+		local season = seasonMo.season
+		local _mos = self:getRankMos(season)
+
+		if _mos then
+			for _, mo in pairs(_mos) do
+				mo:setInfo(seasonMo.level, seasonMo.claimLevel)
+			end
 		end
-
-		self._expCurrency = string.splitToNumber(value, "#")
 	end
+end
 
-	local num = ItemModel.instance:getItemQuantity(self._expCurrency[1], self._expCurrency[2])
+function V3a2_BossRushModel:getRankExp(season)
+	local seasonMo = V4a1_BossRushModel.instance:getSeasonMo(season)
+	local currency = seasonMo and seasonMo.expMaterial
+	local num = currency and ItemModel.instance:getItemQuantity(currency[1], currency[2])
 
 	return num
 end
 
-function V3a2_BossRushModel:getRankExpProgress()
-	local rankMo = self:getRankMo(self._rank + 1)
-	local exp = self:getRankExp()
+function V3a2_BossRushModel:getRankExpProgress(season)
+	local seasonMo = V4a1_BossRushModel.instance:getSeasonMo(season)
+	local level = seasonMo.level
+	local rankMo = self:getRankMo(season, level + 1)
+	local exp = self:getRankExp(season)
 
 	if rankMo then
 		return exp - rankMo.preExp, rankMo.config.needExp
 	end
 
-	rankMo = self:getRankMo(self._rank)
+	rankMo = self:getRankMo(season, level)
 
-	return 0, rankMo.config.needExp
+	return 0, rankMo and rankMo.config.needExp or 0
 end
 
-function V3a2_BossRushModel:getRankMos()
+function V3a2_BossRushModel:getRankMos(season)
 	if not self._rankMOs then
 		self._rankMOs = {}
 
-		local needExp = 0
 		local cos = self._config:getAllLevelCos()
 
 		if cos then
-			for i, co in ipairs(cos) do
+			for i, co in pairs(cos) do
 				local mo = V3a2_BossRush_RankMO.New()
-				local preExp = needExp
 
-				needExp = needExp + co.needExp
+				mo:initMO(co)
 
-				mo:initMO(co, preExp, needExp)
+				if not self._rankMOs[co.season] then
+					self._rankMOs[co.season] = {}
+				end
 
-				self._rankMOs[co.playerLevel] = mo
+				self._rankMOs[co.season][co.playerLevel] = mo
+			end
+
+			for _, list in pairs(self._rankMOs) do
+				for playerLevel, mo in pairs(list) do
+					local preMo = list[playerLevel - 1]
+					local preExp = preMo and preMo.totalNeedExp or 0
+					local needExp = preExp + mo.config.needExp
+
+					mo:initExp(preExp, needExp)
+				end
 			end
 		end
 	end
 
-	return self._rankMOs
+	return self._rankMOs[season]
 end
 
-function V3a2_BossRushModel:refreshRankMos()
-	self:_refreshGainMilestoneLevel()
+function V3a2_BossRushModel:isCanClaimRankBonus(season)
+	local seasonMo = V4a1_BossRushModel.instance:getSeasonMo(season)
+
+	return seasonMo:isCanClaimRankBonus()
 end
 
-function V3a2_BossRushModel:isCanClaimRankBonus()
-	return self._gainMilestoneLevel < self._rank
-end
-
-function V3a2_BossRushModel:getRankMo(level)
-	local mos = self:getRankMos()
+function V3a2_BossRushModel:getRankMo(season, level)
+	local mos = self:getRankMos(season)
 
 	return mos and mos[level]
 end
 
-function V3a2_BossRushModel:getRankLevelBg(rank)
-	local rankMo = self:getRankMo(rank) or self:getRankMo(1)
+function V3a2_BossRushModel:getRankLevelBg(season, rank)
+	local rankMo = self:getRankMo(season, rank) or self:getRankMo(season, 1)
 
-	return rankMo.config.levelBg
+	return rankMo and rankMo.config.levelBg
 end
 
-function V3a2_BossRushModel:getRankSpLevelBg(rank)
-	local rankMo = self:getRankMo(rank) or self:getRankMo(1)
+function V3a2_BossRushModel:getRankSpLevelBg(season, rank)
+	local rankMo = self:getRankMo(season, rank) or self:getRankMo(season, 1)
 
-	return rankMo.config.spLevelBg
+	return rankMo and rankMo.config.spLevelBg
 end
 
 function V3a2_BossRushModel:onRefreshHandBookInfo(info)
 	for _, v in ipairs(info.galleryDetail) do
 		local mo = self:getHandBookMo(v.type)
 
-		mo:setInfo(v)
+		if mo then
+			mo:setInfo(v)
+		end
 	end
 end
 
@@ -218,7 +241,9 @@ function V3a2_BossRushModel:getStrategyByStage(stage)
 	end
 end
 
-function V3a2_BossRushModel:getHandBookGroupMos()
+function V3a2_BossRushModel:getHandBookGroupMos(season)
+	season = season or 1
+
 	if not self._handbookGroupMOs then
 		self._handbookGroupMOs = {}
 
@@ -227,15 +252,21 @@ function V3a2_BossRushModel:getHandBookGroupMos()
 		if mos then
 			for i, mo in pairs(mos) do
 				if mo.config.offline == 0 then
+					local _season = mo.season
+
+					if not self._handbookGroupMOs[_season] then
+						self._handbookGroupMOs[_season] = {}
+					end
+
 					local minType = mo.config.minType
-					local groupMos = self._handbookGroupMOs[minType]
+					local groupMos = self._handbookGroupMOs[_season][minType]
 
 					if not groupMos then
 						groupMos = {
 							bossGroup = {},
 							config = lua_activity128_bosstype.configDict[minType]
 						}
-						self._handbookGroupMOs[minType] = groupMos
+						self._handbookGroupMOs[_season][minType] = groupMos
 					end
 
 					table.insert(groupMos.bossGroup, mo)
@@ -244,7 +275,7 @@ function V3a2_BossRushModel:getHandBookGroupMos()
 		end
 	end
 
-	return self._handbookGroupMOs
+	return self._handbookGroupMOs[season]
 end
 
 function V3a2_BossRushModel:setScore(extra)

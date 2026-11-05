@@ -83,6 +83,8 @@ function FightFocusView:onInitView()
 	self._ani = SLFramework.AnimatorPlayer.Get(self.viewGO)
 	self.go_fetter = gohelper.findChild(self.viewGO, "fightinfocontainer/#go_infoView/go_fetter")
 	self.go_quality = gohelper.findChild(self.viewGO, "fightinfocontainer/#go_infoView/go_quality")
+	self._gorootdanger = gohelper.findChild(self.viewGO, "fightinfocontainer/#go_infoView/content/#go_danger")
+	self._godanger = gohelper.findChild(self.viewGO, "fightinfocontainer/#go_infoView/content/#go_danger/#go_danger")
 	self.go_collection = gohelper.findChild(self.viewGO, "fightinfocontainer/#go_infoView/content/player/#go_collection")
 	self.odysseySuitRoot = gohelper.findChild(self.viewGO, "fightinfocontainer/#go_odysseySuit")
 	self.aiJiAoSliderRoot = gohelper.findChild(self.viewGO, "fightinfocontainer/#go_infoView/content/player/#go_azio")
@@ -339,6 +341,8 @@ function FightFocusView:_editableInitView()
 
 	self._godevice = gohelper.findChild(self.viewGO, "fightinfocontainer/#go_infoView/content/#go_device")
 	self._goqte = gohelper.findChild(self.viewGO, "fightinfocontainer/#go_infoView/content/#go_breakthrough")
+
+	gohelper.setActive(self._godanger, false)
 end
 
 function FightFocusView:createSuperItem()
@@ -636,6 +640,8 @@ function FightFocusView:_refreshInfo(monsterConfig)
 			passiveSkillIds = FightConfig.instance:getPassiveSkillsAfterUIFilter(monsterConfig.id)
 		end
 
+		passiveSkillIds = self:_filterScoreSkillPassive(passiveSkillIds, monsterConfig.id)
+
 		self:_refreshPassiveSkill(passiveSkillIds, self._goenemypassiveitem)
 		gohelper.setActive(self._goplayerpassive, false)
 	end
@@ -744,6 +750,102 @@ function FightFocusView:_getBossId()
 	local bossId = monsterGroupCO and not string.nilorempty(monsterGroupCO.bossId) and monsterGroupCO.bossId or nil
 
 	return bossId
+end
+
+function FightFocusView:_parseScoreSkillIds(str)
+	local ids = {}
+
+	if string.nilorempty(str) then
+		return ids
+	end
+
+	for token in string.gmatch(str, "%d+") do
+		table.insert(ids, tonumber(token))
+	end
+
+	return ids
+end
+
+function FightFocusView:_getScoreSkillCurPhase(phaseDict)
+	local phase2Score = {}
+
+	for phase, monsterDict in pairs(phaseDict) do
+		for _, co in pairs(monsterDict) do
+			phase2Score[phase] = co.score or 0
+		end
+	end
+
+	local phaseScoreList = {}
+
+	for phase, score in pairs(phase2Score) do
+		table.insert(phaseScoreList, {
+			phase = phase,
+			score = score
+		})
+	end
+
+	table.sort(phaseScoreList, function(a, b)
+		return a.score < b.score
+	end)
+
+	local score = math.max(0, FightDataHelper.fieldMgr:getIndicatorNum(FightEnum.IndicatorId.V1a4_BossRush_ig_ScoreTips))
+	local curPhase = 0
+
+	for _, phaseInfo in ipairs(phaseScoreList) do
+		if score >= phaseInfo.score then
+			curPhase = phaseInfo.phase
+		else
+			break
+		end
+	end
+
+	return curPhase
+end
+
+function FightFocusView:_filterScoreSkillPassive(passiveSkillIds, monsterId)
+	if not passiveSkillIds then
+		return passiveSkillIds
+	end
+
+	local episodeId = FightDataHelper.fieldMgr.episodeId
+	local phaseDict = episodeId and lua_activity128_score_skill.configDict[episodeId]
+
+	if not phaseDict then
+		return passiveSkillIds
+	end
+
+	local curPhase = self:_getScoreSkillCurPhase(phaseDict)
+	local monsterDict = curPhase > 0 and phaseDict[curPhase]
+	local co = monsterDict and monsterDict[monsterId]
+
+	if not co then
+		return passiveSkillIds
+	end
+
+	local filterSet = {}
+	local newSet = {}
+
+	for _, id in ipairs(self:_parseScoreSkillIds(co.newPassiveSkill)) do
+		newSet[id] = true
+		filterSet[id] = true
+	end
+
+	local pair = self:_parseScoreSkillIds(co.replacePassiveSkill)
+
+	if pair[1] and pair[2] and newSet[pair[1]] then
+		filterSet[pair[1]] = true
+		filterSet[pair[2]] = true
+	end
+
+	local result = {}
+
+	for i = 1, #passiveSkillIds do
+		if not filterSet[tonumber(passiveSkillIds[i])] then
+			table.insert(result, passiveSkillIds[i])
+		end
+	end
+
+	return result
 end
 
 local index2attr = {
@@ -1343,6 +1445,10 @@ function FightFocusView:_refreshMO(entityMO)
 	self:refreshMeiLeiEr(entityMO)
 	self:refreshDevicePower(entityMO)
 	self:refresh4_0HNJChannel(entityMO)
+
+	if self.viewContainer.onRefreshEntityMO then
+		self.viewContainer:onRefreshEntityMO(entityMO)
+	end
 end
 
 function FightFocusView:_refreshEnemyPassiveSkill(monsterCO)
@@ -1464,8 +1570,25 @@ function FightFocusView:_onBuffPassiveSkillClick()
 		gohelper.setActive(line, false)
 		gohelper.setActive(self._gobuffpassiveview, true)
 
+		self.lastPassiveViewY = recthelper.getAnchorY(self._gobuffpassiveview.transform)
+
+		recthelper.setAnchorY(self._gobuffpassiveview.transform, 100000)
+
+		local flow = self:com_registFlowSequence()
+
+		flow:registWork(FightWorkDelayTimer, 0.1)
+		flow:registWork(FightWorkFunction, gohelper.setActive, self._gobuffpassiveview, false)
+		flow:registWork(FightWorkDelayTimer, 0.01)
+		flow:registWork(FightWorkFunction, self.showPassiveRoot, self)
+		flow:start()
+
 		self._isbuffviewopen = true
 	end
+end
+
+function FightFocusView:showPassiveRoot()
+	gohelper.setActive(self._gobuffpassiveview, true)
+	recthelper.setAnchorY(self._gobuffpassiveview.transform, self.lastPassiveViewY)
 end
 
 function FightFocusView:_setPassiveSkillTip(skillgo, skillInfo)
@@ -1491,7 +1614,34 @@ function FightFocusView:onClickPassiveHyperLink(effectId, clickPosition)
 	CommonBuffTipController.instance:openCommonTipViewWithCustomPos(effectId, self.commonBuffTipAnchorPos, CommonBuffTipEnum.Pivot.Right, entityName)
 end
 
+function FightFocusView:_isZongMaoScoreBoss(entityMO)
+	if FightHelper.getCurBattleIdBossHpType() ~= FightViewBossHpMgr.BossHpType.ZongMaoScoreView then
+		return false
+	end
+
+	return entityMO:isMonster() and FightHelper.isBossId(self:_getBossId(), entityMO:getCO().id) or false
+end
+
 function FightFocusView:_refreshHp(entityMO)
+	if self:_isZongMaoScoreBoss(entityMO) then
+		self._txthp.text = ""
+
+		local fillRect = entityMO:isMySide() and self.myHpRect or self.enemyHpRect
+
+		self.hpSlider.fillRect = fillRect
+
+		gohelper.setActive(self.myHpRect.gameObject, entityMO:isMySide())
+		gohelper.setActive(self.enemyHpRect.gameObject, not entityMO:isMySide())
+		self._sliderhp:SetValue(1)
+
+		self.fictionHp.fillAmount = 0
+		self.fakeHp.fillAmount = 0
+
+		gohelper.setActive(self.reduceHpGo, false)
+
+		return
+	end
+
 	local rate = entityMO:getLockMaxHpRate()
 	local hp = math.max(entityMO.currentHp, 0)
 	local maxHp = entityMO.attrMO and math.max(entityMO.attrMO.hp, 0)
@@ -2630,6 +2780,28 @@ function FightFocusView:_refreshSkillGOs()
 	gohelper.setActive(self._goskills, not isQte and not isDevice)
 	gohelper.setActive(self._noskill, self._isNotSkill and not isQte and not isDevice)
 	gohelper.setActive(self._skill, not self._isNotSkill and not isQte and not isDevice)
+	self:_refreshDanger()
+end
+
+function FightFocusView:_refreshDanger()
+	local isShowDanger = self._deviceMo ~= nil or self._qteMo ~= nil
+
+	if BossRushController.instance:isInBossRushFight() then
+		local stage, layer, actId = BossRushModel.instance:getBattleStageAndLayer()
+		local layerCo = BossRushConfig.instance:getEpisodeCO(stage, layer, actId)
+		local episodeId = layerCo.episodeId
+		local isCurSeason = V4a1_BossRushModel.instance:isCurSeason(actId)
+
+		if isCurSeason and self._entityMO:isEnemySide() then
+			local moList = V4a1_BossRushModel.instance:getScoreSkillMos(episodeId)
+
+			if moList and #moList > 0 then
+				isShowDanger = true
+			end
+		end
+	end
+
+	gohelper.setActive(self._gorootdanger, isShowDanger)
 end
 
 function FightFocusView:_refreshDevice()

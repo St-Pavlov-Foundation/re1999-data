@@ -55,6 +55,7 @@ GuideEnum.GuideId = {
 	AssistAbyss = 40012,
 	PlayerViewAssist = 40011,
 	Act157FactoryUnlock = 18103,
+	NecrologistStoryV4A1Hero = 41101,
 	WeekWalkDeep = 506,
 	V3A5NecrologistStoryGame = 35011
 }

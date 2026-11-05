@@ -189,7 +189,14 @@ function PackageStoreGoodsView:onOpen()
 
 		logNormal("商店改版 底板: " .. itemBgIconName)
 
-		local itemBgIndex = StoreHelper.getPackageIconBgIndex(self._mo.goodsId, self._mo.id, underlayParam[1])
+		local itemBgIndex
+
+		if self._mo.config.showBg ~= nil and self._mo.config.showBg ~= 0 then
+			itemBgIndex = self._mo.config.showBg
+		else
+			itemBgIndex = StoreHelper.getPackageIconBgIndex(self._mo.goodsId, self._mo.id, underlayParam[1])
+		end
+
 		local itemIconBgName = itemBgIconName .. "_" .. self:_getNumStr(itemBgIndex)
 
 		logNormal("商店改版 图标底板: " .. itemIconBgName)

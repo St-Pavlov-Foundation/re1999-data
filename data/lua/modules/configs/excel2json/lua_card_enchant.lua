@@ -4,13 +4,14 @@ module("modules.configs.excel2json.lua_card_enchant", package.seeall)
 
 local lua_card_enchant = {}
 local fields = {
-	feature = 7,
+	extraKeys = 8,
 	id = 1,
-	excludeTypes = 3,
 	coverType = 2,
 	rejectTypes = 4,
+	desc = 9,
+	feature = 7,
+	excludeTypes = 3,
 	stage = 5,
-	desc = 8,
 	decStage = 6
 }
 local primaryKey = {
@@ -19,9 +20,36 @@ local primaryKey = {
 local mlStringKey = {
 	desc = 1
 }
+local _configList, _configDict
+local configPath = "configs.card_enchant_config"
 
-function lua_card_enchant.onLoad(json)
-	lua_card_enchant.configList, lua_card_enchant.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_card_enchant, "configList", _configList)
+	rawset(lua_card_enchant, "configDict", _configDict)
+end
+
+setmetatable(lua_card_enchant, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_card_enchant.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_card_enchant, "configList", nil)
+	rawset(lua_card_enchant, "configDict", nil)
 end
 
 return lua_card_enchant

@@ -18,9 +18,36 @@ local mlStringKey = {
 	desc = 2,
 	name = 1
 }
+local _configList, _configDict
+local configPath = "configs.activity101_dragonboat_config"
 
-function lua_activity101_dragonboat.onLoad(json)
-	lua_activity101_dragonboat.configList, lua_activity101_dragonboat.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_activity101_dragonboat, "configList", _configList)
+	rawset(lua_activity101_dragonboat, "configDict", _configDict)
+end
+
+setmetatable(lua_activity101_dragonboat, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_activity101_dragonboat.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_activity101_dragonboat, "configList", nil)
+	rawset(lua_activity101_dragonboat, "configDict", nil)
 end
 
 return lua_activity101_dragonboat

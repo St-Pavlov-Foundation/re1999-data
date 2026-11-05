@@ -303,6 +303,10 @@ function ActivityType101Config:getCasualSkinGiftActId()
 	return ActivityConfig.instance:getConstAsNum(40001, 14034)
 end
 
+function ActivityType101Config:getLinkGiftActId()
+	return ActivityConfig.instance:getConstAsNum(41002, 14115)
+end
+
 ActivityType101Config.instance = ActivityType101Config.New()
 
 return ActivityType101Config

@@ -2925,4 +2925,52 @@ function FightCalculateDataMgr:playEffect391(actEffectData)
 	self:updateClueInfo(actEffectData, false)
 end
 
+function FightCalculateDataMgr:playEffect392(actEffectData)
+	local entityMO = self:getTarEntityMO(actEffectData)
+
+	if not entityMO then
+		return
+	end
+
+	if entityMO.exPointType ~= FightEnum.ExPointType.Clue then
+		return
+	end
+
+	entityMO:changeExpointMaxAdd(actEffectData.effectNum)
+end
+
+function FightCalculateDataMgr:playEffect393(actEffectData)
+	local entityMO = self:getTarEntityMO(actEffectData)
+
+	if not entityMO then
+		return
+	end
+
+	local currentHp = entityMO.currentHp
+
+	entityMO:setHp(currentHp + actEffectData.effectNum)
+end
+
+function FightCalculateDataMgr:playEffect394(actEffectData)
+	local arr = FightStrUtil.instance:getSplitCache(actEffectData.reserveStr, "|")
+
+	if #arr > 0 then
+		for i, v in ipairs(arr) do
+			local arr1 = FightStrUtil.instance:getSplitCache(v, "#")
+			local entityId = arr1[1]
+			local position = tonumber(arr1[2]) or 1
+			local entityMO = self.dataMgr:getEntityById(entityId)
+
+			if entityMO then
+				if entityMO.position and entityMO.position ~= position then
+					actEffectData.custom_oldPosDict = actEffectData.custom_oldPosDict or {}
+					actEffectData.custom_oldPosDict[entityId] = entityMO.position
+				end
+
+				entityMO.position = position
+			end
+		end
+	end
+end
+
 return FightCalculateDataMgr

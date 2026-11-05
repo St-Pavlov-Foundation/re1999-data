@@ -5,10 +5,18 @@ module("modules.logic.fight.view.FightFocusViewContainer", package.seeall)
 local FightFocusViewContainer = class("FightFocusViewContainer", BaseViewContainer)
 
 function FightFocusViewContainer:buildViews()
-	return {
+	local view = {
 		FightFocusView.New(),
 		TabViewGroup.New(1, "fightinfocontainer/skilltipview")
 	}
+
+	if BossRushController.instance:isInBossRushFight() then
+		self._bossRushFightFocusView = BossRushFightFocusView.New()
+
+		table.insert(view, self._bossRushFightFocusView)
+	end
+
+	return view
 end
 
 function FightFocusViewContainer:onContainerClickModalMask()
@@ -47,6 +55,12 @@ function FightFocusViewContainer:playCloseTransition()
 	FightFocusViewContainer.super.playCloseTransition(self, {
 		anim = "close"
 	})
+end
+
+function FightFocusViewContainer:onRefreshEntityMO(entityMO)
+	if self._bossRushFightFocusView then
+		self._bossRushFightFocusView:onRefreshEntityMO(entityMO)
+	end
 end
 
 return FightFocusViewContainer

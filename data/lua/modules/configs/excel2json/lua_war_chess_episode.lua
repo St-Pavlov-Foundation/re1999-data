@@ -32,9 +32,36 @@ local mlStringKey = {
 	winConditionDesc = 1,
 	failConditionDesc = 3
 }
+local _configList, _configDict
+local configPath = "configs.war_chess_episode_config"
 
-function lua_war_chess_episode.onLoad(json)
-	lua_war_chess_episode.configList, lua_war_chess_episode.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_war_chess_episode, "configList", _configList)
+	rawset(lua_war_chess_episode, "configDict", _configDict)
+end
+
+setmetatable(lua_war_chess_episode, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_war_chess_episode.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_war_chess_episode, "configList", nil)
+	rawset(lua_war_chess_episode, "configDict", nil)
 end
 
 return lua_war_chess_episode

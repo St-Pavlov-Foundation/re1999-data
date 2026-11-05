@@ -45,6 +45,10 @@ function FightSceneViewComp:onSceneClose(sceneId, levelId)
 	ViewMgr.instance:closeView(ViewName.QteSkillTipView, true)
 	ViewMgr.instance:closeView(ViewName.FightQteTipView, true)
 	ViewMgr.instance:closeView(ViewName.QteEnterEffectView, true)
+
+	if isDebugBuild then
+		ViewMgr.instance:closeView(ViewName.GM_FightDataShowView, true)
+	end
 end
 
 return FightSceneViewComp

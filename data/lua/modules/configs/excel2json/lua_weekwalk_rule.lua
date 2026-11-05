@@ -13,9 +13,36 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.weekwalk_rule_config"
 
-function lua_weekwalk_rule.onLoad(json)
-	lua_weekwalk_rule.configList, lua_weekwalk_rule.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_weekwalk_rule, "configList", _configList)
+	rawset(lua_weekwalk_rule, "configDict", _configDict)
+end
+
+setmetatable(lua_weekwalk_rule, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_weekwalk_rule.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_weekwalk_rule, "configList", nil)
+	rawset(lua_weekwalk_rule, "configDict", nil)
 end
 
 return lua_weekwalk_rule

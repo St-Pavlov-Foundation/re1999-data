@@ -34,7 +34,7 @@ function FightTLEventSceneMask:onTrackStart(fightStepData, duration, paramsArr)
 	local mainCameraGO = CameraMgr.instance:getMainCameraGO()
 	local sceneMaskGO = gohelper.findChild(mainCameraGO, "scenemask")
 
-	self._effectWrap = FightEffectPool.getEffect(effectPath, FightEnum.EntitySide.BothSide, self._onEffectLoaded, self, sceneMaskGO)
+	self._effectWrap = FightGameMgr.effectMgr:getEffect(effectPath, FightEnum.EntitySide.BothSide, self._onEffectLoaded, self, sceneMaskGO)
 
 	self._effectWrap:setLayer(UnityLayer.Unit)
 end
@@ -99,7 +99,7 @@ function FightTLEventSceneMask:_clear()
 	end
 
 	if self._effectWrap then
-		FightEffectPool.returnEffect(self._effectWrap)
+		FightGameMgr.effectMgr:returnEffect(self._effectWrap)
 
 		self._effectWrap = nil
 	end

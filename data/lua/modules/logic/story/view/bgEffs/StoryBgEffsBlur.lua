@@ -132,6 +132,7 @@ function StoryBgEffsBlur:destroy()
 
 	if customImg then
 		customImg.vecInSide = Vector4.zero
+		customImg.enabled = true
 	end
 
 	local imagebg = StoryViewMgr.instance:getStoryBgImage()

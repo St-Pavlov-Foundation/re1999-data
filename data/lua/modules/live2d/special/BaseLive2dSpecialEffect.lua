@@ -38,6 +38,10 @@ function BaseLive2dSpecialEffect:isPlayingVoiceId(id)
 	return self._live2d and self._live2d:isPlayingVoiceId(id)
 end
 
+function BaseLive2dSpecialEffect:onBeforeBodyChange(prevBodyName, curBodyName)
+	self:_onBeforeBodyChange(prevBodyName, curBodyName)
+end
+
 function BaseLive2dSpecialEffect:onBodyChange(prevBodyName, curBodyName)
 	self:_onBodyChange(prevBodyName, curBodyName)
 end
@@ -57,6 +61,10 @@ function BaseLive2dSpecialEffect:isFindAnim(curName, checkNames)
 end
 
 function BaseLive2dSpecialEffect:_onInit()
+	return
+end
+
+function BaseLive2dSpecialEffect:_onBeforeBodyChange(prevBodyName, curBodyName)
 	return
 end
 

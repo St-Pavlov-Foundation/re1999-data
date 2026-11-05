@@ -15,9 +15,36 @@ local mlStringKey = {
 	content = 1,
 	title = 2
 }
+local _configList, _configDict
+local configPath = "configs.messagebox_config"
 
-function lua_messagebox.onLoad(json)
-	lua_messagebox.configList, lua_messagebox.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_messagebox, "configList", _configList)
+	rawset(lua_messagebox, "configDict", _configDict)
+end
+
+setmetatable(lua_messagebox, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_messagebox.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_messagebox, "configList", nil)
+	rawset(lua_messagebox, "configDict", nil)
 end
 
 return lua_messagebox

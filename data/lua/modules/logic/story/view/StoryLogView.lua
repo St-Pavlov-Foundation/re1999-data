@@ -51,12 +51,11 @@ function StoryLogView:_refreshView()
 end
 
 function StoryLogView:onClose()
-	PostProcessingMgr.instance:setIgnoreUIBlur(false)
 	AudioEffectMgr.instance:stopAudio(StoryLogListModel.instance:getPlayingLogAudioId(), 0)
 end
 
 function StoryLogView:onDestroyView()
-	return
+	PostProcessingMgr.instance:setIgnoreUIBlur(false)
 end
 
 return StoryLogView

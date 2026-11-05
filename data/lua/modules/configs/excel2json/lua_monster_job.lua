@@ -43,9 +43,36 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.monster_job_config"
 
-function lua_monster_job.onLoad(json)
-	lua_monster_job.configList, lua_monster_job.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_monster_job, "configList", _configList)
+	rawset(lua_monster_job, "configDict", _configDict)
+end
+
+setmetatable(lua_monster_job, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_monster_job.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_monster_job, "configList", nil)
+	rawset(lua_monster_job, "configDict", nil)
 end
 
 return lua_monster_job

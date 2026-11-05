@@ -83,6 +83,7 @@ function WarmUp:_day1ToCover()
 	UIBlockHelper.instance:startBlock(kBlock_day1ToCover, kTimeout, self.viewName)
 	self:_setActive_openAndUnopen(false)
 	self:_setActive_drag(true)
+	self:_setActive_reddot(false)
 	self:_playAnim("open_to_close", self._onDay1ToCover, self)
 end
 
@@ -96,6 +97,8 @@ function WarmUp:_onDay1ToCover()
 
 	self:_doSwitchByEpisodeId(episodeId, true)
 	self:_setSelectIndex(self:episode2Index(episodeId), true)
+	self:_doSelectTabByEpisodeId(episodeId)
+	self:_refresh()
 	self:_setActive_reddot(not isRecevied)
 	self:_setActive_guide(true, true)
 	UIBlockHelper.instance:endBlock(kBlock_day1ToCover)
@@ -1082,7 +1085,7 @@ function WarmUp:_getVisibleTextHeight(tmpcmp)
 
 	local visibleCount = tmpcmp.maxVisibleCharacters
 	local charCount = textInfo.characterCount
-	local endIndex = math.min(visibleCount, charCount)
+	local endIndex = math.min(visibleCount, charCount - 1)
 
 	if endIndex <= 0 then
 		return 0

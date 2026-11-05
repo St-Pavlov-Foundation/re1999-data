@@ -10,9 +10,9 @@ function RoomFormulaMsgBoxViewViewContainer:buildViews()
 	local views = {}
 	local listScrollParam = ListScrollParam.New()
 
-	listScrollParam.scrollGOPath = "Exchange/Left/ScrollView"
+	listScrollParam.scrollGOPath = "ContentLayout/Exchange/Left/ScrollView"
 	listScrollParam.prefabType = ScrollEnum.ScrollPrefabFromView
-	listScrollParam.prefabUrl = "Exchange/Left/ScrollView/Viewport/Content/#go_PropItem"
+	listScrollParam.prefabUrl = "ContentLayout/Exchange/Left/ScrollView/Viewport/Content/#go_PropItem"
 	listScrollParam.cellClass = RoomFormulaMsgBoxItem
 	listScrollParam.scrollDir = ScrollEnum.ScrollDirV
 	listScrollParam.cellWidth = 120

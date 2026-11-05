@@ -168,6 +168,25 @@ function SkillEditorStepBuilder._buildDamage(skillCO, fightStepData, attackerId,
 
 			SkillEditorStepBuilder._buildActEffect(fightStepData.actEffect, tar_entity_mo.id, et, num, side)
 		end
+	elseif FightEnum.LogicTargetClassify.EnemyMostExpoint[skillCO.logicTarget] then
+		local defMOList = FightDataHelper.entityMgr:getNormalList(oppositeSide)
+		local tar_entity_mo
+		local max_num = -1
+
+		for _, entityMO in ipairs(defMOList) do
+			local exPoint = entityMO:getExPoint() or 0
+
+			if max_num < exPoint then
+				max_num = exPoint
+				tar_entity_mo = entityMO
+			end
+		end
+
+		if tar_entity_mo then
+			local et, num = SkillEditorStepBuilder._getDmgTypeAndNum(ET.DAMAGE)
+
+			SkillEditorStepBuilder._buildActEffect(fightStepData.actEffect, tar_entity_mo.id, et, num, side)
+		end
 	elseif FightEnum.LogicTargetClassify.EnemyWith101Buff[skillCO.logicTarget] then
 		local defMOList = FightDataHelper.entityMgr:getNormalList(oppositeSide)
 

@@ -179,6 +179,8 @@ function FightCardPlayFlyEffect:_buildAniFlow_2_1()
 				url = "ui/viewres/fight/fightskin/0002/ui_chupai_01.prefab"
 			elseif cardSkin == 672803 then
 				url = "ui/viewres/fight/fightskin/0003/ui_chupai_01.prefab"
+			elseif cardSkin == 672804 then
+				url = "ui/viewres/fight/fightskin/0004/ui_chupai_01.prefab"
 			end
 
 			if skillLevel < FightEnum.UniqueSkillCardLv then
@@ -190,6 +192,8 @@ function FightCardPlayFlyEffect:_buildAniFlow_2_1()
 					url = "ui/viewres/fight/fightskin/0002/ui_chupai_02.prefab"
 				elseif cardSkin == 672803 then
 					url = "ui/viewres/fight/fightskin/0003/ui_chupai_02.prefab"
+				elseif cardSkin == 672804 then
+					url = "ui/viewres/fight/fightskin/0004/ui_chupai_02.prefab"
 				end
 			else
 				url = ResUrl.getUIEffect(FightPreloadViewWork.ui_chupai_03)
@@ -200,6 +204,8 @@ function FightCardPlayFlyEffect:_buildAniFlow_2_1()
 					url = "ui/viewres/fight/fightskin/0002/ui_chupai_03.prefab"
 				elseif cardSkin == 672803 then
 					url = "ui/viewres/fight/fightskin/0003/ui_chupai_03.prefab"
+				elseif cardSkin == 672804 then
+					url = "ui/viewres/fight/fightskin/0004/ui_chupai_03.prefab"
 				end
 			end
 

@@ -1,0 +1,26 @@
+﻿-- chunkname: @configs/player_bg_config.lua
+
+return {
+	{
+		1,
+		"起止点",
+		"由此开始，于此结束。",
+		0,
+		"",
+		"beijing_1",
+		"defaultbg",
+		"",
+		""
+	},
+	{
+		2,
+		"声浪的顶峰",
+		"呼喊、鼓掌与得体的谢幕都汇入乐曲，于是此外的一切愈发无声。",
+		210001,
+		"通关6TH-24 今夜星光灿烂获取",
+		"beijing_2",
+		"bg210001",
+		"mingpian_di_1",
+		"mingpian_di_2"
+	}
+}

@@ -62,9 +62,11 @@ function CharacterTalentLevelUpView:_btntalentOnClick()
 	local notEnoughItemName, enough, icon = ItemModel.instance:hasEnoughItemsByCellData(self.item_list)
 
 	if not enough then
-		if self._canEasyCombine then
-			PopupCacheModel.instance:setViewIgnoreGetPropView(self.viewName, true, MaterialEnum.GetApproach.RoomProductChange)
-			RoomProductionHelper.openRoomFormulaMsgBoxView(self._easyCombineTable, self._lackedItemDataList, RoomProductLineEnum.Line.Spring, nil, nil, self._onEasyCombineFinished, self)
+		if self._oneKeyLevelUp then
+			PopupCacheModel.instance:setViewIgnoreGetPropView(self.viewName, true)
+			RoomProductionHelper.openRoomFormulaMsgBoxView(self._easyCombineTable, self._lackedItemDataList, RoomProductLineEnum.Line.Spring, nil, nil, self._onEasyCombineFinished, self, self._lackedTalentDataList, RoomFormulaMsgBoxView.Source.Talent, {
+				heroId = self.hero_id
+			})
 
 			return
 		else
@@ -163,6 +165,8 @@ function CharacterTalentLevelUpView:onOpen()
 	gohelper.setActive(self._gomaxtalent, self.next_config == nil)
 
 	self._canEasyCombine = false
+	self._canGetTalentItem = false
+	self._oneKeyLevelUp = false
 
 	if not self.next_config then
 		self._txttalentresult.text = string.format("%s<size=18>LV</size>.%s", resonance_str, HeroResonanceConfig.instance:getTalentConfig(self.hero_id, self.hero_mo_data.talent + 1) and self.hero_mo_data.talent or "max")
@@ -184,6 +188,8 @@ function CharacterTalentLevelUpView:onOpen()
 		self._txtnextlevel.text = resonance_str .. "<size=18>LV</size>." .. self.hero_mo_data.talent + 1
 		self._lackedItemDataList = {}
 		self._occupyItemDic = {}
+		self._lackedTalentDataList = {}
+		self._lackedTalentNum = 0
 
 		local item_list = ItemModel.instance:getItemDataListByConfigStr(self.next_config.consume)
 
@@ -192,6 +198,10 @@ function CharacterTalentLevelUpView:onOpen()
 		IconMgr.instance:getCommonPropItemIconList(self, self._onCostItemShow, item_list, self._gorequest)
 
 		self._canEasyCombine, self._easyCombineTable = RoomProductionHelper.canEasyCombineItems(self._lackedItemDataList, self._occupyItemDic)
+		self._talentBoxItemNum = ItemModel.instance:getItemQuantity(MaterialEnum.MaterialType.Item, ItemEnum.TalentBoxItemId)
+		self._canGetTalentItem = self._lackedTalentNum <= 0 or self._talentBoxItemNum >= self._lackedTalentNum
+		self._lackedItemNum = #self._lackedItemDataList
+		self._oneKeyLevelUp = (self._lackedTalentNum > 0 or self._lackedItemNum > 0) and (self._lackedItemNum <= 0 or self._canEasyCombine) and self._canGetTalentItem
 		self._occupyItemDic = nil
 
 		recthelper.setWidth(self._goframe.transform, 350.5 + #self.item_list * 77.5)
@@ -209,7 +219,7 @@ function CharacterTalentLevelUpView:onOpen()
 
 	self._txtbtntalentcn.text = luaLang("talent_charactertalentlevelup_btntalent" .. self.hero_mo_data:getTalentTxtByHeroType())
 
-	gohelper.setActive(self._gocaneasycombinetip, self._canEasyCombine)
+	gohelper.setActive(self._gocaneasycombinetip, self._oneKeyLevelUp)
 	self:_checkTalentStyle()
 end
 
@@ -228,11 +238,21 @@ function CharacterTalentLevelUpView:_onCostItemShow(cell_component, data, index)
 	local enoughText, lackedQuantity = ItemModel.instance:getItemIsEnoughText(data)
 
 	if lackedQuantity then
-		table.insert(self._lackedItemDataList, {
-			type = type,
-			id = id,
-			quantity = lackedQuantity
-		})
+		if ItemEnum.TalentItemIdMap[id] then
+			self._lackedTalentNum = self._lackedTalentNum + lackedQuantity
+
+			table.insert(self._lackedTalentDataList, {
+				type = type,
+				id = id,
+				quantity = lackedQuantity
+			})
+		else
+			table.insert(self._lackedItemDataList, {
+				type = type,
+				id = id,
+				quantity = lackedQuantity
+			})
+		end
 	else
 		if not self._occupyItemDic[type] then
 			self._occupyItemDic[type] = {}

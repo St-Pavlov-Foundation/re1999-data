@@ -28,6 +28,8 @@ function FightWorkSendOperate2Server:onStart()
 			parallel:registWork(FightWorkSkinDownEffectExit672802)
 		elseif cardSkin == 672803 then
 			parallel:registWork(FightWorkSkinDownEffectExit672803)
+		elseif cardSkin == 672804 then
+			parallel:registWork(FightWorkSkinDownEffectExit672804)
 		end
 	end
 

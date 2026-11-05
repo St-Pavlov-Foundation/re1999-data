@@ -68,9 +68,14 @@ function ResSplitSaveCharacterWork:_addSkinRes(config, exclude)
 
 	ResSplitModel.instance:setInclude(ResSplitEnum.Path, path, exclude)
 
-	local path = ResUrl.getHeadIconImg(config.drawing)
+	local path
 
-	ResSplitModel.instance:setInclude(ResSplitEnum.Path, path, exclude)
+	if not string.nilorempty(config.drawing) then
+		path = ResUrl.getHeadIconImg(config.drawing)
+
+		ResSplitModel.instance:setInclude(ResSplitEnum.Path, path, exclude)
+	end
+
 	ResSplitHelper.checkConfigEmpty(mainKey, "headIcon", config.headIcon)
 
 	path = ResUrl.getHeadIconSmall(config.headIcon)
@@ -89,21 +94,29 @@ function ResSplitSaveCharacterWork:_addSkinRes(config, exclude)
 
 	ResSplitModel.instance:setInclude(ResSplitEnum.Path, path, exclude)
 
-	path = ResUrl.getHeadIconLarge(config.largeIcon)
+	if not string.nilorempty(config.largeIcon) then
+		path = ResUrl.getHeadIconLarge(config.largeIcon)
 
-	ResSplitModel.instance:setInclude(ResSplitEnum.Path, path, exclude)
+		ResSplitModel.instance:setInclude(ResSplitEnum.Path, path, exclude)
+	end
 
-	path = ResUrl.getHeadSkinIconMiddle(config.skinGetIcon)
+	if not string.nilorempty(config.skinGetIcon) then
+		path = ResUrl.getHeadSkinIconMiddle(config.skinGetIcon)
 
-	ResSplitModel.instance:setInclude(ResSplitEnum.Path, path, exclude)
+		ResSplitModel.instance:setInclude(ResSplitEnum.Path, path, exclude)
+	end
 
-	path = ResUrl.getHeadSkinIconLarge(config.skinGetBackIcon)
+	if not string.nilorempty(config.skinGetBackIcon) then
+		path = ResUrl.getHeadSkinIconLarge(config.skinGetBackIcon)
 
-	ResSplitModel.instance:setInclude(ResSplitEnum.Path, path, exclude)
+		ResSplitModel.instance:setInclude(ResSplitEnum.Path, path, exclude)
+	end
 
-	path = ResUrl.getLightLive2dFolder(config.live2d)
+	if not string.nilorempty(config.live2d) then
+		path = ResUrl.getLightLive2dFolder(config.live2d)
 
-	ResSplitModel.instance:setInclude(ResSplitEnum.Folder, path, exclude)
+		ResSplitModel.instance:setInclude(ResSplitEnum.Folder, path, exclude)
+	end
 
 	local live2dbg = config.live2dbg
 
@@ -113,21 +126,28 @@ function ResSplitSaveCharacterWork:_addSkinRes(config, exclude)
 		ResSplitModel.instance:setInclude(ResSplitEnum.Path, path, exclude)
 	end
 
-	path = ResUrl.getRolesPrefabStoryFolder(config.verticalDrawing)
-	path = string.sub(path, 1, string.len(path) - 1)
+	if not string.nilorempty(config.verticalDrawing) then
+		path = ResUrl.getRolesPrefabStoryFolder(config.verticalDrawing)
+		path = string.sub(path, 1, string.len(path) - 1)
 
-	ResSplitModel.instance:setInclude(ResSplitEnum.Path, path, exclude)
+		ResSplitModel.instance:setInclude(ResSplitEnum.Path, path, exclude)
+	end
 
-	local arr = string.split(config.spine, "/")
+	local arr
 
-	path = string.format("roles/%s/", arr[1])
+	if not string.nilorempty(config.spine) then
+		arr = string.split(config.spine, "/")
+		path = string.format("roles/%s/", arr[1])
 
-	ResSplitModel.instance:setInclude(ResSplitEnum.Folder, path, exclude)
+		ResSplitModel.instance:setInclude(ResSplitEnum.Folder, path, exclude)
+	end
 
-	arr = string.split(config.alternateSpine, "/")
-	path = string.format("roles/%s/", arr[1])
+	if not string.nilorempty(config.alternateSpine) then
+		arr = string.split(config.alternateSpine, "/")
+		path = string.format("roles/%s/", arr[1])
 
-	ResSplitModel.instance:setInclude(ResSplitEnum.Folder, path, exclude)
+		ResSplitModel.instance:setInclude(ResSplitEnum.Folder, path, exclude)
+	end
 
 	local limitedCO = lua_character_limited.configDict[config.id]
 
@@ -150,7 +170,11 @@ function ResSplitSaveCharacterWork:_addSkinRes(config, exclude)
 	end
 
 	local data = {}
-	local spineParam = string.split(config.skin2dParams, "#")
+	local spineParam = {}
+
+	if not string.nilorempty(config.skin2dParams) then
+		spineParam = string.split(config.skin2dParams, "#")
+	end
 
 	data.spinePath = spineParam[1]
 	data.spinePos = spineParam[2] and string.splitToNumber(spineParam[2], ",") or {

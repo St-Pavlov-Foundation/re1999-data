@@ -44,7 +44,7 @@ function VersionActivity3_2BeiLiErEnterView:_editableInitView()
 end
 
 function VersionActivity3_2BeiLiErEnterView:onOpen()
-	RedDotController.instance:addRedDot(self._goEnterRedDot, RedDotEnum.DotNode.Activity220Task, self.actId)
+	RedDotController.instance:addRedDot(self._goEnterRedDot, RedDotEnum.DotNode.PermanentActivity220Task, self.actId)
 	self:_refreshTime()
 	TaskDispatcher.runRepeat(self._refreshTime, self, TimeUtil.OneMinuteSecond)
 	self._animator:Play("open", 0, 0)

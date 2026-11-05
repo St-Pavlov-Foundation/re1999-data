@@ -25,9 +25,36 @@ local mlStringKey = {
 	useDesc = 2,
 	desc = 3
 }
+local _configList, _configDict
+local configPath = "configs.power_item_config"
 
-function lua_power_item.onLoad(json)
-	lua_power_item.configList, lua_power_item.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_power_item, "configList", _configList)
+	rawset(lua_power_item, "configDict", _configDict)
+end
+
+setmetatable(lua_power_item, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_power_item.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_power_item, "configList", nil)
+	rawset(lua_power_item, "configDict", nil)
 end
 
 return lua_power_item

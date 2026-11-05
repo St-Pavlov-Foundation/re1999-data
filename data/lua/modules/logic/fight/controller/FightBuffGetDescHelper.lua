@@ -81,7 +81,10 @@ function FightBuffGetDescHelper.getBuffFeatureHandle(feature)
 			[FightEnum.BuffFeature.FoundationShield] = FightBuffGetDescHelper.onFoundationShield,
 			[FightEnum.BuffFeature.HedoneHurtCounter] = FightBuffGetDescHelper.formatActInfoOneParam,
 			[FightEnum.BuffFeature.NarcissusCounterDamageImmune] = FightBuffGetDescHelper.getNarcissusCounterDamageImmuneDesc,
-			[FightEnum.BuffFeature.NarcissusAddAttrByPassionEx] = FightBuffGetDescHelper.formatActInfoOneParam
+			[FightEnum.BuffFeature.NarcissusAddAttrByPassionEx] = FightBuffGetDescHelper.formatActInfoOneParam,
+			[FightEnum.BuffFeature.Burn] = FightBuffGetDescHelper.getBurnDesc,
+			[FightEnum.BuffFeature.GuardianPuppet] = FightBuffGetDescHelper.formatActInfoOneParam,
+			[FightEnum.BuffFeature.DotMaxHpQTE] = FightBuffGetDescHelper.getDotMaxHpQTEDesc
 		}
 	end
 
@@ -330,6 +333,24 @@ function FightBuffGetDescHelper.getNarcissusCounterDamageImmuneDesc(buffMo, buff
 	end
 
 	return GameUtil.getSubPlaceholderLuaLangTwoParam(buffCo.desc, param[1], paramTwo)
+end
+
+function FightBuffGetDescHelper.getBurnDesc(buffMo, buffCo, buffActCo, paramArray, buffActInfo)
+	local entityId = buffMo.entityId
+	local maxLayer = FightEnum.DefaultBurnMax
+	local entityMo = FightDataHelper.entityMgr:getById(entityId)
+
+	if entityMo then
+		maxLayer = entityMo:getBurnMax()
+	end
+
+	return GameUtil.getSubPlaceholderLuaLangOneParam(buffCo.desc, maxLayer)
+end
+
+function FightBuffGetDescHelper.getDotMaxHpQTEDesc(buffMo, buffCo, buffActCo, paramArray, buffActInfo)
+	local param = tonumber(buffActInfo.param[1])
+
+	return GameUtil.getSubPlaceholderLuaLangOneParam(buffCo.desc, param / 10)
 end
 
 return FightBuffGetDescHelper

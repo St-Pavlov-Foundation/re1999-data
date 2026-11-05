@@ -241,7 +241,7 @@ end
 function ActivityController:updateAct101Infos(targetActId)
 	self:_initRoleSign_kAct101RedList()
 	self:_initSpecialSign_kAct101RedList()
-	self:_initLinkageActivity_kAct101RedList()
+	self:_initLinkGift_kAct101RedList()
 	self:_initVersionSummon_kAct101RedList()
 	self:_initDoubleDan_kAct101RedList()
 	self:_initActivityCollect_kAct101RedList()
@@ -301,20 +301,6 @@ function ActivityController:_initSpecialSign_kAct101RedList()
 	s_SpecialSign = true
 
 	local actId = GameBranchMgr.instance:Vxax_ActId("Special", ActivityEnum.Activity.V2a3_Special)
-
-	table.insert(kAct101RedList, actId)
-end
-
-local s_LinkageActivity = false
-
-function ActivityController:_initLinkageActivity_kAct101RedList()
-	if s_LinkageActivity then
-		return
-	end
-
-	s_LinkageActivity = true
-
-	local actId = GameBranchMgr.instance:Vxax_ActId("LinkageActivity", ActivityEnum.Activity.LinkageActivity_FullView)
 
 	table.insert(kAct101RedList, actId)
 end
@@ -400,6 +386,22 @@ function ActivityController:_initCasualSkinGift_kAct101RedList()
 	s_CasualSkinGift = true
 
 	local actId = GameBranchMgr.instance:Vxax_ActId("CasualSkinGift", ActivityType101Config.instance:getCasualSkinGiftActId())
+
+	if actId then
+		table.insert(kAct101RedList, actId)
+	end
+end
+
+local s_LinkGift = false
+
+function ActivityController:_initLinkGift_kAct101RedList()
+	if s_LinkGift then
+		return
+	end
+
+	s_LinkGift = true
+
+	local actId = GameBranchMgr.instance:Vxax_ActId("LinkGift", ActivityType101Config.instance:getLinkGiftActId())
 
 	if actId then
 		table.insert(kAct101RedList, actId)

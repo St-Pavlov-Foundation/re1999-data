@@ -1,0 +1,16 @@
+﻿-- chunkname: @configs/fight_hnj_second_stage_effect_config.lua
+
+return {
+	{
+		315501,
+		"v4a0_sxnwhnj/sxnwhnj_qte3_sceneeffect"
+	},
+	{
+		315502,
+		"v4a0_sxnwhnj/sxnwhnj_qte3_sceneeffect"
+	},
+	{
+		315503,
+		"v4a0_tlzchnj/tlzchnj_qte3_sceneeffect"
+	}
+}

@@ -17,9 +17,36 @@ local primaryKey = {
 	"day"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.anniversary_sign_in_config"
 
-function lua_anniversary_sign_in.onLoad(json)
-	lua_anniversary_sign_in.configList, lua_anniversary_sign_in.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_anniversary_sign_in, "configList", _configList)
+	rawset(lua_anniversary_sign_in, "configDict", _configDict)
+end
+
+setmetatable(lua_anniversary_sign_in, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_anniversary_sign_in.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_anniversary_sign_in, "configList", nil)
+	rawset(lua_anniversary_sign_in, "configDict", nil)
 end
 
 return lua_anniversary_sign_in

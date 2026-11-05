@@ -17,9 +17,36 @@ local primaryKey = {
 local mlStringKey = {
 	desc = 1
 }
+local _configList, _configDict
+local configPath = "configs.assassin_style_item_config"
 
-function lua_assassin_style_item.onLoad(json)
-	lua_assassin_style_item.configList, lua_assassin_style_item.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_assassin_style_item, "configList", _configList)
+	rawset(lua_assassin_style_item, "configDict", _configDict)
+end
+
+setmetatable(lua_assassin_style_item, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_assassin_style_item.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_assassin_style_item, "configList", nil)
+	rawset(lua_assassin_style_item, "configDict", nil)
 end
 
 return lua_assassin_style_item

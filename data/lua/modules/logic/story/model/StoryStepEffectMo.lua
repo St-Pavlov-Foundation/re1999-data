@@ -41,6 +41,7 @@ function StoryStepEffectMo:ctor()
 	}
 	self.pos = {}
 	self.layer = 9
+	self.stateName = nil
 end
 
 function StoryStepEffectMo:init(info)
@@ -56,6 +57,7 @@ function StoryStepEffectMo:init(info)
 		info[9]
 	}
 	self.layer = info[10]
+	self.stateName = info[11]
 end
 
 return StoryStepEffectMo

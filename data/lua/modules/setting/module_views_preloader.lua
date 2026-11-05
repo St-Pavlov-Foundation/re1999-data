@@ -336,6 +336,42 @@ function module_views_preloader.V3a9_BossRush_LevelDetailView(allResPath)
 	table.insert(allResPath, BossRushConfig.instance:getBossDetailFullPath(stage, actId))
 end
 
+function module_views_preloader.V4a1_BossRush_LevelDetailView(allResPath)
+	local container = ViewMgr.instance:getContainer(ViewName.V4a1_BossRush_LevelDetailView)
+	local viewParam = container and container.viewParam
+
+	if not viewParam then
+		return
+	end
+
+	local stage = viewParam.stage
+	local resPathList = BossRushConfig.instance:getMonsterResPathList(stage)
+
+	for _, v in ipairs(resPathList) do
+		table.insert(allResPath, v)
+	end
+
+	table.insert(allResPath, BossRushConfig.instance:getBossDetailFullPath(stage))
+end
+
+function module_views_preloader.V4a1_BossRush_LevelReviewView(allResPath)
+	local container = ViewMgr.instance:getContainer(ViewName.V4a1_BossRush_LevelReviewView)
+	local viewParam = container and container.viewParam
+
+	if not viewParam then
+		return
+	end
+
+	local stage = viewParam.stage
+	local resPathList = BossRushConfig.instance:getMonsterResPathList(stage)
+
+	for _, v in ipairs(resPathList) do
+		table.insert(allResPath, v)
+	end
+
+	table.insert(allResPath, BossRushConfig.instance:getBossDetailFullPath(stage))
+end
+
 function module_views_preloader.VersionActivity2_7DungeonMapView(allResPath)
 	local spaceScenePath = VersionActivity2_7DungeonEnum.SpaceScene
 
@@ -406,6 +442,45 @@ function module_views_preloader.MainUISwitchInfoView()
 	table.insert(allResPath, "ui/viewres/mainsceneswitch/mainsuiswitchinfoview.prefab")
 	table.insert(allResPath, "ui/viewres/mainsceneswitch/mainuiswitchblurmask.prefab")
 	table.insert(allResPath, "ui/viewres/main/mainview.prefab")
+end
+
+function module_views_preloader.GuessGameNewMainView(allResPath)
+	local container = ViewMgr.instance:getContainer(ViewName.GuessGameNewMainView)
+
+	if not container then
+		return
+	end
+
+	table.insert(allResPath, ResUrl.getV4a1GuessGameNewSingleBg("v4a1_game_fullbg2"))
+	table.insert(allResPath, ResUrl.getV4a1GuessGameNewSingleBg("v4a1_game_fullbg3"))
+end
+
+function module_views_preloader.LinkGift_PanelView(allResPath)
+	local container = ViewMgr.instance:getContainer(ViewName.LinkGift_PanelView)
+
+	if not container then
+		return
+	end
+
+	if ViewMgr.instance:getSetting(ViewName.LinkGift_PanelView) == ViewMgr.instance:getSetting(ViewName.V4a1_LinkGift_PanelView) then
+		table.insert(allResPath, ResUrl.getV4a1LinkGiftSingleBg("activity_linkgift_bookbg"))
+		table.insert(allResPath, ResUrl.getV4a1LinkGiftSingleBg("activity_linkgift_bookbg3"))
+		table.insert(allResPath, ResUrl.getV4a1LinkGiftSingleBg("activity_linkgift_bookbg2"))
+		table.insert(allResPath, ResUrl.getV4a1LinkGiftSingleBg("activity_linkgift_fulldecbg"))
+	end
+end
+
+function module_views_preloader.Investigation_GuessView(allResPath)
+	local container = ViewMgr.instance:getContainer(ViewName.Investigation_GuessView)
+
+	if not container then
+		return
+	end
+
+	if ViewMgr.instance:getSetting(ViewName.Investigation_GuessView) == ViewMgr.instance:getSetting(ViewName.V4a1_Investigation_GuessView) then
+		table.insert(allResPath, ResUrl.getV4a1InvestigationSingleBg("v4a1_investigation_answer_fullbg"))
+		table.insert(allResPath, ResUrl.getV4a1InvestigationSingleBg("v4a1_investigation_leftbg"))
+	end
 end
 
 local loaderDict = {}

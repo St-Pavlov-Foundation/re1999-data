@@ -1,0 +1,20 @@
+﻿-- chunkname: @configs/task_hide_achievement_config.lua
+
+return {
+	{
+		50001,
+		0,
+		"隐藏成就",
+		"获得5个角色",
+		"获得5个角色",
+		0,
+		0,
+		"",
+		"",
+		"HeroCount",
+		"0",
+		5,
+		1,
+		"2#2#30"
+	}
+}

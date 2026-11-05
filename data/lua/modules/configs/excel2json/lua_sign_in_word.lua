@@ -14,9 +14,36 @@ local primaryKey = {
 local mlStringKey = {
 	signinword = 1
 }
+local _configList, _configDict
+local configPath = "configs.sign_in_word_config"
 
-function lua_sign_in_word.onLoad(json)
-	lua_sign_in_word.configList, lua_sign_in_word.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_sign_in_word, "configList", _configList)
+	rawset(lua_sign_in_word, "configDict", _configDict)
+end
+
+setmetatable(lua_sign_in_word, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_sign_in_word.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_sign_in_word, "configList", nil)
+	rawset(lua_sign_in_word, "configDict", nil)
 end
 
 return lua_sign_in_word

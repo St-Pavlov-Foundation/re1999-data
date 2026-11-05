@@ -131,8 +131,8 @@ function ActivityConfig:getMainActExtraDisplayList()
 	return self._mainActExtraDisplayList
 end
 
-function ActivityConfig:getActivityCo(id)
-	if not self._activityConfig.configDict[id] then
+function ActivityConfig:getActivityCo(id, notError)
+	if not self._activityConfig.configDict[id] and not notError then
 		logError("前端活动配置表不存在活动:" .. tostring(id))
 	end
 
@@ -362,6 +362,18 @@ function ActivityConfig:isActIdInList(actId, actIdList)
 	end
 
 	return false
+end
+
+function ActivityConfig:splitParamToNumber(actId, optDelimiter)
+	local activityCo = self:getActivityCo(actId, true)
+
+	if not activityCo then
+		return {}
+	end
+
+	optDelimiter = optDelimiter or "#"
+
+	return string.splitToNumber(activityCo.param, optDelimiter)
 end
 
 ActivityConfig.instance = ActivityConfig.New()

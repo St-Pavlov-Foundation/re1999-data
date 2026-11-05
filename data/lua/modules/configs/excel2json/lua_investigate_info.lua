@@ -25,9 +25,36 @@ local mlStringKey = {
 	conclusionDesc = 4,
 	desc = 3
 }
+local _configList, _configDict
+local configPath = "configs.investigate_info_config"
 
-function lua_investigate_info.onLoad(json)
-	lua_investigate_info.configList, lua_investigate_info.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_investigate_info, "configList", _configList)
+	rawset(lua_investigate_info, "configDict", _configDict)
+end
+
+setmetatable(lua_investigate_info, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_investigate_info.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_investigate_info, "configList", nil)
+	rawset(lua_investigate_info, "configDict", nil)
 end
 
 return lua_investigate_info

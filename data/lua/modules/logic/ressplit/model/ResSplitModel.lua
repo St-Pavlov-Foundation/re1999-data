@@ -98,7 +98,43 @@ function ResSplitModel:setExclude(type, path, isExclude)
 	end
 end
 
+function ResSplitModel:checkIncludePath(path)
+	if path == nil then
+		return false, "path is nil"
+	end
+
+	if type(path) ~= "string" then
+		return true, nil
+	end
+
+	if path == "" then
+		return false, "path is empty"
+	end
+
+	if string.find(path, "//", 1, true) then
+		return false, "path has empty segment"
+	end
+
+	for segment in string.gmatch(path, "[^/]+") do
+		if segment == "nil" or string.sub(segment, 1, 4) == "nil." then
+			return false, "path has nil segment"
+		end
+	end
+
+	return true, nil
+end
+
 function ResSplitModel:setInclude(type, path)
+	local isLegal, reason = self:checkIncludePath(path)
+
+	if not isLegal then
+		local caller = debug.getinfo(2, "Sl")
+
+		logError(string.format("ResSplitModel:setInclude 忽略非法路径 type:%s path:%q reason:%s caller:%s:%d", tostring(type), tostring(path), reason or "", caller and caller.short_src or "?", caller and caller.currentline or 0))
+
+		return false
+	end
+
 	if self._includeDic[type] == nil then
 		self._includeDic[type] = {}
 	end
@@ -106,6 +142,8 @@ function ResSplitModel:setInclude(type, path)
 	local dic = self._includeDic[type]
 
 	dic[path] = true
+
+	return true
 end
 
 function ResSplitModel:getExcludeDic(type)

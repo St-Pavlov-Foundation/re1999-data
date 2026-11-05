@@ -76,7 +76,6 @@ function FightPreloadController:_buildReconnectFlow()
 	sequence:addWork(FightPreloadCameraAni.New())
 	sequence:addWork(FightPreloadEntityAni.New())
 	sequence:addWork(FightPreloadRolesTimeline.New())
-	sequence:addWork(FightPreloadEffectWork.New())
 	sequence:addWork(FightPreloadDoneWork.New())
 	sequence:addWork(FightPreloadCardInitWork.New())
 	sequence:addWork(FightPreloadWaitReplayWork.New())
@@ -152,7 +151,6 @@ function FightPreloadController:dispose()
 		self._preloadSequence = nil
 	end
 
-	FightEffectPool.dispose()
 	FightSpineMatPool.dispose()
 	FightSpinePool.dispose()
 

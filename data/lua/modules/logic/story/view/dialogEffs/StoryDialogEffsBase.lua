@@ -6,7 +6,6 @@ local StoryDialogEffsBase = class("StoryDialogEffsBase", LuaCompBase)
 
 function StoryDialogEffsBase:ctor()
 	self._resList = {}
-	self._loader = MultiAbLoader.New()
 end
 
 function StoryDialogEffsBase:init()
@@ -22,6 +21,10 @@ function StoryDialogEffsBase:reset(stepCo)
 end
 
 function StoryDialogEffsBase:loadRes()
+	if not self._loader then
+		self._loader = MultiAbLoader.New()
+	end
+
 	self._loader:setPathList(self._resList)
 	self._loader:startLoad(self.onLoadFinished, self)
 end

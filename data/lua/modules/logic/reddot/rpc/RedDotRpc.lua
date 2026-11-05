@@ -56,13 +56,13 @@ function RedDotRpc:onReceiveUpdateRedDotPush(resultCode, msg)
 	end
 end
 
-function RedDotRpc:sendShowRedDotRequest(defineId, isVisible)
+function RedDotRpc:sendShowRedDotRequest(defineId, isVisible, callback, callbackObj, isGM)
 	local req = RedDotModule_pb.ShowRedDotRequest()
 
 	req.defineId = defineId
 	req.isVisible = isVisible
 
-	self:sendMsg(req)
+	self:sendMsg(req, callback, callbackObj, nil, isGM)
 end
 
 function RedDotRpc:onReceiveShowRedDotReply(resultCode, msg)

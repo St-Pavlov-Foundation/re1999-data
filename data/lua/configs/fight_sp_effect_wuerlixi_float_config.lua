@@ -1,0 +1,25 @@
+﻿-- chunkname: @configs/fight_sp_effect_wuerlixi_float_config.lua
+
+return {
+	{
+		310701,
+		"buff/pre_v2a8_welx_charge",
+		"special10",
+		1,
+		431070154
+	},
+	{
+		310702,
+		"buff/pre_v2a8_welx_charge",
+		"special10",
+		1,
+		431070154
+	},
+	{
+		310703,
+		"buff/pre_v2a8_welx_pf_charge",
+		"special10",
+		1,
+		431070354
+	}
+}

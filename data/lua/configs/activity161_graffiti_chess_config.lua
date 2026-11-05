@@ -1,0 +1,29 @@
+﻿-- chunkname: @configs/activity161_graffiti_chess_config.lua
+
+return {
+	{
+		1,
+		"v2a0_dungeon_chess_1",
+		"-322#59#0"
+	},
+	{
+		2,
+		"v2a0_dungeon_chess_2",
+		"-200#0#0"
+	},
+	{
+		3,
+		"v2a0_dungeon_chess_3",
+		"-47#84#0"
+	},
+	{
+		4,
+		"v2a0_dungeon_chess_4",
+		"190#15#0"
+	},
+	{
+		5,
+		"v2a0_dungeon_chess_5",
+		"190#15#0"
+	}
+}

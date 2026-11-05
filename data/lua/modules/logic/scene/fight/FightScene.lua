@@ -37,6 +37,7 @@ function FightScene:getCurLevelId()
 end
 
 function FightScene:onClose()
+	ZProj.GameHelper.ClearFloorReflect()
 	FightGameHelper.disposeGameMgr()
 	FightScene.super.onClose(self)
 	FightTLEventPool.dispose()

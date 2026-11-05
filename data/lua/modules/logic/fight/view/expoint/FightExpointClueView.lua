@@ -4,7 +4,7 @@ module("modules.logic.fight.view.expoint.FightExpointClueView", package.seeall)
 
 local FightExpointClueView = class("FightExpointClueView", FightBaseView)
 
-FightExpointClueView.ItemSpacingX = 20
+FightExpointClueView.ItemSpacingX = 17
 
 function FightExpointClueView:onConstructor(entityMo)
 	self.entityMo = entityMo
@@ -178,7 +178,9 @@ function FightExpointClueView:getPreDeductClueCount()
 	local ops = FightDataHelper.operationDataMgr:getEntityOps(self.entityId, FightEnum.CardOpType.PlayCard)
 
 	for _, op in ipairs(ops) do
-		total = total + self:getSkillDelClueExPoint(op.skillId)
+		if FightCardDataHelper.hasTargetEnchantId(op.cardInfoMO, FightEnum.EnchantedType.YiFuLin) then
+			total = total + self:getSkillDelClueExPoint(op.skillId)
+		end
 	end
 
 	return total

@@ -60,10 +60,10 @@ function Sp02_GuessMeOptionItem:_btnClickOnClick()
 		GameUtil.setActiveUIBlock("Sp02_GuessMeOptionItem", true, false)
 		TaskDispatcher.runDelay(self._sendAnswerRpc, self, 0.2)
 		self:playTypeTabAnim("rightAnim", "open")
-		AudioMgr.instance:trigger(AudioEnum3_10.PaoMian.GuessMeSelectRight)
+		AudioMgr.instance:trigger(AudioEnum4_1.Investigation_GuessView.play_ui_atlantis_question_right)
 	else
 		self:playTypeTabAnim("errorAnim", "open")
-		AudioMgr.instance:trigger(AudioEnum3_10.PaoMian.GuessMeSelectError)
+		AudioMgr.instance:trigger(AudioEnum4_1.Investigation_GuessView.play_ui_atlantis_question_wrong)
 	end
 end
 
@@ -109,7 +109,7 @@ function Sp02_GuessMeOptionItem:refreshUI()
 	local isUnlock = self._status == Sp02_GuessMeEnum.TaskStatus.UnLock
 	local isFinish = self._status >= Sp02_GuessMeEnum.TaskStatus.CanGet
 
-	gohelper.setActive(typeTab.goNormal, isUnlock and not self._isEdit)
+	gohelper.setActive(typeTab.goNormal, not self._isEdit)
 	gohelper.setActive(typeTab.goRight, (isFinish or self._isEdit) and self._isRight)
 	gohelper.setActive(typeTab.goError, (isFinish or self._isEdit) and not self._isRight)
 end

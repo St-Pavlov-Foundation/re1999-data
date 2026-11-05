@@ -19,9 +19,36 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.main_act_atmosphere_config"
 
-function lua_main_act_atmosphere.onLoad(json)
-	lua_main_act_atmosphere.configList, lua_main_act_atmosphere.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_main_act_atmosphere, "configList", _configList)
+	rawset(lua_main_act_atmosphere, "configDict", _configDict)
+end
+
+setmetatable(lua_main_act_atmosphere, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_main_act_atmosphere.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_main_act_atmosphere, "configList", nil)
+	rawset(lua_main_act_atmosphere, "configDict", nil)
 end
 
 return lua_main_act_atmosphere

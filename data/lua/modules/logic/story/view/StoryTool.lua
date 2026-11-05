@@ -77,45 +77,11 @@ function StoryTool.filterMarkTop(txt)
 end
 
 function StoryTool.filterSpTag(txt)
-	local result = string.gsub(txt, "<em>", "")
+	local result = txt
 
-	result = string.gsub(txt, "</em>", "")
-	result = string.gsub(result, "<speed=%d[%d.]*>", "")
-	result = string.gsub(result, "<brace>", "{")
-	result = string.gsub(result, "</brace>", "}")
-	result = string.gsub(result, "^L?%-?%d+,%-?%d+#", "")
-
-	return result
-end
-
-function StoryTool.getMarkTextIndexs(txt)
-	local result = {}
-	local diaStrs = string.split(txt, "<em>")
-
-	if #diaStrs < 2 then
-		return {}
-	end
-
-	local splitLengths = {}
-	local length = GameUtil.utf8len(diaStrs[1])
-
-	table.insert(splitLengths, length)
-
-	for i = 2, #diaStrs do
-		local splitStr = string.split(diaStrs[i], "</em>")
-		local splitLength1 = GameUtil.utf8len(splitStr[1])
-		local splitLength2 = GameUtil.utf8len(splitStr[2])
-
-		table.insert(splitLengths, splitLength1 + splitLength2)
-
-		local preLength = 0
-
-		for j = 1, i - 1 do
-			preLength = preLength + splitLengths[j]
-		end
-
-		for k = 1, splitLength1 do
-			table.insert(result, preLength + k - 1)
+	for _, cfg in ipairs(StoryEnum.SEG_TAG_CONFIGS) do
+		if cfg.replace ~= nil then
+			result = string.gsub(result, cfg.pattern, cfg.replace)
 		end
 	end
 
@@ -381,6 +347,223 @@ function StoryTool.findNextVisibleChar(info, startIdx)
 	end
 
 	return nil, -1
+end
+
+function StoryTool._findNextTag(text, startPos)
+	if not text or startPos > #text then
+		return nil
+	end
+
+	local bestStart, bestEnd, bestValue, bestConfig
+
+	for _, cfg in ipairs(StoryEnum.SEG_TAG_CONFIGS) do
+		if cfg.key then
+			local s, e = string.find(text, cfg.pattern, startPos)
+
+			if s and (bestStart == nil or s < bestStart) then
+				bestStart = s
+				bestEnd = e
+				bestConfig = cfg
+
+				if cfg.tagType == 0 then
+					local captures = {
+						string.match(text, cfg.pattern, startPos)
+					}
+
+					bestValue = #captures > 0 and captures[1] or nil
+				end
+			end
+		end
+	end
+
+	if bestStart then
+		return {
+			startPos = bestStart,
+			endPos = bestEnd,
+			value = bestValue,
+			config = bestConfig
+		}
+	end
+
+	return nil
+end
+
+function StoryTool.parseTagSegments(rawText)
+	local segments = {}
+	local clueRegions = {}
+
+	if not rawText or #rawText == 0 then
+		return segments, clueRegions
+	end
+
+	local current = {}
+	local valueStacks = {}
+
+	for k, v in pairs(StoryEnum.SEG_TAG_DEFAULTS) do
+		current[k] = v
+		valueStacks[k] = {}
+	end
+
+	local pos = 1
+	local charCursor = 0
+	local segParts = {}
+	local clueStack = {}
+
+	local function flushText(text)
+		if text and #text > 0 then
+			table.insert(segParts, {
+				text = text,
+				speed = current.speed
+			})
+
+			charCursor = charCursor + GameUtil.utf8len(text)
+		end
+	end
+
+	local function flushSegment()
+		if #segParts > 0 then
+			local speedRegions = {}
+			local fullText = ""
+
+			for _, part in ipairs(segParts) do
+				if #speedRegions > 0 and speedRegions[#speedRegions].speed == part.speed then
+					speedRegions[#speedRegions].text = speedRegions[#speedRegions].text .. part.text
+				else
+					table.insert(speedRegions, {
+						speed = part.speed,
+						text = part.text
+					})
+				end
+
+				fullText = fullText .. part.text
+			end
+
+			table.insert(segments, {
+				text = fullText,
+				wait = current.wait,
+				speedRegions = speedRegions
+			})
+
+			segParts = {}
+		end
+	end
+
+	while pos <= #rawText do
+		local hit = StoryTool._findNextTag(rawText, pos)
+
+		if not hit then
+			flushText(string.sub(rawText, pos))
+			flushSegment()
+
+			break
+		end
+
+		local cfg = hit.config
+
+		if pos < hit.startPos then
+			flushText(string.sub(rawText, pos, hit.startPos - 1))
+
+			pos = hit.startPos
+		end
+
+		if cfg.key == "wait" then
+			flushSegment()
+
+			if cfg.tagType == 0 then
+				table.insert(valueStacks.wait, current.wait)
+
+				current.wait = tonumber(hit.value) or StoryEnum.SEG_TAG_DEFAULTS.wait
+			elseif cfg.tagType == 1 then
+				if #valueStacks.wait > 0 then
+					current.wait = table.remove(valueStacks.wait)
+				else
+					current.wait = StoryEnum.SEG_TAG_DEFAULTS.wait
+				end
+			end
+		elseif cfg.key == "clue" then
+			if cfg.tagType == 0 then
+				local attrs = StoryTool.parseClueValue(hit.value)
+
+				attrs.startChar = charCursor
+
+				table.insert(clueStack, attrs)
+			elseif cfg.tagType == 1 and #clueStack > 0 then
+				local c = table.remove(clueStack)
+
+				if charCursor - 1 >= c.startChar then
+					c.endChar = charCursor - 1
+
+					table.insert(clueRegions, c)
+				end
+			end
+		elseif cfg.tagType == 0 then
+			table.insert(valueStacks[cfg.key], current[cfg.key])
+
+			local defaultVal = StoryEnum.SEG_TAG_DEFAULTS[cfg.key]
+
+			current[cfg.key] = type(defaultVal) == "number" and (tonumber(hit.value) or defaultVal) or hit.value
+		elseif cfg.tagType == 1 then
+			if #valueStacks[cfg.key] > 0 then
+				current[cfg.key] = table.remove(valueStacks[cfg.key])
+			else
+				current[cfg.key] = StoryEnum.SEG_TAG_DEFAULTS[cfg.key]
+			end
+		end
+
+		pos = hit.endPos + 1
+	end
+
+	while #clueStack > 0 do
+		local c = table.remove(clueStack)
+
+		if charCursor - 1 >= c.startChar then
+			c.endChar = charCursor - 1
+
+			table.insert(clueRegions, c)
+		end
+	end
+
+	flushSegment()
+
+	return segments, clueRegions
+end
+
+function StoryTool.parseClueValue(value)
+	local attrs = {
+		speed = 1
+	}
+
+	if not value then
+		return attrs
+	end
+
+	local first = string.match(value, "^%s*([%d%.]+)")
+
+	if first then
+		attrs.speed = tonumber(first) or 1
+	end
+
+	for k, v in string.gmatch(value, "([%w_]+)%s*=%s*([%w#%.%-]+)") do
+		if k == "color" then
+			attrs[k] = v
+		else
+			attrs[k] = tonumber(v) or 0
+		end
+	end
+
+	return attrs
+end
+
+function StoryTool.stripSegmentTags(txt)
+	local result = txt
+
+	for _, cfg in ipairs(StoryEnum.SEG_TAG_CONFIGS) do
+		if cfg.key then
+			result = string.gsub(result, cfg.pattern, "")
+		end
+	end
+
+	return result
 end
 
 return StoryTool

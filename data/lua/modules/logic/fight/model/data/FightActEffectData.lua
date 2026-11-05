@@ -96,6 +96,10 @@ function FightActEffectData:onConstructor(proto)
 		self.hurtInfo = FightHurtInfoData.New(proto.hurtInfo)
 	end
 
+	if proto:HasField("healInfo") then
+		self.healInfo = FightHealInfoData.New(proto.healInfo)
+	end
+
 	if proto:HasField("rouge2FightMusicInfo") then
 		self.rouge2MusicInfo = FightRouge2MusicInfo.New(proto.rouge2FightMusicInfo)
 	end

@@ -36,9 +36,36 @@ local primaryKey = {
 local mlStringKey = {
 	name = 1
 }
+local _configList, _configDict
+local configPath = "configs.room_vehicle_config"
 
-function lua_room_vehicle.onLoad(json)
-	lua_room_vehicle.configList, lua_room_vehicle.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_room_vehicle, "configList", _configList)
+	rawset(lua_room_vehicle, "configDict", _configDict)
+end
+
+setmetatable(lua_room_vehicle, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_room_vehicle.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_room_vehicle, "configList", nil)
+	rawset(lua_room_vehicle, "configDict", nil)
 end
 
 return lua_room_vehicle

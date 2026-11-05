@@ -45,6 +45,10 @@ function GMSubViewProfiler:initViewContent()
 	self:addLineIndex()
 
 	self._recordText = self:addButton(self:getLineGroup(), "开启连接", self.initProfilerConnection, self)[2]
+
+	self:addTitleSplitLine("配置表测试")
+	self:addLineIndex()
+	self:addButton(self:getLineGroup(), "输出加载的配置表", self.outputLoadedConfig, self)
 end
 
 function GMSubViewProfiler:luaFunMemoryCalBegin()
@@ -93,6 +97,10 @@ function GMSubViewProfiler:initProfilerConnection()
 	PerformanceRecorder.initProfilerConnection()
 
 	self._recordText.text = "已开启"
+end
+
+function GMSubViewProfiler:outputLoadedConfig()
+	LuaUtil.dumpConfigStats()
 end
 
 return GMSubViewProfiler

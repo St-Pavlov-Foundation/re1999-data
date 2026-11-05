@@ -143,6 +143,42 @@ function VersionActivityFixedEnterView:onOpen()
 		self.viewAnim:Play(UIAnimationName.Open, 0, 0)
 		self.viewContainer:markPlayedSubViewAnim()
 	end
+
+	self:_initPositioningTab()
+end
+
+function VersionActivityFixedEnterView:_initPositioningTab()
+	if not self.curActId then
+		return
+	end
+
+	local index, total = self:_getCurActTabIndex()
+
+	if index and total and total > 0 then
+		local hvn = 1 - index / total
+
+		self._scrolltab.verticalNormalizedPosition = hvn
+	end
+end
+
+function VersionActivityFixedEnterView:_getCurActTabIndex()
+	local total = (self.openActIdList and #self.openActIdList or 0) + (self.noOpenActList and #self.noOpenActList or 0)
+
+	if self.openActIdList then
+		for i, actId in ipairs(self.openActIdList) do
+			if actId == self.curActId then
+				return i, total
+			end
+		end
+	end
+
+	if self.noOpenActList then
+		for i, actId in ipairs(self.noOpenActList) do
+			if actId == self.curActId then
+				return i + (self.openActIdList and #self.openActIdList or 0), total
+			end
+		end
+	end
 end
 
 return VersionActivityFixedEnterView

@@ -14,9 +14,38 @@ local primaryKey = {
 	"blockId"
 }
 local mlStringKey = {}
+local _configList, _configDict, _packageDict
+local configPath = "configs.block_package_data_config"
 
-function lua_block_package_data.onLoad(json)
-	lua_block_package_data.configList, lua_block_package_data.configDict, lua_block_package_data.packageDict = lua_block_package_data.json_parse(json)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict, _packageDict = lua_block_package_data.json_parse(config)
+
+	rawset(lua_block_package_data, "configList", _configList)
+	rawset(lua_block_package_data, "configDict", _configDict)
+	rawset(lua_block_package_data, "packageDict", _packageDict)
+end
+
+setmetatable(lua_block_package_data, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_block_package_data.clearConfig()
+	_configList, _configDict, _packageDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_block_package_data, "configList", nil)
+	rawset(lua_block_package_data, "configDict", nil)
+	rawset(lua_block_package_data, "packageDict", nil)
 end
 
 function lua_block_package_data.json_parse(json)

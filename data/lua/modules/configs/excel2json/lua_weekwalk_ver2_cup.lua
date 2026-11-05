@@ -26,9 +26,36 @@ local mlStringKey = {
 	desc1 = 1,
 	desc = 4
 }
+local _configList, _configDict
+local configPath = "configs.weekwalk_ver2_cup_config"
 
-function lua_weekwalk_ver2_cup.onLoad(json)
-	lua_weekwalk_ver2_cup.configList, lua_weekwalk_ver2_cup.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_weekwalk_ver2_cup, "configList", _configList)
+	rawset(lua_weekwalk_ver2_cup, "configDict", _configDict)
+end
+
+setmetatable(lua_weekwalk_ver2_cup, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_weekwalk_ver2_cup.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_weekwalk_ver2_cup, "configList", nil)
+	rawset(lua_weekwalk_ver2_cup, "configDict", nil)
 end
 
 return lua_weekwalk_ver2_cup

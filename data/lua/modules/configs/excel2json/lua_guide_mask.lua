@@ -22,9 +22,36 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.guide_mask_config"
 
-function lua_guide_mask.onLoad(json)
-	lua_guide_mask.configList, lua_guide_mask.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_guide_mask, "configList", _configList)
+	rawset(lua_guide_mask, "configDict", _configDict)
+end
+
+setmetatable(lua_guide_mask, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_guide_mask.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_guide_mask, "configList", nil)
+	rawset(lua_guide_mask, "configDict", nil)
 end
 
 return lua_guide_mask

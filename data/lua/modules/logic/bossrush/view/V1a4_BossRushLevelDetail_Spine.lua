@@ -24,6 +24,10 @@ function V1a4_BossRushLevelDetail_Spine:setData(skinId)
 	end
 end
 
+function V1a4_BossRushLevelDetail_Spine:_onSpineLoaded()
+	self:settVariant(self._variant)
+end
+
 function V1a4_BossRushLevelDetail_Spine:setOffsetXY(offsetX, offsetY)
 	local x = self._gospineX + (offsetX or 0)
 	local y = self._gospineY + (offsetY or 0)
@@ -44,9 +48,11 @@ function V1a4_BossRushLevelDetail_Spine:settVariant(variant)
 		self._skeletonGraphic = self._uiSpine:getSkeletonGraphic()
 	end
 
+	self._variant = variant
+
 	local variantPath = V3a2BossRushEnum.Variant[variant]
 
-	if string.nilorempty(variantPath) then
+	if string.nilorempty(variantPath) or not self._skeletonGraphic then
 		return
 	end
 

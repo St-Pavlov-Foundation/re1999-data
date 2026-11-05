@@ -96,6 +96,10 @@ StoryActivityChapterPlayer.VersionSetting = {
 	[39] = {
 		[StoryActivityChapterPlayer.StoryType.Open] = "StoryActivityChapterOpen3_9",
 		[StoryActivityChapterPlayer.StoryType.Close] = "StoryActivityChapterClose3_9"
+	},
+	[41] = {
+		[StoryActivityChapterPlayer.StoryType.Open] = "StoryActivityChapterOpen4_1",
+		[StoryActivityChapterPlayer.StoryType.Close] = "StoryActivityChapterClose4_1"
 	}
 }
 
@@ -107,7 +111,17 @@ function StoryActivityChapterPlayer:ctor(go)
 end
 
 function StoryActivityChapterPlayer:getLogic(chapter, storyType)
-	local logicName = StoryActivityChapterPlayer.VersionSetting[chapter][storyType]
+	local data = StoryActivityChapterPlayer.VersionSetting[chapter]
+
+	if not data then
+		return
+	end
+
+	local logicName = data[storyType]
+
+	if not logicName then
+		return
+	end
 
 	return self:getLogicByName(logicName)
 end
@@ -130,7 +144,9 @@ function StoryActivityChapterPlayer:playStart(co)
 	local part = vals[2] or 1
 	local logic = self:getLogic(chapter, StoryActivityChapterPlayer.StoryType.Open)
 
-	logic:setData(co)
+	if logic then
+		logic:setData(co)
+	end
 end
 
 function StoryActivityChapterPlayer:loadStartImg(chapter, part)

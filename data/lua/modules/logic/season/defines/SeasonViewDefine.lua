@@ -494,6 +494,11 @@ function SeasonViewDefine.initDefine3_5(module_views)
 				{
 					NavigateButtonsView.prefabPath
 				}
+			},
+			{
+				{
+					"ui/viewres/seasonver/v3a5_act123/season123carddetailview.prefab"
+				}
 			}
 		}
 	}

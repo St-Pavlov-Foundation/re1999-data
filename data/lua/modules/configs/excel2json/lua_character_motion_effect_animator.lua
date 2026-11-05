@@ -15,9 +15,36 @@ local primaryKey = {
 	"effectNode"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.character_motion_effect_animator_config"
 
-function lua_character_motion_effect_animator.onLoad(json)
-	lua_character_motion_effect_animator.configList, lua_character_motion_effect_animator.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_character_motion_effect_animator, "configList", _configList)
+	rawset(lua_character_motion_effect_animator, "configDict", _configDict)
+end
+
+setmetatable(lua_character_motion_effect_animator, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_character_motion_effect_animator.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_character_motion_effect_animator, "configList", nil)
+	rawset(lua_character_motion_effect_animator, "configDict", nil)
 end
 
 return lua_character_motion_effect_animator

@@ -39,6 +39,14 @@ function V3a5PuzzleController:isOpenPuzzleView(storyId, isOpen, episodeId, after
 		return true
 	end
 
+	if storyId == Act248Model.instance:getAvgBeforeStoryId() then
+		if isOpen then
+			self:openPuzzleView(storyId, episodeId, afterStory)
+		end
+
+		return true
+	end
+
 	if not self._storyViewInfos then
 		self:_initStoryViewInfo()
 	end
@@ -64,6 +72,10 @@ function V3a5PuzzleController:openPuzzleView(storyId, episodeId, afterStory)
 			V3a9BirdController.instance:enterGame(level)
 		end)
 
+		return
+	end
+
+	if storyId == Act248Model.instance:getAvgBeforeStoryId() then
 		return
 	end
 
@@ -141,6 +153,12 @@ function V3a5PuzzleController:playNextStoryByPreStoryId(preStoryId, episodeId, a
 
 			return
 		end
+	end
+end
+
+function V3a5PuzzleController:getStoryExtraBtnInfo(storyId)
+	if Act248Model.instance:isAct248StoryId(storyId) then
+		return Act248Model.instance:getAct248StoryBtnInfo()
 	end
 end
 

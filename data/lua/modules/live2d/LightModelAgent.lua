@@ -188,6 +188,16 @@ function LightModelAgent:processModelEffect()
 	end
 end
 
+function LightModelAgent:updateIdle()
+	if self._isLive2D then
+		local bodyName = self._curModel and self._curModel:getCurBody()
+
+		if bodyName == StoryAnimName.B_IDLE then
+			self._curModel:play(bodyName, true)
+		end
+	end
+end
+
 function LightModelAgent:setEffectVisible(value)
 	if self._isLive2D then
 		self._curModel:setEffectVisible(value)

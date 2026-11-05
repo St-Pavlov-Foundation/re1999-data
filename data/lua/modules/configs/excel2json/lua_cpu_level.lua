@@ -11,9 +11,36 @@ local primaryKey = {
 	"name"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.cpu_level_config"
 
-function lua_cpu_level.onLoad(json)
-	lua_cpu_level.configList, lua_cpu_level.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_cpu_level, "configList", _configList)
+	rawset(lua_cpu_level, "configDict", _configDict)
+end
+
+setmetatable(lua_cpu_level, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_cpu_level.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_cpu_level, "configList", nil)
+	rawset(lua_cpu_level, "configDict", nil)
 end
 
 return lua_cpu_level

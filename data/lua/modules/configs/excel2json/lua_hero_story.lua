@@ -39,9 +39,36 @@ local mlStringKey = {
 	heroName = 1,
 	mainviewName = 3
 }
+local _configList, _configDict
+local configPath = "configs.hero_story_config"
 
-function lua_hero_story.onLoad(json)
-	lua_hero_story.configList, lua_hero_story.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_hero_story, "configList", _configList)
+	rawset(lua_hero_story, "configDict", _configDict)
+end
+
+setmetatable(lua_hero_story, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_hero_story.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_hero_story, "configList", nil)
+	rawset(lua_hero_story, "configDict", nil)
 end
 
 return lua_hero_story

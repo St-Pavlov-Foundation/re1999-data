@@ -347,7 +347,6 @@ function Activity114DialogBaseItem:playNormalText(txt, callback, callbackobj)
 	self._playingAudioId = 0
 	self._finishCallback = callback
 	self._finishCallbackObj = callbackobj
-	self._markIndexs = StoryTool.getMarkTextIndexs(self._txt)
 	self._subemtext = StoryTool.filterSpTag(self._txt)
 	self._markTopList = StoryTool.getMarkTopTextList(self._subemtext)
 	self._subemtext = StoryTool.filterMarkTop(self._subemtext)
@@ -478,7 +477,6 @@ function Activity114DialogBaseItem:_showMagicItem(show)
 end
 
 function Activity114DialogBaseItem:_delayShow()
-	self._conMark:SetMarks(self._markIndexs)
 	self._conMark:SetMarksTop(self._markTopList)
 
 	self._textInfo = self._txtcontentcn:GetTextInfo(self._subemtext)

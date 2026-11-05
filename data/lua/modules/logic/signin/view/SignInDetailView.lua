@@ -23,7 +23,8 @@ function SignInDetailView:onInitView()
 	self._simagebirthdaybg2 = gohelper.findChildSingleImage(self.viewGO, "content/reward/#go_birthdayrewarditem/#simage_birthdaybg2")
 	self._gobirthday = gohelper.findChild(self.viewGO, "content/reward/#go_birthdayrewarditem/#go_birthday")
 	self._gobirthdayHeroContent = gohelper.findChild(self.viewGO, "content/reward/#go_birthdayrewarditem/#go_birthday/scroll_icon/Viewport/Content")
-	self._gobirthdayHeroIcon = gohelper.findChild(self.viewGO, "content/reward/#go_birthdayrewarditem/#go_birthday/scroll_icon/Viewport/Content/#go_icon")
+	self._gobirthdayHeroIcon1 = gohelper.findChild(self.viewGO, "content/reward/#go_birthdayrewarditem/#go_birthday/scroll_icon/Viewport/Content/#go_icon1")
+	self._gobirthdayHeroIcon2 = gohelper.findChild(self.viewGO, "content/reward/#go_birthdayrewarditem/#go_birthday/scroll_icon/Viewport/Content/#go_icon2")
 	self._btngift = gohelper.findChildButtonWithAudio(self.viewGO, "content/reward/#go_birthdayrewarditem/#go_birthday/#btn_gift")
 	self._gogiftnoget = gohelper.findChild(self.viewGO, "content/reward/#go_birthdayrewarditem/#go_birthday/#btn_gift/#go_noget")
 	self._gogiftget = gohelper.findChild(self.viewGO, "content/reward/#go_birthdayrewarditem/#go_birthday/#btn_gift/#go_get")
@@ -167,7 +168,14 @@ function SignInDetailView:onInitView()
 	local guideGMNode = GMController.instance:getGMNode("signindetailview", gohelper.findChild(self.viewGO, "content"))
 
 	if guideGMNode then
-		self._btnswitchdecorate = gohelper.findChildButtonWithAudio(guideGMNode, "#_btns_switchdecorate")
+		self._gogmhelp = gohelper.findChild(guideGMNode, "#go_gmhelp")
+		self._inputheros = gohelper.findChildTextMeshInputField(guideGMNode, "#go_gmhelp/#input_heros")
+		self._droptimes = gohelper.findChildDropdown(guideGMNode, "#go_gmhelp/#drop_times")
+		self._gochangedate = gohelper.findChild(guideGMNode, "#go_changedate")
+		self._inputdate = gohelper.findChildTextMeshInputField(guideGMNode, "#go_changedate/#input_date")
+		self._btnchangedateright = gohelper.findChildButtonWithAudio(guideGMNode, "#go_changedate/#btn_changedateright")
+		self._btnchangedateleft = gohelper.findChildButtonWithAudio(guideGMNode, "#go_changedate/#btn_changedateleft")
+		self._btnswitchdecorate = gohelper.findChildButtonWithAudio(guideGMNode, "#go_gmhelp/#btn_switchdecorate")
 	end
 
 	self._godayrewarditem_image3 = gohelper.findChild(self._godayrewarditem, "image3")
@@ -184,6 +192,26 @@ function SignInDetailView:addEvents()
 	self._btncalendar:AddClickListener(self._btncalendarOnClick, self)
 	self._btncloseview:AddClickListener(self._btncloseviewOnClick, self)
 
+	if self._droptimes then
+		self._droptimes:AddOnValueChanged(self._onTimesValueChanged, self)
+	end
+
+	if self._inputheros then
+		self._inputheros:AddOnValueChanged(self._onInputValueChanged, self)
+	end
+
+	if self._inputdate then
+		self._inputdate:AddOnValueChanged(self._onInputDateChange, self)
+	end
+
+	if self._btnchangedateleft then
+		self._btnchangedateleft:AddClickListener(self._onBtnChangeDateLeftClick, self)
+	end
+
+	if self._btnchangedateright then
+		self._btnchangedateright:AddClickListener(self._onBtnChangeDateRightClick, self)
+	end
+
 	if self._btnswitchdecorate then
 		self._btnswitchdecorate:AddClickListener(self._onBtnChangeDecorate, self)
 	end
@@ -199,6 +227,26 @@ function SignInDetailView:removeEvents()
 	self._btncalendar:RemoveClickListener()
 	self._btncloseview:RemoveClickListener()
 
+	if self._droptimes then
+		self._droptimes:RemoveOnValueChanged()
+	end
+
+	if self._inputheros then
+		self._inputheros:RemoveOnValueChanged()
+	end
+
+	if self._inputdate then
+		self._inputdate:RemoveOnValueChanged()
+	end
+
+	if self._btnchangedateright then
+		self._btnchangedateright:RemoveClickListener()
+	end
+
+	if self._btnchangedateleft then
+		self._btnchangedateleft:RemoveClickListener()
+	end
+
 	if self._btnswitchdecorate then
 		self._btnswitchdecorate:RemoveClickListener()
 	end
@@ -209,6 +257,83 @@ end
 
 function SignInDetailView:_onBtnChangeDecorate()
 	self:_switchFestivalDecoration(not self._haveFestival)
+end
+
+function SignInDetailView:_onTimesValueChanged(index)
+	local inputValue = self:_getTextInputheros()
+
+	if not inputValue or inputValue == "" then
+		return
+	end
+
+	local birthdayHeros = string.splitToNumber(inputValue, "|")
+
+	if not birthdayHeros or #birthdayHeros < 1 then
+		return
+	end
+
+	gohelper.setActive(self._btnqiehuan.gameObject, true)
+end
+
+function SignInDetailView:_onInputDateChange()
+	return
+end
+
+function SignInDetailView:_onBtnChangeDateLeftClick()
+	self:_refreshGMDateContent(1)
+end
+
+function SignInDetailView:_onBtnChangeDateRightClick()
+	self:_refreshGMDateContent(-1)
+end
+
+function SignInDetailView:_refreshGMDateContent(changeNum)
+	local date = string.splitToNumber(self._inputdate:GetText(), "-")
+
+	if not date or #date ~= 3 then
+		logError("请按照正确的格式输入日期！")
+
+		return
+	end
+
+	local datets = TimeUtil.timeToTimeStamp(date[1], date[2], date[3], 1, 1, 1) + 86400 * changeNum
+	local week = os.date("%w", datets)
+
+	UISpriteSetMgr.instance:setSignInSprite(self._imageweek, "date_" .. tostring(week))
+
+	self._txtdesc.text = SignInConfig.instance:getSignDescByDate(datets)
+
+	ZProj.UGUIHelper.RebuildLayout(self._txtdesc.gameObject.transform)
+	gohelper.setActive(self._txtdesc.gameObject, false)
+	gohelper.setActive(self._txtdesc.gameObject, true)
+
+	local dayStr = string.format("%02d", os.date("%d", datets))
+
+	self._txtday.text = dayStr
+	self._txtdayfestival.text = dayStr
+	self._txtmonth.text = string.format("%02d", os.date("%m", datets))
+
+	local timeTxt = TimeUtil.timestampToString1(datets)
+
+	self._inputdate:SetText(timeTxt)
+end
+
+function SignInDetailView:_onInputValueChanged()
+	local inputValue = self:_getTextInputheros()
+
+	if inputValue ~= "" then
+		gohelper.setActive(self._btnqiehuan.gameObject, true)
+
+		return
+	end
+
+	local birthdayHeros = SignInModel.instance:getSignBirthdayHeros(self._targetDate[1], self._targetDate[2], self._targetDate[3])
+
+	if self._curDate.year == self._targetDate[1] and self._curDate.month == self._targetDate[2] and self._curDate.day == self._targetDate[3] then
+		birthdayHeros = SignInModel.instance:getCurDayBirthdayHeros()
+	end
+
+	gohelper.setActive(self._btnqiehuan.gameObject, #birthdayHeros > 0)
 end
 
 function SignInDetailView:_onBtnBuQian()
@@ -232,6 +357,12 @@ function SignInDetailView:_btngiftOnClick()
 
 	if self._curDate.year == self._targetDate[1] and self._curDate.month == self._targetDate[2] and self._curDate.day == self._targetDate[3] then
 		birthdayHeros = SignInModel.instance:getCurDayBirthdayHeros()
+
+		local inputValue = self:_getTextInputheros()
+
+		if inputValue ~= "" then
+			birthdayHeros = string.splitToNumber(inputValue, "|")
+		end
 
 		local heroId = birthdayHeros[self._index]
 		local giftGet = SignInModel.instance:isHeroBirthdayGet(heroId)
@@ -258,6 +389,12 @@ function SignInDetailView:_showBirthdayRewardDetail()
 		birthdayHeros = SignInModel.instance:getCurDayBirthdayHeros()
 	end
 
+	local inputValue = self:_getTextInputheros()
+
+	if inputValue ~= "" then
+		birthdayHeros = string.splitToNumber(inputValue, "|")
+	end
+
 	local heroId = birthdayHeros[self._index]
 	local birthdayCount = SignInModel.instance:getHeroBirthdayCount(heroId)
 	local index = birthdayCount
@@ -270,6 +407,10 @@ function SignInDetailView:_showBirthdayRewardDetail()
 		else
 			index = birthdayGet and birthdayCount - 1 or birthdayCount
 		end
+	end
+
+	if inputValue ~= "" then
+		index = self._droptimes:GetValue() + 1
 	end
 
 	if not index or index == 0 then
@@ -334,7 +475,14 @@ function SignInDetailView:_btnqiehuanOnClick()
 		birthdayHeros = SignInModel.instance:getCurDayBirthdayHeros()
 	end
 
-	self._index = (self._index + 1) % (#birthdayHeros + 1)
+	local inputValue = self:_getTextInputheros()
+
+	if inputValue ~= "" then
+		birthdayHeros = string.splitToNumber(inputValue, "|")
+		self._index = (self._index + 1) % (#birthdayHeros + 1)
+	else
+		self._index = (self._index + 1) % (#birthdayHeros + 1)
+	end
 
 	UIBlockMgr.instance:startBlock("signshowing")
 	TaskDispatcher.runDelay(self._onQiehuanFinished, self, 0.85)
@@ -508,8 +656,31 @@ function SignInDetailView:onOpen()
 	self:_setMonthView(true)
 	self:_setRedDot()
 	self:_addCustomEvent()
+
+	if self._gogmhelp then
+		gohelper.setActive(self._gogmhelp, GMController.instance:isOpenGM())
+	end
+
+	if self._gochangedate then
+		gohelper.setActive(self._gochangedate, GMController.instance:isOpenGM())
+	end
+
 	NavigateMgr.instance:addEscape(ViewName.SignInDetailView, self._onEscapeBtnClick, self)
 	self:_refreshFestivalDecoration()
+	self:_checkGMShow()
+end
+
+function SignInDetailView:_checkGMShow()
+	if self._inputdate then
+		local dateTxt = self.viewParam.dateTxt or ""
+
+		if LuaUtil.isEmptyStr(dateTxt) then
+			return
+		end
+
+		self._inputdate:SetText(dateTxt)
+		self:_refreshGMDateContent(0)
+	end
 end
 
 function SignInDetailView:_onDailyRefresh()
@@ -583,6 +754,12 @@ function SignInDetailView:_onGetHeroBirthday()
 
 	if self._curDate.year == self._targetDate[1] and self._curDate.month == self._targetDate[2] and self._curDate.day == self._targetDate[3] then
 		birthdayHeros = SignInModel.instance:getCurDayBirthdayHeros()
+	end
+
+	local inputValue = self:_getTextInputheros()
+
+	if inputValue ~= "" and self._curDate.year == self._targetDate[1] and self._curDate.month == self._targetDate[2] and self._curDate.day == self._targetDate[3] then
+		birthdayHeros = string.splitToNumber(inputValue, "|")
 	end
 
 	local hasBirthdayRewards = false
@@ -773,9 +950,9 @@ function SignInDetailView:_initIndex()
 		birthdayHeros = SignInModel.instance:getCurDayBirthdayHeros()
 	end
 
-	local inputValue = self._inputheros:GetText()
+	local inputValue = self:_getTextInputheros()
 
-	if inputValue and inputValue ~= "" and self._curDate.year == self._targetDate[1] and self._curDate.month == self._targetDate[2] and self._curDate.day == self._targetDate[3] then
+	if inputValue ~= "" and self._curDate.year == self._targetDate[1] and self._curDate.month == self._targetDate[2] and self._curDate.day == self._targetDate[3] then
 		birthdayHeros = string.splitToNumber(inputValue, "|")
 	end
 
@@ -785,7 +962,7 @@ function SignInDetailView:_initIndex()
 		if not giftGet then
 			self._index = k
 
-			gohelper.setSiblingBefore(self._gobirthdayrewarditem, self._godayrewarditem)
+			gohelper.setSiblingBefore(self._godayrewarditem, self._gobirthdayrewarditem)
 
 			return
 		end
@@ -828,6 +1005,12 @@ function SignInDetailView:_setRewardItems()
 
 	if self._curDate.year == self._targetDate[1] and self._curDate.month == self._targetDate[2] and self._curDate.day == self._targetDate[3] then
 		birthdayHeros = SignInModel.instance:getCurDayBirthdayHeros()
+	end
+
+	local inputValue = self:_getTextInputheros()
+
+	if inputValue ~= "" and self._curDate.year == self._targetDate[1] and self._curDate.month == self._targetDate[2] and self._curDate.day == self._targetDate[3] then
+		birthdayHeros = string.splitToNumber(inputValue, "|")
 	end
 
 	if self._curDate.year == self._targetDate[1] and self._curDate.month == self._targetDate[2] and self._curDate.day == self._targetDate[3] then
@@ -915,13 +1098,15 @@ function SignInDetailView:_setBirthdayInfo()
 		birthdayHeros = SignInModel.instance:getCurDayBirthdayHeros()
 	end
 
+	local inputValue = self:_getTextInputheros()
+
+	if inputValue ~= "" then
+		birthdayHeros = string.splitToNumber(inputValue, "|")
+	end
+
 	local heroId = birthdayHeros[self._index]
 
-	self._birthdayHeroIconList = {}
-
-	local heroIdWithSPList = HeroConfig.instance:getSPHeroIdList(heroId, true)
-
-	gohelper.CreateObjList(self, self._onCreateBirthdayHeroIcon, heroIdWithSPList, self._gobirthdayHeroContent, self._gobirthdayHeroIcon)
+	self:_refreshHeroIcon(heroId)
 
 	local birthdayCount = SignInModel.instance:getHeroBirthdayCount(heroId)
 	local index = birthdayCount
@@ -934,6 +1119,10 @@ function SignInDetailView:_setBirthdayInfo()
 		else
 			index = birthdayGet and birthdayCount - 1 or birthdayCount
 		end
+	end
+
+	if inputValue ~= "" then
+		index = self._droptimes:GetValue() + 1
 	end
 
 	if not index or index == 0 then
@@ -959,16 +1148,41 @@ function SignInDetailView:_setBirthdayInfo()
 	gohelper.setActive(self._gogiftget, giftGet)
 end
 
-function SignInDetailView:_onCreateBirthdayHeroIcon(obj, data, index)
-	local iconItem = self:getUserDataTb_()
+function SignInDetailView:_refreshHeroIcon(heroId)
+	if not self._birthdayHeroIconList then
+		self._birthdayHeroIconList = {}
+	end
 
-	iconItem.go = obj
-	iconItem.icon = gohelper.findChildSingleImage(obj, "#simage_icon")
+	local heroIdWithSPList = HeroConfig.instance:getSPHeroIdList(heroId, true)
 
-	local heroMo = HeroModel.instance:getByHeroId(data)
-	local skin = heroMo and heroMo.skin or HeroConfig.instance:getHeroCO(data).skinId
+	if not heroIdWithSPList then
+		gohelper.setActive(self._gobirthdayHeroIcon1, false)
+		gohelper.setActive(self._gobirthdayHeroIcon2, false)
 
-	iconItem.icon:LoadImage(ResUrl.getHeadIconSmall(skin))
+		return
+	end
+
+	gohelper.setActive(self._gobirthdayHeroIcon1, #heroIdWithSPList >= 1)
+	gohelper.setActive(self._gobirthdayHeroIcon2, #heroIdWithSPList >= 2)
+
+	for i = 1, #heroIdWithSPList do
+		local heroId = heroIdWithSPList[i]
+
+		self:_setBirthdayHeroIcon(self["_gobirthdayHeroIcon" .. i], heroId, i)
+	end
+end
+
+function SignInDetailView:_setBirthdayHeroIcon(go, heroId, index)
+	if not self._birthdayHeroIconList[index] then
+		self._birthdayHeroIconList[index] = {}
+	end
+
+	self._birthdayHeroIconList[index].icon = gohelper.findChildSingleImage(go, "#simage_icon")
+
+	local heroMo = HeroModel.instance:getByHeroId(heroId)
+	local skin = heroMo and heroMo.skin or HeroConfig.instance:getHeroCO(heroId).skinId
+
+	self._birthdayHeroIconList[index].icon:LoadImage(ResUrl.getHeadIconSmall(skin))
 end
 
 function SignInDetailView:_delaySignInRequest()
@@ -1343,6 +1557,14 @@ function SignInDetailView:closeThis()
 	MailController.instance:showOrRegisterEvent()
 end
 
+function SignInDetailView:_getTextInputheros()
+	if self._inputheros then
+		return self._inputheros:GetText()
+	end
+
+	return ""
+end
+
 function SignInDetailView:haveFestival()
 	if self._haveFestival == nil then
 		self._haveFestival = SignInModel.instance.checkFestivalDecorationUnlock()
@@ -1352,7 +1574,7 @@ function SignInDetailView:haveFestival()
 end
 
 function SignInDetailView:_setFestivalColor(textOrImg)
-	local hexColor = self:haveFestival() and "#3B3128" or "#222222"
+	local hexColor = self:haveFestival() and "#161616" or "#222222"
 
 	SLFramework.UGUI.GuiHelper.SetColor(textOrImg, hexColor)
 end

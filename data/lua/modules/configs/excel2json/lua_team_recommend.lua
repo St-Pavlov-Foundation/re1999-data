@@ -17,9 +17,36 @@ local primaryKey = {
 local mlStringKey = {
 	teamName = 1
 }
+local _configList, _configDict
+local configPath = "configs.team_recommend_config"
 
-function lua_team_recommend.onLoad(json)
-	lua_team_recommend.configList, lua_team_recommend.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_team_recommend, "configList", _configList)
+	rawset(lua_team_recommend, "configDict", _configDict)
+end
+
+setmetatable(lua_team_recommend, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_team_recommend.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_team_recommend, "configList", nil)
+	rawset(lua_team_recommend, "configDict", nil)
 end
 
 return lua_team_recommend

@@ -1,0 +1,24 @@
+﻿-- chunkname: @configs/fight_monster_display_condition_config.lua
+
+return {
+	{
+		150404,
+		11410082
+	},
+	{
+		250404,
+		11410082
+	},
+	{
+		151417,
+		0
+	},
+	{
+		251417,
+		0
+	},
+	{
+		914010404,
+		11410082
+	}
+}

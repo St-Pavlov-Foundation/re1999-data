@@ -60,9 +60,36 @@ local primaryKey = {
 local mlStringKey = {
 	name = 1
 }
+local _configList, _configDict
+local configPath = "configs.character_voice_config"
 
-function lua_character_voice.onLoad(json)
-	lua_character_voice.configList, lua_character_voice.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_character_voice, "configList", _configList)
+	rawset(lua_character_voice, "configDict", _configDict)
+end
+
+setmetatable(lua_character_voice, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_character_voice.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_character_voice, "configList", nil)
+	rawset(lua_character_voice, "configDict", nil)
 end
 
 return lua_character_voice

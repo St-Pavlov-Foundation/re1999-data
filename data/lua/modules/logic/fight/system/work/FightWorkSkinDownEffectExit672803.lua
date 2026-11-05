@@ -13,8 +13,12 @@ function FightWorkSkinDownEffectExit672803:onStart()
 	local floorEffect = FightMsgMgr.sendMsg(FightMsgId.GetCardSkin672803FloorEffect)
 
 	if floorEffect then
+		local animator = gohelper.onceAddComponent(floorEffect, gohelper.Type_Animator)
 		local speed = FightModel.instance:getUISpeed()
 
+		animator.speed = speed
+
+		animator:Play("out", 0, 0)
 		flow:registWork(FightWorkDelayTimer, 0.5 / speed)
 		flow:registWork(FightWorkFunction, gohelper.setActive, floorEffect, false)
 	end

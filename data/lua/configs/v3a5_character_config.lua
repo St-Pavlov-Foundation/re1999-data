@@ -1,0 +1,34 @@
+﻿-- chunkname: @configs/v3a5_character_config.lua
+
+return {
+	{
+		1,
+		313901,
+		"洛伦兹蝴蝶",
+		"<voffset=4>/</voffset>Lorentz Butterfly"
+	},
+	{
+		2,
+		645601,
+		"野木蓝",
+		""
+	},
+	{
+		3,
+		646701,
+		"轰轰吼叫匣·X",
+		"<voffset=4>/</voffset>\"Rumbling Roaring Box\""
+	},
+	{
+		3801,
+		314001,
+		"奠基石",
+		"<voffset=4>/ </voffset>Cornerstone"
+	},
+	{
+		3802,
+		650202,
+		"蓝图",
+		""
+	}
+}

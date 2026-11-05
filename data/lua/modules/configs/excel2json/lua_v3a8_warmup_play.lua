@@ -22,9 +22,36 @@ local mlStringKey = {
 	op3 = 4,
 	op2 = 3
 }
+local _configList, _configDict
+local configPath = "configs.v3a8_warmup_play_config"
 
-function lua_v3a8_warmup_play.onLoad(json)
-	lua_v3a8_warmup_play.configList, lua_v3a8_warmup_play.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_v3a8_warmup_play, "configList", _configList)
+	rawset(lua_v3a8_warmup_play, "configDict", _configDict)
+end
+
+setmetatable(lua_v3a8_warmup_play, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_v3a8_warmup_play.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_v3a8_warmup_play, "configList", nil)
+	rawset(lua_v3a8_warmup_play, "configDict", nil)
 end
 
 return lua_v3a8_warmup_play

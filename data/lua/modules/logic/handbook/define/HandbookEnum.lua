@@ -101,6 +101,7 @@ HandbookEnum.TarotSkinCount = 21
 HandbookEnum.TarotCardCount = 5
 HandbookEnum.TarotSkinCardDir = "singlebg/skinhandbook_singlebg/tarot"
 HandbookEnum.TarotDefaultFOV = 22
+HandbookEnum.SkinUnitCameraFOV = 22
 HandbookEnum.SevenSkinDefaultCardPath = "singlebg/skinhandbook_singlebg/sevenvirtues/card00.png"
 HandbookEnum.SevenSkinCount = 7
 HandbookEnum.SevenCardCount = 5

@@ -16,9 +16,36 @@ local mlStringKey = {
 	desc = 2,
 	name = 1
 }
+local _configList, _configDict
+local configPath = "configs.odyssey_equip_suit_config"
 
-function lua_odyssey_equip_suit.onLoad(json)
-	lua_odyssey_equip_suit.configList, lua_odyssey_equip_suit.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_odyssey_equip_suit, "configList", _configList)
+	rawset(lua_odyssey_equip_suit, "configDict", _configDict)
+end
+
+setmetatable(lua_odyssey_equip_suit, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_odyssey_equip_suit.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_odyssey_equip_suit, "configList", nil)
+	rawset(lua_odyssey_equip_suit, "configDict", nil)
 end
 
 return lua_odyssey_equip_suit

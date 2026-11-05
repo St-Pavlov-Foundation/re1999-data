@@ -17,9 +17,36 @@ local primaryKey = {
 local mlStringKey = {
 	text = 1
 }
+local _configList, _configDict
+local configPath = "configs.college_bubble_config"
 
-function lua_college_bubble.onLoad(json)
-	lua_college_bubble.configList, lua_college_bubble.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_college_bubble, "configList", _configList)
+	rawset(lua_college_bubble, "configDict", _configDict)
+end
+
+setmetatable(lua_college_bubble, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_college_bubble.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_college_bubble, "configList", nil)
+	rawset(lua_college_bubble, "configDict", nil)
 end
 
 return lua_college_bubble

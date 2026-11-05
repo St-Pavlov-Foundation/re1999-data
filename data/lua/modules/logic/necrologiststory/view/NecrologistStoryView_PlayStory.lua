@@ -54,7 +54,7 @@ function NecrologistStoryView_PlayStory:playStory_situationValue(storyConfig, is
 
 	if arr then
 		for i, v in ipairs(arr) do
-			storyView._storyGroupMo:addSituationValue(v[1], tonumber(v[2]))
+			storyView:getStoryMo():addSituationValue(v[1], tonumber(v[2]))
 		end
 	end
 
@@ -64,10 +64,12 @@ end
 
 function NecrologistStoryView_PlayStory:playStory_situation(storyConfig, isSkip)
 	local storyView = self:getStoryView()
-	local sectionId = storyView._storyGroupMo:compareSituationValue(storyConfig.param)
+	local sectionId = storyView:getStoryMo():compareSituationValue(storyConfig.param)
 
 	if sectionId then
 		NecrologistStoryController.instance:dispatchEvent(NecrologistStoryEvent.OnSelectSection, sectionId, isSkip)
+	else
+		storyView:runNextStep(isSkip)
 	end
 end
 
@@ -93,7 +95,7 @@ function NecrologistStoryView_PlayStory:playStory_commontask(storyConfig, isSkip
 
 	if arr then
 		for i, v in ipairs(arr) do
-			storyView._storyGroupMo:addTaskValue(v[1], v[2])
+			storyView:getStoryMo():addTaskValue(v[1], v[2])
 		end
 	end
 
@@ -138,6 +140,35 @@ end
 
 function NecrologistStoryView_PlayStory:playStory_v3a9Book(storyConfig, isSkip)
 	self:createStoryItemAsync(V3A9NecrologistStoryBookItem, storyConfig, isSkip)
+end
+
+function NecrologistStoryView_PlayStory:playStory_v4a1Hero(storyConfig, isSkip)
+	self:createStoryItemAsync(V4A1NecrologistStoryHeroItem, storyConfig, isSkip)
+end
+
+function NecrologistStoryView_PlayStory:playStory_v4a1Check(storyConfig, isSkip)
+	self:createStoryItemAsync(V4A1NecrologistStoryCheckItem, storyConfig, isSkip)
+end
+
+function NecrologistStoryView_PlayStory:playStory_mulOption(storyConfig, isSkip)
+	self:createStoryItemAsync(NecrologistStoryOptionsItem, storyConfig, isSkip)
+end
+
+function NecrologistStoryView_PlayStory:playStory_v4a1CheckCount(storyConfig, isSkip)
+	local storyView = self:getStoryView()
+	local params = string.splitToNumber(storyConfig.param, "#")
+	local count = params[1] or 0
+	local mo = NecrologistStoryModel.instance:getGameMO(NecrologistStoryEnum.RoleStoryId.V4A1)
+	local checkCount = mo:getCheckCount()
+	local sectionId = count <= checkCount and params[2] or params[3]
+
+	if sectionId then
+		NecrologistStoryController.instance:dispatchEvent(NecrologistStoryEvent.OnSelectSection, sectionId, isSkip)
+	end
+end
+
+function NecrologistStoryView_PlayStory:playStory_v4a1Result(storyConfig, isSkip)
+	self:createStoryItemAsync(V4A1NecrologistStoryResultItem, storyConfig, isSkip)
 end
 
 return NecrologistStoryView_PlayStory

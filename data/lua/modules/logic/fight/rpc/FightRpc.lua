@@ -394,7 +394,7 @@ function FightRpc:onReceiveFightWavePush(resultCode, msg)
 	FightController.instance:dispatchEvent(FightEvent.PushFightWave)
 end
 
-function FightRpc:sendUseClothSkillRequest(skillId, fromId, toId, type)
+function FightRpc:sendUseClothSkillRequest(skillId, fromId, toId, type, params)
 	if isDebugBuild then
 		FightPlayBackController.instance:recordUseClothSkillRequest(skillId)
 	end
@@ -416,6 +416,10 @@ function FightRpc:sendUseClothSkillRequest(skillId, fromId, toId, type)
 	end
 
 	req.type = type or FightEnum.ClothSkillType.ClothSkill
+
+	if params then
+		req.params = params
+	end
 
 	self:sendMsg(req)
 end

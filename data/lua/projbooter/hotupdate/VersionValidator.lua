@@ -6,6 +6,18 @@ local VersionValidator = class("VersionValidator")
 
 function VersionValidator:ctor()
 	self._isInReview = false
+
+	if SLFramework.FrameworkSettings.IsEditor then
+		require("tolua.reflection")
+		tolua.loadassembly("UnityEditor")
+
+		local editorPrefs = tolua.findtype("UnityEditor.EditorPrefs")
+		local method = tolua.getmethod(editorPrefs, "GetBool", typeof("System.String"))
+		local simulateReviewResLoad = method:Call("SimulateReviewResLoad")
+
+		self._isInReview = simulateReviewResLoad
+	end
+
 	self._eventMgr = SLFramework.GameUpdate.HotUpdateEvent
 	self._eventMgrInst = SLFramework.GameUpdate.HotUpdateEvent.Instance
 end

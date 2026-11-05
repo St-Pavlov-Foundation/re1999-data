@@ -504,11 +504,11 @@ function GMToolView2:_onRenderScaleChange(param, value)
 end
 
 function GMToolView2:_onClickForbidFightEffect()
-	FightEffectPool.isForbidEffect = true
+	FightEffectMgr.isForbidEffect = true
 end
 
 function GMToolView2:_onClickCancelForbidFightEffect()
-	FightEffectPool.isForbidEffect = nil
+	FightEffectMgr.isForbidEffect = nil
 end
 
 function GMToolView2:_onClickTest1()

@@ -11,6 +11,11 @@ end
 function FightMgr:startFight(fightData, roundData)
 	FightDataHelper.initDataMgr()
 	FightDataHelper.initFightData(fightData)
+
+	if GameFacade.isKOLTest() or isDebugBuild then
+		FightRealTimeDamageStatModel.instance:onFightStart()
+	end
+
 	FightDataHelper.stageMgr:setStage(FightStageMgr.StageType.Play)
 	FightDataHelper.stageMgr:enterFightState(FightStageMgr.FightStateType.Enter)
 end

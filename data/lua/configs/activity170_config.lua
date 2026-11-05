@@ -1,0 +1,13 @@
+﻿-- chunkname: @configs/activity170_config.lua
+
+return {
+	{
+		12242,
+		540001,
+		"5#150|4#850|3#4000|2#4500|1#500",
+		3,
+		22101,
+		830,
+		"5#summonsimulation_probability_extra_desc"
+	}
+}

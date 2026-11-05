@@ -9,9 +9,10 @@ AudioEnum3_3.VersionActivity3_3Enter = {
 	play_ui_yuanzheng_open_2 = 330008
 }
 AudioEnum3_3.bgm = {
+	play_activitymusic_zuozhan_3_3 = 3330010,
 	play_8bit_music_combat = 3330004,
 	play_8bit_music_explore = 3330003,
-	play_activitymusic_zuozhan_3_3 = 3330010,
+	EnterView = 3330001,
 	play_ui_checkpoint_noise_wurenqu_common_loop = 3309025
 }
 AudioEnum3_3.CommandStationMap = {

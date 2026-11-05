@@ -13,9 +13,36 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.udimo_lock_mode_setting_config"
 
-function lua_udimo_lock_mode_setting.onLoad(json)
-	lua_udimo_lock_mode_setting.configList, lua_udimo_lock_mode_setting.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_udimo_lock_mode_setting, "configList", _configList)
+	rawset(lua_udimo_lock_mode_setting, "configDict", _configDict)
+end
+
+setmetatable(lua_udimo_lock_mode_setting, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_udimo_lock_mode_setting.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_udimo_lock_mode_setting, "configList", nil)
+	rawset(lua_udimo_lock_mode_setting, "configDict", nil)
 end
 
 return lua_udimo_lock_mode_setting

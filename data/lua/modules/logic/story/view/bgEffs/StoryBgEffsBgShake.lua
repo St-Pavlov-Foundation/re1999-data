@@ -9,8 +9,7 @@ function StoryBgEffsBgShake:ctor()
 end
 
 function StoryBgEffsBgShake:init(bgCo)
-	self:setBgCo(bgCo)
-
+	self._bgCo = bgCo
 	self._alive = true
 	self.hasStarted = false
 	self._shakeCameraAnimPath = "ui/animations/dynamic/simage_bgimg.controller"
@@ -18,9 +17,9 @@ function StoryBgEffsBgShake:init(bgCo)
 	table.insert(self._resList, self._shakeCameraAnimPath)
 end
 
-function StoryBgEffsBgShake:setBgCo(bgCo)
-	self._lastBgCo = self._bgCo
-	self._bgCo = bgCo
+function StoryBgEffsBgShake:setBgCo()
+	self._lastBgCo = self._curBgCo
+	self._curBgCo = self._bgCo
 end
 
 function StoryBgEffsBgShake:start(callback, callbackObj)
@@ -83,7 +82,8 @@ function StoryBgEffsBgShake:_onShakeFinished()
 end
 
 function StoryBgEffsBgShake:reset(bgCo)
-	self:setBgCo(bgCo)
+	self._bgCo = bgCo
+
 	self:playEffect()
 end
 
@@ -101,8 +101,10 @@ function StoryBgEffsBgShake:playEffect()
 		self._bgAnimator.runtimeAnimatorController = animator
 	end
 
+	self:setBgCo()
+
 	local lastBgCo = self._lastBgCo
-	local curBgCo = self._bgCo
+	local curBgCo = self._curBgCo
 
 	if not curBgCo then
 		return

@@ -35,9 +35,36 @@ local mlStringKey = {
 	desc = 2,
 	name = 1
 }
+local _configList, _configDict
+local configPath = "configs.arcade_monster_config"
 
-function lua_arcade_monster.onLoad(json)
-	lua_arcade_monster.configList, lua_arcade_monster.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_arcade_monster, "configList", _configList)
+	rawset(lua_arcade_monster, "configDict", _configDict)
+end
+
+setmetatable(lua_arcade_monster, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_arcade_monster.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_arcade_monster, "configList", nil)
+	rawset(lua_arcade_monster, "configDict", nil)
 end
 
 return lua_arcade_monster

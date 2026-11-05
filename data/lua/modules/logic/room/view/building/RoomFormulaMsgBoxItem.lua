@@ -11,11 +11,16 @@ function RoomFormulaMsgBoxItem:init(go)
 	self._txtNum = gohelper.findChildText(self._go, "image_NumBG/#txt_Num")
 end
 
-function RoomFormulaMsgBoxItem:onUpdateMO(mo)
+function RoomFormulaMsgBoxItem:onUpdateMO(mo, useBigBg)
 	local config, icon = ItemModel.instance:getItemConfigAndIcon(mo.type, mo.id)
 
 	self._simageproduceitem:LoadImage(icon)
-	UISpriteSetMgr.instance:setRoomSprite(self._imagerare, "bg_wupindi_" .. tostring(ItemEnum.Color[config.rare]))
+
+	if useBigBg then
+		UISpriteSetMgr.instance:setRoomSprite(self._imagerare, "huangyuan_pz_" .. tostring(ItemEnum.Color[config.rare]))
+	else
+		UISpriteSetMgr.instance:setRoomSprite(self._imagerare, "bg_wupindi_" .. tostring(ItemEnum.Color[config.rare]))
+	end
 
 	local numDisplay = GameUtil.numberDisplay(mo.quantity)
 

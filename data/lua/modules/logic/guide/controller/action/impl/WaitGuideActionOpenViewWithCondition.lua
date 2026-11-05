@@ -535,6 +535,16 @@ function WaitGuideActionOpenViewWithCondition.checkNaxisuoxiGameId(id)
 	return curGameId ~= nil and curGameId == tonumber(id)
 end
 
+function WaitGuideActionOpenViewWithCondition.isEnterEvelynGame(gameId)
+	if string.nilorempty(gameId) then
+		return false
+	end
+
+	local curEpisodeCo = EvelynController.instance._curEpisodeCo
+
+	return curEpisodeCo and curEpisodeCo.gameId == tonumber(gameId)
+end
+
 function WaitGuideActionOpenViewWithCondition.defaultCheck()
 	return false
 end

@@ -643,7 +643,8 @@ function BossRushController_Test:_test_demo_v3a2()
 	end
 
 	function BossRushRpc.instance:sendAct128GetMilestoneBonusRequest(activityId, callback, callbackobj)
-		local rank = V3a2_BossRushModel.instance:getRank()
+		local season = V4a1_BossRushModel.instance:getSeasonByActId(activityId)
+		local rank = V3a2_BossRushModel.instance:getRank(season)
 		local msg = {
 			activityId = activityId,
 			gainMilestoneLevel = rank

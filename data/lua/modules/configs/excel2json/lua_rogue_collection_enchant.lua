@@ -15,9 +15,36 @@ local primaryKey = {
 local mlStringKey = {
 	name = 1
 }
+local _configList, _configDict
+local configPath = "configs.rogue_collection_enchant_config"
 
-function lua_rogue_collection_enchant.onLoad(json)
-	lua_rogue_collection_enchant.configList, lua_rogue_collection_enchant.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_rogue_collection_enchant, "configList", _configList)
+	rawset(lua_rogue_collection_enchant, "configDict", _configDict)
+end
+
+setmetatable(lua_rogue_collection_enchant, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_rogue_collection_enchant.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_rogue_collection_enchant, "configList", nil)
+	rawset(lua_rogue_collection_enchant, "configDict", nil)
 end
 
 return lua_rogue_collection_enchant

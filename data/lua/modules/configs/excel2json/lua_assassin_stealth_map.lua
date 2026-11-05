@@ -17,9 +17,36 @@ local primaryKey = {
 local mlStringKey = {
 	title = 1
 }
+local _configList, _configDict
+local configPath = "configs.assassin_stealth_map_config"
 
-function lua_assassin_stealth_map.onLoad(json)
-	lua_assassin_stealth_map.configList, lua_assassin_stealth_map.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_assassin_stealth_map, "configList", _configList)
+	rawset(lua_assassin_stealth_map, "configDict", _configDict)
+end
+
+setmetatable(lua_assassin_stealth_map, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_assassin_stealth_map.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_assassin_stealth_map, "configList", nil)
+	rawset(lua_assassin_stealth_map, "configDict", nil)
 end
 
 return lua_assassin_stealth_map

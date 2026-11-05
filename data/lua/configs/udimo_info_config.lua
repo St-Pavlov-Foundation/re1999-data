@@ -1,0 +1,24 @@
+﻿-- chunkname: @configs/udimo_info_config.lua
+
+return {
+	{
+		1,
+		"v3a2_udimo_info_herocoverday",
+		"udimo_info_target_03"
+	},
+	{
+		2,
+		"v3a2_udimo_info_assistcount",
+		"udimo_info_target_01"
+	},
+	{
+		3,
+		"v3a2_udimo_info_traincrittercount",
+		"udimo_info_target_02"
+	},
+	{
+		4,
+		"v3a2_udimo_info_fightcount",
+		"udimo_info_target_04"
+	}
+}

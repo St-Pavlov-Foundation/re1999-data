@@ -10,6 +10,7 @@ NecrologistStoryEnum.RoleStoryId = {
 	V4A0 = 34,
 	V3A3 = 28,
 	V3A1 = 26,
+	V4A1 = 35,
 	V3A5 = 30,
 	V3A8 = 32,
 	V3A2 = 27,
@@ -23,7 +24,8 @@ NecrologistStoryEnum.RoleStoryId2MOCls = {
 	[NecrologistStoryEnum.RoleStoryId.V3A5] = "NecrologistV3A5MO",
 	[NecrologistStoryEnum.RoleStoryId.V3A7] = "NecrologistV3A7MO",
 	[NecrologistStoryEnum.RoleStoryId.V3A9] = "NecrologistV3A9MO",
-	[NecrologistStoryEnum.RoleStoryId.V4A0] = "NecrologistV4A0MO"
+	[NecrologistStoryEnum.RoleStoryId.V4A0] = "NecrologistV4A0MO",
+	[NecrologistStoryEnum.RoleStoryId.V4A1] = "NecrologistV4A1MO"
 }
 NecrologistStoryEnum.StoryId2GameView = {
 	[NecrologistStoryEnum.RoleStoryId.V3A1] = ViewName.V3A1_RoleStoryGameView,
@@ -34,7 +36,8 @@ NecrologistStoryEnum.StoryId2GameView = {
 	[NecrologistStoryEnum.RoleStoryId.V3A7] = ViewName.V3A7_RoleStoryGameView,
 	[NecrologistStoryEnum.RoleStoryId.V3A8] = ViewName.V3A8_RoleStoryGameView,
 	[NecrologistStoryEnum.RoleStoryId.V3A9] = ViewName.V3A9_RoleStoryGameView,
-	[NecrologistStoryEnum.RoleStoryId.V4A0] = ViewName.V4A0_RoleStoryGameView
+	[NecrologistStoryEnum.RoleStoryId.V4A0] = ViewName.V4A0_RoleStoryGameView,
+	[NecrologistStoryEnum.RoleStoryId.V4A1] = ViewName.V4A1_RoleStoryGameView
 }
 NecrologistStoryEnum.TaskParam = {
 	V3A9ItemUnlockCount = 3301,
@@ -117,10 +120,11 @@ NecrologistStoryEnum.WeatherType2Name = {
 	[NecrologistStoryEnum.WeatherType.Fire] = "fire"
 }
 NecrologistStoryEnum.NeedDelayType = {
-	options = 4,
-	aside = 2,
 	location = 3,
-	dialog = 1
+	aside = 2,
+	mulOption = 5,
+	dialog = 1,
+	options = 4
 }
 NecrologistStoryEnum.NeedDelayControlType = {
 	[NecrologistStoryEnum.StoryControlType.Magic] = 1,
@@ -159,9 +163,10 @@ NecrologistStoryEnum.V3A7SpLevelId = {
 }
 NecrologistStoryEnum.PrefsKey = {
 	V3A9ItemHasPlayUnlockTag = "NecrologistV3A9ItemHasPlayUnlockTag",
+	V4A1EndUnlockAnim = "NecrologistV4A1EndUnlockAnim",
+	V4A0PlayFnishedAnim = "NecrologistV4A0PlayFnishedAnim",
 	V4A0EnterLevel = "NecrologistV4A0EnterLevel",
-	V3A9ItemOldTag = "NecrologistV3A9ItemOldTag",
-	V4A0PlayFnishedAnim = "NecrologistV4A0PlayFnishedAnim"
+	V3A9ItemOldTag = "NecrologistV3A9ItemOldTag"
 }
 NecrologistStoryEnum.PrefsKeyType = {
 	String = 2,
@@ -173,7 +178,8 @@ NecrologistStoryEnum.PrefsKey2Type = {
 	[NecrologistStoryEnum.PrefsKey.V3A9ItemHasPlayUnlockTag] = NecrologistStoryEnum.PrefsKeyType.NumberList,
 	[NecrologistStoryEnum.PrefsKey.V3A9ItemOldTag] = NecrologistStoryEnum.PrefsKeyType.NumberList,
 	[NecrologistStoryEnum.PrefsKey.V4A0EnterLevel] = NecrologistStoryEnum.PrefsKeyType.String,
-	[NecrologistStoryEnum.PrefsKey.V4A0PlayFnishedAnim] = NecrologistStoryEnum.PrefsKeyType.Bool
+	[NecrologistStoryEnum.PrefsKey.V4A0PlayFnishedAnim] = NecrologistStoryEnum.PrefsKeyType.Bool,
+	[NecrologistStoryEnum.PrefsKey.V4A1EndUnlockAnim] = NecrologistStoryEnum.PrefsKeyType.Bool
 }
 
 return NecrologistStoryEnum

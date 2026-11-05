@@ -13,9 +13,36 @@ local primaryKey = {
 	"layer"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.fight_she_fa_ignite_config"
 
-function lua_fight_she_fa_ignite.onLoad(json)
-	lua_fight_she_fa_ignite.configList, lua_fight_she_fa_ignite.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_fight_she_fa_ignite, "configList", _configList)
+	rawset(lua_fight_she_fa_ignite, "configDict", _configDict)
+end
+
+setmetatable(lua_fight_she_fa_ignite, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_fight_she_fa_ignite.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_fight_she_fa_ignite, "configList", nil)
+	rawset(lua_fight_she_fa_ignite, "configDict", nil)
 end
 
 return lua_fight_she_fa_ignite

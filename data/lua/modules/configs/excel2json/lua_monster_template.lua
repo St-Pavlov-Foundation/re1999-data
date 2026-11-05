@@ -33,9 +33,36 @@ local primaryKey = {
 	"template"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.monster_template_config"
 
-function lua_monster_template.onLoad(json)
-	lua_monster_template.configList, lua_monster_template.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_monster_template, "configList", _configList)
+	rawset(lua_monster_template, "configDict", _configDict)
+end
+
+setmetatable(lua_monster_template, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_monster_template.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_monster_template, "configList", nil)
+	rawset(lua_monster_template, "configDict", nil)
 end
 
 return lua_monster_template

@@ -13,9 +13,36 @@ local primaryKey = {
 	"type"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.survival_equip_score_config"
 
-function lua_survival_equip_score.onLoad(json)
-	lua_survival_equip_score.configList, lua_survival_equip_score.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_survival_equip_score, "configList", _configList)
+	rawset(lua_survival_equip_score, "configDict", _configDict)
+end
+
+setmetatable(lua_survival_equip_score, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_survival_equip_score.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_survival_equip_score, "configList", nil)
+	rawset(lua_survival_equip_score, "configDict", nil)
 end
 
 return lua_survival_equip_score

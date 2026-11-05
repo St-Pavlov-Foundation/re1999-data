@@ -64,7 +64,8 @@ StoryEnum.HeroEffect = {
 	Erase = "erase",
 	HideNode = "hideNode",
 	SetMaterial = "setMaterial",
-	KeepAction = "keepAction"
+	KeepAction = "keepAction",
+	Dark = "dark"
 }
 StoryEnum.BgType = {
 	Video = 2,
@@ -393,6 +394,62 @@ StoryEnum.VideoEffectType = {
 	FadeIn = 1,
 	LoopFade = 3,
 	None = 0
+}
+StoryEnum.SEG_TAG_CONFIGS = {
+	{
+		pattern = "<em>",
+		replace = ""
+	},
+	{
+		pattern = "</em>",
+		replace = ""
+	},
+	{
+		pattern = "<brace>",
+		replace = "{"
+	},
+	{
+		pattern = "</brace>",
+		replace = "}"
+	},
+	{
+		pattern = "^L?%-?%d+,%-?%d+#",
+		replace = ""
+	},
+	{
+		pattern = "<wait=(%d+%.?%d*)>",
+		key = "wait",
+		tagType = 0
+	},
+	{
+		pattern = "</wait>",
+		key = "wait",
+		tagType = 1
+	},
+	{
+		pattern = "<speed=(%d+%.?%d*)>",
+		key = "speed",
+		tagType = 0
+	},
+	{
+		pattern = "</speed>",
+		key = "speed",
+		tagType = 1
+	},
+	{
+		pattern = "<clue=([^>]*)>",
+		key = "clue",
+		tagType = 0
+	},
+	{
+		pattern = "</clue>",
+		key = "clue",
+		tagType = 1
+	}
+}
+StoryEnum.SEG_TAG_DEFAULTS = {
+	wait = 0,
+	speed = 1
 }
 
 return StoryEnum

@@ -1,0 +1,28 @@
+﻿-- chunkname: @configs/activity115_chapter_config.lua
+
+return {
+	{
+		11203,
+		1,
+		"营地密林",
+		"Dense Woods",
+		50,
+		3300017
+	},
+	{
+		11203,
+		2,
+		"小屋周边",
+		"Around the Cabin",
+		50,
+		3300017
+	},
+	{
+		11203,
+		3,
+		"魔精居所",
+		"Critter Residence",
+		50,
+		3300017
+	}
+}

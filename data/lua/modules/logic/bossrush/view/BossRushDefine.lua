@@ -5,6 +5,13 @@ module("modules.logic.bossrush.view.BossRushDefine", package.seeall)
 local BossRushDefine = {}
 
 function BossRushDefine.init(module_views)
+	BossRushDefine.initV2a9(module_views)
+	BossRushDefine.initV3a2(module_views)
+	BossRushDefine.initV3a9(module_views)
+	BossRushDefine.initV4a1(module_views)
+end
+
+function BossRushDefine.initV2a9(module_views)
 	module_views.V2a9_BossRushHeroGroupFightView = {
 		bgBlur = 4,
 		container = "V2a9_BossRushHeroGroupFightViewContainer",
@@ -44,6 +51,9 @@ function BossRushDefine.init(module_views)
 			}
 		}
 	}
+end
+
+function BossRushDefine.initV3a2(module_views)
 	module_views.V3a2_BossRush_MainView = {
 		bgBlur = 0,
 		container = "V3a2_BossRush_MainViewContainer",
@@ -161,8 +171,6 @@ function BossRushDefine.init(module_views)
 			BossRushEnum.ResPath.v1a4_bossrush_result_assess
 		}
 	}
-
-	BossRushDefine.initV3a9(module_views)
 end
 
 function BossRushDefine.initV3a9(module_views)
@@ -343,6 +351,214 @@ function BossRushDefine.initV3a9(module_views)
 		anim = ViewAnim.Default,
 		customAnimBg = {
 			"#simage_tipbg"
+		}
+	}
+end
+
+function BossRushDefine.initV4a1(module_views)
+	local ResFoldPath = "ui/viewres/versionactivity_1_4/v1a4_bossrush/v4a1_bossrush/"
+
+	module_views.V4a1_BossRush_MainView = {
+		bgBlur = 0,
+		container = "V4a1_BossRush_MainViewContainer",
+		destroy = 0,
+		layer = "POPUP_TOP",
+		viewType = ViewType.Full,
+		anim = ViewAnim.Default,
+		mainRes = ResFoldPath .. "v4a1_bossrush_mainview.prefab",
+		tabRes = {
+			{
+				{
+					NavigateButtonsView.prefabPath
+				}
+			}
+		},
+		otherRes = {
+			BossRushEnum.ResPath.v1a4_bossrush_mainview_assessicon,
+			BossRushEnum.ResPath.v4a1_bossrush_rankbtn
+		}
+	}
+	module_views.V4a1_BossRush_LevelDetailView = {
+		bgBlur = 0,
+		container = "V4a1_BossRush_LevelDetailViewContainer",
+		destroy = 0,
+		layer = "POPUP_TOP",
+		viewType = ViewType.Full,
+		anim = ViewAnim.Default,
+		mainRes = ResFoldPath .. "v4a1_bossrush_leveldetail.prefab",
+		tabRes = {
+			{
+				{
+					NavigateButtonsView.prefabPath
+				}
+			}
+		},
+		otherRes = {
+			BossRushEnum.ResPath.v1a4_bossrush_leveldetail_assessicon,
+			BossRushEnum.ResPath.v1a4_bossrushleveldetail_spine,
+			[4] = BossRushEnum.ResPath.v3a2_bossrush_strategyitem
+		},
+		preloader = module_views_preloader
+	}
+	module_views.V4a1_BossRush_LevelReviewView = {
+		bgBlur = 0,
+		container = "V4a1_BossRush_LevelReviewViewContainer",
+		destroy = 0,
+		layer = "POPUP_TOP",
+		viewType = ViewType.Full,
+		anim = ViewAnim.Default,
+		mainRes = BossRushEnum.ResPath.v3a2_bossrush_leveldetail,
+		tabRes = {
+			{
+				{
+					NavigateButtonsView.prefabPath
+				}
+			}
+		},
+		otherRes = {
+			BossRushEnum.ResPath.v1a4_bossrush_leveldetail_assessicon,
+			BossRushEnum.ResPath.v1a4_bossrushleveldetail_spine,
+			[4] = BossRushEnum.ResPath.v3a2_bossrush_strategyitem
+		},
+		preloader = module_views_preloader
+	}
+	module_views.V4a1_BossRush_HandBookView = {
+		bgBlur = 0,
+		container = "V4a1_BossRush_HandBookViewContainer",
+		destroy = 0,
+		layer = "POPUP_TOP",
+		viewType = ViewType.Full,
+		anim = ViewAnim.Default,
+		mainRes = ResFoldPath .. "v4a1_bossrush_handbookview.prefab",
+		tabRes = {
+			{
+				{
+					NavigateButtonsView.prefabPath
+				}
+			}
+		},
+		otherRes = {
+			BossRushEnum.ResPath.v3a2_bossrush_handbookitem,
+			BossRushEnum.ResPath.v3a2_bossrush_rankbtn,
+			BossRushEnum.ResPath.v3a2_bossrush_strategyitem,
+			BossRushEnum.ResPath.v4a1_bossrush_rankbtn
+		}
+	}
+	module_views.V4a1_BossRush_RankView = {
+		bgBlur = 0,
+		container = "V4a1_BossRush_RankViewContainer",
+		destroy = 0,
+		layer = "POPUP_TOP",
+		viewType = ViewType.Full,
+		anim = ViewAnim.Default,
+		mainRes = ResFoldPath .. "v4a1_bossrush_rankview.prefab",
+		tabRes = {
+			{
+				{
+					NavigateButtonsView.prefabPath
+				}
+			}
+		},
+		otherRes = {
+			BossRushEnum.ResPath.v3a2_bossrush_rankbonus
+		}
+	}
+	module_views.V4a1_BossRush_ResultPanel = {
+		destroy = 0,
+		container = "V4a1_BossRush_ResultPanelContainer",
+		bgBlur = 1,
+		layer = "POPUP_TOP",
+		viewType = ViewType.Modal,
+		anim = ViewAnim.Default,
+		mainRes = ResFoldPath .. "v4a1_bossrush_resultpanel.prefab",
+		otherRes = {
+			BossRushEnum.ResPath.v3a2_bossrush_resultassess,
+			BossRushEnum.ResPath.v1a4_bossrush_result_assess,
+			dangerPanel = BossRushEnum.ResPath.v4a1_bossrush_dangerrankview,
+			dangerItem = BossRushEnum.ResPath.v4a1_bossrush_danger
+		}
+	}
+	module_views.V4a1_BossRush_ResultView = {
+		bgBlur = 1,
+		container = "V4a1_BossRush_ResultViewContainer",
+		destroy = 0,
+		layer = "POPUP_TOP",
+		viewType = ViewType.Normal,
+		anim = ViewAnim.Default,
+		mainRes = ResFoldPath .. "v4a1_bossrush_resultview.prefab",
+		tabRes = {
+			{
+				{
+					NavigateButtonsView.prefabPath
+				}
+			}
+		},
+		otherRes = {
+			BossRushEnum.ResPath.v1a4_bossrush_result_assess,
+			BossRushEnum.ResPath.v1a4_bossrush_herogroup,
+			BossRushEnum.ResPath.v1a4_bossrush_herogroupitem1,
+			BossRushEnum.ResPath.v1a4_bossrush_herogroupitem2,
+			dangerPanel = BossRushEnum.ResPath.v4a1_bossrush_dangerrankview,
+			dangerItem = BossRushEnum.ResPath.v4a1_bossrush_danger
+		}
+	}
+	module_views.V4a1_BossRush_SkillBuffView = {
+		destroy = 0,
+		container = "V4a1_BossRush_SkillBuffViewContainer",
+		bgBlur = 1,
+		layer = "POPUP_TOP",
+		viewType = ViewType.Normal,
+		mainRes = ResFoldPath .. "v4a1_bossrush_dangertips.prefab"
+	}
+	module_views.BossRushEnemyInfoView = {
+		bgBlur = 1,
+		container = "BossRushEnemyInfoViewContainer",
+		destroy = 0,
+		mainRes = "ui/viewres/enemyinfo/baseenemyinfoview.prefab",
+		layer = "POPUP_TOP",
+		viewType = ViewType.Modal,
+		anim = ViewAnim.Default,
+		tabRes = {
+			{
+				{
+					NavigateButtonsView.prefabPath
+				}
+			}
+		},
+		customAnimBg = {
+			"bg_container/#simage_bg",
+			"bg_container/#simage_rightbg"
+		},
+		otherRes = {
+			FightEntityResistanceComp.FightResistancePath,
+			dangerPanel = BossRushEnum.ResPath.v4a1_bossrush_dangerrankview,
+			dangerItem = BossRushEnum.ResPath.v4a1_bossrush_danger
+		}
+	}
+	module_views.BossRushHeroGroupFightView = {
+		bgBlur = 4,
+		container = "BossRushHeroGroupFightViewContainer",
+		destroy = 0,
+		mainRes = "ui/viewres/herogroup/herogroupview.prefab",
+		layer = "POPUP_TOP",
+		viewType = ViewType.Normal,
+		anim = ViewAnim.Internal,
+		tabRes = {
+			{
+				{
+					NavigateButtonsView.prefabPath
+				}
+			},
+			{
+				{
+					CurrencyView.prefabPath
+				}
+			}
+		},
+		otherRes = {
+			"ui/viewres/fight/clothskill.prefab",
+			dangerPanel = ResFoldPath .. "v4a1_bossrush_herogroupdanger.prefab",
+			dangerItem = BossRushEnum.ResPath.v4a1_bossrush_danger
 		}
 	}
 end

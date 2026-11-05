@@ -158,7 +158,11 @@ function DecorateStoreGoodsView:_onEndEdit(inputStr)
 
 		self:_refreshValue()
 		GameFacade.showToast(ToastEnum.MaterialTipBtnSub)
+
+		return
 	end
+
+	self:_refreshValue()
 end
 
 function DecorateStoreGoodsView:_getMaxValue()

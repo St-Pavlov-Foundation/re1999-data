@@ -3,6 +3,7 @@
 module("modules.logic.story.view.StoryPictureItem", package.seeall)
 
 local StoryPictureItem = class("StoryPictureItem")
+local TextFontCount = 4
 
 function StoryPictureItem:_isSpImg()
 	local isJp = GameLanguageMgr.instance:getLanguageTypeStoryIndex() == LanguageEnum.LanguageStoryType.JP
@@ -97,7 +98,7 @@ function StoryPictureItem:_onPicPrefabLoaded()
 	self._gotmptxt = gohelper.findChild(self._picGo, "root/#go_tmptxt")
 	self._tmpTxts = {}
 
-	for i = 1, 3 do
+	for i = 1, TextFontCount do
 		local tmpTxt = gohelper.findChildText(self._gotmptxt, "txt" .. i)
 
 		table.insert(self._tmpTxts, tmpTxt)
@@ -106,7 +107,7 @@ function StoryPictureItem:_onPicPrefabLoaded()
 	self._gosptxt = gohelper.findChild(self._picGo, "root/#go_sptxt")
 	self._spTxts = {}
 
-	for i = 1, 3 do
+	for i = 1, TextFontCount do
 		local spTxt = gohelper.findChildText(self._gosptxt, "txt" .. i)
 
 		table.insert(self._spTxts, spTxt)
@@ -139,7 +140,7 @@ function StoryPictureItem:_onPicPrefabLoaded()
 
 		self._useTxts = useTmp and self._tmpTxts or self._spTxts
 
-		for i = 1, 3 do
+		for i = 1, TextFontCount do
 			gohelper.setActive(self._useTxts[i].gameObject, fontType == i)
 		end
 

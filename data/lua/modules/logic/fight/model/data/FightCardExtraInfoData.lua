@@ -5,11 +5,15 @@ module("modules.logic.fight.model.data.FightCardExtraInfoData", package.seeall)
 local FightCardExtraInfoData = FightDataClass("FightCardExtraInfoData")
 
 FightCardExtraInfoData.ExtraKey = {
-	AnchorValue = 7,
 	NotUseActPoint = 8,
+	NO_ADD_EXPOINT_USE = 9,
 	AnchorKey = 6,
-	NotUse = 5,
+	AnchorValue = 7,
 	SpecialCard = 2,
+	NOT_CAL_SIZE = 10,
+	NOT_COMPOSE_UNIVERSAL = 12,
+	NOT_CAN_RE_DEAL = 11,
+	NotUse = 5,
 	NotMove = 4,
 	NotCompose = 1,
 	ClientParams1 = 3

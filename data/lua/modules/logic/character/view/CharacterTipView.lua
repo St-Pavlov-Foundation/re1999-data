@@ -449,30 +449,32 @@ function CharacterTipView:getEquipAddBaseValues(equips, baseAttrDict)
 
 			heroMo:_calcEquipAttr(equipMo, equipAddValues, equipBreakAddAttrDict, equipLv)
 
-			local otherEquipMo
+			if heroMo and heroMo.heroId == CharacterEnum.TwinssychubeHeroId then
+				local otherEquipMo
 
-			if trialEquipMo then
-				local otherEquipId = EquipModel.instance:getOtherTwinssychubeEquipId(trialEquipMo.equipId)
+				if trialEquipMo then
+					local otherEquipId = EquipModel.instance:getOtherTwinssychubeEquipId(trialEquipMo.equipId)
 
-				if otherEquipId then
-					otherEquipMo = EquipMO.New()
+					if otherEquipId then
+						otherEquipMo = EquipMO.New()
 
-					local co = {
-						equipId = otherEquipId,
-						equipLv = trialEquipMo.level,
-						equipRefine = trialEquipMo.refineLv
-					}
+						local co = {
+							equipId = otherEquipId,
+							equipLv = trialEquipMo.level,
+							equipRefine = trialEquipMo.refineLv
+						}
 
-					otherEquipMo:initByTrialCO(co)
+						otherEquipMo:initByTrialCO(co)
+					end
+				else
+					local otherEquipId = equipMo and EquipModel.instance:getOtherTwinssychubeEquipId(equipMo.equipId)
+
+					otherEquipMo = EquipModel.instance:getTwinssychubeEquipMo(otherEquipId)
 				end
-			else
-				local otherEquipId = equipMo and EquipModel.instance:getOtherTwinssychubeEquipId(equipMo.equipId)
 
-				otherEquipMo = EquipModel.instance:getTwinssychubeEquipMo(otherEquipId)
-			end
-
-			if otherEquipMo then
-				heroMo:_calcEquipAttr(otherEquipMo, equipAddValues, equipBreakAddAttrDict, equipLv)
+				if otherEquipMo then
+					heroMo:_calcEquipAttr(otherEquipMo, equipAddValues, equipBreakAddAttrDict, equipLv)
+				end
 			end
 		end
 	end
@@ -573,24 +575,26 @@ function CharacterTipView:getEquipBreakAddAttrValues(equips)
 			if equipMo then
 				equipMo = self:_modifyEquipInfo(equipMo)
 
-				if trialEquipMo then
-					local otherEquipId = EquipModel.instance:getOtherTwinssychubeEquipId(trialEquipMo.equipId)
+				if self.viewParam.heroMo and self.viewParam.heroMo.heroId == CharacterEnum.TwinssychubeHeroId then
+					if trialEquipMo then
+						local otherEquipId = EquipModel.instance:getOtherTwinssychubeEquipId(trialEquipMo.equipId)
 
-					if otherEquipId then
-						otherEquipMo = EquipMO.New()
+						if otherEquipId then
+							otherEquipMo = EquipMO.New()
 
-						local co = {
-							equipId = otherEquipId,
-							equipLv = trialEquipMo.level,
-							equipRefine = trialEquipMo.refineLv
-						}
+							local co = {
+								equipId = otherEquipId,
+								equipLv = trialEquipMo.level,
+								equipRefine = trialEquipMo.refineLv
+							}
 
-						otherEquipMo:initByTrialCO(co)
+							otherEquipMo:initByTrialCO(co)
+						end
+					else
+						local otherEquipId = equipMo and EquipModel.instance:getOtherTwinssychubeEquipId(equipMo.equipId)
+
+						otherEquipMo = EquipModel.instance:getTwinssychubeEquipMo(otherEquipId)
 					end
-				else
-					local otherEquipId = equipMo and EquipModel.instance:getOtherTwinssychubeEquipId(equipMo.equipId)
-
-					otherEquipMo = EquipModel.instance:getTwinssychubeEquipMo(otherEquipId)
 				end
 
 				local attrId, value = EquipConfig.instance:getEquipCurrentBreakLvAttrEffect(equipMo.config, equipMo.breakLv)

@@ -15,9 +15,36 @@ local primaryKey = {
 local mlStringKey = {
 	name = 1
 }
+local _configList, _configDict
+local configPath = "configs.musicgame_note_config"
 
-function lua_musicgame_note.onLoad(json)
-	lua_musicgame_note.configList, lua_musicgame_note.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_musicgame_note, "configList", _configList)
+	rawset(lua_musicgame_note, "configDict", _configDict)
+end
+
+setmetatable(lua_musicgame_note, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_musicgame_note.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_musicgame_note, "configList", nil)
+	rawset(lua_musicgame_note, "configDict", nil)
 end
 
 return lua_musicgame_note

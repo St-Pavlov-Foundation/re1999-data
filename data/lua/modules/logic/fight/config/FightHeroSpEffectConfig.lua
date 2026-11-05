@@ -45,7 +45,8 @@ function FightHeroSpEffectConfig:reqConfigNames()
 		"fight_hnj_cost",
 		"fight_hnj_special_spine",
 		"fight_hnj_helmet_spine",
-		"fight_hnj_second_stage_effect"
+		"fight_hnj_second_stage_effect",
+		"fight_sp_pst_muou"
 	}
 end
 

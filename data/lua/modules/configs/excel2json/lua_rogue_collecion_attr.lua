@@ -26,9 +26,36 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.rogue_collecion_attr_config"
 
-function lua_rogue_collecion_attr.onLoad(json)
-	lua_rogue_collecion_attr.configList, lua_rogue_collecion_attr.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_rogue_collecion_attr, "configList", _configList)
+	rawset(lua_rogue_collecion_attr, "configDict", _configDict)
+end
+
+setmetatable(lua_rogue_collecion_attr, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_rogue_collecion_attr.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_rogue_collecion_attr, "configList", nil)
+	rawset(lua_rogue_collecion_attr, "configDict", nil)
 end
 
 return lua_rogue_collecion_attr

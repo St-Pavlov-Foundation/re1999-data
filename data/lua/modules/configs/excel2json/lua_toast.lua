@@ -17,9 +17,36 @@ local primaryKey = {
 local mlStringKey = {
 	tips = 1
 }
+local _configList, _configDict
+local configPath = "configs.toast_config"
 
-function lua_toast.onLoad(json)
-	lua_toast.configList, lua_toast.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_toast, "configList", _configList)
+	rawset(lua_toast, "configDict", _configDict)
+end
+
+setmetatable(lua_toast, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_toast.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_toast, "configList", nil)
+	rawset(lua_toast, "configDict", nil)
 end
 
 return lua_toast

@@ -6,6 +6,7 @@ local FightNameUI = class("FightNameUI", FightBaseClass)
 
 function FightNameUI:onConstructor(entity)
 	self.entity = entity
+	self.entityId = entity.id
 	self._entity = entity
 	self._nameUIActive = true
 	self._nameUIVisible = true
@@ -131,15 +132,7 @@ function FightNameUI:_doSetActive()
 		return
 	end
 
-	local active = self._nameUIActive and self._nameUIVisible
-
-	if self.entity:getMO():hasBuffFeature(FightEnum.BuffType_HideLife) then
-		active = false
-	end
-
-	if FightDataHelper.tempMgr.hideNameUIByTimeline then
-		active = false
-	end
+	local active = self:getActive()
 
 	if not gohelper.isNil(self._uiCanvasGroup) then
 		if active then
@@ -152,6 +145,28 @@ function FightNameUI:_doSetActive()
 	if active and self._uiFollower then
 		self._uiFollower:ForceUpdate()
 	end
+
+	FightController.instance:dispatchEvent(FightEvent.OnNameUIActiveChange, self.entityId, active)
+end
+
+function FightNameUI:getActive()
+	local uiObj = self:getUIGO()
+
+	if gohelper.isNil(uiObj) then
+		return
+	end
+
+	local active = self._nameUIActive and self._nameUIVisible
+
+	if self.entity:getMO():hasBuffFeature(FightEnum.BuffType_HideLife) then
+		active = false
+	end
+
+	if FightDataHelper.tempMgr.hideNameUIByTimeline then
+		active = false
+	end
+
+	return active
 end
 
 function FightNameUI:getAnchorXY()

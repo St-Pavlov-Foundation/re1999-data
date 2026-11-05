@@ -22,6 +22,11 @@ RoomBuildingEnum.BuildingType = {
 	Fishing = 8,
 	Transport = 6
 }
+RoomBuildingEnum.BuildingListHideType = {
+	[RoomBuildingEnum.BuildingType.Transport] = true,
+	[RoomBuildingEnum.BuildingType.Fishing] = true,
+	[RoomBuildingEnum.BuildingType.FishingStore] = true
+}
 RoomBuildingEnum.BuildingListViewResTabType = {
 	All = 1,
 	Play = 4,

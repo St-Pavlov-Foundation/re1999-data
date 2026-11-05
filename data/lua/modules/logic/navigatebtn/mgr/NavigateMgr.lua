@@ -15,7 +15,8 @@ local IgnoreEscViewNameDict = {
 	[ViewName.SurvivalToastView] = true,
 	[ViewName.PartyGameHelpView] = true,
 	[ViewName.SodacheToastView] = true,
-	[ViewName.SodacheCardToastView] = true
+	[ViewName.SodacheCardToastView] = true,
+	[ViewName.GM_FightDataShowView] = true
 }
 local IgnoreTopLayerViewDict = {
 	[ViewName.RougeMapTipView] = true,

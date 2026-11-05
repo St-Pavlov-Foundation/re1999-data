@@ -36,9 +36,36 @@ local mlStringKey = {
 	name = 1,
 	des = 2
 }
+local _configList, _configDict
+local configPath = "configs.monster_skill_template_config"
 
-function lua_monster_skill_template.onLoad(json)
-	lua_monster_skill_template.configList, lua_monster_skill_template.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_monster_skill_template, "configList", _configList)
+	rawset(lua_monster_skill_template, "configDict", _configDict)
+end
+
+setmetatable(lua_monster_skill_template, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_monster_skill_template.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_monster_skill_template, "configList", nil)
+	rawset(lua_monster_skill_template, "configDict", nil)
 end
 
 return lua_monster_skill_template

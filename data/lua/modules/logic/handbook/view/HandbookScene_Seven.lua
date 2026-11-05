@@ -122,6 +122,8 @@ function HandbookScene_Seven:onEnterSceneEnd()
 	local scene = self._scene
 
 	logNormal(string.format("[HandbookScene_Seven] enterScene 最终居中索引:%s, cardIdx2SkinIdx:[%s], 屏幕顺序(左→右):[%s]", self:getMiddleSkinIdx(), table.concat(scene._tarotCardIdx2SkinIdx, ","), getScreenOrderSkinIdx(scene)))
+	self:_initSkinTagTexts()
+	self:_refreshCenterSkinDisplay()
 	TaskDispatcher.runDelay(self.openSkinView, self, 2)
 	TaskDispatcher.runDelay(self.onEnterAniDone, self, 2)
 	UIBlockMgrExtend.setNeedCircleMv(false)
@@ -191,6 +193,57 @@ function HandbookScene_Seven:cardPosToMiddleTweenEndCallback()
 	local scene = self._scene
 
 	logNormal(string.format("[HandbookScene_Seven] 点击卡牌居中后 居中索引:%s, cardIdx2SkinIdx:[%s], 屏幕顺序(左→右):[%s]", self:getMiddleSkinIdx(), table.concat(scene._tarotCardIdx2SkinIdx, ","), getScreenOrderSkinIdx(scene)))
+	self:_refreshCenterSkinDisplay()
+end
+
+function HandbookScene_Seven:_initSkinTagTexts()
+	local scene = self._scene
+
+	self._goSkinTag = gohelper.findChild(scene._curSceneGo, "sencecard/tagbg")
+	self._txtSkinName = gohelper.findChildComponent(scene._curSceneGo, "sencecard/tagbg/#txt_name", typeof(TMPro.TextMeshPro))
+	self._txtSkinNum = gohelper.findChildComponent(scene._curSceneGo, "sencecard/tagbg/#txt_num", typeof(TMPro.TextMeshPro))
+	self._festivalNameList = nil
+
+	local festivalStr = scene._skinSuitCfg and scene._skinSuitCfg.festivalParams
+
+	if not string.nilorempty(festivalStr) then
+		self._festivalNameList = string.split(festivalStr, "|")
+	end
+end
+
+function HandbookScene_Seven:_refreshCenterSkinDisplay()
+	if not self._txtSkinName or not self._txtSkinNum then
+		return
+	end
+
+	local scene = self._scene
+	local middleSkinIdx = self:getMiddleSkinIdx()
+	local skinId = scene._skinIdList[middleSkinIdx]
+	local skinCfg = skinId and SkinConfig.instance:getSkinCo(skinId)
+	local festivalName = self:_getFestivalName(middleSkinIdx)
+
+	gohelper.setActive(self._goSkinTag, skinCfg ~= nil and festivalName ~= nil)
+
+	if not skinCfg or not festivalName then
+		return
+	end
+
+	self._txtSkinName.text = festivalName
+	self._txtSkinNum.text = string.format("%s/%s", middleSkinIdx, self:getSkinCount())
+end
+
+function HandbookScene_Seven:_getFestivalName(skinIdx)
+	local festivalData = self._festivalNameList and self._festivalNameList[skinIdx]
+
+	if string.nilorempty(festivalData) or festivalData == "0" then
+		return nil
+	end
+
+	return luaLang(string.split(festivalData, ",")[1])
+end
+
+function HandbookScene_Seven:cardPosResetTweenEndCallback(idx)
+	self:_refreshCenterSkinDisplay()
 end
 
 function HandbookScene_Seven:_doPlaySpCardCloseAni(cardAnimator, skinId)

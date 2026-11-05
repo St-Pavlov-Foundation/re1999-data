@@ -16,9 +16,36 @@ local mlStringKey = {
 	desc = 2,
 	name = 1
 }
+local _configList, _configDict
+local configPath = "configs.college_skill_config"
 
-function lua_college_skill.onLoad(json)
-	lua_college_skill.configList, lua_college_skill.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_college_skill, "configList", _configList)
+	rawset(lua_college_skill, "configDict", _configDict)
+end
+
+setmetatable(lua_college_skill, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_college_skill.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_college_skill, "configList", nil)
+	rawset(lua_college_skill, "configDict", nil)
 end
 
 return lua_college_skill

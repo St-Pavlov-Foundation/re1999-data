@@ -14,9 +14,36 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.fishing_pool_config"
 
-function lua_fishing_pool.onLoad(json)
-	lua_fishing_pool.configList, lua_fishing_pool.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_fishing_pool, "configList", _configList)
+	rawset(lua_fishing_pool, "configDict", _configDict)
+end
+
+setmetatable(lua_fishing_pool, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_fishing_pool.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_fishing_pool, "configList", nil)
+	rawset(lua_fishing_pool, "configDict", nil)
 end
 
 return lua_fishing_pool

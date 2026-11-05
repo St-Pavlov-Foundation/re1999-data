@@ -1,0 +1,29 @@
+﻿-- chunkname: @configs/story_audio_switch_config.lua
+
+return {
+	{
+		1,
+		"Checkpointstate",
+		"Comeshow"
+	},
+	{
+		2,
+		"Checkpointstate",
+		"Fightnormal"
+	},
+	{
+		3,
+		"Checkpointstate",
+		"Victory"
+	},
+	{
+		4,
+		"AVGmusic",
+		"state1"
+	},
+	{
+		5,
+		"AVGmusic",
+		"state2"
+	}
+}

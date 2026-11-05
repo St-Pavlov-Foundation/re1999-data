@@ -50,7 +50,8 @@ function StoryHeroItem:init(go)
 		[StoryEnum.HeroEffect.DLKBloom] = self.showDLKBloom,
 		[StoryEnum.HeroEffect.SetMaterial] = self._setHeroMaterialScheme,
 		[StoryEnum.HeroEffect.SetFadeIn] = self._setHeroFadeInParam,
-		[StoryEnum.HeroEffect.SetFadeOut] = self._setHeroFadeOutParam
+		[StoryEnum.HeroEffect.SetFadeOut] = self._setHeroFadeOutParam,
+		[StoryEnum.HeroEffect.Dark] = self._setHeroDarkParam
 	}
 end
 
@@ -90,12 +91,13 @@ function StoryHeroItem:hideHero()
 	self:_fadeOut()
 end
 
-function StoryHeroItem:resetHero(v, mat, hasBottomEffect, conAudioId)
+function StoryHeroItem:resetHero(v, isDark, hasBottomEffect, conAudioId)
 	local lastHeroCo = self._heroCo
 
 	self._heroCo = v
 
 	self:initEffsCo()
+	self:refreshLayerAndOrder()
 
 	local replacePath = StoryModel.instance:getReplaceHeroPath(v.heroIndex)
 
@@ -122,7 +124,7 @@ function StoryHeroItem:resetHero(v, mat, hasBottomEffect, conAudioId)
 
 			if not isAuto and v.anims[typeIndex] == lastHeroCo.anims[typeIndex] and v.expressions[typeIndex] == lastHeroCo.expressions[typeIndex] and v.mouses[typeIndex] == lastHeroCo.mouses[typeIndex] then
 				if not self._isLightSpine then
-					self:_setHeroMat(mat)
+					self:_setHeroColorDark(isDark)
 				end
 
 				return
@@ -135,7 +137,7 @@ function StoryHeroItem:resetHero(v, mat, hasBottomEffect, conAudioId)
 	ZProj.TweenHelper.KillByObj(self._heroGo.transform)
 
 	if not self._isLightSpine then
-		self:_setHeroMat(mat)
+		self:_setHeroColorDark(isDark)
 
 		if self._heroGo.activeSelf then
 			if self._heroSpineGo then
@@ -250,8 +252,8 @@ function StoryHeroItem:_setHeroFadeMat()
 	if self._heroSpine and self._isLive2D then
 		self._heroSpine:setSceneTexture(texture)
 	elseif self._heroSkeletonGraphic then
-		self._heroSkeletonGraphic.materialForRendering:SetTexture("_SceneMask", texture)
-		self._heroSkeletonGraphic.materialForRendering:SetVector("_SceneMask_ST", vec4)
+		self._spineMat:SetTexture("_SceneMask", texture)
+		self._spineMat:SetVector("_SceneMask_ST", vec4)
 	end
 end
 
@@ -267,8 +269,8 @@ function StoryHeroItem:_fadeInFinished()
 	end
 
 	if self._heroSkeletonGraphic then
-		self._heroSkeletonGraphic.material:DisableKeyword("_SCENEMASKALPHA_ON")
-		self._heroSkeletonGraphic.material:DisableKeyword("_SCENEMASKALPHA2_ON")
+		self._spineMat:DisableKeyword("_SCENEMASKALPHA_ON")
+		self._spineMat:DisableKeyword("_SCENEMASKALPHA2_ON")
 	end
 
 	if self._heroSpine and self._isLive2D then
@@ -288,7 +290,37 @@ function StoryHeroItem:_isSpMat()
 	return false
 end
 
-function StoryHeroItem:_setHeroMat(mat)
+function StoryHeroItem:_setHeroColorDark(isDark)
+	if self:hasHeroEffect(StoryEnum.HeroEffect.Dark) then
+		return
+	end
+
+	self:_setHeroColorFactor(isDark and 0.6 or 1)
+end
+
+function StoryHeroItem:_setHeroColorFactor(factor, time)
+	if self._colorTweenId then
+		ZProj.TweenHelper.KillById(self._colorTweenId)
+
+		self._colorTweenId = nil
+	end
+
+	if not factor then
+		return
+	end
+
+	factor = Mathf.Clamp01(factor)
+
+	if time and time > 0 then
+		local start = self._curColorFactor or 1
+
+		self._colorTweenId = ZProj.TweenHelper.DOTweenFloat(start, factor, time, self._setHeroColorFactorValue, nil, self, nil, EaseType.Linear)
+	else
+		self:_setHeroColorFactorValue(factor)
+	end
+end
+
+function StoryHeroItem:_setHeroColorFactorValue(value)
 	if self._isLightSpine then
 		return
 	end
@@ -305,42 +337,22 @@ function StoryHeroItem:_setHeroMat(mat)
 		return
 	end
 
-	if self._isLive2D then
-		if string.match(mat.name, "spine_ui_default") and self._initMat then
-			mat = self._initMat
-		end
+	self._curColorFactor = value
 
-		if string.match(mat.name, "spine_ui_dark") then
-			self._heroSpine:SetDark()
-		else
-			self._heroSpine:SetBright()
-		end
+	if self._isLive2D then
+		self._heroSpine:setColorFactor(value)
 
 		return
 	end
 
 	if self._heroSkeletonGraphic then
-		if self._initMat then
-			if self._heroSkeletonGraphic.material and string.match(self._heroSkeletonGraphic.material.name, mat.name) then
-				return
-			end
+		local mat = self._spineMat
 
-			if string.match(mat.name, "spine_ui_default") then
-				mat = self._initMat
+		if mat then
+			local color = Color.New(value, value, value, 1)
 
-				local color = Color.New(1, 1, 1, 1)
-
-				mat:SetColor("_Color", color)
-			else
-				mat = self._initMat
-
-				local color = Color.New(0.6, 0.6, 0.6, 1)
-
-				mat:SetColor("_Color", color)
-			end
+			mat:SetColor("_Color", color)
 		end
-
-		self._heroSkeletonGraphic.material = mat
 	end
 end
 
@@ -356,11 +368,11 @@ function StoryHeroItem:_checkMatKeyWord()
 	end
 
 	if self._hasBottomEffect then
-		self._heroSkeletonGraphic.material:DisableKeyword("_SCENEMASKALPHA_ON")
-		self._heroSkeletonGraphic.material:EnableKeyword("_SCENEMASKALPHA2_ON")
+		self._spineMat:DisableKeyword("_SCENEMASKALPHA_ON")
+		self._spineMat:EnableKeyword("_SCENEMASKALPHA2_ON")
 	else
-		self._heroSkeletonGraphic.material:EnableKeyword("_SCENEMASKALPHA_ON")
-		self._heroSkeletonGraphic.material:DisableKeyword("_SCENEMASKALPHA2_ON")
+		self._spineMat:EnableKeyword("_SCENEMASKALPHA_ON")
+		self._spineMat:DisableKeyword("_SCENEMASKALPHA2_ON")
 	end
 
 	TaskDispatcher.runDelay(self._onDelay, self, 0.05)
@@ -441,8 +453,8 @@ function StoryHeroItem:_fadeOutFinished()
 	self:_fadeUpdate(1)
 
 	if self._heroSkeletonGraphic then
-		self._heroSkeletonGraphic.material:DisableKeyword("_SCENEMASKALPHA_ON")
-		self._heroSkeletonGraphic.material:DisableKeyword("_SCENEMASKALPHA2_ON")
+		self._spineMat:DisableKeyword("_SCENEMASKALPHA_ON")
+		self._spineMat:DisableKeyword("_SCENEMASKALPHA2_ON")
 	end
 
 	if self._heroSpine and self._isLive2D then
@@ -452,7 +464,7 @@ function StoryHeroItem:_fadeOutFinished()
 	self:onDestroy()
 end
 
-function StoryHeroItem:buildHero(v, mat, hasBottomEffect, callback, callbackObj, conAudioId)
+function StoryHeroItem:buildHero(v, isDark, hasBottomEffect, callback, callbackObj, conAudioId)
 	self._noChangeBody = false
 	self._conAudioId = conAudioId
 	self._heroCo = v
@@ -460,17 +472,7 @@ function StoryHeroItem:buildHero(v, mat, hasBottomEffect, callback, callbackObj,
 	self:initEffsCo()
 
 	self._heroGo = gohelper.create2d(self.viewGO, "rolespine")
-
-	local canvas = gohelper.onceAddComponent(self._heroGo, typeof(UnityEngine.Canvas))
-
-	canvas.overrideSorting = true
-
-	local siblingIndex = gohelper.getSibling(self._heroGo)
-	local baseOrder = 10
-
 	self._blitEff = StoryViewMgr.instance:getStoryBlitEff()
-
-	gohelper.setLayer(self._heroGo, self.viewGO.layer, true)
 
 	local heroCo = StoryHeroLibraryModel.instance:getStoryLibraryHeroByIndex(self._heroCo.heroIndex)
 
@@ -490,8 +492,9 @@ function StoryHeroItem:buildHero(v, mat, hasBottomEffect, callback, callbackObj,
 		self._heroSpine:setResPath(path, function()
 			self._heroSpineGo = self._heroSpine:getSpineGo()
 
+			self:refreshLayerAndOrder()
 			self:_playHeroVoice()
-			self:_setHeroMat(mat)
+			self:_setHeroColorDark(isDark)
 
 			if callback then
 				callback(callbackObj)
@@ -507,16 +510,14 @@ function StoryHeroItem:buildHero(v, mat, hasBottomEffect, callback, callbackObj,
 			self._heroSkeletonGraphic = self._heroSpine:getSkeletonGraphic()
 			self._heroSpineGo = self._heroSpine:getSpineGo()
 
-			gohelper.setLayer(self._heroSpineGo, self._heroGo.layer, true)
 			gohelper.setActive(self._heroSpineGo, false)
 
-			canvas.sortingOrder = (siblingIndex + 1) * 10 + baseOrder
-
-			if self._heroSkeletonGraphic and not string.match(self._heroSkeletonGraphic.material.name, "spine_ui_default") then
-				self._initMat = self._heroSkeletonGraphic.material
+			if self._heroSkeletonGraphic then
+				self:setSpineMat(self._heroSkeletonGraphic.material)
 			end
 
-			self:_setHeroMat(mat)
+			self:refreshLayerAndOrder()
+			self:_setHeroColorDark(isDark)
 			self:_fadeIn()
 			self:_playHeroVoice()
 
@@ -551,12 +552,8 @@ function StoryHeroItem:buildHero(v, mat, hasBottomEffect, callback, callbackObj,
 			end
 
 			gohelper.setActive(self._heroSpineGo, false)
-			self._heroSpine:setSortingOrder(siblingIndex * 10 + baseOrder)
-
-			canvas.sortingOrder = (siblingIndex + 1) * 10 + baseOrder
-
-			gohelper.setLayer(self._heroSpineGo, self._heroGo.layer, true)
-			self:_setHeroMat(mat)
+			self:refreshLayerAndOrder()
+			self:_setHeroColorDark(isDark)
 			self:_fadeIn()
 			self:_playHeroVoice()
 
@@ -574,6 +571,45 @@ function StoryHeroItem:buildHero(v, mat, hasBottomEffect, callback, callbackObj,
 	end
 end
 
+function StoryHeroItem:setSpineMat(mat)
+	self._spineMat = UnityEngine.Material.Instantiate(mat)
+	self._heroSkeletonGraphic.material = self._spineMat
+end
+
+function StoryHeroItem:refreshLayerAndOrder()
+	local canvas = gohelper.onceAddComponent(self._heroGo, typeof(UnityEngine.Canvas))
+
+	canvas.overrideSorting = true
+
+	local configLayerParam = string.split(self._heroCo.layerParam, "#")
+	local configLayer = configLayerParam[1]
+	local configOrder = tonumber(configLayerParam[2])
+	local layer = UnityLayer[configLayer] or self.viewGO.layer
+	local siblingIndex = gohelper.getSibling(self._heroGo)
+	local baseOrder = 10
+	local order = (siblingIndex + 1) * 10 + baseOrder
+
+	if configOrder and configOrder > 0 then
+		order = configOrder
+	end
+
+	gohelper.setLayer(self._heroGo, layer, true)
+
+	if not self._isLightSpine then
+		gohelper.setLayer(self._heroSpineGo, layer, true)
+
+		if self._isLive2D then
+			if self._heroSpine then
+				self._heroSpine:setSortingOrder(order)
+			end
+
+			canvas.sortingOrder = order
+		else
+			canvas.sortingOrder = order
+		end
+	end
+end
+
 function StoryHeroItem:_grayUpdate(value)
 	if self._isLive2D then
 		if not self._heroSpineGo then
@@ -587,8 +623,8 @@ function StoryHeroItem:_grayUpdate(value)
 				cubctrl.InstancedMaterials[i]:SetFloat("_LumFactor", value)
 			end
 		end
-	elseif self._heroSkeletonGraphic then
-		local mat = self._heroSkeletonGraphic.material
+	elseif self._spineMat then
+		local mat = self._spineMat
 
 		if mat then
 			mat:SetFloat("_LumFactor", value)
@@ -888,7 +924,7 @@ end
 
 function StoryHeroItem:_clearHeroMaterialScheme()
 	if self._heroMaterialInitValues and self._heroSkeletonGraphic then
-		local mat = self._heroSkeletonGraphic.material
+		local mat = self._spineMat
 
 		StoryTool.applyMaterialBySchemeValues(mat, self._heroMaterialInitValues)
 	end
@@ -897,7 +933,7 @@ end
 function StoryHeroItem:_setHeroMaterialScheme(param)
 	if self._heroSkeletonGraphic then
 		local schemeId = tonumber(param[2])
-		local mat = self._heroSkeletonGraphic.material
+		local mat = self._spineMat
 
 		self._heroMaterialInitValues = StoryTool.getMaterialSchemeInitValues(mat, schemeId)
 
@@ -925,6 +961,13 @@ function StoryHeroItem:showDLKBloom(param)
 
 		self._heroDlkBloomCls:showDLKBloom(bloom)
 	end
+end
+
+function StoryHeroItem:_setHeroDarkParam(param)
+	local time = param[2] and tonumber(param[2]) or 0
+	local factor = param[3] and tonumber(param[3]) or 0
+
+	self:_setHeroColorFactor(factor, time)
 end
 
 function StoryHeroItem:_clearHeroDLKBloom()
@@ -1063,8 +1106,7 @@ function StoryHeroItem:_clearHeroBlackFog()
 end
 
 function StoryHeroItem:_setStyDissolve()
-	self._heroSkeletonGraphic.material = UnityEngine.Material.Instantiate(self._styDissolveMat)
-
+	self:setSpineMat(self._styDissolveMat)
 	gohelper.clone(self._styDissolvePrefab, self._heroSpineGo)
 end
 
@@ -1224,8 +1266,8 @@ function StoryHeroItem:onDestroy()
 
 	if self._heroSkeletonGraphic then
 		ZProj.TweenHelper.KillByObj(self._heroSkeletonGraphic)
-		self._heroSkeletonGraphic.material:DisableKeyword("_SCENEMASKALPHA_ON")
-		self._heroSkeletonGraphic.material:DisableKeyword("_SCENEMASKALPHA2_ON")
+		self._spineMat:DisableKeyword("_SCENEMASKALPHA_ON")
+		self._spineMat:DisableKeyword("_SCENEMASKALPHA2_ON")
 	end
 
 	if self._heroLoader then
@@ -1244,6 +1286,12 @@ function StoryHeroItem:onDestroy()
 		self.fadeOutCls:destroy()
 
 		self.fadeOutCls = nil
+	end
+
+	if self._colorTweenId then
+		ZProj.TweenHelper.KillById(self._colorTweenId)
+
+		self._colorTweenId = nil
 	end
 end
 

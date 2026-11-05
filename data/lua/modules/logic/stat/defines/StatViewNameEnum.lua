@@ -297,7 +297,14 @@ StatViewNameEnum.ChineseViewName = {
 	[ViewName.DeleikeLevelView] = "德雷克角色活动",
 	[ViewName.V4A0_RoleStoryGameView] = "轶事玩法",
 	[ViewName.MainSwitchView] = "主界面更换页",
-	[ViewName.CharacterNormalSkinView] = "角色常服页"
+	[ViewName.CharacterNormalSkinView] = "角色常服页",
+	[ViewName.VersionActivity4_1EnterView] = "4.1版本活动页",
+	[ViewName.VersionActivity4_1DungeonMapView] = "副本地图-亚特兰蒂斯谋杀案",
+	[ViewName.V4a1_BossRush_MainView] = "鬃毛邮报",
+	[ViewName.PeiShiTaLevelView] = "佩施塔角色活动",
+	[ViewName.EvelynLevelView] = "伊芙琳角色活动",
+	[ViewName.V4A1_RoleStoryGameView] = "轶事玩法",
+	[ViewName.ArcadeSurvivorHallView] = "8-bit街机秀"
 }
 StatViewNameEnum.NeedTrackViewDict = {
 	[ViewName.VersionActivity1_8EnterView] = true,
@@ -565,7 +572,14 @@ StatViewNameEnum.NeedTrackViewDict = {
 	[ViewName.SpLilyaLevelView] = true,
 	[ViewName.DeleikeLevelView] = true,
 	[ViewName.V4A0_RoleStoryGameView] = true,
-	[ViewName.MainSwitchView] = true
+	[ViewName.MainSwitchView] = true,
+	[ViewName.VersionActivity4_1EnterView] = true,
+	[ViewName.VersionActivity4_1DungeonMapView] = true,
+	[ViewName.V4a1_BossRush_MainView] = true,
+	[ViewName.PeiShiTaLevelView] = true,
+	[ViewName.EvelynLevelView] = true,
+	[ViewName.V4A1_RoleStoryGameView] = true,
+	[ViewName.ArcadeSurvivorHallView] = true
 }
 StatViewNameEnum.NeedViewOpenTimeDict = {
 	[ViewName.SceneUIPackagePanelView] = true,
@@ -595,7 +609,8 @@ StatViewNameEnum.NeedListenTabSwitchList = {
 	ViewName.VersionActivity3_7EnterView,
 	ViewName.VersionActivity3_8EnterView,
 	ViewName.VersionActivity3_9EnterView,
-	ViewName.VersionActivity4_0EnterView
+	ViewName.VersionActivity4_0EnterView,
+	ViewName.VersionActivity4_1EnterView
 }
 StatViewNameEnum.TabViewContainerID = {
 	[ViewName.VersionActivity1_8EnterView] = 2,
@@ -620,7 +635,8 @@ StatViewNameEnum.TabViewContainerID = {
 	[ViewName.VersionActivity3_7EnterView] = 2,
 	[ViewName.VersionActivity3_8EnterView] = 2,
 	[ViewName.VersionActivity3_9EnterView] = 2,
-	[ViewName.VersionActivity4_0EnterView] = 2
+	[ViewName.VersionActivity4_0EnterView] = 2,
+	[ViewName.VersionActivity4_1EnterView] = 2
 }
 StatViewNameEnum.TabViewName = {
 	VersionActivity2_6DungeonEnterView = "疯癫与文明",
@@ -691,10 +707,13 @@ StatViewNameEnum.TabViewName = {
 	MatchGameVersionActivityEnterView = "魔精星期五",
 	VersionActivity4_0SpLilyaEnterView = "狩勋女巫红弩箭",
 	VersionActivity4_0DeleikeEnterView = "德雷克",
+	VersionActivity4_1DungeonEnterView = "亚特兰蒂斯谋杀案",
+	VersionActivity4_1EvelynEnterView = "伊芙琳",
 	V2a3_ReactivityEnterview = "2.3活动复刻",
 	VersionActivity3_5LamonaEnterView = "拉莫纳",
 	VersionActivity3_4PartyGameEnterView = "联机玩法",
 	SurvivalEnterView = "雨前漫游指南",
+	V4a1_BossRush_EnterView = "鬃毛邮报",
 	V2a2_LoperaEnterView = "洛佩拉",
 	V3a1_Act191EnterView = "拓片杂技赛",
 	VersionActivity2_5FeiLinShiDuoEnterView = "菲林士多",
@@ -712,7 +731,9 @@ StatViewNameEnum.TabViewName = {
 	VersionActivity3_9DungeonEnterView = "重燃！流金之海",
 	TowerMainEntryView = "爬塔玩法",
 	RoleStoryEnterView = "轶事",
+	VersionActivity4_1PeiShiTaEnterView = "佩施塔",
 	ArcadeEnterView = "8-bit街机秀",
+	VersionActivity4_1ArcadeSurvivorEnterView = "8-bit街机秀",
 	Rouge2_ActivityView = "肉鸽2",
 	VersionActivity2_8DungeonEnterView = "复乐园",
 	VersionActivity3_7SodacheEnterView = "搜打撤玩法",

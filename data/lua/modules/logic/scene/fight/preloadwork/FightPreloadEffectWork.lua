@@ -11,7 +11,7 @@ FightPreloadEffectWork.buff_zhunbeigongji = "buff/buff_zhunbeigongji"
 FightPreloadEffectWork.scene_mask_default = "buff/scene_mask_default"
 
 function FightPreloadEffectWork:onStart(context)
-	if FightEffectPool.isForbidEffect then
+	if FightEffectMgr.isForbidEffect then
 		self:onDone(true)
 
 		return
@@ -94,7 +94,7 @@ function FightPreloadEffectWork:_addPreloadEffect(path, side)
 		logError(path .. " 预加载资源需要放在 Assets/ZResourcesLib/effects/prefabs/buff 目录下。")
 	end
 
-	if FightEffectPool.hasLoaded(path) then
+	if FightGameMgr.effectMgr:hasLoaded(path) then
 		return
 	end
 
@@ -126,7 +126,7 @@ function FightPreloadEffectWork:_startPreload()
 	if self._loadingCount > 0 then
 		for i = 1, self._loadingCount do
 			local last = table.remove(self._needPreloadList, #self._needPreloadList)
-			local effect = FightEffectPool.getEffect(last.path, last.side, self._onPreloadOneFinish, self, nil, true)
+			local effect = FightGameMgr.effectMgr:getEffect(last.path, last.side, self._onPreloadOneFinish, self, nil, true)
 
 			table.insert(self._effectWrapList, effect)
 		end
@@ -142,7 +142,7 @@ function FightPreloadEffectWork:_onPreloadOneFinish(effectWrap, success)
 
 	self._loadingCount = self._loadingCount - 1
 
-	FightEffectPool.returnEffect(effectWrap)
+	FightGameMgr.effectMgr:returnEffect(effectWrap)
 
 	if self._loadingCount <= 0 then
 		TaskDispatcher.runDelay(self._startPreload, self, 0.01)

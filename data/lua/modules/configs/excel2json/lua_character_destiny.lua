@@ -12,9 +12,36 @@ local primaryKey = {
 	"heroId"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.character_destiny_config"
 
-function lua_character_destiny.onLoad(json)
-	lua_character_destiny.configList, lua_character_destiny.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_character_destiny, "configList", _configList)
+	rawset(lua_character_destiny, "configDict", _configDict)
+end
+
+setmetatable(lua_character_destiny, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_character_destiny.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_character_destiny, "configList", nil)
+	rawset(lua_character_destiny, "configDict", nil)
 end
 
 return lua_character_destiny

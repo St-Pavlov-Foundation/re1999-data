@@ -262,10 +262,11 @@ function StoryBranchView:_refreshKeyTip()
 end
 
 function StoryBranchView:onClose()
-	PostProcessingMgr.instance:setIgnoreUIBlur(false)
+	return
 end
 
 function StoryBranchView:onDestroyView()
+	PostProcessingMgr.instance:setIgnoreUIBlur(false)
 	TaskDispatcher.cancelTask(self._refresh, self)
 	StoryModel.instance:enableClick(true)
 	TaskDispatcher.cancelTask(self._autoSelectSpItem, self)

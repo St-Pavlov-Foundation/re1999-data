@@ -7,6 +7,8 @@ local V3a2_BossRush_ResultAssess = class("V3a2_BossRush_ResultAssess", ListScrol
 function V3a2_BossRush_ResultAssess:onInitView()
 	self._simageDec1 = gohelper.findChildSingleImage(self.viewGO, "Dec/#simage_Dec1")
 	self._simageDec2 = gohelper.findChildSingleImage(self.viewGO, "Dec/#simage_Dec2")
+	self._imageDec1 = gohelper.findChildImage(self.viewGO, "Dec/#simage_Dec1")
+	self._imageDec2 = gohelper.findChildImage(self.viewGO, "Dec/#simage_Dec2")
 	self._gocomplete = gohelper.findChild(self.viewGO, "#go_complete")
 	self._goScore = gohelper.findChild(self.viewGO, "#go_Score")
 	self._txtScore1 = gohelper.findChildText(self.viewGO, "#go_Score/Score1/#txt_Score")
@@ -51,6 +53,19 @@ end
 
 function V3a2_BossRush_ResultAssess:onUpdateMO(mo)
 	return
+end
+
+function V3a2_BossRush_ResultAssess:setActivity(actId)
+	local isCurSeason = V4a1_BossRushModel.instance:isCurSeason(actId)
+	local res1 = isCurSeason and "v4a1_bossrush_result_dec1" or "v3a2_bossrush_result_dec1"
+	local res2 = isCurSeason and "v4a1_bossrush_result_dec2" or "v3a2_bossrush_result_dec2"
+
+	self._simageDec1:LoadImage(ResUrl.getBossRushSinglebg(res1), function()
+		self._imageDec1:SetNativeSize()
+	end)
+	self._simageDec2:LoadImage(ResUrl.getBossRushSinglebg(res2), function()
+		self._imageDec2:SetNativeSize()
+	end)
 end
 
 function V3a2_BossRush_ResultAssess:onSelect(isSelect)

@@ -11,9 +11,36 @@ local primaryKey = {
 	"effectId"
 }
 local mlStringKey = {}
+local _configList, _configDict
+local configPath = "configs.activity228_effects_config"
 
-function lua_activity228_effects.onLoad(json)
-	lua_activity228_effects.configList, lua_activity228_effects.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_activity228_effects, "configList", _configList)
+	rawset(lua_activity228_effects, "configDict", _configDict)
+end
+
+setmetatable(lua_activity228_effects, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_activity228_effects.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_activity228_effects, "configList", nil)
+	rawset(lua_activity228_effects, "configDict", nil)
 end
 
 return lua_activity228_effects

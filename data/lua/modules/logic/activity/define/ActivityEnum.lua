@@ -235,8 +235,9 @@ ActivityEnum.ActivityTypeID = {
 	DoubleDrop = 153,
 	Act158 = 158,
 	Act210 = 210,
-	Act101 = 101,
+	Season123 = 123,
 	Act186 = 186,
+	Act101 = 101,
 	Act212 = 212,
 	Act100 = 100,
 	OpenTestWarmUp = 106,
@@ -267,6 +268,7 @@ ActivityEnum.VersionActivityIdDict = {
 	Activity3_6 = 13603,
 	Activity1_42 = 11420,
 	Activity4_0 = 14001,
+	Activity4_1 = 14101,
 	Activity1_2 = 11201,
 	Activity1_7 = 11701,
 	Activity2_5 = 12501,
@@ -294,7 +296,7 @@ ActivityEnum.VersionActivityIdDict = {
 	Activity3_2 = 13222
 }
 ActivityEnum.VersionActivityIdList = {
-	ActivityEnum.VersionActivityIdDict.Activity4_0
+	ActivityEnum.VersionActivityIdDict.Activity4_1
 }
 ActivityEnum.MainIcon = {
 	[ActivityEnum.VersionActivityIdDict.Activity1_1] = "rk1111",
@@ -330,7 +332,8 @@ ActivityEnum.MainIcon = {
 	[ActivityEnum.VersionActivityIdDict.Activity3_8] = "rk_3_8",
 	[ActivityEnum.VersionActivityIdDict.Activity3_9] = "rk_3_9",
 	[ActivityEnum.VersionActivityIdDict.Activity_sp02] = "rk_s02",
-	[ActivityEnum.VersionActivityIdDict.Activity4_0] = "rk_4_0"
+	[ActivityEnum.VersionActivityIdDict.Activity4_0] = "rk_4_0",
+	[ActivityEnum.VersionActivityIdDict.Activity4_1] = "rk_4_1"
 }
 ActivityEnum.ShowVersionActivityEpisode = 10103
 ActivityEnum.MainViewActivityState = {

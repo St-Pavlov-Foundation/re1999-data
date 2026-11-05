@@ -29,9 +29,36 @@ local mlStringKey = {
 	audioEvaluates = 3,
 	audioName = 1
 }
+local _configList, _configDict
+local configPath = "configs.bgm_switch_config"
 
-function lua_bgm_switch.onLoad(json)
-	lua_bgm_switch.configList, lua_bgm_switch.configDict = JsonToLuaParser.parse(json, fields, primaryKey, mlStringKey)
+local function onConfigLoad()
+	if _configList then
+		return
+	end
+
+	local config = LuaUtil.requireConfig(configPath)
+
+	_configList, _configDict = JsonToLuaParser.parse(config, fields, primaryKey, mlStringKey)
+
+	rawset(lua_bgm_switch, "configList", _configList)
+	rawset(lua_bgm_switch, "configDict", _configDict)
+end
+
+setmetatable(lua_bgm_switch, {
+	__index = function(t, k)
+		onConfigLoad()
+
+		return rawget(t, k)
+	end
+})
+
+function lua_bgm_switch.clearConfig()
+	_configList, _configDict = nil
+
+	LuaUtil.clearTable(configPath)
+	rawset(lua_bgm_switch, "configList", nil)
+	rawset(lua_bgm_switch, "configDict", nil)
 end
 
 return lua_bgm_switch
