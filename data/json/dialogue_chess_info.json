@@ -1294,5 +1294,41 @@
     "id": 3,
     "res": "dialogue_bozedi_right",
     "pos": "420#0"
+  },
+  {
+    "dialogueId": 4101,
+    "id": 1,
+    "res": "dialogue_laolunsi_left",
+    "pos": "-165#0"
+  },
+  {
+    "dialogueId": 4101,
+    "id": 2,
+    "res": "dialogue_bulanqi_right",
+    "pos": "165#0"
+  },
+  {
+    "dialogueId": 4102,
+    "id": 1,
+    "res": "dialogue_yifulin_left",
+    "pos": "-165#0"
+  },
+  {
+    "dialogueId": 4102,
+    "id": 2,
+    "res": "dialogue_bawan_right",
+    "pos": "165#0"
+  },
+  {
+    "dialogueId": 4103,
+    "id": 1,
+    "res": "dialogue_yifulin_left",
+    "pos": "-165#0"
+  },
+  {
+    "dialogueId": 4103,
+    "id": 2,
+    "res": "dialogue_maliya_right",
+    "pos": "165#0"
   }
 ]

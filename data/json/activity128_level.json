@@ -1,5 +1,6 @@
 [
   {
+    "season": 1,
     "playerLevel": 1,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv1",
@@ -7,6 +8,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 2,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv1",
@@ -14,6 +16,7 @@
     "bonus": "1#110204#1"
   },
   {
+    "season": 1,
     "playerLevel": 3,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv1",
@@ -21,6 +24,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 4,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv1",
@@ -28,6 +32,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 5,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv1",
@@ -35,6 +40,7 @@
     "bonus": "1#120013#2"
   },
   {
+    "season": 1,
     "playerLevel": 6,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv1",
@@ -42,6 +48,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 7,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv1",
@@ -49,6 +56,7 @@
     "bonus": "1#110404#1"
   },
   {
+    "season": 1,
     "playerLevel": 8,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv1",
@@ -56,6 +64,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 9,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv1",
@@ -63,6 +72,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 10,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv2",
@@ -70,6 +80,7 @@
     "bonus": "1#111007#1"
   },
   {
+    "season": 1,
     "playerLevel": 11,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv2",
@@ -77,6 +88,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 12,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv2",
@@ -84,6 +96,7 @@
     "bonus": "1#110604#1"
   },
   {
+    "season": 1,
     "playerLevel": 13,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv2",
@@ -91,6 +104,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 14,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv2",
@@ -98,6 +112,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 15,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv2",
@@ -105,6 +120,7 @@
     "bonus": "1#120013#2"
   },
   {
+    "season": 1,
     "playerLevel": 16,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv2",
@@ -112,6 +128,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 17,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv2",
@@ -119,6 +136,7 @@
     "bonus": "1#110304#1"
   },
   {
+    "season": 1,
     "playerLevel": 18,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv2",
@@ -126,6 +144,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 19,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv2",
@@ -133,6 +152,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 20,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv3",
@@ -140,6 +160,7 @@
     "bonus": "1#111006#1"
   },
   {
+    "season": 1,
     "playerLevel": 21,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv3",
@@ -147,6 +168,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 22,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv3",
@@ -154,6 +176,7 @@
     "bonus": "1#111104#1"
   },
   {
+    "season": 1,
     "playerLevel": 23,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv3",
@@ -161,6 +184,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 24,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv3",
@@ -168,6 +192,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 25,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv3",
@@ -175,6 +200,7 @@
     "bonus": "1#120013#2"
   },
   {
+    "season": 1,
     "playerLevel": 26,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv3",
@@ -182,6 +208,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 27,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv3",
@@ -189,6 +216,7 @@
     "bonus": "1#110504#1"
   },
   {
+    "season": 1,
     "playerLevel": 28,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv3",
@@ -196,6 +224,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 29,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv3",
@@ -203,6 +232,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 30,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv4",
@@ -210,6 +240,7 @@
     "bonus": "1#111009#1"
   },
   {
+    "season": 1,
     "playerLevel": 31,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv4",
@@ -217,6 +248,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 32,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv4",
@@ -224,6 +256,7 @@
     "bonus": "1#110104#1"
   },
   {
+    "season": 1,
     "playerLevel": 33,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv4",
@@ -231,6 +264,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 34,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv4",
@@ -238,6 +272,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 35,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv4",
@@ -245,6 +280,7 @@
     "bonus": "1#173705#1"
   },
   {
+    "season": 1,
     "playerLevel": 36,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv4",
@@ -252,6 +288,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 37,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv4",
@@ -259,6 +296,7 @@
     "bonus": "1#111003#1"
   },
   {
+    "season": 1,
     "playerLevel": 38,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv4",
@@ -266,6 +304,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 39,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv4",
@@ -273,6 +312,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 40,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv5",
@@ -280,6 +320,7 @@
     "bonus": "1#111004#1"
   },
   {
+    "season": 1,
     "playerLevel": 41,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv5",
@@ -287,6 +328,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 42,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv5",
@@ -294,6 +336,7 @@
     "bonus": "1#110704#1"
   },
   {
+    "season": 1,
     "playerLevel": 43,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv5",
@@ -301,6 +344,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 44,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv5",
@@ -308,6 +352,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 45,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv5",
@@ -315,6 +360,7 @@
     "bonus": "1#120013#2"
   },
   {
+    "season": 1,
     "playerLevel": 46,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv5",
@@ -322,6 +368,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 47,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv5",
@@ -329,6 +376,7 @@
     "bonus": "1#111013#1"
   },
   {
+    "season": 1,
     "playerLevel": 48,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv5",
@@ -336,6 +384,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 49,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv5",
@@ -343,6 +392,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 50,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv5",
@@ -350,6 +400,7 @@
     "bonus": "1#111005#1"
   },
   {
+    "season": 1,
     "playerLevel": 51,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv5",
@@ -357,6 +408,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 52,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv5",
@@ -364,6 +416,7 @@
     "bonus": "1#110704#1"
   },
   {
+    "season": 1,
     "playerLevel": 53,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv5",
@@ -371,6 +424,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 54,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv5",
@@ -378,6 +432,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 55,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv5",
@@ -385,6 +440,7 @@
     "bonus": "1#120013#2"
   },
   {
+    "season": 1,
     "playerLevel": 56,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv5",
@@ -392,6 +448,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 57,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv5",
@@ -399,6 +456,7 @@
     "bonus": "1#110904#1"
   },
   {
+    "season": 1,
     "playerLevel": 58,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv5",
@@ -406,6 +464,7 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 59,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv5",
@@ -413,10 +472,131 @@
     "bonus": ""
   },
   {
+    "season": 1,
     "playerLevel": 60,
     "needExp": 100,
     "levelBg": "v3a2_bossrush_main_scorebg_lv5",
     "spLevelBg": 5,
     "bonus": "1#111008#1"
+  },
+  {
+    "season": 2,
+    "playerLevel": 1,
+    "needExp": 100,
+    "levelBg": "v4a1_bossrush_main_scorebg_lv1",
+    "spLevelBg": 1,
+    "bonus": ""
+  },
+  {
+    "season": 2,
+    "playerLevel": 2,
+    "needExp": 100,
+    "levelBg": "v4a1_bossrush_main_scorebg_lv1",
+    "spLevelBg": 1,
+    "bonus": "1#110604#1"
+  },
+  {
+    "season": 2,
+    "playerLevel": 3,
+    "needExp": 100,
+    "levelBg": "v4a1_bossrush_main_scorebg_lv1",
+    "spLevelBg": 1,
+    "bonus": ""
+  },
+  {
+    "season": 2,
+    "playerLevel": 4,
+    "needExp": 100,
+    "levelBg": "v4a1_bossrush_main_scorebg_lv1",
+    "spLevelBg": 1,
+    "bonus": ""
+  },
+  {
+    "season": 2,
+    "playerLevel": 5,
+    "needExp": 100,
+    "levelBg": "v4a1_bossrush_main_scorebg_lv1",
+    "spLevelBg": 1,
+    "bonus": "1#120013#2"
+  },
+  {
+    "season": 2,
+    "playerLevel": 6,
+    "needExp": 100,
+    "levelBg": "v4a1_bossrush_main_scorebg_lv1",
+    "spLevelBg": 1,
+    "bonus": ""
+  },
+  {
+    "season": 2,
+    "playerLevel": 7,
+    "needExp": 100,
+    "levelBg": "v4a1_bossrush_main_scorebg_lv1",
+    "spLevelBg": 1,
+    "bonus": "1#110204#1"
+  },
+  {
+    "season": 2,
+    "playerLevel": 8,
+    "needExp": 100,
+    "levelBg": "v4a1_bossrush_main_scorebg_lv1",
+    "spLevelBg": 1,
+    "bonus": ""
+  },
+  {
+    "season": 2,
+    "playerLevel": 9,
+    "needExp": 100,
+    "levelBg": "v4a1_bossrush_main_scorebg_lv1",
+    "spLevelBg": 1,
+    "bonus": ""
+  },
+  {
+    "season": 2,
+    "playerLevel": 10,
+    "needExp": 100,
+    "levelBg": "v4a1_bossrush_main_scorebg_lv2",
+    "spLevelBg": 2,
+    "bonus": "1#111007#1"
+  },
+  {
+    "season": 2,
+    "playerLevel": 11,
+    "needExp": 100,
+    "levelBg": "v4a1_bossrush_main_scorebg_lv2",
+    "spLevelBg": 2,
+    "bonus": ""
+  },
+  {
+    "season": 2,
+    "playerLevel": 12,
+    "needExp": 100,
+    "levelBg": "v4a1_bossrush_main_scorebg_lv2",
+    "spLevelBg": 2,
+    "bonus": "1#110404#1"
+  },
+  {
+    "season": 2,
+    "playerLevel": 13,
+    "needExp": 100,
+    "levelBg": "v4a1_bossrush_main_scorebg_lv2",
+    "spLevelBg": 2,
+    "bonus": ""
+  },
+  {
+    "season": 2,
+    "playerLevel": 14,
+    "needExp": 100,
+    "levelBg": "v4a1_bossrush_main_scorebg_lv2",
+    "spLevelBg": 2,
+    "bonus": ""
+  },
+  {
+    "season": 2,
+    "playerLevel": 15,
+    "needExp": 100,
+    "levelBg": "v4a1_bossrush_main_scorebg_lv2",
+    "spLevelBg": 2,
+    "bonus": "1#120013#2"
   }
 ]

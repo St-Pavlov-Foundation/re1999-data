@@ -340,7 +340,7 @@
     "cellId": 49,
     "celltype": 4,
     "evenid": 0,
-    "dialogid": "抚摸自习室的书桌，\n总有一种亲切感。"
+    "dialogid": "抚摸自习室的书桌，\\n总有一种亲切感。"
   },
   {
     "id": 1002,
@@ -445,6 +445,6 @@
     "cellId": 64,
     "celltype": 4,
     "evenid": 0,
-    "dialogid": "这边的书籍都很新，\n能闻到新书独有的味道"
+    "dialogid": "这边的书籍都很新，\\n能闻到新书独有的味道"
   }
 ]

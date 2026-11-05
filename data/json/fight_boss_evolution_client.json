@@ -143,5 +143,10 @@
     "id": 630413,
     "nextSkinId": 630414,
     "timeline": "630413_change"
+  },
+  {
+    "id": 680406,
+    "nextSkinId": 680407,
+    "timeline": "680406_change"
   }
 ]

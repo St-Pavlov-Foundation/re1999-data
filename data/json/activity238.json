@@ -2,7 +2,7 @@
   {
     "activityId": 138509,
     "id": 1,
-    "desc": "她存在于某位书虫的幻想中，思维清晰，充满理性。她是书虫理想中的一个自己。\n请问这是谁？",
+    "desc": "她存在于某位书虫的幻想中，思维清晰，充满理性。她是书虫理想中的一个自己。\\n请问这是谁？",
     "questionMask": "sp02_guessme_unknownhero_1",
     "questionPictuer": "sp02_guessme_hero_1",
     "option1": "约翰·提托",
@@ -10,12 +10,14 @@
     "option3": "露西",
     "correctOption": 3,
     "answer": "尝试马库斯穿搭的露西",
-    "bonus": "1#173852#1"
+    "bonus": "1#173852#1",
+    "bubbleIds": [],
+    "title": ""
   },
   {
     "activityId": 138509,
     "id": 2,
-    "desc": "她身处幻想中的拉普拉斯科算中心房间。办公室内的椅子能提供充足的电流，让她维持头脑清醒。\n请问这是谁？",
+    "desc": "她身处幻想中的拉普拉斯科算中心房间。办公室内的椅子能提供充足的电流，让她维持头脑清醒。\\n请问这是谁？",
     "questionMask": "sp02_guessme_unknownhero_2",
     "questionPictuer": "sp02_guessme_hero_2",
     "option1": "露西",
@@ -23,12 +25,14 @@
     "option3": "菲林士多",
     "correctOption": 2,
     "answer": "什么都不会告诉你的马库斯",
-    "bonus": "10#10#1"
+    "bonus": "10#10#1",
+    "bubbleIds": [],
+    "title": ""
   },
   {
     "activityId": 138509,
     "id": 3,
-    "desc": "她热衷于表演与惊喜。舞台上的热舞演出，让台下观众感动得热泪盈眶。\n请问这是谁？",
+    "desc": "她热衷于表演与惊喜。舞台上的热舞演出，让台下观众感动得热泪盈眶。\\n请问这是谁？",
     "questionMask": "sp02_guessme_unknownhero_3",
     "questionPictuer": "sp02_guessme_hero_3",
     "option1": "夏利",
@@ -36,12 +40,14 @@
     "option3": "坦南特",
     "correctOption": 2,
     "answer": "陷入忘我演出中的维尔汀",
-    "bonus": "1#110204#1"
+    "bonus": "1#110204#1",
+    "bubbleIds": [],
+    "title": ""
   },
   {
     "activityId": 138509,
     "id": 4,
-    "desc": "她并不愿意一直躲在这个小盒子中。如果时机成熟，她自会离开这里。\n请问这是谁？",
+    "desc": "她并不愿意一直躲在这个小盒子中。如果时机成熟，她自会离开这里。\\n请问这是谁？",
     "questionMask": "sp02_guessme_unknownhero_4",
     "questionPictuer": "sp02_guessme_hero_4",
     "option1": "TTT",
@@ -49,12 +55,14 @@
     "option3": "无线电小姐",
     "correctOption": 2,
     "answer": "躲猫猫的星锑",
-    "bonus": "10#10#1"
+    "bonus": "10#10#1",
+    "bubbleIds": [],
+    "title": ""
   },
   {
     "activityId": 138509,
     "id": 5,
-    "desc": "拘束衣中的囚徒陷入了沉思。“我是谁？”“我从何而来？”“我又要到哪里去？”\n请问这是谁？",
+    "desc": "拘束衣中的囚徒陷入了沉思。“我是谁？”“我从何而来？”“我又要到哪里去？”\\n请问这是谁？",
     "questionMask": "sp02_guessme_unknownhero_5",
     "questionPictuer": "sp02_guessme_hero_5",
     "option1": "马库斯",
@@ -62,12 +70,14 @@
     "option3": "阿莱夫",
     "correctOption": 1,
     "answer": "被五花大绑的马库斯",
-    "bonus": "1#110404#1"
+    "bonus": "1#110404#1",
+    "bubbleIds": [],
+    "title": ""
   },
   {
     "activityId": 138509,
     "id": 6,
-    "desc": "一顶在半空中划出完美弧线的帽状物体，终将找到适合落下的那个地方。\n请问这是谁？",
+    "desc": "一顶在半空中划出完美弧线的帽状物体，终将找到适合落下的那个地方。\\n请问这是谁？",
     "questionMask": "sp02_guessme_unknownhero_7",
     "questionPictuer": "sp02_guessme_hero_7",
     "option1": "维尔汀（的帽子）",
@@ -75,12 +85,14 @@
     "option3": "星之眼",
     "correctOption": 3,
     "answer": "丢失了DUU-DUU-BELL-BOO的星之眼",
-    "bonus": "10#10#1"
+    "bonus": "10#10#1",
+    "bubbleIds": [],
+    "title": ""
   },
   {
     "activityId": 138509,
     "id": 7,
-    "desc": "她身手矫健，飞檐走壁不在话下。她并不经常这样——只在一些需要她如此的特定时刻。\n请问这是谁？",
+    "desc": "她身手矫健，飞檐走壁不在话下。她并不经常这样——只在一些需要她如此的特定时刻。\\n请问这是谁？",
     "questionMask": "sp02_guessme_unknownhero_6",
     "questionPictuer": "sp02_guessme_hero_6",
     "option1": "露西",
@@ -88,6 +100,134 @@
     "option3": "梁月",
     "correctOption": 1,
     "answer": "成为攀墙大师的露西",
-    "bonus": "1#110304#1"
+    "bonus": "1#110304#1",
+    "bubbleIds": [],
+    "title": ""
+  },
+  {
+    "activityId": 14112,
+    "id": 1,
+    "desc": "一封写着“RACHE”血字的信突然出现，用的还是拉普拉斯的专用稿纸！\\n“血字”到底出自谁手？",
+    "questionMask": "v4a1_investigation_1_1",
+    "questionPictuer": "v4a1_investigation_1_2",
+    "option1": "化名大师洛伦兹蝴蝶",
+    "option2": "可能到处结怨的德国人哑谜",
+    "option3": "干什么都不奇怪的兔毛手袋",
+    "correctOption": 3,
+    "answer": "兔毛手袋“购买99袋猎犬专用狗粮申请”中不小心掉落的一页，加红加粗体现了它申领经费的决心。",
+    "bonus": "10#10#1",
+    "bubbleIds": [
+      101,
+      102
+    ],
+    "title": "拉普拉斯血字"
+  },
+  {
+    "activityId": 14112,
+    "id": 2,
+    "desc": "窸窸窣窣的声音，阴影中的斑点带子，这就是那块蛋糕最后的记忆……\\n是谁吃了这块蛋糕？",
+    "questionMask": "v4a1_investigation_2_1",
+    "questionPictuer": "v4a1_investigation_2_2",
+    "option1": "冷周六需要至少一份夜宵",
+    "option2": "错过晚餐的天使娜娜",
+    "option3": "坎吉拉和马库斯约了下午茶",
+    "correctOption": 2,
+    "answer": "魅魔在饥饿中展现了高超成熟的狩猎技巧——她用尾巴卷走了蛋糕！",
+    "bonus": "1#110403#1",
+    "bubbleIds": [
+      103,
+      104
+    ],
+    "title": "谁动了我的蛋糕？"
+  },
+  {
+    "activityId": 14112,
+    "id": 3,
+    "desc": "在鸭鸭玩偶中突然出现的蓝宝石，拾金不昧模范玛蒂尔达小姐正在寻找失主。\\n是谁丢了蓝宝石？",
+    "questionMask": "v4a1_investigation_3_1",
+    "questionPictuer": "v4a1_investigation_3_2",
+    "option1": "接送盛装客人的灰调蓝",
+    "option2": "推销羽饰珠宝的坦南特",
+    "option3": "抱着洗衣篮经过的纸信圈儿",
+    "correctOption": 3,
+    "answer": "笃笃骨天鹅舞演出服上的蓝宝石，在洗涤之前，纸信圈儿将其小心地取下。",
+    "bonus": "1#110104#1",
+    "bubbleIds": [
+      105,
+      106
+    ],
+    "title": "蓝宝石招领中"
+  },
+  {
+    "activityId": 14112,
+    "id": 4,
+    "desc": "在赫多涅殿下的赞助下，本红发会将为红发者提供一笔奖金！\\n究竟谁能得到她的青睐？",
+    "questionMask": "v4a1_investigation_4_1",
+    "questionPictuer": "v4a1_investigation_4_2",
+    "option1": "最璀璨的红发乐手芭卡洛儿",
+    "option2": "医术高明的红发骑士玛尔纱",
+    "option3": "灰调蓝，你怎么来了？",
+    "correctOption": 3,
+    "answer": "灰调蓝的“小家伙”，赫多涅殿下欣赏你通体的火红色。",
+    "bonus": "10#10#1",
+    "bubbleIds": [
+      107,
+      108
+    ],
+    "title": "红发者的奖金"
+  },
+  {
+    "activityId": 14112,
+    "id": 5,
+    "desc": "为何奇怪的“V.V.341”字样突然出现在多个屏幕上？\\n是谁造成了屏幕显示“事故”？",
+    "questionMask": "v4a1_investigation_5_1",
+    "questionPictuer": "v4a1_investigation_5_2",
+    "option1": "算力外溢的乌尔里希",
+    "option2": "招募341位帮手的维尔汀",
+    "option3": "发现魔精调频的无线电小姐",
+    "correctOption": 1,
+    "answer": "341次失败后，实验终于成功，正在庆祝的乌尔里希不知为何干扰到了其他设备。",
+    "bonus": "1#110603#1",
+    "bubbleIds": [
+      109,
+      110
+    ],
+    "title": "“V.V.341”之谜"
+  },
+  {
+    "activityId": 14112,
+    "id": 6,
+    "desc": "有这样一间神秘的阅读室，你能在那里看到字符翩翩起舞，并欣赏到悠扬的乐曲。\\n是谁策划了这场“文坛怪事”？",
+    "questionMask": "v4a1_investigation_6_1",
+    "questionPictuer": "v4a1_investigation_6_2",
+    "option1": "困倦到握不住笔的马库斯",
+    "option2": "使用自创拼写法的野树莓",
+    "option3": "塑造读写困难角色的虚构集",
+    "correctOption": 2,
+    "answer": "欢迎光临血食怪读书室，野树莓会吹起笛子让影子翩翩起舞，塞梅尔维斯会为您讲述各种都市传说。",
+    "bonus": "1#110704#1",
+    "bubbleIds": [
+      111,
+      112
+    ],
+    "title": "字符舞蹈之谜"
+  },
+  {
+    "activityId": 14112,
+    "id": 7,
+    "desc": "这间屋子被纸片铺满，每张纸上都有四个神秘的签名。\\n究竟是谁在四处签名？",
+    "questionMask": "v4a1_investigation_7_1",
+    "questionPictuer": "v4a1_investigation_7_2",
+    "option1": "梳理不同身份记忆的无名者",
+    "option2": "模仿小说退场的怪盗梅兰妮",
+    "option3": "阿莱夫不同人格写下的留言",
+    "correctOption": 3,
+    "answer": "没人能看懂阿莱夫阅读侦探小说时的推理笔记——留言混乱而跳跃，不同人格有各自的信息关注点。",
+    "bonus": "10#10#1",
+    "bubbleIds": [
+      113,
+      114
+    ],
+    "title": "签名遍布"
   }
 ]

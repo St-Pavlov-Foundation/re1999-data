@@ -30730,5 +30730,265 @@
   {
     "id": 1010307,
     "type": "ProgressValue"
+  },
+  {
+    "id": 815000,
+    "type": "QTECostCheck"
+  },
+  {
+    "id": 815201,
+    "type": "QTECostCheck"
+  },
+  {
+    "id": 815202,
+    "type": "QTECostCheck"
+  },
+  {
+    "id": 815203,
+    "type": "QTECostCheck"
+  },
+  {
+    "id": 815204,
+    "type": "QTECostCheck"
+  },
+  {
+    "id": 815205,
+    "type": "QTECostCheck"
+  },
+  {
+    "id": 815206,
+    "type": "QTECostCheck"
+  },
+  {
+    "id": 815207,
+    "type": "QTECostCheck"
+  },
+  {
+    "id": 815208,
+    "type": "QTECostCheck"
+  },
+  {
+    "id": 815209,
+    "type": "QTECostCheck"
+  },
+  {
+    "id": 815210,
+    "type": "QTECostCheck"
+  },
+  {
+    "id": 815211,
+    "type": "QTECostCheck"
+  },
+  {
+    "id": 815212,
+    "type": "QTECostCheck"
+  },
+  {
+    "id": 815213,
+    "type": "QTECostCheck"
+  },
+  {
+    "id": 813042,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 8131055,
+    "type": "ClueIncrChange"
+  },
+  {
+    "id": 8141055,
+    "type": "ClueCountCheck"
+  },
+  {
+    "id": 7191055,
+    "type": "HandCardHaveNeedCard"
+  },
+  {
+    "id": 98104,
+    "type": "IndicatorNum"
+  },
+  {
+    "id": 98304,
+    "type": "IndicatorNum"
+  },
+  {
+    "id": 98209,
+    "type": "IndicatorNum"
+  },
+  {
+    "id": 98202,
+    "type": "IndicatorNum"
+  },
+  {
+    "id": 503000,
+    "type": "None"
+  },
+  {
+    "id": 816000,
+    "type": "PerClue"
+  },
+  {
+    "id": 816002,
+    "type": "PerClue"
+  },
+  {
+    "id": 816004,
+    "type": "PerClue"
+  },
+  {
+    "id": 816027,
+    "type": "PerClue"
+  },
+  {
+    "id": 816028,
+    "type": "PerClue"
+  },
+  {
+    "id": 816029,
+    "type": "PerClue"
+  },
+  {
+    "id": 816030,
+    "type": "PerClue"
+  },
+  {
+    "id": 816100,
+    "type": "PerClue"
+  },
+  {
+    "id": 816101,
+    "type": "PerClue"
+  },
+  {
+    "id": 816102,
+    "type": "PerClue"
+  },
+  {
+    "id": 816103,
+    "type": "PerClue"
+  },
+  {
+    "id": 816104,
+    "type": "PerClue"
+  },
+  {
+    "id": 816105,
+    "type": "PerClue"
+  },
+  {
+    "id": 8161055,
+    "type": "PerClue"
+  },
+  {
+    "id": 816106,
+    "type": "PerClue"
+  },
+  {
+    "id": 816201,
+    "type": "PerClue"
+  },
+  {
+    "id": 816202,
+    "type": "PerClue"
+  },
+  {
+    "id": 816203,
+    "type": "PerClue"
+  },
+  {
+    "id": 816204,
+    "type": "PerClue"
+  },
+  {
+    "id": 816205,
+    "type": "PerClue"
+  },
+  {
+    "id": 816206,
+    "type": "PerClue"
+  },
+  {
+    "id": 816207,
+    "type": "PerClue"
+  },
+  {
+    "id": 816208,
+    "type": "PerClue"
+  },
+  {
+    "id": 816209,
+    "type": "PerClue"
+  },
+  {
+    "id": 816210,
+    "type": "PerClue"
+  },
+  {
+    "id": 816211,
+    "type": "PerClue"
+  },
+  {
+    "id": 816212,
+    "type": "PerClue"
+  },
+  {
+    "id": 816213,
+    "type": "PerClue"
+  },
+  {
+    "id": 816301,
+    "type": "PerClue"
+  },
+  {
+    "id": 816302,
+    "type": "PerClue"
+  },
+  {
+    "id": 816303,
+    "type": "PerClue"
+  },
+  {
+    "id": 816304,
+    "type": "PerClue"
+  },
+  {
+    "id": 816305,
+    "type": "PerClue"
+  },
+  {
+    "id": 816306,
+    "type": "PerClue"
+  },
+  {
+    "id": 816307,
+    "type": "PerClue"
+  },
+  {
+    "id": 816401,
+    "type": "PerClue"
+  },
+  {
+    "id": 816402,
+    "type": "PerClue"
+  },
+  {
+    "id": 816500,
+    "type": "PerClue"
+  },
+  {
+    "id": 611055,
+    "type": "PerBuffIdCount"
+  },
+  {
+    "id": 7511055,
+    "type": "ExSkillLevel"
+  },
+  {
+    "id": 271301,
+    "type": "PerHandCardHasSkillId"
+  },
+  {
+    "id": 504203,
+    "type": "HasTypeIdBuffEqual"
   }
 ]

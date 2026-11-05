@@ -1,0 +1,74 @@
+[
+  {
+    "groupId": 1,
+    "step": "1",
+    "content": "瞧，这儿的每台机器都收录了不同的小游戏，勇敢的波茨人、神秘探员，以及您最熟悉的那只电子鸸鹋……\\n请选择属于您的机器，只需投下一枚硬币——",
+    "block": true
+  },
+  {
+    "groupId": 1,
+    "step": "2",
+    "content": "“8-bit街机秀”就此开始。",
+    "block": true
+  },
+  {
+    "groupId": 2,
+    "step": "1",
+    "content": "很少有人在“战斗”过程中还能保持优雅的节奏感，您可以把它视作一种恭维，亲爱的。",
+    "block": false
+  },
+  {
+    "groupId": 3,
+    "step": "1",
+    "content": "如果您也想像某位出名的管道工那样，靠踩在敌人头上赚钱，恕我直言，凭您的技术，离利齿子儿自由尚有一段距离。",
+    "block": false
+  },
+  {
+    "groupId": 4,
+    "step": "1",
+    "content": "您好像一直在原地打转，放心吧，这儿可没有那些五颜六色的鬼怪。",
+    "block": false
+  },
+  {
+    "groupId": 5,
+    "step": "1",
+    "content": "外星人正在靠近，它们会渗透我们的世界，成为我们，替代我们，就连失语症也不会影响它们。",
+    "block": false
+  },
+  {
+    "groupId": 6,
+    "step": "1",
+    "content": "沾满灰尘的，运作起来嗡嗡作响的，还有您所熟悉的水管工，都能在<color=#E99B56>缪斯的二手卡带</color>中找到。",
+    "block": false
+  },
+  {
+    "groupId": 7,
+    "step": "1",
+    "content": "在<color=#E99B56>训练所</color>，您不仅能学会如何变得更强，亦能了解如何输得更有风度。",
+    "block": false
+  },
+  {
+    "groupId": 8,
+    "step": "1",
+    "content": "重要的事物，往往藏在不起眼的地方，正如您总能在这台<color=#E99B56>噪点追踪机</color>里，发现点儿不一样的新东西。",
+    "block": false
+  },
+  {
+    "groupId": 9,
+    "step": "1",
+    "content": "噢，亲爱的，这儿只接受<color=#E99B56>“单向投币”</color>。",
+    "block": false
+  },
+  {
+    "groupId": 20,
+    "step": "1",
+    "content": "您瞧，光点从左到右奔跑，再悄悄回到起点。整块屏幕便活了过来。",
+    "block": false
+  },
+  {
+    "groupId": 21,
+    "step": "1",
+    "content": "上、上、下、下、左、右、左、右……呵呵，别在意，我只是把我看到的排列顺序说出来。",
+    "block": false
+  }
+]

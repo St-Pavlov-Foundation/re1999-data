@@ -1,0 +1,38 @@
+[
+  {
+    "activityId": 14121,
+    "gameId": 1001,
+    "mapId": 1001,
+    "targetDesc": "抵达目标点"
+  },
+  {
+    "activityId": 14121,
+    "gameId": 1002,
+    "mapId": 1002,
+    "targetDesc": "抵达目标点"
+  },
+  {
+    "activityId": 14121,
+    "gameId": 1003,
+    "mapId": 1003,
+    "targetDesc": "抵达目标点"
+  },
+  {
+    "activityId": 14121,
+    "gameId": 1004,
+    "mapId": 1004,
+    "targetDesc": "抵达目标点"
+  },
+  {
+    "activityId": 14121,
+    "gameId": 1005,
+    "mapId": 1005,
+    "targetDesc": "抵达目标点"
+  },
+  {
+    "activityId": 14121,
+    "gameId": 1006,
+    "mapId": 1006,
+    "targetDesc": "抵达目标点"
+  }
+]

@@ -2875,5 +2875,61 @@
     "skillPassive": 30280142,
     "uiFilterSkill": "",
     "skillGroup": 2
+  },
+  {
+    "heroId": 3159,
+    "skillLevel": 0,
+    "skillPassive": 31590140,
+    "uiFilterSkill": "",
+    "skillGroup": 0
+  },
+  {
+    "heroId": 3159,
+    "skillLevel": 1,
+    "skillPassive": 31590141,
+    "uiFilterSkill": "",
+    "skillGroup": 1
+  },
+  {
+    "heroId": 3159,
+    "skillLevel": 2,
+    "skillPassive": 31590142,
+    "uiFilterSkill": "",
+    "skillGroup": 2
+  },
+  {
+    "heroId": 3159,
+    "skillLevel": 3,
+    "skillPassive": 31590143,
+    "uiFilterSkill": "",
+    "skillGroup": 3
+  },
+  {
+    "heroId": 3160,
+    "skillLevel": 0,
+    "skillPassive": 31600140,
+    "uiFilterSkill": "",
+    "skillGroup": 0
+  },
+  {
+    "heroId": 3160,
+    "skillLevel": 1,
+    "skillPassive": 31600141,
+    "uiFilterSkill": "",
+    "skillGroup": 1
+  },
+  {
+    "heroId": 3160,
+    "skillLevel": 2,
+    "skillPassive": 31600142,
+    "uiFilterSkill": "",
+    "skillGroup": 2
+  },
+  {
+    "heroId": 3160,
+    "skillLevel": 3,
+    "skillPassive": 31600143,
+    "uiFilterSkill": "",
+    "skillGroup": 3
   }
 ]

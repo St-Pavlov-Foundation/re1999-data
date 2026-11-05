@@ -3529,7 +3529,7 @@
   {
     "id": 295,
     "name": "旅途雪地",
-    "nameen": "\tSnowy Field",
+    "nameen": "\\tSnowy Field",
     "levels": [
       29501
     ]
@@ -3545,7 +3545,7 @@
   {
     "id": 29501,
     "name": "旅途雪地",
-    "nameen": "\tSnowy Field",
+    "nameen": "\\tSnowy Field",
     "levels": [
       29501
     ]
@@ -4932,6 +4932,70 @@
     "nameen": "Sky",
     "levels": [
       23602
+    ]
+  },
+  {
+    "id": 26402,
+    "name": "屋外花园",
+    "nameen": "Garden, Evelyn's House",
+    "levels": [
+      26402
+    ]
+  },
+  {
+    "id": 398,
+    "name": "运河码头",
+    "nameen": "Canal Docks",
+    "levels": [
+      39801
+    ]
+  },
+  {
+    "id": 399,
+    "name": "运河码头",
+    "nameen": "Canal Docks",
+    "levels": [
+      39901
+    ]
+  },
+  {
+    "id": 400,
+    "name": "宅邸·走廊",
+    "nameen": "Hallway, Romenel Manor",
+    "levels": [
+      40001
+    ]
+  },
+  {
+    "id": 401,
+    "name": "宅邸·展厅",
+    "nameen": "Exhibition Hall, Romenel Manor",
+    "levels": [
+      40101
+    ]
+  },
+  {
+    "id": 402,
+    "name": "宅邸·草坪",
+    "nameen": "Garden, Romenel Manor",
+    "levels": [
+      40201
+    ]
+  },
+  {
+    "id": 403,
+    "name": "伊芙琳的谜案之屋",
+    "nameen": "Evelyn's House of Puzzles",
+    "levels": [
+      40301
+    ]
+  },
+  {
+    "id": 801,
+    "name": "大英图书馆联动主界面场景",
+    "nameen": "",
+    "levels": [
+      41001
     ]
   }
 ]

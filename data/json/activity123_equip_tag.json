@@ -394,5 +394,23 @@
     "id": 42,
     "desc": "中毒进阶",
     "order": 14
+  },
+  {
+    "activityId": 14105,
+    "id": 40,
+    "desc": "同声共振",
+    "order": 12
+  },
+  {
+    "activityId": 14105,
+    "id": 41,
+    "desc": "洞见真知",
+    "order": 13
+  },
+  {
+    "activityId": 14105,
+    "id": 42,
+    "desc": "战场风度",
+    "order": 14
   }
 ]

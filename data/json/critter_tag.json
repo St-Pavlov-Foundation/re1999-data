@@ -245,7 +245,7 @@
     "skillIcon": "critter_manufacture_skillicon_5",
     "filterTag": "203",
     "name": "种族天赋",
-    "desc": "获得额外产品的概率提升10%；\n同一建筑内【鸟目】魔精获得额外产品的概率再提升5%。",
+    "desc": "获得额外产品的概率提升10%；\\n同一建筑内【鸟目】魔精获得额外产品的概率再提升5%。",
     "effects": "telibodeluo_01|telibodeluo_02|telibodeluo_03|telibodeluo_04|telibodeluo_05|telibodeluo_06|telibodeluo_07|telibodeluo_08|telibodeluo_09|telibodeluo_10",
     "inheritance": false,
     "luckyItemType": 1,

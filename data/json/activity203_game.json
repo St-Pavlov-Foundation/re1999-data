@@ -8,7 +8,7 @@
     "skill": "",
     "battleTime": 9999,
     "battledesc": "",
-    "targetDesc": "攻占敌军司令部\n我军司令部不能失守"
+    "targetDesc": "攻占敌军司令部\\n我军司令部不能失守"
   },
   {
     "gameId": 1301102,
@@ -19,7 +19,7 @@
     "skill": "1002",
     "battleTime": 9999,
     "battledesc": "",
-    "targetDesc": "攻占水源地\n玛丽安娜不能重伤"
+    "targetDesc": "攻占水源地\\n玛丽安娜不能重伤"
   },
   {
     "gameId": 1301103,
@@ -30,7 +30,7 @@
     "skill": "1001#1004",
     "battleTime": 9999,
     "battledesc": "",
-    "targetDesc": "攻占撤离点\n我军司令部不能失守"
+    "targetDesc": "攻占撤离点\\n我军司令部不能失守"
   },
   {
     "gameId": 1301104,
@@ -41,7 +41,7 @@
     "skill": "1002#1003",
     "battleTime": 9999,
     "battledesc": "",
-    "targetDesc": "攻占敌军司令部\n我军总司令部不能失守"
+    "targetDesc": "攻占敌军司令部\\n我军总司令部不能失守"
   },
   {
     "gameId": 1301105,
@@ -52,7 +52,7 @@
     "skill": "1005",
     "battleTime": 9999,
     "battledesc": "",
-    "targetDesc": "攻占撤离点\n玛丽安娜不能重伤"
+    "targetDesc": "攻占撤离点\\n玛丽安娜不能重伤"
   },
   {
     "gameId": 1301106,
@@ -63,7 +63,7 @@
     "skill": "1006",
     "battleTime": 9999,
     "battledesc": "",
-    "targetDesc": "攻占敌军司令部\n我军总司令部不能失守"
+    "targetDesc": "攻占敌军司令部\\n我军总司令部不能失守"
   },
   {
     "gameId": 1301107,
@@ -74,6 +74,6 @@
     "skill": "1001#1002",
     "battleTime": 9999,
     "battledesc": "",
-    "targetDesc": "攻占敌军司令部\n我军司令部不能失守"
+    "targetDesc": "攻占敌军司令部\\n我军司令部不能失守"
   }
 ]

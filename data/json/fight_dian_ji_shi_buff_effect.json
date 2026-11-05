@@ -8,10 +8,10 @@
     "audioId": 431400141,
     "initEffect": "buff/djs_innate1_1_open",
     "initEffectHang": "",
-    "initEffectDuration": 3.0,
+    "initEffectDuration": 3,
     "chargeEffect": "buff/djs_innate2_1",
     "chargeEffectHang": "",
-    "chargeEffectDuration": 3.0,
+    "chargeEffectDuration": 3,
     "chargeAudioId": 431400142
   },
   {
@@ -23,10 +23,10 @@
     "audioId": 431400141,
     "initEffect": "buff/djs_innate1_2_open",
     "initEffectHang": "",
-    "initEffectDuration": 3.0,
+    "initEffectDuration": 3,
     "chargeEffect": "buff/djs_innate2_1",
     "chargeEffectHang": "",
-    "chargeEffectDuration": 3.0,
+    "chargeEffectDuration": 3,
     "chargeAudioId": 431400142
   },
   {
@@ -38,10 +38,10 @@
     "audioId": 431400141,
     "initEffect": "buff/djs_innate1_3_open",
     "initEffectHang": "",
-    "initEffectDuration": 3.0,
+    "initEffectDuration": 3,
     "chargeEffect": "buff/djs_innate2_2",
     "chargeEffectHang": "",
-    "chargeEffectDuration": 3.0,
+    "chargeEffectDuration": 3,
     "chargeAudioId": 431400142
   },
   {
@@ -53,10 +53,10 @@
     "audioId": 431400341,
     "initEffect": "buff/v4a0_djs_innate1_1_open",
     "initEffectHang": "",
-    "initEffectDuration": 3.0,
+    "initEffectDuration": 3,
     "chargeEffect": "buff/v4a0_djs_innate2_1",
     "chargeEffectHang": "",
-    "chargeEffectDuration": 3.0,
+    "chargeEffectDuration": 3,
     "chargeAudioId": 431400342
   },
   {
@@ -68,10 +68,10 @@
     "audioId": 431400341,
     "initEffect": "buff/v4a0_djs_innate1_2_open",
     "initEffectHang": "",
-    "initEffectDuration": 3.0,
+    "initEffectDuration": 3,
     "chargeEffect": "buff/v4a0_djs_innate2_1",
     "chargeEffectHang": "",
-    "chargeEffectDuration": 3.0,
+    "chargeEffectDuration": 3,
     "chargeAudioId": 431400342
   },
   {
@@ -83,10 +83,10 @@
     "audioId": 431400341,
     "initEffect": "buff/v4a0_djs_innate1_3_open",
     "initEffectHang": "",
-    "initEffectDuration": 3.0,
+    "initEffectDuration": 3,
     "chargeEffect": "buff/v4a0_djs_innate2_2",
     "chargeEffectHang": "",
-    "chargeEffectDuration": 3.0,
+    "chargeEffectDuration": 3,
     "chargeAudioId": 431400342
   }
 ]

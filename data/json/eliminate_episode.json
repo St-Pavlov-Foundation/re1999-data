@@ -9,7 +9,7 @@
     "eliminateLevelId": 2220001,
     "warChessId": 222101,
     "dialogueId": 16,
-    "aniPos": 1.0
+    "aniPos": 1
   },
   {
     "id": 222102,
@@ -81,7 +81,7 @@
     "eliminateLevelId": 2220005,
     "warChessId": 222107,
     "dialogueId": 20,
-    "aniPos": 0.0
+    "aniPos": 0
   },
   {
     "id": 222201,
@@ -93,7 +93,7 @@
     "eliminateLevelId": 2220005,
     "warChessId": 222201,
     "dialogueId": 21,
-    "aniPos": 1.0
+    "aniPos": 1
   },
   {
     "id": 222202,
@@ -177,7 +177,7 @@
     "eliminateLevelId": 2220005,
     "warChessId": 222208,
     "dialogueId": 24,
-    "aniPos": 0.0
+    "aniPos": 0
   },
   {
     "id": 222301,
@@ -189,7 +189,7 @@
     "eliminateLevelId": 2220005,
     "warChessId": 222301,
     "dialogueId": 25,
-    "aniPos": 1.0
+    "aniPos": 1
   },
   {
     "id": 222302,
@@ -285,7 +285,7 @@
     "eliminateLevelId": 2220005,
     "warChessId": 222309,
     "dialogueId": 28,
-    "aniPos": 0.0
+    "aniPos": 0
   },
   {
     "id": 222401,
@@ -297,7 +297,7 @@
     "eliminateLevelId": 2220005,
     "warChessId": 222401,
     "dialogueId": 0,
-    "aniPos": 1.0
+    "aniPos": 1
   },
   {
     "id": 222402,
@@ -333,6 +333,6 @@
     "eliminateLevelId": 2220005,
     "warChessId": 222404,
     "dialogueId": 0,
-    "aniPos": 0.0
+    "aniPos": 0
   }
 ]

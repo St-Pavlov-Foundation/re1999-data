@@ -4,7 +4,7 @@
     "target": 1,
     "skinId": 303903,
     "changedPath": "v1a6_nmds_syzj/nmds_syzj_innate_02",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 0
   },
@@ -13,7 +13,7 @@
     "target": 2,
     "skinId": 303903,
     "changedPath": "v1a6_nmds_syzj/nmds_syzj_innate_02",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 0
   },
@@ -22,7 +22,7 @@
     "target": 1,
     "skinId": 310404,
     "changedPath": "v3a4_ddg/ddg_innate_01",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 0
   },
@@ -31,7 +31,7 @@
     "target": 2,
     "skinId": 310404,
     "changedPath": "v3a4_ddg/ddg_innate_02",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 0
   },
@@ -40,7 +40,7 @@
     "target": 1,
     "skinId": 310404,
     "changedPath": "v3a4_ddg/ddg_innate_03",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 0
   },
@@ -49,7 +49,7 @@
     "target": 1,
     "skinId": 310403,
     "changedPath": "v2a6_ddg/ddg_innate_01",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 431040351
   },
@@ -58,7 +58,7 @@
     "target": 2,
     "skinId": 310403,
     "changedPath": "v2a6_ddg/ddg_innate_02",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 431040352
   },
@@ -67,7 +67,7 @@
     "target": 1,
     "skinId": 310403,
     "changedPath": "v2a6_ddg/ddg_innate_03",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 431040353
   },
@@ -76,7 +76,7 @@
     "target": 2,
     "skinId": 311103,
     "changedPath": "v3a4_flsd/flsd_innate",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 0
   },
@@ -85,7 +85,7 @@
     "target": 1,
     "skinId": 305303,
     "changedPath": "v1a5_yaxian/pre_v1a5_yaxian_innate_2",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 0
   },
@@ -94,7 +94,7 @@
     "target": 1,
     "skinId": 305304,
     "changedPath": "buff/pre_yaxian_innate_2",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 430530441
   },
@@ -103,7 +103,7 @@
     "target": 1,
     "skinId": 305305,
     "changedPath": "buff/pre_v3a4_yx_innate_02_1",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 430530541
   },
@@ -112,7 +112,7 @@
     "target": 2,
     "skinId": 305303,
     "changedPath": "v1a5_yaxian/pre_v1a5_yaxian_innate_5_03",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountbottom",
     "audio": 0
   },
@@ -121,7 +121,7 @@
     "target": 2,
     "skinId": 305304,
     "changedPath": "v2a3_yaxian_yjdzyc/yaxian_yjtzyc_innate_03",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountbottom",
     "audio": 0
   },
@@ -130,7 +130,7 @@
     "target": 2,
     "skinId": 305305,
     "changedPath": "buff/pre_v3a4_yx_innate_01_3",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountbottom",
     "audio": 0
   },
@@ -139,7 +139,7 @@
     "target": 2,
     "skinId": 313203,
     "changedPath": "v3a5_gsn/gsn_mb_buff",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "",
     "audio": 0
   },
@@ -148,7 +148,7 @@
     "target": 1,
     "skinId": 313203,
     "changedPath": "v3a5_gsn/gsn_zy_innate",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountmiddle",
     "audio": 431320351
   },
@@ -157,7 +157,7 @@
     "target": 1,
     "skinId": 309804,
     "changedPath": "v3a5_lsp/lsp_innate1_01",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 430980141
   },
@@ -166,7 +166,7 @@
     "target": 2,
     "skinId": 311704,
     "changedPath": "v3a5_kphh/kphh_debuff3",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 431170446
   },
@@ -175,7 +175,7 @@
     "target": 1,
     "skinId": 312003,
     "changedPath": "v3a7_ndk02/ndk_skill2_02_middle",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountmiddle",
     "audio": 431200361
   },
@@ -184,7 +184,7 @@
     "target": 1,
     "skinId": 312003,
     "changedPath": "v3a7_ndk02/ndk_hl",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 431200362
   },
@@ -193,7 +193,7 @@
     "target": 1,
     "skinId": 312803,
     "changedPath": "v3a7_kr/kr_innate_02",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 431280152
   },
@@ -202,7 +202,7 @@
     "target": 1,
     "skinId": 306605,
     "changedPath": "v3a7_37/37_innate1",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "",
     "audio": 0
   },
@@ -211,7 +211,7 @@
     "target": 1,
     "skinId": 306605,
     "changedPath": "v3a7_37/37_innate2",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "",
     "audio": 0
   },
@@ -220,7 +220,7 @@
     "target": 1,
     "skinId": 306605,
     "changedPath": "v3a7_37/37_innate3",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "",
     "audio": 0
   },
@@ -229,7 +229,7 @@
     "target": 1,
     "skinId": 306605,
     "changedPath": "v3a7_37/37_innate4",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "",
     "audio": 0
   },
@@ -238,7 +238,7 @@
     "target": 1,
     "skinId": 306605,
     "changedPath": "v3a7_37/37_innate5",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "",
     "audio": 0
   },
@@ -247,7 +247,7 @@
     "target": 1,
     "skinId": 311803,
     "changedPath": "v3a7_mmr/mmr_innate_1",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 431180141
   },
@@ -256,7 +256,7 @@
     "target": 1,
     "skinId": 312103,
     "changedPath": "v3a3_mlde/mlde_innate1_01",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "",
     "audio": 0
   },
@@ -265,7 +265,7 @@
     "target": 1,
     "skinId": 312103,
     "changedPath": "v3a3_mlde/mlde_innate1_02",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "",
     "audio": 0
   },
@@ -274,7 +274,7 @@
     "target": 1,
     "skinId": 309203,
     "changedPath": "v3a8_yge/yge_innate",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 430920341
   },
@@ -283,7 +283,7 @@
     "target": 1,
     "skinId": 309403,
     "changedPath": "buff_hudun_joefire_01",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountmiddle",
     "audio": 430940341
   },
@@ -292,7 +292,7 @@
     "target": 1,
     "skinId": 309403,
     "changedPath": "buff_hudun_joefire_02",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountmiddle",
     "audio": 430940342
   },
@@ -301,7 +301,7 @@
     "target": 1,
     "skinId": 313903,
     "changedPath": "v3a8_llzhd/llzhd_innate",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountbody",
     "audio": 431390341
   },
@@ -310,7 +310,7 @@
     "target": 2,
     "skinId": 313903,
     "changedPath": "v3a8_llzhd/llzhd_innate",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountbody",
     "audio": 431390341
   },
@@ -319,7 +319,7 @@
     "target": 2,
     "skinId": 309403,
     "changedPath": "buff_hudun_joefire_01",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountmiddle",
     "audio": 430940341
   },
@@ -328,7 +328,7 @@
     "target": 2,
     "skinId": 309403,
     "changedPath": "buff_hudun_joefire_02",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountmiddle",
     "audio": 430940342
   },
@@ -337,7 +337,7 @@
     "target": 1,
     "skinId": 302504,
     "changedPath": "buff/pre_xt_innate01",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountbottom",
     "audio": 430250401
   },
@@ -346,7 +346,7 @@
     "target": 1,
     "skinId": 307705,
     "changedPath": "buff/pre_s02_bfsg_buff",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "special3",
     "audio": 0
   },
@@ -355,7 +355,7 @@
     "target": 1,
     "skinId": 303904,
     "changedPath": "s02_nmds/nmds_innate_01",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 0
   },
@@ -364,7 +364,7 @@
     "target": 2,
     "skinId": 303904,
     "changedPath": "s02_nmds/nmds_innate_01",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 0
   },
@@ -373,7 +373,7 @@
     "target": 1,
     "skinId": 303904,
     "changedPath": "s02_nmds/nmds_innate_02",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 0
   },
@@ -382,7 +382,7 @@
     "target": 2,
     "skinId": 303904,
     "changedPath": "s02_nmds/nmds_innate_02",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 0
   },
@@ -391,7 +391,7 @@
     "target": 1,
     "skinId": 312606,
     "changedPath": "s02_mlan/mlan_innate_2",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 431260642
   },
@@ -400,7 +400,7 @@
     "target": 1,
     "skinId": 310203,
     "changedPath": "v2a6_lopera/lopera_skill2_special1_1",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "special1",
     "audio": 0
   },
@@ -409,7 +409,7 @@
     "target": 1,
     "skinId": 307704,
     "changedPath": "v3a1_bfsg/bfsg_start",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "special4",
     "audio": 0
   },
@@ -418,7 +418,7 @@
     "target": 1,
     "skinId": 314303,
     "changedPath": "v3a9_ym/ym_innate3",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 0
   },
@@ -427,7 +427,7 @@
     "target": 1,
     "skinId": 313503,
     "changedPath": "v3a9_hdl/hdl_dnjx_innate",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 0
   },
@@ -436,7 +436,7 @@
     "target": 1,
     "skinId": 313503,
     "changedPath": "v3a9_hdl/hdl_dnjx_innate_hit",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 431350325
   },
@@ -445,7 +445,7 @@
     "target": 1,
     "skinId": 314704,
     "changedPath": "v3a9_wmz/wmz_innate",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 0
   },
@@ -454,7 +454,7 @@
     "target": 1,
     "skinId": 312104,
     "changedPath": "v3a9_mlde/mlde_skill2_innate",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 0
   },
@@ -463,7 +463,7 @@
     "target": 1,
     "skinId": 312104,
     "changedPath": "v3a9_mlde/mlde_skill2_innate_2",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 0
   },
@@ -472,7 +472,7 @@
     "target": 1,
     "skinId": 309103,
     "changedPath": "v4a0_lorelei/lorelei_innate1",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 430910101
   },
@@ -481,7 +481,7 @@
     "target": 2,
     "skinId": 309103,
     "changedPath": "v4a0_lorelei/lorelei_innate1",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 430910101
   },
@@ -490,7 +490,7 @@
     "target": 1,
     "skinId": 309103,
     "changedPath": "v4a0_lorelei/lorelei_innate2",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 430910101
   },
@@ -499,7 +499,7 @@
     "target": 2,
     "skinId": 309103,
     "changedPath": "v4a0_lorelei/lorelei_innate2",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 430910101
   },
@@ -508,7 +508,7 @@
     "target": 2,
     "skinId": 309103,
     "changedPath": "v4a0_lorelei/lorelei_innate3",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 430910101
   },
@@ -517,7 +517,7 @@
     "target": 2,
     "skinId": 311705,
     "changedPath": "v4a0_kphh/kphh_debuff3",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 431170446
   },
@@ -526,7 +526,7 @@
     "target": 2,
     "skinId": 314503,
     "changedPath": "v4a0_hsy/hsy_innate2",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 431450342
   },
@@ -535,7 +535,7 @@
     "target": 1,
     "skinId": 302507,
     "changedPath": "pre_v4a0_xt2h_innate01",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountbottom",
     "audio": 430250401
   },
@@ -544,7 +544,7 @@
     "target": 1,
     "skinId": 314003,
     "changedPath": "buff/v4a0_djs_innate3",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "",
     "audio": 0
   },
@@ -553,7 +553,7 @@
     "target": 1,
     "skinId": 313403,
     "changedPath": "v4a0_ble/ble_innate2",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 431340352
   },
@@ -562,7 +562,7 @@
     "target": 1,
     "skinId": 313403,
     "changedPath": "v3a2_ble/ble_skill1_04",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 431340353
   },
@@ -571,8 +571,53 @@
     "target": 1,
     "skinId": 315503,
     "changedPath": "v4a0_tlzchnj/tlzchnj_innate1",
-    "duration": 0.0,
+    "duration": 0,
     "effectHangPoint": "mountroot",
     "audio": 431550351
+  },
+  {
+    "effectPath": "v3a5_llzhd/llzhd_innate",
+    "target": 1,
+    "skinId": 313904,
+    "changedPath": "v4a1_llzhd/llzhd_innate",
+    "duration": 0,
+    "effectHangPoint": "mountroot",
+    "audio": 431390441
+  },
+  {
+    "effectPath": "v3a5_llzhd/llzhd_innate",
+    "target": 2,
+    "skinId": 313904,
+    "changedPath": "v4a1_llzhd/llzhd_innate",
+    "duration": 0,
+    "effectHangPoint": "mountroot",
+    "audio": 431390441
+  },
+  {
+    "effectPath": "v3a4_chg/chg_skill2_03",
+    "target": 1,
+    "skinId": 313703,
+    "changedPath": "v4a1_chg/chg_skill2_03",
+    "duration": 0,
+    "effectHangPoint": "mountbody",
+    "audio": 0
+  },
+  {
+    "effectPath": "v1a3_zongmaoshali/zongmaoshali_beidong_01",
+    "target": 1,
+    "skinId": 307203,
+    "changedPath": "v2a2_zongmaoshali/v2a2_zongmaoshali_beidong_01",
+    "duration": 0,
+    "effectHangPoint": "special7",
+    "audio": 0
+  },
+  {
+    "effectPath": "v1a3_zongmaoshali/zongmaoshali_beidong_02",
+    "target": 1,
+    "skinId": 307203,
+    "changedPath": "v2a2_zongmaoshali/v2a2_zongmaoshali_beidong_02",
+    "duration": 0,
+    "effectHangPoint": "special7",
+    "audio": 0
   }
 ]

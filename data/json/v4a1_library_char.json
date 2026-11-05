@@ -1,0 +1,360 @@
+[
+  {
+    "id": 307801,
+    "scale": "1",
+    "speed": 5,
+    "idleDurationRange": [
+      3,
+      5
+    ],
+    "walkableArea": [
+      -5,
+      5,
+      -3,
+      3
+    ],
+    "collider2DSize": [
+      1,
+      3.5
+    ],
+    "collider2DOffset": [
+      0,
+      1.5
+    ],
+    "sortingOrder": 20,
+    "chatIds": [
+      101,
+      212,
+      213
+    ],
+    "chatPos": [
+      0,
+      2.2
+    ],
+    "emojiPos": [
+      0,
+      2.2
+    ]
+  },
+  {
+    "id": 312501,
+    "scale": "1",
+    "speed": 5,
+    "idleDurationRange": [
+      3,
+      5
+    ],
+    "walkableArea": [
+      -5,
+      5,
+      -3,
+      3
+    ],
+    "collider2DSize": [
+      1,
+      3.5
+    ],
+    "collider2DOffset": [
+      0,
+      1.5
+    ],
+    "sortingOrder": 20,
+    "chatIds": [
+      102,
+      204,
+      205
+    ],
+    "chatPos": [
+      0,
+      2.5
+    ],
+    "emojiPos": [
+      0,
+      2.6
+    ]
+  },
+  {
+    "id": 313904,
+    "scale": "1",
+    "speed": 5,
+    "idleDurationRange": [
+      3,
+      5
+    ],
+    "walkableArea": [
+      -5,
+      5,
+      -3,
+      3
+    ],
+    "collider2DSize": [
+      1,
+      3.5
+    ],
+    "collider2DOffset": [
+      0,
+      1.5
+    ],
+    "sortingOrder": 20,
+    "chatIds": [
+      103,
+      218,
+      219
+    ],
+    "chatPos": [],
+    "emojiPos": [
+      0,
+      3
+    ]
+  },
+  {
+    "id": 309101,
+    "scale": "1",
+    "speed": 5,
+    "idleDurationRange": [
+      3,
+      5
+    ],
+    "walkableArea": [
+      -5,
+      5,
+      -3,
+      3
+    ],
+    "collider2DSize": [
+      1,
+      3.5
+    ],
+    "collider2DOffset": [
+      0,
+      1.5
+    ],
+    "sortingOrder": 20,
+    "chatIds": [
+      104,
+      216,
+      217
+    ],
+    "chatPos": [
+      0,
+      2.6
+    ],
+    "emojiPos": [
+      0,
+      2.7
+    ]
+  },
+  {
+    "id": 308201,
+    "scale": "1",
+    "speed": 5,
+    "idleDurationRange": [
+      3,
+      5
+    ],
+    "walkableArea": [
+      -5,
+      5,
+      -3,
+      3
+    ],
+    "collider2DSize": [
+      1,
+      3.5
+    ],
+    "collider2DOffset": [
+      0,
+      1.5
+    ],
+    "sortingOrder": 20,
+    "chatIds": [
+      105,
+      208,
+      209
+    ],
+    "chatPos": [
+      0,
+      2.7
+    ],
+    "emojiPos": [
+      0,
+      2.8
+    ]
+  },
+  {
+    "id": 314404,
+    "scale": "1",
+    "speed": 5,
+    "idleDurationRange": [
+      3,
+      5
+    ],
+    "walkableArea": [
+      -5,
+      5,
+      -3,
+      3
+    ],
+    "collider2DSize": [
+      1,
+      3.5
+    ],
+    "collider2DOffset": [
+      0,
+      1.5
+    ],
+    "sortingOrder": 20,
+    "chatIds": [
+      106,
+      214,
+      215
+    ],
+    "chatPos": [
+      0,
+      2.7
+    ],
+    "emojiPos": [
+      0,
+      2.8
+    ]
+  },
+  {
+    "id": 311601,
+    "scale": "1",
+    "speed": 5,
+    "idleDurationRange": [
+      3,
+      5
+    ],
+    "walkableArea": [
+      -5,
+      5,
+      -3,
+      3
+    ],
+    "collider2DSize": [
+      1,
+      3.5
+    ],
+    "collider2DOffset": [
+      0,
+      1.5
+    ],
+    "sortingOrder": 20,
+    "chatIds": [
+      107,
+      203,
+      207
+    ],
+    "chatPos": [],
+    "emojiPos": [
+      0,
+      3
+    ]
+  },
+  {
+    "id": 311304,
+    "scale": "1",
+    "speed": 5,
+    "idleDurationRange": [
+      3,
+      5
+    ],
+    "walkableArea": [
+      -5,
+      5,
+      -3,
+      3
+    ],
+    "collider2DSize": [
+      1,
+      3.5
+    ],
+    "collider2DOffset": [
+      0,
+      1.5
+    ],
+    "sortingOrder": 20,
+    "chatIds": [
+      108,
+      206,
+      220
+    ],
+    "chatPos": [
+      0,
+      3
+    ],
+    "emojiPos": [
+      0,
+      3.2
+    ]
+  },
+  {
+    "id": 306501,
+    "scale": "1",
+    "speed": 5,
+    "idleDurationRange": [
+      3,
+      5
+    ],
+    "walkableArea": [
+      -5,
+      5,
+      -3,
+      3
+    ],
+    "collider2DSize": [
+      1,
+      3.5
+    ],
+    "collider2DOffset": [
+      0,
+      1.5
+    ],
+    "sortingOrder": 20,
+    "chatIds": [
+      109,
+      210,
+      211
+    ],
+    "chatPos": [],
+    "emojiPos": [
+      0,
+      2.7
+    ]
+  },
+  {
+    "id": 311404,
+    "scale": "1",
+    "speed": 5,
+    "idleDurationRange": [
+      3,
+      5
+    ],
+    "walkableArea": [
+      -5,
+      5,
+      -3,
+      3
+    ],
+    "collider2DSize": [
+      1,
+      3.5
+    ],
+    "collider2DOffset": [
+      0,
+      1.5
+    ],
+    "sortingOrder": 20,
+    "chatIds": [
+      110,
+      201,
+      202
+    ],
+    "chatPos": [],
+    "emojiPos": [
+      0,
+      2.7
+    ]
+  }
+]

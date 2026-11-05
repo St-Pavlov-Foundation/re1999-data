@@ -2,6 +2,22 @@
   {
     "clueId": 303201,
     "heroId": 3032,
-    "facetsId": 303202
+    "facetsId": 303202,
+    "icon": "fight_yifulin_icon_1_1",
+    "effect": "buff_weizhi_bfz"
+  },
+  {
+    "clueId": 316001,
+    "heroId": 3160,
+    "facetsId": 0,
+    "icon": "fight_yifulin_icon_3_1",
+    "effect": "buff_weizhi_yfl"
+  },
+  {
+    "clueId": 307201,
+    "heroId": 3072,
+    "facetsId": 307202,
+    "icon": "fight_yifulin_icon_2_1",
+    "effect": "buff_weizhi_zmsl"
   }
 ]

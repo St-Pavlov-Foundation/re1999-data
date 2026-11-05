@@ -1,0 +1,86 @@
+[
+  {
+    "id": "crit",
+    "name": "暴击"
+  },
+  {
+    "id": "critConvert",
+    "name": "暴伤转化"
+  },
+  {
+    "id": "followUp",
+    "name": "周期追击"
+  },
+  {
+    "id": "rangeUp",
+    "name": "范围成长"
+  },
+  {
+    "id": "collLink",
+    "name": "藏品联动"
+  },
+  {
+    "id": "morph",
+    "name": "变身"
+  },
+  {
+    "id": "dash",
+    "name": "冲刺"
+  },
+  {
+    "id": "moveHit",
+    "name": "移动输出"
+  },
+  {
+    "id": "reviveUp",
+    "name": "复活"
+  },
+  {
+    "id": "hpTrade",
+    "name": "以血换伤"
+  },
+  {
+    "id": "moveBomb",
+    "name": "炸弹"
+  },
+  {
+    "id": "delayBoom",
+    "name": "延时爆炸"
+  },
+  {
+    "id": "summon",
+    "name": "召唤"
+  },
+  {
+    "id": "autoHit",
+    "name": "自动攻击"
+  },
+  {
+    "id": "hitPoison",
+    "name": "中毒"
+  },
+  {
+    "id": "dot",
+    "name": "持续伤害"
+  },
+  {
+    "id": "burn",
+    "name": "灼烧"
+  },
+  {
+    "id": "areaDmg",
+    "name": "群体伤害"
+  },
+  {
+    "id": "duel",
+    "name": "近身决斗"
+  },
+  {
+    "id": "areaBoom",
+    "name": "范围爆炸"
+  },
+  {
+    "id": "packShop",
+    "name": "卡包商店"
+  }
+]

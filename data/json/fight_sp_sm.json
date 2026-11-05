@@ -5,7 +5,7 @@
     "action": 1,
     "actionName": "unique",
     "audioId": 463030521,
-    "duration": 3.0,
+    "duration": 3,
     "nextActionName": "idle"
   },
   {
@@ -14,7 +14,7 @@
     "action": 2,
     "actionName": "born",
     "audioId": 463030521,
-    "duration": 0.0,
+    "duration": 0,
     "nextActionName": "idle2"
   }
 ]

@@ -43,5 +43,20 @@
     "mintype": 9,
     "sort": 9,
     "name": "子弹的冬年"
+  },
+  {
+    "mintype": 10,
+    "sort": 10,
+    "name": "神话的遗闻"
+  },
+  {
+    "mintype": 11,
+    "sort": 11,
+    "name": "思想的表观"
+  },
+  {
+    "mintype": 12,
+    "sort": 12,
+    "name": "生命的饥馑"
   }
 ]

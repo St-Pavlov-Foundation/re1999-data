@@ -478,5 +478,21 @@
   {
     "id": 120,
     "skipvideo": "4_0_chapter14_03"
+  },
+  {
+    "id": 121,
+    "skipvideo": "4_1_activity_01"
+  },
+  {
+    "id": 122,
+    "skipvideo": "4_1_activity_02"
+  },
+  {
+    "id": 123,
+    "skipvideo": "4_1_activity_03"
+  },
+  {
+    "id": 124,
+    "skipvideo": "4_1_activity_04"
   }
 ]

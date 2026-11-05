@@ -1,0 +1,18 @@
+[
+  {
+    "id": 4150001,
+    "goodsType": "collection",
+    "slot": 4,
+    "slotParams": "1#attr",
+    "weight": "600#300#100",
+    "tagWeight": "100#200"
+  },
+  {
+    "id": 4150002,
+    "goodsType": "pack",
+    "slot": 3,
+    "slotParams": "4130001|4130002|4130003",
+    "weight": "",
+    "tagWeight": ""
+  }
+]

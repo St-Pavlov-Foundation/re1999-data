@@ -1,0 +1,123 @@
+[
+  {
+    "id": 100,
+    "level": 1,
+    "cost": 50,
+    "name": "生命提升",
+    "displayType": "simple",
+    "skill": "4100010",
+    "fixedDesc": "初始生命上限提升1",
+    "addCoin": 0,
+    "addShopRefresh": 0
+  },
+  {
+    "id": 100,
+    "level": 2,
+    "cost": 150,
+    "name": "生命提升",
+    "displayType": "simple",
+    "skill": "4100011",
+    "fixedDesc": "初始生命上限提升2",
+    "addCoin": 0,
+    "addShopRefresh": 0
+  },
+  {
+    "id": 100,
+    "level": 3,
+    "cost": 250,
+    "name": "生命提升",
+    "displayType": "simple",
+    "skill": "4100012",
+    "fixedDesc": "初始生命上限提升3",
+    "addCoin": 0,
+    "addShopRefresh": 0
+  },
+  {
+    "id": 100,
+    "level": 4,
+    "cost": 350,
+    "name": "生命提升",
+    "displayType": "simple",
+    "skill": "4100013",
+    "fixedDesc": "初始生命上限提升4",
+    "addCoin": 0,
+    "addShopRefresh": 0
+  },
+  {
+    "id": 100,
+    "level": 5,
+    "cost": 450,
+    "name": "生命提升",
+    "displayType": "simple",
+    "skill": "4100014",
+    "fixedDesc": "初始生命上限提升5",
+    "addCoin": 0,
+    "addShopRefresh": 0
+  },
+  {
+    "id": 101,
+    "level": 1,
+    "cost": 50,
+    "name": "刷新次数提升",
+    "displayType": "simple",
+    "skill": "",
+    "fixedDesc": "商店刷新次数提升1",
+    "addCoin": 0,
+    "addShopRefresh": 1
+  },
+  {
+    "id": 101,
+    "level": 2,
+    "cost": 150,
+    "name": "刷新次数提升",
+    "displayType": "simple",
+    "skill": "",
+    "fixedDesc": "商店刷新次数提升2",
+    "addCoin": 0,
+    "addShopRefresh": 2
+  },
+  {
+    "id": 102,
+    "level": 1,
+    "cost": 150,
+    "name": "像素金币提升",
+    "displayType": "simple",
+    "skill": "",
+    "fixedDesc": "初始像素金币提升300",
+    "addCoin": 300,
+    "addShopRefresh": 0
+  },
+  {
+    "id": 102,
+    "level": 2,
+    "cost": 250,
+    "name": "像素金币提升",
+    "displayType": "simple",
+    "skill": "",
+    "fixedDesc": "初始像素金币提升400",
+    "addCoin": 400,
+    "addShopRefresh": 0
+  },
+  {
+    "id": 102,
+    "level": 3,
+    "cost": 350,
+    "name": "像素金币提升",
+    "displayType": "simple",
+    "skill": "",
+    "fixedDesc": "初始像素金币提升500",
+    "addCoin": 500,
+    "addShopRefresh": 0
+  },
+  {
+    "id": 103,
+    "level": 1,
+    "cost": 300,
+    "name": "复活次数提升",
+    "displayType": "complicated",
+    "skill": "4100015",
+    "fixedDesc": "复活次数提升1",
+    "addCoin": 0,
+    "addShopRefresh": 0
+  }
+]

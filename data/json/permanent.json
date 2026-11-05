@@ -103,5 +103,10 @@
     "id": 13222,
     "kvIcon": "reappear_img_kv21",
     "enterview": "Permanent3_2EnterView"
+  },
+  {
+    "id": 13305,
+    "kvIcon": "reappear_img_kv22",
+    "enterview": "Permanent3_3EnterView"
   }
 ]

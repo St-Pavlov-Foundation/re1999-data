@@ -91,7 +91,7 @@
     "initial": 15,
     "defeat": 0,
     "death": 0,
-    "desc": "额外移牌；\n替补上阵。",
+    "desc": "额外移牌；\\n替补上阵。",
     "passiveSkills": "",
     "skill1": 30010401,
     "usePower1": [
@@ -131,7 +131,7 @@
     "initial": 15,
     "defeat": 0,
     "death": 0,
-    "desc": "维尔汀的初始激情提高；\n第5回合开始，激情回复大幅提升。",
+    "desc": "维尔汀的初始激情提高；\\n第5回合开始，激情回复大幅提升。",
     "passiveSkills": "",
     "skill1": 30010301,
     "usePower1": [

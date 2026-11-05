@@ -39,7 +39,7 @@
     "index": 5,
     "spineRes": "v3a4_314101_lsj_z/314101_lsj_z4_fight",
     "pos": "0.95,0.31,0",
-    "duration": 0.0,
+    "duration": 0,
     "action": "jump",
     "missileDelay": 0.35,
     "missileOffset": "0.2,1.7,0"

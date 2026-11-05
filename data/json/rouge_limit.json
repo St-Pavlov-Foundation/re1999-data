@@ -654,7 +654,7 @@
     "group": 6001,
     "level": 1,
     "title": "不得安宁I",
-    "desc": "战斗中受治疗效果提高20%\n每次离开休憩处时，全队失去20%生命",
+    "desc": "战斗中受治疗效果提高20%\\n每次离开休憩处时，全队失去20%生命",
     "riskValue": 1,
     "startView": "",
     "initCollections": "9600130"
@@ -665,7 +665,7 @@
     "group": 6001,
     "level": 2,
     "title": "不得安宁II",
-    "desc": "战斗中受治疗效果提高20%\n每次离开休憩处时，全队失去40%生命",
+    "desc": "战斗中受治疗效果提高20%\\n每次离开休憩处时，全队失去40%生命",
     "riskValue": 2,
     "startView": "",
     "initCollections": "9600131"
@@ -698,7 +698,7 @@
     "group": 6003,
     "level": 1,
     "title": "不义之财I",
-    "desc": "获得金雀子儿提升10%\n每次离开购物契机时，失去50金雀子儿",
+    "desc": "获得金雀子儿提升10%\\n每次离开购物契机时，失去50金雀子儿",
     "riskValue": 1,
     "startView": "",
     "initCollections": "9600134"
@@ -709,7 +709,7 @@
     "group": 6003,
     "level": 2,
     "title": "不义之财II",
-    "desc": "获得金雀子儿提升10%\n每次离开购物契机时，失去100金雀子儿",
+    "desc": "获得金雀子儿提升10%\\n每次离开购物契机时，失去100金雀子儿",
     "riskValue": 2,
     "startView": "",
     "initCollections": "9600135"
@@ -720,7 +720,7 @@
     "group": 6004,
     "level": 1,
     "title": "迷踪I",
-    "desc": "视野-1\n雾中庭院会展示在地图上",
+    "desc": "视野-1\\n雾中庭院会展示在地图上",
     "riskValue": 1,
     "startView": "",
     "initCollections": "9600136"
@@ -731,7 +731,7 @@
     "group": 6004,
     "level": 2,
     "title": "迷踪II",
-    "desc": "视野-2\n雾中庭院会展示在地图上",
+    "desc": "视野-2\\n雾中庭院会展示在地图上",
     "riskValue": 2,
     "startView": "",
     "initCollections": "9600137"

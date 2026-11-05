@@ -152,6 +152,8 @@ function EnterActivityViewOnExitFightSceneHelper.enterFightAgain()
 	local episodeId = DungeonModel.instance.curSendEpisodeId
 
 	DungeonFightController.instance:enterFight(chapterId, episodeId, DungeonModel.instance.curSelectTicketId)
+
+	return true
 end
 
 function EnterActivityViewOnExitFightSceneHelper.activeExtend()

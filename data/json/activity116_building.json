@@ -267,7 +267,7 @@
     "level": 1,
     "configType": "1#3122003",
     "cost": "2#1202#200",
-    "desc": "不只能刺穿脚掌!\n进入战斗时,<color=#aceb6a>咒语升级为2阶</color>",
+    "desc": "不只能刺穿脚掌!\\n进入战斗时,<color=#aceb6a>咒语升级为2阶</color>",
     "icon": "bg_xianjing",
     "lightBgUrl": "scenes/m_s14_hddt_hd02/prefab/s08_hddt_hd_gaoliang_e.prefab",
     "filterEpisode": "1210105#1210106#1210107#1210108#1210109#1210110#1210111#1210112"
@@ -280,7 +280,7 @@
     "level": 1,
     "configType": "1#3122001",
     "cost": "2#1202#200",
-    "desc": "当心足踝!\n进入战斗时,获得<color=#aceb6a>2点激情</color>",
+    "desc": "当心足踝!\\n进入战斗时,获得<color=#aceb6a>2点激情</color>",
     "icon": "bg_xianjing_1",
     "lightBgUrl": "",
     "filterEpisode": ""
@@ -293,7 +293,7 @@
     "level": 1,
     "configType": "1#3122002",
     "cost": "2#1202#200",
-    "desc": "生人勿近!\n进入战斗时,获得<color=#aceb6a>最大生命值*30%的护盾</color>,持续3回合",
+    "desc": "生人勿近!\\n进入战斗时,获得<color=#aceb6a>最大生命值*30%的护盾</color>,持续3回合",
     "icon": "bg_xianjing_2",
     "lightBgUrl": "",
     "filterEpisode": ""

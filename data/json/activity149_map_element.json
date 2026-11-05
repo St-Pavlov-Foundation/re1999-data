@@ -4,7 +4,7 @@
     "mapId": 1610119,
     "pos": "59.1#-9.68#-2",
     "res": "",
-    "resScale": 0.0,
+    "resScale": 0,
     "tipOffsetPos": "",
     "effect": "scenes/m_s08_hddt/prefab/hddt_icon_boss01.prefab"
   }

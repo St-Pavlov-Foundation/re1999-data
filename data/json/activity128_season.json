@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "expMaterial": "2#3206",
+    "name": "目击者特版",
+    "nameLevel": "目击者等级"
+  },
+  {
+    "id": 2,
+    "expMaterial": "2#4101",
+    "name": "鉴藏者特版",
+    "nameLevel": "鉴赏家等级"
+  }
+]

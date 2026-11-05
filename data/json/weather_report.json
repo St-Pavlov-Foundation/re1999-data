@@ -5,7 +5,7 @@
     "roleMode": 1,
     "effect": 1,
     "roomMode": 2,
-    "audioLength": 72.0
+    "audioLength": 72
   },
   {
     "id": 2,
@@ -13,7 +13,7 @@
     "roleMode": 1,
     "effect": 2,
     "roomMode": 2,
-    "audioLength": 72.0
+    "audioLength": 72
   },
   {
     "id": 3,
@@ -21,7 +21,7 @@
     "roleMode": 1,
     "effect": 3,
     "roomMode": 2,
-    "audioLength": 72.0
+    "audioLength": 72
   },
   {
     "id": 4,
@@ -29,7 +29,7 @@
     "roleMode": 1,
     "effect": 4,
     "roomMode": 2,
-    "audioLength": 72.0
+    "audioLength": 72
   },
   {
     "id": 5,
@@ -37,7 +37,7 @@
     "roleMode": 2,
     "effect": 1,
     "roomMode": 1,
-    "audioLength": 66.0
+    "audioLength": 66
   },
   {
     "id": 6,
@@ -45,7 +45,7 @@
     "roleMode": 2,
     "effect": 3,
     "roomMode": 1,
-    "audioLength": 66.0
+    "audioLength": 66
   },
   {
     "id": 7,
@@ -53,7 +53,7 @@
     "roleMode": 2,
     "effect": 4,
     "roomMode": 1,
-    "audioLength": 66.0
+    "audioLength": 66
   },
   {
     "id": 8,
@@ -61,7 +61,7 @@
     "roleMode": 2,
     "effect": 5,
     "roomMode": 1,
-    "audioLength": 66.0
+    "audioLength": 66
   },
   {
     "id": 9,
@@ -69,7 +69,7 @@
     "roleMode": 2,
     "effect": 8,
     "roomMode": 1,
-    "audioLength": 66.0
+    "audioLength": 66
   },
   {
     "id": 10,
@@ -77,7 +77,7 @@
     "roleMode": 2,
     "effect": 6,
     "roomMode": 1,
-    "audioLength": 66.0
+    "audioLength": 66
   },
   {
     "id": 11,
@@ -85,7 +85,7 @@
     "roleMode": 2,
     "effect": 7,
     "roomMode": 1,
-    "audioLength": 66.0
+    "audioLength": 66
   },
   {
     "id": 12,
@@ -93,7 +93,7 @@
     "roleMode": 3,
     "effect": 1,
     "roomMode": 3,
-    "audioLength": 68.0
+    "audioLength": 68
   },
   {
     "id": 13,
@@ -101,7 +101,7 @@
     "roleMode": 3,
     "effect": 2,
     "roomMode": 3,
-    "audioLength": 68.0
+    "audioLength": 68
   },
   {
     "id": 14,
@@ -109,7 +109,7 @@
     "roleMode": 3,
     "effect": 3,
     "roomMode": 3,
-    "audioLength": 68.0
+    "audioLength": 68
   },
   {
     "id": 15,
@@ -117,7 +117,7 @@
     "roleMode": 4,
     "effect": 1,
     "roomMode": 4,
-    "audioLength": 66.0
+    "audioLength": 66
   },
   {
     "id": 16,
@@ -125,7 +125,7 @@
     "roleMode": 4,
     "effect": 3,
     "roomMode": 4,
-    "audioLength": 66.0
+    "audioLength": 66
   },
   {
     "id": 17,
@@ -133,7 +133,7 @@
     "roleMode": 4,
     "effect": 4,
     "roomMode": 4,
-    "audioLength": 66.0
+    "audioLength": 66
   },
   {
     "id": 18,
@@ -141,7 +141,7 @@
     "roleMode": 4,
     "effect": 5,
     "roomMode": 4,
-    "audioLength": 66.0
+    "audioLength": 66
   },
   {
     "id": 19,
@@ -149,7 +149,7 @@
     "roleMode": 1,
     "effect": 9,
     "roomMode": 2,
-    "audioLength": 72.0
+    "audioLength": 72
   },
   {
     "id": 20,
@@ -157,7 +157,7 @@
     "roleMode": 4,
     "effect": 10,
     "roomMode": 4,
-    "audioLength": 66.0
+    "audioLength": 66
   },
   {
     "id": 21,
@@ -165,7 +165,7 @@
     "roleMode": 4,
     "effect": 11,
     "roomMode": 4,
-    "audioLength": 66.0
+    "audioLength": 66
   },
   {
     "id": 22,
@@ -173,7 +173,7 @@
     "roleMode": 2,
     "effect": 12,
     "roomMode": 1,
-    "audioLength": 66.0
+    "audioLength": 66
   },
   {
     "id": 23,
@@ -181,6 +181,6 @@
     "roleMode": 2,
     "effect": 13,
     "roomMode": 1,
-    "audioLength": 66.0
+    "audioLength": 66
   }
 ]

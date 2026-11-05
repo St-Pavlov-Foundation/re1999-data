@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "阿夫西维",
+    "type": "80#1|20#2",
+    "icon": "guessgame_rolechess_11",
+    "bluffdia": "下一个故事是什么呢？#3",
+    "rightdia": "我能得到一朵小红花吗？#3",
+    "wrongdia": "唔，我会把比分扳回来的，同志！#3"
+  },
+  {
+    "id": 2,
+    "name": "野树莓",
+    "type": "80#2|20#1",
+    "icon": "guessgame_rolechess_15",
+    "bluffdia": "嘘，我正在使用……影子幻术！#3",
+    "rightdia": "“就这样，无所不知的血食怪看破了伪装！”#3",
+    "wrongdia": "这只是偶尔看走眼！#3"
+  },
+  {
+    "id": 3,
+    "name": "洛伦兹蝴蝶",
+    "type": "50#1|50#3",
+    "icon": "guessgame_rolechess_13",
+    "bluffdia": "一个小小的、无害的“课题”。#3",
+    "rightdia": "线索多如毛皮。#3",
+    "wrongdia": "令人愉快的随机性。#3"
+  },
+  {
+    "id": 4,
+    "name": "马库斯",
+    "type": "100#3",
+    "icon": "guessgame_rolechess_12",
+    "bluffdia": "我应该从这些牌中挑出……唔，唔！#3",
+    "rightdia": "我读到了！#3",
+    "wrongdia": "这也是阅读的一部分，对吗？#3"
+  },
+  {
+    "id": 5,
+    "name": "虚构集",
+    "type": "30#1|30#2|40#3",
+    "icon": "guessgame_rolechess_14",
+    "bluffdia": "在咖啡馆，我们玩过差不多的游戏。#3",
+    "rightdia": "按照创作的规律……#3",
+    "wrongdia": "这是全新的情节！#3"
+  }
+]

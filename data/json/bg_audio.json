@@ -2878,5 +2878,45 @@
     "id": 3400011,
     "eventName": "play_activitymusic_ruqin_3_7",
     "bankName": "activity3_7_music"
+  },
+  {
+    "id": 3410001,
+    "eventName": "play_battle_atlantis_4_1_normalfight",
+    "bankName": "activity_atlantis_4_1_combataudio"
+  },
+  {
+    "id": 3410002,
+    "eventName": "play_battle_atlantis_4_1_bossfight",
+    "bankName": "activity_atlantis_4_1_combataudio"
+  },
+  {
+    "id": 3410003,
+    "eventName": "play_ui_checkpoint_noise_dock_loop",
+    "bankName": "activtiy_atlantis_4_1_combataudio_noise"
+  },
+  {
+    "id": 3410004,
+    "eventName": "play_ui_checkpoint_noise_dock_night_loop",
+    "bankName": "activtiy_atlantis_4_1_combataudio_noise"
+  },
+  {
+    "id": 3410005,
+    "eventName": "play_ui_checkpoint_noise_corridor_loop",
+    "bankName": "activtiy_atlantis_4_1_combataudio_noise"
+  },
+  {
+    "id": 3410006,
+    "eventName": "play_ui_checkpoint_noise_zhanting_loop",
+    "bankName": "activtiy_atlantis_4_1_combataudio_noise"
+  },
+  {
+    "id": 3410007,
+    "eventName": "play_ui_checkpoint_noise_lawn_loop",
+    "bankName": "activtiy_atlantis_4_1_combataudio_noise"
+  },
+  {
+    "id": 3410008,
+    "eventName": "play_ui_checkpoint_noise_yflhouse_loop",
+    "bankName": "activtiy_atlantis_4_1_combataudio_noise"
   }
 ]

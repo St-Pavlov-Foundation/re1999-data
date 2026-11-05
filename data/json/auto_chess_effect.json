@@ -11,7 +11,7 @@
     "target": 0,
     "position": 2,
     "offset": "",
-    "duration": 1.0,
+    "duration": 1,
     "soundId": 0
   },
   {
@@ -26,7 +26,7 @@
     "target": 0,
     "position": 2,
     "offset": "",
-    "duration": 0.0,
+    "duration": 0,
     "soundId": 0
   },
   {
@@ -41,7 +41,7 @@
     "target": 0,
     "position": 2,
     "offset": "",
-    "duration": 0.0,
+    "duration": 0,
     "soundId": 0
   },
   {
@@ -101,7 +101,7 @@
     "target": 1,
     "position": 2,
     "offset": "",
-    "duration": 0.0,
+    "duration": 0,
     "soundId": 0
   },
   {
@@ -116,7 +116,7 @@
     "target": 1,
     "position": 2,
     "offset": "",
-    "duration": 0.0,
+    "duration": 0,
     "soundId": 20250416
   },
   {
@@ -131,7 +131,7 @@
     "target": 1,
     "position": 2,
     "offset": "",
-    "duration": 1.0,
+    "duration": 1,
     "soundId": 0
   },
   {
@@ -161,7 +161,7 @@
     "target": 1,
     "position": 2,
     "offset": "",
-    "duration": 0.0,
+    "duration": 0,
     "soundId": 0
   },
   {
@@ -176,7 +176,7 @@
     "target": 1,
     "position": 2,
     "offset": "",
-    "duration": 0.0,
+    "duration": 0,
     "soundId": 0
   },
   {
@@ -206,7 +206,7 @@
     "target": 2,
     "position": 2,
     "offset": "",
-    "duration": 1.0,
+    "duration": 1,
     "soundId": 20250414
   },
   {
@@ -221,7 +221,7 @@
     "target": 2,
     "position": 2,
     "offset": "",
-    "duration": 1.0,
+    "duration": 1,
     "soundId": 0
   },
   {
@@ -236,7 +236,7 @@
     "target": 2,
     "position": 2,
     "offset": "",
-    "duration": 0.0,
+    "duration": 0,
     "soundId": 0
   },
   {
@@ -266,7 +266,7 @@
     "target": 2,
     "position": 2,
     "offset": "",
-    "duration": 1.0,
+    "duration": 1,
     "soundId": 20320404
   },
   {
@@ -281,7 +281,7 @@
     "target": 2,
     "position": 2,
     "offset": "",
-    "duration": 1.0,
+    "duration": 1,
     "soundId": 0
   },
   {
@@ -326,7 +326,7 @@
     "target": 2,
     "position": 2,
     "offset": "",
-    "duration": 0.0,
+    "duration": 0,
     "soundId": 0
   },
   {
@@ -341,7 +341,7 @@
     "target": 2,
     "position": 2,
     "offset": "",
-    "duration": 0.0,
+    "duration": 0,
     "soundId": 0
   },
   {
@@ -356,7 +356,7 @@
     "target": 2,
     "position": 2,
     "offset": "",
-    "duration": 1.0,
+    "duration": 1,
     "soundId": 20250413
   },
   {
@@ -386,7 +386,7 @@
     "target": 2,
     "position": 2,
     "offset": "",
-    "duration": 0.0,
+    "duration": 0,
     "soundId": 0
   },
   {
@@ -401,7 +401,7 @@
     "target": 2,
     "position": 2,
     "offset": "",
-    "duration": 0.0,
+    "duration": 0,
     "soundId": 0
   },
   {
@@ -416,7 +416,7 @@
     "target": 2,
     "position": 2,
     "offset": "",
-    "duration": 0.0,
+    "duration": 0,
     "soundId": 0
   },
   {
@@ -431,7 +431,7 @@
     "target": 2,
     "position": 2,
     "offset": "",
-    "duration": 0.0,
+    "duration": 0,
     "soundId": 0
   },
   {
@@ -461,7 +461,7 @@
     "target": 2,
     "position": 2,
     "offset": "",
-    "duration": 0.0,
+    "duration": 0,
     "soundId": 0
   }
 ]

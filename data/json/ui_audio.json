@@ -17493,5 +17493,595 @@
     "id": 400176,
     "eventName": "play_ui_yingmen_tanguowu_rotate_single",
     "bankName": "ui_activity_4_0_yingmen_tanguowu"
+  },
+  {
+    "id": 410001,
+    "eventName": "play_huoyue_bossfight_music_4_1",
+    "bankName": "ui_8bit_music_4_1"
+  },
+  {
+    "id": 410002,
+    "eventName": "play_huoyue_bossfight_mojing_music_4_1",
+    "bankName": "ui_8bit_music_4_1"
+  },
+  {
+    "id": 410003,
+    "eventName": "stop_ui_8bit_music",
+    "bankName": "ui_8bit_music_4_1"
+  },
+  {
+    "id": 410004,
+    "eventName": "set_voice_volume_ui_8bit_music",
+    "bankName": "ui_8bit_music_4_1"
+  },
+  {
+    "id": 410005,
+    "eventName": "reset_voice_volume_ui_8bit_music",
+    "bankName": "ui_8bit_music_4_1"
+  },
+  {
+    "id": 410010,
+    "eventName": "play_replay_music_stillwaters_4_1nfc",
+    "bankName": "ui_replay_mainmusic4_1nfc"
+  },
+  {
+    "id": 410011,
+    "eventName": "play_replay_music_rocksolid_4_1nfc",
+    "bankName": "ui_replay_mainmusic4_1nfc"
+  },
+  {
+    "id": 410012,
+    "eventName": "play_replay_music_tango_4_1nfc",
+    "bankName": "ui_replay_mainmusic4_1nfc"
+  },
+  {
+    "id": 410013,
+    "eventName": "play_replay_music_yiqieruyan_4_1nfc",
+    "bankName": "ui_replay_mainmusic4_1nfc"
+  },
+  {
+    "id": 410014,
+    "eventName": "play_replay_music_odyssey_4_1nfc",
+    "bankName": "ui_replay_mainmusic4_1nfc"
+  },
+  {
+    "id": 410015,
+    "eventName": "play_replay_music_remember_4_1nfc",
+    "bankName": "ui_replay_mainmusic4_1nfc"
+  },
+  {
+    "id": 410016,
+    "eventName": "play_ui_atlantis_nandu_finish",
+    "bankName": "ui_activity_4_1_atlantis_jieji"
+  },
+  {
+    "id": 410017,
+    "eventName": "play_ui_atlantis_text_prompt",
+    "bankName": "ui_activity_4_1_atlantis_jieji"
+  },
+  {
+    "id": 410018,
+    "eventName": "play_ui_atlantis_dialogue_loop",
+    "bankName": "ui_activity_4_1_atlantis_jieji"
+  },
+  {
+    "id": 410019,
+    "eventName": "stop_ui_atlantis_dialogue_loop",
+    "bankName": "ui_activity_4_1_atlantis_jieji"
+  },
+  {
+    "id": 410020,
+    "eventName": "play_ui_atlantis_event_choose",
+    "bankName": "ui_activity_4_1_atlantis_jieji"
+  },
+  {
+    "id": 410021,
+    "eventName": "play_ui_yuanzheng_interface_open",
+    "bankName": "ui_activity_3_3_yuanzheng_jieji"
+  },
+  {
+    "id": 410022,
+    "eventName": "play_ui_atlantis_product_lock",
+    "bankName": "ui_activity_4_1_atlantis_jieji"
+  },
+  {
+    "id": 410023,
+    "eventName": "play_ui_yuanzheng_interface_open",
+    "bankName": "ui_activity_3_3_yuanzheng_jieji"
+  },
+  {
+    "id": 410024,
+    "eventName": "play_ui_atlantis_product_buy",
+    "bankName": "ui_activity_4_1_atlantis_jieji"
+  },
+  {
+    "id": 410025,
+    "eventName": "play_ui_yuanzheng_item_get",
+    "bankName": "ui_activity_3_3_yuanzheng_jieji"
+  },
+  {
+    "id": 410026,
+    "eventName": "play_ui_atlantis_enemy_pugong",
+    "bankName": "ui_activity_4_1_atlantis_jieji"
+  },
+  {
+    "id": 410027,
+    "eventName": "play_ui_atlantis_sanqi_attack",
+    "bankName": "ui_activity_4_1_atlantis_jieji"
+  },
+  {
+    "id": 410028,
+    "eventName": "play_ui_atlantis_nuodika_attack",
+    "bankName": "ui_activity_4_1_atlantis_jieji"
+  },
+  {
+    "id": 410029,
+    "eventName": "play_ui_atlantis_yisuoerde_attack",
+    "bankName": "ui_activity_4_1_atlantis_jieji"
+  },
+  {
+    "id": 410030,
+    "eventName": "play_ui_atlantis_yami_attack",
+    "bankName": "ui_activity_4_1_atlantis_jieji"
+  },
+  {
+    "id": 410031,
+    "eventName": "play_ui_atlantis_j_attack",
+    "bankName": "ui_activity_4_1_atlantis_jieji"
+  },
+  {
+    "id": 410032,
+    "eventName": "play_ui_atlantis_smews_attack",
+    "bankName": "ui_activity_4_1_atlantis_jieji"
+  },
+  {
+    "id": 410033,
+    "eventName": "play_ui_atlantis_karong_attack",
+    "bankName": "ui_activity_4_1_atlantis_jieji"
+  },
+  {
+    "id": 410034,
+    "eventName": "play_ui_atlantis_chongsu_attack",
+    "bankName": "ui_activity_4_1_atlantis_jieji"
+  },
+  {
+    "id": 410035,
+    "eventName": "play_ui_atlantis_mojing_attack",
+    "bankName": "ui_activity_4_1_atlantis_jieji"
+  },
+  {
+    "id": 410036,
+    "eventName": "play_ui_atlantis_daoguang_attack",
+    "bankName": "ui_activity_4_1_atlantis_jieji"
+  },
+  {
+    "id": 410037,
+    "eventName": "play_ui_atlantis_bullet_attack",
+    "bankName": "ui_activity_4_1_atlantis_jieji"
+  },
+  {
+    "id": 410038,
+    "eventName": "play_ui_atlantis_shunyi_attack",
+    "bankName": "ui_activity_4_1_atlantis_jieji"
+  },
+  {
+    "id": 410039,
+    "eventName": "play_ui_atlantis_magma_attack",
+    "bankName": "ui_activity_4_1_atlantis_jieji"
+  },
+  {
+    "id": 410040,
+    "eventName": "play_ui_beiai_kapai_deal",
+    "bankName": "ui_activity_3_7_beiai_kapai"
+  },
+  {
+    "id": 410041,
+    "eventName": "play_ui_beiai_kapai_lose",
+    "bankName": "ui_activity_3_7_beiai_kapai"
+  },
+  {
+    "id": 410042,
+    "eventName": "play_ui_beiai_kapai_win",
+    "bankName": "ui_activity_3_7_beiai_kapai"
+  },
+  {
+    "id": 410043,
+    "eventName": "play_ui_beiai_kapai_turnover",
+    "bankName": "ui_activity_3_7_beiai_kapai"
+  },
+  {
+    "id": 410044,
+    "eventName": "play_ui_beiai_kapai_settlement_bonus",
+    "bankName": "ui_activity_3_7_beiai_kapai"
+  },
+  {
+    "id": 410045,
+    "eventName": "play_ui_beiai_kapai_start_game",
+    "bankName": "ui_activity_3_7_beiai_kapai"
+  },
+  {
+    "id": 410046,
+    "eventName": "play_ui_beiai_kapai_play_round",
+    "bankName": "ui_activity_3_7_beiai_kapai"
+  },
+  {
+    "id": 410047,
+    "eventName": "play_ui_beiai_kapai_choose",
+    "bankName": "ui_activity_3_7_beiai_kapai"
+  },
+  {
+    "id": 410048,
+    "eventName": "play_ui_beiai_kapai_card_content",
+    "bankName": "ui_activity_3_7_beiai_kapai"
+  },
+  {
+    "id": 410049,
+    "eventName": "play_ui_beiai_kapai_deduction",
+    "bankName": "ui_activity_3_7_beiai_kapai"
+  },
+  {
+    "id": 410050,
+    "eventName": "play_ui_beiai_kapai_announce",
+    "bankName": "ui_activity_3_7_beiai_kapai"
+  },
+  {
+    "id": 410051,
+    "eventName": "play_ui_beiai_kapai_red",
+    "bankName": "ui_activity_3_7_beiai_kapai"
+  },
+  {
+    "id": 410052,
+    "eventName": "play_ui_beiai_kapai_score",
+    "bankName": "ui_activity_3_7_beiai_kapai"
+  },
+  {
+    "id": 410053,
+    "eventName": "play_ui_beiai_kapai_card_content",
+    "bankName": "ui_activity_3_7_beiai_kapai"
+  },
+  {
+    "id": 410054,
+    "eventName": "play_ui_fuleyuan_yure_whoosh",
+    "bankName": "ui_activity_2_8_fuleyuan_yure"
+  },
+  {
+    "id": 410055,
+    "eventName": "play_ui_beiai_kapai_turnover",
+    "bankName": "ui_activity_3_7_beiai_kapai"
+  },
+  {
+    "id": 410056,
+    "eventName": "play_ui_fight_card_flip",
+    "bankName": "fight_ui_sfx2_3"
+  },
+  {
+    "id": 410057,
+    "eventName": "play_ui_wenming_cards_flipping",
+    "bankName": "ui_activity_2_6_wenming_xugouji"
+  },
+  {
+    "id": 410058,
+    "eventName": "play_replay_music_theme_4_1",
+    "bankName": "ui_replay_mainmusic4_1"
+  },
+  {
+    "id": 410059,
+    "eventName": "play_ui_atlantis_4_1_kv_open",
+    "bankName": "ui_activity_4_1_atlantis"
+  },
+  {
+    "id": 410060,
+    "eventName": "stop_ui_atlantis_4_1_kv_open",
+    "bankName": "ui_activity_4_1_atlantis"
+  },
+  {
+    "id": 410061,
+    "eventName": "play_ui_atlantis_4_1_kv_open2",
+    "bankName": "ui_activity_4_1_atlantis"
+  },
+  {
+    "id": 410062,
+    "eventName": "play_ui_fight_yifulin_unfold",
+    "bankName": "fight_ui_sfx_yifulin4_1"
+  },
+  {
+    "id": 410063,
+    "eventName": "play_ui_fight_yifulin_pick_up",
+    "bankName": "fight_ui_sfx_yifulin4_1"
+  },
+  {
+    "id": 410064,
+    "eventName": "play_ui_fight_yifulin_open",
+    "bankName": "fight_ui_sfx_yifulin4_1"
+  },
+  {
+    "id": 410065,
+    "eventName": "play_ui_fight_yifulin_put_down",
+    "bankName": "fight_ui_sfx_yifulin4_1"
+  },
+  {
+    "id": 410066,
+    "eventName": "play_ui_fight_yifulin_put_down_2",
+    "bankName": "fight_ui_sfx_yifulin4_1"
+  },
+  {
+    "id": 410067,
+    "eventName": "play_ui_fight_yifulin_click",
+    "bankName": "fight_ui_sfx_yifulin4_1"
+  },
+  {
+    "id": 410068,
+    "eventName": "play_ui_atlantis_yifulin_open",
+    "bankName": "ui_activity_4_1_atlantis_yifulin"
+  },
+  {
+    "id": 410069,
+    "eventName": "play_ui_atlantis_pen_strat",
+    "bankName": "ui_activity_4_1_atlantis_yifulin"
+  },
+  {
+    "id": 410070,
+    "eventName": "play_ui_atlantis_pen_end",
+    "bankName": "ui_activity_4_1_atlantis_yifulin"
+  },
+  {
+    "id": 410071,
+    "eventName": "play_ui_atlantis_tool_down",
+    "bankName": "ui_activity_4_1_atlantis_yifulin"
+  },
+  {
+    "id": 410072,
+    "eventName": "play_ui_atlantis_tool_get",
+    "bankName": "ui_activity_4_1_atlantis_yifulin"
+  },
+  {
+    "id": 410073,
+    "eventName": "play_ui_atlantis_connect_yes",
+    "bankName": "ui_activity_4_1_atlantis_yifulin"
+  },
+  {
+    "id": 410074,
+    "eventName": "play_ui_atlantis_connect_no",
+    "bankName": "ui_activity_4_1_atlantis_yifulin"
+  },
+  {
+    "id": 410075,
+    "eventName": "play_ui_atlantis_level_pass",
+    "bankName": "ui_activity_4_1_atlantis_yifulin"
+  },
+  {
+    "id": 410076,
+    "eventName": "play_activitymusic_heitonghua_4_1",
+    "bankName": "activity4_1_music"
+  },
+  {
+    "id": 410077,
+    "eventName": "play_ui_atlantis4_1_enter",
+    "bankName": "ui_activity_4_1_atlantis_yunying"
+  },
+  {
+    "id": 410078,
+    "eventName": "play_ui_atlantis4_1_text",
+    "bankName": "ui_activity_4_1_atlantis_yunying"
+  },
+  {
+    "id": 410079,
+    "eventName": "play_ui_atlantis4_1_bubble",
+    "bankName": "ui_activity_4_1_atlantis_yunying"
+  },
+  {
+    "id": 410080,
+    "eventName": "play_ui_atlantis_question_right",
+    "bankName": "ui_activity_4_1_atlantis_question"
+  },
+  {
+    "id": 410081,
+    "eventName": "play_ui_atlantis_question_wrong",
+    "bankName": "ui_activity_4_1_atlantis_question"
+  },
+  {
+    "id": 410082,
+    "eventName": "play_ui_wulu_aizila_level_open",
+    "bankName": "ui_activity_1_5_wulu_aizila"
+  },
+  {
+    "id": 410083,
+    "eventName": "play_ui_wulu_aizila_forward_paper",
+    "bankName": "ui_activity_1_5_wulu_aizila"
+  },
+  {
+    "id": 410084,
+    "eventName": "play_ui_fight_4_1ux_peishita",
+    "bankName": "fight_ui_sfx_peishita4_1"
+  },
+  {
+    "id": 410085,
+    "eventName": "play_ui_atlantis_boss_death",
+    "bankName": "ui_activity_4_1_atlantis_jieji"
+  },
+  {
+    "id": 410086,
+    "eventName": "play_ui_alf_yishi_dice_rotate",
+    "bankName": "ui_alaifu_yishi_sfx4_1"
+  },
+  {
+    "id": 410087,
+    "eventName": "play_ui_atlantis_tool_drag",
+    "bankName": "ui_activity_4_1_atlantis_yifulin"
+  },
+  {
+    "id": 410088,
+    "eventName": "play_ui_atlantis_tool_back",
+    "bankName": "ui_activity_4_1_atlantis_yifulin"
+  },
+  {
+    "id": 410089,
+    "eventName": "play_ui_atlantis_reasoning_open",
+    "bankName": "ui_activity_4_1_atlantis_tansuo"
+  },
+  {
+    "id": 410090,
+    "eventName": "play_ui_atlantis_clue_error",
+    "bankName": "ui_activity_4_1_atlantis_tansuo"
+  },
+  {
+    "id": 410091,
+    "eventName": "play_ui_atlantis_error_fillin",
+    "bankName": "ui_activity_4_1_atlantis_tansuo"
+  },
+  {
+    "id": 410092,
+    "eventName": "play_ui_atlantis_obtain_axe",
+    "bankName": "ui_activity_4_1_atlantis_pestha"
+  },
+  {
+    "id": 410093,
+    "eventName": "play_ui_atlantis_cut_trees",
+    "bankName": "ui_activity_4_1_atlantis_pestha"
+  },
+  {
+    "id": 410094,
+    "eventName": "play_ui_beiai_kapai_win",
+    "bankName": "ui_activity_3_7_beiai_kapai"
+  },
+  {
+    "id": 410095,
+    "eventName": "play_ui_fuleyuan_nuodika_failed",
+    "bankName": "ui_activity_2_8_fuleyuan_nuodika"
+  },
+  {
+    "id": 410096,
+    "eventName": "play_ui_atlantis_warn",
+    "bankName": "ui_activity_4_1_atlantis_pestha"
+  },
+  {
+    "id": 410097,
+    "eventName": "play_ui_atlantis_hunter_moves",
+    "bankName": "ui_activity_4_1_atlantis_pestha"
+  },
+  {
+    "id": 410098,
+    "eventName": "play_ui_atlantis_hunter_attack",
+    "bankName": "ui_activity_4_1_atlantis_pestha"
+  },
+  {
+    "id": 410099,
+    "eventName": "play_ui_atlantis_warn",
+    "bankName": "ui_activity_4_1_atlantis_pestha"
+  },
+  {
+    "id": 410100,
+    "eventName": "play_ui_atlantis_hunter_moves",
+    "bankName": "ui_activity_4_1_atlantis_pestha"
+  },
+  {
+    "id": 410101,
+    "eventName": "play_ui_atlantis_hunter_attack",
+    "bankName": "ui_activity_4_1_atlantis_pestha"
+  },
+  {
+    "id": 410102,
+    "eventName": "play_ui_atlantis_obtain_crossbow",
+    "bankName": "ui_activity_4_1_atlantis_pestha"
+  },
+  {
+    "id": 410103,
+    "eventName": "play_ui_atlantis_archery",
+    "bankName": "ui_activity_4_1_atlantis_pestha"
+  },
+  {
+    "id": 410104,
+    "eventName": "play_ui_atlantis_kapai_draw_card",
+    "bankName": "ui_activity_4_1_atlantis_kapai"
+  },
+  {
+    "id": 410105,
+    "eventName": "play_ui_beiai_kapai_start_game",
+    "bankName": "ui_activity_3_7_beiai_kapai"
+  },
+  {
+    "id": 410106,
+    "eventName": "play_ui_atlantis_kapai_loss_blood",
+    "bankName": "ui_activity_4_1_atlantis_kapai"
+  },
+  {
+    "id": 410107,
+    "eventName": "play_ui_atlantis_zm_jihuo",
+    "bankName": "ui_activity_4_1_atlantis_zongmao"
+  },
+  {
+    "id": 410108,
+    "eventName": "play_ui_atlantis_zm_light",
+    "bankName": "ui_activity_4_1_atlantis_zongmao"
+  },
+  {
+    "id": 410109,
+    "eventName": "play_ui_common_click",
+    "bankName": "uiclick"
+  },
+  {
+    "id": 410110,
+    "eventName": "play_ui_leimi_theft_open",
+    "bankName": "ui_activity"
+  },
+  {
+    "id": 410111,
+    "eventName": "play_ui_task_page",
+    "bankName": "main_ui"
+  },
+  {
+    "id": 410112,
+    "eventName": "play_ui_mail_open_1",
+    "bankName": "ui_mail"
+  },
+  {
+    "id": 410113,
+    "eventName": "play_ui_wulu_kerandian_unlock",
+    "bankName": "ui_activity_1_5_wulu_kerandian_interface"
+  },
+  {
+    "id": 410114,
+    "eventName": "play_ui_activity_subject_choose",
+    "bankName": "ui_activity_lvhu"
+  },
+  {
+    "id": 410115,
+    "eventName": "play_ui_wulu_aizila_forward_paper",
+    "bankName": "ui_activity_1_5_wulu_aizila"
+  },
+  {
+    "id": 410116,
+    "eventName": "play_ui_wulu_paiqian_open",
+    "bankName": "ui_activity_1_5_wulu"
+  },
+  {
+    "id": 410117,
+    "eventName": "play_ui_lvhu_notebook_get",
+    "bankName": "ui_activity_lvhu"
+  },
+  {
+    "id": 410118,
+    "eventName": "play_ui_lvhu_clue_write_1",
+    "bankName": "ui_activity_lvhu"
+  },
+  {
+    "id": 410119,
+    "eventName": "play_ui_wulu_aizila_forward_paper",
+    "bankName": "ui_activity_1_5_wulu_aizila"
+  },
+  {
+    "id": 410120,
+    "eventName": "play_ui_atlantis_jiean",
+    "bankName": "ui_activity_4_1_atlantis_tansuo"
+  },
+  {
+    "id": 410121,
+    "eventName": "stop_ui_atlantis_jiean",
+    "bankName": "ui_activity_4_1_atlantis_tansuo"
+  },
+  {
+    "id": 410122,
+    "eventName": "play_ui_atlantis4_1_skinopen",
+    "bankName": "ui_activity_4_1_atlantis_yunying"
   }
 ]

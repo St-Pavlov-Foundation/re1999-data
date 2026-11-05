@@ -1,0 +1,21 @@
+[
+  {
+    "id": 0,
+    "spineRes": "v4a1_315901_pst_z2/315901_pst_z2_fight",
+    "offset": [
+      -1.29,
+      0,
+      0
+    ],
+    "scale": 1.5,
+    "actionName": "innate",
+    "bornEffect": "v4a1_pst/pst_innate1_03",
+    "bornHangPoint": "mountroot",
+    "bornAudio": 431590142,
+    "bornDuration": 1.33,
+    "dieEffect": "v4a1_pst/pst_z2_die",
+    "dieHangPoint": "mountroot",
+    "dieAudio": 431590193,
+    "dieDuration": 1.5
+  }
+]

@@ -382,5 +382,17 @@
     "collectionBonus": "11#14003#1",
     "extraShowBuilding": "14011|14012|14013",
     "sourcesType": ""
+  },
+  {
+    "id": 4101,
+    "name": "注定之城",
+    "nameEn": "The Fated City",
+    "desc": "它曾带来喧嚣与繁荣。如今，它告诉人们唯一的真相。",
+    "rewardIcon": "1703100",
+    "building": "14101|14102|14103",
+    "packages": "4101|4102|4103|4104",
+    "collectionBonus": "11#14103#1",
+    "extraShowBuilding": "",
+    "sourcesType": ""
   }
 ]

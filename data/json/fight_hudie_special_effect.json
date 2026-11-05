@@ -6,5 +6,9 @@
   {
     "effect": "v3a8_llzhd/llzhd_unique_05",
     "path": "root/l_glow_pian/mask"
+  },
+  {
+    "effect": "v4a1_llzhd/llzhd_unique_05",
+    "path": "root/l_glow_lanse/l_glow_pian/mask"
   }
 ]

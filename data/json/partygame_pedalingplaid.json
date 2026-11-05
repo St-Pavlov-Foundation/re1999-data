@@ -4,9 +4,9 @@
     "playerNum": 8,
     "type": 1,
     "assetId": 90002,
-    "param": 1.0,
+    "param": 1,
     "maxNum": 1,
-    "duration": 5.0,
+    "duration": 5,
     "interval": "5#8"
   },
   {
@@ -14,9 +14,9 @@
     "playerNum": 8,
     "type": 1,
     "assetId": 90003,
-    "param": 3.0,
+    "param": 3,
     "maxNum": 2,
-    "duration": 5.0,
+    "duration": 5,
     "interval": "4#6|4#6"
   },
   {
@@ -24,9 +24,9 @@
     "playerNum": 8,
     "type": 1,
     "assetId": 90004,
-    "param": -1.0,
+    "param": -1,
     "maxNum": 2,
-    "duration": 5.0,
+    "duration": 5,
     "interval": "4#6|4#6"
   },
   {
@@ -34,9 +34,9 @@
     "playerNum": 8,
     "type": 2,
     "assetId": 90005,
-    "param": 5.0,
+    "param": 5,
     "maxNum": 1,
-    "duration": 4.0,
+    "duration": 4,
     "interval": "2#4"
   },
   {
@@ -44,9 +44,9 @@
     "playerNum": 8,
     "type": 3,
     "assetId": 90006,
-    "param": 2.0,
+    "param": 2,
     "maxNum": 2,
-    "duration": 3.0,
+    "duration": 3,
     "interval": "4#7|5#8"
   },
   {
@@ -54,9 +54,9 @@
     "playerNum": 4,
     "type": 1,
     "assetId": 90002,
-    "param": 1.0,
+    "param": 1,
     "maxNum": 1,
-    "duration": 5.0,
+    "duration": 5,
     "interval": "5#8"
   },
   {
@@ -64,9 +64,9 @@
     "playerNum": 4,
     "type": 1,
     "assetId": 90003,
-    "param": 3.0,
+    "param": 3,
     "maxNum": 2,
-    "duration": 5.0,
+    "duration": 5,
     "interval": "4#6|4#6"
   },
   {
@@ -74,9 +74,9 @@
     "playerNum": 4,
     "type": 1,
     "assetId": 90004,
-    "param": -1.0,
+    "param": -1,
     "maxNum": 2,
-    "duration": 5.0,
+    "duration": 5,
     "interval": "4#6|4#6"
   },
   {
@@ -84,9 +84,9 @@
     "playerNum": 4,
     "type": 2,
     "assetId": 90005,
-    "param": 5.0,
+    "param": 5,
     "maxNum": 1,
-    "duration": 4.0,
+    "duration": 4,
     "interval": "2#4"
   },
   {
@@ -94,9 +94,9 @@
     "playerNum": 4,
     "type": 3,
     "assetId": 90006,
-    "param": 2.0,
+    "param": 2,
     "maxNum": 2,
-    "duration": 3.0,
+    "duration": 3,
     "interval": "2#4|2#4"
   },
   {
@@ -104,9 +104,9 @@
     "playerNum": 2,
     "type": 1,
     "assetId": 90002,
-    "param": 1.0,
+    "param": 1,
     "maxNum": 1,
-    "duration": 5.0,
+    "duration": 5,
     "interval": "2#4"
   },
   {
@@ -114,9 +114,9 @@
     "playerNum": 2,
     "type": 1,
     "assetId": 90003,
-    "param": 3.0,
+    "param": 3,
     "maxNum": 1,
-    "duration": 5.0,
+    "duration": 5,
     "interval": "2#4"
   },
   {
@@ -124,9 +124,9 @@
     "playerNum": 2,
     "type": 1,
     "assetId": 90004,
-    "param": -1.0,
+    "param": -1,
     "maxNum": 2,
-    "duration": 5.0,
+    "duration": 5,
     "interval": "4#6|4#6"
   },
   {
@@ -134,9 +134,9 @@
     "playerNum": 2,
     "type": 2,
     "assetId": 90005,
-    "param": 5.0,
+    "param": 5,
     "maxNum": 1,
-    "duration": 4.0,
+    "duration": 4,
     "interval": "2#4"
   },
   {
@@ -144,9 +144,9 @@
     "playerNum": 2,
     "type": 3,
     "assetId": 90006,
-    "param": 2.0,
+    "param": 2,
     "maxNum": 2,
-    "duration": 3.0,
+    "duration": 3,
     "interval": "2#4|2#4"
   }
 ]

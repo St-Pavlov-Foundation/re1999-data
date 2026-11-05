@@ -2762,7 +2762,7 @@
   {
     "chapter": 24,
     "part": 35,
-    "title": "木桶宝座\n\n  ",
+    "title": "木桶宝座\\n\\n  ",
     "titleEn": "VIP Barrel Seat",
     "labelRes": "1",
     "storyBg": ""
@@ -5556,6 +5556,294 @@
     "part": 31,
     "title": "亲爱的伽琳涅",
     "titleEn": "Dear Galene",
+    "labelRes": "8",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 1,
+    "title": "第一发现人",
+    "titleEn": "The First Witness",
+    "labelRes": "1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 2,
+    "title": "鞋印的研究",
+    "titleEn": "A Study in Footprints",
+    "labelRes": "2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 3,
+    "title": "家庭教师的证词",
+    "titleEn": "The Governess's Statement",
+    "labelRes": "3",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 4,
+    "title": "壁炉的秘密",
+    "titleEn": "A Secret in the Fireplace",
+    "labelRes": "4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 5,
+    "title": "谁在那儿？",
+    "titleEn": "Who's There?",
+    "labelRes": "5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 6,
+    "title": "理念不和",
+    "titleEn": "A Matter of Philosophy",
+    "labelRes": "6",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 7,
+    "title": "运河边",
+    "titleEn": "Canalside Encounters",
+    "labelRes": "7",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 8,
+    "title": "意外线索",
+    "titleEn": "An Unexpected Clue",
+    "labelRes": "8",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 9,
+    "title": "河底两万里",
+    "titleEn": "Twenty Thousand Leagues Under",
+    "labelRes": "9",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 10,
+    "title": "夜间狩猎",
+    "titleEn": "The Midnight Hunter",
+    "labelRes": "10",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 11,
+    "title": "苏格兰场马拉松",
+    "titleEn": "The Scotland Yard Marathon",
+    "labelRes": "11",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 12,
+    "title": "雷蒙内尔的猎犬",
+    "titleEn": "The \"Hound\" of the Romenels",
+    "labelRes": "12",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 13,
+    "title": "遗嘱",
+    "titleEn": "The Will",
+    "labelRes": "13",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 14,
+    "title": "世俗义务",
+    "titleEn": "The Solicitor's Disclosure",
+    "labelRes": "14",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 15,
+    "title": "码头小分队",
+    "titleEn": "Dockside Detectives",
+    "labelRes": "15",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 16,
+    "title": "夜间对白",
+    "titleEn": "A Moonlit Confession",
+    "labelRes": "16",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 17,
+    "title": "黑森林童话",
+    "titleEn": "Fairy Tale of the Bloodstained Forest",
+    "labelRes": "17",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 18,
+    "title": "安乐椅",
+    "titleEn": "The Armchair Detective",
+    "labelRes": "18",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 19,
+    "title": "最后的推理",
+    "titleEn": "The Final Deduction",
+    "labelRes": "19",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 20,
+    "title": "“公主”复仇记",
+    "titleEn": "Revenge of the \"Princess\"",
+    "labelRes": "20",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 21,
+    "title": "说谎的童话",
+    "titleEn": "Tale of Wonders",
+    "labelRes": "1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 22,
+    "title": "狼和狐狸",
+    "titleEn": "The Wolf and the Fox",
+    "labelRes": "2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 23,
+    "title": "星星银元",
+    "titleEn": "The Star Money",
+    "labelRes": "3",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 24,
+    "title": "榛树枝",
+    "titleEn": "The Hazel Branch",
+    "labelRes": "4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 25,
+    "title": "一只眼、两只眼和三只眼",
+    "titleEn": "One-Eye, Two-Eyes, and Three-Eyes",
+    "labelRes": "5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 26,
+    "title": "玻璃棺材",
+    "titleEn": "The Glass Coffin",
+    "labelRes": "6",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 27,
+    "title": "猎人在天国里",
+    "titleEn": "The Hunter in Heaven",
+    "labelRes": "7",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 28,
+    "title": "金鸟的近旁",
+    "titleEn": "Nearness of the Golden Bird",
+    "labelRes": "8",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 29,
+    "title": "“那位读者”",
+    "titleEn": "\"The Reader\"",
+    "labelRes": "1",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 30,
+    "title": "牛眼糖",
+    "titleEn": "Bulls Eyes",
+    "labelRes": "2",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 31,
+    "title": "康菲糖",
+    "titleEn": "Comfits",
+    "labelRes": "3",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 32,
+    "title": "小老鼠与“老鼠王”",
+    "titleEn": "The Rats & The Big Cheese",
+    "labelRes": "4",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 33,
+    "title": "“多疑的伊芙琳”",
+    "titleEn": "\"Doubting Evelyn\"",
+    "labelRes": "5",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 34,
+    "title": "“那位先生”",
+    "titleEn": "\"The Man\"",
+    "labelRes": "6",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 35,
+    "title": "生日颂歌",
+    "titleEn": "Birthday Blessings",
+    "labelRes": "7",
+    "storyBg": ""
+  },
+  {
+    "chapter": 41,
+    "part": 36,
+    "title": "老朋友，新帽子",
+    "titleEn": "Old Friends, New Hats",
     "labelRes": "8",
     "storyBg": ""
   }

@@ -178,5 +178,185 @@
     "bonusIcon": 3504,
     "bonus": "2#3504#300",
     "keyReward": 0
+  },
+  {
+    "activityId": 14105,
+    "bonusId": 1410501,
+    "stageId": 1,
+    "star": 2,
+    "bonusIcon": 4103,
+    "bonus": "2#4103#300",
+    "keyReward": 0
+  },
+  {
+    "activityId": 14105,
+    "bonusId": 1410502,
+    "stageId": 1,
+    "star": 4,
+    "bonusIcon": 4103,
+    "bonus": "2#4103#360",
+    "keyReward": 0
+  },
+  {
+    "activityId": 14105,
+    "bonusId": 1410503,
+    "stageId": 1,
+    "star": 8,
+    "bonusIcon": 4103,
+    "bonus": "2#4103#400",
+    "keyReward": 0
+  },
+  {
+    "activityId": 14105,
+    "bonusId": 1410504,
+    "stageId": 1,
+    "star": 10,
+    "bonusIcon": 4103,
+    "bonus": "2#4103#300",
+    "keyReward": 0
+  },
+  {
+    "activityId": 14105,
+    "bonusId": 1410505,
+    "stageId": 1,
+    "star": 12,
+    "bonusIcon": 4103,
+    "bonus": "2#4103#200",
+    "keyReward": 0
+  },
+  {
+    "activityId": 14105,
+    "bonusId": 1410506,
+    "stageId": 2,
+    "star": 2,
+    "bonusIcon": 4103,
+    "bonus": "2#4103#300",
+    "keyReward": 0
+  },
+  {
+    "activityId": 14105,
+    "bonusId": 1410507,
+    "stageId": 2,
+    "star": 4,
+    "bonusIcon": 4103,
+    "bonus": "2#4103#350",
+    "keyReward": 0
+  },
+  {
+    "activityId": 14105,
+    "bonusId": 1410508,
+    "stageId": 2,
+    "star": 8,
+    "bonusIcon": 4103,
+    "bonus": "2#4103#400",
+    "keyReward": 0
+  },
+  {
+    "activityId": 14105,
+    "bonusId": 1410509,
+    "stageId": 2,
+    "star": 10,
+    "bonusIcon": 4103,
+    "bonus": "2#4103#300",
+    "keyReward": 0
+  },
+  {
+    "activityId": 14105,
+    "bonusId": 1410510,
+    "stageId": 2,
+    "star": 12,
+    "bonusIcon": 4103,
+    "bonus": "2#4103#200",
+    "keyReward": 0
+  },
+  {
+    "activityId": 14105,
+    "bonusId": 1410511,
+    "stageId": 3,
+    "star": 2,
+    "bonusIcon": 4103,
+    "bonus": "2#4103#300",
+    "keyReward": 0
+  },
+  {
+    "activityId": 14105,
+    "bonusId": 1410512,
+    "stageId": 3,
+    "star": 4,
+    "bonusIcon": 4103,
+    "bonus": "2#4103#350",
+    "keyReward": 0
+  },
+  {
+    "activityId": 14105,
+    "bonusId": 1410513,
+    "stageId": 3,
+    "star": 8,
+    "bonusIcon": 4103,
+    "bonus": "2#4103#400",
+    "keyReward": 0
+  },
+  {
+    "activityId": 14105,
+    "bonusId": 1410514,
+    "stageId": 3,
+    "star": 10,
+    "bonusIcon": 4103,
+    "bonus": "2#4103#300",
+    "keyReward": 0
+  },
+  {
+    "activityId": 14105,
+    "bonusId": 1410515,
+    "stageId": 3,
+    "star": 12,
+    "bonusIcon": 4103,
+    "bonus": "2#4103#200",
+    "keyReward": 0
+  },
+  {
+    "activityId": 14105,
+    "bonusId": 1410516,
+    "stageId": 4,
+    "star": 2,
+    "bonusIcon": 4103,
+    "bonus": "2#4103#300",
+    "keyReward": 0
+  },
+  {
+    "activityId": 14105,
+    "bonusId": 1410517,
+    "stageId": 4,
+    "star": 4,
+    "bonusIcon": 4103,
+    "bonus": "2#4103#350",
+    "keyReward": 0
+  },
+  {
+    "activityId": 14105,
+    "bonusId": 1410518,
+    "stageId": 4,
+    "star": 8,
+    "bonusIcon": 4103,
+    "bonus": "2#4103#400",
+    "keyReward": 0
+  },
+  {
+    "activityId": 14105,
+    "bonusId": 1410519,
+    "stageId": 4,
+    "star": 10,
+    "bonusIcon": 4103,
+    "bonus": "2#4103#300",
+    "keyReward": 0
+  },
+  {
+    "activityId": 14105,
+    "bonusId": 1410520,
+    "stageId": 4,
+    "star": 12,
+    "bonusIcon": 4103,
+    "bonus": "2#4103#200",
+    "keyReward": 0
   }
 ]

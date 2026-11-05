@@ -1,0 +1,119 @@
+[
+  {
+    "id": 4140001,
+    "title": "海浪祝歌",
+    "desc": "最大生命+4",
+    "popupImage": "v3a7_m_s12_xx4_5x6_002",
+    "imgOffset": [
+      0,
+      0
+    ],
+    "needSkillId": 0,
+    "ruleIds": "4140001",
+    "skillIds": ""
+  },
+  {
+    "id": 4140002,
+    "title": "闪烁节奏",
+    "desc": "暴击率+15%",
+    "popupImage": "v3a3_m_s12_xx4_5x6_003",
+    "imgOffset": [
+      0,
+      0
+    ],
+    "needSkillId": 0,
+    "ruleIds": "4140002",
+    "skillIds": ""
+  },
+  {
+    "id": 4140003,
+    "title": "地脉门扉",
+    "desc": "伤害+6",
+    "popupImage": "v4a1_m_s12_xx4_5x6_008",
+    "imgOffset": [
+      0,
+      0
+    ],
+    "needSkillId": 0,
+    "ruleIds": "4140003",
+    "skillIds": ""
+  },
+  {
+    "id": 4140004,
+    "title": "热浪惊喜",
+    "desc": "关卡中会生成炸药桶，摧毁后对附近怪物造成伤害。",
+    "popupImage": "v3a3_m_s12_xx4_5x6_002",
+    "imgOffset": [
+      0,
+      0
+    ],
+    "needSkillId": 0,
+    "ruleIds": "",
+    "skillIds": "4100004"
+  },
+  {
+    "id": 4140005,
+    "title": "血源补给",
+    "desc": "关卡中会额外生成医疗箱，摧毁后恢复生命。",
+    "popupImage": "v4a1_m_s12_xx4_5x6_010",
+    "imgOffset": [
+      0,
+      0
+    ],
+    "needSkillId": 0,
+    "ruleIds": "",
+    "skillIds": "4100005"
+  },
+  {
+    "id": 4140006,
+    "title": "矮人的收藏",
+    "desc": "关卡中会生成宝箱，摧毁后获得金币。",
+    "popupImage": "v4a1_m_s12_xx4_5x6_002",
+    "imgOffset": [
+      0,
+      67
+    ],
+    "needSkillId": 0,
+    "ruleIds": "",
+    "skillIds": "4100006"
+  },
+  {
+    "id": 4140007,
+    "title": "真理泉眼",
+    "desc": "关卡中会生成温泉，站在温泉内概率回复生命。",
+    "popupImage": "v4a1_m_s12_xx4_5x6_001",
+    "imgOffset": [
+      0,
+      0
+    ],
+    "needSkillId": 0,
+    "ruleIds": "",
+    "skillIds": "4100007"
+  },
+  {
+    "id": 4140008,
+    "title": "游侠的委托",
+    "desc": "关卡中生成更多怪物。",
+    "popupImage": "v4a1_m_s12_xx4_5x6_003",
+    "imgOffset": [
+      0,
+      0
+    ],
+    "needSkillId": 0,
+    "ruleIds": "4140008",
+    "skillIds": ""
+  },
+  {
+    "id": 4140009,
+    "title": "大地的呼唤",
+    "desc": "关卡中会随机落下闪电，对怪物造成伤害。",
+    "popupImage": "v3a7_m_s12_xx4_5x6_001",
+    "imgOffset": [
+      0,
+      0
+    ],
+    "needSkillId": 0,
+    "ruleIds": "",
+    "skillIds": "4100009"
+  }
+]

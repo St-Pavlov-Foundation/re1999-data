@@ -4198,5 +4198,53 @@
     "triggerAudio": 0,
     "delAudio": 0,
     "audio": 431050452
+  },
+  {
+    "buffId": 310701314,
+    "orEnemy": 2,
+    "skinId": 310703,
+    "effectHang": "",
+    "effectPath": "buff/pre_v2a8_welx_pf_channel_idle",
+    "triggerEffect": "",
+    "delEffect": "",
+    "triggerAudio": 0,
+    "delAudio": 0,
+    "audio": 0
+  },
+  {
+    "buffId": 310701324,
+    "orEnemy": 2,
+    "skinId": 310703,
+    "effectHang": "",
+    "effectPath": "buff/pre_v2a8_welx_pf_channel_idle",
+    "triggerEffect": "",
+    "delEffect": "",
+    "triggerAudio": 0,
+    "delAudio": 0,
+    "audio": 0
+  },
+  {
+    "buffId": 310701334,
+    "orEnemy": 2,
+    "skinId": 310703,
+    "effectHang": "",
+    "effectPath": "buff/pre_v2a8_welx_pf_channel_idle",
+    "triggerEffect": "",
+    "delEffect": "",
+    "triggerAudio": 0,
+    "delAudio": 0,
+    "audio": 0
+  },
+  {
+    "buffId": 310701344,
+    "orEnemy": 2,
+    "skinId": 310703,
+    "effectHang": "",
+    "effectPath": "buff/pre_v2a8_welx_pf_channel_idle",
+    "triggerEffect": "",
+    "delEffect": "",
+    "triggerAudio": 0,
+    "delAudio": 0,
+    "audio": 0
   }
 ]

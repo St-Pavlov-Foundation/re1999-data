@@ -10,7 +10,7 @@
     "audioId": 0,
     "text": "叽叽叽——咕咕……叽！！！",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -24,7 +24,7 @@
     "audioId": 0,
     "text": "……它生气了。",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -38,7 +38,7 @@
     "audioId": 0,
     "text": "司辰的愿望是什么呢？",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -52,7 +52,7 @@
     "audioId": 0,
     "text": "如果先遇到老爷这片瓦砾……",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -66,7 +66,7 @@
     "audioId": 0,
     "text": "卡森先生……去哪里了？",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -80,7 +80,7 @@
     "audioId": 0,
     "text": "魔精会说这么多话吗……？",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -94,7 +94,7 @@
     "audioId": 0,
     "text": "呱……呱呱……",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -108,7 +108,7 @@
     "audioId": 0,
     "text": "一只青蛙？这样大的……青蛙？",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -122,7 +122,7 @@
     "audioId": 0,
     "text": "摆脱疲倦，合上窗户，掐灭歌声……",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -136,7 +136,7 @@
     "audioId": 0,
     "text": "我得代替你的护工履行职责了。",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -150,7 +150,7 @@
     "audioId": 0,
     "text": "虽然数量很多，但掌握方法之后就很好应对了。",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -164,7 +164,7 @@
     "audioId": 0,
     "text": "把羊毛毡铺到前面……",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -178,7 +178,7 @@
     "audioId": 0,
     "text": "你们就暂时待在角落里吧。",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -192,7 +192,7 @@
     "audioId": 0,
     "text": "老鼠们似乎在路上找到了帮手。",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -206,7 +206,7 @@
     "audioId": 0,
     "text": "它们的帮手可真奇怪……",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -220,7 +220,7 @@
     "audioId": 0,
     "text": "没关系，看我的！",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -234,7 +234,7 @@
     "audioId": 0,
     "text": "嘿，这儿还有些小贼。",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -248,7 +248,7 @@
     "audioId": 0,
     "text": "一并解决掉。",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -262,7 +262,7 @@
     "audioId": 0,
     "text": "它们怎么会在这儿？",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -276,7 +276,7 @@
     "audioId": 0,
     "text": "或许是趁之前的骚动溜进来的。",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -290,7 +290,7 @@
     "audioId": 0,
     "text": "我要拿到这册笔记。",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -304,7 +304,7 @@
     "audioId": 0,
     "text": "这、这些东西好可怕！",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -318,7 +318,7 @@
     "audioId": 0,
     "text": "不要分散，注意应对！",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -332,7 +332,7 @@
     "audioId": 0,
     "text": "它们应该在这儿吗……？",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -346,7 +346,7 @@
     "audioId": 0,
     "text": "请镇静下来。",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -360,7 +360,7 @@
     "audioId": 0,
     "text": "安静…….安静！把那些白色……拿开！",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -374,7 +374,7 @@
     "audioId": 0,
     "text": "……人工梦游引导，准备就绪。",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -388,7 +388,7 @@
     "audioId": 0,
     "text": "予友人以庇护，而将不善者拒之门外。林木向来如此。",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -430,7 +430,7 @@
     "audioId": 610009147,
     "text": "对了，我还有好多故事，我们能够玩得很开心……",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -444,7 +444,7 @@
     "audioId": 610009148,
     "text": "湖边的故事，藏在营地里的猎人………你不是非常、非常喜欢它吗，珍妮弗？",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -472,7 +472,7 @@
     "audioId": 610009150,
     "text": "烂……俗……？",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -486,7 +486,7 @@
     "audioId": 610009151,
     "text": "什么，是……烂俗？",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -500,7 +500,7 @@
     "audioId": 610009152,
     "text": "鉴于你手中拿着刀……我还是别和你详细解释了。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -528,7 +528,7 @@
     "audioId": 610009154,
     "text": "这是，我们的第一个故事……为什么？你不再喜欢它了吗？",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -542,7 +542,7 @@
     "audioId": 610009155,
     "text": "故事是不会离开的，洁西卡。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -556,7 +556,7 @@
     "audioId": 610009156,
     "text": "别再继续战斗了，这对我们都没有好处的，听我说——",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -570,7 +570,7 @@
     "audioId": 610009157,
     "text": "……",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -584,7 +584,7 @@
     "audioId": 610009158,
     "text": "我会想出更多游戏，更多故事。我们会一直、一直快活地生活下去……",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -612,7 +612,7 @@
     "audioId": 610009160,
     "text": "留神，她还没彻底倒下。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -626,7 +626,7 @@
     "audioId": 610009161,
     "text": "你在担心我，珍妮弗……你就和故事里的女主角一样好……",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -640,7 +640,7 @@
     "audioId": 610009162,
     "text": "我记得那个最善良、最美的女主角，她是我们的第十三个故事。",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -654,7 +654,7 @@
     "audioId": 610009163,
     "text": "“小小新娘，血染白纱。她的故事，刚刚出发……”",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -682,7 +682,7 @@
     "audioId": 610009165,
     "text": "一颗纯白的珍珠，就像牙齿。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -696,7 +696,7 @@
     "audioId": 610009166,
     "text": "多可惜啊，她已经如此腐朽……",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -724,7 +724,7 @@
     "audioId": 610009168,
     "text": "……我会给你们，我能给的一切的。",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -738,7 +738,7 @@
     "audioId": 610009169,
     "text": "小按钮、甜蜜的果子、苔藓床与露水杯……",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -766,7 +766,7 @@
     "audioId": 610009171,
     "text": "留下来。",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -780,7 +780,7 @@
     "audioId": 610009172,
     "text": "留……下来……！",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -794,7 +794,7 @@
     "audioId": 610009173,
     "text": "我敢打赌，这个打喷嚏造型的魔精标本落了一百年的灰。真恶心，简直就像……",
     "tipsDir": 2,
-    "delay": 3.0,
+    "delay": 3,
     "type": 0
   },
   {
@@ -1270,7 +1270,7 @@
     "audioId": 6206103,
     "text": "他们的车撞上了什么东西——然后，爆炸……了？",
     "tipsDir": 2,
-    "delay": 3.0,
+    "delay": 3,
     "type": 0
   },
   {
@@ -1326,7 +1326,7 @@
     "audioId": 610007420,
     "text": "……它们带来了坏影响。",
     "tipsDir": 2,
-    "delay": 1.0,
+    "delay": 1,
     "type": 0
   },
   {
@@ -1396,7 +1396,7 @@
     "audioId": 6202307,
     "text": "它……复活了？",
     "tipsDir": 2,
-    "delay": 1.0,
+    "delay": 1,
     "type": 0
   },
   {
@@ -1480,7 +1480,7 @@
     "audioId": 610007582,
     "text": "你们受伤了。",
     "tipsDir": 2,
-    "delay": 1.0,
+    "delay": 1,
     "type": 0
   },
   {
@@ -1522,7 +1522,7 @@
     "audioId": 0,
     "text": "那条白白的被单呢? 她去哪儿了?",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -1536,7 +1536,7 @@
     "audioId": 0,
     "text": "阿……阿嚏!好冷……",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -1550,7 +1550,7 @@
     "audioId": 0,
     "text": "浑身都湿透了，还是先回去擦一擦吧!",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -1578,7 +1578,7 @@
     "audioId": 610010761,
     "text": "哦，瞧前面！那儿有好几个路牌！我们……该选择哪个方向哇？夏尔贾女士？",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -1592,7 +1592,7 @@
     "audioId": 610010775,
     "text": "嘿——后面那声音听起来像那些滚下山坡的大石头——那些家伙离我们不远了！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -1606,7 +1606,7 @@
     "audioId": 610010810,
     "text": "啊哈！交给我，油门踩到底——！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -1620,7 +1620,7 @@
     "audioId": 610010762,
     "text": "哇啊啊！往前、往前走吧！我的直觉——玛蒂尔达的直觉还没出错过——",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -1648,7 +1648,7 @@
     "audioId": 610010777,
     "text": "我想我们选择的方向……嗯——出了点问题……？",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -1662,7 +1662,7 @@
     "audioId": 610010811,
     "text": "喂，可别想怪在我头上！那可是个精彩的——左！急！转！弯——！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -1676,7 +1676,7 @@
     "audioId": 610010763,
     "text": "咳咳——！真不敢相信，我现在竟然已经习惯这个速度了……",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -1690,7 +1690,7 @@
     "audioId": 610010820,
     "text": "当心！坎吉拉，前面……",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -1704,7 +1704,7 @@
     "audioId": 610010764,
     "text": "他们挡在前面了——愿和平与我们同在！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -1732,7 +1732,7 @@
     "audioId": 610010778,
     "text": "哦吼！小姑娘，别小瞧这些腿……动物们的潜力可不能小觑——！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -1746,7 +1746,7 @@
     "audioId": 610010765,
     "text": "……动物？！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -1760,7 +1760,7 @@
     "audioId": 610010779,
     "text": "诶呀，别管那么多啦！对付腿多的东西我在行！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -1774,7 +1774,7 @@
     "audioId": 610010813,
     "text": "呜哇——大叔你动作小点……你块头太大啦！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -1802,7 +1802,7 @@
     "audioId": 610010767,
     "text": "呼，呼……这和实战演练课上教的东西也差得太远了。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -1816,7 +1816,7 @@
     "audioId": 610010822,
     "text": "我们绕了些远路……不过没关系，过了这个街口就能回到之前的地方了！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -1844,7 +1844,7 @@
     "audioId": 610010767,
     "text": "呼，呼……这和实战演练课上教的东西也差得太远了。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -1858,7 +1858,7 @@
     "audioId": 610010822,
     "text": "我们绕了些远路……不过没关系，过了这个街口就能回到之前的地方了！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -1886,7 +1886,7 @@
     "audioId": 610010824,
     "text": "可是……",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -1900,7 +1900,7 @@
     "audioId": 610010780,
     "text": "呜呼——！小时候我还没想过，有一天能在街上跑得这样快！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -1914,7 +1914,7 @@
     "audioId": 610010815,
     "text": "扶好了，伙计们！接下来我们要摇晃起来咯～！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -1928,7 +1928,7 @@
     "audioId": 610010816,
     "text": "呕……前面这些黑乎乎的家伙——还很吵！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -1942,7 +1942,7 @@
     "audioId": 610010817,
     "text": "……我能直接撞飞他们吗？",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -1956,7 +1956,7 @@
     "audioId": 610010768,
     "text": "什么？！当然不能！车子可抵挡不住他们的神秘术。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -1970,7 +1970,7 @@
     "audioId": 610010783,
     "text": "唔，看来无论如何都绕不过他们了。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -1984,7 +1984,7 @@
     "audioId": 610010784,
     "text": "但愿这是最后的麻烦——时间不等人！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2012,7 +2012,7 @@
     "audioId": 610010818,
     "text": "哼，油门都变沉了……",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2026,7 +2026,7 @@
     "audioId": 610010785,
     "text": "哦，卡塔尔叔叔，您是不是感觉有点挤？我只能看到您的头巾啦。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2040,7 +2040,7 @@
     "audioId": 610010786,
     "text": "很可惜得委屈您一下了，毕竟您是最早上车的……",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2054,7 +2054,7 @@
     "audioId": 610010787,
     "text": "别担心，相信小姑娘的技术，我们马上就能回去啦。尽管可能不会太稳——但——很快！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2082,7 +2082,7 @@
     "audioId": 610010818,
     "text": "哼，油门都变沉了……",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2096,7 +2096,7 @@
     "audioId": 610010785,
     "text": "哦，卡塔尔叔叔，您是不是感觉有点挤？我只能看到您的头巾啦。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2110,7 +2110,7 @@
     "audioId": 610010786,
     "text": "很可惜得委屈您一下了，毕竟您是最早上车的……",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2124,7 +2124,7 @@
     "audioId": 610010787,
     "text": "别担心，相信小姑娘的技术，我们马上就能回去啦。尽管可能不会太稳——但——很快！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2152,7 +2152,7 @@
     "audioId": 610010818,
     "text": "哼，油门都变沉了……",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2166,7 +2166,7 @@
     "audioId": 610010785,
     "text": "哦，卡塔尔叔叔，您是不是感觉有点挤？我只能看到您的头巾啦。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2180,7 +2180,7 @@
     "audioId": 610010786,
     "text": "很可惜得委屈您一下了，毕竟您是最早上车的……",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2194,7 +2194,7 @@
     "audioId": 610010787,
     "text": "别担心，相信小姑娘的技术，我们马上就能回去啦。尽管可能不会太稳——但——很快！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2222,7 +2222,7 @@
     "audioId": 610010769,
     "text": "这小子……喂！快停下，跑那么快当心撞到自己！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2236,7 +2236,7 @@
     "audioId": 610010770,
     "text": "他怎么在绕着跑？让我瞧瞧……",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2250,7 +2250,7 @@
     "audioId": 610010771,
     "text": "啊哈……原来如此～！真是脑筋灵活的小家伙，还提前规划了路线。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2264,7 +2264,7 @@
     "audioId": 610010772,
     "text": "那么——是左边！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2292,7 +2292,7 @@
     "audioId": 610010758,
     "text": "哼，你早该这样！交出……",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2306,7 +2306,7 @@
     "audioId": 610010789,
     "text": "——才怪嘞！",
     "tipsDir": 1,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2320,7 +2320,7 @@
     "audioId": 610010759,
     "text": "哇——！ 你这坏家伙！！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2348,7 +2348,7 @@
     "audioId": 610010760,
     "text": "玛蒂尔达不会再次上你的当了！不许溜！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2362,7 +2362,7 @@
     "audioId": 610010791,
     "text": "该死，往回跑！从后面的小路离开！",
     "tipsDir": 1,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2390,7 +2390,7 @@
     "audioId": 610010774,
     "text": "况且，警察局也不算什么坏地方……",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2404,7 +2404,7 @@
     "audioId": 610010792,
     "text": "唔……！我绝对、绝对不会去！",
     "tipsDir": 1,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2432,7 +2432,7 @@
     "audioId": 610010793,
     "text": "唔……十二岁的我又瘦又小，但拳头却毫不犹豫——是吧？",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2446,7 +2446,7 @@
     "audioId": 610010794,
     "text": "但……为什么是你来阻止我？",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2460,7 +2460,7 @@
     "audioId": 0,
     "text": "……",
     "tipsDir": 1,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2474,7 +2474,7 @@
     "audioId": 610010795,
     "text": "唔，好吧，交流意愿过低的毛病……即便是现在的我也仍未完全改正。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2488,7 +2488,7 @@
     "audioId": 610010796,
     "text": "那便开始吧。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2516,7 +2516,7 @@
     "audioId": 610010806,
     "text": "所以，你们找到星星的坟墓了吗？",
     "tipsDir": 1,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2530,7 +2530,7 @@
     "audioId": 610010797,
     "text": "我们？你在说……谁？",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2544,7 +2544,7 @@
     "audioId": 610010798,
     "text": "——是库玛尔？",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2572,7 +2572,7 @@
     "audioId": 610010799,
     "text": "呼……呼……啊，你又变得沉默了。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2586,7 +2586,7 @@
     "audioId": 610010800,
     "text": "……冥想是与心对话的过程，但我从未想过是以这样粗糙的形式。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2600,7 +2600,7 @@
     "audioId": 610010801,
     "text": "……接下来的是？",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2614,7 +2614,7 @@
     "audioId": 610010808,
     "text": "还是我，也是你。十六岁，你被坐在后面的坏孩子剪烂了头发。",
     "tipsDir": 1,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2628,7 +2628,7 @@
     "audioId": 610010802,
     "text": "……",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2642,7 +2642,7 @@
     "audioId": 610010809,
     "text": "去吧，伽菈波那。",
     "tipsDir": 1,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2670,7 +2670,7 @@
     "audioId": 610010637,
     "text": "……！计都与罗睺……库玛尔，你……",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2684,7 +2684,7 @@
     "audioId": 610010611,
     "text": "凶星亦可扭转命运。",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2698,7 +2698,7 @@
     "audioId": 610010638,
     "text": "……",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2712,7 +2712,7 @@
     "audioId": 610010639,
     "text": "要么速战速决，要么……拖下去。观测将使这片幻境塌缩——我相信玛蒂尔达。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2726,7 +2726,7 @@
     "audioId": 610010644,
     "text": "等等，她好像也在等待什么——她在积蓄一股力量！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2740,7 +2740,7 @@
     "audioId": 610010640,
     "text": "唔……她身上的那些符号……",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2754,7 +2754,7 @@
     "audioId": 610010612,
     "text": "孩子。当星云湮灭，没有一双眼睛能幸存。",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2768,7 +2768,7 @@
     "audioId": 610010641,
     "text": "……你该记得，我们的观测不应只用双眸。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2866,7 +2866,7 @@
     "audioId": 610010623,
     "text": "我只想见到那颗星体，你为什么还要阻拦我呢？为什么……啊！！",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2880,7 +2880,7 @@
     "audioId": 610010642,
     "text": "唔……！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2894,7 +2894,7 @@
     "audioId": 610010646,
     "text": "……",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -2908,7 +2908,7 @@
     "audioId": 610010624,
     "text": "身份造假……我们本不需要浪费这些时间，不是吗？",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -4868,7 +4868,7 @@
     "audioId": 0,
     "text": "呃！对不起……",
     "tipsDir": 1,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -4896,7 +4896,7 @@
     "audioId": 0,
     "text": "它未能捕住我，如今已消散无形。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -4924,7 +4924,7 @@
     "audioId": 0,
     "text": "你好，太阳系的蓝星。",
     "tipsDir": 1,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -4966,7 +4966,7 @@
     "audioId": 0,
     "text": "再见……爱丽……",
     "tipsDir": 1,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -5008,7 +5008,7 @@
     "audioId": 0,
     "text": "再见……爱丽……",
     "tipsDir": 1,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -5050,7 +5050,7 @@
     "audioId": 0,
     "text": "再见……爱丽……",
     "tipsDir": 1,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -5120,7 +5120,7 @@
     "audioId": 0,
     "text": "该是结束的时候了。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -5148,7 +5148,7 @@
     "audioId": 0,
     "text": "该是结束的时候了。",
     "tipsDir": 1,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -5162,7 +5162,7 @@
     "audioId": 0,
     "text": "原来如此，一切都是虚假的……吗？",
     "tipsDir": 1,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -5190,7 +5190,7 @@
     "audioId": 0,
     "text": "呃！对不起……",
     "tipsDir": 1,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -5232,7 +5232,7 @@
     "audioId": 0,
     "text": "现在，我们可以不受干扰地继续前进了。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7514,7 +7514,7 @@
     "audioId": 7101801,
     "text": "该死的——这号大家伙看起来也太雄伟了……",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7528,7 +7528,7 @@
     "audioId": 7101802,
     "text": "天呐——这些小怪物们又是从哪儿冒出来的？！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7542,7 +7542,7 @@
     "audioId": 7101803,
     "text": "地脉能量凝成实体后，在周围生物的眼里，它几乎是唾爪可得的大餐……没有魔精能够拒绝类似的诱惑。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7556,7 +7556,7 @@
     "audioId": 7101804,
     "text": "奇肯恩跳舞，伊吉拉格歌唱，基基图克用哈出的冷气画画……它们也过“铁帽子节”吗？",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7570,7 +7570,7 @@
     "audioId": 7101805,
     "text": "它们没什么可怕的！咱们有人，有武器，有绝不放弃的意志——",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7584,7 +7584,7 @@
     "audioId": 7101806,
     "text": "同志们，我们一定能取得最终的胜利。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7598,7 +7598,7 @@
     "audioId": 7101807,
     "text": "咱们成功了……？！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7612,7 +7612,7 @@
     "audioId": 7101808,
     "text": "好样的，大伙们！我就知道咱们一定能成！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7626,7 +7626,7 @@
     "audioId": 7101809,
     "text": "——！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7640,7 +7640,7 @@
     "audioId": 7101810,
     "text": "不，不太对。北方哨歌同志，你也感受到了么？",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7654,7 +7654,7 @@
     "audioId": 7101811,
     "text": "糟糕，地脉能量意识到了周边的威胁，它更活跃了。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7668,7 +7668,7 @@
     "audioId": 7101812,
     "text": "为了净化周边的区域，它会培植某些“颇具潜力”的魔精亲信，利用它们来清理污染，或是驱赶威胁……它们会源源不断地出现……",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7682,7 +7682,7 @@
     "audioId": 7101813,
     "text": "咱们……能战胜它吗？",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7696,7 +7696,7 @@
     "audioId": 7101814,
     "text": "维索茨基同志，别慌张，往四周瞧瞧，咱们可都在你身边哩！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7710,7 +7710,7 @@
     "audioId": 7101815,
     "text": "冷静，冷静，好好想想，地脉能量一定存在弱点……我……我能做到……",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7724,7 +7724,7 @@
     "audioId": 7101816,
     "text": "呵呵……不，北方哨歌同志。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7738,7 +7738,7 @@
     "audioId": 7101817,
     "text": "是我们一定能做到！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7752,7 +7752,7 @@
     "audioId": 7101818,
     "text": "唔——！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7766,7 +7766,7 @@
     "audioId": 7101819,
     "text": "医疗队，把负伤的同志抬下去，动作快！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7780,7 +7780,7 @@
     "audioId": 7101820,
     "text": "不，只是点小伤，我还能坚持……",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7794,7 +7794,7 @@
     "audioId": 7101821,
     "text": "许多同志们都愿意冲上最前线，请你们相信，没有任何一位同志在孤军奋战，别勉强自己——",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7808,7 +7808,7 @@
     "audioId": 7101822,
     "text": "负伤的同志往后撤，第三队的同志们上前来，注意互相掩护。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7822,7 +7822,7 @@
     "audioId": 7101823,
     "text": "维拉同志说得对，咱们可不希望有哪位好同志受伤——喝不了庆功酒的话，那你就只能自个儿叫苦啦！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7836,7 +7836,7 @@
     "audioId": 7101824,
     "text": "明白……！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7850,7 +7850,7 @@
     "audioId": 7101825,
     "text": "我、我们……做到了！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7864,7 +7864,7 @@
     "audioId": 7101826,
     "text": "干得好，伙计们，咱们做到了，这可是能吹嘘好几十年的壮举！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7878,7 +7878,7 @@
     "audioId": 7101827,
     "text": "真让人意想不到，尤里同志，我都多久没看到你这股劲头啦～",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7892,7 +7892,7 @@
     "audioId": 7101828,
     "text": "哈哈～淬炼厂锻炼的可不只是那些矿石，还有咱们结实的身子！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7906,7 +7906,7 @@
     "audioId": 7101829,
     "text": "确认伤员，检查剩余物资，三人一队，防止魔精们再次冲击防线。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7920,7 +7920,7 @@
     "audioId": 7101830,
     "text": "……谢谢你们，同志们。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7934,7 +7934,7 @@
     "audioId": 7101831,
     "text": "这场胜利属于我们每一个人。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7948,7 +7948,7 @@
     "audioId": 0,
     "text": "头儿！他们穿着咱们的衣服！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7962,7 +7962,7 @@
     "audioId": 0,
     "text": "怎么回事？",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7976,7 +7976,7 @@
     "audioId": 0,
     "text": "别废话，干掉他们再说！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -7990,7 +7990,7 @@
     "audioId": 0,
     "text": "伙计们，战斗位置！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -8004,7 +8004,7 @@
     "audioId": 0,
     "text": "头儿，我们有人受伤了！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -8018,7 +8018,7 @@
     "audioId": 0,
     "text": "他们火力很强，这样下去的话……",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -8032,7 +8032,7 @@
     "audioId": 0,
     "text": "你们这就认怂了吗？",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -8046,7 +8046,7 @@
     "audioId": 0,
     "text": "掩护受伤的弟兄，把他们带走！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -8060,7 +8060,7 @@
     "audioId": 0,
     "text": "敌人太多了，别在这里跟他们纠缠！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -8074,7 +8074,7 @@
     "audioId": 0,
     "text": "阿历克塞、红弩箭，你俩撤退，去开路！前面有个村子！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -8088,7 +8088,7 @@
     "audioId": 0,
     "text": "哈桑，你留下跟我断后！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -8102,7 +8102,7 @@
     "audioId": 0,
     "text": "好嘞！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -8116,7 +8116,7 @@
     "audioId": 0,
     "text": "见了个鬼了！我就说信不得他们！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -8130,7 +8130,7 @@
     "audioId": 0,
     "text": "为什么……她……",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -8144,7 +8144,7 @@
     "audioId": 0,
     "text": "别**发呆了，开枪，伙计！开枪！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -8158,7 +8158,7 @@
     "audioId": 0,
     "text": "啊！该死——",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -8172,7 +8172,7 @@
     "audioId": 0,
     "text": "哈桑，你的腿！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -8186,7 +8186,7 @@
     "audioId": 0,
     "text": "这下该结束了。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -8200,7 +8200,7 @@
     "audioId": 0,
     "text": "给倒地的脑袋上都补一枪！",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -8214,7 +8214,7 @@
     "audioId": 0,
     "text": "他说得对，动手，阿辽沙。",
     "tipsDir": 2,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -10188,7 +10188,7 @@
     "audioId": 0,
     "text": "你不相信命运？是啊，一朵漂亮的花儿，怎么会愿意接受将至的枯萎？",
     "tipsDir": 0,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -21372,7 +21372,7 @@
     "random": "",
     "icon": "635112",
     "audioId": 0,
-    "text": "一个还未公开的神秘发明——“战争机器”！\n还差几枚小小的齿轮就能完成组装，齿轮虽小，却最关键。",
+    "text": "一个还未公开的神秘发明——“战争机器”！\\n还差几枚小小的齿轮就能完成组装，齿轮虽小，却最关键。",
     "tipsDir": 1,
     "delay": 0.3,
     "type": 0
@@ -23334,7 +23334,7 @@
     "audioId": 0,
     "text": "或许是对这场闹剧失去了兴趣。",
     "tipsDir": 1,
-    "delay": 0.0,
+    "delay": 0,
     "type": 0
   },
   {
@@ -30419,6 +30419,720 @@
     "text": "拿好你的剑，湖上骑士！我们的决斗还远未结束！",
     "tipsDir": 2,
     "delay": 0.3,
+    "type": 0
+  },
+  {
+    "code": 119411030,
+    "id": 941010001,
+    "param": "4#1",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "6804061",
+    "audioId": 924100001,
+    "text": "我才不会还你线索！伊芙琳，这都是为了你好，我的直觉告诉我，凶手就是……！",
+    "tipsDir": 1,
+    "delay": 0.3,
+    "type": 0
+  },
+  {
+    "code": 119411030,
+    "id": 941010002,
+    "param": "4#1",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "316011",
+    "audioId": 924100002,
+    "text": "停——停停，不需要你来告诉我答案。",
+    "tipsDir": 2,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411030,
+    "id": 941010003,
+    "param": "4#1",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "6804061",
+    "audioId": 924100003,
+    "text": "距离真相只有一步之遥，何苦要为难自己？你都已经站不稳了——哦，痛！",
+    "tipsDir": 1,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411030,
+    "id": 941010004,
+    "param": "4#1",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "316011",
+    "audioId": 924100004,
+    "text": "自大狂，别想搅乱——我的思路！",
+    "tipsDir": 2,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411030,
+    "id": 941010005,
+    "param": "36#119411030",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "316011",
+    "audioId": 924100005,
+    "text": "别跑，小偷，把东西交出来！",
+    "tipsDir": 2,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411030,
+    "id": 941010006,
+    "param": "36#119411030",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "6804061",
+    "audioId": 924100006,
+    "text": "你这家伙打起架来和你的脑子一样疯癫，你都不知道疼的吗？……别打我的头！",
+    "tipsDir": 1,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411030,
+    "id": 941010007,
+    "param": "36#119411030",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "316011",
+    "audioId": 924100007,
+    "text": "你的——头？哈，我的头！别自以为是地评价我的头！",
+    "tipsDir": 2,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411040,
+    "id": 941010008,
+    "param": "4#1",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "316022",
+    "audioId": 924100008,
+    "text": "哦……？！小姐，请小心——！嘿，别翻我的口袋！",
+    "tipsDir": 2,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411040,
+    "id": 941010009,
+    "param": "4#1",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "315910",
+    "audioId": 924100009,
+    "text": "别担心，先生。请退后，保护好自己。",
+    "tipsDir": 2,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411040,
+    "id": 941010010,
+    "param": "36#119411040",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "316022",
+    "audioId": 924100010,
+    "text": "真感谢您，小姐，但愿没弄脏您的裙子，您看着不像是会出现在这里的……",
+    "tipsDir": 2,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411040,
+    "id": 941010011,
+    "param": "36#119411040",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "315911",
+    "audioId": 924100011,
+    "text": "没什么，这些小家伙平常不会这样，你有没有受伤？",
+    "tipsDir": 2,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411050,
+    "id": 941010012,
+    "param": "4#1",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "657401",
+    "audioId": 924100012,
+    "text": "你、你是怎么从河水里出来的？！别挡我的路！滚开！",
+    "tipsDir": 1,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411050,
+    "id": 941010013,
+    "param": "4#1",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "316013",
+    "audioId": 924100013,
+    "text": "要么你换一个看法——我不是来抓你的，而是来给你一个机会自证清白的，这样会好受点吗？",
+    "tipsDir": 2,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411050,
+    "id": 941010014,
+    "param": "4#1",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "657401",
+    "audioId": 924100014,
+    "text": "疯女人，想骗我，门儿都没有——我什么都没做！",
+    "tipsDir": 1,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411050,
+    "id": 941010015,
+    "param": "4#1",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "316013",
+    "audioId": 924100015,
+    "text": "至少现在不是“什么都没做”——嘿，逃跑究竟对谁有好处？配合些吧先生，别给大家添麻烦呀！",
+    "tipsDir": 2,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411050,
+    "id": 941010016,
+    "param": "36#119411050",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "657401",
+    "audioId": 924100016,
+    "text": "走开！",
+    "tipsDir": 1,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411050,
+    "id": 941010017,
+    "param": "36#119411050",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "316011",
+    "audioId": 924100017,
+    "text": "花招真多，好吧先生，过几条街再见！",
+    "tipsDir": 2,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411060,
+    "id": 941010018,
+    "param": "4#1",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "656117",
+    "audioId": 924100018,
+    "text": "这些文件一定是假的！我父亲不可能做这种事，你们这些觊觎雷蒙内尔家财产的骗子！",
+    "tipsDir": 1,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411060,
+    "id": 941010019,
+    "param": "4#1",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "656416",
+    "audioId": 924100019,
+    "text": "快停下，布兰奇小姐，小心别碰到这些展品，把它们撞倒了可不好！",
+    "tipsDir": 2,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411060,
+    "id": 941010020,
+    "param": "4#1",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "656117",
+    "audioId": 924100020,
+    "text": "让那个骗子把手里的文件交出来！",
+    "tipsDir": 1,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411060,
+    "id": 941010021,
+    "param": "36#119411060",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "656416",
+    "audioId": 924100021,
+    "text": "请大家稍安勿躁！布兰奇小姐，你该冷静下来了！",
+    "tipsDir": 2,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411080,
+    "id": 941010022,
+    "param": "36#119411080",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "650102",
+    "audioId": 924100022,
+    "text": "停手，伊芙琳，我们不是来斗殴的，别真的伤害到他。",
+    "tipsDir": 2,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411080,
+    "id": 941010023,
+    "param": "36#119411080",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "316020",
+    "audioId": 924100023,
+    "text": "我完完全全赞同你的意见，芭万。",
+    "tipsDir": 2,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411100,
+    "id": 941010024,
+    "param": "4#1",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "6804061",
+    "audioId": 924100024,
+    "text": "伊芙琳，你怎么还不明白？你真的觉得自己适合做一个私人侦探吗？",
+    "tipsDir": 1,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411100,
+    "id": 941010025,
+    "param": "4#1",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "6804061",
+    "audioId": 924100025,
+    "text": "不停往脑壳里添煤可不大行，该给你的锅炉降降温了。",
+    "tipsDir": 1,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411100,
+    "id": 941010026,
+    "param": "4#1",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "6804061",
+    "audioId": 924100026,
+    "text": "我看你不如去做些别的，比如开家糖果店，卖点儿真正的糖果……反正不当侦探什么都行！",
+    "tipsDir": 1,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411100,
+    "id": 941010027,
+    "param": "4#1",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "657301",
+    "audioId": 924100027,
+    "text": "是啊，好孩子，你都累坏了，快休息休息吧……",
+    "tipsDir": 1,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411100,
+    "id": 941010028,
+    "param": "4#1",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "316016",
+    "audioId": 924100028,
+    "text": "你，闭嘴；你们——也闭嘴！我会变成什么，没人说了算！",
+    "tipsDir": 2,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411100,
+    "id": 941010029,
+    "param": "4#1",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "6804061",
+    "audioId": 924100029,
+    "text": "你不能拒绝我们有目共睹的善意呀。",
+    "tipsDir": 1,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411100,
+    "id": 941010030,
+    "param": "4#1",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "316016",
+    "audioId": 924100030,
+    "text": "比起真相、不算！其他都不算什么！思考、思考——我，会，解开——这个谜题！",
+    "tipsDir": 2,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411100,
+    "id": 941010031,
+    "param": "4#2",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "6804061",
+    "audioId": 924100031,
+    "text": "咳咳——现在停手，我就当什么都没发生过，不会起诉你人身伤害罪，这主意怎么样？",
+    "tipsDir": 1,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411100,
+    "id": 941010032,
+    "param": "4#2",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "316013",
+    "audioId": 924100032,
+    "text": "是——吗？！真有意思！我倒一点儿也不觉得神圣的天然权利和你有半点儿关系——怪东西。",
+    "tipsDir": 2,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411100,
+    "id": 941010033,
+    "param": "4#2",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "6804061",
+    "audioId": 924100033,
+    "text": "看来我要靠更特殊的手段来维护自己的权利了。",
+    "tipsDir": 1,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411100,
+    "id": 941010034,
+    "param": "4#2",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "316016",
+    "audioId": 924100034,
+    "text": "来吧，决斗——一场决斗！但愿你别手下留情……不可能输！",
+    "tipsDir": 2,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411100,
+    "id": 941010035,
+    "param": "36#119411100",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "6804071",
+    "audioId": 924100035,
+    "text": "呼……你可真够有决心的，但我还是对你的职业规划持保留意见。",
+    "tipsDir": 1,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411100,
+    "id": 941010036,
+    "param": "36#119411100",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "316013",
+    "audioId": 924100036,
+    "text": "哈！管你有什么意见，憋回你的铁肚子里去！",
+    "tipsDir": 2,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119411100,
+    "id": 941010037,
+    "param": "36#119411100",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "6804071",
+    "audioId": 924100037,
+    "text": "既然你非要这么做，那我只好把那些东西原样奉还……要是你再晕过去，那可和我没有半点儿关系！",
+    "tipsDir": 1,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119415100,
+    "id": 941010038,
+    "param": "4#1",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "6804061",
+    "audioId": 924100024,
+    "text": "伊芙琳，你怎么还不明白？你真的觉得自己适合做一个私人侦探吗？",
+    "tipsDir": 1,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119415100,
+    "id": 941010039,
+    "param": "4#1",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "6804061",
+    "audioId": 924100025,
+    "text": "不停往脑壳里添煤可不大行，该给你的锅炉降降温了。",
+    "tipsDir": 1,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119415100,
+    "id": 941010040,
+    "param": "4#1",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "6804061",
+    "audioId": 924100026,
+    "text": "我看你不如去做些别的，比如开家糖果店，卖点儿真正的糖果……反正不当侦探什么都行！",
+    "tipsDir": 1,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119415100,
+    "id": 941010041,
+    "param": "4#1",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "657301",
+    "audioId": 924100027,
+    "text": "是啊，好孩子，你都累坏了，快休息休息吧……",
+    "tipsDir": 1,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119415100,
+    "id": 941010042,
+    "param": "4#1",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "316016",
+    "audioId": 924100028,
+    "text": "你，闭嘴；你们——也闭嘴！我会变成什么，没人说了算！",
+    "tipsDir": 2,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119415100,
+    "id": 941010043,
+    "param": "4#1",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "6804061",
+    "audioId": 924100029,
+    "text": "你不能拒绝我们有目共睹的善意呀。",
+    "tipsDir": 1,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119415100,
+    "id": 941010044,
+    "param": "4#1",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "316016",
+    "audioId": 924100030,
+    "text": "比起真相、不算！其他都不算什么！思考、思考——我，会，解开——这个谜题！",
+    "tipsDir": 2,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119415100,
+    "id": 941010045,
+    "param": "4#2",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "6804061",
+    "audioId": 924100031,
+    "text": "咳咳——现在停手，我就当什么都没发生过，不会起诉你人身伤害罪，这主意怎么样？",
+    "tipsDir": 1,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119415100,
+    "id": 941010046,
+    "param": "4#2",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "316013",
+    "audioId": 924100032,
+    "text": "是——吗？！真有意思！我倒一点儿也不觉得神圣的天然权利和你有半点儿关系——怪东西。",
+    "tipsDir": 2,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119415100,
+    "id": 941010047,
+    "param": "4#2",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "6804061",
+    "audioId": 924100033,
+    "text": "看来我要靠更特殊的手段来维护自己的权利了。",
+    "tipsDir": 1,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119415100,
+    "id": 941010048,
+    "param": "4#2",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "316016",
+    "audioId": 924100034,
+    "text": "来吧，决斗——一场决斗！但愿你别手下留情……不可能输！",
+    "tipsDir": 2,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119415100,
+    "id": 941010049,
+    "param": "36#119415100",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "6804071",
+    "audioId": 924100035,
+    "text": "呼……你可真够有决心的，但我还是对你的职业规划持保留意见。",
+    "tipsDir": 1,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119415100,
+    "id": 941010050,
+    "param": "36#119415100",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "316013",
+    "audioId": 924100036,
+    "text": "哈！管你有什么意见，憋回你的铁肚子里去！",
+    "tipsDir": 2,
+    "delay": 0,
+    "type": 0
+  },
+  {
+    "code": 119415100,
+    "id": 941010051,
+    "param": "36#119415100",
+    "canRepeat": true,
+    "insideRepeat": false,
+    "random": "",
+    "icon": "6804071",
+    "audioId": 924100037,
+    "text": "既然你非要这么做，那我只好把那些东西原样奉还……要是你再晕过去，那可和我没有半点儿关系！",
+    "tipsDir": 1,
+    "delay": 0,
     "type": 0
   }
 ]

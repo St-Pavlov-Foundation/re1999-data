@@ -1,0 +1,94 @@
+[
+  {
+    "id": "dmgUp",
+    "name": "伤害增幅"
+  },
+  {
+    "id": "length",
+    "name": "长度"
+  },
+  {
+    "id": "width",
+    "name": "宽度"
+  },
+  {
+    "id": "hp",
+    "name": "生命值"
+  },
+  {
+    "id": "crit",
+    "name": "暴击"
+  },
+  {
+    "id": "dodge",
+    "name": "闪避"
+  },
+  {
+    "id": "coin",
+    "name": "金币"
+  },
+  {
+    "id": "heal",
+    "name": "生命恢复"
+  },
+  {
+    "id": "move",
+    "name": "移动"
+  },
+  {
+    "id": "weaponDmg",
+    "name": "伤害"
+  },
+  {
+    "id": "coll",
+    "name": "藏品"
+  },
+  {
+    "id": "shop",
+    "name": "商店"
+  },
+  {
+    "id": "kill",
+    "name": "击杀"
+  },
+  {
+    "id": "burn",
+    "name": "灼烧"
+  },
+  {
+    "id": "poison",
+    "name": "中毒"
+  },
+  {
+    "id": "boom",
+    "name": "爆炸"
+  },
+  {
+    "id": "bomb",
+    "name": "炸弹"
+  },
+  {
+    "id": "summon",
+    "name": "召唤物"
+  },
+  {
+    "id": "attack",
+    "name": "攻击"
+  },
+  {
+    "id": "hurt",
+    "name": "受击"
+  },
+  {
+    "id": "pack",
+    "name": "卡包"
+  },
+  {
+    "id": "secret",
+    "name": "隐秘"
+  },
+  {
+    "id": "attr",
+    "name": "属性"
+  }
+]

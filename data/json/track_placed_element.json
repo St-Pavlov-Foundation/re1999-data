@@ -4,7 +4,7 @@
     "elementUid": 39001001,
     "elementId": 13901,
     "lane": 2,
-    "distance": 80.0,
+    "distance": 80,
     "isOn": true
   },
   {
@@ -12,7 +12,7 @@
     "elementUid": 39001002,
     "elementId": 13902,
     "lane": 3,
-    "distance": 160.0,
+    "distance": 160,
     "isOn": true
   },
   {
@@ -20,7 +20,7 @@
     "elementUid": 39001003,
     "elementId": 13903,
     "lane": 1,
-    "distance": 240.0,
+    "distance": 240,
     "isOn": true
   },
   {
@@ -28,7 +28,7 @@
     "elementUid": 39001004,
     "elementId": 13904,
     "lane": 4,
-    "distance": 360.0,
+    "distance": 360,
     "isOn": true
   },
   {
@@ -36,7 +36,7 @@
     "elementUid": 39001005,
     "elementId": 13905,
     "lane": 2,
-    "distance": 520.0,
+    "distance": 520,
     "isOn": true
   },
   {
@@ -44,7 +44,7 @@
     "elementUid": 39001006,
     "elementId": 13906,
     "lane": 1,
-    "distance": 680.0,
+    "distance": 680,
     "isOn": true
   },
   {
@@ -52,7 +52,7 @@
     "elementUid": 39001007,
     "elementId": 13907,
     "lane": 3,
-    "distance": 840.0,
+    "distance": 840,
     "isOn": true
   },
   {
@@ -60,7 +60,7 @@
     "elementUid": 39001008,
     "elementId": 13908,
     "lane": 4,
-    "distance": 1000.0,
+    "distance": 1000,
     "isOn": true
   },
   {
@@ -68,7 +68,7 @@
     "elementUid": 39001009,
     "elementId": 13909,
     "lane": 2,
-    "distance": 1160.0,
+    "distance": 1160,
     "isOn": true
   },
   {
@@ -76,7 +76,7 @@
     "elementUid": 39001010,
     "elementId": 13910,
     "lane": 4,
-    "distance": 1320.0,
+    "distance": 1320,
     "isOn": true
   },
   {
@@ -84,7 +84,7 @@
     "elementUid": 39001011,
     "elementId": 13911,
     "lane": 1,
-    "distance": 1480.0,
+    "distance": 1480,
     "isOn": true
   },
   {
@@ -92,7 +92,7 @@
     "elementUid": 39001012,
     "elementId": 13912,
     "lane": 3,
-    "distance": 1640.0,
+    "distance": 1640,
     "isOn": true
   },
   {
@@ -100,7 +100,7 @@
     "elementUid": 39001013,
     "elementId": 13913,
     "lane": 2,
-    "distance": 1800.0,
+    "distance": 1800,
     "isOn": true
   },
   {
@@ -108,7 +108,7 @@
     "elementUid": 39001014,
     "elementId": 13914,
     "lane": 1,
-    "distance": 1960.0,
+    "distance": 1960,
     "isOn": true
   },
   {
@@ -116,7 +116,7 @@
     "elementUid": 39001015,
     "elementId": 13915,
     "lane": 4,
-    "distance": 2120.0,
+    "distance": 2120,
     "isOn": true
   },
   {
@@ -124,7 +124,7 @@
     "elementUid": 39001016,
     "elementId": 13916,
     "lane": 2,
-    "distance": 2280.0,
+    "distance": 2280,
     "isOn": true
   },
   {
@@ -132,7 +132,7 @@
     "elementUid": 39001017,
     "elementId": 13917,
     "lane": 3,
-    "distance": 2440.0,
+    "distance": 2440,
     "isOn": true
   },
   {
@@ -140,7 +140,7 @@
     "elementUid": 39001018,
     "elementId": 13918,
     "lane": 1,
-    "distance": 2640.0,
+    "distance": 2640,
     "isOn": true
   }
 ]

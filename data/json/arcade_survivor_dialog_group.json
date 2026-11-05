@@ -1,0 +1,62 @@
+[
+  {
+    "groupId": 4180001,
+    "condition": "intro",
+    "param": ""
+  },
+  {
+    "groupId": 4180002,
+    "condition": "hp",
+    "param": "50"
+  },
+  {
+    "groupId": 4180003,
+    "condition": "intro",
+    "param": ""
+  },
+  {
+    "groupId": 4180004,
+    "condition": "hp",
+    "param": "50"
+  },
+  {
+    "groupId": 4180005,
+    "condition": "intro",
+    "param": ""
+  },
+  {
+    "groupId": 4180006,
+    "condition": "hp",
+    "param": "50"
+  },
+  {
+    "groupId": 4180007,
+    "condition": "intro",
+    "param": ""
+  },
+  {
+    "groupId": 4180008,
+    "condition": "hp",
+    "param": "50"
+  },
+  {
+    "groupId": 4180009,
+    "condition": "intro",
+    "param": ""
+  },
+  {
+    "groupId": 4180010,
+    "condition": "hp",
+    "param": "50"
+  },
+  {
+    "groupId": 4180011,
+    "condition": "intro",
+    "param": ""
+  },
+  {
+    "groupId": 4180012,
+    "condition": "hp",
+    "param": "50"
+  }
+]

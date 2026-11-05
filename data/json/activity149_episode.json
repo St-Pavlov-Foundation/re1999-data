@@ -4,7 +4,7 @@
     "activityId": 11609,
     "episodeId": 1650101,
     "order": 1,
-    "multi": 1.0,
+    "multi": 1,
     "firstPassScore": 1000,
     "effectCondition": ""
   },
@@ -40,7 +40,7 @@
     "activityId": 11609,
     "episodeId": 1650105,
     "order": 5,
-    "multi": 2.0,
+    "multi": 2,
     "firstPassScore": 2000,
     "effectCondition": ""
   },
@@ -49,7 +49,7 @@
     "activityId": 11609,
     "episodeId": 1650106,
     "order": 6,
-    "multi": 2.0,
+    "multi": 2,
     "firstPassScore": 2000,
     "effectCondition": ""
   },
@@ -58,7 +58,7 @@
     "activityId": 11609,
     "episodeId": 1650107,
     "order": 7,
-    "multi": 2.0,
+    "multi": 2,
     "firstPassScore": 2000,
     "effectCondition": ""
   },
@@ -67,7 +67,7 @@
     "activityId": 11609,
     "episodeId": 1650108,
     "order": 8,
-    "multi": 2.0,
+    "multi": 2,
     "firstPassScore": 2000,
     "effectCondition": ""
   }

@@ -10,7 +10,7 @@
     "cost": "green_10",
     "resPic": "v2a2_chess_22",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_rjylra.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": ""
   },
   {
@@ -24,7 +24,7 @@
     "cost": "yellow_10",
     "resPic": "v2a2_chess_18",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_jsc.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": ""
   },
   {
@@ -38,7 +38,7 @@
     "cost": "blue_20",
     "resPic": "v2a2_chess_17",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_sgeh.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": ""
   },
   {
@@ -52,7 +52,7 @@
     "cost": "red_20",
     "resPic": "v2a2_chess_19",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_sb.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": ""
   },
   {
@@ -66,7 +66,7 @@
     "cost": "red_10#yellow_20",
     "resPic": "v2a2_chess_08",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_btet.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22200501"
   },
   {
@@ -80,7 +80,7 @@
     "cost": "red_50#blue_25",
     "resPic": "v2a2_chess_02",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_hnj.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22200601"
   },
   {
@@ -94,7 +94,7 @@
     "cost": "blue_10",
     "resPic": "v2a2_chess_16",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_sgeh.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22200701"
   },
   {
@@ -108,7 +108,7 @@
     "cost": "red_50",
     "resPic": "v2a2_chess_07",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_tlm.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22200801"
   },
   {
@@ -122,7 +122,7 @@
     "cost": "yellow_10#blue_10",
     "resPic": "v2a2_chess_21",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_wxdxj.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22200901"
   },
   {
@@ -136,7 +136,7 @@
     "cost": "red_40#green_20",
     "resPic": "v2a2_chess_05",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_lpl.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22201001"
   },
   {
@@ -150,7 +150,7 @@
     "cost": "red_65",
     "resPic": "v2a2_chess_42",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_yfng.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": ""
   },
   {
@@ -164,7 +164,7 @@
     "cost": "yellow_10",
     "resPic": "v2a2_chess_10",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_xh.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22201201#22201202"
   },
   {
@@ -178,7 +178,7 @@
     "cost": "yellow_15",
     "resPic": "v2a2_chess_14",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_xf.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22201301"
   },
   {
@@ -192,7 +192,7 @@
     "cost": "yellow_40#green_20",
     "resPic": "v2a2_chess_25",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_rjylrb.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22201401"
   },
   {
@@ -206,7 +206,7 @@
     "cost": "yellow_15#red_30",
     "resPic": "v2a2_chess_46",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_sshs.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22201501#22201502"
   },
   {
@@ -220,7 +220,7 @@
     "cost": "yellow_60#blue_30",
     "resPic": "v2a2_chess_24",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_dk.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22201601"
   },
   {
@@ -290,7 +290,7 @@
     "cost": "red_15#blue_15#green_15",
     "resPic": "v2a2_chess_23",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_jlyn.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22202101#22202102#22202103"
   },
   {
@@ -318,7 +318,7 @@
     "cost": "green_60",
     "resPic": "v2a2_chess_39",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_tsnn.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22202301#22202302"
   },
   {
@@ -332,7 +332,7 @@
     "cost": "blue_15#red_15",
     "resPic": "v2a2_chess_01",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_tdxdcy.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22202401"
   },
   {
@@ -346,7 +346,7 @@
     "cost": "blue_60",
     "resPic": "v2a2_chess_43",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_pg.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22202501"
   },
   {
@@ -360,7 +360,7 @@
     "cost": "blue_10#yellow_10",
     "resPic": "v2a2_chess_40",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_wed.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22202601#22202602"
   },
   {
@@ -374,7 +374,7 @@
     "cost": "red_60#green_30",
     "resPic": "v2a2_chess_09",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_mded.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22202701"
   },
   {
@@ -388,7 +388,7 @@
     "cost": "blue_40#red_40",
     "resPic": "v2a2_chess_44",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_xt.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22202801#22202802"
   },
   {
@@ -402,7 +402,7 @@
     "cost": "blue_40#green_20#red_20",
     "resPic": "v2a2_chess_20",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_blm.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22202901#22202902"
   },
   {
@@ -416,7 +416,7 @@
     "cost": "blue_40#green_20#red_20",
     "resPic": "v2a2_chess_48",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_ysc.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22203001#22203002"
   },
   {
@@ -444,7 +444,7 @@
     "cost": "blue_20",
     "resPic": "v2a2_chess_06",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_mlde.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22203201"
   },
   {
@@ -458,7 +458,7 @@
     "cost": "green_80#blue_40",
     "resPic": "v2a2_chess_03",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_sfb.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22203301"
   },
   {
@@ -472,7 +472,7 @@
     "cost": "red_80",
     "resPic": "v2a2_chess_04",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_yge.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22203401"
   },
   {
@@ -486,7 +486,7 @@
     "cost": "yellow_60#green_30",
     "resPic": "v2a2_chess_45",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_hjs.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22203501#22203502"
   },
   {
@@ -500,7 +500,7 @@
     "cost": "yellow_30#green_15",
     "resPic": "v2a2_chess_41",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_znsb.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22205001"
   },
   {
@@ -514,7 +514,7 @@
     "cost": "red_40",
     "resPic": "v2a2_chess_42",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_yfng.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": ""
   },
   {
@@ -528,7 +528,7 @@
     "cost": "green_30#yellow_30",
     "resPic": "v2a2_chess_11",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_pm.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22205201"
   },
   {
@@ -556,7 +556,7 @@
     "cost": "red_50#green_50",
     "resPic": "v2a2_chess_30",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_csrx.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22205401"
   },
   {
@@ -570,7 +570,7 @@
     "cost": "green_50",
     "resPic": "v2a2_chess_13",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_hbbt.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22205501"
   },
   {
@@ -584,7 +584,7 @@
     "cost": "red_100#green_100",
     "resPic": "v2a2_chess_12",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_mkd.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22205601"
   },
   {
@@ -598,7 +598,7 @@
     "cost": "blue_100#yellow_100#red_100#green_100",
     "resPic": "v2a2_chess_15",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_sts.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22205701#22205702"
   },
   {
@@ -612,7 +612,7 @@
     "cost": "blue_50#yellow_50#red_50#green_50",
     "resPic": "v2a2_chess_47",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_stsys.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22205801"
   },
   {
@@ -654,7 +654,7 @@
     "cost": "red_100",
     "resPic": "v2a2_chess_28",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_ga.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": ""
   },
   {
@@ -668,7 +668,7 @@
     "cost": "red_50",
     "resPic": "v2a2_chess_29",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_gb.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": ""
   },
   {
@@ -682,7 +682,7 @@
     "cost": "red_100",
     "resPic": "v2a2_chess_32",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_st.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22206501"
   },
   {
@@ -696,7 +696,7 @@
     "cost": "red_60",
     "resPic": "v2a2_chess_33",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_hpnpc.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22206601"
   },
   {
@@ -710,7 +710,7 @@
     "cost": "blue_20#red_10",
     "resPic": "v2a2_chess_01",
     "resModel": "scenes/v2a2_m_s12_xdwf/prefab/qizi_tdxdcy.prefab",
-    "resZoom": 1.0,
+    "resZoom": 1,
     "skillId": "22206701"
   }
 ]

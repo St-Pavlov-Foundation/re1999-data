@@ -950,5 +950,33 @@
     "signature": "3134",
     "preStoryId": 0,
     "cgUnlockGameComplete": 1
+  },
+  {
+    "id": 35,
+    "chapterId": 0,
+    "unlock": "2#24#0",
+    "bonus": "",
+    "heroName": "阿莱夫",
+    "photo": "311302",
+    "cgBg": "311301",
+    "order": 35,
+    "name": "奇遇之夜",
+    "nameEn": "La noche de los dones",
+    "queryVersion": "4.1",
+    "episodeId": 0,
+    "main_pic": "rolestory_img_35",
+    "monster_pic": "",
+    "challengeBonus": "",
+    "activityId": 14127,
+    "activity_pic": "",
+    "cgUnlockEpisodeId": 0,
+    "cgUnlockStoryId": 311309,
+    "cgPos": "771.6#-18.4",
+    "cgScale": "1",
+    "mainviewName": "奇遇<size=28>之</size>夜",
+    "permanentUnlock": "2#24#1",
+    "signature": "3113",
+    "preStoryId": 0,
+    "cgUnlockGameComplete": 0
   }
 ]

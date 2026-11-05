@@ -2,7 +2,7 @@
   {
     "id": 1,
     "desc": "",
-    "info": "800\n",
+    "info": "800\\n",
     "name": "第一滴雨",
     "historyShowType": 99,
     "order": 999,
@@ -11,7 +11,7 @@
   {
     "id": 2,
     "desc": "",
-    "info": "801\n",
+    "info": "801\\n",
     "name": "常驻角色征集",
     "historyShowType": 1,
     "order": 1,
@@ -20,7 +20,7 @@
   {
     "id": 3,
     "desc": "",
-    "info": "802\n",
+    "info": "802\\n",
     "name": "限时活动征集",
     "historyShowType": 0,
     "order": 3,
@@ -138,7 +138,7 @@
     "id": 17,
     "desc": "",
     "info": "817",
-    "name": "新春限定征集\n【赤心如昼明】",
+    "name": "新春限定征集\\n【赤心如昼明】",
     "historyShowType": 0,
     "order": 2,
     "openId": 11
@@ -147,7 +147,7 @@
     "id": 18,
     "desc": "",
     "info": "819",
-    "name": "新春限定征集\n【尽杯酌】",
+    "name": "新春限定征集\\n【尽杯酌】",
     "historyShowType": 0,
     "order": 3,
     "openId": 11
@@ -156,7 +156,7 @@
     "id": 19,
     "desc": "",
     "info": "28122",
-    "name": "周年限定征集\n【缸中独思】",
+    "name": "周年限定征集\\n【缸中独思】",
     "historyShowType": 0,
     "order": 3,
     "openId": 11
@@ -165,7 +165,7 @@
     "id": 20,
     "desc": "",
     "info": "28111",
-    "name": "周年限定征集\n【神话咫尺之处】",
+    "name": "周年限定征集\\n【神话咫尺之处】",
     "historyShowType": 0,
     "order": 1,
     "openId": 11
@@ -237,7 +237,7 @@
     "id": 25,
     "desc": "",
     "info": "83402",
-    "name": "新春限定征集\n【剪春注我】",
+    "name": "新春限定征集\\n【剪春注我】",
     "historyShowType": 0,
     "order": 1,
     "openId": 11
@@ -246,7 +246,7 @@
     "id": 26,
     "desc": "",
     "info": "83401",
-    "name": "限定征集\n【湖心追述】",
+    "name": "限定征集\\n【湖心追述】",
     "historyShowType": 0,
     "order": 4,
     "openId": 11
@@ -255,7 +255,7 @@
     "id": 27,
     "desc": "",
     "info": "83701",
-    "name": "周年限定征集\n【故事的新啼】",
+    "name": "周年限定征集\\n【故事的新啼】",
     "historyShowType": 0,
     "order": 1,
     "openId": 11

@@ -1,0 +1,137 @@
+[
+  {
+    "id": 1001,
+    "group": 3,
+    "type": 6,
+    "itemName": "rolestory_3113_icon_01",
+    "hide1": 0,
+    "hide2": 0,
+    "storyId": 311302
+  },
+  {
+    "id": 1002,
+    "group": 4,
+    "type": 13,
+    "itemName": "rolestory_3113_icon_03",
+    "hide1": 0,
+    "hide2": 0,
+    "storyId": 311303
+  },
+  {
+    "id": 1003,
+    "group": 2,
+    "type": 7,
+    "itemName": "rolestory_3113_icon_04",
+    "hide1": 0,
+    "hide2": 0,
+    "storyId": 311305
+  },
+  {
+    "id": 1004,
+    "group": 2,
+    "type": 9,
+    "itemName": "rolestory_3113_icon_04",
+    "hide1": 0,
+    "hide2": 0,
+    "storyId": 311305
+  },
+  {
+    "id": 1005,
+    "group": 2,
+    "type": 10,
+    "itemName": "rolestory_3113_icon_04",
+    "hide1": 0,
+    "hide2": 0,
+    "storyId": 311305
+  },
+  {
+    "id": 1006,
+    "group": 3,
+    "type": 9,
+    "itemName": "rolestory_3113_icon_02",
+    "hide1": 0,
+    "hide2": 0,
+    "storyId": 311305
+  },
+  {
+    "id": 1007,
+    "group": 3,
+    "type": 11,
+    "itemName": "rolestory_3113_pic_07",
+    "hide1": 0,
+    "hide2": 0,
+    "storyId": 311305
+  },
+  {
+    "id": 1008,
+    "group": 3,
+    "type": 0,
+    "itemName": "rolestory_3113_icon_05",
+    "hide1": 1,
+    "hide2": 0,
+    "storyId": 311306
+  },
+  {
+    "id": 1009,
+    "group": 1,
+    "type": 0,
+    "itemName": "rolestory_3113_icon_05",
+    "hide1": 1,
+    "hide2": 0,
+    "storyId": 311306
+  },
+  {
+    "id": 1010,
+    "group": 4,
+    "type": 0,
+    "itemName": "rolestory_3113_icon_05",
+    "hide1": 1,
+    "hide2": 0,
+    "storyId": 311306
+  },
+  {
+    "id": 1011,
+    "group": 2,
+    "type": 0,
+    "itemName": "rolestory_3113_icon_05",
+    "hide1": 1,
+    "hide2": 0,
+    "storyId": 311306
+  },
+  {
+    "id": 1012,
+    "group": 2,
+    "type": 0,
+    "itemName": "rolestory_3113_icon_05",
+    "hide1": 1,
+    "hide2": 0,
+    "storyId": 311306
+  },
+  {
+    "id": 1013,
+    "group": 1,
+    "type": 13,
+    "itemName": "rolestory_3113_pic_09",
+    "hide1": 1,
+    "hide2": 1,
+    "storyId": 311308
+  },
+  {
+    "id": 1014,
+    "group": 3,
+    "type": 12,
+    "itemName": "rolestory_3113_icon_06",
+    "hide1": 0,
+    "hide2": 0,
+    "storyId": 311308
+  },
+  {
+    "id": 1015,
+    "group": 1,
+    "type": 14,
+    "itemName": "rolestory_3113_icon_07",
+    "hide1": 0,
+    "hide2": 0,
+    "storyId": 311308
+  }
+]

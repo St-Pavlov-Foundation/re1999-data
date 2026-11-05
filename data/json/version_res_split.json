@@ -1739,5 +1739,50 @@
     "uiPath": [],
     "packName": "opvideos",
     "ignore": 0
+  },
+  {
+    "id": 36,
+    "audio": [
+      3330001,
+      3330002
+    ],
+    "chapter": [
+      33501,
+      33601
+    ],
+    "guide": [],
+    "story": [
+      312701,
+      312702,
+      312703,
+      312704,
+      312705,
+      312706,
+      312708,
+      312709,
+      312710,
+      312711,
+      312712,
+      309201,
+      309202,
+      309203,
+      309204,
+      309205,
+      309206,
+      309207,
+      309208
+    ],
+    "folderPath": [],
+    "videoPath": [
+      "3_3_pv"
+    ],
+    "path": [],
+    "uiFolder": [
+      "ui/viewres/versionactivity_3_3/v3a3_igor",
+      "ui/viewres/versionactivity_3_3/v3a3_marsha"
+    ],
+    "uiPath": [],
+    "packName": "opveract",
+    "ignore": 0
   }
 ]

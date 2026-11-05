@@ -1,0 +1,472 @@
+[
+  {
+    "id": 101,
+    "name": "埃里克",
+    "desc": "“作为一位身负誓言与荣耀的伟大战士，她将以矫健的身姿从战役中凯旋……”，等等，“拿一下书架上的地图”？这种小事就不必让埃里克大人亲自上场了吧？",
+    "weaponCollectionId": 4110001,
+    "collectionId": 4110002,
+    "shape": "1#1",
+    "hpCap": 20,
+    "atk": 25,
+    "atkShape": "rect",
+    "atkLength": 5,
+    "atkWidth": 5,
+    "atkInterval": 3,
+    "atkCount": 1,
+    "dmgAddRate": 0,
+    "criRate": 0,
+    "criDmgRate": 500,
+    "dodgeRate": 0,
+    "respawnNeedHpCap": 0,
+    "unlockCondition": "",
+    "lockTip": "",
+    "charTag": "crit#critConvert",
+    "resName": "v4a1_m_s12_role1x1_002",
+    "icon": "v4a1_m_s12_role1x1_002",
+    "portrait": "v4a1_m_s12_xx4_5x6_002",
+    "portraitScale": [
+      0.4,
+      0.4
+    ],
+    "portraitOffset": [
+      8,
+      -20
+    ],
+    "scale": [
+      1.5,
+      1.5
+    ],
+    "posOffset": [],
+    "icon2Offset2": [
+      0,
+      67
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ]
+  },
+  {
+    "id": 102,
+    "name": "37",
+    "desc": "生命有序、万物自得，清凉的泉水之上，停歇的旅人于此受赠自然的抚慰。",
+    "weaponCollectionId": 4110009,
+    "collectionId": 4110010,
+    "shape": "1#1",
+    "hpCap": 20,
+    "atk": 20,
+    "atkShape": "rect",
+    "atkLength": 5,
+    "atkWidth": 5,
+    "atkInterval": 3,
+    "atkCount": 1,
+    "dmgAddRate": 0,
+    "criRate": 0,
+    "criDmgRate": 500,
+    "dodgeRate": 0,
+    "respawnNeedHpCap": 0,
+    "unlockCondition": "1#413002",
+    "lockTip": "击败战争型火炮解锁",
+    "charTag": "followUp#rangeUp#collLink",
+    "resName": "v4a1_m_s12_role1x1_001",
+    "icon": "v4a1_m_s12_role1x1_001",
+    "portrait": "v4a1_m_s12_xx4_5x6_001",
+    "portraitScale": [
+      0.35,
+      0.35
+    ],
+    "portraitOffset": [
+      -10,
+      -42
+    ],
+    "scale": [
+      1.5,
+      1.5
+    ],
+    "posOffset": [],
+    "icon2Offset2": [
+      0,
+      0
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ]
+  },
+  {
+    "id": 103,
+    "name": "诺谛卡",
+    "desc": "穿越冰原，叩响门扉，传说的光辉显现于再度展翼时。",
+    "weaponCollectionId": 4110013,
+    "collectionId": 4110014,
+    "shape": "1#1",
+    "hpCap": 20,
+    "atk": 25,
+    "atkShape": "rect",
+    "atkLength": 5,
+    "atkWidth": 5,
+    "atkInterval": 3,
+    "atkCount": 1,
+    "dmgAddRate": 0,
+    "criRate": 0,
+    "criDmgRate": 500,
+    "dodgeRate": 0,
+    "respawnNeedHpCap": 0,
+    "unlockCondition": "3#1",
+    "lockTip": "通关单向投币I解锁",
+    "charTag": "morph#dash#moveHit",
+    "resName": "v4a1_m_s12_role1x1_008",
+    "icon": "v4a1_m_s12_role1x1_008",
+    "portrait": "v4a1_m_s12_xx4_5x6_008",
+    "portraitScale": [
+      0.35,
+      0.35
+    ],
+    "portraitOffset": [
+      7,
+      -52
+    ],
+    "scale": [
+      1.5,
+      1.5
+    ],
+    "posOffset": [],
+    "icon2Offset2": [
+      0,
+      -22
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ]
+  },
+  {
+    "id": 104,
+    "name": "塞梅尔维斯",
+    "desc": "月色下，她独享着这片属于她的静谧和一杯“血液代餐”魔药。",
+    "weaponCollectionId": 4110019,
+    "collectionId": 4110020,
+    "shape": "1#1",
+    "hpCap": 18,
+    "atk": 30,
+    "atkShape": "rect",
+    "atkLength": 5,
+    "atkWidth": 5,
+    "atkInterval": 3,
+    "atkCount": 1,
+    "dmgAddRate": 0,
+    "criRate": 0,
+    "criDmgRate": 500,
+    "dodgeRate": 0,
+    "respawnNeedHpCap": 11,
+    "unlockCondition": "2#500",
+    "lockTip": "累计击杀500个敌方单位解锁",
+    "charTag": "reviveUp#hpTrade",
+    "resName": "v4a1_m_s12_role1x1_010",
+    "icon": "v4a1_m_s12_role1x1_010",
+    "portrait": "v4a1_m_s12_xx4_5x6_010",
+    "portraitScale": [
+      0.35,
+      0.35
+    ],
+    "portraitOffset": [
+      -2,
+      -53
+    ],
+    "scale": [
+      1.5,
+      1.5
+    ],
+    "posOffset": [],
+    "icon2Offset2": [
+      0,
+      -40
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ]
+  },
+  {
+    "id": 105,
+    "name": "卡戎",
+    "desc": "踏过灰烬与火，他将沿途的恐惧与悔恨拾入怀中，令亡魂苏醒于黑色的床榻——名为“生命”的第二次旅途由此开始。",
+    "weaponCollectionId": 4110015,
+    "collectionId": 4110016,
+    "shape": "1#1",
+    "hpCap": 20,
+    "atk": 20,
+    "atkShape": "rect",
+    "atkLength": 5,
+    "atkWidth": 5,
+    "atkInterval": 3,
+    "atkCount": 1,
+    "dmgAddRate": 0,
+    "criRate": 0,
+    "criDmgRate": 500,
+    "dodgeRate": 0,
+    "respawnNeedHpCap": 0,
+    "unlockCondition": "2#3000",
+    "lockTip": "累计击杀3000个敌方单位解锁",
+    "charTag": "moveBomb#delayBoom",
+    "resName": "v4a1_m_s12_role1x1_009",
+    "icon": "v4a1_m_s12_role1x1_009",
+    "portrait": "v4a1_m_s12_xx4_5x6_009",
+    "portraitScale": [
+      0.35,
+      0.35
+    ],
+    "portraitOffset": [
+      17,
+      -23
+    ],
+    "scale": [
+      1.5,
+      1.5
+    ],
+    "posOffset": [],
+    "icon2Offset2": [
+      0,
+      52
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ]
+  },
+  {
+    "id": 106,
+    "name": "哑谜",
+    "desc": "实践表明，善用仿生尾鳍可以显著提升在地下水系中的移动效率。（注：有时会随机附带“结识水怪”的增益效果）",
+    "weaponCollectionId": 4110011,
+    "collectionId": 4110012,
+    "shape": "1#1",
+    "hpCap": 20,
+    "atk": 20,
+    "atkShape": "rect",
+    "atkLength": 5,
+    "atkWidth": 5,
+    "atkInterval": 3,
+    "atkCount": 1,
+    "dmgAddRate": 0,
+    "criRate": 0,
+    "criDmgRate": 500,
+    "dodgeRate": 0,
+    "respawnNeedHpCap": 0,
+    "unlockCondition": "1#413001",
+    "lockTip": "击败大大大统领！解锁",
+    "charTag": "summon#autoHit",
+    "resName": "v4a1_m_s12_role1x1_005",
+    "icon": "v4a1_m_s12_role1x1_005",
+    "portrait": "v4a1_m_s12_xx4_5x6_005",
+    "portraitScale": [
+      0.45,
+      0.45
+    ],
+    "portraitOffset": [
+      -18,
+      -18
+    ],
+    "scale": [
+      1.5,
+      1.5
+    ],
+    "posOffset": [],
+    "icon2Offset2": [
+      0,
+      112
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ]
+  },
+  {
+    "id": 107,
+    "name": "笃笃骨",
+    "desc": "手中闪烁的火光扬起，今夜你应尽兴起舞，趁下一枚骰子还未落地。",
+    "weaponCollectionId": 4110005,
+    "collectionId": 4110006,
+    "shape": "1#1",
+    "hpCap": 25,
+    "atk": 30,
+    "atkShape": "rect",
+    "atkLength": 5,
+    "atkWidth": 5,
+    "atkInterval": 3,
+    "atkCount": 1,
+    "dmgAddRate": 0,
+    "criRate": 0,
+    "criDmgRate": 500,
+    "dodgeRate": 0,
+    "respawnNeedHpCap": 0,
+    "unlockCondition": "3#2",
+    "lockTip": "通关单向投币II解锁",
+    "charTag": "hitPoison#dot",
+    "resName": "v4a1_m_s12_role1x1_004",
+    "icon": "v4a1_m_s12_role1x1_004",
+    "portrait": "v4a1_m_s12_xx4_5x6_004",
+    "portraitScale": [
+      0.4,
+      0.4
+    ],
+    "portraitOffset": [
+      8,
+      -40
+    ],
+    "scale": [
+      1.5,
+      1.5
+    ],
+    "posOffset": [],
+    "icon2Offset2": [
+      0,
+      47
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ]
+  },
+  {
+    "id": 108,
+    "name": "伊索尔德",
+    "desc": "觥筹交错，人群熙攘，伴着六弦琴声，英雄的史诗与一千个日夜在她的歌谣中回响。",
+    "weaponCollectionId": 4110017,
+    "collectionId": 4110018,
+    "shape": "1#1",
+    "hpCap": 20,
+    "atk": 30,
+    "atkShape": "rect",
+    "atkLength": 5,
+    "atkWidth": 5,
+    "atkInterval": 3,
+    "atkCount": 1,
+    "dmgAddRate": 0,
+    "criRate": 0,
+    "criDmgRate": 500,
+    "dodgeRate": 0,
+    "respawnNeedHpCap": 0,
+    "unlockCondition": "4#107",
+    "lockTip": "使用笃笃骨通关解锁",
+    "charTag": "burn#areaDmg",
+    "resName": "v4a1_m_s12_role1x1_007",
+    "icon": "v4a1_m_s12_role1x1_007",
+    "portrait": "v4a1_m_s12_xx4_5x6_007",
+    "portraitScale": [
+      0.35,
+      0.35
+    ],
+    "portraitOffset": [
+      -9,
+      -23
+    ],
+    "scale": [
+      1.5,
+      1.5
+    ],
+    "posOffset": [],
+    "icon2Offset2": [
+      -40,
+      0
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ]
+  },
+  {
+    "id": 109,
+    "name": "J",
+    "desc": "盔甲精良、长剑锋利……这位选手显然对下一次的大成功志在必得。",
+    "weaponCollectionId": 4110003,
+    "collectionId": 4110004,
+    "shape": "1#1",
+    "hpCap": 30,
+    "atk": 40,
+    "atkShape": "rect",
+    "atkLength": 5,
+    "atkWidth": 5,
+    "atkInterval": 5,
+    "atkCount": 1,
+    "dmgAddRate": 0,
+    "criRate": 0,
+    "criDmgRate": 500,
+    "dodgeRate": 0,
+    "respawnNeedHpCap": 0,
+    "unlockCondition": "1#413003",
+    "lockTip": "击败白公鸡骑士解锁",
+    "charTag": "duel#areaBoom",
+    "resName": "v4a1_m_s12_role1x1_006",
+    "icon": "v4a1_m_s12_role1x1_006",
+    "portrait": "v4a1_m_s12_xx4_5x6_006",
+    "portraitScale": [
+      0.4,
+      0.4
+    ],
+    "portraitOffset": [
+      -26,
+      -56
+    ],
+    "scale": [
+      1.5,
+      1.5
+    ],
+    "posOffset": [],
+    "icon2Offset2": [
+      0,
+      0
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ]
+  },
+  {
+    "id": 110,
+    "name": "洛佩拉",
+    "desc": "穿越像素丛林、缴获宝藏与金币、兑换美味补给，一旁的毛绒伙伴对这次任务的评价是“非常满意”。",
+    "weaponCollectionId": 4110007,
+    "collectionId": 4110008,
+    "shape": "1#1",
+    "hpCap": 20,
+    "atk": 30,
+    "atkShape": "rect",
+    "atkLength": 5,
+    "atkWidth": 5,
+    "atkInterval": 3,
+    "atkCount": 1,
+    "dmgAddRate": 0,
+    "criRate": 100,
+    "criDmgRate": 500,
+    "dodgeRate": 0,
+    "respawnNeedHpCap": 0,
+    "unlockCondition": "2#10000",
+    "lockTip": "累计击杀10000个敌方单位解锁",
+    "charTag": "packShop",
+    "resName": "v4a1_m_s12_role1x1_003",
+    "icon": "v4a1_m_s12_role1x1_003",
+    "portrait": "v4a1_m_s12_xx4_5x6_003",
+    "portraitScale": [
+      0.35,
+      0.35
+    ],
+    "portraitOffset": [
+      -10,
+      -32
+    ],
+    "scale": [
+      1.5,
+      1.5
+    ],
+    "posOffset": [],
+    "icon2Offset2": [
+      -10,
+      30
+    ],
+    "hpPos": [
+      0,
+      -0.4
+    ]
+  }
+]

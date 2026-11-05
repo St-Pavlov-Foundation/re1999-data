@@ -1,0 +1,282 @@
+[
+  {
+    "id": 41001,
+    "score": 50,
+    "reward": 41040011,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41002,
+    "score": 100,
+    "reward": 41040012,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41003,
+    "score": 150,
+    "reward": 41040013,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41004,
+    "score": 200,
+    "reward": 41040014,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41005,
+    "score": 250,
+    "reward": 41040015,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41006,
+    "score": 300,
+    "reward": 41040016,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41007,
+    "score": 350,
+    "reward": 41040017,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41008,
+    "score": 400,
+    "reward": 41040018,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41009,
+    "score": 450,
+    "reward": 41040019,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41010,
+    "score": 500,
+    "reward": 41040020,
+    "special": 1,
+    "activityId": 14109
+  },
+  {
+    "id": 41011,
+    "score": 550,
+    "reward": 41040021,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41012,
+    "score": 600,
+    "reward": 41040022,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41013,
+    "score": 650,
+    "reward": 41040023,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41014,
+    "score": 700,
+    "reward": 41040024,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41015,
+    "score": 750,
+    "reward": 41040025,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41016,
+    "score": 800,
+    "reward": 41040026,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41017,
+    "score": 850,
+    "reward": 41040027,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41018,
+    "score": 900,
+    "reward": 41040028,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41019,
+    "score": 950,
+    "reward": 41040029,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41020,
+    "score": 1000,
+    "reward": 41040030,
+    "special": 1,
+    "activityId": 14109
+  },
+  {
+    "id": 41021,
+    "score": 1050,
+    "reward": 41040031,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41022,
+    "score": 1100,
+    "reward": 41040032,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41023,
+    "score": 1150,
+    "reward": 41040033,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41024,
+    "score": 1200,
+    "reward": 41040034,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41025,
+    "score": 1250,
+    "reward": 41040035,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41026,
+    "score": 1300,
+    "reward": 41040036,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41027,
+    "score": 1350,
+    "reward": 41040037,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41028,
+    "score": 1400,
+    "reward": 41040038,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41029,
+    "score": 1450,
+    "reward": 41040039,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41030,
+    "score": 1500,
+    "reward": 41040040,
+    "special": 1,
+    "activityId": 14109
+  },
+  {
+    "id": 41031,
+    "score": 1550,
+    "reward": 41040041,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41032,
+    "score": 1600,
+    "reward": 41040042,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41033,
+    "score": 1650,
+    "reward": 41040043,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41034,
+    "score": 1700,
+    "reward": 41040044,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41035,
+    "score": 1750,
+    "reward": 41040045,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41036,
+    "score": 1800,
+    "reward": 41040046,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41037,
+    "score": 1850,
+    "reward": 41040047,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41038,
+    "score": 1900,
+    "reward": 41040048,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41039,
+    "score": 1950,
+    "reward": 41040049,
+    "special": 0,
+    "activityId": 14109
+  },
+  {
+    "id": 41040,
+    "score": 2000,
+    "reward": 41040050,
+    "special": 1,
+    "activityId": 14109
+  }
+]

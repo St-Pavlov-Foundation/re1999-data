@@ -1,0 +1,218 @@
+[
+  {
+    "id": 41310011,
+    "type": "collAttr",
+    "typeParam": "8:200",
+    "reapply": false
+  },
+  {
+    "id": 41310021,
+    "type": "collAttr",
+    "typeParam": "4:1",
+    "reapply": false
+  },
+  {
+    "id": 41310031,
+    "type": "collAttr",
+    "typeParam": "5:1",
+    "reapply": false
+  },
+  {
+    "id": 41310041,
+    "type": "collAttr",
+    "typeParam": "2:4#1:4",
+    "reapply": false
+  },
+  {
+    "id": 41310051,
+    "type": "collAttr",
+    "typeParam": "9:150",
+    "reapply": false
+  },
+  {
+    "id": 41310061,
+    "type": "collAttr",
+    "typeParam": "10:150",
+    "reapply": false
+  },
+  {
+    "id": 41310071,
+    "type": "collAttr",
+    "typeParam": "11:150",
+    "reapply": false
+  },
+  {
+    "id": 41310081,
+    "type": "exitCoin",
+    "typeParam": "10",
+    "reapply": false
+  },
+  {
+    "id": 41310101,
+    "type": "levelConst",
+    "typeParam": "0.5",
+    "reapply": false
+  },
+  {
+    "id": 41310111,
+    "type": "attrConvert",
+    "typeParam": "3#1#100",
+    "reapply": false
+  },
+  {
+    "id": 41310131,
+    "type": "freeRefresh",
+    "typeParam": "1",
+    "reapply": true
+  },
+  {
+    "id": 41310161,
+    "type": "collAttr",
+    "typeParam": "8:400",
+    "reapply": false
+  },
+  {
+    "id": 41310171,
+    "type": "collAttr",
+    "typeParam": "2:8#1:8",
+    "reapply": false
+  },
+  {
+    "id": 41310181,
+    "type": "dupReward",
+    "typeParam": "2#2000#0",
+    "reapply": false
+  },
+  {
+    "id": 41310191,
+    "type": "laterQuality",
+    "typeParam": "3#2:40#3:60",
+    "reapply": false
+  },
+  {
+    "id": 41310201,
+    "type": "shopWeight",
+    "typeParam": "1:-150#2:100#3:50",
+    "reapply": false
+  },
+  {
+    "id": 41320061,
+    "type": "shopDiscount",
+    "typeParam": "20",
+    "reapply": false
+  },
+  {
+    "id": 41320071,
+    "type": "randomPack",
+    "typeParam": "2#4130003:600#4130001:300#4130002:100",
+    "reapply": false
+  },
+  {
+    "id": 41320121,
+    "type": "spendReward",
+    "typeParam": "1500#1#4130003:600#4130001:300#4130002:100",
+    "reapply": false
+  },
+  {
+    "id": 41330021,
+    "type": "collAttr",
+    "typeParam": "2:30",
+    "reapply": false
+  },
+  {
+    "id": 41330022,
+    "type": "hpPurchase",
+    "typeParam": "125",
+    "reapply": false
+  },
+  {
+    "id": 41330071,
+    "type": "packPick",
+    "typeParam": "2",
+    "reapply": false
+  },
+  {
+    "id": 41330081,
+    "type": "dupReward",
+    "typeParam": "3#99999#99",
+    "reapply": false
+  },
+  {
+    "id": 41330091,
+    "type": "collAttr",
+    "typeParam": "8:1000",
+    "reapply": false
+  },
+  {
+    "id": 41330101,
+    "type": "collAttr",
+    "typeParam": "4:1#5:1",
+    "reapply": false
+  },
+  {
+    "id": 41330111,
+    "type": "collAttr",
+    "typeParam": "4:1#5:1#8:-500",
+    "reapply": false
+  },
+  {
+    "id": 41330121,
+    "type": "collAttr",
+    "typeParam": "2:20#1:20",
+    "reapply": false
+  },
+  {
+    "id": 41330131,
+    "type": "collAttr",
+    "typeParam": "9:500",
+    "reapply": false
+  },
+  {
+    "id": 41330141,
+    "type": "collAttr",
+    "typeParam": "10:500",
+    "reapply": false
+  },
+  {
+    "id": 41330151,
+    "type": "collAttr",
+    "typeParam": "11:300",
+    "reapply": false
+  },
+  {
+    "id": 41320201,
+    "type": "collAttr",
+    "typeParam": "9:250#10:250",
+    "reapply": false
+  },
+  {
+    "id": 41100081,
+    "type": "replaceShop",
+    "typeParam": "4150002",
+    "reapply": true
+  },
+  {
+    "id": 4140001,
+    "type": "collAttr",
+    "typeParam": "2:4#1:4",
+    "reapply": false
+  },
+  {
+    "id": 4140002,
+    "type": "collAttr",
+    "typeParam": "9:150",
+    "reapply": false
+  },
+  {
+    "id": 4140003,
+    "type": "collAttr",
+    "typeParam": "3:6",
+    "reapply": false
+  },
+  {
+    "id": 4140008,
+    "type": "monsterSpawn",
+    "typeParam": "50#5",
+    "reapply": false
+  }
+]

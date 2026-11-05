@@ -5,12 +5,13 @@
     "typeName": "信仰的移位",
     "minType": 1,
     "galleryBg": "v3a2_bossrush_handbook_boss3",
-    "point": "2500000|5000000|7500000|10000000",
-    "pointExp": "200|200|50|50",
+    "point": "2500000|5000000|7500000|8500000|10000000",
+    "pointExp": "200|200|50|50|50",
     "recommendStrategy": "4#11",
     "lurkNumber": 100,
     "sort": 1,
-    "offline": 0
+    "offline": 0,
+    "resource": "13420_3"
   },
   {
     "type": 102,
@@ -18,12 +19,13 @@
     "typeName": "蜕化的残响",
     "minType": 2,
     "galleryBg": "v3a2_bossrush_handbook_boss1",
-    "point": "2500000|5000000|7500000|10000000",
-    "pointExp": "200|200|50|50",
+    "point": "2500000|5000000|7500000|8500000|10000000",
+    "pointExp": "200|200|50|50|50",
     "recommendStrategy": "4#13",
     "lurkNumber": 100,
     "sort": 1,
-    "offline": 0
+    "offline": 0,
+    "resource": "13742_3"
   },
   {
     "type": 103,
@@ -31,12 +33,13 @@
     "typeName": "超限的囚徒",
     "minType": 3,
     "galleryBg": "v3a2_bossrush_handbook_boss2",
-    "point": "2500000|5000000|7500000|10000000",
-    "pointExp": "200|200|50|50",
+    "point": "2500000|5000000|7500000|8500000|10000000",
+    "pointExp": "200|200|50|50|50",
     "recommendStrategy": "3#9",
     "lurkNumber": 100,
     "sort": 1,
-    "offline": 0
+    "offline": 0,
+    "resource": "13315_3"
   },
   {
     "type": 104,
@@ -44,12 +47,13 @@
     "typeName": "急性猩红症",
     "minType": 4,
     "galleryBg": "v3a3_bossrush_handbook_boss1",
-    "point": "2500000|5000000|7500000|10000000",
-    "pointExp": "200|200|50|50",
+    "point": "2500000|5000000|7500000|8500000|10000000",
+    "pointExp": "200|200|50|50|50",
     "recommendStrategy": "4#19",
     "lurkNumber": 100,
     "sort": 1,
-    "offline": 0
+    "offline": 0,
+    "resource": "13809_3"
   },
   {
     "type": 105,
@@ -57,12 +61,13 @@
     "typeName": "毁灭的履带",
     "minType": 5,
     "galleryBg": "v3a4_bossrush_handbook_boss1",
-    "point": "2500000|5000000|7500000|10000000",
-    "pointExp": "200|200|50|50",
+    "point": "2500000|5000000|7500000|8500000|10000000",
+    "pointExp": "200|200|50|50|50",
     "recommendStrategy": "4#18",
     "lurkNumber": 100,
     "sort": 1,
-    "offline": 0
+    "offline": 0,
+    "resource": "138520_3"
   },
   {
     "type": 106,
@@ -70,12 +75,13 @@
     "typeName": "信仰的移位·Ⅱ型",
     "minType": 1,
     "galleryBg": "v3a5_bossrush_handbook_boss1",
-    "point": "2500000|5000000|7500000|10000000",
-    "pointExp": "200|200|50|50",
+    "point": "2500000|5000000|7500000|8500000|10000000",
+    "pointExp": "200|200|50|50|50",
     "recommendStrategy": "4#11",
     "lurkNumber": 0,
     "sort": 2,
-    "offline": 0
+    "offline": 0,
+    "resource": "14009_3"
   },
   {
     "type": 107,
@@ -83,12 +89,13 @@
     "typeName": "超限的囚徒·Ⅱ型",
     "minType": 3,
     "galleryBg": "v3a6_bossrush_handbook_boss1",
-    "point": "2500000|5000000|7500000|10000000",
-    "pointExp": "200|200|50|50",
+    "point": "2500000|5000000|7500000|8500000|10000000",
+    "pointExp": "200|200|50|50|50",
     "recommendStrategy": "3#9",
     "lurkNumber": 0,
     "sort": 2,
-    "offline": 0
+    "offline": 0,
+    "resource": "13742_2"
   },
   {
     "type": 108,
@@ -96,12 +103,13 @@
     "typeName": "旧日的荣耀",
     "minType": 6,
     "galleryBg": "v3a7_bossrush_handbook_boss1",
-    "point": "2500000|5000000|7500000|10000000",
-    "pointExp": "200|200|50|50",
+    "point": "2500000|5000000|7500000|8500000|10000000",
+    "pointExp": "200|200|50|50|50",
     "recommendStrategy": "3#9",
     "lurkNumber": 0,
     "sort": 1,
-    "offline": 0
+    "offline": 0,
+    "resource": "13916_3"
   },
   {
     "type": 109,
@@ -109,12 +117,13 @@
     "typeName": "太阳的宠臣",
     "minType": 7,
     "galleryBg": "v3a8_bossrush_handbook_boss1",
-    "point": "2500000|5000000|7500000|10000000",
-    "pointExp": "200|200|50|50",
+    "point": "2500000|5000000|7500000|8500000|10000000",
+    "pointExp": "200|200|50|50|50",
     "recommendStrategy": "20#21",
     "lurkNumber": 100,
     "sort": 1,
-    "offline": 0
+    "offline": 0,
+    "resource": "14009_2"
   },
   {
     "type": 110,
@@ -127,7 +136,8 @@
     "recommendStrategy": "4#15",
     "lurkNumber": 0,
     "sort": 0,
-    "offline": 1
+    "offline": 1,
+    "resource": ""
   },
   {
     "type": 111,
@@ -135,12 +145,13 @@
     "typeName": "急性猩红症·Ⅱ型",
     "minType": 4,
     "galleryBg": "v3a9_bossrush_handbook_boss1",
-    "point": "2500000|5000000|7500000|10000000",
-    "pointExp": "200|200|50|50",
+    "point": "2500000|5000000|7500000|8500000|10000000",
+    "pointExp": "200|200|50|50|50",
     "recommendStrategy": "4#8",
     "lurkNumber": 0,
     "sort": 2,
-    "offline": 0
+    "offline": 0,
+    "resource": "13916_1"
   },
   {
     "type": 115,
@@ -148,11 +159,54 @@
     "typeName": "子弹的冬年",
     "minType": 9,
     "galleryBg": "v4a0_bossrush_handbook_boss1",
+    "point": "2500000|5000000|7500000|8500000|10000000",
+    "pointExp": "200|200|50|50|50",
+    "recommendStrategy": "",
+    "lurkNumber": 0,
+    "sort": 1,
+    "offline": 0,
+    "resource": "14009_1"
+  },
+  {
+    "type": 116,
+    "id": 109410101,
+    "typeName": "神话的遗闻",
+    "minType": 10,
+    "galleryBg": "v4a1_bossrush_handbook_boss1",
     "point": "2500000|5000000|7500000|10000000",
     "pointExp": "200|200|50|50",
     "recommendStrategy": "",
     "lurkNumber": 0,
     "sort": 1,
-    "offline": 0
+    "offline": 0,
+    "resource": ""
+  },
+  {
+    "type": 117,
+    "id": 109410201,
+    "typeName": "思想的表观",
+    "minType": 11,
+    "galleryBg": "v4a1_bossrush_handbook_boss2",
+    "point": "2500000|5000000|7500000|10000000",
+    "pointExp": "200|200|50|50",
+    "recommendStrategy": "",
+    "lurkNumber": 0,
+    "sort": 2,
+    "offline": 0,
+    "resource": ""
+  },
+  {
+    "type": 118,
+    "id": 109410301,
+    "typeName": "生命的饥馑",
+    "minType": 12,
+    "galleryBg": "v4a1_bossrush_handbook_boss3",
+    "point": "2500000|5000000|7500000|10000000",
+    "pointExp": "200|200|50|50",
+    "recommendStrategy": "",
+    "lurkNumber": 0,
+    "sort": 3,
+    "offline": 0,
+    "resource": ""
   }
 ]

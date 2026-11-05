@@ -2,61 +2,73 @@
   {
     "activityId": 13119,
     "link": "https://re.bluepoch.com/event/aflowingfeast/",
-    "bgResUrl": ""
+    "bgResUrl": "",
+    "overseaSwitch": 0
   },
   {
     "activityId": 13237,
     "link": "https://re.bluepoch.com/event/riversidescouting/",
-    "bgResUrl": ""
+    "bgResUrl": "",
+    "overseaSwitch": 0
   },
   {
     "activityId": 13303,
     "link": "https://re.bluepoch.com/event/asliverofspring/",
-    "bgResUrl": "singlebg_lang/txt_activity/activity_h5_banner.png"
+    "bgResUrl": "singlebg_lang/txt_activity/activity_h5_banner.png",
+    "overseaSwitch": 0
   },
   {
     "activityId": 13323,
     "link": "https://re.bluepoch.com/event/uttu/",
-    "bgResUrl": "singlebg_lang/txt_activity/activity_h5_banner_zhoubian.png"
+    "bgResUrl": "singlebg_lang/txt_activity/activity_h5_banner_zhoubian.png",
+    "overseaSwitch": 0
   },
   {
     "activityId": 13446,
     "link": "https://re.bluepoch.com/event/gallery/",
-    "bgResUrl": "singlebg_lang/txt_activity/activity_h5_banner.png"
+    "bgResUrl": "singlebg_lang/txt_activity/activity_h5_banner.png",
+    "overseaSwitch": 0
   },
   {
     "activityId": 13522,
     "link": "https://re.bluepoch.com/event/enigmaoffice/",
-    "bgResUrl": "singlebg_lang/txt_activity/activity_h5_banner.png"
+    "bgResUrl": "singlebg_lang/txt_activity/activity_h5_banner.png",
+    "overseaSwitch": 0
   },
   {
     "activityId": 13613,
     "link": "https://re.bluepoch.com/event/letter/",
-    "bgResUrl": "singlebg_lang/txt_activity/activity_h5_banner.png"
+    "bgResUrl": "singlebg_lang/txt_activity/activity_h5_banner.png",
+    "overseaSwitch": 0
   },
   {
     "activityId": 13735,
     "link": "https://re.bluepoch.com/event/stonebystone/",
-    "bgResUrl": "singlebg_lang/txt_activity/activity_h5_banner_3.png"
+    "bgResUrl": "singlebg_lang/txt_activity/activity_h5_banner_3.png",
+    "overseaSwitch": 0
   },
   {
     "activityId": 13745,
     "link": "https://re.bluepoch.com/event/3rdanniversary/",
-    "bgResUrl": "singlebg_lang/txt_activity/activity_h5_banner_2.png"
+    "bgResUrl": "singlebg_lang/txt_activity/activity_h5_banner_2.png",
+    "overseaSwitch": 0
   },
   {
     "activityId": 13823,
     "link": "https://re.bluepoch.com/event/thepolymerfiles/",
-    "bgResUrl": "singlebg_lang/txt_activity/activity_h5_banner.png"
+    "bgResUrl": "singlebg_lang/txt_activity/activity_h5_banner.png",
+    "overseaSwitch": 0
   },
   {
     "activityId": 138526,
     "link": "https://re.bluepoch.com/event/teamup/",
-    "bgResUrl": "singlebg_lang/txt_activity/activity_h5_banner.png"
+    "bgResUrl": "singlebg_lang/txt_activity/activity_h5_banner.png",
+    "overseaSwitch": 0
   },
   {
     "activityId": 13909,
-    "link": "https://re.bluepoch.com/event/onthecase/",
-    "bgResUrl": "singlebg_lang/txt_activity/activity_h5_banner.png"
+    "link": "https://re.bluepoch.com/event/enigmaoffice/",
+    "bgResUrl": "singlebg_lang/txt_activity/activity_h5_banner.png",
+    "overseaSwitch": 1
   }
 ]

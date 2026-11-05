@@ -7,6 +7,7 @@
     "stage": 0,
     "decStage": 303,
     "feature": "frozen",
+    "extraKeys": "",
     "desc": "冻结"
   },
   {
@@ -17,6 +18,7 @@
     "stage": 301,
     "decStage": 303,
     "feature": "burn#100#100",
+    "extraKeys": "",
     "desc": "躁动"
   },
   {
@@ -27,6 +29,7 @@
     "stage": 301,
     "decStage": 303,
     "feature": "chaos",
+    "extraKeys": "",
     "desc": "混乱"
   },
   {
@@ -37,6 +40,7 @@
     "stage": 0,
     "decStage": 303,
     "feature": "discard",
+    "extraKeys": "",
     "desc": "弃置"
   },
   {
@@ -47,6 +51,7 @@
     "stage": 0,
     "decStage": 303,
     "feature": "blockade",
+    "extraKeys": "",
     "desc": "封锁"
   },
   {
@@ -57,6 +62,7 @@
     "stage": 201,
     "decStage": 303,
     "feature": "precision#201#1000#213#1000",
+    "extraKeys": "",
     "desc": "精准"
   },
   {
@@ -67,6 +73,7 @@
     "stage": 212,
     "decStage": 303,
     "feature": "depresse#100#100",
+    "extraKeys": "",
     "desc": "气脉郁结"
   },
   {
@@ -77,6 +84,7 @@
     "stage": 0,
     "decStage": 303,
     "feature": "rouge2Attr102",
+    "extraKeys": "",
     "desc": ""
   },
   {
@@ -87,6 +95,7 @@
     "stage": 0,
     "decStage": 303,
     "feature": "rouge2Attr103",
+    "extraKeys": "",
     "desc": ""
   },
   {
@@ -97,6 +106,7 @@
     "stage": 0,
     "decStage": 303,
     "feature": "ramona",
+    "extraKeys": "",
     "desc": "附灵"
   },
   {
@@ -107,6 +117,7 @@
     "stage": 0,
     "decStage": 303,
     "feature": "lorenz",
+    "extraKeys": "",
     "desc": "分维"
   },
   {
@@ -117,6 +128,7 @@
     "stage": 0,
     "decStage": 303,
     "feature": "degradation",
+    "extraKeys": "",
     "desc": "噤声的高墙"
   },
   {
@@ -127,6 +139,51 @@
     "stage": 0,
     "decStage": 303,
     "feature": "notCalSize",
+    "extraKeys": "",
     "desc": "保鲜"
+  },
+  {
+    "id": 10014,
+    "coverType": "1",
+    "excludeTypes": "",
+    "rejectTypes": "",
+    "stage": 0,
+    "decStage": 303,
+    "feature": "frozen",
+    "extraKeys": "",
+    "desc": "冻结且有动画表现"
+  },
+  {
+    "id": 10015,
+    "coverType": "1",
+    "excludeTypes": "",
+    "rejectTypes": "",
+    "stage": 201,
+    "decStage": 303,
+    "feature": "precision",
+    "extraKeys": "",
+    "desc": "精准无视闪避"
+  },
+  {
+    "id": 10016,
+    "coverType": "1",
+    "excludeTypes": "",
+    "rejectTypes": "10001#10002#10005#10007#10010#10011",
+    "stage": 0,
+    "decStage": 0,
+    "feature": "evelyn",
+    "extraKeys": "1#8#9#10#11#12",
+    "desc": "怪味糖果"
+  },
+  {
+    "id": 10017,
+    "coverType": "1",
+    "excludeTypes": "",
+    "rejectTypes": "10001#10002#10005#10007#10010#10011",
+    "stage": 0,
+    "decStage": 0,
+    "feature": "evelyn2",
+    "extraKeys": "1#8#9#10#11#12",
+    "desc": "怪味糖果"
   }
 ]

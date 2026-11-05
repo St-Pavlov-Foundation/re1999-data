@@ -34,5 +34,11 @@
     "subType": 2,
     "reddotId": 3505,
     "jumpId": 3401
+  },
+  {
+    "activityId": 14119,
+    "subType": 3,
+    "reddotId": 3506,
+    "jumpId": 3501
   }
 ]

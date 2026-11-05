@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "resName": "v4a1_peishita_game_item_role1",
+    "layer": 2
+  },
+  {
+    "id": 2,
+    "resName": "v4a1_peishita_game_item_role3",
+    "layer": 3
+  },
+  {
+    "id": 3,
+    "resName": "v4a1_peishita_game_wall",
+    "layer": 1
+  },
+  {
+    "id": 4,
+    "resName": "v4a1_peishita_game_item_weapon1#v4a1_peishita_game_item_weapon2",
+    "layer": 3
+  },
+  {
+    "id": 5,
+    "resName": "v4a1_peishita_game_item_role2",
+    "layer": 3
+  },
+  {
+    "id": 6,
+    "resName": "v4a1_peishita_game_item_end",
+    "layer": 1
+  }
+]

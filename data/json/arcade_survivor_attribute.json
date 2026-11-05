@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "name": "生命值",
+    "min": 0,
+    "max": 0,
+    "icon": "",
+    "sort": 0
+  },
+  {
+    "id": 2,
+    "name": "生命上限",
+    "min": 0,
+    "max": 0,
+    "icon": "v4a1_eliminate_heart_1",
+    "sort": 2
+  },
+  {
+    "id": 3,
+    "name": "攻击力",
+    "min": 0,
+    "max": 0,
+    "icon": "v4a1_eliminate_tips_icon6",
+    "sort": 1
+  },
+  {
+    "id": 4,
+    "name": "攻击长度",
+    "min": 0,
+    "max": 0,
+    "icon": "",
+    "sort": 0
+  },
+  {
+    "id": 5,
+    "name": "攻击宽度",
+    "min": 0,
+    "max": 0,
+    "icon": "",
+    "sort": 0
+  },
+  {
+    "id": 6,
+    "name": "攻击间隔",
+    "min": 0,
+    "max": 0,
+    "icon": "",
+    "sort": 0
+  },
+  {
+    "id": 7,
+    "name": "攻击段数",
+    "min": 0,
+    "max": 0,
+    "icon": "",
+    "sort": 0
+  },
+  {
+    "id": 8,
+    "name": "伤害增幅率",
+    "min": 0,
+    "max": 0,
+    "icon": "",
+    "sort": 0
+  },
+  {
+    "id": 9,
+    "name": "暴击率",
+    "min": 0,
+    "max": 0,
+    "icon": "",
+    "sort": 0
+  },
+  {
+    "id": 10,
+    "name": "暴击伤害增幅率",
+    "min": 0,
+    "max": 0,
+    "icon": "",
+    "sort": 0
+  },
+  {
+    "id": 11,
+    "name": "闪避率",
+    "min": 0,
+    "max": 750,
+    "icon": "v4a1_eliminate_tips_icon2",
+    "sort": 3
+  },
+  {
+    "id": 12,
+    "name": "复活次数",
+    "min": 0,
+    "max": 0,
+    "icon": "v4a1_eliminate_tips_icon4",
+    "sort": 4
+  }
+]

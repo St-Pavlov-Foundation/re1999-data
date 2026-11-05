@@ -670,5 +670,12 @@
     "patFaceViewName": "VersionActivity4_0StoneGiftPanelView",
     "patFaceStoryId": 0,
     "patFaceOrder": 0
+  },
+  {
+    "id": 40100,
+    "patFaceActivityId": 0,
+    "patFaceViewName": "",
+    "patFaceStoryId": 0,
+    "patFaceOrder": 40100
   }
 ]

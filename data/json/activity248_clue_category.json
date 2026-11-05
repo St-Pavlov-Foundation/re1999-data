@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "notShow": 0,
+    "name": "死因"
+  },
+  {
+    "id": 2,
+    "notShow": 0,
+    "name": "作案方式"
+  },
+  {
+    "id": 3,
+    "notShow": 0,
+    "name": "案发时间"
+  },
+  {
+    "id": 4,
+    "notShow": 0,
+    "name": "杀人动机"
+  },
+  {
+    "id": 5,
+    "notShow": 0,
+    "name": "潜在线索"
+  },
+  {
+    "id": 6,
+    "notShow": 1,
+    "name": "第一目击者"
+  }
+]

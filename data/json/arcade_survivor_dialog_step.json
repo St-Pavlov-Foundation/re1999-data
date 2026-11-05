@@ -1,0 +1,86 @@
+[
+  {
+    "groupId": 4180001,
+    "step": 1,
+    "content": "无知的勇者，竟杆闯入窝们的领地！",
+    "name": "大大大统领！",
+    "avatar": "v4a1_m_s12_gw3x3_002"
+  },
+  {
+    "groupId": 4180002,
+    "step": 1,
+    "content": "哼哼，让泥见识窝门真正的石粒！",
+    "name": "大大大统领！",
+    "avatar": "v4a1_m_s12_gw3x3_002"
+  },
+  {
+    "groupId": 4180003,
+    "step": 1,
+    "content": "向荣耀白公鸡骑士宣誓吧！",
+    "name": "白公鸡骑士",
+    "avatar": "v3a3_m_s12_gw2x3_003"
+  },
+  {
+    "groupId": 4180004,
+    "step": 1,
+    "content": "我的信念绝不因此让步！",
+    "name": "白公鸡骑士",
+    "avatar": "v3a3_m_s12_gw2x3_003"
+  },
+  {
+    "groupId": 4180005,
+    "step": 1,
+    "content": "目标已锁定，进入倒数阶段——",
+    "name": "战争型火炮",
+    "avatar": "v4a1_m_s12_gw3x3_001"
+  },
+  {
+    "groupId": 4180006,
+    "step": 1,
+    "content": "情况复杂！启动紧急程序！",
+    "name": "战争型火炮",
+    "avatar": "v4a1_m_s12_gw3x3_001"
+  },
+  {
+    "groupId": 4180007,
+    "step": 1,
+    "content": "有人要闯进来了！保安呢？快叫保安！！",
+    "name": "宝藏的守门者",
+    "avatar": "v4a1_m_s12_gw3x3_004"
+  },
+  {
+    "groupId": 4180008,
+    "step": 1,
+    "content": "喂？有人吗？这里需要增援！",
+    "name": "宝藏的守门者",
+    "avatar": "v4a1_m_s12_gw3x3_004"
+  },
+  {
+    "groupId": 4180009,
+    "step": 1,
+    "content": "吼——吼——“语言相通”【检定：大失败】（你无法得知这条龙说了什么，但从四面八方的龙焰来看，它应该相当愤怒。）",
+    "name": "提丰",
+    "avatar": "v4a1_m_s12_gw3x3_003"
+  },
+  {
+    "groupId": 4180010,
+    "step": 1,
+    "content": "在岩浆里融化！“意念感应”【检定：成功】（不出所料，它也没有让你安全离开的意思。）",
+    "name": "提丰",
+    "avatar": "v4a1_m_s12_gw3x3_003"
+  },
+  {
+    "groupId": 4180011,
+    "step": 1,
+    "content": "发现闯入者，立刻包围目标！",
+    "name": "地牢卫兵长",
+    "avatar": "v4a1_m_s12_gw2x2_003"
+  },
+  {
+    "groupId": 4180012,
+    "step": 1,
+    "content": "阵型不变，继续进攻！",
+    "name": "地牢卫兵长",
+    "avatar": "v4a1_m_s12_gw2x2_003"
+  }
+]

@@ -121,7 +121,7 @@
     "priority": 1,
     "type": 1,
     "jumpId": 54,
-    "desc": "是否立即前往使用\n【箱装友谊】",
+    "desc": "是否立即前往使用\\n【箱装友谊】",
     "descParam": "",
     "checkParam": ""
   },
@@ -148,7 +148,7 @@
     "priority": 1,
     "type": 1,
     "jumpId": 54,
-    "desc": "是否立即前往使用\n【载波收藏匣】",
+    "desc": "是否立即前往使用\\n【载波收藏匣】",
     "descParam": "",
     "checkParam": ""
   },
@@ -157,7 +157,7 @@
     "priority": 2,
     "type": 1,
     "jumpId": 54,
-    "desc": "是否立即前往使用\n【旧雨臻选衣箱·Unique】",
+    "desc": "是否立即前往使用\\n【旧雨臻选衣箱·Unique】",
     "descParam": "",
     "checkParam": ""
   },
@@ -166,7 +166,7 @@
     "priority": 3,
     "type": 1,
     "jumpId": 54,
-    "desc": "是否立即前往使用\n【箱装同行录】",
+    "desc": "是否立即前往使用\\n【箱装同行录】",
     "descParam": "",
     "checkParam": ""
   },

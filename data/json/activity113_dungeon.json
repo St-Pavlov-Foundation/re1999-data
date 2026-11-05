@@ -418,5 +418,25 @@
     "chapterId": 39401,
     "activityId": 13902,
     "openDay": 1
+  },
+  {
+    "chapterId": 41101,
+    "activityId": 14102,
+    "openDay": 1
+  },
+  {
+    "chapterId": 41201,
+    "activityId": 14102,
+    "openDay": 8
+  },
+  {
+    "chapterId": 41301,
+    "activityId": 14102,
+    "openDay": 1
+  },
+  {
+    "chapterId": 41401,
+    "activityId": 14102,
+    "openDay": 1
   }
 ]

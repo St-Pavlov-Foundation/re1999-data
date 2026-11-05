@@ -20395,6 +20395,1011 @@
     "bankName": "prologuechapter_14_part03"
   },
   {
+    "id": 41500001,
+    "eventName": "play_activitysfx_atlantis_hall_lp",
+    "bankName": "activity_atlantis4_1_sfx_part01"
+  },
+  {
+    "id": 41500002,
+    "eventName": "play_activitysfx_atlantis_laugh",
+    "bankName": "activity_atlantis4_1_sfx_part01"
+  },
+  {
+    "id": 41500003,
+    "eventName": "play_activitysfx_atlantis_carriage_lp",
+    "bankName": "activity_atlantis4_1_sfx_part01"
+  },
+  {
+    "id": 41500004,
+    "eventName": "play_activitysfx_atlantis_carriage2_lp",
+    "bankName": "activity_atlantis4_1_sfx_part01"
+  },
+  {
+    "id": 41500005,
+    "eventName": "play_activitysfx_atlantis_carriage3",
+    "bankName": "activity_atlantis4_1_sfx_part01"
+  },
+  {
+    "id": 41500006,
+    "eventName": "play_activitysfx_atlantis_carriage4",
+    "bankName": "activity_atlantis4_1_sfx_part01"
+  },
+  {
+    "id": 41500007,
+    "eventName": "play_activitysfx_atlantis_argue_lp",
+    "bankName": "activity_atlantis4_1_sfx_part01"
+  },
+  {
+    "id": 41500008,
+    "eventName": "play_activitysfx_atlantis_argue2_lp",
+    "bankName": "activity_atlantis4_1_sfx_part01"
+  },
+  {
+    "id": 41500009,
+    "eventName": "play_activitysfx_atlantis_pu",
+    "bankName": "activity_atlantis4_1_sfx_part01"
+  },
+  {
+    "id": 41500010,
+    "eventName": "play_activitysfx_atlantis_climb",
+    "bankName": "activity_atlantis4_1_sfx_part01"
+  },
+  {
+    "id": 41500011,
+    "eventName": "play_activitysfx_atlantis_gnaw_lp",
+    "bankName": "activity_atlantis4_1_sfx_part01"
+  },
+  {
+    "id": 41500012,
+    "eventName": "play_activitysfx_atlantis_getoff",
+    "bankName": "activity_atlantis4_1_sfx_part01"
+  },
+  {
+    "id": 41500013,
+    "eventName": "play_activitysfx_atlantis_hat",
+    "bankName": "activity_atlantis4_1_sfx_part01"
+  },
+  {
+    "id": 41500014,
+    "eventName": "play_activitysfx_atlantis_jump",
+    "bankName": "activity_atlantis4_1_sfx_part01"
+  },
+  {
+    "id": 41500015,
+    "eventName": "play_activitysfx_atlantis_ftstp1_lp",
+    "bankName": "activity_atlantis4_1_sfx_part01"
+  },
+  {
+    "id": 41500016,
+    "eventName": "play_activitysfx_atlantis_ftstp2_lp",
+    "bankName": "activity_atlantis4_1_sfx_part01"
+  },
+  {
+    "id": 41500017,
+    "eventName": "play_activitysfx_atlantis_ftstp3_lp",
+    "bankName": "activity_atlantis4_1_sfx_part01"
+  },
+  {
+    "id": 41500018,
+    "eventName": "play_activitysfx_atlantis_sugar1",
+    "bankName": "activity_atlantis4_1_sfx_part01"
+  },
+  {
+    "id": 41500019,
+    "eventName": "play_activitysfx_atlantis_sugar2",
+    "bankName": "activity_atlantis4_1_sfx_part01"
+  },
+  {
+    "id": 41500020,
+    "eventName": "play_activitysfx_atlantis_sugar3",
+    "bankName": "activity_atlantis4_1_sfx_part01"
+  },
+  {
+    "id": 41500021,
+    "eventName": "play_activitysfx_atlantis_neck",
+    "bankName": "activity_atlantis4_1_sfx_part01"
+  },
+  {
+    "id": 41500022,
+    "eventName": "play_activitysfx_atlantis_box",
+    "bankName": "activity_atlantis4_1_sfx_part01"
+  },
+  {
+    "id": 41500023,
+    "eventName": "play_activitysfx_atlantis_flip_lp",
+    "bankName": "activity_atlantis4_1_sfx_part01"
+  },
+  {
+    "id": 41500024,
+    "eventName": "play_activitysfx_atlantis_sit",
+    "bankName": "activity_atlantis4_1_sfx_part01"
+  },
+  {
+    "id": 41500025,
+    "eventName": "play_activitysfx_atlantis_huanjue_lp",
+    "bankName": "activity_atlantis4_1_sfx_part01"
+  },
+  {
+    "id": 41500026,
+    "eventName": "play_activitysfx_atlantis_dock_lp",
+    "bankName": "activity_atlantis4_1_sfx_part01"
+  },
+  {
+    "id": 41500027,
+    "eventName": "play_activitysfx_atlantis_mojing1_lp",
+    "bankName": "activity_atlantis4_1_sfx_part01"
+  },
+  {
+    "id": 41500028,
+    "eventName": "play_activitysfx_atlantis_mojing2",
+    "bankName": "activity_atlantis4_1_sfx_part01"
+  },
+  {
+    "id": 41500029,
+    "eventName": "play_activitysfx_atlantis_coin",
+    "bankName": "activity_atlantis4_1_sfx_part02"
+  },
+  {
+    "id": 41500030,
+    "eventName": "play_activitysfx_atlantis_fall1",
+    "bankName": "activity_atlantis4_1_sfx_part02"
+  },
+  {
+    "id": 41500031,
+    "eventName": "play_activitysfx_atlantis_sbmre_lp",
+    "bankName": "activity_atlantis4_1_sfx_part02"
+  },
+  {
+    "id": 41500032,
+    "eventName": "play_activitysfx_atlantis_sbmre2",
+    "bankName": "activity_atlantis4_1_sfx_part02"
+  },
+  {
+    "id": 41500033,
+    "eventName": "play_activitysfx_atlantis_sbmre3",
+    "bankName": "activity_atlantis4_1_sfx_part02"
+  },
+  {
+    "id": 41500034,
+    "eventName": "play_activitysfx_atlantis_sbmre4",
+    "bankName": "activity_atlantis4_1_sfx_part02"
+  },
+  {
+    "id": 41500035,
+    "eventName": "play_activitysfx_atlantis_sbmre5",
+    "bankName": "activity_atlantis4_1_sfx_part02"
+  },
+  {
+    "id": 41500036,
+    "eventName": "play_activitysfx_atlantis_sbmre6",
+    "bankName": "activity_atlantis4_1_sfx_part02"
+  },
+  {
+    "id": 41500037,
+    "eventName": "play_activitysfx_atlantis_sbmre7",
+    "bankName": "activity_atlantis4_1_sfx_part02"
+  },
+  {
+    "id": 41500038,
+    "eventName": "play_activitysfx_atlantis_sbmre8_lp",
+    "bankName": "activity_atlantis4_1_sfx_part02"
+  },
+  {
+    "id": 41500039,
+    "eventName": "play_activitysfx_atlantis_sbmre9",
+    "bankName": "activity_atlantis4_1_sfx_part02"
+  },
+  {
+    "id": 41500040,
+    "eventName": "play_activitysfx_atlantis_sbmre10",
+    "bankName": "activity_atlantis4_1_sfx_part02"
+  },
+  {
+    "id": 41500041,
+    "eventName": "play_activitysfx_atlantis_sbmre11",
+    "bankName": "activity_atlantis4_1_sfx_part02"
+  },
+  {
+    "id": 41500042,
+    "eventName": "play_activitysfx_atlantis_sbmre12_lp",
+    "bankName": "activity_atlantis4_1_sfx_part02"
+  },
+  {
+    "id": 41500043,
+    "eventName": "play_activitysfx_atlantis_sbmre13_lp",
+    "bankName": "activity_atlantis4_1_sfx_part02"
+  },
+  {
+    "id": 41500044,
+    "eventName": "play_activitysfx_atlantis_sbmre14",
+    "bankName": "activity_atlantis4_1_sfx_part02"
+  },
+  {
+    "id": 41500045,
+    "eventName": "play_activitysfx_atlantis_sbmre15_lp",
+    "bankName": "activity_atlantis4_1_sfx_part02"
+  },
+  {
+    "id": 41500046,
+    "eventName": "play_activitysfx_atlantis_ba_carriage",
+    "bankName": "activity_atlantis4_1_sfx_part02"
+  },
+  {
+    "id": 41500047,
+    "eventName": "play_activitysfx_atlantis_arrow",
+    "bankName": "activity_atlantis4_1_sfx_part02"
+  },
+  {
+    "id": 41500048,
+    "eventName": "play_activitysfx_atlantis_crucible_lp",
+    "bankName": "activity_atlantis4_1_sfx_part02"
+  },
+  {
+    "id": 41500049,
+    "eventName": "play_activitysfx_atlantis_boiling_lp",
+    "bankName": "activity_atlantis4_1_sfx_part02"
+  },
+  {
+    "id": 41500050,
+    "eventName": "play_activitysfx_atlantis_thriller",
+    "bankName": "activity_atlantis4_1_sfx_part02"
+  },
+  {
+    "id": 41500051,
+    "eventName": "play_activitysfx_atlantis_thriller2_lp",
+    "bankName": "activity_atlantis4_1_sfx_part02"
+  },
+  {
+    "id": 41500052,
+    "eventName": "play_activitysfx_atlantis_close",
+    "bankName": "activity_atlantis4_1_sfx_part02"
+  },
+  {
+    "id": 41500053,
+    "eventName": "play_activitysfx_atlantis_discuss",
+    "bankName": "activity_atlantis4_1_sfx_part02"
+  },
+  {
+    "id": 41500054,
+    "eventName": "play_activitysfx_atlantis_slidedown",
+    "bankName": "activity_atlantis4_1_sfx_part02"
+  },
+  {
+    "id": 41500055,
+    "eventName": "play_activitysfx_atlantis_caqiang",
+    "bankName": "activity_atlantis4_1_sfx_part02"
+  },
+  {
+    "id": 41500056,
+    "eventName": "play_activitysfx_atlantis_debug",
+    "bankName": "activity_atlantis4_1_sfx_part02"
+  },
+  {
+    "id": 41500057,
+    "eventName": "play_activitysfx_atlantis_falldown",
+    "bankName": "activity_atlantis4_1_sfx_part02"
+  },
+  {
+    "id": 41500058,
+    "eventName": "play_activitysfx_atlantis_pen_lp",
+    "bankName": "activity_atlantis4_1_sfx_part03"
+  },
+  {
+    "id": 41500059,
+    "eventName": "play_activitysfx_atlantis_pixie",
+    "bankName": "activity_atlantis4_1_sfx_part03"
+  },
+  {
+    "id": 41500060,
+    "eventName": "play_activitysfx_atlantis_grab",
+    "bankName": "activity_atlantis4_1_sfx_part03"
+  },
+  {
+    "id": 41500061,
+    "eventName": "play_activitysfx_atlantis_moca",
+    "bankName": "activity_atlantis4_1_sfx_part03"
+  },
+  {
+    "id": 41500062,
+    "eventName": "play_activitysfx_atlantis_glass",
+    "bankName": "activity_atlantis4_1_sfx_part03"
+  },
+  {
+    "id": 41500063,
+    "eventName": "play_activitysfx_atlantis_broken",
+    "bankName": "activity_atlantis4_1_sfx_part03"
+  },
+  {
+    "id": 41500064,
+    "eventName": "play_activitysfx_atlantis_baoguo",
+    "bankName": "activity_atlantis4_1_sfx_part03"
+  },
+  {
+    "id": 41500065,
+    "eventName": "play_activitysfx_atlantis_jinghu",
+    "bankName": "activity_atlantis4_1_sfx_part03"
+  },
+  {
+    "id": 41500066,
+    "eventName": "play_activitysfx_atlantis_kabang",
+    "bankName": "activity_atlantis4_1_sfx_part03"
+  },
+  {
+    "id": 41500067,
+    "eventName": "play_activitysfx_atlantis_zou",
+    "bankName": "activity_atlantis4_1_sfx_part03"
+  },
+  {
+    "id": 41500068,
+    "eventName": "play_activitysfx_atlantis_paper1",
+    "bankName": "activity_atlantis4_1_sfx_part03"
+  },
+  {
+    "id": 41500069,
+    "eventName": "play_activitysfx_atlantis_stove",
+    "bankName": "activity_atlantis4_1_sfx_part03"
+  },
+  {
+    "id": 41500070,
+    "eventName": "play_activitysfx_atlantis_drizzle",
+    "bankName": "activity_atlantis4_1_sfx_part03"
+  },
+  {
+    "id": 41500071,
+    "eventName": "play_activitysfx_atlantis_clamp",
+    "bankName": "activity_atlantis4_1_sfx_part03"
+  },
+  {
+    "id": 41500072,
+    "eventName": "play_activitysfx_atlantis_fall2",
+    "bankName": "activity_atlantis4_1_sfx_part03"
+  },
+  {
+    "id": 41500073,
+    "eventName": "play_activitysfx_atlantis_shake",
+    "bankName": "activity_atlantis4_1_sfx_part03"
+  },
+  {
+    "id": 41500074,
+    "eventName": "play_activitysfx_atlantis_dagger",
+    "bankName": "activity_atlantis4_1_sfx_part03"
+  },
+  {
+    "id": 41500075,
+    "eventName": "play_activitysfx_atlantis_knock",
+    "bankName": "activity_atlantis4_1_sfx_part03"
+  },
+  {
+    "id": 41500076,
+    "eventName": "play_activitysfx_atlantis_prisonvan",
+    "bankName": "activity_atlantis4_1_sfx_part03"
+  },
+  {
+    "id": 41500077,
+    "eventName": "play_activitysfx_atlantis_shovel",
+    "bankName": "activity_atlantis4_1_sfx_part03"
+  },
+  {
+    "id": 41500078,
+    "eventName": "play_activitysfx_atlantis_bury",
+    "bankName": "activity_atlantis4_1_sfx_part03"
+  },
+  {
+    "id": 41500079,
+    "eventName": "play_activitysfx_atlantis_coffin",
+    "bankName": "activity_atlantis4_1_sfx_part03"
+  },
+  {
+    "id": 41500080,
+    "eventName": "play_activitysfx_atlantis_coffin2",
+    "bankName": "activity_atlantis4_1_sfx_part03"
+  },
+  {
+    "id": 41500081,
+    "eventName": "play_activitysfx_atlantis_coffin3",
+    "bankName": "activity_atlantis4_1_sfx_part03"
+  },
+  {
+    "id": 41500082,
+    "eventName": "play_activitysfx_atlantis_scoop",
+    "bankName": "activity_atlantis4_1_sfx_part03"
+  },
+  {
+    "id": 41500083,
+    "eventName": "play_activitysfx_atlantis_loosen",
+    "bankName": "activity_atlantis4_1_sfx_part03"
+  },
+  {
+    "id": 41500084,
+    "eventName": "play_activitystory_peishita_mati",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx"
+  },
+  {
+    "id": 41500085,
+    "eventName": "play_activitystory_peishita_grass",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx"
+  },
+  {
+    "id": 41500086,
+    "eventName": "play_activitystory_peishita_dknife1",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx"
+  },
+  {
+    "id": 41500087,
+    "eventName": "play_activitystory_peishita_dknife2",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx"
+  },
+  {
+    "id": 41500088,
+    "eventName": "play_activitystory_peishita_cut",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx"
+  },
+  {
+    "id": 41500089,
+    "eventName": "play_activitystory_peishita_moca",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx"
+  },
+  {
+    "id": 41500090,
+    "eventName": "play_activitystory_peishita_hit",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx"
+  },
+  {
+    "id": 41500091,
+    "eventName": "play_activitystory_peishita_ftstp",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx"
+  },
+  {
+    "id": 41500092,
+    "eventName": "play_activitystory_peishita_sword1",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx"
+  },
+  {
+    "id": 41500093,
+    "eventName": "play_activitystory_peishita_sword2",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx"
+  },
+  {
+    "id": 41500094,
+    "eventName": "play_activitystory_peishita_sword3",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx"
+  },
+  {
+    "id": 41500095,
+    "eventName": "play_activitystory_peishita_sword4",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx"
+  },
+  {
+    "id": 41500096,
+    "eventName": "play_activitystory_peishita_sword5",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx"
+  },
+  {
+    "id": 41500097,
+    "eventName": "play_activitystory_peishita_sword6",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx"
+  },
+  {
+    "id": 41500098,
+    "eventName": "play_activitystory_peishita_sword7",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx"
+  },
+  {
+    "id": 41500099,
+    "eventName": "play_activitystory_peishita_sword8",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx"
+  },
+  {
+    "id": 41500100,
+    "eventName": "play_activitystory_peishita_sword9",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx"
+  },
+  {
+    "id": 41500101,
+    "eventName": "play_activitystory_peishita_arrow",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx"
+  },
+  {
+    "id": 41500102,
+    "eventName": "play_activitystory_peishita_arrow2",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx"
+  },
+  {
+    "id": 41500103,
+    "eventName": "play_activitystory_peishita_falldown",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx"
+  },
+  {
+    "id": 41500104,
+    "eventName": "play_activitystory_peishita_bonfire_lp",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx"
+  },
+  {
+    "id": 41500105,
+    "eventName": "play_activitystory_peishita_knife_lp",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx"
+  },
+  {
+    "id": 41500106,
+    "eventName": "play_activitystory_peishita_dog",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx"
+  },
+  {
+    "id": 41500107,
+    "eventName": "play_activitystory_peishita_hbeat_lp",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx"
+  },
+  {
+    "id": 41500108,
+    "eventName": "play_activitystory_peishita_train",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx"
+  },
+  {
+    "id": 41500109,
+    "eventName": "play_activitystory_evelynn_yawns",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx"
+  },
+  {
+    "id": 41500110,
+    "eventName": "play_activitystory_evelynn_yawns_continuous",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx"
+  },
+  {
+    "id": 41500111,
+    "eventName": "play_activitystory_evelynn_smoking_pipe",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx"
+  },
+  {
+    "id": 41500112,
+    "eventName": "play_activitystory_evelynn_carriage_brake",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx"
+  },
+  {
+    "id": 41500113,
+    "eventName": "play_activitystory_evelynn_dirty_alley",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx"
+  },
+  {
+    "id": 41500114,
+    "eventName": "play_activitystory_evelynn_receive_sugar",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx"
+  },
+  {
+    "id": 41500115,
+    "eventName": "play_activitystory_evelynn_boy_playing",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx"
+  },
+  {
+    "id": 41500116,
+    "eventName": "play_activitystory_evelynn_hat_pin",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx"
+  },
+  {
+    "id": 41500117,
+    "eventName": "play_activitystory_evelynn_bang_head",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx"
+  },
+  {
+    "id": 41500118,
+    "eventName": "play_activitystory_evelynn_blanket_friction_01",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx"
+  },
+  {
+    "id": 41500119,
+    "eventName": "play_activitystory_evelynn_blanket_friction_02",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx"
+  },
+  {
+    "id": 41500120,
+    "eventName": "play_activitystory_evelynn_speaking_blurred",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx"
+  },
+  {
+    "id": 41500121,
+    "eventName": "play_activitystory_evelynn_boy_coughing",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx"
+  },
+  {
+    "id": 41500122,
+    "eventName": "play_activitystory_evelynn_bottle_collision",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx"
+  },
+  {
+    "id": 41500123,
+    "eventName": "play_activitystory_evelynn_bite_bread",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx"
+  },
+  {
+    "id": 41500124,
+    "eventName": "play_activitystory_evelynn_jar_shaking",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx"
+  },
+  {
+    "id": 41500125,
+    "eventName": "play_activitystory_evelynn_unscrew_cap",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx"
+  },
+  {
+    "id": 41500126,
+    "eventName": "play_activitystory_evelynn_hour_moves",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx"
+  },
+  {
+    "id": 41500127,
+    "eventName": "play_activitystory_atlantis_paper",
+    "bankName": "activitystory_atlantis4_1_yishi_alaifu_sfx"
+  },
+  {
+    "id": 41500128,
+    "eventName": "play_activitystory_atlantis_lamp_kick",
+    "bankName": "activitystory_atlantis4_1_yishi_alaifu_sfx"
+  },
+  {
+    "id": 41500129,
+    "eventName": "play_activitystory_atlantis_lamp_open",
+    "bankName": "activitystory_atlantis4_1_yishi_alaifu_sfx"
+  },
+  {
+    "id": 41500130,
+    "eventName": "play_activitystory_atlantis_dice",
+    "bankName": "activitystory_atlantis4_1_yishi_alaifu_sfx"
+  },
+  {
+    "id": 41500131,
+    "eventName": "play_activitystory_atlantis_dice_give",
+    "bankName": "activitystory_atlantis4_1_yishi_alaifu_sfx"
+  },
+  {
+    "id": 41500132,
+    "eventName": "play_activitystory_atlantis_mute_radio_1",
+    "bankName": "activitystory_atlantis4_1_yishi_alaifu_sfx"
+  },
+  {
+    "id": 41500133,
+    "eventName": "play_activitystory_atlantis_mute_radio_2",
+    "bankName": "activitystory_atlantis4_1_yishi_alaifu_sfx"
+  },
+  {
+    "id": 41500134,
+    "eventName": "play_activitystory_atlantis_mute_radio_3",
+    "bankName": "activitystory_atlantis4_1_yishi_alaifu_sfx"
+  },
+  {
+    "id": 41500135,
+    "eventName": "play_activitysfx_atlantis_dajia_lp",
+    "bankName": "activity_atlantis4_1_sfx_part04"
+  },
+  {
+    "id": 41500136,
+    "eventName": "play_activitysfx_atlantis_matel1",
+    "bankName": "activity_atlantis4_1_sfx_part04"
+  },
+  {
+    "id": 41500137,
+    "eventName": "play_activitysfx_atlantis_wajue_lp",
+    "bankName": "activity_atlantis4_1_sfx_part04"
+  },
+  {
+    "id": 41500138,
+    "eventName": "play_activitysfx_atlantis_daoluo",
+    "bankName": "activity_atlantis4_1_sfx_part04"
+  },
+  {
+    "id": 41500139,
+    "eventName": "play_activitysfx_atlantis_blood_lp",
+    "bankName": "activity_atlantis4_1_sfx_part04"
+  },
+  {
+    "id": 41500140,
+    "eventName": "play_activitysfx_atlantis_bamao_lp",
+    "bankName": "activity_atlantis4_1_sfx_part04"
+  },
+  {
+    "id": 41500141,
+    "eventName": "play_activitysfx_atlantis_death",
+    "bankName": "activity_atlantis4_1_sfx_part04"
+  },
+  {
+    "id": 41500142,
+    "eventName": "play_activitysfx_atlantis_zaoyin_lp",
+    "bankName": "activity_atlantis4_1_sfx_part04"
+  },
+  {
+    "id": 41500143,
+    "eventName": "play_activitysfx_atlantis_wenzi",
+    "bankName": "activity_atlantis4_1_sfx_part04"
+  },
+  {
+    "id": 41500144,
+    "eventName": "play_activitysfx_atlantis_boom",
+    "bankName": "activity_atlantis4_1_sfx_part04"
+  },
+  {
+    "id": 41500145,
+    "eventName": "play_activitysfx_atlantis_yanwu",
+    "bankName": "activity_atlantis4_1_sfx_part04"
+  },
+  {
+    "id": 41500146,
+    "eventName": "play_activitysfx_atlantis_tuili1",
+    "bankName": "activity_atlantis4_1_sfx_part04"
+  },
+  {
+    "id": 41500147,
+    "eventName": "play_activitysfx_atlantis_tuili2",
+    "bankName": "activity_atlantis4_1_sfx_part04"
+  },
+  {
+    "id": 41500148,
+    "eventName": "play_activitysfx_atlantis_tuili3_lp",
+    "bankName": "activity_atlantis4_1_sfx_part04"
+  },
+  {
+    "id": 41500149,
+    "eventName": "play_activitysfx_atlantis_ditu",
+    "bankName": "activity_atlantis4_1_sfx_part04"
+  },
+  {
+    "id": 41500150,
+    "eventName": "play_activitysfx_atlantis_yetu",
+    "bankName": "activity_atlantis4_1_sfx_part04"
+  },
+  {
+    "id": 41500151,
+    "eventName": "play_activitysfx_atlantis_ftstp_people",
+    "bankName": "activity_atlantis4_1_sfx_fuyong"
+  },
+  {
+    "id": 41500152,
+    "eventName": "play_activitysfx_atlantis_cloudy_office",
+    "bankName": "activity_atlantis4_1_sfx_fuyong"
+  },
+  {
+    "id": 41500153,
+    "eventName": "play_activitysfx_atlantis_rush_crowd",
+    "bankName": "activity_atlantis4_1_sfx_fuyong"
+  },
+  {
+    "id": 41500154,
+    "eventName": "play_activitysfx_atlantis_dispersed",
+    "bankName": "activity_atlantis4_1_sfx_fuyong"
+  },
+  {
+    "id": 41500155,
+    "eventName": "play_activitysfx_atlantis_sit_grass",
+    "bankName": "activity_atlantis4_1_sfx_fuyong"
+  },
+  {
+    "id": 41500156,
+    "eventName": "play_activitysfx_atlantis_rain_1",
+    "bankName": "activity_atlantis4_1_sfx_fuyong"
+  },
+  {
+    "id": 41500157,
+    "eventName": "play_activitysfx_atlantis_rain_lp",
+    "bankName": "activity_atlantis4_1_sfx_fuyong"
+  },
+  {
+    "id": 41500158,
+    "eventName": "play_activitysfx_atlantis_close2",
+    "bankName": "activity_atlantis4_1_sfx_fuyong"
+  },
+  {
+    "id": 41500159,
+    "eventName": "play_activitysfx_atlantis_boot_wood",
+    "bankName": "activity_atlantis4_1_sfx_fuyong"
+  },
+  {
+    "id": 41500160,
+    "eventName": "play_activitysfx_atlantis_boot_wood_fast",
+    "bankName": "activity_atlantis4_1_sfx_fuyong"
+  },
+  {
+    "id": 41500161,
+    "eventName": "play_activitysfx_atlantis_onto_sofa",
+    "bankName": "activity_atlantis4_1_sfx_fuyong"
+  },
+  {
+    "id": 41500162,
+    "eventName": "play_activitysfx_atlantis_sit_sofa",
+    "bankName": "activity_atlantis4_1_sfx_fuyong"
+  },
+  {
+    "id": 41500163,
+    "eventName": "play_activitysfx_atlantis_sit_down",
+    "bankName": "activity_atlantis4_1_sfx_fuyong"
+  },
+  {
+    "id": 41500164,
+    "eventName": "play_activitysfx_atlantis_jewel_play",
+    "bankName": "activity_atlantis4_1_sfx_fuyong"
+  },
+  {
+    "id": 41500165,
+    "eventName": "play_activitysfx_atlantis_stick_ground",
+    "bankName": "activity_atlantis4_1_sfx_fuyong"
+  },
+  {
+    "id": 41500166,
+    "eventName": "play_activitysfx_atlantis_boat_fell",
+    "bankName": "activity_atlantis4_1_sfx_fuyong"
+  },
+  {
+    "id": 41500167,
+    "eventName": "play_activitysfx_atlantis_puppet_stage",
+    "bankName": "activity_atlantis4_1_sfx_fuyong"
+  },
+  {
+    "id": 41500168,
+    "eventName": "play_activitysfx_atlantis_wall_collapsed",
+    "bankName": "activity_atlantis4_1_sfx_fuyong"
+  },
+  {
+    "id": 41500169,
+    "eventName": "play_activitystory_evelynn_oneself",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx_fuyong"
+  },
+  {
+    "id": 41500170,
+    "eventName": "play_activitystory_evelynn_bi",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx_fuyong"
+  },
+  {
+    "id": 41500171,
+    "eventName": "play_activitystory_evelynn_exhaled",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx_fuyong"
+  },
+  {
+    "id": 41500172,
+    "eventName": "play_activitystory_evelynn_sit_sofa",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx_fuyong"
+  },
+  {
+    "id": 41500173,
+    "eventName": "play_activitystory_evelynn_mouse",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx_fuyong"
+  },
+  {
+    "id": 41500174,
+    "eventName": "play_activitystory_evelynn_door",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx_fuyong"
+  },
+  {
+    "id": 41500175,
+    "eventName": "play_activitystory_evelynn_necklace",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx_fuyong"
+  },
+  {
+    "id": 41500176,
+    "eventName": "play_activitystory_evelynn_shutter",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx_fuyong"
+  },
+  {
+    "id": 41500177,
+    "eventName": "play_activitystory_evelynn_clock",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx_fuyong"
+  },
+  {
+    "id": 41500178,
+    "eventName": "play_activitystory_evelynn_mouse2",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx_fuyong"
+  },
+  {
+    "id": 41500179,
+    "eventName": "play_activitystory_evelynn_sneeze",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx_fuyong"
+  },
+  {
+    "id": 41500180,
+    "eventName": "play_activitystory_evelynn_wood",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx_fuyong"
+  },
+  {
+    "id": 41500181,
+    "eventName": "play_activitystory_evelynn_time_start",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx_fuyong"
+  },
+  {
+    "id": 41500182,
+    "eventName": "play_activitystory_evelynn_train",
+    "bankName": "activitystory_atlantis4_1_evelynn_sfx_fuyong"
+  },
+  {
+    "id": 41500183,
+    "eventName": "play_activitystory_peishita_chop",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx_fuyong"
+  },
+  {
+    "id": 41500184,
+    "eventName": "play_activitystory_peishita_stumble",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx_fuyong"
+  },
+  {
+    "id": 41500185,
+    "eventName": "play_activitystory_peishita_grass_run",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx_fuyong"
+  },
+  {
+    "id": 41500186,
+    "eventName": "play_activitystory_peishita_dispersed",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx_fuyong"
+  },
+  {
+    "id": 41500187,
+    "eventName": "play_activitystory_peishita_clothes",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx_fuyong"
+  },
+  {
+    "id": 41500188,
+    "eventName": "play_activitystory_peishita_jump2",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx_fuyong"
+  },
+  {
+    "id": 41500189,
+    "eventName": "play_activitystory_peishita_paper2",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx_fuyong"
+  },
+  {
+    "id": 41500190,
+    "eventName": "play_activitystory_peishita_horse5",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx_fuyong"
+  },
+  {
+    "id": 41500191,
+    "eventName": "play_activitystory_peishita_gun",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx_fuyong"
+  },
+  {
+    "id": 41500192,
+    "eventName": "play_activitystory_peishita_firefly_lp",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx_fuyong"
+  },
+  {
+    "id": 41500193,
+    "eventName": "play_activitystory_peishita_pad1_lp",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx_fuyong"
+  },
+  {
+    "id": 41500194,
+    "eventName": "play_activitystory_peishita_wind1",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx_fuyong"
+  },
+  {
+    "id": 41500195,
+    "eventName": "play_activitystory_peishita_bag_cloth",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx_fuyong"
+  },
+  {
+    "id": 41500196,
+    "eventName": "play_activitystory_peishita_moca2",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx_fuyong"
+  },
+  {
+    "id": 41500197,
+    "eventName": "play_activitystory_peishita_ftstep2_lp",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx_fuyong"
+  },
+  {
+    "id": 41500198,
+    "eventName": "play_activitystory_peishita_fell",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx_fuyong"
+  },
+  {
+    "id": 41500199,
+    "eventName": "play_activitystory_peishita_unbind",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx_fuyong"
+  },
+  {
+    "id": 41500200,
+    "eventName": "play_activitystory_peishita_clothes2",
+    "bankName": "activitystory_atlantis4_1_peishita_sfx_fuyong"
+  },
+  {
+    "id": 41500201,
+    "eventName": "play_activitystory_atlantis_toybox",
+    "bankName": "activitystory_atlantis4_1_yishi_alaifu_sfx"
+  },
+  {
     "id": 530053,
     "eventName": "play_activitymusic_thememusic_full_2_0",
     "bankName": "activity2_0_music"
@@ -21038,6 +22043,31 @@
     "id": 40530013,
     "eventName": "play_login_interface_music_4_0",
     "bankName": "ui_login_music_4_0"
+  },
+  {
+    "id": 41530001,
+    "eventName": "play_activitymusic_theme_4_1",
+    "bankName": "activity4_1_music"
+  },
+  {
+    "id": 41530002,
+    "eventName": "play_activitymusic_xuanyi_4_1",
+    "bankName": "activity4_1_music"
+  },
+  {
+    "id": 41530003,
+    "eventName": "play_activitymusic_heitonghua_4_1",
+    "bankName": "activity4_1_music"
+  },
+  {
+    "id": 41530004,
+    "eventName": "play_activitymusic_themesong_p1_4_1",
+    "bankName": "activity4_1_music"
+  },
+  {
+    "id": 41530005,
+    "eventName": "play_activitymusic_themesong_p2_4_1",
+    "bankName": "activity4_1_music"
   },
   {
     "id": 520105,
@@ -21898,6 +22928,46 @@
     "id": 40520006,
     "eventName": "play_yingmen4_0_pv_sfx_vo_music",
     "bankName": "yingmen4_0_cutscene_sfx_vo"
+  },
+  {
+    "id": 41520001,
+    "eventName": "play_activitysfx_atlantis_chapter_open",
+    "bankName": "activitysfx_atlantis4_1_sfx"
+  },
+  {
+    "id": 41520002,
+    "eventName": "play_activitysfx_atlantis_subsection_open",
+    "bankName": "activitysfx_atlantis4_1_sfx"
+  },
+  {
+    "id": 41520003,
+    "eventName": "play_activitysfx_atlantis_subsection_close",
+    "bankName": "activitysfx_atlantis4_1_sfx"
+  },
+  {
+    "id": 41520004,
+    "eventName": "play_atlantis4_1_cutscene_carriage_pursuit",
+    "bankName": "atlantis4_1_cutscene_sfx_vo"
+  },
+  {
+    "id": 41520005,
+    "eventName": "play_atlantis4_1_cutscene_maria_shot",
+    "bankName": "atlantis4_1_cutscene_sfx_vo"
+  },
+  {
+    "id": 41520006,
+    "eventName": "play_atlantis4_1_cutscene_found_body",
+    "bankName": "atlantis4_1_cutscene_sfx_vo"
+  },
+  {
+    "id": 41520007,
+    "eventName": "play_atlantis4_1_cutscene_shengmuzhisi",
+    "bankName": "atlantis4_1_cutscene_sfx_vo"
+  },
+  {
+    "id": 41520008,
+    "eventName": "play_atlantis4_1_pv_sfx_vo_music",
+    "bankName": "atlantis4_1_cutscene_sfx_vo"
   },
   {
     "id": 20530011,

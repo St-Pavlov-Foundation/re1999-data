@@ -1,7 +1,7 @@
 [
   {
     "id": 1308636,
-    "time": 5.0,
+    "time": 5,
     "waitVoice": 1308637,
     "waitVoiceParams": "",
     "timeoutVoice": 1308638,
@@ -10,7 +10,7 @@
   },
   {
     "id": 1308675,
-    "time": 5.0,
+    "time": 5,
     "waitVoice": 1308676,
     "waitVoiceParams": "",
     "timeoutVoice": 1308677,
@@ -19,7 +19,7 @@
   },
   {
     "id": 1302575,
-    "time": 5.0,
+    "time": 5,
     "waitVoice": 1302576,
     "waitVoiceParams": "",
     "timeoutVoice": 1302577,
@@ -28,7 +28,7 @@
   },
   {
     "id": 1310035,
-    "time": 5.0,
+    "time": 5,
     "waitVoice": 1310036,
     "waitVoiceParams": "",
     "timeoutVoice": 1310037,
@@ -37,7 +37,7 @@
   },
   {
     "id": 1306670,
-    "time": 11.0,
+    "time": 11,
     "waitVoice": 1306671,
     "waitVoiceParams": "",
     "timeoutVoice": 1306673,
@@ -46,7 +46,7 @@
   },
   {
     "id": 1311036,
-    "time": 5.0,
+    "time": 5,
     "waitVoice": 1311037,
     "waitVoiceParams": "",
     "timeoutVoice": 1311038,
@@ -55,7 +55,7 @@
   },
   {
     "id": 1308370,
-    "time": 5.0,
+    "time": 5,
     "waitVoice": 1308371,
     "waitVoiceParams": "",
     "timeoutVoice": 1308372,
@@ -64,7 +64,7 @@
   },
   {
     "id": 1312044,
-    "time": 5.0,
+    "time": 5,
     "waitVoice": 1312045,
     "waitVoiceParams": "",
     "timeoutVoice": 1312046,
@@ -73,7 +73,7 @@
   },
   {
     "id": 1312047,
-    "time": 5.0,
+    "time": 5,
     "waitVoice": 1312048,
     "waitVoiceParams": "",
     "timeoutVoice": 1312049,
@@ -82,7 +82,7 @@
   },
   {
     "id": 10386127,
-    "time": 5.0,
+    "time": 5,
     "waitVoice": 10386128,
     "waitVoiceParams": "",
     "timeoutVoice": 10386129,
@@ -91,7 +91,7 @@
   },
   {
     "id": 10386168,
-    "time": 5.0,
+    "time": 5,
     "waitVoice": 10386169,
     "waitVoiceParams": "",
     "timeoutVoice": 10386170,
@@ -100,7 +100,7 @@
   },
   {
     "id": 10386124,
-    "time": 5.0,
+    "time": 5,
     "waitVoice": 10386125,
     "waitVoiceParams": "",
     "timeoutVoice": 10386126,
@@ -109,7 +109,7 @@
   },
   {
     "id": 10386165,
-    "time": 5.0,
+    "time": 5,
     "waitVoice": 10386166,
     "waitVoiceParams": "",
     "timeoutVoice": 10386167,
@@ -118,7 +118,7 @@
   },
   {
     "id": 1313419,
-    "time": 5.0,
+    "time": 5,
     "waitVoice": 1313420,
     "waitVoiceParams": "",
     "timeoutVoice": 1313421,
@@ -127,7 +127,7 @@
   },
   {
     "id": 1310063,
-    "time": 5.0,
+    "time": 5,
     "waitVoice": 1310064,
     "waitVoiceParams": "",
     "timeoutVoice": 1310065,
@@ -136,7 +136,7 @@
   },
   {
     "id": 1314138,
-    "time": 8.0,
+    "time": 8,
     "waitVoice": 0,
     "waitVoiceParams": "1|40#1314139#1314141|40#1314140#1314142",
     "timeoutVoice": 1314143,
@@ -145,7 +145,7 @@
   },
   {
     "id": 1314145,
-    "time": 8.0,
+    "time": 8,
     "waitVoice": 0,
     "waitVoiceParams": "1|40#1314146#1314148|40#1314147#1314149",
     "timeoutVoice": 1314150,
@@ -154,7 +154,7 @@
   },
   {
     "id": 13053130,
-    "time": 8.0,
+    "time": 8,
     "waitVoice": 13053131,
     "waitVoiceParams": "",
     "timeoutVoice": 13053132,
@@ -163,7 +163,7 @@
   },
   {
     "id": 1311089,
-    "time": 13.0,
+    "time": 13,
     "waitVoice": 1311090,
     "waitVoiceParams": "",
     "timeoutVoice": 1311094,
@@ -172,7 +172,7 @@
   },
   {
     "id": 1311090,
-    "time": 5.0,
+    "time": 5,
     "waitVoice": 0,
     "waitVoiceParams": "2|30#1311091|40#1311092|30#1311093",
     "timeoutVoice": 1311095,
@@ -181,7 +181,7 @@
   },
   {
     "id": 1314469,
-    "time": 6.0,
+    "time": 6,
     "waitVoice": 1314470,
     "waitVoiceParams": "",
     "timeoutVoice": 1314471,
@@ -199,7 +199,7 @@
   },
   {
     "id": 13105101,
-    "time": 5.0,
+    "time": 5,
     "waitVoice": 13105102,
     "waitVoiceParams": "",
     "timeoutVoice": 13105103,
@@ -208,7 +208,7 @@
   },
   {
     "id": 1315642,
-    "time": 7.0,
+    "time": 7,
     "waitVoice": 1315643,
     "waitVoiceParams": "",
     "timeoutVoice": 1315644,
@@ -226,7 +226,7 @@
   },
   {
     "id": 1315575,
-    "time": 5.0,
+    "time": 5,
     "waitVoice": 1315576,
     "waitVoiceParams": "",
     "timeoutVoice": 1315577,
@@ -235,7 +235,7 @@
   },
   {
     "id": 1313485,
-    "time": 7.0,
+    "time": 7,
     "waitVoice": 1313486,
     "waitVoiceParams": "",
     "timeoutVoice": 1313487,

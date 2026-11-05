@@ -1,0 +1,72 @@
+[
+  {
+    "id": 101,
+    "name": "电光拳",
+    "resName": "v3a3_m_s12_jn1x1_002",
+    "icon": "v4a1_m_s12_gw1x1_001",
+    "durationTicks": 1,
+    "shape": "1#1",
+    "atk": 0,
+    "skillIds": ""
+  },
+  {
+    "id": 4190003,
+    "name": "原始波拉比",
+    "resName": "v4a1_m_s12_gw1x1_001",
+    "icon": "v4a1_m_s12_gw1x1_001",
+    "durationTicks": 2,
+    "shape": "1#1",
+    "atk": 0,
+    "skillIds": ""
+  },
+  {
+    "id": 4190002,
+    "name": "波拉比",
+    "resName": "v4a1_m_s12_gw1x1_002",
+    "icon": "v4a1_m_s12_gw1x1_002",
+    "durationTicks": 3,
+    "shape": "1#1",
+    "atk": 0,
+    "skillIds": ""
+  },
+  {
+    "id": 414001,
+    "name": "自动防御程序",
+    "resName": "v4a1_m_s12_gw1x1_002",
+    "icon": "v4a1_m_s12_gw1x1_003",
+    "durationTicks": 10,
+    "shape": "1#1",
+    "atk": 0,
+    "skillIds": "4124001"
+  },
+  {
+    "id": 414002,
+    "name": "电光拳",
+    "resName": "v3a3_m_s12_jn1x1_002",
+    "icon": "v4a1_m_s12_gw1x1_001",
+    "durationTicks": 3,
+    "shape": "1#1",
+    "atk": 0,
+    "skillIds": "4124002"
+  },
+  {
+    "id": 414003,
+    "name": "原始波拉比",
+    "resName": "v4a1_m_s12_jz1x1_001a",
+    "icon": "v4a1_m_s12_gw1x1_001",
+    "durationTicks": 3,
+    "shape": "1#1",
+    "atk": 0,
+    "skillIds": "4124003"
+  },
+  {
+    "id": 414004,
+    "name": "波拉比",
+    "resName": "v4a1_m_s12_jz1x1_002a",
+    "icon": "v4a1_m_s12_gw1x1_002",
+    "durationTicks": 2,
+    "shape": "1#1",
+    "atk": 0,
+    "skillIds": ""
+  }
+]

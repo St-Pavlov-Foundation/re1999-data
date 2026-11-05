@@ -10,5 +10,9 @@
   {
     "skinId": 311303,
     "effect": "card_alf_skin_01"
+  },
+  {
+    "skinId": 311304,
+    "effect": "card_alf_skin_02"
   }
 ]

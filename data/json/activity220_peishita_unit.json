@@ -1,0 +1,44 @@
+[
+  {
+    "id": 101,
+    "type": 1,
+    "resName": "v4a1_peishita_game_item_role1",
+    "icon": ""
+  },
+  {
+    "id": 201,
+    "type": 2,
+    "resName": "v4a1_peishita_game_item_role3",
+    "icon": ""
+  },
+  {
+    "id": 301,
+    "type": 3,
+    "resName": "v4a1_peishita_game_wall",
+    "icon": ""
+  },
+  {
+    "id": 401,
+    "type": 4,
+    "resName": "v4a1_peishita_game_item_weapon2",
+    "icon": "v4a1_peishita_game_skill1"
+  },
+  {
+    "id": 402,
+    "type": 4,
+    "resName": "v4a1_peishita_game_item_weapon1",
+    "icon": "v4a1_peishita_game_skill2"
+  },
+  {
+    "id": 501,
+    "type": 5,
+    "resName": "v4a1_peishita_game_item_role2",
+    "icon": ""
+  },
+  {
+    "id": 601,
+    "type": 6,
+    "resName": "v4a1_peishita_game_item_end",
+    "icon": ""
+  }
+]
