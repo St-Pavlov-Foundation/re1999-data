@@ -21,7 +21,7 @@ function VersionActivity4_1EnterBgmView:modifyBgm(actId)
 
 	self._isMainAct = actId == enum.ActivityId.Dungeon
 
-	if self._isMainAct then
+	if self._isMainAct and not self._isFirstOpenMainAct then
 		AudioBgmManager.instance:modifyAndPlay(VersionActivityFixedHelper.getVersionActivityAudioBgmLayer(), 0, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
 
 		self.playingActId = nil
@@ -38,7 +38,9 @@ function VersionActivity4_1EnterBgmView:modifyBgm(actId)
 end
 
 function VersionActivity4_1EnterBgmView:onPlayVideoDone()
-	self:_doModifyBgm()
+	if self.bgmId then
+		AudioBgmManager.instance:modifyAndPlay(VersionActivityFixedHelper.getVersionActivityAudioBgmLayer(), self.bgmId, AudioEnum.Bgm.Stop_LeiMiTeBeiBgm)
+	end
 end
 
 function VersionActivity4_1EnterBgmView:initActHandle()

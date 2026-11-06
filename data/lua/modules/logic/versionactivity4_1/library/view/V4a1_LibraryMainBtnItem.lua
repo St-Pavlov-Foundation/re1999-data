@@ -9,9 +9,33 @@ function V4a1_LibraryMainBtnItem:init(go)
 end
 
 function V4a1_LibraryMainBtnItem:onInit(go)
-	local rGo = gohelper.findChild(self.go, "go_activityreddot")
+	self:_addNotEventRedDot(self._checkRed, self)
+end
 
-	self._redDot = RedDotController.instance:addRedDot(rGo, RedDotEnum.DotNode.V4a1LibarayMainViewEntry)
+function V4a1_LibraryMainBtnItem:onAddEvent()
+	RedDotController.instance:registerCallback(RedDotEvent.UpdateFriendInfoDot, self.refreshDot, self)
+	RedDotController.instance:registerCallback(RedDotEvent.UpdateActTag, self.refreshDot, self)
+	RedDotController.instance:registerCallback(RedDotEvent.UpdateRelateDotInfo, self.refreshDot, self)
+	ActivityController.instance:registerCallback(ActivityEvent.ChangeActivityStage, self.refreshDot, self)
+	ActivityController.instance:registerCallback(ActivityEvent.RefreshNorSignActivity, self.refreshDot, self)
+	MainUISwitchController.instance:registerCallback(MainUISwitchEvent.UseMainUI, self.refreshDot, self)
+	TimeDispatcher.instance:registerCallback(TimeDispatcher.OnDailyRefresh, self.refreshDot, self)
+	GuessGameController.instance:registerCallback(GuessGameEvent.OnGetInfo, self.refreshDot, self)
+	GuessGameController.instance:registerCallback(GuessGameEvent.OnFinishGame, self.refreshDot, self)
+	GuessGameController.instance:registerCallback(GuessGameEvent.OnReceiveAcceptReward, self.refreshDot, self)
+end
+
+function V4a1_LibraryMainBtnItem:onRemoveEvent()
+	RedDotController.instance:unregisterCallback(RedDotEvent.UpdateFriendInfoDot, self.refreshDot, self)
+	RedDotController.instance:unregisterCallback(RedDotEvent.UpdateActTag, self.refreshDot, self)
+	RedDotController.instance:unregisterCallback(RedDotEvent.UpdateRelateDotInfo, self.refreshDot, self)
+	ActivityController.instance:unregisterCallback(ActivityEvent.ChangeActivityStage, self.refreshDot, self)
+	ActivityController.instance:unregisterCallback(ActivityEvent.RefreshNorSignActivity, self.refreshDot, self)
+	MainUISwitchController.instance:unregisterCallback(MainUISwitchEvent.UseMainUI, self.refreshDot, self)
+	TimeDispatcher.instance:unregisterCallback(TimeDispatcher.OnDailyRefresh, self.refreshDot, self)
+	GuessGameController.instance:unregisterCallback(GuessGameEvent.OnGetInfo, self.refreshDot, self)
+	GuessGameController.instance:unregisterCallback(GuessGameEvent.OnFinishGame, self.refreshDot, self)
+	GuessGameController.instance:unregisterCallback(GuessGameEvent.OnReceiveAcceptReward, self.refreshDot, self)
 end
 
 function V4a1_LibraryMainBtnItem:onDestroyView()
@@ -22,8 +46,28 @@ function V4a1_LibraryMainBtnItem:onClick()
 	V4a1_LibraryController.instance:enterScene()
 end
 
+function V4a1_LibraryMainBtnItem:_checkRed()
+	local reddotId = RedDotEnum.DotNode.V4a1LibarayMainViewEntry
+
+	self:_checkRedotShowType(reddotId)
+
+	if RedDotModel.instance:isDotShow(reddotId, 0) then
+		return true
+	end
+
+	if V4a1_Library_MainViewEntryItem_GuessGame.isRedDotShow(VersionActivity4_1Enum.ActivityId.GuessGameNew) then
+		return true
+	end
+
+	return false
+end
+
+function V4a1_LibraryMainBtnItem:refreshDot()
+	self:_refreshRedDot()
+end
+
 function V4a1_LibraryMainBtnItem:isShowRedDot()
-	return self._redDot.show
+	return self._redDot and self._redDot.isShowRedDot or false
 end
 
 function V4a1_LibraryMainBtnItem:_actId()
@@ -48,7 +92,7 @@ function V4a1_LibraryMainBtnItem:onRefresh()
 
 	self:_setMainSprite(spriteName, true)
 	self:setFestival(isShow)
-	self._redDot:refreshDot()
+	self:_refreshRedDot()
 end
 
 return V4a1_LibraryMainBtnItem

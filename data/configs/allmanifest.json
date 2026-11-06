@@ -19297,16 +19297,6 @@
     "abName": "atlas/ui_skinhandbook_12.spriteatlas",
     "assets": [
       "atlas/ui_skinhandbook_12.spriteatlas",
-      "atlassrc/ui_modules/skinhandbook/4_1_1/skinsuitdetailview_4_1_1_biuld.png",
-      "atlassrc/ui_modules/skinhandbook/4_1_1/skinsuitdetailview_4_1_1_paper01.png",
-      "atlassrc/ui_modules/skinhandbook/4_1_1/skinsuitdetailview_4_1_1_paper02.png",
-      "atlassrc/ui_modules/skinhandbook/4_1_1/skinsuitdetailview_4_1_1_paper03.png",
-      "atlassrc/ui_modules/skinhandbook/4_1_1/skinsuitdetailview_4_1_1_paper04.png",
-      "atlassrc/ui_modules/skinhandbook/4_1_1/skinsuitdetailview_4_1_1_paper05.png",
-      "atlassrc/ui_modules/skinhandbook/4_1_1/skinsuitdetailview_4_1_1_txt01.png",
-      "atlassrc/ui_modules/skinhandbook/4_1_1/skinsuitdetailview_4_1_1_wave01.png",
-      "atlassrc/ui_modules/skinhandbook/4_1_1/skinsuitdetailview_4_1_1_wave02.png",
-      "atlassrc/ui_modules/skinhandbook/4_1_1/skinsuitdetailview_4_1_1_wave03.png",
       "atlassrc/ui_modules/skinhandbook/4_1_1/skinsuitdetailview_dec1_4_1_1.png",
       "atlassrc/ui_modules/skinhandbook/4_1_1/skinsuitdetailview_dec2_4_1_1.png",
       "atlassrc/ui_modules/skinhandbook/4_1_1/skinsuitdetailview_dec3_4_1_1.png",
@@ -93658,7 +93648,6 @@
       "effects/effects_share_89.dat",
       "live2d/common.dat",
       "live2d/live2d_roles_share_12.dat",
-      "live2d/live2d_roles_share_43.dat",
       "live2d/live2d_roles_share_51.dat",
       "shaders.dat",
       "survival/survival_share_9.dat"
@@ -191356,6 +191345,7 @@
   {
     "abName": "singlebg/v4a1_library_singlebg",
     "assets": [
+      "singlebg/v4a1_library_singlebg/v4a1_library_dec.png",
       "singlebg/v4a1_library_singlebg/v4a1_library_fullbg.png",
       "singlebg/v4a1_library_singlebg/v4a1_library_loadingbg.png",
       "singlebg/v4a1_library_singlebg/v4a1_library_loadingmask.png"
@@ -207058,6 +207048,7 @@
       "ui/viewres/gm/fightgmcustomfightview.prefab",
       "ui/viewres/gm/fightgmdouququtest.prefab",
       "ui/viewres/gm/gm_activitybeginnerview.prefab",
+      "ui/viewres/gm/gm_activitywarmuph5fullview.prefab",
       "ui/viewres/gm/gm_activitywelfareview.prefab",
       "ui/viewres/gm/gm_arcadeview.prefab",
       "ui/viewres/gm/gm_characterbackpackview.prefab",

@@ -106,7 +106,7 @@
     "upgradeCost": "4002001:5000&4002002:2500&4002003:50",
     "param": "2#4002001:500&4002002:200",
     "skillIds": "",
-    "description": "消耗资源以结识新<#FFEA73>同伴</color>\\n同伴委托栏位增加1个",
+    "description": "消耗资源以结识新<#FFEA73>同伴</color>\n同伴委托栏位增加1个",
     "buildingAsset": 1
   },
   {
@@ -116,7 +116,7 @@
     "upgradeCost": "4002001:10000&4002002:3000&4002003:500",
     "param": "3#4002001:500&4002002:300",
     "skillIds": "",
-    "description": "消耗资源以结识新<#FFEA73>同伴</color>\\n同伴委托栏位增加1个",
+    "description": "消耗资源以结识新<#FFEA73>同伴</color>\n同伴委托栏位增加1个",
     "buildingAsset": 2
   },
   {
@@ -136,7 +136,7 @@
     "upgradeCost": "4002001:6000&4002002:3000&4002003:100",
     "param": "0#4002001:100&4002003:10_1#4002001:200&4002003:20",
     "skillIds": "",
-    "description": "重置<#FFEA73>同伴专长</color>\\n消耗资源可锁定<#FFEA73>专长</color>，锁定的<#FFEA73>专长</color>不会被重置",
+    "description": "重置<#FFEA73>同伴专长</color>\n消耗资源可锁定<#FFEA73>专长</color>，锁定的<#FFEA73>专长</color>不会被重置",
     "buildingAsset": 1
   },
   {
@@ -146,7 +146,7 @@
     "upgradeCost": "4002001:10000&4002002:3000&4002003:500",
     "param": "0#4002001:100&4002003:10_1#4002001:200&4002003:20_2#4002001:500&4002003:50",
     "skillIds": "",
-    "description": "重置<#FFEA73>同伴专长</color>\\n消耗资源可锁定更多<#FFEA73>专长</color>，锁定的<#FFEA73>专长</color>不会被重置",
+    "description": "重置<#FFEA73>同伴专长</color>\n消耗资源可锁定更多<#FFEA73>专长</color>，锁定的<#FFEA73>专长</color>不会被重置",
     "buildingAsset": 2
   },
   {

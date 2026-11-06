@@ -7,7 +7,7 @@
     "listenerParam": "MainAct",
     "jumpId": 24,
     "picPath": "turnback_new_progress_img1_1",
-    "showTxt": "参与活动正篇\\n获得大量纯雨滴<sprite=1>"
+    "showTxt": "参与活动正篇\n获得大量纯雨滴<sprite=1>"
   },
   {
     "id": 2,
@@ -57,7 +57,7 @@
     "listenerParam": "permanent",
     "jumpId": 10012016,
     "picPath": "turnback_new_progress_img2_1",
-    "showTxt": "解锁并参与重映\\n获得大量纯雨滴<sprite=1>"
+    "showTxt": "解锁并参与重映\n获得大量纯雨滴<sprite=1>"
   },
   {
     "id": 7,
@@ -97,7 +97,7 @@
     "listenerParam": "",
     "jumpId": 171,
     "picPath": "turnback_new_progress_img3_4",
-    "showTxt": "解锁角色单品文化\\n获得大量纯雨滴<sprite=1>"
+    "showTxt": "解锁角色单品文化\n获得大量纯雨滴<sprite=1>"
   },
   {
     "id": 11,

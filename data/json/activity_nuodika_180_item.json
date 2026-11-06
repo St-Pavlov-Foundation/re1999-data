@@ -12,7 +12,7 @@
   {
     "itemId": 2002,
     "name": "旧冰镐",
-    "desc": "对1名敌方造成10点创伤。\\n<color=#FF7373>可以拖动改变释放目标</color>",
+    "desc": "对1名敌方造成10点创伤。\n<color=#FF7373>可以拖动改变释放目标</color>",
     "picture": "icon_binggao",
     "pictureOffset": 0.8,
     "canMove": 1,
@@ -32,7 +32,7 @@
   {
     "itemId": 2004,
     "name": "科考探照灯",
-    "desc": "对2格范围内所有敌方造成5点创伤。<color=#FF7373>可以拖动改变释放位置</color>\\n若未消灭任何敌方，在随机空地上生成1个科考探照灯。\\n",
+    "desc": "对2格范围内所有敌方造成5点创伤。<color=#FF7373>可以拖动改变释放位置</color>\n若未消灭任何敌方，在随机空地上生成1个科考探照灯。\n",
     "picture": "icon_meiyoudeng",
     "pictureOffset": 0.8,
     "canMove": 1,

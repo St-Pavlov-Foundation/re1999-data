@@ -3529,7 +3529,7 @@
   {
     "id": 295,
     "name": "旅途雪地",
-    "nameen": "\\tSnowy Field",
+    "nameen": "\tSnowy Field",
     "levels": [
       29501
     ]
@@ -3545,7 +3545,7 @@
   {
     "id": 29501,
     "name": "旅途雪地",
-    "nameen": "\\tSnowy Field",
+    "nameen": "\tSnowy Field",
     "levels": [
       29501
     ]

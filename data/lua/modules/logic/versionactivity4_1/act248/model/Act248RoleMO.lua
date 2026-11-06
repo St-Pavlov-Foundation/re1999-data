@@ -17,4 +17,8 @@ function Act248RoleMO:isFill()
 	return self._isFill
 end
 
+function Act248RoleMO:clearStatus()
+	self:onFill()
+end
+
 return Act248RoleMO

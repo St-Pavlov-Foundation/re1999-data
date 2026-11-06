@@ -543,7 +543,7 @@
     "unlockEquipIndex": "5#6#7#8",
     "firstPassEquipId": 120025,
     "afterStoryId": 400202,
-    "desc": "“送给你，这湖底最漂亮的鹅卵石。”\\n是的，它光滑，就像一枚子弹。"
+    "desc": "“送给你，这湖底最漂亮的鹅卵石。”\n是的，它光滑，就像一枚子弹。"
   },
   {
     "activityId": 11200,
@@ -907,7 +907,7 @@
     "unlockEquipIndex": "",
     "firstPassEquipId": 0,
     "afterStoryId": 0,
-    "desc": "嫉妒与贪婪化作绳索，沾染了这两个愿望。\\n即位大典前夕，等待王子的是一场十四年的放逐。"
+    "desc": "嫉妒与贪婪化作绳索，沾染了这两个愿望。\n即位大典前夕，等待王子的是一场十四年的放逐。"
   },
   {
     "activityId": 11300,
@@ -1047,7 +1047,7 @@
     "unlockEquipIndex": "",
     "firstPassEquipId": 130575,
     "afterStoryId": 0,
-    "desc": "神猴大闹魔国，被捕仍威胁罗波那放走悉多。\\n愤怒的魔王点燃了神猴的尾巴，神猴飞出牢笼，带着火势一路烧毁魔国的城市，返回到罗摩身旁。"
+    "desc": "神猴大闹魔国，被捕仍威胁罗波那放走悉多。\n愤怒的魔王点燃了神猴的尾巴，神猴飞出牢笼，带着火势一路烧毁魔国的城市，返回到罗摩身旁。"
   },
   {
     "activityId": 11300,
@@ -1313,7 +1313,7 @@
     "unlockEquipIndex": "",
     "firstPassEquipId": 140096,
     "afterStoryId": 0,
-    "desc": "“可那吃人的黑，从何而来？”\\n他悄然叩问。"
+    "desc": "“可那吃人的黑，从何而来？”\n他悄然叩问。"
   },
   {
     "activityId": 11400,
@@ -1327,7 +1327,7 @@
     "unlockEquipIndex": "",
     "firstPassEquipId": 140088,
     "afterStoryId": 0,
-    "desc": "“可那逃跑的光，又去往何处？”\\n他寻索答案。"
+    "desc": "“可那逃跑的光，又去往何处？”\n他寻索答案。"
   },
   {
     "activityId": 11400,
@@ -1341,7 +1341,7 @@
     "unlockEquipIndex": "9",
     "firstPassEquipId": 0,
     "afterStoryId": 400402,
-    "desc": "在一抹光来临前，智慧先行叩门；\\n在一只锁解开前，意志先行挣脱。"
+    "desc": "在一抹光来临前，智慧先行叩门；\n在一只锁解开前，意志先行挣脱。"
   },
   {
     "activityId": 11400,
@@ -1425,7 +1425,7 @@
     "unlockEquipIndex": "",
     "firstPassEquipId": 0,
     "afterStoryId": 400403,
-    "desc": "“可孰弱孰优？”\\n他们共处一厅，分庭抗礼。"
+    "desc": "“可孰弱孰优？”\n他们共处一厅，分庭抗礼。"
   },
   {
     "activityId": 11400,
@@ -1481,7 +1481,7 @@
     "unlockEquipIndex": "",
     "firstPassEquipId": 0,
     "afterStoryId": 0,
-    "desc": "一片叶的脉络，一棵树的年轮……\\n他们将这引人着迷的规律，置于掌心抚摸。"
+    "desc": "一片叶的脉络，一棵树的年轮……\n他们将这引人着迷的规律，置于掌心抚摸。"
   },
   {
     "activityId": 11400,
@@ -1495,7 +1495,7 @@
     "unlockEquipIndex": "",
     "firstPassEquipId": 0,
     "afterStoryId": 0,
-    "desc": "他献给神明以牛犊，方才换取来了真理。\\n                          ——赫卡墓的轶闻【这个“赫卡”具体指的是哪位？】"
+    "desc": "他献给神明以牛犊，方才换取来了真理。\n                          ——赫卡墓的轶闻【这个“赫卡”具体指的是哪位？】"
   },
   {
     "activityId": 11400,
@@ -2083,7 +2083,7 @@
     "unlockEquipIndex": "",
     "firstPassEquipId": 0,
     "afterStoryId": 0,
-    "desc": "于是他再一次开始奔跑。这是竞技的第一日。\\n人的口中吐出战火，也能流淌愧疚的泪。"
+    "desc": "于是他再一次开始奔跑。这是竞技的第一日。\n人的口中吐出战火，也能流淌愧疚的泪。"
   },
   {
     "activityId": 11500,
@@ -2125,7 +2125,7 @@
     "unlockEquipIndex": "",
     "firstPassEquipId": 0,
     "afterStoryId": 0,
-    "desc": "“‘气’能一定程度代替蒸汽机的运作，笔者猜测其效能恐怕与人力推动火车并无差异。”\\n<i>注：“御驾亲征”一词，或证明其统治者善于御气。</i>"
+    "desc": "“‘气’能一定程度代替蒸汽机的运作，笔者猜测其效能恐怕与人力推动火车并无差异。”\n<i>注：“御驾亲征”一词，或证明其统治者善于御气。</i>"
   },
   {
     "activityId": 11600,
@@ -2139,7 +2139,7 @@
     "unlockEquipIndex": "",
     "firstPassEquipId": 160105,
     "afterStoryId": 0,
-    "desc": "“虽然有俚语‘一屋不扫何以扫天下’，但扫帚的地位显然与剑完全不等同。”\\n<i>注：我们仍在努力寻找“剑器驾驶指南”的相关古籍。</i>"
+    "desc": "“虽然有俚语‘一屋不扫何以扫天下’，但扫帚的地位显然与剑完全不等同。”\n<i>注：我们仍在努力寻找“剑器驾驶指南”的相关古籍。</i>"
   },
   {
     "activityId": 11600,
@@ -2153,7 +2153,7 @@
     "unlockEquipIndex": "",
     "firstPassEquipId": 0,
     "afterStoryId": 0,
-    "desc": "“东方术杖种类繁杂，常以稀松平常之物作为‘法器’，但往往各有其用处。”\\n\\n"
+    "desc": "“东方术杖种类繁杂，常以稀松平常之物作为‘法器’，但往往各有其用处。”\n\n"
   },
   {
     "activityId": 11600,
@@ -2167,7 +2167,7 @@
     "unlockEquipIndex": "",
     "firstPassEquipId": 0,
     "afterStoryId": 0,
-    "desc": "“‘拂尘’是将白马尾作为须，并能唤使物体变化，无所不能。”\\n<i>注：有明令禁止肆意挥舞“拂尘”驱虫。 </i>"
+    "desc": "“‘拂尘’是将白马尾作为须，并能唤使物体变化，无所不能。”\n<i>注：有明令禁止肆意挥舞“拂尘”驱虫。 </i>"
   },
   {
     "activityId": 11600,
@@ -2181,7 +2181,7 @@
     "unlockEquipIndex": "9",
     "firstPassEquipId": 0,
     "afterStoryId": 400602,
-    "desc": "“符咒纸与术杖效用相近，多普及于民间宅邸，用以驱避不洁的生物与魔精。”\\n<i>注：符咒的图案仅在部分神秘学家间秘传。</i>"
+    "desc": "“符咒纸与术杖效用相近，多普及于民间宅邸，用以驱避不洁的生物与魔精。”\n<i>注：符咒的图案仅在部分神秘学家间秘传。</i>"
   },
   {
     "activityId": 11600,
@@ -2209,7 +2209,7 @@
     "unlockEquipIndex": "",
     "firstPassEquipId": 0,
     "afterStoryId": 0,
-    "desc": "“他们痴迷于求索‘羽化登仙’，亦形成一个不具名的团体。”\\n<i>注：“永恒”不止蛊惑了那群煮魔汤的巫婆。</i>"
+    "desc": "“他们痴迷于求索‘羽化登仙’，亦形成一个不具名的团体。”\n<i>注：“永恒”不止蛊惑了那群煮魔汤的巫婆。</i>"
   },
   {
     "activityId": 11600,
@@ -2223,7 +2223,7 @@
     "unlockEquipIndex": "5#6#7#8",
     "firstPassEquipId": 0,
     "afterStoryId": 0,
-    "desc": "“通晓炼丹的神秘学家往往受雇于宫廷，另有一些则行脚于民间。”\\n<i>注：其中一部分身兼厨师、医师数职。</i>"
+    "desc": "“通晓炼丹的神秘学家往往受雇于宫廷，另有一些则行脚于民间。”\n<i>注：其中一部分身兼厨师、医师数职。</i>"
   },
   {
     "activityId": 11600,
@@ -2293,7 +2293,7 @@
     "unlockEquipIndex": "",
     "firstPassEquipId": 10003,
     "afterStoryId": 0,
-    "desc": "“东方物产丰厚，美食琳琅。”\\n<i>注：东行指南在此建议自行携带餐具。</i>"
+    "desc": "“东方物产丰厚，美食琳琅。”\n<i>注：东行指南在此建议自行携带餐具。</i>"
   },
   {
     "activityId": 11600,
@@ -2307,7 +2307,7 @@
     "unlockEquipIndex": "",
     "firstPassEquipId": 161011,
     "afterStoryId": 0,
-    "desc": "“酒坊别有风味，其酿造技艺另有诀窍，回味无穷。”\\n<i>注：别小看那些米粒。</i>"
+    "desc": "“酒坊别有风味，其酿造技艺另有诀窍，回味无穷。”\n<i>注：别小看那些米粒。</i>"
   },
   {
     "activityId": 11600,
@@ -2321,7 +2321,7 @@
     "unlockEquipIndex": "",
     "firstPassEquipId": 161012,
     "afterStoryId": 0,
-    "desc": "“由栖息环境所影响，魔精在东方亦另有一番样貌。”\\n<i>生物进化论仍然不过时。</i>"
+    "desc": "“由栖息环境所影响，魔精在东方亦另有一番样貌。”\n<i>生物进化论仍然不过时。</i>"
   },
   {
     "activityId": 11600,
@@ -2335,7 +2335,7 @@
     "unlockEquipIndex": "",
     "firstPassEquipId": 161003,
     "afterStoryId": 0,
-    "desc": "“有名为饕餮者，其形状如羊身人面，其目在腋下，虎齿人爪，其音如婴儿。”\\n<i>这是撒旦在世的有力佐证！</i>"
+    "desc": "“有名为饕餮者，其形状如羊身人面，其目在腋下，虎齿人爪，其音如婴儿。”\n<i>这是撒旦在世的有力佐证！</i>"
   },
   {
     "activityId": 11600,
@@ -2349,7 +2349,7 @@
     "unlockEquipIndex": "",
     "firstPassEquipId": 161004,
     "afterStoryId": 0,
-    "desc": "“有名为孰湖者，其状马身而鸟翼，人面蛇尾，是好举人。”\\n<i>大陆板块漂移前，美杜莎或曾在各地繁衍生息。</i>"
+    "desc": "“有名为孰湖者，其状马身而鸟翼，人面蛇尾，是好举人。”\n<i>大陆板块漂移前，美杜莎或曾在各地繁衍生息。</i>"
   },
   {
     "activityId": 11600,
@@ -2363,7 +2363,7 @@
     "unlockEquipIndex": "",
     "firstPassEquipId": 161007,
     "afterStoryId": 0,
-    "desc": "“有名为穷奇者，状如牛，蝟毛，音如嗥狗。”\\n<i>狼与牛的生殖隔离有待商榷，这是生物学领域的新突破！</i>"
+    "desc": "“有名为穷奇者，状如牛，蝟毛，音如嗥狗。”\n<i>狼与牛的生殖隔离有待商榷，这是生物学领域的新突破！</i>"
   },
   {
     "activityId": 11600,
@@ -2377,7 +2377,7 @@
     "unlockEquipIndex": "",
     "firstPassEquipId": 161010,
     "afterStoryId": 400604,
-    "desc": "“有名为驳者，状如白马，锯牙，食虎豹。有素兽焉。”\\n<i>我们猜测这是东方谚语“白马非马”的现实依据。</i>"
+    "desc": "“有名为驳者，状如白马，锯牙，食虎豹。有素兽焉。”\n<i>我们猜测这是东方谚语“白马非马”的现实依据。</i>"
   },
   {
     "activityId": 11600,
@@ -2391,7 +2391,7 @@
     "unlockEquipIndex": "",
     "firstPassEquipId": 161008,
     "afterStoryId": 0,
-    "desc": "“他们眼中，种族间的裂隙如同一场乌有的闹剧。”\\n<i>先生们、女士们！令人讶异的共融社会。</i>"
+    "desc": "“他们眼中，种族间的裂隙如同一场乌有的闹剧。”\n<i>先生们、女士们！令人讶异的共融社会。</i>"
   },
   {
     "activityId": 11600,
@@ -2419,7 +2419,7 @@
     "unlockEquipIndex": "",
     "firstPassEquipId": 161014,
     "afterStoryId": 0,
-    "desc": "“传言临近新禧的时候，摄提神将轮换值年，庇佑生灵。”\\n<i>祂们的闹钟想必毫厘不差。</i>"
+    "desc": "“传言临近新禧的时候，摄提神将轮换值年，庇佑生灵。”\n<i>祂们的闹钟想必毫厘不差。</i>"
   },
   {
     "activityId": 11600,
@@ -2433,7 +2433,7 @@
     "unlockEquipIndex": "",
     "firstPassEquipId": 10004,
     "afterStoryId": 0,
-    "desc": "“值年之中，没有第十三位摄提神的席位。”\\n<i>一次秘密带薪休假。</i>"
+    "desc": "“值年之中，没有第十三位摄提神的席位。”\n<i>一次秘密带薪休假。</i>"
   },
   {
     "activityId": 11600,
@@ -2447,7 +2447,7 @@
     "unlockEquipIndex": "",
     "firstPassEquipId": 10004,
     "afterStoryId": 0,
-    "desc": "“天上会洒落，地上会生长，这便是压胜钱的来源。”\\n<i>他们的神明显然不是一位经济学家。</i>"
+    "desc": "“天上会洒落，地上会生长，这便是压胜钱的来源。”\n<i>他们的神明显然不是一位经济学家。</i>"
   },
   {
     "activityId": 11600,
@@ -2461,7 +2461,7 @@
     "unlockEquipIndex": "",
     "firstPassEquipId": 10004,
     "afterStoryId": 0,
-    "desc": "“人们会捡拾压胜钱，以此获取祝福与庇佑。”\\n<i>先生们，比祈祷见效的新妙方！</i>"
+    "desc": "“人们会捡拾压胜钱，以此获取祝福与庇佑。”\n<i>先生们，比祈祷见效的新妙方！</i>"
   },
   {
     "activityId": 11600,
@@ -2475,7 +2475,7 @@
     "unlockEquipIndex": "",
     "firstPassEquipId": 10004,
     "afterStoryId": 0,
-    "desc": "“度朔之日，他们将彻夜敲响太平鼓，以驱散所有的不吉与邪物。”\\n<i>他们肯定天生有一副强健的耳膜。</i>"
+    "desc": "“度朔之日，他们将彻夜敲响太平鼓，以驱散所有的不吉与邪物。”\n<i>他们肯定天生有一副强健的耳膜。</i>"
   },
   {
     "activityId": 11600,
@@ -2489,7 +2489,7 @@
     "unlockEquipIndex": "",
     "firstPassEquipId": 10004,
     "afterStoryId": 0,
-    "desc": "“他们用春盘与酒，慰问游荡的妖、魔、鬼、怪……以防它们的骚扰。”\\n<i>综上所述，东方的魔精对破烂的兴趣甚微。</i>"
+    "desc": "“他们用春盘与酒，慰问游荡的妖、魔、鬼、怪……以防它们的骚扰。”\n<i>综上所述，东方的魔精对破烂的兴趣甚微。</i>"
   },
   {
     "activityId": 11600,
@@ -2503,7 +2503,7 @@
     "unlockEquipIndex": "",
     "firstPassEquipId": 10004,
     "afterStoryId": 0,
-    "desc": "“爆竹的声音常响彻街巷，比独眼巨人的呼噜都响！”\\n<i>东行指南建议常备耳塞，以防意料之外的响音。</i>"
+    "desc": "“爆竹的声音常响彻街巷，比独眼巨人的呼噜都响！”\n<i>东行指南建议常备耳塞，以防意料之外的响音。</i>"
   },
   {
     "activityId": 11600,
@@ -2517,7 +2517,7 @@
     "unlockEquipIndex": "",
     "firstPassEquipId": 10004,
     "afterStoryId": 0,
-    "desc": "“妖与仙同样在庙宇受到供奉，仅有诚心者才能获得灵签。”\\n<i>朋友们，至少它不吞六便士。</i>"
+    "desc": "“妖与仙同样在庙宇受到供奉，仅有诚心者才能获得灵签。”\n<i>朋友们，至少它不吞六便士。</i>"
   },
   {
     "activityId": 13000,

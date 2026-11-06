@@ -125,6 +125,19 @@ function ArcadeSurvivorOutSideModel:refreshCurrencyCount(currencyInfo)
 	end
 end
 
+function ArcadeSurvivorOutSideModel:updateCurrencyCount(currencyInfo)
+	if not currencyInfo then
+		return
+	end
+
+	for i = 1, #currencyInfo do
+		local info = currencyInfo[i]
+		local currencyId = info.id
+
+		self._currencyDict[currencyId] = info.count or 0
+	end
+end
+
 function ArcadeSurvivorOutSideModel:onFinishReward()
 	local rewardList = self:getRewardList()
 

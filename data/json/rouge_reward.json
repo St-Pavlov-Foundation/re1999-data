@@ -2439,7 +2439,7 @@
     "value": "5#305203#1",
     "type": 1,
     "icon": "rouge_reward_new_8",
-    "rewardName": "<size=38>以善意加码</size>\\n               <size=28>——新巴别塔</size>",
+    "rewardName": "<size=38>以善意加码</size>\n               <size=28>——新巴别塔</size>",
     "rewardType": 5,
     "offset": "-40#-230"
   },

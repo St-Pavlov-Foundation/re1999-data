@@ -125,11 +125,24 @@ function V3a2_BossRush_RankView:refreshUI()
 		gohelper.setActive(item.go, i == spLevelBg)
 	end
 
-	if moList and #moList > 0 then
-		local firstCanGetBouns = V3a2_BossRush_RankListModel.instance:getFirstCanGetBouns()
+	if moList and #moList > 1 then
+		local firstCanGetBouns = V3a2_BossRush_RankListModel.instance:getFirstCanGetBouns() or 1
 
-		self._scrollprogress.horizontalNormalizedPosition = firstCanGetBouns / #moList
+		if self._tweenId then
+			ZProj.TweenHelper.KillById(self._tweenId)
+
+			self._tweenId = nil
+		end
+
+		local hvn = (firstCanGetBouns - 1) / (#moList - 1)
+
+		self._scrollprogress.horizontalNormalizedPosition = 0
+		self._tweenId = ZProj.TweenHelper.DOTweenFloat(0, hvn, 0.1, self._frameCallback, nil, self, nil, EaseType.Linear)
 	end
+end
+
+function V3a2_BossRush_RankView:_frameCallback(value)
+	self._scrollprogress.horizontalNormalizedPosition = value
 end
 
 function V3a2_BossRush_RankView:_createItemCB(obj, data, index)
@@ -137,7 +150,11 @@ function V3a2_BossRush_RankView:_createItemCB(obj, data, index)
 end
 
 function V3a2_BossRush_RankView:onClose()
-	return
+	if self._tweenId then
+		ZProj.TweenHelper.KillById(self._tweenId)
+
+		self._tweenId = nil
+	end
 end
 
 function V3a2_BossRush_RankView:onDestroyView()

@@ -95,6 +95,10 @@ function FightUISwitchModel:getCurShowStyleClassify()
 end
 
 function FightUISwitchModel:onSelect(mo)
+	if not mo then
+		return
+	end
+
 	self:setSelectStyleId(mo.classify, mo.id)
 	FightUISwitchListModel.instance:onSelect(mo.id, true)
 	FightUISwitchController.instance:dispatchEvent(FightUISwitchEvent.SelectFightUIStyle, mo.classify, mo.id)

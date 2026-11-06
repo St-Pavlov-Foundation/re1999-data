@@ -24313,8 +24313,8 @@
   },
   {
     "id": 431590112,
-    "eventName": "play_hero314003_skill01_voc",
-    "bankName": "hero314003_vo_skin",
+    "eventName": "play_hero3159_skill01_voc",
+    "bankName": "hero3159_vo",
     "weapon": 22
   },
   {
@@ -24325,8 +24325,8 @@
   },
   {
     "id": 431590122,
-    "eventName": "play_hero314003_skill02_voc",
-    "bankName": "hero314003_vo_skin",
+    "eventName": "play_hero3159_skill02_voc",
+    "bankName": "hero3159_vo",
     "weapon": 22
   },
   {
@@ -24337,8 +24337,8 @@
   },
   {
     "id": 431590132,
-    "eventName": "play_hero314003_fightingvoc_65",
-    "bankName": "hero314003_vo_skin",
+    "eventName": "play_hero3159_fightingvoc_29",
+    "bankName": "hero3159_vo",
     "weapon": 22
   },
   {

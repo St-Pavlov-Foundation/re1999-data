@@ -71,7 +71,7 @@
     "nameEn": "Golden Getaway",
     "show": true,
     "order": 7,
-    "des": "短如一次小憩的珍贵时日，在晴日里，在和风中。\\n疲惫、忙碌与烦心事禁止进入！",
+    "des": "短如一次小憩的珍贵时日，在晴日里，在和风中。\n疲惫、忙碌与烦心事禁止进入！",
     "scenePath": "scenes/v2a8_m_s17_pftj/prefab/sence_10007.prefab",
     "nameRes": "skinhandbook_titletxt_03",
     "iconRes": "skinhandbook_titleicon_03"
@@ -93,7 +93,7 @@
     "nameEn": "Classic Fashion",
     "show": true,
     "order": 9,
-    "des": "想踩中时代的步点？多看看旧杂志吧！\\n部分人深谙此道，它们以螺旋形发展回归。",
+    "des": "想踩中时代的步点？多看看旧杂志吧！\n部分人深谙此道，它们以螺旋形发展回归。",
     "scenePath": "scenes/v2a8_m_s17_pftj/prefab/sence_10009.prefab",
     "nameRes": "skinhandbook_titletxt_02",
     "iconRes": "skinhandbook_titleicon_02"

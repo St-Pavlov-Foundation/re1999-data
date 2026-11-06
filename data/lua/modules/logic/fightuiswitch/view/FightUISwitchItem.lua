@@ -50,6 +50,8 @@ function FightUISwitchItem:onUpdateMO(mo)
 		self:onSelect(isSelected)
 		ZProj.UGUIHelper.SetGrayscale(self._simageicon.gameObject, not mo:isUnlock())
 	end
+
+	gohelper.setActive(self.viewGO, mo ~= nil)
 end
 
 function FightUISwitchItem:onSelect(isSelect)

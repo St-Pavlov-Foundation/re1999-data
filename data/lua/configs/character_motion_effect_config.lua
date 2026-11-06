@@ -1545,7 +1545,7 @@ return {
 		"314404_fly",
 		"CommonRoleEffect",
 		"b_idle|b_haima|b_tanqin|b_haima_exp",
-		"Drawables/bone3/effect-Bone/roleeffect_fly_lb3#Drawables/bone6/effect-Bone/roleeffect_fly_lb6#Drawables/bone14/effect-Bone/roleeffect_fly_lb14#Drawables/bone15/effect-Bone/roleeffect_fly_lb15#Drawables/bone17/effect-Bone/roleeffect_fly_lb17#Drawables/bone18/effect-Bone/roleeffect_fly_lb18|Drawables/bone5/effect-Bone/roleeffect_fly_hm5#Drawables/bone8/effect-Bone/roleeffect_fly_hm8|Drawables/bone5/effect-Bone/roleeffect_fly_tq5#Drawables/bone7/effect-Bone/roleeffect_fly_tq7|Drawables/bone5/effect-Bone/roleeffect_fly_hm5#Drawables/bone8/effect-Bone/roleeffect_fly_hm8",
+		"Drawables/bone3/effect-Bone/roleeffect_fly_lb3#Drawables/bone14/effect-Bone/roleeffect_fly_lb14#Drawables/bone15/effect-Bone/roleeffect_fly_lb15#Drawables/bone17/effect-Bone/roleeffect_fly_lb17|Drawables/bone5/effect-Bone/roleeffect_fly_hm5#Drawables/bone8/effect-Bone/roleeffect_fly_hm8|Drawables/bone5/effect-Bone/roleeffect_fly_tq5#Drawables/bone7/effect-Bone/roleeffect_fly_tq7|Drawables/bone5/effect-Bone/roleeffect_fly_hm5#Drawables/bone8/effect-Bone/roleeffect_fly_hm8",
 		""
 	},
 	{

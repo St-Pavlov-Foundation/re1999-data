@@ -70,4 +70,8 @@ function Act248ClueMainViewContainer:getSelectClueId()
 	return self._selectClueId
 end
 
+function Act248ClueMainViewContainer:getCorrectClueDict()
+	return
+end
+
 return Act248ClueMainViewContainer

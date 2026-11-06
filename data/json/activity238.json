@@ -2,7 +2,7 @@
   {
     "activityId": 138509,
     "id": 1,
-    "desc": "她存在于某位书虫的幻想中，思维清晰，充满理性。她是书虫理想中的一个自己。\\n请问这是谁？",
+    "desc": "她存在于某位书虫的幻想中，思维清晰，充满理性。她是书虫理想中的一个自己。\n请问这是谁？",
     "questionMask": "sp02_guessme_unknownhero_1",
     "questionPictuer": "sp02_guessme_hero_1",
     "option1": "约翰·提托",
@@ -17,7 +17,7 @@
   {
     "activityId": 138509,
     "id": 2,
-    "desc": "她身处幻想中的拉普拉斯科算中心房间。办公室内的椅子能提供充足的电流，让她维持头脑清醒。\\n请问这是谁？",
+    "desc": "她身处幻想中的拉普拉斯科算中心房间。办公室内的椅子能提供充足的电流，让她维持头脑清醒。\n请问这是谁？",
     "questionMask": "sp02_guessme_unknownhero_2",
     "questionPictuer": "sp02_guessme_hero_2",
     "option1": "露西",
@@ -32,7 +32,7 @@
   {
     "activityId": 138509,
     "id": 3,
-    "desc": "她热衷于表演与惊喜。舞台上的热舞演出，让台下观众感动得热泪盈眶。\\n请问这是谁？",
+    "desc": "她热衷于表演与惊喜。舞台上的热舞演出，让台下观众感动得热泪盈眶。\n请问这是谁？",
     "questionMask": "sp02_guessme_unknownhero_3",
     "questionPictuer": "sp02_guessme_hero_3",
     "option1": "夏利",
@@ -47,7 +47,7 @@
   {
     "activityId": 138509,
     "id": 4,
-    "desc": "她并不愿意一直躲在这个小盒子中。如果时机成熟，她自会离开这里。\\n请问这是谁？",
+    "desc": "她并不愿意一直躲在这个小盒子中。如果时机成熟，她自会离开这里。\n请问这是谁？",
     "questionMask": "sp02_guessme_unknownhero_4",
     "questionPictuer": "sp02_guessme_hero_4",
     "option1": "TTT",
@@ -62,7 +62,7 @@
   {
     "activityId": 138509,
     "id": 5,
-    "desc": "拘束衣中的囚徒陷入了沉思。“我是谁？”“我从何而来？”“我又要到哪里去？”\\n请问这是谁？",
+    "desc": "拘束衣中的囚徒陷入了沉思。“我是谁？”“我从何而来？”“我又要到哪里去？”\n请问这是谁？",
     "questionMask": "sp02_guessme_unknownhero_5",
     "questionPictuer": "sp02_guessme_hero_5",
     "option1": "马库斯",
@@ -77,7 +77,7 @@
   {
     "activityId": 138509,
     "id": 6,
-    "desc": "一顶在半空中划出完美弧线的帽状物体，终将找到适合落下的那个地方。\\n请问这是谁？",
+    "desc": "一顶在半空中划出完美弧线的帽状物体，终将找到适合落下的那个地方。\n请问这是谁？",
     "questionMask": "sp02_guessme_unknownhero_7",
     "questionPictuer": "sp02_guessme_hero_7",
     "option1": "维尔汀（的帽子）",
@@ -92,7 +92,7 @@
   {
     "activityId": 138509,
     "id": 7,
-    "desc": "她身手矫健，飞檐走壁不在话下。她并不经常这样——只在一些需要她如此的特定时刻。\\n请问这是谁？",
+    "desc": "她身手矫健，飞檐走壁不在话下。她并不经常这样——只在一些需要她如此的特定时刻。\n请问这是谁？",
     "questionMask": "sp02_guessme_unknownhero_6",
     "questionPictuer": "sp02_guessme_hero_6",
     "option1": "露西",
@@ -107,7 +107,7 @@
   {
     "activityId": 14112,
     "id": 1,
-    "desc": "一封写着“RACHE”血字的信突然出现，用的还是拉普拉斯的专用稿纸！\\n“血字”到底出自谁手？",
+    "desc": "一封写着“RACHE”血字的信突然出现，用的还是拉普拉斯的专用稿纸！\n“血字”到底出自谁手？",
     "questionMask": "v4a1_investigation_1_1",
     "questionPictuer": "v4a1_investigation_1_2",
     "option1": "化名大师洛伦兹蝴蝶",
@@ -125,7 +125,7 @@
   {
     "activityId": 14112,
     "id": 2,
-    "desc": "窸窸窣窣的声音，阴影中的斑点带子，这就是那块蛋糕最后的记忆……\\n是谁吃了这块蛋糕？",
+    "desc": "窸窸窣窣的声音，阴影中的斑点带子，这就是那块蛋糕最后的记忆……\n是谁吃了这块蛋糕？",
     "questionMask": "v4a1_investigation_2_1",
     "questionPictuer": "v4a1_investigation_2_2",
     "option1": "冷周六需要至少一份夜宵",
@@ -143,7 +143,7 @@
   {
     "activityId": 14112,
     "id": 3,
-    "desc": "在鸭鸭玩偶中突然出现的蓝宝石，拾金不昧模范玛蒂尔达小姐正在寻找失主。\\n是谁丢了蓝宝石？",
+    "desc": "在鸭鸭玩偶中突然出现的蓝宝石，拾金不昧模范玛蒂尔达小姐正在寻找失主。\n是谁丢了蓝宝石？",
     "questionMask": "v4a1_investigation_3_1",
     "questionPictuer": "v4a1_investigation_3_2",
     "option1": "接送盛装客人的灰调蓝",
@@ -161,7 +161,7 @@
   {
     "activityId": 14112,
     "id": 4,
-    "desc": "在赫多涅殿下的赞助下，本红发会将为红发者提供一笔奖金！\\n究竟谁能得到她的青睐？",
+    "desc": "在赫多涅殿下的赞助下，本红发会将为红发者提供一笔奖金！\n究竟谁能得到她的青睐？",
     "questionMask": "v4a1_investigation_4_1",
     "questionPictuer": "v4a1_investigation_4_2",
     "option1": "最璀璨的红发乐手芭卡洛儿",
@@ -179,7 +179,7 @@
   {
     "activityId": 14112,
     "id": 5,
-    "desc": "为何奇怪的“V.V.341”字样突然出现在多个屏幕上？\\n是谁造成了屏幕显示“事故”？",
+    "desc": "为何奇怪的“V.V.341”字样突然出现在多个屏幕上？\n是谁造成了屏幕显示“事故”？",
     "questionMask": "v4a1_investigation_5_1",
     "questionPictuer": "v4a1_investigation_5_2",
     "option1": "算力外溢的乌尔里希",
@@ -197,7 +197,7 @@
   {
     "activityId": 14112,
     "id": 6,
-    "desc": "有这样一间神秘的阅读室，你能在那里看到字符翩翩起舞，并欣赏到悠扬的乐曲。\\n是谁策划了这场“文坛怪事”？",
+    "desc": "有这样一间神秘的阅读室，你能在那里看到字符翩翩起舞，并欣赏到悠扬的乐曲。\n是谁策划了这场“文坛怪事”？",
     "questionMask": "v4a1_investigation_6_1",
     "questionPictuer": "v4a1_investigation_6_2",
     "option1": "困倦到握不住笔的马库斯",
@@ -215,7 +215,7 @@
   {
     "activityId": 14112,
     "id": 7,
-    "desc": "这间屋子被纸片铺满，每张纸上都有四个神秘的签名。\\n究竟是谁在四处签名？",
+    "desc": "这间屋子被纸片铺满，每张纸上都有四个神秘的签名。\n究竟是谁在四处签名？",
     "questionMask": "v4a1_investigation_7_1",
     "questionPictuer": "v4a1_investigation_7_2",
     "option1": "梳理不同身份记忆的无名者",

@@ -482,7 +482,7 @@
     "sort": 22303,
     "audioType": 14,
     "audioLength": 128,
-    "audioEvaluates": "丽莎&路易斯#丽莎来扮演路易斯！\\n那路易斯来演丽莎！",
+    "audioEvaluates": "丽莎&路易斯#丽莎来扮演路易斯！\n那路易斯来演丽莎！",
     "isNonLoop": 0
   },
   {
@@ -1070,7 +1070,7 @@
     "defaultUnlock": 0,
     "audioName": "不老春",
     "audioNameEn": "Spring Unending",
-    "audioIntroduce": "世人都晓神仙好。身名故处，几多衰草。\\n笑音未改他乡客，且凭清风送斜阳。",
+    "audioIntroduce": "世人都晓神仙好。身名故处，几多衰草。\n笑音未改他乡客，且凭清风送斜阳。",
     "audioBg": "102431_1",
     "audioicon": "102431_2",
     "sort": 0,

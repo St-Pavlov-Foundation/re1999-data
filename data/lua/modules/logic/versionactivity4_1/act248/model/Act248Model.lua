@@ -457,6 +457,29 @@ function Act248Model:getClueMoByStoryStep(storyId, step)
 	return self._clueStoryIds[storyId][step]
 end
 
+function Act248Model:getCoverOrOwnClueMo(mo, correctClueIds)
+	local coverMo = mo:isCover()
+	local co = mo:getConfig()
+
+	if not coverMo and co.coverId == 0 then
+		return mo
+	else
+		local isCorrect = correctClueIds and correctClueIds[mo.id]
+
+		if isCorrect then
+			return mo
+		elseif coverMo then
+			return self:getCoverOrOwnClueMo(coverMo, correctClueIds)
+		elseif co.coverId > 0 then
+			local isCorrectCover = correctClueIds and correctClueIds[co.coverId]
+
+			if not isCorrectCover then
+				return mo
+			end
+		end
+	end
+end
+
 function Act248Model:getAvgBeforeStoryId()
 	return Act248Config.instance:getConstValue(Act248Enum.Const.AvgBeforeStoryId, true)
 end

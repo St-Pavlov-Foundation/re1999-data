@@ -355,7 +355,7 @@ function TowerComposeHeroGroupEditView:_saveQuickGroupInfo()
 	end
 
 	HeroGroupModel.instance:replaceSingleGroup()
-	HeroGroupModel.instance:replaceSingleGroupEquips()
+	TowerComposeHeroGroupModel.instance:replaceSingleGroupEquips()
 	HeroGroupController.instance:dispatchEvent(HeroGroupEvent.OnModifyHeroGroup)
 	HeroGroupModel.instance:saveCurGroupData()
 end
@@ -365,6 +365,76 @@ function TowerComposeHeroGroupEditView:_saveQuickGroupAssistPos(assistPos, assis
 		HeroSingleGroupModel.instance:removeFrom(assistPos)
 	else
 		HeroGroupModel.instance:clearCurAssist(false, assistParams)
+	end
+end
+
+function TowerComposeHeroGroupEditView:replaceSelectHeroDefaultEquip()
+	if self._heroMO and self._heroMO:hasDefaultEquip() then
+		local heroGroupMo = HeroGroupModel.instance:getCurGroupMO()
+		local heroGroupEquipMoList = heroGroupMo.equips
+		local heroIdList = heroGroupMo.heroList
+
+		for i, heroGroupEquipMo in pairs(heroGroupEquipMoList) do
+			if heroGroupEquipMo.equipUid[1] == self._heroMO.defaultEquipUid then
+				local hasDefaultEquipHeroUid = heroIdList[i + 1]
+				local isInLockPlane = TowerComposeHeroGroupModel.instance:checkHeroUidIsInLockPlane(hasDefaultEquipHeroUid)
+
+				if isInLockPlane then
+					heroGroupEquipMoList[self._singleGroupMOId - 1].equipUid[1] = "0"
+
+					return
+				end
+
+				heroGroupEquipMo.equipUid[1] = "0"
+
+				break
+			end
+		end
+
+		heroGroupEquipMoList[self._singleGroupMOId - 1].equipUid[1] = self._heroMO.defaultEquipUid
+	end
+end
+
+function TowerComposeHeroGroupEditView:replaceQuickGroupHeroDefaultEquip(heroUids)
+	local heroGroupMo = HeroGroupModel.instance:getCurGroupMO()
+	local heroGroupEquipMoList = heroGroupMo.equips
+	local heroIdList = heroGroupMo.heroList
+	local heroMo
+
+	for index, heroUid in ipairs(heroUids) do
+		heroMo = HeroModel.instance:getById(heroUid)
+
+		if heroMo and heroMo:hasDefaultEquip() then
+			local canReplace = true
+			local isInLockPlane = TowerComposeHeroGroupModel.instance:checkHeroUidIsInLockPlane(heroUid)
+
+			if isInLockPlane then
+				canReplace = false
+			end
+
+			for checkIndex, heroGroupEquipMo in pairs(heroGroupEquipMoList) do
+				if heroGroupEquipMo.equipUid[1] == heroMo.defaultEquipUid then
+					local curInTeamHeroUid = heroIdList[checkIndex + 1]
+
+					isInLockPlane = TowerComposeHeroGroupModel.instance:checkHeroUidIsInLockPlane(curInTeamHeroUid)
+
+					if isInLockPlane then
+						heroGroupEquipMoList[index - 1].equipUid[1] = "0"
+						canReplace = false
+
+						break
+					end
+
+					heroGroupEquipMo.equipUid[1] = "0"
+
+					break
+				end
+			end
+
+			if canReplace then
+				heroGroupEquipMoList[index - 1].equipUid[1] = heroMo.defaultEquipUid
+			end
+		end
 	end
 end
 

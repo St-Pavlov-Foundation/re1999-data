@@ -51,6 +51,7 @@ function Act248ClueCategoryItem:onUpdateMO(mo)
 
 	self._txtname1.text = co.name
 	self._txtname2.text = co.name
+	self._correctClueIds = self.viewContainer.getCorrectClueDict and self.viewContainer:getCorrectClueDict()
 
 	self:_refreshNew()
 end
@@ -60,6 +61,14 @@ function Act248ClueCategoryItem:onSelect(isSelect)
 
 	gohelper.setActive(self._gounselected, not isSelect)
 	gohelper.setActive(self._goselected, isSelect)
+end
+
+function Act248ClueCategoryItem:_getFileId()
+	if self.viewContainer and self.viewContainer.viewParam then
+		local fileMo = self.viewContainer.viewParam.fileMo
+
+		return fileMo and fileMo.id
+	end
 end
 
 function Act248ClueCategoryItem:getChildRoot()
@@ -76,12 +85,13 @@ end
 
 function Act248ClueCategoryItem:_refreshNew()
 	local isNew = false
+	local clueList = Act248Model.instance:getClueListByCategory(self._mo.category)
 
-	if self._mo then
-		for _, clueMo in ipairs(self._mo.list) do
-			local coverMo = clueMo:isCover()
+	if clueList then
+		local fileId = self:_getFileId()
 
-			if not coverMo and clueMo:isUnlock() and clueMo:isNew() then
+		for _, mo in ipairs(clueList) do
+			if mo:isShowInFile(fileId) and self:_checkIsHasNew(mo) then
 				isNew = true
 
 				break
@@ -90,6 +100,14 @@ function Act248ClueCategoryItem:_refreshNew()
 	end
 
 	gohelper.setActive(self._goreddot, isNew)
+end
+
+function Act248ClueCategoryItem:_checkIsHasNew(mo)
+	local _mo = Act248Model.instance:getCoverOrOwnClueMo(mo, self._correctClueIds)
+
+	if _mo and _mo:isUnlock() and _mo:isNew() then
+		return true
+	end
 end
 
 function Act248ClueCategoryItem:onDestroyView()

@@ -408,21 +408,9 @@ function Activity125Testing:_test()
 end
 
 function Activity125Testing:_offline_test()
-	local COList = lua_activity125.configList or {}
-	local recentCO = COList[#COList]
-
-	for i = #COList, math.max(1, #COList - 5), -1 do
-		local CO = COList[i]
-		local activityId = CO.activityId
-
-		if lua_activity125_link.configDict[activityId] then
-			recentCO = CO
-
-			break
-		end
-	end
-
-	local myActId = 14042
+	local actId = Activity125Config.instance:getWarmUp1ActId()
+	local actId = Activity125Config.instance:getWarmUpActId()
+	local myActId = actId
 
 	logError(myActId)
 

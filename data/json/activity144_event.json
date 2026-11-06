@@ -4,7 +4,7 @@
     "eventId": 1001,
     "optionIds": "100101|100102|100103",
     "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_2",
-    "desc": "你在山麓地带遇到了一位下山的登山客。\\n一场暴风雪几乎夺走了他的生命。他的物资已不足以支撑他到达下一处营地。",
+    "desc": "你在山麓地带遇到了一位下山的登山客。\n一场暴风雪几乎夺走了他的生命。他的物资已不足以支撑他到达下一处营地。",
     "name": "偶遇登山客",
     "eventType": 1
   },
@@ -58,7 +58,7 @@
     "eventId": 1007,
     "optionIds": "100701|100702|100703",
     "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_2",
-    "desc": "当你听到弓弦的声音时，箭矢已经从朝你飞来。幸运的是，箭矢落在了脚边，你并未受伤。\\n你望向箭矢的源头，灌木丛中有一双警觉的眼睛。",
+    "desc": "当你听到弓弦的声音时，箭矢已经从朝你飞来。幸运的是，箭矢落在了脚边，你并未受伤。\n你望向箭矢的源头，灌木丛中有一双警觉的眼睛。",
     "name": "灌木丛中的箭矢",
     "eventType": 1
   },
@@ -148,7 +148,7 @@
     "eventId": 1017,
     "optionIds": "101701|101702|101703",
     "picture": "singlebg/v1a5_aizila_singlebg/v1a5_aizila_levelpic_3",
-    "desc": "一处基金会设立的研究据点。食物、植物还是情报，你的选择并不少。\\n",
+    "desc": "一处基金会设立的研究据点。食物、植物还是情报，你的选择并不少。\n",
     "name": "驻扎据点",
     "eventType": 1
   },

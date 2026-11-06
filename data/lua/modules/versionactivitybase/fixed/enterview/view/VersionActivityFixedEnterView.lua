@@ -154,8 +154,8 @@ function VersionActivityFixedEnterView:_initPositioningTab()
 
 	local index, total = self:_getCurActTabIndex()
 
-	if index and total and total > 0 then
-		local hvn = 1 - index / total
+	if index and total and total > 1 then
+		local hvn = 1 - (index - 1) / (total - 1)
 
 		self._scrolltab.verticalNormalizedPosition = hvn
 	end

@@ -480,6 +480,7 @@ function module_views_preloader.Investigation_GuessView(allResPath)
 	if ViewMgr.instance:getSetting(ViewName.Investigation_GuessView) == ViewMgr.instance:getSetting(ViewName.V4a1_Investigation_GuessView) then
 		table.insert(allResPath, ResUrl.getV4a1InvestigationSingleBg("v4a1_investigation_answer_fullbg"))
 		table.insert(allResPath, ResUrl.getV4a1InvestigationSingleBg("v4a1_investigation_leftbg"))
+		table.insert(allResPath, ResUrl.getV4a1InvestigationSingleBg("v4a1_investigation_rightbg"))
 	end
 end
 

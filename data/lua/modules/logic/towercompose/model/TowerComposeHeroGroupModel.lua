@@ -651,8 +651,8 @@ function TowerComposeHeroGroupModel:checkEquipUidIsInLockPlane(equipUid)
 	local themeMo = TowerComposeModel.instance:getThemeMo(themeId)
 	local heroGroupMo = HeroGroupModel.instance:getCurGroupMO()
 
-	for pos = 0, #heroGroupMo.equips - 1 do
-		if equipUid == heroGroupMo.equips[pos].equipUid[1] then
+	for pos, equipMo in pairs(heroGroupMo.equips) do
+		if equipUid == equipMo.equipUid[1] then
 			local planeId = Mathf.Ceil((pos + 1) / 4)
 			local isPlaneLock = TowerComposeModel.instance:checkPlaneLock(themeId, planeId)
 			local planeMo = themeMo:getPlaneMo(planeId)
@@ -724,6 +724,40 @@ function TowerComposeHeroGroupModel:checkAssistInPlane(themeId, heroId, planeCou
 	end
 
 	return -1
+end
+
+function TowerComposeHeroGroupModel:replaceSingleGroupEquips()
+	local tempGroupMO = HeroGroupModel.instance:getCurGroupMO()
+	local heroList = HeroSingleGroupModel.instance:getList()
+	local recordFightParam = TowerComposeModel.instance:getRecordFightParam()
+	local themeId = recordFightParam.themeId
+	local themeMo = TowerComposeModel.instance:getThemeMo(themeId)
+	local heroMo, info, planeId, planeMo, isLock
+
+	for index, heroSingleGroupMO in ipairs(heroList) do
+		planeId = Mathf.Ceil(index / 4)
+		planeMo = themeMo:getPlaneMo(planeId)
+		isLock = TowerComposeModel.instance:checkPlaneLock(themeId, planeId) and planeMo and planeMo.hasFight
+		heroMo = not isLock and HeroModel.instance:getById(heroSingleGroupMO.heroUid)
+
+		if heroMo and heroMo:hasDefaultEquip() then
+			info = {
+				index = index - 1
+			}
+
+			if self:checkEquipUidIsInLockPlane(heroMo.defaultEquipUid) then
+				info.equipUid = {
+					"0"
+				}
+			else
+				info.equipUid = {
+					heroMo.defaultEquipUid
+				}
+			end
+
+			tempGroupMO:updatePosEquips(info)
+		end
+	end
 end
 
 TowerComposeHeroGroupModel.instance = TowerComposeHeroGroupModel.New()

@@ -52,5 +52,8 @@ E("V3a1_GaoSiNiao_LevelView_EnableEditModeOnSelect")
 E("V3a1_GaoSiNiao_GameView_ShowAllTabIdUpdate")
 E("V3a1_GaoSiNiao_GameView_OnClickSwitchMode")
 E("SettingsAccountView_ShowNodeAccountInfo")
+E("ActivityWarmUpH5FullView_OnUseTestEnv")
+E("ActivityWarmUpH5FullView_OnClickDeleteLocalFile")
+E("ActivityWarmUpH5FullView_OnClickDeletePlayerPrefsKey")
 
 return GMEvent

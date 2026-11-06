@@ -4624,9 +4624,9 @@ return {
 	{
 		4101,
 		3,
-		"<align=center><color=white><size=200>Dead Rabit",
+		"<align=center><color=white><size=200>Dead Rabbit",
 		"",
-		"<align=center><color=white><size=200>Dead Rabit",
+		"<align=center><color=white><size=200>Dead Rabbit",
 		"",
 		"",
 		"",

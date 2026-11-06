@@ -4,18 +4,9 @@ module("modules.logic.bossrush.view.BossRushHeroGroupFightViewLevel", package.se
 
 local BossRushHeroGroupFightViewLevel = class("BossRushHeroGroupFightViewLevel", HeroGroupFightViewLevel)
 
-function BossRushHeroGroupFightViewLevel:_editableInitView()
-	BossRushHeroGroupFightViewLevel.super._editableInitView(self)
-
-	self._godanger = gohelper.findChild(self.viewGO, "#go_container/#scroll_info/infocontain/dangercontain")
-end
-
-function BossRushHeroGroupFightViewLevel:onOpen()
-	BossRushHeroGroupFightViewLevel.super.onOpen(self)
-
+function BossRushHeroGroupFightViewLevel:isShowDangerRoot()
 	local stage, layer, actId = BossRushModel.instance:getBattleStageAndLayer()
 	local isCurSeason = V4a1_BossRushModel.instance:isCurSeason(actId)
-	local isShow = false
 
 	if isCurSeason then
 		if not self._skillBuffItem then
@@ -27,11 +18,12 @@ function BossRushHeroGroupFightViewLevel:onOpen()
 		end
 
 		local layerCo = BossRushConfig.instance:getEpisodeCO(stage, layer, actId)
+		local isShow = self._skillBuffItem:onUpdateMO(0, layerCo.episodeId)
 
-		isShow = self._skillBuffItem:onUpdateMO(0, layerCo.episodeId)
+		return isShow
 	end
 
-	gohelper.setActive(self._godanger, isShow)
+	return false
 end
 
 function BossRushHeroGroupFightViewLevel:_btnenemyOnClick()

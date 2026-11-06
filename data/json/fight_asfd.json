@@ -326,7 +326,7 @@
   {
     "id": 29,
     "unit": 2,
-    "replaceRule": "1#311304|2#924",
+    "replaceRule": "1#311304|2#928",
     "res": "buff/v4a1_asfd_alf_fx_1|buff/v4a1_asfd_alf_fx_2|buff/v4a1_asfd_alf_fx_3",
     "sceneEmitterId": 2,
     "audio": 431130452,
@@ -338,7 +338,7 @@
   {
     "id": 30,
     "unit": 3,
-    "replaceRule": "1#311304|2#924",
+    "replaceRule": "1#311304|2#928",
     "res": "buff/v4a1_asfd_alf_fx_hit",
     "sceneEmitterId": 0,
     "audio": 431130453,

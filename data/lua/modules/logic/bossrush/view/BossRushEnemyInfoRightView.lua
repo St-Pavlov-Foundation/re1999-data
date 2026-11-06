@@ -35,6 +35,8 @@ function BossRushEnemyInfoRightView:_refreshSkillBuff()
 		local layerCo = BossRushConfig.instance:getEpisodeCO(stage, layer, activityId)
 
 		isShow = self._skillBuffItem:onUpdateMO(0, layerCo.episodeId, self.monsterId)
+
+		recthelper.setAnchor(self._gonoskill.transform, 244, -29)
 	end
 
 	gohelper.setActive(self._godanger, isShow)

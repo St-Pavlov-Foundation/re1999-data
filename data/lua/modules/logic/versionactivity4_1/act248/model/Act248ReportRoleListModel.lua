@@ -28,6 +28,10 @@ function Act248ReportRoleListModel:setModel(fileId)
 		self._roleMoList[fileId] = list
 	end
 
+	for _, mo in ipairs(list) do
+		mo:clearStatus()
+	end
+
 	self:setList(list)
 end
 

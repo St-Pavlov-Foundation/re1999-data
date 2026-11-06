@@ -46,6 +46,7 @@ function HeroGroupFightViewLevel:onInitView()
 	self._gostar2 = gohelper.findChild(self.viewGO, "#go_container/#scroll_info/infocontain/targetcontain/text/starcontainer/#go_star2")
 	self._gostar1 = gohelper.findChild(self.viewGO, "#go_container/#scroll_info/infocontain/targetcontain/text/starcontainer/#go_star1")
 	self._btnOffer = gohelper.findChildButtonWithAudio(self.viewGO, "#go_container/#btn_Offer")
+	self._godanger = gohelper.findChild(self.viewGO, "#go_container/#scroll_info/infocontain/dangercontain")
 
 	if self._editableInitView then
 		self:_editableInitView()
@@ -448,6 +449,8 @@ function HeroGroupFightViewLevel:onOpen()
 			gohelper.setActive(self._btnOffer.gameObject, isEnhanceRole)
 		end
 	end
+
+	gohelper.setActive(self._godanger, self:isShowDangerRoot())
 end
 
 function HeroGroupFightViewLevel:onOpenFinish()
@@ -588,6 +591,10 @@ function HeroGroupFightViewLevel:_onRecommendCareerItemShow(obj, data, index)
 	local icon = gohelper.findChildImage(obj, "icon")
 
 	UISpriteSetMgr.instance:setHeroGroupSprite(icon, "career_" .. data)
+end
+
+function HeroGroupFightViewLevel:isShowDangerRoot()
+	return false
 end
 
 function HeroGroupFightViewLevel:onClose()

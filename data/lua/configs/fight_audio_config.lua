@@ -24315,8 +24315,8 @@ return {
 	},
 	{
 		431590112,
-		"play_hero314003_skill01_voc",
-		"hero314003_vo_skin",
+		"play_hero3159_skill01_voc",
+		"hero3159_vo",
 		22
 	},
 	{
@@ -24327,8 +24327,8 @@ return {
 	},
 	{
 		431590122,
-		"play_hero314003_skill02_voc",
-		"hero314003_vo_skin",
+		"play_hero3159_skill02_voc",
+		"hero3159_vo",
 		22
 	},
 	{
@@ -24339,8 +24339,8 @@ return {
 	},
 	{
 		431590132,
-		"play_hero314003_fightingvoc_65",
-		"hero314003_vo_skin",
+		"play_hero3159_fightingvoc_29",
+		"hero3159_vo",
 		22
 	},
 	{

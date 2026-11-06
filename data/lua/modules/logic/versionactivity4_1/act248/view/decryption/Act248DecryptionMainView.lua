@@ -42,7 +42,7 @@ function Act248DecryptionMainView:playAni(aniName)
 end
 
 function Act248DecryptionMainView:onClose()
-	return
+	Act248Model.instance:refreshClueNew()
 end
 
 function Act248DecryptionMainView:onDestroyView()

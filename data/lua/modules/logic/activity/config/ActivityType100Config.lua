@@ -43,6 +43,16 @@ function ActivityType100Config:getWarmUpH5BgResUrl(actId, fallback)
 	return string.nilorempty(CO.bgResUrl) and fallback or CO.bgResUrl
 end
 
+function ActivityType100Config:bLoadResFromWebside(actId)
+	local CO = _getWarmUpH5CO(actId)
+
+	if not CO then
+		return
+	end
+
+	return CO.overseaSwitch == 1
+end
+
 ActivityType100Config.instance = ActivityType100Config.New()
 
 return ActivityType100Config

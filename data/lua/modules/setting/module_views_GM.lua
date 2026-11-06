@@ -170,5 +170,12 @@ module_views.GM_SettingsAccountView = {
 	layer = "TOP",
 	viewType = ViewType.Modal
 }
+module_views.GM_ActivityWarmUpH5FullView = {
+	destroy = 0,
+	container = "GM_ActivityWarmUpH5FullViewContainer",
+	mainRes = "ui/viewres/gm/gm_activitywarmuph5fullview.prefab",
+	layer = "TOP",
+	viewType = ViewType.Modal
+}
 
 return module_views

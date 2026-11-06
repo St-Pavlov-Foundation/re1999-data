@@ -210,4 +210,8 @@ function Act248DecryptionMainViewContainer:isCanEditor()
 	return self._isCanEditor
 end
 
+function Act248DecryptionMainViewContainer:getCorrectClueDict()
+	return self._leftView._correctClueIds
+end
+
 return Act248DecryptionMainViewContainer

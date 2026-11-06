@@ -28,7 +28,7 @@
   {
     "enemyId": 3003,
     "name": "泡沫梦魇",
-    "desc": "玩家每行动2次，主动攻击1次玩家。\\n被击败后，掉落<color=#FF7373>传承物</color>。",
+    "desc": "玩家每行动2次，主动攻击1次玩家。\n被击败后，掉落<color=#FF7373>传承物</color>。",
     "picture": "monster_6a",
     "pictureOffset": 0.8,
     "main": 0,
@@ -41,7 +41,7 @@
   {
     "enemyId": 3004,
     "name": "虚像与真实",
-    "desc": "代替其他敌方受到来自道具的创伤。\\n被击败后，掉落<color=#FF7373>传承物</color>。",
+    "desc": "代替其他敌方受到来自道具的创伤。\n被击败后，掉落<color=#FF7373>传承物</color>。",
     "picture": "monster_9a",
     "pictureOffset": 0.8,
     "main": 0,

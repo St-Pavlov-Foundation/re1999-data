@@ -142,7 +142,7 @@ function ArcadeSurvivorRpc:onReceiveArcadeSurvivorCurrencyChangePush(resultCode,
 		return
 	end
 
-	ArcadeSurvivorOutSideModel.instance:refreshCurrencyCount(msg.currency)
+	ArcadeSurvivorOutSideModel.instance:updateCurrencyCount(msg.currency)
 	ArcadeSurvivorController.instance:dispatchEvent(ArcadeSurvivorEvent.OnOutsideCurrencyChangePush)
 end
 

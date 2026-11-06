@@ -100,7 +100,7 @@ function V4a1_Library_MainView:_editableInitView_entryItemList()
 
 	self._entryItemList = {
 		[E.Investigation_GuessView] = self:_createEntryItemImpl(V4a1_Library_MainViewEntryItemImpl, gohelper.findChild(self.viewGO, "#go_enter1"), Sp02_GuessMeConfig.instance:getInvestigation_GuessViewActId()),
-		[E.GuessGame] = self:_createEntryItemImpl(V4a1_Library_MainViewEntryItemImpl, gohelper.findChild(self.viewGO, "#go_enter2"), VersionActivity4_1Enum.ActivityId.GuessGameNew),
+		[E.GuessGame] = self:_createEntryItemImpl(V4a1_Library_MainViewEntryItem_GuessGame, gohelper.findChild(self.viewGO, "#go_enter2"), VersionActivity4_1Enum.ActivityId.GuessGameNew),
 		[E.DeepDive] = self:_createEntryItemImpl(V4a1_Library_MainViewEntryItem_DeepDive, gohelper.findChild(self.viewGO, "#go_enter3"), Activity187Config.instance:getDeepDiveActId()),
 		[E.GoldenMilletPresent] = self:_createEntryItemImpl(V4a1_Library_MainViewEntryItemImpl, gohelper.findChild(self.viewGO, "#go_enter4"), GoldenMilletPresentModel.instance:getGoldenMilletPresentActId()),
 		[E.LinkGift] = self:_createEntryItemImpl(V4a1_Library_MainViewEntryItemImpl, gohelper.findChild(self.viewGO, "#go_enter5"), ActivityType101Config.instance:getLinkGiftActId())
