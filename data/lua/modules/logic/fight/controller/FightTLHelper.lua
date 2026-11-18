@@ -24,6 +24,10 @@ local DefaultEmptyTable = {}
 local TimelineJsonCacheDict = {}
 
 function FightTLHelper.getTLJsonData(assetItem, timelineUrl)
+	if not assetItem then
+		return DefaultEmptyTable
+	end
+
 	if not timelineUrl then
 		return DefaultEmptyTable
 	end

@@ -438515,6 +438515,23 @@
     "heroId": 0
   },
   {
+    "id": 109410316,
+    "name": "",
+    "timeline": "",
+    "icon": 0,
+    "desc_art": "",
+    "eff_desc": "",
+    "battleTag": "",
+    "skillEffect": 109410316,
+    "skillRank": 0,
+    "notDoAction": 0,
+    "showInBattle": 0,
+    "bloomParams": "",
+    "activeTargetFrameEvent": "",
+    "preFxId": 0,
+    "heroId": 0
+  },
+  {
     "id": 109410321,
     "name": "",
     "timeline": "",

@@ -287228,7 +287228,7 @@
   {
     "id": 425211,
     "name": "§母buff",
-    "desc": "§母buff对应术法威力1.2%",
+    "desc": "§母buff对应术法威力2.2%",
     "isNoShow": 1,
     "isGoodBuff": 1,
     "duringTime": 0,
@@ -287255,7 +287255,7 @@
   {
     "id": 425212,
     "name": "§母buff",
-    "desc": "§母buff对应术法威力1.4%",
+    "desc": "§母buff对应术法威力2.4%",
     "isNoShow": 1,
     "isGoodBuff": 1,
     "duringTime": 0,
@@ -287282,7 +287282,7 @@
   {
     "id": 425213,
     "name": "§母buff",
-    "desc": "§母buff对应术法威力1.6%",
+    "desc": "§母buff对应术法威力2.6%",
     "isNoShow": 1,
     "isGoodBuff": 1,
     "duringTime": 0,
@@ -287309,7 +287309,7 @@
   {
     "id": 425214,
     "name": "§母buff",
-    "desc": "§母buff对应术法威力1.8%",
+    "desc": "§母buff对应术法威力2.8%",
     "isNoShow": 1,
     "isGoodBuff": 1,
     "duringTime": 0,
@@ -287336,7 +287336,7 @@
   {
     "id": 425215,
     "name": "§母buff",
-    "desc": "§母buff对应术法威力2%",
+    "desc": "§母buff对应术法威力3%",
     "isNoShow": 1,
     "isGoodBuff": 1,
     "duringTime": 0,
@@ -287363,7 +287363,7 @@
   {
     "id": 425221,
     "name": "§术法威力提升",
-    "desc": "§子buff对应术法威力1.2%",
+    "desc": "§子buff对应术法威力2.2%",
     "isNoShow": 1,
     "isGoodBuff": 1,
     "duringTime": 0,
@@ -287390,7 +287390,7 @@
   {
     "id": 425222,
     "name": "§术法威力提升",
-    "desc": "§子buff对应术法威力1.4%",
+    "desc": "§子buff对应术法威力2.4%",
     "isNoShow": 1,
     "isGoodBuff": 1,
     "duringTime": 0,
@@ -287417,7 +287417,7 @@
   {
     "id": 425223,
     "name": "§术法威力提升",
-    "desc": "§子buff对应术法威力1.6%",
+    "desc": "§子buff对应术法威力2.6%",
     "isNoShow": 1,
     "isGoodBuff": 1,
     "duringTime": 0,
@@ -287444,7 +287444,7 @@
   {
     "id": 425224,
     "name": "§术法威力提升",
-    "desc": "§子buff对应术法威力1.8%",
+    "desc": "§子buff对应术法威力2.8%",
     "isNoShow": 1,
     "isGoodBuff": 1,
     "duringTime": 0,
@@ -287471,7 +287471,7 @@
   {
     "id": 425225,
     "name": "§术法威力提升",
-    "desc": "§子buff对应术法威力2%",
+    "desc": "§子buff对应术法威力3%",
     "isNoShow": 1,
     "isGoodBuff": 1,
     "duringTime": 0,

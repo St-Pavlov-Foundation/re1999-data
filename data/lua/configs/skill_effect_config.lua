@@ -2,8 +2,8 @@
 
 local __result = {}
 
-__result[24503] = true
-__result[24503] = nil
+__result[24504] = true
+__result[24504] = nil
 
 local __idx = 0
 local __src = require("configs.skill_effect_config_1")
