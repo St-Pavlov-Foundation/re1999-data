@@ -3,8 +3,8 @@
 module("modules.logic.versionactivity4_1.arcadesurvivor.view.game.scene.comp.ArcadeSurvivorEffectMgr", package.seeall)
 
 local ArcadeSurvivorEffectMgr = class("ArcadeSurvivorEffectMgr", ArcadeSurvivorBaseSceneComp)
-local VFX_POOL_MAX_COUNT_PER_RES = 8
-local VFX_POOL_WARM_COUNT_PER_RES = 1
+local VFX_POOL_MAX_COUNT_PER_RES = 169
+local VFX_POOL_WARM_COUNT_PER_RES = 24
 
 function ArcadeSurvivorEffectMgr:onInit()
 	self._vfxGOPool = self:getUserDataTb_()

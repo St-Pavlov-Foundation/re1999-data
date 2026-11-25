@@ -19,10 +19,7 @@ local fields = {
 local primaryKey = {
 	"id"
 }
-local mlStringKey = {
-	desc = 2,
-	name = 1
-}
+local mlStringKey = {}
 local _configList, _configDict
 local configPath = "configs.arcade_survivor_buff_config"
 

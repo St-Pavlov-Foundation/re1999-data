@@ -534,8 +534,11 @@ function SeasonViewDefine.initDefine3_5(module_views)
 			}
 		},
 		otherRes = {
-			[1] = "ui/viewres/seasonver/v3a5_act123/season123herogroupedititem.prefab",
-			[2] = "ui/viewres/seasonver/v3a5_act123/season123herogroupquickedititem.prefab"
+			"ui/viewres/seasonver/v3a5_act123/season123herogroupedititem.prefab",
+			"ui/viewres/seasonver/v3a5_act123/season123herogroupquickedititem.prefab",
+			NormalCard = "ui/viewres/character/characterbreakthrough_normalcard.prefab",
+			UniqueCard = "ui/viewres/character/characterbreakthrough_uniquecard.prefab",
+			QTERes = "ui/viewres/character/characterbreakthroughview_1.prefab"
 		},
 		customAnimBg = {
 			"bg"

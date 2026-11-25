@@ -31,11 +31,6 @@ function FightViewHandCardItem:init(go)
 	gohelper.setActive(self.goRouge2Treasure, false)
 	self._cardItem:setRouge2TreasureRoot(self.goRouge2Treasure)
 
-	self.goV4a1ZhiZhengRoot = gohelper.findChild(self._forAnimGO, "node_search")
-
-	gohelper.setActive(self.goV4a1ZhiZhengRoot, false)
-	self._cardItem:setV4A1ZhiZhengRoot(self.goV4a1ZhiZhengRoot)
-
 	self._foranim = self._forAnimGO:GetComponent(typeof(UnityEngine.Animator))
 	self._itemWidth = recthelper.getWidth(self.tr)
 	self._oldParentX = -999999

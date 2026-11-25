@@ -206,6 +206,7 @@ function Live2dSpecialEffect_315503_tlzchnj:_onBodyChange(prevBodyName, curBodyN
 	end
 
 	if curBodyName == b_jiaohu01 then
+		TaskDispatcher.cancelTask(self._resetMusicValue, self)
 		self._animator:Play(anim_jh01)
 	elseif curBodyName == b_jiaohu03 then
 		TaskDispatcher.cancelTask(self._resetMusicValue, self)

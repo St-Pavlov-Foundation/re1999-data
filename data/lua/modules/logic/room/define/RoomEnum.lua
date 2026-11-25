@@ -129,6 +129,7 @@ RoomEnum.Toast = {
 	LayoutPlanDelete = 42604,
 	GainFaithSingleCharacter = 2683,
 	InventoryCanelNoBackBlock = 2657,
+	ReviewBlockNotOpen = 111,
 	InventoryBlockMax = 2643,
 	LayoutPlanMax = 2699,
 	RoomConfirmRoomSuccess = 2672,

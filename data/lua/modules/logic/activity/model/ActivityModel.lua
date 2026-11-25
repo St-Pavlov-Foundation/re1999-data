@@ -455,6 +455,16 @@ function ActivityModel.getRemainTimeStr(actId)
 	return luaLang("turnback_end")
 end
 
+function ActivityModel:getActEndTimeTs(actId)
+	local actMO = self:getActMO(actId)
+
+	if actMO then
+		return actMO.endTime / 1000
+	end
+
+	return 0
+end
+
 ActivityModel.instance = ActivityModel.New()
 
 return ActivityModel

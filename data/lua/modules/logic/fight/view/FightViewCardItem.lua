@@ -186,6 +186,10 @@ function FightViewCardItem:init(go)
 	gohelper.setActive(self.goASFD, false)
 
 	self.txtASFDEnergy = gohelper.findChildText(go, "topLayout/asfd_icon/#txt_Num")
+	self.goV4a1ZhiZhengRoot = gohelper.findChild(go, "topLayout/node_search")
+
+	gohelper.setActive(self.goV4a1ZhiZhengRoot, false)
+
 	self.goRouge2Double_HandCard = gohelper.findChild(go, "topLayout/rouge_fumo")
 
 	gohelper.setActive(self.goRouge2Double_HandCard, false)
@@ -308,10 +312,6 @@ function FightViewCardItem:init(go)
 	self.playedHideCardOpenAnim = false
 
 	self:addEventCb(FightController.instance, FightEvent.OnFirstActFreeAttrChange, self.onFirstActFreeAttrChange, self)
-end
-
-function FightViewCardItem:setV4A1ZhiZhengRoot(zhiZhengRoot)
-	self.goV4a1ZhiZhengRoot = zhiZhengRoot
 end
 
 function FightViewCardItem:initLyRedAndBlue()

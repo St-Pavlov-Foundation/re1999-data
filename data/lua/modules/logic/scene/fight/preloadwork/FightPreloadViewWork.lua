@@ -14,6 +14,7 @@ FightPreloadViewWork.ui_dazhaoka = "ui_dazhaoka"
 FightPreloadViewWork.ui_effect_dna_c = "ui/viewres/fight/ui_effect_dna_c.prefab"
 FightPreloadViewWork.ui2_effect_dna_c = "ui/viewres/fight/fightskin/0002/cardmerging.prefab"
 FightPreloadViewWork.ui3_effect_dna_c = "ui/viewres/fight/fightskin/0003/cardmerging.prefab"
+FightPreloadViewWork.ui4_effect_dna_c = "ui/viewres/fight/fightskin/0004/cardmerging.prefab"
 FightPreloadViewWork.FightSpriteAssets = "ui/spriteassets/fight.asset"
 
 function FightPreloadViewWork:onStart(context)
@@ -31,6 +32,7 @@ function FightPreloadViewWork:onStart(context)
 	self._loader:addPath(FightPreloadViewWork.ui_effect_dna_c)
 	self._loader:addPath(FightPreloadViewWork.ui2_effect_dna_c)
 	self._loader:addPath(FightPreloadViewWork.ui3_effect_dna_c)
+	self._loader:addPath(FightPreloadViewWork.ui4_effect_dna_c)
 
 	local fightViewSetting = ViewMgr.instance:getSetting(ViewName.FightView)
 

@@ -190,6 +190,72 @@ function ActivityBeginnerController:checkGoodsTaskReward(activityId)
 	return false
 end
 
+function ActivityBeginnerController:saveInt(key, value)
+	GameUtil.playerPrefsSetNumberByUserId(key, value)
+end
+
+function ActivityBeginnerController:getInt(key, defaultValue)
+	return GameUtil.playerPrefsGetNumberByUserId(key, defaultValue)
+end
+
+function ActivityBeginnerController:saveString(key, value)
+	GameUtil.playerPrefsSetStringByUserId(key, value)
+end
+
+function ActivityBeginnerController:getString(key, defaultValue)
+	return GameUtil.playerPrefsGetStringByUserId(key, defaultValue)
+end
+
+function ActivityBeginnerController:cleanFirstEnter(actId)
+	local key = PlayerPrefsKey.FirstEnterActivityShow .. "#" .. tostring(actId) .. "#" .. tostring(PlayerModel.instance:getPlayinfo().userId)
+
+	PlayerPrefsHelper.setString(key, "")
+end
+
+function ActivityBeginnerController:onReceiveGetActivityInfosReply_OnFirstLogin()
+	self:_onReceiveGetActivityInfosReply_OnFirstLogin_WarmUpH5()
+end
+
+local kEdTs = "ActivityBeginnerController|EdTs|"
+
+function ActivityBeginnerController:_getEndTimeTsPlayerPrefsKey(actId)
+	return kEdTs .. "|" .. actId
+end
+
+function ActivityBeginnerController:savePlayerPrefsEdTs(actId, newTs)
+	local key = self:_getEndTimeTsPlayerPrefsKey(actId)
+
+	self:saveString(key, tostring(newTs or 0))
+end
+
+function ActivityBeginnerController:getPlayerPrefsEdTs(actId, fallback)
+	local key = self:_getEndTimeTsPlayerPrefsKey(actId)
+
+	return self:getString(key, tostring(fallback or 0))
+end
+
+function ActivityBeginnerController:simpleSavePlayerPrefsEdTs(actId)
+	self:savePlayerPrefsEdTs(actId, ActivityModel.instance:getActEndTimeTs(actId))
+end
+
+function ActivityBeginnerController:_onReceiveGetActivityInfosReply_OnFirstLogin_WarmUpH5()
+	local actIdList = ActivityType100Config.instance:getWarmUpH5ActIdList()
+
+	for _, actId in ipairs(actIdList) do
+		if not self:checkFirstEnter(actId) then
+			if ActivityModel.instance:isActOnLine(actId) then
+				local endTimeTs = ActivityModel.instance:getActEndTimeTs(actId)
+
+				if tonumber(self:getPlayerPrefsEdTs(actId)) ~= endTimeTs then
+					self:cleanFirstEnter(actId)
+				end
+			else
+				self:savePlayerPrefsEdTs(actId)
+			end
+		end
+	end
+end
+
 ActivityBeginnerController.instance = ActivityBeginnerController.New()
 
 return ActivityBeginnerController

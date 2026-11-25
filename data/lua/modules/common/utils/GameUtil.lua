@@ -1779,4 +1779,8 @@ function GameUtil.jsonEncode(tbl)
 	return jsonStr
 end
 
+function GameUtil.isJsonValNULL(jsonVal)
+	return jsonVal == nil or cjson.null == jsonVal
+end
+
 return GameUtil

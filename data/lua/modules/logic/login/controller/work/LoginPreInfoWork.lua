@@ -52,8 +52,12 @@ function LoginPreInfoWork:_checkPreInfo()
 		self:_sendPlayerBaseProperties()
 
 		if SDKDataTrackMgr then
+			local cpuAbiName = SLFramework.NativeUtil.GetAndroidtPrimaryCpuAbi()
+			local instruction_set = string.nilorempty(cpuAbiName) and "unknown" or cpuAbiName
+
 			StatController.instance:track(StatEnum.EventName.GameLoading, {
-				[StatEnum.EventProperties.IsEnterGame] = true
+				[StatEnum.EventProperties.IsEnterGame] = true,
+				instruction_set = instruction_set
 			})
 		end
 

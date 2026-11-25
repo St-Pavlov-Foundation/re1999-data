@@ -8,6 +8,7 @@ local CardScale = 0.76
 function FightViewPlayCardItem:init(go)
 	self.go = go
 	self.tr = go.transform
+	self._conversionGO = gohelper.findChild(go, "conversion")
 	self._emtpyGO = gohelper.findChild(go, "imgEmpty")
 	self._emptyNormal = gohelper.findChild(go, "imgEmpty/emptyNormal")
 
@@ -21,6 +22,7 @@ function FightViewPlayCardItem:init(go)
 
 	if cardSkin then
 		UISpriteSetMgr.instance:setFightSkillCardSprite(normalImg, "card_dz5", true)
+		recthelper.setAnchorY(self.moveImage.transform, 0)
 
 		moveImgUrl = "singlebg_lang/txt_fight/change2.png"
 
@@ -28,6 +30,8 @@ function FightViewPlayCardItem:init(go)
 			moveImgUrl = "singlebg_lang/txt_fight/change3.png"
 		elseif cardSkin == 672803 then
 			moveImgUrl = "singlebg_lang/txt_fight/change4.png"
+		elseif cardSkin == 672804 then
+			moveImgUrl = "singlebg_lang/txt_fight/change5.png"
 		end
 
 		local emptyDarkBg = gohelper.cloneInPlace(self._emptyNormal.gameObject, "emptyDarkBg")
@@ -55,6 +59,10 @@ function FightViewPlayCardItem:init(go)
 
 	self._innerGO = viewContainer:getResInst(path, self.go, "card")
 
+	if FightCardDataHelper.getCardSkin() == 672804 then
+		recthelper.setAnchorY(self._innerGO.transform, 24)
+	end
+
 	transformhelper.setLocalScale(self._innerGO.transform, CardScale, CardScale, CardScale)
 	gohelper.setSiblingBefore(self._innerGO, self._lockGO)
 
@@ -76,7 +84,6 @@ function FightViewPlayCardItem:init(go)
 	self._effectLoader1 = nil
 	self._effectLoader2 = nil
 	self._effectLoader3 = nil
-	self._conversionGO = gohelper.findChild(go, "conversion")
 	self.rankChangeRoot = gohelper.findChild(go, "#go_Grade")
 	self._seasonRoot = gohelper.findChild(go, "imgEmpty/SeasonRoot")
 	self._seasonEmpty1 = gohelper.findChild(go, "imgEmpty/SeasonRoot/imgEmpty1")

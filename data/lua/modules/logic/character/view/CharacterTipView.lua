@@ -977,6 +977,8 @@ function CharacterTipView:_setScrollMaskVisible()
 	gohelper.setActive(self._gomask1, self._couldScroll and not (gohelper.getRemindFourNumberFloat(self._scrollview.verticalNormalizedPosition) <= 0))
 
 	self._passiveskilltipmask.enabled = false
+
+	ZProj.UGUIHelper.RebuildLayout(self._passiveskilltipcontent.transform)
 end
 
 function CharacterTipView:_getPassiveUnlock(state, heroid, i, heroMo)

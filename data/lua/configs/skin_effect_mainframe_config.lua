@@ -47,6 +47,6 @@ return {
 	},
 	{
 		314404,
-		"Drawables/bone3/effect-Bone/roleeffect_fly_lb3|Drawables/bone6/effect-Bone/roleeffect_fly_lb6|Drawables/bone14/effect-Bone/roleeffect_fly_lb14|Drawables/bone15/effect-Bone/roleeffect_fly_lb15|Drawables/bone17/effect-Bone/roleeffect_fly_lb17|Drawables/bone18/effect-Bone/roleeffect_fly_lb18"
+		"Drawables/bone3/effect-Bone/roleeffect_fly_lb3|Drawables/bone14/effect-Bone/roleeffect_fly_lb14|Drawables/bone15/effect-Bone/roleeffect_fly_lb15|Drawables/bone17/effect-Bone/roleeffect_fly_lb17"
 	}
 }

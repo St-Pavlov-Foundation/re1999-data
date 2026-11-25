@@ -75,6 +75,8 @@ function OpenController:_delayCheckFuncUnlock()
 
 			Act208Controller.instance:getActInfo(ActivityEnum.Activity.V2a9_Act208, channelId)
 		end
+
+		ActivityBeginnerController.instance:onReceiveGetActivityInfosReply_OnFirstLogin()
 	end)
 	HandbookRpc.instance:sendGetHandbookInfoRequest()
 	RedDotRpc.instance:sendGetRedDotInfosRequest()

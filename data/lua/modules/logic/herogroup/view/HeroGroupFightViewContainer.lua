@@ -45,7 +45,6 @@ function HeroGroupFightViewContainer:addCommonViews(views)
 	table.insert(views, HeroGroupInfoScrollView.New())
 	table.insert(views, CheckActivityEndView.New())
 	table.insert(views, self:getPresetFightView())
-	table.insert(views, HeroGroupPresetFightView.New())
 	table.insert(views, TabViewGroup.New(1, "#go_container/btnContain/commonBtns"))
 	table.insert(views, TabViewGroup.New(2, "#go_righttop/#go_power"))
 end

@@ -185,7 +185,7 @@ function GuessGameNewPlayRolesView:_getRandomSelectGifts(roleType)
 				return selectIndexs
 			end
 
-			local fakeTakeCount = math.min(maxFakeCount, count)
+			local fakeTakeCount = math.min(maxFakeCount, count, #fakeIndexs)
 			local selectIndexs = self:_buildSelectIndexs(realIndexs, fakeIndexs, count - fakeTakeCount, fakeTakeCount)
 
 			logNormal(roleName .. " cautious, realCount >= 2, set fake card, selectIndexs: " .. table.concat(selectIndexs, ","))
@@ -218,7 +218,7 @@ function GuessGameNewPlayRolesView:_getRandomSelectGifts(roleType)
 				return selectIndexs
 			end
 
-			local fakeTakeCount = math.min(maxFakeCount, count)
+			local fakeTakeCount = math.min(maxFakeCount, count, #fakeIndexs)
 			local selectIndexs = self:_buildSelectIndexs(realIndexs, fakeIndexs, count - fakeTakeCount, fakeTakeCount)
 
 			logNormal(roleName .. " radical, realCount >= 2, set fake card, selectIndexs: " .. table.concat(selectIndexs, ","))
@@ -250,7 +250,7 @@ function GuessGameNewPlayRolesView:_getRandomSelectGifts(roleType)
 			return selectIndexs
 		end
 
-		local fakeTakeCount = math.min(maxFakeCount, count)
+		local fakeTakeCount = math.min(maxFakeCount, count, #fakeIndexs)
 		local selectIndexs = self:_buildSelectIndexs(realIndexs, fakeIndexs, count - fakeTakeCount, fakeTakeCount)
 
 		logNormal(roleName .. " logical, realCount >= 2, set fake card, selectIndexs: " .. table.concat(selectIndexs, ","))

@@ -4,6 +4,9 @@ module("modules.logic.fight.system.work.FightWorkEffectHeal", package.seeall)
 
 local FightWorkEffectHeal = class("FightWorkEffectHeal", FightEffectBase)
 
+FightWorkEffectHeal.NarcissusAudioInterval = 0.3
+FightWorkEffectHeal._lastNarcissusAudioTime = nil
+
 function FightWorkEffectHeal:onStart()
 	if not self.actEffectData then
 		self:onDone(true)
@@ -79,7 +82,13 @@ function FightWorkEffectHeal:_playNarcissusHealEffect(entity)
 	FightRenderOrderMgr.instance:onAddEffectWrap(entity.id, effectWrap)
 
 	if config.audio ~= 0 then
-		AudioMgr.instance:trigger(config.audio)
+		local now = Time.realtimeSinceStartup
+
+		if not FightWorkEffectHeal._lastNarcissusAudioTime or now >= FightWorkEffectHeal._lastNarcissusAudioTime + FightWorkEffectHeal.NarcissusAudioInterval then
+			FightWorkEffectHeal._lastNarcissusAudioTime = now
+
+			AudioMgr.instance:trigger(config.audio)
+		end
 	end
 end
 

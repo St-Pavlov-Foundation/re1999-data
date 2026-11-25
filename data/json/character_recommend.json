@@ -1243,9 +1243,9 @@
   },
   {
     "id": 3160,
-    "teamRec": "3003#3003#3003#3003|3003#3003#3003#3003",
-    "teamDisplay": 0,
-    "equipRec": "1501",
+    "teamRec": "",
+    "teamDisplay": 1,
+    "equipRec": "",
     "equipDisplay": 0,
     "lvRec": "2#40|3#50|4#60",
     "resonanceRec": "5|10|13|15"

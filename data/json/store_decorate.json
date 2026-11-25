@@ -6214,5 +6214,33 @@
     "showskinId": 0,
     "tag2": 0,
     "linkTag": 0
+  },
+  {
+    "id": 8014105,
+    "storeld": 801,
+    "productType": 1,
+    "subType": 17,
+    "bundleType": 0,
+    "fatherGoods": 0,
+    "typeName": "动态头像",
+    "desc": "",
+    "rare": 5,
+    "maxbuycountType": 1,
+    "smalllmg": "store_decorate_type1_4801",
+    "biglmg": "173813_1",
+    "buylmg": "store_decorate_type1_4802",
+    "bundleBuylmg": "",
+    "video": "",
+    "onlineTag": 1,
+    "tag1": "",
+    "originalCost1": 150,
+    "originalCost2": 230,
+    "offTag": 20,
+    "decorateskinOffset": "",
+    "decorateskinl2dOffset": "",
+    "effectbiglmg": 1,
+    "showskinId": 0,
+    "tag2": 0,
+    "linkTag": 0
   }
 ]

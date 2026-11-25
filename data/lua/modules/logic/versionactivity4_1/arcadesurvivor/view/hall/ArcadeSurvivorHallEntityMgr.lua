@@ -236,6 +236,10 @@ function ArcadeSurvivorHallEntityMgr:playerActOnDirection(direction)
 end
 
 function ArcadeSurvivorHallEntityMgr:isCanMove()
+	if not self._scene then
+		return
+	end
+
 	if not self._characterMO or self._isAutoMoveToInteractiveId or self._isNpcTalkBlock then
 		return
 	end
@@ -315,6 +319,10 @@ function ArcadeSurvivorHallEntityMgr:isNearInteractive(curGridX, curGridY)
 end
 
 function ArcadeSurvivorHallEntityMgr:_checkInteractiveEvent(interactiveId, nearInteractiveId)
+	if not self._scene then
+		return
+	end
+
 	local enterInteractiveId = interactiveId or nearInteractiveId
 
 	if enterInteractiveId then

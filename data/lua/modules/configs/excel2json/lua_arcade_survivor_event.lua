@@ -17,9 +17,8 @@ local primaryKey = {
 	"id"
 }
 local mlStringKey = {
-	title = 1,
-	ruleIds = 3,
-	desc = 2
+	desc = 2,
+	title = 1
 }
 local _configList, _configDict
 local configPath = "configs.arcade_survivor_event_config"

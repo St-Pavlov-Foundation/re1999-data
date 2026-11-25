@@ -70,7 +70,7 @@ function FightThunderMatMgr:_beforeEntityDestroy(entity)
 end
 
 function FightThunderMatMgr:_onSpineMaterialChange(entityId, material)
-	if self._sceneCtrl02Comp and not self._deadIdDict[entityId] then
+	if self._sceneCtrl02Comp and not self._deadIdDict[entityId] and not gohelper.isNil(material) then
 		self._sceneCtrl02Comp:SetSpineMat(tostring(entityId), material)
 	end
 end

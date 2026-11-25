@@ -16,6 +16,8 @@ function DecorateStoreView:onInitView()
 	self._gotypebg7 = gohelper.findChild(self.viewGO, "Bg/typebg/#go_typebg7")
 	self._gotypebg8 = gohelper.findChild(self.viewGO, "Bg/typebg/#go_typebg8")
 	self._gotypebg9 = gohelper.findChild(self.viewGO, "Bg/typebg/#go_typebg9")
+	self._gotypebg11 = gohelper.findChild(self.viewGO, "Bg/typebg/#go_typebg11")
+	self._goheadicon = gohelper.findChild(self.viewGO, "Bg/typebg/#go_typebg11/#go_headicon")
 	self._simagetypebg7 = gohelper.findChildSingleImage(self.viewGO, "Bg/typebg/#go_typebg7/#simage_icon")
 	self._gozs = gohelper.findChild(self.viewGO, "Bg/typebg/#go_typebg2/zs")
 	self._goskincontainer = gohelper.findChild(self.viewGO, "Bg/typebg/#go_typebg2/characterSpine/#go_skincontainer")
@@ -762,6 +764,10 @@ function DecorateStoreView:_refreshGoodDetail(goodId)
 		self:_hideDecorateHero()
 	end
 
+	if curItemType ~= DecorateStoreEnum.DecorateItemType.DynamicHead then
+		self:_hideDecorateDynamicHead()
+	end
+
 	if curItemType == DecorateStoreEnum.DecorateItemType.Default or curItemType == DecorateStoreEnum.DecorateItemType.Icon then
 		self:_updateDecorateDefault()
 	elseif curItemType == DecorateStoreEnum.DecorateItemType.Skin then
@@ -780,6 +786,8 @@ function DecorateStoreView:_refreshGoodDetail(goodId)
 		self:_updateDecorateMainUISkin()
 	elseif curItemType == DecorateStoreEnum.DecorateItemType.Hero then
 		self:_updateDecorateHero()
+	elseif curItemType == DecorateStoreEnum.DecorateItemType.DynamicHead then
+		self:_updateDecorateDynamicHead()
 	end
 
 	local btnCheckShow = curItemType == DecorateStoreEnum.DecorateItemType.SkinGift
@@ -937,6 +945,34 @@ end
 
 function DecorateStoreView:_onType1ImageLoaded()
 	self._simagetypebg1.gameObject:GetComponent(gohelper.Type_Image):SetNativeSize()
+end
+
+function DecorateStoreView:_hideDecorateDynamicHead()
+	gohelper.setActive(self._gotypebg11, false)
+end
+
+function DecorateStoreView:_updateDecorateDynamicHead()
+	gohelper.setActive(self._gotypebg11, true)
+
+	local goodId = DecorateStoreModel.instance:getCurGood(self._selectSecondTabId)
+	local decorateConfig = DecorateStoreConfig.instance:getDecorateConfig(goodId)
+
+	if not decorateConfig or string.nilorempty(decorateConfig.biglmg) then
+		return
+	end
+
+	local path = ResUrl.getLiveHeadIconPrefab(decorateConfig.biglmg)
+
+	if not self._dynamicHeadLoader then
+		self._dynamicHeadLoader = PrefabInstantiate.Create(self._goheadicon)
+	end
+
+	if self._dynamicHeadLoader:getPath() == path then
+		return
+	end
+
+	self._dynamicHeadLoader:dispose()
+	self._dynamicHeadLoader:startLoad(path)
 end
 
 function DecorateStoreView:_checkEffectBigImg(decorateConfig)

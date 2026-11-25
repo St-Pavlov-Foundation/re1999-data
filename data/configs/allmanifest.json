@@ -32422,6 +32422,7 @@
   {
     "abName": "configs/auto_mouth",
     "assets": [
+      "configs/auto_mouth/_init.json",
       "configs/auto_mouth/activity_bulaochun3_4_sfx_part04.json",
       "configs/auto_mouth/activityoc_npcnoname173_2_7_yuzhou.json",
       "configs/auto_mouth/activitystory_diqiu2_4_yishi_xingti_voc.json",
@@ -52301,6 +52302,25 @@
       "effects/effects_share_48.dat",
       "effects/effects_share_54.dat",
       "effects/effects_share_58.dat",
+      "shaders.dat"
+    ]
+  },
+  {
+    "abName": "effects/prefabs/buff_62",
+    "assets": [
+      "effects/prefabs/buff/buff_weizhi_bfz_chuchang.prefab",
+      "effects/prefabs/buff/buff_weizhi_yfl_chuchang.prefab",
+      "effects/prefabs/buff/buff_weizhi_zmsl_chuchang.prefab"
+    ],
+    "directDependencies": [
+      "common.dat",
+      "effects/effects_share_29.dat",
+      "effects/effects_share_3.dat",
+      "effects/effects_share_30.dat",
+      "effects/effects_share_32.dat",
+      "effects/effects_share_33.dat",
+      "effects/effects_share_34.dat",
+      "effects/effects_share_54.dat",
       "shaders.dat"
     ]
   },
@@ -180803,6 +180823,16 @@
     "directDependencies": []
   },
   {
+    "abName": "singlebg/store_66_basics",
+    "assets": [
+      "singlebg/store/decorate/store_decorate_type1_4801.png",
+      "singlebg/store/decorate/store_decorate_type1_4802.png",
+      "singlebg/store/decorate/store_decorate_type1_4803.png",
+      "singlebg/store/decorate/store_decorate_type1_frame.png"
+    ],
+    "directDependencies": []
+  },
+  {
     "abName": "singlebg/store_6_basics",
     "assets": [
       "singlebg/store/decorate/store_decorate_type5_702.png",
@@ -192984,6 +193014,7 @@
       "singlebg_lang/txt_fight/change2.png",
       "singlebg_lang/txt_fight/change3.png",
       "singlebg_lang/txt_fight/change4.png",
+      "singlebg_lang/txt_fight/change5.png",
       "singlebg_lang/txt_fight/fight_act174_enemytitle.png",
       "singlebg_lang/txt_fight/fight_act174_playertitle.png",
       "singlebg_lang/txt_fight/fight_act174_title.png",
@@ -206200,6 +206231,7 @@
       "ui/viewres/dynamichead/173806_1.prefab",
       "ui/viewres/dynamichead/173810.prefab",
       "ui/viewres/dynamichead/173813.prefab",
+      "ui/viewres/dynamichead/173813_1.prefab",
       "ui/viewres/dynamichead/173851.prefab",
       "ui/viewres/dynamichead/173852.prefab",
       "ui/viewres/dynamichead/173853.prefab",
@@ -212956,6 +212988,7 @@
       "atlas/ui_common.spriteatlas.dat",
       "atlas/ui_common_1.spriteatlas.dat",
       "atlas/ui_common_bg.spriteatlas.dat",
+      "atlas/ui_dungeon_3.spriteatlas.dat",
       "atlas/ui_equip.spriteatlas.dat",
       "atlas/ui_fight.spriteatlas.dat",
       "atlas/ui_fightresistance.spriteatlas.dat",
@@ -212966,6 +212999,8 @@
       "atlas/ui_rouge4.spriteatlas.dat",
       "atlas/ui_rouge5.spriteatlas.dat",
       "atlas/ui_rouge6.spriteatlas.dat",
+      "atlas/ui_seasonver.spriteatlas.dat",
+      "atlas/ui_seasonver_1.spriteatlas.dat",
       "atlas/ui_seasonver_5.spriteatlas.dat",
       "atlas/ui_summon_2.spriteatlas.dat",
       "atlas/ui_summon_4.spriteatlas.dat",

@@ -31351,7 +31351,7 @@ return {
 	},
 	{
 		"p_v4a1_rolestorycheckitem_tips",
-		"选择一名角色参与鉴定"
+		"选择一名角色参与检定"
 	},
 	{
 		"p_v4a1_rolestorycheckitem_target",

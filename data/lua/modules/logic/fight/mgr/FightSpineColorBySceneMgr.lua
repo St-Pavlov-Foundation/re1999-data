@@ -49,7 +49,7 @@ function FightSpineColorBySceneMgr:_setAllSpineColor()
 	local entityList = FightHelper.getAllEntitysContainUnitNpc()
 
 	for _, entity in ipairs(entityList) do
-		if entity.spineRenderer and entity.spineRenderer:hasSkeletonAnim() then
+		if entity.spineRenderer and entity.spineRenderer.hasSkeletonAnim and entity.spineRenderer:hasSkeletonAnim() then
 			local mat = entity.spineRenderer:getReplaceMat()
 
 			MaterialUtil.setMainColor(mat, self._spineColor)

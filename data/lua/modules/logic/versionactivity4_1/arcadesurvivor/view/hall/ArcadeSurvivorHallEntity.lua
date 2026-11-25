@@ -101,6 +101,8 @@ function ArcadeSurvivorHallEntity:refreshPosition()
 	end
 
 	self._posList = {}
+	self._finishMoveCb = nil
+	self._finishMoveCbObj = nil
 
 	local mo = self:getMO()
 
@@ -299,6 +301,8 @@ function ArcadeSurvivorHallEntity:clear()
 	end
 
 	self._posList = {}
+	self._finishMoveCb = nil
+	self._finishMoveCbObj = nil
 end
 
 function ArcadeSurvivorHallEntity:onDestroy()

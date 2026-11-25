@@ -50,6 +50,7 @@ function ArcadeSurvivorDialogueTalkComp:playTalk(groupId)
 
 	ArcadeSurvivorGameController.instance:pauseGame(ArcadeSurvivorGameEnum.StopSource.DialogTalk)
 	gohelper.setActive(self.go, true)
+	gohelper.setActive(self._btndialogueclick, true)
 	self._dialogueAnimatorPlayer:Play("open", nil, nil)
 	AudioMgr.instance:trigger(AudioEnum4_1.ArcadeSurvivor.play_ui_atlantis_dialogue_loop)
 	self:_playStep()
@@ -78,6 +79,7 @@ function ArcadeSurvivorDialogueTalkComp:endTalk(isHideImmediately)
 		self._dialogueAnimatorPlayer:Stop()
 		gohelper.setActive(self.go, false)
 	else
+		gohelper.setActive(self._btndialogueclick, false)
 		self._dialogueAnimatorPlayer:Play("close", self._hideDialogue, self)
 	end
 end

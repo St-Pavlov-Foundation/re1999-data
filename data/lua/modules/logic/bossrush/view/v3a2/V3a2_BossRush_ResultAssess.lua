@@ -76,6 +76,8 @@ function V3a2_BossRush_ResultAssess:onDestroyView()
 	self:destroyFlow()
 	self._recordAnimEvent:RemoveEventListener(V3a2BossRushEnum.AnimEventName.RecordScore)
 	self._scoreAnimEvent:RemoveEventListener(V3a2BossRushEnum.AnimEventName.PlayAudio_Appraise)
+	self._simageDec1:UnLoadImage()
+	self._simageDec2:UnLoadImage()
 end
 
 function V3a2_BossRush_ResultAssess:showNewRecord(isNew)

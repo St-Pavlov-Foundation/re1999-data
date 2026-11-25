@@ -269,6 +269,10 @@ function UnityVideoPlayer:canPlay()
 	return true
 end
 
+function UnityVideoPlayer:onDestroy()
+	self:ondestroy()
+end
+
 function UnityVideoPlayer:ondestroy()
 	self._videoPlayer:Stop()
 	self._videoPlayerHelper:Clear()

@@ -17,6 +17,7 @@ DecorateStoreEnum.DecorateItemType = {
 	Icon = 1,
 	MainUISkin = 8,
 	BuildingVideo = 4,
+	DynamicHead = 11,
 	SelfCard = 5,
 	Hero = 10,
 	Skin = 2

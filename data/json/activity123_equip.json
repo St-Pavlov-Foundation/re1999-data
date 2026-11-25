@@ -29541,7 +29541,7 @@
     "composeCost": 400,
     "scoreTitle": "消耗交感能量/灵光后提升评分",
     "scoreStage": "B#500|A#1000|S#2000",
-    "scoreStageTitle": "B:回合结束进行攻击|A:攻击后回复我方灵光/交感能量|S:攻击后降低敌方防御"
+    "scoreStageTitle": "B:回合结束进行攻击|A:回合开始回复我方灵光/交感能量|S:攻击后降低敌方防御"
   },
   {
     "equipId": 410102,
@@ -29613,7 +29613,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "角色使用术具咒语时，有45%概率再次释放"
+    "scoreStageTitle": "角色使用术具攻击咒语时，有45%概率再次释放，每回合触发上限2次"
   },
   {
     "equipId": 410002,
@@ -29637,7 +29637,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "我方每消耗1点术具能量，永久提升我方2%术具威力（最多50%）"
+    "scoreStageTitle": "我方每消耗1点交感能量，永久提升我方2%术具威力（最多50%）"
   },
   {
     "equipId": 410003,
@@ -29661,7 +29661,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "交感能量咒语进入行动区时，额外生成1张"
+    "scoreStageTitle": "每回合开始时，【术具耗能】与【术具唤起】等级各提升5级"
   },
   {
     "equipId": 410004,
@@ -29685,7 +29685,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "自身每消耗1点术具能量，永久提升自身1%术具威力（最多20%）"
+    "scoreStageTitle": "自身每消耗1点交感能量，永久提升自身2%术具威力（最多30%）"
   },
   {
     "equipId": 410005,
@@ -29709,7 +29709,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "我方每消耗1点术具能量或灵光，本回合团队卡攻击术法威力+5%，最多100%。"
+    "scoreStageTitle": "我方每消耗1点交感能量或灵光，本回合名人卡【座上宾·彩】攻击术法威力+5%，最多100%。"
   },
   {
     "equipId": 410006,
@@ -29757,7 +29757,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "主动行动后，使全队获得2点灵光或2点万能术具能量"
+    "scoreStageTitle": "主动行动后，使自身获得2点灵光或2点混沌交感能量"
   },
   {
     "equipId": 410008,
@@ -29805,7 +29805,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "我方累计消耗1点交感能量或灵光，额外获得50点团队卡分数，每回合限2次。"
+    "scoreStageTitle": "每回合我方前2次消耗交感能量或灵光，每消耗1点交感能量或灵光，名人卡【座上宾·彩】额外获得50点分数"
   },
   {
     "equipId": 410010,
@@ -29829,7 +29829,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "回合开始时，若己方至少有3名术具角色，体获得5点万能交感能量。"
+    "scoreStageTitle": "回合开始时，自身为术具角色则获得5点混沌交感能量"
   },
   {
     "equipId": 410011,
@@ -29877,7 +29877,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "自身消耗交感能量或灵光后，己方全体获得2层【幸运】"
+    "scoreStageTitle": "持卡者每消耗1点交感能量或灵光，己方全体获得1层【幸运】。"
   },
   {
     "equipId": 410013,
@@ -29901,7 +29901,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "每消耗1点术具能量或灵光，获得1层【创伤附加】，持续2回合\n【创伤附加】：攻击时，对目标附加自身50%攻击的本源创伤"
+    "scoreStageTitle": "每消耗1点交感能量或灵光，获得1层【创伤附加】，持续2回合。\n【创伤附加】攻击时，每有1层【创伤附加】，对目标附加自身攻击50%的本源创伤。效果可叠加，每层持续时间独立计算。"
   },
   {
     "equipId": 410014,
@@ -29949,12 +29949,12 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "【弱点洞穿】阶段内，自身每发动1次洞知技能后，暴击创伤提升50%，最多叠加3层；离开阶段时清除"
+    "scoreStageTitle": "【弱点洞穿】阶段内，自身每发动1次洞知咒语后，暴击创伤提升50%，最多叠加3层；离开阶段时清除"
   },
   {
     "equipId": 410016,
     "name": "归航路",
-    "rare": 4,
+    "rare": 3,
     "isMain": 0,
     "packageId": "1",
     "icon": "561",
@@ -29973,7 +29973,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "自身主动使用1次洞知技能，永久提升自身1%洞知创伤（最多20%）"
+    "scoreStageTitle": "自身发动1次洞知咒语，永久提升自身1%洞知创伤加成（最多20%）"
   },
   {
     "equipId": 410017,
@@ -29997,7 +29997,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "自身发动洞知技能后，永久提升我方2%洞知创伤（最多50%）"
+    "scoreStageTitle": "自身发动1次洞知咒语，永久提升我方2%洞知创伤加成（最多50%）"
   },
   {
     "equipId": 410018,
@@ -30021,7 +30021,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "使用治疗咒语后，使我方全体创伤提升20%，持续2回合"
+    "scoreStageTitle": "自身发动治疗咒语后，使我方全体创伤加成提升20%，持续2回合"
   },
   {
     "equipId": 410019,
@@ -30030,9 +30030,9 @@
     "isMain": 0,
     "packageId": "1",
     "icon": "580",
-    "signIcon": "3120",
+    "signIcon": "3020",
     "iconOffset": "0#0#1",
-    "signOffset": "-52#-183#0.45",
+    "signOffset": "8#-178#0.45",
     "attrId": 0,
     "skillId": "119411344",
     "group": 410019,
@@ -30165,7 +30165,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "自身发动至终的仪式后，有30%的概率额外释放1次"
+    "scoreStageTitle": "自身发动至终的仪式后，有30%的概率额外释放1次，每回合触发上限2次"
   },
   {
     "equipId": 410025,
@@ -30189,7 +30189,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "自身发动仪式攻击前，暴击创伤+20%；本回合友方此前每发动1次仪式，额外暴击创伤+20%，最多+100%"
+    "scoreStageTitle": "自身发动仪式攻击前，暴击创伤+20%；本回合友方此前每发动1次仪式，暴击创伤额外提升20%，最多提升100%"
   },
   {
     "equipId": 410026,
@@ -30237,7 +30237,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "自身发动至终的仪式后受创减免+20%，持续2回合"
+    "scoreStageTitle": "自身发动至终的仪式后受创减免+30%，持续2回合"
   },
   {
     "equipId": 410028,
@@ -30261,7 +30261,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "自身每发动1次至终的仪式，本回合团队卡攻击的术法威力提升30%；最多150%"
+    "scoreStageTitle": "自身每发动1次至终的仪式，本回合名人卡【新航线·彩】攻击术法威力提升30%，最多提升150%"
   },
   {
     "equipId": 410029,
@@ -30309,7 +30309,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "回合开始时，每有10点【余辉】，使我方角色本回合暴击率提高1%，最多计入750点【余辉】"
+    "scoreStageTitle": "回合开始时，每有10点【余辉】，使我方角色本回合暴击创伤提高3%，最多计入750点【余辉】"
   },
   {
     "equipId": 410031,
@@ -30333,7 +30333,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "额外行动攻击时，溢出的暴击率转换为暴击创伤"
+    "scoreStageTitle": "攻击时，溢出的暴击率转换为暴击创伤"
   },
   {
     "equipId": 410032,
@@ -30405,7 +30405,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "额外行动是，每有100点【余辉】，创伤倍率提升300%"
+    "scoreStageTitle": "攻击时，每有100点【余辉】，创伤倍率提升300%"
   },
   {
     "equipId": 410035,
@@ -30477,7 +30477,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "自身每发动1次额外行动或反击，本回合团队卡攻击的术法威力提升30%；最多150%"
+    "scoreStageTitle": "自身每次攻击或反击，本回合名人卡【若微风拂面·彩】攻击术法威力提升30%；最多150%"
   },
   {
     "equipId": 410038,
@@ -30549,7 +30549,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "回合内，若自身额外行动次数至少为3次，则使本回合团队名人卡的攻击额外攻击1次"
+    "scoreStageTitle": "回合内，若自身攻击次数至少为3次，则使本回合名人卡【若微风拂面·彩】额外攻击1次"
   },
   {
     "equipId": 410041,
@@ -30573,7 +30573,7 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "回合内，若自身反击次数至少为3次，则使本回合团队名人卡的攻击额外攻击1次"
+    "scoreStageTitle": "回合内，若自身反击次数至少为3次，则使本回合名人卡【若微风拂面·彩】额外攻击1次"
   },
   {
     "equipId": 410042,
@@ -30597,6 +30597,6 @@
     "composeCost": 50,
     "scoreTitle": "",
     "scoreStage": "",
-    "scoreStageTitle": "额外行动或反击后，我方全体现实防御、精神防御提高50%，持续2回合"
+    "scoreStageTitle": "攻击和反击后，我方全体现实防御、精神防御提高50%，持续2回合"
   }
 ]

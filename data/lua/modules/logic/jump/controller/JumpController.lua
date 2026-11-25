@@ -320,6 +320,13 @@ function JumpController:jumpTo(jumpParam, callback, callbackObj, recordFarmItem)
 		if jumpViewDefaultScene == SceneType.Main then
 			MainController.instance:enterMainScene(true)
 		elseif jumpViewDefaultScene == SceneType.Room then
+			if RoomController.instance:isReviewBlock() then
+				GameFacade.showToast(RoomEnum.Toast.ReviewBlockNotOpen)
+				self:reInit()
+
+				return JumpEnum.JumpResult.Fail
+			end
+
 			local mode = RoomEnum.GameMode.Ob
 
 			if jumpView == JumpEnum.JumpView.RoomFishing then

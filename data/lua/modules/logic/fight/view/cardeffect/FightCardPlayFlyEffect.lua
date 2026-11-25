@@ -256,6 +256,10 @@ function FightCardPlayFlyEffect:_getPlayTargetPos()
 	posY = posY + recthelper.getAnchorY(content)
 	posY = posY - 21
 
+	if FightCardDataHelper.getCardSkin() == 672804 then
+		posY = posY + 20.5
+	end
+
 	return posX, posY
 end
 

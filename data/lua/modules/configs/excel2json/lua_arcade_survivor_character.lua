@@ -41,7 +41,6 @@ local primaryKey = {
 local mlStringKey = {
 	lockTip = 3,
 	name = 1,
-	charTag = 4,
 	desc = 2
 }
 local _configList, _configDict

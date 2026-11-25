@@ -412,22 +412,24 @@ function TowerComposeHeroGroupEditView:replaceQuickGroupHeroDefaultEquip(heroUid
 				canReplace = false
 			end
 
-			for checkIndex, heroGroupEquipMo in pairs(heroGroupEquipMoList) do
-				if heroGroupEquipMo.equipUid[1] == heroMo.defaultEquipUid then
-					local curInTeamHeroUid = heroIdList[checkIndex + 1]
+			if canReplace then
+				for checkIndex, heroGroupEquipMo in pairs(heroGroupEquipMoList) do
+					if heroGroupEquipMo.equipUid[1] == heroMo.defaultEquipUid then
+						local curInTeamHeroUid = heroIdList[checkIndex + 1]
 
-					isInLockPlane = TowerComposeHeroGroupModel.instance:checkHeroUidIsInLockPlane(curInTeamHeroUid)
+						isInLockPlane = TowerComposeHeroGroupModel.instance:checkHeroUidIsInLockPlane(curInTeamHeroUid)
 
-					if isInLockPlane then
-						heroGroupEquipMoList[index - 1].equipUid[1] = "0"
-						canReplace = false
+						if isInLockPlane then
+							heroGroupEquipMoList[index - 1].equipUid[1] = "0"
+							canReplace = false
+
+							break
+						end
+
+						heroGroupEquipMo.equipUid[1] = "0"
 
 						break
 					end
-
-					heroGroupEquipMo.equipUid[1] = "0"
-
-					break
 				end
 			end
 

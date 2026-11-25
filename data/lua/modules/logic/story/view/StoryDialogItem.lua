@@ -75,6 +75,7 @@ function StoryDialogItem:_addEvent()
 	ViewMgr.instance:registerCallback(ViewEvent.OnCloseView, self._checkCloseView, self)
 	StoryController.instance:registerCallback(StoryEvent.OnPerspectiveDialogMat, self._onSetPerspectiveMat, self)
 	StoryController.instance:registerCallback(StoryEvent.OnResetPerspectiveDialogMat, self._onResetPerspectiveMat, self)
+	StoryController.instance:registerCallback(StoryEvent.AutoChange, self._onAutoChange, self)
 end
 
 function StoryDialogItem:_onSetPerspectiveMat()
@@ -96,6 +97,7 @@ function StoryDialogItem:_removeEvent()
 	ViewMgr.instance:unregisterCallback(ViewEvent.OnCloseView, self._checkCloseView, self)
 	StoryController.instance:unregisterCallback(StoryEvent.OnPerspectiveDialogMat, self._onSetPerspectiveMat, self)
 	StoryController.instance:unregisterCallback(StoryEvent.OnResetPerspectiveDialogMat, self._onResetPerspectiveMat, self)
+	StoryController.instance:unregisterCallback(StoryEvent.AutoChange, self._onAutoChange, self)
 end
 
 function StoryDialogItem:_checkCloseView(viewName)
@@ -1348,6 +1350,15 @@ function StoryDialogItem:startAutoEnterNext()
 		end
 
 		self:conFinished()
+	end
+end
+
+function StoryDialogItem:_onAutoChange()
+	local isAuto = StoryModel.instance:isStoryAuto()
+
+	if not isAuto then
+		TaskDispatcher.cancelTask(self._onSecond, self)
+		TaskDispatcher.cancelTask(self._waitSecondFinished, self)
 	end
 end
 

@@ -121,12 +121,6 @@ function ActivityWarmUpH5FullView:_openLink()
 	logNormal("[ActivityWarmUpH5FullView] jump URL:" .. tostring(baseUrl))
 
 	if string.nilorempty(baseUrl) then
-		if self.viewContainer:bLoadResFromWebside() then
-			logError("[ActivityWarmUpH5FullView] - Webside Mode jump URL empty")
-		else
-			logError("[ActivityWarmUpH5FullView] - Non-Webside Mode jump URL empty")
-		end
-
 		return
 	end
 
@@ -140,7 +134,9 @@ end
 function ActivityWarmUpH5FullView:_editableInitView()
 	self._assetItemList = self:getUserDataTb_()
 	self._imgCmp = self._simagelangtxt:GetComponent(gohelper.Type_Image)
-	self._simagelangtxt.enabled = false
+
+	gohelper.setActive(self._simagelangtxt, true)
+
 	self._imgCmp.enabled = false
 	self._txtLimitTime.text = ""
 end
@@ -157,20 +153,21 @@ function ActivityWarmUpH5FullView:_onWebViewCb(errorType, msg)
 end
 
 function ActivityWarmUpH5FullView:onUpdateParam()
-	GameUtil.loadSImage(self._simagelangtxt, self.viewContainer:getBgResUrl())
 	self:_refreshTimeTick()
 	TaskDispatcher.cancelTask(self._refreshTimeTick, self)
 	TaskDispatcher.runRepeat(self._refreshTimeTick, self, 1)
 
 	if self.viewContainer:bLoadResFromWebside() then
-		self._simagelangtxt.enabled = false
 		self._imgCmp.enabled = false
 
 		self:_retrySendReq(true)
 	else
-		self._imgCmp.enabled = true
-		self._simagelangtxt.enabled = true
+		GameUtil.loadSImage(self._simagelangtxt, self.viewContainer:getBgResUrl(), self._onLoaded_simagelangtxt, self)
 	end
+end
+
+function ActivityWarmUpH5FullView:_onLoaded_simagelangtxt()
+	self._imgCmp.enabled = true
 end
 
 function ActivityWarmUpH5FullView:onOpen()
@@ -181,6 +178,7 @@ function ActivityWarmUpH5FullView:onOpen()
 	gohelper.addChild(parentGO, self.viewGO)
 	self:onUpdateParam()
 	AudioMgr.instance:trigger(AudioEnum3_1.WarmUpH5.play_ui_mingdi_h5_open)
+	ActivityBeginnerController.instance:simpleSavePlayerPrefsEdTs(self:_actId())
 end
 
 function ActivityWarmUpH5FullView:_refreshTimeTick()
@@ -215,7 +213,7 @@ function ActivityWarmUpH5FullView:_reqUrl()
 	local kChannelId = tostring(SDKMgr.instance:getChannelId())
 	local kSubChannelId = tostring(SDKMgr.instance:getSubChannelId())
 	local kServerType = tostring(GameChannelConfig.getServerType())
-	local kBaseUrl = GameUrlConfig.getNoticeUrl() .. "/noticecp/client/query?"
+	local kBaseUrl = GameUrlConfig.getNoticeUrl() .. "/app-activity/h5-entry/query?"
 	local strBuf = {}
 
 	ti(strBuf, kBaseUrl)
@@ -293,7 +291,13 @@ function ActivityWarmUpH5FullView:_onSuccGetReqData(jsonStr)
 	local bSucc = jsonTbl.code == 200
 
 	if bSucc then
-		self._respData = jsonTbl.data
+		self._respData = nil
+
+		if GameUtil.isJsonValNULL(jsonTbl.data) then
+			-- block empty
+		else
+			self._respData = jsonTbl.data
+		end
 
 		local picUrl = self:picUrl()
 

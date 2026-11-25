@@ -81,6 +81,14 @@ function RoomController:isEditorMode()
 	return self._isEditorMode
 end
 
+function RoomController:isReviewBlock()
+	if SLFramework.FrameworkSettings.IsEditor or BootNativeUtil.isIOS() then
+		return VersionValidator.instance:isInReviewing()
+	end
+
+	return false
+end
+
 function RoomController:isEditMode()
 	return RoomModel.instance:getGameMode() == RoomEnum.GameMode.Edit
 end
@@ -134,6 +142,13 @@ function RoomController:getOpenViews()
 end
 
 function RoomController:enterRoom(gameMode, editInfo, obInfo, param, openViews, forceStart, isReset)
+	if self:isReviewBlock() then
+		GameFacade.showToast(RoomEnum.Toast.ReviewBlockNotOpen)
+		logNormal("提审服屏蔽荒原入口, gameMode = " .. tostring(gameMode))
+
+		return
+	end
+
 	RoomHelper.logStart("开始进入小屋")
 	self:_startEnterRoomBlock()
 

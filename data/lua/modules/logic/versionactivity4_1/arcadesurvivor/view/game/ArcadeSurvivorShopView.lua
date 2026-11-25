@@ -455,6 +455,10 @@ function ArcadeSurvivorShopView:refreshGoodsState()
 end
 
 function ArcadeSurvivorShopView:refreshBtnRefresh()
+	if not self._shopId then
+		return
+	end
+
 	local canRefresh = true
 	local haveRefreshCount = ArcadeSurvivorGameModel.instance:getShopRefreshCount()
 	local remainCount = math.max(0, haveRefreshCount - self._consumeShopRefreshCount)

@@ -447,9 +447,14 @@ function DecorateMaterialBuyView:_refreshLogo()
 		title = "main_switch_classify_title_6"
 	end
 
-	if not string.nilorempty(title) then
-		self._txtSceneLogo.text = luaLang(title)
+	local goodsCo = DecorateStoreConfig.instance:getDecorateConfig(self._goodsId)
+	local titleStr = goodsCo and goodsCo.typeName or luaLang(title)
+
+	if goodsCo then
+		title = goodsCo.typeName
 	end
+
+	self._txtSceneLogo.text = titleStr
 
 	gohelper.setActive(self._goSceneLogo, not string.nilorempty(title))
 

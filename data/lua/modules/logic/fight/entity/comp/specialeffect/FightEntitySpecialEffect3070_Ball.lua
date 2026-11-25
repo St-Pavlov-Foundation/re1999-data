@@ -414,8 +414,8 @@ function FightEntitySpecialEffect3070_Ball:_onBuffUpdate(targetId, effectType, b
 				local effect = table.remove(self._ballEffectList, i)
 
 				table.remove(self._ballEffectUid, i)
-				self._entity.effect:removeEffect(effect)
 				self:_ballDestroyEffect(self._ballDestroyPath[effect.uniqueId], buffUid)
+				self._entity.effect:removeEffect(effect)
 
 				self._playingDestroyEffect = true
 

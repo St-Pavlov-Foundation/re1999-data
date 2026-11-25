@@ -14,6 +14,8 @@ FightPreloadOthersWork.LvUpEffect2Path = "ui/viewres/fight/fightskin/0002/cardri
 FightPreloadOthersWork.LvDownEffect2Path = "ui/viewres/fight/fightskin/0002/carddescending.prefab"
 FightPreloadOthersWork.LvUpEffect3Path = "ui/viewres/fight/fightskin/0003/cardrising.prefab"
 FightPreloadOthersWork.LvDownEffect3Path = "ui/viewres/fight/fightskin/0003/carddescending.prefab"
+FightPreloadOthersWork.LvUpEffect4Path = "ui/viewres/fight/fightskin/0004/cardrising.prefab"
+FightPreloadOthersWork.LvDownEffect4Path = "ui/viewres/fight/fightskin/0004/carddescending.prefab"
 FightPreloadOthersWork.ClothSkillEffectPath = "ui/viewres/fight/ui_effect_flusheddown.prefab"
 
 function FightPreloadOthersWork:onStart(context)

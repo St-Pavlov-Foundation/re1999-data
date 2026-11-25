@@ -70,10 +70,25 @@ function V3a2_BossRush_ResultPanel:_editableInitView()
 	local go5s = gohelper.findChild(self.viewGO, "5s")
 
 	self._govx = self:getUserDataTb_()
-	self._govx[BossRushEnum.ScoreLevelStr.SSS] = go3s
-	self._govx[BossRushEnum.ScoreLevelStr.SSSS] = go4s
-	self._govx[BossRushEnum.ScoreLevelStr.SSSSS] = go5s
-	self._govx[BossRushEnum.ScoreLevelStr.SSSSSS] = go5s
+	self._govx[BossRushEnum.ScoreLevelStr.SSS] = {
+		go = go3s
+	}
+	self._govx[BossRushEnum.ScoreLevelStr.SSSS] = {
+		go = go4s
+	}
+	self._govx[BossRushEnum.ScoreLevelStr.SSSSS] = {
+		go = go5s
+	}
+	self._govx[BossRushEnum.ScoreLevelStr.SSSSSS] = {
+		go = go5s
+	}
+
+	for _, item in pairs(self._govx) do
+		item.simageDec1 = gohelper.findChildSingleImage(item.go, "Dec/#simage_Dec1")
+		item.simageDec2 = gohelper.findChildSingleImage(item.go, "Dec/#simage_Dec2")
+		item.imageDec1 = gohelper.findChildImage(item.go, "Dec/#simage_Dec1")
+		item.imageDec2 = gohelper.findChildImage(item.go, "Dec/#simage_Dec2")
+	end
 
 	self:initEvaluate()
 end
@@ -113,12 +128,33 @@ end
 function V3a2_BossRush_ResultPanel:setAssessIcon()
 	local type = BossRushEnum.AssessType.V3a2
 	local res, level, strLevel = BossRushConfig.instance:getAssessSpriteName(self._curStage, self.fightScore, type)
-	local scoreVX = self._govx[strLevel]
+	local scoreVX = self._govx[strLevel] and self._govx[strLevel].go
+	local isCurSeason = V4a1_BossRushModel.instance:isCurSeason(self._actId)
+	local res1 = isCurSeason and "v4a1_bossrush_result_dec1" or "v3a2_bossrush_result_dec1"
+	local res2 = isCurSeason and "v4a1_bossrush_result_dec2" or "v3a2_bossrush_result_dec2"
 
-	for lv, go in pairs(self._govx) do
-		local isShow = scoreVX == go
+	for lv, item in pairs(self._govx) do
+		local isShow = scoreVX and scoreVX == item.go
 
-		gohelper.setActive(go, isShow)
+		if isShow then
+			if item.simageDec1 then
+				item.simageDec1:LoadImage(ResUrl.getBossRushSinglebg(res1), function()
+					if item.imageDec1 then
+						item.imageDec1:SetNativeSize()
+					end
+				end)
+			end
+
+			if item.simageDec1 then
+				item.simageDec2:LoadImage(ResUrl.getBossRushSinglebg(res2), function()
+					if item.imageDec2 then
+						item.imageDec2:SetNativeSize()
+					end
+				end)
+			end
+		end
+
+		gohelper.setActive(item.go, isShow)
 	end
 
 	local _isEmpty = string.nilorempty(res)
@@ -223,7 +259,15 @@ function V3a2_BossRush_ResultPanel:checkIsNewRecord()
 end
 
 function V3a2_BossRush_ResultPanel:onClose()
-	return
+	for _, item in pairs(self._govx) do
+		if item.simageDec1 then
+			item.simageDec1:UnLoadImage()
+		end
+
+		if item.simageDec2 then
+			item.simageDec2:UnLoadImage()
+		end
+	end
 end
 
 function V3a2_BossRush_ResultPanel:onDestroyView()

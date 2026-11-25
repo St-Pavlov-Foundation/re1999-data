@@ -193,7 +193,9 @@ function DecorateStoreModel.getItemTypeByGoodId(goodId)
 	local decorateConfig = DecorateStoreConfig.instance:getDecorateConfig(goodId)
 
 	if decorateConfig.productType == MaterialEnum.MaterialType.Item then
-		if decorateConfig.subType == MaterialEnum.ItemSubType.Icon then
+		if decorateConfig.subType == MaterialEnum.ItemSubType.Icon and decorateConfig.rare == MaterialEnum.ItemRareSSR then
+			return DecorateStoreEnum.DecorateItemType.DynamicHead
+		elseif decorateConfig.subType == MaterialEnum.ItemSubType.Icon then
 			return DecorateStoreEnum.DecorateItemType.Icon
 		elseif decorateConfig.subType == MaterialEnum.ItemSubType.SelfCard then
 			return DecorateStoreEnum.DecorateItemType.SelfCard

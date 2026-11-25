@@ -28,7 +28,7 @@ function TowerComposePickAssistViewContainer:instantiateListScrollView()
 	scrollParam.scrollDir = ScrollEnum.ScrollDirV
 	scrollParam.lineCount = 6
 	scrollParam.cellWidth = 296
-	scrollParam.cellHeight = 636
+	scrollParam.cellHeight = 780
 
 	local animationDelayTimes = {}
 

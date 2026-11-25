@@ -125,6 +125,8 @@ function ActivityMainBtnItem:_onRefreshDot_Welfare(commonRedObj)
 end
 
 function ActivityMainBtnItem:_onRefreshDot_ActivityBeginner(commonRedObj)
+	local dotId = tonumber(RedDotConfig.instance:getRedDotCO(self._centerCo.reddotid).parent)
+
 	self._curActId = nil
 
 	local ok, errmsg = pcall(commonRedObj.dotId and self._checkRed_ActivityBeginner or self._checkActivityShowRedDotData, self, commonRedObj)
@@ -133,7 +135,7 @@ function ActivityMainBtnItem:_onRefreshDot_ActivityBeginner(commonRedObj)
 		logError(string.format("ActivityMainBtnItem:_checkRed_ActivityBeginner actId:%s error:%s", self._curActId, errmsg))
 	end
 
-	self:_checkShowBeginnerReddot(commonRedObj.dotId)
+	self:_checkShowBeginnerReddot(commonRedObj.dotId or dotId)
 end
 
 function ActivityMainBtnItem:_checkShowBeginnerReddot(dotId)
